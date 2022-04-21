@@ -29,7 +29,7 @@ class TextBrowserDocument : public QTextDocument {
 
   private:
     bool m_reloadingWithResources;
-    QList<QUrl> m_resourcesForHtml;
+    QList<QUrl> m_neededResourcesForHtml;
     QMap<QUrl, QByteArray> m_loadedResources;
 };
 

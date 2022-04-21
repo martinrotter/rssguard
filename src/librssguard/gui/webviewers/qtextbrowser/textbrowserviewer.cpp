@@ -67,17 +67,14 @@ QPair<QString, QUrl> TextBrowserViewer::prepareHtmlForMessage(const QList<Messag
       pictures_html += QString("<br/>[%1] <a href=\"%2\">%2</a>").arg(tr("image"), match.captured(1));
     }
 
-    /*if (qApp->settings()->value(GROUP(Messages), SETTING(Messages::DisplayImagePlaceholders)).toBool()) {
-       html += message.m_contents;
-       }
-       else {*/
     QString cnts = message.m_contents;
 
-    html += cnts;
-    // html += cnts.replace(imgTagRegex, QString());
+    auto forced_img_size = qApp->settings()->value(GROUP(Messages), SETTING(Messages::MessageHeadImageHeight)).toInt();
 
-    //}
-
+    // Fixup all "img" tags.
+    html += cnts.replace(img_tag_rgx,
+                         QSL("<a href=\"\\1\"><img width=\"%1\" src=\"\\1\" /></a>")
+                           .arg(forced_img_size <= 0 ? QString() : QString::number(forced_img_size)));
     html += pictures_html;
   }
 
@@ -347,12 +344,12 @@ void TextBrowserViewer::reloadWithImages() {
   m_document.data()->m_reloadingWithResources = true;
   m_document.data()->m_loadedResources.clear();
 
-  for (const QUrl& url : m_document.data()->m_resourcesForHtml) {
+  QEventLoop loop;
+
+  for (const QUrl& url : m_document.data()->m_neededResourcesForHtml) {
     if (m_document.data()->m_loadedResources.contains(url)) {
       continue;
     }
-
-    QEventLoop loop;
 
     connect(m_downloader.data(), &Downloader::completed, &loop, &QEventLoop::quit);
     m_downloader->manipulateData(url.toString(), QNetworkAccessManager::Operation::GetOperation, {}, 5000);
@@ -414,7 +411,7 @@ void TextBrowserViewer::onAnchorClicked(const QUrl& url) {
 void TextBrowserViewer::setHtml(const QString& html, const QUrl& base_url) {
   m_document.data()->m_reloadingWithResources = false;
   m_document.data()->m_loadedResources.clear();
-  m_document.data()->m_resourcesForHtml.clear();
+  m_document.data()->m_neededResourcesForHtml.clear();
 
   setHtmlPrivate(html, base_url);
 
@@ -433,7 +430,7 @@ void TextBrowserViewer::setHtmlPrivate(const QString& html, const QUrl& base_url
   m_currentUrl = base_url;
 
   if (!m_document.data()->m_reloadingWithResources) {
-    m_document.data()->m_resourcesForHtml.clear();
+    m_document.data()->m_neededResourcesForHtml.clear();
   }
 
   QTextBrowser::setHtml(html);
@@ -448,8 +445,8 @@ TextBrowserDocument::TextBrowserDocument(QObject* parent) : QTextDocument(parent
 
 QVariant TextBrowserDocument::loadResource(int type, const QUrl& name) {
   if (!m_reloadingWithResources) {
-    if (type == QTextDocument::ResourceType::ImageResource && !m_resourcesForHtml.contains(name)) {
-      m_resourcesForHtml.append(name);
+    if (type == QTextDocument::ResourceType::ImageResource && !m_neededResourcesForHtml.contains(name)) {
+      m_neededResourcesForHtml.append(name);
     }
 
     return {};

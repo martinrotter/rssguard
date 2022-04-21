@@ -19,7 +19,7 @@
 SkinFactory::SkinFactory(QObject* parent) : QObject(parent), m_styleIsFrozen(false) {}
 
 void SkinFactory::loadCurrentSkin() {
-  QList<QString> skin_names_to_try = { selectedSkinName(), QSL(APP_SKIN_DEFAULT) };
+  QList<QString> skin_names_to_try = {selectedSkinName(), QSL(APP_SKIN_DEFAULT)};
   bool skin_parsed;
   Skin skin_data;
   QString skin_name;
@@ -60,8 +60,7 @@ void SkinFactory::loadSkinFromData(const Skin& skin) {
     m_styleIsFrozen = false;
 
     if (!skin.m_forcedStyles.isEmpty()) {
-      qDebugNN << LOGSEC_GUI << "Forcing one of skin's declared styles:"
-               << QUOTE_W_SPACE_DOT(skin.m_forcedStyles);
+      qDebugNN << LOGSEC_GUI << "Forcing one of skin's declared styles:" << QUOTE_W_SPACE_DOT(skin.m_forcedStyles);
 
       for (const QString& skin_forced_style : skin.m_forcedStyles) {
         if (qApp->setStyle(skin_forced_style) != nullptr) {
@@ -86,12 +85,10 @@ void SkinFactory::loadSkinFromData(const Skin& skin) {
   // they specifically set object name to style name.
   m_currentStyle = qApp->style()->objectName();
 
-  const bool use_skin_colors = skin.m_forcedSkinColors ||
-                               qApp->settings()->value(GROUP(GUI), SETTING(GUI::ForcedSkinColors)).toBool();
+  const bool use_skin_colors =
+    skin.m_forcedSkinColors || qApp->settings()->value(GROUP(GUI), SETTING(GUI::ForcedSkinColors)).toBool();
 
-  if (isStyleGoodForAlternativeStylePalette(m_currentStyle) &&
-      !skin.m_stylePalette.isEmpty() &&
-      use_skin_colors) {
+  if (isStyleGoodForAlternativeStylePalette(m_currentStyle) && !skin.m_stylePalette.isEmpty() && use_skin_colors) {
     qDebugNN << LOGSEC_GUI << "Activating alternative palette.";
 
     QPalette pal = skin.extractPalette();
@@ -124,9 +121,9 @@ QString SkinFactory::selectedSkinName() const {
 }
 
 QString SkinFactory::adBlockedPage(const QString& url, const QString& filter) {
-  const QString& adblocked = currentSkin().m_adblocked.arg(tr("This page was blocked by AdBlock"),
-                                                           tr(R"(Blocked URL: "%1"<br/>Used filter: "%2")").arg(url,
-                                                                                                                filter));
+  const QString& adblocked =
+    currentSkin().m_adblocked.arg(tr("This page was blocked by AdBlock"),
+                                  tr(R"(Blocked URL: "%1"<br/>Used filter: "%2")").arg(url, filter));
 
   return currentSkin().m_layoutMarkupWrapper.arg(tr("This page was blocked by AdBlock"), adblocked);
 }
@@ -135,6 +132,8 @@ QPair<QString, QUrl> SkinFactory::generateHtmlOfArticles(const QList<Message>& m
   Skin skin = currentSkin();
   QString messages_layout;
   QString single_message_layout = skin.m_layoutMarkup;
+  const auto forced_img_size =
+    qApp->settings()->value(GROUP(Messages), SETTING(Messages::MessageHeadImageHeight)).toInt();
 
   for (const Message& message : messages) {
     QString enclosures;
@@ -143,46 +142,45 @@ QPair<QString, QUrl> SkinFactory::generateHtmlOfArticles(const QList<Message>& m
     for (const Enclosure& enclosure : message.m_enclosures) {
       QString enc_url = QUrl::fromPercentEncoding(enclosure.m_url.toUtf8());
 
-      enclosures += skin.m_enclosureMarkup.arg(enc_url,
-                                               QSL("&#129527;"),
-                                               enclosure.m_mimeType);
+      enclosures += skin.m_enclosureMarkup.arg(enc_url, QSL("&#129527;"), enclosure.m_mimeType);
 
       if (enclosure.m_mimeType.startsWith(QSL("image/")) &&
           qApp->settings()->value(GROUP(Messages), SETTING(Messages::DisplayEnclosuresInMessage)).toBool()) {
         // Add thumbnail image.
-        enclosure_images += skin.m_enclosureImageMarkup.arg(
-          enclosure.m_url,
-          enclosure.m_mimeType,
-          qApp->settings()->value(GROUP(Messages), SETTING(Messages::MessageHeadImageHeight)).toString());
+        enclosure_images +=
+          skin.m_enclosureImageMarkup.arg(enclosure.m_url,
+                                          enclosure.m_mimeType,
+                                          forced_img_size <= 0 ? QString() : QString::number(forced_img_size));
       }
     }
 
-    QString msg_date = qApp->settings()->value(GROUP(Messages), SETTING(Messages::UseCustomDate)).toBool()
-                       ? message.m_created.toLocalTime().toString(qApp->settings()->value(GROUP(Messages),
-                                                                                          SETTING(Messages::CustomDateFormat)).toString())
-                       : qApp->localization()->loadedLocale().toString(message.m_created.toLocalTime(),
-                                                                       QLocale::FormatType::ShortFormat);
+    QString msg_date =
+      qApp->settings()->value(GROUP(Messages), SETTING(Messages::UseCustomDate)).toBool()
+        ? message.m_created.toLocalTime()
+            .toString(qApp->settings()->value(GROUP(Messages), SETTING(Messages::CustomDateFormat)).toString())
+        : qApp->localization()->loadedLocale().toString(message.m_created.toLocalTime(),
+                                                        QLocale::FormatType::ShortFormat);
 
-    messages_layout.append(single_message_layout
-                           .arg(message.m_title,
-                                tr("Written by ") + (message.m_author.isEmpty() ?
-                                                     tr("unknown author") :
-                                                     message.m_author),
-                                message.m_url,
-                                message.m_contents,
-                                msg_date,
-                                enclosures,
-                                enclosure_images,
-                                QString::number(message.m_id)));
+    messages_layout.append(single_message_layout.arg(message.m_title,
+                                                     tr("Written by ") + (message.m_author.isEmpty()
+                                                                            ? tr("unknown author")
+                                                                            : message.m_author),
+                                                     message.m_url,
+                                                     message.m_contents,
+                                                     msg_date,
+                                                     enclosures,
+                                                     enclosure_images,
+                                                     QString::number(message.m_id)));
   }
 
-  QString msg_contents = skin.m_layoutMarkupWrapper.arg(messages.size() == 1
-                                                     ? messages.at(0).m_title
-                                                     : tr("Newspaper view"),
-                                                        messages_layout);
-  auto* feed = root->getParentServiceRoot()->getItemFromSubTree([messages](const RootItem* it) {
-    return it->kind() == RootItem::Kind::Feed && it->customId() == messages.at(0).m_feedId;
-  })->toFeed();
+  QString msg_contents =
+    skin.m_layoutMarkupWrapper.arg(messages.size() == 1 ? messages.at(0).m_title : tr("Newspaper view"),
+                                   messages_layout);
+  auto* feed = root->getParentServiceRoot()
+                 ->getItemFromSubTree([messages](const RootItem* it) {
+                   return it->kind() == RootItem::Kind::Feed && it->customId() == messages.at(0).m_feedId;
+                 })
+                 ->toFeed();
   QString base_url;
 
   if (feed != nullptr) {
@@ -193,15 +191,12 @@ QPair<QString, QUrl> SkinFactory::generateHtmlOfArticles(const QList<Message>& m
     }
   }
 
-  return { msg_contents, base_url };
+  return {msg_contents, base_url};
 }
 
 Skin SkinFactory::skinInfo(const QString& skin_name, bool* ok) const {
   Skin skin;
-  const QStringList skins_root_folders = {
-    APP_SKIN_PATH,
-    customSkinBaseFolder()
-  };
+  const QStringList skins_root_folders = {APP_SKIN_PATH, customSkinBaseFolder()};
 
   for (const QString& skins_root_folder : skins_root_folders) {
     const QString skin_parent = QString(skins_root_folder).replace(QDir::separator(), QL1C('/')) + QL1C('/');
@@ -223,7 +218,8 @@ Skin SkinFactory::skinInfo(const QString& skin_name, bool* ok) const {
       }
 
       const QDomNode skin_node = document.namedItem(QSL("skin"));
-      const QString base_skin_name = skin_node.toElement().attribute(QSL("base"));;
+      const QString base_skin_name = skin_node.toElement().attribute(QSL("base"));
+      ;
       QString real_base_skin_folder;
 
       if (!base_skin_name.isEmpty()) {
@@ -279,17 +275,18 @@ Skin SkinFactory::skinInfo(const QString& skin_name, bool* ok) const {
       skin.m_colorPalette = palette;
 
       // Obtain alternative style palette.
-      skin.m_forcedStyles = skin_node
-                            .namedItem(QSL("forced-styles"))
-                            .toElement().text().split(',',
+      skin.m_forcedStyles = skin_node.namedItem(QSL("forced-styles"))
+                              .toElement()
+                              .text()
+                              .split(',',
 #if QT_VERSION >= 0x050F00 // Qt >= 5.15.0
-                                                      Qt::SplitBehaviorFlags::SkipEmptyParts);
+                                     Qt::SplitBehaviorFlags::SkipEmptyParts);
 #else
-                                                      QString::SplitBehavior::SkipEmptyParts);
+                                     QString::SplitBehavior::SkipEmptyParts);
 #endif
 
-      skin.m_forcedSkinColors = skin_node.namedItem(QSL("forced-skin-colors")).toElement().text() ==
-                                QVariant(true).toString();
+      skin.m_forcedSkinColors =
+        skin_node.namedItem(QSL("forced-skin-colors")).toElement().text() == QVariant(true).toString();
 
       QDomElement style_palette_root = skin_node.namedItem(QSL("style-palette")).toElement();
 
@@ -306,7 +303,8 @@ Skin SkinFactory::skinInfo(const QString& skin_name, bool* ok) const {
 
         for (int i = 0; i < groups_of_palette.size(); i++) {
           const QDomNode& group_root_nd = groups_of_palette.at(i);
-          QPalette::ColorGroup group = QPalette::ColorGroup(enumerp.keyToValue(group_root_nd.toElement().attribute(QSL("id")).toLatin1()));
+          QPalette::ColorGroup group =
+            QPalette::ColorGroup(enumerp.keyToValue(group_root_nd.toElement().attribute(QSL("id")).toLatin1()));
 
           QDomNodeList colors_of_group = group_root_nd.toElement().elementsByTagName(QSL("color"));
 
@@ -314,11 +312,12 @@ Skin SkinFactory::skinInfo(const QString& skin_name, bool* ok) const {
             const QDomNode& color_nd = colors_of_group.at(j);
 
             QColor color(color_nd.toElement().text());
-            QPalette::ColorRole role = QPalette::ColorRole(enumerx.keyToValue(color_nd.toElement().attribute(QSL("role")).toLatin1()));
-            Qt::BrushStyle brush = Qt::BrushStyle(enumery.keyToValue(color_nd.toElement().attribute(QSL("brush")).toLatin1()));
+            QPalette::ColorRole role =
+              QPalette::ColorRole(enumerx.keyToValue(color_nd.toElement().attribute(QSL("role")).toLatin1()));
+            Qt::BrushStyle brush =
+              Qt::BrushStyle(enumery.keyToValue(color_nd.toElement().attribute(QSL("brush")).toLatin1()));
 
-            groups.insert(group, QPair<QPalette::ColorRole, QPair<QColor, Qt::BrushStyle>>(role,
-                                                                                           { color, brush }));
+            groups.insert(group, QPair<QPalette::ColorRole, QPair<QColor, Qt::BrushStyle>>(role, {color, brush}));
           }
         }
 
@@ -347,21 +346,19 @@ Skin SkinFactory::skinInfo(const QString& skin_name, bool* ok) const {
         skin.m_layoutMarkupWrapper = skin.m_layoutMarkupWrapper.replace(QSL(SKIN_STYLE_PLACEHOLDER), custom_css);
       }
       catch (...) {
-        qWarningNN << "Skin"
-                   << QUOTE_W_SPACE(skin_name)
-                   << "does not support separated custom CSS.";
+        qWarningNN << "Skin" << QUOTE_W_SPACE(skin_name) << "does not support separated custom CSS.";
       }
 
-      skin.m_enclosureImageMarkup = loadSkinFile(skin_folder_no_sep, QSL("html_enclosure_image.html"), real_base_skin_folder);
+      skin.m_enclosureImageMarkup =
+        loadSkinFile(skin_folder_no_sep, QSL("html_enclosure_image.html"), real_base_skin_folder);
       skin.m_layoutMarkup = loadSkinFile(skin_folder_no_sep, QSL("html_single_message.html"), real_base_skin_folder);
-      skin.m_enclosureMarkup = loadSkinFile(skin_folder_no_sep, QSL("html_enclosure_every.html"), real_base_skin_folder);
+      skin.m_enclosureMarkup =
+        loadSkinFile(skin_folder_no_sep, QSL("html_enclosure_every.html"), real_base_skin_folder);
       skin.m_rawData = loadSkinFile(skin_folder_no_sep, QSL("qt_style.qss"), real_base_skin_folder);
       skin.m_adblocked = loadSkinFile(skin_folder_no_sep, QSL("html_adblocked.html"), real_base_skin_folder);
 
       if (ok != nullptr) {
-        *ok = !skin.m_author.isEmpty() &&
-              !skin.m_version.isEmpty() &&
-              !skin.m_baseName.isEmpty() &&
+        *ok = !skin.m_author.isEmpty() && !skin.m_version.isEmpty() && !skin.m_baseName.isEmpty() &&
               !skin.m_layoutMarkup.isEmpty();
       }
 
@@ -376,7 +373,9 @@ Skin SkinFactory::skinInfo(const QString& skin_name, bool* ok) const {
   return skin;
 }
 
-QString SkinFactory::loadSkinFile(const QString& skin_folder, const QString& file_name, const QString& base_folder) const {
+QString SkinFactory::loadSkinFile(const QString& skin_folder,
+                                  const QString& file_name,
+                                  const QString& base_folder) const {
   QString local_file = QDir::toNativeSeparators(skin_folder + QDir::separator() + file_name);
   QString base_file = QDir::toNativeSeparators(base_folder + QDir::separator() + file_name);
   QString data;
@@ -404,13 +403,11 @@ bool SkinFactory::styleIsFrozen() const {
 QList<Skin> SkinFactory::installedSkins() const {
   QList<Skin> skins;
   bool skin_load_ok;
-  QStringList skin_directories = QDir(APP_SKIN_PATH).entryList(QDir::Filter::Dirs |
-                                                               QDir::Filter::NoDotAndDotDot |
-                                                               QDir::Filter::Readable);
+  QStringList skin_directories =
+    QDir(APP_SKIN_PATH).entryList(QDir::Filter::Dirs | QDir::Filter::NoDotAndDotDot | QDir::Filter::Readable);
 
-  skin_directories.append(QDir(customSkinBaseFolder()).entryList(QDir::Filter::Dirs |
-                                                                 QDir::Filter::NoDotAndDotDot |
-                                                                 QDir::Filter::Readable));
+  skin_directories.append(QDir(customSkinBaseFolder())
+                            .entryList(QDir::Filter::Dirs | QDir::Filter::NoDotAndDotDot | QDir::Filter::Readable));
 
   for (const QString& base_directory : skin_directories) {
     const Skin skin_info = skinInfo(base_directory, &skin_load_ok);
@@ -429,8 +426,7 @@ uint qHash(const SkinEnums::PaletteColors& key) {
 
 QVariant Skin::colorForModel(SkinEnums::PaletteColors type, bool ignore_custom_colors) const {
   if (!ignore_custom_colors) {
-    bool enabled = qApp->settings()->value(GROUP(CustomSkinColors),
-                                           SETTING(CustomSkinColors::Enabled)).toBool();
+    bool enabled = qApp->settings()->value(GROUP(CustomSkinColors), SETTING(CustomSkinColors::Enabled)).toBool();
 
     if (enabled) {
       const QMetaObject& mo = SkinEnums::staticMetaObject;
@@ -443,9 +439,7 @@ QVariant Skin::colorForModel(SkinEnums::PaletteColors type, bool ignore_custom_c
     }
   }
 
-  return m_colorPalette.contains(type)
-      ? m_colorPalette[type]
-      : QVariant();
+  return m_colorPalette.contains(type) ? m_colorPalette[type] : QVariant();
 }
 
 QPalette Skin::extractPalette() const {
@@ -480,7 +474,8 @@ QString SkinEnums::palleteColorText(PaletteColors col) {
       return QObject::tr("interesting stuff");
 
     case SkinEnums::PaletteColors::FgSelectedInteresting:
-      return QObject::tr("interesting stuff (highlighted)");;
+      return QObject::tr("interesting stuff (highlighted)");
+      ;
 
     case SkinEnums::PaletteColors::FgError:
       return QObject::tr("errored items");

@@ -53,7 +53,8 @@
 
 FormMain::FormMain(QWidget* parent, Qt::WindowFlags f)
   : QMainWindow(parent, f), m_ui(new Ui::FormMain), m_trayMenu(nullptr), m_statusBar(nullptr) {
-  qDebugNN << LOGSEC_GUI << "Creating main application form in thread:" << QUOTE_W_SPACE_DOT(QThread::currentThreadId());
+  qDebugNN << LOGSEC_GUI
+           << "Creating main application form in thread:" << QUOTE_W_SPACE_DOT(QThread::currentThreadId());
 
   m_ui->setupUi(this);
   qApp->setMainForm(this);
@@ -148,10 +149,10 @@ void FormMain::showDbCleanupAssistant() {
     qApp->feedReader()->feedsModel()->reloadCountsOfWholeModel();
   }
   else {
-    qApp->showGuiMessage(Notification::Event::GeneralEvent, {
-      tr("Cannot cleanup database"),
-      tr("Cannot cleanup database, because another critical action is running."),
-      QSystemTrayIcon::MessageIcon::Warning });
+    qApp->showGuiMessage(Notification::Event::GeneralEvent,
+                         {tr("Cannot cleanup database"),
+                          tr("Cannot cleanup database, because another critical action is running."),
+                          QSystemTrayIcon::MessageIcon::Warning});
   }
 }
 
@@ -298,25 +299,21 @@ void FormMain::updateAddItemMenu() {
     QList<QAction*> specific_root_actions = activated_root->addItemMenu();
 
     if (activated_root->supportsCategoryAdding()) {
-      QAction* action_new_category = new QAction(qApp->icons()->fromTheme(QSL("folder")),
-                                                 tr("Add new category"),
-                                                 m_ui->m_menuAddItem);
+      QAction* action_new_category =
+        new QAction(qApp->icons()->fromTheme(QSL("folder")), tr("Add new category"), m_ui->m_menuAddItem);
 
       root_menu->addAction(action_new_category);
-      connect(action_new_category, &QAction::triggered,
-              activated_root, [activated_root]() {
+      connect(action_new_category, &QAction::triggered, activated_root, [activated_root]() {
         activated_root->addNewCategory(activated_root);
       });
     }
 
     if (activated_root->supportsFeedAdding()) {
-      QAction* action_new_feed = new QAction(qApp->icons()->fromTheme(QSL("application-rss+xml")),
-                                             tr("Add new feed"),
-                                             m_ui->m_menuAddItem);
+      QAction* action_new_feed =
+        new QAction(qApp->icons()->fromTheme(QSL("application-rss+xml")), tr("Add new feed"), m_ui->m_menuAddItem);
 
       root_menu->addAction(action_new_feed);
-      connect(action_new_feed, &QAction::triggered,
-              activated_root, [activated_root]() {
+      connect(action_new_feed, &QAction::triggered, activated_root, [activated_root]() {
         activated_root->addNewFeed(activated_root);
       });
     }
@@ -356,17 +353,15 @@ void FormMain::updateRecycleBinMenu() {
     QList<QAction*> context_menu;
 
     if (bin == nullptr) {
-      QAction* no_action = new QAction(qApp->icons()->fromTheme(QSL("dialog-error")),
-                                       tr("No recycle bin"),
-                                       m_ui->m_menuRecycleBin);
+      QAction* no_action =
+        new QAction(qApp->icons()->fromTheme(QSL("dialog-error")), tr("No recycle bin"), m_ui->m_menuRecycleBin);
 
       no_action->setEnabled(false);
       root_menu->addAction(no_action);
     }
     else if ((context_menu = bin->contextMenuFeedsList()).isEmpty()) {
-      QAction* no_action = new QAction(qApp->icons()->fromTheme(QSL("dialog-error")),
-                                       tr("No actions possible"),
-                                       m_ui->m_menuRecycleBin);
+      QAction* no_action =
+        new QAction(qApp->icons()->fromTheme(QSL("dialog-error")), tr("No actions possible"), m_ui->m_menuRecycleBin);
 
       no_action->setEnabled(false);
       root_menu->addAction(no_action);
@@ -399,9 +394,8 @@ void FormMain::updateAccountsMenu() {
     QList<QAction*> root_actions = activated_root->serviceMenu();
 
     if (root_actions.isEmpty()) {
-      QAction* no_action = new QAction(qApp->icons()->fromTheme(QSL("dialog-error")),
-                                       tr("No possible actions"),
-                                       m_ui->m_menuAccounts);
+      QAction* no_action =
+        new QAction(qApp->icons()->fromTheme(QSL("dialog-error")), tr("No possible actions"), m_ui->m_menuAccounts);
 
       no_action->setEnabled(false);
       root_menu->addAction(no_action);
@@ -440,15 +434,17 @@ void FormMain::onFeedUpdatesStarted() {
 }
 
 void FormMain::onFeedUpdatesProgress(const Feed* feed, int current, int total) {
-  statusBar()->showProgressFeeds(int((current * 100.0) / total),
-                                 feed->sanitizedTitle());
+  statusBar()->showProgressFeeds(int((current * 100.0) / total), feed->sanitizedTitle());
 }
 
 void FormMain::updateMessageButtonsAvailability() {
-  const bool one_message_selected = tabWidget()->feedMessageViewer()->messagesView()->selectionModel()->selectedRows().size() == 1;
-  const bool atleast_one_message_selected = !tabWidget()->feedMessageViewer()->messagesView()->selectionModel()->selectedRows().isEmpty();
-  const bool bin_loaded = tabWidget()->feedMessageViewer()->messagesView()->sourceModel()->loadedItem() != nullptr
-                          && tabWidget()->feedMessageViewer()->messagesView()->sourceModel()->loadedItem()->kind() == RootItem::Kind::Bin;
+  const bool one_message_selected =
+    tabWidget()->feedMessageViewer()->messagesView()->selectionModel()->selectedRows().size() == 1;
+  const bool atleast_one_message_selected =
+    !tabWidget()->feedMessageViewer()->messagesView()->selectionModel()->selectedRows().isEmpty();
+  const bool bin_loaded =
+    tabWidget()->feedMessageViewer()->messagesView()->sourceModel()->loadedItem() != nullptr &&
+    tabWidget()->feedMessageViewer()->messagesView()->sourceModel()->loadedItem()->kind() == RootItem::Kind::Bin;
 
   m_ui->m_actionDeleteSelectedMessages->setEnabled(atleast_one_message_selected);
   m_ui->m_actionRestoreSelectedMessages->setEnabled(atleast_one_message_selected && bin_loaded);
@@ -483,7 +479,8 @@ void FormMain::updateFeedButtonsAvailability() {
   m_ui->m_actionMarkSelectedItemsAsUnread->setEnabled(anything_selected);
   m_ui->m_actionUpdateAllItems->setEnabled(!critical_action_running);
   m_ui->m_actionUpdateSelectedItemsWithCustomTimers->setEnabled(!critical_action_running);
-  m_ui->m_actionUpdateSelectedItems->setEnabled(!critical_action_running && (feed_selected || category_selected || service_selected));
+  m_ui->m_actionUpdateSelectedItems->setEnabled(!critical_action_running &&
+                                                (feed_selected || category_selected || service_selected));
   m_ui->m_actionViewSelectedItemsNewspaperMode->setEnabled(anything_selected);
   m_ui->m_actionExpandCollapseItem->setEnabled(category_selected || service_selected);
   m_ui->m_actionExpandCollapseItemRecursively->setEnabled(category_selected || service_selected);
@@ -495,10 +492,11 @@ void FormMain::updateFeedButtonsAvailability() {
   m_ui->m_menuAccounts->setEnabled(!critical_action_running);
   m_ui->m_menuRecycleBin->setEnabled(!critical_action_running);
 
-  m_ui->m_actionFeedMoveUp->setEnabled(manual_feed_sort &&(feed_selected || category_selected || service_selected));
-  m_ui->m_actionFeedMoveDown->setEnabled(manual_feed_sort &&(feed_selected || category_selected || service_selected));
-  m_ui->m_actionFeedMoveTop->setEnabled(manual_feed_sort &&(feed_selected || category_selected || service_selected));
-  m_ui->m_actionFeedMoveBottom->setEnabled(manual_feed_sort &&(feed_selected || category_selected || service_selected));
+  m_ui->m_actionFeedMoveUp->setEnabled(manual_feed_sort && (feed_selected || category_selected || service_selected));
+  m_ui->m_actionFeedMoveDown->setEnabled(manual_feed_sort && (feed_selected || category_selected || service_selected));
+  m_ui->m_actionFeedMoveTop->setEnabled(manual_feed_sort && (feed_selected || category_selected || service_selected));
+  m_ui->m_actionFeedMoveBottom->setEnabled(manual_feed_sort &&
+                                           (feed_selected || category_selected || service_selected));
 }
 
 void FormMain::switchVisibility(bool force_hide) {
@@ -506,10 +504,10 @@ void FormMain::switchVisibility(bool force_hide) {
     if (SystemTrayIcon::isSystemTrayDesired() && SystemTrayIcon::isSystemTrayAreaAvailable()) {
 
       if (QApplication::activeModalWidget() != nullptr) {
-        qApp->showGuiMessage(Notification::Event::GeneralEvent, {
-          tr("Close dialogs"),
-          tr("Close opened modal dialogs first."),
-          QSystemTrayIcon::MessageIcon::Warning });
+        qApp->showGuiMessage(Notification::Event::GeneralEvent,
+                             {tr("Close dialogs"),
+                              tr("Close opened modal dialogs first."),
+                              QSystemTrayIcon::MessageIcon::Warning});
       }
       else {
         hide();
@@ -572,7 +570,8 @@ void FormMain::setupIcons() {
   m_ui->m_actionStopRunningItemsUpdate->setIcon(icon_theme_factory->fromTheme(QSL("process-stop")));
   m_ui->m_actionUpdateAllItems->setIcon(icon_theme_factory->fromTheme(QSL("download"), QSL("browser-download")));
   m_ui->m_actionUpdateSelectedItems->setIcon(icon_theme_factory->fromTheme(QSL("download"), QSL("browser-download")));
-  m_ui->m_actionUpdateSelectedItemsWithCustomTimers->setIcon(icon_theme_factory->fromTheme(QSL("download"), QSL("browser-download")));
+  m_ui->m_actionUpdateSelectedItemsWithCustomTimers->setIcon(icon_theme_factory->fromTheme(QSL("download"),
+                                                                                           QSL("browser-download")));
   m_ui->m_actionClearSelectedItems->setIcon(icon_theme_factory->fromTheme(QSL("mail-mark-junk")));
   m_ui->m_actionClearAllItems->setIcon(icon_theme_factory->fromTheme(QSL("mail-mark-junk")));
   m_ui->m_actionDeleteSelectedItem->setIcon(icon_theme_factory->fromTheme(QSL("list-remove")));
@@ -654,7 +653,8 @@ void FormMain::loadSize() {
     qApp->processEvents();
   }
 
-  m_ui->m_actionMessagePreviewEnabled->setChecked(settings->value(GROUP(Messages), SETTING(Messages::EnableMessagePreview)).toBool());
+  m_ui->m_actionMessagePreviewEnabled
+    ->setChecked(settings->value(GROUP(Messages), SETTING(Messages::EnableMessagePreview)).toBool());
 
   // If user exited the application while in fullsreen mode,
   // then re-enable it now.
@@ -669,20 +669,20 @@ void FormMain::loadSize() {
   m_ui->m_tabWidget->feedMessageViewer()->loadSize();
   m_ui->m_actionSwitchToolBars->setChecked(settings->value(GROUP(GUI), SETTING(GUI::ToolbarsVisible)).toBool());
   m_ui->m_actionSwitchListHeaders->setChecked(settings->value(GROUP(GUI), SETTING(GUI::ListHeadersVisible)).toBool());
-  m_ui->m_actionSwitchMessageViewerToolbars->setChecked(settings->value(GROUP(GUI), SETTING(GUI::MessageViewerToolbarsVisible)).toBool());
+  m_ui->m_actionSwitchMessageViewerToolbars
+    ->setChecked(settings->value(GROUP(GUI), SETTING(GUI::MessageViewerToolbarsVisible)).toBool());
   m_ui->m_actionSwitchStatusBar->setChecked(settings->value(GROUP(GUI), SETTING(GUI::StatusBarVisible)).toBool());
 
   // Other startup GUI-related settings.
-  m_ui->m_actionSortFeedsAlphabetically->setChecked(settings->value(GROUP(Feeds),
-                                                                    SETTING(Feeds::SortAlphabetically)).toBool());
-  m_ui->m_actionShowOnlyUnreadItems->setChecked(settings->value(GROUP(Feeds),
-                                                                SETTING(Feeds::ShowOnlyUnreadFeeds)).toBool());
-  m_ui->m_actionShowTreeBranches->setChecked(settings->value(GROUP(Feeds),
-                                                             SETTING(Feeds::ShowTreeBranches)).toBool());
-  m_ui->m_actionAutoExpandItemsWhenSelected->setChecked(settings->value(GROUP(Feeds),
-                                                                        SETTING(Feeds::AutoExpandOnSelection)).toBool());
-  m_ui->m_actionAlternateColorsInLists->setChecked(settings->value(GROUP(GUI),
-                                                                   SETTING(GUI::AlternateRowColorsInLists)).toBool());
+  m_ui->m_actionSortFeedsAlphabetically
+    ->setChecked(settings->value(GROUP(Feeds), SETTING(Feeds::SortAlphabetically)).toBool());
+  m_ui->m_actionShowOnlyUnreadItems
+    ->setChecked(settings->value(GROUP(Feeds), SETTING(Feeds::ShowOnlyUnreadFeeds)).toBool());
+  m_ui->m_actionShowTreeBranches->setChecked(settings->value(GROUP(Feeds), SETTING(Feeds::ShowTreeBranches)).toBool());
+  m_ui->m_actionAutoExpandItemsWhenSelected
+    ->setChecked(settings->value(GROUP(Feeds), SETTING(Feeds::AutoExpandOnSelection)).toBool());
+  m_ui->m_actionAlternateColorsInLists
+    ->setChecked(settings->value(GROUP(GUI), SETTING(GUI::AlternateRowColorsInLists)).toBool());
 }
 
 void FormMain::saveSize() {
@@ -734,8 +734,10 @@ void FormMain::createConnections() {
   connect(m_ui->m_actionRestart, &QAction::triggered, qApp, &Application::restart);
 
   // Menu "View" connections.
-  connect(m_ui->m_actionSwitchFeedsList, &QAction::toggled,
-          tabWidget()->feedMessageViewer(), &FeedMessageViewer::switchFeedComponentVisibility);
+  connect(m_ui->m_actionSwitchFeedsList,
+          &QAction::toggled,
+          tabWidget()->feedMessageViewer(),
+          &FeedMessageViewer::switchFeedComponentVisibility);
   connect(m_ui->m_actionFullscreen, &QAction::toggled, this, &FormMain::switchFullscreenMode);
   connect(m_ui->m_actionSwitchMainMenu, &QAction::toggled, m_ui->m_menuBar, &QMenuBar::setVisible);
   connect(m_ui->m_actionSwitchMainWindow, &QAction::triggered, this, &FormMain::switchVisibility);
@@ -765,131 +767,228 @@ void FormMain::createConnections() {
   // Tab widget connections.
   connect(m_ui->m_actionTabsNext, &QAction::triggered, m_ui->m_tabWidget, &TabWidget::gotoNextTab);
   connect(m_ui->m_actionTabsPrevious, &QAction::triggered, m_ui->m_tabWidget, &TabWidget::gotoPreviousTab);
-  connect(m_ui->m_actionTabsCloseAllExceptCurrent, &QAction::triggered, m_ui->m_tabWidget, &TabWidget::closeAllTabsExceptCurrent);
+  connect(m_ui->m_actionTabsCloseAllExceptCurrent,
+          &QAction::triggered,
+          m_ui->m_tabWidget,
+          &TabWidget::closeAllTabsExceptCurrent);
   connect(m_ui->m_actionTabsCloseAll, &QAction::triggered, m_ui->m_tabWidget, &TabWidget::closeAllTabs);
   connect(m_ui->m_actionTabsCloseCurrent, &QAction::triggered, m_ui->m_tabWidget, &TabWidget::closeCurrentTab);
   connect(m_ui->m_actionTabNewWebBrowser, &QAction::triggered, m_ui->m_tabWidget, &TabWidget::addEmptyBrowser);
-  connect(tabWidget()->feedMessageViewer()->feedsView(), &FeedsView::itemSelected, this, &FormMain::updateFeedButtonsAvailability);
+  connect(tabWidget()->feedMessageViewer()->feedsView(),
+          &FeedsView::itemSelected,
+          this,
+          &FormMain::updateFeedButtonsAvailability);
   connect(qApp->feedUpdateLock(), &Mutex::locked, this, &FormMain::updateFeedButtonsAvailability);
   connect(qApp->feedUpdateLock(), &Mutex::unlocked, this, &FormMain::updateFeedButtonsAvailability);
-  connect(tabWidget()->feedMessageViewer()->messagesView(), &MessagesView::currentMessageRemoved,
-          this, &FormMain::updateMessageButtonsAvailability);
-  connect(tabWidget()->feedMessageViewer()->messagesView(), &MessagesView::currentMessageChanged,
-          this, &FormMain::updateMessageButtonsAvailability);
+  connect(tabWidget()->feedMessageViewer()->messagesView(),
+          &MessagesView::currentMessageRemoved,
+          this,
+          &FormMain::updateMessageButtonsAvailability);
+  connect(tabWidget()->feedMessageViewer()->messagesView(),
+          &MessagesView::currentMessageChanged,
+          this,
+          &FormMain::updateMessageButtonsAvailability);
   connect(tabWidget(), &TabWidget::currentChanged, this, &FormMain::updateTabsButtonsAvailability);
   connect(qApp->feedReader(), &FeedReader::feedUpdatesStarted, this, &FormMain::onFeedUpdatesStarted);
   connect(qApp->feedReader(), &FeedReader::feedUpdatesProgress, this, &FormMain::onFeedUpdatesProgress);
   connect(qApp->feedReader(), &FeedReader::feedUpdatesFinished, this, &FormMain::onFeedUpdatesFinished);
 
   // Toolbar forwardings.
-  connect(m_ui->m_actionAddFeedIntoSelectedItem, &QAction::triggered,
-          tabWidget()->feedMessageViewer()->feedsView(), &FeedsView::addFeedIntoSelectedAccount);
-  connect(m_ui->m_actionAddCategoryIntoSelectedItem, &QAction::triggered,
-          tabWidget()->feedMessageViewer()->feedsView(), &FeedsView::addCategoryIntoSelectedAccount);
+  connect(m_ui->m_actionAddFeedIntoSelectedItem,
+          &QAction::triggered,
+          tabWidget()->feedMessageViewer()->feedsView(),
+          &FeedsView::addFeedIntoSelectedAccount);
+  connect(m_ui->m_actionAddCategoryIntoSelectedItem,
+          &QAction::triggered,
+          tabWidget()->feedMessageViewer()->feedsView(),
+          &FeedsView::addCategoryIntoSelectedAccount);
   connect(m_ui->m_actionSwitchImportanceOfSelectedMessages,
-          &QAction::triggered, tabWidget()->feedMessageViewer()->messagesView(), &MessagesView::switchSelectedMessagesImportance);
+          &QAction::triggered,
+          tabWidget()->feedMessageViewer()->messagesView(),
+          &MessagesView::switchSelectedMessagesImportance);
   connect(m_ui->m_actionDeleteSelectedMessages,
-          &QAction::triggered, tabWidget()->feedMessageViewer()->messagesView(), &MessagesView::deleteSelectedMessages);
+          &QAction::triggered,
+          tabWidget()->feedMessageViewer()->messagesView(),
+          &MessagesView::deleteSelectedMessages);
   connect(m_ui->m_actionMarkSelectedMessagesAsRead,
-          &QAction::triggered, tabWidget()->feedMessageViewer()->messagesView(), &MessagesView::markSelectedMessagesRead);
-  connect(m_ui->m_actionMarkSelectedMessagesAsUnread, &QAction::triggered,
-          tabWidget()->feedMessageViewer()->messagesView(), &MessagesView::markSelectedMessagesUnread);
+          &QAction::triggered,
+          tabWidget()->feedMessageViewer()->messagesView(),
+          &MessagesView::markSelectedMessagesRead);
+  connect(m_ui->m_actionMarkSelectedMessagesAsUnread,
+          &QAction::triggered,
+          tabWidget()->feedMessageViewer()->messagesView(),
+          &MessagesView::markSelectedMessagesUnread);
   connect(m_ui->m_actionOpenSelectedSourceArticlesExternally,
-          &QAction::triggered, tabWidget()->feedMessageViewer()->messagesView(), &MessagesView::openSelectedSourceMessagesExternally);
+          &QAction::triggered,
+          tabWidget()->feedMessageViewer()->messagesView(),
+          &MessagesView::openSelectedSourceMessagesExternally);
   connect(m_ui->m_actionOpenSelectedMessagesInternally,
-          &QAction::triggered, tabWidget()->feedMessageViewer()->messagesView(), &MessagesView::openSelectedMessagesInternally);
+          &QAction::triggered,
+          tabWidget()->feedMessageViewer()->messagesView(),
+          &MessagesView::openSelectedMessagesInternally);
 
   connect(m_ui->m_actionOpenSelectedMessagesInternallyNoTab,
-          &QAction::triggered, tabWidget()->feedMessageViewer()->messagesView(), &MessagesView::openSelectedMessageUrl);
+          &QAction::triggered,
+          tabWidget()->feedMessageViewer()->messagesView(),
+          &MessagesView::openSelectedMessageUrl);
 
   connect(m_ui->m_actionSendMessageViaEmail,
-          &QAction::triggered, tabWidget()->feedMessageViewer()->messagesView(), &MessagesView::sendSelectedMessageViaEmail);
+          &QAction::triggered,
+          tabWidget()->feedMessageViewer()->messagesView(),
+          &MessagesView::sendSelectedMessageViaEmail);
   connect(m_ui->m_actionMarkAllItemsRead,
-          &QAction::triggered, tabWidget()->feedMessageViewer()->feedsView(), &FeedsView::markAllItemsRead);
+          &QAction::triggered,
+          tabWidget()->feedMessageViewer()->feedsView(),
+          &FeedsView::markAllItemsRead);
   connect(m_ui->m_actionMarkSelectedItemsAsRead,
-          &QAction::triggered, tabWidget()->feedMessageViewer()->feedsView(), &FeedsView::markSelectedItemRead);
+          &QAction::triggered,
+          tabWidget()->feedMessageViewer()->feedsView(),
+          &FeedsView::markSelectedItemRead);
   connect(m_ui->m_actionExpandCollapseItem,
           &QAction::triggered,
           tabWidget()->feedMessageViewer()->feedsView(),
           [this]() {
-    tabWidget()->feedMessageViewer()->feedsView()->expandCollapseCurrentItem(false);
-  });
+            tabWidget()->feedMessageViewer()->feedsView()->expandCollapseCurrentItem(false);
+          });
   connect(m_ui->m_actionExpandCollapseItemRecursively,
           &QAction::triggered,
           tabWidget()->feedMessageViewer()->feedsView(),
           [this]() {
-    tabWidget()->feedMessageViewer()->feedsView()->expandCollapseCurrentItem(true);
-  });
+            tabWidget()->feedMessageViewer()->feedsView()->expandCollapseCurrentItem(true);
+          });
   connect(m_ui->m_actionMarkSelectedItemsAsUnread,
-          &QAction::triggered, tabWidget()->feedMessageViewer()->feedsView(), &FeedsView::markSelectedItemUnread);
+          &QAction::triggered,
+          tabWidget()->feedMessageViewer()->feedsView(),
+          &FeedsView::markSelectedItemUnread);
   connect(m_ui->m_actionClearSelectedItems,
-          &QAction::triggered, tabWidget()->feedMessageViewer()->feedsView(), &FeedsView::clearSelectedFeeds);
+          &QAction::triggered,
+          tabWidget()->feedMessageViewer()->feedsView(),
+          &FeedsView::clearSelectedFeeds);
   connect(m_ui->m_actionClearAllItems,
-          &QAction::triggered, tabWidget()->feedMessageViewer()->feedsView(), &FeedsView::clearAllFeeds);
+          &QAction::triggered,
+          tabWidget()->feedMessageViewer()->feedsView(),
+          &FeedsView::clearAllFeeds);
   connect(m_ui->m_actionUpdateSelectedItems,
-          &QAction::triggered, tabWidget()->feedMessageViewer()->feedsView(), &FeedsView::updateSelectedItems);
-  connect(m_ui->m_actionUpdateAllItems,
-          &QAction::triggered, qApp->feedReader(), &FeedReader::updateAllFeeds);
+          &QAction::triggered,
+          tabWidget()->feedMessageViewer()->feedsView(),
+          &FeedsView::updateSelectedItems);
+  connect(m_ui->m_actionUpdateAllItems, &QAction::triggered, qApp->feedReader(), &FeedReader::updateAllFeeds);
   connect(m_ui->m_actionUpdateSelectedItemsWithCustomTimers,
-          &QAction::triggered, qApp->feedReader(), &FeedReader::updateManuallyIntervaledFeeds);
+          &QAction::triggered,
+          qApp->feedReader(),
+          &FeedReader::updateManuallyIntervaledFeeds);
   connect(m_ui->m_actionStopRunningItemsUpdate,
-          &QAction::triggered, qApp->feedReader(), &FeedReader::stopRunningFeedUpdate);
+          &QAction::triggered,
+          qApp->feedReader(),
+          &FeedReader::stopRunningFeedUpdate);
   connect(m_ui->m_actionCopyUrlSelectedFeed,
-          &QAction::triggered, tabWidget()->feedMessageViewer()->feedsView(), &FeedsView::copyUrlOfSelectedFeeds);
+          &QAction::triggered,
+          tabWidget()->feedMessageViewer()->feedsView(),
+          &FeedsView::copyUrlOfSelectedFeeds);
   connect(m_ui->m_actionCopyUrlSelectedArticles,
-          &QAction::triggered, tabWidget()->feedMessageViewer()->messagesView(), &MessagesView::copyUrlOfSelectedArticles);
+          &QAction::triggered,
+          tabWidget()->feedMessageViewer()->messagesView(),
+          &MessagesView::copyUrlOfSelectedArticles);
   connect(m_ui->m_actionEditSelectedItem,
-          &QAction::triggered, tabWidget()->feedMessageViewer()->feedsView(), &FeedsView::editSelectedItem);
+          &QAction::triggered,
+          tabWidget()->feedMessageViewer()->feedsView(),
+          &FeedsView::editSelectedItem);
   connect(m_ui->m_actionViewSelectedItemsNewspaperMode,
-          &QAction::triggered, tabWidget()->feedMessageViewer()->feedsView(), &FeedsView::openSelectedItemsInNewspaperMode);
+          &QAction::triggered,
+          tabWidget()->feedMessageViewer()->feedsView(),
+          &FeedsView::openSelectedItemsInNewspaperMode);
   connect(m_ui->m_actionDeleteSelectedItem,
-          &QAction::triggered, tabWidget()->feedMessageViewer()->feedsView(), &FeedsView::deleteSelectedItem);
+          &QAction::triggered,
+          tabWidget()->feedMessageViewer()->feedsView(),
+          &FeedsView::deleteSelectedItem);
   connect(m_ui->m_actionSelectNextItem,
-          &QAction::triggered, tabWidget()->feedMessageViewer()->feedsView(), &FeedsView::selectNextItem);
-  connect(m_ui->m_actionSwitchToolBars, &QAction::toggled,
-          tabWidget()->feedMessageViewer(), &FeedMessageViewer::setToolBarsEnabled);
-  connect(m_ui->m_actionSwitchListHeaders, &QAction::toggled,
-          tabWidget()->feedMessageViewer(), &FeedMessageViewer::setListHeadersEnabled);
-  connect(m_ui->m_actionSwitchMessageViewerToolbars, &QAction::toggled,
-          tabWidget()->feedMessageViewer()->messagesBrowser(), &MessagePreviewer::setToolbarsVisible);
+          &QAction::triggered,
+          tabWidget()->feedMessageViewer()->feedsView(),
+          &FeedsView::selectNextItem);
+  connect(m_ui->m_actionSwitchToolBars,
+          &QAction::toggled,
+          tabWidget()->feedMessageViewer(),
+          &FeedMessageViewer::setToolBarsEnabled);
+  connect(m_ui->m_actionSwitchListHeaders,
+          &QAction::toggled,
+          tabWidget()->feedMessageViewer(),
+          &FeedMessageViewer::setListHeadersEnabled);
+  connect(m_ui->m_actionSwitchMessageViewerToolbars,
+          &QAction::toggled,
+          tabWidget()->feedMessageViewer()->messagesBrowser(),
+          &MessagePreviewer::setToolbarsVisible);
   connect(m_ui->m_actionSelectPreviousItem,
-          &QAction::triggered, tabWidget()->feedMessageViewer()->feedsView(), &FeedsView::selectPreviousItem);
+          &QAction::triggered,
+          tabWidget()->feedMessageViewer()->feedsView(),
+          &FeedsView::selectPreviousItem);
   connect(m_ui->m_actionSelectNextMessage,
-          &QAction::triggered, tabWidget()->feedMessageViewer()->messagesView(), &MessagesView::selectNextItem);
+          &QAction::triggered,
+          tabWidget()->feedMessageViewer()->messagesView(),
+          &MessagesView::selectNextItem);
   connect(m_ui->m_actionSelectNextUnreadMessage,
-          &QAction::triggered, tabWidget()->feedMessageViewer()->feedsView(), &FeedsView::selectNextUnreadItem);
+          &QAction::triggered,
+          tabWidget()->feedMessageViewer()->feedsView(),
+          &FeedsView::selectNextUnreadItem);
   connect(m_ui->m_actionSelectPreviousMessage,
-          &QAction::triggered, tabWidget()->feedMessageViewer()->messagesView(), &MessagesView::selectPreviousItem);
-  connect(m_ui->m_actionSwitchMessageListOrientation, &QAction::triggered,
-          tabWidget()->feedMessageViewer(), &FeedMessageViewer::switchMessageSplitterOrientation);
-  connect(m_ui->m_actionShowOnlyUnreadItems, &QAction::toggled,
-          tabWidget()->feedMessageViewer(), &FeedMessageViewer::toggleShowOnlyUnreadFeeds);
-  connect(m_ui->m_actionSortFeedsAlphabetically, &QAction::toggled,
-          tabWidget()->feedMessageViewer()->feedsView(), &FeedsView::toggleFeedSortingMode);
-  connect(m_ui->m_actionShowTreeBranches, &QAction::toggled,
-          tabWidget()->feedMessageViewer(), &FeedMessageViewer::toggleShowFeedTreeBranches);
-  connect(m_ui->m_actionAutoExpandItemsWhenSelected, &QAction::toggled,
-          tabWidget()->feedMessageViewer(), &FeedMessageViewer::toggleItemsAutoExpandingOnSelection);
-  connect(m_ui->m_actionAlternateColorsInLists, &QAction::toggled,
-          tabWidget()->feedMessageViewer(), &FeedMessageViewer::alternateRowColorsInLists);
-  connect(m_ui->m_actionRestoreSelectedMessages, &QAction::triggered,
-          tabWidget()->feedMessageViewer()->messagesView(), &MessagesView::restoreSelectedMessages);
-  connect(m_ui->m_actionRestoreAllRecycleBins, &QAction::triggered,
-          tabWidget()->feedMessageViewer()->feedsView()->sourceModel(), &FeedsModel::restoreAllBins);
-  connect(m_ui->m_actionEmptyAllRecycleBins, &QAction::triggered,
-          tabWidget()->feedMessageViewer()->feedsView()->sourceModel(), &FeedsModel::emptyAllBins);
+          &QAction::triggered,
+          tabWidget()->feedMessageViewer()->messagesView(),
+          &MessagesView::selectPreviousItem);
+  connect(m_ui->m_actionSwitchMessageListOrientation,
+          &QAction::triggered,
+          tabWidget()->feedMessageViewer(),
+          &FeedMessageViewer::switchMessageSplitterOrientation);
+  connect(m_ui->m_actionShowOnlyUnreadItems,
+          &QAction::toggled,
+          tabWidget()->feedMessageViewer(),
+          &FeedMessageViewer::toggleShowOnlyUnreadFeeds);
+  connect(m_ui->m_actionSortFeedsAlphabetically,
+          &QAction::toggled,
+          tabWidget()->feedMessageViewer()->feedsView(),
+          &FeedsView::toggleFeedSortingMode);
+  connect(m_ui->m_actionShowTreeBranches,
+          &QAction::toggled,
+          tabWidget()->feedMessageViewer(),
+          &FeedMessageViewer::toggleShowFeedTreeBranches);
+  connect(m_ui->m_actionAutoExpandItemsWhenSelected,
+          &QAction::toggled,
+          tabWidget()->feedMessageViewer(),
+          &FeedMessageViewer::toggleItemsAutoExpandingOnSelection);
+  connect(m_ui->m_actionAlternateColorsInLists,
+          &QAction::toggled,
+          tabWidget()->feedMessageViewer(),
+          &FeedMessageViewer::alternateRowColorsInLists);
+  connect(m_ui->m_actionRestoreSelectedMessages,
+          &QAction::triggered,
+          tabWidget()->feedMessageViewer()->messagesView(),
+          &MessagesView::restoreSelectedMessages);
+  connect(m_ui->m_actionRestoreAllRecycleBins,
+          &QAction::triggered,
+          tabWidget()->feedMessageViewer()->feedsView()->sourceModel(),
+          &FeedsModel::restoreAllBins);
+  connect(m_ui->m_actionEmptyAllRecycleBins,
+          &QAction::triggered,
+          tabWidget()->feedMessageViewer()->feedsView()->sourceModel(),
+          &FeedsModel::emptyAllBins);
   connect(m_ui->m_actionMessageFilters, &QAction::triggered, this, [this]() {
     qApp->feedReader()->showMessageFiltersManager();
     tabWidget()->feedMessageViewer()->messagesView()->reloadSelections();
   });
-  connect(m_ui->m_actionFeedMoveUp, &QAction::triggered,
-          tabWidget()->feedMessageViewer()->feedsView(), &FeedsView::moveSelectedItemUp);
-  connect(m_ui->m_actionFeedMoveDown, &QAction::triggered,
-          tabWidget()->feedMessageViewer()->feedsView(), &FeedsView::moveSelectedItemDown);
-  connect(m_ui->m_actionFeedMoveTop, &QAction::triggered,
-          tabWidget()->feedMessageViewer()->feedsView(), &FeedsView::moveSelectedItemTop);
-  connect(m_ui->m_actionFeedMoveBottom, &QAction::triggered,
-          tabWidget()->feedMessageViewer()->feedsView(), &FeedsView::moveSelectedItemBottom);
+  connect(m_ui->m_actionFeedMoveUp,
+          &QAction::triggered,
+          tabWidget()->feedMessageViewer()->feedsView(),
+          &FeedsView::moveSelectedItemUp);
+  connect(m_ui->m_actionFeedMoveDown,
+          &QAction::triggered,
+          tabWidget()->feedMessageViewer()->feedsView(),
+          &FeedsView::moveSelectedItemDown);
+  connect(m_ui->m_actionFeedMoveTop,
+          &QAction::triggered,
+          tabWidget()->feedMessageViewer()->feedsView(),
+          &FeedsView::moveSelectedItemTop);
+  connect(m_ui->m_actionFeedMoveBottom,
+          &QAction::triggered,
+          tabWidget()->feedMessageViewer()->feedsView(),
+          &FeedsView::moveSelectedItemBottom);
 }
 
 void FormMain::backupDatabaseSettings() {
@@ -912,8 +1011,7 @@ void FormMain::changeEvent(QEvent* event) {
   switch (event->type()) {
     case QEvent::Type::WindowStateChange: {
       if ((windowState() & Qt::WindowState::WindowMinimized) == Qt::WindowState::WindowMinimized &&
-          SystemTrayIcon::isSystemTrayDesired() &&
-          SystemTrayIcon::isSystemTrayAreaAvailable() &&
+          SystemTrayIcon::isSystemTrayDesired() && SystemTrayIcon::isSystemTrayAreaAvailable() &&
           qApp->settings()->value(GROUP(GUI), SETTING(GUI::HideMainWindowWhenMinimized)).toBool()) {
         event->ignore();
         QTimer::singleShot(CHANGE_EVENT_DELAY, this, [this]() {
