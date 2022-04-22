@@ -155,6 +155,14 @@ bool MessagesProxyModel::filterAcceptsMessage(const Message& current_message) co
       return currentDate.addDays(-7).year() == current_message.m_created.date().year() &&
              currentDate.addDays(-7).weekNumber() == current_message.m_created.date().weekNumber();
     }
+
+    case MessageListFilter::ShowOnlyWithAttachments: {
+      return current_message.m_enclosures.size() > 0;
+    }
+
+    case MessageListFilter::ShowOnlyWithScore: {
+      return current_message.m_score > MSG_SCORE_MIN;
+    }
   }
 
   return false;

@@ -7,11 +7,11 @@
 #include "miscellaneous/iconfactory.h"
 #include "miscellaneous/settings.h"
 
-#include <chrono>
 #include <QMenu>
 #include <QTimer>
 #include <QToolButton>
 #include <QWidgetAction>
+#include <chrono>
 
 using namespace std::chrono_literals;
 
@@ -124,7 +124,8 @@ void MessagesToolBar::initializeSearchBox() {
   m_tmrSearchPattern->setSingleShot(true);
 
   m_txtSearchMessages = new BaseLineEdit(this);
-  m_txtSearchMessages->setSizePolicy(QSizePolicy::Policy::Expanding, m_txtSearchMessages->sizePolicy().verticalPolicy());
+  m_txtSearchMessages->setSizePolicy(QSizePolicy::Policy::Expanding,
+                                     m_txtSearchMessages->sizePolicy().verticalPolicy());
   m_txtSearchMessages->setPlaceholderText(tr("Search articles (regex only)"));
 
   // Setup wrapping action for search box.
@@ -140,7 +141,11 @@ void MessagesToolBar::initializeSearchBox() {
   });
 }
 
-void MessagesToolBar::addActionToMenu(QMenu* menu, const QIcon& icon, const QString& title, const QVariant& value, const QString& name) {
+void MessagesToolBar::addActionToMenu(QMenu* menu,
+                                      const QIcon& icon,
+                                      const QString& title,
+                                      const QVariant& value,
+                                      const QString& name) {
   QAction* action = menu->addAction(icon, title);
 
   action->setData(value);
@@ -211,6 +216,16 @@ void MessagesToolBar::initializeHighlighter() {
                   tr("Show last week's articles"),
                   QVariant::fromValue(MessagesProxyModel::MessageListFilter::ShowLastWeek),
                   "show_last_week");
+  addActionToMenu(m_menuMessageFilter,
+                  qApp->icons()->fromTheme(QSL("mail-attachment")),
+                  tr("Show only articles with attachments"),
+                  QVariant::fromValue(MessagesProxyModel::MessageListFilter::ShowOnlyWithAttachments),
+                  "show_with_attachments");
+  addActionToMenu(m_menuMessageFilter,
+                  MessagesModel::generateIconForScore(MSG_SCORE_MAX / 2.0),
+                  tr("Show only articles with some score"),
+                  QVariant::fromValue(MessagesProxyModel::MessageListFilter::ShowOnlyWithScore),
+                  "show_with_score");
 
   m_btnMessageHighlighter = new QToolButton(this);
   m_btnMessageHighlighter->setToolTip(tr("Display all articles"));
@@ -244,7 +259,8 @@ void MessagesToolBar::saveToolButtonSelection(const QString& button_name, const 
 
   for (QString& action_name : action_names) {
     if (action_name.startsWith(button_name)) {
-      action_name = button_name + (action->objectName().isEmpty() ? "" : "[" + action->objectName().toStdString() + "]").c_str();
+      action_name =
+        button_name + (action->objectName().isEmpty() ? "" : "[" + action->objectName().toStdString() + "]").c_str();
     }
   }
 
@@ -270,21 +286,24 @@ void MessagesToolBar::activateAction(const QString& action_name, QWidgetAction* 
 }
 
 QStringList MessagesToolBar::defaultActions() const {
-  return QString(GUI::MessagesToolbarDefaultButtonsDef).split(QL1C(','),
+  return QString(GUI::MessagesToolbarDefaultButtonsDef)
+    .split(QL1C(','),
 #if QT_VERSION >= 0x050F00 // Qt >= 5.15.0
-                                                              Qt::SplitBehaviorFlags::SkipEmptyParts);
+           Qt::SplitBehaviorFlags::SkipEmptyParts);
 #else
-                                                              QString::SplitBehavior::SkipEmptyParts);
+           QString::SplitBehavior::SkipEmptyParts);
 #endif
 }
 
 QStringList MessagesToolBar::savedActions() const {
-  return qApp->settings()->value(GROUP(GUI),
-                                 SETTING(GUI::MessagesToolbarDefaultButtons)).toString().split(QL1C(','),
+  return qApp->settings()
+    ->value(GROUP(GUI), SETTING(GUI::MessagesToolbarDefaultButtons))
+    .toString()
+    .split(QL1C(','),
 #if QT_VERSION >= 0x050F00 // Qt >= 5.15.0
-                                                                                               Qt::SplitBehaviorFlags::SkipEmptyParts);
+           Qt::SplitBehaviorFlags::SkipEmptyParts);
 #else
-                                                                                               QString::SplitBehavior::SkipEmptyParts);
+           QString::SplitBehavior::SkipEmptyParts);
 #endif
 }
 
