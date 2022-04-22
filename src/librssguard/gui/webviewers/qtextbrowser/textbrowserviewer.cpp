@@ -351,8 +351,10 @@ void TextBrowserViewer::reloadWithImages() {
       continue;
     }
 
+    QUrl resolved_url = m_currentUrl.resolved(url);
+
     connect(m_downloader.data(), &Downloader::completed, &loop, &QEventLoop::quit);
-    m_downloader->manipulateData(url.toString(), QNetworkAccessManager::Operation::GetOperation, {}, 5000);
+    m_downloader->manipulateData(resolved_url.toString(), QNetworkAccessManager::Operation::GetOperation, {}, 5000);
 
     loop.exec();
 
