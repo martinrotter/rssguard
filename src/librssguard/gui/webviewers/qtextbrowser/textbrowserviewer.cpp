@@ -443,7 +443,9 @@ void TextBrowserViewer::setHtmlPrivate(const QString& html, const QUrl& base_url
   emit pageUrlChanged(base_url);
 }
 
-TextBrowserDocument::TextBrowserDocument(QObject* parent) : QTextDocument(parent), m_reloadingWithResources(false) {}
+TextBrowserDocument::TextBrowserDocument(QObject* parent)
+  : QTextDocument(parent), m_reloadingWithResources(false),
+    m_placeholderImage(qApp->icons()->miscPixmap("image-placeholder")) {}
 
 QVariant TextBrowserDocument::loadResource(int type, const QUrl& name) {
   if (!m_reloadingWithResources) {
@@ -451,12 +453,12 @@ QVariant TextBrowserDocument::loadResource(int type, const QUrl& name) {
       m_neededResourcesForHtml.append(name);
     }
 
-    return {};
+    return m_placeholderImage;
   }
   else if (m_loadedResources.contains(name)) {
     return QImage::fromData(m_loadedResources.value(name));
   }
   else {
-    return {};
+    return m_placeholderImage;
   }
 }
