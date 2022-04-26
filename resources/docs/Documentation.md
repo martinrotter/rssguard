@@ -343,7 +343,7 @@ However, if you choose `Script` option, then you cannot provide URL of your feed
 
 Any errors in your script must be written to [error output](https://en.wikipedia.org/wiki/Standard_streams#Standard_error_(stderr)).
 
-> **As of RSS Guard 4.2.0, you do not have to separate your arguments with `#`. If your argument contains spaces, then enclose it with DOUBLE quotes, for example `"my argument"`. DO NOT use SINGLE quotes to do that.**
+> **As of RSS Guard 4.2.0, you cannot separate your arguments with `#`. If your argument contains spaces, then enclose it with DOUBLE quotes, for example `"my argument"`. DO NOT use SINGLE quotes to do that.**
 
 If everything goes well, script must return `0` as the process exit code, or a non-zero exit code if some error happened.
 
