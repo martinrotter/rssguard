@@ -44,7 +44,8 @@
 #include <QXmlStreamReader>
 
 GoogleSuggest::GoogleSuggest(LocationLineEdit* editor, QObject* parent)
-  : QObject(parent), editor(editor), m_downloader(new Downloader(this)), popup(new QListWidget()), m_enteredText(QString()) {
+  : QObject(parent), editor(editor), m_downloader(new Downloader(this)), popup(new QListWidget()),
+    m_enteredText(QString()) {
   popup->setWindowFlags(Qt::WindowType::Popup);
   popup->setFocusPolicy(Qt::FocusPolicy::NoFocus);
   popup->setFocusProxy(editor);
@@ -155,7 +156,9 @@ void GoogleSuggest::autoSuggest() {
   m_downloader->downloadFile(url);
 }
 
-void GoogleSuggest::handleNetworkData(QNetworkReply::NetworkError status, const QByteArray& contents) {
+void GoogleSuggest::handleNetworkData(const QUrl& url, QNetworkReply::NetworkError status, const QByteArray& contents) {
+  Q_UNUSED(url)
+
   if (status == QNetworkReply::NetworkError::NoError) {
     QStringList choices;
     QDomDocument xml;

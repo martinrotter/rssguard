@@ -22,8 +22,8 @@
 #define NON_CONST_VALUE(x) extern x
 #define DVALUE(x) const x
 #define NON_CONST_DVALUE(x) x
-#define SETTING(x) x, x ## Def
-#define DEFAULT_VALUE(x) x ## Def
+#define SETTING(x) x, x##Def
+#define DEFAULT_VALUE(x) x##Def
 #define GROUP(x) x::ID
 
 #if defined(USE_WEBENGINE)
@@ -47,7 +47,7 @@ namespace Node {
 
   KEY PackageFolder;
   VALUE(QString) PackageFolderDef;
-}
+} // namespace Node
 
 namespace AdBlock {
   KEY ID;
@@ -60,7 +60,7 @@ namespace AdBlock {
 
   KEY CustomFilters;
   VALUE(QStringList) CustomFiltersDef;
-}
+} // namespace AdBlock
 
 // Feeds.
 namespace Feeds {
@@ -109,7 +109,7 @@ namespace Feeds {
   VALUE(bool) OnlyBasicShortcutsInListsDef;
 
   KEY ListFont;
-}
+} // namespace Feeds
 
 // Messages.
 namespace Messages {
@@ -123,6 +123,9 @@ namespace Messages {
 
   KEY EnableMessagePreview;
   VALUE(bool) EnableMessagePreviewDef;
+
+  KEY ShowResourcesInArticles;
+  VALUE(bool) ShowResourcesInArticlesDef;
 
   KEY Zoom;
   VALUE(qreal) ZoomDef;
@@ -176,7 +179,7 @@ namespace Messages {
   NON_CONST_VALUE(QString) PreviewerFontStandardDef;
 
   KEY ListFont;
-}
+} // namespace Messages
 
 // Custom skin colors.
 namespace CustomSkinColors {
@@ -186,7 +189,7 @@ namespace CustomSkinColors {
   VALUE(bool) EnabledDef;
 
   KEY CustomSkinColors;
-}
+} // namespace CustomSkinColors
 
 // GUI.
 namespace GUI {
@@ -311,7 +314,7 @@ namespace GUI {
 
   KEY Style;
   VALUE(char*) StyleDef;
-}
+} // namespace GUI
 
 // General.
 namespace General {
@@ -325,7 +328,7 @@ namespace General {
 
   KEY Language;
   VALUE(QString) LanguageDef;
-}
+} // namespace General
 
 // Downloads.
 namespace Downloads {
@@ -353,7 +356,7 @@ namespace Downloads {
   KEY ItemUrl;
   KEY ItemLocation;
   KEY ItemDone;
-}
+} // namespace Downloads
 
 // Proxy.
 namespace Proxy {
@@ -377,7 +380,7 @@ namespace Proxy {
   KEY Port;
 
   VALUE(int) PortDef;
-}
+} // namespace Proxy
 
 // Database.
 namespace Database {
@@ -413,7 +416,7 @@ namespace Database {
   KEY ActiveDriver;
 
   VALUE(char*) ActiveDriverDef;
-}
+} // namespace Database
 
 // Keyboard.
 namespace Keyboard {
@@ -463,7 +466,7 @@ namespace Browser {
   KEY CustomExternalEmailArguments;
 
   VALUE(char*) CustomExternalEmailArgumentsDef;
-}
+} // namespace Browser
 
 // Categories.
 namespace CategoriesExpandStates {
@@ -471,10 +474,9 @@ namespace CategoriesExpandStates {
 }
 
 class Settings : public QSettings {
-  Q_OBJECT
+    Q_OBJECT
 
   public:
-
     // Destructor.
     virtual ~Settings();
 
@@ -510,9 +512,11 @@ class Settings : public QSettings {
     static SettingsProperties determineProperties();
 
   private:
-
     // Constructor.
-    explicit Settings(const QString& file_name, Format format, SettingsProperties::SettingsType type, QObject* parent = nullptr);
+    explicit Settings(const QString& file_name,
+                      Format format,
+                      SettingsProperties::SettingsType type,
+                      QObject* parent = nullptr);
 
     SettingsProperties::SettingsType m_initializationStatus;
 };

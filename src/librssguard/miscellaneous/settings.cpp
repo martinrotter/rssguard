@@ -49,11 +49,10 @@ DKEY AdBlock::AdBlockEnabled = "enabled";
 DVALUE(bool) AdBlock::AdBlockEnabledDef = false;
 
 DKEY AdBlock::FilterLists = "filter_lists";
-DVALUE(QStringList) AdBlock::FilterListsDef = {
-  QSL("https://easylist.to/easylist/easylist.txt"),
-  QSL("https://easylist.to/easylist/easyprivacy.txt"),
-  QSL("https://easylist.to/easylist/fanboy-social.txt")
-};
+DVALUE(QStringList)
+AdBlock::FilterListsDef = {QSL("https://easylist.to/easylist/easylist.txt"),
+                           QSL("https://easylist.to/easylist/easyprivacy.txt"),
+                           QSL("https://easylist.to/easylist/fanboy-social.txt")};
 
 DKEY AdBlock::CustomFilters = "custom_filters";
 DVALUE(QStringList) AdBlock::CustomFiltersDef = {};
@@ -116,6 +115,9 @@ DVALUE(bool) Messages::DisplayEnclosuresInMessageDef = false;
 
 DKEY Messages::EnableMessagePreview = "enable_message_preview";
 DVALUE(bool) Messages::EnableMessagePreviewDef = true;
+
+DKEY Messages::ShowResourcesInArticles = "enable_message_resources";
+DVALUE(bool) Messages::ShowResourcesInArticlesDef = false;
 
 DKEY Messages::Zoom = "zoom";
 DVALUE(qreal) Messages::ZoomDef = double(1.0);
@@ -207,11 +209,14 @@ DKEY GUI::HeightRowFeeds = "height_row_feeds";
 DVALUE(int) GUI::HeightRowFeedsDef = -1;
 
 DKEY GUI::FeedsToolbarActions = "feeds_toolbar";
-DVALUE(char*) GUI::FeedsToolbarActionsDef = "m_actionUpdateAllItems,m_actionStopRunningItemsUpdate,m_actionMarkAllItemsRead,spacer,search";
+DVALUE(char*)
+GUI::FeedsToolbarActionsDef =
+  "m_actionUpdateAllItems,m_actionStopRunningItemsUpdate,m_actionMarkAllItemsRead,spacer,search";
 
 DKEY GUI::StatusbarActions = "status_bar";
-DVALUE(char*) GUI::StatusbarActionsDef =
-  "m_barProgressDownloadAction,m_barProgressFeedsAction,m_actionUpdateAllItems,m_actionUpdateSelectedItems,m_actionStopRunningItemsUpdate,m_actionFullscreen,m_actionQuit";
+DVALUE(char*)
+GUI::StatusbarActionsDef = "m_barProgressDownloadAction,m_barProgressFeedsAction,m_actionUpdateAllItems,m_"
+                           "actionUpdateSelectedItems,m_actionStopRunningItemsUpdate,m_actionFullscreen,m_actionQuit";
 
 DKEY GUI::SettingsWindowInitialSize = "settings_window_size";
 DKEY GUI::MainWindowInitialSize = "window_size";
@@ -283,8 +288,10 @@ DKEY GUI::HideTabBarIfOnlyOneTab = "hide_tabbar_one_tab";
 DVALUE(bool) GUI::HideTabBarIfOnlyOneTabDef = false;
 
 DKEY GUI::MessagesToolbarDefaultButtons = "messages_toolbar";
-DVALUE(char*) GUI::MessagesToolbarDefaultButtonsDef =
-  "m_actionMarkSelectedMessagesAsRead,m_actionMarkSelectedMessagesAsUnread,m_actionSwitchImportanceOfSelectedMessages,separator,highlighter,filter,spacer,search";
+DVALUE(char*)
+GUI::MessagesToolbarDefaultButtonsDef =
+  "m_actionMarkSelectedMessagesAsRead,m_actionMarkSelectedMessagesAsUnread,m_actionSwitchImportanceOfSelectedMessages,"
+  "separator,highlighter,filter,spacer,search";
 
 DKEY GUI::DefaultSortColumnFeeds = "default_sort_column_feeds";
 DVALUE(int) GUI::DefaultSortColumnFeedsDef = FDS_MODEL_TITLE_INDEX;
@@ -451,8 +458,8 @@ QSettings::Status Settings::checkSettings() {
 
 bool Settings::initiateRestoration(const QString& settings_backup_file_path) {
   return IOFactory::copyFile(settings_backup_file_path,
-                             QFileInfo(fileName()).absolutePath() + QDir::separator() +
-                             BACKUP_NAME_SETTINGS + BACKUP_SUFFIX_SETTINGS);
+                             QFileInfo(fileName()).absolutePath() + QDir::separator() + BACKUP_NAME_SETTINGS +
+                               BACKUP_SUFFIX_SETTINGS);
 }
 
 void Settings::finishRestoration(const QString& desired_settings_file_path) {
@@ -460,9 +467,7 @@ void Settings::finishRestoration(const QString& desired_settings_file_path) {
                                        BACKUP_NAME_SETTINGS + BACKUP_SUFFIX_SETTINGS;
 
   if (QFile::exists(backup_settings_file)) {
-    qWarningNN << LOGSEC_CORE
-               << "Backup settings file"
-               << QUOTE_W_SPACE(QDir::toNativeSeparators(backup_settings_file))
+    qWarningNN << LOGSEC_CORE << "Backup settings file" << QUOTE_W_SPACE(QDir::toNativeSeparators(backup_settings_file))
                << "was detected. Restoring it.";
 
     if (IOFactory::copyFile(backup_settings_file, desired_settings_file_path)) {
@@ -489,22 +494,16 @@ Settings* Settings::setupSettings(QObject* parent) {
   new_settings = new Settings(properties.m_absoluteSettingsFileName, QSettings::IniFormat, properties.m_type, parent);
 
   if (properties.m_type == SettingsProperties::SettingsType::Portable) {
-    qDebugNN << LOGSEC_CORE
-             << "Initializing settings in"
-             << QUOTE_W_SPACE(QDir::toNativeSeparators(properties.m_absoluteSettingsFileName))
-             << "(portable way).";
+    qDebugNN << LOGSEC_CORE << "Initializing settings in"
+             << QUOTE_W_SPACE(QDir::toNativeSeparators(properties.m_absoluteSettingsFileName)) << "(portable way).";
   }
   else if (properties.m_type == SettingsProperties::SettingsType::Custom) {
-    qDebugNN << LOGSEC_CORE
-             << "Initializing settings in"
-             << QUOTE_W_SPACE(QDir::toNativeSeparators(properties.m_absoluteSettingsFileName))
-             << "(custom way).";
+    qDebugNN << LOGSEC_CORE << "Initializing settings in"
+             << QUOTE_W_SPACE(QDir::toNativeSeparators(properties.m_absoluteSettingsFileName)) << "(custom way).";
   }
   else {
-    qDebugNN << LOGSEC_CORE
-             << "Initializing settings in"
-             << QUOTE_W_SPACE(QDir::toNativeSeparators(properties.m_absoluteSettingsFileName))
-             << "(non-portable way).";
+    qDebugNN << LOGSEC_CORE << "Initializing settings in"
+             << QUOTE_W_SPACE(QDir::toNativeSeparators(properties.m_absoluteSettingsFileName)) << "(non-portable way).";
   }
 
   return new_settings;

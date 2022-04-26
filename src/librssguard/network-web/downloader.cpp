@@ -16,9 +16,9 @@
 
 Downloader::Downloader(QObject* parent)
   : QObject(parent), m_activeReply(nullptr), m_downloadManager(new SilentNetworkAccessManager(this)),
-  m_timer(new QTimer(this)), m_inputData(QByteArray()),
-  m_inputMultipartData(nullptr), m_targetProtected(false), m_targetUsername(QString()), m_targetPassword(QString()),
-  m_lastOutputData(QByteArray()), m_lastOutputError(QNetworkReply::NoError) {
+    m_timer(new QTimer(this)), m_inputData(QByteArray()), m_inputMultipartData(nullptr), m_targetProtected(false),
+    m_targetUsername(QString()), m_targetPassword(QString()), m_lastOutputData(QByteArray()),
+    m_lastOutputError(QNetworkReply::NoError) {
   m_timer->setInterval(DOWNLOAD_TIMEOUT);
   m_timer->setSingleShot(true);
 
@@ -32,25 +32,52 @@ Downloader::~Downloader() {
   qDebugNN << LOGSEC_NETWORK << "Destroying Downloader instance.";
 }
 
-void Downloader::downloadFile(const QString& url, int timeout, bool protected_contents, const QString& username,
+void Downloader::downloadFile(const QString& url,
+                              int timeout,
+                              bool protected_contents,
+                              const QString& username,
                               const QString& password) {
-  manipulateData(url, QNetworkAccessManager::GetOperation, QByteArray(), timeout,
-                 protected_contents, username, password);
+  manipulateData(url,
+                 QNetworkAccessManager::GetOperation,
+                 QByteArray(),
+                 timeout,
+                 protected_contents,
+                 username,
+                 password);
 }
 
-void Downloader::uploadFile(const QString& url, const QByteArray& data, int timeout,
-                            bool protected_contents, const QString& username, const QString& password) {
-  manipulateData(url, QNetworkAccessManager::Operation::PostOperation, data, timeout, protected_contents, username, password);
+void Downloader::uploadFile(const QString& url,
+                            const QByteArray& data,
+                            int timeout,
+                            bool protected_contents,
+                            const QString& username,
+                            const QString& password) {
+  manipulateData(url,
+                 QNetworkAccessManager::Operation::PostOperation,
+                 data,
+                 timeout,
+                 protected_contents,
+                 username,
+                 password);
 }
 
-void Downloader::manipulateData(const QString& url, QNetworkAccessManager::Operation operation,
-                                QHttpMultiPart* multipart_data, int timeout,
-                                bool protected_contents, const QString& username, const QString& password) {
+void Downloader::manipulateData(const QString& url,
+                                QNetworkAccessManager::Operation operation,
+                                QHttpMultiPart* multipart_data,
+                                int timeout,
+                                bool protected_contents,
+                                const QString& username,
+                                const QString& password) {
   manipulateData(url, operation, QByteArray(), multipart_data, timeout, protected_contents, username, password);
 }
 
-void Downloader::manipulateData(const QString& url, QNetworkAccessManager::Operation operation, const QByteArray& data,
-                                int timeout, bool protected_contents, const QString& username, const QString& password) {
+void Downloader::manipulateData(const QString& url,
+                                QNetworkAccessManager::Operation operation,
+                                const QByteArray& data,
+                                int timeout,
+                                bool protected_contents,
+                                const QString& username,
+                                const QString& password) {
   manipulateData(url, operation, data, nullptr, timeout, protected_contents, username, password);
 }
 
@@ -123,20 +150,13 @@ void Downloader::finished() {
     // Setup redirection URL and download again.
     QNetworkRequest request = reply->request();
 
-    qWarningNN << LOGSEC_NETWORK
-               << "Network layer indicates HTTP redirection is needed.";
-    qWarningNN << LOGSEC_NETWORK
-               << "Origin URL:"
-               << QUOTE_W_SPACE_DOT(request.url().toString());
-    qWarningNN << LOGSEC_NETWORK
-               << "Proposed redirection URL:"
-               << QUOTE_W_SPACE_DOT(redirection_url.toString());
+    qWarningNN << LOGSEC_NETWORK << "Network layer indicates HTTP redirection is needed.";
+    qWarningNN << LOGSEC_NETWORK << "Origin URL:" << QUOTE_W_SPACE_DOT(request.url().toString());
+    qWarningNN << LOGSEC_NETWORK << "Proposed redirection URL:" << QUOTE_W_SPACE_DOT(redirection_url.toString());
 
     redirection_url = request.url().resolved(redirection_url);
 
-    qWarningNN << LOGSEC_NETWORK
-               << "Resolved redirection URL:"
-               << QUOTE_W_SPACE_DOT(redirection_url.toString());
+    qWarningNN << LOGSEC_NETWORK << "Resolved redirection URL:" << QUOTE_W_SPACE_DOT(redirection_url.toString());
 
     request.setUrl(redirection_url);
 
@@ -191,7 +211,7 @@ void Downloader::finished() {
       m_inputMultipartData->deleteLater();
     }
 
-    emit completed(m_lastOutputError, m_lastOutputData);
+    emit completed(reply->url(), m_lastOutputError, m_lastOutputData);
   }
 }
 
@@ -237,9 +257,8 @@ QList<HttpResponse> Downloader::decodeMultipartAnswer(QNetworkReply* reply) {
     int start_of_headers = http_response_str.indexOf(QRegularExpression(QSL("\\r\\r?\\n")), start_of_http);
     int start_of_body = http_response_str.indexOf(QRegularExpression(QSL("(\\r\\r?\\n){2,}")), start_of_headers + 2);
     QString body = http_response_str.mid(start_of_body);
-    QString headers = http_response_str.mid(start_of_headers,
-                                            start_of_body - start_of_headers).replace(QRegularExpression(QSL("[\\n\\r]+")),
-                                                                                      QSL("\n"));
+    QString headers = http_response_str.mid(start_of_headers, start_of_body - start_of_headers)
+                        .replace(QRegularExpression(QSL("[\\n\\r]+")), QSL("\n"));
 
     auto header_lines = headers.split(QL1C('\n'),
 #if QT_VERSION >= 0x050F00 // Qt >= 5.15.0
@@ -312,11 +331,8 @@ QVariant Downloader::lastContentType() const {
 }
 
 void Downloader::setProxy(const QNetworkProxy& proxy) {
-  qWarningNN << LOGSEC_NETWORK
-             << "Setting specific downloader proxy, address:"
-             << QUOTE_W_SPACE_COMMA(proxy.hostName())
-             << " type:"
-             << QUOTE_W_SPACE_DOT(proxy.type());
+  qWarningNN << LOGSEC_NETWORK << "Setting specific downloader proxy, address:" << QUOTE_W_SPACE_COMMA(proxy.hostName())
+             << " type:" << QUOTE_W_SPACE_DOT(proxy.type());
 
   m_downloadManager->setProxy(proxy);
 }

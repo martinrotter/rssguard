@@ -42,7 +42,7 @@ class LocationLineEdit;
 class QTimer;
 
 class GoogleSuggest : public QObject {
-  Q_OBJECT
+    Q_OBJECT
 
   public:
     explicit GoogleSuggest(LocationLineEdit* editor, QObject* parent = nullptr);
@@ -54,7 +54,7 @@ class GoogleSuggest : public QObject {
     void doneCompletion();
     void preventSuggest();
     void autoSuggest();
-    void handleNetworkData(QNetworkReply::NetworkError status, const QByteArray& contents);
+    void handleNetworkData(const QUrl& url, QNetworkReply::NetworkError status, const QByteArray& contents);
 
   private:
     LocationLineEdit* editor;

@@ -17,7 +17,7 @@ class SilentNetworkAccessManager;
 class QTimer;
 
 class Downloader : public QObject {
-  Q_OBJECT
+    Q_OBJECT
 
   public:
     explicit Downloader(QObject* parent = nullptr);
@@ -38,28 +38,39 @@ class Downloader : public QObject {
     void appendRawHeader(const QByteArray& name, const QByteArray& value);
 
     // Performs asynchronous download of given file. Redirections are handled.
-    void downloadFile(const QString& url, int timeout = DOWNLOAD_TIMEOUT, bool protected_contents = false,
-                      const QString& username = QString(), const QString& password = QString());
+    void downloadFile(const QString& url,
+                      int timeout = DOWNLOAD_TIMEOUT,
+                      bool protected_contents = false,
+                      const QString& username = QString(),
+                      const QString& password = QString());
 
-    void uploadFile(const QString& url, const QByteArray& data, int timeout = DOWNLOAD_TIMEOUT,
-                    bool protected_contents = false, const QString& username = QString(),
+    void uploadFile(const QString& url,
+                    const QByteArray& data,
+                    int timeout = DOWNLOAD_TIMEOUT,
+                    bool protected_contents = false,
+                    const QString& username = QString(),
                     const QString& password = QString());
 
-    void manipulateData(const QString& url, QNetworkAccessManager::Operation operation,
+    void manipulateData(const QString& url,
+                        QNetworkAccessManager::Operation operation,
                         QHttpMultiPart* multipart_data,
-                        int timeout = DOWNLOAD_TIMEOUT, bool protected_contents = false,
-                        const QString& username = QString(), const QString& password = QString());
+                        int timeout = DOWNLOAD_TIMEOUT,
+                        bool protected_contents = false,
+                        const QString& username = QString(),
+                        const QString& password = QString());
 
-    void manipulateData(const QString& url, QNetworkAccessManager::Operation operation,
+    void manipulateData(const QString& url,
+                        QNetworkAccessManager::Operation operation,
                         const QByteArray& data = QByteArray(),
-                        int timeout = DOWNLOAD_TIMEOUT, bool protected_contents = false,
-                        const QString& username = QString(), const QString& password = QString());
+                        int timeout = DOWNLOAD_TIMEOUT,
+                        bool protected_contents = false,
+                        const QString& username = QString(),
+                        const QString& password = QString());
 
   signals:
-
     // Emitted when new progress is known.
     void progress(qint64 bytes_received, qint64 bytes_total);
-    void completed(QNetworkReply::NetworkError status, QByteArray contents = QByteArray());
+    void completed(const QUrl& url, QNetworkReply::NetworkError status, QByteArray contents = QByteArray());
 
   private slots:
 
@@ -72,10 +83,14 @@ class Downloader : public QObject {
   private:
     void setCustomPropsToReply(QNetworkReply* reply);
     QList<HttpResponse> decodeMultipartAnswer(QNetworkReply* reply);
-    void manipulateData(const QString& url, QNetworkAccessManager::Operation operation,
-                        const QByteArray& data, QHttpMultiPart* multipart_data,
-                        int timeout = DOWNLOAD_TIMEOUT, bool protected_contents = false,
-                        const QString& username = QString(), const QString& password = QString());
+    void manipulateData(const QString& url,
+                        QNetworkAccessManager::Operation operation,
+                        const QByteArray& data,
+                        QHttpMultiPart* multipart_data,
+                        int timeout = DOWNLOAD_TIMEOUT,
+                        bool protected_contents = false,
+                        const QString& username = QString(),
+                        const QString& password = QString());
     void runDeleteRequest(const QNetworkRequest& request);
     void runPutRequest(const QNetworkRequest& request, const QByteArray& data);
     void runPostRequest(const QNetworkRequest& request, QHttpMultiPart* multipart_data);

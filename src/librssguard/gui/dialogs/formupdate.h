@@ -32,7 +32,7 @@ class RSSGUARD_DLLSPEC FormUpdate : public QDialog {
     void startUpdate();
 
     void updateProgress(qint64 bytes_received, qint64 bytes_total);
-    void updateCompleted(QNetworkReply::NetworkError status, const QByteArray& contents);
+    void updateCompleted(const QUrl &url, QNetworkReply::NetworkError status, const QByteArray& contents);
     void saveUpdateFile(const QByteArray& file_contents);
 
   private:

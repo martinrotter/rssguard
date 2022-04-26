@@ -9,8 +9,10 @@
 
 #include "network-web/adblock/adblockmanager.h"
 
+#include <QNetworkReply>
 #include <QPixmap>
 #include <QPointer>
+#include <QTimer>
 
 class QContextMenuEvent;
 class QResizeEvent;
@@ -25,12 +27,26 @@ class TextBrowserDocument : public QTextDocument {
   public:
     explicit TextBrowserDocument(QObject* parent = nullptr);
 
+    bool resourcesEnabled() const;
+    void setResourcesEnabled(bool enabled);
+
   protected:
     virtual QVariant loadResource(int type, const QUrl& name);
 
+  signals:
+    void loadingProgress(int progress);
+    void reloadDocument();
+
+  private slots:
+    void reloadHtmlDelayed();
+    void downloadNextNeededResource();
+    void resourceDownloaded(const QUrl& url, QNetworkReply::NetworkError status, QByteArray contents = QByteArray());
+
   private:
-    bool m_reloadingWithResources;
-    QList<QUrl> m_neededResourcesForHtml;
+    bool m_resourcesEnabled;
+    QTimer m_resourceTimer;
+    QList<QUrl> m_neededResources;
+    QScopedPointer<Downloader> m_resourceDownloader;
     QMap<QUrl, QByteArray> m_loadedResources;
     QPixmap m_placeholderImage;
 };
@@ -65,7 +81,7 @@ class TextBrowserViewer : public QTextBrowser, public WebViewer {
     virtual void wheelEvent(QWheelEvent* event);
 
   private slots:
-    void reloadWithImages();
+    void enableResources(bool enable);
     void openLinkInExternalBrowser();
     void downloadLink();
     void onAnchorClicked(const QUrl& url);
@@ -93,7 +109,7 @@ class TextBrowserViewer : public QTextBrowser, public WebViewer {
     QPointer<RootItem> m_root;
     QFont m_baseFont;
     qreal m_zoomFactor = 1.0;
-    QScopedPointer<QAction> m_actionReloadWithImages;
+    QScopedPointer<QAction> m_actionEnableResources;
     QScopedPointer<QAction> m_actionOpenExternalBrowser;
     QScopedPointer<QAction> m_actionDownloadLink;
     QScopedPointer<TextBrowserDocument> m_document;

@@ -17,8 +17,7 @@
 #include <windows.h>
 #endif
 
-FormUpdate::FormUpdate(QWidget* parent)
-  : QDialog(parent) {
+FormUpdate::FormUpdate(QWidget* parent) : QDialog(parent) {
   m_ui.setupUi(this);
   m_ui.m_lblCurrentRelease->setText(QSL(APP_VERSION));
   m_ui.m_tabInfo->removeTab(1);
@@ -35,7 +34,8 @@ FormUpdate::FormUpdate(QWidget* parent)
     m_btnUpdate->setToolTip(tr("Download new installation files."));
   }
   else {
-    m_btnUpdate = m_ui.m_buttonBox->addButton(tr("Go to application website"), QDialogButtonBox::ButtonRole::ActionRole);
+    m_btnUpdate =
+      m_ui.m_buttonBox->addButton(tr("Go to application website"), QDialogButtonBox::ButtonRole::ActionRole);
     m_btnUpdate->setToolTip(tr("Go to application website to get update packages manually."));
   }
 
@@ -57,49 +57,49 @@ void FormUpdate::checkForUpdates() {
           &SystemFactory::updatesChecked,
           this,
           [this](const QPair<QList<UpdateInfo>, QNetworkReply::NetworkError>& update) {
-    m_ui.m_buttonBox->setEnabled(true);
-    disconnect(qApp->system(), &SystemFactory::updatesChecked, nullptr, nullptr);
+            m_ui.m_buttonBox->setEnabled(true);
+            disconnect(qApp->system(), &SystemFactory::updatesChecked, nullptr, nullptr);
 
-    if (update.second != QNetworkReply::NoError) {
-      m_updateInfo = UpdateInfo();
-      m_ui.m_tabInfo->setEnabled(false);
+            if (update.second != QNetworkReply::NoError) {
+              m_updateInfo = UpdateInfo();
+              m_ui.m_tabInfo->setEnabled(false);
 
-      //: Unknown release.
-      m_ui.m_lblAvailableRelease->setText(tr("unknown"));
-      m_ui.m_txtChanges->clear();
-      m_ui.m_lblStatus->setStatus(WidgetWithStatus::StatusType::Error,
-                                  tr("Error: '%1'.").arg(NetworkFactory::networkErrorText(update.second)),
-                                  tr("List with updates was not\ndownloaded successfully."));
-    }
-    else {
-      const bool self_update_supported = isSelfUpdateSupported();
-      m_updateInfo = update.first.at(0);
-      m_ui.m_tabInfo->setEnabled(true);
-      m_ui.m_lblAvailableRelease->setText(m_updateInfo.m_availableVersion);
+              //: Unknown release.
+              m_ui.m_lblAvailableRelease->setText(tr("unknown"));
+              m_ui.m_txtChanges->clear();
+              m_ui.m_lblStatus->setStatus(WidgetWithStatus::StatusType::Error,
+                                          tr("Error: '%1'.").arg(NetworkFactory::networkErrorText(update.second)),
+                                          tr("List with updates was not\ndownloaded successfully."));
+            }
+            else {
+              const bool self_update_supported = isSelfUpdateSupported();
+              m_updateInfo = update.first.at(0);
+              m_ui.m_tabInfo->setEnabled(true);
+              m_ui.m_lblAvailableRelease->setText(m_updateInfo.m_availableVersion);
 
 #if QT_VERSION >= 0x050E00 // Qt >= 5.14.0
-      m_ui.m_txtChanges->setMarkdown(m_updateInfo.m_changes);
+              m_ui.m_txtChanges->setMarkdown(m_updateInfo.m_changes);
 #else
       m_ui.m_txtChanges->setText(m_updateInfo.m_changes);
 #endif
 
-      if (SystemFactory::isVersionNewer(m_updateInfo.m_availableVersion, QSL(APP_VERSION))) {
-        m_btnUpdate->setVisible(true);
-        m_ui.m_lblStatus->setStatus(WidgetWithStatus::StatusType::Ok,
-                                    tr("New release available."),
-                                    tr("This is new version which can be\ndownloaded."));
+              if (SystemFactory::isVersionNewer(m_updateInfo.m_availableVersion, QSL(APP_VERSION))) {
+                m_btnUpdate->setVisible(true);
+                m_ui.m_lblStatus->setStatus(WidgetWithStatus::StatusType::Ok,
+                                            tr("New release available."),
+                                            tr("This is new version which can be\ndownloaded."));
 
-        if (self_update_supported) {
-          loadAvailableFiles();
-        }
-      }
-      else {
-        m_ui.m_lblStatus->setStatus(WidgetWithStatus::StatusType::Warning,
-                                    tr("No new release available."),
-                                    tr("This release is not newer than\ncurrently installed one."));
-      }
-    }
-  });
+                if (self_update_supported) {
+                  loadAvailableFiles();
+                }
+              }
+              else {
+                m_ui.m_lblStatus->setStatus(WidgetWithStatus::StatusType::Warning,
+                                            tr("No new release available."),
+                                            tr("This release is not newer than\ncurrently installed one."));
+              }
+            }
+          });
 
   qApp->system()->checkForUpdates();
 }
@@ -107,14 +107,11 @@ void FormUpdate::checkForUpdates() {
 void FormUpdate::updateProgress(qint64 bytes_received, qint64 bytes_total) {
   if (bytes_received - m_lastDownloadedBytes > 500000 || m_lastDownloadedBytes == 0) {
     m_ui.m_lblStatus->setStatus(WidgetWithStatus::StatusType::Information,
-                                tr("Downloaded %1% (update size is %2 kB).").arg(QString::number(bytes_total == 0L
-                                                                                                 ? 0L
-                                                                                                 : (bytes_received * 100.0) / bytes_total,
-                                                                                                 'f',
-                                                                                                 2),
-                                                                                 QString::number(bytes_total / 1000.0,
-                                                                                                 'f',
-                                                                                                 2)),
+                                tr("Downloaded %1% (update size is %2 kB).")
+                                  .arg(QString::number(bytes_total == 0L ? 0L : (bytes_received * 100.0) / bytes_total,
+                                                       'f',
+                                                       2),
+                                       QString::number(bytes_total / 1000.0, 'f', 2)),
                                 tr("Downloading update..."));
     m_ui.m_lblStatus->repaint();
     m_lastDownloadedBytes = bytes_received;
@@ -140,9 +137,7 @@ void FormUpdate::saveUpdateFile(const QByteArray& file_contents) {
       m_readyToInstall = true;
     }
     else {
-      qDebugNN << LOGSEC_GUI
-               << "Cannot save downloaded update file because target temporary file '"
-               << output_file_name
+      qDebugNN << LOGSEC_GUI << "Cannot save downloaded update file because target temporary file '" << output_file_name
                << "' cannot be opened for writing.";
     }
   }
@@ -175,21 +170,24 @@ void FormUpdate::loadAvailableFiles() {
   m_ui.m_tabInfo->setCurrentIndex(1);
 }
 
-void FormUpdate::updateCompleted(QNetworkReply::NetworkError status, const QByteArray& contents) {
-  qDebugNN << LOGSEC_GUI
-           << "Download of application update file was completed with code '" << status << "'.";
+void FormUpdate::updateCompleted(const QUrl& url, QNetworkReply::NetworkError status, const QByteArray& contents) {
+  Q_UNUSED(url)
+
+  qDebugNN << LOGSEC_GUI << "Download of application update file was completed with code" << QUOTE_W_SPACE_DOT(status);
 
   switch (status) {
     case QNetworkReply::NetworkError::NoError:
       saveUpdateFile(contents);
-      m_ui.m_lblStatus->setStatus(WidgetWithStatus::StatusType::Ok, tr("Downloaded successfully"),
+      m_ui.m_lblStatus->setStatus(WidgetWithStatus::StatusType::Ok,
+                                  tr("Downloaded successfully"),
                                   tr("Package was downloaded successfully.\nYou can install it now."));
       m_btnUpdate->setText(tr("Install"));
       m_btnUpdate->setEnabled(true);
       break;
 
     default:
-      m_ui.m_lblStatus->setStatus(WidgetWithStatus::StatusType::Error, tr("Error occured"),
+      m_ui.m_lblStatus->setStatus(WidgetWithStatus::StatusType::Error,
+                                  tr("Error occured"),
                                   tr("Error occured during downloading of the package."));
       m_btnUpdate->setText(tr("Error occured"));
       break;
@@ -210,32 +208,32 @@ void FormUpdate::startUpdate() {
 
   if (m_readyToInstall) {
     close();
-    qDebugNN << LOGSEC_GUI
-             << "Preparing to launch external installer '"
-             << QDir::toNativeSeparators(m_updateFilePath)
+    qDebugNN << LOGSEC_GUI << "Preparing to launch external installer '" << QDir::toNativeSeparators(m_updateFilePath)
              << "'.";
 
 #if defined(Q_OS_WIN)
-    HINSTANCE exec_result = ShellExecute(nullptr,
-                                         nullptr,
-                                         reinterpret_cast<const WCHAR*>(QDir::toNativeSeparators(m_updateFilePath).utf16()),
-                                         nullptr,
-                                         nullptr,
-                                         SW_NORMAL);
+    HINSTANCE exec_result =
+      ShellExecute(nullptr,
+                   nullptr,
+                   reinterpret_cast<const WCHAR*>(QDir::toNativeSeparators(m_updateFilePath).utf16()),
+                   nullptr,
+                   nullptr,
+                   SW_NORMAL);
 
     if (exec_result <= HINSTANCE(32)) {
       qDebugNN << LOGSEC_GUI << "External updater was not launched due to error.";
-      qApp->showGuiMessage(Notification::Event::GeneralEvent, {
-        tr("Cannot update application"),
-        tr("Cannot launch external updater. Update application manually."),
-        QSystemTrayIcon::MessageIcon::Warning },
-                           {}, {}, this);
+      qApp->showGuiMessage(Notification::Event::GeneralEvent,
+                           {tr("Cannot update application"),
+                            tr("Cannot launch external updater. Update application manually."),
+                            QSystemTrayIcon::MessageIcon::Warning},
+                           {},
+                           {},
+                           this);
     }
     else {
       qApp->quit();
     }
 #endif
-
   }
   else if (update_for_this_system) {
     updateProgress(0, 100);
