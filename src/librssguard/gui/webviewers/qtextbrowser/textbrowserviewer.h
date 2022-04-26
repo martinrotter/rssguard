@@ -19,36 +19,19 @@ class QResizeEvent;
 class WebBrowser;
 class Downloader;
 
+class TextBrowserViewer;
+
 class TextBrowserDocument : public QTextDocument {
     Q_OBJECT
 
-    friend class TextBrowserViewer;
-
   public:
-    explicit TextBrowserDocument(QObject* parent = nullptr);
-
-    bool resourcesEnabled() const;
-    void setResourcesEnabled(bool enabled);
+    explicit TextBrowserDocument(TextBrowserViewer* parent = nullptr);
 
   protected:
     virtual QVariant loadResource(int type, const QUrl& name);
 
-  signals:
-    void loadingProgress(int progress);
-    void reloadDocument();
-
-  private slots:
-    void reloadHtmlDelayed();
-    void downloadNextNeededResource();
-    void resourceDownloaded(const QUrl& url, QNetworkReply::NetworkError status, QByteArray contents = QByteArray());
-
   private:
-    bool m_resourcesEnabled;
-    QTimer m_resourceTimer;
-    QList<QUrl> m_neededResources;
-    QScopedPointer<Downloader> m_resourceDownloader;
-    QMap<QUrl, QByteArray> m_loadedResources;
-    QPixmap m_placeholderImage;
+    QPointer<TextBrowserViewer> m_viewer;
 };
 
 class TextBrowserViewer : public QTextBrowser, public WebViewer {
@@ -59,6 +42,9 @@ class TextBrowserViewer : public QTextBrowser, public WebViewer {
     explicit TextBrowserViewer(QWidget* parent = nullptr);
 
     virtual QSize sizeHint() const;
+
+  public:
+    QVariant loadOneResource(int type, const QUrl& name);
 
   public:
     virtual void bindToBrowser(WebBrowser* browser);
@@ -85,6 +71,25 @@ class TextBrowserViewer : public QTextBrowser, public WebViewer {
     void openLinkInExternalBrowser();
     void downloadLink();
     void onAnchorClicked(const QUrl& url);
+
+    bool resourcesEnabled() const;
+    void setResourcesEnabled(bool enabled);
+
+  signals:
+    void reloadDocument();
+
+  private slots:
+    void reloadHtmlDelayed();
+    void downloadNextNeededResource();
+    void resourceDownloaded(const QUrl& url, QNetworkReply::NetworkError status, QByteArray contents = QByteArray());
+
+  private:
+    bool m_resourcesEnabled;
+    QTimer m_resourceTimer;
+    QList<QUrl> m_neededResources;
+    QScopedPointer<Downloader> m_resourceDownloader;
+    QMap<QUrl, QByteArray> m_loadedResources;
+    QPixmap m_placeholderImage;
 
   signals:
     void pageTitleChanged(const QString& new_title);

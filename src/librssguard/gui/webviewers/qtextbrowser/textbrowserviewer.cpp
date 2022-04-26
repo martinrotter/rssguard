@@ -19,7 +19,9 @@
 #include <QTimer>
 
 TextBrowserViewer::TextBrowserViewer(QWidget* parent)
-  : QTextBrowser(parent), m_downloader(new Downloader(this)), m_document(new TextBrowserDocument(this)) {
+  : QTextBrowser(parent), m_resourcesEnabled(false), m_resourceDownloader(new Downloader(this)),
+    m_placeholderImage(qApp->icons()->miscPixmap("image-placeholder")), m_downloader(new Downloader(this)),
+    m_document(new TextBrowserDocument(this)) {
   setAutoFillBackground(true);
   setFrameShape(QFrame::Shape::NoFrame);
   setFrameShadow(QFrame::Shadow::Plain);
@@ -27,16 +29,20 @@ TextBrowserViewer::TextBrowserViewer(QWidget* parent)
   setOpenLinks(false);
   viewport()->setAutoFillBackground(true);
 
-  m_document.data()->setResourcesEnabled(qApp->settings()
-                                           ->value(GROUP(Messages), SETTING(Messages::ShowResourcesInArticles))
-                                           .toBool());
+  m_resourceTimer.setSingleShot(false);
+  m_resourceTimer.setInterval(300);
 
+  setResourcesEnabled(qApp->settings()->value(GROUP(Messages), SETTING(Messages::ShowResourcesInArticles)).toBool());
   setDocument(m_document.data());
 
-  connect(m_document.data(), &TextBrowserDocument::reloadDocument, this, [this]() {
+  connect(this, &TextBrowserViewer::reloadDocument, this, [this]() {
+    const auto scr = verticalScrollBarPosition();
     setHtmlPrivate(html(), m_currentUrl);
+    setVerticalScrollBarPosition(scr);
   });
 
+  connect(&m_resourceTimer, &QTimer::timeout, this, &TextBrowserViewer::reloadHtmlDelayed);
+  connect(m_resourceDownloader.data(), &Downloader::completed, this, &TextBrowserViewer::resourceDownloaded);
   connect(this, &QTextBrowser::anchorClicked, this, &TextBrowserViewer::onAnchorClicked);
   connect(this, QOverload<const QUrl&>::of(&QTextBrowser::highlighted), this, &TextBrowserViewer::linkMouseHighlighted);
 }
@@ -46,6 +52,31 @@ QSize TextBrowserViewer::sizeHint() const {
 
   doc_size.setHeight(doc_size.height() + contentsMargins().top() + contentsMargins().bottom());
   return doc_size;
+}
+
+QVariant TextBrowserViewer::loadOneResource(int type, const QUrl& name) {
+  if (type != QTextDocument::ResourceType::ImageResource) {
+    return {};
+  }
+
+  if (!m_resourcesEnabled) {
+    // Resources are not enabled.
+    return m_placeholderImage;
+  }
+
+  if (m_loadedResources.contains(name)) {
+    // Resources are enabled and we already have the resource.
+    return QImage::fromData(m_loadedResources.value(name));
+  }
+  else {
+    // Resources are not enabled and we need to download the resource.
+    if (!m_neededResources.contains(name) && m_resourceTimer.isActive()) {
+      m_neededResources.append(name);
+      m_resourceTimer.start();
+    }
+
+    return m_placeholderImage;
+  }
 }
 
 QPair<QString, QUrl> TextBrowserViewer::prepareHtmlForMessage(const QList<Message>& messages,
@@ -282,7 +313,7 @@ void TextBrowserViewer::contextMenuEvent(QContextMenuEvent* event) {
     m_actionDownloadLink.reset(new QAction(qApp->icons()->fromTheme(QSL("download")), tr("Download"), this));
 
     m_actionEnableResources.data()->setCheckable(true);
-    m_actionEnableResources.data()->setChecked(m_document.data()->resourcesEnabled());
+    m_actionEnableResources.data()->setChecked(resourcesEnabled());
 
     connect(m_actionOpenExternalBrowser.data(),
             &QAction::triggered,
@@ -353,7 +384,7 @@ void TextBrowserViewer::wheelEvent(QWheelEvent* event) {
 
 void TextBrowserViewer::enableResources(bool enable) {
   qApp->settings()->setValue(GROUP(Messages), Messages::ShowResourcesInArticles, enable);
-  m_document.data()->setResourcesEnabled(enable);
+  setResourcesEnabled(enable);
 }
 
 void TextBrowserViewer::openLinkInExternalBrowser() {
@@ -397,9 +428,9 @@ void TextBrowserViewer::onAnchorClicked(const QUrl& url) {
 }
 
 void TextBrowserViewer::setHtml(const QString& html, const QUrl& base_url) {
-  m_document.data()->m_resourceTimer.stop();
-  m_document.data()->m_neededResources.clear();
-  m_document.data()->m_resourceTimer.start();
+  m_resourceTimer.stop();
+  m_neededResources.clear();
+  m_resourceTimer.start();
 
   setHtmlPrivate(html, base_url);
 
@@ -424,43 +455,15 @@ void TextBrowserViewer::setHtmlPrivate(const QString& html, const QUrl& base_url
   emit pageUrlChanged(base_url);
 }
 
-TextBrowserDocument::TextBrowserDocument(QObject* parent)
-  : QTextDocument(parent), m_resourcesEnabled(false), m_resourceDownloader(new Downloader(this)),
-    m_placeholderImage(qApp->icons()->miscPixmap("image-placeholder")) {
-
-  connect(&m_resourceTimer, &QTimer::timeout, this, &TextBrowserDocument::reloadHtmlDelayed);
-  connect(m_resourceDownloader.data(), &Downloader::completed, this, &TextBrowserDocument::resourceDownloaded);
-
-  m_resourceTimer.setSingleShot(false);
-  m_resourceTimer.setInterval(300);
+TextBrowserDocument::TextBrowserDocument(TextBrowserViewer* parent) : QTextDocument(parent) {
+  m_viewer = parent;
 }
 
 QVariant TextBrowserDocument::loadResource(int type, const QUrl& name) {
-  if (type != QTextDocument::ResourceType::ImageResource) {
-    return {};
-  }
-
-  if (!m_resourcesEnabled) {
-    // Resources are not enabled.
-    return m_placeholderImage;
-  }
-
-  if (m_loadedResources.contains(name)) {
-    // Resources are enabled and we already have the resource.
-    return QImage::fromData(m_loadedResources.value(name));
-  }
-  else {
-    // Resources are not enabled and we need to download the resource.
-    if (!m_neededResources.contains(name) && m_resourceTimer.isActive()) {
-      m_neededResources.append(name);
-      m_resourceTimer.start();
-    }
-
-    return m_placeholderImage;
-  }
+  return m_viewer->loadOneResource(type, name);
 }
 
-void TextBrowserDocument::reloadHtmlDelayed() {
+void TextBrowserViewer::reloadHtmlDelayed() {
   // Timer has elapsed, we do not wait for other resources,
   // we download what we know about.
   m_resourceTimer.stop();
@@ -470,7 +473,7 @@ void TextBrowserDocument::reloadHtmlDelayed() {
   }
 }
 
-void TextBrowserDocument::downloadNextNeededResource() {
+void TextBrowserViewer::downloadNextNeededResource() {
   if (m_neededResources.isEmpty()) {
     // Everything is downloaded.
     emit reloadDocument();
@@ -483,7 +486,7 @@ void TextBrowserDocument::downloadNextNeededResource() {
   }
 }
 
-void TextBrowserDocument::resourceDownloaded(const QUrl& url, QNetworkReply::NetworkError status, QByteArray contents) {
+void TextBrowserViewer::resourceDownloaded(const QUrl& url, QNetworkReply::NetworkError status, QByteArray contents) {
   if (status == QNetworkReply::NetworkError::NoError && !m_loadedResources.contains(url)) {
     m_loadedResources.insert(url, contents);
   }
@@ -491,10 +494,10 @@ void TextBrowserDocument::resourceDownloaded(const QUrl& url, QNetworkReply::Net
   downloadNextNeededResource();
 }
 
-bool TextBrowserDocument::resourcesEnabled() const {
+bool TextBrowserViewer::resourcesEnabled() const {
   return m_resourcesEnabled;
 }
 
-void TextBrowserDocument::setResourcesEnabled(bool enabled) {
+void TextBrowserViewer::setResourcesEnabled(bool enabled) {
   m_resourcesEnabled = enabled;
 }
