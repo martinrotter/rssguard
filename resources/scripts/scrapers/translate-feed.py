@@ -1,9 +1,9 @@
-# Translates entries of RSS 2.0 feed into different locale.
+# Translates entries of RSS 2.0 (or ATOM) feed into different locale.
+#
+# Requires Python 3.10+.
 #
 # Make sure to have all dependencies installed:
-#   pip3 install googletrans
-#   pip3 install asyncio (if using parallel version of the script)
-#   pip3 install hyper (for HTTP/2 support, much faster than default)
+#   pip3 install googletrans-py lxml bs4 httpx httpcore asyncio --upgrade
 #
 # You must provide raw RSS 2.0 (or ATOM) UTF-8 feed XML data as input, for example with curl:
 #   curl 'https://phys.org/rss-feed/' | python ./translate-feed.py "en" "pt_BR" "true"
@@ -11,14 +11,10 @@
 # You must provide three command line arguments:
 #   translate-feed.py [FROM-LANGUAGE] [TO-LANGUAGE] [RUN-PARALLEL] [FEED-ENCODING (optional)]
 
-import json
-import re
 import io
 import sys
 import time
-import html
-import requests
-import distutils.util
+import setuptools._distutils.util
 import xml.etree.ElementTree as ET
 import itertools as IT
 from googletrans import Translator
@@ -26,7 +22,7 @@ from bs4 import BeautifulSoup
 
 lang_from = sys.argv[1]
 lang_to = sys.argv[2]
-parallel = bool(distutils.util.strtobool(sys.argv[3]))
+parallel = bool(setuptools._distutils.util.strtobool(sys.argv[3]))
 
 if (len(sys.argv) >= 5):
   src_enc = sys.argv[4]
@@ -39,8 +35,6 @@ if parallel:
 
 sys.stdin.reconfigure(encoding = src_enc)
 rss_data = sys.stdin.read()
-
-#print(rss_data)
 
 try:
   rss_document = ET.fromstring(rss_data)
