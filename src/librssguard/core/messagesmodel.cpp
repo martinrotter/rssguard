@@ -86,8 +86,8 @@ MessagesView* MessagesModel::view() const {
   return m_view;
 }
 
-void MessagesModel::setView(MessagesView* newView) {
-  m_view = newView;
+void MessagesModel::setView(MessagesView* new_view) {
+  m_view = new_view;
 }
 
 MessagesModelCache* MessagesModel::cache() const {
@@ -773,7 +773,6 @@ QVariant MessagesModel::headerData(int section, Qt::Orientation orientation, int
 
   switch (role) {
     case Qt::DisplayRole:
-
       // Display textual headers for all columns except "read" and
       // "important" and "has enclosures" columns.
       if (section != MSG_DB_READ_INDEX && section != MSG_DB_IMPORTANT_INDEX && section != MSG_DB_SCORE_INDEX &&

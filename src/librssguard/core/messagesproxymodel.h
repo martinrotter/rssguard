@@ -23,7 +23,9 @@ class MessagesProxyModel : public QSortFilterProxyModel {
       ShowLast24Hours = 105,
       ShowLast48Hours = 106,
       ShowThisWeek = 107,
-      ShowLastWeek = 108
+      ShowLastWeek = 108,
+      ShowOnlyWithAttachments = 109,
+      ShowOnlyWithScore = 110
     };
 
     explicit MessagesProxyModel(MessagesModel* source_model, QObject* parent = nullptr);

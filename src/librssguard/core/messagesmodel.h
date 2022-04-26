@@ -17,17 +17,12 @@ class MessagesView;
 class MessagesModelCache;
 
 class MessagesModel : public QSqlQueryModel, public MessagesModelSqlLayer {
-  Q_OBJECT
+    Q_OBJECT
 
   public:
-
     // Enum which describes basic highlighting schemes
     // for messages.
-    enum class MessageHighlighter {
-      NoHighlighting = 100,
-      HighlightUnread = 101,
-      HighlightImportant = 102
-    };
+    enum class MessageHighlighter { NoHighlighting = 100, HighlightUnread = 101, HighlightImportant = 102 };
 
     // Constructors and destructors.
     explicit MessagesModel(QObject* parent = nullptr);
@@ -76,7 +71,9 @@ class MessagesModel : public QSqlQueryModel, public MessagesModelSqlLayer {
     void loadMessages(RootItem* item);
 
     MessagesView* view() const;
-    void setView(MessagesView* newView);
+    void setView(MessagesView* new_view);
+
+    static QIcon generateIconForScore(double score);
 
   public slots:
 
@@ -88,8 +85,6 @@ class MessagesModel : public QSqlQueryModel, public MessagesModelSqlLayer {
   private:
     void setupHeaderData();
     void setupIcons();
-
-    static QIcon generateIconForScore(double score);
 
   private:
     MessagesView* m_view;

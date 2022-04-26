@@ -9,6 +9,7 @@
 
 #include "network-web/adblock/adblockmanager.h"
 
+#include <QPixmap>
 #include <QPointer>
 
 class QContextMenuEvent;
@@ -31,6 +32,7 @@ class TextBrowserDocument : public QTextDocument {
     bool m_reloadingWithResources;
     QList<QUrl> m_neededResourcesForHtml;
     QMap<QUrl, QByteArray> m_loadedResources;
+    QPixmap m_placeholderImage;
 };
 
 class TextBrowserViewer : public QTextBrowser, public WebViewer {
