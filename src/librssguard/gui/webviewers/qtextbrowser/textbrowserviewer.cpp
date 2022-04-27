@@ -30,7 +30,7 @@ TextBrowserViewer::TextBrowserViewer(QWidget* parent)
   viewport()->setAutoFillBackground(true);
 
   m_resourceTimer.setSingleShot(false);
-  m_resourceTimer.setInterval(300);
+  m_resourceTimer.setInterval(100);
 
   setResourcesEnabled(qApp->settings()->value(GROUP(Messages), SETTING(Messages::ShowResourcesInArticles)).toBool());
   setDocument(m_document.data());
