@@ -117,7 +117,7 @@ DKEY Messages::EnableMessagePreview = "enable_message_preview";
 DVALUE(bool) Messages::EnableMessagePreviewDef = true;
 
 DKEY Messages::ShowResourcesInArticles = "enable_message_resources";
-DVALUE(bool) Messages::ShowResourcesInArticlesDef = false;
+DVALUE(bool) Messages::ShowResourcesInArticlesDef = true;
 
 DKEY Messages::Zoom = "zoom";
 DVALUE(qreal) Messages::ZoomDef = double(1.0);
