@@ -2,6 +2,7 @@
 
 #include "gui/webviewers/qtextbrowser/textbrowserviewer.h"
 
+#include "3rd-party/boolinq/boolinq.h"
 #include "gui/dialogs/formmain.h"
 #include "gui/messagebox.h"
 #include "gui/webbrowser.h"
@@ -20,7 +21,8 @@
 
 TextBrowserViewer::TextBrowserViewer(QWidget* parent)
   : QTextBrowser(parent), m_resourcesEnabled(false), m_resourceDownloader(new Downloader(this)),
-    m_placeholderImage(qApp->icons()->miscPixmap("image-placeholder")), m_downloader(new Downloader(this)),
+    m_placeholderImage(qApp->icons()->miscPixmap("image-placeholder")),
+    m_placeholderImageError(qApp->icons()->miscPixmap("image-placeholder-error")), m_downloader(new Downloader(this)),
     m_document(new TextBrowserDocument(this)) {
   setAutoFillBackground(true);
   setFrameShape(QFrame::Shape::NoFrame);
@@ -28,9 +30,6 @@ TextBrowserViewer::TextBrowserViewer(QWidget* parent)
   setTabChangesFocus(true);
   setOpenLinks(false);
   viewport()->setAutoFillBackground(true);
-
-  m_resourceTimer.setSingleShot(false);
-  m_resourceTimer.setInterval(100);
 
   setResourcesEnabled(qApp->settings()->value(GROUP(Messages), SETTING(Messages::ShowResourcesInArticles)).toBool());
   setDocument(m_document.data());
@@ -41,7 +40,6 @@ TextBrowserViewer::TextBrowserViewer(QWidget* parent)
     setVerticalScrollBarPosition(scr);
   });
 
-  connect(&m_resourceTimer, &QTimer::timeout, this, &TextBrowserViewer::reloadHtmlDelayed);
   connect(m_resourceDownloader.data(), &Downloader::completed, this, &TextBrowserViewer::resourceDownloaded);
   connect(this, &QTextBrowser::anchorClicked, this, &TextBrowserViewer::onAnchorClicked);
   connect(this, QOverload<const QUrl&>::of(&QTextBrowser::highlighted), this, &TextBrowserViewer::linkMouseHighlighted);
@@ -59,39 +57,37 @@ QVariant TextBrowserViewer::loadOneResource(int type, const QUrl& name) {
     return {};
   }
 
-  if (!m_resourcesEnabled) {
+  if (!m_resourcesEnabled || !m_loadedResources.contains(name)) {
     // Resources are not enabled.
     return m_placeholderImage;
   }
 
-  if (m_loadedResources.contains(name)) {
-    // Resources are enabled and we already have the resource.
-    return QImage::fromData(m_loadedResources.value(name));
+  // Resources are enabled and we already have the resource.
+  QByteArray resource_data = m_loadedResources.value(name);
+
+  if (resource_data.isEmpty()) {
+    return m_placeholderImageError;
   }
   else {
-    // Resources are not enabled and we need to download the resource.
-    if (!m_neededResources.contains(name) && m_resourceTimer.isActive()) {
-      m_neededResources.append(name);
-      m_resourceTimer.start();
-    }
-
-    return m_placeholderImage;
+    return QImage::fromData(m_loadedResources.value(name));
   }
 }
 
-QPair<QString, QUrl> TextBrowserViewer::prepareHtmlForMessage(const QList<Message>& messages,
-                                                              RootItem* selected_item) const {
-  QString html;
+PreparedHtml TextBrowserViewer::prepareHtmlForMessage(const QList<Message>& messages, RootItem* selected_item) const {
+  PreparedHtml html;
 
   for (const Message& message : messages) {
-    html += QString("<h2 align=\"center\">%1</h2>").arg(message.m_title);
-
     if (!message.m_url.isEmpty()) {
-      html += QString("[url] <a href=\"%1\">%1</a><br/>").arg(message.m_url);
+      html.m_html += QSL("<h2 align=\"center\"><a href=\"%2\">%1</a></h2>").arg(message.m_title, message.m_url);
+    }
+    else {
+      html.m_html += QSL("<h2 align=\"center\">%1</h2>").arg(message.m_title);
     }
 
+    html.m_html += QSL("<div>");
+
     for (const Enclosure& enc : message.m_enclosures) {
-      html += QString("[%2] <a href=\"%1\">%1</a><br/>").arg(enc.m_url, enc.m_mimeType);
+      html.m_html += QString("[%2] <a href=\"%1\">%1</a><br/>").arg(enc.m_url, enc.m_mimeType);
     }
 
     static QRegularExpression img_tag_rgx("\\<img[^\\>]*src\\s*=\\s*[\"\']([^\"\']*)[\"\'][^\\>]*\\>",
@@ -102,8 +98,9 @@ QPair<QString, QUrl> TextBrowserViewer::prepareHtmlForMessage(const QList<Messag
 
     while (i.hasNext()) {
       QRegularExpressionMatch match = i.next();
+      auto captured_url = match.captured(1);
 
-      pictures_html += QString("<br/>[%1] <a href=\"%2\">%2</a>").arg(tr("image"), match.captured(1));
+      pictures_html += QString("<br/>[%1] <a href=\"%2\">%2</a>").arg(tr("image"), captured_url);
     }
 
     QString cnts = message.m_contents;
@@ -111,11 +108,13 @@ QPair<QString, QUrl> TextBrowserViewer::prepareHtmlForMessage(const QList<Messag
     auto forced_img_size = qApp->settings()->value(GROUP(Messages), SETTING(Messages::MessageHeadImageHeight)).toInt();
 
     // Fixup all "img" tags.
-    html += cnts.replace(img_tag_rgx,
-                         QSL("<a href=\"\\1\"><img height=\"%1\" src=\"\\1\" /></a>")
-                           .arg(forced_img_size <= 0 ? QString() : QString::number(forced_img_size)));
-    html += pictures_html;
+    html.m_html += cnts.replace(img_tag_rgx,
+                                QSL("<a href=\"\\1\"><img height=\"%1\" src=\"\\1\" /></a>")
+                                  .arg(forced_img_size <= 0 ? QString() : QString::number(forced_img_size)));
+    html.m_html += pictures_html;
   }
+
+  html.m_html += QSL("</div>");
 
   QColor a_color = qApp->skins()->currentSkin().colorForModel(SkinEnums::PaletteColors::FgInteresting).value<QColor>();
 
@@ -138,14 +137,17 @@ QPair<QString, QUrl> TextBrowserViewer::prepareHtmlForMessage(const QList<Messag
     }
   }
 
-  return {QSL("<html>"
-              "<head><style>"
-              "a { color: %2; }"
-              "</style></head>"
-              "<body>%1</body>"
-              "</html>")
-            .arg(html, a_color.name()),
-          base_url};
+  // Final html, with replaced link colors.
+  html.m_html = QSL("<html>"
+                    "<head><style>"
+                    "a { color: %2; }"
+                    "</style></head>"
+                    "<body>%1</body>"
+                    "</html>")
+                  .arg(html.m_html, a_color.name());
+  html.m_baseUrl = base_url;
+
+  return html;
 }
 
 void TextBrowserViewer::bindToBrowser(WebBrowser* browser) {
@@ -203,6 +205,7 @@ BlockingResult TextBrowserViewer::blockedWithAdblock(const QUrl& url) {
 
 void TextBrowserViewer::setUrl(const QUrl& url) {
   emit loadingStarted();
+
   QString html_str;
   QUrl nonconst_url = url;
   bool is_error = false;
@@ -262,7 +265,7 @@ void TextBrowserViewer::loadMessages(const QList<Message>& messages, RootItem* r
 
   auto html_messages = prepareHtmlForMessage(messages, root);
 
-  setHtml(html_messages.first, html_messages.second);
+  setHtml(html_messages.m_html, html_messages.m_baseUrl);
   emit loadingFinished(true);
 }
 
@@ -428,11 +431,36 @@ void TextBrowserViewer::onAnchorClicked(const QUrl& url) {
 }
 
 void TextBrowserViewer::setHtml(const QString& html, const QUrl& base_url) {
-  m_resourceTimer.stop();
-  m_neededResources.clear();
-  m_resourceTimer.start();
+  setVerticalScrollBarPosition(0.0);
+
+  static QRegularExpression img_tag_rgx("\\<img[^\\>]*src\\s*=\\s*[\"\']([^\"\']*)[\"\'][^\\>]*\\>",
+                                        QRegularExpression::PatternOption::CaseInsensitiveOption |
+                                          QRegularExpression::PatternOption::InvertedGreedinessOption);
+  QRegularExpressionMatchIterator i = img_tag_rgx.globalMatch(html);
+  QList<QUrl> found_resources;
+
+  while (i.hasNext()) {
+    QRegularExpressionMatch match = i.next();
+    auto captured_url = match.captured(1);
+
+    if (!found_resources.contains(captured_url)) {
+      found_resources.append(captured_url);
+    }
+  }
+
+  auto really_needed_resources = boolinq::from(found_resources)
+                                   .where([this](const QUrl& res) {
+                                     return !m_loadedResources.contains(res);
+                                   })
+                                   .toStdList();
+
+  m_neededResources = FROM_STD_LIST(QList<QUrl>, really_needed_resources);
 
   setHtmlPrivate(html, base_url);
+
+  if (!m_neededResources.isEmpty()) {
+    QTimer::singleShot(20, this, &TextBrowserViewer::reloadHtmlDelayed);
+  }
 
   // TODO: implement RTL for viewers somehow?
   /*
@@ -464,10 +492,6 @@ QVariant TextBrowserDocument::loadResource(int type, const QUrl& name) {
 }
 
 void TextBrowserViewer::reloadHtmlDelayed() {
-  // Timer has elapsed, we do not wait for other resources,
-  // we download what we know about.
-  m_resourceTimer.stop();
-
   if (!m_neededResources.isEmpty()) {
     downloadNextNeededResource();
   }
@@ -479,7 +503,9 @@ void TextBrowserViewer::downloadNextNeededResource() {
     emit reloadDocument();
   }
   else {
-    m_resourceDownloader.data()->manipulateData(m_neededResources.takeFirst().toString(),
+    QUrl res = m_neededResources.takeFirst();
+
+    m_resourceDownloader.data()->manipulateData(res.toString(),
                                                 QNetworkAccessManager::Operation::GetOperation,
                                                 {},
                                                 5000);
@@ -487,8 +513,11 @@ void TextBrowserViewer::downloadNextNeededResource() {
 }
 
 void TextBrowserViewer::resourceDownloaded(const QUrl& url, QNetworkReply::NetworkError status, QByteArray contents) {
-  if (status == QNetworkReply::NetworkError::NoError && !m_loadedResources.contains(url)) {
+  if (status == QNetworkReply::NetworkError::NoError) {
     m_loadedResources.insert(url, contents);
+  }
+  else {
+    m_loadedResources.insert(url, {});
   }
 
   downloadNextNeededResource();

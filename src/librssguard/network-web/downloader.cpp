@@ -211,7 +211,7 @@ void Downloader::finished() {
       m_inputMultipartData->deleteLater();
     }
 
-    emit completed(reply->url(), m_lastOutputError, m_lastOutputData);
+    emit completed(reply->request().url(), m_lastOutputError, m_lastOutputData);
   }
 }
 

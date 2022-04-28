@@ -34,6 +34,11 @@ class TextBrowserDocument : public QTextDocument {
     QPointer<TextBrowserViewer> m_viewer;
 };
 
+struct PreparedHtml {
+    QString m_html;
+    QUrl m_baseUrl;
+};
+
 class TextBrowserViewer : public QTextBrowser, public WebViewer {
     Q_OBJECT
     Q_INTERFACES(WebViewer)
@@ -85,11 +90,11 @@ class TextBrowserViewer : public QTextBrowser, public WebViewer {
 
   private:
     bool m_resourcesEnabled;
-    QTimer m_resourceTimer;
     QList<QUrl> m_neededResources;
     QScopedPointer<Downloader> m_resourceDownloader;
     QMap<QUrl, QByteArray> m_loadedResources;
     QPixmap m_placeholderImage;
+    QPixmap m_placeholderImageError;
 
   signals:
     void pageTitleChanged(const QString& new_title);
@@ -107,7 +112,7 @@ class TextBrowserViewer : public QTextBrowser, public WebViewer {
 
     BlockingResult blockedWithAdblock(const QUrl& url);
     QScopedPointer<Downloader> m_downloader;
-    QPair<QString, QUrl> prepareHtmlForMessage(const QList<Message>& messages, RootItem* selected_item) const;
+    PreparedHtml prepareHtmlForMessage(const QList<Message>& messages, RootItem* selected_item) const;
 
   private:
     QUrl m_currentUrl;
