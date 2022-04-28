@@ -433,28 +433,33 @@ void TextBrowserViewer::onAnchorClicked(const QUrl& url) {
 void TextBrowserViewer::setHtml(const QString& html, const QUrl& base_url) {
   setVerticalScrollBarPosition(0.0);
 
-  static QRegularExpression img_tag_rgx("\\<img[^\\>]*src\\s*=\\s*[\"\']([^\"\']*)[\"\'][^\\>]*\\>",
-                                        QRegularExpression::PatternOption::CaseInsensitiveOption |
-                                          QRegularExpression::PatternOption::InvertedGreedinessOption);
-  QRegularExpressionMatchIterator i = img_tag_rgx.globalMatch(html);
-  QList<QUrl> found_resources;
+  if (m_resourcesEnabled) {
+    static QRegularExpression img_tag_rgx("\\<img[^\\>]*src\\s*=\\s*[\"\']([^\"\']*)[\"\'][^\\>]*\\>",
+                                          QRegularExpression::PatternOption::CaseInsensitiveOption |
+                                            QRegularExpression::PatternOption::InvertedGreedinessOption);
+    QRegularExpressionMatchIterator i = img_tag_rgx.globalMatch(html);
+    QList<QUrl> found_resources;
 
-  while (i.hasNext()) {
-    QRegularExpressionMatch match = i.next();
-    auto captured_url = match.captured(1);
+    while (i.hasNext()) {
+      QRegularExpressionMatch match = i.next();
+      auto captured_url = match.captured(1);
 
-    if (!found_resources.contains(captured_url)) {
-      found_resources.append(captured_url);
+      if (!found_resources.contains(captured_url)) {
+        found_resources.append(captured_url);
+      }
     }
+
+    auto really_needed_resources = boolinq::from(found_resources)
+                                     .where([this](const QUrl& res) {
+                                       return !m_loadedResources.contains(res);
+                                     })
+                                     .toStdList();
+
+    m_neededResources = FROM_STD_LIST(QList<QUrl>, really_needed_resources);
   }
-
-  auto really_needed_resources = boolinq::from(found_resources)
-                                   .where([this](const QUrl& res) {
-                                     return !m_loadedResources.contains(res);
-                                   })
-                                   .toStdList();
-
-  m_neededResources = FROM_STD_LIST(QList<QUrl>, really_needed_resources);
+  else {
+    m_neededResources = {};
+  }
 
   setHtmlPrivate(html, base_url);
 
