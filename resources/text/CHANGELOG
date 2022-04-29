@@ -1,3 +1,25 @@
+4.2.2
+-----
+
+Added:
+* Feedly now supports intelligent synchronization algorithm, resulting in much faster sync.
+* Feedly now decodes feed titles from HTML to plain text.
+* New CLI "-w" option to force "nowebengine" behavior even in standard "webengine" RSS Guard builds.
+* Article viewers are greatly refactored and internally use sane C++ interface - this allows this piece of RSS Guard to be expanded better in the future.
+* "nowebengine" text-based article viewer now can display images. (#583)
+* "nowebengine" text-based article viewer now can act as VERY SIMPLE web browser. It displays webpages in a simpler text-like fashion, it can follow hyperlinks, context menu offers more actions like downloading of links etc.
+* Gmail plugin now has better e-mail viewer which also allows to "Forward" e-mails. It will be extended in the future even more. Also, e-mails are now sent in "HTML" mode.
+* Data can be optionally exported to OPML 2.0 without icons. (#685)
+* Added button into tray icon context menu to allow show/hide of main RSS Guard window. (#679)
+* Article **list** filtering button is now greatly enhanced. Go to "Settings -> User interface -> Toolbars -> Toolbar for article list" and add "Article list filter" button to the toolbar.
+
+Fixed:
+* If article does not provide sane date/time, replace with current date. This particularly concerned Gmail plugin.
+* Added some missing icons, some icons changed.
+* Some UI strings updated, translations updated too.
+* "Licenses" page in "About" dialog was redesigned.
+* Other minor fixes.
+
 4.2.1
 -----
 

@@ -96,6 +96,8 @@ void FormAbout::loadLicenseAndInformation() {
 #else
     m_ui.m_txtChangelog->setText(IOFactory::readFile(APP_INFO_PATH + QL1S("/CHANGELOG")));
 #endif
+
+    m_ui.m_txtChangelog->document()->setIndentWidth(16.0);
   }
   catch (...) {
     m_ui.m_txtChangelog->setText(tr("Changelog not found."));

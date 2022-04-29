@@ -172,9 +172,6 @@ p, li { white-space: pre-wrap; }
          <property name="font">
           <font/>
          </property>
-         <property name="frameShape">
-          <enum>QFrame::NoFrame</enum>
-         </property>
          <property name="undoRedoEnabled">
           <bool>false</bool>
          </property>

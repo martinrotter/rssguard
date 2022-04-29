@@ -218,12 +218,12 @@ void MessagesToolBar::initializeHighlighter() {
                   "show_last_week");
   addActionToMenu(m_menuMessageFilter,
                   qApp->icons()->fromTheme(QSL("mail-attachment")),
-                  tr("Show only articles with attachments"),
+                  tr("Show articles with attachments"),
                   QVariant::fromValue(MessagesProxyModel::MessageListFilter::ShowOnlyWithAttachments),
                   "show_with_attachments");
   addActionToMenu(m_menuMessageFilter,
                   MessagesModel::generateIconForScore(MSG_SCORE_MAX / 2.0),
-                  tr("Show only articles with some score"),
+                  tr("Show articles with some score"),
                   QVariant::fromValue(MessagesProxyModel::MessageListFilter::ShowOnlyWithScore),
                   "show_with_score");
 
