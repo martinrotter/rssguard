@@ -37,7 +37,7 @@
     <message>
         <location filename="../src/librssguard/network-web/adblock/adblockdialog.cpp" line="114"/>
         <source>There is error, check application log for more details and head to online documentation.</source>
-        <translation type="unfinished"/>
+        <translation>有錯誤。查看應用程式 log 檔以得更多細節，並查線上說明文件。</translation>
     </message>
     <message>
         <location filename="../src/librssguard/network-web/adblock/adblockdialog.cpp" line="89"/>
@@ -157,7 +157,7 @@ Error: %1</source>
     <message>
         <location filename="../src/librssguard/miscellaneous/application.cpp" line="1091"/>
         <source>Packages %1 were updated.</source>
-        <translation type="unfinished"/>
+        <translation>套件 %1 更新過。</translation>
     </message>
     <message>
         <location filename="../src/librssguard/miscellaneous/application.cpp" line="863"/>
@@ -193,7 +193,7 @@ version by clicking this popup notification.</source>
     <message>
         <location filename="../src/librssguard/miscellaneous/application.cpp" line="899"/>
         <source>AdBlock is not configured properly. Go to &quot;Settings&quot; -&gt; &quot;Node.js&quot; and check if your Node.js is properly configured.</source>
-        <translation type="unfinished"/>
+        <translation>AdBlock 未恰當設定。請於 &quot;設定&quot; -&gt; &quot;Node.js&quot;，檢查 Node.js 是否恰當設定。</translation>
     </message>
     <message>
         <location filename="../src/librssguard/miscellaneous/application.cpp" line="953"/>
@@ -203,7 +203,7 @@ version by clicking this popup notification.</source>
     <message>
         <location filename="../src/librssguard/miscellaneous/application.cpp" line="1082"/>
         <source>Packages %1 were NOT updated because of error: %2.</source>
-        <translation type="unfinished"/>
+        <translation>套件 %1 沒更新新過，因為後面錯誤: %2。</translation>
     </message>
 </context>
 <context>
@@ -554,17 +554,17 @@ Click here to open parent directory.</source>
     <message>
         <location filename="../src/librssguard/services/gmail/gui/emailpreviewer.ui" line="59"/>
         <source>&amp;Attachments</source>
-        <translation type="unfinished"/>
+        <translation>附件(&amp;A)</translation>
     </message>
     <message>
         <location filename="../src/librssguard/services/gmail/gui/emailpreviewer.ui" line="72"/>
         <source>&amp;Reply</source>
-        <translation type="unfinished"/>
+        <translation>回覆(&amp;R)</translation>
     </message>
     <message>
         <location filename="../src/librssguard/services/gmail/gui/emailpreviewer.ui" line="82"/>
         <source>&amp;Forward</source>
-        <translation type="unfinished"/>
+        <translation>轉寄(&amp;F)</translation>
     </message>
     <message>
         <location filename="../src/librssguard/services/gmail/gui/emailpreviewer.ui" line="94"/>
@@ -580,17 +580,17 @@ Click here to open parent directory.</source>
         <location filename="../src/librssguard/services/gmail/gui/emailpreviewer.cpp" line="98"/>
         <location filename="../src/librssguard/services/gmail/gui/emailpreviewer.cpp" line="104"/>
         <source>Cannot download attachment</source>
-        <translation type="unfinished"/>
+        <translation>無法下載附件</translation>
     </message>
     <message>
         <location filename="../src/librssguard/services/gmail/gui/emailpreviewer.cpp" line="99"/>
         <source>Attachment cannot be downloaded because you are not logged-in.</source>
-        <translation type="unfinished"/>
+        <translation>無法下載附件，因為您尚未登入。</translation>
     </message>
     <message>
         <location filename="../src/librssguard/services/gmail/gui/emailpreviewer.cpp" line="105"/>
         <source>Attachment cannot be downloaded because some general error happened.</source>
-        <translation type="unfinished"/>
+        <translation>無法下載附件，因為有某種一般錯誤。</translation>
     </message>
 </context>
 <context>
@@ -824,7 +824,7 @@ Status: %3</source>
     <message>
         <location filename="../src/librssguard/services/feedly/gui/feedlyaccountdetails.cpp" line="35"/>
         <source>Your %1 build has official Feedly support. You do not have to use &quot;developer access token&quot;. You can therefore leave corresponding field empty.</source>
-        <translation type="unfinished"/>
+        <translation>Feedly 支援 %1 組件。不必使用 &quot;developer access token&quot;.。所以可將對應的欄位留白。</translation>
     </message>
     <message>
         <location filename="../src/librssguard/services/feedly/gui/feedlyaccountdetails.cpp" line="153"/>
@@ -1167,7 +1167,7 @@ or this functionality is not implemented yet.</source>
     <message>
         <location filename="../src/librssguard/services/abstract/gui/formaccountdetails.cpp" line="42"/>
         <source>Edit account &quot;%1&quot;</source>
-        <translation type="unfinished"/>
+        <translation>編輯帳號 &quot;%1&quot;</translation>
     </message>
 </context>
 <context>
@@ -1687,17 +1687,17 @@ or this functionality is not implemented yet.</source>
     <message>
         <location filename="../src/librssguard/services/abstract/gui/formfeeddetails.ui" line="58"/>
         <source>Open articles via their URL automatically</source>
-        <translation type="unfinished"/>
+        <translation>自動以 URL 開啟文章</translation>
     </message>
     <message>
         <location filename="../src/librssguard/services/abstract/gui/formfeeddetails.ui" line="66"/>
         <source>Miscellaneous</source>
-        <translation type="unfinished"/>
+        <translation>雜項</translation>
     </message>
     <message>
         <location filename="../src/librssguard/services/abstract/gui/formfeeddetails.ui" line="72"/>
         <source>Disable this feed</source>
-        <translation type="unfinished"/>
+        <translation>停用此文源</translation>
     </message>
 </context>
 <context>
@@ -1720,12 +1720,12 @@ or this functionality is not implemented yet.</source>
     <message>
         <location filename="../src/librssguard/gui/dialogs/formmain.cpp" line="77"/>
         <source>Open main menu</source>
-        <translation type="unfinished"/>
+        <translation>開啟主功能表</translation>
     </message>
     <message>
         <location filename="../src/librssguard/gui/dialogs/formmain.cpp" line="85"/>
         <source>Open &amp;main menu</source>
-        <translation type="unfinished"/>
+        <translation>開啟主功能表(&amp;M)</translation>
     </message>
     <message>
         <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="53"/>
@@ -1765,7 +1765,7 @@ or this functionality is not implemented yet.</source>
     <message>
         <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="112"/>
         <source>&amp;Move</source>
-        <translation type="unfinished"/>
+        <translation>移動(&amp;M)</translation>
     </message>
     <message>
         <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="151"/>
@@ -1890,7 +1890,7 @@ or this functionality is not implemented yet.</source>
     <message>
         <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="336"/>
         <source>Mark selected item &amp;read</source>
-        <translation type="unfinished"/>
+        <translation>標示所選項目成已讀(&amp;R)</translation>
     </message>
     <message>
         <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="339"/>
@@ -1900,7 +1900,7 @@ or this functionality is not implemented yet.</source>
     <message>
         <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="347"/>
         <source>Mark selected item &amp;unread</source>
-        <translation type="unfinished"/>
+        <translation>標示所選項目成未讀(&amp;U)</translation>
     </message>
     <message>
         <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="350"/>
@@ -1975,7 +1975,7 @@ or this functionality is not implemented yet.</source>
     <message>
         <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="438"/>
         <source>Switch main window visibility</source>
-        <translation type="unfinished"/>
+        <translation>切換主視窗的便視性</translation>
     </message>
     <message>
         <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="441"/>
@@ -2206,7 +2206,7 @@ or this functionality is not implemented yet.</source>
     <message>
         <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="791"/>
         <source>&amp;Copy URL of selected item</source>
-        <translation type="unfinished"/>
+        <translation>複製所選項目的 URL(&amp;C)</translation>
     </message>
     <message>
         <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="796"/>
@@ -2251,37 +2251,37 @@ or this functionality is not implemented yet.</source>
     <message>
         <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="851"/>
         <source>&amp;Copy URLs of selected articles</source>
-        <translation type="unfinished"/>
+        <translation>複製所選文章的URL(&amp;C)</translation>
     </message>
     <message>
         <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="856"/>
         <source>Open in internal browser (no new tab)</source>
-        <translation type="unfinished"/>
+        <translation>於內部瀏覽器開啟(不開新分頁)</translation>
     </message>
     <message>
         <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="867"/>
         <source>&amp;Sort alphabetically</source>
-        <translation type="unfinished"/>
+        <translation>依字母排序(&amp;S)</translation>
     </message>
     <message>
         <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="872"/>
         <source>Move &amp;up</source>
-        <translation type="unfinished"/>
+        <translation>移上(&amp;U)</translation>
     </message>
     <message>
         <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="877"/>
         <source>Move to &amp;top</source>
-        <translation type="unfinished"/>
+        <translation>移至首(&amp;T)</translation>
     </message>
     <message>
         <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="882"/>
         <source>Move &amp;down</source>
-        <translation type="unfinished"/>
+        <translation>移下(&amp;B)</translation>
     </message>
     <message>
         <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="887"/>
         <source>Move to &amp;bottom</source>
-        <translation type="unfinished"/>
+        <translation>移至尾(&amp;B)</translation>
     </message>
     <message>
         <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="737"/>
@@ -2893,27 +2893,27 @@ You have to restart manually.</source>
     <message>
         <location filename="../src/librssguard/services/tt-rss/gui/formttrssnote.cpp" line="20"/>
         <source>Share note to &quot;Published&quot; feed</source>
-        <translation type="unfinished"/>
+        <translation>分享評註到已發佈的文源</translation>
     </message>
     <message>
         <location filename="../src/librssguard/services/tt-rss/gui/formttrssnote.cpp" line="48"/>
         <source>Cannot share note</source>
-        <translation type="unfinished"/>
+        <translation>無法分享評註</translation>
     </message>
     <message>
         <location filename="../src/librssguard/services/tt-rss/gui/formttrssnote.cpp" line="49"/>
         <source>There was an error, when trying to send your custom note.</source>
-        <translation type="unfinished"/>
+        <translation>傳送自訂評註時出錯。</translation>
     </message>
     <message>
         <location filename="../src/librssguard/services/tt-rss/gui/formttrssnote.cpp" line="61"/>
         <source>Enter non-empty title.</source>
-        <translation type="unfinished"/>
+        <translation>請輸入非空標題。</translation>
     </message>
     <message>
         <location filename="../src/librssguard/services/tt-rss/gui/formttrssnote.cpp" line="72"/>
         <source>Enter valid URL.</source>
-        <translation type="unfinished"/>
+        <translation>請輸入有效的 URL。</translation>
     </message>
     <message>
         <location filename="../src/librssguard/services/tt-rss/gui/formttrssnote.ui" line="17"/>
@@ -2928,7 +2928,7 @@ You have to restart manually.</source>
     <message>
         <location filename="../src/librssguard/services/tt-rss/gui/formttrssnote.ui" line="66"/>
         <source>Content</source>
-        <translation type="unfinished"/>
+        <translation>擷文</translation>
     </message>
 </context>
 <context>
@@ -3230,7 +3230,7 @@ You can install it now.</source>
     <message>
         <location filename="../src/librssguard/services/gmail/gmailnetworkfactory.cpp" line="436"/>
         <source>failed to download IDs of e-mail messages</source>
-        <translation type="unfinished"/>
+        <translation>無法下載電郵訊息的 ID</translation>
     </message>
     <message>
         <location filename="../src/librssguard/services/gmail/gmailnetworkfactory.cpp" line="496"/>
@@ -3280,7 +3280,7 @@ You can install it now.</source>
     <message>
         <location filename="../src/librssguard/services/gmail/gmailserviceroot.cpp" line="119"/>
         <source>Reply to this e-mail message</source>
-        <translation type="unfinished"/>
+        <translation>回覆此電郵訊息</translation>
     </message>
     <message>
         <location filename="../src/librssguard/services/gmail/gmailserviceroot.cpp" line="194"/>
@@ -3516,7 +3516,7 @@ Login tokens expiration: %2</source>
     <message>
         <location filename="../src/librssguard/services/greader/gui/greaderaccountdetails.ui" line="270"/>
         <source>&amp;Test setup</source>
-        <translation type="unfinished"/>
+        <translation>測試設定(&amp;T)</translation>
     </message>
 </context>
 <context>
@@ -3646,12 +3646,12 @@ Login tokens expiration: %2</source>
     <message>
         <location filename="../src/librssguard/gui/webviewers/litehtml/litehtmlviewer.cpp" line="268"/>
         <source>Copy URL</source>
-        <translation type="unfinished"/>
+        <translation>複製 URL</translation>
     </message>
     <message>
         <location filename="../src/librssguard/gui/webviewers/litehtml/litehtmlviewer.cpp" line="276"/>
         <source>Copy selection</source>
-        <translation type="unfinished"/>
+        <translation>複製所選</translation>
     </message>
     <message>
         <location filename="../src/librssguard/gui/webviewers/litehtml/litehtmlviewer.cpp" line="285"/>
@@ -3661,12 +3661,12 @@ Login tokens expiration: %2</source>
     <message>
         <location filename="../src/librssguard/gui/webviewers/litehtml/litehtmlviewer.cpp" line="299"/>
         <source>Use simple article layout</source>
-        <translation type="unfinished"/>
+        <translation>使用簡單文章版面</translation>
     </message>
     <message>
         <location filename="../src/librssguard/gui/webviewers/litehtml/litehtmlviewer.cpp" line="305"/>
         <source>Reload with images</source>
-        <translation type="unfinished"/>
+        <translation>連同圖片重新載入</translation>
     </message>
     <message>
         <location filename="../src/librssguard/gui/webviewers/litehtml/litehtmlviewer.cpp" line="325"/>
@@ -4025,7 +4025,7 @@ Login tokens expiration: %2</source>
     <message>
         <location filename="../src/librssguard/core/messagesmodel.cpp" line="279"/>
         <source>Custom ID of the article.</source>
-        <translation type="unfinished"/>
+        <translation>文章的自訂 ID。</translation>
     </message>
     <message>
         <location filename="../src/librssguard/core/messagesmodel.cpp" line="280"/>
@@ -4045,37 +4045,37 @@ Login tokens expiration: %2</source>
     <message numerus="yes">
         <location filename="../src/librssguard/core/messagesmodel.cpp" line="324"/>
         <source>%n months ago</source>
-        <translation type="unfinished"><numerusform></numerusform></translation>
+        <translation><numerusform>%n 個月前</numerusform></translation>
     </message>
     <message numerus="yes">
         <location filename="../src/librssguard/core/messagesmodel.cpp" line="328"/>
         <source>%n weeks ago</source>
-        <translation type="unfinished"><numerusform></numerusform></translation>
+        <translation><numerusform>%n 週前</numerusform></translation>
     </message>
     <message numerus="yes">
         <location filename="../src/librssguard/core/messagesmodel.cpp" line="332"/>
         <source>%n days ago</source>
-        <translation type="unfinished"><numerusform></numerusform></translation>
+        <translation><numerusform>%n 天前</numerusform></translation>
     </message>
     <message>
         <location filename="../src/librssguard/core/messagesmodel.cpp" line="336"/>
         <source>yesterday</source>
-        <translation type="unfinished"/>
+        <translation>昨天</translation>
     </message>
     <message numerus="yes">
         <location filename="../src/librssguard/core/messagesmodel.cpp" line="340"/>
         <source>%n hours ago</source>
-        <translation type="unfinished"><numerusform></numerusform></translation>
+        <translation><numerusform>%n 小時前</numerusform></translation>
     </message>
     <message numerus="yes">
         <location filename="../src/librssguard/core/messagesmodel.cpp" line="344"/>
         <source>%n minutes ago</source>
-        <translation type="unfinished"><numerusform></numerusform></translation>
+        <translation><numerusform>%n 分鐘前</numerusform></translation>
     </message>
     <message>
         <location filename="../src/librssguard/core/messagesmodel.cpp" line="347"/>
         <source>just now</source>
-        <translation type="unfinished"/>
+        <translation>現在</translation>
     </message>
     <message>
         <location filename="../src/librssguard/core/messagesmodel.cpp" line="148"/>
@@ -4118,52 +4118,52 @@ Login tokens expiration: %2</source>
     <message>
         <location filename="../src/librssguard/gui/toolbars/messagestoolbar.cpp" line="168"/>
         <source>Menu for filtering articles</source>
-        <translation type="unfinished"/>
+        <translation>篩選文章的功能表</translation>
     </message>
     <message>
         <location filename="../src/librssguard/gui/toolbars/messagestoolbar.cpp" line="171"/>
         <source>No extra filtering</source>
-        <translation type="unfinished"/>
+        <translation>無額外篩選規則</translation>
     </message>
     <message>
         <location filename="../src/librssguard/gui/toolbars/messagestoolbar.cpp" line="176"/>
         <source>Show unread articles</source>
-        <translation type="unfinished"/>
+        <translation>顯示未讀文章</translation>
     </message>
     <message>
         <location filename="../src/librssguard/gui/toolbars/messagestoolbar.cpp" line="181"/>
         <source>Show important articles</source>
-        <translation type="unfinished"/>
+        <translation>顯示重要文章</translation>
     </message>
     <message>
         <location filename="../src/librssguard/gui/toolbars/messagestoolbar.cpp" line="186"/>
         <source>Show today&apos;s articles</source>
-        <translation type="unfinished"/>
+        <translation>顯示今天的文章</translation>
     </message>
     <message>
         <location filename="../src/librssguard/gui/toolbars/messagestoolbar.cpp" line="191"/>
         <source>Show yesterday&apos;s articles</source>
-        <translation type="unfinished"/>
+        <translation>顯示昨天的文章</translation>
     </message>
     <message>
         <location filename="../src/librssguard/gui/toolbars/messagestoolbar.cpp" line="196"/>
         <source>Show articles in last 24 hours</source>
-        <translation type="unfinished"/>
+        <translation>顯示前二十四小時內的文章</translation>
     </message>
     <message>
         <location filename="../src/librssguard/gui/toolbars/messagestoolbar.cpp" line="201"/>
         <source>Show articles in last 48 hours</source>
-        <translation type="unfinished"/>
+        <translation>顯示前四十八小時內的文章</translation>
     </message>
     <message>
         <location filename="../src/librssguard/gui/toolbars/messagestoolbar.cpp" line="206"/>
         <source>Show this week&apos;s articles</source>
-        <translation type="unfinished"/>
+        <translation>顯示本週的文章</translation>
     </message>
     <message>
         <location filename="../src/librssguard/gui/toolbars/messagestoolbar.cpp" line="211"/>
         <source>Show last week&apos;s articles</source>
-        <translation type="unfinished"/>
+        <translation>顯示上週的文章</translation>
     </message>
     <message>
         <location filename="../src/librssguard/gui/toolbars/messagestoolbar.cpp" line="216"/>
@@ -4179,7 +4179,7 @@ Login tokens expiration: %2</source>
     <message>
         <location filename="../src/librssguard/gui/toolbars/messagestoolbar.cpp" line="236"/>
         <source>Article list filter</source>
-        <translation type="unfinished"/>
+        <translation>文章清單篩選規則</translation>
     </message>
     <message>
         <location filename="../src/librssguard/gui/toolbars/messagestoolbar.cpp" line="128"/>
@@ -4439,7 +4439,7 @@ Login tokens expiration: %2</source>
     <message>
         <location filename="../src/librssguard/services/newsblur/gui/newsbluraccountdetails.ui" line="100"/>
         <source>&amp;Test setup</source>
-        <translation type="unfinished"/>
+        <translation>測試設定(&amp;T)</translation>
     </message>
     <message>
         <location filename="../src/librssguard/services/newsblur/gui/newsbluraccountdetails.cpp" line="22"/>
@@ -4489,7 +4489,7 @@ Login tokens expiration: %2</source>
     <message>
         <location filename="../src/librssguard/services/newsblur/gui/newsbluraccountdetails.cpp" line="74"/>
         <source>Network error, have you entered correct username and password?</source>
-        <translation type="unfinished"/>
+        <translation>網路出錯，輸入的帳號密碼正確嗎？</translation>
     </message>
     <message>
         <location filename="../src/librssguard/services/newsblur/gui/newsbluraccountdetails.cpp" line="78"/>
@@ -4499,7 +4499,7 @@ Login tokens expiration: %2</source>
     <message>
         <location filename="../src/librssguard/services/newsblur/gui/newsbluraccountdetails.cpp" line="79"/>
         <source>Error, have you entered correct Nextcloud endpoint and password?</source>
-        <translation type="unfinished"/>
+        <translation>出錯，輸入的 Nextcloud 端點(endpoint)與密碼正確嗎？</translation>
     </message>
     <message>
         <location filename="../src/librssguard/services/newsblur/gui/newsbluraccountdetails.cpp" line="87"/>
@@ -4556,7 +4556,7 @@ Login tokens expiration: %2</source>
         <location filename="../src/librssguard/miscellaneous/nodejs.cpp" line="76"/>
         <location filename="../src/librssguard/miscellaneous/nodejs.cpp" line="84"/>
         <source>file not found</source>
-        <translation type="unfinished"/>
+        <translation>找不到檔案</translation>
     </message>
 </context>
 <context>
@@ -4739,7 +4739,7 @@ Login tokens expiration: %2</source>
     <message>
         <location filename="../src/librssguard/services/owncloud/gui/owncloudaccountdetails.ui" line="127"/>
         <source>&amp;Test setup</source>
-        <translation type="unfinished"/>
+        <translation>測試設定(&amp;T)</translation>
     </message>
     <message>
         <location filename="../src/librssguard/services/owncloud/gui/owncloudaccountdetails.ui" line="162"/>
@@ -4858,12 +4858,12 @@ Feedly 是個能私密組織、研究與您關切的議題與趨勢的所在。<
     <message>
         <location filename="../src/librssguard/miscellaneous/notification.cpp" line="149"/>
         <source>Node.js - package(s) updated</source>
-        <translation type="unfinished"/>
+        <translation>Node.js - 套件已更新</translation>
     </message>
     <message>
         <location filename="../src/librssguard/miscellaneous/notification.cpp" line="152"/>
         <source>Node.js - package(s) failed to updated</source>
-        <translation type="unfinished"/>
+        <translation>Node.js - 套件無法更新</translation>
     </message>
     <message>
         <location filename="../src/librssguard/miscellaneous/notification.cpp" line="155"/>
@@ -4883,7 +4883,7 @@ Feedly 是個能私密組織、研究與您關切的議題與趨勢的所在。<
     <message>
         <location filename="../src/librssguard/services/standard/parsers/feedparser.cpp" line="34"/>
         <source>JSON problem: %1</source>
-        <translation type="unfinished"/>
+        <translation>JSON 出問題: %1</translation>
     </message>
     <message>
         <location filename="../src/librssguard/services/greader/greaderentrypoint.cpp" line="34"/>
@@ -4937,17 +4937,17 @@ List of supported readers:</source>
     <message>
         <location filename="../src/librssguard/services/tt-rss/ttrssnetworkfactory.cpp" line="840"/>
         <source>User-published articles</source>
-        <translation type="unfinished"/>
+        <translation>使用者發行的文章</translation>
     </message>
     <message>
         <location filename="../src/librssguard/services/tt-rss/ttrssnetworkfactory.cpp" line="992"/>
         <source>Published articles</source>
-        <translation type="unfinished"/>
+        <translation>發行的文章</translation>
     </message>
     <message>
         <location filename="../src/librssguard/services/newsblur/newsblurentrypoint.cpp" line="33"/>
         <source>Personal news reader bringing people together to talk about the world.</source>
-        <translation type="unfinished"/>
+        <translation>讓人以綺談論世界的個人新聞閱讀器。</translation>
     </message>
 </context>
 <context>
@@ -4955,17 +4955,17 @@ List of supported readers:</source>
     <message>
         <location filename="../src/librssguard/network-web/readability.cpp" line="38"/>
         <source>Packages for reader mode are installed</source>
-        <translation type="unfinished"/>
+        <translation>已安裝閱讀器模式</translation>
     </message>
     <message>
         <location filename="../src/librssguard/network-web/readability.cpp" line="39"/>
         <source>You can now use reader mode!</source>
-        <translation type="unfinished"/>
+        <translation>現在可使用閱讀器模式了！</translation>
     </message>
     <message>
         <location filename="../src/librssguard/network-web/readability.cpp" line="59"/>
         <source>Packages for reader mode are NOT installed</source>
-        <translation type="unfinished"/>
+        <translation>閱讀器模式的相關套件尚未安裝</translation>
     </message>
     <message>
         <location filename="../src/librssguard/network-web/readability.cpp" line="60"/>
@@ -4976,17 +4976,17 @@ List of supported readers:</source>
         <location filename="../src/librssguard/network-web/readability.cpp" line="83"/>
         <location filename="../src/librssguard/network-web/readability.cpp" line="100"/>
         <source>Node.js libraries not installed</source>
-        <translation type="unfinished"/>
+        <translation>Node.js 程式庫未安裝</translation>
     </message>
     <message>
         <location filename="../src/librssguard/network-web/readability.cpp" line="84"/>
         <source>%1 will now install some needed libraries, this will take only a few seconds. You will be notified when installation is complete.</source>
-        <translation type="unfinished"/>
+        <translation>%1 現在會安裝一些必要的程式庫。只須花一點時間。安裝完成後會通知使用者。</translation>
     </message>
     <message>
         <location filename="../src/librssguard/network-web/readability.cpp" line="101"/>
         <source>Node.js is not configured properly. Go to &quot;Settings&quot; -&gt; &quot;Node.js&quot; and check if your Node.js is properly configured.</source>
-        <translation type="unfinished"/>
+        <translation>Node.js 未恰當設定。請於 &quot;設定&quot; -&gt; &quot;Node.js&quot;，檢查 Node.js 是否恰當設定。</translation>
     </message>
 </context>
 <context>
@@ -5236,7 +5236,7 @@ Login tokens expiration: %2</source>
     <message>
         <location filename="../src/librssguard/gui/reusable/searchtextwidget.ui" line="32"/>
         <source>Search text</source>
-        <translation type="unfinished"/>
+        <translation>搜尋文字</translation>
     </message>
     <message>
         <location filename="../src/librssguard/gui/reusable/searchtextwidget.ui" line="39"/>
@@ -5304,7 +5304,7 @@ File filter for external e-mail selection dialog.</extracomment>
     <message>
         <location filename="../src/librssguard/gui/settings/settingsbrowsermail.cpp" line="252"/>
         <source>Enter (optional) parameters:</source>
-        <translation type="unfinished"/>
+        <translation>輸入(可選用)參元:</translation>
     </message>
     <message>
         <location filename="../src/librssguard/gui/settings/settingsbrowsermail.cpp" line="46"/>
@@ -5684,17 +5684,17 @@ Authors of this application are NOT responsible for lost data.</source>
     <message>
         <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.cpp" line="41"/>
         <source>days (turned off)</source>
-        <translation type="unfinished"/>
+        <translation>天(已關閉)</translation>
     </message>
     <message numerus="yes">
         <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.cpp" line="44"/>
         <source>day(s)</source>
-        <translation type="unfinished"><numerusform></numerusform></translation>
+        <translation><numerusform> 天</numerusform></translation>
     </message>
     <message>
         <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="21"/>
         <source>Feed fetching</source>
-        <translation type="unfinished"/>
+        <translation>文源抓取</translation>
     </message>
     <message>
         <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="27"/>
@@ -5729,13 +5729,13 @@ Authors of this application are NOT responsible for lost data.</source>
     <message>
         <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="135"/>
         <source>Feeds list</source>
-        <translation type="unfinished"/>
+        <translation>文源清單</translation>
     </message>
     <message>
         <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="141"/>
         <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="441"/>
         <source>Row height</source>
-        <translation type="unfinished"/>
+        <translation>行高</translation>
     </message>
     <message>
         <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="178"/>
@@ -5759,7 +5759,7 @@ Authors of this application are NOT responsible for lost data.</source>
     <message>
         <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="219"/>
         <source>Article count format</source>
-        <translation type="unfinished"/>
+        <translation>文章數格式</translation>
     </message>
     <message>
         <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="248"/>
@@ -5814,17 +5814,17 @@ Authors of this application are NOT responsible for lost data.</source>
     <message>
         <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="303"/>
         <source>Fixup date/time of articles which are in the future</source>
-        <translation type="unfinished"/>
+        <translation>修正錯置到未來的文章日期/時間</translation>
     </message>
     <message>
         <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="404"/>
         <source>Articles list</source>
-        <translation type="unfinished"/>
+        <translation>文章清單</translation>
     </message>
     <message>
         <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="410"/>
         <source>Display real icons of feeds instead of read/unread icons</source>
-        <translation type="unfinished"/>
+        <translation>顯示文源自身的圖示，而非已讀/未讀的圖示</translation>
     </message>
     <message>
         <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="417"/>
@@ -5834,12 +5834,12 @@ Authors of this application are NOT responsible for lost data.</source>
     <message>
         <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="424"/>
         <source>Enable multiline items</source>
-        <translation type="unfinished"/>
+        <translation>對項目啟用多行</translation>
     </message>
     <message>
         <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="470"/>
         <source>Top/bottom row padding</source>
-        <translation type="unfinished"/>
+        <translation>行上/下的填白</translation>
     </message>
     <message>
         <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="499"/>
@@ -5849,7 +5849,7 @@ Authors of this application are NOT responsible for lost data.</source>
     <message>
         <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="525"/>
         <source>Custom date/time format for today&apos;s articles</source>
-        <translation type="unfinished"/>
+        <translation>對今天的文章自訂日期/時間</translation>
     </message>
     <message>
         <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="551"/>
@@ -5859,7 +5859,7 @@ Authors of this application are NOT responsible for lost data.</source>
     <message>
         <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="590"/>
         <source>Show relative time for articles not older than</source>
-        <translation type="unfinished"/>
+        <translation>顯示文章的日期不超過</translation>
     </message>
     <message>
         <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.h" line="34"/>
@@ -5882,7 +5882,7 @@ Authors of this application are NOT responsible for lost data.</source>
     <message>
         <location filename="../src/librssguard/gui/settings/settingsgeneral.ui" line="24"/>
         <source>Check for %1 updates on application startup</source>
-        <translation type="unfinished"/>
+        <translation>於應用程式啟動時檢查 %1  的更新</translation>
     </message>
     <message>
         <location filename="../src/librssguard/gui/settings/settingsgeneral.h" line="26"/>
@@ -5905,7 +5905,7 @@ Authors of this application are NOT responsible for lost data.</source>
     <message>
         <location filename="../src/librssguard/gui/settings/settingsgui.cpp" line="33"/>
         <source>Forced skin colors</source>
-        <translation type="unfinished"/>
+        <translation>強制使用外觀顏色</translation>
     </message>
     <message>
         <location filename="../src/librssguard/gui/settings/settingsgui.cpp" line="251"/>
@@ -5951,7 +5951,7 @@ Authors of this application are NOT responsible for lost data.</source>
     <message>
         <location filename="../src/librssguard/gui/settings/settingsgui.cpp" line="33"/>
         <source>Forced style</source>
-        <translation type="unfinished"/>
+        <translation>強制的樣式</translation>
     </message>
     <message>
         <location filename="../src/librssguard/gui/settings/settingsgui.cpp" line="42"/>
@@ -5964,7 +5964,10 @@ Authors of this application are NOT responsible for lost data.</source>
 
 Version: %2
 Description: %3</source>
-        <translation type="unfinished"/>
+        <translation>%1
+
+版本: %2
+描述: %3</translation>
     </message>
     <message>
         <location filename="../src/librssguard/gui/settings/settingsgui.cpp" line="278"/>
@@ -5999,7 +6002,7 @@ Description: %3</source>
     <message>
         <location filename="../src/librssguard/gui/settings/settingsgui.ui" line="112"/>
         <source>Use skin colors</source>
-        <translation type="unfinished"/>
+        <translation>使用外觀顏色</translation>
     </message>
     <message>
         <location filename="../src/librssguard/gui/settings/settingsgui.ui" line="120"/>
@@ -6045,7 +6048,7 @@ Description: %3</source>
     <message>
         <location filename="../src/librssguard/gui/settings/settingsgui.ui" line="210"/>
         <source>Task bar</source>
-        <translation type="unfinished"/>
+        <translation>工作列</translation>
     </message>
     <message>
         <location filename="../src/librssguard/gui/settings/settingsgui.ui" line="224"/>
@@ -6157,37 +6160,43 @@ Description: %3</source>
 Note that usually all required Node.js tools should be available via your &quot;PATH&quot; environment variable, so you do not have to specify full paths.
 
 Also, relaunch &quot;Settings&quot; dialog after you install Node.js.</source>
-        <translation type="unfinished"/>
+        <translation>Node.js 是一個非同步的、事件驅動的 JavaScript 執行期間程式庫，用於建構可擴展的網路應用程式。
+
+%1 整合了 Node.js，以帶來一些現代的功能，Adblock 就是一例。
+
+注意，所有必要的 Node.js 工具通常應該透過 &quot;PATH&quot; 環境變元來取用，所以不必指定完整路徑。
+
+安裝 Node.js 後，也請重新啟動 &quot;設定&quot; 對話框。</translation>
     </message>
     <message>
         <location filename="../src/librssguard/gui/settings/settingsnodejs.cpp" line="111"/>
         <source>Node.js has version %1.</source>
-        <translation type="unfinished"/>
+        <translation>Node.js 有版本 %1。</translation>
     </message>
     <message>
         <location filename="../src/librssguard/gui/settings/settingsnodejs.cpp" line="115"/>
         <source>Node.js: %1.</source>
-        <translation type="unfinished"/>
+        <translation>Node.js: %1。</translation>
     </message>
     <message>
         <location filename="../src/librssguard/gui/settings/settingsnodejs.cpp" line="124"/>
         <source>NPM has version %1.</source>
-        <translation type="unfinished"/>
+        <translation>NPM 有版本 %1。</translation>
     </message>
     <message>
         <location filename="../src/librssguard/gui/settings/settingsnodejs.cpp" line="128"/>
         <source>NPM: %1.</source>
-        <translation type="unfinished"/>
+        <translation>NPM: %1。</translation>
     </message>
     <message>
         <location filename="../src/librssguard/gui/settings/settingsnodejs.cpp" line="137"/>
         <source>Package folder is OK.</source>
-        <translation type="unfinished"/>
+        <translation>套件資料夾 OK。</translation>
     </message>
     <message>
         <location filename="../src/librssguard/gui/settings/settingsnodejs.cpp" line="138"/>
         <source>Package folder will be created!</source>
-        <translation type="unfinished"/>
+        <translation>將建立套件資料夾！</translation>
     </message>
     <message>
         <location filename="../src/librssguard/gui/settings/settingsnodejs.cpp" line="26"/>
@@ -6224,7 +6233,7 @@ Also, relaunch &quot;Settings&quot; dialog after you install Node.js.</source>
     <message>
         <location filename="../src/librssguard/gui/settings/settingsnodejs.ui" line="116"/>
         <source>&amp;Download Node.js</source>
-        <translation type="unfinished"/>
+        <translation>下載 Node.js(&amp;D)</translation>
     </message>
 </context>
 <context>
@@ -6398,7 +6407,7 @@ Also, there are some built-in sounds. Just start typing &quot;:&quot; and they w
     <message>
         <location filename="../src/librssguard/services/standard/standardfeed.cpp" line="303"/>
         <source>JSON error &apos;%1&apos;</source>
-        <translation type="unfinished"/>
+        <translation>JSON 出錯訊息：&apos;%1&apos;</translation>
     </message>
     <message>
         <location filename="../src/librssguard/services/standard/standardfeed.cpp" line="365"/>
@@ -7214,7 +7223,7 @@ Unread news: %2</source>
     <message>
         <location filename="../src/librssguard/services/tt-rss/gui/ttrssaccountdetails.ui" line="194"/>
         <source>&amp;Test setup</source>
-        <translation type="unfinished"/>
+        <translation>測試設定(&amp;T)</translation>
     </message>
 </context>
 <context>
@@ -7222,7 +7231,7 @@ Unread news: %2</source>
     <message>
         <location filename="../src/librssguard/services/tt-rss/ttrssfeed.cpp" line="48"/>
         <source>Share to published</source>
-        <translation type="unfinished"/>
+        <translation>分享到已發佈的</translation>
     </message>
 </context>
 <context>
@@ -7320,7 +7329,7 @@ Last login on: %4</source>
     <message>
         <location filename="../src/librssguard/gui/webbrowser.cpp" line="38"/>
         <source>View website in reader mode</source>
-        <translation type="unfinished"/>
+        <translation>以閱讀器模式檢視網站</translation>
     </message>
     <message>
         <location filename="../src/librssguard/gui/webbrowser.cpp" line="238"/>
@@ -7331,12 +7340,12 @@ Last login on: %4</source>
     <message>
         <location filename="../src/librssguard/gui/webbrowser.cpp" line="271"/>
         <source>Reader mode failed for this website</source>
-        <translation type="unfinished"/>
+        <translation>於此網站無法使用閱讀器模式</translation>
     </message>
     <message>
         <location filename="../src/librssguard/gui/webbrowser.cpp" line="272"/>
         <source>Reader mode cannot be applied to current page.</source>
-        <translation type="unfinished"/>
+        <translation>閱讀器模式無法套用到目前網頁</translation>
     </message>
     <message>
         <location filename="../src/librssguard/gui/webbrowser.cpp" line="283"/>

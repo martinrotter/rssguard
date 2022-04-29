@@ -551,22 +551,22 @@ Clique para abrir a pasta de destino.</translation>
     <message>
         <location filename="../src/librssguard/services/gmail/gui/emailpreviewer.ui" line="27"/>
         <source>From</source>
-        <translation type="unfinished"/>
+        <translation>De</translation>
     </message>
     <message>
         <location filename="../src/librssguard/services/gmail/gui/emailpreviewer.ui" line="59"/>
         <source>&amp;Attachments</source>
-        <translation type="unfinished"/>
+        <translation>&amp;Anexos</translation>
     </message>
     <message>
         <location filename="../src/librssguard/services/gmail/gui/emailpreviewer.ui" line="72"/>
         <source>&amp;Reply</source>
-        <translation type="unfinished"/>
+        <translation>&amp;Responder</translation>
     </message>
     <message>
         <location filename="../src/librssguard/services/gmail/gui/emailpreviewer.ui" line="82"/>
         <source>&amp;Forward</source>
-        <translation type="unfinished"/>
+        <translation>&amp;Encaminhar</translation>
     </message>
     <message>
         <location filename="../src/librssguard/services/gmail/gui/emailpreviewer.ui" line="94"/>
@@ -582,17 +582,17 @@ Clique para abrir a pasta de destino.</translation>
         <location filename="../src/librssguard/services/gmail/gui/emailpreviewer.cpp" line="98"/>
         <location filename="../src/librssguard/services/gmail/gui/emailpreviewer.cpp" line="104"/>
         <source>Cannot download attachment</source>
-        <translation type="unfinished"/>
+        <translation>Não é possível baixar o anexo</translation>
     </message>
     <message>
         <location filename="../src/librssguard/services/gmail/gui/emailpreviewer.cpp" line="99"/>
         <source>Attachment cannot be downloaded because you are not logged-in.</source>
-        <translation type="unfinished"/>
+        <translation>O anexo não pôde ser baixado pois você não está logado.</translation>
     </message>
     <message>
         <location filename="../src/librssguard/services/gmail/gui/emailpreviewer.cpp" line="105"/>
         <source>Attachment cannot be downloaded because some general error happened.</source>
-        <translation type="unfinished"/>
+        <translation>O anexo não pôde ser baixado pois ocorreu um erro geral.</translation>
     </message>
 </context>
 <context>
@@ -1977,7 +1977,7 @@ ou esta função ainda não foi implementada.</translation>
     <message>
         <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="438"/>
         <source>Switch main window visibility</source>
-        <translation type="unfinished"/>
+        <translation>Mudar visibilidade da janela principal</translation>
     </message>
     <message>
         <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="441"/>
@@ -3650,7 +3650,7 @@ Expiração dos tokens de login: %2</translation>
     <message>
         <location filename="../src/librssguard/gui/webviewers/litehtml/litehtmlviewer.cpp" line="268"/>
         <source>Copy URL</source>
-        <translation type="unfinished"/>
+        <translation>Copiar URL</translation>
     </message>
     <message>
         <location filename="../src/librssguard/gui/webviewers/litehtml/litehtmlviewer.cpp" line="276"/>
@@ -3665,12 +3665,12 @@ Expiração dos tokens de login: %2</translation>
     <message>
         <location filename="../src/librssguard/gui/webviewers/litehtml/litehtmlviewer.cpp" line="299"/>
         <source>Use simple article layout</source>
-        <translation type="unfinished"/>
+        <translation>Usar layout de artigo simples</translation>
     </message>
     <message>
         <location filename="../src/librssguard/gui/webviewers/litehtml/litehtmlviewer.cpp" line="305"/>
         <source>Reload with images</source>
-        <translation type="unfinished"/>
+        <translation>Recarregar com imagens</translation>
     </message>
     <message>
         <location filename="../src/librssguard/gui/webviewers/litehtml/litehtmlviewer.cpp" line="325"/>
@@ -4122,52 +4122,52 @@ Expiração dos tokens de login: %2</translation>
     <message>
         <location filename="../src/librssguard/gui/toolbars/messagestoolbar.cpp" line="168"/>
         <source>Menu for filtering articles</source>
-        <translation type="unfinished"/>
+        <translation>Menu para filtrar artigos</translation>
     </message>
     <message>
         <location filename="../src/librssguard/gui/toolbars/messagestoolbar.cpp" line="171"/>
         <source>No extra filtering</source>
-        <translation type="unfinished"/>
+        <translation>Sem filtragem extra</translation>
     </message>
     <message>
         <location filename="../src/librssguard/gui/toolbars/messagestoolbar.cpp" line="176"/>
         <source>Show unread articles</source>
-        <translation type="unfinished"/>
+        <translation>Mostrar artigos não lidos</translation>
     </message>
     <message>
         <location filename="../src/librssguard/gui/toolbars/messagestoolbar.cpp" line="181"/>
         <source>Show important articles</source>
-        <translation type="unfinished"/>
+        <translation>Mostrar artigos importantes</translation>
     </message>
     <message>
         <location filename="../src/librssguard/gui/toolbars/messagestoolbar.cpp" line="186"/>
         <source>Show today&apos;s articles</source>
-        <translation type="unfinished"/>
+        <translation>Mostrar artigos de hoje</translation>
     </message>
     <message>
         <location filename="../src/librssguard/gui/toolbars/messagestoolbar.cpp" line="191"/>
         <source>Show yesterday&apos;s articles</source>
-        <translation type="unfinished"/>
+        <translation>Mostrar artigos de ontem</translation>
     </message>
     <message>
         <location filename="../src/librssguard/gui/toolbars/messagestoolbar.cpp" line="196"/>
         <source>Show articles in last 24 hours</source>
-        <translation type="unfinished"/>
+        <translation>Mostrar artigos das últimas 24 horas</translation>
     </message>
     <message>
         <location filename="../src/librssguard/gui/toolbars/messagestoolbar.cpp" line="201"/>
         <source>Show articles in last 48 hours</source>
-        <translation type="unfinished"/>
+        <translation>Mostrar artigos das últimas 48 horas</translation>
     </message>
     <message>
         <location filename="../src/librssguard/gui/toolbars/messagestoolbar.cpp" line="206"/>
         <source>Show this week&apos;s articles</source>
-        <translation type="unfinished"/>
+        <translation>Mostrar artigos desta semana</translation>
     </message>
     <message>
         <location filename="../src/librssguard/gui/toolbars/messagestoolbar.cpp" line="211"/>
         <source>Show last week&apos;s articles</source>
-        <translation type="unfinished"/>
+        <translation>Mostrar artigos da semana passada</translation>
     </message>
     <message>
         <location filename="../src/librssguard/gui/toolbars/messagestoolbar.cpp" line="216"/>
@@ -4183,7 +4183,7 @@ Expiração dos tokens de login: %2</translation>
     <message>
         <location filename="../src/librssguard/gui/toolbars/messagestoolbar.cpp" line="236"/>
         <source>Article list filter</source>
-        <translation type="unfinished"/>
+        <translation>Filtro da lista de artigos</translation>
     </message>
     <message>
         <location filename="../src/librssguard/gui/toolbars/messagestoolbar.cpp" line="128"/>
