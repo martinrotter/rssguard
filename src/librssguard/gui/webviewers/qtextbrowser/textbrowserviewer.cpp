@@ -431,8 +431,6 @@ void TextBrowserViewer::onAnchorClicked(const QUrl& url) {
 }
 
 void TextBrowserViewer::setHtml(const QString& html, const QUrl& base_url) {
-  setVerticalScrollBarPosition(0.0);
-
   if (m_resourcesEnabled) {
     static QRegularExpression img_tag_rgx("\\<img[^\\>]*src\\s*=\\s*[\"\']([^\"\']*)[\"\'][^\\>]*\\>",
                                           QRegularExpression::PatternOption::CaseInsensitiveOption |
@@ -466,6 +464,8 @@ void TextBrowserViewer::setHtml(const QString& html, const QUrl& base_url) {
   if (!m_neededResources.isEmpty()) {
     QTimer::singleShot(20, this, &TextBrowserViewer::reloadHtmlDelayed);
   }
+
+  setVerticalScrollBarPosition(0.0);
 
   // TODO: implement RTL for viewers somehow?
   /*
