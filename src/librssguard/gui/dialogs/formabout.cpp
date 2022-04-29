@@ -18,6 +18,10 @@
 #include <QPlainTextEdit>
 #include <QTextStream>
 
+#if defined(USE_WEBENGINE)
+#include <QWebEngineProfile>
+#endif
+
 FormAbout::FormAbout(QWidget* parent) : QDialog(parent) {
   m_ui.setupUi(this);
   m_ui.m_lblIcon->setPixmap(QPixmap(APP_ICON_PATH));
@@ -51,14 +55,25 @@ void FormAbout::loadSettingsAndPaths() {
 
   m_ui.m_tbResources->setPlainText(QSL("User data folder (\"%5\") -> \"%1\"\n\n"
                                        "Settings file (%3) -> \"%2\"\n\n"
-                                       "Skins base folder -> \"%4\"")
+                                       "Skins base folder -> \"%4\"\n\n"
+                                       "Node.js package folder -> \"%6\"\n\n"
+                                       "QtWebEngine cache folder -> \"%7\"")
                                      .arg(user_data_path,
                                           QDir::toNativeSeparators(qApp->settings()->fileName())
                                             .replace(user_data_path, QSL(USER_DATA_PLACEHOLDER)),
                                           settings_type,
                                           QDir::toNativeSeparators(qApp->skins()->customSkinBaseFolder())
                                             .replace(user_data_path, QSL(USER_DATA_PLACEHOLDER)),
-                                          QSL(USER_DATA_PLACEHOLDER)));
+                                          QSL(USER_DATA_PLACEHOLDER),
+                                          QDir::toNativeSeparators(qApp->nodejs()->packageFolder())
+                                            .replace(user_data_path, QSL(USER_DATA_PLACEHOLDER)),
+#if defined(USE_WEBENGINE)
+                                          QDir::toNativeSeparators(QWebEngineProfile::defaultProfile()->cachePath())
+                                            .replace(user_data_path, QSL(USER_DATA_PLACEHOLDER))
+#else
+                                          QSL("-")
+#endif
+                                            ));
 }
 
 void FormAbout::loadLicenseAndInformation() {
