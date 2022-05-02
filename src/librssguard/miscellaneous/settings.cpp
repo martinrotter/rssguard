@@ -41,7 +41,11 @@ DVALUE(QString) Node::PackageFolderDef = QSL(USER_DATA_PLACEHOLDER) + "/node-pac
 // Cookies.
 DKEY Cookies::ID = "cookies";
 
+// Network.
 DKEY Network::ID = "network";
+
+DKEY Network::SendDNT = "send_dnt";
+VALUE(bool) Network::SendDNTDef = false;
 
 DKEY Network::IgnoreAllCookies = "ignore_all_cookies";
 DVALUE(bool) Network::IgnoreAllCookiesDef = false;
@@ -399,9 +403,6 @@ DKEY Notifications::ID = "notifications";
 
 // Web browser.
 DKEY Browser::ID = "browser";
-
-DKEY Browser::SendDNT = "send_dnt";
-VALUE(bool) Browser::SendDNTDef = false;
 
 DKEY Browser::OpenLinksInExternalBrowserRightAway = "open_link_externally_wo_confirmation";
 DVALUE(bool) Browser::OpenLinksInExternalBrowserRightAwayDef = false;

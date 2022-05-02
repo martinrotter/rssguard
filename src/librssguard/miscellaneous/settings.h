@@ -320,6 +320,9 @@ namespace GUI {
 namespace Network {
   KEY ID;
 
+  KEY SendDNT;
+  VALUE(bool) SendDNTDef;
+
   KEY IgnoreAllCookies;
   VALUE(bool) IgnoreAllCookiesDef;
 } // namespace Network
@@ -439,40 +442,29 @@ namespace Notifications {
 // Web browser.
 namespace Browser {
   KEY ID;
-  KEY SendDNT;
-
-  VALUE(bool) SendDNTDef;
 
   KEY OpenLinksInExternalBrowserRightAway;
-
   VALUE(bool) OpenLinksInExternalBrowserRightAwayDef;
 
   KEY CustomExternalBrowserEnabled;
-
   VALUE(bool) CustomExternalBrowserEnabledDef;
 
   KEY CustomExternalBrowserExecutable;
-
   VALUE(QString) CustomExternalBrowserExecutableDef;
 
   KEY CustomExternalBrowserArguments;
-
   VALUE(char*) CustomExternalBrowserArgumentsDef;
 
   KEY CustomExternalEmailEnabled;
-
   VALUE(bool) CustomExternalEmailEnabledDef;
 
   KEY CustomExternalEmailExecutable;
-
   VALUE(QString) CustomExternalEmailExecutableDef;
 
   KEY ExternalTools;
-
   VALUE(QStringList) ExternalToolsDef;
 
   KEY CustomExternalEmailArguments;
-
   VALUE(char*) CustomExternalEmailArgumentsDef;
 } // namespace Browser
 

@@ -51,5 +51,5 @@ void NetworkUrlInterceptor::removeUrlInterceptor(UrlInterceptor* interceptor) {
 }
 
 void NetworkUrlInterceptor::load() {
-  m_sendDnt = qApp->settings()->value(GROUP(Browser), SETTING(Browser::SendDNT)).toBool();
+  m_sendDnt = qApp->settings()->value(GROUP(Network), SETTING(Network::SendDNT)).toBool();
 }

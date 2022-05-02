@@ -386,10 +386,12 @@ void TextBrowserViewer::enableResources(bool enable) {
 }
 
 void TextBrowserViewer::openLinkInExternalBrowser() {
-  auto link = anchorAt(m_lastContextMenuPos);
+  auto url = QUrl(anchorAt(m_lastContextMenuPos));
 
-  if (!link.isEmpty()) {
-    qApp->web()->openUrlInExternalBrowser(link);
+  if (url.isValid()) {
+    const QUrl resolved_url = (m_currentUrl.isValid() && url.isRelative()) ? m_currentUrl.resolved(url) : url;
+
+    qApp->web()->openUrlInExternalBrowser(resolved_url.toString());
 
     if (qApp->settings()
           ->value(GROUP(Messages), SETTING(Messages::BringAppToFrontAfterMessageOpenedExternally))
@@ -402,10 +404,12 @@ void TextBrowserViewer::openLinkInExternalBrowser() {
 }
 
 void TextBrowserViewer::downloadLink() {
-  auto link = anchorAt(m_lastContextMenuPos);
+  auto url = QUrl(anchorAt(m_lastContextMenuPos));
 
-  if (!link.isEmpty()) {
-    qApp->downloadManager()->download(link);
+  if (url.isValid()) {
+    const QUrl resolved_url = (m_currentUrl.isValid() && url.isRelative()) ? m_currentUrl.resolved(url) : url;
+
+    qApp->downloadManager()->download(resolved_url);
   }
 }
 
