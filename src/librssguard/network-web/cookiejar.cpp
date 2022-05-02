@@ -21,12 +21,14 @@
 CookieJar::CookieJar(QObject* parent) : QNetworkCookieJar(parent) {
 #if defined(USE_WEBENGINE)
   // WebEngine does not store cookies, CookieJar does.
-  QWebEngineProfile::defaultProfile()->setPersistentCookiesPolicy(QWebEngineProfile::PersistentCookiesPolicy::NoPersistentCookies);
+  QWebEngineProfile::defaultProfile()
+    ->setPersistentCookiesPolicy(QWebEngineProfile::PersistentCookiesPolicy::NoPersistentCookies);
 
   m_webEngineCookies = QWebEngineProfile::defaultProfile()->cookieStore();
 #endif
 
   // Load all cookies and also set them into WebEngine store.
+  updateSettings();
   loadCookies();
 
 #if defined(USE_WEBENGINE)
@@ -75,7 +77,7 @@ QList<QNetworkCookie> CookieJar::extractCookiesFromUrl(const QString& url) {
 
 void CookieJar::loadCookies() {
   Settings* sett = qApp->settings();
-  auto keys = sett->allKeys(Cookies::ID);
+  auto keys = sett->allKeys(GROUP(Cookies));
 
   for (const QString& cookie_key : qAsConst(keys)) {
     QByteArray encoded = sett->password(GROUP(Cookies), cookie_key, {}).toByteArray();
@@ -85,10 +87,7 @@ void CookieJar::loadCookies() {
 
       if (!cookie.isEmpty()) {
         if (!insertCookieInternal(cookie.at(0), true, false)) {
-          qCriticalNN << LOGSEC_NETWORK
-                      << "Failed to load cookie"
-                      << QUOTE_W_SPACE(cookie_key)
-                      << "from settings.";
+          qCriticalNN << LOGSEC_NETWORK << "Failed to load cookie" << QUOTE_W_SPACE(cookie_key) << "from settings.";
           sett->remove(Cookies::ID, cookie_key);
         }
       }
@@ -181,11 +180,25 @@ bool CookieJar::deleteCookieInternal(const QNetworkCookie& cookie, bool notify_o
 }
 
 bool CookieJar::insertCookie(const QNetworkCookie& cookie) {
-  return insertCookieInternal(cookie, false, true);
+  if (m_ignoreAllCookies) {
+    return {};
+  }
+  else {
+    return insertCookieInternal(cookie, false, true);
+  }
 }
 
 bool CookieJar::deleteCookie(const QNetworkCookie& cookie) {
   return deleteCookieInternal(cookie, false);
+}
+
+void CookieJar::updateSettings() {
+  m_ignoreAllCookies = qApp->settings()->value(GROUP(Network), SETTING(Network::IgnoreAllCookies)).toBool();
+
+  if (m_ignoreAllCookies) {
+    setAllCookies({});
+    qApp->settings()->remove(GROUP(Cookies));
+  }
 }
 
 bool CookieJar::updateCookie(const QNetworkCookie& cookie) {

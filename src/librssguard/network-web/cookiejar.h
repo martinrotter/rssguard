@@ -19,6 +19,8 @@ class CookieJar : public QNetworkCookieJar {
     virtual bool updateCookie(const QNetworkCookie& cookie);
     virtual bool deleteCookie(const QNetworkCookie& cookie);
 
+    void updateSettings();
+
   public:
     static QList<QNetworkCookie> extractCookiesFromUrl(const QString& url);
 
@@ -32,8 +34,10 @@ class CookieJar : public QNetworkCookieJar {
 
   private:
 #if defined(USE_WEBENGINE)
-    QWebEngineCookieStore * m_webEngineCookies;
+    QWebEngineCookieStore* m_webEngineCookies;
 #endif
+
+    bool m_ignoreAllCookies;
 };
 
 #endif // COOKIEJAR_H

@@ -316,6 +316,14 @@ namespace GUI {
   VALUE(char*) StyleDef;
 } // namespace GUI
 
+// Network.
+namespace Network {
+  KEY ID;
+
+  KEY IgnoreAllCookies;
+  VALUE(bool) IgnoreAllCookiesDef;
+} // namespace Network
+
 // General.
 namespace General {
   KEY ID;

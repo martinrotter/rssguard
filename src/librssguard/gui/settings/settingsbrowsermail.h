@@ -12,7 +12,7 @@
 class NetworkProxyDetails;
 
 class SettingsBrowserMail : public SettingsPanel {
-  Q_OBJECT
+    Q_OBJECT
 
   public:
     explicit SettingsBrowserMail(Settings* settings, QWidget* parent = nullptr);
@@ -43,7 +43,7 @@ class SettingsBrowserMail : public SettingsPanel {
 };
 
 inline QString SettingsBrowserMail::title() const {
-  return tr("Web browser & e-mail & proxy");
+  return tr("Network & web & tools");
 }
 
 #endif // SETTINGSBROWSERMAIL_H

@@ -8,6 +8,7 @@
 #include "miscellaneous/application.h"
 #include "miscellaneous/externaltool.h"
 #include "miscellaneous/iconfactory.h"
+#include "network-web/cookiejar.h"
 #include "network-web/silentnetworkaccessmanager.h"
 #include "network-web/webfactory.h"
 
@@ -39,6 +40,7 @@ SettingsBrowserMail::SettingsBrowserMail(Settings* settings, QWidget* parent)
   m_ui->m_listTools->setHeaderLabels(QStringList() << tr("Executable") << tr("Parameters"));
   m_ui->m_listTools->header()->setSectionResizeMode(0, QHeaderView::ResizeMode::ResizeToContents);
 
+  connect(m_ui->m_cbIgnoreAllCookies, &QCheckBox::stateChanged, this, &SettingsBrowserMail::dirtifySettings);
   connect(m_ui->m_checkOpenLinksInExternal, &QCheckBox::stateChanged, this, &SettingsBrowserMail::dirtifySettings);
   connect(m_proxyDetails, &NetworkProxyDetails::changed, this, &SettingsBrowserMail::dirtifySettings);
   connect(m_ui->m_grpCustomExternalBrowser, &QGroupBox::toggled, this, &SettingsBrowserMail::dirtifySettings);
@@ -153,6 +155,8 @@ void SettingsBrowserMail::selectEmailExecutable() {
 void SettingsBrowserMail::loadSettings() {
   onBeginLoadSettings();
 
+  m_ui->m_cbIgnoreAllCookies
+    ->setChecked(settings()->value(GROUP(Network), SETTING(Network::IgnoreAllCookies)).toBool());
   m_ui->m_checkOpenLinksInExternal
     ->setChecked(settings()->value(GROUP(Browser), SETTING(Browser::OpenLinksInExternalBrowserRightAway)).toBool());
 
@@ -190,6 +194,8 @@ void SettingsBrowserMail::loadSettings() {
 
 void SettingsBrowserMail::saveSettings() {
   onBeginSaveSettings();
+
+  settings()->setValue(GROUP(Network), Network::IgnoreAllCookies, m_ui->m_cbIgnoreAllCookies->isChecked());
 
   settings()->setValue(GROUP(Browser),
                        Browser::OpenLinksInExternalBrowserRightAway,
@@ -229,6 +235,7 @@ void SettingsBrowserMail::saveSettings() {
 
   ExternalTool::setToolsToSettings(tools);
 
+  qApp->web()->cookieJar()->updateSettings();
   qApp->web()->updateProxy();
 
   // Reload settings for all network access managers.

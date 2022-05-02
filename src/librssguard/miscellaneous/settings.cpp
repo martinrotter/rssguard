@@ -10,7 +10,6 @@
 #include <QPointer>
 
 #if defined(USE_WEBENGINE)
-
 // WebEngine.
 DKEY WebEngineAttributes::ID = "web_engine_attributes";
 #endif
@@ -41,6 +40,11 @@ DVALUE(QString) Node::PackageFolderDef = QSL(USER_DATA_PLACEHOLDER) + "/node-pac
 
 // Cookies.
 DKEY Cookies::ID = "cookies";
+
+DKEY Network::ID = "network";
+
+DKEY Network::IgnoreAllCookies = "ignore_all_cookies";
+DVALUE(bool) Network::IgnoreAllCookiesDef = false;
 
 // AdBlock.
 DKEY AdBlock::ID = "adblock";
