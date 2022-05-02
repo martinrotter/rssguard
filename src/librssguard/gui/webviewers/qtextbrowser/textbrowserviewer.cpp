@@ -34,6 +34,15 @@ TextBrowserViewer::TextBrowserViewer(QWidget* parent)
   setResourcesEnabled(qApp->settings()->value(GROUP(Messages), SETTING(Messages::ShowResourcesInArticles)).toBool());
   setDocument(m_document.data());
 
+  // Apply master CSS.
+  QColor a_color = qApp->skins()->currentSkin().colorForModel(SkinEnums::PaletteColors::FgInteresting).value<QColor>();
+
+  if (!a_color.isValid()) {
+    a_color = qApp->palette().color(QPalette::ColorRole::Highlight);
+  }
+
+  m_document.data()->setDefaultStyleSheet(QSL("a { color: %1; }").arg(a_color.name()));
+
   connect(this, &TextBrowserViewer::reloadDocument, this, [this]() {
     const auto scr = verticalScrollBarPosition();
     setHtmlPrivate(html(), m_currentUrl);
@@ -116,12 +125,6 @@ PreparedHtml TextBrowserViewer::prepareHtmlForMessage(const QList<Message>& mess
 
   html.m_html += QSL("</div>");
 
-  QColor a_color = qApp->skins()->currentSkin().colorForModel(SkinEnums::PaletteColors::FgInteresting).value<QColor>();
-
-  if (!a_color.isValid()) {
-    a_color = qApp->palette().color(QPalette::ColorRole::Highlight);
-  }
-
   QString base_url;
   auto* feed = selected_item->getParentServiceRoot()
                  ->getItemFromSubTree([messages](const RootItem* it) {
@@ -137,14 +140,6 @@ PreparedHtml TextBrowserViewer::prepareHtmlForMessage(const QList<Message>& mess
     }
   }
 
-  // Final html, with replaced link colors.
-  html.m_html = QSL("<html>"
-                    "<head><style>"
-                    "a { color: %2; }"
-                    "</style></head>"
-                    "<body>%1</body>"
-                    "</html>")
-                  .arg(html.m_html, a_color.name());
   html.m_baseUrl = base_url;
 
   return html;

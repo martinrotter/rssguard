@@ -9,10 +9,12 @@
 
 #include "ui_emailpreviewer.h"
 
+#include <QTimer>
+
 class GmailServiceRoot;
 
 class EmailPreviewer : public CustomMessagePreviewer {
-  Q_OBJECT
+    Q_OBJECT
 
   public:
     explicit EmailPreviewer(GmailServiceRoot* account, QWidget* parent = nullptr);
@@ -22,6 +24,7 @@ class EmailPreviewer : public CustomMessagePreviewer {
     virtual void loadMessage(const Message& msg, RootItem* selected_item);
 
   private slots:
+    void loadExtraMessageData();
     void replyToEmail();
     void forwardEmail();
     void downloadAttachment(QAction* act);
@@ -31,6 +34,7 @@ class EmailPreviewer : public CustomMessagePreviewer {
     GmailServiceRoot* m_account;
     QScopedPointer<WebBrowser> m_webView;
     Message m_message;
+    QTimer m_tmrLoadExtraMessageData;
 };
 
 #endif // EMAILPREVIEWER_H

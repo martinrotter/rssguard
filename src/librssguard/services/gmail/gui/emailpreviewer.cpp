@@ -18,6 +18,9 @@ EmailPreviewer::EmailPreviewer(GmailServiceRoot* account, QWidget* parent)
   : CustomMessagePreviewer(parent), m_account(account), m_webView(new WebBrowser(nullptr, this)) {
   m_ui.setupUi(this);
 
+  m_tmrLoadExtraMessageData.setInterval(200);
+  m_tmrLoadExtraMessageData.setSingleShot(true);
+
   m_ui.m_mainLayout->addWidget(dynamic_cast<QWidget*>(m_webView.data()), 3, 0, 1, -1);
   m_ui.m_btnAttachments->setIcon(qApp->icons()->fromTheme(QSL("mail-attachment")));
   m_ui.m_btnForward->setIcon(qApp->icons()->fromTheme(QSL("mail-forward")));
@@ -32,6 +35,8 @@ EmailPreviewer::EmailPreviewer(GmailServiceRoot* account, QWidget* parent)
   connect(menu_attachments, &QMenu::triggered, this, &EmailPreviewer::downloadAttachment);
   connect(m_ui.m_btnReply, &QToolButton::clicked, this, &EmailPreviewer::replyToEmail);
   connect(m_ui.m_btnForward, &QToolButton::clicked, this, &EmailPreviewer::forwardEmail);
+
+  connect(&m_tmrLoadExtraMessageData, &QTimer::timeout, this, &EmailPreviewer::loadExtraMessageData);
 }
 
 EmailPreviewer::~EmailPreviewer() {
@@ -39,6 +44,7 @@ EmailPreviewer::~EmailPreviewer() {
 }
 
 void EmailPreviewer::clear() {
+  m_tmrLoadExtraMessageData.stop();
   m_webView->clear(false);
 }
 
@@ -61,6 +67,14 @@ void EmailPreviewer::loadMessage(const Message& msg, RootItem* selected_item) {
   }
 
   m_ui.m_btnAttachments->setDisabled(m_ui.m_btnAttachments->menu()->isEmpty());
+
+  m_tmrLoadExtraMessageData.start();
+}
+
+void EmailPreviewer::loadExtraMessageData() {
+  m_ui.m_tbTo->setText(m_account->network()->getMessageMetadata(m_message.m_customId,
+                                                                {QSL("TO")},
+                                                                m_account->networkProxy())["To"]);
 }
 
 void EmailPreviewer::replyToEmail() {
@@ -86,8 +100,7 @@ void EmailPreviewer::downloadAttachment(QAction* act) {
 
         if (!data.isEmpty()) {
           IOFactory::writeFile(it->output().fileName(),
-                               QByteArray::fromBase64(data.toLocal8Bit(),
-                                                      QByteArray::Base64Option::Base64UrlEncoding));
+                               QByteArray::fromBase64(data.toLocal8Bit(), QByteArray::Base64Option::Base64UrlEncoding));
         }
       }
     });

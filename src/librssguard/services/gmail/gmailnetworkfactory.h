@@ -20,7 +20,7 @@ class OAuth2Service;
 class Downloader;
 
 class GmailNetworkFactory : public QObject {
-  Q_OBJECT
+    Q_OBJECT
 
   public:
     explicit GmailNetworkFactory(QObject* parent = nullptr);
@@ -40,10 +40,15 @@ class GmailNetworkFactory : public QObject {
     void setDownloadOnlyUnreadMessages(bool download_only_unread_messages);
 
     // API methods.
+    QMap<QString, QString> getMessageMetadata(const QString& msg_id,
+                                              const QStringList& metadata,
+                                              const QNetworkProxy& custom_proxy);
     QNetworkRequest requestForAttachment(const QString& email_id, const QString& attachment_id);
     QString sendEmail(Mimesis::Message msg, const QNetworkProxy& custom_proxy, Message* reply_to_message = nullptr);
-    QList<Message> messages(const QString& stream_id, const QHash<ServiceRoot::BagOfMessages, QStringList>& stated_messages,
-                            Feed::Status& error, const QNetworkProxy& custom_proxy);
+    QList<Message> messages(const QString& stream_id,
+                            const QHash<ServiceRoot::BagOfMessages, QStringList>& stated_messages,
+                            Feed::Status& error,
+                            const QNetworkProxy& custom_proxy);
     QNetworkReply::NetworkError markMessagesRead(RootItem::ReadStatus status,
                                                  const QStringList& custom_ids,
                                                  const QNetworkProxy& custom_proxy);
@@ -64,9 +69,6 @@ class GmailNetworkFactory : public QObject {
 
   private:
     bool fillFullMessage(Message& msg, const QJsonObject& json, const QString& feed_id);
-    QMap<QString, QString> getMessageMetadata(const QString& msg_id,
-                                              const QStringList& metadata,
-                                              const QNetworkProxy& custom_proxy);
     QList<Message> obtainAndDecodeFullMessages(const QStringList& message_ids,
                                                const QString& feed_id,
                                                const QNetworkProxy& custom_proxy);

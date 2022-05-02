@@ -14,13 +14,6 @@
    <string>Form</string>
   </property>
   <layout class="QGridLayout" name="m_mainLayout">
-   <item row="2" column="1">
-    <widget class="QLineEdit" name="m_tbSubject">
-     <property name="readOnly">
-      <bool>true</bool>
-     </property>
-    </widget>
-   </item>
    <item row="0" column="0">
     <widget class="QLabel" name="label">
      <property name="text">
@@ -112,6 +105,13 @@
      </property>
      <property name="buddy">
       <cstring>m_tbTo</cstring>
+     </property>
+    </widget>
+   </item>
+   <item row="2" column="1" colspan="2">
+    <widget class="QLineEdit" name="m_tbSubject">
+     <property name="readOnly">
+      <bool>true</bool>
      </property>
     </widget>
    </item>
