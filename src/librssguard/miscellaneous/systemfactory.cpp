@@ -48,10 +48,9 @@ SystemFactory::AutoStartStatus SystemFactory::autoStartStatus() const {
 #if defined(Q_OS_WIN)
   QSettings registry_key(QSL("HKEY_CURRENT_USER\\Software\\Microsoft\\Windows\\CurrentVersion\\Run"),
                          QSettings::Format::NativeFormat);
-  const bool autostart_enabled = registry_key.value(QSL(APP_LOW_NAME),
-                                                    QString()).toString().replace(QL1C('\\'),
-                                                                                  QL1C('/')) ==
-                                 Application::applicationFilePath();
+  const bool autostart_enabled =
+    registry_key.value(QSL(APP_LOW_NAME), QString()).toString().replace(QL1C('\\'), QL1C('/')) ==
+    Application::applicationFilePath();
 
   if (autostart_enabled) {
     return AutoStartStatus::Enabled;
@@ -122,12 +121,12 @@ bool SystemFactory::setAutoStartStatus(AutoStartStatus new_status) {
   }
 
 #if defined(Q_OS_WIN)
-  QSettings registry_key(QSL("HKEY_CURRENT_USER\\Software\\Microsoft\\Windows\\CurrentVersion\\Run"), QSettings::NativeFormat);
+  QSettings registry_key(QSL("HKEY_CURRENT_USER\\Software\\Microsoft\\Windows\\CurrentVersion\\Run"),
+                         QSettings::NativeFormat);
 
   switch (new_status) {
     case AutoStartStatus::Enabled:
-      registry_key.setValue(QSL(APP_LOW_NAME),
-                            Application::applicationFilePath().replace(QL1C('/'), QL1C('\\')));
+      registry_key.setValue(QSL(APP_LOW_NAME), Application::applicationFilePath().replace(QL1C('/'), QL1C('\\')));
       return true;
 
     case AutoStartStatus::Disabled:
@@ -155,7 +154,8 @@ bool SystemFactory::setAutoStartStatus(AutoStartStatus new_status) {
         return false;
       }
 
-      const QString source_autostart_desktop_file = QString(APP_DESKTOP_ENTRY_PATH) + QDir::separator() + APP_DESKTOP_SOURCE_ENTRY_FILE;
+      const QString source_autostart_desktop_file =
+        QString(APP_DESKTOP_ENTRY_PATH) + QDir::separator() + APP_DESKTOP_SOURCE_ENTRY_FILE;
 
       return QFile::copy(source_autostart_desktop_file, destination_file);
     }
@@ -204,26 +204,29 @@ void SystemFactory::checkForUpdates() const {
 }
 
 void SystemFactory::checkForUpdatesOnStartup() {
+#if !defined(NO_UPDATE_CHECK)
   if (qApp->settings()->value(GROUP(General), SETTING(General::UpdateOnStartup)).toBool()) {
-    QObject::connect(qApp->system(), &SystemFactory::updatesChecked,
-                     this, [&](const QPair<QList<UpdateInfo>, QNetworkReply::NetworkError>& updates) {
-      QObject::disconnect(qApp->system(), &SystemFactory::updatesChecked, this, nullptr);
+    QObject::connect(qApp->system(),
+                     &SystemFactory::updatesChecked,
+                     this,
+                     [&](const QPair<QList<UpdateInfo>, QNetworkReply::NetworkError>& updates) {
+                       QObject::disconnect(qApp->system(), &SystemFactory::updatesChecked, this, nullptr);
 
-      if (!updates.first.isEmpty() &&
-          updates.second == QNetworkReply::NetworkError::NoError &&
-          SystemFactory::isVersionNewer(updates.first.at(0).m_availableVersion, QSL(APP_VERSION))) {
-        qApp->showGuiMessage(Notification::Event::NewAppVersionAvailable, {
-          QObject::tr("New version available"),
-          QObject::tr("Click the bubble for more information."),
-          QSystemTrayIcon::Information }, {}, {
-          tr("See new version info"),
-          [] {
-            FormUpdate(qApp->mainForm()).exec();
-          } });
-      }
-    });
+                       if (!updates.first.isEmpty() && updates.second == QNetworkReply::NetworkError::NoError &&
+                           SystemFactory::isVersionNewer(updates.first.at(0).m_availableVersion, QSL(APP_VERSION))) {
+                         qApp->showGuiMessage(Notification::Event::NewAppVersionAvailable,
+                                              {QObject::tr("New version available"),
+                                               QObject::tr("Click the bubble for more information."),
+                                               QSystemTrayIcon::Information},
+                                              {},
+                                              {tr("See new version info"), [] {
+                                                 FormUpdate(qApp->mainForm()).exec();
+                                               }});
+                       }
+                     });
     qApp->system()->checkForUpdates();
   }
+#endif
 }
 
 bool SystemFactory::isVersionNewer(const QString& new_version, const QString& base_version) {
@@ -239,8 +242,7 @@ bool SystemFactory::isVersionEqualOrNewer(const QString& new_version, const QStr
 
 bool SystemFactory::openFolderFile(const QString& file_path) {
 #if defined(Q_OS_WIN)
-  return QProcess::startDetached(QSL("explorer.exe"),
-                                 { "/select,", QDir::toNativeSeparators(file_path) });
+  return QProcess::startDetached(QSL("explorer.exe"), {"/select,", QDir::toNativeSeparators(file_path)});
 #else
   const QString folder = QDir::toNativeSeparators(QFileInfo(file_path).absoluteDir().absolutePath());
 

@@ -11,6 +11,10 @@ SettingsGeneral::SettingsGeneral(Settings* settings, QWidget* parent)
   m_ui->m_checkAutostart->setText(m_ui->m_checkAutostart->text().arg(QSL(APP_NAME)));
   m_ui->m_checkForUpdatesOnStart->setText(m_ui->m_checkForUpdatesOnStart->text().arg(QSL(APP_NAME)));
 
+#if defined(NO_UPDATE_CHECK)
+  m_ui->m_checkForUpdatesOnStart->setVisible(false);
+#endif
+
   connect(m_ui->m_checkAutostart, &QCheckBox::stateChanged, this, &SettingsGeneral::dirtifySettings);
   connect(m_ui->m_checkForUpdatesOnStart, &QCheckBox::stateChanged, this, &SettingsGeneral::dirtifySettings);
 }
@@ -21,7 +25,8 @@ SettingsGeneral::~SettingsGeneral() {
 
 void SettingsGeneral::loadSettings() {
   onBeginLoadSettings();
-  m_ui->m_checkForUpdatesOnStart->setChecked(settings()->value(GROUP(General), SETTING(General::UpdateOnStartup)).toBool());
+  m_ui->m_checkForUpdatesOnStart
+    ->setChecked(settings()->value(GROUP(General), SETTING(General::UpdateOnStartup)).toBool());
 
   // Load auto-start status.
   const SystemFactory::AutoStartStatus autostart_status = qApp->system()->autoStartStatus();
