@@ -21,6 +21,7 @@
 # Variables:
 #   BUILD_WITH_QT6 - Build either with Qt 6 or Qt 5.
 #   NO_UPDATE_CHECK - Disable automatic checking for new application updates.
+#   IS_FLATPAK_BUILD - Set to "ON" when building RSS Guard with Flatpak.
 #   USE_WEBENGINE - if specified, then QtWebEngine module for internal web browser is used.
 #                   Otherwise simple text component is used and some features will be disabled.
 #                   Default value is "false". If QtWebEngine is installed during compilation, then
@@ -108,6 +109,7 @@ option(UPDATE_TRANSLATIONS "Call lupdate to update translation files from source
 option(FORCE_COLORED_OUTPUT "Always produce ANSI-colored output (GCC/Clang only)" OFF)
 option(REVISION_FROM_GIT "Get revision using `git rev-parse`" ON)
 option(NO_UPDATE_CHECK "Disable automatic checking for new application updates" OFF)
+option(IS_FLATPAK_BUILD "Set to 'ON' when building RSS Guard with Flatpak." OFF)
 
 # Import Qt libraries.
 set(QT6_MIN_VERSION 6.3.0)
@@ -197,6 +199,7 @@ add_compile_definitions(
   APP_URL="${APP_URL}"
   APP_LONG_NAME="${APP_NAME} ${CMAKE_PROJECT_VERSION}"
   APP_LOW_NAME="${CMAKE_PROJECT_NAME}"
+  APP_REVERSE_NAME="com.github.${CMAKE_PROJECT_NAME}"
 
   QT_USE_QSTRINGBUILDER
   QT_USE_FAST_CONCATENATION
@@ -207,6 +210,10 @@ add_compile_definitions(
 
 if(NO_UPDATE_CHECK)
   add_compile_definitions(NO_UPDATE_CHECK)
+endif()
+
+if(IS_FLATPAK_BUILD)
+  add_compile_definitions(IS_FLATPAK_BUILD)
 endif()
 
 # Configure and copy some needed files.

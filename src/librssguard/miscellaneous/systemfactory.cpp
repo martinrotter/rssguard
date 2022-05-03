@@ -6,6 +6,7 @@
 #include "gui/dialogs/formupdate.h"
 #include "miscellaneous/application.h"
 #include "miscellaneous/systemfactory.h"
+#include "exceptions/applicationexception.h"
 #include "network-web/networkfactory.h"
 
 #if defined(Q_OS_WIN)
@@ -157,7 +158,22 @@ bool SystemFactory::setAutoStartStatus(AutoStartStatus new_status) {
       const QString source_autostart_desktop_file =
         QString(APP_DESKTOP_ENTRY_PATH) + QDir::separator() + APP_DESKTOP_SOURCE_ENTRY_FILE;
 
-      return QFile::copy(source_autostart_desktop_file, destination_file);
+      try {
+      QString desktop_file_contents = QString::fromUtf8(IOFactory::readFile(source_autostart_desktop_file));
+
+#if defined(IS_FLATPAK_BUILD)
+      desktop_file_contents = desktop_file_contents.arg(QSL("flatpak run %1").arg(QSL(APP_REVERSE_NAME)));
+#else
+      desktop_file_contents = desktop_file_contents.arg(QSL(APP_LOW_NAME));
+#endif
+
+        IOFactory::writeFile(destination_file, desktop_file_contents.toUtf8());
+      }
+      catch (const ApplicationException& ex) {
+        return false;
+      }
+
+      return true;
     }
 
     case AutoStartStatus::Disabled:
