@@ -2,11 +2,12 @@
 
 #include "miscellaneous/systemfactory.h"
 
+#include "3rd-party/boolinq/boolinq.h"
+#include "exceptions/applicationexception.h"
 #include "gui/dialogs/formmain.h"
 #include "gui/dialogs/formupdate.h"
 #include "miscellaneous/application.h"
 #include "miscellaneous/systemfactory.h"
-#include "exceptions/applicationexception.h"
 #include "network-web/networkfactory.h"
 
 #if defined(Q_OS_WIN)
@@ -49,9 +50,7 @@ SystemFactory::AutoStartStatus SystemFactory::autoStartStatus() const {
 #if defined(Q_OS_WIN)
   QSettings registry_key(QSL("HKEY_CURRENT_USER\\Software\\Microsoft\\Windows\\CurrentVersion\\Run"),
                          QSettings::Format::NativeFormat);
-  const bool autostart_enabled =
-    registry_key.value(QSL(APP_LOW_NAME), QString()).toString().replace(QL1C('\\'), QL1C('/')) ==
-    Application::applicationFilePath();
+  const bool autostart_enabled = registry_key.contains(QSL(APP_LOW_NAME));
 
   if (autostart_enabled) {
     return AutoStartStatus::Enabled;
@@ -126,9 +125,24 @@ bool SystemFactory::setAutoStartStatus(AutoStartStatus new_status) {
                          QSettings::NativeFormat);
 
   switch (new_status) {
-    case AutoStartStatus::Enabled:
-      registry_key.setValue(QSL(APP_LOW_NAME), Application::applicationFilePath().replace(QL1C('/'), QL1C('\\')));
+    case AutoStartStatus::Enabled: {
+      QStringList args = qApp->rawCliArgs();
+      auto std_args = boolinq::from(args)
+                        .select([](const QString& arg) {
+                          if (arg.contains(QL1S(" ")) && !arg.startsWith(QL1S("\""))) {
+                            return QSL("\"%1\"").arg(arg);
+                          }
+                          else {
+                            return arg;
+                          }
+                        })
+                        .toStdList();
+      args = FROM_STD_LIST(QStringList, std_args);
+
+      QString app_run_line = args.join(QL1C(' '));
+      registry_key.setValue(QSL(APP_LOW_NAME), app_run_line);
       return true;
+    }
 
     case AutoStartStatus::Disabled:
       registry_key.remove(QSL(APP_LOW_NAME));
@@ -159,12 +173,12 @@ bool SystemFactory::setAutoStartStatus(AutoStartStatus new_status) {
         QString(APP_DESKTOP_ENTRY_PATH) + QDir::separator() + APP_DESKTOP_SOURCE_ENTRY_FILE;
 
       try {
-      QString desktop_file_contents = QString::fromUtf8(IOFactory::readFile(source_autostart_desktop_file));
+        QString desktop_file_contents = QString::fromUtf8(IOFactory::readFile(source_autostart_desktop_file));
 
 #if defined(IS_FLATPAK_BUILD)
-      desktop_file_contents = desktop_file_contents.arg(QSL("flatpak run %1").arg(QSL(APP_REVERSE_NAME)));
+        desktop_file_contents = desktop_file_contents.arg(QSL("flatpak run %1").arg(QSL(APP_REVERSE_NAME)));
 #else
-      desktop_file_contents = desktop_file_contents.arg(QSL(APP_LOW_NAME));
+        desktop_file_contents = desktop_file_contents.arg(QSL(APP_LOW_NAME));
 #endif
 
         IOFactory::writeFile(destination_file, desktop_file_contents.toUtf8());

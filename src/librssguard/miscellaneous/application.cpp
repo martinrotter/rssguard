@@ -63,7 +63,7 @@
 #endif
 
 Application::Application(const QString& id, int& argc, char** argv, const QStringList& raw_cli_args)
-  : SingleApplication(id, argc, argv), m_updateFeedsLock(new Mutex()) {
+  : SingleApplication(id, argc, argv), m_rawCliArgs(raw_cli_args), m_updateFeedsLock(new Mutex()) {
   parseCmdArgumentsFromMyInstance(raw_cli_args);
   qInstallMessageHandler(performLogging);
 
@@ -359,11 +359,14 @@ void Application::eliminateFirstRuns() {
   settings()->setValue(GROUP(General), QString(General::FirstRun) + QL1C('_') + APP_VERSION, false);
 }
 
+QStringList Application::rawCliArgs() const {
+  return m_rawCliArgs;
+}
+
 #if defined(USE_WEBENGINE)
 bool Application::forcedNoWebEngine() const {
   return m_forcedNoWebEngine;
 }
-
 #endif
 
 NodeJs* Application::nodejs() const {

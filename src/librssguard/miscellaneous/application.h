@@ -144,19 +144,27 @@ class RSSGUARD_DLLSPEC Application : public SingleApplication {
 
     void setMainForm(FormMain* main_form);
 
-    void backupDatabaseSettings(bool backup_database, bool backup_settings, const QString& target_path,
+    void backupDatabaseSettings(bool backup_database,
+                                bool backup_settings,
+                                const QString& target_path,
                                 const QString& backup_name);
-    void restoreDatabaseSettings(bool restore_database, bool restore_settings,
+    void restoreDatabaseSettings(bool restore_database,
+                                 bool restore_settings,
                                  const QString& source_database_file_path = QString(),
                                  const QString& source_settings_file_path = QString());
 
     void showTrayIcon();
     void deleteTrayIcon();
 
+    QStringList rawCliArgs() const;
+
     // Displays given simple message in tray icon bubble or OSD
     // or in message box if tray icon is disabled.
-    void showGuiMessage(Notification::Event event, const GuiMessage& msg, const GuiMessageDestination& dest = {},
-                        const GuiAction& action = {}, QWidget* parent = nullptr);
+    void showGuiMessage(Notification::Event event,
+                        const GuiMessage& msg,
+                        const GuiMessageDestination& dest = {},
+                        const GuiAction& action = {},
+                        QWidget* parent = nullptr);
 
     WebViewer* createWebView();
 
@@ -209,6 +217,7 @@ class RSSGUARD_DLLSPEC Application : public SingleApplication {
     void eliminateFirstRuns();
 
   private:
+    QStringList m_rawCliArgs;
     QCommandLineParser m_cmdParser;
     FeedReader* m_feedReader;
 
@@ -256,6 +265,8 @@ class RSSGUARD_DLLSPEC Application : public SingleApplication {
 #endif
 };
 
-inline Application* Application::instance() { return static_cast<Application*>(QCoreApplication::instance()); }
+inline Application* Application::instance() {
+  return static_cast<Application*>(QCoreApplication::instance());
+}
 
 #endif // APPLICATION_H
