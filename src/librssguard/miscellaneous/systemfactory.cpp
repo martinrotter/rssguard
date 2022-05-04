@@ -175,11 +175,27 @@ bool SystemFactory::setAutoStartStatus(AutoStartStatus new_status) {
       try {
         QString desktop_file_contents = QString::fromUtf8(IOFactory::readFile(source_autostart_desktop_file));
 
-#if defined(IS_FLATPAK_BUILD)
-        desktop_file_contents = desktop_file_contents.arg(QSL("flatpak run %1").arg(QSL(APP_REVERSE_NAME)));
-#else
-        desktop_file_contents = desktop_file_contents.arg(QSL(APP_LOW_NAME));
-#endif
+        QStringList args = qApp->rawCliArgs();
+        auto std_args = boolinq::from(args)
+                          .select([](const QString& arg) {
+                            if (arg.contains(QL1S(" ")) && !arg.startsWith(QL1S("\""))) {
+                              return QSL("\"%1\"").arg(arg);
+                            }
+                            else {
+                              return arg;
+                            }
+                          })
+                          .toStdList();
+        args = FROM_STD_LIST(QStringList, std_args);
+
+        QString app_run_line = args.join(QL1C(' '));
+        desktop_file_contents = desktop_file_contents.arg(args.at(0), app_run_line);
+
+        // #if defined(IS_FLATPAK_BUILD)
+        //         desktop_file_contents = desktop_file_contents.arg(QSL("flatpak run %1").arg(QSL(APP_REVERSE_NAME)));
+        // #else
+        //         desktop_file_contents = desktop_file_contents.arg(QSL(APP_LOW_NAME));
+        // #endif
 
         IOFactory::writeFile(destination_file, desktop_file_contents.toUtf8());
       }
