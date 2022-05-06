@@ -193,11 +193,9 @@ bool SystemFactory::setAutoStartStatus(AutoStartStatus new_status) {
 
         args = args.mid(1);
         args.prepend(flatpak_run);
-
-        desktop_file_contents = desktop_file_contents.arg(flatpak_run, args.join(QL1C(' ')));
-#else
-        desktop_file_contents = desktop_file_contents.arg(args.at(0), args.join(QL1C(' ')));
 #endif
+
+        desktop_file_contents = desktop_file_contents.arg(args.join(QL1C(' ')));
 
         IOFactory::writeFile(destination_file, desktop_file_contents.toUtf8());
       }
