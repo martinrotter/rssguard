@@ -20,7 +20,7 @@
 #include <QTimer>
 
 TextBrowserViewer::TextBrowserViewer(QWidget* parent)
-  : QTextBrowser(parent), m_resourcesEnabled(false), m_resourceDownloader(new Downloader(this)),
+  : QTextBrowser(parent), m_resourcesEnabled(false), m_resourceDownloader(new Downloader(this)), m_loadedResources({}),
     m_placeholderImage(qApp->icons()->miscPixmap("image-placeholder")),
     m_placeholderImageError(qApp->icons()->miscPixmap("image-placeholder-error")), m_downloader(new Downloader(this)),
     m_document(new TextBrowserDocument(this)) {
@@ -66,7 +66,7 @@ QVariant TextBrowserViewer::loadOneResource(int type, const QUrl& name) {
     return {};
   }
 
-  auto resolved_name = m_currentUrl.isValid() ? m_currentUrl.resolved(name) : name;
+  auto resolved_name = (m_currentUrl.isValid() && name.isRelative()) ? m_currentUrl.resolved(name) : name;
 
   if (!m_resourcesEnabled || !m_loadedResources.contains(resolved_name)) {
     // Resources are not enabled.
@@ -441,10 +441,12 @@ void TextBrowserViewer::setHtml(const QString& html, const QUrl& base_url) {
 
     while (i.hasNext()) {
       QRegularExpressionMatch match = i.next();
-      auto captured_url = base_url.isValid() ? base_url.resolved(QUrl(match.captured(1))) : QUrl(match.captured(1));
+      auto captured_url = QUrl(match.captured(1));
+      auto resolved_captured_url =
+        (base_url.isValid() && captured_url.isRelative()) ? base_url.resolved(captured_url) : captured_url;
 
-      if (!found_resources.contains(captured_url)) {
-        found_resources.append(captured_url);
+      if (!found_resources.contains(resolved_captured_url)) {
+        found_resources.append(resolved_captured_url);
       }
     }
 
@@ -461,6 +463,34 @@ void TextBrowserViewer::setHtml(const QString& html, const QUrl& base_url) {
   }
 
   setHtmlPrivate(html, base_url);
+
+  QTextCursor cr(m_document.data());
+
+  cr.movePosition(QTextCursor::MoveOperation::Start);
+
+  /*
+  // this can be used instead of regexps, just browse document and collect resource addresses directly
+  while (!cr.atEnd()) {
+    if (!cr.movePosition(QTextCursor::MoveOperation::NextBlock)) {
+      break;
+    }
+
+    QTextBlock::iterator it;
+    for (it = cr.block().begin(); !(it.atEnd()); ++it) {
+      QTextFragment currentFragment = it.fragment();
+      if (currentFragment.isValid()) {
+        auto aa = currentFragment.charFormat().anchorHref();
+
+        if (!aa.isEmpty()) {
+          auto xx = 5;
+        }
+        else if (currentFragment.charFormat().isImageFormat()) {
+          aa = currentFragment.charFormat().toImageFormat().name();
+        }
+      }
+    }
+  }
+  */
 
   if (!m_neededResources.isEmpty()) {
     QTimer::singleShot(20, this, &TextBrowserViewer::reloadHtmlDelayed);
@@ -511,7 +541,7 @@ void TextBrowserViewer::downloadNextNeededResource() {
   else {
     QUrl res = m_neededResources.takeFirst();
 
-    m_resourceDownloader.data()->manipulateData(res.toString(),
+    m_resourceDownloader.data()->manipulateData(qApp->web()->unescapeHtml(res.toString()),
                                                 QNetworkAccessManager::Operation::GetOperation,
                                                 {},
                                                 5000);
