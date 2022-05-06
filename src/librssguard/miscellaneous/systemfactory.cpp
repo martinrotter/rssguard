@@ -189,8 +189,12 @@ bool SystemFactory::setAutoStartStatus(AutoStartStatus new_status) {
         args = FROM_STD_LIST(QStringList, std_args);
 
 #if defined(IS_FLATPAK_BUILD)
-        desktop_file_contents =
-          desktop_file_contents.arg(QSL("flatpak run %1").arg(QSL(APP_REVERSE_NAME)), args.mid(1).join(QL1C(' ')));
+        const QString flatpak_run = QSL("flatpak run %1").arg(QSL(APP_REVERSE_NAME));
+
+        args = args.mid(1);
+        args.prepend(flatpak_run);
+
+        desktop_file_contents = desktop_file_contents.arg(flatpak_run, args.join(QL1C(' ')));
 #else
         desktop_file_contents = desktop_file_contents.arg(args.at(0), args.join(QL1C(' ')));
 #endif
