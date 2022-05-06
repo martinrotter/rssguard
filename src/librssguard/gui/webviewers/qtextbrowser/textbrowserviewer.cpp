@@ -66,19 +66,21 @@ QVariant TextBrowserViewer::loadOneResource(int type, const QUrl& name) {
     return {};
   }
 
-  if (!m_resourcesEnabled || !m_loadedResources.contains(name)) {
+  auto resolved_name = m_currentUrl.isValid() ? m_currentUrl.resolved(name) : name;
+
+  if (!m_resourcesEnabled || !m_loadedResources.contains(resolved_name)) {
     // Resources are not enabled.
     return m_placeholderImage;
   }
 
   // Resources are enabled and we already have the resource.
-  QByteArray resource_data = m_loadedResources.value(name);
+  QByteArray resource_data = m_loadedResources.value(resolved_name);
 
   if (resource_data.isEmpty()) {
     return m_placeholderImageError;
   }
   else {
-    return QImage::fromData(m_loadedResources.value(name));
+    return QImage::fromData(m_loadedResources.value(resolved_name));
   }
 }
 
@@ -439,7 +441,7 @@ void TextBrowserViewer::setHtml(const QString& html, const QUrl& base_url) {
 
     while (i.hasNext()) {
       QRegularExpressionMatch match = i.next();
-      auto captured_url = match.captured(1);
+      auto captured_url = base_url.isValid() ? base_url.resolved(QUrl(match.captured(1))) : QUrl(match.captured(1));
 
       if (!found_resources.contains(captured_url)) {
         found_resources.append(captured_url);

@@ -90,9 +90,9 @@ class TextBrowserViewer : public QTextBrowser, public WebViewer {
 
   private:
     bool m_resourcesEnabled;
-    QList<QUrl> m_neededResources;
+    QList<QUrl> m_neededResources; // All URLs here must be resolved.
     QScopedPointer<Downloader> m_resourceDownloader;
-    QMap<QUrl, QByteArray> m_loadedResources;
+    QMap<QUrl, QByteArray> m_loadedResources; // All URLs here must be resolved.
     QPixmap m_placeholderImage;
     QPixmap m_placeholderImageError;
 

@@ -142,6 +142,12 @@ void Downloader::finished() {
 
   m_timer->stop();
 
+  QUrl original_url = reply->property("original_url").toUrl();
+
+  if (!original_url.isValid()) {
+    original_url = reply->request().url();
+  }
+
   // In this phase, some part of downloading process is completed.
   QUrl redirection_url = reply->attribute(QNetworkRequest::RedirectionTargetAttribute).toUrl();
 
@@ -180,6 +186,10 @@ void Downloader::finished() {
     else if (reply_operation == QNetworkAccessManager::DeleteOperation) {
       runDeleteRequest(request);
     }
+
+    if (m_activeReply != nullptr) {
+      m_activeReply->setProperty("original_url", original_url);
+    }
   }
   else {
     // No redirection is indicated. Final file is obtained in our "reply" object.
@@ -204,6 +214,9 @@ void Downloader::finished() {
 
     m_lastContentType = reply->header(QNetworkRequest::ContentTypeHeader);
     m_lastOutputError = reply->error();
+
+    // original_url = m_activeReply->property("original_url").toUrl();
+
     m_activeReply->deleteLater();
     m_activeReply = nullptr;
 
@@ -211,7 +224,7 @@ void Downloader::finished() {
       m_inputMultipartData->deleteLater();
     }
 
-    emit completed(reply->request().url(), m_lastOutputError, m_lastOutputData);
+    emit completed(original_url, m_lastOutputError, m_lastOutputData);
   }
 }
 
