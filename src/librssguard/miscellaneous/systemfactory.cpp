@@ -188,14 +188,12 @@ bool SystemFactory::setAutoStartStatus(AutoStartStatus new_status) {
                           .toStdList();
         args = FROM_STD_LIST(QStringList, std_args);
 
-        QString app_run_line = args.join(QL1C(' '));
-        desktop_file_contents = desktop_file_contents.arg(args.at(0), app_run_line);
-
-        // #if defined(IS_FLATPAK_BUILD)
-        //         desktop_file_contents = desktop_file_contents.arg(QSL("flatpak run %1").arg(QSL(APP_REVERSE_NAME)));
-        // #else
-        //         desktop_file_contents = desktop_file_contents.arg(QSL(APP_LOW_NAME));
-        // #endif
+#if defined(IS_FLATPAK_BUILD)
+        desktop_file_contents =
+          desktop_file_contents.arg(QSL("flatpak run %1").arg(QSL(APP_REVERSE_NAME)), args.mid(1).join(QL1C(' ')));
+#else
+        desktop_file_contents = desktop_file_contents.arg(args.at(0), args.join(QL1C(' ')));
+#endif
 
         IOFactory::writeFile(destination_file, desktop_file_contents.toUtf8());
       }
