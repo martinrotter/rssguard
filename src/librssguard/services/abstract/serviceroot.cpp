@@ -23,8 +23,8 @@
 
 ServiceRoot::ServiceRoot(RootItem* parent)
   : RootItem(parent), m_recycleBin(new RecycleBin(this)), m_importantNode(new ImportantNode(this)),
-  m_labelsNode(new LabelsNode(this)), m_unreadNode(new UnreadNode(this)),
-  m_accountId(NO_PARENT_CATEGORY), m_networkProxy(QNetworkProxy()) {
+    m_labelsNode(new LabelsNode(this)), m_unreadNode(new UnreadNode(this)), m_accountId(NO_PARENT_CATEGORY),
+    m_networkProxy(QNetworkProxy()) {
   setKind(RootItem::Kind::ServiceRoot);
   appendCommonNodes();
 }
@@ -95,7 +95,8 @@ QList<QAction*> ServiceRoot::contextMenuMessagesList(const QList<Message>& messa
 QList<QAction*> ServiceRoot::serviceMenu() {
   if (m_serviceMenu.isEmpty()) {
     if (isSyncable()) {
-      auto* act_sync_tree = new QAction(qApp->icons()->fromTheme(QSL("view-refresh")), tr("Synchronize folders && other items"), this);
+      auto* act_sync_tree =
+        new QAction(qApp->icons()->fromTheme(QSL("view-refresh")), tr("Synchronize folders && other items"), this);
 
       connect(act_sync_tree, &QAction::triggered, this, &ServiceRoot::syncIn);
       m_serviceMenu.append(act_sync_tree);
@@ -103,7 +104,8 @@ QList<QAction*> ServiceRoot::serviceMenu() {
       auto* cache = toCache();
 
       if (cache != nullptr) {
-        auto* act_sync_cache = new QAction(qApp->icons()->fromTheme(QSL("view-refresh")), tr("Synchronize article cache"), this);
+        auto* act_sync_cache =
+          new QAction(qApp->icons()->fromTheme(QSL("view-refresh")), tr("Synchronize article cache"), this);
 
         connect(act_sync_cache, &QAction::triggered, this, [cache]() {
           cache->saveAllCachedData(false);
@@ -139,8 +141,7 @@ void ServiceRoot::updateCounts(bool including_total_count) {
     if (child->kind() == RootItem::Kind::Feed) {
       feeds.append(child->toFeed());
     }
-    else if (child->kind() != RootItem::Kind::Labels &&
-             child->kind() != RootItem::Kind::Category &&
+    else if (child->kind() != RootItem::Kind::Labels && child->kind() != RootItem::Kind::Category &&
              child->kind() != RootItem::Kind::ServiceRoot) {
       child->updateCounts(including_total_count);
     }
@@ -152,7 +153,8 @@ void ServiceRoot::updateCounts(bool including_total_count) {
 
   QSqlDatabase database = qApp->database()->driver()->connection(metaObject()->className());
   bool ok;
-  QMap<QString, QPair<int, int>> counts = DatabaseQueries::getMessageCountsForAccount(database, accountId(), including_total_count, &ok);
+  QMap<QString, QPair<int, int>> counts =
+    DatabaseQueries::getMessageCountsForAccount(database, accountId(), including_total_count, &ok);
 
   if (ok) {
     for (Feed* feed : feeds) {
@@ -183,7 +185,7 @@ void ServiceRoot::completelyRemoveAllData() {
   cleanAllItemsFromModel(true);
   removeOldAccountFromDatabase(true, true);
   updateCounts(true);
-  itemChanged({ this });
+  itemChanged({this});
   requestReloadMessageList(true);
 }
 
@@ -204,20 +206,15 @@ QIcon ServiceRoot::feedIconForMessage(const QString& feed_custom_id) const {
 void ServiceRoot::removeOldAccountFromDatabase(bool delete_messages_too, bool delete_labels_too) {
   QSqlDatabase database = qApp->database()->driver()->connection(metaObject()->className());
 
-  DatabaseQueries::deleteAccountData(database,
-                                     accountId(),
-                                     delete_messages_too,
-                                     delete_labels_too);
+  DatabaseQueries::deleteAccountData(database, accountId(), delete_messages_too, delete_labels_too);
 }
 
 void ServiceRoot::cleanAllItemsFromModel(bool clean_labels_too) {
   auto chi = childItems();
 
   for (RootItem* top_level_item : qAsConst(chi)) {
-    if (top_level_item->kind() != RootItem::Kind::Bin &&
-        top_level_item->kind() != RootItem::Kind::Important &&
-        top_level_item->kind() != RootItem::Kind::Unread &&
-        top_level_item->kind() != RootItem::Kind::Labels) {
+    if (top_level_item->kind() != RootItem::Kind::Bin && top_level_item->kind() != RootItem::Kind::Important &&
+        top_level_item->kind() != RootItem::Kind::Unread && top_level_item->kind() != RootItem::Kind::Labels) {
       requestItemRemoval(top_level_item);
     }
   }
@@ -265,7 +262,9 @@ bool ServiceRoot::cleanFeeds(const QList<Feed*>& items, bool clean_read_only) {
 
 void ServiceRoot::storeNewFeedTree(RootItem* root) {
   try {
-    DatabaseQueries::storeAccountTree(qApp->database()->driver()->connection(metaObject()->className()), root, accountId());
+    DatabaseQueries::storeAccountTree(qApp->database()->driver()->connection(metaObject()->className()),
+                                      root,
+                                      accountId());
   }
   catch (const ApplicationException& ex) {
     qFatal("Cannot store account tree: '%s'.", qPrintable(ex.message()));
@@ -405,7 +404,8 @@ void ServiceRoot::restoreCustomFeedsData(const QMap<QString, QVariantMap>& data,
       QVariantMap feed_custom_data = i.value();
 
       feed->setAutoUpdateInitialInterval(feed_custom_data.value(QSL("auto_update_interval")).toInt());
-      feed->setAutoUpdateType(static_cast<Feed::AutoUpdateType>(feed_custom_data.value(QSL("auto_update_type")).toInt()));
+      feed
+        ->setAutoUpdateType(static_cast<Feed::AutoUpdateType>(feed_custom_data.value(QSL("auto_update_type")).toInt()));
       feed->setMessageFilters(feed_custom_data.value(QSL("msg_filters")).value<QList<QPointer<MessageFilter>>>());
 
       feed->setIsSwitchedOff(feed_custom_data.value(QSL("is_off")).toBool());
@@ -440,14 +440,20 @@ void ServiceRoot::syncIn() {
   QIcon original_icon = icon();
 
   setIcon(qApp->icons()->fromTheme(QSL("view-refresh")));
-  itemChanged({ this });
+  itemChanged({this});
+
+  qDebugNN << LOGSEC_CORE << "Starting sync-in process.";
+
   RootItem* new_tree = obtainNewTreeForSyncIn();
 
   if (new_tree != nullptr) {
+    qDebugNN << LOGSEC_CORE << "New feed tree for sync-in obtained.";
+
     auto feed_custom_data = storeCustomFeedsData();
 
     // Remove from feeds model, then from SQL but leave messages intact.
-    bool uses_remote_labels = (supportedLabelOperations() & LabelOperation::Synchronised) == LabelOperation::Synchronised;
+    bool uses_remote_labels =
+      (supportedLabelOperations() & LabelOperation::Synchronised) == LabelOperation::Synchronised;
 
     // Remove stuff.
     cleanAllItemsFromModel(uses_remote_labels);
@@ -491,6 +497,9 @@ void ServiceRoot::syncIn() {
 
     updateCounts(true);
     requestReloadMessageList(true);
+  }
+  else {
+    qCriticalNN << LOGSEC_CORE << "New feed tree for sync-in NOT obtained.";
   }
 
   setIcon(original_icon);
@@ -609,7 +618,8 @@ QStringList ServiceRoot::textualFeedUrls(const QList<Feed*>& feeds) const {
 }
 
 QStringList ServiceRoot::textualFeedIds(const QList<Feed*>& feeds) const {
-  QStringList stringy_ids; stringy_ids.reserve(feeds.size());
+  QStringList stringy_ids;
+  stringy_ids.reserve(feeds.size());
 
   for (const Feed* feed : feeds) {
     stringy_ids.append(QSL("'%1'").arg(feed->customId()));
@@ -619,7 +629,8 @@ QStringList ServiceRoot::textualFeedIds(const QList<Feed*>& feeds) const {
 }
 
 QStringList ServiceRoot::customIDsOfMessages(const QList<ImportanceChange>& changes) {
-  QStringList list; list.reserve(changes.size());
+  QStringList list;
+  list.reserve(changes.size());
 
   for (const auto& change : changes) {
     list.append(change.first.m_customId);
@@ -629,7 +640,8 @@ QStringList ServiceRoot::customIDsOfMessages(const QList<ImportanceChange>& chan
 }
 
 QStringList ServiceRoot::customIDsOfMessages(const QList<Message>& messages) {
-  QStringList list; list.reserve(messages.size());
+  QStringList list;
+  list.reserve(messages.size());
 
   for (const Message& message : messages) {
     list.append(message.m_customId);
@@ -655,32 +667,35 @@ void ServiceRoot::setAccountId(int account_id) {
 bool ServiceRoot::loadMessagesForItem(RootItem* item, MessagesModel* model) {
   if (item->kind() == RootItem::Kind::Bin) {
     model->setFilter(QSL("Messages.is_deleted = 1 AND Messages.is_pdeleted = 0 AND Messages.account_id = %1")
-                     .arg(QString::number(accountId())));
+                       .arg(QString::number(accountId())));
   }
   else if (item->kind() == RootItem::Kind::Important) {
-    model->setFilter(QSL("Messages.is_important = 1 AND Messages.is_deleted = 0 AND Messages.is_pdeleted = 0 AND Messages.account_id = %1")
-                     .arg(QString::number(accountId())));
+    model->setFilter(QSL("Messages.is_important = 1 AND Messages.is_deleted = 0 AND Messages.is_pdeleted = 0 AND "
+                         "Messages.account_id = %1")
+                       .arg(QString::number(accountId())));
   }
   else if (item->kind() == RootItem::Kind::Unread) {
-    model->setFilter(QSL("Messages.is_read = 0 AND Messages.is_deleted = 0 AND Messages.is_pdeleted = 0 AND Messages.account_id = %1")
-                     .arg(QString::number(accountId())));
+    model->setFilter(QSL("Messages.is_read = 0 AND Messages.is_deleted = 0 AND Messages.is_pdeleted = 0 AND "
+                         "Messages.account_id = %1")
+                       .arg(QString::number(accountId())));
   }
   else if (item->kind() == RootItem::Kind::Label) {
     // Show messages with particular label.
     model->setFilter(QSL("Messages.is_deleted = 0 AND Messages.is_pdeleted = 0 AND Messages.account_id = %1 AND "
-                         "(SELECT COUNT(*) FROM LabelsInMessages WHERE account_id = %1 AND message = Messages.custom_id AND label = '%2') > 0")
-                     .arg(QString::number(accountId()), item->customId()));
+                         "(SELECT COUNT(*) FROM LabelsInMessages WHERE account_id = %1 AND message = "
+                         "Messages.custom_id AND label = '%2') > 0")
+                       .arg(QString::number(accountId()), item->customId()));
   }
   else if (item->kind() == RootItem::Kind::Labels) {
     // Show messages with any label.
     model->setFilter(QSL("Messages.is_deleted = 0 AND Messages.is_pdeleted = 0 AND Messages.account_id = %1 AND "
-                         "(SELECT COUNT(*) FROM LabelsInMessages WHERE account_id = %1 AND message = Messages.custom_id) > 0")
-                     .arg(QString::number(accountId())));
+                         "(SELECT COUNT(*) FROM LabelsInMessages WHERE account_id = %1 AND message = "
+                         "Messages.custom_id) > 0")
+                       .arg(QString::number(accountId())));
   }
   else if (item->kind() == RootItem::Kind::ServiceRoot) {
-    model->setFilter(
-      QSL("Messages.is_deleted = 0 AND Messages.is_pdeleted = 0 AND Messages.account_id = %1").arg(
-        QString::number(accountId())));
+    model->setFilter(QSL("Messages.is_deleted = 0 AND Messages.is_pdeleted = 0 AND Messages.account_id = %1")
+                       .arg(QString::number(accountId())));
 
     qDebugNN << "Displaying messages from account:" << QUOTE_W_SPACE_DOT(accountId());
   }
@@ -692,11 +707,9 @@ bool ServiceRoot::loadMessagesForItem(RootItem* item, MessagesModel* model) {
       filter_clause = QSL("null");
     }
 
-    model->setFilter(
-      QSL("Feeds.custom_id IN (%1) AND Messages.is_deleted = 0 AND Messages.is_pdeleted = 0 AND Messages.account_id = %2").arg(
-        filter_clause,
-        QString::
-        number(accountId())));
+    model->setFilter(QSL("Feeds.custom_id IN (%1) AND Messages.is_deleted = 0 AND Messages.is_pdeleted = 0 AND "
+                         "Messages.account_id = %2")
+                       .arg(filter_clause, QString::number(accountId())));
 
     QString urls = textualFeedUrls(children).join(QSL(", "));
 
@@ -707,7 +720,9 @@ bool ServiceRoot::loadMessagesForItem(RootItem* item, MessagesModel* model) {
   return true;
 }
 
-bool ServiceRoot::onBeforeSetMessagesRead(RootItem* selected_item, const QList<Message>& messages, RootItem::ReadStatus read) {
+bool ServiceRoot::onBeforeSetMessagesRead(RootItem* selected_item,
+                                          const QList<Message>& messages,
+                                          RootItem::ReadStatus read) {
   Q_UNUSED(selected_item)
 
   auto cache = dynamic_cast<CacheForServiceRoot*>(this);
@@ -719,7 +734,9 @@ bool ServiceRoot::onBeforeSetMessagesRead(RootItem* selected_item, const QList<M
   return true;
 }
 
-bool ServiceRoot::onAfterSetMessagesRead(RootItem* selected_item, const QList<Message>& messages, RootItem::ReadStatus read) {
+bool ServiceRoot::onAfterSetMessagesRead(RootItem* selected_item,
+                                         const QList<Message>& messages,
+                                         RootItem::ReadStatus read) {
   Q_UNUSED(selected_item)
   Q_UNUSED(messages)
   Q_UNUSED(read)
@@ -808,9 +825,11 @@ bool ServiceRoot::onAfterLabelMessageAssignmentChanged(const QList<Label*>& labe
     lbl->updateCounts(true);
   });
 
-  auto list = boolinq::from(labels).select([](Label* lbl) {
-    return static_cast<RootItem*>(lbl);
-  }).toStdList();
+  auto list = boolinq::from(labels)
+                .select([](Label* lbl) {
+                  return static_cast<RootItem*>(lbl);
+                })
+                .toStdList();
 
   getParentServiceRoot()->itemChanged(FROM_STD_LIST(QList<RootItem*>, list));
   return true;
@@ -888,25 +907,21 @@ ServiceRoot::LabelOperation operator&(ServiceRoot::LabelOperation lhs, ServiceRo
 }
 
 QPair<int, int> ServiceRoot::updateMessages(QList<Message>& messages, Feed* feed, bool force_update) {
-  QPair<int, int> updated_messages = { 0, 0 };
+  QPair<int, int> updated_messages = {0, 0};
 
   if (messages.isEmpty()) {
-    qDebugNN << "No messages to be updated/added in DB for feed"
-             << QUOTE_W_SPACE_DOT(feed->customId());
+    qDebugNN << "No messages to be updated/added in DB for feed" << QUOTE_W_SPACE_DOT(feed->customId());
     return updated_messages;
   }
 
   QList<RootItem*> items_to_update;
   bool is_main_thread = QThread::currentThread() == qApp->thread();
 
-  qDebugNN << LOGSEC_CORE
-           << "Updating messages in DB. Main thread:"
-           << QUOTE_W_SPACE_DOT(is_main_thread);
+  qDebugNN << LOGSEC_CORE << "Updating messages in DB. Main thread:" << QUOTE_W_SPACE_DOT(is_main_thread);
 
   bool ok = false;
-  QSqlDatabase database = is_main_thread ?
-                          qApp->database()->driver()->connection(metaObject()->className()) :
-                          qApp->database()->driver()->connection(QSL("feed_upd"));
+  QSqlDatabase database = is_main_thread ? qApp->database()->driver()->connection(metaObject()->className())
+                                         : qApp->database()->driver()->connection(QSL("feed_upd"));
 
   updated_messages = DatabaseQueries::updateMessages(database, messages, feed, force_update, &ok);
 

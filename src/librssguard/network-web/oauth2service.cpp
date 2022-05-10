@@ -42,12 +42,16 @@
 #include <cstdlib>
 #include <utility>
 
-OAuth2Service::OAuth2Service(const QString& auth_url, const QString& token_url, const QString& client_id,
-                             const QString& client_secret, const QString& scope, QObject* parent)
-  : QObject(parent),
-  m_id(QString::number(QRandomGenerator::global()->generate())), m_timerId(-1),
-  m_redirectionHandler(new OAuthHttpHandler(tr("You can close this window now. Go back to %1.").arg(QSL(APP_NAME)), this)),
-  m_functorOnLogin(std::function<void()>()) {
+OAuth2Service::OAuth2Service(const QString& auth_url,
+                             const QString& token_url,
+                             const QString& client_id,
+                             const QString& client_secret,
+                             const QString& scope,
+                             QObject* parent)
+  : QObject(parent), m_id(QString::number(QRandomGenerator::global()->generate())), m_timerId(-1),
+    m_redirectionHandler(new OAuthHttpHandler(tr("You can close this window now. Go back to %1.").arg(QSL(APP_NAME)),
+                                              this)),
+    m_functorOnLogin(std::function<void()>()) {
   m_tokenGrantType = QSL("authorization_code");
   m_tokenUrl = QUrl(token_url);
   m_authUrl = auth_url;
@@ -65,14 +69,16 @@ OAuth2Service::OAuth2Service(const QString& auth_url, const QString& token_url, 
       retrieveAccessToken(auth_code);
     }
   });
-  connect(m_redirectionHandler, &OAuthHttpHandler::authRejected, [this](const QString& error_description, const QString& id) {
-    Q_UNUSED(error_description)
+  connect(m_redirectionHandler,
+          &OAuthHttpHandler::authRejected,
+          [this](const QString& error_description, const QString& id) {
+            Q_UNUSED(error_description)
 
-    if (id.isEmpty() || id == m_id) {
-      // We process this further only if handler (static singleton) responded to our original request.
-      emit authFailed();
-    }
-  });
+            if (id.isEmpty() || id == m_id) {
+              // We process this further only if handler (static singleton) responded to our original request.
+              emit authFailed();
+            }
+          });
 }
 
 OAuth2Service::~OAuth2Service() {
@@ -81,15 +87,14 @@ OAuth2Service::~OAuth2Service() {
 
 QString OAuth2Service::bearer() {
   if (!isFullyLoggedIn()) {
-    qApp->showGuiMessage(Notification::Event::LoginFailure, {
-      tr("You have to login first"),
-      tr("Click here to login."),
-      QSystemTrayIcon::MessageIcon::Critical },
-                         {}, {
-      tr("Login"),
-      [this]() {
-        login();
-      } });
+    qApp->showGuiMessage(Notification::Event::LoginFailure,
+                         {tr("You have to login first"),
+                          tr("Click here to login."),
+                          QSystemTrayIcon::MessageIcon::Critical},
+                         {},
+                         {tr("Login"), [this]() {
+                            login();
+                          }});
     return {};
   }
   else {
@@ -179,11 +184,12 @@ void OAuth2Service::retrieveAccessToken(const QString& auth_code) {
                             "client_secret=%2&"
                             "code=%3&"
                             "redirect_uri=%5&"
-                            "grant_type=%4").arg(properClientId(),
-                                                 properClientSecret(),
-                                                 auth_code,
-                                                 m_tokenGrantType,
-                                                 m_redirectionHandler->listenAddressPort());
+                            "grant_type=%4")
+                      .arg(properClientId(),
+                           properClientSecret(),
+                           auth_code,
+                           m_tokenGrantType,
+                           m_redirectionHandler->listenAddressPort());
 
   qDebugNN << LOGSEC_OAUTH << "Posting data for access token retrieval:" << QUOTE_W_SPACE_DOT(content);
   m_networkManager.post(network_request, content.toUtf8());
@@ -205,16 +211,14 @@ void OAuth2Service::refreshAccessToken(const QString& refresh_token) {
   QString content = QString("client_id=%1&"
                             "client_secret=%2&"
                             "refresh_token=%3&"
-                            "grant_type=%4").arg(properClientId(),
-                                                 properClientSecret(),
-                                                 real_refresh_token,
-                                                 QSL("refresh_token"));
+                            "grant_type=%4")
+                      .arg(properClientId(), properClientSecret(), real_refresh_token, QSL("refresh_token"));
 
-  qApp->showGuiMessage(Notification::Event::LoginDataRefreshed, {
-    tr("Logging in via OAuth 2.0..."),
-    tr("Refreshing login tokens for '%1'...").arg(m_tokenUrl.toString()),
-    QSystemTrayIcon::MessageIcon::Information },
-                       { true, false, true });
+  qApp->showGuiMessage(Notification::Event::LoginDataRefreshed,
+                       {tr("Logging in via OAuth 2.0..."),
+                        tr("Refreshing login tokens for '%1'...").arg(m_tokenUrl.toString()),
+                        QSystemTrayIcon::MessageIcon::Information},
+                       {true, false, true});
 
   qDebugNN << LOGSEC_OAUTH << "Posting data for access token refreshing:" << QUOTE_W_SPACE_DOT(content);
   m_networkManager.post(network_request, content.toUtf8());
@@ -229,8 +233,7 @@ void OAuth2Service::tokenRequestFinished(QNetworkReply* network_reply) {
 
   if (network_reply->error() != QNetworkReply::NetworkError::NoError) {
     qWarningNN << LOGSEC_OAUTH
-               << "Network error when obtaining token response:"
-               << QUOTE_W_SPACE_DOT(network_reply->error());
+               << "Network error when obtaining token response:" << QUOTE_W_SPACE_DOT(network_reply->error());
 
     emit tokensRetrieveError(QString(), NetworkFactory::networkErrorText(network_reply->error()));
   }
@@ -238,9 +241,7 @@ void OAuth2Service::tokenRequestFinished(QNetworkReply* network_reply) {
     QString error = root_obj.value(QSL("error")).toString();
     QString error_description = root_obj.value(QSL("error_description")).toString();
 
-    qWarningNN << LOGSEC_OAUTH
-               << "JSON error when obtaining token response:"
-               << QUOTE_W_SPACE(error)
+    qWarningNN << LOGSEC_OAUTH << "JSON error when obtaining token response:" << QUOTE_W_SPACE(error)
                << QUOTE_W_SPACE_DOT(error_description);
 
     logout();
@@ -259,11 +260,12 @@ void OAuth2Service::tokenRequestFinished(QNetworkReply* network_reply) {
       setRefreshToken(refresh_token);
     }
 
-    qDebugNN << LOGSEC_OAUTH
-             << "Obtained refresh token" << QUOTE_W_SPACE(refreshToken())
-             << "- expires on date/time" << QUOTE_W_SPACE_DOT(tokensExpireIn());
+    qDebugNN << LOGSEC_OAUTH << "Obtained refresh token" << QUOTE_W_SPACE(refreshToken()) << "- expires on date/time"
+             << QUOTE_W_SPACE_DOT(tokensExpireIn());
 
     if (m_functorOnLogin != nullptr) {
+      qDebugNN << LOGSEC_OAUTH << "Running custom after-login code.";
+
       m_functorOnLogin();
     }
 
@@ -274,15 +276,11 @@ void OAuth2Service::tokenRequestFinished(QNetworkReply* network_reply) {
 }
 
 QString OAuth2Service::properClientId() const {
-  return m_clientId.simplified().isEmpty()
-      ? m_clientSecretId
-      : m_clientId;
+  return m_clientId.simplified().isEmpty() ? m_clientSecretId : m_clientId;
 }
 
 QString OAuth2Service::properClientSecret() const {
-  return m_clientSecret.simplified().isEmpty()
-      ? m_clientSecretSecret
-      : m_clientSecret;
+  return m_clientSecret.simplified().isEmpty() ? m_clientSecretSecret : m_clientSecret;
 }
 
 QString OAuth2Service::accessToken() const {
@@ -339,12 +337,12 @@ bool OAuth2Service::login(const std::function<void()>& functor_when_logged_in) {
   m_functorOnLogin = functor_when_logged_in;
 
   if (!m_redirectionHandler->isListening()) {
-    qCriticalNN << LOGSEC_OAUTH
-                << "Cannot log-in because OAuth redirection handler is not listening.";
+    qCriticalNN << LOGSEC_OAUTH << "Cannot log-in because OAuth redirection handler is not listening.";
 
-    emit tokensRetrieveError(QString(), tr("Failed to start OAuth "
-                                           "redirection listener. Maybe your "
-                                           "rights are not high enough."));
+    emit tokensRetrieveError(QString(),
+                             tr("Failed to start OAuth "
+                                "redirection listener. Maybe your "
+                                "rights are not high enough."));
 
     return false;
   }
@@ -402,10 +400,8 @@ void OAuth2Service::retrieveAuthCode() {
                                          "state=%4&"
                                          "prompt=consent&"
                                          "duration=permanent&"
-                                         "access_type=offline").arg(properClientId(),
-                                                                    m_scope,
-                                                                    m_redirectionHandler->listenAddressPort(),
-                                                                    m_id);
+                                         "access_type=offline")
+                                   .arg(properClientId(), m_scope, m_redirectionHandler->listenAddressPort(), m_id);
 
   // We run login URL in external browser, response is caught by light HTTP server.
   qApp->web()->openUrlInExternalBrowser(auth_url);
