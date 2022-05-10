@@ -16,10 +16,6 @@
 
 #include <QTextCodec>
 
-#if defined(Q_OS_MACOS)
-extern void disableWindowTabbing();
-#endif
-
 int main(int argc, char* argv[]) {
   qSetMessagePattern(QSL("time=\"%{time process}\" type=\"%{type}\" -> %{message}"));
 
@@ -51,7 +47,6 @@ int main(int argc, char* argv[]) {
 
 #if defined(Q_OS_MACOS)
   QApplication::setAttribute(Qt::AA_DontShowIconsInMenus);
-  disableWindowTabbing();
 #endif
 
   // We create our own "arguments" list as Qt strips something
@@ -116,7 +111,8 @@ int main(int argc, char* argv[]) {
   main_window.tabWidget()->feedMessageViewer()->respondToMainWindowResizes();
   main_window.tabWidget()->feedMessageViewer()->feedsView()->loadAllExpandStates();
 
-  qApp->parseCmdArgumentsFromOtherInstance(qApp->cmdParser()->positionalArguments().join(QSL(ARGUMENTS_LIST_SEPARATOR)));
+  qApp
+    ->parseCmdArgumentsFromOtherInstance(qApp->cmdParser()->positionalArguments().join(QSL(ARGUMENTS_LIST_SEPARATOR)));
 
   return Application::exec();
 }
