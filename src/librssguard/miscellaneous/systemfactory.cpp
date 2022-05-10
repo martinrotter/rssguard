@@ -176,7 +176,7 @@ bool SystemFactory::setAutoStartStatus(AutoStartStatus new_status) {
         QString desktop_file_contents = QString::fromUtf8(IOFactory::readFile(source_autostart_desktop_file));
 
         QStringList args = qApp->rawCliArgs();
-        auto std_args = boolinq::from(args)
+        auto std_args = boolinq::from(args.begin(), args.end())
                           .select([](const QString& arg) {
                             if (arg.contains(QL1S(" ")) && !arg.startsWith(QL1S("\""))) {
                               return QSL("\"%1\"").arg(arg);
