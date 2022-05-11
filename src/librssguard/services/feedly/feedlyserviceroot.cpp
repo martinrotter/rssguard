@@ -23,8 +23,7 @@
 #include "network-web/oauth2service.h"
 #endif
 
-FeedlyServiceRoot::FeedlyServiceRoot(RootItem* parent)
-  : ServiceRoot(parent), m_network(new FeedlyNetwork(this)) {
+FeedlyServiceRoot::FeedlyServiceRoot(RootItem* parent) : ServiceRoot(parent), m_network(new FeedlyNetwork(this)) {
   setIcon(FeedlyEntryPoint().icon());
   m_network->setService(this);
 }
@@ -75,7 +74,8 @@ void FeedlyServiceRoot::setCustomDatabaseData(const QVariantHash& data) {
 }
 
 QList<Message> FeedlyServiceRoot::obtainNewMessages(Feed* feed,
-                                                    const QHash<ServiceRoot::BagOfMessages, QStringList>& stated_messages,
+                                                    const QHash<ServiceRoot::BagOfMessages, QStringList>&
+                                                      stated_messages,
                                                     const QHash<QString, QStringList>& tagged_messages) {
   Q_UNUSED(tagged_messages)
 
@@ -128,16 +128,13 @@ void FeedlyServiceRoot::saveAllCachedData(bool ignore_errors) {
 
     if (!ids.isEmpty()) {
       try {
-        network()->markers(key == RootItem::ReadStatus::Read
-                           ? QSL(FEEDLY_MARKERS_READ)
-                           : QSL(FEEDLY_MARKERS_UNREAD), ids);
+        network()->markers(key == RootItem::ReadStatus::Read ? QSL(FEEDLY_MARKERS_READ) : QSL(FEEDLY_MARKERS_UNREAD),
+                           ids);
       }
       catch (const NetworkException& net_ex) {
         qCriticalNN << LOGSEC_FEEDLY
-                    << "Failed to synchronize read/unread state with error:"
-                    << QUOTE_W_SPACE(net_ex.message())
-                    << "and HTTP code"
-                    << QUOTE_W_SPACE_DOT(net_ex.networkError());
+                    << "Failed to synchronize read/unread state with error:" << QUOTE_W_SPACE(net_ex.message())
+                    << "and HTTP code" << QUOTE_W_SPACE_DOT(net_ex.networkError());
 
         if (!ignore_errors) {
           addMessageStatesToCache(ids, key);
@@ -162,16 +159,13 @@ void FeedlyServiceRoot::saveAllCachedData(bool ignore_errors) {
       }
 
       try {
-        network()->markers(key == RootItem::Importance::Important
-                           ? FEEDLY_MARKERS_IMPORTANT
-                           : FEEDLY_MARKERS_UNIMPORTANT, ids);
+        network()->markers(key == RootItem::Importance::Important ? FEEDLY_MARKERS_IMPORTANT
+                                                                  : FEEDLY_MARKERS_UNIMPORTANT,
+                           ids);
       }
       catch (const NetworkException& net_ex) {
-        qCriticalNN << LOGSEC_FEEDLY
-                    << "Failed to synchronize important/unimportant state with error:"
-                    << QUOTE_W_SPACE(net_ex.message())
-                    << "and HTTP code"
-                    << QUOTE_W_SPACE_DOT(net_ex.networkError());
+        qCriticalNN << LOGSEC_FEEDLY << "Failed to synchronize important/unimportant state with error:"
+                    << QUOTE_W_SPACE(net_ex.message()) << "and HTTP code" << QUOTE_W_SPACE_DOT(net_ex.networkError());
 
         if (!ignore_errors) {
           addMessageStatesToCache(messages, key);
@@ -194,10 +188,8 @@ void FeedlyServiceRoot::saveAllCachedData(bool ignore_errors) {
       }
       catch (const NetworkException& net_ex) {
         qCriticalNN << LOGSEC_FEEDLY
-                    << "Failed to synchronize tag assignments with error:"
-                    << QUOTE_W_SPACE(net_ex.message())
-                    << "and HTTP code"
-                    << QUOTE_W_SPACE_DOT(net_ex.networkError());
+                    << "Failed to synchronize tag assignments with error:" << QUOTE_W_SPACE(net_ex.message())
+                    << "and HTTP code" << QUOTE_W_SPACE_DOT(net_ex.networkError());
 
         if (!ignore_errors) {
           addLabelsAssignmentsToCache(messages, label_custom_id, true);
@@ -220,10 +212,8 @@ void FeedlyServiceRoot::saveAllCachedData(bool ignore_errors) {
       }
       catch (const NetworkException& net_ex) {
         qCriticalNN << LOGSEC_FEEDLY
-                    << "Failed to synchronize tag DEassignments with error:"
-                    << QUOTE_W_SPACE(net_ex.message())
-                    << "and HTTP code"
-                    << QUOTE_W_SPACE_DOT(net_ex.networkError());
+                    << "Failed to synchronize tag DEassignments with error:" << QUOTE_W_SPACE(net_ex.message())
+                    << "and HTTP code" << QUOTE_W_SPACE_DOT(net_ex.networkError());
 
         if (!ignore_errors) {
           addLabelsAssignmentsToCache(messages, label_custom_id, false);
@@ -242,22 +232,14 @@ void FeedlyServiceRoot::updateTitle() {
 }
 
 RootItem* FeedlyServiceRoot::obtainNewTreeForSyncIn() const {
-  try {
-    auto tree = m_network->collections(true);
-    auto* lblroot = new LabelsNode(tree);
-    auto labels = m_network->tags();
+  auto tree = m_network->collections(true);
+  auto* lblroot = new LabelsNode(tree);
+  auto labels = m_network->tags();
 
-    lblroot->setChildItems(labels);
-    tree->appendChild(lblroot);
+  lblroot->setChildItems(labels);
+  tree->appendChild(lblroot);
 
-    return tree;
-  }
-  catch (const ApplicationException& ex) {
-    qCriticalNN << LOGSEC_FEEDLY
-                << "Failed to obtain new sync-in tree:"
-                << QUOTE_W_SPACE_DOT(ex.message());
-    return nullptr;
-  }
+  return tree;
 }
 
 bool FeedlyServiceRoot::wantsBaggedIdsOfExistingMessages() const {

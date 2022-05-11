@@ -17,8 +17,8 @@
 Downloader::Downloader(QObject* parent)
   : QObject(parent), m_activeReply(nullptr), m_downloadManager(new SilentNetworkAccessManager(this)),
     m_timer(new QTimer(this)), m_inputData(QByteArray()), m_inputMultipartData(nullptr), m_targetProtected(false),
-    m_targetUsername(QString()), m_targetPassword(QString()), m_lastOutputData(QByteArray()),
-    m_lastOutputError(QNetworkReply::NoError) {
+    m_targetUsername(QString()), m_targetPassword(QString()), m_lastOutputData({}),
+    m_lastOutputError(QNetworkReply::NetworkError::NoError), m_lastHttpStatusCode(0) {
   m_timer->setInterval(DOWNLOAD_TIMEOUT);
   m_timer->setSingleShot(true);
 
@@ -212,8 +212,9 @@ void Downloader::finished() {
       m_lastCookies = {};
     }
 
-    m_lastContentType = reply->header(QNetworkRequest::ContentTypeHeader);
+    m_lastContentType = reply->header(QNetworkRequest::KnownHeaders::ContentTypeHeader);
     m_lastOutputError = reply->error();
+    m_lastHttpStatusCode = reply->attribute(QNetworkRequest::Attribute::HttpStatusCodeAttribute).toInt();
 
     // original_url = m_activeReply->property("original_url").toUrl();
 
@@ -224,7 +225,7 @@ void Downloader::finished() {
       m_inputMultipartData->deleteLater();
     }
 
-    emit completed(original_url, m_lastOutputError, m_lastOutputData);
+    emit completed(original_url, m_lastOutputError, m_lastHttpStatusCode, m_lastOutputData);
   }
 }
 
@@ -333,6 +334,10 @@ void Downloader::runGetRequest(const QNetworkRequest& request) {
   setCustomPropsToReply(m_activeReply);
   connect(m_activeReply, &QNetworkReply::downloadProgress, this, &Downloader::progressInternal);
   connect(m_activeReply, &QNetworkReply::finished, this, &Downloader::finished);
+}
+
+int Downloader::lastHttpStatusCode() const {
+  return m_lastHttpStatusCode;
 }
 
 QList<QNetworkCookie> Downloader::lastCookies() const {

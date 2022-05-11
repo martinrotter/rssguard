@@ -14,10 +14,9 @@
 #include <QPushButton>
 
 class RSSGUARD_DLLSPEC FormUpdate : public QDialog {
-  Q_OBJECT
+    Q_OBJECT
 
   public:
-
     // Constructors and destructors.
     explicit FormUpdate(QWidget* parent);
 
@@ -32,7 +31,10 @@ class RSSGUARD_DLLSPEC FormUpdate : public QDialog {
     void startUpdate();
 
     void updateProgress(qint64 bytes_received, qint64 bytes_total);
-    void updateCompleted(const QUrl &url, QNetworkReply::NetworkError status, const QByteArray& contents);
+    void updateCompleted(const QUrl& url,
+                         QNetworkReply::NetworkError status,
+                         int http_code,
+                         const QByteArray& contents);
     void saveUpdateFile(const QByteArray& file_contents);
 
   private:

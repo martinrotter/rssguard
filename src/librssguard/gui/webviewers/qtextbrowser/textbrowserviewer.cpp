@@ -548,7 +548,12 @@ void TextBrowserViewer::downloadNextNeededResource() {
   }
 }
 
-void TextBrowserViewer::resourceDownloaded(const QUrl& url, QNetworkReply::NetworkError status, QByteArray contents) {
+void TextBrowserViewer::resourceDownloaded(const QUrl& url,
+                                           QNetworkReply::NetworkError status,
+                                           int http_code,
+                                           QByteArray contents) {
+  Q_UNUSED(http_code)
+
   if (status == QNetworkReply::NetworkError::NoError) {
     m_loadedResources.insert(url, contents);
   }

@@ -14,18 +14,22 @@
 #include <QVariant>
 
 struct NetworkResult {
-  QNetworkReply::NetworkError m_networkError;
-  QString m_contentType;
-  QList<QNetworkCookie> m_cookies;
+    QNetworkReply::NetworkError m_networkError;
+    int m_httpCode;
+    QString m_contentType;
+    QList<QNetworkCookie> m_cookies;
 
-  explicit NetworkResult();
-  explicit NetworkResult(QNetworkReply::NetworkError err, const QString& ct, const QList<QNetworkCookie>& cook);
+    explicit NetworkResult();
+    explicit NetworkResult(QNetworkReply::NetworkError err,
+                           int http_code,
+                           const QString& ct,
+                           const QList<QNetworkCookie>& cook);
 };
 
 class Downloader;
 
 class NetworkFactory {
-  Q_DECLARE_TR_FUNCTIONS(NetworkFactory)
+    Q_DECLARE_TR_FUNCTIONS(NetworkFactory)
 
   private:
     explicit NetworkFactory() = default;
@@ -44,25 +48,32 @@ class NetworkFactory {
                                                     int timeout,
                                                     QIcon& output,
                                                     const QList<QPair<QByteArray, QByteArray>>& additional_headers,
-                                                    const QNetworkProxy& custom_proxy = QNetworkProxy::ProxyType::DefaultProxy);
-    static NetworkResult performNetworkOperation(const QString& url, int timeout,
+                                                    const QNetworkProxy& custom_proxy =
+                                                      QNetworkProxy::ProxyType::DefaultProxy);
+    static NetworkResult performNetworkOperation(const QString& url,
+                                                 int timeout,
                                                  const QByteArray& input_data,
                                                  QByteArray& output,
                                                  QNetworkAccessManager::Operation operation,
-                                                 const QList<QPair<QByteArray, QByteArray>>& additional_headers = QList<QPair<QByteArray, QByteArray>>(),
+                                                 const QList<QPair<QByteArray, QByteArray>>& additional_headers =
+                                                   QList<QPair<QByteArray, QByteArray>>(),
                                                  bool protected_contents = false,
                                                  const QString& username = QString(),
                                                  const QString& password = QString(),
-                                                 const QNetworkProxy& custom_proxy = QNetworkProxy::ProxyType::DefaultProxy);
-    static NetworkResult performNetworkOperation(const QString& url, int timeout,
+                                                 const QNetworkProxy& custom_proxy =
+                                                   QNetworkProxy::ProxyType::DefaultProxy);
+    static NetworkResult performNetworkOperation(const QString& url,
+                                                 int timeout,
                                                  QHttpMultiPart* input_data,
                                                  QList<HttpResponse>& output,
                                                  QNetworkAccessManager::Operation operation,
-                                                 const QList<QPair<QByteArray, QByteArray>>& additional_headers = QList<QPair<QByteArray, QByteArray>>(),
+                                                 const QList<QPair<QByteArray, QByteArray>>& additional_headers =
+                                                   QList<QPair<QByteArray, QByteArray>>(),
                                                  bool protected_contents = false,
                                                  const QString& username = QString(),
                                                  const QString& password = QString(),
-                                                 const QNetworkProxy& custom_proxy = QNetworkProxy::ProxyType::DefaultProxy);
+                                                 const QNetworkProxy& custom_proxy =
+                                                   QNetworkProxy::ProxyType::DefaultProxy);
 };
 
 #endif // NETWORKFACTORY_H

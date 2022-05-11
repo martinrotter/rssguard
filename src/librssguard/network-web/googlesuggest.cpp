@@ -156,8 +156,12 @@ void GoogleSuggest::autoSuggest() {
   m_downloader->downloadFile(url);
 }
 
-void GoogleSuggest::handleNetworkData(const QUrl& url, QNetworkReply::NetworkError status, const QByteArray& contents) {
+void GoogleSuggest::handleNetworkData(const QUrl& url,
+                                      QNetworkReply::NetworkError status,
+                                      int http_code,
+                                      const QByteArray& contents) {
   Q_UNUSED(url)
+  Q_UNUSED(http_code)
 
   if (status == QNetworkReply::NetworkError::NoError) {
     QStringList choices;

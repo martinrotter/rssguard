@@ -5,6 +5,7 @@
 #include "database/databasequeries.h"
 #include "definitions/definitions.h"
 #include "exceptions/feedfetchexception.h"
+#include "exceptions/networkexception.h"
 #include "miscellaneous/application.h"
 #include "miscellaneous/iconfactory.h"
 #include "miscellaneous/mutex.h"
@@ -124,7 +125,8 @@ RootItem* OwnCloudServiceRoot::obtainNewTreeForSyncIn() const {
     return feed_cats_response.feedsCategories(true);
   }
   else {
-    return nullptr;
+    throw NetworkException(feed_cats_response.networkError(),
+                           tr("cannot get list of feeds, network error '%1'").arg(feed_cats_response.networkError()));
   }
 }
 
@@ -151,7 +153,8 @@ void OwnCloudServiceRoot::setCustomDatabaseData(const QVariantHash& data) {
 }
 
 QList<Message> OwnCloudServiceRoot::obtainNewMessages(Feed* feed,
-                                                      const QHash<ServiceRoot::BagOfMessages, QStringList>& stated_messages,
+                                                      const QHash<ServiceRoot::BagOfMessages, QStringList>&
+                                                        stated_messages,
                                                       const QHash<QString, QStringList>& tagged_messages) {
   Q_UNUSED(stated_messages)
   Q_UNUSED(tagged_messages)

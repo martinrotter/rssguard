@@ -29,6 +29,7 @@ class Downloader : public QObject {
     QList<HttpResponse> lastOutputMultipartData() const;
     QVariant lastContentType() const;
     QList<QNetworkCookie> lastCookies() const;
+    int lastHttpStatusCode() const;
 
     void setProxy(const QNetworkProxy& proxy);
 
@@ -68,9 +69,8 @@ class Downloader : public QObject {
                         const QString& password = QString());
 
   signals:
-    // Emitted when new progress is known.
     void progress(qint64 bytes_received, qint64 bytes_total);
-    void completed(const QUrl& url, QNetworkReply::NetworkError status, QByteArray contents = QByteArray());
+    void completed(const QUrl& url, QNetworkReply::NetworkError status, int http_code, QByteArray contents = {});
 
   private slots:
 
@@ -111,8 +111,8 @@ class Downloader : public QObject {
     // Response data.
     QByteArray m_lastOutputData;
     QList<HttpResponse> m_lastOutputMultipartData;
-
     QNetworkReply::NetworkError m_lastOutputError;
+    int m_lastHttpStatusCode;
     QVariant m_lastContentType;
     QList<QNetworkCookie> m_lastCookies;
 };

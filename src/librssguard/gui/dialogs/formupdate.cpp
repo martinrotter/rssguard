@@ -170,8 +170,12 @@ void FormUpdate::loadAvailableFiles() {
   m_ui.m_tabInfo->setCurrentIndex(1);
 }
 
-void FormUpdate::updateCompleted(const QUrl& url, QNetworkReply::NetworkError status, const QByteArray& contents) {
+void FormUpdate::updateCompleted(const QUrl& url,
+                                 QNetworkReply::NetworkError status,
+                                 int http_code,
+                                 const QByteArray& contents) {
   Q_UNUSED(url)
+  Q_UNUSED(http_code)
 
   qDebugNN << LOGSEC_GUI << "Download of application update file was completed with code" << QUOTE_W_SPACE_DOT(status);
 

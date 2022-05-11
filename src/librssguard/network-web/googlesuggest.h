@@ -54,7 +54,10 @@ class GoogleSuggest : public QObject {
     void doneCompletion();
     void preventSuggest();
     void autoSuggest();
-    void handleNetworkData(const QUrl& url, QNetworkReply::NetworkError status, const QByteArray& contents);
+    void handleNetworkData(const QUrl& url,
+                           QNetworkReply::NetworkError status,
+                           int http_code,
+                           const QByteArray& contents);
 
   private:
     LocationLineEdit* editor;

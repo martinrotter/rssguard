@@ -442,11 +442,11 @@ void ServiceRoot::syncIn() {
   setIcon(qApp->icons()->fromTheme(QSL("view-refresh")));
   itemChanged({this});
 
-  qDebugNN << LOGSEC_CORE << "Starting sync-in process.";
+  try {
+    qDebugNN << LOGSEC_CORE << "Starting sync-in process.";
 
-  RootItem* new_tree = obtainNewTreeForSyncIn();
+    RootItem* new_tree = obtainNewTreeForSyncIn();
 
-  if (new_tree != nullptr) {
     qDebugNN << LOGSEC_CORE << "New feed tree for sync-in obtained.";
 
     auto feed_custom_data = storeCustomFeedsData();
@@ -498,8 +498,15 @@ void ServiceRoot::syncIn() {
     updateCounts(true);
     requestReloadMessageList(true);
   }
-  else {
-    qCriticalNN << LOGSEC_CORE << "New feed tree for sync-in NOT obtained.";
+  catch (const ApplicationException& ex) {
+    qCriticalNN << LOGSEC_CORE << "New feed tree for sync-in NOT obtained:" << QUOTE_W_SPACE_DOT(ex.message());
+
+    qApp->showGuiMessage(Notification::Event::GeneralEvent,
+                         GuiMessage(tr("Error when fetching list of feeds"),
+                                    tr("Feeds & categories for account '%1' were not fetched, error: %2")
+                                      .arg(title(), ex.message()),
+                                    QSystemTrayIcon::MessageIcon::Critical),
+                         GuiMessageDestination(true, true));
   }
 
   setIcon(original_icon);

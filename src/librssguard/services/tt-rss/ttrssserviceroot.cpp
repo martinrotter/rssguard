@@ -5,6 +5,7 @@
 #include "3rd-party/boolinq/boolinq.h"
 #include "database/databasequeries.h"
 #include "exceptions/feedfetchexception.h"
+#include "exceptions/networkexception.h"
 #include "miscellaneous/application.h"
 #include "miscellaneous/iconfactory.h"
 #include "miscellaneous/mutex.h"
@@ -26,8 +27,7 @@
 #include <QPair>
 #include <QSqlTableModel>
 
-TtRssServiceRoot::TtRssServiceRoot(RootItem* parent)
-  : ServiceRoot(parent), m_network(new TtRssNetworkFactory()) {
+TtRssServiceRoot::TtRssServiceRoot(RootItem* parent) : ServiceRoot(parent), m_network(new TtRssNetworkFactory()) {
   setIcon(TtRssServiceEntryPoint().icon());
 }
 
@@ -68,8 +68,7 @@ void TtRssServiceRoot::start(bool freshly_activated) {
 
 void TtRssServiceRoot::stop() {
   m_network->logout(networkProxy());
-  qDebugNN << LOGSEC_TTRSS
-           << "Stopping Tiny Tiny RSS account, logging out with result"
+  qDebugNN << LOGSEC_TTRSS << "Stopping Tiny Tiny RSS account, logging out with result"
            << QUOTE_W_SPACE_DOT(m_network->lastError());
 }
 
@@ -101,15 +100,18 @@ void TtRssServiceRoot::addNewFeed(RootItem* selected_item, const QString& url) {
     // Lock was not obtained because
     // it is used probably by feed updater or application
     // is quitting.
-    qApp->showGuiMessage(Notification::Event::GeneralEvent, {
-      tr("Cannot add item"),
-      tr("Cannot add feed because another critical operation is ongoing."),
-      QSystemTrayIcon::MessageIcon::Warning });
+    qApp->showGuiMessage(Notification::Event::GeneralEvent,
+                         {tr("Cannot add item"),
+                          tr("Cannot add feed because another critical operation is ongoing."),
+                          QSystemTrayIcon::MessageIcon::Warning});
 
     return;
   }
 
-  QScopedPointer<FormTtRssFeedDetails> form_pointer(new FormTtRssFeedDetails(this, selected_item, url, qApp->mainFormWidget()));
+  QScopedPointer<FormTtRssFeedDetails> form_pointer(new FormTtRssFeedDetails(this,
+                                                                             selected_item,
+                                                                             url,
+                                                                             qApp->mainFormWidget()));
 
   form_pointer->addEditFeed<TtRssFeed>();
   qApp->feedUpdateLock()->unlock();
@@ -132,9 +134,8 @@ void TtRssServiceRoot::saveAllCachedData(bool ignore_errors) {
     if (!ids.isEmpty()) {
       auto res = network()->updateArticles(ids,
                                            UpdateArticle::OperatingField::Unread,
-                                           key == RootItem::ReadStatus::Unread
-                                           ? UpdateArticle::Mode::SetToTrue
-                                           : UpdateArticle::Mode::SetToFalse,
+                                           key == RootItem::ReadStatus::Unread ? UpdateArticle::Mode::SetToTrue
+                                                                               : UpdateArticle::Mode::SetToFalse,
                                            networkProxy());
 
       if (!ignore_errors && (network()->lastError() != QNetworkReply::NetworkError::NoError || res.hasError())) {
@@ -155,9 +156,8 @@ void TtRssServiceRoot::saveAllCachedData(bool ignore_errors) {
       QStringList ids = customIDsOfMessages(messages);
       auto res = network()->updateArticles(ids,
                                            UpdateArticle::OperatingField::Starred,
-                                           key == RootItem::Importance::Important
-                                           ? UpdateArticle::Mode::SetToTrue
-                                           : UpdateArticle::Mode::SetToFalse,
+                                           key == RootItem::Importance::Important ? UpdateArticle::Mode::SetToTrue
+                                                                                  : UpdateArticle::Mode::SetToFalse,
                                            networkProxy());
 
       if (!ignore_errors && (network()->lastError() != QNetworkReply::NetworkError::NoError || res.hasError())) {
@@ -252,7 +252,8 @@ void TtRssServiceRoot::setCustomDatabaseData(const QVariantHash& data) {
 }
 
 QList<Message> TtRssServiceRoot::obtainNewMessages(Feed* feed,
-                                                   const QHash<ServiceRoot::BagOfMessages, QStringList>& stated_messages,
+                                                   const QHash<ServiceRoot::BagOfMessages, QStringList>&
+                                                     stated_messages,
                                                    const QHash<QString, QStringList>& tagged_messages) {
   Q_UNUSED(stated_messages)
   Q_UNUSED(tagged_messages)
@@ -263,8 +264,12 @@ QList<Message> TtRssServiceRoot::obtainNewMessages(Feed* feed,
   int skip = 0;
 
   do {
-    TtRssGetHeadlinesResponse headlines = network()->getHeadlines(feed->customNumericId(), limit, skip,
-                                                                  true, true, false,
+    TtRssGetHeadlinesResponse headlines = network()->getHeadlines(feed->customNumericId(),
+                                                                  limit,
+                                                                  skip,
+                                                                  true,
+                                                                  true,
+                                                                  false,
                                                                   network()->downloadOnlyUnreadMessages(),
                                                                   networkProxy());
 
@@ -286,12 +291,13 @@ QList<Message> TtRssServiceRoot::obtainNewMessages(Feed* feed,
 
 QString TtRssServiceRoot::additionalTooltip() const {
   return tr("Username: %1\nServer: %2\n"
-            "Last error: %3\nLast login on: %4").arg(m_network->username(),
-                                                     m_network->url(),
-                                                     NetworkFactory::networkErrorText(m_network->lastError()),
-                                                     m_network->lastLoginTime().isValid()
-                                                     ? QLocale().toString(m_network->lastLoginTime(), QLocale::FormatType::ShortFormat)
-                                                     : QSL("-"));
+            "Last error: %3\nLast login on: %4")
+    .arg(m_network->username(),
+         m_network->url(),
+         NetworkFactory::networkErrorText(m_network->lastError()),
+         m_network->lastLoginTime().isValid()
+           ? QLocale().toString(m_network->lastLoginTime(), QLocale::FormatType::ShortFormat)
+           : QSL("-"));
 }
 
 TtRssNetworkFactory* TtRssServiceRoot::network() const {
@@ -315,8 +321,9 @@ void TtRssServiceRoot::updateTitle() {
 RootItem* TtRssServiceRoot::obtainNewTreeForSyncIn() const {
   TtRssGetFeedsCategoriesResponse feed_cats = m_network->getFeedsCategories(networkProxy());
   TtRssGetLabelsResponse labels = m_network->getLabels(networkProxy());
+  auto lst_error = m_network->lastError();
 
-  if (m_network->lastError() == QNetworkReply::NoError) {
+  if (lst_error == QNetworkReply::NoError) {
     auto* tree = feed_cats.feedsCategories(m_network, true, networkProxy(), m_network->url());
     auto* lblroot = new LabelsNode(tree);
 
@@ -326,6 +333,6 @@ RootItem* TtRssServiceRoot::obtainNewTreeForSyncIn() const {
     return tree;
   }
   else {
-    return nullptr;
+    throw NetworkException(lst_error, tr("cannot get list of feeds, network error '%1'").arg(lst_error));
   }
 }

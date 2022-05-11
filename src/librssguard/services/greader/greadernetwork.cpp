@@ -602,7 +602,7 @@ RootItem* GreaderNetwork::categoriesFeedsLabelsTree(bool obtain_icons, const QNe
 
   if (!ensureLogin(proxy)) {
     qCriticalNN << LOGSEC_GREADER << "Cannot get feed tree, not logged-in.";
-    return nullptr;
+    throw ApplicationException(tr("you are not logged-in, maybe wrong credentials"));
   }
 
   QByteArray output_labels;
@@ -618,7 +618,11 @@ RootItem* GreaderNetwork::categoriesFeedsLabelsTree(bool obtain_icons, const QNe
                                                                proxy);
 
   if (result_labels.m_networkError != QNetworkReply::NetworkError::NoError) {
-    return nullptr;
+    qCriticalNN << LOGSEC_GREADER
+                << "Cannot get labels tree, network error:" << QUOTE_W_SPACE_DOT(result_labels.m_networkError);
+
+    throw NetworkException(result_labels.m_networkError,
+                           tr("cannot get list of labels, HTTP code '%1'").arg(result_labels.m_httpCode));
   }
 
   full_url = generateFullUrl(Operations::SubscriptionList);
@@ -637,7 +641,9 @@ RootItem* GreaderNetwork::categoriesFeedsLabelsTree(bool obtain_icons, const QNe
   if (result_feeds.m_networkError != QNetworkReply::NetworkError::NoError) {
     qCriticalNN << LOGSEC_GREADER
                 << "Cannot get feed tree, network error:" << QUOTE_W_SPACE_DOT(result_feeds.m_networkError);
-    return nullptr;
+
+    throw NetworkException(result_labels.m_networkError,
+                           tr("cannot get list of feeds, HTTP code '%1'").arg(result_feeds.m_httpCode));
   }
 
   return decodeTagsSubscriptions(output_labels, output_feeds, obtain_icons, proxy);

@@ -86,7 +86,10 @@ class TextBrowserViewer : public QTextBrowser, public WebViewer {
   private slots:
     void reloadHtmlDelayed();
     void downloadNextNeededResource();
-    void resourceDownloaded(const QUrl& url, QNetworkReply::NetworkError status, QByteArray contents = QByteArray());
+    void resourceDownloaded(const QUrl& url,
+                            QNetworkReply::NetworkError status,
+                            int http_code,
+                            QByteArray contents = QByteArray());
 
   private:
     bool m_resourcesEnabled;
