@@ -18,8 +18,10 @@ class RedditServiceRoot;
 class OAuth2Service;
 class Downloader;
 
+struct Subreddit {};
+
 class RedditNetworkFactory : public QObject {
-  Q_OBJECT
+    Q_OBJECT
 
   public:
     explicit RedditNetworkFactory(QObject* parent = nullptr);
@@ -40,6 +42,8 @@ class RedditNetworkFactory : public QObject {
 
     // API methods.
     QVariantHash me(const QNetworkProxy& custom_proxy);
+    QList<Feed*> subreddits(const QNetworkProxy& custom_proxy);
+    QList<Message> hot(const QString& sub_name, const QNetworkProxy& custom_proxy);
 
   private slots:
     void onTokensError(const QString& error, const QString& error_description);

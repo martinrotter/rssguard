@@ -30,6 +30,12 @@ void RedditServiceRoot::updateTitle() {
 RootItem* RedditServiceRoot::obtainNewTreeForSyncIn() const {
   auto* root = new RootItem();
 
+  auto feeds = m_network->subreddits(networkProxy());
+
+  for (auto* feed : feeds) {
+    root->appendChild(feed);
+  }
+
   return root;
 }
 
@@ -58,13 +64,14 @@ void RedditServiceRoot::setCustomDatabaseData(const QVariantHash& data) {
 }
 
 QList<Message> RedditServiceRoot::obtainNewMessages(Feed* feed,
-                                                    const QHash<ServiceRoot::BagOfMessages, QStringList>& stated_messages,
+                                                    const QHash<ServiceRoot::BagOfMessages, QStringList>&
+                                                      stated_messages,
                                                     const QHash<QString, QStringList>& tagged_messages) {
   Q_UNUSED(stated_messages)
   Q_UNUSED(tagged_messages)
   Q_UNUSED(feed)
 
-  QList<Message> messages;
+  QList<Message> messages = m_network->hot(feed->title(), networkProxy());
 
   return messages;
 }
@@ -100,13 +107,14 @@ void RedditServiceRoot::start(bool freshly_activated) {
 
   updateTitle();
 
-  /*
-     if (getSubTreeFeeds().isEmpty()) {
-     syncIn();
-     }
-   */
-
-  m_network->oauth()->login();
+  if (getSubTreeFeeds().isEmpty()) {
+    m_network->oauth()->login([this]() {
+      syncIn();
+    });
+  }
+  else {
+    m_network->oauth()->login();
+  }
 }
 
 QString RedditServiceRoot::code() const {
@@ -115,11 +123,9 @@ QString RedditServiceRoot::code() const {
 
 QString RedditServiceRoot::additionalTooltip() const {
   return tr("Authentication status: %1\n"
-            "Login tokens expiration: %2").arg(network()->oauth()->isFullyLoggedIn()
-                                               ? tr("logged-in")
-                                               : tr("NOT logged-in"),
-                                               network()->oauth()->tokensExpireIn().isValid() ?
-                                               network()->oauth()->tokensExpireIn().toString() : QSL("-"));
+            "Login tokens expiration: %2")
+    .arg(network()->oauth()->isFullyLoggedIn() ? tr("logged-in") : tr("NOT logged-in"),
+         network()->oauth()->tokensExpireIn().isValid() ? network()->oauth()->tokensExpireIn().toString() : QSL("-"));
 }
 
 void RedditServiceRoot::saveAllCachedData(bool ignore_errors) {
