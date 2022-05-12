@@ -17,6 +17,7 @@
 #include "services/abstract/category.h"
 #include "services/reddit/definitions.h"
 #include "services/reddit/redditserviceroot.h"
+#include "services/reddit/redditsubscription.h"
 
 #include <QHttpMultiPart>
 #include <QJsonArray>
@@ -178,11 +179,13 @@ QList<Feed*> RedditNetworkFactory::subreddits(const QNetworkProxy& custom_proxy)
       for (const QJsonValue& sub_val : root_doc["data"].toObject()["children"].toArray()) {
         const auto sub_obj = sub_val.toObject()["data"].toObject();
 
-        Feed* new_sub = new Feed();
+        RedditSubscription* new_sub = new RedditSubscription();
 
         new_sub->setCustomId(sub_obj["id"].toString());
         new_sub->setTitle(sub_obj["title"].toString());
         new_sub->setDescription(sub_obj["public_description"].toString());
+
+        new_sub->setPrefixedName(sub_obj["url"].toString());
 
         QIcon icon;
         QString icon_url = sub_obj["community_icon"].toString();
@@ -232,9 +235,14 @@ QList<Message> RedditNetworkFactory::hot(const QString& sub_name, const QNetwork
   QString after;
   QList<Message> msgs;
 
+  int desired_count = batchSize();
+
   do {
+    int next_batch = desired_count <= 0 ? 100 : std::min(100, desired_count - msgs.size());
+
     QByteArray output;
-    QString final_url = QSL(REDDIT_API_HOT).arg(QString::number(100), sub_name, QSL("GLOBAL"));
+    QString final_url =
+      QSL(REDDIT_API_HOT).arg(sub_name, QString::number(next_batch), QString::number(msgs.size()), QSL("GLOBAL"));
 
     if (!after.isEmpty()) {
       final_url += QSL("&after=%1").arg(after);
@@ -282,7 +290,7 @@ QList<Message> RedditNetworkFactory::hot(const QString& sub_name, const QNetwork
       }
     }
   }
-  while (!after.isEmpty());
+  while (!after.isEmpty() && (desired_count <= 0 || desired_count > msgs.size()));
 
   // posty dle jmena redditu
   // https://oauth.reddit.com/<SUBREDDIT>/new

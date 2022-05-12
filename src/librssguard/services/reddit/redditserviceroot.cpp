@@ -14,6 +14,7 @@
 #include "services/reddit/redditcategory.h"
 #include "services/reddit/redditentrypoint.h"
 #include "services/reddit/redditnetworkfactory.h"
+#include "services/reddit/redditsubscription.h"
 
 #include <QFileDialog>
 
@@ -71,7 +72,7 @@ QList<Message> RedditServiceRoot::obtainNewMessages(Feed* feed,
   Q_UNUSED(tagged_messages)
   Q_UNUSED(feed)
 
-  QList<Message> messages = m_network->hot(feed->title(), networkProxy());
+  QList<Message> messages = m_network->hot(qobject_cast<RedditSubscription*>(feed)->prefixedName(), networkProxy());
 
   return messages;
 }
@@ -101,7 +102,7 @@ bool RedditServiceRoot::supportsCategoryAdding() const {
 
 void RedditServiceRoot::start(bool freshly_activated) {
   if (!freshly_activated) {
-    DatabaseQueries::loadRootFromDatabase<RedditCategory, Feed>(this);
+    DatabaseQueries::loadRootFromDatabase<RedditCategory, RedditSubscription>(this);
     loadCacheFromFile();
   }
 

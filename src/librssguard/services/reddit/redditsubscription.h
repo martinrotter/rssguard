@@ -8,12 +8,21 @@
 class RedditServiceRoot;
 
 class RedditSubscription : public Feed {
-  Q_OBJECT
+    Q_OBJECT
 
   public:
     explicit RedditSubscription(RootItem* parent = nullptr);
 
     RedditServiceRoot* serviceRoot() const;
+
+    QString prefixedName() const;
+    void setPrefixedName(const QString& prefixed_name);
+
+    virtual QVariantHash customDatabaseData() const;
+    virtual void setCustomDatabaseData(const QVariantHash& data);
+
+  private:
+    QString m_prefixedName;
 };
 
 #endif // REDDITSUBSCRIPTION_H

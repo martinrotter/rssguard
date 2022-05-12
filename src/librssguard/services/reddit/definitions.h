@@ -12,7 +12,7 @@
 
 #define REDDIT_API_GET_PROFILE "https://oauth.reddit.com/api/v1/me"
 #define REDDIT_API_SUBREDDITS "https://oauth.reddit.com/subreddits/mine/subscriber?limit=%1"
-#define REDDIT_API_HOT "https://oauth.reddit.com/r/%2/hot?limit=%1&%3"
+#define REDDIT_API_HOT "https://oauth.reddit.com%1hot?limit=%2&count=%3&g=%4"
 
 #define REDDIT_DEFAULT_BATCH_SIZE 100
 #define REDDIT_MAX_BATCH_SIZE 999
