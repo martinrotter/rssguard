@@ -556,17 +556,17 @@ Click here to open parent directory.</source>
     <message>
         <location filename="../src/librssguard/services/gmail/gui/emailpreviewer.ui" line="59"/>
         <source>&amp;Attachments</source>
-        <translation type="unfinished"/>
+        <translation>Вложение (&amp;A)</translation>
     </message>
     <message>
         <location filename="../src/librssguard/services/gmail/gui/emailpreviewer.ui" line="72"/>
         <source>&amp;Reply</source>
-        <translation type="unfinished"/>
+        <translation>Ответ (&amp;R)</translation>
     </message>
     <message>
         <location filename="../src/librssguard/services/gmail/gui/emailpreviewer.ui" line="82"/>
         <source>&amp;Forward</source>
-        <translation type="unfinished"/>
+        <translation>Вперед (&amp;F)</translation>
     </message>
     <message>
         <location filename="../src/librssguard/services/gmail/gui/emailpreviewer.ui" line="94"/>
@@ -582,17 +582,17 @@ Click here to open parent directory.</source>
         <location filename="../src/librssguard/services/gmail/gui/emailpreviewer.cpp" line="98"/>
         <location filename="../src/librssguard/services/gmail/gui/emailpreviewer.cpp" line="104"/>
         <source>Cannot download attachment</source>
-        <translation type="unfinished"/>
+        <translation>Не удалось скачать вложение</translation>
     </message>
     <message>
         <location filename="../src/librssguard/services/gmail/gui/emailpreviewer.cpp" line="99"/>
         <source>Attachment cannot be downloaded because you are not logged-in.</source>
-        <translation type="unfinished"/>
+        <translation>Вложение не может быть загружено, потому что вы не вошли в систему.</translation>
     </message>
     <message>
         <location filename="../src/librssguard/services/gmail/gui/emailpreviewer.cpp" line="105"/>
         <source>Attachment cannot be downloaded because some general error happened.</source>
-        <translation type="unfinished"/>
+        <translation>Вложение не может быть загружено, так как произошла какая-то общая ошибка.</translation>
     </message>
 </context>
 <context>
@@ -1976,7 +1976,7 @@ or this functionality is not implemented yet.</source>
     <message>
         <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="438"/>
         <source>Switch main window visibility</source>
-        <translation type="unfinished"/>
+        <translation>Переключить видимость главного окна</translation>
     </message>
     <message>
         <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="441"/>
@@ -3649,12 +3649,12 @@ Login tokens expiration: %2</source>
     <message>
         <location filename="../src/librssguard/gui/webviewers/litehtml/litehtmlviewer.cpp" line="268"/>
         <source>Copy URL</source>
-        <translation type="unfinished"/>
+        <translation>Копировать URL</translation>
     </message>
     <message>
         <location filename="../src/librssguard/gui/webviewers/litehtml/litehtmlviewer.cpp" line="276"/>
         <source>Copy selection</source>
-        <translation type="unfinished"/>
+        <translation>Копировать выделенное</translation>
     </message>
     <message>
         <location filename="../src/librssguard/gui/webviewers/litehtml/litehtmlviewer.cpp" line="285"/>
@@ -3664,12 +3664,12 @@ Login tokens expiration: %2</source>
     <message>
         <location filename="../src/librssguard/gui/webviewers/litehtml/litehtmlviewer.cpp" line="299"/>
         <source>Use simple article layout</source>
-        <translation type="unfinished"/>
+        <translation>Использовать простой макет статьи</translation>
     </message>
     <message>
         <location filename="../src/librssguard/gui/webviewers/litehtml/litehtmlviewer.cpp" line="305"/>
         <source>Reload with images</source>
-        <translation type="unfinished"/>
+        <translation>Перезагрузить с изображениями</translation>
     </message>
     <message>
         <location filename="../src/librssguard/gui/webviewers/litehtml/litehtmlviewer.cpp" line="325"/>
@@ -4121,52 +4121,52 @@ Login tokens expiration: %2</source>
     <message>
         <location filename="../src/librssguard/gui/toolbars/messagestoolbar.cpp" line="168"/>
         <source>Menu for filtering articles</source>
-        <translation type="unfinished"/>
+        <translation>Меню фильтрации статей</translation>
     </message>
     <message>
         <location filename="../src/librssguard/gui/toolbars/messagestoolbar.cpp" line="171"/>
         <source>No extra filtering</source>
-        <translation type="unfinished"/>
+        <translation>Без дополнительной фильтрации</translation>
     </message>
     <message>
         <location filename="../src/librssguard/gui/toolbars/messagestoolbar.cpp" line="176"/>
         <source>Show unread articles</source>
-        <translation type="unfinished"/>
+        <translation>Показать непрочитанные статьи</translation>
     </message>
     <message>
         <location filename="../src/librssguard/gui/toolbars/messagestoolbar.cpp" line="181"/>
         <source>Show important articles</source>
-        <translation type="unfinished"/>
+        <translation>Показать важные статьи</translation>
     </message>
     <message>
         <location filename="../src/librssguard/gui/toolbars/messagestoolbar.cpp" line="186"/>
         <source>Show today&apos;s articles</source>
-        <translation type="unfinished"/>
+        <translation>Показать сегодняшние статьи</translation>
     </message>
     <message>
         <location filename="../src/librssguard/gui/toolbars/messagestoolbar.cpp" line="191"/>
         <source>Show yesterday&apos;s articles</source>
-        <translation type="unfinished"/>
+        <translation>Показать вчерашние статьи</translation>
     </message>
     <message>
         <location filename="../src/librssguard/gui/toolbars/messagestoolbar.cpp" line="196"/>
         <source>Show articles in last 24 hours</source>
-        <translation type="unfinished"/>
+        <translation>Показать статьи за последние 24 часа</translation>
     </message>
     <message>
         <location filename="../src/librssguard/gui/toolbars/messagestoolbar.cpp" line="201"/>
         <source>Show articles in last 48 hours</source>
-        <translation type="unfinished"/>
+        <translation>Показать статьи за последние 48 часов</translation>
     </message>
     <message>
         <location filename="../src/librssguard/gui/toolbars/messagestoolbar.cpp" line="206"/>
         <source>Show this week&apos;s articles</source>
-        <translation type="unfinished"/>
+        <translation>Показать статьи за эту неделю</translation>
     </message>
     <message>
         <location filename="../src/librssguard/gui/toolbars/messagestoolbar.cpp" line="211"/>
         <source>Show last week&apos;s articles</source>
-        <translation type="unfinished"/>
+        <translation>Показать статьи за прошлую неделю</translation>
     </message>
     <message>
         <location filename="../src/librssguard/gui/toolbars/messagestoolbar.cpp" line="216"/>
@@ -4182,7 +4182,7 @@ Login tokens expiration: %2</source>
     <message>
         <location filename="../src/librssguard/gui/toolbars/messagestoolbar.cpp" line="236"/>
         <source>Article list filter</source>
-        <translation type="unfinished"/>
+        <translation>Фильтр списка статей</translation>
     </message>
     <message>
         <location filename="../src/librssguard/gui/toolbars/messagestoolbar.cpp" line="128"/>
