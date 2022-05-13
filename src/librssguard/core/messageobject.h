@@ -8,26 +8,26 @@
 #include "services/abstract/label.h"
 
 class MessageObject : public QObject {
-  Q_OBJECT
+    Q_OBJECT
 
-  Q_PROPERTY(QList<Label*> assignedLabels READ assignedLabels)
-  Q_PROPERTY(QList<Label*> availableLabels READ availableLabels)
-  Q_PROPERTY(QString feedCustomId READ feedCustomId)
-  Q_PROPERTY(int accountId READ accountId)
-  Q_PROPERTY(int id READ id)
-  Q_PROPERTY(QString customId READ customId)
-  Q_PROPERTY(QString title READ title WRITE setTitle)
-  Q_PROPERTY(QString url READ url WRITE setUrl)
-  Q_PROPERTY(QString author READ author WRITE setAuthor)
-  Q_PROPERTY(QString contents READ contents WRITE setContents)
-  Q_PROPERTY(QString rawContents READ rawContents WRITE setRawContents)
-  Q_PROPERTY(QDateTime created READ created WRITE setCreated)
-  Q_PROPERTY(bool createdIsMadeup READ createdIsMadeup WRITE setCreatedIsMadeup)
-  Q_PROPERTY(double score READ score WRITE setScore)
-  Q_PROPERTY(bool isRead READ isRead WRITE setIsRead)
-  Q_PROPERTY(bool isImportant READ isImportant WRITE setIsImportant)
-  Q_PROPERTY(bool isDeleted READ isDeleted WRITE setIsDeleted)
-  Q_PROPERTY(bool runningFilterWhenFetching READ runningFilterWhenFetching)
+    Q_PROPERTY(QList<Label*> assignedLabels READ assignedLabels)
+    Q_PROPERTY(QList<Label*> availableLabels READ availableLabels)
+    Q_PROPERTY(QString feedCustomId READ feedCustomId)
+    Q_PROPERTY(int accountId READ accountId)
+    Q_PROPERTY(int id READ id)
+    Q_PROPERTY(QString customId READ customId)
+    Q_PROPERTY(QString title READ title WRITE setTitle)
+    Q_PROPERTY(QString url READ url WRITE setUrl)
+    Q_PROPERTY(QString author READ author WRITE setAuthor)
+    Q_PROPERTY(QString contents READ contents WRITE setContents)
+    Q_PROPERTY(QString rawContents READ rawContents WRITE setRawContents)
+    Q_PROPERTY(QDateTime created READ created WRITE setCreated)
+    Q_PROPERTY(bool createdIsMadeup READ createdIsMadeup WRITE setCreatedIsMadeup)
+    Q_PROPERTY(double score READ score WRITE setScore)
+    Q_PROPERTY(bool isRead READ isRead WRITE setIsRead)
+    Q_PROPERTY(bool isImportant READ isImportant WRITE setIsImportant)
+    Q_PROPERTY(bool isDeleted READ isDeleted WRITE setIsDeleted)
+    Q_PROPERTY(bool runningFilterWhenFetching READ runningFilterWhenFetching)
 
   public:
     enum class FilteringAction {
@@ -89,6 +89,9 @@ class MessageObject : public QObject {
     // Returns true if label was now removed or if it is not assigned to the message at all.
     Q_INVOKABLE bool deassignLabel(const QString& label_custom_id) const;
 
+    // Returns label custom ID given label title.
+    Q_INVOKABLE QString findLabelId(const QString& label_title) const;
+
     // Returns list of assigned and available messages.
     QList<Label*> assignedLabels() const;
     QList<Label*> availableLabels() const;
@@ -146,13 +149,11 @@ class MessageObject : public QObject {
     bool m_runningAfterFetching;
 };
 
-inline MessageObject::DuplicateCheck operator|(MessageObject::DuplicateCheck lhs,
-                                               MessageObject::DuplicateCheck rhs) {
+inline MessageObject::DuplicateCheck operator|(MessageObject::DuplicateCheck lhs, MessageObject::DuplicateCheck rhs) {
   return static_cast<MessageObject::DuplicateCheck>(int(lhs) | int(rhs));
 }
 
-inline MessageObject::DuplicateCheck operator&(MessageObject::DuplicateCheck lhs,
-                                               MessageObject::DuplicateCheck rhs) {
+inline MessageObject::DuplicateCheck operator&(MessageObject::DuplicateCheck lhs, MessageObject::DuplicateCheck rhs) {
   return static_cast<MessageObject::DuplicateCheck>(int(lhs) & int(rhs));
 }
 

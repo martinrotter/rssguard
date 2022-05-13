@@ -9,10 +9,14 @@
 #include <QSqlError>
 #include <QSqlQuery>
 
-MessageObject::MessageObject(QSqlDatabase* db, const QString& feed_custom_id, int account_id,
-                             const QList<Label*>& available_labels, bool is_new_message, QObject* parent)
+MessageObject::MessageObject(QSqlDatabase* db,
+                             const QString& feed_custom_id,
+                             int account_id,
+                             const QList<Label*>& available_labels,
+                             bool is_new_message,
+                             QObject* parent)
   : QObject(parent), m_db(db), m_feedCustomId(feed_custom_id), m_accountId(account_id), m_message(nullptr),
-  m_availableLabels(available_labels), m_runningAfterFetching(is_new_message) {}
+    m_availableLabels(available_labels), m_runningAfterFetching(is_new_message) {}
 
 void MessageObject::setMessage(Message* message) {
   m_message = message;
@@ -33,45 +37,44 @@ bool MessageObject::isDuplicateWithAttribute(MessageObject::DuplicateCheck attri
   QVector<QPair<QString, QVariant>> bind_values;
 
   // Now we construct the query according to parameter.
-  if ((attribute_check& DuplicateCheck::SameTitle) == DuplicateCheck::SameTitle) {
+  if ((attribute_check & DuplicateCheck::SameTitle) == DuplicateCheck::SameTitle) {
     where_clauses.append(QSL("title = :title"));
-    bind_values.append({ QSL(":title"), title() });
+    bind_values.append({QSL(":title"), title()});
   }
 
-  if ((attribute_check& DuplicateCheck::SameUrl) == DuplicateCheck::SameUrl) {
+  if ((attribute_check & DuplicateCheck::SameUrl) == DuplicateCheck::SameUrl) {
     where_clauses.append(QSL("url = :url"));
-    bind_values.append({ QSL(":url"), url() });
+    bind_values.append({QSL(":url"), url()});
   }
 
-  if ((attribute_check& DuplicateCheck::SameAuthor) == DuplicateCheck::SameAuthor) {
+  if ((attribute_check & DuplicateCheck::SameAuthor) == DuplicateCheck::SameAuthor) {
     where_clauses.append(QSL("author = :author"));
-    bind_values.append({ QSL(":author"), author() });
+    bind_values.append({QSL(":author"), author()});
   }
 
-  if ((attribute_check& DuplicateCheck::SameDateCreated) == DuplicateCheck::SameDateCreated) {
+  if ((attribute_check & DuplicateCheck::SameDateCreated) == DuplicateCheck::SameDateCreated) {
     where_clauses.append(QSL("date_created = :date_created"));
-    bind_values.append({ QSL(":date_created"), created().toMSecsSinceEpoch() });
+    bind_values.append({QSL(":date_created"), created().toMSecsSinceEpoch()});
   }
 
-  if ((attribute_check& DuplicateCheck::SameCustomId) == DuplicateCheck::SameCustomId) {
+  if ((attribute_check & DuplicateCheck::SameCustomId) == DuplicateCheck::SameCustomId) {
     where_clauses.append(QSL("custom_id = :custom_id"));
-    bind_values.append({ QSL(":custom_id"), customId() });
+    bind_values.append({QSL(":custom_id"), customId()});
   }
 
   where_clauses.append(QSL("account_id = :account_id"));
-  bind_values.append({ QSL(":account_id"), accountId() });
+  bind_values.append({QSL(":account_id"), accountId()});
 
-  if ((attribute_check& DuplicateCheck::AllFeedsSameAccount) != DuplicateCheck::AllFeedsSameAccount) {
+  if ((attribute_check & DuplicateCheck::AllFeedsSameAccount) != DuplicateCheck::AllFeedsSameAccount) {
     // Limit to current feed.
     where_clauses.append(QSL("feed = :feed"));
-    bind_values.append({ QSL(":feed"), feedCustomId() });
+    bind_values.append({QSL(":feed"), feedCustomId()});
   }
 
   QString full_query = QSL("SELECT COUNT(*) FROM Messages WHERE ") + where_clauses.join(QSL(" AND ")) + QSL(";");
 
   qDebugNN << LOGSEC_MESSAGEMODEL
-           << "Prepared query for MSG duplicate identification is:"
-           << QUOTE_W_SPACE_DOT(full_query);
+           << "Prepared query for MSG duplicate identification is:" << QUOTE_W_SPACE_DOT(full_query);
 
   q.setForwardOnly(true);
   q.prepare(full_query);
@@ -81,22 +84,17 @@ bool MessageObject::isDuplicateWithAttribute(MessageObject::DuplicateCheck attri
   }
 
   if (q.exec() && q.next()) {
-    qDebugNN << LOGSEC_DB
-             << "Executed SQL for message duplicates check:"
+    qDebugNN << LOGSEC_DB << "Executed SQL for message duplicates check:"
              << QUOTE_W_SPACE_DOT(DatabaseFactory::lastExecutedQuery(q));
 
     if (q.record().value(0).toInt() > 0) {
       // Whoops, we have the "same" message in database.
-      qDebugNN << LOGSEC_CORE
-               << "Message"
-               << QUOTE_W_SPACE(title())
-               << "was identified as duplicate by filter script.";
+      qDebugNN << LOGSEC_CORE << "Message" << QUOTE_W_SPACE(title()) << "was identified as duplicate by filter script.";
       return true;
     }
   }
   else if (q.lastError().isValid()) {
-    qWarningNN << LOGSEC_CORE
-               << "Error when checking for duplicate messages via filtering system, error:"
+    qWarningNN << LOGSEC_CORE << "Error when checking for duplicate messages via filtering system, error:"
                << QUOTE_W_SPACE_DOT(q.lastError().text());
   }
 
@@ -140,6 +138,14 @@ bool MessageObject::deassignLabel(const QString& label_custom_id) const {
   else {
     return false;
   }
+}
+
+QString MessageObject::findLabelId(const QString& label_title) const {
+  Label* found_lbl = boolinq::from(m_availableLabels).firstOrDefault([label_title](Label* lbl) {
+    return lbl->title().toLower() == label_title.toLower();
+  });
+
+  return found_lbl != nullptr ? found_lbl->customId() : QString();
 }
 
 QString MessageObject::title() const {

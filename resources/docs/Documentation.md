@@ -139,6 +139,7 @@ Here is the reference of methods and properties of types available in your filte
 | Property  | `isImportant`                 | `Boolean`     | ❌         | ✅            | Is message important?
 | Property  | `isDeleted`                   | `Boolean`     | ❌         | ❌            | Is message placed in recycle bin?
 | Method    | `isAlreadyInDatabase(DuplicateCheck)` | `Boolean` | ❌         | ❌            | Allows you to test if this particular message is already stored in RSS Guard's DB.
+| Method    | `findLabelId(String)`         | `String`     | ❌         | ❌            | You enter title of the label and method returns `customId` of label which then can be used in  `assignLabel()` and `deassignLabel` methods.
 | Method    | `assignLabel(String)`         | `Boolean`     | ❌         | ❌            | Assigns label to this message. The passed `String` value is the `customId` property of `Label` type. See its API reference for relevant info.
 | Method    | `deassignLabel(String)`       | `Boolean`     | ❌         | ❌            | Removes label from this message. The passed `String` value is the `customId` property of `Label` type. See its API reference for relevant info.
 | Property  | `runningFilterWhenFetching`   | `Boolean`     | ✅         | ❌            | Returns `true` if current run of the message filter is done when message is fetched. Returns `false` if message filter runs manually, for example from `Article filters` window.
