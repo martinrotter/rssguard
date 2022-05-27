@@ -14,7 +14,7 @@ class Feed;
 class Category;
 
 class RSSGUARD_DLLSPEC FeedsView : public BaseTreeView {
-  Q_OBJECT
+    Q_OBJECT
 
   public:
     explicit FeedsView(QWidget* parent = nullptr);
@@ -75,7 +75,6 @@ class RSSGUARD_DLLSPEC FeedsView : public BaseTreeView {
     // Selects next/previous item (feed/category) in the list.
     void selectNextItem();
     void selectPreviousItem();
-
     void selectNextUnreadItem();
 
     // Switches visibility of the widget.
