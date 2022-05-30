@@ -84,12 +84,12 @@ With ISA, RSS Guard only downloads articles which are new or were updated. While
 <sup>4</sup> [OAuth](https://en.wikipedia.org/wiki/OAuth) is secure way of authenticating users in online applications.
 
 ### Article Filtering <a id="fltr"></a>
-Sometimes you need to tweak incoming article - mark it starred, remove ads from its contents or simply ignore it. That's where filtering feature comes in.
+Sometimes you need to automatically tweak incoming article - mark it starred, remove ads from its contents or simply ignore it. That's where filtering feature comes in.
 
 <img alt="alt-img" src="images/filters-dialog.png" width="600px">
 
 #### Writing article filter
-Article filters are small `JavaScript` pieces of code which must provide function with prototype:
+Article filters are small scripts which are executed automatically when articles/feeds are downloaded. Article filters are `JavaScript` pieces of code which must provide function with prototype:
 
 ```js
 function filterMessage() { }
