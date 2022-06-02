@@ -30,40 +30,39 @@ QString jsonProcessXmlElement(const QDomElement& elem) {
   QStringList attrs;
 
   for (int i = 0; i < elem.attributes().size(); i++) {
-    attrs << QSL("\"%1\": \"%2\"").arg(jsonEscapeString(elem.attributes().item(i).toAttr().name()),
-                                       jsonEscapeString(elem.attributes().item(i).toAttr().value()));
+    attrs << QSL("\"%1\": \"%2\"")
+               .arg(jsonEscapeString(elem.attributes().item(i).toAttr().name()),
+                    jsonEscapeString(elem.attributes().item(i).toAttr().value()));
   }
 
   QStringList elems;
   QString elem_text;
 
   for (int i = 0; i < elem.childNodes().size(); i++) {
-    if (elem.childNodes().at(i).isText()) {
-      elem_text = jsonEscapeString(elem.childNodes().at(i).nodeValue());
+    QDomNode el = elem.childNodes().at(i);
+
+    if (el.isText()) {
+      elem_text = jsonEscapeString(el.nodeValue());
     }
 
-    if (!elem.childNodes().at(i).isElement()) {
+    if (!el.isElement()) {
       continue;
     }
 
-    elems << QSL("\"%1\": %2").arg(elem.childNodes().at(i).toElement().tagName(),
-                                   jsonProcessXmlElement(elem.childNodes().at(i).toElement()));
+    elems << QSL("\"%1\": %2").arg(el.toElement().tagName(), jsonProcessXmlElement(el.toElement()));
   }
 
   QString str;
 
   if (!elems.isEmpty() && !attrs.isEmpty()) {
-    str = QSL("{%1, %2, %3}").arg(attrs.join(QSL(",\n")),
-                                  elems.join(QSL(",\n")),
-                                  QSL("\"__text\": \"%1\"").arg(elem_text));
+    str =
+      QSL("{%1, %2, %3}").arg(attrs.join(QSL(",\n")), elems.join(QSL(",\n")), QSL("\"__text\": \"%1\"").arg(elem_text));
   }
   else if (!elems.isEmpty()) {
-    str = QSL("{%1, %2}").arg(elems.join(QSL(",\n")),
-                              QSL("\"__text\": \"%1\"").arg(elem_text));
+    str = QSL("{%1, %2}").arg(elems.join(QSL(",\n")), QSL("\"__text\": \"%1\"").arg(elem_text));
   }
   else if (!attrs.isEmpty()) {
-    str = QSL("{%1, %2}").arg(attrs.join(QSL(",\n")),
-                              QSL("\"__text\": \"%1\"").arg(elem_text));
+    str = QSL("{%1, %2}").arg(attrs.join(QSL(",\n")), QSL("\"__text\": \"%1\"").arg(elem_text));
   }
   else {
     str = QSL("{%1}").arg(QSL("\"__text\": \"%1\"").arg(elem_text));
@@ -79,8 +78,7 @@ QString FilterUtils::fromXmlToJson(const QString& xml) const {
 
   QString json = QSL("%1").arg(jsonProcessXmlElement(xml_doc.documentElement()));
 
-  return QSL("{\"%1\": %2}").arg(xml_doc.documentElement().tagName(),
-                                 json);
+  return QSL("{\"%1\": %2}").arg(xml_doc.documentElement().tagName(), json);
 }
 
 QDateTime FilterUtils::parseDateTime(const QString& dat) const {

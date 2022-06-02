@@ -1,3 +1,16 @@
+4.2.3
+-----
+
+Added:
+* Autostart feature is now overally better and works with Flatpak build too. (#718)
+* Added a switch to automatically reject all incoming HTTP cookies application-wide. (#716)
+* Gmail: Display proper "To" e-mail header when displaying e-mails.
+
+Fixed:
+* Feedly: Correct article URLs are now fetched if possible. (#732)
+* Mac OS X: Fixed launching with error "invalid application". (#721)
+* External resources for non-web-engine article viewer are now resolved more correctly.
+
 4.2.2
 -----
 
