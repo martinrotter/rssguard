@@ -127,7 +127,7 @@ bool SystemFactory::setAutoStartStatus(AutoStartStatus new_status) {
   switch (new_status) {
     case AutoStartStatus::Enabled: {
       QStringList args = qApp->rawCliArgs();
-      auto std_args = boolinq::from(args)
+      auto std_args = boolinq::from(args.begin(), args.end())
                         .select([](const QString& arg) {
                           if (arg.contains(QL1S(" ")) && !arg.startsWith(QL1S("\""))) {
                             return QSL("\"%1\"").arg(arg);
