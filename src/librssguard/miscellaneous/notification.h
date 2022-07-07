@@ -43,7 +43,9 @@ class Notification {
       NodePackageFailedToUpdate = 8
     };
 
-    explicit Notification(Event event = Event::NoEvent, bool balloon = {}, const QString& sound_path = {},
+    explicit Notification(Event event = Event::NoEvent,
+                          bool balloon = {},
+                          const QString& sound_path = {},
                           int volume = DEFAULT_NOTIFICATION_VOLUME);
 
     bool balloonEnabled() const;
@@ -52,6 +54,7 @@ class Notification {
     void setEvent(Event event);
 
     int volume() const;
+    qreal fractionalVolume() const;
     void setVolume(int volume);
 
     // Returns full path to audio file which should be played when notification
@@ -69,7 +72,7 @@ class Notification {
     Event m_event;
     bool m_balloonEnabled;
     QString m_soundPath;
-    int m_volume;
+    qreal m_volume;
 };
 
 #endif // NOTIFICATION_H

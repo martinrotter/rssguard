@@ -71,9 +71,14 @@ void ExternalTool::setToolsToSettings(QVector<ExternalTool>& tools) {
 
 bool ExternalTool::run(const QString& target) {
   if (parameters().isEmpty()) {
-    return IOFactory::startProcessDetached(executable(), { target });
+    return IOFactory::startProcessDetached(executable(), {target});
   }
   else {
-    return IOFactory::startProcessDetached(executable(), QStringList() << parameters() << target);
+    auto pars = parameters();
+    pars += QSL(" \"%1\"").arg(target);
+
+    auto params = TextFactory::tokenizeProcessArguments(pars);
+
+    return IOFactory::startProcessDetached(executable(), params);
   }
 }

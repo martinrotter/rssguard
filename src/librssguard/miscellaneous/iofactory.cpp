@@ -72,23 +72,13 @@ QString IOFactory::filterBadCharsFromFilename(const QString& name) {
   return value;
 }
 
-bool IOFactory::startProcessDetached(const QString& program, const QStringList& arguments,
-                                     const QString& native_arguments, const QString& working_directory) {
+bool IOFactory::startProcessDetached(const QString& executable,
+                                     const QStringList& arguments,
+                                     const QString& working_directory) {
   QProcess process;
 
-  process.setProgram(program);
+  process.setProgram(executable);
   process.setArguments(arguments);
-
-#if defined(Q_OS_WIN) || defined(Q_CLANG_QDOC)
-  if (!native_arguments.isEmpty()) {
-    process.setNativeArguments(native_arguments);
-  }
-#else
-  if (arguments.isEmpty() && !native_arguments.isEmpty()) {
-    process.setArguments({ native_arguments });
-  }
-#endif
-
   process.setWorkingDirectory(working_directory);
 
   return process.startDetached(nullptr);
@@ -134,8 +124,7 @@ QString IOFactory::startProcessGetOutput(const QString& executable,
 
   proc.start();
 
-  if (proc.waitForFinished() &&
-      proc.exitStatus() == QProcess::ExitStatus::NormalExit &&
+  if (proc.waitForFinished() && proc.exitStatus() == QProcess::ExitStatus::NormalExit &&
       proc.exitCode() == EXIT_SUCCESS) {
     return proc.readAllStandardOutput();
   }
@@ -179,11 +168,8 @@ bool IOFactory::copyFile(const QString& source, const QString& destination) {
   if (QFile::exists(destination)) {
     QFile file(destination);
 
-    file.setPermissions(file.permissions() |
-                        QFileDevice::WriteOwner |
-                        QFileDevice::WriteUser |
-                        QFileDevice::WriteGroup |
-                        QFileDevice::WriteOther);
+    file.setPermissions(file.permissions() | QFileDevice::WriteOwner | QFileDevice::WriteUser |
+                        QFileDevice::WriteGroup | QFileDevice::WriteOther);
 
     if (!QFile::remove(destination)) {
       return false;

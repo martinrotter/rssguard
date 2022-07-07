@@ -35,11 +35,15 @@ SingleNotificationEditor::SingleNotificationEditor(const Notification& notificat
 }
 
 Notification SingleNotificationEditor::notification() const {
-  return Notification(m_notificationEvent, m_ui.m_cbBalloon->isChecked(), m_ui.m_txtSound->text(), m_ui.m_slidVolume->value());
+  return Notification(m_notificationEvent,
+                      m_ui.m_cbBalloon->isChecked(),
+                      m_ui.m_txtSound->text(),
+                      m_ui.m_slidVolume->value());
 }
 
 void SingleNotificationEditor::selectSoundFile() {
-  auto fil = QFileDialog::getOpenFileName(window(), tr("Select sound file"),
+  auto fil = QFileDialog::getOpenFileName(window(),
+                                          tr("Select sound file"),
                                           qApp->homeFolder(),
                                           tr("WAV files (*.wav);;MP3 files (*.mp3)"));
 

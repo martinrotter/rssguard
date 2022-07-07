@@ -28,8 +28,7 @@
 #include <QWebEngineUrlScheme>
 #endif
 
-WebFactory::WebFactory(QObject* parent)
-  : QObject(parent) {
+WebFactory::WebFactory(QObject* parent) : QObject(parent) {
   m_adBlock = new AdBlockManager(this);
 
 #if defined(USE_WEBENGINE)
@@ -63,17 +62,21 @@ WebFactory::~WebFactory() {
 
 bool WebFactory::sendMessageViaEmail(const Message& message) {
   if (qApp->settings()->value(GROUP(Browser), SETTING(Browser::CustomExternalEmailEnabled)).toBool()) {
-    const QString browser = qApp->settings()->value(GROUP(Browser), SETTING(Browser::CustomExternalEmailExecutable)).toString();
-    const QString arguments = qApp->settings()->value(GROUP(Browser), SETTING(Browser::CustomExternalEmailArguments)).toString();
+    const QString browser =
+      qApp->settings()->value(GROUP(Browser), SETTING(Browser::CustomExternalEmailExecutable)).toString();
+    const QString arguments =
+      qApp->settings()->value(GROUP(Browser), SETTING(Browser::CustomExternalEmailArguments)).toString();
+    const QStringList tokenized_arguments =
+      TextFactory::tokenizeProcessArguments(arguments.arg(message.m_title, stripTags(message.m_contents)));
 
-    return IOFactory::startProcessDetached(browser, {}, arguments.arg(message.m_title, stripTags(message.m_contents)));
+    return IOFactory::startProcessDetached(browser, tokenized_arguments);
   }
   else {
     // Send it via mailto protocol.
     // NOTE: http://en.wikipedia.org/wiki/Mailto
-    return QDesktopServices::openUrl(QSL("mailto:?subject=%1&body=%2").arg(QString(QUrl::toPercentEncoding(message.m_title)),
-                                                                           QString(QUrl::toPercentEncoding(stripTags(
-                                                                                                             message.m_contents)))));
+    return QDesktopServices::openUrl(QSL("mailto:?subject=%1&body=%2")
+                                       .arg(QString(QUrl::toPercentEncoding(message.m_title)),
+                                            QString(QUrl::toPercentEncoding(stripTags(message.m_contents)))));
   }
 }
 
@@ -83,13 +86,15 @@ bool WebFactory::openUrlInExternalBrowser(const QString& url) const {
   bool result = false;
 
   if (qApp->settings()->value(GROUP(Browser), SETTING(Browser::CustomExternalBrowserEnabled)).toBool()) {
-    const QString browser = qApp->settings()->value(GROUP(Browser), SETTING(Browser::CustomExternalBrowserExecutable)).toString();
-    const QString arguments = qApp->settings()->value(GROUP(Browser), SETTING(Browser::CustomExternalBrowserArguments)).toString();
-    auto nice_args = arguments.arg(url);
+    const QString browser =
+      qApp->settings()->value(GROUP(Browser), SETTING(Browser::CustomExternalBrowserExecutable)).toString();
+    const QString arguments =
+      qApp->settings()->value(GROUP(Browser), SETTING(Browser::CustomExternalBrowserArguments)).toString();
+    const auto nice_args = arguments.arg(url);
 
     qDebugNN << LOGSEC_NETWORK << "Arguments for external browser:" << QUOTE_W_SPACE_DOT(nice_args);
 
-    result = IOFactory::startProcessDetached(browser, {}, nice_args);
+    result = IOFactory::startProcessDetached(browser, TextFactory::tokenizeProcessArguments(nice_args));
 
     if (!result) {
       qDebugNN << LOGSEC_NETWORK << "External web browser call failed.";
@@ -105,7 +110,8 @@ bool WebFactory::openUrlInExternalBrowser(const QString& url) const {
                  QMessageBox::Icon::Critical,
                  tr("Navigate to website manually"),
                  tr("%1 was unable to launch your web browser with the given URL, you need to open the "
-                    "below website URL in your web browser manually.").arg(QSL(APP_NAME)),
+                    "below website URL in your web browser manually.")
+                   .arg(QSL(APP_NAME)),
                  {},
                  url,
                  QMessageBox::StandardButton::Ok);
@@ -127,10 +133,11 @@ QString WebFactory::unescapeHtml(const QString& html) {
     generateUnescapes();
   }
 
-  QString output; output.reserve(html.size());
+  QString output;
+  output.reserve(html.size());
 
   // Traverse input HTML string and replace named/number entities.
-  for (int pos = 0; pos < html.size(); ) {
+  for (int pos = 0; pos < html.size();) {
     const QChar first = html.at(pos);
 
     if (first == QChar('&')) {
@@ -223,9 +230,8 @@ QString WebFactory::processFeedUriScheme(const QString& url) {
 }
 
 void WebFactory::updateProxy() {
-  const QNetworkProxy::ProxyType selected_proxy_type = static_cast<QNetworkProxy::ProxyType>(qApp->settings()->value(GROUP(Proxy),
-                                                                                                                     SETTING(Proxy::Type)).
-                                                                                             toInt());
+  const QNetworkProxy::ProxyType selected_proxy_type =
+    static_cast<QNetworkProxy::ProxyType>(qApp->settings()->value(GROUP(Proxy), SETTING(Proxy::Type)).toInt());
 
   if (selected_proxy_type == QNetworkProxy::NoProxy) {
     qDebugNN << LOGSEC_NETWORK << "Disabling application-wide proxy completely.";
@@ -249,10 +255,8 @@ void WebFactory::updateProxy() {
     new_proxy.setPassword(settings->password(GROUP(Proxy), SETTING(Proxy::Password)).toString());
 
     qWarningNN << LOGSEC_NETWORK
-               << "Activating application-wide custom proxy, address:"
-               << QUOTE_W_SPACE_COMMA(new_proxy.hostName())
-               << " type:"
-               << QUOTE_W_SPACE_DOT(new_proxy.type());
+               << "Activating application-wide custom proxy, address:" << QUOTE_W_SPACE_COMMA(new_proxy.hostName())
+               << " type:" << QUOTE_W_SPACE_DOT(new_proxy.type());
 
     QNetworkProxy::setApplicationProxy(new_proxy);
   }
@@ -269,7 +273,8 @@ NetworkUrlInterceptor* WebFactory::urlIinterceptor() const {
 
 QAction* WebFactory::engineSettingsAction() {
   if (m_engineSettings == nullptr) {
-    m_engineSettings = new QAction(qApp->icons()->fromTheme(QSL("applications-internet")), tr("Web engine settings"), this);
+    m_engineSettings =
+      new QAction(qApp->icons()->fromTheme(QSL("applications-internet")), tr("Web engine settings"), this);
     m_engineSettings->setMenu(new QMenu());
     createMenu(m_engineSettings->menu());
     connect(m_engineSettings->menu(), &QMenu::aboutToShow, this, [this]() {
@@ -294,35 +299,56 @@ void WebFactory::createMenu(QMenu* menu) {
 
   actions << createEngineSettingsAction(tr("Auto-load images"), QWebEngineSettings::WebAttribute::AutoLoadImages);
   actions << createEngineSettingsAction(tr("JS enabled"), QWebEngineSettings::WebAttribute::JavascriptEnabled);
-  actions << createEngineSettingsAction(tr("JS can open popup windows"), QWebEngineSettings::WebAttribute::JavascriptCanOpenWindows);
-  actions << createEngineSettingsAction(tr("JS can access clipboard"), QWebEngineSettings::WebAttribute::JavascriptCanAccessClipboard);
-  actions << createEngineSettingsAction(tr("Hyperlinks can get focus"), QWebEngineSettings::WebAttribute::LinksIncludedInFocusChain);
-  actions << createEngineSettingsAction(tr("Local storage enabled"), QWebEngineSettings::WebAttribute::LocalStorageEnabled);
-  actions << createEngineSettingsAction(tr("Local content can access remote URLs"), QWebEngineSettings::WebAttribute::LocalContentCanAccessRemoteUrls);
-  actions << createEngineSettingsAction(tr("XSS auditing enabled"), QWebEngineSettings::WebAttribute::XSSAuditingEnabled);
-  actions << createEngineSettingsAction(tr("Spatial navigation enabled"), QWebEngineSettings::WebAttribute::SpatialNavigationEnabled);
-  actions << createEngineSettingsAction(tr("Local content can access local files"), QWebEngineSettings::WebAttribute::LocalContentCanAccessFileUrls);
-  actions << createEngineSettingsAction(tr("Hyperlink auditing enabled"), QWebEngineSettings::WebAttribute::HyperlinkAuditingEnabled);
-  actions << createEngineSettingsAction(tr("Animate scrolling"), QWebEngineSettings::WebAttribute::ScrollAnimatorEnabled);
+  actions << createEngineSettingsAction(tr("JS can open popup windows"),
+                                        QWebEngineSettings::WebAttribute::JavascriptCanOpenWindows);
+  actions << createEngineSettingsAction(tr("JS can access clipboard"),
+                                        QWebEngineSettings::WebAttribute::JavascriptCanAccessClipboard);
+  actions << createEngineSettingsAction(tr("Hyperlinks can get focus"),
+                                        QWebEngineSettings::WebAttribute::LinksIncludedInFocusChain);
+  actions << createEngineSettingsAction(tr("Local storage enabled"),
+                                        QWebEngineSettings::WebAttribute::LocalStorageEnabled);
+  actions << createEngineSettingsAction(tr("Local content can access remote URLs"),
+                                        QWebEngineSettings::WebAttribute::LocalContentCanAccessRemoteUrls);
+  actions << createEngineSettingsAction(tr("XSS auditing enabled"),
+                                        QWebEngineSettings::WebAttribute::XSSAuditingEnabled);
+  actions << createEngineSettingsAction(tr("Spatial navigation enabled"),
+                                        QWebEngineSettings::WebAttribute::SpatialNavigationEnabled);
+  actions << createEngineSettingsAction(tr("Local content can access local files"),
+                                        QWebEngineSettings::WebAttribute::LocalContentCanAccessFileUrls);
+  actions << createEngineSettingsAction(tr("Hyperlink auditing enabled"),
+                                        QWebEngineSettings::WebAttribute::HyperlinkAuditingEnabled);
+  actions << createEngineSettingsAction(tr("Animate scrolling"),
+                                        QWebEngineSettings::WebAttribute::ScrollAnimatorEnabled);
   actions << createEngineSettingsAction(tr("Error pages enabled"), QWebEngineSettings::WebAttribute::ErrorPageEnabled);
   actions << createEngineSettingsAction(tr("Plugins enabled"), QWebEngineSettings::WebAttribute::PluginsEnabled);
-  actions << createEngineSettingsAction(tr("Fullscreen enabled"), QWebEngineSettings::WebAttribute::FullScreenSupportEnabled);
+  actions << createEngineSettingsAction(tr("Fullscreen enabled"),
+                                        QWebEngineSettings::WebAttribute::FullScreenSupportEnabled);
 
 #if !defined(Q_OS_UNIX) && !defined(Q_OS_MACOS)
-  actions << createEngineSettingsAction(tr("Screen capture enabled"), QWebEngineSettings::WebAttribute::ScreenCaptureEnabled);
+  actions << createEngineSettingsAction(tr("Screen capture enabled"),
+                                        QWebEngineSettings::WebAttribute::ScreenCaptureEnabled);
   actions << createEngineSettingsAction(tr("WebGL enabled"), QWebEngineSettings::WebAttribute::WebGLEnabled);
-  actions << createEngineSettingsAction(tr("Accelerate 2D canvas"), QWebEngineSettings::WebAttribute::Accelerated2dCanvasEnabled);
-  actions << createEngineSettingsAction(tr("Print element backgrounds"), QWebEngineSettings::WebAttribute::PrintElementBackgrounds);
-  actions << createEngineSettingsAction(tr("Allow running insecure content"), QWebEngineSettings::WebAttribute::AllowRunningInsecureContent);
-  actions << createEngineSettingsAction(tr("Allow geolocation on insecure origins"), QWebEngineSettings::WebAttribute::AllowGeolocationOnInsecureOrigins);
+  actions << createEngineSettingsAction(tr("Accelerate 2D canvas"),
+                                        QWebEngineSettings::WebAttribute::Accelerated2dCanvasEnabled);
+  actions << createEngineSettingsAction(tr("Print element backgrounds"),
+                                        QWebEngineSettings::WebAttribute::PrintElementBackgrounds);
+  actions << createEngineSettingsAction(tr("Allow running insecure content"),
+                                        QWebEngineSettings::WebAttribute::AllowRunningInsecureContent);
+  actions << createEngineSettingsAction(tr("Allow geolocation on insecure origins"),
+                                        QWebEngineSettings::WebAttribute::AllowGeolocationOnInsecureOrigins);
 #endif
 
-  actions << createEngineSettingsAction(tr("JS can activate windows"), QWebEngineSettings::WebAttribute::AllowWindowActivationFromJavaScript);
+  actions << createEngineSettingsAction(tr("JS can activate windows"),
+                                        QWebEngineSettings::WebAttribute::AllowWindowActivationFromJavaScript);
   actions << createEngineSettingsAction(tr("Show scrollbars"), QWebEngineSettings::WebAttribute::ShowScrollBars);
-  actions << createEngineSettingsAction(tr("Media playback with gestures"), QWebEngineSettings::WebAttribute::PlaybackRequiresUserGesture);
-  actions << createEngineSettingsAction(tr("WebRTC uses only public interfaces"), QWebEngineSettings::WebAttribute::WebRTCPublicInterfacesOnly);
-  actions << createEngineSettingsAction(tr("JS can paste from clipboard"), QWebEngineSettings::WebAttribute::JavascriptCanPaste);
-  actions << createEngineSettingsAction(tr("DNS prefetch enabled"), QWebEngineSettings::WebAttribute::DnsPrefetchEnabled);
+  actions << createEngineSettingsAction(tr("Media playback with gestures"),
+                                        QWebEngineSettings::WebAttribute::PlaybackRequiresUserGesture);
+  actions << createEngineSettingsAction(tr("WebRTC uses only public interfaces"),
+                                        QWebEngineSettings::WebAttribute::WebRTCPublicInterfacesOnly);
+  actions << createEngineSettingsAction(tr("JS can paste from clipboard"),
+                                        QWebEngineSettings::WebAttribute::JavascriptCanPaste);
+  actions << createEngineSettingsAction(tr("DNS prefetch enabled"),
+                                        QWebEngineSettings::WebAttribute::DnsPrefetchEnabled);
 
 #if QT_VERSION >= 0x050D00 // Qt >= 5.13.0
   actions << createEngineSettingsAction(tr("PDF viewer enabled"), QWebEngineSettings::WebAttribute::PdfViewerEnabled);
@@ -345,7 +371,9 @@ QAction* WebFactory::createEngineSettingsAction(const QString& title, QWebEngine
 
   act->setData(attribute);
   act->setCheckable(true);
-  act->setChecked(qApp->settings()->value(WebEngineAttributes::ID, QString::number(static_cast<int>(attribute)), true).toBool());
+  act->setChecked(qApp->settings()
+                    ->value(WebEngineAttributes::ID, QString::number(static_cast<int>(attribute)), true)
+                    .toBool());
   QWebEngineProfile::defaultProfile()->settings()->setAttribute(attribute, act->isChecked());
   connect(act, &QAction::toggled, this, &WebFactory::webEngineSettingChanged);
   return act;

@@ -50,14 +50,15 @@ void Notification::playSound(Application* app) const {
 
       if (m_soundPath.startsWith(QSL(":"))) {
         play->setSource(QUrl(QSL("qrc") + m_soundPath));
-
       }
       else {
-        play->setSource(QUrl::fromLocalFile(
-                          QDir::toNativeSeparators(app->replaceDataUserDataFolderPlaceholder(m_soundPath))));
+        play
+          ->setSource(QUrl::
+                        fromLocalFile(QDir::toNativeSeparators(app
+                                                                 ->replaceDataUserDataFolderPlaceholder(m_soundPath))));
       }
 
-      play->setVolume(m_volume);
+      play->setVolume(fractionalVolume());
       play->play();
     }
     else {
@@ -79,13 +80,15 @@ void Notification::playSound(Application* app) const {
 
       if (m_soundPath.startsWith(QSL(":"))) {
         play->setSource(QUrl(QSL("qrc") + m_soundPath));
-
       }
       else {
-        play->setSource(QUrl::fromLocalFile(QDir::toNativeSeparators(app->replaceDataUserDataFolderPlaceholder(m_soundPath))));
+        play
+          ->setSource(QUrl::
+                        fromLocalFile(QDir::toNativeSeparators(app
+                                                                 ->replaceDataUserDataFolderPlaceholder(m_soundPath))));
       }
 
-      play->audioOutput()->setVolume((m_volume * 1.0f) / 100.0f);
+      play->audioOutput()->setVolume(fractionalVolume());
       play->play();
 #else
       QObject::connect(play, &QMediaPlayer::stateChanged, play, [play](QMediaPlayer::State state) {
@@ -96,12 +99,10 @@ void Notification::playSound(Application* app) const {
 
       if (m_soundPath.startsWith(QSL(":"))) {
         play->setMedia(QMediaContent(QUrl(QSL("qrc") + m_soundPath)));
-
       }
       else {
         play->setMedia(QMediaContent(
-                         QUrl::fromLocalFile(
-                           QDir::toNativeSeparators(app->replaceDataUserDataFolderPlaceholder(m_soundPath)))));
+          QUrl::fromLocalFile(QDir::toNativeSeparators(app->replaceDataUserDataFolderPlaceholder(m_soundPath)))));
       }
 
       play->setVolume(m_volume);
@@ -113,16 +114,14 @@ void Notification::playSound(Application* app) const {
 }
 
 QList<Notification::Event> Notification::allEvents() {
-  return {
-    Event::GeneralEvent,
-    Event::NewUnreadArticlesFetched,
-    Event::ArticlesFetchingStarted,
-    Event::LoginDataRefreshed,
-    Event::LoginFailure,
-    Event::NewAppVersionAvailable,
-    Event::NodePackageUpdated,
-    Event::NodePackageFailedToUpdate
-  };
+  return {Event::GeneralEvent,
+          Event::NewUnreadArticlesFetched,
+          Event::ArticlesFetchingStarted,
+          Event::LoginDataRefreshed,
+          Event::LoginFailure,
+          Event::NewAppVersionAvailable,
+          Event::NodePackageUpdated,
+          Event::NodePackageFailedToUpdate};
 }
 
 QString Notification::nameForEvent(Notification::Event event) {
@@ -158,6 +157,10 @@ QString Notification::nameForEvent(Notification::Event event) {
 
 int Notification::volume() const {
   return m_volume;
+}
+
+qreal Notification::fractionalVolume() const {
+  return (m_volume * 1.0f) / 100.0f;
 }
 
 void Notification::setVolume(int volume) {

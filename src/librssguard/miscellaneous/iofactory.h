@@ -11,7 +11,7 @@
 #include <QStandardPaths>
 
 class IOFactory {
-  Q_DECLARE_TR_FUNCTIONS(IOFactory)
+    Q_DECLARE_TR_FUNCTIONS(IOFactory)
 
   private:
     IOFactory();
@@ -28,9 +28,8 @@ class IOFactory {
 
     // Filters out shit characters from filename.
     static QString filterBadCharsFromFilename(const QString& name);
-    static bool startProcessDetached(const QString& program,
-                                     const QStringList& arguments,
-                                     const QString& native_arguments = {},
+    static bool startProcessDetached(const QString& executable,
+                                     const QStringList& arguments = {},
                                      const QString& working_directory = {});
     static void startProcess(QProcess* const proc,
                              const QString& executable,
