@@ -238,7 +238,7 @@ QList<Message> RedditNetworkFactory::hot(const QString& sub_name, const QNetwork
   int desired_count = batchSize();
 
   do {
-    int next_batch = desired_count <= 0 ? 100 : std::min(100, desired_count - msgs.size());
+    int next_batch = desired_count <= 0 ? 100 : std::min(100, int(desired_count - msgs.size()));
 
     QByteArray output;
     QString final_url =
