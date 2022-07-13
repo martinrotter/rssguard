@@ -25,6 +25,8 @@ if [ $is_linux = true ]; then
   sudo apt-get -qy install cmake ninja-build openssl libssl-dev libgl1-mesa-dev gstreamer1.0-alsa gstreamer1.0-plugins-good gstreamer1.0-plugins-base gstreamer1.0-plugins-bad gstreamer1.0-qt5 gstreamer1.0-pulseaudio
   
   source /opt/qt515/bin/qt515-env.sh
+
+  BUILD_WITH_QT6="OFF"
 else
   pip3 install aqtinstall
   
@@ -41,6 +43,8 @@ else
 
   export QT_PLUGIN_PATH="$QTPATH/$QTVERSION/clang_64/plugins"
   export PATH="$QTBIN:$QTPATH/Tools/CMake/bin:$QTPATH/Tools/Ninja:$PATH"
+
+  BUILD_WITH_QT6="ON"
 fi
 
 cmake --version
@@ -50,7 +54,7 @@ git_tag=$(git describe --tags $(git rev-list --tags --max-count=1))
 git_revision=$(git rev-parse --short HEAD)
 
 mkdir rssguard-build && cd rssguard-build
-cmake .. -G Ninja -DCMAKE_OSX_ARCHITECTURES="x86_64;arm64" -DCMAKE_BUILD_TYPE="MinSizeRel" -DCMAKE_INSTALL_PREFIX="$prefix" -DREVISION_FROM_GIT="ON" -DUSE_WEBENGINE="$webengine" -DFEEDLY_CLIENT_ID="$FEEDLY_CLIENT_ID" -DFEEDLY_CLIENT_SECRET="$FEEDLY_CLIENT_SECRET" -DGMAIL_CLIENT_ID="$GMAIL_CLIENT_ID" -DGMAIL_CLIENT_SECRET="$GMAIL_CLIENT_SECRET" -DINOREADER_CLIENT_ID="$INOREADER_CLIENT_ID" -DINOREADER_CLIENT_SECRET="$INOREADER_CLIENT_SECRET"
+cmake .. -G Ninja -DCMAKE_OSX_ARCHITECTURES="x86_64;arm64" -DCMAKE_BUILD_TYPE="MinSizeRel" -DCMAKE_INSTALL_PREFIX="$prefix" -DREVISION_FROM_GIT="ON" -DBUILD_WITH_QT6="$BUILD_WITH_QT6" -DUSE_WEBENGINE="$webengine" -DFEEDLY_CLIENT_ID="$FEEDLY_CLIENT_ID" -DFEEDLY_CLIENT_SECRET="$FEEDLY_CLIENT_SECRET" -DGMAIL_CLIENT_ID="$GMAIL_CLIENT_ID" -DGMAIL_CLIENT_SECRET="$GMAIL_CLIENT_SECRET" -DINOREADER_CLIENT_ID="$INOREADER_CLIENT_ID" -DINOREADER_CLIENT_SECRET="$INOREADER_CLIENT_SECRET"
 cmake --build .
 cmake --install . --prefix "$prefix"
 
