@@ -37,7 +37,7 @@ else
   echo "Qt bin directory is: $QTBIN"
   echo "Qt will be installed to: $QTPATH"
 
-  aqt install-qt -O "$QTPATH" "mac" "desktop" "$QTVERSION" "clang_64" -m "qtwebengine"
+  aqt install-qt -O "$QTPATH" "mac" "desktop" "$QTVERSION" "clang_64" -m "qtwebengine" "qtwebchannel"
   aqt install-tool -O "$QTPATH" "mac" "desktop" "tools_cmake"
   aqt install-tool -O "$QTPATH" "mac" "desktop" "tools_ninja"
 
