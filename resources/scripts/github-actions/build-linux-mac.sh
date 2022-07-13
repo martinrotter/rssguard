@@ -29,7 +29,7 @@ else
   pip3 install aqtinstall
   
   QTPATH="$(pwd)/Qt"
-  QTVERSION="6.3.1"
+  QTVERSION="6.3.0"
   QTBIN="$QTPATH/$QTVERSION/clang_64/bin"
 
   echo "Qt bin directory is: $QTBIN"
