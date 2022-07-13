@@ -32,7 +32,7 @@ else
   
   QTPATH="$(pwd)/Qt"
   QTVERSION="6.3.0"
-  QTBIN="$QTPATH/$QTVERSION/clang_64/bin"
+  QTBIN="$QTPATH/$QTVERSION/macos/bin"
 
   echo "Qt bin directory is: $QTBIN"
   echo "Qt will be installed to: $QTPATH"
@@ -41,7 +41,7 @@ else
   aqt install-tool -O "$QTPATH" "mac" "desktop" "tools_cmake"
   aqt install-tool -O "$QTPATH" "mac" "desktop" "tools_ninja"
 
-  export QT_PLUGIN_PATH="$QTPATH/$QTVERSION/clang_64/plugins"
+  export QT_PLUGIN_PATH="$QTPATH/$QTVERSION/macos/plugins"
   export PATH="$QTBIN:$QTPATH/Tools/CMake/bin:$QTPATH/Tools/Ninja:$PATH"
 
   BUILD_WITH_QT6="ON"
