@@ -22,6 +22,7 @@
 #   BUILD_WITH_QT6 - Build either with Qt 6 or Qt 5.
 #   NO_UPDATE_CHECK - Disable automatic checking for new application updates.
 #   IS_FLATPAK_BUILD - Set to "ON" when building RSS Guard with Flatpak.
+#   FORCE_BUNDLE_ICONS - Forcibly bundles icons into executables.
 #   USE_WEBENGINE - if specified, then QtWebEngine module for internal web browser is used.
 #                   Otherwise simple text component is used and some features will be disabled.
 #                   Default value is "false". If QtWebEngine is installed during compilation, then
@@ -110,6 +111,7 @@ option(FORCE_COLORED_OUTPUT "Always produce ANSI-colored output (GCC/Clang only)
 option(REVISION_FROM_GIT "Get revision using `git rev-parse`" ON)
 option(NO_UPDATE_CHECK "Disable automatic checking for new application updates" OFF)
 option(IS_FLATPAK_BUILD "Set to 'ON' when building RSS Guard with Flatpak." OFF)
+option(FORCE_BUNDLE_ICONS "Forcibly bundle icon themes into RSS Guard." OFF)
 
 # Import Qt libraries.
 set(QT6_MIN_VERSION 6.3.0)

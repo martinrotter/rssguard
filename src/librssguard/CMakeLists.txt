@@ -517,8 +517,7 @@ set(GMAIL_CLIENT_SECRET "" CACHE STRING "GMail client secret")
 set(INOREADER_CLIENT_ID "" CACHE STRING "Inoreader client ID")
 set(INOREADER_CLIENT_SECRET "" CACHE STRING "Inoreader client secret")
 
-# Bundle icons on some platforms which do not provide system-wide icon themes.
-if(APPLE OR WIN32 OR OS2)
+if(APPLE OR WIN32 OR OS2 OR FORCE_BUNDLE_ICONS)
   qt_add_resources(SOURCES ${CMAKE_SOURCE_DIR}/resources/icons.qrc)
 endif()
 
@@ -529,6 +528,17 @@ if(WIN32)
 endif()
 
 add_library(rssguard SHARED ${SOURCES} ${QM_FILES})
+
+# Bundle icons on some platforms which do not provide system-wide icon themes.
+if(FORCE_BUNDLE_ICONS)
+  target_compile_definitions(rssguard
+    PRIVATE
+
+    FORCE_BUNDLE_ICONS
+  )
+
+  message(STATUS "Forcibly bundling icon themes.")
+endif()
 
 # Add OAuth services definitions.
 if(NOT FEEDLY_CLIENT_ID STREQUAL "" AND NOT FEEDLY_CLIENT_SECRET STREQUAL "")

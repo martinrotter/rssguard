@@ -217,9 +217,14 @@
 #define APP_SKIN_METADATA_FILE "metadata.xml"
 #define APP_STYLE_DEFAULT "Fusion"
 
-#if defined(Q_OS_UNIX) && !defined(Q_OS_MACOS)
+#if defined(FORCE_BUNDLE_ICONS)
+// Forcibly bundle icons.
+#define APP_THEME_DEFAULT "Breeze"
+#elif defined(Q_OS_UNIX) && !defined(Q_OS_MACOS)
+// DO NOT icons on Linux.
 #define APP_THEME_DEFAULT ""
 #else
+// Bundle icons otherwise.
 #define APP_THEME_DEFAULT "Breeze"
 #endif
 
