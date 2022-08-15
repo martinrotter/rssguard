@@ -281,15 +281,17 @@ Qt::ItemFlags AccountCheckModel::flags(const QModelIndex& index) const {
 
 QList<RootItem*> AccountCheckModel::checkedItems() const {
   auto keys = m_checkStates.keys();
-  auto res = boolinq::from(keys).where([&](const auto& key) {
-    return m_checkStates.value(key) == Qt::CheckState::Checked;
-  }).toStdList();
+  auto res = boolinq::from(keys)
+               .where([&](const auto& key) {
+                 return m_checkStates.value(key) == Qt::CheckState::Checked;
+               })
+               .toStdList();
 
   return FROM_STD_LIST(QList<RootItem*>, res);
 }
 
 bool AccountCheckModel::isItemChecked(RootItem* item) const {
-  return m_checkStates.value(item, Qt::CheckState::Unchecked) == Qt::CheckState::Checked;
+  return m_checkStates.value(item, Qt::CheckState::Unchecked) != Qt::CheckState::Unchecked;
 }
 
 bool AccountCheckModel::setItemChecked(RootItem* item, Qt::CheckState check) {
@@ -308,14 +310,12 @@ bool AccountCheckSortedModel::lessThan(const QModelIndex& source_left, const QMo
   auto* rhs = m_sourceModel->itemForIndex(source_right);
 
   if (lhs != nullptr && rhs != nullptr) {
-    QList<RootItem::Kind> priorities = {
-      RootItem::Kind::Category,
-      RootItem::Kind::Feed,
-      RootItem::Kind::Labels,
-      RootItem::Kind::Important,
-      RootItem::Kind::Unread,
-      RootItem::Kind::Bin
-    };
+    QList<RootItem::Kind> priorities = {RootItem::Kind::Category,
+                                        RootItem::Kind::Feed,
+                                        RootItem::Kind::Labels,
+                                        RootItem::Kind::Important,
+                                        RootItem::Kind::Unread,
+                                        RootItem::Kind::Bin};
 
     if (lhs->keepOnTop()) {
       return sortOrder() == Qt::SortOrder::AscendingOrder;
@@ -331,9 +331,8 @@ bool AccountCheckSortedModel::lessThan(const QModelIndex& source_left, const QMo
       return QString::localeAwareCompare(lhs->title().toLower(), rhs->title().toLower()) < 0;
     }
     else {
-      return sortOrder() == Qt::SortOrder::AscendingOrder
-        ? left_priority < right_priority
-        : right_priority < left_priority;
+      return sortOrder() == Qt::SortOrder::AscendingOrder ? left_priority < right_priority
+                                                          : right_priority < left_priority;
     }
   }
 
@@ -361,6 +360,6 @@ void AccountCheckSortedModel::uncheckAllItems() {
 bool AccountCheckSortedModel::filterAcceptsRow(int source_row, const QModelIndex& source_parent) const {
   auto kind = m_sourceModel->itemForIndex(m_sourceModel->index(source_row, 0, source_parent))->kind();
 
-  return kind == RootItem::Kind::Root || kind == RootItem::Kind::ServiceRoot ||
-         kind == RootItem::Kind::Category || kind == RootItem::Kind::Feed;
+  return kind == RootItem::Kind::Root || kind == RootItem::Kind::ServiceRoot || kind == RootItem::Kind::Category ||
+         kind == RootItem::Kind::Feed;
 }
