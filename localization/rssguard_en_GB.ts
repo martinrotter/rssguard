@@ -5138,7 +5138,7 @@ List of supported readers:</source>
     <message>
         <location filename="../src/librssguard/services/reddit/redditnetworkfactory.cpp" line="147"/>
         <source>Reddit: authorization denied</source>
-        <translation type="unfinished"/>
+        <translation>Reddit: authorisation denied</translation>
     </message>
     <message>
         <location filename="../src/librssguard/services/reddit/redditnetworkfactory.cpp" line="148"/>

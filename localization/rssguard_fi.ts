@@ -1138,7 +1138,7 @@ or this functionality is not implemented yet.</source>
     <message>
         <location filename="../src/librssguard/gui/dialogs/formabout.ui" line="257"/>
         <source>Database location</source>
-        <translation type="unfinished"/>
+        <translation>Tietokannan sijainti</translation>
     </message>
     <message>
         <location filename="../src/librssguard/gui/dialogs/formabout.ui" line="271"/>
@@ -1161,7 +1161,7 @@ or this functionality is not implemented yet.</source>
     <message>
         <location filename="../src/librssguard/services/abstract/gui/formaccountdetails.cpp" line="42"/>
         <source>Edit account &quot;%1&quot;</source>
-        <translation type="unfinished"/>
+        <translation>Muokkaa tiliä &quot;%1&quot;</translation>
     </message>
 </context>
 <context>
@@ -1714,12 +1714,12 @@ or this functionality is not implemented yet.</source>
     <message>
         <location filename="../src/librssguard/gui/dialogs/formmain.cpp" line="77"/>
         <source>Open main menu</source>
-        <translation type="unfinished"/>
+        <translation>Avaa päävalikko</translation>
     </message>
     <message>
         <location filename="../src/librssguard/gui/dialogs/formmain.cpp" line="85"/>
         <source>Open &amp;main menu</source>
-        <translation type="unfinished"/>
+        <translation>Avaa &amp;päävalikko</translation>
     </message>
     <message>
         <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="53"/>
@@ -1859,7 +1859,7 @@ or this functionality is not implemented yet.</source>
     <message>
         <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="306"/>
         <source>Mark selected articles read</source>
-        <translation type="unfinished"/>
+        <translation>Merkitse valitut artikkelut luetuiksi</translation>
     </message>
     <message>
         <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="314"/>
@@ -1884,7 +1884,7 @@ or this functionality is not implemented yet.</source>
     <message>
         <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="336"/>
         <source>Mark selected item &amp;read</source>
-        <translation type="unfinished"/>
+        <translation>Merkitse valitut artikkelut &amp;luetuiksi</translation>
     </message>
     <message>
         <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="339"/>
@@ -1949,7 +1949,7 @@ or this functionality is not implemented yet.</source>
     <message>
         <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="413"/>
         <source>&amp;Mark all read</source>
-        <translation type="unfinished"/>
+        <translation>Merkitse &amp;kaikki luetuiksi</translation>
     </message>
     <message>
         <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="416"/>
@@ -3628,7 +3628,7 @@ Login tokens expiration: %2</source>
     <message>
         <location filename="../src/librssguard/gui/webviewers/litehtml/litehtmlviewer.cpp" line="268"/>
         <source>Copy URL</source>
-        <translation type="unfinished"/>
+        <translation>Kopioi URL-osoite</translation>
     </message>
     <message>
         <location filename="../src/librssguard/gui/webviewers/litehtml/litehtmlviewer.cpp" line="276"/>
@@ -4538,7 +4538,7 @@ Login tokens expiration: %2</source>
         <location filename="../src/librssguard/miscellaneous/nodejs.cpp" line="76"/>
         <location filename="../src/librssguard/miscellaneous/nodejs.cpp" line="84"/>
         <source>file not found</source>
-        <translation type="unfinished"/>
+        <translation>tiedostoa ei löytynyt</translation>
     </message>
 </context>
 <context>
@@ -6058,7 +6058,7 @@ Description: %3</source>
     <message>
         <location filename="../src/librssguard/gui/settings/settingsgui.ui" line="388"/>
         <source>Button style</source>
-        <translation type="unfinished"/>
+        <translation>Painikkeen tyyli</translation>
     </message>
     <message>
         <location filename="../src/librssguard/gui/settings/settingsgui.ui" line="398"/>
@@ -6068,7 +6068,7 @@ Description: %3</source>
     <message>
         <location filename="../src/librssguard/gui/settings/settingsgui.ui" line="424"/>
         <source>Icon size</source>
-        <translation type="unfinished"/>
+        <translation>Kuvakekoko</translation>
     </message>
     <message>
         <location filename="../src/librssguard/gui/settings/settingsgui.h" line="35"/>
@@ -6104,7 +6104,7 @@ Description: %3</source>
     <message>
         <location filename="../src/librssguard/gui/settings/settingsnodejs.cpp" line="17"/>
         <source>What is Node.js?</source>
-        <translation type="unfinished"/>
+        <translation>Mikä on Node.js?</translation>
     </message>
     <message>
         <location filename="../src/librssguard/gui/settings/settingsnodejs.cpp" line="18"/>
@@ -6120,22 +6120,22 @@ Also, relaunch &quot;Settings&quot; dialog after you install Node.js.</source>
     <message>
         <location filename="../src/librssguard/gui/settings/settingsnodejs.cpp" line="111"/>
         <source>Node.js has version %1.</source>
-        <translation type="unfinished"/>
+        <translation>Node.js on versiossa %1.</translation>
     </message>
     <message>
         <location filename="../src/librssguard/gui/settings/settingsnodejs.cpp" line="115"/>
         <source>Node.js: %1.</source>
-        <translation type="unfinished"/>
+        <translation>Node.js: %1.</translation>
     </message>
     <message>
         <location filename="../src/librssguard/gui/settings/settingsnodejs.cpp" line="124"/>
         <source>NPM has version %1.</source>
-        <translation type="unfinished"/>
+        <translation>NPM on versiossa %1.</translation>
     </message>
     <message>
         <location filename="../src/librssguard/gui/settings/settingsnodejs.cpp" line="128"/>
         <source>NPM: %1.</source>
-        <translation type="unfinished"/>
+        <translation>NPM: %1.</translation>
     </message>
     <message>
         <location filename="../src/librssguard/gui/settings/settingsnodejs.cpp" line="137"/>
@@ -6182,7 +6182,7 @@ Also, relaunch &quot;Settings&quot; dialog after you install Node.js.</source>
     <message>
         <location filename="../src/librssguard/gui/settings/settingsnodejs.ui" line="116"/>
         <source>&amp;Download Node.js</source>
-        <translation type="unfinished"/>
+        <translation>&amp;Lataa Node.js</translation>
     </message>
 </context>
 <context>
@@ -6241,7 +6241,7 @@ Also, there are some built-in sounds. Just start typing &quot;:&quot; and they w
     <message>
         <location filename="../src/librssguard/gui/notifications/singlenotificationeditor.cpp" line="44"/>
         <source>WAV files (*.wav);;MP3 files (*.mp3)</source>
-        <translation type="unfinished"/>
+        <translation>WAV-tiedostot (*.wav);;MP3-tiedostot (*.mp3)</translation>
     </message>
     <message>
         <location filename="../src/librssguard/gui/notifications/singlenotificationeditor.ui" line="23"/>
@@ -6354,7 +6354,7 @@ Also, there are some built-in sounds. Just start typing &quot;:&quot; and they w
     <message>
         <location filename="../src/librssguard/services/standard/standardfeed.cpp" line="303"/>
         <source>JSON error &apos;%1&apos;</source>
-        <translation type="unfinished"/>
+        <translation>JSON-virhe &apos;%1&apos;</translation>
     </message>
     <message>
         <location filename="../src/librssguard/services/standard/standardfeed.cpp" line="365"/>
@@ -6386,7 +6386,7 @@ Type: %3</source>
     <message>
         <location filename="../src/librssguard/services/standard/standardfeed.cpp" line="486"/>
         <source>Cannot move feed</source>
-        <translation type="unfinished"/>
+        <translation>Syötettä ei voi siirtää</translation>
     </message>
 </context>
 <context>

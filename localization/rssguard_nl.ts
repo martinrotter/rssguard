@@ -27,7 +27,7 @@
     <message>
         <location filename="../src/librssguard/network-web/adblock/adblockdialog.cpp" line="67"/>
         <source>There is some error in AdBlock component and it cannot be enabled. Check error message below (or application debug log) for more information.</source>
-        <translation>Er is een fout in de AdBlock-component en deze kan niet worden ingeschakeld. Controleer het onderstaande foutbericht (of het foutopsporingslogboek van de toepassing) voor meer informatie.</translation>
+        <translation>Er is een fout in het AdBlock-component en het kan niet worden ingeschakeld. Controleer het onderstaande foutbericht (of het foutopsporingslogboek van de toepassing) voor meer informatie.</translation>
     </message>
     <message>
         <location filename="../src/librssguard/network-web/adblock/adblockdialog.cpp" line="102"/>
@@ -37,7 +37,7 @@
     <message>
         <location filename="../src/librssguard/network-web/adblock/adblockdialog.cpp" line="114"/>
         <source>There is error, check application log for more details and head to online documentation.</source>
-        <translation type="unfinished"/>
+        <translation>Er is een fout. Controleer applicatielog voor meer details en ga naar online documentatie.</translation>
     </message>
     <message>
         <location filename="../src/librssguard/network-web/adblock/adblockdialog.cpp" line="89"/>
@@ -80,7 +80,7 @@ Fout: %1</translation>
     <message>
         <location filename="../src/librssguard/network-web/adblock/adblockdialog.ui" line="58"/>
         <source>Filter lists</source>
-        <translation>Filter lijst</translation>
+        <translation>Filterlijsten</translation>
     </message>
     <message>
         <location filename="../src/librssguard/network-web/adblock/adblockdialog.ui" line="64"/>
@@ -159,7 +159,7 @@ Fout: %1</translation>
     <message>
         <location filename="../src/librssguard/miscellaneous/application.cpp" line="1091"/>
         <source>Packages %1 were updated.</source>
-        <translation type="unfinished"/>
+        <translation>Pakketten %1 zijn bijgewerkt.</translation>
     </message>
     <message>
         <location filename="../src/librssguard/miscellaneous/application.cpp" line="863"/>
@@ -194,7 +194,7 @@ Om te zien wat er NIEUW is in deze versie: klik op deze melding.</translation>
     <message>
         <location filename="../src/librssguard/miscellaneous/application.cpp" line="899"/>
         <source>AdBlock is not configured properly. Go to &quot;Settings&quot; -&gt; &quot;Node.js&quot; and check if your Node.js is properly configured.</source>
-        <translation type="unfinished"/>
+        <translation>AdBlock is niet juist geconfigureerd. Ga naar &quot;Instellingen&quot; -&gt; &quot;Node.js&quot; en controleer of Node.js correct is ingesteld.</translation>
     </message>
     <message>
         <location filename="../src/librssguard/miscellaneous/application.cpp" line="953"/>
@@ -204,7 +204,7 @@ Om te zien wat er NIEUW is in deze versie: klik op deze melding.</translation>
     <message>
         <location filename="../src/librssguard/miscellaneous/application.cpp" line="1082"/>
         <source>Packages %1 were NOT updated because of error: %2.</source>
-        <translation type="unfinished"/>
+        <translation>Pakketten %1 zijn niet bijgewerkt vanwege een fout: %2.</translation>
     </message>
 </context>
 <context>
@@ -308,7 +308,7 @@ Om te zien wat er NIEUW is in deze versie: klik op deze melding.</translation>
     <message>
         <location filename="../src/librssguard/database/databasecleaner.cpp" line="35"/>
         <source>Purging recycle bin...</source>
-        <translation>Bezig met legen van prullenbak...</translation>
+        <translation>Prullenbak wordt geleegd...</translation>
     </message>
     <message>
         <location filename="../src/librssguard/database/databasecleaner.cpp" line="25"/>
@@ -555,17 +555,17 @@ Klik hier om de bovenliggende map te openen.</translation>
     <message>
         <location filename="../src/librssguard/services/gmail/gui/emailpreviewer.ui" line="59"/>
         <source>&amp;Attachments</source>
-        <translation type="unfinished"/>
+        <translation>Bijl&amp;agen</translation>
     </message>
     <message>
         <location filename="../src/librssguard/services/gmail/gui/emailpreviewer.ui" line="72"/>
         <source>&amp;Reply</source>
-        <translation type="unfinished"/>
+        <translation>Beantwoo&amp;rden</translation>
     </message>
     <message>
         <location filename="../src/librssguard/services/gmail/gui/emailpreviewer.ui" line="82"/>
         <source>&amp;Forward</source>
-        <translation type="unfinished"/>
+        <translation>Doorsturen</translation>
     </message>
     <message>
         <location filename="../src/librssguard/services/gmail/gui/emailpreviewer.ui" line="94"/>
@@ -581,17 +581,17 @@ Klik hier om de bovenliggende map te openen.</translation>
         <location filename="../src/librssguard/services/gmail/gui/emailpreviewer.cpp" line="98"/>
         <location filename="../src/librssguard/services/gmail/gui/emailpreviewer.cpp" line="104"/>
         <source>Cannot download attachment</source>
-        <translation type="unfinished"/>
+        <translation>Kan bijlage niet downloaden</translation>
     </message>
     <message>
         <location filename="../src/librssguard/services/gmail/gui/emailpreviewer.cpp" line="99"/>
         <source>Attachment cannot be downloaded because you are not logged-in.</source>
-        <translation type="unfinished"/>
+        <translation>Bijlage kan niet gedownload worden omdat je niet bent ingelogd.</translation>
     </message>
     <message>
         <location filename="../src/librssguard/services/gmail/gui/emailpreviewer.cpp" line="105"/>
         <source>Attachment cannot be downloaded because some general error happened.</source>
-        <translation type="unfinished"/>
+        <translation>Bijlage kan niet gedownload worden vanwege een algemene fout.</translation>
     </message>
 </context>
 <context>
@@ -658,12 +658,12 @@ Status: %3</translation>
         <location filename="../src/librssguard/services/abstract/feed.cpp" line="231"/>
         <source>uses global settings (%n minute(s) to next auto-fetch of articles)</source>
         <extracomment>Describes feed auto-update status.</extracomment>
-        <translation><numerusform>gebruikt globale instellingen (%n minuut naar de volgende automatische fetch van artikelen)</numerusform><numerusform>gebruikt globalee instellingen (%n minuten tot automatisch ophalen van artikelen)</numerusform></translation>
+        <translation><numerusform>gebruikt globale instellingen (%n minuut naar de volgende automatische fetch van artikelen)</numerusform><numerusform>gebruikt algemene instellingen (%n minuten tot automatisch ophalen van artikelen)</numerusform></translation>
     </message>
     <message>
         <location filename="../src/librssguard/services/abstract/feed.cpp" line="234"/>
         <source>uses global settings (global auto-fetching of articles is disabled)</source>
-        <translation>gebruik globale instellingen (globale auto-halende artikelen zijn uitgeschakeld)</translation>
+        <translation>gebruikt algemene instellingen (artikelen automatisch ophalen is uitgeschakeld)</translation>
     </message>
     <message numerus="yes">
         <location filename="../src/librssguard/services/abstract/feed.cpp" line="241"/>
@@ -825,7 +825,7 @@ Status: %3</translation>
     <message>
         <location filename="../src/librssguard/services/feedly/gui/feedlyaccountdetails.cpp" line="35"/>
         <source>Your %1 build has official Feedly support. You do not have to use &quot;developer access token&quot;. You can therefore leave corresponding field empty.</source>
-        <translation type="unfinished"/>
+        <translation>Jouw %1-versie heeft officiële ondersteuning voor Feedly dus een &quot;developer access token&quot; is niet nodig. Laat de overeenkomstige invoerveld leeg.</translation>
     </message>
     <message>
         <location filename="../src/librssguard/services/feedly/gui/feedlyaccountdetails.cpp" line="153"/>
@@ -948,7 +948,7 @@ Status: %3</translation>
     <message>
         <location filename="../src/librssguard/gui/toolbars/feedstoolbar.cpp" line="117"/>
         <source>Search feeds (regex only)</source>
-        <translation type="unfinished"/>
+        <translation>Feeds zoeken (met regex)</translation>
     </message>
 </context>
 <context>
@@ -1135,7 +1135,7 @@ of omdat deze functie nog niet is geïmplementeerd.</translation>
     <message>
         <location filename="../src/librssguard/gui/dialogs/formabout.ui" line="222"/>
         <source>Settings type</source>
-        <translation>Type instellingen</translation>
+        <translation>Type-instellingen</translation>
     </message>
     <message>
         <location filename="../src/librssguard/gui/dialogs/formabout.ui" line="236"/>
@@ -1168,7 +1168,7 @@ of omdat deze functie nog niet is geïmplementeerd.</translation>
     <message>
         <location filename="../src/librssguard/services/abstract/gui/formaccountdetails.cpp" line="42"/>
         <source>Edit account &quot;%1&quot;</source>
-        <translation type="unfinished"/>
+        <translation>Account &quot;%1&quot; bewerken</translation>
     </message>
 </context>
 <context>
@@ -1663,7 +1663,7 @@ of omdat deze functie nog niet is geïmplementeerd.</translation>
     <message>
         <location filename="../src/librssguard/services/abstract/gui/formfeeddetails.cpp" line="124"/>
         <source>Disable auto-fetching of articles</source>
-        <translation>Auto-ophalende artikelen uitschakelen</translation>
+        <translation>Artikelen niet automatisch bijwerken</translation>
     </message>
     <message>
         <location filename="../src/librssguard/services/abstract/gui/formfeeddetails.cpp" line="106"/>
@@ -1688,17 +1688,17 @@ of omdat deze functie nog niet is geïmplementeerd.</translation>
     <message>
         <location filename="../src/librssguard/services/abstract/gui/formfeeddetails.ui" line="58"/>
         <source>Open articles via their URL automatically</source>
-        <translation type="unfinished"/>
+        <translation>Artikelen automatisch via de URL openen</translation>
     </message>
     <message>
         <location filename="../src/librssguard/services/abstract/gui/formfeeddetails.ui" line="66"/>
         <source>Miscellaneous</source>
-        <translation type="unfinished"/>
+        <translation>Overig</translation>
     </message>
     <message>
         <location filename="../src/librssguard/services/abstract/gui/formfeeddetails.ui" line="72"/>
         <source>Disable this feed</source>
-        <translation type="unfinished"/>
+        <translation>Deze feed uitschakelen</translation>
     </message>
 </context>
 <context>
@@ -1721,12 +1721,12 @@ of omdat deze functie nog niet is geïmplementeerd.</translation>
     <message>
         <location filename="../src/librssguard/gui/dialogs/formmain.cpp" line="77"/>
         <source>Open main menu</source>
-        <translation type="unfinished"/>
+        <translation>Hoofdmenu openen</translation>
     </message>
     <message>
         <location filename="../src/librssguard/gui/dialogs/formmain.cpp" line="85"/>
         <source>Open &amp;main menu</source>
-        <translation type="unfinished"/>
+        <translation>Hoofd&amp;menu openen</translation>
     </message>
     <message>
         <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="53"/>
@@ -1766,7 +1766,7 @@ of omdat deze functie nog niet is geïmplementeerd.</translation>
     <message>
         <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="112"/>
         <source>&amp;Move</source>
-        <translation type="unfinished"/>
+        <translation>Verplaatsen</translation>
     </message>
     <message>
         <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="151"/>
@@ -1776,7 +1776,7 @@ of omdat deze functie nog niet is geïmplementeerd.</translation>
     <message>
         <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="174"/>
         <source>&amp;Recycle bin(s)</source>
-        <translation>&amp;Prullenbak</translation>
+        <translation>&amp;Prullenbak(ken)</translation>
     </message>
     <message>
         <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="181"/>
@@ -1786,7 +1786,7 @@ of omdat deze functie nog niet is geïmplementeerd.</translation>
     <message>
         <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="189"/>
         <source>&amp;Web browser &amp;&amp; tabs</source>
-        <translation>&amp;Webbrowser &amp;&amp;tabbladen</translation>
+        <translation>&amp;Webbrowser &amp;&amp; tabbladen</translation>
     </message>
     <message>
         <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="212"/>
@@ -1841,7 +1841,7 @@ of omdat deze functie nog niet is geïmplementeerd.</translation>
     <message>
         <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="276"/>
         <source>Fetch &amp;selected</source>
-        <translation>Ophalen &amp;geselecteerd</translation>
+        <translation>Ophalen ge&amp;selecteerde items</translation>
     </message>
     <message>
         <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="279"/>
@@ -1891,7 +1891,7 @@ of omdat deze functie nog niet is geïmplementeerd.</translation>
     <message>
         <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="336"/>
         <source>Mark selected item &amp;read</source>
-        <translation type="unfinished"/>
+        <translation>Als gelezen ma&amp;rkeren</translation>
     </message>
     <message>
         <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="339"/>
@@ -1901,7 +1901,7 @@ of omdat deze functie nog niet is geïmplementeerd.</translation>
     <message>
         <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="347"/>
         <source>Mark selected item &amp;unread</source>
-        <translation type="unfinished"/>
+        <translation>Als &amp;ongelezen markeren</translation>
     </message>
     <message>
         <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="350"/>
@@ -1926,7 +1926,7 @@ of omdat deze functie nog niet is geïmplementeerd.</translation>
     <message>
         <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="377"/>
         <source>Open in &amp;external browser</source>
-        <translation>&amp;Open in de externe browser</translation>
+        <translation>In externe browser &amp;openen</translation>
     </message>
     <message>
         <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="380"/>
@@ -1936,7 +1936,7 @@ of omdat deze functie nog niet is geïmplementeerd.</translation>
     <message>
         <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="388"/>
         <source>Open in &amp;internal browser</source>
-        <translation>Open in &amp;externe browser</translation>
+        <translation>In &amp;interne browser openen</translation>
     </message>
     <message>
         <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="391"/>
@@ -1976,7 +1976,7 @@ of omdat deze functie nog niet is geïmplementeerd.</translation>
     <message>
         <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="438"/>
         <source>Switch main window visibility</source>
-        <translation type="unfinished"/>
+        <translation>Tussen zichtbaarheid van venster schakelen</translation>
     </message>
     <message>
         <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="441"/>
@@ -2026,7 +2026,7 @@ of omdat deze functie nog niet is geïmplementeerd.</translation>
     <message>
         <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="509"/>
         <source>Check for &amp;updates</source>
-        <translation>Controleer op &amp;updates</translation>
+        <translation>Op &amp;updates controleren</translation>
     </message>
     <message>
         <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="512"/>
@@ -2081,12 +2081,12 @@ of omdat deze functie nog niet is geïmplementeerd.</translation>
     <message>
         <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="597"/>
         <source>&amp;Restore settings</source>
-        <translation>&amp;Herstel instellingen</translation>
+        <translation>Instellingen &amp;herstellen</translation>
     </message>
     <message>
         <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="605"/>
         <source>&amp;Backup settings</source>
-        <translation>&amp;Backup instellingen</translation>
+        <translation>&amp;Backup-instellingen</translation>
     </message>
     <message>
         <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="613"/>
@@ -2136,12 +2136,12 @@ of omdat deze functie nog niet is geïmplementeerd.</translation>
     <message>
         <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="683"/>
         <source>&amp;Restore all recycle bins</source>
-        <translation>&amp;Herstel alle prullenbakken</translation>
+        <translation>Alle prullenbakken &amp;herstellen</translation>
     </message>
     <message>
         <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="691"/>
         <source>&amp;Empty all recycle bins</source>
-        <translation>&amp;Leeg alle prullenbakken</translation>
+        <translation>All&amp;e prullenbakken legen</translation>
     </message>
     <message>
         <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="699"/>
@@ -2177,7 +2177,7 @@ of omdat deze functie nog niet is geïmplementeerd.</translation>
     <message>
         <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="755"/>
         <source>New browser tab</source>
-        <translation>Nieuwe browser tab</translation>
+        <translation>Nieuw browsertabblad</translation>
     </message>
     <message>
         <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="763"/>
@@ -2207,12 +2207,12 @@ of omdat deze functie nog niet is geïmplementeerd.</translation>
     <message>
         <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="791"/>
         <source>&amp;Copy URL of selected item</source>
-        <translation type="unfinished"/>
+        <translation>URL van item &amp;kopiëren</translation>
     </message>
     <message>
         <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="796"/>
         <source>Article &amp;filters</source>
-        <translation>Artikelen &amp;filters</translation>
+        <translation>&amp;Filters voor artikelen</translation>
     </message>
     <message>
         <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="804"/>
@@ -2252,37 +2252,37 @@ of omdat deze functie nog niet is geïmplementeerd.</translation>
     <message>
         <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="851"/>
         <source>&amp;Copy URLs of selected articles</source>
-        <translation type="unfinished"/>
+        <translation>URL&apos;s van geselecteerde artikelen &amp;kopiëren</translation>
     </message>
     <message>
         <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="856"/>
         <source>Open in internal browser (no new tab)</source>
-        <translation type="unfinished"/>
+        <translation>In interne browser openen (geen nieuw tabblad)</translation>
     </message>
     <message>
         <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="867"/>
         <source>&amp;Sort alphabetically</source>
-        <translation type="unfinished"/>
+        <translation>Alfabetisch &amp;sorteren</translation>
     </message>
     <message>
         <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="872"/>
         <source>Move &amp;up</source>
-        <translation type="unfinished"/>
+        <translation>&amp;Omhoog verplaatsen</translation>
     </message>
     <message>
         <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="877"/>
         <source>Move to &amp;top</source>
-        <translation type="unfinished"/>
+        <translation>Bovenaan plaa&amp;tsen</translation>
     </message>
     <message>
         <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="882"/>
         <source>Move &amp;down</source>
-        <translation type="unfinished"/>
+        <translation>Omlaag &amp;verplaatsen</translation>
     </message>
     <message>
         <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="887"/>
         <source>Move to &amp;bottom</source>
-        <translation type="unfinished"/>
+        <translation>Onderaan &amp;plaatsen</translation>
     </message>
     <message>
         <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="737"/>
@@ -2446,12 +2446,12 @@ of omdat deze functie nog niet is geïmplementeerd.</translation>
     <message>
         <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.cpp" line="156"/>
         <source>Do you really want to remove selected filter?</source>
-        <translation type="unfinished"/>
+        <translation>Wil je het geselecteerde filter echt verwijderen?</translation>
     </message>
     <message>
         <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.ui" line="14"/>
         <source>Article filters</source>
-        <translation>Artikel filters</translation>
+        <translation>Filters voor artikelen</translation>
     </message>
     <message>
         <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.ui" line="35"/>
@@ -2625,12 +2625,12 @@ of omdat deze functie nog niet is geïmplementeerd.</translation>
     <message>
         <location filename="../src/librssguard/gui/dialogs/formrestoredatabasesettings.ui" line="82"/>
         <source>Restore database</source>
-        <translation>Herstel database</translation>
+        <translation>Database herstellen</translation>
     </message>
     <message>
         <location filename="../src/librssguard/gui/dialogs/formrestoredatabasesettings.ui" line="100"/>
         <source>Restore settings</source>
-        <translation>Herstel instellingen</translation>
+        <translation>Instellingen herstellen</translation>
     </message>
 </context>
 <context>
@@ -2931,7 +2931,7 @@ Je moet handmatig herstarten.</translation>
     <message>
         <location filename="../src/librssguard/services/tt-rss/gui/formttrssnote.ui" line="66"/>
         <source>Content</source>
-        <translation type="unfinished"/>
+        <translation>Inhoud</translation>
     </message>
 </context>
 <context>
@@ -3060,7 +3060,7 @@ Installeer het nu.</translation>
     <message>
         <location filename="../src/librssguard/gui/dialogs/formupdate.ui" line="14"/>
         <source>Check for updates</source>
-        <translation>Controleer op updates</translation>
+        <translation>Op updates controleren</translation>
     </message>
     <message>
         <location filename="../src/librssguard/gui/dialogs/formupdate.ui" line="20"/>
@@ -3170,7 +3170,7 @@ Installeer het nu.</translation>
     <message>
         <location filename="../src/librssguard/services/gmail/gui/gmailaccountdetails.ui" line="33"/>
         <source>OAuth 2.0 settings</source>
-        <translation>QAuth 2.0 instellingen</translation>
+        <translation>QAuth 2.0-instellingen</translation>
     </message>
     <message>
         <location filename="../src/librssguard/services/gmail/gui/gmailaccountdetails.ui" line="39"/>
@@ -3338,7 +3338,7 @@ Logintoken verloopt: %2</translation>
     <message>
         <location filename="../src/librssguard/services/greader/gui/greaderaccountdetails.cpp" line="197"/>
         <source>Network error: &apos;%1&apos;.</source>
-        <translation>Netwerk fout: &apos;%1&apos;.</translation>
+        <translation>Netwerkfout: &apos;%1&apos;.</translation>
     </message>
     <message>
         <location filename="../src/librssguard/services/greader/gui/greaderaccountdetails.cpp" line="198"/>
@@ -3494,7 +3494,7 @@ Logintoken verloopt: %2</translation>
     <message>
         <location filename="../src/librssguard/services/greader/gui/greaderaccountdetails.ui" line="186"/>
         <source>OAuth 2.0 settings</source>
-        <translation>QAuth 2.0 instellingen</translation>
+        <translation>QAuth 2.0-instellingen</translation>
     </message>
     <message>
         <location filename="../src/librssguard/services/greader/gui/greaderaccountdetails.ui" line="192"/>
@@ -3519,7 +3519,7 @@ Logintoken verloopt: %2</translation>
     <message>
         <location filename="../src/librssguard/services/greader/gui/greaderaccountdetails.ui" line="270"/>
         <source>&amp;Test setup</source>
-        <translation>&amp;Test instelling</translation>
+        <translation>&amp;Test-instellingen</translation>
     </message>
 </context>
 <context>
@@ -3569,7 +3569,7 @@ Logintoken verloopt: %2</translation>
     <message>
         <location filename="../src/librssguard/gui/reusable/helpspoiler.cpp" line="25"/>
         <source>View more information on this</source>
-        <translation>Bekijk hier meer informatie over</translation>
+        <translation>Meer informatie bekijken</translation>
     </message>
 </context>
 <context>
@@ -3649,27 +3649,27 @@ Logintoken verloopt: %2</translation>
     <message>
         <location filename="../src/librssguard/gui/webviewers/litehtml/litehtmlviewer.cpp" line="268"/>
         <source>Copy URL</source>
-        <translation type="unfinished"/>
+        <translation>URL kopiëren</translation>
     </message>
     <message>
         <location filename="../src/librssguard/gui/webviewers/litehtml/litehtmlviewer.cpp" line="276"/>
         <source>Copy selection</source>
-        <translation type="unfinished"/>
+        <translation>Selectie kopiëren</translation>
     </message>
     <message>
         <location filename="../src/librssguard/gui/webviewers/litehtml/litehtmlviewer.cpp" line="285"/>
         <source>Open link in external browser</source>
-        <translation>Open koppeling in externe browser</translation>
+        <translation>Koppeling in externe browser openen</translation>
     </message>
     <message>
         <location filename="../src/librssguard/gui/webviewers/litehtml/litehtmlviewer.cpp" line="299"/>
         <source>Use simple article layout</source>
-        <translation type="unfinished"/>
+        <translation>Simpele artikelindeling gebruiken</translation>
     </message>
     <message>
         <location filename="../src/librssguard/gui/webviewers/litehtml/litehtmlviewer.cpp" line="305"/>
         <source>Reload with images</source>
-        <translation type="unfinished"/>
+        <translation>Met afbeeldingen herladen</translation>
     </message>
     <message>
         <location filename="../src/librssguard/gui/webviewers/litehtml/litehtmlviewer.cpp" line="325"/>
@@ -3738,7 +3738,7 @@ Logintoken verloopt: %2</translation>
     <message>
         <location filename="../src/librssguard/gui/messagebrowser.cpp" line="173"/>
         <source>Open in external browser</source>
-        <translation>Open in de externe browser</translation>
+        <translation>In de externe browser openen</translation>
     </message>
     <message>
         <location filename="../src/librssguard/gui/messagebrowser.cpp" line="174"/>
@@ -4063,7 +4063,7 @@ Logintoken verloopt: %2</translation>
     <message>
         <location filename="../src/librssguard/core/messagesmodel.cpp" line="336"/>
         <source>yesterday</source>
-        <translation type="unfinished"/>
+        <translation>gisteren</translation>
     </message>
     <message numerus="yes">
         <location filename="../src/librssguard/core/messagesmodel.cpp" line="340"/>
@@ -4078,7 +4078,7 @@ Logintoken verloopt: %2</translation>
     <message>
         <location filename="../src/librssguard/core/messagesmodel.cpp" line="347"/>
         <source>just now</source>
-        <translation type="unfinished"/>
+        <translation>zojuist</translation>
     </message>
     <message>
         <location filename="../src/librssguard/core/messagesmodel.cpp" line="148"/>
@@ -4131,42 +4131,42 @@ Logintoken verloopt: %2</translation>
     <message>
         <location filename="../src/librssguard/gui/toolbars/messagestoolbar.cpp" line="176"/>
         <source>Show unread articles</source>
-        <translation type="unfinished"/>
+        <translation>Ongelezen artikelen weergeven</translation>
     </message>
     <message>
         <location filename="../src/librssguard/gui/toolbars/messagestoolbar.cpp" line="181"/>
         <source>Show important articles</source>
-        <translation type="unfinished"/>
+        <translation>Belangrijke artikelen weergeven</translation>
     </message>
     <message>
         <location filename="../src/librssguard/gui/toolbars/messagestoolbar.cpp" line="186"/>
         <source>Show today&apos;s articles</source>
-        <translation type="unfinished"/>
+        <translation>Artikelen van vandaag weergeven</translation>
     </message>
     <message>
         <location filename="../src/librssguard/gui/toolbars/messagestoolbar.cpp" line="191"/>
         <source>Show yesterday&apos;s articles</source>
-        <translation type="unfinished"/>
+        <translation>Artikelen van gisteren weergeven</translation>
     </message>
     <message>
         <location filename="../src/librssguard/gui/toolbars/messagestoolbar.cpp" line="196"/>
         <source>Show articles in last 24 hours</source>
-        <translation type="unfinished"/>
+        <translation>Artikelen van afgelopen 24 uur weergeven</translation>
     </message>
     <message>
         <location filename="../src/librssguard/gui/toolbars/messagestoolbar.cpp" line="201"/>
         <source>Show articles in last 48 hours</source>
-        <translation type="unfinished"/>
+        <translation>Artikelen van afgelopen 48 uur weergeven</translation>
     </message>
     <message>
         <location filename="../src/librssguard/gui/toolbars/messagestoolbar.cpp" line="206"/>
         <source>Show this week&apos;s articles</source>
-        <translation type="unfinished"/>
+        <translation>Artikelen van deze week weergeven</translation>
     </message>
     <message>
         <location filename="../src/librssguard/gui/toolbars/messagestoolbar.cpp" line="211"/>
         <source>Show last week&apos;s articles</source>
-        <translation type="unfinished"/>
+        <translation>Artikelen van afgelopen week weergeven</translation>
     </message>
     <message>
         <location filename="../src/librssguard/gui/toolbars/messagestoolbar.cpp" line="216"/>
@@ -4442,7 +4442,7 @@ Logintoken verloopt: %2</translation>
     <message>
         <location filename="../src/librssguard/services/newsblur/gui/newsbluraccountdetails.ui" line="100"/>
         <source>&amp;Test setup</source>
-        <translation>&amp;Test instelling</translation>
+        <translation>&amp;Test-instellingen</translation>
     </message>
     <message>
         <location filename="../src/librssguard/services/newsblur/gui/newsbluraccountdetails.cpp" line="22"/>
@@ -4559,7 +4559,7 @@ Logintoken verloopt: %2</translation>
         <location filename="../src/librssguard/miscellaneous/nodejs.cpp" line="76"/>
         <location filename="../src/librssguard/miscellaneous/nodejs.cpp" line="84"/>
         <source>file not found</source>
-        <translation type="unfinished"/>
+        <translation>bestand niet gevonden</translation>
     </message>
 </context>
 <context>
@@ -4640,7 +4640,7 @@ Logintoken verloopt: %2</translation>
     <message>
         <location filename="../src/librssguard/services/owncloud/gui/owncloudaccountdetails.cpp" line="63"/>
         <source>Network error: &apos;%1&apos;.</source>
-        <translation>Netwerk fout: &apos;%1&apos;.</translation>
+        <translation>Netwerkfout: &apos;%1&apos;.</translation>
     </message>
     <message>
         <location filename="../src/librssguard/services/owncloud/gui/owncloudaccountdetails.cpp" line="64"/>
@@ -4742,7 +4742,7 @@ Logintoken verloopt: %2</translation>
     <message>
         <location filename="../src/librssguard/services/owncloud/gui/owncloudaccountdetails.ui" line="127"/>
         <source>&amp;Test setup</source>
-        <translation>&amp;Test instelling</translation>
+        <translation>&amp;Test-instellingen</translation>
     </message>
     <message>
         <location filename="../src/librssguard/services/owncloud/gui/owncloudaccountdetails.ui" line="162"/>
@@ -4765,7 +4765,7 @@ Logintoken verloopt: %2</translation>
         <location filename="../src/librssguard/miscellaneous/localization.cpp" line="92"/>
         <source>LANG_AUTHOR</source>
         <extracomment>Name of translator - optional.</extracomment>
-        <translation>Elbert Pol</translation>
+        <translation>Elbert Pol, KyraWertho</translation>
     </message>
     <message>
         <location filename="../src/librssguard/miscellaneous/localization.cpp" line="93"/>
@@ -5099,7 +5099,7 @@ Lijst met ondersteunde lezers:</translation>
     <message>
         <location filename="../src/librssguard/services/reddit/gui/redditaccountdetails.ui" line="33"/>
         <source>OAuth 2.0 settings</source>
-        <translation>QAuth 2.0 instellingen</translation>
+        <translation>QAuth 2.0-instellingen</translation>
     </message>
     <message>
         <location filename="../src/librssguard/services/reddit/gui/redditaccountdetails.ui" line="39"/>
@@ -5241,7 +5241,7 @@ Logintoken verloopt: %2</translation>
     <message>
         <location filename="../src/librssguard/gui/reusable/searchtextwidget.ui" line="32"/>
         <source>Search text</source>
-        <translation type="unfinished"/>
+        <translation>Zoektekst</translation>
     </message>
     <message>
         <location filename="../src/librssguard/gui/reusable/searchtextwidget.ui" line="39"/>
@@ -5272,7 +5272,7 @@ Logintoken verloopt: %2</translation>
     <message>
         <location filename="../src/librssguard/gui/settings/settingsbrowsermail.cpp" line="89"/>
         <source>Select web browser executable</source>
-        <translation>Selecteer exe bestand voor browser</translation>
+        <translation>Uitvoerbaar bestand voor browser selecteren</translation>
     </message>
     <message>
         <location filename="../src/librssguard/gui/settings/settingsbrowsermail.cpp" line="94"/>
@@ -5375,7 +5375,7 @@ File filter for external e-mail selection dialog.</extracomment>
     <message>
         <location filename="../src/librssguard/gui/settings/settingsbrowsermail.ui" line="127"/>
         <source>Select browser</source>
-        <translation>Selecteer browser</translation>
+        <translation>Browser selecteren</translation>
     </message>
     <message>
         <location filename="../src/librssguard/gui/settings/settingsbrowsermail.cpp" line="24"/>
@@ -5803,7 +5803,7 @@ Authors of this application are NOT responsible for lost data.</source>
     <message>
         <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="349"/>
         <source>Article browser font</source>
-        <translation>Artikel browser lettertype</translation>
+        <translation>Lettertype voor artikelbrowser</translation>
     </message>
     <message>
         <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="303"/>
@@ -5876,7 +5876,7 @@ Authors of this application are NOT responsible for lost data.</source>
     <message>
         <location filename="../src/librssguard/gui/settings/settingsgeneral.ui" line="24"/>
         <source>Check for %1 updates on application startup</source>
-        <translation type="unfinished"/>
+        <translation>Zoek naar updates voor %1 bij opstarten</translation>
     </message>
     <message>
         <location filename="../src/librssguard/gui/settings/settingsgeneral.h" line="26"/>
@@ -5968,7 +5968,7 @@ Description: %3</source>
     <message>
         <location filename="../src/librssguard/gui/settings/settingsgui.cpp" line="86"/>
         <source> = default icon size</source>
-        <translation type="unfinished"/>
+        <translation>= standaardgrootte</translation>
     </message>
     <message>
         <location filename="../src/librssguard/gui/settings/settingsgui.ui" line="27"/>
@@ -6034,12 +6034,12 @@ Description: %3</source>
     <message>
         <location filename="../src/librssguard/gui/settings/settingsgui.ui" line="186"/>
         <source>Start application hidden</source>
-        <translation>Start programma verborgen</translation>
+        <translation>Programma verborgen starten</translation>
     </message>
     <message>
         <location filename="../src/librssguard/gui/settings/settingsgui.ui" line="210"/>
         <source>Task bar</source>
-        <translation type="unfinished"/>
+        <translation>Taakbalk</translation>
     </message>
     <message>
         <location filename="../src/librssguard/gui/settings/settingsgui.ui" line="224"/>
@@ -6099,12 +6099,12 @@ Description: %3</source>
     <message>
         <location filename="../src/librssguard/gui/settings/settingsgui.ui" line="398"/>
         <source>Toolbar editor</source>
-        <translation type="unfinished"/>
+        <translation>Taakbalk bewerken</translation>
     </message>
     <message>
         <location filename="../src/librssguard/gui/settings/settingsgui.ui" line="424"/>
         <source>Icon size</source>
-        <translation type="unfinished"/>
+        <translation>Pictogramgrootte</translation>
     </message>
     <message>
         <location filename="../src/librssguard/gui/settings/settingsgui.h" line="35"/>
@@ -6228,7 +6228,9 @@ Also, relaunch &quot;Settings&quot; dialog after you install Node.js.</source>
         <source>You must have &quot;tray icon&quot; activated to have balloon notifications working.
 
 Also, there are some built-in sounds. Just start typing &quot;:&quot; and they will show up.</source>
-        <translation type="unfinished"/>
+        <translation>Ballonberichten werken alleen als het systeemvakpictogram is ingeschakeld.
+
+Er zijn ook een aantal ingebouwde geluiden beschikbaar. Typ &quot;:&quot; om de lijst weer te geven.</translation>
     </message>
     <message>
         <location filename="../src/librssguard/gui/settings/settingsnotifications.ui" line="17"/>
@@ -6254,7 +6256,7 @@ Also, there are some built-in sounds. Just start typing &quot;:&quot; and they w
     <message>
         <location filename="../src/librssguard/dynamic-shortcuts/shortcutcatcher.cpp" line="23"/>
         <source>Reset to original shortcut.</source>
-        <translation>Herstel naar standaard sneltoets.</translation>
+        <translation>Standaard sneltoets gebruiken</translation>
     </message>
     <message>
         <location filename="../src/librssguard/dynamic-shortcuts/shortcutcatcher.cpp" line="29"/>
@@ -6277,12 +6279,12 @@ Also, there are some built-in sounds. Just start typing &quot;:&quot; and they w
     <message>
         <location filename="../src/librssguard/gui/notifications/singlenotificationeditor.cpp" line="44"/>
         <source>WAV files (*.wav);;MP3 files (*.mp3)</source>
-        <translation>WAV bestanden (*.wav);;MP3 bestanden (*.mp3)</translation>
+        <translation>WAV-bestanden (*.wav);;MP3-bestanden (*.mp3)</translation>
     </message>
     <message>
         <location filename="../src/librssguard/gui/notifications/singlenotificationeditor.ui" line="23"/>
         <source>Balloon notification</source>
-        <translation>Ballon meldingen</translation>
+        <translation>Ballonmeldingen</translation>
     </message>
     <message>
         <location filename="../src/librssguard/gui/notifications/singlenotificationeditor.ui" line="51"/>
@@ -6292,7 +6294,7 @@ Also, there are some built-in sounds. Just start typing &quot;:&quot; and they w
     <message>
         <location filename="../src/librssguard/gui/notifications/singlenotificationeditor.ui" line="63"/>
         <source>Full path to your WAV sound file</source>
-        <translation>Volledig pad naar het WAV bestand</translation>
+        <translation>Volledig pad naar het WAV-bestand</translation>
     </message>
     <message>
         <location filename="../src/librssguard/gui/notifications/singlenotificationeditor.ui" line="70"/>
@@ -6302,7 +6304,7 @@ Also, there are some built-in sounds. Just start typing &quot;:&quot; and they w
     <message>
         <location filename="../src/librssguard/gui/notifications/singlenotificationeditor.ui" line="77"/>
         <source>&amp;Play</source>
-        <translation>&amp;Speel</translation>
+        <translation>Afs&amp;pelen</translation>
     </message>
     <message>
         <location filename="../src/librssguard/gui/notifications/singlenotificationeditor.ui" line="93"/>
@@ -6646,7 +6648,7 @@ Model: %3</translation>
         <location filename="../src/librssguard/services/standard/gui/standardfeeddetails.cpp" line="155"/>
         <location filename="../src/librssguard/services/standard/gui/standardfeeddetails.cpp" line="205"/>
         <source>Network error: %1</source>
-        <translation>Netwerk fout: %1</translation>
+        <translation>Netwerkfout: %1</translation>
     </message>
     <message>
         <location filename="../src/librssguard/services/standard/gui/standardfeeddetails.cpp" line="160"/>
@@ -7207,7 +7209,7 @@ Ongelezen nieuws: %2</translation>
     <message>
         <location filename="../src/librssguard/services/tt-rss/gui/ttrssaccountdetails.ui" line="194"/>
         <source>&amp;Test setup</source>
-        <translation>&amp;Test instelling</translation>
+        <translation>&amp;Test-instellingen</translation>
     </message>
 </context>
 <context>
