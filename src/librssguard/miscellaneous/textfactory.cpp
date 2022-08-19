@@ -72,8 +72,8 @@ QDateTime TextFactory::parseDateTime(const QString& date_time) {
   static QStringList date_patterns = dateTimePatterns();
   QStringList timezone_offset_patterns;
 
-  timezone_offset_patterns << QSL("+hh:mm") << QSL("-hh:mm") << QSL("+hhmm")
-                           << QSL("-hhmm") << QSL("+hh") << QSL("-hh");
+  timezone_offset_patterns << QSL("+hh:mm") << QSL("-hh:mm") << QSL("+hhmm") << QSL("-hhmm") << QSL("+hh")
+                           << QSL("-hh");
 
   // Iterate over patterns and check if input date/time matches the pattern.
   for (const QString& pattern : qAsConst(date_patterns)) {
@@ -124,12 +124,12 @@ QDateTime TextFactory::parseDateTime(qint64 milis_from_epoch) {
 }
 
 QStringList TextFactory::dateTimePatterns() {
-  return QStringList() << QSL("yyyy-MM-ddTHH:mm:ss") << QSL("MMM dd yyyy hh:mm:ss") <<
-         QSL("MMM d yyyy hh:mm:ss") << QSL("ddd, dd MMM yyyy HH:mm:ss") << QSL("ddd, d MMM yyyy HH:mm:ss") <<
-         QSL("dd MMM yyyy") << QSL("yyyy-MM-dd HH:mm:ss.z") << QSL("yyyy-MM-dd") <<
-         QSL("yyyy") << QSL("yyyy-MM") << QSL("yyyy-MM-dd") << QSL("yyyy-MM-ddThh:mm") <<
-         QSL("yyyy-MM-ddThh:mm:ss") << QSL("d MMM yyyy HH:mm:ss") << QSL("hh:mm:ss") <<
-         QSL("h:m:s AP") << QSL("h:mm") << QSL("H:mm") << QSL("h:m") << QSL("h.m");
+  return QStringList() << QSL("yyyy-MM-ddTHH:mm:ss") << QSL("MMM dd yyyy hh:mm:ss") << QSL("MMM d yyyy hh:mm:ss")
+                       << QSL("ddd, dd MMM yyyy HH:mm:ss") << QSL("ddd, d MMM yyyy HH:mm:ss")
+                       << QSL("dd MMM yyyy hh:mm:ss") << QSL("dd MMM yyyy") << QSL("yyyy-MM-dd HH:mm:ss.z")
+                       << QSL("yyyy-MM-dd") << QSL("yyyy") << QSL("yyyy-MM") << QSL("yyyy-MM-dd")
+                       << QSL("yyyy-MM-ddThh:mm") << QSL("yyyy-MM-ddThh:mm:ss") << QSL("d MMM yyyy HH:mm:ss")
+                       << QSL("hh:mm:ss") << QSL("h:m:s AP") << QSL("h:mm") << QSL("H:mm") << QSL("h:m") << QSL("h.m");
 }
 
 QString TextFactory::encrypt(const QString& text, quint64 key) {
@@ -228,8 +228,7 @@ quint64 TextFactory::initializeSecretEncryptionKey() {
         IOFactory::writeFile(encryption_file_path, QString::number(s_encryptionKey).toLocal8Bit());
       }
       catch (ApplicationException& ex) {
-        qCriticalNN << LOGSEC_CORE
-                    << "Failed to write newly generated encryption key to file, error"
+        qCriticalNN << LOGSEC_CORE << "Failed to write newly generated encryption key to file, error"
                     << QUOTE_W_SPACE_DOT(ex.message())
                     << " Now, your passwords won't be readable after you start this application again.";
       }
