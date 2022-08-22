@@ -41,7 +41,7 @@ FormAddEditEmail::FormAddEditEmail(GmailServiceRoot* root, QWidget* parent)
   m_possibleRecipients = DatabaseQueries::getAllGmailRecipients(db, m_root->accountId());
   auto ctrls = recipientControls();
 
-  for (auto* rec: qAsConst(ctrls)) {
+  for (auto* rec : qAsConst(ctrls)) {
     rec->setPossibleRecipients(m_possibleRecipients);
   }
 }
@@ -58,7 +58,10 @@ void FormAddEditEmail::execForReply(Message* original_message) {
   m_ui.m_txtSubject->setEnabled(false);
   m_ui.m_txtMessage->setFocus();
 
-  addRecipientRow(m_originalMessage->m_author);
+  auto from_header =
+    m_root->network()->getMessageMetadata(original_message->m_customId, {QSL("FROM")}, m_root->networkProxy());
+
+  addRecipientRow(from_header["From"]);
   exec();
 }
 
@@ -70,15 +73,15 @@ void FormAddEditEmail::execForForward(Message* original_message) {
   m_ui.m_txtMessage->setFocus();
 
   // TODO: Obtain "To" header from Gmail API and fill it in too.
-  const QString forward_header = QSL("<pre>"
-                                     "---------- Forwarded message ---------<br/>"
-                                     "From: %1<br/>"
-                                     "Date: %2<br/>"
-                                     "Subject: %3<br/>"
-                                     "To: -"
-                                     "</pre><br/>").arg(m_originalMessage->m_author,
-                                                        m_originalMessage->m_created.toString(),
-                                                        m_originalMessage->m_title);
+  const QString forward_header =
+    QSL("<pre>"
+        "---------- Forwarded message ---------<br/>"
+        "From: %1<br/>"
+        "Date: %2<br/>"
+        "Subject: %3<br/>"
+        "To: -"
+        "</pre><br/>")
+      .arg(m_originalMessage->m_author, m_originalMessage->m_created.toString(), m_originalMessage->m_title);
 
   m_ui.m_txtMessage->setHtml(forward_header + m_originalMessage->m_contents);
   m_ui.m_txtMessage->moveCursor(QTextCursor::MoveOperation::Start);
@@ -145,9 +148,10 @@ void FormAddEditEmail::onOkClicked() {
     msg["Reply-To"] = rec_repl.join(',').toStdString();
   }
 
-  msg["Subject"] = QSL("=?utf-8?B?%1?=")
-                   .arg(QString(m_ui.m_txtSubject->text().toUtf8().toBase64(QByteArray::Base64Option::Base64UrlEncoding)))
-                   .toStdString();
+  msg["Subject"] =
+    QSL("=?utf-8?B?%1?=")
+      .arg(QString(m_ui.m_txtSubject->text().toUtf8().toBase64(QByteArray::Base64Option::Base64UrlEncoding)))
+      .toStdString();
 
   // TODO: Maybe use some more advanced subclass of QTextEdit
   // to allow to change formatting etc.
@@ -161,8 +165,10 @@ void FormAddEditEmail::onOkClicked() {
     accept();
   }
   catch (const ApplicationException& ex) {
-    MsgBox::show(this, QMessageBox::Icon::Critical,
-                 tr("E-mail NOT sent"), tr("Your e-mail message wasn't sent."),
+    MsgBox::show(this,
+                 QMessageBox::Icon::Critical,
+                 tr("E-mail NOT sent"),
+                 tr("Your e-mail message wasn't sent."),
                  QString(),
                  ex.message());
   }

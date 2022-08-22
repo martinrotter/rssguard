@@ -73,7 +73,7 @@ QNetworkReply::NetworkError GreaderNetwork::editLabels(const QString& state,
     args += working_subset.join(QL1C('&'));
 
     if (m_service == GreaderServiceRoot::Service::Reedah) {
-      args += QSL("&T=%1").arg(m_authToken);
+      args += QSL("&%1").arg(tokenParameter());
     }
 
     // We send this batch.
@@ -493,7 +493,13 @@ QList<Message> GreaderNetwork::itemContents(ServiceRoot* root,
                                                    : QUrl::toPercentEncoding(id));
                         })
                         .toStdList();
-      QByteArray input = FROM_STD_LIST(QStringList, inp).join(QSL("&")).toUtf8();
+      QStringList inp_s = FROM_STD_LIST(QStringList, inp);
+
+      if (m_service == GreaderServiceRoot::Service::Reedah || m_service == GreaderServiceRoot::Service::Miniflux) {
+        inp_s.append(tokenParameter());
+      }
+
+      QByteArray input = inp_s.join(QSL("&")).toUtf8();
       QByteArray output_stream;
       auto result_stream =
         NetworkFactory::performNetworkOperation(full_url,
@@ -861,7 +867,7 @@ QNetworkReply::NetworkError GreaderNetwork::clientLogin(const QNetworkProxy& pro
       return QNetworkReply::NetworkError::InternalServerError;
     }
 
-    if (m_service == GreaderServiceRoot::Service::Reedah) {
+    if (m_service == GreaderServiceRoot::Service::Reedah || m_service == GreaderServiceRoot::Service::Miniflux) {
       // We need "T=" token for editing.
       full_url = generateFullUrl(Operations::Token);
 
@@ -927,6 +933,10 @@ QPair<QByteArray, QByteArray> GreaderNetwork::authHeader() const {
   else {
     return {QSL(HTTP_HEADERS_AUTHORIZATION).toLocal8Bit(), QSL("GoogleLogin auth=%1").arg(m_authAuth).toLocal8Bit()};
   }
+}
+
+QString GreaderNetwork::tokenParameter() const {
+  return QSL("T=%1").arg(m_authToken);
 }
 
 bool GreaderNetwork::ensureLogin(const QNetworkProxy& proxy, QNetworkReply::NetworkError* output) {

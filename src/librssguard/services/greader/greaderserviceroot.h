@@ -9,7 +9,7 @@
 class GreaderNetwork;
 
 class GreaderServiceRoot : public ServiceRoot, public CacheForServiceRoot {
-  Q_OBJECT
+    Q_OBJECT
 
   public:
     enum class Service {
@@ -18,8 +18,11 @@ class GreaderServiceRoot : public ServiceRoot, public CacheForServiceRoot {
       Bazqux = 4,
       Reedah = 8,
       Inoreader = 16,
+      Miniflux = 32,
       Other = 1024
     };
+
+    Q_ENUM(Service)
 
     explicit GreaderServiceRoot(RootItem* parent = nullptr);
 
@@ -33,7 +36,8 @@ class GreaderServiceRoot : public ServiceRoot, public CacheForServiceRoot {
     virtual QVariantHash customDatabaseData() const;
     virtual void setCustomDatabaseData(const QVariantHash& data);
     virtual void aboutToBeginFeedFetching(const QList<Feed*>& feeds,
-                                          const QHash<QString, QHash<ServiceRoot::BagOfMessages, QStringList>>& stated_messages,
+                                          const QHash<QString, QHash<ServiceRoot::BagOfMessages, QStringList>>&
+                                            stated_messages,
                                           const QHash<QString, QStringList>& tagged_messages);
     virtual QList<Message> obtainNewMessages(Feed* feed,
                                              const QHash<ServiceRoot::BagOfMessages, QStringList>& stated_messages,

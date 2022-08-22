@@ -12,7 +12,7 @@
 class OAuth2Service;
 
 class GreaderNetwork : public QObject {
-  Q_OBJECT
+    Q_OBJECT
 
   public:
     enum class Operations {
@@ -83,15 +83,24 @@ class GreaderNetwork : public QObject {
     void setOauth(OAuth2Service* oauth);
 
     // API methods.
-    QNetworkReply::NetworkError editLabels(const QString& state, bool assign,
-                                           const QStringList& msg_custom_ids, const QNetworkProxy& proxy);
+    QNetworkReply::NetworkError editLabels(const QString& state,
+                                           bool assign,
+                                           const QStringList& msg_custom_ids,
+                                           const QNetworkProxy& proxy);
     QVariantHash userInfo(const QNetworkProxy& proxy);
-    QStringList itemIds(const QString& stream_id, bool unread_only, const QNetworkProxy& proxy, int max_count = -1,
+    QStringList itemIds(const QString& stream_id,
+                        bool unread_only,
+                        const QNetworkProxy& proxy,
+                        int max_count = -1,
                         QDate newer_than = {});
-    QList<Message> itemContents(ServiceRoot* root, const QList<QString>& stream_ids,
-                                Feed::Status& error, const QNetworkProxy& proxy);
-    QList<Message> streamContents(ServiceRoot* root, const QString& stream_id,
-                                  Feed::Status& error, const QNetworkProxy& proxy);
+    QList<Message> itemContents(ServiceRoot* root,
+                                const QList<QString>& stream_ids,
+                                Feed::Status& error,
+                                const QNetworkProxy& proxy);
+    QList<Message> streamContents(ServiceRoot* root,
+                                  const QString& stream_id,
+                                  Feed::Status& error,
+                                  const QNetworkProxy& proxy);
     QNetworkReply::NetworkError clientLogin(const QNetworkProxy& proxy);
 
     QDate newerThanFilter() const;
@@ -103,6 +112,7 @@ class GreaderNetwork : public QObject {
 
   private:
     QPair<QByteArray, QByteArray> authHeader() const;
+    QString tokenParameter() const;
 
     // Make sure we are logged in and if we are not, return error.
     bool ensureLogin(const QNetworkProxy& proxy, QNetworkReply::NetworkError* output = nullptr);
@@ -112,8 +122,14 @@ class GreaderNetwork : public QObject {
     QString simplifyStreamId(const QString& stream_id) const;
 
     QStringList decodeItemIds(const QString& stream_json_data, QString& continuation);
-    QList<Message> decodeStreamContents(ServiceRoot* root, const QString& stream_json_data, const QString& stream_id, QString& continuation);
-    RootItem* decodeTagsSubscriptions(const QString& categories, const QString& feeds, bool obtain_icons, const QNetworkProxy& proxy);
+    QList<Message> decodeStreamContents(ServiceRoot* root,
+                                        const QString& stream_json_data,
+                                        const QString& stream_id,
+                                        QString& continuation);
+    RootItem* decodeTagsSubscriptions(const QString& categories,
+                                      const QString& feeds,
+                                      bool obtain_icons,
+                                      const QNetworkProxy& proxy);
 
     QString sanitizedBaseUrl() const;
     QString generateFullUrl(Operations operation) const;

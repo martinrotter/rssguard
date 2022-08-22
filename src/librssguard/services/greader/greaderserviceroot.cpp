@@ -17,8 +17,7 @@
 #include "services/greader/greadernetwork.h"
 #include "services/greader/gui/formeditgreaderaccount.h"
 
-GreaderServiceRoot::GreaderServiceRoot(RootItem* parent)
-  : ServiceRoot(parent), m_network(new GreaderNetwork(this)) {
+GreaderServiceRoot::GreaderServiceRoot(RootItem* parent) : ServiceRoot(parent), m_network(new GreaderNetwork(this)) {
   setIcon(GreaderEntryPoint().icon());
   m_network->setRoot(this);
 }
@@ -91,7 +90,8 @@ void GreaderServiceRoot::setCustomDatabaseData(const QVariantHash& data) {
 }
 
 void GreaderServiceRoot::aboutToBeginFeedFetching(const QList<Feed*>& feeds,
-                                                  const QHash<QString, QHash<BagOfMessages, QStringList>>& stated_messages,
+                                                  const QHash<QString, QHash<BagOfMessages, QStringList>>&
+                                                    stated_messages,
                                                   const QHash<QString, QStringList>& tagged_messages) {
   if (m_network->intelligentSynchronization()) {
     m_network->prepareFeedFetching(this, feeds, stated_messages, tagged_messages, networkProxy());
@@ -118,13 +118,17 @@ QString GreaderServiceRoot::serviceToString(Service service) {
     case Service::Inoreader:
       return QSL("Inoreader");
 
+    case Service::Miniflux:
+      return QSL("Miniflux");
+
     default:
       return tr("Other services");
   }
 }
 
 QList<Message> GreaderServiceRoot::obtainNewMessages(Feed* feed,
-                                                     const QHash<ServiceRoot::BagOfMessages, QStringList>& stated_messages,
+                                                     const QHash<ServiceRoot::BagOfMessages, QStringList>&
+                                                       stated_messages,
                                                      const QHash<QString, QStringList>& tagged_messages) {
   Feed::Status error = Feed::Status::Normal;
   QList<Message> msgs;
@@ -207,7 +211,8 @@ void GreaderServiceRoot::saveAllCachedData(bool ignore_errors) {
     QList<Message> messages = j.value();
 
     if (!messages.isEmpty()) {
-      QStringList custom_ids; custom_ids.reserve(messages.size());
+      QStringList custom_ids;
+      custom_ids.reserve(messages.size());
 
       for (const Message& msg : messages) {
         custom_ids.append(msg.m_customId);
@@ -231,7 +236,8 @@ void GreaderServiceRoot::saveAllCachedData(bool ignore_errors) {
       QStringList messages = k.value();
 
       if (!messages.isEmpty()) {
-        if (network()->editLabels(label_custom_id, true, messages, networkProxy()) != QNetworkReply::NetworkError::NoError &&
+        if (network()->editLabels(label_custom_id, true, messages, networkProxy()) !=
+              QNetworkReply::NetworkError::NoError &&
             !ignore_errors) {
           addLabelsAssignmentsToCache(messages, label_custom_id, true);
         }
@@ -247,7 +253,8 @@ void GreaderServiceRoot::saveAllCachedData(bool ignore_errors) {
       QStringList messages = l.value();
 
       if (!messages.isEmpty()) {
-        if (network()->editLabels(label_custom_id, false, messages, networkProxy()) != QNetworkReply::NetworkError::NoError &&
+        if (network()->editLabels(label_custom_id, false, messages, networkProxy()) !=
+              QNetworkReply::NetworkError::NoError &&
             !ignore_errors) {
           addLabelsAssignmentsToCache(messages, label_custom_id, false);
         }
@@ -283,6 +290,10 @@ void GreaderServiceRoot::updateTitleIcon() {
 
     case Service::Inoreader:
       setIcon(qApp->icons()->miscIcon(QSL("inoreader")));
+      break;
+
+    case Service::Miniflux:
+      setIcon(qApp->icons()->miscIcon(QSL("miniflux")));
       break;
 
     default:

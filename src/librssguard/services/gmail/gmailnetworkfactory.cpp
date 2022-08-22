@@ -26,11 +26,14 @@
 #include <QThread>
 #include <QUrl>
 
-GmailNetworkFactory::GmailNetworkFactory(QObject* parent) : QObject(parent),
-  m_service(nullptr), m_username(QString()), m_batchSize(GMAIL_DEFAULT_BATCH_SIZE),
-  m_downloadOnlyUnreadMessages(false),
-  m_oauth2(new OAuth2Service(QSL(GMAIL_OAUTH_AUTH_URL), QSL(GMAIL_OAUTH_TOKEN_URL),
-                             {}, {}, QSL(GMAIL_OAUTH_SCOPE), this)) {
+GmailNetworkFactory::GmailNetworkFactory(QObject* parent)
+  : QObject(parent), m_service(nullptr), m_username(QString()), m_batchSize(GMAIL_DEFAULT_BATCH_SIZE),
+    m_downloadOnlyUnreadMessages(false), m_oauth2(new OAuth2Service(QSL(GMAIL_OAUTH_AUTH_URL),
+                                                                    QSL(GMAIL_OAUTH_TOKEN_URL),
+                                                                    {},
+                                                                    {},
+                                                                    QSL(GMAIL_OAUTH_SCOPE),
+                                                                    this)) {
   initializeOauth();
 }
 
@@ -54,19 +57,19 @@ void GmailNetworkFactory::setBatchSize(int batch_size) {
   m_batchSize = batch_size;
 }
 
-QString GmailNetworkFactory::sendEmail(Mimesis::Message msg, const QNetworkProxy& custom_proxy, Message* reply_to_message) {
+QString GmailNetworkFactory::sendEmail(Mimesis::Message msg,
+                                       const QNetworkProxy& custom_proxy,
+                                       Message* reply_to_message) {
   QString bearer = m_oauth2->bearer().toLocal8Bit();
 
   if (bearer.isEmpty()) {
-    //throw ApplicationException(tr("you aren't logged in"));
+    // throw ApplicationException(tr("you aren't logged in"));
   }
 
   if (reply_to_message != nullptr) {
     // We need to obtain some extra information.
-    auto metadata = getMessageMetadata(reply_to_message->m_customId, {
-      QSL("References"),
-      QSL("Message-ID")
-    }, custom_proxy);
+    auto metadata =
+      getMessageMetadata(reply_to_message->m_customId, {QSL("References"), QSL("Message-ID")}, custom_proxy);
 
     if (metadata.contains(QSL("Message-ID"))) {
       msg["References"] = metadata.value(QSL("Message-ID")).toStdString();
@@ -120,23 +123,23 @@ void GmailNetworkFactory::initializeOauth() {
   m_oauth2->setClientSecretSecret(TextFactory::decrypt(QSL(GMAIL_CLIENT_SECRET), OAUTH_DECRYPTION_KEY));
 #endif
 
-  m_oauth2->setRedirectUrl(QSL(OAUTH_REDIRECT_URI) +
-                           QL1C(':') +
-                           QString::number(GMAIL_OAUTH_REDIRECT_URI_PORT),
-                           true);
+  m_oauth2->setRedirectUrl(QSL(OAUTH_REDIRECT_URI) + QL1C(':') + QString::number(GMAIL_OAUTH_REDIRECT_URI_PORT), true);
 
   connect(m_oauth2, &OAuth2Service::tokensRetrieveError, this, &GmailNetworkFactory::onTokensError);
   connect(m_oauth2, &OAuth2Service::authFailed, this, &GmailNetworkFactory::onAuthFailed);
-  connect(m_oauth2, &OAuth2Service::tokensRetrieved, this, [this](QString access_token, QString refresh_token, int expires_in) {
-    Q_UNUSED(expires_in)
-    Q_UNUSED(access_token)
+  connect(m_oauth2,
+          &OAuth2Service::tokensRetrieved,
+          this,
+          [this](QString access_token, QString refresh_token, int expires_in) {
+            Q_UNUSED(expires_in)
+            Q_UNUSED(access_token)
 
-    if (m_service != nullptr && !refresh_token.isEmpty()) {
-      QSqlDatabase database = qApp->database()->driver()->connection(metaObject()->className());
+            if (m_service != nullptr && !refresh_token.isEmpty()) {
+              QSqlDatabase database = qApp->database()->driver()->connection(metaObject()->className());
 
-      DatabaseQueries::storeNewOauthTokens(database, refresh_token, m_service->accountId());
-    }
-  });
+              DatabaseQueries::storeNewOauthTokens(database, refresh_token, m_service->accountId());
+            }
+          });
 }
 
 bool GmailNetworkFactory::downloadOnlyUnreadMessages() const {
@@ -197,8 +200,7 @@ QList<Message> GmailNetworkFactory::messages(const QString& stream_id,
     }
   }
   catch (const NetworkException& net_ex) {
-    qCriticalNN << LOGSEC_GMAIL
-                << "Failed to get list of e-mail IDs:" << QUOTE_W_SPACE_DOT(net_ex.message());
+    qCriticalNN << LOGSEC_GMAIL << "Failed to get list of e-mail IDs:" << QUOTE_W_SPACE_DOT(net_ex.message());
     return {};
   }
 
@@ -300,7 +302,8 @@ QNetworkReply::NetworkError GmailNetworkFactory::markMessagesRead(RootItem::Read
                                                           false,
                                                           {},
                                                           {},
-                                                          custom_proxy).m_networkError;
+                                                          custom_proxy)
+                    .m_networkError;
 
     if (result != QNetworkReply::NetworkError::NoError) {
       return result;
@@ -359,7 +362,8 @@ QNetworkReply::NetworkError GmailNetworkFactory::markMessagesStarred(RootItem::I
                                                           false,
                                                           {},
                                                           {},
-                                                          custom_proxy).m_networkError;
+                                                          custom_proxy)
+                    .m_networkError;
 
     if (result != QNetworkReply::NetworkError::NoError) {
       return result;
@@ -413,29 +417,29 @@ QStringList GmailNetworkFactory::list(const QString& stream_id,
     }
 
     QByteArray messages_raw_data;
-    auto netw = NetworkFactory::performNetworkOperation(target_url,
-                                                        timeout,
-                                                        {},
-                                                        messages_raw_data,
-                                                        QNetworkAccessManager::Operation::GetOperation,
-                                                        { { QSL(HTTP_HEADERS_AUTHORIZATION).toLocal8Bit(),
-                                                          bearer.toLocal8Bit() } },
-                                                        false,
-                                                        {},
-                                                        {},
-                                                        custom_proxy);
+    auto netw =
+      NetworkFactory::performNetworkOperation(target_url,
+                                              timeout,
+                                              {},
+                                              messages_raw_data,
+                                              QNetworkAccessManager::Operation::GetOperation,
+                                              {{QSL(HTTP_HEADERS_AUTHORIZATION).toLocal8Bit(), bearer.toLocal8Bit()}},
+                                              false,
+                                              {},
+                                              {},
+                                              custom_proxy);
 
     if (netw.m_networkError == QNetworkReply::NetworkError::NoError) {
       // We parse this chunk.
       QString messages_data = QString::fromUtf8(messages_raw_data);
 
       message_ids << decodeLiteMessages(messages_data, next_page_token);
-
     }
     else {
       throw NetworkException(netw.m_networkError, tr("failed to download IDs of e-mail messages"));
     }
-  } while (!next_page_token.isEmpty() && (max_results <= 0 || message_ids.size() < max_results));
+  }
+  while (!next_page_token.isEmpty() && (max_results <= 0 || message_ids.size() < max_results));
 
   return message_ids;
 }
@@ -463,7 +467,8 @@ QVariantHash GmailNetworkFactory::getProfile(const QNetworkProxy& custom_proxy) 
                                                         false,
                                                         {},
                                                         {},
-                                                        custom_proxy).m_networkError;
+                                                        custom_proxy)
+                  .m_networkError;
 
   if (result != QNetworkReply::NetworkError::NoError) {
     throw NetworkException(result, output);
@@ -478,32 +483,30 @@ QVariantHash GmailNetworkFactory::getProfile(const QNetworkProxy& custom_proxy) 
 void GmailNetworkFactory::onTokensError(const QString& error, const QString& error_description) {
   Q_UNUSED(error)
 
-  qApp->showGuiMessage(Notification::Event::LoginFailure, {
-    tr("Gmail: authentication error"),
-    tr("Click this to login again. Error is: '%1'").arg(error_description),
-    QSystemTrayIcon::MessageIcon::Critical },
-                       {}, {
-    tr("Login"),
-    [this]() {
-      m_oauth2->setAccessToken(QString());
-      m_oauth2->setRefreshToken(QString());
-      m_oauth2->login();
-    } });
+  qApp->showGuiMessage(Notification::Event::LoginFailure,
+                       {tr("Gmail: authentication error"),
+                        tr("Click this to login again. Error is: '%1'").arg(error_description),
+                        QSystemTrayIcon::MessageIcon::Critical},
+                       {},
+                       {tr("Login"), [this]() {
+                          m_oauth2->setAccessToken(QString());
+                          m_oauth2->setRefreshToken(QString());
+                          m_oauth2->login();
+                        }});
 }
 
 void GmailNetworkFactory::onAuthFailed() {
-  qApp->showGuiMessage(Notification::Event::LoginFailure, {
-    tr("Gmail: authorization denied"),
-    tr("Click this to login again."),
-    QSystemTrayIcon::MessageIcon::Critical },
-                       {}, {
-    tr("Login"),
-    [this]() {
-      m_oauth2->login();
-    } });
+  qApp->showGuiMessage(Notification::Event::LoginFailure,
+                       {tr("Gmail: authorization denied"),
+                        tr("Click this to login again."),
+                        QSystemTrayIcon::MessageIcon::Critical},
+                       {},
+                       {tr("Login"), [this]() {
+                          m_oauth2->login();
+                        }});
 }
 
-bool GmailNetworkFactory::fillFullMessage(Message& msg, const QJsonObject& json, const QString& feed_id) {
+bool GmailNetworkFactory::fillFullMessage(Message& msg, const QJsonObject& json, const QString& feed_id) const {
   QHash<QString, QString> headers;
   auto json_headers = json[QSL("payload")].toObject()[QSL("headers")].toArray();
 
@@ -543,7 +546,7 @@ bool GmailNetworkFactory::fillFullMessage(Message& msg, const QJsonObject& json,
     }
   }
 
-  msg.m_author = headers[QSL("From")];
+  msg.m_author = sanitizeEmailAuthor(headers[QSL("From")]);
   msg.m_title = headers[QSL("Subject")];
   msg.m_createdFromFeed = true;
   msg.m_created = TextFactory::parseDateTime(headers[QSL("Date")]);
@@ -587,7 +590,8 @@ bool GmailNetworkFactory::fillFullMessage(Message& msg, const QJsonObject& json,
       // We check if it is HTML.
       if (msg.m_contents.isEmpty()) {
         if (mime.contains(QL1S("text/html"))) {
-          msg.m_contents = QByteArray::fromBase64(body[QSL("data")].toString().toUtf8(), QByteArray::Base64Option::Base64UrlEncoding);
+          msg.m_contents =
+            QByteArray::fromBase64(body[QSL("data")].toString().toUtf8(), QByteArray::Base64Option::Base64UrlEncoding);
 
           if (msg.m_contents.contains(QSL("<body>"))) {
             int strt = msg.m_contents.indexOf(QSL("<body>"));
@@ -599,20 +603,20 @@ bool GmailNetworkFactory::fillFullMessage(Message& msg, const QJsonObject& json,
           }
         }
         else if (backup_contents.isEmpty()) {
-          backup_contents = QByteArray::fromBase64(body[QSL("data")].toString().toUtf8(), QByteArray::Base64Option::Base64UrlEncoding);
+          backup_contents =
+            QByteArray::fromBase64(body[QSL("data")].toString().toUtf8(), QByteArray::Base64Option::Base64UrlEncoding);
 
-          backup_contents = backup_contents
-                            .replace(QSL("\r\n"), QSL("\n"))
-                            .replace(QSL("\n"), QSL("\n"))
-                            .replace(QSL("\n"), QSL("<br/>"));
+          backup_contents = backup_contents.replace(QSL("\r\n"), QSL("\n"))
+                              .replace(QSL("\n"), QSL("\n"))
+                              .replace(QSL("\n"), QSL("<br/>"));
         }
       }
     }
     else if (!filename.isEmpty()) {
       // We have attachment.
-      msg.m_enclosures.append(Enclosure(filename +
-                                        QSL(GMAIL_ATTACHMENT_SEP) + body[QSL("attachmentId")].toString(),
-                                        filename + QSL(" (%1 KB)").arg(QString::number(body["size"].toInt() / 1000.0))));
+      msg.m_enclosures.append(Enclosure(filename + QSL(GMAIL_ATTACHMENT_SEP) + body[QSL("attachmentId")].toString(),
+                                        filename +
+                                          QSL(" (%1 KB)").arg(QString::number(body["size"].toInt() / 1000.0))));
     }
   }
 
@@ -636,12 +640,10 @@ QMap<QString, QString> GmailNetworkFactory::getMessageMetadata(const QString& ms
   QByteArray output;
   int timeout = qApp->settings()->value(GROUP(Feeds), SETTING(Feeds::UpdateTimeout)).toInt();
 
-  headers.append(QPair<QByteArray, QByteArray>(QSL(HTTP_HEADERS_AUTHORIZATION).toLocal8Bit(),
-                                               bearer.toLocal8Bit()));
+  headers.append(QPair<QByteArray, QByteArray>(QSL(HTTP_HEADERS_AUTHORIZATION).toLocal8Bit(), bearer.toLocal8Bit()));
 
-  QString query = QString("%1/%2?format=metadata&metadataHeaders=%3").arg(QSL(GMAIL_API_MSGS_LIST),
-                                                                          msg_id,
-                                                                          metadata.join(QSL("&metadataHeaders=")));
+  QString query = QString("%1/%2?format=metadata&metadataHeaders=%3")
+                    .arg(QSL(GMAIL_API_MSGS_LIST), msg_id, metadata.join(QSL("&metadataHeaders=")));
   NetworkResult res = NetworkFactory::performNetworkOperation(query,
                                                               timeout,
                                                               QByteArray(),
@@ -673,7 +675,7 @@ QMap<QString, QString> GmailNetworkFactory::getMessageMetadata(const QString& ms
 
 QList<Message> GmailNetworkFactory::obtainAndDecodeFullMessages(const QStringList& message_ids,
                                                                 const QString& feed_id,
-                                                                const QNetworkProxy& custom_proxy) {
+                                                                const QNetworkProxy& custom_proxy) const {
   QHash<QString, Message> msgs;
   int next_message = 0;
   QString bearer = m_oauth2->bearer();
@@ -687,7 +689,7 @@ QList<Message> GmailNetworkFactory::obtainAndDecodeFullMessages(const QStringLis
 
     multi->setContentType(QHttpMultiPart::ContentType::MixedType);
 
-    for (int window = next_message + 100; next_message < window && next_message < message_ids.size(); next_message++ ) {
+    for (int window = next_message + 100; next_message < window && next_message < message_ids.size(); next_message++) {
       QString msg_id = message_ids[next_message];
       Message msg;
       QHttpPart part;
@@ -706,8 +708,7 @@ QList<Message> GmailNetworkFactory::obtainAndDecodeFullMessages(const QStringLis
     QList<HttpResponse> output;
     int timeout = qApp->settings()->value(GROUP(Feeds), SETTING(Feeds::UpdateTimeout)).toInt();
 
-    headers.append(QPair<QByteArray, QByteArray>(QSL(HTTP_HEADERS_AUTHORIZATION).toLocal8Bit(),
-                                                 bearer.toLocal8Bit()));
+    headers.append(QPair<QByteArray, QByteArray>(QSL(HTTP_HEADERS_AUTHORIZATION).toLocal8Bit(), bearer.toLocal8Bit()));
 
     NetworkResult res = NetworkFactory::performNetworkOperation(GMAIL_API_BATCH,
                                                                 timeout,
@@ -750,7 +751,7 @@ QList<Message> GmailNetworkFactory::obtainAndDecodeFullMessages(const QStringLis
   return msgs.values();
 }
 
-QStringList GmailNetworkFactory::decodeLiteMessages(const QString& messages_json_data, QString& next_page_token) {
+QStringList GmailNetworkFactory::decodeLiteMessages(const QString& messages_json_data, QString& next_page_token) const {
   QList<QString> message_ids;
   QJsonObject top_object = QJsonDocument::fromJson(messages_json_data.toUtf8()).object();
   QJsonArray json_msgs = top_object[QSL("messages")].toArray();
@@ -765,4 +766,8 @@ QStringList GmailNetworkFactory::decodeLiteMessages(const QString& messages_json
   }
 
   return message_ids;
+}
+
+QString GmailNetworkFactory::sanitizeEmailAuthor(const QString& author) const {
+  return author.mid(0, author.indexOf(QL1S(" <"))).replace(QL1S("\""), QString());
 }

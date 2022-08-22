@@ -12,18 +12,17 @@
 #include "services/greader/definitions.h"
 #include "services/greader/greadernetwork.h"
 
+#include <QMetaEnum>
 #include <QVariantHash>
 
-GreaderAccountDetails::GreaderAccountDetails(QWidget* parent) : QWidget(parent),
-  m_oauth(nullptr), m_lastProxy({}) {
+GreaderAccountDetails::GreaderAccountDetails(QWidget* parent) : QWidget(parent), m_oauth(nullptr), m_lastProxy({}) {
   m_ui.setupUi(this);
 
-  for (auto serv : { GreaderServiceRoot::Service::Bazqux,
-                     GreaderServiceRoot::Service::FreshRss,
-                     GreaderServiceRoot::Service::Inoreader,
-                     GreaderServiceRoot::Service::Reedah,
-                     GreaderServiceRoot::Service::TheOldReader,
-                     GreaderServiceRoot::Service::Other }) {
+  QMetaEnum me = QMetaEnum::fromType<GreaderServiceRoot::Service>();
+
+  for (int i = 0; i < me.keyCount(); i++) {
+    GreaderServiceRoot::Service serv = static_cast<GreaderServiceRoot::Service>(me.value(i));
+
     m_ui.m_cmbService->addItem(GreaderServiceRoot::serviceToString(serv), QVariant::fromValue(serv));
   }
 
@@ -54,12 +53,13 @@ GreaderAccountDetails::GreaderAccountDetails(QWidget* parent) : QWidget(parent),
                                       false);
 
 #if defined(INOREADER_OFFICIAL_SUPPORT)
-  m_ui.m_lblInfo->setHelpText(tr("There are some preconfigured OAuth tokens so you do not have to fill in your "
-                                 "client ID/secret, but it is strongly recommended to obtain your "
-                                 "own as preconfigured tokens have limited global usage quota. If you wish "
-                                 "to use preconfigured tokens, simply leave all above fields to their default values even "
-                                 "if they are empty."),
-                              true);
+  m_ui.m_lblInfo
+    ->setHelpText(tr("There are some preconfigured OAuth tokens so you do not have to fill in your "
+                     "client ID/secret, but it is strongly recommended to obtain your "
+                     "own as preconfigured tokens have limited global usage quota. If you wish "
+                     "to use preconfigured tokens, simply leave all above fields to their default values even "
+                     "if they are empty."),
+                  true);
 #else
   m_ui.m_lblInfo->setHelpText(tr("You have to fill in your client ID/secret and also fill in correct redirect URL."),
                               true);
@@ -68,7 +68,10 @@ GreaderAccountDetails::GreaderAccountDetails(QWidget* parent) : QWidget(parent),
   connect(m_ui.m_txtPassword->lineEdit(), &BaseLineEdit::textChanged, this, &GreaderAccountDetails::onPasswordChanged);
   connect(m_ui.m_txtUsername->lineEdit(), &BaseLineEdit::textChanged, this, &GreaderAccountDetails::onUsernameChanged);
   connect(m_ui.m_txtUrl->lineEdit(), &BaseLineEdit::textChanged, this, &GreaderAccountDetails::onUrlChanged);
-  connect(m_ui.m_cmbService, QOverload<int>::of(&QComboBox::currentIndexChanged), this, &GreaderAccountDetails::fillPredefinedUrl);
+  connect(m_ui.m_cmbService,
+          QOverload<int>::of(&QComboBox::currentIndexChanged),
+          this,
+          &GreaderAccountDetails::fillPredefinedUrl);
   connect(m_ui.m_cbNewAlgorithm, &QCheckBox::toggled, m_ui.m_spinLimitMessages, &MessageCountSpinBox::setDisabled);
   connect(m_ui.m_txtAppId->lineEdit(), &BaseLineEdit::textChanged, this, &GreaderAccountDetails::checkOAuthValue);
   connect(m_ui.m_txtAppKey->lineEdit(), &BaseLineEdit::textChanged, this, &GreaderAccountDetails::checkOAuthValue);
@@ -126,9 +129,7 @@ void GreaderAccountDetails::onAuthGranted() {
     m_ui.m_txtUsername->lineEdit()->setText(resp[QSL("userEmail")].toString());
   }
   catch (const ApplicationException& ex) {
-    qCriticalNN << LOGSEC_GREADER
-                << "Failed to obtain profile with error:"
-                << QUOTE_W_SPACE_DOT(ex.message());
+    qCriticalNN << LOGSEC_GREADER << "Failed to obtain profile with error:" << QUOTE_W_SPACE_DOT(ex.message());
   }
 }
 
@@ -198,9 +199,7 @@ void GreaderAccountDetails::performTest(const QNetworkProxy& custom_proxy) {
                                       tr("Network error, have you entered correct Nextcloud endpoint and password?"));
     }
     else {
-      m_ui.m_lblTestResult->setStatus(WidgetWithStatus::StatusType::Ok,
-                                      tr("You are good to go!"),
-                                      tr("Yeah."));
+      m_ui.m_lblTestResult->setStatus(WidgetWithStatus::StatusType::Ok, tr("You are good to go!"), tr("Yeah."));
     }
   }
 }

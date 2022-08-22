@@ -68,11 +68,12 @@ class GmailNetworkFactory : public QObject {
     void onAuthFailed();
 
   private:
-    bool fillFullMessage(Message& msg, const QJsonObject& json, const QString& feed_id);
+    bool fillFullMessage(Message& msg, const QJsonObject& json, const QString& feed_id) const;
     QList<Message> obtainAndDecodeFullMessages(const QStringList& message_ids,
                                                const QString& feed_id,
-                                               const QNetworkProxy& custom_proxy);
-    QStringList decodeLiteMessages(const QString& messages_json_data, QString& next_page_token);
+                                               const QNetworkProxy& custom_proxy) const;
+    QStringList decodeLiteMessages(const QString& messages_json_data, QString& next_page_token) const;
+    QString sanitizeEmailAuthor(const QString& author) const;
 
     void initializeOauth();
 
