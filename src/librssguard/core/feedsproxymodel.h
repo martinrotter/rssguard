@@ -11,17 +11,27 @@ class FeedsModel;
 class FeedsView;
 
 class FeedsProxyModel : public QSortFilterProxyModel {
-  Q_OBJECT
+    Q_OBJECT
 
   public:
     explicit FeedsProxyModel(FeedsModel* source_model, QObject* parent = nullptr);
     virtual ~FeedsProxyModel();
 
+    virtual bool dropMimeData(const QMimeData* data,
+                              Qt::DropAction action,
+                              int row,
+                              int column,
+                              const QModelIndex& parent);
+
     virtual void sort(int column, Qt::SortOrder order = Qt::SortOrder::AscendingOrder);
 
     // Returns index list of items which "match" given value.
     // Used for finding items according to entered title text.
-    virtual QModelIndexList match(const QModelIndex& start, int role, const QVariant& value, int hits, Qt::MatchFlags flags) const;
+    virtual QModelIndexList match(const QModelIndex& start,
+                                  int role,
+                                  const QVariant& value,
+                                  int hits,
+                                  Qt::MatchFlags flags) const;
 
     // Maps list of indexes.
     QModelIndexList mapListToSource(const QModelIndexList& indexes) const;
@@ -34,6 +44,7 @@ class FeedsProxyModel : public QSortFilterProxyModel {
     void setSelectedItem(const RootItem* selected_item);
     void setView(FeedsView* newView);
 
+    bool sortAlphabetically() const;
     void setSortAlphabetically(bool sort_alphabetically);
 
   public slots:
@@ -41,6 +52,9 @@ class FeedsProxyModel : public QSortFilterProxyModel {
 
   signals:
     void expandAfterFilterIn(QModelIndex source_idx) const;
+
+    // There was some drag/drop operation, notify view about this.
+    void requireItemValidationAfterDragDrop(const QModelIndex& source_index);
 
   protected:
     virtual bool lessThan(const QModelIndex& left, const QModelIndex& right) const;

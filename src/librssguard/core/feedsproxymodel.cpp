@@ -3,17 +3,21 @@
 #include "core/feedsproxymodel.h"
 
 #include "core/feedsmodel.h"
+#include "database/databasequeries.h"
 #include "definitions/definitions.h"
 #include "gui/feedsview.h"
 #include "miscellaneous/application.h"
 #include "miscellaneous/regexfactory.h"
 #include "services/abstract/rootitem.h"
 
+#include <QMimeData>
 #include <QTimer>
 
+using RootItemPtr = RootItem*;
+
 FeedsProxyModel::FeedsProxyModel(FeedsModel* source_model, QObject* parent)
-  : QSortFilterProxyModel(parent), m_sourceModel(source_model), m_view(nullptr),
-  m_selectedItem(nullptr), m_showUnreadOnly(false), m_sortAlphabetically(true) {
+  : QSortFilterProxyModel(parent), m_sourceModel(source_model), m_view(nullptr), m_selectedItem(nullptr),
+    m_showUnreadOnly(false), m_sortAlphabetically(true) {
   setObjectName(QSL("FeedsProxyModel"));
 
   setSortRole(Qt::ItemDataRole::EditRole);
@@ -28,26 +32,28 @@ FeedsProxyModel::FeedsProxyModel(FeedsModel* source_model, QObject* parent)
   // Smaller index means that item is "smaller" which
   // means it should be more on top when sorting
   // in ascending order.
-  m_priorities = {
-    RootItem::Kind::Category,
-    RootItem::Kind::Feed,
-    RootItem::Kind::Labels,
-    RootItem::Kind::Important,
-    RootItem::Kind::Unread,
-    RootItem::Kind::Bin
-  };
+  m_priorities = {RootItem::Kind::Category,
+                  RootItem::Kind::Feed,
+                  RootItem::Kind::Labels,
+                  RootItem::Kind::Important,
+                  RootItem::Kind::Unread,
+                  RootItem::Kind::Bin};
 }
 
 FeedsProxyModel::~FeedsProxyModel() {
   qDebugNN << LOGSEC_FEEDMODEL << "Destroying FeedsProxyModel instance";
 }
 
-QModelIndexList FeedsProxyModel::match(const QModelIndex& start, int role, const QVariant& value, int hits, Qt::MatchFlags flags) const {
+QModelIndexList FeedsProxyModel::match(const QModelIndex& start,
+                                       int role,
+                                       const QVariant& value,
+                                       int hits,
+                                       Qt::MatchFlags flags) const {
   QModelIndexList result;
   const int match_type = flags & 0x0F;
   const Qt::CaseSensitivity cs = Qt::CaseSensitivity::CaseInsensitive;
-  const bool recurse = (flags& Qt::MatchFlag::MatchRecursive) > 0;
-  const bool wrap = (flags& Qt::MatchFlag::MatchWrap) > 0;
+  const bool recurse = (flags & Qt::MatchFlag::MatchRecursive) > 0;
+  const bool wrap = (flags & Qt::MatchFlag::MatchWrap) > 0;
   const bool all_hits = (hits == -1);
   QString entered_text;
   const QModelIndex p = parent(start);
@@ -88,7 +94,9 @@ QModelIndexList FeedsProxyModel::match(const QModelIndex& start, int role, const
 #endif
             if (QRegularExpression(entered_text,
                                    QRegularExpression::PatternOption::CaseInsensitiveOption |
-                                   QRegularExpression::PatternOption::UseUnicodePropertiesOption).match(item_text).hasMatch()) {
+                                     QRegularExpression::PatternOption::UseUnicodePropertiesOption)
+                  .match(item_text)
+                  .hasMatch()) {
               result.append(idx);
             }
 
@@ -97,7 +105,9 @@ QModelIndexList FeedsProxyModel::match(const QModelIndex& start, int role, const
           case Qt::MatchFlag::MatchWildcard:
             if (QRegularExpression(RegexFactory::wildcardToRegularExpression(entered_text),
                                    QRegularExpression::PatternOption::CaseInsensitiveOption |
-                                   QRegularExpression::PatternOption::UseUnicodePropertiesOption).match(item_text).hasMatch()) {
+                                     QRegularExpression::PatternOption::UseUnicodePropertiesOption)
+                  .match(item_text)
+                  .hasMatch()) {
               result.append(idx);
             }
 
@@ -135,9 +145,11 @@ QModelIndexList FeedsProxyModel::match(const QModelIndex& start, int role, const
       }
 
       if (recurse && hasChildren(idx)) {
-        result +=
-          match(index(0, idx.column(), idx), role, (entered_text.isEmpty() ? value : entered_text),
-                (all_hits ? -1 : hits - result.count()), flags);
+        result += match(index(0, idx.column(), idx),
+                        role,
+                        (entered_text.isEmpty() ? value : entered_text),
+                        (all_hits ? -1 : hits - result.count()),
+                        flags);
       }
     }
 
@@ -146,6 +158,84 @@ QModelIndexList FeedsProxyModel::match(const QModelIndex& start, int role, const
   }
 
   return result;
+}
+
+bool FeedsProxyModel::dropMimeData(const QMimeData* data,
+                                   Qt::DropAction action,
+                                   int row,
+                                   int column,
+                                   const QModelIndex& parent) {
+  Q_UNUSED(column)
+
+  if (action == Qt::DropAction::IgnoreAction) {
+    return true;
+  }
+  else if (action != Qt::DropAction::MoveAction) {
+    return false;
+  }
+
+  QByteArray dragged_items_data = data->data(QSL(MIME_TYPE_ITEM_POINTER));
+
+  if (dragged_items_data.isEmpty()) {
+    return false;
+  }
+  else {
+    QDataStream stream(&dragged_items_data, QIODevice::OpenModeFlag::ReadOnly);
+    const bool order_change = row >= 0 && !m_sortAlphabetically;
+    const QModelIndex source_parent = mapToSource(parent);
+
+    while (!stream.atEnd()) {
+      quintptr pointer_to_item;
+      stream >> pointer_to_item;
+
+      // We have item we want to drag, we also determine the target item.
+      auto* dragged_item = RootItemPtr(pointer_to_item);
+      RootItem* target_item = m_sourceModel->itemForIndex(source_parent);
+      ServiceRoot* dragged_item_root = dragged_item->getParentServiceRoot();
+      ServiceRoot* target_item_root = target_item->getParentServiceRoot();
+
+      if ((dragged_item == target_item || dragged_item->parent() == target_item) && !order_change) {
+        qDebugNN << LOGSEC_FEEDMODEL
+                 << "Dragged item is equal to target item or its parent is equal to target item. Cancelling drag-drop "
+                    "action.";
+        return false;
+      }
+
+      if (dragged_item_root != target_item_root) {
+        // Transferring of items between different accounts is not possible.
+        qApp->showGuiMessage(Notification::Event::GeneralEvent,
+                             {tr("Cannot perform drag & drop operation"),
+                              tr("You can't transfer dragged item into different account, this is not supported."),
+                              QSystemTrayIcon::MessageIcon::Critical});
+        qDebugNN << LOGSEC_FEEDMODEL
+                 << "Dragged item cannot be dragged into different account. Cancelling drag-drop action.";
+        return false;
+      }
+
+      if (dragged_item != target_item && dragged_item->parent() != target_item &&
+          dragged_item->performDragDropChange(target_item)) {
+        // Drag & drop is supported by the dragged item and was
+        // completed on data level and in item hierarchy.
+        emit requireItemValidationAfterDragDrop(m_sourceModel->indexForItem(dragged_item));
+      }
+
+      if (order_change) {
+        auto db = qApp->database()->driver()->connection(metaObject()->className());
+
+        if (row > dragged_item->sortOrder()) {
+          row--;
+        }
+
+        DatabaseQueries::moveItem(dragged_item, false, false, row, db);
+      }
+
+      invalidate();
+    }
+
+    return true;
+  }
+
+  return false;
 }
 
 bool FeedsProxyModel::lessThan(const QModelIndex& left, const QModelIndex& right) const {
@@ -183,14 +273,13 @@ bool FeedsProxyModel::lessThan(const QModelIndex& left, const QModelIndex& right
           case RootItem::Kind::Feed:
           case RootItem::Kind::Category:
           case RootItem::Kind::ServiceRoot:
-            return sortOrder() == Qt::SortOrder::AscendingOrder
-                ? left_item->sortOrder() < right_item->sortOrder()
-                : left_item->sortOrder() > right_item->sortOrder();
+            return sortOrder() == Qt::SortOrder::AscendingOrder ? left_item->sortOrder() < right_item->sortOrder()
+                                                                : left_item->sortOrder() > right_item->sortOrder();
 
           default:
             return sortOrder() == Qt::SortOrder::AscendingOrder
-                ? QString::localeAwareCompare(left_item->title().toLower(), right_item->title().toLower()) < 0
-                : QString::localeAwareCompare(left_item->title().toLower(), right_item->title().toLower()) > 0;
+                     ? QString::localeAwareCompare(left_item->title().toLower(), right_item->title().toLower()) < 0
+                     : QString::localeAwareCompare(left_item->title().toLower(), right_item->title().toLower()) > 0;
         }
       }
     }
@@ -199,9 +288,8 @@ bool FeedsProxyModel::lessThan(const QModelIndex& left, const QModelIndex& right
       auto left_priority = m_priorities.indexOf(left_item->kind());
       auto right_priority = m_priorities.indexOf(right_item->kind());
 
-      return sortOrder() == Qt::SortOrder::AscendingOrder
-          ? left_priority < right_priority
-          : right_priority < left_priority;
+      return sortOrder() == Qt::SortOrder::AscendingOrder ? left_priority < right_priority
+                                                          : right_priority < left_priority;
     }
   }
   else {
@@ -212,11 +300,9 @@ bool FeedsProxyModel::lessThan(const QModelIndex& left, const QModelIndex& right
 bool FeedsProxyModel::filterAcceptsRow(int source_row, const QModelIndex& source_parent) const {
   bool should_show = filterAcceptsRowInternal(source_row, source_parent);
 
-  qDebugNN << LOGSEC_CORE
-           << "Filter accepts row"
+  qDebugNN << LOGSEC_CORE << "Filter accepts row"
            << QUOTE_W_SPACE(m_sourceModel->itemForIndex(m_sourceModel->index(source_row, 0, source_parent))->title())
-           << "and filter result is:"
-           << QUOTE_W_SPACE_DOT(should_show);
+           << "and filter result is:" << QUOTE_W_SPACE_DOT(should_show);
 
   /*
      if (should_show && (!filterRegularExpression().pattern().isEmpty() ||
@@ -251,8 +337,7 @@ bool FeedsProxyModel::filterAcceptsRowInternal(int source_row, const QModelIndex
 
   const RootItem* item = m_sourceModel->itemForIndex(idx);
 
-  if (item->kind() != RootItem::Kind::Category &&
-      item->kind() != RootItem::Kind::Feed &&
+  if (item->kind() != RootItem::Kind::Category && item->kind() != RootItem::Kind::Feed &&
       item->kind() != RootItem::Kind::Label) {
     // Some items are always visible.
     return true;
@@ -271,10 +356,13 @@ bool FeedsProxyModel::filterAcceptsRowInternal(int source_row, const QModelIndex
     // particularly manifests itself if user uses "next unread item" action and
     // "show unread only" is enabled too and user for example selects last unread
     // article in a feed -> then the feed would disappear from list suddenly.
-    return
-      m_selectedItem == item || (item->countOfUnreadMessages() != 0 &&
-                                 QSortFilterProxyModel::filterAcceptsRow(source_row, source_parent));
+    return m_selectedItem == item ||
+           (item->countOfUnreadMessages() != 0 && QSortFilterProxyModel::filterAcceptsRow(source_row, source_parent));
   }
+}
+
+bool FeedsProxyModel::sortAlphabetically() const {
+  return m_sortAlphabetically;
 }
 
 void FeedsProxyModel::sort(int column, Qt::SortOrder order) {

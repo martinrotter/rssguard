@@ -14,29 +14,27 @@ class ServiceEntryPoint;
 class StandardServiceRoot;
 
 class RSSGUARD_DLLSPEC FeedsModel : public QAbstractItemModel {
-  Q_OBJECT
+    Q_OBJECT
 
   public:
     explicit FeedsModel(QObject* parent = nullptr);
     virtual ~FeedsModel();
 
     // Model implementation.
-    QVariant data(const QModelIndex& index, int role) const;
+    virtual QVariant data(const QModelIndex& index, int role) const;
 
     // Drag & drop.
-    QMimeData* mimeData(const QModelIndexList& indexes) const;
-
-    QStringList mimeTypes() const;
-    bool dropMimeData(const QMimeData* data, Qt::DropAction action, int row, int column, const QModelIndex& parent);
-    Qt::DropActions supportedDropActions() const;
-    Qt::ItemFlags flags(const QModelIndex& index) const;
+    virtual QMimeData* mimeData(const QModelIndexList& indexes) const;
+    virtual QStringList mimeTypes() const;
+    virtual Qt::DropActions supportedDropActions() const;
+    virtual Qt::ItemFlags flags(const QModelIndex& index) const;
 
     // Other subclassed methods.
-    QVariant headerData(int section, Qt::Orientation orientation, int role) const;
-    QModelIndex index(int row, int column, const QModelIndex& parent) const;
-    QModelIndex parent(const QModelIndex& child) const;
-    int columnCount(const QModelIndex& parent) const;
-    int rowCount(const QModelIndex& parent) const;
+    virtual QVariant headerData(int section, Qt::Orientation orientation, int role) const;
+    virtual QModelIndex index(int row, int column, const QModelIndex& parent) const;
+    virtual QModelIndex parent(const QModelIndex& child) const;
+    virtual int columnCount(const QModelIndex& parent) const;
+    virtual int rowCount(const QModelIndex& parent) const;
 
     // Returns counts of ALL/UNREAD (non-deleted) messages for the model.
     int countOfAllMessages() const;
@@ -136,7 +134,7 @@ class RSSGUARD_DLLSPEC FeedsModel : public QAbstractItemModel {
     void messageCountsChanged(int unread_messages, bool any_feed_has_unread_messages);
 
     // Emitted if any item requested that any view should expand it.
-    void itemExpandRequested(QList<RootItem*>items, bool expand);
+    void itemExpandRequested(QList<RootItem*> items, bool expand);
 
     // Emitted if any item requested that its expand states should be explicitly saved.
     // NOTE: Normally expand states are saved when application quits.
@@ -144,9 +142,6 @@ class RSSGUARD_DLLSPEC FeedsModel : public QAbstractItemModel {
 
     // Emitted when there is a need of reloading of displayed messages.
     void reloadMessageListRequested(bool mark_selected_messages_read);
-
-    // There was some drag/drop operation, notify view about this.
-    void requireItemValidationAfterDragDrop(const QModelIndex& source_index);
 
   private:
     RootItem* m_rootItem;

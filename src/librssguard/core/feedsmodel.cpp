@@ -22,8 +22,6 @@
 #include <QStack>
 #include <QTimer>
 
-using RootItemPtr = RootItem*;
-
 FeedsModel::FeedsModel(QObject* parent) : QAbstractItemModel(parent), m_rootItem(new RootItem()) {
   setObjectName(QSL("FeedsModel"));
 
@@ -73,69 +71,6 @@ QMimeData* FeedsModel::mimeData(const QModelIndexList& indexes) const {
 
 QStringList FeedsModel::mimeTypes() const {
   return QStringList() << QSL(MIME_TYPE_ITEM_POINTER);
-}
-
-bool FeedsModel::dropMimeData(const QMimeData* data,
-                              Qt::DropAction action,
-                              int row,
-                              int column,
-                              const QModelIndex& parent) {
-  Q_UNUSED(row)
-  Q_UNUSED(column)
-
-  if (action == Qt::DropAction::IgnoreAction) {
-    return true;
-  }
-  else if (action != Qt::DropAction::MoveAction) {
-    return false;
-  }
-
-  QByteArray dragged_items_data = data->data(QSL(MIME_TYPE_ITEM_POINTER));
-
-  if (dragged_items_data.isEmpty()) {
-    return false;
-  }
-  else {
-    QDataStream stream(&dragged_items_data, QIODevice::OpenModeFlag::ReadOnly);
-
-    while (!stream.atEnd()) {
-      quintptr pointer_to_item;
-      stream >> pointer_to_item;
-
-      // We have item we want to drag, we also determine the target item.
-      auto* dragged_item = RootItemPtr(pointer_to_item);
-      RootItem* target_item = itemForIndex(parent);
-      ServiceRoot* dragged_item_root = dragged_item->getParentServiceRoot();
-      ServiceRoot* target_item_root = target_item->getParentServiceRoot();
-
-      if (dragged_item == target_item || dragged_item->parent() == target_item) {
-        qDebug("Dragged item is equal to target item or its parent is equal to target item. Cancelling drag-drop "
-               "action.");
-        return false;
-      }
-
-      if (dragged_item_root != target_item_root) {
-        // Transferring of items between different accounts is not possible.
-        qApp->showGuiMessage(Notification::Event::GeneralEvent,
-                             {tr("Cannot perform drag & drop operation"),
-                              tr("You can't transfer dragged item into different account, this is not supported."),
-                              QSystemTrayIcon::MessageIcon::Critical});
-        qDebugNN << LOGSEC_FEEDMODEL
-                 << "Dragged item cannot be dragged into different account. Cancelling drag-drop action.";
-        return false;
-      }
-
-      if (dragged_item->performDragDropChange(target_item)) {
-        // Drag & drop is supported by the dragged item and was
-        // completed on data level and in item hierarchy.
-        emit requireItemValidationAfterDragDrop(indexForItem(dragged_item));
-      }
-    }
-
-    return true;
-  }
-
-  return false;
 }
 
 Qt::DropActions FeedsModel::supportedDropActions() const {
@@ -368,7 +303,6 @@ RootItem* FeedsModel::itemForIndex(const QModelIndex& index) const {
 
 QModelIndex FeedsModel::indexForItem(const RootItem* item) const {
   if (item == nullptr || item->kind() == RootItem::Kind::Root) {
-
     // Root item lies on invalid index.
     return QModelIndex();
   }
@@ -598,6 +532,5 @@ QVariant FeedsModel::data(const QModelIndex& index, int role) const {
 
     default:
       return itemForIndex(index)->data(index.column(), role);
-      ;
   }
 }

@@ -29,8 +29,8 @@
 
 FeedsView::FeedsView(QWidget* parent)
   : BaseTreeView(parent), m_contextMenuService(nullptr), m_contextMenuBin(nullptr), m_contextMenuCategories(nullptr),
-  m_contextMenuFeeds(nullptr), m_contextMenuImportant(nullptr), m_contextMenuEmptySpace(nullptr), m_contextMenuOtherItems(nullptr),
-  m_contextMenuLabel(nullptr), m_dontSaveExpandState(false) {
+    m_contextMenuFeeds(nullptr), m_contextMenuImportant(nullptr), m_contextMenuEmptySpace(nullptr),
+    m_contextMenuOtherItems(nullptr), m_contextMenuLabel(nullptr), m_dontSaveExpandState(false) {
   setObjectName(QSL("FeedsView"));
 
   // Allocate models.
@@ -40,10 +40,13 @@ FeedsView::FeedsView(QWidget* parent)
   m_proxyModel->setView(this);
 
   // Connections.
-  connect(m_sourceModel, &FeedsModel::requireItemValidationAfterDragDrop, this, &FeedsView::validateItemAfterDragDrop);
   connect(m_sourceModel, &FeedsModel::itemExpandRequested, this, &FeedsView::onItemExpandRequested);
   connect(m_sourceModel, &FeedsModel::itemExpandStateSaveRequested, this, &FeedsView::onItemExpandStateSaveRequested);
   connect(header(), &QHeaderView::sortIndicatorChanged, this, &FeedsView::saveSortState);
+  connect(m_proxyModel,
+          &FeedsProxyModel::requireItemValidationAfterDragDrop,
+          this,
+          &FeedsView::validateItemAfterDragDrop);
   connect(m_proxyModel, &FeedsProxyModel::expandAfterFilterIn, this, &FeedsView::expandItemDelayed);
   connect(this, &FeedsView::expanded, this, &FeedsView::onIndexExpanded);
   connect(this, &FeedsView::collapsed, this, &FeedsView::onIndexCollapsed);
@@ -127,10 +130,10 @@ void FeedsView::addFeedIntoSelectedAccount() {
       root->addNewFeed(selected, QGuiApplication::clipboard()->text(QClipboard::Mode::Clipboard));
     }
     else {
-      qApp->showGuiMessage(Notification::Event::GeneralEvent, {
-        tr("Not supported by account"),
-        tr("Selected account does not support adding of new feeds."),
-        QSystemTrayIcon::MessageIcon::Warning });
+      qApp->showGuiMessage(Notification::Event::GeneralEvent,
+                           {tr("Not supported by account"),
+                            tr("Selected account does not support adding of new feeds."),
+                            QSystemTrayIcon::MessageIcon::Warning});
     }
   }
 }
@@ -145,10 +148,10 @@ void FeedsView::addCategoryIntoSelectedAccount() {
       root->addNewCategory(selectedItem());
     }
     else {
-      qApp->showGuiMessage(Notification::Event::GeneralEvent, {
-        tr("Not supported by account"),
-        tr("Selected account does not support adding of new categories."),
-        QSystemTrayIcon::MessageIcon::Warning });
+      qApp->showGuiMessage(Notification::Event::GeneralEvent,
+                           {tr("Not supported by account"),
+                            tr("Selected account does not support adding of new categories."),
+                            QSystemTrayIcon::MessageIcon::Warning});
     }
   }
 }
@@ -163,7 +166,7 @@ void FeedsView::expandCollapseCurrentItem(bool recursive) {
     }
 
     if (recursive) {
-      QList<QModelIndex> to_process = { index };
+      QList<QModelIndex> to_process = {index};
       bool expa = !isExpanded(index);
 
       while (!to_process.isEmpty()) {
@@ -208,10 +211,10 @@ void FeedsView::editSelectedItem() {
     // Lock was not obtained because
     // it is used probably by feed updater or application
     // is quitting.
-    qApp->showGuiMessage(Notification::Event::GeneralEvent, {
-      tr("Cannot edit item"),
-      tr("Selected item cannot be edited because another critical operation is ongoing."),
-      QSystemTrayIcon::MessageIcon::Warning });
+    qApp->showGuiMessage(Notification::Event::GeneralEvent,
+                         {tr("Cannot edit item"),
+                          tr("Selected item cannot be edited because another critical operation is ongoing."),
+                          QSystemTrayIcon::MessageIcon::Warning});
 
     // Thus, cannot delete and quit the method.
     return;
@@ -221,10 +224,10 @@ void FeedsView::editSelectedItem() {
     selectedItem()->editViaGui();
   }
   else {
-    qApp->showGuiMessage(Notification::Event::GeneralEvent, {
-      tr("Cannot edit item"),
-      tr("Selected item cannot be edited, this is not (yet?) supported."),
-      QSystemTrayIcon::MessageIcon::Warning });
+    qApp->showGuiMessage(Notification::Event::GeneralEvent,
+                         {tr("Cannot edit item"),
+                          tr("Selected item cannot be edited, this is not (yet?) supported."),
+                          QSystemTrayIcon::MessageIcon::Warning});
   }
 
   // Changes are done, unlock the update master lock.
@@ -236,10 +239,10 @@ void FeedsView::deleteSelectedItem() {
     // Lock was not obtained because
     // it is used probably by feed updater or application
     // is quitting.
-    qApp->showGuiMessage(Notification::Event::GeneralEvent, {
-      tr("Cannot delete item"),
-      tr("Selected item cannot be deleted because another critical operation is ongoing."),
-      QSystemTrayIcon::MessageIcon::Warning });
+    qApp->showGuiMessage(Notification::Event::GeneralEvent,
+                         {tr("Cannot delete item"),
+                          tr("Selected item cannot be deleted because another critical operation is ongoing."),
+                          QSystemTrayIcon::MessageIcon::Warning});
 
     // Thus, cannot delete and quit the method.
     return;
@@ -261,7 +264,8 @@ void FeedsView::deleteSelectedItem() {
                        tr("Deleting \"%1\"").arg(selected_item->title()),
                        tr("You are about to completely delete item \"%1\".").arg(selected_item->title()),
                        tr("Are you sure?"),
-                       QString(), QMessageBox::StandardButton::Yes | QMessageBox::StandardButton::No,
+                       QString(),
+                       QMessageBox::StandardButton::Yes | QMessageBox::StandardButton::No,
                        QMessageBox::StandardButton::Yes) == QMessageBox::StandardButton::No) {
         // User refused.
         qApp->feedUpdateLock()->unlock();
@@ -272,17 +276,18 @@ void FeedsView::deleteSelectedItem() {
       if (!selected_item->deleteViaGui()) {
         m_proxyModel->invalidate();
 
-        qApp->showGuiMessage(Notification::Event::GeneralEvent, {
-          tr("Cannot delete \"%1\"").arg(selected_item->title()),
-          tr("This item cannot be deleted because something critically failed. Submit bug report."),
-          QSystemTrayIcon::MessageIcon::Critical });
+        qApp->showGuiMessage(Notification::Event::GeneralEvent,
+                             {tr("Cannot delete \"%1\"").arg(selected_item->title()),
+                              tr("This item cannot be deleted because something critically failed. Submit bug report."),
+                              QSystemTrayIcon::MessageIcon::Critical});
       }
     }
     else {
-      qApp->showGuiMessage(Notification::Event::GeneralEvent, {
-        tr("Cannot delete \"%1\"").arg(selected_item->title()),
-        tr("This item cannot be deleted, because it does not support it\nor this functionality is not implemented yet."),
-        QSystemTrayIcon::MessageIcon::Critical });
+      qApp->showGuiMessage(Notification::Event::GeneralEvent,
+                           {tr("Cannot delete \"%1\"").arg(selected_item->title()),
+                            tr("This item cannot be deleted, because it does not support it\nor this functionality is "
+                               "not implemented yet."),
+                            QSystemTrayIcon::MessageIcon::Critical});
     }
   }
 
@@ -395,7 +400,8 @@ QModelIndex FeedsView::nextUnreadItem(const QModelIndex& default_row) {
   const QModelIndex starting_row = default_row;
 
   while (true) {
-    bool has_unread = m_sourceModel->itemForIndex(m_proxyModel->mapToSource(nconst_default_row))->countOfUnreadMessages() > 0;
+    bool has_unread =
+      m_sourceModel->itemForIndex(m_proxyModel->mapToSource(nconst_default_row))->countOfUnreadMessages() > 0;
 
     if (has_unread) {
       if (m_proxyModel->hasChildren(nconst_default_row)) {
@@ -435,10 +441,9 @@ QMenu* FeedsView::initializeContextMenuBin(RootItem* clicked_item) {
 
   QList<QAction*> specific_actions = clicked_item->contextMenuFeedsList();
 
-  m_contextMenuBin->addActions(QList<QAction*>() <<
-                               qApp->mainForm()->m_ui->m_actionViewSelectedItemsNewspaperMode <<
-                               qApp->mainForm()->m_ui->m_actionMarkSelectedItemsAsRead <<
-                               qApp->mainForm()->m_ui->m_actionMarkSelectedItemsAsUnread);
+  m_contextMenuBin->addActions(QList<QAction*>() << qApp->mainForm()->m_ui->m_actionViewSelectedItemsNewspaperMode
+                                                 << qApp->mainForm()->m_ui->m_actionMarkSelectedItemsAsRead
+                                                 << qApp->mainForm()->m_ui->m_actionMarkSelectedItemsAsUnread);
 
   if (!specific_actions.isEmpty()) {
     m_contextMenuBin->addSeparator();
@@ -458,15 +463,15 @@ QMenu* FeedsView::initializeContextMenuService(RootItem* clicked_item) {
 
   QList<QAction*> specific_actions = clicked_item->contextMenuFeedsList();
 
-  m_contextMenuService->addActions({ qApp->mainForm()->m_ui->m_actionUpdateSelectedItems,
-                                     qApp->mainForm()->m_ui->m_actionEditSelectedItem,
-                                     qApp->mainForm()->m_ui->m_actionCopyUrlSelectedFeed,
-                                     qApp->mainForm()->m_ui->m_actionViewSelectedItemsNewspaperMode,
-                                     qApp->mainForm()->m_ui->m_actionExpandCollapseItem,
-                                     qApp->mainForm()->m_ui->m_actionExpandCollapseItemRecursively,
-                                     qApp->mainForm()->m_ui->m_actionMarkSelectedItemsAsRead,
-                                     qApp->mainForm()->m_ui->m_actionMarkSelectedItemsAsUnread,
-                                     qApp->mainForm()->m_ui->m_actionDeleteSelectedItem });
+  m_contextMenuService->addActions({qApp->mainForm()->m_ui->m_actionUpdateSelectedItems,
+                                    qApp->mainForm()->m_ui->m_actionEditSelectedItem,
+                                    qApp->mainForm()->m_ui->m_actionCopyUrlSelectedFeed,
+                                    qApp->mainForm()->m_ui->m_actionViewSelectedItemsNewspaperMode,
+                                    qApp->mainForm()->m_ui->m_actionExpandCollapseItem,
+                                    qApp->mainForm()->m_ui->m_actionExpandCollapseItemRecursively,
+                                    qApp->mainForm()->m_ui->m_actionMarkSelectedItemsAsRead,
+                                    qApp->mainForm()->m_ui->m_actionMarkSelectedItemsAsUnread,
+                                    qApp->mainForm()->m_ui->m_actionDeleteSelectedItem});
 
   auto cat_add = clicked_item->getParentServiceRoot()->supportsCategoryAdding();
   auto feed_add = clicked_item->getParentServiceRoot()->supportsFeedAdding();
@@ -483,8 +488,7 @@ QMenu* FeedsView::initializeContextMenuService(RootItem* clicked_item) {
     m_contextMenuService->addAction(qApp->mainForm()->m_ui->m_actionAddFeedIntoSelectedItem);
   }
 
-  if (!qApp->settings()->value(GROUP(Feeds),
-                               SETTING(Feeds::SortAlphabetically)).toBool()) {
+  if (!qApp->settings()->value(GROUP(Feeds), SETTING(Feeds::SortAlphabetically)).toBool()) {
     m_contextMenuService->addSeparator();
     m_contextMenuService->addAction(qApp->mainForm()->m_ui->m_actionFeedMoveUp);
     m_contextMenuService->addAction(qApp->mainForm()->m_ui->m_actionFeedMoveDown);
@@ -521,7 +525,8 @@ void FeedsView::focusInEvent(QFocusEvent* event) {
   QTreeView::focusInEvent(event);
 
   if (currentIndex().isValid()) {
-    selectionModel()->select(currentIndex(), QItemSelectionModel::SelectionFlag::Select | QItemSelectionModel::SelectionFlag::Rows);
+    selectionModel()->select(currentIndex(),
+                             QItemSelectionModel::SelectionFlag::Select | QItemSelectionModel::SelectionFlag::Rows);
   }
 }
 
@@ -554,14 +559,11 @@ void FeedsView::onIndexExpanded(const QModelIndex& idx) {
 
   const RootItem* it = m_sourceModel->itemForIndex(m_proxyModel->mapToSource(idx));
 
-  if (it != nullptr && (int(it->kind()) & int(RootItem::Kind::Category |
-                                              RootItem::Kind::ServiceRoot |
-                                              RootItem::Kind::Labels)) > 0) {
+  if (it != nullptr &&
+      (int(it->kind()) & int(RootItem::Kind::Category | RootItem::Kind::ServiceRoot | RootItem::Kind::Labels)) > 0) {
     const QString setting_name = it->hashCode();
 
-    qApp->settings()->setValue(GROUP(CategoriesExpandStates),
-                               setting_name,
-                               true);
+    qApp->settings()->setValue(GROUP(CategoriesExpandStates), setting_name, true);
   }
 }
 
@@ -575,14 +577,11 @@ void FeedsView::onIndexCollapsed(const QModelIndex& idx) {
 
   RootItem* it = m_sourceModel->itemForIndex(m_proxyModel->mapToSource(idx));
 
-  if (it != nullptr && (int(it->kind()) & int(RootItem::Kind::Category |
-                                              RootItem::Kind::ServiceRoot |
-                                              RootItem::Kind::Labels)) > 0) {
+  if (it != nullptr &&
+      (int(it->kind()) & int(RootItem::Kind::Category | RootItem::Kind::ServiceRoot | RootItem::Kind::Labels)) > 0) {
     const QString setting_name = it->hashCode();
 
-    qApp->settings()->setValue(GROUP(CategoriesExpandStates),
-                               setting_name,
-                               false);
+    qApp->settings()->setValue(GROUP(CategoriesExpandStates), setting_name, false);
   }
 }
 
@@ -596,9 +595,8 @@ void FeedsView::saveAllExpandStates() {
 
 void FeedsView::saveExpandStates(RootItem* item) {
   Settings* settings = qApp->settings();
-  QList<RootItem*> items = item->getSubTree(RootItem::Kind::Category |
-                                            RootItem::Kind::ServiceRoot |
-                                            RootItem::Kind::Labels);
+  QList<RootItem*> items =
+    item->getSubTree(RootItem::Kind::Category | RootItem::Kind::ServiceRoot | RootItem::Kind::Labels);
 
   // Iterate all categories and save their expand statuses.
   for (const RootItem* it : items) {
@@ -606,9 +604,7 @@ void FeedsView::saveExpandStates(RootItem* item) {
     QModelIndex source_index = sourceModel()->indexForItem(it);
     QModelIndex visible_index = model()->mapFromSource(source_index);
 
-    settings->setValue(GROUP(CategoriesExpandStates),
-                       setting_name,
-                       isExpanded(visible_index));
+    settings->setValue(GROUP(CategoriesExpandStates), setting_name, isExpanded(visible_index));
   }
 }
 
@@ -616,8 +612,7 @@ void FeedsView::loadAllExpandStates() {
   const Settings* settings = qApp->settings();
   QList<RootItem*> expandable_items;
 
-  expandable_items.append(sourceModel()->rootItem()->getSubTree(RootItem::Kind::Category |
-                                                                RootItem::Kind::ServiceRoot |
+  expandable_items.append(sourceModel()->rootItem()->getSubTree(RootItem::Kind::Category | RootItem::Kind::ServiceRoot |
                                                                 RootItem::Kind::Labels));
 
   // Iterate all categories and save their expand statuses.
@@ -629,13 +624,15 @@ void FeedsView::loadAllExpandStates() {
   }
 
   sortByColumn(qApp->settings()->value(GROUP(GUI), SETTING(GUI::DefaultSortColumnFeeds)).toInt(),
-               static_cast<Qt::SortOrder>(qApp->settings()->value(GROUP(GUI), SETTING(GUI::DefaultSortOrderFeeds)).toInt()));
+               static_cast<Qt::SortOrder>(qApp->settings()
+                                            ->value(GROUP(GUI), SETTING(GUI::DefaultSortOrderFeeds))
+                                            .toInt()));
 }
 
 void FeedsView::expandItemDelayed(const QModelIndex& source_idx) {
-  //QTimer::singleShot(100, this, [=] {
-  // Model requests to expand some items as they are visible and there is
-  // a filter active, so they maybe were not visible before.
+  // QTimer::singleShot(100, this, [=] {
+  //  Model requests to expand some items as they are visible and there is
+  //  a filter active, so they maybe were not visible before.
   QModelIndex pidx = m_proxyModel->mapFromSource(source_idx);
 
   // NOTE: These changes are caused by filtering mechanisms
@@ -663,15 +660,15 @@ QMenu* FeedsView::initializeContextMenuCategories(RootItem* clicked_item) {
 
   QList<QAction*> specific_actions = clicked_item->contextMenuFeedsList();
 
-  m_contextMenuCategories->addActions({ qApp->mainForm()->m_ui->m_actionUpdateSelectedItems,
-                                        qApp->mainForm()->m_ui->m_actionEditSelectedItem,
-                                        qApp->mainForm()->m_ui->m_actionCopyUrlSelectedFeed,
-                                        qApp->mainForm()->m_ui->m_actionViewSelectedItemsNewspaperMode,
-                                        qApp->mainForm()->m_ui->m_actionExpandCollapseItem,
-                                        qApp->mainForm()->m_ui->m_actionExpandCollapseItemRecursively,
-                                        qApp->mainForm()->m_ui->m_actionMarkSelectedItemsAsRead,
-                                        qApp->mainForm()->m_ui->m_actionMarkSelectedItemsAsUnread,
-                                        qApp->mainForm()->m_ui->m_actionDeleteSelectedItem });
+  m_contextMenuCategories->addActions({qApp->mainForm()->m_ui->m_actionUpdateSelectedItems,
+                                       qApp->mainForm()->m_ui->m_actionEditSelectedItem,
+                                       qApp->mainForm()->m_ui->m_actionCopyUrlSelectedFeed,
+                                       qApp->mainForm()->m_ui->m_actionViewSelectedItemsNewspaperMode,
+                                       qApp->mainForm()->m_ui->m_actionExpandCollapseItem,
+                                       qApp->mainForm()->m_ui->m_actionExpandCollapseItemRecursively,
+                                       qApp->mainForm()->m_ui->m_actionMarkSelectedItemsAsRead,
+                                       qApp->mainForm()->m_ui->m_actionMarkSelectedItemsAsUnread,
+                                       qApp->mainForm()->m_ui->m_actionDeleteSelectedItem});
 
   auto cat_add = clicked_item->getParentServiceRoot()->supportsCategoryAdding();
   auto feed_add = clicked_item->getParentServiceRoot()->supportsFeedAdding();
@@ -688,8 +685,7 @@ QMenu* FeedsView::initializeContextMenuCategories(RootItem* clicked_item) {
     m_contextMenuCategories->addAction(qApp->mainForm()->m_ui->m_actionAddFeedIntoSelectedItem);
   }
 
-  if (!qApp->settings()->value(GROUP(Feeds),
-                               SETTING(Feeds::SortAlphabetically)).toBool()) {
+  if (!qApp->settings()->value(GROUP(Feeds), SETTING(Feeds::SortAlphabetically)).toBool()) {
     m_contextMenuCategories->addSeparator();
     m_contextMenuCategories->addAction(qApp->mainForm()->m_ui->m_actionFeedMoveUp);
     m_contextMenuCategories->addAction(qApp->mainForm()->m_ui->m_actionFeedMoveDown);
@@ -715,14 +711,13 @@ QMenu* FeedsView::initializeContextMenuFeeds(RootItem* clicked_item) {
 
   QList<QAction*> specific_actions = clicked_item->contextMenuFeedsList();
 
-  m_contextMenuFeeds->addActions(QList<QAction*>() <<
-                                 qApp->mainForm()->m_ui->m_actionUpdateSelectedItems <<
-                                 qApp->mainForm()->m_ui->m_actionEditSelectedItem <<
-                                 qApp->mainForm()->m_ui->m_actionCopyUrlSelectedFeed <<
-                                 qApp->mainForm()->m_ui->m_actionViewSelectedItemsNewspaperMode <<
-                                 qApp->mainForm()->m_ui->m_actionMarkSelectedItemsAsRead <<
-                                 qApp->mainForm()->m_ui->m_actionMarkSelectedItemsAsUnread <<
-                                 qApp->mainForm()->m_ui->m_actionDeleteSelectedItem);
+  m_contextMenuFeeds->addActions(QList<QAction*>() << qApp->mainForm()->m_ui->m_actionUpdateSelectedItems
+                                                   << qApp->mainForm()->m_ui->m_actionEditSelectedItem
+                                                   << qApp->mainForm()->m_ui->m_actionCopyUrlSelectedFeed
+                                                   << qApp->mainForm()->m_ui->m_actionViewSelectedItemsNewspaperMode
+                                                   << qApp->mainForm()->m_ui->m_actionMarkSelectedItemsAsRead
+                                                   << qApp->mainForm()->m_ui->m_actionMarkSelectedItemsAsUnread
+                                                   << qApp->mainForm()->m_ui->m_actionDeleteSelectedItem);
 
   auto cat_add = clicked_item->getParentServiceRoot()->supportsCategoryAdding();
   auto feed_add = clicked_item->getParentServiceRoot()->supportsFeedAdding();
@@ -739,8 +734,7 @@ QMenu* FeedsView::initializeContextMenuFeeds(RootItem* clicked_item) {
     m_contextMenuFeeds->addAction(qApp->mainForm()->m_ui->m_actionAddFeedIntoSelectedItem);
   }
 
-  if (!qApp->settings()->value(GROUP(Feeds),
-                               SETTING(Feeds::SortAlphabetically)).toBool()) {
+  if (!qApp->settings()->value(GROUP(Feeds), SETTING(Feeds::SortAlphabetically)).toBool()) {
     m_contextMenuFeeds->addSeparator();
     m_contextMenuFeeds->addAction(qApp->mainForm()->m_ui->m_actionFeedMoveUp);
     m_contextMenuFeeds->addAction(qApp->mainForm()->m_ui->m_actionFeedMoveDown);
@@ -766,10 +760,9 @@ QMenu* FeedsView::initializeContextMenuImportant(RootItem* clicked_item) {
 
   QList<QAction*> specific_actions = clicked_item->contextMenuFeedsList();
 
-  m_contextMenuImportant->addActions(QList<QAction*>() <<
-                                     qApp->mainForm()->m_ui->m_actionViewSelectedItemsNewspaperMode <<
-                                     qApp->mainForm()->m_ui->m_actionMarkSelectedItemsAsRead <<
-                                     qApp->mainForm()->m_ui->m_actionMarkSelectedItemsAsUnread);
+  m_contextMenuImportant->addActions(QList<QAction*>() << qApp->mainForm()->m_ui->m_actionViewSelectedItemsNewspaperMode
+                                                       << qApp->mainForm()->m_ui->m_actionMarkSelectedItemsAsRead
+                                                       << qApp->mainForm()->m_ui->m_actionMarkSelectedItemsAsUnread);
 
   if (!specific_actions.isEmpty()) {
     m_contextMenuImportant->addSeparator();
@@ -849,15 +842,17 @@ void FeedsView::setupAppearance() {
   setExpandsOnDoubleClick(true);
   setEditTriggers(QAbstractItemView::EditTrigger::NoEditTriggers);
   setIndentation(FEEDS_VIEW_INDENTATION);
-  setAcceptDrops(false);
+  setAcceptDrops(true);
+  viewport()->setAcceptDrops(true);
   setDragEnabled(true);
   setDropIndicatorShown(true);
   setDragDropMode(QAbstractItemView::DragDropMode::InternalMove);
   setAllColumnsShowFocus(false);
   setRootIsDecorated(false);
   setSelectionMode(QAbstractItemView::SelectionMode::SingleSelection);
-  setItemDelegate(new StyledItemDelegateWithoutFocus(qApp->settings()->value(GROUP(GUI),
-                                                                             SETTING(GUI::HeightRowFeeds)).toInt(),
+  setItemDelegate(new StyledItemDelegateWithoutFocus(qApp->settings()
+                                                       ->value(GROUP(GUI), SETTING(GUI::HeightRowFeeds))
+                                                       .toInt(),
                                                      -1,
                                                      this));
 }
@@ -904,8 +899,7 @@ void FeedsView::contextMenuEvent(QContextMenuEvent* event) {
       // Display context menu for feeds.
       initializeContextMenuFeeds(clicked_item)->exec(event->globalPos());
     }
-    else if (clicked_item->kind() == RootItem::Kind::Important ||
-             clicked_item->kind() == RootItem::Kind::Unread) {
+    else if (clicked_item->kind() == RootItem::Kind::Important || clicked_item->kind() == RootItem::Kind::Unread) {
       initializeContextMenuImportant(clicked_item)->exec(event->globalPos());
     }
     else if (clicked_item->kind() == RootItem::Kind::Bin) {
