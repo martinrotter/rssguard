@@ -20,9 +20,10 @@
 #include <QThread>
 
 Feed::Feed(RootItem* parent)
-  : RootItem(parent), m_source(QString()), m_status(Status::Normal), m_statusString(QString()), m_autoUpdateType(AutoUpdateType::DefaultAutoUpdate),
-  m_autoUpdateInitialInterval(DEFAULT_AUTO_UPDATE_INTERVAL), m_autoUpdateRemainingInterval(DEFAULT_AUTO_UPDATE_INTERVAL),
-  m_isSwitchedOff(false), m_openArticlesDirectly(false), m_messageFilters(QList<QPointer<MessageFilter>>()) {
+  : RootItem(parent), m_source(QString()), m_status(Status::Normal), m_statusString(QString()),
+    m_autoUpdateType(AutoUpdateType::DefaultAutoUpdate), m_autoUpdateInitialInterval(DEFAULT_AUTO_UPDATE_INTERVAL),
+    m_autoUpdateRemainingInterval(DEFAULT_AUTO_UPDATE_INTERVAL), m_isSwitchedOff(false), m_openArticlesDirectly(false),
+    m_messageFilters(QList<QPointer<MessageFilter>>()) {
   setKind(RootItem::Kind::Feed);
 }
 
@@ -187,9 +188,8 @@ void Feed::appendMessageFilter(MessageFilter* filter) {
 
 void Feed::updateCounts(bool including_total_count) {
   bool is_main_thread = QThread::currentThread() == qApp->thread();
-  QSqlDatabase database = is_main_thread ?
-                          qApp->database()->driver()->connection(metaObject()->className()) :
-                          qApp->database()->driver()->connection(QSL("feed_upd"));
+  QSqlDatabase database = is_main_thread ? qApp->database()->driver()->connection(metaObject()->className())
+                                         : qApp->database()->driver()->connection(QSL("feed_upd"));
   int account_id = getParentServiceRoot()->accountId();
 
   if (including_total_count) {
@@ -228,17 +228,19 @@ QString Feed::getAutoUpdateStatusDescription() const {
 
       //: Describes feed auto-update status.
       auto_update_string = qApp->feedReader()->autoUpdateEnabled()
-              ? tr("uses global settings (%n minute(s) to next auto-fetch of articles)",
-                   nullptr,
-                   qApp->feedReader()->autoUpdateRemainingInterval())
-              : tr("uses global settings (global auto-fetching of articles is disabled)");
+                             ? tr("uses global settings (%n minute(s) to next auto-fetch of articles)",
+                                  nullptr,
+                                  qApp->feedReader()->autoUpdateRemainingInterval())
+                             : tr("uses global settings (global auto-fetching of articles is disabled)");
       break;
 
     case AutoUpdateType::SpecificAutoUpdate:
     default:
 
       //: Describes feed auto-update status.
-      auto_update_string = tr("uses specific settings (%n minute(s) to next auto-fetching of new articles)", nullptr, autoUpdateRemainingInterval());
+      auto_update_string = tr("uses specific settings (%n minute(s) to next auto-fetching of new articles)",
+                              nullptr,
+                              autoUpdateRemainingInterval());
       break;
   }
 
@@ -304,7 +306,10 @@ QString Feed::additionalTooltip() const {
 
   return tr("Auto-update status: %1\n"
             "Active message filters: %2\n"
-            "Status: %3").arg(getAutoUpdateStatusDescription(),
-                              QString::number(m_messageFilters.size()),
-                              stat);
+            "Status: %3")
+    .arg(getAutoUpdateStatusDescription(), QString::number(m_messageFilters.size()), stat);
+}
+
+Qt::ItemFlags Feed::additionalFlags() const {
+  return Qt::ItemFlag::ItemNeverHasChildren;
 }

@@ -215,7 +215,12 @@
 #define APP_SKIN_USER_FOLDER "skins"
 #define APP_SKIN_DEFAULT "nudus-light"
 #define APP_SKIN_METADATA_FILE "metadata.xml"
+
+#if defined(Q_OS_WIN)
+#define APP_STYLE_DEFAULT "windowsvista"
+#else
 #define APP_STYLE_DEFAULT "Fusion"
+#endif
 
 #if defined(FORCE_BUNDLE_ICONS)
 // Forcibly bundle icons.

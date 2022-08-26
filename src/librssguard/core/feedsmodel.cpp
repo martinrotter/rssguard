@@ -75,7 +75,10 @@ QStringList FeedsModel::mimeTypes() const {
   return QStringList() << QSL(MIME_TYPE_ITEM_POINTER);
 }
 
-bool FeedsModel::dropMimeData(const QMimeData* data, Qt::DropAction action, int row, int column,
+bool FeedsModel::dropMimeData(const QMimeData* data,
+                              Qt::DropAction action,
+                              int row,
+                              int column,
                               const QModelIndex& parent) {
   Q_UNUSED(row)
   Q_UNUSED(column)
@@ -106,8 +109,8 @@ bool FeedsModel::dropMimeData(const QMimeData* data, Qt::DropAction action, int 
       ServiceRoot* target_item_root = target_item->getParentServiceRoot();
 
       if (dragged_item == target_item || dragged_item->parent() == target_item) {
-        qDebug(
-          "Dragged item is equal to target item or its parent is equal to target item. Cancelling drag-drop action.");
+        qDebug("Dragged item is equal to target item or its parent is equal to target item. Cancelling drag-drop "
+               "action.");
         return false;
       }
 
@@ -154,27 +157,27 @@ QVariant FeedsModel::headerData(int section, Qt::Orientation orientation, int ro
   }
 
   switch (role) {
-  case Qt::DisplayRole:
-    if (section == FDS_MODEL_TITLE_INDEX) {
-      return m_headerData.at(FDS_MODEL_TITLE_INDEX);
-    }
-    else {
+    case Qt::DisplayRole:
+      if (section == FDS_MODEL_TITLE_INDEX) {
+        return m_headerData.at(FDS_MODEL_TITLE_INDEX);
+      }
+      else {
+        return QVariant();
+      }
+
+    case Qt::ToolTipRole:
+      return m_tooltipData.at(section);
+
+    case Qt::DecorationRole:
+      if (section == FDS_MODEL_COUNTS_INDEX) {
+        return m_countsIcon;
+      }
+      else {
+        return QVariant();
+      }
+
+    default:
       return QVariant();
-    }
-
-  case Qt::ToolTipRole:
-    return m_tooltipData.at(section);
-
-  case Qt::DecorationRole:
-    if (section == FDS_MODEL_COUNTS_INDEX) {
-      return m_countsIcon;
-    }
-    else {
-      return QVariant();
-    }
-
-  default:
-    return QVariant();
   }
 }
 
@@ -309,36 +312,36 @@ QList<Feed*> FeedsModel::feedsForScheduledUpdate(bool auto_update_now) {
 
   for (Feed* feed : qAsConst(stf)) {
     switch (feed->autoUpdateType()) {
-    case Feed::AutoUpdateType::DontAutoUpdate:
+      case Feed::AutoUpdateType::DontAutoUpdate:
 
-      // Do not auto-update this feed ever.
-      continue;
+        // Do not auto-update this feed ever.
+        continue;
 
-    case Feed::AutoUpdateType::DefaultAutoUpdate:
+      case Feed::AutoUpdateType::DefaultAutoUpdate:
 
-      if (auto_update_now) {
-        feeds_for_update.append(feed);
-      }
+        if (auto_update_now) {
+          feeds_for_update.append(feed);
+        }
 
-      break;
+        break;
 
-    case Feed::AutoUpdateType::SpecificAutoUpdate:
-    default:
-      int remaining_interval = feed->autoUpdateRemainingInterval();
+      case Feed::AutoUpdateType::SpecificAutoUpdate:
+      default:
+        int remaining_interval = feed->autoUpdateRemainingInterval();
 
-      if (--remaining_interval <= 0) {
-        // Interval of this feed passed, include this feed in the output list
-        // and reset the interval.
-        feeds_for_update.append(feed);
-        feed->setAutoUpdateRemainingInterval(feed->autoUpdateInitialInterval());
-      }
-      else {
-        // Interval did not pass, set new decremented interval and do NOT
-        // include this feed in the output list.
-        feed->setAutoUpdateRemainingInterval(remaining_interval);
-      }
+        if (--remaining_interval <= 0) {
+          // Interval of this feed passed, include this feed in the output list
+          // and reset the interval.
+          feeds_for_update.append(feed);
+          feed->setAutoUpdateRemainingInterval(feed->autoUpdateInitialInterval());
+        }
+        else {
+          // Interval did not pass, set new decremented interval and do NOT
+          // include this feed in the output list.
+          feed->setAutoUpdateRemainingInterval(remaining_interval);
+        }
 
-      break;
+        break;
     }
   }
 
@@ -445,8 +448,9 @@ void FeedsModel::onItemDataChanged(const QList<RootItem*>& items) {
 void FeedsModel::setupFonts() {
   QFont fon;
 
-  fon.fromString(
-    qApp->settings()->value(GROUP(Feeds), Feeds::ListFont, Application::font("FeedsView").toString()).toString());
+  fon.fromString(qApp->settings()
+                   ->value(GROUP(Feeds), Feeds::ListFont, Application::font("FeedsView").toString())
+                   .toString());
 
   m_normalFont = fon;
 
@@ -473,7 +477,9 @@ bool FeedsModel::addServiceAccount(ServiceRoot* root, bool freshly_activated) {
   endInsertRows();
 
   // Connect.
-  connect(root, &ServiceRoot::itemRemovalRequested, this,
+  connect(root,
+          &ServiceRoot::itemRemovalRequested,
+          this,
           static_cast<void (FeedsModel::*)(RootItem*)>(&FeedsModel::removeItem));
   connect(root, &ServiceRoot::itemReassignmentRequested, this, &FeedsModel::reassignNodeToNewParent);
   connect(root, &ServiceRoot::dataChanged, this, &FeedsModel::onItemDataChanged);
@@ -572,26 +578,26 @@ bool FeedsModel::markItemCleared(RootItem* item, bool clean_read_only) {
 
 QVariant FeedsModel::data(const QModelIndex& index, int role) const {
   switch (role) {
-  case Qt::ItemDataRole::FontRole: {
-    RootItem* it = itemForIndex(index);
-    bool is_bold = it->countOfUnreadMessages() > 0;
-    bool is_striked = it->kind() == RootItem::Kind::Feed ? qobject_cast<Feed*>(it)->isSwitchedOff() : false;
+    case Qt::ItemDataRole::FontRole: {
+      RootItem* it = itemForIndex(index);
+      bool is_bold = it->countOfUnreadMessages() > 0;
+      bool is_striked = it->kind() == RootItem::Kind::Feed ? qobject_cast<Feed*>(it)->isSwitchedOff() : false;
 
-    if (is_bold) {
-      return is_striked ? m_boldStrikedFont : m_boldFont;
-    }
-    else {
-      return is_striked ? m_normalStrikedFont : m_normalFont;
-    }
-  }
-
-  case Qt::ItemDataRole::ToolTipRole:
-    if (!qApp->settings()->value(GROUP(Feeds), SETTING(Feeds::EnableTooltipsFeedsMessages)).toBool()) {
-      return QVariant();
+      if (is_bold) {
+        return is_striked ? m_boldStrikedFont : m_boldFont;
+      }
+      else {
+        return is_striked ? m_normalStrikedFont : m_normalFont;
+      }
     }
 
-  default:
-    return itemForIndex(index)->data(index.column(), role);
-    ;
+    case Qt::ItemDataRole::ToolTipRole:
+      if (!qApp->settings()->value(GROUP(Feeds), SETTING(Feeds::EnableTooltipsFeedsMessages)).toBool()) {
+        return QVariant();
+      }
+
+    default:
+      return itemForIndex(index)->data(index.column(), role);
+      ;
   }
 }

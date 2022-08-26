@@ -13,16 +13,11 @@
 
 // Base class for "feed" nodes.
 class Feed : public RootItem {
-  Q_OBJECT
+    Q_OBJECT
 
   public:
-
     // Specifies the auto-download strategy for the feed.
-    enum class AutoUpdateType {
-      DontAutoUpdate = 0,
-      DefaultAutoUpdate = 1,
-      SpecificAutoUpdate = 2
-    };
+    enum class AutoUpdateType { DontAutoUpdate = 0, DefaultAutoUpdate = 1, SpecificAutoUpdate = 2 };
 
     // Specifies the actual "status" of the feed.
     // For example if it has new messages, error
@@ -44,6 +39,7 @@ class Feed : public RootItem {
 
     virtual QList<Message> undeletedMessages() const;
     virtual QString additionalTooltip() const;
+    virtual Qt::ItemFlags additionalFlags() const;
     virtual bool markAsReadUnread(ReadStatus status);
     virtual bool cleanMessages(bool clean_read_only);
     virtual int countOfAllMessages() const;
