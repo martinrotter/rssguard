@@ -70,7 +70,7 @@ elseif(UNIX AND NOT APPLE AND NOT ANDROID)
     DESTINATION ${CMAKE_INSTALL_DATAROOTDIR}/metainfo
   )
   install(FILES ${CMAKE_SOURCE_DIR}/resources/graphics/${CMAKE_PROJECT_NAME}.png
-    DESTINATION ${CMAKE_INSTALL_DATAROOTDIR}/icons/hicolor/512x512/apps
+    DESTINATION ${CMAKE_INSTALL_DATAROOTDIR}/icons/hicolor/256x256/apps
   )
 elseif(APPLE)
   install(TARGETS app
