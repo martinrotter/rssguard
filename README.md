@@ -12,7 +12,7 @@ RSS Guard
 RSS Guard is simple RSS/ATOM feed reader for Windows, Linux, BSD, OS/2 or macOS which can work with RSS/ATOM/JSON feeds and also supports many online feed services:
 * [Feedly](https://feedly.com),
 * [Gmail](https://developers.google.com/gmail/api),
-* Google Reader API ([Bazqux](https://bazqux.com), [FreshRSS](https://freshrss.org), [Inoreader](https://www.inoreader.com), [Reedah](http://reedah.com), [The Old Reader](https://theoldreader.com) and others),
+* Google Reader API ([Bazqux](https://bazqux.com), [FreshRSS](https://freshrss.org), [Inoreader](https://www.inoreader.com), [Miniflux](https://miniflux.app), [Reedah](http://reedah.com), [The Old Reader](https://theoldreader.com) and others),
 * [Nextcloud News](https://apps.nextcloud.com/apps/news),
 * [Tiny Tiny RSS](https://tt-rss.org).
 
