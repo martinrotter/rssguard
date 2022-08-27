@@ -296,7 +296,7 @@ summary:focus {
   outline: 1px solid #5D88D2;
 }
 
-body:hover .rssguard-mwrapper .rssguard-mhead .mwrapurl a, body:hover .rssguard-mwrapper .rssguard-mhead .mwrapurl a:not([href=""]) + span {
+html:hover .rssguard-mwrapper .rssguard-mhead .mwrapurl a, html:hover .rssguard-mwrapper .rssguard-mhead .mwrapurl a:not([href=""]) + span {
   visibility: visible;
 }
 
