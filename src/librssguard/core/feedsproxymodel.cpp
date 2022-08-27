@@ -17,7 +17,7 @@ using RootItemPtr = RootItem*;
 
 FeedsProxyModel::FeedsProxyModel(FeedsModel* source_model, QObject* parent)
   : QSortFilterProxyModel(parent), m_sourceModel(source_model), m_view(nullptr), m_selectedItem(nullptr),
-    m_showUnreadOnly(false), m_sortAlphabetically(true) {
+    m_showUnreadOnly(false), m_sortAlphabetically(false) {
   setObjectName(QSL("FeedsProxyModel"));
 
   setSortRole(Qt::ItemDataRole::EditRole);

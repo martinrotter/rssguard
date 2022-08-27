@@ -96,7 +96,7 @@ DKEY Feeds::ShowOnlyUnreadFeeds = "show_only_unread_feeds";
 DVALUE(bool) Feeds::ShowOnlyUnreadFeedsDef = false;
 
 DKEY Feeds::SortAlphabetically = "sort_alphabetically";
-DVALUE(bool) Feeds::SortAlphabeticallyDef = true;
+DVALUE(bool) Feeds::SortAlphabeticallyDef = false;
 
 DKEY Feeds::ShowTreeBranches = "show_tree_branches";
 DVALUE(bool) Feeds::ShowTreeBranchesDef = true;
