@@ -348,23 +348,6 @@ summary {
 }
 
 // m* == message*
-html:hover .rssguard-mwrapper .rssguard-mhead .mwrapurl a {
-
-    &,
-    &:not([href=""]) + span {
-        visibility: visible;
-    }
-}
-
-// Stay visible when right-clicked
-.rssguard-mwrapper .rssguard-mhead .mwrapurl a:focus {
-
-    &,
-    & + span {
-        visibility: visible !important;
-    }
-}
-
 .rssguard-mwrapper {
     padding: $base-unit !important;
 
@@ -391,15 +374,6 @@ html:hover .rssguard-mwrapper .rssguard-mhead .mwrapurl a {
 
             .mwrapurl {
                 display: inline-flex;
-
-                a {
-                    order: 1;
-                }
-
-                a,
-                span {
-                    visibility: hidden;
-                }
 
                 a[href=""] {
 
