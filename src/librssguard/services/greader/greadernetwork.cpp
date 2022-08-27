@@ -72,7 +72,7 @@ QNetworkReply::NetworkError GreaderNetwork::editLabels(const QString& state,
 
     args += working_subset.join(QL1C('&'));
 
-    if (m_service == GreaderServiceRoot::Service::Reedah) {
+    if (m_service == GreaderServiceRoot::Service::Reedah || m_service == GreaderServiceRoot::Service::Miniflux) {
       args += QSL("&%1").arg(tokenParameter());
     }
 
