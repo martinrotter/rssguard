@@ -6,6 +6,7 @@
 #include "exceptions/applicationexception.h"
 #include "gui/guiutilities.h"
 #include "miscellaneous/application.h"
+#include "miscellaneous/iconfactory.h"
 #include "miscellaneous/systemfactory.h"
 #include "network-web/oauth2service.h"
 #include "network-web/webfactory.h"
@@ -23,7 +24,11 @@ GreaderAccountDetails::GreaderAccountDetails(QWidget* parent) : QWidget(parent),
   for (int i = 0; i < me.keyCount(); i++) {
     GreaderServiceRoot::Service serv = static_cast<GreaderServiceRoot::Service>(me.value(i));
 
-    m_ui.m_cmbService->addItem(GreaderServiceRoot::serviceToString(serv), QVariant::fromValue(serv));
+    auto ico = qApp->icons()->miscIcon(QString(me.key(i)).toLower());
+
+    m_ui.m_cmbService->addItem(ico.availableSizes().isEmpty() ? qApp->icons()->miscIcon(QSL("google")) : ico,
+                               GreaderServiceRoot::serviceToString(serv),
+                               QVariant::fromValue(serv));
   }
 
   m_ui.m_dateNewerThan->setMinimumDate(QDate(2000, 1, 1));
@@ -71,7 +76,7 @@ GreaderAccountDetails::GreaderAccountDetails(QWidget* parent) : QWidget(parent),
   connect(m_ui.m_cmbService,
           QOverload<int>::of(&QComboBox::currentIndexChanged),
           this,
-          &GreaderAccountDetails::fillPredefinedUrl);
+          &GreaderAccountDetails::selectedServiceChanged);
   connect(m_ui.m_cbNewAlgorithm, &QCheckBox::toggled, m_ui.m_spinLimitMessages, &MessageCountSpinBox::setDisabled);
   connect(m_ui.m_txtAppId->lineEdit(), &BaseLineEdit::textChanged, this, &GreaderAccountDetails::checkOAuthValue);
   connect(m_ui.m_txtAppKey->lineEdit(), &BaseLineEdit::textChanged, this, &GreaderAccountDetails::checkOAuthValue);
@@ -237,7 +242,7 @@ void GreaderAccountDetails::onUrlChanged() {
   }
 }
 
-void GreaderAccountDetails::fillPredefinedUrl() {
+void GreaderAccountDetails::selectedServiceChanged() {
   switch (service()) {
     case GreaderServiceRoot::Service::Reedah:
       m_ui.m_txtUrl->lineEdit()->setText(QSL(GREADER_URL_REEDAH));
@@ -255,11 +260,17 @@ void GreaderAccountDetails::fillPredefinedUrl() {
       m_ui.m_txtUrl->lineEdit()->setText(QSL(GREADER_URL_INOREADER));
       break;
 
-    default:
-      m_ui.m_txtUrl->lineEdit()->clear();
-      m_ui.m_txtUrl->setFocus();
+    case GreaderServiceRoot::Service::Miniflux:
+      m_ui.m_cbNewAlgorithm->setChecked(true);
       break;
   }
+
+  // Miniflux only works with "intelligent algorithm" because it does not
+  // support "stream/contents" API method yet.
+  m_ui.m_cbNewAlgorithm->setEnabled(service() != GreaderServiceRoot::Service::Miniflux);
+
+  m_ui.m_txtUrl->lineEdit()->selectAll();
+  m_ui.m_txtUrl->setFocus();
 
   // Show OAuth settings for Inoreader and classic for other services.
   m_ui.m_stackedAuth->setCurrentIndex(service() == GreaderServiceRoot::Service::Inoreader ? 1 : 0);

@@ -29,7 +29,7 @@ class GreaderAccountDetails : public QWidget {
     void onUsernameChanged();
     void onPasswordChanged();
     void onUrlChanged();
-    void fillPredefinedUrl();
+    void selectedServiceChanged();
     void checkOAuthValue(const QString& value);
     void registerApi();
     void onAuthFailed();
