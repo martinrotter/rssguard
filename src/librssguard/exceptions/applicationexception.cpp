@@ -4,6 +4,8 @@
 
 ApplicationException::ApplicationException(QString message) : m_message(std::move(message)) {}
 
+ApplicationException::~ApplicationException() {}
+
 QString ApplicationException::message() const {
   return m_message;
 }

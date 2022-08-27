@@ -271,6 +271,7 @@ NetworkResult NetworkFactory::performNetworkOperation(const QString& url,
   result.m_contentType = downloader.lastContentType().toString();
   result.m_cookies = downloader.lastCookies();
   result.m_httpCode = downloader.lastHttpStatusCode();
+  result.m_headers = downloader.lastHeaders();
 
   return result;
 }
@@ -311,12 +312,14 @@ NetworkResult NetworkFactory::performNetworkOperation(const QString& url,
   result.m_contentType = downloader.lastContentType().toString();
   result.m_cookies = downloader.lastCookies();
   result.m_httpCode = downloader.lastHttpStatusCode();
+  result.m_headers = downloader.lastHeaders();
 
   return result;
 }
 
 NetworkResult::NetworkResult()
-  : m_networkError(QNetworkReply::NetworkError::NoError), m_httpCode(0), m_contentType(QString()), m_cookies({}) {}
+  : m_networkError(QNetworkReply::NetworkError::NoError), m_httpCode(0), m_contentType(QString()), m_cookies({}),
+    m_headers({}) {}
 
 NetworkResult::NetworkResult(QNetworkReply::NetworkError err,
                              int http_code,

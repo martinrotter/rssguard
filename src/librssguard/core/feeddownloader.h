@@ -8,6 +8,7 @@
 #include <QPair>
 
 #include "core/message.h"
+#include "exceptions/applicationexception.h"
 #include "services/abstract/cacheforserviceroot.h"
 #include "services/abstract/feed.h"
 
@@ -25,7 +26,6 @@ class FeedDownloadResults {
     void clear();
 
   private:
-
     // QString represents title if the feed, int represents count of newly downloaded messages.
     QList<QPair<QString, int>> m_updatedFeeds;
 };
@@ -33,7 +33,7 @@ class FeedDownloadResults {
 // This class offers means to "update" feeds and "special" categories.
 // NOTE: This class is used within separate thread.
 class FeedDownloader : public QObject {
-  Q_OBJECT
+    Q_OBJECT
 
   public:
     explicit FeedDownloader();
@@ -54,6 +54,7 @@ class FeedDownloader : public QObject {
     void updateProgress(const Feed* feed, int current, int total);
 
   private:
+    void skipFeedUpdateWithError(ServiceRoot* acc, Feed* feed, const ApplicationException& ex);
     void updateOneFeed(ServiceRoot* acc,
                        Feed* feed,
                        const QHash<ServiceRoot::BagOfMessages, QStringList>& stated_messages,

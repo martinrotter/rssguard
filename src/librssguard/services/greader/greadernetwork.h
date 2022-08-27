@@ -47,7 +47,6 @@ class GreaderNetwork : public QObject {
                                             const QString& stream_id,
                                             const QHash<ServiceRoot::BagOfMessages, QStringList>& stated_messages,
                                             const QHash<QString, QStringList>& tagged_messages,
-                                            Feed::Status& error,
                                             const QNetworkProxy& proxy);
 
     RootItem* categoriesFeedsLabelsTree(bool obtain_icons, const QNetworkProxy& proxy);
@@ -95,12 +94,8 @@ class GreaderNetwork : public QObject {
                         QDate newer_than = {});
     QList<Message> itemContents(ServiceRoot* root,
                                 const QList<QString>& stream_ids,
-                                Feed::Status& error,
                                 const QNetworkProxy& proxy);
-    QList<Message> streamContents(ServiceRoot* root,
-                                  const QString& stream_id,
-                                  Feed::Status& error,
-                                  const QNetworkProxy& proxy);
+    QList<Message> streamContents(ServiceRoot* root, const QString& stream_id, const QNetworkProxy& proxy);
     QNetworkReply::NetworkError clientLogin(const QNetworkProxy& proxy);
 
     QDate newerThanFilter() const;
@@ -148,7 +143,6 @@ class GreaderNetwork : public QObject {
     QString m_authAuth;
     QString m_authToken;
     QList<Message> m_prefetchedMessages;
-    Feed::Status m_prefetchedStatus;
     bool m_performGlobalFetching;
     bool m_intelligentSynchronization;
     QDate m_newerThanFilter;
