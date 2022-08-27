@@ -78,6 +78,7 @@ With ISA, RSS Guard only downloads articles which are new or were updated. While
 * Bazqux
 * Reedah
 * Inoreader
+* Miniflux
 * TheOldReader
 * FreshRSS
 
