@@ -296,14 +296,6 @@ summary:focus {
   outline: 1px solid #8291AD;
 }
 
-body:hover .rssguard-mwrapper .rssguard-mhead .mwrapurl a, body:hover .rssguard-mwrapper .rssguard-mhead .mwrapurl a:not([href=""]) + span {
-  visibility: visible;
-}
-
-.rssguard-mwrapper .rssguard-mhead .mwrapurl a:focus, .rssguard-mwrapper .rssguard-mhead .mwrapurl a:focus + span {
-  visibility: visible !important;
-}
-
 .rssguard-mwrapper {
   padding: 10px !important;
 }
@@ -322,13 +314,6 @@ body:hover .rssguard-mwrapper .rssguard-mhead .mwrapurl a, body:hover .rssguard-
 }
 .rssguard-mwrapper .rssguard-mhead .mlinks .mwrapurl {
   display: inline-flex;
-}
-.rssguard-mwrapper .rssguard-mhead .mlinks .mwrapurl a {
-  order: 1;
-}
-.rssguard-mwrapper .rssguard-mhead .mlinks .mwrapurl a,
-.rssguard-mwrapper .rssguard-mhead .mlinks .mwrapurl span {
-  visibility: hidden;
 }
 .rssguard-mwrapper .rssguard-mhead .mlinks .mwrapurl a[href=""], .rssguard-mwrapper .rssguard-mhead .mlinks .mwrapurl a[href=""] + span {
   display: none;
