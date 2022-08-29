@@ -76,6 +76,7 @@ else {
 }
 
 cd "$old_pwd"
+Tree /f
 
 # Build application.
 mkdir "rssguard-build"
