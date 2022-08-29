@@ -636,7 +636,7 @@ void Application::showGuiMessage(Notification::Event event,
                  action.m_action);
   }
   else if (dest.m_statusBar && mainForm()->statusBar() != nullptr && mainForm()->statusBar()->isVisible()) {
-    mainForm()->statusBar()->showMessage(msg.m_message);
+    mainForm()->statusBar()->showMessage(msg.m_message, 3000);
   }
   else {
     qDebugNN << LOGSEC_CORE << "Silencing GUI message:" << QUOTE_W_SPACE_DOT(msg.m_message);

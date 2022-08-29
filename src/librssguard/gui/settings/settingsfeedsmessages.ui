@@ -115,19 +115,6 @@
          </property>
         </widget>
        </item>
-       <item row="4" column="0" colspan="2">
-        <spacer name="verticalSpacer">
-         <property name="orientation">
-          <enum>Qt::Vertical</enum>
-         </property>
-         <property name="sizeHint" stdset="0">
-          <size>
-           <width>20</width>
-           <height>40</height>
-          </size>
-         </property>
-        </spacer>
-       </item>
       </layout>
      </widget>
      <widget class="QWidget" name="m_tabFeedsList">
@@ -263,19 +250,6 @@
          </property>
         </widget>
        </item>
-       <item row="7" column="0" colspan="2">
-        <spacer name="verticalSpacer_3">
-         <property name="orientation">
-          <enum>Qt::Vertical</enum>
-         </property>
-         <property name="sizeHint" stdset="0">
-          <size>
-           <width>20</width>
-           <height>40</height>
-          </size>
-         </property>
-        </spacer>
-       </item>
       </layout>
      </widget>
      <widget class="QWidget" name="m_tabMessages">
@@ -304,98 +278,111 @@
          </property>
         </widget>
        </item>
-       <item row="3" column="0" colspan="2">
-        <widget class="QCheckBox" name="m_cbShowEnclosuresDirectly">
-         <property name="text">
-          <string>Display attached pictures directly in article</string>
-         </property>
-        </widget>
-       </item>
-       <item row="4" column="0" colspan="2">
+       <item row="3" column="0">
         <widget class="QCheckBox" name="m_checkBringToForegroundAfterMsgOpened">
          <property name="text">
           <string>Bring application window to front once article is opened in external web browser</string>
          </property>
         </widget>
        </item>
-       <item row="5" column="0">
-        <widget class="QLabel" name="m_lblHeightImageAttachments">
-         <property name="text">
-          <string>Limit height of images</string>
+       <item row="4" column="0" colspan="2">
+        <widget class="QGroupBox" name="groupBox">
+         <property name="title">
+          <string>Internal article viewer</string>
          </property>
-         <property name="buddy">
-          <cstring>m_spinHeightImageAttachments</cstring>
-         </property>
-        </widget>
-       </item>
-       <item row="5" column="1">
-        <widget class="QSpinBox" name="m_spinHeightImageAttachments">
-         <property name="minimum">
-          <number>-1</number>
-         </property>
-         <property name="maximum">
-          <number>4000</number>
-         </property>
-         <property name="value">
-          <number>-1</number>
-         </property>
-        </widget>
-       </item>
-       <item row="6" column="0" colspan="2">
-        <layout class="QHBoxLayout" name="horizontalLayout_4">
-         <item>
-          <widget class="QGroupBox" name="groupBox_4">
-           <property name="title">
-            <string>Article browser font</string>
-           </property>
-           <layout class="QHBoxLayout" name="horizontalLayout_16">
+         <layout class="QFormLayout" name="formLayout_6">
+          <item row="0" column="0" colspan="2">
+           <widget class="QCheckBox" name="m_cbShowEnclosuresDirectly">
+            <property name="text">
+             <string>Display attached pictures directly in article</string>
+            </property>
+           </widget>
+          </item>
+          <item row="1" column="0" colspan="2">
+           <layout class="QHBoxLayout" name="horizontalLayout_3">
             <item>
-             <widget class="QLabel" name="m_lblMessagesFont">
+             <widget class="QLabel" name="m_lblHeightImageAttachments">
               <property name="text">
-               <string>Font preview</string>
+               <string>Limit height of pictures</string>
               </property>
               <property name="buddy">
-               <cstring>m_btnChangeMessagesFont</cstring>
+               <cstring>m_spinHeightImageAttachments</cstring>
               </property>
              </widget>
             </item>
             <item>
-             <widget class="QPushButton" name="m_btnChangeMessagesFont">
-              <property name="text">
-               <string>&amp;Change font</string>
+             <widget class="QSpinBox" name="m_spinHeightImageAttachments">
+              <property name="minimum">
+               <number>-1</number>
+              </property>
+              <property name="maximum">
+               <number>4000</number>
+              </property>
+              <property name="value">
+               <number>-1</number>
               </property>
              </widget>
             </item>
+            <item>
+             <spacer name="horizontalSpacer_3">
+              <property name="orientation">
+               <enum>Qt::Horizontal</enum>
+              </property>
+              <property name="sizeHint" stdset="0">
+               <size>
+                <width>40</width>
+                <height>20</height>
+               </size>
+              </property>
+             </spacer>
+            </item>
            </layout>
-          </widget>
-         </item>
-         <item>
-          <spacer name="horizontalSpacer">
-           <property name="orientation">
-            <enum>Qt::Horizontal</enum>
-           </property>
-           <property name="sizeHint" stdset="0">
-            <size>
-             <width>40</width>
-             <height>20</height>
-            </size>
-           </property>
-          </spacer>
-         </item>
-        </layout>
-       </item>
-       <item row="7" column="0" colspan="2">
-        <spacer name="verticalSpacer_2">
-         <property name="orientation">
-          <enum>Qt::Vertical</enum>
-         </property>
-         <property name="sizeHint" stdset="0">
-          <size>
-           <width>20</width>
-           <height>40</height>
-          </size>
-         </property>
-        </spacer>
+          </item>
+          <item row="2" column="0" colspan="2">
+           <layout class="QHBoxLayout" name="horizontalLayout_5">
+            <item>
+             <widget class="QGroupBox" name="groupBox_4">
+              <property name="title">
+               <string>Article browser font</string>
+              </property>
+              <layout class="QHBoxLayout" name="horizontalLayout_4">
+               <item>
+                <widget class="QLabel" name="m_lblMessagesFont">
+                 <property name="text">
+                  <string>Font preview</string>
+                 </property>
+                 <property name="buddy">
+                  <cstring>m_btnChangeMessagesFont</cstring>
+                 </property>
+                </widget>
+               </item>
+               <item>
+                <widget class="QPushButton" name="m_btnChangeMessagesFont">
+                 <property name="text">
+                  <string>&amp;Change font</string>
+                 </property>
+                </widget>
+               </item>
+              </layout>
+             </widget>
+            </item>
+            <item>
+             <spacer name="horizontalSpacer">
+              <property name="orientation">
+               <enum>Qt::Horizontal</enum>
+              </property>
+              <property name="sizeHint" stdset="0">
+               <size>
+                <width>40</width>
+                <height>20</height>
+               </size>
+              </property>
+             </spacer>
+            </item>
+           </layout>
+          </item>
+         </layout>
+        </widget>
        </item>
       </layout>
      </widget>
@@ -545,6 +532,23 @@
          </property>
         </widget>
        </item>
+       <item row="8" column="0">
+        <widget class="QLabel" name="label">
+         <property name="text">
+          <string>Show relative time for articles not older than</string>
+         </property>
+        </widget>
+       </item>
+       <item row="8" column="1">
+        <widget class="QSpinBox" name="m_spinRelativeArticleTime">
+         <property name="minimum">
+          <number>-1</number>
+         </property>
+         <property name="maximum">
+          <number>300</number>
+         </property>
+        </widget>
+       </item>
        <item row="9" column="0">
         <widget class="QGroupBox" name="groupBox_5">
          <property name="title">
@@ -569,36 +573,6 @@
            </widget>
           </item>
          </layout>
-        </widget>
-       </item>
-       <item row="10" column="0" colspan="2">
-        <spacer name="verticalSpacer_4">
-         <property name="orientation">
-          <enum>Qt::Vertical</enum>
-         </property>
-         <property name="sizeHint" stdset="0">
-          <size>
-           <width>20</width>
-           <height>40</height>
-          </size>
-         </property>
-        </spacer>
-       </item>
-       <item row="8" column="0">
-        <widget class="QLabel" name="label">
-         <property name="text">
-          <string>Show relative time for articles not older than</string>
-         </property>
-        </widget>
-       </item>
-       <item row="8" column="1">
-        <widget class="QSpinBox" name="m_spinRelativeArticleTime">
-         <property name="minimum">
-          <number>-1</number>
-         </property>
-         <property name="maximum">
-          <number>300</number>
-         </property>
         </widget>
        </item>
       </layout>
@@ -627,20 +601,19 @@
   <tabstop>m_spinAutoUpdateInterval</tabstop>
   <tabstop>m_checkAutoUpdateOnlyUnfocused</tabstop>
   <tabstop>m_spinFeedUpdateTimeout</tabstop>
-  <tabstop>m_checkRemoveReadMessagesOnExit</tabstop>
-  <tabstop>m_cmbIgnoreContentsChanges</tabstop>
-  <tabstop>m_cbFixupArticleDatetime</tabstop>
-  <tabstop>m_cbShowEnclosuresDirectly</tabstop>
-  <tabstop>m_checkBringToForegroundAfterMsgOpened</tabstop>
-  <tabstop>m_spinHeightImageAttachments</tabstop>
-  <tabstop>m_btnChangeMessagesFont</tabstop>
-  <tabstop>m_tabFeedsMessages</tabstop>
   <tabstop>m_spinHeightRowsFeeds</tabstop>
   <tabstop>m_btnChangeFeedListFont</tabstop>
   <tabstop>m_cmbCountsFeedList</tabstop>
   <tabstop>m_cbHideCountsIfNoUnread</tabstop>
   <tabstop>m_cbListsRestrictedShortcuts</tabstop>
   <tabstop>m_checkShowTooltips</tabstop>
+  <tabstop>m_checkRemoveReadMessagesOnExit</tabstop>
+  <tabstop>m_cmbIgnoreContentsChanges</tabstop>
+  <tabstop>m_cbFixupArticleDatetime</tabstop>
+  <tabstop>m_checkBringToForegroundAfterMsgOpened</tabstop>
+  <tabstop>m_cbShowEnclosuresDirectly</tabstop>
+  <tabstop>m_spinHeightImageAttachments</tabstop>
+  <tabstop>m_btnChangeMessagesFont</tabstop>
   <tabstop>m_checkDisplayFeedIcons</tabstop>
   <tabstop>m_checkKeppMessagesInTheMiddle</tabstop>
   <tabstop>m_checkMultilineArticleList</tabstop>
@@ -650,8 +623,9 @@
   <tabstop>m_cmbMessagesDateTimeFormat</tabstop>
   <tabstop>m_checkMessagesTimeFormat</tabstop>
   <tabstop>m_cmbMessagesTimeFormat</tabstop>
-  <tabstop>m_btnChangeMessageListFont</tabstop>
   <tabstop>m_spinRelativeArticleTime</tabstop>
+  <tabstop>m_btnChangeMessageListFont</tabstop>
+  <tabstop>m_tabFeedsMessages</tabstop>
  </tabstops>
  <resources/>
  <connections/>
