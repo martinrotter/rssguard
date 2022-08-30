@@ -76,7 +76,6 @@ else {
 }
 
 cd "$old_pwd"
-Tree /f "$qt_sqldrivers_path"
 
 # Build application.
 mkdir "rssguard-build"
