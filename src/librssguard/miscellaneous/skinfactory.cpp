@@ -138,6 +138,7 @@ QPair<QString, QUrl> SkinFactory::generateHtmlOfArticles(const QList<Message>& m
   for (const Message& message : messages) {
     QString enclosures;
     QString enclosure_images;
+    bool is_plain = !Qt::mightBeRichText(message.m_contents.simplified());
 
     for (const Enclosure& enclosure : message.m_enclosures) {
       QString enc_url = QUrl::fromPercentEncoding(enclosure.m_url.toUtf8());
@@ -166,7 +167,8 @@ QPair<QString, QUrl> SkinFactory::generateHtmlOfArticles(const QList<Message>& m
                                                                             ? tr("unknown author")
                                                                             : message.m_author),
                                                      message.m_url,
-                                                     message.m_contents,
+                                                     is_plain ? Qt::convertFromPlainText(message.m_contents)
+                                                              : message.m_contents,
                                                      msg_date,
                                                      enclosures,
                                                      enclosure_images,
