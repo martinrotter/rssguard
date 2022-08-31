@@ -2,6 +2,8 @@
 
 #include "gui/reusable/treeviewcolumnsmenu.h"
 
+#include "definitions/definitions.h"
+
 #include <QHeaderView>
 
 TreeViewColumnsMenu::TreeViewColumnsMenu(QHeaderView* parent) : NonClosableMenu(parent) {
@@ -26,6 +28,10 @@ void TreeViewColumnsMenu::actionTriggered(bool toggle) {
   auto* send_act = qobject_cast<QAction*>(sender());
 
   header()->setSectionHidden(send_act->data().toInt(), !send_act->isChecked());
+
+  if (send_act->isChecked() && header()->sectionSize(send_act->data().toInt()) < 10) {
+    header()->resizeSection(send_act->data().toInt(), MESSAGES_VIEW_DEFAULT_COL);
+  }
 
   Q_UNUSED(toggle)
 }
