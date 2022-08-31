@@ -60,6 +60,8 @@ QByteArray MessagesView::saveHeaderState() const {
   QByteArray arr;
   QDataStream outt(&arr, QIODevice::OpenModeFlag::WriteOnly);
 
+  // auto xx = header()->count();
+
   outt.setVersion(QDataStream::Version::Qt_4_7);
   outt << header()->count();
   outt << int(header()->sortIndicatorOrder());
@@ -67,6 +69,11 @@ QByteArray MessagesView::saveHeaderState() const {
 
   // Save column data.
   for (int i = 0; i < header()->count(); i++) {
+    // auto aaa = header()->isSectionHidden(i);
+    // auto ax = m_sourceModel->headerData(i, Qt::Orientation::Horizontal, Qt::ItemDataRole::DisplayRole).toString();
+    // auto b = header()->visualIndex(i);
+    // auto c = header()->sectionSize(i);
+
     outt << header()->visualIndex(i);
     outt << header()->sectionSize(i);
     outt << header()->isSectionHidden(i);
@@ -101,6 +108,8 @@ void MessagesView::restoreHeaderState(const QByteArray& dta) {
     inn >> vi;
     inn >> ss;
     inn >> ish;
+
+    // auto ax = m_sourceModel->headerData(i, Qt::Orientation::Horizontal, Qt::ItemDataRole::DisplayRole).toString();
 
     if (vi < header()->count()) {
       header()->swapSections(header()->visualIndex(i), vi);
@@ -274,6 +283,8 @@ void MessagesView::setupAppearance() {
   header()->setFirstSectionMovable(true);
   header()->setCascadingSectionResizes(false);
   header()->setStretchLastSection(false);
+
+  adjustColumns();
 }
 
 void MessagesView::focusInEvent(QFocusEvent* event) {

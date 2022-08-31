@@ -266,7 +266,7 @@ void MessagesModel::setupHeaderData() {
                 << tr("Url of the article.") << tr("Author of the article.") << tr("Creation date of the article.")
                 << tr("Contents of the article.") << tr("List of attachments.") << tr("Score of the article.")
                 << tr("Account ID of the article.") << tr("Custom ID of the article.")
-                << tr("Custom hash of the article.") << tr("Custom ID of feed of the article.")
+                << tr("Custom hash of the article.") << tr("Name of feed of the article.")
                 << tr("Indication of enclosures presence within the article.");
 }
 

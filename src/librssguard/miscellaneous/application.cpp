@@ -706,6 +706,8 @@ void Application::onAboutToQuit() {
     mainForm()->saveSize();
   }
 
+  settings()->sync();
+
   // Now, we can check if application should just quit or restart itself.
   if (m_shouldRestart) {
     finish();

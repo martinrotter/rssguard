@@ -14,6 +14,7 @@
 #include <QMetaObject>
 #include <QProcessEnvironment>
 #include <QStyleFactory>
+#include <QTextDocument>
 #include <QToolTip>
 
 SkinFactory::SkinFactory(QObject* parent) : QObject(parent), m_styleIsFrozen(false) {}
