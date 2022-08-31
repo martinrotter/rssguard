@@ -215,18 +215,18 @@
 #define APP_SKIN_USER_FOLDER "skins"
 #define APP_SKIN_DEFAULT "nudus-light"
 #define APP_SKIN_METADATA_FILE "metadata.xml"
-
-#if defined(Q_OS_WIN)
-#define APP_STYLE_DEFAULT "windowsvista"
-#else
 #define APP_STYLE_DEFAULT "Fusion"
+
+#if defined(Q_OS_UNIX) && !defined(Q_OS_MACOS) && !defined(FORCE_BUNDLE_ICONS)
+#define APP_THEME_DEFAULT ""
+#else
+#define APP_THEME_DEFAULT "Breeze"
 #endif
 
 #if defined(FORCE_BUNDLE_ICONS)
 // Forcibly bundle icons.
 #define APP_THEME_DEFAULT "Breeze"
 #elif defined(Q_OS_UNIX) && !defined(Q_OS_MACOS)
-// DO NOT icons on Linux.
 #define APP_THEME_DEFAULT ""
 #else
 // Bundle icons otherwise.

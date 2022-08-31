@@ -45,7 +45,7 @@ void SkinFactory::loadCurrentSkin() {
 }
 
 bool SkinFactory::isStyleGoodForAlternativeStylePalette(const QString& style_name) const {
-  static QRegularExpression re = QRegularExpression("^(fusion)|(qt[56]ct-style)$");
+  static QRegularExpression re = QRegularExpression("^(fusion|windows|qt[56]ct-style)$");
 
   return re.match(style_name.toLower()).hasMatch();
 }

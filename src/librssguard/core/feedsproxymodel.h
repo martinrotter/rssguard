@@ -17,6 +17,11 @@ class FeedsProxyModel : public QSortFilterProxyModel {
     explicit FeedsProxyModel(FeedsModel* source_model, QObject* parent = nullptr);
     virtual ~FeedsProxyModel();
 
+    virtual bool canDropMimeData(const QMimeData* data,
+                                 Qt::DropAction action,
+                                 int row,
+                                 int column,
+                                 const QModelIndex& parent) const;
     virtual bool dropMimeData(const QMimeData* data,
                               Qt::DropAction action,
                               int row,

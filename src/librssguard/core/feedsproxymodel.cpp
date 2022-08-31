@@ -44,6 +44,26 @@ FeedsProxyModel::~FeedsProxyModel() {
   qDebugNN << LOGSEC_FEEDMODEL << "Destroying FeedsProxyModel instance";
 }
 
+bool FeedsProxyModel::canDropMimeData(const QMimeData* data,
+                                      Qt::DropAction action,
+                                      int row,
+                                      int column,
+                                      const QModelIndex& parent) const {
+
+  auto src_idx = row < 0 ? mapToSource(parent) : mapToSource(index(row, column, parent));
+  auto* src_item = m_sourceModel->itemForIndex(src_idx);
+
+  if (src_item != nullptr) {
+    auto can_drop = src_item->kind() == RootItem::Kind::ServiceRoot || src_item->kind() == RootItem::Kind::Category ||
+                    src_item->kind() == RootItem::Kind::Feed;
+
+    return QSortFilterProxyModel::canDropMimeData(data, action, row, column, parent) && can_drop;
+  }
+  else {
+    return false;
+  }
+}
+
 QModelIndexList FeedsProxyModel::match(const QModelIndex& start,
                                        int role,
                                        const QVariant& value,
