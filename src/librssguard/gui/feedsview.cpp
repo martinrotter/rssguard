@@ -838,7 +838,7 @@ void FeedsView::setupAppearance() {
 
   setSortingEnabled(false);
   setItemsExpandable(true);
-  setAutoExpandDelay(200);
+  setAutoExpandDelay(800);
   setExpandsOnDoubleClick(true);
   setEditTriggers(QAbstractItemView::EditTrigger::NoEditTriggers);
   setIndentation(FEEDS_VIEW_INDENTATION);
