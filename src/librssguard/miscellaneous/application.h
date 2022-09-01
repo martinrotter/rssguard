@@ -187,6 +187,8 @@ class RSSGUARD_DLLSPEC Application : public SingleApplication {
     void parseCmdArgumentsFromMyInstance(const QStringList& raw_cli_args);
 
   private slots:
+    void fillCmdArgumentsParser(QCommandLineParser& parser);
+
     void onNodeJsPackageUpdateError(const QList<NodeJs::PackageMetadata>& pkgs, const QString& error);
     void onNodeJsPackageInstalled(const QList<NodeJs::PackageMetadata>& pkgs, bool already_up_to_date);
     void onCommitData(QSessionManager& manager);

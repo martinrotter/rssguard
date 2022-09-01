@@ -941,10 +941,8 @@ void Application::parseCmdArgumentsFromOtherInstance(const QString& message) {
 
   cmd_parser.addOption(QCommandLineOption({QSL(CLI_QUIT_INSTANCE)}));
   cmd_parser.addOption(QCommandLineOption({QSL(CLI_IS_RUNNING)}));
-  cmd_parser
-    .addPositionalArgument(QSL("urls"),
-                           QSL("List of URL addresses pointing to individual online feeds which should be added."),
-                           QSL("[url-1 ... url-n]"));
+
+  fillCmdArgumentsParser(cmd_parser);
 
   if (!cmd_parser.parse(messages)) {
     qCriticalNN << LOGSEC_CORE << cmd_parser.errorText();
@@ -983,43 +981,8 @@ void Application::parseCmdArgumentsFromOtherInstance(const QString& message) {
 }
 
 void Application::parseCmdArgumentsFromMyInstance(const QStringList& raw_cli_args) {
-  QCommandLineOption help({QSL(CLI_HELP_SHORT), QSL(CLI_HELP_LONG)}, QSL("Displays overview of CLI."));
-  QCommandLineOption version({QSL(CLI_VER_SHORT), QSL(CLI_VER_LONG)}, QSL("Displays version of the application."));
-  QCommandLineOption
-    log_file({QSL(CLI_LOG_SHORT), QSL(CLI_LOG_LONG)},
-             QSL("Write application debug log to file. Note that logging to file may slow application down."),
-             QSL("log-file"));
-  QCommandLineOption
-    custom_data_folder({QSL(CLI_DAT_SHORT), QSL(CLI_DAT_LONG)},
-                       QSL("Use custom folder for user data and disable single instance application mode."),
-                       QSL("user-data-folder"));
-  QCommandLineOption disable_singleinstance({QSL(CLI_SIN_SHORT), QSL(CLI_SIN_LONG)},
-                                            QSL("Allow running of multiple application instances."));
+  fillCmdArgumentsParser(m_cmdParser);
 
-#if defined(USE_WEBENGINE)
-  QCommandLineOption force_nowebengine({QSL(CLI_FORCE_NOWEBENGINE_SHORT), QSL(CLI_FORCE_NOWEBENGINE_LONG)},
-                                       QSL("Force usage of simpler text-based embedded web browser."));
-#endif
-
-  QCommandLineOption disable_only_debug({QSL(CLI_NDEBUG_SHORT), QSL(CLI_NDEBUG_LONG)},
-                                        QSL("Disable just \"debug\" output."));
-  QCommandLineOption disable_debug({QSL(CLI_NSTDOUTERR_SHORT), QSL(CLI_NSTDOUTERR_LONG)},
-                                   QSL("Completely disable stdout/stderr outputs."));
-  QCommandLineOption forced_style({QSL(CLI_STYLE_SHORT), QSL(CLI_STYLE_LONG)},
-                                  QSL("Force some application style."),
-                                  QSL("style-name"));
-
-  m_cmdParser.addOptions({
-    help, version, log_file, custom_data_folder, disable_singleinstance, disable_only_debug, disable_debug,
-#if defined(USE_WEBENGINE)
-      force_nowebengine,
-#endif
-      forced_style
-  });
-  m_cmdParser
-    .addPositionalArgument(QSL("urls"),
-                           QSL("List of URL addresses pointing to individual online feeds which should be added."),
-                           QSL("[url-1 ... url-n]"));
   m_cmdParser.setApplicationDescription(QSL(APP_NAME));
   m_cmdParser.setSingleDashWordOptionMode(QCommandLineParser::SingleDashWordOptionMode::ParseAsLongOptions);
 
@@ -1077,6 +1040,45 @@ void Application::parseCmdArgumentsFromMyInstance(const QStringList& raw_cli_arg
     s_disableDebug = true;
     qDebugNN << LOGSEC_CORE << "Disabling any stdout/stderr outputs.";
   }
+}
+
+void Application::fillCmdArgumentsParser(QCommandLineParser& parser) {
+  QCommandLineOption help({QSL(CLI_HELP_SHORT), QSL(CLI_HELP_LONG)}, QSL("Displays overview of CLI."));
+  QCommandLineOption version({QSL(CLI_VER_SHORT), QSL(CLI_VER_LONG)}, QSL("Displays version of the application."));
+  QCommandLineOption
+    log_file({QSL(CLI_LOG_SHORT), QSL(CLI_LOG_LONG)},
+             QSL("Write application debug log to file. Note that logging to file may slow application down."),
+             QSL("log-file"));
+  QCommandLineOption
+    custom_data_folder({QSL(CLI_DAT_SHORT), QSL(CLI_DAT_LONG)},
+                       QSL("Use custom folder for user data and disable single instance application mode."),
+                       QSL("user-data-folder"));
+  QCommandLineOption disable_singleinstance({QSL(CLI_SIN_SHORT), QSL(CLI_SIN_LONG)},
+                                            QSL("Allow running of multiple application instances."));
+
+#if defined(USE_WEBENGINE)
+  QCommandLineOption force_nowebengine({QSL(CLI_FORCE_NOWEBENGINE_SHORT), QSL(CLI_FORCE_NOWEBENGINE_LONG)},
+                                       QSL("Force usage of simpler text-based embedded web browser."));
+#endif
+
+  QCommandLineOption disable_only_debug({QSL(CLI_NDEBUG_SHORT), QSL(CLI_NDEBUG_LONG)},
+                                        QSL("Disable just \"debug\" output."));
+  QCommandLineOption disable_debug({QSL(CLI_NSTDOUTERR_SHORT), QSL(CLI_NSTDOUTERR_LONG)},
+                                   QSL("Completely disable stdout/stderr outputs."));
+  QCommandLineOption forced_style({QSL(CLI_STYLE_SHORT), QSL(CLI_STYLE_LONG)},
+                                  QSL("Force some application style."),
+                                  QSL("style-name"));
+
+  parser.addOptions({
+    help, version, log_file, custom_data_folder, disable_singleinstance, disable_only_debug, disable_debug,
+#if defined(USE_WEBENGINE)
+      force_nowebengine,
+#endif
+      forced_style
+  });
+  parser.addPositionalArgument(QSL("urls"),
+                               QSL("List of URL addresses pointing to individual online feeds which should be added."),
+                               QSL("[url-1 ... url-n]"));
 }
 
 void Application::onNodeJsPackageUpdateError(const QList<NodeJs::PackageMetadata>& pkgs, const QString& error) {

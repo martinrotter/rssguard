@@ -31,7 +31,7 @@ else
   pip3 install aqtinstall
   
   QTPATH="$(pwd)/Qt"
-  QTVERSION="6.3.0"
+  QTVERSION="6.3.1"
   QTBIN="$QTPATH/$QTVERSION/macos/bin"
 
   echo "Qt bin directory is: $QTBIN"
