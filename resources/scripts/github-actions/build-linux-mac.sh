@@ -88,6 +88,9 @@ if [ $is_linux = true ]; then
   mkdir "$QTPATH/$QTVERSION/$QTOS/plugins/audio"
   mkdir "$QTPATH/$QTVERSION/$QTOS/plugins/mediaservice"
 
+  # Adjust library search paths.
+  export LD_LIBRARY_PATH="$QTPATH/$QTVERSION/$QTOS/lib:$(pwd)/AppDir/usr/lib"
+
   # Create AppImage.
   ./linuxdeploy-x86_64.AppImage --output "appimage" --plugin "qt" --appdir "AppDir"
 
