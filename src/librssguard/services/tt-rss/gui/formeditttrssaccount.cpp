@@ -32,8 +32,12 @@ void FormEditTtRssAccount::apply() {
   account<TtRssServiceRoot>()->network()->setAuthUsername(m_details->m_ui.m_txtHttpUsername->lineEdit()->text());
   account<TtRssServiceRoot>()->network()->setAuthPassword(m_details->m_ui.m_txtHttpPassword->lineEdit()->text());
   account<TtRssServiceRoot>()->network()->setBatchSize(m_details->m_ui.m_spinLimitMessages->value());
-  account<TtRssServiceRoot>()->network()->setForceServerSideUpdate(m_details->m_ui.m_checkServerSideUpdate->isChecked());
-  account<TtRssServiceRoot>()->network()->setDownloadOnlyUnreadMessages(m_details->m_ui.m_checkDownloadOnlyUnreadMessages->isChecked());
+  account<TtRssServiceRoot>()->network()->setIntelligentSynchronization(m_details->m_ui.m_cbNewAlgorithm->isChecked());
+  account<TtRssServiceRoot>()->network()->setForceServerSideUpdate(m_details->m_ui.m_checkServerSideUpdate
+                                                                     ->isChecked());
+  account<TtRssServiceRoot>()
+    ->network()
+    ->setDownloadOnlyUnreadMessages(m_details->m_ui.m_checkDownloadOnlyUnreadMessages->isChecked());
 
   account<TtRssServiceRoot>()->saveAccountDataToDatabase();
   accept();
@@ -58,6 +62,7 @@ void FormEditTtRssAccount::loadAccountData() {
   m_details->m_ui.m_spinLimitMessages->setValue(existing_root->network()->batchSize());
   m_details->m_ui.m_checkServerSideUpdate->setChecked(existing_root->network()->forceServerSideUpdate());
   m_details->m_ui.m_checkDownloadOnlyUnreadMessages->setChecked(existing_root->network()->downloadOnlyUnreadMessages());
+  m_details->m_ui.m_cbNewAlgorithm->setChecked(existing_root->network()->intelligentSynchronization());
 }
 
 void FormEditTtRssAccount::performTest() {

@@ -60,8 +60,10 @@ class TtRssGetFeedsCategoriesResponse : public TtRssResponse {
     // Returns tree of feeds/categories.
     // Top-level root of the tree is not needed here.
     // Returned items do not have primary IDs assigned.
-    RootItem* feedsCategories(TtRssNetworkFactory* network, bool obtain_icons,
-                              const QNetworkProxy& proxy, const QString& base_address = QString()) const;
+    RootItem* feedsCategories(TtRssNetworkFactory* network,
+                              bool obtain_icons,
+                              const QNetworkProxy& proxy,
+                              const QString& base_address = QString()) const;
 };
 
 class ServiceRoot;
@@ -72,6 +74,22 @@ class TtRssGetHeadlinesResponse : public TtRssResponse {
     virtual ~TtRssGetHeadlinesResponse();
 
     QList<Message> messages(ServiceRoot* root) const;
+};
+
+class TtRssGetArticleResponse : public TtRssResponse {
+  public:
+    explicit TtRssGetArticleResponse(const QString& raw_content = QString());
+    virtual ~TtRssGetArticleResponse();
+
+    QList<Message> messages(ServiceRoot* root) const;
+};
+
+class TtRssGetCompactHeadlinesResponse : public TtRssResponse {
+  public:
+    explicit TtRssGetCompactHeadlinesResponse(const QString& raw_content = QString());
+    virtual ~TtRssGetCompactHeadlinesResponse();
+
+    QStringList ids() const;
 };
 
 class TtRssUpdateArticleResponse : public TtRssResponse {
@@ -100,19 +118,11 @@ class TtRssUnsubscribeFeedResponse : public TtRssResponse {
 };
 
 namespace UpdateArticle {
-  enum class Mode {
-    SetToFalse = 0,
-    SetToTrue = 1,
-    Togggle = 2
-  };
+  enum class Mode { SetToFalse = 0, SetToTrue = 1, Togggle = 2 };
 
-  enum class OperatingField {
-    Starred = 0,
-    Published = 1,
-    Unread = 2
-  };
+  enum class OperatingField { Starred = 0, Published = 1, Unread = 2 };
 
-}
+} // namespace UpdateArticle
 
 class TtRssNetworkFactory {
   public:
@@ -163,28 +173,49 @@ class TtRssNetworkFactory {
     // Gets feeds from the server.
     TtRssGetFeedsCategoriesResponse getFeedsCategories(const QNetworkProxy& proxy);
 
+    // Gets message IDs from the server.
+    TtRssGetCompactHeadlinesResponse getCompactHeadlines(int feed_id,
+                                                         int limit,
+                                                         int skip,
+                                                         const QString& view_mode,
+                                                         const QNetworkProxy& proxy);
+
+    TtRssGetHeadlinesResponse getArticle(const QStringList& article_ids, const QNetworkProxy& proxy);
+
     // Gets headlines (messages) from the server.
-    TtRssGetHeadlinesResponse getHeadlines(int feed_id, int limit, int skip,
-                                           bool show_content, bool include_attachments,
-                                           bool sanitize, bool unread_only,
+    TtRssGetHeadlinesResponse getHeadlines(int feed_id,
+                                           int limit,
+                                           int skip,
+                                           bool show_content,
+                                           bool include_attachments,
+                                           bool sanitize,
+                                           bool unread_only,
                                            const QNetworkProxy& proxy);
 
-    TtRssResponse setArticleLabel(const QStringList& article_ids, const QString& label_custom_id,
-                                  bool assign, const QNetworkProxy& proxy);
+    TtRssResponse setArticleLabel(const QStringList& article_ids,
+                                  const QString& label_custom_id,
+                                  bool assign,
+                                  const QNetworkProxy& proxy);
 
     TtRssUpdateArticleResponse updateArticles(const QStringList& ids,
                                               UpdateArticle::OperatingField field,
                                               UpdateArticle::Mode mode,
                                               const QNetworkProxy& proxy);
 
-    TtRssSubscribeToFeedResponse subscribeToFeed(const QString& url, int category_id, const QNetworkProxy& proxy,
-                                                 bool protectd = false, const QString& username = QString(),
+    TtRssSubscribeToFeedResponse subscribeToFeed(const QString& url,
+                                                 int category_id,
+                                                 const QNetworkProxy& proxy,
+                                                 bool protectd = false,
+                                                 const QString& username = QString(),
                                                  const QString& password = QString());
 
     TtRssUnsubscribeFeedResponse unsubscribeFeed(int feed_id, const QNetworkProxy& proxy);
 
     int batchSize() const;
     void setBatchSize(int batch_size);
+
+    bool intelligentSynchronization() const;
+    void setIntelligentSynchronization(bool intelligent_synchronization);
 
   private:
     QString m_bareUrl;
@@ -194,6 +225,7 @@ class TtRssNetworkFactory {
     int m_batchSize;
     bool m_forceServerSideUpdate;
     bool m_downloadOnlyUnreadMessages;
+    bool m_intelligentSynchronization;
     bool m_authIsUsed;
     QString m_authUsername;
     QString m_authPassword;

@@ -11,7 +11,7 @@
    </rect>
   </property>
   <layout class="QFormLayout" name="formLayout">
-   <item row="8" column="0">
+   <item row="10" column="0">
     <spacer name="verticalSpacer">
      <property name="orientation">
       <enum>Qt::Vertical</enum>
@@ -40,13 +40,6 @@
       <widget class="LineEditWithStatus" name="m_txtUrl" native="true"/>
      </item>
     </layout>
-   </item>
-   <item row="1" column="0" colspan="2">
-    <widget class="QCheckBox" name="m_checkDownloadOnlyUnreadMessages">
-     <property name="text">
-      <string>Download unread articles only</string>
-     </property>
-    </widget>
    </item>
    <item row="2" column="0" colspan="2">
     <layout class="QHBoxLayout" name="horizontalLayout_3">
@@ -85,17 +78,28 @@
      </item>
     </layout>
    </item>
+   <item row="1" column="0" colspan="2">
+    <widget class="QCheckBox" name="m_checkDownloadOnlyUnreadMessages">
+     <property name="text">
+      <string>Download unread articles only</string>
+     </property>
+    </widget>
+   </item>
    <item row="3" column="0" colspan="2">
+    <widget class="QCheckBox" name="m_cbNewAlgorithm">
+     <property name="text">
+      <string>Intelligent synchronization algorithm</string>
+     </property>
+    </widget>
+   </item>
+   <item row="5" column="0" colspan="2">
     <widget class="QCheckBox" name="m_checkServerSideUpdate">
      <property name="text">
       <string>Force execution of server-side feeds update</string>
      </property>
     </widget>
    </item>
-   <item row="4" column="0" colspan="2">
-    <widget class="HelpSpoiler" name="m_lblServerSideUpdateInformation" native="true"/>
-   </item>
-   <item row="5" column="0" colspan="2">
+   <item row="7" column="0" colspan="2">
     <widget class="QGroupBox" name="m_gbAuthentication">
      <property name="toolTip">
       <string>Some feeds require authentication, including GMail feeds. BASIC, NTLM-2 and DIGEST-MD5 authentication schemes are supported.</string>
@@ -139,7 +143,7 @@
      </layout>
     </widget>
    </item>
-   <item row="6" column="0" colspan="2">
+   <item row="8" column="0" colspan="2">
     <widget class="QGroupBox" name="m_gbHttpAuthentication">
      <property name="toolTip">
       <string>Some feeds require authentication, including GMail feeds. BASIC, NTLM-2 and DIGEST-MD5 authentication schemes are supported.</string>
@@ -186,7 +190,7 @@
      </layout>
     </widget>
    </item>
-   <item row="7" column="0" colspan="2">
+   <item row="9" column="0" colspan="2">
     <layout class="QHBoxLayout" name="horizontalLayout_2">
      <item>
       <widget class="QPushButton" name="m_btnTestSetup">
@@ -210,19 +214,25 @@
      </item>
     </layout>
    </item>
+   <item row="4" column="0" colspan="2">
+    <widget class="HelpSpoiler" name="m_lblNewAlgorithm" native="true"/>
+   </item>
+   <item row="6" column="0" colspan="2">
+    <widget class="HelpSpoiler" name="m_lblServerSideUpdateInformation" native="true"/>
+   </item>
   </layout>
  </widget>
  <customwidgets>
   <customwidget>
-   <class>LineEditWithStatus</class>
-   <extends>QWidget</extends>
-   <header>lineeditwithstatus.h</header>
-   <container>1</container>
-  </customwidget>
-  <customwidget>
    <class>LabelWithStatus</class>
    <extends>QWidget</extends>
    <header>labelwithstatus.h</header>
+   <container>1</container>
+  </customwidget>
+  <customwidget>
+   <class>LineEditWithStatus</class>
+   <extends>QWidget</extends>
+   <header>lineeditwithstatus.h</header>
    <container>1</container>
   </customwidget>
   <customwidget>

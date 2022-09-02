@@ -11,9 +11,16 @@ TtRssAccountDetails::TtRssAccountDetails(QWidget* parent) : QWidget(parent) {
   m_ui.setupUi(this);
 
   m_ui.m_lblTestResult->label()->setWordWrap(true);
-  m_ui.m_lblServerSideUpdateInformation->setHelpText(tr("Leaving this option on causes that updates "
-                                                        "of feeds will be probably much slower and may time-out often."),
-                                                     true);
+  m_ui.m_lblNewAlgorithm->setHelpText(tr("If you select intelligent synchronization, then only not-yet-fetched "
+                                         "or updated articles are downloaded. Network usage is greatly reduced and "
+                                         "overall synchronization speed is greatly improved, but "
+                                         "first feed fetching could be slow anyway if your feed contains "
+                                         "huge number of articles."),
+                                      false);
+  m_ui.m_lblServerSideUpdateInformation
+    ->setHelpText(tr("Leaving this option on causes that updates "
+                     "of feeds will be probably much slower and may time-out often."),
+                  true);
   m_ui.m_txtHttpUsername->lineEdit()->setPlaceholderText(tr("HTTP authentication username"));
   m_ui.m_txtHttpPassword->lineEdit()->setPlaceholderText(tr("HTTP authentication password"));
   m_ui.m_txtPassword->lineEdit()->setPlaceholderText(tr("Password for your TT-RSS account"));
@@ -25,7 +32,8 @@ TtRssAccountDetails::TtRssAccountDetails(QWidget* parent) : QWidget(parent) {
 
   setTabOrder(m_ui.m_txtUrl->lineEdit(), m_ui.m_checkDownloadOnlyUnreadMessages);
   setTabOrder(m_ui.m_checkDownloadOnlyUnreadMessages, m_ui.m_spinLimitMessages);
-  setTabOrder(m_ui.m_spinLimitMessages, m_ui.m_checkServerSideUpdate);
+  setTabOrder(m_ui.m_spinLimitMessages, m_ui.m_cbNewAlgorithm);
+  setTabOrder(m_ui.m_cbNewAlgorithm, m_ui.m_checkServerSideUpdate);
   setTabOrder(m_ui.m_checkServerSideUpdate, m_ui.m_txtUsername->lineEdit());
   setTabOrder(m_ui.m_txtUsername->lineEdit(), m_ui.m_txtPassword->lineEdit());
   setTabOrder(m_ui.m_txtPassword->lineEdit(), m_ui.m_gbHttpAuthentication);
@@ -38,8 +46,14 @@ TtRssAccountDetails::TtRssAccountDetails(QWidget* parent) : QWidget(parent) {
 
   connect(m_ui.m_txtPassword->lineEdit(), &BaseLineEdit::textChanged, this, &TtRssAccountDetails::onPasswordChanged);
   connect(m_ui.m_txtUsername->lineEdit(), &BaseLineEdit::textChanged, this, &TtRssAccountDetails::onUsernameChanged);
-  connect(m_ui.m_txtHttpPassword->lineEdit(), &BaseLineEdit::textChanged, this, &TtRssAccountDetails::onHttpPasswordChanged);
-  connect(m_ui.m_txtHttpUsername->lineEdit(), &BaseLineEdit::textChanged, this, &TtRssAccountDetails::onHttpUsernameChanged);
+  connect(m_ui.m_txtHttpPassword->lineEdit(),
+          &BaseLineEdit::textChanged,
+          this,
+          &TtRssAccountDetails::onHttpPasswordChanged);
+  connect(m_ui.m_txtHttpUsername->lineEdit(),
+          &BaseLineEdit::textChanged,
+          this,
+          &TtRssAccountDetails::onHttpUsernameChanged);
   connect(m_ui.m_txtUrl->lineEdit(), &BaseLineEdit::textChanged, this, &TtRssAccountDetails::onUrlChanged);
   connect(m_ui.m_gbHttpAuthentication, &QGroupBox::toggled, this, &TtRssAccountDetails::onHttpPasswordChanged);
   connect(m_ui.m_gbHttpAuthentication, &QGroupBox::toggled, this, &TtRssAccountDetails::onHttpUsernameChanged);
@@ -87,21 +101,24 @@ void TtRssAccountDetails::performTest(const QNetworkProxy& proxy) {
     }
     else if (result.apiLevel() < TTRSS_MINIMAL_API_LEVEL) {
       m_ui.m_lblTestResult->setStatus(WidgetWithStatus::StatusType::Error,
-                                      tr("Installed version: %1, required at least: %2.").arg(QString::number(result.apiLevel()),
-                                                                                              QString::number(TTRSS_MINIMAL_API_LEVEL)),
+                                      tr("Installed version: %1, required at least: %2.")
+                                        .arg(QString::number(result.apiLevel()),
+                                             QString::number(TTRSS_MINIMAL_API_LEVEL)),
                                       tr("Selected Tiny Tiny RSS server is running unsupported version of API."));
     }
     else {
       m_ui.m_lblTestResult->setStatus(WidgetWithStatus::StatusType::Ok,
-                                      tr("Installed version: %1, required at least: %2.").arg(QString::number(result.apiLevel()),
-                                                                                              QString::number(TTRSS_MINIMAL_API_LEVEL)),
+                                      tr("Installed version: %1, required at least: %2.")
+                                        .arg(QString::number(result.apiLevel()),
+                                             QString::number(TTRSS_MINIMAL_API_LEVEL)),
                                       tr("Tiny Tiny RSS server is okay."));
     }
   }
-  else if (factory.lastError()  != QNetworkReply::NoError) {
-    m_ui.m_lblTestResult->setStatus(WidgetWithStatus::StatusType::Error,
-                                    tr("Network error: '%1'.").arg(NetworkFactory::networkErrorText(factory.lastError())),
-                                    tr("Network error, have you entered correct Tiny Tiny RSS API endpoint and password?"));
+  else if (factory.lastError() != QNetworkReply::NoError) {
+    m_ui.m_lblTestResult
+      ->setStatus(WidgetWithStatus::StatusType::Error,
+                  tr("Network error: '%1'.").arg(NetworkFactory::networkErrorText(factory.lastError())),
+                  tr("Network error, have you entered correct Tiny Tiny RSS API endpoint and password?"));
   }
   else {
     m_ui.m_lblTestResult->setStatus(WidgetWithStatus::StatusType::Error,
@@ -133,25 +150,23 @@ void TtRssAccountDetails::onPasswordChanged() {
 }
 
 void TtRssAccountDetails::onHttpUsernameChanged() {
-  const bool is_username_ok = !m_ui.m_gbHttpAuthentication->isChecked() || !m_ui.m_txtHttpUsername->lineEdit()->text().isEmpty();
+  const bool is_username_ok =
+    !m_ui.m_gbHttpAuthentication->isChecked() || !m_ui.m_txtHttpUsername->lineEdit()->text().isEmpty();
 
-  m_ui.m_txtHttpUsername->setStatus(is_username_ok ?
-                                    LineEditWithStatus::StatusType::Ok :
-                                    LineEditWithStatus::StatusType::Warning,
-                                    is_username_ok ?
-                                    tr("Username is ok or it is not needed.") :
-                                    tr("Username is empty."));
+  m_ui.m_txtHttpUsername->setStatus(is_username_ok ? LineEditWithStatus::StatusType::Ok
+                                                   : LineEditWithStatus::StatusType::Warning,
+                                    is_username_ok ? tr("Username is ok or it is not needed.")
+                                                   : tr("Username is empty."));
 }
 
 void TtRssAccountDetails::onHttpPasswordChanged() {
-  const bool is_username_ok = !m_ui.m_gbHttpAuthentication->isChecked() || !m_ui.m_txtHttpPassword->lineEdit()->text().isEmpty();
+  const bool is_username_ok =
+    !m_ui.m_gbHttpAuthentication->isChecked() || !m_ui.m_txtHttpPassword->lineEdit()->text().isEmpty();
 
-  m_ui.m_txtHttpPassword->setStatus(is_username_ok ?
-                                    LineEditWithStatus::StatusType::Ok :
-                                    LineEditWithStatus::StatusType::Warning,
-                                    is_username_ok ?
-                                    tr("Password is ok or it is not needed.") :
-                                    tr("Password is empty."));
+  m_ui.m_txtHttpPassword->setStatus(is_username_ok ? LineEditWithStatus::StatusType::Ok
+                                                   : LineEditWithStatus::StatusType::Warning,
+                                    is_username_ok ? tr("Password is ok or it is not needed.")
+                                                   : tr("Password is empty."));
 }
 
 void TtRssAccountDetails::onUrlChanged() {

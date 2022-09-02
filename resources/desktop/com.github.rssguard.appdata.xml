@@ -22,11 +22,10 @@
   </screenshots>
   <url type="homepage">https://github.com/martinrotter/rssguard</url>
   <url type="bugtracker">https://github.com/martinrotter/rssguard/issues</url>
-  <url type="translate">https://www.transifex.com/martinrotter/rssguard</url>
   <url type="donation">https://github.com/sponsors/martinrotter</url>
   <content_rating type="oars-1.1" />
   <releases>
-    <release version="4.2.3" date="2022-09-01"/>
+    <release version="4.2.3" date="2022-09-02"/>
   </releases>
   <content_rating type="oars-1.0">
     <content_attribute id="violence-cartoon">none</content_attribute>

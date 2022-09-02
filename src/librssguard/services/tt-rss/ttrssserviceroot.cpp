@@ -235,6 +235,7 @@ QVariantHash TtRssServiceRoot::customDatabaseData() const {
   data[QSL("force_update")] = m_network->forceServerSideUpdate();
   data[QSL("batch_size")] = m_network->batchSize();
   data[QSL("download_only_unread")] = m_network->downloadOnlyUnreadMessages();
+  data[QSL("intelligent_synchronization")] = m_network->intelligentSynchronization();
 
   return data;
 }
@@ -249,15 +250,87 @@ void TtRssServiceRoot::setCustomDatabaseData(const QVariantHash& data) {
   m_network->setForceServerSideUpdate(data[QSL("force_update")].toBool());
   m_network->setBatchSize(data[QSL("batch_size")].toInt());
   m_network->setDownloadOnlyUnreadMessages(data[QSL("download_only_unread")].toBool());
+  m_network->setIntelligentSynchronization(data[QSL("intelligent_synchronization")].toBool());
 }
 
 QList<Message> TtRssServiceRoot::obtainNewMessages(Feed* feed,
                                                    const QHash<ServiceRoot::BagOfMessages, QStringList>&
                                                      stated_messages,
                                                    const QHash<QString, QStringList>& tagged_messages) {
-  Q_UNUSED(stated_messages)
   Q_UNUSED(tagged_messages)
 
+  if (m_network->intelligentSynchronization()) {
+    return obtainMessagesIntelligently(feed, stated_messages);
+  }
+  else {
+    return obtainMessagesViaHeadlines(feed);
+  }
+}
+
+QList<Message> TtRssServiceRoot::obtainMessagesIntelligently(Feed* feed,
+                                                             const QHash<BagOfMessages, QStringList>& stated_messages) {
+  // 1. Get unread IDs for a feed.
+  // 2. Get read IDs for a feed.
+  // 3. Get starred IDs for a feed.
+  // 4. Determine IDs needed to download.
+  // 5. Download needed articles.
+  const QStringList remote_all_ids_list =
+    m_network->downloadOnlyUnreadMessages()
+      ? QStringList()
+      : m_network->getCompactHeadlines(feed->customNumericId(), 1000000, 0, QSL("all_articles"), networkProxy()).ids();
+  const QStringList remote_unread_ids_list =
+    m_network->getCompactHeadlines(feed->customNumericId(), 1000000, 0, QSL("unread"), networkProxy()).ids();
+  const QStringList remote_starred_ids_list =
+    m_network->getCompactHeadlines(feed->customNumericId(), 1000000, 0, QSL("marked"), networkProxy()).ids();
+
+  const QSet<QString> remote_all_ids = FROM_LIST_TO_SET(QSet<QString>, remote_all_ids_list);
+
+  // 1.
+  auto local_unread_ids_list = stated_messages.value(ServiceRoot::BagOfMessages::Unread);
+  const QSet<QString> remote_unread_ids = FROM_LIST_TO_SET(QSet<QString>, remote_unread_ids_list);
+  const QSet<QString> local_unread_ids = FROM_LIST_TO_SET(QSet<QString>, local_unread_ids_list);
+
+  // 2.
+  const auto local_read_ids_list = stated_messages.value(ServiceRoot::BagOfMessages::Read);
+  const QSet<QString> remote_read_ids = remote_all_ids - remote_unread_ids;
+  const QSet<QString> local_read_ids = FROM_LIST_TO_SET(QSet<QString>, local_read_ids_list);
+
+  // 3.
+  const auto local_starred_ids_list = stated_messages.value(ServiceRoot::BagOfMessages::Starred);
+  const QSet<QString> remote_starred_ids = FROM_LIST_TO_SET(QSet<QString>, remote_starred_ids_list);
+  const QSet<QString> local_starred_ids = FROM_LIST_TO_SET(QSet<QString>, local_starred_ids_list);
+
+  // 4.
+  QSet<QString> to_download;
+
+  if (!m_network->downloadOnlyUnreadMessages()) {
+    to_download += remote_all_ids - local_read_ids - local_unread_ids;
+  }
+  else {
+    to_download += remote_unread_ids - local_read_ids - local_unread_ids;
+  }
+
+  auto moved_read = local_read_ids & remote_unread_ids;
+
+  to_download += moved_read;
+
+  if (!m_network->downloadOnlyUnreadMessages()) {
+    auto moved_unread = local_unread_ids & remote_read_ids;
+
+    to_download += moved_unread;
+  }
+
+  auto moved_starred = (local_starred_ids + remote_starred_ids) - (local_starred_ids & remote_starred_ids);
+
+  to_download += moved_starred;
+
+  // 5.
+  auto msgs = m_network->getArticle(to_download.values(), networkProxy());
+
+  return msgs.messages(this);
+}
+
+QList<Message> TtRssServiceRoot::obtainMessagesViaHeadlines(Feed* feed) {
   QList<Message> messages;
   int newly_added_messages = 0;
   int limit = network()->batchSize() <= 0 ? TTRSS_MAX_MESSAGES : network()->batchSize();
@@ -335,4 +408,8 @@ RootItem* TtRssServiceRoot::obtainNewTreeForSyncIn() const {
   else {
     throw NetworkException(lst_error, tr("cannot get list of feeds, network error '%1'").arg(lst_error));
   }
+}
+
+bool TtRssServiceRoot::wantsBaggedIdsOfExistingMessages() const {
+  return m_network->intelligentSynchronization();
 }

@@ -13,12 +13,13 @@ class TtRssFeed;
 class TtRssNetworkFactory;
 
 class TtRssServiceRoot : public ServiceRoot, public CacheForServiceRoot {
-  Q_OBJECT
+    Q_OBJECT
 
   public:
     explicit TtRssServiceRoot(RootItem* parent = nullptr);
     virtual ~TtRssServiceRoot();
 
+    virtual bool wantsBaggedIdsOfExistingMessages() const;
     virtual LabelOperation supportedLabelOperations() const;
     virtual void start(bool freshly_activated);
     virtual void stop();
@@ -48,6 +49,9 @@ class TtRssServiceRoot : public ServiceRoot, public CacheForServiceRoot {
 
   private:
     void updateTitle();
+    QList<Message> obtainMessagesIntelligently(Feed* feed,
+                                               const QHash<ServiceRoot::BagOfMessages, QStringList>& stated_messages);
+    QList<Message> obtainMessagesViaHeadlines(Feed* feed);
 
   private:
     TtRssNetworkFactory* m_network;
