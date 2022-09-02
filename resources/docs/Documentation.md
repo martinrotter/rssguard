@@ -64,7 +64,7 @@ I organized the supported web-based feed readers into an elegant table:
 | Gmail             | ✅ | ✅ | ❌ | ✅
 | Google Reader API <sup>3</sup> | ✅ | ✅ | ✅ | ✅ (only for Inoreader)
 | Nextcloud News    | ✅ | ❌ | ❌ | ❌
-| Tiny Tiny RSS     | ✅ | ❌ | ✅ | ❌
+| Tiny Tiny RSS     | ✅ | ✅ | ✅ | ❌
 
 <sup>1</sup> Some plugins support next-gen intelligent synchronization algorithm (ISA) which has some benefits, as it usually offers superior synchronization speed, and transfers much less data over your network connection. <a id="intel"></a>
 
