@@ -43,7 +43,7 @@
     <name>QAbstractSocket</name>
     <message>
         <source>Socket operation timed out</source>
-        <translation>Operación socket expirada</translation>
+        <translation>Operación de zólcalo expirada</translation>
     </message>
     <message>
         <source>Operation on socket is not supported</source>
