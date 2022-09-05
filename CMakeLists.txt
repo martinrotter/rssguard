@@ -63,7 +63,7 @@ set(APP_AUTHOR "Martin Rotter")
 set(APP_COPYRIGHT "\\251 2011-2022 ${APP_AUTHOR}")
 set(APP_REVERSE_NAME "com.github.rssguard")
 set(APP_DONATE_URL "https://github.com/sponsors/martinrotter")
-set(APP_VERSION "4.2.3")
+set(APP_VERSION "4.2.4")
 
 set(APP_URL "https://github.com/martinrotter/rssguard")
 set(APP_URL_DOCUMENTATION "https://github.com/martinrotter/rssguard/blob/master/resources/docs/Documentation.md")

@@ -929,12 +929,12 @@ Stav: %3</translation>
     <message>
         <location filename="../src/librssguard/core/feedsproxymodel.cpp" line="227"/>
         <source>Cannot perform drag &amp; drop operation</source>
-        <translation type="unfinished"/>
+        <translation>Drag &amp; drop operaci nelze provést</translation>
     </message>
     <message>
         <location filename="../src/librssguard/core/feedsproxymodel.cpp" line="228"/>
         <source>You can&apos;t transfer dragged item into different account, this is not supported.</source>
-        <translation type="unfinished"/>
+        <translation>Tažená položka nemůže přesunuta mezi různými účty, toto není podporováno.</translation>
     </message>
 </context>
 <context>
@@ -5304,7 +5304,7 @@ File filter for external e-mail selection dialog.</extracomment>
     <message>
         <location filename="../src/librssguard/gui/settings/settingsbrowsermail.ui" line="21"/>
         <source>Network</source>
-        <translation type="unfinished"/>
+        <translation>Síť</translation>
     </message>
     <message>
         <location filename="../src/librssguard/gui/settings/settingsbrowsermail.ui" line="27"/>
@@ -6932,7 +6932,7 @@ Nepřečtené zprávy: %2</translation>
     <message>
         <location filename="../src/librssguard/gui/webviewers/qtextbrowser/textbrowserviewer.cpp" line="140"/>
         <source>image</source>
-        <translation type="unfinished"/>
+        <translation>obrázek</translation>
     </message>
     <message>
         <location filename="../src/librssguard/gui/webviewers/qtextbrowser/textbrowserviewer.cpp" line="336"/>
@@ -6942,17 +6942,17 @@ Nepřečtené zprávy: %2</translation>
     <message>
         <location filename="../src/librssguard/gui/webviewers/qtextbrowser/textbrowserviewer.cpp" line="339"/>
         <source>Open in external browser</source>
-        <translation type="unfinished"/>
+        <translation>Otevřít v externím webovém prohlížeči</translation>
     </message>
     <message>
         <location filename="../src/librssguard/gui/webviewers/qtextbrowser/textbrowserviewer.cpp" line="341"/>
         <source>Download</source>
-        <translation type="unfinished"/>
+        <translation>Stáhnout</translation>
     </message>
     <message>
         <location filename="../src/librssguard/gui/webviewers/qtextbrowser/textbrowserviewer.cpp" line="366"/>
         <source>Open with external tool</source>
-        <translation type="unfinished"/>
+        <translation>Otevřít s externím nástrojem</translation>
     </message>
 </context>
 <context>
@@ -7066,7 +7066,7 @@ Nepřečtené zprávy: %2</translation>
     <message>
         <location filename="../src/librssguard/services/tt-rss/gui/ttrssaccountdetails.cpp" line="14"/>
         <source>If you select intelligent synchronization, then only not-yet-fetched or updated articles are downloaded. Network usage is greatly reduced and overall synchronization speed is greatly improved, but first feed fetching could be slow anyway if your feed contains huge number of articles.</source>
-        <translation type="unfinished"/>
+        <translation>Pokud povolíte inteligentní synchronizaci, budou se stahovat pouze zprávy, které doposud staženy nebyly. Bude tak sníženo zatížení sítě a celková rychlost synchronizace se značně zvýší, ovšem úplně první synchronizace nikoliv, až ty následné.</translation>
     </message>
     <message>
         <location filename="../src/librssguard/services/tt-rss/gui/ttrssaccountdetails.cpp" line="21"/>
@@ -7231,7 +7231,7 @@ Nepřečtené zprávy: %2</translation>
     <message>
         <location filename="../src/librssguard/services/tt-rss/gui/ttrssaccountdetails.ui" line="91"/>
         <source>Intelligent synchronization algorithm</source>
-        <translation type="unfinished"/>
+        <translation>Inteligentní synchronizace</translation>
     </message>
     <message>
         <location filename="../src/librssguard/services/tt-rss/gui/ttrssaccountdetails.ui" line="98"/>

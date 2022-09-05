@@ -928,7 +928,7 @@ Status: %3</source>
     <message>
         <location filename="../src/librssguard/core/feedsproxymodel.cpp" line="227"/>
         <source>Cannot perform drag &amp; drop operation</source>
-        <translation type="unfinished"/>
+        <translation>Kan ikke udføre træk &amp; slip operation</translation>
     </message>
     <message>
         <location filename="../src/librssguard/core/feedsproxymodel.cpp" line="228"/>
@@ -5281,7 +5281,7 @@ File filter for external e-mail selection dialog.</extracomment>
     <message>
         <location filename="../src/librssguard/gui/settings/settingsbrowsermail.ui" line="21"/>
         <source>Network</source>
-        <translation type="unfinished"/>
+        <translation>Netværk</translation>
     </message>
     <message>
         <location filename="../src/librssguard/gui/settings/settingsbrowsermail.ui" line="27"/>
@@ -6890,7 +6890,7 @@ Ulæste nyheder: %2</translation>
     <message>
         <location filename="../src/librssguard/gui/webviewers/qtextbrowser/textbrowserviewer.cpp" line="140"/>
         <source>image</source>
-        <translation type="unfinished"/>
+        <translation>billede</translation>
     </message>
     <message>
         <location filename="../src/librssguard/gui/webviewers/qtextbrowser/textbrowserviewer.cpp" line="336"/>
@@ -6900,17 +6900,17 @@ Ulæste nyheder: %2</translation>
     <message>
         <location filename="../src/librssguard/gui/webviewers/qtextbrowser/textbrowserviewer.cpp" line="339"/>
         <source>Open in external browser</source>
-        <translation type="unfinished"/>
+        <translation>Åben i ekstern netlæser</translation>
     </message>
     <message>
         <location filename="../src/librssguard/gui/webviewers/qtextbrowser/textbrowserviewer.cpp" line="341"/>
         <source>Download</source>
-        <translation type="unfinished"/>
+        <translation>Hent</translation>
     </message>
     <message>
         <location filename="../src/librssguard/gui/webviewers/qtextbrowser/textbrowserviewer.cpp" line="366"/>
         <source>Open with external tool</source>
-        <translation type="unfinished"/>
+        <translation>Åben med eksternt værktøj</translation>
     </message>
 </context>
 <context>

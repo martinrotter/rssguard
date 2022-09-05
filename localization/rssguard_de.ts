@@ -924,12 +924,12 @@ Status: %3</source>
     <message>
         <location filename="../src/librssguard/core/feedsproxymodel.cpp" line="227"/>
         <source>Cannot perform drag &amp; drop operation</source>
-        <translation type="unfinished"/>
+        <translation>Kann Ziehen und Ablegen nicht durchführen</translation>
     </message>
     <message>
         <location filename="../src/librssguard/core/feedsproxymodel.cpp" line="228"/>
         <source>You can&apos;t transfer dragged item into different account, this is not supported.</source>
-        <translation type="unfinished"/>
+        <translation>Ziehen und Ablegen in ein anderes Konto wird nicht unterstützt.</translation>
     </message>
 </context>
 <context>
@@ -6898,7 +6898,7 @@ Ungelesene Nachrichten: %2</translation>
     <message>
         <location filename="../src/librssguard/gui/webviewers/qtextbrowser/textbrowserviewer.cpp" line="339"/>
         <source>Open in external browser</source>
-        <translation type="unfinished"/>
+        <translation>In externem Browser öffnen</translation>
     </message>
     <message>
         <location filename="../src/librssguard/gui/webviewers/qtextbrowser/textbrowserviewer.cpp" line="341"/>
@@ -6908,7 +6908,7 @@ Ungelesene Nachrichten: %2</translation>
     <message>
         <location filename="../src/librssguard/gui/webviewers/qtextbrowser/textbrowserviewer.cpp" line="366"/>
         <source>Open with external tool</source>
-        <translation type="unfinished"/>
+        <translation>Mit externem Programm öffnen</translation>
     </message>
 </context>
 <context>
