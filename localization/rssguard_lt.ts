@@ -120,47 +120,47 @@ Error: %1</source>
 <context>
     <name>Application</name>
     <message>
-        <location filename="../src/librssguard/miscellaneous/application.cpp" line="954"/>
+        <location filename="../src/librssguard/miscellaneous/application.cpp" line="958"/>
         <source>Application is already running.</source>
         <translation>Programa jau yra vykdoma</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/miscellaneous/application.cpp" line="479"/>
+        <location filename="../src/librssguard/miscellaneous/application.cpp" line="493"/>
         <source>Output directory is not writable.</source>
         <translation>Išvesties katalogas nėra įrašomas</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/miscellaneous/application.cpp" line="486"/>
+        <location filename="../src/librssguard/miscellaneous/application.cpp" line="501"/>
         <source>Settings file not copied to output directory successfully.</source>
         <translation>Nustatymų failas nebuvo sėkmingai nukopijuotas į išvesties katalogą.</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/miscellaneous/application.cpp" line="501"/>
+        <location filename="../src/librssguard/miscellaneous/application.cpp" line="518"/>
         <source>Database restoration was not initiated. Make sure that output directory is writable.</source>
         <translation>Duomenų bazės atkūrimas nebuvo inicijuotas. Įsitikinkite, kad išvesties katalogas yra įrašomas.</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/miscellaneous/application.cpp" line="507"/>
+        <location filename="../src/librssguard/miscellaneous/application.cpp" line="525"/>
         <source>Settings restoration was not initiated. Make sure that output directory is writable.</source>
         <translation>Nustatymų atkūrimas nebuvo inicijuotas. Įsitikinkite, kad išvesties katalogas yra įrašomas.</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/miscellaneous/application.cpp" line="972"/>
+        <location filename="../src/librssguard/miscellaneous/application.cpp" line="976"/>
         <source>Cannot add feed</source>
         <translation>Nepavyksta pridėti kanalo</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/miscellaneous/application.cpp" line="973"/>
+        <location filename="../src/librssguard/miscellaneous/application.cpp" line="977"/>
         <source>Feed cannot be added because there is no active account which can add feeds.</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../src/librssguard/miscellaneous/application.cpp" line="1091"/>
+        <location filename="../src/librssguard/miscellaneous/application.cpp" line="1096"/>
         <source>Packages %1 were updated.</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../src/librssguard/miscellaneous/application.cpp" line="863"/>
+        <location filename="../src/librssguard/miscellaneous/application.cpp" line="877"/>
         <source>Unread articles fetched</source>
         <translation type="unfinished"/>
     </message>
@@ -170,17 +170,17 @@ Error: %1</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../src/librssguard/miscellaneous/application.cpp" line="898"/>
+        <location filename="../src/librssguard/miscellaneous/application.cpp" line="907"/>
         <source>AdBlock needs to be configured</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../src/librssguard/miscellaneous/application.cpp" line="282"/>
+        <location filename="../src/librssguard/miscellaneous/application.cpp" line="281"/>
         <source>Welcome</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../src/librssguard/miscellaneous/application.cpp" line="283"/>
+        <location filename="../src/librssguard/miscellaneous/application.cpp" line="282"/>
         <source>Welcome to %1.
 
 Please, check NEW stuff included in this
@@ -191,17 +191,17 @@ Susipažinkite su NAUJOMIS šios
 versijos ypatybėmis, spusteldami šį pranešimą.</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/miscellaneous/application.cpp" line="899"/>
+        <location filename="../src/librssguard/miscellaneous/application.cpp" line="908"/>
         <source>AdBlock is not configured properly. Go to &quot;Settings&quot; -&gt; &quot;Node.js&quot; and check if your Node.js is properly configured.</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../src/librssguard/miscellaneous/application.cpp" line="953"/>
+        <location filename="../src/librssguard/miscellaneous/application.cpp" line="957"/>
         <source>Already running</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../src/librssguard/miscellaneous/application.cpp" line="1082"/>
+        <location filename="../src/librssguard/miscellaneous/application.cpp" line="1087"/>
         <source>Packages %1 were NOT updated because of error: %2.</source>
         <translation type="unfinished"/>
     </message>
@@ -384,7 +384,7 @@ versijos ypatybėmis, spusteldami šį pranešimą.</translation>
 <context>
     <name>DownloadItem</name>
     <message>
-        <location filename="../src/librssguard/network-web/downloadmanager.cpp" line="265"/>
+        <location filename="../src/librssguard/network-web/downloadmanager.cpp" line="262"/>
         <source>Error opening output file: %1</source>
         <translation>Klaida, atveriant išvesties failą: %1</translation>
     </message>
@@ -394,7 +394,7 @@ versijos ypatybėmis, spusteldami šį pranešimą.</translation>
         <translation>Pasirinkite paskirtes vietą atsiunčiamam failui</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/network-web/downloadmanager.cpp" line="291"/>
+        <location filename="../src/librssguard/network-web/downloadmanager.cpp" line="288"/>
         <source>Error: %1</source>
         <translation>Klaida: %1</translation>
     </message>
@@ -404,59 +404,59 @@ versijos ypatybėmis, spusteldami šį pranešimą.</translation>
         <translation>Nepavyko sukurti atsiuntimo katalogo</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/network-web/downloadmanager.cpp" line="276"/>
+        <location filename="../src/librssguard/network-web/downloadmanager.cpp" line="273"/>
         <source>Error when saving file: %1</source>
         <translation>Klaida, įrašant failą: %1</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/network-web/downloadmanager.cpp" line="383"/>
+        <location filename="../src/librssguard/network-web/downloadmanager.cpp" line="380"/>
         <source>%1 of %2 (%3 per second) - %4</source>
         <translation>%1 iš %2 (%3 per sekundę) - %4</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/network-web/downloadmanager.cpp" line="393"/>
+        <location filename="../src/librssguard/network-web/downloadmanager.cpp" line="390"/>
         <source>%1 of %2 - download completed</source>
         <translation>%1 iš %2 - atsiuntimas užbaigtas</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/network-web/downloadmanager.cpp" line="210"/>
+        <location filename="../src/librssguard/network-web/downloadmanager.cpp" line="212"/>
         <source>Cannot open file</source>
         <translation>Nepavyksta atverti failo</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/network-web/downloadmanager.cpp" line="211"/>
+        <location filename="../src/librssguard/network-web/downloadmanager.cpp" line="212"/>
         <source>Cannot open output file. Open it manually.</source>
         <translation>Nepavyksta atverti išvesties failo. Atverkite jį rankiniu būdu.</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/network-web/downloadmanager.cpp" line="221"/>
+        <location filename="../src/librssguard/network-web/downloadmanager.cpp" line="220"/>
         <source>Cannot open directory</source>
         <translation>Nepavyksta atverti katalogo</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/network-web/downloadmanager.cpp" line="222"/>
+        <location filename="../src/librssguard/network-web/downloadmanager.cpp" line="221"/>
         <source>Cannot open output directory. Open it manually.</source>
         <translation>Nepavyksta atverti išvesties katalogo. Atverkite jį rankiniu būdu.</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/network-web/downloadmanager.cpp" line="434"/>
+        <location filename="../src/librssguard/network-web/downloadmanager.cpp" line="431"/>
         <source>Download finished</source>
         <translation>Atsiuntimas užbaigtas</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/network-web/downloadmanager.cpp" line="435"/>
+        <location filename="../src/librssguard/network-web/downloadmanager.cpp" line="432"/>
         <source>File '%1' is downloaded.
 Click here to open parent directory.</source>
         <translation>Failas &quot;%1&quot; yra atsisiųstas.
 Spustelėkite čia, kad atvertumėte virškatalogį.</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/network-web/downloadmanager.cpp" line="447"/>
+        <location filename="../src/librssguard/network-web/downloadmanager.cpp" line="442"/>
         <source>URL: %1</source>
         <translation>URL: %1</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/network-web/downloadmanager.cpp" line="448"/>
+        <location filename="../src/librssguard/network-web/downloadmanager.cpp" line="443"/>
         <source>Local file: %1</source>
         <translation>Vietinis failas: %1</translation>
     </message>
@@ -466,7 +466,7 @@ Spustelėkite čia, kad atvertumėte virškatalogį.</translation>
         <translation>Vietinio failo pasirinkimas atšauktas.</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/network-web/downloadmanager.cpp" line="439"/>
+        <location filename="../src/librssguard/network-web/downloadmanager.cpp" line="435"/>
         <source>Open folder</source>
         <translation type="unfinished"/>
     </message>
@@ -499,37 +499,37 @@ Spustelėkite čia, kad atvertumėte virškatalogį.</translation>
 <context>
     <name>DownloadManager</name>
     <message numerus="yes">
-        <location filename="../src/librssguard/network-web/downloadmanager.cpp" line="728"/>
+        <location filename="../src/librssguard/network-web/downloadmanager.cpp" line="725"/>
         <source>%n minutes remaining</source>
         <translation><numerusform>Liko %n minutė</numerusform><numerusform>Liko %n minutės</numerusform><numerusform>Liko %n minučių</numerusform><numerusform>Liko %n minučių</numerusform></translation>
     </message>
     <message numerus="yes">
-        <location filename="../src/librssguard/network-web/downloadmanager.cpp" line="732"/>
+        <location filename="../src/librssguard/network-web/downloadmanager.cpp" line="729"/>
         <source>%n seconds remaining</source>
         <translation><numerusform>Liko %n sekundė</numerusform><numerusform>Liko %n sekundės</numerusform><numerusform>Liko %n sekundžių</numerusform><numerusform>Liko %n sekundžių</numerusform></translation>
     </message>
     <message>
-        <location filename="../src/librssguard/network-web/downloadmanager.cpp" line="744"/>
+        <location filename="../src/librssguard/network-web/downloadmanager.cpp" line="741"/>
         <source>bytes</source>
         <translation>baitų</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/network-web/downloadmanager.cpp" line="748"/>
+        <location filename="../src/librssguard/network-web/downloadmanager.cpp" line="745"/>
         <source>kB</source>
         <translation>kB</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/network-web/downloadmanager.cpp" line="752"/>
+        <location filename="../src/librssguard/network-web/downloadmanager.cpp" line="749"/>
         <source>MB</source>
         <translation>MB</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/network-web/downloadmanager.cpp" line="756"/>
+        <location filename="../src/librssguard/network-web/downloadmanager.cpp" line="753"/>
         <source>GB</source>
         <translation>GB</translation>
     </message>
     <message numerus="yes">
-        <location filename="../src/librssguard/network-web/downloadmanager.cpp" line="588"/>
+        <location filename="../src/librssguard/network-web/downloadmanager.cpp" line="583"/>
         <source>Downloading %n file(s)...</source>
         <translation><numerusform>Atsiunčiamas %n failas...</numerusform><numerusform>Atsiunčiami %n failai...</numerusform><numerusform>Atsiunčiama %n failų...</numerusform><numerusform>Atsiunčiama %n failų...</numerusform></translation>
     </message>
@@ -547,48 +547,48 @@ Spustelėkite čia, kad atvertumėte virškatalogį.</translation>
         <translation>Forma</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/services/gmail/gui/emailpreviewer.ui" line="27"/>
+        <location filename="../src/librssguard/services/gmail/gui/emailpreviewer.ui" line="20"/>
         <source>From</source>
         <translation>Nuo</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/services/gmail/gui/emailpreviewer.ui" line="59"/>
+        <location filename="../src/librssguard/services/gmail/gui/emailpreviewer.ui" line="52"/>
         <source>&amp;Attachments</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../src/librssguard/services/gmail/gui/emailpreviewer.ui" line="72"/>
+        <location filename="../src/librssguard/services/gmail/gui/emailpreviewer.ui" line="65"/>
         <source>&amp;Reply</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../src/librssguard/services/gmail/gui/emailpreviewer.ui" line="82"/>
+        <location filename="../src/librssguard/services/gmail/gui/emailpreviewer.ui" line="75"/>
         <source>&amp;Forward</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../src/librssguard/services/gmail/gui/emailpreviewer.ui" line="94"/>
+        <location filename="../src/librssguard/services/gmail/gui/emailpreviewer.ui" line="87"/>
         <source>Subject</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../src/librssguard/services/gmail/gui/emailpreviewer.ui" line="111"/>
+        <location filename="../src/librssguard/services/gmail/gui/emailpreviewer.ui" line="104"/>
         <source>To</source>
         <translation>Kam</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/services/gmail/gui/emailpreviewer.cpp" line="98"/>
-        <location filename="../src/librssguard/services/gmail/gui/emailpreviewer.cpp" line="104"/>
+        <location filename="../src/librssguard/services/gmail/gui/emailpreviewer.cpp" line="111"/>
+        <location filename="../src/librssguard/services/gmail/gui/emailpreviewer.cpp" line="117"/>
         <source>Cannot download attachment</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../src/librssguard/services/gmail/gui/emailpreviewer.cpp" line="99"/>
+        <location filename="../src/librssguard/services/gmail/gui/emailpreviewer.cpp" line="112"/>
         <source>Attachment cannot be downloaded because you are not logged-in.</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../src/librssguard/services/gmail/gui/emailpreviewer.cpp" line="105"/>
+        <location filename="../src/librssguard/services/gmail/gui/emailpreviewer.cpp" line="118"/>
         <source>Attachment cannot be downloaded because some general error happened.</source>
         <translation type="unfinished"/>
     </message>
@@ -624,22 +624,22 @@ Spustelėkite čia, kad atvertumėte virškatalogį.</translation>
 <context>
     <name>Feed</name>
     <message>
-        <location filename="../src/librssguard/services/abstract/feed.cpp" line="251"/>
+        <location filename="../src/librssguard/services/abstract/feed.cpp" line="253"/>
         <source>no errors</source>
         <translation>klaidų nėra</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/services/abstract/feed.cpp" line="257"/>
+        <location filename="../src/librssguard/services/abstract/feed.cpp" line="259"/>
         <source>authentication error</source>
         <translation>atpažinimo klaida</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/services/abstract/feed.cpp" line="260"/>
+        <location filename="../src/librssguard/services/abstract/feed.cpp" line="262"/>
         <source>network error</source>
         <translation>tinklo klaida</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/services/abstract/feed.cpp" line="305"/>
+        <location filename="../src/librssguard/services/abstract/feed.cpp" line="307"/>
         <source>Auto-update status: %1
 Active message filters: %2
 Status: %3</source>
@@ -669,17 +669,17 @@ Status: %3</source>
         <translation type="unfinished"><numerusform></numerusform><numerusform></numerusform><numerusform></numerusform><numerusform></numerusform></translation>
     </message>
     <message>
-        <location filename="../src/librssguard/services/abstract/feed.cpp" line="254"/>
+        <location filename="../src/librssguard/services/abstract/feed.cpp" line="256"/>
         <source>has new articles</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../src/librssguard/services/abstract/feed.cpp" line="263"/>
+        <location filename="../src/librssguard/services/abstract/feed.cpp" line="265"/>
         <source>parsing error</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../src/librssguard/services/abstract/feed.cpp" line="266"/>
+        <location filename="../src/librssguard/services/abstract/feed.cpp" line="268"/>
         <source>error</source>
         <translation type="unfinished"/>
     </message>
@@ -687,12 +687,12 @@ Status: %3</source>
 <context>
     <name>FeedMessageViewer</name>
     <message>
-        <location filename="../src/librssguard/gui/feedmessageviewer.cpp" line="47"/>
+        <location filename="../src/librssguard/gui/feedmessageviewer.cpp" line="48"/>
         <source>Toolbar for feeds</source>
         <translation>Kanalų įrankių juosta</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/gui/feedmessageviewer.cpp" line="47"/>
+        <location filename="../src/librssguard/gui/feedmessageviewer.cpp" line="49"/>
         <source>Toolbar for articles</source>
         <translation type="unfinished"/>
     </message>
@@ -863,28 +863,28 @@ Status: %3</source>
 <context>
     <name>FeedlyNetwork</name>
     <message>
-        <location filename="../src/librssguard/services/feedly/feedlynetwork.cpp" line="687"/>
+        <location filename="../src/librssguard/services/feedly/feedlynetwork.cpp" line="696"/>
         <source>Feedly: authentication error</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../src/librssguard/services/feedly/feedlynetwork.cpp" line="688"/>
+        <location filename="../src/librssguard/services/feedly/feedlynetwork.cpp" line="697"/>
         <source>Click this to login again. Error is: &apos;%1&apos;</source>
         <translation>Spustelėkite tai, norėdami prisijungti dar kartą. Klaida yra: &quot;%1&quot;</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/services/feedly/feedlynetwork.cpp" line="703"/>
+        <location filename="../src/librssguard/services/feedly/feedlynetwork.cpp" line="711"/>
         <source>Feedly: authorization denied</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../src/librssguard/services/feedly/feedlynetwork.cpp" line="704"/>
+        <location filename="../src/librssguard/services/feedly/feedlynetwork.cpp" line="712"/>
         <source>Click this to login again.</source>
         <translation>Spustelėkite tai, norėdami prisijungti dar kartą.</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/services/feedly/feedlynetwork.cpp" line="691"/>
-        <location filename="../src/librssguard/services/feedly/feedlynetwork.cpp" line="707"/>
+        <location filename="../src/librssguard/services/feedly/feedlynetwork.cpp" line="700"/>
+        <location filename="../src/librssguard/services/feedly/feedlynetwork.cpp" line="715"/>
         <source>Login</source>
         <translation type="unfinished"/>
     </message>
@@ -892,7 +892,7 @@ Status: %3</source>
 <context>
     <name>FeedsImportExportModel</name>
     <message>
-        <location filename="../src/librssguard/services/standard/standardfeedsimportexportmodel.cpp" line="281"/>
+        <location filename="../src/librssguard/services/standard/standardfeedsimportexportmodel.cpp" line="277"/>
         <source>Category </source>
         <translation>Kategorija</translation>
     </message>
@@ -900,34 +900,37 @@ Status: %3</source>
 <context>
     <name>FeedsModel</name>
     <message>
-        <location filename="../src/librssguard/core/feedsmodel.cpp" line="42"/>
+        <location filename="../src/librssguard/core/feedsmodel.cpp" line="38"/>
         <source>Title</source>
         <translation>Antraštė</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/core/feedsmodel.cpp" line="44"/>
+        <location filename="../src/librssguard/core/feedsmodel.cpp" line="39"/>
         <source>Titles of feeds/categories.</source>
         <translation>Kanalų/kategorijų antraštės.</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/core/feedsmodel.cpp" line="35"/>
+        <location filename="../src/librssguard/core/feedsmodel.cpp" line="31"/>
         <source>Root</source>
         <translation>Šaknis</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/core/feedsmodel.cpp" line="119"/>
-        <source>You can&apos;t transfer dragged item into different account, this is not supported.</source>
-        <translation>Jūs negalite perkelti velkamą elementą į kitą paskyrą, tai yra nepalaikoma.</translation>
+        <location filename="../src/librssguard/core/feedsmodel.cpp" line="40"/>
+        <source>Counts of unread/all mesages.</source>
+        <translation>Neskaitytų/visų žinučių skaičiai.</translation>
     </message>
+</context>
+<context>
+    <name>FeedsProxyModel</name>
     <message>
-        <location filename="../src/librssguard/core/feedsmodel.cpp" line="118"/>
+        <location filename="../src/librssguard/core/feedsproxymodel.cpp" line="227"/>
         <source>Cannot perform drag &amp; drop operation</source>
         <translation>Negalima atlikti vilkimo operacijos</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/core/feedsmodel.cpp" line="45"/>
-        <source>Counts of unread/all mesages.</source>
-        <translation>Neskaitytų/visų žinučių skaičiai.</translation>
+        <location filename="../src/librssguard/core/feedsproxymodel.cpp" line="228"/>
+        <source>You can&apos;t transfer dragged item into different account, this is not supported.</source>
+        <translation>Jūs negalite perkelti velkamą elementą į kitą paskyrą, tai yra nepalaikoma.</translation>
     </message>
 </context>
 <context>
@@ -951,113 +954,113 @@ Status: %3</source>
 <context>
     <name>FeedsView</name>
     <message>
-        <location filename="../src/librssguard/gui/feedsview.cpp" line="212"/>
-        <location filename="../src/librssguard/gui/feedsview.cpp" line="225"/>
+        <location filename="../src/librssguard/gui/feedsview.cpp" line="215"/>
+        <location filename="../src/librssguard/gui/feedsview.cpp" line="228"/>
         <source>Cannot edit item</source>
         <translation>Nepavyksta redaguoti elemento</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/gui/feedsview.cpp" line="240"/>
+        <location filename="../src/librssguard/gui/feedsview.cpp" line="243"/>
         <source>Cannot delete item</source>
         <translation>Nepavyksta ištrinti elemento</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/gui/feedsview.cpp" line="784"/>
+        <location filename="../src/librssguard/gui/feedsview.cpp" line="777"/>
         <source>Context menu for empty space</source>
         <translation>Kontekstinis meniu tuščiai vietai</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/gui/feedsview.cpp" line="213"/>
+        <location filename="../src/librssguard/gui/feedsview.cpp" line="216"/>
         <source>Selected item cannot be edited because another critical operation is ongoing.</source>
         <translation>Pasirinktas elementas negali būti redaguojamas, nes yra vykdoma kita kritinė operacija.</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/gui/feedsview.cpp" line="241"/>
+        <location filename="../src/librssguard/gui/feedsview.cpp" line="244"/>
         <source>Selected item cannot be deleted because another critical operation is ongoing.</source>
         <translation>Pasirinktas elementas negali būti ištrintas, nes yra vykdoma kita kritinė operacija.</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/gui/feedsview.cpp" line="658"/>
-        <location filename="../src/librssguard/gui/feedsview.cpp" line="710"/>
+        <location filename="../src/librssguard/gui/feedsview.cpp" line="655"/>
+        <location filename="../src/librssguard/gui/feedsview.cpp" line="706"/>
         <source>Context menu for categories</source>
         <translation>Kontekstinis meniu kategorijoms</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/gui/feedsview.cpp" line="226"/>
+        <location filename="../src/librssguard/gui/feedsview.cpp" line="229"/>
         <source>Selected item cannot be edited, this is not (yet?) supported.</source>
         <translation>Pasirinktas elementas negali būti redaguojamas, tai (kol kas?) nepalaikoma.</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/gui/feedsview.cpp" line="261"/>
+        <location filename="../src/librssguard/gui/feedsview.cpp" line="264"/>
         <source>Deleting &quot;%1&quot;</source>
         <translation>Ištrinama &quot;%1&quot;</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/gui/feedsview.cpp" line="262"/>
+        <location filename="../src/librssguard/gui/feedsview.cpp" line="265"/>
         <source>You are about to completely delete item &quot;%1&quot;.</source>
         <translation>Jūs ruošiatės galutinai ištrinti elementą &quot;%1&quot;.</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/gui/feedsview.cpp" line="263"/>
+        <location filename="../src/librssguard/gui/feedsview.cpp" line="266"/>
         <source>Are you sure?</source>
         <translation>Ar tikrai?</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/gui/feedsview.cpp" line="276"/>
-        <location filename="../src/librssguard/gui/feedsview.cpp" line="283"/>
+        <location filename="../src/librssguard/gui/feedsview.cpp" line="280"/>
+        <location filename="../src/librssguard/gui/feedsview.cpp" line="287"/>
         <source>Cannot delete &quot;%1&quot;</source>
         <translation>Nepavyksta ištrinti &quot;%1&quot;</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/gui/feedsview.cpp" line="277"/>
+        <location filename="../src/librssguard/gui/feedsview.cpp" line="281"/>
         <source>This item cannot be deleted because something critically failed. Submit bug report.</source>
         <translation>Šis elementas negali būti ištrintas, nes įvyko kažkokia kritinė klaida. Praneškite apie klaidą.</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/gui/feedsview.cpp" line="284"/>
+        <location filename="../src/librssguard/gui/feedsview.cpp" line="288"/>
         <source>This item cannot be deleted, because it does not support it
 or this functionality is not implemented yet.</source>
         <translation>Šis elementas negali būti ištrintas, kadangi jis to nepalaiko
 arba šis funkcionalumas dar nėra įgyvendintas.</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/gui/feedsview.cpp" line="794"/>
+        <location filename="../src/librssguard/gui/feedsview.cpp" line="787"/>
         <source>Context menu for other items</source>
         <translation>Kontekstinis meniu kitiems elementams</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/gui/feedsview.cpp" line="132"/>
+        <location filename="../src/librssguard/gui/feedsview.cpp" line="135"/>
         <source>Selected account does not support adding of new feeds.</source>
         <translation>Pasirinkta paskyra nepalaiko naujų kanalų pridėjimo.</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/gui/feedsview.cpp" line="150"/>
+        <location filename="../src/librssguard/gui/feedsview.cpp" line="153"/>
         <source>Selected account does not support adding of new categories.</source>
         <translation>Pasirinkta paskyra nepalaiko naujų kategorijų pridėjimo.</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/gui/feedsview.cpp" line="430"/>
+        <location filename="../src/librssguard/gui/feedsview.cpp" line="436"/>
         <source>Context menu for recycle bins</source>
         <translation>Kontekstinis meniu šiukšlinėms</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/gui/feedsview.cpp" line="453"/>
+        <location filename="../src/librssguard/gui/feedsview.cpp" line="458"/>
         <source>Context menu for accounts</source>
         <translation>Kontekstinis meniu paskyroms</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/gui/feedsview.cpp" line="815"/>
+        <location filename="../src/librssguard/gui/feedsview.cpp" line="808"/>
         <source>Context menu for label</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../src/librssguard/gui/feedsview.cpp" line="761"/>
+        <location filename="../src/librssguard/gui/feedsview.cpp" line="755"/>
         <source>Context menu for important articles</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../src/librssguard/gui/feedsview.cpp" line="131"/>
-        <location filename="../src/librssguard/gui/feedsview.cpp" line="149"/>
+        <location filename="../src/librssguard/gui/feedsview.cpp" line="134"/>
+        <location filename="../src/librssguard/gui/feedsview.cpp" line="152"/>
         <source>Not supported by account</source>
         <translation type="unfinished"/>
     </message>
@@ -1065,37 +1068,37 @@ arba šis funkcionalumas dar nėra įgyvendintas.</translation>
 <context>
     <name>FormAbout</name>
     <message>
-        <location filename="../src/librssguard/gui/dialogs/formabout.cpp" line="76"/>
+        <location filename="../src/librssguard/gui/dialogs/formabout.cpp" line="103"/>
         <source>Changelog not found.</source>
         <translation>Keitimų žurnalas nerastas.</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/gui/dialogs/formabout.cpp" line="24"/>
+        <location filename="../src/librssguard/gui/dialogs/formabout.cpp" line="30"/>
         <source>About %1</source>
         <translation>Apie %1</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/gui/dialogs/formabout.cpp" line="37"/>
+        <location filename="../src/librssguard/gui/dialogs/formabout.cpp" line="45"/>
         <source>FULLY portable</source>
         <translation>PILNAI perkeliami</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/gui/dialogs/formabout.cpp" line="92"/>
+        <location filename="../src/librssguard/gui/dialogs/formabout.cpp" line="123"/>
         <source>&lt;body&gt;%5 is a (very) tiny feed reader.&lt;br&gt;&lt;br&gt;This software is distributed under the terms of GNU General Public License, version 3.&lt;br&gt;&lt;br&gt;Contacts:&lt;ul&gt;&lt;li&gt;&lt;a href=&quot;mailto://%1&quot;&gt;%1&lt;/a&gt; ~e-mail&lt;/li&gt;&lt;li&gt;&lt;a href=&quot;%2&quot;&gt;%2&lt;/a&gt; ~website&lt;/li&gt;&lt;/ul&gt;You can obtain source code for %5 from its website.&lt;br&gt;&lt;br&gt;&lt;br&gt;Copyright (C) 2011-%3 %4&lt;/body&gt;</source>
         <translation>&lt;body&gt;%5 yra (labai) mažytė sklaidos kanalų skaitytuvė.&lt;br&gt;&lt;br&gt;Ši programinė įranga yra platinama pagal GNU Bendrosios Viešosios Licencijos, versija 3, nuostatas.&lt;br&gt;&lt;br&gt;Kontaktai:&lt;ul&gt;&lt;li&gt;&lt;a href=&quot;mailto://%1&quot;&gt;%1&lt;/a&gt; ~el. paštas&lt;/li&gt;&lt;li&gt;&lt;a href=&quot;%2&quot;&gt;%2&lt;/a&gt; ~tinklalapis&lt;/li&gt;&lt;/ul&gt;Jūs galite gauti %5 pirminį kodą iš programos tinklalapio.&lt;br&gt;&lt;br&gt;&lt;br&gt;Autorių Teisės (C) 2011-%3 %4&lt;/body&gt;</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/gui/dialogs/formabout.cpp" line="80"/>
+        <location filename="../src/librssguard/gui/dialogs/formabout.cpp" line="107"/>
         <source>&lt;b&gt;%8&lt;/b&gt;&lt;br&gt;&lt;b&gt;Version:&lt;/b&gt; %1 (built on %2/%3)&lt;br&gt;&lt;b&gt;Revision:&lt;/b&gt; %4&lt;br&gt;&lt;b&gt;Build date:&lt;/b&gt; %5&lt;br&gt;&lt;b&gt;Qt:&lt;/b&gt; %6 (compiled against %7)&lt;br&gt;</source>
         <translation>&lt;b&gt;%8&lt;/b&gt;&lt;br&gt;&lt;b&gt;Versija:&lt;/b&gt; %1 (sukurta sistemoje %2/%3)&lt;br&gt;&lt;b&gt;Poversijis:&lt;/b&gt; %4&lt;br&gt;&lt;b&gt;Kūrimo data:&lt;/b&gt; %5&lt;br&gt;&lt;b&gt;Qt:&lt;/b&gt; %6 (sukompiliuota remiantis %7)&lt;br&gt;</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/gui/dialogs/formabout.cpp" line="43"/>
+        <location filename="../src/librssguard/gui/dialogs/formabout.cpp" line="51"/>
         <source>NOT portable</source>
         <translation>NEPERKELIAMI</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/gui/dialogs/formabout.cpp" line="40"/>
+        <location filename="../src/librssguard/gui/dialogs/formabout.cpp" line="48"/>
         <source>CUSTOM</source>
         <translation type="unfinished"/>
     </message>
@@ -1105,49 +1108,29 @@ arba šis funkcionalumas dar nėra įgyvendintas.</translation>
         <translation>Informacija</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/gui/dialogs/formabout.ui" line="150"/>
+        <location filename="../src/librssguard/gui/dialogs/formabout.ui" line="147"/>
         <source>Licenses</source>
         <translation>Licencijos</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/gui/dialogs/formabout.ui" line="162"/>
+        <location filename="../src/librssguard/gui/dialogs/formabout.ui" line="159"/>
         <source>Licenses page is available only in English language.</source>
         <translation>Licencijų puslapis yra prieinamas tik anglų kalba.</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/gui/dialogs/formabout.ui" line="170"/>
+        <location filename="../src/librssguard/gui/dialogs/formabout.ui" line="167"/>
         <source>Changelog</source>
         <translation>Keitimų žurnalas</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/gui/dialogs/formabout.ui" line="205"/>
+        <location filename="../src/librssguard/gui/dialogs/formabout.ui" line="199"/>
         <source>Changelog page is available only in English language.</source>
         <translation>Keitimų žurnalo puslapis yra prieinamas tik anglų kalba.</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/gui/dialogs/formabout.ui" line="213"/>
+        <location filename="../src/librssguard/gui/dialogs/formabout.ui" line="207"/>
         <source>Resources</source>
         <translation>Ištekliai</translation>
-    </message>
-    <message>
-        <location filename="../src/librssguard/gui/dialogs/formabout.ui" line="222"/>
-        <source>Settings type</source>
-        <translation>Nustatymų tipas</translation>
-    </message>
-    <message>
-        <location filename="../src/librssguard/gui/dialogs/formabout.ui" line="236"/>
-        <source>Settings file</source>
-        <translation>Nustatymų failas</translation>
-    </message>
-    <message>
-        <location filename="../src/librssguard/gui/dialogs/formabout.ui" line="257"/>
-        <source>Database location</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <location filename="../src/librssguard/gui/dialogs/formabout.ui" line="271"/>
-        <source>User skins root path</source>
-        <translation>Naudotojo apipavidalinimų šakninis kelias</translation>
     </message>
 </context>
 <context>
@@ -1184,12 +1167,12 @@ arba šis funkcionalumas dar nėra įgyvendintas.</translation>
         <translation>Pridėti naują gavėją.</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/services/gmail/gui/formaddeditemail.cpp" line="165"/>
+        <location filename="../src/librssguard/services/gmail/gui/formaddeditemail.cpp" line="170"/>
         <source>E-mail NOT sent</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../src/librssguard/services/gmail/gui/formaddeditemail.cpp" line="165"/>
+        <location filename="../src/librssguard/services/gmail/gui/formaddeditemail.cpp" line="171"/>
         <source>Your e-mail message wasn&apos;t sent.</source>
         <translation type="unfinished"/>
     </message>
@@ -1701,27 +1684,27 @@ arba šis funkcionalumas dar nėra įgyvendintas.</translation>
 <context>
     <name>FormMain</name>
     <message>
-        <location filename="../src/librssguard/gui/dialogs/formmain.cpp" line="403"/>
+        <location filename="../src/librssguard/gui/dialogs/formmain.cpp" line="398"/>
         <source>No possible actions</source>
         <translation>Nėra galimų veiksmų</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/gui/dialogs/formmain.cpp" line="360"/>
+        <location filename="../src/librssguard/gui/dialogs/formmain.cpp" line="357"/>
         <source>No recycle bin</source>
         <translation>Nėra šiukšlinės</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/gui/dialogs/formmain.cpp" line="64"/>
+        <location filename="../src/librssguard/gui/dialogs/formmain.cpp" line="65"/>
         <source>Main menu</source>
         <translation>Pagrindinis meniu</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/gui/dialogs/formmain.cpp" line="77"/>
+        <location filename="../src/librssguard/gui/dialogs/formmain.cpp" line="78"/>
         <source>Open main menu</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../src/librssguard/gui/dialogs/formmain.cpp" line="85"/>
+        <location filename="../src/librssguard/gui/dialogs/formmain.cpp" line="86"/>
         <source>Open &amp;main menu</source>
         <translation type="unfinished"/>
     </message>
@@ -2162,7 +2145,7 @@ arba šis funkcionalumas dar nėra įgyvendintas.</translation>
     </message>
     <message>
         <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="742"/>
-        <location filename="../src/librssguard/gui/dialogs/formmain.cpp" line="302"/>
+        <location filename="../src/librssguard/gui/dialogs/formmain.cpp" line="303"/>
         <source>Add new category</source>
         <translation>Pridėti naują kategoriją</translation>
     </message>
@@ -2257,63 +2240,63 @@ arba šis funkcionalumas dar nėra įgyvendintas.</translation>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="867"/>
+        <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="864"/>
         <source>&amp;Sort alphabetically</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="872"/>
+        <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="869"/>
         <source>Move &amp;up</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="877"/>
+        <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="874"/>
         <source>Move to &amp;top</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="882"/>
+        <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="879"/>
         <source>Move &amp;down</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="887"/>
+        <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="884"/>
         <source>Move to &amp;bottom</source>
         <translation type="unfinished"/>
     </message>
     <message>
         <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="737"/>
-        <location filename="../src/librssguard/gui/dialogs/formmain.cpp" line="314"/>
+        <location filename="../src/librssguard/gui/dialogs/formmain.cpp" line="313"/>
         <source>Add new feed</source>
         <translation>Pridėti naują kanalą</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/gui/dialogs/formmain.cpp" line="368"/>
+        <location filename="../src/librssguard/gui/dialogs/formmain.cpp" line="364"/>
         <source>No actions possible</source>
         <translation>Nėra galimų veiksmų</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/gui/dialogs/formmain.cpp" line="152"/>
+        <location filename="../src/librssguard/gui/dialogs/formmain.cpp" line="153"/>
         <source>Cannot cleanup database</source>
         <translation>Nepavyksta išvalyti duomenų bazės</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/gui/dialogs/formmain.cpp" line="153"/>
+        <location filename="../src/librssguard/gui/dialogs/formmain.cpp" line="154"/>
         <source>Cannot cleanup database, because another critical action is running.</source>
         <translation>Nepavyksta išvalyti duomenų bazės, nes yra vykdomas kitas kritinis veiksmas.</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/gui/dialogs/formmain.cpp" line="511"/>
+        <location filename="../src/librssguard/gui/dialogs/formmain.cpp" line="509"/>
         <source>Close opened modal dialogs first.</source>
         <translation>Iš pradžių, užverkite atvertus modalinius dialogus.</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/gui/dialogs/formmain.cpp" line="439"/>
+        <location filename="../src/librssguard/gui/dialogs/formmain.cpp" line="433"/>
         <source>Fetching common data</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../src/librssguard/gui/dialogs/formmain.cpp" line="510"/>
+        <location filename="../src/librssguard/gui/dialogs/formmain.cpp" line="508"/>
         <source>Close dialogs</source>
         <translation type="unfinished"/>
     </message>
@@ -2685,136 +2668,140 @@ Jūs turite paleisti iš naujo rankiniu būdu.</translation>
 <context>
     <name>FormStandardImportExport</name>
     <message>
-        <location filename="../src/librssguard/services/standard/gui/formstandardimportexport.cpp" line="30"/>
+        <location filename="../src/librssguard/services/standard/gui/formstandardimportexport.cpp" line="31"/>
+        <location filename="../src/librssguard/services/standard/gui/formstandardimportexport.cpp" line="32"/>
         <source>No file is selected.</source>
         <translation>Failas nepasirinktas.</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/services/standard/gui/formstandardimportexport.cpp" line="32"/>
+        <location filename="../src/librssguard/services/standard/gui/formstandardimportexport.cpp" line="35"/>
+        <location filename="../src/librssguard/services/standard/gui/formstandardimportexport.cpp" line="36"/>
         <source>No operation executed yet.</source>
         <translation>Kol kas neįvykdyta jokių operacijų.</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/services/standard/gui/formstandardimportexport.cpp" line="54"/>
+        <location filename="../src/librssguard/services/standard/gui/formstandardimportexport.cpp" line="61"/>
         <source>Destination file</source>
         <translation>Paskirties failas</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/services/standard/gui/formstandardimportexport.cpp" line="55"/>
+        <location filename="../src/librssguard/services/standard/gui/formstandardimportexport.cpp" line="62"/>
         <source>Source feeds &amp;&amp; categories</source>
         <translation>Šaltinio kanalai ir kategorijos</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/services/standard/gui/formstandardimportexport.cpp" line="57"/>
+        <location filename="../src/librssguard/services/standard/gui/formstandardimportexport.cpp" line="64"/>
         <source>Export feeds</source>
         <translation>Eksportuoti kanalus</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/services/standard/gui/formstandardimportexport.cpp" line="64"/>
+        <location filename="../src/librssguard/services/standard/gui/formstandardimportexport.cpp" line="72"/>
         <source>Source file</source>
         <translation>Šaltinio failas</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/services/standard/gui/formstandardimportexport.cpp" line="65"/>
+        <location filename="../src/librssguard/services/standard/gui/formstandardimportexport.cpp" line="73"/>
         <source>Target feeds &amp;&amp; categories</source>
         <translation>Paskirties kanalai ir kategorijos</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/services/standard/gui/formstandardimportexport.cpp" line="71"/>
+        <location filename="../src/librssguard/services/standard/gui/formstandardimportexport.cpp" line="80"/>
         <source>Import feeds</source>
         <translation>Importuoti kanalus</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/services/standard/gui/formstandardimportexport.cpp" line="143"/>
-        <location filename="../src/librssguard/services/standard/gui/formstandardimportexport.cpp" line="186"/>
+        <location filename="../src/librssguard/services/standard/gui/formstandardimportexport.cpp" line="150"/>
+        <location filename="../src/librssguard/services/standard/gui/formstandardimportexport.cpp" line="195"/>
         <source>OPML 2.0 files (*.opml)</source>
         <translation>OPML 2.0 failai (*.opml)</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/services/standard/gui/formstandardimportexport.cpp" line="153"/>
+        <location filename="../src/librssguard/services/standard/gui/formstandardimportexport.cpp" line="161"/>
         <source>Select file for feeds export</source>
         <translation>Pasirinkite failą kanalų eksportavimui</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/services/standard/gui/formstandardimportexport.cpp" line="179"/>
-        <location filename="../src/librssguard/services/standard/gui/formstandardimportexport.cpp" line="206"/>
+        <location filename="../src/librssguard/services/standard/gui/formstandardimportexport.cpp" line="186"/>
+        <location filename="../src/librssguard/services/standard/gui/formstandardimportexport.cpp" line="220"/>
         <source>File is selected.</source>
         <translation>Failas pasirinktas.</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/services/standard/gui/formstandardimportexport.cpp" line="195"/>
+        <location filename="../src/librssguard/services/standard/gui/formstandardimportexport.cpp" line="205"/>
         <source>Select file for feeds import</source>
         <translation>Pasirinkite failą kanalų importavimui</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/services/standard/gui/formstandardimportexport.cpp" line="231"/>
+        <location filename="../src/librssguard/services/standard/gui/formstandardimportexport.cpp" line="246"/>
+        <location filename="../src/librssguard/services/standard/gui/formstandardimportexport.cpp" line="247"/>
         <source>Cannot open source file.</source>
         <translation>Nepavyksta atverti šaltinio failo.</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/services/standard/gui/formstandardimportexport.cpp" line="117"/>
+        <location filename="../src/librssguard/services/standard/gui/formstandardimportexport.cpp" line="124"/>
         <source>Feeds were loaded.</source>
         <translation>Kanalai buvo įkelti.</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/services/standard/gui/formstandardimportexport.cpp" line="125"/>
+        <location filename="../src/librssguard/services/standard/gui/formstandardimportexport.cpp" line="133"/>
         <source>Error, file is not well-formed. Select another file.</source>
         <translation>Klaida, failas nėra tinkamai suformuotas. Pasirinkite kitą failą.</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/services/standard/gui/formstandardimportexport.cpp" line="126"/>
+        <location filename="../src/librssguard/services/standard/gui/formstandardimportexport.cpp" line="134"/>
         <source>Error occurred. File is not well-formed. Select another file.</source>
         <translation>Įvyko klaida. Failas nėra tinkamai suformuotas. Pasirinkite kitą failą.</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/services/standard/gui/formstandardimportexport.cpp" line="284"/>
-        <location filename="../src/librssguard/services/standard/gui/formstandardimportexport.cpp" line="285"/>
+        <location filename="../src/librssguard/services/standard/gui/formstandardimportexport.cpp" line="301"/>
+        <location filename="../src/librssguard/services/standard/gui/formstandardimportexport.cpp" line="302"/>
         <source>Feeds were exported successfully.</source>
         <translation>Kanalai buvo sėkmingai eksportuoti.</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/services/standard/gui/formstandardimportexport.cpp" line="292"/>
+        <location filename="../src/librssguard/services/standard/gui/formstandardimportexport.cpp" line="312"/>
+        <location filename="../src/librssguard/services/standard/gui/formstandardimportexport.cpp" line="313"/>
         <source>Critical error occurred.</source>
         <translation>Įvyko kritinė klaida.</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/services/standard/gui/formstandardimportexport.cpp" line="100"/>
+        <location filename="../src/librssguard/services/standard/gui/formstandardimportexport.cpp" line="107"/>
         <source>Parsing data...</source>
         <translation>Analizuojami duomenys...</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/services/standard/gui/formstandardimportexport.cpp" line="288"/>
+        <location filename="../src/librssguard/services/standard/gui/formstandardimportexport.cpp" line="306"/>
         <source>Cannot write into destination file: &apos;%1&apos;.</source>
         <translation>Nepavyksta įrašyti į paskirties failą: &apos;%1&apos;.</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/services/standard/gui/formstandardimportexport.cpp" line="144"/>
-        <location filename="../src/librssguard/services/standard/gui/formstandardimportexport.cpp" line="187"/>
+        <location filename="../src/librssguard/services/standard/gui/formstandardimportexport.cpp" line="151"/>
+        <location filename="../src/librssguard/services/standard/gui/formstandardimportexport.cpp" line="196"/>
         <source>TXT files [one URL per line] (*.txt)</source>
         <translation>TXT failai [po vieną URL eilutėje] (*.txt)</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/services/standard/gui/formstandardimportexport.cpp" line="209"/>
+        <location filename="../src/librssguard/services/standard/gui/formstandardimportexport.cpp" line="224"/>
         <source>Get online metadata</source>
         <translation>Gauti internetinius metaduomenis</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/services/standard/gui/formstandardimportexport.cpp" line="210"/>
+        <location filename="../src/librssguard/services/standard/gui/formstandardimportexport.cpp" line="225"/>
         <source>Metadata for your feeds can be fetched online. Note that the action could take several minutes, depending on number of feeds.</source>
         <translation>Jūsų kanalų metaduomenys gali būti gauti internete. Turėkite omenyje, kad šis veiksmas, priklausomai nuo kanalų skaičiaus, gali užimti keletą minučių.</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/services/standard/gui/formstandardimportexport.cpp" line="212"/>
+        <location filename="../src/librssguard/services/standard/gui/formstandardimportexport.cpp" line="227"/>
         <source>Do you want to fetch feed metadata online?</source>
         <translation>Ar norite gauti kanalų metaduomenis internete?</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/services/standard/gui/formstandardimportexport.cpp" line="56"/>
+        <location filename="../src/librssguard/services/standard/gui/formstandardimportexport.cpp" line="63"/>
         <source>&amp;Export to file</source>
         <translation>&amp;Eksportuoti į failą</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/services/standard/gui/formstandardimportexport.cpp" line="67"/>
+        <location filename="../src/librssguard/services/standard/gui/formstandardimportexport.cpp" line="75"/>
         <source>&amp;Import from file</source>
         <translation>&amp;Importuoti iš failo</translation>
     </message>
@@ -2834,17 +2821,22 @@ Jūs turite paleisti iš naujo rankiniu būdu.</translation>
         <translation>Pasirinkite savo kanalui pirminį elementą.</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/services/standard/gui/formstandardimportexport.ui" line="103"/>
+        <location filename="../src/librssguard/services/standard/gui/formstandardimportexport.ui" line="85"/>
+        <source>Export icons</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <location filename="../src/librssguard/services/standard/gui/formstandardimportexport.ui" line="151"/>
         <source>&amp;Check all feeds</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../src/librssguard/services/standard/gui/formstandardimportexport.ui" line="110"/>
+        <location filename="../src/librssguard/services/standard/gui/formstandardimportexport.ui" line="158"/>
         <source>&amp;Uncheck all feeds</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../src/librssguard/services/standard/gui/formstandardimportexport.ui" line="161"/>
+        <location filename="../src/librssguard/services/standard/gui/formstandardimportexport.ui" line="168"/>
         <source>Operation result</source>
         <translation type="unfinished"/>
     </message>
@@ -2958,12 +2950,12 @@ currently installed one.</source>
 šiuo metu įdiegta laida.</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/gui/dialogs/formupdate.cpp" line="35"/>
+        <location filename="../src/librssguard/gui/dialogs/formupdate.cpp" line="34"/>
         <source>Download new installation files.</source>
         <translation>Atsisiųsti naujus įdiegimo failus.</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/gui/dialogs/formupdate.cpp" line="229"/>
+        <location filename="../src/librssguard/gui/dialogs/formupdate.cpp" line="230"/>
         <source>Cannot update application</source>
         <translation>Nepavyksta atnaujinti programos</translation>
     </message>
@@ -2973,24 +2965,24 @@ currently installed one.</source>
         <translation>Atsisiųsta %1% (atnaujinimo dydis yra %2 kB).</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/gui/dialogs/formupdate.cpp" line="118"/>
-        <location filename="../src/librssguard/gui/dialogs/formupdate.cpp" line="242"/>
+        <location filename="../src/librssguard/gui/dialogs/formupdate.cpp" line="115"/>
+        <location filename="../src/librssguard/gui/dialogs/formupdate.cpp" line="244"/>
         <source>Downloading update...</source>
         <translation>Atsiunčiamas atnaujinimas...</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/gui/dialogs/formupdate.cpp" line="185"/>
+        <location filename="../src/librssguard/gui/dialogs/formupdate.cpp" line="186"/>
         <source>Downloaded successfully</source>
         <translation>Sėkmingai atsisiųsta</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/gui/dialogs/formupdate.cpp" line="192"/>
         <location filename="../src/librssguard/gui/dialogs/formupdate.cpp" line="194"/>
+        <location filename="../src/librssguard/gui/dialogs/formupdate.cpp" line="196"/>
         <source>Error occured</source>
         <translation>Įvyko klaida</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/gui/dialogs/formupdate.cpp" line="193"/>
+        <location filename="../src/librssguard/gui/dialogs/formupdate.cpp" line="195"/>
         <source>Error occured during downloading of the package.</source>
         <translation>Atsiunčiant paketą, įvyko klaida.</translation>
     </message>
@@ -3007,17 +2999,17 @@ downloaded.</source>
 atsisiųsta.</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/gui/dialogs/formupdate.cpp" line="187"/>
+        <location filename="../src/librssguard/gui/dialogs/formupdate.cpp" line="188"/>
         <source>Install</source>
         <translation>Įdiegti</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/gui/dialogs/formupdate.cpp" line="230"/>
+        <location filename="../src/librssguard/gui/dialogs/formupdate.cpp" line="231"/>
         <source>Cannot launch external updater. Update application manually.</source>
         <translation>Nepavyksta paleisti išorinės atnaujinimo programos. Atnaujinkite rankiniu būdu.</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/gui/dialogs/formupdate.cpp" line="34"/>
+        <location filename="../src/librssguard/gui/dialogs/formupdate.cpp" line="33"/>
         <source>Download selected update</source>
         <translation>Atsisiųsti pasirinktą atnaujinimą</translation>
     </message>
@@ -3027,17 +3019,17 @@ atsisiųsta.</translation>
         <translation>Pereikite į programos svetainę, kad rankiniu būdu gautumėte atnaujinimo paketus.</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/gui/dialogs/formupdate.cpp" line="159"/>
+        <location filename="../src/librssguard/gui/dialogs/formupdate.cpp" line="154"/>
         <source> (size </source>
         <translation> (dydis </translation>
     </message>
     <message>
-        <location filename="../src/librssguard/gui/dialogs/formupdate.cpp" line="174"/>
+        <location filename="../src/librssguard/gui/dialogs/formupdate.cpp" line="169"/>
         <source>Available update files</source>
         <translation>Prieinami atnaujinimo failai</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/gui/dialogs/formupdate.cpp" line="186"/>
+        <location filename="../src/librssguard/gui/dialogs/formupdate.cpp" line="187"/>
         <source>Package was downloaded successfully.
 You can install it now.</source>
         <translation>Paketas buvo sėkmingai atsisiųstas.
@@ -3197,49 +3189,49 @@ Jūs dabar galite jį įdiegti.</translation>
 <context>
     <name>GmailNetworkFactory</name>
     <message>
-        <location filename="../src/librssguard/services/gmail/gmailnetworkfactory.cpp" line="483"/>
+        <location filename="../src/librssguard/services/gmail/gmailnetworkfactory.cpp" line="488"/>
         <source>Click this to login again. Error is: &apos;%1&apos;</source>
         <translation>Spustelėkite tai, norėdami prisijungti dar kartą. Klaida yra: &quot;%1&quot;</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/services/gmail/gmailnetworkfactory.cpp" line="497"/>
+        <location filename="../src/librssguard/services/gmail/gmailnetworkfactory.cpp" line="501"/>
         <source>Click this to login again.</source>
         <translation>Spustelėkite tai, norėdami prisijungti dar kartą.</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/services/gmail/gmailnetworkfactory.cpp" line="556"/>
+        <location filename="../src/librssguard/services/gmail/gmailnetworkfactory.cpp" line="559"/>
         <source>No subject</source>
         <translation>Nėra temos</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/services/gmail/gmailnetworkfactory.cpp" line="482"/>
+        <location filename="../src/librssguard/services/gmail/gmailnetworkfactory.cpp" line="487"/>
         <source>Gmail: authentication error</source>
         <translation>Gmail: atpažinimo klaida</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/services/gmail/gmailnetworkfactory.cpp" line="436"/>
+        <location filename="../src/librssguard/services/gmail/gmailnetworkfactory.cpp" line="439"/>
         <source>failed to download IDs of e-mail messages</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../src/librssguard/services/gmail/gmailnetworkfactory.cpp" line="496"/>
+        <location filename="../src/librssguard/services/gmail/gmailnetworkfactory.cpp" line="500"/>
         <source>Gmail: authorization denied</source>
         <translation>Gmail: prieigos teisių suteikimas atmestas</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/services/gmail/gmailnetworkfactory.cpp" line="447"/>
-        <location filename="../src/librssguard/services/gmail/gmailnetworkfactory.cpp" line="632"/>
+        <location filename="../src/librssguard/services/gmail/gmailnetworkfactory.cpp" line="451"/>
+        <location filename="../src/librssguard/services/gmail/gmailnetworkfactory.cpp" line="636"/>
         <source>you are not logged in</source>
         <translation>jūs nesate prisijungę</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/services/gmail/gmailnetworkfactory.cpp" line="670"/>
+        <location filename="../src/librssguard/services/gmail/gmailnetworkfactory.cpp" line="672"/>
         <source>failed to get metadata</source>
         <translation>nepavyko gauti metaduomenų</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/services/gmail/gmailnetworkfactory.cpp" line="486"/>
-        <location filename="../src/librssguard/services/gmail/gmailnetworkfactory.cpp" line="500"/>
+        <location filename="../src/librssguard/services/gmail/gmailnetworkfactory.cpp" line="491"/>
+        <location filename="../src/librssguard/services/gmail/gmailnetworkfactory.cpp" line="504"/>
         <source>Login</source>
         <translation type="unfinished"/>
     </message>
@@ -3297,138 +3289,138 @@ Prisijungimo prieigos raktai nustoja galioti: %2</translation>
 <context>
     <name>GreaderAccountDetails</name>
     <message>
-        <location filename="../src/librssguard/services/greader/gui/greaderaccountdetails.cpp" line="36"/>
+        <location filename="../src/librssguard/services/greader/gui/greaderaccountdetails.cpp" line="40"/>
         <source>Password for your account</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../src/librssguard/services/greader/gui/greaderaccountdetails.cpp" line="37"/>
+        <location filename="../src/librssguard/services/greader/gui/greaderaccountdetails.cpp" line="41"/>
         <source>Username for your account</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../src/librssguard/services/greader/gui/greaderaccountdetails.cpp" line="38"/>
+        <location filename="../src/librssguard/services/greader/gui/greaderaccountdetails.cpp" line="42"/>
         <source>URL of your server, without any service-specific path</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../src/librssguard/services/greader/gui/greaderaccountdetails.cpp" line="40"/>
+        <location filename="../src/librssguard/services/greader/gui/greaderaccountdetails.cpp" line="44"/>
         <source>No test done yet.</source>
         <translation>Kol kas nebuvo atlikta jokių bandymų.</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/services/greader/gui/greaderaccountdetails.cpp" line="41"/>
+        <location filename="../src/librssguard/services/greader/gui/greaderaccountdetails.cpp" line="45"/>
         <source>Here, results of connection test are shown.</source>
         <translation>Čia yra rodomi ryšio bandymo rezultatai.</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/services/greader/gui/greaderaccountdetails.cpp" line="197"/>
+        <location filename="../src/librssguard/services/greader/gui/greaderaccountdetails.cpp" line="203"/>
         <source>Network error: &apos;%1&apos;.</source>
         <translation>Tinklo klaida: &apos;%1&apos;.</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/services/greader/gui/greaderaccountdetails.cpp" line="198"/>
+        <location filename="../src/librssguard/services/greader/gui/greaderaccountdetails.cpp" line="204"/>
         <source>Network error, have you entered correct Nextcloud endpoint and password?</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../src/librssguard/services/greader/gui/greaderaccountdetails.cpp" line="202"/>
+        <location filename="../src/librssguard/services/greader/gui/greaderaccountdetails.cpp" line="207"/>
         <source>You are good to go!</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../src/librssguard/services/greader/gui/greaderaccountdetails.cpp" line="203"/>
+        <location filename="../src/librssguard/services/greader/gui/greaderaccountdetails.cpp" line="207"/>
         <source>Yeah.</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../src/librssguard/services/greader/gui/greaderaccountdetails.cpp" line="212"/>
+        <location filename="../src/librssguard/services/greader/gui/greaderaccountdetails.cpp" line="216"/>
         <source>Username cannot be empty.</source>
         <translation>Naudotojo vardas negali būti tuščias.</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/services/greader/gui/greaderaccountdetails.cpp" line="215"/>
+        <location filename="../src/librssguard/services/greader/gui/greaderaccountdetails.cpp" line="219"/>
         <source>Username is okay.</source>
         <translation>Naudotojo vardas yra geras.</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/services/greader/gui/greaderaccountdetails.cpp" line="223"/>
+        <location filename="../src/librssguard/services/greader/gui/greaderaccountdetails.cpp" line="227"/>
         <source>Password cannot be empty.</source>
         <translation>Slaptažodis negali būti tuščias.</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/services/greader/gui/greaderaccountdetails.cpp" line="226"/>
+        <location filename="../src/librssguard/services/greader/gui/greaderaccountdetails.cpp" line="230"/>
         <source>Password is okay.</source>
         <translation>Slaptažodis yra geras.</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/services/greader/gui/greaderaccountdetails.cpp" line="234"/>
+        <location filename="../src/librssguard/services/greader/gui/greaderaccountdetails.cpp" line="238"/>
         <source>URL cannot be empty.</source>
         <translation>URL negali būti tuščias.</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/services/greader/gui/greaderaccountdetails.cpp" line="237"/>
+        <location filename="../src/librssguard/services/greader/gui/greaderaccountdetails.cpp" line="241"/>
         <source>URL is okay.</source>
         <translation>URL yra geras.</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/services/greader/gui/greaderaccountdetails.cpp" line="43"/>
+        <location filename="../src/librssguard/services/greader/gui/greaderaccountdetails.cpp" line="47"/>
         <source>Some feeds might contain tens of thousands of articles and downloading all of them could take great amount of time, so sometimes it is good to download only certain amount of newest messages.</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../src/librssguard/services/greader/gui/greaderaccountdetails.cpp" line="49"/>
+        <location filename="../src/librssguard/services/greader/gui/greaderaccountdetails.cpp" line="53"/>
         <source>If you select intelligent synchronization, then only not-yet-fetched or updated articles are downloaded. Network usage is greatly reduced and overall synchronization speed is greatly improved, but first feed fetching could be slow anyway if your feed contains huge number of articles.</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../src/librssguard/services/greader/gui/greaderaccountdetails.cpp" line="57"/>
+        <location filename="../src/librssguard/services/greader/gui/greaderaccountdetails.cpp" line="62"/>
         <source>There are some preconfigured OAuth tokens so you do not have to fill in your client ID/secret, but it is strongly recommended to obtain your own as preconfigured tokens have limited global usage quota. If you wish to use preconfigured tokens, simply leave all above fields to their default values even if they are empty.</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../src/librssguard/services/greader/gui/greaderaccountdetails.cpp" line="64"/>
+        <location filename="../src/librssguard/services/greader/gui/greaderaccountdetails.cpp" line="69"/>
         <source>You have to fill in your client ID/secret and also fill in correct redirect URL.</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../src/librssguard/services/greader/gui/greaderaccountdetails.cpp" line="102"/>
+        <location filename="../src/librssguard/services/greader/gui/greaderaccountdetails.cpp" line="110"/>
         <source>You did not grant access.</source>
         <translation>Jūs nesuteikėte prieigos.</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/services/greader/gui/greaderaccountdetails.cpp" line="103"/>
         <location filename="../src/librssguard/services/greader/gui/greaderaccountdetails.cpp" line="111"/>
+        <location filename="../src/librssguard/services/greader/gui/greaderaccountdetails.cpp" line="119"/>
         <source>There was error during testing.</source>
         <translation>Išbandymo metu buvo klaida.</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/services/greader/gui/greaderaccountdetails.cpp" line="110"/>
+        <location filename="../src/librssguard/services/greader/gui/greaderaccountdetails.cpp" line="118"/>
         <source>There is error. %1</source>
         <translation>Yra klaida. %1</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/services/greader/gui/greaderaccountdetails.cpp" line="116"/>
+        <location filename="../src/librssguard/services/greader/gui/greaderaccountdetails.cpp" line="124"/>
         <source>Tested successfully. You may be prompted to login once more.</source>
         <translation>Išbandyta sėkmingai. Jūsų gali būti paprašyta prisijungti dar kartą.</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/services/greader/gui/greaderaccountdetails.cpp" line="117"/>
+        <location filename="../src/librssguard/services/greader/gui/greaderaccountdetails.cpp" line="125"/>
         <source>Your access was approved.</source>
         <translation>Jūsų prieiga buvo patvirtinta.</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/services/greader/gui/greaderaccountdetails.cpp" line="153"/>
+        <location filename="../src/librssguard/services/greader/gui/greaderaccountdetails.cpp" line="159"/>
         <source>Preconfigured client ID/secret will be used.</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../src/librssguard/services/greader/gui/greaderaccountdetails.cpp" line="155"/>
+        <location filename="../src/librssguard/services/greader/gui/greaderaccountdetails.cpp" line="161"/>
         <source>Empty value is entered.</source>
         <translation>Įvesta tuščia reikšmė.</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/services/greader/gui/greaderaccountdetails.cpp" line="159"/>
+        <location filename="../src/librssguard/services/greader/gui/greaderaccountdetails.cpp" line="165"/>
         <source>Some value is entered.</source>
         <translation>Įvesta kažkokia reikšmė.</translation>
     </message>
@@ -3511,33 +3503,36 @@ Prisijungimo prieigos raktai nustoja galioti: %2</translation>
 <context>
     <name>GreaderNetwork</name>
     <message>
-        <location filename="../src/librssguard/services/greader/greadernetwork.cpp" line="405"/>
+        <location filename="../src/librssguard/services/greader/greadernetwork.cpp" line="343"/>
+        <location filename="../src/librssguard/services/greader/greadernetwork.cpp" line="407"/>
+        <location filename="../src/librssguard/services/greader/greadernetwork.cpp" line="479"/>
+        <location filename="../src/librssguard/services/greader/greadernetwork.cpp" line="545"/>
         <source>login failed</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../src/librssguard/services/greader/greadernetwork.cpp" line="1152"/>
+        <location filename="../src/librssguard/services/greader/greadernetwork.cpp" line="1093"/>
         <source>Inoreader: authentication error</source>
         <translation>Inoreader: atpažinimo klaida</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/services/greader/greadernetwork.cpp" line="1153"/>
+        <location filename="../src/librssguard/services/greader/greadernetwork.cpp" line="1094"/>
         <source>Click this to login again. Error is: &apos;%1&apos;</source>
         <translation>Spustelėkite tai, norėdami prisijungti dar kartą. Klaida yra: &quot;%1&quot;</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/services/greader/greadernetwork.cpp" line="1166"/>
+        <location filename="../src/librssguard/services/greader/greadernetwork.cpp" line="1106"/>
         <source>Inoreader: authorization denied</source>
         <translation>Inoreader: prieigos teisių suteikimas atmestas</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/services/greader/greadernetwork.cpp" line="1167"/>
+        <location filename="../src/librssguard/services/greader/greadernetwork.cpp" line="1107"/>
         <source>Click this to login again.</source>
         <translation>Spustelėkite tai, norėdami prisijungti dar kartą.</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/services/greader/greadernetwork.cpp" line="1156"/>
-        <location filename="../src/librssguard/services/greader/greadernetwork.cpp" line="1170"/>
+        <location filename="../src/librssguard/services/greader/greadernetwork.cpp" line="1097"/>
+        <location filename="../src/librssguard/services/greader/greadernetwork.cpp" line="1110"/>
         <source>Login</source>
         <translation type="unfinished"/>
     </message>
@@ -3545,7 +3540,7 @@ Prisijungimo prieigos raktai nustoja galioti: %2</translation>
 <context>
     <name>GreaderServiceRoot</name>
     <message>
-        <location filename="../src/librssguard/services/greader/greaderserviceroot.cpp" line="122"/>
+        <location filename="../src/librssguard/services/greader/greaderserviceroot.cpp" line="125"/>
         <source>Other services</source>
         <translation type="unfinished"/>
     </message>
@@ -3561,12 +3556,12 @@ Prisijungimo prieigos raktai nustoja galioti: %2</translation>
 <context>
     <name>IOFactory</name>
     <message>
-        <location filename="../src/librssguard/miscellaneous/iofactory.cpp" line="162"/>
+        <location filename="../src/librssguard/miscellaneous/iofactory.cpp" line="151"/>
         <source>Cannot open file &apos;%1&apos; for reading.</source>
         <translation>Nepavyksta skaitymui atverti failo &apos;%1&apos;.</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/miscellaneous/iofactory.cpp" line="174"/>
+        <location filename="../src/librssguard/miscellaneous/iofactory.cpp" line="163"/>
         <source>Cannot open file &apos;%1&apos; for writting.</source>
         <translation>Nepavyksta įrašymui atverti failo &apos;%1&apos;.</translation>
     </message>
@@ -3623,49 +3618,6 @@ Prisijungimo prieigos raktai nustoja galioti: %2</translation>
         <location filename="../src/librssguard/services/abstract/labelsnode.cpp" line="78"/>
         <source>Not allowed</source>
         <translation>Neleidžiama</translation>
-    </message>
-</context>
-<context>
-    <name>LiteHtmlViewer</name>
-    <message>
-        <location filename="../src/librssguard/gui/webviewers/litehtml/litehtmlviewer.cpp" line="155"/>
-        <source>image</source>
-        <translation>paveikslas</translation>
-    </message>
-    <message>
-        <location filename="../src/librssguard/gui/webviewers/litehtml/litehtmlviewer.cpp" line="268"/>
-        <source>Copy URL</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <location filename="../src/librssguard/gui/webviewers/litehtml/litehtmlviewer.cpp" line="276"/>
-        <source>Copy selection</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <location filename="../src/librssguard/gui/webviewers/litehtml/litehtmlviewer.cpp" line="285"/>
-        <source>Open link in external browser</source>
-        <translation>Atverti nuorodą išorinėje naršyklėje</translation>
-    </message>
-    <message>
-        <location filename="../src/librssguard/gui/webviewers/litehtml/litehtmlviewer.cpp" line="299"/>
-        <source>Use simple article layout</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <location filename="../src/librssguard/gui/webviewers/litehtml/litehtmlviewer.cpp" line="305"/>
-        <source>Reload with images</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <location filename="../src/librssguard/gui/webviewers/litehtml/litehtmlviewer.cpp" line="325"/>
-        <source>Open with external tool</source>
-        <translation>Atverti, naudojant išorinį įrankį</translation>
-    </message>
-    <message>
-        <location filename="../src/librssguard/gui/webviewers/litehtml/litehtmlviewer.cpp" line="344"/>
-        <source>No external tools activated</source>
-        <translation type="unfinished"/>
     </message>
 </context>
 <context>
@@ -3778,17 +3730,17 @@ Prisijungimo prieigos raktai nustoja galioti: %2</translation>
 <context>
     <name>MessagePreviewer</name>
     <message>
-        <location filename="../src/librssguard/gui/messagepreviewer.cpp" line="31"/>
+        <location filename="../src/librssguard/gui/messagepreviewer.cpp" line="32"/>
         <source>Mark article read</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../src/librssguard/gui/messagepreviewer.cpp" line="35"/>
+        <location filename="../src/librssguard/gui/messagepreviewer.cpp" line="37"/>
         <source>Mark article unread</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../src/librssguard/gui/messagepreviewer.cpp" line="39"/>
+        <location filename="../src/librssguard/gui/messagepreviewer.cpp" line="42"/>
         <source>Switch article importance</source>
         <translation type="unfinished"/>
     </message>
@@ -3847,227 +3799,227 @@ Prisijungimo prieigos raktai nustoja galioti: %2</translation>
 <context>
     <name>MessagesModel</name>
     <message>
-        <location filename="../src/librssguard/core/messagesmodel.cpp" line="228"/>
+        <location filename="../src/librssguard/core/messagesmodel.cpp" line="227"/>
         <source>Id</source>
         <translation>Id</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/core/messagesmodel.cpp" line="230"/>
+        <location filename="../src/librssguard/core/messagesmodel.cpp" line="229"/>
         <source>Read</source>
         <translation>Skaityta</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/core/messagesmodel.cpp" line="234"/>
+        <location filename="../src/librssguard/core/messagesmodel.cpp" line="233"/>
         <source>Deleted</source>
         <translation>Ištrinta</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/core/messagesmodel.cpp" line="232"/>
+        <location filename="../src/librssguard/core/messagesmodel.cpp" line="231"/>
         <source>Important</source>
         <translation>Svarbi</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/core/messagesmodel.cpp" line="260"/>
+        <location filename="../src/librssguard/core/messagesmodel.cpp" line="259"/>
         <source>Feed</source>
         <translation>Kanalas</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/core/messagesmodel.cpp" line="240"/>
+        <location filename="../src/librssguard/core/messagesmodel.cpp" line="239"/>
         <source>Title</source>
         <translation>Antraštė</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/core/messagesmodel.cpp" line="242"/>
+        <location filename="../src/librssguard/core/messagesmodel.cpp" line="241"/>
         <source>Url</source>
         <translation>Url</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/core/messagesmodel.cpp" line="244"/>
+        <location filename="../src/librssguard/core/messagesmodel.cpp" line="243"/>
         <source>Author</source>
         <translation>Autorius</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/core/messagesmodel.cpp" line="248"/>
+        <location filename="../src/librssguard/core/messagesmodel.cpp" line="247"/>
         <source>Contents</source>
         <translation>Turinys</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/core/messagesmodel.cpp" line="236"/>
+        <location filename="../src/librssguard/core/messagesmodel.cpp" line="235"/>
         <source>Permanently deleted</source>
         <translation>Ištrinta visiems laikams</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/core/messagesmodel.cpp" line="250"/>
+        <location filename="../src/librssguard/core/messagesmodel.cpp" line="249"/>
         <source>Attachments</source>
         <translation>Priedai</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/core/messagesmodel.cpp" line="276"/>
+        <location filename="../src/librssguard/core/messagesmodel.cpp" line="267"/>
         <source>List of attachments.</source>
         <translation>Priedų sąrašas.</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/core/messagesmodel.cpp" line="254"/>
+        <location filename="../src/librssguard/core/messagesmodel.cpp" line="253"/>
         <source>Account ID</source>
         <translation>Paskyros ID</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/core/messagesmodel.cpp" line="256"/>
+        <location filename="../src/librssguard/core/messagesmodel.cpp" line="255"/>
         <source>Custom ID</source>
         <translation>Tinkintas ID</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/core/messagesmodel.cpp" line="258"/>
+        <location filename="../src/librssguard/core/messagesmodel.cpp" line="257"/>
         <source>Custom hash</source>
         <translation>Tinkinta maiša</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/core/messagesmodel.cpp" line="238"/>
+        <location filename="../src/librssguard/core/messagesmodel.cpp" line="237"/>
         <source>Feed ID</source>
         <translation>Kanalo ID</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/core/messagesmodel.cpp" line="262"/>
+        <location filename="../src/librssguard/core/messagesmodel.cpp" line="261"/>
         <source>Has enclosures</source>
         <translation>Turi intarpus</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/core/messagesmodel.cpp" line="252"/>
+        <location filename="../src/librssguard/core/messagesmodel.cpp" line="251"/>
         <source>Score</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../src/librssguard/core/messagesmodel.cpp" line="246"/>
+        <location filename="../src/librssguard/core/messagesmodel.cpp" line="245"/>
         <source>Date</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../src/librssguard/core/messagesmodel.cpp" line="149"/>
+        <location filename="../src/librssguard/core/messagesmodel.cpp" line="148"/>
         <source>Loading of articles failed, maybe messages could not be downloaded.</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../src/librssguard/core/messagesmodel.cpp" line="265"/>
+        <location filename="../src/librssguard/core/messagesmodel.cpp" line="263"/>
         <source>ID of the article.</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../src/librssguard/core/messagesmodel.cpp" line="266"/>
+        <location filename="../src/librssguard/core/messagesmodel.cpp" line="263"/>
         <source>Is article read?</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../src/librssguard/core/messagesmodel.cpp" line="267"/>
+        <location filename="../src/librssguard/core/messagesmodel.cpp" line="263"/>
         <source>Is article important?</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../src/librssguard/core/messagesmodel.cpp" line="268"/>
+        <location filename="../src/librssguard/core/messagesmodel.cpp" line="264"/>
         <source>Is article deleted?</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../src/librssguard/core/messagesmodel.cpp" line="269"/>
+        <location filename="../src/librssguard/core/messagesmodel.cpp" line="264"/>
         <source>Is article permanently deleted from recycle bin?</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../src/librssguard/core/messagesmodel.cpp" line="270"/>
+        <location filename="../src/librssguard/core/messagesmodel.cpp" line="265"/>
         <source>ID of feed which this article belongs to.</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../src/librssguard/core/messagesmodel.cpp" line="271"/>
+        <location filename="../src/librssguard/core/messagesmodel.cpp" line="265"/>
         <source>Title of the article.</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../src/librssguard/core/messagesmodel.cpp" line="272"/>
+        <location filename="../src/librssguard/core/messagesmodel.cpp" line="266"/>
         <source>Url of the article.</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../src/librssguard/core/messagesmodel.cpp" line="273"/>
+        <location filename="../src/librssguard/core/messagesmodel.cpp" line="266"/>
         <source>Author of the article.</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../src/librssguard/core/messagesmodel.cpp" line="274"/>
+        <location filename="../src/librssguard/core/messagesmodel.cpp" line="266"/>
         <source>Creation date of the article.</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../src/librssguard/core/messagesmodel.cpp" line="275"/>
+        <location filename="../src/librssguard/core/messagesmodel.cpp" line="267"/>
         <source>Contents of the article.</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../src/librssguard/core/messagesmodel.cpp" line="277"/>
+        <location filename="../src/librssguard/core/messagesmodel.cpp" line="267"/>
         <source>Score of the article.</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../src/librssguard/core/messagesmodel.cpp" line="278"/>
+        <location filename="../src/librssguard/core/messagesmodel.cpp" line="268"/>
         <source>Account ID of the article.</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../src/librssguard/core/messagesmodel.cpp" line="279"/>
+        <location filename="../src/librssguard/core/messagesmodel.cpp" line="268"/>
         <source>Custom ID of the article.</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../src/librssguard/core/messagesmodel.cpp" line="280"/>
+        <location filename="../src/librssguard/core/messagesmodel.cpp" line="269"/>
         <source>Custom hash of the article.</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../src/librssguard/core/messagesmodel.cpp" line="281"/>
-        <source>Custom ID of feed of the article.</source>
+        <location filename="../src/librssguard/core/messagesmodel.cpp" line="269"/>
+        <source>Name of feed of the article.</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../src/librssguard/core/messagesmodel.cpp" line="282"/>
+        <location filename="../src/librssguard/core/messagesmodel.cpp" line="270"/>
         <source>Indication of enclosures presence within the article.</source>
         <translation type="unfinished"/>
     </message>
     <message numerus="yes">
-        <location filename="../src/librssguard/core/messagesmodel.cpp" line="324"/>
+        <location filename="../src/librssguard/core/messagesmodel.cpp" line="313"/>
         <source>%n months ago</source>
         <translation type="unfinished"><numerusform></numerusform><numerusform></numerusform><numerusform></numerusform><numerusform></numerusform></translation>
     </message>
     <message numerus="yes">
-        <location filename="../src/librssguard/core/messagesmodel.cpp" line="328"/>
+        <location filename="../src/librssguard/core/messagesmodel.cpp" line="317"/>
         <source>%n weeks ago</source>
         <translation type="unfinished"><numerusform></numerusform><numerusform></numerusform><numerusform></numerusform><numerusform></numerusform></translation>
     </message>
     <message numerus="yes">
-        <location filename="../src/librssguard/core/messagesmodel.cpp" line="332"/>
+        <location filename="../src/librssguard/core/messagesmodel.cpp" line="321"/>
         <source>%n days ago</source>
         <translation type="unfinished"><numerusform></numerusform><numerusform></numerusform><numerusform></numerusform><numerusform></numerusform></translation>
     </message>
     <message>
-        <location filename="../src/librssguard/core/messagesmodel.cpp" line="336"/>
+        <location filename="../src/librssguard/core/messagesmodel.cpp" line="325"/>
         <source>yesterday</source>
         <translation type="unfinished"/>
     </message>
     <message numerus="yes">
-        <location filename="../src/librssguard/core/messagesmodel.cpp" line="340"/>
+        <location filename="../src/librssguard/core/messagesmodel.cpp" line="329"/>
         <source>%n hours ago</source>
         <translation type="unfinished"><numerusform></numerusform><numerusform></numerusform><numerusform></numerusform><numerusform></numerusform></translation>
     </message>
     <message numerus="yes">
-        <location filename="../src/librssguard/core/messagesmodel.cpp" line="344"/>
+        <location filename="../src/librssguard/core/messagesmodel.cpp" line="333"/>
         <source>%n minutes ago</source>
         <translation type="unfinished"><numerusform></numerusform><numerusform></numerusform><numerusform></numerusform><numerusform></numerusform></translation>
     </message>
     <message>
-        <location filename="../src/librssguard/core/messagesmodel.cpp" line="347"/>
+        <location filename="../src/librssguard/core/messagesmodel.cpp" line="336"/>
         <source>just now</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../src/librssguard/core/messagesmodel.cpp" line="148"/>
+        <location filename="../src/librssguard/core/messagesmodel.cpp" line="147"/>
         <source>Loading of articles from item &apos;%1&apos; failed</source>
         <translation type="unfinished"/>
     </message>
@@ -4075,7 +4027,7 @@ Prisijungimo prieigos raktai nustoja galioti: %2</translation>
 <context>
     <name>MessagesToolBar</name>
     <message>
-        <location filename="../src/librssguard/gui/toolbars/messagestoolbar.cpp" line="154"/>
+        <location filename="../src/librssguard/gui/toolbars/messagestoolbar.cpp" line="159"/>
         <source>No extra highlighting</source>
         <translation>Jokio papildomo paryškinimo</translation>
     </message>
@@ -4085,93 +4037,103 @@ Prisijungimo prieigos raktai nustoja galioti: %2</translation>
         <translation>Įrankių juostos tarpiklis</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/gui/toolbars/messagestoolbar.cpp" line="135"/>
+        <location filename="../src/librssguard/gui/toolbars/messagestoolbar.cpp" line="136"/>
         <source>Article search box</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../src/librssguard/gui/toolbars/messagestoolbar.cpp" line="151"/>
+        <location filename="../src/librssguard/gui/toolbars/messagestoolbar.cpp" line="156"/>
         <source>Menu for highlighting articles</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../src/librssguard/gui/toolbars/messagestoolbar.cpp" line="159"/>
+        <location filename="../src/librssguard/gui/toolbars/messagestoolbar.cpp" line="164"/>
         <source>Highlight unread articles</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../src/librssguard/gui/toolbars/messagestoolbar.cpp" line="164"/>
+        <location filename="../src/librssguard/gui/toolbars/messagestoolbar.cpp" line="169"/>
         <source>Highlight important articles</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../src/librssguard/gui/toolbars/messagestoolbar.cpp" line="168"/>
+        <location filename="../src/librssguard/gui/toolbars/messagestoolbar.cpp" line="173"/>
         <source>Menu for filtering articles</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../src/librssguard/gui/toolbars/messagestoolbar.cpp" line="171"/>
+        <location filename="../src/librssguard/gui/toolbars/messagestoolbar.cpp" line="176"/>
         <source>No extra filtering</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../src/librssguard/gui/toolbars/messagestoolbar.cpp" line="176"/>
+        <location filename="../src/librssguard/gui/toolbars/messagestoolbar.cpp" line="181"/>
         <source>Show unread articles</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../src/librssguard/gui/toolbars/messagestoolbar.cpp" line="181"/>
+        <location filename="../src/librssguard/gui/toolbars/messagestoolbar.cpp" line="186"/>
         <source>Show important articles</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../src/librssguard/gui/toolbars/messagestoolbar.cpp" line="186"/>
+        <location filename="../src/librssguard/gui/toolbars/messagestoolbar.cpp" line="191"/>
         <source>Show today&apos;s articles</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../src/librssguard/gui/toolbars/messagestoolbar.cpp" line="191"/>
+        <location filename="../src/librssguard/gui/toolbars/messagestoolbar.cpp" line="196"/>
         <source>Show yesterday&apos;s articles</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../src/librssguard/gui/toolbars/messagestoolbar.cpp" line="196"/>
+        <location filename="../src/librssguard/gui/toolbars/messagestoolbar.cpp" line="201"/>
         <source>Show articles in last 24 hours</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../src/librssguard/gui/toolbars/messagestoolbar.cpp" line="201"/>
+        <location filename="../src/librssguard/gui/toolbars/messagestoolbar.cpp" line="206"/>
         <source>Show articles in last 48 hours</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../src/librssguard/gui/toolbars/messagestoolbar.cpp" line="206"/>
+        <location filename="../src/librssguard/gui/toolbars/messagestoolbar.cpp" line="211"/>
         <source>Show this week&apos;s articles</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../src/librssguard/gui/toolbars/messagestoolbar.cpp" line="211"/>
+        <location filename="../src/librssguard/gui/toolbars/messagestoolbar.cpp" line="216"/>
         <source>Show last week&apos;s articles</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../src/librssguard/gui/toolbars/messagestoolbar.cpp" line="216"/>
-        <location filename="../src/librssguard/gui/toolbars/messagestoolbar.cpp" line="222"/>
-        <source>Display all articles</source>
+        <location filename="../src/librssguard/gui/toolbars/messagestoolbar.cpp" line="221"/>
+        <source>Show articles with attachments</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <location filename="../src/librssguard/gui/toolbars/messagestoolbar.cpp" line="226"/>
+        <source>Show articles with some score</source>
         <translation type="unfinished"/>
     </message>
     <message>
         <location filename="../src/librssguard/gui/toolbars/messagestoolbar.cpp" line="231"/>
+        <location filename="../src/librssguard/gui/toolbars/messagestoolbar.cpp" line="237"/>
+        <source>Display all articles</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <location filename="../src/librssguard/gui/toolbars/messagestoolbar.cpp" line="246"/>
         <source>Article highlighter</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../src/librssguard/gui/toolbars/messagestoolbar.cpp" line="236"/>
+        <location filename="../src/librssguard/gui/toolbars/messagestoolbar.cpp" line="251"/>
         <source>Article list filter</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../src/librssguard/gui/toolbars/messagestoolbar.cpp" line="128"/>
+        <location filename="../src/librssguard/gui/toolbars/messagestoolbar.cpp" line="129"/>
         <source>Search articles (regex only)</source>
         <translation type="unfinished"/>
     </message>
@@ -4179,37 +4141,37 @@ Prisijungimo prieigos raktai nustoja galioti: %2</translation>
 <context>
     <name>MessagesView</name>
     <message>
-        <location filename="../src/librssguard/gui/messagesview.cpp" line="560"/>
+        <location filename="../src/librssguard/gui/messagesview.cpp" line="585"/>
         <source>Problem with starting external e-mail client</source>
         <translation>Problemos, paleidžiant išorinę el. pašto kliento programą</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/gui/messagesview.cpp" line="561"/>
+        <location filename="../src/librssguard/gui/messagesview.cpp" line="586"/>
         <source>External e-mail client could not be started.</source>
         <translation>Išorinės el. pašto kliento programos paleisti nepavyko.</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/gui/messagesview.cpp" line="328"/>
+        <location filename="../src/librssguard/gui/messagesview.cpp" line="351"/>
         <source>Open with external tool</source>
         <translation>Atverti, naudojant išorinį įrankį</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/gui/messagesview.cpp" line="803"/>
+        <location filename="../src/librssguard/gui/messagesview.cpp" line="829"/>
         <source>Cannot run external tool</source>
         <translation>Nepavyksta paleisti išorinio įrankio</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/gui/messagesview.cpp" line="804"/>
+        <location filename="../src/librssguard/gui/messagesview.cpp" line="830"/>
         <source>External tool &apos;%1&apos; could not be started.</source>
         <translation>Nepavyko paleisti &quot;%1&quot; išorinio įrankio.</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/gui/messagesview.cpp" line="345"/>
+        <location filename="../src/librssguard/gui/messagesview.cpp" line="368"/>
         <source>No external tools activated</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../src/librssguard/gui/messagesview.cpp" line="310"/>
+        <location filename="../src/librssguard/gui/messagesview.cpp" line="331"/>
         <source>Context menu for articles</source>
         <translation type="unfinished"/>
     </message>
@@ -4225,95 +4187,95 @@ Prisijungimo prieigos raktai nustoja galioti: %2</translation>
 <context>
     <name>NetworkFactory</name>
     <message>
-        <location filename="../src/librssguard/network-web/networkfactory.cpp" line="64"/>
+        <location filename="../src/librssguard/network-web/networkfactory.cpp" line="66"/>
         <source>protocol error</source>
         <extracomment>Network status.</extracomment>
         <translation>protokolo klaida</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/network-web/networkfactory.cpp" line="72"/>
+        <location filename="../src/librssguard/network-web/networkfactory.cpp" line="74"/>
         <source>host not found</source>
         <extracomment>Network status.</extracomment>
         <translation>serveris nerastas</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/network-web/networkfactory.cpp" line="82"/>
+        <location filename="../src/librssguard/network-web/networkfactory.cpp" line="84"/>
         <source>connection refused</source>
         <extracomment>Network status.</extracomment>
         <translation>ryšys atmestas</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/network-web/networkfactory.cpp" line="87"/>
+        <location filename="../src/librssguard/network-web/networkfactory.cpp" line="89"/>
         <source>connection timed out</source>
         <extracomment>Network status.</extracomment>
         <translation>baigėsi ryšiui skirtas laikas</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/network-web/networkfactory.cpp" line="92"/>
+        <location filename="../src/librssguard/network-web/networkfactory.cpp" line="94"/>
         <source>SSL handshake failed</source>
         <extracomment>Network status.</extracomment>
         <translation>SSL išankstinis suderinimas nepavyko</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/network-web/networkfactory.cpp" line="98"/>
+        <location filename="../src/librssguard/network-web/networkfactory.cpp" line="100"/>
         <source>proxy server connection refused</source>
         <extracomment>Network status.</extracomment>
         <translation>įgaliotasis serveris atmetė ryšį</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/network-web/networkfactory.cpp" line="103"/>
+        <location filename="../src/librssguard/network-web/networkfactory.cpp" line="105"/>
         <source>temporary failure</source>
         <extracomment>Network status.</extracomment>
         <translation>laikina nesėkmė</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/network-web/networkfactory.cpp" line="108"/>
+        <location filename="../src/librssguard/network-web/networkfactory.cpp" line="110"/>
         <source>authentication failed</source>
         <extracomment>Network status.</extracomment>
         <translation>atpažinimas nepavyko</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/network-web/networkfactory.cpp" line="113"/>
+        <location filename="../src/librssguard/network-web/networkfactory.cpp" line="115"/>
         <source>proxy authentication required</source>
         <extracomment>Network status.</extracomment>
         <translation>reikalingas įgaliotojo serverio atpažinimas</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/network-web/networkfactory.cpp" line="118"/>
+        <location filename="../src/librssguard/network-web/networkfactory.cpp" line="120"/>
         <source>proxy server not found</source>
         <extracomment>Network status.</extracomment>
         <translation>įgaliotasis serveris nerastas</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/network-web/networkfactory.cpp" line="133"/>
+        <location filename="../src/librssguard/network-web/networkfactory.cpp" line="135"/>
         <source>content not found</source>
         <extracomment>Network status.</extracomment>
         <translation>turinys nerastas</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/network-web/networkfactory.cpp" line="138"/>
-        <source>unknown error</source>
+        <location filename="../src/librssguard/network-web/networkfactory.cpp" line="141"/>
+        <source>unknown error (%1)</source>
         <extracomment>Network status.</extracomment>
-        <translation>nežinoma klaida</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../src/librssguard/network-web/networkfactory.cpp" line="123"/>
+        <location filename="../src/librssguard/network-web/networkfactory.cpp" line="125"/>
         <source>no errors</source>
         <extracomment>Network status.</extracomment>
         <translation>klaidų nėra</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/network-web/networkfactory.cpp" line="67"/>
+        <location filename="../src/librssguard/network-web/networkfactory.cpp" line="69"/>
         <source>access to content was denied</source>
         <translation>prieiga prie turinio buvo uždrausta</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/network-web/networkfactory.cpp" line="76"/>
+        <location filename="../src/librssguard/network-web/networkfactory.cpp" line="78"/>
         <source>connection timed out or was cancelled</source>
         <translation>baigėsi ryšiui skirtas laikas arba ryšys buvo atšauktas</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/network-web/networkfactory.cpp" line="128"/>
+        <location filename="../src/librssguard/network-web/networkfactory.cpp" line="130"/>
         <source>unknown content</source>
         <extracomment>Network status.</extracomment>
         <translation>nežinomas turinys</translation>
@@ -4551,37 +4513,37 @@ Prisijungimo prieigos raktai nustoja galioti: %2</translation>
 <context>
     <name>OAuth2Service</name>
     <message>
-        <location filename="../src/librssguard/network-web/oauth2service.cpp" line="86"/>
+        <location filename="../src/librssguard/network-web/oauth2service.cpp" line="92"/>
         <source>Click here to login.</source>
         <translation>Spustelėkite čia, norėdami prisijungti.</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/network-web/oauth2service.cpp" line="214"/>
+        <location filename="../src/librssguard/network-web/oauth2service.cpp" line="218"/>
         <source>Logging in via OAuth 2.0...</source>
         <translation>Prisijungiama per OAuth 2.0...</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/network-web/oauth2service.cpp" line="215"/>
+        <location filename="../src/librssguard/network-web/oauth2service.cpp" line="219"/>
         <source>Refreshing login tokens for &apos;%1&apos;...</source>
         <translation>Iš naujo įkeliami prisijungimo prieigos raktai, skirti &quot;%1&quot;...</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/network-web/oauth2service.cpp" line="85"/>
+        <location filename="../src/librssguard/network-web/oauth2service.cpp" line="91"/>
         <source>You have to login first</source>
         <translation>Iš pradžių, turite prisijungti</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/network-web/oauth2service.cpp" line="49"/>
+        <location filename="../src/librssguard/network-web/oauth2service.cpp" line="52"/>
         <source>You can close this window now. Go back to %1.</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../src/librssguard/network-web/oauth2service.cpp" line="345"/>
+        <location filename="../src/librssguard/network-web/oauth2service.cpp" line="343"/>
         <source>Failed to start OAuth redirection listener. Maybe your rights are not high enough.</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../src/librssguard/network-web/oauth2service.cpp" line="89"/>
+        <location filename="../src/librssguard/network-web/oauth2service.cpp" line="95"/>
         <source>Login</source>
         <translation type="unfinished"/>
     </message>
@@ -4737,9 +4699,17 @@ Prisijungimo prieigos raktai nustoja galioti: %2</translation>
     </message>
 </context>
 <context>
+    <name>OwnCloudServiceRoot</name>
+    <message>
+        <location filename="../src/librssguard/services/owncloud/owncloudserviceroot.cpp" line="129"/>
+        <source>cannot get list of feeds, network error &apos;%1&apos;</source>
+        <translation type="unfinished"/>
+    </message>
+</context>
+<context>
     <name>QObject</name>
     <message>
-        <location filename="../src/librssguard/miscellaneous/application.cpp" line="118"/>
+        <location filename="../src/librssguard/miscellaneous/application.cpp" line="116"/>
         <location filename="../src/librssguard/miscellaneous/localization.cpp" line="31"/>
         <location filename="../src/librssguard/miscellaneous/localization.cpp" line="91"/>
         <source>LANG_ABBREV</source>
@@ -4747,7 +4717,7 @@ Prisijungimo prieigos raktai nustoja galioti: %2</translation>
         <translation>lt</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/miscellaneous/application.cpp" line="121"/>
+        <location filename="../src/librssguard/miscellaneous/application.cpp" line="119"/>
         <location filename="../src/librssguard/miscellaneous/localization.cpp" line="92"/>
         <source>LANG_AUTHOR</source>
         <extracomment>Name of translator - optional.</extracomment>
@@ -4759,7 +4729,7 @@ Prisijungimo prieigos raktai nustoja galioti: %2</translation>
         <translation> </translation>
     </message>
     <message numerus="yes">
-        <location filename="../src/librssguard/core/feeddownloader.cpp" line="498"/>
+        <location filename="../src/librssguard/core/feeddownloader.cpp" line="503"/>
         <source>
 
 + %n other feeds.</source>
@@ -4797,12 +4767,12 @@ Reikalingas bent API lygis %1.</translation>
         <translation>Naujienų programėlė yra RSS/Atom kanalų skaitytuvė. Ji yra Nextcloud rinkinio dalis suite. Šis įskiepis įgyvendina %1 API.</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/miscellaneous/systemfactory.cpp" line="216"/>
+        <location filename="../src/librssguard/miscellaneous/systemfactory.cpp" line="264"/>
         <source>New version available</source>
         <translation>Yra prieinama nauja versija</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/miscellaneous/systemfactory.cpp" line="217"/>
+        <location filename="../src/librssguard/miscellaneous/systemfactory.cpp" line="265"/>
         <source>Click the bubble for more information.</source>
         <translation>Išsamesnei informacijai spustelėkite šį pranešimą.</translation>
     </message>
@@ -4829,42 +4799,42 @@ Feedly is a secure space where you can privately organize and research the topic
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../src/librssguard/miscellaneous/notification.cpp" line="134"/>
+        <location filename="../src/librssguard/miscellaneous/notification.cpp" line="133"/>
         <source>Fetching articles right now</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../src/librssguard/miscellaneous/notification.cpp" line="137"/>
+        <location filename="../src/librssguard/miscellaneous/notification.cpp" line="136"/>
         <source>Login data refreshed</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../src/librssguard/miscellaneous/notification.cpp" line="143"/>
+        <location filename="../src/librssguard/miscellaneous/notification.cpp" line="142"/>
         <source>New %1 version is available</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../src/librssguard/miscellaneous/notification.cpp" line="146"/>
+        <location filename="../src/librssguard/miscellaneous/notification.cpp" line="145"/>
         <source>Miscellaneous events</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../src/librssguard/miscellaneous/notification.cpp" line="149"/>
+        <location filename="../src/librssguard/miscellaneous/notification.cpp" line="148"/>
         <source>Node.js - package(s) updated</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../src/librssguard/miscellaneous/notification.cpp" line="152"/>
+        <location filename="../src/librssguard/miscellaneous/notification.cpp" line="151"/>
         <source>Node.js - package(s) failed to updated</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../src/librssguard/miscellaneous/notification.cpp" line="155"/>
+        <location filename="../src/librssguard/miscellaneous/notification.cpp" line="154"/>
         <source>Unknown event</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../src/librssguard/miscellaneous/notification.cpp" line="131"/>
+        <location filename="../src/librssguard/miscellaneous/notification.cpp" line="130"/>
         <source>New (unread) articles fetched</source>
         <translation type="unfinished"/>
     </message>
@@ -4886,7 +4856,7 @@ List of supported readers:</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../src/librssguard/miscellaneous/notification.cpp" line="140"/>
+        <location filename="../src/librssguard/miscellaneous/notification.cpp" line="139"/>
         <source>Login failed</source>
         <translation type="unfinished"/>
     </message>
@@ -4901,37 +4871,37 @@ List of supported readers:</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../src/librssguard/miscellaneous/skinfactory.cpp" line="480"/>
+        <location filename="../src/librssguard/miscellaneous/skinfactory.cpp" line="477"/>
         <source>interesting stuff</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../src/librssguard/miscellaneous/skinfactory.cpp" line="483"/>
+        <location filename="../src/librssguard/miscellaneous/skinfactory.cpp" line="480"/>
         <source>interesting stuff (highlighted)</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../src/librssguard/miscellaneous/skinfactory.cpp" line="486"/>
+        <location filename="../src/librssguard/miscellaneous/skinfactory.cpp" line="484"/>
         <source>errored items</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../src/librssguard/miscellaneous/skinfactory.cpp" line="489"/>
+        <location filename="../src/librssguard/miscellaneous/skinfactory.cpp" line="487"/>
         <source>errored items (highlighted)</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../src/librssguard/miscellaneous/skinfactory.cpp" line="492"/>
+        <location filename="../src/librssguard/miscellaneous/skinfactory.cpp" line="490"/>
         <source>OK-ish color</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../src/librssguard/services/tt-rss/ttrssnetworkfactory.cpp" line="840"/>
+        <location filename="../src/librssguard/services/tt-rss/ttrssnetworkfactory.cpp" line="967"/>
         <source>User-published articles</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../src/librssguard/services/tt-rss/ttrssnetworkfactory.cpp" line="992"/>
+        <location filename="../src/librssguard/services/tt-rss/ttrssnetworkfactory.cpp" line="1130"/>
         <source>Published articles</source>
         <translation type="unfinished"/>
     </message>
@@ -5134,33 +5104,35 @@ List of supported readers:</source>
 <context>
     <name>RedditNetworkFactory</name>
     <message>
-        <location filename="../src/librssguard/services/reddit/redditnetworkfactory.cpp" line="98"/>
+        <location filename="../src/librssguard/services/reddit/redditnetworkfactory.cpp" line="102"/>
+        <location filename="../src/librssguard/services/reddit/redditnetworkfactory.cpp" line="138"/>
+        <location filename="../src/librssguard/services/reddit/redditnetworkfactory.cpp" line="226"/>
         <source>you are not logged in</source>
         <translation>jūs nesate prisijungę</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/services/reddit/redditnetworkfactory.cpp" line="133"/>
+        <location filename="../src/librssguard/services/reddit/redditnetworkfactory.cpp" line="308"/>
         <source>Reddit: authentication error</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../src/librssguard/services/reddit/redditnetworkfactory.cpp" line="134"/>
+        <location filename="../src/librssguard/services/reddit/redditnetworkfactory.cpp" line="309"/>
         <source>Click this to login again. Error is: &apos;%1&apos;</source>
         <translation>Spustelėkite tai, norėdami prisijungti dar kartą. Klaida yra: &quot;%1&quot;</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/services/reddit/redditnetworkfactory.cpp" line="137"/>
-        <location filename="../src/librssguard/services/reddit/redditnetworkfactory.cpp" line="151"/>
+        <location filename="../src/librssguard/services/reddit/redditnetworkfactory.cpp" line="312"/>
+        <location filename="../src/librssguard/services/reddit/redditnetworkfactory.cpp" line="325"/>
         <source>Login</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../src/librssguard/services/reddit/redditnetworkfactory.cpp" line="147"/>
+        <location filename="../src/librssguard/services/reddit/redditnetworkfactory.cpp" line="321"/>
         <source>Reddit: authorization denied</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../src/librssguard/services/reddit/redditnetworkfactory.cpp" line="148"/>
+        <location filename="../src/librssguard/services/reddit/redditnetworkfactory.cpp" line="322"/>
         <source>Click this to login again.</source>
         <translation>Spustelėkite tai, norėdami prisijungti dar kartą.</translation>
     </message>
@@ -5168,19 +5140,19 @@ List of supported readers:</source>
 <context>
     <name>RedditServiceRoot</name>
     <message>
-        <location filename="../src/librssguard/services/reddit/redditserviceroot.cpp" line="117"/>
+        <location filename="../src/librssguard/services/reddit/redditserviceroot.cpp" line="126"/>
         <source>Authentication status: %1
 Login tokens expiration: %2</source>
         <translation>Atpažinimo būsena: %1
 Prisijungimo prieigos raktai nustoja galioti: %2</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/services/reddit/redditserviceroot.cpp" line="119"/>
+        <location filename="../src/librssguard/services/reddit/redditserviceroot.cpp" line="128"/>
         <source>logged-in</source>
         <translation>prisijungta</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/services/reddit/redditserviceroot.cpp" line="120"/>
+        <location filename="../src/librssguard/services/reddit/redditserviceroot.cpp" line="128"/>
         <source>NOT logged-in</source>
         <translation>NEPRISIJUNGTA</translation>
     </message>
@@ -5243,27 +5215,37 @@ Prisijungimo prieigos raktai nustoja galioti: %2</translation>
 <context>
     <name>ServiceRoot</name>
     <message>
-        <location filename="../src/librssguard/services/abstract/serviceroot.cpp" line="98"/>
+        <location filename="../src/librssguard/services/abstract/serviceroot.cpp" line="99"/>
         <source>Synchronize folders &amp;&amp; other items</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../src/librssguard/services/abstract/serviceroot.cpp" line="106"/>
+        <location filename="../src/librssguard/services/abstract/serviceroot.cpp" line="108"/>
         <source>Synchronize article cache</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <location filename="../src/librssguard/services/abstract/serviceroot.cpp" line="505"/>
+        <source>Error when fetching list of feeds</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <location filename="../src/librssguard/services/abstract/serviceroot.cpp" line="506"/>
+        <source>Feeds &amp; categories for account &apos;%1&apos; were not fetched, error: %2</source>
         <translation type="unfinished"/>
     </message>
 </context>
 <context>
     <name>SettingsBrowserMail</name>
     <message>
-        <location filename="../src/librssguard/gui/settings/settingsbrowsermail.cpp" line="89"/>
+        <location filename="../src/librssguard/gui/settings/settingsbrowsermail.cpp" line="95"/>
         <source>Select web browser executable</source>
         <translation>Pasirinkite saityno naršyklės vykdomąjį</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/gui/settings/settingsbrowsermail.cpp" line="94"/>
-        <location filename="../src/librssguard/gui/settings/settingsbrowsermail.cpp" line="138"/>
-        <location filename="../src/librssguard/gui/settings/settingsbrowsermail.cpp" line="244"/>
+        <location filename="../src/librssguard/gui/settings/settingsbrowsermail.cpp" line="100"/>
+        <location filename="../src/librssguard/gui/settings/settingsbrowsermail.cpp" line="145"/>
+        <location filename="../src/librssguard/gui/settings/settingsbrowsermail.cpp" line="269"/>
         <source>Executables (*)</source>
         <extracomment>File filter for external browser selection dialog.
 ----------
@@ -5271,130 +5253,140 @@ File filter for external e-mail selection dialog.</extracomment>
         <translation>Vykdomieji (*)</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/gui/settings/settingsbrowsermail.cpp" line="96"/>
-        <location filename="../src/librssguard/gui/settings/settingsbrowsermail.cpp" line="140"/>
-        <location filename="../src/librssguard/gui/settings/settingsbrowsermail.cpp" line="242"/>
+        <location filename="../src/librssguard/gui/settings/settingsbrowsermail.cpp" line="102"/>
+        <location filename="../src/librssguard/gui/settings/settingsbrowsermail.cpp" line="147"/>
+        <location filename="../src/librssguard/gui/settings/settingsbrowsermail.cpp" line="267"/>
         <source>Executables (*.*)</source>
         <translation>Vykdomieji (*.*)</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/gui/settings/settingsbrowsermail.cpp" line="133"/>
+        <location filename="../src/librssguard/gui/settings/settingsbrowsermail.cpp" line="140"/>
         <source>Select e-mail executable</source>
         <translation>Pasirinkite el. pašto vykdomąjį</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/gui/settings/settingsbrowsermail.cpp" line="157"/>
+        <location filename="../src/librssguard/gui/settings/settingsbrowsermail.cpp" line="164"/>
         <source>Opera 12 or older</source>
         <translation>Opera 12 ar senesnė</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/gui/settings/settingsbrowsermail.cpp" line="165"/>
+        <location filename="../src/librssguard/gui/settings/settingsbrowsermail.cpp" line="173"/>
         <source>Mozilla Thunderbird</source>
         <translation>Mozilla Thunderbird</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/gui/settings/settingsbrowsermail.cpp" line="252"/>
+        <location filename="../src/librssguard/gui/settings/settingsbrowsermail.cpp" line="277"/>
         <source>Enter (optional) parameters:</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../src/librssguard/gui/settings/settingsbrowsermail.cpp" line="46"/>
+        <location filename="../src/librssguard/gui/settings/settingsbrowsermail.cpp" line="40"/>
         <source>Executable</source>
         <translation>Vykdomasis</translation>
     </message>
     <message>
         <location filename="../src/librssguard/gui/settings/settingsbrowsermail.ui" line="21"/>
+        <source>Network</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <location filename="../src/librssguard/gui/settings/settingsbrowsermail.ui" line="27"/>
+        <source>Do not accept any incoming cookies</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <location filename="../src/librssguard/gui/settings/settingsbrowsermail.ui" line="35"/>
         <source>External web browser</source>
         <translation>Išorinė naršyklė</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/gui/settings/settingsbrowsermail.ui" line="27"/>
+        <location filename="../src/librssguard/gui/settings/settingsbrowsermail.ui" line="41"/>
         <source>Always open hyperlinks in external web browser</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../src/librssguard/gui/settings/settingsbrowsermail.ui" line="47"/>
-        <location filename="../src/librssguard/gui/settings/settingsbrowsermail.ui" line="161"/>
+        <location filename="../src/librssguard/gui/settings/settingsbrowsermail.ui" line="61"/>
+        <location filename="../src/librssguard/gui/settings/settingsbrowsermail.ui" line="175"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;If unchecked, then default system-wide web browser is used.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
         <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Jei nepažymėta, tuomet bus naudojama sistemos mastu nustatyta numatytoji saityno naršyklė.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/gui/settings/settingsbrowsermail.ui" line="50"/>
+        <location filename="../src/librssguard/gui/settings/settingsbrowsermail.ui" line="64"/>
         <source>Use custom external web browser</source>
         <translation>Naudoti tinkintą išorinę saityno naršyklę</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/gui/settings/settingsbrowsermail.ui" line="62"/>
+        <location filename="../src/librssguard/gui/settings/settingsbrowsermail.ui" line="76"/>
         <source>Web browser executable</source>
         <translation>Saityno naršyklės vykdomasis</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/gui/settings/settingsbrowsermail.ui" line="74"/>
+        <location filename="../src/librssguard/gui/settings/settingsbrowsermail.ui" line="88"/>
         <source>Executable file of web browser</source>
         <translation>Saityno naršyklės vykdomasis failas</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/gui/settings/settingsbrowsermail.ui" line="87"/>
-        <location filename="../src/librssguard/gui/settings/settingsbrowsermail.ui" line="204"/>
+        <location filename="../src/librssguard/gui/settings/settingsbrowsermail.ui" line="101"/>
+        <location filename="../src/librssguard/gui/settings/settingsbrowsermail.ui" line="218"/>
         <source>&amp;Browse</source>
         <translation>&amp;Naršyti</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/gui/settings/settingsbrowsermail.ui" line="96"/>
-        <location filename="../src/librssguard/gui/settings/settingsbrowsermail.ui" line="213"/>
-        <location filename="../src/librssguard/gui/settings/settingsbrowsermail.cpp" line="46"/>
+        <location filename="../src/librssguard/gui/settings/settingsbrowsermail.ui" line="110"/>
+        <location filename="../src/librssguard/gui/settings/settingsbrowsermail.ui" line="227"/>
+        <location filename="../src/librssguard/gui/settings/settingsbrowsermail.cpp" line="40"/>
         <source>Parameters</source>
         <translation>Parametrai</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/gui/settings/settingsbrowsermail.ui" line="106"/>
-        <location filename="../src/librssguard/gui/settings/settingsbrowsermail.ui" line="223"/>
+        <location filename="../src/librssguard/gui/settings/settingsbrowsermail.ui" line="120"/>
+        <location filename="../src/librssguard/gui/settings/settingsbrowsermail.ui" line="237"/>
         <source>Parameters passed to executable</source>
         <translation>Vykdomajam perduoti parametrai</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/gui/settings/settingsbrowsermail.ui" line="113"/>
-        <location filename="../src/librssguard/gui/settings/settingsbrowsermail.ui" line="230"/>
+        <location filename="../src/librssguard/gui/settings/settingsbrowsermail.ui" line="127"/>
+        <location filename="../src/librssguard/gui/settings/settingsbrowsermail.ui" line="244"/>
         <source>Use sample arguments for</source>
         <translation>Naudoti pavyzdinius argumentus</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/gui/settings/settingsbrowsermail.ui" line="127"/>
+        <location filename="../src/librssguard/gui/settings/settingsbrowsermail.ui" line="141"/>
         <source>Select browser</source>
         <translation>Pasirinkite naršyklę</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/gui/settings/settingsbrowsermail.cpp" line="24"/>
+        <location filename="../src/librssguard/gui/settings/settingsbrowsermail.cpp" line="25"/>
         <source>Note that &quot;%1&quot; (without quotation marks) is placeholder for URL of selected message.</source>
         <translation>Turėkite omenyje, kad &quot;%1&quot; (be kabučių) yra pasirinktos žinutės URL vietaženklis.</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/gui/settings/settingsbrowsermail.ui" line="142"/>
+        <location filename="../src/librssguard/gui/settings/settingsbrowsermail.ui" line="156"/>
         <source>External e-mail client</source>
         <translation>Išorinis el. pašto klientas</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/gui/settings/settingsbrowsermail.ui" line="164"/>
+        <location filename="../src/librssguard/gui/settings/settingsbrowsermail.ui" line="178"/>
         <source>Use custom external e-mail client</source>
         <translation>Naudoti tinkintą išorinį el. pašto klientą</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/gui/settings/settingsbrowsermail.ui" line="176"/>
+        <location filename="../src/librssguard/gui/settings/settingsbrowsermail.ui" line="190"/>
         <source>E-mail client executable</source>
         <translation>El. pašto vykdomasis</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/gui/settings/settingsbrowsermail.ui" line="191"/>
+        <location filename="../src/librssguard/gui/settings/settingsbrowsermail.ui" line="205"/>
         <source>Executable file of e-mail client</source>
         <translation>El. pašto kliento vykdomasis failas</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/gui/settings/settingsbrowsermail.ui" line="244"/>
+        <location filename="../src/librssguard/gui/settings/settingsbrowsermail.ui" line="258"/>
         <source>Select client</source>
         <translation>Pasirinkite klientą</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/gui/settings/settingsbrowsermail.cpp" line="28"/>
+        <location filename="../src/librssguard/gui/settings/settingsbrowsermail.cpp" line="29"/>
         <source>Placeholders:
  • %1 - title of selected message,
  • %2 - body of selected message.</source>
@@ -5403,49 +5395,49 @@ File filter for external e-mail selection dialog.</extracomment>
  • %2 - pasirinktos žinutės pagrindinė dalis.</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/gui/settings/settingsbrowsermail.ui" line="259"/>
+        <location filename="../src/librssguard/gui/settings/settingsbrowsermail.ui" line="273"/>
         <source>External tools</source>
         <translation>Išoriniai įrankiai</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/gui/settings/settingsbrowsermail.ui" line="294"/>
+        <location filename="../src/librssguard/gui/settings/settingsbrowsermail.ui" line="308"/>
         <source>&amp;Add tool</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../src/librssguard/gui/settings/settingsbrowsermail.ui" line="304"/>
+        <location filename="../src/librssguard/gui/settings/settingsbrowsermail.ui" line="318"/>
         <source>&amp;Edit selected tool</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../src/librssguard/gui/settings/settingsbrowsermail.ui" line="314"/>
+        <location filename="../src/librssguard/gui/settings/settingsbrowsermail.ui" line="328"/>
         <source>&amp;Delete selected tool</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../src/librssguard/gui/settings/settingsbrowsermail.cpp" line="33"/>
+        <location filename="../src/librssguard/gui/settings/settingsbrowsermail.cpp" line="34"/>
         <source>On this page, you can setup a list of external tools which can open URLs.</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../src/librssguard/gui/settings/settingsbrowsermail.cpp" line="239"/>
+        <location filename="../src/librssguard/gui/settings/settingsbrowsermail.cpp" line="264"/>
         <source>Select external tool</source>
         <translation>Pasirinkite išorinį įrankį</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/gui/settings/settingsbrowsermail.cpp" line="251"/>
+        <location filename="../src/librssguard/gui/settings/settingsbrowsermail.cpp" line="276"/>
         <source>Enter parameters</source>
         <translation>Įveskite parametrus</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/gui/settings/settingsbrowsermail.cpp" line="22"/>
+        <location filename="../src/librssguard/gui/settings/settingsbrowsermail.cpp" line="23"/>
         <source>Network proxy</source>
         <translation type="unfinished"/>
     </message>
     <message>
         <location filename="../src/librssguard/gui/settings/settingsbrowsermail.h" line="46"/>
-        <source>Web browser &amp; e-mail &amp; proxy</source>
-        <translation>Naršyklė, el. paštas ir įg. serveris</translation>
+        <source>Network &amp; web &amp; tools</source>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
@@ -5647,29 +5639,34 @@ Authors of this application are NOT responsible for lost data.</source>
 <context>
     <name>SettingsFeedsMessages</name>
     <message>
-        <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.cpp" line="157"/>
+        <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.cpp" line="204"/>
         <source>Select new font</source>
         <translation>Pasirinkti naują šriftą</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.cpp" line="27"/>
+        <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.cpp" line="28"/>
         <source>Enter format for count of articles displayed next to each feed/category in feed list. Use &quot;%all&quot; and &quot;%unread&quot; strings which are placeholders for the actual count of all (or unread) articles.</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.cpp" line="31"/>
+        <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.cpp" line="32"/>
         <source>Note that enabling this might have drastic consequences on performance of article list with big number of articles.</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.cpp" line="41"/>
+        <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.cpp" line="44"/>
         <source>days (turned off)</source>
         <translation type="unfinished"/>
     </message>
     <message numerus="yes">
-        <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.cpp" line="44"/>
+        <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.cpp" line="47"/>
         <source>day(s)</source>
         <translation type="unfinished"><numerusform></numerusform><numerusform></numerusform><numerusform></numerusform><numerusform></numerusform></translation>
+    </message>
+    <message>
+        <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.cpp" line="53"/>
+        <source> = unchanged size</source>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="21"/>
@@ -5707,137 +5704,142 @@ Authors of this application are NOT responsible for lost data.</source>
         <translation> ms</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="135"/>
+        <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="122"/>
         <source>Feeds list</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="141"/>
-        <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="441"/>
+        <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="128"/>
+        <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="428"/>
         <source>Row height</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="178"/>
+        <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="165"/>
         <source>Feed list font</source>
         <translation>Kanalų sąrašo šriftas</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="184"/>
-        <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="355"/>
-        <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="557"/>
+        <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="171"/>
+        <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="352"/>
+        <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="561"/>
         <source>Font preview</source>
         <translation>Šrifto peržiūra</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="194"/>
-        <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="365"/>
-        <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="567"/>
+        <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="181"/>
+        <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="362"/>
+        <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="571"/>
         <source>&amp;Change font</source>
         <translation>&amp;Keisti šriftą</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="219"/>
+        <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="206"/>
         <source>Article count format</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="248"/>
+        <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="235"/>
         <source>Hide article counts if there are no unread articles</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="255"/>
+        <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="242"/>
         <source>Allow only basic keyboard shortcuts for feed/article list</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="262"/>
+        <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="249"/>
         <source>Display tooltips for feeds and articles</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="283"/>
+        <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="257"/>
         <source>Articles</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="289"/>
+        <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="263"/>
         <source>Remove all read articles from all feeds on application exit</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="296"/>
+        <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="270"/>
         <source>Ignore changes in article body when new articles are being fetched</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="310"/>
+        <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="291"/>
+        <source>Internal article viewer</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="297"/>
         <source>Display attached pictures directly in article</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="317"/>
+        <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="284"/>
         <source>Bring application window to front once article is opened in external web browser</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="324"/>
-        <source>Image attachments height</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="349"/>
+        <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="346"/>
         <source>Article browser font</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="303"/>
+        <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="277"/>
         <source>Fixup date/time of articles which are in the future</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="404"/>
+        <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="306"/>
+        <source>Limit height of pictures</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="391"/>
         <source>Articles list</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="410"/>
+        <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="397"/>
         <source>Display real icons of feeds instead of read/unread icons</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="417"/>
+        <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="404"/>
         <source>Keep article selection in the middle of the article list viewport</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="424"/>
+        <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="411"/>
         <source>Enable multiline items</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="470"/>
+        <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="457"/>
         <source>Top/bottom row padding</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="499"/>
+        <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="486"/>
         <source>Use custom date/time format</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="525"/>
+        <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="512"/>
         <source>Custom date/time format for today&apos;s articles</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="551"/>
+        <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="555"/>
         <source>Article list font</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="590"/>
+        <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="538"/>
         <source>Show relative time for articles not older than</source>
         <translation type="unfinished"/>
     </message>
@@ -5850,7 +5852,7 @@ Authors of this application are NOT responsible for lost data.</source>
 <context>
     <name>SettingsGeneral</name>
     <message>
-        <location filename="../src/librssguard/gui/settings/settingsgeneral.cpp" line="40"/>
+        <location filename="../src/librssguard/gui/settings/settingsgeneral.cpp" line="45"/>
         <source> (not supported on this platform)</source>
         <translation> (šioje platformoje nepalaikoma)</translation>
     </message>
@@ -6140,37 +6142,42 @@ Also, relaunch &quot;Settings&quot; dialog after you install Node.js.</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../src/librssguard/gui/settings/settingsnodejs.cpp" line="111"/>
+        <location filename="../src/librssguard/gui/settings/settingsnodejs.cpp" line="107"/>
         <source>Node.js has version %1.</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../src/librssguard/gui/settings/settingsnodejs.cpp" line="115"/>
+        <location filename="../src/librssguard/gui/settings/settingsnodejs.cpp" line="110"/>
         <source>Node.js: %1.</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../src/librssguard/gui/settings/settingsnodejs.cpp" line="124"/>
+        <location filename="../src/librssguard/gui/settings/settingsnodejs.cpp" line="118"/>
         <source>NPM has version %1.</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../src/librssguard/gui/settings/settingsnodejs.cpp" line="128"/>
+        <location filename="../src/librssguard/gui/settings/settingsnodejs.cpp" line="121"/>
         <source>NPM: %1.</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../src/librssguard/gui/settings/settingsnodejs.cpp" line="137"/>
+        <location filename="../src/librssguard/gui/settings/settingsnodejs.cpp" line="135"/>
+        <source>You cannot choose file, you have to choose FOLDER.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <location filename="../src/librssguard/gui/settings/settingsnodejs.cpp" line="139"/>
         <source>Package folder is OK.</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../src/librssguard/gui/settings/settingsnodejs.cpp" line="138"/>
+        <location filename="../src/librssguard/gui/settings/settingsnodejs.cpp" line="143"/>
         <source>Package folder will be created!</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../src/librssguard/gui/settings/settingsnodejs.cpp" line="26"/>
+        <location filename="../src/librssguard/gui/settings/settingsnodejs.cpp" line="28"/>
         <source>%1 automatically installs some Node.js packages so that you do not have to. %1 does not use global package folder because that requires administrator rights, therefore by default it uses subfolder placed in your &quot;user data&quot; folder.</source>
         <translation type="unfinished"/>
     </message>
@@ -6256,12 +6263,12 @@ Also, there are some built-in sounds. Just start typing &quot;:&quot; and they w
 <context>
     <name>SingleNotificationEditor</name>
     <message>
-        <location filename="../src/librssguard/gui/notifications/singlenotificationeditor.cpp" line="42"/>
+        <location filename="../src/librssguard/gui/notifications/singlenotificationeditor.cpp" line="46"/>
         <source>Select sound file</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../src/librssguard/gui/notifications/singlenotificationeditor.cpp" line="44"/>
+        <location filename="../src/librssguard/gui/notifications/singlenotificationeditor.cpp" line="48"/>
         <source>WAV files (*.wav);;MP3 files (*.mp3)</source>
         <translation type="unfinished"/>
     </message>
@@ -6291,7 +6298,7 @@ Also, there are some built-in sounds. Just start typing &quot;:&quot; and they w
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../src/librssguard/gui/notifications/singlenotificationeditor.ui" line="93"/>
+        <location filename="../src/librssguard/gui/notifications/singlenotificationeditor.ui" line="96"/>
         <source>Volume</source>
         <translation type="unfinished"/>
     </message>
@@ -6299,28 +6306,28 @@ Also, there are some built-in sounds. Just start typing &quot;:&quot; and they w
 <context>
     <name>SkinFactory</name>
     <message>
-        <location filename="../src/librssguard/miscellaneous/skinfactory.cpp" line="127"/>
-        <location filename="../src/librssguard/miscellaneous/skinfactory.cpp" line="131"/>
+        <location filename="../src/librssguard/miscellaneous/skinfactory.cpp" line="126"/>
+        <location filename="../src/librssguard/miscellaneous/skinfactory.cpp" line="129"/>
         <source>This page was blocked by AdBlock</source>
         <translation>Reklamos blokavimas užblokavo šį puslapį</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/miscellaneous/skinfactory.cpp" line="128"/>
+        <location filename="../src/librssguard/miscellaneous/skinfactory.cpp" line="127"/>
         <source>Blocked URL: &quot;%1&quot;&lt;br/&gt;Used filter: &quot;%2&quot;</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../src/librssguard/miscellaneous/skinfactory.cpp" line="168"/>
+        <location filename="../src/librssguard/miscellaneous/skinfactory.cpp" line="167"/>
         <source>Written by </source>
         <translation>Parašė </translation>
     </message>
     <message>
-        <location filename="../src/librssguard/miscellaneous/skinfactory.cpp" line="169"/>
+        <location filename="../src/librssguard/miscellaneous/skinfactory.cpp" line="168"/>
         <source>unknown author</source>
         <translation>nežinomas autorius</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/miscellaneous/skinfactory.cpp" line="181"/>
+        <location filename="../src/librssguard/miscellaneous/skinfactory.cpp" line="180"/>
         <source>Newspaper view</source>
         <translation>Laikraščio veiksena</translation>
     </message>
@@ -6354,59 +6361,59 @@ Also, there are some built-in sounds. Just start typing &quot;:&quot; and they w
 <context>
     <name>StandardFeed</name>
     <message>
-        <location filename="../src/librssguard/services/standard/standardfeed.cpp" line="174"/>
+        <location filename="../src/librssguard/services/standard/standardfeed.cpp" line="172"/>
         <source>Script</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../src/librssguard/services/standard/standardfeed.cpp" line="177"/>
+        <location filename="../src/librssguard/services/standard/standardfeed.cpp" line="175"/>
         <source>Local file</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../src/librssguard/services/standard/standardfeed.cpp" line="180"/>
+        <location filename="../src/librssguard/services/standard/standardfeed.cpp" line="178"/>
         <source>Unknown</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../src/librssguard/services/standard/standardfeed.cpp" line="213"/>
+        <location filename="../src/librssguard/services/standard/standardfeed.cpp" line="209"/>
         <source>Cannot save data for feed: %1</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../src/librssguard/services/standard/standardfeed.cpp" line="303"/>
+        <location filename="../src/librssguard/services/standard/standardfeed.cpp" line="295"/>
         <source>JSON error &apos;%1&apos;</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../src/librssguard/services/standard/standardfeed.cpp" line="365"/>
+        <location filename="../src/librssguard/services/standard/standardfeed.cpp" line="355"/>
         <source>XML is not well-formed, %1</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../src/librssguard/services/standard/standardfeed.cpp" line="444"/>
+        <location filename="../src/librssguard/services/standard/standardfeed.cpp" line="438"/>
         <source>XML feed file format unrecognized</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../src/librssguard/services/standard/standardfeed.cpp" line="487"/>
+        <location filename="../src/librssguard/services/standard/standardfeed.cpp" line="476"/>
         <source>Cannot move feed, detailed information was logged via debug log.</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../src/librssguard/services/standard/standardfeed.cpp" line="68"/>
+        <location filename="../src/librssguard/services/standard/standardfeed.cpp" line="65"/>
         <source>
 Encoding: %2
 Type: %3</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../src/librssguard/services/standard/standardfeed.cpp" line="212"/>
+        <location filename="../src/librssguard/services/standard/standardfeed.cpp" line="208"/>
         <source>Cannot save feed data</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../src/librssguard/services/standard/standardfeed.cpp" line="486"/>
+        <location filename="../src/librssguard/services/standard/standardfeed.cpp" line="475"/>
         <source>Cannot move feed</source>
         <translation type="unfinished"/>
     </message>
@@ -6810,17 +6817,17 @@ Also, you can post-process generated feed data with yet another script if you wi
 <context>
     <name>SystemFactory</name>
     <message>
-        <location filename="../src/librssguard/miscellaneous/systemfactory.cpp" line="182"/>
+        <location filename="../src/librssguard/miscellaneous/systemfactory.cpp" line="228"/>
         <source>anonymous</source>
         <translation>anonimas</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/miscellaneous/systemfactory.cpp" line="275"/>
+        <location filename="../src/librssguard/miscellaneous/systemfactory.cpp" line="323"/>
         <source> bytes</source>
         <translation> baitų</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/miscellaneous/systemfactory.cpp" line="219"/>
+        <location filename="../src/librssguard/miscellaneous/systemfactory.cpp" line="268"/>
         <source>See new version info</source>
         <translation type="unfinished"/>
     </message>
@@ -6887,6 +6894,34 @@ Neskaitytų naujienų: %2</translation>
     </message>
 </context>
 <context>
+    <name>TextBrowserViewer</name>
+    <message>
+        <location filename="../src/librssguard/gui/webviewers/qtextbrowser/textbrowserviewer.cpp" line="140"/>
+        <source>image</source>
+        <translation>paveikslas</translation>
+    </message>
+    <message>
+        <location filename="../src/librssguard/gui/webviewers/qtextbrowser/textbrowserviewer.cpp" line="336"/>
+        <source>Enable external resources</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <location filename="../src/librssguard/gui/webviewers/qtextbrowser/textbrowserviewer.cpp" line="339"/>
+        <source>Open in external browser</source>
+        <translation>Atverti išorinėje naršyklėje</translation>
+    </message>
+    <message>
+        <location filename="../src/librssguard/gui/webviewers/qtextbrowser/textbrowserviewer.cpp" line="341"/>
+        <source>Download</source>
+        <translation>Atsisiųsti</translation>
+    </message>
+    <message>
+        <location filename="../src/librssguard/gui/webviewers/qtextbrowser/textbrowserviewer.cpp" line="366"/>
+        <source>Open with external tool</source>
+        <translation>Atverti, naudojant išorinį įrankį</translation>
+    </message>
+</context>
+<context>
     <name>TimeSpinBox</name>
     <message numerus="yes">
         <location filename="../src/librssguard/gui/reusable/timespinbox.cpp" line="54"/>
@@ -6944,37 +6979,37 @@ Neskaitytų naujienų: %2</translation>
         <translation>Perkelti veksmą aukštyn</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/gui/toolbars/toolbareditor.ui" line="98"/>
+        <location filename="../src/librssguard/gui/toolbars/toolbareditor.ui" line="89"/>
         <source>Move action down</source>
         <translation>Nuleisti veiksmą žemyn</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/gui/toolbars/toolbareditor.ui" line="127"/>
+        <location filename="../src/librssguard/gui/toolbars/toolbareditor.ui" line="109"/>
         <source>Insert separator</source>
         <translation>Įterpti skirtuką</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/gui/toolbars/toolbareditor.ui" line="149"/>
+        <location filename="../src/librssguard/gui/toolbars/toolbareditor.ui" line="122"/>
         <source>Insert spacer</source>
         <translation>Įterpti tarpiklį</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/gui/toolbars/toolbareditor.ui" line="178"/>
+        <location filename="../src/librssguard/gui/toolbars/toolbareditor.ui" line="142"/>
         <source>Add selected action</source>
         <translation>Pridėti pasirinktą veiksmą</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/gui/toolbars/toolbareditor.ui" line="200"/>
+        <location filename="../src/librssguard/gui/toolbars/toolbareditor.ui" line="155"/>
         <source>Delete selected action</source>
         <translation>Ištrinti pasirinktą veiksmą</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/gui/toolbars/toolbareditor.ui" line="222"/>
+        <location filename="../src/librssguard/gui/toolbars/toolbareditor.ui" line="168"/>
         <source>Delete all actions</source>
         <translation>Ištrinti visus veiksmus</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/gui/toolbars/toolbareditor.ui" line="244"/>
+        <location filename="../src/librssguard/gui/toolbars/toolbareditor.ui" line="181"/>
         <source>Reset toolbar</source>
         <translation>Atstatyti įrankių juostą</translation>
     </message>
@@ -6996,146 +7031,151 @@ Neskaitytų naujienų: %2</translation>
     <name>TtRssAccountDetails</name>
     <message>
         <location filename="../src/librssguard/services/tt-rss/gui/ttrssaccountdetails.cpp" line="14"/>
+        <source>If you select intelligent synchronization, then only not-yet-fetched or updated articles are downloaded. Network usage is greatly reduced and overall synchronization speed is greatly improved, but first feed fetching could be slow anyway if your feed contains huge number of articles.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <location filename="../src/librssguard/services/tt-rss/gui/ttrssaccountdetails.cpp" line="21"/>
         <source>Leaving this option on causes that updates of feeds will be probably much slower and may time-out often.</source>
         <translation>Palikus šį parametrą įjungtą, bus sąlygojama, jog kanalų atnaujinimai bus žymiai lėtesni ir dažnu atveju gali būti pereikvojami pagal laiką. </translation>
     </message>
     <message>
-        <location filename="../src/librssguard/services/tt-rss/gui/ttrssaccountdetails.cpp" line="17"/>
+        <location filename="../src/librssguard/services/tt-rss/gui/ttrssaccountdetails.cpp" line="24"/>
         <source>HTTP authentication username</source>
         <translation>HTTP atpažinimo naudotojo vardas</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/services/tt-rss/gui/ttrssaccountdetails.cpp" line="18"/>
+        <location filename="../src/librssguard/services/tt-rss/gui/ttrssaccountdetails.cpp" line="25"/>
         <source>HTTP authentication password</source>
         <translation>HTTP atpažinimo slaptažodis</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/services/tt-rss/gui/ttrssaccountdetails.cpp" line="19"/>
+        <location filename="../src/librssguard/services/tt-rss/gui/ttrssaccountdetails.cpp" line="26"/>
         <source>Password for your TT-RSS account</source>
         <translation>Jūsų TT-RSS paskyros slaptažodis</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/services/tt-rss/gui/ttrssaccountdetails.cpp" line="20"/>
+        <location filename="../src/librssguard/services/tt-rss/gui/ttrssaccountdetails.cpp" line="27"/>
         <source>Username for your TT-RSS account</source>
         <translation>Jūsų TT-RSS paskyros naudotojo vardas</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/services/tt-rss/gui/ttrssaccountdetails.cpp" line="21"/>
+        <location filename="../src/librssguard/services/tt-rss/gui/ttrssaccountdetails.cpp" line="28"/>
         <source>URL of your TT-RSS instance WITHOUT trailing &quot;/api/&quot; string</source>
         <translation>Jūsų TT-RSS egzemplioriaus URL BE galinės &quot;/api/&quot; eilutės</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/services/tt-rss/gui/ttrssaccountdetails.cpp" line="23"/>
+        <location filename="../src/librssguard/services/tt-rss/gui/ttrssaccountdetails.cpp" line="30"/>
         <source>No test done yet.</source>
         <translation>Kol kas nebuvo atlikta jokių bandymų.</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/services/tt-rss/gui/ttrssaccountdetails.cpp" line="24"/>
+        <location filename="../src/librssguard/services/tt-rss/gui/ttrssaccountdetails.cpp" line="31"/>
         <source>Here, results of connection test are shown.</source>
         <translation>Čia yra rodomi ryšio bandymo rezultatai.</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/services/tt-rss/gui/ttrssaccountdetails.cpp" line="74"/>
-        <location filename="../src/librssguard/services/tt-rss/gui/ttrssaccountdetails.cpp" line="75"/>
+        <location filename="../src/librssguard/services/tt-rss/gui/ttrssaccountdetails.cpp" line="88"/>
+        <location filename="../src/librssguard/services/tt-rss/gui/ttrssaccountdetails.cpp" line="89"/>
         <source>API access on selected server is not enabled.</source>
         <translation>API prieiga pasirinktame serveryje nėra įjungta.</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/services/tt-rss/gui/ttrssaccountdetails.cpp" line="79"/>
-        <location filename="../src/librssguard/services/tt-rss/gui/ttrssaccountdetails.cpp" line="80"/>
+        <location filename="../src/librssguard/services/tt-rss/gui/ttrssaccountdetails.cpp" line="93"/>
+        <location filename="../src/librssguard/services/tt-rss/gui/ttrssaccountdetails.cpp" line="94"/>
         <source>Entered credentials are incorrect.</source>
         <translation>Įrašyti prisijungimo duomenys neteisingi.</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/services/tt-rss/gui/ttrssaccountdetails.cpp" line="84"/>
-        <location filename="../src/librssguard/services/tt-rss/gui/ttrssaccountdetails.cpp" line="85"/>
+        <location filename="../src/librssguard/services/tt-rss/gui/ttrssaccountdetails.cpp" line="98"/>
+        <location filename="../src/librssguard/services/tt-rss/gui/ttrssaccountdetails.cpp" line="99"/>
         <source>Other error occurred, contact developers.</source>
         <translation>Įvyko kitokia klaida, susisiekite su kūrėjais.</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/services/tt-rss/gui/ttrssaccountdetails.cpp" line="90"/>
-        <location filename="../src/librssguard/services/tt-rss/gui/ttrssaccountdetails.cpp" line="96"/>
+        <location filename="../src/librssguard/services/tt-rss/gui/ttrssaccountdetails.cpp" line="104"/>
+        <location filename="../src/librssguard/services/tt-rss/gui/ttrssaccountdetails.cpp" line="111"/>
         <source>Installed version: %1, required at least: %2.</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../src/librssguard/services/tt-rss/gui/ttrssaccountdetails.cpp" line="92"/>
+        <location filename="../src/librssguard/services/tt-rss/gui/ttrssaccountdetails.cpp" line="107"/>
         <source>Selected Tiny Tiny RSS server is running unsupported version of API.</source>
         <translation>Pasirinktas Tiny Tiny RSS serveris vykdo nepalaikoma API versiją.</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/services/tt-rss/gui/ttrssaccountdetails.cpp" line="98"/>
+        <location filename="../src/librssguard/services/tt-rss/gui/ttrssaccountdetails.cpp" line="114"/>
         <source>Tiny Tiny RSS server is okay.</source>
         <translation>Tiny Tiny RSS serveris veikia gerai.</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/services/tt-rss/gui/ttrssaccountdetails.cpp" line="103"/>
+        <location filename="../src/librssguard/services/tt-rss/gui/ttrssaccountdetails.cpp" line="120"/>
         <source>Network error: &apos;%1&apos;.</source>
         <translation>Tinklo klaida: &apos;%1&apos;.</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/services/tt-rss/gui/ttrssaccountdetails.cpp" line="104"/>
+        <location filename="../src/librssguard/services/tt-rss/gui/ttrssaccountdetails.cpp" line="121"/>
         <source>Network error, have you entered correct Tiny Tiny RSS API endpoint and password?</source>
         <translation>Tinklo klaida, ar jūs įrašėte teisingą Tiny Tiny RSS API galutinį tašką ir slaptažodį?</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/services/tt-rss/gui/ttrssaccountdetails.cpp" line="108"/>
-        <location filename="../src/librssguard/services/tt-rss/gui/ttrssaccountdetails.cpp" line="109"/>
+        <location filename="../src/librssguard/services/tt-rss/gui/ttrssaccountdetails.cpp" line="125"/>
+        <location filename="../src/librssguard/services/tt-rss/gui/ttrssaccountdetails.cpp" line="126"/>
         <source>Unspecified error, did you enter correct URL?</source>
         <translation>Neapibrėžta klaida, ar įrašėte teisingą URL?</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/services/tt-rss/gui/ttrssaccountdetails.cpp" line="117"/>
+        <location filename="../src/librssguard/services/tt-rss/gui/ttrssaccountdetails.cpp" line="134"/>
         <source>Username cannot be empty.</source>
         <translation>Naudotojo vardas negali būti tuščias.</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/services/tt-rss/gui/ttrssaccountdetails.cpp" line="120"/>
+        <location filename="../src/librssguard/services/tt-rss/gui/ttrssaccountdetails.cpp" line="137"/>
         <source>Username is okay.</source>
         <translation>Naudotojo vardas yra geras.</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/services/tt-rss/gui/ttrssaccountdetails.cpp" line="128"/>
+        <location filename="../src/librssguard/services/tt-rss/gui/ttrssaccountdetails.cpp" line="145"/>
         <source>Password cannot be empty.</source>
         <translation>Slaptažodis negali būti tuščias.</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/services/tt-rss/gui/ttrssaccountdetails.cpp" line="131"/>
+        <location filename="../src/librssguard/services/tt-rss/gui/ttrssaccountdetails.cpp" line="148"/>
         <source>Password is okay.</source>
         <translation>Slaptažodis yra geras.</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/services/tt-rss/gui/ttrssaccountdetails.cpp" line="142"/>
+        <location filename="../src/librssguard/services/tt-rss/gui/ttrssaccountdetails.cpp" line="158"/>
         <source>Username is ok or it is not needed.</source>
         <translation>Naudotojo vardas yra geras arba jo nereikia.</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/services/tt-rss/gui/ttrssaccountdetails.cpp" line="143"/>
+        <location filename="../src/librssguard/services/tt-rss/gui/ttrssaccountdetails.cpp" line="159"/>
         <source>Username is empty.</source>
         <translation>Naudotojo vardas tuščias.</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/services/tt-rss/gui/ttrssaccountdetails.cpp" line="153"/>
+        <location filename="../src/librssguard/services/tt-rss/gui/ttrssaccountdetails.cpp" line="168"/>
         <source>Password is ok or it is not needed.</source>
         <translation>Slaptažodis yra geras arba jo nereikia.</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/services/tt-rss/gui/ttrssaccountdetails.cpp" line="154"/>
+        <location filename="../src/librssguard/services/tt-rss/gui/ttrssaccountdetails.cpp" line="169"/>
         <source>Password is empty.</source>
         <translation>Slaptažodis tuščias.</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/services/tt-rss/gui/ttrssaccountdetails.cpp" line="161"/>
+        <location filename="../src/librssguard/services/tt-rss/gui/ttrssaccountdetails.cpp" line="176"/>
         <source>URL cannot be empty.</source>
         <translation>URL negali būti tuščias.</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/services/tt-rss/gui/ttrssaccountdetails.cpp" line="164"/>
+        <location filename="../src/librssguard/services/tt-rss/gui/ttrssaccountdetails.cpp" line="179"/>
         <source>URL should NOT end with &quot;/api/&quot;.</source>
         <translation>URL NETURĖTŲ užsibaigti su &quot;/api/&quot;.</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/services/tt-rss/gui/ttrssaccountdetails.cpp" line="167"/>
+        <location filename="../src/librssguard/services/tt-rss/gui/ttrssaccountdetails.cpp" line="182"/>
         <source>URL is okay.</source>
         <translation>URL yra geras.</translation>
     </message>
@@ -7145,50 +7185,55 @@ Neskaitytų naujienų: %2</translation>
         <translation>URL </translation>
     </message>
     <message>
-        <location filename="../src/librssguard/services/tt-rss/gui/ttrssaccountdetails.ui" line="47"/>
+        <location filename="../src/librssguard/services/tt-rss/gui/ttrssaccountdetails.ui" line="84"/>
         <source>Download unread articles only</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../src/librssguard/services/tt-rss/gui/ttrssaccountdetails.ui" line="56"/>
+        <location filename="../src/librssguard/services/tt-rss/gui/ttrssaccountdetails.ui" line="49"/>
         <source>Only download newest X articles per feed</source>
         <translation type="unfinished"/>
     </message>
     <message>
         <location filename="../src/librssguard/services/tt-rss/gui/ttrssaccountdetails.ui" line="91"/>
+        <source>Intelligent synchronization algorithm</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <location filename="../src/librssguard/services/tt-rss/gui/ttrssaccountdetails.ui" line="98"/>
         <source>Force execution of server-side feeds update</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../src/librssguard/services/tt-rss/gui/ttrssaccountdetails.ui" line="101"/>
-        <location filename="../src/librssguard/services/tt-rss/gui/ttrssaccountdetails.ui" line="145"/>
+        <location filename="../src/librssguard/services/tt-rss/gui/ttrssaccountdetails.ui" line="105"/>
+        <location filename="../src/librssguard/services/tt-rss/gui/ttrssaccountdetails.ui" line="149"/>
         <source>Some feeds require authentication, including GMail feeds. BASIC, NTLM-2 and DIGEST-MD5 authentication schemes are supported.</source>
         <translation>Kai kurie kanalai, įskaitant GMail kanalus, reikalauja atpažinimo. Yra palaikomos BASIC, NTLM-2 ir DIGEST-MD5 atpažinimo schemos.</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/services/tt-rss/gui/ttrssaccountdetails.ui" line="104"/>
+        <location filename="../src/librssguard/services/tt-rss/gui/ttrssaccountdetails.ui" line="108"/>
         <source>Authentication</source>
         <translation>Atpažinimas</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/services/tt-rss/gui/ttrssaccountdetails.ui" line="116"/>
-        <location filename="../src/librssguard/services/tt-rss/gui/ttrssaccountdetails.ui" line="163"/>
+        <location filename="../src/librssguard/services/tt-rss/gui/ttrssaccountdetails.ui" line="120"/>
+        <location filename="../src/librssguard/services/tt-rss/gui/ttrssaccountdetails.ui" line="167"/>
         <source>Username</source>
         <translation>Naudotojo vardas </translation>
     </message>
     <message>
-        <location filename="../src/librssguard/services/tt-rss/gui/ttrssaccountdetails.ui" line="129"/>
-        <location filename="../src/librssguard/services/tt-rss/gui/ttrssaccountdetails.ui" line="176"/>
+        <location filename="../src/librssguard/services/tt-rss/gui/ttrssaccountdetails.ui" line="133"/>
+        <location filename="../src/librssguard/services/tt-rss/gui/ttrssaccountdetails.ui" line="180"/>
         <source>Password</source>
         <translation>Slaptažodis </translation>
     </message>
     <message>
-        <location filename="../src/librssguard/services/tt-rss/gui/ttrssaccountdetails.ui" line="148"/>
+        <location filename="../src/librssguard/services/tt-rss/gui/ttrssaccountdetails.ui" line="152"/>
         <source>Requires HTTP authentication</source>
         <translation>Reikalauja HTTP atpažinimo</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/services/tt-rss/gui/ttrssaccountdetails.ui" line="194"/>
+        <location filename="../src/librssguard/services/tt-rss/gui/ttrssaccountdetails.ui" line="198"/>
         <source>&amp;Test setup</source>
         <translation>&amp;Išbandyti sąranką</translation>
     </message>
@@ -7252,17 +7297,17 @@ Neskaitytų naujienų: %2</translation>
 <context>
     <name>TtRssServiceRoot</name>
     <message>
-        <location filename="../src/librssguard/services/tt-rss/ttrssserviceroot.cpp" line="105"/>
+        <location filename="../src/librssguard/services/tt-rss/ttrssserviceroot.cpp" line="104"/>
         <source>Cannot add item</source>
         <translation>Nepavyksta pridėti elemento </translation>
     </message>
     <message>
-        <location filename="../src/librssguard/services/tt-rss/ttrssserviceroot.cpp" line="106"/>
+        <location filename="../src/librssguard/services/tt-rss/ttrssserviceroot.cpp" line="105"/>
         <source>Cannot add feed because another critical operation is ongoing.</source>
         <translation>Nepavyksta pridėti kanalo, nes yra vykdoma kita kritinė operacija. </translation>
     </message>
     <message>
-        <location filename="../src/librssguard/services/tt-rss/ttrssserviceroot.cpp" line="288"/>
+        <location filename="../src/librssguard/services/tt-rss/ttrssserviceroot.cpp" line="366"/>
         <source>Username: %1
 Server: %2
 Last error: %3
@@ -7271,6 +7316,11 @@ Last login on: %4</source>
 Serveris: %2
 Paskiausia klaida: %3
 Paskiausias prisijungimas: %4</translation>
+    </message>
+    <message>
+        <location filename="../src/librssguard/services/tt-rss/ttrssserviceroot.cpp" line="409"/>
+        <source>cannot get list of feeds, network error &apos;%1&apos;</source>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
@@ -7289,12 +7339,12 @@ Paskiausias prisijungimas: %4</translation>
 <context>
     <name>WebBrowser</name>
     <message>
-        <location filename="../src/librssguard/gui/webbrowser.cpp" line="29"/>
+        <location filename="../src/librssguard/gui/webbrowser.cpp" line="28"/>
         <source>Navigation panel</source>
         <translation>Naršymo skydelis</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/gui/webbrowser.cpp" line="38"/>
+        <location filename="../src/librssguard/gui/webbrowser.cpp" line="35"/>
         <source>View website in reader mode</source>
         <translation type="unfinished"/>
     </message>
@@ -7305,37 +7355,37 @@ Paskiausias prisijungimas: %4</translation>
         <translation>Be pavadinimo</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/gui/webbrowser.cpp" line="271"/>
+        <location filename="../src/librssguard/gui/webbrowser.cpp" line="272"/>
         <source>Reader mode failed for this website</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../src/librssguard/gui/webbrowser.cpp" line="272"/>
+        <location filename="../src/librssguard/gui/webbrowser.cpp" line="273"/>
         <source>Reader mode cannot be applied to current page.</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../src/librssguard/gui/webbrowser.cpp" line="283"/>
+        <location filename="../src/librssguard/gui/webbrowser.cpp" line="284"/>
         <source>Back</source>
         <translation>Atgal</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/gui/webbrowser.cpp" line="284"/>
+        <location filename="../src/librssguard/gui/webbrowser.cpp" line="285"/>
         <source>Forward</source>
         <translation>Pirmyn</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/gui/webbrowser.cpp" line="285"/>
+        <location filename="../src/librssguard/gui/webbrowser.cpp" line="286"/>
         <source>Reload</source>
         <translation>Įkelti iš naujo</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/gui/webbrowser.cpp" line="286"/>
+        <location filename="../src/librssguard/gui/webbrowser.cpp" line="287"/>
         <source>Stop</source>
         <translation>Stabdyti</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/gui/webbrowser.cpp" line="35"/>
+        <location filename="../src/librssguard/gui/webbrowser.cpp" line="32"/>
         <source>Open this website in system web browser</source>
         <translation type="unfinished"/>
     </message>
@@ -7348,12 +7398,12 @@ Paskiausias prisijungimas: %4</translation>
         <translation>Atverti nuorodą išorinėje naršyklėje</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/gui/webviewers/webengine/webengineviewer.cpp" line="109"/>
+        <location filename="../src/librssguard/gui/webviewers/webengine/webengineviewer.cpp" line="112"/>
         <source>Open with external tool</source>
         <translation>Atverti, naudojant išorinį įrankį</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/gui/webviewers/webengine/webengineviewer.cpp" line="128"/>
+        <location filename="../src/librssguard/gui/webviewers/webengine/webengineviewer.cpp" line="131"/>
         <source>No external tools activated</source>
         <translation type="unfinished"/>
     </message>
@@ -7361,157 +7411,157 @@ Paskiausias prisijungimas: %4</translation>
 <context>
     <name>WebFactory</name>
     <message>
-        <location filename="../src/librssguard/network-web/webfactory.cpp" line="272"/>
+        <location filename="../src/librssguard/network-web/webfactory.cpp" line="277"/>
         <source>Web engine settings</source>
         <translation>Saityno modulio nustatymai</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/network-web/webfactory.cpp" line="295"/>
+        <location filename="../src/librssguard/network-web/webfactory.cpp" line="300"/>
         <source>Auto-load images</source>
         <translation>Automatiškai įkelti paveikslus</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/network-web/webfactory.cpp" line="296"/>
+        <location filename="../src/librssguard/network-web/webfactory.cpp" line="301"/>
         <source>JS enabled</source>
         <translation>JS įjungta</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/network-web/webfactory.cpp" line="297"/>
+        <location filename="../src/librssguard/network-web/webfactory.cpp" line="302"/>
         <source>JS can open popup windows</source>
         <translation>JS gali atverti iškylančiuosius langus</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/network-web/webfactory.cpp" line="298"/>
+        <location filename="../src/librssguard/network-web/webfactory.cpp" line="304"/>
         <source>JS can access clipboard</source>
         <translation>JS gali gauti prieigą prie iškarpinės</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/network-web/webfactory.cpp" line="299"/>
+        <location filename="../src/librssguard/network-web/webfactory.cpp" line="306"/>
         <source>Hyperlinks can get focus</source>
         <translation>Saitai gali gauti fokusą</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/network-web/webfactory.cpp" line="300"/>
+        <location filename="../src/librssguard/network-web/webfactory.cpp" line="308"/>
         <source>Local storage enabled</source>
         <translation>Vietinis kaupiklis įjungtas</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/network-web/webfactory.cpp" line="301"/>
+        <location filename="../src/librssguard/network-web/webfactory.cpp" line="310"/>
         <source>Local content can access remote URLs</source>
         <translation>Vietinis turinys gali gauti prieigą prie nuotolinių URL</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/network-web/webfactory.cpp" line="302"/>
+        <location filename="../src/librssguard/network-web/webfactory.cpp" line="312"/>
         <source>XSS auditing enabled</source>
         <translation>XSS revizija įjungta</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/network-web/webfactory.cpp" line="303"/>
+        <location filename="../src/librssguard/network-web/webfactory.cpp" line="314"/>
         <source>Spatial navigation enabled</source>
         <translation>Erdvinis naršymas įjungtas</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/network-web/webfactory.cpp" line="304"/>
+        <location filename="../src/librssguard/network-web/webfactory.cpp" line="316"/>
         <source>Local content can access local files</source>
         <translation>Vietinis turinys gali gauti prieigą prie vietinių failų</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/network-web/webfactory.cpp" line="305"/>
+        <location filename="../src/librssguard/network-web/webfactory.cpp" line="318"/>
         <source>Hyperlink auditing enabled</source>
         <translation>Saitų revizija įjungta</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/network-web/webfactory.cpp" line="306"/>
+        <location filename="../src/librssguard/network-web/webfactory.cpp" line="320"/>
         <source>Animate scrolling</source>
         <translation>Animuoti slinkimą</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/network-web/webfactory.cpp" line="307"/>
+        <location filename="../src/librssguard/network-web/webfactory.cpp" line="322"/>
         <source>Error pages enabled</source>
         <translation>Klaidos puslapiai įjungti</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/network-web/webfactory.cpp" line="308"/>
+        <location filename="../src/librssguard/network-web/webfactory.cpp" line="323"/>
         <source>Plugins enabled</source>
         <translation>Įskiepiai įjungti</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/network-web/webfactory.cpp" line="309"/>
+        <location filename="../src/librssguard/network-web/webfactory.cpp" line="324"/>
         <source>Fullscreen enabled</source>
         <translation>Visas ekranas įjungtas</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/network-web/webfactory.cpp" line="312"/>
+        <location filename="../src/librssguard/network-web/webfactory.cpp" line="328"/>
         <source>Screen capture enabled</source>
         <translation>Ekrano kopija įjungta</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/network-web/webfactory.cpp" line="313"/>
+        <location filename="../src/librssguard/network-web/webfactory.cpp" line="330"/>
         <source>WebGL enabled</source>
         <translation>WebGL įjungta</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/network-web/webfactory.cpp" line="314"/>
+        <location filename="../src/librssguard/network-web/webfactory.cpp" line="331"/>
         <source>Accelerate 2D canvas</source>
         <translation>Spartinti 2D drobės atvaizdavimą</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/network-web/webfactory.cpp" line="315"/>
+        <location filename="../src/librssguard/network-web/webfactory.cpp" line="333"/>
         <source>Print element backgrounds</source>
         <translation>Spausdinti elementų foną</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/network-web/webfactory.cpp" line="316"/>
+        <location filename="../src/librssguard/network-web/webfactory.cpp" line="335"/>
         <source>Allow running insecure content</source>
         <translation>Leisti vykdyti nesaugų turinį</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/network-web/webfactory.cpp" line="317"/>
+        <location filename="../src/librssguard/network-web/webfactory.cpp" line="337"/>
         <source>Allow geolocation on insecure origins</source>
         <translation>Leisti geografinės vietos nustatymą nesaugiuose šaltiniuose</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/network-web/webfactory.cpp" line="106"/>
+        <location filename="../src/librssguard/network-web/webfactory.cpp" line="111"/>
         <source>Navigate to website manually</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../src/librssguard/network-web/webfactory.cpp" line="107"/>
+        <location filename="../src/librssguard/network-web/webfactory.cpp" line="112"/>
         <source>%1 was unable to launch your web browser with the given URL, you need to open the below website URL in your web browser manually.</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../src/librssguard/network-web/webfactory.cpp" line="320"/>
+        <location filename="../src/librssguard/network-web/webfactory.cpp" line="341"/>
         <source>JS can activate windows</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../src/librssguard/network-web/webfactory.cpp" line="321"/>
+        <location filename="../src/librssguard/network-web/webfactory.cpp" line="343"/>
         <source>Show scrollbars</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../src/librssguard/network-web/webfactory.cpp" line="322"/>
+        <location filename="../src/librssguard/network-web/webfactory.cpp" line="344"/>
         <source>Media playback with gestures</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../src/librssguard/network-web/webfactory.cpp" line="323"/>
+        <location filename="../src/librssguard/network-web/webfactory.cpp" line="346"/>
         <source>WebRTC uses only public interfaces</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../src/librssguard/network-web/webfactory.cpp" line="324"/>
+        <location filename="../src/librssguard/network-web/webfactory.cpp" line="348"/>
         <source>JS can paste from clipboard</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../src/librssguard/network-web/webfactory.cpp" line="325"/>
+        <location filename="../src/librssguard/network-web/webfactory.cpp" line="350"/>
         <source>DNS prefetch enabled</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../src/librssguard/network-web/webfactory.cpp" line="328"/>
+        <location filename="../src/librssguard/network-web/webfactory.cpp" line="354"/>
         <source>PDF viewer enabled</source>
         <translation type="unfinished"/>
     </message>

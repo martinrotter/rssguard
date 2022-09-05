@@ -116,7 +116,11 @@ Boolean MessageObject.isAlreadyInDatabase(DuplicateCheck)
 
 which allows you to perform runtime check for existence of the article in RSS Guard's database. The parameter is value from enumeration [`DuplicateCheck`](#duplicatecheck-enum) and specifies how exactly you want to match your article.
 
-For example, if you want to check if there is already another article with same author in database, you should call `msg.isAlreadyInDatabase(MessageObject.SameAuthor)`. Values of the enumeration can be combined via bitwise OR (`|`) operator in single call, like this: `msg.isAlreadyInDatabase(MessageObject.SameAuthor | MessageObject.SameUrl)`.
+For example, if you want to check if there is already another article with same author in database, you should call `msg.isAlreadyInDatabase(MessageObject.SameAuthor)`. Values of the enumeration can be combined via bitwise OR (`|`) operator in single call, like this:
+
+```js
+msg.isAlreadyInDatabase(MessageObject.SameAuthor | MessageObject.SameUrl)
+```
 
 Here is the reference of methods and properties of types available in your filtering scripts.
 

@@ -145,6 +145,10 @@ QString MessageObject::findLabelId(const QString& label_title) const {
     return lbl->title().toLower() == label_title.toLower();
   });
 
+  if (found_lbl == nullptr) {
+    qWarningNN << LOGSEC_CORE << "Label with title" << QUOTE_W_SPACE(label_title) << "not found.";
+  }
+
   return found_lbl != nullptr ? found_lbl->customId() : QString();
 }
 
