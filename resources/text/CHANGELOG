@@ -1,3 +1,30 @@
+4.2.4
+-----
+
+Added:
+* Intelligent and network-usage-friendly two-way article synchronization is now supported in TT-RSS plugin too. Note that "api_newsplus" plugin must be installed on your TT-RSS instance. (#339)
+* Mac OS X release of RSS Guard now supports "arm64 Apple Silicon" architecture. (#758)
+* Google Reader API plugin now supports Miniflux. (#780)
+* Full-blown drag/drop feed/category reordering/sorting. Behavior is different depending on whether "alphabetic sorting" is enabled or not. (f63af3a05)
+* Windows and Linux official packages now use Qt 6.3.1 or newer. Qt 5.15 is still supported, though.
+
+Fixed:
+* Handling of CLI parameters was improved in several places throughout the app. This fixes calling external browsers etc. (#748)
+* Tray icon sometimes reported wrong number of new/unread articles. (#754)
+* App should handle pinned shortcuts on Windows better and allow it to re-open existing main window of running RSS Guard instance. (#773)
+* App sometimes generated empty OPML files. (#774)
+* Columns in article list were sometimes wrongly reset to default state. (#778)
+* Fixed icon validation for Flatpak release. (#782)
+* Skin "nudux-*" was improved. (#783)
+* Feeds sorting mode/order is now correctly persistent in all cases. (#784)
+* Handling of images in non-webengine article viewer is now better. (#785)
+* Better MinGW compatibility when compilling RSS Guard.
+* Translations synced.
+* Updated docs.
+* Specific error strings are now propagated to feed's tooltips properly so user can see specific error messages for feeds.
+* Article content layout is now greatly improved as content is automagically converted to HTML when displayed.
+* Better date/time handling of incoming e-mails in Gmail plugin.
+
 4.2.3
 -----
 
