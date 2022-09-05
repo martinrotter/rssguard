@@ -132,7 +132,7 @@ Here is the reference of methods and properties of types available in your filte
 | Property  | `feedCustomId`                | `String`      | ✅         | ❌            | Service-specific ID of the feed which this message belongs to.
 | Property  | `accountId`                   | `Number`      | ✅         | ❌            | RSS Guard's ID of the account activated in the program. This property is highly advanced and you probably do not need to use it at all.
 | Property  | `id`                          | `Number`      | ✅         | ❌            | ID assigned to the message in RSS Guard local database.
-| Property  | `customId`                    | `String`      | ✅         | ❌            | ID of the message as provided by the remote service or feed file.
+| Property  | `customId`                    | `String`      | ❌         | ❌            | ID of the message as provided by the remote service or feed file.
 | Property  | `title`                       | `String`      | ❌         | ❌            | Title of the message.
 | Property  | `url`                         | `String`      | ❌         | ❌            | URL of the message.
 | Property  | `author`                      | `String`      | ❌         | ❌            | Author of the message.

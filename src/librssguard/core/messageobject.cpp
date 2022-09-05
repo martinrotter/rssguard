@@ -257,6 +257,10 @@ QString MessageObject::customId() const {
   return m_message->m_customId;
 }
 
+void MessageObject::setCustomId(const QString& custom_id) {
+  m_message->m_customId = custom_id;
+}
+
 int MessageObject::id() const {
   return m_message->m_id;
 }

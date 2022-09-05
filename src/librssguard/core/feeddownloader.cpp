@@ -235,12 +235,12 @@ void FeedDownloader::updateOneFeed(ServiceRoot* acc,
       QList<Message> read_msgs, important_msgs;
 
       for (int i = 0; i < msgs.size(); i++) {
-        Message msg_backup(msgs[i]);
-        Message* msg_orig = &msgs[i];
+        Message msg_original(msgs[i]);
+        Message* msg_tweaked_by_filter = &msgs[i];
 
         // Attach live message object to wrapper.
         tmr.restart();
-        msg_obj.setMessage(msg_orig);
+        msg_obj.setMessage(msg_tweaked_by_filter);
         qDebugNN << LOGSEC_FEEDDOWNLOADER << "Hooking message took " << tmr.nsecsElapsed() / 1000 << " microseconds.";
 
         auto feed_filters = feed->messageFilters();
@@ -291,39 +291,41 @@ void FeedDownloader::updateOneFeed(ServiceRoot* acc,
           break;
         }
 
-        if (!msg_backup.m_isRead && msg_orig->m_isRead) {
-          qDebugNN << LOGSEC_FEEDDOWNLOADER << "Message with custom ID: '" << msg_backup.m_customId
+        if (!msg_original.m_isRead && msg_tweaked_by_filter->m_isRead) {
+          qDebugNN << LOGSEC_FEEDDOWNLOADER << "Message with custom ID: '" << msg_original.m_customId
                    << "' was marked as read by message scripts.";
 
-          read_msgs << *msg_orig;
+          read_msgs << *msg_tweaked_by_filter;
         }
 
-        if (!msg_backup.m_isImportant && msg_orig->m_isImportant) {
-          qDebugNN << LOGSEC_FEEDDOWNLOADER << "Message with custom ID: '" << msg_backup.m_customId
+        if (!msg_original.m_isImportant && msg_tweaked_by_filter->m_isImportant) {
+          qDebugNN << LOGSEC_FEEDDOWNLOADER << "Message with custom ID: '" << msg_original.m_customId
                    << "' was marked as important by message scripts.";
 
-          important_msgs << *msg_orig;
+          important_msgs << *msg_tweaked_by_filter;
         }
 
         // Process changed labels.
-        for (Label* lbl : qAsConst(msg_backup.m_assignedLabels)) {
-          if (!msg_orig->m_assignedLabels.contains(lbl)) {
+        for (Label* lbl : qAsConst(msg_original.m_assignedLabels)) {
+          if (!msg_tweaked_by_filter->m_assignedLabels.contains(lbl)) {
             // Label is not there anymore, it was deassigned.
-            lbl->deassignFromMessage(*msg_orig);
+            lbl->deassignFromMessage(*msg_tweaked_by_filter);
 
             qDebugNN << LOGSEC_FEEDDOWNLOADER << "It was detected that label" << QUOTE_W_SPACE(lbl->customId())
-                     << "was DEASSIGNED from message" << QUOTE_W_SPACE(msg_orig->m_customId) << "by message filter(s).";
+                     << "was DEASSIGNED from message" << QUOTE_W_SPACE(msg_tweaked_by_filter->m_customId)
+                     << "by message filter(s).";
           }
         }
 
-        for (Label* lbl : qAsConst(msg_orig->m_assignedLabels)) {
-          if (!msg_backup.m_assignedLabels.contains(lbl)) {
+        for (Label* lbl : qAsConst(msg_tweaked_by_filter->m_assignedLabels)) {
+          if (!msg_original.m_assignedLabels.contains(lbl)) {
             // Label is in new message, but is not in old message, it
             // was newly assigned.
-            lbl->assignToMessage(*msg_orig);
+            lbl->assignToMessage(*msg_tweaked_by_filter);
 
             qDebugNN << LOGSEC_FEEDDOWNLOADER << "It was detected that label" << QUOTE_W_SPACE(lbl->customId())
-                     << "was ASSIGNED to message" << QUOTE_W_SPACE(msg_orig->m_customId) << "by message filter(s).";
+                     << "was ASSIGNED to message" << QUOTE_W_SPACE(msg_tweaked_by_filter->m_customId)
+                     << "by message filter(s).";
           }
         }
 

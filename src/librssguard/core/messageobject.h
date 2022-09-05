@@ -15,7 +15,7 @@ class MessageObject : public QObject {
     Q_PROPERTY(QString feedCustomId READ feedCustomId)
     Q_PROPERTY(int accountId READ accountId)
     Q_PROPERTY(int id READ id)
-    Q_PROPERTY(QString customId READ customId)
+    Q_PROPERTY(QString customId READ customId WRITE setCustomId)
     Q_PROPERTY(QString title READ title WRITE setTitle)
     Q_PROPERTY(QString url READ url WRITE setUrl)
     Q_PROPERTY(QString author READ author WRITE setAuthor)
@@ -104,6 +104,7 @@ class MessageObject : public QObject {
     int accountId() const;
 
     QString customId() const;
+    void setCustomId(const QString& custom_id);
 
     int id() const;
 
