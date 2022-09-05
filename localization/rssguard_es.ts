@@ -6062,7 +6062,7 @@ Descripción: %3</translation>
     <message>
         <location filename="../src/librssguard/gui/settings/settingsgui.ui" line="112"/>
         <source>Use skin colors</source>
-        <translation>Utilizar color dela piel</translation>
+        <translation>Utilizar color de la piel</translation>
     </message>
     <message>
         <location filename="../src/librssguard/gui/settings/settingsgui.ui" line="120"/>
