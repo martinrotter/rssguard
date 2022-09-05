@@ -5942,7 +5942,7 @@ Los autores de esta aplicación se deslindan de toda responsabilidad derivado de
     <message>
         <location filename="../src/librssguard/gui/settings/settingsgeneral.ui" line="24"/>
         <source>Check for %1 updates on application startup</source>
-        <translation>Buscar %1 actualizaciones al iniciar la aplicación</translation>
+        <translation>Buscar actualizaciones de %1 al iniciar la aplicación</translation>
     </message>
     <message>
         <location filename="../src/librssguard/gui/settings/settingsgeneral.h" line="26"/>
