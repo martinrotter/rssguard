@@ -23,8 +23,6 @@
 #include "miscellaneous/settings.h"
 #include "network-web/webengine/urlinterceptor.h"
 
-#include <QWebEngineProfile>
-
 NetworkUrlInterceptor::NetworkUrlInterceptor(QObject* parent)
   : QWebEngineUrlRequestInterceptor(parent), m_sendDnt(false) {}
 

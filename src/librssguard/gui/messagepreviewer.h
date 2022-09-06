@@ -17,7 +17,7 @@ class QToolBar;
 class WebBrowser;
 
 class LabelButton : public QToolButton {
-  Q_OBJECT
+    Q_OBJECT
 
   public:
     explicit LabelButton(QWidget* parent = nullptr);
@@ -30,7 +30,7 @@ class LabelButton : public QToolButton {
 };
 
 class MessagePreviewer : public QWidget {
-  Q_OBJECT
+    Q_OBJECT
 
   public:
     explicit MessagePreviewer(QWidget* parent = nullptr);
@@ -43,6 +43,7 @@ class MessagePreviewer : public QWidget {
   public slots:
     void setToolbarsVisible(bool visible);
     void clear();
+    void showItemInfo(RootItem* item);
     void hideToolbar();
     void loadUrl(const QString& url);
     void loadMessage(const Message& message, RootItem* root);

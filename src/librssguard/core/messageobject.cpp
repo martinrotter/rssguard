@@ -4,6 +4,7 @@
 
 #include "3rd-party/boolinq/boolinq.h"
 #include "database/databasefactory.h"
+#include "definitions/definitions.h"
 
 #include <QSqlDatabase>
 #include <QSqlError>

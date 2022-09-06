@@ -165,7 +165,7 @@
 
 #if defined(USE_WEBENGINE)
 #define HTTP_COMPLETE_USERAGENT                                                                                        \
-  (QWebEngineProfile::defaultProfile()->httpUserAgent().toLocal8Bit() + QByteArrayLiteral(" ") +                       \
+  (qApp->web()->engineProfile()->httpUserAgent().toLocal8Bit() + QByteArrayLiteral(" ") +                              \
    QByteArrayLiteral(APP_USERAGENT))
 #else
 #define HTTP_COMPLETE_USERAGENT                                                                                        \

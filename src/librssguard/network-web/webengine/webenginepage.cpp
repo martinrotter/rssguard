@@ -17,7 +17,7 @@
 #include <QUrlQuery>
 #include <QWebEngineScript>
 
-WebEnginePage::WebEnginePage(QObject* parent) : QWebEnginePage(parent) {
+WebEnginePage::WebEnginePage(QObject* parent) : QWebEnginePage(qApp->web()->engineProfile(), parent) {
   setBackgroundColor(Qt::GlobalColor::transparent);
 
   connect(this, &QWebEnginePage::loadFinished, this, &WebEnginePage::hideUnwantedElements);

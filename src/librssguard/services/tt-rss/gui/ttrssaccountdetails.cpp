@@ -2,6 +2,7 @@
 
 #include "services/tt-rss/gui/ttrssaccountdetails.h"
 
+#include "definitions/definitions.h"
 #include "gui/guiutilities.h"
 #include "network-web/networkfactory.h"
 #include "services/tt-rss/definitions.h"

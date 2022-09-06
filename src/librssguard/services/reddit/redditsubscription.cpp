@@ -2,6 +2,7 @@
 
 #include "services/reddit/redditsubscription.h"
 
+#include "definitions/definitions.h"
 #include "services/reddit/redditserviceroot.h"
 
 RedditSubscription::RedditSubscription(RootItem* parent) : Feed(parent), m_prefixedName(QString()) {}

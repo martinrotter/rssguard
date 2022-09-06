@@ -3,7 +3,7 @@
 #ifndef MESSAGE_H
 #define MESSAGE_H
 
-#include "definitions/definitions.h"
+//#include "definitions/definitions.h"
 
 #include <QDataStream>
 #include <QDateTime>

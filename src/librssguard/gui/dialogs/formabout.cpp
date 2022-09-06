@@ -11,16 +11,13 @@
 #include "miscellaneous/iconfactory.h"
 #include "miscellaneous/settingsproperties.h"
 #include "miscellaneous/textfactory.h"
+#include "network-web/webfactory.h"
 
 #include <QFile>
 #include <QJsonArray>
 #include <QJsonObject>
 #include <QPlainTextEdit>
 #include <QTextStream>
-
-#if defined(USE_WEBENGINE)
-#include <QWebEngineProfile>
-#endif
 
 FormAbout::FormAbout(QWidget* parent) : QDialog(parent) {
   m_ui.setupUi(this);
@@ -68,7 +65,7 @@ void FormAbout::loadSettingsAndPaths() {
                                           QDir::toNativeSeparators(qApp->nodejs()->packageFolder())
                                             .replace(user_data_path, QSL(USER_DATA_PLACEHOLDER)),
 #if defined(USE_WEBENGINE)
-                                          QDir::toNativeSeparators(QWebEngineProfile::defaultProfile()->cachePath())
+                                          QDir::toNativeSeparators(qApp->web()->engineProfile()->cachePath())
                                             .replace(user_data_path, QSL(USER_DATA_PLACEHOLDER))
 #else
                                           QSL("-")

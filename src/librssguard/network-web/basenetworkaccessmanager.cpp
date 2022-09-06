@@ -4,26 +4,21 @@
 
 #include "miscellaneous/application.h"
 #include "miscellaneous/textfactory.h"
+#include "network-web/webfactory.h"
 
 #include <QNetworkProxy>
 #include <QNetworkReply>
 #include <QNetworkRequest>
 
-#if defined(USE_WEBENGINE)
-#include <QWebEngineProfile>
-#endif
-
-BaseNetworkAccessManager::BaseNetworkAccessManager(QObject* parent)
-  : QNetworkAccessManager(parent) {
+BaseNetworkAccessManager::BaseNetworkAccessManager(QObject* parent) : QNetworkAccessManager(parent) {
   connect(this, &BaseNetworkAccessManager::sslErrors, this, &BaseNetworkAccessManager::onSslErrors);
   loadSettings();
 }
 
 void BaseNetworkAccessManager::loadSettings() {
   QNetworkProxy new_proxy;
-  const QNetworkProxy::ProxyType selected_proxy_type = static_cast<QNetworkProxy::ProxyType>(qApp->settings()->value(GROUP(Proxy),
-                                                                                                                     SETTING(Proxy::Type)).
-                                                                                             toInt());
+  const QNetworkProxy::ProxyType selected_proxy_type =
+    static_cast<QNetworkProxy::ProxyType>(qApp->settings()->value(GROUP(Proxy), SETTING(Proxy::Type)).toInt());
 
   if (selected_proxy_type == QNetworkProxy::ProxyType::NoProxy) {
     // No extra setting is needed, set new proxy and exit this method.
@@ -35,10 +30,8 @@ void BaseNetworkAccessManager::loadSettings() {
     if (QNetworkProxy::applicationProxy().type() != QNetworkProxy::ProxyType::DefaultProxy &&
         QNetworkProxy::applicationProxy().type() != QNetworkProxy::ProxyType::NoProxy) {
       qWarningNN << LOGSEC_NETWORK
-                 << "Used proxy address:"
-                 << QUOTE_W_SPACE_COMMA(QNetworkProxy::applicationProxy().hostName())
-                 << " type:"
-                 << QUOTE_W_SPACE_DOT(QNetworkProxy::applicationProxy().type());
+                 << "Used proxy address:" << QUOTE_W_SPACE_COMMA(QNetworkProxy::applicationProxy().hostName())
+                 << " type:" << QUOTE_W_SPACE_DOT(QNetworkProxy::applicationProxy().type());
     }
 
     setProxy(QNetworkProxy::applicationProxy());
@@ -48,9 +41,7 @@ void BaseNetworkAccessManager::loadSettings() {
 }
 
 void BaseNetworkAccessManager::onSslErrors(QNetworkReply* reply, const QList<QSslError>& error) {
-  qWarningNN << LOGSEC_NETWORK
-             << "Ignoring SSL errors for"
-             << QUOTE_W_SPACE_DOT(reply->url().toString());
+  qWarningNN << LOGSEC_NETWORK << "Ignoring SSL errors for" << QUOTE_W_SPACE_DOT(reply->url().toString());
   reply->ignoreSslErrors(error);
 }
 

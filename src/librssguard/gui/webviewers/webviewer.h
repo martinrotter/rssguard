@@ -3,6 +3,8 @@
 
 #include "core/message.h"
 
+#include "definitions/definitions.h"
+
 #include <QUrl>
 
 class WebBrowser;

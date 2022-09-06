@@ -26,7 +26,6 @@
 #include <QWebEngineContextMenuData>
 #endif
 
-#include <QWebEngineProfile>
 #include <QWheelEvent>
 
 WebEngineViewer::WebEngineViewer(QWidget* parent) : QWebEngineView(parent), m_browser(nullptr), m_root(nullptr) {
@@ -218,13 +217,10 @@ void WebEngineViewer::setVerticalScrollBarPosition(double pos) {
 void WebEngineViewer::applyFont(const QFont& fon) {
   auto pixel_size = QFontMetrics(fon).ascent();
 
-  QWebEngineProfile::defaultProfile()->settings()->setFontFamily(QWebEngineSettings::FontFamily::StandardFont,
-                                                                 fon.family());
-  QWebEngineProfile::defaultProfile()->settings()->setFontFamily(QWebEngineSettings::FontFamily::SerifFont,
-                                                                 fon.family());
-  QWebEngineProfile::defaultProfile()->settings()->setFontFamily(QWebEngineSettings::FontFamily::SansSerifFont,
-                                                                 fon.family());
-  QWebEngineProfile::defaultProfile()->settings()->setFontSize(QWebEngineSettings::DefaultFontSize, pixel_size);
+  qApp->web()->engineProfile()->settings()->setFontFamily(QWebEngineSettings::FontFamily::StandardFont, fon.family());
+  qApp->web()->engineProfile()->settings()->setFontFamily(QWebEngineSettings::FontFamily::SerifFont, fon.family());
+  qApp->web()->engineProfile()->settings()->setFontFamily(QWebEngineSettings::FontFamily::SansSerifFont, fon.family());
+  qApp->web()->engineProfile()->settings()->setFontSize(QWebEngineSettings::DefaultFontSize, pixel_size);
 }
 
 qreal WebEngineViewer::zoomFactor() const {

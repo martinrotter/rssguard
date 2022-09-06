@@ -5,13 +5,15 @@
 
 #include <QObject>
 
-#include "core/messagesmodel.h"
+#include "core/message.h"
 
 #include <QMap>
 
 #if defined(USE_WEBENGINE)
+#include <QWebEngineProfile>
 #include <QWebEngineSettings>
 
+class QAction;
 class NetworkUrlInterceptor;
 #endif
 
@@ -21,7 +23,7 @@ class CookieJar;
 class Readability;
 
 class WebFactory : public QObject {
-  Q_OBJECT
+    Q_OBJECT
 
   public:
     explicit WebFactory(QObject* parent = nullptr);
@@ -43,6 +45,7 @@ class WebFactory : public QObject {
 
 #if defined(USE_WEBENGINE)
     NetworkUrlInterceptor* urlIinterceptor() const;
+    QWebEngineProfile* engineProfile() const;
 #endif
 
     CookieJar* cookieJar() const;
@@ -68,6 +71,7 @@ class WebFactory : public QObject {
     AdBlockManager* m_adBlock;
 
 #if defined(USE_WEBENGINE)
+    QWebEngineProfile* m_engineProfile;
     NetworkUrlInterceptor* m_urlInterceptor;
     QAction* m_engineSettings;
 #endif

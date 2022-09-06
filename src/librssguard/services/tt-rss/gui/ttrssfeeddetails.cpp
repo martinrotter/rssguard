@@ -2,6 +2,7 @@
 
 #include "services/tt-rss/gui/ttrssfeeddetails.h"
 
+#include "definitions/definitions.h"
 #include "services/abstract/category.h"
 
 TtRssFeedDetails::TtRssFeedDetails(QWidget* parent) : QWidget(parent) {
@@ -21,8 +22,9 @@ void TtRssFeedDetails::onUrlChanged(const QString& new_url) {
   }
   else if (!new_url.simplified().isEmpty()) {
     // New url is not well-formed but is not empty on the other hand.
-    ui.m_txtUrl->setStatus(LineEditWithStatus::StatusType::Warning,
-                           tr(R"(The URL does not meet standard pattern. Does your URL start with "http://" or "https://" prefix.)"));
+    ui.m_txtUrl->setStatus(
+      LineEditWithStatus::StatusType::Warning,
+      tr(R"(The URL does not meet standard pattern. Does your URL start with "http://" or "https://" prefix.)"));
   }
   else {
     // New url is empty.
@@ -30,16 +32,19 @@ void TtRssFeedDetails::onUrlChanged(const QString& new_url) {
   }
 }
 
-void TtRssFeedDetails::loadCategories(const QList<Category*>& categories, RootItem* root_item, RootItem* parent_to_select) {
-  ui.m_cmbParentCategory->addItem(root_item->fullIcon(), root_item->title(), QVariant::fromValue((void*) root_item));
+void TtRssFeedDetails::loadCategories(const QList<Category*>& categories,
+                                      RootItem* root_item,
+                                      RootItem* parent_to_select) {
+  ui.m_cmbParentCategory->addItem(root_item->fullIcon(), root_item->title(), QVariant::fromValue((void*)root_item));
 
   for (Category* category : categories) {
-    ui.m_cmbParentCategory->addItem(category->fullIcon(), category->title(), QVariant::fromValue((void*) category));
+    ui.m_cmbParentCategory->addItem(category->fullIcon(), category->title(), QVariant::fromValue((void*)category));
   }
 
   if (parent_to_select != nullptr) {
     if (parent_to_select->kind() == RootItem::Kind::Category) {
-      ui.m_cmbParentCategory->setCurrentIndex(ui.m_cmbParentCategory->findData(QVariant::fromValue((void*)parent_to_select)));
+      ui.m_cmbParentCategory
+        ->setCurrentIndex(ui.m_cmbParentCategory->findData(QVariant::fromValue((void*)parent_to_select)));
     }
     else if (parent_to_select->kind() == RootItem::Kind::Feed) {
       int target_item = ui.m_cmbParentCategory->findData(QVariant::fromValue((void*)parent_to_select->parent()));

@@ -7,6 +7,7 @@
 #include "miscellaneous/application.h"
 #include "miscellaneous/iofactory.h"
 #include "miscellaneous/settings.h"
+#include "network-web/webfactory.h"
 
 #include <QDateTime>
 #include <QDir>
@@ -15,16 +16,19 @@
 
 #if defined(USE_WEBENGINE)
 #include <QWebEngineCookieStore>
-#include <QWebEngineProfile>
 #endif
 
 CookieJar::CookieJar(QObject* parent) : QNetworkCookieJar(parent) {
 #if defined(USE_WEBENGINE)
-  // WebEngine does not store cookies, CookieJar does.
-  QWebEngineProfile::defaultProfile()
-    ->setPersistentCookiesPolicy(QWebEngineProfile::PersistentCookiesPolicy::NoPersistentCookies);
+  auto* web_factory = qobject_cast<WebFactory*>(parent);
 
-  m_webEngineCookies = QWebEngineProfile::defaultProfile()->cookieStore();
+  if (web_factory != nullptr) {
+    // WebEngine does not store cookies, CookieJar does.
+    web_factory->engineProfile()
+      ->setPersistentCookiesPolicy(QWebEngineProfile::PersistentCookiesPolicy::NoPersistentCookies);
+
+    m_webEngineCookies = web_factory->engineProfile()->cookieStore();
+  }
 #endif
 
   // Load all cookies and also set them into WebEngine store.

@@ -10,14 +10,13 @@
 class RootItem;
 
 class CustomMessagePreviewer : public QWidget {
-  Q_OBJECT
+    Q_OBJECT
 
   public:
     explicit CustomMessagePreviewer(QWidget* parent = nullptr);
     virtual ~CustomMessagePreviewer();
 
   public:
-
     // Clears displayed message.
     virtual void clear() = 0;
 

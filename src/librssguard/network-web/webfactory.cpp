@@ -32,18 +32,19 @@ WebFactory::WebFactory(QObject* parent) : QObject(parent) {
   m_adBlock = new AdBlockManager(this);
 
 #if defined(USE_WEBENGINE)
+  m_engineProfile = new QWebEngineProfile(QSL(APP_LOW_NAME), this);
   m_engineSettings = nullptr;
   m_urlInterceptor = new NetworkUrlInterceptor(this);
 #endif
 
-  m_cookieJar = new CookieJar(nullptr);
+  m_cookieJar = new CookieJar(this);
   m_readability = new Readability(this);
 
 #if defined(USE_WEBENGINE)
 #if QT_VERSION >= 0x050D00 // Qt >= 5.13.0
-  QWebEngineProfile::defaultProfile()->setUrlRequestInterceptor(m_urlInterceptor);
+  m_engineProfile->setUrlRequestInterceptor(m_urlInterceptor);
 #else
-  QWebEngineProfile::defaultProfile()->setRequestInterceptor(m_urlInterceptor);
+  m_engineProfile->setRequestInterceptor(m_urlInterceptor);
 #endif
 #endif
 }
@@ -55,9 +56,9 @@ WebFactory::~WebFactory() {
   }
 #endif
 
-  if (m_cookieJar != nullptr) {
+  /*if (m_cookieJar != nullptr) {
     m_cookieJar->deleteLater();
-  }
+  }*/
 }
 
 bool WebFactory::sendMessageViaEmail(const Message& message) {
@@ -271,6 +272,10 @@ NetworkUrlInterceptor* WebFactory::urlIinterceptor() const {
   return m_urlInterceptor;
 }
 
+QWebEngineProfile* WebFactory::engineProfile() const {
+  return m_engineProfile;
+}
+
 QAction* WebFactory::engineSettingsAction() {
   if (m_engineSettings == nullptr) {
     m_engineSettings =
@@ -363,7 +368,7 @@ void WebFactory::webEngineSettingChanged(bool enabled) {
   QWebEngineSettings::WebAttribute attribute = static_cast<QWebEngineSettings::WebAttribute>(act->data().toInt());
 
   qApp->settings()->setValue(WebEngineAttributes::ID, QString::number(static_cast<int>(attribute)), enabled);
-  QWebEngineProfile::defaultProfile()->settings()->setAttribute(attribute, act->isChecked());
+  m_engineProfile->settings()->setAttribute(attribute, act->isChecked());
 }
 
 QAction* WebFactory::createEngineSettingsAction(const QString& title, QWebEngineSettings::WebAttribute attribute) {
@@ -374,7 +379,7 @@ QAction* WebFactory::createEngineSettingsAction(const QString& title, QWebEngine
   act->setChecked(qApp->settings()
                     ->value(WebEngineAttributes::ID, QString::number(static_cast<int>(attribute)), true)
                     .toBool());
-  QWebEngineProfile::defaultProfile()->settings()->setAttribute(attribute, act->isChecked());
+  m_engineProfile->settings()->setAttribute(attribute, act->isChecked());
   connect(act, &QAction::toggled, this, &WebFactory::webEngineSettingChanged);
   return act;
 }

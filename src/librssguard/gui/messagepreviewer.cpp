@@ -107,6 +107,10 @@ void MessagePreviewer::clear() {
   m_message = Message();
 }
 
+void MessagePreviewer::showItemInfo(RootItem* item) {
+  m_msgBrowser->setHtml(item->additionalTooltip());
+}
+
 void MessagePreviewer::hideToolbar() {
   m_toolBar->setVisible(false);
 }

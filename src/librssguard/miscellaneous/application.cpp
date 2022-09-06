@@ -50,8 +50,6 @@
 #else
 #include <QWebEngineDownloadItem>
 #endif
-
-#include <QWebEngineProfile>
 #endif
 
 #if defined(Q_OS_WIN)
@@ -153,17 +151,15 @@ Application::Application(const QString& id, int& argc, char** argv, const QStrin
 
   const QString web_data_root = userDataFolder() + QDir::separator() + QSL("web");
 
-  QWebEngineProfile::defaultProfile()->setCachePath(web_data_root + QDir::separator() + QSL("cache"));
-  QWebEngineProfile::defaultProfile()->setPersistentStoragePath(web_data_root + QDir::separator() + QSL("storage"));
-  QWebEngineProfile::defaultProfile()->setHttpUserAgent(QString(HTTP_COMPLETE_USERAGENT));
+  m_webFactory->engineProfile()->setCachePath(web_data_root + QDir::separator() + QSL("cache"));
+  m_webFactory->engineProfile()->setHttpCacheType(QWebEngineProfile::HttpCacheType::DiskHttpCache);
+  m_webFactory->engineProfile()->setPersistentStoragePath(web_data_root + QDir::separator() + QSL("storage"));
+  m_webFactory->engineProfile()->setHttpUserAgent(QString(HTTP_COMPLETE_USERAGENT));
 
   qDebugNN << LOGSEC_NETWORK << "Persistent web data storage path:"
-           << QUOTE_W_SPACE_DOT(QWebEngineProfile::defaultProfile()->persistentStoragePath());
+           << QUOTE_W_SPACE_DOT(m_webFactory->engineProfile()->persistentStoragePath());
 
-  connect(QWebEngineProfile::defaultProfile(),
-          &QWebEngineProfile::downloadRequested,
-          this,
-          &Application::downloadRequested);
+  connect(m_webFactory->engineProfile(), &QWebEngineProfile::downloadRequested, this, &Application::downloadRequested);
 #endif
 
   connect(m_webFactory->adBlock(), &AdBlockManager::processTerminated, this, &Application::onAdBlockFailure);
