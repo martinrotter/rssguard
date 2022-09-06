@@ -40,10 +40,10 @@ class WebFactory : public QObject {
 
     QString processFeedUriScheme(const QString& url);
 
-    QAction* engineSettingsAction();
     AdBlockManager* adBlock() const;
 
 #if defined(USE_WEBENGINE)
+    QAction* engineSettingsAction();
     NetworkUrlInterceptor* urlIinterceptor() const;
     QWebEngineProfile* engineProfile() const;
 #endif
