@@ -92,7 +92,7 @@ if [ $is_linux = true ]; then
   export LD_LIBRARY_PATH="$QTPATH/$QTVERSION/$QTOS/lib:$(pwd)/AppDir/usr/lib"
 
   # Create AppImage.
-  ./linuxdeploy-x86_64.AppImage --output "appimage" --plugin "qt" --appdir "AppDir"
+  ./linuxdeploy-x86_64.AppImage --output "appimage" --plugin "qt" --plugin "gstreamer" --appdir "AppDir"
 
   # Rename AppImaage.
   set -- R*.AppImage
