@@ -85,6 +85,9 @@ if [ $is_linux = true ]; then
   # Adjust library search paths.
   export LD_LIBRARY_PATH="$QTPATH/$QTVERSION/$QTOS/lib:$(pwd)/AppDir/usr/lib"
 
+  # GStreamer stuff.
+  export GSTREAMER_INCLUDE_BAD_PLUGINS="1"
+
   # Create AppImage.
   ./linuxdeploy-x86_64.AppImage --output "appimage" --plugin "qt" --plugin "gstreamer" --appdir "AppDir"
 
