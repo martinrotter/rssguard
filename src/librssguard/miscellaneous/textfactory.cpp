@@ -63,6 +63,12 @@ int TextFactory::stringWidth(const QString& string, const QFontMetrics& metrics)
   return width;
 }
 
+bool TextFactory::couldBeHtml(const QString& string) {
+  const QString sstring = string.simplified();
+
+  return sstring.startsWith(QL1S("<!")) || Qt::mightBeRichText(sstring);
+}
+
 QDateTime TextFactory::parseDateTime(const QString& date_time) {
   const QString input_date = date_time.simplified();
   QDateTime dt;

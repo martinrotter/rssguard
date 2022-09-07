@@ -139,7 +139,7 @@ QPair<QString, QUrl> SkinFactory::generateHtmlOfArticles(const QList<Message>& m
   for (const Message& message : messages) {
     QString enclosures;
     QString enclosure_images;
-    bool is_plain = !Qt::mightBeRichText(message.m_contents.simplified());
+    bool is_plain = !TextFactory::couldBeHtml(message.m_contents);
 
     for (const Enclosure& enclosure : message.m_enclosures) {
       QString enc_url = QUrl::fromPercentEncoding(enclosure.m_url.toUtf8());

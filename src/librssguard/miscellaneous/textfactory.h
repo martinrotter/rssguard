@@ -10,7 +10,6 @@
 
 class TextFactory {
   private:
-
     // Constructors and destructors.
     TextFactory();
 
@@ -19,6 +18,8 @@ class TextFactory {
     static QColor generateColorFromText(const QString& text);
     static int stringHeight(const QString& string, const QFontMetrics& metrics);
     static int stringWidth(const QString& string, const QFontMetrics& metrics);
+
+    static bool couldBeHtml(const QString& string);
 
     // Tries to parse input textual date/time representation.
     // Returns invalid date/time if processing fails.
