@@ -69,7 +69,9 @@ if [ $is_linux = true ]; then
   # Obtain linuxdeploy.
   wget -qc https://github.com/linuxdeploy/linuxdeploy/releases/download/continuous/linuxdeploy-x86_64.AppImage
   wget -qc https://github.com/linuxdeploy/linuxdeploy-plugin-qt/releases/download/continuous/linuxdeploy-plugin-qt-x86_64.AppImage
-  chmod a+x linuxdeploy*.AppImage 
+  wget -qc https://raw.githubusercontent.com/linuxdeploy/linuxdeploy-plugin-gstreamer/master/linuxdeploy-plugin-gstreamer.sh
+  
+  chmod a+x linuxdeploy*.AppImage linuxdeploy*.sh
 
   # Copy Gstreamer libs.
   install -v -Dm755 "/usr/lib/x86_64-linux-gnu/gstreamer1.0/gstreamer-1.0/gst-plugin-scanner" "AppDir/usr/lib/gstreamer1.0/gstreamer-1.0/gst-plugin-scanner"
