@@ -129,7 +129,6 @@ Application::Application(const QString& id, int& argc, char** argv, const QStrin
   connect(m_nodejs, &NodeJs::packageError, this, &Application::onNodeJsPackageUpdateError);
   connect(m_nodejs, &NodeJs::packageInstalledUpdated, this, &Application::onNodeJsPackageInstalled);
 
-  /*
 #if defined(Q_OS_UNIX) && !defined(Q_OS_MACOS)
   QString app_dir = QString::fromLocal8Bit(qgetenv("APPDIR"));
 
@@ -146,7 +145,6 @@ Application::Application(const QString& id, int& argc, char** argv, const QStrin
     }
   }
 #endif
-  */
 
 #if defined(USE_WEBENGINE)
   m_webFactory->urlIinterceptor()->load();
