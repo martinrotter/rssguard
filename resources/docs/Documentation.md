@@ -45,7 +45,7 @@ I highly recommend to download RSS Guard only from reputable sources.
 
 ## Supported Operating Systems <a id="sos"></a>
 RSS Guard is a cross-platform application, and at this point it is known to work on:
-* Windows 7+
+* Windows 10+
 * GNU/Linux with glibc 2.31+ (including PinePhone and other Linux-based phone operating systems)
 * BSD (FreeBSD, OpenBSD, NetBSD, etc.)
 * macOS 10.13+
