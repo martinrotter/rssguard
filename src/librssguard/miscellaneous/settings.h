@@ -323,6 +323,9 @@ namespace Network {
   KEY SendDNT;
   VALUE(bool) SendDNTDef;
 
+  KEY EnableHttp2;
+  VALUE(bool) EnableHttp2Def;
+
   KEY IgnoreAllCookies;
   VALUE(bool) IgnoreAllCookiesDef;
 } // namespace Network

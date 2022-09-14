@@ -10,7 +10,8 @@
 #include <QNetworkReply>
 #include <QNetworkRequest>
 
-BaseNetworkAccessManager::BaseNetworkAccessManager(QObject* parent) : QNetworkAccessManager(parent) {
+BaseNetworkAccessManager::BaseNetworkAccessManager(QObject* parent)
+  : QNetworkAccessManager(parent), m_enableHttp2(false) {
   connect(this, &BaseNetworkAccessManager::sslErrors, this, &BaseNetworkAccessManager::onSslErrors);
   loadSettings();
 }
@@ -37,6 +38,8 @@ void BaseNetworkAccessManager::loadSettings() {
     setProxy(QNetworkProxy::applicationProxy());
   }
 
+  m_enableHttp2 = qApp->settings()->value(GROUP(Network), SETTING(Network::EnableHttp2)).toBool();
+
   qDebugNN << LOGSEC_NETWORK << "Settings of BaseNetworkAccessManager loaded.";
 }
 
@@ -54,7 +57,7 @@ QNetworkReply* BaseNetworkAccessManager::createRequest(QNetworkAccessManager::Op
   new_request.setAttribute(QNetworkRequest::Attribute::HttpPipeliningAllowedAttribute, true);
 
 #if QT_VERSION >= 0x050F00 // Qt >= 5.15.0
-  new_request.setAttribute(QNetworkRequest::Attribute::Http2AllowedAttribute, true);
+  new_request.setAttribute(QNetworkRequest::Attribute::Http2AllowedAttribute, m_enableHttp2);
 #endif
 #endif
 

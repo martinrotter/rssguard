@@ -47,6 +47,9 @@ DKEY Network::ID = "network";
 DKEY Network::SendDNT = "send_dnt";
 VALUE(bool) Network::SendDNTDef = false;
 
+DKEY Network::EnableHttp2 = "http2_enabled";
+DVALUE(bool) Network::EnableHttp2Def = false;
+
 DKEY Network::IgnoreAllCookies = "ignore_all_cookies";
 DVALUE(bool) Network::IgnoreAllCookiesDef = false;
 

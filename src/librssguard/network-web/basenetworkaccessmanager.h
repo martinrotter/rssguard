@@ -7,7 +7,7 @@
 
 // This is base class for all network access managers.
 class BaseNetworkAccessManager : public QNetworkAccessManager {
-  Q_OBJECT
+    Q_OBJECT
 
   public:
     explicit BaseNetworkAccessManager(QObject* parent = nullptr);
@@ -20,6 +20,9 @@ class BaseNetworkAccessManager : public QNetworkAccessManager {
 
   protected:
     QNetworkReply* createRequest(Operation op, const QNetworkRequest& request, QIODevice* outgoingData);
+
+  private:
+    bool m_enableHttp2;
 };
 
 #endif // BASENETWORKACCESSMANAGER_H
