@@ -379,7 +379,10 @@ QAction* WebFactory::createEngineSettingsAction(const QString& title, QWebEngine
   act->setChecked(qApp->settings()
                     ->value(WebEngineAttributes::ID, QString::number(static_cast<int>(attribute)), true)
                     .toBool());
-  m_engineProfile->settings()->setAttribute(attribute, act->isChecked());
+
+  auto enabl = act->isChecked();
+
+  m_engineProfile->settings()->setAttribute(attribute, enabl);
   connect(act, &QAction::toggled, this, &WebFactory::webEngineSettingChanged);
   return act;
 }

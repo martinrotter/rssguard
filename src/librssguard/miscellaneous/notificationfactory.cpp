@@ -26,10 +26,7 @@ Notification NotificationFactory::notificationForEvent(Notification::Event event
   });
 
   if (good_n.count() <= 0) {
-    qCriticalNN << LOGSEC_CORE
-                << "Notification for event"
-                << QUOTE_W_SPACE(int(event))
-                << "not found";
+    qDebugNN << LOGSEC_CORE << "Notification for event" << QUOTE_W_SPACE(int(event)) << "not found";
 
     return Notification();
   }
@@ -59,10 +56,9 @@ void NotificationFactory::save(const QList<Notification>& new_notifications, Set
   m_notifications = new_notifications;
 
   for (const auto& n : qAsConst(m_notifications)) {
-    settings->setValue(GROUP(Notifications), QString::number(int(n.event())), QStringList {
-      n.balloonEnabled() ? QSL("1") : QSL("0"),
-      n.soundPath(),
-      QString::number(n.volume())
-    });
+    settings->setValue(GROUP(Notifications),
+                       QString::number(int(n.event())),
+                       QStringList{
+                         n.balloonEnabled() ? QSL("1") : QSL("0"), n.soundPath(), QString::number(n.volume())});
   }
 }

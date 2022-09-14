@@ -32,6 +32,8 @@ WebEngineViewer::WebEngineViewer(QWidget* parent) : QWebEngineView(parent), m_br
   WebEnginePage* page = new WebEnginePage(this);
 
   setPage(page);
+
+  // page->profile()->settings()->setAttribute(QWebEngineSettings::WebAttribute::ScrollAnimatorEnabled, true);
 }
 
 bool WebEngineViewer::event(QEvent* event) {
