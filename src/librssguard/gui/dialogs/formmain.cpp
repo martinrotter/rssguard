@@ -688,32 +688,21 @@ void FormMain::loadSize() {
 void FormMain::saveSize() {
   Settings* settings = qApp->settings();
   bool is_fullscreen = isFullScreen();
-  bool is_maximized = false;
+  bool is_maximized = isMaximized();
+  QPoint window_pos = normalGeometry().topLeft();
+  QSize window_size = normalGeometry().size();
 
-  if (is_fullscreen) {
-    m_ui->m_actionFullscreen->setChecked(false);
-
-    // We (process events to really) un-fullscreen, so that we can determine if window is really maximized.
-    qApp->processEvents();
-  }
-
-  if (isMaximized()) {
-    is_maximized = true;
-
-    // Window is maximized, we store that fact to settings and unmaximize.
-    qApp->settings()->setValue(GROUP(GUI), GUI::IsMainWindowMaximizedBeforeFullscreen, isMaximized());
-    setWindowState((windowState() & ~Qt::WindowMaximized) | Qt::WindowActive);
-
-    // We process events to really have window un-maximized.
-    qApp->processEvents();
+  if (!window_size.isValid()) {
+    window_size = sizeHint();
   }
 
   settings->setValue(GROUP(GUI), GUI::MainMenuVisible, m_ui->m_actionSwitchMainMenu->isChecked());
-  settings->setValue(GROUP(GUI), GUI::MainWindowInitialPosition, pos());
-  settings->setValue(GROUP(GUI), GUI::MainWindowInitialSize, size());
+  settings->setValue(GROUP(GUI), GUI::StatusBarVisible, m_ui->m_actionSwitchStatusBar->isChecked());
+
+  settings->setValue(GROUP(GUI), GUI::MainWindowInitialPosition, window_pos);
+  settings->setValue(GROUP(GUI), GUI::MainWindowInitialSize, window_size);
   settings->setValue(GROUP(GUI), GUI::MainWindowStartsMaximized, is_maximized);
   settings->setValue(GROUP(GUI), GUI::MainWindowStartsFullscreen, is_fullscreen);
-  settings->setValue(GROUP(GUI), GUI::StatusBarVisible, m_ui->m_actionSwitchStatusBar->isChecked());
 
   m_ui->m_tabWidget->feedMessageViewer()->saveSize();
 }

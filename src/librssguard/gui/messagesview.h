@@ -14,7 +14,7 @@
 class MessagesProxyModel;
 
 class MessagesView : public BaseTreeView {
-  Q_OBJECT
+    Q_OBJECT
 
   public:
     explicit MessagesView(QWidget* parent = nullptr);
@@ -59,7 +59,6 @@ class MessagesView : public BaseTreeView {
     void selectItemWithCursorAction(QAbstractItemView::CursorAction act);
 
     void selectNextUnreadItem();
-    void selectNextImportantItem();
 
     // Searchs the visible message according to given pattern.
     void searchMessages(const QString& pattern);
@@ -89,8 +88,12 @@ class MessagesView : public BaseTreeView {
     void willReselectSameMessage();
 
   private:
-    void sort(int column, Qt::SortOrder order, bool repopulate_data,
-              bool change_header, bool emit_changed_from_header, bool ignore_multicolumn_sorting);
+    void sort(int column,
+              Qt::SortOrder order,
+              bool repopulate_data,
+              bool change_header,
+              bool emit_changed_from_header,
+              bool ignore_multicolumn_sorting);
 
     // Creates needed connections.
     void createConnections();

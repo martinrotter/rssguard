@@ -208,7 +208,8 @@ void FeedsImportExportModel::importAsOPML20(const QByteArray& data, bool fetch_m
                 succeded++;
                 add_offline_anyway = false;
               }
-            } catch (const ApplicationException& ex) {
+            }
+            catch (const ApplicationException& ex) {
               qCriticalNN << LOGSEC_CORE << "Cannot fetch medatada for feed:" << QUOTE_W_SPACE(feed_url)
                           << "with error:" << QUOTE_W_SPACE_DOT(ex.message());
             }
@@ -321,9 +322,9 @@ bool FeedsImportExportModel::exportToTxtURLPerLine(QByteArray& result) {
 void FeedsImportExportModel::importAsTxtURLPerLine(const QByteArray& data, bool fetch_metadata_online) {
   emit parsingStarted();
   emit layoutAboutToBeChanged();
-
   setRootItem(nullptr);
   emit layoutChanged();
+
   int completed = 0, succeded = 0, failed = 0;
   auto* root_item = new StandardServiceRoot();
   QNetworkProxy custom_proxy;
@@ -347,7 +348,8 @@ void FeedsImportExportModel::importAsTxtURLPerLine(const QByteArray& data, bool 
           succeded++;
           add_offline_anyway = false;
         }
-      } catch (const ApplicationException& ex) {
+      }
+      catch (const ApplicationException& ex) {
         qCriticalNN << LOGSEC_CORE << "Cannot fetch medatada for feed:" << QUOTE_W_SPACE(url)
                     << "with error:" << QUOTE_W_SPACE_DOT(ex.message());
       }

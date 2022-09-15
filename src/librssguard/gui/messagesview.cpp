@@ -756,40 +756,6 @@ void MessagesView::selectNextUnreadItem() {
   }
 }
 
-void MessagesView::selectNextImportantItem() {
-  const QModelIndexList selected_rows = selectionModel()->selectedRows();
-  int active_row;
-
-  if (!selected_rows.isEmpty()) {
-    // Okay, something is selected, start from it.
-    active_row = selected_rows.at(0).row();
-  }
-  else {
-    active_row = 0;
-  }
-
-  const QModelIndex next_important = m_proxyModel->getNextPreviousImportantItemIndex(active_row);
-
-  if (next_important.isValid()) {
-    // We found unread message, mark it.
-    setCurrentIndex(next_important);
-
-    // Make sure that item is properly visible even if
-    // message previewer was hidden and shows up.
-    qApp->processEvents();
-
-    scrollTo(next_important,
-             !m_processingAnyMouseButton &&
-                 qApp->settings()->value(GROUP(Messages), SETTING(Messages::KeepCursorInCenter)).toBool()
-               ? QAbstractItemView::ScrollHint::PositionAtCenter
-               : QAbstractItemView::ScrollHint::PositionAtTop);
-
-    selectionModel()->select(next_important,
-                             QItemSelectionModel::SelectionFlag::Select | QItemSelectionModel::SelectionFlag::Rows);
-    setFocus();
-  }
-}
-
 void MessagesView::searchMessages(const QString& pattern) {
   qDebugNN << LOGSEC_GUI << "Running search of messages with pattern" << QUOTE_W_SPACE_DOT(pattern);
 
