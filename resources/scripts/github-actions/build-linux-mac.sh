@@ -75,13 +75,10 @@ if [ $is_linux = true ]; then
 
   # Copy Gstreamer libs.
   install -v -Dm755 "/usr/lib/x86_64-linux-gnu/gstreamer1.0/gstreamer-1.0/gst-plugin-scanner" "AppDir/usr/lib/gstreamer1.0/gstreamer-1.0/gst-plugin-scanner"
-  gst_executables="--executable=./AppDir/usr/lib/gstreamer1.0/gstreamer-1.0/gst-plugin-scanner"
-  gst_libs=""
 
-  for plugin in /usr/lib/x86_64-linux-gnu/gstreamer-1.0/libgst*.so; do
+  for plugin in /usr/lib/x86_64-linux-gnu/gstreamer-1.0/*; do
     basen=$(basename "$plugin")
     install -v -Dm755 "$plugin" "./AppDir/usr/lib/gstreamer-1.0/$basen"
-    gst_libs="${gst_libs} --library=./AppDir/usr/lib/gstreamer-1.0/$basen"
   done
 
   if [[ "$webengine" == "ON" ]]; then
@@ -97,7 +94,7 @@ if [ $is_linux = true ]; then
   export LD_LIBRARY_PATH="$QTPATH/$QTVERSION/$QTOS/lib:$(pwd)/AppDir/usr/lib"
 
   # Create AppImage.
-  ./linuxdeploy-x86_64.AppImage --output "appimage" --plugin "qt" --plugin "gstreamer" --appdir "AppDir" $gst_executables $gst_libs
+  ./linuxdeploy-x86_64.AppImage --output "appimage" --plugin "qt" --appdir "AppDir"
 
   # Rename AppImaage.
   set -- R*.AppImage
