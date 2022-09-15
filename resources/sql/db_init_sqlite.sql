@@ -40,7 +40,7 @@ CREATE TABLE Feeds (
   category        INTEGER     NOT NULL CHECK (category >= -1), /* Physical category ID, also root feeds contain -1 here. */
   source          TEXT,
   update_type     INTEGER     NOT NULL CHECK (update_type >= 0),
-  update_interval INTEGER     NOT NULL DEFAULT 15 CHECK (update_interval >= 1),
+  update_interval INTEGER     NOT NULL DEFAULT 900 CHECK (update_interval >= 1),
   is_off          INTEGER     NOT NULL DEFAULT 0 CHECK (is_off >= 0 AND is_off <= 1),
   open_articles   INTEGER     NOT NULL DEFAULT 0 CHECK (open_articles >= 0 AND open_articles <= 1),
   account_id      INTEGER     NOT NULL,

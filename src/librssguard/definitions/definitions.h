@@ -73,9 +73,9 @@
 #define FEEDS_VIEW_COLUMN_COUNT 2
 #define DEFAULT_DAYS_TO_DELETE_MSG 14
 #define ELLIPSIS_LENGTH 3
-#define DEFAULT_AUTO_UPDATE_INTERVAL 15
-#define AUTO_UPDATE_INTERVAL 60000
-#define STARTUP_UPDATE_DELAY 15.0 // In seconds.
+#define DEFAULT_AUTO_UPDATE_INTERVAL 900 // In seconds.
+#define AUTO_UPDATE_INTERVAL 10          // In seconds.
+#define STARTUP_UPDATE_DELAY 15.0        // In seconds.
 #define TIMEZONE_OFFSET_LIMIT 6
 #define CHANGE_EVENT_DELAY 250
 #define FLAG_ICON_SUBFOLDER "flags"
@@ -370,6 +370,7 @@
 #endif
 
 #define NONQUOTE_W_SPACE_DOT(x) " " << (x) << "."
+#define NONQUOTE_W_SPACE(x) " " << (x) << " "
 #define QUOTE_W_SPACE_DOT(x) " '" << (x) << "'."
 #define QUOTE_W_SPACE_COMMA(x) " '" << (x) << "',"
 #define QUOTE_W_SPACE(x) " '" << (x) << "' "

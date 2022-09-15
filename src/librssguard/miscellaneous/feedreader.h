@@ -21,7 +21,7 @@ class QTimer;
 class QThread;
 
 class RSSGUARD_DLLSPEC FeedReader : public QObject {
-  Q_OBJECT
+    Q_OBJECT
 
   public:
     explicit FeedReader(QObject* parent = nullptr);
@@ -53,8 +53,8 @@ class RSSGUARD_DLLSPEC FeedReader : public QObject {
     void updateAutoUpdateStatus();
 
     bool autoUpdateEnabled() const;
-    int autoUpdateRemainingInterval() const;
-    int autoUpdateInitialInterval() const;
+    int autoUpdateInterval() const;
+    QDateTime lastAutoUpdate() const;
 
     void loadSavedMessageFilters();
     QList<MessageFilter*> messageFilters() const;
@@ -93,8 +93,8 @@ class RSSGUARD_DLLSPEC FeedReader : public QObject {
     QTimer* m_autoUpdateTimer;
     bool m_globalAutoUpdateEnabled{};
     bool m_globalAutoUpdateOnlyUnfocused{};
-    int m_globalAutoUpdateInitialInterval{};
-    int m_globalAutoUpdateRemainingInterval{};
+    int m_globalAutoUpdateInterval{}; // In seconds.
+    QDateTime m_lastAutoUpdate;
     QThread* m_feedDownloaderThread;
     FeedDownloader* m_feedDownloader;
 };

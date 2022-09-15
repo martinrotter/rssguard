@@ -69,6 +69,8 @@ void FeedDownloader::updateFeeds(const QList<Feed*>& feeds) {
   m_feedsOriginalCount = m_feeds.size();
   m_feedsUpdated = 0;
 
+  const QDateTime update_time = QDateTime::currentDateTimeUtc();
+
   if (feeds.isEmpty()) {
     qDebugNN << LOGSEC_FEEDDOWNLOADER << "No feeds to update in worker thread, aborting update.";
   }
@@ -157,6 +159,8 @@ void FeedDownloader::updateFeeds(const QList<Feed*>& feeds) {
       else {
         updateOneFeed(n_r, n_f, stated_messages.value(n_r).value(n_f->customId()), tagged_messages.value(n_r));
       }
+
+      n_f->setLastUpdated(QDateTime::currentDateTimeUtc());
     }
   }
 

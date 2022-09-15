@@ -20,6 +20,7 @@ SettingsFeedsMessages::SettingsFeedsMessages(Settings* settings, QWidget* parent
   : SettingsPanel(settings, parent), m_ui(new Ui::SettingsFeedsMessages) {
   m_ui->setupUi(this);
 
+  m_ui->m_spinAutoUpdateInterval->setMode(TimeSpinBox::Mode::MinutesSeconds);
   m_ui->m_spinStartupUpdateDelay->setMode(TimeSpinBox::Mode::MinutesSeconds);
 
   initializeMessageDateFormats();

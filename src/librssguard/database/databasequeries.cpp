@@ -2068,7 +2068,7 @@ void DatabaseQueries::createOverwriteFeed(const QSqlDatabase& db, Feed* feed, in
   q.bindValue(QSL(":category"), new_parent_id);
   q.bindValue(QSL(":source"), feed->source());
   q.bindValue(QSL(":update_type"), int(feed->autoUpdateType()));
-  q.bindValue(QSL(":update_interval"), feed->autoUpdateInitialInterval());
+  q.bindValue(QSL(":update_interval"), feed->autoUpdateInterval());
   q.bindValue(QSL(":account_id"), account_id);
   q.bindValue(QSL(":custom_id"), feed->customId());
   q.bindValue(QSL(":id"), feed->id());

@@ -44,9 +44,10 @@ void FormFeedDetails::insertCustomTab(QWidget* custom_tab, const QString& title,
 
 void FormFeedDetails::apply() {
   // Setup common data for the feed.
-  m_feed->setAutoUpdateType(static_cast<Feed::AutoUpdateType>(m_ui->m_cmbAutoUpdateType->itemData(
-                                                                m_ui->m_cmbAutoUpdateType->currentIndex()).toInt()));
-  m_feed->setAutoUpdateInitialInterval(int(m_ui->m_spinAutoUpdateInterval->value()));
+  m_feed->setAutoUpdateType(static_cast<Feed::AutoUpdateType>(m_ui->m_cmbAutoUpdateType
+                                                                ->itemData(m_ui->m_cmbAutoUpdateType->currentIndex())
+                                                                .toInt()));
+  m_feed->setAutoUpdateInterval(int(m_ui->m_spinAutoUpdateInterval->value()));
   m_feed->setOpenArticlesDirectly(m_ui->m_cbOpenArticlesAutomatically->isChecked());
   m_feed->setIsSwitchedOff(m_ui->m_cbDisableFeed->isChecked());
 
@@ -59,7 +60,8 @@ void FormFeedDetails::apply() {
 }
 
 void FormFeedDetails::onAutoUpdateTypeChanged(int new_index) {
-  Feed::AutoUpdateType auto_update_type = static_cast<Feed::AutoUpdateType>(m_ui->m_cmbAutoUpdateType->itemData(new_index).toInt());
+  Feed::AutoUpdateType auto_update_type =
+    static_cast<Feed::AutoUpdateType>(m_ui->m_cmbAutoUpdateType->itemData(new_index).toInt());
 
   switch (auto_update_type) {
     case Feed::AutoUpdateType::DontAutoUpdate:
@@ -74,7 +76,9 @@ void FormFeedDetails::onAutoUpdateTypeChanged(int new_index) {
 
 void FormFeedDetails::createConnections() {
   connect(m_ui->m_buttonBox, &QDialogButtonBox::accepted, this, &FormFeedDetails::acceptIfPossible);
-  connect(m_ui->m_cmbAutoUpdateType, static_cast<void (QComboBox::*)(int)>(&QComboBox::currentIndexChanged), this,
+  connect(m_ui->m_cmbAutoUpdateType,
+          static_cast<void (QComboBox::*)(int)>(&QComboBox::currentIndexChanged),
+          this,
           &FormFeedDetails::onAutoUpdateTypeChanged);
 }
 
@@ -85,13 +89,12 @@ void FormFeedDetails::loadFeedData() {
                                         tr("Add new feed"));
   }
   else {
-    GuiUtilities::applyDialogProperties(*this,
-                                        m_feed->fullIcon(),
-                                        tr("Edit \"%1\"").arg(m_feed->title()));
+    GuiUtilities::applyDialogProperties(*this, m_feed->fullIcon(), tr("Edit \"%1\"").arg(m_feed->title()));
   }
 
-  m_ui->m_cmbAutoUpdateType->setCurrentIndex(m_ui->m_cmbAutoUpdateType->findData(QVariant::fromValue(int(m_feed->autoUpdateType()))));
-  m_ui->m_spinAutoUpdateInterval->setValue(m_feed->autoUpdateInitialInterval());
+  m_ui->m_cmbAutoUpdateType
+    ->setCurrentIndex(m_ui->m_cmbAutoUpdateType->findData(QVariant::fromValue(int(m_feed->autoUpdateType()))));
+  m_ui->m_spinAutoUpdateInterval->setValue(m_feed->autoUpdateInterval());
   m_ui->m_cbOpenArticlesAutomatically->setChecked(m_feed->openArticlesDirectly());
   m_ui->m_cbDisableFeed->setChecked(m_feed->isSwitchedOff());
 }
@@ -102,11 +105,12 @@ void FormFeedDetails::acceptIfPossible() {
     accept();
   }
   catch (const ApplicationException& ex) {
-    qApp->showGuiMessage(Notification::Event::GeneralEvent, {
-      tr("Cannot save feed properties"),
-      tr("Cannot save changes: %1").arg(ex.message()),
-      QSystemTrayIcon::MessageIcon::Critical },
-                         {}, {},
+    qApp->showGuiMessage(Notification::Event::GeneralEvent,
+                         {tr("Cannot save feed properties"),
+                          tr("Cannot save changes: %1").arg(ex.message()),
+                          QSystemTrayIcon::MessageIcon::Critical},
+                         {},
+                         {},
                          this);
   }
 }
@@ -116,6 +120,7 @@ void FormFeedDetails::initialize() {
   m_ui->setupUi(this);
 
   // Setup auto-update options.
+  m_ui->m_spinAutoUpdateInterval->setMode(TimeSpinBox::Mode::MinutesSeconds);
   m_ui->m_spinAutoUpdateInterval->setValue(DEFAULT_AUTO_UPDATE_INTERVAL);
   m_ui->m_cmbAutoUpdateType->addItem(tr("Fetch articles using global interval"),
                                      QVariant::fromValue(int(Feed::AutoUpdateType::DefaultAutoUpdate)));

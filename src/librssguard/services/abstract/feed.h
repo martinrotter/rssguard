@@ -53,14 +53,11 @@ class Feed : public RootItem {
     void setCountOfAllMessages(int count_all_messages);
     void setCountOfUnreadMessages(int count_unread_messages);
 
-    int autoUpdateInitialInterval() const;
-    void setAutoUpdateInitialInterval(int auto_update_interval);
+    int autoUpdateInterval() const;
+    void setAutoUpdateInterval(int auto_update_interval);
 
     AutoUpdateType autoUpdateType() const;
     void setAutoUpdateType(AutoUpdateType auto_update_type);
-
-    int autoUpdateRemainingInterval() const;
-    void setAutoUpdateRemainingInterval(int auto_update_remaining_interval);
 
     Status status() const;
     QString statusString() const;
@@ -80,6 +77,9 @@ class Feed : public RootItem {
     void setMessageFilters(const QList<QPointer<MessageFilter>>& messageFilters);
     void removeMessageFilter(MessageFilter* filter);
 
+    QDateTime lastUpdated() const;
+    void setLastUpdated(const QDateTime& last_updated);
+
   public slots:
     virtual void updateCounts(bool including_total_count);
 
@@ -92,8 +92,8 @@ class Feed : public RootItem {
     Status m_status;
     QString m_statusString;
     AutoUpdateType m_autoUpdateType;
-    int m_autoUpdateInitialInterval{};
-    int m_autoUpdateRemainingInterval{};
+    int m_autoUpdateInterval{}; // In seconds.
+    QDateTime m_lastUpdated;
     bool m_isSwitchedOff;
     bool m_openArticlesDirectly;
     int m_totalCount{};

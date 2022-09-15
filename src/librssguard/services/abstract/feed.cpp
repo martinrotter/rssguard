@@ -21,8 +21,8 @@
 
 Feed::Feed(RootItem* parent)
   : RootItem(parent), m_source(QString()), m_status(Status::Normal), m_statusString(QString()),
-    m_autoUpdateType(AutoUpdateType::DefaultAutoUpdate), m_autoUpdateInitialInterval(DEFAULT_AUTO_UPDATE_INTERVAL),
-    m_autoUpdateRemainingInterval(DEFAULT_AUTO_UPDATE_INTERVAL), m_isSwitchedOff(false), m_openArticlesDirectly(false),
+    m_autoUpdateType(AutoUpdateType::DefaultAutoUpdate), m_autoUpdateInterval(DEFAULT_AUTO_UPDATE_INTERVAL),
+    m_lastUpdated(QDateTime::currentDateTimeUtc()), m_isSwitchedOff(false), m_openArticlesDirectly(false),
     m_messageFilters(QList<QPointer<MessageFilter>>()) {
   setKind(RootItem::Kind::Feed);
 }
@@ -41,8 +41,8 @@ Feed::Feed(const Feed& other) : RootItem(other) {
   setSource(other.source());
   setStatus(other.status(), other.statusString());
   setAutoUpdateType(other.autoUpdateType());
-  setAutoUpdateInitialInterval(other.autoUpdateInitialInterval());
-  setAutoUpdateRemainingInterval(other.autoUpdateRemainingInterval());
+  setAutoUpdateInterval(other.autoUpdateInterval());
+  setLastUpdated(other.lastUpdated());
   setMessageFilters(other.messageFilters());
   setOpenArticlesDirectly(other.openArticlesDirectly());
   setIsSwitchedOff(other.isSwitchedOff());
@@ -91,8 +91,8 @@ QVariant Feed::data(int column, int role) const {
   }
 }
 
-int Feed::autoUpdateInitialInterval() const {
-  return m_autoUpdateInitialInterval;
+int Feed::autoUpdateInterval() const {
+  return m_autoUpdateInterval;
 }
 
 int Feed::countOfAllMessages() const {
@@ -134,11 +134,11 @@ bool Feed::editViaGui() {
   return false;
 }
 
-void Feed::setAutoUpdateInitialInterval(int auto_update_interval) {
+void Feed::setAutoUpdateInterval(int auto_update_interval) {
   // If new initial auto-update interval is set, then
   // we should reset time that remains to the next auto-update.
-  m_autoUpdateInitialInterval = auto_update_interval;
-  m_autoUpdateRemainingInterval = auto_update_interval;
+  m_autoUpdateInterval = auto_update_interval;
+  m_lastUpdated = QDateTime::currentDateTimeUtc();
 }
 
 Feed::AutoUpdateType Feed::autoUpdateType() const {
@@ -147,14 +147,6 @@ Feed::AutoUpdateType Feed::autoUpdateType() const {
 
 void Feed::setAutoUpdateType(Feed::AutoUpdateType auto_update_type) {
   m_autoUpdateType = auto_update_type;
-}
-
-int Feed::autoUpdateRemainingInterval() const {
-  return m_autoUpdateRemainingInterval;
-}
-
-void Feed::setAutoUpdateRemainingInterval(int auto_update_remaining_interval) {
-  m_autoUpdateRemainingInterval = auto_update_remaining_interval;
 }
 
 Feed::Status Feed::status() const {
@@ -219,28 +211,34 @@ QString Feed::getAutoUpdateStatusDescription() const {
 
   switch (autoUpdateType()) {
     case AutoUpdateType::DontAutoUpdate:
-
       //: Describes feed auto-update status.
       auto_update_string = tr("does not use auto-fetching of articles");
       break;
 
     case AutoUpdateType::DefaultAutoUpdate:
-
       //: Describes feed auto-update status.
-      auto_update_string = qApp->feedReader()->autoUpdateEnabled()
-                             ? tr("uses global settings (%n minute(s) to next auto-fetch of articles)",
-                                  nullptr,
-                                  qApp->feedReader()->autoUpdateRemainingInterval())
-                             : tr("uses global settings (global auto-fetching of articles is disabled)");
+      if (qApp->feedReader()->autoUpdateEnabled()) {
+        int secs_to_next =
+          QDateTime::currentDateTimeUtc()
+            .secsTo(qApp->feedReader()->lastAutoUpdate().addSecs(qApp->feedReader()->autoUpdateInterval()));
+
+        auto_update_string =
+          tr("uses global settings (%n minute(s) to next auto-fetch of articles)", nullptr, int(secs_to_next / 60.0));
+      }
+      else {
+        auto_update_string = tr("uses global settings, but global auto-fetching of articles is disabled");
+      }
+
       break;
 
     case AutoUpdateType::SpecificAutoUpdate:
     default:
+      int secs_to_next = QDateTime::currentDateTimeUtc().secsTo(lastUpdated().addSecs(autoUpdateInterval()));
 
       //: Describes feed auto-update status.
       auto_update_string = tr("uses specific settings (%n minute(s) to next auto-fetching of new articles)",
                               nullptr,
-                              autoUpdateRemainingInterval());
+                              int(secs_to_next / 60.0));
       break;
   }
 
@@ -267,6 +265,14 @@ QString Feed::getStatusDescription() const {
     default:
       return tr("error");
   }
+}
+
+QDateTime Feed::lastUpdated() const {
+  return m_lastUpdated;
+}
+
+void Feed::setLastUpdated(const QDateTime& last_updated) {
+  m_lastUpdated = last_updated;
 }
 
 bool Feed::isSwitchedOff() const {

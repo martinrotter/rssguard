@@ -380,7 +380,7 @@ QMap<QString, QVariantMap> ServiceRoot::storeCustomFeedsData() {
 
     // TODO: This could potentially call Feed::customDatabaseData() and append it
     // to this map and also subsequently restore.
-    feed_custom_data.insert(QSL("auto_update_interval"), feed->autoUpdateInitialInterval());
+    feed_custom_data.insert(QSL("auto_update_interval"), feed->autoUpdateInterval());
     feed_custom_data.insert(QSL("auto_update_type"), int(feed->autoUpdateType()));
     feed_custom_data.insert(QSL("msg_filters"), QVariant::fromValue(feed->messageFilters()));
     feed_custom_data.insert(QSL("is_off"), feed->isSwitchedOff());
@@ -403,7 +403,7 @@ void ServiceRoot::restoreCustomFeedsData(const QMap<QString, QVariantMap>& data,
       Feed* feed = feeds.value(custom_id);
       QVariantMap feed_custom_data = i.value();
 
-      feed->setAutoUpdateInitialInterval(feed_custom_data.value(QSL("auto_update_interval")).toInt());
+      feed->setAutoUpdateInterval(feed_custom_data.value(QSL("auto_update_interval")).toInt());
       feed
         ->setAutoUpdateType(static_cast<Feed::AutoUpdateType>(feed_custom_data.value(QSL("auto_update_type")).toInt()));
       feed->setMessageFilters(feed_custom_data.value(QSL("msg_filters")).value<QList<QPointer<MessageFilter>>>());

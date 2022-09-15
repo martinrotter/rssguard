@@ -260,18 +260,8 @@ QList<Feed*> FeedsModel::feedsForScheduledUpdate(bool auto_update_now) {
 
       case Feed::AutoUpdateType::SpecificAutoUpdate:
       default:
-        int remaining_interval = feed->autoUpdateRemainingInterval();
-
-        if (--remaining_interval <= 0) {
-          // Interval of this feed passed, include this feed in the output list
-          // and reset the interval.
+        if (feed->lastUpdated().addSecs(feed->autoUpdateInterval()) < QDateTime::currentDateTimeUtc()) {
           feeds_for_update.append(feed);
-          feed->setAutoUpdateRemainingInterval(feed->autoUpdateInitialInterval());
-        }
-        else {
-          // Interval did not pass, set new decremented interval and do NOT
-          // include this feed in the output list.
-          feed->setAutoUpdateRemainingInterval(remaining_interval);
         }
 
         break;
