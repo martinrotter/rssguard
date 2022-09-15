@@ -248,12 +248,10 @@ QList<Feed*> FeedsModel::feedsForScheduledUpdate(bool auto_update_now) {
   for (Feed* feed : qAsConst(stf)) {
     switch (feed->autoUpdateType()) {
       case Feed::AutoUpdateType::DontAutoUpdate:
-
         // Do not auto-update this feed ever.
         continue;
 
       case Feed::AutoUpdateType::DefaultAutoUpdate:
-
         if (auto_update_now) {
           feeds_for_update.append(feed);
         }

@@ -62,6 +62,7 @@ class FeedDownloader : public QObject {
     void finalizeUpdate();
     void removeDuplicateMessages(QList<Message>& messages);
 
+  private:
     bool m_isCacheSynchronizationRunning;
     bool m_stopCacheSynchronization;
     QList<Feed*> m_feeds = {};
