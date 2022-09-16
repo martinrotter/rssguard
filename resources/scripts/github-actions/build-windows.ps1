@@ -1,6 +1,6 @@
 $os = $args[0]
 $use_webengine = $args[1]
-$use_qt5 = $args[1]
+$use_qt5 = $args[2]
 
 echo "We are building for MS Windows."
 echo "OS: $os; WebEngine: $use_webengine; Qt5: $use_qt5"
