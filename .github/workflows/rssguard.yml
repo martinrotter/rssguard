@@ -24,9 +24,9 @@ jobs:
             script_name: ./resources/scripts/github-actions/build-linux-mac.sh
         exclude:
           - os: ubuntu-20.04
-            use_qt5: "OFF"
+            use_qt5: "ON"
           - os: macos-10.15
-            use_qt5: "OFF"
+            use_qt5: "ON"
     steps:         
       - name: Checkout source code
         uses: actions/checkout@v2
@@ -57,7 +57,7 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
          
       - name: Prepare environment and compile application
-        run: ${{ matrix.script_name }} "${{ matrix.os }}" "${{ matrix.use_webengine }}"
+        run: ${{ matrix.script_name }} "${{ matrix.os }}" "${{ matrix.use_webengine }}" "${{ matrix.use_qt5 }}"
         env:
           GMAIL_CLIENT_ID: ${{ secrets.GMAIL_CLIENT_ID }}
           GMAIL_CLIENT_SECRET: ${{ secrets.GMAIL_CLIENT_SECRET }}
@@ -73,8 +73,8 @@ jobs:
           name: "Development builds"
           tag_name: "devbuild"
           files: |
-            .\rssguard-build\rssguard-*win64.exe
-            .\rssguard-build\rssguard-*win64.7z
+            .\rssguard-build\rssguard-*win*.exe
+            .\rssguard-build\rssguard-*win*.7z
             ./rssguard-build/rssguard-*mac64.dmg
             ./rssguard-build/rssguard-*linux64.AppImage
         env:
@@ -86,8 +86,8 @@ jobs:
         with:
           prerelease: false
           files: |
-            .\rssguard-build\rssguard-*win64.exe
-            .\rssguard-build\rssguard-*win64.7z
+            .\rssguard-build\rssguard-*win*.exe
+            .\rssguard-build\rssguard-*win*.7z
             ./rssguard-build/rssguard-*mac64.dmg
             ./rssguard-build/rssguard-*linux64.AppImage
         env:

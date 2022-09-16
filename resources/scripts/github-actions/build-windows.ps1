@@ -1,8 +1,9 @@
 $os = $args[0]
-$webengine = $args[1]
+$use_webengine = $args[1]
+$use_qt5 = $args[1]
 
 echo "We are building for MS Windows."
-echo "OS: $os; WebEngine: $webengine"
+echo "OS: $os; WebEngine: $use_webengine"
 
 $git_revlist = git rev-list --tags --max-count=1
 $git_tag = git describe --tags $git_revlist
@@ -19,11 +20,18 @@ $AllProtocols = [System.Net.SecurityProtocolType]'Tls11,Tls12'
 $ProgressPreference = 'SilentlyContinue'
 
 # Get and prepare needed dependencies.
-$qt_version = "6.3.1"
+
+if ($use_qt5 -eq "ON") {
+  $qt_version = "5.15.2"
+}
+else {
+  $qt_version = "6.3.1"
+}
+
 $maria_version = "10.6.9"
 $maria_link = "https://archive.mariadb.org/mariadb-$maria_version/winx64-packages/mariadb-$maria_version-winx64.zip"
 $maria_output = "maria.zip"
-$cmake_version = "3.24.1"
+$cmake_version = "3.24.2"
 $cmake_link = "https://github.com/Kitware/CMake/releases/download/v$cmake_version/cmake-$cmake_version-windows-x86_64.zip"
 $cmake_output = "cmake.zip"
 
@@ -80,7 +88,7 @@ cd "$old_pwd"
 # Build application.
 mkdir "rssguard-build"
 cd "rssguard-build"
-& "$cmake_path" ".." -G Ninja -DCMAKE_BUILD_TYPE="RelWithDebInfo" -DBUILD_WITH_QT6="$with_qt6" -DREVISION_FROM_GIT=ON -DUSE_WEBENGINE="$webengine" -DFEEDLY_CLIENT_ID="$env:FEEDLY_CLIENT_ID" -DFEEDLY_CLIENT_SECRET="$env:FEEDLY_CLIENT_SECRET" -DGMAIL_CLIENT_ID="$env:GMAIL_CLIENT_ID" -DGMAIL_CLIENT_SECRET="$env:GMAIL_CLIENT_SECRET" -DINOREADER_CLIENT_ID="$env:INOREADER_CLIENT_ID" -DINOREADER_CLIENT_SECRET="$env:INOREADER_CLIENT_SECRET"
+& "$cmake_path" ".." -G Ninja -DCMAKE_BUILD_TYPE="RelWithDebInfo" -DBUILD_WITH_QT6="$with_qt6" -DREVISION_FROM_GIT=ON -DUSE_WEBENGINE="$use_webengine" -DFEEDLY_CLIENT_ID="$env:FEEDLY_CLIENT_ID" -DFEEDLY_CLIENT_SECRET="$env:FEEDLY_CLIENT_SECRET" -DGMAIL_CLIENT_ID="$env:GMAIL_CLIENT_ID" -DGMAIL_CLIENT_SECRET="$env:GMAIL_CLIENT_SECRET" -DINOREADER_CLIENT_ID="$env:INOREADER_CLIENT_ID" -DINOREADER_CLIENT_SECRET="$env:INOREADER_CLIENT_SECRET"
 & "$cmake_path" --build .
 & "$cmake_path" --install . --prefix app
 
@@ -96,11 +104,18 @@ Copy-Item -Path "$openssl_base_path\bin\libssl*.dll" -Destination ".\app\"
 Copy-Item -Path "$maria_path\lib\libmariadb.dll" -Destination ".\app\"
 Copy-Item -Path "$qt_sqldrivers_path\plugins\sqldrivers\qsqlmysql.dll" -Destination ".\app\sqldrivers\" -Force
 
-if ($webengine -eq "ON") {
-  $packagebase = "rssguard-${git_tag}-${git_revision}-win64"
+if ($use_webengine -eq "ON") {
+  $packagebase = "rssguard-${git_tag}-${git_revision}-win"
 }
 else {
-  $packagebase = "rssguard-${git_tag}-${git_revision}-nowebengine-win64"
+  $packagebase = "rssguard-${git_tag}-${git_revision}-nowebengine-win"
+}
+
+if ($use_qt5 -eq "ON") {
+  $packagebase += "7"
+}
+else {
+  $packagebase += "10"
 }
 
 # Create 7zip package.
