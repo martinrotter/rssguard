@@ -3,7 +3,7 @@ $use_webengine = $args[1]
 $use_qt5 = $args[1]
 
 echo "We are building for MS Windows."
-echo "OS: $os; WebEngine: $use_webengine"
+echo "OS: $os; WebEngine: $use_webengine; Qt5: $use_qt5"
 
 $git_revlist = git rev-list --tags --max-count=1
 $git_tag = git describe --tags $git_revlist
@@ -25,7 +25,7 @@ if ($use_qt5 -eq "ON") {
   $qt_version = "5.15.2"
 }
 else {
-  $qt_version = "6.3.1"
+  $qt_version = "6.3.2"
 }
 
 $maria_version = "10.6.9"
