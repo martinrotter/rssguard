@@ -8,7 +8,7 @@ on:
 
 jobs:
   build-rssguard:
-    name: "${{ matrix.os }}; webengine = ${{ matrix.use_webengine }}"
+    name: "${{ matrix.os }}; webengine = ${{ matrix.use_webengine }}; qt5 = ${{ matrix.use_qt5 }}"
     runs-on: "${{ matrix.os }}"
     strategy:
       matrix:
