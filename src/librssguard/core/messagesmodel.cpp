@@ -225,40 +225,24 @@ void MessagesModel::setupHeaderData() {
   m_headerData <<
 
     /*: Tooltip for ID of message.*/ tr("Id") <<
-
     /*: Tooltip for "read" column in msg list.*/ tr("Read") <<
-
     /*: Tooltip for "important" column in msg list.*/ tr("Important") <<
-
     /*: Tooltip for "deleted" column in msg list.*/ tr("Deleted") <<
-
     /*: Tooltip for "pdeleted" column in msg list.*/ tr("Permanently deleted") <<
-
     /*: Tooltip for custom ID of feed of message.*/ tr("Feed ID") <<
-
     /*: Tooltip for title of message.*/ tr("Title") <<
-
     /*: Tooltip for url of message.*/ tr("Url") <<
-
     /*: Tooltip for author of message.*/ tr("Author") <<
-
     /*: Tooltip for creation date of message.*/ tr("Date") <<
-
     /*: Tooltip for contents of message.*/ tr("Contents") <<
-
     /*: Tooltip for attachments of message.*/ tr("Attachments") <<
-
     /*: Tooltip for score of message.*/ tr("Score") <<
-
     /*: Tooltip for account ID of message.*/ tr("Account ID") <<
-
     /*: Tooltip for custom ID of message.*/ tr("Custom ID") <<
-
     /*: Tooltip for custom hash string of message.*/ tr("Custom hash") <<
-
     /*: Tooltip for name of feed for message.*/ tr("Feed") <<
-
-    /*: Tooltip for indication of presence of enclosures.*/ tr("Has enclosures");
+    /*: Tooltip for indication of presence of enclosures.*/ tr("Has enclosures") <<
+    /*: Tooltip for indication of labels of message.*/ tr("Assigned labels");
 
   m_tooltipData << tr("ID of the article.") << tr("Is article read?") << tr("Is article important?")
                 << tr("Is article deleted?") << tr("Is article permanently deleted from recycle bin?")
@@ -267,7 +251,7 @@ void MessagesModel::setupHeaderData() {
                 << tr("Contents of the article.") << tr("List of attachments.") << tr("Score of the article.")
                 << tr("Account ID of the article.") << tr("Custom ID of the article.")
                 << tr("Custom hash of the article.") << tr("Name of feed of the article.")
-                << tr("Indication of enclosures presence within the article.");
+                << tr("Indication of enclosures presence within the article.") << tr("Labels assigned to the article.");
 }
 
 Qt::ItemFlags MessagesModel::flags(const QModelIndex& index) const {
