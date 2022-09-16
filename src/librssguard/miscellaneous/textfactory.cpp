@@ -13,6 +13,7 @@
 #include <QRandomGenerator64>
 #include <QString>
 #include <QStringList>
+#include <QTextDocument>
 
 quint64 TextFactory::s_encryptionKey = 0x0;
 
