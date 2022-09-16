@@ -7,8 +7,8 @@
 #include "miscellaneous/application.h"
 
 MessagesModelSqlLayer::MessagesModelSqlLayer()
-  : m_filter(QSL(DEFAULT_SQL_MESSAGES_FILTER)), m_fieldNames({}), m_orderByNames({}),
-  m_sortColumns({}), m_numericColumns({}), m_sortOrders({}) {
+  : m_filter(QSL(DEFAULT_SQL_MESSAGES_FILTER)), m_fieldNames({}), m_orderByNames({}), m_sortColumns({}),
+    m_numericColumns({}), m_sortOrders({}) {
   m_db = qApp->database()->driver()->connection(QSL("MessagesModel"));
 
   // Used in <x>: SELECT <x1>, <x2> FROM ....;
@@ -33,16 +33,16 @@ MessagesModelSqlLayer::MessagesModelSqlLayer()
   m_orderByNames[MSG_DB_CUSTOM_HASH_INDEX] = QSL("Messages.custom_hash");
   m_orderByNames[MSG_DB_FEED_TITLE_INDEX] = QSL("Feeds.title");
   m_orderByNames[MSG_DB_HAS_ENCLOSURES] = QSL("has_enclosures");
+  m_orderByNames[MSG_DB_LABELS] = QSL("msg_labels");
 
   m_numericColumns << MSG_DB_ID_INDEX << MSG_DB_READ_INDEX << MSG_DB_DELETED_INDEX << MSG_DB_PDELETED_INDEX
-                   << MSG_DB_IMPORTANT_INDEX << MSG_DB_ACCOUNT_ID_INDEX << MSG_DB_DCREATED_INDEX
-                   << MSG_DB_SCORE_INDEX;
+                   << MSG_DB_IMPORTANT_INDEX << MSG_DB_ACCOUNT_ID_INDEX << MSG_DB_DCREATED_INDEX << MSG_DB_SCORE_INDEX;
 }
 
 void MessagesModelSqlLayer::addSortState(int column, Qt::SortOrder order, bool ignore_multicolumn_sorting) {
   int existing = m_sortColumns.indexOf(column);
-  bool is_ctrl_pressed = (QApplication::queryKeyboardModifiers() &
-                          Qt::KeyboardModifier::ControlModifier) == Qt::KeyboardModifier::ControlModifier;
+  bool is_ctrl_pressed = (QApplication::queryKeyboardModifiers() & Qt::KeyboardModifier::ControlModifier) ==
+                         Qt::KeyboardModifier::ControlModifier;
 
   if (existing >= 0) {
     m_sortColumns.removeAt(existing);
@@ -85,7 +85,8 @@ bool MessagesModelSqlLayer::isColumnNumeric(int column_id) const {
 
 QString MessagesModelSqlLayer::selectStatement() const {
   return QL1S("SELECT ") + formatFields() + QL1C(' ') +
-         QL1S("FROM Messages LEFT JOIN Feeds ON Messages.feed = Feeds.custom_id AND Messages.account_id = Feeds.account_id "
+         QL1S("FROM Messages LEFT JOIN Feeds ON Messages.feed = Feeds.custom_id AND Messages.account_id = "
+              "Feeds.account_id "
               "WHERE ") +
          m_filter + orderByClause() + QL1C(';');
 }
@@ -99,12 +100,10 @@ QString MessagesModelSqlLayer::orderByClause() const {
 
     for (int i = 0; i < m_sortColumns.size(); i++) {
       QString field_name(m_orderByNames[m_sortColumns[i]]);
-      QString order_sql = isColumnNumeric(m_sortColumns[i])
-                          ? QSL("%1")
-                          : QSL("LOWER(%1)");
+      QString order_sql = isColumnNumeric(m_sortColumns[i]) ? QSL("%1") : QSL("LOWER(%1)");
 
-      //sorts.append(QSL("LENGTH(%1)").arg(order_sql.arg(field_name)) +
-      //             (m_sortOrders[i] == Qt::SortOrder::AscendingOrder ? QSL(" ASC") : QSL(" DESC")));
+      // sorts.append(QSL("LENGTH(%1)").arg(order_sql.arg(field_name)) +
+      //              (m_sortOrders[i] == Qt::SortOrder::AscendingOrder ? QSL(" ASC") : QSL(" DESC")));
 
       sorts.append(order_sql.arg(field_name) +
                    (m_sortOrders[i] == Qt::SortOrder::AscendingOrder ? QSL(" ASC") : QSL(" DESC")));
