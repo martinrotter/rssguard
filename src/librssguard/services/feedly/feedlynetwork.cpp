@@ -553,6 +553,14 @@ RootItem* FeedlyNetwork::decodeCollections(const QByteArray& json,
       feed->setDescription(qApp->web()->stripTags(fee_obj[QSL("description")].toString()));
       feed->setCustomId(fee_obj[QSL("id")].toString());
 
+      if (feed->title().isEmpty()) {
+        feed->setTitle(feed->description());
+      }
+
+      if (feed->title().isEmpty()) {
+        feed->setTitle(feed->source());
+      }
+
       if (obtain_icons) {
         QIcon icon;
         auto result = NetworkFactory::downloadIcon({{fee_obj[QSL("iconUrl")].toString(), true},
