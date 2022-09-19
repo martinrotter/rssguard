@@ -99,10 +99,9 @@ void Message::sanitize(const Feed* feed, bool fix_future_datetimes) {
 
   // Fix datetimes in future.
   if ((fix_future_datetimes && m_createdFromFeed && m_created.toUTC() > QDateTime::currentDateTimeUtc()) ||
-      (m_createdFromFeed && !m_created.isValid())) {
+      (m_createdFromFeed && (!m_created.isValid() || m_created.toSecsSinceEpoch() < 0))) {
     qWarningNN << LOGSEC_CORE << "Fixing date of article" << QUOTE_W_SPACE(m_title) << "from invalid date/time"
                << QUOTE_W_SPACE_DOT(m_created);
-
     m_createdFromFeed = false;
     m_created = QDateTime::currentDateTimeUtc();
   }
