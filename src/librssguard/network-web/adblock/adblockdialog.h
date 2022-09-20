@@ -21,7 +21,7 @@ class AdBlockDialog : public QDialog {
   private slots:
     void saveOnClose();
     void enableAdBlock(bool enable);
-    void onAdBlockEnabledChanged(bool enabled);
+    void onAdBlockEnabledChanged(bool enabled, const QString &message);
     void onAdBlockProcessTerminated();
 
   private:

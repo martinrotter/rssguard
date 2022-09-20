@@ -17,8 +17,7 @@
 #include <QMessageBox>
 #include <QTimer>
 
-AdBlockDialog::AdBlockDialog(QWidget* parent)
-  : QDialog(parent), m_manager(qApp->web()->adBlock()), m_loaded(false) {
+AdBlockDialog::AdBlockDialog(QWidget* parent) : QDialog(parent), m_manager(qApp->web()->adBlock()), m_loaded(false) {
   m_ui.setupUi(this);
   m_ui.m_cbEnable->setChecked(m_manager->isEnabled());
 
@@ -57,9 +56,7 @@ void AdBlockDialog::saveOnClose() {
     }
   }
   catch (const ApplicationException& ex) {
-    qCriticalNN << LOGSEC_ADBLOCK
-                << "Failed to enable AdBlock, error:"
-                << QUOTE_W_SPACE_DOT(ex.message());
+    qCriticalNN << LOGSEC_ADBLOCK << "Failed to enable AdBlock, error:" << QUOTE_W_SPACE_DOT(ex.message());
 
     MsgBox::show(this,
                  QMessageBox::Icon::Critical,
@@ -81,25 +78,27 @@ void AdBlockDialog::enableAdBlock(bool enable) {
     m_manager->setEnabled(enable);
   }
   catch (const ApplicationException& ex) {
-    qCriticalNN << LOGSEC_ADBLOCK
-                << "Test of configuration failed:"
-                << QUOTE_W_SPACE_DOT(ex.message());
+    qCriticalNN << LOGSEC_ADBLOCK << "Test of configuration failed:" << QUOTE_W_SPACE_DOT(ex.message());
 
     m_ui.m_lblTestResult->setStatus(WidgetWithStatus::StatusType::Error,
                                     tr("There is error, check application log for more details and "
                                        "head to online documentation. Also make sure that Node.js is installed."
-                                       "\n\nError: %1").arg(ex.message()),
+                                       "\n\nError: %1")
+                                      .arg(ex.message()),
                                     tr("ERROR!"));
   }
 }
 
-void AdBlockDialog::onAdBlockEnabledChanged(bool enabled) {
+void AdBlockDialog::onAdBlockEnabledChanged(bool enabled, const QString& message) {
   m_ui.m_cbEnable->setChecked(enabled);
 
   if (enabled) {
     m_ui.m_lblTestResult->setStatus(WidgetWithStatus::StatusType::Ok,
                                     tr("It seems your AdBlock runs fine, but wait few seconds to be sure."),
                                     tr("OK!"));
+  }
+  else if (!message.isEmpty()) {
+    m_ui.m_lblTestResult->setStatus(WidgetWithStatus::StatusType::Warning, message, message);
   }
   else {
     m_ui.m_lblTestResult->setStatus(WidgetWithStatus::StatusType::Information,

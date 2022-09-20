@@ -19,18 +19,17 @@ class AdBlockUrlInterceptor;
 class AdBlockIcon;
 
 struct BlockingResult {
-  bool m_blocked;
-  QString m_blockedByFilter;
+    bool m_blocked;
+    QString m_blockedByFilter;
 
-  BlockingResult() : m_blocked(false), m_blockedByFilter(QString()) {}
+    BlockingResult() : m_blocked(false), m_blockedByFilter(QString()) {}
 
-  BlockingResult(bool blocked, QString blocked_by_filter = {})
-    : m_blocked(blocked), m_blockedByFilter(std::move(blocked_by_filter)) {}
-
+    BlockingResult(bool blocked, QString blocked_by_filter = {})
+      : m_blocked(blocked), m_blockedByFilter(std::move(blocked_by_filter)) {}
 };
 
 class AdBlockManager : public QObject {
-  Q_OBJECT
+    Q_OBJECT
 
   public:
     explicit AdBlockManager(QObject* parent = nullptr);
@@ -43,8 +42,8 @@ class AdBlockManager : public QObject {
     //
     // If the process fails then signal
     //   processTerminated() is thrown.
-    // If AdBlock is switched on/off peacefully then signal
-    //   enabledChanged(bool) is thrown.
+    // If AdBlock is switched on/off then signal
+    //   enabledChanged(bool, QString) is thrown.
     void setEnabled(bool enabled);
     bool isEnabled() const;
 
@@ -67,7 +66,7 @@ class AdBlockManager : public QObject {
     void showDialog();
 
   signals:
-    void enabledChanged(bool enabled);
+    void enabledChanged(bool enabled, QString error = {});
     void processTerminated();
 
   private slots:

@@ -30,9 +30,9 @@
 AdBlockManager::AdBlockManager(QObject* parent)
   : QObject(parent), m_loaded(false), m_enabled(false), m_installing(false),
 #if defined(USE_WEBENGINE)
-  m_interceptor(new AdBlockUrlInterceptor(this)),
+    m_interceptor(new AdBlockUrlInterceptor(this)),
 #endif
-  m_serverProcess(nullptr), m_cacheBlocks({}) {
+    m_serverProcess(nullptr), m_cacheBlocks({}) {
   m_adblockIcon = new AdBlockIcon(this);
   m_adblockIcon->setObjectName(QSL("m_adblockIconAction"));
   m_unifiedFiltersFile = qApp->userDataFolder() + QDir::separator() + QSL("adblock-unified-filters.txt");
@@ -47,23 +47,21 @@ AdBlockManager::~AdBlockManager() {
 
 BlockingResult AdBlockManager::block(const AdblockRequestInfo& request) {
   if (!isEnabled()) {
-    return { false };
+    return {false};
   }
 
   const QString url_string = request.requestUrl().toEncoded().toLower();
   const QString firstparty_url_string = request.firstPartyUrl().toEncoded().toLower();
   const QString url_scheme = request.requestUrl().scheme().toLower();
-  const QPair<QString, QString> url_pair = { firstparty_url_string, url_string };
+  const QPair<QString, QString> url_pair = {firstparty_url_string, url_string};
   const QString url_type = request.resourceType();
 
   if (!canRunOnScheme(url_scheme)) {
-    return { false };
+    return {false};
   }
   else {
     if (m_cacheBlocks.contains(url_pair)) {
-      qDebugNN << LOGSEC_ADBLOCK
-               << "Found blocking data in cache, URL:"
-               << QUOTE_W_SPACE_DOT(url_pair);
+      qDebugNN << LOGSEC_ADBLOCK << "Found blocking data in cache, URL:" << QUOTE_W_SPACE_DOT(url_pair);
 
       return m_cacheBlocks.value(url_pair);
     }
@@ -74,21 +72,18 @@ BlockingResult AdBlockManager::block(const AdblockRequestInfo& request) {
 
         m_cacheBlocks.insert(url_pair, result);
 
-        qDebugNN << LOGSEC_ADBLOCK
-                 << "Inserted blocking data to cache for:"
-                 << QUOTE_W_SPACE_DOT(url_pair);
+        qDebugNN << LOGSEC_ADBLOCK << "Inserted blocking data to cache for:" << QUOTE_W_SPACE_DOT(url_pair);
 
         return result;
       }
       catch (const ApplicationException& ex) {
         qCriticalNN << LOGSEC_ADBLOCK
-                    << "HTTP error when calling server for blocking rules:"
-                    << QUOTE_W_SPACE_DOT(ex.message());
-        return { false };
+                    << "HTTP error when calling server for blocking rules:" << QUOTE_W_SPACE_DOT(ex.message());
+        return {false};
       }
     }
     else {
-      return { false };
+      return {false};
     }
   }
 }
@@ -111,7 +106,7 @@ void AdBlockManager::setEnabled(bool enabled) {
   if (m_enabled) {
     if (!m_installing) {
       m_installing = true;
-      qApp->nodejs()->installUpdatePackages({ { QSL(CLIQZ_ADBLOCKED_PACKAGE), QSL(CLIQZ_ADBLOCKED_VERSION) } });
+      qApp->nodejs()->installUpdatePackages({{QSL(CLIQZ_ADBLOCKED_PACKAGE), QSL(CLIQZ_ADBLOCKED_VERSION)}});
     }
   }
   else {
@@ -128,7 +123,7 @@ bool AdBlockManager::canRunOnScheme(const QString& scheme) const {
 }
 
 QString AdBlockManager::elementHidingRulesForDomain(const QUrl& url) const {
-  if (m_serverProcess != nullptr &&  m_serverProcess->state() == QProcess::ProcessState::Running) {
+  if (m_serverProcess != nullptr && m_serverProcess->state() == QProcess::ProcessState::Running) {
     try {
       auto result = askServerForCosmeticRules(url.toString());
 
@@ -136,8 +131,7 @@ QString AdBlockManager::elementHidingRulesForDomain(const QUrl& url) const {
     }
     catch (const ApplicationException& ex) {
       qCriticalNN << LOGSEC_ADBLOCK
-                  << "HTTP error when calling server for cosmetic rules:"
-                  << QUOTE_W_SPACE_DOT(ex.message());
+                  << "HTTP error when calling server for cosmetic rules:" << QUOTE_W_SPACE_DOT(ex.message());
       return {};
     }
   }
@@ -198,12 +192,10 @@ void AdBlockManager::onPackageReady(const QList<NodeJs::PackageMetadata>& pkgs, 
         updateUnifiedFiltersFileAndStartServer();
       }
       catch (const ApplicationException& ex) {
-        qCriticalNN << LOGSEC_ADBLOCK
-                    << "Failed to setup filters and start server:"
-                    << QUOTE_W_SPACE_DOT(ex.message());
+        qCriticalNN << LOGSEC_ADBLOCK << "Failed to setup filters and start server:" << QUOTE_W_SPACE_DOT(ex.message());
 
         m_enabled = false;
-        emit enabledChanged(m_enabled);
+        emit enabledChanged(m_enabled, tr("Failed to setup filters and start server: %1.").arg(ex.message()));
       }
     }
   }
@@ -228,52 +220,46 @@ void AdBlockManager::onServerProcessFinished(int exit_code, QProcess::ExitStatus
   Q_UNUSED(exit_status)
   killServer();
 
-  qCriticalNN << LOGSEC_ADBLOCK
-              << "Process exited with exit code"
-              << QUOTE_W_SPACE(exit_code)
+  qCriticalNN << LOGSEC_ADBLOCK << "Process exited with exit code" << QUOTE_W_SPACE(exit_code)
               << "so check application log for more details.";
 
   m_enabled = false;
   emit processTerminated();
 }
 
-BlockingResult AdBlockManager::askServerIfBlocked(const QString& fp_url, const QString& url, const QString& url_type) const {
+BlockingResult AdBlockManager::askServerIfBlocked(const QString& fp_url,
+                                                  const QString& url,
+                                                  const QString& url_type) const {
   QJsonObject req_obj;
   QByteArray out;
   QElapsedTimer tmr;
 
   req_obj[QSL("fp_url")] = fp_url;
   req_obj[QSL("url")] = url;
-  req_obj[QSL("url_type")] = url_type,
-  req_obj[QSL("filter")] = true;
+  req_obj[QSL("url_type")] = url_type, req_obj[QSL("filter")] = true;
 
   tmr.start();
 
-  auto network_res = NetworkFactory::performNetworkOperation(QSL("http://%1:%2").arg(QHostAddress(QHostAddress::SpecialAddress::LocalHost).toString(),
-                                                                                     QString::number(ADBLOCK_SERVER_PORT)),
-                                                             500,
-                                                             QJsonDocument(req_obj).toJson(),
-                                                             out,
-                                                             QNetworkAccessManager::Operation::PostOperation,
-                                                             { {
-                                                               QSL(HTTP_HEADERS_CONTENT_TYPE).toLocal8Bit(),
-                                                               QSL("application/json").toLocal8Bit() } });
+  auto network_res =
+    NetworkFactory::performNetworkOperation(QSL("http://%1:%2")
+                                              .arg(QHostAddress(QHostAddress::SpecialAddress::LocalHost).toString(),
+                                                   QString::number(ADBLOCK_SERVER_PORT)),
+                                            500,
+                                            QJsonDocument(req_obj).toJson(),
+                                            out,
+                                            QNetworkAccessManager::Operation::PostOperation,
+                                            {{QSL(HTTP_HEADERS_CONTENT_TYPE).toLocal8Bit(),
+                                              QSL("application/json").toLocal8Bit()}});
 
   if (network_res.m_networkError == QNetworkReply::NetworkError::NoError) {
-    qDebugNN << LOGSEC_ADBLOCK
-             << "Query for blocking info to server took "
-             << tmr.elapsed()
-             << " ms.";
+    qDebugNN << LOGSEC_ADBLOCK << "Query for blocking info to server took " << tmr.elapsed() << " ms.";
 
     QJsonObject out_obj = QJsonDocument::fromJson(out).object();
     bool blocking = out_obj[QSL("filter")].toObject()[QSL("match")].toBool();
 
-    return {
-      blocking,
-      blocking
-          ? out_obj[QSL("filter")].toObject()[QSL("filter")].toObject()[QSL("filter")].toString()
-          : QString()
-    };
+    return {blocking,
+            blocking ? out_obj[QSL("filter")].toObject()[QSL("filter")].toObject()[QSL("filter")].toString()
+                     : QString()};
   }
   else {
     throw NetworkException(network_res.m_networkError);
@@ -290,21 +276,19 @@ QString AdBlockManager::askServerForCosmeticRules(const QString& url) const {
 
   tmr.start();
 
-  auto network_res = NetworkFactory::performNetworkOperation(QSL("http://%1:%2").arg(QHostAddress(QHostAddress::SpecialAddress::LocalHost).toString(),
-                                                                                     QString::number(ADBLOCK_SERVER_PORT)),
-                                                             500,
-                                                             QJsonDocument(req_obj).toJson(),
-                                                             out,
-                                                             QNetworkAccessManager::Operation::PostOperation,
-                                                             { {
-                                                               QSL(HTTP_HEADERS_CONTENT_TYPE).toLocal8Bit(),
-                                                               QSL("application/json").toLocal8Bit() } });
+  auto network_res =
+    NetworkFactory::performNetworkOperation(QSL("http://%1:%2")
+                                              .arg(QHostAddress(QHostAddress::SpecialAddress::LocalHost).toString(),
+                                                   QString::number(ADBLOCK_SERVER_PORT)),
+                                            500,
+                                            QJsonDocument(req_obj).toJson(),
+                                            out,
+                                            QNetworkAccessManager::Operation::PostOperation,
+                                            {{QSL(HTTP_HEADERS_CONTENT_TYPE).toLocal8Bit(),
+                                              QSL("application/json").toLocal8Bit()}});
 
   if (network_res.m_networkError == QNetworkReply::NetworkError::NoError) {
-    qDebugNN << LOGSEC_ADBLOCK
-             << "Query for cosmetic rules to server took "
-             << tmr.elapsed()
-             << " ms.";
+    qDebugNN << LOGSEC_ADBLOCK << "Query for cosmetic rules to server took " << tmr.elapsed() << " ms.";
 
     QJsonObject out_obj = QJsonDocument::fromJson(out).object();
 
@@ -316,9 +300,9 @@ QString AdBlockManager::askServerForCosmeticRules(const QString& url) const {
 }
 
 QProcess* AdBlockManager::startServer(int port) {
-  QString temp_server = QDir::toNativeSeparators(IOFactory::getSystemFolder(QStandardPaths::StandardLocation::TempLocation)) +
-                        QDir::separator() +
-                        QSL("adblock-server.js");
+  QString temp_server =
+    QDir::toNativeSeparators(IOFactory::getSystemFolder(QStandardPaths::StandardLocation::TempLocation)) +
+    QDir::separator() + QSL("adblock-server.js");
 
   if (!IOFactory::copyFile(QSL(":/scripts/adblock/adblock-server.js"), temp_server)) {
     qWarningNN << LOGSEC_ADBLOCK << "Failed to copy server file to TEMP.";
@@ -328,12 +312,14 @@ QProcess* AdBlockManager::startServer(int port) {
 
   proc->setProcessChannelMode(QProcess::ProcessChannelMode::ForwardedErrorChannel);
 
-  connect(proc, QOverload<int, QProcess::ExitStatus>::of(&QProcess::finished), this, &AdBlockManager::onServerProcessFinished);
+  connect(proc,
+          QOverload<int, QProcess::ExitStatus>::of(&QProcess::finished),
+          this,
+          &AdBlockManager::onServerProcessFinished);
 
-  qApp->nodejs()->runScript(proc, QDir::toNativeSeparators(temp_server), {
-    QString::number(port),
-    QDir::toNativeSeparators(m_unifiedFiltersFile)
-  });
+  qApp->nodejs()->runScript(proc,
+                            QDir::toNativeSeparators(temp_server),
+                            {QString::number(port), QDir::toNativeSeparators(m_unifiedFiltersFile)});
 
   qDebugNN << LOGSEC_ADBLOCK << "Attempting to start AdBlock server.";
   return proc;
@@ -341,8 +327,10 @@ QProcess* AdBlockManager::startServer(int port) {
 
 void AdBlockManager::killServer() {
   if (m_serverProcess != nullptr) {
-    disconnect(m_serverProcess, QOverload<int, QProcess::ExitStatus>::of(&QProcess::finished),
-               this, &AdBlockManager::onServerProcessFinished);
+    disconnect(m_serverProcess,
+               QOverload<int, QProcess::ExitStatus>::of(&QProcess::finished),
+               this,
+               &AdBlockManager::onServerProcessFinished);
 
     if (m_serverProcess->state() == QProcess::ProcessState::Running) {
       m_serverProcess->kill();
@@ -381,9 +369,7 @@ void AdBlockManager::updateUnifiedFiltersFileAndStartServer() {
       unified_contents = unified_contents.append(QString::fromUtf8(out));
       unified_contents = unified_contents.append('\n');
 
-      qDebugNN << LOGSEC_ADBLOCK
-               << "Downloaded filter list from"
-               << QUOTE_W_SPACE_DOT(filter_list_url);
+      qDebugNN << LOGSEC_ADBLOCK << "Downloaded filter list from" << QUOTE_W_SPACE_DOT(filter_list_url);
     }
     else {
       throw NetworkException(res.m_networkError, tr("failed to download filter list '%1'").arg(filter_list_url));
@@ -394,8 +380,7 @@ void AdBlockManager::updateUnifiedFiltersFileAndStartServer() {
 
   // Save.
   m_unifiedFiltersFile = IOFactory::getSystemFolder(QStandardPaths::StandardLocation::TempLocation) +
-                         QDir::separator() +
-                         QSL("adblock.filters");
+                         QDir::separator() + QSL("adblock.filters");
 
   IOFactory::writeFile(m_unifiedFiltersFile, unified_contents.toUtf8());
 
