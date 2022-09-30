@@ -52,8 +52,7 @@ QString Enclosures::encodeEnclosuresToString(const QList<Enclosure>& enclosures)
       enclosures_str.append(enclosure.m_url.toLocal8Bit().toBase64());
     }
     else {
-      enclosures_str.append(QString(enclosure.m_mimeType.toLocal8Bit().toBase64()) +
-                            ECNLOSURES_INNER_SEPARATOR +
+      enclosures_str.append(QString(enclosure.m_mimeType.toLocal8Bit().toBase64()) + ECNLOSURES_INNER_SEPARATOR +
                             enclosure.m_url.toLocal8Bit().toBase64());
     }
   }
@@ -74,14 +73,17 @@ void Message::sanitize(const Feed* feed, bool fix_future_datetimes) {
   // Sanitize title.
   m_title = m_title
 
-            // Remove non-breaking spaces.
-            .replace(QRegularExpression(QString::fromUtf8(QByteArray("[\xE2\x80\xAF]"))), QSL(" "))
+              // Remove non-breaking spaces.
+              .replace(QRegularExpression(QString::fromUtf8(QByteArray("[\xE2\x80\xAF]"))), QSL(" "))
 
-            // Shrink consecutive whitespaces.
-            .replace(QRegularExpression(QSL("[\\s]{2,}")), QSL(" "))
+              // Shrink consecutive whitespaces.
+              .replace(QRegularExpression(QSL("[\\s]{2,}")), QSL(" "))
 
-            // Remove all newlines and leading white space.
-            .remove(QRegularExpression(QSL("([\\n\\r])|(^\\s)")));
+              // Remove all newlines and leading white space.
+              .remove(QRegularExpression(QSL("([\\n\\r])|(^\\s)")))
+
+              // Remove non-breaking zero-width spaces.
+              .remove(QChar(65279));
 
   // Check if messages contain relative URLs and if they do, then replace them.
   if (m_url.startsWith(QL1S("//"))) {
@@ -150,24 +152,18 @@ QString Message::generateRawAtomContents(const Message& msg) {
              "<updated>%3</updated>"
              "<id>%4</id>"
              "<summary type=\"html\">%5</summary>"
-             "</entry>").arg(msg.m_title,
-                             msg.m_url,
-                             msg.m_created.toUTC().toString(QSL("yyyy-MM-ddThh:mm:ss")),
-                             msg.m_url,
-                             msg.m_contents.toHtmlEscaped(),
-                             msg.m_author);
+             "</entry>")
+    .arg(msg.m_title,
+         msg.m_url,
+         msg.m_created.toUTC().toString(QSL("yyyy-MM-ddThh:mm:ss")),
+         msg.m_url,
+         msg.m_contents.toHtmlEscaped(),
+         msg.m_author);
 }
 
 QDataStream& operator<<(QDataStream& out, const Message& my_obj) {
-  out << my_obj.m_accountId
-      << my_obj.m_customHash
-      << my_obj.m_customId
-      << my_obj.m_feedId
-      << my_obj.m_id
-      << my_obj.m_isImportant
-      << my_obj.m_isRead
-      << my_obj.m_isDeleted
-      << my_obj.m_score;
+  out << my_obj.m_accountId << my_obj.m_customHash << my_obj.m_customId << my_obj.m_feedId << my_obj.m_id
+      << my_obj.m_isImportant << my_obj.m_isRead << my_obj.m_isDeleted << my_obj.m_score;
 
   return out;
 }
