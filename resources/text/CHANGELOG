@@ -1,3 +1,16 @@
+4.2.5
+-----
+
+Added:
+* RSS Guard now can use super fast feed/article refresh rates. At this point it is possible to set refresh interval even to 1 second to allow super fast checking for content changes. (#723)
+
+Fixed:
+* Newspaper mode caused some GUI glitches. (#810)
+* Feedly crashed whole application when performing folder/feed synchronization. (#807)
+* Some specific feeds are faulty but some adjustments were made to make RSS/ATOM parsing more loose. (#805)
+* Fixed HTML/plain article content auto-detection for some specific HTML cases. (#792)
+* Lessened severity of some debug messages. (#804)
+
 4.2.4
 -----
 
