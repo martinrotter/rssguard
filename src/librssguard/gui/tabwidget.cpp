@@ -81,8 +81,8 @@ void TabWidget::showDownloadManager() {
 }
 
 void TabWidget::checkTabBarVisibility() {
-  const bool should_be_visible = count() > 1 ||
-                                 !qApp->settings()->value(GROUP(GUI), SETTING(GUI::HideTabBarIfOnlyOneTab)).toBool();
+  const bool should_be_visible =
+    count() > 1 || !qApp->settings()->value(GROUP(GUI), SETTING(GUI::HideTabBarIfOnlyOneTab)).toBool();
 
   if (should_be_visible) {
     setCornerWidget(m_btnMainMenu, Qt::Corner::TopLeftCorner);
@@ -123,8 +123,14 @@ void TabWidget::createConnections() {
   connect(tabBar(), &TabBar::tabCloseRequested, this, &TabWidget::closeTab);
   connect(tabBar(), &TabBar::tabMoved, this, &TabWidget::fixContentsAfterMove);
 
-  connect(feedMessageViewer()->messagesView(), &MessagesView::openMessagesInNewspaperView, this, &TabWidget::addNewspaperView);
-  connect(feedMessageViewer()->feedsView(), &FeedsView::openMessagesInNewspaperView, this, &TabWidget::addNewspaperView);
+  connect(feedMessageViewer()->messagesView(),
+          &MessagesView::openMessagesInNewspaperView,
+          this,
+          &TabWidget::addNewspaperView);
+  connect(feedMessageViewer()->feedsView(),
+          &FeedsView::openMessagesInNewspaperView,
+          this,
+          &TabWidget::addNewspaperView);
 }
 
 void TabWidget::initializeTabs() {
@@ -195,13 +201,11 @@ void TabWidget::closeCurrentTab() {
 
 int TabWidget::addNewspaperView(RootItem* root, const QList<Message>& messages) {
   WebBrowser* browser = new WebBrowser(nullptr, this);
+
   int index = addTab(browser,
                      qApp->icons()->fromTheme(QSL("format-justify-fill")),
                      tr("Newspaper view"),
                      TabBar::TabType::Closable);
-
-  // NOTE: Do not bring "newspaper" tabs to front anymore.
-  //setCurrentIndex(index);
 
   QTimer::singleShot(300, browser, [browser, root, messages]() {
     browser->loadMessages(messages, root);
@@ -232,14 +236,16 @@ int TabWidget::addBrowser(bool move_after_current, bool make_active, WebBrowser*
 
   if (move_after_current) {
     // Insert web browser after current tab.
-    final_index = insertTab(currentIndex() + 1, browser, qApp->icons()->fromTheme(QSL("text-html")),
-                            browser_tab_name, TabBar::TabType::Closable);
+    final_index = insertTab(currentIndex() + 1,
+                            browser,
+                            qApp->icons()->fromTheme(QSL("text-html")),
+                            browser_tab_name,
+                            TabBar::TabType::Closable);
   }
   else {
     // Add new browser as the last tab.
-    final_index = addTab(browser, qApp->icons()->fromTheme(QSL("text-html")),
-                         browser_tab_name,
-                         TabBar::TabType::Closable);
+    final_index =
+      addTab(browser, qApp->icons()->fromTheme(QSL("text-html")), browser_tab_name, TabBar::TabType::Closable);
   }
 
   // Make connections.

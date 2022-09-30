@@ -152,8 +152,6 @@ void WebBrowser::loadMessages(const QList<Message>& messages, RootItem* root) {
   if (!m_root.isNull()) {
     m_searchWidget->hide();
     m_webView->loadMessages(messages, root);
-
-    show();
   }
 }
 
