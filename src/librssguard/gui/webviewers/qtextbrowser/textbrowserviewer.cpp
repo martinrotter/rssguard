@@ -88,7 +88,7 @@ PreparedHtml TextBrowserViewer::prepareHtmlForMessage(const QList<Message>& mess
   PreparedHtml html;
 
   for (const Message& message : messages) {
-    bool is_plain = !Qt::mightBeRichText(message.m_contents.simplified());
+    bool is_plain = !TextFactory::couldBeHtml(message.m_contents);
 
     // Add title.
     if (!message.m_url.isEmpty()) {
