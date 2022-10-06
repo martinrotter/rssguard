@@ -2837,7 +2837,7 @@ You have to restart manually.</source>
     <message>
         <location filename="../src/librssguard/services/standard/gui/formstandardimportexport.ui" line="85"/>
         <source>Export icons</source>
-        <translation type="unfinished"/>
+        <translation>Экспорт иконок</translation>
     </message>
     <message>
         <location filename="../src/librssguard/services/standard/gui/formstandardimportexport.ui" line="151"/>
@@ -3990,7 +3990,7 @@ Login tokens expiration: %2</source>
     <message>
         <location filename="../src/librssguard/core/messagesmodel.cpp" line="269"/>
         <source>Name of feed of the article.</source>
-        <translation type="unfinished"/>
+        <translation>Название канала статьи.</translation>
     </message>
     <message>
         <location filename="../src/librssguard/core/messagesmodel.cpp" line="270"/>
@@ -4123,12 +4123,12 @@ Login tokens expiration: %2</source>
     <message>
         <location filename="../src/librssguard/gui/toolbars/messagestoolbar.cpp" line="221"/>
         <source>Show articles with attachments</source>
-        <translation type="unfinished"/>
+        <translation>Показать статьи с вложениями</translation>
     </message>
     <message>
         <location filename="../src/librssguard/gui/toolbars/messagestoolbar.cpp" line="226"/>
         <source>Show articles with some score</source>
-        <translation type="unfinished"/>
+        <translation>Показать статьи с некоторым количеством баллов</translation>
     </message>
     <message>
         <location filename="../src/librssguard/gui/toolbars/messagestoolbar.cpp" line="231"/>
@@ -4270,7 +4270,7 @@ Login tokens expiration: %2</source>
         <location filename="../src/librssguard/network-web/networkfactory.cpp" line="141"/>
         <source>unknown error (%1)</source>
         <extracomment>Network status.</extracomment>
-        <translation type="unfinished"/>
+        <translation>неизвестная ошибка (%1)</translation>
     </message>
     <message>
         <location filename="../src/librssguard/network-web/networkfactory.cpp" line="125"/>
@@ -4718,7 +4718,7 @@ Login tokens expiration: %2</source>
     <message>
         <location filename="../src/librssguard/services/owncloud/owncloudserviceroot.cpp" line="129"/>
         <source>cannot get list of feeds, network error &apos;%1&apos;</source>
-        <translation type="unfinished"/>
+        <translation>не удается получить список каналов, ошибка сети &apos;%1&apos;</translation>
     </message>
 </context>
 <context>
@@ -5246,12 +5246,12 @@ Login tokens expiration: %2</source>
     <message>
         <location filename="../src/librssguard/services/abstract/serviceroot.cpp" line="505"/>
         <source>Error when fetching list of feeds</source>
-        <translation type="unfinished"/>
+        <translation>Ошибка при получении списка каналов</translation>
     </message>
     <message>
         <location filename="../src/librssguard/services/abstract/serviceroot.cpp" line="506"/>
         <source>Feeds &amp; categories for account &apos;%1&apos; were not fetched, error: %2</source>
-        <translation type="unfinished"/>
+        <translation>Каналы и категории для учетной записи &apos;%1&apos; не были получены, ошибка: %2</translation>
     </message>
 </context>
 <context>
@@ -5311,7 +5311,7 @@ File filter for external e-mail selection dialog.</extracomment>
     <message>
         <location filename="../src/librssguard/gui/settings/settingsbrowsermail.ui" line="27"/>
         <source>Do not accept any incoming cookies</source>
-        <translation type="unfinished"/>
+        <translation>Не принимать входящие файлы cookie</translation>
     </message>
     <message>
         <location filename="../src/librssguard/gui/settings/settingsbrowsermail.ui" line="35"/>
@@ -5456,7 +5456,7 @@ File filter for external e-mail selection dialog.</extracomment>
     <message>
         <location filename="../src/librssguard/gui/settings/settingsbrowsermail.h" line="46"/>
         <source>Network &amp; web &amp; tools</source>
-        <translation type="unfinished"/>
+        <translation>Сеть, Интернет и инструменты</translation>
     </message>
 </context>
 <context>
@@ -5695,7 +5695,7 @@ Authors of this application are NOT responsible for lost data.</source>
     <message>
         <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.cpp" line="53"/>
         <source> = unchanged size</source>
-        <translation type="unfinished"/>
+        <translation>= неизменный размер</translation>
     </message>
     <message>
         <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="21"/>
@@ -5800,7 +5800,7 @@ Authors of this application are NOT responsible for lost data.</source>
     <message>
         <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="291"/>
         <source>Internal article viewer</source>
-        <translation type="unfinished"/>
+        <translation>Внутренний просмотрщик статей</translation>
     </message>
     <message>
         <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="297"/>
@@ -5825,7 +5825,7 @@ Authors of this application are NOT responsible for lost data.</source>
     <message>
         <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="306"/>
         <source>Limit height of pictures</source>
-        <translation type="unfinished"/>
+        <translation>Ограничить высоту изображений</translation>
     </message>
     <message>
         <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="391"/>
@@ -6202,7 +6202,7 @@ Also, relaunch &quot;Settings&quot; dialog after you install Node.js.</source>
     <message>
         <location filename="../src/librssguard/gui/settings/settingsnodejs.cpp" line="135"/>
         <source>You cannot choose file, you have to choose FOLDER.</source>
-        <translation type="unfinished"/>
+        <translation>Вы не можете выбрать файл, вы должны выбрать ПАПКУ.</translation>
     </message>
     <message>
         <location filename="../src/librssguard/gui/settings/settingsnodejs.cpp" line="139"/>
@@ -6947,7 +6947,7 @@ Unread news: %2</source>
     <message>
         <location filename="../src/librssguard/gui/webviewers/qtextbrowser/textbrowserviewer.cpp" line="336"/>
         <source>Enable external resources</source>
-        <translation type="unfinished"/>
+        <translation>Включить внешние ресурсы</translation>
     </message>
     <message>
         <location filename="../src/librssguard/gui/webviewers/qtextbrowser/textbrowserviewer.cpp" line="339"/>
@@ -7364,7 +7364,7 @@ Last login on: %4</source>
     <message>
         <location filename="../src/librssguard/services/tt-rss/ttrssserviceroot.cpp" line="409"/>
         <source>cannot get list of feeds, network error &apos;%1&apos;</source>
-        <translation type="unfinished"/>
+        <translation>не удается получить список каналов, ошибка сети &apos;%1&apos;</translation>
     </message>
 </context>
 <context>

@@ -50,7 +50,7 @@ Error: %1</source>
         <location filename="../src/librssguard/network-web/adblock/adblockdialog.cpp" line="92"/>
         <location filename="../src/librssguard/network-web/adblock/adblockdialog.cpp" line="116"/>
         <source>ERROR!</source>
-        <translation type="unfinished"/>
+        <translation>KLAIDA!</translation>
     </message>
     <message>
         <location filename="../src/librssguard/network-web/adblock/adblockdialog.cpp" line="39"/>
@@ -58,7 +58,7 @@ Error: %1</source>
         <location filename="../src/librssguard/network-web/adblock/adblockdialog.cpp" line="106"/>
         <location filename="../src/librssguard/network-web/adblock/adblockdialog.cpp" line="107"/>
         <source>No additional info.</source>
-        <translation type="unfinished"/>
+        <translation>Nėra papildomos informacijos.</translation>
     </message>
     <message>
         <location filename="../src/librssguard/network-web/adblock/adblockdialog.cpp" line="101"/>
@@ -271,7 +271,7 @@ versijos ypatybėmis, spusteldami šį pranešimą.</translation>
     <message>
         <location filename="../src/librssguard/gui/reusable/baselineedit.cpp" line="13"/>
         <source>Show/hide the password</source>
-        <translation type="unfinished"/>
+        <translation>Rodyti/slėpti slaptažodį</translation>
     </message>
 </context>
 <context>
@@ -312,7 +312,7 @@ versijos ypatybėmis, spusteldami šį pranešimą.</translation>
     <message>
         <location filename="../src/librssguard/database/databasecleaner.cpp" line="25"/>
         <source>Removing read articles...</source>
-        <translation type="unfinished"/>
+        <translation>Šalinami skaityti straipsniai...</translation>
     </message>
     <message>
         <location filename="../src/librssguard/database/databasecleaner.cpp" line="30"/>
@@ -322,7 +322,7 @@ versijos ypatybėmis, spusteldami šį pranešimą.</translation>
     <message>
         <location filename="../src/librssguard/database/databasecleaner.cpp" line="45"/>
         <source>Removing old articles...</source>
-        <translation type="unfinished"/>
+        <translation>Šalinami seni straipsniai...</translation>
     </message>
     <message>
         <location filename="../src/librssguard/database/databasecleaner.cpp" line="50"/>
@@ -345,7 +345,7 @@ versijos ypatybėmis, spusteldami šį pranešimą.</translation>
     <message>
         <location filename="../src/librssguard/database/databasefactory.cpp" line="61"/>
         <source>Cannot connect to database</source>
-        <translation type="unfinished"/>
+        <translation>Nepavyksta prisijungti prie duomenų bazės</translation>
     </message>
     <message>
         <location filename="../src/librssguard/database/databasefactory.cpp" line="62"/>
@@ -363,7 +363,7 @@ versijos ypatybėmis, spusteldami šį pranešimą.</translation>
     <message>
         <location filename="../src/librssguard/gui/reusable/discoverfeedsbutton.cpp" line="79"/>
         <source>Feeds were detected, but no suitable accounts are configured.</source>
-        <translation type="unfinished"/>
+        <translation>Buvo aptikti kanalai, tačiau nėra sukonfigūruota tinkamų paskyrų.</translation>
     </message>
     <message>
         <location filename="../src/librssguard/gui/reusable/discoverfeedsbutton.cpp" line="32"/>
@@ -378,7 +378,7 @@ versijos ypatybėmis, spusteldami šį pranešimą.</translation>
     <message>
         <location filename="../src/librssguard/gui/reusable/discoverfeedsbutton.cpp" line="55"/>
         <source>Not supported by account</source>
-        <translation type="unfinished"/>
+        <translation>Paskyra to nepalaiko</translation>
     </message>
 </context>
 <context>
@@ -618,7 +618,7 @@ Spustelėkite čia, kad atvertumėte virškatalogį.</translation>
     <message>
         <location filename="../src/librssguard/services/gmail/gui/emailrecipientcontrol.cpp" line="27"/>
         <source>E-mail address</source>
-        <translation type="unfinished"/>
+        <translation>El. pašto adresas</translation>
     </message>
 </context>
 <context>
@@ -865,7 +865,7 @@ Status: %3</source>
     <message>
         <location filename="../src/librssguard/services/feedly/feedlynetwork.cpp" line="696"/>
         <source>Feedly: authentication error</source>
-        <translation type="unfinished"/>
+        <translation>Feedly: atpažinimo klaida</translation>
     </message>
     <message>
         <location filename="../src/librssguard/services/feedly/feedlynetwork.cpp" line="697"/>
@@ -875,7 +875,7 @@ Status: %3</source>
     <message>
         <location filename="../src/librssguard/services/feedly/feedlynetwork.cpp" line="711"/>
         <source>Feedly: authorization denied</source>
-        <translation type="unfinished"/>
+        <translation>Feedly: prieigos teisių suteikimas atmestas</translation>
     </message>
     <message>
         <location filename="../src/librssguard/services/feedly/feedlynetwork.cpp" line="712"/>
@@ -1062,7 +1062,7 @@ arba šis funkcionalumas dar nėra įgyvendintas.</translation>
         <location filename="../src/librssguard/gui/feedsview.cpp" line="134"/>
         <location filename="../src/librssguard/gui/feedsview.cpp" line="152"/>
         <source>Not supported by account</source>
-        <translation type="unfinished"/>
+        <translation>Paskyra to nepalaiko</translation>
     </message>
 </context>
 <context>
@@ -1514,22 +1514,22 @@ arba šis funkcionalumas dar nėra įgyvendintas.</translation>
     <message>
         <location filename="../src/librssguard/gui/dialogs/formdatabasecleanup.ui" line="26"/>
         <source>Optimize database file</source>
-        <translation type="unfinished"/>
+        <translation>Optimizuoti duomenų bazės failą</translation>
     </message>
     <message>
         <location filename="../src/librssguard/gui/dialogs/formdatabasecleanup.ui" line="36"/>
         <source>Remove all read articles</source>
-        <translation type="unfinished"/>
+        <translation>Šalinti visus skaitytus straipsnius</translation>
     </message>
     <message>
         <location filename="../src/librssguard/gui/dialogs/formdatabasecleanup.ui" line="53"/>
         <source>Remove all articles from recycle bin</source>
-        <translation type="unfinished"/>
+        <translation>Šalinti visus straipsnius iš šiukšlinės</translation>
     </message>
     <message>
         <location filename="../src/librssguard/gui/dialogs/formdatabasecleanup.ui" line="63"/>
         <source>Remove all articles older than</source>
-        <translation type="unfinished"/>
+        <translation>Šalinti visus straipsnius, kurie senesni nei</translation>
     </message>
     <message>
         <location filename="../src/librssguard/gui/dialogs/formdatabasecleanup.ui" line="86"/>
@@ -1678,7 +1678,7 @@ arba šis funkcionalumas dar nėra įgyvendintas.</translation>
     <message>
         <location filename="../src/librssguard/services/abstract/gui/formfeeddetails.ui" line="72"/>
         <source>Disable this feed</source>
-        <translation type="unfinished"/>
+        <translation>Išjungti šį kanalą</translation>
     </message>
 </context>
 <context>
@@ -1701,12 +1701,12 @@ arba šis funkcionalumas dar nėra įgyvendintas.</translation>
     <message>
         <location filename="../src/librssguard/gui/dialogs/formmain.cpp" line="78"/>
         <source>Open main menu</source>
-        <translation type="unfinished"/>
+        <translation>Atverti pagrindinį men</translation>
     </message>
     <message>
         <location filename="../src/librssguard/gui/dialogs/formmain.cpp" line="86"/>
         <source>Open &amp;main menu</source>
-        <translation type="unfinished"/>
+        <translation>Atverti pagri&amp;ndinį meniu</translation>
     </message>
     <message>
         <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="53"/>
@@ -1736,22 +1736,22 @@ arba šis funkcionalumas dar nėra įgyvendintas.</translation>
     <message>
         <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="103"/>
         <source>F&amp;eeds</source>
-        <translation type="unfinished"/>
+        <translation>&amp;Kanalai</translation>
     </message>
     <message>
         <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="107"/>
         <source>&amp;Add item</source>
-        <translation type="unfinished"/>
+        <translation>&amp;Pridėti elementą</translation>
     </message>
     <message>
         <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="112"/>
         <source>&amp;Move</source>
-        <translation type="unfinished"/>
+        <translation>Perke&amp;lti</translation>
     </message>
     <message>
         <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="151"/>
         <source>Art&amp;icles</source>
-        <translation type="unfinished"/>
+        <translation>S&amp;traipsniai</translation>
     </message>
     <message>
         <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="174"/>
@@ -2071,7 +2071,7 @@ arba šis funkcionalumas dar nėra įgyvendintas.</translation>
     <message>
         <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="613"/>
         <source>Switch layout</source>
-        <translation type="unfinished"/>
+        <translation>Perjungti išdėstymą</translation>
     </message>
     <message>
         <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="621"/>
@@ -2106,12 +2106,12 @@ arba šis funkcionalumas dar nėra įgyvendintas.</translation>
     <message>
         <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="667"/>
         <source>&amp;Add account</source>
-        <translation type="unfinished"/>
+        <translation>&amp;Pridėti paskyrą</translation>
     </message>
     <message>
         <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="675"/>
         <source>&amp;Restore articles</source>
-        <translation type="unfinished"/>
+        <translation>A&amp;tkurti straipsnius</translation>
     </message>
     <message>
         <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="683"/>
@@ -2126,7 +2126,7 @@ arba šis funkcionalumas dar nėra įgyvendintas.</translation>
     <message>
         <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="699"/>
         <source>Next &amp;unread article</source>
-        <translation type="unfinished"/>
+        <translation>Kitas &amp;neskaitytas straipsnis</translation>
     </message>
     <message>
         <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="713"/>
@@ -2157,7 +2157,7 @@ arba šis funkcionalumas dar nėra įgyvendintas.</translation>
     <message>
         <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="755"/>
         <source>New browser tab</source>
-        <translation type="unfinished"/>
+        <translation>Nauja naršyklės kortelė</translation>
     </message>
     <message>
         <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="763"/>
@@ -2182,7 +2182,7 @@ arba šis funkcionalumas dar nėra įgyvendintas.</translation>
     <message>
         <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="786"/>
         <source>&amp;Enable article preview</source>
-        <translation type="unfinished"/>
+        <translation>Į&amp;jungti straipsnio peržiūrą</translation>
     </message>
     <message>
         <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="791"/>
