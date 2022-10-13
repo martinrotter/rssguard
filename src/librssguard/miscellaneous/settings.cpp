@@ -61,9 +61,9 @@ DVALUE(bool) AdBlock::AdBlockEnabledDef = false;
 
 DKEY AdBlock::FilterLists = "filter_lists";
 DVALUE(QStringList)
-AdBlock::FilterListsDef = {QSL("https://easylist.to/easylist/easylist.txt"),
-                           QSL("https://easylist.to/easylist/easyprivacy.txt"),
-                           QSL("https://easylist.to/easylist/fanboy-social.txt")};
+AdBlock::FilterListsDef = {QSL("https://secure.fanboy.co.nz/easylist.txt"),
+                           QSL("https://secure.fanboy.co.nz/easyprivacy.txt"),
+                           QSL("https://secure.fanboy.co.nz/fanboy-social.txt")};
 
 DKEY AdBlock::CustomFilters = "custom_filters";
 DVALUE(QStringList) AdBlock::CustomFiltersDef = {};
