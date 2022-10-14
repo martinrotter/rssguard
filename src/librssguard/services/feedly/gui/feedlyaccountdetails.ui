@@ -89,7 +89,20 @@
    <item row="7" column="0" colspan="2">
     <widget class="HelpSpoiler" name="m_lblLimitMessagesInfo" native="true"/>
    </item>
-   <item row="8" column="0">
+   <item row="9" column="0" colspan="2">
+    <spacer name="verticalSpacer">
+     <property name="orientation">
+      <enum>Qt::Vertical</enum>
+     </property>
+     <property name="sizeHint" stdset="0">
+      <size>
+       <width>400</width>
+       <height>86</height>
+      </size>
+     </property>
+    </spacer>
+   </item>
+   <item row="8" column="0" colspan="2">
     <layout class="QFormLayout" name="formLayout_2">
      <item row="0" column="0">
       <widget class="QPushButton" name="m_btnTestSetup">
@@ -106,19 +119,6 @@
       </widget>
      </item>
     </layout>
-   </item>
-   <item row="9" column="0" colspan="2">
-    <spacer name="verticalSpacer">
-     <property name="orientation">
-      <enum>Qt::Vertical</enum>
-     </property>
-     <property name="sizeHint" stdset="0">
-      <size>
-       <width>400</width>
-       <height>86</height>
-      </size>
-     </property>
-    </spacer>
    </item>
   </layout>
  </widget>
