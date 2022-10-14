@@ -19,25 +19,19 @@ class QAction;
 // NOTE: This class is derived to add functionality for
 // all other non-root items of FeedsModel.
 class RSSGUARD_DLLSPEC RootItem : public QObject {
-  Q_OBJECT
+    Q_OBJECT
 
-  // Added for message filtering with labels.
-  Q_PROPERTY(QString title READ title)
-  Q_PROPERTY(int id READ id)
-  Q_PROPERTY(QString customId READ customId)
+    // Added for message filtering with labels.
+    Q_PROPERTY(QString title READ title)
+    Q_PROPERTY(int id READ id)
+    Q_PROPERTY(QString customId READ customId)
 
   public:
-    enum class ReadStatus {
-      Unread = 0,
-      Read = 1
-    };
+    enum class ReadStatus { Unread = 0, Read = 1 };
 
     // Holds statuses for messages
     // to be switched importance (starred).
-    enum class Importance {
-      NotImportant = 0,
-      Important = 1
-    };
+    enum class Importance { NotImportant = 0, Important = 1 };
 
     // Describes the kind of the item.
     enum class Kind {
@@ -119,6 +113,8 @@ class RSSGUARD_DLLSPEC RootItem : public QObject {
     int childCount() const;
     void appendChild(RootItem* child);
     QList<RootItem*> childItems() const;
+    QList<RootItem*>& childItems();
+
     void clearChildren();
     void setChildItems(const QList<RootItem*>& child_items);
 
@@ -251,6 +247,10 @@ inline void RootItem::appendChild(RootItem* child) {
 }
 
 inline QList<RootItem*> RootItem::childItems() const {
+  return m_childItems;
+}
+
+inline QList<RootItem*>& RootItem::childItems() {
   return m_childItems;
 }
 

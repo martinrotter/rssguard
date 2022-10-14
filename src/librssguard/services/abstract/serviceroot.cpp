@@ -260,17 +260,6 @@ bool ServiceRoot::cleanFeeds(const QList<Feed*>& items, bool clean_read_only) {
   }
 }
 
-void ServiceRoot::storeNewFeedTree(RootItem* root) {
-  try {
-    DatabaseQueries::storeAccountTree(qApp->database()->driver()->connection(metaObject()->className()),
-                                      root,
-                                      accountId());
-  }
-  catch (const ApplicationException& ex) {
-    qFatal("Cannot store account tree: '%s'.", qPrintable(ex.message()));
-  }
-}
-
 void ServiceRoot::removeLeftOverMessages() {
   QSqlDatabase database = qApp->database()->driver()->connection(metaObject()->className());
 
@@ -379,12 +368,20 @@ QMap<QString, QVariantMap> ServiceRoot::storeCustomFeedsData() {
     QVariantMap feed_custom_data;
 
     // TODO: This could potentially call Feed::customDatabaseData() and append it
-    // to this map and also subsequently restore.
+    // to this map and also subsequently restore, but the method is at this point
+    // not really used by any syncable plugin.
     feed_custom_data.insert(QSL("auto_update_interval"), feed->autoUpdateInterval());
     feed_custom_data.insert(QSL("auto_update_type"), int(feed->autoUpdateType()));
     feed_custom_data.insert(QSL("msg_filters"), QVariant::fromValue(feed->messageFilters()));
     feed_custom_data.insert(QSL("is_off"), feed->isSwitchedOff());
     feed_custom_data.insert(QSL("open_articles_directly"), feed->openArticlesDirectly());
+
+    // NOTE: These are here specifically to be able to restore custom sort order.
+    // Otherwise the information is lost when list of feeds/folders is refreshed from remote
+    // service.
+    feed_custom_data.insert(QSL("sort_order"), feed->sortOrder());
+    feed_custom_data.insert(QSL("custom_id"), feed->customId());
+    feed_custom_data.insert(QSL("category"), feed->parent()->id());
 
     custom_data.insert(feed->customId(), feed_custom_data);
   }
@@ -459,12 +456,17 @@ void ServiceRoot::syncIn() {
     cleanAllItemsFromModel(uses_remote_labels);
     removeOldAccountFromDatabase(false, uses_remote_labels);
 
+    // Re-sort items to accomodate current sort order.
+    resortAccountTree(new_tree, feed_custom_data);
+
     // Restore some local settings to feeds etc.
     restoreCustomFeedsData(feed_custom_data, new_tree->getHashedSubTreeFeeds());
 
     // Model is clean, now store new tree into DB and
     // set primary IDs of the items.
-    storeNewFeedTree(new_tree);
+    DatabaseQueries::storeAccountTree(qApp->database()->driver()->connection(metaObject()->className()),
+                                      new_tree,
+                                      accountId());
 
     // We have new feed, some feeds were maybe removed,
     // so remove left over messages and filter assignments.
@@ -877,6 +879,34 @@ void ServiceRoot::assembleFeeds(const Assignment& feeds) {
     else {
       qWarningNN << LOGSEC_CORE << "Feed" << QUOTE_W_SPACE(feed.second->title()) << "is loose, skipping it.";
     }
+  }
+}
+
+void ServiceRoot::resortAccountTree(RootItem* tree, const QMap<QString, QVariantMap>& custom_data) const {
+  // Iterate tree and rearrange children.
+  QList<RootItem*> traversable_items;
+
+  traversable_items.append(tree);
+
+  while (!traversable_items.isEmpty()) {
+    auto* root = traversable_items.takeFirst();
+    auto& chldr = root->childItems();
+
+    // Sort children so that we are sure that feeds are sorted with sort order
+    // other item types do not matter.
+    std::sort(chldr.begin(), chldr.end(), [&](const RootItem* lhs, const RootItem* rhs) {
+      if (lhs->kind() == RootItem::Kind::Feed && rhs->kind() == RootItem::Kind::Feed) {
+        auto lhs_order = custom_data[lhs->customId()].value(QSL("sort_order")).toInt();
+        auto rhs_order = custom_data[rhs->customId()].value(QSL("sort_order")).toInt();
+
+        return lhs_order < rhs_order;
+      }
+      else {
+        return lhs->kind() < rhs->kind();
+      }
+    });
+
+    traversable_items.append(root->childItems());
   }
 }
 

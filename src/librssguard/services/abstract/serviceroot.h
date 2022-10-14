@@ -28,7 +28,7 @@ class CacheForServiceRoot;
 // NOTE: The root usually contains some core functionality of the
 // service like service account username/password etc.
 class ServiceRoot : public RootItem {
-  Q_OBJECT
+    Q_OBJECT
 
   public:
     enum class LabelOperation {
@@ -41,11 +41,7 @@ class ServiceRoot : public RootItem {
       Synchronised = 8
     };
 
-    enum class BagOfMessages {
-      Read,
-      Unread,
-      Starred
-    };
+    enum class BagOfMessages { Read, Unread, Starred };
 
   public:
     explicit ServiceRoot(RootItem* parent = nullptr);
@@ -70,7 +66,8 @@ class ServiceRoot : public RootItem {
     virtual void setCustomDatabaseData(const QVariantHash& data);
     virtual bool wantsBaggedIdsOfExistingMessages() const;
     virtual void aboutToBeginFeedFetching(const QList<Feed*>& feeds,
-                                          const QHash<QString, QHash<ServiceRoot::BagOfMessages, QStringList>>& stated_messages,
+                                          const QHash<QString, QHash<ServiceRoot::BagOfMessages, QStringList>>&
+                                            stated_messages,
                                           const QHash<QString, QStringList>& tagged_messages);
 
     // Returns list of specific actions for "Add new item" main window menu.
@@ -233,14 +230,12 @@ class ServiceRoot : public RootItem {
     virtual void syncIn();
 
   protected:
-
     // This method should obtain new tree of feed/categories/whatever to perform sync in.
     virtual RootItem* obtainNewTreeForSyncIn() const;
 
     // Removes all messages/categories/feeds which are
     // associated with this account.
     void removeOldAccountFromDatabase(bool delete_messages_too, bool delete_labels_too);
-    void storeNewFeedTree(RootItem* root);
     void cleanAllItemsFromModel(bool clean_labels_too);
     void appendCommonNodes();
 
@@ -278,6 +273,8 @@ class ServiceRoot : public RootItem {
     void itemRemovalRequested(RootItem* item);
 
   private:
+    void resortAccountTree(RootItem* tree, const QMap<QString, QVariantMap>& custom_data) const;
+
     virtual QMap<QString, QVariantMap> storeCustomFeedsData();
     virtual void restoreCustomFeedsData(const QMap<QString, QVariantMap>& data, const QHash<QString, Feed*>& feeds);
 
