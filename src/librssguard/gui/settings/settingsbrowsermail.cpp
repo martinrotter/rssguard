@@ -79,6 +79,14 @@ SettingsBrowserMail::SettingsBrowserMail(Settings* settings, QWidget* parent)
             m_ui->m_btnDeleteTool->setEnabled(current != nullptr);
             m_ui->m_btnEditTool->setEnabled(current != nullptr);
           });
+
+#if !defined(USE_WEBENGINE)
+  // Remove WebEngine tab.
+  m_ui->m_tabBrowserProxy->removeTab(1);
+#else
+  connect(m_ui->m_txtWebEngineChromiumFlags, &QPlainTextEdit::textChanged, this, &SettingsBrowserMail::dirtifySettings);
+  connect(m_ui->m_txtWebEngineChromiumFlags, &QPlainTextEdit::textChanged, this, &SettingsBrowserMail::requireRestart);
+#endif
 }
 
 SettingsBrowserMail::~SettingsBrowserMail() {
@@ -180,6 +188,10 @@ void SettingsBrowserMail::loadSettings() {
   m_ui->m_grpCustomExternalEmail
     ->setChecked(settings()->value(GROUP(Browser), SETTING(Browser::CustomExternalEmailEnabled)).toBool());
 
+  // WebEngine.
+  m_ui->m_txtWebEngineChromiumFlags
+    ->setPlainText(settings()->value(GROUP(Browser), SETTING(Browser::WebEngineChromiumFlags)).toString());
+
   // Load the settings.
   QNetworkProxy::ProxyType selected_proxy_type =
     static_cast<QNetworkProxy::ProxyType>(settings()->value(GROUP(Proxy), SETTING(Proxy::Type)).toInt());
@@ -225,6 +237,11 @@ void SettingsBrowserMail::saveSettings() {
   settings()->setValue(GROUP(Browser),
                        Browser::CustomExternalEmailEnabled,
                        m_ui->m_grpCustomExternalEmail->isChecked());
+
+  // WebEngine.
+  settings()->setValue(GROUP(Browser),
+                       Browser::WebEngineChromiumFlags,
+                       m_ui->m_txtWebEngineChromiumFlags->toPlainText());
 
   auto proxy = m_proxyDetails->proxy();
 

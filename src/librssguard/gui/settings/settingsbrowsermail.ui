@@ -37,6 +37,23 @@
        </item>
       </layout>
      </widget>
+     <widget class="QWidget" name="m_tabWebEngine">
+      <attribute name="title">
+       <string>WebEngine</string>
+      </attribute>
+      <layout class="QFormLayout" name="formLayout_4">
+       <item row="0" column="0">
+        <widget class="QLabel" name="label">
+         <property name="text">
+          <string>Custom &quot;QTWEBENGINE_CHROMIUM_FLAGS&quot; flags</string>
+         </property>
+        </widget>
+       </item>
+       <item row="1" column="0" colspan="2">
+        <widget class="QPlainTextEdit" name="m_txtWebEngineChromiumFlags"/>
+       </item>
+      </layout>
+     </widget>
      <widget class="QWidget" name="m_tabExternalBrowser">
       <attribute name="title">
        <string>External web browser</string>
@@ -362,15 +379,15 @@
  </widget>
  <customwidgets>
   <customwidget>
-   <class>BaseLineEdit</class>
-   <extends>QLineEdit</extends>
-   <header>baselineedit.h</header>
-  </customwidget>
-  <customwidget>
    <class>HelpSpoiler</class>
    <extends>QWidget</extends>
    <header>helpspoiler.h</header>
    <container>1</container>
+  </customwidget>
+  <customwidget>
+   <class>BaseLineEdit</class>
+   <extends>QLineEdit</extends>
+   <header>baselineedit.h</header>
   </customwidget>
  </customwidgets>
  <tabstops>

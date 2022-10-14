@@ -70,6 +70,14 @@ Application::Application(const QString& id, int& argc, char** argv, const QStrin
   m_mainForm = nullptr;
   m_trayIcon = nullptr;
   m_settings = Settings::setupSettings(this);
+
+#if defined(USE_WEBENGINE)
+  if (!m_forcedNoWebEngine && qgetenv("QTWEBENGINE_CHROMIUM_FLAGS").isEmpty()) {
+    qputenv("QTWEBENGINE_CHROMIUM_FLAGS",
+            settings()->value(GROUP(Browser), SETTING(Browser::WebEngineChromiumFlags)).toString().toLocal8Bit());
+  }
+#endif
+
   m_nodejs = new NodeJs(m_settings, this);
   m_webFactory = new WebFactory(this);
   m_system = new SystemFactory(this);

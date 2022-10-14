@@ -407,6 +407,9 @@ DKEY Notifications::ID = "notifications";
 // Web browser.
 DKEY Browser::ID = "browser";
 
+DKEY Browser::WebEngineChromiumFlags = "webengine_chromium_flags";
+DVALUE(QString) Browser::WebEngineChromiumFlagsDef = QSL("--enable-smooth-scrolling");
+
 DKEY Browser::OpenLinksInExternalBrowserRightAway = "open_link_externally_wo_confirmation";
 DVALUE(bool) Browser::OpenLinksInExternalBrowserRightAwayDef = false;
 
