@@ -16,7 +16,7 @@ import xml.etree.ElementTree as ET
 
 # Globals.
 atom_ns = {"atom": "http://www.w3.org/2005/Atom"}
-article_parser_url = "https://us-central1-technews-251304.cloudfunctions.net/article-parser?url="
+article_parser_url = "https://demos.pwshub.com/article-parser?url="
 
 
 # Methods.
