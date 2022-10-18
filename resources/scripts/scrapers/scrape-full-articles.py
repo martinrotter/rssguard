@@ -51,7 +51,8 @@ def process_article(article, is_rss, is_atom):
         else:
           at_con.text = scraped_article
   except Exception as e:
-    print(e)
+    pass
+    #print(e)
 
 
 def main():
