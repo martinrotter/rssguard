@@ -16,8 +16,7 @@ import xml.etree.ElementTree as ET
 
 # Globals.
 atom_ns = {"atom": "http://www.w3.org/2005/Atom"}
-article_parser_url = "https://demos.pwshub.com/article-parser?url="
-
+article_parser_url = "https://extract-article.deta.dev/?url="
 
 # Methods.
 def process_article(article, is_rss, is_atom):
@@ -59,7 +58,7 @@ def main():
 
   sys.stdin.reconfigure(encoding="utf-8")
 
-  #feed_data = urllib.request.urlopen("https://dilbert.com/feed").read()
+  #feed_data = urllib.request.urlopen("http://feeds.hanselman.com/ScottHanselman").read()
   feed_data = sys.stdin.read()
   feed_document = ET.fromstring(feed_data)
 
@@ -89,7 +88,7 @@ def main():
     for article in feed_articles:
       process_article(article, is_rss, is_atom)
 
-  print(ET.tostring(feed_document, encoding="unicode"))
+  print(ET.tostring(feed_document).decode())
 
 
 if __name__ == '__main__':
