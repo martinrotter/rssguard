@@ -20,9 +20,10 @@ void DatabaseDriver::updateDatabaseSchema(QSqlQuery& query,
 
   while (source_db_schema_version != current_version) {
     const QStringList statements = prepareScript(APP_SQL_PATH,
-                                                 QSL(APP_DB_UPDATE_FILE_PATTERN).arg(ddlFilePrefix(),
-                                                                                     QString::number(source_db_schema_version),
-                                                                                     QString::number(source_db_schema_version + 1)),
+                                                 QSL(APP_DB_UPDATE_FILE_PATTERN)
+                                                   .arg(ddlFilePrefix(),
+                                                        QString::number(source_db_schema_version),
+                                                        QString::number(source_db_schema_version + 1)),
                                                  database_name);
 
     for (const QString& statement : statements) {
@@ -32,10 +33,7 @@ void DatabaseDriver::updateDatabaseSchema(QSqlQuery& query,
     }
 
     // Increment the version.
-    qDebugNN << LOGSEC_DB
-             << "Updating database schema "
-             << QUOTE_W_SPACE(source_db_schema_version)
-             << "->"
+    qDebugNN << LOGSEC_DB << "Updating database schema " << QUOTE_W_SPACE(source_db_schema_version) << "->"
              << QUOTE_W_SPACE_DOT(source_db_schema_version + 1);
 
     source_db_schema_version++;
@@ -46,8 +44,8 @@ void DatabaseDriver::updateDatabaseSchema(QSqlQuery& query,
 
 void DatabaseDriver::setSchemaVersion(QSqlQuery& query, int new_schema_version, bool empty_table) {
   if (!query.prepare(empty_table
-                     ? QSL("INSERT INTO Information VALUES ('schema_version', :schema_version);")
-                     : QSL("UPDATE Information SET inf_value = :schema_version WHERE inf_key = 'schema_version';"))) {
+                       ? QSL("INSERT INTO Information VALUES ('schema_version', :schema_version);")
+                       : QSL("UPDATE Information SET inf_value = :schema_version WHERE inf_key = 'schema_version';"))) {
     throw ApplicationException(query.lastError().text());
   }
 
@@ -73,7 +71,7 @@ QStringList DatabaseDriver::prepareScript(const QString& base_sql_folder,
   for (int i = 0; i < new_statements.size(); i++) {
     if (new_statements.at(i).startsWith(QSL(APP_DB_INCLUDE_PLACEHOLDER))) {
       // We include another file.
-      QString included_file_name = new_statements.at(i).mid(QSL(APP_DB_INCLUDE_PLACEHOLDER).size() + 1);
+      QString included_file_name = new_statements.at(i).mid(QSL(APP_DB_INCLUDE_PLACEHOLDER).size() + 1).simplified();
 
       QString included_file = base_sql_folder + QDir::separator() + included_file_name;
       QString included_sql_script = QString::fromUtf8(IOFactory::readFile(included_file));

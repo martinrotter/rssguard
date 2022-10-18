@@ -110,7 +110,7 @@ void Message::sanitize(const Feed* feed, bool fix_future_datetimes) {
 }
 
 Message Message::fromSqlRecord(const QSqlRecord& record, bool* result) {
-  if (record.count() != MSG_DB_HAS_ENCLOSURES + 1) {
+  if (record.count() != MSG_DB_LABELS + 1) {
     if (result != nullptr) {
       *result = false;
     }

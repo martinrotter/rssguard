@@ -826,6 +826,7 @@ void MessagesView::adjustColumns() {
     hideColumn(MSG_DB_FEED_CUSTOM_ID_INDEX);
     hideColumn(MSG_DB_FEED_TITLE_INDEX);
     hideColumn(MSG_DB_HAS_ENCLOSURES);
+    hideColumn(MSG_DB_LABELS);
   }
 }
 

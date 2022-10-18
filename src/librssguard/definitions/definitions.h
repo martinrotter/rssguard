@@ -255,6 +255,7 @@
 #define MSG_DB_CUSTOM_HASH_INDEX 15
 #define MSG_DB_FEED_TITLE_INDEX 16
 #define MSG_DB_HAS_ENCLOSURES 17
+#define MSG_DB_LABELS 18
 
 // Indexes of columns as they are DEFINED IN THE TABLE for CATEGORIES.
 #define CAT_DB_ID_INDEX 0
