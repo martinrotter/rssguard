@@ -44,9 +44,14 @@ def process_article(article, is_rss, is_atom):
       if is_rss:
         article.find("description").text = scraped_article
       elif is_atom:
-        article.find("atom:content", atom_ns).text = scraped_article
-  except:
-    pass
+        at_con = article.find("atom:content", atom_ns)
+
+        if at_con is None:
+          article.find("atom:summary", atom_ns).text = scraped_article
+        else:
+          at_con.text = scraped_article
+  except Exception as e:
+    print(e)
 
 
 def main():
