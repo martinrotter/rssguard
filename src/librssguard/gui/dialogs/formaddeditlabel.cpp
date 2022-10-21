@@ -21,14 +21,14 @@ FormAddEditLabel::FormAddEditLabel(QWidget* parent) : QDialog(parent), m_editabl
       m_ui.m_txtName->setStatus(LineEditWithStatus::StatusType::Ok, tr("Perfect!"));
     }
   });
-
-  m_ui.m_txtName->lineEdit()->setText(tr("Hot stuff"));
-  m_ui.m_txtName->lineEdit()->setFocus();
 }
 
 Label* FormAddEditLabel::execForAdd() {
   GuiUtilities::applyDialogProperties(*this, qApp->icons()->fromTheme(QSL("tag-new")), tr("Create new label"));
+
   m_ui.m_btnColor->setRandomColor();
+  m_ui.m_txtName->lineEdit()->setText(tr("Hot stuff"));
+  m_ui.m_txtName->setFocus();
 
   auto exit_code = exec();
 
@@ -41,11 +41,14 @@ Label* FormAddEditLabel::execForAdd() {
 }
 
 bool FormAddEditLabel::execForEdit(Label* lbl) {
-  GuiUtilities::applyDialogProperties(*this, qApp->icons()->fromTheme(QSL("tag-properties")), tr("Edit label '%1'").arg(lbl->title()));
+  GuiUtilities::applyDialogProperties(*this,
+                                      qApp->icons()->fromTheme(QSL("tag-properties")),
+                                      tr("Edit label '%1'").arg(lbl->title()));
 
   m_editableLabel = lbl;
   m_ui.m_btnColor->setColor(lbl->color());
   m_ui.m_txtName->lineEdit()->setText(lbl->title());
+  m_ui.m_txtName->setFocus();
 
   auto exit_code = exec();
 
