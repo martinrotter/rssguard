@@ -63,7 +63,7 @@ set(APP_NAME "RSS Guard")
 set(APP_EMAIL "rotter.martinos@gmail.com")
 set(APP_AUTHOR "Martin Rotter")
 set(APP_COPYRIGHT "\\251 2011-${YEAR} ${APP_AUTHOR}")
-set(APP_REVERSE_NAME "com.github.rssguard")
+set(APP_REVERSE_NAME "io.github.martinrotter.rssguard")
 set(APP_DONATE_URL "https://github.com/sponsors/martinrotter")
 set(APP_VERSION "4.2.5")
 

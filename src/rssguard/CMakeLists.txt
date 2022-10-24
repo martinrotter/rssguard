@@ -66,7 +66,7 @@ elseif(UNIX AND NOT APPLE AND NOT ANDROID)
   install(FILES ${CMAKE_SOURCE_DIR}/resources/desktop/${APP_REVERSE_NAME}.desktop
     DESTINATION ${CMAKE_INSTALL_DATAROOTDIR}/applications
   )
-  install(FILES ${CMAKE_SOURCE_DIR}/resources/desktop/${APP_REVERSE_NAME}.appdata.xml
+  install(FILES ${CMAKE_SOURCE_DIR}/resources/desktop/${APP_REVERSE_NAME}.metainfo.xml
     DESTINATION ${CMAKE_INSTALL_DATAROOTDIR}/metainfo
   )
   install(FILES ${CMAKE_SOURCE_DIR}/resources/graphics/${CMAKE_PROJECT_NAME}.png
