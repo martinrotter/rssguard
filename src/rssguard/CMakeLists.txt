@@ -66,18 +66,9 @@ elseif(UNIX AND NOT APPLE AND NOT ANDROID)
   install(FILES ${CMAKE_SOURCE_DIR}/resources/desktop/${APP_REVERSE_NAME}.desktop
     DESTINATION ${CMAKE_INSTALL_DATAROOTDIR}/applications
   )
-
-  if(USE_WEBENGINE)
-    install(FILES ${CMAKE_SOURCE_DIR}/resources/desktop/${APP_REVERSE_NAME}.appdata.xml
-      DESTINATION ${CMAKE_INSTALL_DATAROOTDIR}/metainfo
-    )
-  else()
-    install(FILES ${CMAKE_SOURCE_DIR}/resources/desktop/${APP_REVERSE_NAME}lite.appdata.xml
-      DESTINATION ${CMAKE_INSTALL_DATAROOTDIR}/metainfo
-      RENAME ${APP_REVERSE_NAME}.appdata.xml
-    )
-  endif()
-
+  install(FILES ${CMAKE_SOURCE_DIR}/resources/desktop/${APP_REVERSE_NAME}.appdata.xml
+    DESTINATION ${CMAKE_INSTALL_DATAROOTDIR}/metainfo
+  )
   install(FILES ${CMAKE_SOURCE_DIR}/resources/graphics/${CMAKE_PROJECT_NAME}.png
     DESTINATION ${CMAKE_INSTALL_DATAROOTDIR}/icons/hicolor/256x256/apps
   )

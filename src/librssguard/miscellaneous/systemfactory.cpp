@@ -189,11 +189,7 @@ bool SystemFactory::setAutoStartStatus(AutoStartStatus new_status) {
         args = FROM_STD_LIST(QStringList, std_args);
 
 #if defined(IS_FLATPAK_BUILD)
-#if defined(USE_WEBENGINE)
         const QString flatpak_run = QSL("flatpak run %1").arg(QSL(APP_REVERSE_NAME));
-#else
-        const QString flatpak_run = QSL("flatpak run %1lite").arg(QSL(APP_REVERSE_NAME));
-#endif
 
         args = args.mid(1);
         args.prepend(flatpak_run);
