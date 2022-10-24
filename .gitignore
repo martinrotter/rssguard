@@ -26,3 +26,6 @@
 localization/*qm
 *.TMP
 resources/skins/*/*.map
+
+# Build directory.
+build-dir/
