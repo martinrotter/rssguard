@@ -40,6 +40,7 @@
   <url type="homepage">https://github.com/martinrotter/rssguard</url>
   <url type="bugtracker">https://github.com/martinrotter/rssguard/issues</url>
   <url type="donation">https://github.com/sponsors/martinrotter</url>
+  <url type="translate">https://explore.transifex.com/martinrotter/rssguard</url>
   <content_rating type="oars-1.1" />
   <releases>
     <release version="4.2.5" date="2022-10-26"/>
