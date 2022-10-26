@@ -41,6 +41,22 @@
   <url type="bugtracker">https://github.com/martinrotter/rssguard/issues</url>
   <url type="donation">https://github.com/sponsors/martinrotter</url>
   <url type="translate">https://explore.transifex.com/martinrotter/rssguard</url>
+  <keywords>
+    <keyword translate="no">ATOM</keyword>
+    <keyword translate="no">JSON</keyword>
+    <keyword translate="no">RDF</keyword>
+    <keyword translate="no">RSS</keyword>
+    <keyword translate="no">Bazqux</keyword>
+    <keyword translate="no">Feedly</keyword>
+    <keyword translate="no">FreshRSS</keyword>
+    <keyword translate="no">Google Reader</keyword>
+    <keyword translate="no">Inoreader</keyword>
+    <keyword translate="no">Miniflux</keyword>
+    <keyword translate="no">Next Cloud News</keyword>
+    <keyword translate="no">Reedah</keyword>
+    <keyword translate="no">The Old Reader</keyword>
+    <keyword translate="no">Tiny Tiny RSS</keyword>
+  </keywords>
   <content_rating type="oars-1.1" />
   <releases>
     <release version="4.2.5" date="2022-10-26"/>
