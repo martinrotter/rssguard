@@ -5,6 +5,7 @@
   <metadata_license>CC0-1.0</metadata_license>
   <project_license>GPL-3.0</project_license>
   <name>RSS Guard</name>
+  <developer_name>Martin Rotter</developer_name>
   <update_contact>rotter.martinos_AT_gmail.com</update_contact>
   <summary>Simple (yet powerful) feed reader</summary>
   <description>
