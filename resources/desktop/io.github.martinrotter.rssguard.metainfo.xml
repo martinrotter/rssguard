@@ -14,7 +14,7 @@
   </description>
   <launchable type="desktop-id">io.github.martinrotter.rssguard.desktop</launchable>
   <screenshots>
-  <screenshot type="default">
+    <screenshot type="default">
       <image>https://raw.githubusercontent.com/martinrotter/rssguard/master/resources/docs/images/rssguard-window.png</image>
     </screenshot>
   </screenshots>
