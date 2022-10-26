@@ -9,8 +9,26 @@
   <summary>Simple (yet powerful) feed reader</summary>
   <description>
     <p>
-      RSS Guard is simple (yet powerful) feed reader. It is able to fetch the most known feed formats, including RSS/RDF and ATOM. RSS Guard is developed on top of the Qt library.
+      RSS Guard is a simple (yet powerful) feed reader, written in C++ and Qt.
     </p>
+    <p>
+      It supports many feed formats, such as:
+    </p>
+    <ul>
+      <li>ATOM</li>
+      <li>JSON (1.x)</li>
+      <li>RSS (0.x, 1.x, 2.x)</li>
+    </ul>
+    <p>
+      It also supports many web-based feed services, including:
+    </p>
+    <ul>
+      <li>Feedly</li>
+      <li>Gmail</li>
+      <li>Google Reader API (Bazqux, FreshRSS, Inoreader, Miniflux, Reedah, The Old Reader, etc.)</li>
+      <li>Next Cloud News</li>
+      <li>Tiny Tiny RSS</li>
+    </ul>
   </description>
   <launchable type="desktop-id">io.github.martinrotter.rssguard.desktop</launchable>
   <screenshots>
