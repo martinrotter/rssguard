@@ -127,12 +127,15 @@ void FormUpdate::saveUpdateFile(const QByteArray& file_contents) {
     QFile output_file(temp_directory + QDir::separator() + output_file_name);
 
     if (output_file.open(QIODevice::WriteOnly | QIODevice::Truncate)) {
-      qDebug("Storing update file to temporary location '%s'.",
-             qPrintable(QDir::toNativeSeparators(output_file.fileName())));
+      qDebugNN << "Storing update file to temporary location"
+               << QUOTE_W_SPACE_DOT(QDir::toNativeSeparators(output_file.fileName()));
+
       output_file.write(file_contents);
       output_file.flush();
       output_file.close();
-      qDebug("Update file contents was successfuly saved.");
+
+      qDebugNN << "Update file contents was successfuly saved.";
+
       m_updateFilePath = output_file.fileName();
       m_readyToInstall = true;
     }

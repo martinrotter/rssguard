@@ -542,7 +542,7 @@ bool MessagesModel::setMessageRead(int row_index, RootItem::ReadStatus read) {
 
   if (!working_change) {
     // If rewriting in the model failed, then cancel all actions.
-    qDebug("Setting of new data to the model failed for message read change.");
+    qDebugNN << "Setting of new data to the model failed for message read change.";
     return false;
   }
 

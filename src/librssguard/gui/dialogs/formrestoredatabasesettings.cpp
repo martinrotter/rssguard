@@ -10,11 +10,12 @@
 
 #include "QFileDialog"
 
-FormRestoreDatabaseSettings::FormRestoreDatabaseSettings(QWidget& parent) : QDialog(&parent),
-  m_shouldRestart(false) {
+FormRestoreDatabaseSettings::FormRestoreDatabaseSettings(QWidget& parent) : QDialog(&parent), m_shouldRestart(false) {
   m_ui.setupUi(this);
   m_btnRestart = m_ui.m_buttonBox->addButton(tr("Restart"), QDialogButtonBox::ButtonRole::ActionRole);
-  m_ui.m_lblResult->setStatus(WidgetWithStatus::StatusType::Warning, tr("No operation executed yet."), tr("No operation executed yet."));
+  m_ui.m_lblResult->setStatus(WidgetWithStatus::StatusType::Warning,
+                              tr("No operation executed yet."),
+                              tr("No operation executed yet."));
 
   GuiUtilities::applyDialogProperties(*this, qApp->icons()->fromTheme(QSL("document-import")));
 
@@ -27,13 +28,15 @@ FormRestoreDatabaseSettings::FormRestoreDatabaseSettings(QWidget& parent) : QDia
   });
   connect(m_ui.m_groupDatabase, &QGroupBox::toggled, this, &FormRestoreDatabaseSettings::checkOkButton);
   connect(m_ui.m_groupSettings, &QGroupBox::toggled, this, &FormRestoreDatabaseSettings::checkOkButton);
-  connect(m_ui.m_buttonBox->button(QDialogButtonBox::StandardButton::Ok), &QPushButton::clicked,
-          this, &FormRestoreDatabaseSettings::performRestoration);
+  connect(m_ui.m_buttonBox->button(QDialogButtonBox::StandardButton::Ok),
+          &QPushButton::clicked,
+          this,
+          &FormRestoreDatabaseSettings::performRestoration);
   selectFolder(qApp->documentsFolder());
 }
 
 FormRestoreDatabaseSettings::~FormRestoreDatabaseSettings() {
-  qDebug("Destroying FormRestoreDatabaseSettings instance.");
+  qDebugNN << "Destroying FormRestoreDatabaseSettings instance.";
 }
 
 void FormRestoreDatabaseSettings::performRestoration() {
@@ -42,27 +45,30 @@ void FormRestoreDatabaseSettings::performRestoration() {
   try {
     qApp->restoreDatabaseSettings(m_ui.m_groupDatabase->isChecked(),
                                   m_ui.m_groupSettings->isChecked(),
-                                  m_ui.m_listDatabase->currentRow() >= 0 ? m_ui.m_listDatabase->currentItem()->data(
-                                    Qt::UserRole).toString() : QString(),
-                                  m_ui.m_listSettings->currentRow() >= 0 ? m_ui.m_listSettings->currentItem()->data(
-                                    Qt::UserRole).toString() : QString());
+                                  m_ui.m_listDatabase->currentRow() >= 0
+                                    ? m_ui.m_listDatabase->currentItem()->data(Qt::UserRole).toString()
+                                    : QString(),
+                                  m_ui.m_listSettings->currentRow() >= 0
+                                    ? m_ui.m_listSettings->currentItem()->data(Qt::UserRole).toString()
+                                    : QString());
     m_btnRestart->setEnabled(true);
-    m_ui.m_lblResult->setStatus(WidgetWithStatus::StatusType::Ok, tr("Restoration was initiated. Restart to proceed."),
+    m_ui.m_lblResult->setStatus(WidgetWithStatus::StatusType::Ok,
+                                tr("Restoration was initiated. Restart to proceed."),
                                 tr("You need to restart application for restoration process to finish."));
   }
   catch (const ApplicationException& ex) {
-    m_ui.m_lblResult->setStatus(WidgetWithStatus::StatusType::Error, ex.message(),
+    m_ui.m_lblResult->setStatus(WidgetWithStatus::StatusType::Error,
+                                ex.message(),
                                 tr("Database and/or settings were not copied to restoration directory successully."));
   }
 }
 
 void FormRestoreDatabaseSettings::checkOkButton() {
   m_btnRestart->setEnabled(false);
-  m_ui.m_buttonBox->button(QDialogButtonBox::StandardButton::Ok)->setEnabled(!m_ui.m_lblSelectFolder->label()->text().isEmpty() &&
-                                                                             ((m_ui.m_groupDatabase->isChecked() &&
-                                                                               m_ui.m_listDatabase->currentRow() >= 0) ||
-                                                                              (m_ui.m_groupSettings->isChecked() &&
-                                                                               m_ui.m_listSettings->currentRow() >= 0)));
+  m_ui.m_buttonBox->button(QDialogButtonBox::StandardButton::Ok)
+    ->setEnabled(!m_ui.m_lblSelectFolder->label()->text().isEmpty() &&
+                 ((m_ui.m_groupDatabase->isChecked() && m_ui.m_listDatabase->currentRow() >= 0) ||
+                  (m_ui.m_groupSettings->isChecked() && m_ui.m_listSettings->currentRow() >= 0)));
 }
 
 void FormRestoreDatabaseSettings::selectFolderWithGui() {
@@ -71,11 +77,13 @@ void FormRestoreDatabaseSettings::selectFolderWithGui() {
 
 void FormRestoreDatabaseSettings::selectFolder(QString folder) {
   if (folder.isEmpty()) {
-    folder = QFileDialog::getExistingDirectory(this, tr("Select source directory"), m_ui.m_lblSelectFolder->label()->text());
+    folder =
+      QFileDialog::getExistingDirectory(this, tr("Select source directory"), m_ui.m_lblSelectFolder->label()->text());
   }
 
   if (!folder.isEmpty()) {
-    m_ui.m_lblSelectFolder->setStatus(WidgetWithStatus::StatusType::Ok, QDir::toNativeSeparators(folder),
+    m_ui.m_lblSelectFolder->setStatus(WidgetWithStatus::StatusType::Ok,
+                                      QDir::toNativeSeparators(folder),
                                       tr("Good source directory is specified."));
   }
   else {
@@ -83,20 +91,16 @@ void FormRestoreDatabaseSettings::selectFolder(QString folder) {
   }
 
   const QDir selected_folder(folder);
-  const QFileInfoList available_databases = selected_folder.entryInfoList(QStringList() << QSL("*") + BACKUP_SUFFIX_DATABASE,
-                                                                          QDir::Filter::Files |
-                                                                          QDir::Filter::NoDotAndDotDot |
-                                                                          QDir::Filter::Readable |
-                                                                          QDir::Filter::CaseSensitive |
-                                                                          QDir::Filter::NoSymLinks,
-                                                                          QDir::SortFlag::Name);
-  const QFileInfoList available_settings = selected_folder.entryInfoList(QStringList() << QSL("*") + BACKUP_SUFFIX_SETTINGS,
-                                                                         QDir::Filter::Files |
-                                                                         QDir::Filter::NoDotAndDotDot |
-                                                                         QDir::Filter::Readable |
-                                                                         QDir::Filter::CaseSensitive |
-                                                                         QDir::Filter::NoSymLinks,
-                                                                         QDir::SortFlag::Name);
+  const QFileInfoList available_databases =
+    selected_folder.entryInfoList(QStringList() << QSL("*") + BACKUP_SUFFIX_DATABASE,
+                                  QDir::Filter::Files | QDir::Filter::NoDotAndDotDot | QDir::Filter::Readable |
+                                    QDir::Filter::CaseSensitive | QDir::Filter::NoSymLinks,
+                                  QDir::SortFlag::Name);
+  const QFileInfoList available_settings =
+    selected_folder.entryInfoList(QStringList() << QSL("*") + BACKUP_SUFFIX_SETTINGS,
+                                  QDir::Filter::Files | QDir::Filter::NoDotAndDotDot | QDir::Filter::Readable |
+                                    QDir::Filter::CaseSensitive | QDir::Filter::NoSymLinks,
+                                  QDir::SortFlag::Name);
 
   m_ui.m_listDatabase->clear();
   m_ui.m_listSettings->clear();
