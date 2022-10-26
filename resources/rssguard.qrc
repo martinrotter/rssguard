@@ -87,8 +87,8 @@
 
     <file>initial_feeds/feeds-en_US.opml</file>
 
-    <file>desktop/com.github.rssguard.desktop</file>
-    <file>desktop/com.github.rssguard.desktop.autostart</file>
+    <file>desktop/io.github.martinrotter.rssguard.desktop</file>
+    <file>desktop/io.github.martinrotter.rssguard.autostart</file>
 
     <file>../localization/rssguard_cs.qm</file>
     <file>../localization/rssguard_da.qm</file>

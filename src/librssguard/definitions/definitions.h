@@ -337,8 +337,8 @@
 #define APP_LANG_PATH QSL(":/localization")
 
 #if defined(Q_OS_UNIX) && !defined(Q_OS_MACOS)
-#define APP_DESKTOP_SOURCE_ENTRY_FILE "com.github.rssguard.desktop.autostart"
-#define APP_DESKTOP_ENTRY_FILE "com.github.rssguard.desktop"
+#define APP_DESKTOP_SOURCE_ENTRY_FILE "io.github.martinrotter.rssguard.autostart"
+#define APP_DESKTOP_ENTRY_FILE "io.github.martinrotter.rssguard.desktop"
 
 #define APP_DESKTOP_ENTRY_PATH QSL(":/desktop")
 #endif
