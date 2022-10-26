@@ -7,7 +7,6 @@
   <name>RSS Guard</name>
   <update_contact>rotter.martinos_AT_gmail.com</update_contact>
   <summary>Simple (yet powerful) feed reader</summary>
-  ​<translation type="qt">rssguard</translation>
   <description>
     <p>
       RSS Guard is simple (yet powerful) feed reader. It is able to fetch the most known feed formats, including RSS/RDF and ATOM. RSS Guard is developed on top of the Qt library.
