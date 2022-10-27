@@ -16,6 +16,7 @@
 #define SERVICE_CODE_REDDIT "reddit"
 #define SERVICE_CODE_NEWSBLUR "newsblur"
 
+#define ADBLOCK_SERVER_FILE "adblock-server.js"
 #define ADBLOCK_SERVER_PORT 48484
 #define ADBLOCK_HOWTO "https://github.com/martinrotter/rssguard/blob/master/resources/docs/Documentation.md#adbl"
 #define ADBLOCK_ICON_ACTIVE "adblock"
@@ -116,6 +117,9 @@
 
 #define CLI_SIN_SHORT "s"
 #define CLI_SIN_LONG "no-single-instance"
+
+#define CLI_ADBLOCKPORT_SHORT "p"
+#define CLI_ADBLOCKPORT_LONG "adblock-port"
 
 #define CLI_NSTDOUTERR_SHORT "n"
 #define CLI_NSTDOUTERR_LONG "no-standard-output"

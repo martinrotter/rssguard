@@ -178,6 +178,8 @@ class RSSGUARD_DLLSPEC Application : public SingleApplication {
     // Custom debug/console log handler.
     static void performLogging(QtMsgType type, const QMessageLogContext& context, const QString& msg);
 
+    int customAdblockPort() const;
+
   public slots:
     // Restarts the application.
     void restart();
@@ -256,6 +258,7 @@ class RSSGUARD_DLLSPEC Application : public SingleApplication {
     bool m_firstRunEver;
     bool m_firstRunCurrentVersion;
     QString m_customDataFolder;
+    int m_customAdblockPort;
     bool m_allowMultipleInstances;
 
 #if defined(USE_WEBENGINE)

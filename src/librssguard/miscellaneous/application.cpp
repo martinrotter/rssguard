@@ -363,6 +363,10 @@ void Application::eliminateFirstRuns() {
   settings()->setValue(GROUP(General), QString(General::FirstRun) + QL1C('_') + APP_VERSION, false);
 }
 
+int Application::customAdblockPort() const {
+  return m_customAdblockPort;
+}
+
 QStringList Application::rawCliArgs() const {
   return m_rawCliArgs;
 }
@@ -1044,6 +1048,15 @@ void Application::parseCmdArgumentsFromMyInstance(const QStringList& raw_cli_arg
     s_disableDebug = true;
     qDebugNN << LOGSEC_CORE << "Disabling any stdout/stderr outputs.";
   }
+
+  if (!m_cmdParser.value(QSL(CLI_ADBLOCKPORT_SHORT)).isEmpty()) {
+    m_customAdblockPort = m_cmdParser.value(QSL(CLI_ADBLOCKPORT_SHORT)).toInt();
+
+    qDebugNN << LOGSEC_ADBLOCK << "Setting custom server port.";
+  }
+  else {
+    m_customAdblockPort = 0;
+  }
 }
 
 void Application::fillCmdArgumentsParser(QCommandLineParser& parser) {
@@ -1072,13 +1085,17 @@ void Application::fillCmdArgumentsParser(QCommandLineParser& parser) {
   QCommandLineOption forced_style({QSL(CLI_STYLE_SHORT), QSL(CLI_STYLE_LONG)},
                                   QSL("Force some application style."),
                                   QSL("style-name"));
+  QCommandLineOption
+    adblock_port({QSL(CLI_ADBLOCKPORT_SHORT), QSL(CLI_ADBLOCKPORT_LONG)},
+                 QSL("Use custom port for AdBlock server. It is highly recommended to use values higher than 1024."),
+                 QSL("port"));
 
   parser.addOptions({
     help, version, log_file, custom_data_folder, disable_singleinstance, disable_only_debug, disable_debug,
 #if defined(USE_WEBENGINE)
       force_nowebengine,
 #endif
-      forced_style
+      forced_style, adblock_port
   });
   parser.addPositionalArgument(QSL("urls"),
                                QSL("List of URL addresses pointing to individual online feeds which should be added."),

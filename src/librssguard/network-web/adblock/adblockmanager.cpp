@@ -302,9 +302,9 @@ QString AdBlockManager::askServerForCosmeticRules(const QString& url) const {
 QProcess* AdBlockManager::startServer(int port) {
   QString temp_server =
     QDir::toNativeSeparators(IOFactory::getSystemFolder(QStandardPaths::StandardLocation::TempLocation)) +
-    QDir::separator() + QSL("adblock-server.js");
+    QDir::separator() + QSL(ADBLOCK_SERVER_FILE);
 
-  if (!IOFactory::copyFile(QSL(":/scripts/adblock/adblock-server.js"), temp_server)) {
+  if (!IOFactory::copyFile(QSL(":/scripts/adblock/") + QSL(ADBLOCK_SERVER_FILE), temp_server)) {
     qWarningNN << LOGSEC_ADBLOCK << "Failed to copy server file to TEMP.";
   }
 
@@ -385,6 +385,8 @@ void AdBlockManager::updateUnifiedFiltersFileAndStartServer() {
   IOFactory::writeFile(m_unifiedFiltersFile, unified_contents.toUtf8());
 
   if (m_enabled) {
-    m_serverProcess = startServer(ADBLOCK_SERVER_PORT);
+    auto custom_port = qApp->customAdblockPort();
+
+    m_serverProcess = startServer(custom_port > 0 ? custom_port : ADBLOCK_SERVER_PORT);
   }
 }
