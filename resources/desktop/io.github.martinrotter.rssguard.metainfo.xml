@@ -5,49 +5,63 @@
   <metadata_license>CC0-1.0</metadata_license>
   <project_license>GPL-3.0</project_license>
   <name>RSS Guard</name>
+  <developer_name>Martin Rotter</developer_name>
   <update_contact>rotter.martinos_AT_gmail.com</update_contact>
   <summary>Simple (yet powerful) feed reader</summary>
-  ​<translation type="qt">rssguard</translation>
   <description>
     <p>
-      RSS Guard is simple (yet powerful) feed reader. It is able to fetch the most known feed formats, including RSS/RDF and ATOM. RSS Guard is developed on top of the Qt library.
+      RSS Guard is a simple (yet powerful) feed reader, written in C++ and Qt.
     </p>
+    <p>
+      It supports many feed formats, such as:
+    </p>
+    <ul>
+      <li>ATOM</li>
+      <li>JSON (1.x)</li>
+      <li>RSS (0.x, 1.x, 2.x)</li>
+    </ul>
+    <p>
+      It also supports many web-based feed services, including:
+    </p>
+    <ul>
+      <li>Feedly</li>
+      <li>Gmail</li>
+      <li>Google Reader API (Bazqux, FreshRSS, Inoreader, Miniflux, Reedah, The Old Reader, etc.)</li>
+      <li>Next Cloud News</li>
+      <li>Tiny Tiny RSS</li>
+    </ul>
   </description>
   <launchable type="desktop-id">io.github.martinrotter.rssguard.desktop</launchable>
   <screenshots>
-  <screenshot type="default">
+    <screenshot type="default">
       <image>https://raw.githubusercontent.com/martinrotter/rssguard/master/resources/docs/images/rssguard-window.png</image>
     </screenshot>
   </screenshots>
   <url type="homepage">https://github.com/martinrotter/rssguard</url>
   <url type="bugtracker">https://github.com/martinrotter/rssguard/issues</url>
   <url type="donation">https://github.com/sponsors/martinrotter</url>
+  <url type="translate">https://explore.transifex.com/martinrotter/rssguard</url>
+  <keywords>
+    <keyword translate="no">ATOM</keyword>
+    <keyword translate="no">JSON</keyword>
+    <keyword translate="no">RDF</keyword>
+    <keyword translate="no">RSS</keyword>
+    <keyword translate="no">Bazqux</keyword>
+    <keyword translate="no">Feedly</keyword>
+    <keyword translate="no">FreshRSS</keyword>
+    <keyword translate="no">Google Reader</keyword>
+    <keyword translate="no">Inoreader</keyword>
+    <keyword translate="no">Miniflux</keyword>
+    <keyword translate="no">Next Cloud News</keyword>
+    <keyword translate="no">Reedah</keyword>
+    <keyword translate="no">The Old Reader</keyword>
+    <keyword translate="no">Tiny Tiny RSS</keyword>
+  </keywords>
+  <content_rating type="oars-1.0" />
   <content_rating type="oars-1.1" />
   <releases>
     <release version="4.2.5" date="2022-10-26"/>
   </releases>
-  <content_rating type="oars-1.0">
-    <content_attribute id="violence-cartoon">none</content_attribute>
-    <content_attribute id="violence-fantasy">none</content_attribute>
-    <content_attribute id="violence-realistic">none</content_attribute>
-    <content_attribute id="violence-bloodshed">none</content_attribute>
-    <content_attribute id="violence-sexual">none</content_attribute>
-    <content_attribute id="drugs-alcohol">none</content_attribute>
-    <content_attribute id="drugs-narcotics">none</content_attribute>
-    <content_attribute id="drugs-tobacco">none</content_attribute>
-    <content_attribute id="sex-nudity">none</content_attribute>
-    <content_attribute id="sex-themes">none</content_attribute>
-    <content_attribute id="language-profanity">none</content_attribute>
-    <content_attribute id="language-humor">none</content_attribute>
-    <content_attribute id="language-discrimination">none</content_attribute>
-    <content_attribute id="social-chat">none</content_attribute>
-    <content_attribute id="social-info">none</content_attribute>
-    <content_attribute id="social-audio">none</content_attribute>
-    <content_attribute id="social-location">none</content_attribute>
-    <content_attribute id="social-contacts">none</content_attribute>
-    <content_attribute id="money-purchasing">none</content_attribute>
-    <content_attribute id="money-gambling">none</content_attribute>
-  </content_rating>
   <provides>
     <binary>rssguard</binary>
   </provides>
