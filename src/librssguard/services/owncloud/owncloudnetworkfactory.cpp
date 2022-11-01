@@ -587,13 +587,13 @@ QList<Message> OwnCloudGetMessagesResponse::messages() const {
     msg.m_customHash = message_map[QSL("guidHash")].toString();
     msg.m_rawContents = QJsonDocument(message_map).toJson(QJsonDocument::JsonFormat::Compact);
 
-    //In case body is empty, check for content in mediaDescription if item is available
-    if(msg.m_contents.isEmpty() && !message_map[QSL("mediaDescription")].isUndefined()){
+    // In case body is empty, check for content in mediaDescription if item is available.
+    if (msg.m_contents.isEmpty() && !message_map[QSL("mediaDescription")].isUndefined()) {
       msg.m_contents = message_map[QSL("mediaDescription")].toString();
     }
 
-    //Check for mediaThumbnail and append as first enclosure to be viewed in internal viewer
-    if(!message_map[QSL("mediaThumbnail")].isUndefined()){
+    // Check for mediaThumbnail and append as first enclosure to be viewed in internal viewer.
+    if (!message_map[QSL("mediaThumbnail")].isUndefined()) {
       Enclosure enclosure;
 
       enclosure.m_mimeType = QSL("image/jpg");
