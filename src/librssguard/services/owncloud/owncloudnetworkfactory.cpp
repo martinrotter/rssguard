@@ -614,7 +614,9 @@ QList<Message> OwnCloudGetMessagesResponse::messages() const {
         enclosure.m_mimeType = QSL("image/png");
       }
 
-      msg.m_enclosures.append(enclosure);
+      if (!message_map[QSL("enclosureMime")].toString().isEmpty() || !enclosure_link.startsWith(QSL("https://www.youtube.com/v/"))) {
+        msg.m_enclosures.append(enclosure);
+      }
     }
 
     msg.m_feedId = message_map[QSL("feedId")].toVariant().toString();
