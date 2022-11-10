@@ -4,7 +4,7 @@ changelog_file="resources/text/CHANGELOG"
 datestring="$(date +%F)"
 versionstring="$(head -n 1 "$changelog_file")"
 
-for appdata_file in resources/desktop/*.metainfo.xml; do
+for appdata_file in resources/desktop/*.metainfo.xml.in; do
   appdata_file_n="${appdata_file}.n"
 
   # Set version and date.

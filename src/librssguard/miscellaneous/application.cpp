@@ -765,7 +765,7 @@ void Application::showMessagesNumber(int unread_messages, bool any_feed_has_new_
   bool task_bar_count_enabled = settings()->value(GROUP(GUI), SETTING(GUI::UnreadNumbersOnTaskBar)).toBool();
   QDBusMessage signal = QDBusMessage::createSignal(QSL("/"), QSL("com.canonical.Unity.LauncherEntry"), QSL("Update"));
 
-  signal << QSL("application://%1").arg(APP_DESKTOP_ENTRY_FILE);
+  signal << QSL("application://%1.desktop").arg(APP_REVERSE_NAME);
 
   QVariantMap setProperty;
 

@@ -193,8 +193,11 @@ else()
 endif()
 
 if(NOT USE_WEBENGINE)
+  set(APP_REVERSE_NAME "io.github.martinrotter.rssguardlite")
   set(APP_REVISION "${APP_REVISION}-nowebengine")
 endif()
+
+set(APP_LOW_NAME "${CMAKE_PROJECT_NAME}")
 
 # Pass common defines.
 add_compile_definitions(
@@ -202,7 +205,7 @@ add_compile_definitions(
   APP_VERSION="${CMAKE_PROJECT_VERSION}"
   APP_URL="${APP_URL}"
   APP_LONG_NAME="${APP_NAME} ${CMAKE_PROJECT_VERSION}"
-  APP_LOW_NAME="${CMAKE_PROJECT_NAME}"
+  APP_LOW_NAME="${APP_LOW_NAME}"
   APP_REVERSE_NAME="${APP_REVERSE_NAME}"
 
   QT_USE_QSTRINGBUILDER
@@ -239,6 +242,12 @@ elseif(APPLE)
   configure_file(
     resources/macosx/Info.plist.in
     ${CMAKE_BINARY_DIR}/Info.plist
+  )
+elseif(UNIX AND NOT ANDROID)
+  add_subdirectory(resources/desktop)
+  add_compile_definitions(
+    APPDATA_NAME="${APPDATA_NAME}"
+    APPDATA_SUMMARY="${APPDATA_SUMMARY}"
   )
 endif()
 
