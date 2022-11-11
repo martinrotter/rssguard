@@ -587,6 +587,21 @@ QList<Message> OwnCloudGetMessagesResponse::messages() const {
     msg.m_customHash = message_map[QSL("guidHash")].toString();
     msg.m_rawContents = QJsonDocument(message_map).toJson(QJsonDocument::JsonFormat::Compact);
 
+    // In case body is empty, check for content in mediaDescription if item is available.
+    if (msg.m_contents.isEmpty() && !message_map[QSL("mediaDescription")].isUndefined()) {
+      msg.m_contents = message_map[QSL("mediaDescription")].toString();
+    }
+
+    // Check for mediaThumbnail and append as first enclosure to be viewed in internal viewer.
+    if (!message_map[QSL("mediaThumbnail")].isUndefined()) {
+      Enclosure enclosure;
+
+      enclosure.m_mimeType = QSL("image/jpg");
+      enclosure.m_url = message_map[QSL("mediaThumbnail")].toString();
+
+      msg.m_enclosures.append(enclosure);
+    }
+
     QString enclosure_link = message_map[QSL("enclosureLink")].toString();
 
     if (!enclosure_link.isEmpty()) {
@@ -599,7 +614,9 @@ QList<Message> OwnCloudGetMessagesResponse::messages() const {
         enclosure.m_mimeType = QSL("image/png");
       }
 
-      msg.m_enclosures.append(enclosure);
+      if (!message_map[QSL("enclosureMime")].toString().isEmpty() || !enclosure_link.startsWith(QSL("https://www.youtube.com/v/"))) {
+        msg.m_enclosures.append(enclosure);
+      }
     }
 
     msg.m_feedId = message_map[QSL("feedId")].toVariant().toString();
