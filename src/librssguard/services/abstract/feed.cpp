@@ -61,6 +61,14 @@ QVariant Feed::data(int column, int role) const {
         case Status::NewMessages:
           return qApp->skins()->currentSkin().colorForModel(SkinEnums::PaletteColors::FgSelectedInteresting);
 
+        case Status::Normal:
+          if (countOfUnreadMessages() > 0) {
+            return qApp->skins()->currentSkin().colorForModel(SkinEnums::PaletteColors::FgSelectedInteresting);
+          }
+          else {
+            return QVariant();
+          }
+
         case Status::NetworkError:
         case Status::ParsingError:
         case Status::AuthError:
@@ -75,6 +83,14 @@ QVariant Feed::data(int column, int role) const {
       switch (status()) {
         case Status::NewMessages:
           return qApp->skins()->currentSkin().colorForModel(SkinEnums::PaletteColors::FgInteresting);
+
+        case Status::Normal:
+          if (countOfUnreadMessages() > 0) {
+            return qApp->skins()->currentSkin().colorForModel(SkinEnums::PaletteColors::FgInteresting);
+          }
+          else {
+            return QVariant();
+          }
 
         case Status::NetworkError:
         case Status::ParsingError:
