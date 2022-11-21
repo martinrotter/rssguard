@@ -175,7 +175,7 @@
        </item>
       </layout>
      </widget>
-     <widget class="QWidget" name="tab">
+     <widget class="QWidget" name="m_tabExternalMail">
       <attribute name="title">
        <string>External e-mail client</string>
       </attribute>
@@ -292,7 +292,7 @@
        </item>
       </layout>
      </widget>
-     <widget class="QWidget" name="tab_2">
+     <widget class="QWidget" name="m_tabExternalTools">
       <attribute name="title">
        <string>External tools</string>
       </attribute>

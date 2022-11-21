@@ -75,7 +75,14 @@ bool ExternalTool::run(const QString& target) {
   }
   else {
     auto pars = parameters();
-    pars += QSL(" \"%1\"").arg(target);
+
+    if (pars.contains(QSL("%1"))) {
+      // We replace existing target placeholder.
+      pars = pars.replace(QSL("%1"), target);
+    }
+    else {
+      pars += QSL(" \"%1\"").arg(target);
+    }
 
     auto params = TextFactory::tokenizeProcessArguments(pars);
 

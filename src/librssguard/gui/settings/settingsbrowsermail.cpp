@@ -20,7 +20,7 @@ SettingsBrowserMail::SettingsBrowserMail(Settings* settings, QWidget* parent)
   : SettingsPanel(settings, parent), m_proxyDetails(new NetworkProxyDetails(this)), m_ui(new Ui::SettingsBrowserMail) {
   m_ui->setupUi(this);
 
-  m_ui->m_tabBrowserProxy->addTab(m_proxyDetails, tr("Network proxy"));
+  m_ui->m_tabBrowserProxy->insertTab(1, m_proxyDetails, tr("Network proxy"));
 
   m_ui->m_lblExternalBrowserInfo->setHelpText(tr("Note that \"%1\" (without quotation marks) "
                                                  "is placeholder for URL of selected message."),
@@ -82,7 +82,7 @@ SettingsBrowserMail::SettingsBrowserMail(Settings* settings, QWidget* parent)
 
 #if !defined(USE_WEBENGINE)
   // Remove WebEngine tab.
-  m_ui->m_tabBrowserProxy->removeTab(1);
+  m_ui->m_tabBrowserProxy->removeTab(2);
 #else
   connect(m_ui->m_txtWebEngineChromiumFlags, &QPlainTextEdit::textChanged, this, &SettingsBrowserMail::dirtifySettings);
   connect(m_ui->m_txtWebEngineChromiumFlags, &QPlainTextEdit::textChanged, this, &SettingsBrowserMail::requireRestart);
