@@ -13,8 +13,8 @@
 
 #include <utility>
 
-FeedParser::FeedParser(QString data, bool is_xml) : m_isXml(is_xml), m_data(std::move(data)),
-  m_mrssNamespace(QSL("http://search.yahoo.com/mrss/")) {
+FeedParser::FeedParser(QString data, bool is_xml)
+  : m_isXml(is_xml), m_data(std::move(data)), m_mrssNamespace(QSL("http://search.yahoo.com/mrss/")) {
 
   if (m_isXml) {
     // XML.
@@ -109,9 +109,7 @@ QList<Message> FeedParser::messages() {
         messages.append(new_message);
       }
       catch (const ApplicationException& ex) {
-        qDebugNN << LOGSEC_CORE
-                 << "Problem when extracting XML message: "
-                 << ex.message();
+        qDebugNN << LOGSEC_CORE << "Problem when extracting XML message: " << ex.message();
       }
     }
   }
@@ -137,9 +135,7 @@ QList<Message> FeedParser::messages() {
         messages.append(new_message);
       }
       catch (const ApplicationException& ex) {
-        qDebugNN << LOGSEC_CORE
-                 << "Problem when extracting JSON message: "
-                 << ex.message();
+        qDebugNN << LOGSEC_CORE << "Problem when extracting JSON message: " << ex.message();
       }
     }
   }
@@ -249,8 +245,10 @@ QString FeedParser::xmlRawChild(const QDomElement& container) const {
   return raw;
 }
 
-QStringList FeedParser::xmlTextsFromPath(const QDomElement& element, const QString& namespace_uri,
-                                         const QString& xml_path, bool only_first) const {
+QStringList FeedParser::xmlTextsFromPath(const QDomElement& element,
+                                         const QString& namespace_uri,
+                                         const QString& xml_path,
+                                         bool only_first) const {
   QStringList paths = xml_path.split('/');
   QStringList result;
   QList<QDomElement> current_elements;

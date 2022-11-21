@@ -126,23 +126,47 @@
            </widget>
           </item>
           <item row="0" column="1">
-           <widget class="QLineEdit" name="m_txtTitle">
-            <property name="sizePolicy">
-             <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
-              <horstretch>0</horstretch>
-              <verstretch>0</verstretch>
-             </sizepolicy>
-            </property>
-            <property name="maximumSize">
-             <size>
-              <width>300</width>
-              <height>16777215</height>
-             </size>
-            </property>
-            <property name="placeholderText">
-             <string>Title of article filter</string>
-            </property>
-           </widget>
+           <layout class="QHBoxLayout" name="horizontalLayout_3">
+            <item>
+             <widget class="QLineEdit" name="m_txtTitle">
+              <property name="sizePolicy">
+               <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
+                <horstretch>0</horstretch>
+                <verstretch>0</verstretch>
+               </sizepolicy>
+              </property>
+              <property name="maximumSize">
+               <size>
+                <width>300</width>
+                <height>16777215</height>
+               </size>
+              </property>
+              <property name="placeholderText">
+               <string>Title of article filter</string>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QPushButton" name="m_btnPremadeFilters">
+              <property name="text">
+               <string>Pre-made filters</string>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <spacer name="horizontalSpacer_2">
+              <property name="orientation">
+               <enum>Qt::Horizontal</enum>
+              </property>
+              <property name="sizeHint" stdset="0">
+               <size>
+                <width>40</width>
+                <height>20</height>
+               </size>
+              </property>
+             </spacer>
+            </item>
+           </layout>
           </item>
           <item row="1" column="0">
            <widget class="QLabel" name="label_2">
@@ -430,6 +454,7 @@
   <tabstop>m_btnCheckAll</tabstop>
   <tabstop>m_btnUncheckAll</tabstop>
   <tabstop>m_txtTitle</tabstop>
+  <tabstop>m_btnPremadeFilters</tabstop>
   <tabstop>m_txtScript</tabstop>
   <tabstop>m_btnTest</tabstop>
   <tabstop>m_btnRunOnMessages</tabstop>
@@ -437,6 +462,14 @@
   <tabstop>m_btnDetailedHelp</tabstop>
   <tabstop>m_twMessages</tabstop>
   <tabstop>m_treeExistingMessages</tabstop>
+  <tabstop>m_txtSampleTitle</tabstop>
+  <tabstop>m_txtSampleUrl</tabstop>
+  <tabstop>m_txtSampleAuthor</tabstop>
+  <tabstop>m_txtSampleCreatedOn</tabstop>
+  <tabstop>m_txtSampleContents</tabstop>
+  <tabstop>m_cbSampleRead</tabstop>
+  <tabstop>m_cbSampleImportant</tabstop>
+  <tabstop>m_txtErrors</tabstop>
  </tabstops>
  <resources/>
  <connections>

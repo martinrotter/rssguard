@@ -20,6 +20,9 @@
     <file>scripts/adblock/adblock-server.js</file>
     <file>scripts/readability/readabilize-article.js</file>
 
+    <file>scripts/filters/blacklist.js</file>
+    <file>scripts/filters/whitelist.js</file>
+
     <file>graphics/rssguard.ico</file>
 
     <file>graphics/rssguard.png</file>
