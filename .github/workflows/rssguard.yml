@@ -71,10 +71,8 @@ jobs:
           name: "Development builds"
           tag_name: "devbuild"
           files: |
-            .\rssguard-build\rssguard-*win7.exe
-            .\rssguard-build\rssguard-*win7.7z
-            .\rssguard-build\rssguard-*win10.exe
-            .\rssguard-build\rssguard-*win10.7z
+            ./rssguard-build/rssguard-*win*.exe
+            ./rssguard-build/rssguard-*win*.7z
             ./rssguard-build/rssguard-*mac64.dmg
             ./rssguard-build/rssguard-*linux64.AppImage
         env:
@@ -86,8 +84,8 @@ jobs:
         with:
           prerelease: false
           files: |
-            .\rssguard-build\rssguard-*win*.exe
-            .\rssguard-build\rssguard-*win*.7z
+            ./rssguard-build/rssguard-*win*.exe
+            ./rssguard-build/rssguard-*win*.7z
             ./rssguard-build/rssguard-*mac64.dmg
             ./rssguard-build/rssguard-*linux64.AppImage
         env:
