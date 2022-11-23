@@ -153,6 +153,10 @@ QString MessageObject::findLabelId(const QString& label_title) const {
   return found_lbl != nullptr ? found_lbl->customId() : QString();
 }
 
+void MessageObject::addEnclosure(const QString& url, const QString& mime_type) const {
+  m_message->m_enclosures.append(Enclosure(url, mime_type));
+}
+
 QString MessageObject::title() const {
   return m_message->m_title;
 }

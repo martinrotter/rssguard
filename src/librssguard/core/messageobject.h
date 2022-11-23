@@ -92,6 +92,9 @@ class MessageObject : public QObject {
     // Returns label custom ID given label title.
     Q_INVOKABLE QString findLabelId(const QString& label_title) const;
 
+    // Add multimedia attachment to the message.
+    Q_INVOKABLE void addEnclosure(const QString& url, const QString& mime_type) const;
+
     // Returns list of assigned and available messages.
     QList<Label*> assignedLabels() const;
     QList<Label*> availableLabels() const;

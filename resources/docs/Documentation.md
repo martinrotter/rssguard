@@ -143,10 +143,11 @@ Here is the reference of methods and properties of types available in your filte
 | Property  | `isRead`                      | `Boolean`     | ❌         | ✅            | Is message read?
 | Property  | `isImportant`                 | `Boolean`     | ❌         | ✅            | Is message important?
 | Property  | `isDeleted`                   | `Boolean`     | ❌         | ❌            | Is message placed in recycle bin?
-| Method    | `isAlreadyInDatabase(DuplicateCheck)` | `Boolean` | ❌         | ❌            | Allows you to test if this particular message is already stored in RSS Guard's DB.
-| Method    | `findLabelId(String)`         | `String`     | ❌         | ❌            | You enter title of the label and method returns `customId` of label which then can be used in  `assignLabel()` and `deassignLabel` methods.
-| Method    | `assignLabel(String)`         | `Boolean`     | ❌         | ❌            | Assigns label to this message. The passed `String` value is the `customId` property of `Label` type. See its API reference for relevant info.
-| Method    | `deassignLabel(String)`       | `Boolean`     | ❌         | ❌            | Removes label from this message. The passed `String` value is the `customId` property of `Label` type. See its API reference for relevant info.
+| Method    | `addEnclosure(String url, String mime_type)` | `void` | ❌         | ❌            | Adds multimedia attachment to the article.
+| Method    | `isAlreadyInDatabase(DuplicateCheck criteria)` | `Boolean` | ❌         | ❌            | Allows you to test if this particular message is already stored in RSS Guard's DB.
+| Method    | `findLabelId(String label_name)`         | `String`     | ❌         | ❌            | You enter title of the label and method returns `customId` of label which then can be used in  `assignLabel()` and `deassignLabel` methods.
+| Method    | `assignLabel(String label_id)`         | `Boolean`     | ❌         | ❌            | Assigns label to this message. The passed `String` value is the `customId` property of `Label` type. See its API reference for relevant info.
+| Method    | `deassignLabel(String label_id)`       | `Boolean`     | ❌         | ❌            | Removes label from this message. The passed `String` value is the `customId` property of `Label` type. See its API reference for relevant info.
 | Property  | `runningFilterWhenFetching`   | `Boolean`     | ✅         | ❌            | Returns `true` if current run of the message filter is done when message is fetched. Returns `false` if message filter runs manually, for example from `Article filters` window.
 
 #### `Label` class
@@ -179,9 +180,9 @@ Note that `MessageObject` attributes are synchronized with service even if you r
 | Type      | Name(Parameter)           | Return value  | How to call                               | Description
 | :---      | :---                      | :---          | :---                                      | ---
 | Method    | `hostname()`              | `String`      | `utils.hostname()`                        | Returns name of your PC.
-| Method    | `fromXmlToJson(String)`   | `String`      | `utils.fromXmlToJson('<h1>hello</h1>')`   | Converts `XML` string into `JSON`.
-| Method    | `parseDateTime(String)`   | `Date`        | `utils.parseDateTime('2020-02-24T08:00:00')`  | Converts textual date/time representation into proper `Date` object.
-| Method    | `runExecutableGetOutput(String, String[])`   | `String`        | `utils.runExecutableGetOutput('cmd.exe', ['/c', 'dir'])`  | Launches external executable with optional parameters, reads its standard output and returns the output when executable finishes.
+| Method    | `fromXmlToJson(String xml_string)`   | `String`      | `utils.fromXmlToJson('<h1>hello</h1>')`   | Converts `XML` string into `JSON`.
+| Method    | `parseDateTime(String date_time)`   | `Date`        | `utils.parseDateTime('2020-02-24T08:00:00')`  | Converts textual date/time representation into proper `Date` object.
+| Method    | `runExecutableGetOutput(String exec, String[] params)`   | `String`        | `utils.runExecutableGetOutput('cmd.exe', ['/c', 'dir'])`  | Launches external executable with optional parameters, reads its standard output and returns the output when executable finishes.
 
 #### Examples
 Accept only messages/articles with title containing "Series Name" or "Another series" in it (whitelist):
