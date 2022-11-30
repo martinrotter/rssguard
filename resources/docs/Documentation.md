@@ -114,7 +114,7 @@ Passed article also offers special function:
 Boolean MessageObject.isAlreadyInDatabase(DuplicateCheck)
 ```
 
-which allows you to perform runtime check for existence of the article in RSS Guard's database. The parameter is value from enumeration [`DuplicateCheck`](#duplicatecheck-enum) and specifies how exactly you want to match your article.
+which allows you to perform runtime check for existence of the article in RSS Guard's database. The parameter is value from enumeration [`DuplicateCheck`](#dupl-check) and specifies how exactly you want to match your article.
 
 For example, if you want to check if there is already another article with same author in database, you should call `msg.isAlreadyInDatabase(MessageObject.SameAuthor)`. Values of the enumeration can be combined via bitwise OR (`|`) operator in single call, like this:
 
@@ -125,7 +125,7 @@ msg.isAlreadyInDatabase(MessageObject.SameAuthor | MessageObject.SameUrl)
 Here is the reference of methods and properties of types available in your filtering scripts.
 
 #### `MessageObject` class
-| Type      | Name(Parameter)               | Return value  | Read-only | Synchronized | Description
+| Type      | Name(Parameters)               | Return value  | Read-only | Synchronized | Description
 | :---      | :---                          | :---          | :---:     | :---:        | ---
 | Property  | `assignedLabels`              | `Array<Label>`| ✅         | ✅            | List of labels assigned to the message/article.
 | Property  | `availableLabels`             | `Array<Label>`| ✅         | ❌            | List of labels which are currently available and can be assigned to the message. Available in RSS Guard 3.8.1+.
@@ -144,7 +144,7 @@ Here is the reference of methods and properties of types available in your filte
 | Property  | `isImportant`                 | `Boolean`     | ❌         | ✅            | Is message important?
 | Property  | `isDeleted`                   | `Boolean`     | ❌         | ❌            | Is message placed in recycle bin?
 | Method    | `addEnclosure(String url, String mime_type)` | `void` | ❌         | ❌            | Adds multimedia attachment to the article.
-| Method    | `isAlreadyInDatabase(DuplicateCheck criteria)` | `Boolean` | ❌         | ❌            | Allows you to test if this particular message is already stored in RSS Guard's DB.
+| Method    | `isAlreadyInDatabase([DuplicateCheck](#dupl-check) criteria)` | `Boolean` | ❌         | ❌            | Allows you to test if this particular message is already stored in RSS Guard's DB. See [here](#dupl-check) for possible parameters.
 | Method    | `findLabelId(String label_name)`         | `String`     | ❌         | ❌            | You enter title of the label and method returns `customId` of label which then can be used in  `assignLabel()` and `deassignLabel` methods.
 | Method    | `assignLabel(String label_id)`         | `Boolean`     | ❌         | ❌            | Assigns label to this message. The passed `String` value is the `customId` property of `Label` type. See its API reference for relevant info.
 | Method    | `deassignLabel(String label_id)`       | `Boolean`     | ❌         | ❌            | Removes label from this message. The passed `String` value is the `customId` property of `Label` type. See its API reference for relevant info.
@@ -166,7 +166,7 @@ Here is the reference of methods and properties of types available in your filte
 
 Note that `MessageObject` attributes are synchronized with service even if you return `Purge` or `Ignore`. In other words, even if your filter ignores the article, you can still tweak its properties which will be synchronized back to your server.
 
-#### `DuplicateCheck` enum
+#### `DuplicateCheck` enum <a id="dupl-check"></a>
 | Enumerant name    | Integer value | Description
 | :---              | :---          | ---
 | `SameTitle`       | 1             | Check if message has same title as some another messages.
