@@ -144,7 +144,7 @@ Here is the reference of methods and properties of types available in your filte
 | Property  | `isImportant`                 | `Boolean`     | ❌         | ✅            | Is message important?
 | Property  | `isDeleted`                   | `Boolean`     | ❌         | ❌            | Is message placed in recycle bin?
 | Method    | `addEnclosure(String url, String mime_type)` | `void` | ❌         | ❌            | Adds multimedia attachment to the article.
-| Method    | `isAlreadyInDatabase([DuplicateCheck](#dupl-check) criteria)` | `Boolean` | ❌         | ❌            | Allows you to test if this particular message is already stored in RSS Guard's DB. See [here](#dupl-check) for possible parameters.
+| Method    | `isAlreadyInDatabase(DuplicateCheck criteria)` | `Boolean` | ❌         | ❌            | Allows you to test if this particular message is already stored in RSS Guard's DB. See [here](#dupl-check) for possible parameters.
 | Method    | `findLabelId(String label_name)`         | `String`     | ❌         | ❌            | You enter title of the label and method returns `customId` of label which then can be used in  `assignLabel()` and `deassignLabel` methods.
 | Method    | `assignLabel(String label_id)`         | `Boolean`     | ❌         | ❌            | Assigns label to this message. The passed `String` value is the `customId` property of `Label` type. See its API reference for relevant info.
 | Method    | `deassignLabel(String label_id)`       | `Boolean`     | ❌         | ❌            | Removes label from this message. The passed `String` value is the `customId` property of `Label` type. See its API reference for relevant info.
