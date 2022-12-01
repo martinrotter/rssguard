@@ -92,6 +92,9 @@ QNetworkReply::NetworkError GreaderNetwork::editLabels(const QString& state,
                                               proxy);
 
     if (result_edit.m_networkError != QNetworkReply::NetworkError::NoError) {
+      qCriticalNN << LOGSEC_GREADER << "Result of edit-tag operation is"
+                  << QUOTE_W_SPACE_DOT(result_edit.m_networkError);
+
       return result_edit.m_networkError;
     }
 
