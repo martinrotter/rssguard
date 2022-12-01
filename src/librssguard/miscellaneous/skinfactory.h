@@ -17,7 +17,7 @@
 class RootItem;
 
 class SkinEnums : public QObject {
-  Q_OBJECT
+    Q_OBJECT
 
   public:
     enum class PaletteColors {
@@ -34,7 +34,13 @@ class SkinEnums : public QObject {
       FgSelectedError = 8,
 
       // OK-ish color (background of list with test results of article filter).
-      Allright = 16
+      Allright = 16,
+
+      // Foreground color of items with new articles.
+      FgNewMessages = 32,
+
+      // Foreground color of selected items with new articles.
+      FgSelectedNewMessages = 64
     };
 
     static QString palleteColorText(PaletteColors col);
@@ -43,24 +49,24 @@ class SkinEnums : public QObject {
 };
 
 struct RSSGUARD_DLLSPEC Skin {
-  QString m_baseName;
-  QString m_visibleName;
-  QString m_author;
-  QString m_version;
-  QString m_description;
-  QString m_rawData;
-  QString m_adblocked;
-  QString m_layoutMarkupWrapper;
-  QString m_enclosureImageMarkup;
-  QString m_layoutMarkup;
-  QString m_enclosureMarkup;
-  QHash<SkinEnums::PaletteColors, QColor> m_colorPalette;
-  QStringList m_forcedStyles;
-  bool m_forcedSkinColors;
-  QMultiHash<QPalette::ColorGroup, QPair<QPalette::ColorRole, QPair<QColor, Qt::BrushStyle>>> m_stylePalette;
+    QString m_baseName;
+    QString m_visibleName;
+    QString m_author;
+    QString m_version;
+    QString m_description;
+    QString m_rawData;
+    QString m_adblocked;
+    QString m_layoutMarkupWrapper;
+    QString m_enclosureImageMarkup;
+    QString m_layoutMarkup;
+    QString m_enclosureMarkup;
+    QHash<SkinEnums::PaletteColors, QColor> m_colorPalette;
+    QStringList m_forcedStyles;
+    bool m_forcedSkinColors;
+    QMultiHash<QPalette::ColorGroup, QPair<QPalette::ColorRole, QPair<QColor, Qt::BrushStyle>>> m_stylePalette;
 
-  QVariant colorForModel(SkinEnums::PaletteColors type, bool ignore_custom_colors = false) const;
-  QPalette extractPalette() const;
+    QVariant colorForModel(SkinEnums::PaletteColors type, bool ignore_custom_colors = false) const;
+    QPalette extractPalette() const;
 };
 
 uint qHash(const SkinEnums::PaletteColors& key);
@@ -68,7 +74,7 @@ uint qHash(const SkinEnums::PaletteColors& key);
 Q_DECLARE_METATYPE(Skin)
 
 class RSSGUARD_DLLSPEC SkinFactory : public QObject {
-  Q_OBJECT
+    Q_OBJECT
 
   public:
     explicit SkinFactory(QObject* parent = nullptr);
@@ -104,7 +110,6 @@ class RSSGUARD_DLLSPEC SkinFactory : public QObject {
     QString currentStyle() const;
 
   private:
-
     // Loads the skin from given skin_data.
     void loadSkinFromData(const Skin& skin);
 

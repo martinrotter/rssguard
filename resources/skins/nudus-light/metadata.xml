@@ -6,6 +6,8 @@
   <palette>
     <color key="FgInteresting">#3A6FE4</color>
     <color key="FgSelectedInteresting">#F0F2FC</color>
+    <color key="FgNewMessages">#cc39e2</color>
+    <color key="FgSelectedNewMessages">#d57fe2</color>
     <color key="FgError">#E74343</color>
     <color key="FgSelectedError">#FFD7D7</color>
     <color key="Allright">#77dd77</color>

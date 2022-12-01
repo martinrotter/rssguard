@@ -478,13 +478,18 @@ QString SkinEnums::palleteColorText(PaletteColors col) {
 
     case SkinEnums::PaletteColors::FgSelectedInteresting:
       return QObject::tr("interesting stuff (highlighted)");
-      ;
 
     case SkinEnums::PaletteColors::FgError:
       return QObject::tr("errored items");
 
     case SkinEnums::PaletteColors::FgSelectedError:
       return QObject::tr("errored items (highlighted)");
+
+    case SkinEnums::PaletteColors::FgNewMessages:
+      return QObject::tr("items with new articles");
+
+    case SkinEnums::PaletteColors::FgSelectedNewMessages:
+      return QObject::tr("items with new articles (highlighted)");
 
     case SkinEnums::PaletteColors::Allright:
       return QObject::tr("OK-ish color");

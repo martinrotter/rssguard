@@ -59,7 +59,7 @@ QVariant Feed::data(int column, int role) const {
     case HIGHLIGHTED_FOREGROUND_TITLE_ROLE:
       switch (status()) {
         case Status::NewMessages:
-          return qApp->skins()->currentSkin().colorForModel(SkinEnums::PaletteColors::FgSelectedInteresting);
+          return qApp->skins()->currentSkin().colorForModel(SkinEnums::PaletteColors::FgSelectedNewMessages);
 
         case Status::Normal:
           if (countOfUnreadMessages() > 0) {
@@ -82,7 +82,7 @@ QVariant Feed::data(int column, int role) const {
     case Qt::ItemDataRole::ForegroundRole:
       switch (status()) {
         case Status::NewMessages:
-          return qApp->skins()->currentSkin().colorForModel(SkinEnums::PaletteColors::FgInteresting);
+          return qApp->skins()->currentSkin().colorForModel(SkinEnums::PaletteColors::FgNewMessages);
 
         case Status::Normal:
           if (countOfUnreadMessages() > 0) {

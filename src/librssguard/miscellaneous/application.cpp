@@ -239,8 +239,9 @@ void Application::performLogging(QtMsgType type, const QMessageLogContext& conte
     }
   }
 
-  qApp->displayLogMessageInDialog(console_message);
-
+  if (qApp != nullptr) {
+    qApp->displayLogMessageInDialog(console_message);
+  }
   if (type == QtMsgType::QtFatalMsg) {
     qApp->exit(EXIT_FAILURE);
   }
