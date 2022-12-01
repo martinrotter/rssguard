@@ -6,12 +6,13 @@
 #include "dynamic-shortcuts/dynamicshortcuts.h"
 #include "exceptions/applicationexception.h"
 #include "gui/dialogs/formabout.h"
+#include "gui/dialogs/formlog.h"
 #include "gui/dialogs/formmain.h"
 #include "gui/feedmessageviewer.h"
 #include "gui/feedsview.h"
 #include "gui/messagebox.h"
 #include "gui/toolbars/statusbar.h"
-#include "gui/webviewers/qtextbrowser/textbrowserviewer.h" // QTextBrowser-based web browsing.
+#include "gui/webviewers/qtextbrowser/textbrowserviewer.h"
 #include "miscellaneous/feedreader.h"
 #include "miscellaneous/iconfactory.h"
 #include "miscellaneous/iofactory.h"
@@ -68,6 +69,7 @@ Application::Application(const QString& id, int& argc, char** argv, const QStrin
   m_feedReader = nullptr;
   m_quitLogicDone = false;
   m_mainForm = nullptr;
+  m_logForm = nullptr;
   m_trayIcon = nullptr;
   m_settings = Settings::setupSettings(this);
 
@@ -237,6 +239,8 @@ void Application::performLogging(QtMsgType type, const QMessageLogContext& conte
     }
   }
 
+  qApp->displayLogMessageInDialog(console_message);
+
   if (type == QtMsgType::QtFatalMsg) {
     qApp->exit(EXIT_FAILURE);
   }
@@ -361,6 +365,12 @@ DatabaseFactory* Application::database() {
 void Application::eliminateFirstRuns() {
   settings()->setValue(GROUP(General), General::FirstRun, false);
   settings()->setValue(GROUP(General), QString(General::FirstRun) + QL1C('_') + APP_VERSION, false);
+}
+
+void Application::displayLogMessageInDialog(const QString& message) {
+  if (m_logForm != nullptr && m_logForm->isVisible()) {
+    m_logForm->appendLogMessage(message);
+  }
 }
 
 int Application::customAdblockPort() const {
@@ -1057,6 +1067,14 @@ void Application::parseCmdArgumentsFromMyInstance(const QStringList& raw_cli_arg
   else {
     m_customAdblockPort = 0;
   }
+}
+
+void Application::displayLog() {
+  if (m_logForm == nullptr) {
+    m_logForm = new FormLog(m_mainForm);
+  }
+
+  m_logForm->show();
 }
 
 void Application::fillCmdArgumentsParser(QCommandLineParser& parser) {

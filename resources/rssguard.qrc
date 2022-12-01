@@ -22,6 +22,7 @@
 
     <file>scripts/filters/blacklist.js</file>
     <file>scripts/filters/whitelist.js</file>
+    <file>scripts/filters/no-duplicates.js</file>
 
     <file>graphics/rssguard.ico</file>
 

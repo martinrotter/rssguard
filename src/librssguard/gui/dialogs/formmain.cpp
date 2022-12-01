@@ -551,6 +551,7 @@ void FormMain::setupIcons() {
   m_ui->m_actionBackupDatabaseSettings->setIcon(icon_theme_factory->fromTheme(QSL("document-export")));
   m_ui->m_actionRestoreDatabaseSettings->setIcon(icon_theme_factory->fromTheme(QSL("document-import")));
   m_ui->m_actionDonate->setIcon(icon_theme_factory->fromTheme(QSL("applications-office")));
+  m_ui->m_actionApplicationLog->setIcon(icon_theme_factory->fromTheme(QSL("dialog-information")));
   m_ui->m_actionDisplayDocs->setIcon(icon_theme_factory->fromTheme(QSL("applications-science")));
 
   // View.
@@ -751,6 +752,7 @@ void FormMain::createConnections() {
   });
   connect(m_ui->m_actionReportBug, &QAction::triggered, this, &FormMain::reportABug);
   connect(m_ui->m_actionDonate, &QAction::triggered, this, &FormMain::donate);
+  connect(m_ui->m_actionApplicationLog, &QAction::triggered, qApp, &Application::displayLog);
   connect(m_ui->m_actionDisplayDocs, &QAction::triggered, this, &FormMain::showDocs);
 
   // Tab widget connections.

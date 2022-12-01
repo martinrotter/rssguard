@@ -31,6 +31,7 @@
 #define qApp (Application::instance())
 
 class FormMain;
+class FormLog;
 class IconFactory;
 class QAction;
 class Mutex;
@@ -188,6 +189,8 @@ class RSSGUARD_DLLSPEC Application : public SingleApplication {
     void parseCmdArgumentsFromOtherInstance(const QString& message);
     void parseCmdArgumentsFromMyInstance(const QStringList& raw_cli_args);
 
+    void displayLog();
+
   private slots:
     void fillCmdArgumentsParser(QCommandLineParser& parser);
 
@@ -219,6 +222,7 @@ class RSSGUARD_DLLSPEC Application : public SingleApplication {
     void setupCustomDataFolder(const QString& data_folder);
     void determineFirstRuns();
     void eliminateFirstRuns();
+    void displayLogMessageInDialog(const QString& message);
 
   private:
     QStringList m_rawCliArgs;
@@ -243,6 +247,7 @@ class RSSGUARD_DLLSPEC Application : public SingleApplication {
 
     QList<QAction*> m_userActions;
     FormMain* m_mainForm;
+    FormLog* m_logForm;
     SystemTrayIcon* m_trayIcon;
     Settings* m_settings;
     WebFactory* m_webFactory;

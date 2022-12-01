@@ -604,6 +604,8 @@ Please report all issues/bugs/ideas to [Issues](https://github.com/martinrotter/
 
 If you report any bug, you must provide application debug log. So make sure to start RSS Guard from command line (`cmd.exe` on Windows) with `--log` switch and path where you want to store log file, for example `rssguard.exe --log '.\rssguard.log'` which will save log file into your RSS Guard folder. After you've started RSS Guard this way, then reproduce your problem and upload log file to the ticket.
 
+You can also display application log directly in RSS Guard, see `Application log` menu item in `Help` menu. Note that log messages are only pumped into the dialog when the dialog is opened (can be minimized).
+
 Also, for some broader questions or general ideas, use [discussions](https://github.com/martinrotter/rssguard/discussions) rather than [issues](https://github.com/martinrotter/rssguard/issues).
 
 ### <a id="locali"></a>Localization

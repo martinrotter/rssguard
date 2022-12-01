@@ -64,6 +64,7 @@
     </property>
     <addaction name="m_actionCheckForUpdates"/>
     <addaction name="m_actionReportBug"/>
+    <addaction name="m_actionApplicationLog"/>
     <addaction name="m_actionDisplayDocs"/>
     <addaction name="m_actionDonate"/>
     <addaction name="m_actionAboutGuard"/>
@@ -882,6 +883,11 @@
   <action name="m_actionFeedMoveBottom">
    <property name="text">
     <string>Move to &amp;bottom</string>
+   </property>
+  </action>
+  <action name="m_actionApplicationLog">
+   <property name="text">
+    <string>Display application &amp;log</string>
    </property>
   </action>
  </widget>
