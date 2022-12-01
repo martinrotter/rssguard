@@ -435,7 +435,7 @@ RSS Guard stores its data and settings in single folder. What exact folder it is
 RSS Guard is distributed in two variants:
 * **Standard package with WebEngine-based bundled article viewer**: This variant displays messages/articles with their full formatting and layout in embedded Chromium-based web browser. This variant of RSS Guard should be nice for everyone. Also, installation packages are relatively big.
 
-* **Lite package with simple text-based article viewer**: This variant displays article in much simpler and much more lightweight web viewer component. All packages of this variant have `nowebengine` keyword in their names. This variant of RSS Guard uses [litehtml](https://github.com/litehtml/litehtml) to render HTML/CSS layout of your articles. This component does NOT include JavaScript and is meant to be here for people who value their privacy.
+* **Lite package with simple text-based article viewer**: This variant displays article in much simpler and much more lightweight web viewer component. All packages of this variant have `nowebengine` keyword in their names. This flavor of RSS Guard does NOT include JavaScript for displaying articles and is meant to be here for people who value their privacy.
 
 #### AdBlock <a id="adbl"></a>
 Both variants of RSS Guard offer ad-blocking functionality via [Adblocker](https://github.com/cliqz-oss/adblocker). Adblocker offers similar performance to [uBlock Origin](https://github.com/gorhill/uBlock).
