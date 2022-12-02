@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<skin version="0.1.4" base="nudus-base">
+<skin version="0.1.5" base="nudus-base">
   <author>
     <name>akinokonomi, martinrotter</name>
   </author>
-  <description>Dark variant of 'nudus-light' skin.</description>
+  <description>Dark variation of a simple, unclothed theme.</description>
   <palette>
-    <color key="FgInteresting">#85ACF6</color>
-    <color key="FgSelectedInteresting">#D9E3F7</color>
-    <color key="FgNewMessages">#c684f4</color>
-    <color key="FgSelectedNewMessages">#d3a3f4</color>
+    <color key="FgInteresting">#F2F2F2</color>
+    <color key="FgSelectedInteresting">#FFFFFF</color>
+    <color key="FgNewMessages">#85ACF6</color>
+    <color key="FgSelectedNewMessages">#D9E3F7</color>
     <color key="FgError">#DF5656</color>
     <color key="FgSelectedError">#910303</color>
     <color key="Allright">#44AA44</color>
@@ -30,7 +30,7 @@
       <color role="Window">#2D2F32</color>
       <color role="Button">#323437</color>
 
-      <color role="Text">#D8D8D8</color>
+      <color role="Text">#E2E2E2</color>
       <color role="BrightText">#373A3D</color>
       <color role="HighlightedText">#FFFFFF</color>
       <color role="PlaceholderText">#A7A7A7</color>
@@ -50,3 +50,6 @@
     </group>
   </style-palette>
 </skin>
+<!--
+    vim:ts=2:sw=2:et:
+    -->

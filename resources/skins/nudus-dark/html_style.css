@@ -155,14 +155,14 @@ blockquote {
 }
 blockquote,
 blockquote p {
-  color: #D8D8D8;
+  color: #E2E2E2;
 }
 
 pre,
 code {
   border: 1px solid #282a2c;
   border-radius: 0.3em;
-  color: #D8D8D8;
+  color: #E2E2E2;
   font-family: monospace;
   font-size: .95rem !important;
 }
