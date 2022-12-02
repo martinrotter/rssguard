@@ -4,23 +4,17 @@ $qtbg-base:     #373A3D !default; // clr_basbg
 $qtbg-button:   #323437 !default; // clr_altbg // button bg (scrollbar, alt bg)
 $qcselbg:       #8291AD !default; // clr_selbg
 
-//
-// Emulate fusion colour processing (dark only)
-//
+// {{{ Emulate Fusion colour processing (dark only)
 
-//
 // Scrollbar colours
-//
 
 //$qcbgbg:    lighten($qtbg-button, 6%); // See toolbar bg
 $bgscroll:      lighten($qtbg-button, 2%) !default; // track and corner bg
 $tr-border:     darken($qtbg-button, 4%) !default; // track brdr
 
-//
-// Scrollbar thumb
-//
+// {{{ Scrollbar thumb
 
-// bg gradient
+// Thumb bg gradient
 
 // Normal
 $thscrlin:      lighten($qtbg-button, 6%) !default;
@@ -33,17 +27,19 @@ $thscrlhvout:   $thscrlout;
 // Light outline
 $th-border:     lighten($qtbg-button, 15%) !default;
 
-//
-// HTML palette (Colours)
-//
+// }}}
+
+// }}}
+
+// {{{ HTML palette (Colours)
 
 $cbg00: $qtbg-base;
 
-// Irrelevant, because fg is overridden by the switcher ~~~
+// {{{ Irrelevant, because colour switcher (see below) overrides all fg colours (either with JS on or off)
 $cfg00: #f5f5f5 !default;
-$cfg10: #D8D8D8 !default;
+$cfg10: #E2E2E2 !default;
 $cfg11: $cfg10;
-// ~~~
+// }}}
 
 $cbor2: #545556 !default;
 
@@ -54,9 +50,9 @@ $cmark:         #f8d08c66 !default; // 40% transparency
 
 $clink: $qcselbg;
 
-//
+// }}}
+
 // Other
-//
 
 $radius-unit: .3em !default;
 
@@ -65,14 +61,12 @@ $radius-unit: .3em !default;
 ;
 
 //
-// Dark HTML-style has following additions:
+// Dark CSS style has following additions:
 //
 
-//
-// Border around viewport
+// {{{ Border around viewport
 
-//  https://csswizardry.com/2010/12/simplified-page-borders-in-pure-css/
-//
+// https://csswizardry.com/2010/12/simplified-page-borders-in-pure-css/
 
 html::before,
 html::after,
@@ -113,9 +107,9 @@ body::after {
     left: 0;
 }
 
-//
-// Enhanced scrollbar
-//
+// }}}
+
+// {{{ Dark-coloured scrollbar
 
 ::-webkit-scrollbar {
     height: 13px;
@@ -212,7 +206,7 @@ $th-outline:
     }
 }
 
-// More complete borders for `body` scrollbar
+// Complete the borders for body scrollbar
 body::-webkit-scrollbar-thumb,
 body::-webkit-scrollbar-track {
 
@@ -259,14 +253,14 @@ body::-webkit-scrollbar-corner {
     }
 }
 
-//
-// Font colour switcher
+// }}}
 
-//  Thank you so much!!
-//  https://css-tricks.com/switch-font-color-for-different-backgrounds-with-css/
-//
+// {{{ Fg colour switcher
 
-/* Please enable JS for additional font-colouring features */
+// Thank you so much!!
+// https://css-tricks.com/switch-font-color-for-different-backgrounds-with-css/
+
+/* Please enable JS for additional colouring features */
 :root {
     // Default RGB values for background colour
     --rssguard-red: 0;
@@ -296,7 +290,7 @@ body::-webkit-scrollbar-corner {
 body,
 ::selection,
 mark, code, pre, pre > code,
-blockquote {
+blockquote, blockquote p { // TODO: why did not I add 'blockquote p' here before?
     color:
         hsla(
             0,
@@ -311,3 +305,5 @@ blockquote {
             .9
         );
 }
+// }}}
+// vim:foldmethod=marker
