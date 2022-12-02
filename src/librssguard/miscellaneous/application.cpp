@@ -370,7 +370,7 @@ void Application::eliminateFirstRuns() {
 
 void Application::displayLogMessageInDialog(const QString& message) {
   if (m_logForm != nullptr && m_logForm->isVisible()) {
-    m_logForm->appendLogMessage(message);
+    emit sendLogToDialog(message);
   }
 }
 
@@ -1073,6 +1073,12 @@ void Application::parseCmdArgumentsFromMyInstance(const QStringList& raw_cli_arg
 void Application::displayLog() {
   if (m_logForm == nullptr) {
     m_logForm = new FormLog(m_mainForm);
+
+    connect(this,
+            &Application::sendLogToDialog,
+            m_logForm,
+            &FormLog::appendLogMessage,
+            Qt::ConnectionType::QueuedConnection);
   }
 
   m_logForm->show();

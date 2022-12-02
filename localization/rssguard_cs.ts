@@ -5234,7 +5234,7 @@ Tokeny vyprší: %2</translation>
     <message>
         <location filename="../src/librssguard/services/abstract/serviceroot.cpp" line="99"/>
         <source>Synchronize folders &amp;&amp; other items</source>
-        <translation>Synchronizovat strom &amp; další položky</translation>
+        <translation>Synchronizovat strom &amp;&amp; další položky</translation>
     </message>
     <message>
         <location filename="../src/librssguard/services/abstract/serviceroot.cpp" line="108"/>

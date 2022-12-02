@@ -15,8 +15,8 @@
 #include <QFileDialog>
 #include <QMenu>
 #include <QMimeData>
-#include <QtGlobal>
 #include <QTextCodec>
+#include <QtGlobal>
 
 StandardFeedDetails::StandardFeedDetails(QWidget* parent) : QWidget(parent) {
   m_ui.setupUi(this);
@@ -42,11 +42,16 @@ StandardFeedDetails::StandardFeedDetails(QWidget* parent) : QWidget(parent) {
                                          tr("Here you can enter script executaion line, including interpreter."));
 
   // Add standard feed types.
-  m_ui.m_cmbType->addItem(StandardFeed::typeToString(StandardFeed::Type::Atom10), QVariant::fromValue(int(StandardFeed::Type::Atom10)));
-  m_ui.m_cmbType->addItem(StandardFeed::typeToString(StandardFeed::Type::Rdf), QVariant::fromValue(int(StandardFeed::Type::Rdf)));
-  m_ui.m_cmbType->addItem(StandardFeed::typeToString(StandardFeed::Type::Rss0X), QVariant::fromValue(int(StandardFeed::Type::Rss0X)));
-  m_ui.m_cmbType->addItem(StandardFeed::typeToString(StandardFeed::Type::Rss2X), QVariant::fromValue(int(StandardFeed::Type::Rss2X)));
-  m_ui.m_cmbType->addItem(StandardFeed::typeToString(StandardFeed::Type::Json), QVariant::fromValue(int(StandardFeed::Type::Json)));
+  m_ui.m_cmbType->addItem(StandardFeed::typeToString(StandardFeed::Type::Atom10),
+                          QVariant::fromValue(int(StandardFeed::Type::Atom10)));
+  m_ui.m_cmbType->addItem(StandardFeed::typeToString(StandardFeed::Type::Rdf),
+                          QVariant::fromValue(int(StandardFeed::Type::Rdf)));
+  m_ui.m_cmbType->addItem(StandardFeed::typeToString(StandardFeed::Type::Rss0X),
+                          QVariant::fromValue(int(StandardFeed::Type::Rss0X)));
+  m_ui.m_cmbType->addItem(StandardFeed::typeToString(StandardFeed::Type::Rss2X),
+                          QVariant::fromValue(int(StandardFeed::Type::Rss2X)));
+  m_ui.m_cmbType->addItem(StandardFeed::typeToString(StandardFeed::Type::Json),
+                          QVariant::fromValue(int(StandardFeed::Type::Json)));
 
   // Load available encodings.
   const QList<QByteArray> encodings = QTextCodec::availableCodecs();
@@ -65,15 +70,11 @@ StandardFeedDetails::StandardFeedDetails(QWidget* parent) : QWidget(parent) {
 
   // Setup menu & actions for icon selection.
   m_iconMenu = new QMenu(tr("Icon selection"), this);
-  m_actionLoadIconFromFile = new QAction(qApp->icons()->fromTheme(QSL("image-x-generic")),
-                                         tr("Load icon from file..."),
-                                         this);
-  m_actionUseDefaultIcon = new QAction(qApp->icons()->fromTheme(QSL("application-rss+xml")),
-                                       tr("Use default icon from icon theme"),
-                                       this);
-  m_actionFetchIcon = new QAction(qApp->icons()->fromTheme(QSL("emblem-downloads")),
-                                  tr("Fetch icon from feed"),
-                                  this);
+  m_actionLoadIconFromFile =
+    new QAction(qApp->icons()->fromTheme(QSL("image-x-generic")), tr("Load icon from file..."), this);
+  m_actionUseDefaultIcon =
+    new QAction(qApp->icons()->fromTheme(QSL("application-rss+xml")), tr("Use default icon from icon theme"), this);
+  m_actionFetchIcon = new QAction(qApp->icons()->fromTheme(QSL("emblem-downloads")), tr("Fetch icon from feed"), this);
   m_iconMenu->addAction(m_actionFetchIcon);
   m_iconMenu->addAction(m_actionLoadIconFromFile);
   m_iconMenu->addAction(m_actionUseDefaultIcon);
@@ -87,9 +88,11 @@ StandardFeedDetails::StandardFeedDetails(QWidget* parent) : QWidget(parent) {
                                      tr("No metadata fetched so far."));
 
   connect(m_ui.m_txtTitle->lineEdit(), &BaseLineEdit::textChanged, this, &StandardFeedDetails::onTitleChanged);
-  connect(m_ui.m_txtDescription->lineEdit(), &BaseLineEdit::textChanged, this, &StandardFeedDetails::onDescriptionChanged);
-  connect(m_ui.m_cmbSourceType, QOverload<int>::of(&QComboBox::currentIndexChanged),
-          this, [this]() {
+  connect(m_ui.m_txtDescription->lineEdit(),
+          &BaseLineEdit::textChanged,
+          this,
+          &StandardFeedDetails::onDescriptionChanged);
+  connect(m_ui.m_cmbSourceType, QOverload<int>::of(&QComboBox::currentIndexChanged), this, [this]() {
     onUrlChanged(m_ui.m_txtSource->textEdit()->toPlainText());
   });
   connect(m_ui.m_txtSource->textEdit(), &QPlainTextEdit::textChanged, this, [this]() {
@@ -125,16 +128,15 @@ StandardFeedDetails::StandardFeedDetails(QWidget* parent) : QWidget(parent) {
   onPostProcessScriptChanged({});
 }
 
-void StandardFeedDetails::guessIconOnly(StandardFeed::SourceType source_type, const QString& source,
-                                        const QString& post_process_script, const QString& username,
-                                        const QString& password, const QNetworkProxy& custom_proxy) {
+void StandardFeedDetails::guessIconOnly(StandardFeed::SourceType source_type,
+                                        const QString& source,
+                                        const QString& post_process_script,
+                                        const QString& username,
+                                        const QString& password,
+                                        const QNetworkProxy& custom_proxy) {
   try {
-    StandardFeed* metadata = StandardFeed::guessFeed(source_type,
-                                                     source,
-                                                     post_process_script,
-                                                     username,
-                                                     password,
-                                                     custom_proxy);
+    StandardFeed* metadata =
+      StandardFeed::guessFeed(source_type, source, post_process_script, username, password, custom_proxy);
 
     // Icon or whole feed was guessed.
     m_ui.m_btnIcon->setIcon(metadata->icon());
@@ -162,22 +164,21 @@ void StandardFeedDetails::guessIconOnly(StandardFeed::SourceType source_type, co
   }
 }
 
-void StandardFeedDetails::guessFeed(StandardFeed::SourceType source_type, const QString& source,
-                                    const QString& post_process_script, const QString& username,
-                                    const QString& password, const QNetworkProxy& custom_proxy) {
+void StandardFeedDetails::guessFeed(StandardFeed::SourceType source_type,
+                                    const QString& source,
+                                    const QString& post_process_script,
+                                    const QString& username,
+                                    const QString& password,
+                                    const QNetworkProxy& custom_proxy) {
   try {
-    StandardFeed* metadata = StandardFeed::guessFeed(source_type,
-                                                     source,
-                                                     post_process_script,
-                                                     username,
-                                                     password,
-                                                     custom_proxy);
+    StandardFeed* metadata =
+      StandardFeed::guessFeed(source_type, source, post_process_script, username, password, custom_proxy);
 
     // Icon or whole feed was guessed.
     m_ui.m_btnIcon->setIcon(metadata->icon());
     m_ui.m_txtTitle->lineEdit()->setText(metadata->sanitizedTitle());
     m_ui.m_txtDescription->lineEdit()->setText(metadata->description());
-    m_ui.m_cmbType->setCurrentIndex(m_ui.m_cmbType->findData(QVariant::fromValue((int) metadata->type())));
+    m_ui.m_cmbType->setCurrentIndex(m_ui.m_cmbType->findData(QVariant::fromValue((int)metadata->type())));
     int encoding_index = m_ui.m_cmbEncoding->findText(metadata->encoding(), Qt::MatchFlag::MatchFixedString);
 
     if (encoding_index >= 0) {
@@ -275,8 +276,10 @@ void StandardFeedDetails::onPostProcessScriptChanged(const QString& new_pp) {
 }
 
 void StandardFeedDetails::onLoadIconFromFile() {
-  QFileDialog dialog(this, tr("Select icon file for the feed"),
-                     qApp->homeFolder(), tr("Images (*.bmp *.jpg *.jpeg *.png *.svg *.tga)"));
+  QFileDialog dialog(this,
+                     tr("Select icon file for the feed"),
+                     qApp->homeFolder(),
+                     tr("Images (*.bmp *.jpg *.jpeg *.png *.svg *.tga)"));
 
   dialog.setFileMode(QFileDialog::FileMode::ExistingFile);
   dialog.setWindowIcon(qApp->icons()->fromTheme(QSL("image-x-generic")));
@@ -315,7 +318,8 @@ void StandardFeedDetails::prepareForNewFeed(RootItem* parent_to_select, const QS
 
   if (parent_to_select != nullptr) {
     if (parent_to_select->kind() == RootItem::Kind::Category) {
-      m_ui.m_cmbParentCategory->setCurrentIndex(m_ui.m_cmbParentCategory->findData(QVariant::fromValue((void*)parent_to_select)));
+      m_ui.m_cmbParentCategory
+        ->setCurrentIndex(m_ui.m_cmbParentCategory->findData(QVariant::fromValue((void*)parent_to_select)));
     }
     else if (parent_to_select->kind() == RootItem::Kind::Feed) {
       int target_item = m_ui.m_cmbParentCategory->findData(QVariant::fromValue((void*)parent_to_select->parent()));
@@ -342,7 +346,8 @@ void StandardFeedDetails::prepareForNewFeed(RootItem* parent_to_select, const QS
 
 void StandardFeedDetails::setExistingFeed(StandardFeed* feed) {
   m_ui.m_cmbSourceType->setCurrentIndex(m_ui.m_cmbSourceType->findData(QVariant::fromValue(feed->sourceType())));
-  m_ui.m_cmbParentCategory->setCurrentIndex(m_ui.m_cmbParentCategory->findData(QVariant::fromValue((void*)feed->parent())));
+  m_ui.m_cmbParentCategory
+    ->setCurrentIndex(m_ui.m_cmbParentCategory->findData(QVariant::fromValue((void*)feed->parent())));
   m_ui.m_txtTitle->lineEdit()->setText(feed->title());
   m_ui.m_txtDescription->lineEdit()->setText(feed->description());
   m_ui.m_btnIcon->setIcon(feed->icon());
@@ -355,9 +360,9 @@ void StandardFeedDetails::setExistingFeed(StandardFeed* feed) {
 }
 
 void StandardFeedDetails::loadCategories(const QList<Category*>& categories, RootItem* root_item) {
-  m_ui.m_cmbParentCategory->addItem(root_item->fullIcon(), root_item->title(), QVariant::fromValue((void*) root_item));
+  m_ui.m_cmbParentCategory->addItem(root_item->fullIcon(), root_item->title(), QVariant::fromValue((void*)root_item));
 
   for (Category* category : categories) {
-    m_ui.m_cmbParentCategory->addItem(category->fullIcon(), category->title(), QVariant::fromValue((void*) category));
+    m_ui.m_cmbParentCategory->addItem(category->fullIcon(), category->title(), QVariant::fromValue((void*)category));
   }
 }

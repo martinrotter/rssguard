@@ -2834,7 +2834,7 @@ You have to restart manually.</source>
     <message>
         <location filename="../src/librssguard/services/standard/gui/formstandardimportexport.ui" line="85"/>
         <source>Export icons</source>
-        <translation type="unfinished"/>
+        <translation>匯出圖示</translation>
     </message>
     <message>
         <location filename="../src/librssguard/services/standard/gui/formstandardimportexport.ui" line="151"/>
@@ -3987,7 +3987,7 @@ Login tokens expiration: %2</source>
     <message>
         <location filename="../src/librssguard/core/messagesmodel.cpp" line="269"/>
         <source>Name of feed of the article.</source>
-        <translation type="unfinished"/>
+        <translation>文章的文源名稱。</translation>
     </message>
     <message>
         <location filename="../src/librssguard/core/messagesmodel.cpp" line="270"/>
@@ -4120,12 +4120,12 @@ Login tokens expiration: %2</source>
     <message>
         <location filename="../src/librssguard/gui/toolbars/messagestoolbar.cpp" line="221"/>
         <source>Show articles with attachments</source>
-        <translation type="unfinished"/>
+        <translation>顯示帶有附件的文章</translation>
     </message>
     <message>
         <location filename="../src/librssguard/gui/toolbars/messagestoolbar.cpp" line="226"/>
         <source>Show articles with some score</source>
-        <translation type="unfinished"/>
+        <translation>顯示某評等的文章</translation>
     </message>
     <message>
         <location filename="../src/librssguard/gui/toolbars/messagestoolbar.cpp" line="231"/>
@@ -4267,7 +4267,7 @@ Login tokens expiration: %2</source>
         <location filename="../src/librssguard/network-web/networkfactory.cpp" line="141"/>
         <source>unknown error (%1)</source>
         <extracomment>Network status.</extracomment>
-        <translation type="unfinished"/>
+        <translation>未知的錯誤 (%1)</translation>
     </message>
     <message>
         <location filename="../src/librssguard/network-web/networkfactory.cpp" line="125"/>
@@ -4714,7 +4714,7 @@ Login tokens expiration: %2</source>
     <message>
         <location filename="../src/librssguard/services/owncloud/owncloudserviceroot.cpp" line="129"/>
         <source>cannot get list of feeds, network error &apos;%1&apos;</source>
-        <translation type="unfinished"/>
+        <translation>無法獲取文源清單，網路錯誤 &apos;%1&apos;</translation>
     </message>
 </context>
 <context>
@@ -5236,12 +5236,12 @@ Login tokens expiration: %2</source>
     <message>
         <location filename="../src/librssguard/services/abstract/serviceroot.cpp" line="505"/>
         <source>Error when fetching list of feeds</source>
-        <translation type="unfinished"/>
+        <translation>取得文源清單時出錯</translation>
     </message>
     <message>
         <location filename="../src/librssguard/services/abstract/serviceroot.cpp" line="506"/>
         <source>Feeds &amp; categories for account &apos;%1&apos; were not fetched, error: %2</source>
-        <translation type="unfinished"/>
+        <translation>未取得帳號 &apos;%1&apos; 的文源 &amp; 分類，錯誤為: %2</translation>
     </message>
 </context>
 <context>
@@ -5301,7 +5301,7 @@ File filter for external e-mail selection dialog.</extracomment>
     <message>
         <location filename="../src/librssguard/gui/settings/settingsbrowsermail.ui" line="27"/>
         <source>Do not accept any incoming cookies</source>
-        <translation type="unfinished"/>
+        <translation>不讓任何 cookies 進來</translation>
     </message>
     <message>
         <location filename="../src/librssguard/gui/settings/settingsbrowsermail.ui" line="35"/>
@@ -5446,7 +5446,7 @@ File filter for external e-mail selection dialog.</extracomment>
     <message>
         <location filename="../src/librssguard/gui/settings/settingsbrowsermail.h" line="46"/>
         <source>Network &amp; web &amp; tools</source>
-        <translation type="unfinished"/>
+        <translation>網路 &amp; 網絡 &amp; 工具</translation>
     </message>
 </context>
 <context>
@@ -5686,7 +5686,7 @@ Authors of this application are NOT responsible for lost data.</source>
     <message>
         <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.cpp" line="53"/>
         <source> = unchanged size</source>
-        <translation type="unfinished"/>
+        <translation> = 未變更的大小</translation>
     </message>
     <message>
         <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="21"/>
@@ -5791,7 +5791,7 @@ Authors of this application are NOT responsible for lost data.</source>
     <message>
         <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="291"/>
         <source>Internal article viewer</source>
-        <translation type="unfinished"/>
+        <translation>內建的文章檢視器</translation>
     </message>
     <message>
         <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="297"/>
@@ -5816,7 +5816,7 @@ Authors of this application are NOT responsible for lost data.</source>
     <message>
         <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="306"/>
         <source>Limit height of pictures</source>
-        <translation type="unfinished"/>
+        <translation>圖片高度上限</translation>
     </message>
     <message>
         <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="391"/>
@@ -6193,7 +6193,7 @@ Also, relaunch &quot;Settings&quot; dialog after you install Node.js.</source>
     <message>
         <location filename="../src/librssguard/gui/settings/settingsnodejs.cpp" line="135"/>
         <source>You cannot choose file, you have to choose FOLDER.</source>
-        <translation type="unfinished"/>
+        <translation>不可選擇檔案，須選擇資料夾。</translation>
     </message>
     <message>
         <location filename="../src/librssguard/gui/settings/settingsnodejs.cpp" line="139"/>
@@ -6936,7 +6936,7 @@ Unread news: %2</source>
     <message>
         <location filename="../src/librssguard/gui/webviewers/qtextbrowser/textbrowserviewer.cpp" line="336"/>
         <source>Enable external resources</source>
-        <translation type="unfinished"/>
+        <translation>啟用外部資源</translation>
     </message>
     <message>
         <location filename="../src/librssguard/gui/webviewers/qtextbrowser/textbrowserviewer.cpp" line="339"/>
@@ -7353,7 +7353,7 @@ Last login on: %4</source>
     <message>
         <location filename="../src/librssguard/services/tt-rss/ttrssserviceroot.cpp" line="409"/>
         <source>cannot get list of feeds, network error &apos;%1&apos;</source>
-        <translation type="unfinished"/>
+        <translation>無法獲取文源清單，網路錯誤 &apos;%&apos;</translation>
     </message>
 </context>
 <context>
