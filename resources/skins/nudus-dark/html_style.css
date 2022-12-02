@@ -464,7 +464,7 @@ body::-webkit-scrollbar-corner {
   border-radius: 0 0.3em 0.3em 0;
 }
 
-/* Please enable JS for additional font-colouring features */
+/* Please enable JS for additional colouring features */
 :root {
   --rssguard-red: 0;
   --rssguard-green: 0;
@@ -488,7 +488,7 @@ body::-webkit-scrollbar-corner {
 body,
 ::selection,
 mark, code, pre, pre > code,
-blockquote {
+blockquote, blockquote p {
   color: hsla(0, 0%, calc( ( var(--rssguard-perceived-lightness) - var(--rssguard-threshold) ) * -10000000% ), 0.9);
 }
 
