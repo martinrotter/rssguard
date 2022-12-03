@@ -87,15 +87,15 @@ if [ $is_linux = true ]; then
 
   # Create AppImage.
   unset QTDIR; unset QT_PLUGIN_PATH ; unset LD_LIBRARY_PATH
-  ./linuxdeployqt-continuous-x86_64.AppImage "./AppDir/usr/share/applications/com.github.rssguard.desktop" -bundle-non-qt-libs -no-translations $gst_executables
-  ./linuxdeployqt-continuous-x86_64.AppImage "./AppDir/usr/share/applications/com.github.rssguard.desktop" -bundle-non-qt-libs -no-translations $gst_executables
+  ./linuxdeployqt-continuous-x86_64.AppImage "./AppDir/usr/share/applications/io.github.martinrotter.rssguard.desktop" -bundle-non-qt-libs -no-translations $gst_executables
+  ./linuxdeployqt-continuous-x86_64.AppImage "./AppDir/usr/share/applications/io.github.martinrotter.rssguard.desktop" -bundle-non-qt-libs -no-translations $gst_executables
 
   if [[ "$webengine" == "ON" ]]; then
     # Copy some NSS3 files to prevent WebEngine crashes.
     cp /usr/lib/x86_64-linux-gnu/nss/* ./AppDir/usr/lib/ -v
   fi
 
-  ./linuxdeployqt-continuous-x86_64.AppImage "./AppDir/usr/share/applications/com.github.rssguard.desktop" -appimage -no-translations $gst_executables
+  ./linuxdeployqt-continuous-x86_64.AppImage "./AppDir/usr/share/applications/io.github.martinrotter.rssguard.desktop" -appimage -no-translations $gst_executables
 
   # Rename AppImaage.
   set -- R*.AppImage
