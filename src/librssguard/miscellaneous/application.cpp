@@ -890,7 +890,12 @@ void Application::onFeedUpdatesProgress(const Feed* feed, int current, int total
 }
 
 void Application::onFeedUpdatesFinished(const FeedDownloadResults& results) {
-  if (!results.updatedFeeds().isEmpty()) {
+  auto fds = results.updatedFeeds();
+  bool some_unquiet_feed = boolinq::from(fds).any([](const QPair<Feed*, int>& fd) {
+    return !fd.first->isQuiet();
+  });
+
+  if (some_unquiet_feed) {
     // Now, inform about results via GUI message/notification.
     qApp->showGuiMessage(Notification::Event::NewUnreadArticlesFetched,
                          {tr("Unread articles fetched"), results.overview(10), QSystemTrayIcon::MessageIcon::NoIcon});

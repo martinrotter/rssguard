@@ -336,11 +336,15 @@ void FeedReader::executeNextAutoUpdate() {
     // Request update for given feeds.
     updateFeeds(feeds_for_update);
 
-    // NOTE: OSD/bubble informing about performing of scheduled update can be shown now.
-    qApp->showGuiMessage(Notification::Event::ArticlesFetchingStarted,
-                         {tr("Starting auto-download of some feeds' articles"),
-                          tr("I will auto-download new articles for %n feed(s).", nullptr, feeds_for_update.size()),
-                          QSystemTrayIcon::MessageIcon::Information});
+    if (boolinq::from(feeds_for_update).any([](const Feed* fd) {
+          return !fd->isQuiet();
+        })) {
+      // NOTE: OSD/bubble informing about performing of scheduled update can be shown now.
+      qApp->showGuiMessage(Notification::Event::ArticlesFetchingStarted,
+                           {tr("Starting auto-download of some feeds' articles"),
+                            tr("I will auto-download new articles for %n feed(s).", nullptr, feeds_for_update.size()),
+                            QSystemTrayIcon::MessageIcon::Information});
+    }
   }
 }
 
