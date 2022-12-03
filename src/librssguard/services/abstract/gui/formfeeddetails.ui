@@ -66,10 +66,17 @@
        <string>Miscellaneous</string>
       </attribute>
       <layout class="QFormLayout" name="formLayout_2">
-       <item row="0" column="0" colspan="2">
+       <item row="1" column="0" colspan="2">
         <widget class="QCheckBox" name="m_cbDisableFeed">
          <property name="text">
           <string>Disable this feed</string>
+         </property>
+        </widget>
+       </item>
+       <item row="0" column="0" colspan="2">
+        <widget class="QCheckBox" name="m_cbSuppressFeed">
+         <property name="text">
+          <string>Suppress this feed</string>
          </property>
         </widget>
        </item>
@@ -99,6 +106,14 @@
    <header>timespinbox.h</header>
   </customwidget>
  </customwidgets>
+ <tabstops>
+  <tabstop>m_tabWidget</tabstop>
+  <tabstop>m_cmbAutoUpdateType</tabstop>
+  <tabstop>m_spinAutoUpdateInterval</tabstop>
+  <tabstop>m_cbOpenArticlesAutomatically</tabstop>
+  <tabstop>m_cbSuppressFeed</tabstop>
+  <tabstop>m_cbDisableFeed</tabstop>
+ </tabstops>
  <resources/>
  <connections>
   <connection>

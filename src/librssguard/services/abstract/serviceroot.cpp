@@ -374,6 +374,7 @@ QMap<QString, QVariantMap> ServiceRoot::storeCustomFeedsData() {
     feed_custom_data.insert(QSL("auto_update_type"), int(feed->autoUpdateType()));
     feed_custom_data.insert(QSL("msg_filters"), QVariant::fromValue(feed->messageFilters()));
     feed_custom_data.insert(QSL("is_off"), feed->isSwitchedOff());
+    feed_custom_data.insert(QSL("is_quiet"), feed->isQuiet());
     feed_custom_data.insert(QSL("open_articles_directly"), feed->openArticlesDirectly());
 
     // NOTE: These are here specifically to be able to restore custom sort order.
@@ -406,6 +407,7 @@ void ServiceRoot::restoreCustomFeedsData(const QMap<QString, QVariantMap>& data,
       feed->setMessageFilters(feed_custom_data.value(QSL("msg_filters")).value<QList<QPointer<MessageFilter>>>());
 
       feed->setIsSwitchedOff(feed_custom_data.value(QSL("is_off")).toBool());
+      feed->setIsQuiet(feed_custom_data.value(QSL("is_quiet")).toBool());
       feed->setOpenArticlesDirectly(feed_custom_data.value(QSL("open_articles_directly")).toBool());
     }
   }

@@ -22,8 +22,8 @@
 Feed::Feed(RootItem* parent)
   : RootItem(parent), m_source(QString()), m_status(Status::Normal), m_statusString(QString()),
     m_autoUpdateType(AutoUpdateType::DefaultAutoUpdate), m_autoUpdateInterval(DEFAULT_AUTO_UPDATE_INTERVAL),
-    m_lastUpdated(QDateTime::currentDateTimeUtc()), m_isSwitchedOff(false), m_openArticlesDirectly(false),
-    m_messageFilters(QList<QPointer<MessageFilter>>()) {
+    m_lastUpdated(QDateTime::currentDateTimeUtc()), m_isSwitchedOff(false), m_isQuiet(false),
+    m_openArticlesDirectly(false), m_messageFilters(QList<QPointer<MessageFilter>>()) {
   setKind(RootItem::Kind::Feed);
 }
 
@@ -46,6 +46,7 @@ Feed::Feed(const Feed& other) : RootItem(other) {
   setMessageFilters(other.messageFilters());
   setOpenArticlesDirectly(other.openArticlesDirectly());
   setIsSwitchedOff(other.isSwitchedOff());
+  setIsQuiet(other.isQuiet());
 }
 
 QList<Message> Feed::undeletedMessages() const {
@@ -281,6 +282,14 @@ QString Feed::getStatusDescription() const {
     default:
       return tr("error");
   }
+}
+
+bool Feed::isQuiet() const {
+  return m_isQuiet;
+}
+
+void Feed::setIsQuiet(bool quiet) {
+  m_isQuiet = quiet;
 }
 
 QDateTime Feed::lastUpdated() const {

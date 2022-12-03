@@ -34,7 +34,9 @@ class DatabaseQueries {
     static bool assignLabelToMessage(const QSqlDatabase& db, Label* label, const Message& msg);
     static bool setLabelsForMessage(const QSqlDatabase& db, const QList<Label*>& labels, const Message& msg);
     static QList<Label*> getLabelsForAccount(const QSqlDatabase& db, int account_id);
-    static QList<Label*> getLabelsForMessage(const QSqlDatabase& db, const Message& msg, const QList<Label*> installed_labels);
+    static QList<Label*> getLabelsForMessage(const QSqlDatabase& db,
+                                             const Message& msg,
+                                             const QList<Label*> installed_labels);
     static bool updateLabel(const QSqlDatabase& db, Label* label);
     static bool deleteLabel(const QSqlDatabase& db, Label* label);
     static bool createLabel(const QSqlDatabase& db, Label* label, int account_id);
@@ -45,7 +47,10 @@ class DatabaseQueries {
     static bool markUnreadMessagesRead(const QSqlDatabase& db, int account_id);
     static bool markMessagesReadUnread(const QSqlDatabase& db, const QStringList& ids, RootItem::ReadStatus read);
     static bool markMessageImportant(const QSqlDatabase& db, int id, RootItem::Importance importance);
-    static bool markFeedsReadUnread(const QSqlDatabase& db, const QStringList& ids, int account_id, RootItem::ReadStatus read);
+    static bool markFeedsReadUnread(const QSqlDatabase& db,
+                                    const QStringList& ids,
+                                    int account_id,
+                                    RootItem::ReadStatus read);
     static bool markBinReadUnread(const QSqlDatabase& db, int account_id, RootItem::ReadStatus read);
     static bool markAccountReadUnread(const QSqlDatabase& db, int account_id, RootItem::ReadStatus read);
     static bool switchMessagesImportance(const QSqlDatabase& db, const QStringList& ids);
@@ -68,27 +73,44 @@ class DatabaseQueries {
     static bool purgeLabelsAndLabelAssignments(const QSqlDatabase& db, int account_id);
 
     // Counts of unread/all messages.
-    static QMap<QString, QPair<int, int>> getMessageCountsForCategory(const QSqlDatabase& db, const QString& custom_id,
-                                                                      int account_id, bool only_total_counts,
+    static QMap<QString, QPair<int, int>> getMessageCountsForCategory(const QSqlDatabase& db,
+                                                                      const QString& custom_id,
+                                                                      int account_id,
+                                                                      bool only_total_counts,
                                                                       bool* ok = nullptr);
-    static QMap<QString, QPair<int, int>> getMessageCountsForAccount(const QSqlDatabase& db, int account_id,
-                                                                     bool only_total_counts, bool* ok = nullptr);
-    static int getMessageCountsForFeed(const QSqlDatabase& db, const QString& feed_custom_id, int account_id,
-                                       bool only_total_counts, bool* ok = nullptr);
-    static int getMessageCountsForLabel(const QSqlDatabase& db, Label* label, int account_id,
-                                        bool only_total_counts, bool* ok = nullptr);
-    static int getImportantMessageCounts(const QSqlDatabase& db, int account_id,
-                                         bool only_total_counts, bool* ok = nullptr);
+    static QMap<QString, QPair<int, int>> getMessageCountsForAccount(const QSqlDatabase& db,
+                                                                     int account_id,
+                                                                     bool only_total_counts,
+                                                                     bool* ok = nullptr);
+    static int getMessageCountsForFeed(const QSqlDatabase& db,
+                                       const QString& feed_custom_id,
+                                       int account_id,
+                                       bool only_total_counts,
+                                       bool* ok = nullptr);
+    static int getMessageCountsForLabel(const QSqlDatabase& db,
+                                        Label* label,
+                                        int account_id,
+                                        bool only_total_counts,
+                                        bool* ok = nullptr);
+    static int getImportantMessageCounts(const QSqlDatabase& db,
+                                         int account_id,
+                                         bool only_total_counts,
+                                         bool* ok = nullptr);
     static int getUnreadMessageCounts(const QSqlDatabase& db, int account_id, bool* ok = nullptr);
-    static int getMessageCountsForBin(const QSqlDatabase& db, int account_id, bool including_total_counts, bool* ok = nullptr);
+    static int getMessageCountsForBin(const QSqlDatabase& db,
+                                      int account_id,
+                                      bool including_total_counts,
+                                      bool* ok = nullptr);
 
     // Get messages (for newspaper view for example).
     static QList<Message> getUndeletedMessagesWithLabel(const QSqlDatabase& db, const Label* label, bool* ok = nullptr);
     static QList<Message> getUndeletedLabelledMessages(const QSqlDatabase& db, int account_id, bool* ok = nullptr);
     static QList<Message> getUndeletedImportantMessages(const QSqlDatabase& db, int account_id, bool* ok = nullptr);
     static QList<Message> getUndeletedUnreadMessages(const QSqlDatabase& db, int account_id, bool* ok = nullptr);
-    static QList<Message> getUndeletedMessagesForFeed(const QSqlDatabase& db, const QString& feed_custom_id,
-                                                      int account_id, bool* ok = nullptr);
+    static QList<Message> getUndeletedMessagesForFeed(const QSqlDatabase& db,
+                                                      const QString& feed_custom_id,
+                                                      int account_id,
+                                                      bool* ok = nullptr);
     static QList<Message> getUndeletedMessagesForBin(const QSqlDatabase& db, int account_id, bool* ok = nullptr);
     static QList<Message> getUndeletedMessagesForAccount(const QSqlDatabase& db, int account_id, bool* ok = nullptr);
 
@@ -100,23 +122,30 @@ class DatabaseQueries {
     static QStringList customIdsOfUnreadMessages(const QSqlDatabase& db, int account_id, bool* ok = nullptr);
     static QStringList customIdsOfMessagesFromAccount(const QSqlDatabase& db, int account_id, bool* ok = nullptr);
     static QStringList customIdsOfMessagesFromBin(const QSqlDatabase& db, int account_id, bool* ok = nullptr);
-    static QStringList customIdsOfMessagesFromFeed(const QSqlDatabase& db, const QString& feed_custom_id, int account_id,
+    static QStringList customIdsOfMessagesFromFeed(const QSqlDatabase& db,
+                                                   const QString& feed_custom_id,
+                                                   int account_id,
                                                    bool* ok = nullptr);
 
     // Common account methods.
-    template<typename T>
+    template <typename T>
     static QList<ServiceRoot*> getAccounts(const QSqlDatabase& db, const QString& code, bool* ok = nullptr);
 
-    template<typename Categ, typename Fee>
-    static void loadRootFromDatabase(ServiceRoot* root);
+    template <typename Categ, typename Fee> static void loadRootFromDatabase(ServiceRoot* root);
     static bool storeNewOauthTokens(const QSqlDatabase& db, const QString& refresh_token, int account_id);
     static void createOverwriteAccount(const QSqlDatabase& db, ServiceRoot* account);
 
     // Returns counts of updated messages <unread, all>.
-    static QPair<int, int> updateMessages(QSqlDatabase db, QList<Message>& messages,
-                                          Feed* feed, bool force_update, bool* ok = nullptr);
+    static QPair<int, int> updateMessages(QSqlDatabase db,
+                                          QList<Message>& messages,
+                                          Feed* feed,
+                                          bool force_update,
+                                          bool* ok = nullptr);
     static bool deleteAccount(const QSqlDatabase& db, ServiceRoot* account);
-    static bool deleteAccountData(const QSqlDatabase& db, int account_id, bool delete_messages_too, bool delete_labels_too);
+    static bool deleteAccountData(const QSqlDatabase& db,
+                                  int account_id,
+                                  bool delete_messages_too,
+                                  bool delete_labels_too);
     static bool cleanLabelledMessages(const QSqlDatabase& db, bool clean_read_only, Label* label);
     static bool cleanImportantMessages(const QSqlDatabase& db, bool clean_read_only, int account_id);
     static bool cleanUnreadMessages(const QSqlDatabase& db, int account_id);
@@ -127,12 +156,13 @@ class DatabaseQueries {
     static bool deleteFeed(const QSqlDatabase& db, Feed* feed, int account_id);
     static bool deleteCategory(const QSqlDatabase& db, Category* category);
 
-    template<typename T>
-    static Assignment getCategories(const QSqlDatabase& db, int account_id, bool* ok = nullptr);
+    template <typename T> static Assignment getCategories(const QSqlDatabase& db, int account_id, bool* ok = nullptr);
 
-    template<typename T>
-    static Assignment getFeeds(const QSqlDatabase& db, const QList<MessageFilter*>& global_filters,
-                               int account_id, bool* ok = nullptr);
+    template <typename T>
+    static Assignment getFeeds(const QSqlDatabase& db,
+                               const QList<MessageFilter*>& global_filters,
+                               int account_id,
+                               bool* ok = nullptr);
 
     // Item order methods.
     static void moveItem(RootItem* item, bool move_top, bool move_bottom, int move_index, const QSqlDatabase& db);
@@ -144,11 +174,17 @@ class DatabaseQueries {
     static void removeMessageFilterAssignments(const QSqlDatabase& db, int filter_id, bool* ok = nullptr);
     static QList<MessageFilter*> getMessageFilters(const QSqlDatabase& db, bool* ok = nullptr);
     static QMultiMap<QString, int> messageFiltersInFeeds(const QSqlDatabase& db, int account_id, bool* ok = nullptr);
-    static void assignMessageFilterToFeed(const QSqlDatabase& db, const QString& feed_custom_id, int filter_id,
-                                          int account_id, bool* ok = nullptr);
+    static void assignMessageFilterToFeed(const QSqlDatabase& db,
+                                          const QString& feed_custom_id,
+                                          int filter_id,
+                                          int account_id,
+                                          bool* ok = nullptr);
     static void updateMessageFilter(const QSqlDatabase& db, MessageFilter* filter, bool* ok = nullptr);
-    static void removeMessageFilterFromFeed(const QSqlDatabase& db, const QString& feed_custom_id, int filter_id,
-                                            int account_id, bool* ok = nullptr);
+    static void removeMessageFilterFromFeed(const QSqlDatabase& db,
+                                            const QString& feed_custom_id,
+                                            int filter_id,
+                                            int account_id,
+                                            bool* ok = nullptr);
 
     // Gmail account.
     static QStringList getAllGmailRecipients(const QSqlDatabase& db, int account_id);
@@ -159,7 +195,7 @@ class DatabaseQueries {
     explicit DatabaseQueries() = default;
 };
 
-template<typename T>
+template <typename T>
 QList<ServiceRoot*> DatabaseQueries::getAccounts(const QSqlDatabase& db, const QString& code, bool* ok) {
   QSqlQuery query(db);
   QList<ServiceRoot*> roots;
@@ -189,11 +225,8 @@ QList<ServiceRoot*> DatabaseQueries::getAccounts(const QSqlDatabase& db, const Q
     }
   }
   else {
-    qWarningNN << LOGSEC_DB
-               << "Loading of accounts with code"
-               << QUOTE_W_SPACE(code)
-               << "failed with error:"
-               << QUOTE_W_SPACE_DOT(query.lastError().text());
+    qWarningNN << LOGSEC_DB << "Loading of accounts with code" << QUOTE_W_SPACE(code)
+               << "failed with error:" << QUOTE_W_SPACE_DOT(query.lastError().text());
 
     if (ok != nullptr) {
       *ok = false;
@@ -203,8 +236,7 @@ QList<ServiceRoot*> DatabaseQueries::getAccounts(const QSqlDatabase& db, const Q
   return roots;
 }
 
-template<typename T>
-Assignment DatabaseQueries::getCategories(const QSqlDatabase& db, int account_id, bool* ok) {
+template <typename T> Assignment DatabaseQueries::getCategories(const QSqlDatabase& db, int account_id, bool* ok) {
   Assignment categories;
 
   // Obtain data for categories from the database.
@@ -215,7 +247,8 @@ Assignment DatabaseQueries::getCategories(const QSqlDatabase& db, int account_id
   query_categories.bindValue(QSL(":account_id"), account_id);
 
   if (!query_categories.exec()) {
-    qFatal("Query for obtaining categories failed. Error message: '%s'.", qPrintable(query_categories.lastError().text()));
+    qFatal("Query for obtaining categories failed. Error message: '%s'.",
+           qPrintable(query_categories.lastError().text()));
 
     if (ok != nullptr) {
       *ok = false;
@@ -254,7 +287,7 @@ Assignment DatabaseQueries::getCategories(const QSqlDatabase& db, int account_id
   return categories;
 }
 
-template<typename T>
+template <typename T>
 Assignment DatabaseQueries::getFeeds(const QSqlDatabase& db,
                                      const QList<MessageFilter*>& global_filters,
                                      int account_id,
@@ -306,11 +339,10 @@ Assignment DatabaseQueries::getFeeds(const QSqlDatabase& db,
     feed->setAutoUpdateType(static_cast<Feed::AutoUpdateType>(query.value(FDS_DB_UPDATE_TYPE_INDEX).toInt()));
     feed->setAutoUpdateInterval(query.value(FDS_DB_UPDATE_INTERVAL_INDEX).toInt());
     feed->setIsSwitchedOff(query.value(FDS_DB_IS_OFF_INDEX).toBool());
+    feed->setIsQuiet(query.value(FDS_DB_IS_QUIET_INDEX).toBool());
     feed->setOpenArticlesDirectly(query.value(FDS_DB_OPEN_ARTICLES_INDEX).toBool());
 
-    qDebugNN << LOGSEC_CORE
-             << "Custom ID of feed when loading from DB is"
-             << QUOTE_W_SPACE_DOT(feed->customId());
+    qDebugNN << LOGSEC_CORE << "Custom ID of feed when loading from DB is" << QUOTE_W_SPACE_DOT(feed->customId());
 
     // Load custom data.
     feed->setCustomDatabaseData(deserializeCustomData(query.value(FDS_DB_CUSTOM_DATA_INDEX).toString()));
@@ -333,8 +365,7 @@ Assignment DatabaseQueries::getFeeds(const QSqlDatabase& db,
   return feeds;
 }
 
-template<typename Categ, typename Fee>
-void DatabaseQueries::loadRootFromDatabase(ServiceRoot* root) {
+template <typename Categ, typename Fee> void DatabaseQueries::loadRootFromDatabase(ServiceRoot* root) {
   QSqlDatabase database = qApp->database()->driver()->connection(root->metaObject()->className());
   Assignment categories = DatabaseQueries::getCategories<Categ>(database, root->accountId());
   Assignment feeds = DatabaseQueries::getFeeds<Fee>(database, qApp->feedReader()->messageFilters(), root->accountId());

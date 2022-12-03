@@ -2072,7 +2072,8 @@ void DatabaseQueries::createOverwriteFeed(const QSqlDatabase& db, Feed* feed, in
   q.prepare("UPDATE Feeds "
             "SET title = :title, ordr = :ordr, description = :description, date_created = :date_created, "
             "    icon = :icon, category = :category, source = :source, update_type = :update_type, "
-            "    update_interval = :update_interval, is_off = :is_off, open_articles = :open_articles, "
+            "    update_interval = :update_interval, is_off = :is_off, is_quiet = :is_quiet, open_articles = "
+            ":open_articles, "
             "    account_id = :account_id, custom_id = :custom_id, custom_data = :custom_data "
             "WHERE id = :id;");
   q.bindValue(QSL(":title"), feed->title());
@@ -2088,6 +2089,7 @@ void DatabaseQueries::createOverwriteFeed(const QSqlDatabase& db, Feed* feed, in
   q.bindValue(QSL(":id"), feed->id());
   q.bindValue(QSL(":ordr"), feed->sortOrder());
   q.bindValue(QSL(":is_off"), feed->isSwitchedOff());
+  q.bindValue(QSL(":is_quiet"), feed->isQuiet());
   q.bindValue(QSL(":open_articles"), feed->openArticlesDirectly());
 
   auto custom_data = feed->customDatabaseData();

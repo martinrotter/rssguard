@@ -72,6 +72,9 @@ class Feed : public RootItem {
     bool isSwitchedOff() const;
     void setIsSwitchedOff(bool switched_off);
 
+    bool isQuiet() const;
+    void setIsQuiet(bool quiet);
+
     void appendMessageFilter(MessageFilter* filter);
     QList<QPointer<MessageFilter>> messageFilters() const;
     void setMessageFilters(const QList<QPointer<MessageFilter>>& messageFilters);
@@ -79,7 +82,6 @@ class Feed : public RootItem {
 
     QDateTime lastUpdated() const;
     void setLastUpdated(const QDateTime& last_updated);
-
   public slots:
     virtual void updateCounts(bool including_total_count);
 
@@ -95,6 +97,7 @@ class Feed : public RootItem {
     int m_autoUpdateInterval{}; // In seconds.
     QDateTime m_lastUpdated;
     bool m_isSwitchedOff;
+    bool m_isQuiet;
     bool m_openArticlesDirectly;
     int m_totalCount{};
     int m_unreadCount{};
