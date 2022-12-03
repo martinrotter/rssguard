@@ -76,7 +76,7 @@
        <item row="0" column="0" colspan="2">
         <widget class="QCheckBox" name="m_cbSuppressFeed">
          <property name="text">
-          <string>Suppress this feed</string>
+          <string>Ignore notifications for this feed</string>
          </property>
         </widget>
        </item>
