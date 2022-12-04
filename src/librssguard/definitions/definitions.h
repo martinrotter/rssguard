@@ -118,6 +118,9 @@
 #define CLI_SIN_SHORT "s"
 #define CLI_SIN_LONG "no-single-instance"
 
+#define CLI_USERAGENT_SHORT "u"
+#define CLI_USERAGENT_LONG "user-agent"
+
 #define CLI_ADBLOCKPORT_SHORT "p"
 #define CLI_ADBLOCKPORT_LONG "adblock-port"
 
