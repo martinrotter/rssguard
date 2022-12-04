@@ -55,10 +55,10 @@ class WebFactory : public QObject {
     bool openUrlInExternalBrowser(const QString& url) const;
     bool sendMessageViaEmail(const Message& message);
 
-#if defined(USE_WEBENGINE)
     QString customUserAgent() const;
     void setCustomUserAgent(const QString& user_agent);
 
+#if defined(USE_WEBENGINE)
   private slots:
     void createMenu(QMenu* menu = nullptr);
     void webEngineSettingChanged(bool enabled);
