@@ -9,15 +9,15 @@ RSS Guard
 
 ### [Discord server](https://discord.gg/7xbVMPPNqH) | [Downloads](https://github.com/martinrotter/rssguard/releases) | [Development builds](https://github.com/martinrotter/rssguard/releases/tag/devbuild) | [Documentation](https://github.com/martinrotter/rssguard/blob/master/resources/docs/Documentation.md)
 
-RSS Guard is simple RSS/ATOM feed reader for Windows, Linux, BSD, OS/2 or macOS which can work with RSS/ATOM/JSON feeds and also supports many online feed services:
-* [Feedly](https://feedly.com),
-* [Gmail](https://developers.google.com/gmail/api),
-* Google Reader API ([Bazqux](https://bazqux.com), [FreshRSS](https://freshrss.org), [Inoreader](https://www.inoreader.com), [Miniflux](https://miniflux.app), [Reedah](http://reedah.com), [The Old Reader](https://theoldreader.com) and others),
-* [Nextcloud News](https://apps.nextcloud.com/apps/news),
-* [Tiny Tiny RSS](https://tt-rss.org).
+RSS Guard is a simple RSS/ATOM feed reader for Windows, Linux, BSD, OS/2 or macOS which can work with RSS/ATOM/JSON feeds as well as many online feed services:
+* [Feedly](https://feedly.com)
+* [Gmail](https://developers.google.com/gmail/api)
+* Google Reader API ([Bazqux](https://bazqux.com), [FreshRSS](https://freshrss.org), [Inoreader](https://www.inoreader.com), [Miniflux](https://miniflux.app), [Reedah](http://reedah.com), [The Old Reader](https://theoldreader.com) and more)
+* [Nextcloud News](https://apps.nextcloud.com/apps/news)
+* [Tiny Tiny RSS](https://tt-rss.org)
 
 ![RSS Guard](resources/docs/videos/rssguard.gif)
 
 Contributed graphics:
-* RSS Guard logo - [Siddharth Yadav](mailto:illustrationdesignsid@gmail.com), [@Siddharth_yd](https://www.instagram.com/siddharth_yd/).
-* Flag icons - [IconDrawer](http://www.icondrawer.com).
+* RSS Guard logo - [Siddharth Yadav](mailto:illustrationdesignsid@gmail.com), [@Siddharth_yd](https://www.instagram.com/siddharth_yd/)
+* Flag icons - [IconDrawer](http://www.icondrawer.com)
