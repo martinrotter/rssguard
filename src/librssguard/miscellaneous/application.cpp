@@ -63,7 +63,10 @@
 
 Application::Application(const QString& id, int& argc, char** argv, const QStringList& raw_cli_args)
   : SingleApplication(id, argc, argv), m_rawCliArgs(raw_cli_args), m_updateFeedsLock(new Mutex()) {
-  parseCmdArgumentsFromMyInstance(raw_cli_args);
+  QString custom_ua;
+
+  parseCmdArgumentsFromMyInstance(raw_cli_args, custom_ua);
+
   qInstallMessageHandler(performLogging);
 
   m_feedReader = nullptr;
@@ -156,6 +159,8 @@ Application::Application(const QString& id, int& argc, char** argv, const QStrin
   }
 #endif
 
+  m_webFactory->setCustomUserAgent(custom_ua);
+
 #if defined(USE_WEBENGINE)
   m_webFactory->urlIinterceptor()->load();
 
@@ -164,7 +169,13 @@ Application::Application(const QString& id, int& argc, char** argv, const QStrin
   m_webFactory->engineProfile()->setCachePath(web_data_root + QDir::separator() + QSL("cache"));
   m_webFactory->engineProfile()->setHttpCacheType(QWebEngineProfile::HttpCacheType::DiskHttpCache);
   m_webFactory->engineProfile()->setPersistentStoragePath(web_data_root + QDir::separator() + QSL("storage"));
-  m_webFactory->engineProfile()->setHttpUserAgent(QString(HTTP_COMPLETE_USERAGENT));
+
+  if (custom_ua.isEmpty()) {
+    m_webFactory->engineProfile()->setHttpUserAgent(QString(HTTP_COMPLETE_USERAGENT));
+  }
+  else {
+    m_webFactory->engineProfile()->setHttpUserAgent(custom_ua);
+  }
 
   qDebugNN << LOGSEC_NETWORK << "Persistent web data storage path:"
            << QUOTE_W_SPACE_DOT(m_webFactory->engineProfile()->persistentStoragePath());
@@ -893,7 +904,12 @@ void Application::onFeedUpdatesProgress(const Feed* feed, int current, int total
 }
 
 void Application::onFeedUpdatesFinished(const FeedDownloadResults& results) {
-  if (!results.updatedFeeds().isEmpty()) {
+  auto fds = results.updatedFeeds();
+  bool some_unquiet_feed = boolinq::from(fds).any([](const QPair<Feed*, int>& fd) {
+    return !fd.first->isQuiet();
+  });
+
+  if (some_unquiet_feed) {
     // Now, inform about results via GUI message/notification.
     qApp->showGuiMessage(Notification::Event::NewUnreadArticlesFetched,
                          {tr("Unread articles fetched"), results.overview(10), QSystemTrayIcon::MessageIcon::NoIcon});
@@ -1002,7 +1018,7 @@ void Application::parseCmdArgumentsFromOtherInstance(const QString& message) {
   }
 }
 
-void Application::parseCmdArgumentsFromMyInstance(const QStringList& raw_cli_args) {
+void Application::parseCmdArgumentsFromMyInstance(const QStringList& raw_cli_args, QString& custom_ua) {
   fillCmdArgumentsParser(m_cmdParser);
 
   m_cmdParser.setApplicationDescription(QSL(APP_NAME));
@@ -1071,6 +1087,8 @@ void Application::parseCmdArgumentsFromMyInstance(const QStringList& raw_cli_arg
   else {
     m_customAdblockPort = 0;
   }
+
+  custom_ua = m_cmdParser.value(QSL(CLI_USERAGENT_SHORT));
 }
 
 void Application::displayLog() {
@@ -1113,6 +1131,10 @@ void Application::fillCmdArgumentsParser(QCommandLineParser& parser) {
   QCommandLineOption forced_style({QSL(CLI_STYLE_SHORT), QSL(CLI_STYLE_LONG)},
                                   QSL("Force some application style."),
                                   QSL("style-name"));
+
+  QCommandLineOption custom_ua({QSL(CLI_USERAGENT_SHORT), QSL(CLI_USERAGENT_LONG)},
+                               QSL("User custom User-Agent HTTP header for all network requests."),
+                               QSL("user-agent"));
   QCommandLineOption
     adblock_port({QSL(CLI_ADBLOCKPORT_SHORT), QSL(CLI_ADBLOCKPORT_LONG)},
                  QSL("Use custom port for AdBlock server. It is highly recommended to use values higher than 1024."),
@@ -1123,7 +1145,7 @@ void Application::fillCmdArgumentsParser(QCommandLineParser& parser) {
 #if defined(USE_WEBENGINE)
       force_nowebengine,
 #endif
-      forced_style, adblock_port
+      forced_style, adblock_port, custom_ua
   });
   parser.addPositionalArgument(QSL("urls"),
                                QSL("List of URL addresses pointing to individual online feeds which should be added."),

@@ -55,6 +55,9 @@ class WebFactory : public QObject {
     bool openUrlInExternalBrowser(const QString& url) const;
     bool sendMessageViaEmail(const Message& message);
 
+    QString customUserAgent() const;
+    void setCustomUserAgent(const QString& user_agent);
+
 #if defined(USE_WEBENGINE)
   private slots:
     void createMenu(QMenu* menu = nullptr);
@@ -79,6 +82,7 @@ class WebFactory : public QObject {
     CookieJar* m_cookieJar;
     Readability* m_readability;
     QMap<QString, char16_t> m_htmlNamedEntities;
+    QString m_customUserAgent;
 };
 
 #endif // WEBFACTORY_H

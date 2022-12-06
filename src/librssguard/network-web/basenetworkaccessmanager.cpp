@@ -62,7 +62,15 @@ QNetworkReply* BaseNetworkAccessManager::createRequest(QNetworkAccessManager::Op
 #endif
 
   new_request.setRawHeader(HTTP_HEADERS_COOKIE, QSL("JSESSIONID= ").toLocal8Bit());
-  new_request.setRawHeader(HTTP_HEADERS_USER_AGENT, HTTP_COMPLETE_USERAGENT);
+
+  auto custom_ua = qApp->web()->customUserAgent();
+
+  if (custom_ua.isEmpty()) {
+    new_request.setRawHeader(HTTP_HEADERS_USER_AGENT, HTTP_COMPLETE_USERAGENT);
+  }
+  else {
+    new_request.setRawHeader(HTTP_HEADERS_USER_AGENT, custom_ua.toLocal8Bit());
+  }
 
   auto reply = QNetworkAccessManager::createRequest(op, new_request, outgoingData);
   return reply;

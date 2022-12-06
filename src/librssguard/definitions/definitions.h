@@ -118,6 +118,9 @@
 #define CLI_SIN_SHORT "s"
 #define CLI_SIN_LONG "no-single-instance"
 
+#define CLI_USERAGENT_SHORT "u"
+#define CLI_USERAGENT_LONG "user-agent"
+
 #define CLI_ADBLOCKPORT_SHORT "p"
 #define CLI_ADBLOCKPORT_LONG "adblock-port"
 
@@ -205,7 +208,7 @@
 #define APP_DB_SQLITE_FILE "database.db"
 
 // Keep this in sync with schema versions declared in SQL initialization code.
-#define APP_DB_SCHEMA_VERSION "3"
+#define APP_DB_SCHEMA_VERSION "4"
 #define APP_DB_UPDATE_FILE_PATTERN "db_update_%1_%2_%3.sql"
 #define APP_DB_COMMENT_SPLIT "-- !\n"
 #define APP_DB_INCLUDE_PLACEHOLDER "!!"
@@ -284,10 +287,11 @@
 #define FDS_DB_UPDATE_TYPE_INDEX 8
 #define FDS_DB_UPDATE_INTERVAL_INDEX 9
 #define FDS_DB_IS_OFF_INDEX 10
-#define FDS_DB_OPEN_ARTICLES_INDEX 11
-#define FDS_DB_ACCOUNT_ID_INDEX 12
-#define FDS_DB_CUSTOM_ID_INDEX 13
-#define FDS_DB_CUSTOM_DATA_INDEX 14
+#define FDS_DB_IS_QUIET_INDEX 11
+#define FDS_DB_OPEN_ARTICLES_INDEX 12
+#define FDS_DB_ACCOUNT_ID_INDEX 13
+#define FDS_DB_CUSTOM_ID_INDEX 14
+#define FDS_DB_CUSTOM_DATA_INDEX 15
 
 // Indexes of columns for feed models.
 #define FDS_MODEL_TITLE_INDEX 0

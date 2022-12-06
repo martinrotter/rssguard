@@ -18,40 +18,42 @@ echo "OS: $os; WebEngine: $webengine"
 
 # Install needed dependencies.
 if [ $is_linux = true ]; then
-  sudo apt update
-
-  sudo apt -qy install libgl1-mesa-dev gstreamer1.0-alsa gstreamer1.0-plugins-good gstreamer1.0-plugins-base gstreamer1.0-plugins-bad gstreamer1.0-qt5 gstreamer1.0-pulseaudio libodbc1 postgresql python3-pip
-
+  # Qt 5.
   QTTARGET="linux"
   QTOS="gcc_64"
-  QTARCH="gcc_64"  
-else  
+  QTARCH="gcc_64"
+  USE_QT6="OFF"
 
+  sudo add-apt-repository ppa:beineri/opt-qt-5.15.2-bionic -y
+  sudo apt-get update
+
+  sudo apt-get -qy install qt515tools qt515base qt515webengine qt515svg qt515multimedia 
+  sudo apt-get -qy install cmake ninja-build openssl libssl-dev libgl1-mesa-dev gstreamer1.0-alsa gstreamer1.0-plugins-good gstreamer1.0-plugins-base gstreamer1.0-plugins-bad gstreamer1.0-qt5 gstreamer1.0-pulseaudio
+  
+  source /opt/qt515/bin/qt515-env.sh
+else
+  # Qt 6.
   QTTARGET="mac"
   QTOS="macos"
-  QTARCH="clang_64"  
-fi
+  QTARCH="clang_64"
+  USE_QT6="ON"
 
-pip3 install aqtinstall
+  QTPATH="$(pwd)/Qt"
+  QTVERSION="6.4.1"
+  QTBIN="$QTPATH/$QTVERSION/$QTOS/bin"
 
-# Setup Qt information.
-QTPATH="$(pwd)/Qt"
-QTVERSION="6.3.1"
-QTBIN="$QTPATH/$QTVERSION/$QTOS/bin"
+  pip3 install aqtinstall
 
-export QT_PLUGIN_PATH="$QTPATH/$QTVERSION/$QTOS/plugins"
-export PATH="$QTBIN:$QTPATH/Tools/CMake/bin:$QTPATH/Tools/Ninja:$PATH"
+  echo "Qt bin directory is: $QTBIN"
+  echo "Qt will be installed to: $QTPATH"
 
-echo "Qt bin directory is: $QTBIN"
-echo "Qt will be installed to: $QTPATH"
+  # Install Qt.
+  aqt install-qt -O "$QTPATH" "$QTTARGET" "desktop" "$QTVERSION" "$QTARCH" -m "qtwebengine" "qtwebchannel" "qtmultimedia" "qt5compat" "qtpositioning" "qtserialport"
+  aqt install-tool -O "$QTPATH" "$QTTARGET" "desktop" "tools_cmake"
+  aqt install-tool -O "$QTPATH" "$QTTARGET" "desktop" "tools_ninja"
 
-# Install Qt.
-aqt install-qt -O "$QTPATH" "$QTTARGET" "desktop" "$QTVERSION" "$QTARCH" -m "qtwebengine" "qtwebchannel" "qtmultimedia" "qt5compat" "qtpositioning" "qtserialport"
-aqt install-tool -O "$QTPATH" "$QTTARGET" "desktop" "tools_cmake"
-aqt install-tool -O "$QTPATH" "$QTTARGET" "desktop" "tools_ninja"
-
-if [ $is_linux = true ]; then
-  aqt install-tool -O "$QTPATH" "$QTTARGET" "desktop" "tools_openssl_x64"
+  export QT_PLUGIN_PATH="$QTPATH/$QTVERSION/$QTOS/plugins"
+  export PATH="$QTBIN:$QTPATH/Tools/CMake/bin:$QTPATH/Tools/Ninja:$PATH"
 fi
 
 cmake --version
@@ -61,40 +63,39 @@ git_tag=$(git describe --tags $(git rev-list --tags --max-count=1))
 git_revision=$(git rev-parse --short HEAD)
 
 mkdir rssguard-build && cd rssguard-build
-cmake .. -G Ninja -DCMAKE_OSX_ARCHITECTURES="x86_64;arm64" -DFORCE_BUNDLE_ICONS="ON" -DCMAKE_BUILD_TYPE="MinSizeRel" -DCMAKE_INSTALL_PREFIX="$prefix" -DREVISION_FROM_GIT="ON" -DBUILD_WITH_QT6="ON" -DUSE_WEBENGINE="$webengine" -DFEEDLY_CLIENT_ID="$FEEDLY_CLIENT_ID" -DFEEDLY_CLIENT_SECRET="$FEEDLY_CLIENT_SECRET" -DGMAIL_CLIENT_ID="$GMAIL_CLIENT_ID" -DGMAIL_CLIENT_SECRET="$GMAIL_CLIENT_SECRET"
+
+cmake .. -G Ninja -DCMAKE_OSX_ARCHITECTURES="x86_64;arm64" -DFORCE_BUNDLE_ICONS="ON" -DCMAKE_BUILD_TYPE="MinSizeRel" -DCMAKE_INSTALL_PREFIX="$prefix" -DREVISION_FROM_GIT="ON" -DBUILD_WITH_QT6="$USE_QT6" -DUSE_WEBENGINE="$webengine" -DFEEDLY_CLIENT_ID="$FEEDLY_CLIENT_ID" -DFEEDLY_CLIENT_SECRET="$FEEDLY_CLIENT_SECRET" -DGMAIL_CLIENT_ID="$GMAIL_CLIENT_ID" -DGMAIL_CLIENT_SECRET="$GMAIL_CLIENT_SECRET"
 cmake --build .
 cmake --install . --prefix "$prefix"
 
 if [ $is_linux = true ]; then
-  # Obtain linuxdeploy.
-  wget -qc https://github.com/linuxdeploy/linuxdeploy/releases/download/continuous/linuxdeploy-x86_64.AppImage
-  wget -qc https://github.com/linuxdeploy/linuxdeploy-plugin-qt/releases/download/continuous/linuxdeploy-plugin-qt-x86_64.AppImage
-  wget -qc https://raw.githubusercontent.com/linuxdeploy/linuxdeploy-plugin-gstreamer/master/linuxdeploy-plugin-gstreamer.sh
-  
-  chmod a+x linuxdeploy*.AppImage linuxdeploy*.sh
+  # Obtain linuxdeployqt.
+  wget -qc https://github.com/probonopd/linuxdeployqt/releases/download/continuous/linuxdeployqt-continuous-x86_64.AppImage
+  chmod a+x linuxdeployqt-continuous-x86_64.AppImage 
 
   # Copy Gstreamer libs.
   install -v -Dm755 "/usr/lib/x86_64-linux-gnu/gstreamer1.0/gstreamer-1.0/gst-plugin-scanner" "AppDir/usr/lib/gstreamer1.0/gstreamer-1.0/gst-plugin-scanner"
+  gst_executables="-executable=AppDir/usr/lib/gstreamer1.0/gstreamer-1.0/gst-plugin-scanner"
 
-  for plugin in /usr/lib/x86_64-linux-gnu/gstreamer-1.0/*; do
+  for plugin in /usr/lib/x86_64-linux-gnu/gstreamer-1.0/libgst*.so; do
     basen=$(basename "$plugin")
-    install -v -Dm755 "$plugin" "./AppDir/usr/lib/gstreamer-1.0/$basen"
+    install -v -Dm755 "$plugin" "AppDir/usr/lib/gstreamer-1.0/$basen"
+    gst_executables="${gst_executables} -executable=AppDir/usr/lib/gstreamer-1.0/$basen"
   done
+
+  echo "Gstream command line for AppImage is: $gst_executables"
+
+  # Create AppImage.
+  unset QTDIR; unset QT_PLUGIN_PATH ; unset LD_LIBRARY_PATH
+  ./linuxdeployqt-continuous-x86_64.AppImage "./AppDir/usr/share/applications/io.github.martinrotter.rssguard.desktop" -bundle-non-qt-libs -no-translations $gst_executables
+  ./linuxdeployqt-continuous-x86_64.AppImage "./AppDir/usr/share/applications/io.github.martinrotter.rssguard.desktop" -bundle-non-qt-libs -no-translations $gst_executables
 
   if [[ "$webengine" == "ON" ]]; then
     # Copy some NSS3 files to prevent WebEngine crashes.
     cp /usr/lib/x86_64-linux-gnu/nss/* ./AppDir/usr/lib/ -v
   fi
 
-  # Fix some missing Qt folders.
-  mkdir "$QTPATH/$QTVERSION/$QTOS/plugins/audio"
-  mkdir "$QTPATH/$QTVERSION/$QTOS/plugins/mediaservice"
-
-  # Adjust library search paths.
-  export LD_LIBRARY_PATH="$QTPATH/$QTVERSION/$QTOS/lib:$(pwd)/AppDir/usr/lib"
-
-  # Create AppImage.
-  ./linuxdeploy-x86_64.AppImage --output "appimage" --plugin "qt" --appdir "AppDir"
+  ./linuxdeployqt-continuous-x86_64.AppImage "./AppDir/usr/share/applications/io.github.martinrotter.rssguard.desktop" -appimage -no-translations $gst_executables
 
   # Rename AppImaage.
   set -- R*.AppImage

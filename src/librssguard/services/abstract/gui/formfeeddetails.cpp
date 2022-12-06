@@ -50,6 +50,7 @@ void FormFeedDetails::apply() {
   m_feed->setAutoUpdateInterval(int(m_ui->m_spinAutoUpdateInterval->value()));
   m_feed->setOpenArticlesDirectly(m_ui->m_cbOpenArticlesAutomatically->isChecked());
   m_feed->setIsSwitchedOff(m_ui->m_cbDisableFeed->isChecked());
+  m_feed->setIsQuiet(m_ui->m_cbSuppressFeed->isChecked());
 
   if (!m_creatingNew) {
     // We need to make sure that common data are saved.
@@ -97,6 +98,7 @@ void FormFeedDetails::loadFeedData() {
   m_ui->m_spinAutoUpdateInterval->setValue(m_feed->autoUpdateInterval());
   m_ui->m_cbOpenArticlesAutomatically->setChecked(m_feed->openArticlesDirectly());
   m_ui->m_cbDisableFeed->setChecked(m_feed->isSwitchedOff());
+  m_ui->m_cbSuppressFeed->setChecked(m_feed->isQuiet());
 }
 
 void FormFeedDetails::acceptIfPossible() {

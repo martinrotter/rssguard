@@ -28,7 +28,7 @@
 #include <QWebEngineUrlScheme>
 #endif
 
-WebFactory::WebFactory(QObject* parent) : QObject(parent) {
+WebFactory::WebFactory(QObject* parent) : QObject(parent), m_customUserAgent(QString()) {
   m_adBlock = new AdBlockManager(this);
 
 #if defined(USE_WEBENGINE)
@@ -656,4 +656,12 @@ void WebFactory::generateUnescapes() {
   m_htmlNamedEntities[QSL("zeta")] = 0x03b6;
   m_htmlNamedEntities[QSL("zwj")] = 0x200d;
   m_htmlNamedEntities[QSL("zwnj")] = 0x200c;
+}
+
+QString WebFactory::customUserAgent() const {
+  return m_customUserAgent;
+}
+
+void WebFactory::setCustomUserAgent(const QString& user_agent) {
+  m_customUserAgent = user_agent;
 }

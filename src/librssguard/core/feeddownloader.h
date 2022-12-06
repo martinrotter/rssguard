@@ -18,16 +18,16 @@ class QMutex;
 // Represents results of batch feed updates.
 class FeedDownloadResults {
   public:
-    QList<QPair<QString, int>> updatedFeeds() const;
+    QList<QPair<Feed*, int>> updatedFeeds() const;
     QString overview(int how_many_feeds) const;
 
-    void appendUpdatedFeed(const QPair<QString, int>& feed);
+    void appendUpdatedFeed(const QPair<Feed*, int>& feed);
     void sort();
     void clear();
 
   private:
     // QString represents title if the feed, int represents count of newly downloaded messages.
-    QList<QPair<QString, int>> m_updatedFeeds;
+    QList<QPair<Feed*, int>> m_updatedFeeds;
 };
 
 // This class offers means to "update" feeds and "special" categories.
