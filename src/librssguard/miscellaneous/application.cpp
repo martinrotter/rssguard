@@ -215,6 +215,9 @@ Application::~Application() {
   }
 #endif
 
+  // Disable logging into the form.
+  m_logForm = nullptr;
+
   qDebugNN << LOGSEC_CORE << "Destroying Application instance.";
 }
 
