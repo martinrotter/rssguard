@@ -145,7 +145,7 @@ void FormCategoryDetails::onLoadIconFromFile() {
   auto supported_formats = QImageReader::supportedImageFormats();
   auto prefixed_formats = boolinq::from(supported_formats)
                             .select([](const QByteArray& frmt) {
-                              return QSL("*.%1").arg(frmt);
+                              return QSL("*.%1").arg(QString::fromLocal8Bit(frmt));
                             })
                             .toStdList();
 
