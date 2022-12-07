@@ -21,8 +21,7 @@
 
 NewsBlurNetwork::NewsBlurNetwork(QObject* parent)
   : QObject(parent), m_root(nullptr), m_username(QString()), m_password(QString()), m_baseUrl(QSL(NEWSBLUR_URL)),
-  m_batchSize(NEWSBLUR_DEFAULT_BATCH_SIZE),
-  m_downloadOnlyUnreadMessages(false) {
+    m_batchSize(NEWSBLUR_DEFAULT_BATCH_SIZE), m_downloadOnlyUnreadMessages(false) {
   clearCredentials();
 }
 
@@ -31,9 +30,7 @@ RootItem* NewsBlurNetwork::categoriesFeedsLabelsTree(const QNetworkProxy& proxy)
   RootItem* root = new RootItem();
   const auto timeout = qApp->settings()->value(GROUP(Feeds), SETTING(Feeds::UpdateTimeout)).toInt();
   QMap<QString, RootItem*> cats;
-  QList<QPair<RootItem*, QJsonArray>> cats_array = {
-    { root, json.object()["folders"].toArray() }
-  };
+  QList<QPair<RootItem*, QJsonArray>> cats_array = {{root, json.object()["folders"].toArray()}};
 
   while (!cats_array.isEmpty()) {
     // Add direct descendants as categories to parent, then process their children.
@@ -54,9 +51,9 @@ RootItem* NewsBlurNetwork::categoriesFeedsLabelsTree(const QNetworkProxy& proxy)
         QString favicon_url = feed_json["favicon_url"].toString();
 
         if (!favicon_url.isEmpty()) {
-          QIcon icon;
+          QPixmap icon;
 
-          if (NetworkFactory::downloadIcon({ { favicon_url, true } }, timeout, icon, {}, proxy) ==
+          if (NetworkFactory::downloadIcon({{favicon_url, true}}, timeout, icon, {}, proxy) ==
               QNetworkReply::NetworkError::NoError) {
             feed->setIcon(icon);
           }
@@ -72,10 +69,7 @@ RootItem* NewsBlurNetwork::categoriesFeedsLabelsTree(const QNetworkProxy& proxy)
         category->setCustomId(category_name);
 
         cats_for_parent.first->appendChild(category);
-        cats_array.append({
-          category,
-          var.toObject()[category_name].toArray()
-        });
+        cats_array.append({category, var.toObject()[category_name].toArray()});
       }
     }
   }
@@ -101,7 +95,8 @@ QJsonDocument NewsBlurNetwork::feeds(const QNetworkProxy& proxy) {
                                                                 proxy);
 
   if (network_result.m_networkError == QNetworkReply::NetworkError::NoError) {
-    ApiResult res; res.decodeBaseResponse(output);
+    ApiResult res;
+    res.decodeBaseResponse(output);
 
     return res.m_json;
   }
@@ -115,27 +110,29 @@ LoginResult NewsBlurNetwork::login(const QNetworkProxy& proxy) {
   const auto timeout = qApp->settings()->value(GROUP(Feeds), SETTING(Feeds::UpdateTimeout)).toInt();
   const QString data = QSL("username=%1&password=%2").arg(m_username, m_password);
   QByteArray output;
-  auto network_result = NetworkFactory::performNetworkOperation(full_url,
-                                                                timeout,
-                                                                data.toUtf8(),
-                                                                output,
-                                                                QNetworkAccessManager::Operation::PostOperation,
-                                                                { {
-                                                                  QSL(HTTP_HEADERS_CONTENT_TYPE).toLocal8Bit(),
-                                                                  QSL("application/x-www-form-urlencoded").toLocal8Bit()
-                                                                } },
-                                                                false,
-                                                                {},
-                                                                {},
-                                                                proxy);
+  auto network_result =
+    NetworkFactory::performNetworkOperation(full_url,
+                                            timeout,
+                                            data.toUtf8(),
+                                            output,
+                                            QNetworkAccessManager::Operation::PostOperation,
+                                            {{QSL(HTTP_HEADERS_CONTENT_TYPE).toLocal8Bit(),
+                                              QSL("application/x-www-form-urlencoded").toLocal8Bit()}},
+                                            false,
+                                            {},
+                                            {},
+                                            proxy);
 
   if (network_result.m_networkError == QNetworkReply::NetworkError::NoError) {
-    LoginResult res; res.decodeBaseResponse(output);
+    LoginResult res;
+    res.decodeBaseResponse(output);
 
     res.m_userId = res.m_json.object()["user_id"].toInt();
-    res.m_sessiodId = boolinq::from(network_result.m_cookies).firstOrDefault([](const QNetworkCookie& c) {
-      return c.name() == QSL(NEWSBLUS_AUTH_COOKIE);
-    }).value();
+    res.m_sessiodId = boolinq::from(network_result.m_cookies)
+                        .firstOrDefault([](const QNetworkCookie& c) {
+                          return c.name() == QSL(NEWSBLUS_AUTH_COOKIE);
+                        })
+                        .value();
 
     return res;
   }
@@ -169,8 +166,7 @@ void NewsBlurNetwork::setBaseUrl(const QString& base_url) {
 }
 
 QPair<QByteArray, QByteArray> NewsBlurNetwork::authHeader() const {
-  return { QSL("Cookie").toLocal8Bit(),
-           QSL("newsblur_sessionid=%1").arg(m_authSid).toLocal8Bit() };
+  return {QSL("Cookie").toLocal8Bit(), QSL("newsblur_sessionid=%1").arg(m_authSid).toLocal8Bit()};
 }
 
 void NewsBlurNetwork::ensureLogin(const QNetworkProxy& proxy) {
@@ -258,7 +254,7 @@ void ApiResult::decodeBaseResponse(const QByteArray& json_data) {
   QJsonObject obj_errs = doc.object()["errors"].toObject();
 
   for (const QString& key : obj_errs.keys()) {
-    for (const QJsonValue& val: obj_errs.value(key).toArray()) {
+    for (const QJsonValue& val : obj_errs.value(key).toArray()) {
       errs << val.toString();
     }
   }

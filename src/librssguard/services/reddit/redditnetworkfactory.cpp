@@ -187,7 +187,7 @@ QList<Feed*> RedditNetworkFactory::subreddits(const QNetworkProxy& custom_proxy)
 
         new_sub->setPrefixedName(sub_obj["url"].toString());
 
-        QIcon icon;
+        QPixmap icon;
         QString icon_url = sub_obj["community_icon"].toString();
 
         if (icon_url.isEmpty()) {

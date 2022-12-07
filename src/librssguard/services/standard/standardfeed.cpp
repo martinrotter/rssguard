@@ -445,7 +445,7 @@ StandardFeed* StandardFeed::guessFeed(StandardFeed::SourceType source_type,
   }
 
   // Try to obtain icon.
-  QIcon icon_data;
+  QPixmap icon_data;
 
   if (NetworkFactory::downloadIcon(icon_possible_locations, DOWNLOAD_TIMEOUT, icon_data, {}, custom_proxy) ==
       QNetworkReply::NetworkError::NoError) {

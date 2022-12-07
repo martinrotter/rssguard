@@ -720,7 +720,7 @@ RootItem* GreaderNetwork::decodeTagsSubscriptions(const QString& categories,
 
       icon_urls.append({url, false});
 
-      QIcon icon;
+      QPixmap icon;
 
       if (NetworkFactory::downloadIcon(icon_urls, 1000, icon, {}, proxy) == QNetworkReply::NetworkError::NoError) {
         feed->setIcon(icon);

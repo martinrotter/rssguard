@@ -562,7 +562,7 @@ RootItem* FeedlyNetwork::decodeCollections(const QByteArray& json,
       }
 
       if (obtain_icons) {
-        QIcon icon;
+        QPixmap icon;
         auto result = NetworkFactory::downloadIcon({{fee_obj[QSL("iconUrl")].toString(), true},
                                                     {fee_obj[QSL("website")].toString(), false},
                                                     {fee_obj[QSL("logo")].toString(), true}},

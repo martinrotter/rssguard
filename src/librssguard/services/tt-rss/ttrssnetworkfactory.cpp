@@ -931,7 +931,7 @@ RootItem* TtRssGetFeedsCategoriesResponse::feedsCategories(TtRssNetworkFactory* 
             if (!icon_path.isEmpty()) {
               // Chop the "api/" suffix out and append
               QString full_icon_address = base_address + QL1C('/') + icon_path;
-              QIcon icon;
+              QPixmap icon;
               QList<QPair<QByteArray, QByteArray>> headers;
 
               if (network->authIsUsed()) {

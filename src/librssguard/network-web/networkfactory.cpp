@@ -149,7 +149,7 @@ QString NetworkFactory::sanitizeUrl(const QString& url) {
 
 QNetworkReply::NetworkError NetworkFactory::downloadIcon(const QList<QPair<QString, bool>>& urls,
                                                          int timeout,
-                                                         QIcon& output,
+                                                         QPixmap& output,
                                                          const QList<QPair<QByteArray, QByteArray>>& additional_headers,
                                                          const QNetworkProxy& custom_proxy) {
   QNetworkReply::NetworkError network_result = QNetworkReply::NetworkError::UnknownNetworkError;
@@ -179,9 +179,12 @@ QNetworkReply::NetworkError NetworkFactory::downloadIcon(const QList<QPair<QStri
         QPixmap icon_pixmap;
 
         icon_pixmap.loadFromData(icon_data);
-        output = QIcon(icon_pixmap);
+        output = icon_pixmap;
 
         if (!output.isNull()) {
+          output = output.scaled(QSize(48, 48),
+                                 Qt::AspectRatioMode::KeepAspectRatio,
+                                 Qt::TransformationMode::SmoothTransformation);
           break;
         }
       }
@@ -222,9 +225,13 @@ QNetworkReply::NetworkError NetworkFactory::downloadIcon(const QList<QPair<QStri
           QPixmap icon_pixmap;
 
           icon_pixmap.loadFromData(icon_data);
-          output = QIcon(icon_pixmap);
+          output = icon_pixmap;
 
           if (!output.isNull()) {
+            output = output.scaled(QSize(48, 48),
+                                   Qt::AspectRatioMode::KeepAspectRatio,
+                                   Qt::TransformationMode::SmoothTransformation);
+
             return network_result;
           }
         }
