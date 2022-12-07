@@ -215,7 +215,6 @@ Application::Application(const QString& id, int& argc, char** argv, const QStrin
   QTimer::singleShot(1000, system(), &SystemFactory::checkForUpdatesOnStartup);
 
   qDebugNN << LOGSEC_CORE << "OpenSSL version:" << QUOTE_W_SPACE_DOT(QSslSocket::sslLibraryVersionString());
-
   qDebugNN << LOGSEC_CORE << "OpenSSL supported:" << QUOTE_W_SPACE_DOT(QSslSocket::supportsSsl());
 }
 
