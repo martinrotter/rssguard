@@ -27,7 +27,7 @@ if [ $is_linux = true ]; then
   sudo add-apt-repository ppa:beineri/opt-qt-5.15.2-bionic -y
   sudo apt-get update
 
-  sudo apt-get -qy install qt515tools qt515base qt515webengine qt515svg qt515multimedia 
+  sudo apt-get -qy install qt515tools qt515base qt515webengine qt515svg qt515multimedia qt515imageformats
   sudo apt-get -qy install cmake ninja-build openssl libssl-dev libgl1-mesa-dev gstreamer1.0-alsa gstreamer1.0-plugins-good gstreamer1.0-plugins-base gstreamer1.0-plugins-bad gstreamer1.0-qt5 gstreamer1.0-pulseaudio
   
   source /opt/qt515/bin/qt515-env.sh
@@ -48,7 +48,7 @@ else
   echo "Qt will be installed to: $QTPATH"
 
   # Install Qt.
-  aqt install-qt -O "$QTPATH" "$QTTARGET" "desktop" "$QTVERSION" "$QTARCH" -m "qtwebengine" "qtwebchannel" "qtmultimedia" "qt5compat" "qtpositioning" "qtserialport"
+  aqt install-qt -O "$QTPATH" "$QTTARGET" "desktop" "$QTVERSION" "$QTARCH" -m "qtwebengine" "qtimageformats" "qtwebchannel" "qtmultimedia" "qt5compat" "qtpositioning" "qtserialport"
   aqt install-tool -O "$QTPATH" "$QTTARGET" "desktop" "tools_cmake"
   aqt install-tool -O "$QTPATH" "$QTTARGET" "desktop" "tools_ninja"
 
