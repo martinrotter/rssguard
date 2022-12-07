@@ -149,7 +149,7 @@ QString NetworkFactory::sanitizeUrl(const QString& url) {
 
 QNetworkReply::NetworkError NetworkFactory::downloadIcon(const QList<QPair<QString, bool>>& urls,
                                                          int timeout,
-                                                         QPixmap& output,
+                                                         QIcon& output,
                                                          const QList<QPair<QByteArray, QByteArray>>& additional_headers,
                                                          const QNetworkProxy& custom_proxy) {
   QNetworkReply::NetworkError network_result = QNetworkReply::NetworkError::UnknownNetworkError;

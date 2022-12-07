@@ -43,11 +43,11 @@ class NetworkFactory {
     static QString networkErrorText(QNetworkReply::NetworkError error_code);
     static QString sanitizeUrl(const QString& url);
 
-    // Performs SYNCHRONOUS favicon download for the site,
+    // Performs SYNCHRONOUS download if favicon for the site,
     // given URL belongs to.
     static QNetworkReply::NetworkError downloadIcon(const QList<QPair<QString, bool>>& urls,
                                                     int timeout,
-                                                    QPixmap& output,
+                                                    QIcon& output,
                                                     const QList<QPair<QByteArray, QByteArray>>& additional_headers,
                                                     const QNetworkProxy& custom_proxy =
                                                       QNetworkProxy::ProxyType::DefaultProxy);
