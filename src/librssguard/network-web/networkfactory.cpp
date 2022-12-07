@@ -182,9 +182,11 @@ QNetworkReply::NetworkError NetworkFactory::downloadIcon(const QList<QPair<QStri
         output = icon_pixmap;
 
         if (!output.isNull()) {
-          output = output.scaled(QSize(48, 48),
-                                 Qt::AspectRatioMode::KeepAspectRatio,
-                                 Qt::TransformationMode::SmoothTransformation);
+          if (output.width() > 128) {
+            output = output.scaled(QSize(48, 48),
+                                   Qt::AspectRatioMode::KeepAspectRatio,
+                                   Qt::TransformationMode::SmoothTransformation);
+          }
           break;
         }
       }
@@ -228,9 +230,11 @@ QNetworkReply::NetworkError NetworkFactory::downloadIcon(const QList<QPair<QStri
           output = icon_pixmap;
 
           if (!output.isNull()) {
-            output = output.scaled(QSize(48, 48),
-                                   Qt::AspectRatioMode::KeepAspectRatio,
-                                   Qt::TransformationMode::SmoothTransformation);
+            if (output.width() > 128) {
+              output = output.scaled(QSize(48, 48),
+                                     Qt::AspectRatioMode::KeepAspectRatio,
+                                     Qt::TransformationMode::SmoothTransformation);
+            }
 
             return network_result;
           }
