@@ -49,7 +49,7 @@ pip3 install -U pip
 pip3 install -I aqtinstall
 
 if ($qt_version.StartsWith("6")) {
-  aqt install-qt -O "$qt_path" windows desktop $qt_version win64_msvc2019_64 -m qtwebengine qtmultimedia qt5compat qtwebchannel qtpositioning
+  aqt install-qt -O "$qt_path" windows desktop $qt_version win64_msvc2019_64 -m qtwebengine qtimageformats qtmultimedia qt5compat qtwebchannel qtpositioning
 }
 else {
   aqt install-qt -O "$qt_path" windows desktop $qt_version win64_msvc2019_64 -m qtwebengine

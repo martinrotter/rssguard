@@ -2,6 +2,7 @@
 
 #include "services/standard/gui/standardfeeddetails.h"
 
+#include "3rd-party/boolinq/boolinq.h"
 #include "exceptions/applicationexception.h"
 #include "exceptions/networkexception.h"
 #include "exceptions/scriptexception.h"
@@ -13,6 +14,7 @@
 
 #include <QClipboard>
 #include <QFileDialog>
+#include <QImageReader>
 #include <QMenu>
 #include <QMimeData>
 #include <QTextCodec>
@@ -276,10 +278,19 @@ void StandardFeedDetails::onPostProcessScriptChanged(const QString& new_pp) {
 }
 
 void StandardFeedDetails::onLoadIconFromFile() {
+  auto supported_formats = QImageReader::supportedImageFormats();
+  auto prefixed_formats = boolinq::from(supported_formats)
+                            .select([](const QByteArray& frmt) {
+                              return QSL("*.%1").arg(frmt);
+                            })
+                            .toStdList();
+
+  QStringList list_formats = FROM_STD_LIST(QStringList, prefixed_formats);
+
   QFileDialog dialog(this,
                      tr("Select icon file for the feed"),
                      qApp->homeFolder(),
-                     tr("Images (*.bmp *.jpg *.jpeg *.png *.svg *.tga)"));
+                     tr("Images (%1)").arg(list_formats.join(QL1C(' '))));
 
   dialog.setFileMode(QFileDialog::FileMode::ExistingFile);
   dialog.setWindowIcon(qApp->icons()->fromTheme(QSL("image-x-generic")));

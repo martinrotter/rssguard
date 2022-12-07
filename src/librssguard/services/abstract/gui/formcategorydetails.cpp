@@ -2,6 +2,7 @@
 
 #include "services/abstract/gui/formcategorydetails.h"
 
+#include "3rd-party/boolinq/boolinq.h"
 #include "core/feedsmodel.h"
 #include "database/databasequeries.h"
 #include "definitions/definitions.h"
@@ -18,6 +19,7 @@
 #include <QAction>
 #include <QDialogButtonBox>
 #include <QFileDialog>
+#include <QImageReader>
 #include <QLineEdit>
 #include <QMenu>
 #include <QPushButton>
@@ -41,10 +43,11 @@ FormCategoryDetails::~FormCategoryDetails() {
 void FormCategoryDetails::createConnections() {
   // General connections.
   connect(m_ui->m_buttonBox, &QDialogButtonBox::accepted, this, &FormCategoryDetails::apply);
-  connect(m_ui->m_txtTitle->lineEdit(), &BaseLineEdit::textChanged,
-          this, &FormCategoryDetails::onTitleChanged);
-  connect(m_ui->m_txtDescription->lineEdit(), &BaseLineEdit::textChanged,
-          this, &FormCategoryDetails::onDescriptionChanged);
+  connect(m_ui->m_txtTitle->lineEdit(), &BaseLineEdit::textChanged, this, &FormCategoryDetails::onTitleChanged);
+  connect(m_ui->m_txtDescription->lineEdit(),
+          &BaseLineEdit::textChanged,
+          this,
+          &FormCategoryDetails::onDescriptionChanged);
 
   // Icon connections.
   connect(m_actionLoadIconFromFile, &QAction::triggered, this, &FormCategoryDetails::onLoadIconFromFile);
@@ -55,9 +58,7 @@ void FormCategoryDetails::loadCategoryData() {
   loadCategories(m_serviceRoot->getSubTreeCategories(), m_serviceRoot, m_category);
 
   if (m_creatingNew) {
-    GuiUtilities::applyDialogProperties(*this,
-                                        qApp->icons()->fromTheme(QSL("folder")),
-                                        tr("Add new category"));
+    GuiUtilities::applyDialogProperties(*this, qApp->icons()->fromTheme(QSL("folder")), tr("Add new category"));
 
     // Make sure that "default" icon is used as the default option for new
     // categories.
@@ -66,10 +67,11 @@ void FormCategoryDetails::loadCategoryData() {
     // Load parent from suggested item.
     if (m_parentToSelect != nullptr) {
       if (m_parentToSelect->kind() == RootItem::Kind::Category) {
-        m_ui->m_cmbParentCategory->setCurrentIndex(m_ui->m_cmbParentCategory->findData(QVariant::fromValue((void*) m_parentToSelect)));
+        m_ui->m_cmbParentCategory
+          ->setCurrentIndex(m_ui->m_cmbParentCategory->findData(QVariant::fromValue((void*)m_parentToSelect)));
       }
       else if (m_parentToSelect->kind() == RootItem::Kind::Feed) {
-        int target_item = m_ui->m_cmbParentCategory->findData(QVariant::fromValue((void*) m_parentToSelect->parent()));
+        int target_item = m_ui->m_cmbParentCategory->findData(QVariant::fromValue((void*)m_parentToSelect->parent()));
 
         if (target_item >= 0) {
           m_ui->m_cmbParentCategory->setCurrentIndex(target_item);
@@ -78,11 +80,10 @@ void FormCategoryDetails::loadCategoryData() {
     }
   }
   else {
-    GuiUtilities::applyDialogProperties(*this,
-                                        m_category->fullIcon(),
-                                        tr("Edit \"%1\"").arg(m_category->title()));
+    GuiUtilities::applyDialogProperties(*this, m_category->fullIcon(), tr("Edit \"%1\"").arg(m_category->title()));
 
-    m_ui->m_cmbParentCategory->setCurrentIndex(m_ui->m_cmbParentCategory->findData(QVariant::fromValue((void*) m_category->parent())));
+    m_ui->m_cmbParentCategory
+      ->setCurrentIndex(m_ui->m_cmbParentCategory->findData(QVariant::fromValue((void*)m_category->parent())));
   }
 
   m_ui->m_txtTitle->lineEdit()->setText(m_category->title());
@@ -93,7 +94,9 @@ void FormCategoryDetails::loadCategoryData() {
 }
 
 void FormCategoryDetails::apply() {
-  RootItem* parent = static_cast<RootItem*>(m_ui->m_cmbParentCategory->itemData(m_ui->m_cmbParentCategory->currentIndex()).value<void*>());
+  RootItem* parent =
+    static_cast<RootItem*>(m_ui->m_cmbParentCategory->itemData(m_ui->m_cmbParentCategory->currentIndex())
+                             .value<void*>());
 
   m_category->setTitle(m_ui->m_txtTitle->lineEdit()->text());
   m_category->setDescription(m_ui->m_txtDescription->lineEdit()->text());
@@ -109,10 +112,10 @@ void FormCategoryDetails::apply() {
   }
 
   m_serviceRoot->requestItemReassignment(m_category, parent);
-  m_serviceRoot->itemChanged({ m_category });
+  m_serviceRoot->itemChanged({m_category});
 
   if (m_creatingNew) {
-    m_serviceRoot->requestItemExpand({ parent }, true);
+    m_serviceRoot->requestItemExpand({parent}, true);
   }
 
   accept();
@@ -139,8 +142,19 @@ void FormCategoryDetails::onDescriptionChanged(const QString& new_description) {
 }
 
 void FormCategoryDetails::onLoadIconFromFile() {
-  QFileDialog dialog(this, tr("Select icon file for the category"),
-                     qApp->homeFolder(), tr("Images (*.bmp *.jpg *.jpeg *.png *.svg *.tga)"));
+  auto supported_formats = QImageReader::supportedImageFormats();
+  auto prefixed_formats = boolinq::from(supported_formats)
+                            .select([](const QByteArray& frmt) {
+                              return QSL("*.%1").arg(frmt);
+                            })
+                            .toStdList();
+
+  QStringList list_formats = FROM_STD_LIST(QStringList, prefixed_formats);
+
+  QFileDialog dialog(this,
+                     tr("Select icon file for the category"),
+                     qApp->homeFolder(),
+                     tr("Images (%1)").arg(list_formats.join(QL1C(' '))));
 
   dialog.setFileMode(QFileDialog::FileMode::ExistingFile);
   dialog.setWindowIcon(qApp->icons()->fromTheme(QSL("image-x-generic")));
@@ -178,12 +192,10 @@ void FormCategoryDetails::initialize() {
 
   // Setup menu & actions for icon selection.
   m_iconMenu = new QMenu(tr("Icon selection"), this);
-  m_actionLoadIconFromFile = new QAction(qApp->icons()->fromTheme(QSL("image-x-generic")),
-                                         tr("Load icon from file..."),
-                                         this);
-  m_actionUseDefaultIcon = new QAction(qApp->icons()->fromTheme(QSL("folder")),
-                                       tr("Use default icon from icon theme"),
-                                       this);
+  m_actionLoadIconFromFile =
+    new QAction(qApp->icons()->fromTheme(QSL("image-x-generic")), tr("Load icon from file..."), this);
+  m_actionUseDefaultIcon =
+    new QAction(qApp->icons()->fromTheme(QSL("folder")), tr("Use default icon from icon theme"), this);
   m_iconMenu->addAction(m_actionLoadIconFromFile);
   m_iconMenu->addAction(m_actionUseDefaultIcon);
   m_ui->m_btnIcon->setMenu(m_iconMenu);
@@ -199,9 +211,7 @@ void FormCategoryDetails::initialize() {
 void FormCategoryDetails::loadCategories(const QList<Category*>& categories,
                                          RootItem* root_item,
                                          Category* input_category) {
-  m_ui->m_cmbParentCategory->addItem(root_item->icon(),
-                                     root_item->title(),
-                                     QVariant::fromValue((void*) root_item));
+  m_ui->m_cmbParentCategory->addItem(root_item->icon(), root_item->title(), QVariant::fromValue((void*)root_item));
 
   for (Category* category : categories) {
     if (input_category != nullptr && (category == input_category || category->isChildOf(input_category))) {
@@ -213,6 +223,6 @@ void FormCategoryDetails::loadCategories(const QList<Category*>& categories,
 
     m_ui->m_cmbParentCategory->addItem(category->data(FDS_MODEL_TITLE_INDEX, Qt::DecorationRole).value<QIcon>(),
                                        category->title(),
-                                       QVariant::fromValue((void*) category));
+                                       QVariant::fromValue((void*)category));
   }
 }
