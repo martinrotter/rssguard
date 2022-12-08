@@ -1,8 +1,5 @@
 # Fixes Piped ATOM feeds.
 #
-# Make sure to have all dependencies installed:
-#   pip3 install asyncio (if using parallel version of the script)
-#
 # You must provide raw ATOM feed XML data as input, for example with curl:
 #   curl 'https://pipedapi.kavin.rocks/feed/unauthenticated/rss?channels=UCXuqSBlHAE6Xw-yeJA0Tunw' | python ./piped-fix.py
 
@@ -45,7 +42,6 @@ def main():
   elem_icon.text = api_json["avatarUrl"]
 
   print(ET.tostring(feed_document).decode())
-
 
 if __name__ == '__main__':
   main()
