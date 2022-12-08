@@ -10,7 +10,6 @@ import xml.etree.ElementTree as ET
 
 # Globals.
 atom_ns = {"atom": "http://www.w3.org/2005/Atom"}
-article_parser_url = "https://extract-article.deta.dev/?url="
 
 def main():
   sys.stdin.reconfigure(encoding="utf-8")
