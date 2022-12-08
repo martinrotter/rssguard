@@ -7,7 +7,24 @@ on:
     tags: ["*"]
 
 jobs:
+  check-build-script:
+    name: Check build script
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout source code
+        uses: actions/checkout@v3
+
+      - name: Check script syntax
+        run: bash -n ./resources/scripts/github-actions/build-linux-mac.sh
+
+      - name: Show shellcheck version
+        run: shellcheck --version
+
+      - name: Run shellcheck
+        run: shellcheck --color=always ./resources/scripts/github-actions/build-linux-mac.sh
+
   build-rssguard:
+    needs: check-build-script
     name: "${{ matrix.os }}; webengine = ${{ matrix.use_webengine }}; qt5 = ${{ matrix.use_qt5 }}"
     runs-on: "${{ matrix.os }}"
     strategy:
