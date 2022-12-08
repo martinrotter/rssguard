@@ -1,5 +1,7 @@
 #!/bin/bash
 
+set -e
+
 os="$1"
 webengine="$2"
 
@@ -8,6 +10,7 @@ if [[ "$os" == *"ubuntu"* ]]; then
   echo "We are building for GNU/Linux on Ubuntu."
   is_linux=true
   prefix="AppDir/usr"
+  app_id="io.github.martinrotter.rssguard"
 else
   echo "We are building for macOS."
   is_linux=false
@@ -29,8 +32,13 @@ if [ $is_linux = true ]; then
 
   sudo apt-get -qy install qt515tools qt515base qt515webengine qt515svg qt515multimedia qt515imageformats
   sudo apt-get -qy install cmake ninja-build openssl libssl-dev libgl1-mesa-dev gstreamer1.0-alsa gstreamer1.0-plugins-good gstreamer1.0-plugins-base gstreamer1.0-plugins-bad gstreamer1.0-qt5 gstreamer1.0-pulseaudio
-  
+
+  # The script below performs some broken testing, which ends up tripping 'set -e'.
+  # So we temporarily ignore errors when sourcing the script, and re-enable them afterward.
+  set +e
+  # shellcheck source=/dev/null
   source /opt/qt515/bin/qt515-env.sh
+  set -e
 else
   # Qt 6.
   QTTARGET="mac"
@@ -59,12 +67,13 @@ fi
 cmake --version
 
 # Build application and package it.
-git_tag=$(git describe --tags $(git rev-list --tags --max-count=1))
+git_tag=$(git describe --tags "$(git rev-list --tags --max-count=1)")
 git_revision=$(git rev-parse --short HEAD)
 
-mkdir rssguard-build && cd rssguard-build
+mkdir rssguard-build
+cd rssguard-build
 
-cmake .. -G Ninja -DCMAKE_OSX_ARCHITECTURES="x86_64;arm64" -DFORCE_BUNDLE_ICONS="ON" -DCMAKE_BUILD_TYPE="MinSizeRel" -DCMAKE_INSTALL_PREFIX="$prefix" -DREVISION_FROM_GIT="ON" -DBUILD_WITH_QT6="$USE_QT6" -DUSE_WEBENGINE="$webengine" -DFEEDLY_CLIENT_ID="$FEEDLY_CLIENT_ID" -DFEEDLY_CLIENT_SECRET="$FEEDLY_CLIENT_SECRET" -DGMAIL_CLIENT_ID="$GMAIL_CLIENT_ID" -DGMAIL_CLIENT_SECRET="$GMAIL_CLIENT_SECRET"
+cmake .. --warn-uninitialized -G Ninja -DCMAKE_OSX_ARCHITECTURES="x86_64;arm64" -DFORCE_BUNDLE_ICONS="ON" -DCMAKE_BUILD_TYPE="MinSizeRel" -DCMAKE_INSTALL_PREFIX="$prefix" -DREVISION_FROM_GIT="ON" -DBUILD_WITH_QT6="$USE_QT6" -DUSE_WEBENGINE="$webengine" -DFEEDLY_CLIENT_ID="$FEEDLY_CLIENT_ID" -DFEEDLY_CLIENT_SECRET="$FEEDLY_CLIENT_SECRET" -DGMAIL_CLIENT_ID="$GMAIL_CLIENT_ID" -DGMAIL_CLIENT_SECRET="$GMAIL_CLIENT_SECRET"
 cmake --build .
 cmake --install . --prefix "$prefix"
 
@@ -73,29 +82,32 @@ if [ $is_linux = true ]; then
   wget -qc https://github.com/probonopd/linuxdeployqt/releases/download/continuous/linuxdeployqt-continuous-x86_64.AppImage
   chmod a+x linuxdeployqt-continuous-x86_64.AppImage 
 
-  # Copy Gstreamer libs.
-  install -v -Dm755 "/usr/lib/x86_64-linux-gnu/gstreamer1.0/gstreamer-1.0/gst-plugin-scanner" "AppDir/usr/lib/gstreamer1.0/gstreamer-1.0/gst-plugin-scanner"
-  gst_executables="-executable=AppDir/usr/lib/gstreamer1.0/gstreamer-1.0/gst-plugin-scanner"
+  # Copy GStreamer libs.
+  install -v -Dm755 "/usr/lib/x86_64-linux-gnu/gstreamer1.0/gstreamer-1.0/gst-plugin-scanner" "$prefix/lib/gstreamer1.0/gstreamer-1.0/gst-plugin-scanner"
+  gst_executables=("-executable=$prefix/lib/gstreamer1.0/gstreamer-1.0/gst-plugin-scanner")
 
   for plugin in /usr/lib/x86_64-linux-gnu/gstreamer-1.0/libgst*.so; do
     basen=$(basename "$plugin")
-    install -v -Dm755 "$plugin" "AppDir/usr/lib/gstreamer-1.0/$basen"
-    gst_executables="${gst_executables} -executable=AppDir/usr/lib/gstreamer-1.0/$basen"
+    install -v -Dm755 "$plugin" "$prefix/lib/gstreamer-1.0/$basen"
+    gst_executables+=("-executable=$prefix/lib/gstreamer-1.0/$basen")
   done
 
-  echo "Gstream command line for AppImage is: $gst_executables"
+  echo "GStreamer command line for AppImage is: ${gst_executables[*]}"
 
   # Create AppImage.
   unset QTDIR; unset QT_PLUGIN_PATH ; unset LD_LIBRARY_PATH
-  ./linuxdeployqt-continuous-x86_64.AppImage "./AppDir/usr/share/applications/io.github.martinrotter.rssguard.desktop" -bundle-non-qt-libs -no-translations $gst_executables
-  ./linuxdeployqt-continuous-x86_64.AppImage "./AppDir/usr/share/applications/io.github.martinrotter.rssguard.desktop" -bundle-non-qt-libs -no-translations $gst_executables
+
+  # Run the Apppmage tool twice to include missing dependencies for GStreamer.
+  # See: https://github.com/probonopd/linuxdeployqt/issues/123#issuecomment-346934117
+  ./linuxdeployqt-continuous-x86_64.AppImage "$prefix/share/applications/$app_id.desktop" -bundle-non-qt-libs -no-translations "${gst_executables[@]}"
+  ./linuxdeployqt-continuous-x86_64.AppImage "$prefix/share/applications/$app_id.desktop" -bundle-non-qt-libs -no-translations "${gst_executables[@]}"
 
   if [[ "$webengine" == "ON" ]]; then
     # Copy some NSS3 files to prevent WebEngine crashes.
-    cp /usr/lib/x86_64-linux-gnu/nss/* ./AppDir/usr/lib/ -v
+    cp /usr/lib/x86_64-linux-gnu/nss/* "$prefix/lib/" -v
   fi
 
-  ./linuxdeployqt-continuous-x86_64.AppImage "./AppDir/usr/share/applications/io.github.martinrotter.rssguard.desktop" -appimage -no-translations $gst_executables
+  ./linuxdeployqt-continuous-x86_64.AppImage "$prefix/share/applications/$app_id.desktop" -appimage -no-translations "${gst_executables[@]}"
 
   # Rename AppImaage.
   set -- R*.AppImage
@@ -108,14 +120,14 @@ if [ $is_linux = true ]; then
   fi
 else
   # Fix .dylib linking.
-  otool -L "RSS Guard.app/Contents/MacOS/rssguard"
+  otool -L "$prefix/Contents/MacOS/rssguard"
 
-  install_name_tool -add_rpath "@executable_path" "RSS Guard.app/Contents/MacOS/rssguard"
-  install_name_tool -add_rpath "@executable_path/../Frameworks" "RSS Guard.app/Contents/MacOS/rssguard"
+  install_name_tool -add_rpath "@executable_path" "$prefix/Contents/MacOS/rssguard"
+  install_name_tool -add_rpath "@executable_path/../Frameworks" "$prefix/Contents/MacOS/rssguard"
 
-  otool -L "RSS Guard.app/Contents/MacOS/rssguard"
+  otool -L "$prefix/Contents/MacOS/rssguard"
   
-  macdeployqt "./RSS Guard.app" -dmg
+  macdeployqt "$prefix" -dmg
 
   # Rename DMG.
   set -- *.dmg
