@@ -27,6 +27,12 @@ FormStandardImportExport::FormStandardImportExport(StandardServiceRoot* service_
 
   GuiUtilities::applyDialogProperties(*this, qApp->icons()->fromTheme(QSL("document-export")));
 
+  m_ui->m_txtPostProcessScript->textEdit()->setTabChangesFocus(true);
+  m_ui->m_txtPostProcessScript->textEdit()->setPlaceholderText(tr("Full command to execute"));
+  m_ui->m_txtPostProcessScript->textEdit()->setToolTip(tr("You can enter full command including interpreter here."));
+  m_ui->m_txtPostProcessScript->setStatus(WidgetWithStatus::StatusType::Ok,
+                                          tr("Here you can enter script executaion line, including interpreter."));
+
   m_ui->m_lblSelectFile->setStatus(WidgetWithStatus::StatusType::Error,
                                    tr("No file is selected."),
                                    tr("No file is selected."));
@@ -42,6 +48,11 @@ FormStandardImportExport::FormStandardImportExport(StandardServiceRoot* service_
   connect(m_ui->m_btnSelectFile, &QPushButton::clicked, this, &FormStandardImportExport::selectFile);
   connect(m_ui->m_btnCheckAllItems, &QPushButton::clicked, m_model, &FeedsImportExportModel::checkAllItems);
   connect(m_ui->m_btnUncheckAllItems, &QPushButton::clicked, m_model, &FeedsImportExportModel::uncheckAllItems);
+  connect(m_ui->m_txtPostProcessScript->textEdit(), &QPlainTextEdit::textChanged, this, [this]() {
+    onPostProcessScriptChanged(m_ui->m_txtPostProcessScript->textEdit()->toPlainText());
+  });
+
+  onPostProcessScriptChanged({});
 }
 
 FormStandardImportExport::~FormStandardImportExport() = default;
@@ -58,6 +69,7 @@ void FormStandardImportExport::setMode(FeedsImportExportModel::Mode mode) {
       m_ui->m_treeFeeds->expandAll();
       m_ui->m_cmbRootNode->setVisible(false);
       m_ui->m_lblRootNode->setVisible(false);
+      m_ui->m_gbFetchMetadata->setVisible(false);
       m_ui->m_groupFile->setTitle(tr("Destination file"));
       m_ui->m_groupFeeds->setTitle(tr("Source feeds && categories"));
       m_ui->m_buttonBox->button(QDialogButtonBox::StandardButton::Ok)->setText(tr("&Export to file"));
@@ -142,6 +154,15 @@ void FormStandardImportExport::onParsingProgress(int completed, int total) {
   m_ui->m_progressBar->setValue(completed);
 }
 
+void FormStandardImportExport::onPostProcessScriptChanged(const QString& new_pp) {
+  if (QRegularExpression(QSL(SCRIPT_SOURCE_TYPE_REGEXP)).match(new_pp).hasMatch() || !new_pp.simplified().isEmpty()) {
+    m_ui->m_txtPostProcessScript->setStatus(LineEditWithStatus::StatusType::Ok, tr("Command is ok."));
+  }
+  else {
+    m_ui->m_txtPostProcessScript->setStatus(LineEditWithStatus::StatusType::Ok, tr("Command is empty."));
+  }
+}
+
 void FormStandardImportExport::selectExportFile(bool without_dialog) {
   const QString the_file = qApp->homeFolder() + QDir::separator() +
                            QSL("rssguard_feeds_%1.opml").arg(QDate::currentDate().toString(Qt::DateFormat::ISODate));
@@ -218,18 +239,8 @@ void FormStandardImportExport::selectImportFile() {
     m_ui->m_lblSelectFile->setStatus(WidgetWithStatus::StatusType::Ok,
                                      QDir::toNativeSeparators(selected_file),
                                      tr("File is selected."));
-    QMessageBox::StandardButton answer =
-      MsgBox::show(this,
-                   QMessageBox::Icon::Warning,
-                   tr("Get online metadata"),
-                   tr("Metadata for your feeds can be fetched online. Note that the action "
-                      "could take several minutes, depending on number of feeds."),
-                   tr("Do you want to fetch feed metadata online?"),
-                   QString(),
-                   QMessageBox::StandardButton::Yes | QMessageBox::StandardButton::No,
-                   QMessageBox::StandardButton::Yes);
 
-    parseImportFile(selected_file, answer == QMessageBox::StandardButton::Yes);
+    parseImportFile(selected_file, m_ui->m_gbFetchMetadata->isChecked());
   }
 }
 
@@ -250,11 +261,15 @@ void FormStandardImportExport::parseImportFile(const QString& file_name, bool fe
 
   switch (m_conversionType) {
     case ConversionType::OPML20:
-      m_model->importAsOPML20(input_data, fetch_metadata_online);
+      m_model->importAsOPML20(input_data,
+                              fetch_metadata_online,
+                              m_ui->m_txtPostProcessScript->textEdit()->toPlainText());
       break;
 
     case ConversionType::TxtUrlPerLine:
-      m_model->importAsTxtURLPerLine(input_data, fetch_metadata_online);
+      m_model->importAsTxtURLPerLine(input_data,
+                                     fetch_metadata_online,
+                                     m_ui->m_txtPostProcessScript->textEdit()->toPlainText());
       break;
 
     default:

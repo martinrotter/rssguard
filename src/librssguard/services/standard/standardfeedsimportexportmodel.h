@@ -17,12 +17,14 @@ class FeedsImportExportModel : public AccountCheckSortedModel {
     // Exports to OPML 2.0
     // NOTE: http://dev.opml.org/spec2.html
     bool exportToOMPL20(QByteArray& result, bool export_icons);
-    void importAsOPML20(const QByteArray& data, bool fetch_metadata_online);
+    void importAsOPML20(const QByteArray& data, bool fetch_metadata_online, const QString& post_process_script = {});
 
     // Exports to plain text format
     // where there is one feed URL per line.
     bool exportToTxtURLPerLine(QByteArray& result);
-    void importAsTxtURLPerLine(const QByteArray& data, bool fetch_metadata_online);
+    void importAsTxtURLPerLine(const QByteArray& data,
+                               bool fetch_metadata_online,
+                               const QString& post_process_script = {});
 
     Mode mode() const;
     void setMode(Mode mode);

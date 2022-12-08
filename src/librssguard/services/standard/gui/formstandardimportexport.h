@@ -16,13 +16,10 @@ class Category;
 class StandardServiceRoot;
 
 class FormStandardImportExport : public QDialog {
-  Q_OBJECT
+    Q_OBJECT
 
   public:
-    enum class ConversionType {
-      OPML20 = 0,
-      TxtUrlPerLine = 1
-    };
+    enum class ConversionType { OPML20 = 0, TxtUrlPerLine = 1 };
 
     explicit FormStandardImportExport(StandardServiceRoot* service_root, QWidget* parent = nullptr);
     virtual ~FormStandardImportExport();
@@ -36,6 +33,8 @@ class FormStandardImportExport : public QDialog {
     void onParsingStarted();
     void onParsingFinished(int count_failed, int count_succeeded, bool parsing_error);
     void onParsingProgress(int completed, int total);
+
+    void onPostProcessScriptChanged(const QString& new_pp);
 
   private:
     void selectExportFile(bool without_dialog);

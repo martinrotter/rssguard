@@ -145,7 +145,9 @@ bool FeedsImportExportModel::exportToOMPL20(QByteArray& result, bool export_icon
   return true;
 }
 
-void FeedsImportExportModel::importAsOPML20(const QByteArray& data, bool fetch_metadata_online) {
+void FeedsImportExportModel::importAsOPML20(const QByteArray& data,
+                                            bool fetch_metadata_online,
+                                            const QString& post_process_script) {
   emit parsingStarted();
   emit layoutAboutToBeChanged();
 
@@ -200,10 +202,16 @@ void FeedsImportExportModel::importAsOPML20(const QByteArray& data, bool fetch_m
           if (!feed_url.isEmpty()) {
             try {
               if (fetch_metadata_online) {
-                StandardFeed* guessed =
-                  StandardFeed::guessFeed(StandardFeed::SourceType::Url, feed_url, {}, {}, {}, custom_proxy);
+                StandardFeed* guessed = StandardFeed::guessFeed(StandardFeed::SourceType::Url,
+                                                                feed_url,
+                                                                post_process_script,
+                                                                {},
+                                                                {},
+                                                                custom_proxy);
 
                 guessed->setSource(feed_url);
+                guessed->setPostProcessScript(post_process_script);
+
                 active_model_item->appendChild(guessed);
                 succeded++;
                 add_offline_anyway = false;
@@ -319,7 +327,9 @@ bool FeedsImportExportModel::exportToTxtURLPerLine(QByteArray& result) {
   return true;
 }
 
-void FeedsImportExportModel::importAsTxtURLPerLine(const QByteArray& data, bool fetch_metadata_online) {
+void FeedsImportExportModel::importAsTxtURLPerLine(const QByteArray& data,
+                                                   bool fetch_metadata_online,
+                                                   const QString& post_process_script) {
   emit parsingStarted();
   emit layoutAboutToBeChanged();
   setRootItem(nullptr);
@@ -341,9 +351,12 @@ void FeedsImportExportModel::importAsTxtURLPerLine(const QByteArray& data, bool 
 
       try {
         if (fetch_metadata_online) {
-          StandardFeed* guessed = StandardFeed::guessFeed(StandardFeed::SourceType::Url, url, {}, {}, {}, custom_proxy);
+          StandardFeed* guessed =
+            StandardFeed::guessFeed(StandardFeed::SourceType::Url, url, post_process_script, {}, {}, custom_proxy);
 
           guessed->setSource(url);
+          guessed->setPostProcessScript(post_process_script);
+
           root_item->appendChild(guessed);
           succeded++;
           add_offline_anyway = false;

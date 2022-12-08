@@ -15,9 +15,9 @@ class Category;
 class RootItem;
 
 class StandardFeedDetails : public QWidget {
-  Q_OBJECT
+    Q_OBJECT
 
-  friend class FormStandardFeedDetails;
+    friend class FormStandardFeedDetails;
 
   public:
     explicit StandardFeedDetails(QWidget* parent = nullptr);

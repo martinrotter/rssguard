@@ -40,8 +40,6 @@ StandardFeedDetails::StandardFeedDetails(QWidget* parent) : QWidget(parent) {
                                 QVariant::fromValue(StandardFeed::SourceType::Url));
   m_ui.m_cmbSourceType->addItem(StandardFeed::sourceTypeToString(StandardFeed::SourceType::Script),
                                 QVariant::fromValue(StandardFeed::SourceType::Script));
-  m_ui.m_txtPostProcessScript->setStatus(WidgetWithStatus::StatusType::Ok,
-                                         tr("Here you can enter script executaion line, including interpreter."));
 
   // Add standard feed types.
   m_ui.m_cmbType->addItem(StandardFeed::typeToString(StandardFeed::Type::Atom10),
@@ -265,12 +263,8 @@ void StandardFeedDetails::onUrlChanged(const QString& new_url) {
 }
 
 void StandardFeedDetails::onPostProcessScriptChanged(const QString& new_pp) {
-  if (QRegularExpression(QSL(SCRIPT_SOURCE_TYPE_REGEXP)).match(new_pp).hasMatch()) {
+  if (QRegularExpression(QSL(SCRIPT_SOURCE_TYPE_REGEXP)).match(new_pp).hasMatch() || !new_pp.simplified().isEmpty()) {
     m_ui.m_txtPostProcessScript->setStatus(LineEditWithStatus::StatusType::Ok, tr("Command is ok."));
-  }
-  else if (!new_pp.simplified().isEmpty()) {
-    m_ui.m_txtPostProcessScript->setStatus(LineEditWithStatus::StatusType::Warning,
-                                           tr("Command not seem to use \"#\" separator for arguments."));
   }
   else {
     m_ui.m_txtPostProcessScript->setStatus(LineEditWithStatus::StatusType::Ok, tr("Command is empty."));

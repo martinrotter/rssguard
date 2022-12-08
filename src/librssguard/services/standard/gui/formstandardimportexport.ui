@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>478</width>
-    <height>434</height>
+    <width>500</width>
+    <height>550</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -43,6 +43,44 @@
        <widget class="LabelWithStatus" name="m_lblSelectFile" native="true">
         <property name="layoutDirection">
          <enum>Qt::RightToLeft</enum>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </widget>
+   </item>
+   <item>
+    <widget class="QGroupBox" name="m_gbFetchMetadata">
+     <property name="title">
+      <string>Fetch online metadata</string>
+     </property>
+     <property name="checkable">
+      <bool>true</bool>
+     </property>
+     <layout class="QVBoxLayout" name="verticalLayout_2">
+      <item>
+       <widget class="QLabel" name="label_4">
+        <property name="text">
+         <string>Optional post-processing script</string>
+        </property>
+        <property name="buddy">
+         <cstring>m_txtPostProcessScript</cstring>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="TextEditWithStatus" name="m_txtPostProcessScript" native="true">
+        <property name="minimumSize">
+         <size>
+          <width>0</width>
+          <height>50</height>
+         </size>
+        </property>
+        <property name="maximumSize">
+         <size>
+          <width>16777215</width>
+          <height>100</height>
+         </size>
         </property>
        </widget>
       </item>
@@ -229,9 +267,16 @@
    <header>labelwithstatus.h</header>
    <container>1</container>
   </customwidget>
+  <customwidget>
+   <class>TextEditWithStatus</class>
+   <extends>QWidget</extends>
+   <header>lineeditwithstatus.h</header>
+   <container>1</container>
+  </customwidget>
  </customwidgets>
  <tabstops>
   <tabstop>m_btnSelectFile</tabstop>
+  <tabstop>m_gbFetchMetadata</tabstop>
   <tabstop>m_cmbRootNode</tabstop>
   <tabstop>m_cbExportIcons</tabstop>
   <tabstop>m_btnCheckAllItems</tabstop>
