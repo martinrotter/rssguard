@@ -1,7 +1,7 @@
 ; For license of this file, see <project-root-folder>/LICENSE.md.
 
 !define VERSION "@CMAKE_PROJECT_VERSION@"
-!define APP_VERSION "@CMALE_PROJECT_VERSION@"
+!define APP_VERSION "@CMAKE_PROJECT_VERSION@"
 !define APP_NAME "@APP_NAME@"
 !define EXE_NAME "@CMAKE_PROJECT_NAME@.exe"
 !define LICENSE_FILE "@CMAKE_SOURCE_DIR@\resources\text\COPYING_GNU_GPL"
