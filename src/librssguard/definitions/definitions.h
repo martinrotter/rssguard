@@ -18,7 +18,7 @@
 
 #define ADBLOCK_SERVER_FILE "adblock-server.js"
 #define ADBLOCK_SERVER_PORT 48484
-#define ADBLOCK_HOWTO "https://github.com/martinrotter/rssguard/blob/master/resources/docs/Documentation.md#adbl"
+#define ADBLOCK_HOWTO APP_URL_DOCUMENTATION "#adbl"
 #define ADBLOCK_ICON_ACTIVE "adblock"
 #define ADBLOCK_ICON_DISABLED "adblock-disabled"
 
@@ -57,7 +57,7 @@
 #define DEFAULT_SQL_MESSAGES_FILTER "0 > 1"
 #define MAX_MULTICOLUMN_SORT_STATES 3
 #define RELEASES_LIST "https://api.github.com/repos/martinrotter/rssguard/releases"
-#define MSG_FILTERING_HELP "https://github.com/martinrotter/rssguard/blob/master/resources/docs/Documentation.md#fltr"
+#define MSG_FILTERING_HELP APP_URL_DOCUMENTATION "#fltr"
 #define URL_REGEXP                                                                                                     \
   "^(http|https|feed|ftp):\\/\\/[\\w\\-_]+(\\.[\\w\\-_]+)+([\\w\\-\\.,@?^=%&amp;:/~\\+#]*[\\w\\-\\@?^=%&amp;/"         \
   "~\\+#])?$"
