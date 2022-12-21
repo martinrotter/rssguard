@@ -2798,12 +2798,12 @@ Musíte restartovat manuálně.</translation>
     <message>
         <location filename="../src/librssguard/services/standard/gui/formstandardimportexport.cpp" line="31"/>
         <source>Full command to execute</source>
-        <translation type="unfinished"/>
+        <translation>Plný příkaz k vykonání</translation>
     </message>
     <message>
         <location filename="../src/librssguard/services/standard/gui/formstandardimportexport.cpp" line="32"/>
         <source>You can enter full command including interpreter here.</source>
-        <translation type="unfinished"/>
+        <translation>Sem můžete zadat plné volání externího programu i s parametry, které vyprodukuje kanálová data.</translation>
     </message>
     <message>
         <location filename="../src/librssguard/services/standard/gui/formstandardimportexport.cpp" line="34"/>

@@ -2743,7 +2743,7 @@ Dieser Neustart muss manuell ausgeführt werden.</translation>
     <message>
         <location filename="../src/librssguard/services/standard/gui/formstandardimportexport.cpp" line="162"/>
         <source>Command is empty.</source>
-        <translation type="unfinished"/>
+        <translation>Befehl unvollständig.</translation>
     </message>
     <message>
         <location filename="../src/librssguard/services/standard/gui/formstandardimportexport.cpp" line="171"/>
