@@ -1,3 +1,32 @@
+4.2.6
+-----
+
+Added:
+* Bunch of premade sample article filters added to "Article filters" window.
+* Placeholders in external tools definitions can be now arbitrarily placed.
+* Article RSS enclosures can now be added from within article filters.
+* Added customizable skin color for feeds with NEW articles. So now it is possible to distinguish between NEW and UNREAD (but old) articles. (#850)
+* Added application debug log dialog. See "Help" menu for more.
+* Too big fetched feed icons are now automatically scaled down to fixed size (48x48).
+* Now it is possible to run post-process script when importing OPML. (#848)
+* Now it is possible to change "User-Agent" HTTP header. (#835)
+* Added now column into article list which shows labels for each article. (#768)
+* Now it is possible to "suppress" feed. Suppressed feeds do not trigger notifications. (#745)
+
+Fixed:
+* HTML detection on the QTextBrowser viewer is now more precise. (#813)
+* Article decoding for Nextcloud News works better. (#814)
+* Inoreader built-in API tokens are removed, because they were abused.
+* Default AdBlock lists now have corrected URL addresses.
+* Fixed full-article scraper "scrape-full-articles.py".
+* Do some preparations and code cleanups for adding "lite" RSS Guard variant to Flathub.
+* Nextcloud News plugin processes "mediaThumbnail" and "mediaDescription" when parsing articles. (#831)
+* Avoid appending empty RSS enclosures to articles. (#832)
+* AppImage reverted to Qt 5 as Qt 6 support in AppImage generator is very very buggy.
+* All dialogs where icons/images are selected now load their "formats" dynamically to support all possible image formats correctly. (#834) This effectivelly adds "webp" and other formats on systems where it is supported.
+* Fixed crash. (#849)
+* Enable smooth-scrolling by default. (#793)
+
 4.2.5
 -----
 
