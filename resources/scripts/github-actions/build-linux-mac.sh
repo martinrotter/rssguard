@@ -10,7 +10,11 @@ if [[ "$os" == *"ubuntu"* ]]; then
   echo "We are building for GNU/Linux on Ubuntu."
   is_linux=true
   prefix="AppDir/usr"
-  app_id="io.github.martinrotter.rssguard"
+  if [[ "$webengine" == "ON" ]]; then
+    app_id="io.github.martinrotter.rssguard"
+  else
+    app_id="io.github.martinrotter.rssguardlite"
+  fi
 else
   echo "We are building for macOS."
   is_linux=false

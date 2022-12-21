@@ -94,7 +94,7 @@ QString SystemFactory::autostartDesktopFileLocation() const {
   if (!xdg_config_path.isEmpty()) {
     // XDG_CONFIG_HOME variable is specified. Look for .desktop file
     // in 'autostart' subdirectory.
-    desktop_file_location = xdg_config_path + QSL("/autostart/") + APP_DESKTOP_ENTRY_FILE;
+    desktop_file_location = xdg_config_path + QSL("/autostart/") + APP_REVERSE_NAME + QSL(".desktop");
   }
   else {
     // Desired variable is not set, look for the default 'autostart' subdirectory.
@@ -103,7 +103,7 @@ QString SystemFactory::autostartDesktopFileLocation() const {
     if (!home_directory.isEmpty()) {
       // Home directory exists. Check if target .desktop file exists and
       // return according status.
-      desktop_file_location = home_directory + QSL("/.config/autostart/") + APP_DESKTOP_ENTRY_FILE;
+      desktop_file_location = home_directory + QSL("/.config/autostart/") + APP_REVERSE_NAME + QSL(".desktop");
     }
   }
 
@@ -170,7 +170,7 @@ bool SystemFactory::setAutoStartStatus(AutoStartStatus new_status) {
       }
 
       const QString source_autostart_desktop_file =
-        QString(APP_DESKTOP_ENTRY_PATH) + QDir::separator() + APP_DESKTOP_SOURCE_ENTRY_FILE;
+        QString(APP_DESKTOP_ENTRY_PATH) + QDir::separator() + APP_DESKTOP_ENTRY_FILE;
 
       try {
         QString desktop_file_contents = QString::fromUtf8(IOFactory::readFile(source_autostart_desktop_file));
@@ -189,13 +189,17 @@ bool SystemFactory::setAutoStartStatus(AutoStartStatus new_status) {
         args = FROM_STD_LIST(QStringList, std_args);
 
 #if defined(IS_FLATPAK_BUILD)
-        const QString flatpak_run = QSL("flatpak run %1").arg(QSL(APP_REVERSE_NAME));
+        const QString flatpak_run = QSL("flatpak run %1").arg(APP_REVERSE_NAME);
 
         args = args.mid(1);
         args.prepend(flatpak_run);
 #endif
 
-        desktop_file_contents = desktop_file_contents.arg(args.join(QL1C(' ')));
+        desktop_file_contents.replace("Exec=@APP_LOW_NAME@", QSL("Exec=") + args.join(QL1C(' ')));
+        desktop_file_contents.replace("@APPDATA_SUMMARY@", APPDATA_SUMMARY);
+        desktop_file_contents.replace("@APPDATA_NAME@", APPDATA_NAME);
+        desktop_file_contents.replace("@APP_REVERSE_NAME@", APP_REVERSE_NAME);
+        desktop_file_contents.replace("@APP_LOW_NAME@", APP_LOW_NAME);
 
         IOFactory::writeFile(destination_file, desktop_file_contents.toUtf8());
       }

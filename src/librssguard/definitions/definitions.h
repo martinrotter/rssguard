@@ -345,8 +345,7 @@
 #define APP_LANG_PATH QSL(":/localization")
 
 #if defined(Q_OS_UNIX) && !defined(Q_OS_MACOS)
-#define APP_DESKTOP_SOURCE_ENTRY_FILE APP_REVERSE_NAME ".autostart"
-#define APP_DESKTOP_ENTRY_FILE APP_REVERSE_NAME ".desktop"
+#define APP_DESKTOP_ENTRY_FILE "rssguard.desktop.in"
 
 #define APP_DESKTOP_ENTRY_PATH QSL(":/desktop")
 #endif

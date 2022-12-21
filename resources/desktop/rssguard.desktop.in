@@ -1,0 +1,11 @@
+[Desktop Entry]
+Type=Application
+Name=@APPDATA_NAME@
+Comment=@APPDATA_SUMMARY@
+Icon=@APP_REVERSE_NAME@
+Exec=@APP_LOW_NAME@
+Categories=Feed;News;Network;Qt;
+StartupWMClass=@APP_LOW_NAME@
+X-GNOME-SingleWindow=true
+X-GNOME-Autostart-Delay=15
+X-LXQt-Need-Tray=true
