@@ -39,7 +39,10 @@ RSS Guard is an [open-source](https://en.wikipedia.org/wiki/Open_source) [cross-
 ## Downloads <a id="dwn"></a>
 Official place to download RSS Guard is at [Github Releases page](https://github.com/martinrotter/rssguard/releases). You can also download the [development (beta) build](https://github.com/martinrotter/rssguard/releases/tag/devbuild), which is updated automatically every time the source code is updated.
 
-RSS Guard is also available in [repositories of many Linux distributions](https://repology.org/project/rssguard/versions), and via [Flathub](https://flathub.org/apps/details/com.github.rssguard).
+RSS Guard is also available in [repositories of many Linux distributions](https://repology.org/project/rssguard/versions), and via [Flathub](https://flathub.org/about) with two different versions:
+
+- [Regular](https://flathub.org/apps/details/io.github.martinrotter.rssguard): Includes an integrated web browser (built with `-DUSE_WEBENGINE=ON`).
+- [Lite](https://flathub.org/apps/details/io.github.martinrotter.rssguardlite): Does not include an integrated web browser (built with `-DUSE_WEBENGINE=OFF`).
 
 I highly recommend to download RSS Guard only from trusted sources.
 
