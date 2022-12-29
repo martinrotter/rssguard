@@ -168,7 +168,7 @@ void FormStandardImportExport::selectExportFile(bool without_dialog) {
                            QSL("rssguard_feeds_%1.opml").arg(QDate::currentDate().toString(Qt::DateFormat::ISODate));
   QString selected_file;
   QString selected_filter;
-  const QString filter_opml20 = tr("OPML 2.0 files (*.opml)");
+  const QString filter_opml20 = tr("OPML 2.0 files (*.opml *.xml)");
   const QString filter_txt_url_per_line = tr("TXT files [one URL per line] (*.txt)");
 
   if (!without_dialog) {
@@ -213,7 +213,7 @@ void FormStandardImportExport::selectExportFile(bool without_dialog) {
 }
 
 void FormStandardImportExport::selectImportFile() {
-  const QString filter_opml20 = tr("OPML 2.0 files (*.opml)");
+  const QString filter_opml20 = tr("OPML 2.0 files (*.opml *.xml)");
   const QString filter_txt_url_per_line = tr("TXT files [one URL per line] (*.txt)");
   QString filter;
   QString selected_filter;
