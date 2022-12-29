@@ -50,7 +50,7 @@
     </widget>
    </item>
    <item>
-    <widget class="QGroupBox" name="m_gbFetchMetadata">
+    <widget class="QGroupBox" name="m_groupFetchMetadata">
      <property name="title">
       <string>Fetch online metadata</string>
      </property>
@@ -276,7 +276,7 @@
  </customwidgets>
  <tabstops>
   <tabstop>m_btnSelectFile</tabstop>
-  <tabstop>m_gbFetchMetadata</tabstop>
+  <tabstop>m_groupFetchMetadata</tabstop>
   <tabstop>m_cmbRootNode</tabstop>
   <tabstop>m_cbExportIcons</tabstop>
   <tabstop>m_btnCheckAllItems</tabstop>

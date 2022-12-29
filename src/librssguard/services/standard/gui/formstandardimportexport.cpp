@@ -69,7 +69,7 @@ void FormStandardImportExport::setMode(FeedsImportExportModel::Mode mode) {
       m_ui->m_treeFeeds->expandAll();
       m_ui->m_cmbRootNode->setVisible(false);
       m_ui->m_lblRootNode->setVisible(false);
-      m_ui->m_gbFetchMetadata->setVisible(false);
+      m_ui->m_groupFetchMetadata->setVisible(false);
       m_ui->m_groupFile->setTitle(tr("Destination file"));
       m_ui->m_groupFeeds->setTitle(tr("Source feeds && categories"));
       m_ui->m_buttonBox->button(QDialogButtonBox::StandardButton::Ok)->setText(tr("&Export to file"));
@@ -119,6 +119,7 @@ void FormStandardImportExport::onParsingStarted() {
   m_ui->m_lblResult->setStatus(WidgetWithStatus::StatusType::Progress, tr("Parsing data..."), tr("Parsing data..."));
   m_ui->m_btnSelectFile->setEnabled(false);
   m_ui->m_groupFeeds->setEnabled(false);
+  m_ui->m_groupFetchMetadata->setEnabled(false);
   m_ui->m_progressBar->setValue(0);
   m_ui->m_progressBar->setVisible(true);
   m_ui->m_buttonBox->button(QDialogButtonBox::StandardButton::Ok)->setEnabled(false);
@@ -135,12 +136,14 @@ void FormStandardImportExport::onParsingFinished(int count_failed, int count_suc
   if (!parsing_error) {
     m_ui->m_lblResult->setStatus(WidgetWithStatus::StatusType::Ok, tr("Feeds were loaded."), tr("Feeds were loaded."));
     m_ui->m_groupFeeds->setEnabled(true);
+    m_ui->m_groupFetchMetadata->setEnabled(true);
     m_ui->m_btnSelectFile->setEnabled(true);
     m_ui->m_treeFeeds->setModel(m_model);
     m_ui->m_treeFeeds->expandAll();
   }
   else {
     m_ui->m_groupFeeds->setEnabled(false);
+    m_ui->m_groupFetchMetadata->setEnabled(false);
     m_ui->m_lblResult->setStatus(WidgetWithStatus::StatusType::Error,
                                  tr("Error, file is not well-formed. Select another file."),
                                  tr("Error occurred. File is not well-formed. Select another file."));
@@ -240,7 +243,7 @@ void FormStandardImportExport::selectImportFile() {
                                      QDir::toNativeSeparators(selected_file),
                                      tr("File is selected."));
 
-    parseImportFile(selected_file, m_ui->m_gbFetchMetadata->isChecked());
+    parseImportFile(selected_file, m_ui->m_groupFetchMetadata->isChecked());
   }
 }
 
