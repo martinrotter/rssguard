@@ -625,6 +625,7 @@ target_link_libraries(rssguard PUBLIC
   Qt${QT_VERSION_MAJOR}::Sql
   Qt${QT_VERSION_MAJOR}::Widgets
   Qt${QT_VERSION_MAJOR}::Xml
+  Qt${QT_VERSION_MAJOR}::Concurrent
 )
 
 if(QT_VERSION_MAJOR EQUAL 6)

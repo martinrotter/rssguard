@@ -16,11 +16,30 @@
 #include <QDomElement>
 #include <QLocale>
 #include <QStack>
+#include <QtConcurrent/QtConcurrentMap>
 
 FeedsImportExportModel::FeedsImportExportModel(QObject* parent)
-  : AccountCheckSortedModel(parent), m_mode(Mode::Import) {}
+  : AccountCheckSortedModel(parent), m_watcherLookup(new QFutureWatcher<void>(this)), m_mode(Mode::Import) {
+
+  connect(m_watcherLookup, &QFutureWatcher<void>::progressValueChanged, this, [=](int prog) {
+    emit parsingProgress(prog, m_lookup.size());
+  });
+
+  connect(m_watcherLookup, &QFutureWatcher<void>::finished, this, [=]() {
+    emit layoutChanged();
+    emit parsingFinished(0, m_lookup.size(), false);
+
+    // Done, remove lookups.
+    m_lookup.clear();
+  });
+}
 
 FeedsImportExportModel::~FeedsImportExportModel() {
+  if (m_watcherLookup->isRunning()) {
+    m_watcherLookup->cancel();
+    m_watcherLookup->waitForFinished();
+  }
+
   if (sourceModel() != nullptr && sourceModel()->rootItem() != nullptr && m_mode == Mode::Import) {
     // Delete all model items, but only if we are in import mode. Export mode shares
     // root item with main feed model, thus cannot be deleted from memory now.
@@ -145,6 +164,78 @@ bool FeedsImportExportModel::exportToOMPL20(QByteArray& result, bool export_icon
   return true;
 }
 
+void produceFeed(FeedLookup feed_lookup) {
+  bool add_offline_anyway = true;
+
+  try {
+    if (feed_lookup.fetch_metadata_online) {
+      StandardFeed* guessed = StandardFeed::guessFeed(StandardFeed::SourceType::Url,
+                                                      feed_lookup.url,
+                                                      feed_lookup.post_process_script,
+                                                      {},
+                                                      {},
+                                                      feed_lookup.custom_proxy);
+
+      guessed->setSource(feed_lookup.url);
+      guessed->setPostProcessScript(feed_lookup.post_process_script);
+
+      feed_lookup.parent->appendChild(guessed);
+      // succeded++;
+      add_offline_anyway = false;
+    }
+  }
+  catch (const ApplicationException& ex) {
+    qCriticalNN << LOGSEC_CORE << "Cannot fetch medatada for feed:" << QUOTE_W_SPACE(feed_lookup.url)
+                << "with error:" << QUOTE_W_SPACE_DOT(ex.message());
+  }
+
+  if (add_offline_anyway) {
+    QString feed_title = feed_lookup.opml_element.attribute(QSL("text"));
+    QString feed_encoding = feed_lookup.opml_element.attribute(QSL("encoding"), QSL(DEFAULT_FEED_ENCODING));
+    QString feed_type = feed_lookup.opml_element.attribute(QSL("version"), QSL(DEFAULT_FEED_TYPE)).toUpper();
+    QString feed_description = feed_lookup.opml_element.attribute(QSL("description"));
+    QIcon feed_icon =
+      qApp->icons()->fromByteArray(feed_lookup.opml_element.attribute(QSL("rssguard:icon")).toLocal8Bit());
+    StandardFeed::SourceType source_type =
+      StandardFeed::SourceType(feed_lookup.opml_element.attribute(QSL("rssguard:xmlUrlType")).toInt());
+    QString post_process = feed_lookup.opml_element.attribute(QSL("rssguard:postProcess"));
+    auto* new_feed = new StandardFeed(feed_lookup.parent);
+
+    new_feed->setTitle(feed_title);
+    new_feed->setDescription(feed_description);
+    new_feed->setEncoding(feed_encoding);
+    new_feed->setSource(feed_lookup.url);
+    new_feed->setSourceType(source_type);
+    new_feed->setPostProcessScript(post_process);
+
+    if (!feed_icon.isNull()) {
+      new_feed->setIcon(feed_icon);
+    }
+
+    if (feed_type == QL1S("RSS1")) {
+      new_feed->setType(StandardFeed::Type::Rdf);
+    }
+    else if (feed_type == QL1S("JSON")) {
+      new_feed->setType(StandardFeed::Type::Json);
+    }
+    else if (feed_type == QL1S("ATOM")) {
+      new_feed->setType(StandardFeed::Type::Atom10);
+    }
+    else {
+      new_feed->setType(StandardFeed::Type::Rss2X);
+    }
+
+    feed_lookup.parent->appendChild(new_feed);
+
+    if (feed_lookup.fetch_metadata_online) {
+      // failed++;
+    }
+    else {
+      // succeded++;
+    }
+  }
+}
+
 void FeedsImportExportModel::importAsOPML20(const QByteArray& data,
                                             bool fetch_metadata_online,
                                             const QString& post_process_script) {
@@ -180,6 +271,8 @@ void FeedsImportExportModel::importAsOPML20(const QByteArray& data,
   elements_to_process.push(opml_document.documentElement().elementsByTagName(QSL("body")).at(0).toElement());
   total = opml_document.elementsByTagName(QSL("outline")).size();
 
+  QList<FeedLookup> lookup;
+
   while (!elements_to_process.isEmpty()) {
     RootItem* active_model_item = model_items.pop();
     QDomElement active_element = elements_to_process.pop();
@@ -197,76 +290,18 @@ void FeedsImportExportModel::importAsOPML20(const QByteArray& data,
           // This is FEED.
           // Add feed and end this iteration.
           QString feed_url = child_element.attribute(QSL("xmlUrl"));
-          bool add_offline_anyway = true;
 
           if (!feed_url.isEmpty()) {
-            try {
-              if (fetch_metadata_online) {
-                StandardFeed* guessed = StandardFeed::guessFeed(StandardFeed::SourceType::Url,
-                                                                feed_url,
-                                                                post_process_script,
-                                                                {},
-                                                                {},
-                                                                custom_proxy);
+            FeedLookup f;
 
-                guessed->setSource(feed_url);
-                guessed->setPostProcessScript(post_process_script);
+            f.custom_proxy = custom_proxy;
+            f.fetch_metadata_online = fetch_metadata_online;
+            f.opml_element = child_element;
+            f.parent = active_model_item;
+            f.post_process_script = post_process_script;
+            f.url = feed_url;
 
-                active_model_item->appendChild(guessed);
-                succeded++;
-                add_offline_anyway = false;
-              }
-            }
-            catch (const ApplicationException& ex) {
-              qCriticalNN << LOGSEC_CORE << "Cannot fetch medatada for feed:" << QUOTE_W_SPACE(feed_url)
-                          << "with error:" << QUOTE_W_SPACE_DOT(ex.message());
-            }
-
-            if (add_offline_anyway) {
-              QString feed_title = child_element.attribute(QSL("text"));
-              QString feed_encoding = child_element.attribute(QSL("encoding"), QSL(DEFAULT_FEED_ENCODING));
-              QString feed_type = child_element.attribute(QSL("version"), QSL(DEFAULT_FEED_TYPE)).toUpper();
-              QString feed_description = child_element.attribute(QSL("description"));
-              QIcon feed_icon =
-                qApp->icons()->fromByteArray(child_element.attribute(QSL("rssguard:icon")).toLocal8Bit());
-              StandardFeed::SourceType source_type =
-                StandardFeed::SourceType(child_element.attribute(QSL("rssguard:xmlUrlType")).toInt());
-              QString post_process = child_element.attribute(QSL("rssguard:postProcess"));
-              auto* new_feed = new StandardFeed(active_model_item);
-
-              new_feed->setTitle(feed_title);
-              new_feed->setDescription(feed_description);
-              new_feed->setEncoding(feed_encoding);
-              new_feed->setSource(feed_url);
-              new_feed->setSourceType(source_type);
-              new_feed->setPostProcessScript(post_process);
-
-              if (!feed_icon.isNull()) {
-                new_feed->setIcon(feed_icon);
-              }
-
-              if (feed_type == QL1S("RSS1")) {
-                new_feed->setType(StandardFeed::Type::Rdf);
-              }
-              else if (feed_type == QL1S("JSON")) {
-                new_feed->setType(StandardFeed::Type::Json);
-              }
-              else if (feed_type == QL1S("ATOM")) {
-                new_feed->setType(StandardFeed::Type::Atom10);
-              }
-              else {
-                new_feed->setType(StandardFeed::Type::Rss2X);
-              }
-
-              active_model_item->appendChild(new_feed);
-
-              if (fetch_metadata_online) {
-                failed++;
-              }
-              else {
-                succeded++;
-              }
-            }
+            lookup.append(f);
           }
         }
         else {
@@ -313,8 +348,14 @@ void FeedsImportExportModel::importAsOPML20(const QByteArray& data,
 
   setRootItem(root_item);
 
-  emit layoutChanged();
-  emit parsingFinished(failed, succeded, false);
+  m_lookup.clear();
+  m_lookup.append(lookup);
+
+  m_watcherLookup->setFuture(QtConcurrent::map(m_lookup, produceFeed));
+
+  if (!fetch_metadata_online) {
+    m_watcherLookup->waitForFinished();
+  }
 }
 
 bool FeedsImportExportModel::exportToTxtURLPerLine(QByteArray& result) {
