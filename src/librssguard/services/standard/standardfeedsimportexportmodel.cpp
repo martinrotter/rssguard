@@ -363,7 +363,7 @@ void FeedsImportExportModel::importAsOPML20(const QByteArray& data,
   m_lookup.clear();
   m_lookup.append(lookup);
 
-  QFuture<bool> fut = QtConcurrent::mapped(m_lookup, [=](const FeedLookup& lookup) {
+  QFuture<bool> fut = QtConcurrent::mapped(m_lookup, [=](const FeedLookup& lookup) -> bool {
     return produceFeed(lookup);
   });
 
@@ -430,7 +430,7 @@ void FeedsImportExportModel::importAsTxtURLPerLine(const QByteArray& data,
   m_lookup.clear();
   m_lookup.append(lookup);
 
-  QFuture<bool> fut = QtConcurrent::mapped(m_lookup, [=](const FeedLookup& lookup) {
+  QFuture<bool> fut = QtConcurrent::mapped(m_lookup, [=](const FeedLookup& lookup) -> bool {
     return produceFeed(lookup);
   });
 
