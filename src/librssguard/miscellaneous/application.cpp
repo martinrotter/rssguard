@@ -35,6 +35,7 @@
 #include <QProcess>
 #include <QSessionManager>
 #include <QSslSocket>
+#include <QThreadPool>
 #include <QTimer>
 
 #if defined(Q_OS_UNIX) && !defined(Q_OS_MACOS)
