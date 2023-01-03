@@ -28,9 +28,7 @@ FeedsImportExportModel::FeedsImportExportModel(QObject* parent)
 
   connect(&m_watcherLookup, &QFutureWatcher<bool>::finished, this, [=]() {
     auto res = m_watcherLookup.future().results();
-    int number_error = boolinq::from(res).count([](bool rs) {
-      return !rs;
-    });
+    int number_error = boolinq::from(res).count(false);
 
     emit layoutChanged();
     emit parsingFinished(number_error, m_lookup.size() - number_error);
