@@ -5,6 +5,21 @@
 
 #include "services/abstract/accountcheckmodel.h"
 
+#include <QDomElement>
+#include <QFutureWatcher>
+#include <QNetworkProxy>
+
+class StandardFeed;
+
+struct FeedLookup {
+    RootItem* parent;
+    QDomElement opml_element;
+    QString url;
+    bool fetch_metadata_online;
+    QNetworkProxy custom_proxy;
+    QString post_process_script;
+};
+
 class FeedsImportExportModel : public AccountCheckSortedModel {
     Q_OBJECT
 
@@ -32,9 +47,15 @@ class FeedsImportExportModel : public AccountCheckSortedModel {
   signals:
     void parsingStarted();
     void parsingProgress(int completed, int total);
-    void parsingFinished(int count_failed, int count_succeeded, bool parsing_error);
+    void parsingFinished(int count_failed, int count_succeeded);
 
   private:
+    bool produceFeed(const FeedLookup& feed_lookup);
+
+  private:
+    QMutex m_mtxLookup;
+    QList<FeedLookup> m_lookup;
+    QFutureWatcher<bool> m_watcherLookup;
     Mode m_mode;
 };
 

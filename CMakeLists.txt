@@ -128,6 +128,7 @@ set(QT_COMPONENTS
   Sql
   Widgets
   Xml
+  Concurrent
 )
 
 if(NOT OS2)

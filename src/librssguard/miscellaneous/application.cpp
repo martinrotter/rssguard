@@ -216,6 +216,8 @@ Application::Application(const QString& id, int& argc, char** argv, const QStrin
 
   qDebugNN << LOGSEC_CORE << "OpenSSL version:" << QUOTE_W_SPACE_DOT(QSslSocket::sslLibraryVersionString());
   qDebugNN << LOGSEC_CORE << "OpenSSL supported:" << QUOTE_W_SPACE_DOT(QSslSocket::supportsSsl());
+  qDebugNN << LOGSEC_CORE << "Global thread pool has"
+           << NONQUOTE_W_SPACE(QThreadPool::globalInstance()->maxThreadCount()) << "threads.";
 }
 
 Application::~Application() {
