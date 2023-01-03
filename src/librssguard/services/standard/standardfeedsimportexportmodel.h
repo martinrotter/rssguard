@@ -47,7 +47,7 @@ class FeedsImportExportModel : public AccountCheckSortedModel {
   signals:
     void parsingStarted();
     void parsingProgress(int completed, int total);
-    void parsingFinished(int count_failed, int count_succeeded, bool parsing_error);
+    void parsingFinished(int count_failed, int count_succeeded);
 
   private:
     bool produceFeed(const FeedLookup& feed_lookup);
@@ -55,7 +55,7 @@ class FeedsImportExportModel : public AccountCheckSortedModel {
   private:
     QMutex m_mtxLookup;
     QList<FeedLookup> m_lookup;
-    QFutureWatcher<bool>* m_watcherLookup;
+    QFutureWatcher<bool> m_watcherLookup;
     Mode m_mode;
 };
 

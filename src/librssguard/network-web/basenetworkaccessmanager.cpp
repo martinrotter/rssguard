@@ -17,7 +17,6 @@ BaseNetworkAccessManager::BaseNetworkAccessManager(QObject* parent)
 }
 
 void BaseNetworkAccessManager::loadSettings() {
-  QNetworkProxy new_proxy;
   const QNetworkProxy::ProxyType selected_proxy_type =
     static_cast<QNetworkProxy::ProxyType>(qApp->settings()->value(GROUP(Proxy), SETTING(Proxy::Type)).toInt());
 
@@ -55,10 +54,10 @@ QNetworkReply* BaseNetworkAccessManager::createRequest(QNetworkAccessManager::Op
 
 #if defined(Q_OS_WIN)
   new_request.setAttribute(QNetworkRequest::Attribute::HttpPipeliningAllowedAttribute, true);
+#endif
 
 #if QT_VERSION >= 0x050F00 // Qt >= 5.15.0
   new_request.setAttribute(QNetworkRequest::Attribute::Http2AllowedAttribute, m_enableHttp2);
-#endif
 #endif
 
   new_request.setRawHeader(HTTP_HEADERS_COOKIE, QSL("JSESSIONID= ").toLocal8Bit());

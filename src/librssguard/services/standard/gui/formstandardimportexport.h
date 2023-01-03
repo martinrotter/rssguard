@@ -31,7 +31,7 @@ class FormStandardImportExport : public QDialog {
     void selectFile();
 
     void onParsingStarted();
-    void onParsingFinished(int count_failed, int count_succeeded, bool parsing_error);
+    void onParsingFinished(int count_failed, int count_succeeded);
     void onParsingProgress(int completed, int total);
 
     void onPostProcessScriptChanged(const QString& new_pp);
