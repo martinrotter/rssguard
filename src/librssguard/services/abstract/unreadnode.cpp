@@ -26,9 +26,9 @@ void UnreadNode::updateCounts(bool including_total_count) {
   Q_UNUSED(including_total_count)
 
   bool is_main_thread = QThread::currentThread() == qApp->thread();
-  QSqlDatabase database = is_main_thread ?
-                          qApp->database()->driver()->connection(metaObject()->className()) :
-                          qApp->database()->driver()->connection(QSL("feed_upd"));
+  qlonglong thread_id = qlonglong(QThread::currentThreadId());
+  QSqlDatabase database = is_main_thread ? qApp->database()->driver()->connection(metaObject()->className())
+                                         : qApp->database()->driver()->connection(QSL("feed_upd_%1").arg(thread_id));
   int account_id = getParentServiceRoot()->accountId();
 
   m_totalCount = m_unreadCount = DatabaseQueries::getUnreadMessageCounts(database, account_id);

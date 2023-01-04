@@ -11,8 +11,7 @@
 
 #include <QThread>
 
-RecycleBin::RecycleBin(RootItem* parent_item) : RootItem(parent_item), m_totalCount(0),
-  m_unreadCount(0) {
+RecycleBin::RecycleBin(RootItem* parent_item) : RootItem(parent_item), m_totalCount(0), m_unreadCount(0) {
   setKind(RootItem::Kind::Bin);
   setId(ID_RECYCLE_BIN);
   setIcon(qApp->icons()->fromTheme(QSL("user-trash")));
@@ -34,9 +33,9 @@ int RecycleBin::countOfAllMessages() const {
 
 void RecycleBin::updateCounts(bool update_total_count) {
   bool is_main_thread = QThread::currentThread() == qApp->thread();
-  QSqlDatabase database = is_main_thread ?
-                          qApp->database()->driver()->connection(metaObject()->className()) :
-                          qApp->database()->driver()->connection(QSL("feed_upd"));
+  qlonglong thread_id = qlonglong(QThread::currentThreadId());
+  QSqlDatabase database = is_main_thread ? qApp->database()->driver()->connection(metaObject()->className())
+                                         : qApp->database()->driver()->connection(QSL("feed_upd_%1").arg(thread_id));
 
   m_unreadCount = DatabaseQueries::getMessageCountsForBin(database, getParentServiceRoot()->accountId(), false);
 
@@ -47,12 +46,9 @@ void RecycleBin::updateCounts(bool update_total_count) {
 
 QList<QAction*> RecycleBin::contextMenuFeedsList() {
   if (m_contextMenu.isEmpty()) {
-    QAction* restore_action = new QAction(qApp->icons()->fromTheme(QSL("view-refresh")),
-                                          tr("Restore recycle bin"),
-                                          this);
-    QAction* empty_action = new QAction(qApp->icons()->fromTheme(QSL("edit-clear")),
-                                        tr("Empty recycle bin"),
-                                        this);
+    QAction* restore_action =
+      new QAction(qApp->icons()->fromTheme(QSL("view-refresh")), tr("Restore recycle bin"), this);
+    QAction* empty_action = new QAction(qApp->icons()->fromTheme(QSL("edit-clear")), tr("Empty recycle bin"), this);
 
     connect(restore_action, &QAction::triggered, this, &RecycleBin::restore);
     connect(empty_action, &QAction::triggered, this, &RecycleBin::empty);
@@ -99,7 +95,8 @@ bool RecycleBin::cleanMessages(bool clear_only_read) {
     updateCounts(true);
     parent_root->itemChanged(QList<RootItem*>() << this);
     parent_root->requestReloadMessageList(true);
-    return true;;
+    return true;
+    ;
   }
   else {
     return false;

@@ -959,8 +959,9 @@ QPair<int, int> ServiceRoot::updateMessages(QList<Message>& messages, Feed* feed
   qDebugNN << LOGSEC_CORE << "Updating messages in DB. Main thread:" << QUOTE_W_SPACE_DOT(is_main_thread);
 
   bool ok = false;
+  qlonglong thread_id = qlonglong(QThread::currentThreadId());
   QSqlDatabase database = is_main_thread ? qApp->database()->driver()->connection(metaObject()->className())
-                                         : qApp->database()->driver()->connection(QSL("feed_upd"));
+                                         : qApp->database()->driver()->connection(QSL("feed_upd_%1").arg(thread_id));
 
   updated_messages = DatabaseQueries::updateMessages(database, messages, feed, force_update, &ok);
 

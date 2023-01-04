@@ -2,10 +2,10 @@
 
 #include "services/abstract/label.h"
 
-#include "gui/dialogs/formaddeditlabel.h"
-#include "miscellaneous/application.h"
 #include "database/databasefactory.h"
 #include "database/databasequeries.h"
+#include "gui/dialogs/formaddeditlabel.h"
+#include "miscellaneous/application.h"
 #include "services/abstract/cacheforserviceroot.h"
 #include "services/abstract/labelsnode.h"
 #include "services/abstract/serviceroot.h"
@@ -77,9 +77,9 @@ bool Label::deleteViaGui() {
 
 void Label::updateCounts(bool including_total_count) {
   bool is_main_thread = QThread::currentThread() == qApp->thread();
-  QSqlDatabase database = is_main_thread ?
-                          qApp->database()->driver()->connection(metaObject()->className()) :
-                          qApp->database()->driver()->connection(QSL("feed_upd"));
+  qlonglong thread_id = qlonglong(QThread::currentThreadId());
+  QSqlDatabase database = is_main_thread ? qApp->database()->driver()->connection(metaObject()->className())
+                                         : qApp->database()->driver()->connection(QSL("feed_upd_%1").arg(thread_id));
   int account_id = getParentServiceRoot()->accountId();
 
   if (including_total_count) {
@@ -111,27 +111,25 @@ QIcon Label::generateIcon(const QColor& color) {
 
 void Label::assignToMessage(const Message& msg) {
   bool is_main_thread = QThread::currentThread() == qApp->thread();
-  QSqlDatabase database = is_main_thread ?
-                          qApp->database()->driver()->connection(metaObject()->className()) :
-                          qApp->database()->driver()->connection(QSL("feed_upd"));
+  QSqlDatabase database = is_main_thread ? qApp->database()->driver()->connection(metaObject()->className())
+                                         : qApp->database()->driver()->connection(QSL("feed_upd"));
 
-  if (getParentServiceRoot()->onBeforeLabelMessageAssignmentChanged({ this }, { msg }, true)) {
+  if (getParentServiceRoot()->onBeforeLabelMessageAssignmentChanged({this}, {msg}, true)) {
     DatabaseQueries::assignLabelToMessage(database, this, msg);
 
-    getParentServiceRoot()->onAfterLabelMessageAssignmentChanged({ this }, { msg }, true);
+    getParentServiceRoot()->onAfterLabelMessageAssignmentChanged({this}, {msg}, true);
   }
 }
 
 void Label::deassignFromMessage(const Message& msg) {
   bool is_main_thread = QThread::currentThread() == qApp->thread();
-  QSqlDatabase database = is_main_thread ?
-                          qApp->database()->driver()->connection(metaObject()->className()) :
-                          qApp->database()->driver()->connection(QSL("feed_upd"));
+  QSqlDatabase database = is_main_thread ? qApp->database()->driver()->connection(metaObject()->className())
+                                         : qApp->database()->driver()->connection(QSL("feed_upd"));
 
-  if (getParentServiceRoot()->onBeforeLabelMessageAssignmentChanged({ this }, { msg }, false)) {
+  if (getParentServiceRoot()->onBeforeLabelMessageAssignmentChanged({this}, {msg}, false)) {
     DatabaseQueries::deassignLabelFromMessage(database, this, msg);
 
-    getParentServiceRoot()->onAfterLabelMessageAssignmentChanged({ this }, { msg }, false);
+    getParentServiceRoot()->onAfterLabelMessageAssignmentChanged({this}, {msg}, false);
   }
 }
 
