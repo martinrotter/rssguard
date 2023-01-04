@@ -10,8 +10,19 @@
 #include <QRegularExpression>
 #include <QSqlError>
 #include <QSqlQuery>
+#include <QThread>
 
 DatabaseDriver::DatabaseDriver(QObject* parent) : QObject(parent) {}
+
+QSqlDatabase DatabaseDriver::threadSafeConnection(const QString& connection_name, DesiredStorageType desired_type) {
+  qlonglong thread_id = qlonglong(QThread::currentThreadId());
+  bool is_main_thread = QThread::currentThread() == qApp->thread();
+
+  QSqlDatabase database =
+    connection(is_main_thread ? connection_name : QSL("db_connection_%1").arg(thread_id), desired_type);
+
+  return database;
+}
 
 void DatabaseDriver::updateDatabaseSchema(QSqlQuery& query,
                                           int source_db_schema_version,

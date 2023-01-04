@@ -5,6 +5,7 @@
 
 #include <QObject>
 
+#include <QFutureWatcher>
 #include <QPair>
 
 #include "core/message.h"
@@ -29,11 +30,15 @@ class FeedDownloadResults {
     QList<QPair<Feed*, int>> m_updatedFeeds;
 };
 
-struct FeedUpdate {
+struct FeedUpdateRequest {
     Feed* feed = nullptr;
     ServiceRoot* account = nullptr;
     QHash<ServiceRoot::BagOfMessages, QStringList> stated_messages;
     QHash<QString, QStringList> tagged_messages;
+};
+
+struct FeedUpdateResult {
+    Feed* feed = nullptr;
 };
 
 // This class offers means to "update" feeds and "special" categories.
@@ -68,16 +73,15 @@ class FeedDownloader : public QObject {
     void finalizeUpdate();
     void removeDuplicateMessages(QList<Message>& messages);
 
-    void updateThreadedFeed(const FeedUpdate& fd);
+    FeedUpdateResult updateThreadedFeed(const FeedUpdateRequest& fd);
 
   private:
     bool m_isCacheSynchronizationRunning;
     bool m_stopCacheSynchronization;
     QHash<ServiceRoot*, ApplicationException> m_erroredAccounts;
-    QList<FeedUpdate> m_feeds = {};
+    QList<FeedUpdateRequest> m_feeds = {};
+    QFutureWatcher<FeedUpdateResult> m_watcherLookup;
     FeedDownloadResults m_results;
-    int m_feedsUpdated;
-    int m_feedsOriginalCount;
 };
 
 #endif // FEEDDOWNLOADER_H

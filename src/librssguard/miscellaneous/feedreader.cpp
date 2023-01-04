@@ -122,7 +122,7 @@ void FeedReader::initializeFeedDownloader() {
 
     connect(m_feedDownloaderThread, &QThread::finished, m_feedDownloaderThread, &QThread::deleteLater);
     connect(m_feedDownloaderThread, &QThread::finished, m_feedDownloader, &FeedDownloader::deleteLater);
-    connect(m_feedDownloader, &FeedDownloader::updateFinished, this, &FeedReader::feedUpdatesFinished);
+    connect(m_feedDownloader, &FeedDownloader::updateFinished, this, &FeedReader::onFeedUpdatesFinished);
     connect(m_feedDownloader, &FeedDownloader::updateProgress, this, &FeedReader::feedUpdatesProgress);
     connect(m_feedDownloader, &FeedDownloader::updateStarted, this, &FeedReader::feedUpdatesStarted);
     connect(m_feedDownloader, &FeedDownloader::updateFinished, qApp->feedUpdateLock(), &Mutex::unlock);
@@ -346,6 +346,11 @@ void FeedReader::executeNextAutoUpdate() {
                             QSystemTrayIcon::MessageIcon::Information});
     }
   }
+}
+
+void FeedReader::onFeedUpdatesFinished(FeedDownloadResults updated_feeds) {
+  m_feedsModel->reloadWholeLayout();
+  emit feedUpdatesFinished(updated_feeds);
 }
 
 QList<MessageFilter*> FeedReader::messageFilters() const {

@@ -218,7 +218,7 @@ Application::Application(const QString& id, int& argc, char** argv, const QStrin
   auto ideal_th_count = QThread::idealThreadCount();
 
   if (ideal_th_count > 1) {
-    QThreadPool::globalInstance()->setMaxThreadCount(2 * ideal_th_count);
+    QThreadPool::globalInstance()->setMaxThreadCount((std::min)(128, 2 * ideal_th_count));
   }
 
   qDebugNN << LOGSEC_CORE << "OpenSSL version:" << QUOTE_W_SPACE_DOT(QSslSocket::sslLibraryVersionString());
