@@ -20,7 +20,7 @@
 #include <QtConcurrent/QtConcurrentMap>
 
 FeedsImportExportModel::FeedsImportExportModel(QObject* parent)
-  : AccountCheckSortedModel(parent), m_mode(Mode::Import) {
+  : AccountCheckSortedModel(parent), m_mode(Mode::Import), m_newRoot(nullptr) {
 
   connect(&m_watcherLookup, &QFutureWatcher<bool>::progressValueChanged, this, [=](int prog) {
     emit parsingProgress(prog, m_lookup.size());
@@ -30,7 +30,12 @@ FeedsImportExportModel::FeedsImportExportModel(QObject* parent)
     auto res = m_watcherLookup.future().results();
     int number_error = boolinq::from(res).count(false);
 
+    emit layoutAboutToBeChanged();
+    setRootItem(m_newRoot);
     emit layoutChanged();
+
+    m_newRoot = nullptr;
+
     emit parsingFinished(number_error, res.size() - number_error);
 
     // Done, remove lookups.
@@ -269,7 +274,7 @@ void FeedsImportExportModel::importAsOPML20(const QByteArray& data,
   }
 
   int completed = 0, total = 0;
-  auto* root_item = new StandardServiceRoot();
+  m_newRoot = new StandardServiceRoot();
   QStack<RootItem*> model_items;
   QNetworkProxy custom_proxy;
 
@@ -277,7 +282,7 @@ void FeedsImportExportModel::importAsOPML20(const QByteArray& data,
     custom_proxy = sourceModel()->rootItem()->getParentServiceRoot()->networkProxy();
   }
 
-  model_items.push(root_item);
+  model_items.push(m_newRoot);
   QStack<QDomElement> elements_to_process;
 
   elements_to_process.push(opml_document.documentElement().elementsByTagName(QSL("body")).at(0).toElement());
@@ -355,11 +360,6 @@ void FeedsImportExportModel::importAsOPML20(const QByteArray& data,
     }
   }
 
-  // Now, XML is processed and we have result in form of pointer item structure.
-  emit layoutAboutToBeChanged();
-
-  setRootItem(root_item);
-
   m_lookup.clear();
   m_lookup.append(lookup);
 
@@ -395,7 +395,7 @@ void FeedsImportExportModel::importAsTxtURLPerLine(const QByteArray& data,
   emit layoutChanged();
 
   int completed = 0;
-  auto* root_item = new StandardServiceRoot();
+  m_newRoot = new StandardServiceRoot();
   QNetworkProxy custom_proxy;
 
   if (sourceModel()->rootItem() != nullptr && sourceModel()->rootItem()->getParentServiceRoot() != nullptr) {
@@ -411,7 +411,7 @@ void FeedsImportExportModel::importAsTxtURLPerLine(const QByteArray& data,
 
       f.custom_proxy = custom_proxy;
       f.fetch_metadata_online = fetch_metadata_online;
-      f.parent = root_item;
+      f.parent = m_newRoot;
       f.post_process_script = post_process_script;
       f.url = url;
 
@@ -423,11 +423,6 @@ void FeedsImportExportModel::importAsTxtURLPerLine(const QByteArray& data,
 
     emit parsingProgress(++completed, urls.size());
   }
-
-  // Now, XML is processed and we have result in form of pointer item structure.
-  emit layoutAboutToBeChanged();
-
-  setRootItem(root_item);
 
   m_lookup.clear();
   m_lookup.append(lookup);

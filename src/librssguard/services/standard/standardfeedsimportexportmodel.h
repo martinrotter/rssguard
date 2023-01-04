@@ -55,6 +55,7 @@ class FeedsImportExportModel : public AccountCheckSortedModel {
   private:
     QMutex m_mtxLookup;
     QList<FeedLookup> m_lookup;
+    RootItem* m_newRoot;
     QFutureWatcher<bool> m_watcherLookup;
     Mode m_mode;
 };
