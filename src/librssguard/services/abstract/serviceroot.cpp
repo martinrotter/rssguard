@@ -992,7 +992,7 @@ QPair<int, int> ServiceRoot::updateMessages(QList<Message>& messages, Feed* feed
 
   // Some messages were really added to DB, reload feed in model.
   items_to_update.append(feed);
-  getParentServiceRoot()->itemChanged(items_to_update);
+  // getParentServiceRoot()->itemChanged(items_to_update);
 
   return updated_messages;
 }

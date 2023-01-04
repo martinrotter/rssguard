@@ -426,13 +426,13 @@ void FeedDownloader::updateOneFeed(ServiceRoot* acc,
     feed->setStatus(Feed::Status::OtherError, app_ex.message());
   }
 
-  feed->getParentServiceRoot()->itemChanged({feed});
+  // feed->getParentServiceRoot()->itemChanged({feed});
 
   m_feedsUpdated++;
 
   qDebugNN << LOGSEC_FEEDDOWNLOADER << "Made progress in feed updates, total feeds count " << m_feedsUpdated << "/"
            << m_feedsOriginalCount << " (id of feed is " << feed->id() << ").";
-  emit updateProgress(feed, m_feedsUpdated, m_feedsOriginalCount);
+  // emit updateProgress(feed, m_feedsUpdated, m_feedsOriginalCount);
 }
 
 void FeedDownloader::finalizeUpdate() {
