@@ -434,6 +434,7 @@ void FeedDownloader::finalizeUpdate() {
            << QUOTE_W_SPACE_DOT(QThread::currentThreadId());
 
   m_results.sort();
+  m_feeds.clear();
 
   // Update of feeds has finished.
   // NOTE: This means that now "update lock" can be unlocked
