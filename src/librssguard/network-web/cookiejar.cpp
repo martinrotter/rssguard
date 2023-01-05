@@ -120,10 +120,12 @@ void CookieJar::saveCookies() {
 }
 
 QList<QNetworkCookie> CookieJar::cookiesForUrl(const QUrl& url) const {
+  QReadLocker l(&m_lock);
   return QNetworkCookieJar::cookiesForUrl(url);
 }
 
 bool CookieJar::setCookiesFromUrl(const QList<QNetworkCookie>& cookie_list, const QUrl& url) {
+  QWriteLocker l(&m_lock);
   return QNetworkCookieJar::setCookiesFromUrl(cookie_list, url);
 }
 
@@ -188,11 +190,13 @@ bool CookieJar::insertCookie(const QNetworkCookie& cookie) {
     return {};
   }
   else {
+    QWriteLocker l(&m_lock);
     return insertCookieInternal(cookie, false, true);
   }
 }
 
 bool CookieJar::deleteCookie(const QNetworkCookie& cookie) {
+  QWriteLocker l(&m_lock);
   return deleteCookieInternal(cookie, false);
 }
 
@@ -206,5 +210,12 @@ void CookieJar::updateSettings() {
 }
 
 bool CookieJar::updateCookie(const QNetworkCookie& cookie) {
+  QWriteLocker l(&m_lock);
   return updateCookieInternal(cookie, false);
 }
+
+/*
+bool CookieJar::validateCookie(const QNetworkCookie &cookie, const QUrl &url) const {
+  return QNetworkCookieJar::validateCookie(cookie, url);
+}
+*/

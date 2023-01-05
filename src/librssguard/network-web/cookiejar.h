@@ -5,6 +5,8 @@
 
 #include <QNetworkCookieJar>
 
+#include <QReadWriteLock>
+
 #if defined(USE_WEBENGINE)
 class QWebEngineCookieStore;
 #endif
@@ -18,6 +20,7 @@ class CookieJar : public QNetworkCookieJar {
     virtual bool insertCookie(const QNetworkCookie& cookie);
     virtual bool updateCookie(const QNetworkCookie& cookie);
     virtual bool deleteCookie(const QNetworkCookie& cookie);
+    // virtual bool validateCookie(const QNetworkCookie& cookie, const QUrl& url) const;
 
     void updateSettings();
 
@@ -37,6 +40,7 @@ class CookieJar : public QNetworkCookieJar {
     QWebEngineCookieStore* m_webEngineCookies;
 #endif
 
+    mutable QReadWriteLock m_lock{QReadWriteLock::RecursionMode::Recursive};
     bool m_ignoreAllCookies;
 };
 

@@ -14,7 +14,9 @@
 #include <QColor>
 #include <QDateTime>
 #include <QNetworkProxy>
+#include <QReadWriteLock>
 #include <QStringList>
+#include <QWriteLocker>
 
 #define KEY extern const QString
 #define DKEY const QString
@@ -518,12 +520,13 @@ class Settings : public QSettings {
     static SettingsProperties determineProperties();
 
   private:
-    // Constructor.
     explicit Settings(const QString& file_name,
                       Format format,
                       SettingsProperties::SettingsType type,
                       QObject* parent = nullptr);
 
+  private:
+    mutable QReadWriteLock m_lock;
     SettingsProperties::SettingsType m_initializationStatus;
 };
 
@@ -545,10 +548,12 @@ inline QVariant Settings::value(const QString& section, const QString& key, cons
 }
 
 inline void Settings::setValue(const QString& section, const QString& key, const QVariant& value) {
+  QWriteLocker lck(&m_lock);
   QSettings::setValue(QString(QSL("%1/%2")).arg(section, key), value);
 }
 
 inline void Settings::setValue(const QString& key, const QVariant& value) {
+  QWriteLocker lck(&m_lock);
   QSettings::setValue(key, value);
 }
 
@@ -557,6 +562,8 @@ inline bool Settings::contains(const QString& section, const QString& key) const
 }
 
 inline void Settings::remove(const QString& section, const QString& key) {
+  QWriteLocker lck(&m_lock);
+
   if (key.isEmpty()) {
     beginGroup(section);
     QSettings::remove({});

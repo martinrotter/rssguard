@@ -82,22 +82,13 @@ void FeedDownloader::updateFeeds(const QList<Feed*>& feeds) {
     qDebugNN << LOGSEC_FEEDDOWNLOADER << "No feeds to update in worker thread, aborting update.";
   }
   else {
-    qDebugNN << LOGSEC_FEEDDOWNLOADER << "Starting feed updates from worker in thread: '" << QThread::currentThreadId()
-             << "'.";
+    qDebugNN << LOGSEC_FEEDDOWNLOADER << "Starting feed updates from worker in thread"
+             << QUOTE_W_SPACE_DOT(QThread::currentThreadId());
 
     // Job starts now.
     emit updateStarted();
     QSet<CacheForServiceRoot*> caches;
     QMultiHash<ServiceRoot*, Feed*> feeds_per_root;
-
-    // 1. key - account.
-    // 2. key - feed custom ID.
-    // 3. key - msg state.
-    QHash<ServiceRoot*, QHash<QString, QHash<ServiceRoot::BagOfMessages, QStringList>>> stated_messages;
-
-    // 1. key - account.
-    // 2. key - label custom ID.
-    QHash<ServiceRoot*, QHash<QString, QStringList>> tagged_messages;
 
     for (auto* fd : feeds) {
       CacheForServiceRoot* fd_cache = fd->getParentServiceRoot()->toCache();
@@ -112,21 +103,17 @@ void FeedDownloader::updateFeeds(const QList<Feed*>& feeds) {
     synchronizeAccountCaches(caches.values(), false);
 
     auto roots = feeds_per_root.uniqueKeys();
-    bool is_main_thread = QThread::currentThread() == qApp->thread();
-    QSqlDatabase database = is_main_thread ? qApp->database()->driver()->connection(metaObject()->className())
-                                           : qApp->database()->driver()->connection(QSL("feed_upd"));
+    QSqlDatabase database = qApp->database()->driver()->threadSafeConnection(metaObject()->className());
 
     for (auto* rt : roots) {
       auto fds = feeds_per_root.values(rt);
+      QHash<QString, QStringList> per_acc_tags;
+      QHash<QString, QHash<ServiceRoot::BagOfMessages, QStringList>> per_acc_states;
 
       // Obtain lists of local IDs.
       if (rt->wantsBaggedIdsOfExistingMessages()) {
         // Tags per account.
-        auto per_acc_tags = DatabaseQueries::bagsOfMessages(database, rt->labelsNode()->labels());
-
-        tagged_messages.insert(rt, per_acc_tags);
-
-        QHash<QString, QHash<ServiceRoot::BagOfMessages, QStringList>> per_acc_states;
+        per_acc_tags = DatabaseQueries::bagsOfMessages(database, rt->labelsNode()->labels());
 
         // This account has activated intelligent downloading of messages.
         // Prepare bags.
@@ -151,8 +138,6 @@ void FeedDownloader::updateFeeds(const QList<Feed*>& feeds) {
 
           m_feeds.append(fu);
         }
-
-        stated_messages.insert(rt, per_acc_states);
       }
       else {
         for (Feed* fd : fds) {
@@ -166,7 +151,7 @@ void FeedDownloader::updateFeeds(const QList<Feed*>& feeds) {
       }
 
       try {
-        rt->aboutToBeginFeedFetching(fds, stated_messages.value(rt), tagged_messages.value(rt));
+        rt->aboutToBeginFeedFetching(fds, per_acc_states, per_acc_tags);
       }
       catch (const ApplicationException& ex) {
         // Common error showed, all feeds from the root are errored now!
