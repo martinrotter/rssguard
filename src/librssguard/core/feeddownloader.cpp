@@ -223,9 +223,7 @@ void FeedDownloader::updateOneFeed(ServiceRoot* acc,
   tmr.start();
 
   try {
-    bool is_main_thread = QThread::currentThread() == qApp->thread();
-    QSqlDatabase database = is_main_thread ? qApp->database()->driver()->connection(metaObject()->className())
-                                           : qApp->database()->driver()->connection(QSL("feed_upd_%1").arg(thread_id));
+    QSqlDatabase database = qApp->database()->driver()->threadSafeConnection(metaObject()->className());
     QList<Message> msgs = feed->getParentServiceRoot()->obtainNewMessages(feed, stated_messages, tagged_messages);
 
     qDebugNN << LOGSEC_FEEDDOWNLOADER << "Downloaded" << NONQUOTE_W_SPACE(msgs.size()) << "messages for feed ID"

@@ -196,11 +196,7 @@ void Feed::appendMessageFilter(MessageFilter* filter) {
 }
 
 void Feed::updateCounts(bool including_total_count) {
-  bool is_main_thread = QThread::currentThread() == qApp->thread();
-  qlonglong thread_id = qlonglong(QThread::currentThreadId());
-  QSqlDatabase database = is_main_thread ? qApp->database()->driver()->connection(metaObject()->className())
-                                         : qApp->database()->driver()->connection(QSL("feed_upd_%1").arg(thread_id));
-
+  QSqlDatabase database = qApp->database()->driver()->threadSafeConnection(metaObject()->className());
   int account_id = getParentServiceRoot()->accountId();
 
   if (including_total_count) {
