@@ -12,7 +12,6 @@
 
 #include <QPainter>
 #include <QPainterPath>
-#include <QThread>
 
 Label::Label(const QString& name, const QColor& color, RootItem* parent_item) : Label(parent_item) {
   setColor(color);

@@ -401,9 +401,6 @@ namespace Proxy {
 // Database.
 namespace Database {
   KEY ID;
-  KEY UseTransactions;
-
-  VALUE(bool) UseTransactionsDef;
 
   KEY UseInMemory;
 

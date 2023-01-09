@@ -6,8 +6,6 @@
 #include "miscellaneous/application.h"
 #include "miscellaneous/iconfactory.h"
 
-#include <QThread>
-
 UnreadNode::UnreadNode(RootItem* parent_item) : RootItem(parent_item) {
   setKind(RootItem::Kind::Unread);
   setId(ID_UNREAD);

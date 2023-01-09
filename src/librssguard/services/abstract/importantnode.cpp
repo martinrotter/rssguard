@@ -8,8 +8,6 @@
 #include "services/abstract/cacheforserviceroot.h"
 #include "services/abstract/serviceroot.h"
 
-#include <QThread>
-
 ImportantNode::ImportantNode(RootItem* parent_item) : RootItem(parent_item) {
   setKind(RootItem::Kind::Important);
   setId(ID_IMPORTANT);

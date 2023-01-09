@@ -1086,7 +1086,6 @@ QPair<int, int> DatabaseQueries::updateMessages(QSqlDatabase db,
     return {0, 0};
   }
 
-  bool use_transactions = qApp->settings()->value(GROUP(Database), SETTING(Database::UseTransactions)).toBool();
   QPair<int, int> updated_messages = {0, 0};
   int account_id = feed->getParentServiceRoot()->accountId();
   auto feed_custom_id = feed->customId();
@@ -1098,7 +1097,6 @@ QPair<int, int> DatabaseQueries::updateMessages(QSqlDatabase db,
   QSqlQuery query_select_with_id(db);
   QSqlQuery query_update(db);
   QSqlQuery query_insert(db);
-  QSqlQuery query_begin_transaction(db);
 
   // Here we have query which will check for existence of the "same" message in given feed.
   // The two message are the "same" if:
@@ -1147,12 +1145,6 @@ QPair<int, int> DatabaseQueries::updateMessages(QSqlDatabase db,
                            ":is_deleted, url = :url, author = :author, score = :score, date_created = :date_created, "
                            "contents = :contents, enclosures = :enclosures, feed = :feed "
                            "WHERE id = :id;"));
-
-  if (use_transactions && !db.transaction()) {
-    qCriticalNN << LOGSEC_DB << "Transaction start for message downloader failed:"
-                << QUOTE_W_SPACE_DOT(query_begin_transaction.lastError().text());
-    return updated_messages;
-  }
 
   QVector<Message*> msgs_to_insert;
 
@@ -1473,20 +1465,8 @@ QPair<int, int> DatabaseQueries::updateMessages(QSqlDatabase db,
     qWarningNN << LOGSEC_DB << "Failed to set custom ID for all messages:" << QUOTE_W_SPACE_DOT(db.lastError().text());
   }
 
-  if (use_transactions && !db.commit()) {
-    qCriticalNN << LOGSEC_DB
-                << "Transaction commit for message downloader failed:" << QUOTE_W_SPACE_DOT(db.lastError().text());
-    db.rollback();
-
-    if (ok != nullptr) {
-      *ok = false;
-      updated_messages = {0, 0};
-    }
-  }
-  else {
-    if (ok != nullptr) {
-      *ok = true;
-    }
+  if (ok != nullptr) {
+    *ok = true;
   }
 
   return updated_messages;

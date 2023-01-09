@@ -19,8 +19,6 @@
 #include "services/abstract/recyclebin.h"
 #include "services/abstract/unreadnode.h"
 
-#include <QThread>
-
 ServiceRoot::ServiceRoot(RootItem* parent)
   : RootItem(parent), m_recycleBin(new RecycleBin(this)), m_importantNode(new ImportantNode(this)),
     m_labelsNode(new LabelsNode(this)), m_unreadNode(new UnreadNode(this)), m_accountId(NO_PARENT_CATEGORY),
@@ -953,7 +951,6 @@ QPair<int, int> ServiceRoot::updateMessages(QList<Message>& messages, Feed* feed
     return updated_messages;
   }
 
-  QList<RootItem*> items_to_update;
   bool ok = false;
   QSqlDatabase database = qApp->database()->driver()->threadSafeConnection(metaObject()->className());
 
@@ -967,28 +964,22 @@ QPair<int, int> ServiceRoot::updateMessages(QList<Message>& messages, Feed* feed
 
     if (recycleBin() != nullptr) {
       recycleBin()->updateCounts(true);
-      items_to_update.append(recycleBin());
     }
 
     if (importantNode() != nullptr) {
       importantNode()->updateCounts(true);
-      items_to_update.append(importantNode());
     }
 
     if (unreadNode() != nullptr) {
       unreadNode()->updateCounts(true);
-      items_to_update.append(unreadNode());
     }
 
     if (labelsNode() != nullptr) {
       labelsNode()->updateCounts(true);
-      items_to_update.append(labelsNode());
     }
   }
 
-  // Some messages were really added to DB, reload feed in model.
-  items_to_update.append(feed);
-  // getParentServiceRoot()->itemChanged(items_to_update);
+  // NOTE: Do not update model items here. We update only once when all feeds are fetched.
 
   return updated_messages;
 }

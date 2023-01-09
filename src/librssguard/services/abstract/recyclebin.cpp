@@ -9,8 +9,6 @@
 #include "services/abstract/cacheforserviceroot.h"
 #include "services/abstract/serviceroot.h"
 
-#include <QThread>
-
 RecycleBin::RecycleBin(RootItem* parent_item) : RootItem(parent_item), m_totalCount(0), m_unreadCount(0) {
   setKind(RootItem::Kind::Bin);
   setId(ID_RECYCLE_BIN);

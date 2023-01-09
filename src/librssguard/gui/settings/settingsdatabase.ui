@@ -11,20 +11,7 @@
    </rect>
   </property>
   <layout class="QFormLayout" name="formLayout">
-   <item row="0" column="0" colspan="2">
-    <widget class="QCheckBox" name="m_checkUseTransactions">
-     <property name="toolTip">
-      <string>Note that turning this option ON will make saving of new messages FASTER, but it might rarely cause some issues with messages saving.</string>
-     </property>
-     <property name="text">
-      <string>Use DB transactions when storing downloaded messages</string>
-     </property>
-    </widget>
-   </item>
-   <item row="1" column="0" colspan="2">
-    <widget class="HelpSpoiler" name="m_lblDataStorageWarning" native="true"/>
-   </item>
-   <item row="2" column="0">
+   <item row="0" column="0">
     <widget class="QLabel" name="m_lblDatabaseDriver">
      <property name="text">
       <string>Database driver</string>
@@ -34,10 +21,10 @@
      </property>
     </widget>
    </item>
-   <item row="2" column="1">
+   <item row="0" column="1">
     <widget class="QComboBox" name="m_cmbDatabaseDriver"/>
    </item>
-   <item row="3" column="0" colspan="2">
+   <item row="1" column="0" colspan="2">
     <widget class="QStackedWidget" name="m_stackedDatabaseDriver">
      <property name="currentIndex">
       <number>0</number>
@@ -204,7 +191,7 @@
      </widget>
     </widget>
    </item>
-   <item row="4" column="0" colspan="2">
+   <item row="2" column="0" colspan="2">
     <spacer name="verticalSpacer">
      <property name="orientation">
       <enum>Qt::Vertical</enum>
@@ -218,11 +205,6 @@
     </spacer>
    </item>
   </layout>
-  <zorder>m_lblDatabaseDriver</zorder>
-  <zorder>m_cmbDatabaseDriver</zorder>
-  <zorder>m_stackedDatabaseDriver</zorder>
-  <zorder>m_checkUseTransactions</zorder>
-  <zorder>m_lblDataStorageWarning</zorder>
  </widget>
  <customwidgets>
   <customwidget>

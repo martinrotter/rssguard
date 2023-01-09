@@ -374,9 +374,6 @@ DVALUE(int) Proxy::PortDef = 80;
 // Database.
 DKEY Database::ID = "database";
 
-DKEY Database::UseTransactions = "use_transactions";
-DVALUE(bool) Database::UseTransactionsDef = false;
-
 DKEY Database::UseInMemory = "use_in_memory_db";
 DVALUE(bool) Database::UseInMemoryDef = false;
 

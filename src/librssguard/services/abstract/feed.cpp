@@ -17,8 +17,6 @@
 #include "services/abstract/serviceroot.h"
 #include "services/abstract/unreadnode.h"
 
-#include <QThread>
-
 Feed::Feed(RootItem* parent)
   : RootItem(parent), m_source(QString()), m_status(Status::Normal), m_statusString(QString()),
     m_autoUpdateType(AutoUpdateType::DefaultAutoUpdate), m_autoUpdateInterval(DEFAULT_AUTO_UPDATE_INTERVAL),
