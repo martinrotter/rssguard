@@ -58,6 +58,7 @@ cmake_minimum_required(VERSION 3.9.0)
 
 # Global variables describing the project.
 string(TIMESTAMP YEAR "%Y")
+string(TIMESTAMP DATE "%Y-%m-%d")
 
 set(APP_NAME "RSS Guard")
 set(APP_EMAIL "rotter.martinos@gmail.com")
