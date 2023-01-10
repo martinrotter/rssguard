@@ -20,12 +20,11 @@ $AllProtocols = [System.Net.SecurityProtocolType]'Tls11,Tls12'
 $ProgressPreference = 'SilentlyContinue'
 
 # Get and prepare needed dependencies.
-
 if ($use_qt5 -eq "ON") {
   $qt_version = "5.15.2"
 }
 else {
-  $qt_version = "6.3.2"
+  $qt_version = "6.4.2"
 }
 
 $maria_version = "10.6.11"
