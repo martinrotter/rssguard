@@ -350,6 +350,8 @@ void FeedReader::executeNextAutoUpdate() {
 
 void FeedReader::onFeedUpdatesFinished(FeedDownloadResults updated_feeds) {
   m_feedsModel->reloadWholeLayout();
+  m_feedsModel->notifyWithCounts();
+
   emit feedUpdatesFinished(updated_feeds);
 }
 

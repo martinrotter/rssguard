@@ -1419,8 +1419,6 @@ QPair<int, int> DatabaseQueries::updateMessages(QSqlDatabase db,
           QString txt = bulk_error.text() + bulk_error.databaseText() + bulk_error.driverText();
 
           qCriticalNN << LOGSEC_DB << "Failed bulk insert of articles:" << QUOTE_W_SPACE_DOT(txt);
-
-          IOFactory::writeFile("aaa.sql", final_bulk.toUtf8());
         }
         else {
           // OK, we bulk-inserted many messages but the thing is that they do not
