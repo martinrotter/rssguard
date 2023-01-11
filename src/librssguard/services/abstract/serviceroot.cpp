@@ -943,7 +943,7 @@ ServiceRoot::LabelOperation operator&(ServiceRoot::LabelOperation lhs, ServiceRo
   return static_cast<ServiceRoot::LabelOperation>(static_cast<char>(lhs) & static_cast<char>(rhs));
 }
 
-QPair<int, int> ServiceRoot::updateMessages(QList<Message>& messages, Feed* feed, bool force_update) {
+QPair<int, int> ServiceRoot::updateMessages(QList<Message>& messages, Feed* feed, bool force_update, QMutex* db_mutex) {
   QPair<int, int> updated_messages = {0, 0};
 
   if (messages.isEmpty()) {
@@ -956,9 +956,11 @@ QPair<int, int> ServiceRoot::updateMessages(QList<Message>& messages, Feed* feed
 
   qDebugNN << LOGSEC_CORE << "Updating messages in DB.";
 
-  updated_messages = DatabaseQueries::updateMessages(database, messages, feed, force_update, &ok);
+  updated_messages = DatabaseQueries::updateMessages(database, messages, feed, force_update, db_mutex, &ok);
 
   if (updated_messages.first > 0 || updated_messages.second > 0) {
+    QMutexLocker lck(db_mutex);
+
     // Something was added or updated in the DB, update numbers.
     feed->updateCounts(true);
 

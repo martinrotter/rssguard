@@ -1080,6 +1080,7 @@ QPair<int, int> DatabaseQueries::updateMessages(QSqlDatabase db,
                                                 QList<Message>& messages,
                                                 Feed* feed,
                                                 bool force_update,
+                                                QMutex* db_mutex,
                                                 bool* ok) {
   if (messages.isEmpty()) {
     *ok = true;
@@ -1096,7 +1097,6 @@ QPair<int, int> DatabaseQueries::updateMessages(QSqlDatabase db,
   QSqlQuery query_select_with_custom_id_for_feed(db);
   QSqlQuery query_select_with_id(db);
   QSqlQuery query_update(db);
-  QSqlQuery query_insert(db);
 
   // Here we have query which will check for existence of the "same" message in given feed.
   // The two message are the "same" if:
@@ -1129,14 +1129,6 @@ QPair<int, int> DatabaseQueries::updateMessages(QSqlDatabase db,
   query_select_with_id
     .prepare(QSL("SELECT date_created, is_read, is_important, contents, feed, title, author FROM Messages "
                  "WHERE id = :id AND account_id = :account_id;"));
-
-  // Used to insert new messages.
-  query_insert.setForwardOnly(true);
-  query_insert.prepare(QSL("INSERT INTO Messages "
-                           "(feed, title, is_read, is_important, is_deleted, url, author, score, date_created, "
-                           "contents, enclosures, custom_id, custom_hash, account_id) "
-                           "VALUES (:feed, :title, :is_read, :is_important, :is_deleted, :url, :author, :score, "
-                           ":date_created, :contents, :enclosures, :custom_id, :custom_hash, :account_id);"));
 
   // Used to update existing messages.
   query_update.setForwardOnly(true);
@@ -1321,6 +1313,8 @@ QPair<int, int> DatabaseQueries::updateMessages(QSqlDatabase db,
                     (!ignore_contents_changes && message.m_contents != contents_existing_message);
 
       if (cond_1 || cond_2 || cond_3 || force_update) {
+        QMutexLocker lck(db_mutex);
+
         // Message exists and is changed, update it.
         query_update.bindValue(QSL(":title"), unnulifyString(message.m_title));
         query_update.bindValue(QSL(":is_read"), int(message.m_isRead));
@@ -1349,8 +1343,8 @@ QPair<int, int> DatabaseQueries::updateMessages(QSqlDatabase db,
           updated_messages.second++;
         }
         else if (query_update.lastError().isValid()) {
-          qWarningNN << LOGSEC_DB
-                     << "Failed to update message in DB:" << QUOTE_W_SPACE_DOT(query_update.lastError().text());
+          qCriticalNN << LOGSEC_DB
+                      << "Failed to update message in DB:" << QUOTE_W_SPACE_DOT(query_update.lastError().text());
         }
 
         query_update.finish();
@@ -1407,7 +1401,7 @@ QPair<int, int> DatabaseQueries::updateMessages(QSqlDatabase db,
                       .replace(QSL(":date_created"), QString::number(msg->m_created.toMSecsSinceEpoch()))
                       .replace(QSL(":contents"), DatabaseFactory::escapeQuery(unnulifyString(msg->m_contents)))
                       .replace(QSL(":enclosures"), Enclosures::encodeEnclosuresToString(msg->m_enclosures))
-                      .replace(QSL(":custom_id"), unnulifyString(msg->m_customId))
+                      .replace(QSL(":custom_id"), DatabaseFactory::escapeQuery(unnulifyString(msg->m_customId)))
                       .replace(QSL(":custom_hash"), unnulifyString(msg->m_customHash))
                       .replace(QSL(":score"), QString::number(msg->m_score))
                       .replace(QSL(":account_id"), QString::number(account_id)));
@@ -1415,6 +1409,9 @@ QPair<int, int> DatabaseQueries::updateMessages(QSqlDatabase db,
 
       if (!vals.isEmpty()) {
         QString final_bulk = bulk_insert.arg(vals.join(QSL(", ")));
+
+        QMutexLocker lck(db_mutex);
+
         auto bulk_query = db.exec(final_bulk);
         auto bulk_error = bulk_query.lastError();
 
@@ -1422,6 +1419,8 @@ QPair<int, int> DatabaseQueries::updateMessages(QSqlDatabase db,
           QString txt = bulk_error.text() + bulk_error.databaseText() + bulk_error.driverText();
 
           qCriticalNN << LOGSEC_DB << "Failed bulk insert of articles:" << QUOTE_W_SPACE_DOT(txt);
+
+          IOFactory::writeFile("aaa.sql", final_bulk.toUtf8());
         }
         else {
           // OK, we bulk-inserted many messages but the thing is that they do not
@@ -1446,23 +1445,26 @@ QPair<int, int> DatabaseQueries::updateMessages(QSqlDatabase db,
   for (Message& message : messages) {
     if (!message.m_assignedLabels.isEmpty()) {
       if (!message.m_customId.isEmpty() || message.m_id > 0) {
+        QMutexLocker lck(db_mutex);
         setLabelsForMessage(db, message.m_assignedLabels, message);
       }
       else {
-        qWarningNN << LOGSEC_DB << "Cannot set labels for message" << QUOTE_W_SPACE(message.m_title)
-                   << "because we don't have ID or custom ID.";
+        qCriticalNN << LOGSEC_DB << "Cannot set labels for message" << QUOTE_W_SPACE(message.m_title)
+                    << "because we don't have ID or custom ID.";
       }
     }
   }
 
   // Now, fixup custom IDS for messages which initially did not have them,
   // just to keep the data consistent.
+  QMutexLocker lck(db_mutex);
+
   if (db.exec("UPDATE Messages "
               "SET custom_id = id "
               "WHERE custom_id IS NULL OR custom_id = '';")
         .lastError()
         .isValid()) {
-    qWarningNN << LOGSEC_DB << "Failed to set custom ID for all messages:" << QUOTE_W_SPACE_DOT(db.lastError().text());
+    qCriticalNN << LOGSEC_DB << "Failed to set custom ID for all messages:" << QUOTE_W_SPACE_DOT(db.lastError().text());
   }
 
   if (ok != nullptr) {

@@ -78,6 +78,7 @@ class FeedDownloader : public QObject {
   private:
     bool m_isCacheSynchronizationRunning;
     bool m_stopCacheSynchronization;
+    QMutex m_mutexDb;
     QHash<ServiceRoot*, ApplicationException> m_erroredAccounts;
     QList<FeedUpdateRequest> m_feeds = {};
     QFutureWatcher<FeedUpdateResult> m_watcherLookup;

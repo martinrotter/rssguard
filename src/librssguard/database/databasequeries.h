@@ -140,6 +140,7 @@ class DatabaseQueries {
                                           QList<Message>& messages,
                                           Feed* feed,
                                           bool force_update,
+                                          QMutex* db_mutex,
                                           bool* ok = nullptr);
     static bool deleteAccount(const QSqlDatabase& db, ServiceRoot* account);
     static bool deleteAccountData(const QSqlDatabase& db,

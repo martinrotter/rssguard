@@ -317,15 +317,15 @@ void FeedDownloader::updateOneFeed(ServiceRoot* acc,
         }
 
         if (!msg_original.m_isRead && msg_tweaked_by_filter->m_isRead) {
-          qDebugNN << LOGSEC_FEEDDOWNLOADER << "Message with custom ID: '" << msg_original.m_customId
-                   << "' was marked as read by message scripts.";
+          qDebugNN << LOGSEC_FEEDDOWNLOADER << "Message with custom ID:" << QUOTE_W_SPACE(msg_original.m_customId)
+                   << "was marked as read by message scripts.";
 
           read_msgs << *msg_tweaked_by_filter;
         }
 
         if (!msg_original.m_isImportant && msg_tweaked_by_filter->m_isImportant) {
-          qDebugNN << LOGSEC_FEEDDOWNLOADER << "Message with custom ID: '" << msg_original.m_customId
-                   << "' was marked as important by message scripts.";
+          qDebugNN << LOGSEC_FEEDDOWNLOADER << "Message with custom ID:" << QUOTE_W_SPACE(msg_original.m_customId)
+                   << "was marked as important by message scripts.";
 
           important_msgs << *msg_tweaked_by_filter;
         }
@@ -333,6 +333,8 @@ void FeedDownloader::updateOneFeed(ServiceRoot* acc,
         // Process changed labels.
         for (Label* lbl : qAsConst(msg_original.m_assignedLabels)) {
           if (!msg_tweaked_by_filter->m_assignedLabels.contains(lbl)) {
+            QMutexLocker lck(&m_mutexDb);
+
             // Label is not there anymore, it was deassigned.
             lbl->deassignFromMessage(*msg_tweaked_by_filter);
 
@@ -344,6 +346,8 @@ void FeedDownloader::updateOneFeed(ServiceRoot* acc,
 
         for (Label* lbl : qAsConst(msg_tweaked_by_filter->m_assignedLabels)) {
           if (!msg_original.m_assignedLabels.contains(lbl)) {
+            QMutexLocker lck(&m_mutexDb);
+
             // Label is in new message, but is not in old message, it
             // was newly assigned.
             lbl->assignToMessage(*msg_tweaked_by_filter);
@@ -393,7 +397,7 @@ void FeedDownloader::updateOneFeed(ServiceRoot* acc,
     removeDuplicateMessages(msgs);
 
     tmr.restart();
-    auto updated_messages = acc->updateMessages(msgs, feed, false);
+    auto updated_messages = acc->updateMessages(msgs, feed, false, &m_mutexDb);
 
     qDebugNN << LOGSEC_FEEDDOWNLOADER << "Updating messages in DB took" << NONQUOTE_W_SPACE(tmr.nsecsElapsed() / 1000)
              << "microseconds.";
