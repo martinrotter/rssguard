@@ -1150,6 +1150,8 @@ QPair<int, int> DatabaseQueries::updateMessages(QSqlDatabase db,
     QString title_existing_message;
     QString author_existing_message;
 
+    QMutexLocker lck(db_mutex);
+
     if (message.m_id > 0) {
       // We recognize directly existing message.
       // NOTE: Particularly for manual message filter execution.
@@ -1313,8 +1315,6 @@ QPair<int, int> DatabaseQueries::updateMessages(QSqlDatabase db,
                     (!ignore_contents_changes && message.m_contents != contents_existing_message);
 
       if (cond_1 || cond_2 || cond_3 || force_update) {
-        QMutexLocker lck(db_mutex);
-
         // Message exists and is changed, update it.
         query_update.bindValue(QSL(":title"), unnulifyString(message.m_title));
         query_update.bindValue(QSL(":is_read"), int(message.m_isRead));
