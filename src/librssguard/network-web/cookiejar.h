@@ -5,6 +5,8 @@
 
 #include <QNetworkCookieJar>
 
+#include "miscellaneous/autosaver.h"
+
 #if defined(USE_WEBENGINE)
 class QWebEngineCookieStore;
 #endif
@@ -29,6 +31,7 @@ class CookieJar : public QNetworkCookieJar {
     bool updateCookieInternal(const QNetworkCookie& cookie, bool notify_others);
     bool deleteCookieInternal(const QNetworkCookie& cookie, bool notify_others);
 
+  private slots:
     void loadCookies();
     void saveCookies();
 
@@ -38,6 +41,7 @@ class CookieJar : public QNetworkCookieJar {
 #endif
 
     bool m_ignoreAllCookies;
+    AutoSaver m_saver;
 };
 
 #endif // COOKIEJAR_H

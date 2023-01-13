@@ -18,7 +18,8 @@
 #include <QWebEngineCookieStore>
 #endif
 
-CookieJar::CookieJar(QObject* parent) : QNetworkCookieJar(parent) {
+CookieJar::CookieJar(QObject* parent)
+  : QNetworkCookieJar(parent), m_saver(AutoSaver(this, QSL("saveCookies"), 25, 45)) {
 #if defined(USE_WEBENGINE)
   auto* web_factory = qobject_cast<WebFactory*>(parent);
 
@@ -132,7 +133,8 @@ bool CookieJar::insertCookieInternal(const QNetworkCookie& cookie, bool notify_o
 
   if (result) {
     if (should_save) {
-      saveCookies();
+      m_saver.changeOccurred();
+      // saveCookies();
     }
 
 #if defined(USE_WEBENGINE)
@@ -151,7 +153,8 @@ bool CookieJar::updateCookieInternal(const QNetworkCookie& cookie, bool notify_o
   auto result = QNetworkCookieJar::updateCookie(cookie);
 
   if (result) {
-    saveCookies();
+    m_saver.changeOccurred();
+    // saveCookies();
 
 #if defined(USE_WEBENGINE)
     if (notify_others) {
@@ -169,7 +172,8 @@ bool CookieJar::deleteCookieInternal(const QNetworkCookie& cookie, bool notify_o
   auto result = QNetworkCookieJar::deleteCookie(cookie);
 
   if (result) {
-    saveCookies();
+    m_saver.changeOccurred();
+    // saveCookies();
 
 #if defined(USE_WEBENGINE)
     if (notify_others) {

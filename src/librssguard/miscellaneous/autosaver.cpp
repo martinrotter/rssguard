@@ -8,10 +8,8 @@
 
 #include "definitions/definitions.h"
 
-#define AUTOSAVE_IN  (1000 * 3)  // seconds
-#define MAXWAIT      (1000 * 15) // seconds
-
-AutoSaver::AutoSaver(QObject* parent) : QObject(parent) {
+AutoSaver::AutoSaver(QObject* parent, const QString& saving_slot, int max_wait_secs, int periodic_save_secs)
+  : QObject(parent), m_savingSlot(saving_slot), m_maxWaitSecs(max_wait_secs), m_periodicSaveSecs(periodic_save_secs) {
   Q_ASSERT(parent);
 }
 
@@ -30,11 +28,11 @@ void AutoSaver::changeOccurred() {
     m_firstChange.start();
   }
 
-  if (m_firstChange.elapsed() > MAXWAIT) {
+  if (m_firstChange.elapsed() > m_maxWaitSecs) {
     saveIfNeccessary();
   }
   else {
-    m_timer.start(AUTOSAVE_IN, this);
+    m_timer.start(m_periodicSaveSecs, this);
   }
 }
 
@@ -52,8 +50,12 @@ void AutoSaver::saveIfNeccessary() {
     m_timer.stop();
     m_firstChange.invalidate();
 
-    if (!QMetaObject::invokeMethod(parent(), "save", Qt::DirectConnection)) {
-      qCriticalNN << LOGSEC_CORE << ("AutoSaver error invoking slot save() on parent.");
+    if (!QMetaObject::invokeMethod(parent(), qPrintable(m_savingSlot), Qt::ConnectionType::DirectConnection)) {
+      qCriticalNN << LOGSEC_CORE << "AutoSaver error invoking saving slot on parent.";
+    }
+    else {
+      qDebugNN << LOGSEC_CORE << "Saved data with auto-saver for"
+               << QUOTE_W_SPACE(parent()->metaObject()->className()) "and method" << QUOTE_W_SPACE_DOT(m_savingSlot);
     }
   }
 }
