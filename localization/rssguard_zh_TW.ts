@@ -125,67 +125,67 @@ Error: %1</source>
 <context>
     <name>Application</name>
     <message>
-        <location filename="../src/librssguard/miscellaneous/application.cpp" line="995"/>
+        <location filename="../src/librssguard/miscellaneous/application.cpp" line="998"/>
         <source>Application is already running.</source>
         <translation>應用程式已在執行。</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/miscellaneous/application.cpp" line="525"/>
+        <location filename="../src/librssguard/miscellaneous/application.cpp" line="528"/>
         <source>Output directory is not writable.</source>
         <translation>輸出目錄是無法寫入。</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/miscellaneous/application.cpp" line="533"/>
+        <location filename="../src/librssguard/miscellaneous/application.cpp" line="536"/>
         <source>Settings file not copied to output directory successfully.</source>
         <translation>設定檔複製到輸出目錄失敗。</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/miscellaneous/application.cpp" line="550"/>
+        <location filename="../src/librssguard/miscellaneous/application.cpp" line="553"/>
         <source>Database restoration was not initiated. Make sure that output directory is writable.</source>
         <translation>未復原資料庫。請確認輸出目錄可寫入。</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/miscellaneous/application.cpp" line="557"/>
+        <location filename="../src/librssguard/miscellaneous/application.cpp" line="560"/>
         <source>Settings restoration was not initiated. Make sure that output directory is writable.</source>
         <translation>未復原設定。請確認輸出目錄可寫入。</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/miscellaneous/application.cpp" line="1013"/>
+        <location filename="../src/librssguard/miscellaneous/application.cpp" line="1016"/>
         <source>Cannot add feed</source>
         <translation>無法新增文源</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/miscellaneous/application.cpp" line="1014"/>
+        <location filename="../src/librssguard/miscellaneous/application.cpp" line="1017"/>
         <source>Feed cannot be added because there is no active account which can add feeds.</source>
         <translation>無法加入文源，因為無使用的、可加入文源的帳號。</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/miscellaneous/application.cpp" line="1166"/>
+        <location filename="../src/librssguard/miscellaneous/application.cpp" line="1169"/>
         <source>Packages %1 were updated.</source>
         <translation>套件 %1 更新過。</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/miscellaneous/application.cpp" line="914"/>
+        <location filename="../src/librssguard/miscellaneous/application.cpp" line="917"/>
         <source>Unread articles fetched</source>
         <translation>下載了未讀的文章</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/miscellaneous/application.cpp" line="309"/>
+        <location filename="../src/librssguard/miscellaneous/application.cpp" line="312"/>
         <source>Go to changelog</source>
         <translation>前往檢視變更紀錄</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/miscellaneous/application.cpp" line="944"/>
+        <location filename="../src/librssguard/miscellaneous/application.cpp" line="947"/>
         <source>AdBlock needs to be configured</source>
         <translation>須設定 AdBlock</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/miscellaneous/application.cpp" line="303"/>
+        <location filename="../src/librssguard/miscellaneous/application.cpp" line="306"/>
         <source>Welcome</source>
         <translation>歡迎</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/miscellaneous/application.cpp" line="304"/>
+        <location filename="../src/librssguard/miscellaneous/application.cpp" line="307"/>
         <source>Welcome to %1.
 
 Please, check NEW stuff included in this
@@ -196,17 +196,17 @@ version by clicking this popup notification.</source>
 查閱此版的新鮮事。</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/miscellaneous/application.cpp" line="945"/>
+        <location filename="../src/librssguard/miscellaneous/application.cpp" line="948"/>
         <source>AdBlock is not configured properly. Go to &quot;Settings&quot; -&gt; &quot;Node.js&quot; and check if your Node.js is properly configured.</source>
         <translation>AdBlock 未恰當設定。請於 &quot;設定&quot; -&gt; &quot;Node.js&quot;，檢查 Node.js 是否恰當設定。</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/miscellaneous/application.cpp" line="994"/>
+        <location filename="../src/librssguard/miscellaneous/application.cpp" line="997"/>
         <source>Already running</source>
         <translation>已在執行</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/miscellaneous/application.cpp" line="1157"/>
+        <location filename="../src/librssguard/miscellaneous/application.cpp" line="1160"/>
         <source>Packages %1 were NOT updated because of error: %2.</source>
         <translation>套件 %1 沒更新新過，因為後面錯誤: %2。</translation>
     </message>
@@ -898,7 +898,7 @@ Status: %3</source>
 <context>
     <name>FeedsImportExportModel</name>
     <message>
-        <location filename="../src/librssguard/services/standard/standardfeedsimportexportmodel.cpp" line="286"/>
+        <location filename="../src/librssguard/services/standard/standardfeedsimportexportmodel.cpp" line="338"/>
         <source>Category </source>
         <translation>分類 </translation>
     </message>
@@ -2749,6 +2749,12 @@ You have to restart manually.</source>
         <translation>匯入文源</translation>
     </message>
     <message>
+        <location filename="../src/librssguard/services/standard/gui/formstandardimportexport.cpp" line="137"/>
+        <location filename="../src/librssguard/services/standard/gui/formstandardimportexport.cpp" line="138"/>
+        <source>Some feeds were not loaded properly or import file is corrupted.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
         <location filename="../src/librssguard/services/standard/gui/formstandardimportexport.cpp" line="159"/>
         <source>Command is ok.</source>
         <translation>命令 ok。</translation>
@@ -2757,12 +2763,6 @@ You have to restart manually.</source>
         <location filename="../src/librssguard/services/standard/gui/formstandardimportexport.cpp" line="162"/>
         <source>Command is empty.</source>
         <translation>缺命令。</translation>
-    </message>
-    <message>
-        <location filename="../src/librssguard/services/standard/gui/formstandardimportexport.cpp" line="171"/>
-        <location filename="../src/librssguard/services/standard/gui/formstandardimportexport.cpp" line="216"/>
-        <source>OPML 2.0 files (*.opml)</source>
-        <translation>OPML 2.0 檔 (*.opml)</translation>
     </message>
     <message>
         <location filename="../src/librssguard/services/standard/gui/formstandardimportexport.cpp" line="182"/>
@@ -2787,7 +2787,7 @@ You have to restart manually.</source>
         <translation>無法開啟來源檔。</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/services/standard/gui/formstandardimportexport.cpp" line="136"/>
+        <location filename="../src/librssguard/services/standard/gui/formstandardimportexport.cpp" line="141"/>
         <source>Feeds were loaded.</source>
         <translation>文源已載入。</translation>
     </message>
@@ -2807,16 +2807,6 @@ You have to restart manually.</source>
         <translation>於此輸入隨譯即行碼，包括解譯器。</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/services/standard/gui/formstandardimportexport.cpp" line="145"/>
-        <source>Error, file is not well-formed. Select another file.</source>
-        <translation>出錯。檔案格式錯誤。請選他檔。</translation>
-    </message>
-    <message>
-        <location filename="../src/librssguard/services/standard/gui/formstandardimportexport.cpp" line="146"/>
-        <source>Error occurred. File is not well-formed. Select another file.</source>
-        <translation>出錯。檔案格式錯誤。請選他檔。</translation>
-    </message>
-    <message>
         <location filename="../src/librssguard/services/standard/gui/formstandardimportexport.cpp" line="316"/>
         <location filename="../src/librssguard/services/standard/gui/formstandardimportexport.cpp" line="317"/>
         <source>Feeds were exported successfully.</source>
@@ -2832,6 +2822,12 @@ You have to restart manually.</source>
         <location filename="../src/librssguard/services/standard/gui/formstandardimportexport.cpp" line="119"/>
         <source>Parsing data...</source>
         <translation>解析資料中…</translation>
+    </message>
+    <message>
+        <location filename="../src/librssguard/services/standard/gui/formstandardimportexport.cpp" line="171"/>
+        <location filename="../src/librssguard/services/standard/gui/formstandardimportexport.cpp" line="216"/>
+        <source>OPML 2.0 files (*.opml *.xml)</source>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="../src/librssguard/services/standard/gui/formstandardimportexport.cpp" line="321"/>
@@ -4778,7 +4774,7 @@ Login tokens expiration: %2</source>
 <context>
     <name>QObject</name>
     <message>
-        <location filename="../src/librssguard/miscellaneous/application.cpp" line="127"/>
+        <location filename="../src/librssguard/miscellaneous/application.cpp" line="128"/>
         <location filename="../src/librssguard/miscellaneous/localization.cpp" line="31"/>
         <location filename="../src/librssguard/miscellaneous/localization.cpp" line="91"/>
         <source>LANG_ABBREV</source>
@@ -4786,7 +4782,7 @@ Login tokens expiration: %2</source>
         <translation>zh_TW</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/miscellaneous/application.cpp" line="130"/>
+        <location filename="../src/librssguard/miscellaneous/application.cpp" line="131"/>
         <location filename="../src/librssguard/miscellaneous/localization.cpp" line="92"/>
         <source>LANG_AUTHOR</source>
         <extracomment>Name of translator - optional.</extracomment>
@@ -4830,12 +4826,12 @@ Tiny Tiny RSS 是一個開源的基於網站 的 RSS/Atom 文源文章閱讀器�
         <translation>News 應用程式是一個 RSS/Atom 文源聚合器，它是 Nextcloud 套件的一部分。此外掛實作 %1 API。</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/miscellaneous/systemfactory.cpp" line="264"/>
+        <location filename="../src/librssguard/miscellaneous/systemfactory.cpp" line="268"/>
         <source>New version available</source>
         <translation>新版本可用</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/miscellaneous/systemfactory.cpp" line="265"/>
+        <location filename="../src/librssguard/miscellaneous/systemfactory.cpp" line="269"/>
         <source>Click the bubble for more information.</source>
         <translation>點此彈出窗以取得更多資訊。</translation>
     </message>
@@ -6923,17 +6919,17 @@ Also, you can post-process generated feed data with yet another script if you wi
 <context>
     <name>SystemFactory</name>
     <message>
-        <location filename="../src/librssguard/miscellaneous/systemfactory.cpp" line="228"/>
+        <location filename="../src/librssguard/miscellaneous/systemfactory.cpp" line="232"/>
         <source>anonymous</source>
         <translation>匿名</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/miscellaneous/systemfactory.cpp" line="323"/>
+        <location filename="../src/librssguard/miscellaneous/systemfactory.cpp" line="327"/>
         <source> bytes</source>
         <translation> bytes</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/miscellaneous/systemfactory.cpp" line="268"/>
+        <location filename="../src/librssguard/miscellaneous/systemfactory.cpp" line="272"/>
         <source>See new version info</source>
         <translation>檢視新版本資訊</translation>
     </message>

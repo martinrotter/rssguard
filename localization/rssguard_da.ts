@@ -127,67 +127,67 @@ Fejl: %1</translation>
 <context>
     <name>Application</name>
     <message>
-        <location filename="../src/librssguard/miscellaneous/application.cpp" line="995"/>
+        <location filename="../src/librssguard/miscellaneous/application.cpp" line="998"/>
         <source>Application is already running.</source>
         <translation>Programmet kører allerede</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/miscellaneous/application.cpp" line="525"/>
+        <location filename="../src/librssguard/miscellaneous/application.cpp" line="528"/>
         <source>Output directory is not writable.</source>
         <translation>Målbiblioteket er ikke skrivbart</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/miscellaneous/application.cpp" line="533"/>
+        <location filename="../src/librssguard/miscellaneous/application.cpp" line="536"/>
         <source>Settings file not copied to output directory successfully.</source>
         <translation>Indstillinger kunne ikke kopieres til uddatabibliotek.</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/miscellaneous/application.cpp" line="550"/>
+        <location filename="../src/librssguard/miscellaneous/application.cpp" line="553"/>
         <source>Database restoration was not initiated. Make sure that output directory is writable.</source>
         <translation>Gendannelse af database ikke påbegyndt. Sørg for at målbiblioteket er skrivbart.</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/miscellaneous/application.cpp" line="557"/>
+        <location filename="../src/librssguard/miscellaneous/application.cpp" line="560"/>
         <source>Settings restoration was not initiated. Make sure that output directory is writable.</source>
         <translation>Gendannelse af indstillinger ikke påbegyndt. Sørg for at målbiblioteket er skrivbart.</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/miscellaneous/application.cpp" line="1013"/>
+        <location filename="../src/librssguard/miscellaneous/application.cpp" line="1016"/>
         <source>Cannot add feed</source>
         <translation>Kan ikke tilføje nyhedskilde</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/miscellaneous/application.cpp" line="1014"/>
+        <location filename="../src/librssguard/miscellaneous/application.cpp" line="1017"/>
         <source>Feed cannot be added because there is no active account which can add feeds.</source>
         <translation>Nyhedskilde kan ikke tilføjes, da der ikke er nogen aktiv konto at tilføje den til.</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/miscellaneous/application.cpp" line="1166"/>
+        <location filename="../src/librssguard/miscellaneous/application.cpp" line="1169"/>
         <source>Packages %1 were updated.</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../src/librssguard/miscellaneous/application.cpp" line="914"/>
+        <location filename="../src/librssguard/miscellaneous/application.cpp" line="917"/>
         <source>Unread articles fetched</source>
         <translation>Ulæste artikler hentet</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/miscellaneous/application.cpp" line="309"/>
+        <location filename="../src/librssguard/miscellaneous/application.cpp" line="312"/>
         <source>Go to changelog</source>
         <translation>Gå til ændringslog</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/miscellaneous/application.cpp" line="944"/>
+        <location filename="../src/librssguard/miscellaneous/application.cpp" line="947"/>
         <source>AdBlock needs to be configured</source>
         <translation>AdBlock skal indstilles</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/miscellaneous/application.cpp" line="303"/>
+        <location filename="../src/librssguard/miscellaneous/application.cpp" line="306"/>
         <source>Welcome</source>
         <translation>Velkommen</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/miscellaneous/application.cpp" line="304"/>
+        <location filename="../src/librssguard/miscellaneous/application.cpp" line="307"/>
         <source>Welcome to %1.
 
 Please, check NEW stuff included in this
@@ -199,17 +199,17 @@ version ved at klikke på denne pop up
 påmindelse.</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/miscellaneous/application.cpp" line="945"/>
+        <location filename="../src/librssguard/miscellaneous/application.cpp" line="948"/>
         <source>AdBlock is not configured properly. Go to &quot;Settings&quot; -&gt; &quot;Node.js&quot; and check if your Node.js is properly configured.</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../src/librssguard/miscellaneous/application.cpp" line="994"/>
+        <location filename="../src/librssguard/miscellaneous/application.cpp" line="997"/>
         <source>Already running</source>
         <translation>Kører allerede</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/miscellaneous/application.cpp" line="1157"/>
+        <location filename="../src/librssguard/miscellaneous/application.cpp" line="1160"/>
         <source>Packages %1 were NOT updated because of error: %2.</source>
         <translation type="unfinished"/>
     </message>
@@ -899,7 +899,7 @@ Status: %3</source>
 <context>
     <name>FeedsImportExportModel</name>
     <message>
-        <location filename="../src/librssguard/services/standard/standardfeedsimportexportmodel.cpp" line="286"/>
+        <location filename="../src/librssguard/services/standard/standardfeedsimportexportmodel.cpp" line="338"/>
         <source>Category </source>
         <translation>Kategori</translation>
     </message>
@@ -2746,6 +2746,12 @@ Du skal genstarte programmet manuelt.</translation>
         <translation>Importér nyhedskilder</translation>
     </message>
     <message>
+        <location filename="../src/librssguard/services/standard/gui/formstandardimportexport.cpp" line="137"/>
+        <location filename="../src/librssguard/services/standard/gui/formstandardimportexport.cpp" line="138"/>
+        <source>Some feeds were not loaded properly or import file is corrupted.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
         <location filename="../src/librssguard/services/standard/gui/formstandardimportexport.cpp" line="159"/>
         <source>Command is ok.</source>
         <translation type="unfinished"/>
@@ -2754,12 +2760,6 @@ Du skal genstarte programmet manuelt.</translation>
         <location filename="../src/librssguard/services/standard/gui/formstandardimportexport.cpp" line="162"/>
         <source>Command is empty.</source>
         <translation type="unfinished"/>
-    </message>
-    <message>
-        <location filename="../src/librssguard/services/standard/gui/formstandardimportexport.cpp" line="171"/>
-        <location filename="../src/librssguard/services/standard/gui/formstandardimportexport.cpp" line="216"/>
-        <source>OPML 2.0 files (*.opml)</source>
-        <translation>OPML 2.0 filer (*.opml)</translation>
     </message>
     <message>
         <location filename="../src/librssguard/services/standard/gui/formstandardimportexport.cpp" line="182"/>
@@ -2784,7 +2784,7 @@ Du skal genstarte programmet manuelt.</translation>
         <translation>Kan ikke åbne kildefil.</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/services/standard/gui/formstandardimportexport.cpp" line="136"/>
+        <location filename="../src/librssguard/services/standard/gui/formstandardimportexport.cpp" line="141"/>
         <source>Feeds were loaded.</source>
         <translation>Nyhedskilder blev hentet</translation>
     </message>
@@ -2804,16 +2804,6 @@ Du skal genstarte programmet manuelt.</translation>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../src/librssguard/services/standard/gui/formstandardimportexport.cpp" line="145"/>
-        <source>Error, file is not well-formed. Select another file.</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <location filename="../src/librssguard/services/standard/gui/formstandardimportexport.cpp" line="146"/>
-        <source>Error occurred. File is not well-formed. Select another file.</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
         <location filename="../src/librssguard/services/standard/gui/formstandardimportexport.cpp" line="316"/>
         <location filename="../src/librssguard/services/standard/gui/formstandardimportexport.cpp" line="317"/>
         <source>Feeds were exported successfully.</source>
@@ -2829,6 +2819,12 @@ Du skal genstarte programmet manuelt.</translation>
         <location filename="../src/librssguard/services/standard/gui/formstandardimportexport.cpp" line="119"/>
         <source>Parsing data...</source>
         <translation>Parser data...</translation>
+    </message>
+    <message>
+        <location filename="../src/librssguard/services/standard/gui/formstandardimportexport.cpp" line="171"/>
+        <location filename="../src/librssguard/services/standard/gui/formstandardimportexport.cpp" line="216"/>
+        <source>OPML 2.0 files (*.opml *.xml)</source>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="../src/librssguard/services/standard/gui/formstandardimportexport.cpp" line="321"/>
@@ -4770,7 +4766,7 @@ Login tokens expiration: %2</source>
 <context>
     <name>QObject</name>
     <message>
-        <location filename="../src/librssguard/miscellaneous/application.cpp" line="127"/>
+        <location filename="../src/librssguard/miscellaneous/application.cpp" line="128"/>
         <location filename="../src/librssguard/miscellaneous/localization.cpp" line="31"/>
         <location filename="../src/librssguard/miscellaneous/localization.cpp" line="91"/>
         <source>LANG_ABBREV</source>
@@ -4778,7 +4774,7 @@ Login tokens expiration: %2</source>
         <translation>da</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/miscellaneous/application.cpp" line="130"/>
+        <location filename="../src/librssguard/miscellaneous/application.cpp" line="131"/>
         <location filename="../src/librssguard/miscellaneous/localization.cpp" line="92"/>
         <source>LANG_AUTHOR</source>
         <extracomment>Name of translator - optional.</extracomment>
@@ -4820,12 +4816,12 @@ Mindst API niveau %1 er påkrævet.</translation>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../src/librssguard/miscellaneous/systemfactory.cpp" line="264"/>
+        <location filename="../src/librssguard/miscellaneous/systemfactory.cpp" line="268"/>
         <source>New version available</source>
         <translation>Ny version er tilgængelig</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/miscellaneous/systemfactory.cpp" line="265"/>
+        <location filename="../src/librssguard/miscellaneous/systemfactory.cpp" line="269"/>
         <source>Click the bubble for more information.</source>
         <translation>Klik på boblen for at få mere information.</translation>
     </message>
@@ -6882,17 +6878,17 @@ Also, you can post-process generated feed data with yet another script if you wi
 <context>
     <name>SystemFactory</name>
     <message>
-        <location filename="../src/librssguard/miscellaneous/systemfactory.cpp" line="228"/>
+        <location filename="../src/librssguard/miscellaneous/systemfactory.cpp" line="232"/>
         <source>anonymous</source>
         <translation>anonym</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/miscellaneous/systemfactory.cpp" line="323"/>
+        <location filename="../src/librssguard/miscellaneous/systemfactory.cpp" line="327"/>
         <source> bytes</source>
         <translation> bytes</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/miscellaneous/systemfactory.cpp" line="268"/>
+        <location filename="../src/librssguard/miscellaneous/systemfactory.cpp" line="272"/>
         <source>See new version info</source>
         <translation>Se ny versionsinformation</translation>
     </message>

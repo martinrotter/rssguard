@@ -127,67 +127,67 @@ Chyba: %1</translation>
 <context>
     <name>Application</name>
     <message>
-        <location filename="../src/librssguard/miscellaneous/application.cpp" line="995"/>
+        <location filename="../src/librssguard/miscellaneous/application.cpp" line="998"/>
         <source>Application is already running.</source>
         <translation>Aplikace již běží</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/miscellaneous/application.cpp" line="525"/>
+        <location filename="../src/librssguard/miscellaneous/application.cpp" line="528"/>
         <source>Output directory is not writable.</source>
         <translation>Nelze psát do cílové složky</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/miscellaneous/application.cpp" line="533"/>
+        <location filename="../src/librssguard/miscellaneous/application.cpp" line="536"/>
         <source>Settings file not copied to output directory successfully.</source>
         <translation>Soubor nastavení nebyl zkopírován do cílového adresáře.</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/miscellaneous/application.cpp" line="550"/>
+        <location filename="../src/librssguard/miscellaneous/application.cpp" line="553"/>
         <source>Database restoration was not initiated. Make sure that output directory is writable.</source>
         <translation>Obnovení databáze nebylo spuštěno. Ujistěte se, že cílový adresář je zapisovatelný.</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/miscellaneous/application.cpp" line="557"/>
+        <location filename="../src/librssguard/miscellaneous/application.cpp" line="560"/>
         <source>Settings restoration was not initiated. Make sure that output directory is writable.</source>
         <translation>Obnovení nastavení nebylo spuštěno. Ujistěte se, že cílový adresář je zapisovatelný.</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/miscellaneous/application.cpp" line="1013"/>
+        <location filename="../src/librssguard/miscellaneous/application.cpp" line="1016"/>
         <source>Cannot add feed</source>
         <translation>Nelze přidat kanál</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/miscellaneous/application.cpp" line="1014"/>
+        <location filename="../src/librssguard/miscellaneous/application.cpp" line="1017"/>
         <source>Feed cannot be added because there is no active account which can add feeds.</source>
         <translation>Kanál nemůže být přidán, protože nemáte aktivovaný žádný účet který umí přidávat kanály.</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/miscellaneous/application.cpp" line="1166"/>
+        <location filename="../src/librssguard/miscellaneous/application.cpp" line="1169"/>
         <source>Packages %1 were updated.</source>
         <translation>Balíčky %1 byly aktualizovány.</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/miscellaneous/application.cpp" line="914"/>
+        <location filename="../src/librssguard/miscellaneous/application.cpp" line="917"/>
         <source>Unread articles fetched</source>
         <translation>Staženy nepřečtené zprávy</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/miscellaneous/application.cpp" line="309"/>
+        <location filename="../src/librssguard/miscellaneous/application.cpp" line="312"/>
         <source>Go to changelog</source>
         <translation>Zobrazit seznam změn</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/miscellaneous/application.cpp" line="944"/>
+        <location filename="../src/librssguard/miscellaneous/application.cpp" line="947"/>
         <source>AdBlock needs to be configured</source>
         <translation>Je třeba nastavit AdBlock</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/miscellaneous/application.cpp" line="303"/>
+        <location filename="../src/librssguard/miscellaneous/application.cpp" line="306"/>
         <source>Welcome</source>
         <translation>Vítejte</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/miscellaneous/application.cpp" line="304"/>
+        <location filename="../src/librssguard/miscellaneous/application.cpp" line="307"/>
         <source>Welcome to %1.
 
 Please, check NEW stuff included in this
@@ -198,17 +198,17 @@ Prosím, zkontrolujte novinky kliknutím
 na tuto bublinu.</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/miscellaneous/application.cpp" line="945"/>
+        <location filename="../src/librssguard/miscellaneous/application.cpp" line="948"/>
         <source>AdBlock is not configured properly. Go to &quot;Settings&quot; -&gt; &quot;Node.js&quot; and check if your Node.js is properly configured.</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../src/librssguard/miscellaneous/application.cpp" line="994"/>
+        <location filename="../src/librssguard/miscellaneous/application.cpp" line="997"/>
         <source>Already running</source>
         <translation>Již běží</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/miscellaneous/application.cpp" line="1157"/>
+        <location filename="../src/librssguard/miscellaneous/application.cpp" line="1160"/>
         <source>Packages %1 were NOT updated because of error: %2.</source>
         <translation>Balíčky %1 NEBYLY aktualizovány kvůli chybě: %2.</translation>
     </message>
@@ -900,7 +900,7 @@ Stav: %3</translation>
 <context>
     <name>FeedsImportExportModel</name>
     <message>
-        <location filename="../src/librssguard/services/standard/standardfeedsimportexportmodel.cpp" line="286"/>
+        <location filename="../src/librssguard/services/standard/standardfeedsimportexportmodel.cpp" line="338"/>
         <source>Category </source>
         <translation>Kategorie</translation>
     </message>
@@ -2753,6 +2753,12 @@ Musíte restartovat manuálně.</translation>
         <translation>Importovat kanály</translation>
     </message>
     <message>
+        <location filename="../src/librssguard/services/standard/gui/formstandardimportexport.cpp" line="137"/>
+        <location filename="../src/librssguard/services/standard/gui/formstandardimportexport.cpp" line="138"/>
+        <source>Some feeds were not loaded properly or import file is corrupted.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
         <location filename="../src/librssguard/services/standard/gui/formstandardimportexport.cpp" line="159"/>
         <source>Command is ok.</source>
         <translation type="unfinished"/>
@@ -2761,12 +2767,6 @@ Musíte restartovat manuálně.</translation>
         <location filename="../src/librssguard/services/standard/gui/formstandardimportexport.cpp" line="162"/>
         <source>Command is empty.</source>
         <translation type="unfinished"/>
-    </message>
-    <message>
-        <location filename="../src/librssguard/services/standard/gui/formstandardimportexport.cpp" line="171"/>
-        <location filename="../src/librssguard/services/standard/gui/formstandardimportexport.cpp" line="216"/>
-        <source>OPML 2.0 files (*.opml)</source>
-        <translation>soubory OPML 2.0 (*.opml)</translation>
     </message>
     <message>
         <location filename="../src/librssguard/services/standard/gui/formstandardimportexport.cpp" line="182"/>
@@ -2791,7 +2791,7 @@ Musíte restartovat manuálně.</translation>
         <translation>Zdrojový soubor nelze otevřít.</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/services/standard/gui/formstandardimportexport.cpp" line="136"/>
+        <location filename="../src/librssguard/services/standard/gui/formstandardimportexport.cpp" line="141"/>
         <source>Feeds were loaded.</source>
         <translation>Kanály načteny.</translation>
     </message>
@@ -2811,16 +2811,6 @@ Musíte restartovat manuálně.</translation>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../src/librssguard/services/standard/gui/formstandardimportexport.cpp" line="145"/>
-        <source>Error, file is not well-formed. Select another file.</source>
-        <translation>Chyba, soubor nemá správný formát, zvolte jiný.</translation>
-    </message>
-    <message>
-        <location filename="../src/librssguard/services/standard/gui/formstandardimportexport.cpp" line="146"/>
-        <source>Error occurred. File is not well-formed. Select another file.</source>
-        <translation>Chyba, soubor nemá správný formát, zvolte jiný.</translation>
-    </message>
-    <message>
         <location filename="../src/librssguard/services/standard/gui/formstandardimportexport.cpp" line="316"/>
         <location filename="../src/librssguard/services/standard/gui/formstandardimportexport.cpp" line="317"/>
         <source>Feeds were exported successfully.</source>
@@ -2836,6 +2826,12 @@ Musíte restartovat manuálně.</translation>
         <location filename="../src/librssguard/services/standard/gui/formstandardimportexport.cpp" line="119"/>
         <source>Parsing data...</source>
         <translation>Zpracovávám data...</translation>
+    </message>
+    <message>
+        <location filename="../src/librssguard/services/standard/gui/formstandardimportexport.cpp" line="171"/>
+        <location filename="../src/librssguard/services/standard/gui/formstandardimportexport.cpp" line="216"/>
+        <source>OPML 2.0 files (*.opml *.xml)</source>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="../src/librssguard/services/standard/gui/formstandardimportexport.cpp" line="321"/>
@@ -4780,7 +4776,7 @@ Tokeny vyprší: %2</translation>
 <context>
     <name>QObject</name>
     <message>
-        <location filename="../src/librssguard/miscellaneous/application.cpp" line="127"/>
+        <location filename="../src/librssguard/miscellaneous/application.cpp" line="128"/>
         <location filename="../src/librssguard/miscellaneous/localization.cpp" line="31"/>
         <location filename="../src/librssguard/miscellaneous/localization.cpp" line="91"/>
         <source>LANG_ABBREV</source>
@@ -4788,7 +4784,7 @@ Tokeny vyprší: %2</translation>
         <translation>cs</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/miscellaneous/application.cpp" line="130"/>
+        <location filename="../src/librssguard/miscellaneous/application.cpp" line="131"/>
         <location filename="../src/librssguard/miscellaneous/localization.cpp" line="92"/>
         <source>LANG_AUTHOR</source>
         <extracomment>Name of translator - optional.</extracomment>
@@ -4838,12 +4834,12 @@ Je vyžadování verze API minimálně %1.</translation>
         <translation>Aplikace &quot;News&quot; je RSS/Atom agregátor. Je součástí balíku Nextcloud. Plugin implementuje %1 rozhraní.</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/miscellaneous/systemfactory.cpp" line="264"/>
+        <location filename="../src/librssguard/miscellaneous/systemfactory.cpp" line="268"/>
         <source>New version available</source>
         <translation>Nová verze k dispozici</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/miscellaneous/systemfactory.cpp" line="265"/>
+        <location filename="../src/librssguard/miscellaneous/systemfactory.cpp" line="269"/>
         <source>Click the bubble for more information.</source>
         <translation>Klikněte na bublinu pro více informací.</translation>
     </message>
@@ -6924,17 +6920,17 @@ Also, you can post-process generated feed data with yet another script if you wi
 <context>
     <name>SystemFactory</name>
     <message>
-        <location filename="../src/librssguard/miscellaneous/systemfactory.cpp" line="228"/>
+        <location filename="../src/librssguard/miscellaneous/systemfactory.cpp" line="232"/>
         <source>anonymous</source>
         <translation>anonym</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/miscellaneous/systemfactory.cpp" line="323"/>
+        <location filename="../src/librssguard/miscellaneous/systemfactory.cpp" line="327"/>
         <source> bytes</source>
         <translation>bajtů</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/miscellaneous/systemfactory.cpp" line="268"/>
+        <location filename="../src/librssguard/miscellaneous/systemfactory.cpp" line="272"/>
         <source>See new version info</source>
         <translation type="unfinished"/>
     </message>
