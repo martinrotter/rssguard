@@ -12,54 +12,70 @@ SettingsDatabase::SettingsDatabase(Settings* settings, QWidget* parent)
   : SettingsPanel(settings, parent), m_ui(new Ui::SettingsDatabase) {
   m_ui->setupUi(this);
 
-  m_ui->m_lblDataStorageWarning->setHelpText(tr("Note that switching to another data storage type will "
-                                                "NOT copy existing your data from currently active data "
-                                                "storage to newly selected one."),
-                                             true);
-
   m_ui->m_lblMysqlInfo->setHelpText(tr("Note that speed of used MySQL server and latency of used connection "
                                        "medium HEAVILY influences the final performance of this application. "
                                        "Using slow database connections leads to bad performance when browsing "
                                        "feeds or messages."),
                                     false);
 
-  m_ui->m_lblSqliteInMemoryWarnings->setHelpText(tr("Usage of in-memory working database has several advantages "
-                                                    "and pitfalls. Make sure that you are familiar with these "
-                                                    "before you turn this feature on.\n"
-                                                    "\n"
-                                                    "Advantages:\n"
-                                                    " • higher speed for feed/message manipulations "
-                                                    "(especially with thousands of messages displayed),\n"
-                                                    " • whole database stored in RAM, thus your hard drive can "
-                                                    "rest more.\n"
-                                                    "\n"
-                                                    "Disadvantages:\n"
-                                                    " • if application crashes, your changes from last session are lost,\n"
-                                                    " • application startup and shutdown can take little longer "
-                                                    "(max. 2 seconds).\n"
-                                                    "\n"
-                                                    "Authors of this application are NOT responsible for lost data."),
-                                                 true);
+  m_ui->m_lblSqliteInMemoryWarnings
+    ->setHelpText(tr("Usage of in-memory working database has several advantages "
+                     "and pitfalls. Make sure that you are familiar with these "
+                     "before you turn this feature on.\n"
+                     "\n"
+                     "Advantages:\n"
+                     " • higher speed for feed/message manipulations "
+                     "(especially with thousands of messages displayed),\n"
+                     " • whole database stored in RAM, thus your hard drive can "
+                     "rest more.\n"
+                     "\n"
+                     "Disadvantages:\n"
+                     " • if application crashes, your changes from last session are lost,\n"
+                     " • application startup and shutdown can take little longer "
+                     "(max. 2 seconds).\n"
+                     "\n"
+                     "Authors of this application are NOT responsible for lost data."),
+                  true);
 
   m_ui->m_txtMysqlPassword->lineEdit()->setPasswordMode(true);
 
-  connect(m_ui->m_cmbDatabaseDriver, static_cast<void (QComboBox::*)(int)>(&QComboBox::currentIndexChanged), this,
+  connect(m_ui->m_cmbDatabaseDriver,
+          static_cast<void (QComboBox::*)(int)>(&QComboBox::currentIndexChanged),
+          this,
           &SettingsDatabase::dirtifySettings);
   connect(m_ui->m_checkSqliteUseInMemoryDatabase, &QCheckBox::toggled, this, &SettingsDatabase::dirtifySettings);
   connect(m_ui->m_txtMysqlDatabase->lineEdit(), &QLineEdit::textChanged, this, &SettingsDatabase::dirtifySettings);
   connect(m_ui->m_txtMysqlHostname->lineEdit(), &QLineEdit::textChanged, this, &SettingsDatabase::dirtifySettings);
   connect(m_ui->m_txtMysqlPassword->lineEdit(), &QLineEdit::textChanged, this, &SettingsDatabase::dirtifySettings);
-  connect(m_ui->m_checkUseTransactions, &QCheckBox::toggled, this, &SettingsDatabase::dirtifySettings);
   connect(m_ui->m_txtMysqlUsername->lineEdit(), &QLineEdit::textChanged, this, &SettingsDatabase::dirtifySettings);
-  connect(m_ui->m_spinMysqlPort, static_cast<void (QSpinBox::*)(int)>(&QSpinBox::valueChanged), this, &SettingsDatabase::dirtifySettings);
-  connect(m_ui->m_cmbDatabaseDriver, static_cast<void (QComboBox::*)(int)>(&QComboBox::currentIndexChanged), this,
+  connect(m_ui->m_spinMysqlPort,
+          static_cast<void (QSpinBox::*)(int)>(&QSpinBox::valueChanged),
+          this,
+          &SettingsDatabase::dirtifySettings);
+  connect(m_ui->m_cmbDatabaseDriver,
+          static_cast<void (QComboBox::*)(int)>(&QComboBox::currentIndexChanged),
+          this,
           &SettingsDatabase::selectSqlBackend);
-  connect(m_ui->m_txtMysqlUsername->lineEdit(), &BaseLineEdit::textChanged, this, &SettingsDatabase::onMysqlUsernameChanged);
-  connect(m_ui->m_txtMysqlHostname->lineEdit(), &BaseLineEdit::textChanged, this, &SettingsDatabase::onMysqlHostnameChanged);
-  connect(m_ui->m_txtMysqlPassword->lineEdit(), &BaseLineEdit::textChanged, this, &SettingsDatabase::onMysqlPasswordChanged);
-  connect(m_ui->m_txtMysqlDatabase->lineEdit(), &BaseLineEdit::textChanged, this, &SettingsDatabase::onMysqlDatabaseChanged);
+  connect(m_ui->m_txtMysqlUsername->lineEdit(),
+          &BaseLineEdit::textChanged,
+          this,
+          &SettingsDatabase::onMysqlUsernameChanged);
+  connect(m_ui->m_txtMysqlHostname->lineEdit(),
+          &BaseLineEdit::textChanged,
+          this,
+          &SettingsDatabase::onMysqlHostnameChanged);
+  connect(m_ui->m_txtMysqlPassword->lineEdit(),
+          &BaseLineEdit::textChanged,
+          this,
+          &SettingsDatabase::onMysqlPasswordChanged);
+  connect(m_ui->m_txtMysqlDatabase->lineEdit(),
+          &BaseLineEdit::textChanged,
+          this,
+          &SettingsDatabase::onMysqlDatabaseChanged);
   connect(m_ui->m_btnMysqlTestSetup, &QPushButton::clicked, this, &SettingsDatabase::mysqlTestConnection);
-  connect(m_ui->m_cmbDatabaseDriver, static_cast<void (QComboBox::*)(int)>(&QComboBox::currentIndexChanged), this,
+  connect(m_ui->m_cmbDatabaseDriver,
+          static_cast<void (QComboBox::*)(int)>(&QComboBox::currentIndexChanged),
+          this,
           &SettingsDatabase::requireRestart);
   connect(m_ui->m_checkSqliteUseInMemoryDatabase, &QCheckBox::toggled, this, &SettingsDatabase::requireRestart);
   connect(m_ui->m_spinMysqlPort, &QSpinBox::editingFinished, this, &SettingsDatabase::requireRestart);
@@ -139,17 +155,14 @@ void SettingsDatabase::selectSqlBackend(int index) {
     m_ui->m_stackedDatabaseDriver->setCurrentIndex(1);
   }
   else {
-    qWarningNN << LOGSEC_GUI
-               << "GUI for given database driver '"
-               << selected_db_driver
-               << "' is not available.";
+    qWarningNN << LOGSEC_GUI << "GUI for given database driver '" << selected_db_driver << "' is not available.";
   }
 }
 
 void SettingsDatabase::loadSettings() {
   onBeginLoadSettings();
-  m_ui->m_checkUseTransactions->setChecked(qApp->settings()->value(GROUP(Database), SETTING(Database::UseTransactions)).toBool());
-  m_ui->m_lblMysqlTestResult->setStatus(WidgetWithStatus::StatusType::Information, tr("No connection test triggered so far."),
+  m_ui->m_lblMysqlTestResult->setStatus(WidgetWithStatus::StatusType::Information,
+                                        tr("No connection test triggered so far."),
                                         tr("You did not executed any connection test yet."));
 
   // Load SQLite.
@@ -158,7 +171,8 @@ void SettingsDatabase::loadSettings() {
   m_ui->m_cmbDatabaseDriver->addItem(lite_driver->humanDriverType(), lite_driver->qtDriverCode());
 
   // Load in-memory database status.
-  m_ui->m_checkSqliteUseInMemoryDatabase->setChecked(settings()->value(GROUP(Database), SETTING(Database::UseInMemory)).toBool());
+  m_ui->m_checkSqliteUseInMemoryDatabase
+    ->setChecked(settings()->value(GROUP(Database), SETTING(Database::UseInMemory)).toBool());
 
   auto* mysq_driver = qApp->database()->driverForType(DatabaseDriver::DriverType::MySQL);
 
@@ -176,16 +190,19 @@ void SettingsDatabase::loadSettings() {
     m_ui->m_txtMysqlUsername->lineEdit()->setPlaceholderText(tr("Username to login with"));
     m_ui->m_txtMysqlPassword->lineEdit()->setPlaceholderText(tr("Password for your username"));
     m_ui->m_txtMysqlDatabase->lineEdit()->setPlaceholderText(tr("Working database which you have full access to."));
-    m_ui->m_txtMysqlHostname->lineEdit()->setText(settings()->value(GROUP(Database), SETTING(Database::MySQLHostname)).toString());
-    m_ui->m_txtMysqlUsername->lineEdit()->setText(settings()->value(GROUP(Database), SETTING(Database::MySQLUsername)).toString());
-    m_ui->m_txtMysqlPassword->lineEdit()->setText(settings()->password(GROUP(Database),
-                                                                       SETTING(Database::MySQLPassword)).toString());
-    m_ui->m_txtMysqlDatabase->lineEdit()->setText(settings()->value(GROUP(Database), SETTING(Database::MySQLDatabase)).toString());
+    m_ui->m_txtMysqlHostname->lineEdit()
+      ->setText(settings()->value(GROUP(Database), SETTING(Database::MySQLHostname)).toString());
+    m_ui->m_txtMysqlUsername->lineEdit()
+      ->setText(settings()->value(GROUP(Database), SETTING(Database::MySQLUsername)).toString());
+    m_ui->m_txtMysqlPassword->lineEdit()
+      ->setText(settings()->password(GROUP(Database), SETTING(Database::MySQLPassword)).toString());
+    m_ui->m_txtMysqlDatabase->lineEdit()
+      ->setText(settings()->value(GROUP(Database), SETTING(Database::MySQLDatabase)).toString());
     m_ui->m_spinMysqlPort->setValue(settings()->value(GROUP(Database), SETTING(Database::MySQLPort)).toInt());
   }
 
-  int index_current_backend = m_ui->m_cmbDatabaseDriver->findData(settings()->value(GROUP(Database),
-                                                                                    SETTING(Database::ActiveDriver)).toString());
+  int index_current_backend =
+    m_ui->m_cmbDatabaseDriver->findData(settings()->value(GROUP(Database), SETTING(Database::ActiveDriver)).toString());
 
   if (index_current_backend >= 0) {
     m_ui->m_cmbDatabaseDriver->setCurrentIndex(index_current_backend);
@@ -201,11 +218,10 @@ void SettingsDatabase::saveSettings() {
   const bool original_inmemory = settings()->value(GROUP(Database), SETTING(Database::UseInMemory)).toBool();
   const bool new_inmemory = m_ui->m_checkSqliteUseInMemoryDatabase->isChecked();
 
-  qApp->settings()->setValue(GROUP(Database), Database::UseTransactions, m_ui->m_checkUseTransactions->isChecked());
-
   // Save data storage settings.
   QString original_db_driver = settings()->value(GROUP(Database), SETTING(Database::ActiveDriver)).toString();
-  QString selected_db_driver = m_ui->m_cmbDatabaseDriver->itemData(m_ui->m_cmbDatabaseDriver->currentIndex()).toString();
+  QString selected_db_driver =
+    m_ui->m_cmbDatabaseDriver->itemData(m_ui->m_cmbDatabaseDriver->currentIndex()).toString();
 
   // Save SQLite.
   settings()->setValue(GROUP(Database), Database::UseInMemory, new_inmemory);

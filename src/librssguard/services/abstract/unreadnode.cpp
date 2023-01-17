@@ -6,8 +6,6 @@
 #include "miscellaneous/application.h"
 #include "miscellaneous/iconfactory.h"
 
-#include <QThread>
-
 UnreadNode::UnreadNode(RootItem* parent_item) : RootItem(parent_item) {
   setKind(RootItem::Kind::Unread);
   setId(ID_UNREAD);
@@ -25,10 +23,7 @@ QList<Message> UnreadNode::undeletedMessages() const {
 void UnreadNode::updateCounts(bool including_total_count) {
   Q_UNUSED(including_total_count)
 
-  bool is_main_thread = QThread::currentThread() == qApp->thread();
-  QSqlDatabase database = is_main_thread ?
-                          qApp->database()->driver()->connection(metaObject()->className()) :
-                          qApp->database()->driver()->connection(QSL("feed_upd"));
+  QSqlDatabase database = qApp->database()->driver()->threadSafeConnection(metaObject()->className());
   int account_id = getParentServiceRoot()->accountId();
 
   m_totalCount = m_unreadCount = DatabaseQueries::getUnreadMessageCounts(database, account_id);

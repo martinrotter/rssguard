@@ -16,20 +16,32 @@
 
 #include <QDebug>
 #include <QJSEngine>
-#include <QMutexLocker>
 #include <QString>
 #include <QThread>
+#include <QtConcurrentMap>
 
 FeedDownloader::FeedDownloader()
-  : QObject(), m_isCacheSynchronizationRunning(false), m_stopCacheSynchronization(false), m_mutex(new QMutex()),
-    m_feedsUpdated(0), m_feedsOriginalCount(0) {
+  : QObject(), m_isCacheSynchronizationRunning(false), m_stopCacheSynchronization(false) {
   qRegisterMetaType<FeedDownloadResults>("FeedDownloadResults");
+
+  connect(&m_watcherLookup, &QFutureWatcher<FeedUpdateResult>::resultReadyAt, this, [=](int idx) {
+    FeedUpdateResult res = m_watcherLookup.resultAt(idx);
+
+    emit updateProgress(res.feed, m_watcherLookup.progressValue(), m_watcherLookup.progressMaximum());
+  });
+
+  /*
+connect(&m_watcherLookup, &QFutureWatcher<FeedUpdateResult>::progressValueChanged, this, [=](int prog) {
+//
+});
+*/
+
+  connect(&m_watcherLookup, &QFutureWatcher<FeedUpdateResult>::finished, this, [=]() {
+    finalizeUpdate();
+  });
 }
 
 FeedDownloader::~FeedDownloader() {
-  m_mutex->tryLock();
-  m_mutex->unlock();
-  delete m_mutex;
   qDebugNN << LOGSEC_FEEDDOWNLOADER << "Destroying FeedDownloader instance.";
 }
 
@@ -62,35 +74,21 @@ void FeedDownloader::synchronizeAccountCaches(const QList<CacheForServiceRoot*>&
 }
 
 void FeedDownloader::updateFeeds(const QList<Feed*>& feeds) {
-  QMutexLocker locker(m_mutex);
-
+  m_erroredAccounts.clear();
   m_results.clear();
-  m_feeds = feeds;
-  m_feedsOriginalCount = m_feeds.size();
-  m_feedsUpdated = 0;
-
-  const QDateTime update_time = QDateTime::currentDateTimeUtc();
+  m_feeds.clear();
 
   if (feeds.isEmpty()) {
     qDebugNN << LOGSEC_FEEDDOWNLOADER << "No feeds to update in worker thread, aborting update.";
   }
   else {
-    qDebugNN << LOGSEC_FEEDDOWNLOADER << "Starting feed updates from worker in thread: '" << QThread::currentThreadId()
-             << "'.";
+    qDebugNN << LOGSEC_FEEDDOWNLOADER << "Starting feed updates from worker in thread"
+             << QUOTE_W_SPACE_DOT(QThread::currentThreadId());
 
     // Job starts now.
     emit updateStarted();
     QSet<CacheForServiceRoot*> caches;
     QMultiHash<ServiceRoot*, Feed*> feeds_per_root;
-
-    // 1. key - account.
-    // 2. key - feed custom ID.
-    // 3. key - msg state.
-    QHash<ServiceRoot*, QHash<QString, QHash<ServiceRoot::BagOfMessages, QStringList>>> stated_messages;
-
-    // 1. key - account.
-    // 2. key - label custom ID.
-    QHash<ServiceRoot*, QHash<QString, QStringList>> tagged_messages;
 
     for (auto* fd : feeds) {
       CacheForServiceRoot* fd_cache = fd->getParentServiceRoot()->toCache();
@@ -104,24 +102,21 @@ void FeedDownloader::updateFeeds(const QList<Feed*>& feeds) {
 
     synchronizeAccountCaches(caches.values(), false);
 
-    QHash<ServiceRoot*, ApplicationException> errored_roots;
     auto roots = feeds_per_root.uniqueKeys();
-    bool is_main_thread = QThread::currentThread() == qApp->thread();
-    QSqlDatabase database = is_main_thread ? qApp->database()->driver()->connection(metaObject()->className())
-                                           : qApp->database()->driver()->connection(QSL("feed_upd"));
+    QSqlDatabase database = qApp->database()->driver()->threadSafeConnection(metaObject()->className());
 
     for (auto* rt : roots) {
+      auto fds = feeds_per_root.values(rt);
+      QHash<QString, QStringList> per_acc_tags;
+      QHash<QString, QHash<ServiceRoot::BagOfMessages, QStringList>> per_acc_states;
+
       // Obtain lists of local IDs.
       if (rt->wantsBaggedIdsOfExistingMessages()) {
-        // Tagged messages for the account.
-        tagged_messages.insert(rt, DatabaseQueries::bagsOfMessages(database, rt->labelsNode()->labels()));
-
-        QHash<QString, QHash<ServiceRoot::BagOfMessages, QStringList>> per_acc_states;
+        // Tags per account.
+        per_acc_tags = DatabaseQueries::bagsOfMessages(database, rt->labelsNode()->labels());
 
         // This account has activated intelligent downloading of messages.
         // Prepare bags.
-        auto fds = feeds_per_root.values(rt);
-
         for (Feed* fd : fds) {
           QHash<ServiceRoot::BagOfMessages, QStringList> per_feed_states;
 
@@ -131,40 +126,66 @@ void FeedDownloader::updateFeeds(const QList<Feed*>& feeds) {
                                  DatabaseQueries::bagOfMessages(database, ServiceRoot::BagOfMessages::Unread, fd));
           per_feed_states.insert(ServiceRoot::BagOfMessages::Starred,
                                  DatabaseQueries::bagOfMessages(database, ServiceRoot::BagOfMessages::Starred, fd));
-          per_acc_states.insert(fd->customId(), per_feed_states);
-        }
 
-        stated_messages.insert(rt, per_acc_states);
+          per_acc_states.insert(fd->customId(), per_feed_states);
+
+          FeedUpdateRequest fu;
+
+          fu.account = rt;
+          fu.feed = fd;
+          fu.stated_messages = per_feed_states;
+          fu.tagged_messages = per_acc_tags;
+
+          m_feeds.append(fu);
+        }
+      }
+      else {
+        for (Feed* fd : fds) {
+          FeedUpdateRequest fu;
+
+          fu.account = rt;
+          fu.feed = fd;
+
+          m_feeds.append(fu);
+        }
       }
 
       try {
-        rt->aboutToBeginFeedFetching(feeds_per_root.values(rt), stated_messages.value(rt), tagged_messages.value(rt));
+        rt->aboutToBeginFeedFetching(fds, per_acc_states, per_acc_tags);
       }
       catch (const ApplicationException& ex) {
         // Common error showed, all feeds from the root are errored now!
-        errored_roots.insert(rt, ex);
+        m_erroredAccounts.insert(rt, ex);
       }
     }
 
-    while (!m_feeds.isEmpty()) {
-      auto n_f = m_feeds.takeFirst();
-      auto n_r = n_f->getParentServiceRoot();
+    std::function<FeedUpdateResult(const FeedUpdateRequest&)> func =
+      [=](const FeedUpdateRequest& fd) -> FeedUpdateResult {
+      return updateThreadedFeed(fd);
+    };
 
-      if (errored_roots.contains(n_r)) {
-        // This feed is errored because its account errored when preparing feed update.
-        ApplicationException root_ex = errored_roots.value(n_r);
+    m_watcherLookup.setFuture(QtConcurrent::mapped(m_feeds, func));
+  }
+}
 
-        skipFeedUpdateWithError(n_r, n_f, root_ex);
-      }
-      else {
-        updateOneFeed(n_r, n_f, stated_messages.value(n_r).value(n_f->customId()), tagged_messages.value(n_r));
-      }
+FeedUpdateResult FeedDownloader::updateThreadedFeed(const FeedUpdateRequest& fd) {
+  if (m_erroredAccounts.contains(fd.account)) {
+    // This feed is errored because its account errored when preparing feed update.
+    ApplicationException root_ex = m_erroredAccounts.value(fd.account);
 
-      n_f->setLastUpdated(QDateTime::currentDateTimeUtc());
-    }
+    skipFeedUpdateWithError(fd.account, fd.feed, root_ex);
+  }
+  else {
+    updateOneFeed(fd.account, fd.feed, fd.stated_messages, fd.tagged_messages);
   }
 
-  finalizeUpdate();
+  fd.feed->setLastUpdated(QDateTime::currentDateTimeUtc());
+
+  FeedUpdateResult res;
+
+  res.feed = fd.feed;
+
+  return res;
 }
 
 void FeedDownloader::skipFeedUpdateWithError(ServiceRoot* acc, Feed* feed, const ApplicationException& ex) {
@@ -176,38 +197,38 @@ void FeedDownloader::skipFeedUpdateWithError(ServiceRoot* acc, Feed* feed, const
   else {
     feed->setStatus(Feed::Status::OtherError, ex.message());
   }
-
-  acc->itemChanged({feed});
-
-  emit updateProgress(feed, ++m_feedsUpdated, m_feedsOriginalCount);
 }
 
 void FeedDownloader::stopRunningUpdate() {
   m_stopCacheSynchronization = true;
+
+  m_watcherLookup.cancel();
+  m_watcherLookup.waitForFinished();
+
   m_feeds.clear();
-  m_feedsOriginalCount = m_feedsUpdated = 0;
 }
 
 void FeedDownloader::updateOneFeed(ServiceRoot* acc,
                                    Feed* feed,
                                    const QHash<ServiceRoot::BagOfMessages, QStringList>& stated_messages,
                                    const QHash<QString, QStringList>& tagged_messages) {
-  qDebugNN << LOGSEC_FEEDDOWNLOADER << "Downloading new messages for feed ID '" << feed->customId() << "' URL: '"
-           << feed->source() << "' title: '" << feed->title() << "' in thread: '" << QThread::currentThreadId() << "'.";
+  qlonglong thread_id = qlonglong(QThread::currentThreadId());
 
-  int acc_id = feed->getParentServiceRoot()->accountId();
+  qDebugNN << LOGSEC_FEEDDOWNLOADER << "Downloading new messages for feed ID" << QUOTE_W_SPACE(feed->customId())
+           << "URL:" << QUOTE_W_SPACE(feed->source()) << "title:" << QUOTE_W_SPACE(feed->title()) << "in thread "
+           << QUOTE_W_SPACE_DOT(thread_id);
+
+  int acc_id = acc->accountId();
   QElapsedTimer tmr;
   tmr.start();
 
   try {
-    bool is_main_thread = QThread::currentThread() == qApp->thread();
-    QSqlDatabase database = is_main_thread ? qApp->database()->driver()->connection(metaObject()->className())
-                                           : qApp->database()->driver()->connection(QSL("feed_upd"));
+    QSqlDatabase database = qApp->database()->driver()->threadSafeConnection(metaObject()->className());
     QList<Message> msgs = feed->getParentServiceRoot()->obtainNewMessages(feed, stated_messages, tagged_messages);
 
-    qDebugNN << LOGSEC_FEEDDOWNLOADER << "Downloaded " << msgs.size() << " messages for feed ID '" << feed->customId()
-             << "' URL: '" << feed->source() << "' title: '" << feed->title() << "' in thread: '"
-             << QThread::currentThreadId() << "'. Operation took " << tmr.nsecsElapsed() / 1000 << " microseconds.";
+    qDebugNN << LOGSEC_FEEDDOWNLOADER << "Downloaded" << NONQUOTE_W_SPACE(msgs.size()) << "messages for feed ID"
+             << QUOTE_W_SPACE_COMMA(feed->customId()) << "operation took" << NONQUOTE_W_SPACE(tmr.nsecsElapsed() / 1000)
+             << "microseconds.";
 
     bool fix_future_datetimes =
       qApp->settings()->value(GROUP(Messages), SETTING(Messages::FixupFutureArticleDateTimes)).toBool();
@@ -296,15 +317,15 @@ void FeedDownloader::updateOneFeed(ServiceRoot* acc,
         }
 
         if (!msg_original.m_isRead && msg_tweaked_by_filter->m_isRead) {
-          qDebugNN << LOGSEC_FEEDDOWNLOADER << "Message with custom ID: '" << msg_original.m_customId
-                   << "' was marked as read by message scripts.";
+          qDebugNN << LOGSEC_FEEDDOWNLOADER << "Message with custom ID:" << QUOTE_W_SPACE(msg_original.m_customId)
+                   << "was marked as read by message scripts.";
 
           read_msgs << *msg_tweaked_by_filter;
         }
 
         if (!msg_original.m_isImportant && msg_tweaked_by_filter->m_isImportant) {
-          qDebugNN << LOGSEC_FEEDDOWNLOADER << "Message with custom ID: '" << msg_original.m_customId
-                   << "' was marked as important by message scripts.";
+          qDebugNN << LOGSEC_FEEDDOWNLOADER << "Message with custom ID:" << QUOTE_W_SPACE(msg_original.m_customId)
+                   << "was marked as important by message scripts.";
 
           important_msgs << *msg_tweaked_by_filter;
         }
@@ -312,6 +333,8 @@ void FeedDownloader::updateOneFeed(ServiceRoot* acc,
         // Process changed labels.
         for (Label* lbl : qAsConst(msg_original.m_assignedLabels)) {
           if (!msg_tweaked_by_filter->m_assignedLabels.contains(lbl)) {
+            QMutexLocker lck(&m_mutexDb);
+
             // Label is not there anymore, it was deassigned.
             lbl->deassignFromMessage(*msg_tweaked_by_filter);
 
@@ -323,6 +346,8 @@ void FeedDownloader::updateOneFeed(ServiceRoot* acc,
 
         for (Label* lbl : qAsConst(msg_tweaked_by_filter->m_assignedLabels)) {
           if (!msg_original.m_assignedLabels.contains(lbl)) {
+            QMutexLocker lck(&m_mutexDb);
+
             // Label is in new message, but is not in old message, it
             // was newly assigned.
             lbl->assignToMessage(*msg_tweaked_by_filter);
@@ -371,16 +396,11 @@ void FeedDownloader::updateOneFeed(ServiceRoot* acc,
 
     removeDuplicateMessages(msgs);
 
-    // Now make sure, that messages are actually stored to SQL in a locked state.
-    qDebugNN << LOGSEC_FEEDDOWNLOADER << "Saving messages of feed ID '" << feed->customId() << "' URL: '"
-             << feed->source() << "' title: '" << feed->title() << "' in thread: '" << QThread::currentThreadId()
-             << "'.";
-
     tmr.restart();
-    auto updated_messages = acc->updateMessages(msgs, feed, false);
+    auto updated_messages = acc->updateMessages(msgs, feed, false, &m_mutexDb);
 
-    qDebugNN << LOGSEC_FEEDDOWNLOADER << "Updating messages in DB took " << tmr.nsecsElapsed() / 1000
-             << " microseconds.";
+    qDebugNN << LOGSEC_FEEDDOWNLOADER << "Updating messages in DB took" << NONQUOTE_W_SPACE(tmr.nsecsElapsed() / 1000)
+             << "microseconds.";
 
     if (feed->status() != Feed::Status::NewMessages) {
       feed->setStatus(updated_messages.first > 0 || updated_messages.second > 0 ? Feed::Status::NewMessages
@@ -407,18 +427,16 @@ void FeedDownloader::updateOneFeed(ServiceRoot* acc,
     feed->setStatus(Feed::Status::OtherError, app_ex.message());
   }
 
-  feed->getParentServiceRoot()->itemChanged({feed});
-
-  m_feedsUpdated++;
-
-  qDebugNN << LOGSEC_FEEDDOWNLOADER << "Made progress in feed updates, total feeds count " << m_feedsUpdated << "/"
-           << m_feedsOriginalCount << " (id of feed is " << feed->id() << ").";
-  emit updateProgress(feed, m_feedsUpdated, m_feedsOriginalCount);
+  qDebugNN << LOGSEC_FEEDDOWNLOADER << "Made progress in feed updates, total feeds count "
+           << m_watcherLookup.progressValue() + 1 << "/" << m_feeds.size() << " (id of feed is " << feed->id() << ").";
 }
 
 void FeedDownloader::finalizeUpdate() {
-  qDebugNN << LOGSEC_FEEDDOWNLOADER << "Finished feed updates in thread: '" << QThread::currentThreadId() << "'.";
+  qDebugNN << LOGSEC_FEEDDOWNLOADER << "Finished feed updates in thread"
+           << QUOTE_W_SPACE_DOT(QThread::currentThreadId());
+
   m_results.sort();
+  m_feeds.clear();
 
   // Update of feeds has finished.
   // NOTE: This means that now "update lock" can be unlocked

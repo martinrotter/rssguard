@@ -317,7 +317,7 @@
 #define OS_ID "OpenBSD"
 #elif defined(Q_OS_OS2)
 #define OS_ID "OS2"
-#elif defined(Q_OS_OSX)
+#elif defined(Q_OS_MACOS)
 #define OS_ID "macOS"
 #elif defined(Q_OS_WIN)
 #define OS_ID "Windows"

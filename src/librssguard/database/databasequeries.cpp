@@ -1080,13 +1080,13 @@ QPair<int, int> DatabaseQueries::updateMessages(QSqlDatabase db,
                                                 QList<Message>& messages,
                                                 Feed* feed,
                                                 bool force_update,
+                                                QMutex* db_mutex,
                                                 bool* ok) {
   if (messages.isEmpty()) {
     *ok = true;
     return {0, 0};
   }
 
-  bool use_transactions = qApp->settings()->value(GROUP(Database), SETTING(Database::UseTransactions)).toBool();
   QPair<int, int> updated_messages = {0, 0};
   int account_id = feed->getParentServiceRoot()->accountId();
   auto feed_custom_id = feed->customId();
@@ -1097,8 +1097,6 @@ QPair<int, int> DatabaseQueries::updateMessages(QSqlDatabase db,
   QSqlQuery query_select_with_custom_id_for_feed(db);
   QSqlQuery query_select_with_id(db);
   QSqlQuery query_update(db);
-  QSqlQuery query_insert(db);
-  QSqlQuery query_begin_transaction(db);
 
   // Here we have query which will check for existence of the "same" message in given feed.
   // The two message are the "same" if:
@@ -1132,14 +1130,6 @@ QPair<int, int> DatabaseQueries::updateMessages(QSqlDatabase db,
     .prepare(QSL("SELECT date_created, is_read, is_important, contents, feed, title, author FROM Messages "
                  "WHERE id = :id AND account_id = :account_id;"));
 
-  // Used to insert new messages.
-  query_insert.setForwardOnly(true);
-  query_insert.prepare(QSL("INSERT INTO Messages "
-                           "(feed, title, is_read, is_important, is_deleted, url, author, score, date_created, "
-                           "contents, enclosures, custom_id, custom_hash, account_id) "
-                           "VALUES (:feed, :title, :is_read, :is_important, :is_deleted, :url, :author, :score, "
-                           ":date_created, :contents, :enclosures, :custom_id, :custom_hash, :account_id);"));
-
   // Used to update existing messages.
   query_update.setForwardOnly(true);
   query_update.prepare(QSL("UPDATE Messages "
@@ -1147,12 +1137,6 @@ QPair<int, int> DatabaseQueries::updateMessages(QSqlDatabase db,
                            ":is_deleted, url = :url, author = :author, score = :score, date_created = :date_created, "
                            "contents = :contents, enclosures = :enclosures, feed = :feed "
                            "WHERE id = :id;"));
-
-  if (use_transactions && !db.transaction()) {
-    qCriticalNN << LOGSEC_DB << "Transaction start for message downloader failed:"
-                << QUOTE_W_SPACE_DOT(query_begin_transaction.lastError().text());
-    return updated_messages;
-  }
 
   QVector<Message*> msgs_to_insert;
 
@@ -1165,6 +1149,8 @@ QPair<int, int> DatabaseQueries::updateMessages(QSqlDatabase db,
     QString feed_id_existing_message;
     QString title_existing_message;
     QString author_existing_message;
+
+    QMutexLocker lck(db_mutex);
 
     if (message.m_id > 0) {
       // We recognize directly existing message.
@@ -1357,8 +1343,8 @@ QPair<int, int> DatabaseQueries::updateMessages(QSqlDatabase db,
           updated_messages.second++;
         }
         else if (query_update.lastError().isValid()) {
-          qWarningNN << LOGSEC_DB
-                     << "Failed to update message in DB:" << QUOTE_W_SPACE_DOT(query_update.lastError().text());
+          qCriticalNN << LOGSEC_DB
+                      << "Failed to update message in DB:" << QUOTE_W_SPACE_DOT(query_update.lastError().text());
         }
 
         query_update.finish();
@@ -1415,7 +1401,7 @@ QPair<int, int> DatabaseQueries::updateMessages(QSqlDatabase db,
                       .replace(QSL(":date_created"), QString::number(msg->m_created.toMSecsSinceEpoch()))
                       .replace(QSL(":contents"), DatabaseFactory::escapeQuery(unnulifyString(msg->m_contents)))
                       .replace(QSL(":enclosures"), Enclosures::encodeEnclosuresToString(msg->m_enclosures))
-                      .replace(QSL(":custom_id"), unnulifyString(msg->m_customId))
+                      .replace(QSL(":custom_id"), DatabaseFactory::escapeQuery(unnulifyString(msg->m_customId)))
                       .replace(QSL(":custom_hash"), unnulifyString(msg->m_customHash))
                       .replace(QSL(":score"), QString::number(msg->m_score))
                       .replace(QSL(":account_id"), QString::number(account_id)));
@@ -1423,6 +1409,9 @@ QPair<int, int> DatabaseQueries::updateMessages(QSqlDatabase db,
 
       if (!vals.isEmpty()) {
         QString final_bulk = bulk_insert.arg(vals.join(QSL(", ")));
+
+        QMutexLocker lck(db_mutex);
+
         auto bulk_query = db.exec(final_bulk);
         auto bulk_error = bulk_query.lastError();
 
@@ -1454,39 +1443,30 @@ QPair<int, int> DatabaseQueries::updateMessages(QSqlDatabase db,
   for (Message& message : messages) {
     if (!message.m_assignedLabels.isEmpty()) {
       if (!message.m_customId.isEmpty() || message.m_id > 0) {
+        QMutexLocker lck(db_mutex);
         setLabelsForMessage(db, message.m_assignedLabels, message);
       }
       else {
-        qWarningNN << LOGSEC_DB << "Cannot set labels for message" << QUOTE_W_SPACE(message.m_title)
-                   << "because we don't have ID or custom ID.";
+        qCriticalNN << LOGSEC_DB << "Cannot set labels for message" << QUOTE_W_SPACE(message.m_title)
+                    << "because we don't have ID or custom ID.";
       }
     }
   }
 
   // Now, fixup custom IDS for messages which initially did not have them,
   // just to keep the data consistent.
+  QMutexLocker lck(db_mutex);
+
   if (db.exec("UPDATE Messages "
               "SET custom_id = id "
               "WHERE custom_id IS NULL OR custom_id = '';")
         .lastError()
         .isValid()) {
-    qWarningNN << LOGSEC_DB << "Failed to set custom ID for all messages:" << QUOTE_W_SPACE_DOT(db.lastError().text());
+    qCriticalNN << LOGSEC_DB << "Failed to set custom ID for all messages:" << QUOTE_W_SPACE_DOT(db.lastError().text());
   }
 
-  if (use_transactions && !db.commit()) {
-    qCriticalNN << LOGSEC_DB
-                << "Transaction commit for message downloader failed:" << QUOTE_W_SPACE_DOT(db.lastError().text());
-    db.rollback();
-
-    if (ok != nullptr) {
-      *ok = false;
-      updated_messages = {0, 0};
-    }
-  }
-  else {
-    if (ok != nullptr) {
-      *ok = true;
-    }
+  if (ok != nullptr) {
+    *ok = true;
   }
 
   return updated_messages;

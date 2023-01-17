@@ -51,7 +51,7 @@ else
   USE_QT6="ON"
 
   QTPATH="$(pwd)/Qt"
-  QTVERSION="6.4.1"
+  QTVERSION="6.4.2"
   QTBIN="$QTPATH/$QTVERSION/$QTOS/bin"
 
   pip3 install aqtinstall

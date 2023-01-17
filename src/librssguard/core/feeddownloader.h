@@ -5,6 +5,7 @@
 
 #include <QObject>
 
+#include <QFutureWatcher>
 #include <QPair>
 
 #include "core/message.h"
@@ -13,7 +14,6 @@
 #include "services/abstract/feed.h"
 
 class MessageFilter;
-class QMutex;
 
 // Represents results of batch feed updates.
 class FeedDownloadResults {
@@ -28,6 +28,17 @@ class FeedDownloadResults {
   private:
     // QString represents title if the feed, int represents count of newly downloaded messages.
     QList<QPair<Feed*, int>> m_updatedFeeds;
+};
+
+struct FeedUpdateRequest {
+    Feed* feed = nullptr;
+    ServiceRoot* account = nullptr;
+    QHash<ServiceRoot::BagOfMessages, QStringList> stated_messages;
+    QHash<QString, QStringList> tagged_messages;
+};
+
+struct FeedUpdateResult {
+    Feed* feed = nullptr;
 };
 
 // This class offers means to "update" feeds and "special" categories.
@@ -62,14 +73,16 @@ class FeedDownloader : public QObject {
     void finalizeUpdate();
     void removeDuplicateMessages(QList<Message>& messages);
 
+    FeedUpdateResult updateThreadedFeed(const FeedUpdateRequest& fd);
+
   private:
     bool m_isCacheSynchronizationRunning;
     bool m_stopCacheSynchronization;
-    QList<Feed*> m_feeds = {};
-    QMutex* m_mutex;
+    QMutex m_mutexDb;
+    QHash<ServiceRoot*, ApplicationException> m_erroredAccounts;
+    QList<FeedUpdateRequest> m_feeds = {};
+    QFutureWatcher<FeedUpdateResult> m_watcherLookup;
     FeedDownloadResults m_results;
-    int m_feedsUpdated;
-    int m_feedsOriginalCount;
 };
 
 #endif // FEEDDOWNLOADER_H

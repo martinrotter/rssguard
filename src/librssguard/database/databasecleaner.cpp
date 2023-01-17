@@ -11,7 +11,7 @@
 DatabaseCleaner::DatabaseCleaner(QObject* parent) : QObject(parent) {}
 
 void DatabaseCleaner::purgeDatabaseData(CleanerOrders which_data) {
-  qDebugNN << LOGSEC_DB << "Performing database cleanup in thread: '" << QThread::currentThreadId() << "'.";
+  qDebugNN << LOGSEC_DB << "Performing database cleanup in thread:" << QUOTE_W_SPACE_DOT(QThread::currentThreadId());
 
   // Inform everyone about the start of the process.
   emit purgeStarted();

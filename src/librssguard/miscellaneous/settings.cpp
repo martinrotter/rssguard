@@ -374,9 +374,6 @@ DVALUE(int) Proxy::PortDef = 80;
 // Database.
 DKEY Database::ID = "database";
 
-DKEY Database::UseTransactions = "use_transactions";
-DVALUE(bool) Database::UseTransactionsDef = false;
-
 DKEY Database::UseInMemory = "use_in_memory_db";
 DVALUE(bool) Database::UseInMemoryDef = false;
 
@@ -438,7 +435,8 @@ DVALUE(QStringList) Browser::ExternalToolsDef = QStringList();
 DKEY CategoriesExpandStates::ID = "categories_expand_states";
 
 Settings::Settings(const QString& file_name, Format format, SettingsProperties::SettingsType type, QObject* parent)
-  : QSettings(file_name, format, parent), m_initializationStatus(type) {
+  : QSettings(file_name, format, parent), m_lock(QReadWriteLock(QReadWriteLock::RecursionMode::Recursive)),
+    m_initializationStatus(type) {
   Messages::PreviewerFontStandardDef = QFont(QApplication::font().family(), 12).toString();
 }
 

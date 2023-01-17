@@ -72,6 +72,7 @@ class RSSGUARD_DLLSPEC FeedReader : public QObject {
 
   private slots:
     void executeNextAutoUpdate();
+    void onFeedUpdatesFinished(FeedDownloadResults updated_feeds);
 
   signals:
     void feedUpdatesStarted();

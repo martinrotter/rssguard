@@ -9,24 +9,20 @@
 #include <QSqlQuery>
 
 class DatabaseDriver : public QObject {
-  Q_OBJECT
+    Q_OBJECT
 
   public:
-
     // Describes available types of database backend.
-    enum class DriverType {
-      SQLite,
-      MySQL
-    };
+    enum class DriverType { SQLite, MySQL };
 
     // Describes what type of database user wants.
-    enum class DesiredStorageType {
-      StrictlyFileBased,
-      StrictlyInMemory,
-      FromSettings
-    };
+    enum class DesiredStorageType { StrictlyFileBased, StrictlyInMemory, FromSettings };
 
     explicit DatabaseDriver(QObject* parent = nullptr);
+
+    QSqlDatabase threadSafeConnection(const QString& connection_name,
+                                      DatabaseDriver::DesiredStorageType desired_type =
+                                        DatabaseDriver::DesiredStorageType::FromSettings);
 
     // API.
     virtual QString location() const = 0;
@@ -43,19 +39,17 @@ class DatabaseDriver : public QObject {
     virtual bool finishRestoration() = 0;
     virtual qint64 databaseDataSize() = 0;
     virtual QSqlDatabase connection(const QString& connection_name,
-                                    DatabaseDriver::DesiredStorageType desired_type = DatabaseDriver::DesiredStorageType::FromSettings) = 0;
+                                    DatabaseDriver::DesiredStorageType desired_type =
+                                      DatabaseDriver::DesiredStorageType::FromSettings) = 0;
 
   protected:
-    void updateDatabaseSchema(QSqlQuery& query,
-                              int source_db_schema_version,
-                              const QString& database_name = {});
+    void updateDatabaseSchema(QSqlQuery& query, int source_db_schema_version, const QString& database_name = {});
 
     void setSchemaVersion(QSqlQuery& query, int new_schema_version, bool empty_table);
 
     QStringList prepareScript(const QString& base_sql_folder,
                               const QString& sql_file,
                               const QString& database_name = {});
-
 };
 
 #endif // DATABASEDRIVER_H

@@ -23,7 +23,6 @@
 #include <QJsonDocument>
 #include <QJsonObject>
 #include <QRegularExpression>
-#include <QThread>
 #include <QUrl>
 
 GmailNetworkFactory::GmailNetworkFactory(QObject* parent)

@@ -14,6 +14,7 @@
 #include <QPair>
 
 class QAction;
+class QMutex;
 class FeedsModel;
 class RecycleBin;
 class ImportantNode;
@@ -197,7 +198,7 @@ class ServiceRoot : public RootItem {
     void completelyRemoveAllData();
 
     // Returns counts of updated messages <unread, all>.
-    QPair<int, int> updateMessages(QList<Message>& messages, Feed* feed, bool force_update);
+    QPair<int, int> updateMessages(QList<Message>& messages, Feed* feed, bool force_update, QMutex* db_mutex);
 
     QIcon feedIconForMessage(const QString& feed_custom_id) const;
 

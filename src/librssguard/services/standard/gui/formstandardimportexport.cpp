@@ -248,7 +248,8 @@ void FormStandardImportExport::parseImportFile(const QString& file_name, bool fe
   QFile input_file(file_name);
   QByteArray input_data;
 
-  if (input_file.open(QIODevice::Text | QIODevice::Unbuffered | QIODevice::ReadOnly)) {
+  if (input_file.open(QIODevice::OpenModeFlag::Text | QIODevice::OpenModeFlag::Unbuffered |
+                      QIODevice::OpenModeFlag::ReadOnly)) {
     input_data = input_file.readAll();
     input_file.close();
   }

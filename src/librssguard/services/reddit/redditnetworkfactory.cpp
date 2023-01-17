@@ -24,7 +24,6 @@
 #include <QJsonDocument>
 #include <QJsonObject>
 #include <QRegularExpression>
-#include <QThread>
 #include <QUrl>
 
 RedditNetworkFactory::RedditNetworkFactory(QObject* parent)

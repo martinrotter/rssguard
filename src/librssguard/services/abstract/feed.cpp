@@ -17,8 +17,6 @@
 #include "services/abstract/serviceroot.h"
 #include "services/abstract/unreadnode.h"
 
-#include <QThread>
-
 Feed::Feed(RootItem* parent)
   : RootItem(parent), m_source(QString()), m_status(Status::Normal), m_statusString(QString()),
     m_autoUpdateType(AutoUpdateType::DefaultAutoUpdate), m_autoUpdateInterval(DEFAULT_AUTO_UPDATE_INTERVAL),
@@ -196,9 +194,7 @@ void Feed::appendMessageFilter(MessageFilter* filter) {
 }
 
 void Feed::updateCounts(bool including_total_count) {
-  bool is_main_thread = QThread::currentThread() == qApp->thread();
-  QSqlDatabase database = is_main_thread ? qApp->database()->driver()->connection(metaObject()->className())
-                                         : qApp->database()->driver()->connection(QSL("feed_upd"));
+  QSqlDatabase database = qApp->database()->driver()->threadSafeConnection(metaObject()->className());
   int account_id = getParentServiceRoot()->accountId();
 
   if (including_total_count) {

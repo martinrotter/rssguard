@@ -36,7 +36,7 @@ FeedsImportExportModel::FeedsImportExportModel(QObject* parent)
 
     m_newRoot = nullptr;
 
-    emit parsingFinished(number_error, m_lookup.size() - number_error);
+    emit parsingFinished(number_error, res.size() - number_error);
 
     // Done, remove lookups.
     m_lookup.clear();
@@ -189,7 +189,7 @@ bool FeedsImportExportModel::produceFeed(const FeedLookup& feed_lookup) {
       new_feed->setPostProcessScript(feed_lookup.post_process_script);
     }
     else {
-      new_feed = new StandardFeed(feed_lookup.parent);
+      new_feed = new StandardFeed();
 
       if (feed_lookup.opml_element.isNull()) {
         new_feed->setSource(feed_lookup.url);

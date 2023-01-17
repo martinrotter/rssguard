@@ -8,8 +8,6 @@
 #include "services/abstract/cacheforserviceroot.h"
 #include "services/abstract/serviceroot.h"
 
-#include <QThread>
-
 ImportantNode::ImportantNode(RootItem* parent_item) : RootItem(parent_item) {
   setKind(RootItem::Kind::Important);
   setId(ID_IMPORTANT);
@@ -25,10 +23,7 @@ QList<Message> ImportantNode::undeletedMessages() const {
 }
 
 void ImportantNode::updateCounts(bool including_total_count) {
-  bool is_main_thread = QThread::currentThread() == qApp->thread();
-  QSqlDatabase database = is_main_thread ?
-                          qApp->database()->driver()->connection(metaObject()->className()) :
-                          qApp->database()->driver()->connection(QSL("feed_upd"));
+  QSqlDatabase database = qApp->database()->driver()->threadSafeConnection(metaObject()->className());
   int account_id = getParentServiceRoot()->accountId();
 
   if (including_total_count) {

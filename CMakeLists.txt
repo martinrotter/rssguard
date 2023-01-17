@@ -58,6 +58,7 @@ cmake_minimum_required(VERSION 3.9.0)
 
 # Global variables describing the project.
 string(TIMESTAMP YEAR "%Y")
+string(TIMESTAMP DATE "%Y-%m-%d")
 
 set(APP_NAME "RSS Guard")
 set(APP_EMAIL "rotter.martinos@gmail.com")
@@ -65,7 +66,7 @@ set(APP_AUTHOR "Martin Rotter")
 set(APP_COPYRIGHT "\\251 2011-${YEAR} ${APP_AUTHOR}")
 set(APP_REVERSE_NAME "io.github.martinrotter.rssguard")
 set(APP_DONATE_URL "https://github.com/sponsors/martinrotter")
-set(APP_VERSION "4.2.7")
+set(APP_VERSION "4.3.0")
 
 set(APP_URL "https://github.com/martinrotter/rssguard")
 set(APP_URL_DOCUMENTATION "https://github.com/martinrotter/rssguard/blob/${APP_VERSION}/resources/docs/Documentation.md")
