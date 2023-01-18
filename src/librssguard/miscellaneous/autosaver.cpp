@@ -35,16 +35,13 @@ void AutoSaver::changeOccurred() {
     saveIfNeccessary();
   }
   else {
-    QMetaObject::invokeMethod(&m_timer,
-                              "start",
-                              Qt::ConnectionType::BlockingQueuedConnection,
-                              Q_ARG(int, m_periodicSaveMsecs));
+    QMetaObject::invokeMethod(&m_timer, "start", Qt::ConnectionType::AutoConnection, Q_ARG(int, m_periodicSaveMsecs));
   }
 }
 
 void AutoSaver::saveIfNeccessary() {
   if (m_timer.isActive()) {
-    QMetaObject::invokeMethod(&m_timer, "stop", Qt::ConnectionType::BlockingQueuedConnection);
+    QMetaObject::invokeMethod(&m_timer, "stop", Qt::ConnectionType::AutoConnection);
     m_firstChange.invalidate();
 
     if (!QMetaObject::invokeMethod(parent(), qPrintable(m_savingSlot), Qt::ConnectionType::DirectConnection)) {
