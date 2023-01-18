@@ -221,7 +221,7 @@ Application::Application(const QString& id, int& argc, char** argv, const QStrin
     QThreadPool::globalInstance()->setMaxThreadCount((std::min)(128, 4));
   }
 
-  QThreadPool::globalInstance()->setExpiryTimeout(120s);
+  QThreadPool::globalInstance()->setExpiryTimeout(120000);
 
   qDebugNN << LOGSEC_CORE << "OpenSSL version:" << QUOTE_W_SPACE_DOT(QSslSocket::sslLibraryVersionString());
   qDebugNN << LOGSEC_CORE << "OpenSSL supported:" << QUOTE_W_SPACE_DOT(QSslSocket::supportsSsl());
