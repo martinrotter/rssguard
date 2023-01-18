@@ -218,7 +218,7 @@ Application::Application(const QString& id, int& argc, char** argv, const QStrin
   auto ideal_th_count = QThread::idealThreadCount();
 
   if (ideal_th_count > 1) {
-    QThreadPool::globalInstance()->setMaxThreadCount((std::min)(128, 4));
+    QThreadPool::globalInstance()->setMaxThreadCount((std::min)(32, 2 * ideal_th_count));
   }
 
   QThreadPool::globalInstance()->setExpiryTimeout(120000);
