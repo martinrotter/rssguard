@@ -14,6 +14,8 @@ class QWebEngineCookieStore;
 #endif
 
 class CookieJar : public QNetworkCookieJar {
+    Q_OBJECT
+
   public:
     explicit CookieJar(QObject* parent = nullptr);
 
@@ -29,14 +31,14 @@ class CookieJar : public QNetworkCookieJar {
   public:
     static QList<QNetworkCookie> extractCookiesFromUrl(const QString& url);
 
+  public slots:
+    void loadCookies();
+    void saveCookies();
+
   private:
     bool insertCookieInternal(const QNetworkCookie& cookie, bool notify_others, bool should_save);
     bool updateCookieInternal(const QNetworkCookie& cookie, bool notify_others);
     bool deleteCookieInternal(const QNetworkCookie& cookie, bool notify_others);
-
-  private slots:
-    void loadCookies();
-    void saveCookies();
 
   private:
 #if defined(USE_WEBENGINE)
