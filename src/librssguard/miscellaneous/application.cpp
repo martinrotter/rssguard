@@ -221,7 +221,9 @@ Application::Application(const QString& id, int& argc, char** argv, const QStrin
     QThreadPool::globalInstance()->setMaxThreadCount((std::min)(32, 2 * ideal_th_count));
   }
 
-  QThreadPool::globalInstance()->setExpiryTimeout(120000);
+  // NOTE: Do not expire threads so that their IDs are not reused.
+  // This fixes cross-thread QSqlDatabase access.
+  QThreadPool::globalInstance()->setExpiryTimeout(-1);
 
   qDebugNN << LOGSEC_CORE << "OpenSSL version:" << QUOTE_W_SPACE_DOT(QSslSocket::sslLibraryVersionString());
   qDebugNN << LOGSEC_CORE << "OpenSSL supported:" << QUOTE_W_SPACE_DOT(QSslSocket::supportsSsl());
