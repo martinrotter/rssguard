@@ -9,8 +9,11 @@
 #include "definitions/definitions.h"
 
 AutoSaver::AutoSaver(QObject* parent, const QString& saving_slot, int max_wait_secs, int periodic_save_secs)
-  : QObject(parent), m_savingSlot(saving_slot), m_maxWaitSecs(max_wait_secs), m_periodicSaveSecs(periodic_save_secs) {
+  : QObject(parent), m_savingSlot(saving_slot), m_maxWaitMsecs(max_wait_secs * 1000),
+    m_periodicSaveMsecs(periodic_save_secs * 1000) {
   Q_ASSERT(parent);
+
+  connect(&m_timer, &QTimer::timeout, this, &AutoSaver::saveIfNeccessary);
 }
 
 AutoSaver::~AutoSaver() {
@@ -28,20 +31,11 @@ void AutoSaver::changeOccurred() {
     m_firstChange.start();
   }
 
-  if (m_firstChange.elapsed() > m_maxWaitSecs) {
+  if (m_firstChange.elapsed() > m_maxWaitMsecs) {
     saveIfNeccessary();
   }
   else {
-    m_timer.start(m_periodicSaveSecs, this);
-  }
-}
-
-void AutoSaver::timerEvent(QTimerEvent* event) {
-  if (event->timerId() == m_timer.timerId()) {
-    saveIfNeccessary();
-  }
-  else {
-    QObject::timerEvent(event);
+    m_timer.start(m_periodicSaveMsecs);
   }
 }
 

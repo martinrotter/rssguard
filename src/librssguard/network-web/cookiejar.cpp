@@ -19,7 +19,7 @@
 #endif
 
 CookieJar::CookieJar(QObject* parent)
-  : QNetworkCookieJar(parent), m_saver(AutoSaver(this, QSL("saveCookies"), 25, 45)) {
+  : QNetworkCookieJar(parent), m_saver(AutoSaver(this, QSL("saveCookies"), 30, 45)) {
 #if defined(USE_WEBENGINE)
   auto* web_factory = qobject_cast<WebFactory*>(parent);
 

@@ -7,8 +7,8 @@
 
 #include "definitions/definitions.h"
 
-#include <QBasicTimer>
 #include <QElapsedTimer>
+#include <QTimer>
 
 #define AUTOSAVE_IN (1000 * 3) // In seconds.
 #define MAX_WAIT (1000 * 15)   // In seconds.
@@ -23,19 +23,15 @@ class AutoSaver : public QObject {
                        int periodic_save_secs = AUTOSAVE_IN);
     virtual ~AutoSaver();
 
-    void saveIfNeccessary();
-
   public slots:
     void changeOccurred();
-
-  protected:
-    void timerEvent(QTimerEvent* event);
+    void saveIfNeccessary();
 
   private:
-    QBasicTimer m_timer;
+    QTimer m_timer;
     QElapsedTimer m_firstChange;
-    int m_maxWaitSecs;
-    int m_periodicSaveSecs;
+    int m_maxWaitMsecs;
+    int m_periodicSaveMsecs;
     QString m_savingSlot;
 };
 
