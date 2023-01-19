@@ -946,9 +946,13 @@ void Application::setupCustomDataFolder(const QString& data_folder) {
 
 void Application::setupGlobalThreadPool() {
   auto ideal_th_count = QThread::idealThreadCount();
+  int custom_threads = m_cmdParser.value(QSL(CLI_THREADS)).toInt();
 
-  if (ideal_th_count > 1) {
-    QThreadPool::globalInstance()->setMaxThreadCount((std::min)(32, 2 * ideal_th_count));
+  if (custom_threads > 0) {
+    QThreadPool::globalInstance()->setMaxThreadCount((std::min)(MAX_THREADPOOL_THREADS, custom_threads));
+  }
+  else if (ideal_th_count > 1) {
+    QThreadPool::globalInstance()->setMaxThreadCount((std::min)(MAX_THREADPOOL_THREADS, 2 * ideal_th_count));
   }
 
   // NOTE: Do not expire threads so that their IDs are not reused.
@@ -1156,12 +1160,17 @@ void Application::fillCmdArgumentsParser(QCommandLineParser& parser) {
                  QSL("Use custom port for AdBlock server. It is highly recommended to use values higher than 1024."),
                  QSL("port"));
 
+  QCommandLineOption custom_threads(QSL(CLI_THREADS),
+                                    QSL("Specify number of threads. Note that number cannot be higher than %1.")
+                                      .arg(MAX_THREADPOOL_THREADS),
+                                    QSL("count"));
+
   parser.addOptions({
     help, version, log_file, custom_data_folder, disable_singleinstance, disable_only_debug, disable_debug,
 #if defined(USE_WEBENGINE)
       force_nowebengine,
 #endif
-      forced_style, adblock_port, custom_ua
+      forced_style, adblock_port, custom_ua, custom_threads
   });
   parser.addPositionalArgument(QSL("urls"),
                                QSL("List of URL addresses pointing to individual online feeds which should be added."),
