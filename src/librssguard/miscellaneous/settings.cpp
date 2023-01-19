@@ -405,7 +405,12 @@ DKEY Notifications::ID = "notifications";
 DKEY Browser::ID = "browser";
 
 DKEY Browser::WebEngineChromiumFlags = "webengine_chromium_flags";
+
+#if defined(Q_OS_LINUX) && !defined(IS_FLATPAK_BUILD)
+DVALUE(QString) Browser::WebEngineChromiumFlagsDef = QSL("--disable-gpu --no-sandbox --enable-smooth-scrolling");
+#else
 DVALUE(QString) Browser::WebEngineChromiumFlagsDef = QSL("--enable-smooth-scrolling");
+#endif
 
 DKEY Browser::OpenLinksInExternalBrowserRightAway = "open_link_externally_wo_confirmation";
 DVALUE(bool) Browser::OpenLinksInExternalBrowserRightAwayDef = false;

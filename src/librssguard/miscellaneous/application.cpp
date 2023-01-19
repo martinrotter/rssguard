@@ -215,15 +215,7 @@ Application::Application(const QString& id, int& argc, char** argv, const QStrin
 
   QTimer::singleShot(1000, system(), &SystemFactory::checkForUpdatesOnStartup);
 
-  auto ideal_th_count = QThread::idealThreadCount();
-
-  if (ideal_th_count > 1) {
-    QThreadPool::globalInstance()->setMaxThreadCount((std::min)(32, 2 * ideal_th_count));
-  }
-
-  // NOTE: Do not expire threads so that their IDs are not reused.
-  // This fixes cross-thread QSqlDatabase access.
-  QThreadPool::globalInstance()->setExpiryTimeout(-1);
+  setupGlobalThreadPool();
 
   qDebugNN << LOGSEC_CORE << "OpenSSL version:" << QUOTE_W_SPACE_DOT(QSslSocket::sslLibraryVersionString());
   qDebugNN << LOGSEC_CORE << "OpenSSL supported:" << QUOTE_W_SPACE_DOT(QSslSocket::supportsSsl());
@@ -950,6 +942,18 @@ void Application::setupCustomDataFolder(const QString& data_folder) {
 
   // Save custom data folder.
   m_customDataFolder = data_folder;
+}
+
+void Application::setupGlobalThreadPool() {
+  auto ideal_th_count = QThread::idealThreadCount();
+
+  if (ideal_th_count > 1) {
+    QThreadPool::globalInstance()->setMaxThreadCount((std::min)(32, 2 * ideal_th_count));
+  }
+
+  // NOTE: Do not expire threads so that their IDs are not reused.
+  // This fixes cross-thread QSqlDatabase access.
+  QThreadPool::globalInstance()->setExpiryTimeout(-1);
 }
 
 void Application::onAdBlockFailure() {

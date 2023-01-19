@@ -187,7 +187,7 @@ class RSSGUARD_DLLSPEC Application : public SingleApplication {
 
     // Processes incoming message from another RSS Guard instance.
     void parseCmdArgumentsFromOtherInstance(const QString& message);
-    void parseCmdArgumentsFromMyInstance(const QStringList& raw_cli_args, QString &custom_ua);
+    void parseCmdArgumentsFromMyInstance(const QStringList& raw_cli_args, QString& custom_ua);
 
     void displayLog();
 
@@ -223,6 +223,7 @@ class RSSGUARD_DLLSPEC Application : public SingleApplication {
 #endif
 
     void setupCustomDataFolder(const QString& data_folder);
+    void setupGlobalThreadPool();
     void determineFirstRuns();
     void eliminateFirstRuns();
     void displayLogMessageInDialog(const QString& message);
