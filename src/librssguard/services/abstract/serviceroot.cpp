@@ -375,12 +375,12 @@ QMap<QString, QVariantMap> ServiceRoot::storeCustomFeedsData() {
     feed_custom_data.insert(QSL("is_quiet"), feed->isQuiet());
     feed_custom_data.insert(QSL("open_articles_directly"), feed->openArticlesDirectly());
 
-    // NOTE: These are here specifically to be able to restore custom sort order.
+    // NOTE: These is here specifically to be able to restore custom sort order.
     // Otherwise the information is lost when list of feeds/folders is refreshed from remote
     // service.
     feed_custom_data.insert(QSL("sort_order"), feed->sortOrder());
-    feed_custom_data.insert(QSL("custom_id"), feed->customId());
-    feed_custom_data.insert(QSL("category"), feed->parent()->id());
+    // feed_custom_data.insert(QSL("custom_id"), feed->customId());
+    // feed_custom_data.insert(QSL("category"), feed->parent()->id());
 
     custom_data.insert(feed->customId(), feed_custom_data);
   }
