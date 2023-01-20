@@ -407,7 +407,7 @@ DKEY Browser::ID = "browser";
 DKEY Browser::WebEngineChromiumFlags = "webengine_chromium_flags";
 
 #if defined(Q_OS_LINUX) && !defined(IS_FLATPAK_BUILD)
-DVALUE(QString) Browser::WebEngineChromiumFlagsDef = QSL("--disable-gpu --no-sandbox --enable-smooth-scrolling");
+DVALUE(QString) Browser::WebEngineChromiumFlagsDef = QSL("--no-sandbox --enable-smooth-scrolling");
 #else
 DVALUE(QString) Browser::WebEngineChromiumFlagsDef = QSL("--enable-smooth-scrolling");
 #endif
