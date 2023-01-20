@@ -116,7 +116,7 @@ Erro: %1</translation>
     <message>
         <location filename="../src/librssguard/network-web/adblock/adblockmanager.cpp" line="198"/>
         <source>Failed to setup filters and start server: %1.</source>
-        <translation type="unfinished"/>
+        <translation>Falha ao configurar filtros e iniciar o servidor: %1.</translation>
     </message>
     <message>
         <location filename="../src/librssguard/network-web/adblock/adblockmanager.cpp" line="375"/>
@@ -633,7 +633,7 @@ Clique para abrir a pasta de destino.</translation>
     <message>
         <location filename="../src/librssguard/services/abstract/feed.cpp" line="246"/>
         <source>uses global settings, but global auto-fetching of articles is disabled</source>
-        <translation type="unfinished"/>
+        <translation>usa configurações globais, mas a busca automática de artigos global está desativada</translation>
     </message>
     <message>
         <location filename="../src/librssguard/services/abstract/feed.cpp" line="268"/>
@@ -1376,7 +1376,7 @@ ou esta função ainda não foi implementada.</translation>
     <message>
         <location filename="../src/librssguard/services/abstract/gui/formcategorydetails.cpp" line="157"/>
         <source>Images (%1)</source>
-        <translation type="unfinished"/>
+        <translation>Imagens (%1)</translation>
     </message>
     <message>
         <location filename="../src/librssguard/services/abstract/gui/formcategorydetails.cpp" line="163"/>
@@ -1691,7 +1691,7 @@ ou esta função ainda não foi implementada.</translation>
     <message>
         <location filename="../src/librssguard/services/abstract/gui/formfeeddetails.ui" line="79"/>
         <source>Ignore notifications for this feed</source>
-        <translation type="unfinished"/>
+        <translation>Ignorar notificações deste feed</translation>
     </message>
 </context>
 <context>
@@ -1699,7 +1699,7 @@ ou esta função ainda não foi implementada.</translation>
     <message>
         <location filename="../src/librssguard/gui/dialogs/formlog.cpp" line="16"/>
         <source>Application log</source>
-        <translation type="unfinished"/>
+        <translation>Log do aplicativo</translation>
     </message>
 </context>
 <context>
@@ -2288,7 +2288,7 @@ ou esta função ainda não foi implementada.</translation>
     <message>
         <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="890"/>
         <source>Display application &amp;log</source>
-        <translation type="unfinished"/>
+        <translation>Exibir &amp;log do aplicativo</translation>
     </message>
     <message>
         <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="738"/>
@@ -2498,7 +2498,7 @@ ou esta função ainda não foi implementada.</translation>
     <message>
         <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.ui" line="152"/>
         <source>Pre-made filters</source>
-        <translation type="unfinished"/>
+        <translation>Filtros pré-feitos</translation>
     </message>
     <message>
         <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.ui" line="174"/>
@@ -2756,7 +2756,7 @@ Você precisa reiniciar manualmente.</translation>
         <location filename="../src/librssguard/services/standard/gui/formstandardimportexport.cpp" line="137"/>
         <location filename="../src/librssguard/services/standard/gui/formstandardimportexport.cpp" line="138"/>
         <source>Some feeds were not loaded properly or import file is corrupted.</source>
-        <translation type="unfinished"/>
+        <translation>Alguns feeds não foram carregados corretamente ou o arquivo importado está corrompido.</translation>
     </message>
     <message>
         <location filename="../src/librssguard/services/standard/gui/formstandardimportexport.cpp" line="159"/>
@@ -2831,7 +2831,7 @@ Você precisa reiniciar manualmente.</translation>
         <location filename="../src/librssguard/services/standard/gui/formstandardimportexport.cpp" line="171"/>
         <location filename="../src/librssguard/services/standard/gui/formstandardimportexport.cpp" line="216"/>
         <source>OPML 2.0 files (*.opml *.xml)</source>
-        <translation type="unfinished"/>
+        <translation>Arquivos OPML 2.0 (*.opml *.xml)</translation>
     </message>
     <message>
         <location filename="../src/librssguard/services/standard/gui/formstandardimportexport.cpp" line="321"/>
@@ -2862,12 +2862,12 @@ Você precisa reiniciar manualmente.</translation>
     <message>
         <location filename="../src/librssguard/services/standard/gui/formstandardimportexport.ui" line="55"/>
         <source>Fetch online metadata</source>
-        <translation type="unfinished"/>
+        <translation>Obter metadados on-line</translation>
     </message>
     <message>
         <location filename="../src/librssguard/services/standard/gui/formstandardimportexport.ui" line="64"/>
         <source>Optional post-processing script</source>
-        <translation type="unfinished"/>
+        <translation>Script de pós-processamento opcional</translation>
     </message>
     <message>
         <location filename="../src/librssguard/services/standard/gui/formstandardimportexport.ui" line="95"/>
@@ -3960,7 +3960,7 @@ Expiração dos tokens de login: %2</translation>
     <message>
         <location filename="../src/librssguard/core/messagesmodel.cpp" line="245"/>
         <source>Assigned labels</source>
-        <translation type="unfinished"/>
+        <translation>Rótulos atribuídos</translation>
     </message>
     <message>
         <location filename="../src/librssguard/core/messagesmodel.cpp" line="247"/>
@@ -4050,7 +4050,7 @@ Expiração dos tokens de login: %2</translation>
     <message>
         <location filename="../src/librssguard/core/messagesmodel.cpp" line="254"/>
         <source>Labels assigned to the article.</source>
-        <translation type="unfinished"/>
+        <translation>Rótulos atribuídos ao artigo.</translation>
     </message>
     <message numerus="yes">
         <location filename="../src/librssguard/core/messagesmodel.cpp" line="297"/>
@@ -4964,12 +4964,12 @@ Lista de leitores suportados:</translation>
     <message>
         <location filename="../src/librssguard/miscellaneous/skinfactory.cpp" line="489"/>
         <source>items with new articles</source>
-        <translation type="unfinished"/>
+        <translation>itens con novos artigos</translation>
     </message>
     <message>
         <location filename="../src/librssguard/miscellaneous/skinfactory.cpp" line="492"/>
         <source>items with new articles (highlighted)</source>
-        <translation type="unfinished"/>
+        <translation>itens con novos artigos (destacados)</translation>
     </message>
     <message>
         <location filename="../src/librssguard/miscellaneous/skinfactory.cpp" line="495"/>
@@ -5378,17 +5378,17 @@ File filter for external e-mail selection dialog.</extracomment>
     <message>
         <location filename="../src/librssguard/gui/settings/settingsbrowsermail.ui" line="34"/>
         <source>Enable HTTP/2</source>
-        <translation type="unfinished"/>
+        <translation>Habilitar HTTP/2</translation>
     </message>
     <message>
         <location filename="../src/librssguard/gui/settings/settingsbrowsermail.ui" line="42"/>
         <source>WebEngine</source>
-        <translation type="unfinished"/>
+        <translation>WebEngine</translation>
     </message>
     <message>
         <location filename="../src/librssguard/gui/settings/settingsbrowsermail.ui" line="48"/>
         <source>Custom &quot;QTWEBENGINE_CHROMIUM_FLAGS&quot; flags</source>
-        <translation type="unfinished"/>
+        <translation>Sinalizadores personalizados &quot;QTWEBENGINE_CHROMIUM_FLAGS&quot;</translation>
     </message>
     <message>
         <location filename="../src/librssguard/gui/settings/settingsbrowsermail.ui" line="59"/>
@@ -6662,7 +6662,7 @@ Tipo: %3</translation>
     <message>
         <location filename="../src/librssguard/services/standard/gui/standardfeeddetails.cpp" line="287"/>
         <source>Images (%1)</source>
-        <translation type="unfinished"/>
+        <translation>Imagens (%1)</translation>
     </message>
     <message>
         <location filename="../src/librssguard/services/standard/gui/standardfeeddetails.cpp" line="293"/>
