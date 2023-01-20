@@ -139,10 +139,14 @@ class RSSGUARD_DLLSPEC RootItem : public QObject {
     RootItem* getItemFromSubTree(std::function<bool(const RootItem*)> tester) const;
 
     // Returns list of categories complemented by their own integer primary ID.
-    QHash<int, Category*> getHashedSubTreeCategories() const;
+    QHash<int, Category*> getSubTreeCategoriesForAssemble() const;
+
+    // Returns list of categories complemented by their own string CUSTOM ID.
+    QHash<QString, Category *> getHashedSubTreeCategories() const;
 
     // Returns list of feeds complemented by their own string CUSTOM ID.
     QHash<QString, Feed*> getHashedSubTreeFeeds() const;
+
     QList<Feed*> getSubTreeFeeds() const;
     QList<Feed*> getSubTreeAutoFetchingWithManualIntervalsFeeds() const;
     QList<Feed*> getSubAutoFetchingEnabledFeeds() const;

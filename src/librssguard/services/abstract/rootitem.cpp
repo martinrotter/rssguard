@@ -14,9 +14,9 @@
 #include <QVariant>
 
 RootItem::RootItem(RootItem* parent_item)
-  : QObject(nullptr), m_kind(RootItem::Kind::Root), m_id(NO_PARENT_CATEGORY), m_customId(QL1S("")),
-  m_title(QString()), m_description(QString()), m_creationDate(QDateTime::currentDateTimeUtc()),
-  m_keepOnTop(false), m_sortOrder(NO_PARENT_CATEGORY), m_childItems(QList<RootItem*>()), m_parentItem(parent_item) {}
+  : QObject(nullptr), m_kind(RootItem::Kind::Root), m_id(NO_PARENT_CATEGORY), m_customId(QL1S("")), m_title(QString()),
+    m_description(QString()), m_creationDate(QDateTime::currentDateTimeUtc()), m_keepOnTop(false),
+    m_sortOrder(NO_PARENT_CATEGORY), m_childItems(QList<RootItem*>()), m_parentItem(parent_item) {}
 
 RootItem::RootItem(const RootItem& other) : RootItem(nullptr) {
   setTitle(other.title());
@@ -28,7 +28,7 @@ RootItem::RootItem(const RootItem& other) : RootItem(nullptr) {
 
   // NOTE: We do not need to clone childs, because that would mean that
   // either source or target item tree would get corrupted.
-  //setChildItems(other.childItems());
+  // setChildItems(other.childItems());
 
   setParent(other.parent());
   setCreationDate(other.creationDate());
@@ -43,10 +43,7 @@ QString RootItem::hashCode() const {
   ServiceRoot* root = getParentServiceRoot();
   int acc_id = root == nullptr ? 0 : root->accountId();
 
-  return
-    QString::number(acc_id) + QL1S("-") +
-    QString::number(int(kind())) + QL1S("-") +
-    QString::number(id());
+  return QString::number(acc_id) + QL1S("-") + QString::number(int(kind())) + QL1S("-") + QString::number(id());
 }
 
 QString RootItem::additionalTooltip() const {
@@ -176,9 +173,11 @@ QVariant RootItem::data(int column, int role) const {
         else {
           int count_all = countOfAllMessages();
 
-          return qApp->settings()->value(GROUP(Feeds), SETTING(Feeds::CountFormat)).toString()
-                 .replace(QSL(PLACEHOLDER_UNREAD_COUNTS), count_unread < 0 ? QSL("-") : QString::number(count_unread))
-                 .replace(QSL(PLACEHOLDER_ALL_COUNTS), count_all < 0 ? QSL("-") : QString::number(count_all));
+          return qApp->settings()
+            ->value(GROUP(Feeds), SETTING(Feeds::CountFormat))
+            .toString()
+            .replace(QSL(PLACEHOLDER_UNREAD_COUNTS), count_unread < 0 ? QSL("-") : QString::number(count_unread))
+            .replace(QSL(PLACEHOLDER_ALL_COUNTS), count_all < 0 ? QSL("-") : QString::number(count_all));
         }
       }
       else {
@@ -217,21 +216,19 @@ bool RootItem::performDragDropChange(RootItem* target_item) {
 
 int RootItem::countOfUnreadMessages() const {
   return boolinq::from(m_childItems).sum([](RootItem* it) {
-    return (it->kind() == RootItem::Kind::Important ||
-            it->kind() == RootItem::Kind::Unread ||
+    return (it->kind() == RootItem::Kind::Important || it->kind() == RootItem::Kind::Unread ||
             it->kind() == RootItem::Kind::Labels)
-        ? 0
-        : it->countOfUnreadMessages();
+             ? 0
+             : it->countOfUnreadMessages();
   });
 }
 
 int RootItem::countOfAllMessages() const {
   return boolinq::from(m_childItems).sum([](RootItem* it) {
-    return (it->kind() == RootItem::Kind::Important ||
-            it->kind() == RootItem::Kind::Unread ||
+    return (it->kind() == RootItem::Kind::Important || it->kind() == RootItem::Kind::Unread ||
             it->kind() == RootItem::Kind::Labels)
-        ? 0
-        : it->countOfAllMessages();
+             ? 0
+             : it->countOfAllMessages();
   });
 }
 
@@ -341,7 +338,7 @@ RootItem* RootItem::getItemFromSubTree(std::function<bool(const RootItem*)> test
   return nullptr;
 }
 
-QHash<int, Category*> RootItem::getHashedSubTreeCategories() const {
+QHash<int, Category*> RootItem::getSubTreeCategoriesForAssemble() const {
   QHash<int, Category*> children;
   QList<RootItem*> traversable_items;
 
@@ -353,6 +350,26 @@ QHash<int, Category*> RootItem::getHashedSubTreeCategories() const {
 
     if (active_item->kind() == RootItem::Kind::Category && !children.contains(active_item->id())) {
       children.insert(active_item->id(), active_item->toCategory());
+    }
+
+    traversable_items.append(active_item->childItems());
+  }
+
+  return children;
+}
+
+QHash<QString, Category*> RootItem::getHashedSubTreeCategories() const {
+  QHash<QString, Category*> children;
+  QList<RootItem*> traversable_items;
+
+  traversable_items.append(const_cast<RootItem* const>(this));
+
+  // Iterate all nested items.
+  while (!traversable_items.isEmpty()) {
+    RootItem* active_item = traversable_items.takeFirst();
+
+    if (active_item->kind() == RootItem::Kind::Category && !children.contains(active_item->customId())) {
+      children.insert(active_item->customId(), active_item->toCategory());
     }
 
     traversable_items.append(active_item->childItems());

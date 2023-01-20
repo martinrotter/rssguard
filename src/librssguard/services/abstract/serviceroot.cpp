@@ -375,14 +375,30 @@ QMap<QString, QVariantMap> ServiceRoot::storeCustomFeedsData() {
     feed_custom_data.insert(QSL("is_quiet"), feed->isQuiet());
     feed_custom_data.insert(QSL("open_articles_directly"), feed->openArticlesDirectly());
 
-    // NOTE: These is here specifically to be able to restore custom sort order.
+    // NOTE: This is here specifically to be able to restore custom sort order.
     // Otherwise the information is lost when list of feeds/folders is refreshed from remote
     // service.
     feed_custom_data.insert(QSL("sort_order"), feed->sortOrder());
-    // feed_custom_data.insert(QSL("custom_id"), feed->customId());
-    // feed_custom_data.insert(QSL("category"), feed->parent()->id());
 
     custom_data.insert(feed->customId(), feed_custom_data);
+  }
+
+  return custom_data;
+}
+
+QMap<QString, QVariantMap> ServiceRoot::storeCustomCategoriesData() {
+  QMap<QString, QVariantMap> custom_data;
+  auto str = getSubTreeCategories();
+
+  for (const Category* cat : qAsConst(str)) {
+    QVariantMap cat_custom_data;
+
+    // NOTE: This is here specifically to be able to restore custom sort order.
+    // Otherwise the information is lost when list of feeds/folders is refreshed from remote
+    // service.
+    cat_custom_data.insert(QSL("sort_order"), cat->sortOrder());
+
+    custom_data.insert(cat->customId(), cat_custom_data);
   }
 
   return custom_data;
@@ -409,6 +425,12 @@ void ServiceRoot::restoreCustomFeedsData(const QMap<QString, QVariantMap>& data,
       feed->setOpenArticlesDirectly(feed_custom_data.value(QSL("open_articles_directly")).toBool());
     }
   }
+}
+
+void ServiceRoot::restoreCustomCategoriesData(const QMap<QString, QVariantMap>& data,
+                                              const QHash<QString, Category*>& cats) {
+  Q_UNUSED(data)
+  Q_UNUSED(cats)
 }
 
 QNetworkProxy ServiceRoot::networkProxy() const {
@@ -447,6 +469,7 @@ void ServiceRoot::syncIn() {
     qDebugNN << LOGSEC_CORE << "New feed tree for sync-in obtained.";
 
     auto feed_custom_data = storeCustomFeedsData();
+    auto categories_custom_data = storeCustomCategoriesData();
 
     // Remove from feeds model, then from SQL but leave messages intact.
     bool uses_remote_labels =
@@ -457,9 +480,10 @@ void ServiceRoot::syncIn() {
     removeOldAccountFromDatabase(false, uses_remote_labels);
 
     // Re-sort items to accomodate current sort order.
-    resortAccountTree(new_tree, feed_custom_data);
+    resortAccountTree(new_tree, categories_custom_data, feed_custom_data);
 
     // Restore some local settings to feeds etc.
+    restoreCustomCategoriesData(categories_custom_data, new_tree->getHashedSubTreeCategories());
     restoreCustomFeedsData(feed_custom_data, new_tree->getHashedSubTreeFeeds());
 
     // Model is clean, now store new tree into DB and
@@ -865,7 +889,7 @@ CacheForServiceRoot* ServiceRoot::toCache() const {
 }
 
 void ServiceRoot::assembleFeeds(const Assignment& feeds) {
-  QHash<int, Category*> categories = getHashedSubTreeCategories();
+  QHash<int, Category*> categories = getSubTreeCategoriesForAssemble();
 
   for (const AssignmentItem& feed : feeds) {
     if (feed.first == NO_PARENT_CATEGORY) {
@@ -882,7 +906,9 @@ void ServiceRoot::assembleFeeds(const Assignment& feeds) {
   }
 }
 
-void ServiceRoot::resortAccountTree(RootItem* tree, const QMap<QString, QVariantMap>& custom_data) const {
+void ServiceRoot::resortAccountTree(RootItem* tree,
+                                    const QMap<QString, QVariantMap>& custom_category_data,
+                                    const QMap<QString, QVariantMap>& custom_feed_data) const {
   // Iterate tree and rearrange children.
   QList<RootItem*> traversable_items;
 
@@ -896,8 +922,14 @@ void ServiceRoot::resortAccountTree(RootItem* tree, const QMap<QString, QVariant
     // other item types do not matter.
     std::sort(chldr.begin(), chldr.end(), [&](const RootItem* lhs, const RootItem* rhs) {
       if (lhs->kind() == RootItem::Kind::Feed && rhs->kind() == RootItem::Kind::Feed) {
-        auto lhs_order = custom_data[lhs->customId()].value(QSL("sort_order")).toInt();
-        auto rhs_order = custom_data[rhs->customId()].value(QSL("sort_order")).toInt();
+        auto lhs_order = custom_feed_data[lhs->customId()].value(QSL("sort_order")).toInt();
+        auto rhs_order = custom_feed_data[rhs->customId()].value(QSL("sort_order")).toInt();
+
+        return lhs_order < rhs_order;
+      }
+      else if (lhs->kind() == RootItem::Kind::Category && rhs->kind() == RootItem::Kind::Category) {
+        auto lhs_order = custom_category_data[lhs->customId()].value(QSL("sort_order")).toInt();
+        auto rhs_order = custom_category_data[rhs->customId()].value(QSL("sort_order")).toInt();
 
         return lhs_order < rhs_order;
       }

@@ -274,10 +274,19 @@ class ServiceRoot : public RootItem {
     void itemRemovalRequested(RootItem* item);
 
   private:
-    void resortAccountTree(RootItem* tree, const QMap<QString, QVariantMap>& custom_data) const;
+    void resortAccountTree(RootItem* tree,
+                           const QMap<QString, QVariantMap>& custom_category_data,
+                           const QMap<QString, QVariantMap>& custom_feed_data) const;
 
+    // Key is feed's custom ID.
     virtual QMap<QString, QVariantMap> storeCustomFeedsData();
+
+    // Key is category's custom ID.
+    virtual QMap<QString, QVariantMap> storeCustomCategoriesData();
+
     virtual void restoreCustomFeedsData(const QMap<QString, QVariantMap>& data, const QHash<QString, Feed*>& feeds);
+    virtual void restoreCustomCategoriesData(const QMap<QString, QVariantMap>& data,
+                                             const QHash<QString, Category*>& cats);
 
   protected:
     RecycleBin* m_recycleBin;
