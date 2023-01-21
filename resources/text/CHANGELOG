@@ -1,3 +1,17 @@
+4.3.0
+-----
+
+Added:
+* Massive update for feed fetching mechanism. It is now very parallelized and performance gain should be brutal. On my development PC with 4 cores (Intel i5) I observed 800 % performance boost. Note that this feature required huge number of changes on source code so there could be some corner case regressions or not so polished situations. File bug report when that happens. Also, number of threads used by this feature is configurable via `--threads` command line switch. This parallelization approach will also be applied to some other parts of application in the future, particularly for some massive batched network operations in some plugin - TT-RSS, Greader or Gmail - which will result in massive performance boost too.
+* RSS Guard is now available on Flathub in two distinct variants - "full" and "lite" (same as "nonwebengine").
+* Suffix ".xml" is also accepted for OPML 2.0 files.
+* Brutal speed enhancements when importing OPML 2.0 files. Whole functionality is now properly parallelized and performance boost is potentially massive, depending on number of your CPU cores/threads.
+* Qt 6 bumped to 6.4.2 version - this fixes some regressions.
+
+Fixed:
+* Some random Mac OS X crash. (#866)
+* 
+
 4.2.7
 -----
 
