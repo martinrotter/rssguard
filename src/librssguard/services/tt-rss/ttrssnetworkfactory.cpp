@@ -926,11 +926,10 @@ RootItem* TtRssGetFeedsCategoriesResponse::feedsCategories(TtRssNetworkFactory* 
 
           if (obtain_icons) {
             QString icon_path =
-              item[QSL("icon")].type() == QJsonValue::String ? item[QSL("icon")].toString() : QString();
+              item[QSL("icon")].type() == QJsonValue::Type::String ? item[QSL("icon")].toString() : QString();
 
             if (!icon_path.isEmpty()) {
-              // Chop the "api/" suffix out and append
-              QString full_icon_address = base_address + QL1C('/') + icon_path;
+              QString full_icon_address = QUrl(base_address).resolved(icon_path).toString();
               QPixmap icon;
               QList<QPair<QByteArray, QByteArray>> headers;
 
@@ -941,7 +940,7 @@ RootItem* TtRssGetFeedsCategoriesResponse::feedsCategories(TtRssNetworkFactory* 
               auto res =
                 NetworkFactory::downloadIcon({{full_icon_address, true}}, DOWNLOAD_TIMEOUT, icon, headers, proxy);
 
-              if (res == QNetworkReply::NoError) {
+              if (res == QNetworkReply::NetworkError::NoError) {
                 feed->setIcon(icon);
               }
               else {
