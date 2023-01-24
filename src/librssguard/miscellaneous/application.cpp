@@ -470,7 +470,8 @@ QString Application::configFolder() const {
 QString Application::userDataAppFolder() const {
   // In "app" folder, we would like to separate all user data into own subfolder,
   // therefore stick to "data" folder in this mode.
-  return applicationDirPath() + QDir::separator() + QSL("data4");
+  return QDir::toNativeSeparators(applicationDirPath() + QDir::separator() + QSL("data4"));
+  ;
 }
 
 QString Application::userDataFolder() {
@@ -498,12 +499,16 @@ QStringList Application::replaceDataUserDataFolderPlaceholder(QStringList texts)
 }
 
 QString Application::userDataHomeFolder() const {
+  QString pth;
+
 #if defined(Q_OS_ANDROID)
-  return IOFactory::getSystemFolder(QStandardPaths::GenericDataLocation) + QDir::separator() + QSL(APP_NAME) +
-         QSL(" 4");
+  return pth = IOFactory::getSystemFolder(QStandardPaths::GenericDataLocation) + QDir::separator() + QSL(APP_NAME) +
+               QSL(" 4");
 #else
-  return configFolder() + QDir::separator() + QSL(APP_NAME) + QSL(" 4");
+  return pth = configFolder() + QDir::separator() + QSL(APP_NAME) + QSL(" 4");
 #endif
+
+  return QDir::toNativeSeparators(pth);
 }
 
 QString Application::tempFolder() const {
