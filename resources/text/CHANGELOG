@@ -1,3 +1,11 @@
+4.3.1
+-----
+
+Fixed:
+* Reverted to Qt 6.3 for Windows 10+ builds due to some regressions AGAIN.
+* Fixed TT-RSS icons downloading when obtaining list of feeds/folders.
+* RSS Guard now converts all placeholders (for example "%data%") to native path folder separators.
+
 4.3.0
 -----
 
