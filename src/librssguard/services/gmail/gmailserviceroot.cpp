@@ -48,9 +48,16 @@ RootItem* GmailServiceRoot::obtainNewTreeForSyncIn() const {
   inbox->setKeepOnTop(true);
 
   root->appendChild(inbox);
-  root->appendChild(new Feed(tr("Sent"), QSL(GMAIL_SYSTEM_LABEL_SENT), qApp->icons()->fromTheme(QSL("mail-sent")), root));
-  root->appendChild(new Feed(tr("Drafts"), QSL(GMAIL_SYSTEM_LABEL_DRAFT), qApp->icons()->fromTheme(QSL("gtk-edit")), root));
-  root->appendChild(new Feed(tr("Spam"), QSL(GMAIL_SYSTEM_LABEL_SPAM), qApp->icons()->fromTheme(QSL("mail-mark-junk")), root));
+  root
+    ->appendChild(new Feed(tr("Sent"), QSL(GMAIL_SYSTEM_LABEL_SENT), qApp->icons()->fromTheme(QSL("mail-sent")), root));
+  root->appendChild(new Feed(tr("Drafts"),
+                             QSL(GMAIL_SYSTEM_LABEL_DRAFT),
+                             qApp->icons()->fromTheme(QSL("gtk-edit")),
+                             root));
+  root->appendChild(new Feed(tr("Spam"),
+                             QSL(GMAIL_SYSTEM_LABEL_SPAM),
+                             qApp->icons()->fromTheme(QSL("mail-mark-junk")),
+                             root));
 
   return root;
 }
@@ -84,7 +91,8 @@ void GmailServiceRoot::setCustomDatabaseData(const QVariantHash& data) {
 }
 
 QList<Message> GmailServiceRoot::obtainNewMessages(Feed* feed,
-                                                   const QHash<ServiceRoot::BagOfMessages, QStringList>& stated_messages,
+                                                   const QHash<ServiceRoot::BagOfMessages, QStringList>&
+                                                     stated_messages,
                                                    const QHash<QString, QStringList>& tagged_messages) {
   Q_UNUSED(stated_messages)
   Q_UNUSED(tagged_messages)
@@ -116,11 +124,12 @@ QList<QAction*> GmailServiceRoot::contextMenuMessagesList(const QList<Message>& 
     m_replyToMessage = messages.at(0);
 
     if (m_actionReply == nullptr) {
-      m_actionReply = new QAction(qApp->icons()->fromTheme(QSL("mail-reply-sender")), tr("Reply to this e-mail message"), this);
+      m_actionReply =
+        new QAction(qApp->icons()->fromTheme(QSL("mail-reply-sender")), tr("Reply to this e-mail message"), this);
       connect(m_actionReply, &QAction::triggered, this, &GmailServiceRoot::replyToEmail);
     }
 
-    return { m_actionReply };
+    return {m_actionReply};
   }
   else {
     return {};
@@ -131,7 +140,8 @@ QList<QAction*> GmailServiceRoot::serviceMenu() {
   if (m_serviceMenu.isEmpty()) {
     ServiceRoot::serviceMenu();
 
-    QAction* act_new_email = new QAction(qApp->icons()->fromTheme(QSL("mail-message-new")), tr("Write new e-mail message"), this);
+    QAction* act_new_email =
+      new QAction(qApp->icons()->fromTheme(QSL("mail-message-new")), tr("Write new e-mail message"), this);
 
     connect(act_new_email, &QAction::triggered, this, &GmailServiceRoot::writeNewEmail);
     m_serviceMenu.append(act_new_email);
@@ -191,12 +201,12 @@ QString GmailServiceRoot::code() const {
 }
 
 QString GmailServiceRoot::additionalTooltip() const {
-  return tr("Authentication status: %1\n"
-            "Login tokens expiration: %2").arg(network()->oauth()->isFullyLoggedIn()
-                                               ? tr("logged-in")
-                                               : tr("NOT logged-in"),
-                                               network()->oauth()->tokensExpireIn().isValid() ?
-                                               network()->oauth()->tokensExpireIn().toString() : QSL("-"));
+  return ServiceRoot::additionalTooltip() + QSL("\n") +
+         tr("Authentication status: %1\n"
+            "Login tokens expiration: %2")
+           .arg(network()->oauth()->isFullyLoggedIn() ? tr("logged-in") : tr("NOT logged-in"),
+                network()->oauth()->tokensExpireIn().isValid() ? network()->oauth()->tokensExpireIn().toString()
+                                                               : QSL("-"));
 }
 
 void GmailServiceRoot::saveAllCachedData(bool ignore_errors) {
@@ -210,8 +220,7 @@ void GmailServiceRoot::saveAllCachedData(bool ignore_errors) {
     QStringList ids = i.value();
 
     if (!ids.isEmpty()) {
-      if (network()->markMessagesRead(key, ids, networkProxy()) !=
-          QNetworkReply::NetworkError::NoError &&
+      if (network()->markMessagesRead(key, ids, networkProxy()) != QNetworkReply::NetworkError::NoError &&
           !ignore_errors) {
         addMessageStatesToCache(ids, key);
       }
@@ -227,14 +236,14 @@ void GmailServiceRoot::saveAllCachedData(bool ignore_errors) {
     QList<Message> messages = j.value();
 
     if (!messages.isEmpty()) {
-      QStringList custom_ids; custom_ids.reserve(messages.size());
+      QStringList custom_ids;
+      custom_ids.reserve(messages.size());
 
       for (const Message& msg : messages) {
         custom_ids.append(msg.m_customId);
       }
 
-      if (network()->markMessagesStarred(key, custom_ids, networkProxy()) !=
-          QNetworkReply::NetworkError::NoError &&
+      if (network()->markMessagesStarred(key, custom_ids, networkProxy()) != QNetworkReply::NetworkError::NoError &&
           !ignore_errors) {
         addMessageStatesToCache(messages, key);
       }

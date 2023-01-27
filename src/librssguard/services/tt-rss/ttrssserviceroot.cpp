@@ -363,14 +363,15 @@ QList<Message> TtRssServiceRoot::obtainMessagesViaHeadlines(Feed* feed) {
 }
 
 QString TtRssServiceRoot::additionalTooltip() const {
-  return tr("Username: %1\nServer: %2\n"
+  return ServiceRoot::additionalTooltip() + QSL("\n") +
+         tr("Username: %1\nServer: %2\n"
             "Last error: %3\nLast login on: %4")
-    .arg(m_network->username(),
-         m_network->url(),
-         NetworkFactory::networkErrorText(m_network->lastError()),
-         m_network->lastLoginTime().isValid()
-           ? QLocale().toString(m_network->lastLoginTime(), QLocale::FormatType::ShortFormat)
-           : QSL("-"));
+           .arg(m_network->username(),
+                m_network->url(),
+                NetworkFactory::networkErrorText(m_network->lastError()),
+                m_network->lastLoginTime().isValid()
+                  ? QLocale().toString(m_network->lastLoginTime(), QLocale::FormatType::ShortFormat)
+                  : QSL("-"));
 }
 
 TtRssNetworkFactory* TtRssServiceRoot::network() const {

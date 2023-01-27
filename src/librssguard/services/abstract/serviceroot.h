@@ -62,6 +62,7 @@ class ServiceRoot : public RootItem {
     virtual bool supportsFeedAdding() const;
     virtual bool supportsCategoryAdding() const;
     virtual LabelOperation supportedLabelOperations() const;
+    virtual QString additionalTooltip() const;
     virtual void saveAccountDataToDatabase();
     virtual QVariantHash customDatabaseData() const;
     virtual void setCustomDatabaseData(const QVariantHash& data);

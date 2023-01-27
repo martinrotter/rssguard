@@ -294,6 +294,12 @@ ServiceRoot::LabelOperation ServiceRoot::supportedLabelOperations() const {
   return LabelOperation::Adding | LabelOperation::Editing | LabelOperation::Deleting;
 }
 
+QString ServiceRoot::additionalTooltip() const {
+  return tr("Number of feeds: %1\n"
+            "Number of categories: %2")
+    .arg(QString::number(getSubTreeFeeds().size()), QString::number(getSubTreeCategories().size()));
+}
+
 void ServiceRoot::saveAccountDataToDatabase() {
   QSqlDatabase database = qApp->database()->driver()->connection(metaObject()->className());
 

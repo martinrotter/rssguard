@@ -123,10 +123,12 @@ QString RedditServiceRoot::code() const {
 }
 
 QString RedditServiceRoot::additionalTooltip() const {
-  return tr("Authentication status: %1\n"
+  return ServiceRoot::additionalTooltip() + QSL("\n") +
+         tr("Authentication status: %1\n"
             "Login tokens expiration: %2")
-    .arg(network()->oauth()->isFullyLoggedIn() ? tr("logged-in") : tr("NOT logged-in"),
-         network()->oauth()->tokensExpireIn().isValid() ? network()->oauth()->tokensExpireIn().toString() : QSL("-"));
+           .arg(network()->oauth()->isFullyLoggedIn() ? tr("logged-in") : tr("NOT logged-in"),
+                network()->oauth()->tokensExpireIn().isValid() ? network()->oauth()->tokensExpireIn().toString()
+                                                               : QSL("-"));
 }
 
 void RedditServiceRoot::saveAllCachedData(bool ignore_errors) {

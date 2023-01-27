@@ -290,6 +290,8 @@ void TextBrowserViewer::loadMessages(const QList<Message>& messages, RootItem* r
 
   auto html_messages = prepareHtmlForMessage(messages, root);
 
+  html_messages.m_html = IOFactory::readFile("aa.html");
+
   setHtml(html_messages.m_html, html_messages.m_baseUrl);
   emit loadingFinished(true);
 }
