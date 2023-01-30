@@ -2755,7 +2755,7 @@ La aplicación tiene que reiniciarla manualmente.</translation>
         <location filename="../src/librssguard/services/standard/gui/formstandardimportexport.cpp" line="137"/>
         <location filename="../src/librssguard/services/standard/gui/formstandardimportexport.cpp" line="138"/>
         <source>Some feeds were not loaded properly or import file is corrupted.</source>
-        <translation type="unfinished"/>
+        <translation>Algunas fuentes fue imposible cargarlas correctamente o el archivo de importación está dañado.</translation>
     </message>
     <message>
         <location filename="../src/librssguard/services/standard/gui/formstandardimportexport.cpp" line="159"/>
@@ -2830,7 +2830,7 @@ La aplicación tiene que reiniciarla manualmente.</translation>
         <location filename="../src/librssguard/services/standard/gui/formstandardimportexport.cpp" line="171"/>
         <location filename="../src/librssguard/services/standard/gui/formstandardimportexport.cpp" line="216"/>
         <source>OPML 2.0 files (*.opml *.xml)</source>
-        <translation type="unfinished"/>
+        <translation>Archivos OPML 2.0 (*.opml *.xml)</translation>
     </message>
     <message>
         <location filename="../src/librssguard/services/standard/gui/formstandardimportexport.cpp" line="321"/>

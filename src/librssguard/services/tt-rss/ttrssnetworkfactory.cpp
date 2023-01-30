@@ -353,7 +353,9 @@ TtRssGetCompactHeadlinesResponse TtRssNetworkFactory::getCompactHeadlines(int fe
   if (result.isUnknownMethod()) {
     qCriticalNN << LOGSEC_TTRSS << "'getCompactHeadlines' method is not installed.";
 
-    throw FeedFetchException(Feed::Status::OtherError, QSL("'getCompactHeadlines' method is not installed."));
+    throw FeedFetchException(Feed::Status::OtherError,
+                             QSL("'getCompactHeadlines' method is not installed on your TT-RSS instance. Install "
+                                 "'api_newsplus' plugin."));
   }
   else if (result.isNotLoggedIn()) {
     // We are not logged in.
