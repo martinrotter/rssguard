@@ -47,6 +47,7 @@ FeedsImportExportModel::~FeedsImportExportModel() {
   if (m_watcherLookup.isRunning()) {
     m_watcherLookup.cancel();
     m_watcherLookup.waitForFinished();
+    qApp->processEvents();
   }
 
   if (sourceModel() != nullptr && sourceModel()->rootItem() != nullptr && m_mode == Mode::Import) {
@@ -373,6 +374,7 @@ void FeedsImportExportModel::importAsOPML20(const QByteArray& data,
 
   if (!fetch_metadata_online) {
     m_watcherLookup.waitForFinished();
+    qApp->processEvents();
   }
 }
 
@@ -437,6 +439,7 @@ void FeedsImportExportModel::importAsTxtURLPerLine(const QByteArray& data,
 
   if (!fetch_metadata_online) {
     m_watcherLookup.waitForFinished();
+    qApp->processEvents();
   }
 }
 
