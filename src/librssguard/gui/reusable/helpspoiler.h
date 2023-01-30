@@ -5,7 +5,7 @@
 
 #include <QWidget>
 
-class QLabel;
+class QTextEdit;
 class QGridLayout;
 class QToolButton;
 class QParallelAnimationGroup;
@@ -13,20 +13,20 @@ class QScrollArea;
 class PlainToolButton;
 
 class HelpSpoiler : public QWidget {
-  Q_OBJECT
+    Q_OBJECT
 
   public:
     explicit HelpSpoiler(QWidget* parent = nullptr);
 
-    void setHelpText(const QString& title, const QString& text, bool is_warning);
-    void setHelpText(const QString& text, bool is_warning);
+    void setHelpText(const QString& title, const QString& text, bool is_warning, bool force_html = false);
+    void setHelpText(const QString& text, bool is_warning, bool force_html = false);
 
   private:
     QToolButton* m_btnToggle;
     QScrollArea* m_content;
     QParallelAnimationGroup* m_animation;
     QGridLayout* m_layout;
-    QLabel* m_text;
+    QTextEdit* m_text;
     PlainToolButton* m_btnHelp;
 };
 

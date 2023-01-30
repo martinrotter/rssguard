@@ -12,12 +12,16 @@ TtRssAccountDetails::TtRssAccountDetails(QWidget* parent) : QWidget(parent) {
   m_ui.setupUi(this);
 
   m_ui.m_lblTestResult->label()->setWordWrap(true);
-  m_ui.m_lblNewAlgorithm->setHelpText(tr("If you select intelligent synchronization, then only not-yet-fetched "
-                                         "or updated articles are downloaded. Network usage is greatly reduced and "
-                                         "overall synchronization speed is greatly improved, but "
-                                         "first feed fetching could be slow anyway if your feed contains "
-                                         "huge number of articles."),
-                                      false);
+  m_ui.m_lblNewAlgorithm
+    ->setHelpText(tr("If you select intelligent synchronization, then only not-yet-fetched "
+                     "or updated articles are downloaded. Network usage is greatly reduced and "
+                     "overall synchronization speed is greatly improved, but "
+                     "first feed fetching could be slow anyway if your feed contains "
+                     "huge number of articles.<br/><br/>"
+                     "Also, make sure to install <a href=\"https://www.google.com\">api_newsplus</a> TT-RSS "
+                     "plugin to your server instance."),
+                  true,
+                  true);
   m_ui.m_lblServerSideUpdateInformation
     ->setHelpText(tr("Leaving this option on causes that updates "
                      "of feeds will be probably much slower and may time-out often."),

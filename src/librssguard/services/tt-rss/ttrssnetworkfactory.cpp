@@ -4,6 +4,7 @@
 
 #include "3rd-party/boolinq/boolinq.h"
 #include "definitions/definitions.h"
+#include "exceptions/feedfetchexception.h"
 #include "miscellaneous/application.h"
 #include "miscellaneous/iconfactory.h"
 #include "miscellaneous/textfactory.h"
@@ -23,9 +24,9 @@
 
 TtRssNetworkFactory::TtRssNetworkFactory()
   : m_bareUrl(QString()), m_fullUrl(QString()), m_username(QString()), m_password(QString()),
-    m_batchSize(TTRSS_DEFAULT_MESSAGES), m_forceServerSideUpdate(false), m_intelligentSynchronization(true),
+    m_batchSize(TTRSS_DEFAULT_MESSAGES), m_forceServerSideUpdate(false), m_intelligentSynchronization(false),
     m_authIsUsed(false), m_authUsername(QString()), m_authPassword(QString()), m_sessionId(QString()),
-    m_lastError(QNetworkReply::NoError) {}
+    m_lastError(QNetworkReply::NetworkError::NoError) {}
 
 QString TtRssNetworkFactory::url() const {
   return m_bareUrl;
@@ -143,7 +144,7 @@ TtRssResponse TtRssNetworkFactory::logout(const QNetworkProxy& proxy) {
 
     m_lastError = network_reply.m_networkError;
 
-    if (m_lastError == QNetworkReply::NoError) {
+    if (m_lastError == QNetworkReply::NetworkError::NoError) {
       m_sessionId.clear();
     }
     else {
@@ -349,7 +350,12 @@ TtRssGetCompactHeadlinesResponse TtRssNetworkFactory::getCompactHeadlines(int fe
                                             proxy);
   TtRssGetCompactHeadlinesResponse result(QString::fromUtf8(result_raw));
 
-  if (result.isNotLoggedIn()) {
+  if (result.isUnknownMethod()) {
+    qCriticalNN << LOGSEC_TTRSS << "'getCompactHeadlines' method is not installed.";
+
+    throw FeedFetchException(Feed::Status::OtherError, QSL("'getCompactHeadlines' method is not installed."));
+  }
+  else if (result.isNotLoggedIn()) {
     // We are not logged in.
     login(proxy);
     json[QSL("sid")] = m_sessionId;
@@ -373,6 +379,7 @@ TtRssGetCompactHeadlinesResponse TtRssNetworkFactory::getCompactHeadlines(int fe
   }
 
   m_lastError = network_reply.m_networkError;
+
   return result;
 }
 
@@ -815,6 +822,10 @@ int TtRssResponse::status() const {
 
 bool TtRssResponse::isNotLoggedIn() const {
   return status() == TTRSS_API_STATUS_ERR && hasError() && error() == QSL(TTRSS_NOT_LOGGED_IN);
+}
+
+bool TtRssResponse::isUnknownMethod() const {
+  return status() == TTRSS_API_STATUS_ERR && hasError() && error() == QSL(TTRSS_UNKNOWN_METHOD);
 }
 
 QString TtRssResponse::toString() const {

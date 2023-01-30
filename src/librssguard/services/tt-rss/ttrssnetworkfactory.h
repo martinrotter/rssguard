@@ -28,6 +28,7 @@ class TtRssResponse {
     QString error() const;
     bool hasError() const;
     bool isNotLoggedIn() const;
+    bool isUnknownMethod() const;
     QString toString() const;
 
   protected:
