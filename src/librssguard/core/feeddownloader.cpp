@@ -331,16 +331,28 @@ void FeedDownloader::updateOneFeed(ServiceRoot* acc,
         }
 
         // Process changed labels.
+        //
+        // NOTE: We do not need to to this for
+        // feeds which do not use online synchronised
+        // labels, because those synchronized feeds
+        // replace all labels later in the method.
+        // const bool uses_online_labels =
+        //  (feed->getParentServiceRoot()->supportedLabelOperations() & ServiceRoot::LabelOperation::Synchronised) ==
+        //  ServiceRoot::LabelOperation::Synchronised;
+
+        // if (!uses_online_labels) {
+
+        // NOTE: We only remember what labels were added/removed in filters
+        // and store the fact to server (of synchronized) and local DB later.
+        // This is mainly because articles might not even be in DB yet.
+        // So first insert articles, then update their label assignments etc.
         for (Label* lbl : qAsConst(msg_original.m_assignedLabels)) {
           if (!msg_tweaked_by_filter->m_assignedLabels.contains(lbl)) {
             QMutexLocker lck(&m_mutexDb);
 
             // Label is not there anymore, it was deassigned.
-            lbl->deassignFromMessage(*msg_tweaked_by_filter);
-
-            qDebugNN << LOGSEC_FEEDDOWNLOADER << "It was detected that label" << QUOTE_W_SPACE(lbl->customId())
-                     << "was DEASSIGNED from message" << QUOTE_W_SPACE(msg_tweaked_by_filter->m_customId)
-                     << "by message filter(s).";
+            msg_tweaked_by_filter->m_deassignedLabelsByFilter << lbl;
+            msg_tweaked_by_filter->m_assignedLabels << lbl;
           }
         }
 
@@ -350,13 +362,11 @@ void FeedDownloader::updateOneFeed(ServiceRoot* acc,
 
             // Label is in new message, but is not in old message, it
             // was newly assigned.
-            lbl->assignToMessage(*msg_tweaked_by_filter);
-
-            qDebugNN << LOGSEC_FEEDDOWNLOADER << "It was detected that label" << QUOTE_W_SPACE(lbl->customId())
-                     << "was ASSIGNED to message" << QUOTE_W_SPACE(msg_tweaked_by_filter->m_customId)
-                     << "by message filter(s).";
+            msg_tweaked_by_filter->m_assignedLabelsByFilter << lbl;
+            msg_tweaked_by_filter->m_assignedLabels << lbl;
           }
         }
+        //}
 
         if (remove_msg) {
           msgs.removeAt(i--);

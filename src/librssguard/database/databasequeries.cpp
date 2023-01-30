@@ -38,7 +38,7 @@ QMap<int, QString> DatabaseQueries::messageTableAttributes(bool only_msg_table) 
                                            "ELSE 'false' "
                                            "END AS has_enclosures");
   field_names[MSG_DB_LABELS] =
-    QSL("(SELECT GROUP_CONCAT(Labels.name) FROM Labels WHERE Labels.id IN (SELECT "
+    QSL("(SELECT GROUP_CONCAT(Labels.name) FROM Labels WHERE Labels.custom_id IN (SELECT "
         "LabelsInMessages.label FROM LabelsInMessages WHERE LabelsInMessages.account_id = "
         "Messages.account_id AND LabelsInMessages.message = Messages.custom_id)) as msg_labels");
 
@@ -1439,17 +1439,31 @@ QPair<int, int> DatabaseQueries::updateMessages(QSqlDatabase db,
     }
   }
 
-  // Update labels assigned to message.
+  const bool uses_online_labels =
+    (feed->getParentServiceRoot()->supportedLabelOperations() & ServiceRoot::LabelOperation::Synchronised) ==
+    ServiceRoot::LabelOperation::Synchronised;
+
   for (Message& message : messages) {
-    if (!message.m_assignedLabels.isEmpty()) {
-      if (!message.m_customId.isEmpty() || message.m_id > 0) {
-        QMutexLocker lck(db_mutex);
+    if (!message.m_customId.isEmpty() || message.m_id > 0) {
+      QMutexLocker lck(db_mutex);
+
+      if (uses_online_labels) {
+        // Store all labels obtained from server.
         setLabelsForMessage(db, message.m_assignedLabels, message);
       }
-      else {
-        qCriticalNN << LOGSEC_DB << "Cannot set labels for message" << QUOTE_W_SPACE(message.m_title)
-                    << "because we don't have ID or custom ID.";
+
+      // Adjust labels tweaked by filters.
+      for (Label* assigned_by_filter : message.m_assignedLabelsByFilter) {
+        assigned_by_filter->assignToMessage(message);
       }
+
+      for (Label* removed_by_filter : message.m_deassignedLabelsByFilter) {
+        removed_by_filter->deassignFromMessage(message);
+      }
+    }
+    else {
+      qCriticalNN << LOGSEC_DB << "Cannot set labels for message" << QUOTE_W_SPACE(message.m_title)
+                  << "because we don't have ID or custom ID.";
     }
   }
 

@@ -67,6 +67,8 @@ Message::Message() {
   m_score = 0.0;
   m_isRead = m_isImportant = m_isDeleted = false;
   m_assignedLabels = QList<Label*>();
+  m_assignedLabelsByFilter = QList<Label*>();
+  m_deassignedLabelsByFilter = QList<Label*>();
 }
 
 void Message::sanitize(const Feed* feed, bool fix_future_datetimes) {

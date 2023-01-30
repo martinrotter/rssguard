@@ -67,6 +67,9 @@ class RSSGUARD_DLLSPEC Message {
     // List of custom IDs of labels assigned to this message.
     QList<Label*> m_assignedLabels;
 
+    QList<Label*> m_assignedLabelsByFilter;
+    QList<Label*> m_deassignedLabelsByFilter;
+
     // Is true if "created" date was obtained directly
     // from the feed, otherwise is false
     bool m_createdFromFeed = false;
