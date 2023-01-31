@@ -370,9 +370,14 @@ void FeedsModel::onItemDataChanged(const QList<RootItem*>& items) {
 void FeedsModel::setupFonts() {
   QFont fon;
 
-  fon.fromString(qApp->settings()
-                   ->value(GROUP(Feeds), Feeds::ListFont, Application::font("FeedsView").toString())
-                   .toString());
+  if (qApp->settings()->value(GROUP(Feeds), SETTING(Feeds::CustomizeListFont)).toBool()) {
+    fon.fromString(qApp->settings()
+                     ->value(GROUP(Feeds), Feeds::ListFont, Application::font("FeedsView").toString())
+                     .toString());
+  }
+  else {
+    fon = Application::font("FeedsView");
+  }
 
   m_normalFont = fon;
 

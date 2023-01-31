@@ -58,6 +58,8 @@ SettingsFeedsMessages::SettingsFeedsMessages(Settings* settings, QWidget* parent
     }
   });
 
+  connect(m_ui->m_gbFeedListFont, &QGroupBox::toggled, this, &SettingsFeedsMessages::dirtifySettings);
+  connect(m_ui->m_gbArticleListFont, &QGroupBox::toggled, this, &SettingsFeedsMessages::dirtifySettings);
   connect(m_ui->m_cbListsRestrictedShortcuts, &QCheckBox::toggled, this, &SettingsFeedsMessages::dirtifySettings);
   connect(m_ui->m_cmbIgnoreContentsChanges, &QCheckBox::toggled, this, &SettingsFeedsMessages::dirtifySettings);
   connect(m_ui->m_cbHideCountsIfNoUnread, &QCheckBox::toggled, this, &SettingsFeedsMessages::dirtifySettings);
@@ -283,6 +285,8 @@ void SettingsFeedsMessages::loadSettings() {
                     ->value(GROUP(Messages), Messages::ListFont, Application::font("MessagesView").toString())
                     .toString());
   m_ui->m_lblMessageListFont->setFont(fon2);
+  m_ui->m_gbArticleListFont
+    ->setChecked(settings()->value(GROUP(Messages), SETTING(Messages::CustomizeListFont)).toBool());
 
   QFont fon3;
 
@@ -290,6 +294,7 @@ void SettingsFeedsMessages::loadSettings() {
   fon3
     .fromString(settings()->value(GROUP(Feeds), Feeds::ListFont, Application::font("FeedsView").toString()).toString());
   m_ui->m_lblFeedListFont->setFont(fon3);
+  m_ui->m_gbFeedListFont->setChecked(settings()->value(GROUP(Feeds), SETTING(Feeds::CustomizeListFont)).toBool());
 
   onEndLoadSettings();
 }
@@ -344,6 +349,9 @@ void SettingsFeedsMessages::saveSettings() {
   settings()->setValue(GROUP(Messages), Messages::PreviewerFontStandard, m_ui->m_lblMessagesFont->font().toString());
   settings()->setValue(GROUP(Messages), Messages::ListFont, m_ui->m_lblMessageListFont->font().toString());
   settings()->setValue(GROUP(Feeds), Feeds::ListFont, m_ui->m_lblFeedListFont->font().toString());
+
+  settings()->setValue(GROUP(Messages), Messages::CustomizeListFont, m_ui->m_gbArticleListFont->isChecked());
+  settings()->setValue(GROUP(Feeds), Feeds::CustomizeListFont, m_ui->m_gbFeedListFont->isChecked());
 
   qApp->mainForm()->tabWidget()->feedMessageViewer()->loadMessageViewerFonts();
 

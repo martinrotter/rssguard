@@ -113,6 +113,9 @@ DVALUE(bool) Feeds::AutoExpandOnSelectionDef = false;
 DKEY Feeds::OnlyBasicShortcutsInLists = "only_basic_shortcuts_in_lists";
 DVALUE(bool) Feeds::OnlyBasicShortcutsInListsDef = false;
 
+DKEY Feeds::CustomizeListFont = "customize_list_font";
+DVALUE(bool) Feeds::CustomizeListFontDef = false;
+
 DKEY Feeds::ListFont = "list_font";
 
 // Messages.
@@ -180,6 +183,9 @@ DVALUE(bool) Messages::ShowOnlyUnreadMessagesDef = false;
 
 DKEY Messages::PreviewerFontStandard = "previewer_font_standard";
 NON_CONST_DVALUE(QString) Messages::PreviewerFontStandardDef = QString();
+
+DKEY Messages::CustomizeListFont = "customize_list_font";
+DVALUE(bool) Messages::CustomizeListFontDef = false;
 
 DKEY Messages::ListFont = "list_font";
 

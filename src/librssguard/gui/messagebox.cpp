@@ -7,12 +7,13 @@
 
 #include <QCheckBox>
 #include <QDialogButtonBox>
-#include <QDialogButtonBox>
 #include <QPushButton>
 #include <QStyle>
 #include <QtGlobal>
 
-MsgBox::MsgBox(QWidget* parent) : QMessageBox(parent) {}
+MsgBox::MsgBox(QWidget* parent) : QMessageBox(parent) {
+  // setAttribute(Qt::WA_WindowPropagation, true);
+}
 
 void MsgBox::setIcon(QMessageBox::Icon icon) {
   // Determine correct status icon size.
@@ -54,16 +55,16 @@ QIcon MsgBox::iconForStatus(QMessageBox::Icon status) {
 }
 
 QMessageBox::StandardButton MsgBox::show(QWidget* parent,
-                                             QMessageBox::Icon icon,
-                                             const QString& title,
-                                             const QString& text,
-                                             const QString& informative_text,
-                                             const QString& detailed_text,
-                                             QMessageBox::StandardButtons buttons,
-                                             QMessageBox::StandardButton default_button,
-                                             bool* dont_show_again,
-                                             const QString& functor_heading,
-                                             const std::function<void()>& functor) {
+                                         QMessageBox::Icon icon,
+                                         const QString& title,
+                                         const QString& text,
+                                         const QString& informative_text,
+                                         const QString& detailed_text,
+                                         QMessageBox::StandardButtons buttons,
+                                         QMessageBox::StandardButton default_button,
+                                         bool* dont_show_again,
+                                         const QString& functor_heading,
+                                         const std::function<void()>& functor) {
   if (parent == nullptr) {
     parent = qApp->mainFormWidget();
   }

@@ -55,7 +55,7 @@ FormMain::FormMain(QWidget* parent, Qt::WindowFlags f)
   : QMainWindow(parent, f), m_ui(new Ui::FormMain), m_trayMenu(nullptr), m_statusBar(nullptr) {
   qDebugNN << LOGSEC_GUI
            << "Creating main application form in thread:" << QUOTE_W_SPACE_DOT(QThread::currentThreadId());
-
+  // setAttribute(Qt::WA_WindowPropagation, true);
   m_ui->setupUi(this);
   qApp->setMainForm(this);
 

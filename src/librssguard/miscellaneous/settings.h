@@ -110,6 +110,9 @@ namespace Feeds {
   KEY OnlyBasicShortcutsInLists;
   VALUE(bool) OnlyBasicShortcutsInListsDef;
 
+  KEY CustomizeListFont;
+  VALUE(bool) CustomizeListFontDef;
+
   KEY ListFont;
 } // namespace Feeds
 
@@ -179,6 +182,9 @@ namespace Messages {
 
   KEY PreviewerFontStandard;
   NON_CONST_VALUE(QString) PreviewerFontStandardDef;
+
+  KEY CustomizeListFont;
+  VALUE(bool) CustomizeListFontDef;
 
   KEY ListFont;
 } // namespace Messages

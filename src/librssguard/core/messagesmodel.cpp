@@ -120,9 +120,14 @@ bool MessagesModel::setData(const QModelIndex& index, const QVariant& value, int
 void MessagesModel::setupFonts() {
   QFont fon;
 
-  fon.fromString(qApp->settings()
-                   ->value(GROUP(Messages), Messages::ListFont, Application::font("MessagesView").toString())
-                   .toString());
+  if (qApp->settings()->value(GROUP(Messages), SETTING(Messages::CustomizeListFont)).toBool()) {
+    fon.fromString(qApp->settings()
+                     ->value(GROUP(Messages), Messages::ListFont, Application::font("MessagesView").toString())
+                     .toString());
+  }
+  else {
+    fon = Application::font("MessagesView");
+  }
 
   m_normalFont = fon;
   m_boldFont = m_normalFont;

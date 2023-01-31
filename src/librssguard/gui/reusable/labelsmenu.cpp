@@ -24,9 +24,11 @@ LabelsMenu::LabelsMenu(const QList<Message>& messages, const QList<Label*>& labe
   else {
     QSqlDatabase db = qApp->database()->driver()->connection(QSL("LabelsMenu"));
 
-    for (Label* label: boolinq::from(labels).orderBy([](const Label* label) {
-      return label->title().toLower();
-    }).toStdList()) {
+    for (Label* label : boolinq::from(labels)
+                          .orderBy([](const Label* label) {
+                            return label->title().toLower();
+                          })
+                          .toStdList()) {
 
       auto count = boolinq::from(messages).count([&db, label](const Message& msg) {
         return DatabaseQueries::isLabelAssignedToMessage(db, label, msg);

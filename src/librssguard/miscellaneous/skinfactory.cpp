@@ -77,6 +77,11 @@ void SkinFactory::loadSkinFromData(const Skin& skin) {
     }
   }
 
+  if (skin.m_defaultFont != QApplication::font()) {
+    QApplication::setFont(skin.m_defaultFont);
+    qDebugNN << "Activating custom application default font" << QUOTE_W_SPACE_DOT(skin.m_defaultFont.toString());
+  }
+
   if (env_forced_style.isEmpty() && cli_forced_style.isEmpty()) {
     m_styleIsFrozen = false;
 
@@ -276,6 +281,12 @@ Skin SkinFactory::skinInfo(const QString& skin_name, bool* ok) const {
       skin.m_version = skin_node.attributes().namedItem(QSL("version")).toAttr().value();
       skin.m_description = skin_node.namedItem(QSL("description")).toElement().text();
       skin.m_baseName = skin_name;
+
+      if (!skin_node.namedItem(QSL("default-font")).isNull()) {
+        skin.m_defaultFont =
+          QFont(skin_node.namedItem(QSL("default-font")).namedItem(QSL("family")).toElement().text(),
+                skin_node.namedItem(QSL("default-font")).namedItem(QSL("size")).toElement().text().toInt());
+      }
 
       // Obtain color palette.
       QHash<SkinEnums::PaletteColors, QColor> palette;
