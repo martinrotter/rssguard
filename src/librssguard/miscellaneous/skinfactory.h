@@ -49,6 +49,7 @@ class SkinEnums : public QObject {
 };
 
 struct RSSGUARD_DLLSPEC Skin {
+    QString m_skinFolder;
     QString m_baseName;
     QString m_visibleName;
     QString m_author;

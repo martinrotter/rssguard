@@ -10,6 +10,7 @@
 #include <QDir>
 #include <QDomDocument>
 #include <QDomElement>
+#include <QFontDatabase>
 #include <QMetaEnum>
 #include <QMetaObject>
 #include <QProcessEnvironment>
@@ -56,6 +57,25 @@ void SkinFactory::loadSkinFromData(const Skin& skin) {
   auto env = QProcessEnvironment::systemEnvironment();
   const QString env_forced_style = env.value(QSL("QT_STYLE_OVERRIDE"));
   const QString cli_forced_style = qApp->cmdParser()->value(QSL(CLI_STYLE_SHORT));
+
+  // Load fonts.
+  QDir dr_fonts(skin.m_skinFolder + QDir::separator() + QSL("fonts"));
+
+  if (dr_fonts.exists()) {
+    QStringList ttf_fonts =
+      dr_fonts.entryList({QSL("*.ttf"), QSL("*.otf")}, QDir::Filter::Files | QDir::Filter::Readable);
+
+    for (const QString& font_file : ttf_fonts) {
+      bool added = QFontDatabase::addApplicationFont(dr_fonts.absoluteFilePath(font_file)) >= 0;
+
+      if (added) {
+        qDebugNN << "Adding font" << QUOTE_W_SPACE(font_file) << "to font database.";
+      }
+      else {
+        qCriticalNN << "Font" << QUOTE_W_SPACE(font_file) << "could not be loaded.";
+      }
+    }
+  }
 
   if (env_forced_style.isEmpty() && cli_forced_style.isEmpty()) {
     m_styleIsFrozen = false;
@@ -222,7 +242,6 @@ Skin SkinFactory::skinInfo(const QString& skin_name, bool* ok) const {
 
       const QDomNode skin_node = document.namedItem(QSL("skin"));
       const QString base_skin_name = skin_node.toElement().attribute(QSL("base"));
-      ;
       QString real_base_skin_folder;
 
       if (!base_skin_name.isEmpty()) {
@@ -294,8 +313,6 @@ Skin SkinFactory::skinInfo(const QString& skin_name, bool* ok) const {
       QDomElement style_palette_root = skin_node.namedItem(QSL("style-palette")).toElement();
 
       if (!style_palette_root.isNull()) {
-        const QMetaObject& mop = QPalette::staticMetaObject;
-
         QMetaEnum enumerp = QMetaEnum::fromType<QPalette::ColorGroup>();
         QMetaEnum enumerx = QMetaEnum::fromType<QPalette::ColorRole>();
         QMetaEnum enumery = QMetaEnum::fromType<Qt::BrushStyle>();
@@ -359,6 +376,7 @@ Skin SkinFactory::skinInfo(const QString& skin_name, bool* ok) const {
         loadSkinFile(skin_folder_no_sep, QSL("html_enclosure_every.html"), real_base_skin_folder);
       skin.m_rawData = loadSkinFile(skin_folder_no_sep, QSL("qt_style.qss"), real_base_skin_folder);
       skin.m_adblocked = loadSkinFile(skin_folder_no_sep, QSL("html_adblocked.html"), real_base_skin_folder);
+      skin.m_skinFolder = skin_folder_no_sep;
 
       if (ok != nullptr) {
         *ok = !skin.m_author.isEmpty() && !skin.m_version.isEmpty() && !skin.m_baseName.isEmpty() &&
