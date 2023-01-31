@@ -62,8 +62,8 @@ void IconFactory::setupSearchPaths() {
   auto paths = QIcon::themeSearchPaths();
 
   paths << APP_THEME_PATH
-        << qApp->userDataFolder() + QDir::separator() + APP_LOCAL_THEME_FOLDER
-        << qApp->applicationDirPath() + QDir::separator() + APP_LOCAL_THEME_FOLDER;
+        << qApp->userDataFolder() + QDir::separator() + APP_LOCAL_ICON_THEME_FOLDER
+        << qApp->applicationDirPath() + QDir::separator() + APP_LOCAL_ICON_THEME_FOLDER;
 
   QIcon::setThemeSearchPaths(paths);
   qDebugNN << LOGSEC_GUI

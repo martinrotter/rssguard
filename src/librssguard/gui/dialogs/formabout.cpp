@@ -51,9 +51,10 @@ void FormAbout::loadSettingsAndPaths() {
   const QString user_data_path = QDir::toNativeSeparators(qApp->userDataFolder());
 
   m_ui.m_tbResources->setPlainText(QSL("User data folder (\"%5\") -> \"%1\"\n\n"
-                                       "Settings file (%3) -> \"%2\"\n\n"
-                                       "Skins base folder -> \"%4\"\n\n"
-                                       "Node.js package folder -> \"%6\"\n\n"
+                                       "Settings file (%3) -> \"%2\"\n"
+                                       "Skins base folder -> \"%4\"\n"
+                                       "Icon themes base folder -> \"%8\"\n"
+                                       "Node.js package folder -> \"%6\"\n"
                                        "QtWebEngine cache folder -> \"%7\"")
                                      .arg(user_data_path,
                                           QDir::toNativeSeparators(qApp->settings()->fileName())
@@ -66,11 +67,12 @@ void FormAbout::loadSettingsAndPaths() {
                                             .replace(user_data_path, QSL(USER_DATA_PLACEHOLDER)),
 #if defined(USE_WEBENGINE)
                                           QDir::toNativeSeparators(qApp->web()->engineProfile()->cachePath())
-                                            .replace(user_data_path, QSL(USER_DATA_PLACEHOLDER))
+                                            .replace(user_data_path, QSL(USER_DATA_PLACEHOLDER)),
 #else
-                                          QSL("-")
+                                          QSL("-"),
 #endif
-                                            ));
+                                          QSL(USER_DATA_PLACEHOLDER) + QDir::separator() +
+                                            QSL(APP_LOCAL_ICON_THEME_FOLDER)));
 }
 
 void FormAbout::loadLicenseAndInformation() {

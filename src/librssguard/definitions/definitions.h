@@ -243,7 +243,7 @@
 #define APP_THEME_DEFAULT "Breeze"
 #endif
 
-#define APP_LOCAL_THEME_FOLDER "icons"
+#define APP_LOCAL_ICON_THEME_FOLDER "icons"
 #define APP_NO_THEME ""
 
 // Indexes of columns as they are DEFINED IN THE TABLE for MESSAGES.
