@@ -179,17 +179,24 @@
            </widget>
           </item>
           <item row="1" column="1">
-           <widget class="QPlainTextEdit" name="m_txtScript">
-            <property name="sizePolicy">
-             <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
-              <horstretch>0</horstretch>
-              <verstretch>1</verstretch>
-             </sizepolicy>
-            </property>
-            <property name="placeholderText">
-             <string>Your JavaScript-based article filtering logic</string>
-            </property>
-           </widget>
+           <layout class="QVBoxLayout" name="verticalLayout_2">
+            <item>
+             <widget class="QPlainTextEdit" name="m_txtScript">
+              <property name="sizePolicy">
+               <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+                <horstretch>0</horstretch>
+                <verstretch>1</verstretch>
+               </sizepolicy>
+              </property>
+              <property name="placeholderText">
+               <string>Your JavaScript-based article filtering logic</string>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="SearchTextWidget" name="m_searchWidget" native="true"/>
+            </item>
+           </layout>
           </item>
           <item row="2" column="1">
            <layout class="QHBoxLayout" name="horizontalLayout_2">
@@ -445,6 +452,14 @@
    </item>
   </layout>
  </widget>
+ <customwidgets>
+  <customwidget>
+   <class>SearchTextWidget</class>
+   <extends>QWidget</extends>
+   <header>searchtextwidget.h</header>
+   <container>1</container>
+  </customwidget>
+ </customwidgets>
  <tabstops>
   <tabstop>m_listFilters</tabstop>
   <tabstop>m_btnAddNew</tabstop>

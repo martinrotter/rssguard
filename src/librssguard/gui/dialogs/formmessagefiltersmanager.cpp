@@ -99,6 +99,17 @@ FormMessageFiltersManager::FormMessageFiltersManager(FeedReader* reader,
           this,
           &FormMessageFiltersManager::showMessageContextMenu);
 
+  connect(m_ui.m_searchWidget, &SearchTextWidget::searchCancelled, this, [this]() {
+    m_ui.m_txtScript->find(QString());
+  });
+  connect(m_ui.m_searchWidget, &SearchTextWidget::searchForText, this, [this](const QString& text, bool backwards) {
+    m_ui.m_txtScript->find(text, backwards ? QTextDocument::FindFlag::FindBackward : QTextDocument::FindFlags());
+    m_ui.m_searchWidget->setFocus();
+  });
+
+  m_ui.m_txtScript->installEventFilter(this);
+  m_ui.m_searchWidget->hide();
+
   initializeTestingMessage();
   initializePremadeFilters();
   loadFilters();
@@ -117,6 +128,30 @@ MessageFilter* FormMessageFiltersManager::selectedFilter() const {
   else {
     return m_ui.m_listFilters->currentItem()->data(Qt::ItemDataRole::UserRole).value<MessageFilter*>();
   }
+}
+
+bool FormMessageFiltersManager::eventFilter(QObject* watched, QEvent* event) {
+  Q_UNUSED(watched)
+
+  if (event->type() == QEvent::KeyPress) {
+    QKeyEvent* key_event = static_cast<QKeyEvent*>(event);
+
+    // Find text.
+    if (key_event->matches(QKeySequence::StandardKey::Find)) {
+      m_ui.m_searchWidget->clear();
+      m_ui.m_searchWidget->show();
+      m_ui.m_searchWidget->setFocus();
+      return true;
+    }
+
+    // Hide visible search box.
+    if (key_event->key() == Qt::Key::Key_Escape && m_ui.m_searchWidget->isVisible()) {
+      m_ui.m_searchWidget->hide();
+      return true;
+    }
+  }
+
+  return false;
 }
 
 ServiceRoot* FormMessageFiltersManager::selectedAccount() const {

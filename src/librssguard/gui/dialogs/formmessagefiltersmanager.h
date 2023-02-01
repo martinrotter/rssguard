@@ -26,6 +26,9 @@ class FormMessageFiltersManager : public QDialog {
     MessageFilter* selectedFilter() const;
     ServiceRoot* selectedAccount() const;
 
+  protected:
+    virtual bool eventFilter(QObject* watched, QEvent* event);
+
   private slots:
     void filterMessagesLikeThis(const Message& msg);
     void showMessageContextMenu(QPoint pos);
