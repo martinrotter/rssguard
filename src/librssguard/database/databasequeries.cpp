@@ -1341,6 +1341,7 @@ QPair<int, int> DatabaseQueries::updateMessages(QSqlDatabase db,
           }
 
           updated_messages.second++;
+          message.m_insertedUpdated = true;
         }
         else if (query_update.lastError().isValid()) {
           qCriticalNN << LOGSEC_DB
@@ -1352,12 +1353,6 @@ QPair<int, int> DatabaseQueries::updateMessages(QSqlDatabase db,
     }
     else {
       msgs_to_insert.append(&message);
-
-      if (!message.m_isRead) {
-        updated_messages.first++;
-      }
-
-      updated_messages.second++;
     }
   }
 
@@ -1378,15 +1373,15 @@ QPair<int, int> DatabaseQueries::updateMessages(QSqlDatabase db,
           qCriticalNN << LOGSEC_DB << "Message" << QUOTE_W_SPACE(msg->m_customId)
                       << "will not be inserted to DB because it does not meet DB constraints.";
 
-          // Message is not inserted to DB at last,
-          // fix numbers.
-          if (!msg->m_isRead) {
-            updated_messages.first--;
-          }
-
-          updated_messages.second--;
           continue;
         }
+
+        if (!msg->m_isRead) {
+          updated_messages.first++;
+        }
+
+        updated_messages.second++;
+        msg->m_insertedUpdated = true;
 
         vals.append(QSL("\n(':feed', ':title', :is_read, :is_important, :is_deleted, "
                         "':url', ':author', :score, :date_created, ':contents', ':enclosures', "
@@ -1446,19 +1441,34 @@ QPair<int, int> DatabaseQueries::updateMessages(QSqlDatabase db,
   for (Message& message : messages) {
     if (!message.m_customId.isEmpty() || message.m_id > 0) {
       QMutexLocker lck(db_mutex);
+      bool lbls_changed = false;
 
       if (uses_online_labels) {
         // Store all labels obtained from server.
         setLabelsForMessage(db, message.m_assignedLabels, message);
+        lbls_changed = true;
       }
 
       // Adjust labels tweaked by filters.
       for (Label* assigned_by_filter : message.m_assignedLabelsByFilter) {
         assigned_by_filter->assignToMessage(message);
+        lbls_changed = true;
       }
 
       for (Label* removed_by_filter : message.m_deassignedLabelsByFilter) {
         removed_by_filter->deassignFromMessage(message);
+        lbls_changed = true;
+      }
+
+      if (lbls_changed && !message.m_insertedUpdated) {
+        // This article was not inserted/updated in DB because its contents did not change
+        // but its assigned labels were changed. Therefore we must count article
+        // as updated.
+        if (!message.m_isRead) {
+          updated_messages.first++;
+        }
+
+        updated_messages.second++;
       }
     }
     else {

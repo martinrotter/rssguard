@@ -103,9 +103,12 @@ bool MessageObject::isDuplicateWithAttribute(MessageObject::DuplicateCheck attri
 }
 
 bool MessageObject::assignLabel(const QString& label_custom_id) const {
+  // NOTE: This is now not needed as the underlying bug was fixed in DB layer.
+  /*
   if (m_message->m_id <= 0 && m_message->m_customId.isEmpty()) {
     return false;
   }
+  */
 
   Label* lbl = boolinq::from(m_availableLabels).firstOrDefault([label_custom_id](Label* lbl) {
     return lbl->customId() == label_custom_id;
@@ -124,9 +127,12 @@ bool MessageObject::assignLabel(const QString& label_custom_id) const {
 }
 
 bool MessageObject::deassignLabel(const QString& label_custom_id) const {
+  // NOTE: This is now not needed as the underlying bug was fixed in DB layer.
+  /*
   if (m_message->m_id <= 0 && m_message->m_customId.isEmpty()) {
     return false;
   }
+  */
 
   Label* lbl = boolinq::from(m_message->m_assignedLabels).firstOrDefault([label_custom_id](Label* lbl) {
     return lbl->customId() == label_custom_id;

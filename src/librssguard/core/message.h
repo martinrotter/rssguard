@@ -73,6 +73,9 @@ class RSSGUARD_DLLSPEC Message {
     // Is true if "created" date was obtained directly
     // from the feed, otherwise is false
     bool m_createdFromFeed = false;
+
+    // Notice if the article was actually inserted/updated into DB when feed was fetched.
+    bool m_insertedUpdated = false;
 };
 
 inline bool operator==(const Message& lhs, const Message& rhs) {

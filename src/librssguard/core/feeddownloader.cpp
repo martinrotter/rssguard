@@ -330,18 +330,6 @@ void FeedDownloader::updateOneFeed(ServiceRoot* acc,
           important_msgs << *msg_tweaked_by_filter;
         }
 
-        // Process changed labels.
-        //
-        // NOTE: We do not need to to this for
-        // feeds which do not use online synchronised
-        // labels, because those synchronized feeds
-        // replace all labels later in the method.
-        // const bool uses_online_labels =
-        //  (feed->getParentServiceRoot()->supportedLabelOperations() & ServiceRoot::LabelOperation::Synchronised) ==
-        //  ServiceRoot::LabelOperation::Synchronised;
-
-        // if (!uses_online_labels) {
-
         // NOTE: We only remember what labels were added/removed in filters
         // and store the fact to server (of synchronized) and local DB later.
         // This is mainly because articles might not even be in DB yet.
@@ -352,7 +340,6 @@ void FeedDownloader::updateOneFeed(ServiceRoot* acc,
 
             // Label is not there anymore, it was deassigned.
             msg_tweaked_by_filter->m_deassignedLabelsByFilter << lbl;
-            msg_tweaked_by_filter->m_assignedLabels << lbl;
           }
         }
 
@@ -363,10 +350,8 @@ void FeedDownloader::updateOneFeed(ServiceRoot* acc,
             // Label is in new message, but is not in old message, it
             // was newly assigned.
             msg_tweaked_by_filter->m_assignedLabelsByFilter << lbl;
-            msg_tweaked_by_filter->m_assignedLabels << lbl;
           }
         }
-        //}
 
         if (remove_msg) {
           msgs.removeAt(i--);
