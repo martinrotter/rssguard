@@ -15,17 +15,17 @@ class MessagesProxyModel : public QSortFilterProxyModel {
     // Enum which describes basic filtering schemes
     // for messages.
     enum class MessageListFilter {
-      NoFiltering = 100,
-      ShowUnread = 101,
-      ShowImportant = 102,
-      ShowToday = 103,
-      ShowYesterday = 104,
-      ShowLast24Hours = 105,
-      ShowLast48Hours = 106,
-      ShowThisWeek = 107,
-      ShowLastWeek = 108,
-      ShowOnlyWithAttachments = 109,
-      ShowOnlyWithScore = 110
+      NoFiltering = 1,
+      ShowUnread = 2,
+      ShowImportant = 4,
+      ShowToday = 8,
+      ShowYesterday = 16,
+      ShowLast24Hours = 32,
+      ShowLast48Hours = 64,
+      ShowThisWeek = 128,
+      ShowLastWeek = 256,
+      ShowOnlyWithAttachments = 512,
+      ShowOnlyWithScore = 1024
     };
 
     explicit MessagesProxyModel(MessagesModel* source_model, QObject* parent = nullptr);
@@ -51,10 +51,12 @@ class MessagesProxyModel : public QSortFilterProxyModel {
     virtual void sort(int column, Qt::SortOrder order = Qt::AscendingOrder);
 
   private:
+    void initializeFilters();
+
     QModelIndex getNextImportantItemIndex(int default_row, int max_row) const;
     QModelIndex getNextUnreadItemIndex(int default_row, int max_row) const;
 
-    bool filterAcceptsMessage(const Message& current_message) const;
+    bool filterAcceptsMessage(const Message& msg) const;
 
     virtual bool lessThan(const QModelIndex& left, const QModelIndex& right) const;
     virtual bool filterAcceptsRow(int source_row, const QModelIndex& source_parent) const;
@@ -62,6 +64,8 @@ class MessagesProxyModel : public QSortFilterProxyModel {
     // Source model pointer.
     MessagesModel* m_sourceModel;
     MessageListFilter m_filter;
+    QMap<MessageListFilter, std::function<bool(const Message&)>> m_filters;
+    QList<MessageListFilter> m_filterKeys;
 };
 
 Q_DECLARE_METATYPE(MessagesProxyModel::MessageListFilter)

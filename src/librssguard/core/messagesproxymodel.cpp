@@ -4,6 +4,7 @@
 
 #include "core/messagesmodel.h"
 #include "core/messagesmodelcache.h"
+#include "definitions/globals.h"
 #include "miscellaneous/application.h"
 #include "miscellaneous/regexfactory.h"
 #include "miscellaneous/settings.h"
@@ -13,6 +14,8 @@
 MessagesProxyModel::MessagesProxyModel(MessagesModel* source_model, QObject* parent)
   : QSortFilterProxyModel(parent), m_sourceModel(source_model), m_filter(MessageListFilter::NoFiltering) {
   setObjectName(QSL("MessagesProxyModel"));
+
+  initializeFilters();
 
   setSortRole(Qt::ItemDataRole::EditRole);
   setSortCaseSensitivity(Qt::CaseSensitivity::CaseInsensitive);
@@ -26,6 +29,82 @@ MessagesProxyModel::MessagesProxyModel(MessagesModel* source_model, QObject* par
 
 MessagesProxyModel::~MessagesProxyModel() {
   qDebugNN << LOGSEC_MESSAGEMODEL << "Destroying MessagesProxyModel instance.";
+}
+
+void MessagesProxyModel::initializeFilters() {
+  m_filters[MessageListFilter::ShowUnread] = [](const Message& msg) {
+    return !msg.m_isRead;
+  };
+
+  m_filters[MessageListFilter::ShowImportant] = [](const Message& msg) {
+    return msg.m_isImportant;
+  };
+
+  m_filters[MessageListFilter::ShowToday] = [](const Message& msg) {
+    const QDateTime current_dt = QDateTime::currentDateTime();
+    const QDate current_d = current_dt.date();
+
+    return current_d.startOfDay() <= msg.m_created && msg.m_created <= current_d.endOfDay();
+  };
+
+  m_filters[MessageListFilter::ShowYesterday] = [](const Message& msg) {
+    const QDateTime current_dt = QDateTime::currentDateTime();
+    const QDate current_d = current_dt.date();
+
+    return current_d.addDays(-1).startOfDay() <= msg.m_created && msg.m_created <= current_d.addDays(-1).endOfDay();
+  };
+
+  m_filters[MessageListFilter::ShowLast24Hours] = [](const Message& msg) {
+    const QDateTime current_dt = QDateTime::currentDateTime();
+
+    return current_dt.addSecs(-24 * 60 * 60) <= msg.m_created && msg.m_created <= current_dt;
+  };
+
+  m_filters[MessageListFilter::ShowLast48Hours] = [](const Message& msg) {
+    const QDateTime current_dt = QDateTime::currentDateTime();
+
+    return current_dt.addSecs(-48 * 60 * 60) <= msg.m_created && msg.m_created <= current_dt;
+  };
+
+  m_filters[MessageListFilter::ShowThisWeek] = [](const Message& msg) {
+    const QDateTime current_dt = QDateTime::currentDateTime();
+    const QDate current_d = current_dt.date();
+
+    return current_d.year() == msg.m_created.date().year() &&
+           current_d.weekNumber() == msg.m_created.date().weekNumber();
+  };
+
+  m_filters[MessageListFilter::ShowLastWeek] = [](const Message& msg) {
+    const QDateTime current_dt = QDateTime::currentDateTime();
+    const QDate current_d = current_dt.date();
+
+    return current_d.addDays(-7).year() == msg.m_created.date().year() &&
+           current_d.addDays(-7).weekNumber() == msg.m_created.date().weekNumber();
+  };
+
+  m_filters[MessageListFilter::ShowOnlyWithAttachments] = [](const Message& msg) {
+    return msg.m_enclosures.size() > 0;
+  };
+
+  m_filters[MessageListFilter::ShowOnlyWithScore] = [](const Message& msg) {
+    return msg.m_score > MSG_SCORE_MIN;
+  };
+
+  m_filterKeys = m_filters.keys();
+}
+
+bool MessagesProxyModel::filterAcceptsMessage(const Message& msg) const {
+  if (m_filter == MessageListFilter::NoFiltering) {
+    return true;
+  }
+
+  for (MessageListFilter val : m_filterKeys) {
+    if (Globals::hasFlag(m_filter, val) && m_filters[val](msg)) {
+      return true;
+    }
+  }
+
+  return false;
 }
 
 QModelIndex MessagesProxyModel::getNextPreviousImportantItemIndex(int default_row) {
@@ -95,76 +174,7 @@ bool MessagesProxyModel::lessThan(const QModelIndex& left, const QModelIndex& ri
   Q_UNUSED(left)
   Q_UNUSED(right)
 
-  // NOTE: Comparisons are done by SQL servers itself, not client-side.
-  return false;
-}
-
-bool MessagesProxyModel::filterAcceptsMessage(const Message& current_message) const {
-  switch (m_filter) {
-    case MessageListFilter::NoFiltering:
-      return true;
-
-    case MessageListFilter::ShowUnread:
-      return !current_message.m_isRead;
-
-    case MessageListFilter::ShowImportant:
-      return current_message.m_isImportant;
-
-    case MessageListFilter::ShowToday: {
-      const QDateTime currentDateTime = QDateTime::currentDateTime();
-      const QDate currentDate = currentDateTime.date();
-
-      return currentDate.startOfDay() <= current_message.m_created &&
-             current_message.m_created <= currentDate.endOfDay();
-    }
-
-    case MessageListFilter::ShowYesterday: {
-      const QDateTime currentDateTime = QDateTime::currentDateTime();
-      const QDate currentDate = currentDateTime.date();
-
-      return currentDate.addDays(-1).startOfDay() <= current_message.m_created &&
-             current_message.m_created <= currentDate.addDays(-1).endOfDay();
-    }
-
-    case MessageListFilter::ShowLast24Hours: {
-      const QDateTime currentDateTime = QDateTime::currentDateTime();
-
-      return currentDateTime.addSecs(-24 * 60 * 60) <= current_message.m_created &&
-             current_message.m_created <= currentDateTime;
-    }
-
-    case MessageListFilter::ShowLast48Hours: {
-      const QDateTime currentDateTime = QDateTime::currentDateTime();
-
-      return currentDateTime.addSecs(-48 * 60 * 60) <= current_message.m_created &&
-             current_message.m_created <= currentDateTime;
-    }
-
-    case MessageListFilter::ShowThisWeek: {
-      const QDateTime currentDateTime = QDateTime::currentDateTime();
-      const QDate currentDate = currentDateTime.date();
-
-      return currentDate.year() == current_message.m_created.date().year() &&
-             currentDate.weekNumber() == current_message.m_created.date().weekNumber();
-    }
-
-    case MessageListFilter::ShowLastWeek: {
-      const QDateTime currentDateTime = QDateTime::currentDateTime();
-      const QDate currentDate = currentDateTime.date();
-
-      return currentDate.addDays(-7).year() == current_message.m_created.date().year() &&
-             currentDate.addDays(-7).weekNumber() == current_message.m_created.date().weekNumber();
-    }
-
-    case MessageListFilter::ShowOnlyWithAttachments: {
-      return current_message.m_enclosures.size() > 0;
-    }
-
-    case MessageListFilter::ShowOnlyWithScore: {
-      return current_message.m_score > MSG_SCORE_MIN;
-    }
-  }
-
+  // NOTE: Comparisons are done by SQL server itself, not client-side.
   return false;
 }
 

@@ -2,6 +2,7 @@
 
 #include "gui/toolbars/messagestoolbar.h"
 
+#include "3rd-party/boolinq/boolinq.h"
 #include "definitions/definitions.h"
 #include "gui/reusable/baselineedit.h"
 #include "miscellaneous/iconfactory.h"
@@ -107,16 +108,46 @@ void MessagesToolBar::loadSpecificActions(const QList<QAction*>& actions, bool i
 
 void MessagesToolBar::handleMessageHighlighterChange(QAction* action) {
   m_btnMessageHighlighter->setDefaultAction(action);
-  saveToolButtonSelection(HIGHLIGHTER_ACTION_NAME, action);
+  saveToolButtonSelection(HIGHLIGHTER_ACTION_NAME, {action});
 
   emit messageHighlighterChanged(action->data().value<MessagesModel::MessageHighlighter>());
 }
 
-void MessagesToolBar::handleMessageFilterChange(QAction* action) {
-  m_btnMessageFilter->setDefaultAction(action);
-  saveToolButtonSelection(FILTER_ACTION_NAME, action);
+inline MessagesProxyModel::MessageListFilter operator|(MessagesProxyModel::MessageListFilter a,
+                                                       MessagesProxyModel::MessageListFilter b) {
+  return static_cast<MessagesProxyModel::MessageListFilter>(static_cast<int>(a) | static_cast<int>(b));
+}
 
-  emit messageFilterChanged(action->data().value<MessagesProxyModel::MessageListFilter>());
+void MessagesToolBar::handleMessageFilterChange(QAction* action) {
+  MessagesProxyModel::MessageListFilter task = action->data().value<MessagesProxyModel::MessageListFilter>();
+
+  m_btnMessageFilter->setDefaultAction(action);
+
+  auto checked_tasks_std = boolinq::from(m_menuMessageFilter->actions())
+                             .where([](QAction* act) {
+                               return act->isChecked();
+                             })
+                             .toStdList();
+
+  if (task == MessagesProxyModel::MessageListFilter::NoFiltering) {
+    // Uncheck everything.
+    m_menuMessageFilter->blockSignals(true);
+
+    for (QAction* tsk : checked_tasks_std) {
+      tsk->setChecked(false);
+    }
+
+    m_menuMessageFilter->blockSignals(false);
+  }
+  else {
+    for (QAction* tsk : checked_tasks_std) {
+      task = task | tsk->data().value<MessagesProxyModel::MessageListFilter>();
+    }
+  }
+
+  saveToolButtonSelection(FILTER_ACTION_NAME, FROM_STD_LIST(QList<QAction*>, checked_tasks_std));
+
+  emit messageFilterChanged(task);
 }
 
 void MessagesToolBar::initializeSearchBox() {
@@ -148,6 +179,7 @@ void MessagesToolBar::addActionToMenu(QMenu* menu,
                                       const QString& name) {
   QAction* action = menu->addAction(icon, title);
 
+  action->setCheckable(true);
   action->setData(value);
   action->setObjectName(name);
 }
@@ -254,13 +286,19 @@ void MessagesToolBar::initializeHighlighter() {
   connect(m_menuMessageFilter, &QMenu::triggered, this, &MessagesToolBar::handleMessageFilterChange);
 }
 
-void MessagesToolBar::saveToolButtonSelection(const QString& button_name, const QAction* action) const {
+void MessagesToolBar::saveToolButtonSelection(const QString& button_name, const QList<QAction*>& actions) const {
   QStringList action_names = savedActions();
+
+  auto opts_list = boolinq::from(actions)
+                     .select([](const QAction* act) {
+                       return act->objectName();
+                     })
+                     .toStdList();
+  QStringList opts = FROM_STD_LIST(QStringList, opts_list);
 
   for (QString& action_name : action_names) {
     if (action_name.startsWith(button_name)) {
-      action_name =
-        button_name + (action->objectName().isEmpty() ? "" : "[" + action->objectName().toStdString() + "]").c_str();
+      action_name = button_name + QSL("[%1]").arg(opts.join(QL1C(';')));
     }
   }
 
@@ -272,14 +310,13 @@ void MessagesToolBar::activateAction(const QString& action_name, QWidgetAction* 
   const int end = action_name.indexOf(']');
 
   if (start != -1 && end != -1 && end == action_name.length() - 1) {
-    const QString menu_action_name = action_name.chopped(1).right(end - start - 1);
-    auto toolButton = qobject_cast<QToolButton*>(widget_action->defaultWidget());
+    const QStringList menu_action_names = action_name.chopped(1).right(end - start - 1).split(QL1C(';'));
+    auto tool_btn = qobject_cast<QToolButton*>(widget_action->defaultWidget());
 
-    for (QAction* action : toolButton->menu()->actions()) {
-      if (action->objectName() == menu_action_name) {
-        toolButton->setDefaultAction(action);
+    for (QAction* action : tool_btn->menu()->actions()) {
+      if (menu_action_names.contains(action->objectName())) {
+        // tool_btn->setDefaultAction(action);
         action->trigger();
-        break;
       }
     }
   }

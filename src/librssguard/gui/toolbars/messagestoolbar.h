@@ -43,7 +43,7 @@ class MessagesToolBar : public BaseToolBar {
     void addActionToMenu(QMenu* menu, const QIcon& icon, const QString& title, const QVariant& value, const QString& name);
     void initializeHighlighter();
     void activateAction(const QString& action_name, QWidgetAction* widget_action);
-    void saveToolButtonSelection(const QString& button_name, const QAction* action) const;
+    void saveToolButtonSelection(const QString& button_name, const QList<QAction *> &actions) const;
 
   private:
     QWidgetAction* m_actionMessageHighlighter;

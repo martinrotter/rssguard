@@ -37,6 +37,8 @@ set(SOURCES
   database/sqlitedriver.h
   definitions/definitions.h
   definitions/typedefs.h
+  definitions/globals.cpp
+  definitions/globals.h
   dynamic-shortcuts/dynamicshortcuts.cpp
   dynamic-shortcuts/dynamicshortcuts.h
   dynamic-shortcuts/dynamicshortcutswidget.cpp
