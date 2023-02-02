@@ -410,6 +410,9 @@ DKEY Notifications::ID = "notifications";
 // Web browser.
 DKEY Browser::ID = "browser";
 
+DKEY Browser::DisableCache = "disable_cache";
+DVALUE(bool) Browser::DisableCacheDef = false;
+
 DKEY Browser::WebEngineChromiumFlags = "webengine_chromium_flags";
 
 #if defined(Q_OS_LINUX) && !defined(IS_FLATPAK_BUILD)

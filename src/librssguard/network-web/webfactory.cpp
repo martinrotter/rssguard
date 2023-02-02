@@ -32,7 +32,15 @@ WebFactory::WebFactory(QObject* parent) : QObject(parent), m_customUserAgent(QSt
   m_adBlock = new AdBlockManager(this);
 
 #if defined(USE_WEBENGINE)
-  m_engineProfile = new QWebEngineProfile(QSL(APP_LOW_NAME), this);
+  if (qApp->settings()->value(GROUP(Browser), SETTING(Browser::DisableCache)).toBool()) {
+    qWarningNN << LOGSEC_NETWORK << "Using off-the-record WebEngine profile.";
+
+    m_engineProfile = new QWebEngineProfile(this);
+  }
+  else {
+    m_engineProfile = new QWebEngineProfile(QSL(APP_LOW_NAME), this);
+  }
+
   m_engineSettings = nullptr;
   m_urlInterceptor = new NetworkUrlInterceptor(this);
 #endif

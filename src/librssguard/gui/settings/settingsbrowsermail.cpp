@@ -84,6 +84,8 @@ SettingsBrowserMail::SettingsBrowserMail(Settings* settings, QWidget* parent)
   // Remove WebEngine tab.
   m_ui->m_tabBrowserProxy->removeTab(2);
 #else
+  connect(m_ui->m_cbDisableCache, &QCheckBox::stateChanged, this, &SettingsBrowserMail::dirtifySettings);
+  connect(m_ui->m_cbDisableCache, &QCheckBox::stateChanged, this, &SettingsBrowserMail::requireRestart);
   connect(m_ui->m_txtWebEngineChromiumFlags, &QPlainTextEdit::textChanged, this, &SettingsBrowserMail::dirtifySettings);
   connect(m_ui->m_txtWebEngineChromiumFlags, &QPlainTextEdit::textChanged, this, &SettingsBrowserMail::requireRestart);
 #endif
@@ -164,6 +166,7 @@ void SettingsBrowserMail::selectEmailExecutable() {
 void SettingsBrowserMail::loadSettings() {
   onBeginLoadSettings();
 
+  m_ui->m_cbDisableCache->setChecked(settings()->value(GROUP(Browser), SETTING(Browser::DisableCache)).toBool());
   m_ui->m_cbEnableHttp2->setChecked(settings()->value(GROUP(Network), SETTING(Network::EnableHttp2)).toBool());
   m_ui->m_cbIgnoreAllCookies
     ->setChecked(settings()->value(GROUP(Network), SETTING(Network::IgnoreAllCookies)).toBool());
@@ -209,6 +212,7 @@ void SettingsBrowserMail::loadSettings() {
 void SettingsBrowserMail::saveSettings() {
   onBeginSaveSettings();
 
+  settings()->setValue(GROUP(Browser), Browser::DisableCache, m_ui->m_cbDisableCache->isChecked());
   settings()->setValue(GROUP(Network), Network::EnableHttp2, m_ui->m_cbEnableHttp2->isChecked());
   settings()->setValue(GROUP(Network), Network::IgnoreAllCookies, m_ui->m_cbIgnoreAllCookies->isChecked());
 

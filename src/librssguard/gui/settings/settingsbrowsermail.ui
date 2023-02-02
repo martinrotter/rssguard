@@ -13,9 +13,6 @@
   <layout class="QHBoxLayout" name="horizontalLayout">
    <item>
     <widget class="QTabWidget" name="m_tabBrowserProxy">
-     <property name="currentIndex">
-      <number>0</number>
-     </property>
      <widget class="QWidget" name="m_tabNetwork">
       <attribute name="title">
        <string>Network</string>
@@ -42,15 +39,22 @@
        <string>WebEngine</string>
       </attribute>
       <layout class="QFormLayout" name="formLayout_4">
-       <item row="0" column="0">
+       <item row="1" column="0">
         <widget class="QLabel" name="label">
          <property name="text">
           <string>Custom &quot;QTWEBENGINE_CHROMIUM_FLAGS&quot; flags</string>
          </property>
         </widget>
        </item>
-       <item row="1" column="0" colspan="2">
+       <item row="2" column="0" colspan="2">
         <widget class="QPlainTextEdit" name="m_txtWebEngineChromiumFlags"/>
+       </item>
+       <item row="0" column="0" colspan="2">
+        <widget class="QCheckBox" name="m_cbDisableCache">
+         <property name="text">
+          <string>Disable cache</string>
+         </property>
+        </widget>
        </item>
       </layout>
      </widget>
@@ -409,6 +413,8 @@
   <tabstop>m_btnDeleteTool</tabstop>
   <tabstop>m_cbIgnoreAllCookies</tabstop>
   <tabstop>m_cbEnableHttp2</tabstop>
+  <tabstop>m_cbDisableCache</tabstop>
+  <tabstop>m_txtWebEngineChromiumFlags</tabstop>
  </tabstops>
  <resources/>
  <connections/>
