@@ -1,6 +1,11 @@
 /* Qt stylesheet. */
 
-QTextEdit {
+QApplication, QWidget {
+  font: 9pt 'Pacifico';
+}
+
+QTextEdit, QLineEdit {
+  font: 9pt 'Pacifico';
   selection-background-color: #4861f0;
 }
 

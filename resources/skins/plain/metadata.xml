@@ -3,6 +3,10 @@
   <author>
     <name>Martin Rotter</name>
   </author>
+  <default-font>
+    <family>Pacifico</family>
+    <size>9</size> <!-- in points -->
+  </default-font>
   <palette>
     <!--
       Keys are defined in file
