@@ -127,67 +127,67 @@ Error: %1</source>
 <context>
     <name>Application</name>
     <message>
-        <location filename="../src/librssguard/miscellaneous/application.cpp" line="998"/>
+        <location filename="../src/librssguard/miscellaneous/application.cpp" line="1020"/>
         <source>Application is already running.</source>
         <translation>Приложение уже запущено</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/miscellaneous/application.cpp" line="528"/>
+        <location filename="../src/librssguard/miscellaneous/application.cpp" line="534"/>
         <source>Output directory is not writable.</source>
         <translation>Выходной каталог не доступен для записи</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/miscellaneous/application.cpp" line="536"/>
+        <location filename="../src/librssguard/miscellaneous/application.cpp" line="542"/>
         <source>Settings file not copied to output directory successfully.</source>
         <translation>Файл настроек не скопирован в выходной каталог.</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/miscellaneous/application.cpp" line="553"/>
+        <location filename="../src/librssguard/miscellaneous/application.cpp" line="559"/>
         <source>Database restoration was not initiated. Make sure that output directory is writable.</source>
         <translation>Восстановление базы данных не было начато. Убедитесь, что выходной каталог доступен для записи.</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/miscellaneous/application.cpp" line="560"/>
+        <location filename="../src/librssguard/miscellaneous/application.cpp" line="566"/>
         <source>Settings restoration was not initiated. Make sure that output directory is writable.</source>
         <translation>Восстановление настроек не было начато. Убедитесь, что выходной каталог доступен для записи.</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/miscellaneous/application.cpp" line="1016"/>
+        <location filename="../src/librssguard/miscellaneous/application.cpp" line="1038"/>
         <source>Cannot add feed</source>
         <translation>Невозможно добавить канал</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/miscellaneous/application.cpp" line="1017"/>
+        <location filename="../src/librssguard/miscellaneous/application.cpp" line="1039"/>
         <source>Feed cannot be added because there is no active account which can add feeds.</source>
         <translation>Канал не может быть добавлен, потому что нет активной учетной записи, которая может добавлять каналы.</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/miscellaneous/application.cpp" line="1169"/>
+        <location filename="../src/librssguard/miscellaneous/application.cpp" line="1196"/>
         <source>Packages %1 were updated.</source>
         <translation>Пакеты %1 обновлены.</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/miscellaneous/application.cpp" line="917"/>
+        <location filename="../src/librssguard/miscellaneous/application.cpp" line="923"/>
         <source>Unread articles fetched</source>
         <translation>Загружены непрочитанные статьи</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/miscellaneous/application.cpp" line="312"/>
+        <location filename="../src/librssguard/miscellaneous/application.cpp" line="314"/>
         <source>Go to changelog</source>
         <translation>К списку изменений</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/miscellaneous/application.cpp" line="947"/>
+        <location filename="../src/librssguard/miscellaneous/application.cpp" line="969"/>
         <source>AdBlock needs to be configured</source>
         <translation>Блокировщик рекламы (AdBlock) должен быть настроен</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/miscellaneous/application.cpp" line="306"/>
+        <location filename="../src/librssguard/miscellaneous/application.cpp" line="308"/>
         <source>Welcome</source>
         <translation>Добро пожаловать</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/miscellaneous/application.cpp" line="307"/>
+        <location filename="../src/librssguard/miscellaneous/application.cpp" line="309"/>
         <source>Welcome to %1.
 
 Please, check NEW stuff included in this
@@ -198,17 +198,17 @@ version by clicking this popup notification.</source>
 версию, щелкнув на это всплывающее уведомление.</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/miscellaneous/application.cpp" line="948"/>
+        <location filename="../src/librssguard/miscellaneous/application.cpp" line="970"/>
         <source>AdBlock is not configured properly. Go to &quot;Settings&quot; -&gt; &quot;Node.js&quot; and check if your Node.js is properly configured.</source>
         <translation>AdBlock настроен неправильно. Перейдите в «Настройки» -&gt; «Node.js» и проверьте, правильно ли настроен ваш Node.js.</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/miscellaneous/application.cpp" line="997"/>
+        <location filename="../src/librssguard/miscellaneous/application.cpp" line="1019"/>
         <source>Already running</source>
         <translation>Уже выполняется</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/miscellaneous/application.cpp" line="1160"/>
+        <location filename="../src/librssguard/miscellaneous/application.cpp" line="1187"/>
         <source>Packages %1 were NOT updated because of error: %2.</source>
         <translation>Пакеты %1 НЕ были обновлены из-за ошибки: %2.</translation>
     </message>
@@ -631,27 +631,27 @@ Click here to open parent directory.</source>
 <context>
     <name>Feed</name>
     <message>
-        <location filename="../src/librssguard/services/abstract/feed.cpp" line="246"/>
+        <location filename="../src/librssguard/services/abstract/feed.cpp" line="242"/>
         <source>uses global settings, but global auto-fetching of articles is disabled</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../src/librssguard/services/abstract/feed.cpp" line="268"/>
+        <location filename="../src/librssguard/services/abstract/feed.cpp" line="264"/>
         <source>no errors</source>
         <translation>нет ошибок</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/services/abstract/feed.cpp" line="274"/>
+        <location filename="../src/librssguard/services/abstract/feed.cpp" line="270"/>
         <source>authentication error</source>
         <translation>ошибка аутентификации</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/services/abstract/feed.cpp" line="277"/>
+        <location filename="../src/librssguard/services/abstract/feed.cpp" line="273"/>
         <source>network error</source>
         <translation>ошибка сети</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/services/abstract/feed.cpp" line="338"/>
+        <location filename="../src/librssguard/services/abstract/feed.cpp" line="334"/>
         <source>Auto-update status: %1
 Active message filters: %2
 Status: %3</source>
@@ -660,34 +660,34 @@ Status: %3</source>
 Статус: %3</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/services/abstract/feed.cpp" line="232"/>
+        <location filename="../src/librssguard/services/abstract/feed.cpp" line="228"/>
         <source>does not use auto-fetching of articles</source>
         <extracomment>Describes feed auto-update status.</extracomment>
         <translation>не использует автозагрузку статей</translation>
     </message>
     <message numerus="yes">
-        <location filename="../src/librssguard/services/abstract/feed.cpp" line="243"/>
+        <location filename="../src/librssguard/services/abstract/feed.cpp" line="239"/>
         <source>uses global settings (%n minute(s) to next auto-fetch of articles)</source>
         <translation><numerusform>использует глобальные настройки (%n минут(а) до следующего автоматического получения статей)</numerusform><numerusform>использует глобальные настройки (%n минут(а) до следующего автоматического получения статей)</numerusform><numerusform>использует глобальные настройки (%n минут(а) до следующего автоматического получения статей)</numerusform><numerusform>использует глобальные настройки (%n минут(а) до следующего автоматического получения статей)</numerusform></translation>
     </message>
     <message numerus="yes">
-        <location filename="../src/librssguard/services/abstract/feed.cpp" line="256"/>
+        <location filename="../src/librssguard/services/abstract/feed.cpp" line="252"/>
         <source>uses specific settings (%n minute(s) to next auto-fetching of new articles)</source>
         <extracomment>Describes feed auto-update status.</extracomment>
         <translation><numerusform>использует определенные настройки (%n минут(а) до следующего автоматического обновления новых статей)</numerusform><numerusform>использует определенные настройки (%n минут(а) до следующего автоматического обновления новых статей)</numerusform><numerusform>использует определенные настройки (%n минут(а) до следующего автоматического обновления новых статей)</numerusform><numerusform>использует определенные настройки (%n минут(а) до следующего автоматического обновления новых статей)</numerusform></translation>
     </message>
     <message>
-        <location filename="../src/librssguard/services/abstract/feed.cpp" line="271"/>
+        <location filename="../src/librssguard/services/abstract/feed.cpp" line="267"/>
         <source>has new articles</source>
         <translation>есть новые статьи</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/services/abstract/feed.cpp" line="280"/>
+        <location filename="../src/librssguard/services/abstract/feed.cpp" line="276"/>
         <source>parsing error</source>
         <translation>ошибка разбора (парсинга)</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/services/abstract/feed.cpp" line="283"/>
+        <location filename="../src/librssguard/services/abstract/feed.cpp" line="279"/>
         <source>error</source>
         <translation>ошибка</translation>
     </message>
@@ -900,7 +900,7 @@ Status: %3</source>
 <context>
     <name>FeedsImportExportModel</name>
     <message>
-        <location filename="../src/librssguard/services/standard/standardfeedsimportexportmodel.cpp" line="338"/>
+        <location filename="../src/librssguard/services/standard/standardfeedsimportexportmodel.cpp" line="339"/>
         <source>Category </source>
         <translation>Категория</translation>
     </message>
@@ -1075,7 +1075,7 @@ or this functionality is not implemented yet.</source>
 <context>
     <name>FormAbout</name>
     <message>
-        <location filename="../src/librssguard/gui/dialogs/formabout.cpp" line="100"/>
+        <location filename="../src/librssguard/gui/dialogs/formabout.cpp" line="102"/>
         <source>Changelog not found.</source>
         <translation>Список изменений не найден.</translation>
     </message>
@@ -1090,12 +1090,12 @@ or this functionality is not implemented yet.</source>
         <translation>ПОЛНОСТЬЮ портативный</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/gui/dialogs/formabout.cpp" line="120"/>
+        <location filename="../src/librssguard/gui/dialogs/formabout.cpp" line="122"/>
         <source>&lt;body&gt;%5 is a (very) tiny feed reader.&lt;br&gt;&lt;br&gt;This software is distributed under the terms of GNU General Public License, version 3.&lt;br&gt;&lt;br&gt;Contacts:&lt;ul&gt;&lt;li&gt;&lt;a href=&quot;mailto://%1&quot;&gt;%1&lt;/a&gt; ~e-mail&lt;/li&gt;&lt;li&gt;&lt;a href=&quot;%2&quot;&gt;%2&lt;/a&gt; ~website&lt;/li&gt;&lt;/ul&gt;You can obtain source code for %5 from its website.&lt;br&gt;&lt;br&gt;&lt;br&gt;Copyright (C) 2011-%3 %4&lt;/body&gt;</source>
         <translation>&lt;body&gt;%5 это (очень) крохотное ПО для чтения rss каналов.&lt;br&gt;&lt;br&gt;Это ПО распространяется на условиях GNU General Public License, версия 3.&lt;br&gt;&lt;br&gt;Контакты:&lt;ul&gt;&lt;li&gt;&lt;a href=&quot;mailto://%1&quot;&gt;%1 &lt;/a&gt;~E-Mail&lt;/li&gt;&lt;li&gt;&lt;a href=&quot;%2&quot;&gt;%2 ~сайт&lt;/li&gt;&lt;/ul&gt;Вы можете получить исходный код %5 на сайте.&lt;br&gt;&lt;br&gt;&lt;br&gt;Авторское право (C) 2011-%3 %4&lt;/body&gt;</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/gui/dialogs/formabout.cpp" line="104"/>
+        <location filename="../src/librssguard/gui/dialogs/formabout.cpp" line="106"/>
         <source>&lt;b&gt;%8&lt;/b&gt;&lt;br&gt;&lt;b&gt;Version:&lt;/b&gt; %1 (built on %2/%3)&lt;br&gt;&lt;b&gt;Revision:&lt;/b&gt; %4&lt;br&gt;&lt;b&gt;Build date:&lt;/b&gt; %5&lt;br&gt;&lt;b&gt;Qt:&lt;/b&gt; %6 (compiled against %7)&lt;br&gt;</source>
         <translation>&lt;b&gt;%8&lt;/b&gt;&lt;br&gt;&lt;b&gt;Версия:&lt;/b&gt; %1 (сборка для %2/%3)&lt;br&gt;&lt;b&gt;Ревизия: %4&lt;br&gt;&lt;b&gt;Дата сборки:&lt;/b&gt; %5&lt;br&gt;&lt;b&gt;Qt:&lt;/b&gt; %6 (скомпилировано %7)&lt;br&gt;</translation>
     </message>
@@ -1704,12 +1704,12 @@ or this functionality is not implemented yet.</source>
 <context>
     <name>FormMain</name>
     <message>
-        <location filename="../src/librssguard/gui/dialogs/formmain.cpp" line="398"/>
+        <location filename="../src/librssguard/gui/dialogs/formmain.cpp" line="405"/>
         <source>No possible actions</source>
         <translation>Нет возможных действий</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/gui/dialogs/formmain.cpp" line="357"/>
+        <location filename="../src/librssguard/gui/dialogs/formmain.cpp" line="364"/>
         <source>No recycle bin</source>
         <translation>Нет корзины</translation>
     </message>
@@ -2165,7 +2165,7 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="743"/>
-        <location filename="../src/librssguard/gui/dialogs/formmain.cpp" line="303"/>
+        <location filename="../src/librssguard/gui/dialogs/formmain.cpp" line="310"/>
         <source>Add new category</source>
         <translation>Добавить новую категорию</translation>
     </message>
@@ -2291,12 +2291,12 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="738"/>
-        <location filename="../src/librssguard/gui/dialogs/formmain.cpp" line="313"/>
+        <location filename="../src/librssguard/gui/dialogs/formmain.cpp" line="320"/>
         <source>Add new feed</source>
         <translation>Добавить новый канал</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/gui/dialogs/formmain.cpp" line="364"/>
+        <location filename="../src/librssguard/gui/dialogs/formmain.cpp" line="371"/>
         <source>No actions possible</source>
         <translation>Нет возможных действий</translation>
     </message>
@@ -2311,17 +2311,17 @@ or this functionality is not implemented yet.</source>
         <translation>Не удается очистить базу данных, т.к. выполняется другое критическое действие.</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/gui/dialogs/formmain.cpp" line="509"/>
+        <location filename="../src/librssguard/gui/dialogs/formmain.cpp" line="516"/>
         <source>Close opened modal dialogs first.</source>
         <translation>Сначала закройте открытые модальные диалоги.</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/gui/dialogs/formmain.cpp" line="433"/>
+        <location filename="../src/librssguard/gui/dialogs/formmain.cpp" line="440"/>
         <source>Fetching common data</source>
         <translation>Получение общих данных</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/gui/dialogs/formmain.cpp" line="508"/>
+        <location filename="../src/librssguard/gui/dialogs/formmain.cpp" line="515"/>
         <source>Close dialogs</source>
         <translation>Закрыть диалоги</translation>
     </message>
@@ -2329,87 +2329,87 @@ or this functionality is not implemented yet.</source>
 <context>
     <name>FormMessageFiltersManager</name>
     <message>
-        <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.cpp" line="281"/>
+        <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.cpp" line="316"/>
         <source>ACCEPTED</source>
         <translation>ОДОБРЕНО</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.cpp" line="281"/>
+        <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.cpp" line="316"/>
         <source>REJECTED</source>
         <translation>ОТКЛОНЕНО</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.cpp" line="294"/>
-        <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.cpp" line="295"/>
+        <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.cpp" line="329"/>
+        <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.cpp" line="330"/>
         <source>yes</source>
         <translation>да</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.cpp" line="294"/>
-        <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.cpp" line="295"/>
+        <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.cpp" line="329"/>
+        <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.cpp" line="330"/>
         <source>no</source>
         <translation>нет</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.cpp" line="571"/>
+        <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.cpp" line="606"/>
         <source>Cannot find &apos;clang-format&apos;</source>
         <translation>Не удается найти &apos;clang-format&apos;</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.cpp" line="572"/>
+        <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.cpp" line="607"/>
         <source>Script was not beautified, because &apos;clang-format&apos; tool was not found.</source>
         <translation>Скрипт не был украшен, потому что инструмент &apos;clang-format&apos; не найден.</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.cpp" line="208"/>
-        <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.cpp" line="590"/>
+        <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.cpp" line="243"/>
+        <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.cpp" line="625"/>
         <source>Error</source>
         <translation>Ошибка</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.cpp" line="591"/>
+        <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.cpp" line="626"/>
         <source>Script was not beautified, because &apos;clang-format&apos; tool thrown error.</source>
         <translation>Скрипт не был украшен, потому что инструмент &apos;clang-format&apos; выдавал ошибку.</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.cpp" line="600"/>
+        <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.cpp" line="635"/>
         <source>Beautifier was running for too long time</source>
         <translation>Улучшение кода работало слишком долго</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.cpp" line="601"/>
+        <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.cpp" line="636"/>
         <source>Script was not beautified, is &apos;clang-format&apos; installed?</source>
         <translation>Скрипт не был улучшен, установлен &apos;clang-format&apos;?</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.cpp" line="209"/>
+        <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.cpp" line="244"/>
         <source>Cannot save new filter, error: &apos;%1&apos;.</source>
         <translation>Невозможно сохранить новый фильтр, ошибка: &apos;%1&apos;.</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.cpp" line="154"/>
+        <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.cpp" line="189"/>
         <source>Context menu</source>
         <translation>Контекстное меню</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.cpp" line="156"/>
+        <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.cpp" line="191"/>
         <source>Filter articles like this</source>
         <translation>Фильтровать статьи подобные этой</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.cpp" line="195"/>
+        <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.cpp" line="230"/>
         <source>New article filter</source>
         <translation>Новый фильтр статей</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.cpp" line="263"/>
+        <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.cpp" line="298"/>
         <source>EXISTING articles filtering error: '%1'.
 </source>
         <translation>Ошибка фильтрации СУЩЕСТВУЮЩИХ статей: &apos;%1&apos;.
 </translation>
     </message>
     <message>
-        <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.cpp" line="280"/>
+        <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.cpp" line="315"/>
         <source>Article will be %1.
 
 </source>
@@ -2418,7 +2418,7 @@ or this functionality is not implemented yet.</source>
 </translation>
     </message>
     <message>
-        <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.cpp" line="283"/>
+        <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.cpp" line="318"/>
         <source>Output (modified) article is:
   Title = '%1'
   URL = '%2'
@@ -2437,19 +2437,19 @@ or this functionality is not implemented yet.</source>
   RAW-содержимое = &apos;%8&apos;</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.cpp" line="304"/>
+        <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.cpp" line="339"/>
         <source>SAMPLE article filtering error: '%1'.
 </source>
         <translation>Ошибка фильтрации статьи из ПРИМЕРА: &apos;%1&apos;.
 </translation>
     </message>
     <message>
-        <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.cpp" line="172"/>
+        <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.cpp" line="207"/>
         <source>Are you sure?</source>
         <translation>Вы уверены?</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.cpp" line="173"/>
+        <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.cpp" line="208"/>
         <source>Do you really want to remove selected filter?</source>
         <translation>Вы действительно хотите удалить выбранный фильтр?</translation>
     </message>
@@ -2485,7 +2485,7 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.ui" line="121"/>
-        <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.ui" line="306"/>
+        <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.ui" line="313"/>
         <source>Title</source>
         <translation>Заголовок</translation>
     </message>
@@ -2505,72 +2505,72 @@ or this functionality is not implemented yet.</source>
         <translation>JavaScript код</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.ui" line="190"/>
+        <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.ui" line="192"/>
         <source>Your JavaScript-based article filtering logic</source>
         <translation>Ваша логика фильтрации статей на основе JavaScript</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.ui" line="199"/>
+        <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.ui" line="206"/>
         <source>&amp;Test</source>
         <translation>Тест (&amp;T)</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.ui" line="206"/>
+        <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.ui" line="213"/>
         <source>Process checked feeds</source>
         <translation>Тест по статьям</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.ui" line="213"/>
+        <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.ui" line="220"/>
         <source>&amp;Beautify</source>
         <translation>Улучшить (&amp;B)</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.ui" line="220"/>
+        <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.ui" line="227"/>
         <source>Detailed &amp;help</source>
         <translation>Помощь (&amp;H)</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.ui" line="256"/>
+        <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.ui" line="263"/>
         <source>Existing articles</source>
         <translation>Существующие статьи</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.ui" line="288"/>
+        <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.ui" line="295"/>
         <source>Sample article</source>
         <translation>Пример статьи</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.ui" line="319"/>
+        <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.ui" line="326"/>
         <source>URL</source>
         <translation>URL </translation>
     </message>
     <message>
-        <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.ui" line="332"/>
+        <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.ui" line="339"/>
         <source>Author</source>
         <translation>Автор</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.ui" line="345"/>
+        <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.ui" line="352"/>
         <source>Created on</source>
         <translation>Дата создания</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.ui" line="358"/>
+        <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.ui" line="365"/>
         <source>Contents</source>
         <translation>Контент</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.ui" line="373"/>
+        <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.ui" line="380"/>
         <source>Read</source>
         <translation>Чтение</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.ui" line="380"/>
+        <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.ui" line="387"/>
         <source>Important</source>
         <translation>Важное</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.ui" line="403"/>
+        <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.ui" line="410"/>
         <source>Script output</source>
         <translation>Вывод скрипта</translation>
     </message>
@@ -2784,8 +2784,8 @@ You have to restart manually.</source>
         <translation>Выберите файл для импорта каналов</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/services/standard/gui/formstandardimportexport.cpp" line="257"/>
         <location filename="../src/librssguard/services/standard/gui/formstandardimportexport.cpp" line="258"/>
+        <location filename="../src/librssguard/services/standard/gui/formstandardimportexport.cpp" line="259"/>
         <source>Cannot open source file.</source>
         <translation>Не удается открыть исходный файл.</translation>
     </message>
@@ -2810,14 +2810,14 @@ You have to restart manually.</source>
         <translation>Здесь вы можете ввести строку выполнения скрипта, включая интерпретатор.</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/services/standard/gui/formstandardimportexport.cpp" line="316"/>
         <location filename="../src/librssguard/services/standard/gui/formstandardimportexport.cpp" line="317"/>
+        <location filename="../src/librssguard/services/standard/gui/formstandardimportexport.cpp" line="318"/>
         <source>Feeds were exported successfully.</source>
         <translation>Каналы были успешно экспортированы.</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/services/standard/gui/formstandardimportexport.cpp" line="327"/>
         <location filename="../src/librssguard/services/standard/gui/formstandardimportexport.cpp" line="328"/>
+        <location filename="../src/librssguard/services/standard/gui/formstandardimportexport.cpp" line="329"/>
         <source>Critical error occurred.</source>
         <translation>Произошла критическая ошибка.</translation>
     </message>
@@ -2833,7 +2833,7 @@ You have to restart manually.</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../src/librssguard/services/standard/gui/formstandardimportexport.cpp" line="321"/>
+        <location filename="../src/librssguard/services/standard/gui/formstandardimportexport.cpp" line="322"/>
         <source>Cannot write into destination file: &apos;%1&apos;.</source>
         <translation>Невозможно записать в файл назначения: &apos;%1&apos;.</translation>
     </message>
@@ -3247,49 +3247,49 @@ You can install it now.</source>
 <context>
     <name>GmailNetworkFactory</name>
     <message>
-        <location filename="../src/librssguard/services/gmail/gmailnetworkfactory.cpp" line="488"/>
+        <location filename="../src/librssguard/services/gmail/gmailnetworkfactory.cpp" line="487"/>
         <source>Click this to login again. Error is: &apos;%1&apos;</source>
         <translation>Нажмите здесь, чтобы войти снова. Ошибка: &apos;%1&apos;</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/services/gmail/gmailnetworkfactory.cpp" line="501"/>
+        <location filename="../src/librssguard/services/gmail/gmailnetworkfactory.cpp" line="500"/>
         <source>Click this to login again.</source>
         <translation>Нажмите здесь, чтобы войти снова.</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/services/gmail/gmailnetworkfactory.cpp" line="559"/>
+        <location filename="../src/librssguard/services/gmail/gmailnetworkfactory.cpp" line="558"/>
         <source>No subject</source>
         <translation>Без темы</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/services/gmail/gmailnetworkfactory.cpp" line="487"/>
+        <location filename="../src/librssguard/services/gmail/gmailnetworkfactory.cpp" line="486"/>
         <source>Gmail: authentication error</source>
         <translation>Gmail: ошибка аутентификации</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/services/gmail/gmailnetworkfactory.cpp" line="439"/>
+        <location filename="../src/librssguard/services/gmail/gmailnetworkfactory.cpp" line="438"/>
         <source>failed to download IDs of e-mail messages</source>
         <translation>не удалось загрузить идентификаторы сообщений электронной почты</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/services/gmail/gmailnetworkfactory.cpp" line="500"/>
+        <location filename="../src/librssguard/services/gmail/gmailnetworkfactory.cpp" line="499"/>
         <source>Gmail: authorization denied</source>
         <translation>Gmail: авторизация запрещена</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/services/gmail/gmailnetworkfactory.cpp" line="451"/>
-        <location filename="../src/librssguard/services/gmail/gmailnetworkfactory.cpp" line="636"/>
+        <location filename="../src/librssguard/services/gmail/gmailnetworkfactory.cpp" line="450"/>
+        <location filename="../src/librssguard/services/gmail/gmailnetworkfactory.cpp" line="635"/>
         <source>you are not logged in</source>
         <translation>вы не вошли</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/services/gmail/gmailnetworkfactory.cpp" line="672"/>
+        <location filename="../src/librssguard/services/gmail/gmailnetworkfactory.cpp" line="671"/>
         <source>failed to get metadata</source>
         <translation>не удалось получить метаданные</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/services/gmail/gmailnetworkfactory.cpp" line="491"/>
-        <location filename="../src/librssguard/services/gmail/gmailnetworkfactory.cpp" line="504"/>
+        <location filename="../src/librssguard/services/gmail/gmailnetworkfactory.cpp" line="490"/>
+        <location filename="../src/librssguard/services/gmail/gmailnetworkfactory.cpp" line="503"/>
         <source>Login</source>
         <translation>Логин</translation>
     </message>
@@ -3302,44 +3302,44 @@ You can install it now.</source>
         <translation>Входящие</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/services/gmail/gmailserviceroot.cpp" line="51"/>
+        <location filename="../src/librssguard/services/gmail/gmailserviceroot.cpp" line="52"/>
         <source>Sent</source>
         <translation>Отправленные</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/services/gmail/gmailserviceroot.cpp" line="52"/>
+        <location filename="../src/librssguard/services/gmail/gmailserviceroot.cpp" line="53"/>
         <source>Drafts</source>
         <translation>Черновики</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/services/gmail/gmailserviceroot.cpp" line="53"/>
+        <location filename="../src/librssguard/services/gmail/gmailserviceroot.cpp" line="57"/>
         <source>Spam</source>
         <translation>Спам</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/services/gmail/gmailserviceroot.cpp" line="119"/>
+        <location filename="../src/librssguard/services/gmail/gmailserviceroot.cpp" line="128"/>
         <source>Reply to this e-mail message</source>
         <translation>Ответить на это сообщение электронной почты</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/services/gmail/gmailserviceroot.cpp" line="194"/>
+        <location filename="../src/librssguard/services/gmail/gmailserviceroot.cpp" line="205"/>
         <source>Authentication status: %1
 Login tokens expiration: %2</source>
         <translation>Состояние аутентификации: %1
 Срок действия токенов входа: %2</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/services/gmail/gmailserviceroot.cpp" line="196"/>
+        <location filename="../src/librssguard/services/gmail/gmailserviceroot.cpp" line="207"/>
         <source>logged-in</source>
         <translation>вход выполнен</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/services/gmail/gmailserviceroot.cpp" line="197"/>
+        <location filename="../src/librssguard/services/gmail/gmailserviceroot.cpp" line="207"/>
         <source>NOT logged-in</source>
         <translation>вход НЕ выполнен</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/services/gmail/gmailserviceroot.cpp" line="134"/>
+        <location filename="../src/librssguard/services/gmail/gmailserviceroot.cpp" line="144"/>
         <source>Write new e-mail message</source>
         <translation>Написать новое сообщение e-mail</translation>
     </message>
@@ -3606,7 +3606,7 @@ Login tokens expiration: %2</source>
 <context>
     <name>HelpSpoiler</name>
     <message>
-        <location filename="../src/librssguard/gui/reusable/helpspoiler.cpp" line="25"/>
+        <location filename="../src/librssguard/gui/reusable/helpspoiler.cpp" line="26"/>
         <source>View more information on this</source>
         <translation>Посмотреть дополнительную информацию об этом</translation>
     </message>
@@ -3627,12 +3627,12 @@ Login tokens expiration: %2</source>
 <context>
     <name>ImportantNode</name>
     <message>
-        <location filename="../src/librssguard/services/abstract/importantnode.cpp" line="17"/>
+        <location filename="../src/librssguard/services/abstract/importantnode.cpp" line="15"/>
         <source>Important articles</source>
         <translation>Важные статьи</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/services/abstract/importantnode.cpp" line="18"/>
+        <location filename="../src/librssguard/services/abstract/importantnode.cpp" line="16"/>
         <source>You can find all important articles here.</source>
         <translation>Вы можете найти важные статьи здесь.</translation>
     </message>
@@ -3857,237 +3857,237 @@ Login tokens expiration: %2</source>
 <context>
     <name>MessagesModel</name>
     <message>
-        <location filename="../src/librssguard/core/messagesmodel.cpp" line="227"/>
+        <location filename="../src/librssguard/core/messagesmodel.cpp" line="232"/>
         <source>Id</source>
         <translation>Идентификатор</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/core/messagesmodel.cpp" line="228"/>
+        <location filename="../src/librssguard/core/messagesmodel.cpp" line="233"/>
         <source>Read</source>
         <translation>Чтение</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/core/messagesmodel.cpp" line="230"/>
+        <location filename="../src/librssguard/core/messagesmodel.cpp" line="235"/>
         <source>Deleted</source>
         <translation>Удалено</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/core/messagesmodel.cpp" line="229"/>
+        <location filename="../src/librssguard/core/messagesmodel.cpp" line="234"/>
         <source>Important</source>
         <translation>Важное</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/core/messagesmodel.cpp" line="243"/>
+        <location filename="../src/librssguard/core/messagesmodel.cpp" line="248"/>
         <source>Feed</source>
         <translation>Канал</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/core/messagesmodel.cpp" line="233"/>
+        <location filename="../src/librssguard/core/messagesmodel.cpp" line="238"/>
         <source>Title</source>
         <translation>Заголовок</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/core/messagesmodel.cpp" line="234"/>
+        <location filename="../src/librssguard/core/messagesmodel.cpp" line="239"/>
         <source>Url</source>
         <translation>URL</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/core/messagesmodel.cpp" line="235"/>
+        <location filename="../src/librssguard/core/messagesmodel.cpp" line="240"/>
         <source>Author</source>
         <translation>Автор</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/core/messagesmodel.cpp" line="237"/>
+        <location filename="../src/librssguard/core/messagesmodel.cpp" line="242"/>
         <source>Contents</source>
         <translation>Контент</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/core/messagesmodel.cpp" line="231"/>
+        <location filename="../src/librssguard/core/messagesmodel.cpp" line="236"/>
         <source>Permanently deleted</source>
         <translation>Удалить навсегда</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/core/messagesmodel.cpp" line="238"/>
+        <location filename="../src/librssguard/core/messagesmodel.cpp" line="243"/>
         <source>Attachments</source>
         <translation>Вложение</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/core/messagesmodel.cpp" line="251"/>
+        <location filename="../src/librssguard/core/messagesmodel.cpp" line="256"/>
         <source>List of attachments.</source>
         <translation>Список вложений.</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/core/messagesmodel.cpp" line="240"/>
+        <location filename="../src/librssguard/core/messagesmodel.cpp" line="245"/>
         <source>Account ID</source>
         <translation>ID аккаунта</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/core/messagesmodel.cpp" line="241"/>
+        <location filename="../src/librssguard/core/messagesmodel.cpp" line="246"/>
         <source>Custom ID</source>
         <translation>Пользовательский ID</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/core/messagesmodel.cpp" line="242"/>
+        <location filename="../src/librssguard/core/messagesmodel.cpp" line="247"/>
         <source>Custom hash</source>
         <translation>Пользовательский хэш</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/core/messagesmodel.cpp" line="232"/>
+        <location filename="../src/librssguard/core/messagesmodel.cpp" line="237"/>
         <source>Feed ID</source>
         <translation>ID канала</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/core/messagesmodel.cpp" line="244"/>
+        <location filename="../src/librssguard/core/messagesmodel.cpp" line="249"/>
         <source>Has enclosures</source>
         <translation>Есть вложения</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/core/messagesmodel.cpp" line="239"/>
+        <location filename="../src/librssguard/core/messagesmodel.cpp" line="244"/>
         <source>Score</source>
         <translation>Оценка</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/core/messagesmodel.cpp" line="236"/>
+        <location filename="../src/librssguard/core/messagesmodel.cpp" line="241"/>
         <source>Date</source>
         <translation>Дата</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/core/messagesmodel.cpp" line="148"/>
+        <location filename="../src/librssguard/core/messagesmodel.cpp" line="153"/>
         <source>Loading of articles failed, maybe messages could not be downloaded.</source>
         <translation>Не удалось загрузить статьи, возможно, статьи не могут быть загружены.</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/core/messagesmodel.cpp" line="245"/>
+        <location filename="../src/librssguard/core/messagesmodel.cpp" line="250"/>
         <source>Assigned labels</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../src/librssguard/core/messagesmodel.cpp" line="247"/>
+        <location filename="../src/librssguard/core/messagesmodel.cpp" line="252"/>
         <source>ID of the article.</source>
         <translation>Идентификатор статьи.</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/core/messagesmodel.cpp" line="247"/>
+        <location filename="../src/librssguard/core/messagesmodel.cpp" line="252"/>
         <source>Is article read?</source>
         <translation>Прочитана ли статья?</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/core/messagesmodel.cpp" line="247"/>
+        <location filename="../src/librssguard/core/messagesmodel.cpp" line="252"/>
         <source>Is article important?</source>
         <translation>Важна ли статья?</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/core/messagesmodel.cpp" line="248"/>
+        <location filename="../src/librssguard/core/messagesmodel.cpp" line="253"/>
         <source>Is article deleted?</source>
         <translation>Удалена ли статья?</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/core/messagesmodel.cpp" line="248"/>
+        <location filename="../src/librssguard/core/messagesmodel.cpp" line="253"/>
         <source>Is article permanently deleted from recycle bin?</source>
         <translation>Удалена ли статья навсегда из корзины?</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/core/messagesmodel.cpp" line="249"/>
+        <location filename="../src/librssguard/core/messagesmodel.cpp" line="254"/>
         <source>ID of feed which this article belongs to.</source>
         <translation>Идентификатор канала, которому принадлежит эта статья.</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/core/messagesmodel.cpp" line="249"/>
+        <location filename="../src/librssguard/core/messagesmodel.cpp" line="254"/>
         <source>Title of the article.</source>
         <translation>Заголовок статьи.</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/core/messagesmodel.cpp" line="250"/>
+        <location filename="../src/librssguard/core/messagesmodel.cpp" line="255"/>
         <source>Url of the article.</source>
         <translation>URL-адрес статьи.</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/core/messagesmodel.cpp" line="250"/>
+        <location filename="../src/librssguard/core/messagesmodel.cpp" line="255"/>
         <source>Author of the article.</source>
         <translation>Автор статьи.</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/core/messagesmodel.cpp" line="250"/>
+        <location filename="../src/librssguard/core/messagesmodel.cpp" line="255"/>
         <source>Creation date of the article.</source>
         <translation>Дата создания статьи.</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/core/messagesmodel.cpp" line="251"/>
+        <location filename="../src/librssguard/core/messagesmodel.cpp" line="256"/>
         <source>Contents of the article.</source>
         <translation>Содержимое статьи.</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/core/messagesmodel.cpp" line="251"/>
+        <location filename="../src/librssguard/core/messagesmodel.cpp" line="256"/>
         <source>Score of the article.</source>
         <translation>Оценка статьи.</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/core/messagesmodel.cpp" line="252"/>
+        <location filename="../src/librssguard/core/messagesmodel.cpp" line="257"/>
         <source>Account ID of the article.</source>
         <translation>ID аккаунта статьи.</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/core/messagesmodel.cpp" line="252"/>
+        <location filename="../src/librssguard/core/messagesmodel.cpp" line="257"/>
         <source>Custom ID of the article.</source>
         <translation>Пользовательский ID статьи.</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/core/messagesmodel.cpp" line="253"/>
+        <location filename="../src/librssguard/core/messagesmodel.cpp" line="258"/>
         <source>Custom hash of the article.</source>
         <translation>Пользовательский хэш статьи.</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/core/messagesmodel.cpp" line="253"/>
+        <location filename="../src/librssguard/core/messagesmodel.cpp" line="258"/>
         <source>Name of feed of the article.</source>
         <translation>Название канала статьи.</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/core/messagesmodel.cpp" line="254"/>
+        <location filename="../src/librssguard/core/messagesmodel.cpp" line="259"/>
         <source>Indication of enclosures presence within the article.</source>
         <translation>Указатель наличия вложений в статье.</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/core/messagesmodel.cpp" line="254"/>
+        <location filename="../src/librssguard/core/messagesmodel.cpp" line="259"/>
         <source>Labels assigned to the article.</source>
         <translation type="unfinished"/>
     </message>
     <message numerus="yes">
-        <location filename="../src/librssguard/core/messagesmodel.cpp" line="297"/>
+        <location filename="../src/librssguard/core/messagesmodel.cpp" line="302"/>
         <source>%n months ago</source>
         <translation><numerusform>%n месяц(ев) назад</numerusform><numerusform>%n месяц(ев) назад</numerusform><numerusform>%n месяц(ев) назад</numerusform><numerusform>%n месяц(ев) назад</numerusform></translation>
     </message>
     <message numerus="yes">
-        <location filename="../src/librssguard/core/messagesmodel.cpp" line="301"/>
+        <location filename="../src/librssguard/core/messagesmodel.cpp" line="306"/>
         <source>%n weeks ago</source>
         <translation><numerusform>%n недель(я) назад</numerusform><numerusform>%n недель(я) назад</numerusform><numerusform>%n недель(я) назад</numerusform><numerusform>%n недель(я) назад</numerusform></translation>
     </message>
     <message numerus="yes">
-        <location filename="../src/librssguard/core/messagesmodel.cpp" line="305"/>
+        <location filename="../src/librssguard/core/messagesmodel.cpp" line="310"/>
         <source>%n days ago</source>
         <translation><numerusform>%n дня(дней) назад</numerusform><numerusform>%n дня(дней) назад</numerusform><numerusform>%n дня(дней) назад</numerusform><numerusform>%n дня(дней) назад</numerusform></translation>
     </message>
     <message>
-        <location filename="../src/librssguard/core/messagesmodel.cpp" line="309"/>
+        <location filename="../src/librssguard/core/messagesmodel.cpp" line="314"/>
         <source>yesterday</source>
         <translation>вчера</translation>
     </message>
     <message numerus="yes">
-        <location filename="../src/librssguard/core/messagesmodel.cpp" line="313"/>
+        <location filename="../src/librssguard/core/messagesmodel.cpp" line="318"/>
         <source>%n hours ago</source>
         <translation><numerusform>%n час(часов) назад</numerusform><numerusform>%n час(часов) назад</numerusform><numerusform>%n час(часов) назад</numerusform><numerusform>%n час(часов) назад</numerusform></translation>
     </message>
     <message numerus="yes">
-        <location filename="../src/librssguard/core/messagesmodel.cpp" line="317"/>
+        <location filename="../src/librssguard/core/messagesmodel.cpp" line="322"/>
         <source>%n minutes ago</source>
         <translation><numerusform>%n минут(а) назад</numerusform><numerusform>%n минут(а) назад</numerusform><numerusform>%n минут(а) назад</numerusform><numerusform>%n минут(а) назад</numerusform></translation>
     </message>
     <message>
-        <location filename="../src/librssguard/core/messagesmodel.cpp" line="320"/>
+        <location filename="../src/librssguard/core/messagesmodel.cpp" line="325"/>
         <source>just now</source>
         <translation>только что</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/core/messagesmodel.cpp" line="147"/>
+        <location filename="../src/librssguard/core/messagesmodel.cpp" line="152"/>
         <source>Loading of articles from item &apos;%1&apos; failed</source>
         <translation>Не удалось загрузить статьи из &apos;%1&apos;</translation>
     </message>
@@ -4095,113 +4095,113 @@ Login tokens expiration: %2</source>
 <context>
     <name>MessagesToolBar</name>
     <message>
-        <location filename="../src/librssguard/gui/toolbars/messagestoolbar.cpp" line="159"/>
+        <location filename="../src/librssguard/gui/toolbars/messagestoolbar.cpp" line="191"/>
         <source>No extra highlighting</source>
         <translation>Без дополнительной подсветки</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/gui/toolbars/messagestoolbar.cpp" line="90"/>
+        <location filename="../src/librssguard/gui/toolbars/messagestoolbar.cpp" line="91"/>
         <source>Toolbar spacer</source>
         <translation>Пространство панели инструментов</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/gui/toolbars/messagestoolbar.cpp" line="136"/>
+        <location filename="../src/librssguard/gui/toolbars/messagestoolbar.cpp" line="167"/>
         <source>Article search box</source>
         <translation>Окно поиска статей</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/gui/toolbars/messagestoolbar.cpp" line="156"/>
+        <location filename="../src/librssguard/gui/toolbars/messagestoolbar.cpp" line="188"/>
         <source>Menu for highlighting articles</source>
         <translation>Меню для подсветки статей</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/gui/toolbars/messagestoolbar.cpp" line="164"/>
+        <location filename="../src/librssguard/gui/toolbars/messagestoolbar.cpp" line="196"/>
         <source>Highlight unread articles</source>
         <translation>Подсвечивать непрочитанные статьи</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/gui/toolbars/messagestoolbar.cpp" line="169"/>
+        <location filename="../src/librssguard/gui/toolbars/messagestoolbar.cpp" line="201"/>
         <source>Highlight important articles</source>
         <translation>Подсветить важные статьи</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/gui/toolbars/messagestoolbar.cpp" line="173"/>
+        <location filename="../src/librssguard/gui/toolbars/messagestoolbar.cpp" line="205"/>
         <source>Menu for filtering articles</source>
         <translation>Меню фильтрации статей</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/gui/toolbars/messagestoolbar.cpp" line="176"/>
+        <location filename="../src/librssguard/gui/toolbars/messagestoolbar.cpp" line="208"/>
         <source>No extra filtering</source>
         <translation>Без дополнительной фильтрации</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/gui/toolbars/messagestoolbar.cpp" line="181"/>
+        <location filename="../src/librssguard/gui/toolbars/messagestoolbar.cpp" line="213"/>
         <source>Show unread articles</source>
         <translation>Показать непрочитанные статьи</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/gui/toolbars/messagestoolbar.cpp" line="186"/>
+        <location filename="../src/librssguard/gui/toolbars/messagestoolbar.cpp" line="218"/>
         <source>Show important articles</source>
         <translation>Показать важные статьи</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/gui/toolbars/messagestoolbar.cpp" line="191"/>
+        <location filename="../src/librssguard/gui/toolbars/messagestoolbar.cpp" line="223"/>
         <source>Show today&apos;s articles</source>
         <translation>Показать сегодняшние статьи</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/gui/toolbars/messagestoolbar.cpp" line="196"/>
+        <location filename="../src/librssguard/gui/toolbars/messagestoolbar.cpp" line="228"/>
         <source>Show yesterday&apos;s articles</source>
         <translation>Показать вчерашние статьи</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/gui/toolbars/messagestoolbar.cpp" line="201"/>
+        <location filename="../src/librssguard/gui/toolbars/messagestoolbar.cpp" line="233"/>
         <source>Show articles in last 24 hours</source>
         <translation>Показать статьи за последние 24 часа</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/gui/toolbars/messagestoolbar.cpp" line="206"/>
+        <location filename="../src/librssguard/gui/toolbars/messagestoolbar.cpp" line="238"/>
         <source>Show articles in last 48 hours</source>
         <translation>Показать статьи за последние 48 часов</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/gui/toolbars/messagestoolbar.cpp" line="211"/>
+        <location filename="../src/librssguard/gui/toolbars/messagestoolbar.cpp" line="243"/>
         <source>Show this week&apos;s articles</source>
         <translation>Показать статьи за эту неделю</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/gui/toolbars/messagestoolbar.cpp" line="216"/>
+        <location filename="../src/librssguard/gui/toolbars/messagestoolbar.cpp" line="248"/>
         <source>Show last week&apos;s articles</source>
         <translation>Показать статьи за прошлую неделю</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/gui/toolbars/messagestoolbar.cpp" line="221"/>
+        <location filename="../src/librssguard/gui/toolbars/messagestoolbar.cpp" line="253"/>
         <source>Show articles with attachments</source>
         <translation>Показать статьи с вложениями</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/gui/toolbars/messagestoolbar.cpp" line="226"/>
+        <location filename="../src/librssguard/gui/toolbars/messagestoolbar.cpp" line="258"/>
         <source>Show articles with some score</source>
         <translation>Показать статьи с некоторым количеством баллов</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/gui/toolbars/messagestoolbar.cpp" line="231"/>
-        <location filename="../src/librssguard/gui/toolbars/messagestoolbar.cpp" line="237"/>
+        <location filename="../src/librssguard/gui/toolbars/messagestoolbar.cpp" line="263"/>
+        <location filename="../src/librssguard/gui/toolbars/messagestoolbar.cpp" line="269"/>
         <source>Display all articles</source>
         <translation>Показать все статьи</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/gui/toolbars/messagestoolbar.cpp" line="246"/>
+        <location filename="../src/librssguard/gui/toolbars/messagestoolbar.cpp" line="278"/>
         <source>Article highlighter</source>
         <translation>Подсветка статей</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/gui/toolbars/messagestoolbar.cpp" line="251"/>
+        <location filename="../src/librssguard/gui/toolbars/messagestoolbar.cpp" line="283"/>
         <source>Article list filter</source>
         <translation>Фильтр списка статей</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/gui/toolbars/messagestoolbar.cpp" line="129"/>
+        <location filename="../src/librssguard/gui/toolbars/messagestoolbar.cpp" line="160"/>
         <source>Search articles (regex only)</source>
         <translation>Поиск статей (только регулярное выражение)</translation>
     </message>
@@ -4247,7 +4247,7 @@ Login tokens expiration: %2</source>
 <context>
     <name>MsgBox</name>
     <message>
-        <location filename="../src/librssguard/gui/messagebox.cpp" line="84"/>
+        <location filename="../src/librssguard/gui/messagebox.cpp" line="85"/>
         <source>Do not show this dialog again.</source>
         <translation>Больше не показывать этот диалог.</translation>
     </message>
@@ -4798,7 +4798,7 @@ Login tokens expiration: %2</source>
         <translation>rotter.martinos@gmail.com</translation>
     </message>
     <message numerus="yes">
-        <location filename="../src/librssguard/core/feeddownloader.cpp" line="509"/>
+        <location filename="../src/librssguard/core/feeddownloader.cpp" line="522"/>
         <source>
 
 + %n other feeds.</source>
@@ -4865,7 +4865,7 @@ Feedly is a secure space where you can privately organize and research the topic
 Feedly - это безопасное пространство, где вы можете в частном порядке организовывать и исследовать важные для вас темы и тенденции.</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/database/databasequeries.cpp" line="2318"/>
+        <location filename="../src/librssguard/database/databasequeries.cpp" line="2322"/>
         <source>Cannot insert article filter, because current database cannot return last inserted row ID.</source>
         <translation>Невозможно вставить фильтр статьи, поскольку текущая база данных не может вернуть идентификатор последней добавленной строки.</translation>
     </message>
@@ -4944,47 +4944,47 @@ List of supported readers:</source>
         <translation>Упрощенный клиент Reddit.</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/miscellaneous/skinfactory.cpp" line="477"/>
+        <location filename="../src/librssguard/miscellaneous/skinfactory.cpp" line="506"/>
         <source>interesting stuff</source>
         <translation>интересный материал</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/miscellaneous/skinfactory.cpp" line="480"/>
+        <location filename="../src/librssguard/miscellaneous/skinfactory.cpp" line="509"/>
         <source>interesting stuff (highlighted)</source>
         <translation>интересный материал (выделено)</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/miscellaneous/skinfactory.cpp" line="483"/>
+        <location filename="../src/librssguard/miscellaneous/skinfactory.cpp" line="512"/>
         <source>errored items</source>
         <translation>элементы с ошибками</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/miscellaneous/skinfactory.cpp" line="486"/>
+        <location filename="../src/librssguard/miscellaneous/skinfactory.cpp" line="515"/>
         <source>errored items (highlighted)</source>
         <translation>элементы с ошибками (выделено)</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/miscellaneous/skinfactory.cpp" line="489"/>
+        <location filename="../src/librssguard/miscellaneous/skinfactory.cpp" line="518"/>
         <source>items with new articles</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../src/librssguard/miscellaneous/skinfactory.cpp" line="492"/>
+        <location filename="../src/librssguard/miscellaneous/skinfactory.cpp" line="521"/>
         <source>items with new articles (highlighted)</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../src/librssguard/miscellaneous/skinfactory.cpp" line="495"/>
+        <location filename="../src/librssguard/miscellaneous/skinfactory.cpp" line="524"/>
         <source>OK-ish color</source>
         <translation>Цвет OK</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/services/tt-rss/ttrssnetworkfactory.cpp" line="967"/>
+        <location filename="../src/librssguard/services/tt-rss/ttrssnetworkfactory.cpp" line="979"/>
         <source>User-published articles</source>
         <translation>Статьи, опубликованные пользователями</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/services/tt-rss/ttrssnetworkfactory.cpp" line="1130"/>
+        <location filename="../src/librssguard/services/tt-rss/ttrssnetworkfactory.cpp" line="1142"/>
         <source>Published articles</source>
         <translation>Опубликованные статьи</translation>
     </message>
@@ -5036,27 +5036,27 @@ List of supported readers:</source>
 <context>
     <name>RecycleBin</name>
     <message>
-        <location filename="../src/librssguard/services/abstract/recyclebin.cpp" line="19"/>
+        <location filename="../src/librssguard/services/abstract/recyclebin.cpp" line="16"/>
         <source>Recycle bin</source>
         <translation>Корзина</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/services/abstract/recyclebin.cpp" line="51"/>
+        <location filename="../src/librssguard/services/abstract/recyclebin.cpp" line="45"/>
         <source>Restore recycle bin</source>
         <translation>Восстановить корзину</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/services/abstract/recyclebin.cpp" line="54"/>
+        <location filename="../src/librssguard/services/abstract/recyclebin.cpp" line="46"/>
         <source>Empty recycle bin</source>
         <translation>Очистка корзины</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/services/abstract/recyclebin.cpp" line="20"/>
+        <location filename="../src/librssguard/services/abstract/recyclebin.cpp" line="17"/>
         <source>Recycle bin contains all deleted articles from all feeds.</source>
         <translation>Корзина содержит все удаленные статьи из всех каналов.</translation>
     </message>
     <message numerus="yes">
-        <location filename="../src/librssguard/services/abstract/recyclebin.cpp" line="24"/>
+        <location filename="../src/librssguard/services/abstract/recyclebin.cpp" line="21"/>
         <source>%n deleted article(s).</source>
         <translation><numerusform>%n удаленные(х) статьи(ей).</numerusform><numerusform>%n удаленные(х) статьи(ей).</numerusform><numerusform>%n удаленные(х) статьи(ей).</numerusform><numerusform>%n удаленные(х) статьи(ей).</numerusform></translation>
     </message>
@@ -5187,35 +5187,35 @@ List of supported readers:</source>
 <context>
     <name>RedditNetworkFactory</name>
     <message>
-        <location filename="../src/librssguard/services/reddit/redditnetworkfactory.cpp" line="102"/>
-        <location filename="../src/librssguard/services/reddit/redditnetworkfactory.cpp" line="138"/>
-        <location filename="../src/librssguard/services/reddit/redditnetworkfactory.cpp" line="226"/>
+        <location filename="../src/librssguard/services/reddit/redditnetworkfactory.cpp" line="101"/>
+        <location filename="../src/librssguard/services/reddit/redditnetworkfactory.cpp" line="137"/>
+        <location filename="../src/librssguard/services/reddit/redditnetworkfactory.cpp" line="225"/>
         <source>you are not logged in</source>
         <translation>вы не вошли</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/services/reddit/redditnetworkfactory.cpp" line="308"/>
+        <location filename="../src/librssguard/services/reddit/redditnetworkfactory.cpp" line="307"/>
         <source>Reddit: authentication error</source>
         <translation>Reddit: ошибка аутентификации</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/services/reddit/redditnetworkfactory.cpp" line="309"/>
+        <location filename="../src/librssguard/services/reddit/redditnetworkfactory.cpp" line="308"/>
         <source>Click this to login again. Error is: &apos;%1&apos;</source>
         <translation>Нажмите здесь, чтобы войти снова. Ошибка: &apos;%1&apos;</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/services/reddit/redditnetworkfactory.cpp" line="312"/>
-        <location filename="../src/librssguard/services/reddit/redditnetworkfactory.cpp" line="325"/>
+        <location filename="../src/librssguard/services/reddit/redditnetworkfactory.cpp" line="311"/>
+        <location filename="../src/librssguard/services/reddit/redditnetworkfactory.cpp" line="324"/>
         <source>Login</source>
         <translation>Логин</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/services/reddit/redditnetworkfactory.cpp" line="321"/>
+        <location filename="../src/librssguard/services/reddit/redditnetworkfactory.cpp" line="320"/>
         <source>Reddit: authorization denied</source>
         <translation>Reddit: авторизация отклонена</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/services/reddit/redditnetworkfactory.cpp" line="322"/>
+        <location filename="../src/librssguard/services/reddit/redditnetworkfactory.cpp" line="321"/>
         <source>Click this to login again.</source>
         <translation>Нажмите здесь, чтобы войти снова.</translation>
     </message>
@@ -5223,19 +5223,19 @@ List of supported readers:</source>
 <context>
     <name>RedditServiceRoot</name>
     <message>
-        <location filename="../src/librssguard/services/reddit/redditserviceroot.cpp" line="126"/>
+        <location filename="../src/librssguard/services/reddit/redditserviceroot.cpp" line="127"/>
         <source>Authentication status: %1
 Login tokens expiration: %2</source>
         <translation>Состояние аутентификации: %1
 Срок действия токенов входа: %2</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/services/reddit/redditserviceroot.cpp" line="128"/>
+        <location filename="../src/librssguard/services/reddit/redditserviceroot.cpp" line="129"/>
         <source>logged-in</source>
         <translation>вход выполнен</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/services/reddit/redditserviceroot.cpp" line="128"/>
+        <location filename="../src/librssguard/services/reddit/redditserviceroot.cpp" line="129"/>
         <source>NOT logged-in</source>
         <translation>вход НЕ выполнен</translation>
     </message>
@@ -5243,7 +5243,7 @@ Login tokens expiration: %2</source>
 <context>
     <name>RootItem</name>
     <message numerus="yes">
-        <location filename="../src/librssguard/services/abstract/rootitem.cpp" line="146"/>
+        <location filename="../src/librssguard/services/abstract/rootitem.cpp" line="143"/>
         <source>%n unread article(s).</source>
         <extracomment>Tooltip for &quot;unread&quot; column of feed list.</extracomment>
         <translation><numerusform>%n непрочитанная(ых) статья(й)</numerusform><numerusform>%n непрочитанная(ых) статья(й)</numerusform><numerusform>%n непрочитанная(ых) статья(й)</numerusform><numerusform>%n непрочитанная(ых) статья(й)</numerusform></translation>
@@ -5298,22 +5298,28 @@ Login tokens expiration: %2</source>
 <context>
     <name>ServiceRoot</name>
     <message>
-        <location filename="../src/librssguard/services/abstract/serviceroot.cpp" line="99"/>
+        <location filename="../src/librssguard/services/abstract/serviceroot.cpp" line="97"/>
         <source>Synchronize folders &amp;&amp; other items</source>
         <translation>Синхронизация папок и других элементов</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/services/abstract/serviceroot.cpp" line="108"/>
+        <location filename="../src/librssguard/services/abstract/serviceroot.cpp" line="106"/>
         <source>Synchronize article cache</source>
         <translation>Синхронизация кеша статей</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/services/abstract/serviceroot.cpp" line="509"/>
+        <location filename="../src/librssguard/services/abstract/serviceroot.cpp" line="298"/>
+        <source>Number of feeds: %1
+Number of categories: %2</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <location filename="../src/librssguard/services/abstract/serviceroot.cpp" line="537"/>
         <source>Error when fetching list of feeds</source>
         <translation>Ошибка при получении списка каналов</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/services/abstract/serviceroot.cpp" line="510"/>
+        <location filename="../src/librssguard/services/abstract/serviceroot.cpp" line="538"/>
         <source>Feeds &amp; categories for account &apos;%1&apos; were not fetched, error: %2</source>
         <translation>Каналы и категории для учетной записи &apos;%1&apos; не были получены, ошибка: %2</translation>
     </message>
@@ -5321,14 +5327,14 @@ Login tokens expiration: %2</source>
 <context>
     <name>SettingsBrowserMail</name>
     <message>
-        <location filename="../src/librssguard/gui/settings/settingsbrowsermail.cpp" line="104"/>
+        <location filename="../src/librssguard/gui/settings/settingsbrowsermail.cpp" line="106"/>
         <source>Select web browser executable</source>
         <translation>Выберите веб-браузер</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/gui/settings/settingsbrowsermail.cpp" line="109"/>
-        <location filename="../src/librssguard/gui/settings/settingsbrowsermail.cpp" line="154"/>
-        <location filename="../src/librssguard/gui/settings/settingsbrowsermail.cpp" line="289"/>
+        <location filename="../src/librssguard/gui/settings/settingsbrowsermail.cpp" line="111"/>
+        <location filename="../src/librssguard/gui/settings/settingsbrowsermail.cpp" line="156"/>
+        <location filename="../src/librssguard/gui/settings/settingsbrowsermail.cpp" line="293"/>
         <source>Executables (*)</source>
         <extracomment>File filter for external browser selection dialog.
 ----------
@@ -5336,29 +5342,29 @@ File filter for external e-mail selection dialog.</extracomment>
         <translation>Исполняемые файлы (*)</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/gui/settings/settingsbrowsermail.cpp" line="111"/>
-        <location filename="../src/librssguard/gui/settings/settingsbrowsermail.cpp" line="156"/>
-        <location filename="../src/librssguard/gui/settings/settingsbrowsermail.cpp" line="287"/>
+        <location filename="../src/librssguard/gui/settings/settingsbrowsermail.cpp" line="113"/>
+        <location filename="../src/librssguard/gui/settings/settingsbrowsermail.cpp" line="158"/>
+        <location filename="../src/librssguard/gui/settings/settingsbrowsermail.cpp" line="291"/>
         <source>Executables (*.*)</source>
         <translation>Исполняемые файлы (*.*)</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/gui/settings/settingsbrowsermail.cpp" line="149"/>
+        <location filename="../src/librssguard/gui/settings/settingsbrowsermail.cpp" line="151"/>
         <source>Select e-mail executable</source>
         <translation>Выберите почтовый клиент</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/gui/settings/settingsbrowsermail.cpp" line="174"/>
+        <location filename="../src/librssguard/gui/settings/settingsbrowsermail.cpp" line="177"/>
         <source>Opera 12 or older</source>
         <translation>Opera 12 или старше</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/gui/settings/settingsbrowsermail.cpp" line="183"/>
+        <location filename="../src/librssguard/gui/settings/settingsbrowsermail.cpp" line="186"/>
         <source>Mozilla Thunderbird</source>
         <translation>Mozilla Thunderbird</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/gui/settings/settingsbrowsermail.cpp" line="297"/>
+        <location filename="../src/librssguard/gui/settings/settingsbrowsermail.cpp" line="301"/>
         <source>Enter (optional) parameters:</source>
         <translation>Введите (необязательные) параметры:</translation>
     </message>
@@ -5368,88 +5374,93 @@ File filter for external e-mail selection dialog.</extracomment>
         <translation>Приложение</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/gui/settings/settingsbrowsermail.ui" line="21"/>
+        <location filename="../src/librssguard/gui/settings/settingsbrowsermail.ui" line="18"/>
         <source>Network</source>
         <translation>Сеть</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/gui/settings/settingsbrowsermail.ui" line="27"/>
+        <location filename="../src/librssguard/gui/settings/settingsbrowsermail.ui" line="24"/>
         <source>Do not accept any incoming cookies</source>
         <translation>Не принимать входящие файлы cookie</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/gui/settings/settingsbrowsermail.ui" line="34"/>
+        <location filename="../src/librssguard/gui/settings/settingsbrowsermail.ui" line="31"/>
         <source>Enable HTTP/2</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../src/librssguard/gui/settings/settingsbrowsermail.ui" line="42"/>
+        <location filename="../src/librssguard/gui/settings/settingsbrowsermail.ui" line="39"/>
         <source>WebEngine</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../src/librssguard/gui/settings/settingsbrowsermail.ui" line="48"/>
+        <location filename="../src/librssguard/gui/settings/settingsbrowsermail.ui" line="45"/>
         <source>Custom &quot;QTWEBENGINE_CHROMIUM_FLAGS&quot; flags</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../src/librssguard/gui/settings/settingsbrowsermail.ui" line="59"/>
+        <location filename="../src/librssguard/gui/settings/settingsbrowsermail.ui" line="55"/>
+        <source>Disable cache</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <location filename="../src/librssguard/gui/settings/settingsbrowsermail.ui" line="63"/>
         <source>External web browser</source>
         <translation>Внешний веб-браузер</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/gui/settings/settingsbrowsermail.ui" line="65"/>
+        <location filename="../src/librssguard/gui/settings/settingsbrowsermail.ui" line="69"/>
         <source>Always open hyperlinks in external web browser</source>
         <translation>Всегда открывать гиперссылки во внешнем web-браузере.</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/gui/settings/settingsbrowsermail.ui" line="85"/>
-        <location filename="../src/librssguard/gui/settings/settingsbrowsermail.ui" line="199"/>
+        <location filename="../src/librssguard/gui/settings/settingsbrowsermail.ui" line="89"/>
+        <location filename="../src/librssguard/gui/settings/settingsbrowsermail.ui" line="203"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;If unchecked, then default system-wide web browser is used.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
         <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Если этот флажок не установлен, используется общесистемный веб-браузер по умолчанию.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/gui/settings/settingsbrowsermail.ui" line="88"/>
+        <location filename="../src/librssguard/gui/settings/settingsbrowsermail.ui" line="92"/>
         <source>Use custom external web browser</source>
         <translation>Использовать свой веб-браузер</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/gui/settings/settingsbrowsermail.ui" line="100"/>
+        <location filename="../src/librssguard/gui/settings/settingsbrowsermail.ui" line="104"/>
         <source>Web browser executable</source>
         <translation>Исполняемый файл веб-браузера</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/gui/settings/settingsbrowsermail.ui" line="112"/>
+        <location filename="../src/librssguard/gui/settings/settingsbrowsermail.ui" line="116"/>
         <source>Executable file of web browser</source>
         <translation>Исполняемый файл веб-браузера</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/gui/settings/settingsbrowsermail.ui" line="125"/>
-        <location filename="../src/librssguard/gui/settings/settingsbrowsermail.ui" line="242"/>
+        <location filename="../src/librssguard/gui/settings/settingsbrowsermail.ui" line="129"/>
+        <location filename="../src/librssguard/gui/settings/settingsbrowsermail.ui" line="246"/>
         <source>&amp;Browse</source>
         <translation>Обзор (&amp;B)</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/gui/settings/settingsbrowsermail.ui" line="134"/>
-        <location filename="../src/librssguard/gui/settings/settingsbrowsermail.ui" line="251"/>
+        <location filename="../src/librssguard/gui/settings/settingsbrowsermail.ui" line="138"/>
+        <location filename="../src/librssguard/gui/settings/settingsbrowsermail.ui" line="255"/>
         <location filename="../src/librssguard/gui/settings/settingsbrowsermail.cpp" line="40"/>
         <source>Parameters</source>
         <translation>Параметры</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/gui/settings/settingsbrowsermail.ui" line="144"/>
-        <location filename="../src/librssguard/gui/settings/settingsbrowsermail.ui" line="261"/>
+        <location filename="../src/librssguard/gui/settings/settingsbrowsermail.ui" line="148"/>
+        <location filename="../src/librssguard/gui/settings/settingsbrowsermail.ui" line="265"/>
         <source>Parameters passed to executable</source>
         <translation>Параметры, переданные в исполняемый файл</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/gui/settings/settingsbrowsermail.ui" line="151"/>
-        <location filename="../src/librssguard/gui/settings/settingsbrowsermail.ui" line="268"/>
+        <location filename="../src/librssguard/gui/settings/settingsbrowsermail.ui" line="155"/>
+        <location filename="../src/librssguard/gui/settings/settingsbrowsermail.ui" line="272"/>
         <source>Use sample arguments for</source>
         <translation>Используйте примеры аргументов для</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/gui/settings/settingsbrowsermail.ui" line="165"/>
+        <location filename="../src/librssguard/gui/settings/settingsbrowsermail.ui" line="169"/>
         <source>Select browser</source>
         <translation>Выбрать браузер</translation>
     </message>
@@ -5459,27 +5470,27 @@ File filter for external e-mail selection dialog.</extracomment>
         <translation>Обратите внимание, что &quot;%1&quot; (без кавычек) - это поле для URL выбранного сообщения.</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/gui/settings/settingsbrowsermail.ui" line="180"/>
+        <location filename="../src/librssguard/gui/settings/settingsbrowsermail.ui" line="184"/>
         <source>External e-mail client</source>
         <translation>Внешний e-mail клиент</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/gui/settings/settingsbrowsermail.ui" line="202"/>
+        <location filename="../src/librssguard/gui/settings/settingsbrowsermail.ui" line="206"/>
         <source>Use custom external e-mail client</source>
         <translation>Использовать свой внешний почтовый клиент</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/gui/settings/settingsbrowsermail.ui" line="214"/>
+        <location filename="../src/librssguard/gui/settings/settingsbrowsermail.ui" line="218"/>
         <source>E-mail client executable</source>
         <translation>Исполняемый файл почтового клиента</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/gui/settings/settingsbrowsermail.ui" line="229"/>
+        <location filename="../src/librssguard/gui/settings/settingsbrowsermail.ui" line="233"/>
         <source>Executable file of e-mail client</source>
         <translation>Исполняемый файл почтового клиента</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/gui/settings/settingsbrowsermail.ui" line="282"/>
+        <location filename="../src/librssguard/gui/settings/settingsbrowsermail.ui" line="286"/>
         <source>Select client</source>
         <translation>Выберите клиент</translation>
     </message>
@@ -5493,22 +5504,22 @@ File filter for external e-mail selection dialog.</extracomment>
 • %2 - тело выбранного сообщения.</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/gui/settings/settingsbrowsermail.ui" line="297"/>
+        <location filename="../src/librssguard/gui/settings/settingsbrowsermail.ui" line="301"/>
         <source>External tools</source>
         <translation>Внешние приложения</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/gui/settings/settingsbrowsermail.ui" line="332"/>
+        <location filename="../src/librssguard/gui/settings/settingsbrowsermail.ui" line="336"/>
         <source>&amp;Add tool</source>
         <translation>Добавить утилиту (&amp;A)</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/gui/settings/settingsbrowsermail.ui" line="342"/>
+        <location filename="../src/librssguard/gui/settings/settingsbrowsermail.ui" line="346"/>
         <source>&amp;Edit selected tool</source>
         <translation>Изменить выбранную утилиту (&amp;E)</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/gui/settings/settingsbrowsermail.ui" line="352"/>
+        <location filename="../src/librssguard/gui/settings/settingsbrowsermail.ui" line="356"/>
         <source>&amp;Delete selected tool</source>
         <translation>Удалить выбранную утилиту (&amp;D)</translation>
     </message>
@@ -5518,12 +5529,12 @@ File filter for external e-mail selection dialog.</extracomment>
         <translation>На этой странице вы можете установить список внешних приложений, которые могут открывать URL-ы.</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/gui/settings/settingsbrowsermail.cpp" line="284"/>
+        <location filename="../src/librssguard/gui/settings/settingsbrowsermail.cpp" line="288"/>
         <source>Select external tool</source>
         <translation>Выбрать приложение</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/gui/settings/settingsbrowsermail.cpp" line="296"/>
+        <location filename="../src/librssguard/gui/settings/settingsbrowsermail.cpp" line="300"/>
         <source>Enter parameters</source>
         <translation>Ввод параметров</translation>
     </message>
@@ -5541,87 +5552,82 @@ File filter for external e-mail selection dialog.</extracomment>
 <context>
     <name>SettingsDatabase</name>
     <message>
-        <location filename="../src/librssguard/gui/settings/settingsdatabase.cpp" line="20"/>
+        <location filename="../src/librssguard/gui/settings/settingsdatabase.cpp" line="15"/>
         <source>Note that speed of used MySQL server and latency of used connection medium HEAVILY influences the final performance of this application. Using slow database connections leads to bad performance when browsing feeds or messages.</source>
         <translation>Обратите внимание, что скорость используемого сервера MySQL и задержки используемого соединения СИЛЬНО влияет на конечную эффективность этого приложения. Использование медленных соединений с БД приводит к плохой производительности при просмотре каналов и сообщений.</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/gui/settings/settingsdatabase.cpp" line="98"/>
+        <location filename="../src/librssguard/gui/settings/settingsdatabase.cpp" line="114"/>
         <source>Hostname is empty.</source>
         <translation>Хост пуст</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/gui/settings/settingsdatabase.cpp" line="101"/>
+        <location filename="../src/librssguard/gui/settings/settingsdatabase.cpp" line="117"/>
         <source>Hostname looks ok.</source>
         <translation>Хост выглядит нормально.</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/gui/settings/settingsdatabase.cpp" line="107"/>
+        <location filename="../src/librssguard/gui/settings/settingsdatabase.cpp" line="123"/>
         <source>Username is empty.</source>
         <translation>Логин пуст.</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/gui/settings/settingsdatabase.cpp" line="110"/>
+        <location filename="../src/librssguard/gui/settings/settingsdatabase.cpp" line="126"/>
         <source>Username looks ok.</source>
         <translation>Имя пользователя выглядит нормально.</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/gui/settings/settingsdatabase.cpp" line="116"/>
+        <location filename="../src/librssguard/gui/settings/settingsdatabase.cpp" line="132"/>
         <source>Password is empty.</source>
         <translation>Пароль пуст.</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/gui/settings/settingsdatabase.cpp" line="119"/>
+        <location filename="../src/librssguard/gui/settings/settingsdatabase.cpp" line="135"/>
         <source>Password looks ok.</source>
         <translation>Пароль выглядит нормально.</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/gui/settings/settingsdatabase.cpp" line="125"/>
+        <location filename="../src/librssguard/gui/settings/settingsdatabase.cpp" line="141"/>
         <source>Working database is empty.</source>
         <translation>Рабочая БД пуста.</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/gui/settings/settingsdatabase.cpp" line="128"/>
+        <location filename="../src/librssguard/gui/settings/settingsdatabase.cpp" line="144"/>
         <source>Working database is ok.</source>
         <translation>Рабочая БД в порядке.</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/gui/settings/settingsdatabase.cpp" line="152"/>
+        <location filename="../src/librssguard/gui/settings/settingsdatabase.cpp" line="165"/>
         <source>No connection test triggered so far.</source>
         <translation>До сих пор не запущен тест соединения.</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/gui/settings/settingsdatabase.cpp" line="153"/>
+        <location filename="../src/librssguard/gui/settings/settingsdatabase.cpp" line="166"/>
         <source>You did not executed any connection test yet.</source>
         <translation>Вы ещё не выполняли тест соединения.</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/gui/settings/settingsdatabase.cpp" line="175"/>
+        <location filename="../src/librssguard/gui/settings/settingsdatabase.cpp" line="189"/>
         <source>Hostname of your MySQL server</source>
         <translation>Хост сервера MySQL</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/gui/settings/settingsdatabase.cpp" line="176"/>
+        <location filename="../src/librssguard/gui/settings/settingsdatabase.cpp" line="190"/>
         <source>Username to login with</source>
         <translation>Имя пользователя</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/gui/settings/settingsdatabase.cpp" line="177"/>
+        <location filename="../src/librssguard/gui/settings/settingsdatabase.cpp" line="191"/>
         <source>Password for your username</source>
         <translation>Пароль</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/gui/settings/settingsdatabase.cpp" line="178"/>
+        <location filename="../src/librssguard/gui/settings/settingsdatabase.cpp" line="192"/>
         <source>Working database which you have full access to.</source>
         <translation>Рабочая БД, к которой у вас есть полный доступ.</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/gui/settings/settingsdatabase.cpp" line="15"/>
-        <source>Note that switching to another data storage type will NOT copy existing your data from currently active data storage to newly selected one.</source>
-        <translation>Обратите внимание, что переключение на другой тип хранилища данных НЕ скопирует существующие данные из текущего активного хранилища данных в новое выбранное.</translation>
-    </message>
-    <message>
-        <location filename="../src/librssguard/gui/settings/settingsdatabase.cpp" line="26"/>
+        <location filename="../src/librssguard/gui/settings/settingsdatabase.cpp" line="22"/>
         <source>Usage of in-memory working database has several advantages and pitfalls. Make sure that you are familiar with these before you turn this feature on.
 
 Advantages:
@@ -5647,51 +5653,41 @@ Authors of this application are NOT responsible for lost data.</source>
     </message>
     <message>
         <location filename="../src/librssguard/gui/settings/settingsdatabase.ui" line="17"/>
-        <source>Note that turning this option ON will make saving of new messages FASTER, but it might rarely cause some issues with messages saving.</source>
-        <translation>Обратите внимание, что ВКЛЮЧЕНИЕ этой опции сделает сохранение новых сообщений БЫСТРЕЕ, но это редко может вызывать некоторые проблемы с сохранением сообщений.</translation>
-    </message>
-    <message>
-        <location filename="../src/librssguard/gui/settings/settingsdatabase.ui" line="20"/>
-        <source>Use DB transactions when storing downloaded messages</source>
-        <translation>Использовать БД при сохранении загруженных сообщений</translation>
-    </message>
-    <message>
-        <location filename="../src/librssguard/gui/settings/settingsdatabase.ui" line="30"/>
         <source>Database driver</source>
         <translation>Драйвер БД</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/gui/settings/settingsdatabase.ui" line="65"/>
+        <location filename="../src/librssguard/gui/settings/settingsdatabase.ui" line="52"/>
         <source>Use in-memory database as the working database</source>
         <translation>Использовать БД в памяти, как рабочую БД</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/gui/settings/settingsdatabase.ui" line="94"/>
+        <location filename="../src/librssguard/gui/settings/settingsdatabase.ui" line="81"/>
         <source>Hostname</source>
         <translation>Имя хоста</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/gui/settings/settingsdatabase.ui" line="109"/>
+        <location filename="../src/librssguard/gui/settings/settingsdatabase.ui" line="96"/>
         <source>Port</source>
         <translation>Порт</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/gui/settings/settingsdatabase.ui" line="140"/>
+        <location filename="../src/librssguard/gui/settings/settingsdatabase.ui" line="127"/>
         <source>Working database</source>
         <translation>Рабочая БД</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/gui/settings/settingsdatabase.ui" line="150"/>
+        <location filename="../src/librssguard/gui/settings/settingsdatabase.ui" line="137"/>
         <source>Username</source>
         <translation>Логин</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/gui/settings/settingsdatabase.ui" line="163"/>
+        <location filename="../src/librssguard/gui/settings/settingsdatabase.ui" line="150"/>
         <source>Password</source>
         <translation>Пароль</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/gui/settings/settingsdatabase.ui" line="178"/>
+        <location filename="../src/librssguard/gui/settings/settingsdatabase.ui" line="165"/>
         <source>Test setup</source>
         <translation>Запуск теста</translation>
     </message>
@@ -5747,7 +5743,7 @@ Authors of this application are NOT responsible for lost data.</source>
 <context>
     <name>SettingsFeedsMessages</name>
     <message>
-        <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.cpp" line="205"/>
+        <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.cpp" line="207"/>
         <source>Select new font</source>
         <translation>Выберите новый шрифт</translation>
     </message>
@@ -5818,7 +5814,7 @@ Authors of this application are NOT responsible for lost data.</source>
     </message>
     <message>
         <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="128"/>
-        <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="428"/>
+        <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="434"/>
         <source>Row height</source>
         <translation>Высота строки</translation>
     </message>
@@ -5828,126 +5824,126 @@ Authors of this application are NOT responsible for lost data.</source>
         <translation>Шрифт списка каналов </translation>
     </message>
     <message>
-        <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="171"/>
-        <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="352"/>
-        <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="561"/>
+        <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="177"/>
+        <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="358"/>
+        <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="573"/>
         <source>Font preview</source>
         <translation>Предпросмотр</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="181"/>
-        <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="362"/>
-        <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="571"/>
+        <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="187"/>
+        <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="368"/>
+        <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="583"/>
         <source>&amp;Change font</source>
         <translation>Изменить (&amp;C)</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="206"/>
+        <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="212"/>
         <source>Article count format</source>
         <translation>Формат счетчика статей</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="235"/>
+        <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="241"/>
         <source>Hide article counts if there are no unread articles</source>
         <translation>Скрыть количество статей, если нет непрочитанных статей</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="242"/>
+        <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="248"/>
         <source>Allow only basic keyboard shortcuts for feed/article list</source>
         <translation>Разрешить только основные сочетания клавиш для ленты новостей / списка статей</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="249"/>
+        <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="255"/>
         <source>Display tooltips for feeds and articles</source>
         <translation>Отображать всплывающие подсказки для каналов и статей</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="257"/>
+        <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="263"/>
         <source>Articles</source>
         <translation>Статьи</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="263"/>
+        <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="269"/>
         <source>Remove all read articles from all feeds on application exit</source>
         <translation>Удалять все прочитанные статьи из всех каналов при выходе</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="270"/>
+        <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="276"/>
         <source>Ignore changes in article body when new articles are being fetched</source>
         <translation>Игнорировать изменения в теле статьи при получении новых статей</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="291"/>
+        <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="297"/>
         <source>Internal article viewer</source>
         <translation>Внутренний просмотрщик статей</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="297"/>
+        <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="303"/>
         <source>Display attached pictures directly in article</source>
         <translation>Показывать прикрепленные изображения прямо в статье</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="284"/>
+        <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="290"/>
         <source>Bring application window to front once article is opened in external web browser</source>
         <translation>Вывести окно приложения на передний план после открытия статьи во внешнем веб-браузере</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="346"/>
+        <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="352"/>
         <source>Article browser font</source>
         <translation>Шрифт содержимого статьи</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="277"/>
+        <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="283"/>
         <source>Fixup date/time of articles which are in the future</source>
         <translation>Исправлять дату/время статей, которые находятся в будущем</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="306"/>
+        <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="312"/>
         <source>Limit height of pictures</source>
         <translation>Ограничить высоту изображений</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="391"/>
+        <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="397"/>
         <source>Articles list</source>
         <translation>Список статей</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="397"/>
+        <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="403"/>
         <source>Display real icons of feeds instead of read/unread icons</source>
         <translation>Отображать настоящие значки каналов вместо прочитано/не прочитано</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="404"/>
+        <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="410"/>
         <source>Keep article selection in the middle of the article list viewport</source>
         <translation>Сохранять выделение статьи в среднем окне просмотра списка статей</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="411"/>
+        <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="417"/>
         <source>Enable multiline items</source>
         <translation>Включить многострочные элементы</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="457"/>
+        <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="463"/>
         <source>Top/bottom row padding</source>
         <translation>Отступы верхней/нижней строки</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="486"/>
+        <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="492"/>
         <source>Use custom date/time format</source>
         <translation>Использовать собственный формат даты/времени</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="512"/>
+        <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="518"/>
         <source>Custom date/time format for today&apos;s articles</source>
         <translation>Пользовательский формат даты/времени для сегодняшних статей</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="555"/>
+        <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="561"/>
         <source>Article list font</source>
         <translation>Шрифт списка статей</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="538"/>
+        <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="544"/>
         <source>Show relative time for articles not older than</source>
         <translation>Показывать относительное время для статей не старше</translation>
     </message>
@@ -6425,28 +6421,28 @@ Also, there are some built-in sounds. Just start typing &quot;:&quot; and they w
 <context>
     <name>SkinFactory</name>
     <message>
-        <location filename="../src/librssguard/miscellaneous/skinfactory.cpp" line="126"/>
-        <location filename="../src/librssguard/miscellaneous/skinfactory.cpp" line="129"/>
+        <location filename="../src/librssguard/miscellaneous/skinfactory.cpp" line="151"/>
+        <location filename="../src/librssguard/miscellaneous/skinfactory.cpp" line="154"/>
         <source>This page was blocked by AdBlock</source>
         <translation>Эта страница заблокирована AdBlock</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/miscellaneous/skinfactory.cpp" line="127"/>
+        <location filename="../src/librssguard/miscellaneous/skinfactory.cpp" line="152"/>
         <source>Blocked URL: &quot;%1&quot;&lt;br/&gt;Used filter: &quot;%2&quot;</source>
         <translation>Заблокированный URL: &quot;%1&quot;&lt;br/&gt;Используемый фильтр: &quot;%2&quot;</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/miscellaneous/skinfactory.cpp" line="167"/>
+        <location filename="../src/librssguard/miscellaneous/skinfactory.cpp" line="192"/>
         <source>Written by </source>
         <translation>Написано </translation>
     </message>
     <message>
-        <location filename="../src/librssguard/miscellaneous/skinfactory.cpp" line="168"/>
+        <location filename="../src/librssguard/miscellaneous/skinfactory.cpp" line="193"/>
         <source>unknown author</source>
         <translation>автор неизвестен</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/miscellaneous/skinfactory.cpp" line="180"/>
+        <location filename="../src/librssguard/miscellaneous/skinfactory.cpp" line="205"/>
         <source>Newspaper view</source>
         <translation>Газетный вид</translation>
     </message>
@@ -7143,152 +7139,152 @@ Unread news: %2</source>
 <context>
     <name>TtRssAccountDetails</name>
     <message>
-        <location filename="../src/librssguard/services/tt-rss/gui/ttrssaccountdetails.cpp" line="15"/>
-        <source>If you select intelligent synchronization, then only not-yet-fetched or updated articles are downloaded. Network usage is greatly reduced and overall synchronization speed is greatly improved, but first feed fetching could be slow anyway if your feed contains huge number of articles.</source>
-        <translation>Если вы выберете интеллектуальную синхронизацию, будут загружены только еще не загруженные или обновленные статьи. Использование сети значительно сокращается, и общая скорость синхронизации значительно улучшается, но выборка первого канала в любом случае может быть медленной, если ваш канал содержит огромное количество статей.</translation>
+        <location filename="../src/librssguard/services/tt-rss/gui/ttrssaccountdetails.cpp" line="16"/>
+        <source>If you select intelligent synchronization, then only not-yet-fetched or updated articles are downloaded. Network usage is greatly reduced and overall synchronization speed is greatly improved, but first feed fetching could be slow anyway if your feed contains huge number of articles.&lt;br/&gt;&lt;br/&gt;Also, make sure to install &lt;a href=&quot;https://www.google.com&quot;&gt;api_newsplus&lt;/a&gt; TT-RSS plugin to your server instance.</source>
+        <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../src/librssguard/services/tt-rss/gui/ttrssaccountdetails.cpp" line="22"/>
+        <location filename="../src/librssguard/services/tt-rss/gui/ttrssaccountdetails.cpp" line="26"/>
         <source>Leaving this option on causes that updates of feeds will be probably much slower and may time-out often.</source>
         <translation>Если оставить этот параметр, обновления каналов будут, вероятно, намного медленнее и могут часто прерываться.</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/services/tt-rss/gui/ttrssaccountdetails.cpp" line="25"/>
+        <location filename="../src/librssguard/services/tt-rss/gui/ttrssaccountdetails.cpp" line="29"/>
         <source>HTTP authentication username</source>
         <translation>Имя пользователя для HTTP-аутентификации</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/services/tt-rss/gui/ttrssaccountdetails.cpp" line="26"/>
+        <location filename="../src/librssguard/services/tt-rss/gui/ttrssaccountdetails.cpp" line="30"/>
         <source>HTTP authentication password</source>
         <translation>Пароль аутентификации HTTP</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/services/tt-rss/gui/ttrssaccountdetails.cpp" line="27"/>
+        <location filename="../src/librssguard/services/tt-rss/gui/ttrssaccountdetails.cpp" line="31"/>
         <source>Password for your TT-RSS account</source>
         <translation>Пароль для вашей учетной записи TT-RSS</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/services/tt-rss/gui/ttrssaccountdetails.cpp" line="28"/>
+        <location filename="../src/librssguard/services/tt-rss/gui/ttrssaccountdetails.cpp" line="32"/>
         <source>Username for your TT-RSS account</source>
         <translation>Имя пользователя для вашей учетной записи TT-RSS</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/services/tt-rss/gui/ttrssaccountdetails.cpp" line="29"/>
+        <location filename="../src/librssguard/services/tt-rss/gui/ttrssaccountdetails.cpp" line="33"/>
         <source>URL of your TT-RSS instance WITHOUT trailing &quot;/api/&quot; string</source>
         <translation>URL вашего экземпляра TT-RSS БЕЗ завершающей строки &quot;/api/&quot;</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/services/tt-rss/gui/ttrssaccountdetails.cpp" line="31"/>
+        <location filename="../src/librssguard/services/tt-rss/gui/ttrssaccountdetails.cpp" line="35"/>
         <source>No test done yet.</source>
         <translation>Тест еще не сделан.</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/services/tt-rss/gui/ttrssaccountdetails.cpp" line="32"/>
+        <location filename="../src/librssguard/services/tt-rss/gui/ttrssaccountdetails.cpp" line="36"/>
         <source>Here, results of connection test are shown.</source>
         <translation>Здесь показаны результаты проверки соединения.</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/services/tt-rss/gui/ttrssaccountdetails.cpp" line="89"/>
-        <location filename="../src/librssguard/services/tt-rss/gui/ttrssaccountdetails.cpp" line="90"/>
+        <location filename="../src/librssguard/services/tt-rss/gui/ttrssaccountdetails.cpp" line="93"/>
+        <location filename="../src/librssguard/services/tt-rss/gui/ttrssaccountdetails.cpp" line="94"/>
         <source>API access on selected server is not enabled.</source>
         <translation>Доступ к API на выбранном сервере не включен.</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/services/tt-rss/gui/ttrssaccountdetails.cpp" line="94"/>
-        <location filename="../src/librssguard/services/tt-rss/gui/ttrssaccountdetails.cpp" line="95"/>
+        <location filename="../src/librssguard/services/tt-rss/gui/ttrssaccountdetails.cpp" line="98"/>
+        <location filename="../src/librssguard/services/tt-rss/gui/ttrssaccountdetails.cpp" line="99"/>
         <source>Entered credentials are incorrect.</source>
         <translation>Введенные учетные данные неверны.</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/services/tt-rss/gui/ttrssaccountdetails.cpp" line="99"/>
-        <location filename="../src/librssguard/services/tt-rss/gui/ttrssaccountdetails.cpp" line="100"/>
+        <location filename="../src/librssguard/services/tt-rss/gui/ttrssaccountdetails.cpp" line="103"/>
+        <location filename="../src/librssguard/services/tt-rss/gui/ttrssaccountdetails.cpp" line="104"/>
         <source>Other error occurred, contact developers.</source>
         <translation>Произошла другая ошибка, свяжитесь с разработчиками.</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/services/tt-rss/gui/ttrssaccountdetails.cpp" line="105"/>
-        <location filename="../src/librssguard/services/tt-rss/gui/ttrssaccountdetails.cpp" line="112"/>
+        <location filename="../src/librssguard/services/tt-rss/gui/ttrssaccountdetails.cpp" line="109"/>
+        <location filename="../src/librssguard/services/tt-rss/gui/ttrssaccountdetails.cpp" line="116"/>
         <source>Installed version: %1, required at least: %2.</source>
         <translation>Установленная версия: %1, требуется как минимум: %2.</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/services/tt-rss/gui/ttrssaccountdetails.cpp" line="108"/>
+        <location filename="../src/librssguard/services/tt-rss/gui/ttrssaccountdetails.cpp" line="112"/>
         <source>Selected Tiny Tiny RSS server is running unsupported version of API.</source>
         <translation>Выбранный Tiny Tiny RSS-сервер работает с неподдерживаемой версией API.</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/services/tt-rss/gui/ttrssaccountdetails.cpp" line="115"/>
+        <location filename="../src/librssguard/services/tt-rss/gui/ttrssaccountdetails.cpp" line="119"/>
         <source>Tiny Tiny RSS server is okay.</source>
         <translation>Tiny Tiny RSS-сервер в порядке.</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/services/tt-rss/gui/ttrssaccountdetails.cpp" line="121"/>
+        <location filename="../src/librssguard/services/tt-rss/gui/ttrssaccountdetails.cpp" line="125"/>
         <source>Network error: &apos;%1&apos;.</source>
         <translation>Ошибка сети: &apos;%1&apos;.</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/services/tt-rss/gui/ttrssaccountdetails.cpp" line="122"/>
+        <location filename="../src/librssguard/services/tt-rss/gui/ttrssaccountdetails.cpp" line="126"/>
         <source>Network error, have you entered correct Tiny Tiny RSS API endpoint and password?</source>
         <translation>Ошибка сети. Вы ввели правильную конечную точку Tiny Tiny RSS API и пароль?</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/services/tt-rss/gui/ttrssaccountdetails.cpp" line="126"/>
-        <location filename="../src/librssguard/services/tt-rss/gui/ttrssaccountdetails.cpp" line="127"/>
+        <location filename="../src/librssguard/services/tt-rss/gui/ttrssaccountdetails.cpp" line="130"/>
+        <location filename="../src/librssguard/services/tt-rss/gui/ttrssaccountdetails.cpp" line="131"/>
         <source>Unspecified error, did you enter correct URL?</source>
         <translation>Нетипичная ошибка, вы ввели правильный URL?</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/services/tt-rss/gui/ttrssaccountdetails.cpp" line="135"/>
+        <location filename="../src/librssguard/services/tt-rss/gui/ttrssaccountdetails.cpp" line="139"/>
         <source>Username cannot be empty.</source>
         <translation>Логин не может быть пустым.</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/services/tt-rss/gui/ttrssaccountdetails.cpp" line="138"/>
+        <location filename="../src/librssguard/services/tt-rss/gui/ttrssaccountdetails.cpp" line="142"/>
         <source>Username is okay.</source>
         <translation>Имя пользователя в порядке.</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/services/tt-rss/gui/ttrssaccountdetails.cpp" line="146"/>
+        <location filename="../src/librssguard/services/tt-rss/gui/ttrssaccountdetails.cpp" line="150"/>
         <source>Password cannot be empty.</source>
         <translation>Пароль не может быть пустым.</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/services/tt-rss/gui/ttrssaccountdetails.cpp" line="149"/>
+        <location filename="../src/librssguard/services/tt-rss/gui/ttrssaccountdetails.cpp" line="153"/>
         <source>Password is okay.</source>
         <translation>Пароль в порядке.</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/services/tt-rss/gui/ttrssaccountdetails.cpp" line="159"/>
+        <location filename="../src/librssguard/services/tt-rss/gui/ttrssaccountdetails.cpp" line="163"/>
         <source>Username is ok or it is not needed.</source>
         <translation>Имя пользователя в порядке или не требуется.</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/services/tt-rss/gui/ttrssaccountdetails.cpp" line="160"/>
+        <location filename="../src/librssguard/services/tt-rss/gui/ttrssaccountdetails.cpp" line="164"/>
         <source>Username is empty.</source>
         <translation>Логин пуст.</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/services/tt-rss/gui/ttrssaccountdetails.cpp" line="169"/>
+        <location filename="../src/librssguard/services/tt-rss/gui/ttrssaccountdetails.cpp" line="173"/>
         <source>Password is ok or it is not needed.</source>
         <translation>Пароль в порядке или не требуется.</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/services/tt-rss/gui/ttrssaccountdetails.cpp" line="170"/>
+        <location filename="../src/librssguard/services/tt-rss/gui/ttrssaccountdetails.cpp" line="174"/>
         <source>Password is empty.</source>
         <translation>Пароль пуст.</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/services/tt-rss/gui/ttrssaccountdetails.cpp" line="177"/>
+        <location filename="../src/librssguard/services/tt-rss/gui/ttrssaccountdetails.cpp" line="181"/>
         <source>URL cannot be empty.</source>
         <translation>URL не может быть пустым.</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/services/tt-rss/gui/ttrssaccountdetails.cpp" line="180"/>
+        <location filename="../src/librssguard/services/tt-rss/gui/ttrssaccountdetails.cpp" line="184"/>
         <source>URL should NOT end with &quot;/api/&quot;.</source>
         <translation>URL НЕ должен заканчиваться на &quot;/api/&quot;.</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/services/tt-rss/gui/ttrssaccountdetails.cpp" line="183"/>
+        <location filename="../src/librssguard/services/tt-rss/gui/ttrssaccountdetails.cpp" line="187"/>
         <source>URL is okay.</source>
         <translation>URL в порядке.</translation>
     </message>
@@ -7420,7 +7416,7 @@ Unread news: %2</source>
         <translation>Невозможно добавить канал, потому что выполняется еще одна важная операция.</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/services/tt-rss/ttrssserviceroot.cpp" line="366"/>
+        <location filename="../src/librssguard/services/tt-rss/ttrssserviceroot.cpp" line="367"/>
         <source>Username: %1
 Server: %2
 Last error: %3
@@ -7431,7 +7427,7 @@ Last login on: %4</source>
 Последний вход: %4</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/services/tt-rss/ttrssserviceroot.cpp" line="409"/>
+        <location filename="../src/librssguard/services/tt-rss/ttrssserviceroot.cpp" line="410"/>
         <source>cannot get list of feeds, network error &apos;%1&apos;</source>
         <translation>не удается получить список каналов, ошибка сети &apos;%1&apos;</translation>
     </message>
@@ -7439,12 +7435,12 @@ Last login on: %4</source>
 <context>
     <name>UnreadNode</name>
     <message>
-        <location filename="../src/librssguard/services/abstract/unreadnode.cpp" line="15"/>
+        <location filename="../src/librssguard/services/abstract/unreadnode.cpp" line="13"/>
         <source>Unread articles</source>
         <translation>Непрочитанные статьи</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/services/abstract/unreadnode.cpp" line="16"/>
+        <location filename="../src/librssguard/services/abstract/unreadnode.cpp" line="14"/>
         <source>You can find all unread articles here.</source>
         <translation>Вы можете найти все непрочитанные статьи здесь.</translation>
     </message>
@@ -7524,157 +7520,157 @@ Last login on: %4</source>
 <context>
     <name>WebFactory</name>
     <message>
-        <location filename="../src/librssguard/network-web/webfactory.cpp" line="282"/>
+        <location filename="../src/librssguard/network-web/webfactory.cpp" line="290"/>
         <source>Web engine settings</source>
         <translation>Настройки веб-движка</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/network-web/webfactory.cpp" line="305"/>
+        <location filename="../src/librssguard/network-web/webfactory.cpp" line="313"/>
         <source>Auto-load images</source>
         <translation>Автозагрузка изображений</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/network-web/webfactory.cpp" line="306"/>
+        <location filename="../src/librssguard/network-web/webfactory.cpp" line="314"/>
         <source>JS enabled</source>
         <translation>JS включён</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/network-web/webfactory.cpp" line="307"/>
+        <location filename="../src/librssguard/network-web/webfactory.cpp" line="315"/>
         <source>JS can open popup windows</source>
         <translation>JS может открывать всплывающие окна</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/network-web/webfactory.cpp" line="309"/>
+        <location filename="../src/librssguard/network-web/webfactory.cpp" line="317"/>
         <source>JS can access clipboard</source>
         <translation>JS имеет доступ к буферу обмена</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/network-web/webfactory.cpp" line="311"/>
+        <location filename="../src/librssguard/network-web/webfactory.cpp" line="319"/>
         <source>Hyperlinks can get focus</source>
         <translation>Гиперссылки получили фокус</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/network-web/webfactory.cpp" line="313"/>
+        <location filename="../src/librssguard/network-web/webfactory.cpp" line="321"/>
         <source>Local storage enabled</source>
         <translation>Локальное хранение включено</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/network-web/webfactory.cpp" line="315"/>
+        <location filename="../src/librssguard/network-web/webfactory.cpp" line="323"/>
         <source>Local content can access remote URLs</source>
         <translation>Локальное содержимое имеет доступ к URLs</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/network-web/webfactory.cpp" line="317"/>
+        <location filename="../src/librssguard/network-web/webfactory.cpp" line="325"/>
         <source>XSS auditing enabled</source>
         <translation>Аудит XSS включён</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/network-web/webfactory.cpp" line="319"/>
+        <location filename="../src/librssguard/network-web/webfactory.cpp" line="327"/>
         <source>Spatial navigation enabled</source>
         <translation>Пространственная навигация включена</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/network-web/webfactory.cpp" line="321"/>
+        <location filename="../src/librssguard/network-web/webfactory.cpp" line="329"/>
         <source>Local content can access local files</source>
         <translation>Локальное содержимое имеет доступ к локальным файлам</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/network-web/webfactory.cpp" line="323"/>
+        <location filename="../src/librssguard/network-web/webfactory.cpp" line="331"/>
         <source>Hyperlink auditing enabled</source>
         <translation>Аудит гиперссылок включён</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/network-web/webfactory.cpp" line="325"/>
+        <location filename="../src/librssguard/network-web/webfactory.cpp" line="333"/>
         <source>Animate scrolling</source>
         <translation>Анимация прокрутки</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/network-web/webfactory.cpp" line="327"/>
+        <location filename="../src/librssguard/network-web/webfactory.cpp" line="335"/>
         <source>Error pages enabled</source>
         <translation>Страницы ошибок включены</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/network-web/webfactory.cpp" line="328"/>
+        <location filename="../src/librssguard/network-web/webfactory.cpp" line="336"/>
         <source>Plugins enabled</source>
         <translation>Плагины включены</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/network-web/webfactory.cpp" line="329"/>
+        <location filename="../src/librssguard/network-web/webfactory.cpp" line="337"/>
         <source>Fullscreen enabled</source>
         <translation>Полный экран включён</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/network-web/webfactory.cpp" line="333"/>
+        <location filename="../src/librssguard/network-web/webfactory.cpp" line="341"/>
         <source>Screen capture enabled</source>
         <translation>Снятие скриншота включено</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/network-web/webfactory.cpp" line="335"/>
+        <location filename="../src/librssguard/network-web/webfactory.cpp" line="343"/>
         <source>WebGL enabled</source>
         <translation>WebGL включён</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/network-web/webfactory.cpp" line="336"/>
+        <location filename="../src/librssguard/network-web/webfactory.cpp" line="344"/>
         <source>Accelerate 2D canvas</source>
         <translation>Ускорение 2D канвас</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/network-web/webfactory.cpp" line="338"/>
+        <location filename="../src/librssguard/network-web/webfactory.cpp" line="346"/>
         <source>Print element backgrounds</source>
         <translation>Печатать фоновые элементы</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/network-web/webfactory.cpp" line="340"/>
+        <location filename="../src/librssguard/network-web/webfactory.cpp" line="348"/>
         <source>Allow running insecure content</source>
         <translation>Разрешить запуск небезопасного содержимого</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/network-web/webfactory.cpp" line="342"/>
+        <location filename="../src/librssguard/network-web/webfactory.cpp" line="350"/>
         <source>Allow geolocation on insecure origins</source>
         <translation>Разрешить геолокацию в небезопасных источниках</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/network-web/webfactory.cpp" line="112"/>
+        <location filename="../src/librssguard/network-web/webfactory.cpp" line="120"/>
         <source>Navigate to website manually</source>
         <translation>Перейти на сайт вручную</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/network-web/webfactory.cpp" line="113"/>
+        <location filename="../src/librssguard/network-web/webfactory.cpp" line="121"/>
         <source>%1 was unable to launch your web browser with the given URL, you need to open the below website URL in your web browser manually.</source>
         <translation>%1 не удалось запустить ваш веб-браузер с указанным URL-адресом, вам необходимо вручную открыть указанный ниже URL-адрес веб-сайта в своем веб-браузере.</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/network-web/webfactory.cpp" line="346"/>
+        <location filename="../src/librssguard/network-web/webfactory.cpp" line="354"/>
         <source>JS can activate windows</source>
         <translation>JS может активировать окна</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/network-web/webfactory.cpp" line="348"/>
+        <location filename="../src/librssguard/network-web/webfactory.cpp" line="356"/>
         <source>Show scrollbars</source>
         <translation>Показать полосы прокрутки</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/network-web/webfactory.cpp" line="349"/>
+        <location filename="../src/librssguard/network-web/webfactory.cpp" line="357"/>
         <source>Media playback with gestures</source>
         <translation>Воспроизведение мультимедиа жестами</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/network-web/webfactory.cpp" line="351"/>
+        <location filename="../src/librssguard/network-web/webfactory.cpp" line="359"/>
         <source>WebRTC uses only public interfaces</source>
         <translation>WebRTC использует только публичные интерфейсы</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/network-web/webfactory.cpp" line="353"/>
+        <location filename="../src/librssguard/network-web/webfactory.cpp" line="361"/>
         <source>JS can paste from clipboard</source>
         <translation>JS может вставлять из буфера обмена</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/network-web/webfactory.cpp" line="355"/>
+        <location filename="../src/librssguard/network-web/webfactory.cpp" line="363"/>
         <source>DNS prefetch enabled</source>
         <translation>Предзагрузка DNS включена</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/network-web/webfactory.cpp" line="359"/>
+        <location filename="../src/librssguard/network-web/webfactory.cpp" line="367"/>
         <source>PDF viewer enabled</source>
         <translation>Просмотрщик PDF включен</translation>
     </message>
