@@ -1,3 +1,20 @@
+4.3.2
+-----
+
+Added:
+* Display total number of underlying feeds/categories in account's tooltip in feed list. (#881)
+* Press "CTRL+F" when article script textbox is highlighted in "Article filters" dialog to allow for text searching. (#889)
+* Filtering option in article list toolbar are now inclusive with checkbox like appearance. You can now thus select multiple filtering conditions and if article meets atleast one of them, it is displayed. (#468)
+* WebEngine disk cache now can be disabled in settings. If it is "disabled" then RSS Guard will use memory-based cache which is automatically destroyed when RSS Guard exits. (#725)
+* Help spoilers now can display HTML help with clickable hyperlinks.
+* Skins are now able to load custom TTF and OTF fonts and also skins now are able to specify application-wide font. You can see sample usage of this feature in [sample](https://github.com/martinrotter/rssguard/tree/master/resources/skins/plain) skin.
+
+Fixed:
+* Fixed crash when importing OPML files.
+* Fixed looooong-standing hidden bug which could cause that labels DEassigned from filters were not synchronized back to feed service if supported.
+* Enhanced information about "resources" in "About" dialog.
+
+
 4.3.1
 -----
 
