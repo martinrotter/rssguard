@@ -29,13 +29,6 @@ FeedDownloader::FeedDownloader()
 
     emit updateProgress(res.feed, m_watcherLookup.progressValue(), m_watcherLookup.progressMaximum());
   });
-
-  /*
-connect(&m_watcherLookup, &QFutureWatcher<FeedUpdateResult>::progressValueChanged, this, [=](int prog) {
-//
-});
-*/
-
   connect(&m_watcherLookup, &QFutureWatcher<FeedUpdateResult>::finished, this, [=]() {
     finalizeUpdate();
   });
