@@ -8,6 +8,7 @@ Unicode True
 ; Do necessary inclusions.
 !include NSIS.definitions.nsh
 !include MUI2.nsh
+!include nsProcess.nsh
 
 ;--------------------------------
 ; Basic values definitions.
@@ -105,7 +106,7 @@ System::Call 'kernel32::CloseHandle(i $1)'
 !undef __ExecWaitJob__
 ${IfThen} $9 < 6 ${|} MessageBox mb_iconstop `ExecWaitJob "${_exec}" failed!` ${|}
 !macroend
-  
+
 ; If you are using solid compression, files that are required before
 ; the actual installation should be stored first in the data block,
 ; because this will make your installer start faster.
@@ -161,6 +162,15 @@ LangString DESC_StartMenuShortcuts ${LANG_ENGLISH} "Start Menu Shortcuts for ${A
 
 ; Uninstaller section.
 Section "Uninstall"
+exeTest:
+	${nsProcess::FindProcess} "${EXE_NAME}" $R0
+	StrCmp $R0 0 0 notRunning
+	MessageBox MB_OKCANCEL|MB_ICONEXCLAMATION '${APP_NAME} (${EXE_NAME}) is still running. Quit it first and then proceed.' IDOK exeTest IDCANCEL quitMe
+
+quitMe:
+  Abort
+
+notRunning:
   ; Here remove all files, but skip "data" folder.
   Push "$INSTDIR"
   Push "data4"
