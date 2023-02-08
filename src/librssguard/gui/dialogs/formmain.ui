@@ -146,6 +146,8 @@
     <addaction name="m_actionMarkSelectedItemsAsRead"/>
     <addaction name="m_actionMarkSelectedItemsAsUnread"/>
     <addaction name="m_actionClearSelectedItems"/>
+    <addaction name="separator"/>
+    <addaction name="m_actionFocusSearchFeeds"/>
    </widget>
    <widget class="QMenu" name="m_menuMessages">
     <property name="title">
@@ -169,6 +171,8 @@
     <addaction name="m_actionRestoreSelectedMessages"/>
     <addaction name="separator"/>
     <addaction name="m_actionMessageFilters"/>
+    <addaction name="separator"/>
+    <addaction name="m_actionFocusSearchArticles"/>
    </widget>
    <widget class="QMenu" name="m_menuRecycleBin">
     <property name="title">
@@ -888,6 +892,16 @@
   <action name="m_actionApplicationLog">
    <property name="text">
     <string>Display application &amp;log</string>
+   </property>
+  </action>
+  <action name="m_actionFocusSearchFeeds">
+   <property name="text">
+    <string>Focus feeds search box</string>
+   </property>
+  </action>
+  <action name="m_actionFocusSearchArticles">
+   <property name="text">
+    <string>Focus articles search box</string>
    </property>
   </action>
  </widget>

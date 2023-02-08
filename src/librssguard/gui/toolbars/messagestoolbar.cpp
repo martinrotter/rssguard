@@ -305,6 +305,10 @@ void MessagesToolBar::saveToolButtonSelection(const QString& button_name, const 
   qApp->settings()->setValue(GROUP(GUI), GUI::MessagesToolbarDefaultButtons, action_names.join(QSL(",")));
 }
 
+BaseLineEdit* MessagesToolBar::searchBox() const {
+  return m_txtSearchMessages;
+}
+
 void MessagesToolBar::activateAction(const QString& action_name, QWidgetAction* widget_action) {
   const int start = action_name.indexOf('[');
   const int end = action_name.indexOf(']');

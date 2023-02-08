@@ -28,6 +28,8 @@ class MessagesToolBar : public BaseToolBar {
     virtual QStringList defaultActions() const;
     virtual QStringList savedActions() const;
 
+    BaseLineEdit *searchBox() const;
+
   signals:
     void messageSearchPatternChanged(const QString& pattern);
     void messageHighlighterChanged(MessagesModel::MessageHighlighter highlighter);

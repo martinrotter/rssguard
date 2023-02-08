@@ -14,9 +14,8 @@ BaseLineEdit::BaseLineEdit(QWidget* parent)
                                                      this)) {
 
   connect(m_actShowPassword, &QAction::triggered, this, [this]() {
-    setEchoMode(echoMode() == QLineEdit::EchoMode::Password
-                ? QLineEdit::EchoMode::Normal
-                : QLineEdit::EchoMode::Password);
+    setEchoMode(echoMode() == QLineEdit::EchoMode::Password ? QLineEdit::EchoMode::Normal
+                                                            : QLineEdit::EchoMode::Password);
   });
   connect(this, &QLineEdit::textChanged, this, [this](const QString& text) {
     if (actions().contains(m_actShowPassword)) {
@@ -48,9 +47,13 @@ void BaseLineEdit::submit(const QString& text) {
 }
 
 void BaseLineEdit::keyPressEvent(QKeyEvent* event) {
-  if (event->key() == Qt::Key_Enter || event->key() == Qt::Key_Return) {
+  if (event->key() == Qt::Key::Key_Enter || event->key() == Qt::Key::Key_Return) {
     emit submitted(text());
+    event->accept();
+  }
 
+  if (event->key() == Qt::Key::Key_Escape) {
+    submit(QString());
     event->accept();
   }
 

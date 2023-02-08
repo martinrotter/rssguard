@@ -93,27 +93,31 @@ void FeedsToolBar::loadSpecificActions(const QList<QAction*>& actions, bool init
 }
 
 QStringList FeedsToolBar::defaultActions() const {
-  return QString(GUI::FeedsToolbarActionsDef).split(',',
+  return QString(GUI::FeedsToolbarActionsDef)
+    .split(',',
 #if QT_VERSION >= 0x050F00 // Qt >= 5.15.0
-                                                    Qt::SplitBehaviorFlags::SkipEmptyParts);
+           Qt::SplitBehaviorFlags::SkipEmptyParts);
 #else
-                                                    QString::SplitBehavior::SkipEmptyParts);
+           QString::SplitBehavior::SkipEmptyParts);
 #endif
 }
 
 QStringList FeedsToolBar::savedActions() const {
-  return qApp->settings()->value(GROUP(GUI),
-                                 SETTING(GUI::FeedsToolbarActions)).toString().split(',',
+  return qApp->settings()
+    ->value(GROUP(GUI), SETTING(GUI::FeedsToolbarActions))
+    .toString()
+    .split(',',
 #if QT_VERSION >= 0x050F00 // Qt >= 5.15.0
-                                                                                     Qt::SplitBehaviorFlags::SkipEmptyParts);
+           Qt::SplitBehaviorFlags::SkipEmptyParts);
 #else
-                                                                                     QString::SplitBehavior::SkipEmptyParts);
+           QString::SplitBehavior::SkipEmptyParts);
 #endif
 }
 
 void FeedsToolBar::initializeSearchBox() {
   m_txtSearchMessages = new BaseLineEdit(this);
-  m_txtSearchMessages->setSizePolicy(QSizePolicy::Policy::Expanding, m_txtSearchMessages->sizePolicy().verticalPolicy());
+  m_txtSearchMessages->setSizePolicy(QSizePolicy::Policy::Expanding,
+                                     m_txtSearchMessages->sizePolicy().verticalPolicy());
   m_txtSearchMessages->setPlaceholderText(tr("Search feeds (regex only)"));
 
   // Setup wrapping action for search box.
@@ -125,4 +129,8 @@ void FeedsToolBar::initializeSearchBox() {
   m_actionSearchMessages->setProperty("name", tr("Feeds search box"));
 
   connect(m_txtSearchMessages, &BaseLineEdit::textChanged, this, &FeedsToolBar::feedsFilterPatternChanged);
+}
+
+BaseLineEdit* FeedsToolBar::searchBox() const {
+  return m_txtSearchMessages;
 }

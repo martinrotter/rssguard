@@ -16,6 +16,7 @@
 #include "gui/messagebox.h"
 #include "gui/messagepreviewer.h"
 #include "gui/messagesview.h"
+#include "gui/reusable/baselineedit.h"
 #include "gui/reusable/plaintoolbutton.h"
 #include "gui/systemtrayicon.h"
 #include "gui/tabbar.h"
@@ -209,6 +210,8 @@ QList<QAction*> FormMain::allActions() const {
   actions << m_ui->m_actionEditSelectedItem;
   actions << m_ui->m_actionCopyUrlSelectedFeed;
   actions << m_ui->m_actionCopyUrlSelectedArticles;
+  actions << m_ui->m_actionFocusSearchFeeds;
+  actions << m_ui->m_actionFocusSearchArticles;
   actions << m_ui->m_actionDeleteSelectedItem;
   actions << m_ui->m_actionServiceAdd;
   actions << m_ui->m_actionServiceEdit;
@@ -792,6 +795,18 @@ void FormMain::createConnections() {
   connect(qApp->feedReader(), &FeedReader::feedUpdatesFinished, this, &FormMain::onFeedUpdatesFinished);
 
   // Toolbar forwardings.
+  connect(m_ui->m_actionFocusSearchFeeds,
+          &QAction::triggered,
+          tabWidget()->feedMessageViewer()->feedsToolBar()->searchBox(),
+          [this]() {
+            tabWidget()->feedMessageViewer()->feedsToolBar()->searchBox()->setFocus();
+          });
+  connect(m_ui->m_actionFocusSearchArticles,
+          &QAction::triggered,
+          tabWidget()->feedMessageViewer()->messagesToolBar()->searchBox(),
+          [this]() {
+            tabWidget()->feedMessageViewer()->messagesToolBar()->searchBox()->setFocus();
+          });
   connect(m_ui->m_actionAddFeedIntoSelectedItem,
           &QAction::triggered,
           tabWidget()->feedMessageViewer()->feedsView(),

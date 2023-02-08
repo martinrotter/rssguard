@@ -22,6 +22,8 @@ class FeedsToolBar : public BaseToolBar {
     virtual QStringList defaultActions() const;
     virtual QStringList savedActions() const;
 
+    BaseLineEdit *searchBox() const;
+
   signals:
     void feedsFilterPatternChanged(const QString& pattern);
 
