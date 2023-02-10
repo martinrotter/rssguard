@@ -7,6 +7,7 @@
 
 #include "core/messagesmodel.h"
 #include "core/messagesproxymodel.h"
+#include "gui/reusable/searchlineedit.h"
 #include "services/abstract/rootitem.h"
 
 #include <QHeaderView>
@@ -61,7 +62,10 @@ class MessagesView : public BaseTreeView {
     void selectNextUnreadItem();
 
     // Searchs the visible message according to given pattern.
-    void searchMessages(const QString& pattern);
+    void searchMessages(SearchLineEdit::SearchMode mode,
+                        Qt::CaseSensitivity sensitivity,
+                        int custom_criteria,
+                        const QString& phrase);
     void highlightMessages(MessagesModel::MessageHighlighter highlighter);
     void changeFilter(MessagesProxyModel::MessageListFilter filter);
 

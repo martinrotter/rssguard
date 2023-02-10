@@ -3,8 +3,9 @@
 #include "gui/reusable/plaintoolbutton.h"
 
 #include <QAction>
-#include <QPainter>
 #include <QPaintEvent>
+#include <QPainter>
+#include <QPainterPath>
 #include <QStyle>
 #include <QStyleOption>
 #include <QToolButton>
@@ -29,6 +30,22 @@ void PlainToolButton::paintEvent(QPaintEvent* e) {
   }
 
   icon().paint(&p, rect);
+
+  if (menu() != nullptr) {
+    // Draw "dropdown" triangle.
+    QPainterPath path;
+
+    const int triangle_width = int(rect.width() * 0.4);
+    const int triangle_height = int(triangle_width * 0.5);
+    const auto triangle_origin = rect.bottomRight() - QPoint(triangle_width, triangle_height);
+
+    path.moveTo(triangle_origin);
+    path.lineTo(QPoint(rect.right(), triangle_origin.y()));
+    path.lineTo(triangle_origin + QPoint(triangle_width / 2, triangle_height));
+    path.lineTo(triangle_origin);
+
+    p.fillPath(path, QBrush(Qt::GlobalColor::black));
+  }
 }
 
 int PlainToolButton::padding() const {

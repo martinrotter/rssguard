@@ -4,7 +4,6 @@
 
 #include "3rd-party/boolinq/boolinq.h"
 #include "definitions/definitions.h"
-#include "gui/reusable/baselineedit.h"
 #include "miscellaneous/iconfactory.h"
 #include "miscellaneous/settings.h"
 
@@ -151,10 +150,10 @@ void MessagesToolBar::handleMessageFilterChange(QAction* action) {
 }
 
 void MessagesToolBar::initializeSearchBox() {
-  m_tmrSearchPattern = new QTimer(this);
-  m_tmrSearchPattern->setSingleShot(true);
-
-  m_txtSearchMessages = new BaseLineEdit(this);
+  m_txtSearchMessages =
+    new SearchLineEdit({SearchLineEdit::CustomSearchChoice(tr("Everywhere"), int(SearchFields::SearchAll)),
+                        SearchLineEdit::CustomSearchChoice(tr("Titles only"), int(SearchFields::SearchTitleOnly))},
+                       this);
   m_txtSearchMessages->setSizePolicy(QSizePolicy::Policy::Expanding,
                                      m_txtSearchMessages->sizePolicy().verticalPolicy());
   m_txtSearchMessages->setPlaceholderText(tr("Search articles (regex only)"));
@@ -166,10 +165,7 @@ void MessagesToolBar::initializeSearchBox() {
   m_actionSearchMessages->setProperty("type", SEARCH_BOX_ACTION_NAME);
   m_actionSearchMessages->setProperty("name", tr("Article search box"));
 
-  connect(m_txtSearchMessages, &BaseLineEdit::textChanged, this, &MessagesToolBar::onSearchPatternChanged);
-  connect(m_tmrSearchPattern, &QTimer::timeout, this, [this]() {
-    emit messageSearchPatternChanged(m_searchPattern);
-  });
+  connect(m_txtSearchMessages, &SearchLineEdit::searchCriteriaChanged, this, &MessagesToolBar::searchCriteriaChanged);
 }
 
 void MessagesToolBar::addActionToMenu(QMenu* menu,
@@ -305,7 +301,7 @@ void MessagesToolBar::saveToolButtonSelection(const QString& button_name, const 
   qApp->settings()->setValue(GROUP(GUI), GUI::MessagesToolbarDefaultButtons, action_names.join(QSL(",")));
 }
 
-BaseLineEdit* MessagesToolBar::searchBox() const {
+SearchLineEdit* MessagesToolBar::searchBox() const {
   return m_txtSearchMessages;
 }
 
@@ -346,9 +342,4 @@ QStringList MessagesToolBar::savedActions() const {
 #else
            QString::SplitBehavior::SkipEmptyParts);
 #endif
-}
-
-void MessagesToolBar::onSearchPatternChanged(const QString& search_pattern) {
-  m_searchPattern = search_pattern;
-  m_tmrSearchPattern->start(search_pattern.isEmpty() ? 0ms : 300ms);
 }

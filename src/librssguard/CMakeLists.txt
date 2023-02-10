@@ -131,6 +131,8 @@ set(SOURCES
   gui/reusable/searchtextwidget.h
   gui/reusable/squeezelabel.cpp
   gui/reusable/squeezelabel.h
+  gui/reusable/searchlineedit.cpp
+  gui/reusable/searchlineedit.h
   gui/reusable/styleditemdelegatewithoutfocus.cpp
   gui/reusable/styleditemdelegatewithoutfocus.h
   gui/reusable/timespinbox.cpp

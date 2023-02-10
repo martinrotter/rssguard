@@ -230,10 +230,7 @@ void FeedMessageViewer::displayMessage(const Message& message, RootItem* root) {
 
 void FeedMessageViewer::createConnections() {
   // Filtering & searching.
-  connect(m_toolBarMessages,
-          &MessagesToolBar::messageSearchPatternChanged,
-          m_messagesView,
-          &MessagesView::searchMessages);
+  connect(m_toolBarMessages, &MessagesToolBar::searchCriteriaChanged, m_messagesView, &MessagesView::searchMessages);
   connect(m_toolBarFeeds, &FeedsToolBar::feedsFilterPatternChanged, m_feedsView, &FeedsView::filterItems);
   connect(m_toolBarMessages,
           &MessagesToolBar::messageHighlighterChanged,

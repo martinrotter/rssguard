@@ -7,17 +7,19 @@
 
 #include "core/messagesmodel.h"
 #include "core/messagesproxymodel.h"
+#include "gui/reusable/searchlineedit.h"
 
-class BaseLineEdit;
 class QWidgetAction;
 class QToolButton;
 class QMenu;
 class QTimer;
 
 class MessagesToolBar : public BaseToolBar {
-  Q_OBJECT
+    Q_OBJECT
 
   public:
+    enum class SearchFields { SearchTitleOnly = 1, SearchAll = 2 };
+
     explicit MessagesToolBar(const QString& title, QWidget* parent = nullptr);
 
     virtual QList<QAction*> availableActions() const;
@@ -28,24 +30,30 @@ class MessagesToolBar : public BaseToolBar {
     virtual QStringList defaultActions() const;
     virtual QStringList savedActions() const;
 
-    BaseLineEdit *searchBox() const;
+    SearchLineEdit* searchBox() const;
 
   signals:
-    void messageSearchPatternChanged(const QString& pattern);
+    void searchCriteriaChanged(SearchLineEdit::SearchMode mode,
+                               Qt::CaseSensitivity sensitivity,
+                               int custom_criteria,
+                               const QString& phrase);
     void messageHighlighterChanged(MessagesModel::MessageHighlighter highlighter);
     void messageFilterChanged(MessagesProxyModel::MessageListFilter filter);
 
   private slots:
-    void onSearchPatternChanged(const QString& search_pattern);
     void handleMessageHighlighterChange(QAction* action);
     void handleMessageFilterChange(QAction* action);
 
   private:
     void initializeSearchBox();
-    void addActionToMenu(QMenu* menu, const QIcon& icon, const QString& title, const QVariant& value, const QString& name);
+    void addActionToMenu(QMenu* menu,
+                         const QIcon& icon,
+                         const QString& title,
+                         const QVariant& value,
+                         const QString& name);
     void initializeHighlighter();
     void activateAction(const QString& action_name, QWidgetAction* widget_action);
-    void saveToolButtonSelection(const QString& button_name, const QList<QAction *> &actions) const;
+    void saveToolButtonSelection(const QString& button_name, const QList<QAction*>& actions) const;
 
   private:
     QWidgetAction* m_actionMessageHighlighter;
@@ -55,9 +63,7 @@ class MessagesToolBar : public BaseToolBar {
     QMenu* m_menuMessageHighlighter;
     QMenu* m_menuMessageFilter;
     QWidgetAction* m_actionSearchMessages;
-    BaseLineEdit* m_txtSearchMessages;
-    QTimer* m_tmrSearchPattern;
-    QString m_searchPattern;
+    SearchLineEdit* m_txtSearchMessages;
 };
 
 #endif // NEWSTOOLBAR_H

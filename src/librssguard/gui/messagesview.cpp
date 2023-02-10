@@ -11,6 +11,7 @@
 #include "gui/reusable/labelsmenu.h"
 #include "gui/reusable/styleditemdelegatewithoutfocus.h"
 #include "gui/reusable/treeviewcolumnsmenu.h"
+#include "gui/toolbars/messagestoolbar.h"
 #include "miscellaneous/externaltool.h"
 #include "miscellaneous/feedreader.h"
 #include "miscellaneous/settings.h"
@@ -756,10 +757,33 @@ void MessagesView::selectNextUnreadItem() {
   }
 }
 
-void MessagesView::searchMessages(const QString& pattern) {
-  qDebugNN << LOGSEC_GUI << "Running search of messages with pattern" << QUOTE_W_SPACE_DOT(pattern);
+void MessagesView::searchMessages(SearchLineEdit::SearchMode mode,
+                                  Qt::CaseSensitivity sensitivity,
+                                  int custom_criteria,
+                                  const QString& phrase) {
+  qDebugNN << LOGSEC_GUI << "Running search of messages with pattern" << QUOTE_W_SPACE_DOT(phrase);
 
-  m_proxyModel->setFilterRegularExpression(pattern.toLower());
+  switch (mode) {
+    case SearchLineEdit::SearchMode::Wildcard:
+      m_proxyModel->setFilterWildcard(phrase);
+      break;
+
+    case SearchLineEdit::SearchMode::RegularExpression:
+      m_proxyModel->setFilterRegularExpression(phrase);
+      break;
+
+    case SearchLineEdit::SearchMode::FixedString:
+    default:
+      m_proxyModel->setFilterFixedString(phrase);
+      break;
+  }
+
+  m_proxyModel->setFilterCaseSensitivity(sensitivity);
+
+  MessagesToolBar::SearchFields where_search = MessagesToolBar::SearchFields(custom_criteria);
+
+  m_proxyModel->setFilterKeyColumn(where_search == MessagesToolBar::SearchFields::SearchTitleOnly ? MSG_DB_TITLE_INDEX
+                                                                                                  : -1);
 
   if (selectionModel()->selectedRows().isEmpty()) {
     emit currentMessageRemoved();
