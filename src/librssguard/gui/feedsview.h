@@ -6,6 +6,7 @@
 #include "gui/reusable/basetreeview.h"
 
 #include "core/feedsmodel.h"
+#include "gui/toolbars/feedstoolbar.h"
 
 #include <QStyledItemDelegate>
 
@@ -80,7 +81,10 @@ class RSSGUARD_DLLSPEC FeedsView : public BaseTreeView {
     // Switches visibility of the widget.
     void switchVisibility();
 
-    void filterItems(const QString& pattern);
+    void filterItems(SearchLineEdit::SearchMode mode,
+                     Qt::CaseSensitivity sensitivity,
+                     int custom_criteria,
+                     const QString& phrase);
     void toggleFeedSortingMode(bool sort_alphabetically);
     void invalidateReadFeedsFilter(bool set_new_value = false, bool show_unread_only = false);
 

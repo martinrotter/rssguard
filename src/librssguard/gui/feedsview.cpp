@@ -530,16 +530,41 @@ void FeedsView::focusInEvent(QFocusEvent* event) {
   }
 }
 
-void FeedsView::filterItems(const QString& pattern) {
-  if (!pattern.isEmpty()) {
+void FeedsView::filterItems(SearchLineEdit::SearchMode mode,
+                            Qt::CaseSensitivity sensitivity,
+                            int custom_criteria,
+                            const QString& phrase) {
+  if (!phrase.isEmpty()) {
     m_dontSaveExpandState = true;
     expandAll();
     m_dontSaveExpandState = false;
   }
 
-  m_proxyModel->setFilterRegularExpression(pattern.toLower());
+  qDebugNN << LOGSEC_GUI << "Running search of feeds with pattern" << QUOTE_W_SPACE_DOT(phrase);
 
-  if (pattern.isEmpty()) {
+  switch (mode) {
+    case SearchLineEdit::SearchMode::Wildcard:
+      m_proxyModel->setFilterWildcard(phrase);
+      break;
+
+    case SearchLineEdit::SearchMode::RegularExpression:
+      m_proxyModel->setFilterRegularExpression(phrase);
+      break;
+
+    case SearchLineEdit::SearchMode::FixedString:
+    default:
+      m_proxyModel->setFilterFixedString(phrase);
+      break;
+  }
+
+  m_proxyModel->setFilterCaseSensitivity(sensitivity);
+
+  FeedsToolBar::SearchFields where_search = FeedsToolBar::SearchFields(custom_criteria);
+
+  m_proxyModel->setFilterKeyColumn(where_search == FeedsToolBar::SearchFields::SearchTitleOnly ? FDS_MODEL_TITLE_INDEX
+                                                                                               : -1);
+
+  if (phrase.isEmpty()) {
     loadAllExpandStates();
   }
 }

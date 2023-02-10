@@ -5,13 +5,16 @@
 
 #include "gui/toolbars/basetoolbar.h"
 
-class BaseLineEdit;
+#include "gui/reusable/searchlineedit.h"
+
 class QWidgetAction;
 
 class FeedsToolBar : public BaseToolBar {
-  Q_OBJECT
+    Q_OBJECT
 
   public:
+    enum class SearchFields { SearchTitleOnly = 1, SearchAll = 2 };
+
     explicit FeedsToolBar(const QString& title, QWidget* parent = nullptr);
 
     virtual QList<QAction*> availableActions() const;
@@ -22,16 +25,19 @@ class FeedsToolBar : public BaseToolBar {
     virtual QStringList defaultActions() const;
     virtual QStringList savedActions() const;
 
-    BaseLineEdit *searchBox() const;
+    SearchLineEdit* searchBox() const;
 
   signals:
-    void feedsFilterPatternChanged(const QString& pattern);
+    void searchCriteriaChanged(SearchLineEdit::SearchMode mode,
+                               Qt::CaseSensitivity sensitivity,
+                               int custom_criteria,
+                               const QString& phrase);
 
   private:
     void initializeSearchBox();
 
   private:
-    BaseLineEdit* m_txtSearchMessages;
+    SearchLineEdit* m_txtSearchMessages;
     QWidgetAction* m_actionSearchMessages;
 };
 

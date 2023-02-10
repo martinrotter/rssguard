@@ -2,7 +2,6 @@
 
 #include "gui/toolbars/feedstoolbar.h"
 
-#include "gui/reusable/baselineedit.h"
 #include "miscellaneous/application.h"
 #include "miscellaneous/iconfactory.h"
 #include "miscellaneous/settings.h"
@@ -115,10 +114,13 @@ QStringList FeedsToolBar::savedActions() const {
 }
 
 void FeedsToolBar::initializeSearchBox() {
-  m_txtSearchMessages = new BaseLineEdit(this);
+  m_txtSearchMessages =
+    new SearchLineEdit({SearchLineEdit::CustomSearchChoice(tr("Everywhere"), int(SearchFields::SearchAll)),
+                        SearchLineEdit::CustomSearchChoice(tr("Titles only"), int(SearchFields::SearchTitleOnly))},
+                       this);
   m_txtSearchMessages->setSizePolicy(QSizePolicy::Policy::Expanding,
                                      m_txtSearchMessages->sizePolicy().verticalPolicy());
-  m_txtSearchMessages->setPlaceholderText(tr("Search feeds (regex only)"));
+  m_txtSearchMessages->setPlaceholderText(tr("Search feeds"));
 
   // Setup wrapping action for search box.
   m_actionSearchMessages = new QWidgetAction(this);
@@ -128,9 +130,9 @@ void FeedsToolBar::initializeSearchBox() {
   m_actionSearchMessages->setProperty("type", SEARCH_BOX_ACTION_NAME);
   m_actionSearchMessages->setProperty("name", tr("Feeds search box"));
 
-  connect(m_txtSearchMessages, &BaseLineEdit::textChanged, this, &FeedsToolBar::feedsFilterPatternChanged);
+  connect(m_txtSearchMessages, &SearchLineEdit::searchCriteriaChanged, this, &FeedsToolBar::searchCriteriaChanged);
 }
 
-BaseLineEdit* FeedsToolBar::searchBox() const {
+SearchLineEdit* FeedsToolBar::searchBox() const {
   return m_txtSearchMessages;
 }

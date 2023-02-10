@@ -24,7 +24,7 @@ FeedsProxyModel::FeedsProxyModel(FeedsModel* source_model, QObject* parent)
   setSortCaseSensitivity(Qt::CaseSensitivity::CaseInsensitive);
   setRecursiveFilteringEnabled(true);
   setFilterKeyColumn(FDS_MODEL_TITLE_INDEX);
-  setFilterRole(LOWER_TITLE_ROLE);
+  setFilterRole(Qt::ItemDataRole::EditRole);
   setDynamicSortFilter(true);
   setSourceModel(m_sourceModel);
 
