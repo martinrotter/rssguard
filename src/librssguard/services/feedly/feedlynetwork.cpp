@@ -203,27 +203,30 @@ void FeedlyNetwork::markers(const QString& action, const QStringList& msg_custom
   QString target_url = fullUrl(Service::Markers);
   int timeout = qApp->settings()->value(GROUP(Feeds), SETTING(Feeds::UpdateTimeout)).toInt();
   QByteArray output;
-  QJsonObject input;
 
-  input[QSL("action")] = action;
-  input[QSL("type")] = QSL("entries");
-  input[QSL("entryIds")] = QJsonArray::fromStringList(msg_custom_ids);
+  for (int i = 0; i < msg_custom_ids.size(); i += 500) {
+    QJsonObject input;
 
-  QByteArray input_data = QJsonDocument(input).toJson(QJsonDocument::JsonFormat::Compact);
-  auto result =
-    NetworkFactory::performNetworkOperation(target_url,
-                                            timeout,
-                                            input_data,
-                                            output,
-                                            QNetworkAccessManager::Operation::PostOperation,
-                                            {bearerHeader(bear), {HTTP_HEADERS_CONTENT_TYPE, "application/json"}},
-                                            false,
-                                            {},
-                                            {},
-                                            m_service->networkProxy());
+    input[QSL("action")] = action;
+    input[QSL("type")] = QSL("entries");
+    input[QSL("entryIds")] = QJsonArray::fromStringList(msg_custom_ids.mid(i, 500));
 
-  if (result.m_networkError != QNetworkReply::NetworkError::NoError) {
-    throw NetworkException(result.m_networkError, output);
+    QByteArray input_data = QJsonDocument(input).toJson(QJsonDocument::JsonFormat::Compact);
+    auto result =
+      NetworkFactory::performNetworkOperation(target_url,
+                                              timeout,
+                                              input_data,
+                                              output,
+                                              QNetworkAccessManager::Operation::PostOperation,
+                                              {bearerHeader(bear), {HTTP_HEADERS_CONTENT_TYPE, "application/json"}},
+                                              false,
+                                              {},
+                                              {},
+                                              m_service->networkProxy());
+
+    if (result.m_networkError != QNetworkReply::NetworkError::NoError) {
+      throw NetworkException(result.m_networkError, output);
+    }
   }
 }
 
