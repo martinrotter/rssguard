@@ -5458,7 +5458,9 @@ File filter for external e-mail selection dialog.</extracomment>
         <source>Placeholders:
  • %1 - title of selected message,
  • %2 - body of selected message.</source>
-        <translation type="unfinished"/>
+        <translation>Placeholders:
+ • %1 - title of selected message,
+ • %2 - body of selected message.</translation>
     </message>
     <message>
         <location filename="../src/librssguard/gui/settings/settingsbrowsermail.ui" line="301"/>

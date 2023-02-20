@@ -78,7 +78,7 @@ Error: %1</source>
     <message>
         <location filename="../src/librssguard/network-web/adblock/adblockdialog.ui" line="58"/>
         <source>Filter lists</source>
-        <translation>篩選器清單</translation>
+        <translation>篩選規則清單</translation>
     </message>
     <message>
         <location filename="../src/librssguard/network-web/adblock/adblockdialog.ui" line="64"/>
@@ -88,7 +88,7 @@ Error: %1</source>
     <message>
         <location filename="../src/librssguard/network-web/adblock/adblockdialog.ui" line="78"/>
         <source>Custom filters</source>
-        <translation>自訂篩選器</translation>
+        <translation>自訂篩選規則</translation>
     </message>
     <message>
         <location filename="../src/librssguard/network-web/adblock/adblockdialog.ui" line="84"/>
@@ -114,7 +114,7 @@ Error: %1</source>
     <message>
         <location filename="../src/librssguard/network-web/adblock/adblockmanager.cpp" line="198"/>
         <source>Failed to setup filters and start server: %1.</source>
-        <translation type="unfinished"/>
+        <translation>無法建立篩選規則，並啟動伺服器: %1。</translation>
     </message>
     <message>
         <location filename="../src/librssguard/network-web/adblock/adblockmanager.cpp" line="375"/>
@@ -631,7 +631,7 @@ Click here to open parent directory.</source>
     <message>
         <location filename="../src/librssguard/services/abstract/feed.cpp" line="242"/>
         <source>uses global settings, but global auto-fetching of articles is disabled</source>
-        <translation type="unfinished"/>
+        <translation>使用全局設定，但停用全局自動下載文章</translation>
     </message>
     <message>
         <location filename="../src/librssguard/services/abstract/feed.cpp" line="264"/>
@@ -654,7 +654,7 @@ Click here to open parent directory.</source>
 Active message filters: %2
 Status: %3</source>
         <translation>自動更新之狀態: %1
-使用中的篩選器: %2
+使用中的篩選規則: %2
 狀態: %3</translation>
     </message>
     <message>
@@ -1374,7 +1374,7 @@ or this functionality is not implemented yet.</source>
     <message>
         <location filename="../src/librssguard/services/abstract/gui/formcategorydetails.cpp" line="157"/>
         <source>Images (%1)</source>
-        <translation type="unfinished"/>
+        <translation>圖片(%1)</translation>
     </message>
     <message>
         <location filename="../src/librssguard/services/abstract/gui/formcategorydetails.cpp" line="163"/>
@@ -1689,7 +1689,7 @@ or this functionality is not implemented yet.</source>
     <message>
         <location filename="../src/librssguard/services/abstract/gui/formfeeddetails.ui" line="79"/>
         <source>Ignore notifications for this feed</source>
-        <translation type="unfinished"/>
+        <translation>忽略此文元的通知</translation>
     </message>
 </context>
 <context>
@@ -1697,7 +1697,7 @@ or this functionality is not implemented yet.</source>
     <message>
         <location filename="../src/librssguard/gui/dialogs/formlog.cpp" line="16"/>
         <source>Application log</source>
-        <translation type="unfinished"/>
+        <translation>應用程式的記錄</translation>
     </message>
 </context>
 <context>
@@ -2286,7 +2286,7 @@ or this functionality is not implemented yet.</source>
     <message>
         <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="890"/>
         <source>Display application &amp;log</source>
-        <translation type="unfinished"/>
+        <translation>顯示應用程式的記錄(&amp;L)</translation>
     </message>
     <message>
         <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="738"/>
@@ -2383,7 +2383,7 @@ or this functionality is not implemented yet.</source>
     <message>
         <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.cpp" line="244"/>
         <source>Cannot save new filter, error: &apos;%1&apos;.</source>
-        <translation>無法儲存新篩選器，錯誤: &apos;%1&apos;。</translation>
+        <translation>無法儲存新篩選規則，錯誤: &apos;%1&apos;。</translation>
     </message>
     <message>
         <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.cpp" line="189"/>
@@ -2448,7 +2448,7 @@ or this functionality is not implemented yet.</source>
     <message>
         <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.cpp" line="208"/>
         <source>Do you really want to remove selected filter?</source>
-        <translation>真要移除所選篩選方式嗎？</translation>
+        <translation>真要移除所選篩選規則嗎？</translation>
     </message>
     <message>
         <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.ui" line="14"/>
@@ -2473,7 +2473,7 @@ or this functionality is not implemented yet.</source>
     <message>
         <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.ui" line="86"/>
         <source>&amp;New filter</source>
-        <translation>新增篩選器(&amp;N)</translation>
+        <translation>新增篩選規則(&amp;N)</translation>
     </message>
     <message>
         <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.ui" line="115"/>
@@ -2494,7 +2494,7 @@ or this functionality is not implemented yet.</source>
     <message>
         <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.ui" line="152"/>
         <source>Pre-made filters</source>
-        <translation type="unfinished"/>
+        <translation>預製的篩選規則</translation>
     </message>
     <message>
         <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.ui" line="174"/>
@@ -2752,7 +2752,7 @@ You have to restart manually.</source>
         <location filename="../src/librssguard/services/standard/gui/formstandardimportexport.cpp" line="137"/>
         <location filename="../src/librssguard/services/standard/gui/formstandardimportexport.cpp" line="138"/>
         <source>Some feeds were not loaded properly or import file is corrupted.</source>
-        <translation type="unfinished"/>
+        <translation>有些文源無法適當載入，或匯入的檔案有毀損。</translation>
     </message>
     <message>
         <location filename="../src/librssguard/services/standard/gui/formstandardimportexport.cpp" line="159"/>
@@ -2827,7 +2827,7 @@ You have to restart manually.</source>
         <location filename="../src/librssguard/services/standard/gui/formstandardimportexport.cpp" line="171"/>
         <location filename="../src/librssguard/services/standard/gui/formstandardimportexport.cpp" line="216"/>
         <source>OPML 2.0 files (*.opml *.xml)</source>
-        <translation type="unfinished"/>
+        <translation>OPML 2.0 檔 (*.opml *.xml)    </translation>
     </message>
     <message>
         <location filename="../src/librssguard/services/standard/gui/formstandardimportexport.cpp" line="322"/>
@@ -2858,12 +2858,12 @@ You have to restart manually.</source>
     <message>
         <location filename="../src/librssguard/services/standard/gui/formstandardimportexport.ui" line="55"/>
         <source>Fetch online metadata</source>
-        <translation type="unfinished"/>
+        <translation>取得線上屬性資料</translation>
     </message>
     <message>
         <location filename="../src/librssguard/services/standard/gui/formstandardimportexport.ui" line="64"/>
         <source>Optional post-processing script</source>
-        <translation type="unfinished"/>
+        <translation>可選用的後續處理隨譯即行碼</translation>
     </message>
     <message>
         <location filename="../src/librssguard/services/standard/gui/formstandardimportexport.ui" line="95"/>
@@ -3956,7 +3956,7 @@ Login tokens expiration: %2</source>
     <message>
         <location filename="../src/librssguard/core/messagesmodel.cpp" line="250"/>
         <source>Assigned labels</source>
-        <translation type="unfinished"/>
+        <translation>配定的標籤</translation>
     </message>
     <message>
         <location filename="../src/librssguard/core/messagesmodel.cpp" line="252"/>
@@ -4046,7 +4046,7 @@ Login tokens expiration: %2</source>
     <message>
         <location filename="../src/librssguard/core/messagesmodel.cpp" line="259"/>
         <source>Labels assigned to the article.</source>
-        <translation type="unfinished"/>
+        <translation>配定給文章的標籤</translation>
     </message>
     <message numerus="yes">
         <location filename="../src/librssguard/core/messagesmodel.cpp" line="302"/>
@@ -4936,12 +4936,12 @@ List of supported readers:</source>
     <message>
         <location filename="../src/librssguard/miscellaneous/skinfactory.cpp" line="506"/>
         <source>interesting stuff</source>
-        <translation>有趣的項目</translation>
+        <translation>有興趣的項目</translation>
     </message>
     <message>
         <location filename="../src/librssguard/miscellaneous/skinfactory.cpp" line="509"/>
         <source>interesting stuff (highlighted)</source>
-        <translation>有趣的項目(標示)</translation>
+        <translation>有興趣的項目(標示)</translation>
     </message>
     <message>
         <location filename="../src/librssguard/miscellaneous/skinfactory.cpp" line="512"/>
@@ -4956,12 +4956,12 @@ List of supported readers:</source>
     <message>
         <location filename="../src/librssguard/miscellaneous/skinfactory.cpp" line="518"/>
         <source>items with new articles</source>
-        <translation type="unfinished"/>
+        <translation>有新文章的項目</translation>
     </message>
     <message>
         <location filename="../src/librssguard/miscellaneous/skinfactory.cpp" line="521"/>
         <source>items with new articles (highlighted)</source>
-        <translation type="unfinished"/>
+        <translation>有新文章的項目(標示)</translation>
     </message>
     <message>
         <location filename="../src/librssguard/miscellaneous/skinfactory.cpp" line="524"/>
@@ -5301,7 +5301,8 @@ Login tokens expiration: %2</source>
         <location filename="../src/librssguard/services/abstract/serviceroot.cpp" line="298"/>
         <source>Number of feeds: %1
 Number of categories: %2</source>
-        <translation type="unfinished"/>
+        <translation>文源數: %1
+分類數: %2</translation>
     </message>
     <message>
         <location filename="../src/librssguard/services/abstract/serviceroot.cpp" line="537"/>
@@ -5376,22 +5377,22 @@ File filter for external e-mail selection dialog.</extracomment>
     <message>
         <location filename="../src/librssguard/gui/settings/settingsbrowsermail.ui" line="31"/>
         <source>Enable HTTP/2</source>
-        <translation type="unfinished"/>
+        <translation>啟用 HTTP/2</translation>
     </message>
     <message>
         <location filename="../src/librssguard/gui/settings/settingsbrowsermail.ui" line="39"/>
         <source>WebEngine</source>
-        <translation type="unfinished"/>
+        <translation>網頁呈現引擎(WebEngine)</translation>
     </message>
     <message>
         <location filename="../src/librssguard/gui/settings/settingsbrowsermail.ui" line="45"/>
         <source>Custom &quot;QTWEBENGINE_CHROMIUM_FLAGS&quot; flags</source>
-        <translation type="unfinished"/>
+        <translation>自訂 &quot;QTWEBENGINE_CHROMIUM_FLAGS&quot; 旗標</translation>
     </message>
     <message>
         <location filename="../src/librssguard/gui/settings/settingsbrowsermail.ui" line="55"/>
         <source>Disable cache</source>
-        <translation type="unfinished"/>
+        <translation>停用快取</translation>
     </message>
     <message>
         <location filename="../src/librssguard/gui/settings/settingsbrowsermail.ui" line="63"/>
@@ -6651,7 +6652,7 @@ Type: %3</source>
     <message>
         <location filename="../src/librssguard/services/standard/gui/standardfeeddetails.cpp" line="287"/>
         <source>Images (%1)</source>
-        <translation type="unfinished"/>
+        <translation>圖片(%1)</translation>
     </message>
     <message>
         <location filename="../src/librssguard/services/standard/gui/standardfeeddetails.cpp" line="293"/>
@@ -7130,7 +7131,7 @@ Unread news: %2</source>
     <message>
         <location filename="../src/librssguard/services/tt-rss/gui/ttrssaccountdetails.cpp" line="16"/>
         <source>If you select intelligent synchronization, then only not-yet-fetched or updated articles are downloaded. Network usage is greatly reduced and overall synchronization speed is greatly improved, but first feed fetching could be slow anyway if your feed contains huge number of articles.&lt;br/&gt;&lt;br/&gt;Also, make sure to install &lt;a href=&quot;https://www.google.com&quot;&gt;api_newsplus&lt;/a&gt; TT-RSS plugin to your server instance.</source>
-        <translation type="unfinished"/>
+        <translation>若選智慧同步，就只下載尚未下載或更新的文章。會大幅降低網路用量，提升整體同步速度。不過第一次下載可能會很慢，如果文源含有大量文章的話。&lt;br/&gt;&lt;br/&gt;同時，請確認有安裝&lt;a href=&quot;https://www.google.com&quot;&gt;api_newsplus&lt;/a&gt; TT-RSS 掛件到伺服器的實例。</translation>
     </message>
     <message>
         <location filename="../src/librssguard/services/tt-rss/gui/ttrssaccountdetails.cpp" line="26"/>

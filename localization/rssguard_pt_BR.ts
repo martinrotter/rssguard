@@ -5309,7 +5309,8 @@ Expiração dos tokens de login: %2</translation>
         <location filename="../src/librssguard/services/abstract/serviceroot.cpp" line="298"/>
         <source>Number of feeds: %1
 Number of categories: %2</source>
-        <translation type="unfinished"/>
+        <translation>Número de feeds: %1
+Número de categorias: %2</translation>
     </message>
     <message>
         <location filename="../src/librssguard/services/abstract/serviceroot.cpp" line="537"/>
@@ -5399,7 +5400,7 @@ File filter for external e-mail selection dialog.</extracomment>
     <message>
         <location filename="../src/librssguard/gui/settings/settingsbrowsermail.ui" line="55"/>
         <source>Disable cache</source>
-        <translation type="unfinished"/>
+        <translation>Desativar cache</translation>
     </message>
     <message>
         <location filename="../src/librssguard/gui/settings/settingsbrowsermail.ui" line="63"/>
@@ -7139,7 +7140,7 @@ Notícias não lidas: %2</translation>
     <message>
         <location filename="../src/librssguard/services/tt-rss/gui/ttrssaccountdetails.cpp" line="16"/>
         <source>If you select intelligent synchronization, then only not-yet-fetched or updated articles are downloaded. Network usage is greatly reduced and overall synchronization speed is greatly improved, but first feed fetching could be slow anyway if your feed contains huge number of articles.&lt;br/&gt;&lt;br/&gt;Also, make sure to install &lt;a href=&quot;https://www.google.com&quot;&gt;api_newsplus&lt;/a&gt; TT-RSS plugin to your server instance.</source>
-        <translation type="unfinished"/>
+        <translation>Se você selecionar a sincronização inteligente, apenas os artigos ainda não buscados ou atualizados serão baixados. O uso da rede é muito reduzido e a velocidade geral de sincronização é muito melhorada, mas a busca do primeiro feed pode ser lenta de qualquer maneira se o seu feed contiver um grande número de artigos.&lt;br/&gt;&lt;br/&gt;Também, certifique-se de instalar o plugin TT-RSS &lt;a href=&quot;https://www.google.com&quot;&gt;api_newsplus&lt;/a&gt; em sua instância do servidor.</translation>
     </message>
     <message>
         <location filename="../src/librssguard/services/tt-rss/gui/ttrssaccountdetails.cpp" line="26"/>

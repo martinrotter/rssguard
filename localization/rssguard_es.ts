@@ -134,7 +134,7 @@ Error: %1</translation>
     <message>
         <location filename="../src/librssguard/miscellaneous/application.cpp" line="534"/>
         <source>Output directory is not writable.</source>
-        <translation>La carpeta de salida catrece de permisos de escritura.</translation>
+        <translation>La carpeta de salida carece de permisos de escritura.</translation>
     </message>
     <message>
         <location filename="../src/librssguard/miscellaneous/application.cpp" line="542"/>
@@ -149,7 +149,7 @@ Error: %1</translation>
     <message>
         <location filename="../src/librssguard/miscellaneous/application.cpp" line="566"/>
         <source>Settings restoration was not initiated. Make sure that output directory is writable.</source>
-        <translation>La restauración de la configuración no fue iniciada. Verifique que la carpeta de salida tiene permisos de escritura.</translation>
+        <translation>Fue imposible iniciar la restauración de la configuración. Verifique que la carpeta de salida tiene permisos de escritura.</translation>
     </message>
     <message>
         <location filename="../src/librssguard/miscellaneous/application.cpp" line="1038"/>
@@ -255,7 +255,7 @@ versión pulsando en esta notificación emergente.</translation>
     <message>
         <location filename="../src/librssguard/services/abstract/gui/authenticationdetails.cpp" line="30"/>
         <source>Username is ok or it is not needed.</source>
-        <translation>El nombre de usuario es válido o no se necesita.</translation>
+        <translation>El nombre de usuario es válido o innecesario.</translation>
     </message>
     <message>
         <location filename="../src/librssguard/services/abstract/gui/authenticationdetails.cpp" line="31"/>
@@ -265,7 +265,7 @@ versión pulsando en esta notificación emergente.</translation>
     <message>
         <location filename="../src/librssguard/services/abstract/gui/authenticationdetails.cpp" line="41"/>
         <source>Password is ok or it is not needed.</source>
-        <translation>La contraseña es válida o no se necesita.</translation>
+        <translation>La contraseña es válida o innecesaria.</translation>
     </message>
     <message>
         <location filename="../src/librssguard/services/abstract/gui/authenticationdetails.cpp" line="42"/>
@@ -365,7 +365,7 @@ versión pulsando en esta notificación emergente.</translation>
     <message>
         <location filename="../src/librssguard/gui/reusable/discoverfeedsbutton.cpp" line="56"/>
         <source>Given account does not support adding feeds.</source>
-        <translation>La cuenta no admite añadir fuentes.</translation>
+        <translation>La cuenta proporcionada carece de soporte para añadir fuentes.</translation>
     </message>
     <message>
         <location filename="../src/librssguard/gui/reusable/discoverfeedsbutton.cpp" line="79"/>
@@ -375,12 +375,12 @@ versión pulsando en esta notificación emergente.</translation>
     <message>
         <location filename="../src/librssguard/gui/reusable/discoverfeedsbutton.cpp" line="32"/>
         <source>This website does not contain any feeds</source>
-        <translation>Este sitio web no contiene fuentes</translation>
+        <translation>Este sitio web carece de fuentes</translation>
     </message>
     <message numerus="yes">
         <location filename="../src/librssguard/gui/reusable/discoverfeedsbutton.cpp" line="33"/>
         <source>Add one of %n feed(s)</source>
-        <translation><numerusform>Añadir uno de %n fuente</numerusform><numerusform>Añadir uno de %n fuentes</numerusform><numerusform>Añadir uno de %n fuente(s)</numerusform></translation>
+        <translation><numerusform>Añadir uno de %n fuente(s)</numerusform><numerusform>Añadir uno de %n fuente(s)</numerusform><numerusform>Añadir uno de %n fuente(s)</numerusform></translation>
     </message>
     <message>
         <location filename="../src/librssguard/gui/reusable/discoverfeedsbutton.cpp" line="55"/>
@@ -620,7 +620,7 @@ Pulse aquí para abrir la carpeta principal.</translation>
     <message>
         <location filename="../src/librssguard/services/gmail/gui/emailrecipientcontrol.cpp" line="40"/>
         <source>Reply-to</source>
-        <translation>Responder A</translation>
+        <translation>Responder a</translation>
     </message>
     <message>
         <location filename="../src/librssguard/services/gmail/gui/emailrecipientcontrol.cpp" line="27"/>
@@ -668,13 +668,13 @@ Estado: %3</translation>
     <message numerus="yes">
         <location filename="../src/librssguard/services/abstract/feed.cpp" line="239"/>
         <source>uses global settings (%n minute(s) to next auto-fetch of articles)</source>
-        <translation><numerusform>utiliza la configuración global (%n en minuto) para la próxima obtención automática de artículos)</numerusform><numerusform>utiliza la configuración global (%n en minutos) para la próxima obtención automática de artículos)</numerusform><numerusform>utiliza la configuración global (%n en minutos) para la próxima obtención automática de artículos)</numerusform></translation>
+        <translation><numerusform>utiliza la configuración global (%n minuto(s) para la próxima obtención automática de artículos)</numerusform><numerusform>utiliza la configuración global (%n en minuto(s) para la próxima obtención automática de artículos)</numerusform><numerusform>utiliza la configuración global (%n en minuto(s) para la próxima obtención automática de artículos)</numerusform></translation>
     </message>
     <message numerus="yes">
         <location filename="../src/librssguard/services/abstract/feed.cpp" line="252"/>
         <source>uses specific settings (%n minute(s) to next auto-fetching of new articles)</source>
         <extracomment>Describes feed auto-update status.</extracomment>
-        <translation><numerusform>usa configuraciones específicas (% minuto) para la próxima búsqueda automática de nuevos artículos)</numerusform><numerusform>usa configuraciones específicas (%n minutos) para la próxima búsqueda automática de nuevos artículos)</numerusform><numerusform>usa configuraciones específicas (%n minutos) para la próxima búsqueda automática de nuevos artículos)</numerusform></translation>
+        <translation><numerusform>usa configuraciones específicas (% minuto) para la próxima búsqueda automática de nuevos artículos)</numerusform><numerusform>usa configuraciones específicas (%n minuto(s) para la próxima búsqueda automática de nuevos artículos)</numerusform><numerusform>usa configuraciones específicas (%n minuto(s) para la próxima búsqueda automática de nuevos artículos)</numerusform></translation>
     </message>
     <message>
         <location filename="../src/librssguard/services/abstract/feed.cpp" line="267"/>
@@ -5308,7 +5308,8 @@ Expiración de testigos de ingreso: %2</translation>
         <location filename="../src/librssguard/services/abstract/serviceroot.cpp" line="298"/>
         <source>Number of feeds: %1
 Number of categories: %2</source>
-        <translation type="unfinished"/>
+        <translation>Número de fuentes: %1
+Número de categorías: %2</translation>
     </message>
     <message>
         <location filename="../src/librssguard/services/abstract/serviceroot.cpp" line="537"/>
@@ -5398,7 +5399,7 @@ File filter for external e-mail selection dialog.</extracomment>
     <message>
         <location filename="../src/librssguard/gui/settings/settingsbrowsermail.ui" line="55"/>
         <source>Disable cache</source>
-        <translation type="unfinished"/>
+        <translation>Desactivar caché</translation>
     </message>
     <message>
         <location filename="../src/librssguard/gui/settings/settingsbrowsermail.ui" line="63"/>
@@ -7140,7 +7141,7 @@ Noticias sin leer: %2</translation>
     <message>
         <location filename="../src/librssguard/services/tt-rss/gui/ttrssaccountdetails.cpp" line="16"/>
         <source>If you select intelligent synchronization, then only not-yet-fetched or updated articles are downloaded. Network usage is greatly reduced and overall synchronization speed is greatly improved, but first feed fetching could be slow anyway if your feed contains huge number of articles.&lt;br/&gt;&lt;br/&gt;Also, make sure to install &lt;a href=&quot;https://www.google.com&quot;&gt;api_newsplus&lt;/a&gt; TT-RSS plugin to your server instance.</source>
-        <translation type="unfinished"/>
+        <translation>Si selecciona la sincronización inteligente, sólo se descargarán los artículos actualizados o que aún no se hayan obtenido. El uso de la red se reduce considerablemente y la velocidad de sincronización general mejora considerablemente, pero la obtención de la primera fuente podría ser lenta de todos modos si su fuente contiene una gran cantidad de artículos.&lt;br/&gt;&lt;br/&gt;También, asegúrese de instalar el complemento TT-RSS&lt;a href=&quot;https://www.google.com&quot;&gt;api_newsplus&lt;/a&gt;  en la instancia de su servidor.</translation>
     </message>
     <message>
         <location filename="../src/librssguard/services/tt-rss/gui/ttrssaccountdetails.cpp" line="26"/>
