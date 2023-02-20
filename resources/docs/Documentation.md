@@ -373,8 +373,6 @@ Executable file must be always be specified, while arguments not. Be very carefu
 
 Note that the above examples are cross-platform. You can use exactly the same command on Windows, Linux or macOS, if your operating system is properly configured.
 
-This feature is very flexible and can be used to scrape data with [CSS selectors](https://www.w3schools.com/cssref/css_selectors.asp). There is ready-made [Python script](https://github.com/Owyn/CSS2RSS) which can be used to scrape websites with CSS selectors very easily. Make sure to give its author the credit he deserves.
-
 RSS Guard offers [placeholder](#userd-plac) `%data%` which is automatically replaced with full path to RSS Guard [user's data folder](#userd), allowing you to make your configuration fully portable. You can, therefore, use something like this as a source script line: `bash %data%/scripts/download-feed.sh`.
 
 Also, working directory of process executing the script is set to point to RSS Guard user's data folder.
@@ -390,6 +388,12 @@ Format of post-process script execution line is the same as above.
 Typical post-processing filter might do things like CSS formatting, localization of content to another language, downloading of complete articles, some kind of filtering, or removing ads.
 
 It's completely up to you if you decide to only use script as `Source` of the script or separate your custom functionality between `Source` script and `Post-process` script. Sometimes you might need different `Source` scripts for different online sources and the same `Post-process` script and vice versa.
+
+Third-party tools for scraping made to work with RSS Guard:
+* [CSS2RSS](https://github.com/Owyn/CSS2RSS) - can be used to scrape websites with CSS selectors.
+* [RSSGuardHelper](https://github.com/pipiscrew/RSSGuardHelper) - another CSS selectors helper.
+
+Make sure to give credit to authors that they deserve.
 
 ### Notifications <a id="notif"></a>
 RSS Guard allows you to customize desktop notifications. There are a number of events which can be configured:
