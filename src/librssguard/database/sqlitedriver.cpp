@@ -11,9 +11,8 @@
 
 SqliteDriver::SqliteDriver(bool in_memory, QObject* parent)
   : DatabaseDriver(parent), m_inMemoryDatabase(in_memory),
-  m_databaseFilePath(qApp->userDataFolder() + QDir::separator() + QSL(APP_DB_SQLITE_PATH)),
-  m_fileBasedDatabaseInitialized(false),
-  m_inMemoryDatabaseInitialized(false) {}
+    m_databaseFilePath(qApp->userDataFolder() + QDir::separator() + QSL(APP_DB_SQLITE_PATH)),
+    m_fileBasedDatabaseInitialized(false), m_inMemoryDatabaseInitialized(false) {}
 
 QString SqliteDriver::location() const {
   return QDir::toNativeSeparators(m_databaseFilePath);
@@ -69,22 +68,16 @@ bool SqliteDriver::saveDatabase() {
       qDebugNN << LOGSEC_DB << "Cleaning old data from 'storage." << table << "'.";
     }
     else {
-      qCriticalNN << LOGSEC_DB << "Failed to clean old data from 'storage."
-                  << table << "', error: '"
+      qCriticalNN << LOGSEC_DB << "Failed to clean old data from 'storage." << table << "', error: '"
                   << copy_contents.lastError().text() << "'.";
     }
 
     if (copy_contents.exec(QString(QSL("INSERT INTO storage.%1 SELECT * FROM main.%1;")).arg(table))) {
-      qDebugNN << LOGSEC_DB << "Copying new data into 'main."
-               << table << "'.";
+      qDebugNN << LOGSEC_DB << "Copying new data into 'main." << table << "'.";
     }
     else {
-      qCriticalNN << LOGSEC_DB
-                  << "Failed to copy new data to 'main."
-                  << table
-                  << "', error: '"
-                  << copy_contents.lastError().text()
-                  << "'.";
+      qCriticalNN << LOGSEC_DB << "Failed to copy new data to 'main." << table << "', error: '"
+                  << copy_contents.lastError().text() << "'.";
     }
   }
 
@@ -93,10 +86,7 @@ bool SqliteDriver::saveDatabase() {
     qDebugNN << LOGSEC_DB << "Detaching persistent SQLite file.";
   }
   else {
-    qCriticalNN << LOGSEC_DB
-                << "Failed to detach SQLite file, error: '"
-                << copy_contents.lastError().text()
-                << "'.";
+    qCriticalNN << LOGSEC_DB << "Failed to detach SQLite file, error: '" << copy_contents.lastError().text() << "'.";
   }
 
   copy_contents.finish();
@@ -107,8 +97,7 @@ QSqlDatabase SqliteDriver::connection(const QString& connection_name, DesiredSto
   bool want_in_memory = desired_type == DatabaseDriver::DesiredStorageType::StrictlyInMemory ||
                         (desired_type == DatabaseDriver::DesiredStorageType::FromSettings && m_inMemoryDatabase);
 
-  if ((want_in_memory && !m_inMemoryDatabaseInitialized) ||
-      (!want_in_memory && !m_fileBasedDatabaseInitialized)) {
+  if ((want_in_memory && !m_inMemoryDatabaseInitialized) || (!want_in_memory && !m_fileBasedDatabaseInitialized)) {
     return initializeDatabase(connection_name, want_in_memory);
   }
   else {
@@ -116,10 +105,7 @@ QSqlDatabase SqliteDriver::connection(const QString& connection_name, DesiredSto
     QSqlDatabase database;
 
     if (QSqlDatabase::contains(connection_name)) {
-      qDebugNN << LOGSEC_DB
-               << "SQLite connection"
-               << QUOTE_W_SPACE(connection_name)
-               << "is already active.";
+      qDebugNN << LOGSEC_DB << "SQLite connection" << QUOTE_W_SPACE(connection_name) << "is already active.";
 
       // This database connection was added previously, no need to
       // setup its properties.
@@ -136,21 +122,17 @@ QSqlDatabase SqliteDriver::connection(const QString& connection_name, DesiredSto
         const QDir db_path(m_databaseFilePath);
         QFile db_file(db_path.absoluteFilePath(QSL(APP_DB_SQLITE_FILE)));
 
+        database.setConnectOptions(QSL("QSQLITE_ENABLE_SHARED_CACHE"));
         database.setDatabaseName(db_file.fileName());
       }
     }
 
     if (!database.isOpen() && !database.open()) {
-      qFatal("SQLite database was NOT opened. Delivered error message: '%s'.",
-             qPrintable(database.lastError().text()));
+      qFatal("SQLite database was NOT opened. Delivered error message: '%s'.", qPrintable(database.lastError().text()));
     }
     else {
-      qDebugNN << LOGSEC_DB
-               << "SQLite database connection"
-               << QUOTE_W_SPACE(connection_name)
-               << "to file"
-               << QUOTE_W_SPACE(database.databaseName())
-               << "seems to be established.";
+      qDebugNN << LOGSEC_DB << "SQLite database connection" << QUOTE_W_SPACE(connection_name) << "to file"
+               << QUOTE_W_SPACE(database.databaseName()) << "seems to be established.";
     }
 
     QSqlQuery query_db(database);
@@ -164,17 +146,15 @@ QSqlDatabase SqliteDriver::connection(const QString& connection_name, DesiredSto
 
 bool SqliteDriver::initiateRestoration(const QString& database_package_file) {
   return IOFactory::copyFile(database_package_file,
-                             m_databaseFilePath + QDir::separator() +
-                             BACKUP_NAME_DATABASE + BACKUP_SUFFIX_DATABASE);
+                             m_databaseFilePath + QDir::separator() + BACKUP_NAME_DATABASE + BACKUP_SUFFIX_DATABASE);
 }
 
 bool SqliteDriver::finishRestoration() {
-  const QString backup_database_file = m_databaseFilePath + QDir::separator() + BACKUP_NAME_DATABASE + BACKUP_SUFFIX_DATABASE;
+  const QString backup_database_file =
+    m_databaseFilePath + QDir::separator() + BACKUP_NAME_DATABASE + BACKUP_SUFFIX_DATABASE;
 
   if (QFile::exists(backup_database_file)) {
-    qDebugNN << LOGSEC_DB
-             << "Backup database file '"
-             << QDir::toNativeSeparators(backup_database_file)
+    qDebugNN << LOGSEC_DB << "Backup database file '" << QDir::toNativeSeparators(backup_database_file)
              << "' was detected. Restoring it.";
 
     if (IOFactory::copyFile(backup_database_file, m_databaseFilePath + QDir::separator() + APP_DB_SQLITE_FILE)) {
@@ -182,8 +162,7 @@ bool SqliteDriver::finishRestoration() {
       qDebugNN << LOGSEC_DB << "Database file was restored successully.";
     }
     else {
-      qCriticalNN << LOGSEC_DB
-                  << "Database file was NOT restored due to error when copying the file.";
+      qCriticalNN << LOGSEC_DB << "Database file was NOT restored due to error when copying the file.";
       return false;
     }
   }
@@ -226,12 +205,14 @@ QSqlDatabase SqliteDriver::initializeDatabase(const QString& connection_name, bo
   if (in_memory) {
     database.setConnectOptions(QSL("QSQLITE_OPEN_URI;QSQLITE_ENABLE_SHARED_CACHE"));
   }
+  else {
+    database.setConnectOptions(QSL("QSQLITE_ENABLE_SHARED_CACHE"));
+  }
 
   database.setDatabaseName(db_file_name);
 
   if (!database.open()) {
-    qFatal("SQLite database was NOT opened. Delivered error message: '%s'",
-           qPrintable(database.lastError().text()));
+    qFatal("SQLite database was NOT opened. Delivered error message: '%s'", qPrintable(database.lastError().text()));
   }
   else {
     QSqlQuery query_db(database);
@@ -277,34 +258,21 @@ QSqlDatabase SqliteDriver::initializeDatabase(const QString& connection_name, bo
 
         try {
           updateDatabaseSchema(query_db, installed_db_schema);
-          qDebugNN << LOGSEC_DB
-                   << "Database schema was updated from"
-                   << QUOTE_W_SPACE(installed_db_schema)
-                   << "to"
-                   << QUOTE_W_SPACE(APP_DB_SCHEMA_VERSION)
-                   << "successully.";
+          qDebugNN << LOGSEC_DB << "Database schema was updated from" << QUOTE_W_SPACE(installed_db_schema) << "to"
+                   << QUOTE_W_SPACE(APP_DB_SCHEMA_VERSION) << "successully.";
         }
         catch (const ApplicationException& ex) {
           qFatal("Error when updating DB schema from %d: %s.", installed_db_schema, qPrintable(ex.message()));
         }
       }
 
-      qDebugNN << LOGSEC_DB
-               << "File-based SQLite database connection '"
-               << connection_name
-               << "' to file '"
-               << QDir::toNativeSeparators(database.databaseName())
-               << "' seems to be established.";
-      qDebugNN << LOGSEC_DB
-               << "File-based SQLite database has version '"
-               << installed_db_schema
-               << "'.";
+      qDebugNN << LOGSEC_DB << "File-based SQLite database connection '" << connection_name << "' to file '"
+               << QDir::toNativeSeparators(database.databaseName()) << "' seems to be established.";
+      qDebugNN << LOGSEC_DB << "File-based SQLite database has version '" << installed_db_schema << "'.";
     }
     else {
       query_db.next();
-      qDebugNN << LOGSEC_DB
-               << "SQLite database has version"
-               << QUOTE_W_SPACE_DOT(query_db.value(0).toString());
+      qDebugNN << LOGSEC_DB << "SQLite database has version" << QUOTE_W_SPACE_DOT(query_db.value(0).toString());
     }
   }
 
@@ -332,8 +300,7 @@ QSqlDatabase SqliteDriver::initializeDatabase(const QString& connection_name, bo
       copy_contents.exec(QSL("INSERT INTO main.%1 SELECT * FROM storage.%1;").arg(table));
     }
 
-    qDebugNN << LOGSEC_DB
-             << "Copying data from file-based database into working in-memory database.";
+    qDebugNN << LOGSEC_DB << "Copying data from file-based database into working in-memory database.";
 
     // Detach database and finish.
     copy_contents.exec(QSL("DETACH 'storage'"));
@@ -357,11 +324,12 @@ QString SqliteDriver::databaseFilePath() const {
 void SqliteDriver::setPragmas(QSqlQuery& query) {
   query.exec(QSL("PRAGMA encoding = \"UTF-8\""));
   query.exec(QSL("PRAGMA synchronous = OFF"));
-  query.exec(QSL("PRAGMA journal_mode = MEMORY"));
+  // query.exec(QSL("PRAGMA journal_mode = MEMORY"));
   query.exec(QSL("PRAGMA page_size = 4096"));
   query.exec(QSL("PRAGMA cache_size = 16384"));
   query.exec(QSL("PRAGMA count_changes = OFF"));
   query.exec(QSL("PRAGMA temp_store = MEMORY"));
+  query.exec(QSL("PRAGMA journal_mode = WAL"));
 }
 
 qint64 SqliteDriver::databaseDataSize() {

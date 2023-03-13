@@ -10,8 +10,6 @@
 #include "services/abstract/cacheforserviceroot.h"
 #include "services/abstract/feed.h"
 
-#include <QFutureWatcher>
-
 class FeedsModel;
 class MessagesModel;
 class MessagesProxyModel;

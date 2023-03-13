@@ -183,7 +183,7 @@ bool MessagesProxyModel::filterAcceptsRow(int source_row, const QModelIndex& sou
   // and we want to show only regexped AND unread messages when unread should be visible.
   //
   // But also, we want to see messages which have their dirty states cached, because
-  // otherwise they would just disappeaar from the list for example when batch marked as read
+  // otherwise they would just disappear from the list for example when batch marked as read
   // which is distracting.
   return QSortFilterProxyModel::filterAcceptsRow(source_row, source_parent) &&
          (m_sourceModel->cache()->containsData(source_row) ||

@@ -18,8 +18,6 @@
 #include <QDir>
 #include <QFile>
 #include <QFileInfo>
-#include <QFuture>
-#include <QFutureWatcher>
 #include <QJsonArray>
 #include <QJsonDocument>
 #include <QJsonObject>
@@ -122,7 +120,7 @@ bool SystemFactory::setAutoStartStatus(AutoStartStatus new_status) {
 
 #if defined(Q_OS_WIN)
   QSettings registry_key(QSL("HKEY_CURRENT_USER\\Software\\Microsoft\\Windows\\CurrentVersion\\Run"),
-                         QSettings::NativeFormat);
+                         QSettings::Format::NativeFormat);
 
   switch (new_status) {
     case AutoStartStatus::Enabled: {
