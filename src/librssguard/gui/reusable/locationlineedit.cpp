@@ -7,7 +7,7 @@
 #include <QMouseEvent>
 
 LocationLineEdit::LocationLineEdit(QWidget* parent)
-  : BaseLineEdit(parent), m_mouseSelectsAllText(true), m_googleSuggest(new GoogleSuggest(this)) {
+  : BaseLineEdit(parent), m_mouseSelectsAllText(true), m_googleSuggest(new GoogleSuggest(this, this)) {
   setPlaceholderText(tr("Website address goes here"));
   connect(this, &LocationLineEdit::submitted, m_googleSuggest, &GoogleSuggest::preventSuggest);
 }
