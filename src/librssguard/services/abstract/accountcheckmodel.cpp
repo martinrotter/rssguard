@@ -4,8 +4,6 @@
 
 #include "3rd-party/boolinq/boolinq.h"
 #include "definitions/definitions.h"
-#include "miscellaneous/application.h"
-#include "miscellaneous/iconfactory.h"
 
 AccountCheckModel::AccountCheckModel(QObject* parent)
   : QAbstractItemModel(parent), m_rootItem(nullptr), m_recursiveChange(false) {}

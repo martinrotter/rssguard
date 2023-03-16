@@ -684,9 +684,9 @@ QList<Message> GmailNetworkFactory::obtainAndDecodeFullMessages(const QStringLis
   }
 
   do {
-    auto* multi = new QHttpMultiPart();
+    QHttpMultiPart multi;
 
-    multi->setContentType(QHttpMultiPart::ContentType::MixedType);
+    multi.setContentType(QHttpMultiPart::ContentType::MixedType);
 
     for (int window = next_message + 100; next_message < window && next_message < message_ids.size(); next_message++) {
       QString msg_id = message_ids[next_message];
@@ -699,7 +699,7 @@ QList<Message> GmailNetworkFactory::obtainAndDecodeFullMessages(const QStringLis
       QString full_msg_endpoint = QSL("GET /gmail/v1/users/me/messages/%1\r\n").arg(msg_id);
 
       part.setBody(full_msg_endpoint.toUtf8());
-      multi->append(part);
+      multi.append(part);
       msgs.insert(msg_id, msg);
     }
 
@@ -711,7 +711,7 @@ QList<Message> GmailNetworkFactory::obtainAndDecodeFullMessages(const QStringLis
 
     NetworkResult res = NetworkFactory::performNetworkOperation(GMAIL_API_BATCH,
                                                                 timeout,
-                                                                multi,
+                                                                &multi,
                                                                 output,
                                                                 QNetworkAccessManager::Operation::PostOperation,
                                                                 headers,
@@ -737,11 +737,8 @@ QList<Message> GmailNetworkFactory::obtainAndDecodeFullMessages(const QStringLis
           }
         }
       }
-
-      multi->deleteLater();
     }
     else {
-      multi->deleteLater();
       return {};
     }
   }
