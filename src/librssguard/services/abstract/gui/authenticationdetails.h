@@ -7,11 +7,16 @@
 
 #include "ui_authenticationdetails.h"
 
+#include "services/abstract/feed.h"
+
 class AuthenticationDetails : public QWidget, public Ui::AuthenticationDetails {
-  Q_OBJECT
+    Q_OBJECT
 
   public:
-    explicit AuthenticationDetails(QWidget* parent = nullptr);
+    explicit AuthenticationDetails(bool only_basic, QWidget* parent = nullptr);
+
+    void setAuthenticationType(Feed::Protection protect);
+    Feed::Protection authenticationType() const;
 
   private slots:
     void onUsernameChanged(const QString& new_username);

@@ -184,6 +184,7 @@ bool FeedsImportExportModel::produceFeed(const FeedLookup& feed_lookup) {
       new_feed = StandardFeed::guessFeed(StandardFeed::SourceType::Url,
                                          feed_lookup.url,
                                          feed_lookup.post_process_script,
+                                         Feed::Protection::NoProtection,
                                          {},
                                          {},
                                          feed_lookup.custom_proxy);

@@ -22,18 +22,25 @@
 #include <QNetworkCookie>
 #include <QTextCodec>
 
-FormStandardFeedDetails::FormStandardFeedDetails(ServiceRoot* service_root, RootItem* parent_to_select,
-                                                 const QString& url, QWidget* parent)
+FormStandardFeedDetails::FormStandardFeedDetails(ServiceRoot* service_root,
+                                                 RootItem* parent_to_select,
+                                                 const QString& url,
+                                                 QWidget* parent)
   : FormFeedDetails(service_root, parent), m_standardFeedDetails(new StandardFeedDetails(this)),
-  m_authDetails(new AuthenticationDetails(this)), m_parentToSelect(parent_to_select), m_urlToProcess(url) {
+    m_authDetails(new AuthenticationDetails(false, this)), m_parentToSelect(parent_to_select), m_urlToProcess(url) {
   insertCustomTab(m_standardFeedDetails, tr("General"), 0);
   insertCustomTab(m_authDetails, tr("Network"), 2);
   activateTab(0);
 
-  connect(m_standardFeedDetails->m_ui.m_btnFetchMetadata, &QPushButton::clicked, this, &FormStandardFeedDetails::guessFeed);
+  connect(m_standardFeedDetails->m_ui.m_btnFetchMetadata,
+          &QPushButton::clicked,
+          this,
+          &FormStandardFeedDetails::guessFeed);
   connect(m_standardFeedDetails->m_actionFetchIcon, &QAction::triggered, this, &FormStandardFeedDetails::guessIconOnly);
-  connect(m_standardFeedDetails->m_ui.m_txtTitle->lineEdit(), &QLineEdit::textChanged,
-          this, &FormStandardFeedDetails::onTitleChanged);
+  connect(m_standardFeedDetails->m_ui.m_txtTitle->lineEdit(),
+          &QLineEdit::textChanged,
+          this,
+          &FormStandardFeedDetails::onTitleChanged);
 
   onTitleChanged(m_standardFeedDetails->m_ui.m_txtTitle->lineEdit()->text());
 }
@@ -42,6 +49,7 @@ void FormStandardFeedDetails::guessFeed() {
   m_standardFeedDetails->guessFeed(m_standardFeedDetails->sourceType(),
                                    m_standardFeedDetails->m_ui.m_txtSource->textEdit()->toPlainText(),
                                    m_standardFeedDetails->m_ui.m_txtPostProcessScript->textEdit()->toPlainText(),
+                                   m_authDetails->authenticationType(),
                                    m_authDetails->m_txtUsername->lineEdit()->text(),
                                    m_authDetails->m_txtPassword->lineEdit()->text(),
                                    m_serviceRoot->networkProxy());
@@ -51,6 +59,7 @@ void FormStandardFeedDetails::guessIconOnly() {
   m_standardFeedDetails->guessIconOnly(m_standardFeedDetails->sourceType(),
                                        m_standardFeedDetails->m_ui.m_txtSource->textEdit()->toPlainText(),
                                        m_standardFeedDetails->m_ui.m_txtPostProcessScript->textEdit()->toPlainText(),
+                                       m_authDetails->authenticationType(),
                                        m_authDetails->m_txtUsername->lineEdit()->text(),
                                        m_authDetails->m_txtPassword->lineEdit()->text(),
                                        m_serviceRoot->networkProxy());
@@ -65,11 +74,14 @@ void FormStandardFeedDetails::apply() {
 
   auto* std_feed = feed<StandardFeed>();
   RootItem* parent =
-    static_cast<RootItem*>(m_standardFeedDetails->m_ui.m_cmbParentCategory->itemData(
-                             m_standardFeedDetails->m_ui.m_cmbParentCategory->currentIndex()).value<void*>());
+    static_cast<RootItem*>(m_standardFeedDetails->m_ui.m_cmbParentCategory
+                             ->itemData(m_standardFeedDetails->m_ui.m_cmbParentCategory->currentIndex())
+                             .value<void*>());
 
   StandardFeed::Type type =
-    static_cast<StandardFeed::Type>(m_standardFeedDetails->m_ui.m_cmbType->itemData(m_standardFeedDetails->m_ui.m_cmbType->currentIndex()).value<int>());
+    static_cast<StandardFeed::Type>(m_standardFeedDetails->m_ui.m_cmbType
+                                      ->itemData(m_standardFeedDetails->m_ui.m_cmbType->currentIndex())
+                                      .value<int>());
 
   // Setup data for new_feed.
   std_feed->setTitle(m_standardFeedDetails->m_ui.m_txtTitle->lineEdit()->text().simplified());
@@ -83,7 +95,8 @@ void FormStandardFeedDetails::apply() {
   std_feed->setType(type);
   std_feed->setSourceType(m_standardFeedDetails->sourceType());
   std_feed->setPostProcessScript(m_standardFeedDetails->m_ui.m_txtPostProcessScript->textEdit()->toPlainText());
-  std_feed->setPasswordProtected(m_authDetails->m_gbAuthentication->isChecked());
+
+  std_feed->setProtection(m_authDetails->authenticationType());
   std_feed->setUsername(m_authDetails->m_txtUsername->lineEdit()->text());
   std_feed->setPassword(m_authDetails->m_txtPassword->lineEdit()->text());
 
@@ -97,7 +110,7 @@ void FormStandardFeedDetails::apply() {
   }
 
   m_serviceRoot->requestItemReassignment(m_feed, parent);
-  m_serviceRoot->itemChanged({ m_feed });
+  m_serviceRoot->itemChanged({m_feed});
 }
 
 void FormStandardFeedDetails::loadFeedData() {
@@ -108,7 +121,7 @@ void FormStandardFeedDetails::loadFeedData() {
   // Load categories.
   m_standardFeedDetails->loadCategories(m_serviceRoot->getSubTreeCategories(), m_serviceRoot);
 
-  m_authDetails->m_gbAuthentication->setChecked(std_feed->passwordProtected());
+  m_authDetails->setAuthenticationType(std_feed->protection());
   m_authDetails->m_txtUsername->lineEdit()->setText(std_feed->username());
   m_authDetails->m_txtPassword->lineEdit()->setText(std_feed->password());
 

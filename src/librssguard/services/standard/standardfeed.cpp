@@ -42,7 +42,7 @@ StandardFeed::StandardFeed(RootItem* parent_item) : Feed(parent_item) {
   m_sourceType = SourceType::Url;
   m_encoding = m_postProcessScript = QString();
 
-  m_passwordProtected = false;
+  m_protection = Protection::NoProtection;
   m_username = QString();
   m_password = QString();
 }
@@ -52,7 +52,7 @@ StandardFeed::StandardFeed(const StandardFeed& other) : Feed(other) {
   m_postProcessScript = other.postProcessScript();
   m_sourceType = other.sourceType();
   m_encoding = other.encoding();
-  m_passwordProtected = other.passwordProtected();
+  m_protection = other.protection();
   m_username = other.username();
   m_password = other.password();
 }
@@ -95,12 +95,12 @@ bool StandardFeed::deleteViaGui() {
   }
 }
 
-bool StandardFeed::passwordProtected() const {
-  return m_passwordProtected;
+StandardFeed::Protection StandardFeed::protection() const {
+  return m_protection;
 }
 
-void StandardFeed::setPasswordProtected(bool passwordProtected) {
-  m_passwordProtected = passwordProtected;
+void StandardFeed::setProtection(Protection protect) {
+  m_protection = protect;
 }
 
 QString StandardFeed::username() const {
@@ -126,7 +126,7 @@ QVariantHash StandardFeed::customDatabaseData() const {
   data[QSL("type")] = int(type());
   data[QSL("encoding")] = encoding();
   data[QSL("post_process")] = postProcessScript();
-  data[QSL("protected")] = passwordProtected();
+  data[QSL("protected")] = int(protection());
   data[QSL("username")] = username();
   data[QSL("password")] = TextFactory::encrypt(password());
 
@@ -138,7 +138,7 @@ void StandardFeed::setCustomDatabaseData(const QVariantHash& data) {
   setType(Type(data[QSL("type")].toInt()));
   setEncoding(data[QSL("encoding")].toString());
   setPostProcessScript(data[QSL("post_process")].toString());
-  setPasswordProtected(data[QSL("protected")].toBool());
+  setProtection(Protection(data[QSL("protected")].toInt()));
   setUsername(data[QSL("username")].toString());
   setPassword(TextFactory::decrypt(data[QSL("password")].toString()));
 }
@@ -184,6 +184,7 @@ void StandardFeed::fetchMetadataForItself() {
     StandardFeed* metadata = guessFeed(sourceType(),
                                        source(),
                                        postProcessScript(),
+                                       protection(),
                                        username(),
                                        password(),
                                        getParentServiceRoot()->networkProxy());
@@ -230,6 +231,7 @@ void StandardFeed::setSourceType(SourceType source_type) {
 StandardFeed* StandardFeed::guessFeed(StandardFeed::SourceType source_type,
                                       const QString& source,
                                       const QString& post_process_script,
+                                      Feed::Protection protection,
                                       const QString& username,
                                       const QString& password,
                                       const QNetworkProxy& custom_proxy) {
@@ -238,7 +240,8 @@ StandardFeed* StandardFeed::guessFeed(StandardFeed::SourceType source_type,
   QString content_type;
 
   if (source_type == StandardFeed::SourceType::Url) {
-    QList<QPair<QByteArray, QByteArray>> headers = {NetworkFactory::generateBasicAuthHeader(username, password)};
+    QList<QPair<QByteArray, QByteArray>> headers = {
+      NetworkFactory::generateBasicAuthHeader(protection, username, password)};
     NetworkResult network_result =
       NetworkFactory::performNetworkOperation(source,
                                               timeout,

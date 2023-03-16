@@ -17,21 +17,17 @@ class StandardServiceRoot;
 // Represents BASE class for feeds contained in FeedsModel.
 // NOTE: This class should be derived to create PARTICULAR feed types.
 class StandardFeed : public Feed {
-  Q_OBJECT
+    Q_OBJECT
 
-  friend class StandardCategory;
+    friend class StandardCategory;
 
   public:
-    enum class SourceType {
-      Url = 0,
-      Script = 1,
-      LocalFile = 2
-    };
+    enum class SourceType { Url = 0, Script = 1, LocalFile = 2 };
 
     enum class Type {
       Rss0X = 0,
       Rss2X = 1,
-      Rdf = 2,      // Sometimes denoted as RSS 1.0.
+      Rdf = 2, // Sometimes denoted as RSS 1.0.
       Atom10 = 3,
       Json = 4
     };
@@ -62,8 +58,8 @@ class StandardFeed : public Feed {
     QString postProcessScript() const;
     void setPostProcessScript(const QString& post_process_script);
 
-    bool passwordProtected() const;
-    void setPasswordProtected(bool passwordProtected);
+    Protection protection() const;
+    void setProtection(Protection protect);
 
     QString username() const;
     void setUsername(const QString& username);
@@ -79,6 +75,7 @@ class StandardFeed : public Feed {
     static StandardFeed* guessFeed(SourceType source_type,
                                    const QString& url,
                                    const QString& post_process_script,
+                                   Protection protection,
                                    const QString& username = QString(),
                                    const QString& password = QString(),
                                    const QNetworkProxy& custom_proxy = QNetworkProxy::ProxyType::DefaultProxy);
@@ -93,8 +90,11 @@ class StandardFeed : public Feed {
     static QString postProcessFeedFileWithScript(const QString& execution_line,
                                                  const QString& raw_feed_data,
                                                  int run_timeout);
-    static QString runScriptProcess(const QStringList& cmd_args, const QString& working_directory,
-                                    int run_timeout, bool provide_input, const QString& input = {});
+    static QString runScriptProcess(const QStringList& cmd_args,
+                                    const QString& working_directory,
+                                    int run_timeout,
+                                    bool provide_input,
+                                    const QString& input = {});
 
   public slots:
     void fetchMetadataForItself();
@@ -108,7 +108,7 @@ class StandardFeed : public Feed {
     Type m_type;
     QString m_postProcessScript;
     QString m_encoding;
-    bool m_passwordProtected{};
+    Protection m_protection = Protection::NoProtection;
     QString m_username;
     QString m_password;
 };

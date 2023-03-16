@@ -5,6 +5,8 @@
 
 #include "network-web/httpresponse.h"
 
+#include "services/abstract/feed.h"
+
 #include <QCoreApplication>
 #include <QHttpPart>
 #include <QNetworkCookie>
@@ -37,7 +39,9 @@ class NetworkFactory {
 
   public:
     static QStringList extractFeedLinksFromHtmlPage(const QUrl& url, const QString& html);
-    static QPair<QByteArray, QByteArray> generateBasicAuthHeader(const QString& username, const QString& password);
+    static QPair<QByteArray, QByteArray> generateBasicAuthHeader(Feed::Protection protection,
+                                                                 const QString& username,
+                                                                 const QString& password);
 
     // Returns human readable text for given network error.
     static QString networkErrorText(QNetworkReply::NetworkError error_code);

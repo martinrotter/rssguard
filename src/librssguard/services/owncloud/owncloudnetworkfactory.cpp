@@ -79,7 +79,7 @@ OwnCloudStatusResponse OwnCloudNetworkFactory::status(const QNetworkProxy& custo
   QList<QPair<QByteArray, QByteArray>> headers;
 
   headers << QPair<QByteArray, QByteArray>(HTTP_HEADERS_CONTENT_TYPE, OWNCLOUD_CONTENT_TYPE_JSON);
-  headers << NetworkFactory::generateBasicAuthHeader(m_authUsername, m_authPassword);
+  headers << NetworkFactory::generateBasicAuthHeader(Feed::Protection::BasicProtection, m_authUsername, m_authPassword);
 
   NetworkResult network_reply =
     NetworkFactory::performNetworkOperation(m_urlStatus,
@@ -111,7 +111,7 @@ OwnCloudGetFeedsCategoriesResponse OwnCloudNetworkFactory::feedsCategories(const
   QList<QPair<QByteArray, QByteArray>> headers;
 
   headers << QPair<QByteArray, QByteArray>(HTTP_HEADERS_CONTENT_TYPE, OWNCLOUD_CONTENT_TYPE_JSON);
-  headers << NetworkFactory::generateBasicAuthHeader(m_authUsername, m_authPassword);
+  headers << NetworkFactory::generateBasicAuthHeader(Feed::Protection::BasicProtection, m_authUsername, m_authPassword);
 
   NetworkResult network_reply =
     NetworkFactory::performNetworkOperation(m_urlFolders,
@@ -166,7 +166,7 @@ bool OwnCloudNetworkFactory::deleteFeed(const QString& feed_id, const QNetworkPr
   QList<QPair<QByteArray, QByteArray>> headers;
 
   headers << QPair<QByteArray, QByteArray>(HTTP_HEADERS_CONTENT_TYPE, OWNCLOUD_CONTENT_TYPE_JSON);
-  headers << NetworkFactory::generateBasicAuthHeader(m_authUsername, m_authPassword);
+  headers << NetworkFactory::generateBasicAuthHeader(Feed::Protection::BasicProtection, m_authUsername, m_authPassword);
 
   NetworkResult network_reply =
     NetworkFactory::performNetworkOperation(final_url,
@@ -210,7 +210,7 @@ bool OwnCloudNetworkFactory::createFeed(const QString& url, int parent_id, const
   QList<QPair<QByteArray, QByteArray>> headers;
 
   headers << QPair<QByteArray, QByteArray>(HTTP_HEADERS_CONTENT_TYPE, OWNCLOUD_CONTENT_TYPE_JSON);
-  headers << NetworkFactory::generateBasicAuthHeader(m_authUsername, m_authPassword);
+  headers << NetworkFactory::generateBasicAuthHeader(Feed::Protection::BasicProtection, m_authUsername, m_authPassword);
 
   NetworkResult network_reply =
     NetworkFactory::performNetworkOperation(m_urlFeeds,
@@ -248,7 +248,7 @@ bool OwnCloudNetworkFactory::renameFeed(const QString& new_name,
   QList<QPair<QByteArray, QByteArray>> headers;
 
   headers << QPair<QByteArray, QByteArray>(HTTP_HEADERS_CONTENT_TYPE, OWNCLOUD_CONTENT_TYPE_JSON);
-  headers << NetworkFactory::generateBasicAuthHeader(m_authUsername, m_authPassword);
+  headers << NetworkFactory::generateBasicAuthHeader(Feed::Protection::BasicProtection, m_authUsername, m_authPassword);
 
   NetworkResult network_reply =
     NetworkFactory::performNetworkOperation(final_url,
@@ -287,7 +287,7 @@ OwnCloudGetMessagesResponse OwnCloudNetworkFactory::getMessages(int feed_id, con
   QList<QPair<QByteArray, QByteArray>> headers;
 
   headers << QPair<QByteArray, QByteArray>(HTTP_HEADERS_CONTENT_TYPE, OWNCLOUD_CONTENT_TYPE_JSON);
-  headers << NetworkFactory::generateBasicAuthHeader(m_authUsername, m_authPassword);
+  headers << NetworkFactory::generateBasicAuthHeader(Feed::Protection::BasicProtection, m_authUsername, m_authPassword);
 
   NetworkResult network_reply =
     NetworkFactory::performNetworkOperation(final_url,
@@ -318,7 +318,7 @@ QNetworkReply::NetworkError OwnCloudNetworkFactory::triggerFeedUpdate(int feed_i
   QList<QPair<QByteArray, QByteArray>> headers;
 
   headers << QPair<QByteArray, QByteArray>(HTTP_HEADERS_CONTENT_TYPE, OWNCLOUD_CONTENT_TYPE_JSON);
-  headers << NetworkFactory::generateBasicAuthHeader(m_authUsername, m_authPassword);
+  headers << NetworkFactory::generateBasicAuthHeader(Feed::Protection::BasicProtection, m_authUsername, m_authPassword);
 
   NetworkResult network_reply =
     NetworkFactory::performNetworkOperation(m_urlFeedsUpdate.arg(authUsername(), QString::number(feed_id)),
@@ -365,7 +365,7 @@ NetworkResult OwnCloudNetworkFactory::markMessagesRead(RootItem::ReadStatus stat
   QList<QPair<QByteArray, QByteArray>> headers;
 
   headers << QPair<QByteArray, QByteArray>(HTTP_HEADERS_CONTENT_TYPE, OWNCLOUD_CONTENT_TYPE_JSON);
-  headers << NetworkFactory::generateBasicAuthHeader(m_authUsername, m_authPassword);
+  headers << NetworkFactory::generateBasicAuthHeader(Feed::Protection::BasicProtection, m_authUsername, m_authPassword);
 
   QByteArray output;
 
@@ -411,7 +411,7 @@ NetworkResult OwnCloudNetworkFactory::markMessagesStarred(RootItem::Importance i
   QList<QPair<QByteArray, QByteArray>> headers;
 
   headers << QPair<QByteArray, QByteArray>(HTTP_HEADERS_CONTENT_TYPE, OWNCLOUD_CONTENT_TYPE_JSON);
-  headers << NetworkFactory::generateBasicAuthHeader(m_authUsername, m_authPassword);
+  headers << NetworkFactory::generateBasicAuthHeader(Feed::Protection::BasicProtection, m_authUsername, m_authPassword);
 
   QByteArray output;
 
@@ -614,7 +614,8 @@ QList<Message> OwnCloudGetMessagesResponse::messages() const {
         enclosure.m_mimeType = QSL("image/png");
       }
 
-      if (!message_map[QSL("enclosureMime")].toString().isEmpty() || !enclosure_link.startsWith(QSL("https://www.youtube.com/v/"))) {
+      if (!message_map[QSL("enclosureMime")].toString().isEmpty() ||
+          !enclosure_link.startsWith(QSL("https://www.youtube.com/v/"))) {
         msg.m_enclosures.append(enclosure);
       }
     }

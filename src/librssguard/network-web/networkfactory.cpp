@@ -44,16 +44,30 @@ QStringList NetworkFactory::extractFeedLinksFromHtmlPage(const QUrl& url, const 
   return feeds;
 }
 
-QPair<QByteArray, QByteArray> NetworkFactory::generateBasicAuthHeader(const QString& username,
+QPair<QByteArray, QByteArray> NetworkFactory::generateBasicAuthHeader(Feed::Protection protection,
+                                                                      const QString& username,
                                                                       const QString& password) {
-  if (username.isEmpty()) {
-    return QPair<QByteArray, QByteArray>(QByteArray(), QByteArray());
-  }
-  else {
-    QString basic_value = username + QSL(":") + password;
-    QString header_value = QSL("Basic ") + QString(basic_value.toUtf8().toBase64());
+  switch (protection) {
+    case Feed::Protection::NoProtection:
+      return {};
 
-    return QPair<QByteArray, QByteArray>(HTTP_HEADERS_AUTHORIZATION, header_value.toLocal8Bit());
+    case Feed::Protection::BasicProtection: {
+      if (username.isEmpty()) {
+        return {};
+      }
+      else {
+        QString basic_value = username + QSL(":") + password;
+        QString header_value = QSL("Basic ") + QString(basic_value.toUtf8().toBase64());
+
+        return QPair<QByteArray, QByteArray>(HTTP_HEADERS_AUTHORIZATION, header_value.toLocal8Bit());
+      }
+    }
+
+    case Feed::Protection::TokenProtection: {
+      QString header_value = QSL("Bearer ") + username;
+
+      return QPair<QByteArray, QByteArray>(HTTP_HEADERS_AUTHORIZATION, header_value.toLocal8Bit());
+    }
   }
 }
 

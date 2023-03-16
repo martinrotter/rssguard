@@ -165,7 +165,7 @@ QList<Message> StandardServiceRoot::obtainNewMessages(Feed* feed,
     QByteArray feed_contents;
     QList<QPair<QByteArray, QByteArray>> headers;
 
-    headers << NetworkFactory::generateBasicAuthHeader(f->username(), f->password());
+    headers << NetworkFactory::generateBasicAuthHeader(f->protection(), f->username(), f->password());
 
     auto network_result = NetworkFactory::performNetworkOperation(feed->source(),
                                                                   download_timeout,

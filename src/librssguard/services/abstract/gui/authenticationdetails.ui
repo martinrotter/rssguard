@@ -14,26 +14,23 @@
    <string>Form</string>
   </property>
   <layout class="QFormLayout" name="formLayout">
-   <item row="0" column="0" colspan="2">
+   <item row="1" column="0" colspan="2">
     <widget class="QGroupBox" name="m_gbAuthentication">
      <property name="toolTip">
       <string>Some feeds require authentication, including GMail feeds. BASIC, NTLM-2 and DIGEST-MD5 authentication schemes are supported.</string>
      </property>
      <property name="title">
-      <string>Requires HTTP authentication</string>
+      <string>Credentials</string>
      </property>
      <property name="flat">
       <bool>false</bool>
-     </property>
-     <property name="checkable">
-      <bool>true</bool>
      </property>
      <property name="checked">
       <bool>false</bool>
      </property>
      <layout class="QFormLayout" name="formLayout_2">
       <item row="0" column="0">
-       <widget class="QLabel" name="label_4">
+       <widget class="QLabel" name="m_lblUsername">
         <property name="text">
          <string>Username</string>
         </property>
@@ -46,7 +43,7 @@
        <widget class="LineEditWithStatus" name="m_txtUsername" native="true"/>
       </item>
       <item row="1" column="0">
-       <widget class="QLabel" name="label_5">
+       <widget class="QLabel" name="m_lblPassword">
         <property name="text">
          <string>Password</string>
         </property>
@@ -61,6 +58,19 @@
      </layout>
     </widget>
    </item>
+   <item row="0" column="0">
+    <widget class="QLabel" name="label">
+     <property name="text">
+      <string>Authentication type</string>
+     </property>
+     <property name="buddy">
+      <cstring>m_cbAuthType</cstring>
+     </property>
+    </widget>
+   </item>
+   <item row="0" column="1">
+    <widget class="QComboBox" name="m_cbAuthType"/>
+   </item>
   </layout>
  </widget>
  <customwidgets>
@@ -71,6 +81,10 @@
    <container>1</container>
   </customwidget>
  </customwidgets>
+ <tabstops>
+  <tabstop>m_cbAuthType</tabstop>
+  <tabstop>m_gbAuthentication</tabstop>
+ </tabstops>
  <resources/>
  <connections/>
 </ui>

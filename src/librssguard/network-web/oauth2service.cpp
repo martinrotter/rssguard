@@ -175,7 +175,9 @@ void OAuth2Service::retrieveAccessToken(const QString& auth_code) {
   network_request.setHeader(QNetworkRequest::KnownHeaders::ContentTypeHeader, "application/x-www-form-urlencoded");
 
   if (m_useHttpBasicAuthWithClientData) {
-    auto basic_auth = NetworkFactory::generateBasicAuthHeader(properClientId(), properClientSecret());
+    auto basic_auth = NetworkFactory::generateBasicAuthHeader(Feed::Protection::BasicProtection,
+                                                              properClientId(),
+                                                              properClientSecret());
 
     network_request.setRawHeader(basic_auth.first, basic_auth.second);
   }
@@ -203,7 +205,9 @@ void OAuth2Service::refreshAccessToken(const QString& refresh_token) {
   network_request.setHeader(QNetworkRequest::KnownHeaders::ContentTypeHeader, "application/x-www-form-urlencoded");
 
   if (m_useHttpBasicAuthWithClientData) {
-    auto basic_auth = NetworkFactory::generateBasicAuthHeader(properClientId(), properClientSecret());
+    auto basic_auth = NetworkFactory::generateBasicAuthHeader(Feed::Protection::BasicProtection,
+                                                              properClientId(),
+                                                              properClientSecret());
 
     network_request.setRawHeader(basic_auth.first, basic_auth.second);
   }

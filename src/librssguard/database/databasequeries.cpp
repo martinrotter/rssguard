@@ -60,7 +60,6 @@ QVariantHash DatabaseQueries::deserializeCustomData(const QString& data) {
   }
   else {
     auto json = QJsonDocument::fromJson(data.toUtf8());
-    auto json_obj = json.object();
 
     return json.object().toVariantHash();
   }
