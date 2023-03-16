@@ -38,8 +38,7 @@
 #include <QStack>
 #include <QTextCodec>
 
-StandardServiceRoot::StandardServiceRoot(RootItem* parent)
-  : ServiceRoot(parent) {
+StandardServiceRoot::StandardServiceRoot(RootItem* parent) : ServiceRoot(parent) {
   setTitle(qApp->system()->loggedInUser() + QSL(" (RSS/ATOM/JSON)"));
   setIcon(StandardServiceEntryPoint().icon());
   setDescription(tr("This is obligatory service account for standard RSS/RDF/ATOM feeds."));
@@ -54,10 +53,13 @@ void StandardServiceRoot::start(bool freshly_activated) {
 
   if (freshly_activated && getSubTreeFeeds().isEmpty()) {
     // In other words, if there are no feeds or categories added.
-    if (MsgBox::show(qApp->mainFormWidget(), QMessageBox::Question, QObject::tr("Load initial set of feeds"),
+    if (MsgBox::show(qApp->mainFormWidget(),
+                     QMessageBox::Question,
+                     QObject::tr("Load initial set of feeds"),
                      tr("This new account does not include any feeds. You can now add default set of feeds."),
                      tr("Do you want to load initial set of feeds?"),
-                     QString(), QMessageBox::Yes | QMessageBox::No) == QMessageBox::Yes) {
+                     QString(),
+                     QMessageBox::Yes | QMessageBox::No) == QMessageBox::Yes) {
       QString target_opml_file = APP_INITIAL_FEEDS_PATH + QDir::separator() + FEED_INITIAL_OPML_PATTERN;
       QString current_locale = qApp->localization()->loadedLanguage();
       QString file_to_load;
@@ -81,11 +83,14 @@ void StandardServiceRoot::start(bool freshly_activated) {
         }
       }
       catch (ApplicationException& ex) {
-        MsgBox::show(qApp->mainFormWidget(), QMessageBox::Critical, tr("Error when loading initial feeds"), ex.message());
+        MsgBox::show(qApp->mainFormWidget(),
+                     QMessageBox::Critical,
+                     tr("Error when loading initial feeds"),
+                     ex.message());
       }
     }
     else {
-      requestItemExpand({ this }, true);
+      requestItemExpand({this}, true);
     }
   }
 }
@@ -122,10 +127,10 @@ void StandardServiceRoot::addNewFeed(RootItem* selected_item, const QString& url
     // Lock was not obtained because
     // it is used probably by feed updater or application
     // is quitting.
-    qApp->showGuiMessage(Notification::Event::GeneralEvent, {
-      tr("Cannot add item"),
-      tr("Cannot add feed because another critical operation is ongoing."),
-      QSystemTrayIcon::MessageIcon::Warning });
+    qApp->showGuiMessage(Notification::Event::GeneralEvent,
+                         {tr("Cannot add item"),
+                          tr("Cannot add feed because another critical operation is ongoing."),
+                          QSystemTrayIcon::MessageIcon::Warning});
 
     return;
   }
@@ -144,7 +149,8 @@ Qt::ItemFlags StandardServiceRoot::additionalFlags() const {
 }
 
 QList<Message> StandardServiceRoot::obtainNewMessages(Feed* feed,
-                                                      const QHash<ServiceRoot::BagOfMessages, QStringList>& stated_messages,
+                                                      const QHash<ServiceRoot::BagOfMessages, QStringList>&
+                                                        stated_messages,
                                                       const QHash<QString, QStringList>& tagged_messages) {
   Q_UNUSED(stated_messages)
   Q_UNUSED(tagged_messages)
@@ -154,10 +160,7 @@ QList<Message> StandardServiceRoot::obtainNewMessages(Feed* feed,
   int download_timeout = qApp->settings()->value(GROUP(Feeds), SETTING(Feeds::UpdateTimeout)).toInt();
 
   if (f->sourceType() == StandardFeed::SourceType::Url) {
-    qDebugNN << LOGSEC_CORE
-             << "Downloading URL"
-             << QUOTE_W_SPACE(feed->source())
-             << "to obtain feed data.";
+    qDebugNN << LOGSEC_CORE << "Downloading URL" << QUOTE_W_SPACE(feed->source()) << "to obtain feed data.";
 
     QByteArray feed_contents;
     QList<QPair<QByteArray, QByteArray>> headers;
@@ -173,14 +176,12 @@ QList<Message> StandardServiceRoot::obtainNewMessages(Feed* feed,
                                                                   false,
                                                                   {},
                                                                   {},
-                                                                  networkProxy()).m_networkError;
+                                                                  networkProxy())
+                            .m_networkError;
 
     if (network_result != QNetworkReply::NetworkError::NoError) {
-      qWarningNN << LOGSEC_CORE
-                 << "Error"
-                 << QUOTE_W_SPACE(network_result)
-                 << "during fetching of new messages for feed"
-                 << QUOTE_W_SPACE_DOT(feed->source());
+      qWarningNN << LOGSEC_CORE << "Error" << QUOTE_W_SPACE(network_result)
+                 << "during fetching of new messages for feed" << QUOTE_W_SPACE_DOT(feed->source());
       throw FeedFetchException(Feed::Status::NetworkError, NetworkFactory::networkErrorText(network_result));
     }
 
@@ -197,38 +198,29 @@ QList<Message> StandardServiceRoot::obtainNewMessages(Feed* feed,
     }
   }
   else {
-    qDebugNN << LOGSEC_CORE
-             << "Running custom script"
-             << QUOTE_W_SPACE(feed->source())
-             << "to obtain feed data.";
+    qDebugNN << LOGSEC_CORE << "Running custom script" << QUOTE_W_SPACE(feed->source()) << "to obtain feed data.";
 
     // Use script to generate feed file.
     try {
       formatted_feed_contents = StandardFeed::generateFeedFileWithScript(feed->source(), download_timeout);
     }
     catch (const ScriptException& ex) {
-      qCriticalNN << LOGSEC_CORE
-                  << "Custom script for generating feed file failed:"
-                  << QUOTE_W_SPACE_DOT(ex.message());
+      qCriticalNN << LOGSEC_CORE << "Custom script for generating feed file failed:" << QUOTE_W_SPACE_DOT(ex.message());
 
       throw FeedFetchException(Feed::Status::OtherError, ex.message());
     }
   }
 
   if (!f->postProcessScript().simplified().isEmpty()) {
-    qDebugNN << LOGSEC_CORE
-             << "We will process feed data with post-process script"
+    qDebugNN << LOGSEC_CORE << "We will process feed data with post-process script"
              << QUOTE_W_SPACE_DOT(f->postProcessScript());
 
     try {
-      formatted_feed_contents = StandardFeed::postProcessFeedFileWithScript(f->postProcessScript(),
-                                                                            formatted_feed_contents,
-                                                                            download_timeout);
+      formatted_feed_contents =
+        StandardFeed::postProcessFeedFileWithScript(f->postProcessScript(), formatted_feed_contents, download_timeout);
     }
     catch (const ScriptException& ex) {
-      qCriticalNN << LOGSEC_CORE
-                  << "Post-processing script for feed file failed:"
-                  << QUOTE_W_SPACE_DOT(ex.message());
+      qCriticalNN << LOGSEC_CORE << "Post-processing script for feed file failed:" << QUOTE_W_SPACE_DOT(ex.message());
 
       throw FeedFetchException(Feed::Status::OtherError, ex.message());
     }
@@ -270,9 +262,8 @@ QList<Message> StandardServiceRoot::obtainNewMessages(Feed* feed,
 QList<QAction*> StandardServiceRoot::getContextMenuForFeed(StandardFeed* feed) {
   if (m_feedContextMenu.isEmpty()) {
     // Initialize.
-    auto* action_metadata = new QAction(qApp->icons()->fromTheme(QSL("download"), QSL("emblem-downloads")),
-                                        tr("Fetch metadata"),
-                                        this);
+    auto* action_metadata =
+      new QAction(qApp->icons()->fromTheme(QSL("download"), QSL("emblem-downloads")), tr("Fetch metadata"), this);
 
     m_feedContextMenu.append(action_metadata);
 
@@ -297,6 +288,8 @@ bool StandardServiceRoot::mergeImportExportModel(FeedsImportExportModel* model,
   new_parents.push(model->sourceModel()->rootItem());
   bool some_feed_category_error = false;
 
+  QSqlDatabase database = qApp->database()->driver()->connection(metaObject()->className());
+
   // Iterate all new items we would like to merge into current model.
   while (!new_parents.isEmpty()) {
     RootItem* target_parent = original_parents.pop();
@@ -317,8 +310,6 @@ bool StandardServiceRoot::mergeImportExportModel(FeedsImportExportModel* model,
 
         // Add category to model.
         new_category->clearChildren();
-
-        QSqlDatabase database = qApp->database()->driver()->connection(metaObject()->className());
 
         try {
           DatabaseQueries::createOverwriteCategory(database,
@@ -350,9 +341,7 @@ bool StandardServiceRoot::mergeImportExportModel(FeedsImportExportModel* model,
           else {
             some_feed_category_error = true;
 
-            qCriticalNN << LOGSEC_CORE
-                        << "Cannot import category:"
-                        << QUOTE_W_SPACE_DOT(ex.message());
+            qCriticalNN << LOGSEC_CORE << "Cannot import category:" << QUOTE_W_SPACE_DOT(ex.message());
           }
         }
       }
@@ -360,7 +349,7 @@ bool StandardServiceRoot::mergeImportExportModel(FeedsImportExportModel* model,
         auto* source_feed = qobject_cast<StandardFeed*>(source_item);
         const auto* feed_with_same_url = target_root_node->getItemFromSubTree([source_feed](const RootItem* it) {
           return it->kind() == RootItem::Kind::Feed &&
-          it->toFeed()->source().toLower() == source_feed->source().toLower();
+                 it->toFeed()->source().toLower() == source_feed->source().toLower();
         });
 
         if (feed_with_same_url != nullptr) {
@@ -368,7 +357,6 @@ bool StandardServiceRoot::mergeImportExportModel(FeedsImportExportModel* model,
         }
 
         auto* new_feed = new StandardFeed(*source_feed);
-        QSqlDatabase database = qApp->database()->driver()->connection(metaObject()->className());
 
         try {
           DatabaseQueries::createOverwriteFeed(database,
@@ -378,9 +366,7 @@ bool StandardServiceRoot::mergeImportExportModel(FeedsImportExportModel* model,
           requestItemReassignment(new_feed, target_parent);
         }
         catch (const ApplicationException& ex) {
-          qCriticalNN << LOGSEC_CORE
-                      << "Cannot import feed:"
-                      << QUOTE_W_SPACE_DOT(ex.message());
+          qCriticalNN << LOGSEC_CORE << "Cannot import feed:" << QUOTE_W_SPACE_DOT(ex.message());
           some_feed_category_error = true;
         }
       }
@@ -402,10 +388,10 @@ void StandardServiceRoot::addNewCategory(RootItem* selected_item) {
     // Lock was not obtained because
     // it is used probably by feed updater or application
     // is quitting.
-    qApp->showGuiMessage(Notification::Event::GeneralEvent, {
-      tr("Cannot add category"),
-      tr("Cannot add category because another critical operation is ongoing."),
-      QSystemTrayIcon::MessageIcon::Warning });
+    qApp->showGuiMessage(Notification::Event::GeneralEvent,
+                         {tr("Cannot add category"),
+                          tr("Cannot add category because another critical operation is ongoing."),
+                          QSystemTrayIcon::MessageIcon::Warning});
 
     // Thus, cannot delete and quit the method.
     return;

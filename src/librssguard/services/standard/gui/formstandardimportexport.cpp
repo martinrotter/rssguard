@@ -130,21 +130,20 @@ void FormStandardImportExport::onParsingFinished(int count_failed, int count_suc
   m_ui->m_progressBar->setValue(0);
   m_model->checkAllItems();
 
-  if (count_failed > 0 && count_succeeded == 0) {
-    m_ui->m_groupFeeds->setEnabled(false);
-    m_ui->m_groupFetchMetadata->setEnabled(false);
-    m_ui->m_lblResult->setStatus(WidgetWithStatus::StatusType::Error,
-                                 tr("Some feeds were not loaded properly or import file is corrupted."),
-                                 tr("Some feeds were not loaded properly or import file is corrupted."));
+  if (count_failed > 0) {
+    m_ui->m_lblResult->setStatus(WidgetWithStatus::StatusType::Warning,
+                                 tr("Some feeds were not loaded properly. Check log for more information."),
+                                 tr("Some feeds were not loaded properly. Check log for more information."));
   }
   else {
     m_ui->m_lblResult->setStatus(WidgetWithStatus::StatusType::Ok, tr("Feeds were loaded."), tr("Feeds were loaded."));
-    m_ui->m_groupFeeds->setEnabled(true);
-    m_ui->m_groupFetchMetadata->setEnabled(true);
-    m_ui->m_btnSelectFile->setEnabled(true);
-    m_ui->m_treeFeeds->setModel(m_model);
-    m_ui->m_treeFeeds->expandAll();
   }
+
+  m_ui->m_groupFeeds->setEnabled(true);
+  m_ui->m_groupFetchMetadata->setEnabled(true);
+  m_ui->m_btnSelectFile->setEnabled(true);
+  m_ui->m_treeFeeds->setModel(m_model);
+  m_ui->m_treeFeeds->expandAll();
 
   m_ui->m_buttonBox->button(QDialogButtonBox::StandardButton::Ok)->setEnabled(true);
 }
@@ -215,13 +214,13 @@ void FormStandardImportExport::selectExportFile(bool without_dialog) {
 void FormStandardImportExport::selectImportFile() {
   const QString filter_opml20 = tr("OPML 2.0 files (*.opml *.xml)");
   const QString filter_txt_url_per_line = tr("TXT files [one URL per line] (*.txt)");
+
   QString filter;
   QString selected_filter;
 
   // Add more filters here.
-  filter += filter_opml20;
-  filter += QSL(";;");
-  filter += filter_txt_url_per_line;
+  filter += filter_opml20 + QSL(";;") + filter_txt_url_per_line;
+
   const QString selected_file = QFileDialog::getOpenFileName(this,
                                                              tr("Select file for feeds import"),
                                                              qApp->homeFolder(),
@@ -240,13 +239,24 @@ void FormStandardImportExport::selectImportFile() {
                                      QDir::toNativeSeparators(selected_file),
                                      tr("File is selected."));
 
-    parseImportFile(selected_file, m_ui->m_groupFetchMetadata->isChecked());
+    try {
+      parseImportFile(selected_file, m_ui->m_groupFetchMetadata->isChecked());
+    }
+    catch (const ApplicationException& ex) {
+      m_ui->m_btnSelectFile->setEnabled(true);
+      m_ui->m_progressBar->setVisible(false);
+      m_ui->m_progressBar->setValue(0);
+      m_ui->m_groupFeeds->setEnabled(false);
+      m_ui->m_groupFetchMetadata->setEnabled(true);
+
+      m_ui->m_lblResult->setStatus(WidgetWithStatus::StatusType::Error, ex.message(), ex.message());
+    }
   }
 }
 
 void FormStandardImportExport::parseImportFile(const QString& file_name, bool fetch_metadata_online) {
-  QFile input_file(file_name);
   QByteArray input_data;
+  QFile input_file(file_name);
 
   if (input_file.open(QIODevice::OpenModeFlag::Text | QIODevice::OpenModeFlag::Unbuffered |
                       QIODevice::OpenModeFlag::ReadOnly)) {
@@ -254,10 +264,7 @@ void FormStandardImportExport::parseImportFile(const QString& file_name, bool fe
     input_file.close();
   }
   else {
-    m_ui->m_lblResult->setStatus(WidgetWithStatus::StatusType::Error,
-                                 tr("Cannot open source file."),
-                                 tr("Cannot open source file."));
-    return;
+    throw ApplicationException(tr("cannot open file"));
   }
 
   switch (m_conversionType) {

@@ -52,7 +52,7 @@ void EmailPreviewer::loadMessage(const Message& msg, RootItem* selected_item) {
   Q_UNUSED(selected_item)
 
   m_message = msg;
-  m_webView->setHtml(msg.m_contents);
+  m_webView->loadMessages({msg}, selected_item);
 
   m_ui.m_tbFrom->setText(msg.m_author);
   m_ui.m_tbSubject->setText(msg.m_title);

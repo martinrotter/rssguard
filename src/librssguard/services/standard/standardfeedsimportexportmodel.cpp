@@ -16,6 +16,8 @@
 #include <QDomDocument>
 #include <QDomElement>
 #include <QLocale>
+#include <QSqlDatabase>
+#include <QSqlError>
 #include <QStack>
 #include <QtConcurrent/QtConcurrentMap>
 
@@ -192,7 +194,7 @@ bool FeedsImportExportModel::produceFeed(const FeedLookup& feed_lookup) {
     else {
       new_feed = new StandardFeed();
 
-      if (feed_lookup.opml_element.isNull()) {
+      if (feed_lookup.custom_data.isEmpty()) {
         new_feed->setSource(feed_lookup.url);
         new_feed->setTitle(feed_lookup.url);
         new_feed->setIcon(qApp->icons()->fromTheme(QSL("application-rss+xml")));
@@ -200,15 +202,13 @@ bool FeedsImportExportModel::produceFeed(const FeedLookup& feed_lookup) {
         new_feed->setPostProcessScript(feed_lookup.post_process_script);
       }
       else {
-        QString feed_title = feed_lookup.opml_element.attribute(QSL("text"));
-        QString feed_encoding = feed_lookup.opml_element.attribute(QSL("encoding"), QSL(DEFAULT_FEED_ENCODING));
-        QString feed_type = feed_lookup.opml_element.attribute(QSL("version"), QSL(DEFAULT_FEED_TYPE)).toUpper();
-        QString feed_description = feed_lookup.opml_element.attribute(QSL("description"));
-        QIcon feed_icon =
-          qApp->icons()->fromByteArray(feed_lookup.opml_element.attribute(QSL("rssguard:icon")).toLocal8Bit());
-        StandardFeed::SourceType source_type =
-          StandardFeed::SourceType(feed_lookup.opml_element.attribute(QSL("rssguard:xmlUrlType")).toInt());
-        QString post_process = feed_lookup.opml_element.attribute(QSL("rssguard:postProcess"));
+        QString feed_title = feed_lookup.custom_data[QSL("title")].toString();
+        QString feed_encoding = feed_lookup.custom_data.value(QSL("encoding"), QSL(DEFAULT_FEED_ENCODING)).toString();
+        QString feed_type = feed_lookup.custom_data.value(QSL("feedType"), QSL(DEFAULT_FEED_TYPE)).toString().toUpper();
+        QString feed_description = feed_lookup.custom_data[QSL("description")].toString();
+        QIcon feed_icon = feed_lookup.custom_data[QSL("icon")].value<QIcon>();
+        StandardFeed::SourceType source_type = feed_lookup.custom_data["sourceType"].value<StandardFeed::SourceType>();
+        QString post_process = feed_lookup.custom_data[QSL("postProcessScript")].toString();
 
         new_feed->setTitle(feed_title);
         new_feed->setDescription(feed_description);
@@ -265,13 +265,12 @@ void FeedsImportExportModel::importAsOPML20(const QByteArray& data,
   QDomDocument opml_document;
 
   if (!opml_document.setContent(data)) {
-    emit parsingFinished(0, 0);
+    throw ApplicationException(tr("OPML document contains errors"));
   }
 
   if (opml_document.documentElement().isNull() || opml_document.documentElement().tagName() != QSL("opml") ||
       opml_document.documentElement().elementsByTagName(QSL("body")).size() != 1) {
-    // This really is not an OPML file.
-    emit parsingFinished(0, 0);
+    throw ApplicationException(tr("this is likely not OPML document"));
   }
 
   int completed = 0, total = 0;
@@ -311,10 +310,22 @@ void FeedsImportExportModel::importAsOPML20(const QByteArray& data,
 
           if (!feed_url.isEmpty()) {
             FeedLookup f;
+            QVariantMap feed_data;
+
+            feed_data["title"] = child_element.attribute(QSL("text"));
+            feed_data["encoding"] = child_element.attribute(QSL("encoding"), QSL(DEFAULT_FEED_ENCODING));
+            feed_data["type"] = child_element.attribute(QSL("version"), QSL(DEFAULT_FEED_TYPE)).toUpper();
+            feed_data["description"] = child_element.attribute(QSL("description"));
+            feed_data["icon"] =
+              qApp->icons()->fromByteArray(child_element.attribute(QSL("rssguard:icon")).toLocal8Bit());
+            feed_data["sourceType"] =
+              QVariant::fromValue(StandardFeed::SourceType(child_element.attribute(QSL("rssguard:xmlUrlType"))
+                                                             .toInt()));
+            feed_data["postProcessScript"] = child_element.attribute(QSL("rssguard:postProcess"));
 
             f.custom_proxy = custom_proxy;
             f.fetch_metadata_online = fetch_metadata_online;
-            f.opml_element = child_element;
+            f.custom_data = feed_data;
             f.parent = active_model_item;
             f.post_process_script = post_process_script;
             f.url = feed_url;

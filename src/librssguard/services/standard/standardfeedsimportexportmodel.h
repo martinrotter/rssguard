@@ -13,7 +13,7 @@ class StandardFeed;
 
 struct FeedLookup {
     RootItem* parent;
-    QDomElement opml_element;
+    QVariantMap custom_data;
     QString url;
     bool fetch_metadata_online;
     QNetworkProxy custom_proxy;
