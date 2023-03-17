@@ -22,7 +22,10 @@ AuthenticationDetails::AuthenticationDetails(bool only_basic, QWidget* parent) :
 
   connect(m_txtUsername->lineEdit(), &BaseLineEdit::textChanged, this, &AuthenticationDetails::onUsernameChanged);
   connect(m_txtPassword->lineEdit(), &BaseLineEdit::textChanged, this, &AuthenticationDetails::onPasswordChanged);
-  connect(m_cbAuthType, &QComboBox::currentIndexChanged, this, &AuthenticationDetails::onAuthenticationSwitched);
+  connect(m_cbAuthType,
+          QOverload<int>::of(&QComboBox::currentIndexChanged),
+          this,
+          &AuthenticationDetails::onAuthenticationSwitched);
 
   onAuthenticationSwitched();
 }
