@@ -131,7 +131,7 @@ StandardFeedDetails::StandardFeedDetails(QWidget* parent) : QWidget(parent) {
 void StandardFeedDetails::guessIconOnly(StandardFeed::SourceType source_type,
                                         const QString& source,
                                         const QString& post_process_script,
-                                        Feed::Protection protection,
+                                        NetworkFactory::NetworkAuthentication protection,
                                         const QString& username,
                                         const QString& password,
                                         const QNetworkProxy& custom_proxy) {
@@ -168,7 +168,7 @@ void StandardFeedDetails::guessIconOnly(StandardFeed::SourceType source_type,
 void StandardFeedDetails::guessFeed(StandardFeed::SourceType source_type,
                                     const QString& source,
                                     const QString& post_process_script,
-                                    Feed::Protection protection,
+                                    NetworkFactory::NetworkAuthentication protection,
                                     const QString& username,
                                     const QString& password,
                                     const QNetworkProxy& custom_proxy) {

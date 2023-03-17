@@ -44,14 +44,11 @@ QStringList NetworkFactory::extractFeedLinksFromHtmlPage(const QUrl& url, const 
   return feeds;
 }
 
-QPair<QByteArray, QByteArray> NetworkFactory::generateBasicAuthHeader(Feed::Protection protection,
+QPair<QByteArray, QByteArray> NetworkFactory::generateBasicAuthHeader(NetworkAuthentication protection,
                                                                       const QString& username,
                                                                       const QString& password) {
   switch (protection) {
-    case Feed::Protection::NoProtection:
-      return {};
-
-    case Feed::Protection::BasicProtection: {
+    case NetworkFactory::NetworkAuthentication::Basic: {
       if (username.isEmpty()) {
         return {};
       }
@@ -63,11 +60,15 @@ QPair<QByteArray, QByteArray> NetworkFactory::generateBasicAuthHeader(Feed::Prot
       }
     }
 
-    case Feed::Protection::TokenProtection: {
+    case NetworkFactory::NetworkAuthentication::Token: {
       QString header_value = QSL("Bearer ") + username;
 
       return QPair<QByteArray, QByteArray>(HTTP_HEADERS_AUTHORIZATION, header_value.toLocal8Bit());
     }
+
+    case NetworkFactory::NetworkAuthentication::NoAuthentication:
+    default:
+      return {};
   }
 }
 

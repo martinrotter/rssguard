@@ -14,7 +14,6 @@
 #include "miscellaneous/iconfactory.h"
 #include "miscellaneous/settings.h"
 #include "miscellaneous/textfactory.h"
-#include "network-web/networkfactory.h"
 #include "services/abstract/recyclebin.h"
 #include "services/standard/definitions.h"
 #include "services/standard/gui/formstandardfeeddetails.h"
@@ -42,7 +41,7 @@ StandardFeed::StandardFeed(RootItem* parent_item) : Feed(parent_item) {
   m_sourceType = SourceType::Url;
   m_encoding = m_postProcessScript = QString();
 
-  m_protection = Protection::NoProtection;
+  m_protection = NetworkFactory::NetworkAuthentication::NoAuthentication;
   m_username = QString();
   m_password = QString();
 }
@@ -95,11 +94,11 @@ bool StandardFeed::deleteViaGui() {
   }
 }
 
-StandardFeed::Protection StandardFeed::protection() const {
+NetworkFactory::NetworkAuthentication StandardFeed::protection() const {
   return m_protection;
 }
 
-void StandardFeed::setProtection(Protection protect) {
+void StandardFeed::setProtection(NetworkFactory::NetworkAuthentication protect) {
   m_protection = protect;
 }
 
@@ -138,7 +137,7 @@ void StandardFeed::setCustomDatabaseData(const QVariantHash& data) {
   setType(Type(data[QSL("type")].toInt()));
   setEncoding(data[QSL("encoding")].toString());
   setPostProcessScript(data[QSL("post_process")].toString());
-  setProtection(Protection(data[QSL("protected")].toInt()));
+  setProtection(NetworkFactory::NetworkAuthentication(data[QSL("protected")].toInt()));
   setUsername(data[QSL("username")].toString());
   setPassword(TextFactory::decrypt(data[QSL("password")].toString()));
 }
@@ -231,7 +230,7 @@ void StandardFeed::setSourceType(SourceType source_type) {
 StandardFeed* StandardFeed::guessFeed(StandardFeed::SourceType source_type,
                                       const QString& source,
                                       const QString& post_process_script,
-                                      Feed::Protection protection,
+                                      NetworkFactory::NetworkFactory::NetworkAuthentication protection,
                                       const QString& username,
                                       const QString& password,
                                       const QNetworkProxy& custom_proxy) {

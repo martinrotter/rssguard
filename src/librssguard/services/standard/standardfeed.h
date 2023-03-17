@@ -5,6 +5,8 @@
 
 #include "services/abstract/feed.h"
 
+#include "network-web/networkfactory.h"
+
 #include <QCoreApplication>
 #include <QDateTime>
 #include <QMetaType>
@@ -58,8 +60,8 @@ class StandardFeed : public Feed {
     QString postProcessScript() const;
     void setPostProcessScript(const QString& post_process_script);
 
-    Protection protection() const;
-    void setProtection(Protection protect);
+    NetworkFactory::NetworkAuthentication protection() const;
+    void setProtection(NetworkFactory::NetworkAuthentication protect);
 
     QString username() const;
     void setUsername(const QString& username);
@@ -75,7 +77,7 @@ class StandardFeed : public Feed {
     static StandardFeed* guessFeed(SourceType source_type,
                                    const QString& url,
                                    const QString& post_process_script,
-                                   Protection protection,
+                                   NetworkFactory::NetworkAuthentication protection,
                                    const QString& username = QString(),
                                    const QString& password = QString(),
                                    const QNetworkProxy& custom_proxy = QNetworkProxy::ProxyType::DefaultProxy);
@@ -108,7 +110,7 @@ class StandardFeed : public Feed {
     Type m_type;
     QString m_postProcessScript;
     QString m_encoding;
-    Protection m_protection = Protection::NoProtection;
+    NetworkFactory::NetworkAuthentication m_protection = NetworkFactory::NetworkAuthentication::NoAuthentication;
     QString m_username;
     QString m_password;
 };

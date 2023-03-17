@@ -38,8 +38,10 @@ class NetworkFactory {
     explicit NetworkFactory() = default;
 
   public:
+    enum class NetworkAuthentication { NoAuthentication = 0, Basic = 1, Token = 2 };
+
     static QStringList extractFeedLinksFromHtmlPage(const QUrl& url, const QString& html);
-    static QPair<QByteArray, QByteArray> generateBasicAuthHeader(Feed::Protection protection,
+    static QPair<QByteArray, QByteArray> generateBasicAuthHeader(NetworkAuthentication protection,
                                                                  const QString& username,
                                                                  const QString& password);
 
@@ -80,5 +82,7 @@ class NetworkFactory {
                                                  const QNetworkProxy& custom_proxy =
                                                    QNetworkProxy::ProxyType::DefaultProxy);
 };
+
+Q_DECLARE_METATYPE(NetworkFactory::NetworkAuthentication)
 
 #endif // NETWORKFACTORY_H

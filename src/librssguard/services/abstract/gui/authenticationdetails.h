@@ -7,6 +7,7 @@
 
 #include "ui_authenticationdetails.h"
 
+#include "network-web/networkfactory.h"
 #include "services/abstract/feed.h"
 
 class AuthenticationDetails : public QWidget, public Ui::AuthenticationDetails {
@@ -15,8 +16,8 @@ class AuthenticationDetails : public QWidget, public Ui::AuthenticationDetails {
   public:
     explicit AuthenticationDetails(bool only_basic, QWidget* parent = nullptr);
 
-    void setAuthenticationType(Feed::Protection protect);
-    Feed::Protection authenticationType() const;
+    void setAuthenticationType(NetworkFactory::NetworkFactory::NetworkAuthentication protect);
+    NetworkFactory::NetworkFactory::NetworkAuthentication authenticationType() const;
 
   private slots:
     void onUsernameChanged(const QString& new_username);

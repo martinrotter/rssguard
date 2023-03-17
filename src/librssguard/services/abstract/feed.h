@@ -19,8 +19,6 @@ class Feed : public RootItem {
     // Specifies the auto-download strategy for the feed.
     enum class AutoUpdateType { DontAutoUpdate = 0, DefaultAutoUpdate = 1, SpecificAutoUpdate = 2 };
 
-    enum class Protection { NoProtection = 0, BasicProtection = 1, TokenProtection = 2 };
-
     // Specifies the actual "status" of the feed.
     // For example if it has new messages, error
     // occurred, and so on.
@@ -107,5 +105,6 @@ class Feed : public RootItem {
 };
 
 Q_DECLARE_METATYPE(Feed::AutoUpdateType)
+Q_DECLARE_METATYPE(Feed::Status)
 
 #endif // FEED_H

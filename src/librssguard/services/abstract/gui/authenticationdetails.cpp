@@ -12,11 +12,12 @@ AuthenticationDetails::AuthenticationDetails(bool only_basic, QWidget* parent) :
   m_txtPassword->lineEdit()->setPlaceholderText(tr("Password"));
   m_txtPassword->lineEdit()->setToolTip(tr("Set password to access the feed."));
 
-  m_cbAuthType->addItem(tr("No authentication"), QVariant::fromValue(Feed::Protection::NoProtection));
-  m_cbAuthType->addItem(tr("HTTP Basic"), QVariant::fromValue(Feed::Protection::BasicProtection));
+  m_cbAuthType->addItem(tr("No authentication"),
+                        QVariant::fromValue(NetworkFactory::NetworkAuthentication::NoAuthentication));
+  m_cbAuthType->addItem(tr("HTTP Basic"), QVariant::fromValue(NetworkFactory::NetworkAuthentication::Basic));
 
   if (!only_basic) {
-    m_cbAuthType->addItem(tr("Token"), QVariant::fromValue(Feed::Protection::TokenProtection));
+    m_cbAuthType->addItem(tr("Token"), QVariant::fromValue(NetworkFactory::NetworkAuthentication::Token));
   }
 
   connect(m_txtUsername->lineEdit(), &BaseLineEdit::textChanged, this, &AuthenticationDetails::onUsernameChanged);
@@ -26,7 +27,7 @@ AuthenticationDetails::AuthenticationDetails(bool only_basic, QWidget* parent) :
   onAuthenticationSwitched();
 }
 
-void AuthenticationDetails::setAuthenticationType(Feed::Protection protect) {
+void AuthenticationDetails::setAuthenticationType(NetworkFactory::NetworkAuthentication protect) {
   auto fnd = m_cbAuthType->findData(QVariant::fromValue(protect));
 
   if (fnd >= 0) {
@@ -34,12 +35,13 @@ void AuthenticationDetails::setAuthenticationType(Feed::Protection protect) {
   }
 }
 
-Feed::Protection AuthenticationDetails::authenticationType() const {
-  return m_cbAuthType->currentData().value<Feed::Protection>();
+NetworkFactory::NetworkFactory::NetworkAuthentication AuthenticationDetails::authenticationType() const {
+  return m_cbAuthType->currentData().value<NetworkFactory::NetworkAuthentication>();
 }
 
 void AuthenticationDetails::onUsernameChanged(const QString& new_username) {
-  bool is_username_ok = authenticationType() == Feed::Protection::NoProtection || !new_username.simplified().isEmpty();
+  bool is_username_ok = authenticationType() == NetworkFactory::NetworkAuthentication::NoAuthentication ||
+                        !new_username.simplified().isEmpty();
 
   m_txtUsername->setStatus(is_username_ok ? LineEditWithStatus::StatusType::Ok
                                           : LineEditWithStatus::StatusType::Warning,
@@ -48,7 +50,8 @@ void AuthenticationDetails::onUsernameChanged(const QString& new_username) {
 }
 
 void AuthenticationDetails::onPasswordChanged(const QString& new_password) {
-  bool is_password_ok = authenticationType() == Feed::Protection::NoProtection || !new_password.simplified().isEmpty();
+  bool is_password_ok = authenticationType() == NetworkFactory::NetworkAuthentication::NoAuthentication ||
+                        !new_password.simplified().isEmpty();
 
   m_txtPassword->setStatus(is_password_ok ? LineEditWithStatus::StatusType::Ok
                                           : LineEditWithStatus::StatusType::Warning,
@@ -61,15 +64,15 @@ void AuthenticationDetails::onAuthenticationSwitched() {
 
   auto prot = authenticationType();
 
-  m_lblPassword->setVisible(prot != Feed::Protection::TokenProtection);
-  m_txtPassword->setVisible(prot != Feed::Protection::TokenProtection);
+  m_lblPassword->setVisible(prot != NetworkFactory::NetworkAuthentication::Token);
+  m_txtPassword->setVisible(prot != NetworkFactory::NetworkAuthentication::Token);
 
-  if (prot == Feed::Protection::TokenProtection) {
+  if (prot == NetworkFactory::NetworkAuthentication::Token) {
     m_lblUsername->setText(tr("Access token"));
   }
   else {
     m_lblUsername->setText(tr("Username"));
   }
 
-  m_gbAuthentication->setEnabled(prot != Feed::Protection::NoProtection);
+  m_gbAuthentication->setEnabled(prot != NetworkFactory::NetworkAuthentication::NoAuthentication);
 }
