@@ -29,6 +29,8 @@ TextBrowserViewer::TextBrowserViewer(QWidget* parent)
   setFrameShadow(QFrame::Shadow::Plain);
   setTabChangesFocus(true);
   setOpenLinks(false);
+  setWordWrapMode(QTextOption::WrapMode::WordWrap);
+
   viewport()->setAutoFillBackground(true);
 
   setResourcesEnabled(qApp->settings()->value(GROUP(Messages), SETTING(Messages::ShowResourcesInArticles)).toBool());
@@ -123,7 +125,8 @@ PreparedHtml TextBrowserViewer::prepareHtmlForMessage(const QList<Message>& mess
     }
 
     // Append actual contents of article and convert to HTML if needed.
-    html.m_html += is_plain ? Qt::convertFromPlainText(message.m_contents) : message.m_contents;
+    html.m_html += is_plain ? Qt::convertFromPlainText(message.m_contents, Qt::WhiteSpaceMode::WhiteSpaceNormal)
+                            : message.m_contents;
 
     static QRegularExpression img_tag_rgx("\\<img[^\\>]*src\\s*=\\s*[\"\']([^\"\']*)[\"\'][^\\>]*\\>",
                                           QRegularExpression::PatternOption::CaseInsensitiveOption |
