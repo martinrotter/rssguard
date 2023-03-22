@@ -34,11 +34,6 @@ class TextBrowserDocument : public QTextDocument {
     QPointer<TextBrowserViewer> m_viewer;
 };
 
-struct PreparedHtml {
-    QString m_html;
-    QUrl m_baseUrl;
-};
-
 class TextBrowserViewer : public QTextBrowser, public WebViewer {
     Q_OBJECT
     Q_INTERFACES(WebViewer)

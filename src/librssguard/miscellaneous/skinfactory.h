@@ -7,6 +7,8 @@
 
 #include "core/message.h"
 
+#include "gui/webviewers/webviewer.h"
+
 #include <QColor>
 #include <QFont>
 #include <QHash>
@@ -95,7 +97,7 @@ class RSSGUARD_DLLSPEC SkinFactory : public QObject {
 
     QString adBlockedPage(const QString& url, const QString& filter);
 
-    QPair<QString, QUrl> generateHtmlOfArticles(const QList<Message>& messages, RootItem* root) const;
+    PreparedHtml generateHtmlOfArticles(const QList<Message>& messages, RootItem* root) const;
 
     // Gets skin about a particular skin.
     Skin skinInfo(const QString& skin_name, bool* ok = nullptr) const;

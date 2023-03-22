@@ -293,6 +293,9 @@ void TextBrowserViewer::loadMessages(const QList<Message>& messages, RootItem* r
 
   auto html_messages = prepareHtmlForMessage(messages, root);
 
+  // TODO: Make this switchable? To allow for more formatted output even in notwebengine.
+  // auto html_messages = qApp->skins()->generateHtmlOfArticles(messages, root);
+
   setHtml(html_messages.m_html, html_messages.m_baseUrl);
   emit loadingFinished(true);
 }
@@ -449,15 +452,23 @@ void TextBrowserViewer::downloadLink() {
 void TextBrowserViewer::onAnchorClicked(const QUrl& url) {
   if (!url.isEmpty()) {
     const QUrl resolved_url = (m_currentUrl.isValid() && url.isRelative()) ? m_currentUrl.resolved(url) : url;
+    const bool ctrl_pressed = (QGuiApplication::keyboardModifiers() & Qt::KeyboardModifier::ControlModifier) ==
+                              Qt::KeyboardModifier::ControlModifier;
 
-    bool open_externally_now =
-      qApp->settings()->value(GROUP(Browser), SETTING(Browser::OpenLinksInExternalBrowserRightAway)).toBool();
-
-    if (open_externally_now) {
-      qApp->web()->openUrlInExternalBrowser(resolved_url.toString());
+    if (ctrl_pressed) {
+      // Open in new tab.
+      qApp->mainForm()->tabWidget()->addLinkedBrowser(resolved_url);
     }
     else {
-      setUrl(resolved_url);
+      bool open_externally_now =
+        qApp->settings()->value(GROUP(Browser), SETTING(Browser::OpenLinksInExternalBrowserRightAway)).toBool();
+
+      if (open_externally_now) {
+        qApp->web()->openUrlInExternalBrowser(resolved_url.toString());
+      }
+      else {
+        setUrl(resolved_url);
+      }
     }
   }
 }

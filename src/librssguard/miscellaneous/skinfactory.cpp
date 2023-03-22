@@ -154,7 +154,7 @@ QString SkinFactory::adBlockedPage(const QString& url, const QString& filter) {
   return currentSkin().m_layoutMarkupWrapper.arg(tr("This page was blocked by AdBlock"), adblocked);
 }
 
-QPair<QString, QUrl> SkinFactory::generateHtmlOfArticles(const QList<Message>& messages, RootItem* root) const {
+PreparedHtml SkinFactory::generateHtmlOfArticles(const QList<Message>& messages, RootItem* root) const {
   Skin skin = currentSkin();
   QString messages_layout;
   QString single_message_layout = skin.m_layoutMarkup;

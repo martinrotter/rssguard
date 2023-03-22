@@ -57,8 +57,8 @@ void WebEngineViewer::loadMessages(const QList<Message>& messages, RootItem* roo
   auto html_messages = qApp->skins()->generateHtmlOfArticles(messages, root);
 
   m_root = root;
-  m_messageContents = html_messages.first;
-  m_messageBaseUrl = html_messages.second;
+  m_messageContents = html_messages.m_html;
+  m_messageBaseUrl = html_messages.m_baseUrl;
 
   bool previously_enabled = isEnabled();
 

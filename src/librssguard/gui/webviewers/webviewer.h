@@ -10,6 +10,11 @@
 class WebBrowser;
 class RootItem;
 
+struct PreparedHtml {
+    QString m_html;
+    QUrl m_baseUrl;
+};
+
 // Interface for web/article viewers.
 class WebViewer {
   public:

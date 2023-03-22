@@ -93,3 +93,14 @@ QString FilterUtils::runExecutableGetOutput(const QString& executable, const QSt
     return ex.message();
   }
 }
+
+void FilterUtils::runExecutable(const QString& executable,
+                                const QStringList& arguments,
+                                const QString& working_directory) const {
+  try {
+    IOFactory::startProcessDetached(executable, arguments, working_directory);
+  }
+  catch (const ApplicationException& ex) {
+    // return ex.message();
+  }
+}

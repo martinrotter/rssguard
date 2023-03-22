@@ -8,7 +8,7 @@
 #include <QObject>
 
 class FilterUtils : public QObject {
-  Q_OBJECT
+    Q_OBJECT
 
   public:
     explicit FilterUtils(QObject* parent = nullptr);
@@ -23,6 +23,9 @@ class FilterUtils : public QObject {
     // Parses string into date/time object.
     Q_INVOKABLE QDateTime parseDateTime(const QString& dat) const;
     Q_INVOKABLE QString runExecutableGetOutput(const QString& executable, const QStringList& arguments = {}) const;
+    Q_INVOKABLE void runExecutable(const QString& executable,
+                                   const QStringList& arguments = {},
+                                   const QString& working_directory = {}) const;
 };
 
 #endif // FILTERUTILS_H
