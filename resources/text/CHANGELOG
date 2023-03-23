@@ -1,3 +1,21 @@
+4.3.3
+-----
+
+Added:
+* Article searching was greatly improved - now you can use either text or regexp or wildcard as search phrase and you can choose whether to search just in titles or in whole article. (#886)
+* Added option to focus feed/article lists with keyboard shortcuts. (545)
+* Uninstaller now should detect if RSS Guard is running or not. (#529)
+* Gmail: Original e-mail body is now appended to response.
+* Gmail: E-mail preview now uses styling from skin for unified UX.
+* Minor enhancements for OPML importing.
+
+Fixed:
+* Showing pictures from authenticated feeds now should work. (#909)
+* Word-wrap is now correctly used for plain-text articles. (#900)
+* Some memory leaks were patched and also SQLite database connections now share "cache" across all threads, resulting in drastically better RAM usage of the app.
+* Feedly: Article state synchronization now works.
+* Updated docs, updated translations.
+
 4.3.2
 -----
 
