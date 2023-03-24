@@ -239,11 +239,7 @@ void FeedDownloader::updateOneFeed(ServiceRoot* acc,
       QJSEngine filter_engine;
 
       // Create JavaScript communication wrapper for the message.
-      MessageObject msg_obj(&database,
-                            feed->customId(),
-                            feed->getParentServiceRoot()->accountId(),
-                            feed->getParentServiceRoot()->labelsNode()->labels(),
-                            true);
+      MessageObject msg_obj(&database, feed, feed->getParentServiceRoot(), true);
 
       MessageFilter::initializeFilteringEngine(filter_engine, &msg_obj);
 
@@ -253,6 +249,8 @@ void FeedDownloader::updateOneFeed(ServiceRoot* acc,
       QList<Message> read_msgs, important_msgs;
 
       for (int i = 0; i < msgs.size(); i++) {
+        QMutexLocker lck(&m_mutexDb);
+
         Message msg_original(msgs[i]);
         Message* msg_tweaked_by_filter = &msgs[i];
 
@@ -329,8 +327,6 @@ void FeedDownloader::updateOneFeed(ServiceRoot* acc,
         // So first insert articles, then update their label assignments etc.
         for (Label* lbl : qAsConst(msg_original.m_assignedLabels)) {
           if (!msg_tweaked_by_filter->m_assignedLabels.contains(lbl)) {
-            QMutexLocker lck(&m_mutexDb);
-
             // Label is not there anymore, it was deassigned.
             msg_tweaked_by_filter->m_deassignedLabelsByFilter << lbl;
           }
@@ -338,8 +334,6 @@ void FeedDownloader::updateOneFeed(ServiceRoot* acc,
 
         for (Label* lbl : qAsConst(msg_tweaked_by_filter->m_assignedLabels)) {
           if (!msg_original.m_assignedLabels.contains(lbl)) {
-            QMutexLocker lck(&m_mutexDb);
-
             // Label is in new message, but is not in old message, it
             // was newly assigned.
             msg_tweaked_by_filter->m_assignedLabelsByFilter << lbl;

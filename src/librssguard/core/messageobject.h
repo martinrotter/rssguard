@@ -68,9 +68,8 @@ class MessageObject : public QObject {
     Q_ENUM(DuplicateCheck)
 
     explicit MessageObject(QSqlDatabase* db,
-                           const QString& feed_custom_id,
-                           int account_id,
-                           const QList<Label*>& available_labels,
+                           Feed* feed,
+                           ServiceRoot* account,
                            bool is_new_message,
                            QObject* parent = nullptr);
 
@@ -91,6 +90,10 @@ class MessageObject : public QObject {
 
     // Returns label custom ID given label title.
     Q_INVOKABLE QString findLabelId(const QString& label_title) const;
+
+    // Returns label custom ID given label title or creates
+    // the label if it does not exist.
+    Q_INVOKABLE QString createLabelId(const QString& title, const QString& hex_color = {}) const;
 
     // Add multimedia attachment to the message.
     Q_INVOKABLE void addEnclosure(const QString& url, const QString& mime_type) const;
@@ -146,6 +149,10 @@ class MessageObject : public QObject {
 
   private:
     QSqlDatabase* m_db;
+
+    Feed* m_feed;
+    ServiceRoot* m_account;
+
     QString m_feedCustomId;
     int m_accountId;
     Message* m_message;

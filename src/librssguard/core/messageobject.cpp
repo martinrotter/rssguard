@@ -4,20 +4,22 @@
 
 #include "3rd-party/boolinq/boolinq.h"
 #include "database/databasefactory.h"
+#include "database/databasequeries.h"
 #include "definitions/definitions.h"
+#include "services/abstract/labelsnode.h"
 
 #include <QSqlDatabase>
 #include <QSqlError>
 #include <QSqlQuery>
 
-MessageObject::MessageObject(QSqlDatabase* db,
-                             const QString& feed_custom_id,
-                             int account_id,
-                             const QList<Label*>& available_labels,
-                             bool is_new_message,
-                             QObject* parent)
-  : QObject(parent), m_db(db), m_feedCustomId(feed_custom_id), m_accountId(account_id), m_message(nullptr),
-    m_availableLabels(available_labels), m_runningAfterFetching(is_new_message) {}
+MessageObject::MessageObject(QSqlDatabase* db, Feed* feed, ServiceRoot* account, bool is_new_message, QObject* parent)
+  : QObject(parent), m_db(db), m_feed(feed), m_account(account), m_message(nullptr),
+    m_runningAfterFetching(is_new_message) {
+
+  m_feedCustomId = m_feed != nullptr ? m_feed->customId() : QString::number(NO_PARENT_CATEGORY);
+  m_accountId = m_account != nullptr ? m_account->accountId() : NO_PARENT_CATEGORY;
+  m_availableLabels = m_account != nullptr ? m_account->labelsNode()->labels() : QList<Label*>();
+}
 
 void MessageObject::setMessage(Message* message) {
   m_message = message;
@@ -157,6 +159,19 @@ QString MessageObject::findLabelId(const QString& label_title) const {
   }
 
   return found_lbl != nullptr ? found_lbl->customId() : QString();
+}
+
+QString MessageObject::createLabelId(const QString& title, const QString& hex_color) const {
+  QString lbl_id = findLabelId(title);
+
+  if (!lbl_id.isEmpty()) {
+    // Label exists.
+    return lbl_id;
+  }
+
+  if (hex_color.isEmpty()) {
+    // Generate color.
+  }
 }
 
 void MessageObject::addEnclosure(const QString& url, const QString& mime_type) const {

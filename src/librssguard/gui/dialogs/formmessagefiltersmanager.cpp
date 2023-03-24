@@ -280,10 +280,8 @@ void FormMessageFiltersManager::testFilter() {
   QJSEngine filter_engine;
   QSqlDatabase database = qApp->database()->driver()->connection(metaObject()->className());
   MessageObject msg_obj(&database,
-                        selected_fd_cat->kind() == RootItem::Kind::Feed ? selected_fd_cat->customId()
-                                                                        : QString::number(NO_PARENT_CATEGORY),
-                        selectedAccount() != nullptr ? selectedAccount()->accountId() : NO_PARENT_CATEGORY,
-                        selected_fd_cat->getParentServiceRoot()->labelsNode()->labels(),
+                        selected_fd_cat->kind() == RootItem::Kind::Feed ? selected_fd_cat->toFeed() : nullptr,
+                        selectedAccount(),
                         false);
   auto* fltr = selectedFilter();
 
@@ -362,11 +360,7 @@ void FormMessageFiltersManager::processCheckedFeeds() {
   for (RootItem* it : checked) {
     if (it->kind() == RootItem::Kind::Feed) {
       QJSEngine filter_engine;
-      MessageObject msg_obj(&database,
-                            it->customId(),
-                            selectedAccount()->accountId(),
-                            it->getParentServiceRoot()->labelsNode()->labels(),
-                            false);
+      MessageObject msg_obj(&database, it->toFeed(), selectedAccount(), false);
 
       MessageFilter::initializeFilteringEngine(filter_engine, &msg_obj);
 
