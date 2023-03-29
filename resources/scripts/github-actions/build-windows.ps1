@@ -21,7 +21,7 @@ $ProgressPreference = 'SilentlyContinue'
 
 # Get and prepare needed dependencies.
 if ($use_qt5 -eq "ON") {
-  $qt_version = "5.15.3"
+  $qt_version = "5.15.2"
 }
 else {
   $qt_version = "6.4.3"
