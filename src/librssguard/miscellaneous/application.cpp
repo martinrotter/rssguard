@@ -967,6 +967,14 @@ void Application::setupWorkHorsePool() {
   // NOTE: Do not expire threads so that their IDs are not reused.
   // This fixes cross-thread QSqlDatabase access.
   m_workHorsePool->setExpiryTimeout(-1);
+
+#if QT_VERSION_MAJOR == 5
+  // NOTE: Qt 5 sadly does not allow to specify custom thread pool for
+  // QtConcurrent::mapped() method, so we have to use global thread pool
+  // there.
+  QThreadPool::globalInstance()->setMaxThreadCount(m_workHorsePool->maxThreadCount());
+  QThreadPool::globalInstance()->setExpiryTimeout(m_workHorsePool->expiryTimeout());
+#endif
 }
 
 void Application::onAdBlockFailure() {

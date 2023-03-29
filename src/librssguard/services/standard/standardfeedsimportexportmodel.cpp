@@ -380,7 +380,11 @@ void FeedsImportExportModel::importAsOPML20(const QByteArray& data,
     return produceFeed(lookup);
   };
 
+#if QT_VERSION_MAJOR == 5
+  QFuture<bool> fut = QtConcurrent::mapped(m_lookup, func);
+#else
   QFuture<bool> fut = QtConcurrent::mapped(qApp->workHorsePool(), m_lookup, func);
+#endif
 
   m_watcherLookup.setFuture(fut);
 
@@ -445,7 +449,11 @@ void FeedsImportExportModel::importAsTxtURLPerLine(const QByteArray& data,
     return produceFeed(lookup);
   };
 
+#if QT_VERSION_MAJOR == 5
+  QFuture<bool> fut = QtConcurrent::mapped(m_lookup, func);
+#else
   QFuture<bool> fut = QtConcurrent::mapped(qApp->workHorsePool(), m_lookup, func);
+#endif
 
   m_watcherLookup.setFuture(fut);
 
