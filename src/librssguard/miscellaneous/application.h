@@ -181,6 +181,8 @@ class RSSGUARD_DLLSPEC Application : public SingleApplication {
 
     int customAdblockPort() const;
 
+    QThreadPool* workHorsePool() const;
+
   public slots:
     // Restarts the application.
     void restart();
@@ -223,7 +225,7 @@ class RSSGUARD_DLLSPEC Application : public SingleApplication {
 #endif
 
     void setupCustomDataFolder(const QString& data_folder);
-    void setupGlobalThreadPool();
+    void setupWorkHorsePool();
     void determineFirstRuns();
     void eliminateFirstRuns();
     void displayLogMessageInDialog(const QString& message);
@@ -263,6 +265,7 @@ class RSSGUARD_DLLSPEC Application : public SingleApplication {
     DownloadManager* m_downloadManager;
     NotificationFactory* m_notifications;
     NodeJs* m_nodejs;
+    QThreadPool* m_workHorsePool;
     bool m_shouldRestart;
     bool m_firstRunEver;
     bool m_firstRunCurrentVersion;

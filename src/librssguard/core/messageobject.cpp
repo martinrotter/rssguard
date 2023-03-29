@@ -172,6 +172,8 @@ QString MessageObject::createLabelId(const QString& title, const QString& hex_co
   if (hex_color.isEmpty()) {
     // Generate color.
   }
+
+  // TODO: CONTINUE
 }
 
 void MessageObject::addEnclosure(const QString& url, const QString& mime_type) const {

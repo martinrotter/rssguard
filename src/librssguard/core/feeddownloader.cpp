@@ -157,7 +157,7 @@ void FeedDownloader::updateFeeds(const QList<Feed*>& feeds) {
       return updateThreadedFeed(fd);
     };
 
-    m_watcherLookup.setFuture(QtConcurrent::mapped(m_feeds, func));
+    m_watcherLookup.setFuture(QtConcurrent::mapped(qApp->workHorsePool(), m_feeds, func));
   }
 }
 

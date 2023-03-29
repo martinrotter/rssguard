@@ -19,7 +19,7 @@
 #include <QSqlDatabase>
 #include <QSqlError>
 #include <QStack>
-#include <QtConcurrent/QtConcurrentMap>
+#include <QtConcurrentMap>
 
 FeedsImportExportModel::FeedsImportExportModel(QObject* parent)
   : AccountCheckSortedModel(parent), m_mode(Mode::Import), m_newRoot(nullptr) {
@@ -380,7 +380,7 @@ void FeedsImportExportModel::importAsOPML20(const QByteArray& data,
     return produceFeed(lookup);
   };
 
-  QFuture<bool> fut = QtConcurrent::mapped(m_lookup, func);
+  QFuture<bool> fut = QtConcurrent::mapped(qApp->workHorsePool(), m_lookup, func);
 
   m_watcherLookup.setFuture(fut);
 
@@ -445,7 +445,7 @@ void FeedsImportExportModel::importAsTxtURLPerLine(const QByteArray& data,
     return produceFeed(lookup);
   };
 
-  QFuture<bool> fut = QtConcurrent::mapped(m_lookup, func);
+  QFuture<bool> fut = QtConcurrent::mapped(qApp->workHorsePool(), m_lookup, func);
 
   m_watcherLookup.setFuture(fut);
 

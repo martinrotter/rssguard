@@ -85,6 +85,7 @@ Application::Application(const QString& id, int& argc, char** argv, const QStrin
 #endif
 
   m_nodejs = new NodeJs(m_settings, this);
+  m_workHorsePool = new QThreadPool(this);
   m_webFactory = new WebFactory(this);
   m_system = new SystemFactory(this);
   m_skins = new SkinFactory(this);
@@ -215,7 +216,7 @@ Application::Application(const QString& id, int& argc, char** argv, const QStrin
 
   QTimer::singleShot(1000, system(), &SystemFactory::checkForUpdatesOnStartup);
 
-  setupGlobalThreadPool();
+  setupWorkHorsePool();
 
   qDebugNN << LOGSEC_CORE << "OpenSSL version:" << QUOTE_W_SPACE_DOT(QSslSocket::sslLibraryVersionString());
   qDebugNN << LOGSEC_CORE << "OpenSSL supported:" << QUOTE_W_SPACE_DOT(QSslSocket::supportsSsl());
@@ -390,6 +391,10 @@ void Application::displayLogMessageInDialog(const QString& message) {
   if (m_logForm != nullptr && m_logForm->isVisible()) {
     emit sendLogToDialog(message);
   }
+}
+
+QThreadPool* Application::workHorsePool() const {
+  return m_workHorsePool;
 }
 
 int Application::customAdblockPort() const {
@@ -948,20 +953,20 @@ void Application::setupCustomDataFolder(const QString& data_folder) {
   m_customDataFolder = data_folder;
 }
 
-void Application::setupGlobalThreadPool() {
+void Application::setupWorkHorsePool() {
   auto ideal_th_count = QThread::idealThreadCount();
   int custom_threads = m_cmdParser.value(QSL(CLI_THREADS)).toInt();
 
   if (custom_threads > 0) {
-    QThreadPool::globalInstance()->setMaxThreadCount((std::min)(MAX_THREADPOOL_THREADS, custom_threads));
+    m_workHorsePool->setMaxThreadCount((std::min)(MAX_THREADPOOL_THREADS, custom_threads));
   }
   else if (ideal_th_count > 1) {
-    QThreadPool::globalInstance()->setMaxThreadCount((std::min)(MAX_THREADPOOL_THREADS, 2 * ideal_th_count));
+    m_workHorsePool->setMaxThreadCount((std::min)(MAX_THREADPOOL_THREADS, 2 * ideal_th_count));
   }
 
   // NOTE: Do not expire threads so that their IDs are not reused.
   // This fixes cross-thread QSqlDatabase access.
-  QThreadPool::globalInstance()->setExpiryTimeout(-1);
+  m_workHorsePool->setExpiryTimeout(-1);
 }
 
 void Application::onAdBlockFailure() {

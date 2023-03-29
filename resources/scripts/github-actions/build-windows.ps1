@@ -21,10 +21,10 @@ $ProgressPreference = 'SilentlyContinue'
 
 # Get and prepare needed dependencies.
 if ($use_qt5 -eq "ON") {
-  $qt_version = "5.15.2"
+  $qt_version = "5.15.3"
 }
 else {
-  $qt_version = "6.3.1"
+  $qt_version = "6.4.3"
 }
 
 $maria_version = "10.6.11"
