@@ -44,8 +44,10 @@ $cmake_path = "$old_pwd\cmake-$cmake_version-windows-x86_64\bin\cmake.exe"
 
 # Download Qt itself.
 $qt_path = "$old_pwd\qt"
+
+# Install "aqtinstall" from its master branch to have latest code.
 pip3 install -U pip
-pip3 install -I aqtinstall
+pip3 install -I git+https://github.com/miurahr/aqtinstall
 
 if ($qt_version.StartsWith("6")) {
   aqt install-qt -O "$qt_path" windows desktop $qt_version win64_msvc2019_64 -m qtwebengine qtimageformats qtmultimedia qt5compat qtwebchannel qtpositioning
