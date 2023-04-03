@@ -1075,7 +1075,7 @@ QHash<QString, QStringList> DatabaseQueries::bagsOfMessages(const QSqlDatabase& 
   return ids;
 }
 
-QPair<int, int> DatabaseQueries::updateMessages(QSqlDatabase db,
+QPair<int, int> DatabaseQueries::updateMessages(const QSqlDatabase &db,
                                                 QList<Message>& messages,
                                                 Feed* feed,
                                                 bool force_update,

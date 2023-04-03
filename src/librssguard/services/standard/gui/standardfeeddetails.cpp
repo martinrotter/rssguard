@@ -248,15 +248,11 @@ void StandardFeedDetails::onUrlChanged(const QString& new_url) {
     }
   }
   else if (sourceType() == StandardFeed::SourceType::Script) {
-    if (QRegularExpression(QSL(SCRIPT_SOURCE_TYPE_REGEXP)).match(new_url).hasMatch()) {
-      m_ui.m_txtSource->setStatus(LineEditWithStatus::StatusType::Ok, tr("The source is ok."));
-    }
-    else if (!new_url.simplified().isEmpty()) {
-      m_ui.m_txtSource->setStatus(LineEditWithStatus::StatusType::Warning,
-                                  tr("The source does not seem to use \"#\" separator for arguments."));
+    if (new_url.simplified().isEmpty()) {
+      m_ui.m_txtSource->setStatus(LineEditWithStatus::StatusType::Error, tr("The source is empty."));
     }
     else {
-      m_ui.m_txtSource->setStatus(LineEditWithStatus::StatusType::Error, tr("The source is empty."));
+      m_ui.m_txtSource->setStatus(LineEditWithStatus::StatusType::Ok, tr("The source is ok."));
     }
   }
   else {

@@ -308,10 +308,13 @@ QList<Message> GreaderNetwork::getMessagesIntelligently(ServiceRoot* root,
   }
 
   // Add prefetched messages.
+  auto iter = boolinq::from(msgs);
+  QMutexLocker mtx(&m_mutexPrefetchedMessages);
+
   for (int i = 0; i < m_prefetchedMessages.size(); i++) {
     auto prefetched_msg = m_prefetchedMessages.at(i);
 
-    if (prefetched_msg.m_feedId == stream_id && !boolinq::from(msgs).any([&prefetched_msg](const Message& ms) {
+    if (prefetched_msg.m_feedId == stream_id && !iter.any([&prefetched_msg](const Message& ms) {
           return ms.m_customId == prefetched_msg.m_customId;
         })) {
       msgs.append(prefetched_msg);

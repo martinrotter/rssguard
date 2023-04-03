@@ -136,7 +136,7 @@ class DatabaseQueries {
     static void createOverwriteAccount(const QSqlDatabase& db, ServiceRoot* account);
 
     // Returns counts of updated messages <unread, all>.
-    static QPair<int, int> updateMessages(QSqlDatabase db,
+    static QPair<int, int> updateMessages(const QSqlDatabase &db,
                                           QList<Message>& messages,
                                           Feed* feed,
                                           bool force_update,

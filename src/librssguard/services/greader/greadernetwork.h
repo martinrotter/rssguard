@@ -92,9 +92,7 @@ class GreaderNetwork : public QObject {
                         const QNetworkProxy& proxy,
                         int max_count = -1,
                         QDate newer_than = {});
-    QList<Message> itemContents(ServiceRoot* root,
-                                const QList<QString>& stream_ids,
-                                const QNetworkProxy& proxy);
+    QList<Message> itemContents(ServiceRoot* root, const QList<QString>& stream_ids, const QNetworkProxy& proxy);
     QList<Message> streamContents(ServiceRoot* root, const QString& stream_id, const QNetworkProxy& proxy);
     QNetworkReply::NetworkError clientLogin(const QNetworkProxy& proxy);
 
@@ -143,6 +141,7 @@ class GreaderNetwork : public QObject {
     QString m_authAuth;
     QString m_authToken;
     QList<Message> m_prefetchedMessages;
+    QMutex m_mutexPrefetchedMessages;
     bool m_performGlobalFetching;
     bool m_intelligentSynchronization;
     QDate m_newerThanFilter;
