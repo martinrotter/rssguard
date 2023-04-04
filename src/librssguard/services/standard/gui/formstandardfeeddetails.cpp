@@ -20,7 +20,6 @@
 
 #include <QFileDialog>
 #include <QNetworkCookie>
-#include <QTextCodec>
 
 FormStandardFeedDetails::FormStandardFeedDetails(ServiceRoot* service_root,
                                                  RootItem* parent_to_select,

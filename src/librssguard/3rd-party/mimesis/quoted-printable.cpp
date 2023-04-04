@@ -19,6 +19,8 @@
 
 #include "quoted-printable.hpp"
 
+#include <cstdint>
+
 using namespace std;
 
 string quoted_printable_decode(string_view in) {
