@@ -15,6 +15,7 @@
 #include <QMetaObject>
 #include <QProcessEnvironment>
 #include <QStyleFactory>
+#include <QStyleHints>
 #include <QTextDocument>
 #include <QToolTip>
 

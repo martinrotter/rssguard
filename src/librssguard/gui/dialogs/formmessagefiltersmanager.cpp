@@ -32,6 +32,7 @@ FormMessageFiltersManager::FormMessageFiltersManager(FeedReader* reader,
     return lhs->title().compare(rhs->title(), Qt::CaseSensitivity::CaseInsensitive) < 0;
   });
 
+  // TODO: Add sorting.
   m_ui.m_treeExistingMessages->setModel(m_msgModel);
 
   GuiUtilities::applyDialogProperties(*this, qApp->icons()->fromTheme(QSL("view-list-details")));
@@ -373,8 +374,8 @@ void FormMessageFiltersManager::processCheckedFeeds() {
 
         // Create backup of message.
         Message* msg = &msgs[i];
-        msg->m_assignedLabels = labels_in_message;
 
+        msg->m_assignedLabels = labels_in_message;
         msg->m_rawContents = Message::generateRawAtomContents(*msg);
 
         Message msg_backup(*msg);

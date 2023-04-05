@@ -68,6 +68,13 @@ bool MessageObject::isDuplicateWithAttribute(MessageObject::DuplicateCheck attri
   where_clauses.append(QSL("account_id = :account_id"));
   bind_values.append({QSL(":account_id"), accountId()});
 
+  // If we have already message stored in DB, then we also must
+  // make sure that we do not match the message against itself.
+  if (!runningFilterWhenFetching() && m_message->m_id > 0) {
+    where_clauses.append(QSL("id != :id"));
+    bind_values.append({QSL(":id"), QString::number(m_message->m_id)});
+  }
+
   if ((attribute_check & DuplicateCheck::AllFeedsSameAccount) != DuplicateCheck::AllFeedsSameAccount) {
     // Limit to current feed.
     where_clauses.append(QSL("feed = :feed"));
