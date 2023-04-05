@@ -71,7 +71,7 @@ void StandardServiceRoot::start(bool freshly_activated) {
         file_to_load = target_opml_file.arg(QSL(DEFAULT_LOCALE));
       }
 
-      FeedsImportExportModel model;
+      FeedsImportExportModel model(this);
       QString output_msg;
 
       try {

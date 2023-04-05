@@ -20,7 +20,7 @@
 FormStandardImportExport::FormStandardImportExport(StandardServiceRoot* service_root, QWidget* parent)
   : QDialog(parent), m_ui(new Ui::FormStandardImportExport), m_serviceRoot(service_root) {
   m_ui->setupUi(this);
-  m_model = new FeedsImportExportModel(m_ui->m_treeFeeds);
+  m_model = new FeedsImportExportModel(service_root, m_ui->m_treeFeeds);
   connect(m_model, &FeedsImportExportModel::parsingStarted, this, &FormStandardImportExport::onParsingStarted);
   connect(m_model, &FeedsImportExportModel::parsingFinished, this, &FormStandardImportExport::onParsingFinished);
   connect(m_model, &FeedsImportExportModel::parsingProgress, this, &FormStandardImportExport::onParsingProgress);

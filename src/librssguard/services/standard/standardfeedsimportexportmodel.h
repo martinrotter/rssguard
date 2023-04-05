@@ -10,6 +10,7 @@
 #include <QNetworkProxy>
 
 class StandardFeed;
+class StandardServiceRoot;
 
 struct FeedLookup {
     RootItem* parent;
@@ -26,7 +27,7 @@ class FeedsImportExportModel : public AccountCheckSortedModel {
   public:
     enum class Mode { Import, Export };
 
-    explicit FeedsImportExportModel(QObject* parent = nullptr);
+    explicit FeedsImportExportModel(StandardServiceRoot* account, QObject* parent = nullptr);
     virtual ~FeedsImportExportModel();
 
     // Exports to OPML 2.0
@@ -53,6 +54,7 @@ class FeedsImportExportModel : public AccountCheckSortedModel {
     bool produceFeed(const FeedLookup& feed_lookup);
 
   private:
+    StandardServiceRoot* m_account;
     QMutex m_mtxLookup;
     QList<FeedLookup> m_lookup;
     RootItem* m_newRoot;

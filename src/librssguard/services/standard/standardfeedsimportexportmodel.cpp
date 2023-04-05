@@ -21,8 +21,8 @@
 #include <QStack>
 #include <QtConcurrentMap>
 
-FeedsImportExportModel::FeedsImportExportModel(QObject* parent)
-  : AccountCheckSortedModel(parent), m_mode(Mode::Import), m_newRoot(nullptr) {
+FeedsImportExportModel::FeedsImportExportModel(StandardServiceRoot* account, QObject* parent)
+  : AccountCheckSortedModel(parent), m_account(account), m_mode(Mode::Import), m_newRoot(nullptr) {
 
   connect(&m_watcherLookup, &QFutureWatcher<bool>::progressValueChanged, this, [=](int prog) {
     emit parsingProgress(prog, m_lookup.size());
@@ -279,8 +279,8 @@ void FeedsImportExportModel::importAsOPML20(const QByteArray& data,
   QStack<RootItem*> model_items;
   QNetworkProxy custom_proxy;
 
-  if (sourceModel()->rootItem() != nullptr && sourceModel()->rootItem()->getParentServiceRoot() != nullptr) {
-    custom_proxy = sourceModel()->rootItem()->getParentServiceRoot()->networkProxy();
+  if (m_account != nullptr) {
+    custom_proxy = m_account->networkProxy();
   }
 
   model_items.push(m_newRoot);
@@ -416,8 +416,8 @@ void FeedsImportExportModel::importAsTxtURLPerLine(const QByteArray& data,
   m_newRoot = new StandardServiceRoot();
   QNetworkProxy custom_proxy;
 
-  if (sourceModel()->rootItem() != nullptr && sourceModel()->rootItem()->getParentServiceRoot() != nullptr) {
-    custom_proxy = sourceModel()->rootItem()->getParentServiceRoot()->networkProxy();
+  if (m_account != nullptr) {
+    custom_proxy = m_account->networkProxy();
   }
 
   QList<QByteArray> urls = data.split('\n');
