@@ -31,11 +31,11 @@ if [ $is_linux = true ]; then
   QTARCH="gcc_64"
   USE_QT6="OFF"
 
-  sudo add-apt-repository ppa:beineri/opt-qt-5.15.2-bionic -y
+  sudo add-apt-repository ppa:beineri/opt-qt-5.15.4-focal -y
   sudo apt-get update
 
   sudo apt-get -qy install qt515tools qt515base qt515webengine qt515svg qt515multimedia qt515imageformats
-  sudo apt-get -qy install cmake ninja-build openssl libssl-dev libgl1-mesa-dev gstreamer1.0-alsa gstreamer1.0-plugins-good gstreamer1.0-plugins-base gstreamer1.0-plugins-bad gstreamer1.0-qt5 gstreamer1.0-pulseaudio
+  sudo apt-get -qy install cmake ninja-build openssl libssl-dev libgl1-mesa-dev gstreamer1.0-alsa gstreamer1.0-nice gstreamer1.0-plugins-good gstreamer1.0-plugins-base gstreamer1.0-plugins-bad gstreamer1.0-plugins-ugly gstreamer1.0-qt5 gstreamer1.0-pulseaudio
 
   # The script below performs some broken testing, which ends up tripping 'set -e'.
   # So we temporarily ignore errors when sourcing the script, and re-enable them afterward.
