@@ -29,7 +29,7 @@ jobs:
     runs-on: "${{ matrix.os }}"
     strategy:
       matrix:
-        os: [windows-2019, ubuntu-20.04, macos-10.15]
+        os: [windows-2019, ubuntu-20.04, macos-11]
         use_webengine: ["ON", "OFF"]
         use_qt5: ["ON", "OFF"]
         include:
@@ -37,12 +37,12 @@ jobs:
             script_name: .\resources\scripts\github-actions\build-windows.ps1
           - os: ubuntu-20.04
             script_name: ./resources/scripts/github-actions/build-linux-mac.sh
-          - os: macos-10.15
+          - os: macos-11
             script_name: ./resources/scripts/github-actions/build-linux-mac.sh
         exclude:
           - os: ubuntu-20.04
             use_qt5: "OFF"
-          - os: macos-10.15
+          - os: macos-11
             use_qt5: "ON"
     steps:         
       - name: Checkout source code
