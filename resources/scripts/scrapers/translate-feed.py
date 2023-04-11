@@ -48,6 +48,7 @@ except ET.ParseError as err:
 translator = Translator()
 
 atom_ns = {"ns": "http://www.w3.org/2005/Atom"}
+cont_ns = {"cont": "http://purl.org/rss/1.0/modules/content/"}
 
 def translate_string(to_translate):
   try:
@@ -73,7 +74,11 @@ def process_article(article):
     title.text = translate_string(title.text)
 
   # RSS.
-  contents = article.find("description")
+  contents = article.find("cont:encoded", cont_ns)
+  
+  if contents is None:
+    # RSS.
+    contents = article.find("description")
 
   if contents is None:
     # ATOM.
