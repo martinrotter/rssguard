@@ -72,7 +72,8 @@ void FeedDownloader::updateFeeds(const QList<Feed*>& feeds) {
   m_feeds.clear();
 
   if (feeds.isEmpty()) {
-    qDebugNN << LOGSEC_FEEDDOWNLOADER << "No feeds to update in worker thread, aborting update.";
+    qWarningNN << LOGSEC_FEEDDOWNLOADER << "No feeds to update in worker thread, aborting update.";
+    finalizeUpdate();
   }
   else {
     qDebugNN << LOGSEC_FEEDDOWNLOADER << "Starting feed updates from worker in thread"

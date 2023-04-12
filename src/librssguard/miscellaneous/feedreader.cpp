@@ -85,6 +85,10 @@ void FeedReader::updateFeeds(const QList<Feed*>& feeds) {
     }
   }
 
+  if (my_feeds.isEmpty()) {
+    return;
+  }
+
   if (!qApp->feedUpdateLock()->tryLock()) {
     qApp->showGuiMessage(Notification::Event::GeneralEvent,
                          {tr("Cannot fetch articles at this point"),
