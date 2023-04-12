@@ -205,10 +205,11 @@ bool FeedsImportExportModel::produceFeed(const FeedLookup& feed_lookup) {
       else {
         QString feed_title = feed_lookup.custom_data[QSL("title")].toString();
         QString feed_encoding = feed_lookup.custom_data.value(QSL("encoding"), QSL(DEFAULT_FEED_ENCODING)).toString();
-        QString feed_type = feed_lookup.custom_data.value(QSL("feedType"), QSL(DEFAULT_FEED_TYPE)).toString().toUpper();
+        QString feed_type = feed_lookup.custom_data.value(QSL("type"), QSL(DEFAULT_FEED_TYPE)).toString().toUpper();
         QString feed_description = feed_lookup.custom_data[QSL("description")].toString();
         QIcon feed_icon = feed_lookup.custom_data[QSL("icon")].value<QIcon>();
-        StandardFeed::SourceType source_type = feed_lookup.custom_data["sourceType"].value<StandardFeed::SourceType>();
+        StandardFeed::SourceType source_type =
+          feed_lookup.custom_data[QSL("sourceType")].value<StandardFeed::SourceType>();
         QString post_process = feed_lookup.custom_data[QSL("postProcessScript")].toString();
 
         new_feed->setTitle(feed_title);
@@ -313,16 +314,16 @@ void FeedsImportExportModel::importAsOPML20(const QByteArray& data,
             FeedLookup f;
             QVariantMap feed_data;
 
-            feed_data["title"] = child_element.attribute(QSL("text"));
-            feed_data["encoding"] = child_element.attribute(QSL("encoding"), QSL(DEFAULT_FEED_ENCODING));
-            feed_data["type"] = child_element.attribute(QSL("version"), QSL(DEFAULT_FEED_TYPE)).toUpper();
-            feed_data["description"] = child_element.attribute(QSL("description"));
-            feed_data["icon"] =
+            feed_data[QSL("title")] = child_element.attribute(QSL("text"));
+            feed_data[QSL("encoding")] = child_element.attribute(QSL("encoding"), QSL(DEFAULT_FEED_ENCODING));
+            feed_data[QSL("type")] = child_element.attribute(QSL("version"), QSL(DEFAULT_FEED_TYPE)).toUpper();
+            feed_data[QSL("description")] = child_element.attribute(QSL("description"));
+            feed_data[QSL("icon")] =
               qApp->icons()->fromByteArray(child_element.attribute(QSL("rssguard:icon")).toLocal8Bit());
-            feed_data["sourceType"] =
+            feed_data[QSL("sourceType")] =
               QVariant::fromValue(StandardFeed::SourceType(child_element.attribute(QSL("rssguard:xmlUrlType"))
                                                              .toInt()));
-            feed_data["postProcessScript"] = child_element.attribute(QSL("rssguard:postProcess"));
+            feed_data[QSL("postProcessScript")] = child_element.attribute(QSL("rssguard:postProcess"));
 
             f.custom_proxy = custom_proxy;
             f.fetch_metadata_online = fetch_metadata_online;
