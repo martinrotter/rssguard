@@ -87,6 +87,9 @@ void Message::sanitize(const Feed* feed, bool fix_future_datetimes) {
               // Remove non-breaking zero-width spaces.
               .remove(QChar(65279));
 
+  // Sanitize URL.
+  m_url = m_url.trimmed();
+
   // Check if messages contain relative URLs and if they do, then replace them.
   if (m_url.startsWith(QL1S("//"))) {
     m_url = QSL(URI_SCHEME_HTTPS) + m_url.mid(2);
