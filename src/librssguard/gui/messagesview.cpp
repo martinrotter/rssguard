@@ -237,7 +237,7 @@ void MessagesView::reloadSelections() {
   else {
     // Messages were probably removed from the model, nothing can
     // be selected and no message can be displayed.
-    emit currentMessageRemoved();
+    emit currentMessageRemoved(m_sourceModel->loadedItem());
   }
 
   const QDateTime dt2 = QDateTime::currentDateTime();
@@ -386,7 +386,7 @@ void MessagesView::initializeContextMenu() {
                                  m_sourceModel->loadedItem());
     }
     else {
-      emit currentMessageRemoved();
+      emit currentMessageRemoved(m_sourceModel->loadedItem());
     }
   });
 
@@ -493,7 +493,7 @@ void MessagesView::selectionChanged(const QItemSelection& selected, const QItemS
     emit currentMessageChanged(message, m_sourceModel->loadedItem());
   }
   else {
-    emit currentMessageRemoved();
+    emit currentMessageRemoved(m_sourceModel->loadedItem());
   }
 
   if (selected_rows.isEmpty()) {
@@ -518,7 +518,7 @@ void MessagesView::loadItem(RootItem* item) {
 
   // Messages are loaded, make sure that previously
   // active message is not shown in browser.
-  emit currentMessageRemoved();
+  emit currentMessageRemoved(m_sourceModel->loadedItem());
 }
 
 void MessagesView::changeFilter(MessagesProxyModel::MessageListFilter filter) {
@@ -614,7 +614,7 @@ void MessagesView::setSelectedMessagesReadStatus(RootItem::ReadStatus read) {
                                m_sourceModel->loadedItem());
   }
   else {
-    emit currentMessageRemoved();
+    emit currentMessageRemoved(m_sourceModel->loadedItem());
   }
 }
 
@@ -636,7 +636,7 @@ void MessagesView::deleteSelectedMessages() {
     setCurrentIndex(current_index);
   }
   else {
-    emit currentMessageRemoved();
+    emit currentMessageRemoved(m_sourceModel->loadedItem());
   }
 }
 
@@ -658,7 +658,7 @@ void MessagesView::restoreSelectedMessages() {
                                m_sourceModel->loadedItem());
   }
   else {
-    emit currentMessageRemoved();
+    emit currentMessageRemoved(m_sourceModel->loadedItem());
   }
 }
 
@@ -681,7 +681,7 @@ void MessagesView::switchSelectedMessagesImportance() {
   else {
     // Messages were probably removed from the model, nothing can
     // be selected and no message can be displayed.
-    emit currentMessageRemoved();
+    emit currentMessageRemoved(m_sourceModel->loadedItem());
   }
 }
 
@@ -786,7 +786,7 @@ void MessagesView::searchMessages(SearchLineEdit::SearchMode mode,
                                                                                                   : -1);
 
   if (selectionModel()->selectedRows().isEmpty()) {
-    emit currentMessageRemoved();
+    emit currentMessageRemoved(m_sourceModel->loadedItem());
   }
   else {
     // Scroll to selected message, it could become scrolled out due to filter change.
@@ -858,5 +858,5 @@ void MessagesView::onSortIndicatorChanged(int column, Qt::SortOrder order) {
   // Repopulate the shit.
   sort(column, order, true, false, false, false);
 
-  emit currentMessageRemoved();
+  emit currentMessageRemoved(m_sourceModel->loadedItem());
 }

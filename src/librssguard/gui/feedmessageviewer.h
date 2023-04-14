@@ -21,7 +21,7 @@ class QSplitter;
 class QProgressBar;
 
 class RSSGUARD_DLLSPEC FeedMessageViewer : public TabContent {
-  Q_OBJECT
+    Q_OBJECT
 
   public:
     explicit FeedMessageViewer(QWidget* parent = nullptr);
@@ -54,6 +54,8 @@ class RSSGUARD_DLLSPEC FeedMessageViewer : public TabContent {
     // Reloads some changeable visual settings.
     void refreshVisualProperties();
 
+    void updateArticleViewerSettings();
+
     // Switches visibility of feed list and related
     // toolbar.
     void switchFeedComponentVisibility();
@@ -69,19 +71,17 @@ class RSSGUARD_DLLSPEC FeedMessageViewer : public TabContent {
     void onFeedSplitterResized();
     void onMessageSplitterResized();
     void displayMessage(const Message& message, RootItem* root);
+    void onMessageRemoved(RootItem* root);
 
-  protected:
+  private:
     void initialize();
-
-    // Initializes both messages/feeds views.
     void initializeViews();
-
-    // Sets up connections.
     void createConnections();
 
   private:
     bool m_toolBarsEnabled;
     bool m_listHeadersEnabled;
+    bool m_articleViewerAlwaysVisible;
     FeedsToolBar* m_toolBarFeeds;
     MessagesToolBar* m_toolBarMessages;
     QSplitter* m_feedSplitter;

@@ -224,7 +224,16 @@ void FeedMessageViewer::displayMessage(const Message& message, RootItem* root) {
     m_messagesBrowser->loadMessage(message, root);
   }
   else {
-    m_messagesBrowser->hide();
+    m_messagesBrowser->clear();
+  }
+}
+
+void FeedMessageViewer::onMessageRemoved(RootItem* root) {
+  if (m_articleViewerAlwaysVisible) {
+    m_messagesBrowser->showItemDetails(root);
+  }
+  else {
+    m_messagesBrowser->clear();
   }
 }
 
@@ -241,7 +250,7 @@ void FeedMessageViewer::createConnections() {
   connect(m_feedSplitter, &QSplitter::splitterMoved, this, &FeedMessageViewer::onFeedSplitterResized);
   connect(m_messageSplitter, &QSplitter::splitterMoved, this, &FeedMessageViewer::onMessageSplitterResized);
 
-  connect(m_messagesView, &MessagesView::currentMessageRemoved, m_messagesBrowser, &MessagePreviewer::clear);
+  connect(m_messagesView, &MessagesView::currentMessageRemoved, this, &FeedMessageViewer::onMessageRemoved);
   connect(m_messagesBrowser,
           &MessagePreviewer::markMessageRead,
           m_messagesView->sourceModel(),
@@ -266,6 +275,11 @@ void FeedMessageViewer::createConnections() {
           &MessagesView::reloadSelections);
 }
 
+void FeedMessageViewer::updateArticleViewerSettings() {
+  m_articleViewerAlwaysVisible =
+    qApp->settings()->value(GROUP(Messages), SETTING(Messages::AlwaysDisplayItemPreview)).toBool();
+}
+
 MessagePreviewer* FeedMessageViewer::messagesBrowser() const {
   return m_messagesBrowser;
 }
@@ -279,7 +293,11 @@ void FeedMessageViewer::initialize() {
   m_toolBarMessages->setMovable(false);
   m_toolBarMessages->setAllowedAreas(Qt::ToolBarArea::TopToolBarArea);
 
-  // m_messagesBrowser->clear();
+  updateArticleViewerSettings();
+
+  if (!m_articleViewerAlwaysVisible) {
+    m_messagesBrowser->clear();
+  }
 
   // Now refresh visual setup.
   refreshVisualProperties();

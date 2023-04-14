@@ -88,7 +88,7 @@ class MessagesView : public BaseTreeView {
 
     // Notify others about message selections.
     void currentMessageChanged(const Message& message, RootItem* root);
-    void currentMessageRemoved();
+    void currentMessageRemoved(RootItem* root);
     void willReselectSameMessage();
 
   private:

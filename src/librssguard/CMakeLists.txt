@@ -87,6 +87,8 @@ set(SOURCES
   gui/feedsview.h
   gui/guiutilities.cpp
   gui/guiutilities.h
+  gui/itemdetails.cpp
+  gui/itemdetails.h
   gui/messagebox.cpp
   gui/messagebox.h
   gui/messagepreviewer.cpp
@@ -452,6 +454,7 @@ set(UI_FILES
   gui/notifications/notificationseditor.ui
   gui/notifications/singlenotificationeditor.ui
   gui/reusable/networkproxydetails.ui
+  gui/itemdetails.ui
   gui/newspaperpreviewer.ui
   gui/reusable/searchtextwidget.ui
   gui/settings/settingsbrowsermail.ui

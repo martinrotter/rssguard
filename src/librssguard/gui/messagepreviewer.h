@@ -10,11 +10,13 @@
 #include "services/abstract/rootitem.h"
 
 #include <QPointer>
+#include <QUrl>
 
 class QGridLayout;
 class QStackedLayout;
 class QToolBar;
 class WebBrowser;
+class ItemDetails;
 
 class LabelButton : public QToolButton {
     Q_OBJECT
@@ -38,13 +40,13 @@ class MessagePreviewer : public QWidget {
 
     void reloadFontSettings();
 
-    virtual WebBrowser* webBrowser() const;
+    WebBrowser* webBrowser() const;
 
   public slots:
     void setToolbarsVisible(bool visible);
     void clear();
-    void showItemInfo(RootItem* item);
-    void hideToolbar();
+
+    void showItemDetails(RootItem* item);
     void loadUrl(const QString& url);
     void loadMessage(const Message& message, RootItem* root);
 
@@ -63,6 +65,8 @@ class MessagePreviewer : public QWidget {
     void createConnections();
     void updateButtons();
     void updateLabels(bool only_clear);
+
+    void ensureItemDetailsVisible();
     void ensureDefaultBrowserVisible();
 
     QGridLayout* m_mainLayout;
@@ -76,6 +80,12 @@ class MessagePreviewer : public QWidget {
     QAction* m_actionSwitchImportance;
     QAction* m_separator;
     QList<QPair<LabelButton*, QAction*>> m_btnLabels;
+    ItemDetails* m_itemDetails;
+    bool m_toolbarVisible;
+
+    static const int INDEX_DEFAULT = 0;
+    static const int INDEX_ITEMS = 1;
+    static const int INDEX_CUSTOM = 2;
 };
 
 #endif // MESSAGEPREVIEWER_H

@@ -67,7 +67,7 @@ SettingsFeedsMessages::SettingsFeedsMessages(Settings* settings, QWidget* parent
   connect(m_ui->m_checkAutoUpdateOnlyUnfocused, &QCheckBox::toggled, this, &SettingsFeedsMessages::dirtifySettings);
   connect(m_ui->m_checkDisplayFeedIcons, &QCheckBox::toggled, this, &SettingsFeedsMessages::dirtifySettings);
   connect(m_ui->m_checkKeppMessagesInTheMiddle, &QCheckBox::toggled, this, &SettingsFeedsMessages::dirtifySettings);
-
+  connect(m_ui->m_cbArticleViewerAlwaysVisible, &QCheckBox::toggled, this, &SettingsFeedsMessages::dirtifySettings);
   connect(m_ui->m_checkMessagesDateTimeFormat, &QCheckBox::toggled, this, &SettingsFeedsMessages::dirtifySettings);
   connect(m_ui->m_checkMessagesDateTimeFormat,
           &QCheckBox::toggled,
@@ -255,6 +255,8 @@ void SettingsFeedsMessages::loadSettings() {
   m_ui->m_checkMultilineArticleList
     ->setChecked(settings()->value(GROUP(Messages), SETTING(Messages::MultilineArticleList)).toBool());
 
+  m_ui->m_cbArticleViewerAlwaysVisible
+    ->setChecked(settings()->value(GROUP(Messages), SETTING(Messages::AlwaysDisplayItemPreview)).toBool());
   m_ui->m_spinHeightImageAttachments
     ->setValue(settings()->value(GROUP(Messages), SETTING(Messages::MessageHeadImageHeight)).toInt());
   m_ui->m_cbShowEnclosuresDirectly
@@ -339,6 +341,9 @@ void SettingsFeedsMessages::saveSettings() {
                        Messages::FixupFutureArticleDateTimes,
                        m_ui->m_cbFixupArticleDatetime->isChecked());
 
+  settings()->setValue(GROUP(Messages),
+                       Messages::AlwaysDisplayItemPreview,
+                       m_ui->m_cbArticleViewerAlwaysVisible->isChecked());
   settings()->setValue(GROUP(Messages), Messages::UseCustomDate, m_ui->m_checkMessagesDateTimeFormat->isChecked());
   settings()->setValue(GROUP(Messages), Messages::UseCustomTime, m_ui->m_checkMessagesTimeFormat->isChecked());
 
@@ -353,6 +358,7 @@ void SettingsFeedsMessages::saveSettings() {
   settings()->setValue(GROUP(Messages), Messages::CustomizeListFont, m_ui->m_gbArticleListFont->isChecked());
   settings()->setValue(GROUP(Feeds), Feeds::CustomizeListFont, m_ui->m_gbFeedListFont->isChecked());
 
+  qApp->mainForm()->tabWidget()->feedMessageViewer()->updateArticleViewerSettings();
   qApp->mainForm()->tabWidget()->feedMessageViewer()->loadMessageViewerFonts();
 
   qApp->feedReader()->updateAutoUpdateStatus();

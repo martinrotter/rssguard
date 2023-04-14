@@ -126,6 +126,9 @@ namespace Messages {
   KEY DisplayEnclosuresInMessage;
   VALUE(bool) DisplayEnclosuresInMessageDef;
 
+  KEY AlwaysDisplayItemPreview;
+  VALUE(bool) AlwaysDisplayItemPreviewDef;
+
   KEY EnableMessagePreview;
   VALUE(bool) EnableMessagePreviewDef;
 

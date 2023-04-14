@@ -127,6 +127,9 @@ DVALUE(int) Messages::MessageHeadImageHeightDef = 36;
 DKEY Messages::DisplayEnclosuresInMessage = "show_enclosures_in_message";
 DVALUE(bool) Messages::DisplayEnclosuresInMessageDef = false;
 
+DKEY Messages::AlwaysDisplayItemPreview = "always_display_preview";
+DVALUE(bool) Messages::AlwaysDisplayItemPreviewDef = true;
+
 DKEY Messages::EnableMessagePreview = "enable_message_preview";
 DVALUE(bool) Messages::EnableMessagePreviewDef = true;
 

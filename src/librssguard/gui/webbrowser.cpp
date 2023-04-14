@@ -103,10 +103,6 @@ void WebBrowser::loadUrl(const QUrl& url) {
   }
 }
 
-void WebBrowser::setHtml(const QString& html, const QUrl& base_url) {
-  m_webView->setHtml(html, base_url);
-}
-
 WebBrowser::~WebBrowser() {}
 
 double WebBrowser::verticalScrollBarPosition() const {
@@ -141,6 +137,10 @@ void WebBrowser::clear(bool also_hide) {
 
 void WebBrowser::loadUrl(const QString& url) {
   return loadUrl(QUrl::fromUserInput(url));
+}
+
+void WebBrowser::setHtml(const QString& html, const QUrl& base_url) {
+  m_webView->setHtml(html, base_url);
 }
 
 void WebBrowser::loadMessages(const QList<Message>& messages, RootItem* root) {

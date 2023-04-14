@@ -186,6 +186,7 @@
 
 #define INTERNAL_URL_MESSAGE "http://rssguard.message"
 #define INTERNAL_URL_BLANK "http://rssguard.blank"
+#define INTERNAL_URL_INFO "http://rssguard.info"
 #define INTERNAL_URL_ADBLOCKED "http://rssguard.adblocked"
 #define INTERNAL_URL_MESSAGE_HOST "rssguard.message"
 

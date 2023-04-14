@@ -4,6 +4,7 @@
 
 #include "database/databasequeries.h"
 #include "gui/dialogs/formmain.h"
+#include "gui/itemdetails.h"
 #include "gui/messagebox.h"
 #include "gui/reusable/plaintoolbutton.h"
 #include "gui/reusable/searchtextwidget.h"
@@ -48,8 +49,8 @@ void MessagePreviewer::createConnections() {
 MessagePreviewer::MessagePreviewer(QWidget* parent)
   : QWidget(parent), m_mainLayout(new QGridLayout(this)), m_viewerLayout(new QStackedLayout()),
     m_toolBar(new QToolBar(this)), m_msgBrowser(new WebBrowser(nullptr, this)), m_separator(nullptr),
-    m_btnLabels(QList<QPair<LabelButton*, QAction*>>()) {
-
+    m_btnLabels(QList<QPair<LabelButton*, QAction*>>()), m_itemDetails(new ItemDetails(this)),
+    m_toolbarVisible(m_toolBar->isVisible()) {
   m_toolBar->setOrientation(Qt::Orientation::Vertical);
 
   // NOTE: To make sure that if we have many labels and short message
@@ -59,6 +60,7 @@ MessagePreviewer::MessagePreviewer(QWidget* parent)
   // This layout holds standard article browser on index 0
   // and optional custom browser on index 1.
   m_viewerLayout->addWidget(m_msgBrowser);
+  m_viewerLayout->addWidget(m_itemDetails);
 
   m_mainLayout->setContentsMargins(3, 3, 3, 3);
   m_mainLayout->addLayout(m_viewerLayout, 0, 1, 1, 1);
@@ -67,18 +69,15 @@ MessagePreviewer::MessagePreviewer(QWidget* parent)
   createConnections();
 
   m_actionSwitchImportance->setCheckable(true);
-
-  clear();
 }
 
 MessagePreviewer::~MessagePreviewer() {
-  if (m_viewerLayout->count() > 1) {
-    // Make sure that previewer does not delete any custom article
-    // viewers as those are responsibility to free by their accounts.
-    auto* wdg = m_viewerLayout->widget(1);
+  // Make sure that previewer does not delete any custom article
+  // viewers as those are responsibility to free by their accounts.
+  auto* wdg = m_viewerLayout->widget(INDEX_CUSTOM);
 
+  if (wdg != nullptr) {
     wdg->setParent(nullptr);
-
     m_viewerLayout->removeWidget(wdg);
   }
 }
@@ -88,6 +87,8 @@ void MessagePreviewer::reloadFontSettings() {
 }
 
 void MessagePreviewer::setToolbarsVisible(bool visible) {
+  m_toolbarVisible = visible;
+
   m_toolBar->setVisible(visible);
   m_msgBrowser->setNavigationBarVisible(visible);
 
@@ -107,20 +108,28 @@ void MessagePreviewer::clear() {
   m_message = Message();
 }
 
-void MessagePreviewer::showItemInfo(RootItem* item) {
-  m_msgBrowser->setHtml(item->additionalTooltip());
-}
+void MessagePreviewer::showItemDetails(RootItem* item) {
+  m_toolBar->setVisible(m_toolbarVisible);
+  m_message = Message();
+  m_root = item;
 
-void MessagePreviewer::hideToolbar() {
-  m_toolBar->setVisible(false);
+  ensureItemDetailsVisible();
+  m_itemDetails->loadItemDetails(item);
+  show();
 }
 
 void MessagePreviewer::loadUrl(const QString& url) {
+  m_toolBar->setVisible(m_toolbarVisible);
+  m_message = Message();
+  m_root.clear();
+
   ensureDefaultBrowserVisible();
   m_msgBrowser->loadUrl(url);
 }
 
 void MessagePreviewer::loadMessage(const Message& message, RootItem* root) {
+  m_toolBar->setVisible(m_toolbarVisible);
+
   bool same_message = message.m_id == m_message.m_id && m_root == root;
 
   m_message = message;
@@ -149,7 +158,7 @@ void MessagePreviewer::loadMessage(const Message& message, RootItem* root) {
         CustomMessagePreviewer* custom_previewer = root->getParentServiceRoot()->customMessagePreviewer();
 
         if (custom_previewer != nullptr) {
-          auto* current_custom_previewer = m_viewerLayout->widget(1);
+          auto* current_custom_previewer = m_viewerLayout->widget(INDEX_CUSTOM);
 
           if (current_custom_previewer != nullptr) {
             if (current_custom_previewer != custom_previewer) {
@@ -161,7 +170,7 @@ void MessagePreviewer::loadMessage(const Message& message, RootItem* root) {
             m_viewerLayout->addWidget(custom_previewer);
           }
 
-          m_viewerLayout->setCurrentIndex(1);
+          m_viewerLayout->setCurrentIndex(INDEX_CUSTOM);
           custom_previewer->loadMessage(message, root);
         }
         else {
@@ -295,12 +304,20 @@ void MessagePreviewer::updateLabels(bool only_clear) {
   }
 }
 
-void MessagePreviewer::ensureDefaultBrowserVisible() {
-  if (m_viewerLayout->count() > 1) {
-    m_viewerLayout->removeWidget(m_viewerLayout->widget(1));
+void MessagePreviewer::ensureItemDetailsVisible() {
+  if (m_viewerLayout->count() > INDEX_CUSTOM) {
+    m_viewerLayout->removeWidget(m_viewerLayout->widget(INDEX_CUSTOM));
   }
 
-  m_viewerLayout->setCurrentIndex(0);
+  m_viewerLayout->setCurrentIndex(INDEX_ITEMS);
+}
+
+void MessagePreviewer::ensureDefaultBrowserVisible() {
+  if (m_viewerLayout->count() > INDEX_CUSTOM) {
+    m_viewerLayout->removeWidget(m_viewerLayout->widget(INDEX_CUSTOM));
+  }
+
+  m_viewerLayout->setCurrentIndex(INDEX_DEFAULT);
 }
 
 LabelButton::LabelButton(QWidget* parent) : QToolButton(parent), m_label(nullptr) {}

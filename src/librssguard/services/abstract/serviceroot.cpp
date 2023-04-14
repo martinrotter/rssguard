@@ -562,7 +562,7 @@ RootItem* ServiceRoot::obtainNewTreeForSyncIn() const {
 QStringList ServiceRoot::customIDSOfMessagesForItem(RootItem* item) {
   if (item->getParentServiceRoot() != this) {
     // Not item from this account.
-    return QStringList();
+    return {};
   }
   else {
     QStringList list;
@@ -625,7 +625,7 @@ QStringList ServiceRoot::customIDSOfMessagesForItem(RootItem* item) {
         break;
     }
 
-    qDebug() << "Custom IDs of messages for some operation are:" << list;
+    qDebugNN << LOGSEC_CORE << "Custom IDs of messages for some operation are:" << QUOTE_W_SPACE_DOT(list);
     return list;
   }
 }
