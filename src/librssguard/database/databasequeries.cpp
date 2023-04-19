@@ -1075,7 +1075,7 @@ QHash<QString, QStringList> DatabaseQueries::bagsOfMessages(const QSqlDatabase& 
   return ids;
 }
 
-QPair<int, int> DatabaseQueries::updateMessages(const QSqlDatabase &db,
+QPair<int, int> DatabaseQueries::updateMessages(const QSqlDatabase& db,
                                                 QList<Message>& messages,
                                                 Feed* feed,
                                                 bool force_update,
@@ -1801,13 +1801,18 @@ void DatabaseQueries::storeAccountTree(const QSqlDatabase& db, RootItem* tree_ro
   }
 }
 
-QStringList DatabaseQueries::customIdsOfMessagesFromAccount(const QSqlDatabase& db, int account_id, bool* ok) {
+QStringList DatabaseQueries::customIdsOfMessagesFromAccount(const QSqlDatabase& db,
+                                                            RootItem::ReadStatus target_read,
+                                                            int account_id,
+                                                            bool* ok) {
   QSqlQuery q(db);
   QStringList ids;
 
   q.setForwardOnly(true);
-  q.prepare(QSL("SELECT custom_id FROM Messages WHERE is_pdeleted = 0 AND account_id = :account_id;"));
+  q.prepare(QSL("SELECT custom_id FROM Messages "
+                "WHERE is_read = :read AND is_pdeleted = 0 AND account_id = :account_id;"));
   q.bindValue(QSL(":account_id"), account_id);
+  q.bindValue(QSL(":read"), target_read == RootItem::ReadStatus::Read ? 0 : 1);
 
   if (ok != nullptr) {
     *ok = q.exec();
@@ -1823,13 +1828,17 @@ QStringList DatabaseQueries::customIdsOfMessagesFromAccount(const QSqlDatabase& 
   return ids;
 }
 
-QStringList DatabaseQueries::customIdsOfMessagesFromLabel(const QSqlDatabase& db, Label* label, bool* ok) {
+QStringList DatabaseQueries::customIdsOfMessagesFromLabel(const QSqlDatabase& db,
+                                                          Label* label,
+                                                          RootItem::ReadStatus target_read,
+                                                          bool* ok) {
   QSqlQuery q(db);
   QStringList ids;
 
   q.setForwardOnly(true);
   q.prepare(QSL("SELECT custom_id FROM Messages "
                 "WHERE "
+                "    is_read = :read AND "
                 "    is_deleted = 0 AND "
                 "    is_pdeleted = 0 AND "
                 "    account_id = :account_id AND "
@@ -1838,6 +1847,7 @@ QStringList DatabaseQueries::customIdsOfMessagesFromLabel(const QSqlDatabase& db
                 "LabelsInMessages.message);"));
   q.bindValue(QSL(":account_id"), label->getParentServiceRoot()->accountId());
   q.bindValue(QSL(":label"), label->customId());
+  q.bindValue(QSL(":read"), target_read == RootItem::ReadStatus::Read ? 0 : 1);
 
   if (ok != nullptr) {
     *ok = q.exec();
@@ -1853,14 +1863,20 @@ QStringList DatabaseQueries::customIdsOfMessagesFromLabel(const QSqlDatabase& db
   return ids;
 }
 
-QStringList DatabaseQueries::customIdsOfImportantMessages(const QSqlDatabase& db, int account_id, bool* ok) {
+QStringList DatabaseQueries::customIdsOfImportantMessages(const QSqlDatabase& db,
+                                                          RootItem::ReadStatus target_read,
+                                                          int account_id,
+                                                          bool* ok) {
   QSqlQuery q(db);
   QStringList ids;
 
   q.setForwardOnly(true);
   q.prepare(QSL("SELECT custom_id FROM Messages "
-                "WHERE is_important = 1 AND is_deleted = 0 AND is_pdeleted = 0 AND account_id = :account_id;"));
+                "WHERE "
+                "is_read = :read AND is_important = 1 AND is_deleted = 0 AND "
+                "is_pdeleted = 0 AND account_id = :account_id;"));
   q.bindValue(QSL(":account_id"), account_id);
+  q.bindValue(QSL(":read"), target_read == RootItem::ReadStatus::Read ? 0 : 1);
 
   if (ok != nullptr) {
     *ok = q.exec();
@@ -1899,14 +1915,18 @@ QStringList DatabaseQueries::customIdsOfUnreadMessages(const QSqlDatabase& db, i
   return ids;
 }
 
-QStringList DatabaseQueries::customIdsOfMessagesFromBin(const QSqlDatabase& db, int account_id, bool* ok) {
+QStringList DatabaseQueries::customIdsOfMessagesFromBin(const QSqlDatabase& db,
+                                                        RootItem::ReadStatus target_read,
+                                                        int account_id,
+                                                        bool* ok) {
   QSqlQuery q(db);
   QStringList ids;
 
   q.setForwardOnly(true);
-  q.prepare(QSL("SELECT custom_id FROM Messages WHERE is_deleted = 1 AND is_pdeleted = 0 AND account_id = "
-                ":account_id;"));
+  q.prepare(QSL("SELECT custom_id FROM Messages "
+                "WHERE is_read = :read AND is_deleted = 1 AND is_pdeleted = 0 AND account_id = :account_id;"));
   q.bindValue(QSL(":account_id"), account_id);
+  q.bindValue(QSL(":read"), target_read == RootItem::ReadStatus::Read ? 0 : 1);
 
   if (ok != nullptr) {
     *ok = q.exec();
@@ -1924,16 +1944,19 @@ QStringList DatabaseQueries::customIdsOfMessagesFromBin(const QSqlDatabase& db, 
 
 QStringList DatabaseQueries::customIdsOfMessagesFromFeed(const QSqlDatabase& db,
                                                          const QString& feed_custom_id,
+                                                         RootItem::ReadStatus target_read,
                                                          int account_id,
                                                          bool* ok) {
   QSqlQuery q(db);
   QStringList ids;
 
   q.setForwardOnly(true);
-  q.prepare(QSL("SELECT custom_id FROM Messages WHERE is_deleted = 0 AND is_pdeleted = 0 AND feed = :feed AND "
-                "account_id = :account_id;"));
+  q.prepare(QSL("SELECT custom_id FROM Messages "
+                "WHERE is_read = :read AND is_deleted = 0 AND "
+                "is_pdeleted = 0 AND feed = :feed AND account_id = :account_id;"));
   q.bindValue(QSL(":account_id"), account_id);
   q.bindValue(QSL(":feed"), feed_custom_id);
+  q.bindValue(QSL(":read"), target_read == RootItem::ReadStatus::Read ? 0 : 1);
 
   if (ok != nullptr) {
     *ok = q.exec();

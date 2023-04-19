@@ -117,13 +117,28 @@ class DatabaseQueries {
     // Custom ID accumulators.
     static QStringList bagOfMessages(const QSqlDatabase& db, ServiceRoot::BagOfMessages bag, const Feed* feed);
     static QHash<QString, QStringList> bagsOfMessages(const QSqlDatabase& db, const QList<Label*>& labels);
-    static QStringList customIdsOfMessagesFromLabel(const QSqlDatabase& db, Label* label, bool* ok = nullptr);
-    static QStringList customIdsOfImportantMessages(const QSqlDatabase& db, int account_id, bool* ok = nullptr);
-    static QStringList customIdsOfUnreadMessages(const QSqlDatabase& db, int account_id, bool* ok = nullptr);
-    static QStringList customIdsOfMessagesFromAccount(const QSqlDatabase& db, int account_id, bool* ok = nullptr);
-    static QStringList customIdsOfMessagesFromBin(const QSqlDatabase& db, int account_id, bool* ok = nullptr);
+    static QStringList customIdsOfMessagesFromLabel(const QSqlDatabase& db,
+                                                    Label* label,
+                                                    RootItem::ReadStatus target_read,
+                                                    bool* ok = nullptr);
+    static QStringList customIdsOfImportantMessages(const QSqlDatabase& db,
+                                                    RootItem::ReadStatus target_read,
+                                                    int account_id,
+                                                    bool* ok = nullptr);
+    static QStringList customIdsOfUnreadMessages(const QSqlDatabase& db,
+                                                 int account_id,
+                                                 bool* ok = nullptr);
+    static QStringList customIdsOfMessagesFromAccount(const QSqlDatabase& db,
+                                                      RootItem::ReadStatus target_read,
+                                                      int account_id,
+                                                      bool* ok = nullptr);
+    static QStringList customIdsOfMessagesFromBin(const QSqlDatabase& db,
+                                                  RootItem::ReadStatus target_read,
+                                                  int account_id,
+                                                  bool* ok = nullptr);
     static QStringList customIdsOfMessagesFromFeed(const QSqlDatabase& db,
                                                    const QString& feed_custom_id,
+                                                   RootItem::ReadStatus target_read,
                                                    int account_id,
                                                    bool* ok = nullptr);
 
@@ -136,7 +151,7 @@ class DatabaseQueries {
     static void createOverwriteAccount(const QSqlDatabase& db, ServiceRoot* account);
 
     // Returns counts of updated messages <unread, all>.
-    static QPair<int, int> updateMessages(const QSqlDatabase &db,
+    static QPair<int, int> updateMessages(const QSqlDatabase& db,
                                           QList<Message>& messages,
                                           Feed* feed,
                                           bool force_update,

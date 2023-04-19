@@ -152,11 +152,7 @@ void FeedlyServiceRoot::saveAllCachedData(bool ignore_errors) {
     QList<Message> messages = j.value();
 
     if (!messages.isEmpty()) {
-      QStringList ids;
-
-      for (const Message& msg : messages) {
-        ids.append(msg.m_customId);
-      }
+      QStringList ids = customIDsOfMessages(messages);
 
       try {
         network()->markers(key == RootItem::Importance::Important ? FEEDLY_MARKERS_IMPORTANT

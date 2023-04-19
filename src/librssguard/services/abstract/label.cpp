@@ -153,7 +153,7 @@ bool Label::markAsReadUnread(RootItem::ReadStatus status) {
   auto* cache = dynamic_cast<CacheForServiceRoot*>(service);
 
   if (cache != nullptr) {
-    cache->addMessageStatesToCache(service->customIDSOfMessagesForItem(this), status);
+    cache->addMessageStatesToCache(service->customIDSOfMessagesForItem(this, status), status);
   }
 
   QSqlDatabase database = qApp->database()->driver()->connection(metaObject()->className());

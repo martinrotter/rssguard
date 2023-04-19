@@ -64,17 +64,17 @@ QList<Message> RecycleBin::undeletedMessages() const {
 
 bool RecycleBin::markAsReadUnread(RootItem::ReadStatus status) {
   QSqlDatabase database = qApp->database()->driver()->connection(metaObject()->className());
-  ServiceRoot* parent_root = getParentServiceRoot();
-  auto* cache = dynamic_cast<CacheForServiceRoot*>(parent_root);
+  ServiceRoot* service = getParentServiceRoot();
+  auto* cache = dynamic_cast<CacheForServiceRoot*>(service);
 
   if (cache != nullptr) {
-    cache->addMessageStatesToCache(parent_root->customIDSOfMessagesForItem(this), status);
+    cache->addMessageStatesToCache(service->customIDSOfMessagesForItem(this, status), status);
   }
 
-  if (DatabaseQueries::markBinReadUnread(database, parent_root->accountId(), status)) {
+  if (DatabaseQueries::markBinReadUnread(database, service->accountId(), status)) {
     updateCounts(false);
-    parent_root->itemChanged(QList<RootItem*>() << this);
-    parent_root->requestReloadMessageList(status == RootItem::ReadStatus::Read);
+    service->itemChanged(QList<RootItem*>() << this);
+    service->requestReloadMessageList(status == RootItem::ReadStatus::Read);
     return true;
   }
   else {

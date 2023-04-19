@@ -37,11 +37,12 @@ void Category::updateCounts(bool including_total_count) {
 
   QSqlDatabase database = qApp->database()->driver()->connection(metaObject()->className());
   bool ok;
-  QMap<QString, QPair<int, int>> counts = DatabaseQueries::getMessageCountsForCategory(database,
-                                                                                       customId(),
-                                                                                       getParentServiceRoot()->accountId(),
-                                                                                       including_total_count,
-                                                                                       &ok);
+  QMap<QString, QPair<int, int>> counts =
+    DatabaseQueries::getMessageCountsForCategory(database,
+                                                 customId(),
+                                                 getParentServiceRoot()->accountId(),
+                                                 including_total_count,
+                                                 &ok);
 
   if (ok) {
     for (Feed* feed : feeds) {
@@ -65,7 +66,7 @@ bool Category::markAsReadUnread(RootItem::ReadStatus status) {
   auto* cache = dynamic_cast<CacheForServiceRoot*>(service);
 
   if (cache != nullptr) {
-    cache->addMessageStatesToCache(service->customIDSOfMessagesForItem(this), status);
+    cache->addMessageStatesToCache(service->customIDSOfMessagesForItem(this, status), status);
   }
 
   return service->markFeedsReadUnread(getSubTreeFeeds(), status);

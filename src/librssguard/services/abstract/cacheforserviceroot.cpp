@@ -17,6 +17,10 @@ CacheForServiceRoot::~CacheForServiceRoot() {}
 void CacheForServiceRoot::addLabelsAssignmentsToCache(const QStringList& ids_of_messages,
                                                       const QString& lbl_custom_id,
                                                       bool assign) {
+  if (ids_of_messages.isEmpty()) {
+    return;
+  }
+
   if (assign) {
     for (const QString& custom_id : ids_of_messages) {
       if (m_cachedLabelDeassignments[lbl_custom_id].contains(custom_id)) {
@@ -51,12 +55,17 @@ void CacheForServiceRoot::addLabelsAssignmentsToCache(const QList<Message>& ids_
   addLabelsAssignmentsToCache(custom_ids, lbl->customId(), assign);
 }
 
-void CacheForServiceRoot::addMessageStatesToCache(const QList<Message>& ids_of_messages, RootItem::Importance importance) {
+void CacheForServiceRoot::addMessageStatesToCache(const QList<Message>& ids_of_messages,
+                                                  RootItem::Importance importance) {
+  if (ids_of_messages.isEmpty()) {
+    return;
+  }
+
   QMutexLocker lck(m_cacheSaveMutex.data());
   QList<Message>& list_act = m_cachedStatesImportant[importance];
-  QList<Message>& list_other = m_cachedStatesImportant[importance == RootItem::Importance::Important
-                               ? RootItem::Importance::NotImportant
-                               : RootItem::Importance::Important];
+  QList<Message>& list_other =
+    m_cachedStatesImportant[importance == RootItem::Importance::Important ? RootItem::Importance::NotImportant
+                                                                          : RootItem::Importance::Important];
 
   // Store changes, they will be sent to server later.
   list_act.append(ids_of_messages);
@@ -80,11 +89,14 @@ void CacheForServiceRoot::addMessageStatesToCache(const QList<Message>& ids_of_m
 }
 
 void CacheForServiceRoot::addMessageStatesToCache(const QStringList& ids_of_messages, RootItem::ReadStatus read) {
+  if (ids_of_messages.isEmpty()) {
+    return;
+  }
+
   QMutexLocker lck(m_cacheSaveMutex.data());
   QStringList& list_act = m_cachedStatesRead[read];
-  QStringList& list_other = m_cachedStatesRead[read == RootItem::ReadStatus::Read
-                            ? RootItem::ReadStatus::Unread
-                            : RootItem::ReadStatus::Read];
+  QStringList& list_other =
+    m_cachedStatesRead[read == RootItem::ReadStatus::Read ? RootItem::ReadStatus::Unread : RootItem::ReadStatus::Read];
 
   // Store changes, they will be sent to server later.
   list_act.append(ids_of_messages);
@@ -109,7 +121,8 @@ void CacheForServiceRoot::addMessageStatesToCache(const QStringList& ids_of_mess
 
 void CacheForServiceRoot::saveCacheToFile() {
   // Save to file.
-  const QString file_cache = qApp->userDataFolder() + QDir::separator() + QString::number(m_uniqueId) + "-cached-msgs.dat";
+  const QString file_cache =
+    qApp->userDataFolder() + QDir::separator() + QString::number(m_uniqueId) + "-cached-msgs.dat";
 
   if (isEmpty()) {
     QFile::remove(file_cache);
@@ -140,7 +153,8 @@ void CacheForServiceRoot::loadCacheFromFile() {
   clearCache();
 
   // Load from file.
-  const QString file_cache = qApp->userDataFolder() + QDir::separator() + QString::number(m_uniqueId) + "-cached-msgs.dat";
+  const QString file_cache =
+    qApp->userDataFolder() + QDir::separator() + QString::number(m_uniqueId) + "-cached-msgs.dat";
   QFile file(file_cache);
 
   if (file.exists()) {
@@ -189,6 +203,6 @@ CacheSnapshot CacheForServiceRoot::takeMessageCache() {
 }
 
 bool CacheForServiceRoot::isEmpty() const {
-  return m_cachedStatesRead.isEmpty() && m_cachedStatesImportant.isEmpty() &&
-         m_cachedLabelAssignments.isEmpty() && m_cachedLabelDeassignments.isEmpty();
+  return m_cachedStatesRead.isEmpty() && m_cachedStatesImportant.isEmpty() && m_cachedLabelAssignments.isEmpty() &&
+         m_cachedLabelDeassignments.isEmpty();
 }

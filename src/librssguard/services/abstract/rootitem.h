@@ -27,11 +27,11 @@ class RSSGUARD_DLLSPEC RootItem : public QObject {
     Q_PROPERTY(QString customId READ customId)
 
   public:
-    enum class ReadStatus { Unread = 0, Read = 1 };
+    enum class ReadStatus { Unread = 0, Read = 1, Unknown = 256 };
 
     // Holds statuses for messages
     // to be switched importance (starred).
-    enum class Importance { NotImportant = 0, Important = 1 };
+    enum class Importance { NotImportant = 0, Important = 1, Unknown = 256 };
 
     // Describes the kind of the item.
     enum class Kind {
@@ -142,7 +142,7 @@ class RSSGUARD_DLLSPEC RootItem : public QObject {
     QHash<int, Category*> getSubTreeCategoriesForAssemble() const;
 
     // Returns list of categories complemented by their own string CUSTOM ID.
-    QHash<QString, Category *> getHashedSubTreeCategories() const;
+    QHash<QString, Category*> getHashedSubTreeCategories() const;
 
     // Returns list of feeds complemented by their own string CUSTOM ID.
     QHash<QString, Feed*> getHashedSubTreeFeeds() const;

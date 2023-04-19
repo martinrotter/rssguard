@@ -213,10 +213,10 @@ bool Feed::markAsReadUnread(RootItem::ReadStatus status) {
   auto* cache = dynamic_cast<CacheForServiceRoot*>(service);
 
   if (cache != nullptr) {
-    cache->addMessageStatesToCache(service->customIDSOfMessagesForItem(this), status);
+    cache->addMessageStatesToCache(service->customIDSOfMessagesForItem(this, status), status);
   }
 
-  return service->markFeedsReadUnread(QList<Feed*>() << this, status);
+  return service->markFeedsReadUnread({this}, status);
 }
 
 QString Feed::getAutoUpdateStatusDescription() const {

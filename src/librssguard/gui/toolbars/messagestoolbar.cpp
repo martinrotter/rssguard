@@ -182,6 +182,7 @@ void MessagesToolBar::addActionToMenu(QMenu* menu,
 
 void MessagesToolBar::initializeHighlighter() {
   m_menuMessageHighlighter = new QMenu(tr("Menu for highlighting articles"), this);
+
   addActionToMenu(m_menuMessageHighlighter,
                   qApp->icons()->fromTheme(QSL("mail-mark-read")),
                   tr("No extra highlighting"),
@@ -199,6 +200,7 @@ void MessagesToolBar::initializeHighlighter() {
                   "highlight_important");
 
   m_menuMessageFilter = new QMenu(tr("Menu for filtering articles"), this);
+
   addActionToMenu(m_menuMessageFilter,
                   qApp->icons()->fromTheme(QSL("mail-mark-read")),
                   tr("No extra filtering"),
@@ -261,17 +263,20 @@ void MessagesToolBar::initializeHighlighter() {
   m_btnMessageHighlighter->setPopupMode(QToolButton::ToolButtonPopupMode::MenuButtonPopup);
   m_btnMessageHighlighter->setIcon(qApp->icons()->fromTheme(QSL("mail-mark-read")));
   m_btnMessageHighlighter->setDefaultAction(m_menuMessageHighlighter->actions().constFirst());
+
   m_btnMessageFilter = new QToolButton(this);
   m_btnMessageFilter->setToolTip(tr("Display all articles"));
   m_btnMessageFilter->setMenu(m_menuMessageFilter);
   m_btnMessageFilter->setPopupMode(QToolButton::ToolButtonPopupMode::MenuButtonPopup);
   m_btnMessageFilter->setIcon(qApp->icons()->fromTheme(QSL("mail-mark-read")));
   m_btnMessageFilter->setDefaultAction(m_menuMessageFilter->actions().constFirst());
+
   m_actionMessageHighlighter = new QWidgetAction(this);
   m_actionMessageHighlighter->setDefaultWidget(m_btnMessageHighlighter);
   m_actionMessageHighlighter->setIcon(m_btnMessageHighlighter->icon());
   m_actionMessageHighlighter->setProperty("type", HIGHLIGHTER_ACTION_NAME);
   m_actionMessageHighlighter->setProperty("name", tr("Article highlighter"));
+
   m_actionMessageFilter = new QWidgetAction(this);
   m_actionMessageFilter->setDefaultWidget(m_btnMessageFilter);
   m_actionMessageFilter->setIcon(m_btnMessageFilter->icon());
@@ -280,6 +285,11 @@ void MessagesToolBar::initializeHighlighter() {
 
   connect(m_menuMessageHighlighter, &QMenu::triggered, this, &MessagesToolBar::handleMessageHighlighterChange);
   connect(m_menuMessageFilter, &QMenu::triggered, this, &MessagesToolBar::handleMessageFilterChange);
+
+  connect(this, &MessagesToolBar::toolButtonStyleChanged, this, [=](Qt::ToolButtonStyle style) {
+    m_btnMessageHighlighter->setToolButtonStyle(style);
+    m_btnMessageFilter->setToolButtonStyle(style);
+  });
 }
 
 void MessagesToolBar::saveToolButtonSelection(const QString& button_name, const QList<QAction*>& actions) const {
