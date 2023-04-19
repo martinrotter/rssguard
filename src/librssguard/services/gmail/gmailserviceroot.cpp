@@ -236,12 +236,7 @@ void GmailServiceRoot::saveAllCachedData(bool ignore_errors) {
     QList<Message> messages = j.value();
 
     if (!messages.isEmpty()) {
-      QStringList custom_ids;
-      custom_ids.reserve(messages.size());
-
-      for (const Message& msg : messages) {
-        custom_ids.append(msg.m_customId);
-      }
+      QStringList custom_ids = customIDsOfMessages(messages);
 
       if (network()->markMessagesStarred(key, custom_ids, networkProxy()) != QNetworkReply::NetworkError::NoError &&
           !ignore_errors) {

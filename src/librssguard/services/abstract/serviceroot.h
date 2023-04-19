@@ -222,7 +222,15 @@ class ServiceRoot : public RootItem {
     QStringList textualFeedIds(const QList<Feed*>& feeds) const;
     QStringList customIDsOfMessages(const QList<ImportanceChange>& changes);
     QStringList customIDsOfMessages(const QList<Message>& messages);
-    QStringList customIDSOfMessagesForItem(RootItem* item);
+
+    // Returns list of article IDs depending on what target operation is.
+    // NOTE: So if we want to mark some articles as read,
+    // then we only return UNREAD IDs here to really return
+    // only IDs when the change makes sense.
+    // NOTE: Importance is not dealt here because it was not needed
+    // yet.
+    QStringList customIDSOfMessagesForItem(RootItem* item,
+                                           RootItem::ReadStatus target_read = RootItem::ReadStatus::Unknown);
 
     void performInitialAssembly(const Assignment& categories, const Assignment& feeds, const QList<Label*>& labels);
 

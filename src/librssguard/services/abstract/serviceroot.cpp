@@ -46,7 +46,7 @@ bool ServiceRoot::markAsReadUnread(RootItem::ReadStatus status) {
   auto* cache = dynamic_cast<CacheForServiceRoot*>(this);
 
   if (cache != nullptr) {
-    cache->addMessageStatesToCache(customIDSOfMessagesForItem(this), status);
+    cache->addMessageStatesToCache(customIDSOfMessagesForItem(this, status), status);
   }
 
   QSqlDatabase database = qApp->database()->driver()->connection(metaObject()->className());
@@ -559,7 +559,7 @@ RootItem* ServiceRoot::obtainNewTreeForSyncIn() const {
   return nullptr;
 }
 
-QStringList ServiceRoot::customIDSOfMessagesForItem(RootItem* item) {
+QStringList ServiceRoot::customIDSOfMessagesForItem(RootItem* item, ReadStatus target_read) {
   if (item->getParentServiceRoot() != this) {
     // Not item from this account.
     return {};
@@ -573,7 +573,7 @@ QStringList ServiceRoot::customIDSOfMessagesForItem(RootItem* item) {
         auto chi = item->childItems();
 
         for (RootItem* child : qAsConst(chi)) {
-          list.append(customIDSOfMessagesForItem(child));
+          list.append(customIDSOfMessagesForItem(child, target_read));
         }
 
         return list;
@@ -582,35 +582,35 @@ QStringList ServiceRoot::customIDSOfMessagesForItem(RootItem* item) {
       case RootItem::Kind::Label: {
         QSqlDatabase database = qApp->database()->driver()->connection(metaObject()->className());
 
-        list = DatabaseQueries::customIdsOfMessagesFromLabel(database, item->toLabel());
+        list = DatabaseQueries::customIdsOfMessagesFromLabel(database, item->toLabel(), target_read);
         break;
       }
 
       case RootItem::Kind::ServiceRoot: {
         QSqlDatabase database = qApp->database()->driver()->connection(metaObject()->className());
 
-        list = DatabaseQueries::customIdsOfMessagesFromAccount(database, accountId());
+        list = DatabaseQueries::customIdsOfMessagesFromAccount(database, target_read, accountId());
         break;
       }
 
       case RootItem::Kind::Bin: {
         QSqlDatabase database = qApp->database()->driver()->connection(metaObject()->className());
 
-        list = DatabaseQueries::customIdsOfMessagesFromBin(database, accountId());
+        list = DatabaseQueries::customIdsOfMessagesFromBin(database, target_read, accountId());
         break;
       }
 
       case RootItem::Kind::Feed: {
         QSqlDatabase database = qApp->database()->driver()->connection(metaObject()->className());
 
-        list = DatabaseQueries::customIdsOfMessagesFromFeed(database, item->customId(), accountId());
+        list = DatabaseQueries::customIdsOfMessagesFromFeed(database, item->customId(), target_read, accountId());
         break;
       }
 
       case RootItem::Kind::Important: {
         QSqlDatabase database = qApp->database()->driver()->connection(metaObject()->className());
 
-        list = DatabaseQueries::customIdsOfImportantMessages(database, accountId());
+        list = DatabaseQueries::customIdsOfImportantMessages(database, target_read, accountId());
         break;
       }
 
