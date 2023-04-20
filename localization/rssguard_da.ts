@@ -229,7 +229,7 @@ påmindelse.</translation>
     <message>
         <location filename="../src/librssguard/services/abstract/gui/authenticationdetails.ui" line="23"/>
         <source>Credentials</source>
-        <translation type="unfinished"/>
+        <translation>Akkreditiver</translation>
     </message>
     <message>
         <location filename="../src/librssguard/services/abstract/gui/authenticationdetails.ui" line="64"/>
@@ -272,22 +272,22 @@ påmindelse.</translation>
     <message>
         <location filename="../src/librssguard/services/abstract/gui/authenticationdetails.cpp" line="20"/>
         <source>Token</source>
-        <translation type="unfinished"/>
+        <translation>Adgangsymbol</translation>
     </message>
     <message>
         <location filename="../src/librssguard/services/abstract/gui/authenticationdetails.cpp" line="51"/>
         <source>Username/token is ok or it is not needed.</source>
-        <translation type="unfinished"/>
+        <translation>Brugernavn/adgangsymbol er okay eller er ikke nødvendigt.</translation>
     </message>
     <message>
         <location filename="../src/librssguard/services/abstract/gui/authenticationdetails.cpp" line="52"/>
         <source>Username/token is empty.</source>
-        <translation type="unfinished"/>
+        <translation>Brugernavn/adgangsymbol er tomt.</translation>
     </message>
     <message>
         <location filename="../src/librssguard/services/abstract/gui/authenticationdetails.cpp" line="74"/>
         <source>Access token</source>
-        <translation type="unfinished"/>
+        <translation>Adgangsymbol</translation>
     </message>
     <message>
         <location filename="../src/librssguard/services/abstract/gui/authenticationdetails.cpp" line="61"/>
@@ -593,12 +593,12 @@ Klik her for at åbne forældrebibliotek.</translation>
     <message>
         <location filename="../src/librssguard/services/gmail/gui/emailpreviewer.ui" line="65"/>
         <source>&amp;Reply</source>
-        <translation type="unfinished"/>
+        <translation>Sva&amp;r</translation>
     </message>
     <message>
         <location filename="../src/librssguard/services/gmail/gui/emailpreviewer.ui" line="75"/>
         <source>&amp;Forward</source>
-        <translation type="unfinished"/>
+        <translation>&amp;Frem</translation>
     </message>
     <message>
         <location filename="../src/librssguard/services/gmail/gui/emailpreviewer.ui" line="87"/>
@@ -764,12 +764,12 @@ Status: %3</source>
         <location filename="../src/librssguard/services/feedly/gui/feedlyaccountdetails.ui" line="27"/>
         <location filename="../src/librssguard/services/feedly/gui/feedlyaccountdetails.cpp" line="29"/>
         <source>Developer access token</source>
-        <translation>Symbol til udvikleradgang</translation>
+        <translation>Symbol til adgangsymbol</translation>
     </message>
     <message>
         <location filename="../src/librssguard/services/feedly/gui/feedlyaccountdetails.ui" line="36"/>
         <source>Get token</source>
-        <translation>Hent symbol</translation>
+        <translation>Hent adgangsymbol</translation>
     </message>
     <message>
         <location filename="../src/librssguard/services/feedly/gui/feedlyaccountdetails.ui" line="58"/>
@@ -927,12 +927,12 @@ Status: %3</source>
     <message>
         <location filename="../src/librssguard/services/standard/standardfeedsimportexportmodel.cpp" line="269"/>
         <source>OPML document contains errors</source>
-        <translation type="unfinished"/>
+        <translation>OPML-dokument indeholder fejl</translation>
     </message>
     <message>
         <location filename="../src/librssguard/services/standard/standardfeedsimportexportmodel.cpp" line="274"/>
         <source>this is likely not OPML document</source>
-        <translation type="unfinished"/>
+        <translation>dette er sandsynligvis ikke et OPML-dokument</translation>
     </message>
     <message>
         <location filename="../src/librssguard/services/standard/standardfeedsimportexportmodel.cpp" line="351"/>
@@ -986,12 +986,12 @@ Status: %3</source>
     <message>
         <location filename="../src/librssguard/gui/toolbars/feedstoolbar.cpp" line="118"/>
         <source>Everywhere</source>
-        <translation type="unfinished"/>
+        <translation>Overalt</translation>
     </message>
     <message>
         <location filename="../src/librssguard/gui/toolbars/feedstoolbar.cpp" line="119"/>
         <source>Titles only</source>
-        <translation type="unfinished"/>
+        <translation>Kun overskrifter</translation>
     </message>
     <message>
         <location filename="../src/librssguard/gui/toolbars/feedstoolbar.cpp" line="123"/>
@@ -1200,7 +1200,7 @@ or this functionality is not implemented yet.</source>
     <message>
         <location filename="../src/librssguard/services/abstract/gui/formaccountdetails.cpp" line="42"/>
         <source>Edit account &quot;%1&quot;</source>
-        <translation type="unfinished"/>
+        <translation>Redigér konto &quot;%1&quot;</translation>
     </message>
 </context>
 <context>
@@ -1420,7 +1420,7 @@ or this functionality is not implemented yet.</source>
     <message>
         <location filename="../src/librssguard/services/abstract/gui/formcategorydetails.cpp" line="157"/>
         <source>Images (%1)</source>
-        <translation type="unfinished"/>
+        <translation>Billeder (%1)</translation>
     </message>
     <message>
         <location filename="../src/librssguard/services/abstract/gui/formcategorydetails.cpp" line="163"/>
@@ -1471,7 +1471,7 @@ or this functionality is not implemented yet.</source>
     <message>
         <location filename="../src/librssguard/services/abstract/gui/formcategorydetails.cpp" line="194"/>
         <source>Icon selection</source>
-        <translation type="unfinished"/>
+        <translation>Vælg ikon</translation>
     </message>
     <message>
         <location filename="../src/librssguard/services/abstract/gui/formcategorydetails.cpp" line="196"/>
@@ -1735,7 +1735,7 @@ or this functionality is not implemented yet.</source>
     <message>
         <location filename="../src/librssguard/services/abstract/gui/formfeeddetails.ui" line="79"/>
         <source>Ignore notifications for this feed</source>
-        <translation type="unfinished"/>
+        <translation>Ignorer påmindelser for denne nyhedskilde</translation>
     </message>
 </context>
 <context>
@@ -1743,7 +1743,7 @@ or this functionality is not implemented yet.</source>
     <message>
         <location filename="../src/librssguard/gui/dialogs/formlog.cpp" line="16"/>
         <source>Application log</source>
-        <translation type="unfinished"/>
+        <translation>Programlog</translation>
     </message>
 </context>
 <context>
@@ -1766,12 +1766,12 @@ or this functionality is not implemented yet.</source>
     <message>
         <location filename="../src/librssguard/gui/dialogs/formmain.cpp" line="79"/>
         <source>Open main menu</source>
-        <translation type="unfinished"/>
+        <translation>Åben hovedmenu</translation>
     </message>
     <message>
         <location filename="../src/librssguard/gui/dialogs/formmain.cpp" line="87"/>
         <source>Open &amp;main menu</source>
-        <translation type="unfinished"/>
+        <translation>Åben hoved&amp;menu</translation>
     </message>
     <message>
         <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="53"/>
@@ -2222,7 +2222,7 @@ or this functionality is not implemented yet.</source>
     <message>
         <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="760"/>
         <source>New browser tab</source>
-        <translation type="unfinished"/>
+        <translation>Nyt netlæserfaneblad</translation>
     </message>
     <message>
         <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="768"/>
@@ -2856,7 +2856,7 @@ Du skal genstarte programmet manuelt.</translation>
     <message>
         <location filename="../src/librssguard/services/standard/gui/formstandardimportexport.cpp" line="267"/>
         <source>cannot open file</source>
-        <translation type="unfinished"/>
+        <translation>kan ikke åbne fil</translation>
     </message>
     <message>
         <location filename="../src/librssguard/services/standard/gui/formstandardimportexport.cpp" line="324"/>
@@ -2930,7 +2930,7 @@ Du skal genstarte programmet manuelt.</translation>
     <message>
         <location filename="../src/librssguard/services/standard/gui/formstandardimportexport.ui" line="123"/>
         <source>Export icons</source>
-        <translation type="unfinished"/>
+        <translation>Eksportér ikoner</translation>
     </message>
     <message>
         <location filename="../src/librssguard/services/standard/gui/formstandardimportexport.ui" line="189"/>
@@ -3016,7 +3016,7 @@ Du skal genstarte programmet manuelt.</translation>
     <message>
         <location filename="../src/librssguard/services/tt-rss/gui/formttrssnote.ui" line="66"/>
         <source>Content</source>
-        <translation type="unfinished"/>
+        <translation>Indhold</translation>
     </message>
 </context>
 <context>
@@ -3433,7 +3433,7 @@ Login tokens expiration: %2</source>
     <message>
         <location filename="../src/librssguard/services/greader/gui/greaderaccountdetails.cpp" line="207"/>
         <source>Yeah.</source>
-        <translation type="unfinished"/>
+        <translation>Yeah.</translation>
     </message>
     <message>
         <location filename="../src/librssguard/services/greader/gui/greaderaccountdetails.cpp" line="216"/>
@@ -3599,7 +3599,7 @@ Login tokens expiration: %2</source>
     <message>
         <location filename="../src/librssguard/services/greader/gui/greaderaccountdetails.ui" line="270"/>
         <source>&amp;Test setup</source>
-        <translation type="unfinished"/>
+        <translation>Afprøv opsæ&amp;tning</translation>
     </message>
 </context>
 <context>
@@ -3760,7 +3760,7 @@ Login tokens expiration: %2</source>
     <message>
         <location filename="../src/librssguard/database/mariadbdriver.cpp" line="96"/>
         <source>MariaDB</source>
-        <translation type="unfinished"/>
+        <translation>MariaDB</translation>
     </message>
 </context>
 <context>
@@ -3895,7 +3895,7 @@ Login tokens expiration: %2</source>
     <message>
         <location filename="../src/librssguard/core/messagesforfiltersmodel.cpp" line="13"/>
         <source>Date</source>
-        <translation type="unfinished"/>
+        <translation>Dato</translation>
     </message>
 </context>
 <context>
@@ -3993,7 +3993,7 @@ Login tokens expiration: %2</source>
     <message>
         <location filename="../src/librssguard/core/messagesmodel.cpp" line="241"/>
         <source>Date</source>
-        <translation type="unfinished"/>
+        <translation>Dato</translation>
     </message>
     <message>
         <location filename="../src/librssguard/core/messagesmodel.cpp" line="153"/>
@@ -4013,7 +4013,7 @@ Login tokens expiration: %2</source>
     <message>
         <location filename="../src/librssguard/core/messagesmodel.cpp" line="252"/>
         <source>Is article read?</source>
-        <translation type="unfinished"/>
+        <translation>Er artikel blevet læst?</translation>
     </message>
     <message>
         <location filename="../src/librssguard/core/messagesmodel.cpp" line="252"/>
@@ -4023,7 +4023,7 @@ Login tokens expiration: %2</source>
     <message>
         <location filename="../src/librssguard/core/messagesmodel.cpp" line="253"/>
         <source>Is article deleted?</source>
-        <translation type="unfinished"/>
+        <translation>Er artikel blevet slettet?</translation>
     </message>
     <message>
         <location filename="../src/librssguard/core/messagesmodel.cpp" line="253"/>
@@ -4151,12 +4151,12 @@ Login tokens expiration: %2</source>
     <message>
         <location filename="../src/librssguard/gui/toolbars/messagestoolbar.cpp" line="154"/>
         <source>Everywhere</source>
-        <translation type="unfinished"/>
+        <translation>Overalt</translation>
     </message>
     <message>
         <location filename="../src/librssguard/gui/toolbars/messagestoolbar.cpp" line="155"/>
         <source>Titles only</source>
-        <translation type="unfinished"/>
+        <translation>Kun titler</translation>
     </message>
     <message>
         <location filename="../src/librssguard/gui/toolbars/messagestoolbar.cpp" line="159"/>
@@ -4512,7 +4512,7 @@ Login tokens expiration: %2</source>
     <message>
         <location filename="../src/librssguard/services/newsblur/gui/newsbluraccountdetails.ui" line="100"/>
         <source>&amp;Test setup</source>
-        <translation type="unfinished"/>
+        <translation>Afprøv opsæ&amp;tning</translation>
     </message>
     <message>
         <location filename="../src/librssguard/services/newsblur/gui/newsbluraccountdetails.cpp" line="22"/>
@@ -4552,7 +4552,7 @@ Login tokens expiration: %2</source>
     <message>
         <location filename="../src/librssguard/services/newsblur/gui/newsbluraccountdetails.cpp" line="65"/>
         <source>Yeah.</source>
-        <translation type="unfinished"/>
+        <translation>Yeah.</translation>
     </message>
     <message>
         <location filename="../src/librssguard/services/newsblur/gui/newsbluraccountdetails.cpp" line="73"/>
@@ -4647,7 +4647,7 @@ Login tokens expiration: %2</source>
     <message>
         <location filename="../src/librssguard/network-web/oauth2service.cpp" line="223"/>
         <source>Refreshing login tokens for &apos;%1&apos;...</source>
-        <translation type="unfinished"/>
+        <translation>Ajourfører adgangsymboler for &apos;%1&apos;...</translation>
     </message>
     <message>
         <location filename="../src/librssguard/network-web/oauth2service.cpp" line="91"/>
@@ -4812,7 +4812,7 @@ Login tokens expiration: %2</source>
     <message>
         <location filename="../src/librssguard/services/owncloud/gui/owncloudaccountdetails.ui" line="127"/>
         <source>&amp;Test setup</source>
-        <translation type="unfinished"/>
+        <translation>Afprøv opsæ&amp;tning</translation>
     </message>
     <message>
         <location filename="../src/librssguard/services/owncloud/gui/owncloudaccountdetails.ui" line="162"/>
@@ -6598,7 +6598,7 @@ Type: %3</source>
     <message>
         <location filename="../src/librssguard/services/standard/gui/standardfeeddetails.cpp" line="72"/>
         <source>Icon selection</source>
-        <translation type="unfinished"/>
+        <translation>Vælg ikon</translation>
     </message>
     <message>
         <location filename="../src/librssguard/services/standard/gui/standardfeeddetails.cpp" line="74"/>
@@ -6698,7 +6698,7 @@ Type: %3</source>
     <message>
         <location filename="../src/librssguard/services/standard/gui/standardfeeddetails.cpp" line="289"/>
         <source>Images (%1)</source>
-        <translation type="unfinished"/>
+        <translation>Billeder (%1)</translation>
     </message>
     <message>
         <location filename="../src/librssguard/services/standard/gui/standardfeeddetails.cpp" line="295"/>
@@ -6845,7 +6845,7 @@ Also, you can post-process generated feed data with yet another script if you wi
     <message>
         <location filename="../src/librssguard/services/standard/gui/standardfeeddetails.ui" line="100"/>
         <source>Source</source>
-        <translation type="unfinished"/>
+        <translation>Kilde</translation>
     </message>
     <message>
         <location filename="../src/librssguard/services/standard/gui/standardfeeddetails.ui" line="129"/>
@@ -7048,7 +7048,7 @@ Ulæste nyheder: %2</translation>
     <message>
         <location filename="../src/librssguard/gui/webviewers/qtextbrowser/textbrowserviewer.cpp" line="339"/>
         <source>Enable external resources</source>
-        <translation type="unfinished"/>
+        <translation>Aktivér eksterne ressourcer</translation>
     </message>
     <message>
         <location filename="../src/librssguard/gui/webviewers/qtextbrowser/textbrowserviewer.cpp" line="342"/>
@@ -7380,7 +7380,7 @@ Ulæste nyheder: %2</translation>
     <message>
         <location filename="../src/librssguard/services/tt-rss/gui/ttrssaccountdetails.ui" line="198"/>
         <source>&amp;Test setup</source>
-        <translation type="unfinished"/>
+        <translation>Afprøv opsæ&amp;tning</translation>
     </message>
 </context>
 <context>
@@ -7683,7 +7683,7 @@ Sidst logget på: %4</translation>
     <message>
         <location filename="../src/librssguard/network-web/webfactory.cpp" line="356"/>
         <source>Show scrollbars</source>
-        <translation type="unfinished"/>
+        <translation>Vis rullebjælke</translation>
     </message>
     <message>
         <location filename="../src/librssguard/network-web/webfactory.cpp" line="357"/>
@@ -7708,7 +7708,7 @@ Sidst logget på: %4</translation>
     <message>
         <location filename="../src/librssguard/network-web/webfactory.cpp" line="367"/>
         <source>PDF viewer enabled</source>
-        <translation type="unfinished"/>
+        <translation>PDF-fremviser aktiveret</translation>
     </message>
 </context>
 </TS>

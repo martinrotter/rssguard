@@ -228,12 +228,12 @@ versão, clicando nesta notificação popup.</translation>
     <message>
         <location filename="../src/librssguard/services/abstract/gui/authenticationdetails.ui" line="23"/>
         <source>Credentials</source>
-        <translation type="unfinished"/>
+        <translation>Credenciais</translation>
     </message>
     <message>
         <location filename="../src/librssguard/services/abstract/gui/authenticationdetails.ui" line="64"/>
         <source>Authentication type</source>
-        <translation type="unfinished"/>
+        <translation>Tipo de autenticação</translation>
     </message>
     <message>
         <location filename="../src/librssguard/services/abstract/gui/authenticationdetails.ui" line="35"/>
@@ -261,32 +261,32 @@ versão, clicando nesta notificação popup.</translation>
     <message>
         <location filename="../src/librssguard/services/abstract/gui/authenticationdetails.cpp" line="15"/>
         <source>No authentication</source>
-        <translation type="unfinished"/>
+        <translation>Sem autenticação</translation>
     </message>
     <message>
         <location filename="../src/librssguard/services/abstract/gui/authenticationdetails.cpp" line="17"/>
         <source>HTTP Basic</source>
-        <translation type="unfinished"/>
+        <translation>HTTP básico</translation>
     </message>
     <message>
         <location filename="../src/librssguard/services/abstract/gui/authenticationdetails.cpp" line="20"/>
         <source>Token</source>
-        <translation type="unfinished"/>
+        <translation>Token</translation>
     </message>
     <message>
         <location filename="../src/librssguard/services/abstract/gui/authenticationdetails.cpp" line="51"/>
         <source>Username/token is ok or it is not needed.</source>
-        <translation type="unfinished"/>
+        <translation>Nome de usuário/token está OK ou não é necessário.</translation>
     </message>
     <message>
         <location filename="../src/librssguard/services/abstract/gui/authenticationdetails.cpp" line="52"/>
         <source>Username/token is empty.</source>
-        <translation type="unfinished"/>
+        <translation>Nome de usuário/token está vazio.</translation>
     </message>
     <message>
         <location filename="../src/librssguard/services/abstract/gui/authenticationdetails.cpp" line="74"/>
         <source>Access token</source>
-        <translation type="unfinished"/>
+        <translation>Token de acesso</translation>
     </message>
     <message>
         <location filename="../src/librssguard/services/abstract/gui/authenticationdetails.cpp" line="61"/>
@@ -928,12 +928,12 @@ Status: %3</translation>
     <message>
         <location filename="../src/librssguard/services/standard/standardfeedsimportexportmodel.cpp" line="269"/>
         <source>OPML document contains errors</source>
-        <translation type="unfinished"/>
+        <translation>O documento OPML contém erros</translation>
     </message>
     <message>
         <location filename="../src/librssguard/services/standard/standardfeedsimportexportmodel.cpp" line="274"/>
         <source>this is likely not OPML document</source>
-        <translation type="unfinished"/>
+        <translation>provavelmente não é um documento OPML</translation>
     </message>
     <message>
         <location filename="../src/librssguard/services/standard/standardfeedsimportexportmodel.cpp" line="351"/>
@@ -987,12 +987,12 @@ Status: %3</translation>
     <message>
         <location filename="../src/librssguard/gui/toolbars/feedstoolbar.cpp" line="118"/>
         <source>Everywhere</source>
-        <translation type="unfinished"/>
+        <translation>Em todos os lugares</translation>
     </message>
     <message>
         <location filename="../src/librssguard/gui/toolbars/feedstoolbar.cpp" line="119"/>
         <source>Titles only</source>
-        <translation type="unfinished"/>
+        <translation>Somente títulos</translation>
     </message>
     <message>
         <location filename="../src/librssguard/gui/toolbars/feedstoolbar.cpp" line="123"/>
@@ -2339,12 +2339,12 @@ ou esta função ainda não foi implementada.</translation>
     <message>
         <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="899"/>
         <source>Focus feeds search box</source>
-        <translation type="unfinished"/>
+        <translation>Focar caixa de pesquisa de feeds</translation>
     </message>
     <message>
         <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="904"/>
         <source>Focus articles search box</source>
-        <translation type="unfinished"/>
+        <translation>Focar caixa de pesquisa de artigos</translation>
     </message>
     <message>
         <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="742"/>
@@ -2858,12 +2858,12 @@ Você precisa reiniciar manualmente.</translation>
         <location filename="../src/librssguard/services/standard/gui/formstandardimportexport.cpp" line="135"/>
         <location filename="../src/librssguard/services/standard/gui/formstandardimportexport.cpp" line="136"/>
         <source>Some feeds were not loaded properly. Check log for more information.</source>
-        <translation type="unfinished"/>
+        <translation>Alguns feeds não foram carregados corretamente. Veja o log para mais informações.</translation>
     </message>
     <message>
         <location filename="../src/librssguard/services/standard/gui/formstandardimportexport.cpp" line="267"/>
         <source>cannot open file</source>
-        <translation type="unfinished"/>
+        <translation>não é possível abrir o arquivo</translation>
     </message>
     <message>
         <location filename="../src/librssguard/services/standard/gui/formstandardimportexport.cpp" line="324"/>
@@ -4163,12 +4163,12 @@ Expiração dos tokens de login: %2</translation>
     <message>
         <location filename="../src/librssguard/gui/toolbars/messagestoolbar.cpp" line="154"/>
         <source>Everywhere</source>
-        <translation type="unfinished"/>
+        <translation>Em todos os lugares</translation>
     </message>
     <message>
         <location filename="../src/librssguard/gui/toolbars/messagestoolbar.cpp" line="155"/>
         <source>Titles only</source>
-        <translation type="unfinished"/>
+        <translation>Somente títulos</translation>
     </message>
     <message>
         <location filename="../src/librssguard/gui/toolbars/messagestoolbar.cpp" line="159"/>
@@ -5345,22 +5345,22 @@ Expiração dos tokens de login: %2</translation>
     <message>
         <location filename="../src/librssguard/gui/reusable/searchlineedit.cpp" line="30"/>
         <source>Case-sensitive</source>
-        <translation type="unfinished"/>
+        <translation>Diferenciar maiúsculas de mínúsculas</translation>
     </message>
     <message>
         <location filename="../src/librssguard/gui/reusable/searchlineedit.cpp" line="101"/>
         <source>Fixed text</source>
-        <translation type="unfinished"/>
+        <translation>Texto fixo</translation>
     </message>
     <message>
         <location filename="../src/librssguard/gui/reusable/searchlineedit.cpp" line="104"/>
         <source>Wildcard</source>
-        <translation type="unfinished"/>
+        <translation>Curinga</translation>
     </message>
     <message>
         <location filename="../src/librssguard/gui/reusable/searchlineedit.cpp" line="107"/>
         <source>Regular expression</source>
-        <translation type="unfinished"/>
+        <translation>Expressão regular</translation>
     </message>
 </context>
 <context>

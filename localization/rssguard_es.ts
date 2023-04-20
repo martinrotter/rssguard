@@ -228,12 +228,12 @@ versión pulsando en esta notificación emergente.</translation>
     <message>
         <location filename="../src/librssguard/services/abstract/gui/authenticationdetails.ui" line="23"/>
         <source>Credentials</source>
-        <translation type="unfinished"/>
+        <translation>Credenciales</translation>
     </message>
     <message>
         <location filename="../src/librssguard/services/abstract/gui/authenticationdetails.ui" line="64"/>
         <source>Authentication type</source>
-        <translation type="unfinished"/>
+        <translation>Tipo de Autenticación</translation>
     </message>
     <message>
         <location filename="../src/librssguard/services/abstract/gui/authenticationdetails.ui" line="35"/>
@@ -261,32 +261,32 @@ versión pulsando en esta notificación emergente.</translation>
     <message>
         <location filename="../src/librssguard/services/abstract/gui/authenticationdetails.cpp" line="15"/>
         <source>No authentication</source>
-        <translation type="unfinished"/>
+        <translation>Sin autenticación</translation>
     </message>
     <message>
         <location filename="../src/librssguard/services/abstract/gui/authenticationdetails.cpp" line="17"/>
         <source>HTTP Basic</source>
-        <translation type="unfinished"/>
+        <translation>HTTP Básico</translation>
     </message>
     <message>
         <location filename="../src/librssguard/services/abstract/gui/authenticationdetails.cpp" line="20"/>
         <source>Token</source>
-        <translation type="unfinished"/>
+        <translation>Identificador</translation>
     </message>
     <message>
         <location filename="../src/librssguard/services/abstract/gui/authenticationdetails.cpp" line="51"/>
         <source>Username/token is ok or it is not needed.</source>
-        <translation type="unfinished"/>
+        <translation>Nombre de usuario/Identificador está bien o es innecesario.</translation>
     </message>
     <message>
         <location filename="../src/librssguard/services/abstract/gui/authenticationdetails.cpp" line="52"/>
         <source>Username/token is empty.</source>
-        <translation type="unfinished"/>
+        <translation>Nombre de usuario/Identificador vacío</translation>
     </message>
     <message>
         <location filename="../src/librssguard/services/abstract/gui/authenticationdetails.cpp" line="74"/>
         <source>Access token</source>
-        <translation type="unfinished"/>
+        <translation>Identificador de Acceso</translation>
     </message>
     <message>
         <location filename="../src/librssguard/services/abstract/gui/authenticationdetails.cpp" line="61"/>
@@ -765,12 +765,12 @@ Estado: %3</translation>
         <location filename="../src/librssguard/services/feedly/gui/feedlyaccountdetails.ui" line="27"/>
         <location filename="../src/librssguard/services/feedly/gui/feedlyaccountdetails.cpp" line="29"/>
         <source>Developer access token</source>
-        <translation>Token de acceso de desarrollador</translation>
+        <translation>Identificador de acceso de desarrollador</translation>
     </message>
     <message>
         <location filename="../src/librssguard/services/feedly/gui/feedlyaccountdetails.ui" line="36"/>
         <source>Get token</source>
-        <translation>Obtener token</translation>
+        <translation>Obtener identificador</translation>
     </message>
     <message>
         <location filename="../src/librssguard/services/feedly/gui/feedlyaccountdetails.ui" line="58"/>
@@ -810,7 +810,7 @@ Estado: %3</translation>
     <message>
         <location filename="../src/librssguard/services/feedly/gui/feedlyaccountdetails.cpp" line="39"/>
         <source>Your %1 does not offer official Feedly support, thus you must authorize via special authorization code called &quot;developer access token&quot;. These tokens are usually valid only for 1 month and allow only 250 API calls each day.</source>
-        <translation>Su %1 no ofrece soporte oficial de Feedly, por lo que debe autorizarlo a través de un código de autorización especial llamado &quot;token de acceso de desarrollador&quot;. Estos tokens suelen ser válidos sólo por 1 mes y permiten sólo 250 llamadas a la API por día.</translation>
+        <translation>Su %1 no ofrece soporte oficial de Feedly, por lo que debe autorizarlo a través de un código de autorización especial llamado &quot;identificador de acceso de desarrollador&quot;. Estos identificadores suelen ser válidos sólo por 1 mes y permiten sólo 250 llamadas a la API por día.</translation>
     </message>
     <message>
         <location filename="../src/librssguard/services/feedly/gui/feedlyaccountdetails.cpp" line="51"/>
@@ -856,7 +856,7 @@ Estado: %3</translation>
     <message>
         <location filename="../src/librssguard/services/feedly/gui/feedlyaccountdetails.cpp" line="35"/>
         <source>Your %1 build has official Feedly support. You do not have to use &quot;developer access token&quot;. You can therefore leave corresponding field empty.</source>
-        <translation>Tu compilación %1 tiene soporte oficial de Feedly. No tiene que usar &quot;token de acceso de desarrollador&quot;. Por lo tanto, puede dejar el campo correspondiente vacío.</translation>
+        <translation>Tu compilación %1 tiene soporte oficial de Feedly. No tiene que usar &quot;identificador de acceso de desarrollador&quot;. Por lo tanto, puede dejar el campo correspondiente vacío.</translation>
     </message>
     <message>
         <location filename="../src/librssguard/services/feedly/gui/feedlyaccountdetails.cpp" line="153"/>
@@ -876,12 +876,12 @@ Estado: %3</translation>
     <message>
         <location filename="../src/librssguard/services/feedly/gui/feedlyaccountdetails.cpp" line="178"/>
         <source>Access token is empty.</source>
-        <translation>El token de acceso está vacío.</translation>
+        <translation>El identificador de acceso está vacío.</translation>
     </message>
     <message>
         <location filename="../src/librssguard/services/feedly/gui/feedlyaccountdetails.cpp" line="181"/>
         <source>Access token is okay.</source>
-        <translation>El token de acceso es correcto.</translation>
+        <translation>El identificador de acceso es correcto.</translation>
     </message>
     <message>
         <location filename="../src/librssguard/services/feedly/gui/feedlyaccountdetails.cpp" line="152"/>
@@ -928,12 +928,12 @@ Estado: %3</translation>
     <message>
         <location filename="../src/librssguard/services/standard/standardfeedsimportexportmodel.cpp" line="269"/>
         <source>OPML document contains errors</source>
-        <translation type="unfinished"/>
+        <translation>Documento OPML contiene errores</translation>
     </message>
     <message>
         <location filename="../src/librssguard/services/standard/standardfeedsimportexportmodel.cpp" line="274"/>
         <source>this is likely not OPML document</source>
-        <translation type="unfinished"/>
+        <translation>ésto aparentemente no es un documento OPML</translation>
     </message>
     <message>
         <location filename="../src/librssguard/services/standard/standardfeedsimportexportmodel.cpp" line="351"/>
@@ -987,17 +987,17 @@ Estado: %3</translation>
     <message>
         <location filename="../src/librssguard/gui/toolbars/feedstoolbar.cpp" line="118"/>
         <source>Everywhere</source>
-        <translation type="unfinished"/>
+        <translation>En todos lados</translation>
     </message>
     <message>
         <location filename="../src/librssguard/gui/toolbars/feedstoolbar.cpp" line="119"/>
         <source>Titles only</source>
-        <translation type="unfinished"/>
+        <translation>Sólo títulos</translation>
     </message>
     <message>
         <location filename="../src/librssguard/gui/toolbars/feedstoolbar.cpp" line="123"/>
         <source>Search feeds</source>
-        <translation type="unfinished"/>
+        <translation>Buscar fuentes</translation>
     </message>
     <message>
         <location filename="../src/librssguard/gui/toolbars/feedstoolbar.cpp" line="131"/>
@@ -2339,12 +2339,12 @@ o debido a que esta función aún no está implementada.</translation>
     <message>
         <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="899"/>
         <source>Focus feeds search box</source>
-        <translation type="unfinished"/>
+        <translation>Enfocar cuadro de búsqueda de fuentes</translation>
     </message>
     <message>
         <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="904"/>
         <source>Focus articles search box</source>
-        <translation type="unfinished"/>
+        <translation>Enfocar cuadro de búsqueda de artículos</translation>
     </message>
     <message>
         <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="742"/>
@@ -2857,12 +2857,12 @@ La aplicación tiene que reiniciarla manualmente.</translation>
         <location filename="../src/librssguard/services/standard/gui/formstandardimportexport.cpp" line="135"/>
         <location filename="../src/librssguard/services/standard/gui/formstandardimportexport.cpp" line="136"/>
         <source>Some feeds were not loaded properly. Check log for more information.</source>
-        <translation type="unfinished"/>
+        <translation>Algunas fuentes no cargaron apropiadamente. Revise registro para más información.</translation>
     </message>
     <message>
         <location filename="../src/librssguard/services/standard/gui/formstandardimportexport.cpp" line="267"/>
         <source>cannot open file</source>
-        <translation type="unfinished"/>
+        <translation>imposible abrir archivo</translation>
     </message>
     <message>
         <location filename="../src/librssguard/services/standard/gui/formstandardimportexport.cpp" line="324"/>
@@ -3236,7 +3236,7 @@ Puede instalarlo ahora.</translation>
     <message>
         <location filename="../src/librssguard/services/gmail/gui/gmailaccountdetails.cpp" line="18"/>
         <source>There are some preconfigured OAuth tokens so you do not have to fill in your client ID/secret, but it is strongly recommended to obtain your own as it preconfigured tokens have limited global usage quota. If you wish to use preconfigured tokens, simply leave those fields empty and make sure to leave default value of redirect URL.</source>
-        <translation>Hay algunos tokens de OAuth preconfigurados, por lo que es innecesario que complete su ID/secreto de cliente, pero se recomienda encarecidamente obtener uno propio, ya que los tokens preconfigurados tienen una cuota de uso global limitada. Si desea utilizar tokens preconfigurados, simplemente deje esos campos vacíos y asegúrese de dejar el valor predeterminado de la URL de redirección.</translation>
+        <translation>Hay algunos identificadores de OAuth pre-configurados, por lo que es innecesario que complete su ID/secreto de cliente, pero se recomienda encarecidamente obtener uno propio, ya que los identificadores pre-configurados tienen una cuota de uso global limitada. Si desea utilizar identificadores pre-configurados, simplemente deje esos campos vacíos y asegúrese de dejar el valor predeterminado de la URL de re-dirección.</translation>
     </message>
     <message>
         <location filename="../src/librssguard/services/gmail/gui/gmailaccountdetails.cpp" line="25"/>
@@ -3381,7 +3381,7 @@ Puede instalarlo ahora.</translation>
         <source>Authentication status: %1
 Login tokens expiration: %2</source>
         <translation>Estado de autenticación: %1
-Expiración de testigos de ingreso: %2</translation>
+Expiración de identificadores de acceso: %2</translation>
     </message>
     <message>
         <location filename="../src/librssguard/services/gmail/gmailserviceroot.cpp" line="207"/>
@@ -3489,7 +3489,7 @@ Expiración de testigos de ingreso: %2</translation>
     <message>
         <location filename="../src/librssguard/services/greader/gui/greaderaccountdetails.cpp" line="62"/>
         <source>There are some preconfigured OAuth tokens so you do not have to fill in your client ID/secret, but it is strongly recommended to obtain your own as preconfigured tokens have limited global usage quota. If you wish to use preconfigured tokens, simply leave all above fields to their default values even if they are empty.</source>
-        <translation>Hay algunos tokens de OAuth preconfigurados, por lo que es innecesario que complete su ID/secreto de cliente, pero se recomienda encarecidamente que obtenga los suyos propios, ya que los tokens preconfigurados tienen una cuota de uso global limitada. Si desea utilizar tokens preconfigurados, simplemente deje todos los campos anteriores con sus valores predeterminados, incluso si están vacíos.</translation>
+        <translation>Hay algunos identificadores para OAuth pre-configurados, por lo que es innecesario que complete su ID/secreto de cliente, pero se recomienda encarecidamente que obtenga los suyos propios, ya que los identificadores pre-configurados tienen una cuota de uso global limitada. Si desea utilizar identificadores pre-configurados, simplemente deje todos los campos anteriores con sus valores predeterminados, incluso si están vacíos.</translation>
     </message>
     <message>
         <location filename="../src/librssguard/services/greader/gui/greaderaccountdetails.cpp" line="69"/>
@@ -4162,17 +4162,17 @@ Expiración de testigos de ingreso: %2</translation>
     <message>
         <location filename="../src/librssguard/gui/toolbars/messagestoolbar.cpp" line="154"/>
         <source>Everywhere</source>
-        <translation type="unfinished"/>
+        <translation>En todos lados</translation>
     </message>
     <message>
         <location filename="../src/librssguard/gui/toolbars/messagestoolbar.cpp" line="155"/>
         <source>Titles only</source>
-        <translation type="unfinished"/>
+        <translation>Sólo títulos</translation>
     </message>
     <message>
         <location filename="../src/librssguard/gui/toolbars/messagestoolbar.cpp" line="159"/>
         <source>Search articles</source>
-        <translation type="unfinished"/>
+        <translation>Buscar artículos</translation>
     </message>
     <message>
         <location filename="../src/librssguard/gui/toolbars/messagestoolbar.cpp" line="166"/>
@@ -4658,7 +4658,7 @@ Expiración de testigos de ingreso: %2</translation>
     <message>
         <location filename="../src/librssguard/network-web/oauth2service.cpp" line="223"/>
         <source>Refreshing login tokens for &apos;%1&apos;...</source>
-        <translation>Actualizando los identificadores de ingreso para &apos;%1&apos;...</translation>
+        <translation>Actualizando los identificadores de acceso para &apos;%1&apos;...</translation>
     </message>
     <message>
         <location filename="../src/librssguard/network-web/oauth2service.cpp" line="91"/>
@@ -5289,7 +5289,7 @@ Lista de lectores compatibles:</translation>
         <source>Authentication status: %1
 Login tokens expiration: %2</source>
         <translation>Estado de autenticación: %1
-Expiración de testigos de ingreso: %2</translation>
+Expiración de identificadores de acceso: %2</translation>
     </message>
     <message>
         <location filename="../src/librssguard/services/reddit/redditserviceroot.cpp" line="129"/>
@@ -5344,22 +5344,22 @@ Expiración de testigos de ingreso: %2</translation>
     <message>
         <location filename="../src/librssguard/gui/reusable/searchlineedit.cpp" line="30"/>
         <source>Case-sensitive</source>
-        <translation type="unfinished"/>
+        <translation>Sensible a mayúsculas y minúsculas</translation>
     </message>
     <message>
         <location filename="../src/librssguard/gui/reusable/searchlineedit.cpp" line="101"/>
         <source>Fixed text</source>
-        <translation type="unfinished"/>
+        <translation>Texto fijo</translation>
     </message>
     <message>
         <location filename="../src/librssguard/gui/reusable/searchlineedit.cpp" line="104"/>
         <source>Wildcard</source>
-        <translation type="unfinished"/>
+        <translation>Comodín</translation>
     </message>
     <message>
         <location filename="../src/librssguard/gui/reusable/searchlineedit.cpp" line="107"/>
         <source>Regular expression</source>
-        <translation type="unfinished"/>
+        <translation>Expresión regular</translation>
     </message>
 </context>
 <context>

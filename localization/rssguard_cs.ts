@@ -27,7 +27,7 @@
     <message>
         <location filename="../src/librssguard/network-web/adblock/adblockdialog.cpp" line="64"/>
         <source>There is some error in AdBlock component and it cannot be enabled. Check error message below (or application debug log) for more information.</source>
-        <translation type="unfinished"/>
+        <translation>V AdBlocku je nějaká chyba, a tak nemůže být aktivován. Mrkněte níže na detail chyby nebo prozkoumejte aplikační log.</translation>
     </message>
     <message>
         <location filename="../src/librssguard/network-web/adblock/adblockdialog.cpp" line="98"/>
@@ -116,7 +116,7 @@ Chyba: %1</translation>
     <message>
         <location filename="../src/librssguard/network-web/adblock/adblockmanager.cpp" line="198"/>
         <source>Failed to setup filters and start server: %1.</source>
-        <translation type="unfinished"/>
+        <translation>Nepodařilo se nastavit filtry a spustit server: %1.</translation>
     </message>
     <message>
         <location filename="../src/librssguard/network-web/adblock/adblockmanager.cpp" line="375"/>
@@ -200,7 +200,7 @@ na tuto bublinu.</translation>
     <message>
         <location filename="../src/librssguard/miscellaneous/application.cpp" line="970"/>
         <source>AdBlock is not configured properly. Go to &quot;Settings&quot; -&gt; &quot;Node.js&quot; and check if your Node.js is properly configured.</source>
-        <translation type="unfinished"/>
+        <translation>AdBlock není korektně nakonfigurován. Běžte do &quot;Nastavení&quot; -&gt; &quot;Node.js&quot; a zkontrolujte nastavení.</translation>
     </message>
     <message>
         <location filename="../src/librssguard/miscellaneous/application.cpp" line="1019"/>
@@ -228,12 +228,12 @@ na tuto bublinu.</translation>
     <message>
         <location filename="../src/librssguard/services/abstract/gui/authenticationdetails.ui" line="23"/>
         <source>Credentials</source>
-        <translation type="unfinished"/>
+        <translation>Přihlašovací údaje</translation>
     </message>
     <message>
         <location filename="../src/librssguard/services/abstract/gui/authenticationdetails.ui" line="64"/>
         <source>Authentication type</source>
-        <translation type="unfinished"/>
+        <translation>Způsob autentizace</translation>
     </message>
     <message>
         <location filename="../src/librssguard/services/abstract/gui/authenticationdetails.ui" line="35"/>
@@ -261,7 +261,7 @@ na tuto bublinu.</translation>
     <message>
         <location filename="../src/librssguard/services/abstract/gui/authenticationdetails.cpp" line="15"/>
         <source>No authentication</source>
-        <translation type="unfinished"/>
+        <translation>Bez autentizace</translation>
     </message>
     <message>
         <location filename="../src/librssguard/services/abstract/gui/authenticationdetails.cpp" line="17"/>
@@ -276,17 +276,17 @@ na tuto bublinu.</translation>
     <message>
         <location filename="../src/librssguard/services/abstract/gui/authenticationdetails.cpp" line="51"/>
         <source>Username/token is ok or it is not needed.</source>
-        <translation type="unfinished"/>
+        <translation>Přihlašovací údaje jsou v pořádku nebo nejsou potřeba.</translation>
     </message>
     <message>
         <location filename="../src/librssguard/services/abstract/gui/authenticationdetails.cpp" line="52"/>
         <source>Username/token is empty.</source>
-        <translation type="unfinished"/>
+        <translation>Uživatelské jméno (token) je prázdný.</translation>
     </message>
     <message>
         <location filename="../src/librssguard/services/abstract/gui/authenticationdetails.cpp" line="74"/>
         <source>Access token</source>
-        <translation type="unfinished"/>
+        <translation>Přístupový token</translation>
     </message>
     <message>
         <location filename="../src/librssguard/services/abstract/gui/authenticationdetails.cpp" line="61"/>
@@ -582,7 +582,7 @@ Klikněte sem pro otevření nadřazeného adresáře.</translation>
     <message>
         <location filename="../src/librssguard/services/gmail/gui/emailpreviewer.ui" line="20"/>
         <source>From</source>
-        <translation type="unfinished"/>
+        <translation>Od</translation>
     </message>
     <message>
         <location filename="../src/librssguard/services/gmail/gui/emailpreviewer.ui" line="52"/>
@@ -659,7 +659,7 @@ Klikněte sem pro otevření nadřazeného adresáře.</translation>
     <message>
         <location filename="../src/librssguard/services/abstract/feed.cpp" line="242"/>
         <source>uses global settings, but global auto-fetching of articles is disabled</source>
-        <translation type="unfinished"/>
+        <translation>používá globální nastavení, ale globální stahování zpráv je zakázáno</translation>
     </message>
     <message>
         <location filename="../src/librssguard/services/abstract/feed.cpp" line="264"/>
@@ -928,12 +928,12 @@ Stav: %3</translation>
     <message>
         <location filename="../src/librssguard/services/standard/standardfeedsimportexportmodel.cpp" line="269"/>
         <source>OPML document contains errors</source>
-        <translation type="unfinished"/>
+        <translation>soubor OPML obsahuje chyby</translation>
     </message>
     <message>
         <location filename="../src/librssguard/services/standard/standardfeedsimportexportmodel.cpp" line="274"/>
         <source>this is likely not OPML document</source>
-        <translation type="unfinished"/>
+        <translation>toto asi není OPML soubor</translation>
     </message>
     <message>
         <location filename="../src/librssguard/services/standard/standardfeedsimportexportmodel.cpp" line="351"/>
@@ -987,17 +987,17 @@ Stav: %3</translation>
     <message>
         <location filename="../src/librssguard/gui/toolbars/feedstoolbar.cpp" line="118"/>
         <source>Everywhere</source>
-        <translation type="unfinished"/>
+        <translation>Všude</translation>
     </message>
     <message>
         <location filename="../src/librssguard/gui/toolbars/feedstoolbar.cpp" line="119"/>
         <source>Titles only</source>
-        <translation type="unfinished"/>
+        <translation>Pouze v nadpisech</translation>
     </message>
     <message>
         <location filename="../src/librssguard/gui/toolbars/feedstoolbar.cpp" line="123"/>
         <source>Search feeds</source>
-        <translation type="unfinished"/>
+        <translation>Prohledávat kanály</translation>
     </message>
     <message>
         <location filename="../src/librssguard/gui/toolbars/feedstoolbar.cpp" line="131"/>
@@ -1422,7 +1422,7 @@ or this functionality is not implemented yet.</source>
     <message>
         <location filename="../src/librssguard/services/abstract/gui/formcategorydetails.cpp" line="157"/>
         <source>Images (%1)</source>
-        <translation type="unfinished"/>
+        <translation>Obrázky (%1)</translation>
     </message>
     <message>
         <location filename="../src/librssguard/services/abstract/gui/formcategorydetails.cpp" line="163"/>
@@ -1737,7 +1737,7 @@ or this functionality is not implemented yet.</source>
     <message>
         <location filename="../src/librssguard/services/abstract/gui/formfeeddetails.ui" line="79"/>
         <source>Ignore notifications for this feed</source>
-        <translation type="unfinished"/>
+        <translation>Nepoužívat notifikace pro tento kanál</translation>
     </message>
 </context>
 <context>
@@ -1745,7 +1745,7 @@ or this functionality is not implemented yet.</source>
     <message>
         <location filename="../src/librssguard/gui/dialogs/formlog.cpp" line="16"/>
         <source>Application log</source>
-        <translation type="unfinished"/>
+        <translation>Aplikační log</translation>
     </message>
 </context>
 <context>
@@ -2334,17 +2334,17 @@ or this functionality is not implemented yet.</source>
     <message>
         <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="894"/>
         <source>Display application &amp;log</source>
-        <translation type="unfinished"/>
+        <translation>Zobrazit aplikační &amp;log</translation>
     </message>
     <message>
         <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="899"/>
         <source>Focus feeds search box</source>
-        <translation type="unfinished"/>
+        <translation>Přepnout na hledací box kanálů</translation>
     </message>
     <message>
         <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="904"/>
         <source>Focus articles search box</source>
-        <translation type="unfinished"/>
+        <translation>Přepnout na hledací box zpráv</translation>
     </message>
     <message>
         <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="742"/>
@@ -2554,7 +2554,7 @@ or this functionality is not implemented yet.</source>
     <message>
         <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.ui" line="152"/>
         <source>Pre-made filters</source>
-        <translation type="unfinished"/>
+        <translation>Předchystané filtry</translation>
     </message>
     <message>
         <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.ui" line="174"/>
@@ -2811,12 +2811,12 @@ Musíte restartovat manuálně.</translation>
     <message>
         <location filename="../src/librssguard/services/standard/gui/formstandardimportexport.cpp" line="158"/>
         <source>Command is ok.</source>
-        <translation type="unfinished"/>
+        <translation>Příkaz je v pořádku.</translation>
     </message>
     <message>
         <location filename="../src/librssguard/services/standard/gui/formstandardimportexport.cpp" line="161"/>
         <source>Command is empty.</source>
-        <translation type="unfinished"/>
+        <translation>Příkaz je prázdný.</translation>
     </message>
     <message>
         <location filename="../src/librssguard/services/standard/gui/formstandardimportexport.cpp" line="181"/>
@@ -2852,18 +2852,18 @@ Musíte restartovat manuálně.</translation>
     <message>
         <location filename="../src/librssguard/services/standard/gui/formstandardimportexport.cpp" line="34"/>
         <source>Here you can enter script executaion line, including interpreter.</source>
-        <translation type="unfinished"/>
+        <translation>Sem můžete zadat volání skriptu.</translation>
     </message>
     <message>
         <location filename="../src/librssguard/services/standard/gui/formstandardimportexport.cpp" line="135"/>
         <location filename="../src/librssguard/services/standard/gui/formstandardimportexport.cpp" line="136"/>
         <source>Some feeds were not loaded properly. Check log for more information.</source>
-        <translation type="unfinished"/>
+        <translation>Některé kanály nebyly načteny. Zkontrolujte aplikační log.</translation>
     </message>
     <message>
         <location filename="../src/librssguard/services/standard/gui/formstandardimportexport.cpp" line="267"/>
         <source>cannot open file</source>
-        <translation type="unfinished"/>
+        <translation>soubor nelze otevřít</translation>
     </message>
     <message>
         <location filename="../src/librssguard/services/standard/gui/formstandardimportexport.cpp" line="324"/>
@@ -2886,7 +2886,7 @@ Musíte restartovat manuálně.</translation>
         <location filename="../src/librssguard/services/standard/gui/formstandardimportexport.cpp" line="170"/>
         <location filename="../src/librssguard/services/standard/gui/formstandardimportexport.cpp" line="215"/>
         <source>OPML 2.0 files (*.opml *.xml)</source>
-        <translation type="unfinished"/>
+        <translation>Soubory OPML 2.0 (*.opml *.xml)</translation>
     </message>
     <message>
         <location filename="../src/librssguard/services/standard/gui/formstandardimportexport.cpp" line="329"/>
@@ -2917,12 +2917,12 @@ Musíte restartovat manuálně.</translation>
     <message>
         <location filename="../src/librssguard/services/standard/gui/formstandardimportexport.ui" line="55"/>
         <source>Fetch online metadata</source>
-        <translation type="unfinished"/>
+        <translation>Získat online metadata</translation>
     </message>
     <message>
         <location filename="../src/librssguard/services/standard/gui/formstandardimportexport.ui" line="64"/>
         <source>Optional post-processing script</source>
-        <translation type="unfinished"/>
+        <translation>Volitelný post-procesní skript</translation>
     </message>
     <message>
         <location filename="../src/librssguard/services/standard/gui/formstandardimportexport.ui" line="95"/>
@@ -2937,7 +2937,7 @@ Musíte restartovat manuálně.</translation>
     <message>
         <location filename="../src/librssguard/services/standard/gui/formstandardimportexport.ui" line="123"/>
         <source>Export icons</source>
-        <translation type="unfinished"/>
+        <translation>Exportovat ikony</translation>
     </message>
     <message>
         <location filename="../src/librssguard/services/standard/gui/formstandardimportexport.ui" line="189"/>
@@ -4013,7 +4013,7 @@ Tokeny vyprší: %2</translation>
     <message>
         <location filename="../src/librssguard/core/messagesmodel.cpp" line="250"/>
         <source>Assigned labels</source>
-        <translation type="unfinished"/>
+        <translation>Přiřazené štítky</translation>
     </message>
     <message>
         <location filename="../src/librssguard/core/messagesmodel.cpp" line="252"/>
@@ -4083,7 +4083,7 @@ Tokeny vyprší: %2</translation>
     <message>
         <location filename="../src/librssguard/core/messagesmodel.cpp" line="257"/>
         <source>Custom ID of the article.</source>
-        <translation type="unfinished"/>
+        <translation>Zvláštní ID zprávy.</translation>
     </message>
     <message>
         <location filename="../src/librssguard/core/messagesmodel.cpp" line="258"/>
@@ -4093,7 +4093,7 @@ Tokeny vyprší: %2</translation>
     <message>
         <location filename="../src/librssguard/core/messagesmodel.cpp" line="258"/>
         <source>Name of feed of the article.</source>
-        <translation type="unfinished"/>
+        <translation>Jméno kanálu zprávy.</translation>
     </message>
     <message>
         <location filename="../src/librssguard/core/messagesmodel.cpp" line="259"/>
@@ -4103,7 +4103,7 @@ Tokeny vyprší: %2</translation>
     <message>
         <location filename="../src/librssguard/core/messagesmodel.cpp" line="259"/>
         <source>Labels assigned to the article.</source>
-        <translation type="unfinished"/>
+        <translation>Přiřazené štítky.</translation>
     </message>
     <message numerus="yes">
         <location filename="../src/librssguard/core/messagesmodel.cpp" line="302"/>
@@ -4161,17 +4161,17 @@ Tokeny vyprší: %2</translation>
     <message>
         <location filename="../src/librssguard/gui/toolbars/messagestoolbar.cpp" line="154"/>
         <source>Everywhere</source>
-        <translation type="unfinished"/>
+        <translation>Všude</translation>
     </message>
     <message>
         <location filename="../src/librssguard/gui/toolbars/messagestoolbar.cpp" line="155"/>
         <source>Titles only</source>
-        <translation type="unfinished"/>
+        <translation>Pouze v nadpisech</translation>
     </message>
     <message>
         <location filename="../src/librssguard/gui/toolbars/messagestoolbar.cpp" line="159"/>
         <source>Search articles</source>
-        <translation type="unfinished"/>
+        <translation>Prohledávat zprávy</translation>
     </message>
     <message>
         <location filename="../src/librssguard/gui/toolbars/messagestoolbar.cpp" line="166"/>
@@ -4196,7 +4196,7 @@ Tokeny vyprší: %2</translation>
     <message>
         <location filename="../src/librssguard/gui/toolbars/messagestoolbar.cpp" line="201"/>
         <source>Menu for filtering articles</source>
-        <translation type="unfinished"/>
+        <translation>Menu pro filtrování zpráv</translation>
     </message>
     <message>
         <location filename="../src/librssguard/gui/toolbars/messagestoolbar.cpp" line="204"/>
@@ -4246,12 +4246,12 @@ Tokeny vyprší: %2</translation>
     <message>
         <location filename="../src/librssguard/gui/toolbars/messagestoolbar.cpp" line="249"/>
         <source>Show articles with attachments</source>
-        <translation type="unfinished"/>
+        <translation>Zobrazit zprávy s přílohami</translation>
     </message>
     <message>
         <location filename="../src/librssguard/gui/toolbars/messagestoolbar.cpp" line="254"/>
         <source>Show articles with some score</source>
-        <translation type="unfinished"/>
+        <translation>Zobrazit oskórované zprávy</translation>
     </message>
     <message>
         <location filename="../src/librssguard/gui/toolbars/messagestoolbar.cpp" line="259"/>
@@ -4267,7 +4267,7 @@ Tokeny vyprší: %2</translation>
     <message>
         <location filename="../src/librssguard/gui/toolbars/messagestoolbar.cpp" line="279"/>
         <source>Article list filter</source>
-        <translation type="unfinished"/>
+        <translation>Filtr seznamu zpráv</translation>
     </message>
 </context>
 <context>
@@ -4388,7 +4388,7 @@ Tokeny vyprší: %2</translation>
         <location filename="../src/librssguard/network-web/networkfactory.cpp" line="156"/>
         <source>unknown error (%1)</source>
         <extracomment>Network status.</extracomment>
-        <translation type="unfinished"/>
+        <translation>neznámá chyba (%1)</translation>
     </message>
     <message>
         <location filename="../src/librssguard/network-web/networkfactory.cpp" line="140"/>
@@ -4835,7 +4835,7 @@ Tokeny vyprší: %2</translation>
     <message>
         <location filename="../src/librssguard/services/owncloud/owncloudserviceroot.cpp" line="129"/>
         <source>cannot get list of feeds, network error &apos;%1&apos;</source>
-        <translation type="unfinished"/>
+        <translation>nelze získat seznam kanálu, síťová chyba &apos;%1&apos;</translation>
     </message>
 </context>
 <context>
@@ -5029,12 +5029,12 @@ Podporované čtečky:</translation>
     <message>
         <location filename="../src/librssguard/miscellaneous/skinfactory.cpp" line="520"/>
         <source>items with new articles</source>
-        <translation type="unfinished"/>
+        <translation>položky s novými zprávami</translation>
     </message>
     <message>
         <location filename="../src/librssguard/miscellaneous/skinfactory.cpp" line="523"/>
         <source>items with new articles (highlighted)</source>
-        <translation type="unfinished"/>
+        <translation>položky s novými zprávami (vybráno)</translation>
     </message>
     <message>
         <location filename="../src/librssguard/miscellaneous/skinfactory.cpp" line="526"/>
@@ -5345,22 +5345,22 @@ Tokeny vyprší: %2</translation>
     <message>
         <location filename="../src/librssguard/gui/reusable/searchlineedit.cpp" line="30"/>
         <source>Case-sensitive</source>
-        <translation type="unfinished"/>
+        <translation>Rozlišovat VELKÁ/malá písmena</translation>
     </message>
     <message>
         <location filename="../src/librssguard/gui/reusable/searchlineedit.cpp" line="101"/>
         <source>Fixed text</source>
-        <translation type="unfinished"/>
+        <translation>Text</translation>
     </message>
     <message>
         <location filename="../src/librssguard/gui/reusable/searchlineedit.cpp" line="104"/>
         <source>Wildcard</source>
-        <translation type="unfinished"/>
+        <translation>Zástupné znaky</translation>
     </message>
     <message>
         <location filename="../src/librssguard/gui/reusable/searchlineedit.cpp" line="107"/>
         <source>Regular expression</source>
-        <translation type="unfinished"/>
+        <translation>Regulární výraz</translation>
     </message>
 </context>
 <context>
@@ -5397,17 +5397,18 @@ Tokeny vyprší: %2</translation>
         <location filename="../src/librssguard/services/abstract/serviceroot.cpp" line="298"/>
         <source>Number of feeds: %1
 Number of categories: %2</source>
-        <translation type="unfinished"/>
+        <translation>Počet kanálů: %1
+Počet kategorií: %2</translation>
     </message>
     <message>
         <location filename="../src/librssguard/services/abstract/serviceroot.cpp" line="537"/>
         <source>Error when fetching list of feeds</source>
-        <translation type="unfinished"/>
+        <translation>Chyba při načítání seznamu kanálů</translation>
     </message>
     <message>
         <location filename="../src/librssguard/services/abstract/serviceroot.cpp" line="538"/>
         <source>Feeds &amp; categories for account &apos;%1&apos; were not fetched, error: %2</source>
-        <translation type="unfinished"/>
+        <translation>Kanály &amp; kategorie pro účet &apos;%1&apos; nebyly staženy, chyba: %2</translation>
     </message>
 </context>
 <context>
@@ -5467,12 +5468,12 @@ File filter for external e-mail selection dialog.</extracomment>
     <message>
         <location filename="../src/librssguard/gui/settings/settingsbrowsermail.ui" line="24"/>
         <source>Do not accept any incoming cookies</source>
-        <translation type="unfinished"/>
+        <translation>Ignorovat veškeré cookies</translation>
     </message>
     <message>
         <location filename="../src/librssguard/gui/settings/settingsbrowsermail.ui" line="31"/>
         <source>Enable HTTP/2</source>
-        <translation type="unfinished"/>
+        <translation>Povolit HTTP/2</translation>
     </message>
     <message>
         <location filename="../src/librssguard/gui/settings/settingsbrowsermail.ui" line="39"/>
@@ -5482,12 +5483,12 @@ File filter for external e-mail selection dialog.</extracomment>
     <message>
         <location filename="../src/librssguard/gui/settings/settingsbrowsermail.ui" line="45"/>
         <source>Custom &quot;QTWEBENGINE_CHROMIUM_FLAGS&quot; flags</source>
-        <translation type="unfinished"/>
+        <translation>Vlastní &quot;QTWEBENGINE_CHROMIUM_FLAGS&quot; přepínače</translation>
     </message>
     <message>
         <location filename="../src/librssguard/gui/settings/settingsbrowsermail.ui" line="55"/>
         <source>Disable cache</source>
-        <translation type="unfinished"/>
+        <translation>Zakázat cache</translation>
     </message>
     <message>
         <location filename="../src/librssguard/gui/settings/settingsbrowsermail.ui" line="63"/>
@@ -5632,7 +5633,7 @@ File filter for external e-mail selection dialog.</extracomment>
     <message>
         <location filename="../src/librssguard/gui/settings/settingsbrowsermail.h" line="46"/>
         <source>Network &amp; web &amp; tools</source>
-        <translation type="unfinished"/>
+        <translation>Síť &amp; web &amp; nástroje</translation>
     </message>
 </context>
 <context>
@@ -5856,7 +5857,7 @@ Autoři této aplikace nenesou žádnou odpovědnost za ztrátu Vašich dat.</tr
     <message>
         <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.cpp" line="54"/>
         <source> = unchanged size</source>
-        <translation type="unfinished"/>
+        <translation> = původní velikost</translation>
     </message>
     <message>
         <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="21"/>
@@ -5961,7 +5962,7 @@ Autoři této aplikace nenesou žádnou odpovědnost za ztrátu Vašich dat.</tr
     <message>
         <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="297"/>
         <source>Internal article viewer</source>
-        <translation type="unfinished"/>
+        <translation>Zabudovaný prohlížeč zpráv</translation>
     </message>
     <message>
         <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="303"/>
@@ -5986,7 +5987,7 @@ Autoři této aplikace nenesou žádnou odpovědnost za ztrátu Vašich dat.</tr
     <message>
         <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="312"/>
         <source>Limit height of pictures</source>
-        <translation type="unfinished"/>
+        <translation>Omezit výšku obrázků</translation>
     </message>
     <message>
         <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="397"/>
@@ -6357,7 +6358,7 @@ Also, relaunch &quot;Settings&quot; dialog after you install Node.js.</source>
     <message>
         <location filename="../src/librssguard/gui/settings/settingsnodejs.cpp" line="135"/>
         <source>You cannot choose file, you have to choose FOLDER.</source>
-        <translation type="unfinished"/>
+        <translation>Nelze vybrat soubor, je třeba vybrat složku.</translation>
     </message>
     <message>
         <location filename="../src/librssguard/gui/settings/settingsnodejs.cpp" line="139"/>
@@ -6593,7 +6594,7 @@ Jsou obsaženy zabudované zvuky, napište &quot;:&quot; a seznam se zobrazí.</
     <message>
         <location filename="../src/librssguard/services/standard/standardfeed.cpp" line="478"/>
         <source>Cannot move feed, detailed information was logged via debug log.</source>
-        <translation type="unfinished"/>
+        <translation>Kanál nelze přesunout, více informací najdete v aplikačním logu.</translation>
     </message>
     <message>
         <location filename="../src/librssguard/services/standard/standardfeed.cpp" line="64"/>
@@ -6740,7 +6741,7 @@ Typ: %3</translation>
     <message>
         <location filename="../src/librssguard/services/standard/gui/standardfeeddetails.cpp" line="289"/>
         <source>Images (%1)</source>
-        <translation type="unfinished"/>
+        <translation>Obrázky (%1)</translation>
     </message>
     <message>
         <location filename="../src/librssguard/services/standard/gui/standardfeeddetails.cpp" line="295"/>
@@ -6792,12 +6793,12 @@ Typ: %3</translation>
         <location filename="../src/librssguard/services/standard/gui/standardfeeddetails.cpp" line="252"/>
         <location filename="../src/librssguard/services/standard/gui/standardfeeddetails.cpp" line="263"/>
         <source>The source is ok.</source>
-        <translation type="unfinished"/>
+        <translation>Zdroj je ok.</translation>
     </message>
     <message>
         <location filename="../src/librssguard/services/standard/gui/standardfeeddetails.cpp" line="259"/>
         <source>The source is empty.</source>
-        <translation type="unfinished"/>
+        <translation>Zdroj je prázdný.</translation>
     </message>
     <message>
         <location filename="../src/librssguard/services/standard/gui/standardfeeddetails.cpp" line="256"/>
@@ -6807,24 +6808,24 @@ Typ: %3</translation>
     <message>
         <location filename="../src/librssguard/services/standard/gui/standardfeeddetails.cpp" line="269"/>
         <source>Command is ok.</source>
-        <translation type="unfinished"/>
+        <translation>Příkaz je v pořádku.</translation>
     </message>
     <message>
         <location filename="../src/librssguard/services/standard/gui/standardfeeddetails.cpp" line="272"/>
         <source>Command is empty.</source>
-        <translation type="unfinished"/>
+        <translation>Příkaz je prázdný.</translation>
     </message>
     <message>
         <location filename="../src/librssguard/services/standard/gui/standardfeeddetails.cpp" line="153"/>
         <location filename="../src/librssguard/services/standard/gui/standardfeeddetails.cpp" line="203"/>
         <source>Script failed: %1</source>
-        <translation type="unfinished"/>
+        <translation>Skript selhal: %1</translation>
     </message>
     <message>
         <location filename="../src/librssguard/services/standard/gui/standardfeeddetails.cpp" line="158"/>
         <location filename="../src/librssguard/services/standard/gui/standardfeeddetails.cpp" line="208"/>
         <source>Network error: %1</source>
-        <translation type="unfinished"/>
+        <translation>Síťová chyba: %1</translation>
     </message>
     <message>
         <location filename="../src/librssguard/services/standard/gui/standardfeeddetails.cpp" line="163"/>
@@ -6835,14 +6836,16 @@ Typ: %3</translation>
     <message>
         <location filename="../src/librssguard/services/standard/gui/standardfeeddetails.cpp" line="117"/>
         <source>What is post-processing script?</source>
-        <translation type="unfinished"/>
+        <translation>Co je to post-procesní skript?</translation>
     </message>
     <message>
         <location filename="../src/librssguard/services/standard/gui/standardfeeddetails.cpp" line="118"/>
         <source>You can use URL as a source of your feed or you can produce your feed with custom script.
 
 Also, you can post-process generated feed data with yet another script if you wish. These are advanced features and make sure to read the documentation before your use them.</source>
-        <translation type="unfinished"/>
+        <translation>Jako zdroj kanálu můžete použít URL nebo speciální vlastní skript.
+
+Stažená data kanálů můžete také dodatečně zpracovat post-procesním skriptem. Toto je ovšem pokročilá funkce a ujistěte se, že před jejím použitím načtete dokumentaci.</translation>
     </message>
     <message>
         <location filename="../src/librssguard/services/standard/gui/standardfeeddetails.ui" line="14"/>
@@ -6887,12 +6890,12 @@ Also, you can post-process generated feed data with yet another script if you wi
     <message>
         <location filename="../src/librssguard/services/standard/gui/standardfeeddetails.ui" line="100"/>
         <source>Source</source>
-        <translation type="unfinished"/>
+        <translation>Zdroj</translation>
     </message>
     <message>
         <location filename="../src/librssguard/services/standard/gui/standardfeeddetails.ui" line="129"/>
         <source>Post-processing script</source>
-        <translation type="unfinished"/>
+        <translation>Post-procesní skript</translation>
     </message>
     <message>
         <location filename="../src/librssguard/services/standard/gui/standardfeeddetails.ui" line="158"/>
@@ -6980,7 +6983,7 @@ Also, you can post-process generated feed data with yet another script if you wi
     <message>
         <location filename="../src/librssguard/services/standard/standardserviceroot.cpp" line="377"/>
         <source>Some feeds/categories were not imported due to error, check debug log for more details.</source>
-        <translation type="unfinished"/>
+        <translation>Některé kanály/kategorie nebyly importovány kvůli chybě. Mrkněte do aplikačního logu.</translation>
     </message>
 </context>
 <context>
@@ -7016,7 +7019,7 @@ Also, you can post-process generated feed data with yet another script if you wi
     <message>
         <location filename="../src/librssguard/miscellaneous/systemfactory.cpp" line="270"/>
         <source>See new version info</source>
-        <translation type="unfinished"/>
+        <translation>Omrknout info o nové verzi</translation>
     </message>
 </context>
 <context>
@@ -7077,7 +7080,7 @@ Nepřečtené zprávy: %2</translation>
     <message>
         <location filename="../src/librssguard/gui/tabwidget.cpp" line="141"/>
         <source>Browse your feeds and articles</source>
-        <translation type="unfinished"/>
+        <translation>Procházet kanály a zprávy</translation>
     </message>
 </context>
 <context>
@@ -7090,7 +7093,7 @@ Nepřečtené zprávy: %2</translation>
     <message>
         <location filename="../src/librssguard/gui/webviewers/qtextbrowser/textbrowserviewer.cpp" line="339"/>
         <source>Enable external resources</source>
-        <translation type="unfinished"/>
+        <translation>Povolit externí zdroje</translation>
     </message>
     <message>
         <location filename="../src/librssguard/gui/webviewers/qtextbrowser/textbrowserviewer.cpp" line="342"/>
@@ -7430,7 +7433,7 @@ Nepřečtené zprávy: %2</translation>
     <message>
         <location filename="../src/librssguard/services/tt-rss/ttrssfeed.cpp" line="48"/>
         <source>Share to published</source>
-        <translation type="unfinished"/>
+        <translation>Sdílet mezi publikované</translation>
     </message>
 </context>
 <context>
@@ -7438,12 +7441,12 @@ Nepřečtené zprávy: %2</translation>
     <message>
         <location filename="../src/librssguard/services/tt-rss/gui/ttrssfeeddetails.cpp" line="11"/>
         <source>Full feed URL including scheme</source>
-        <translation type="unfinished"/>
+        <translation>Plné URL zadejte sem</translation>
     </message>
     <message>
         <location filename="../src/librssguard/services/tt-rss/gui/ttrssfeeddetails.cpp" line="12"/>
         <source>Provide URL for your feed.</source>
-        <translation type="unfinished"/>
+        <translation>Zvolte url Vašeho kanálu.</translation>
     </message>
     <message>
         <location filename="../src/librssguard/services/tt-rss/gui/ttrssfeeddetails.cpp" line="21"/>
@@ -7507,7 +7510,7 @@ Poslední čas přihlášení: %4</translation>
     <message>
         <location filename="../src/librssguard/services/tt-rss/ttrssserviceroot.cpp" line="410"/>
         <source>cannot get list of feeds, network error &apos;%1&apos;</source>
-        <translation type="unfinished"/>
+        <translation>nelze získat seznam kanálu, síťová chyba &apos;%1&apos;</translation>
     </message>
 </context>
 <context>
@@ -7515,12 +7518,12 @@ Poslední čas přihlášení: %4</translation>
     <message>
         <location filename="../src/librssguard/services/abstract/unreadnode.cpp" line="13"/>
         <source>Unread articles</source>
-        <translation type="unfinished"/>
+        <translation>Nepřečtené zprávy</translation>
     </message>
     <message>
         <location filename="../src/librssguard/services/abstract/unreadnode.cpp" line="14"/>
         <source>You can find all unread articles here.</source>
-        <translation type="unfinished"/>
+        <translation>Zde můžete najít všechny nepřečtené zprávy.</translation>
     </message>
 </context>
 <context>
@@ -7533,7 +7536,7 @@ Poslední čas přihlášení: %4</translation>
     <message>
         <location filename="../src/librssguard/gui/webbrowser.cpp" line="35"/>
         <source>View website in reader mode</source>
-        <translation type="unfinished"/>
+        <translation>Zobrazit stránku ve čtenářském režimu</translation>
     </message>
     <message>
         <location filename="../src/librssguard/gui/webbrowser.cpp" line="236"/>
@@ -7544,12 +7547,12 @@ Poslední čas přihlášení: %4</translation>
     <message>
         <location filename="../src/librssguard/gui/webbrowser.cpp" line="270"/>
         <source>Reader mode failed for this website</source>
-        <translation type="unfinished"/>
+        <translation>Načtení čtenářského režimu selhalo</translation>
     </message>
     <message>
         <location filename="../src/librssguard/gui/webbrowser.cpp" line="271"/>
         <source>Reader mode cannot be applied to current page.</source>
-        <translation type="unfinished"/>
+        <translation>Tato stránka nepodporuje čtenářský režim.</translation>
     </message>
     <message>
         <location filename="../src/librssguard/gui/webbrowser.cpp" line="282"/>
@@ -7574,7 +7577,7 @@ Poslední čas přihlášení: %4</translation>
     <message>
         <location filename="../src/librssguard/gui/webbrowser.cpp" line="32"/>
         <source>Open this website in system web browser</source>
-        <translation type="unfinished"/>
+        <translation>Otevřít stránku v systémovém webovém prohlížeči</translation>
     </message>
 </context>
 <context>
@@ -7710,12 +7713,12 @@ Poslední čas přihlášení: %4</translation>
     <message>
         <location filename="../src/librssguard/network-web/webfactory.cpp" line="120"/>
         <source>Navigate to website manually</source>
-        <translation type="unfinished"/>
+        <translation>Přejít na web ručně</translation>
     </message>
     <message>
         <location filename="../src/librssguard/network-web/webfactory.cpp" line="121"/>
         <source>%1 was unable to launch your web browser with the given URL, you need to open the below website URL in your web browser manually.</source>
-        <translation type="unfinished"/>
+        <translation>%1 nedokázal vaši stránku otevřít v systémovém webovém prohlížeči. Je třeba ji otevřít ručně.</translation>
     </message>
     <message>
         <location filename="../src/librssguard/network-web/webfactory.cpp" line="354"/>
