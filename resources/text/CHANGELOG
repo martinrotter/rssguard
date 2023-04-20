@@ -1,3 +1,23 @@
+4.3.4
+-----
+
+Added:
+* Persistent article/item viewer. By default it is on. If no article is selected but feed/category is, then miscellaneous information about selected feed list item is displayed. (#424)
+* macOS build is now built with macOS 11.
+* Linux build is now built with Ubuntu 20.04 which is now oldest supported Linux LTS distribution.
+* Reworked logic of determining which article states (read/unread/starred/unstarred) have changed when synchronizing states to remote feed servers. This concerns all synchronized plugins like Gmail, Greader, Feedly, etc. and show in theory lead to much better performance when you mark many articles as read or unread.
+
+Fixed:
+* Deadlock when fetching feeds in some corner situations is now resolved. (#910)
+* URLs of articles are now sanitized from leading and trailing spaces. (#914)
+* ATOM feeds were mistakenly changed to RSS feeds during OPML import. (#913)
+* Now compiles with GCC 13. (#911)
+* Freezing of GUI when fetching feeds should now be gone even on newer Qt library.
+* Correct account-wide proxy is used when importing feeds.
+* Article duplicity checks are now much more useful and actually working in article filters.
+* Translations synced.
+* All buttons from article toolbar now correctly follow tool button style.
+
 4.3.3
 -----
 
