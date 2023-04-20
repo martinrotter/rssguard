@@ -547,6 +547,10 @@ bool GmailNetworkFactory::fillFullMessage(Message& msg, const QJsonObject& json,
 
   msg.m_author = sanitizeEmailAuthor(headers[QSL("From")]);
   msg.m_title = headers[QSL("Subject")];
+
+  // NOTE: Provide link to web-based GUI for the message.
+  msg.m_url = QSL("https://mail.google.com/mail/u/0/#all/%1").arg(msg.m_customId);
+
   msg.m_createdFromFeed = true;
   msg.m_created = TextFactory::parseDateTime(headers[QSL("Date")]);
 

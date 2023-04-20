@@ -17,7 +17,6 @@
 Enclosure::Enclosure(QString url, QString mime) : m_url(std::move(url)), m_mimeType(std::move(mime)) {}
 
 QList<Enclosure> Enclosures::decodeEnclosuresFromString(const QString& enclosures_data) {
-  QList<Enclosure> enclosures;
   auto enc = enclosures_data.split(ENCLOSURES_OUTER_SEPARATOR,
 #if QT_VERSION >= 0x050F00 // Qt >= 5.15.0
                                    Qt::SplitBehaviorFlags::SkipEmptyParts);
@@ -25,17 +24,20 @@ QList<Enclosure> Enclosures::decodeEnclosuresFromString(const QString& enclosure
                                    QString::SplitBehavior::SkipEmptyParts);
 #endif
 
+  QList<Enclosure> enclosures;
+  enclosures.reserve(enc.size());
+
   for (const QString& single_enclosure : qAsConst(enc)) {
     Enclosure enclosure;
 
     if (single_enclosure.contains(ECNLOSURES_INNER_SEPARATOR)) {
       QStringList mime_url = single_enclosure.split(ECNLOSURES_INNER_SEPARATOR);
 
-      enclosure.m_mimeType = QByteArray::fromBase64(mime_url.at(0).toLocal8Bit());
-      enclosure.m_url = QByteArray::fromBase64(mime_url.at(1).toLocal8Bit());
+      enclosure.m_mimeType = QString::fromUtf8(QByteArray::fromBase64(mime_url.at(0).toLocal8Bit()));
+      enclosure.m_url = QString::fromUtf8(QByteArray::fromBase64(mime_url.at(1).toLocal8Bit()));
     }
     else {
-      enclosure.m_url = QByteArray::fromBase64(single_enclosure.toLocal8Bit());
+      enclosure.m_url = QString::fromUtf8(QByteArray::fromBase64(single_enclosure.toLocal8Bit()));
     }
 
     enclosures.append(enclosure);
@@ -49,11 +51,11 @@ QString Enclosures::encodeEnclosuresToString(const QList<Enclosure>& enclosures)
 
   for (const Enclosure& enclosure : enclosures) {
     if (enclosure.m_mimeType.isEmpty()) {
-      enclosures_str.append(enclosure.m_url.toLocal8Bit().toBase64());
+      enclosures_str.append(enclosure.m_url.toUtf8().toBase64());
     }
     else {
-      enclosures_str.append(QString(enclosure.m_mimeType.toLocal8Bit().toBase64()) + ECNLOSURES_INNER_SEPARATOR +
-                            enclosure.m_url.toLocal8Bit().toBase64());
+      enclosures_str.append(QString(enclosure.m_mimeType.toUtf8().toBase64()) + ECNLOSURES_INNER_SEPARATOR +
+                            enclosure.m_url.toUtf8().toBase64());
     }
   }
 

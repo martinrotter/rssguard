@@ -88,6 +88,8 @@ QVariant TextBrowserViewer::loadOneResource(int type, const QUrl& name) {
 
 PreparedHtml TextBrowserViewer::prepareHtmlForMessage(const QList<Message>& messages, RootItem* selected_item) const {
   PreparedHtml html;
+  bool acc_displays_enclosures =
+    selected_item == nullptr || selected_item->getParentServiceRoot()->displaysEnclosures();
 
   for (const Message& message : messages) {
     bool is_plain = !TextFactory::couldBeHtml(message.m_contents);
@@ -104,14 +106,17 @@ PreparedHtml TextBrowserViewer::prepareHtmlForMessage(const QList<Message>& mess
     html.m_html += QSL("<div>");
 
     // Add links to enclosures.
-    for (const Enclosure& enc : message.m_enclosures) {
-      html.m_html += QSL("[%2] <a href=\"%1\">%1</a><br/>").arg(enc.m_url, enc.m_mimeType);
+    if (acc_displays_enclosures) {
+      for (const Enclosure& enc : message.m_enclosures) {
+        html.m_html += QSL("[%2] <a href=\"%1\">%1</a><br/>").arg(enc.m_url, enc.m_mimeType);
+      }
     }
 
     // Display enclosures which are pictures if user has it enabled.
     auto first_enc_break_added = false;
 
-    if (qApp->settings()->value(GROUP(Messages), SETTING(Messages::DisplayEnclosuresInMessage)).toBool()) {
+    if (acc_displays_enclosures &&
+        qApp->settings()->value(GROUP(Messages), SETTING(Messages::DisplayEnclosuresInMessage)).toBool()) {
       for (const Enclosure& enc : message.m_enclosures) {
         if (enc.m_mimeType.startsWith(QSL("image/"))) {
           if (!first_enc_break_added) {

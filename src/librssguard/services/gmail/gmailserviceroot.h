@@ -11,7 +11,7 @@
 class GmailNetworkFactory;
 
 class GmailServiceRoot : public ServiceRoot, public CacheForServiceRoot {
-  Q_OBJECT
+    Q_OBJECT
 
   public:
     explicit GmailServiceRoot(RootItem* parent = nullptr);
@@ -31,6 +31,7 @@ class GmailServiceRoot : public ServiceRoot, public CacheForServiceRoot {
     virtual QString code() const;
     virtual QString additionalTooltip() const;
     virtual void saveAllCachedData(bool ignore_errors);
+    virtual bool displaysEnclosures() const;
     virtual QVariantHash customDatabaseData() const;
     virtual void setCustomDatabaseData(const QVariantHash& data);
     virtual QList<Message> obtainNewMessages(Feed* feed,

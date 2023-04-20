@@ -323,6 +323,10 @@ bool ServiceRoot::wantsBaggedIdsOfExistingMessages() const {
   return false;
 }
 
+bool ServiceRoot::displaysEnclosures() const {
+  return true;
+}
+
 void ServiceRoot::aboutToBeginFeedFetching(const QList<Feed*>& feeds,
                                            const QHash<QString, QHash<BagOfMessages, QStringList>>& stated_messages,
                                            const QHash<QString, QStringList>& tagged_messages) {

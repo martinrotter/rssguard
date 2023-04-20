@@ -230,18 +230,22 @@ PreparedHtml SkinFactory::generateHtmlOfArticles(const QList<Message>& messages,
     QString enclosure_images;
     bool is_plain = !TextFactory::couldBeHtml(message.m_contents);
 
-    for (const Enclosure& enclosure : message.m_enclosures) {
-      QString enc_url = QUrl::fromPercentEncoding(enclosure.m_url.toUtf8());
+    if (root == nullptr || root->getParentServiceRoot()->displaysEnclosures()) {
+      for (const Enclosure& enclosure : message.m_enclosures) {
+        QString enc_url = QUrl::fromPercentEncoding(enclosure.m_url.toUtf8());
 
-      enclosures += skin.m_enclosureMarkup.arg(enc_url, QSL("&#129527;"), enclosure.m_mimeType);
+        enclosures += skin.m_enclosureMarkup.arg(enc_url, QSL("&#129527;"), enclosure.m_mimeType);
 
-      if (enclosure.m_mimeType.startsWith(QSL("image/")) &&
-          qApp->settings()->value(GROUP(Messages), SETTING(Messages::DisplayEnclosuresInMessage)).toBool()) {
-        // Add thumbnail image.
-        enclosure_images +=
-          skin.m_enclosureImageMarkup.arg(enclosure.m_url,
-                                          enclosure.m_mimeType,
-                                          forced_img_size <= 0 ? QString() : QString::number(forced_img_size));
+        if (qApp->settings()->value(GROUP(Messages), SETTING(Messages::DisplayEnclosuresInMessage)).toBool()) {
+          if (enclosure.m_mimeType.startsWith(QSL("image/")) &&
+              qApp->settings()->value(GROUP(Messages), SETTING(Messages::DisplayEnclosuresInMessage)).toBool()) {
+            // Add thumbnail image.
+            enclosure_images +=
+              skin.m_enclosureImageMarkup.arg(enclosure.m_url,
+                                              enclosure.m_mimeType,
+                                              forced_img_size <= 0 ? QString() : QString::number(forced_img_size));
+          }
+        }
       }
     }
 

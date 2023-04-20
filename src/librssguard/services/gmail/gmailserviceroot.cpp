@@ -245,3 +245,7 @@ void GmailServiceRoot::saveAllCachedData(bool ignore_errors) {
     }
   }
 }
+
+bool GmailServiceRoot::displaysEnclosures() const {
+  return false;
+}

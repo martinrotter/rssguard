@@ -14,7 +14,7 @@
    <item>
     <widget class="QTabWidget" name="m_tabFeedsMessages">
      <property name="currentIndex">
-      <number>0</number>
+      <number>2</number>
      </property>
      <widget class="QWidget" name="m_tabFeeds">
       <attribute name="title">
@@ -300,7 +300,7 @@
           <item row="0" column="0" colspan="2">
            <widget class="QCheckBox" name="m_cbShowEnclosuresDirectly">
             <property name="text">
-             <string>Display attached pictures directly in article</string>
+             <string>Display attachments directly in article</string>
             </property>
            </widget>
           </item>

@@ -6,6 +6,7 @@ Added:
 * macOS build is now built with macOS 11.
 * Linux build is now built with Ubuntu 20.04 which is now oldest supported Linux LTS distribution.
 * Reworked logic of determining which article states (read/unread/starred/unstarred) have changed when synchronizing states to remote feed servers. This concerns all synchronized plugins like Gmail, Greader, Feedly, etc. and show in theory lead to much better performance when you mark many articles as read or unread.
+* Couple of extra QoL enhancements for Gmail like proper encoding of attachment filenames, turned off displaying of "enclosures" as these are displayed in other way, etc.
 
 Fixed:
 * Deadlock when fetching feeds in some corner situations is now resolved. (#910)

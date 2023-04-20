@@ -67,6 +67,7 @@ class ServiceRoot : public RootItem {
     virtual QVariantHash customDatabaseData() const;
     virtual void setCustomDatabaseData(const QVariantHash& data);
     virtual bool wantsBaggedIdsOfExistingMessages() const;
+    virtual bool displaysEnclosures() const;
     virtual void aboutToBeginFeedFetching(const QList<Feed*>& feeds,
                                           const QHash<QString, QHash<ServiceRoot::BagOfMessages, QStringList>>&
                                             stated_messages,
