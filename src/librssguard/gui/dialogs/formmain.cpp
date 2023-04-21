@@ -236,6 +236,8 @@ QList<QAction*> FormMain::allActions() const {
   actions << m_ui->m_actionTabsCloseCurrent;
   actions << m_ui->m_actionTabsCloseAll;
   actions << m_ui->m_actionTabsCloseAllExceptCurrent;
+  actions << m_ui->m_actionBrowserScrollUp;
+  actions << m_ui->m_actionBrowserScrollDown;
   actions << m_actionToolbarMainMenu;
 
   return actions;
@@ -793,6 +795,9 @@ void FormMain::createConnections() {
   connect(qApp->feedReader(), &FeedReader::feedUpdatesStarted, this, &FormMain::onFeedUpdatesStarted);
   connect(qApp->feedReader(), &FeedReader::feedUpdatesProgress, this, &FormMain::onFeedUpdatesProgress);
   connect(qApp->feedReader(), &FeedReader::feedUpdatesFinished, this, &FormMain::onFeedUpdatesFinished);
+
+  connect(m_ui->m_actionBrowserScrollUp, &QAction::triggered, tabWidget(), &TabWidget::scrollUpCurrentBrowser);
+  connect(m_ui->m_actionBrowserScrollDown, &QAction::triggered, tabWidget(), &TabWidget::scrollDownCurrentBrowser);
 
   // Toolbar forwardings.
   connect(m_ui->m_actionFocusSearchFeeds,

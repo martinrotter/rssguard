@@ -17,23 +17,25 @@ class RootItem;
 class FeedMessageViewer;
 
 class TabWidget : public QTabWidget {
-  Q_OBJECT
+    Q_OBJECT
 
   public:
-
     // Constructors and destructors.
     explicit TabWidget(QWidget* parent = nullptr);
     virtual ~TabWidget();
 
     // Manimulators for tabs.
-    int addTab(TabContent* widget, const QString&,
+    int addTab(TabContent* widget, const QString&, TabBar::TabType type = TabBar::TabType::NonClosable);
+    int addTab(TabContent* widget,
+               const QIcon& icon,
+               const QString& label,
                TabBar::TabType type = TabBar::TabType::NonClosable);
-    int addTab(TabContent* widget, const QIcon& icon,
-               const QString& label, TabBar::TabType type = TabBar::TabType::NonClosable);
-    int insertTab(int index, QWidget* widget, const QString& label,
-                  TabBar::TabType type = TabBar::TabType::Closable);
-    int insertTab(int index, QWidget* widget, const QIcon& icon,
-                  const QString& label, TabBar::TabType type = TabBar::TabType::NonClosable);
+    int insertTab(int index, QWidget* widget, const QString& label, TabBar::TabType type = TabBar::TabType::Closable);
+    int insertTab(int index,
+                  QWidget* widget,
+                  const QIcon& icon,
+                  const QString& label,
+                  TabBar::TabType type = TabBar::TabType::NonClosable);
     void removeTab(int index, bool clear_from_memory);
 
     // Returns tab bar.
@@ -55,6 +57,8 @@ class TabWidget : public QTabWidget {
     FeedMessageViewer* feedMessageViewer() const;
 
   public slots:
+    void scrollUpCurrentBrowser();
+    void scrollDownCurrentBrowser();
 
     // Called when number of tab pages changes.
     void checkTabBarVisibility();

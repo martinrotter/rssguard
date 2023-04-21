@@ -113,6 +113,14 @@ void WebBrowser::setVerticalScrollBarPosition(double pos) {
   m_webView->setVerticalScrollBarPosition(pos);
 }
 
+void WebBrowser::scrollUp() {
+  setVerticalScrollBarPosition(verticalScrollBarPosition() - WEB_BROWSER_SCROLL_STEP);
+}
+
+void WebBrowser::scrollDown() {
+  setVerticalScrollBarPosition(verticalScrollBarPosition() + WEB_BROWSER_SCROLL_STEP);
+}
+
 void WebBrowser::reloadFontSettings() {
   QFont fon;
 

@@ -44,6 +44,9 @@ class WebBrowser : public TabContent {
     double verticalScrollBarPosition() const;
     void setVerticalScrollBarPosition(double pos);
 
+    void scrollUp();
+    void scrollDown();
+
   public slots:
     void clear(bool also_hide);
     void loadUrl(const QString& url);

@@ -152,6 +152,14 @@ void TabWidget::setupIcons() {
   }
 }
 
+void TabWidget::scrollUpCurrentBrowser() {
+  currentWidget()->webBrowser()->scrollUp();
+}
+
+void TabWidget::scrollDownCurrentBrowser() {
+  currentWidget()->webBrowser()->scrollDown();
+}
+
 bool TabWidget::closeTab(int index) {
   if (tabBar()->tabType(index) == TabBar::TabType::Closable) {
     removeTab(index, true);

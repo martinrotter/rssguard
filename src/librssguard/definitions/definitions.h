@@ -95,6 +95,7 @@
 #define COOKIE_URL_IDENTIFIER ":COOKIE:"
 #define DEFAULT_NOTIFICATION_VOLUME 50
 #define MAX_THREADPOOL_THREADS 32
+#define WEB_BROWSER_SCROLL_STEP 50.0
 
 #define GOOGLE_SEARCH_URL "https://www.google.com/search?q=%1&ie=utf-8&oe=utf-8"
 #define GOOGLE_SUGGEST_URL "http://suggestqueries.google.com/complete/search?output=toolbar&hl=en&q=%1"

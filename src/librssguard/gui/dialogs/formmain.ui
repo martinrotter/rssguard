@@ -201,6 +201,9 @@
     <addaction name="separator"/>
     <addaction name="m_actionTabsNext"/>
     <addaction name="m_actionTabsPrevious"/>
+    <addaction name="separator"/>
+    <addaction name="m_actionBrowserScrollUp"/>
+    <addaction name="m_actionBrowserScrollDown"/>
    </widget>
    <addaction name="m_menuFile"/>
    <addaction name="m_menuView"/>
@@ -902,6 +905,16 @@
   <action name="m_actionFocusSearchArticles">
    <property name="text">
     <string>Focus articles search box</string>
+   </property>
+  </action>
+  <action name="m_actionBrowserScrollUp">
+   <property name="text">
+    <string>Scroll &amp;up browser</string>
+   </property>
+  </action>
+  <action name="m_actionBrowserScrollDown">
+   <property name="text">
+    <string>Scroll &amp;down browser</string>
    </property>
   </action>
  </widget>
