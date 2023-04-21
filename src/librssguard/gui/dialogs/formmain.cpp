@@ -634,6 +634,8 @@ void FormMain::setupIcons() {
   m_ui->m_actionTabsCloseAllExceptCurrent->setIcon(icon_theme_factory->fromTheme(QSL("window-close")));
   m_ui->m_actionTabsNext->setIcon(icon_theme_factory->fromTheme(QSL("go-next")));
   m_ui->m_actionTabsPrevious->setIcon(icon_theme_factory->fromTheme(QSL("go-previous")));
+  m_ui->m_actionBrowserScrollUp->setIcon(icon_theme_factory->fromTheme(QSL("arrow-up")));
+  m_ui->m_actionBrowserScrollDown->setIcon(icon_theme_factory->fromTheme(QSL("arrow-down")));
 
   // Setup icons on TabWidget too.
   m_ui->m_tabWidget->setupIcons();
