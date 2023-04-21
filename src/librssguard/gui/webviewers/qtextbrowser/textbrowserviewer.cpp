@@ -108,7 +108,7 @@ PreparedHtml TextBrowserViewer::prepareHtmlForMessage(const QList<Message>& mess
     // Add links to enclosures.
     if (acc_displays_enclosures) {
       for (const Enclosure& enc : message.m_enclosures) {
-        html.m_html += QSL("[%2] <a href=\"%1\">%1</a><br/>").arg(enc.m_url, enc.m_mimeType);
+        html.m_html += QSL("[<a href=\"%1\">%2</a>]").arg(enc.m_url, enc.m_mimeType);
       }
     }
 
