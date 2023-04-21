@@ -47,7 +47,15 @@ void WebEnginePage::hideUnwantedElements() {
 }
 
 bool WebEnginePage::acceptNavigationRequest(const QUrl& url, NavigationType type, bool is_main_frame) {
-  const RootItem* root = view()->root();
+  if (type == NavigationType::NavigationTypeLinkClicked) {
+    bool open_externally_now =
+      qApp->settings()->value(GROUP(Browser), SETTING(Browser::OpenLinksInExternalBrowserRightAway)).toBool();
+
+    if (open_externally_now) {
+      qApp->web()->openUrlInExternalBrowser(url.toString());
+      return false;
+    }
+  }
 
   if (is_main_frame) {
     auto blocked = qApp->web()->adBlock()->block(AdblockRequestInfo(url));
