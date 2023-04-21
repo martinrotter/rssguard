@@ -72,6 +72,8 @@ class RSSGUARD_DLLSPEC FeedsView : public BaseTreeView {
     void moveSelectedItemTop();
     void moveSelectedItemBottom();
     void moveSelectedItemDown();
+    void rearrangeCategoriesOfSelectedItem();
+    void rearrangeFeedsOfSelectedItem();
 
     // Selects next/previous item (feed/category) in the list.
     void selectNextItem();

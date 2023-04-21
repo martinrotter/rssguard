@@ -112,6 +112,8 @@ class RSSGUARD_DLLSPEC RootItem : public QObject {
     RootItem* child(int row);
     int childCount() const;
     void appendChild(RootItem* child);
+
+    QList<RootItem*> childItems(RootItem::Kind kind) const;
     QList<RootItem*> childItems() const;
     QList<RootItem*>& childItems();
 

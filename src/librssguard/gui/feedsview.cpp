@@ -315,6 +315,16 @@ void FeedsView::moveSelectedItemDown() {
   m_proxyModel->invalidate();
 }
 
+void FeedsView::rearrangeCategoriesOfSelectedItem() {
+  m_sourceModel->sortDirectDescendants(selectedItem(), RootItem::Kind::Category);
+  m_proxyModel->invalidate();
+}
+
+void FeedsView::rearrangeFeedsOfSelectedItem() {
+  m_sourceModel->sortDirectDescendants(selectedItem(), RootItem::Kind::Feed);
+  m_proxyModel->invalidate();
+}
+
 void FeedsView::markSelectedItemReadStatus(RootItem::ReadStatus read) {
   m_sourceModel->markItemRead(selectedItem(), read);
 }
@@ -469,6 +479,8 @@ QMenu* FeedsView::initializeContextMenuService(RootItem* clicked_item) {
                                     qApp->mainForm()->m_ui->m_actionViewSelectedItemsNewspaperMode,
                                     qApp->mainForm()->m_ui->m_actionExpandCollapseItem,
                                     qApp->mainForm()->m_ui->m_actionExpandCollapseItemRecursively,
+                                    qApp->mainForm()->m_ui->m_actionRearrangeCategories,
+                                    qApp->mainForm()->m_ui->m_actionRearrangeFeeds,
                                     qApp->mainForm()->m_ui->m_actionMarkSelectedItemsAsRead,
                                     qApp->mainForm()->m_ui->m_actionMarkSelectedItemsAsUnread,
                                     qApp->mainForm()->m_ui->m_actionDeleteSelectedItem});
@@ -691,6 +703,8 @@ QMenu* FeedsView::initializeContextMenuCategories(RootItem* clicked_item) {
                                        qApp->mainForm()->m_ui->m_actionViewSelectedItemsNewspaperMode,
                                        qApp->mainForm()->m_ui->m_actionExpandCollapseItem,
                                        qApp->mainForm()->m_ui->m_actionExpandCollapseItemRecursively,
+                                       qApp->mainForm()->m_ui->m_actionRearrangeCategories,
+                                       qApp->mainForm()->m_ui->m_actionRearrangeFeeds,
                                        qApp->mainForm()->m_ui->m_actionMarkSelectedItemsAsRead,
                                        qApp->mainForm()->m_ui->m_actionMarkSelectedItemsAsUnread,
                                        qApp->mainForm()->m_ui->m_actionDeleteSelectedItem});

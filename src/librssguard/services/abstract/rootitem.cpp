@@ -639,3 +639,13 @@ RootItem::Kind operator|(RootItem::Kind a, RootItem::Kind b) {
 RootItem::Kind operator&(RootItem::Kind a, RootItem::Kind b) {
   return static_cast<RootItem::Kind>(static_cast<int>(a) & static_cast<int>(b));
 }
+
+QList<RootItem*> RootItem::childItems(Kind kind) const {
+  auto linq = boolinq::from(m_childItems)
+                .where([=](RootItem* it) {
+                  return it->kind() == kind;
+                })
+                .toStdList();
+
+  return FROM_STD_LIST(QList<RootItem*>, linq);
+}

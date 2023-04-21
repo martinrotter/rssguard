@@ -480,6 +480,8 @@ void FormMain::updateFeedButtonsAvailability() {
   const bool service_selected = anything_selected && selected_item->kind() == RootItem::Kind::ServiceRoot;
   const bool manual_feed_sort = !m_ui->m_actionSortFeedsAlphabetically->isChecked();
 
+  m_ui->m_actionRearrangeFeeds->setEnabled(manual_feed_sort && (service_selected || category_selected));
+  m_ui->m_actionRearrangeCategories->setEnabled(manual_feed_sort && (service_selected || category_selected));
   m_ui->m_actionStopRunningItemsUpdate->setEnabled(is_update_running);
   m_ui->m_actionBackupDatabaseSettings->setEnabled(!critical_action_running);
   m_ui->m_actionCleanupDatabase->setEnabled(!critical_action_running);
@@ -892,6 +894,15 @@ void FormMain::createConnections() {
           &QAction::triggered,
           tabWidget()->feedMessageViewer()->feedsView(),
           &FeedsView::updateSelectedItems);
+  connect(m_ui->m_actionRearrangeCategories,
+          &QAction::triggered,
+          tabWidget()->feedMessageViewer()->feedsView(),
+          &FeedsView::rearrangeCategoriesOfSelectedItem);
+  connect(m_ui->m_actionRearrangeFeeds,
+          &QAction::triggered,
+          tabWidget()->feedMessageViewer()->feedsView(),
+          &FeedsView::rearrangeFeedsOfSelectedItem);
+
   connect(m_ui->m_actionUpdateAllItems, &QAction::triggered, qApp->feedReader(), &FeedReader::updateAllFeeds);
   connect(m_ui->m_actionUpdateSelectedItemsWithCustomTimers,
           &QAction::triggered,

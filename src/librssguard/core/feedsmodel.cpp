@@ -455,6 +455,18 @@ void FeedsModel::changeSortOrder(RootItem* item, bool move_top, bool move_bottom
   DatabaseQueries::moveItem(item, move_top, move_bottom, new_sort_order, db);
 }
 
+void FeedsModel::sortDirectDescendants(RootItem* item, RootItem::Kind kind_to_sort) {
+  auto childs = item->childItems(kind_to_sort);
+
+  std::sort(childs.begin(), childs.end(), [](RootItem* lhs, RootItem* rhs) {
+    return lhs->title().compare(rhs->title(), Qt::CaseSensitivity::CaseInsensitive) < 0;
+  });
+
+  for (RootItem* it : childs) {
+    changeSortOrder(it, false, true);
+  }
+}
+
 void FeedsModel::loadActivatedServiceAccounts() {
   auto serv = qApp->feedReader()->feedServices();
 

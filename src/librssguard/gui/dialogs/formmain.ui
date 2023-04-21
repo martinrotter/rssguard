@@ -128,6 +128,9 @@
     <addaction name="m_actionDeleteSelectedItem"/>
     <addaction name="separator"/>
     <addaction name="m_actionSortFeedsAlphabetically"/>
+    <addaction name="m_actionRearrangeCategories"/>
+    <addaction name="m_actionRearrangeFeeds"/>
+    <addaction name="separator"/>
     <addaction name="m_actionShowOnlyUnreadItems"/>
     <addaction name="m_actionAutoExpandItemsWhenSelected"/>
     <addaction name="m_actionShowTreeBranches"/>
@@ -916,6 +919,16 @@
   <action name="m_actionBrowserScrollDown">
    <property name="text">
     <string>Scroll &amp;down browser</string>
+   </property>
+  </action>
+  <action name="m_actionRearrangeCategories">
+   <property name="text">
+    <string>Rearrange &amp;subcategories alphabetically</string>
+   </property>
+  </action>
+  <action name="m_actionRearrangeFeeds">
+   <property name="text">
+    <string>Rearrange &amp;feeds alphabetically</string>
    </property>
   </action>
  </widget>
