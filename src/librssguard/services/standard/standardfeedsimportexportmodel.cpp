@@ -191,6 +191,14 @@ bool FeedsImportExportModel::produceFeed(const FeedLookup& feed_lookup) {
 
       new_feed->setSource(feed_lookup.url);
       new_feed->setPostProcessScript(feed_lookup.post_process_script);
+
+      if (feed_lookup.do_not_fetch_titles) {
+        QString old_title = feed_lookup.custom_data[QSL("title")].toString();
+
+        if (!old_title.simplified().isEmpty()) {
+          new_feed->setTitle(old_title);
+        }
+      }
     }
     else {
       new_feed = new StandardFeed();
@@ -258,6 +266,7 @@ bool FeedsImportExportModel::produceFeed(const FeedLookup& feed_lookup) {
 
 void FeedsImportExportModel::importAsOPML20(const QByteArray& data,
                                             bool fetch_metadata_online,
+                                            bool do_not_fetch_titles,
                                             const QString& post_process_script) {
   emit parsingStarted();
   emit layoutAboutToBeChanged();
@@ -327,6 +336,7 @@ void FeedsImportExportModel::importAsOPML20(const QByteArray& data,
 
             f.custom_proxy = custom_proxy;
             f.fetch_metadata_online = fetch_metadata_online;
+            f.do_not_fetch_titles = do_not_fetch_titles;
             f.custom_data = feed_data;
             f.parent = active_model_item;
             f.post_process_script = post_process_script;

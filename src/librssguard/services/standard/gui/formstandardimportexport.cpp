@@ -235,12 +235,16 @@ void FormStandardImportExport::selectImportFile() {
       m_conversionType = ConversionType::TxtUrlPerLine;
     }
 
+    m_ui->m_cbDoNotFetchTitles->setEnabled(m_conversionType == ConversionType::OPML20);
     m_ui->m_lblSelectFile->setStatus(WidgetWithStatus::StatusType::Ok,
                                      QDir::toNativeSeparators(selected_file),
                                      tr("File is selected."));
 
     try {
-      parseImportFile(selected_file, m_ui->m_groupFetchMetadata->isChecked());
+      parseImportFile(selected_file,
+                      m_ui->m_groupFetchMetadata->isChecked(),
+                      m_ui->m_cbDoNotFetchTitles->isChecked(),
+                      m_ui->m_txtPostProcessScript->textEdit()->toPlainText());
     }
     catch (const ApplicationException& ex) {
       m_ui->m_btnSelectFile->setEnabled(true);
@@ -254,7 +258,10 @@ void FormStandardImportExport::selectImportFile() {
   }
 }
 
-void FormStandardImportExport::parseImportFile(const QString& file_name, bool fetch_metadata_online) {
+void FormStandardImportExport::parseImportFile(const QString& file_name,
+                                               bool fetch_metadata_online,
+                                               bool do_not_fetch_titles,
+                                               const QString& post_process_script) {
   QByteArray input_data;
   QFile input_file(file_name);
 
@@ -269,9 +276,7 @@ void FormStandardImportExport::parseImportFile(const QString& file_name, bool fe
 
   switch (m_conversionType) {
     case ConversionType::OPML20:
-      m_model->importAsOPML20(input_data,
-                              fetch_metadata_online,
-                              m_ui->m_txtPostProcessScript->textEdit()->toPlainText());
+      m_model->importAsOPML20(input_data, fetch_metadata_online, do_not_fetch_titles, post_process_script);
       break;
 
     case ConversionType::TxtUrlPerLine:

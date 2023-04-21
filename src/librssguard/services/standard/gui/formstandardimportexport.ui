@@ -59,6 +59,13 @@
      </property>
      <layout class="QVBoxLayout" name="verticalLayout_2">
       <item>
+       <widget class="QCheckBox" name="m_cbDoNotFetchTitles">
+        <property name="text">
+         <string>Do not fetch titles</string>
+        </property>
+       </widget>
+      </item>
+      <item>
        <widget class="QLabel" name="label_4">
         <property name="text">
          <string>Optional post-processing script</string>
@@ -277,6 +284,7 @@
  <tabstops>
   <tabstop>m_btnSelectFile</tabstop>
   <tabstop>m_groupFetchMetadata</tabstop>
+  <tabstop>m_cbDoNotFetchTitles</tabstop>
   <tabstop>m_cmbRootNode</tabstop>
   <tabstop>m_cbExportIcons</tabstop>
   <tabstop>m_btnCheckAllItems</tabstop>

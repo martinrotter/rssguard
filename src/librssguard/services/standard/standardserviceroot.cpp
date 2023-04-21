@@ -75,7 +75,7 @@ void StandardServiceRoot::start(bool freshly_activated) {
       QString output_msg;
 
       try {
-        model.importAsOPML20(IOFactory::readFile(file_to_load), false);
+        model.importAsOPML20(IOFactory::readFile(file_to_load), false, false);
         model.checkAllItems();
 
         if (mergeImportExportModel(&model, this, output_msg)) {
