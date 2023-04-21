@@ -204,6 +204,7 @@
     <addaction name="separator"/>
     <addaction name="m_actionBrowserScrollUp"/>
     <addaction name="m_actionBrowserScrollDown"/>
+    <addaction name="separator"/>
    </widget>
    <addaction name="m_menuFile"/>
    <addaction name="m_menuView"/>
