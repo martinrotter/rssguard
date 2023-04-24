@@ -156,6 +156,11 @@ cite {
     font-weight: bold !important;
 }
 
+// override if width is defined in element's style attribute
+figure {
+    max-width: 100%;
+}
+
 figure > img {
     display: block;
 }
