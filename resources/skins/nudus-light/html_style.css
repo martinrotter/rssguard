@@ -140,6 +140,10 @@ cite {
   font-weight: bold !important;
 }
 
+figure {
+  max-width: 100%;
+}
+
 figure > img {
   display: block;
 }
