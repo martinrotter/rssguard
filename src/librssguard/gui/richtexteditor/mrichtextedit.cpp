@@ -67,7 +67,7 @@ MRichTextEdit::MRichTextEdit(QWidget* parent) : QWidget(parent) {
                    << tr("Monospace");
   m_ui.f_paragraph->addItems(m_paragraphItems);
 
-  connect(m_ui.f_paragraph, &QComboBox::activated, this, &MRichTextEdit::textStyle);
+  connect(m_ui.f_paragraph, QOverload<int>::of(&QComboBox::activated), this, &MRichTextEdit::textStyle);
 
   // undo & redo
 
