@@ -31,7 +31,7 @@ if [ $is_linux = true ]; then
   QTARCH="gcc_64"
   USE_QT6="OFF"
 
-  sudo add-apt-repository ppa:beineri/opt-qt-5.15.4-focal -y
+  sudo add-apt-repository ppa:beineri/opt-qt-5.15.2-focal -y
   sudo apt-get update
 
   sudo apt-get -qy install qt515tools qt515base qt515webengine qt515svg qt515multimedia qt515imageformats

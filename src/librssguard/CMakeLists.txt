@@ -174,6 +174,10 @@ set(SOURCES
   gui/tabwidget.cpp
   gui/tabwidget.h
   gui/webviewers/webviewer.h
+  gui/richtexteditor/mrichtextedit.cpp
+  gui/richtexteditor/mrichtextedit.h
+  gui/richtexteditor/mtextedit.cpp
+  gui/richtexteditor/mtextedit.h
   gui/toolbars/basetoolbar.cpp
   gui/toolbars/basetoolbar.h
   gui/toolbars/feedstoolbar.cpp
@@ -420,25 +424,6 @@ set(SOURCES
   network-web/adblock/adblockrequestinfo.h
 )
 
-# Add mimesis.
-list(APPEND SOURCES
-  3rd-party/mimesis/mimesis.cpp
-  3rd-party/mimesis/mimesis.hpp
-  3rd-party/mimesis/quoted-printable.cpp
-  3rd-party/mimesis/quoted-printable.hpp
-)
-
-# Add boolinq.
-list(APPEND SOURCES
-  3rd-party/boolinq/boolinq.h
-)
-
-# Add SimpleCrypt.
-list(APPEND SOURCES
-  3rd-party/sc/simplecrypt.cpp
-  3rd-party/sc/simplecrypt.h
-)
-
 set(UI_FILES
   gui/dialogs/formabout.ui
   gui/dialogs/formaddaccount.ui
@@ -455,6 +440,7 @@ set(UI_FILES
   gui/notifications/singlenotificationeditor.ui
   gui/reusable/networkproxydetails.ui
   gui/itemdetails.ui
+  gui/richtexteditor/mrichtextedit.ui
   gui/newspaperpreviewer.ui
   gui/reusable/searchtextwidget.ui
   gui/settings/settingsbrowsermail.ui
@@ -508,6 +494,25 @@ list(APPEND SOURCES
   # QTextBrowser.
   gui/webviewers/qtextbrowser/textbrowserviewer.h
   gui/webviewers/qtextbrowser/textbrowserviewer.cpp
+)
+
+# Add mimesis.
+list(APPEND SOURCES
+  3rd-party/mimesis/mimesis.cpp
+  3rd-party/mimesis/mimesis.hpp
+  3rd-party/mimesis/quoted-printable.cpp
+  3rd-party/mimesis/quoted-printable.hpp
+)
+
+# Add boolinq.
+list(APPEND SOURCES
+  3rd-party/boolinq/boolinq.h
+)
+
+# Add SimpleCrypt.
+list(APPEND SOURCES
+  3rd-party/sc/simplecrypt.cpp
+  3rd-party/sc/simplecrypt.h
 )
 
 # Deal with .ui files.
@@ -621,6 +626,7 @@ target_include_directories(rssguard
   PRIVATE
   ${CMAKE_CURRENT_SOURCE_DIR}/gui/notifications
   ${CMAKE_CURRENT_SOURCE_DIR}/gui/toolbars
+  ${CMAKE_CURRENT_SOURCE_DIR}/gui/richtexteditor
 )
 
 # Qt.

@@ -10,6 +10,11 @@
     "components": "Breeze"
   },
   {
+    "title": "GNU LGPL v2.1",
+    "file": "COPYING_GNU_LGPL_21",
+    "components": "MRichTextEditor"
+  },
+  {
     "title": "MIT License",
     "file": "COPYING_BOOLINQ",
     "components": "boolinq"

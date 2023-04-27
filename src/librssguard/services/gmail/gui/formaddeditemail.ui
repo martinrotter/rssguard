@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>423</width>
-    <height>310</height>
+    <height>398</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -39,14 +39,14 @@
     </layout>
    </item>
    <item row="2" column="0" colspan="2">
-    <widget class="QTextEdit" name="m_txtMessage">
+    <widget class="MRichTextEdit" name="m_txtMessage" native="true">
      <property name="sizePolicy">
       <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
        <horstretch>0</horstretch>
        <verstretch>1</verstretch>
       </sizepolicy>
      </property>
-     <property name="placeholderText">
+     <property name="placeholderText" stdset="0">
       <string>Contents of your e-mail message</string>
      </property>
     </widget>
@@ -85,6 +85,12 @@
    <class>PlainToolButton</class>
    <extends>QToolButton</extends>
    <header>plaintoolbutton.h</header>
+  </customwidget>
+  <customwidget>
+   <class>MRichTextEdit</class>
+   <extends>QWidget</extends>
+   <header>mrichtextedit.h</header>
+   <container>1</container>
   </customwidget>
  </customwidgets>
  <tabstops>

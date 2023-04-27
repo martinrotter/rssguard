@@ -62,13 +62,16 @@ void FormAddEditEmail::execForReply(Message* original_message) {
   auto from_header =
     m_root->network()->getMessageMetadata(original_message->m_customId, {QSL("FROM")}, m_root->networkProxy());
 
-  m_ui.m_txtMessage->setPlainText(QTextDocumentFragment::fromHtml(m_originalMessage->m_contents).toPlainText());
-  m_ui.m_txtMessage->moveCursor(QTextCursor::MoveOperation::Start);
-  m_ui.m_txtMessage->insertHtml(QSL("<p>"
-                                    "---------- Original message ----------"
-                                    "</p><br/>"));
+  // TODO: konverze html > plain
+  // QTextDocumentFragment::fromHtml(m_originalMessage->m_contents).toPlainText()
+  m_ui.m_txtMessage->setText(m_originalMessage->m_contents);
+  m_ui.m_txtMessage->editor()->moveCursor(QTextCursor::MoveOperation::Start);
+  m_ui.m_txtMessage->editor()->insertHtml(QSL("<p>"
+                                              "---------- Original message ----------"
+                                              "</p><br/>"));
+  m_ui.m_txtMessage->editor()->moveCursor(QTextCursor::MoveOperation::Start);
 
-  addRecipientRow(from_header["From"]);
+  addRecipientRow(from_header[QSL("From")]);
   exec();
 }
 
@@ -92,8 +95,8 @@ void FormAddEditEmail::execForForward(Message* original_message) {
         "</pre><br/>")
       .arg(m_originalMessage->m_author, m_originalMessage->m_created.toString(), m_originalMessage->m_title, to_header);
 
-  m_ui.m_txtMessage->setHtml(forward_header + m_originalMessage->m_contents);
-  m_ui.m_txtMessage->moveCursor(QTextCursor::MoveOperation::Start);
+  m_ui.m_txtMessage->setText(forward_header + m_originalMessage->m_contents);
+  m_ui.m_txtMessage->editor()->moveCursor(QTextCursor::MoveOperation::Start);
 
   addRecipientRow()->setFocus();
   exec();
