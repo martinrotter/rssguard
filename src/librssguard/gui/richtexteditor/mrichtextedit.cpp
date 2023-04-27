@@ -121,7 +121,7 @@ MRichTextEdit::MRichTextEdit(QWidget* parent) : QWidget(parent) {
   connect(m_ui.f_strikeout, &QAbstractButton::clicked, this, &MRichTextEdit::textStrikeout);
 
   QAction* removeFormat = new QAction(tr("Remove character formatting"), this);
-  removeFormat->setShortcut(QKeySequence("CTRL+M"));
+  removeFormat->setShortcut(QKeySequence(QSL("CTRL+M")));
   connect(removeFormat, &QAction::triggered, this, &MRichTextEdit::textRemoveFormat);
   m_ui.f_textedit->addAction(removeFormat);
 
@@ -130,7 +130,7 @@ MRichTextEdit::MRichTextEdit(QWidget* parent) : QWidget(parent) {
   m_ui.f_textedit->addAction(removeAllFormat);
 
   QAction* textsource = new QAction(tr("Edit document source"), this);
-  textsource->setShortcut(QKeySequence("CTRL+O"));
+  textsource->setShortcut(QKeySequence(QSL("CTRL+O")));
   connect(textsource, &QAction::triggered, this, &MRichTextEdit::textSource);
   m_ui.f_textedit->addAction(textsource);
 
