@@ -28,6 +28,8 @@
 #include "gui/richtexteditor/mrichtextedit.h"
 
 #include "definitions/definitions.h"
+#include "miscellaneous/application.h"
+#include "miscellaneous/iconfactory.h"
 
 #include <QApplication>
 #include <QBuffer>
@@ -49,6 +51,8 @@
 MRichTextEdit::MRichTextEdit(QWidget* parent) : QWidget(parent) {
   m_ui.setupUi(this);
   m_lastBlockList = nullptr;
+
+  setupIcons();
 
   connect(m_ui.f_textedit, &QTextEdit::currentCharFormatChanged, this, &MRichTextEdit::slotCurrentCharFormatChanged);
   connect(m_ui.f_textedit, &QTextEdit::cursorPositionChanged, this, &MRichTextEdit::slotCursorPositionChanged);
@@ -266,6 +270,29 @@ void MRichTextEdit::textBold() {
 
 void MRichTextEdit::focusInEvent(QFocusEvent*) {
   m_ui.f_textedit->setFocus(Qt::TabFocusReason);
+}
+
+void MRichTextEdit::setupIcons() {
+  auto* ic = qApp->icons();
+
+  m_ui.f_bgcolor->setIcon(ic->fromTheme(QSL("format-text-color")));
+  m_ui.f_bold->setIcon(ic->fromTheme(QSL("format-text-bold")));
+  m_ui.f_copy->setIcon(ic->fromTheme(QSL("edit-copy")));
+  m_ui.f_cut->setIcon(ic->fromTheme(QSL("edit-cut")));
+  m_ui.f_fgcolor->setIcon(ic->fromTheme(QSL("format-text-color")));
+  m_ui.f_image->setIcon(ic->fromTheme(QSL("image-x-generic")));
+  m_ui.f_indent_dec->setIcon(ic->fromTheme(QSL("format-indent-less")));
+  m_ui.f_indent_inc->setIcon(ic->fromTheme(QSL("format-indent-more")));
+  m_ui.f_italic->setIcon(ic->fromTheme(QSL("format-text-italic")));
+  m_ui.f_link->setIcon(ic->fromTheme(QSL("insert-link")));
+  m_ui.f_list_bullet->setIcon(ic->fromTheme(QSL("format-list-unordered")));
+  m_ui.f_list_ordered->setIcon(ic->fromTheme(QSL("format-list-ordered")));
+  m_ui.f_menu->setIcon(ic->fromTheme(QSL("go-home")));
+  m_ui.f_paste->setIcon(ic->fromTheme(QSL("edit-paste")));
+  m_ui.f_redo->setIcon(ic->fromTheme(QSL("edit-redo")));
+  m_ui.f_strikeout->setIcon(ic->fromTheme(QSL("format-text-strikethrough")));
+  m_ui.f_underline->setIcon(ic->fromTheme(QSL("format-text-underline")));
+  m_ui.f_undo->setIcon(ic->fromTheme(QSL("edit-undo")));
 }
 
 void MRichTextEdit::textUnderline() {

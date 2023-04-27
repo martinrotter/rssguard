@@ -26,15 +26,26 @@
     <file>./graphics/Breeze/actions/22/download.svg</file>
     <file>./graphics/Breeze/actions/22/edit-clear.svg</file>
     <file>./graphics/Breeze/actions/22/edit-copy.svg</file>
+    <file>./graphics/Breeze/actions/22/edit-cut.svg</file>
+    <file>./graphics/Breeze/actions/22/edit-paste.svg</file>
+    <file>./graphics/Breeze/actions/32/edit-redo.svg</file>
     <file>./graphics/Breeze/actions/32/edit-reset.svg</file>
     <file>./graphics/Breeze/actions/22/edit-select-all.svg</file>
     <file>./graphics/Breeze/actions/22/edit-select-none.svg</file>
+    <file>./graphics/Breeze/actions/32/edit-undo.svg</file>
     <file>./graphics/Breeze/emblems/22/emblem-favorite.svg</file>
     <file>./graphics/Breeze/emblems/22/emblem-shared.svg</file>
     <file>./graphics/Breeze/places/96/folder.svg</file>
+    <file>./graphics/Breeze/actions/22/format-indent-less.svg</file>
     <file>./graphics/Breeze/actions/22/format-indent-more.svg</file>
     <file>./graphics/Breeze/actions/22/format-justify-fill.svg</file>
+    <file>./graphics/Breeze/actions/22/format-list-ordered.svg</file>
+    <file>./graphics/Breeze/actions/22/format-list-unordered.svg</file>
     <file>./graphics/Breeze/actions/22/format-text-bold.svg</file>
+    <file>./graphics/Breeze/actions/22/format-text-color.svg</file>
+    <file>./graphics/Breeze/actions/22/format-text-italic.svg</file>
+    <file>./graphics/Breeze/actions/22/format-text-strikethrough.svg</file>
+    <file>./graphics/Breeze/actions/22/format-text-underline.svg</file>
     <file>./graphics/Breeze/actions/32/go-down.svg</file>
     <file>./graphics/Breeze/actions/64/go-home.svg</file>
     <file>./graphics/Breeze/actions/32/go-jump.svg</file>
@@ -46,6 +57,7 @@
     <file>./graphics/Breeze/actions/32/help-about.svg</file>
     <file>./graphics/Breeze/actions/22/help-contents.svg</file>
     <file>./graphics/Breeze/mimetypes/64/image-x-generic.svg</file>
+    <file>./graphics/Breeze/actions/22/insert-link.svg</file>
     <file>./graphics/Breeze/actions/22/insert-page-break.svg</file>
     <file>./graphics/Breeze/actions/22/list-add.svg</file>
     <file>./graphics/Breeze/actions/22/list-remove.svg</file>
@@ -103,15 +115,26 @@
     <file>./graphics/Breeze Dark/actions/22/download.svg</file>
     <file>./graphics/Breeze Dark/actions/22/edit-clear.svg</file>
     <file>./graphics/Breeze Dark/actions/22/edit-copy.svg</file>
+    <file>./graphics/Breeze Dark/actions/22/edit-cut.svg</file>
+    <file>./graphics/Breeze Dark/actions/22/edit-paste.svg</file>
+    <file>./graphics/Breeze Dark/actions/32/edit-redo.svg</file>
     <file>./graphics/Breeze Dark/actions/32/edit-reset.svg</file>
     <file>./graphics/Breeze Dark/actions/22/edit-select-all.svg</file>
     <file>./graphics/Breeze Dark/actions/22/edit-select-none.svg</file>
+    <file>./graphics/Breeze Dark/actions/32/edit-undo.svg</file>
     <file>./graphics/Breeze Dark/emblems/22/emblem-favorite.svg</file>
     <file>./graphics/Breeze Dark/emblems/22/emblem-shared.svg</file>
     <file>./graphics/Breeze Dark/places/96/folder.svg</file>
+    <file>./graphics/Breeze Dark/actions/22/format-indent-less.svg</file>
     <file>./graphics/Breeze Dark/actions/22/format-indent-more.svg</file>
     <file>./graphics/Breeze Dark/actions/22/format-justify-fill.svg</file>
+    <file>./graphics/Breeze Dark/actions/22/format-list-ordered.svg</file>
+    <file>./graphics/Breeze Dark/actions/22/format-list-unordered.svg</file>
     <file>./graphics/Breeze Dark/actions/22/format-text-bold.svg</file>
+    <file>./graphics/Breeze Dark/actions/22/format-text-color.svg</file>
+    <file>./graphics/Breeze Dark/actions/22/format-text-italic.svg</file>
+    <file>./graphics/Breeze Dark/actions/22/format-text-strikethrough.svg</file>
+    <file>./graphics/Breeze Dark/actions/22/format-text-underline.svg</file>
     <file>./graphics/Breeze Dark/actions/32/go-down.svg</file>
     <file>./graphics/Breeze Dark/actions/64/go-home.svg</file>
     <file>./graphics/Breeze Dark/actions/32/go-jump.svg</file>
@@ -123,6 +146,7 @@
     <file>./graphics/Breeze Dark/actions/32/help-about.svg</file>
     <file>./graphics/Breeze Dark/actions/22/help-contents.svg</file>
     <file>./graphics/Breeze Dark/mimetypes/64/image-x-generic.svg</file>
+    <file>./graphics/Breeze Dark/actions/22/insert-link.svg</file>
     <file>./graphics/Breeze Dark/actions/22/insert-page-break.svg</file>
     <file>./graphics/Breeze Dark/actions/22/list-add.svg</file>
     <file>./graphics/Breeze Dark/actions/22/list-remove.svg</file>
@@ -178,15 +202,23 @@
     <file>./graphics/Faenza/actions/64/down.png</file>
     <file>./graphics/Faenza/actions/64/edit-clear.png</file>
     <file>./graphics/Faenza/actions/64/edit-copy.png</file>
+    <file>./graphics/Faenza/actions/64/edit-cut.png</file>
+    <file>./graphics/Faenza/actions/64/edit-paste.png</file>
+    <file>./graphics/Faenza/actions/64/edit-redo.png</file>
     <file>./graphics/Faenza/actions/64/edit-select-all.png</file>
+    <file>./graphics/Faenza/actions/64/edit-undo.png</file>
     <file>./graphics/Faenza/emblems/64/emblem-downloads.png</file>
     <file>./graphics/Faenza/emblems/64/emblem-favorite.png</file>
     <file>./graphics/Faenza/emblems/64/emblem-shared.png</file>
     <file>./graphics/Faenza/emblems/64/emblem-system.png</file>
     <file>./graphics/Faenza/places/64/folder.png</file>
+    <file>./graphics/Faenza/actions/64/format-indent-less.png</file>
     <file>./graphics/Faenza/actions/64/format-indent-more.png</file>
     <file>./graphics/Faenza/actions/64/format-justify-fill.png</file>
     <file>./graphics/Faenza/actions/64/format-text-bold.png</file>
+    <file>./graphics/Faenza/actions/64/format-text-italic.png</file>
+    <file>./graphics/Faenza/actions/64/format-text-strikethrough.png</file>
+    <file>./graphics/Faenza/actions/64/format-text-underline.png</file>
     <file>./graphics/Faenza/actions/64/go-down.png</file>
     <file>./graphics/Faenza/actions/64/go-home.png</file>
     <file>./graphics/Faenza/actions/64/go-jump.png</file>
@@ -198,6 +230,7 @@
     <file>./graphics/Faenza/actions/64/help-about.png</file>
     <file>./graphics/Faenza/actions/64/help-contents.png</file>
     <file>./graphics/Faenza/mimetypes/64/image-x-generic.png</file>
+    <file>./graphics/Faenza/actions/64/insert-link.png</file>
     <file>./graphics/Faenza/actions/64/insert-object.png</file>
     <file>./graphics/Faenza/actions/64/list-add.png</file>
     <file>./graphics/Faenza/actions/64/list-remove.png</file>
@@ -258,15 +291,23 @@
     <file>./graphics/Numix/22/actions/download.svg</file>
     <file>./graphics/Numix/22/actions/edit-clear.svg</file>
     <file>./graphics/Numix/22/actions/edit-copy.svg</file>
+    <file>./graphics/Numix/22/actions/edit-cut.svg</file>
+    <file>./graphics/Numix/22/actions/edit-paste.svg</file>
+    <file>./graphics/Numix/22/actions/edit-redo.svg</file>
     <file>./graphics/Numix/22/actions/edit-select-all.svg</file>
+    <file>./graphics/Numix/22/actions/edit-undo.svg</file>
     <file>./graphics/Numix/22/emblems/emblem-downloads.svg</file>
     <file>./graphics/Numix/22/emblems/emblem-favorite.svg</file>
     <file>./graphics/Numix/22/emblems/emblem-shared.svg</file>
     <file>./graphics/Numix/22/emblems/emblem-system.svg</file>
     <file>./graphics/Numix/22/places/folder.svg</file>
+    <file>./graphics/Numix/22/actions/format-indent-less.svg</file>
     <file>./graphics/Numix/22/actions/format-indent-more.svg</file>
     <file>./graphics/Numix/22/actions/format-justify-fill.svg</file>
     <file>./graphics/Numix/22/actions/format-text-bold.svg</file>
+    <file>./graphics/Numix/22/actions/format-text-italic.svg</file>
+    <file>./graphics/Numix/22/actions/format-text-strikethrough.svg</file>
+    <file>./graphics/Numix/22/actions/format-text-underline.svg</file>
     <file>./graphics/Numix/22/actions/go-down.svg</file>
     <file>./graphics/Numix/22/actions/go-home.svg</file>
     <file>./graphics/Numix/22/actions/go-jump.svg</file>
@@ -278,6 +319,7 @@
     <file>./graphics/Numix/22/categories/help-about.svg</file>
     <file>./graphics/Numix/22/actions/help-contents.svg</file>
     <file>./graphics/Numix/22/mimetypes/image-x-generic.svg</file>
+    <file>./graphics/Numix/22/actions/insert-link.svg</file>
     <file>./graphics/Numix/22/actions/insert-object.svg</file>
     <file>./graphics/Numix/22/actions/list-add.svg</file>
     <file>./graphics/Numix/22/actions/list-remove.svg</file>

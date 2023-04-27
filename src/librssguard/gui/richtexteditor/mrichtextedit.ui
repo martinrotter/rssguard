@@ -68,7 +68,7 @@
        </widget>
       </item>
       <item>
-       <widget class="QToolButton" name="f_undo">
+       <widget class="PlainToolButton" name="f_undo">
         <property name="enabled">
          <bool>false</bool>
         </property>
@@ -81,10 +81,6 @@
         <property name="text">
          <string>Undo</string>
         </property>
-        <property name="icon">
-         <iconset theme="edit-undo">
-          <normaloff>.</normaloff>.</iconset>
-        </property>
         <property name="iconSize">
          <size>
           <width>16</width>
@@ -94,7 +90,7 @@
        </widget>
       </item>
       <item>
-       <widget class="QToolButton" name="f_redo">
+       <widget class="PlainToolButton" name="f_redo">
         <property name="enabled">
          <bool>false</bool>
         </property>
@@ -107,10 +103,6 @@
         <property name="text">
          <string>Redo</string>
         </property>
-        <property name="icon">
-         <iconset theme="edit-redo">
-          <normaloff>.</normaloff>.</iconset>
-        </property>
         <property name="iconSize">
          <size>
           <width>16</width>
@@ -120,7 +112,7 @@
        </widget>
       </item>
       <item>
-       <widget class="QToolButton" name="f_cut">
+       <widget class="PlainToolButton" name="f_cut">
         <property name="focusPolicy">
          <enum>Qt::ClickFocus</enum>
         </property>
@@ -130,10 +122,6 @@
         <property name="text">
          <string>Cut</string>
         </property>
-        <property name="icon">
-         <iconset theme="edit-cut">
-          <normaloff>.</normaloff>.</iconset>
-        </property>
         <property name="iconSize">
          <size>
           <width>16</width>
@@ -143,7 +131,7 @@
        </widget>
       </item>
       <item>
-       <widget class="QToolButton" name="f_copy">
+       <widget class="PlainToolButton" name="f_copy">
         <property name="focusPolicy">
          <enum>Qt::ClickFocus</enum>
         </property>
@@ -153,10 +141,6 @@
         <property name="text">
          <string>Copy</string>
         </property>
-        <property name="icon">
-         <iconset theme="edit-copy">
-          <normaloff>.</normaloff>.</iconset>
-        </property>
         <property name="iconSize">
          <size>
           <width>16</width>
@@ -166,7 +150,7 @@
        </widget>
       </item>
       <item>
-       <widget class="QToolButton" name="f_paste">
+       <widget class="PlainToolButton" name="f_paste">
         <property name="focusPolicy">
          <enum>Qt::ClickFocus</enum>
         </property>
@@ -175,10 +159,6 @@
         </property>
         <property name="text">
          <string>Paste</string>
-        </property>
-        <property name="icon">
-         <iconset theme="edit-paste">
-          <normaloff>.</normaloff>.</iconset>
         </property>
         <property name="iconSize">
          <size>
@@ -196,7 +176,7 @@
        </widget>
       </item>
       <item>
-       <widget class="QToolButton" name="f_link">
+       <widget class="PlainToolButton" name="f_link">
         <property name="focusPolicy">
          <enum>Qt::ClickFocus</enum>
         </property>
@@ -205,10 +185,6 @@
         </property>
         <property name="text">
          <string>Link</string>
-        </property>
-        <property name="icon">
-         <iconset theme="applications-internet">
-          <normaloff>.</normaloff>.</iconset>
         </property>
         <property name="iconSize">
          <size>
@@ -229,7 +205,7 @@
        </widget>
       </item>
       <item>
-       <widget class="QToolButton" name="f_bold">
+       <widget class="PlainToolButton" name="f_bold">
         <property name="focusPolicy">
          <enum>Qt::ClickFocus</enum>
         </property>
@@ -239,10 +215,6 @@
         <property name="text">
          <string>Bold</string>
         </property>
-        <property name="icon">
-         <iconset theme="format-text-bold">
-          <normaloff>.</normaloff>.</iconset>
-        </property>
         <property name="iconSize">
          <size>
           <width>16</width>
@@ -255,7 +227,7 @@
        </widget>
       </item>
       <item>
-       <widget class="QToolButton" name="f_italic">
+       <widget class="PlainToolButton" name="f_italic">
         <property name="focusPolicy">
          <enum>Qt::ClickFocus</enum>
         </property>
@@ -265,10 +237,6 @@
         <property name="text">
          <string>Italic</string>
         </property>
-        <property name="icon">
-         <iconset theme="format-text-italic">
-          <normaloff>.</normaloff>.</iconset>
-        </property>
         <property name="iconSize">
          <size>
           <width>16</width>
@@ -281,7 +249,7 @@
        </widget>
       </item>
       <item>
-       <widget class="QToolButton" name="f_underline">
+       <widget class="PlainToolButton" name="f_underline">
         <property name="focusPolicy">
          <enum>Qt::ClickFocus</enum>
         </property>
@@ -291,10 +259,6 @@
         <property name="text">
          <string>Underline</string>
         </property>
-        <property name="icon">
-         <iconset theme="format-text-underline">
-          <normaloff>.</normaloff>.</iconset>
-        </property>
         <property name="iconSize">
          <size>
           <width>16</width>
@@ -307,7 +271,7 @@
        </widget>
       </item>
       <item>
-       <widget class="QToolButton" name="f_strikeout">
+       <widget class="PlainToolButton" name="f_strikeout">
         <property name="text">
          <string>Strike Out</string>
         </property>
@@ -324,7 +288,7 @@
        </widget>
       </item>
       <item>
-       <widget class="QToolButton" name="f_list_bullet">
+       <widget class="PlainToolButton" name="f_list_bullet">
         <property name="focusPolicy">
          <enum>Qt::ClickFocus</enum>
         </property>
@@ -346,7 +310,7 @@
        </widget>
       </item>
       <item>
-       <widget class="QToolButton" name="f_list_ordered">
+       <widget class="PlainToolButton" name="f_list_ordered">
         <property name="focusPolicy">
          <enum>Qt::ClickFocus</enum>
         </property>
@@ -368,7 +332,7 @@
        </widget>
       </item>
       <item>
-       <widget class="QToolButton" name="f_indent_dec">
+       <widget class="PlainToolButton" name="f_indent_dec">
         <property name="focusPolicy">
          <enum>Qt::ClickFocus</enum>
         </property>
@@ -377,10 +341,6 @@
         </property>
         <property name="text">
          <string>Decrease indentation</string>
-        </property>
-        <property name="icon">
-         <iconset theme="format-indent-less">
-          <normaloff>.</normaloff>.</iconset>
         </property>
         <property name="iconSize">
          <size>
@@ -391,7 +351,7 @@
        </widget>
       </item>
       <item>
-       <widget class="QToolButton" name="f_indent_inc">
+       <widget class="PlainToolButton" name="f_indent_inc">
         <property name="focusPolicy">
          <enum>Qt::ClickFocus</enum>
         </property>
@@ -400,10 +360,6 @@
         </property>
         <property name="text">
          <string>Increase indentation</string>
-        </property>
-        <property name="icon">
-         <iconset theme="format-indent-more">
-          <normaloff>.</normaloff>.</iconset>
         </property>
         <property name="iconSize">
          <size>
@@ -421,7 +377,7 @@
        </widget>
       </item>
       <item>
-       <widget class="QToolButton" name="f_fgcolor">
+       <widget class="PlainToolButton" name="f_fgcolor">
         <property name="minimumSize">
          <size>
           <width>16</width>
@@ -452,7 +408,7 @@
        </widget>
       </item>
       <item>
-       <widget class="QToolButton" name="f_bgcolor">
+       <widget class="PlainToolButton" name="f_bgcolor">
         <property name="minimumSize">
          <size>
           <width>16</width>
@@ -503,7 +459,7 @@
        </widget>
       </item>
       <item>
-       <widget class="QToolButton" name="f_image">
+       <widget class="PlainToolButton" name="f_image">
         <property name="text">
          <string notr="true">...</string>
         </property>
@@ -523,7 +479,7 @@
        </spacer>
       </item>
       <item>
-       <widget class="QToolButton" name="f_menu">
+       <widget class="PlainToolButton" name="f_menu">
         <property name="text">
          <string>...</string>
         </property>
@@ -571,6 +527,11 @@
   </layout>
  </widget>
  <customwidgets>
+  <customwidget>
+   <class>PlainToolButton</class>
+   <extends>QToolButton</extends>
+   <header>plaintoolbutton.h</header>
+  </customwidget>
   <customwidget>
    <class>MTextEdit</class>
    <extends>QTextEdit</extends>

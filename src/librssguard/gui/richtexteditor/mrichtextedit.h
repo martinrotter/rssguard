@@ -82,6 +82,10 @@ class MRichTextEdit : public QWidget {
     void indent(int delta);
     void focusInEvent(QFocusEvent* event);
 
+  private:
+    void setupIcons();
+
+  private:
     QStringList m_paragraphItems;
     int m_fontsize_h1;
     int m_fontsize_h2;
