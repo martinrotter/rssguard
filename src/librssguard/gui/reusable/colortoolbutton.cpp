@@ -5,6 +5,7 @@
 #include "definitions/definitions.h"
 
 #include <QColorDialog>
+#include <QMouseEvent>
 #include <QPainter>
 #include <QPainterPath>
 #include <QRandomGenerator>
@@ -13,9 +14,11 @@ ColorToolButton::ColorToolButton(QWidget* parent) : QToolButton(parent), m_color
   setToolTip(tr("Click me to change color!"));
 
   connect(this, &ColorToolButton::clicked, this, [this]() {
-    auto new_color = QColorDialog::getColor(m_color, parentWidget(), tr("Select new color"),
+    auto new_color = QColorDialog::getColor(m_color,
+                                            parentWidget(),
+                                            tr("Select new color"),
                                             QColorDialog::ColorDialogOption::DontUseNativeDialog |
-                                            QColorDialog::ColorDialogOption::ShowAlphaChannel);
+                                              QColorDialog::ColorDialogOption::ShowAlphaChannel);
 
     if (new_color.isValid()) {
       setColor(new_color);
@@ -29,14 +32,7 @@ QColor ColorToolButton::color() const {
 }
 
 void ColorToolButton::setColor(const QColor& color) {
-  bool changed = m_color != color;
-
   m_color = color;
-
-  if (changed) {
-    emit colorChanged(m_color);
-  }
-
   repaint();
 }
 
@@ -66,4 +62,21 @@ void ColorToolButton::paintEvent(QPaintEvent* e) {
 
   path.addRoundedRect(QRectF(rect), 3, 3);
   p.fillPath(path, m_color);
+}
+
+QColor ColorToolButton::alternateColor() const {
+  return m_alternateColor;
+}
+
+void ColorToolButton::setAlternateColor(const QColor& alt_color) {
+  m_alternateColor = alt_color;
+}
+
+void ColorToolButton::mouseReleaseEvent(QMouseEvent* event) {
+  QToolButton::mouseReleaseEvent(event);
+
+  if (event->button() == Qt::MouseButton::RightButton) {
+    setColor(m_alternateColor);
+    emit colorChanged(m_alternateColor);
+  }
 }

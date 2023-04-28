@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>784</width>
+    <width>1100</width>
     <height>406</height>
    </rect>
   </property>
@@ -377,7 +377,7 @@
        </widget>
       </item>
       <item>
-       <widget class="PlainToolButton" name="f_fgcolor">
+       <widget class="ColorToolButton" name="f_fgcolor">
         <property name="minimumSize">
          <size>
           <width>16</width>
@@ -408,7 +408,7 @@
        </widget>
       </item>
       <item>
-       <widget class="PlainToolButton" name="f_bgcolor">
+       <widget class="ColorToolButton" name="f_bgcolor">
         <property name="minimumSize">
          <size>
           <width>16</width>
@@ -536,6 +536,11 @@
    <class>MTextEdit</class>
    <extends>QTextEdit</extends>
    <header>mtextedit.h</header>
+  </customwidget>
+  <customwidget>
+   <class>ColorToolButton</class>
+   <extends>QToolButton</extends>
+   <header>colortoolbutton.h</header>
   </customwidget>
  </customwidgets>
  <tabstops>

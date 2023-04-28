@@ -54,20 +54,20 @@ class MRichTextEdit : public QWidget {
     void setHtml(const QString& text);
     void textRemoveFormat();
     void textRemoveAllFormat();
-    void textBold();
-    void textUnderline();
-    void textStrikeout();
-    void textItalic();
+    void setTextBold();
+    void setTextUnderline();
+    void setTextStrikeout();
+    void setTextItalic();
     void textSize(const QString& p);
-    void textLink(bool checked);
-    void textStyle(int index);
-    void textFgColor();
-    void textBgColor();
+    void setTextLink(bool checked);
+    void setTextStyle(int index);
+    void textFgColor(const QColor& color);
+    void textBgColor(const QColor& color);
     void listBullet(bool checked);
     void listOrdered(bool checked);
-    void slotCurrentCharFormatChanged(const QTextCharFormat& format);
-    void slotCursorPositionChanged();
-    void slotClipboardDataChanged();
+    void onCurrentCharFormatChanged(const QTextCharFormat& format);
+    void onCursorPositionChanged();
+    void onClipboardDataChanged();
     void increaseIndentation();
     void decreaseIndentation();
     void insertImage();
@@ -76,8 +76,6 @@ class MRichTextEdit : public QWidget {
   protected:
     void mergeFormatOnWordOrSelection(const QTextCharFormat& format);
     void fontChanged(const QFont& f);
-    void fgColorChanged(const QColor& c);
-    void bgColorChanged(const QColor& c);
     void list(bool checked, QTextListFormat::Style style);
     void indent(int delta);
     void focusInEvent(QFocusEvent* event);
@@ -86,7 +84,6 @@ class MRichTextEdit : public QWidget {
     void setupIcons();
 
   private:
-    QStringList m_paragraphItems;
     int m_fontsize_h1;
     int m_fontsize_h2;
     int m_fontsize_h3;
