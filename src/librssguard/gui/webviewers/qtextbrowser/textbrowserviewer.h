@@ -114,6 +114,8 @@ class TextBrowserViewer : public QTextBrowser, public WebViewer {
 
   private:
     QUrl m_currentUrl;
+    QString m_currentHtml;
+
     QPointer<RootItem> m_root;
     QFont m_baseFont;
     qreal m_zoomFactor = 1.0;

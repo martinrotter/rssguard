@@ -281,7 +281,7 @@ void TextBrowserViewer::setUrl(const QUrl& url) {
 }
 
 QString TextBrowserViewer::html() const {
-  return QTextBrowser::toHtml();
+  return m_currentHtml;
 }
 
 QUrl TextBrowserViewer::url() const {
@@ -511,11 +511,11 @@ void TextBrowserViewer::setHtml(const QString& html, const QUrl& base_url) {
 
   setHtmlPrivate(html, base_url);
 
+  /*
   QTextCursor cr(m_document.data());
 
   cr.movePosition(QTextCursor::MoveOperation::Start);
 
-  /*
   // this can be used instead of regexps, just browse document and collect resource addresses directly
   while (!cr.atEnd()) {
     if (!cr.movePosition(QTextCursor::MoveOperation::NextBlock)) {
@@ -558,6 +558,7 @@ void TextBrowserViewer::setHtml(const QString& html, const QUrl& base_url) {
 
 void TextBrowserViewer::setHtmlPrivate(const QString& html, const QUrl& base_url) {
   m_currentUrl = base_url;
+  m_currentHtml = html;
 
   QTextBrowser::setHtml(html);
   setZoomFactor(m_zoomFactor);
