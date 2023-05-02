@@ -12,7 +12,7 @@ dl, dd, ol, ul, figure {
 }
 
 body {
-  background-color: #373A3D;
+  background-color: #2F3134;
   box-sizing: border-box;
   color: #f5f5f5;
   -webkit-text-size-adjust: 100%;
@@ -23,7 +23,7 @@ body {
 }
 
 ::selection {
-  background-color: #8291AD;
+  background-color: #647595;
   text-shadow: none;
 }
 
@@ -125,7 +125,7 @@ var {
 }
 
 a {
-  color: #8291AD;
+  color: #647595;
 }
 a:hover {
   text-decoration: none;
@@ -164,7 +164,7 @@ blockquote p {
 
 pre,
 code {
-  border: 1px solid #282a2c;
+  border: 1px solid #222325;
   border-radius: 0.3em;
   color: #E2E2E2;
   font-family: monospace;
@@ -196,17 +196,17 @@ pre > code {
 
 kbd {
   background: rgba(33, 35, 39, 0.4);
-  border: 1px solid #282a2c;
-  border-bottom: 3px solid #212224;
+  border: 1px solid #222325;
+  border-bottom: 3px solid #1b1c1d;
   border-radius: 0.3em;
-  box-shadow: 0 2px 4px #282b2d, inset 0 1px #373A3D;
+  box-shadow: 0 2px 4px #202224, inset 0 1px #2F3134;
   font-size: .9rem !important;
   padding: .1em .4em .2em .4em;
 }
 
 select {
   background-color: rgba(33, 35, 39, 0.4);
-  border: 1px solid #282a2c;
+  border: 1px solid #222325;
   border-radius: 0.3em;
   color: #f5f5f5;
   padding: .04em .25em;
@@ -215,10 +215,10 @@ select {
 select:focus {
   box-shadow: none;
   outline: none;
-  background-color: #373A3D;
+  background-color: #2F3134;
 }
 select > option {
-  background-color: #373A3D;
+  background-color: #2F3134;
 }
 
 table {
@@ -274,11 +274,11 @@ details *:last-child {
 }
 
 details[open] {
-  border-color: #282a2c;
+  border-color: #222325;
   padding: .5em;
 }
 details[open] > summary {
-  border-bottom: 1px solid #282a2c;
+  border-bottom: 1px solid #222325;
   border-radius: 0.27em 0.27em 0 0;
   margin-bottom: .5em;
 }
@@ -292,12 +292,12 @@ iframe {
 a:focus,
 select:focus,
 summary:focus {
-  background-color: #282a2c;
-  text-shadow: 0 -1px #373A3D;
+  background-color: #222325;
+  text-shadow: 0 -1px #2F3134;
 }
 
 :target {
-  outline: 1px solid #8291AD;
+  outline: 1px solid #647595;
 }
 
 .rssguard-mwrapper {
@@ -345,7 +345,7 @@ html::after,
 body::before,
 body::after {
   content: "";
-  background-color: #282a2c;
+  background-color: #222325;
   display: block;
   position: fixed;
   z-index: 5;
@@ -386,8 +386,8 @@ body::after {
 
 ::-webkit-scrollbar-track,
 ::-webkit-scrollbar-corner {
-  background-color: #37393c;
-  box-shadow: inset 1px 1px #323437;
+  background-color: #313235;
+  box-shadow: inset 1px 1px #2c2d30;
 }
 
 ::-webkit-scrollbar-corner {
@@ -395,46 +395,46 @@ body::after {
 }
 
 ::-webkit-scrollbar-thumb {
-  box-shadow: inset 1px 1px #565a5f, inset -1px -1px #565a5f, inset 0px 1px #565a5f, inset 0px -1px #565a5f, inset 1px 0px #565a5f, inset 1px -1px #565a5f, inset -1px 0px #565a5f, inset -1px 1px #565a5f;
+  box-shadow: inset 1px 1px #515258, inset -1px -1px #515258, inset 0px 1px #515258, inset 0px -1px #515258, inset 1px 0px #515258, inset 1px -1px #515258, inset -1px 0px #515258, inset -1px 1px #515258;
 }
 ::-webkit-scrollbar-thumb:horizontal {
-  background-image: linear-gradient(#414347 5%, #3c3e42);
+  background-image: linear-gradient(#3b3c40 5%, #36373b);
   min-width: 25px;
 }
 ::-webkit-scrollbar-thumb:horizontal:hover {
-  background-image: linear-gradient(#43464a 25%, #3c3e42);
+  background-image: linear-gradient(#3d3e43 25%, #36373b);
 }
 ::-webkit-scrollbar-thumb:vertical {
-  background-image: linear-gradient(to right, #414347 5%, #3c3e42);
+  background-image: linear-gradient(to right, #3b3c40 5%, #36373b);
   min-height: 25px;
 }
 ::-webkit-scrollbar-thumb:vertical:hover {
-  background-image: linear-gradient(to right, #43464a 25%, #3c3e42);
+  background-image: linear-gradient(to right, #3d3e43 25%, #36373b);
 }
 ::-webkit-scrollbar-thumb:active {
-  background-image: linear-gradient(#3c3e42, #3c3e42) !important;
+  background-image: linear-gradient(#36373b, #36373b) !important;
 }
 
 :not(body)::-webkit-scrollbar-thumb:horizontal {
-  box-shadow: inset 1px 1px #565a5f, inset -1px -1px #565a5f, inset 0px 1px #565a5f, inset 0px -1px #565a5f, inset 1px 0px #565a5f, inset 1px -1px #565a5f, inset -1px 0px #565a5f, inset -1px 1px #565a5f, 1px 0px #282a2c, 1px 1px #282a2c, -1px 1px #282a2c, -1px 0px #282a2c;
+  box-shadow: inset 1px 1px #515258, inset -1px -1px #515258, inset 0px 1px #515258, inset 0px -1px #515258, inset 1px 0px #515258, inset 1px -1px #515258, inset -1px 0px #515258, inset -1px 1px #515258, 1px 0px #222325, 1px 1px #222325, -1px 1px #222325, -1px 0px #222325;
 }
 :not(body)::-webkit-scrollbar-thumb:vertical {
-  box-shadow: inset 1px 1px #565a5f, inset -1px -1px #565a5f, inset 0px 1px #565a5f, inset 0px -1px #565a5f, inset 1px 0px #565a5f, inset 1px -1px #565a5f, inset -1px 0px #565a5f, inset -1px 1px #565a5f, 0px -1px #282a2c, 1px -1px #282a2c, 1px 1px #282a2c, 0px 1px #282a2c;
+  box-shadow: inset 1px 1px #515258, inset -1px -1px #515258, inset 0px 1px #515258, inset 0px -1px #515258, inset 1px 0px #515258, inset 1px -1px #515258, inset -1px 0px #515258, inset -1px 1px #515258, 0px -1px #222325, 1px -1px #222325, 1px 1px #222325, 0px 1px #222325;
 }
 
 ::-webkit-scrollbar-thumb:horizontal,
 ::-webkit-scrollbar-track:horizontal {
-  border-top: 1px solid #282a2c;
+  border-top: 1px solid #222325;
 }
 ::-webkit-scrollbar-thumb:vertical,
 ::-webkit-scrollbar-track:vertical {
-  border-left: 1px solid #282a2c;
+  border-left: 1px solid #222325;
 }
 
 body::-webkit-scrollbar-thumb:horizontal, body::-webkit-scrollbar-thumb:vertical,
 body::-webkit-scrollbar-track:horizontal,
 body::-webkit-scrollbar-track:vertical {
-  border: 1px solid #282a2c;
+  border: 1px solid #222325;
 }
 body::-webkit-scrollbar-thumb:horizontal,
 body::-webkit-scrollbar-track:horizontal {
@@ -446,7 +446,7 @@ body::-webkit-scrollbar-track:vertical {
 }
 
 body::-webkit-scrollbar-corner {
-  border: 1px solid #282a2c;
+  border: 1px solid #222325;
   border-top: none;
   border-left: none;
 }
