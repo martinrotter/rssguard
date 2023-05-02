@@ -524,7 +524,7 @@ void FormMain::switchVisibility(bool force_hide) {
                               QSystemTrayIcon::MessageIcon::Warning});
       }
       else {
-        hide();
+        close();
       }
     }
     else {

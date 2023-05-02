@@ -351,7 +351,7 @@ void MRichTextEdit::setTextStyle(int index) {
   m_ui.f_textedit->setCurrentCharFormat(fmt);
 
   if (index == ParagraphItems::ParagraphHeading1 || index == ParagraphItems::ParagraphHeading2 ||
-      ParagraphItems::index == ParagraphHeading3 || index == ParagraphItems::ParagraphHeading4) {
+      index == ParagraphItems::ParagraphHeading3 || index == ParagraphItems::ParagraphHeading4) {
     if (index == ParagraphHeading1) {
       fmt.setFontPointSize(m_fontsize_h1);
     }
