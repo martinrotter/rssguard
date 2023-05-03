@@ -360,6 +360,7 @@ void WebBrowser::onLoadingFinished(bool success) {
       m_actionReadabilePage->setEnabled(false);
     }
 
+    // TODO: nevolat toto u internich "rssguard" adres
     // Let's check if there are any feeds defined on the web and eventually
     // display "Add feeds" button.
     m_btnDiscoverFeeds->setFeedAddresses(NetworkFactory::extractFeedLinksFromHtmlPage(m_webView->url(),

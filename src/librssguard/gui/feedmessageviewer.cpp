@@ -295,9 +295,9 @@ void FeedMessageViewer::initialize() {
 
   updateArticleViewerSettings();
 
-  if (!m_articleViewerAlwaysVisible) {
-    m_messagesBrowser->clear();
-  }
+  // if (!m_articleViewerAlwaysVisible) {
+  m_messagesBrowser->clear();
+  //}
 
   // Now refresh visual setup.
   refreshVisualProperties();
