@@ -223,6 +223,9 @@ void FeedMessageViewer::displayMessage(const Message& message, RootItem* root) {
   if (qApp->settings()->value(GROUP(Messages), SETTING(Messages::EnableMessagePreview)).toBool()) {
     m_messagesBrowser->loadMessage(message, root);
   }
+  else if (m_articleViewerAlwaysVisible) {
+    m_messagesBrowser->showItemDetails(root);
+  }
   else {
     m_messagesBrowser->clear();
   }
@@ -250,7 +253,6 @@ void FeedMessageViewer::createConnections() {
   connect(m_feedSplitter, &QSplitter::splitterMoved, this, &FeedMessageViewer::onFeedSplitterResized);
   connect(m_messageSplitter, &QSplitter::splitterMoved, this, &FeedMessageViewer::onMessageSplitterResized);
 
-  connect(m_messagesView, &MessagesView::currentMessageRemoved, this, &FeedMessageViewer::onMessageRemoved);
   connect(m_messagesBrowser,
           &MessagePreviewer::markMessageRead,
           m_messagesView->sourceModel(),
@@ -260,6 +262,7 @@ void FeedMessageViewer::createConnections() {
           m_messagesView->sourceModel(),
           &MessagesModel::setMessageImportantById);
 
+  connect(m_messagesView, &MessagesView::currentMessageRemoved, this, &FeedMessageViewer::onMessageRemoved);
   connect(m_messagesView, &MessagesView::currentMessageChanged, this, &FeedMessageViewer::displayMessage);
   connect(m_messagesView, &MessagesView::openLinkMiniBrowser, m_messagesBrowser, &MessagePreviewer::loadUrl);
 
