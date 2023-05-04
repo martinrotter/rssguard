@@ -83,6 +83,9 @@ namespace Feeds {
   KEY AutoUpdateEnabled;
   VALUE(bool) AutoUpdateEnabledDef;
 
+  KEY FastAutoUpdate;
+  VALUE(bool) FastAutoUpdateDef;
+
   KEY AutoUpdateOnlyUnfocused;
   VALUE(bool) AutoUpdateOnlyUnfocusedDef;
 

@@ -244,6 +244,7 @@ QList<ServiceRoot*> FeedsModel::serviceRoots() const {
 QList<Feed*> FeedsModel::feedsForScheduledUpdate(bool auto_update_now) {
   QList<Feed*> feeds_for_update;
   auto stf = m_rootItem->getSubTreeFeeds();
+  auto cur_date = QDateTime::currentDateTimeUtc();
 
   for (Feed* feed : qAsConst(stf)) {
     switch (feed->autoUpdateType()) {
@@ -260,7 +261,7 @@ QList<Feed*> FeedsModel::feedsForScheduledUpdate(bool auto_update_now) {
 
       case Feed::AutoUpdateType::SpecificAutoUpdate:
       default:
-        if (feed->lastUpdated().addSecs(feed->autoUpdateInterval()) < QDateTime::currentDateTimeUtc()) {
+        if (feed->lastUpdated().addSecs(feed->autoUpdateInterval()) < cur_date) {
           feeds_for_update.append(feed);
         }
 

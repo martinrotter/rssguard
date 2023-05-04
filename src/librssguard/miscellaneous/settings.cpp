@@ -86,6 +86,9 @@ DVALUE(int) Feeds::AutoUpdateIntervalDef = DEFAULT_AUTO_UPDATE_INTERVAL;
 DKEY Feeds::AutoUpdateEnabled = "auto_update_enabled";
 DVALUE(bool) Feeds::AutoUpdateEnabledDef = false;
 
+DKEY Feeds::FastAutoUpdate = "auto_update_fast";
+DVALUE(bool) Feeds::FastAutoUpdateDef = false;
+
 DKEY Feeds::AutoUpdateOnlyUnfocused = "auto_update_only_unfocused";
 DVALUE(bool) Feeds::AutoUpdateOnlyUnfocusedDef = false;
 

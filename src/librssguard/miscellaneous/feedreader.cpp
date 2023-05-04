@@ -153,6 +153,7 @@ void FeedReader::updateAutoUpdateStatus() {
   // Restore global intervals.
   // NOTE: Specific per-feed interval are left intact.
   m_globalAutoUpdateInterval = qApp->settings()->value(GROUP(Feeds), SETTING(Feeds::AutoUpdateInterval)).toInt();
+  m_globalAutoUpdateFast = qApp->settings()->value(GROUP(Feeds), SETTING(Feeds::FastAutoUpdate)).toBool();
 
   if (m_lastAutoUpdate.isNull()) {
     m_lastAutoUpdate = QDateTime::currentDateTimeUtc();
@@ -162,12 +163,22 @@ void FeedReader::updateAutoUpdateStatus() {
   m_globalAutoUpdateOnlyUnfocused =
     qApp->settings()->value(GROUP(Feeds), SETTING(Feeds::AutoUpdateOnlyUnfocused)).toBool();
 
+  if (m_globalAutoUpdateFast) {
+    // NOTE: In "fast" mode, we set interval to 1 second.
+    // This might have some performance consequences.
+    m_autoUpdateTimer->setInterval(1000);
+    qDebugNN << LOGSEC_CORE
+             << "Enabling support for very small auto-fetching intervals. This might have performance consequences.";
+  }
+  else {
+    m_autoUpdateTimer->setInterval(AUTO_UPDATE_INTERVAL * 1000);
+  }
+
   // Start global auto-update timer if it is not running yet.
   // NOTE: The timer must run even if global auto-update
   // is not enabled because user can still enable auto-update
   // for individual feeds.
   if (!m_autoUpdateTimer->isActive()) {
-    m_autoUpdateTimer->setInterval(AUTO_UPDATE_INTERVAL * 1000);
     m_autoUpdateTimer->start();
     qDebugNN << LOGSEC_CORE << "Auto-download timer started with interval " << m_autoUpdateTimer->interval() << " ms.";
   }
