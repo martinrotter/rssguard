@@ -1000,3 +1000,12 @@ void FeedsView::onItemExpandRequested(const QList<RootItem*>& items, bool exp) {
     setExpanded(proxy_index, exp);
   }
 }
+
+void FeedsView::drawRow(QPainter* painter, const QStyleOptionViewItem& options, const QModelIndex& index) const {
+  // auto opts = options;
+
+  // opts.decorationAlignment = Qt::AlignmentFlag::AlignLeft;
+  // opts.decorationSize = {options.decorationSize.height(), options.decorationSize.height()};
+
+  BaseTreeView::drawRow(painter, options, index);
+}

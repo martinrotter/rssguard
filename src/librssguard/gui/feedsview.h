@@ -144,6 +144,10 @@ class RSSGUARD_DLLSPEC FeedsView : public BaseTreeView {
     FeedsModel* m_sourceModel;
     FeedsProxyModel* m_proxyModel;
     bool m_dontSaveExpandState;
+
+    // QTreeView interface
+  protected:
+    virtual void drawRow(QPainter *painter, const QStyleOptionViewItem &options, const QModelIndex &index) const;
 };
 
 inline FeedsProxyModel* FeedsView::model() const {
