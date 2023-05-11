@@ -97,6 +97,7 @@
     <addaction name="m_actionSettings"/>
     <addaction name="separator"/>
     <addaction name="m_actionCleanupDatabase"/>
+    <addaction name="m_actionCleanupWebCache"/>
     <addaction name="m_actionDownloadManager"/>
    </widget>
    <widget class="QMenu" name="m_menuFeeds">
@@ -929,6 +930,11 @@
   <action name="m_actionRearrangeFeeds">
    <property name="text">
     <string>Rearrange &amp;feeds alphabetically</string>
+   </property>
+  </action>
+  <action name="m_actionCleanupWebCache">
+   <property name="text">
+    <string>Cleanup web cac&amp;he</string>
    </property>
   </action>
  </widget>

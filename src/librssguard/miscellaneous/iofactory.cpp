@@ -178,3 +178,8 @@ bool IOFactory::copyFile(const QString& source, const QString& destination) {
 
   return QFile::copy(source, destination);
 }
+
+void IOFactory::removeFolder(const QString& path) {
+  QDir dir(path);
+  dir.removeRecursively();
+}

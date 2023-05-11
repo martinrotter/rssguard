@@ -638,6 +638,7 @@ void FormMain::setupIcons() {
   m_ui->m_actionTabsPrevious->setIcon(icon_theme_factory->fromTheme(QSL("go-previous")));
   m_ui->m_actionBrowserScrollUp->setIcon(icon_theme_factory->fromTheme(QSL("arrow-up")));
   m_ui->m_actionBrowserScrollDown->setIcon(icon_theme_factory->fromTheme(QSL("arrow-down")));
+  m_ui->m_actionCleanupWebCache->setIcon(icon_theme_factory->fromTheme(QSL("edit-clear")));
 
   // Setup icons on TabWidget too.
   m_ui->m_tabWidget->setupIcons();
@@ -758,6 +759,12 @@ void FormMain::createConnections() {
   });
   connect(m_ui->m_actionDownloadManager, &QAction::triggered, m_ui->m_tabWidget, &TabWidget::showDownloadManager);
   connect(m_ui->m_actionCleanupDatabase, &QAction::triggered, this, &FormMain::showDbCleanupAssistant);
+
+#if defined(USE_WEBENGINE)
+  connect(m_ui->m_actionCleanupWebCache, &QAction::triggered, qApp->web(), &WebFactory::cleanupCache);
+#else
+  m_ui->m_menuTools->removeAction(m_ui->m_actionCleanupWebCache);
+#endif
 
   // Menu "Help" connections.
   connect(m_ui->m_actionAboutGuard, &QAction::triggered, this, [this]() {

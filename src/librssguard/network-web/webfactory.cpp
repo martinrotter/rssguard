@@ -673,3 +673,26 @@ QString WebFactory::customUserAgent() const {
 void WebFactory::setCustomUserAgent(const QString& user_agent) {
   m_customUserAgent = user_agent;
 }
+
+#if defined(USE_WEBENGINE)
+void WebFactory::cleanupCache() {
+  if (MsgBox::show(nullptr,
+                   QMessageBox::Icon::Question,
+                   tr("Web cache is going to be cleared"),
+                   tr("Do you really want to clear web cache?"),
+                   {},
+                   {},
+                   QMessageBox::StandardButton::Yes | QMessageBox::StandardButton::No) ==
+      QMessageBox::StandardButton::Yes) {
+    m_engineProfile->clearHttpCache();
+
+    // NOTE: Manually clear storage.
+    try {
+      IOFactory::removeFolder(m_engineProfile->persistentStoragePath());
+    }
+    catch (const ApplicationException& ex) {
+      qCriticalNN << LOGSEC_CORE << "Removing of webengine storage failed:" << QUOTE_W_SPACE_DOT(ex.message());
+    }
+  }
+}
+#endif

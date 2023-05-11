@@ -58,6 +58,11 @@ class WebFactory : public QObject {
     QString customUserAgent() const;
     void setCustomUserAgent(const QString& user_agent);
 
+  public slots:
+#if defined(USE_WEBENGINE)
+    void cleanupCache();
+#endif
+
 #if defined(USE_WEBENGINE)
   private slots:
     void createMenu(QMenu* menu = nullptr);

@@ -48,6 +48,8 @@ class IOFactory {
 
     // Copies file, overwrites destination.
     static bool copyFile(const QString& source, const QString& destination);
+
+    static void removeFolder(const QString& path);
 };
 
 #endif // IOFACTORY_H
