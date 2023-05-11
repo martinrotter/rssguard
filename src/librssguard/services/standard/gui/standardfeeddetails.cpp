@@ -74,7 +74,8 @@ StandardFeedDetails::StandardFeedDetails(QWidget* parent) : QWidget(parent) {
     new QAction(qApp->icons()->fromTheme(QSL("image-x-generic")), tr("Load icon from file..."), this);
   m_actionUseDefaultIcon =
     new QAction(qApp->icons()->fromTheme(QSL("application-rss+xml")), tr("Use default icon from icon theme"), this);
-  m_actionFetchIcon = new QAction(qApp->icons()->fromTheme(QSL("emblem-downloads")), tr("Fetch icon from feed"), this);
+  m_actionFetchIcon =
+    new QAction(qApp->icons()->fromTheme(QSL("emblem-downloads"), QSL("download")), tr("Fetch icon from feed"), this);
   m_iconMenu->addAction(m_actionFetchIcon);
   m_iconMenu->addAction(m_actionLoadIconFromFile);
   m_iconMenu->addAction(m_actionUseDefaultIcon);

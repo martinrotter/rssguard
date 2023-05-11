@@ -554,7 +554,7 @@ void FormMain::setupIcons() {
   IconFactory* icon_theme_factory = qApp->icons();
 
   // Setup icons of this main window.
-  m_ui->m_actionDownloadManager->setIcon(icon_theme_factory->fromTheme(QSL("emblem-downloads")));
+  m_ui->m_actionDownloadManager->setIcon(icon_theme_factory->fromTheme(QSL("emblem-downloads"), QSL("download")));
   m_ui->m_actionSettings->setIcon(icon_theme_factory->fromTheme(QSL("emblem-system"), QSL("applications-system")));
   m_ui->m_actionQuit->setIcon(icon_theme_factory->fromTheme(QSL("application-exit")));
   m_ui->m_actionRestart->setIcon(icon_theme_factory->fromTheme(QSL("view-refresh")));

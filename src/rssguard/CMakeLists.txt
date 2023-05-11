@@ -28,6 +28,12 @@ if(QT_VERSION_MAJOR EQUAL 6)
   target_link_libraries(app PUBLIC
     Qt${QT_VERSION_MAJOR}::Core5Compat
   )
+
+  if(WIN32)
+    target_link_libraries(app PUBLIC
+      Qt${QT_VERSION_MAJOR}::GuiPrivate
+    )
+  endif()
 endif()
 
 if(APPLE)

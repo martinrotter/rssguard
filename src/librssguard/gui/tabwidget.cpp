@@ -74,7 +74,7 @@ void TabWidget::showDownloadManager() {
   // Download manager is not opened. Create tab with it.
   qApp->downloadManager()->setParent(this);
   addTab(qApp->downloadManager(),
-         qApp->icons()->fromTheme(QSL("emblem-downloads")),
+         qApp->icons()->fromTheme(QSL("emblem-downloads"), QSL("download")),
          tr("Downloads"),
          TabBar::TabType::DownloadManager);
   setCurrentIndex(count() - 1);

@@ -22,7 +22,8 @@ StatusBar::StatusBar(QWidget* parent) : QStatusBar(parent) {
   m_barProgressFeeds->setVisible(false);
   m_barProgressFeeds->setObjectName(QSL("m_barProgressFeeds"));
 
-  m_barProgressFeedsAction = new QAction(qApp->icons()->fromTheme(QSL("application-rss+xml")), tr("Feed update progress bar"), this);
+  m_barProgressFeedsAction =
+    new QAction(qApp->icons()->fromTheme(QSL("application-rss+xml")), tr("Feed update progress bar"), this);
   m_barProgressFeedsAction->setObjectName(QSL("m_barProgressFeedsAction"));
 
   m_barProgressDownload = new ProgressBarWithText(this);
@@ -31,7 +32,9 @@ StatusBar::StatusBar(QWidget* parent) : QStatusBar(parent) {
   m_barProgressDownload->setVisible(false);
   m_barProgressDownload->setObjectName(QSL("m_barProgressDownload"));
 
-  m_barProgressDownloadAction = new QAction(qApp->icons()->fromTheme(QSL("emblem-downloads")), tr("File download progress bar"), this);
+  m_barProgressDownloadAction = new QAction(qApp->icons()->fromTheme(QSL("emblem-downloads"), QSL("download")),
+                                            tr("File download progress bar"),
+                                            this);
   m_barProgressDownloadAction->setObjectName(QSL("m_barProgressDownloadAction"));
 
   m_barProgressDownload->installEventFilter(this);
@@ -46,8 +49,7 @@ QList<QAction*> StatusBar::availableActions() const {
   QList<QAction*> actions = qApp->userActions();
 
   // Now, add placeholder actions for custom stuff.
-  actions << m_barProgressDownloadAction
-          << m_barProgressFeedsAction;
+  actions << m_barProgressDownloadAction << m_barProgressFeedsAction;
 
   return actions;
 }
@@ -62,21 +64,24 @@ void StatusBar::saveAndSetActions(const QStringList& actions) {
 }
 
 QStringList StatusBar::defaultActions() const {
-  return QString(GUI::StatusbarActionsDef).split(',',
+  return QString(GUI::StatusbarActionsDef)
+    .split(',',
 #if QT_VERSION >= 0x050F00 // Qt >= 5.15.0
-                                                 Qt::SplitBehaviorFlags::SkipEmptyParts);
+           Qt::SplitBehaviorFlags::SkipEmptyParts);
 #else
-                                                 QString::SplitBehavior::SkipEmptyParts);
+           QString::SplitBehavior::SkipEmptyParts);
 #endif
 }
 
 QStringList StatusBar::savedActions() const {
-  return qApp->settings()->value(GROUP(GUI),
-                                 SETTING(GUI::StatusbarActions)).toString().split(',',
+  return qApp->settings()
+    ->value(GROUP(GUI), SETTING(GUI::StatusbarActions))
+    .toString()
+    .split(',',
 #if QT_VERSION >= 0x050F00 // Qt >= 5.15.0
-                                                                                  Qt::SplitBehaviorFlags::SkipEmptyParts);
+           Qt::SplitBehaviorFlags::SkipEmptyParts);
 #else
-                                                                                  QString::SplitBehavior::SkipEmptyParts);
+           QString::SplitBehavior::SkipEmptyParts);
 #endif
 }
 
@@ -174,7 +179,8 @@ bool StatusBar::eventFilter(QObject* watched, QEvent* event) {
 void StatusBar::clear() {
   while (!actions().isEmpty()) {
     QAction* act = actions().at(0);
-    QWidget* widget = act->property("widget").isValid() ? static_cast<QWidget*>(act->property("widget").value<void*>()) : nullptr;
+    QWidget* widget =
+      act->property("widget").isValid() ? static_cast<QWidget*>(act->property("widget").value<void*>()) : nullptr;
 
     if (widget != nullptr) {
       removeWidget(widget);
