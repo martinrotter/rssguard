@@ -9,6 +9,7 @@
 #include "services/abstract/label.h"
 #include "services/abstract/rootitem.h"
 
+#include <QAction>
 #include <QPointer>
 #include <QUrl>
 
