@@ -37,10 +37,14 @@ QMap<int, QString> DatabaseQueries::messageTableAttributes(bool only_msg_table) 
                                            "THEN 'true' "
                                            "ELSE 'false' "
                                            "END AS has_enclosures");
+  field_names[MSG_DB_LABELS] = QSL("1 as msg_labels");
+
+  /*
   field_names[MSG_DB_LABELS] =
     QSL("(SELECT GROUP_CONCAT(Labels.name) FROM Labels WHERE Labels.custom_id IN (SELECT "
         "LabelsInMessages.label FROM LabelsInMessages WHERE LabelsInMessages.account_id = "
         "Messages.account_id AND LabelsInMessages.message = Messages.custom_id)) as msg_labels");
+  */
 
   return field_names;
 }

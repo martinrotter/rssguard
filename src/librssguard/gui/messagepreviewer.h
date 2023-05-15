@@ -18,11 +18,11 @@ class QToolBar;
 class WebBrowser;
 class ItemDetails;
 
-class LabelButton : public QToolButton {
+class LabelToolbarAction : public QAction {
     Q_OBJECT
 
   public:
-    explicit LabelButton(QWidget* parent = nullptr);
+    explicit LabelToolbarAction(QObject* parent = nullptr);
 
     Label* label() const;
     void setLabel(Label* label);
@@ -79,7 +79,7 @@ class MessagePreviewer : public QWidget {
     QAction* m_actionMarkUnread;
     QAction* m_actionSwitchImportance;
     QAction* m_separator;
-    QList<QPair<LabelButton*, QAction*>> m_btnLabels;
+    QList<LabelToolbarAction*> m_btnLabels;
     ItemDetails* m_itemDetails;
     bool m_toolbarVisible;
 

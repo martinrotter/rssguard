@@ -49,12 +49,12 @@ void MessagePreviewer::createConnections() {
 MessagePreviewer::MessagePreviewer(QWidget* parent)
   : QWidget(parent), m_mainLayout(new QGridLayout(this)), m_viewerLayout(new QStackedLayout()),
     m_toolBar(new QToolBar(this)), m_msgBrowser(new WebBrowser(nullptr, this)), m_separator(nullptr),
-    m_btnLabels(QList<QPair<LabelButton*, QAction*>>()), m_itemDetails(new ItemDetails(this)), m_toolbarVisible(true) {
+    m_btnLabels(QList<LabelToolbarAction*>()), m_itemDetails(new ItemDetails(this)), m_toolbarVisible(true) {
   m_toolBar->setOrientation(Qt::Orientation::Vertical);
 
   // NOTE: To make sure that if we have many labels and short message
   // that whole toolbar is visible.
-  m_toolBar->setSizePolicy(m_toolBar->sizePolicy().horizontalPolicy(), QSizePolicy::Policy::MinimumExpanding);
+  // m_toolBar->setSizePolicy(m_toolBar->sizePolicy().horizontalPolicy(), QSizePolicy::Policy::MinimumExpanding);
 
   // This layout holds standard article browser on index 0
   // and optional custom browser on index 1.
@@ -183,7 +183,7 @@ void MessagePreviewer::loadMessage(const Message& message, RootItem* root) {
 }
 
 void MessagePreviewer::switchLabel(bool assign) {
-  auto lbl = qobject_cast<LabelButton*>(sender())->label();
+  auto lbl = qobject_cast<LabelToolbarAction*>(sender())->label();
 
   if (lbl == nullptr) {
     return;
@@ -260,9 +260,8 @@ void MessagePreviewer::updateButtons() {
 
 void MessagePreviewer::updateLabels(bool only_clear) {
   for (auto& lbl : m_btnLabels) {
-    m_toolBar->removeAction(lbl.second);
-    lbl.second->deleteLater();
-    lbl.first->deleteLater();
+    m_toolBar->removeAction(lbl);
+    lbl->deleteLater();
   }
 
   m_btnLabels.clear();
@@ -281,24 +280,35 @@ void MessagePreviewer::updateLabels(bool only_clear) {
     auto lbls = m_root.data()->getParentServiceRoot()->labelsNode()->labels();
 
     for (auto* label : lbls) {
+      /*
       LabelButton* btn_label = new LabelButton(this);
 
       btn_label->setLabel(label);
       btn_label->setCheckable(true);
       btn_label->setIcon(Label::generateIcon(label->color()));
       btn_label->setAutoRaise(false);
-      btn_label->setText(QSL(" ") + label->title());
+      btn_label->setText();
       btn_label->setToolButtonStyle(Qt::ToolButtonStyle(qApp->settings()
                                                           ->value(GROUP(GUI), SETTING(GUI::ToolbarStyle))
                                                           .toInt()));
       btn_label->setToolTip(label->title());
-      btn_label->setChecked(DatabaseQueries::isLabelAssignedToMessage(database, label, m_message));
+      btn_label->setChecked();
+      */
 
-      QAction* act_label = m_toolBar->addWidget(btn_label);
+      LabelToolbarAction* act_label = new LabelToolbarAction(this);
 
-      connect(btn_label, &QToolButton::toggled, this, &MessagePreviewer::switchLabel);
+      act_label->setIcon(Label::generateIcon(label->color()));
+      act_label->setText(QSL(" ") + label->title());
+      act_label->setCheckable(true);
+      act_label->setChecked(DatabaseQueries::isLabelAssignedToMessage(database, label, m_message));
+      act_label->setToolTip(label->title());
+      act_label->setLabel(label);
 
-      m_btnLabels.append({btn_label, act_label});
+      m_toolBar->addAction(act_label);
+
+      connect(act_label, &QAction::toggled, this, &MessagePreviewer::switchLabel);
+
+      m_btnLabels.append(act_label);
     }
   }
 }
@@ -319,12 +329,12 @@ void MessagePreviewer::ensureDefaultBrowserVisible() {
   m_viewerLayout->setCurrentIndex(INDEX_DEFAULT);
 }
 
-LabelButton::LabelButton(QWidget* parent) : QToolButton(parent), m_label(nullptr) {}
+LabelToolbarAction::LabelToolbarAction(QObject* parent) : QAction(parent), m_label(nullptr) {}
 
-Label* LabelButton::label() const {
+Label* LabelToolbarAction::label() const {
   return m_label.data();
 }
 
-void LabelButton::setLabel(Label* label) {
+void LabelToolbarAction::setLabel(Label* label) {
   m_label = label;
 }
