@@ -8,19 +8,17 @@ import sys
 from datetime import datetime
 
 json_data = json.loads(sys.stdin.read())
-json_feed = "{{\"title\": \"{title}\", \"items\": [{items}]}}"
-items = list()
-
 json_root = json_data[0]
+json_feed = {"title": "Nvidia " + json_root["articleLocalizedTag"], "items": []}
 
-for ite in json_root["articlePagesList"]:
-    article_author = json.dumps(ite["authorName"])
-    article_url = json.dumps(ite["articlePath"])
-    article_title = json.dumps(ite["articleTitle"])
-    article_time = json.dumps(datetime.strptime(ite["articleDate"], "%B %d, %Y").isoformat())
-    article_contents = json.dumps(ite["articleShortDescription"])
+for article in json_root["articlePagesList"]:
+    new_item = {
+        "title": article["articleTitle"],
+        "authors": [{"name": article["authorName"]}],
+        "content_text": article["articleShortDescription"],
+        "url": article["articlePath"],
+        "date_published": datetime.strptime(article["articleDate"], "%B %d, %Y").isoformat()
+    }
+    json_feed["items"].append(new_item)
 
-    items.append("{{\"title\": {title}, \"authors\": [{{\"name\": {author}}}], \"content_text\": {html}, \"url\": {url}, \"date_published\": {date}}}".format(title=article_title, html=article_contents, url=article_url, date=article_time, author=article_author))
-
-json_feed = json_feed.format(title="Nvidia " + json_root["articleLocalizedTag"], items=", ".join(items))
-print(json_feed)
+print(json.dumps(json_feed))
