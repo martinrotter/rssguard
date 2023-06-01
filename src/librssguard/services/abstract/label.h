@@ -8,10 +8,10 @@
 #include <QColor>
 
 class RSSGUARD_DLLSPEC Label : public RootItem {
-  Q_OBJECT
+    Q_OBJECT
 
-  // Added for message filtering with labels.
-  Q_PROPERTY(QColor color READ color)
+    // Added for message filtering with labels.
+    Q_PROPERTY(QColor color READ color)
 
   public:
     explicit Label(const QString& name, const QColor& color, RootItem* parent_item = nullptr);
@@ -38,8 +38,8 @@ class RSSGUARD_DLLSPEC Label : public RootItem {
     static QIcon generateIcon(const QColor& color);
 
   public slots:
-    void assignToMessage(const Message& msg);
-    void deassignFromMessage(const Message& msg);
+    void assignToMessage(const Message& msg, bool reload_model = true);
+    void deassignFromMessage(const Message& msg, bool reload_model = true);
 
   private:
     QColor m_color;

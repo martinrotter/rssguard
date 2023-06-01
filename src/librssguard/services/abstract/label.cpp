@@ -105,23 +105,27 @@ QIcon Label::generateIcon(const QColor& color) {
   return pxm;
 }
 
-void Label::assignToMessage(const Message& msg) {
+void Label::assignToMessage(const Message& msg, bool reload_model) {
   QSqlDatabase database = qApp->database()->driver()->threadSafeConnection(metaObject()->className());
 
   if (getParentServiceRoot()->onBeforeLabelMessageAssignmentChanged({this}, {msg}, true)) {
     DatabaseQueries::assignLabelToMessage(database, this, msg);
 
-    getParentServiceRoot()->onAfterLabelMessageAssignmentChanged({this}, {msg}, true);
+    if (reload_model) {
+      getParentServiceRoot()->onAfterLabelMessageAssignmentChanged({this}, {msg}, true);
+    }
   }
 }
 
-void Label::deassignFromMessage(const Message& msg) {
+void Label::deassignFromMessage(const Message& msg, bool reload_model) {
   QSqlDatabase database = qApp->database()->driver()->threadSafeConnection(metaObject()->className());
 
   if (getParentServiceRoot()->onBeforeLabelMessageAssignmentChanged({this}, {msg}, false)) {
     DatabaseQueries::deassignLabelFromMessage(database, this, msg);
 
-    getParentServiceRoot()->onAfterLabelMessageAssignmentChanged({this}, {msg}, false);
+    if (reload_model) {
+      getParentServiceRoot()->onAfterLabelMessageAssignmentChanged({this}, {msg}, false);
+    }
   }
 }
 

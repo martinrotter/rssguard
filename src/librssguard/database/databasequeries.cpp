@@ -111,10 +111,10 @@ bool DatabaseQueries::assignLabelToMessage(const QSqlDatabase& db, Label* label,
 
   QSqlQuery q(db);
 
-  // TODO: ověřit.
   q.setForwardOnly(true);
+  // TODO: pro mysql, kde operátor concatenate || není
   q.prepare(QSL("UPDATE Messages "
-                "SET Messages.labels = Messages.labels || :label "
+                "SET labels = Messages.labels || :label "
                 "WHERE Messages.custom_id = :message AND account_id = :account_id;"));
   q.bindValue(QSL(":label"), QSL("%1.").arg(label->customId()));
   q.bindValue(QSL(":message"), msg.m_customId.isEmpty() ? QString::number(msg.m_id) : msg.m_customId);
@@ -1463,12 +1463,12 @@ QPair<int, int> DatabaseQueries::updateMessages(const QSqlDatabase& db,
 
       // Adjust labels tweaked by filters.
       for (Label* assigned_by_filter : message.m_assignedLabelsByFilter) {
-        assigned_by_filter->assignToMessage(message);
+        assigned_by_filter->assignToMessage(message, false);
         lbls_changed = true;
       }
 
       for (Label* removed_by_filter : message.m_deassignedLabelsByFilter) {
-        removed_by_filter->deassignFromMessage(message);
+        removed_by_filter->deassignFromMessage(message, false);
         lbls_changed = true;
       }
 

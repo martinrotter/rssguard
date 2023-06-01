@@ -1,8 +1,17 @@
 USE ##;
 -- !
-SET FOREIGN_KEY_CHECKS = 0;
+/* Add "labels" column. */
+ALTER TABLE Messages ADD labels TEXT NOT NULL DEFAULT ".";
 -- !
-!! db_update_sqlite_4_5.sql
+/* Copy label IDs to Messages table. */
+UPDATE Messages SET labels = (
+  SELECT
+    IF(
+      GROUP_CONCAT(LabelsInMessages.label) IS NOT NULL,
+      CONCAT(".",REPLACE(GROUP_CONCAT(LabelsInMessages.label), ",", "."), "."),
+      ".")
+    FROM LabelsInMessages
+    WHERE Messages.custom_id = LabelsInMessages.message);
 -- !
-SET FOREIGN_KEY_CHECKS = 1;
--- !
+/* Remove LabelsInMessages table. */
+DROP TABLE IF EXISTS LabelsInMessages;

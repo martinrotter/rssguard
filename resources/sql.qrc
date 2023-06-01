@@ -4,10 +4,12 @@
     <file>sql/db_update_mysql_1_2.sql</file>
     <file>sql/db_update_mysql_2_3.sql</file>
     <file>sql/db_update_mysql_3_4.sql</file>
+    <file>sql/db_update_mysql_4_5.sql</file>
 
     <file>sql/db_init_sqlite.sql</file>
     <file>sql/db_update_sqlite_1_2.sql</file>
     <file>sql/db_update_sqlite_2_3.sql</file>
     <file>sql/db_update_sqlite_3_4.sql</file>
+    <file>sql/db_update_sqlite_4_5.sql</file>
   </qresource>
 </RCC>
