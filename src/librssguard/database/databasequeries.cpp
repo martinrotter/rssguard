@@ -75,13 +75,12 @@ QVariantHash DatabaseQueries::deserializeCustomData(const QString& data) {
 bool DatabaseQueries::isLabelAssignedToMessage(const QSqlDatabase& db, Label* label, const Message& msg) {
   QSqlQuery q(db);
 
-  // TODO: ověřit
   q.setForwardOnly(true);
   q.prepare(QSL("SELECT COUNT(*) FROM Messages "
                 "WHERE "
-                "Messages.labels LIKE :label AND "
-                "Messages.custom_id = :message AND "
-                "account_id = :account_id;"));
+                "  Messages.labels LIKE :label AND "
+                "  Messages.custom_id = :message AND "
+                "  account_id = :account_id;"));
   q.bindValue(QSL(":label"), QSL("%.%1.%").arg(label->customId()));
   q.bindValue(QSL(":message"), msg.m_customId);
   q.bindValue(QSL(":account_id"), label->getParentServiceRoot()->accountId());
@@ -94,10 +93,9 @@ bool DatabaseQueries::isLabelAssignedToMessage(const QSqlDatabase& db, Label* la
 bool DatabaseQueries::deassignLabelFromMessage(const QSqlDatabase& db, Label* label, const Message& msg) {
   QSqlQuery q(db);
 
-  // TODO: ověřit.
   q.setForwardOnly(true);
   q.prepare(QSL("UPDATE Messages "
-                "SET Messages.labels = REPLACE(Messages.labels, :label, \".\") "
+                "SET labels = REPLACE(Messages.labels, :label, \".\") "
                 "WHERE Messages.custom_id = :message AND account_id = :account_id;"));
   q.bindValue(QSL(":label"), QSL(".%1.").arg(label->customId()));
   q.bindValue(QSL(":message"), msg.m_customId.isEmpty() ? QString::number(msg.m_id) : msg.m_customId);
@@ -135,10 +133,9 @@ bool DatabaseQueries::setLabelsForMessage(const QSqlDatabase& db, const QList<La
   QStringList lbls = FROM_STD_LIST(QStringList, std_lbls);
   QString lblss = QSL(".") + lbls.join('.') + QSL(".");
 
-  // TODO: ověřit.
   q.setForwardOnly(true);
   q.prepare(QSL("UPDATE Messages "
-                "SET Messages.labels = :labels "
+                "SET labels = :labels "
                 "WHERE Messages.custom_id = :message AND account_id = :account_id;"));
   q.bindValue(QSL(":labels"), lblss);
   q.bindValue(QSL(":message"), msg.m_customId.isEmpty() ? QString::number(msg.m_id) : msg.m_customId);
@@ -175,7 +172,6 @@ QList<Label*> DatabaseQueries::getLabelsForMessage(const QSqlDatabase& db,
   QList<Label*> labels;
   QSqlQuery q(db);
 
-  // TODO: ověřit
   q.setForwardOnly(true);
   q.prepare(QSL("SELECT labels FROM Messages WHERE custom_id = :message AND account_id = :account_id;"));
 
@@ -230,10 +226,9 @@ bool DatabaseQueries::deleteLabel(const QSqlDatabase& db, Label* label) {
   q.bindValue(QSL(":id"), label->id());
   q.bindValue(QSL(":account_id"), label->getParentServiceRoot()->accountId());
 
-  // TODO: ověřit
   if (q.exec()) {
     q.prepare(QSL("UPDATE Messages "
-                  "SET Messages.labels = REPLACE(Messages.labels, :label, \".\") "
+                  "SET labels = REPLACE(Messages.labels, :label, \".\") "
                   "WHERE account_id = :account_id;"));
     q.bindValue(QSL(":label"), QSL(".%1.").arg(label->customId()));
     q.bindValue(QSL(":account_id"), label->getParentServiceRoot()->accountId());
