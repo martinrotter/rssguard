@@ -69,6 +69,7 @@ CREATE TABLE Messages (
   account_id      INTEGER     NOT NULL,
   custom_id       TEXT,
   custom_hash     TEXT,
+  Labels          TEXT        NOT NULL DEFAULT "." /* Holds list of assigned labels. */
   
   FOREIGN KEY (account_id) REFERENCES Accounts (id) ON DELETE CASCADE
 );

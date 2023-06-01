@@ -270,12 +270,6 @@ void ServiceRoot::removeLeftOverMessageFilterAssignments() {
   DatabaseQueries::purgeLeftoverMessageFilterAssignments(database, accountId());
 }
 
-void ServiceRoot::removeLeftOverMessageLabelAssignments() {
-  QSqlDatabase database = qApp->database()->driver()->connection(metaObject()->className());
-
-  DatabaseQueries::purgeLeftoverLabelAssignments(database, accountId());
-}
-
 QList<Message> ServiceRoot::undeletedMessages() const {
   QSqlDatabase database = qApp->database()->driver()->connection(metaObject()->className());
 
@@ -506,7 +500,6 @@ void ServiceRoot::syncIn() {
     // so remove left over messages and filter assignments.
     removeLeftOverMessages();
     removeLeftOverMessageFilterAssignments();
-    removeLeftOverMessageLabelAssignments();
 
     auto chi = new_tree->childItems();
 
@@ -724,16 +717,14 @@ bool ServiceRoot::loadMessagesForItem(RootItem* item, MessagesModel* model) {
   }
   else if (item->kind() == RootItem::Kind::Label) {
     // Show messages with particular label.
-    model->setFilter(QSL("Messages.is_deleted = 0 AND Messages.is_pdeleted = 0 AND Messages.account_id = %1 AND "
-                         "(SELECT COUNT(*) FROM LabelsInMessages WHERE account_id = %1 AND message = "
-                         "Messages.custom_id AND label = '%2') > 0")
+    model->setFilter(QSL("Messages.is_deleted = 0 AND Messages.is_pdeleted = 0 AND "
+                         "Messages.labels LIKE \"%.%2.%\" AND Messages.account_id = %1")
                        .arg(QString::number(accountId()), item->customId()));
   }
   else if (item->kind() == RootItem::Kind::Labels) {
     // Show messages with any label.
-    model->setFilter(QSL("Messages.is_deleted = 0 AND Messages.is_pdeleted = 0 AND Messages.account_id = %1 AND "
-                         "(SELECT COUNT(*) FROM LabelsInMessages WHERE account_id = %1 AND message = "
-                         "Messages.custom_id) > 0")
+    model->setFilter(QSL("Messages.is_deleted = 0 AND Messages.is_pdeleted = 0 AND "
+                         "LENGTH(Messages.labels) > 2 AND Messages.account_id = %1")
                        .arg(QString::number(accountId())));
   }
   else if (item->kind() == RootItem::Kind::ServiceRoot) {

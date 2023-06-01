@@ -60,8 +60,6 @@ void DatabaseCleaner::purgeDatabaseData(CleanerOrders which_data) {
     emit purgeProgress(progress, tr("Starred articles purged..."));
   }
 
-  result &= DatabaseQueries::purgeLeftoverLabelAssignments(database);
-
   if (which_data.m_shrinkDatabase) {
     progress += difference;
     emit purgeProgress(progress, tr("Shrinking database file..."));

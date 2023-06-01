@@ -36,7 +36,7 @@ class DatabaseQueries {
     static QList<Label*> getLabelsForAccount(const QSqlDatabase& db, int account_id);
     static QList<Label*> getLabelsForMessage(const QSqlDatabase& db,
                                              const Message& msg,
-                                             const QList<Label*> installed_labels);
+                                             const QList<Label*>& installed_labels);
     static bool updateLabel(const QSqlDatabase& db, Label* label);
     static bool deleteLabel(const QSqlDatabase& db, Label* label);
     static bool createLabel(const QSqlDatabase& db, Label* label, int account_id);
@@ -66,11 +66,6 @@ class DatabaseQueries {
     static bool purgeRecycleBin(const QSqlDatabase& db);
     static bool purgeMessagesFromBin(const QSqlDatabase& db, bool clear_only_read, int account_id);
     static bool purgeLeftoverMessages(const QSqlDatabase& db, int account_id);
-
-    // Purges message/label assignments where source message or label does not exist.
-    // If account ID smaller than 1 is passed, then do this for all accounts.
-    static bool purgeLeftoverLabelAssignments(const QSqlDatabase& db, int account_id = 0);
-    static bool purgeLabelsAndLabelAssignments(const QSqlDatabase& db, int account_id);
 
     // Counts of unread/all messages.
     static QMap<QString, QPair<int, int>> getMessageCountsForCategory(const QSqlDatabase& db,
@@ -125,9 +120,7 @@ class DatabaseQueries {
                                                     RootItem::ReadStatus target_read,
                                                     int account_id,
                                                     bool* ok = nullptr);
-    static QStringList customIdsOfUnreadMessages(const QSqlDatabase& db,
-                                                 int account_id,
-                                                 bool* ok = nullptr);
+    static QStringList customIdsOfUnreadMessages(const QSqlDatabase& db, int account_id, bool* ok = nullptr);
     static QStringList customIdsOfMessagesFromAccount(const QSqlDatabase& db,
                                                       RootItem::ReadStatus target_read,
                                                       int account_id,

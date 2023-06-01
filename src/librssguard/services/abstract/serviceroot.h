@@ -264,11 +264,6 @@ class ServiceRoot : public RootItem {
     // from another machine and then performs sync-in on this machine.
     void removeLeftOverMessageFilterAssignments();
 
-    // Removes all labels/message assignments which are
-    // assigned to non-existing messages or which are
-    // assigned from non-existing labels.
-    void removeLeftOverMessageLabelAssignments();
-
     // Takes lists of feeds/categories and assembles them into the tree structure.
     void assembleCategories(const Assignment& categories);
     void assembleFeeds(const Assignment& feeds);

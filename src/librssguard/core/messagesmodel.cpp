@@ -247,7 +247,8 @@ void MessagesModel::setupHeaderData() {
     /*: Tooltip for custom hash string of message.*/ tr("Custom hash") <<
     /*: Tooltip for name of feed for message.*/ tr("Feed") <<
     /*: Tooltip for indication of presence of enclosures.*/ tr("Has enclosures") <<
-    /*: Tooltip for indication of labels of message.*/ tr("Assigned labels");
+    /*: Tooltip for indication of labels of message.*/ tr("Assigned labels") <<
+    /*: Tooltip for indication of label IDs of message.*/ tr("Assigned label IDs");
 
   m_tooltipData << tr("ID of the article.") << tr("Is article read?") << tr("Is article important?")
                 << tr("Is article deleted?") << tr("Is article permanently deleted from recycle bin?")
@@ -256,7 +257,8 @@ void MessagesModel::setupHeaderData() {
                 << tr("Contents of the article.") << tr("List of attachments.") << tr("Score of the article.")
                 << tr("Account ID of the article.") << tr("Custom ID of the article.")
                 << tr("Custom hash of the article.") << tr("Name of feed of the article.")
-                << tr("Indication of enclosures presence within the article.") << tr("Labels assigned to the article.");
+                << tr("Indication of enclosures presence within the article.") << tr("Labels assigned to the article.")
+                << tr("Label IDs assigned to the article.");
 }
 
 Qt::ItemFlags MessagesModel::flags(const QModelIndex& index) const {
