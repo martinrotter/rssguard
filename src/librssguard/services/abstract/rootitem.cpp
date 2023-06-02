@@ -124,7 +124,7 @@ QVariant RootItem::data(int column, int role) const {
   switch (role) {
     case Qt::ItemDataRole::ToolTipRole:
       if (column == FDS_MODEL_TITLE_INDEX) {
-        QString tool_tip = m_title;
+        QString tool_tip = QSL("<b>%1</b>").arg(m_title);
 
         if (!m_description.isEmpty()) {
           tool_tip += QL1S("\n") + m_description;
@@ -136,7 +136,7 @@ QVariant RootItem::data(int column, int role) const {
           tool_tip += QL1S("\n\n") + extra_tooltip;
         }
 
-        return tool_tip;
+        return tool_tip.replace(QSL("\n"), QSL("<br />"));
       }
       else if (column == FDS_MODEL_COUNTS_INDEX) {
         //: Tooltip for "unread" column of feed list.

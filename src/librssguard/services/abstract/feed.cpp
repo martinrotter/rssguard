@@ -334,8 +334,10 @@ QString Feed::additionalTooltip() const {
 
   return tr("Auto-update status: %1\n"
             "Active message filters: %2\n"
-            "Status: %3")
-    .arg(getAutoUpdateStatusDescription(), QString::number(m_messageFilters.size()), stat);
+            "Status: %3\n"
+            "Source: <a href=\"%4\">%4</a>\n"
+            "Item ID: %5")
+    .arg(getAutoUpdateStatusDescription(), QString::number(m_messageFilters.size()), stat, m_source, customId());
 }
 
 Qt::ItemFlags Feed::additionalFlags() const {
