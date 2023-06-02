@@ -69,7 +69,7 @@ CREATE TABLE Messages (
   account_id      INTEGER     NOT NULL,
   custom_id       TEXT,
   custom_hash     TEXT,
-  labels          TEXT        NOT NULL DEFAULT "." /* Holds list of assigned label IDs. */
+  labels          TEXT        NOT NULL DEFAULT ".", /* Holds list of assigned label IDs. */
   
   FOREIGN KEY (account_id) REFERENCES Accounts (id) ON DELETE CASCADE
 );
@@ -95,14 +95,6 @@ CREATE TABLE Labels (
   color               VARCHAR(7),
   custom_id           TEXT,
   account_id          INTEGER     NOT NULL,
-  
-  FOREIGN KEY (account_id) REFERENCES Accounts (id) ON DELETE CASCADE
-);
--- !
-CREATE TABLE LabelsInMessages (
-  label             TEXT        NOT NULL, /* Custom ID of label. */
-  message           TEXT        NOT NULL, /* Custom ID of message. */
-  account_id        INTEGER     NOT NULL,
   
   FOREIGN KEY (account_id) REFERENCES Accounts (id) ON DELETE CASCADE
 );

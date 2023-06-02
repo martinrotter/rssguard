@@ -368,7 +368,7 @@ bool FeedsProxyModel::filterAcceptsRowInternal(int source_row, const QModelIndex
     return QSortFilterProxyModel::filterAcceptsRow(source_row, source_parent);
   }
   else {
-    // NOTE: If item has < 0 of unread message it may mean, that the count
+    // NOTE: If item has < 0 of unread messages it may mean, that the count
     // of unread messages is not (yet) known, display that item too.
     //
     // Also, the actual selected item should not be filtered out too.
