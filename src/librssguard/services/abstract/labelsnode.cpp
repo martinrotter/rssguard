@@ -34,6 +34,11 @@ QList<Message> LabelsNode::undeletedMessages() const {
 
 int LabelsNode::countOfUnreadMessages() const {
   auto chi = childItems();
+
+  if (chi.isEmpty()) {
+    return 0;
+  }
+
   return boolinq::from(chi)
     .max([](RootItem* it) {
       return it->countOfUnreadMessages();
@@ -43,6 +48,11 @@ int LabelsNode::countOfUnreadMessages() const {
 
 int LabelsNode::countOfAllMessages() const {
   auto chi = childItems();
+
+  if (chi.isEmpty()) {
+    return 0;
+  }
+
   return boolinq::from(chi)
     .max([](RootItem* it) {
       return it->countOfAllMessages();
