@@ -110,10 +110,18 @@ bool DatabaseQueries::assignLabelToMessage(const QSqlDatabase& db, Label* label,
   QSqlQuery q(db);
 
   q.setForwardOnly(true);
-  // TODO: pro mysql, kde operátor concatenate || není
-  q.prepare(QSL("UPDATE Messages "
-                "SET labels = Messages.labels || :label "
-                "WHERE Messages.custom_id = :message AND account_id = :account_id;"));
+
+  if (db.driverName() == QSL(APP_DB_MYSQL_DRIVER)) {
+    q.prepare(QSL("UPDATE Messages "
+                  "SET labels = CONCAT(Messages.labels, :label) "
+                  "WHERE Messages.custom_id = :message AND account_id = :account_id;"));
+  }
+  else {
+    q.prepare(QSL("UPDATE Messages "
+                  "SET labels = Messages.labels || :label "
+                  "WHERE Messages.custom_id = :message AND account_id = :account_id;"));
+  }
+
   q.bindValue(QSL(":label"), QSL("%1.").arg(label->customId()));
   q.bindValue(QSL(":message"), msg.m_customId.isEmpty() ? QString::number(msg.m_id) : msg.m_customId);
   q.bindValue(QSL(":account_id"), label->getParentServiceRoot()->accountId());
