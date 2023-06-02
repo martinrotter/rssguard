@@ -3,10 +3,16 @@
 #include "gui/itemdetails.h"
 
 #include "definitions/definitions.h"
+#include "miscellaneous/application.h"
+#include "network-web/webfactory.h"
 #include "services/abstract/rootitem.h"
 
 ItemDetails::ItemDetails(QWidget* parent) : QWidget(parent) {
   m_ui.setupUi(this);
+
+  connect(m_ui.m_lblInfo, &QLabel::linkActivated, this, [](const QString& link) {
+    qApp->web()->openUrlInExternalBrowser(link);
+  });
 }
 
 ItemDetails::~ItemDetails() {}
