@@ -31,11 +31,12 @@ int RecycleBin::countOfAllMessages() const {
 
 void RecycleBin::updateCounts(bool update_total_count) {
   QSqlDatabase database = qApp->database()->driver()->threadSafeConnection(metaObject()->className());
+  auto ac = DatabaseQueries::getMessageCountsForBin(database, getParentServiceRoot()->accountId());
 
-  m_unreadCount = DatabaseQueries::getMessageCountsForBin(database, getParentServiceRoot()->accountId(), false);
+  m_unreadCount = ac.m_unread;
 
   if (update_total_count) {
-    m_totalCount = DatabaseQueries::getMessageCountsForBin(database, getParentServiceRoot()->accountId(), true);
+    m_totalCount = ac.m_total;
   }
 }
 

@@ -8,7 +8,7 @@
 #include "services/abstract/label.h"
 
 class LabelsNode : public RootItem {
-  Q_OBJECT
+    Q_OBJECT
 
   public:
     explicit LabelsNode(RootItem* parent_item = nullptr);
@@ -18,6 +18,8 @@ class LabelsNode : public RootItem {
 
     virtual QList<Message> undeletedMessages() const;
     virtual QList<QAction*> contextMenuFeedsList();
+    virtual int countOfUnreadMessages() const;
+    virtual int countOfAllMessages() const;
 
   public slots:
     void createLabel();

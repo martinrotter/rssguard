@@ -196,12 +196,13 @@ void Feed::appendMessageFilter(MessageFilter* filter) {
 void Feed::updateCounts(bool including_total_count) {
   QSqlDatabase database = qApp->database()->driver()->threadSafeConnection(metaObject()->className());
   int account_id = getParentServiceRoot()->accountId();
+  auto fc = DatabaseQueries::getMessageCountsForFeed(database, customId(), account_id);
 
   if (including_total_count) {
-    setCountOfAllMessages(DatabaseQueries::getMessageCountsForFeed(database, customId(), account_id, true));
+    setCountOfAllMessages(fc.m_total);
   }
 
-  setCountOfUnreadMessages(DatabaseQueries::getMessageCountsForFeed(database, customId(), account_id, false));
+  setCountOfUnreadMessages(fc.m_unread);
 }
 
 bool Feed::cleanMessages(bool clean_read_only) {

@@ -25,12 +25,13 @@ QList<Message> ImportantNode::undeletedMessages() const {
 void ImportantNode::updateCounts(bool including_total_count) {
   QSqlDatabase database = qApp->database()->driver()->threadSafeConnection(metaObject()->className());
   int account_id = getParentServiceRoot()->accountId();
+  auto ac = DatabaseQueries::getImportantMessageCounts(database, account_id);
 
   if (including_total_count) {
-    m_totalCount = DatabaseQueries::getImportantMessageCounts(database, account_id, true);
+    m_totalCount = ac.m_total;
   }
 
-  m_unreadCount = DatabaseQueries::getImportantMessageCounts(database, account_id, false);
+  m_unreadCount = ac.m_unread;
 }
 
 bool ImportantNode::cleanMessages(bool clean_read_only) {

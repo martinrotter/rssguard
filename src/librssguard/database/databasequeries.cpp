@@ -280,7 +280,6 @@ bool DatabaseQueries::createLabel(const QSqlDatabase& db, Label* label, int acco
 bool DatabaseQueries::markLabelledMessagesReadUnread(const QSqlDatabase& db, Label* label, RootItem::ReadStatus read) {
   QSqlQuery q(db);
 
-  // TODO: ověřit
   q.setForwardOnly(true);
   q.prepare(QSL("UPDATE Messages SET is_read = :read "
                 "WHERE "
@@ -480,24 +479,24 @@ bool DatabaseQueries::purgeRecycleBin(const QSqlDatabase& db) {
   return q.exec();
 }
 
-QMap<QString, QPair<int, int>> DatabaseQueries::getMessageCountsForCategory(const QSqlDatabase& db,
-                                                                            const QString& custom_id,
-                                                                            int account_id,
-                                                                            bool only_total_counts,
-                                                                            bool* ok) {
-  QMap<QString, QPair<int, int>> counts;
+QMap<QString, ArticleCounts> DatabaseQueries::getMessageCountsForCategory(const QSqlDatabase& db,
+                                                                          const QString& custom_id,
+                                                                          int account_id,
+                                                                          bool include_total_counts,
+                                                                          bool* ok) {
+  QMap<QString, ArticleCounts> counts;
   QSqlQuery q(db);
 
   q.setForwardOnly(true);
 
-  if (only_total_counts) {
-    q.prepare(QSL("SELECT feed, sum((is_read + 1) % 2), count(*) FROM Messages "
+  if (include_total_counts) {
+    q.prepare(QSL("SELECT feed, SUM((is_read + 1) % 2), COUNT(*) FROM Messages "
                   "WHERE feed IN (SELECT custom_id FROM Feeds WHERE category = :category AND account_id = :account_id) "
                   "AND is_deleted = 0 AND is_pdeleted = 0 AND account_id = :account_id "
                   "GROUP BY feed;"));
   }
   else {
-    q.prepare(QSL("SELECT feed, sum((is_read + 1) % 2) FROM Messages "
+    q.prepare(QSL("SELECT feed, SUM((is_read + 1) % 2) FROM Messages "
                   "WHERE feed IN (SELECT custom_id FROM Feeds WHERE category = :category AND account_id = :account_id) "
                   "AND is_deleted = 0 AND is_pdeleted = 0 AND account_id = :account_id "
                   "GROUP BY feed;"));
@@ -509,16 +508,15 @@ QMap<QString, QPair<int, int>> DatabaseQueries::getMessageCountsForCategory(cons
   if (q.exec()) {
     while (q.next()) {
       QString feed_custom_id = q.value(0).toString();
-      int unread_count = q.value(1).toInt();
+      ArticleCounts ac;
 
-      if (only_total_counts) {
-        int total_count = q.value(2).toInt();
+      ac.m_unread = q.value(1).toInt();
 
-        counts.insert(feed_custom_id, QPair<int, int>(unread_count, total_count));
+      if (include_total_counts) {
+        ac.m_total = q.value(2).toInt();
       }
-      else {
-        counts.insert(feed_custom_id, QPair<int, int>(unread_count, 0));
-      }
+
+      counts.insert(feed_custom_id, ac);
     }
 
     if (ok != nullptr) {
@@ -534,22 +532,22 @@ QMap<QString, QPair<int, int>> DatabaseQueries::getMessageCountsForCategory(cons
   return counts;
 }
 
-QMap<QString, QPair<int, int>> DatabaseQueries::getMessageCountsForAccount(const QSqlDatabase& db,
-                                                                           int account_id,
-                                                                           bool only_total_counts,
-                                                                           bool* ok) {
-  QMap<QString, QPair<int, int>> counts;
+QMap<QString, ArticleCounts> DatabaseQueries::getMessageCountsForAccount(const QSqlDatabase& db,
+                                                                         int account_id,
+                                                                         bool include_total_counts,
+                                                                         bool* ok) {
+  QMap<QString, ArticleCounts> counts;
   QSqlQuery q(db);
 
   q.setForwardOnly(true);
 
-  if (only_total_counts) {
-    q.prepare(QSL("SELECT feed, sum((is_read + 1) % 2), count(*) FROM Messages "
+  if (include_total_counts) {
+    q.prepare(QSL("SELECT feed, SUM((is_read + 1) % 2), COUNT(*) FROM Messages "
                   "WHERE is_deleted = 0 AND is_pdeleted = 0 AND account_id = :account_id "
                   "GROUP BY feed;"));
   }
   else {
-    q.prepare(QSL("SELECT feed, sum((is_read + 1) % 2) FROM Messages "
+    q.prepare(QSL("SELECT feed, SUM((is_read + 1) % 2) FROM Messages "
                   "WHERE is_deleted = 0 AND is_pdeleted = 0 AND account_id = :account_id "
                   "GROUP BY feed;"));
   }
@@ -559,16 +557,15 @@ QMap<QString, QPair<int, int>> DatabaseQueries::getMessageCountsForAccount(const
   if (q.exec()) {
     while (q.next()) {
       QString feed_id = q.value(0).toString();
-      int unread_count = q.value(1).toInt();
+      ArticleCounts ac;
 
-      if (only_total_counts) {
-        int total_count = q.value(2).toInt();
+      ac.m_unread = q.value(1).toInt();
 
-        counts.insert(feed_id, QPair<int, int>(unread_count, total_count));
+      if (include_total_counts) {
+        ac.m_total = q.value(2).toInt();
       }
-      else {
-        counts.insert(feed_id, QPair<int, int>(unread_count, 0));
-      }
+
+      counts.insert(feed_id, ac);
     }
 
     if (ok != nullptr) {
@@ -584,24 +581,16 @@ QMap<QString, QPair<int, int>> DatabaseQueries::getMessageCountsForAccount(const
   return counts;
 }
 
-int DatabaseQueries::getMessageCountsForFeed(const QSqlDatabase& db,
-                                             const QString& feed_custom_id,
-                                             int account_id,
-                                             bool only_total_counts,
-                                             bool* ok) {
+ArticleCounts DatabaseQueries::getMessageCountsForFeed(const QSqlDatabase& db,
+                                                       const QString& feed_custom_id,
+                                                       int account_id,
+                                                       bool* ok) {
   QSqlQuery q(db);
 
   q.setForwardOnly(true);
-
-  if (only_total_counts) {
-    q.prepare(QSL("SELECT count(*) FROM Messages "
-                  "WHERE feed = :feed AND is_deleted = 0 AND is_pdeleted = 0 AND account_id = :account_id;"));
-  }
-  else {
-    q.prepare(QSL("SELECT count(*) FROM Messages "
-                  "WHERE feed = :feed AND is_deleted = 0 AND is_pdeleted = 0 AND is_read = 0 AND account_id = "
-                  ":account_id;"));
-  }
+  q.prepare(QSL("SELECT COUNT(*), SUM(is_read) FROM Messages "
+                "WHERE feed = :feed AND is_deleted = 0 AND is_pdeleted = 0 AND "
+                "      is_read = 0 AND account_id = :account_id;"));
 
   q.bindValue(QSL(":feed"), feed_custom_id);
   q.bindValue(QSL(":account_id"), account_id);
@@ -611,44 +600,35 @@ int DatabaseQueries::getMessageCountsForFeed(const QSqlDatabase& db,
       *ok = true;
     }
 
-    return q.value(0).toInt();
+    ArticleCounts ac;
+
+    ac.m_total = q.value(0).toInt();
+    ac.m_unread = ac.m_total - q.value(1).toInt();
+
+    return ac;
   }
   else {
     if (ok != nullptr) {
       *ok = false;
     }
 
-    return 0;
+    return {};
   }
 }
 
-int DatabaseQueries::getMessageCountsForLabel(const QSqlDatabase& db,
-                                              Label* label,
-                                              int account_id,
-                                              bool only_total_counts,
-                                              bool* ok) {
+ArticleCounts DatabaseQueries::getMessageCountsForLabel(const QSqlDatabase& db,
+                                                        Label* label,
+                                                        int account_id,
+                                                        bool* ok) {
   QSqlQuery q(db);
 
   q.setForwardOnly(true);
-
-  // TODO: ověřit
-  if (only_total_counts) {
-    q.prepare(QSL("SELECT COUNT(*) FROM Messages "
-                  "WHERE "
-                  "  is_deleted = 0 AND "
-                  "  is_pdeleted = 0 AND "
-                  "  account_id = :account_id AND "
-                  "  labels LIKE :label;"));
-  }
-  else {
-    q.prepare(QSL("SELECT COUNT(*) FROM Messages "
-                  "WHERE "
-                  "  is_deleted = 0 AND "
-                  "  is_pdeleted = 0 AND "
-                  "  is_read = 0 AND "
-                  "  account_id = :account_id AND "
-                  "  labels LIKE :label;"));
-  }
+  q.prepare(QSL("SELECT COUNT(*), SUM(is_read) FROM Messages "
+                "WHERE "
+                "  is_deleted = 0 AND "
+                "  is_pdeleted = 0 AND "
+                "  account_id = :account_id AND "
+                "  labels LIKE :label;"));
 
   q.bindValue(QSL(":account_id"), account_id);
   q.bindValue(QSL(":label"), QSL("%.%1.%").arg(label->customId()));
@@ -658,35 +638,29 @@ int DatabaseQueries::getMessageCountsForLabel(const QSqlDatabase& db,
       *ok = true;
     }
 
-    return q.value(0).toInt();
+    ArticleCounts ac;
+
+    ac.m_total = q.value(0).toInt();
+    ac.m_unread = ac.m_total - q.value(1).toInt();
+
+    return ac;
   }
   else {
     if (ok != nullptr) {
       *ok = false;
     }
 
-    return 0;
+    return {};
   }
 }
 
-int DatabaseQueries::getImportantMessageCounts(const QSqlDatabase& db,
-                                               int account_id,
-                                               bool only_total_counts,
-                                               bool* ok) {
+ArticleCounts DatabaseQueries::getImportantMessageCounts(const QSqlDatabase& db, int account_id, bool* ok) {
   QSqlQuery q(db);
 
   q.setForwardOnly(true);
-
-  if (only_total_counts) {
-    q.prepare(QSL("SELECT count(*) FROM Messages "
-                  "WHERE is_important = 1 AND is_deleted = 0 AND is_pdeleted = 0 AND account_id = :account_id;"));
-  }
-  else {
-    q.prepare(QSL("SELECT count(*) FROM Messages "
-                  "WHERE is_read = 0 AND is_important = 1 AND is_deleted = 0 AND is_pdeleted = 0 AND account_id = "
-                  ":account_id;"));
-  }
-
+  q.prepare(QSL("SELECT COUNT(*), SUM(is_read) FROM Messages "
+                "WHERE is_important = 1 AND is_deleted = 0 AND is_pdeleted = 0 AND account_id = "
+                ":account_id;"));
   q.bindValue(QSL(":account_id"), account_id);
 
   if (q.exec() && q.next()) {
@@ -694,14 +668,19 @@ int DatabaseQueries::getImportantMessageCounts(const QSqlDatabase& db,
       *ok = true;
     }
 
-    return q.value(0).toInt();
+    ArticleCounts ac;
+
+    ac.m_total = q.value(0).toInt();
+    ac.m_unread = ac.m_total - q.value(1).toInt();
+
+    return ac;
   }
   else {
     if (ok != nullptr) {
       *ok = false;
     }
 
-    return 0;
+    return {};
   }
 }
 
@@ -709,7 +688,7 @@ int DatabaseQueries::getUnreadMessageCounts(const QSqlDatabase& db, int account_
   QSqlQuery q(db);
 
   q.setForwardOnly(true);
-  q.prepare(QSL("SELECT count(*) FROM Messages "
+  q.prepare(QSL("SELECT COUNT(*) FROM Messages "
                 "WHERE is_read = 0 AND is_deleted = 0 AND is_pdeleted = 0 AND account_id = :account_id;"));
 
   q.bindValue(QSL(":account_id"), account_id);
@@ -730,22 +709,12 @@ int DatabaseQueries::getUnreadMessageCounts(const QSqlDatabase& db, int account_
   }
 }
 
-int DatabaseQueries::getMessageCountsForBin(const QSqlDatabase& db,
-                                            int account_id,
-                                            bool including_total_counts,
-                                            bool* ok) {
+ArticleCounts DatabaseQueries::getMessageCountsForBin(const QSqlDatabase& db, int account_id, bool* ok) {
   QSqlQuery q(db);
 
   q.setForwardOnly(true);
-
-  if (including_total_counts) {
-    q.prepare(QSL("SELECT count(*) FROM Messages "
-                  "WHERE is_deleted = 1 AND is_pdeleted = 0 AND account_id = :account_id;"));
-  }
-  else {
-    q.prepare(QSL("SELECT count(*) FROM Messages "
-                  "WHERE is_read = 0 AND is_deleted = 1 AND is_pdeleted = 0 AND account_id = :account_id;"));
-  }
+  q.prepare(QSL("SELECT COUNT(*), SUM(is_read) FROM Messages "
+                "WHERE is_deleted = 1 AND is_pdeleted = 0 AND account_id = :account_id;"));
 
   q.bindValue(QSL(":account_id"), account_id);
 
@@ -754,14 +723,19 @@ int DatabaseQueries::getMessageCountsForBin(const QSqlDatabase& db,
       *ok = true;
     }
 
-    return q.value(0).toInt();
+    ArticleCounts ac;
+
+    ac.m_total = q.value(0).toInt();
+    ac.m_unread = ac.m_total - q.value(1).toInt();
+
+    return ac;
   }
   else {
     if (ok != nullptr) {
       *ok = false;
     }
 
-    return 0;
+    return {};
   }
 }
 
@@ -769,17 +743,16 @@ QList<Message> DatabaseQueries::getUndeletedMessagesWithLabel(const QSqlDatabase
   QList<Message> messages;
   QSqlQuery q(db);
 
-  // TODO: ověřit
   q.prepare(QSL("SELECT %1 "
                 "FROM Messages "
                 "INNER JOIN Feeds "
                 "ON Messages.feed = Feeds.custom_id AND Messages.account_id = :account_id AND Messages.account_id = "
                 "Feeds.account_id "
                 "WHERE "
-                "  is_deleted = 0 AND "
-                "  is_pdeleted = 0 AND "
-                "  account_id = :account_id AND "
-                "  labels LIKE :label;")
+                "  Messages.is_deleted = 0 AND "
+                "  Messages.is_pdeleted = 0 AND "
+                "  Messages.account_id = :account_id AND "
+                "  Messages.labels LIKE :label;")
               .arg(messageTableAttributes(true).values().join(QSL(", "))));
   q.bindValue(QSL(":account_id"), label->getParentServiceRoot()->accountId());
   q.bindValue(QSL(":label"), QSL("%.%1.%").arg(label->customId()));
@@ -811,16 +784,15 @@ QList<Message> DatabaseQueries::getUndeletedLabelledMessages(const QSqlDatabase&
   QList<Message> messages;
   QSqlQuery q(db);
 
-  // TODO: ověřit
   q.prepare(QSL("SELECT %1 "
                 "FROM Messages "
-                "LEFT JOIN Feeds "
+                "INNER JOIN Feeds "
                 "ON Messages.feed = Feeds.custom_id AND Messages.account_id = Feeds.account_id "
                 "WHERE "
-                "  is_deleted = 0 AND "
-                "  is_pdeleted = 0 AND "
-                "  account_id = :account_id AND "
-                "  LENGTH(labels) > 2;")
+                "  Messages.is_deleted = 0 AND "
+                "  Messages.is_pdeleted = 0 AND "
+                "  Messages.account_id = :account_id AND "
+                "  LENGTH(Messages.labels) > 2;")
               .arg(messageTableAttributes(true).values().join(QSL(", "))));
   q.bindValue(QSL(":account_id"), account_id);
 
@@ -839,6 +811,8 @@ QList<Message> DatabaseQueries::getUndeletedLabelledMessages(const QSqlDatabase&
     }
   }
   else {
+    auto a = q.lastError().text();
+
     if (ok != nullptr) {
       *ok = false;
     }
@@ -1067,8 +1041,6 @@ QHash<QString, QStringList> DatabaseQueries::bagsOfMessages(const QSqlDatabase& 
   QSqlQuery q(db);
 
   q.setForwardOnly(true);
-
-  // TODO: ověřit
   q.prepare(QSL("SELECT custom_id FROM Messages "
                 "WHERE "
                 "  account_id = :account_id AND "
@@ -1798,7 +1770,6 @@ QStringList DatabaseQueries::customIdsOfMessagesFromLabel(const QSqlDatabase& db
   QSqlQuery q(db);
   QStringList ids;
 
-  // TODO: ověřit
   q.setForwardOnly(true);
   q.prepare(QSL("SELECT custom_id FROM Messages "
                 "WHERE "

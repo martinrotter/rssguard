@@ -77,12 +77,13 @@ bool Label::deleteViaGui() {
 void Label::updateCounts(bool including_total_count) {
   QSqlDatabase database = qApp->database()->driver()->threadSafeConnection(metaObject()->className());
   int account_id = getParentServiceRoot()->accountId();
+  auto ac = DatabaseQueries::getMessageCountsForLabel(database, this, account_id);
 
   if (including_total_count) {
-    setCountOfAllMessages(DatabaseQueries::getMessageCountsForLabel(database, this, account_id, true));
+    setCountOfAllMessages(ac.m_total);
   }
 
-  setCountOfUnreadMessages(DatabaseQueries::getMessageCountsForLabel(database, this, account_id, false));
+  setCountOfUnreadMessages(ac.m_unread);
 }
 
 QList<Message> Label::undeletedMessages() const {

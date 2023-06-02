@@ -20,6 +20,11 @@
 #include <QSqlError>
 #include <QSqlQuery>
 
+struct ArticleCounts {
+    int m_total = -1;
+    int m_unread = -1;
+};
+
 class DatabaseQueries {
   public:
     static QMap<int, QString> messageTableAttributes(bool only_msg_table);
@@ -68,34 +73,26 @@ class DatabaseQueries {
     static bool purgeLeftoverMessages(const QSqlDatabase& db, int account_id);
 
     // Counts of unread/all messages.
-    static QMap<QString, QPair<int, int>> getMessageCountsForCategory(const QSqlDatabase& db,
-                                                                      const QString& custom_id,
-                                                                      int account_id,
-                                                                      bool only_total_counts,
-                                                                      bool* ok = nullptr);
-    static QMap<QString, QPair<int, int>> getMessageCountsForAccount(const QSqlDatabase& db,
-                                                                     int account_id,
-                                                                     bool only_total_counts,
-                                                                     bool* ok = nullptr);
-    static int getMessageCountsForFeed(const QSqlDatabase& db,
-                                       const QString& feed_custom_id,
-                                       int account_id,
-                                       bool only_total_counts,
-                                       bool* ok = nullptr);
-    static int getMessageCountsForLabel(const QSqlDatabase& db,
-                                        Label* label,
-                                        int account_id,
-                                        bool only_total_counts,
-                                        bool* ok = nullptr);
-    static int getImportantMessageCounts(const QSqlDatabase& db,
-                                         int account_id,
-                                         bool only_total_counts,
-                                         bool* ok = nullptr);
+    static QMap<QString, ArticleCounts> getMessageCountsForCategory(const QSqlDatabase& db,
+                                                                    const QString& custom_id,
+                                                                    int account_id,
+                                                                    bool include_total_counts,
+                                                                    bool* ok = nullptr);
+    static QMap<QString, ArticleCounts> getMessageCountsForAccount(const QSqlDatabase& db,
+                                                                   int account_id,
+                                                                   bool include_total_counts,
+                                                                   bool* ok = nullptr);
+    static ArticleCounts getMessageCountsForFeed(const QSqlDatabase& db,
+                                                 const QString& feed_custom_id,
+                                                 int account_id,
+                                                 bool* ok = nullptr);
+    static ArticleCounts getMessageCountsForLabel(const QSqlDatabase& db,
+                                                  Label* label,
+                                                  int account_id,
+                                                  bool* ok = nullptr);
+    static ArticleCounts getImportantMessageCounts(const QSqlDatabase& db, int account_id, bool* ok = nullptr);
     static int getUnreadMessageCounts(const QSqlDatabase& db, int account_id, bool* ok = nullptr);
-    static int getMessageCountsForBin(const QSqlDatabase& db,
-                                      int account_id,
-                                      bool including_total_counts,
-                                      bool* ok = nullptr);
+    static ArticleCounts getMessageCountsForBin(const QSqlDatabase& db, int account_id, bool* ok = nullptr);
 
     // Get messages (for newspaper view for example).
     static QList<Message> getUndeletedMessagesWithLabel(const QSqlDatabase& db, const Label* label, bool* ok = nullptr);

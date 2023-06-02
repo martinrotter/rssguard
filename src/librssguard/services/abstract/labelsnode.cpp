@@ -32,10 +32,30 @@ QList<Message> LabelsNode::undeletedMessages() const {
   return DatabaseQueries::getUndeletedLabelledMessages(database, getParentServiceRoot()->accountId());
 }
 
+int LabelsNode::countOfUnreadMessages() const {
+  auto chi = childItems();
+  return boolinq::from(chi)
+    .max([](RootItem* it) {
+      return it->countOfUnreadMessages();
+    })
+    ->countOfUnreadMessages();
+}
+
+int LabelsNode::countOfAllMessages() const {
+  auto chi = childItems();
+  return boolinq::from(chi)
+    .max([](RootItem* it) {
+      return it->countOfAllMessages();
+    })
+    ->countOfAllMessages();
+}
+
 QList<Label*> LabelsNode::labels() const {
-  auto list = boolinq::from(childItems()).select([](RootItem* it) {
-    return static_cast<Label*>(it);
-  }).toStdList();
+  auto list = boolinq::from(childItems())
+                .select([](RootItem* it) {
+                  return static_cast<Label*>(it);
+                })
+                .toStdList();
 
   return FROM_STD_LIST(QList<Label*>, list);
 }
@@ -48,9 +68,7 @@ QList<QAction*> LabelsNode::contextMenuFeedsList() {
     connect(m_actLabelNew, &QAction::triggered, this, &LabelsNode::createLabel);
   }
 
-  return QList<QAction*> {
-    m_actLabelNew
-  };
+  return QList<QAction*>{m_actLabelNew};
 }
 
 void LabelsNode::createLabel() {
@@ -73,9 +91,9 @@ void LabelsNode::createLabel() {
     }
   }
   else {
-    qApp->showGuiMessage(Notification::Event::GeneralEvent, {
-      tr("This account does not allow you to create labels."),
-      tr("Not allowed"),
-      QSystemTrayIcon::MessageIcon::Critical });
+    qApp->showGuiMessage(Notification::Event::GeneralEvent,
+                         {tr("This account does not allow you to create labels."),
+                          tr("Not allowed"),
+                          QSystemTrayIcon::MessageIcon::Critical});
   }
 }

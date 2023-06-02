@@ -37,20 +37,19 @@ void Category::updateCounts(bool including_total_count) {
 
   QSqlDatabase database = qApp->database()->driver()->connection(metaObject()->className());
   bool ok;
-  QMap<QString, QPair<int, int>> counts =
-    DatabaseQueries::getMessageCountsForCategory(database,
-                                                 customId(),
-                                                 getParentServiceRoot()->accountId(),
-                                                 including_total_count,
-                                                 &ok);
+  auto counts = DatabaseQueries::getMessageCountsForCategory(database,
+                                                             customId(),
+                                                             getParentServiceRoot()->accountId(),
+                                                             including_total_count,
+                                                             &ok);
 
   if (ok) {
     for (Feed* feed : feeds) {
       if (counts.contains(feed->customId())) {
-        feed->setCountOfUnreadMessages(counts.value(feed->customId()).first);
+        feed->setCountOfUnreadMessages(counts.value(feed->customId()).m_unread);
 
         if (including_total_count) {
-          feed->setCountOfAllMessages(counts.value(feed->customId()).second);
+          feed->setCountOfAllMessages(counts.value(feed->customId()).m_total);
         }
       }
     }
