@@ -43,6 +43,8 @@ class RSSGUARD_DLLSPEC MessageCategory : public QObject {
 
     QString title() const;
 
+    MessageCategory& operator=(const MessageCategory& other);
+
   private:
     QString m_title;
 };

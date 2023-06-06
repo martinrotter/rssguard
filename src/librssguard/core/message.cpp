@@ -220,3 +220,9 @@ MessageCategory::MessageCategory(const MessageCategory& other) {
 QString MessageCategory::title() const {
   return m_title;
 }
+
+MessageCategory& MessageCategory::operator=(const MessageCategory& other) {
+  m_title = other.m_title;
+
+  return *this;
+}
