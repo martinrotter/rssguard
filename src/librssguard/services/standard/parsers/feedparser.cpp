@@ -76,6 +76,10 @@ QList<Enclosure> FeedParser::jsonMessageEnclosures(const QJsonObject& msg_elemen
   return {};
 }
 
+QList<MessageCategory> FeedParser::jsonMessageCategories(const QJsonObject& msg_element) const {
+  return {};
+}
+
 QString FeedParser::jsonMessageRawContents(const QJsonObject& msg_element) const {
   return {};
 }
@@ -105,6 +109,7 @@ QList<Message> FeedParser::messages() {
         new_message.m_rawContents = xmlMessageRawContents(message_item);
         new_message.m_enclosures = xmlMessageEnclosures(message_item);
         new_message.m_enclosures.append(xmlMrssGetEnclosures(message_item));
+        new_message.m_categories.append(xmlMessageCategories(message_item));
 
         messages.append(new_message);
       }
@@ -320,5 +325,9 @@ QString FeedParser::xmlMessageId(const QDomElement& msg_element) const {
 }
 
 QList<Enclosure> FeedParser::xmlMessageEnclosures(const QDomElement& msg_element) const {
+  return {};
+}
+
+QList<MessageCategory> FeedParser::xmlMessageCategories(const QDomElement& msg_element) const {
   return {};
 }

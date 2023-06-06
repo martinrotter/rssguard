@@ -8,6 +8,7 @@
 #include "definitions/definitions.h"
 #include "services/abstract/labelsnode.h"
 
+#include <QRandomGenerator>
 #include <QSqlDatabase>
 #include <QSqlError>
 #include <QSqlQuery>
@@ -168,7 +169,7 @@ QString MessageObject::findLabelId(const QString& label_title) const {
   return found_lbl != nullptr ? found_lbl->customId() : QString();
 }
 
-QString MessageObject::createLabelId(const QString& title, const QString& hex_color) const {
+QString MessageObject::createLabelId(const QString& title, const QString& hex_color) {
   QString lbl_id = findLabelId(title);
 
   if (!lbl_id.isEmpty()) {
@@ -176,13 +177,37 @@ QString MessageObject::createLabelId(const QString& title, const QString& hex_co
     return lbl_id;
   }
 
-  if (hex_color.isEmpty()) {
-    // Generate color.
-      return nullptr;
+  if ((m_account->supportedLabelOperations() & ServiceRoot::LabelOperation::Adding) !=
+      ServiceRoot::LabelOperation::Adding) {
+    qWarningNN << LOGSEC_CORE << "This account does not support creating labels.";
+    return nullptr;
   }
 
-  // TODO: CONTINUE
-  return nullptr;
+  Label* new_lbl = nullptr;
+
+  try {
+    auto rnd_color = QRandomGenerator::global()->bounded(0xFFFFFF);
+    auto rnd_color_name = QSL("#%1").arg(QString::number(rnd_color, 16));
+
+    new_lbl = new Label(title, hex_color.isEmpty() ? rnd_color_name : hex_color);
+    QSqlDatabase db = qApp->database()->driver()->threadSafeConnection(metaObject()->className());
+
+    DatabaseQueries::createLabel(db, new_lbl, m_account->accountId());
+    m_account->requestItemReassignment(new_lbl, m_account->labelsNode());
+
+    m_availableLabels.append(new_lbl);
+
+    return new_lbl->customId();
+  }
+  catch (const ApplicationException& ex) {
+    qCriticalNN << LOGSEC_CORE << "Cannot create label:" << QUOTE_W_SPACE_DOT(ex.message());
+
+    if (new_lbl != nullptr) {
+      new_lbl->deleteLater();
+    }
+  }
+
+  return {};
 }
 
 void MessageObject::addEnclosure(const QString& url, const QString& mime_type) const {
@@ -308,6 +333,10 @@ QList<Label*> MessageObject::assignedLabels() const {
 
 QList<Label*> MessageObject::availableLabels() const {
   return m_availableLabels;
+}
+
+QList<MessageCategory> MessageObject::categories() const {
+  return m_message->m_categories;
 }
 
 bool MessageObject::runningFilterWhenFetching() const {

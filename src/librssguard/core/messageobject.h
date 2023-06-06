@@ -10,6 +10,7 @@
 class MessageObject : public QObject {
     Q_OBJECT
 
+    Q_PROPERTY(QList<MessageCategory> categories READ categories)
     Q_PROPERTY(QList<Label*> assignedLabels READ assignedLabels)
     Q_PROPERTY(QList<Label*> availableLabels READ availableLabels)
     Q_PROPERTY(QString feedCustomId READ feedCustomId)
@@ -93,7 +94,7 @@ class MessageObject : public QObject {
 
     // Returns label custom ID given label title or creates
     // the label if it does not exist.
-    Q_INVOKABLE QString createLabelId(const QString& title, const QString& hex_color = {}) const;
+    Q_INVOKABLE QString createLabelId(const QString& title, const QString& hex_color = {});
 
     // Add multimedia attachment to the message.
     Q_INVOKABLE void addEnclosure(const QString& url, const QString& mime_type) const;
@@ -101,6 +102,8 @@ class MessageObject : public QObject {
     // Returns list of assigned and available messages.
     QList<Label*> assignedLabels() const;
     QList<Label*> availableLabels() const;
+
+    QList<MessageCategory> categories() const;
 
     bool runningFilterWhenFetching() const;
 

@@ -65,6 +65,7 @@ QString Enclosures::encodeEnclosuresToString(const QList<Enclosure>& enclosures)
 Message::Message() {
   m_title = m_url = m_author = m_contents = m_rawContents = m_feedId = m_customId = m_customHash = QL1S("");
   m_enclosures = QList<Enclosure>();
+  m_categories = QList<MessageCategory>();
   m_accountId = m_id = 0;
   m_score = 0.0;
   m_isRead = m_isImportant = m_isDeleted = false;
@@ -208,4 +209,14 @@ uint qHash(const Message& key, uint seed) {
 
 uint qHash(const Message& key) {
   return (uint(key.m_accountId) * 10000) + uint(key.m_id);
+}
+
+MessageCategory::MessageCategory(const QString& title) : QObject(), m_title(title) {}
+
+MessageCategory::MessageCategory(const MessageCategory& other) {
+  m_title = other.m_title;
+}
+
+QString MessageCategory::title() const {
+  return m_title;
 }

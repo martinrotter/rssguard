@@ -128,3 +128,18 @@ QList<Enclosure> AtomParser::xmlMessageEnclosures(const QDomElement& msg_element
 
   return enclosures;
 }
+
+QList<MessageCategory> AtomParser::xmlMessageCategories(const QDomElement& msg_element) const {
+  QList<MessageCategory> cats;
+  QDomNodeList elem_cats = msg_element.toElement().elementsByTagNameNS(m_atomNamespace, QSL("category"));
+
+  for (int i = 0; i < elem_cats.size(); i++) {
+    QDomElement cat = elem_cats.at(i).toElement();
+    QString lbl = cat.attribute(QSL("label"));
+    QString term = cat.attribute(QSL("term"));
+
+    cats.append(MessageCategory(lbl.isEmpty() ? term : lbl));
+  }
+
+  return cats;
+}

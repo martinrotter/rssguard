@@ -1015,6 +1015,5 @@ QPair<int, int> ServiceRoot::updateMessages(QList<Message>& messages, Feed* feed
   }
 
   // NOTE: Do not update model items here. We update only once when all feeds are fetched.
-
   return updated_messages;
 }

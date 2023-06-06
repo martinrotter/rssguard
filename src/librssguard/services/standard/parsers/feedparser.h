@@ -30,6 +30,7 @@ class FeedParser {
     virtual QDateTime xmlMessageDateCreated(const QDomElement& msg_element) const;
     virtual QString xmlMessageId(const QDomElement& msg_element) const;
     virtual QList<Enclosure> xmlMessageEnclosures(const QDomElement& msg_element) const;
+    virtual QList<MessageCategory> xmlMessageCategories(const QDomElement& msg_element) const;
     virtual QString xmlMessageRawContents(const QDomElement& msg_element) const;
 
     // JSON.
@@ -41,13 +42,17 @@ class FeedParser {
     virtual QDateTime jsonMessageDateCreated(const QJsonObject& msg_element) const;
     virtual QString jsonMessageId(const QJsonObject& msg_element) const;
     virtual QList<Enclosure> jsonMessageEnclosures(const QJsonObject& msg_element) const;
+    virtual QList<MessageCategory> jsonMessageCategories(const QJsonObject& msg_element) const;
     virtual QString jsonMessageRawContents(const QJsonObject& msg_element) const;
 
   protected:
     QList<Enclosure> xmlMrssGetEnclosures(const QDomElement& msg_element) const;
     QString xmlMrssTextFromPath(const QDomElement& msg_element, const QString& xml_path) const;
     QString xmlRawChild(const QDomElement& container) const;
-    QStringList xmlTextsFromPath(const QDomElement& element, const QString& namespace_uri, const QString& xml_path, bool only_first) const;
+    QStringList xmlTextsFromPath(const QDomElement& element,
+                                 const QString& namespace_uri,
+                                 const QString& xml_path,
+                                 bool only_first) const;
 
   protected:
     bool m_isXml;

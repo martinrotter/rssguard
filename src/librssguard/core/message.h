@@ -31,6 +31,22 @@ class RSSGUARD_DLLSPEC Enclosures {
 
 class Feed;
 
+// Represents RSS, JSON or ATOM category (or tag, label - depending on terminology of each entry.
+class RSSGUARD_DLLSPEC MessageCategory : public QObject {
+    Q_OBJECT
+
+    Q_PROPERTY(QString title READ title)
+
+  public:
+    explicit MessageCategory(const QString& title);
+    MessageCategory(const MessageCategory& other);
+
+    QString title() const;
+
+  private:
+    QString m_title;
+};
+
 // Represents single message.
 class RSSGUARD_DLLSPEC Message {
   public:
@@ -63,6 +79,10 @@ class RSSGUARD_DLLSPEC Message {
     bool m_isDeleted;
     double m_score;
     QList<Enclosure> m_enclosures;
+
+    // List of assigned labels.
+    // This field is only field when fetching entries of a feed.
+    QList<MessageCategory> m_categories;
 
     // List of custom IDs of labels assigned to this message.
     QList<Label*> m_assignedLabels;
