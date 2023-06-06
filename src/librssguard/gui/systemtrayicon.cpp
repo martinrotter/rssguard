@@ -15,12 +15,12 @@
 TrayIconMenu::TrayIconMenu(const QString& title, QWidget* parent) : QMenu(title, parent) {}
 
 bool TrayIconMenu::event(QEvent* event) {
-  if (event->type() == QEvent::Type::Show && Application::activeModalWidget() != nullptr) {
+  if (event->type() == QEvent::Type::Show && QApplication::activeModalWidget() != nullptr) {
     QTimer::singleShot(0, this, &TrayIconMenu::hide);
-    qApp->showGuiMessage(Notification::Event::GeneralEvent, {
-      tr("Close dialogs"),
-      tr("Close opened modal dialogs first."),
-      QSystemTrayIcon::MessageIcon::Warning });
+    qApp->showGuiMessage(Notification::Event::GeneralEvent,
+                         {tr("Close dialogs"),
+                          tr("Close opened modal dialogs first."),
+                          QSystemTrayIcon::MessageIcon::Warning});
   }
 
   return QMenu::event(event);
@@ -29,9 +29,7 @@ bool TrayIconMenu::event(QEvent* event) {
 #endif
 
 SystemTrayIcon::SystemTrayIcon(const QString& normal_icon, const QString& plain_icon, FormMain* parent)
-  : QSystemTrayIcon(parent),
-  m_normalIcon(normal_icon),
-  m_plainPixmap(plain_icon) {
+  : QSystemTrayIcon(parent), m_normalIcon(normal_icon), m_plainPixmap(plain_icon) {
   qDebugNN << LOGSEC_GUI << "Creating SystemTrayIcon instance.";
   m_font.setBold(true);
 
@@ -150,8 +148,11 @@ void SystemTrayIcon::setNumber(int number, bool any_feed_has_new_unread_messages
   }
 }
 
-void SystemTrayIcon::showMessage(const QString& title, const QString& message, QSystemTrayIcon::MessageIcon icon,
-                                 int milliseconds_timeout_hint, const std::function<void()>& functor) {
+void SystemTrayIcon::showMessage(const QString& title,
+                                 const QString& message,
+                                 QSystemTrayIcon::MessageIcon icon,
+                                 int milliseconds_timeout_hint,
+                                 const std::function<void()>& functor) {
   if (m_connection != nullptr) {
     // Disconnect previous bubble click signalling.
     disconnect(m_connection);

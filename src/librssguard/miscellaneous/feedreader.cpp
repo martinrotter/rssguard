@@ -285,7 +285,9 @@ MessagesModel* FeedReader::messagesModel() const {
 }
 
 void FeedReader::executeNextAutoUpdate() {
-  bool disable_update_with_window = qApp->mainFormWidget()->isActiveWindow() && m_globalAutoUpdateOnlyUnfocused;
+  bool disable_update_with_window =
+    (qApp->mainFormWidget()->isActiveWindow() || QApplication::activeModalWidget() != nullptr) &&
+    m_globalAutoUpdateOnlyUnfocused;
   auto roots = qApp->feedReader()->feedsModel()->serviceRoots();
   std::list<CacheForServiceRoot*> full_caches = boolinq::from(roots)
                                                   .select([](ServiceRoot* root) -> CacheForServiceRoot* {
