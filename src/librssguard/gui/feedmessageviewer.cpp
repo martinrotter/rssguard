@@ -261,6 +261,10 @@ void FeedMessageViewer::createConnections() {
           &MessagePreviewer::markMessageImportant,
           m_messagesView->sourceModel(),
           &MessagesModel::setMessageImportantById);
+  connect(m_messagesBrowser,
+          &MessagePreviewer::setMessageLabelIds,
+          m_messagesView->sourceModel(),
+          &MessagesModel::setMessageLabelsById);
 
   connect(m_messagesView, &MessagesView::currentMessageRemoved, this, &FeedMessageViewer::onMessageRemoved);
   connect(m_messagesView, &MessagesView::currentMessageChanged, this, &FeedMessageViewer::displayMessage);

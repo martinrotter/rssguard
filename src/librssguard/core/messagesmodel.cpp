@@ -2,6 +2,7 @@
 
 #include "core/messagesmodel.h"
 
+#include "3rd-party/boolinq/boolinq.h"
 #include "core/messagesmodelcache.h"
 #include "database/databasefactory.h"
 #include "database/databasequeries.h"
@@ -24,13 +25,15 @@
 MessagesModel::MessagesModel(QObject* parent)
   : QSqlQueryModel(parent), m_view(nullptr), m_cache(new MessagesModelCache(this)),
     m_messageHighlighter(MessageHighlighter::NoHighlighting), m_customDateFormat(QString()),
-    m_customTimeFormat(QString()), m_newerArticlesRelativeTime(-1), m_selectedItem(nullptr), m_displayFeedIcons(false),
+    m_customTimeFormat(QString()), m_newerArticlesRelativeTime(-1), m_selectedItem(nullptr),
+    m_unreadIconType(MessageUnreadIcon::Dot),
     m_multilineListItems(qApp->settings()->value(GROUP(Messages), SETTING(Messages::MultilineArticleList)).toBool()) {
+  updateFeedIconsDisplay();
+  updateDateFormat();
+
   setupFonts();
   setupIcons();
   setupHeaderData();
-  updateDateFormat();
-  updateFeedIconsDisplay();
   loadMessages(nullptr);
 }
 
@@ -38,10 +41,13 @@ MessagesModel::~MessagesModel() {
   qDebugNN << LOGSEC_MESSAGEMODEL << "Destroying MessagesModel instance.";
 }
 
+#define RAD_COLOR 0, 180, 0
+
 void MessagesModel::setupIcons() {
   m_favoriteIcon = qApp->icons()->fromTheme(QSL("mail-mark-important"));
   m_readIcon = qApp->icons()->fromTheme(QSL("mail-mark-read"));
-  m_unreadIcon = qApp->icons()->fromTheme(QSL("mail-mark-unread"));
+  m_unreadIcon = m_unreadIconType == MessageUnreadIcon::Dot ? generateUnreadIcon()
+                                                            : qApp->icons()->fromTheme(QSL("mail-mark-unread"));
   m_enclosuresIcon = qApp->icons()->fromTheme(QSL("mail-attachment"));
 
   for (int i = int(MSG_SCORE_MIN); i <= int(MSG_SCORE_MAX); i += 10) {
@@ -80,6 +86,46 @@ QIcon MessagesModel::generateIconForScore(double score) {
   paint.fillPath(path, QColor::fromHsv(int(score), 200, 230));
 
   return pix;
+}
+
+QIcon MessagesModel::generateUnreadIcon() {
+  QPointF center(64, 64);
+  qreal radius = 32;
+
+  QRadialGradient grad(center, radius);
+  grad.setColorAt(0.000, QColor(RAD_COLOR, 255));
+  grad.setColorAt(0.8, QColor(RAD_COLOR, 0.8 * 255));
+  grad.setColorAt(1.000, QColor(RAD_COLOR, 0.000));
+
+  QPen pen;
+  pen.setWidth(96);
+  pen.setBrush(grad);
+
+  QPixmap pix(128, 128);
+  pix.fill(Qt::GlobalColor::transparent);
+
+  QPainter painter(&pix);
+  painter.setRenderHint(QPainter::RenderHint::Antialiasing);
+  painter.setPen(pen);
+  painter.drawPoint(center);
+
+  return QIcon(pix);
+}
+
+QString MessagesModel::descriptionOfUnreadIcon(MessageUnreadIcon type) {
+  switch (type) {
+    case MessagesModel::MessageUnreadIcon::Dot:
+      return tr("dot");
+
+    case MessagesModel::MessageUnreadIcon::Envelope:
+      return tr("envelope");
+
+    case MessagesModel::MessageUnreadIcon::FeedIcon:
+      return tr("feed icon");
+
+    default:
+      return QString();
+  }
 }
 
 MessagesView* MessagesModel::view() const {
@@ -166,7 +212,7 @@ bool MessagesModel::setMessageImportantById(int id, RootItem::Importance importa
       bool set = setData(index(i, MSG_DB_IMPORTANT_INDEX), int(important));
 
       if (set) {
-        emit dataChanged(index(i, 0), index(i, MSG_DB_CUSTOM_HASH_INDEX));
+        emit dataChanged(index(i, 0), index(i, MSG_DB_LABELS_IDS));
       }
 
       return set;
@@ -214,7 +260,8 @@ void MessagesModel::updateDateFormat() {
 }
 
 void MessagesModel::updateFeedIconsDisplay() {
-  m_displayFeedIcons = qApp->settings()->value(GROUP(Messages), SETTING(Messages::DisplayFeedIconsInList)).toBool();
+  m_unreadIconType =
+    MessageUnreadIcon(qApp->settings()->value(GROUP(Messages), SETTING(Messages::UnreadIconType)).toInt());
 }
 
 void MessagesModel::reloadWholeLayout() {
@@ -343,6 +390,9 @@ QVariant MessagesModel::data(const QModelIndex& idx, int role) const {
         QString contents = data(idx, Qt::ItemDataRole::EditRole).toString().mid(0, 64).simplified() + QL1S("...");
 
         return contents;
+      }
+      else if (index_column == MSG_DB_LABELS_IDS) {
+        return m_cache->containsData(idx.row()) ? m_cache->data(idx) : QSqlQueryModel::data(idx, role);
       }
       else if (index_column == MSG_DB_AUTHOR_INDEX) {
         const QString author_name = QSqlQueryModel::data(idx, role).toString();
@@ -477,11 +527,13 @@ QVariant MessagesModel::data(const QModelIndex& idx, int role) const {
       const int index_column = idx.column();
 
       if (index_column == MSG_DB_READ_INDEX) {
-        if (m_displayFeedIcons && m_selectedItem != nullptr) {
+        if (m_unreadIconType == MessageUnreadIcon::FeedIcon && m_selectedItem != nullptr) {
           QModelIndex idx_feedid = index(idx.row(), MSG_DB_FEED_CUSTOM_ID_INDEX);
           QVariant dta =
             m_cache->containsData(idx_feedid.row()) ? m_cache->data(idx_feedid) : QSqlQueryModel::data(idx_feedid);
           QString feed_custom_id = dta.toString();
+
+          // TODO: Very slow and repeats itself.
           auto acc = m_selectedItem->getParentServiceRoot()->feedIconForMessage(feed_custom_id);
 
           if (acc.isNull()) {
@@ -496,7 +548,12 @@ QVariant MessagesModel::data(const QModelIndex& idx, int role) const {
           QVariant dta =
             m_cache->containsData(idx_read.row()) ? m_cache->data(idx_read) : QSqlQueryModel::data(idx_read);
 
-          return dta.toInt() == 1 ? m_readIcon : m_unreadIcon;
+          if (m_unreadIconType == MessageUnreadIcon::Dot) {
+            return dta.toInt() == 1 ? QVariant() : m_unreadIcon;
+          }
+          else {
+            return dta.toInt() == 1 ? m_readIcon : m_unreadIcon;
+          }
         }
       }
       else if (index_column == MSG_DB_IMPORTANT_INDEX) {
@@ -529,7 +586,7 @@ QVariant MessagesModel::data(const QModelIndex& idx, int role) const {
 }
 
 bool MessagesModel::setMessageRead(int row_index, RootItem::ReadStatus read) {
-  if (data(row_index, MSG_DB_READ_INDEX, Qt::EditRole).toInt() == int(read)) {
+  if (data(row_index, MSG_DB_READ_INDEX, Qt::ItemDataRole::EditRole).toInt() == int(read)) {
     // Read status is the same is the one currently set.
     // In that case, no extra work is needed.
     return true;
@@ -565,13 +622,32 @@ bool MessagesModel::setMessageRead(int row_index, RootItem::ReadStatus read) {
 
 bool MessagesModel::setMessageReadById(int id, RootItem::ReadStatus read) {
   for (int i = 0; i < rowCount(); i++) {
-    int found_id = data(i, MSG_DB_ID_INDEX, Qt::EditRole).toInt();
+    int found_id = data(i, MSG_DB_ID_INDEX, Qt::ItemDataRole::EditRole).toInt();
 
     if (found_id == id) {
       bool set = setData(index(i, MSG_DB_READ_INDEX), int(read));
 
       if (set) {
-        emit dataChanged(index(i, 0), index(i, MSG_DB_CUSTOM_HASH_INDEX));
+        emit dataChanged(index(i, 0), index(i, MSG_DB_LABELS_IDS));
+      }
+
+      return set;
+    }
+  }
+
+  return false;
+}
+
+bool MessagesModel::setMessageLabelsById(int id, const QStringList& label_ids) {
+  for (int i = 0; i < rowCount(); i++) {
+    int found_id = data(i, MSG_DB_ID_INDEX, Qt::ItemDataRole::EditRole).toInt();
+
+    if (found_id == id) {
+      QString enc_ids = label_ids.isEmpty() ? QSL(".") : QSL(".") + label_ids.join('.') + QSL(".");
+      bool set = setData(index(i, MSG_DB_LABELS_IDS), enc_ids);
+
+      if (set) {
+        emit dataChanged(index(i, 0), index(i, MSG_DB_LABELS_IDS));
       }
 
       return set;

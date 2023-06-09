@@ -61,6 +61,7 @@ class MessagePreviewer : public QWidget {
   signals:
     void markMessageRead(int id, RootItem::ReadStatus read);
     void markMessageImportant(int id, RootItem::Importance important);
+    void setMessageLabelIds(int id, const QStringList& ids);
 
   private:
     void createConnections();

@@ -174,8 +174,8 @@ namespace Messages {
   KEY IgnoreContentsChanges;
   VALUE(bool) IgnoreContentsChangesDef;
 
-  KEY DisplayFeedIconsInList;
-  VALUE(bool) DisplayFeedIconsInListDef;
+  KEY UnreadIconType;
+  VALUE(int) UnreadIconTypeDef;
 
   KEY BringAppToFrontAfterMessageOpenedExternally;
   VALUE(bool) BringAppToFrontAfterMessageOpenedExternallyDef;

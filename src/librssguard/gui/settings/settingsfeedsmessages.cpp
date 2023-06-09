@@ -14,6 +14,7 @@
 
 #include <QFontDialog>
 #include <QLocale>
+#include <QMetaEnum>
 #include <QStringList>
 
 SettingsFeedsMessages::SettingsFeedsMessages(Settings* settings, QWidget* parent)
@@ -65,7 +66,9 @@ SettingsFeedsMessages::SettingsFeedsMessages(Settings* settings, QWidget* parent
   connect(m_ui->m_cbHideCountsIfNoUnread, &QCheckBox::toggled, this, &SettingsFeedsMessages::dirtifySettings);
   connect(m_ui->m_checkAutoUpdate, &QCheckBox::toggled, this, &SettingsFeedsMessages::dirtifySettings);
   connect(m_ui->m_checkAutoUpdateOnlyUnfocused, &QCheckBox::toggled, this, &SettingsFeedsMessages::dirtifySettings);
-  connect(m_ui->m_checkDisplayFeedIcons, &QCheckBox::toggled, this, &SettingsFeedsMessages::dirtifySettings);
+  connect(m_ui->m_cmbUnreadIconType, &QComboBox::currentIndexChanged, this, &SettingsFeedsMessages::dirtifySettings);
+  connect(m_ui->m_cmbUnreadIconType, &QComboBox::currentIndexChanged, this, &SettingsFeedsMessages::requireRestart);
+
   connect(m_ui->m_checkKeppMessagesInTheMiddle, &QCheckBox::toggled, this, &SettingsFeedsMessages::dirtifySettings);
   connect(m_ui->m_cbArticleViewerAlwaysVisible, &QCheckBox::toggled, this, &SettingsFeedsMessages::dirtifySettings);
   connect(m_ui->m_checkMessagesDateTimeFormat, &QCheckBox::toggled, this, &SettingsFeedsMessages::dirtifySettings);
@@ -181,6 +184,14 @@ SettingsFeedsMessages::SettingsFeedsMessages(Settings* settings, QWidget* parent
   }
 
   m_ui->m_spinRelativeArticleTime->setValue(-1);
+
+  QMetaEnum enumer = QMetaEnum::fromType<MessagesModel::MessageUnreadIcon>();
+
+  for (int i = 0; i < enumer.keyCount(); i++) {
+    auto en = MessagesModel::MessageUnreadIcon(enumer.value(i));
+
+    m_ui->m_cmbUnreadIconType->addItem(MessagesModel::descriptionOfUnreadIcon(en), int(en));
+  }
 }
 
 SettingsFeedsMessages::~SettingsFeedsMessages() {
@@ -227,8 +238,9 @@ void SettingsFeedsMessages::loadSettings() {
     ->setChecked(settings()->value(GROUP(Feeds), SETTING(Feeds::OnlyBasicShortcutsInLists)).toBool());
   m_ui->m_cbHideCountsIfNoUnread
     ->setChecked(settings()->value(GROUP(Feeds), SETTING(Feeds::HideCountsIfNoUnread)).toBool());
-  m_ui->m_checkDisplayFeedIcons
-    ->setChecked(settings()->value(GROUP(Messages), SETTING(Messages::DisplayFeedIconsInList)).toBool());
+  m_ui->m_cmbUnreadIconType
+    ->setCurrentIndex(m_ui->m_cmbUnreadIconType
+                        ->findData(settings()->value(GROUP(Messages), SETTING(Messages::UnreadIconType)).toInt()));
   m_ui->m_checkBringToForegroundAfterMsgOpened
     ->setChecked(settings()
                    ->value(GROUP(Messages), SETTING(Messages::BringAppToFrontAfterMessageOpenedExternally))
@@ -316,7 +328,7 @@ void SettingsFeedsMessages::saveSettings() {
   settings()->setValue(GROUP(Feeds), Feeds::OnlyBasicShortcutsInLists, m_ui->m_cbListsRestrictedShortcuts->isChecked());
 
   settings()->setValue(GROUP(Feeds), Feeds::HideCountsIfNoUnread, m_ui->m_cbHideCountsIfNoUnread->isChecked());
-  settings()->setValue(GROUP(Messages), Messages::DisplayFeedIconsInList, m_ui->m_checkDisplayFeedIcons->isChecked());
+  settings()->setValue(GROUP(Messages), Messages::UnreadIconType, m_ui->m_cmbUnreadIconType->currentData().toInt());
   settings()->setValue(GROUP(Messages),
                        Messages::BringAppToFrontAfterMessageOpenedExternally,
                        m_ui->m_checkBringToForegroundAfterMsgOpened->isChecked());
@@ -368,7 +380,6 @@ void SettingsFeedsMessages::saveSettings() {
   qApp->feedReader()->feedsModel()->reloadWholeLayout();
 
   qApp->feedReader()->messagesModel()->updateDateFormat();
-  qApp->feedReader()->messagesModel()->updateFeedIconsDisplay();
   qApp->feedReader()->messagesModel()->reloadWholeLayout();
 
   onEndSaveSettings();

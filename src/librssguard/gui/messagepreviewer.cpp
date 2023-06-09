@@ -191,10 +191,14 @@ void MessagePreviewer::switchLabel(bool assign) {
 
   if (assign) {
     lbl->assignToMessage(m_message);
+    m_message.m_assignedLabelsIds.append(lbl->customId());
   }
   else {
     lbl->deassignFromMessage(m_message);
+    m_message.m_assignedLabelsIds.removeOne(lbl->customId());
   }
+
+  emit setMessageLabelIds(m_message.m_id, m_message.m_assignedLabelsIds);
 }
 
 void MessagePreviewer::markMessageAsRead() {
@@ -276,39 +280,22 @@ void MessagePreviewer::updateLabels(bool only_clear) {
 
   if (m_root.data() != nullptr && !m_root.data()->getParentServiceRoot()->labelsNode()->labels().isEmpty()) {
     m_separator = m_toolBar->addSeparator();
-    QSqlDatabase database = qApp->database()->driver()->connection(metaObject()->className());
     auto lbls = m_root.data()->getParentServiceRoot()->labelsNode()->labels();
 
     for (auto* label : lbls) {
-      /*
-      LabelButton* btn_label = new LabelButton(this);
-
-      btn_label->setLabel(label);
-      btn_label->setCheckable(true);
-      btn_label->setIcon(Label::generateIcon(label->color()));
-      btn_label->setAutoRaise(false);
-      btn_label->setText();
-      btn_label->setToolButtonStyle(Qt::ToolButtonStyle(qApp->settings()
-                                                          ->value(GROUP(GUI), SETTING(GUI::ToolbarStyle))
-                                                          .toInt()));
-      btn_label->setToolTip(label->title());
-      btn_label->setChecked();
-      */
-
       LabelToolbarAction* act_label = new LabelToolbarAction(this);
 
       act_label->setIcon(Label::generateIcon(label->color()));
       act_label->setText(QSL(" ") + label->title());
       act_label->setCheckable(true);
-      act_label->setChecked(DatabaseQueries::isLabelAssignedToMessage(database, label, m_message));
+      act_label->setChecked(m_message.m_assignedLabelsIds.contains(label->customId()));
       act_label->setToolTip(label->title());
       act_label->setLabel(label);
 
       m_toolBar->addAction(act_label);
+      m_btnLabels.append(act_label);
 
       connect(act_label, &QAction::toggled, this, &MessagePreviewer::switchLabel);
-
-      m_btnLabels.append(act_label);
     }
   }
 }

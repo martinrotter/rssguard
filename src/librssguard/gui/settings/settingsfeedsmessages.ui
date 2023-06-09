@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>495</width>
+    <width>558</width>
     <height>531</height>
    </rect>
   </property>
@@ -411,13 +411,6 @@
        <string>Articles list</string>
       </attribute>
       <layout class="QFormLayout" name="formLayout_5">
-       <item row="0" column="0" colspan="2">
-        <widget class="QCheckBox" name="m_checkDisplayFeedIcons">
-         <property name="text">
-          <string>Display real icons of feeds instead of read/unread icons</string>
-         </property>
-        </widget>
-       </item>
        <item row="1" column="0" colspan="2">
         <widget class="QCheckBox" name="m_checkKeppMessagesInTheMiddle">
          <property name="text">
@@ -601,6 +594,19 @@
          </layout>
         </widget>
        </item>
+       <item row="0" column="1">
+        <widget class="QComboBox" name="m_cmbUnreadIconType"/>
+       </item>
+       <item row="0" column="0">
+        <widget class="QLabel" name="label_5">
+         <property name="text">
+          <string>Unread article icon type</string>
+         </property>
+         <property name="buddy">
+          <cstring>m_cmbUnreadIconType</cstring>
+         </property>
+        </widget>
+       </item>
       </layout>
      </widget>
     </widget>
@@ -642,7 +648,7 @@
   <tabstop>m_cbShowEnclosuresDirectly</tabstop>
   <tabstop>m_spinHeightImageAttachments</tabstop>
   <tabstop>m_btnChangeMessagesFont</tabstop>
-  <tabstop>m_checkDisplayFeedIcons</tabstop>
+  <tabstop>m_cmbUnreadIconType</tabstop>
   <tabstop>m_checkKeppMessagesInTheMiddle</tabstop>
   <tabstop>m_checkMultilineArticleList</tabstop>
   <tabstop>m_spinHeightRowsMessages</tabstop>

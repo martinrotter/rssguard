@@ -24,6 +24,10 @@ class MessagesModel : public QSqlQueryModel, public MessagesModelSqlLayer {
     // for messages.
     enum class MessageHighlighter { NoHighlighting = 100, HighlightUnread = 101, HighlightImportant = 102 };
 
+    enum class MessageUnreadIcon { Dot = 1, Envelope = 2, FeedIcon = 3 };
+
+    Q_ENUM(MessageUnreadIcon)
+
     // Constructors and destructors.
     explicit MessagesModel(QObject* parent = nullptr);
     virtual ~MessagesModel();
@@ -74,6 +78,8 @@ class MessagesModel : public QSqlQueryModel, public MessagesModelSqlLayer {
     void setView(MessagesView* new_view);
 
     static QIcon generateIconForScore(double score);
+    static QIcon generateUnreadIcon();
+    static QString descriptionOfUnreadIcon(MessagesModel::MessageUnreadIcon type);
 
   public slots:
 
@@ -81,6 +87,7 @@ class MessagesModel : public QSqlQueryModel, public MessagesModelSqlLayer {
     // These are particularly used by msg browser.
     bool setMessageImportantById(int id, RootItem::Importance important);
     bool setMessageReadById(int id, RootItem::ReadStatus read);
+    bool setMessageLabelsById(int id, const QStringList& label_ids);
 
   private:
     void setupHeaderData();
@@ -105,10 +112,11 @@ class MessagesModel : public QSqlQueryModel, public MessagesModelSqlLayer {
     QIcon m_unreadIcon;
     QIcon m_enclosuresIcon;
     QList<QIcon> m_scoreIcons;
-    bool m_displayFeedIcons;
+    MessageUnreadIcon m_unreadIconType;
     bool m_multilineListItems;
 };
 
 Q_DECLARE_METATYPE(MessagesModel::MessageHighlighter)
+Q_DECLARE_METATYPE(MessagesModel::MessageUnreadIcon)
 
 #endif // MESSAGESMODEL_H

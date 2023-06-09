@@ -143,6 +143,14 @@ Message Message::fromSqlRecord(const QSqlRecord& record, bool* result) {
   message.m_accountId = record.value(MSG_DB_ACCOUNT_ID_INDEX).toInt();
   message.m_customId = record.value(MSG_DB_CUSTOM_ID_INDEX).toString();
   message.m_customHash = record.value(MSG_DB_CUSTOM_HASH_INDEX).toString();
+  message.m_assignedLabelsIds = record.value(MSG_DB_LABELS_IDS)
+                                  .toString()
+                                  .split('.',
+#if QT_VERSION >= 0x050F00 // Qt >= 5.15.0
+                                         Qt::SplitBehaviorFlags::SkipEmptyParts);
+#else
+                                         QString::SplitBehavior::SkipEmptyParts);
+#endif
 
   if (result != nullptr) {
     *result = true;
