@@ -707,7 +707,7 @@ void FormMain::saveSize() {
   Settings* settings = qApp->settings();
   bool is_fullscreen = isFullScreen();
   bool is_maximized = isMaximized();
-  QPoint window_pos = normalGeometry().topLeft();
+  QPoint window_pos = frameGeometry().topLeft();
   QSize window_size = normalGeometry().size();
 
   if (!window_size.isValid()) {
