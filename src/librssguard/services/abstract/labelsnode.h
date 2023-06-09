@@ -20,6 +20,7 @@ class LabelsNode : public RootItem {
     virtual QList<QAction*> contextMenuFeedsList();
     virtual int countOfUnreadMessages() const;
     virtual int countOfAllMessages() const;
+    virtual void updateCounts(bool including_total_count);
 
   public slots:
     void createLabel();

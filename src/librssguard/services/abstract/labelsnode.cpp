@@ -60,6 +60,31 @@ int LabelsNode::countOfAllMessages() const {
     ->countOfAllMessages();
 }
 
+void LabelsNode::updateCounts(bool including_total_count) {
+  QSqlDatabase database = qApp->database()->driver()->threadSafeConnection(metaObject()->className());
+  int account_id = getParentServiceRoot()->accountId();
+  auto acc = DatabaseQueries::getMessageCountsForAllLabels(database, account_id);
+
+  for (Label* lbl : labels()) {
+    if (!acc.contains(lbl->customId())) {
+      if (including_total_count) {
+        lbl->setCountOfAllMessages(0);
+      }
+
+      lbl->setCountOfUnreadMessages(0);
+    }
+    else {
+      auto ac = acc.value(lbl->customId());
+
+      if (including_total_count) {
+        lbl->setCountOfAllMessages(ac.m_total);
+      }
+
+      lbl->setCountOfUnreadMessages(ac.m_unread);
+    }
+  }
+}
+
 QList<Label*> LabelsNode::labels() const {
   auto list = boolinq::from(childItems())
                 .select([](RootItem* it) {

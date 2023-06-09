@@ -654,6 +654,47 @@ ArticleCounts DatabaseQueries::getMessageCountsForLabel(const QSqlDatabase& db,
   }
 }
 
+QMap<QString, ArticleCounts> DatabaseQueries::getMessageCountsForAllLabels(const QSqlDatabase& db,
+                                                                           int account_id,
+                                                                           bool* ok) {
+  QMap<QString, ArticleCounts> counts;
+  QSqlQuery q(db);
+
+  q.setForwardOnly(true);
+  q.prepare(QSL("SELECT l.custom_id, ('%.' || l.id || '.%') pid, SUM(m.is_read), COUNT(*) FROM Labels l "
+                "INNER JOIN Messages m "
+                "  ON m.labels LIKE pid "
+                "WHERE "
+                "  m.is_deleted = 0 AND "
+                "  m.is_pdeleted = 0 AND "
+                "  m.account_id = :account_id "
+                "GROUP BY pid;"));
+  q.bindValue(QSL(":account_id"), account_id);
+
+  if (q.exec()) {
+    while (q.next()) {
+      QString lbl_custom_id = q.value(0).toString();
+      ArticleCounts ac;
+
+      ac.m_total = q.value(3).toInt();
+      ac.m_unread = ac.m_total - q.value(2).toInt();
+
+      counts.insert(lbl_custom_id, ac);
+    }
+
+    if (ok != nullptr) {
+      *ok = true;
+    }
+  }
+  else {
+    if (ok != nullptr) {
+      *ok = false;
+    }
+  }
+
+  return counts;
+}
+
 ArticleCounts DatabaseQueries::getImportantMessageCounts(const QSqlDatabase& db, int account_id, bool* ok) {
   QSqlQuery q(db);
 

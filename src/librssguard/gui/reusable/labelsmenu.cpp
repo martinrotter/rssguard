@@ -31,6 +31,7 @@ LabelsMenu::LabelsMenu(const QList<Message>& messages, const QList<Label*>& labe
                           .toStdList()) {
 
       auto count = boolinq::from(messages).count([&db, label](const Message& msg) {
+        // TODO: slow
         return DatabaseQueries::isLabelAssignedToMessage(db, label, msg);
       });
 
@@ -142,7 +143,7 @@ void LabelAction::updateActionForState() {
       break;
 
     case Qt::CheckState::PartiallyChecked:
-      highlight = QColor(100, 50, 0);
+      highlight = Qt::GlobalColor::darkYellow;
       break;
 
     case Qt::CheckState::Unchecked:

@@ -139,7 +139,7 @@ void ServiceRoot::updateCounts(bool including_total_count) {
     if (child->kind() == RootItem::Kind::Feed) {
       feeds.append(child->toFeed());
     }
-    else if (child->kind() != RootItem::Kind::Labels && child->kind() != RootItem::Kind::Category &&
+    else if (child->kind() != RootItem::Kind::Label && child->kind() != RootItem::Kind::Category &&
              child->kind() != RootItem::Kind::ServiceRoot) {
       child->updateCounts(including_total_count);
     }
