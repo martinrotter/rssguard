@@ -661,14 +661,28 @@ QMap<QString, ArticleCounts> DatabaseQueries::getMessageCountsForAllLabels(const
   QSqlQuery q(db);
 
   q.setForwardOnly(true);
-  q.prepare(QSL("SELECT l.custom_id, ('%.' || l.id || '.%') pid, SUM(m.is_read), COUNT(*) FROM Labels l "
-                "INNER JOIN Messages m "
-                "  ON m.labels LIKE pid "
-                "WHERE "
-                "  m.is_deleted = 0 AND "
-                "  m.is_pdeleted = 0 AND "
-                "  m.account_id = :account_id "
-                "GROUP BY pid;"));
+
+  if (db.driverName() == QSL(APP_DB_MYSQL_DRIVER)) {
+    q.prepare(QSL("SELECT l.custom_id, CONCAT('%.', l.id,'.%') pid, SUM(m.is_read), COUNT(*) FROM Labels l "
+                  "INNER JOIN Messages m "
+                  "  ON m.labels LIKE pid "
+                  "WHERE "
+                  "  m.is_deleted = 0 AND "
+                  "  m.is_pdeleted = 0 AND "
+                  "  m.account_id = :account_id "
+                  "GROUP BY pid;"));
+  }
+  else {
+    q.prepare(QSL("SELECT l.custom_id, ('%.' || l.id || '.%') pid, SUM(m.is_read), COUNT(*) FROM Labels l "
+                  "INNER JOIN Messages m "
+                  "  ON m.labels LIKE pid "
+                  "WHERE "
+                  "  m.is_deleted = 0 AND "
+                  "  m.is_pdeleted = 0 AND "
+                  "  m.account_id = :account_id "
+                  "GROUP BY pid;"));
+  }
+
   q.bindValue(QSL(":account_id"), account_id);
 
   if (q.exec()) {
