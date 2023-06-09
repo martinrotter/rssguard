@@ -665,7 +665,7 @@ QMap<QString, ArticleCounts> DatabaseQueries::getMessageCountsForAllLabels(const
   if (db.driverName() == QSL(APP_DB_MYSQL_DRIVER)) {
     q.prepare(QSL("SELECT l.custom_id, CONCAT('%.', l.id,'.%') pid, SUM(m.is_read), COUNT(*) FROM Labels l "
                   "INNER JOIN Messages m "
-                  "  ON m.labels LIKE pid "
+                  "  ON m.account_id = l.account_id AND m.labels LIKE pid "
                   "WHERE "
                   "  m.is_deleted = 0 AND "
                   "  m.is_pdeleted = 0 AND "
@@ -675,7 +675,7 @@ QMap<QString, ArticleCounts> DatabaseQueries::getMessageCountsForAllLabels(const
   else {
     q.prepare(QSL("SELECT l.custom_id, ('%.' || l.id || '.%') pid, SUM(m.is_read), COUNT(*) FROM Labels l "
                   "INNER JOIN Messages m "
-                  "  ON m.labels LIKE pid "
+                  "  ON m.account_id = l.account_id AND m.labels LIKE pid "
                   "WHERE "
                   "  m.is_deleted = 0 AND "
                   "  m.is_pdeleted = 0 AND "
