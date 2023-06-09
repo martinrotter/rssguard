@@ -66,8 +66,14 @@ SettingsFeedsMessages::SettingsFeedsMessages(Settings* settings, QWidget* parent
   connect(m_ui->m_cbHideCountsIfNoUnread, &QCheckBox::toggled, this, &SettingsFeedsMessages::dirtifySettings);
   connect(m_ui->m_checkAutoUpdate, &QCheckBox::toggled, this, &SettingsFeedsMessages::dirtifySettings);
   connect(m_ui->m_checkAutoUpdateOnlyUnfocused, &QCheckBox::toggled, this, &SettingsFeedsMessages::dirtifySettings);
-  connect(m_ui->m_cmbUnreadIconType, &QComboBox::currentIndexChanged, this, &SettingsFeedsMessages::dirtifySettings);
-  connect(m_ui->m_cmbUnreadIconType, &QComboBox::currentIndexChanged, this, &SettingsFeedsMessages::requireRestart);
+  connect(m_ui->m_cmbUnreadIconType,
+          QOverload<int>::of(&QComboBox::currentIndexChanged),
+          this,
+          &SettingsFeedsMessages::dirtifySettings);
+  connect(m_ui->m_cmbUnreadIconType,
+          QOverload<int>::of(&QComboBox::currentIndexChanged),
+          this,
+          &SettingsFeedsMessages::requireRestart);
 
   connect(m_ui->m_checkKeppMessagesInTheMiddle, &QCheckBox::toggled, this, &SettingsFeedsMessages::dirtifySettings);
   connect(m_ui->m_cbArticleViewerAlwaysVisible, &QCheckBox::toggled, this, &SettingsFeedsMessages::dirtifySettings);
