@@ -2,6 +2,7 @@
 
 #include "gui/messagepreviewer.h"
 
+#include "3rd-party/boolinq/boolinq.h"
 #include "database/databasequeries.h"
 #include "gui/dialogs/formmain.h"
 #include "gui/itemdetails.h"
@@ -281,6 +282,10 @@ void MessagePreviewer::updateLabels(bool only_clear) {
   if (m_root.data() != nullptr && !m_root.data()->getParentServiceRoot()->labelsNode()->labels().isEmpty()) {
     m_separator = m_toolBar->addSeparator();
     auto lbls = m_root.data()->getParentServiceRoot()->labelsNode()->labels();
+
+    std::sort(lbls.begin(), lbls.end(), [](Label* lhs, Label* rhs) {
+      return lhs->title().compare(rhs->title(), Qt::CaseSensitivity::CaseInsensitive) < 0;
+    });
 
     for (auto* label : lbls) {
       LabelToolbarAction* act_label = new LabelToolbarAction(this);
