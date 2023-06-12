@@ -23,6 +23,12 @@ LabelsMenu::LabelsMenu(const QList<Message>& messages, const QList<Label*>& labe
   }
   else {
     QSqlDatabase db = qApp->database()->driver()->connection(QSL("LabelsMenu"));
+    QMap<QString, ArticleCounts> assignments =
+      labels.isEmpty()
+        ? QMap<QString, ArticleCounts>()
+        : DatabaseQueries::getCountOfAssignedLabelsToMessages(db,
+                                                              messages,
+                                                              labels.first()->getParentServiceRoot()->accountId());
 
     for (Label* label : boolinq::from(labels)
                           .orderBy([](const Label* label) {
@@ -30,17 +36,13 @@ LabelsMenu::LabelsMenu(const QList<Message>& messages, const QList<Label*>& labe
                           })
                           .toStdList()) {
 
-      auto count = boolinq::from(messages).count([&db, label](const Message& msg) {
-        // TODO: slow
-        return DatabaseQueries::isLabelAssignedToMessage(db, label, msg);
-      });
-
+      auto count = assignments.value(label->customId());
       Qt::CheckState state = Qt::CheckState::Unchecked;
 
-      if (count == messages.size()) {
+      if (count.m_total == messages.size()) {
         state = Qt::CheckState::Checked;
       }
-      else if (count > 0) {
+      else if (count.m_total > 0) {
         state = Qt::CheckState::PartiallyChecked;
       }
 
