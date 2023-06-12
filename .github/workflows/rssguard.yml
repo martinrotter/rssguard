@@ -51,28 +51,6 @@ jobs:
           fetch-depth: 0
           submodules: true
          
-      - name: Delete old development binaries
-        uses: mknejp/delete-release-assets@v1
-        if: strategy.job-index == 0
-        with:
-          token: ${{ secrets.GITHUB_TOKEN }}
-          tag: devbuild
-          fail-if-no-assets: false
-          fail-if-no-release: false
-          assets: | 
-            *.AppImage
-            *.dmg
-            *.exe
-            *.7z
-            
-      - name: Update "devbuild" tag
-        uses: richardsimko/update-tag@v1.0.7
-        if: strategy.job-index == 0
-        with:
-          tag_name: devbuild
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-         
       - name: Prepare environment and compile application
         run: ${{ matrix.script_name }} "${{ matrix.os }}" "${{ matrix.use_webengine }}" "${{ matrix.use_qt5 }}"
         env:
@@ -81,29 +59,56 @@ jobs:
           FEEDLY_CLIENT_ID: ${{ secrets.FEEDLY_CLIENT_ID }}
           FEEDLY_CLIENT_SECRET: ${{ secrets.FEEDLY_CLIENT_SECRET }}
 
+      - name: Upload binaries
+        uses: actions/upload-artifact@v3
+        with:
+          if-no-files-found: error
+          name: RSS_Guard-${{ runner.os }}${{ matrix.use_webengine == 'ON' && '-' || '-nowebengine-' }}Qt${{ matrix.use_qt5 == 'ON' && '5' || '6' }}
+          path: |
+            ./rssguard-build/rssguard-*win*.exe
+            ./rssguard-build/rssguard-*win*.7z
+            ./rssguard-build/rssguard-*mac64.dmg
+            ./rssguard-build/rssguard-*linux64.AppImage
+
+  dist_binaries:
+    name: Distribute binaries
+    needs:
+      - build-rssguard
+    runs-on: ubuntu-22.04
+    permissions:
+      contents: write
+
+    steps:
+      - name: Download binaries from previous jobs
+        uses: actions/download-artifact@v3
+        with:
+          path: artifacts
+
       - name: Release development binaries
-        uses: softprops/action-gh-release@v1
+        if: ${{ !startsWith(github.ref, 'refs/tags/') }}
+        uses: ncipollo/release-action@v1
         with:
+          allowUpdates: true
+          artifactErrorsFailBuild: true
+          artifacts: artifacts/*/*
+          name: Development builds
+          omitBodyDuringUpdate: true
           prerelease: true
-          name: "Development builds"
-          tag_name: "devbuild"
-          files: |
-            ./rssguard-build/rssguard-*win*.exe
-            ./rssguard-build/rssguard-*win*.7z
-            ./rssguard-build/rssguard-*mac64.dmg
-            ./rssguard-build/rssguard-*linux64.AppImage
+          removeArtifacts: true
+          tag: devbuild
+
+      - name: Update "devbuild" tag
+        if: ${{ !startsWith(github.ref, 'refs/tags/') }}
+        uses: richardsimko/update-tag@v1
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          
-      - name: Release stable binaries
-        uses: softprops/action-gh-release@v1
-        if: startsWith(github.ref, 'refs/tags/')
         with:
-          prerelease: false
-          files: |
-            ./rssguard-build/rssguard-*win*.exe
-            ./rssguard-build/rssguard-*win*.7z
-            ./rssguard-build/rssguard-*mac64.dmg
-            ./rssguard-build/rssguard-*linux64.AppImage
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          tag_name: devbuild
+
+      - name: Release stable binaries
+        if: startsWith(github.ref, 'refs/tags/')
+        uses: ncipollo/release-action@v1
+        with:
+          artifactErrorsFailBuild: true
+          artifacts: artifacts/*/*
+          draft: true
