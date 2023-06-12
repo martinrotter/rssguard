@@ -771,20 +771,53 @@ bool ServiceRoot::onBeforeSetMessagesRead(RootItem* selected_item,
 bool ServiceRoot::onAfterSetMessagesRead(RootItem* selected_item,
                                          const QList<Message>& messages,
                                          RootItem::ReadStatus read) {
-  Q_UNUSED(selected_item)
   Q_UNUSED(messages)
   Q_UNUSED(read)
 
   // TODO: We know that some messages were marked as read or unread, therefore we do not need to recount
   // all items, but only some:
-  //  - feeds of those messages (if recycle bin is NOT selected)
   //  - recycle bin (if recycle bin IS selected)
+  //  - feeds of those messages (if recycle bin is NOT selected)
   //  - important articles (if some messages IS important AND recycle bin is NOT selected)
   //  - unread articles (if some messages IS unread AND recycle bin is NOT selected)
   //  - labels assigned to articles (if recycle bin is NOT selected)
+  QList<RootItem*> to_update;
 
-  updateCounts(true);
-  itemChanged(getSubTree());
+  if (selected_item->kind() == RootItem::Kind::Bin) {
+    selected_item->updateCounts(false);
+    to_update << selected_item;
+  }
+  else {
+    updateCounts(true);
+
+    auto linq = boolinq::from(messages);
+
+    // TODO: pokračovat
+
+    // 1. Feeds of messages.
+
+    // 2. Important.
+    if (importantNode() != nullptr) {
+      if (linq.any([](const Message& msg) {
+            return msg.m_isImportant;
+          })) {
+        importantNode()->updateCounts(false);
+        to_update << importantNode();
+      }
+    }
+
+    // 3. Unread.
+    if (unreadNode() != nullptr) {
+      unreadNode()->updateCounts(false);
+      to_update << unreadNode();
+    }
+
+    // 4. Labels assigned.
+
+    to_update << getSubTree();
+  }
+
+  itemChanged(to_update);
   return true;
 }
 
