@@ -775,6 +775,14 @@ bool ServiceRoot::onAfterSetMessagesRead(RootItem* selected_item,
   Q_UNUSED(messages)
   Q_UNUSED(read)
 
+  // TODO: We know that some messages were marked as read or unread, therefore we do not need to recount
+  // all items, but only some:
+  //  - feeds of those messages (if recycle bin is NOT selected)
+  //  - recycle bin (if recycle bin IS selected)
+  //  - important articles (if some messages IS important AND recycle bin is NOT selected)
+  //  - unread articles (if some messages IS unread AND recycle bin is NOT selected)
+  //  - labels assigned to articles (if recycle bin is NOT selected)
+
   updateCounts(true);
   itemChanged(getSubTree());
   return true;
@@ -815,8 +823,16 @@ bool ServiceRoot::onAfterSwitchMessageImportance(RootItem* selected_item, const 
   Q_UNUSED(selected_item)
   Q_UNUSED(changes)
 
-  updateCounts(true);
-  itemChanged(getSubTree());
+  // NOTE: We know that some messages were marked as starred or unstarred. Starred count
+  // is not displayed anywhere in feed list except "Important articles" item.
+  auto in = importantNode();
+
+  if (in != nullptr) {
+
+    in->updateCounts(true);
+    itemChanged({in});
+  }
+
   return true;
 }
 
@@ -829,6 +845,14 @@ bool ServiceRoot::onBeforeMessagesDelete(RootItem* selected_item, const QList<Me
 bool ServiceRoot::onAfterMessagesDelete(RootItem* selected_item, const QList<Message>& messages) {
   Q_UNUSED(selected_item)
   Q_UNUSED(messages)
+
+  // TODO: We know that some messages were deleted, therefore we do not need to recount
+  // all items, but only some:
+  //  - feeds of those messages (if recycle bin is NOT selected)
+  //  - recycle bin (if recycle bin IS selected)
+  //  - important articles (if some message IS important AND recycle bin is NOT selected)
+  //  - unread articles (if some messages IS unread AND if recycle bin is NOT selected)
+  //  - labels assigned to articles (if recycle bin is NOT selected)
 
   updateCounts(true);
   itemChanged(getSubTree());
@@ -855,9 +879,9 @@ bool ServiceRoot::onAfterLabelMessageAssignmentChanged(const QList<Label*>& labe
   Q_UNUSED(messages)
   Q_UNUSED(assign)
 
-  boolinq::from(labels).for_each([](Label* lbl) {
+  for (Label* lbl : labels) {
     lbl->updateCounts(true);
-  });
+  };
 
   auto list = boolinq::from(labels)
                 .select([](Label* lbl) {

@@ -70,8 +70,8 @@ jobs:
             ./rssguard-build/rssguard-*mac64.dmg
             ./rssguard-build/rssguard-*linux64.AppImage
 
-  dist_binaries:
-    name: Distribute binaries
+  dist-binaries:
+    name: distribute-binaries
     needs:
       - build-rssguard
     runs-on: ubuntu-22.04
