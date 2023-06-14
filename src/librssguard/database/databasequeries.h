@@ -27,7 +27,7 @@ struct ArticleCounts {
 
 class DatabaseQueries {
   public:
-    static QMap<int, QString> messageTableAttributes(bool only_msg_table);
+    static QMap<int, QString> messageTableAttributes(bool only_msg_table, bool is_sqlite);
 
     // Custom data serializers.
     static QString serializeCustomData(const QVariantHash& data);

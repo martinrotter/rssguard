@@ -12,7 +12,7 @@ MessagesModelSqlLayer::MessagesModelSqlLayer()
   m_db = qApp->database()->driver()->connection(QSL("MessagesModel"));
 
   // Used in <x>: SELECT <x1>, <x2> FROM ....;
-  m_fieldNames = DatabaseQueries::messageTableAttributes(false);
+  m_fieldNames = DatabaseQueries::messageTableAttributes(false, m_db.driverName() == QSL(APP_DB_SQLITE_DRIVER));
 
   // Used in <x>: SELECT ... FROM ... ORDER BY <x1> DESC, <x2> ASC;
   m_orderByNames[MSG_DB_ID_INDEX] = QSL("Messages.id");

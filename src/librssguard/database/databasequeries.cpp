@@ -13,7 +13,7 @@
 #include <QUrl>
 #include <QVariant>
 
-QMap<int, QString> DatabaseQueries::messageTableAttributes(bool only_msg_table) {
+QMap<int, QString> DatabaseQueries::messageTableAttributes(bool only_msg_table, bool is_sqlite) {
   QMap<int, QString> field_names;
 
   field_names[MSG_DB_ID_INDEX] = QSL("Messages.id");
@@ -38,7 +38,17 @@ QMap<int, QString> DatabaseQueries::messageTableAttributes(bool only_msg_table) 
                                            "ELSE 'false' "
                                            "END AS has_enclosures");
 
-  field_names[MSG_DB_LABELS] = QSL("1 as msg_labels");
+  if (is_sqlite) {
+    field_names[MSG_DB_LABELS] =
+      QSL("(SELECT GROUP_CONCAT(Labels.name) FROM Labels WHERE Messages.labels LIKE \"%.\" || "
+          "Labels.custom_id || \".%\") as msg_labels");
+  }
+  else {
+    field_names[MSG_DB_LABELS] =
+      QSL("(SELECT GROUP_CONCAT(Labels.name) FROM Labels WHERE Messages.labels LIKE CONCAT(\"%.\", "
+          "Labels.custom_id, \".%\")) as msg_labels");
+  }
+
   field_names[MSG_DB_LABELS_IDS] = QSL("Messages.labels");
 
   // TODO: zpomaluje zobrazení seznamu zpráv
@@ -877,7 +887,9 @@ QList<Message> DatabaseQueries::getUndeletedMessagesWithLabel(const QSqlDatabase
                 "  Messages.is_pdeleted = 0 AND "
                 "  Messages.account_id = :account_id AND "
                 "  Messages.labels LIKE :label;")
-              .arg(messageTableAttributes(true).values().join(QSL(", "))));
+              .arg(messageTableAttributes(true, db.driverName() == QSL(APP_DB_SQLITE_DRIVER))
+                     .values()
+                     .join(QSL(", "))));
   q.bindValue(QSL(":account_id"), label->getParentServiceRoot()->accountId());
   q.bindValue(QSL(":label"), QSL("%.%1.%").arg(label->customId()));
 
@@ -917,7 +929,9 @@ QList<Message> DatabaseQueries::getUndeletedLabelledMessages(const QSqlDatabase&
                 "  Messages.is_pdeleted = 0 AND "
                 "  Messages.account_id = :account_id AND "
                 "  LENGTH(Messages.labels) > 2;")
-              .arg(messageTableAttributes(true).values().join(QSL(", "))));
+              .arg(messageTableAttributes(true, db.driverName() == QSL(APP_DB_SQLITE_DRIVER))
+                     .values()
+                     .join(QSL(", "))));
   q.bindValue(QSL(":account_id"), account_id);
 
   if (q.exec()) {
@@ -954,7 +968,9 @@ QList<Message> DatabaseQueries::getUndeletedImportantMessages(const QSqlDatabase
                 "FROM Messages "
                 "WHERE is_important = 1 AND is_deleted = 0 AND "
                 "      is_pdeleted = 0 AND account_id = :account_id;")
-              .arg(messageTableAttributes(true).values().join(QSL(", "))));
+              .arg(messageTableAttributes(true, db.driverName() == QSL(APP_DB_SQLITE_DRIVER))
+                     .values()
+                     .join(QSL(", "))));
   q.bindValue(QSL(":account_id"), account_id);
 
   if (q.exec()) {
@@ -989,7 +1005,9 @@ QList<Message> DatabaseQueries::getUndeletedUnreadMessages(const QSqlDatabase& d
                 "FROM Messages "
                 "WHERE is_read = 0 AND is_deleted = 0 AND "
                 "      is_pdeleted = 0 AND account_id = :account_id;")
-              .arg(messageTableAttributes(true).values().join(QSL(", "))));
+              .arg(messageTableAttributes(true, db.driverName() == QSL(APP_DB_SQLITE_DRIVER))
+                     .values()
+                     .join(QSL(", "))));
   q.bindValue(QSL(":account_id"), account_id);
 
   if (q.exec()) {
@@ -1027,7 +1045,9 @@ QList<Message> DatabaseQueries::getUndeletedMessagesForFeed(const QSqlDatabase& 
                 "FROM Messages "
                 "WHERE is_deleted = 0 AND is_pdeleted = 0 AND "
                 "      feed = :feed AND account_id = :account_id;")
-              .arg(messageTableAttributes(true).values().join(QSL(", "))));
+              .arg(messageTableAttributes(true, db.driverName() == QSL(APP_DB_SQLITE_DRIVER))
+                     .values()
+                     .join(QSL(", "))));
   q.bindValue(QSL(":feed"), feed_custom_id);
   q.bindValue(QSL(":account_id"), account_id);
 
@@ -1062,7 +1082,9 @@ QList<Message> DatabaseQueries::getUndeletedMessagesForBin(const QSqlDatabase& d
   q.prepare(QSL("SELECT %1 "
                 "FROM Messages "
                 "WHERE is_deleted = 1 AND is_pdeleted = 0 AND account_id = :account_id;")
-              .arg(messageTableAttributes(true).values().join(QSL(", "))));
+              .arg(messageTableAttributes(true, db.driverName() == QSL(APP_DB_SQLITE_DRIVER))
+                     .values()
+                     .join(QSL(", "))));
   q.bindValue(QSL(":account_id"), account_id);
 
   if (q.exec()) {
@@ -1096,7 +1118,9 @@ QList<Message> DatabaseQueries::getUndeletedMessagesForAccount(const QSqlDatabas
   q.prepare(QSL("SELECT %1 "
                 "FROM Messages "
                 "WHERE is_deleted = 0 AND is_pdeleted = 0 AND account_id = :account_id;")
-              .arg(messageTableAttributes(true).values().join(QSL(", "))));
+              .arg(messageTableAttributes(true, db.driverName() == QSL(APP_DB_SQLITE_DRIVER))
+                     .values()
+                     .join(QSL(", "))));
   q.bindValue(QSL(":account_id"), account_id);
 
   if (q.exec()) {
