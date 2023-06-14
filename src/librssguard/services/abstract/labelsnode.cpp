@@ -90,6 +90,14 @@ void LabelsNode::updateCounts(bool including_total_count) {
   }
 }
 
+Label* LabelsNode::labelById(const QString& custom_id) {
+  auto chi = childItems();
+
+  return qobject_cast<Label*>(boolinq::from(chi).firstOrDefault([custom_id](RootItem* it) {
+    return it->customId() == custom_id;
+  }));
+}
+
 QList<Label*> LabelsNode::labels() const {
   auto list = boolinq::from(childItems())
                 .select([](RootItem* it) {

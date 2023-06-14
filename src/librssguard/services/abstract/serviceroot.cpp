@@ -665,25 +665,25 @@ QStringList ServiceRoot::textualFeedIds(const QList<Feed*>& feeds) const {
 }
 
 QStringList ServiceRoot::customIDsOfMessages(const QList<ImportanceChange>& changes) {
-  QStringList list;
+  QSet<QString> list;
   list.reserve(changes.size());
 
   for (const auto& change : changes) {
-    list.append(change.first.m_customId);
+    list.insert(change.first.m_customId);
   }
 
-  return list;
+  return list.values();
 }
 
 QStringList ServiceRoot::customIDsOfMessages(const QList<Message>& messages) {
-  QStringList list;
+  QSet<QString> list;
   list.reserve(messages.size());
 
   for (const Message& message : messages) {
-    list.append(message.m_customId);
+    list.insert(message.m_customId);
   }
 
-  return list;
+  return list.values();
 }
 
 int ServiceRoot::accountId() const {
@@ -788,13 +788,26 @@ bool ServiceRoot::onAfterSetMessagesRead(RootItem* selected_item,
     to_update << selected_item;
   }
   else {
-    updateCounts(true);
-
     auto linq = boolinq::from(messages);
 
-    // TODO: pokračovat
-
     // 1. Feeds of messages.
+    auto feed_ids = linq
+                      .select([](const Message& msg) {
+                        return msg.m_feedId;
+                      })
+                      .distinct()
+                      .toStdList();
+
+    for (const QString& feed_id : feed_ids) {
+      auto* feed = getItemFromSubTree([feed_id](const RootItem* it) {
+        return it->kind() == RootItem::Kind::Feed && it->customId() == feed_id;
+      });
+
+      if (feed != nullptr) {
+        feed->updateCounts(false);
+        to_update << feed;
+      }
+    }
 
     // 2. Important.
     if (importantNode() != nullptr) {
@@ -813,8 +826,19 @@ bool ServiceRoot::onAfterSetMessagesRead(RootItem* selected_item,
     }
 
     // 4. Labels assigned.
+    if (labelsNode() != nullptr) {
+      auto db = qApp->database()->driver()->connection(metaObject()->className());
+      auto lbls = DatabaseQueries::getCountOfAssignedLabelsToMessages(db, messages, accountId());
 
-    to_update << getSubTree();
+      for (const QString& lbl_custom_id : lbls.keys()) {
+        auto* lbl = labelsNode()->labelById(lbl_custom_id);
+
+        if (lbl != nullptr) {
+          lbl->setCountOfUnreadMessages(lbls.value(lbl_custom_id).m_unread);
+          to_update << lbl;
+        }
+      }
+    }
   }
 
   itemChanged(to_update);

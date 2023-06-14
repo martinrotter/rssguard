@@ -97,7 +97,6 @@ class DatabaseQueries {
                                                                            const QList<Message>& messages,
                                                                            int account_id,
                                                                            bool* ok = nullptr);
-
     static ArticleCounts getImportantMessageCounts(const QSqlDatabase& db, int account_id, bool* ok = nullptr);
     static int getUnreadMessageCounts(const QSqlDatabase& db, int account_id, bool* ok = nullptr);
     static ArticleCounts getMessageCountsForBin(const QSqlDatabase& db, int account_id, bool* ok = nullptr);

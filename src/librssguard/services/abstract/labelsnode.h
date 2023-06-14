@@ -22,6 +22,8 @@ class LabelsNode : public RootItem {
     virtual int countOfAllMessages() const;
     virtual void updateCounts(bool including_total_count);
 
+    Label* labelById(const QString& custom_id);
+
   public slots:
     void createLabel();
 
