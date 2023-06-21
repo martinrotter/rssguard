@@ -7,6 +7,7 @@
 #include "database/databasefactory.h"
 #include "database/databasequeries.h"
 #include "definitions/definitions.h"
+#include "definitions/globals.h"
 #include "gui/messagesview.h"
 #include "miscellaneous/application.h"
 #include "miscellaneous/iconfactory.h"
@@ -468,36 +469,32 @@ QVariant MessagesModel::data(const QModelIndex& idx, int role) const {
     }
 
     case Qt::ItemDataRole::ForegroundRole:
-    case HIGHLIGHTED_FOREGROUND_TITLE_ROLE:
-      switch (m_messageHighlighter) {
-        case MessageHighlighter::HighlightImportant: {
-          QModelIndex idx_important = index(idx.row(), MSG_DB_IMPORTANT_INDEX);
-          QVariant dta = m_cache->containsData(idx_important.row()) ? m_cache->data(idx_important)
-                                                                    : QSqlQueryModel::data(idx_important);
+    case HIGHLIGHTED_FOREGROUND_TITLE_ROLE: {
+      if (Globals::hasFlag(m_messageHighlighter, MessageHighlighter::HighlightImportant)) {
+        QModelIndex idx_important = index(idx.row(), MSG_DB_IMPORTANT_INDEX);
+        QVariant dta = m_cache->containsData(idx_important.row()) ? m_cache->data(idx_important)
+                                                                  : QSqlQueryModel::data(idx_important);
 
-          return dta.toInt() == 1
-                   ? qApp->skins()->currentSkin().colorForModel(role == Qt::ItemDataRole::ForegroundRole
-                                                                  ? SkinEnums::PaletteColors::FgInteresting
-                                                                  : SkinEnums::PaletteColors::FgSelectedInteresting)
-                   : QVariant();
+        if (dta.toInt() == 1) {
+          return qApp->skins()->currentSkin().colorForModel(role == Qt::ItemDataRole::ForegroundRole
+                                                              ? SkinEnums::PaletteColors::FgInteresting
+                                                              : SkinEnums::PaletteColors::FgSelectedInteresting);
         }
-
-        case MessageHighlighter::HighlightUnread: {
-          QModelIndex idx_read = index(idx.row(), MSG_DB_READ_INDEX);
-          QVariant dta =
-            m_cache->containsData(idx_read.row()) ? m_cache->data(idx_read) : QSqlQueryModel::data(idx_read);
-
-          return dta.toInt() == 0
-                   ? qApp->skins()->currentSkin().colorForModel(role == Qt::ItemDataRole::ForegroundRole
-                                                                  ? SkinEnums::PaletteColors::FgInteresting
-                                                                  : SkinEnums::PaletteColors::FgSelectedInteresting)
-                   : QVariant();
-        }
-
-        case MessageHighlighter::NoHighlighting:
-        default:
-          return QVariant();
       }
+
+      if (Globals::hasFlag(m_messageHighlighter, MessageHighlighter::HighlightUnread)) {
+        QModelIndex idx_read = index(idx.row(), MSG_DB_READ_INDEX);
+        QVariant dta = m_cache->containsData(idx_read.row()) ? m_cache->data(idx_read) : QSqlQueryModel::data(idx_read);
+
+        if (dta.toInt() == 0) {
+          return qApp->skins()->currentSkin().colorForModel(role == Qt::ItemDataRole::ForegroundRole
+                                                              ? SkinEnums::PaletteColors::FgInteresting
+                                                              : SkinEnums::PaletteColors::FgSelectedInteresting);
+        }
+      }
+
+      return QVariant();
+    }
 
     case Qt::ItemDataRole::SizeHintRole: {
       if (!m_multilineListItems || m_view == nullptr || m_view->isColumnHidden(idx.column()) ||

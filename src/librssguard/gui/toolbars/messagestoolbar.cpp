@@ -105,16 +105,50 @@ void MessagesToolBar::loadSpecificActions(const QList<QAction*>& actions, bool i
   }
 }
 
-void MessagesToolBar::handleMessageHighlighterChange(QAction* action) {
-  m_btnMessageHighlighter->setDefaultAction(action);
-  saveToolButtonSelection(HIGHLIGHTER_ACTION_NAME, {action});
-
-  emit messageHighlighterChanged(action->data().value<MessagesModel::MessageHighlighter>());
-}
-
 inline MessagesProxyModel::MessageListFilter operator|(MessagesProxyModel::MessageListFilter a,
                                                        MessagesProxyModel::MessageListFilter b) {
   return static_cast<MessagesProxyModel::MessageListFilter>(static_cast<int>(a) | static_cast<int>(b));
+}
+
+inline MessagesModel::MessageHighlighter operator|(MessagesModel::MessageHighlighter a,
+                                                   MessagesModel::MessageHighlighter b) {
+  return static_cast<MessagesModel::MessageHighlighter>(static_cast<int>(a) | static_cast<int>(b));
+}
+
+void MessagesToolBar::handleMessageHighlighterChange(QAction* action) {
+  MessagesModel::MessageHighlighter task = action->data().value<MessagesModel::MessageHighlighter>();
+
+  m_btnMessageHighlighter->setDefaultAction(action);
+
+  std::list<QAction*> checked_tasks_std;
+
+  if (task == MessagesModel::MessageHighlighter::NoHighlighting) {
+    checked_tasks_std.push_back(m_menuMessageHighlighter->actions().first());
+
+    // Uncheck everything.
+    m_menuMessageHighlighter->blockSignals(true);
+
+    for (QAction* tsk : m_menuMessageHighlighter->actions()) {
+      tsk->setChecked(false);
+    }
+
+    m_menuMessageHighlighter->blockSignals(false);
+  }
+  else {
+    task = MessagesModel::MessageHighlighter(0);
+    checked_tasks_std = boolinq::from(m_menuMessageHighlighter->actions())
+                          .where([](QAction* act) {
+                            return act->isChecked();
+                          })
+                          .toStdList();
+
+    for (QAction* tsk : checked_tasks_std) {
+      task = task | tsk->data().value<MessagesModel::MessageHighlighter>();
+    }
+  }
+
+  saveToolButtonSelection(HIGHLIGHTER_ACTION_NAME, FROM_STD_LIST(QList<QAction*>, checked_tasks_std));
+  emit messageHighlighterChanged(task);
 }
 
 void MessagesToolBar::handleMessageFilterChange(QAction* action) {
@@ -122,26 +156,28 @@ void MessagesToolBar::handleMessageFilterChange(QAction* action) {
 
   m_btnMessageFilter->setDefaultAction(action);
 
-  auto checked_tasks_std = boolinq::from(m_menuMessageFilter->actions())
-                             .where([](QAction* act) {
-                               return act->isChecked();
-                             })
-                             .toStdList();
+  std::list<QAction*> checked_tasks_std;
 
   if (task == MessagesProxyModel::MessageListFilter::NoFiltering) {
+    checked_tasks_std.push_back(m_menuMessageFilter->actions().first());
+
     // Uncheck everything.
     m_menuMessageFilter->blockSignals(true);
 
-    for (QAction* tsk : checked_tasks_std) {
+    for (QAction* tsk : m_menuMessageFilter->actions()) {
       tsk->setChecked(false);
     }
 
     m_menuMessageFilter->blockSignals(false);
-
-    checked_tasks_std.clear();
-    checked_tasks_std.push_back(m_menuMessageFilter->actions().first());
   }
   else {
+    task = MessagesProxyModel::MessageListFilter(0);
+    checked_tasks_std = boolinq::from(m_menuMessageFilter->actions())
+                          .where([](QAction* act) {
+                            return act->isChecked();
+                          })
+                          .toStdList();
+
     for (QAction* tsk : checked_tasks_std) {
       task = task | tsk->data().value<MessagesProxyModel::MessageListFilter>();
     }
@@ -263,14 +299,14 @@ void MessagesToolBar::initializeHighlighter() {
   m_btnMessageHighlighter = new QToolButton(this);
   m_btnMessageHighlighter->setToolTip(tr("Display all articles"));
   m_btnMessageHighlighter->setMenu(m_menuMessageHighlighter);
-  m_btnMessageHighlighter->setPopupMode(QToolButton::ToolButtonPopupMode::MenuButtonPopup);
+  m_btnMessageHighlighter->setPopupMode(QToolButton::ToolButtonPopupMode::InstantPopup);
   m_btnMessageHighlighter->setIcon(qApp->icons()->fromTheme(QSL("mail-mark-read")));
   m_btnMessageHighlighter->setDefaultAction(m_menuMessageHighlighter->actions().constFirst());
 
   m_btnMessageFilter = new QToolButton(this);
   m_btnMessageFilter->setToolTip(tr("Display all articles"));
   m_btnMessageFilter->setMenu(m_menuMessageFilter);
-  m_btnMessageFilter->setPopupMode(QToolButton::ToolButtonPopupMode::MenuButtonPopup);
+  m_btnMessageFilter->setPopupMode(QToolButton::ToolButtonPopupMode::InstantPopup);
   m_btnMessageFilter->setIcon(qApp->icons()->fromTheme(QSL("mail-mark-read")));
   m_btnMessageFilter->setDefaultAction(m_menuMessageFilter->actions().constFirst());
 
