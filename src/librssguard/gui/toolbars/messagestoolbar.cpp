@@ -137,6 +137,9 @@ void MessagesToolBar::handleMessageFilterChange(QAction* action) {
     }
 
     m_menuMessageFilter->blockSignals(false);
+
+    checked_tasks_std.clear();
+    checked_tasks_std.push_back(m_menuMessageFilter->actions().first());
   }
   else {
     for (QAction* tsk : checked_tasks_std) {
