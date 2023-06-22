@@ -9,6 +9,7 @@
 #include "miscellaneous/settings.h"
 
 #include <QMenu>
+#include <QPainter>
 #include <QTimer>
 #include <QToolButton>
 #include <QWidgetAction>
@@ -146,8 +147,30 @@ void MessagesToolBar::handleMessageHighlighterChange(QAction* action) {
 
   m_btnMessageHighlighter->setDefaultAction(checked_tasks_std.empty() ? m_menuMessageHighlighter->actions().constFirst()
                                                                       : checked_tasks_std.front());
-  saveToolButtonSelection(HIGHLIGHTER_ACTION_NAME, FROM_STD_LIST(QList<QAction*>, checked_tasks_std));
+
+  if (checked_tasks_std.size() > 1) {
+    drawNumberOfCriterias(m_btnMessageHighlighter, checked_tasks_std.size());
+  }
+
+  saveToolButtonSelection(QSL(HIGHLIGHTER_ACTION_NAME), FROM_STD_LIST(QList<QAction*>, checked_tasks_std));
   emit messageHighlighterChanged(task);
+}
+
+void MessagesToolBar::drawNumberOfCriterias(QToolButton* btn, int count) {
+  QPixmap px(128, 128);
+  px.fill(Qt::GlobalColor::transparent);
+
+  QPainter p(&px);
+
+  auto fon = p.font();
+
+  fon.setPixelSize(40);
+  p.setFont(fon);
+
+  p.drawPixmap(0, 0, 80, 80, btn->defaultAction()->icon().pixmap(128, 128));
+  p.drawText(65, 65, 50, 50, Qt::AlignmentFlag::AlignCenter, QString::number(count));
+
+  btn->setIcon(px);
 }
 
 void MessagesToolBar::handleMessageFilterChange(QAction* action) {
@@ -180,7 +203,12 @@ void MessagesToolBar::handleMessageFilterChange(QAction* action) {
 
   m_btnMessageFilter->setDefaultAction(checked_tasks_std.empty() ? m_menuMessageFilter->actions().constFirst()
                                                                  : checked_tasks_std.front());
-  saveToolButtonSelection(FILTER_ACTION_NAME, FROM_STD_LIST(QList<QAction*>, checked_tasks_std));
+
+  if (checked_tasks_std.size() > 1) {
+    drawNumberOfCriterias(m_btnMessageFilter, checked_tasks_std.size());
+  }
+
+  saveToolButtonSelection(QSL(FILTER_ACTION_NAME), FROM_STD_LIST(QList<QAction*>, checked_tasks_std));
   emit messageFilterChanged(task);
 }
 

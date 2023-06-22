@@ -54,6 +54,7 @@ class MessagesToolBar : public BaseToolBar {
     void initializeHighlighter();
     void activateAction(const QString& action_name, QWidgetAction* widget_action);
     void saveToolButtonSelection(const QString& button_name, const QList<QAction*>& actions) const;
+    void drawNumberOfCriterias(QToolButton* btn, int count);
 
   private:
     QWidgetAction* m_actionMessageHighlighter;
