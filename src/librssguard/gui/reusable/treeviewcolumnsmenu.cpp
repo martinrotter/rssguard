@@ -20,7 +20,7 @@ void TreeViewColumnsMenu::prepareMenu() {
     act->setCheckable(true);
     act->setChecked(!header_view->isSectionHidden(i));
 
-    connect(act, &QAction::toggled, this, &TreeViewColumnsMenu::actionTriggered);
+    connect(act, &QAction::triggered, this, &TreeViewColumnsMenu::actionTriggered);
   }
 }
 

@@ -18,7 +18,7 @@ void NonClosableMenu::mousePressEvent(QMouseEvent* event) {
   auto* act = activeAction();
 
   if (act != nullptr) {
-    act->toggle();
+    act->trigger();
   }
   else {
     QMenu::mousePressEvent(event);

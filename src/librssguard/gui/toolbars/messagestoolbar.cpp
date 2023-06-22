@@ -4,6 +4,7 @@
 
 #include "3rd-party/boolinq/boolinq.h"
 #include "definitions/definitions.h"
+#include "gui/reusable/nonclosablemenu.h"
 #include "miscellaneous/iconfactory.h"
 #include "miscellaneous/settings.h"
 
@@ -117,13 +118,14 @@ inline MessagesModel::MessageHighlighter operator|(MessagesModel::MessageHighlig
 
 void MessagesToolBar::handleMessageHighlighterChange(QAction* action) {
   MessagesModel::MessageHighlighter task = action->data().value<MessagesModel::MessageHighlighter>();
+  std::list<QAction*> checked_tasks_std = boolinq::from(m_menuMessageHighlighter->actions())
+                                            .where([](QAction* act) {
+                                              return act->isChecked();
+                                            })
+                                            .toStdList();
 
-  m_btnMessageHighlighter->setDefaultAction(action);
-
-  std::list<QAction*> checked_tasks_std;
-
-  if (task == MessagesModel::MessageHighlighter::NoHighlighting) {
-    checked_tasks_std.push_back(m_menuMessageHighlighter->actions().first());
+  if (task == MessagesModel::MessageHighlighter::NoHighlighting || checked_tasks_std.empty()) {
+    checked_tasks_std.clear();
 
     // Uncheck everything.
     m_menuMessageHighlighter->blockSignals(true);
@@ -136,30 +138,28 @@ void MessagesToolBar::handleMessageHighlighterChange(QAction* action) {
   }
   else {
     task = MessagesModel::MessageHighlighter(0);
-    checked_tasks_std = boolinq::from(m_menuMessageHighlighter->actions())
-                          .where([](QAction* act) {
-                            return act->isChecked();
-                          })
-                          .toStdList();
 
     for (QAction* tsk : checked_tasks_std) {
       task = task | tsk->data().value<MessagesModel::MessageHighlighter>();
     }
   }
 
+  m_btnMessageHighlighter->setDefaultAction(checked_tasks_std.empty() ? m_menuMessageHighlighter->actions().constFirst()
+                                                                      : checked_tasks_std.front());
   saveToolButtonSelection(HIGHLIGHTER_ACTION_NAME, FROM_STD_LIST(QList<QAction*>, checked_tasks_std));
   emit messageHighlighterChanged(task);
 }
 
 void MessagesToolBar::handleMessageFilterChange(QAction* action) {
   MessagesProxyModel::MessageListFilter task = action->data().value<MessagesProxyModel::MessageListFilter>();
+  std::list<QAction*> checked_tasks_std = boolinq::from(m_menuMessageFilter->actions())
+                                            .where([](QAction* act) {
+                                              return act->isChecked();
+                                            })
+                                            .toStdList();
 
-  m_btnMessageFilter->setDefaultAction(action);
-
-  std::list<QAction*> checked_tasks_std;
-
-  if (task == MessagesProxyModel::MessageListFilter::NoFiltering) {
-    checked_tasks_std.push_back(m_menuMessageFilter->actions().first());
+  if (task == MessagesProxyModel::MessageListFilter::NoFiltering || checked_tasks_std.empty()) {
+    checked_tasks_std.clear();
 
     // Uncheck everything.
     m_menuMessageFilter->blockSignals(true);
@@ -172,19 +172,15 @@ void MessagesToolBar::handleMessageFilterChange(QAction* action) {
   }
   else {
     task = MessagesProxyModel::MessageListFilter(0);
-    checked_tasks_std = boolinq::from(m_menuMessageFilter->actions())
-                          .where([](QAction* act) {
-                            return act->isChecked();
-                          })
-                          .toStdList();
 
     for (QAction* tsk : checked_tasks_std) {
       task = task | tsk->data().value<MessagesProxyModel::MessageListFilter>();
     }
   }
 
+  m_btnMessageFilter->setDefaultAction(checked_tasks_std.empty() ? m_menuMessageFilter->actions().constFirst()
+                                                                 : checked_tasks_std.front());
   saveToolButtonSelection(FILTER_ACTION_NAME, FROM_STD_LIST(QList<QAction*>, checked_tasks_std));
-
   emit messageFilterChanged(task);
 }
 
@@ -220,81 +216,81 @@ void MessagesToolBar::addActionToMenu(QMenu* menu,
 }
 
 void MessagesToolBar::initializeHighlighter() {
-  m_menuMessageHighlighter = new QMenu(tr("Menu for highlighting articles"), this);
+  m_menuMessageHighlighter = new NonClosableMenu(tr("Menu for highlighting articles"), this);
 
   addActionToMenu(m_menuMessageHighlighter,
                   qApp->icons()->fromTheme(QSL("mail-mark-read")),
                   tr("No extra highlighting"),
                   QVariant::fromValue(MessagesModel::MessageHighlighter::NoHighlighting),
-                  "no_highlighting");
+                  QSL("no_highlighting"));
   addActionToMenu(m_menuMessageHighlighter,
                   qApp->icons()->fromTheme(QSL("mail-mark-unread")),
                   tr("Highlight unread articles"),
                   QVariant::fromValue(MessagesModel::MessageHighlighter::HighlightUnread),
-                  "highlight_unread");
+                  QSL("highlight_unread"));
   addActionToMenu(m_menuMessageHighlighter,
                   qApp->icons()->fromTheme(QSL("mail-mark-important")),
                   tr("Highlight important articles"),
                   QVariant::fromValue(MessagesModel::MessageHighlighter::HighlightImportant),
-                  "highlight_important");
+                  QSL("highlight_important"));
 
-  m_menuMessageFilter = new QMenu(tr("Menu for filtering articles"), this);
+  m_menuMessageFilter = new NonClosableMenu(tr("Menu for filtering articles"), this);
 
   addActionToMenu(m_menuMessageFilter,
                   qApp->icons()->fromTheme(QSL("mail-mark-read")),
                   tr("No extra filtering"),
                   QVariant::fromValue(MessagesProxyModel::MessageListFilter::NoFiltering),
-                  "no_filtering");
+                  QSL("no_filtering"));
   addActionToMenu(m_menuMessageFilter,
                   qApp->icons()->fromTheme(QSL("mail-mark-unread")),
                   tr("Show unread articles"),
                   QVariant::fromValue(MessagesProxyModel::MessageListFilter::ShowUnread),
-                  "show_unread");
+                  QSL("show_unread"));
   addActionToMenu(m_menuMessageFilter,
                   qApp->icons()->fromTheme(QSL("mail-mark-important")),
                   tr("Show important articles"),
                   QVariant::fromValue(MessagesProxyModel::MessageListFilter::ShowImportant),
-                  "show_important");
+                  QSL("show_important"));
   addActionToMenu(m_menuMessageFilter,
                   qApp->icons()->fromTheme(QSL("mail-mark-read")),
                   tr("Show today's articles"),
                   QVariant::fromValue(MessagesProxyModel::MessageListFilter::ShowToday),
-                  "show_today");
+                  QSL("show_today"));
   addActionToMenu(m_menuMessageFilter,
                   qApp->icons()->fromTheme(QSL("mail-mark-read")),
                   tr("Show yesterday's articles"),
                   QVariant::fromValue(MessagesProxyModel::MessageListFilter::ShowYesterday),
-                  "show_yesterday");
+                  QSL("show_yesterday"));
   addActionToMenu(m_menuMessageFilter,
                   qApp->icons()->fromTheme(QSL("mail-mark-read")),
                   tr("Show articles in last 24 hours"),
                   QVariant::fromValue(MessagesProxyModel::MessageListFilter::ShowLast24Hours),
-                  "show_last24hours");
+                  QSL("show_last24hours"));
   addActionToMenu(m_menuMessageFilter,
                   qApp->icons()->fromTheme(QSL("mail-mark-read")),
                   tr("Show articles in last 48 hours"),
                   QVariant::fromValue(MessagesProxyModel::MessageListFilter::ShowLast48Hours),
-                  "show_last48hours");
+                  QSL("show_last48hours"));
   addActionToMenu(m_menuMessageFilter,
                   qApp->icons()->fromTheme(QSL("mail-mark-read")),
                   tr("Show this week's articles"),
                   QVariant::fromValue(MessagesProxyModel::MessageListFilter::ShowThisWeek),
-                  "show_this_week");
+                  QSL("show_this_week"));
   addActionToMenu(m_menuMessageFilter,
                   qApp->icons()->fromTheme(QSL("mail-mark-read")),
                   tr("Show last week's articles"),
                   QVariant::fromValue(MessagesProxyModel::MessageListFilter::ShowLastWeek),
-                  "show_last_week");
+                  QSL("show_last_week"));
   addActionToMenu(m_menuMessageFilter,
                   qApp->icons()->fromTheme(QSL("mail-attachment")),
                   tr("Show articles with attachments"),
                   QVariant::fromValue(MessagesProxyModel::MessageListFilter::ShowOnlyWithAttachments),
-                  "show_with_attachments");
+                  QSL("show_with_attachments"));
   addActionToMenu(m_menuMessageFilter,
                   MessagesModel::generateIconForScore(MSG_SCORE_MAX / 2.0),
                   tr("Show articles with some score"),
                   QVariant::fromValue(MessagesProxyModel::MessageListFilter::ShowOnlyWithScore),
-                  "show_with_score");
+                  QSL("show_with_score"));
 
   m_btnMessageHighlighter = new QToolButton(this);
   m_btnMessageHighlighter->setToolTip(tr("Display all articles"));
