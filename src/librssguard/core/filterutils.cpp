@@ -101,6 +101,6 @@ void FilterUtils::runExecutable(const QString& executable,
     IOFactory::startProcessDetached(executable, arguments, working_directory);
   }
   catch (const ApplicationException& ex) {
-    // return ex.message();
+    qCriticalNN << LOGSEC_JS << "Error when running executable:" << QUOTE_W_SPACE_DOT(ex.message());
   }
 }

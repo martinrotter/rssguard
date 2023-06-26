@@ -149,7 +149,7 @@ void MessagesToolBar::handleMessageHighlighterChange(QAction* action) {
                                                                       : checked_tasks_std.front());
 
   if (checked_tasks_std.size() > 1) {
-    drawNumberOfCriterias(m_btnMessageHighlighter, checked_tasks_std.size());
+    drawNumberOfCriterias(m_btnMessageHighlighter, int(checked_tasks_std.size()));
   }
 
   saveToolButtonSelection(QSL(HIGHLIGHTER_ACTION_NAME), FROM_STD_LIST(QList<QAction*>, checked_tasks_std));
@@ -205,7 +205,7 @@ void MessagesToolBar::handleMessageFilterChange(QAction* action) {
                                                                  : checked_tasks_std.front());
 
   if (checked_tasks_std.size() > 1) {
-    drawNumberOfCriterias(m_btnMessageFilter, checked_tasks_std.size());
+    drawNumberOfCriterias(m_btnMessageFilter, int(checked_tasks_std.size()));
   }
 
   saveToolButtonSelection(QSL(FILTER_ACTION_NAME), FROM_STD_LIST(QList<QAction*>, checked_tasks_std));
