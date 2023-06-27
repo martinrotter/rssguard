@@ -1,3 +1,31 @@
+4.4.0
+-----
+
+Added:
+* Read/unread state is now also shown by coloured dot in article list, inspired by similar feature of QuiteRSS. The behavior is switchable in settings. (#948)
+* Details of selected feed list item are now enhanced with new information. (#962)
+* Item (feed) ID is now visible in item details and in tooltips of feed list. (#965)
+* "nudus" skin is bit tweaked. (#942)
+* Added option to reorganize any folder in feed list alphabetically even in manual sorting mode. (#918)
+* Added shortcuts to scroll article up/down. (#408)
+* Added global option to open all hyperlinks by default in external web browser. (#386)
+* Email editor for Gmail now supports rich-text.
+* Added support for very fast feed fetching intervals.
+* Added button to clear web cache and storage.
+* Added some missing icons.
+
+Fixed:
+* Application performance is now hugely improved when using big number of labels and/or article filters. There are some possibilities for extra performance fine-tuning which might be addressed in the future. (#952)
+* Behavior and visual representation of "article highlighter" and "article list filter" tool buttons is now fixed. (#943)
+* Newly created label is now placed in correct sort position in feed list. (#978)
+* Fixed html/plain auto-detection for "https://blog.torproject.org/blog/feed". (#979)
+* Modal dialogs are also taken into account for feature "do not fetch feeds when main window is unfocused". (#973)
+* Hamburger menu did not work in fullscreen mode in some cases. (#953)
+* Resizing of feed import dialog is now better. (#945)
+* Unwanted application restarts. (#940)
+* Main window fade-in effect on Windows OS is now consistent. (#933)
+* Many other smaller fixes.
+
 4.3.4
 -----
 

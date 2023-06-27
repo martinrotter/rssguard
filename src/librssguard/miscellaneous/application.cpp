@@ -293,14 +293,14 @@ void Application::loadDynamicShortcuts() {
 }
 
 void Application::showPolls() const {
-  /*
-     if(isFirstRunCurrentVersion()) {
-     qApp->showGuiMessage(Notification::Event::GeneralEvent,
-                         { QSL("%1 survey").arg(QSL(APP_NAME)), QSL("Please, fill the survey."),
-     QSystemTrayIcon::MessageIcon::Warning }, { false, true, false });
-     qApp->web()->openUrlInExternalBrowser(QSL("https://forms.gle/9GgSa38Awqr37xLV8"));
-     }
-   */
+  if (isFirstRunCurrentVersion()) {
+    qApp->showGuiMessage(Notification::Event::GeneralEvent,
+                         {QSL("%1 survey").arg(QSL(APP_NAME)),
+                          QSL("Please, fill the survey."),
+                          QSystemTrayIcon::MessageIcon::Warning},
+                         {false, true, false});
+    qApp->web()->openUrlInExternalBrowser(QSL("https://forms.gle/FdzrwFGozCGViK8QA"));
+  }
 }
 
 void Application::offerChanges() const {
