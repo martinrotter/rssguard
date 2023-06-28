@@ -673,7 +673,7 @@ QMap<QString, ArticleCounts> DatabaseQueries::getMessageCountsForAllLabels(const
   q.setForwardOnly(true);
 
   if (db.driverName() == QSL(APP_DB_MYSQL_DRIVER)) {
-    q.prepare(QSL("SELECT l.custom_id, CONCAT('%.', l.id,'.%') pid, SUM(m.is_read), COUNT(*) FROM Labels l "
+    q.prepare(QSL("SELECT l.custom_id, CONCAT('%.', l.custom_id,'.%') pid, SUM(m.is_read), COUNT(*) FROM Labels l "
                   "INNER JOIN Messages m "
                   "  ON m.account_id = l.account_id AND m.labels LIKE pid "
                   "WHERE "
@@ -683,7 +683,7 @@ QMap<QString, ArticleCounts> DatabaseQueries::getMessageCountsForAllLabels(const
                   "GROUP BY pid;"));
   }
   else {
-    q.prepare(QSL("SELECT l.custom_id, ('%.' || l.id || '.%') pid, SUM(m.is_read), COUNT(*) FROM Labels l "
+    q.prepare(QSL("SELECT l.custom_id, ('%.' || l.custom_id || '.%') pid, SUM(m.is_read), COUNT(*) FROM Labels l "
                   "INNER JOIN Messages m "
                   "  ON m.account_id = l.account_id AND m.labels LIKE pid "
                   "WHERE "
@@ -738,7 +738,7 @@ QMap<QString, ArticleCounts> DatabaseQueries::getCountOfAssignedLabelsToMessages
   auto msgs = msgs_lst.join(QSL(" OR "));
 
   if (db.driverName() == QSL(APP_DB_MYSQL_DRIVER)) {
-    q.prepare(QSL("SELECT l.custom_id, CONCAT('%.', l.id,'.%') pid, SUM(m.is_read), COUNT(*) FROM Labels l "
+    q.prepare(QSL("SELECT l.custom_id, CONCAT('%.', l.custom_id,'.%') pid, SUM(m.is_read), COUNT(*) FROM Labels l "
                   "INNER JOIN Messages m "
                   "  ON m.account_id = l.account_id AND m.labels LIKE pid "
                   "WHERE "
@@ -750,7 +750,7 @@ QMap<QString, ArticleCounts> DatabaseQueries::getCountOfAssignedLabelsToMessages
                 .arg(msgs));
   }
   else {
-    q.prepare(QSL("SELECT l.custom_id, ('%.' || l.id || '.%') pid, SUM(m.is_read), COUNT(*) FROM Labels l "
+    q.prepare(QSL("SELECT l.custom_id, ('%.' || l.custom_id || '.%') pid, SUM(m.is_read), COUNT(*) FROM Labels l "
                   "INNER JOIN Messages m "
                   "  ON m.account_id = l.account_id AND m.labels LIKE pid "
                   "WHERE "

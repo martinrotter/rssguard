@@ -63,7 +63,7 @@ int LabelsNode::countOfAllMessages() const {
 void LabelsNode::updateCounts(bool including_total_count) {
   // TODO: This is still rather slow because this is automatically
   // called when message is marked (un)read or starred.
-  // It would be enought if only labels which are assigned to article
+  // It would be enough if only labels which are assigned to article
   // are recounted, not all.
 
   QSqlDatabase database = qApp->database()->driver()->threadSafeConnection(metaObject()->className());

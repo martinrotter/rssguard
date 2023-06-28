@@ -2,6 +2,7 @@
 
 #include "services/gmail/gmailnetworkfactory.h"
 
+#include "3rd-party/boolinq/boolinq.h"
 #include "database/databasequeries.h"
 #include "definitions/definitions.h"
 #include "exceptions/applicationexception.h"
@@ -15,6 +16,7 @@
 #include "network-web/silentnetworkaccessmanager.h"
 #include "network-web/webfactory.h"
 #include "services/abstract/category.h"
+#include "services/abstract/labelsnode.h"
 #include "services/gmail/definitions.h"
 #include "services/gmail/gmailserviceroot.h"
 
@@ -149,6 +151,59 @@ void GmailNetworkFactory::setDownloadOnlyUnreadMessages(bool download_only_unrea
   m_downloadOnlyUnreadMessages = download_only_unread_messages;
 }
 
+QList<RootItem*> GmailNetworkFactory::labels(bool only_user_labels, const QNetworkProxy& custom_proxy) {
+  QString bearer = m_oauth2->bearer().toLocal8Bit();
+
+  if (bearer.isEmpty()) {
+    throw NetworkException(QNetworkReply::NetworkError::AuthenticationRequiredError);
+  }
+
+  QList<RootItem*> lbls;
+  QList<QPair<QByteArray, QByteArray>> headers;
+
+  headers.append(QPair<QByteArray, QByteArray>(QSL(HTTP_HEADERS_AUTHORIZATION).toLocal8Bit(),
+                                               m_oauth2->bearer().toLocal8Bit()));
+  headers.append(QPair<QByteArray, QByteArray>(QSL(HTTP_HEADERS_CONTENT_TYPE).toLocal8Bit(),
+                                               QSL(GMAIL_CONTENT_TYPE_JSON).toLocal8Bit()));
+
+  int timeout = qApp->settings()->value(GROUP(Feeds), SETTING(Feeds::UpdateTimeout)).toInt();
+
+  QByteArray output;
+  NetworkResult result = NetworkFactory::performNetworkOperation(QSL(GMAIL_API_LABELS_LIST),
+                                                                 timeout,
+                                                                 {},
+                                                                 output,
+                                                                 QNetworkAccessManager::Operation::GetOperation,
+                                                                 headers,
+                                                                 false,
+                                                                 {},
+                                                                 {},
+                                                                 custom_proxy);
+
+  if (result.m_networkError != QNetworkReply::NetworkError::NoError) {
+    throw NetworkException(result.m_networkError, tr("failed to download list of labels"));
+  }
+
+  QJsonObject obj = QJsonDocument::fromJson(output).object();
+  QJsonArray lbls_arr = obj[QSL("labels")].toArray();
+
+  for (const QJsonValue& lbl_val : lbls_arr) {
+    QJsonObject lbl_obj = lbl_val.toObject();
+
+    if (only_user_labels && lbl_obj[QSL("type")].toString() != QSL(GMAIL_LABEL_TYPE_USER)) {
+      continue;
+    }
+
+    Label* lbl =
+      new Label(lbl_obj[QSL("name")].toString(), TextFactory::generateColorFromText(lbl_obj[QSL("name")].toString()));
+
+    lbl->setCustomId(lbl_obj[QSL("id")].toString());
+    lbls.append(lbl);
+  }
+
+  return lbls;
+}
+
 QNetworkRequest GmailNetworkFactory::requestForAttachment(const QString& email_id, const QString& attachment_id) {
   QString target_url = QSL(GMAIL_API_GET_ATTACHMENT).arg(email_id, attachment_id);
   QNetworkRequest req(target_url);
@@ -182,7 +237,8 @@ QList<Message> GmailNetworkFactory::messages(const QString& stream_id,
     return {};
   }
 
-  const bool is_spam_feed = QString::compare(stream_id, QSL("SPAM"), Qt::CaseSensitivity::CaseInsensitive) == 0;
+  const bool is_spam_feed =
+    QString::compare(stream_id, QSL(GMAIL_SYSTEM_LABEL_SPAM), Qt::CaseSensitivity::CaseInsensitive) == 0;
 
   // 1. Get unread IDs for a feed.
   // 2. Get read IDs for a feed.
@@ -344,7 +400,7 @@ QNetworkReply::NetworkError GmailNetworkFactory::markMessagesStarred(RootItem::I
   param_obj[QSL("addLabelIds")] = param_add;
   param_obj[QSL("removeLabelIds")] = param_remove;
 
-  // We need to operate withing allowed batches.
+  // We need to operate within allowed batches.
   for (int i = 0; i < custom_ids.size(); i += GMAIL_MAX_BATCH_SIZE) {
     auto batch = custom_ids.mid(i, GMAIL_MAX_BATCH_SIZE);
 
@@ -412,7 +468,7 @@ QStringList GmailNetworkFactory::list(const QString& stream_id,
     }
 
     if (!next_page_token.isEmpty()) {
-      target_url += QString("&pageToken=%1").arg(next_page_token);
+      target_url += QSL("&pageToken=%1").arg(next_page_token);
     }
 
     QByteArray messages_raw_data;
@@ -506,6 +562,23 @@ void GmailNetworkFactory::onAuthFailed() {
 }
 
 bool GmailNetworkFactory::fillFullMessage(Message& msg, const QJsonObject& json, const QString& feed_id) const {
+  // Assign correct main labels/states.
+  auto labelids = json[QSL("labelIds")].toArray().toVariantList();
+
+  // Every message which is in INBOX, must be in INBOX, even if Gmail API returns more labels for the message.
+  // I have to always decide which single label is most important one.
+  if (labelids.contains(QSL(GMAIL_SYSTEM_LABEL_INBOX)) && feed_id != QSL(GMAIL_SYSTEM_LABEL_INBOX)) {
+    // This message is in INBOX label too, but this updated feed is not INBOX,
+    // we want to leave this message in INBOX and not duplicate it to other feed/label.
+    return false;
+  }
+
+  if (labelids.contains(QSL(GMAIL_SYSTEM_LABEL_TRASH)) && feed_id != QSL(GMAIL_SYSTEM_LABEL_TRASH)) {
+    // This message is in trash, but this updated feed is not recycle bin, we do not want
+    // this message to appear anywhere.
+    return false;
+  }
+
   QHash<QString, QString> headers;
   auto json_headers = json[QSL("payload")].toObject()[QSL("headers")].toArray();
 
@@ -516,8 +589,8 @@ bool GmailNetworkFactory::fillFullMessage(Message& msg, const QJsonObject& json,
   msg.m_isRead = true;
   msg.m_rawContents = QJsonDocument(json).toJson(QJsonDocument::JsonFormat::Compact);
 
-  // Assign correct main labels/states.
-  auto labelids = json[QSL("labelIds")].toArray().toVariantList();
+  auto active_labels = m_service->labelsNode() != nullptr ? m_service->labelsNode()->labels() : QList<Label*>();
+  auto active_labels_linq = boolinq::from(active_labels);
 
   for (const QVariant& label : qAsConst(labelids)) {
     QString lbl = label.toString();
@@ -528,20 +601,14 @@ bool GmailNetworkFactory::fillFullMessage(Message& msg, const QJsonObject& json,
     else if (lbl == QSL(GMAIL_SYSTEM_LABEL_STARRED)) {
       msg.m_isImportant = true;
     }
+    else {
+      auto* active_lb = active_labels_linq.firstOrDefault([lbl](Label* lb) {
+        return lb->customId() == lbl;
+      });
 
-    // RSS Guard does not support multi-labeling of messages, thus each message can have MAX single label.
-    // Every message which is in INBOX, must be in INBOX, even if Gmail API returns more labels for the message.
-    // I have to always decide which single label is most important one.
-    if (lbl == QSL(GMAIL_SYSTEM_LABEL_INBOX) && feed_id != QSL(GMAIL_SYSTEM_LABEL_INBOX)) {
-      // This message is in INBOX label too, but this updated feed is not INBOX,
-      // we want to leave this message in INBOX and not duplicate it to other feed/label.
-      return false;
-    }
-
-    if (lbl == QSL(GMAIL_SYSTEM_LABEL_TRASH) && feed_id != QSL(GMAIL_SYSTEM_LABEL_TRASH)) {
-      // This message is in trash, but this updated feed is not recycle bin, we do not want
-      // this message to appear anywhere.
-      return false;
+      if (active_lb != nullptr) {
+        msg.m_assignedLabels.append(active_lb);
+      }
     }
   }
 
@@ -697,6 +764,7 @@ QList<Message> GmailNetworkFactory::obtainAndDecodeFullMessages(const QStringLis
       Message msg;
       QHttpPart part;
 
+      msg.m_feedId = feed_id;
       msg.m_customId = msg_id;
 
       part.setRawHeader(HTTP_HEADERS_CONTENT_TYPE, GMAIL_CONTENT_TYPE_HTTP);

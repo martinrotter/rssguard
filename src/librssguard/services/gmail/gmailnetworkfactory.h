@@ -40,6 +40,7 @@ class GmailNetworkFactory : public QObject {
     void setDownloadOnlyUnreadMessages(bool download_only_unread_messages);
 
     // API methods.
+    QList<RootItem*> labels(bool only_user_labels, const QNetworkProxy& custom_proxy);
     QMap<QString, QString> getMessageMetadata(const QString& msg_id,
                                               const QStringList& metadata,
                                               const QNetworkProxy& custom_proxy);

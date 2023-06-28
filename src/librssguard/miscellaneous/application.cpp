@@ -293,6 +293,7 @@ void Application::loadDynamicShortcuts() {
 }
 
 void Application::showPolls() const {
+  /*
   if (isFirstRunCurrentVersion()) {
     qApp->showGuiMessage(Notification::Event::GeneralEvent,
                          {QSL("%1 survey").arg(QSL(APP_NAME)),
@@ -301,6 +302,7 @@ void Application::showPolls() const {
                          {false, true, false});
     qApp->web()->openUrlInExternalBrowser(QSL("https://forms.gle/FdzrwFGozCGViK8QA"));
   }
+  */
 }
 
 void Application::offerChanges() const {

@@ -32,6 +32,7 @@ class GmailServiceRoot : public ServiceRoot, public CacheForServiceRoot {
     virtual QString additionalTooltip() const;
     virtual void saveAllCachedData(bool ignore_errors);
     virtual bool displaysEnclosures() const;
+    virtual LabelOperation supportedLabelOperations() const;
     virtual QVariantHash customDatabaseData() const;
     virtual void setCustomDatabaseData(const QVariantHash& data);
     virtual QList<Message> obtainNewMessages(Feed* feed,

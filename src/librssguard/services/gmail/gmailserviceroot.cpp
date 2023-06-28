@@ -8,6 +8,7 @@
 #include "miscellaneous/iconfactory.h"
 #include "network-web/oauth2service.h"
 #include "services/abstract/importantnode.h"
+#include "services/abstract/labelsnode.h"
 #include "services/abstract/recyclebin.h"
 #include "services/gmail/definitions.h"
 #include "services/gmail/gmailentrypoint.h"
@@ -59,6 +60,12 @@ RootItem* GmailServiceRoot::obtainNewTreeForSyncIn() const {
                              qApp->icons()->fromTheme(QSL("mail-mark-junk")),
                              root));
 
+  auto* lblroot = new LabelsNode(root);
+  auto labels = m_network->labels(true, networkProxy());
+
+  lblroot->setChildItems(labels);
+  root->appendChild(lblroot);
+
   return root;
 }
 
@@ -94,7 +101,6 @@ QList<Message> GmailServiceRoot::obtainNewMessages(Feed* feed,
                                                    const QHash<ServiceRoot::BagOfMessages, QStringList>&
                                                      stated_messages,
                                                    const QHash<QString, QStringList>& tagged_messages) {
-  Q_UNUSED(stated_messages)
   Q_UNUSED(tagged_messages)
 
   Feed::Status error = Feed::Status::Normal;
@@ -248,4 +254,8 @@ void GmailServiceRoot::saveAllCachedData(bool ignore_errors) {
 
 bool GmailServiceRoot::displaysEnclosures() const {
   return false;
+}
+
+ServiceRoot::LabelOperation GmailServiceRoot::supportedLabelOperations() const {
+  return ServiceRoot::LabelOperation::Synchronised;
 }
