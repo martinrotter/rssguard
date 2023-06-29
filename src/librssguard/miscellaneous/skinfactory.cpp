@@ -171,25 +171,24 @@ void SkinFactory::loadSkinFromData(const Skin& skin) {
   const bool use_skin_colors =
     skin.m_forcedSkinColors || qApp->settings()->value(GROUP(GUI), SETTING(GUI::ForcedSkinColors)).toBool();
 
-  if (isStyleGoodForAlternativeStylePalette(m_currentStyle) && !skin.m_stylePalette.isEmpty() && use_skin_colors) {
-    qDebugNN << LOGSEC_GUI << "Activating alternative palette.";
+  if (isStyleGoodForAlternativeStylePalette(m_currentStyle)) {
+    if (!skin.m_stylePalette.isEmpty() && use_skin_colors) {
+      qDebugNN << LOGSEC_GUI << "Activating alternative palette.";
 
-    QPalette pal = skin.extractPalette();
+      QPalette pal = skin.extractPalette();
 
-    QToolTip::setPalette(pal);
-    qApp->setPalette(pal);
-  }
-  // NOTE: Very hacky way of avoiding automatic "dark mode"
-  // palettes in some styles. Also in light mode,
-  // colors are now derived from system.
-  //
-  // NOTE: At this point disabled as it effectively disables automatic "dark
-  // mode when it is enabled in OS settings.
+      QToolTip::setPalette(pal);
+      qApp->setPalette(pal);
+    }
+    // NOTE: Very hacky way of avoiding automatic "dark mode"
+    // palettes in some styles. Also in light mode,
+    // colors are now derived from system.
 #if QT_VERSION >= 0x060500 // Qt >= 6.5.0
-  // else /* if (qApp->styleHints()->colorScheme() == Qt::ColorScheme::Dark) */ {
-  //   qApp->setPalette(qt_fusionPalette(false));
-  // }
+    else {
+      qApp->setPalette(qt_fusionPalette(qApp->styleHints()->colorScheme() == Qt::ColorScheme::Dark));
+    }
 #endif
+  }
 
   if (!skin.m_rawData.isEmpty()) {
     if (qApp->styleSheet().simplified().isEmpty() && use_skin_colors) {
