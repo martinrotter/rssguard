@@ -250,6 +250,44 @@ void GmailServiceRoot::saveAllCachedData(bool ignore_errors) {
       }
     }
   }
+
+  QMapIterator<QString, QStringList> k(msg_cache.m_cachedLabelAssignments);
+
+  // Assign label for these messages.
+  while (k.hasNext()) {
+    k.next();
+    auto label_custom_id = k.key();
+    QStringList messages = k.value();
+
+    if (!messages.isEmpty()) {
+      auto res = network()->batchModify(label_custom_id, messages, true, networkProxy());
+
+      if (res != QNetworkReply::NetworkError::NoError) {
+        qCriticalNN << LOGSEC_FEEDLY << "Failed to synchronize tag assignments with error:" << QUOTE_W_SPACE(res);
+
+        addLabelsAssignmentsToCache(messages, label_custom_id, true);
+      }
+    }
+  }
+
+  QMapIterator<QString, QStringList> l(msg_cache.m_cachedLabelDeassignments);
+
+  // Remove label from these messages.
+  while (l.hasNext()) {
+    l.next();
+    auto label_custom_id = l.key();
+    QStringList messages = l.value();
+
+    if (!messages.isEmpty()) {
+      auto res = network()->batchModify(label_custom_id, messages, false, networkProxy());
+
+      if (res != QNetworkReply::NetworkError::NoError) {
+        qCriticalNN << LOGSEC_FEEDLY << "Failed to synchronize tag deassignments with error:" << QUOTE_W_SPACE(res);
+
+        addLabelsAssignmentsToCache(messages, label_custom_id, false);
+      }
+    }
+  }
 }
 
 bool GmailServiceRoot::displaysEnclosures() const {

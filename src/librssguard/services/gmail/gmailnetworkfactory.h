@@ -50,12 +50,10 @@ class GmailNetworkFactory : public QObject {
                             const QHash<ServiceRoot::BagOfMessages, QStringList>& stated_messages,
                             Feed::Status& error,
                             const QNetworkProxy& custom_proxy);
-    QNetworkReply::NetworkError markMessagesRead(RootItem::ReadStatus status,
-                                                 const QStringList& custom_ids,
-                                                 const QNetworkProxy& custom_proxy);
-    QNetworkReply::NetworkError markMessagesStarred(RootItem::Importance importance,
-                                                    const QStringList& custom_ids,
-                                                    const QNetworkProxy& custom_proxy);
+    QNetworkReply::NetworkError batchModify(const QString& label,
+                                             const QStringList& custom_ids,
+                                             bool assign,
+                                             const QNetworkProxy& custom_proxy);
     QStringList list(const QString& stream_id,
                      const QStringList& label_ids,
                      int max_results,
@@ -63,6 +61,14 @@ class GmailNetworkFactory : public QObject {
                      const QString& query,
                      const QNetworkProxy& custom_proxy);
     QVariantHash getProfile(const QNetworkProxy& custom_proxy);
+
+    // Top-level methods.
+    QNetworkReply::NetworkError markMessagesRead(RootItem::ReadStatus status,
+                                                 const QStringList& custom_ids,
+                                                 const QNetworkProxy& custom_proxy);
+    QNetworkReply::NetworkError markMessagesStarred(RootItem::Importance importance,
+                                                    const QStringList& custom_ids,
+                                                    const QNetworkProxy& custom_proxy);
 
   private slots:
     void onTokensError(const QString& error, const QString& error_description);

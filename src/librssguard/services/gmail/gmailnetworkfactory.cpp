@@ -308,9 +308,10 @@ QList<Message> GmailNetworkFactory::messages(const QString& stream_id,
   return messages;
 }
 
-QNetworkReply::NetworkError GmailNetworkFactory::markMessagesRead(RootItem::ReadStatus status,
-                                                                  const QStringList& custom_ids,
-                                                                  const QNetworkProxy& custom_proxy) {
+QNetworkReply::NetworkError GmailNetworkFactory::batchModify(const QString& label,
+                                                             const QStringList& custom_ids,
+                                                             bool assign,
+                                                             const QNetworkProxy& custom_proxy) {
   QString bearer = m_oauth2->bearer().toLocal8Bit();
 
   if (bearer.isEmpty()) {
@@ -328,13 +329,11 @@ QNetworkReply::NetworkError GmailNetworkFactory::markMessagesRead(RootItem::Read
   QJsonObject param_obj;
   QJsonArray param_add, param_remove;
 
-  if (status == RootItem::ReadStatus::Read) {
-    // We remove label UNREAD.
-    param_remove.append(GMAIL_SYSTEM_LABEL_UNREAD);
+  if (assign) {
+    param_add.append(label);
   }
   else {
-    // We add label UNREAD.
-    param_add.append(GMAIL_SYSTEM_LABEL_UNREAD);
+    param_remove.append(label);
   }
 
   param_obj[QSL("addLabelIds")] = param_add;
@@ -368,64 +367,19 @@ QNetworkReply::NetworkError GmailNetworkFactory::markMessagesRead(RootItem::Read
   return QNetworkReply::NetworkError::NoError;
 }
 
+QNetworkReply::NetworkError GmailNetworkFactory::markMessagesRead(RootItem::ReadStatus status,
+                                                                  const QStringList& custom_ids,
+                                                                  const QNetworkProxy& custom_proxy) {
+  return batchModify(QSL(GMAIL_SYSTEM_LABEL_UNREAD), custom_ids, status != RootItem::ReadStatus::Read, custom_proxy);
+}
+
 QNetworkReply::NetworkError GmailNetworkFactory::markMessagesStarred(RootItem::Importance importance,
                                                                      const QStringList& custom_ids,
                                                                      const QNetworkProxy& custom_proxy) {
-  QString bearer = m_oauth2->bearer().toLocal8Bit();
-
-  if (bearer.isEmpty()) {
-    return QNetworkReply::NetworkError::AuthenticationRequiredError;
-  }
-
-  QList<QPair<QByteArray, QByteArray>> headers;
-
-  headers.append(QPair<QByteArray, QByteArray>(QSL(HTTP_HEADERS_AUTHORIZATION).toLocal8Bit(),
-                                               m_oauth2->bearer().toLocal8Bit()));
-  headers.append(QPair<QByteArray, QByteArray>(QSL(HTTP_HEADERS_CONTENT_TYPE).toLocal8Bit(),
-                                               QSL(GMAIL_CONTENT_TYPE_JSON).toLocal8Bit()));
-
-  int timeout = qApp->settings()->value(GROUP(Feeds), SETTING(Feeds::UpdateTimeout)).toInt();
-  QJsonObject param_obj;
-  QJsonArray param_add, param_remove;
-
-  if (importance == RootItem::Importance::Important) {
-    // We add label STARRED.
-    param_add.append(GMAIL_SYSTEM_LABEL_STARRED);
-  }
-  else {
-    // We remove label STARRED.
-    param_remove.append(GMAIL_SYSTEM_LABEL_STARRED);
-  }
-
-  param_obj[QSL("addLabelIds")] = param_add;
-  param_obj[QSL("removeLabelIds")] = param_remove;
-
-  // We need to operate within allowed batches.
-  for (int i = 0; i < custom_ids.size(); i += GMAIL_MAX_BATCH_SIZE) {
-    auto batch = custom_ids.mid(i, GMAIL_MAX_BATCH_SIZE);
-
-    param_obj[QSL("ids")] = QJsonArray::fromStringList(batch);
-
-    QJsonDocument param_doc(param_obj);
-    QByteArray output;
-    auto result = NetworkFactory::performNetworkOperation(QSL(GMAIL_API_BATCH_UPD_LABELS),
-                                                          timeout,
-                                                          param_doc.toJson(QJsonDocument::JsonFormat::Compact),
-                                                          output,
-                                                          QNetworkAccessManager::Operation::PostOperation,
-                                                          headers,
-                                                          false,
-                                                          {},
-                                                          {},
-                                                          custom_proxy)
-                    .m_networkError;
-
-    if (result != QNetworkReply::NetworkError::NoError) {
-      return result;
-    }
-  }
-
-  return QNetworkReply::NetworkError::NoError;
+  return batchModify(QSL(GMAIL_SYSTEM_LABEL_STARRED),
+                     custom_ids,
+                     importance == RootItem::Importance::Important,
+                     custom_proxy);
 }
 
 QStringList GmailNetworkFactory::list(const QString& stream_id,

@@ -56,50 +56,51 @@ bool SkinFactory::isStyleGoodForAlternativeStylePalette(const QString& style_nam
 // NOTE: Taken from "QPlatformThemePrivate" Qt class.
 // This is here because in Qt 6.5.0, they hardcoded
 // DARK palette if user has enabled "dark mode" in OS.
-QPalette qt_fusionPalette(bool darkAppearance) {
-  const QColor windowText = darkAppearance ? QColor(240, 240, 240) : Qt::black;
-  const QColor backGround = darkAppearance ? QColor(50, 50, 50) : QColor(239, 239, 239);
-  const QColor light = backGround.lighter(150);
-  const QColor mid = (backGround.darker(130));
-  const QColor midLight = mid.lighter(110);
-  const QColor base = darkAppearance ? backGround.darker(140) : Qt::white;
-  const QColor disabledBase(backGround);
-  const QColor dark = backGround.darker(150);
-  const QColor darkDisabled = QColor(209, 209, 209).darker(110);
-  const QColor text = darkAppearance ? windowText : Qt::black;
+QPalette qt_fusionPalette(bool dark_appearance) {
+  const QColor window_text = dark_appearance ? QColor(240, 240, 240) : Qt::black;
+  const QColor background = dark_appearance ? QColor(50, 50, 50) : QColor(239, 239, 239);
+  const QColor light = background.lighter(150);
+  const QColor mid = (background.darker(130));
+  const QColor midlight = mid.lighter(110);
+  const QColor base = dark_appearance ? background.darker(140) : Qt::white;
+  const QColor disabled_base(background);
+  const QColor dark = background.darker(150);
+  const QColor disabled_dark = QColor(209, 209, 209).darker(110);
+  const QColor text = dark_appearance ? window_text : Qt::black;
   const QColor highlight = QColor(48, 140, 198);
-  const QColor hightlightedText = darkAppearance ? windowText : Qt::white;
-  const QColor disabledText = darkAppearance ? QColor(130, 130, 130) : QColor(190, 190, 190);
-  const QColor button = backGround;
+  const QColor hightlighted_text = dark_appearance ? window_text : Qt::white;
+  const QColor disabled_text = dark_appearance ? QColor(130, 130, 130) : QColor(190, 190, 190);
+  const QColor button = background;
   const QColor shadow = dark.darker(135);
-  const QColor disabledShadow = shadow.lighter(150);
+  const QColor disabled_shadow = shadow.lighter(150);
+
   QColor placeholder = text;
   placeholder.setAlpha(128);
 
-  QPalette fusionPalette(windowText, backGround, light, dark, mid, text, base);
-  fusionPalette.setBrush(QPalette::Midlight, midLight);
-  fusionPalette.setBrush(QPalette::Button, button);
-  fusionPalette.setBrush(QPalette::Shadow, shadow);
-  fusionPalette.setBrush(QPalette::HighlightedText, hightlightedText);
+  QPalette fusion_palette(window_text, background, light, dark, mid, text, base);
+  fusion_palette.setBrush(QPalette::Midlight, midlight);
+  fusion_palette.setBrush(QPalette::Button, button);
+  fusion_palette.setBrush(QPalette::Shadow, shadow);
+  fusion_palette.setBrush(QPalette::HighlightedText, hightlighted_text);
 
-  fusionPalette.setBrush(QPalette::Disabled, QPalette::Text, disabledText);
-  fusionPalette.setBrush(QPalette::Disabled, QPalette::WindowText, disabledText);
-  fusionPalette.setBrush(QPalette::Disabled, QPalette::ButtonText, disabledText);
-  fusionPalette.setBrush(QPalette::Disabled, QPalette::Base, disabledBase);
-  fusionPalette.setBrush(QPalette::Disabled, QPalette::Dark, darkDisabled);
-  fusionPalette.setBrush(QPalette::Disabled, QPalette::Shadow, disabledShadow);
+  fusion_palette.setBrush(QPalette::Disabled, QPalette::Text, disabled_text);
+  fusion_palette.setBrush(QPalette::Disabled, QPalette::WindowText, disabled_text);
+  fusion_palette.setBrush(QPalette::Disabled, QPalette::ButtonText, disabled_text);
+  fusion_palette.setBrush(QPalette::Disabled, QPalette::Base, disabled_base);
+  fusion_palette.setBrush(QPalette::Disabled, QPalette::Dark, disabled_dark);
+  fusion_palette.setBrush(QPalette::Disabled, QPalette::Shadow, disabled_shadow);
 
-  fusionPalette.setBrush(QPalette::Active, QPalette::Highlight, highlight);
-  fusionPalette.setBrush(QPalette::Inactive, QPalette::Highlight, highlight);
-  fusionPalette.setBrush(QPalette::Disabled, QPalette::Highlight, QColor(145, 145, 145));
+  fusion_palette.setBrush(QPalette::Active, QPalette::Highlight, highlight);
+  fusion_palette.setBrush(QPalette::Inactive, QPalette::Highlight, highlight);
+  fusion_palette.setBrush(QPalette::Disabled, QPalette::Highlight, QColor(145, 145, 145));
 
-  fusionPalette.setBrush(QPalette::PlaceholderText, placeholder);
+  fusion_palette.setBrush(QPalette::PlaceholderText, placeholder);
 
-  if (darkAppearance) {
-    fusionPalette.setBrush(QPalette::Link, highlight);
+  if (dark_appearance) {
+    fusion_palette.setBrush(QPalette::Link, highlight);
   }
 
-  return fusionPalette;
+  return fusion_palette;
 }
 
 void SkinFactory::loadSkinFromData(const Skin& skin) {
@@ -181,10 +182,13 @@ void SkinFactory::loadSkinFromData(const Skin& skin) {
   // NOTE: Very hacky way of avoiding automatic "dark mode"
   // palettes in some styles. Also in light mode,
   // colors are now derived from system.
+  //
+  // NOTE: At this point disabled as it effectively disables automatic "dark
+  // mode when it is enabled in OS settings.
 #if QT_VERSION >= 0x060500 // Qt >= 6.5.0
-  else /* if (qApp->styleHints()->colorScheme() == Qt::ColorScheme::Dark) */ {
-    qApp->setPalette(qt_fusionPalette(false));
-  }
+  // else /* if (qApp->styleHints()->colorScheme() == Qt::ColorScheme::Dark) */ {
+  //   qApp->setPalette(qt_fusionPalette(false));
+  // }
 #endif
 
   if (!skin.m_rawData.isEmpty()) {
