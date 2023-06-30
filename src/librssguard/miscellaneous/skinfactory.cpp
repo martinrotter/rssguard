@@ -184,8 +184,8 @@ void SkinFactory::loadSkinFromData(const Skin& skin) {
     // palettes in some styles. Also in light mode,
     // colors are now derived from system.
 #if QT_VERSION >= 0x060500 // Qt >= 6.5.0
-    else {
-      qApp->setPalette(qt_fusionPalette(qApp->styleHints()->colorScheme() == Qt::ColorScheme::Dark));
+    else if (qApp->styleHints()->colorScheme() == Qt::ColorScheme::Light) {
+      qApp->setPalette(qt_fusionPalette(false));
     }
 #endif
   }
