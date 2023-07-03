@@ -72,9 +72,14 @@ void EmailPreviewer::loadMessage(const Message& msg, RootItem* selected_item) {
 }
 
 void EmailPreviewer::loadExtraMessageData() {
-  m_ui.m_tbTo->setText(m_account->network()->getMessageMetadata(m_message.m_customId,
-                                                                {QSL("TO")},
-                                                                m_account->networkProxy())["To"]);
+  try {
+    m_ui.m_tbTo->setText(m_account->network()->getMessageMetadata(m_message.m_customId,
+                                                                  {QSL("TO")},
+                                                                  m_account->networkProxy())["To"]);
+  }
+  catch (const ApplicationException& ex) {
+    qWarningNN << LOGSEC_GMAIL << "Cannot load extra article metadata:" << QUOTE_W_SPACE_DOT(ex.message());
+  }
 }
 
 void EmailPreviewer::replyToEmail() {

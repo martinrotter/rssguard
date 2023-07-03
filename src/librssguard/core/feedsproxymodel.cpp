@@ -5,6 +5,7 @@
 #include "core/feedsmodel.h"
 #include "database/databasequeries.h"
 #include "definitions/definitions.h"
+#include "definitions/globals.h"
 #include "gui/feedsview.h"
 #include "miscellaneous/application.h"
 #include "miscellaneous/regexfactory.h"
@@ -72,8 +73,8 @@ QModelIndexList FeedsProxyModel::match(const QModelIndex& start,
   QModelIndexList result;
   const int match_type = flags & 0x0F;
   const Qt::CaseSensitivity cs = Qt::CaseSensitivity::CaseInsensitive;
-  const bool recurse = (flags & Qt::MatchFlag::MatchRecursive) > 0;
-  const bool wrap = (flags & Qt::MatchFlag::MatchWrap) > 0;
+  const bool recurse = Globals::hasFlag(flags, Qt::MatchFlag::MatchRecursive);
+  const bool wrap = Globals::hasFlag(flags, Qt::MatchFlag::MatchWrap);
   const bool all_hits = (hits == -1);
   QString entered_text;
   const QModelIndex p = parent(start);

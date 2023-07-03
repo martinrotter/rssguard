@@ -5,13 +5,13 @@
 
 class Globals {
   public:
-    template <typename T> static bool hasFlag(T lhs, T rhs);
+    template <typename T, typename U> static bool hasFlag(T lhs, U rhs);
 
   private:
     Globals();
 };
 
-template <typename T> inline bool Globals::hasFlag(T lhs, T rhs) {
+template <typename T, typename U> inline bool Globals::hasFlag(T lhs, U rhs) {
   return (int(lhs) & int(rhs)) == int(rhs);
 }
 
