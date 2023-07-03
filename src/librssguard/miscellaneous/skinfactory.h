@@ -70,7 +70,9 @@ struct RSSGUARD_DLLSPEC Skin {
     bool m_forcedSkinColors;
     QMultiHash<QPalette::ColorGroup, QPair<QPalette::ColorRole, QPair<QColor, Qt::BrushStyle>>> m_stylePalette;
 
-    QVariant colorForModel(SkinEnums::PaletteColors type, bool ignore_custom_colors = false) const;
+    QVariant colorForModel(SkinEnums::PaletteColors type,
+                           bool use_skin_colors,
+                           bool ignore_custom_colors = false) const;
     QPalette extractPalette() const;
 };
 
@@ -88,6 +90,9 @@ class RSSGUARD_DLLSPEC SkinFactory : public QObject {
     // Loads skin name from settings and sets it as active.
     void loadCurrentSkin();
     Skin currentSkin() const;
+
+    // Gets color for model from active skin.
+    QVariant colorForModel(SkinEnums::PaletteColors type, bool ignore_custom_colors = false) const;
 
     bool isStyleGoodForAlternativeStylePalette(const QString& style_name) const;
 
@@ -109,9 +114,7 @@ class RSSGUARD_DLLSPEC SkinFactory : public QObject {
     void setCurrentSkinName(const QString& skin_name);
 
     QString customSkinBaseFolder() const;
-
     bool styleIsFrozen() const;
-
     QString currentStyle() const;
 
   private:
@@ -124,6 +127,7 @@ class RSSGUARD_DLLSPEC SkinFactory : public QObject {
     Skin m_currentSkin;
     QString m_currentStyle;
     bool m_styleIsFrozen;
+    bool m_useSkinColors;
 };
 
 inline Skin SkinFactory::currentSkin() const {

@@ -19,7 +19,7 @@
 #include <QTextDocument>
 #include <QToolTip>
 
-SkinFactory::SkinFactory(QObject* parent) : QObject(parent), m_styleIsFrozen(false) {}
+SkinFactory::SkinFactory(QObject* parent) : QObject(parent), m_styleIsFrozen(false), m_useSkinColors(false) {}
 
 void SkinFactory::loadCurrentSkin() {
   QList<QString> skin_names_to_try = {selectedSkinName(), QSL(APP_SKIN_DEFAULT)};
@@ -45,6 +45,10 @@ void SkinFactory::loadCurrentSkin() {
   }
 
   qCriticalNN << LOGSEC_GUI << "Failed to load selected or default skin. Quitting!";
+}
+
+QVariant SkinFactory::colorForModel(SkinEnums::PaletteColors type, bool ignore_custom_colors) const {
+  return m_currentSkin.colorForModel(type, m_useSkinColors, ignore_custom_colors);
 }
 
 bool SkinFactory::isStyleGoodForAlternativeStylePalette(const QString& style_name) const {
@@ -167,12 +171,11 @@ void SkinFactory::loadSkinFromData(const Skin& skin) {
   // NOTE: We can do this because in Qt source code
   // they specifically set object name to style name.
   m_currentStyle = qApp->style()->objectName();
-
-  const bool use_skin_colors =
+  m_useSkinColors =
     skin.m_forcedSkinColors || qApp->settings()->value(GROUP(GUI), SETTING(GUI::ForcedSkinColors)).toBool();
 
   if (isStyleGoodForAlternativeStylePalette(m_currentStyle)) {
-    if (!skin.m_stylePalette.isEmpty() && use_skin_colors) {
+    if (!skin.m_stylePalette.isEmpty() && m_useSkinColors) {
       qDebugNN << LOGSEC_GUI << "Activating alternative palette.";
 
       QPalette pal = skin.extractPalette();
@@ -191,7 +194,7 @@ void SkinFactory::loadSkinFromData(const Skin& skin) {
   }
 
   if (!skin.m_rawData.isEmpty()) {
-    if (qApp->styleSheet().simplified().isEmpty() && use_skin_colors) {
+    if (qApp->styleSheet().simplified().isEmpty() && m_useSkinColors) {
       qApp->setStyleSheet(skin.m_rawData);
     }
     else {
@@ -529,7 +532,7 @@ uint qHash(const SkinEnums::PaletteColors& key) {
   return uint(key);
 }
 
-QVariant Skin::colorForModel(SkinEnums::PaletteColors type, bool ignore_custom_colors) const {
+QVariant Skin::colorForModel(SkinEnums::PaletteColors type, bool use_skin_colors, bool ignore_custom_colors) const {
   if (!ignore_custom_colors) {
     bool enabled = qApp->settings()->value(GROUP(CustomSkinColors), SETTING(CustomSkinColors::Enabled)).toBool();
 
@@ -544,7 +547,7 @@ QVariant Skin::colorForModel(SkinEnums::PaletteColors type, bool ignore_custom_c
     }
   }
 
-  return m_colorPalette.contains(type) ? m_colorPalette[type] : QVariant();
+  return (use_skin_colors & m_colorPalette.contains(type)) ? m_colorPalette[type] : QVariant();
 }
 
 QPalette Skin::extractPalette() const {

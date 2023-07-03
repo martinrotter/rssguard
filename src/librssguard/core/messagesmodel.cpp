@@ -476,9 +476,9 @@ QVariant MessagesModel::data(const QModelIndex& idx, int role) const {
                                                                   : QSqlQueryModel::data(idx_important);
 
         if (dta.toInt() == 1) {
-          return qApp->skins()->currentSkin().colorForModel(role == Qt::ItemDataRole::ForegroundRole
-                                                              ? SkinEnums::PaletteColors::FgInteresting
-                                                              : SkinEnums::PaletteColors::FgSelectedInteresting);
+          return qApp->skins()->colorForModel(role == Qt::ItemDataRole::ForegroundRole
+                                                ? SkinEnums::PaletteColors::FgInteresting
+                                                : SkinEnums::PaletteColors::FgSelectedInteresting);
         }
       }
 
@@ -487,9 +487,9 @@ QVariant MessagesModel::data(const QModelIndex& idx, int role) const {
         QVariant dta = m_cache->containsData(idx_read.row()) ? m_cache->data(idx_read) : QSqlQueryModel::data(idx_read);
 
         if (dta.toInt() == 0) {
-          return qApp->skins()->currentSkin().colorForModel(role == Qt::ItemDataRole::ForegroundRole
-                                                              ? SkinEnums::PaletteColors::FgInteresting
-                                                              : SkinEnums::PaletteColors::FgSelectedInteresting);
+          return qApp->skins()->colorForModel(role == Qt::ItemDataRole::ForegroundRole
+                                                ? SkinEnums::PaletteColors::FgInteresting
+                                                : SkinEnums::PaletteColors::FgSelectedInteresting);
         }
       }
 

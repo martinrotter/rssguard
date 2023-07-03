@@ -306,7 +306,7 @@ void SettingsGui::loadSettings() {
     QColor clr = settings()->value(GROUP(CustomSkinColors), enumer.key(i)).toString();
 
     if (!clr.isValid()) {
-      clr = qApp->skins()->currentSkin().colorForModel(pal).value<QColor>();
+      clr = qApp->skins()->colorForModel(pal).value<QColor>();
     }
 
     rst_btn->setObjectName(QString::number(enumer.value(i)));
@@ -339,7 +339,7 @@ void SettingsGui::resetCustomSkinColor() {
   auto* clr_btn = m_ui->m_gbCustomSkinColors->findChild<ColorToolButton*>(sender()->objectName());
   SkinEnums::PaletteColors pal = SkinEnums::PaletteColors(sender()->objectName().toInt());
 
-  clr_btn->setColor(qApp->skins()->currentSkin().colorForModel(pal, true).value<QColor>());
+  clr_btn->setColor(qApp->skins()->colorForModel(pal, true).value<QColor>());
 }
 
 void SettingsGui::saveSettings() {

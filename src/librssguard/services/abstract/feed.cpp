@@ -58,11 +58,11 @@ QVariant Feed::data(int column, int role) const {
     case HIGHLIGHTED_FOREGROUND_TITLE_ROLE:
       switch (status()) {
         case Status::NewMessages:
-          return qApp->skins()->currentSkin().colorForModel(SkinEnums::PaletteColors::FgSelectedNewMessages);
+          return qApp->skins()->colorForModel(SkinEnums::PaletteColors::FgSelectedNewMessages);
 
         case Status::Normal:
           if (countOfUnreadMessages() > 0) {
-            return qApp->skins()->currentSkin().colorForModel(SkinEnums::PaletteColors::FgSelectedInteresting);
+            return qApp->skins()->colorForModel(SkinEnums::PaletteColors::FgSelectedInteresting);
           }
           else {
             return QVariant();
@@ -72,7 +72,7 @@ QVariant Feed::data(int column, int role) const {
         case Status::ParsingError:
         case Status::AuthError:
         case Status::OtherError:
-          return qApp->skins()->currentSkin().colorForModel(SkinEnums::PaletteColors::FgSelectedError);
+          return qApp->skins()->colorForModel(SkinEnums::PaletteColors::FgSelectedError);
 
         default:
           return QVariant();
@@ -81,11 +81,11 @@ QVariant Feed::data(int column, int role) const {
     case Qt::ItemDataRole::ForegroundRole:
       switch (status()) {
         case Status::NewMessages:
-          return qApp->skins()->currentSkin().colorForModel(SkinEnums::PaletteColors::FgNewMessages);
+          return qApp->skins()->colorForModel(SkinEnums::PaletteColors::FgNewMessages);
 
         case Status::Normal:
           if (countOfUnreadMessages() > 0) {
-            return qApp->skins()->currentSkin().colorForModel(SkinEnums::PaletteColors::FgInteresting);
+            return qApp->skins()->colorForModel(SkinEnums::PaletteColors::FgInteresting);
           }
           else {
             return QVariant();
@@ -95,7 +95,7 @@ QVariant Feed::data(int column, int role) const {
         case Status::ParsingError:
         case Status::AuthError:
         case Status::OtherError:
-          return qApp->skins()->currentSkin().colorForModel(SkinEnums::PaletteColors::FgError);
+          return qApp->skins()->colorForModel(SkinEnums::PaletteColors::FgError);
 
         default:
           return QVariant();

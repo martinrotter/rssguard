@@ -37,7 +37,7 @@ TextBrowserViewer::TextBrowserViewer(QWidget* parent)
   setDocument(m_document.data());
 
   // Apply master CSS.
-  QColor a_color = qApp->skins()->currentSkin().colorForModel(SkinEnums::PaletteColors::FgInteresting).value<QColor>();
+  QColor a_color = qApp->skins()->colorForModel(SkinEnums::PaletteColors::FgInteresting).value<QColor>();
 
   if (!a_color.isValid()) {
     a_color = qApp->palette().color(QPalette::ColorRole::Highlight);
