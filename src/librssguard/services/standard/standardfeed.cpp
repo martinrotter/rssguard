@@ -524,7 +524,10 @@ QString StandardFeed::runScriptProcess(const QStringList& cmd_args,
   process.setProcessChannelMode(QProcess::ProcessChannelMode::SeparateChannels);
   process.setWorkingDirectory(working_directory);
   process.setProgram(cmd_args.at(0));
-  process.setArguments(cmd_args.mid(1));
+
+  if (cmd_args.size() > 1) {
+    process.setArguments(cmd_args.mid(1));
+  }
 
   if (!process.open()) {
     switch (process.error()) {
@@ -574,6 +577,10 @@ QString StandardFeed::runScriptProcess(const QStringList& cmd_args,
 QString StandardFeed::generateFeedFileWithScript(const QString& execution_line, int run_timeout) {
   auto prepared_query = prepareExecutionLine(execution_line);
 
+  if (prepared_query.isEmpty()) {
+    throw ScriptException(ScriptException::Reason::ExecutionLineInvalid);
+  }
+
   return runScriptProcess(prepared_query, qApp->userDataFolder(), run_timeout, false);
 }
 
@@ -581,6 +588,10 @@ QString StandardFeed::postProcessFeedFileWithScript(const QString& execution_lin
                                                     const QString& raw_feed_data,
                                                     int run_timeout) {
   auto prepared_query = prepareExecutionLine(execution_line);
+
+  if (prepared_query.isEmpty()) {
+    throw ScriptException(ScriptException::Reason::ExecutionLineInvalid);
+  }
 
   return runScriptProcess(prepared_query, qApp->userDataFolder(), run_timeout, true, raw_feed_data);
 }
