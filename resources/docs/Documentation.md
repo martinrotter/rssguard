@@ -638,11 +638,11 @@ After starting RSS Guard this way, reproduce your issue and attach the log file 
 For broader questions and general ideas, use the [Discussions page](https://github.com/martinrotter/rssguard/discussions).
 
 ### Localization <a id="locali"></a>
-RSS Guard supports localization to [many languages](http://www.transifex.com/projects/p/rssguard).
+RSS Guard supports localization to [many languages](https://app.transifex.com/martinrotter/rssguard).
 
 If you are interested in translating RSS Guard, then do this:
 
-1. Go [to RSS Guard's page on Transifex](http://www.transifex.com/projects/p/rssguard) and check status of currently supported localizations.
+1. Go [to RSS Guard's page on Transifex](https://app.transifex.com/martinrotter/rssguard) and check status of currently supported localizations.
 
 2. [Create a Transifex account](http://www.transifex.com/signin) (you can use social networks to login), and work on existing translations. If no translation team for your country/language exists, then ask to create the "localization team" via the website.
 
