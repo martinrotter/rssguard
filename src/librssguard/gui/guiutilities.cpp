@@ -26,12 +26,8 @@ void GuiUtilities::setLabelAsNotice(QLabel& label, bool is_warning, bool set_mar
 }
 
 void GuiUtilities::applyDialogProperties(QWidget& widget, const QIcon& icon, const QString& title) {
-
-  widget.setWindowFlags(
-    Qt::WindowType::Dialog |
-    Qt::WindowType::WindowTitleHint |
-    Qt::WindowType::WindowMaximizeButtonHint |
-    Qt::WindowType::WindowCloseButtonHint);
+  widget.setWindowFlags(Qt::WindowType::Dialog | Qt::WindowType::WindowTitleHint |
+                        Qt::WindowType::WindowMaximizeButtonHint | Qt::WindowType::WindowCloseButtonHint);
 
   widget.setWindowIcon(icon);
 
@@ -46,7 +42,7 @@ void GuiUtilities::restoreState(QWidget* wdg, QByteArray state) {
 
   str >> props;
 
-  QList<QObject*> to_process = { wdg };
+  QList<QObject*> to_process = {wdg};
 
   while (!to_process.isEmpty()) {
     QObject* act = to_process.takeFirst();
@@ -65,12 +61,10 @@ void GuiUtilities::restoreState(QWidget* wdg, QByteArray state) {
 }
 
 QByteArray GuiUtilities::saveState(QWidget* wdg) {
-  QHash<QString, QStringList> props_to_serialize {
-    { QSL("QCheckBox"), { QSL("checked") } },
-    { QSL("QSpinBox"), { QSL("value") } }
-  };
+  QHash<QString, QStringList> props_to_serialize{{QSL("QCheckBox"), {QSL("checked")}},
+                                                 {QSL("QSpinBox"), {QSL("value")}}};
   QHash<QString, QHash<QString, QVariant>> props;
-  QList<QObject*> to_process = { wdg };
+  QList<QObject*> to_process = {wdg};
 
   while (!to_process.isEmpty()) {
     QObject* act = to_process.takeFirst();

@@ -1141,6 +1141,7 @@ void Application::displayLog() {
             Qt::ConnectionType::QueuedConnection);
   }
 
+  m_logForm->close();
   m_logForm->show();
 }
 
