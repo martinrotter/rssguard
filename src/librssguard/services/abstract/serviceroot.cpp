@@ -17,17 +17,19 @@
 #include "services/abstract/importantnode.h"
 #include "services/abstract/labelsnode.h"
 #include "services/abstract/recyclebin.h"
+#include "services/abstract/search.h"
+#include "services/abstract/searchsnode.h"
 #include "services/abstract/unreadnode.h"
 
 ServiceRoot::ServiceRoot(RootItem* parent)
   : RootItem(parent), m_recycleBin(new RecycleBin(this)), m_importantNode(new ImportantNode(this)),
-    m_labelsNode(new LabelsNode(this)), m_unreadNode(new UnreadNode(this)), m_accountId(NO_PARENT_CATEGORY),
-    m_networkProxy(QNetworkProxy()) {
+    m_labelsNode(new LabelsNode(this)), m_probesNode(new SearchsNode(this)), m_unreadNode(new UnreadNode(this)),
+    m_accountId(NO_PARENT_CATEGORY), m_networkProxy(QNetworkProxy()) {
   setKind(RootItem::Kind::ServiceRoot);
   appendCommonNodes();
 }
 
-ServiceRoot::~ServiceRoot() = default;
+ServiceRoot::~ServiceRoot() {}
 
 bool ServiceRoot::deleteViaGui() {
   QSqlDatabase database = qApp->database()->driver()->connection(metaObject()->className());
@@ -242,6 +244,10 @@ void ServiceRoot::appendCommonNodes() {
   if (labelsNode() != nullptr && !childItems().contains(labelsNode())) {
     appendChild(labelsNode());
   }
+
+  if (probesNode() != nullptr && !childItems().contains(probesNode())) {
+    appendChild(probesNode());
+  }
 }
 
 bool ServiceRoot::cleanFeeds(const QList<Feed*>& items, bool clean_read_only) {
@@ -453,6 +459,10 @@ ImportantNode* ServiceRoot::importantNode() const {
 
 LabelsNode* ServiceRoot::labelsNode() const {
   return m_labelsNode;
+}
+
+SearchsNode* ServiceRoot::probesNode() const {
+  return m_probesNode;
 }
 
 UnreadNode* ServiceRoot::unreadNode() const {
@@ -714,6 +724,11 @@ bool ServiceRoot::loadMessagesForItem(RootItem* item, MessagesModel* model) {
     model->setFilter(QSL("Messages.is_read = 0 AND Messages.is_deleted = 0 AND Messages.is_pdeleted = 0 AND "
                          "Messages.account_id = %1")
                        .arg(QString::number(accountId())));
+  }
+  else if (item->kind() == RootItem::Kind::Probe) {
+    model->setFilter(QSL("Messages.is_deleted = 0 AND Messages.is_pdeleted = 0 AND Messages.account_id = %1 AND "
+                         "Messages.contents REGEXP '%2'")
+                       .arg(QString::number(accountId()), item->toProbe()->filter()));
   }
   else if (item->kind() == RootItem::Kind::Label) {
     // Show messages with particular label.

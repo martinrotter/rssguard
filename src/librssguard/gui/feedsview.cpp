@@ -30,7 +30,8 @@
 FeedsView::FeedsView(QWidget* parent)
   : BaseTreeView(parent), m_contextMenuService(nullptr), m_contextMenuBin(nullptr), m_contextMenuCategories(nullptr),
     m_contextMenuFeeds(nullptr), m_contextMenuImportant(nullptr), m_contextMenuEmptySpace(nullptr),
-    m_contextMenuOtherItems(nullptr), m_contextMenuLabel(nullptr), m_dontSaveExpandState(false) {
+    m_contextMenuOtherItems(nullptr), m_contextMenuLabel(nullptr), m_contextMenuProbe(nullptr),
+    m_dontSaveExpandState(false) {
   setObjectName(QSL("FeedsView"));
 
   // Allocate models.
@@ -852,18 +853,40 @@ QMenu* FeedsView::initializeContextMenuLabel(RootItem* clicked_item) {
 
   QList<QAction*> specific_actions = clicked_item->contextMenuFeedsList();
 
+  m_contextMenuLabel->addAction(qApp->mainForm()->m_ui->m_actionEditSelectedItem);
+  m_contextMenuLabel->addAction(qApp->mainForm()->m_ui->m_actionMarkSelectedItemsAsRead);
+  m_contextMenuLabel->addAction(qApp->mainForm()->m_ui->m_actionMarkSelectedItemsAsUnread);
+  m_contextMenuLabel->addAction(qApp->mainForm()->m_ui->m_actionDeleteSelectedItem);
+
   if (!specific_actions.isEmpty()) {
     m_contextMenuLabel->addSeparator();
     m_contextMenuLabel->addActions(specific_actions);
   }
-  else {
-    m_contextMenuLabel->addAction(qApp->mainForm()->m_ui->m_actionEditSelectedItem);
-    m_contextMenuLabel->addAction(qApp->mainForm()->m_ui->m_actionMarkSelectedItemsAsRead);
-    m_contextMenuLabel->addAction(qApp->mainForm()->m_ui->m_actionMarkSelectedItemsAsUnread);
-    m_contextMenuLabel->addAction(qApp->mainForm()->m_ui->m_actionDeleteSelectedItem);
-  }
 
   return m_contextMenuLabel;
+}
+
+QMenu* FeedsView::initializeContextMenuProbe(RootItem* clicked_item) {
+  if (m_contextMenuProbe == nullptr) {
+    m_contextMenuProbe = new QMenu(tr("Context menu for probe"), this);
+  }
+  else {
+    m_contextMenuProbe->clear();
+  }
+
+  QList<QAction*> specific_actions = clicked_item->contextMenuFeedsList();
+
+  m_contextMenuProbe->addAction(qApp->mainForm()->m_ui->m_actionEditSelectedItem);
+  m_contextMenuProbe->addAction(qApp->mainForm()->m_ui->m_actionMarkSelectedItemsAsRead);
+  m_contextMenuProbe->addAction(qApp->mainForm()->m_ui->m_actionMarkSelectedItemsAsUnread);
+  m_contextMenuProbe->addAction(qApp->mainForm()->m_ui->m_actionDeleteSelectedItem);
+
+  if (!specific_actions.isEmpty()) {
+    m_contextMenuProbe->addSeparator();
+    m_contextMenuProbe->addActions(specific_actions);
+  }
+
+  return m_contextMenuProbe;
 }
 
 void FeedsView::setupAppearance() {
@@ -949,6 +972,9 @@ void FeedsView::contextMenuEvent(QContextMenuEvent* event) {
     }
     else if (clicked_item->kind() == RootItem::Kind::Label) {
       initializeContextMenuLabel(clicked_item)->exec(event->globalPos());
+    }
+    else if (clicked_item->kind() == RootItem::Kind::Probe) {
+      initializeContextMenuProbe(clicked_item)->exec(event->globalPos());
     }
     else {
       initializeContextMenuOtherItem(clicked_item)->exec(event->globalPos());

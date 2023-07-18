@@ -9,6 +9,7 @@
 #include "services/abstract/feed.h"
 #include "services/abstract/label.h"
 #include "services/abstract/recyclebin.h"
+#include "services/abstract/search.h"
 #include "services/abstract/serviceroot.h"
 
 #include <QVariant>
@@ -568,6 +569,10 @@ Feed* RootItem::toFeed() const {
 
 Label* RootItem::toLabel() const {
   return qobject_cast<Label*>(const_cast<RootItem*>(this));
+}
+
+Search* RootItem::toProbe() const {
+  return qobject_cast<Search*>(const_cast<RootItem*>(this));
 }
 
 ServiceRoot* RootItem::toServiceRoot() const {

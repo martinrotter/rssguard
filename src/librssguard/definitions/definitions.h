@@ -44,6 +44,7 @@
 #define ID_IMPORTANT -3
 #define ID_LABELS -4
 #define ID_UNREAD -5
+#define ID_PROBES -6
 
 #define MSG_SCORE_MAX 100.0
 #define MSG_SCORE_MIN 0.0

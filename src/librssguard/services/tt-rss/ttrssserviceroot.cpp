@@ -44,7 +44,7 @@ void TtRssServiceRoot::start(bool freshly_activated) {
     DatabaseQueries::loadRootFromDatabase<Category, TtRssFeed>(this);
     loadCacheFromFile();
 
-    auto lbls = m_labelsNode->labels();
+    auto lbls = labelsNode()->labels();
 
     boolinq::from(lbls).for_each([](Label* lbl) {
       if (lbl->customNumericId() == TTRSS_PUBLISHED_LABEL_ID) {

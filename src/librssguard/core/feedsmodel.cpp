@@ -7,6 +7,7 @@
 #include "database/databasequeries.h"
 #include "definitions/definitions.h"
 #include "gui/dialogs/formmain.h"
+#include "gui/messagebox.h"
 #include "miscellaneous/feedreader.h"
 #include "miscellaneous/iconfactory.h"
 #include "miscellaneous/textfactory.h"
@@ -510,6 +511,17 @@ bool FeedsModel::markItemRead(RootItem* item, RootItem::ReadStatus read) {
 
 bool FeedsModel::markItemCleared(RootItem* item, bool clean_read_only) {
   if (item != nullptr) {
+    if (MsgBox::show(nullptr,
+                     QMessageBox::Icon::Question,
+                     tr("Are you sure?"),
+                     tr("Do you really want to clean all articles from selected item?"),
+                     {},
+                     {},
+                     QMessageBox::StandardButton::Yes | QMessageBox::StandardButton::No,
+                     QMessageBox::StandardButton::No) != QMessageBox::StandardButton::Yes) {
+      return false;
+    }
+
     return item->cleanMessages(clean_read_only);
   }
 

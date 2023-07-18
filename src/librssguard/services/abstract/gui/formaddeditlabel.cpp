@@ -1,6 +1,6 @@
 // For license of this file, see <project-root-folder>/LICENSE.md.
 
-#include "gui/dialogs/formaddeditlabel.h"
+#include "services/abstract/gui/formaddeditlabel.h"
 
 #include "gui/guiutilities.h"
 #include "miscellaneous/application.h"

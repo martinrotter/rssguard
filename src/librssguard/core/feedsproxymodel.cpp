@@ -36,6 +36,7 @@ FeedsProxyModel::FeedsProxyModel(FeedsModel* source_model, QObject* parent)
   m_priorities = {RootItem::Kind::Category,
                   RootItem::Kind::Feed,
                   RootItem::Kind::Labels,
+                  RootItem::Kind::Probes,
                   RootItem::Kind::Important,
                   RootItem::Kind::Unread,
                   RootItem::Kind::Bin};

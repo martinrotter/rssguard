@@ -12,6 +12,7 @@
 class Category;
 class Feed;
 class Label;
+class Search;
 class ServiceRoot;
 class QAction;
 
@@ -43,7 +44,9 @@ class RSSGUARD_DLLSPEC RootItem : public QObject {
       Labels = 32,
       Important = 64,
       Label = 128,
-      Unread = 256
+      Unread = 256,
+      Probes = 512,
+      Probe = 1024
     };
 
     // Constructors and destructors.
@@ -196,6 +199,7 @@ class RSSGUARD_DLLSPEC RootItem : public QObject {
     Category* toCategory() const;
     Feed* toFeed() const;
     Label* toLabel() const;
+    Search* toProbe() const;
     ServiceRoot* toServiceRoot() const;
 
     bool keepOnTop() const;

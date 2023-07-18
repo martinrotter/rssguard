@@ -5,9 +5,9 @@
 #include "database/databasefactory.h"
 #include "database/databasequeries.h"
 #include "exceptions/applicationexception.h"
-#include "gui/dialogs/formaddeditlabel.h"
 #include "miscellaneous/application.h"
 #include "miscellaneous/iconfactory.h"
+#include "services/abstract/gui/formaddeditlabel.h"
 #include "services/abstract/serviceroot.h"
 
 #include "3rd-party/boolinq/boolinq.h"

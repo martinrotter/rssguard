@@ -115,14 +115,14 @@ QSqlDatabase SqliteDriver::connection(const QString& connection_name, DesiredSto
       database = QSqlDatabase::addDatabase(QSL(APP_DB_SQLITE_DRIVER), connection_name);
 
       if (want_in_memory) {
-        database.setConnectOptions(QSL("QSQLITE_OPEN_URI;QSQLITE_ENABLE_SHARED_CACHE"));
+        database.setConnectOptions(QSL("QSQLITE_OPEN_URI;QSQLITE_ENABLE_SHARED_CACHE;QSQLITE_ENABLE_REGEXP"));
         database.setDatabaseName(QSL("file::memory:"));
       }
       else {
         const QDir db_path(m_databaseFilePath);
         QFile db_file(db_path.absoluteFilePath(QSL(APP_DB_SQLITE_FILE)));
 
-        database.setConnectOptions(QSL("QSQLITE_ENABLE_SHARED_CACHE"));
+        database.setConnectOptions(QSL("QSQLITE_ENABLE_SHARED_CACHE;QSQLITE_ENABLE_REGEXP"));
         database.setDatabaseName(db_file.fileName());
       }
     }
@@ -203,10 +203,10 @@ QSqlDatabase SqliteDriver::initializeDatabase(const QString& connection_name, bo
   database = QSqlDatabase::addDatabase(QSL(APP_DB_SQLITE_DRIVER), connection_name);
 
   if (in_memory) {
-    database.setConnectOptions(QSL("QSQLITE_OPEN_URI;QSQLITE_ENABLE_SHARED_CACHE"));
+    database.setConnectOptions(QSL("QSQLITE_OPEN_URI;QSQLITE_ENABLE_SHARED_CACHE;QSQLITE_ENABLE_REGEXP"));
   }
   else {
-    database.setConnectOptions(QSL("QSQLITE_ENABLE_SHARED_CACHE"));
+    database.setConnectOptions(QSL("QSQLITE_ENABLE_SHARED_CACHE;QSQLITE_ENABLE_REGEXP"));
   }
 
   database.setDatabaseName(db_file_name);

@@ -129,6 +129,7 @@ class RSSGUARD_DLLSPEC FeedsView : public BaseTreeView {
     QMenu* initializeContextMenuEmptySpace();
     QMenu* initializeContextMenuOtherItem(RootItem* clicked_item);
     QMenu* initializeContextMenuLabel(RootItem* clicked_item);
+    QMenu* initializeContextMenuProbe(RootItem* clicked_item);
 
     void setupAppearance();
     void saveExpandStates(RootItem* item);
@@ -141,13 +142,14 @@ class RSSGUARD_DLLSPEC FeedsView : public BaseTreeView {
     QMenu* m_contextMenuEmptySpace;
     QMenu* m_contextMenuOtherItems;
     QMenu* m_contextMenuLabel;
+    QMenu* m_contextMenuProbe;
     FeedsModel* m_sourceModel;
     FeedsProxyModel* m_proxyModel;
     bool m_dontSaveExpandState;
 
     // QTreeView interface
   protected:
-    virtual void drawRow(QPainter *painter, const QStyleOptionViewItem &options, const QModelIndex &index) const;
+    virtual void drawRow(QPainter* painter, const QStyleOptionViewItem& options, const QModelIndex& index) const;
 };
 
 inline FeedsProxyModel* FeedsView::model() const {

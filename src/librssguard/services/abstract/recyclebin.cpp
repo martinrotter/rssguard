@@ -3,6 +3,7 @@
 #include "services/abstract/recyclebin.h"
 
 #include "database/databasequeries.h"
+#include "gui/messagebox.h"
 #include "miscellaneous/application.h"
 #include "miscellaneous/iconfactory.h"
 #include "miscellaneous/textfactory.h"
@@ -92,7 +93,6 @@ bool RecycleBin::cleanMessages(bool clear_only_read) {
     parent_root->itemChanged(QList<RootItem*>() << this);
     parent_root->requestReloadMessageList(true);
     return true;
-    ;
   }
   else {
     return false;
@@ -100,6 +100,17 @@ bool RecycleBin::cleanMessages(bool clear_only_read) {
 }
 
 bool RecycleBin::empty() {
+  if (MsgBox::show(nullptr,
+                   QMessageBox::Icon::Question,
+                   tr("Are you sure?"),
+                   tr("Do you really want to empty your recycle bin?"),
+                   {},
+                   {},
+                   QMessageBox::StandardButton::Yes | QMessageBox::StandardButton::No,
+                   QMessageBox::StandardButton::No) != QMessageBox::StandardButton::Yes) {
+    return false;
+  }
+
   return cleanMessages(false);
 }
 

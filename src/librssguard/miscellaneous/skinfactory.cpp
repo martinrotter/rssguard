@@ -291,7 +291,12 @@ PreparedHtml SkinFactory::generateHtmlOfArticles(const QList<Message>& messages,
     QUrl url(NetworkFactory::sanitizeUrl(feed->source()));
 
     if (url.isValid()) {
-      base_url = url.scheme() + QSL("://") + url.host();
+      if (url.isLocalFile()) {
+        base_url = url.scheme() + QSL("://") + url.toLocalFile();
+      }
+      else {
+        base_url = url.scheme() + QSL("://") + url.host();
+      }
     }
   }
 

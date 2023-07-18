@@ -63,8 +63,6 @@ set(SOURCES
   gui/dialogs/formabout.h
   gui/dialogs/formaddaccount.cpp
   gui/dialogs/formaddaccount.h
-  gui/dialogs/formaddeditlabel.cpp
-  gui/dialogs/formaddeditlabel.h
   gui/dialogs/formbackupdatabasesettings.cpp
   gui/dialogs/formbackupdatabasesettings.h
   gui/dialogs/formdatabasecleanup.cpp
@@ -262,6 +260,10 @@ set(SOURCES
   services/abstract/gui/formcategorydetails.h
   services/abstract/gui/formfeeddetails.cpp
   services/abstract/gui/formfeeddetails.h
+  services/abstract/gui/formaddeditlabel.cpp
+  services/abstract/gui/formaddeditlabel.h
+  services/abstract/gui/formaddeditprobe.cpp
+  services/abstract/gui/formaddeditprobe.h
   services/abstract/gui/custommessagepreviewer.h
   services/abstract/gui/custommessagepreviewer.cpp
   services/abstract/importantnode.cpp
@@ -270,6 +272,10 @@ set(SOURCES
   services/abstract/label.h
   services/abstract/labelsnode.cpp
   services/abstract/labelsnode.h
+  services/abstract/search.cpp
+  services/abstract/search.h
+  services/abstract/searchsnode.cpp
+  services/abstract/searchsnode.h
   services/abstract/recyclebin.cpp
   services/abstract/recyclebin.h
   services/abstract/rootitem.cpp
@@ -427,7 +433,6 @@ set(SOURCES
 set(UI_FILES
   gui/dialogs/formabout.ui
   gui/dialogs/formaddaccount.ui
-  gui/dialogs/formaddeditlabel.ui
   gui/dialogs/formbackupdatabasesettings.ui
   gui/dialogs/formdatabasecleanup.ui
   gui/dialogs/formmain.ui
@@ -460,6 +465,8 @@ set(UI_FILES
   services/abstract/gui/formaccountdetails.ui
   services/abstract/gui/formcategorydetails.ui
   services/abstract/gui/formfeeddetails.ui
+  services/abstract/gui/formaddeditlabel.ui
+  services/abstract/gui/formaddeditprobe.ui
   services/feedly/gui/feedlyaccountdetails.ui
   services/gmail/gui/formaddeditemail.ui
   services/gmail/gui/gmailaccountdetails.ui

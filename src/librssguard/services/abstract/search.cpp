@@ -1,70 +1,74 @@
 // For license of this file, see <project-root-folder>/LICENSE.md.
 
-#include "services/abstract/label.h"
+#include "services/abstract/search.h"
 
 #include "database/databasefactory.h"
 #include "database/databasequeries.h"
 #include "miscellaneous/application.h"
 #include "services/abstract/cacheforserviceroot.h"
-#include "services/abstract/gui/formaddeditlabel.h"
+#include "services/abstract/gui/formaddeditprobe.h"
 #include "services/abstract/labelsnode.h"
 #include "services/abstract/serviceroot.h"
 
 #include <QPainter>
 #include <QPainterPath>
 
-Label::Label(const QString& name, const QColor& color, RootItem* parent_item) : Label(parent_item) {
+Search::Search(const QString& name, const QString& filter, const QColor& color, RootItem* parent_item)
+  : Search(parent_item) {
   setColor(color);
   setTitle(name);
+  setFilter(filter);
 }
 
-Label::Label(RootItem* parent_item) : RootItem(parent_item) {
-  setKind(RootItem::Kind::Label);
+Search::Search(RootItem* parent_item) : RootItem(parent_item) {
+  setKind(RootItem::Kind::Probe);
 }
 
-QColor Label::color() const {
+QColor Search::color() const {
   return m_color;
 }
 
-void Label::setColor(const QColor& color) {
+void Search::setColor(const QColor& color) {
   setIcon(generateIcon(color));
   m_color = color;
 }
 
-int Label::countOfUnreadMessages() const {
+int Search::countOfUnreadMessages() const {
   return m_unreadCount;
 }
 
-int Label::countOfAllMessages() const {
+int Search::countOfAllMessages() const {
   return m_totalCount;
 }
 
-bool Label::canBeEdited() const {
-  return (getParentServiceRoot()->supportedLabelOperations() & ServiceRoot::LabelOperation::Editing) ==
-         ServiceRoot::LabelOperation::Editing;
+bool Search::canBeEdited() const {
+  return true;
 }
 
-bool Label::editViaGui() {
-  FormAddEditLabel form(qApp->mainFormWidget());
+bool Search::editViaGui() {
+  FormAddEditProbe form(qApp->mainFormWidget());
 
   if (form.execForEdit(this)) {
     QSqlDatabase db = qApp->database()->driver()->connection(metaObject()->className());
 
-    return DatabaseQueries::updateLabel(db, this);
+    return true;
+    // return DatabaseQueries::updateLabel(db, this);
   }
   else {
     return false;
   }
+
+  return false;
 }
 
-bool Label::canBeDeleted() const {
-  return (getParentServiceRoot()->supportedLabelOperations() & ServiceRoot::LabelOperation::Deleting) ==
-         ServiceRoot::LabelOperation::Deleting;
+bool Search::canBeDeleted() const {
+  return true;
 }
 
-bool Label::deleteViaGui() {
+bool Search::deleteViaGui() {
   QSqlDatabase db = qApp->database()->driver()->connection(metaObject()->className());
 
+  /*
   if (DatabaseQueries::deleteLabel(db, this)) {
     getParentServiceRoot()->requestItemRemoval(this);
     return true;
@@ -72,13 +76,15 @@ bool Label::deleteViaGui() {
   else {
     return false;
   }
+  */
+  return false;
 }
 
-void Label::updateCounts(bool including_total_count) {
+void Search::updateCounts(bool including_total_count) {
   QSqlDatabase database = qApp->database()->driver()->threadSafeConnection(metaObject()->className());
   int account_id = getParentServiceRoot()->accountId();
 
-  // TODO: slow
+  /*
   auto ac = DatabaseQueries::getMessageCountsForLabel(database, this, account_id);
 
   if (including_total_count) {
@@ -86,15 +92,19 @@ void Label::updateCounts(bool including_total_count) {
   }
 
   setCountOfUnreadMessages(ac.m_unread);
+  */
 }
 
-QList<Message> Label::undeletedMessages() const {
+QList<Message> Search::undeletedMessages() const {
+  return {};
+  /*
   QSqlDatabase database = qApp->database()->driver()->connection(metaObject()->className());
 
   return DatabaseQueries::getUndeletedMessagesWithLabel(database, this);
+  */
 }
 
-QIcon Label::generateIcon(const QColor& color) {
+QIcon Search::generateIcon(const QColor& color) {
   QPixmap pxm(64, 64);
 
   pxm.fill(Qt::GlobalColor::transparent);
@@ -108,42 +118,28 @@ QIcon Label::generateIcon(const QColor& color) {
   return pxm;
 }
 
-void Label::assignToMessage(const Message& msg, bool reload_model) {
-  QSqlDatabase database = qApp->database()->driver()->threadSafeConnection(metaObject()->className());
-
-  if (getParentServiceRoot()->onBeforeLabelMessageAssignmentChanged({this}, {msg}, true)) {
-    DatabaseQueries::assignLabelToMessage(database, this, msg);
-
-    if (reload_model) {
-      getParentServiceRoot()->onAfterLabelMessageAssignmentChanged({this}, {msg}, true);
-    }
-  }
+QString Search::filter() const {
+  return m_filter;
 }
 
-void Label::deassignFromMessage(const Message& msg, bool reload_model) {
-  QSqlDatabase database = qApp->database()->driver()->threadSafeConnection(metaObject()->className());
-
-  if (getParentServiceRoot()->onBeforeLabelMessageAssignmentChanged({this}, {msg}, false)) {
-    DatabaseQueries::deassignLabelFromMessage(database, this, msg);
-
-    if (reload_model) {
-      getParentServiceRoot()->onAfterLabelMessageAssignmentChanged({this}, {msg}, false);
-    }
-  }
+void Search::setFilter(const QString& new_filter) {
+  m_filter = new_filter;
 }
 
-void Label::setCountOfAllMessages(int totalCount) {
+void Search::setCountOfAllMessages(int totalCount) {
   m_totalCount = totalCount;
 }
 
-void Label::setCountOfUnreadMessages(int unreadCount) {
+void Search::setCountOfUnreadMessages(int unreadCount) {
   m_unreadCount = unreadCount;
 }
 
-bool Label::cleanMessages(bool clear_only_read) {
+bool Search::cleanMessages(bool clear_only_read) {
   ServiceRoot* service = getParentServiceRoot();
   QSqlDatabase database = qApp->database()->driver()->connection(metaObject()->className());
 
+  return false;
+  /*
   if (DatabaseQueries::cleanLabelledMessages(database, clear_only_read, this)) {
     service->updateCounts(true);
     service->itemChanged(service->getSubTree());
@@ -153,12 +149,14 @@ bool Label::cleanMessages(bool clear_only_read) {
   else {
     return false;
   }
+  */
 }
 
-bool Label::markAsReadUnread(RootItem::ReadStatus status) {
+bool Search::markAsReadUnread(RootItem::ReadStatus status) {
   ServiceRoot* service = getParentServiceRoot();
   auto* cache = dynamic_cast<CacheForServiceRoot*>(service);
 
+  /*
   if (cache != nullptr) {
     cache->addMessageStatesToCache(service->customIDSOfMessagesForItem(this, status), status);
   }
@@ -174,4 +172,7 @@ bool Label::markAsReadUnread(RootItem::ReadStatus status) {
   else {
     return false;
   }
+  */
+
+  return false;
 }

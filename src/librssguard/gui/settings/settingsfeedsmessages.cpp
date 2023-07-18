@@ -35,6 +35,14 @@ SettingsFeedsMessages::SettingsFeedsMessages(Settings* settings, QWidget* parent
                                                    "performance of article list with big number of articles."),
                                                 true);
 
+  QMetaEnum enumer = QMetaEnum::fromType<MessagesModel::MessageUnreadIcon>();
+
+  for (int i = 0; i < enumer.keyCount(); i++) {
+    auto en = MessagesModel::MessageUnreadIcon(enumer.value(i));
+
+    m_ui->m_cmbUnreadIconType->addItem(MessagesModel::descriptionOfUnreadIcon(en), int(en));
+  }
+
   connect(m_ui->m_cbShowEnclosuresDirectly, &QCheckBox::toggled, this, &SettingsFeedsMessages::dirtifySettings);
   connect(m_ui->m_spinHeightImageAttachments,
           static_cast<void (QSpinBox::*)(int)>(&QSpinBox::valueChanged),
@@ -190,14 +198,6 @@ SettingsFeedsMessages::SettingsFeedsMessages(Settings* settings, QWidget* parent
   }
 
   m_ui->m_spinRelativeArticleTime->setValue(-1);
-
-  QMetaEnum enumer = QMetaEnum::fromType<MessagesModel::MessageUnreadIcon>();
-
-  for (int i = 0; i < enumer.keyCount(); i++) {
-    auto en = MessagesModel::MessageUnreadIcon(enumer.value(i));
-
-    m_ui->m_cmbUnreadIconType->addItem(MessagesModel::descriptionOfUnreadIcon(en), int(en));
-  }
 }
 
 SettingsFeedsMessages::~SettingsFeedsMessages() {
