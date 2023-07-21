@@ -8,10 +8,10 @@
 #include "ui_formabout.h"
 
 class RSSGUARD_DLLSPEC FormAbout : public QDialog {
-  Q_OBJECT
+    Q_OBJECT
 
   public:
-    explicit FormAbout(QWidget* parent);
+    explicit FormAbout(bool go_to_changelog, QWidget* parent);
     virtual ~FormAbout();
 
   private slots:

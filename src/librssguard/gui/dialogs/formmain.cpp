@@ -768,7 +768,7 @@ void FormMain::createConnections() {
 
   // Menu "Help" connections.
   connect(m_ui->m_actionAboutGuard, &QAction::triggered, this, [this]() {
-    FormAbout(this).exec();
+    FormAbout(false, this).exec();
   });
   connect(m_ui->m_actionCheckForUpdates, &QAction::triggered, this, [this]() {
     FormUpdate(this).exec();

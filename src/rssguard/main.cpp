@@ -111,8 +111,6 @@ int main(int argc, char* argv[]) {
   qApp->feedReader()->loadSavedMessageFilters();
   qApp->feedReader()->feedsModel()->loadActivatedServiceAccounts();
   qApp->showTrayIcon();
-  qApp->offerChanges();
-  qApp->showPolls();
 
   main_window.tabWidget()->feedMessageViewer()->respondToMainWindowResizes();
   main_window.tabWidget()->feedMessageViewer()->feedsView()->loadAllExpandStates();

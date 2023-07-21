@@ -19,7 +19,7 @@
 #include <QPlainTextEdit>
 #include <QTextStream>
 
-FormAbout::FormAbout(QWidget* parent) : QDialog(parent) {
+FormAbout::FormAbout(bool go_to_changelog, QWidget* parent) : QDialog(parent) {
   m_ui.setupUi(this);
   m_ui.m_lblIcon->setPixmap(QPixmap(APP_ICON_PATH));
   GuiUtilities::applyDialogProperties(*this,
@@ -27,6 +27,10 @@ FormAbout::FormAbout(QWidget* parent) : QDialog(parent) {
                                       tr("About %1").arg(QSL(APP_NAME)));
   loadLicenseAndInformation();
   loadSettingsAndPaths();
+
+  if (go_to_changelog) {
+    m_ui.m_tabAbout->setCurrentWidget(m_ui.m_tabChangelog);
+  }
 }
 
 FormAbout::~FormAbout() {}

@@ -299,8 +299,10 @@ void Application::showPolls() const {
                          {QSL("%1 survey").arg(QSL(APP_NAME)),
                           QSL("Please, fill the survey."),
                           QSystemTrayIcon::MessageIcon::Warning},
-                         {false, true, false});
-    qApp->web()->openUrlInExternalBrowser(QSL("https://forms.gle/FdzrwFGozCGViK8QA"));
+                         {false, true, false},
+                         {tr("Go to survey"), [] {
+                            qApp->web()->openUrlInExternalBrowser(QSL("https://forms.gle/FdzrwFGozCGViK8QA"));
+                          }});
   }
   */
 }
@@ -312,10 +314,10 @@ void Application::offerChanges() const {
                           tr("Welcome to %1.\n\nPlease, check NEW stuff included in this\n"
                              "version by clicking this popup notification.")
                             .arg(QSL(APP_LONG_NAME)),
-                          QSystemTrayIcon::MessageIcon::NoIcon},
+                          QSystemTrayIcon::MessageIcon::Information},
                          {},
                          {tr("Go to changelog"), [] {
-                            FormAbout(qApp->mainForm()).exec();
+                            FormAbout(true, qApp->mainForm()).exec();
                           }});
   }
 }
@@ -607,27 +609,28 @@ void Application::showTrayIcon() {
   if (SystemTrayIcon::isSystemTrayDesired()) {
     qDebugNN << LOGSEC_GUI << "User wants to have tray icon.";
 
-#if defined(Q_OS_WIN)
-    if (SystemTrayIcon::isSystemTrayAreaAvailable()) {
-      qDebugNN << LOGSEC_GUI << "Tray icon is available, showing now.";
-      trayIcon()->show();
-    }
-    else {
-      m_feedReader->feedsModel()->notifyWithCounts();
-    }
-#else
     // Delay avoids race conditions and tray icon is properly displayed.
-    qWarningNN << LOGSEC_GUI << "Showing tray icon with 3000 ms delay.";
-    QTimer::singleShot(3000, this, [=]() {
-      if (SystemTrayIcon::isSystemTrayAreaAvailable()) {
-        qWarningNN << LOGSEC_GUI << "Tray icon is available, showing now.";
-        trayIcon()->show();
-      }
-      else {
-        m_feedReader->feedsModel()->notifyWithCounts();
-      }
-    });
+    qWarningNN << LOGSEC_GUI << "Showing tray icon with little delay.";
+
+    QTimer::singleShot(
+#if defined(Q_OS_WIN)
+      500,
+#else
+      3000,
 #endif
+      this,
+      [=]() {
+        if (SystemTrayIcon::isSystemTrayAreaAvailable()) {
+          qWarningNN << LOGSEC_GUI << "Tray icon is available, showing now.";
+          trayIcon()->show();
+
+          offerChanges();
+          showPolls();
+        }
+        else {
+          m_feedReader->feedsModel()->notifyWithCounts();
+        }
+      });
   }
   else {
     m_feedReader->feedsModel()->notifyWithCounts();
@@ -651,7 +654,6 @@ void Application::showGuiMessage(Notification::Event event,
                                  const GuiMessageDestination& dest,
                                  const GuiAction& action,
                                  QWidget* parent) {
-
   if (SystemTrayIcon::areNotificationsEnabled()) {
     auto notification = m_notifications->notificationForEvent(event);
 
@@ -796,24 +798,33 @@ void Application::showMessagesNumber(int unread_messages, bool any_feed_has_new_
   bool task_bar_count_enabled = settings()->value(GROUP(GUI), SETTING(GUI::UnreadNumbersOnTaskBar)).toBool();
 
   if (m_mainForm != nullptr) {
-    QImage overlay_icon = generateOverlayIcon(unread_messages);
+    bool any_count = task_bar_count_enabled && unread_messages > 0;
+    HRESULT overlay_result;
+
+    if (any_count) {
+      QImage overlay_icon = generateOverlayIcon(unread_messages);
 
 #if QT_VERSION_MAJOR == 5
-    HICON overlay_hicon = QtWin::toHICON(QPixmap::fromImage(overlay_icon));
+      HICON overlay_hicon = QtWin::toHICON(QPixmap::fromImage(overlay_icon));
 #else
-    HICON overlay_hicon = overlay_icon.toHICON();
+      HICON overlay_hicon = overlay_icon.toHICON();
 #endif
 
-    HRESULT overlay_result =
-      m_windowsTaskBar->SetOverlayIcon(reinterpret_cast<HWND>(m_mainForm->winId()),
-                                       (task_bar_count_enabled && unread_messages > 0) ? overlay_hicon : nullptr,
-                                       nullptr);
+      overlay_result =
+        m_windowsTaskBar->SetOverlayIcon(reinterpret_cast<HWND>(m_mainForm->winId()), overlay_hicon, nullptr);
 
-    DestroyIcon(overlay_hicon);
+      DestroyIcon(overlay_hicon);
+    }
+    else {
+      overlay_result = m_windowsTaskBar->SetOverlayIcon(reinterpret_cast<HWND>(m_mainForm->winId()), nullptr, nullptr);
+    }
 
     if (FAILED(overlay_result)) {
-      qCriticalNN << LOGSEC_CORE << "Failed to set overlay icon with HRESULT:" << QUOTE_W_SPACE_DOT(overlay_result);
+      qCriticalNN << LOGSEC_GUI << "Failed to set overlay icon with HRESULT:" << QUOTE_W_SPACE_DOT(overlay_result);
     }
+  }
+  else {
+    qCriticalNN << LOGSEC_GUI << "Main form not set for setting numbers.";
   }
 #endif
 

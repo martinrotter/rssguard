@@ -710,15 +710,6 @@ void MessagesView::selectItemWithCursorAction(CursorAction act) {
 
   if (index_previous.isValid()) {
     setCurrentIndex(index_previous);
-
-    scrollTo(index_previous,
-             !m_processingAnyMouseButton &&
-                 qApp->settings()->value(GROUP(Messages), SETTING(Messages::KeepCursorInCenter)).toBool()
-               ? QAbstractItemView::ScrollHint::PositionAtCenter
-               : QAbstractItemView::ScrollHint::PositionAtTop);
-
-    selectionModel()->select(index_previous,
-                             QItemSelectionModel::SelectionFlag::Select | QItemSelectionModel::SelectionFlag::Rows);
     setFocus();
   }
 }
@@ -738,21 +729,7 @@ void MessagesView::selectNextUnreadItem() {
   const QModelIndex next_unread = m_proxyModel->getNextPreviousUnreadItemIndex(active_row);
 
   if (next_unread.isValid()) {
-    // We found unread message, mark it.
     setCurrentIndex(next_unread);
-
-    // Make sure that item is properly visible even if
-    // message previewer was hidden and shows up.
-    qApp->processEvents();
-
-    scrollTo(next_unread,
-             !m_processingAnyMouseButton &&
-                 qApp->settings()->value(GROUP(Messages), SETTING(Messages::KeepCursorInCenter)).toBool()
-               ? QAbstractItemView::ScrollHint::PositionAtCenter
-               : QAbstractItemView::ScrollHint::PositionAtTop);
-
-    selectionModel()->select(next_unread,
-                             QItemSelectionModel::SelectionFlag::Select | QItemSelectionModel::SelectionFlag::Rows);
     setFocus();
   }
 }
