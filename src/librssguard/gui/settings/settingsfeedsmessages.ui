@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>558</width>
+    <width>570</width>
     <height>531</height>
    </rect>
   </property>
@@ -80,6 +80,13 @@
          </property>
         </widget>
        </item>
+       <item row="3" column="0" colspan="2">
+        <widget class="QCheckBox" name="m_cmbFastAutoUpdate">
+         <property name="text">
+          <string>Support very fast auto-fetching intervals (under 10 seconds)</string>
+         </property>
+        </widget>
+       </item>
        <item row="4" column="0">
         <widget class="QLabel" name="label_3">
          <property name="text">
@@ -115,11 +122,42 @@
          </property>
         </widget>
        </item>
-       <item row="3" column="0" colspan="2">
-        <widget class="QCheckBox" name="m_cmbFastAutoUpdate">
-         <property name="text">
-          <string>Support very fast auto-fetching intervals (under 10 seconds)</string>
+       <item row="5" column="0" colspan="2">
+        <widget class="QGroupBox" name="m_gbAvoidOldArticles">
+         <property name="title">
+          <string>Avoid adding articles before this date into the database</string>
          </property>
+         <property name="checkable">
+          <bool>true</bool>
+         </property>
+         <property name="checked">
+          <bool>false</bool>
+         </property>
+         <layout class="QGridLayout" name="gridLayout">
+          <item row="0" column="0">
+           <widget class="QDateTimeEdit" name="m_dtDateTimeToAvoid">
+            <property name="displayFormat">
+             <string>dd/MM/yyyy  HH:mm</string>
+            </property>
+            <property name="calendarPopup">
+             <bool>true</bool>
+            </property>
+           </widget>
+          </item>
+          <item row="0" column="1">
+           <spacer name="horizontalSpacer_4">
+            <property name="orientation">
+             <enum>Qt::Horizontal</enum>
+            </property>
+            <property name="sizeHint" stdset="0">
+             <size>
+              <width>40</width>
+              <height>20</height>
+             </size>
+            </property>
+           </spacer>
+          </item>
+         </layout>
         </widget>
        </item>
       </layout>

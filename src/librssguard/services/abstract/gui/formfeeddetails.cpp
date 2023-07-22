@@ -49,6 +49,9 @@ void FormFeedDetails::apply() {
                                                                 .toInt()));
   m_feed->setAutoUpdateInterval(int(m_ui->m_spinAutoUpdateInterval->value()));
   m_feed->setOpenArticlesDirectly(m_ui->m_cbOpenArticlesAutomatically->isChecked());
+  m_feed->setAddAnyDatetimeArticles(m_ui->m_cbAddAnyDateArticles->isChecked());
+  m_feed->setAvoidOldArticles(m_ui->m_gbAvoidOldArticles->isChecked());
+  m_feed->setDatetimeToAvoid(m_ui->m_dtDateTimeToAvoid->dateTime());
   m_feed->setIsSwitchedOff(m_ui->m_cbDisableFeed->isChecked());
   m_feed->setIsQuiet(m_ui->m_cbSuppressFeed->isChecked());
 
@@ -81,6 +84,12 @@ void FormFeedDetails::createConnections() {
           static_cast<void (QComboBox::*)(int)>(&QComboBox::currentIndexChanged),
           this,
           &FormFeedDetails::onAutoUpdateTypeChanged);
+
+  connect(m_ui->m_cbAddAnyDateArticles, &QCheckBox::toggled, this, [this](bool checked) {
+    m_ui->m_gbAvoidOldArticles->setEnabled(!checked);
+    m_feed->setAvoidOldArticlesEnabled(!checked);
+  });
+
 }
 
 void FormFeedDetails::loadFeedData() {
@@ -97,6 +106,10 @@ void FormFeedDetails::loadFeedData() {
     ->setCurrentIndex(m_ui->m_cmbAutoUpdateType->findData(QVariant::fromValue(int(m_feed->autoUpdateType()))));
   m_ui->m_spinAutoUpdateInterval->setValue(m_feed->autoUpdateInterval());
   m_ui->m_cbOpenArticlesAutomatically->setChecked(m_feed->openArticlesDirectly());
+  m_ui->m_cbAddAnyDateArticles->setChecked(m_feed->addAnyDatetimeArticles());
+  m_ui->m_gbAvoidOldArticles->setChecked(m_feed->avoidOldArticles());
+  m_ui->m_gbAvoidOldArticles->setEnabled(!m_feed->addAnyDatetimeArticles());
+  m_ui->m_dtDateTimeToAvoid->setDateTime(m_feed->datetimeToAvoid());
   m_ui->m_cbDisableFeed->setChecked(m_feed->isSwitchedOff());
   m_ui->m_cbSuppressFeed->setChecked(m_feed->isQuiet());
 }

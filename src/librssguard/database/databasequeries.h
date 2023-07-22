@@ -353,6 +353,9 @@ Assignment DatabaseQueries::getFeeds(const QSqlDatabase& db,
     feed->setAutoUpdateInterval(query.value(FDS_DB_UPDATE_INTERVAL_INDEX).toInt());
     feed->setIsSwitchedOff(query.value(FDS_DB_IS_OFF_INDEX).toBool());
     feed->setIsQuiet(query.value(FDS_DB_IS_QUIET_INDEX).toBool());
+    feed->setAddAnyDatetimeArticles(query.value(FDS_DB_ADD_ANY_DATETIME_ARTICLES_INDEX).toBool());
+    feed->setAvoidOldArticles(query.value(FDS_DB_AVOID_OLD_ARTICLES_INDEX).toBool());
+    feed->setDatetimeToAvoid(query.value(FDS_DB_DATETIME_TO_AVOID_INDEX).toDateTime());
     feed->setOpenArticlesDirectly(query.value(FDS_DB_OPEN_ARTICLES_INDEX).toBool());
 
     qDebugNN << LOGSEC_CORE << "Custom ID of feed when loading from DB is" << QUOTE_W_SPACE_DOT(feed->customId());

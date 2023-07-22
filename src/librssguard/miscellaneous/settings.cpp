@@ -130,6 +130,12 @@ DVALUE(int) Messages::MessageHeadImageHeightDef = 36;
 DKEY Messages::DisplayEnclosuresInMessage = "show_enclosures_in_message";
 DVALUE(bool) Messages::DisplayEnclosuresInMessageDef = false;
 
+DKEY Messages::AvoidOldArticles = "avoid_old_articles";
+DVALUE(bool) Messages::AvoidOldArticlesDef = false;
+
+DKEY Messages::DateTimeToAvoidArticle = "datetime_to_avoid_article";
+DVALUE(QDateTime) Messages::DateTimeToAvoidArticleDef = QDateTime::currentDateTime();
+
 DKEY Messages::AlwaysDisplayItemPreview = "always_display_preview";
 DVALUE(bool) Messages::AlwaysDisplayItemPreviewDef = true;
 

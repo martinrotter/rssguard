@@ -21,6 +21,7 @@ Feed::Feed(RootItem* parent)
   : RootItem(parent), m_source(QString()), m_status(Status::Normal), m_statusString(QString()),
     m_autoUpdateType(AutoUpdateType::DefaultAutoUpdate), m_autoUpdateInterval(DEFAULT_AUTO_UPDATE_INTERVAL),
     m_lastUpdated(QDateTime::currentDateTimeUtc()), m_isSwitchedOff(false), m_isQuiet(false),
+    m_addAnyDatetimeArticles(false), m_avoidOldArticles(false), m_datetimeToAvoid(QDateTime::currentDateTime()),
     m_openArticlesDirectly(false), m_messageFilters(QList<QPointer<MessageFilter>>()) {
   setKind(RootItem::Kind::Feed);
 }
@@ -43,6 +44,10 @@ Feed::Feed(const Feed& other) : RootItem(other) {
   setLastUpdated(other.lastUpdated());
   setMessageFilters(other.messageFilters());
   setOpenArticlesDirectly(other.openArticlesDirectly());
+  setAddAnyDatetimeArticles(other.addAnyDatetimeArticles());
+  setAvoidOldArticles(other.avoidOldArticles());
+  setAvoidOldArticlesEnabled(other.isAvoidOldArticlesEnabled());
+  setDatetimeToAvoid(other.datetimeToAvoid());
   setIsSwitchedOff(other.isSwitchedOff());
   setIsQuiet(other.isQuiet());
 }
@@ -187,6 +192,38 @@ bool Feed::openArticlesDirectly() const {
 
 void Feed::setOpenArticlesDirectly(bool opn) {
   m_openArticlesDirectly = opn;
+}
+
+bool Feed::addAnyDatetimeArticles() const {
+  return m_addAnyDatetimeArticles;
+}
+
+void Feed::setAddAnyDatetimeArticles(bool addAnyDatetimeArticles) {
+  m_addAnyDatetimeArticles = addAnyDatetimeArticles;
+}
+
+bool Feed::avoidOldArticles() const {
+  return m_avoidOldArticles;
+}
+
+void Feed::setAvoidOldArticles(bool avoidDateArticles) {
+  m_avoidOldArticles = avoidDateArticles;
+}
+
+bool Feed::isAvoidOldArticlesEnabled() const {
+  return m_avoidOldArticlesEnabled;
+}
+
+void Feed::setAvoidOldArticlesEnabled(bool newAvoidOldArticlesEnabled) {
+  m_avoidOldArticlesEnabled = newAvoidOldArticlesEnabled;
+}
+
+QDateTime Feed::datetimeToAvoid() const {
+  return m_datetimeToAvoid;
+}
+
+void Feed::setDatetimeToAvoid(const QDateTime &dateTime) {
+  m_datetimeToAvoid = dateTime;
 }
 
 void Feed::appendMessageFilter(MessageFilter* filter) {

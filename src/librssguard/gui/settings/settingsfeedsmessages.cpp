@@ -197,6 +197,11 @@ SettingsFeedsMessages::SettingsFeedsMessages(Settings* settings, QWidget* parent
     m_ui->m_spinFeedUpdateTimeout->setSuffix(QSL(" ") + m_ui->m_spinFeedUpdateTimeout->suffix());
   }
 
+  connect(m_ui->m_gbAvoidOldArticles, &QGroupBox::toggled, this, &SettingsFeedsMessages::dirtifySettings);
+
+  connect(m_ui->m_dtDateTimeToAvoid, &QDateTimeEdit::dateTimeChanged, this, &SettingsFeedsMessages::dirtifySettings);
+
+
   m_ui->m_spinRelativeArticleTime->setValue(-1);
 }
 
@@ -260,6 +265,8 @@ void SettingsFeedsMessages::loadSettings() {
     ->setChecked(settings()->value(GROUP(Feeds), SETTING(Feeds::AutoUpdateOnlyUnfocused)).toBool());
   m_ui->m_spinAutoUpdateInterval->setValue(settings()->value(GROUP(Feeds), SETTING(Feeds::AutoUpdateInterval)).toInt());
   m_ui->m_spinFeedUpdateTimeout->setValue(settings()->value(GROUP(Feeds), SETTING(Feeds::UpdateTimeout)).toInt());
+  m_ui->m_gbAvoidOldArticles->setChecked(settings()->value(GROUP(Messages), SETTING(Messages::AvoidOldArticles)).toBool());
+  m_ui->m_dtDateTimeToAvoid->setDateTime(settings()->value(GROUP(Messages), SETTING(Messages::DateTimeToAvoidArticle)).toDateTime());
   m_ui->m_cmbFastAutoUpdate->setChecked(settings()->value(GROUP(Feeds), SETTING(Feeds::FastAutoUpdate)).toBool());
   m_ui->m_checkUpdateAllFeedsOnStartup
     ->setChecked(settings()->value(GROUP(Feeds), SETTING(Feeds::FeedsUpdateOnStartup)).toBool());
@@ -346,6 +353,8 @@ void SettingsFeedsMessages::saveSettings() {
   settings()->setValue(GROUP(Feeds), Feeds::AutoUpdateOnlyUnfocused, m_ui->m_checkAutoUpdateOnlyUnfocused->isChecked());
   settings()->setValue(GROUP(Feeds), Feeds::AutoUpdateInterval, m_ui->m_spinAutoUpdateInterval->value());
   settings()->setValue(GROUP(Feeds), Feeds::UpdateTimeout, m_ui->m_spinFeedUpdateTimeout->value());
+  settings()->setValue(GROUP(Messages), Messages::AvoidOldArticles, m_ui->m_gbAvoidOldArticles->isChecked());
+  settings()->setValue(GROUP(Messages), Messages::DateTimeToAvoidArticle, m_ui->m_dtDateTimeToAvoid->dateTime());
   settings()->setValue(GROUP(Feeds), Feeds::FastAutoUpdate, m_ui->m_cmbFastAutoUpdate->isChecked());
   settings()->setValue(GROUP(Feeds), Feeds::FeedsUpdateOnStartup, m_ui->m_checkUpdateAllFeedsOnStartup->isChecked());
   settings()->setValue(GROUP(Feeds), Feeds::FeedsUpdateStartupDelay, m_ui->m_spinStartupUpdateDelay->value());

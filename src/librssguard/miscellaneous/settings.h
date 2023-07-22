@@ -129,6 +129,12 @@ namespace Messages {
   KEY DisplayEnclosuresInMessage;
   VALUE(bool) DisplayEnclosuresInMessageDef;
 
+  KEY AvoidOldArticles;
+  VALUE(bool) AvoidOldArticlesDef;
+
+  KEY DateTimeToAvoidArticle;
+  VALUE(QDateTime) DateTimeToAvoidArticleDef;
+
   KEY AlwaysDisplayItemPreview;
   VALUE(bool) AlwaysDisplayItemPreviewDef;
 

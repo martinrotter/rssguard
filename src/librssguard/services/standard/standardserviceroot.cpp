@@ -256,6 +256,23 @@ QList<Message> StandardServiceRoot::obtainNewMessages(Feed* feed,
     mess.m_feedId = feed->customId();
   }
 
+
+  if (!feed->addAnyDatetimeArticles()) {
+
+    QDateTime datetimeToAvoid;
+
+    if (feed->isAvoidOldArticlesEnabled() && feed->avoidOldArticles())
+      datetimeToAvoid = feed->datetimeToAvoid();
+    else if (qApp->settings()->value(GROUP(Messages), SETTING(Messages::AvoidOldArticles)).toBool())
+      datetimeToAvoid = qApp->settings()->value(GROUP(Messages), SETTING(Messages::DateTimeToAvoidArticle)).toDateTime();
+    else
+      return messages;
+
+    for (int i = 0; i < messages.size(); i++)
+      if (messages.at(i).m_created < datetimeToAvoid)
+        messages.removeAt(i--);
+  }
+
   return messages;
 }
 
