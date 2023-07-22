@@ -384,6 +384,7 @@ QMap<QString, QVariantMap> ServiceRoot::storeCustomFeedsData() {
     feed_custom_data.insert(QSL("is_off"), feed->isSwitchedOff());
     feed_custom_data.insert(QSL("is_quiet"), feed->isQuiet());
     feed_custom_data.insert(QSL("open_articles_directly"), feed->openArticlesDirectly());
+    feed_custom_data.insert(QSL("is_rtl"), feed->isRTL()); 
     feed_custom_data.insert(QSL("add_any_datetime_articles"), feed->addAnyDatetimeArticles());
     feed_custom_data.insert(QSL("avoid_old_articles"), feed->avoidOldArticles());
     feed_custom_data.insert(QSL("datetime_to_avoid"), feed->datetimeToAvoid().toMSecsSinceEpoch());
@@ -436,6 +437,7 @@ void ServiceRoot::restoreCustomFeedsData(const QMap<QString, QVariantMap>& data,
       feed->setIsSwitchedOff(feed_custom_data.value(QSL("is_off")).toBool());
       feed->setIsQuiet(feed_custom_data.value(QSL("is_quiet")).toBool());
       feed->setOpenArticlesDirectly(feed_custom_data.value(QSL("open_articles_directly")).toBool());
+      feed->setIsRTL(feed_custom_data.value(QSL("is_rtl")).toBool());
       feed->setAddAnyDatetimeArticles(feed_custom_data.value(QSL("add_any_datetime_articles")).toBool());
       feed->setAvoidOldArticles(feed_custom_data.value(QSL("avoid_date_message")).toBool());
       feed->setDatetimeToAvoid(feed_custom_data.value(QSL("avoid_message_datetime")).toDateTime());

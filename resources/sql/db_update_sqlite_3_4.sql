@@ -13,6 +13,7 @@ CREATE TABLE Feeds (
   update_interval INTEGER     NOT NULL DEFAULT 900 CHECK (update_interval >= 1),
   is_off          INTEGER     NOT NULL DEFAULT 0 CHECK (is_off >= 0 AND is_off <= 1),
   is_quiet        INTEGER     NOT NULL DEFAULT 0 CHECK (is_quiet >= 0 AND is_quiet <= 1),
+  is_rtl          INTEGER     NOT NULL DEFAULT 0 CHECK (is_rtl >= 0 AND is_rtl <= 1),
   add_any_datetime_articles	INTEGER NOT NULL DEFAULT 0 CHECK(add_any_datetime_articles >= 0 AND add_any_datetime_articles <= 1),
   avoid_old_articles	INTEGER NOT NULL DEFAULT 0 CHECK(avoid_old_articles >= 0 AND avoid_old_articles <= 1),
   datetime_to_avoid	BIGINT      NOT NULL DEFAULT 0 CHECK (datetime_to_avoid >= 0),

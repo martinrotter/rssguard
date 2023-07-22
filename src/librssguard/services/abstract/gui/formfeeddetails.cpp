@@ -49,6 +49,7 @@ void FormFeedDetails::apply() {
                                                                 .toInt()));
   m_feed->setAutoUpdateInterval(int(m_ui->m_spinAutoUpdateInterval->value()));
   m_feed->setOpenArticlesDirectly(m_ui->m_cbOpenArticlesAutomatically->isChecked());
+  m_feed->setIsRTL(m_ui->m_cbFeedRTL->isChecked());
   m_feed->setAddAnyDatetimeArticles(m_ui->m_cbAddAnyDateArticles->isChecked());
   m_feed->setAvoidOldArticles(m_ui->m_gbAvoidOldArticles->isChecked());
   m_feed->setDatetimeToAvoid(m_ui->m_dtDateTimeToAvoid->dateTime());
@@ -106,6 +107,7 @@ void FormFeedDetails::loadFeedData() {
     ->setCurrentIndex(m_ui->m_cmbAutoUpdateType->findData(QVariant::fromValue(int(m_feed->autoUpdateType()))));
   m_ui->m_spinAutoUpdateInterval->setValue(m_feed->autoUpdateInterval());
   m_ui->m_cbOpenArticlesAutomatically->setChecked(m_feed->openArticlesDirectly());
+  m_ui->m_cbFeedRTL->setChecked(m_feed->isRTL());
   m_ui->m_cbAddAnyDateArticles->setChecked(m_feed->addAnyDatetimeArticles());
   m_ui->m_gbAvoidOldArticles->setChecked(m_feed->avoidOldArticles());
   m_ui->m_gbAvoidOldArticles->setEnabled(!m_feed->addAnyDatetimeArticles());

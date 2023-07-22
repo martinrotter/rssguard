@@ -516,6 +516,13 @@ void MessagesView::loadItem(RootItem* item) {
   sort(col, ord, false, true, false, true);
   m_sourceModel->loadMessages(item);
 
+  if (item->toFeed() != nullptr) {
+    if (item->toFeed()->isRTL())
+      setLayoutDirection(Qt::RightToLeft);
+    else
+      setLayoutDirection(Qt::LeftToRight);
+  }
+
   // Messages are loaded, make sure that previously
   // active message is not shown in browser.
   emit currentMessageRemoved(m_sourceModel->loadedItem());

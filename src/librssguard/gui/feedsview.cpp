@@ -231,6 +231,10 @@ void FeedsView::editSelectedItem() {
                           QSystemTrayIcon::MessageIcon::Warning});
   }
 
+  RootItem* selected_item = selectedItem();
+  emit itemSelected(selected_item);
+
+
   // Changes are done, unlock the update master lock.
   qApp->feedUpdateLock()->unlock();
 }

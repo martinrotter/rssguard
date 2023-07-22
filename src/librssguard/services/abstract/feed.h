@@ -83,6 +83,9 @@ class Feed : public RootItem {
     QDateTime lastUpdated() const;
     void setLastUpdated(const QDateTime& last_updated);
 
+    bool isRTL() const;
+    void setIsRTL(bool rtl);
+
     bool addAnyDatetimeArticles() const;
     void setAddAnyDatetimeArticles(bool addAnyDatetimeArticles);
 
@@ -113,6 +116,7 @@ class Feed : public RootItem {
     bool m_isSwitchedOff;
     bool m_isQuiet;
     bool m_openArticlesDirectly;
+    bool m_isRTL;
     bool m_addAnyDatetimeArticles;
     bool m_avoidOldArticles;
     bool m_avoidOldArticlesEnabled;

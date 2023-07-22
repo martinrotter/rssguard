@@ -21,8 +21,8 @@ Feed::Feed(RootItem* parent)
   : RootItem(parent), m_source(QString()), m_status(Status::Normal), m_statusString(QString()),
     m_autoUpdateType(AutoUpdateType::DefaultAutoUpdate), m_autoUpdateInterval(DEFAULT_AUTO_UPDATE_INTERVAL),
     m_lastUpdated(QDateTime::currentDateTimeUtc()), m_isSwitchedOff(false), m_isQuiet(false),
-    m_addAnyDatetimeArticles(false), m_avoidOldArticles(false), m_datetimeToAvoid(QDateTime::currentDateTime()),
-    m_openArticlesDirectly(false), m_messageFilters(QList<QPointer<MessageFilter>>()) {
+    m_isRTL(false), m_addAnyDatetimeArticles(false), m_avoidOldArticles(false), m_openArticlesDirectly(false),
+    m_datetimeToAvoid(QDateTime::currentDateTime()), m_messageFilters(QList<QPointer<MessageFilter>>()) {
   setKind(RootItem::Kind::Feed);
 }
 
@@ -48,6 +48,7 @@ Feed::Feed(const Feed& other) : RootItem(other) {
   setAvoidOldArticles(other.avoidOldArticles());
   setAvoidOldArticlesEnabled(other.isAvoidOldArticlesEnabled());
   setDatetimeToAvoid(other.datetimeToAvoid());
+  setIsRTL(other.isRTL());
   setIsSwitchedOff(other.isSwitchedOff());
   setIsQuiet(other.isQuiet());
 }
@@ -192,6 +193,14 @@ bool Feed::openArticlesDirectly() const {
 
 void Feed::setOpenArticlesDirectly(bool opn) {
   m_openArticlesDirectly = opn;
+}
+
+bool Feed::isRTL() const {
+  return m_isRTL;
+}
+
+void Feed::setIsRTL(bool rtl) {
+  m_isRTL = rtl;
 }
 
 bool Feed::addAnyDatetimeArticles() const {

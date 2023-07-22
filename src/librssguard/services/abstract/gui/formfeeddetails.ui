@@ -60,13 +60,20 @@
         </widget>
        </item>
        <item row="2" column="0" colspan="2">
+        <widget class="QCheckBox" name="m_cbFeedRTL">
+         <property name="text">
+          <string>Right-to-left layout</string>
+         </property>
+        </widget>
+       </item>
+       <item row="3" column="0" colspan="2">
         <widget class="Line" name="line">
          <property name="orientation">
           <enum>Qt::Horizontal</enum>
          </property>
         </widget>
        </item>
-       <item row="3" column="0" colspan="2">
+       <item row="4" column="0" colspan="2">
         <widget class="QCheckBox" name="m_cbAddAnyDateArticles">
          <property name="text">
           <string>Add articles with any date into the database</string>
@@ -76,7 +83,7 @@
          </property>
         </widget>
        </item>
-       <item row="4" column="0" colspan="2">
+       <item row="5" column="0" colspan="2">
         <widget class="QGroupBox" name="m_gbAvoidOldArticles">
          <property name="enabled">
           <bool>true</bool>
