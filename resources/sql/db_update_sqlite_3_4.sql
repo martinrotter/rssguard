@@ -26,8 +26,8 @@ CREATE TABLE Feeds (
   FOREIGN KEY (account_id) REFERENCES Accounts (id) ON DELETE CASCADE
 );
 -- !
-INSERT INTO Feeds (id, ordr, title, description, date_created, icon, category, source, update_type, update_interval, is_off, open_articles, account_id, custom_id, custom_data)
-SELECT id, ordr, title, description, date_created, icon, category, source, update_type, update_interval, is_off, open_articles, account_id, custom_id, custom_data
+INSERT INTO Feeds (id, ordr, title, description, date_created, icon, category, source, update_type, update_interval, is_off, is_quiet, is_rtl , add_any_datetime_articles, avoid_old_articles, datetime_to_avoid, open_articles, account_id, custom_id, custom_data)
+SELECT id, ordr, title, description, date_created, icon, category, source, update_type, update_interval, is_off, is_quiet, is_rtl , add_any_datetime_articles, avoid_old_articles, datetime_to_avoid, open_articles, account_id, custom_id, custom_data
 FROM backup_Feeds;
 -- !
 DROP TABLE backup_Feeds;
