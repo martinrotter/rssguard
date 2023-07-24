@@ -18,6 +18,7 @@ struct FeedLookup {
     QString url;
     bool fetch_metadata_online;
     bool do_not_fetch_titles;
+    bool do_not_fetch_icons;
     QNetworkProxy custom_proxy;
     QString post_process_script;
 };
@@ -37,6 +38,7 @@ class FeedsImportExportModel : public AccountCheckSortedModel {
     void importAsOPML20(const QByteArray& data,
                         bool fetch_metadata_online,
                         bool do_not_fetch_titles,
+                        bool do_not_fetch_icons,
                         const QString& post_process_script = {});
 
     // Exports to plain text format

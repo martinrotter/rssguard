@@ -66,6 +66,13 @@
        </widget>
       </item>
       <item>
+       <widget class="QCheckBox" name="m_cbDoNotFetchIcons">
+        <property name="text">
+         <string>Do not fetch icons</string>
+        </property>
+       </widget>
+      </item>
+      <item>
        <widget class="QLabel" name="label_4">
         <property name="text">
          <string>Optional post-processing script</string>
@@ -291,6 +298,7 @@
   <tabstop>m_btnSelectFile</tabstop>
   <tabstop>m_groupFetchMetadata</tabstop>
   <tabstop>m_cbDoNotFetchTitles</tabstop>
+  <tabstop>m_cbDoNotFetchIcons</tabstop>
   <tabstop>m_cmbRootNode</tabstop>
   <tabstop>m_cbExportIcons</tabstop>
   <tabstop>m_btnCheckAllItems</tabstop>

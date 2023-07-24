@@ -184,6 +184,7 @@ void StandardFeed::fetchMetadataForItself() {
                                        source(),
                                        postProcessScript(),
                                        protection(),
+                                       true,
                                        username(),
                                        password(),
                                        getParentServiceRoot()->networkProxy());
@@ -231,6 +232,7 @@ StandardFeed* StandardFeed::guessFeed(StandardFeed::SourceType source_type,
                                       const QString& source,
                                       const QString& post_process_script,
                                       NetworkFactory::NetworkFactory::NetworkAuthentication protection,
+                                      bool fetch_icons,
                                       const QString& username,
                                       const QString& password,
                                       const QNetworkProxy& custom_proxy) {
@@ -446,13 +448,15 @@ StandardFeed* StandardFeed::guessFeed(StandardFeed::SourceType source_type,
     icon_possible_locations.append({source, false});
   }
 
-  // Try to obtain icon.
-  QPixmap icon_data;
+  if (fetch_icons) {
+    // Try to obtain icon.
+    QPixmap icon_data;
 
-  if (NetworkFactory::downloadIcon(icon_possible_locations, DOWNLOAD_TIMEOUT, icon_data, {}, custom_proxy) ==
-      QNetworkReply::NetworkError::NoError) {
-    // Icon for feed was downloaded and is stored now in icon_data.
-    feed->setIcon(icon_data);
+    if (NetworkFactory::downloadIcon(icon_possible_locations, DOWNLOAD_TIMEOUT, icon_data, {}, custom_proxy) ==
+        QNetworkReply::NetworkError::NoError) {
+      // Icon for feed was downloaded and is stored now in icon_data.
+      feed->setIcon(icon_data);
+    }
   }
 
   return feed;

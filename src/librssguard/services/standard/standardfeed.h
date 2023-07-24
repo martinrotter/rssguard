@@ -78,6 +78,7 @@ class StandardFeed : public Feed {
                                    const QString& url,
                                    const QString& post_process_script,
                                    NetworkFactory::NetworkAuthentication protection,
+                                   bool fetch_icons = true,
                                    const QString& username = QString(),
                                    const QString& password = QString(),
                                    const QNetworkProxy& custom_proxy = QNetworkProxy::ProxyType::DefaultProxy);

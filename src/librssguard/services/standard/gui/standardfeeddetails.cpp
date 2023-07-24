@@ -137,8 +137,14 @@ void StandardFeedDetails::guessIconOnly(StandardFeed::SourceType source_type,
                                         const QString& password,
                                         const QNetworkProxy& custom_proxy) {
   try {
-    StandardFeed* metadata =
-      StandardFeed::guessFeed(source_type, source, post_process_script, protection, username, password, custom_proxy);
+    StandardFeed* metadata = StandardFeed::guessFeed(source_type,
+                                                     source,
+                                                     post_process_script,
+                                                     protection,
+                                                     true,
+                                                     username,
+                                                     password,
+                                                     custom_proxy);
 
     // Icon or whole feed was guessed.
     m_ui.m_btnIcon->setIcon(metadata->icon());
@@ -174,8 +180,14 @@ void StandardFeedDetails::guessFeed(StandardFeed::SourceType source_type,
                                     const QString& password,
                                     const QNetworkProxy& custom_proxy) {
   try {
-    StandardFeed* metadata =
-      StandardFeed::guessFeed(source_type, source, post_process_script, protection, username, password, custom_proxy);
+    StandardFeed* metadata = StandardFeed::guessFeed(source_type,
+                                                     source,
+                                                     post_process_script,
+                                                     protection,
+                                                     true,
+                                                     username,
+                                                     password,
+                                                     custom_proxy);
 
     // Icon or whole feed was guessed.
     m_ui.m_btnIcon->setIcon(metadata->icon());

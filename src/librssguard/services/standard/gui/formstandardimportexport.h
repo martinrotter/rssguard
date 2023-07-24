@@ -42,6 +42,7 @@ class FormStandardImportExport : public QDialog {
     void parseImportFile(const QString& file_name,
                          bool fetch_metadata_online,
                          bool do_not_fetch_titles,
+                         bool do_not_fetch_icons,
                          const QString& post_process_script);
 
     void exportFeeds();

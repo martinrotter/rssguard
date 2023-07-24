@@ -185,6 +185,7 @@ bool FeedsImportExportModel::produceFeed(const FeedLookup& feed_lookup) {
                                          feed_lookup.url,
                                          feed_lookup.post_process_script,
                                          NetworkFactory::NetworkAuthentication::NoAuthentication,
+                                         !feed_lookup.do_not_fetch_icons,
                                          {},
                                          {},
                                          feed_lookup.custom_proxy);
@@ -197,6 +198,17 @@ bool FeedsImportExportModel::produceFeed(const FeedLookup& feed_lookup) {
 
         if (!old_title.simplified().isEmpty()) {
           new_feed->setTitle(old_title);
+        }
+      }
+
+      if (feed_lookup.do_not_fetch_icons) {
+        QIcon old_icon = feed_lookup.custom_data[QSL("icon")].value<QIcon>();
+
+        if (old_icon.isNull()) {
+          new_feed->setIcon(qApp->icons()->fromTheme(QSL("application-rss+xml")));
+        }
+        else {
+          new_feed->setIcon(old_icon);
         }
       }
     }
@@ -267,6 +279,7 @@ bool FeedsImportExportModel::produceFeed(const FeedLookup& feed_lookup) {
 void FeedsImportExportModel::importAsOPML20(const QByteArray& data,
                                             bool fetch_metadata_online,
                                             bool do_not_fetch_titles,
+                                            bool do_not_fetch_icons,
                                             const QString& post_process_script) {
   emit parsingStarted();
   emit layoutAboutToBeChanged();
@@ -337,6 +350,7 @@ void FeedsImportExportModel::importAsOPML20(const QByteArray& data,
             f.custom_proxy = custom_proxy;
             f.fetch_metadata_online = fetch_metadata_online;
             f.do_not_fetch_titles = do_not_fetch_titles;
+            f.do_not_fetch_icons = do_not_fetch_icons;
             f.custom_data = feed_data;
             f.parent = active_model_item;
             f.post_process_script = post_process_script;
