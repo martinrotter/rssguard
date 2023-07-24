@@ -564,6 +564,12 @@ RootItem* FeedlyNetwork::decodeCollections(const QByteArray& json,
         feed->setTitle(feed->source());
       }
 
+      if (feed->title().isEmpty()) {
+        feed->setTitle(feed->customId());
+        qWarningNN << LOGSEC_FEEDLY
+                   << "Some feed does not have nor title, neither description. Using its ID for its title.";
+      }
+
       if (obtain_icons) {
         QPixmap icon;
         auto result = NetworkFactory::downloadIcon({{fee_obj[QSL("iconUrl")].toString(), true},
