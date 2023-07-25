@@ -37,11 +37,11 @@ void ColorToolButton::setColor(const QColor& color) {
 }
 
 void ColorToolButton::setRandomColor() {
-  auto rnd_color = QRandomGenerator::global()->bounded(0xFFFFFF);
-  auto rnd_color_name = QSL("#%1").arg(QString::number(rnd_color, 16));
+  int hue = QRandomGenerator::global()->generate() % 360;
+  auto clr = QColor::fromHsv(hue, 200, 240);
 
-  setColor(rnd_color_name);
-  emit colorChanged(rnd_color_name);
+  setColor(clr);
+  emit colorChanged(clr);
 }
 
 void ColorToolButton::paintEvent(QPaintEvent* e) {

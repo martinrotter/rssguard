@@ -37,10 +37,10 @@ QColor TextFactory::generateColorFromText(const QString& text) {
     color += chr.unicode();
   }
 
-  color = QRandomGenerator(color).bounded(double(0xFFFFFF)) - 1;
-  auto color_name = QSL("#%1").arg(color, 6, 16);
+  // NOTE: https://martin.ankerl.com/2009/12/09/how-to-create-random-colors-programmatically
+  int hue = color % 360;
 
-  return QColor(color_name);
+  return QColor::fromHsv(hue, 200, 240);
 }
 
 int TextFactory::stringHeight(const QString& string, const QFontMetrics& metrics) {

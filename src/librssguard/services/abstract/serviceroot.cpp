@@ -214,7 +214,8 @@ void ServiceRoot::cleanAllItemsFromModel(bool clean_labels_too) {
 
   for (RootItem* top_level_item : qAsConst(chi)) {
     if (top_level_item->kind() != RootItem::Kind::Bin && top_level_item->kind() != RootItem::Kind::Important &&
-        top_level_item->kind() != RootItem::Kind::Unread && top_level_item->kind() != RootItem::Kind::Labels) {
+        top_level_item->kind() != RootItem::Kind::Unread && top_level_item->kind() != RootItem::Kind::Probes &&
+        top_level_item->kind() != RootItem::Kind::Labels) {
       requestItemRemoval(top_level_item);
     }
   }
