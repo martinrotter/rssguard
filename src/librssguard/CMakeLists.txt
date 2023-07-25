@@ -654,6 +654,12 @@ if(QT_VERSION_MAJOR EQUAL 6)
   )
 endif()
 
+if(WIN32)
+  target_link_libraries(rssguard PUBLIC
+    Qt${QT_VERSION_MAJOR}::GuiPrivate
+  )
+endif()
+
 if(USE_WEBENGINE)
   target_link_libraries(rssguard PUBLIC
     Qt${QT_VERSION_MAJOR}::WebEngineWidgets

@@ -13,7 +13,6 @@
 #include <QtPlatformHeaders/QWindowsWindowFunctions>
 #else
 #include <QWindow>
-#include <QtGui/qpa/qplatformwindow_p.h>
 #endif
 #endif
 
@@ -117,16 +116,6 @@ int main(int argc, char* argv[]) {
 
   qApp
     ->parseCmdArgumentsFromOtherInstance(qApp->cmdParser()->positionalArguments().join(QSL(ARGUMENTS_LIST_SEPARATOR)));
-
-#if defined(Q_OS_WIN)
-#if QT_VERSION_MAJOR == 6
-  // NOTE: Fixes https://github.com/martinrotter/rssguard/issues/953 for Qt 6.
-  using QWindowsWindow = QNativeInterface::Private::QWindowsWindow;
-  if (auto w_w = main_window.windowHandle()->nativeInterface<QWindowsWindow>()) {
-    w_w->setHasBorderInFullScreen(true);
-  }
-#endif
-#endif
 
   return Application::exec();
 }
