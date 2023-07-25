@@ -197,6 +197,12 @@ void WebEngineViewer::setHtml(const QString& html, const QUrl& base_url) {
   QWebEngineView::setHtml(html, base_url);
 }
 
+void WebEngineViewer::setReadabledHtml(const QString& html, const QUrl& base_url) {
+  auto better_html = qApp->skins()->prepareHtml(html, base_url);
+
+  setHtml(better_html.m_html, better_html.m_baseUrl);
+}
+
 double WebEngineViewer::verticalScrollBarPosition() const {
   double position;
   QEventLoop loop;

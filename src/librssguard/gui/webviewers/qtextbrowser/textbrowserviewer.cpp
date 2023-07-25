@@ -556,6 +556,10 @@ void TextBrowserViewer::setHtml(const QString& html, const QUrl& base_url) {
   */
 }
 
+void TextBrowserViewer::setReadabledHtml(const QString& html, const QUrl& base_url) {
+  setHtml(html, base_url);
+}
+
 void TextBrowserViewer::setHtmlPrivate(const QString& html, const QUrl& base_url) {
   m_currentUrl = base_url;
   m_currentHtml = html;

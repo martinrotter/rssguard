@@ -268,7 +268,7 @@ void WebBrowser::newWindowRequested(WebViewer* viewer) {
 
 void WebBrowser::setReadabledHtml(const QString& better_html) {
   if (!better_html.isEmpty()) {
-    m_webView->setHtml(better_html, m_webView->url());
+    m_webView->setReadabledHtml(better_html, m_webView->url());
   }
 }
 

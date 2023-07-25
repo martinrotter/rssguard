@@ -29,6 +29,7 @@ class WebEngineViewer : public QWebEngineView, public WebViewer {
     virtual void findText(const QString& text, bool backwards);
     virtual void setUrl(const QUrl& url);
     virtual void setHtml(const QString& html, const QUrl& base_url = {});
+    virtual void setReadabledHtml(const QString& html, const QUrl& base_url = {});
     virtual void clear();
     virtual double verticalScrollBarPosition() const;
     virtual void setVerticalScrollBarPosition(double pos);

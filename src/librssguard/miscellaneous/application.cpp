@@ -78,7 +78,7 @@ Application::Application(const QString& id, int& argc, char** argv, const QStrin
   m_settings = Settings::setupSettings(this);
 
 #if defined(USE_WEBENGINE)
-  if (!m_forcedNoWebEngine && qgetenv("QTWEBENGINE_CHROMIUM_FLAGS").isEmpty()) {
+  if (!m_forcedNoWebEngine && qEnvironmentVariableIsEmpty("QTWEBENGINE_CHROMIUM_FLAGS")) {
     qputenv("QTWEBENGINE_CHROMIUM_FLAGS",
             settings()->value(GROUP(Browser), SETTING(Browser::WebEngineChromiumFlags)).toString().toLocal8Bit());
   }
@@ -292,8 +292,7 @@ void Application::loadDynamicShortcuts() {
   DynamicShortcuts::load(userActions());
 }
 
-void Application::showPolls() const {
-  /*
+void Application::offerPolls() const {
   if (isFirstRunCurrentVersion()) {
     qApp->showGuiMessage(Notification::Event::GeneralEvent,
                          {QSL("%1 survey").arg(QSL(APP_NAME)),
@@ -301,10 +300,11 @@ void Application::showPolls() const {
                           QSystemTrayIcon::MessageIcon::Warning},
                          {false, true, false},
                          {tr("Go to survey"), [] {
-                            qApp->web()->openUrlInExternalBrowser(QSL("https://forms.gle/FdzrwFGozCGViK8QA"));
+                            qApp->web()->openUrlInExternalBrowser(QSL("https://docs.google.com/forms/d/e/"
+                                                                      "1FAIpQLScQ_r_EwM6qojPsIMQHGdnSktU-WGHgporN69mpU-"
+                                                                      "Tvq8y7XQ/viewform?usp=sf_link"));
                           }});
   }
-  */
 }
 
 void Application::offerChanges() const {
@@ -625,7 +625,7 @@ void Application::showTrayIcon() {
           trayIcon()->show();
 
           offerChanges();
-          showPolls();
+          offerPolls();
         }
         else {
           m_feedReader->feedsModel()->notifyWithCounts();

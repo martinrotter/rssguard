@@ -89,7 +89,7 @@ class RSSGUARD_DLLSPEC Application : public SingleApplication {
     void reactOnForeignNotifications();
     void hideOrShowMainForm();
     void loadDynamicShortcuts();
-    void showPolls() const;
+    void offerPolls() const;
     void offerChanges() const;
 
     bool isAlreadyRunning();

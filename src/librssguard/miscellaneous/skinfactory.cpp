@@ -224,6 +224,10 @@ QString SkinFactory::adBlockedPage(const QString& url, const QString& filter) {
   return currentSkin().m_layoutMarkupWrapper.arg(tr("This page was blocked by AdBlock"), adblocked);
 }
 
+PreparedHtml SkinFactory::prepareHtml(const QString& inner_html, const QUrl& base_url) {
+  return {currentSkin().m_layoutMarkupWrapper.arg(QString(), inner_html), base_url};
+}
+
 PreparedHtml SkinFactory::generateHtmlOfArticles(const QList<Message>& messages, RootItem* root) const {
   Skin skin = currentSkin();
   QString messages_layout;

@@ -102,6 +102,8 @@ class RSSGUARD_DLLSPEC SkinFactory : public QObject {
 
     QString adBlockedPage(const QString& url, const QString& filter);
 
+    PreparedHtml prepareHtml(const QString& inner_html, const QUrl& base_url);
+
     PreparedHtml generateHtmlOfArticles(const QList<Message>& messages, RootItem* root) const;
 
     // Gets skin about a particular skin.
