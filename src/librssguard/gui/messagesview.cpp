@@ -516,7 +516,7 @@ void MessagesView::loadItem(RootItem* item) {
   sort(col, ord, false, true, false, true);
   m_sourceModel->loadMessages(item);
 
-  if (item->toFeed() != nullptr) {
+  if (item->kind() == RootItem::Kind::Feed) {
     if (item->toFeed()->isRtl()) {
       setLayoutDirection(Qt::LayoutDirection::RightToLeft);
     }
