@@ -197,10 +197,10 @@ SettingsFeedsMessages::SettingsFeedsMessages(Settings* settings, QWidget* parent
     m_ui->m_spinFeedUpdateTimeout->setSuffix(QSL(" ") + m_ui->m_spinFeedUpdateTimeout->suffix());
   }
 
+  m_ui->m_dtDateTimeToAvoid->setDisplayFormat(qApp->localization()->loadedLocale().dateFormat());
+
   connect(m_ui->m_gbAvoidOldArticles, &QGroupBox::toggled, this, &SettingsFeedsMessages::dirtifySettings);
-
   connect(m_ui->m_dtDateTimeToAvoid, &QDateTimeEdit::dateTimeChanged, this, &SettingsFeedsMessages::dirtifySettings);
-
 
   m_ui->m_spinRelativeArticleTime->setValue(-1);
 }
@@ -265,8 +265,10 @@ void SettingsFeedsMessages::loadSettings() {
     ->setChecked(settings()->value(GROUP(Feeds), SETTING(Feeds::AutoUpdateOnlyUnfocused)).toBool());
   m_ui->m_spinAutoUpdateInterval->setValue(settings()->value(GROUP(Feeds), SETTING(Feeds::AutoUpdateInterval)).toInt());
   m_ui->m_spinFeedUpdateTimeout->setValue(settings()->value(GROUP(Feeds), SETTING(Feeds::UpdateTimeout)).toInt());
-  m_ui->m_gbAvoidOldArticles->setChecked(settings()->value(GROUP(Messages), SETTING(Messages::AvoidOldArticles)).toBool());
-  m_ui->m_dtDateTimeToAvoid->setDateTime(settings()->value(GROUP(Messages), SETTING(Messages::DateTimeToAvoidArticle)).toDateTime());
+  m_ui->m_gbAvoidOldArticles
+    ->setChecked(settings()->value(GROUP(Messages), SETTING(Messages::AvoidOldArticles)).toBool());
+  m_ui->m_dtDateTimeToAvoid
+    ->setDateTime(settings()->value(GROUP(Messages), SETTING(Messages::DateTimeToAvoidArticle)).toDateTime());
   m_ui->m_cmbFastAutoUpdate->setChecked(settings()->value(GROUP(Feeds), SETTING(Feeds::FastAutoUpdate)).toBool());
   m_ui->m_checkUpdateAllFeedsOnStartup
     ->setChecked(settings()->value(GROUP(Feeds), SETTING(Feeds::FeedsUpdateOnStartup)).toBool());
