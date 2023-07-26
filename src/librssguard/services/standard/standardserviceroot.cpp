@@ -271,6 +271,7 @@ QList<Message> StandardServiceRoot::obtainNewMessages(Feed* feed,
 
     for (int i = 0; i < messages.size(); i++) {
       if (messages.at(i).m_createdFromFeed && messages.at(i).m_created < dt_to_avoid) {
+        qDebugNN << LOGSEC_CORE << "Removing message" << QUOTE_W_SPACE(messages.at(i).m_title) << "for being too old.";
         messages.removeAt(i--);
       }
     }
