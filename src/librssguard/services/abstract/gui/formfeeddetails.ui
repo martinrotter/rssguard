@@ -60,30 +60,20 @@
         </widget>
        </item>
        <item row="2" column="0" colspan="2">
-        <widget class="QCheckBox" name="m_cbFeedRTL">
-         <property name="text">
-          <string>Right-to-left layout</string>
-         </property>
-        </widget>
-       </item>
-       <item row="3" column="0" colspan="2">
         <widget class="Line" name="line">
          <property name="orientation">
           <enum>Qt::Horizontal</enum>
          </property>
         </widget>
        </item>
-       <item row="4" column="0" colspan="2">
+       <item row="3" column="0" colspan="2">
         <widget class="QCheckBox" name="m_cbAddAnyDateArticles">
          <property name="text">
           <string>Add articles with any date into the database</string>
          </property>
-         <property name="checked">
-          <bool>true</bool>
-         </property>
         </widget>
        </item>
-       <item row="5" column="0" colspan="2">
+       <item row="4" column="0" colspan="2">
         <widget class="QGroupBox" name="m_gbAvoidOldArticles">
          <property name="enabled">
           <bool>true</bool>
@@ -131,17 +121,24 @@
        <string>Miscellaneous</string>
       </attribute>
       <layout class="QFormLayout" name="formLayout_2">
-       <item row="1" column="0" colspan="2">
+       <item row="0" column="0">
+        <widget class="QCheckBox" name="m_cbSuppressFeed">
+         <property name="text">
+          <string>Ignore notifications for this feed</string>
+         </property>
+        </widget>
+       </item>
+       <item row="1" column="0">
         <widget class="QCheckBox" name="m_cbDisableFeed">
          <property name="text">
           <string>Disable this feed</string>
          </property>
         </widget>
        </item>
-       <item row="0" column="0" colspan="2">
-        <widget class="QCheckBox" name="m_cbSuppressFeed">
+       <item row="2" column="0">
+        <widget class="QCheckBox" name="m_cbFeedRTL">
          <property name="text">
-          <string>Ignore notifications for this feed</string>
+          <string>Right-to-left layout</string>
          </property>
         </widget>
        </item>
@@ -176,8 +173,12 @@
   <tabstop>m_cmbAutoUpdateType</tabstop>
   <tabstop>m_spinAutoUpdateInterval</tabstop>
   <tabstop>m_cbOpenArticlesAutomatically</tabstop>
+  <tabstop>m_cbAddAnyDateArticles</tabstop>
+  <tabstop>m_gbAvoidOldArticles</tabstop>
+  <tabstop>m_dtDateTimeToAvoid</tabstop>
   <tabstop>m_cbSuppressFeed</tabstop>
   <tabstop>m_cbDisableFeed</tabstop>
+  <tabstop>m_cbFeedRTL</tabstop>
  </tabstops>
  <resources/>
  <connections>
@@ -188,8 +189,8 @@
    <slot>reject()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>331</x>
-     <y>556</y>
+     <x>340</x>
+     <y>580</y>
     </hint>
     <hint type="destinationlabel">
      <x>286</x>
