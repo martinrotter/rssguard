@@ -231,12 +231,12 @@ void FeedsView::editSelectedItem() {
                           QSystemTrayIcon::MessageIcon::Warning});
   }
 
-  RootItem* selected_item = selectedItem();
-  emit itemSelected(selected_item);
-
-
   // Changes are done, unlock the update master lock.
   qApp->feedUpdateLock()->unlock();
+
+  // TODO: NOTE: Make sure to refresh article list if RTL is changed?
+  // RootItem* selected_item = selectedItem();
+  // emit itemSelected(selected_item);
 }
 
 void FeedsView::deleteSelectedItem() {

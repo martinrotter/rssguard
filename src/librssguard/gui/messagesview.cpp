@@ -517,10 +517,12 @@ void MessagesView::loadItem(RootItem* item) {
   m_sourceModel->loadMessages(item);
 
   if (item->toFeed() != nullptr) {
-    if (item->toFeed()->isRTL())
-      setLayoutDirection(Qt::RightToLeft);
-    else
-      setLayoutDirection(Qt::LeftToRight);
+    if (item->toFeed()->isRtl()) {
+      setLayoutDirection(Qt::LayoutDirection::RightToLeft);
+    }
+    else {
+      setLayoutDirection(Qt::LayoutDirection::LeftToRight);
+    }
   }
 
   // Messages are loaded, make sure that previously

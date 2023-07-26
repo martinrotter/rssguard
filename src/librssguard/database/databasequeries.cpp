@@ -2181,7 +2181,7 @@ void DatabaseQueries::createOverwriteFeed(const QSqlDatabase& db, Feed* feed, in
             " icon = :icon, category = :category, source = :source, update_type = :update_type,"
             " update_interval = :update_interval, is_off = :is_off, is_quiet = :is_quiet, open_articles ="
             " :open_articles, is_rtl = :is_rtl, add_any_datetime_articles = :add_any_datetime_articles,"
-            " avoid_old_articles = :avoid_old_articles, datetime_to_avoid = :datetime_to_avoid, account_id"
+            " datetime_to_avoid = :datetime_to_avoid, account_id"
             " = :account_id, custom_id = :custom_id, custom_data = :custom_data WHERE id = :id;");
   q.bindValue(QSL(":title"), feed->title());
   q.bindValue(QSL(":description"), feed->description());
@@ -2198,9 +2198,8 @@ void DatabaseQueries::createOverwriteFeed(const QSqlDatabase& db, Feed* feed, in
   q.bindValue(QSL(":is_off"), feed->isSwitchedOff());
   q.bindValue(QSL(":is_quiet"), feed->isQuiet());
   q.bindValue(QSL(":open_articles"), feed->openArticlesDirectly());
-  q.bindValue(QSL(":is_rtl"), feed->isRTL());
+  q.bindValue(QSL(":is_rtl"), feed->isRtl());
   q.bindValue(QSL(":add_any_datetime_articles"), feed->addAnyDatetimeArticles());
-  q.bindValue(QSL(":avoid_old_articles"), feed->avoidOldArticles());
   q.bindValue(QSL(":datetime_to_avoid"), feed->datetimeToAvoid().toMSecsSinceEpoch());
 
   auto custom_data = feed->customDatabaseData();

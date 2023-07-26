@@ -20,8 +20,8 @@
 Feed::Feed(RootItem* parent)
   : RootItem(parent), m_source(QString()), m_status(Status::Normal), m_statusString(QString()),
     m_autoUpdateType(AutoUpdateType::DefaultAutoUpdate), m_autoUpdateInterval(DEFAULT_AUTO_UPDATE_INTERVAL),
-    m_lastUpdated(QDateTime::currentDateTimeUtc()), m_isSwitchedOff(false), m_isQuiet(false),
-    m_isRTL(false), m_addAnyDatetimeArticles(false), m_avoidOldArticles(false), m_openArticlesDirectly(false),
+    m_lastUpdated(QDateTime::currentDateTimeUtc()), m_isSwitchedOff(false), m_isQuiet(false), m_isRtl(false),
+    m_addAnyDatetimeArticles(false), m_avoidOldArticles(false), m_openArticlesDirectly(false),
     m_datetimeToAvoid(QDateTime::currentDateTime()), m_messageFilters(QList<QPointer<MessageFilter>>()) {
   setKind(RootItem::Kind::Feed);
 }
@@ -45,10 +45,8 @@ Feed::Feed(const Feed& other) : RootItem(other) {
   setMessageFilters(other.messageFilters());
   setOpenArticlesDirectly(other.openArticlesDirectly());
   setAddAnyDatetimeArticles(other.addAnyDatetimeArticles());
-  setAvoidOldArticles(other.avoidOldArticles());
-  setAvoidOldArticlesEnabled(other.isAvoidOldArticlesEnabled());
   setDatetimeToAvoid(other.datetimeToAvoid());
-  setIsRTL(other.isRTL());
+  setIsRtl(other.isRtl());
   setIsSwitchedOff(other.isSwitchedOff());
   setIsQuiet(other.isQuiet());
 }
@@ -195,44 +193,28 @@ void Feed::setOpenArticlesDirectly(bool opn) {
   m_openArticlesDirectly = opn;
 }
 
-bool Feed::isRTL() const {
-  return m_isRTL;
+bool Feed::isRtl() const {
+  return m_isRtl;
 }
 
-void Feed::setIsRTL(bool rtl) {
-  m_isRTL = rtl;
+void Feed::setIsRtl(bool rtl) {
+  m_isRtl = rtl;
 }
 
 bool Feed::addAnyDatetimeArticles() const {
   return m_addAnyDatetimeArticles;
 }
 
-void Feed::setAddAnyDatetimeArticles(bool addAnyDatetimeArticles) {
-  m_addAnyDatetimeArticles = addAnyDatetimeArticles;
-}
-
-bool Feed::avoidOldArticles() const {
-  return m_avoidOldArticles;
-}
-
-void Feed::setAvoidOldArticles(bool avoidDateArticles) {
-  m_avoidOldArticles = avoidDateArticles;
-}
-
-bool Feed::isAvoidOldArticlesEnabled() const {
-  return m_avoidOldArticlesEnabled;
-}
-
-void Feed::setAvoidOldArticlesEnabled(bool newAvoidOldArticlesEnabled) {
-  m_avoidOldArticlesEnabled = newAvoidOldArticlesEnabled;
+void Feed::setAddAnyDatetimeArticles(bool add_any_articles) {
+  m_addAnyDatetimeArticles = add_any_articles;
 }
 
 QDateTime Feed::datetimeToAvoid() const {
   return m_datetimeToAvoid;
 }
 
-void Feed::setDatetimeToAvoid(const QDateTime &dateTime) {
-  m_datetimeToAvoid = dateTime;
+void Feed::setDatetimeToAvoid(const QDateTime& dt) {
+  m_datetimeToAvoid = dt;
 }
 
 void Feed::appendMessageFilter(MessageFilter* filter) {
