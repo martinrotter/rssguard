@@ -163,7 +163,7 @@ class RSSGUARD_DLLSPEC Application : public SingleApplication {
     // or in message box if tray icon is disabled.
     void showGuiMessage(Notification::Event event,
                         const GuiMessage& msg,
-                        const GuiMessageDestination& dest = {},
+                        GuiMessageDestination dest = {},
                         const GuiAction& action = {},
                         QWidget* parent = nullptr);
 
@@ -192,6 +192,12 @@ class RSSGUARD_DLLSPEC Application : public SingleApplication {
     void parseCmdArgumentsFromMyInstance(const QStringList& raw_cli_args, QString& custom_ua);
 
     void displayLog();
+
+    void showGuiMessageCore(Notification::Event event,
+                            const GuiMessage& msg,
+                            GuiMessageDestination dest = {},
+                            const GuiAction& action = {},
+                            QWidget* parent = nullptr);
 
   private slots:
     void fillCmdArgumentsParser(QCommandLineParser& parser);

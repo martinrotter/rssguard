@@ -670,11 +670,11 @@ void Application::deleteTrayIcon() {
   }
 }
 
-void Application::showGuiMessage(Notification::Event event,
-                                 const GuiMessage& msg,
-                                 const GuiMessageDestination& dest,
-                                 const GuiAction& action,
-                                 QWidget* parent) {
+void Application::showGuiMessageCore(Notification::Event event,
+                                     const GuiMessage& msg,
+                                     GuiMessageDestination dest,
+                                     const GuiAction& action,
+                                     QWidget* parent) {
   if (SystemTrayIcon::areNotificationsEnabled()) {
     auto notification = m_notifications->notificationForEvent(event);
 
@@ -712,6 +712,21 @@ void Application::showGuiMessage(Notification::Event event,
   else {
     qDebugNN << LOGSEC_CORE << "Silencing GUI message:" << QUOTE_W_SPACE_DOT(msg.m_message);
   }
+}
+
+void Application::showGuiMessage(Notification::Event event,
+                                 const GuiMessage& msg,
+                                 GuiMessageDestination dest,
+                                 const GuiAction& action,
+                                 QWidget* parent) {
+  QMetaObject::invokeMethod(this,
+                            "showGuiMessageCore",
+                            Qt::ConnectionType::QueuedConnection,
+                            Q_ARG(Notification::Event, event),
+                            Q_ARG(const GuiMessage&, msg),
+                            Q_ARG(GuiMessageDestination, dest),
+                            Q_ARG(const GuiAction&, action),
+                            Q_ARG(QWidget*, parent));
 }
 
 WebViewer* Application::createWebView() {
