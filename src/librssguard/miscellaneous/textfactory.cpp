@@ -43,6 +43,13 @@ QColor TextFactory::generateColorFromText(const QString& text) {
   return QColor::fromHsv(hue, 200, 240);
 }
 
+QColor TextFactory::generateRandomColor() {
+  int hue = QRandomGenerator::global()->generate() % 360;
+  auto clr = QColor::fromHsv(hue, 200, 240);
+
+  return clr;
+}
+
 int TextFactory::stringHeight(const QString& string, const QFontMetrics& metrics) {
   const int count_lines = string.split(QL1C('\n')).size();
 

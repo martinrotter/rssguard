@@ -186,10 +186,9 @@ QString MessageObject::createLabelId(const QString& title, const QString& hex_co
   Label* new_lbl = nullptr;
 
   try {
-    auto rnd_color = QRandomGenerator::global()->bounded(0xFFFFFF);
-    auto rnd_color_name = QSL("#%1").arg(QString::number(rnd_color, 16));
+    auto rnd_color = TextFactory::generateRandomColor();
 
-    new_lbl = new Label(title, hex_color.isEmpty() ? rnd_color_name : hex_color);
+    new_lbl = new Label(title, hex_color.isEmpty() ? rnd_color : hex_color);
     QSqlDatabase db = qApp->database()->driver()->threadSafeConnection(metaObject()->className());
 
     DatabaseQueries::createLabel(db, new_lbl, m_account->accountId());

@@ -3,6 +3,7 @@
 #include "gui/reusable/colortoolbutton.h"
 
 #include "definitions/definitions.h"
+#include "miscellaneous/textfactory.h"
 
 #include <QColorDialog>
 #include <QMouseEvent>
@@ -37,8 +38,7 @@ void ColorToolButton::setColor(const QColor& color) {
 }
 
 void ColorToolButton::setRandomColor() {
-  int hue = QRandomGenerator::global()->generate() % 360;
-  auto clr = QColor::fromHsv(hue, 200, 240);
+  auto clr = TextFactory::generateRandomColor();
 
   setColor(clr);
   emit colorChanged(clr);
