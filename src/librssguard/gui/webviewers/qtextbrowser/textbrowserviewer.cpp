@@ -302,6 +302,12 @@ void TextBrowserViewer::loadMessages(const QList<Message>& messages, RootItem* r
   // auto html_messages = qApp->skins()->generateHtmlOfArticles(messages, root);
 
   setHtml(html_messages.m_html, html_messages.m_baseUrl);
+
+  // TODO: pokračovat
+  QTextOption op;
+  op.setTextDirection(Qt::RightToLeft);
+  document()->setDefaultTextOption(op);
+
   emit loadingFinished(true);
 }
 
