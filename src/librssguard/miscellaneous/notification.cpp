@@ -148,7 +148,7 @@ QString Notification::nameForEvent(Notification::Event event) {
       return QObject::tr("Node.js - package(s) updated");
 
     case Notification::Event::NodePackageFailedToUpdate:
-      return QObject::tr("Node.js - package(s) failed to updated");
+      return QObject::tr("Node.js - package(s) failed to update");
 
     default:
       return QObject::tr("Unknown event");
