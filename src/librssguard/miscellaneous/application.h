@@ -65,7 +65,6 @@ Q_DECLARE_METATYPE(GuiMessage)
 
 struct GuiMessageDestination {
   public:
-    GuiMessageDestination() {}
     GuiMessageDestination(bool tray = true, bool message_box = false, bool status_bar = false)
       : m_tray(tray), m_messageBox(message_box), m_statusBar(status_bar) {}
 
@@ -78,7 +77,6 @@ Q_DECLARE_METATYPE(GuiMessageDestination)
 
 struct GuiAction {
   public:
-    GuiAction() {}
     GuiAction(QString title = {}, const std::function<void()>& action = nullptr)
       : m_title(std::move(title)), m_action(action) {}
 
