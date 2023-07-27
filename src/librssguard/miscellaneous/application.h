@@ -60,6 +60,8 @@ struct GuiMessage {
     QSystemTrayIcon::MessageIcon m_type;
 };
 
+Q_DECLARE_METATYPE(GuiMessage)
+
 struct GuiMessageDestination {
   public:
     GuiMessageDestination(bool tray = true, bool message_box = false, bool status_bar = false)
@@ -70,6 +72,8 @@ struct GuiMessageDestination {
     bool m_statusBar;
 };
 
+Q_DECLARE_METATYPE(GuiMessageDestination)
+
 struct GuiAction {
   public:
     GuiAction(QString title = {}, const std::function<void()>& action = nullptr)
@@ -78,6 +82,8 @@ struct GuiAction {
     QString m_title;
     std::function<void()> m_action;
 };
+
+Q_DECLARE_METATYPE(GuiAction)
 
 class RSSGUARD_DLLSPEC Application : public SingleApplication {
     Q_OBJECT

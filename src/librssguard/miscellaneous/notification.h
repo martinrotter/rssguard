@@ -75,4 +75,6 @@ class Notification {
     qreal m_volume;
 };
 
+Q_DECLARE_METATYPE(Notification::Event)
+
 #endif // NOTIFICATION_H
