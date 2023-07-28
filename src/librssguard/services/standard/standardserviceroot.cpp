@@ -256,27 +256,6 @@ QList<Message> StandardServiceRoot::obtainNewMessages(Feed* feed,
     mess.m_feedId = feed->customId();
   }
 
-  if (!feed->addAnyDatetimeArticles()) {
-    QDateTime dt_to_avoid;
-
-    if (feed->datetimeToAvoid().isValid()) {
-      dt_to_avoid = feed->datetimeToAvoid();
-    }
-    else if (qApp->settings()->value(GROUP(Messages), SETTING(Messages::AvoidOldArticles)).toBool()) {
-      dt_to_avoid = qApp->settings()->value(GROUP(Messages), SETTING(Messages::DateTimeToAvoidArticle)).toDateTime();
-    }
-    else {
-      return messages;
-    }
-
-    for (int i = 0; i < messages.size(); i++) {
-      if (messages.at(i).m_createdFromFeed && messages.at(i).m_created < dt_to_avoid) {
-        qDebugNN << LOGSEC_CORE << "Removing message" << QUOTE_W_SPACE(messages.at(i).m_title) << "for being too old.";
-        messages.removeAt(i--);
-      }
-    }
-  }
-
   return messages;
 }
 
