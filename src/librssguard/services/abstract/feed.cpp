@@ -20,9 +20,9 @@
 Feed::Feed(RootItem* parent)
   : RootItem(parent), m_source(QString()), m_status(Status::Normal), m_statusString(QString()),
     m_autoUpdateType(AutoUpdateType::DefaultAutoUpdate), m_autoUpdateInterval(DEFAULT_AUTO_UPDATE_INTERVAL),
-    m_lastUpdated(QDateTime::currentDateTimeUtc()), m_isSwitchedOff(false), m_isQuiet(false), m_isRtl(false),
-    m_addAnyDatetimeArticles(false), m_avoidOldArticles(false), m_openArticlesDirectly(false),
-    m_datetimeToAvoid(QDateTime::currentDateTime()), m_messageFilters(QList<QPointer<MessageFilter>>()) {
+    m_lastUpdated(QDateTime::currentDateTimeUtc()), m_isSwitchedOff(false), m_isQuiet(false),
+    m_openArticlesDirectly(false), m_isRtl(false), m_addAnyDatetimeArticles(false), m_datetimeToAvoid(QDateTime()),
+    m_messageFilters(QList<QPointer<MessageFilter>>()) {
   setKind(RootItem::Kind::Feed);
 }
 
@@ -277,7 +277,8 @@ QString Feed::getAutoUpdateStatusDescription() const {
           tr("uses global settings (%n minute(s) to next auto-fetch of articles)", nullptr, int(secs_to_next / 60.0));
       }
       else {
-        auto_update_string = tr("uses global settings, but global auto-fetching of articles is disabled");
+        auto_update_string = tr("uses global settings, but global auto-fetching "
+                                "of articles is disabled");
       }
 
       break;
@@ -287,7 +288,8 @@ QString Feed::getAutoUpdateStatusDescription() const {
       int secs_to_next = QDateTime::currentDateTimeUtc().secsTo(lastUpdated().addSecs(autoUpdateInterval()));
 
       //: Describes feed auto-update status.
-      auto_update_string = tr("uses specific settings (%n minute(s) to next auto-fetching of new articles)",
+      auto_update_string = tr("uses specific settings (%n minute(s) to next "
+                              "auto-fetching of new articles)",
                               nullptr,
                               int(secs_to_next / 60.0));
       break;

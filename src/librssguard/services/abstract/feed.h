@@ -111,8 +111,7 @@ class Feed : public RootItem {
     bool m_openArticlesDirectly;
     bool m_isRtl;
     bool m_addAnyDatetimeArticles;
-    bool m_avoidOldArticles;
-    bool m_avoidOldArticlesEnabled;
+
     QDateTime m_datetimeToAvoid;
     int m_totalCount{};
     int m_unreadCount{};
