@@ -20,8 +20,9 @@
 Feed::Feed(RootItem* parent)
   : RootItem(parent), m_source(QString()), m_status(Status::Normal), m_statusString(QString()),
     m_autoUpdateType(AutoUpdateType::DefaultAutoUpdate), m_autoUpdateInterval(DEFAULT_AUTO_UPDATE_INTERVAL),
-    m_lastUpdated(QDateTime::currentDateTimeUtc()), m_isSwitchedOff(false), m_isQuiet(false),
-    m_openArticlesDirectly(false), m_messageFilters(QList<QPointer<MessageFilter>>()) {
+    m_lastUpdated(QDateTime::currentDateTimeUtc()), m_isSwitchedOff(false), m_isQuiet(false), m_isRtl(false),
+    m_addAnyDatetimeArticles(false), m_avoidOldArticles(false), m_openArticlesDirectly(false),
+    m_datetimeToAvoid(QDateTime::currentDateTime()), m_messageFilters(QList<QPointer<MessageFilter>>()) {
   setKind(RootItem::Kind::Feed);
 }
 
@@ -43,6 +44,9 @@ Feed::Feed(const Feed& other) : RootItem(other) {
   setLastUpdated(other.lastUpdated());
   setMessageFilters(other.messageFilters());
   setOpenArticlesDirectly(other.openArticlesDirectly());
+  setAddAnyDatetimeArticles(other.addAnyDatetimeArticles());
+  setDatetimeToAvoid(other.datetimeToAvoid());
+  setIsRtl(other.isRtl());
   setIsSwitchedOff(other.isSwitchedOff());
   setIsQuiet(other.isQuiet());
 }
@@ -77,6 +81,9 @@ QVariant Feed::data(int column, int role) const {
         default:
           return QVariant();
       }
+
+    case TEXT_DIRECTION_ROLE:
+      return isRtl() ? Qt::LayoutDirection::RightToLeft : Qt::LayoutDirection::LayoutDirectionAuto;
 
     case Qt::ItemDataRole::ForegroundRole:
       switch (status()) {
@@ -187,6 +194,30 @@ bool Feed::openArticlesDirectly() const {
 
 void Feed::setOpenArticlesDirectly(bool opn) {
   m_openArticlesDirectly = opn;
+}
+
+bool Feed::isRtl() const {
+  return m_isRtl;
+}
+
+void Feed::setIsRtl(bool rtl) {
+  m_isRtl = rtl;
+}
+
+bool Feed::addAnyDatetimeArticles() const {
+  return m_addAnyDatetimeArticles;
+}
+
+void Feed::setAddAnyDatetimeArticles(bool add_any_articles) {
+  m_addAnyDatetimeArticles = add_any_articles;
+}
+
+QDateTime Feed::datetimeToAvoid() const {
+  return m_datetimeToAvoid;
+}
+
+void Feed::setDatetimeToAvoid(const QDateTime& dt) {
+  m_datetimeToAvoid = dt;
 }
 
 void Feed::appendMessageFilter(MessageFilter* filter) {

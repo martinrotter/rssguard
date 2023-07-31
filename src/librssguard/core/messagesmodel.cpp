@@ -294,6 +294,7 @@ void MessagesModel::setupHeaderData() {
     /*: Tooltip for custom ID of message.*/ tr("Custom ID") <<
     /*: Tooltip for custom hash string of message.*/ tr("Custom hash") <<
     /*: Tooltip for name of feed for message.*/ tr("Feed") <<
+    /*: Tooltip for indication whether article is RTL or not.*/ tr("RTL") <<
     /*: Tooltip for indication of presence of enclosures.*/ tr("Has enclosures") <<
     /*: Tooltip for indication of labels of message.*/ tr("Assigned labels") <<
     /*: Tooltip for indication of label IDs of message.*/ tr("Assigned label IDs");
@@ -305,8 +306,8 @@ void MessagesModel::setupHeaderData() {
                 << tr("Contents of the article.") << tr("List of attachments.") << tr("Score of the article.")
                 << tr("Account ID of the article.") << tr("Custom ID of the article.")
                 << tr("Custom hash of the article.") << tr("Name of feed of the article.")
-                << tr("Indication of enclosures presence within the article.") << tr("Labels assigned to the article.")
-                << tr("Label IDs assigned to the article.");
+                << tr("Layout direction of the article") << tr("Indication of enclosures presence within the article.")
+                << tr("Labels assigned to the article.") << tr("Label IDs assigned to the article.");
 }
 
 Qt::ItemFlags MessagesModel::flags(const QModelIndex& index) const {
@@ -406,6 +407,23 @@ QVariant MessagesModel::data(const QModelIndex& idx, int role) const {
       }
       else {
         return QVariant();
+      }
+    }
+
+    case TEXT_DIRECTION_ROLE: {
+      int index_column = idx.column();
+
+      if (index_column != MSG_DB_TITLE_INDEX && index_column != MSG_DB_FEED_TITLE_INDEX &&
+          index_column != MSG_DB_AUTHOR_INDEX) {
+        return Qt::LayoutDirection::LayoutDirectionAuto;
+      }
+      else {
+        return (m_cache->containsData(idx.row())
+                  ? m_cache->data(index(idx.row(), MSG_DB_FEED_IS_RTL_INDEX))
+                  : QSqlQueryModel::data(index(idx.row(), MSG_DB_FEED_IS_RTL_INDEX), Qt::ItemDataRole::EditRole))
+                     .toInt() == 0
+                 ? Qt::LayoutDirection::LayoutDirectionAuto
+                 : Qt::LayoutDirection::RightToLeft;
       }
     }
 

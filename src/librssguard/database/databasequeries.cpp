@@ -33,7 +33,8 @@ QMap<int, QString> DatabaseQueries::messageTableAttributes(bool only_msg_table, 
   field_names[MSG_DB_CUSTOM_ID_INDEX] = QSL("Messages.custom_id");
   field_names[MSG_DB_CUSTOM_HASH_INDEX] = QSL("Messages.custom_hash");
   field_names[MSG_DB_FEED_TITLE_INDEX] = only_msg_table ? QSL("Messages.feed") : QSL("Feeds.title");
-  field_names[MSG_DB_HAS_ENCLOSURES] = QSL("CASE WHEN length(Messages.enclosures) > 10 "
+  field_names[MSG_DB_FEED_IS_RTL_INDEX] = QSL("Feeds.is_rtl");
+  field_names[MSG_DB_HAS_ENCLOSURES] = QSL("CASE WHEN LENGTH(Messages.enclosures) > 10 "
                                            "THEN 'true' "
                                            "ELSE 'false' "
                                            "END AS has_enclosures");
@@ -2178,11 +2179,11 @@ void DatabaseQueries::createOverwriteFeed(const QSqlDatabase& db, Feed* feed, in
 
   q.prepare("UPDATE Feeds "
             "SET title = :title, ordr = :ordr, description = :description, date_created = :date_created, "
-            "    icon = :icon, category = :category, source = :source, update_type = :update_type, "
-            "    update_interval = :update_interval, is_off = :is_off, is_quiet = :is_quiet, open_articles = "
-            ":open_articles, "
-            "    account_id = :account_id, custom_id = :custom_id, custom_data = :custom_data "
-            "WHERE id = :id;");
+            " icon = :icon, category = :category, source = :source, update_type = :update_type,"
+            " update_interval = :update_interval, is_off = :is_off, is_quiet = :is_quiet, open_articles ="
+            " :open_articles, is_rtl = :is_rtl, add_any_datetime_articles = :add_any_datetime_articles,"
+            " datetime_to_avoid = :datetime_to_avoid, account_id"
+            " = :account_id, custom_id = :custom_id, custom_data = :custom_data WHERE id = :id;");
   q.bindValue(QSL(":title"), feed->title());
   q.bindValue(QSL(":description"), feed->description());
   q.bindValue(QSL(":date_created"), feed->creationDate().toMSecsSinceEpoch());
@@ -2198,6 +2199,10 @@ void DatabaseQueries::createOverwriteFeed(const QSqlDatabase& db, Feed* feed, in
   q.bindValue(QSL(":is_off"), feed->isSwitchedOff());
   q.bindValue(QSL(":is_quiet"), feed->isQuiet());
   q.bindValue(QSL(":open_articles"), feed->openArticlesDirectly());
+  q.bindValue(QSL(":is_rtl"), feed->isRtl());
+  q.bindValue(QSL(":add_any_datetime_articles"), feed->addAnyDatetimeArticles());
+  q.bindValue(QSL(":datetime_to_avoid"),
+              feed->datetimeToAvoid().isValid() ? feed->datetimeToAvoid().toMSecsSinceEpoch() : 0);
 
   auto custom_data = feed->customDatabaseData();
   QString serialized_custom_data = serializeCustomData(custom_data);

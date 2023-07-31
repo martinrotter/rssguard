@@ -80,6 +80,7 @@ class RSSGUARD_DLLSPEC Message {
     bool m_isImportant;
     bool m_isDeleted;
     double m_score;
+    bool m_isRtl;
     QList<Enclosure> m_enclosures;
 
     // List of assigned labels.

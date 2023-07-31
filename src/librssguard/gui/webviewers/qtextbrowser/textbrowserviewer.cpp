@@ -302,6 +302,22 @@ void TextBrowserViewer::loadMessages(const QList<Message>& messages, RootItem* r
   // auto html_messages = qApp->skins()->generateHtmlOfArticles(messages, root);
 
   setHtml(html_messages.m_html, html_messages.m_baseUrl);
+
+  /*
+  auto* feed = root != nullptr
+                 ? root->getParentServiceRoot()
+                     ->getItemFromSubTree([messages](const RootItem* it) {
+                       return it->kind() == RootItem::Kind::Feed && it->customId() == messages.at(0).m_feedId;
+                     })
+                     ->toFeed()
+                 : nullptr;
+  bool is_rtl_feed = feed != nullptr && feed->isRtl();
+  */
+
+  QTextOption op;
+  op.setTextDirection(messages.at(0).m_isRtl ? Qt::LayoutDirection::RightToLeft : Qt::LayoutDirection::LeftToRight);
+  document()->setDefaultTextOption(op);
+
   emit loadingFinished(true);
 }
 
@@ -544,16 +560,6 @@ void TextBrowserViewer::setHtml(const QString& html, const QUrl& base_url) {
   }
 
   setVerticalScrollBarPosition(0.0);
-
-  // TODO: implement RTL for viewers somehow?
-  /*
-  auto to = document()->defaultTextOption();
-
-  to.setTextDirection(Qt::LayoutDirection::RightToLeft);
-  to.setAlignment(Qt::AlignmentFlag::AlignRight);
-
-  document()->setDefaultTextOption(to);
-  */
 }
 
 void TextBrowserViewer::setReadabledHtml(const QString& html, const QUrl& base_url) {

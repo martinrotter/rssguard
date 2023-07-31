@@ -238,6 +238,28 @@ void FeedDownloader::updateOneFeed(ServiceRoot* acc,
       msg.sanitize(feed, fix_future_datetimes);
     }
 
+    if (!feed->addAnyDatetimeArticles()) {
+      QDateTime dt_to_avoid;
+
+      if (feed->datetimeToAvoid().isValid()) {
+        dt_to_avoid = feed->datetimeToAvoid();
+      }
+      else if (qApp->settings()->value(GROUP(Messages), SETTING(Messages::AvoidOldArticles)).toBool()) {
+        dt_to_avoid = qApp->settings()->value(GROUP(Messages), SETTING(Messages::DateTimeToAvoidArticle)).toDateTime();
+      }
+
+      if (dt_to_avoid.isValid()) {
+        for (int i = 0; i < msgs.size(); i++) {
+          const auto& mss = msgs.at(i);
+
+          if (mss.m_createdFromFeed && mss.m_created < dt_to_avoid) {
+            qDebugNN << LOGSEC_CORE << "Removing message" << QUOTE_W_SPACE(mss.m_title) << "for being too old.";
+            msgs.removeAt(i--);
+          }
+        }
+      }
+    }
+
     if (!feed->messageFilters().isEmpty()) {
       tmr.restart();
 

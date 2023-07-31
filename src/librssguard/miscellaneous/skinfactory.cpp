@@ -235,6 +235,17 @@ PreparedHtml SkinFactory::generateHtmlOfArticles(const QList<Message>& messages,
   const auto forced_img_size =
     qApp->settings()->value(GROUP(Messages), SETTING(Messages::MessageHeadImageHeight)).toInt();
 
+  auto* feed = root != nullptr
+                 ? root->getParentServiceRoot()
+                     ->getItemFromSubTree([messages](const RootItem* it) {
+                       return it->kind() == RootItem::Kind::Feed && it->customId() == messages.at(0).m_feedId;
+                     })
+                     ->toFeed()
+                 : nullptr;
+  /*
+  bool is_rtl_feed = feed != nullptr && feed->isRtl();
+  */
+
   for (const Message& message : messages) {
     QString enclosures;
     QString enclosure_images;
@@ -278,17 +289,13 @@ PreparedHtml SkinFactory::generateHtmlOfArticles(const QList<Message>& messages,
                                                      msg_date,
                                                      enclosures,
                                                      enclosure_images,
-                                                     QString::number(message.m_id)));
+                                                     QString::number(message.m_id),
+                                                     message.m_isRtl ? QSL("rtl") : QSL("ltr")));
   }
 
   QString msg_contents =
     skin.m_layoutMarkupWrapper.arg(messages.size() == 1 ? messages.at(0).m_title : tr("Newspaper view"),
                                    messages_layout);
-  auto* feed = root->getParentServiceRoot()
-                 ->getItemFromSubTree([messages](const RootItem* it) {
-                   return it->kind() == RootItem::Kind::Feed && it->customId() == messages.at(0).m_feedId;
-                 })
-                 ->toFeed();
   QString base_url;
 
   if (feed != nullptr) {

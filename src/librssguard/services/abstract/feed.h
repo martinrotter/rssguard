@@ -82,6 +82,16 @@ class Feed : public RootItem {
 
     QDateTime lastUpdated() const;
     void setLastUpdated(const QDateTime& last_updated);
+
+    bool isRtl() const;
+    void setIsRtl(bool rtl);
+
+    bool addAnyDatetimeArticles() const;
+    void setAddAnyDatetimeArticles(bool add_any_articles);
+
+    QDateTime datetimeToAvoid() const;
+    void setDatetimeToAvoid(const QDateTime& dt);
+
   public slots:
     virtual void updateCounts(bool including_total_count);
 
@@ -99,6 +109,11 @@ class Feed : public RootItem {
     bool m_isSwitchedOff;
     bool m_isQuiet;
     bool m_openArticlesDirectly;
+    bool m_isRtl;
+    bool m_addAnyDatetimeArticles;
+    bool m_avoidOldArticles;
+    bool m_avoidOldArticlesEnabled;
+    QDateTime m_datetimeToAvoid;
     int m_totalCount{};
     int m_unreadCount{};
     QList<QPointer<MessageFilter>> m_messageFilters;

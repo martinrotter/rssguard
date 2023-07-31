@@ -16,6 +16,12 @@ void StyledItemDelegateWithoutFocus::paint(QPainter* painter,
     item_option.state = item_option.state ^ QStyle::StateFlag::State_HasFocus;
   }
 
+  bool rtl = index.data(TEXT_DIRECTION_ROLE).value<Qt::LayoutDirection>() == Qt::LayoutDirection::RightToLeft;
+
+  if (rtl) {
+    item_option.direction = Qt::LayoutDirection::RightToLeft;
+  }
+
   if ((item_option.state & QStyle::StateFlag::State_Selected) == QStyle::StateFlag::State_Selected &&
       index.data(Qt::ItemDataRole::ForegroundRole).isValid()) {
     item_option.palette.setColor(QPalette::ColorRole::HighlightedText,

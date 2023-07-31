@@ -322,9 +322,11 @@ bool FeedsProxyModel::lessThan(const QModelIndex& left, const QModelIndex& right
 bool FeedsProxyModel::filterAcceptsRow(int source_row, const QModelIndex& source_parent) const {
   bool should_show = filterAcceptsRowInternal(source_row, source_parent);
 
+  /*
   qDebugNN << LOGSEC_CORE << "Filter accepts row"
            << QUOTE_W_SPACE(m_sourceModel->itemForIndex(m_sourceModel->index(source_row, 0, source_parent))->title())
            << "and filter result is:" << QUOTE_W_SPACE_DOT(should_show);
+  */
 
   /*
      if (should_show && (!filterRegularExpression().pattern().isEmpty() ||
