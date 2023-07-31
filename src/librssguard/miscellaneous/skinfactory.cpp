@@ -238,7 +238,9 @@ PreparedHtml SkinFactory::generateHtmlOfArticles(const QList<Message>& messages,
                      })
                      ->toFeed()
                  : nullptr;
+  /*
   bool is_rtl_feed = feed != nullptr && feed->isRtl();
+  */
 
   for (const Message& message : messages) {
     QString enclosures;
@@ -284,7 +286,7 @@ PreparedHtml SkinFactory::generateHtmlOfArticles(const QList<Message>& messages,
                                                      enclosures,
                                                      enclosure_images,
                                                      QString::number(message.m_id),
-                                                     is_rtl_feed ? QSL("rtl") : QSL("ltr")));
+                                                     message.m_isRtl ? QSL("rtl") : QSL("ltr")));
   }
 
   QString msg_contents =

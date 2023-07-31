@@ -516,6 +516,7 @@ void MessagesView::loadItem(RootItem* item) {
   sort(col, ord, false, true, false, true);
   m_sourceModel->loadMessages(item);
 
+  /*
   if (item->kind() == RootItem::Kind::Feed) {
     if (item->toFeed()->isRtl()) {
       setLayoutDirection(Qt::LayoutDirection::RightToLeft);
@@ -527,6 +528,7 @@ void MessagesView::loadItem(RootItem* item) {
   else {
     setLayoutDirection(Qt::LayoutDirection::LeftToRight);
   }
+  */
 
   // Messages are loaded, make sure that previously
   // active message is not shown in browser.
@@ -838,6 +840,7 @@ void MessagesView::adjustColumns() {
     hideColumn(MSG_DB_CUSTOM_HASH_INDEX);
     hideColumn(MSG_DB_FEED_CUSTOM_ID_INDEX);
     hideColumn(MSG_DB_FEED_TITLE_INDEX);
+    hideColumn(MSG_DB_FEED_IS_RTL_INDEX);
     hideColumn(MSG_DB_HAS_ENCLOSURES);
     hideColumn(MSG_DB_LABELS);
 

@@ -49,8 +49,6 @@ void EmailPreviewer::clear() {
 }
 
 void EmailPreviewer::loadMessage(const Message& msg, RootItem* selected_item) {
-  Q_UNUSED(selected_item)
-
   m_message = msg;
   m_webView->loadMessages({msg}, selected_item);
 

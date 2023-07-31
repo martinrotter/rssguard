@@ -303,10 +303,19 @@ void TextBrowserViewer::loadMessages(const QList<Message>& messages, RootItem* r
 
   setHtml(html_messages.m_html, html_messages.m_baseUrl);
 
-  bool is_rtl_feed = root != nullptr && root->kind() == RootItem::Kind::Feed && qobject_cast<Feed*>(root)->isRtl();
+  /*
+  auto* feed = root != nullptr
+                 ? root->getParentServiceRoot()
+                     ->getItemFromSubTree([messages](const RootItem* it) {
+                       return it->kind() == RootItem::Kind::Feed && it->customId() == messages.at(0).m_feedId;
+                     })
+                     ->toFeed()
+                 : nullptr;
+  bool is_rtl_feed = feed != nullptr && feed->isRtl();
+  */
 
   QTextOption op;
-  op.setTextDirection(is_rtl_feed ? Qt::LayoutDirection::RightToLeft : Qt::LayoutDirection::LeftToRight);
+  op.setTextDirection(messages.at(0).m_isRtl ? Qt::LayoutDirection::RightToLeft : Qt::LayoutDirection::LeftToRight);
   document()->setDefaultTextOption(op);
 
   emit loadingFinished(true);

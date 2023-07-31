@@ -68,7 +68,7 @@ Message::Message() {
   m_categories = QList<MessageCategory>();
   m_accountId = m_id = 0;
   m_score = 0.0;
-  m_isRead = m_isImportant = m_isDeleted = false;
+  m_isRead = m_isImportant = m_isDeleted = m_isRtl = false;
   m_assignedLabels = QList<Label*>();
   m_assignedLabelsByFilter = QList<Label*>();
   m_deassignedLabelsByFilter = QList<Label*>();
@@ -140,6 +140,7 @@ Message Message::fromSqlRecord(const QSqlRecord& record, bool* result) {
   message.m_contents = record.value(MSG_DB_CONTENTS_INDEX).toString();
   message.m_enclosures = Enclosures::decodeEnclosuresFromString(record.value(MSG_DB_ENCLOSURES_INDEX).toString());
   message.m_score = record.value(MSG_DB_SCORE_INDEX).toDouble();
+  message.m_isRtl = record.value(MSG_DB_FEED_IS_RTL_INDEX).toBool();
   message.m_accountId = record.value(MSG_DB_ACCOUNT_ID_INDEX).toInt();
   message.m_customId = record.value(MSG_DB_CUSTOM_ID_INDEX).toString();
   message.m_customHash = record.value(MSG_DB_CUSTOM_HASH_INDEX).toString();
@@ -179,7 +180,7 @@ QString Message::generateRawAtomContents(const Message& msg) {
 
 QDataStream& operator<<(QDataStream& out, const Message& my_obj) {
   out << my_obj.m_accountId << my_obj.m_customHash << my_obj.m_customId << my_obj.m_feedId << my_obj.m_id
-      << my_obj.m_isImportant << my_obj.m_isRead << my_obj.m_isDeleted << my_obj.m_score;
+      << my_obj.m_isImportant << my_obj.m_isRead << my_obj.m_isDeleted << my_obj.m_score << my_obj.m_isRtl;
 
   return out;
 }
@@ -193,9 +194,11 @@ QDataStream& operator>>(QDataStream& in, Message& my_obj) {
   bool is_important;
   bool is_read;
   bool is_deleted;
+  bool is_rtl;
   double score;
 
-  in >> account_id >> custom_hash >> custom_id >> feed_id >> id >> is_important >> is_read >> is_deleted >> score;
+  in >> account_id >> custom_hash >> custom_id >> feed_id >> id >> is_important >> is_read >> is_deleted >> score >>
+    is_rtl;
 
   my_obj.m_accountId = account_id;
   my_obj.m_customHash = custom_hash;
@@ -206,6 +209,7 @@ QDataStream& operator>>(QDataStream& in, Message& my_obj) {
   my_obj.m_isRead = is_read;
   my_obj.m_isDeleted = is_deleted;
   my_obj.m_score = score;
+  my_obj.m_isRtl = is_rtl;
 
   return in;
 }
