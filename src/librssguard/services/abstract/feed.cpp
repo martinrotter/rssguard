@@ -82,6 +82,9 @@ QVariant Feed::data(int column, int role) const {
           return QVariant();
       }
 
+    case TEXT_DIRECTION_ROLE:
+      return isRtl() ? Qt::LayoutDirection::RightToLeft : Qt::LayoutDirection::LayoutDirectionAuto;
+
     case Qt::ItemDataRole::ForegroundRole:
       switch (status()) {
         case Status::NewMessages:

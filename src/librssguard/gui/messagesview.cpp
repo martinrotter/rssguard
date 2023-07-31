@@ -524,6 +524,9 @@ void MessagesView::loadItem(RootItem* item) {
       setLayoutDirection(Qt::LayoutDirection::LeftToRight);
     }
   }
+  else {
+    setLayoutDirection(Qt::LayoutDirection::LeftToRight);
+  }
 
   // Messages are loaded, make sure that previously
   // active message is not shown in browser.
