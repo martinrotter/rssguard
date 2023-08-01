@@ -20,7 +20,7 @@ Search::Search(const QString& name, const QString& filter, const QColor& color, 
   setFilter(filter);
 }
 
-Search::Search(RootItem* parent_item) : RootItem(parent_item) {
+Search::Search(RootItem* parent_item) : RootItem(parent_item), m_totalCount(-1), m_unreadCount(-1) {
   setKind(RootItem::Kind::Probe);
 }
 

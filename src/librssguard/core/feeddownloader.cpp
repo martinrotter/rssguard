@@ -241,7 +241,7 @@ void FeedDownloader::updateOneFeed(ServiceRoot* acc,
     if (!feed->addAnyDatetimeArticles()) {
       QDateTime dt_to_avoid;
 
-      if (feed->datetimeToAvoid().isValid()) {
+      if (feed->datetimeToAvoid().toMSecsSinceEpoch() > 0) {
         dt_to_avoid = feed->datetimeToAvoid();
       }
       else if (qApp->settings()->value(GROUP(Messages), SETTING(Messages::AvoidOldArticles)).toBool()) {

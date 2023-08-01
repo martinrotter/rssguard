@@ -21,8 +21,8 @@ Feed::Feed(RootItem* parent)
   : RootItem(parent), m_source(QString()), m_status(Status::Normal), m_statusString(QString()),
     m_autoUpdateType(AutoUpdateType::DefaultAutoUpdate), m_autoUpdateInterval(DEFAULT_AUTO_UPDATE_INTERVAL),
     m_lastUpdated(QDateTime::currentDateTimeUtc()), m_isSwitchedOff(false), m_isQuiet(false),
-    m_openArticlesDirectly(false), m_isRtl(false), m_addAnyDatetimeArticles(false), m_datetimeToAvoid(QDateTime()),
-    m_messageFilters(QList<QPointer<MessageFilter>>()) {
+    m_openArticlesDirectly(false), m_isRtl(false), m_addAnyDatetimeArticles(false),
+    m_datetimeToAvoid(TextFactory::parseDateTime(0)), m_messageFilters(QList<QPointer<MessageFilter>>()) {
   setKind(RootItem::Kind::Feed);
 }
 

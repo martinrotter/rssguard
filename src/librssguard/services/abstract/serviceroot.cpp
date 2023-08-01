@@ -439,7 +439,10 @@ void ServiceRoot::restoreCustomFeedsData(const QMap<QString, QVariantMap>& data,
       feed->setOpenArticlesDirectly(feed_custom_data.value(QSL("open_articles_directly")).toBool());
       feed->setIsRtl(feed_custom_data.value(QSL("is_rtl")).toBool());
       feed->setAddAnyDatetimeArticles(feed_custom_data.value(QSL("add_any_datetime_articles")).toBool());
-      feed->setDatetimeToAvoid(feed_custom_data.value(QSL("datetime_to_avoid")).toDateTime());
+      feed->setDatetimeToAvoid(TextFactory::parseDateTime(feed_custom_data.value(QSL("datetime_to_avoid"))
+                                                            .value<qint64>()));
+
+      // qDebugNN << feed->datetimeToAvoid().toString();
     }
   }
 }

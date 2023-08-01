@@ -52,7 +52,7 @@ void FormFeedDetails::apply() {
   m_feed->setIsRtl(m_ui->m_cbFeedRTL->isChecked());
   m_feed->setAddAnyDatetimeArticles(m_ui->m_cbAddAnyDateArticles->isChecked());
   m_feed->setDatetimeToAvoid(m_ui->m_gbAvoidOldArticles->isChecked() ? m_ui->m_dtDateTimeToAvoid->dateTime()
-                                                                     : QDateTime());
+                                                                     : TextFactory::parseDateTime(0));
   m_feed->setIsSwitchedOff(m_ui->m_cbDisableFeed->isChecked());
   m_feed->setIsQuiet(m_ui->m_cbSuppressFeed->isChecked());
 
@@ -107,7 +107,7 @@ void FormFeedDetails::loadFeedData() {
   m_ui->m_cbOpenArticlesAutomatically->setChecked(m_feed->openArticlesDirectly());
   m_ui->m_cbFeedRTL->setChecked(m_feed->isRtl());
   m_ui->m_cbAddAnyDateArticles->setChecked(m_feed->addAnyDatetimeArticles());
-  m_ui->m_gbAvoidOldArticles->setChecked(m_feed->datetimeToAvoid().isValid());
+  m_ui->m_gbAvoidOldArticles->setChecked(m_feed->datetimeToAvoid().toMSecsSinceEpoch() > 0);
   m_ui->m_dtDateTimeToAvoid->setDateTime(m_feed->datetimeToAvoid());
   m_ui->m_cbDisableFeed->setChecked(m_feed->isSwitchedOff());
   m_ui->m_cbSuppressFeed->setChecked(m_feed->isQuiet());
