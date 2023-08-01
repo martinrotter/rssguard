@@ -715,7 +715,11 @@ Active message filters: %2
 Status: %3
 Source: &lt;a href=&quot;%4&quot;&gt;%4&lt;/a&gt;
 Item ID: %5</source>
-        <translation type="unfinished"/>
+        <translation>Status da atualização automática: %1
+Filtros de mensagem ativos: %2
+Status: %3
+Fonte: &lt;a href=&quot;%4&quot;&gt;%4&lt;/a&gt;
+ID do item: %5</translation>
     </message>
 </context>
 <context>
@@ -2349,27 +2353,27 @@ ou esta função ainda não foi implementada.</translation>
     <message>
         <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="917"/>
         <source>Scroll &amp;up browser</source>
-        <translation type="unfinished"/>
+        <translation>Rolar para &amp;cima no navegador</translation>
     </message>
     <message>
         <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="922"/>
         <source>Scroll &amp;down browser</source>
-        <translation type="unfinished"/>
+        <translation>Rolar para &amp;baixo no navegador</translation>
     </message>
     <message>
         <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="927"/>
         <source>Rearrange &amp;subcategories alphabetically</source>
-        <translation type="unfinished"/>
+        <translation>Reorganizar &amp;subcategorias em ordem alfabética</translation>
     </message>
     <message>
         <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="932"/>
         <source>Rearrange &amp;feeds alphabetically</source>
-        <translation type="unfinished"/>
+        <translation>Reorganizar &amp;feeds em ordem alfabética</translation>
     </message>
     <message>
         <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="937"/>
         <source>Cleanup web cac&amp;he</source>
-        <translation type="unfinished"/>
+        <translation>Limpar cac&amp;he da web</translation>
     </message>
     <message>
         <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="750"/>
@@ -2947,7 +2951,7 @@ Você precisa reiniciar manualmente.</translation>
     <message>
         <location filename="../src/librssguard/services/standard/gui/formstandardimportexport.ui" line="64"/>
         <source>Do not fetch titles</source>
-        <translation type="unfinished"/>
+        <translation>Não buscar títulos</translation>
     </message>
     <message>
         <location filename="../src/librssguard/services/standard/gui/formstandardimportexport.ui" line="71"/>
@@ -3791,154 +3795,154 @@ Expiração dos tokens de login: %2</translation>
     <message>
         <location filename="../src/librssguard/gui/richtexteditor/mrichtextedit.ui" line="56"/>
         <source>Paragraph formatting</source>
-        <translation type="unfinished"/>
+        <translation>Formatação do parágrafo</translation>
     </message>
     <message>
         <location filename="../src/librssguard/gui/richtexteditor/mrichtextedit.ui" line="79"/>
         <source>Undo (CTRL+Z)</source>
-        <translation type="unfinished"/>
+        <translation>Desfazer (CTRL+Z)</translation>
     </message>
     <message>
         <location filename="../src/librssguard/gui/richtexteditor/mrichtextedit.ui" line="82"/>
         <source>Undo</source>
-        <translation type="unfinished"/>
+        <translation>Desfazer</translation>
     </message>
     <message>
         <location filename="../src/librssguard/gui/richtexteditor/mrichtextedit.ui" line="101"/>
         <location filename="../src/librssguard/gui/richtexteditor/mrichtextedit.ui" line="104"/>
         <source>Redo</source>
-        <translation type="unfinished"/>
+        <translation>Refazer</translation>
     </message>
     <message>
         <location filename="../src/librssguard/gui/richtexteditor/mrichtextedit.ui" line="120"/>
         <source>Cut (CTRL+X)</source>
-        <translation type="unfinished"/>
+        <translation>Recortar (CTRL+X)</translation>
     </message>
     <message>
         <location filename="../src/librssguard/gui/richtexteditor/mrichtextedit.ui" line="123"/>
         <source>Cut</source>
-        <translation type="unfinished"/>
+        <translation>Recortar</translation>
     </message>
     <message>
         <location filename="../src/librssguard/gui/richtexteditor/mrichtextedit.ui" line="139"/>
         <source>Copy (CTRL+C)</source>
-        <translation type="unfinished"/>
+        <translation>Copiar (CTRL+C)</translation>
     </message>
     <message>
         <location filename="../src/librssguard/gui/richtexteditor/mrichtextedit.ui" line="142"/>
         <source>Copy</source>
-        <translation type="unfinished"/>
+        <translation>Copiar</translation>
     </message>
     <message>
         <location filename="../src/librssguard/gui/richtexteditor/mrichtextedit.ui" line="158"/>
         <source>Paste (CTRL+V)</source>
-        <translation type="unfinished"/>
+        <translation>Colar (CTRL+V)</translation>
     </message>
     <message>
         <location filename="../src/librssguard/gui/richtexteditor/mrichtextedit.ui" line="161"/>
         <source>Paste</source>
-        <translation type="unfinished"/>
+        <translation>Colar</translation>
     </message>
     <message>
         <location filename="../src/librssguard/gui/richtexteditor/mrichtextedit.ui" line="184"/>
         <source>Link (CTRL+L)</source>
-        <translation type="unfinished"/>
+        <translation>Vincular (CTRL+L)</translation>
     </message>
     <message>
         <location filename="../src/librssguard/gui/richtexteditor/mrichtextedit.ui" line="187"/>
         <source>Link</source>
-        <translation type="unfinished"/>
+        <translation>Vincular</translation>
     </message>
     <message>
         <location filename="../src/librssguard/gui/richtexteditor/mrichtextedit.ui" line="216"/>
         <source>Bold</source>
-        <translation type="unfinished"/>
+        <translation>Negrito</translation>
     </message>
     <message>
         <location filename="../src/librssguard/gui/richtexteditor/mrichtextedit.ui" line="235"/>
         <source>Italic (CTRL+I)</source>
-        <translation type="unfinished"/>
+        <translation>Itálico (CTRL+I)</translation>
     </message>
     <message>
         <location filename="../src/librssguard/gui/richtexteditor/mrichtextedit.ui" line="238"/>
         <source>Italic</source>
-        <translation type="unfinished"/>
+        <translation>Itálico</translation>
     </message>
     <message>
         <location filename="../src/librssguard/gui/richtexteditor/mrichtextedit.ui" line="257"/>
         <source>Underline (CTRL+U)</source>
-        <translation type="unfinished"/>
+        <translation>Sublinhado (CTRL+U)</translation>
     </message>
     <message>
         <location filename="../src/librssguard/gui/richtexteditor/mrichtextedit.ui" line="260"/>
         <source>Underline</source>
-        <translation type="unfinished"/>
+        <translation>Sublinhado</translation>
     </message>
     <message>
         <location filename="../src/librssguard/gui/richtexteditor/mrichtextedit.ui" line="276"/>
         <source>Strike Out</source>
-        <translation type="unfinished"/>
+        <translation>Riscado</translation>
     </message>
     <message>
         <location filename="../src/librssguard/gui/richtexteditor/mrichtextedit.ui" line="296"/>
         <source>Bullet list (CTRL+-)</source>
-        <translation type="unfinished"/>
+        <translation>Lista de marcadores (CTRL+-)</translation>
     </message>
     <message>
         <location filename="../src/librssguard/gui/richtexteditor/mrichtextedit.ui" line="299"/>
         <source>Bullet list</source>
-        <translation type="unfinished"/>
+        <translation>Lista de marcadores</translation>
     </message>
     <message>
         <location filename="../src/librssguard/gui/richtexteditor/mrichtextedit.ui" line="318"/>
         <source>Ordered list (CTRL+=)</source>
-        <translation type="unfinished"/>
+        <translation>Lista ordenada (CTRL+=)</translation>
     </message>
     <message>
         <location filename="../src/librssguard/gui/richtexteditor/mrichtextedit.ui" line="321"/>
         <source>Ordered list</source>
-        <translation type="unfinished"/>
+        <translation>Lista ordenada</translation>
     </message>
     <message>
         <location filename="../src/librssguard/gui/richtexteditor/mrichtextedit.ui" line="340"/>
         <source>Decrease indentation (CTRL+,)</source>
-        <translation type="unfinished"/>
+        <translation>Diminuir recuo (CTRL+,)</translation>
     </message>
     <message>
         <location filename="../src/librssguard/gui/richtexteditor/mrichtextedit.ui" line="343"/>
         <source>Decrease indentation</source>
-        <translation type="unfinished"/>
+        <translation>Diminuir recuo</translation>
     </message>
     <message>
         <location filename="../src/librssguard/gui/richtexteditor/mrichtextedit.ui" line="359"/>
         <source>Increase indentation (CTRL+.)</source>
-        <translation type="unfinished"/>
+        <translation>Aumentar recuo (CTRL+.)</translation>
     </message>
     <message>
         <location filename="../src/librssguard/gui/richtexteditor/mrichtextedit.ui" line="362"/>
         <source>Increase indentation</source>
-        <translation type="unfinished"/>
+        <translation>Aumentar recuo</translation>
     </message>
     <message>
         <location filename="../src/librssguard/gui/richtexteditor/mrichtextedit.ui" line="397"/>
         <source>Text foreground color</source>
-        <translation type="unfinished"/>
+        <translation>Cor do primeiro plano do texto</translation>
     </message>
     <message>
         <location filename="../src/librssguard/gui/richtexteditor/mrichtextedit.ui" line="400"/>
         <location filename="../src/librssguard/gui/richtexteditor/mrichtextedit.ui" line="431"/>
         <source>.</source>
-        <translation type="unfinished"/>
+        <translation>.</translation>
     </message>
     <message>
         <location filename="../src/librssguard/gui/richtexteditor/mrichtextedit.ui" line="428"/>
         <source>Text background color</source>
-        <translation type="unfinished"/>
+        <translation>Cor de fundo do texto</translation>
     </message>
     <message>
         <location filename="../src/librssguard/gui/richtexteditor/mrichtextedit.ui" line="447"/>
         <source>Font size</source>
-        <translation type="unfinished"/>
+        <translation>Tamanho da fonte</translation>
     </message>
     <message>
         <location filename="../src/librssguard/gui/richtexteditor/mrichtextedit.ui" line="484"/>
@@ -3948,77 +3952,77 @@ Expiração dos tokens de login: %2</translation>
     <message>
         <location filename="../src/librssguard/gui/richtexteditor/mrichtextedit.cpp" line="67"/>
         <source>Standard</source>
-        <translation type="unfinished"/>
+        <translation>Padrão</translation>
     </message>
     <message>
         <location filename="../src/librssguard/gui/richtexteditor/mrichtextedit.cpp" line="67"/>
         <source>Heading 1</source>
-        <translation type="unfinished"/>
+        <translation>Cabeçalho 1</translation>
     </message>
     <message>
         <location filename="../src/librssguard/gui/richtexteditor/mrichtextedit.cpp" line="67"/>
         <source>Heading 2</source>
-        <translation type="unfinished"/>
+        <translation>Cabeçalho 2</translation>
     </message>
     <message>
         <location filename="../src/librssguard/gui/richtexteditor/mrichtextedit.cpp" line="67"/>
         <source>Heading 3</source>
-        <translation type="unfinished"/>
+        <translation>Cabeçalho 3</translation>
     </message>
     <message>
         <location filename="../src/librssguard/gui/richtexteditor/mrichtextedit.cpp" line="67"/>
         <source>Heading 4</source>
-        <translation type="unfinished"/>
+        <translation>Cabeçalho 4</translation>
     </message>
     <message>
         <location filename="../src/librssguard/gui/richtexteditor/mrichtextedit.cpp" line="67"/>
         <source>Monospace</source>
-        <translation type="unfinished"/>
+        <translation>Monoespaçado</translation>
     </message>
     <message>
         <location filename="../src/librssguard/gui/richtexteditor/mrichtextedit.cpp" line="118"/>
         <source>Remove character formatting</source>
-        <translation type="unfinished"/>
+        <translation>Remover formatação de caracteres</translation>
     </message>
     <message>
         <location filename="../src/librssguard/gui/richtexteditor/mrichtextedit.cpp" line="123"/>
         <source>Remove all formatting</source>
-        <translation type="unfinished"/>
+        <translation>Remover todas as formatações</translation>
     </message>
     <message>
         <location filename="../src/librssguard/gui/richtexteditor/mrichtextedit.cpp" line="127"/>
         <source>Edit document source</source>
-        <translation type="unfinished"/>
+        <translation>Editar fonte do documento</translation>
     </message>
     <message>
         <location filename="../src/librssguard/gui/richtexteditor/mrichtextedit.cpp" line="132"/>
         <source>Clear all content</source>
-        <translation type="unfinished"/>
+        <translation>Limpar todo o conteúdo</translation>
     </message>
     <message>
         <location filename="../src/librssguard/gui/richtexteditor/mrichtextedit.cpp" line="196"/>
         <source>Document source</source>
-        <translation type="unfinished"/>
+        <translation>Fonte do documento</translation>
     </message>
     <message>
         <location filename="../src/librssguard/gui/richtexteditor/mrichtextedit.cpp" line="319"/>
         <source>Create a link</source>
-        <translation type="unfinished"/>
+        <translation>Criar um link</translation>
     </message>
     <message>
         <location filename="../src/librssguard/gui/richtexteditor/mrichtextedit.cpp" line="319"/>
         <source>Link URL:</source>
-        <translation type="unfinished"/>
+        <translation>URL do link:</translation>
     </message>
     <message>
         <location filename="../src/librssguard/gui/richtexteditor/mrichtextedit.cpp" line="637"/>
         <source>Select an image</source>
-        <translation type="unfinished"/>
+        <translation>Selecione uma imagem:</translation>
     </message>
     <message>
         <location filename="../src/librssguard/gui/richtexteditor/mrichtextedit.cpp" line="639"/>
         <source>JPEG (*.jpg);; GIF (*.gif);; PNG (*.png);; BMP (*.bmp);; All (*)</source>
-        <translation type="unfinished"/>
+        <translation>JPEG (*.jpg);; GIF (*.gif);; PNG (*.png);; BMP (*.bmp);; Todos (*)</translation>
     </message>
 </context>
 <context>
@@ -4294,17 +4298,17 @@ Expiração dos tokens de login: %2</translation>
     <message>
         <location filename="../src/librssguard/core/messagesmodel.cpp" line="119"/>
         <source>dot</source>
-        <translation type="unfinished"/>
+        <translation>ponto</translation>
     </message>
     <message>
         <location filename="../src/librssguard/core/messagesmodel.cpp" line="122"/>
         <source>envelope</source>
-        <translation type="unfinished"/>
+        <translation>envelope</translation>
     </message>
     <message>
         <location filename="../src/librssguard/core/messagesmodel.cpp" line="125"/>
         <source>feed icon</source>
-        <translation type="unfinished"/>
+        <translation>ícone do feed</translation>
     </message>
     <message>
         <location filename="../src/librssguard/core/messagesmodel.cpp" line="298"/>
@@ -4314,7 +4318,7 @@ Expiração dos tokens de login: %2</translation>
     <message>
         <location filename="../src/librssguard/core/messagesmodel.cpp" line="299"/>
         <source>Assigned label IDs</source>
-        <translation type="unfinished"/>
+        <translation>IDs de rótulos atribuídos</translation>
     </message>
     <message>
         <location filename="../src/librssguard/core/messagesmodel.cpp" line="301"/>
@@ -4409,7 +4413,7 @@ Expiração dos tokens de login: %2</translation>
     <message>
         <location filename="../src/librssguard/core/messagesmodel.cpp" line="309"/>
         <source>Label IDs assigned to the article.</source>
-        <translation type="unfinished"/>
+        <translation>IDs de rótulo atribuídos ao artigo.</translation>
     </message>
     <message numerus="yes">
         <location filename="../src/librssguard/core/messagesmodel.cpp" line="352"/>
@@ -6201,7 +6205,7 @@ Os autores deste aplicativo NÃO são responsáveis pela perda de dados.</transl
     <message>
         <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="121"/>
         <source>Support very fast auto-fetching intervals (under 10 seconds)</source>
-        <translation type="unfinished"/>
+        <translation>Suporta intervalos de busca automática muito rápidos (menos de 10 segundos)</translation>
     </message>
     <message>
         <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="129"/>
@@ -6276,7 +6280,7 @@ Os autores deste aplicativo NÃO são responsáveis pela perda de dados.</transl
     <message>
         <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="603"/>
         <source>Unread article icon type</source>
-        <translation type="unfinished"/>
+        <translation>Tipo de ícone de artigo não lido</translation>
     </message>
     <message>
         <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="297"/>
@@ -6296,7 +6300,7 @@ Os autores deste aplicativo NÃO são responsáveis pela perda de dados.</transl
     <message>
         <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="310"/>
         <source>Display attachments directly in article</source>
-        <translation type="unfinished"/>
+        <translation>Exibir anexos diretamente no artigo</translation>
     </message>
     <message>
         <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="319"/>
@@ -6306,7 +6310,7 @@ Os autores deste aplicativo NÃO são responsáveis pela perda de dados.</transl
     <message>
         <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="403"/>
         <source>Keep article viewer always visible</source>
-        <translation type="unfinished"/>
+        <translation>Manter visualizador de artigos sempre visível</translation>
     </message>
     <message>
         <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="411"/>
@@ -8028,12 +8032,12 @@ Servidor: %2
     <message>
         <location filename="../src/librssguard/network-web/webfactory.cpp" line="681"/>
         <source>Web cache is going to be cleared</source>
-        <translation type="unfinished"/>
+        <translation>O cache da web será limpo</translation>
     </message>
     <message>
         <location filename="../src/librssguard/network-web/webfactory.cpp" line="682"/>
         <source>Do you really want to clear web cache?</source>
-        <translation type="unfinished"/>
+        <translation>Você realmente deseja limpar o cache da web?</translation>
     </message>
     <message>
         <location filename="../src/librssguard/network-web/webfactory.cpp" line="120"/>

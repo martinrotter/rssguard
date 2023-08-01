@@ -226,12 +226,12 @@ version by clicking this popup notification.</source>
     <message>
         <location filename="../src/librssguard/services/abstract/gui/authenticationdetails.ui" line="23"/>
         <source>Credentials</source>
-        <translation type="unfinished"/>
+        <translation>憑證</translation>
     </message>
     <message>
         <location filename="../src/librssguard/services/abstract/gui/authenticationdetails.ui" line="64"/>
         <source>Authentication type</source>
-        <translation type="unfinished"/>
+        <translation>認證類型</translation>
     </message>
     <message>
         <location filename="../src/librssguard/services/abstract/gui/authenticationdetails.ui" line="35"/>
@@ -259,32 +259,32 @@ version by clicking this popup notification.</source>
     <message>
         <location filename="../src/librssguard/services/abstract/gui/authenticationdetails.cpp" line="15"/>
         <source>No authentication</source>
-        <translation type="unfinished"/>
+        <translation>無認證</translation>
     </message>
     <message>
         <location filename="../src/librssguard/services/abstract/gui/authenticationdetails.cpp" line="17"/>
         <source>HTTP Basic</source>
-        <translation type="unfinished"/>
+        <translation>HTTP 基本</translation>
     </message>
     <message>
         <location filename="../src/librssguard/services/abstract/gui/authenticationdetails.cpp" line="20"/>
         <source>Token</source>
-        <translation type="unfinished"/>
+        <translation>權杖</translation>
     </message>
     <message>
         <location filename="../src/librssguard/services/abstract/gui/authenticationdetails.cpp" line="51"/>
         <source>Username/token is ok or it is not needed.</source>
-        <translation type="unfinished"/>
+        <translation>使用者名稱/權杖無問題或不必要。</translation>
     </message>
     <message>
         <location filename="../src/librssguard/services/abstract/gui/authenticationdetails.cpp" line="52"/>
         <source>Username/token is empty.</source>
-        <translation type="unfinished"/>
+        <translation>缺使用者名稱/權杖。</translation>
     </message>
     <message>
         <location filename="../src/librssguard/services/abstract/gui/authenticationdetails.cpp" line="74"/>
         <source>Access token</source>
-        <translation type="unfinished"/>
+        <translation>存取之權杖</translation>
     </message>
     <message>
         <location filename="../src/librssguard/services/abstract/gui/authenticationdetails.cpp" line="61"/>
@@ -713,7 +713,11 @@ Active message filters: %2
 Status: %3
 Source: &lt;a href=&quot;%4&quot;&gt;%4&lt;/a&gt;
 Item ID: %5</source>
-        <translation type="unfinished"/>
+        <translation>自動更新之狀態: %1
+使用的訊息篩選規則: %2
+狀態: %3
+來源: &lt;a href=&quot;%4&quot;&gt;%4&lt;/a&gt;
+項目 ID: %5</translation>
     </message>
 </context>
 <context>
@@ -926,12 +930,12 @@ Item ID: %5</source>
     <message>
         <location filename="../src/librssguard/services/standard/standardfeedsimportexportmodel.cpp" line="279"/>
         <source>OPML document contains errors</source>
-        <translation type="unfinished"/>
+        <translation>OPML 文件有錯誤</translation>
     </message>
     <message>
         <location filename="../src/librssguard/services/standard/standardfeedsimportexportmodel.cpp" line="284"/>
         <source>this is likely not OPML document</source>
-        <translation type="unfinished"/>
+        <translation>這不像 OPML 文件</translation>
     </message>
     <message>
         <location filename="../src/librssguard/services/standard/standardfeedsimportexportmodel.cpp" line="362"/>
@@ -985,12 +989,12 @@ Item ID: %5</source>
     <message>
         <location filename="../src/librssguard/gui/toolbars/feedstoolbar.cpp" line="118"/>
         <source>Everywhere</source>
-        <translation type="unfinished"/>
+        <translation>到處</translation>
     </message>
     <message>
         <location filename="../src/librssguard/gui/toolbars/feedstoolbar.cpp" line="119"/>
         <source>Titles only</source>
-        <translation type="unfinished"/>
+        <translation>僅標題</translation>
     </message>
     <message>
         <location filename="../src/librssguard/gui/toolbars/feedstoolbar.cpp" line="123"/>
@@ -2337,37 +2341,37 @@ or this functionality is not implemented yet.</source>
     <message>
         <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="907"/>
         <source>Focus feeds search box</source>
-        <translation type="unfinished"/>
+        <translation>焦點到文源搜尋框</translation>
     </message>
     <message>
         <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="912"/>
         <source>Focus articles search box</source>
-        <translation type="unfinished"/>
+        <translation>焦點到文章搜尋框</translation>
     </message>
     <message>
         <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="917"/>
         <source>Scroll &amp;up browser</source>
-        <translation type="unfinished"/>
+        <translation>向上捲動瀏覽器頁面(&amp;U)</translation>
     </message>
     <message>
         <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="922"/>
         <source>Scroll &amp;down browser</source>
-        <translation type="unfinished"/>
+        <translation>向下捲動瀏覽器頁面(&amp;D)</translation>
     </message>
     <message>
         <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="927"/>
         <source>Rearrange &amp;subcategories alphabetically</source>
-        <translation type="unfinished"/>
+        <translation>依字母順序重整子分類(&amp;S)</translation>
     </message>
     <message>
         <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="932"/>
         <source>Rearrange &amp;feeds alphabetically</source>
-        <translation type="unfinished"/>
+        <translation>依字母順序重整文源(&amp;F)</translation>
     </message>
     <message>
         <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="937"/>
         <source>Cleanup web cac&amp;he</source>
-        <translation type="unfinished"/>
+        <translation>清除網頁快取(&amp;H)</translation>
     </message>
     <message>
         <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="750"/>
@@ -2879,12 +2883,13 @@ You have to restart manually.</source>
         <location filename="../src/librssguard/services/standard/gui/formstandardimportexport.cpp" line="135"/>
         <location filename="../src/librssguard/services/standard/gui/formstandardimportexport.cpp" line="136"/>
         <source>Some feeds were not loaded properly. Check log for more information.</source>
-        <translation type="unfinished"/>
+        <translation>有文源未適當載入。
+檢查 log，以得更多資訊。</translation>
     </message>
     <message>
         <location filename="../src/librssguard/services/standard/gui/formstandardimportexport.cpp" line="274"/>
         <source>cannot open file</source>
-        <translation type="unfinished"/>
+        <translation>無法開啟檔案</translation>
     </message>
     <message>
         <location filename="../src/librssguard/services/standard/gui/formstandardimportexport.cpp" line="329"/>
@@ -2943,7 +2948,7 @@ You have to restart manually.</source>
     <message>
         <location filename="../src/librssguard/services/standard/gui/formstandardimportexport.ui" line="64"/>
         <source>Do not fetch titles</source>
-        <translation type="unfinished"/>
+        <translation>不抓標題</translation>
     </message>
     <message>
         <location filename="../src/librssguard/services/standard/gui/formstandardimportexport.ui" line="71"/>
@@ -3730,7 +3735,7 @@ Login tokens expiration: %2</source>
         <location filename="../src/librssguard/gui/itemdetails.ui" line="20"/>
         <location filename="../src/librssguard/gui/itemdetails.ui" line="36"/>
         <source>TextLabel</source>
-        <translation type="unfinished"/>
+        <translation>文字標籤</translation>
     </message>
 </context>
 <context>
@@ -3787,154 +3792,154 @@ Login tokens expiration: %2</source>
     <message>
         <location filename="../src/librssguard/gui/richtexteditor/mrichtextedit.ui" line="56"/>
         <source>Paragraph formatting</source>
-        <translation type="unfinished"/>
+        <translation>段落格式化</translation>
     </message>
     <message>
         <location filename="../src/librssguard/gui/richtexteditor/mrichtextedit.ui" line="79"/>
         <source>Undo (CTRL+Z)</source>
-        <translation type="unfinished"/>
+        <translation>復原 (CTRL+Z)</translation>
     </message>
     <message>
         <location filename="../src/librssguard/gui/richtexteditor/mrichtextedit.ui" line="82"/>
         <source>Undo</source>
-        <translation type="unfinished"/>
+        <translation>復原</translation>
     </message>
     <message>
         <location filename="../src/librssguard/gui/richtexteditor/mrichtextedit.ui" line="101"/>
         <location filename="../src/librssguard/gui/richtexteditor/mrichtextedit.ui" line="104"/>
         <source>Redo</source>
-        <translation type="unfinished"/>
+        <translation>再一次</translation>
     </message>
     <message>
         <location filename="../src/librssguard/gui/richtexteditor/mrichtextedit.ui" line="120"/>
         <source>Cut (CTRL+X)</source>
-        <translation type="unfinished"/>
+        <translation>剪下 (CTRL+X)</translation>
     </message>
     <message>
         <location filename="../src/librssguard/gui/richtexteditor/mrichtextedit.ui" line="123"/>
         <source>Cut</source>
-        <translation type="unfinished"/>
+        <translation>剪下</translation>
     </message>
     <message>
         <location filename="../src/librssguard/gui/richtexteditor/mrichtextedit.ui" line="139"/>
         <source>Copy (CTRL+C)</source>
-        <translation type="unfinished"/>
+        <translation>複製 (CTRL+C)</translation>
     </message>
     <message>
         <location filename="../src/librssguard/gui/richtexteditor/mrichtextedit.ui" line="142"/>
         <source>Copy</source>
-        <translation type="unfinished"/>
+        <translation>複製</translation>
     </message>
     <message>
         <location filename="../src/librssguard/gui/richtexteditor/mrichtextedit.ui" line="158"/>
         <source>Paste (CTRL+V)</source>
-        <translation type="unfinished"/>
+        <translation>貼上 (CTRL+V)</translation>
     </message>
     <message>
         <location filename="../src/librssguard/gui/richtexteditor/mrichtextedit.ui" line="161"/>
         <source>Paste</source>
-        <translation type="unfinished"/>
+        <translation>貼上</translation>
     </message>
     <message>
         <location filename="../src/librssguard/gui/richtexteditor/mrichtextedit.ui" line="184"/>
         <source>Link (CTRL+L)</source>
-        <translation type="unfinished"/>
+        <translation>連結 (CTRL+L)</translation>
     </message>
     <message>
         <location filename="../src/librssguard/gui/richtexteditor/mrichtextedit.ui" line="187"/>
         <source>Link</source>
-        <translation type="unfinished"/>
+        <translation>連結</translation>
     </message>
     <message>
         <location filename="../src/librssguard/gui/richtexteditor/mrichtextedit.ui" line="216"/>
         <source>Bold</source>
-        <translation type="unfinished"/>
+        <translation>粗體</translation>
     </message>
     <message>
         <location filename="../src/librssguard/gui/richtexteditor/mrichtextedit.ui" line="235"/>
         <source>Italic (CTRL+I)</source>
-        <translation type="unfinished"/>
+        <translation>斜體 (CTRL+I)</translation>
     </message>
     <message>
         <location filename="../src/librssguard/gui/richtexteditor/mrichtextedit.ui" line="238"/>
         <source>Italic</source>
-        <translation type="unfinished"/>
+        <translation>斜體</translation>
     </message>
     <message>
         <location filename="../src/librssguard/gui/richtexteditor/mrichtextedit.ui" line="257"/>
         <source>Underline (CTRL+U)</source>
-        <translation type="unfinished"/>
+        <translation>底線 (CTRL+U)</translation>
     </message>
     <message>
         <location filename="../src/librssguard/gui/richtexteditor/mrichtextedit.ui" line="260"/>
         <source>Underline</source>
-        <translation type="unfinished"/>
+        <translation>底線</translation>
     </message>
     <message>
         <location filename="../src/librssguard/gui/richtexteditor/mrichtextedit.ui" line="276"/>
         <source>Strike Out</source>
-        <translation type="unfinished"/>
+        <translation>刪除線</translation>
     </message>
     <message>
         <location filename="../src/librssguard/gui/richtexteditor/mrichtextedit.ui" line="296"/>
         <source>Bullet list (CTRL+-)</source>
-        <translation type="unfinished"/>
+        <translation>清單項目號 (CTRL+-)</translation>
     </message>
     <message>
         <location filename="../src/librssguard/gui/richtexteditor/mrichtextedit.ui" line="299"/>
         <source>Bullet list</source>
-        <translation type="unfinished"/>
+        <translation>清單項目符號</translation>
     </message>
     <message>
         <location filename="../src/librssguard/gui/richtexteditor/mrichtextedit.ui" line="318"/>
         <source>Ordered list (CTRL+=)</source>
-        <translation type="unfinished"/>
+        <translation>清單項目序號 (CTRL+=)</translation>
     </message>
     <message>
         <location filename="../src/librssguard/gui/richtexteditor/mrichtextedit.ui" line="321"/>
         <source>Ordered list</source>
-        <translation type="unfinished"/>
+        <translation>清單項目序號</translation>
     </message>
     <message>
         <location filename="../src/librssguard/gui/richtexteditor/mrichtextedit.ui" line="340"/>
         <source>Decrease indentation (CTRL+,)</source>
-        <translation type="unfinished"/>
+        <translation>減少縮排 (CTRL+,)</translation>
     </message>
     <message>
         <location filename="../src/librssguard/gui/richtexteditor/mrichtextedit.ui" line="343"/>
         <source>Decrease indentation</source>
-        <translation type="unfinished"/>
+        <translation>減少縮排</translation>
     </message>
     <message>
         <location filename="../src/librssguard/gui/richtexteditor/mrichtextedit.ui" line="359"/>
         <source>Increase indentation (CTRL+.)</source>
-        <translation type="unfinished"/>
+        <translation>增加縮排 (CTRL+.)</translation>
     </message>
     <message>
         <location filename="../src/librssguard/gui/richtexteditor/mrichtextedit.ui" line="362"/>
         <source>Increase indentation</source>
-        <translation type="unfinished"/>
+        <translation>增加縮排</translation>
     </message>
     <message>
         <location filename="../src/librssguard/gui/richtexteditor/mrichtextedit.ui" line="397"/>
         <source>Text foreground color</source>
-        <translation type="unfinished"/>
+        <translation>文字色</translation>
     </message>
     <message>
         <location filename="../src/librssguard/gui/richtexteditor/mrichtextedit.ui" line="400"/>
         <location filename="../src/librssguard/gui/richtexteditor/mrichtextedit.ui" line="431"/>
         <source>.</source>
-        <translation type="unfinished"/>
+        <translation>.</translation>
     </message>
     <message>
         <location filename="../src/librssguard/gui/richtexteditor/mrichtextedit.ui" line="428"/>
         <source>Text background color</source>
-        <translation type="unfinished"/>
+        <translation>文字背景色</translation>
     </message>
     <message>
         <location filename="../src/librssguard/gui/richtexteditor/mrichtextedit.ui" line="447"/>
         <source>Font size</source>
-        <translation type="unfinished"/>
+        <translation>字型大小</translation>
     </message>
     <message>
         <location filename="../src/librssguard/gui/richtexteditor/mrichtextedit.ui" line="484"/>
@@ -3944,77 +3949,77 @@ Login tokens expiration: %2</source>
     <message>
         <location filename="../src/librssguard/gui/richtexteditor/mrichtextedit.cpp" line="67"/>
         <source>Standard</source>
-        <translation type="unfinished"/>
+        <translation>標準</translation>
     </message>
     <message>
         <location filename="../src/librssguard/gui/richtexteditor/mrichtextedit.cpp" line="67"/>
         <source>Heading 1</source>
-        <translation type="unfinished"/>
+        <translation>標題 1</translation>
     </message>
     <message>
         <location filename="../src/librssguard/gui/richtexteditor/mrichtextedit.cpp" line="67"/>
         <source>Heading 2</source>
-        <translation type="unfinished"/>
+        <translation>標題 2</translation>
     </message>
     <message>
         <location filename="../src/librssguard/gui/richtexteditor/mrichtextedit.cpp" line="67"/>
         <source>Heading 3</source>
-        <translation type="unfinished"/>
+        <translation>標題 3</translation>
     </message>
     <message>
         <location filename="../src/librssguard/gui/richtexteditor/mrichtextedit.cpp" line="67"/>
         <source>Heading 4</source>
-        <translation type="unfinished"/>
+        <translation>標題 4</translation>
     </message>
     <message>
         <location filename="../src/librssguard/gui/richtexteditor/mrichtextedit.cpp" line="67"/>
         <source>Monospace</source>
-        <translation type="unfinished"/>
+        <translation>等寬字型</translation>
     </message>
     <message>
         <location filename="../src/librssguard/gui/richtexteditor/mrichtextedit.cpp" line="118"/>
         <source>Remove character formatting</source>
-        <translation type="unfinished"/>
+        <translation>移除字元格式</translation>
     </message>
     <message>
         <location filename="../src/librssguard/gui/richtexteditor/mrichtextedit.cpp" line="123"/>
         <source>Remove all formatting</source>
-        <translation type="unfinished"/>
+        <translation>移除所有格式</translation>
     </message>
     <message>
         <location filename="../src/librssguard/gui/richtexteditor/mrichtextedit.cpp" line="127"/>
         <source>Edit document source</source>
-        <translation type="unfinished"/>
+        <translation>編輯文件來源</translation>
     </message>
     <message>
         <location filename="../src/librssguard/gui/richtexteditor/mrichtextedit.cpp" line="132"/>
         <source>Clear all content</source>
-        <translation type="unfinished"/>
+        <translation>清除所有內容</translation>
     </message>
     <message>
         <location filename="../src/librssguard/gui/richtexteditor/mrichtextedit.cpp" line="196"/>
         <source>Document source</source>
-        <translation type="unfinished"/>
+        <translation>文件來源</translation>
     </message>
     <message>
         <location filename="../src/librssguard/gui/richtexteditor/mrichtextedit.cpp" line="319"/>
         <source>Create a link</source>
-        <translation type="unfinished"/>
+        <translation>新增連結</translation>
     </message>
     <message>
         <location filename="../src/librssguard/gui/richtexteditor/mrichtextedit.cpp" line="319"/>
         <source>Link URL:</source>
-        <translation type="unfinished"/>
+        <translation>連結之 URL:</translation>
     </message>
     <message>
         <location filename="../src/librssguard/gui/richtexteditor/mrichtextedit.cpp" line="637"/>
         <source>Select an image</source>
-        <translation type="unfinished"/>
+        <translation>選擇一圖像</translation>
     </message>
     <message>
         <location filename="../src/librssguard/gui/richtexteditor/mrichtextedit.cpp" line="639"/>
         <source>JPEG (*.jpg);; GIF (*.gif);; PNG (*.png);; BMP (*.bmp);; All (*)</source>
-        <translation type="unfinished"/>
+        <translation>JPEG (*.jpg);; GIF (*.gif);; PNG (*.png);; BMP (*.bmp);; 所有 (*)</translation>
     </message>
 </context>
 <context>
@@ -4290,17 +4295,17 @@ Login tokens expiration: %2</source>
     <message>
         <location filename="../src/librssguard/core/messagesmodel.cpp" line="119"/>
         <source>dot</source>
-        <translation type="unfinished"/>
+        <translation>dot</translation>
     </message>
     <message>
         <location filename="../src/librssguard/core/messagesmodel.cpp" line="122"/>
         <source>envelope</source>
-        <translation type="unfinished"/>
+        <translation>信封</translation>
     </message>
     <message>
         <location filename="../src/librssguard/core/messagesmodel.cpp" line="125"/>
         <source>feed icon</source>
-        <translation type="unfinished"/>
+        <translation>文源圖示</translation>
     </message>
     <message>
         <location filename="../src/librssguard/core/messagesmodel.cpp" line="298"/>
@@ -4310,7 +4315,7 @@ Login tokens expiration: %2</source>
     <message>
         <location filename="../src/librssguard/core/messagesmodel.cpp" line="299"/>
         <source>Assigned label IDs</source>
-        <translation type="unfinished"/>
+        <translation>配定的 ID 標籤</translation>
     </message>
     <message>
         <location filename="../src/librssguard/core/messagesmodel.cpp" line="301"/>
@@ -4405,7 +4410,7 @@ Login tokens expiration: %2</source>
     <message>
         <location filename="../src/librssguard/core/messagesmodel.cpp" line="309"/>
         <source>Label IDs assigned to the article.</source>
-        <translation type="unfinished"/>
+        <translation>配定給文章的 ID 標籤</translation>
     </message>
     <message numerus="yes">
         <location filename="../src/librssguard/core/messagesmodel.cpp" line="352"/>
@@ -4463,12 +4468,12 @@ Login tokens expiration: %2</source>
     <message>
         <location filename="../src/librssguard/gui/toolbars/messagestoolbar.cpp" line="217"/>
         <source>Everywhere</source>
-        <translation type="unfinished"/>
+        <translation>到處</translation>
     </message>
     <message>
         <location filename="../src/librssguard/gui/toolbars/messagestoolbar.cpp" line="218"/>
         <source>Titles only</source>
-        <translation type="unfinished"/>
+        <translation>僅標題</translation>
     </message>
     <message>
         <location filename="../src/librssguard/gui/toolbars/messagestoolbar.cpp" line="222"/>
@@ -5641,22 +5646,22 @@ Login tokens expiration: %2</source>
     <message>
         <location filename="../src/librssguard/gui/reusable/searchlineedit.cpp" line="30"/>
         <source>Case-sensitive</source>
-        <translation type="unfinished"/>
+        <translation>區分大小寫</translation>
     </message>
     <message>
         <location filename="../src/librssguard/gui/reusable/searchlineedit.cpp" line="101"/>
         <source>Fixed text</source>
-        <translation type="unfinished"/>
+        <translation>固定的文字</translation>
     </message>
     <message>
         <location filename="../src/librssguard/gui/reusable/searchlineedit.cpp" line="104"/>
         <source>Wildcard</source>
-        <translation type="unfinished"/>
+        <translation>萬用字元</translation>
     </message>
     <message>
         <location filename="../src/librssguard/gui/reusable/searchlineedit.cpp" line="107"/>
         <source>Regular expression</source>
-        <translation type="unfinished"/>
+        <translation>類型式</translation>
     </message>
 </context>
 <context>
@@ -6194,7 +6199,8 @@ Authors of this application are NOT responsible for lost data.</source>
     <message>
         <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="121"/>
         <source>Support very fast auto-fetching intervals (under 10 seconds)</source>
-        <translation type="unfinished"/>
+        <translation>支援非常短的自動抓取的間隔
+(低於十秒)</translation>
     </message>
     <message>
         <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="129"/>
@@ -6269,7 +6275,7 @@ Authors of this application are NOT responsible for lost data.</source>
     <message>
         <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="603"/>
         <source>Unread article icon type</source>
-        <translation type="unfinished"/>
+        <translation>未讀文章的圖示類型</translation>
     </message>
     <message>
         <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="297"/>
@@ -6289,7 +6295,7 @@ Authors of this application are NOT responsible for lost data.</source>
     <message>
         <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="310"/>
         <source>Display attachments directly in article</source>
-        <translation type="unfinished"/>
+        <translation>直接於文章中顯示附件</translation>
     </message>
     <message>
         <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="319"/>
@@ -6299,7 +6305,7 @@ Authors of this application are NOT responsible for lost data.</source>
     <message>
         <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="403"/>
         <source>Keep article viewer always visible</source>
-        <translation type="unfinished"/>
+        <translation>總是看到文章檢視</translation>
     </message>
     <message>
         <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="411"/>
@@ -8019,12 +8025,12 @@ Last login on: %4</source>
     <message>
         <location filename="../src/librssguard/network-web/webfactory.cpp" line="681"/>
         <source>Web cache is going to be cleared</source>
-        <translation type="unfinished"/>
+        <translation>網頁快取將被清除</translation>
     </message>
     <message>
         <location filename="../src/librssguard/network-web/webfactory.cpp" line="682"/>
         <source>Do you really want to clear web cache?</source>
-        <translation type="unfinished"/>
+        <translation>真要清除網頁快取嗎？</translation>
     </message>
     <message>
         <location filename="../src/librssguard/network-web/webfactory.cpp" line="120"/>
