@@ -33,7 +33,7 @@ QMap<int, QString> DatabaseQueries::messageTableAttributes(bool only_msg_table, 
   field_names[MSG_DB_CUSTOM_ID_INDEX] = QSL("Messages.custom_id");
   field_names[MSG_DB_CUSTOM_HASH_INDEX] = QSL("Messages.custom_hash");
   field_names[MSG_DB_FEED_TITLE_INDEX] = only_msg_table ? QSL("Messages.feed") : QSL("Feeds.title");
-  field_names[MSG_DB_FEED_IS_RTL_INDEX] = QSL("Feeds.is_rtl");
+  field_names[MSG_DB_FEED_IS_RTL_INDEX] = only_msg_table ? QSL("1") : QSL("Feeds.is_rtl");
   field_names[MSG_DB_HAS_ENCLOSURES] = QSL("CASE WHEN LENGTH(Messages.enclosures) > 10 "
                                            "THEN 'true' "
                                            "ELSE 'false' "
@@ -1067,6 +1067,8 @@ QList<Message> DatabaseQueries::getUndeletedMessagesForFeed(const QSqlDatabase& 
     }
   }
   else {
+    auto aa = q.lastError().text();
+
     if (ok != nullptr) {
       *ok = false;
     }
