@@ -109,6 +109,8 @@ set(SOURCES
   gui/reusable/edittableview.h
   gui/reusable/helpspoiler.cpp
   gui/reusable/helpspoiler.h
+  gui/reusable/jssyntaxhighlighter.cpp
+  gui/reusable/jssyntaxhighlighter.h
   gui/reusable/labelsmenu.cpp
   gui/reusable/labelsmenu.h
   gui/reusable/labelwithstatus.cpp

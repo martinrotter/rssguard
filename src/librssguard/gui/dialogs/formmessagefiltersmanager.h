@@ -13,6 +13,7 @@ class AccountCheckSortedModel;
 class MessageFilter;
 class FeedReader;
 class MessagesForFiltersModel;
+class JsSyntaxHighlighter;
 
 class FormMessageFiltersManager : public QDialog {
     Q_OBJECT
@@ -72,6 +73,7 @@ class FormMessageFiltersManager : public QDialog {
     FeedReader* m_reader;
     bool m_loadingFilter;
     MessagesForFiltersModel* m_msgModel;
+    JsSyntaxHighlighter* m_highlighter;
 };
 
 #endif // FORMMESSAGEFILTERSMANAGER_H

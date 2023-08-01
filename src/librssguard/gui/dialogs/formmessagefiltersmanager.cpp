@@ -13,6 +13,7 @@
 #include "exceptions/filteringexception.h"
 #include "gui/guiutilities.h"
 #include "gui/messagebox.h"
+#include "gui/reusable/jssyntaxhighlighter.h"
 #include "miscellaneous/application.h"
 #include "miscellaneous/feedreader.h"
 #include "miscellaneous/iconfactory.h"
@@ -27,6 +28,8 @@ FormMessageFiltersManager::FormMessageFiltersManager(FeedReader* reader,
   : QDialog(parent), m_feedsModel(new AccountCheckSortedModel(this)), m_rootItem(new RootItem()), m_accounts(accounts),
     m_reader(reader), m_loadingFilter(false), m_msgModel(new MessagesForFiltersModel(this)) {
   m_ui.setupUi(this);
+
+  m_highlighter = new JsSyntaxHighlighter(m_ui.m_txtScript->document());
 
   std::sort(m_accounts.begin(), m_accounts.end(), [](const ServiceRoot* lhs, const ServiceRoot* rhs) {
     return lhs->title().compare(rhs->title(), Qt::CaseSensitivity::CaseInsensitive) < 0;
