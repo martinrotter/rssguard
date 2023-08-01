@@ -136,9 +136,6 @@
          <layout class="QGridLayout" name="gridLayout">
           <item row="0" column="0">
            <widget class="QDateTimeEdit" name="m_dtDateTimeToAvoid">
-            <property name="displayFormat">
-             <string>dd/MM/yyyy  HH:mm</string>
-            </property>
             <property name="calendarPopup">
              <bool>true</bool>
             </property>

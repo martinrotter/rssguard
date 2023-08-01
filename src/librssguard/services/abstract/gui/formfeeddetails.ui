@@ -79,7 +79,7 @@
           <bool>true</bool>
          </property>
          <property name="title">
-          <string>Avoid adding articles before this date into the database :</string>
+          <string>Avoid adding articles before this date into the database</string>
          </property>
          <property name="checkable">
           <bool>true</bool>
@@ -90,9 +90,6 @@
          <layout class="QGridLayout" name="gridLayout">
           <item row="1" column="0">
            <widget class="QDateTimeEdit" name="m_dtDateTimeToAvoid">
-            <property name="displayFormat">
-             <string>dd/MM/yyyy  HH:mm</string>
-            </property>
             <property name="calendarPopup">
              <bool>true</bool>
             </property>

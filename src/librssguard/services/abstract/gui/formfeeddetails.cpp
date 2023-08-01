@@ -133,6 +133,9 @@ void FormFeedDetails::initialize() {
   m_ui.reset(new Ui::FormFeedDetails());
   m_ui->setupUi(this);
 
+  m_ui->m_dtDateTimeToAvoid
+    ->setDisplayFormat(qApp->localization()->loadedLocale().dateTimeFormat(QLocale::FormatType::ShortFormat));
+
   // Setup auto-update options.
   m_ui->m_spinAutoUpdateInterval->setMode(TimeSpinBox::Mode::MinutesSeconds);
   m_ui->m_spinAutoUpdateInterval->setValue(DEFAULT_AUTO_UPDATE_INTERVAL);
