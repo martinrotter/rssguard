@@ -11,14 +11,57 @@
 #include "services/abstract/rootitem.h"
 #include "services/abstract/serviceroot.h"
 
+#include <filesystem>
+#include <fstream>
+#include <sstream>
+
 #include <QString>
 #include <QStringList>
+#include <QByteArray>
+#include <QBuffer>
 #include <QUrl>
 #include <QUrlQuery>
 #include <QWebEngineScript>
+#include <QWebEngineScriptCollection>
 
 WebEnginePage::WebEnginePage(QObject* parent) : QWebEnginePage(qApp->web()->engineProfile(), parent) {
   setBackgroundColor(Qt::GlobalColor::transparent);
+
+  std::string userStylesPath = qApp->settings()->pathName().toStdString() + "/user-styles.css";
+
+  if (std::filesystem::exists(userStylesPath)) {
+    std::ifstream file(userStylesPath);
+    //read entire file
+    std::stringstream buff;
+    buff << file.rdbuf();
+
+    //give the css to js in base64 to prevent escaping the string by putting a ', ", or ` in the css
+    QByteArray bytes;
+    QBuffer qbuff(&bytes);
+    qbuff.open(QBuffer::ReadWrite);
+    //convert std::stringstream to QBuffer
+    qbuff.write(buff.str().c_str());
+    qbuff.close();
+
+    //arbitrary name
+    const char* name = "rssguard-user-styles";
+
+    QWebEngineScript script;
+    QString s = QString::fromLatin1("(function() {"
+                                    "    css = document.createElement('style');"
+                                    "    css.type = 'text/css';"
+                                    "    css.id = '%1';"
+                                    "    document.head.appendChild(css);"
+                                    "    css.innerText = atob('%2');"
+                                    "})()").arg(name).arg(bytes.toBase64().data());
+    script.setName(name);
+    script.setSourceCode(s);
+    script.setInjectionPoint(QWebEngineScript::DocumentReady);
+    //doesn't need to run every frame
+    script.setRunsOnSubFrames(false);
+    script.setWorldId(QWebEngineScript::ApplicationWorld);
+    scripts().insert(script);
+  }
 
   connect(this, &QWebEnginePage::loadFinished, this, &WebEnginePage::hideUnwantedElements);
 }
