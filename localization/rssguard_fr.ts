@@ -233,7 +233,7 @@ version en cliquant sur cette notification.</translation>
     <message>
         <location filename="../src/librssguard/services/abstract/gui/authenticationdetails.ui" line="64"/>
         <source>Authentication type</source>
-        <translation type="unfinished"/>
+        <translation>Type d&apos;authentification</translation>
     </message>
     <message>
         <location filename="../src/librssguard/services/abstract/gui/authenticationdetails.ui" line="35"/>
@@ -928,12 +928,12 @@ Item ID: %5</source>
     <message>
         <location filename="../src/librssguard/services/standard/standardfeedsimportexportmodel.cpp" line="279"/>
         <source>OPML document contains errors</source>
-        <translation type="unfinished"/>
+        <translation>Le document OPML contient des erreurs</translation>
     </message>
     <message>
         <location filename="../src/librssguard/services/standard/standardfeedsimportexportmodel.cpp" line="284"/>
         <source>this is likely not OPML document</source>
-        <translation type="unfinished"/>
+        <translation>ceci n&apos;est probablement pas un document OPML</translation>
     </message>
     <message>
         <location filename="../src/librssguard/services/standard/standardfeedsimportexportmodel.cpp" line="362"/>
@@ -987,12 +987,12 @@ Item ID: %5</source>
     <message>
         <location filename="../src/librssguard/gui/toolbars/feedstoolbar.cpp" line="118"/>
         <source>Everywhere</source>
-        <translation type="unfinished"/>
+        <translation>Partout</translation>
     </message>
     <message>
         <location filename="../src/librssguard/gui/toolbars/feedstoolbar.cpp" line="119"/>
         <source>Titles only</source>
-        <translation type="unfinished"/>
+        <translation>Titres uniquement</translation>
     </message>
     <message>
         <location filename="../src/librssguard/gui/toolbars/feedstoolbar.cpp" line="123"/>
@@ -1422,7 +1422,7 @@ ou cette fonctionnalité n&apos;est pas encore implémentée.</translation>
     <message>
         <location filename="../src/librssguard/services/abstract/gui/formcategorydetails.cpp" line="157"/>
         <source>Images (%1)</source>
-        <translation type="unfinished"/>
+        <translation>Images (%1)</translation>
     </message>
     <message>
         <location filename="../src/librssguard/services/abstract/gui/formcategorydetails.cpp" line="163"/>
@@ -1963,7 +1963,7 @@ ou cette fonctionnalité n&apos;est pas encore implémentée.</translation>
     <message>
         <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="379"/>
         <source>&amp;Clean selected item</source>
-        <translation type="unfinished"/>
+        <translation>&amp;Nettoyer l&apos;élément sélectionné</translation>
     </message>
     <message>
         <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="382"/>
@@ -2043,7 +2043,7 @@ ou cette fonctionnalité n&apos;est pas encore implémentée.</translation>
     <message>
         <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="479"/>
         <source>&amp;Clean all</source>
-        <translation type="unfinished"/>
+        <translation>&amp;Nettoyer tout</translation>
     </message>
     <message>
         <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="482"/>
@@ -2058,7 +2058,7 @@ ou cette fonctionnalité n&apos;est pas encore implémentée.</translation>
     <message>
         <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="498"/>
         <source>&amp;Previous item</source>
-        <translation type="unfinished"/>
+        <translation>&amp;Élément précédent</translation>
     </message>
     <message>
         <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="506"/>
@@ -2068,7 +2068,7 @@ ou cette fonctionnalité n&apos;est pas encore implémentée.</translation>
     <message>
         <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="514"/>
         <source>&amp;Previous article</source>
-        <translation type="unfinished"/>
+        <translation>&amp;Article précédent</translation>
     </message>
     <message>
         <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="522"/>
@@ -2098,7 +2098,7 @@ ou cette fonctionnalité n&apos;est pas encore implémentée.</translation>
     <message>
         <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="561"/>
         <source>&amp;Toolbars</source>
-        <translation type="unfinished"/>
+        <translation>&amp;Barres à outils</translation>
     </message>
     <message>
         <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="564"/>
@@ -2259,7 +2259,7 @@ ou cette fonctionnalité n&apos;est pas encore implémentée.</translation>
     <message>
         <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="809"/>
         <source>Article &amp;filters</source>
-        <translation type="unfinished"/>
+        <translation>Filtres &amp;d&apos;articles</translation>
     </message>
     <message>
         <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="817"/>
@@ -2309,27 +2309,27 @@ ou cette fonctionnalité n&apos;est pas encore implémentée.</translation>
     <message>
         <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="877"/>
         <source>&amp;Sort alphabetically</source>
-        <translation type="unfinished"/>
+        <translation>&amp;Trier alphabétiquement</translation>
     </message>
     <message>
         <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="882"/>
         <source>Move &amp;up</source>
-        <translation type="unfinished"/>
+        <translation>Déplacer &amp;vers le haut</translation>
     </message>
     <message>
         <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="887"/>
         <source>Move to &amp;top</source>
-        <translation type="unfinished"/>
+        <translation>Déplacer &amp;tout en haut</translation>
     </message>
     <message>
         <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="892"/>
         <source>Move &amp;down</source>
-        <translation type="unfinished"/>
+        <translation>Déplacer &amp;vers le bas</translation>
     </message>
     <message>
         <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="897"/>
         <source>Move to &amp;bottom</source>
-        <translation type="unfinished"/>
+        <translation>Déplacer &amp;tout en bas</translation>
     </message>
     <message>
         <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="902"/>
@@ -2380,12 +2380,12 @@ ou cette fonctionnalité n&apos;est pas encore implémentée.</translation>
     <message>
         <location filename="../src/librssguard/gui/dialogs/formmain.cpp" line="376"/>
         <source>No actions possible</source>
-        <translation type="unfinished"/>
+        <translation>Aucunes actions possibles</translation>
     </message>
     <message>
         <location filename="../src/librssguard/gui/dialogs/formmain.cpp" line="154"/>
         <source>Cannot cleanup database</source>
-        <translation type="unfinished"/>
+        <translation>Nettoyage de la base de données impossible</translation>
     </message>
     <message>
         <location filename="../src/librssguard/gui/dialogs/formmain.cpp" line="155"/>
@@ -2413,12 +2413,12 @@ ou cette fonctionnalité n&apos;est pas encore implémentée.</translation>
     <message>
         <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.cpp" line="315"/>
         <source>ACCEPTED</source>
-        <translation type="unfinished"/>
+        <translation>ACCEPTÉ</translation>
     </message>
     <message>
         <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.cpp" line="315"/>
         <source>REJECTED</source>
-        <translation type="unfinished"/>
+        <translation>REJETÉ</translation>
     </message>
     <message>
         <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.cpp" line="328"/>
@@ -2466,7 +2466,7 @@ ou cette fonctionnalité n&apos;est pas encore implémentée.</translation>
     <message>
         <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.cpp" line="245"/>
         <source>Cannot save new filter, error: &apos;%1&apos;.</source>
-        <translation type="unfinished"/>
+        <translation>Impossible de sauvegarder le nouveau filtre, erreur: &apos;%1&apos;.</translation>
     </message>
     <message>
         <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.cpp" line="190"/>
@@ -2494,7 +2494,9 @@ ou cette fonctionnalité n&apos;est pas encore implémentée.</translation>
         <source>Article will be %1.
 
 </source>
-        <translation type="unfinished"/>
+        <translation>L&apos;article sera %1.
+
+</translation>
     </message>
     <message>
         <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.cpp" line="317"/>
@@ -2532,7 +2534,7 @@ ou cette fonctionnalité n&apos;est pas encore implémentée.</translation>
     <message>
         <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.ui" line="35"/>
         <source>&amp;Check all</source>
-        <translation type="unfinished"/>
+        <translation>&amp;Cocher tout</translation>
     </message>
     <message>
         <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.ui" line="65"/>
@@ -2542,12 +2544,12 @@ ou cette fonctionnalité n&apos;est pas encore implémentée.</translation>
     <message>
         <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.ui" line="79"/>
         <source>Remove selected</source>
-        <translation type="unfinished"/>
+        <translation>Enlever le(s) élément(s) séléctionné(s)</translation>
     </message>
     <message>
         <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.ui" line="86"/>
         <source>&amp;New filter</source>
-        <translation type="unfinished"/>
+        <translation>&amp;Nouveau filtre</translation>
     </message>
     <message>
         <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.ui" line="115"/>
@@ -2563,12 +2565,12 @@ ou cette fonctionnalité n&apos;est pas encore implémentée.</translation>
     <message>
         <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.ui" line="145"/>
         <source>Title of article filter</source>
-        <translation type="unfinished"/>
+        <translation>Titre du filtre d&apos;article</translation>
     </message>
     <message>
         <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.ui" line="152"/>
         <source>Pre-made filters</source>
-        <translation type="unfinished"/>
+        <translation>Filtres pré-faits</translation>
     </message>
     <message>
         <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.ui" line="174"/>
@@ -2578,12 +2580,12 @@ ou cette fonctionnalité n&apos;est pas encore implémentée.</translation>
     <message>
         <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.ui" line="192"/>
         <source>Your JavaScript-based article filtering logic</source>
-        <translation type="unfinished"/>
+        <translation>La logique de votre filtre d&apos;article basé sur JavaScript</translation>
     </message>
     <message>
         <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.ui" line="206"/>
         <source>&amp;Test</source>
-        <translation type="unfinished"/>
+        <translation>&amp;Test</translation>
     </message>
     <message>
         <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.ui" line="213"/>
@@ -2598,17 +2600,17 @@ ou cette fonctionnalité n&apos;est pas encore implémentée.</translation>
     <message>
         <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.ui" line="227"/>
         <source>Detailed &amp;help</source>
-        <translation type="unfinished"/>
+        <translation>&amp;Aide détaillée</translation>
     </message>
     <message>
         <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.ui" line="263"/>
         <source>Existing articles</source>
-        <translation type="unfinished"/>
+        <translation>Articles existants</translation>
     </message>
     <message>
         <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.ui" line="295"/>
         <source>Sample article</source>
-        <translation type="unfinished"/>
+        <translation>Échantillon d&apos;article</translation>
     </message>
     <message>
         <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.ui" line="326"/>
@@ -2662,7 +2664,7 @@ ou cette fonctionnalité n&apos;est pas encore implémentée.</translation>
     <message>
         <location filename="../src/librssguard/gui/dialogs/formrestoredatabasesettings.cpp" line="57"/>
         <source>You need to restart application for restoration process to finish.</source>
-        <translation type="unfinished"/>
+        <translation>Vous devez redémarrer l&apos;application pour terminer le processus de restauration.</translation>
     </message>
     <message>
         <location filename="../src/librssguard/gui/dialogs/formrestoredatabasesettings.cpp" line="62"/>
@@ -2687,7 +2689,7 @@ ou cette fonctionnalité n&apos;est pas encore implémentée.</translation>
     <message>
         <location filename="../src/librssguard/gui/dialogs/formrestoredatabasesettings.ui" line="14"/>
         <source>Restore database/settings</source>
-        <translation type="unfinished"/>
+        <translation>Restaurer les données/paramètres</translation>
     </message>
     <message>
         <location filename="../src/librssguard/gui/dialogs/formrestoredatabasesettings.ui" line="33"/>
@@ -2832,7 +2834,7 @@ You have to restart manually.</source>
     <message>
         <location filename="../src/librssguard/services/standard/gui/formstandardimportexport.cpp" line="181"/>
         <source>Select file for feeds export</source>
-        <translation type="unfinished"/>
+        <translation>Sélectionner le fichier pour l&apos;export de flux</translation>
     </message>
     <message>
         <location filename="../src/librssguard/services/standard/gui/formstandardimportexport.cpp" line="206"/>
@@ -2843,7 +2845,7 @@ You have to restart manually.</source>
     <message>
         <location filename="../src/librssguard/services/standard/gui/formstandardimportexport.cpp" line="225"/>
         <source>Select file for feeds import</source>
-        <translation type="unfinished"/>
+        <translation>Sélectionner le fichier pour l&apos;import de flux</translation>
     </message>
     <message>
         <location filename="../src/librssguard/services/standard/gui/formstandardimportexport.cpp" line="139"/>
@@ -2874,7 +2876,7 @@ You have to restart manually.</source>
     <message>
         <location filename="../src/librssguard/services/standard/gui/formstandardimportexport.cpp" line="274"/>
         <source>cannot open file</source>
-        <translation type="unfinished"/>
+        <translation>impossible d&apos;ouvrir le fichier</translation>
     </message>
     <message>
         <location filename="../src/librssguard/services/standard/gui/formstandardimportexport.cpp" line="329"/>
@@ -2897,7 +2899,7 @@ You have to restart manually.</source>
         <location filename="../src/librssguard/services/standard/gui/formstandardimportexport.cpp" line="170"/>
         <location filename="../src/librssguard/services/standard/gui/formstandardimportexport.cpp" line="215"/>
         <source>OPML 2.0 files (*.opml *.xml)</source>
-        <translation type="unfinished"/>
+        <translation>Fichiers OPML 2.0 (*.opml *.xml)</translation>
     </message>
     <message>
         <location filename="../src/librssguard/services/standard/gui/formstandardimportexport.cpp" line="334"/>
@@ -2913,17 +2915,17 @@ You have to restart manually.</source>
     <message>
         <location filename="../src/librssguard/services/standard/gui/formstandardimportexport.cpp" line="75"/>
         <source>&amp;Export to file</source>
-        <translation type="unfinished"/>
+        <translation>&amp;Exporter à un fichier</translation>
     </message>
     <message>
         <location filename="../src/librssguard/services/standard/gui/formstandardimportexport.cpp" line="87"/>
         <source>&amp;Import from file</source>
-        <translation type="unfinished"/>
+        <translation>&amp;Importer d&apos;un fichier</translation>
     </message>
     <message>
         <location filename="../src/librssguard/services/standard/gui/formstandardimportexport.ui" line="38"/>
         <source>&amp;Select file</source>
-        <translation type="unfinished"/>
+        <translation>&amp;Sélectionner un fichier</translation>
     </message>
     <message>
         <location filename="../src/librssguard/services/standard/gui/formstandardimportexport.ui" line="55"/>
@@ -2953,7 +2955,7 @@ You have to restart manually.</source>
     <message>
         <location filename="../src/librssguard/services/standard/gui/formstandardimportexport.ui" line="130"/>
         <source>Export icons</source>
-        <translation type="unfinished"/>
+        <translation>Exporter les icônes</translation>
     </message>
     <message>
         <location filename="../src/librssguard/services/standard/gui/formstandardimportexport.ui" line="202"/>
@@ -2968,7 +2970,7 @@ You have to restart manually.</source>
     <message>
         <location filename="../src/librssguard/services/standard/gui/formstandardimportexport.ui" line="219"/>
         <source>Operation result</source>
-        <translation type="unfinished"/>
+        <translation>Résultat de l&apos;opération</translation>
     </message>
 </context>
 <context>
@@ -3092,7 +3094,7 @@ celle actuellement installée.</translation>
     <message>
         <location filename="../src/librssguard/gui/dialogs/formupdate.cpp" line="110"/>
         <source>Downloaded %1% (update size is %2 kB).</source>
-        <translation type="unfinished"/>
+        <translation>%1% téléchargé (la taille de la mise à jour est de %2 kB).</translation>
     </message>
     <message>
         <location filename="../src/librssguard/gui/dialogs/formupdate.cpp" line="115"/>
@@ -3261,7 +3263,7 @@ You can install it now.</source>
     <message>
         <location filename="../src/librssguard/services/gmail/gui/gmailaccountdetails.cpp" line="84"/>
         <source>There is error: %1</source>
-        <translation type="unfinished"/>
+        <translation>Il y a une erreur: %1</translation>
     </message>
     <message>
         <location filename="../src/librssguard/services/gmail/gui/gmailaccountdetails.cpp" line="125"/>
@@ -3400,17 +3402,17 @@ Login tokens expiration: %2</source>
     <message>
         <location filename="../src/librssguard/services/gmail/gmailserviceroot.cpp" line="207"/>
         <source>logged-in</source>
-        <translation type="unfinished"/>
+        <translation>connecté</translation>
     </message>
     <message>
         <location filename="../src/librssguard/services/gmail/gmailserviceroot.cpp" line="207"/>
         <source>NOT logged-in</source>
-        <translation type="unfinished"/>
+        <translation>NON connecté</translation>
     </message>
     <message>
         <location filename="../src/librssguard/services/gmail/gmailserviceroot.cpp" line="144"/>
         <source>Write new e-mail message</source>
-        <translation type="unfinished"/>
+        <translation>Écrire un nouvel e-mail</translation>
     </message>
 </context>
 <context>
@@ -3458,7 +3460,7 @@ Login tokens expiration: %2</source>
     <message>
         <location filename="../src/librssguard/services/greader/gui/greaderaccountdetails.cpp" line="207"/>
         <source>Yeah.</source>
-        <translation type="unfinished"/>
+        <translation>Ouais.</translation>
     </message>
     <message>
         <location filename="../src/librssguard/services/greader/gui/greaderaccountdetails.cpp" line="216"/>
@@ -3604,12 +3606,12 @@ Login tokens expiration: %2</source>
     <message>
         <location filename="../src/librssguard/services/greader/gui/greaderaccountdetails.ui" line="192"/>
         <source>App ID</source>
-        <translation type="unfinished"/>
+        <translation>ID d&apos;appli</translation>
     </message>
     <message>
         <location filename="../src/librssguard/services/greader/gui/greaderaccountdetails.ui" line="205"/>
         <source>App key</source>
-        <translation type="unfinished"/>
+        <translation>Clé d&apos;appli</translation>
     </message>
     <message>
         <location filename="../src/librssguard/services/greader/gui/greaderaccountdetails.ui" line="218"/>
@@ -3619,7 +3621,7 @@ Login tokens expiration: %2</source>
     <message>
         <location filename="../src/librssguard/services/greader/gui/greaderaccountdetails.ui" line="233"/>
         <source>Get my own App ID</source>
-        <translation type="unfinished"/>
+        <translation>Obtenir mon propre ID d&apos;appli</translation>
     </message>
     <message>
         <location filename="../src/librssguard/services/greader/gui/greaderaccountdetails.ui" line="270"/>
@@ -3635,7 +3637,7 @@ Login tokens expiration: %2</source>
         <location filename="../src/librssguard/services/greader/greadernetwork.cpp" line="485"/>
         <location filename="../src/librssguard/services/greader/greadernetwork.cpp" line="551"/>
         <source>login failed</source>
-        <translation type="unfinished"/>
+        <translation>connection échoué</translation>
     </message>
     <message>
         <location filename="../src/librssguard/services/greader/greadernetwork.cpp" line="1099"/>
@@ -3677,7 +3679,7 @@ Login tokens expiration: %2</source>
     <message>
         <location filename="../src/librssguard/gui/reusable/helpspoiler.cpp" line="26"/>
         <source>View more information on this</source>
-        <translation type="unfinished"/>
+        <translation>Voir plus d&apos;infos sur ceci</translation>
     </message>
 </context>
 <context>
@@ -3725,12 +3727,12 @@ Login tokens expiration: %2</source>
     <message>
         <location filename="../src/librssguard/gui/reusable/labelsmenu.cpp" line="15"/>
         <source>Labels</source>
-        <translation type="unfinished"/>
+        <translation>Étiquettes</translation>
     </message>
     <message>
         <location filename="../src/librssguard/gui/reusable/labelsmenu.cpp" line="19"/>
         <source>No labels found</source>
-        <translation type="unfinished"/>
+        <translation>Aucunes étiquettes trouvées</translation>
     </message>
 </context>
 <context>
@@ -3738,27 +3740,27 @@ Login tokens expiration: %2</source>
     <message>
         <location filename="../src/librssguard/services/abstract/labelsnode.cpp" line="19"/>
         <source>Labels</source>
-        <translation type="unfinished"/>
+        <translation>Étiquettes</translation>
     </message>
     <message>
         <location filename="../src/librssguard/services/abstract/labelsnode.cpp" line="20"/>
         <source>You can see all your labels (tags) here.</source>
-        <translation type="unfinished"/>
+        <translation>Vous pouvez voir toutes vos étiquettes (tags) ici.</translation>
     </message>
     <message>
         <location filename="../src/librssguard/services/abstract/labelsnode.cpp" line="114"/>
         <source>New label</source>
-        <translation type="unfinished"/>
+        <translation>Nouvelle étiquette</translation>
     </message>
     <message>
         <location filename="../src/librssguard/services/abstract/labelsnode.cpp" line="143"/>
         <source>This account does not allow you to create labels.</source>
-        <translation type="unfinished"/>
+        <translation>Ce compte ne vous autorise pas à créer des étiquettes.</translation>
     </message>
     <message>
         <location filename="../src/librssguard/services/abstract/labelsnode.cpp" line="144"/>
         <source>Not allowed</source>
-        <translation type="unfinished"/>
+        <translation>Non autorizé</translation>
     </message>
 </context>
 <context>
@@ -3774,88 +3776,88 @@ Login tokens expiration: %2</source>
     <message>
         <location filename="../src/librssguard/gui/richtexteditor/mrichtextedit.ui" line="56"/>
         <source>Paragraph formatting</source>
-        <translation type="unfinished"/>
+        <translation>Formattage de paragraphe</translation>
     </message>
     <message>
         <location filename="../src/librssguard/gui/richtexteditor/mrichtextedit.ui" line="79"/>
         <source>Undo (CTRL+Z)</source>
-        <translation type="unfinished"/>
+        <translation>Défaire (CTRL+Z)</translation>
     </message>
     <message>
         <location filename="../src/librssguard/gui/richtexteditor/mrichtextedit.ui" line="82"/>
         <source>Undo</source>
-        <translation type="unfinished"/>
+        <translation>Défaire</translation>
     </message>
     <message>
         <location filename="../src/librssguard/gui/richtexteditor/mrichtextedit.ui" line="101"/>
         <location filename="../src/librssguard/gui/richtexteditor/mrichtextedit.ui" line="104"/>
         <source>Redo</source>
-        <translation type="unfinished"/>
+        <translation>Refaire</translation>
     </message>
     <message>
         <location filename="../src/librssguard/gui/richtexteditor/mrichtextedit.ui" line="120"/>
         <source>Cut (CTRL+X)</source>
-        <translation type="unfinished"/>
+        <translation>Couper (CTRL+X)</translation>
     </message>
     <message>
         <location filename="../src/librssguard/gui/richtexteditor/mrichtextedit.ui" line="123"/>
         <source>Cut</source>
-        <translation type="unfinished"/>
+        <translation>Couper</translation>
     </message>
     <message>
         <location filename="../src/librssguard/gui/richtexteditor/mrichtextedit.ui" line="139"/>
         <source>Copy (CTRL+C)</source>
-        <translation type="unfinished"/>
+        <translation>Copier (CTRL+C)</translation>
     </message>
     <message>
         <location filename="../src/librssguard/gui/richtexteditor/mrichtextedit.ui" line="142"/>
         <source>Copy</source>
-        <translation type="unfinished"/>
+        <translation>Copier</translation>
     </message>
     <message>
         <location filename="../src/librssguard/gui/richtexteditor/mrichtextedit.ui" line="158"/>
         <source>Paste (CTRL+V)</source>
-        <translation type="unfinished"/>
+        <translation>Coller (CTRL+V)</translation>
     </message>
     <message>
         <location filename="../src/librssguard/gui/richtexteditor/mrichtextedit.ui" line="161"/>
         <source>Paste</source>
-        <translation type="unfinished"/>
+        <translation>Coller</translation>
     </message>
     <message>
         <location filename="../src/librssguard/gui/richtexteditor/mrichtextedit.ui" line="184"/>
         <source>Link (CTRL+L)</source>
-        <translation type="unfinished"/>
+        <translation>Lier (CTRL+L)</translation>
     </message>
     <message>
         <location filename="../src/librssguard/gui/richtexteditor/mrichtextedit.ui" line="187"/>
         <source>Link</source>
-        <translation type="unfinished"/>
+        <translation>Lier</translation>
     </message>
     <message>
         <location filename="../src/librssguard/gui/richtexteditor/mrichtextedit.ui" line="216"/>
         <source>Bold</source>
-        <translation type="unfinished"/>
+        <translation>Gras</translation>
     </message>
     <message>
         <location filename="../src/librssguard/gui/richtexteditor/mrichtextedit.ui" line="235"/>
         <source>Italic (CTRL+I)</source>
-        <translation type="unfinished"/>
+        <translation>Italique (CTRL+I)</translation>
     </message>
     <message>
         <location filename="../src/librssguard/gui/richtexteditor/mrichtextedit.ui" line="238"/>
         <source>Italic</source>
-        <translation type="unfinished"/>
+        <translation>Italique</translation>
     </message>
     <message>
         <location filename="../src/librssguard/gui/richtexteditor/mrichtextedit.ui" line="257"/>
         <source>Underline (CTRL+U)</source>
-        <translation type="unfinished"/>
+        <translation>Soulignement (CTRL+U)</translation>
     </message>
     <message>
         <location filename="../src/librssguard/gui/richtexteditor/mrichtextedit.ui" line="260"/>
         <source>Underline</source>
-        <translation type="unfinished"/>
+        <translation>Soulignement</translation>
     </message>
     <message>
         <location filename="../src/librssguard/gui/richtexteditor/mrichtextedit.ui" line="276"/>
@@ -3921,7 +3923,7 @@ Login tokens expiration: %2</source>
     <message>
         <location filename="../src/librssguard/gui/richtexteditor/mrichtextedit.ui" line="447"/>
         <source>Font size</source>
-        <translation type="unfinished"/>
+        <translation>Taille de police</translation>
     </message>
     <message>
         <location filename="../src/librssguard/gui/richtexteditor/mrichtextedit.ui" line="484"/>
@@ -3986,7 +3988,7 @@ Login tokens expiration: %2</source>
     <message>
         <location filename="../src/librssguard/gui/richtexteditor/mrichtextedit.cpp" line="319"/>
         <source>Create a link</source>
-        <translation type="unfinished"/>
+        <translation>Créer un lien</translation>
     </message>
     <message>
         <location filename="../src/librssguard/gui/richtexteditor/mrichtextedit.cpp" line="319"/>
@@ -3996,7 +3998,7 @@ Login tokens expiration: %2</source>
     <message>
         <location filename="../src/librssguard/gui/richtexteditor/mrichtextedit.cpp" line="637"/>
         <source>Select an image</source>
-        <translation type="unfinished"/>
+        <translation>Sélectionner une image</translation>
     </message>
     <message>
         <location filename="../src/librssguard/gui/richtexteditor/mrichtextedit.cpp" line="639"/>
@@ -4095,7 +4097,7 @@ Login tokens expiration: %2</source>
     <message>
         <location filename="../src/librssguard/gui/reusable/messagecountspinbox.cpp" line="15"/>
         <source>article</source>
-        <translation type="unfinished"/>
+        <translation>article</translation>
     </message>
     <message>
         <location filename="../src/librssguard/gui/reusable/messagecountspinbox.cpp" line="18"/>
@@ -4144,7 +4146,7 @@ Login tokens expiration: %2</source>
     <message>
         <location filename="../src/librssguard/core/messagesforfiltersmodel.cpp" line="12"/>
         <source>In recycle bin</source>
-        <translation type="unfinished"/>
+        <translation>Dans la corbeille</translation>
     </message>
     <message>
         <location filename="../src/librssguard/core/messagesforfiltersmodel.cpp" line="12"/>
@@ -4164,12 +4166,12 @@ Login tokens expiration: %2</source>
     <message>
         <location filename="../src/librssguard/core/messagesforfiltersmodel.cpp" line="13"/>
         <source>Score</source>
-        <translation type="unfinished"/>
+        <translation>Score</translation>
     </message>
     <message>
         <location filename="../src/librssguard/core/messagesforfiltersmodel.cpp" line="13"/>
         <source>Date</source>
-        <translation type="unfinished"/>
+        <translation>Date</translation>
     </message>
 </context>
 <context>
@@ -4252,22 +4254,22 @@ Login tokens expiration: %2</source>
     <message>
         <location filename="../src/librssguard/core/messagesmodel.cpp" line="285"/>
         <source>Feed ID</source>
-        <translation type="unfinished"/>
+        <translation>ID de Flux</translation>
     </message>
     <message>
         <location filename="../src/librssguard/core/messagesmodel.cpp" line="297"/>
         <source>Has enclosures</source>
-        <translation type="unfinished"/>
+        <translation>Contient des pièces-jointes</translation>
     </message>
     <message>
         <location filename="../src/librssguard/core/messagesmodel.cpp" line="292"/>
         <source>Score</source>
-        <translation type="unfinished"/>
+        <translation>Score</translation>
     </message>
     <message>
         <location filename="../src/librssguard/core/messagesmodel.cpp" line="289"/>
         <source>Date</source>
-        <translation type="unfinished"/>
+        <translation>Date</translation>
     </message>
     <message>
         <location filename="../src/librssguard/core/messagesmodel.cpp" line="200"/>
@@ -4282,12 +4284,12 @@ Login tokens expiration: %2</source>
     <message>
         <location filename="../src/librssguard/core/messagesmodel.cpp" line="122"/>
         <source>envelope</source>
-        <translation type="unfinished"/>
+        <translation>enveloppe</translation>
     </message>
     <message>
         <location filename="../src/librssguard/core/messagesmodel.cpp" line="125"/>
         <source>feed icon</source>
-        <translation type="unfinished"/>
+        <translation>icône du flux</translation>
     </message>
     <message>
         <location filename="../src/librssguard/core/messagesmodel.cpp" line="298"/>
@@ -4302,27 +4304,27 @@ Login tokens expiration: %2</source>
     <message>
         <location filename="../src/librssguard/core/messagesmodel.cpp" line="301"/>
         <source>ID of the article.</source>
-        <translation type="unfinished"/>
+        <translation>ID de l&apos;article.</translation>
     </message>
     <message>
         <location filename="../src/librssguard/core/messagesmodel.cpp" line="301"/>
         <source>Is article read?</source>
-        <translation type="unfinished"/>
+        <translation>Est-ce un article lu?</translation>
     </message>
     <message>
         <location filename="../src/librssguard/core/messagesmodel.cpp" line="301"/>
         <source>Is article important?</source>
-        <translation type="unfinished"/>
+        <translation>Est-ce un article important?</translation>
     </message>
     <message>
         <location filename="../src/librssguard/core/messagesmodel.cpp" line="302"/>
         <source>Is article deleted?</source>
-        <translation type="unfinished"/>
+        <translation>Est-ce un article supprimé?</translation>
     </message>
     <message>
         <location filename="../src/librssguard/core/messagesmodel.cpp" line="302"/>
         <source>Is article permanently deleted from recycle bin?</source>
-        <translation type="unfinished"/>
+        <translation>Est-ce un article définitvement supprimé de la corbeille?</translation>
     </message>
     <message>
         <location filename="../src/librssguard/core/messagesmodel.cpp" line="303"/>
@@ -4332,32 +4334,32 @@ Login tokens expiration: %2</source>
     <message>
         <location filename="../src/librssguard/core/messagesmodel.cpp" line="303"/>
         <source>Title of the article.</source>
-        <translation type="unfinished"/>
+        <translation>Titre de l&apos;article.</translation>
     </message>
     <message>
         <location filename="../src/librssguard/core/messagesmodel.cpp" line="304"/>
         <source>Url of the article.</source>
-        <translation type="unfinished"/>
+        <translation>Lien de l&apos;article.</translation>
     </message>
     <message>
         <location filename="../src/librssguard/core/messagesmodel.cpp" line="304"/>
         <source>Author of the article.</source>
-        <translation type="unfinished"/>
+        <translation>Auteur de l&apos;article.</translation>
     </message>
     <message>
         <location filename="../src/librssguard/core/messagesmodel.cpp" line="304"/>
         <source>Creation date of the article.</source>
-        <translation type="unfinished"/>
+        <translation>Date de création de l&apos;article.</translation>
     </message>
     <message>
         <location filename="../src/librssguard/core/messagesmodel.cpp" line="305"/>
         <source>Contents of the article.</source>
-        <translation type="unfinished"/>
+        <translation>Contenus de l&apos;article.</translation>
     </message>
     <message>
         <location filename="../src/librssguard/core/messagesmodel.cpp" line="305"/>
         <source>Score of the article.</source>
-        <translation type="unfinished"/>
+        <translation>Score de l&apos;article.</translation>
     </message>
     <message>
         <location filename="../src/librssguard/core/messagesmodel.cpp" line="306"/>
@@ -4377,17 +4379,17 @@ Login tokens expiration: %2</source>
     <message>
         <location filename="../src/librssguard/core/messagesmodel.cpp" line="307"/>
         <source>Name of feed of the article.</source>
-        <translation type="unfinished"/>
+        <translation>Nom de flux de l&apos;article.</translation>
     </message>
     <message>
         <location filename="../src/librssguard/core/messagesmodel.cpp" line="308"/>
         <source>Indication of enclosures presence within the article.</source>
-        <translation type="unfinished"/>
+        <translation>Indication de la présence de pièces-jointes dans les articles</translation>
     </message>
     <message>
         <location filename="../src/librssguard/core/messagesmodel.cpp" line="308"/>
         <source>Labels assigned to the article.</source>
-        <translation type="unfinished"/>
+        <translation>Étiquettes attribuées à l&apos;article.</translation>
     </message>
     <message>
         <location filename="../src/librssguard/core/messagesmodel.cpp" line="309"/>
@@ -4412,7 +4414,7 @@ Login tokens expiration: %2</source>
     <message>
         <location filename="../src/librssguard/core/messagesmodel.cpp" line="364"/>
         <source>yesterday</source>
-        <translation type="unfinished"/>
+        <translation>hier</translation>
     </message>
     <message numerus="yes">
         <location filename="../src/librssguard/core/messagesmodel.cpp" line="368"/>
@@ -4427,7 +4429,7 @@ Login tokens expiration: %2</source>
     <message>
         <location filename="../src/librssguard/core/messagesmodel.cpp" line="375"/>
         <source>just now</source>
-        <translation type="unfinished"/>
+        <translation>il y a quelques instants</translation>
     </message>
     <message>
         <location filename="../src/librssguard/core/messagesmodel.cpp" line="199"/>
@@ -4450,22 +4452,22 @@ Login tokens expiration: %2</source>
     <message>
         <location filename="../src/librssguard/gui/toolbars/messagestoolbar.cpp" line="217"/>
         <source>Everywhere</source>
-        <translation type="unfinished"/>
+        <translation>Partout</translation>
     </message>
     <message>
         <location filename="../src/librssguard/gui/toolbars/messagestoolbar.cpp" line="218"/>
         <source>Titles only</source>
-        <translation type="unfinished"/>
+        <translation>Titres uniquement</translation>
     </message>
     <message>
         <location filename="../src/librssguard/gui/toolbars/messagestoolbar.cpp" line="222"/>
         <source>Search articles</source>
-        <translation type="unfinished"/>
+        <translation>Chercher des articles</translation>
     </message>
     <message>
         <location filename="../src/librssguard/gui/toolbars/messagestoolbar.cpp" line="229"/>
         <source>Article search box</source>
-        <translation type="unfinished"/>
+        <translation>Barre de recherche des articles</translation>
     </message>
     <message>
         <location filename="../src/librssguard/gui/toolbars/messagestoolbar.cpp" line="247"/>
@@ -4490,52 +4492,52 @@ Login tokens expiration: %2</source>
     <message>
         <location filename="../src/librssguard/gui/toolbars/messagestoolbar.cpp" line="269"/>
         <source>No extra filtering</source>
-        <translation type="unfinished"/>
+        <translation>Pas de filtrage supplémentaire</translation>
     </message>
     <message>
         <location filename="../src/librssguard/gui/toolbars/messagestoolbar.cpp" line="274"/>
         <source>Show unread articles</source>
-        <translation type="unfinished"/>
+        <translation>Montrer les articles non-lus</translation>
     </message>
     <message>
         <location filename="../src/librssguard/gui/toolbars/messagestoolbar.cpp" line="279"/>
         <source>Show important articles</source>
-        <translation type="unfinished"/>
+        <translation>Montrer les articles importants</translation>
     </message>
     <message>
         <location filename="../src/librssguard/gui/toolbars/messagestoolbar.cpp" line="284"/>
         <source>Show today&apos;s articles</source>
-        <translation type="unfinished"/>
+        <translation>Montrer les articles d&apos;aujourd&apos;hui</translation>
     </message>
     <message>
         <location filename="../src/librssguard/gui/toolbars/messagestoolbar.cpp" line="289"/>
         <source>Show yesterday&apos;s articles</source>
-        <translation type="unfinished"/>
+        <translation>Montrer les articles d&apos;hier</translation>
     </message>
     <message>
         <location filename="../src/librssguard/gui/toolbars/messagestoolbar.cpp" line="294"/>
         <source>Show articles in last 24 hours</source>
-        <translation type="unfinished"/>
+        <translation>Montrer les articles des dernières 24 heures</translation>
     </message>
     <message>
         <location filename="../src/librssguard/gui/toolbars/messagestoolbar.cpp" line="299"/>
         <source>Show articles in last 48 hours</source>
-        <translation type="unfinished"/>
+        <translation>Montrer les articles des dernières 48 heures</translation>
     </message>
     <message>
         <location filename="../src/librssguard/gui/toolbars/messagestoolbar.cpp" line="304"/>
         <source>Show this week&apos;s articles</source>
-        <translation type="unfinished"/>
+        <translation>Montrer les articles de cette semaine</translation>
     </message>
     <message>
         <location filename="../src/librssguard/gui/toolbars/messagestoolbar.cpp" line="309"/>
         <source>Show last week&apos;s articles</source>
-        <translation type="unfinished"/>
+        <translation>Montrer les articles de la semaine denière</translation>
     </message>
     <message>
         <location filename="../src/librssguard/gui/toolbars/messagestoolbar.cpp" line="314"/>
         <source>Show articles with attachments</source>
-        <translation type="unfinished"/>
+        <translation>Montrer les articles qui ont des pièces-jointes</translation>
     </message>
     <message>
         <location filename="../src/librssguard/gui/toolbars/messagestoolbar.cpp" line="319"/>
@@ -4546,7 +4548,7 @@ Login tokens expiration: %2</source>
         <location filename="../src/librssguard/gui/toolbars/messagestoolbar.cpp" line="324"/>
         <location filename="../src/librssguard/gui/toolbars/messagestoolbar.cpp" line="331"/>
         <source>Display all articles</source>
-        <translation type="unfinished"/>
+        <translation>Afficher tous les articles</translation>
     </message>
     <message>
         <location filename="../src/librssguard/gui/toolbars/messagestoolbar.cpp" line="341"/>
@@ -4556,7 +4558,7 @@ Login tokens expiration: %2</source>
     <message>
         <location filename="../src/librssguard/gui/toolbars/messagestoolbar.cpp" line="347"/>
         <source>Article list filter</source>
-        <translation type="unfinished"/>
+        <translation>Filtre de la liste d&apos;articles</translation>
     </message>
 </context>
 <context>
@@ -4579,7 +4581,7 @@ Login tokens expiration: %2</source>
     <message>
         <location filename="../src/librssguard/gui/messagesview.cpp" line="819"/>
         <source>Cannot run external tool</source>
-        <translation type="unfinished"/>
+        <translation>Impossible de lancer l&apos;outil externe</translation>
     </message>
     <message>
         <location filename="../src/librssguard/gui/messagesview.cpp" line="820"/>
@@ -4589,7 +4591,7 @@ Login tokens expiration: %2</source>
     <message>
         <location filename="../src/librssguard/gui/messagesview.cpp" line="369"/>
         <source>No external tools activated</source>
-        <translation type="unfinished"/>
+        <translation>Aucun outil externe est activé</translation>
     </message>
     <message>
         <location filename="../src/librssguard/gui/messagesview.cpp" line="332"/>
@@ -4677,7 +4679,7 @@ Login tokens expiration: %2</source>
         <location filename="../src/librssguard/network-web/networkfactory.cpp" line="156"/>
         <source>unknown error (%1)</source>
         <extracomment>Network status.</extracomment>
-        <translation type="unfinished"/>
+        <translation>erreur inconnue (%1)</translation>
     </message>
     <message>
         <location filename="../src/librssguard/network-web/networkfactory.cpp" line="140"/>
@@ -4688,12 +4690,12 @@ Login tokens expiration: %2</source>
     <message>
         <location filename="../src/librssguard/network-web/networkfactory.cpp" line="84"/>
         <source>access to content was denied</source>
-        <translation type="unfinished"/>
+        <translation>accès au contenu refusé</translation>
     </message>
     <message>
         <location filename="../src/librssguard/network-web/networkfactory.cpp" line="93"/>
         <source>connection timed out or was cancelled</source>
-        <translation type="unfinished"/>
+        <translation>la connection a expiré ou a été annulée</translation>
     </message>
     <message>
         <location filename="../src/librssguard/network-web/networkfactory.cpp" line="145"/>
@@ -4851,7 +4853,7 @@ Login tokens expiration: %2</source>
     <message>
         <location filename="../src/librssguard/services/newsblur/gui/newsbluraccountdetails.cpp" line="65"/>
         <source>Yeah.</source>
-        <translation type="unfinished"/>
+        <translation>Ouais.</translation>
     </message>
     <message>
         <location filename="../src/librssguard/services/newsblur/gui/newsbluraccountdetails.cpp" line="73"/>
@@ -4914,7 +4916,7 @@ Login tokens expiration: %2</source>
     <message>
         <location filename="../src/librssguard/gui/newspaperpreviewer.cpp" line="51"/>
         <source>Cannot show more articles</source>
-        <translation type="unfinished"/>
+        <translation>Impossible de montrer plus d&apos;articles</translation>
     </message>
     <message>
         <location filename="../src/librssguard/gui/newspaperpreviewer.cpp" line="52"/>
@@ -4928,7 +4930,7 @@ Login tokens expiration: %2</source>
         <location filename="../src/librssguard/miscellaneous/nodejs.cpp" line="76"/>
         <location filename="../src/librssguard/miscellaneous/nodejs.cpp" line="84"/>
         <source>file not found</source>
-        <translation type="unfinished"/>
+        <translation>fichier non trouvé</translation>
     </message>
 </context>
 <context>
@@ -4936,7 +4938,7 @@ Login tokens expiration: %2</source>
     <message>
         <location filename="../src/librssguard/network-web/oauth2service.cpp" line="92"/>
         <source>Click here to login.</source>
-        <translation type="unfinished"/>
+        <translation>Cliquez ici pour vous connecter. </translation>
     </message>
     <message>
         <location filename="../src/librssguard/network-web/oauth2service.cpp" line="222"/>
@@ -4956,7 +4958,7 @@ Login tokens expiration: %2</source>
     <message>
         <location filename="../src/librssguard/network-web/oauth2service.cpp" line="52"/>
         <source>You can close this window now. Go back to %1.</source>
-        <translation type="unfinished"/>
+        <translation>Vous pouvez maintenant fermer cette fenêtre. Retour à &amp;1</translation>
     </message>
     <message>
         <location filename="../src/librssguard/network-web/oauth2service.cpp" line="347"/>
@@ -5124,7 +5126,7 @@ Login tokens expiration: %2</source>
     <message>
         <location filename="../src/librssguard/services/owncloud/owncloudserviceroot.cpp" line="129"/>
         <source>cannot get list of feeds, network error &apos;%1&apos;</source>
-        <translation type="unfinished"/>
+        <translation>impossible d&apos;obtenir la liste de flux, erreur réseau &apos;%1&apos;</translation>
     </message>
 </context>
 <context>
@@ -5159,7 +5161,7 @@ Login tokens expiration: %2</source>
     <message>
         <location filename="../src/librssguard/services/standard/standardserviceroot.cpp" line="58"/>
         <source>Load initial set of feeds</source>
-        <translation type="unfinished"/>
+        <translation>Charger l&apos;ensemble initial de flux</translation>
     </message>
     <message>
         <location filename="../src/librssguard/services/tt-rss/ttrssserviceentrypoint.cpp" line="17"/>
@@ -5178,12 +5180,12 @@ At least API level %1 is required.</source>
     <message>
         <location filename="../src/librssguard/miscellaneous/systemfactory.cpp" line="266"/>
         <source>New version available</source>
-        <translation type="unfinished"/>
+        <translation>Une nouvelle version est disponible</translation>
     </message>
     <message>
         <location filename="../src/librssguard/miscellaneous/systemfactory.cpp" line="267"/>
         <source>Click the bubble for more information.</source>
-        <translation type="unfinished"/>
+        <translation>Cliquez la bulle pour plus d&apos;infos.</translation>
     </message>
     <message>
         <location filename="../src/librssguard/miscellaneous/externaltool.cpp" line="41"/>
@@ -5220,7 +5222,7 @@ Feedly is a secure space where you can privately organize and research the topic
     <message>
         <location filename="../src/librssguard/miscellaneous/notification.cpp" line="142"/>
         <source>New %1 version is available</source>
-        <translation type="unfinished"/>
+        <translation>Une nouvelle %1 version est disponible</translation>
     </message>
     <message>
         <location filename="../src/librssguard/miscellaneous/notification.cpp" line="145"/>
@@ -5267,7 +5269,7 @@ List of supported readers:</source>
     <message>
         <location filename="../src/librssguard/miscellaneous/notification.cpp" line="139"/>
         <source>Login failed</source>
-        <translation type="unfinished"/>
+        <translation>Connection échoué</translation>
     </message>
     <message>
         <location filename="../src/librssguard/services/standard/standardserviceentrypoint.cpp" line="16"/>
@@ -5282,7 +5284,7 @@ List of supported readers:</source>
     <message>
         <location filename="../src/librssguard/miscellaneous/skinfactory.cpp" line="576"/>
         <source>interesting stuff</source>
-        <translation type="unfinished"/>
+        <translation>trucs intéressants</translation>
     </message>
     <message>
         <location filename="../src/librssguard/miscellaneous/skinfactory.cpp" line="579"/>
@@ -5292,7 +5294,7 @@ List of supported readers:</source>
     <message>
         <location filename="../src/librssguard/miscellaneous/skinfactory.cpp" line="582"/>
         <source>errored items</source>
-        <translation type="unfinished"/>
+        <translation>éléments érronés</translation>
     </message>
     <message>
         <location filename="../src/librssguard/miscellaneous/skinfactory.cpp" line="585"/>
@@ -5302,7 +5304,7 @@ List of supported readers:</source>
     <message>
         <location filename="../src/librssguard/miscellaneous/skinfactory.cpp" line="588"/>
         <source>items with new articles</source>
-        <translation type="unfinished"/>
+        <translation>éléments avec des nouveaux articles</translation>
     </message>
     <message>
         <location filename="../src/librssguard/miscellaneous/skinfactory.cpp" line="591"/>
@@ -5322,7 +5324,7 @@ List of supported readers:</source>
     <message>
         <location filename="../src/librssguard/services/tt-rss/ttrssnetworkfactory.cpp" line="1146"/>
         <source>Published articles</source>
-        <translation type="unfinished"/>
+        <translation>Articles publiés</translation>
     </message>
     <message>
         <location filename="../src/librssguard/services/newsblur/newsblurentrypoint.cpp" line="33"/>
@@ -5350,7 +5352,7 @@ List of supported readers:</source>
     <message>
         <location filename="../src/librssguard/network-web/readability.cpp" line="60"/>
         <source>There is error: %1</source>
-        <translation type="unfinished"/>
+        <translation>Il y a une erreur: %1</translation>
     </message>
     <message>
         <location filename="../src/librssguard/network-web/readability.cpp" line="83"/>
@@ -5439,7 +5441,7 @@ List of supported readers:</source>
     <message>
         <location filename="../src/librssguard/services/reddit/gui/redditaccountdetails.cpp" line="74"/>
         <source>There is error: %1</source>
-        <translation type="unfinished"/>
+        <translation>Il y a une erreur: %1</translation>
     </message>
     <message>
         <location filename="../src/librssguard/services/reddit/gui/redditaccountdetails.cpp" line="80"/>
@@ -5517,7 +5519,7 @@ List of supported readers:</source>
     <message>
         <location filename="../src/librssguard/services/reddit/redditcategory.cpp" line="17"/>
         <source>Subscriptions</source>
-        <translation type="unfinished"/>
+        <translation>Abonnements</translation>
     </message>
 </context>
 <context>
@@ -5548,7 +5550,7 @@ List of supported readers:</source>
     <message>
         <location filename="../src/librssguard/services/reddit/redditnetworkfactory.cpp" line="320"/>
         <source>Reddit: authorization denied</source>
-        <translation type="unfinished"/>
+        <translation>Reddit: autorisation refusée</translation>
     </message>
     <message>
         <location filename="../src/librssguard/services/reddit/redditnetworkfactory.cpp" line="321"/>
@@ -5567,12 +5569,12 @@ Login tokens expiration: %2</source>
     <message>
         <location filename="../src/librssguard/services/reddit/redditserviceroot.cpp" line="129"/>
         <source>logged-in</source>
-        <translation type="unfinished"/>
+        <translation>connecté</translation>
     </message>
     <message>
         <location filename="../src/librssguard/services/reddit/redditserviceroot.cpp" line="129"/>
         <source>NOT logged-in</source>
-        <translation type="unfinished"/>
+        <translation>NON connecté</translation>
     </message>
 </context>
 <context>
@@ -5640,7 +5642,7 @@ Login tokens expiration: %2</source>
     <message>
         <location filename="../src/librssguard/gui/reusable/searchtextwidget.ui" line="32"/>
         <source>Search text</source>
-        <translation type="unfinished"/>
+        <translation>Chercher du texte</translation>
     </message>
     <message>
         <location filename="../src/librssguard/gui/reusable/searchtextwidget.ui" line="39"/>
@@ -5697,7 +5699,7 @@ Number of categories: %2</source>
         <extracomment>File filter for external browser selection dialog.
 ----------
 File filter for external e-mail selection dialog.</extracomment>
-        <translation type="unfinished"/>
+        <translation>Exécutables (*)</translation>
     </message>
     <message>
         <location filename="../src/librssguard/gui/settings/settingsbrowsermail.cpp" line="113"/>
@@ -5709,7 +5711,7 @@ File filter for external e-mail selection dialog.</extracomment>
     <message>
         <location filename="../src/librssguard/gui/settings/settingsbrowsermail.cpp" line="151"/>
         <source>Select e-mail executable</source>
-        <translation type="unfinished"/>
+        <translation>Sélectionner l&apos;exécutable e-mail</translation>
     </message>
     <message>
         <location filename="../src/librssguard/gui/settings/settingsbrowsermail.cpp" line="177"/>
@@ -5719,7 +5721,7 @@ File filter for external e-mail selection dialog.</extracomment>
     <message>
         <location filename="../src/librssguard/gui/settings/settingsbrowsermail.cpp" line="186"/>
         <source>Mozilla Thunderbird</source>
-        <translation type="unfinished"/>
+        <translation>Mozilla Thunderbird</translation>
     </message>
     <message>
         <location filename="../src/librssguard/gui/settings/settingsbrowsermail.cpp" line="301"/>
@@ -5739,7 +5741,7 @@ File filter for external e-mail selection dialog.</extracomment>
     <message>
         <location filename="../src/librssguard/gui/settings/settingsbrowsermail.ui" line="24"/>
         <source>Do not accept any incoming cookies</source>
-        <translation type="unfinished"/>
+        <translation>Ne pas accepter les cookies entrants</translation>
     </message>
     <message>
         <location filename="../src/librssguard/gui/settings/settingsbrowsermail.ui" line="31"/>
@@ -5749,7 +5751,7 @@ File filter for external e-mail selection dialog.</extracomment>
     <message>
         <location filename="../src/librssguard/gui/settings/settingsbrowsermail.ui" line="39"/>
         <source>WebEngine</source>
-        <translation type="unfinished"/>
+        <translation>MoteurWeb</translation>
     </message>
     <message>
         <location filename="../src/librssguard/gui/settings/settingsbrowsermail.ui" line="45"/>
@@ -5803,13 +5805,13 @@ File filter for external e-mail selection dialog.</extracomment>
         <location filename="../src/librssguard/gui/settings/settingsbrowsermail.ui" line="255"/>
         <location filename="../src/librssguard/gui/settings/settingsbrowsermail.cpp" line="40"/>
         <source>Parameters</source>
-        <translation type="unfinished"/>
+        <translation>Paramètres</translation>
     </message>
     <message>
         <location filename="../src/librssguard/gui/settings/settingsbrowsermail.ui" line="148"/>
         <location filename="../src/librssguard/gui/settings/settingsbrowsermail.ui" line="265"/>
         <source>Parameters passed to executable</source>
-        <translation type="unfinished"/>
+        <translation>Paramètres relayés à l&apos;éxécutable</translation>
     </message>
     <message>
         <location filename="../src/librssguard/gui/settings/settingsbrowsermail.ui" line="155"/>
@@ -5830,7 +5832,7 @@ File filter for external e-mail selection dialog.</extracomment>
     <message>
         <location filename="../src/librssguard/gui/settings/settingsbrowsermail.ui" line="184"/>
         <source>External e-mail client</source>
-        <translation type="unfinished"/>
+        <translation>Client e-mail éxterieur</translation>
     </message>
     <message>
         <location filename="../src/librssguard/gui/settings/settingsbrowsermail.ui" line="206"/>
@@ -5850,7 +5852,7 @@ File filter for external e-mail selection dialog.</extracomment>
     <message>
         <location filename="../src/librssguard/gui/settings/settingsbrowsermail.ui" line="286"/>
         <source>Select client</source>
-        <translation type="unfinished"/>
+        <translation>Sélectionner un client</translation>
     </message>
     <message>
         <location filename="../src/librssguard/gui/settings/settingsbrowsermail.cpp" line="29"/>
@@ -5862,22 +5864,22 @@ File filter for external e-mail selection dialog.</extracomment>
     <message>
         <location filename="../src/librssguard/gui/settings/settingsbrowsermail.ui" line="301"/>
         <source>External tools</source>
-        <translation type="unfinished"/>
+        <translation>Outils éxterieurs</translation>
     </message>
     <message>
         <location filename="../src/librssguard/gui/settings/settingsbrowsermail.ui" line="336"/>
         <source>&amp;Add tool</source>
-        <translation type="unfinished"/>
+        <translation>&amp;Ajouter un outil</translation>
     </message>
     <message>
         <location filename="../src/librssguard/gui/settings/settingsbrowsermail.ui" line="346"/>
         <source>&amp;Edit selected tool</source>
-        <translation type="unfinished"/>
+        <translation>&amp;Modifier l&apos;outil sélectionné</translation>
     </message>
     <message>
         <location filename="../src/librssguard/gui/settings/settingsbrowsermail.ui" line="356"/>
         <source>&amp;Delete selected tool</source>
-        <translation type="unfinished"/>
+        <translation>&amp;Supprimer l&apos;outil sélectionné</translation>
     </message>
     <message>
         <location filename="../src/librssguard/gui/settings/settingsbrowsermail.cpp" line="34"/>
@@ -5887,7 +5889,7 @@ File filter for external e-mail selection dialog.</extracomment>
     <message>
         <location filename="../src/librssguard/gui/settings/settingsbrowsermail.cpp" line="288"/>
         <source>Select external tool</source>
-        <translation type="unfinished"/>
+        <translation>Sélectionner un outil externe</translation>
     </message>
     <message>
         <location filename="../src/librssguard/gui/settings/settingsbrowsermail.cpp" line="300"/>
@@ -5902,7 +5904,7 @@ File filter for external e-mail selection dialog.</extracomment>
     <message>
         <location filename="../src/librssguard/gui/settings/settingsbrowsermail.h" line="46"/>
         <source>Network &amp; web &amp; tools</source>
-        <translation type="unfinished"/>
+        <translation>Réseau &amp; web &amp; outils</translation>
     </message>
 </context>
 <context>
@@ -6048,17 +6050,17 @@ Authors of this application are NOT responsible for lost data.</source>
     <message>
         <location filename="../src/librssguard/gui/settings/settingsdownloads.cpp" line="26"/>
         <source>Select downloads target directory</source>
-        <translation type="unfinished"/>
+        <translation>Sélectionner le répertoire de téléchargements</translation>
     </message>
     <message>
         <location filename="../src/librssguard/gui/settings/settingsdownloads.ui" line="17"/>
         <source>Open download manager when new download is started</source>
-        <translation type="unfinished"/>
+        <translation>Ouvrir le géstionnaire de téléchargements quand un nouveau téléchargement est démarré</translation>
     </message>
     <message>
         <location filename="../src/librssguard/gui/settings/settingsdownloads.ui" line="24"/>
         <source>Target directory for downloaded files</source>
-        <translation type="unfinished"/>
+        <translation>Répertoire cible pour les fichiers téléchargés</translation>
     </message>
     <message>
         <location filename="../src/librssguard/gui/settings/settingsdownloads.ui" line="32"/>
@@ -6078,12 +6080,12 @@ Authors of this application are NOT responsible for lost data.</source>
     <message>
         <location filename="../src/librssguard/gui/settings/settingsdownloads.ui" line="74"/>
         <source>Ask for each individual downloaded file</source>
-        <translation type="unfinished"/>
+        <translation>Demander pour chaque fichier téléchargé</translation>
     </message>
     <message>
         <location filename="../src/librssguard/gui/settings/settingsdownloads.h" line="29"/>
         <source>Downloads</source>
-        <translation type="unfinished"/>
+        <translation>Téléchargements</translation>
     </message>
 </context>
 <context>
@@ -6091,7 +6093,7 @@ Authors of this application are NOT responsible for lost data.</source>
     <message>
         <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.cpp" line="225"/>
         <source>Select new font</source>
-        <translation type="unfinished"/>
+        <translation>Sélectionner une nouvelle police</translation>
     </message>
     <message>
         <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.cpp" line="30"/>
@@ -6111,7 +6113,7 @@ Authors of this application are NOT responsible for lost data.</source>
     <message numerus="yes">
         <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.cpp" line="49"/>
         <source>day(s)</source>
-        <translation type="unfinished"><numerusform></numerusform><numerusform></numerusform><numerusform></numerusform></translation>
+        <translation><numerusform>jour</numerusform><numerusform>jours</numerusform><numerusform>jour(s)</numerusform></translation>
     </message>
     <message>
         <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.cpp" line="55"/>
@@ -6121,7 +6123,7 @@ Authors of this application are NOT responsible for lost data.</source>
     <message>
         <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="21"/>
         <source>Feed fetching</source>
-        <translation type="unfinished"/>
+        <translation>Extraction de flux</translation>
     </message>
     <message>
         <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="27"/>
@@ -6131,7 +6133,7 @@ Authors of this application are NOT responsible for lost data.</source>
     <message>
         <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="53"/>
         <source>Auto-fetch articles for all feeds every</source>
-        <translation type="unfinished"/>
+        <translation>Extraire les articles automatiquement de tous les flux tout les</translation>
     </message>
     <message>
         <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="79"/>
@@ -6167,36 +6169,36 @@ Authors of this application are NOT responsible for lost data.</source>
         <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="135"/>
         <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="441"/>
         <source>Row height</source>
-        <translation type="unfinished"/>
+        <translation>Hauteur de rang</translation>
     </message>
     <message>
         <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="172"/>
         <source>Feed list font</source>
-        <translation type="unfinished"/>
+        <translation>Police de la liste de flux</translation>
     </message>
     <message>
         <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="184"/>
         <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="365"/>
         <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="580"/>
         <source>Font preview</source>
-        <translation type="unfinished"/>
+        <translation>Aperçu de la police</translation>
     </message>
     <message>
         <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="194"/>
         <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="375"/>
         <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="590"/>
         <source>&amp;Change font</source>
-        <translation type="unfinished"/>
+        <translation>&amp;Changer la police</translation>
     </message>
     <message>
         <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="219"/>
         <source>Article count format</source>
-        <translation type="unfinished"/>
+        <translation>Le format du compte d&apos;articles</translation>
     </message>
     <message>
         <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="248"/>
         <source>Hide article counts if there are no unread articles</source>
-        <translation type="unfinished"/>
+        <translation>Cacher les comptes d&apos;articles si il n&apos;y a pas d&apos;articles non-lus</translation>
     </message>
     <message>
         <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="255"/>
@@ -6216,7 +6218,7 @@ Authors of this application are NOT responsible for lost data.</source>
     <message>
         <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="276"/>
         <source>Remove all read articles from all feeds on application exit</source>
-        <translation type="unfinished"/>
+        <translation>Enlever tous les articles lus de tous les flux à la fermeture de l&apos;application</translation>
     </message>
     <message>
         <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="283"/>
@@ -6226,7 +6228,7 @@ Authors of this application are NOT responsible for lost data.</source>
     <message>
         <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="304"/>
         <source>Internal article viewer</source>
-        <translation type="unfinished"/>
+        <translation>Visionneur d&apos;articles interne</translation>
     </message>
     <message>
         <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="603"/>
@@ -6251,12 +6253,12 @@ Authors of this application are NOT responsible for lost data.</source>
     <message>
         <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="310"/>
         <source>Display attachments directly in article</source>
-        <translation type="unfinished"/>
+        <translation>Afficher les pièces jointes directement dans les articles</translation>
     </message>
     <message>
         <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="319"/>
         <source>Limit height of pictures</source>
-        <translation type="unfinished"/>
+        <translation>Limite de la hauteur des images</translation>
     </message>
     <message>
         <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="403"/>
@@ -6266,12 +6268,12 @@ Authors of this application are NOT responsible for lost data.</source>
     <message>
         <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="411"/>
         <source>Articles list</source>
-        <translation type="unfinished"/>
+        <translation>Liste d&apos;articles</translation>
     </message>
     <message>
         <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="417"/>
         <source>Keep article selection in the middle of the article list viewport</source>
-        <translation type="unfinished"/>
+        <translation>Garder la sélection d&apos;articles au milieu de la liste d&apos;articles</translation>
     </message>
     <message>
         <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="424"/>
@@ -6286,7 +6288,7 @@ Authors of this application are NOT responsible for lost data.</source>
     <message>
         <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="499"/>
         <source>Use custom date/time format</source>
-        <translation type="unfinished"/>
+        <translation>Utiliser un format date/heure personnalisé</translation>
     </message>
     <message>
         <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="525"/>
@@ -6296,7 +6298,7 @@ Authors of this application are NOT responsible for lost data.</source>
     <message>
         <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="568"/>
         <source>Article list font</source>
-        <translation type="unfinished"/>
+        <translation>Police de la liste d&apos;articles</translation>
     </message>
     <message>
         <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="551"/>
@@ -6347,7 +6349,7 @@ Authors of this application are NOT responsible for lost data.</source>
     <message>
         <location filename="../src/librssguard/gui/settings/settingsgui.cpp" line="34"/>
         <source>Forced skin colors</source>
-        <translation type="unfinished"/>
+        <translation>Couleurs de thème forcées</translation>
     </message>
     <message>
         <location filename="../src/librssguard/gui/settings/settingsgui.cpp" line="276"/>
@@ -6378,7 +6380,7 @@ Authors of this application are NOT responsible for lost data.</source>
         <location filename="../src/librssguard/gui/settings/settingsgui.cpp" line="174"/>
         <source>system icon theme</source>
         <extracomment>Label for disabling icon theme.</extracomment>
-        <translation type="unfinished"/>
+        <translation>icône du thème système</translation>
     </message>
     <message>
         <location filename="../src/librssguard/gui/settings/settingsgui.cpp" line="176"/>
@@ -6393,7 +6395,7 @@ Authors of this application are NOT responsible for lost data.</source>
     <message>
         <location filename="../src/librssguard/gui/settings/settingsgui.cpp" line="34"/>
         <source>Forced style</source>
-        <translation type="unfinished"/>
+        <translation>Style forcé</translation>
     </message>
     <message>
         <location filename="../src/librssguard/gui/settings/settingsgui.cpp" line="43"/>
@@ -6416,7 +6418,7 @@ Description: %3</source>
     <message>
         <location filename="../src/librssguard/gui/settings/settingsgui.cpp" line="102"/>
         <source> = default icon size</source>
-        <translation type="unfinished"/>
+        <translation>= taille d&apos;icône par défault</translation>
     </message>
     <message>
         <location filename="../src/librssguard/gui/settings/settingsgui.ui" line="27"/>
@@ -6431,22 +6433,22 @@ Description: %3</source>
     <message>
         <location filename="../src/librssguard/gui/settings/settingsgui.ui" line="46"/>
         <source>Style</source>
-        <translation type="unfinished"/>
+        <translation>Style</translation>
     </message>
     <message>
         <location filename="../src/librssguard/gui/settings/settingsgui.ui" line="59"/>
         <source>Skin</source>
-        <translation type="unfinished"/>
+        <translation>Thème</translation>
     </message>
     <message>
         <location filename="../src/librssguard/gui/settings/settingsgui.ui" line="112"/>
         <source>Use skin colors</source>
-        <translation type="unfinished"/>
+        <translation>Utiliser les couleurs du thème</translation>
     </message>
     <message>
         <location filename="../src/librssguard/gui/settings/settingsgui.ui" line="120"/>
         <source>Custom skin colors</source>
-        <translation type="unfinished"/>
+        <translation>Couleurs de thème personalisées</translation>
     </message>
     <message>
         <location filename="../src/librssguard/gui/settings/settingsgui.ui" line="129"/>
@@ -6466,13 +6468,13 @@ Description: %3</source>
     <message>
         <location filename="../src/librssguard/gui/settings/settingsgui.ui" line="165"/>
         <source>Use monochrome icon</source>
-        <translation type="unfinished"/>
+        <translation>Utiliser l&apos;icône monochrome</translation>
     </message>
     <message>
         <location filename="../src/librssguard/gui/settings/settingsgui.ui" line="172"/>
         <location filename="../src/librssguard/gui/settings/settingsgui.ui" line="216"/>
         <source>Display count of unread messages</source>
-        <translation type="unfinished"/>
+        <translation>Afficher le nombre de messages non-lus</translation>
     </message>
     <message>
         <location filename="../src/librssguard/gui/settings/settingsgui.ui" line="179"/>
@@ -6522,17 +6524,17 @@ Description: %3</source>
     <message>
         <location filename="../src/librssguard/gui/settings/settingsgui.ui" line="287"/>
         <source>Toolbars</source>
-        <translation type="unfinished"/>
+        <translation>Barres d&apos;outils</translation>
     </message>
     <message>
         <location filename="../src/librssguard/gui/settings/settingsgui.ui" line="300"/>
         <source>Toolbar for feeds list</source>
-        <translation type="unfinished"/>
+        <translation>Barre d&apos;outil pour la liste de flux</translation>
     </message>
     <message>
         <location filename="../src/librssguard/gui/settings/settingsgui.ui" line="305"/>
         <source>Toolbar for articles list</source>
-        <translation type="unfinished"/>
+        <translation>Barre d&apos;outil pour la liste d&apos;articles</translation>
     </message>
     <message>
         <location filename="../src/librssguard/gui/settings/settingsgui.ui" line="310"/>
@@ -6552,7 +6554,7 @@ Description: %3</source>
     <message>
         <location filename="../src/librssguard/gui/settings/settingsgui.ui" line="424"/>
         <source>Icon size</source>
-        <translation type="unfinished"/>
+        <translation>Taille d&apos;icône</translation>
     </message>
     <message>
         <location filename="../src/librssguard/gui/settings/settingsgui.h" line="35"/>
@@ -6588,7 +6590,7 @@ Description: %3</source>
     <message>
         <location filename="../src/librssguard/gui/settings/settingsnodejs.cpp" line="17"/>
         <source>What is Node.js?</source>
-        <translation type="unfinished"/>
+        <translation>Qu&apos;est-ce que Node.js?</translation>
     </message>
     <message>
         <location filename="../src/librssguard/gui/settings/settingsnodejs.cpp" line="18"/>
@@ -6686,12 +6688,12 @@ Also, there are some built-in sounds. Just start typing &quot;:&quot; and they w
     <message>
         <location filename="../src/librssguard/gui/settings/settingsnotifications.ui" line="17"/>
         <source>Enable notifications</source>
-        <translation type="unfinished"/>
+        <translation>Activer les notifications</translation>
     </message>
     <message>
         <location filename="../src/librssguard/gui/settings/settingsnotifications.h" line="27"/>
         <source>Notifications</source>
-        <translation type="unfinished"/>
+        <translation>Notifications</translation>
     </message>
 </context>
 <context>
@@ -6725,22 +6727,22 @@ Also, there are some built-in sounds. Just start typing &quot;:&quot; and they w
     <message>
         <location filename="../src/librssguard/gui/notifications/singlenotificationeditor.cpp" line="46"/>
         <source>Select sound file</source>
-        <translation type="unfinished"/>
+        <translation>Sélectionner fichier son</translation>
     </message>
     <message>
         <location filename="../src/librssguard/gui/notifications/singlenotificationeditor.cpp" line="48"/>
         <source>WAV files (*.wav);;MP3 files (*.mp3)</source>
-        <translation type="unfinished"/>
+        <translation>Fichers WAV (*.wav);;Fichiers MP3 (*.mp3)</translation>
     </message>
     <message>
         <location filename="../src/librssguard/gui/notifications/singlenotificationeditor.ui" line="23"/>
         <source>Balloon notification</source>
-        <translation type="unfinished"/>
+        <translation>Notification ballon</translation>
     </message>
     <message>
         <location filename="../src/librssguard/gui/notifications/singlenotificationeditor.ui" line="51"/>
         <source>Sound</source>
-        <translation type="unfinished"/>
+        <translation>Son</translation>
     </message>
     <message>
         <location filename="../src/librssguard/gui/notifications/singlenotificationeditor.ui" line="63"/>
@@ -6755,12 +6757,12 @@ Also, there are some built-in sounds. Just start typing &quot;:&quot; and they w
     <message>
         <location filename="../src/librssguard/gui/notifications/singlenotificationeditor.ui" line="77"/>
         <source>&amp;Play</source>
-        <translation type="unfinished"/>
+        <translation>&amp;Jouer</translation>
     </message>
     <message>
         <location filename="../src/librssguard/gui/notifications/singlenotificationeditor.ui" line="96"/>
         <source>Volume</source>
-        <translation type="unfinished"/>
+        <translation>Volume</translation>
     </message>
 </context>
 <context>
@@ -6769,12 +6771,12 @@ Also, there are some built-in sounds. Just start typing &quot;:&quot; and they w
         <location filename="../src/librssguard/miscellaneous/skinfactory.cpp" line="215"/>
         <location filename="../src/librssguard/miscellaneous/skinfactory.cpp" line="218"/>
         <source>This page was blocked by AdBlock</source>
-        <translation type="unfinished"/>
+        <translation>Cette page a été bloquée par AdBlock</translation>
     </message>
     <message>
         <location filename="../src/librssguard/miscellaneous/skinfactory.cpp" line="216"/>
         <source>Blocked URL: &quot;%1&quot;&lt;br/&gt;Used filter: &quot;%2&quot;</source>
-        <translation type="unfinished"/>
+        <translation>Lien bloqué: &quot;%1&quot;&lt;br/&gt;Filtre utilisé: &quot;%2&quot;</translation>
     </message>
     <message>
         <location filename="../src/librssguard/miscellaneous/skinfactory.cpp" line="260"/>
@@ -6815,7 +6817,7 @@ Also, there are some built-in sounds. Just start typing &quot;:&quot; and they w
     <message>
         <location filename="../src/librssguard/services/standard/standardcategory.cpp" line="43"/>
         <source>Cannot save category data</source>
-        <translation type="unfinished"/>
+        <translation>Impossible de sauvegarder les données de catégorie</translation>
     </message>
 </context>
 <context>
@@ -6828,22 +6830,22 @@ Also, there are some built-in sounds. Just start typing &quot;:&quot; and they w
     <message>
         <location filename="../src/librssguard/services/standard/standardfeed.cpp" line="174"/>
         <source>Local file</source>
-        <translation type="unfinished"/>
+        <translation>Fichier local</translation>
     </message>
     <message>
         <location filename="../src/librssguard/services/standard/standardfeed.cpp" line="177"/>
         <source>Unknown</source>
-        <translation type="unfinished"/>
+        <translation>Inconnu</translation>
     </message>
     <message>
         <location filename="../src/librssguard/services/standard/standardfeed.cpp" line="209"/>
         <source>Cannot save data for feed: %1</source>
-        <translation type="unfinished"/>
+        <translation>Impossible de sauvegarder les données pour le flux: %1</translation>
     </message>
     <message>
         <location filename="../src/librssguard/services/standard/standardfeed.cpp" line="297"/>
         <source>JSON error &apos;%1&apos;</source>
-        <translation type="unfinished"/>
+        <translation>Erreur JSON &apos;%1&apos;</translation>
     </message>
     <message>
         <location filename="../src/librssguard/services/standard/standardfeed.cpp" line="357"/>
@@ -6870,12 +6872,12 @@ Type: %3</source>
     <message>
         <location filename="../src/librssguard/services/standard/standardfeed.cpp" line="208"/>
         <source>Cannot save feed data</source>
-        <translation type="unfinished"/>
+        <translation>Impossible de sauvegarder les données du flux</translation>
     </message>
     <message>
         <location filename="../src/librssguard/services/standard/standardfeed.cpp" line="477"/>
         <source>Cannot move feed</source>
-        <translation type="unfinished"/>
+        <translation>Impossible de déplacer le flux</translation>
     </message>
 </context>
 <context>
@@ -6918,7 +6920,7 @@ Type: %3</source>
     <message>
         <location filename="../src/librssguard/services/standard/gui/standardfeeddetails.cpp" line="78"/>
         <source>Fetch icon from feed</source>
-        <translation type="unfinished"/>
+        <translation>Chercher l&apos;icône du flux</translation>
     </message>
     <message>
         <location filename="../src/librssguard/services/standard/gui/standardfeeddetails.cpp" line="88"/>
@@ -6983,7 +6985,7 @@ Type: %3</source>
     <message>
         <location filename="../src/librssguard/services/standard/gui/standardfeeddetails.cpp" line="240"/>
         <source>The URL is ok.</source>
-        <translation type="unfinished"/>
+        <translation>Le lien est ok.</translation>
     </message>
     <message>
         <location filename="../src/librssguard/services/standard/gui/standardfeeddetails.cpp" line="244"/>
@@ -6993,7 +6995,7 @@ Type: %3</source>
     <message>
         <location filename="../src/librssguard/services/standard/gui/standardfeeddetails.cpp" line="248"/>
         <source>The URL is empty.</source>
-        <translation type="unfinished"/>
+        <translation>Le lien est vide.</translation>
     </message>
     <message>
         <location filename="../src/librssguard/services/standard/gui/standardfeeddetails.cpp" line="284"/>
@@ -7003,7 +7005,7 @@ Type: %3</source>
     <message>
         <location filename="../src/librssguard/services/standard/gui/standardfeeddetails.cpp" line="286"/>
         <source>Images (%1)</source>
-        <translation type="unfinished"/>
+        <translation>Images (%1)</translation>
     </message>
     <message>
         <location filename="../src/librssguard/services/standard/gui/standardfeeddetails.cpp" line="292"/>
@@ -7060,7 +7062,7 @@ Type: %3</source>
     <message>
         <location filename="../src/librssguard/services/standard/gui/standardfeeddetails.cpp" line="253"/>
         <source>The source is empty.</source>
-        <translation type="unfinished"/>
+        <translation>La source est vide.</translation>
     </message>
     <message>
         <location filename="../src/librssguard/services/standard/gui/standardfeeddetails.cpp" line="266"/>
@@ -7076,13 +7078,13 @@ Type: %3</source>
         <location filename="../src/librssguard/services/standard/gui/standardfeeddetails.cpp" line="154"/>
         <location filename="../src/librssguard/services/standard/gui/standardfeeddetails.cpp" line="204"/>
         <source>Script failed: %1</source>
-        <translation type="unfinished"/>
+        <translation>Le script a échoué: %1</translation>
     </message>
     <message>
         <location filename="../src/librssguard/services/standard/gui/standardfeeddetails.cpp" line="159"/>
         <location filename="../src/librssguard/services/standard/gui/standardfeeddetails.cpp" line="209"/>
         <source>Network error: %1</source>
-        <translation type="unfinished"/>
+        <translation>Erreur réseau: %1</translation>
     </message>
     <message>
         <location filename="../src/librssguard/services/standard/gui/standardfeeddetails.cpp" line="164"/>
@@ -7100,7 +7102,9 @@ Type: %3</source>
         <source>You can use URL as a source of your feed or you can produce your feed with custom script.
 
 Also, you can post-process generated feed data with yet another script if you wish. These are advanced features and make sure to read the documentation before your use them.</source>
-        <translation type="unfinished"/>
+        <translation>Vous pouvez utiliser le lien comme source pour votre flux ou vous pouvez produire votre flux avec un script personnalisé.
+
+Vous pouvez aussi post-traiter la data de flux avec encore un autre script si vous le souhaitez. Ce sont des caractéristiques avancées, pour plus d&apos;informations veuillez lire la documentation avant de les utiliser.</translation>
     </message>
     <message>
         <location filename="../src/librssguard/services/standard/gui/standardfeeddetails.ui" line="14"/>
@@ -7145,7 +7149,7 @@ Also, you can post-process generated feed data with yet another script if you wi
     <message>
         <location filename="../src/librssguard/services/standard/gui/standardfeeddetails.ui" line="100"/>
         <source>Source</source>
-        <translation type="unfinished"/>
+        <translation>Source</translation>
     </message>
     <message>
         <location filename="../src/librssguard/services/standard/gui/standardfeeddetails.ui" line="129"/>
@@ -7183,7 +7187,7 @@ Also, you can post-process generated feed data with yet another script if you wi
     <message>
         <location filename="../src/librssguard/services/standard/standardserviceroot.cpp" line="60"/>
         <source>Do you want to load initial set of feeds?</source>
-        <translation type="unfinished"/>
+        <translation>Voulez-vous charger l&apos;ensemble de flux initiaux?</translation>
     </message>
     <message>
         <location filename="../src/librssguard/services/standard/standardserviceroot.cpp" line="88"/>
@@ -7208,17 +7212,17 @@ Also, you can post-process generated feed data with yet another script if you wi
     <message>
         <location filename="../src/librssguard/services/standard/standardserviceroot.cpp" line="59"/>
         <source>This new account does not include any feeds. You can now add default set of feeds.</source>
-        <translation type="unfinished"/>
+        <translation>Ce nouveau compte ne contien aucun flux. Vous pouvez maintenant ajouter l&apos;ensemble de flux de base.</translation>
     </message>
     <message>
         <location filename="../src/librssguard/services/standard/standardserviceroot.cpp" line="131"/>
         <source>Cannot add item</source>
-        <translation type="unfinished"/>
+        <translation>Impossible d&apos;ajouter l&apos;élément</translation>
     </message>
     <message>
         <location filename="../src/librssguard/services/standard/standardserviceroot.cpp" line="132"/>
         <source>Cannot add feed because another critical operation is ongoing.</source>
-        <translation type="unfinished"/>
+        <translation>Impossible d&apos;ajouter un flux car une autre opération critique est en cours.</translation>
     </message>
     <message>
         <location filename="../src/librssguard/services/standard/standardserviceroot.cpp" line="392"/>
@@ -7228,12 +7232,12 @@ Also, you can post-process generated feed data with yet another script if you wi
     <message>
         <location filename="../src/librssguard/services/standard/standardserviceroot.cpp" line="393"/>
         <source>Cannot add category because another critical operation is ongoing.</source>
-        <translation type="unfinished"/>
+        <translation>Impossible d&apos;ajouter une catégorie car une autre opération critique est en cours.</translation>
     </message>
     <message>
         <location filename="../src/librssguard/services/standard/standardserviceroot.cpp" line="380"/>
         <source>Import was completely successful.</source>
-        <translation type="unfinished"/>
+        <translation>L&apos;import a réussi.</translation>
     </message>
     <message>
         <location filename="../src/librssguard/services/standard/standardserviceroot.cpp" line="377"/>
@@ -7246,12 +7250,12 @@ Also, you can post-process generated feed data with yet another script if you wi
     <message>
         <location filename="../src/librssguard/gui/toolbars/statusbar.cpp" line="26"/>
         <source>Feed update progress bar</source>
-        <translation type="unfinished"/>
+        <translation>Barre de mise à jour de flux</translation>
     </message>
     <message>
         <location filename="../src/librssguard/gui/toolbars/statusbar.cpp" line="36"/>
         <source>File download progress bar</source>
-        <translation type="unfinished"/>
+        <translation>Barre de progrès de téléchargement de fichier</translation>
     </message>
     <message>
         <location filename="../src/librssguard/gui/toolbars/statusbar.cpp" line="125"/>
@@ -7264,7 +7268,7 @@ Also, you can post-process generated feed data with yet another script if you wi
     <message>
         <location filename="../src/librssguard/miscellaneous/systemfactory.cpp" line="230"/>
         <source>anonymous</source>
-        <translation type="unfinished"/>
+        <translation>anonyme</translation>
     </message>
     <message>
         <location filename="../src/librssguard/miscellaneous/systemfactory.cpp" line="325"/>
@@ -7274,7 +7278,7 @@ Also, you can post-process generated feed data with yet another script if you wi
     <message>
         <location filename="../src/librssguard/miscellaneous/systemfactory.cpp" line="270"/>
         <source>See new version info</source>
-        <translation type="unfinished"/>
+        <translation>Veuillez voir les infos de la nouvelle version</translation>
     </message>
 </context>
 <context>
@@ -7319,7 +7323,7 @@ Unread news: %2</source>
     <message>
         <location filename="../src/librssguard/gui/tabwidget.cpp" line="78"/>
         <source>Downloads</source>
-        <translation type="unfinished"/>
+        <translation>Téléchargements</translation>
     </message>
     <message>
         <location filename="../src/librssguard/gui/tabwidget.cpp" line="215"/>
@@ -7347,7 +7351,7 @@ Unread news: %2</source>
     <message>
         <location filename="../src/librssguard/gui/webviewers/qtextbrowser/textbrowserviewer.cpp" line="347"/>
         <source>Enable external resources</source>
-        <translation type="unfinished"/>
+        <translation>Activer les ressources éxterieurs</translation>
     </message>
     <message>
         <location filename="../src/librssguard/gui/webviewers/qtextbrowser/textbrowserviewer.cpp" line="350"/>
@@ -7400,7 +7404,7 @@ Unread news: %2</source>
         <location filename="../src/librssguard/gui/toolbars/toolbareditor.cpp" line="181"/>
         <location filename="../src/librssguard/gui/toolbars/toolbareditor.cpp" line="184"/>
         <source>Separator</source>
-        <translation type="unfinished"/>
+        <translation>Séparateur</translation>
     </message>
     <message>
         <location filename="../src/librssguard/gui/toolbars/toolbareditor.cpp" line="170"/>
@@ -7420,12 +7424,12 @@ Unread news: %2</source>
     <message>
         <location filename="../src/librssguard/gui/toolbars/toolbareditor.ui" line="76"/>
         <source>Move action up</source>
-        <translation type="unfinished"/>
+        <translation>Déplacer l&apos;action vers le haut</translation>
     </message>
     <message>
         <location filename="../src/librssguard/gui/toolbars/toolbareditor.ui" line="89"/>
         <source>Move action down</source>
-        <translation type="unfinished"/>
+        <translation>Déplacer l&apos;action vers le bas</translation>
     </message>
     <message>
         <location filename="../src/librssguard/gui/toolbars/toolbareditor.ui" line="109"/>
@@ -7440,17 +7444,17 @@ Unread news: %2</source>
     <message>
         <location filename="../src/librssguard/gui/toolbars/toolbareditor.ui" line="142"/>
         <source>Add selected action</source>
-        <translation type="unfinished"/>
+        <translation>Ajouter l&apos;action sélectionnée</translation>
     </message>
     <message>
         <location filename="../src/librssguard/gui/toolbars/toolbareditor.ui" line="155"/>
         <source>Delete selected action</source>
-        <translation type="unfinished"/>
+        <translation>Supprimer l&apos;action sélectionnée</translation>
     </message>
     <message>
         <location filename="../src/librssguard/gui/toolbars/toolbareditor.ui" line="168"/>
         <source>Delete all actions</source>
-        <translation type="unfinished"/>
+        <translation>Supprimer toutes les actions</translation>
     </message>
     <message>
         <location filename="../src/librssguard/gui/toolbars/toolbareditor.ui" line="181"/>
@@ -7486,12 +7490,12 @@ Unread news: %2</source>
     <message>
         <location filename="../src/librssguard/services/tt-rss/gui/ttrssaccountdetails.cpp" line="29"/>
         <source>HTTP authentication username</source>
-        <translation type="unfinished"/>
+        <translation>Nom d&apos;utilisateur d&apos;authentification HTTP</translation>
     </message>
     <message>
         <location filename="../src/librssguard/services/tt-rss/gui/ttrssaccountdetails.cpp" line="30"/>
         <source>HTTP authentication password</source>
-        <translation type="unfinished"/>
+        <translation>Mot de passe d&apos;authentification HTTP</translation>
     </message>
     <message>
         <location filename="../src/librssguard/services/tt-rss/gui/ttrssaccountdetails.cpp" line="31"/>
@@ -7528,13 +7532,13 @@ Unread news: %2</source>
         <location filename="../src/librssguard/services/tt-rss/gui/ttrssaccountdetails.cpp" line="98"/>
         <location filename="../src/librssguard/services/tt-rss/gui/ttrssaccountdetails.cpp" line="99"/>
         <source>Entered credentials are incorrect.</source>
-        <translation type="unfinished"/>
+        <translation>Les identifiants fournis sont incorrectes.</translation>
     </message>
     <message>
         <location filename="../src/librssguard/services/tt-rss/gui/ttrssaccountdetails.cpp" line="103"/>
         <location filename="../src/librssguard/services/tt-rss/gui/ttrssaccountdetails.cpp" line="104"/>
         <source>Other error occurred, contact developers.</source>
-        <translation type="unfinished"/>
+        <translation>Une autre erreur c&apos;est présentée, veuillez contacter le(s) développeur(s)</translation>
     </message>
     <message>
         <location filename="../src/librssguard/services/tt-rss/gui/ttrssaccountdetails.cpp" line="109"/>
@@ -7616,7 +7620,7 @@ Unread news: %2</source>
     <message>
         <location filename="../src/librssguard/services/tt-rss/gui/ttrssaccountdetails.cpp" line="184"/>
         <source>URL should NOT end with &quot;/api/&quot;.</source>
-        <translation type="unfinished"/>
+        <translation>Le lien ne doit PAS se terminer avec &quot;/api&quot;.</translation>
     </message>
     <message>
         <location filename="../src/librssguard/services/tt-rss/gui/ttrssaccountdetails.cpp" line="187"/>
@@ -7700,12 +7704,12 @@ Unread news: %2</source>
     <message>
         <location filename="../src/librssguard/services/tt-rss/gui/ttrssfeeddetails.cpp" line="12"/>
         <source>Provide URL for your feed.</source>
-        <translation type="unfinished"/>
+        <translation>Fournissez le lien pour votre flux.</translation>
     </message>
     <message>
         <location filename="../src/librssguard/services/tt-rss/gui/ttrssfeeddetails.cpp" line="21"/>
         <source>The URL is ok.</source>
-        <translation type="unfinished"/>
+        <translation>Le lien est ok.</translation>
     </message>
     <message>
         <location filename="../src/librssguard/services/tt-rss/gui/ttrssfeeddetails.cpp" line="27"/>
@@ -7715,7 +7719,7 @@ Unread news: %2</source>
     <message>
         <location filename="../src/librssguard/services/tt-rss/gui/ttrssfeeddetails.cpp" line="31"/>
         <source>The URL is empty.</source>
-        <translation type="unfinished"/>
+        <translation>Le lien est vide.</translation>
     </message>
     <message>
         <location filename="../src/librssguard/services/tt-rss/gui/ttrssfeeddetails.ui" line="14"/>
@@ -7743,7 +7747,7 @@ Unread news: %2</source>
     <message>
         <location filename="../src/librssguard/services/tt-rss/ttrssserviceroot.cpp" line="104"/>
         <source>Cannot add item</source>
-        <translation type="unfinished"/>
+        <translation>Impossible d&apos;ajouter l&apos;élément</translation>
     </message>
     <message>
         <location filename="../src/librssguard/services/tt-rss/ttrssserviceroot.cpp" line="105"/>
@@ -7761,7 +7765,7 @@ Last login on: %4</source>
     <message>
         <location filename="../src/librssguard/services/tt-rss/ttrssserviceroot.cpp" line="410"/>
         <source>cannot get list of feeds, network error &apos;%1&apos;</source>
-        <translation type="unfinished"/>
+        <translation>impossible d&apos;obtenir la liste de flux, erreur réseau &apos;%1&apos;</translation>
     </message>
 </context>
 <context>
@@ -7769,12 +7773,12 @@ Last login on: %4</source>
     <message>
         <location filename="../src/librssguard/services/abstract/unreadnode.cpp" line="13"/>
         <source>Unread articles</source>
-        <translation type="unfinished"/>
+        <translation>Articles non-lus</translation>
     </message>
     <message>
         <location filename="../src/librssguard/services/abstract/unreadnode.cpp" line="14"/>
         <source>You can find all unread articles here.</source>
-        <translation type="unfinished"/>
+        <translation>Vous pouvez retrouver tous les articles non-lus ici.</translation>
     </message>
 </context>
 <context>
@@ -7787,7 +7791,7 @@ Last login on: %4</source>
     <message>
         <location filename="../src/librssguard/gui/webbrowser.cpp" line="35"/>
         <source>View website in reader mode</source>
-        <translation type="unfinished"/>
+        <translation>Voir le site en mode lecture</translation>
     </message>
     <message>
         <location filename="../src/librssguard/gui/webbrowser.cpp" line="244"/>
@@ -7846,7 +7850,7 @@ Last login on: %4</source>
     <message>
         <location filename="../src/librssguard/gui/webviewers/webengine/webengineviewer.cpp" line="130"/>
         <source>No external tools activated</source>
-        <translation type="unfinished"/>
+        <translation>Aucun outil externe est activé</translation>
     </message>
 </context>
 <context>
@@ -7859,12 +7863,12 @@ Last login on: %4</source>
     <message>
         <location filename="../src/librssguard/network-web/webfactory.cpp" line="313"/>
         <source>Auto-load images</source>
-        <translation type="unfinished"/>
+        <translation>Activer le chargement automatique des images</translation>
     </message>
     <message>
         <location filename="../src/librssguard/network-web/webfactory.cpp" line="314"/>
         <source>JS enabled</source>
-        <translation type="unfinished"/>
+        <translation>Activer JavaScript</translation>
     </message>
     <message>
         <location filename="../src/librssguard/network-web/webfactory.cpp" line="315"/>
@@ -7919,27 +7923,27 @@ Last login on: %4</source>
     <message>
         <location filename="../src/librssguard/network-web/webfactory.cpp" line="335"/>
         <source>Error pages enabled</source>
-        <translation type="unfinished"/>
+        <translation>Activer les pages d&apos;erreurs</translation>
     </message>
     <message>
         <location filename="../src/librssguard/network-web/webfactory.cpp" line="336"/>
         <source>Plugins enabled</source>
-        <translation type="unfinished"/>
+        <translation>Activer les plugins</translation>
     </message>
     <message>
         <location filename="../src/librssguard/network-web/webfactory.cpp" line="337"/>
         <source>Fullscreen enabled</source>
-        <translation type="unfinished"/>
+        <translation>Acitver le plein-écran</translation>
     </message>
     <message>
         <location filename="../src/librssguard/network-web/webfactory.cpp" line="341"/>
         <source>Screen capture enabled</source>
-        <translation type="unfinished"/>
+        <translation>Activer la capture d&apos;écran</translation>
     </message>
     <message>
         <location filename="../src/librssguard/network-web/webfactory.cpp" line="343"/>
         <source>WebGL enabled</source>
-        <translation type="unfinished"/>
+        <translation>Activer WebGL</translation>
     </message>
     <message>
         <location filename="../src/librssguard/network-web/webfactory.cpp" line="344"/>
@@ -7949,7 +7953,7 @@ Last login on: %4</source>
     <message>
         <location filename="../src/librssguard/network-web/webfactory.cpp" line="346"/>
         <source>Print element backgrounds</source>
-        <translation type="unfinished"/>
+        <translation>Imprimer les fonds d&apos;éléments</translation>
     </message>
     <message>
         <location filename="../src/librssguard/network-web/webfactory.cpp" line="348"/>
@@ -7959,7 +7963,7 @@ Last login on: %4</source>
     <message>
         <location filename="../src/librssguard/network-web/webfactory.cpp" line="350"/>
         <source>Allow geolocation on insecure origins</source>
-        <translation type="unfinished"/>
+        <translation>Autoriser la géo-localisation sur des origines non securisées</translation>
     </message>
     <message>
         <location filename="../src/librssguard/network-web/webfactory.cpp" line="681"/>
@@ -7974,7 +7978,7 @@ Last login on: %4</source>
     <message>
         <location filename="../src/librssguard/network-web/webfactory.cpp" line="120"/>
         <source>Navigate to website manually</source>
-        <translation type="unfinished"/>
+        <translation>Naviguer au site directement</translation>
     </message>
     <message>
         <location filename="../src/librssguard/network-web/webfactory.cpp" line="121"/>

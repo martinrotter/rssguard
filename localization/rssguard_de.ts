@@ -162,7 +162,7 @@ Error: %1</source>
     <message>
         <location filename="../src/librssguard/miscellaneous/application.cpp" line="1209"/>
         <source>Packages %1 were updated.</source>
-        <translation type="unfinished"/>
+        <translation>%1 Pakete wurden aktualisiert.</translation>
     </message>
     <message>
         <location filename="../src/librssguard/miscellaneous/application.cpp" line="928"/>
@@ -231,7 +231,7 @@ durch Klicken auf diese Benachrichtigung.</translation>
     <message>
         <location filename="../src/librssguard/services/abstract/gui/authenticationdetails.ui" line="64"/>
         <source>Authentication type</source>
-        <translation type="unfinished"/>
+        <translation>Authentifizierungstyp</translation>
     </message>
     <message>
         <location filename="../src/librssguard/services/abstract/gui/authenticationdetails.ui" line="35"/>
@@ -259,7 +259,7 @@ durch Klicken auf diese Benachrichtigung.</translation>
     <message>
         <location filename="../src/librssguard/services/abstract/gui/authenticationdetails.cpp" line="15"/>
         <source>No authentication</source>
-        <translation type="unfinished"/>
+        <translation>Keine Authentifizierung</translation>
     </message>
     <message>
         <location filename="../src/librssguard/services/abstract/gui/authenticationdetails.cpp" line="17"/>
@@ -269,7 +269,7 @@ durch Klicken auf diese Benachrichtigung.</translation>
     <message>
         <location filename="../src/librssguard/services/abstract/gui/authenticationdetails.cpp" line="20"/>
         <source>Token</source>
-        <translation type="unfinished"/>
+        <translation>Token</translation>
     </message>
     <message>
         <location filename="../src/librssguard/services/abstract/gui/authenticationdetails.cpp" line="51"/>
@@ -284,7 +284,7 @@ durch Klicken auf diese Benachrichtigung.</translation>
     <message>
         <location filename="../src/librssguard/services/abstract/gui/authenticationdetails.cpp" line="74"/>
         <source>Access token</source>
-        <translation type="unfinished"/>
+        <translation>Zugriffstoken</translation>
     </message>
     <message>
         <location filename="../src/librssguard/services/abstract/gui/authenticationdetails.cpp" line="61"/>
@@ -404,7 +404,7 @@ durch Klicken auf diese Benachrichtigung.</translation>
     <message numerus="yes">
         <location filename="../src/librssguard/gui/reusable/discoverfeedsbutton.cpp" line="33"/>
         <source>Add one of %n feed(s)</source>
-        <translation type="unfinished"><numerusform></numerusform><numerusform></numerusform></translation>
+        <translation><numerusform>Füge einen von %n Feed(s) hinzu</numerusform><numerusform>Füge einen von %n Feed(s) hinzu</numerusform></translation>
     </message>
     <message>
         <location filename="../src/librssguard/gui/reusable/discoverfeedsbutton.cpp" line="55"/>
@@ -579,27 +579,27 @@ Click here to open parent directory.</source>
     <message>
         <location filename="../src/librssguard/services/gmail/gui/emailpreviewer.ui" line="20"/>
         <source>From</source>
-        <translation type="unfinished"/>
+        <translation>Von</translation>
     </message>
     <message>
         <location filename="../src/librssguard/services/gmail/gui/emailpreviewer.ui" line="52"/>
         <source>&amp;Attachments</source>
-        <translation type="unfinished"/>
+        <translation>&amp;Anhänge</translation>
     </message>
     <message>
         <location filename="../src/librssguard/services/gmail/gui/emailpreviewer.ui" line="65"/>
         <source>&amp;Reply</source>
-        <translation type="unfinished"/>
+        <translation>&amp;Antworten</translation>
     </message>
     <message>
         <location filename="../src/librssguard/services/gmail/gui/emailpreviewer.ui" line="75"/>
         <source>&amp;Forward</source>
-        <translation type="unfinished"/>
+        <translation>&amp;Weiterleiten</translation>
     </message>
     <message>
         <location filename="../src/librssguard/services/gmail/gui/emailpreviewer.ui" line="87"/>
         <source>Subject</source>
-        <translation type="unfinished"/>
+        <translation>Betreff</translation>
     </message>
     <message>
         <location filename="../src/librssguard/services/gmail/gui/emailpreviewer.ui" line="104"/>
@@ -610,7 +610,7 @@ Click here to open parent directory.</source>
         <location filename="../src/librssguard/services/gmail/gui/emailpreviewer.cpp" line="111"/>
         <location filename="../src/librssguard/services/gmail/gui/emailpreviewer.cpp" line="117"/>
         <source>Cannot download attachment</source>
-        <translation type="unfinished"/>
+        <translation>Kann Anhang nicht herunterladen</translation>
     </message>
     <message>
         <location filename="../src/librssguard/services/gmail/gui/emailpreviewer.cpp" line="112"/>
@@ -733,12 +733,12 @@ Item ID: %5</source>
     <message>
         <location filename="../src/librssguard/miscellaneous/feedreader.cpp" line="361"/>
         <source>Starting auto-download of some feeds&apos; articles</source>
-        <translation type="unfinished"/>
+        <translation>Beginne Artikel mancher Feeds automatisch herunterzuladen</translation>
     </message>
     <message numerus="yes">
         <location filename="../src/librssguard/miscellaneous/feedreader.cpp" line="362"/>
         <source>I will auto-download new articles for %n feed(s).</source>
-        <translation type="unfinished"><numerusform></numerusform><numerusform></numerusform></translation>
+        <translation><numerusform>Ich werde Artikel von %n Feed(s) automatisch herunterladen.</numerusform><numerusform>Ich werde Artikel von %n Feed(s) automatisch herunterladen.</numerusform></translation>
     </message>
     <message>
         <location filename="../src/librssguard/miscellaneous/feedreader.cpp" line="94"/>
@@ -748,7 +748,7 @@ Item ID: %5</source>
     <message>
         <location filename="../src/librssguard/miscellaneous/feedreader.cpp" line="95"/>
         <source>You cannot fetch new articles now because another critical operation is ongoing.</source>
-        <translation type="unfinished"/>
+        <translation>Du kannst zur Zeit keine neuen Artikel herunterladen, weil andere kritische Operationen ausgeführt werden.</translation>
     </message>
 </context>
 <context>
@@ -762,7 +762,7 @@ Item ID: %5</source>
         <location filename="../src/librssguard/services/feedly/gui/feedlyaccountdetails.ui" line="27"/>
         <location filename="../src/librssguard/services/feedly/gui/feedlyaccountdetails.cpp" line="29"/>
         <source>Developer access token</source>
-        <translation type="unfinished"/>
+        <translation>Token für Entwicklerzugang</translation>
     </message>
     <message>
         <location filename="../src/librssguard/services/feedly/gui/feedlyaccountdetails.ui" line="36"/>
@@ -772,7 +772,7 @@ Item ID: %5</source>
     <message>
         <location filename="../src/librssguard/services/feedly/gui/feedlyaccountdetails.ui" line="58"/>
         <source>Intelligent synchronization algorithm</source>
-        <translation type="unfinished"/>
+        <translation>Intelligenter Synchronisationsalgorithmus</translation>
     </message>
     <message>
         <location filename="../src/librssguard/services/feedly/gui/feedlyaccountdetails.ui" line="70"/>
@@ -896,7 +896,7 @@ Item ID: %5</source>
     <message>
         <location filename="../src/librssguard/services/feedly/feedlynetwork.cpp" line="707"/>
         <source>Feedly: authentication error</source>
-        <translation type="unfinished"/>
+        <translation>Feedly: Authentifizierungsfehler </translation>
     </message>
     <message>
         <location filename="../src/librssguard/services/feedly/feedlynetwork.cpp" line="708"/>
@@ -925,12 +925,12 @@ Item ID: %5</source>
     <message>
         <location filename="../src/librssguard/services/standard/standardfeedsimportexportmodel.cpp" line="279"/>
         <source>OPML document contains errors</source>
-        <translation type="unfinished"/>
+        <translation>OPML Dokument enthält Fehler</translation>
     </message>
     <message>
         <location filename="../src/librssguard/services/standard/standardfeedsimportexportmodel.cpp" line="284"/>
         <source>this is likely not OPML document</source>
-        <translation type="unfinished"/>
+        <translation>dies ist wahrscheinlich kein OPML Dokument</translation>
     </message>
     <message>
         <location filename="../src/librssguard/services/standard/standardfeedsimportexportmodel.cpp" line="362"/>
@@ -984,17 +984,17 @@ Item ID: %5</source>
     <message>
         <location filename="../src/librssguard/gui/toolbars/feedstoolbar.cpp" line="118"/>
         <source>Everywhere</source>
-        <translation type="unfinished"/>
+        <translation>Überall</translation>
     </message>
     <message>
         <location filename="../src/librssguard/gui/toolbars/feedstoolbar.cpp" line="119"/>
         <source>Titles only</source>
-        <translation type="unfinished"/>
+        <translation>Nur Titel</translation>
     </message>
     <message>
         <location filename="../src/librssguard/gui/toolbars/feedstoolbar.cpp" line="123"/>
         <source>Search feeds</source>
-        <translation type="unfinished"/>
+        <translation>Suche Freunde</translation>
     </message>
     <message>
         <location filename="../src/librssguard/gui/toolbars/feedstoolbar.cpp" line="131"/>
@@ -1101,7 +1101,7 @@ or this functionality is not implemented yet.</source>
     <message>
         <location filename="../src/librssguard/gui/feedsview.cpp" line="847"/>
         <source>Context menu for label</source>
-        <translation type="unfinished"/>
+        <translation>Kontextmenü für Label</translation>
     </message>
     <message>
         <location filename="../src/librssguard/gui/feedsview.cpp" line="794"/>
@@ -1244,12 +1244,12 @@ or this functionality is not implemented yet.</source>
     <message>
         <location filename="../src/librssguard/services/gmail/gui/formaddeditemail.ui" line="67"/>
         <source>Subject</source>
-        <translation type="unfinished"/>
+        <translation>Betreff</translation>
     </message>
     <message>
         <location filename="../src/librssguard/services/gmail/gui/formaddeditemail.ui" line="77"/>
         <source>Title of your message</source>
-        <translation type="unfinished"/>
+        <translation>Titel deiner Nachricht</translation>
     </message>
 </context>
 <context>
@@ -1257,17 +1257,17 @@ or this functionality is not implemented yet.</source>
     <message>
         <location filename="../src/librssguard/gui/dialogs/formaddeditlabel.cpp" line="12"/>
         <source>Name for your label</source>
-        <translation type="unfinished"/>
+        <translation>Name für dein Label</translation>
     </message>
     <message>
         <location filename="../src/librssguard/gui/dialogs/formaddeditlabel.cpp" line="18"/>
         <source>Label&apos;s name cannot be empty.</source>
-        <translation type="unfinished"/>
+        <translation>Der Name des Labels kann nicht leer sein.</translation>
     </message>
     <message>
         <location filename="../src/librssguard/gui/dialogs/formaddeditlabel.cpp" line="21"/>
         <source>Perfect!</source>
-        <translation type="unfinished"/>
+        <translation>Perfekt!</translation>
     </message>
     <message>
         <location filename="../src/librssguard/gui/dialogs/formaddeditlabel.cpp" line="30"/>
@@ -1277,12 +1277,12 @@ or this functionality is not implemented yet.</source>
     <message>
         <location filename="../src/librssguard/gui/dialogs/formaddeditlabel.cpp" line="27"/>
         <source>Create new label</source>
-        <translation type="unfinished"/>
+        <translation>Neues Label erzeugen</translation>
     </message>
     <message>
         <location filename="../src/librssguard/gui/dialogs/formaddeditlabel.cpp" line="46"/>
         <source>Edit label &apos;%1&apos;</source>
-        <translation type="unfinished"/>
+        <translation>Label &apos;%1&apos; bearbeiten</translation>
     </message>
     <message>
         <location filename="../src/librssguard/gui/dialogs/formaddeditlabel.ui" line="19"/>
@@ -1418,7 +1418,7 @@ or this functionality is not implemented yet.</source>
     <message>
         <location filename="../src/librssguard/services/abstract/gui/formcategorydetails.cpp" line="157"/>
         <source>Images (%1)</source>
-        <translation type="unfinished"/>
+        <translation>Bilder (%1)</translation>
     </message>
     <message>
         <location filename="../src/librssguard/services/abstract/gui/formcategorydetails.cpp" line="163"/>
@@ -1484,7 +1484,7 @@ or this functionality is not implemented yet.</source>
     <message>
         <location filename="../src/librssguard/services/abstract/gui/formcategorydetails.cpp" line="83"/>
         <source>Edit &quot;%1&quot;</source>
-        <translation type="unfinished"/>
+        <translation>Bearbeite &quot;%1&quot;</translation>
     </message>
     <message>
         <location filename="../src/librssguard/services/abstract/gui/formcategorydetails.ui" line="31"/>
@@ -1678,7 +1678,7 @@ or this functionality is not implemented yet.</source>
     <message>
         <location filename="../src/librssguard/services/abstract/gui/formfeeddetails.cpp" line="93"/>
         <source>Edit &quot;%1&quot;</source>
-        <translation type="unfinished"/>
+        <translation>Bearbeite &quot;%1&quot;</translation>
     </message>
     <message>
         <location filename="../src/librssguard/services/abstract/gui/formfeeddetails.cpp" line="127"/>
@@ -1954,7 +1954,7 @@ or this functionality is not implemented yet.</source>
     <message>
         <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="371"/>
         <source>&amp;Delete articles</source>
-        <translation type="unfinished"/>
+        <translation>&amp;Artikel löschen</translation>
     </message>
     <message>
         <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="379"/>
@@ -1969,22 +1969,22 @@ or this functionality is not implemented yet.</source>
     <message>
         <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="390"/>
         <source>Open in &amp;external browser</source>
-        <translation type="unfinished"/>
+        <translation>In &amp;externem Browser Öffnen</translation>
     </message>
     <message>
         <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="393"/>
         <source>Open selected articles in external browser</source>
-        <translation type="unfinished"/>
+        <translation>Ausgewählte Artikel im externen Browser öffnen</translation>
     </message>
     <message>
         <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="401"/>
         <source>Open in &amp;internal browser</source>
-        <translation type="unfinished"/>
+        <translation>In &amp;internem Browser öffnen</translation>
     </message>
     <message>
         <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="404"/>
         <source>Open selected articles in internal browser</source>
-        <translation type="unfinished"/>
+        <translation>Ausgewählte Artikel im internen Browser öffnen</translation>
     </message>
     <message>
         <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="415"/>
@@ -2009,7 +2009,7 @@ or this functionality is not implemented yet.</source>
     <message>
         <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="437"/>
         <source>View selected item in &amp;newspaper mode</source>
-        <translation type="unfinished"/>
+        <translation>Ausgewählten Artikel im &amp;Zeitungsmodus anzeigen</translation>
     </message>
     <message>
         <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="440"/>
@@ -3389,7 +3389,7 @@ Sie können es jetzt installieren.</translation>
     <message>
         <location filename="../src/librssguard/services/gmail/gmailserviceroot.cpp" line="128"/>
         <source>Reply to this e-mail message</source>
-        <translation type="unfinished"/>
+        <translation>Auf diese E-Mail Nachricht antworten</translation>
     </message>
     <message>
         <location filename="../src/librssguard/services/gmail/gmailserviceroot.cpp" line="205"/>
@@ -3570,7 +3570,7 @@ Ablauf des Login tokens: %2</translation>
     <message>
         <location filename="../src/librssguard/services/greader/gui/greaderaccountdetails.ui" line="47"/>
         <source>Intelligent synchronization algorithm</source>
-        <translation type="unfinished"/>
+        <translation>Intelligenter Synchronisationsalgorithmus</translation>
     </message>
     <message>
         <location filename="../src/librssguard/services/greader/gui/greaderaccountdetails.ui" line="56"/>
@@ -4451,12 +4451,12 @@ Ablauf des Login tokens: %2</translation>
     <message>
         <location filename="../src/librssguard/gui/toolbars/messagestoolbar.cpp" line="217"/>
         <source>Everywhere</source>
-        <translation type="unfinished"/>
+        <translation>Überall</translation>
     </message>
     <message>
         <location filename="../src/librssguard/gui/toolbars/messagestoolbar.cpp" line="218"/>
         <source>Titles only</source>
-        <translation type="unfinished"/>
+        <translation>Nur Titel</translation>
     </message>
     <message>
         <location filename="../src/librssguard/gui/toolbars/messagestoolbar.cpp" line="222"/>
@@ -7012,7 +7012,7 @@ Type: %3</source>
     <message>
         <location filename="../src/librssguard/services/standard/gui/standardfeeddetails.cpp" line="286"/>
         <source>Images (%1)</source>
-        <translation type="unfinished"/>
+        <translation>Bilder (%1)</translation>
     </message>
     <message>
         <location filename="../src/librssguard/services/standard/gui/standardfeeddetails.cpp" line="292"/>
@@ -7651,7 +7651,7 @@ Ungelesene Nachrichten: %2</translation>
     <message>
         <location filename="../src/librssguard/services/tt-rss/gui/ttrssaccountdetails.ui" line="91"/>
         <source>Intelligent synchronization algorithm</source>
-        <translation type="unfinished"/>
+        <translation>Intelligenter Synchronisationsalgorithmus</translation>
     </message>
     <message>
         <location filename="../src/librssguard/services/tt-rss/gui/ttrssaccountdetails.ui" line="98"/>
