@@ -200,11 +200,11 @@ void FeedsView::updateSelectedItems() {
 }
 
 void FeedsView::clearSelectedFeeds() {
-  m_sourceModel->markItemCleared(selectedItem(), false);
+  m_sourceModel->markItemCleared(selectedItem(), false, true);
 }
 
 void FeedsView::clearAllFeeds() {
-  m_sourceModel->markItemCleared(m_sourceModel->rootItem(), false);
+  m_sourceModel->markItemCleared(m_sourceModel->rootItem(), false, true);
 }
 
 void FeedsView::editSelectedItem() {

@@ -398,7 +398,7 @@ void FeedReader::quit() {
   }
 
   if (qApp->settings()->value(GROUP(Messages), SETTING(Messages::ClearReadOnExit)).toBool()) {
-    m_feedsModel->markItemCleared(m_feedsModel->rootItem(), true);
+    m_feedsModel->markItemCleared(m_feedsModel->rootItem(), true, false);
   }
 
   m_feedsModel->stopServiceAccounts();
