@@ -139,7 +139,7 @@ Error: %1</translation>
     <message>
         <location filename="../src/librssguard/miscellaneous/application.cpp" line="311"/>
         <source>Go to survey</source>
-        <translation type="unfinished"/>
+        <translation>Gehe zur Umfrage</translation>
     </message>
     <message>
         <location filename="../src/librssguard/miscellaneous/application.cpp" line="560"/>
@@ -969,7 +969,7 @@ Item ID: %5</translation>
     <message>
         <location filename="../src/librssguard/core/feedsmodel.cpp" line="517"/>
         <source>Do you really want to clean all articles from selected item?</source>
-        <translation type="unfinished"/>
+        <translation>Möchtest du wirklich alle Artikel des ausgewählten Elementes löschen? </translation>
     </message>
     <message>
         <location filename="../src/librssguard/core/feedsmodel.cpp" line="32"/>
@@ -1102,7 +1102,7 @@ or this functionality is not implemented yet.</source>
     <message>
         <location filename="../src/librssguard/gui/feedsview.cpp" line="875"/>
         <source>Context menu for probe</source>
-        <translation type="unfinished"/>
+        <translation>Kontextmenü für Probe</translation>
     </message>
     <message>
         <location filename="../src/librssguard/gui/feedsview.cpp" line="136"/>
@@ -1326,12 +1326,12 @@ or this functionality is not implemented yet.</source>
     <message>
         <location filename="../src/librssguard/services/abstract/gui/formaddeditprobe.cpp" line="12"/>
         <source>Name for your probe</source>
-        <translation type="unfinished"/>
+        <translation>Name deiner Probe</translation>
     </message>
     <message>
         <location filename="../src/librssguard/services/abstract/gui/formaddeditprobe.cpp" line="13"/>
         <source>Regular expression</source>
-        <translation type="unfinished"/>
+        <translation>Regular Expression</translation>
     </message>
     <message>
         <location filename="../src/librssguard/services/abstract/gui/formaddeditprobe.cpp" line="17"/>
@@ -1347,17 +1347,17 @@ or this functionality is not implemented yet.</source>
     <message>
         <location filename="../src/librssguard/services/abstract/gui/formaddeditprobe.cpp" line="25"/>
         <source>Probe name cannot be empty.</source>
-        <translation type="unfinished"/>
+        <translation>Name der Probe kann nicht leer sein.</translation>
     </message>
     <message>
         <location filename="../src/librssguard/services/abstract/gui/formaddeditprobe.cpp" line="28"/>
         <source>Regular expression is not well-formed.</source>
-        <translation type="unfinished"/>
+        <translation>Regular Expression ist nicht gut aufgebaut.</translation>
     </message>
     <message>
         <location filename="../src/librssguard/services/abstract/gui/formaddeditprobe.cpp" line="40"/>
         <source>Create new probe</source>
-        <translation type="unfinished"/>
+        <translation>Erstelle neue Probe</translation>
     </message>
     <message>
         <location filename="../src/librssguard/services/abstract/gui/formaddeditprobe.cpp" line="43"/>
@@ -1367,7 +1367,7 @@ or this functionality is not implemented yet.</source>
     <message>
         <location filename="../src/librssguard/services/abstract/gui/formaddeditprobe.cpp" line="61"/>
         <source>Edit probe &apos;%1&apos;</source>
-        <translation type="unfinished"/>
+        <translation>Bearbeite Probe &apos;%1&apos;</translation>
     </message>
 </context>
 <context>
@@ -1803,12 +1803,12 @@ or this functionality is not implemented yet.</source>
     <message>
         <location filename="../src/librssguard/services/abstract/gui/formfeeddetails.ui" line="72"/>
         <source>Add articles with any date into the database</source>
-        <translation type="unfinished"/>
+        <translation>Füge Artikel mit allen Daten zur Datenbank hinzu</translation>
     </message>
     <message>
         <location filename="../src/librssguard/services/abstract/gui/formfeeddetails.ui" line="82"/>
         <source>Avoid adding articles before this date into the database</source>
-        <translation type="unfinished"/>
+        <translation>Meide es, Artikel vor diesem Datum in die Datenbank hinzuzufügen.</translation>
     </message>
     <message>
         <location filename="../src/librssguard/services/abstract/gui/formfeeddetails.ui" line="118"/>
@@ -1823,12 +1823,12 @@ or this functionality is not implemented yet.</source>
     <message>
         <location filename="../src/librssguard/services/abstract/gui/formfeeddetails.ui" line="138"/>
         <source>Right-to-left layout</source>
-        <translation type="unfinished"/>
+        <translation>Rechts-nach-Links Layout</translation>
     </message>
     <message>
         <location filename="../src/librssguard/services/abstract/gui/formfeeddetails.ui" line="124"/>
         <source>Ignore notifications for this feed</source>
-        <translation type="unfinished"/>
+        <translation>Ignoriere Benachrichtigungen dieses Feedes</translation>
     </message>
 </context>
 <context>
@@ -1836,7 +1836,7 @@ or this functionality is not implemented yet.</source>
     <message>
         <location filename="../src/librssguard/gui/dialogs/formlog.cpp" line="16"/>
         <source>Application log</source>
-        <translation type="unfinished"/>
+        <translation>Anwendungsprotokoll</translation>
     </message>
 </context>
 <context>
@@ -1859,12 +1859,12 @@ or this functionality is not implemented yet.</source>
     <message>
         <location filename="../src/librssguard/gui/dialogs/formmain.cpp" line="79"/>
         <source>Open main menu</source>
-        <translation type="unfinished"/>
+        <translation>Öffne Hauptmenü</translation>
     </message>
     <message>
         <location filename="../src/librssguard/gui/dialogs/formmain.cpp" line="87"/>
         <source>Open &amp;main menu</source>
-        <translation type="unfinished"/>
+        <translation>Öffne &amp;Hauptmenü</translation>
     </message>
     <message>
         <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="53"/>
@@ -1894,22 +1894,22 @@ or this functionality is not implemented yet.</source>
     <message>
         <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="105"/>
         <source>F&amp;eeds</source>
-        <translation type="unfinished"/>
+        <translation>F&amp;eeds</translation>
     </message>
     <message>
         <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="109"/>
         <source>&amp;Add item</source>
-        <translation type="unfinished"/>
+        <translation>&amp;Füge Element hinzu</translation>
     </message>
     <message>
         <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="114"/>
         <source>&amp;Move</source>
-        <translation type="unfinished"/>
+        <translation>&amp;Verschiebe</translation>
     </message>
     <message>
         <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="158"/>
         <source>Art&amp;icles</source>
-        <translation type="unfinished"/>
+        <translation>Art&amp;ikel</translation>
     </message>
     <message>
         <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="183"/>
@@ -1924,7 +1924,7 @@ or this functionality is not implemented yet.</source>
     <message>
         <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="198"/>
         <source>&amp;Web browser &amp;&amp; tabs</source>
-        <translation type="unfinished"/>
+        <translation>&amp;Webbrowser &amp;&amp; tabs</translation>
     </message>
     <message>
         <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="225"/>
@@ -1979,12 +1979,12 @@ or this functionality is not implemented yet.</source>
     <message>
         <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="289"/>
         <source>Fetch &amp;selected</source>
-        <translation type="unfinished"/>
+        <translation>Hole @ausgewählte</translation>
     </message>
     <message>
         <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="292"/>
         <source>Fetch selected feeds</source>
-        <translation type="unfinished"/>
+        <translation>Hole ausgewählte Feeds</translation>
     </message>
     <message>
         <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="300"/>
@@ -4423,7 +4423,7 @@ Ablauf des Login tokens: %2</translation>
     <message>
         <location filename="../src/librssguard/core/messagesmodel.cpp" line="302"/>
         <source>Is article important?</source>
-        <translation type="unfinished"/>
+        <translation>Ist Artikel wichtig?</translation>
     </message>
     <message>
         <location filename="../src/librssguard/core/messagesmodel.cpp" line="303"/>
@@ -5764,7 +5764,7 @@ Ablauf des Login tokens: %2</translation>
     <message>
         <location filename="../src/librssguard/gui/reusable/searchlineedit.cpp" line="107"/>
         <source>Regular expression</source>
-        <translation type="unfinished"/>
+        <translation>Regular expression</translation>
     </message>
 </context>
 <context>
@@ -6313,7 +6313,7 @@ Authors of this application are NOT responsible for lost data.</source>
     <message>
         <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="128"/>
         <source>Avoid adding articles before this date into the database</source>
-        <translation type="unfinished"/>
+        <translation>Meide es, Artikel vor diesem Datum in die Datenbank hinzuzufügen.</translation>
     </message>
     <message>
         <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="164"/>

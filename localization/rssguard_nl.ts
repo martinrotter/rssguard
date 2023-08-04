@@ -139,7 +139,7 @@ Fout: %1</translation>
     <message>
         <location filename="../src/librssguard/miscellaneous/application.cpp" line="311"/>
         <source>Go to survey</source>
-        <translation type="unfinished"/>
+        <translation>Enquête invullen</translation>
     </message>
     <message>
         <location filename="../src/librssguard/miscellaneous/application.cpp" line="560"/>
@@ -969,7 +969,7 @@ Onderdeel ID: %5</translation>
     <message>
         <location filename="../src/librssguard/core/feedsmodel.cpp" line="517"/>
         <source>Do you really want to clean all articles from selected item?</source>
-        <translation type="unfinished"/>
+        <translation>Weet je zeker dat je alle artikelen van het geselecteerde item wilt verwijderen?</translation>
     </message>
     <message>
         <location filename="../src/librssguard/core/feedsmodel.cpp" line="32"/>
@@ -1103,7 +1103,7 @@ of omdat deze functie nog niet is geïmplementeerd.</translation>
     <message>
         <location filename="../src/librssguard/gui/feedsview.cpp" line="875"/>
         <source>Context menu for probe</source>
-        <translation type="unfinished"/>
+        <translation>Context menu voor tester</translation>
     </message>
     <message>
         <location filename="../src/librssguard/gui/feedsview.cpp" line="136"/>
@@ -1327,7 +1327,7 @@ of omdat deze functie nog niet is geïmplementeerd.</translation>
     <message>
         <location filename="../src/librssguard/services/abstract/gui/formaddeditprobe.cpp" line="12"/>
         <source>Name for your probe</source>
-        <translation type="unfinished"/>
+        <translation>Naam voor de tester</translation>
     </message>
     <message>
         <location filename="../src/librssguard/services/abstract/gui/formaddeditprobe.cpp" line="13"/>
@@ -1348,17 +1348,17 @@ of omdat deze functie nog niet is geïmplementeerd.</translation>
     <message>
         <location filename="../src/librssguard/services/abstract/gui/formaddeditprobe.cpp" line="25"/>
         <source>Probe name cannot be empty.</source>
-        <translation type="unfinished"/>
+        <translation>Tester naam mag niet leeg zijn</translation>
     </message>
     <message>
         <location filename="../src/librssguard/services/abstract/gui/formaddeditprobe.cpp" line="28"/>
         <source>Regular expression is not well-formed.</source>
-        <translation type="unfinished"/>
+        <translation>Reguliere expressie is niet correct geformuleerd.</translation>
     </message>
     <message>
         <location filename="../src/librssguard/services/abstract/gui/formaddeditprobe.cpp" line="40"/>
         <source>Create new probe</source>
-        <translation type="unfinished"/>
+        <translation>Maak nieuwe tester</translation>
     </message>
     <message>
         <location filename="../src/librssguard/services/abstract/gui/formaddeditprobe.cpp" line="43"/>
@@ -1368,7 +1368,7 @@ of omdat deze functie nog niet is geïmplementeerd.</translation>
     <message>
         <location filename="../src/librssguard/services/abstract/gui/formaddeditprobe.cpp" line="61"/>
         <source>Edit probe &apos;%1&apos;</source>
-        <translation type="unfinished"/>
+        <translation>Bewerk test &apos;%1&apos;</translation>
     </message>
 </context>
 <context>
@@ -1804,12 +1804,12 @@ of omdat deze functie nog niet is geïmplementeerd.</translation>
     <message>
         <location filename="../src/librssguard/services/abstract/gui/formfeeddetails.ui" line="72"/>
         <source>Add articles with any date into the database</source>
-        <translation type="unfinished"/>
+        <translation>Voeg artikelen toe met elke datum aan de database</translation>
     </message>
     <message>
         <location filename="../src/librssguard/services/abstract/gui/formfeeddetails.ui" line="82"/>
         <source>Avoid adding articles before this date into the database</source>
-        <translation type="unfinished"/>
+        <translation>Voorkom toevoegen van artikelen met een datum voor deze</translation>
     </message>
     <message>
         <location filename="../src/librssguard/services/abstract/gui/formfeeddetails.ui" line="118"/>
@@ -1824,7 +1824,7 @@ of omdat deze functie nog niet is geïmplementeerd.</translation>
     <message>
         <location filename="../src/librssguard/services/abstract/gui/formfeeddetails.ui" line="138"/>
         <source>Right-to-left layout</source>
-        <translation type="unfinished"/>
+        <translation>Rechts-naar-links layout</translation>
     </message>
     <message>
         <location filename="../src/librssguard/services/abstract/gui/formfeeddetails.ui" line="124"/>
@@ -3044,7 +3044,7 @@ Je moet handmatig herstarten.</translation>
     <message>
         <location filename="../src/librssguard/services/standard/gui/formstandardimportexport.ui" line="71"/>
         <source>Do not fetch icons</source>
-        <translation type="unfinished"/>
+        <translation>Pictogrammen niet ophalen</translation>
     </message>
     <message>
         <location filename="../src/librssguard/services/standard/gui/formstandardimportexport.ui" line="78"/>
@@ -3452,7 +3452,7 @@ Installeer het nu.</translation>
     <message>
         <location filename="../src/librssguard/services/gmail/gmailnetworkfactory.cpp" line="184"/>
         <source>failed to download list of labels</source>
-        <translation type="unfinished"/>
+        <translation>Download van lijst met labels mislukt</translation>
     </message>
     <message>
         <location filename="../src/librssguard/services/gmail/gmailnetworkfactory.cpp" line="448"/>
@@ -4411,7 +4411,7 @@ Logintoken verloopt: %2</translation>
     <message>
         <location filename="../src/librssguard/core/messagesmodel.cpp" line="297"/>
         <source>RTL</source>
-        <translation type="unfinished"/>
+        <translation>RTL</translation>
     </message>
     <message>
         <location filename="../src/librssguard/core/messagesmodel.cpp" line="299"/>
@@ -4511,7 +4511,7 @@ Logintoken verloopt: %2</translation>
     <message>
         <location filename="../src/librssguard/core/messagesmodel.cpp" line="309"/>
         <source>Layout direction of the article</source>
-        <translation type="unfinished"/>
+        <translation>Layout richting van het artikel</translation>
     </message>
     <message>
         <location filename="../src/librssguard/core/messagesmodel.cpp" line="310"/>
@@ -5374,7 +5374,7 @@ Feedly is een beveiligde ruimte waar u de onderwerpen en trends die voor u van b
     <message>
         <location filename="../src/librssguard/miscellaneous/notification.cpp" line="151"/>
         <source>Node.js - package(s) failed to update</source>
-        <translation type="unfinished"/>
+        <translation>Node.js - update van pakket(ten) mislukt</translation>
     </message>
     <message>
         <location filename="../src/librssguard/miscellaneous/notification.cpp" line="154"/>
@@ -5535,7 +5535,7 @@ Lijst met ondersteunde lezers:</translation>
     <message>
         <location filename="../src/librssguard/services/abstract/recyclebin.cpp" line="106"/>
         <source>Do you really want to empty your recycle bin?</source>
-        <translation type="unfinished"/>
+        <translation>Weet je zeker dat je de prullenbak wilt legen?</translation>
     </message>
     <message>
         <location filename="../src/librssguard/services/abstract/recyclebin.cpp" line="18"/>
@@ -5810,17 +5810,17 @@ Logintoken verloopt: %2</translation>
     <message>
         <location filename="../src/librssguard/services/abstract/searchsnode.cpp" line="19"/>
         <source>Article probes</source>
-        <translation type="unfinished"/>
+        <translation>Artikel testen</translation>
     </message>
     <message>
         <location filename="../src/librssguard/services/abstract/searchsnode.cpp" line="20"/>
         <source>You can see all your permanent article probes here.</source>
-        <translation type="unfinished"/>
+        <translation>Je kunt alle permanente artikel testen hier zien.</translation>
     </message>
     <message>
         <location filename="../src/librssguard/services/abstract/searchsnode.cpp" line="115"/>
         <source>New article probe</source>
-        <translation type="unfinished"/>
+        <translation>Nieuwe artikeltest</translation>
     </message>
 </context>
 <context>
@@ -6344,7 +6344,7 @@ Makers van de applicatie zijn niet verantwoordelijk voor dataverlies.</translati
     <message>
         <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="128"/>
         <source>Avoid adding articles before this date into the database</source>
-        <translation type="unfinished"/>
+        <translation>Voorkom toevoegen van artikelen met een datum voor deze</translation>
     </message>
     <message>
         <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="164"/>
@@ -7381,7 +7381,7 @@ Je kunt ook gegenereerde feedgegevens nabewerken met nog een ander script als je
     <message>
         <location filename="../src/librssguard/services/standard/standardserviceroot.cpp" line="44"/>
         <source>This is obligatory service account for standard RSS/RDF/ATOM feeds.</source>
-        <translation>Dit is verplichte service account voor standaard RSS/RDF/ATOM feeds.</translation>
+        <translation>Dit is het verplichte service account voor standaard RSS/RDF/ATOM feeds.</translation>
     </message>
     <message>
         <location filename="../src/librssguard/services/standard/standardserviceroot.cpp" line="60"/>
@@ -7411,7 +7411,7 @@ Je kunt ook gegenereerde feedgegevens nabewerken met nog een ander script als je
     <message>
         <location filename="../src/librssguard/services/standard/standardserviceroot.cpp" line="59"/>
         <source>This new account does not include any feeds. You can now add default set of feeds.</source>
-        <translation>Deze nieuwe account bevat geen feeds. De standaard feeds kunnen toegevoegd worden.</translation>
+        <translation>Dit nieuwe account bevat geen feeds. De standaard feeds kunnen toegevoegd worden.</translation>
     </message>
     <message>
         <location filename="../src/librssguard/services/standard/standardserviceroot.cpp" line="131"/>

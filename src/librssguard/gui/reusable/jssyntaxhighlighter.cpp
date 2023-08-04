@@ -2,93 +2,107 @@
 
 #include "gui/reusable/jssyntaxhighlighter.h"
 
+#include "3rd-party/boolinq/boolinq.h"
 #include "definitions/definitions.h"
 
 JsSyntaxHighlighter::JsSyntaxHighlighter(QTextDocument* parent) : QSyntaxHighlighter(parent) {
   HighlightingRule rule;
 
-  keywordFormat.setForeground(Qt::GlobalColor::magenta);
-  keywordFormat.setFontWeight(QFont::Weight::Bold);
+  m_keywordFormat.setForeground(Qt::GlobalColor::magenta);
+  m_keywordFormat.setFontWeight(QFont::Weight::Bold);
 
-  const QString keywordPatterns[] = {
-    QSL("\\babstract\\b"),  QSL("\\barguments\\b"),  QSL("\\bawait\\*\\b"),     QSL("\\bboolean\\b"),
-    QSL("\\bbreak\\b"),     QSL("\\bbyte\\b"),       QSL("\\bcase\\b"),         QSL("\\bcatch\\b"),
-    QSL("\\bchar\\b"),      QSL("\\bclass\\*\\b"),   QSL("\\bconst\\b"),        QSL("\\bcontinue\\b"),
-    QSL("\\bdebugger\\b"),  QSL("\\bdefault\\b"),    QSL("\\bdelete\\b"),       QSL("\\bdo\\b"),
-    QSL("\\bdouble\\b"),    QSL("\\belse\\b"),       QSL("\\benum\\*\\b"),      QSL("\\beval\\b"),
-    QSL("\\bexport\\*\\b"), QSL("\\bextends\\*\\b"), QSL("\\bfalse\\b"),        QSL("\\bfinal\\b"),
-    QSL("\\bfinally\\b"),   QSL("\\bfloat\\b"),      QSL("\\bfor\\b"),          QSL("\\bfunction\\b"),
-    QSL("\\bgoto\\b"),      QSL("\\bif\\b"),         QSL("\\bimplements\\b"),   QSL("\\bimport\\*\\b"),
-    QSL("\\bin\\b"),        QSL("\\binstanceof\\b"), QSL("\\bint\\b"),          QSL("\\binterface\\b"),
-    QSL("\\blet\\*\\b"),    QSL("\\blong\\b"),       QSL("\\bnative\\b"),       QSL("\\bnew\\b"),
-    QSL("\\bnull\\b"),      QSL("\\bpackage\\b"),    QSL("\\bprivate\\b"),      QSL("\\bprotected\\b"),
-    QSL("\\bpublic\\b"),    QSL("\\breturn\\b"),     QSL("\\bshort\\b"),        QSL("\\bstatic\\b"),
-    QSL("\\bsuper\\*\\b"),  QSL("\\bswitch\\b"),     QSL("\\bsynchronized\\b"), QSL("\\bthis\\b"),
-    QSL("\\bthrow\\b"),     QSL("\\bthrows\\b"),     QSL("\\btransient\\b"),    QSL("\\btrue\\b"),
-    QSL("\\btry\\b"),       QSL("\\btypeof\\b"),     QSL("\\bvar\\b"),          QSL("\\bvoid\\b"),
-    QSL("\\bvolatile\\b"),  QSL("\\bwhile\\b"),      QSL("\\bwith\\b"),         QSL("\\byield\\b")};
+  QStringList keywords = jsKeywords();
+  auto std_keywords = boolinq::from(keywords)
+                        .select([](const QString& kw) {
+                          return QSL("\\b%1\\b").arg(kw);
+                        })
+                        .toStdList();
 
-  for (const QString& pattern : keywordPatterns) {
-    rule.pattern = QRegularExpression(pattern);
-    rule.format = keywordFormat;
-    highlightingRules.append(rule);
+  keywords = FROM_STD_LIST(QStringList, std_keywords);
+
+  for (const QString& pattern : keywords) {
+    rule.m_pattern = QRegularExpression(pattern);
+    rule.m_format = m_keywordFormat;
+
+    m_highlightingRules.append(rule);
   }
 
-  classFormat.setFontWeight(QFont::Bold);
-  classFormat.setForeground(Qt::darkMagenta);
-  rule.pattern = QRegularExpression(QStringLiteral("\\bQ[A-Za-z]+\\b"));
-  rule.format = classFormat;
-  highlightingRules.append(rule);
+  m_classFormat.setFontWeight(QFont::Weight::Bold);
+  m_classFormat.setForeground(Qt::GlobalColor::darkMagenta);
+  rule.m_pattern = QRegularExpression(QStringLiteral("\\bQ[A-Za-z]+\\b"));
+  rule.m_format = m_classFormat;
 
-  singleLineCommentFormat.setForeground(Qt::red);
-  rule.pattern = QRegularExpression(QStringLiteral("//[^\n]*"));
-  rule.format = singleLineCommentFormat;
-  highlightingRules.append(rule);
+  m_highlightingRules.append(rule);
 
-  multiLineCommentFormat.setForeground(Qt::red);
+  m_singleLineCommentFormat.setForeground(Qt::GlobalColor::red);
+  rule.m_pattern = QRegularExpression(QStringLiteral("//[^\n]*"));
+  rule.m_format = m_singleLineCommentFormat;
 
-  quotationFormat.setForeground(Qt::darkGreen);
-  rule.pattern = QRegularExpression(QStringLiteral("\".*\""));
-  rule.format = quotationFormat;
-  highlightingRules.append(rule);
+  m_highlightingRules.append(rule);
 
-  functionFormat.setFontItalic(true);
-  functionFormat.setForeground(Qt::GlobalColor::green);
-  rule.pattern = QRegularExpression(QStringLiteral("\\b[A-Za-z0-9_]+(?=\\()"));
-  rule.format = functionFormat;
-  highlightingRules.append(rule);
+  m_multiLineCommentFormat.setForeground(Qt::GlobalColor::red);
 
-  commentStartExpression = QRegularExpression(QStringLiteral("/\\*"));
-  commentEndExpression = QRegularExpression(QStringLiteral("\\*/"));
+  m_quotationFormat.setForeground(Qt::GlobalColor::darkGreen);
+  rule.m_pattern = QRegularExpression(QStringLiteral("\".*\""));
+  rule.m_format = m_quotationFormat;
+
+  m_highlightingRules.append(rule);
+
+  m_functionFormat.setFontItalic(true);
+  m_functionFormat.setForeground(Qt::GlobalColor::green);
+  rule.m_pattern = QRegularExpression(QStringLiteral("\\b[A-Za-z0-9_]+(?=\\()"));
+  rule.m_format = m_functionFormat;
+
+  m_highlightingRules.append(rule);
+
+  m_commentStartExpression = QRegularExpression(QStringLiteral("/\\*"));
+  m_commentEndExpression = QRegularExpression(QStringLiteral("\\*/"));
+}
+
+QStringList JsSyntaxHighlighter::jsKeywords() const {
+  return {QSL("abstract"),   QSL("arguments"), QSL("await\\*"),     QSL("boolean"),    QSL("break"),  QSL("byte"),
+          QSL("case"),       QSL("catch"),     QSL("char"),         QSL("class\\*"),   QSL("const"),  QSL("continue"),
+          QSL("debugger"),   QSL("default"),   QSL("delete"),       QSL("do"),         QSL("double"), QSL("else"),
+          QSL("enum\\*"),    QSL("eval"),      QSL("export\\*"),    QSL("extends\\*"), QSL("false"),  QSL("final"),
+          QSL("finally"),    QSL("float"),     QSL("for"),          QSL("function"),   QSL("goto"),   QSL("if"),
+          QSL("implements"), QSL("import\\*"), QSL("in"),           QSL("instanceof"), QSL("int"),    QSL("interface"),
+          QSL("let\\*"),     QSL("long"),      QSL("native"),       QSL("new"),        QSL("null"),   QSL("package"),
+          QSL("private"),    QSL("protected"), QSL("public"),       QSL("return"),     QSL("short"),  QSL("static"),
+          QSL("super\\*"),   QSL("switch"),    QSL("synchronized"), QSL("this"),       QSL("throw"),  QSL("throws"),
+          QSL("transient"),  QSL("true"),      QSL("try"),          QSL("typeof"),     QSL("var"),    QSL("void"),
+          QSL("volatile"),   QSL("while"),     QSL("with"),         QSL("yield")};
 }
 
 void JsSyntaxHighlighter::highlightBlock(const QString& text) {
-  for (const HighlightingRule& rule : std::as_const(highlightingRules)) {
-    QRegularExpressionMatchIterator matchIterator = rule.pattern.globalMatch(text);
+  for (const HighlightingRule& rule : std::as_const(m_highlightingRules)) {
+    QRegularExpressionMatchIterator matchIterator = rule.m_pattern.globalMatch(text);
     while (matchIterator.hasNext()) {
       QRegularExpressionMatch match = matchIterator.next();
-      setFormat(match.capturedStart(), match.capturedLength(), rule.format);
+      setFormat(match.capturedStart(), match.capturedLength(), rule.m_format);
     }
   }
 
   setCurrentBlockState(0);
 
-  int startIndex = 0;
-  if (previousBlockState() != 1)
-    startIndex = text.indexOf(commentStartExpression);
+  int start_index = 0;
+  if (previousBlockState() != 1) {
+    start_index = text.indexOf(m_commentStartExpression);
+  }
 
-  while (startIndex >= 0) {
-    QRegularExpressionMatch match = commentEndExpression.match(text, startIndex);
-    int endIndex = match.capturedStart();
-    int commentLength = 0;
-    if (endIndex == -1) {
+  while (start_index >= 0) {
+    QRegularExpressionMatch match = m_commentEndExpression.match(text, start_index);
+    int end_index = match.capturedStart();
+    int comment_length = 0;
+
+    if (end_index == -1) {
       setCurrentBlockState(1);
-      commentLength = text.length() - startIndex;
+      comment_length = text.length() - start_index;
     }
     else {
-      commentLength = endIndex - startIndex + match.capturedLength();
+      comment_length = end_index - start_index + match.capturedLength();
     }
-    setFormat(startIndex, commentLength, multiLineCommentFormat);
-    startIndex = text.indexOf(commentStartExpression, startIndex + commentLength);
+
+    setFormat(start_index, comment_length, m_multiLineCommentFormat);
+    start_index = text.indexOf(m_commentStartExpression, start_index + comment_length);
   }
 }
