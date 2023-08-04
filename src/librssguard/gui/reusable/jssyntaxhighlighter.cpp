@@ -12,7 +12,7 @@ JsSyntaxHighlighter::JsSyntaxHighlighter(QTextDocument* parent) : QSyntaxHighlig
   m_keywordFormat.setFontWeight(QFont::Weight::Bold);
 
   QStringList keywords = jsKeywords();
-  auto std_keywords = boolinq::from(keywords)
+  auto std_keywords = boolinq::from(keywords.begin(), keywords.end())
                         .select([](const QString& kw) {
                           return QSL("\\b%1\\b").arg(kw);
                         })
