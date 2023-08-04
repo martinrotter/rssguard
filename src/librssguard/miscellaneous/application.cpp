@@ -181,6 +181,9 @@ Application::Application(const QString& id, int& argc, char** argv, const QStrin
   m_webFactory->engineProfile()->setHttpCacheType(QWebEngineProfile::HttpCacheType::DiskHttpCache);
   m_webFactory->engineProfile()->setPersistentStoragePath(web_data_root + QDir::separator() + QSL("storage"));
 
+  m_webFactory->loadCustomCss(userDataFolder() + QDir::separator() + QSL("web") + QDir::separator() +
+                              QSL("user-styles.css"));
+
   if (custom_ua.isEmpty()) {
     m_webFactory->engineProfile()->setHttpUserAgent(QString(HTTP_COMPLETE_USERAGENT));
   }

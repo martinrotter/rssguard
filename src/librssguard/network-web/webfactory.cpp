@@ -89,6 +89,36 @@ bool WebFactory::sendMessageViaEmail(const Message& message) {
   }
 }
 
+#if defined(USE_WEBENGINE)
+void WebFactory::loadCustomCss(const QString user_styles_path) {
+  if (QFile::exists(user_styles_path)) {
+    QByteArray css_data = IOFactory::readFile(user_styles_path);
+    QString name = "rssguard-user-styles";
+    QWebEngineScript script;
+    QString s = QSL("(function() {"
+                    "  css = document.createElement('style');"
+                    "  css.type = 'text/css';"
+                    "  css.id = '%1';"
+                    "  document.head.appendChild(css);"
+                    "  css.innerText = '%2';"
+                    "})()")
+                  .arg(name, css_data.simplified());
+    script.setName(name);
+    script.setSourceCode(s);
+    script.setInjectionPoint(QWebEngineScript::DocumentReady);
+    script.setRunsOnSubFrames(false);
+    script.setWorldId(QWebEngineScript::ApplicationWorld);
+
+    m_engineProfile->scripts()->insert(script);
+
+    qDebugNN << LOGSEC_CORE << "Loading user CSS style file" << QUOTE_W_SPACE_DOT(user_styles_path);
+  }
+  else {
+    qWarningNN << LOGSEC_CORE << "User CSS style was not provided in file" << QUOTE_W_SPACE_DOT(user_styles_path);
+  }
+}
+#endif
+
 bool WebFactory::openUrlInExternalBrowser(const QString& url) const {
   qDebugNN << LOGSEC_NETWORK << "We are trying to open URL" << QUOTE_W_SPACE_DOT(url);
 
