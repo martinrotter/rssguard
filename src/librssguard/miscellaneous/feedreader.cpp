@@ -146,6 +146,7 @@ void FeedReader::showMessageFiltersManager() {
 
   manager.exec();
 
+  m_feedsModel->reloadCountsOfWholeModel();
   m_messagesModel->reloadWholeLayout();
 }
 
