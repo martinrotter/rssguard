@@ -5266,7 +5266,7 @@ Tokeny vyprší: %2</translation>
         <location filename="../src/librssguard/miscellaneous/localization.cpp" line="92"/>
         <source>LANG_AUTHOR</source>
         <extracomment>Name of translator - optional.</extracomment>
-        <translation>Martin Rotter</translation>
+        <translation>Martin Rotter, IAmNotImportant</translation>
     </message>
     <message>
         <location filename="../src/librssguard/miscellaneous/localization.cpp" line="93"/>
