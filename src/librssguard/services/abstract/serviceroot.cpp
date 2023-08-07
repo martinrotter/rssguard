@@ -853,16 +853,30 @@ bool ServiceRoot::onAfterSetMessagesRead(RootItem* selected_item,
     // 4. Labels assigned.
     if (labelsNode() != nullptr) {
       auto db = qApp->database()->driver()->connection(metaObject()->className());
-      auto lbls = DatabaseQueries::getCountOfAssignedLabelsToMessages(db, messages, accountId());
+      QStringList lbls; // = DatabaseQueries::getCountOfAssignedLabelsToMessages(db, messages, accountId());
 
-      for (const QString& lbl_custom_id : lbls.keys()) {
-        auto* lbl = labelsNode()->labelById(lbl_custom_id);
-
-        if (lbl != nullptr) {
-          lbl->setCountOfUnreadMessages(lbls.value(lbl_custom_id).m_unread);
-          to_update << lbl;
+      for (const Message& msg : messages) {
+        for (const QString& lbl : msg.m_assignedLabelsIds) {
+          if (!lbls.contains(lbl)) {
+            lbls.append(lbl);
+          }
         }
       }
+
+      for (const QString& lbl : lbls) {
+        Label* l = labelsNode()->labelById(lbl);
+        l->updateCounts(false);
+        to_update << l;
+      }
+      /*
+            for (const QString& lbl_custom_id : lbls.keys()) {
+              auto* lbl = labelsNode()->labelById(lbl_custom_id);
+
+              if (lbl != nullptr) {
+                lbl->setCountOfUnreadMessages(lbls.value(lbl_custom_id).m_unread);
+                to_update << lbl;
+              }
+            }*/
     }
   }
 
