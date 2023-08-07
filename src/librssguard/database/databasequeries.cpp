@@ -33,7 +33,7 @@ QMap<int, QString> DatabaseQueries::messageTableAttributes(bool only_msg_table, 
   field_names[MSG_DB_CUSTOM_ID_INDEX] = QSL("Messages.custom_id");
   field_names[MSG_DB_CUSTOM_HASH_INDEX] = QSL("Messages.custom_hash");
   field_names[MSG_DB_FEED_TITLE_INDEX] = only_msg_table ? QSL("Messages.feed") : QSL("Feeds.title");
-  field_names[MSG_DB_FEED_IS_RTL_INDEX] = only_msg_table ? QSL("1") : QSL("Feeds.is_rtl");
+  field_names[MSG_DB_FEED_IS_RTL_INDEX] = only_msg_table ? QSL("0") : QSL("Feeds.is_rtl");
   field_names[MSG_DB_HAS_ENCLOSURES] = QSL("CASE WHEN LENGTH(Messages.enclosures) > 10 "
                                            "THEN 'true' "
                                            "ELSE 'false' "
@@ -888,7 +888,7 @@ QList<Message> DatabaseQueries::getUndeletedMessagesWithLabel(const QSqlDatabase
                 "  Messages.is_pdeleted = 0 AND "
                 "  Messages.account_id = :account_id AND "
                 "  Messages.labels LIKE :label;")
-              .arg(messageTableAttributes(true, db.driverName() == QSL(APP_DB_SQLITE_DRIVER))
+              .arg(messageTableAttributes(false, db.driverName() == QSL(APP_DB_SQLITE_DRIVER))
                      .values()
                      .join(QSL(", "))));
   q.bindValue(QSL(":account_id"), label->getParentServiceRoot()->accountId());
@@ -930,7 +930,7 @@ QList<Message> DatabaseQueries::getUndeletedLabelledMessages(const QSqlDatabase&
                 "  Messages.is_pdeleted = 0 AND "
                 "  Messages.account_id = :account_id AND "
                 "  LENGTH(Messages.labels) > 2;")
-              .arg(messageTableAttributes(true, db.driverName() == QSL(APP_DB_SQLITE_DRIVER))
+              .arg(messageTableAttributes(false, db.driverName() == QSL(APP_DB_SQLITE_DRIVER))
                      .values()
                      .join(QSL(", "))));
   q.bindValue(QSL(":account_id"), account_id);
