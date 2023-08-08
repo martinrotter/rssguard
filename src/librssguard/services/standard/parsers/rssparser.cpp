@@ -71,6 +71,11 @@ QString RssParser::xmlMessageUrl(const QDomElement& msg_element) const {
     url = msg_element.namedItem(QSL("link")).toElement().attribute(QSL("href"));
   }
 
+  if (url.isEmpty()) {
+    // Fallback non-valid "url" elements.
+    url = msg_element.namedItem(QSL("url")).toElement().text();
+  }
+
   return url;
 }
 
@@ -79,7 +84,7 @@ QList<Enclosure> RssParser::xmlMessageEnclosures(const QDomElement& msg_element)
   QString elem_enclosure_type = msg_element.namedItem(QSL("enclosure")).toElement().attribute(QSL("type"));
 
   if (!elem_enclosure.isEmpty()) {
-    return { Enclosure(elem_enclosure, elem_enclosure_type) };
+    return {Enclosure(elem_enclosure, elem_enclosure_type)};
   }
   else {
     return {};
