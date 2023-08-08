@@ -23,6 +23,7 @@
 
 #include <QClipboard>
 #include <QFileIconProvider>
+#include <QJsonObject>
 #include <QKeyEvent>
 #include <QMenu>
 #include <QProcess>
@@ -58,7 +59,33 @@ void MessagesView::reloadFontSettings() {
 }
 
 QByteArray MessagesView::saveHeaderState() const {
-  QByteArray arr;
+  QJsonObject obj;
+
+  obj[QSL("header_count")] = header()->count();
+
+  // Store column attributes.
+  for (int i = 0; i < header()->count(); i++) {
+    obj[QSL("header_%1_idx").arg(i)] = header()->visualIndex(i);
+    obj[QSL("header_%1_size").arg(i)] = header()->sectionSize(i);
+    obj[QSL("header_%1_hidden").arg(i)] = header()->isSectionHidden(i);
+  }
+
+  // Store sort attributes.
+  SortColumnsAndOrders orders = m_sourceModel->sortColumnAndOrders();
+
+  obj[QSL("sort_count")] = orders.m_columns.size();
+
+  for (int i = 0; i < orders.m_columns.size(); i++) {
+    obj[QSL("sort_%1_order").arg(i)] = orders.m_orders.at(i);
+    obj[QSL("sort_%1_column").arg(i)] = orders.m_columns.at(i);
+  }
+
+  return QJsonDocument(obj).toJson(QJsonDocument::JsonFormat::Compact);
+
+  /*
+   *
+   *
+    QByteArray arr;
   QDataStream outt(&arr, QIODevice::OpenModeFlag::WriteOnly);
 
   outt.setVersion(QDataStream::Version::Qt_4_7);
@@ -74,9 +101,55 @@ QByteArray MessagesView::saveHeaderState() const {
   }
 
   return arr;
+  */
 }
 
 void MessagesView::restoreHeaderState(const QByteArray& dta) {
+  QJsonObject obj = QJsonDocument::fromJson(dta).object();
+  int saved_header_count = obj[QSL("header_count")].toInt();
+
+  if (saved_header_count < header()->count()) {
+    qWarningNN << LOGSEC_GUI << "Detected invalid state for list view.";
+    return;
+  }
+
+  // Restore column attributes.
+  for (int i = 0; i < saved_header_count && i < header()->count(); i++) {
+    int vi = obj[QSL("header_%1_idx").arg(i)].toInt();
+    int ss = obj[QSL("header_%1_size").arg(i)].toInt();
+    bool ish = obj[QSL("header_%1_hidden").arg(i)].toBool();
+
+    if (vi < header()->count()) {
+      header()->swapSections(header()->visualIndex(i), vi);
+    }
+
+    header()->resizeSection(i, ss);
+    header()->setSectionHidden(i, ish);
+  }
+
+  // Restore sort attributes.
+  int saved_sort_count = obj[QSL("sort_count")].toInt();
+
+  for (int i = saved_sort_count - 1; i > 0; i--) {
+    auto col = obj[QSL("sort_%1_column").arg(i)].toInt();
+    auto ordr = Qt::SortOrder(obj[QSL("sort_%1_order").arg(i)].toInt());
+
+    if (col < header()->count()) {
+      m_sourceModel->addSortState(col, ordr, false);
+    }
+  }
+
+  // Use newest sort as active.
+  if (saved_sort_count > 0) {
+    auto newest_col = obj[QSL("sort_0_column")].toInt();
+    auto newest_ordr = Qt::SortOrder(obj[QSL("sort_0_order")].toInt());
+
+    if (newest_col < header()->count()) {
+      header()->setSortIndicator(newest_col, newest_ordr);
+    }
+  }
+
+  /*
   QByteArray arr = dta;
   QDataStream inn(&arr, QIODevice::OpenModeFlag::ReadOnly);
 
@@ -116,6 +189,7 @@ void MessagesView::restoreHeaderState(const QByteArray& dta) {
   if (saved_sort_column < header()->count()) {
     header()->setSortIndicator(saved_sort_column, Qt::SortOrder(saved_sort_order));
   }
+  */
 }
 
 void MessagesView::copyUrlOfSelectedArticles() const {

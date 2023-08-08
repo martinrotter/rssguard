@@ -516,7 +516,7 @@ Cliquez-ici pour ouvrir le répertoire parent.</translation>
     <message>
         <location filename="../src/librssguard/network-web/downloaditem.ui" line="86"/>
         <source>&amp;Try again</source>
-        <translation>&amp;Essayez encore</translation>
+        <translation>&amp;Réessayer</translation>
     </message>
     <message>
         <location filename="../src/librssguard/network-web/downloaditem.ui" line="93"/>
@@ -526,12 +526,12 @@ Cliquez-ici pour ouvrir le répertoire parent.</translation>
     <message>
         <location filename="../src/librssguard/network-web/downloaditem.ui" line="100"/>
         <source>&amp;Open file</source>
-        <translation>&amp;Ouvrez le fichier</translation>
+        <translation>&amp;Ouvrir le fichier</translation>
     </message>
     <message>
         <location filename="../src/librssguard/network-web/downloaditem.ui" line="107"/>
         <source>Open &amp;directory</source>
-        <translation>Ouvrir %repertoire</translation>
+        <translation>Ouvrir le &amp;répertoire</translation>
     </message>
 </context>
 <context>
@@ -574,7 +574,7 @@ Cliquez-ici pour ouvrir le répertoire parent.</translation>
     <message>
         <location filename="../src/librssguard/network-web/downloadmanager.ui" line="38"/>
         <source>Clean up</source>
-        <translation>Nettoyage</translation>
+        <translation>&amp;Vider la liste de téléchargements</translation>
     </message>
 </context>
 <context>
@@ -664,7 +664,7 @@ Cliquez-ici pour ouvrir le répertoire parent.</translation>
     <message>
         <location filename="../src/librssguard/services/abstract/feed.cpp" line="280"/>
         <source>uses global settings, but global auto-fetching of articles is disabled</source>
-        <translation>utilise les paramètres globaux, mais l&apos;obtention automatique globale d&apos;articles est désactivée.</translation>
+        <translation>Ce flux utilise les paramètres globaux, mais l&apos;obtention automatique globale d&apos;articles est désactivée.</translation>
     </message>
     <message>
         <location filename="../src/librssguard/services/abstract/feed.cpp" line="304"/>
@@ -1609,7 +1609,7 @@ ou cette fonctionnalité n&apos;est pas encore implémentée.</translation>
     <message>
         <location filename="../src/librssguard/gui/dialogs/formdatabasecleanup.cpp" line="30"/>
         <source>I am ready.</source>
-        <translation>Je suis prêt.</translation>
+        <translation>Prêt à nettoyer la base de données.</translation>
     </message>
     <message>
         <location filename="../src/librssguard/gui/dialogs/formdatabasecleanup.cpp" line="76"/>
@@ -1951,12 +1951,12 @@ ou cette fonctionnalité n&apos;est pas encore implémentée.</translation>
     <message>
         <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="250"/>
         <source>&amp;About application</source>
-        <translation>&amp;À propos de l&apos;application</translation>
+        <translation>&amp;À propos d&apos;RSS Guard</translation>
     </message>
     <message>
         <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="253"/>
         <source>Displays extra info about this application.</source>
-        <translation>Afficher des informations supplémentaires à propos de cette application.</translation>
+        <translation>Afficher des informations supplémentaires à propos de l&apos;application.</translation>
     </message>
     <message>
         <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="267"/>
@@ -1976,7 +1976,7 @@ ou cette fonctionnalité n&apos;est pas encore implémentée.</translation>
     <message>
         <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="281"/>
         <source>Fetch all feeds</source>
-        <translation>Obtenir tous les flux</translation>
+        <translation>Obtenir des articles de tous les flux.</translation>
     </message>
     <message>
         <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="289"/>
@@ -1986,7 +1986,7 @@ ou cette fonctionnalité n&apos;est pas encore implémentée.</translation>
     <message>
         <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="292"/>
         <source>Fetch selected feeds</source>
-        <translation>Obtenir des &amp;articles des flux séléctionnés</translation>
+        <translation>Obtenir des articles des flux séléctionnés.</translation>
     </message>
     <message>
         <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="300"/>
@@ -2061,7 +2061,7 @@ ou cette fonctionnalité n&apos;est pas encore implémentée.</translation>
     <message>
         <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="382"/>
         <source>Deletes all messages from selected items.</source>
-        <translation>Supprime tous les messages des éléments sélectionnés.</translation>
+        <translation>Supprimer tous les messages des éléments sélectionnés.</translation>
     </message>
     <message>
         <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="390"/>
@@ -2121,7 +2121,7 @@ ou cette fonctionnalité n&apos;est pas encore implémentée.</translation>
     <message>
         <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="454"/>
         <source>Hides main window if it is visible and shows it if it is hidden.</source>
-        <translation>Cacher la fenêtre principale si elle est visible et la montrer si elle est cachée.</translation>
+        <translation>Minimiser la fenêtre principale si elle est au premier plan et la montrer si elle est minimisée.</translation>
     </message>
     <message>
         <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="468"/>
@@ -2141,7 +2141,7 @@ ou cette fonctionnalité n&apos;est pas encore implémentée.</translation>
     <message>
         <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="482"/>
         <source>Deletes all messages from all items.</source>
-        <translation>Supprime tous les messages de tous les éléments.</translation>
+        <translation>Supprimer tous les messages de tous les éléments.</translation>
     </message>
     <message>
         <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="490"/>
@@ -2151,7 +2151,7 @@ ou cette fonctionnalité n&apos;est pas encore implémentée.</translation>
     <message>
         <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="498"/>
         <source>&amp;Previous item</source>
-        <translation>&amp;Élément précédent</translation>
+        <translation>Élément &amp;précédent</translation>
     </message>
     <message>
         <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="506"/>
@@ -2201,7 +2201,7 @@ ou cette fonctionnalité n&apos;est pas encore implémentée.</translation>
     <message>
         <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="578"/>
         <source>&amp;List headers</source>
-        <translation>Les ttypes de liste</translation>
+        <translation>Les types de liste</translation>
     </message>
     <message>
         <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="586"/>
@@ -2216,7 +2216,7 @@ ou cette fonctionnalité n&apos;est pas encore implémentée.</translation>
     <message>
         <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="602"/>
         <source>&amp;Restart</source>
-        <translation>&amp;Redémarrer RSS Guard</translation>
+        <translation>&amp;Redémarrer RSS Guard.</translation>
     </message>
     <message>
         <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="610"/>
@@ -2312,7 +2312,7 @@ ou cette fonctionnalité n&apos;est pas encore implémentée.</translation>
     <message>
         <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="760"/>
         <source>Stop ongoing fetching</source>
-        <translation>Arrêter l&apos;obtention en cours</translation>
+        <translation>Arrêter l&apos;obtention en cours.</translation>
     </message>
     <message>
         <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="768"/>
@@ -2362,7 +2362,7 @@ ou cette fonctionnalité n&apos;est pas encore implémentée.</translation>
     <message>
         <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="822"/>
         <source>Fetch feeds with &amp;custom auto-download policy</source>
-        <translation>Obtenir les flux avec &amp;une politique de téléchargement automatique personnalisée</translation>
+        <translation>Obtenir les flux avec une politique de téléchargement automatique &amp;personnalisée</translation>
     </message>
     <message>
         <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="830"/>
@@ -2427,7 +2427,7 @@ ou cette fonctionnalité n&apos;est pas encore implémentée.</translation>
     <message>
         <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="902"/>
         <source>Display application &amp;log</source>
-        <translation>Afficher le log de l&apos;appli</translation>
+        <translation>Afficher le &amp;log de l&apos;appli</translation>
     </message>
     <message>
         <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="907"/>
@@ -2452,7 +2452,7 @@ ou cette fonctionnalité n&apos;est pas encore implémentée.</translation>
     <message>
         <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="927"/>
         <source>Rearrange &amp;subcategories alphabetically</source>
-        <translation>Réarranger les sous-catégories alphabétiquement</translation>
+        <translation>Réarranger les &amp;sous-catégories alphabétiquement</translation>
     </message>
     <message>
         <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="932"/>
@@ -2462,7 +2462,7 @@ ou cette fonctionnalité n&apos;est pas encore implémentée.</translation>
     <message>
         <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="937"/>
         <source>Cleanup web cac&amp;he</source>
-        <translation>Nettoyer le cac&amp;he web</translation>
+        <translation>Nettoyer le &amp;cache web</translation>
     </message>
     <message>
         <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="750"/>
@@ -4847,12 +4847,12 @@ Expiration de jetons d&apos;authentification: %2</translation>
     <message>
         <location filename="../src/librssguard/gui/reusable/networkproxydetails.cpp" line="20"/>
         <source>Socks5</source>
-        <translation>Socks5</translation>
+        <translation>SOCKS5</translation>
     </message>
     <message>
         <location filename="../src/librssguard/gui/reusable/networkproxydetails.cpp" line="21"/>
         <source>Http</source>
-        <translation>Http</translation>
+        <translation>HTTP</translation>
     </message>
     <message>
         <location filename="../src/librssguard/gui/reusable/networkproxydetails.ui" line="14"/>
@@ -4867,7 +4867,7 @@ Expiration de jetons d&apos;authentification: %2</translation>
     <message>
         <location filename="../src/librssguard/gui/reusable/networkproxydetails.ui" line="41"/>
         <source>Hostname or IP of your proxy server</source>
-        <translation>Nom de l&apos;hôte ou IP de votre serveur proxy</translation>
+        <translation>Entrez le nom de l&apos;hôte ou IP de votre serveur proxy ici</translation>
     </message>
     <message>
         <location filename="../src/librssguard/gui/reusable/networkproxydetails.ui" line="48"/>
@@ -4882,7 +4882,7 @@ Expiration de jetons d&apos;authentification: %2</translation>
     <message>
         <location filename="../src/librssguard/gui/reusable/networkproxydetails.ui" line="92"/>
         <source>Your username for proxy server authentication</source>
-        <translation>Votre nom d&apos;utilisateur pour l&apos;authentification du serveur proxy</translation>
+        <translation>Entrez votre nom d&apos;utilisateur pour l&apos;authentification du serveur proxy ici</translation>
     </message>
     <message>
         <location filename="../src/librssguard/gui/reusable/networkproxydetails.ui" line="99"/>
@@ -4892,12 +4892,12 @@ Expiration de jetons d&apos;authentification: %2</translation>
     <message>
         <location filename="../src/librssguard/gui/reusable/networkproxydetails.ui" line="118"/>
         <source>Your password for proxy server authentication</source>
-        <translation>Votre mot de passe pour l&apos;authentification du serveur proxy</translation>
+        <translation>Entrez votre mot de passe pour l&apos;authentification du serveur proxy ici</translation>
     </message>
     <message>
         <location filename="../src/librssguard/gui/reusable/networkproxydetails.cpp" line="12"/>
         <source>Note that these settings are applied only on newly established connections.</source>
-        <translation>Noter que ces paramètres sont appliqués seulement sur les nouvelles connexions établies.</translation>
+        <translation>Noter que ces paramètres sont appliqués seulement sur les nouvelles connections établies.</translation>
     </message>
     <message>
         <location filename="../src/librssguard/gui/reusable/networkproxydetails.ui" line="146"/>
@@ -6078,7 +6078,7 @@ File filter for external e-mail selection dialog.</extracomment>
     <message>
         <location filename="../src/librssguard/gui/settings/settingsbrowsermail.h" line="46"/>
         <source>Network &amp; web &amp; tools</source>
-        <translation>Réseau, web &amp; outils</translation>
+        <translation>&amp;Réseau, web &amp; outils</translation>
     </message>
 </context>
 <context>
@@ -6676,7 +6676,7 @@ Déscription: %3</translation>
     <message>
         <location filename="../src/librssguard/gui/settings/settingsgui.ui" line="186"/>
         <source>Start application hidden</source>
-        <translation>Démarrer l&apos;application en caché</translation>
+        <translation>Démarrer l&apos;application minimisée</translation>
     </message>
     <message>
         <location filename="../src/librssguard/gui/settings/settingsgui.ui" line="210"/>

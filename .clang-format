@@ -4,16 +4,16 @@ Language:        Cpp
 AccessModifierOffset: 0
 AlignAfterOpenBracket: Align
 AlignArrayOfStructures: None
-AlignConsecutiveMacros: None
+AlignConsecutiveMacros: Consecutive
 AlignConsecutiveAssignments: None
 AlignConsecutiveBitFields: None
 AlignConsecutiveDeclarations: None
-AlignEscapedNewlines: Right
+AlignEscapedNewlines: Left
 AlignOperands:   Align
 AlignTrailingComments: true
-AllowAllArgumentsOnNextLine: true
-AllowAllParametersOfDeclarationOnNextLine: true
-AllowShortEnumsOnASingleLine: true
+AllowAllArgumentsOnNextLine: false
+AllowAllParametersOfDeclarationOnNextLine: false
+AllowShortEnumsOnASingleLine: false
 AllowShortBlocksOnASingleLine: Never
 AllowShortCaseLabelsOnASingleLine: false
 AllowShortFunctionsOnASingleLine: Empty
@@ -23,7 +23,7 @@ AllowShortLoopsOnASingleLine: false
 AlwaysBreakAfterDefinitionReturnType: None
 AlwaysBreakAfterReturnType: None
 AlwaysBreakBeforeMultilineStrings: false
-AlwaysBreakTemplateDeclarations: MultiLine
+AlwaysBreakTemplateDeclarations: Yes
 AttributeMacros:
   - __capability
 BinPackArguments: false

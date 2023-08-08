@@ -7,6 +7,12 @@
 
 #include <QList>
 #include <QMap>
+#include <QPair>
+
+struct SortColumnsAndOrders {
+    QList<int> m_columns;
+    QList<Qt::SortOrder> m_orders;
+};
 
 class MessagesModelSqlLayer {
   public:
@@ -17,6 +23,8 @@ class MessagesModelSqlLayer {
 
     // Sets SQL WHERE clause, without "WHERE" keyword.
     void setFilter(const QString& filter);
+
+    SortColumnsAndOrders sortColumnAndOrders() const;
 
   protected:
     QString orderByClause() const;

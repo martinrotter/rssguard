@@ -105,6 +105,10 @@ void FeedMessageViewer::loadSize() {
   if (!settings_msg_header.isEmpty()) {
     m_messagesView->restoreHeaderState(QByteArray::fromBase64(settings_msg_header.toLocal8Bit()));
   }
+  else {
+    // Set default sort column.
+    m_messagesView->header()->setSortIndicator(MSG_DB_DCREATED_INDEX, Qt::SortOrder::DescendingOrder);
+  }
 }
 
 void FeedMessageViewer::loadMessageViewerFonts() {

@@ -55,8 +55,8 @@ void MessagesModelSqlLayer::addSortState(int column, Qt::SortOrder order, bool i
   if (m_sortColumns.size() >= MAX_MULTICOLUMN_SORT_STATES) {
     // We support only limited number of sort states
     // due to DB performance.
-    m_sortColumns.removeAt(0);
-    m_sortOrders.removeAt(0);
+    m_sortColumns.removeLast();
+    m_sortOrders.removeLast();
   }
 
   if (is_ctrl_pressed && !ignore_multicolumn_sorting) {
@@ -76,6 +76,15 @@ void MessagesModelSqlLayer::addSortState(int column, Qt::SortOrder order, bool i
 
 void MessagesModelSqlLayer::setFilter(const QString& filter) {
   m_filter = filter;
+}
+
+SortColumnsAndOrders MessagesModelSqlLayer::sortColumnAndOrders() const {
+  SortColumnsAndOrders res;
+
+  res.m_columns = m_sortColumns;
+  res.m_orders = m_sortOrders;
+
+  return res;
 }
 
 QString MessagesModelSqlLayer::formatFields() const {

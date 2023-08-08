@@ -66,6 +66,7 @@ class MessagesView : public BaseTreeView {
                         Qt::CaseSensitivity sensitivity,
                         int custom_criteria,
                         const QString& phrase);
+
     void highlightMessages(MessagesModel::MessageHighlighter highlighter);
     void changeFilter(MessagesProxyModel::MessageListFilter filter);
 

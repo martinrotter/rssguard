@@ -1155,7 +1155,7 @@ or this functionality is not implemented yet.</source>
     <message>
         <location filename="../src/librssguard/gui/dialogs/formabout.cpp" line="126"/>
         <source>&lt;body&gt;%5 is a (very) tiny feed reader.&lt;br&gt;&lt;br&gt;This software is distributed under the terms of GNU General Public License, version 3.&lt;br&gt;&lt;br&gt;Contacts:&lt;ul&gt;&lt;li&gt;&lt;a href=&quot;mailto://%1&quot;&gt;%1&lt;/a&gt; ~e-mail&lt;/li&gt;&lt;li&gt;&lt;a href=&quot;%2&quot;&gt;%2&lt;/a&gt; ~website&lt;/li&gt;&lt;/ul&gt;You can obtain source code for %5 from its website.&lt;br&gt;&lt;br&gt;&lt;br&gt;Copyright (C) 2011-%3 %4&lt;/body&gt;</source>
-        <translation type="unfinished"/>
+        <translation>&lt;body&gt;%5 is a (very) tiny feed reader.&lt;br&gt;&lt;br&gt;This software is distributed under the terms of GNU General Public License, version 3.&lt;br&gt;&lt;br&gt;Contacts:&lt;ul&gt;&lt;li&gt;&lt;a href=&quot;mailto://%1&quot;&gt;%1&lt;/a&gt; ~e-mail&lt;/li&gt;&lt;li&gt;&lt;a href=&quot;%2&quot;&gt;%2&lt;/a&gt; ~website&lt;/li&gt;&lt;/ul&gt;You can obtain source code for %5 from its website.&lt;br&gt;&lt;br&gt;&lt;br&gt;Copyright © 2011-%3 %4&lt;/body&gt;</translation>
     </message>
     <message>
         <location filename="../src/librssguard/gui/dialogs/formabout.cpp" line="110"/>
@@ -1601,7 +1601,7 @@ or this functionality is not implemented yet.</source>
     <message>
         <location filename="../src/librssguard/gui/dialogs/formdatabasecleanup.cpp" line="30"/>
         <source>I am ready.</source>
-        <translation type="unfinished"/>
+        <translation>Ready to cleanup the database.</translation>
     </message>
     <message>
         <location filename="../src/librssguard/gui/dialogs/formdatabasecleanup.cpp" line="76"/>
@@ -1943,12 +1943,12 @@ or this functionality is not implemented yet.</source>
     <message>
         <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="250"/>
         <source>&amp;About application</source>
-        <translation type="unfinished"/>
+        <translation>&amp;About RSS Guard</translation>
     </message>
     <message>
         <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="253"/>
         <source>Displays extra info about this application.</source>
-        <translation type="unfinished"/>
+        <translation>Displays additional information about the application.</translation>
     </message>
     <message>
         <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="267"/>
@@ -1968,7 +1968,7 @@ or this functionality is not implemented yet.</source>
     <message>
         <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="281"/>
         <source>Fetch all feeds</source>
-        <translation type="unfinished"/>
+        <translation>Fetch articles for all feeds</translation>
     </message>
     <message>
         <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="289"/>
@@ -2113,7 +2113,7 @@ or this functionality is not implemented yet.</source>
     <message>
         <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="454"/>
         <source>Hides main window if it is visible and shows it if it is hidden.</source>
-        <translation type="unfinished"/>
+        <translation>Hides main window if it&apos;s on top and shows it if it&apos;s minimised.</translation>
     </message>
     <message>
         <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="468"/>
@@ -4254,7 +4254,7 @@ Login tokens expiration: %2</source>
     <message>
         <location filename="../src/librssguard/core/messagesforfiltersmodel.cpp" line="13"/>
         <source>Author</source>
-        <translation>Translator(s)</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="../src/librssguard/core/messagesforfiltersmodel.cpp" line="13"/>
@@ -4307,7 +4307,7 @@ Login tokens expiration: %2</source>
     <message>
         <location filename="../src/librssguard/core/messagesmodel.cpp" line="288"/>
         <source>Author</source>
-        <translation>Translator(s)</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="../src/librssguard/core/messagesmodel.cpp" line="290"/>
@@ -4822,12 +4822,12 @@ Login tokens expiration: %2</source>
     <message>
         <location filename="../src/librssguard/gui/reusable/networkproxydetails.cpp" line="20"/>
         <source>Socks5</source>
-        <translation type="unfinished"/>
+        <translation>SOCKS5</translation>
     </message>
     <message>
         <location filename="../src/librssguard/gui/reusable/networkproxydetails.cpp" line="21"/>
         <source>Http</source>
-        <translation type="unfinished"/>
+        <translation>HTTP</translation>
     </message>
     <message>
         <location filename="../src/librssguard/gui/reusable/networkproxydetails.ui" line="14"/>
@@ -4842,7 +4842,7 @@ Login tokens expiration: %2</source>
     <message>
         <location filename="../src/librssguard/gui/reusable/networkproxydetails.ui" line="41"/>
         <source>Hostname or IP of your proxy server</source>
-        <translation type="unfinished"/>
+        <translation>Enter the hostname or IP of your proxy server here</translation>
     </message>
     <message>
         <location filename="../src/librssguard/gui/reusable/networkproxydetails.ui" line="48"/>
@@ -4857,7 +4857,7 @@ Login tokens expiration: %2</source>
     <message>
         <location filename="../src/librssguard/gui/reusable/networkproxydetails.ui" line="92"/>
         <source>Your username for proxy server authentication</source>
-        <translation type="unfinished"/>
+        <translation>Enter your username for proxy server authentification here</translation>
     </message>
     <message>
         <location filename="../src/librssguard/gui/reusable/networkproxydetails.ui" line="99"/>
@@ -4867,7 +4867,7 @@ Login tokens expiration: %2</source>
     <message>
         <location filename="../src/librssguard/gui/reusable/networkproxydetails.ui" line="118"/>
         <source>Your password for proxy server authentication</source>
-        <translation type="unfinished"/>
+        <translation>Enter your password for proxy server authentification here</translation>
     </message>
     <message>
         <location filename="../src/librssguard/gui/reusable/networkproxydetails.cpp" line="12"/>
@@ -6240,7 +6240,7 @@ Authors of this application are NOT responsible for lost data.</source>
     <message>
         <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.cpp" line="34"/>
         <source>Note that enabling this might have drastic consequences on performance of article list with big number of articles.</source>
-        <translation type="unfinished"/>
+        <translation>Note that enabling this feature might have drastic negative consequences on the performance of article lists with a large amount of articles.</translation>
     </message>
     <message>
         <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.cpp" line="54"/>
@@ -6305,7 +6305,7 @@ Authors of this application are NOT responsible for lost data.</source>
     <message>
         <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="164"/>
         <source>Feeds list</source>
-        <translation type="unfinished"/>
+        <translation>Feed list</translation>
     </message>
     <message>
         <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="170"/>
@@ -6316,7 +6316,7 @@ Authors of this application are NOT responsible for lost data.</source>
     <message>
         <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="207"/>
         <source>Feed list font</source>
-        <translation>Feed list-specific font</translation>
+        <translation>Feed list font</translation>
     </message>
     <message>
         <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="219"/>
@@ -6380,7 +6380,7 @@ Authors of this application are NOT responsible for lost data.</source>
     <message>
         <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="332"/>
         <source>Bring application window to front once article is opened in external web browser</source>
-        <translation type="unfinished"/>
+        <translation>Bring application window to the forefront once an article is opened in the external web browser</translation>
     </message>
     <message>
         <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="394"/>
@@ -6400,7 +6400,7 @@ Authors of this application are NOT responsible for lost data.</source>
     <message>
         <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="354"/>
         <source>Limit height of pictures</source>
-        <translation type="unfinished"/>
+        <translation>Limit image height</translation>
     </message>
     <message>
         <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="438"/>
@@ -6410,7 +6410,7 @@ Authors of this application are NOT responsible for lost data.</source>
     <message>
         <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="446"/>
         <source>Articles list</source>
-        <translation type="unfinished"/>
+        <translation>Article list</translation>
     </message>
     <message>
         <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="452"/>
@@ -6486,7 +6486,7 @@ Authors of this application are NOT responsible for lost data.</source>
     <message>
         <location filename="../src/librssguard/gui/settings/settingsgui.cpp" line="34"/>
         <source>Author</source>
-        <translation>Translator(s)</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="../src/librssguard/gui/settings/settingsgui.cpp" line="34"/>
@@ -6626,7 +6626,7 @@ Description: %3</source>
     <message>
         <location filename="../src/librssguard/gui/settings/settingsgui.ui" line="186"/>
         <source>Start application hidden</source>
-        <translation type="unfinished"/>
+        <translation>Start application minimised</translation>
     </message>
     <message>
         <location filename="../src/librssguard/gui/settings/settingsgui.ui" line="210"/>
@@ -7324,7 +7324,7 @@ Also, you can post-process generated feed data with yet another script if you wi
     <message>
         <location filename="../src/librssguard/services/standard/standardserviceroot.cpp" line="44"/>
         <source>This is obligatory service account for standard RSS/RDF/ATOM feeds.</source>
-        <translation type="unfinished"/>
+        <translation>This is an obligatory service account for standard RSS/RDF/ATOM feeds.</translation>
     </message>
     <message>
         <location filename="../src/librssguard/services/standard/standardserviceroot.cpp" line="60"/>
