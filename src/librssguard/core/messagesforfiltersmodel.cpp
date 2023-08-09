@@ -9,8 +9,8 @@
 #include "miscellaneous/skinfactory.h"
 
 MessagesForFiltersModel::MessagesForFiltersModel(QObject* parent) : QAbstractTableModel(parent) {
-  m_headerData << tr("Read") << tr("Important") << tr("In recycle bin") << tr("Title")
-               << tr("URL") << tr("Author") << tr("Date") << tr("Score");
+  m_headerData << tr("Read") << tr("Important") << tr("In recycle bin") << tr("Title") << tr("URL") << tr("Author")
+               << tr("Date") << tr("Score");
 }
 
 void MessagesForFiltersModel::setMessages(const QList<Message>& messages) {
@@ -33,6 +33,8 @@ int MessagesForFiltersModel::columnCount(const QModelIndex& parent) const {
 
 QVariant MessagesForFiltersModel::data(const QModelIndex& index, int role) const {
   auto msg = messageForRow(index.row());
+  QString bool_true = tr("true");
+  QString bool_false = tr("false");
 
   switch (role) {
     case Qt::ItemDataRole::BackgroundRole: {
@@ -56,13 +58,13 @@ QVariant MessagesForFiltersModel::data(const QModelIndex& index, int role) const
     case Qt::ItemDataRole::DisplayRole: {
       switch (index.column()) {
         case MFM_MODEL_ISREAD:
-          return msg.m_isRead;
+          return msg.m_isRead ? bool_true : bool_false;
 
         case MFM_MODEL_ISIMPORTANT:
-          return msg.m_isImportant;
+          return msg.m_isImportant ? bool_true : bool_false;
 
         case MFM_MODEL_ISDELETED:
-          return msg.m_isDeleted;
+          return msg.m_isDeleted ? bool_true : bool_false;
 
         case MFM_MODEL_TITLE:
           return msg.m_title;
@@ -92,7 +94,7 @@ QVariant MessagesForFiltersModel::headerData(int section, Qt::Orientation orient
 
   switch (role) {
     case Qt::ItemDataRole::DisplayRole:
-      if (section >=0 && section < m_headerData.size()) {
+      if (section >= 0 && section < m_headerData.size()) {
         return m_headerData.at(section);
       }
 

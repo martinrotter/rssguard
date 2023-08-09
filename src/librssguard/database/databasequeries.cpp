@@ -337,6 +337,19 @@ QList<Search*> DatabaseQueries::getProbesForAccount(const QSqlDatabase& db, int 
   return probes;
 }
 
+void DatabaseQueries::deleteProbe(const QSqlDatabase& db, Search* probe) {
+  QSqlQuery q(db);
+
+  q.setForwardOnly(true);
+  q.prepare(QSL("DELETE FROM Probes WHERE id = :id AND account_id = :account_id;"));
+  q.bindValue(QSL(":id"), probe->id());
+  q.bindValue(QSL(":account_id"), probe->getParentServiceRoot()->accountId());
+
+  if (!q.exec()) {
+    throw ApplicationException(q.lastError().text());
+  }
+}
+
 bool DatabaseQueries::markLabelledMessagesReadUnread(const QSqlDatabase& db, Label* label, RootItem::ReadStatus read) {
   QSqlQuery q(db);
 

@@ -54,12 +54,12 @@ void FormAbout::loadSettingsAndPaths() {
 
   const QString user_data_path = QDir::toNativeSeparators(qApp->userDataFolder());
 
-  m_ui.m_tbResources->setPlainText(QSL("User data folder (\"%5\") -> \"%1\"\n\n"
-                                       "Settings file (%3) -> \"%2\"\n"
-                                       "Skins base folder -> \"%4\"\n"
-                                       "Icon themes base folder -> \"%8\"\n"
-                                       "Node.js package folder -> \"%6\"\n"
-                                       "QtWebEngine cache folder -> \"%7\"")
+  m_ui.m_tbResources->setPlainText(tr("User data folder (\"%5\") -> \"%1\"\n\n"
+                                      "Settings file (%3) -> \"%2\"\n"
+                                      "Skins base folder -> \"%4\"\n"
+                                      "Icon themes base folder -> \"%8\"\n"
+                                      "Node.js package folder -> \"%6\"\n"
+                                      "QtWebEngine cache folder -> \"%7\"")
                                      .arg(user_data_path,
                                           QDir::toNativeSeparators(qApp->settings()->fileName())
                                             .replace(user_data_path, QSL(USER_DATA_PLACEHOLDER)),
@@ -87,8 +87,9 @@ void FormAbout::loadLicenseAndInformation() {
   for (const QJsonValue& license : licenses_index.array()) {
     const QJsonObject license_obj = license.toObject();
     const QString license_text =
-      QString::fromUtf8(IOFactory::readFile(APP_INFO_PATH + QSL("/") + license_obj["file"].toString()));
-    const QString license_title = license_obj["title"].toString() + QSL(": ") + license_obj["components"].toString();
+      QString::fromUtf8(IOFactory::readFile(APP_INFO_PATH + QSL("/") + license_obj[QSL("file")].toString()));
+    const QString license_title =
+      license_obj[QSL("title")].toString() + QSL(": ") + license_obj[QSL("components")].toString();
 
     m_ui.m_cbLicenses->addItem(license_title, license_text);
   }

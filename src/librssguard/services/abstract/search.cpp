@@ -66,18 +66,16 @@ bool Search::canBeDeleted() const {
 }
 
 bool Search::deleteViaGui() {
-  QSqlDatabase db = qApp->database()->driver()->connection(metaObject()->className());
-
-  /*
-  if (DatabaseQueries::deleteLabel(db, this)) {
+  try {
+    QSqlDatabase db = qApp->database()->driver()->connection(metaObject()->className());
+    DatabaseQueries::deleteProbe(db, this);
     getParentServiceRoot()->requestItemRemoval(this);
     return true;
   }
-  else {
+  catch (const ApplicationException& ex) {
+    qCriticalNN << LOGSEC_CORE << "Failed to remove probe:" << QUOTE_W_SPACE_DOT(ex.message());
     return false;
   }
-  */
-  return false;
 }
 
 void Search::updateCounts(bool including_total_count) {

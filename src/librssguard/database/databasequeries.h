@@ -50,6 +50,7 @@ class DatabaseQueries {
     // Probe operators.
     static void createProbe(const QSqlDatabase& db, Search* probe, int account_id);
     static QList<Search*> getProbesForAccount(const QSqlDatabase& db, int account_id);
+    static void deleteProbe(const QSqlDatabase& db, Search* probe);
 
     // Message operators.
     static bool markLabelledMessagesReadUnread(const QSqlDatabase& db, Label* label, RootItem::ReadStatus read);

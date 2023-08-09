@@ -127,72 +127,72 @@ Chyba: %1</translation>
 <context>
     <name>Application</name>
     <message>
-        <location filename="../src/librssguard/miscellaneous/application.cpp" line="1082"/>
+        <location filename="../src/librssguard/miscellaneous/application.cpp" line="1085"/>
         <source>Application is already running.</source>
         <translation>Aplikace již běží</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/miscellaneous/application.cpp" line="552"/>
+        <location filename="../src/librssguard/miscellaneous/application.cpp" line="555"/>
         <source>Output directory is not writable.</source>
         <translation>Nelze psát do cílové složky</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/miscellaneous/application.cpp" line="311"/>
+        <location filename="../src/librssguard/miscellaneous/application.cpp" line="314"/>
         <source>Go to survey</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../src/librssguard/miscellaneous/application.cpp" line="560"/>
+        <location filename="../src/librssguard/miscellaneous/application.cpp" line="563"/>
         <source>Settings file not copied to output directory successfully.</source>
         <translation>Soubor nastavení nebyl zkopírován do cílového adresáře.</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/miscellaneous/application.cpp" line="577"/>
+        <location filename="../src/librssguard/miscellaneous/application.cpp" line="580"/>
         <source>Database restoration was not initiated. Make sure that output directory is writable.</source>
         <translation>Obnovení databáze nebylo spuštěno. Ujistěte se, že cílový adresář je zapisovatelný.</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/miscellaneous/application.cpp" line="584"/>
+        <location filename="../src/librssguard/miscellaneous/application.cpp" line="587"/>
         <source>Settings restoration was not initiated. Make sure that output directory is writable.</source>
         <translation>Obnovení nastavení nebylo spuštěno. Ujistěte se, že cílový adresář je zapisovatelný.</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/miscellaneous/application.cpp" line="1100"/>
+        <location filename="../src/librssguard/miscellaneous/application.cpp" line="1103"/>
         <source>Cannot add feed</source>
         <translation>Nelze přidat kanál</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/miscellaneous/application.cpp" line="1101"/>
+        <location filename="../src/librssguard/miscellaneous/application.cpp" line="1104"/>
         <source>Feed cannot be added because there is no active account which can add feeds.</source>
         <translation>Kanál nemůže být přidán, protože nemáte aktivovaný žádný účet který umí přidávat kanály.</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/miscellaneous/application.cpp" line="1259"/>
+        <location filename="../src/librssguard/miscellaneous/application.cpp" line="1262"/>
         <source>Packages %1 were updated.</source>
         <translation>Balíčky %1 byly aktualizovány.</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/miscellaneous/application.cpp" line="977"/>
+        <location filename="../src/librssguard/miscellaneous/application.cpp" line="980"/>
         <source>Unread articles fetched</source>
         <translation>Staženy nepřečtené zprávy</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/miscellaneous/application.cpp" line="328"/>
+        <location filename="../src/librssguard/miscellaneous/application.cpp" line="331"/>
         <source>Go to changelog</source>
         <translation>Zobrazit seznam změn</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/miscellaneous/application.cpp" line="1031"/>
+        <location filename="../src/librssguard/miscellaneous/application.cpp" line="1034"/>
         <source>AdBlock needs to be configured</source>
         <translation>Je třeba nastavit AdBlock</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/miscellaneous/application.cpp" line="322"/>
+        <location filename="../src/librssguard/miscellaneous/application.cpp" line="325"/>
         <source>Welcome</source>
         <translation>Vítejte</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/miscellaneous/application.cpp" line="323"/>
+        <location filename="../src/librssguard/miscellaneous/application.cpp" line="326"/>
         <source>Welcome to %1.
 
 Please, check NEW stuff included in this
@@ -203,17 +203,17 @@ Prosím, zkontrolujte novinky kliknutím
 na tuto bublinu.</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/miscellaneous/application.cpp" line="1032"/>
+        <location filename="../src/librssguard/miscellaneous/application.cpp" line="1035"/>
         <source>AdBlock is not configured properly. Go to &quot;Settings&quot; -&gt; &quot;Node.js&quot; and check if your Node.js is properly configured.</source>
         <translation>AdBlock není korektně nakonfigurován. Běžte do &quot;Nastavení&quot; -&gt; &quot;Node.js&quot; a zkontrolujte nastavení.</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/miscellaneous/application.cpp" line="1081"/>
+        <location filename="../src/librssguard/miscellaneous/application.cpp" line="1084"/>
         <source>Already running</source>
         <translation>Již běží</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/miscellaneous/application.cpp" line="1250"/>
+        <location filename="../src/librssguard/miscellaneous/application.cpp" line="1253"/>
         <source>Packages %1 were NOT updated because of error: %2.</source>
         <translation>Balíčky %1 NEBYLY aktualizovány kvůli chybě: %2.</translation>
     </message>
@@ -739,12 +739,12 @@ Item ID: %5</source>
 <context>
     <name>FeedReader</name>
     <message>
-        <location filename="../src/librssguard/miscellaneous/feedreader.cpp" line="361"/>
+        <location filename="../src/librssguard/miscellaneous/feedreader.cpp" line="362"/>
         <source>Starting auto-download of some feeds&apos; articles</source>
         <translation>Zahajuji automatické stažení zpráv pro některé kanály</translation>
     </message>
     <message numerus="yes">
-        <location filename="../src/librssguard/miscellaneous/feedreader.cpp" line="362"/>
+        <location filename="../src/librssguard/miscellaneous/feedreader.cpp" line="363"/>
         <source>I will auto-download new articles for %n feed(s).</source>
         <translation><numerusform>Budou se stahovat zprávy pro %n kanál</numerusform><numerusform>Budou se stahovat zprávy pro %n kanály</numerusform><numerusform>Budou se stahovat zprávy pro %n kanálů</numerusform><numerusform>Budou se stahovat zprávy pro %n kanálů</numerusform></translation>
     </message>
@@ -1142,7 +1142,7 @@ or this functionality is not implemented yet.</source>
 <context>
     <name>FormAbout</name>
     <message>
-        <location filename="../src/librssguard/gui/dialogs/formabout.cpp" line="106"/>
+        <location filename="../src/librssguard/gui/dialogs/formabout.cpp" line="107"/>
         <source>Changelog not found.</source>
         <translation>Historie změn nenalezena.</translation>
     </message>
@@ -1157,12 +1157,23 @@ or this functionality is not implemented yet.</source>
         <translation>ZCELA portable</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/gui/dialogs/formabout.cpp" line="126"/>
+        <location filename="../src/librssguard/gui/dialogs/formabout.cpp" line="57"/>
+        <source>User data folder (&quot;%5&quot;) -&gt; &quot;%1&quot;
+
+Settings file (%3) -&gt; &quot;%2&quot;
+Skins base folder -&gt; &quot;%4&quot;
+Icon themes base folder -&gt; &quot;%8&quot;
+Node.js package folder -&gt; &quot;%6&quot;
+QtWebEngine cache folder -&gt; &quot;%7&quot;</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <location filename="../src/librssguard/gui/dialogs/formabout.cpp" line="127"/>
         <source>&lt;body&gt;%5 is a (very) tiny feed reader.&lt;br&gt;&lt;br&gt;This software is distributed under the terms of GNU General Public License, version 3.&lt;br&gt;&lt;br&gt;Contacts:&lt;ul&gt;&lt;li&gt;&lt;a href=&quot;mailto://%1&quot;&gt;%1&lt;/a&gt; ~e-mail&lt;/li&gt;&lt;li&gt;&lt;a href=&quot;%2&quot;&gt;%2&lt;/a&gt; ~website&lt;/li&gt;&lt;/ul&gt;You can obtain source code for %5 from its website.&lt;br&gt;&lt;br&gt;&lt;br&gt;Copyright (C) 2011-%3 %4&lt;/body&gt;</source>
         <translation>&lt;body&gt;%5 je (velmi) lehká čtečka kanálů.&lt;br&gt;&lt;br&gt;Tento software je šířen pod podmínkami licence GNU General Public License, verze 3.&lt;br&gt;&lt;br&gt;Kontakty:&lt;ul&gt;&lt;li&gt;&lt;a href=&quot;mailto://%1&quot;&gt;%1&lt;/a&gt; ~e-mail&lt;/li&gt;&lt;li&gt;&lt;a href=&quot;%2&quot;&gt;%2&lt;/a&gt; ~web&lt;/li&gt;&lt;/ul&gt;Zdrojový kód pro %5 lze získat na jeho webu.&lt;br&gt;&lt;br&gt;&lt;br&gt;Copyright (C) 2011-%3 %4&lt;/body&gt;</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/gui/dialogs/formabout.cpp" line="110"/>
+        <location filename="../src/librssguard/gui/dialogs/formabout.cpp" line="111"/>
         <source>&lt;b&gt;%8&lt;/b&gt;&lt;br&gt;&lt;b&gt;Version:&lt;/b&gt; %1 (built on %2/%3)&lt;br&gt;&lt;b&gt;Revision:&lt;/b&gt; %4&lt;br&gt;&lt;b&gt;Build date:&lt;/b&gt; %5&lt;br&gt;&lt;b&gt;Qt:&lt;/b&gt; %6 (compiled against %7)&lt;br&gt;</source>
         <translation>&lt;b&gt;%8&lt;/b&gt;&lt;br&gt;&lt;b&gt;Verze:&lt;/b&gt; %1 (vytvořená %2/%3)&lt;br&gt;&lt;b&gt;Kontrola:&lt;/b&gt; %4&lt;br&gt;&lt;b&gt;Datum buildu:&lt;/b&gt; %5&lt;br&gt;&lt;b&gt;Qt:&lt;/b&gt; %6 (kompilováno proti %7)&lt;br&gt;</translation>
     </message>
@@ -1332,38 +1343,38 @@ or this functionality is not implemented yet.</source>
         <translation>Regulární výraz</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/services/abstract/gui/formaddeditprobe.cpp" line="17"/>
-        <source>Label&apos;s name cannot be empty.</source>
-        <translation>Jméno štítku nemůže být prázdné.</translation>
-    </message>
-    <message>
         <location filename="../src/librssguard/services/abstract/gui/formaddeditprobe.cpp" line="20"/>
-        <location filename="../src/librssguard/services/abstract/gui/formaddeditprobe.cpp" line="31"/>
+        <location filename="../src/librssguard/services/abstract/gui/formaddeditprobe.cpp" line="32"/>
         <source>Perfect!</source>
         <translation>Skvěle!</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/services/abstract/gui/formaddeditprobe.cpp" line="25"/>
+        <location filename="../src/librssguard/services/abstract/gui/formaddeditprobe.cpp" line="17"/>
         <source>Probe name cannot be empty.</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../src/librssguard/services/abstract/gui/formaddeditprobe.cpp" line="28"/>
+        <location filename="../src/librssguard/services/abstract/gui/formaddeditprobe.cpp" line="26"/>
+        <source>Probe filter cannot be empty.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <location filename="../src/librssguard/services/abstract/gui/formaddeditprobe.cpp" line="29"/>
         <source>Regular expression is not well-formed.</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../src/librssguard/services/abstract/gui/formaddeditprobe.cpp" line="40"/>
+        <location filename="../src/librssguard/services/abstract/gui/formaddeditprobe.cpp" line="41"/>
         <source>Create new probe</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../src/librssguard/services/abstract/gui/formaddeditprobe.cpp" line="43"/>
+        <location filename="../src/librssguard/services/abstract/gui/formaddeditprobe.cpp" line="44"/>
         <source>Hot stuff</source>
         <translation>Dobrej matroš</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/services/abstract/gui/formaddeditprobe.cpp" line="61"/>
+        <location filename="../src/librssguard/services/abstract/gui/formaddeditprobe.cpp" line="62"/>
         <source>Edit probe &apos;%1&apos;</source>
         <translation type="unfinished"/>
     </message>
@@ -3823,13 +3834,13 @@ Tokeny vyprší: %2</translation>
 <context>
     <name>ItemDetails</name>
     <message>
-        <location filename="../src/librssguard/gui/itemdetails.ui" line="14"/>
+        <location filename="../src/librssguard/gui/itemdetails.ui" line="20"/>
         <source>Form</source>
         <translation>Formulář</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/gui/itemdetails.ui" line="20"/>
-        <location filename="../src/librssguard/gui/itemdetails.ui" line="36"/>
+        <location filename="../src/librssguard/gui/itemdetails.ui" line="26"/>
+        <location filename="../src/librssguard/gui/itemdetails.ui" line="42"/>
         <source>TextLabel</source>
         <translation type="unfinished"/>
     </message>
@@ -3865,12 +3876,12 @@ Tokeny vyprší: %2</translation>
         <translation>Nový štítek</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/services/abstract/labelsnode.cpp" line="143"/>
+        <location filename="../src/librssguard/services/abstract/labelsnode.cpp" line="144"/>
         <source>This account does not allow you to create labels.</source>
         <translation>Tento účet neumožňuje vytváření štítků.</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/services/abstract/labelsnode.cpp" line="144"/>
+        <location filename="../src/librssguard/services/abstract/labelsnode.cpp" line="145"/>
         <source>Not allowed</source>
         <translation>Nepovoleno</translation>
     </message>
@@ -4266,12 +4277,12 @@ Tokeny vyprší: %2</translation>
         <translation>Nadpis</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/core/messagesforfiltersmodel.cpp" line="13"/>
+        <location filename="../src/librssguard/core/messagesforfiltersmodel.cpp" line="12"/>
         <source>URL</source>
         <translation>URL</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/core/messagesforfiltersmodel.cpp" line="13"/>
+        <location filename="../src/librssguard/core/messagesforfiltersmodel.cpp" line="12"/>
         <source>Author</source>
         <translation>Autor</translation>
     </message>
@@ -4284,6 +4295,16 @@ Tokeny vyprší: %2</translation>
         <location filename="../src/librssguard/core/messagesforfiltersmodel.cpp" line="13"/>
         <source>Date</source>
         <translation>Datum</translation>
+    </message>
+    <message>
+        <location filename="../src/librssguard/core/messagesforfiltersmodel.cpp" line="36"/>
+        <source>true</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <location filename="../src/librssguard/core/messagesforfiltersmodel.cpp" line="37"/>
+        <source>false</source>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
@@ -4686,37 +4707,37 @@ Tokeny vyprší: %2</translation>
 <context>
     <name>MessagesView</name>
     <message>
-        <location filename="../src/librssguard/gui/messagesview.cpp" line="600"/>
+        <location filename="../src/librssguard/gui/messagesview.cpp" line="667"/>
         <source>Problem with starting external e-mail client</source>
         <translation>Problém se spuštěním externího e-mailového klienta</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/gui/messagesview.cpp" line="601"/>
+        <location filename="../src/librssguard/gui/messagesview.cpp" line="668"/>
         <source>External e-mail client could not be started.</source>
         <translation>Externí e-mailový klient nemohl být úspěšně spuštěn.</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/gui/messagesview.cpp" line="352"/>
+        <location filename="../src/librssguard/gui/messagesview.cpp" line="419"/>
         <source>Open with external tool</source>
         <translation>Otevřít s externím nástrojem</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/gui/messagesview.cpp" line="810"/>
+        <location filename="../src/librssguard/gui/messagesview.cpp" line="877"/>
         <source>Cannot run external tool</source>
         <translation>Nelze spustit externí nástroj</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/gui/messagesview.cpp" line="811"/>
+        <location filename="../src/librssguard/gui/messagesview.cpp" line="878"/>
         <source>External tool &apos;%1&apos; could not be started.</source>
         <translation>Externí nástroj &apos;%1&apos; nelze spustit.</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/gui/messagesview.cpp" line="369"/>
+        <location filename="../src/librssguard/gui/messagesview.cpp" line="436"/>
         <source>No external tools activated</source>
         <translation>Nemáte žádné externí nástroje</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/gui/messagesview.cpp" line="332"/>
+        <location filename="../src/librssguard/gui/messagesview.cpp" line="399"/>
         <source>Context menu for articles</source>
         <translation>Kontextové menu pro zprávy</translation>
     </message>
@@ -5341,7 +5362,7 @@ Feedly is a secure space where you can privately organize and research the topic
 Feedly je bezpečný prostor, kde můžete soukromě organizovat a prohledávat témata a trendy, které jsou pro vás důležité.</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/database/databasequeries.cpp" line="2431"/>
+        <location filename="../src/librssguard/database/databasequeries.cpp" line="2493"/>
         <source>Cannot insert article filter, because current database cannot return last inserted row ID.</source>
         <translation>Nelze vložit filtr zpráv, protože databáze neumí vrátit ID.</translation>
     </message>
@@ -8052,167 +8073,167 @@ Poslední čas přihlášení: %4</translation>
 <context>
     <name>WebFactory</name>
     <message>
-        <location filename="../src/librssguard/network-web/webfactory.cpp" line="290"/>
+        <location filename="../src/librssguard/network-web/webfactory.cpp" line="320"/>
         <source>Web engine settings</source>
         <translation>Nastavení webového enginu</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/network-web/webfactory.cpp" line="313"/>
+        <location filename="../src/librssguard/network-web/webfactory.cpp" line="343"/>
         <source>Auto-load images</source>
         <translation>Načítat obrázky</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/network-web/webfactory.cpp" line="314"/>
+        <location filename="../src/librssguard/network-web/webfactory.cpp" line="344"/>
         <source>JS enabled</source>
         <translation>JS povolen</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/network-web/webfactory.cpp" line="315"/>
+        <location filename="../src/librssguard/network-web/webfactory.cpp" line="345"/>
         <source>JS can open popup windows</source>
         <translation>JS může otevírat popup okna</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/network-web/webfactory.cpp" line="317"/>
+        <location filename="../src/librssguard/network-web/webfactory.cpp" line="347"/>
         <source>JS can access clipboard</source>
         <translation>JS může přistupovat ke schránce</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/network-web/webfactory.cpp" line="319"/>
+        <location filename="../src/librssguard/network-web/webfactory.cpp" line="349"/>
         <source>Hyperlinks can get focus</source>
         <translation>Odkazy mohou získat focus</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/network-web/webfactory.cpp" line="321"/>
+        <location filename="../src/librssguard/network-web/webfactory.cpp" line="351"/>
         <source>Local storage enabled</source>
         <translation>Lokální uložiště povoleno</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/network-web/webfactory.cpp" line="323"/>
+        <location filename="../src/librssguard/network-web/webfactory.cpp" line="353"/>
         <source>Local content can access remote URLs</source>
         <translation>Lokální obsah může načítat vzdálené URL</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/network-web/webfactory.cpp" line="325"/>
+        <location filename="../src/librssguard/network-web/webfactory.cpp" line="355"/>
         <source>XSS auditing enabled</source>
         <translation>XSS auditing povolen</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/network-web/webfactory.cpp" line="327"/>
+        <location filename="../src/librssguard/network-web/webfactory.cpp" line="357"/>
         <source>Spatial navigation enabled</source>
         <translation>Částečná navigace povolena</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/network-web/webfactory.cpp" line="329"/>
+        <location filename="../src/librssguard/network-web/webfactory.cpp" line="359"/>
         <source>Local content can access local files</source>
         <translation>Lokální obsah může přistupovat k lokálním souborům</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/network-web/webfactory.cpp" line="331"/>
+        <location filename="../src/librssguard/network-web/webfactory.cpp" line="361"/>
         <source>Hyperlink auditing enabled</source>
         <translation>Auditing odkazů povolen</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/network-web/webfactory.cpp" line="333"/>
+        <location filename="../src/librssguard/network-web/webfactory.cpp" line="363"/>
         <source>Animate scrolling</source>
         <translation>Animovat skrolování</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/network-web/webfactory.cpp" line="335"/>
+        <location filename="../src/librssguard/network-web/webfactory.cpp" line="365"/>
         <source>Error pages enabled</source>
         <translation>Chybové stránky povoleny</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/network-web/webfactory.cpp" line="336"/>
+        <location filename="../src/librssguard/network-web/webfactory.cpp" line="366"/>
         <source>Plugins enabled</source>
         <translation>Pluginy povoleny</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/network-web/webfactory.cpp" line="337"/>
+        <location filename="../src/librssguard/network-web/webfactory.cpp" line="367"/>
         <source>Fullscreen enabled</source>
         <translation>Fullscreen povolen</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/network-web/webfactory.cpp" line="341"/>
+        <location filename="../src/librssguard/network-web/webfactory.cpp" line="371"/>
         <source>Screen capture enabled</source>
         <translation>Zachycení obrazovky povoleno</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/network-web/webfactory.cpp" line="343"/>
+        <location filename="../src/librssguard/network-web/webfactory.cpp" line="373"/>
         <source>WebGL enabled</source>
         <translation>WebGL povoleno</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/network-web/webfactory.cpp" line="344"/>
+        <location filename="../src/librssguard/network-web/webfactory.cpp" line="374"/>
         <source>Accelerate 2D canvas</source>
         <translation>Akcelerovat 2D plátno</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/network-web/webfactory.cpp" line="346"/>
+        <location filename="../src/librssguard/network-web/webfactory.cpp" line="376"/>
         <source>Print element backgrounds</source>
         <translation>Tisknout pozadí elementů</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/network-web/webfactory.cpp" line="348"/>
+        <location filename="../src/librssguard/network-web/webfactory.cpp" line="378"/>
         <source>Allow running insecure content</source>
         <translation>Povolit běh nezabezpečeného obsahu</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/network-web/webfactory.cpp" line="350"/>
+        <location filename="../src/librssguard/network-web/webfactory.cpp" line="380"/>
         <source>Allow geolocation on insecure origins</source>
         <translation>Povolit geolokaci nezabezpečeného původu</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/network-web/webfactory.cpp" line="681"/>
+        <location filename="../src/librssguard/network-web/webfactory.cpp" line="711"/>
         <source>Web cache is going to be cleared</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../src/librssguard/network-web/webfactory.cpp" line="682"/>
+        <location filename="../src/librssguard/network-web/webfactory.cpp" line="712"/>
         <source>Do you really want to clear web cache?</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../src/librssguard/network-web/webfactory.cpp" line="120"/>
+        <location filename="../src/librssguard/network-web/webfactory.cpp" line="150"/>
         <source>Navigate to website manually</source>
         <translation>Přejít na web ručně</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/network-web/webfactory.cpp" line="121"/>
+        <location filename="../src/librssguard/network-web/webfactory.cpp" line="151"/>
         <source>%1 was unable to launch your web browser with the given URL, you need to open the below website URL in your web browser manually.</source>
         <translation>%1 nedokázal vaši stránku otevřít v systémovém webovém prohlížeči. Je třeba ji otevřít ručně.</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/network-web/webfactory.cpp" line="354"/>
+        <location filename="../src/librssguard/network-web/webfactory.cpp" line="384"/>
         <source>JS can activate windows</source>
         <translation>JS může aktivovat okna</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/network-web/webfactory.cpp" line="356"/>
+        <location filename="../src/librssguard/network-web/webfactory.cpp" line="386"/>
         <source>Show scrollbars</source>
         <translation>Zobrazit posuvníky</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/network-web/webfactory.cpp" line="357"/>
+        <location filename="../src/librssguard/network-web/webfactory.cpp" line="387"/>
         <source>Media playback with gestures</source>
         <translation>Přehrávání médií přes gesta</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/network-web/webfactory.cpp" line="359"/>
+        <location filename="../src/librssguard/network-web/webfactory.cpp" line="389"/>
         <source>WebRTC uses only public interfaces</source>
         <translation>WebRTC smí používat pouze veřejná rozhraní</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/network-web/webfactory.cpp" line="361"/>
+        <location filename="../src/librssguard/network-web/webfactory.cpp" line="391"/>
         <source>JS can paste from clipboard</source>
         <translation>JS může vkládat ze schránky</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/network-web/webfactory.cpp" line="363"/>
+        <location filename="../src/librssguard/network-web/webfactory.cpp" line="393"/>
         <source>DNS prefetch enabled</source>
         <translation>DNS přednačítání povoleno</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/network-web/webfactory.cpp" line="367"/>
+        <location filename="../src/librssguard/network-web/webfactory.cpp" line="397"/>
         <source>PDF viewer enabled</source>
         <translation>PDF prohlížeč povolen</translation>
     </message>
