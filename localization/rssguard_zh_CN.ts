@@ -137,6 +137,16 @@ Error: %1</source>
         <translation>输出目录不可写。</translation>
     </message>
     <message>
+        <location filename="../src/librssguard/miscellaneous/application.cpp" line="310"/>
+        <source>%1 survey</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <location filename="../src/librssguard/miscellaneous/application.cpp" line="311"/>
+        <source>Please, fill the survey.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
         <location filename="../src/librssguard/miscellaneous/application.cpp" line="314"/>
         <source>Go to survey</source>
         <translation type="unfinished"/>
@@ -661,59 +671,59 @@ Click here to open parent directory.</source>
 <context>
     <name>Feed</name>
     <message>
-        <location filename="../src/librssguard/services/abstract/feed.cpp" line="280"/>
+        <location filename="../src/librssguard/services/abstract/feed.cpp" line="281"/>
         <source>uses global settings, but global auto-fetching of articles is disabled</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../src/librssguard/services/abstract/feed.cpp" line="304"/>
+        <location filename="../src/librssguard/services/abstract/feed.cpp" line="305"/>
         <source>no errors</source>
         <translation>正常</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/services/abstract/feed.cpp" line="310"/>
+        <location filename="../src/librssguard/services/abstract/feed.cpp" line="311"/>
         <source>authentication error</source>
         <translation>身份认证错误</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/services/abstract/feed.cpp" line="313"/>
+        <location filename="../src/librssguard/services/abstract/feed.cpp" line="314"/>
         <source>network error</source>
         <translation>网络错误</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/services/abstract/feed.cpp" line="266"/>
+        <location filename="../src/librssguard/services/abstract/feed.cpp" line="267"/>
         <source>does not use auto-fetching of articles</source>
         <extracomment>Describes feed auto-update status.</extracomment>
         <translation>禁用文章自动获取</translation>
     </message>
     <message numerus="yes">
-        <location filename="../src/librssguard/services/abstract/feed.cpp" line="277"/>
+        <location filename="../src/librssguard/services/abstract/feed.cpp" line="278"/>
         <source>uses global settings (%n minute(s) to next auto-fetch of articles)</source>
         <translation><numerusform>使用全局设置 (%n 分钟(s)后自动获取文章)</numerusform></translation>
     </message>
     <message numerus="yes">
-        <location filename="../src/librssguard/services/abstract/feed.cpp" line="291"/>
+        <location filename="../src/librssguard/services/abstract/feed.cpp" line="292"/>
         <source>uses specific settings (%n minute(s) to next auto-fetching of new articles)</source>
         <extracomment>Describes feed auto-update status.</extracomment>
         <translation><numerusform>使用全局设置 (%n 分钟(s)后自动获取文章)</numerusform></translation>
     </message>
     <message>
-        <location filename="../src/librssguard/services/abstract/feed.cpp" line="307"/>
+        <location filename="../src/librssguard/services/abstract/feed.cpp" line="308"/>
         <source>has new articles</source>
         <translation>有新文章</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/services/abstract/feed.cpp" line="316"/>
+        <location filename="../src/librssguard/services/abstract/feed.cpp" line="317"/>
         <source>parsing error</source>
         <translation>解析错误中</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/services/abstract/feed.cpp" line="319"/>
+        <location filename="../src/librssguard/services/abstract/feed.cpp" line="320"/>
         <source>error</source>
         <translation>错误</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/services/abstract/feed.cpp" line="374"/>
+        <location filename="../src/librssguard/services/abstract/feed.cpp" line="382"/>
         <source>Auto-update status: %1
 Active message filters: %2
 Status: %3
@@ -5352,7 +5362,7 @@ Feedly is a secure space where you can privately organize and research the topic
 Feedly是一个安全的空间，你可以私下组织和研究与你有关的话题和趋势。</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/database/databasequeries.cpp" line="2493"/>
+        <location filename="../src/librssguard/database/databasequeries.cpp" line="2510"/>
         <source>Cannot insert article filter, because current database cannot return last inserted row ID.</source>
         <translation>不能插入文章过滤器，因为当前数据库不能返回最后插入的行ID。</translation>
     </message>

@@ -137,6 +137,16 @@ Error: %1</translation>
         <translation>Das Ausgabeverzeichnis ist nicht beschreibbar.</translation>
     </message>
     <message>
+        <location filename="../src/librssguard/miscellaneous/application.cpp" line="310"/>
+        <source>%1 survey</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <location filename="../src/librssguard/miscellaneous/application.cpp" line="311"/>
+        <source>Please, fill the survey.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
         <location filename="../src/librssguard/miscellaneous/application.cpp" line="314"/>
         <source>Go to survey</source>
         <translation>Gehe zur Umfrage</translation>
@@ -661,59 +671,59 @@ Click here to open parent directory.</source>
 <context>
     <name>Feed</name>
     <message>
-        <location filename="../src/librssguard/services/abstract/feed.cpp" line="280"/>
+        <location filename="../src/librssguard/services/abstract/feed.cpp" line="281"/>
         <source>uses global settings, but global auto-fetching of articles is disabled</source>
         <translation>verwendet globale Einstellungen, aber globale automatische Abholung von Artikel ist deaktiviert</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/services/abstract/feed.cpp" line="304"/>
+        <location filename="../src/librssguard/services/abstract/feed.cpp" line="305"/>
         <source>no errors</source>
         <translation>Keine Fehler</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/services/abstract/feed.cpp" line="310"/>
+        <location filename="../src/librssguard/services/abstract/feed.cpp" line="311"/>
         <source>authentication error</source>
         <translation>Fehler bei der Authentifizierung</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/services/abstract/feed.cpp" line="313"/>
+        <location filename="../src/librssguard/services/abstract/feed.cpp" line="314"/>
         <source>network error</source>
         <translation>Netzwerkfehler</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/services/abstract/feed.cpp" line="266"/>
+        <location filename="../src/librssguard/services/abstract/feed.cpp" line="267"/>
         <source>does not use auto-fetching of articles</source>
         <extracomment>Describes feed auto-update status.</extracomment>
         <translation>verwendet keine automatische Abholung von Artikel</translation>
     </message>
     <message numerus="yes">
-        <location filename="../src/librssguard/services/abstract/feed.cpp" line="277"/>
+        <location filename="../src/librssguard/services/abstract/feed.cpp" line="278"/>
         <source>uses global settings (%n minute(s) to next auto-fetch of articles)</source>
         <translation><numerusform>verwendet globale Einstellungen (%n Minute bis zur nächsten automatischen Abholung von Artikel)</numerusform><numerusform>verwendet globale Einstellungen (%n Minuten bis zur nächsten automatischen Abholung von Artikel)</numerusform></translation>
     </message>
     <message numerus="yes">
-        <location filename="../src/librssguard/services/abstract/feed.cpp" line="291"/>
+        <location filename="../src/librssguard/services/abstract/feed.cpp" line="292"/>
         <source>uses specific settings (%n minute(s) to next auto-fetching of new articles)</source>
         <extracomment>Describes feed auto-update status.</extracomment>
         <translation><numerusform>verwendet spezifische Einstellungen (%n Minute bis zur nächsten automatischen Abholung neuer Artikel)</numerusform><numerusform>verwendet spezifische Einstellungen (%n Minuten bis zur nächsten automatischen Abholung neuer Artikel)</numerusform></translation>
     </message>
     <message>
-        <location filename="../src/librssguard/services/abstract/feed.cpp" line="307"/>
+        <location filename="../src/librssguard/services/abstract/feed.cpp" line="308"/>
         <source>has new articles</source>
         <translation>hat neue Artikel</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/services/abstract/feed.cpp" line="316"/>
+        <location filename="../src/librssguard/services/abstract/feed.cpp" line="317"/>
         <source>parsing error</source>
         <translation>Parsing Fehler</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/services/abstract/feed.cpp" line="319"/>
+        <location filename="../src/librssguard/services/abstract/feed.cpp" line="320"/>
         <source>error</source>
         <translation>Fehler</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/services/abstract/feed.cpp" line="374"/>
+        <location filename="../src/librssguard/services/abstract/feed.cpp" line="382"/>
         <source>Auto-update status: %1
 Active message filters: %2
 Status: %3
@@ -1167,7 +1177,12 @@ Skins base folder -&gt; &quot;%4&quot;
 Icon themes base folder -&gt; &quot;%8&quot;
 Node.js package folder -&gt; &quot;%6&quot;
 QtWebEngine cache folder -&gt; &quot;%7&quot;</source>
-        <translation type="unfinished"/>
+        <translation>Benutzerordner (&quot;%5&quot;) -&gt; &quot;%1&quot;
+
+Konfigurationsdatei (%3) -&gt; &quot;%4&quot;
+Symbolthemen Ordner -&gt; &quot;%8&quot;
+Node.js Paketordner -&gt; &quot;%6&quot;
+QtWebEngine Zwischenspeicher -&gt; &quot;%7&quot;</translation>
     </message>
     <message>
         <location filename="../src/librssguard/gui/dialogs/formabout.cpp" line="127"/>
@@ -1358,7 +1373,7 @@ QtWebEngine cache folder -&gt; &quot;%7&quot;</source>
     <message>
         <location filename="../src/librssguard/services/abstract/gui/formaddeditprobe.cpp" line="26"/>
         <source>Probe filter cannot be empty.</source>
-        <translation type="unfinished"/>
+        <translation>Proben-Filter kann nicht leer sein.</translation>
     </message>
     <message>
         <location filename="../src/librssguard/services/abstract/gui/formaddeditprobe.cpp" line="29"/>
@@ -4302,12 +4317,12 @@ Ablauf des Login tokens: %2</translation>
     <message>
         <location filename="../src/librssguard/core/messagesforfiltersmodel.cpp" line="36"/>
         <source>true</source>
-        <translation type="unfinished"/>
+        <translation>wahr</translation>
     </message>
     <message>
         <location filename="../src/librssguard/core/messagesforfiltersmodel.cpp" line="37"/>
         <source>false</source>
-        <translation type="unfinished"/>
+        <translation>falsch</translation>
     </message>
 </context>
 <context>
@@ -5358,7 +5373,7 @@ Feedly is a secure space where you can privately organize and research the topic
 Feedly ist ein sicherer Ort, wo du privat Themen organisieren und nachforschen kannst, die für dich relevant sind.</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/database/databasequeries.cpp" line="2493"/>
+        <location filename="../src/librssguard/database/databasequeries.cpp" line="2510"/>
         <source>Cannot insert article filter, because current database cannot return last inserted row ID.</source>
         <translation>Kann Artikelfilter nicht einfügen, weil die Datenbank die zuletzt hinzugefügte Zeile nicht zurückgeben kann.</translation>
     </message>

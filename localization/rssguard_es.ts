@@ -137,6 +137,16 @@ Error: %1</translation>
         <translation>La carpeta de salida carece de permisos de escritura.</translation>
     </message>
     <message>
+        <location filename="../src/librssguard/miscellaneous/application.cpp" line="310"/>
+        <source>%1 survey</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <location filename="../src/librssguard/miscellaneous/application.cpp" line="311"/>
+        <source>Please, fill the survey.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
         <location filename="../src/librssguard/miscellaneous/application.cpp" line="314"/>
         <source>Go to survey</source>
         <translation type="unfinished"/>
@@ -662,59 +672,59 @@ Pulse aquí para abrir la carpeta principal.</translation>
 <context>
     <name>Feed</name>
     <message>
-        <location filename="../src/librssguard/services/abstract/feed.cpp" line="280"/>
+        <location filename="../src/librssguard/services/abstract/feed.cpp" line="281"/>
         <source>uses global settings, but global auto-fetching of articles is disabled</source>
         <translation>utiliza la configuración global, pero la recuperación automática global de artículos está deshabilitada</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/services/abstract/feed.cpp" line="304"/>
+        <location filename="../src/librssguard/services/abstract/feed.cpp" line="305"/>
         <source>no errors</source>
         <translation>sin errores</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/services/abstract/feed.cpp" line="310"/>
+        <location filename="../src/librssguard/services/abstract/feed.cpp" line="311"/>
         <source>authentication error</source>
         <translation>error de autenticación</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/services/abstract/feed.cpp" line="313"/>
+        <location filename="../src/librssguard/services/abstract/feed.cpp" line="314"/>
         <source>network error</source>
         <translation>error de la red</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/services/abstract/feed.cpp" line="266"/>
+        <location filename="../src/librssguard/services/abstract/feed.cpp" line="267"/>
         <source>does not use auto-fetching of articles</source>
         <extracomment>Describes feed auto-update status.</extracomment>
         <translation>no utiliza la recuperación automática de artículos</translation>
     </message>
     <message numerus="yes">
-        <location filename="../src/librssguard/services/abstract/feed.cpp" line="277"/>
+        <location filename="../src/librssguard/services/abstract/feed.cpp" line="278"/>
         <source>uses global settings (%n minute(s) to next auto-fetch of articles)</source>
         <translation><numerusform>utiliza la configuración global (%n minuto(s) para la próxima obtención automática de artículos)</numerusform><numerusform>utiliza la configuración global (%n en minuto(s) para la próxima obtención automática de artículos)</numerusform><numerusform>utiliza la configuración global (%n en minuto(s) para la próxima obtención automática de artículos)</numerusform></translation>
     </message>
     <message numerus="yes">
-        <location filename="../src/librssguard/services/abstract/feed.cpp" line="291"/>
+        <location filename="../src/librssguard/services/abstract/feed.cpp" line="292"/>
         <source>uses specific settings (%n minute(s) to next auto-fetching of new articles)</source>
         <extracomment>Describes feed auto-update status.</extracomment>
         <translation><numerusform>usa configuraciones específicas (% minuto(s) para la próxima búsqueda automática de nuevos artículos)</numerusform><numerusform>usa configuraciones específicas (%n minuto(s) para la próxima búsqueda automática de nuevos artículos)</numerusform><numerusform>usa configuraciones específicas (%n minuto(s) para la próxima búsqueda automática de nuevos artículos)</numerusform></translation>
     </message>
     <message>
-        <location filename="../src/librssguard/services/abstract/feed.cpp" line="307"/>
+        <location filename="../src/librssguard/services/abstract/feed.cpp" line="308"/>
         <source>has new articles</source>
         <translation>tiene nuevos artículos</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/services/abstract/feed.cpp" line="316"/>
+        <location filename="../src/librssguard/services/abstract/feed.cpp" line="317"/>
         <source>parsing error</source>
         <translation>error de sintaxis</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/services/abstract/feed.cpp" line="319"/>
+        <location filename="../src/librssguard/services/abstract/feed.cpp" line="320"/>
         <source>error</source>
         <translation>error</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/services/abstract/feed.cpp" line="374"/>
+        <location filename="../src/librssguard/services/abstract/feed.cpp" line="382"/>
         <source>Auto-update status: %1
 Active message filters: %2
 Status: %3
@@ -5365,7 +5375,7 @@ Feedly is a secure space where you can privately organize and research the topic
 Feedly es un espacio seguro donde puede organizar e investigar de forma privada los temas y tendencias que le interesan.</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/database/databasequeries.cpp" line="2493"/>
+        <location filename="../src/librssguard/database/databasequeries.cpp" line="2510"/>
         <source>Cannot insert article filter, because current database cannot return last inserted row ID.</source>
         <translation>Imposible insertar el filtro de artículo porque la base de datos actual no puede devolver el ID de la última fila insertada.</translation>
     </message>

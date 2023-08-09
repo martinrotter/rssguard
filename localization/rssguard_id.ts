@@ -135,6 +135,16 @@ Error: %1</source>
         <translation>Direktori keluaran tidak dapat ditulisi.</translation>
     </message>
     <message>
+        <location filename="../src/librssguard/miscellaneous/application.cpp" line="310"/>
+        <source>%1 survey</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <location filename="../src/librssguard/miscellaneous/application.cpp" line="311"/>
+        <source>Please, fill the survey.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
         <location filename="../src/librssguard/miscellaneous/application.cpp" line="314"/>
         <source>Go to survey</source>
         <translation type="unfinished"/>
@@ -660,59 +670,59 @@ Klik disini untuk membuka direktori induk.</translation>
 <context>
     <name>Feed</name>
     <message>
-        <location filename="../src/librssguard/services/abstract/feed.cpp" line="280"/>
+        <location filename="../src/librssguard/services/abstract/feed.cpp" line="281"/>
         <source>uses global settings, but global auto-fetching of articles is disabled</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../src/librssguard/services/abstract/feed.cpp" line="304"/>
+        <location filename="../src/librssguard/services/abstract/feed.cpp" line="305"/>
         <source>no errors</source>
         <translation>tidak ada eror</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/services/abstract/feed.cpp" line="310"/>
+        <location filename="../src/librssguard/services/abstract/feed.cpp" line="311"/>
         <source>authentication error</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../src/librssguard/services/abstract/feed.cpp" line="313"/>
+        <location filename="../src/librssguard/services/abstract/feed.cpp" line="314"/>
         <source>network error</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../src/librssguard/services/abstract/feed.cpp" line="266"/>
+        <location filename="../src/librssguard/services/abstract/feed.cpp" line="267"/>
         <source>does not use auto-fetching of articles</source>
         <extracomment>Describes feed auto-update status.</extracomment>
         <translation type="unfinished"/>
     </message>
     <message numerus="yes">
-        <location filename="../src/librssguard/services/abstract/feed.cpp" line="277"/>
+        <location filename="../src/librssguard/services/abstract/feed.cpp" line="278"/>
         <source>uses global settings (%n minute(s) to next auto-fetch of articles)</source>
         <translation type="unfinished"><numerusform></numerusform></translation>
     </message>
     <message numerus="yes">
-        <location filename="../src/librssguard/services/abstract/feed.cpp" line="291"/>
+        <location filename="../src/librssguard/services/abstract/feed.cpp" line="292"/>
         <source>uses specific settings (%n minute(s) to next auto-fetching of new articles)</source>
         <extracomment>Describes feed auto-update status.</extracomment>
         <translation type="unfinished"><numerusform></numerusform></translation>
     </message>
     <message>
-        <location filename="../src/librssguard/services/abstract/feed.cpp" line="307"/>
+        <location filename="../src/librssguard/services/abstract/feed.cpp" line="308"/>
         <source>has new articles</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../src/librssguard/services/abstract/feed.cpp" line="316"/>
+        <location filename="../src/librssguard/services/abstract/feed.cpp" line="317"/>
         <source>parsing error</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../src/librssguard/services/abstract/feed.cpp" line="319"/>
+        <location filename="../src/librssguard/services/abstract/feed.cpp" line="320"/>
         <source>error</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../src/librssguard/services/abstract/feed.cpp" line="374"/>
+        <location filename="../src/librssguard/services/abstract/feed.cpp" line="382"/>
         <source>Auto-update status: %1
 Active message filters: %2
 Status: %3
@@ -5341,7 +5351,7 @@ Feedly is a secure space where you can privately organize and research the topic
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../src/librssguard/database/databasequeries.cpp" line="2493"/>
+        <location filename="../src/librssguard/database/databasequeries.cpp" line="2510"/>
         <source>Cannot insert article filter, because current database cannot return last inserted row ID.</source>
         <translation type="unfinished"/>
     </message>

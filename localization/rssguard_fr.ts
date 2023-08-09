@@ -137,6 +137,16 @@ Erreur : %1</translation>
         <translation>Le répertoire de destination n&apos;est pas accessible en écriture</translation>
     </message>
     <message>
+        <location filename="../src/librssguard/miscellaneous/application.cpp" line="310"/>
+        <source>%1 survey</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <location filename="../src/librssguard/miscellaneous/application.cpp" line="311"/>
+        <source>Please, fill the survey.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
         <location filename="../src/librssguard/miscellaneous/application.cpp" line="314"/>
         <source>Go to survey</source>
         <translation>Aller au sondage</translation>
@@ -662,59 +672,59 @@ Cliquez-ici pour ouvrir le répertoire parent.</translation>
 <context>
     <name>Feed</name>
     <message>
-        <location filename="../src/librssguard/services/abstract/feed.cpp" line="280"/>
+        <location filename="../src/librssguard/services/abstract/feed.cpp" line="281"/>
         <source>uses global settings, but global auto-fetching of articles is disabled</source>
         <translation>Ce flux utilise les paramètres globaux, mais l&apos;obtention automatique globale d&apos;articles est désactivée.</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/services/abstract/feed.cpp" line="304"/>
+        <location filename="../src/librssguard/services/abstract/feed.cpp" line="305"/>
         <source>no errors</source>
         <translation>Pas d&apos;erreurs.</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/services/abstract/feed.cpp" line="310"/>
+        <location filename="../src/librssguard/services/abstract/feed.cpp" line="311"/>
         <source>authentication error</source>
         <translation>erreur d&apos;authentification</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/services/abstract/feed.cpp" line="313"/>
+        <location filename="../src/librssguard/services/abstract/feed.cpp" line="314"/>
         <source>network error</source>
         <translation>erreur réseau</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/services/abstract/feed.cpp" line="266"/>
+        <location filename="../src/librssguard/services/abstract/feed.cpp" line="267"/>
         <source>does not use auto-fetching of articles</source>
         <extracomment>Describes feed auto-update status.</extracomment>
         <translation>n&apos;utilise pas l&apos;obtention automatique des articles</translation>
     </message>
     <message numerus="yes">
-        <location filename="../src/librssguard/services/abstract/feed.cpp" line="277"/>
+        <location filename="../src/librssguard/services/abstract/feed.cpp" line="278"/>
         <source>uses global settings (%n minute(s) to next auto-fetch of articles)</source>
         <translation><numerusform>utilise les paramètres globaux (%n minute avant la prochaine obtention automatique des articles)</numerusform><numerusform>utilise les paramètres globaux (%n minutes avant la prochaine obtention automatique des articles)</numerusform><numerusform>utilise les paramètres globaux (%n minutes avant la prochaine obtention automatique des articles)</numerusform></translation>
     </message>
     <message numerus="yes">
-        <location filename="../src/librssguard/services/abstract/feed.cpp" line="291"/>
+        <location filename="../src/librssguard/services/abstract/feed.cpp" line="292"/>
         <source>uses specific settings (%n minute(s) to next auto-fetching of new articles)</source>
         <extracomment>Describes feed auto-update status.</extracomment>
         <translation><numerusform>utilise des paramètres particuliers (prochaine obtention automatique des articles dans %n minute)</numerusform><numerusform>utilise des paramètres particuliers (prochaine obtention automatique des articles dans %n minute(s))</numerusform><numerusform>utilise des paramètres particuliers (prochaine obtention automatique des articles dans %n minute(s))</numerusform></translation>
     </message>
     <message>
-        <location filename="../src/librssguard/services/abstract/feed.cpp" line="307"/>
+        <location filename="../src/librssguard/services/abstract/feed.cpp" line="308"/>
         <source>has new articles</source>
         <translation>a des nouveaux articles</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/services/abstract/feed.cpp" line="316"/>
+        <location filename="../src/librssguard/services/abstract/feed.cpp" line="317"/>
         <source>parsing error</source>
         <translation>erreur d&apos;analyse syntaxique</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/services/abstract/feed.cpp" line="319"/>
+        <location filename="../src/librssguard/services/abstract/feed.cpp" line="320"/>
         <source>error</source>
         <translation>erreur</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/services/abstract/feed.cpp" line="374"/>
+        <location filename="../src/librssguard/services/abstract/feed.cpp" line="382"/>
         <source>Auto-update status: %1
 Active message filters: %2
 Status: %3
@@ -1169,7 +1179,13 @@ Skins base folder -&gt; &quot;%4&quot;
 Icon themes base folder -&gt; &quot;%8&quot;
 Node.js package folder -&gt; &quot;%6&quot;
 QtWebEngine cache folder -&gt; &quot;%7&quot;</source>
-        <translation type="unfinished"/>
+        <translation>Fichier de données utilisée (&quot;%5&quot;) -&gt; &quot;%1&quot;
+
+Fichier des paramètres (%3) -&gt; &quot;%2&quot;
+Dossier des thèmes de base -&gt; &quot;%4&quot;
+Dossier des thèmes d&apos;icônes de base -&gt; &quot;%8&quot;
+Dossier des paquets Node.js -&gt; &quot;%6&quot;
+Dossier du cache WebEngineQT -&gt; &quot;%7&quot;</translation>
     </message>
     <message>
         <location filename="../src/librssguard/gui/dialogs/formabout.cpp" line="127"/>
@@ -1360,7 +1376,7 @@ QtWebEngine cache folder -&gt; &quot;%7&quot;</source>
     <message>
         <location filename="../src/librssguard/services/abstract/gui/formaddeditprobe.cpp" line="26"/>
         <source>Probe filter cannot be empty.</source>
-        <translation type="unfinished"/>
+        <translation>Le filtre de la sonde ne peut pas être vide.</translation>
     </message>
     <message>
         <location filename="../src/librssguard/services/abstract/gui/formaddeditprobe.cpp" line="29"/>
@@ -4305,12 +4321,12 @@ Expiration de jetons d&apos;authentification: %2</translation>
     <message>
         <location filename="../src/librssguard/core/messagesforfiltersmodel.cpp" line="36"/>
         <source>true</source>
-        <translation type="unfinished"/>
+        <translation>vrai</translation>
     </message>
     <message>
         <location filename="../src/librssguard/core/messagesforfiltersmodel.cpp" line="37"/>
         <source>false</source>
-        <translation type="unfinished"/>
+        <translation>faux</translation>
     </message>
 </context>
 <context>
@@ -5366,7 +5382,7 @@ Feedly is a secure space where you can privately organize and research the topic
 Feedly est un éspace sécurisé où vous pouvez organiser et rechercher les sujets et tendances qui vous intéressent en privé.</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/database/databasequeries.cpp" line="2493"/>
+        <location filename="../src/librssguard/database/databasequeries.cpp" line="2510"/>
         <source>Cannot insert article filter, because current database cannot return last inserted row ID.</source>
         <translation>Impossible d&apos;insérer le filtre d&apos;article, parce que la base de données actuelle ne peut pas retourner l&apos;identifiant du rang qui a été inséré en dernier.</translation>
     </message>

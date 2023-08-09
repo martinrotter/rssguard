@@ -307,8 +307,8 @@ void Application::loadDynamicShortcuts() {
 void Application::offerPolls() const {
   if (isFirstRunCurrentVersion()) {
     qApp->showGuiMessage(Notification::Event::GeneralEvent,
-                         {QSL("%1 survey").arg(QSL(APP_NAME)),
-                          QSL("Please, fill the survey."),
+                         {tr("%1 survey").arg(QSL(APP_NAME)),
+                          tr("Please, fill the survey."),
                           QSystemTrayIcon::MessageIcon::Warning},
                          {false, true, false},
                          {tr("Go to survey"), [] {
