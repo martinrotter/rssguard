@@ -601,8 +601,8 @@ void FeedsView::onIndexExpanded(const QModelIndex& idx) {
 
   const RootItem* it = m_sourceModel->itemForIndex(m_proxyModel->mapToSource(idx));
 
-  if (it != nullptr &&
-      (int(it->kind()) & int(RootItem::Kind::Category | RootItem::Kind::ServiceRoot | RootItem::Kind::Labels)) > 0) {
+  if (it != nullptr && (int(it->kind()) & int(RootItem::Kind::Category | RootItem::Kind::ServiceRoot |
+                                              RootItem::Kind::Labels | RootItem::Kind::Probes)) > 0) {
     const QString setting_name = it->hashCode();
 
     qApp->settings()->setValue(GROUP(CategoriesExpandStates), setting_name, true);
@@ -619,8 +619,8 @@ void FeedsView::onIndexCollapsed(const QModelIndex& idx) {
 
   RootItem* it = m_sourceModel->itemForIndex(m_proxyModel->mapToSource(idx));
 
-  if (it != nullptr &&
-      (int(it->kind()) & int(RootItem::Kind::Category | RootItem::Kind::ServiceRoot | RootItem::Kind::Labels)) > 0) {
+  if (it != nullptr && (int(it->kind()) & int(RootItem::Kind::Category | RootItem::Kind::ServiceRoot |
+                                              RootItem::Kind::Labels | RootItem::Kind::Probes)) > 0) {
     const QString setting_name = it->hashCode();
 
     qApp->settings()->setValue(GROUP(CategoriesExpandStates), setting_name, false);
@@ -637,8 +637,8 @@ void FeedsView::saveAllExpandStates() {
 
 void FeedsView::saveExpandStates(RootItem* item) {
   Settings* settings = qApp->settings();
-  QList<RootItem*> items =
-    item->getSubTree(RootItem::Kind::Category | RootItem::Kind::ServiceRoot | RootItem::Kind::Labels);
+  QList<RootItem*> items = item->getSubTree(RootItem::Kind::Category | RootItem::Kind::ServiceRoot |
+                                            RootItem::Kind::Labels | RootItem::Kind::Probes);
 
   // Iterate all categories and save their expand statuses.
   for (const RootItem* it : items) {
@@ -655,7 +655,7 @@ void FeedsView::loadAllExpandStates() {
   QList<RootItem*> expandable_items;
 
   expandable_items.append(sourceModel()->rootItem()->getSubTree(RootItem::Kind::Category | RootItem::Kind::ServiceRoot |
-                                                                RootItem::Kind::Labels));
+                                                                RootItem::Kind::Labels | RootItem::Kind::Probes));
 
   // Iterate all categories and save their expand statuses.
   for (const RootItem* item : expandable_items) {

@@ -288,6 +288,55 @@ bool DatabaseQueries::createLabel(const QSqlDatabase& db, Label* label, int acco
   return q.exec() && res;
 }
 
+void DatabaseQueries::createProbe(const QSqlDatabase& db, Search* probe, int account_id) {
+  QSqlQuery q(db);
+
+  q.setForwardOnly(true);
+  q.prepare(QSL("INSERT INTO Probes (name, color, fltr, account_id) "
+                "VALUES (:name, :color, :fltr, :account_id);"));
+  q.bindValue(QSL(":name"), probe->title());
+  q.bindValue(QSL(":fltr"), probe->filter());
+  q.bindValue(QSL(":color"), probe->color().name());
+  q.bindValue(QSL(":account_id"), account_id);
+
+  auto res = q.exec();
+
+  if (res && q.lastInsertId().isValid()) {
+    probe->setId(q.lastInsertId().toInt());
+    probe->setCustomId(QString::number(probe->id()));
+  }
+  else {
+    throw ApplicationException(q.lastError().text());
+  }
+}
+
+QList<Search*> DatabaseQueries::getProbesForAccount(const QSqlDatabase& db, int account_id) {
+  QList<Search*> probes;
+  QSqlQuery q(db);
+
+  q.setForwardOnly(true);
+  q.prepare(QSL("SELECT * FROM Probes WHERE account_id = :account_id;"));
+  q.bindValue(QSL(":account_id"), account_id);
+
+  if (q.exec()) {
+    while (q.next()) {
+      Search* prob = new Search(q.value(QSL("name")).toString(),
+                                q.value(QSL("fltr")).toString(),
+                                QColor(q.value(QSL("color")).toString()));
+
+      prob->setId(q.value(QSL("id")).toInt());
+      prob->setCustomId(QString::number(prob->id()));
+
+      probes << prob;
+    }
+  }
+  else {
+    throw ApplicationException(q.lastError().text());
+  }
+
+  return probes;
+}
+
 bool DatabaseQueries::markLabelledMessagesReadUnread(const QSqlDatabase& db, Label* label, RootItem::ReadStatus read) {
   QSqlQuery q(db);
 

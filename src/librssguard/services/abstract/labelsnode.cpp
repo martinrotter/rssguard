@@ -132,6 +132,7 @@ void LabelsNode::createLabel() {
         DatabaseQueries::createLabel(db, new_lbl, getParentServiceRoot()->accountId());
 
         getParentServiceRoot()->requestItemReassignment(new_lbl, this);
+        getParentServiceRoot()->requestItemExpand({this}, true);
       }
       catch (const ApplicationException&) {
         new_lbl->deleteLater();

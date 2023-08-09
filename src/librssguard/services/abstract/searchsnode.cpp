@@ -128,9 +128,10 @@ void SearchsNode::createProbe() {
     QSqlDatabase db = qApp->database()->driver()->connection(metaObject()->className());
 
     try {
-      // DatabaseQueries::createLabel(db, new_prb, getParentServiceRoot()->accountId());
+      DatabaseQueries::createProbe(db, new_prb, getParentServiceRoot()->accountId());
 
       getParentServiceRoot()->requestItemReassignment(new_prb, this);
+      getParentServiceRoot()->requestItemExpand({this}, true);
     }
     catch (const ApplicationException&) {
       new_prb->deleteLater();

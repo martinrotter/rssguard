@@ -14,15 +14,16 @@ FormAddEditProbe::FormAddEditProbe(QWidget* parent) : QDialog(parent), m_editabl
 
   connect(m_ui.m_txtName->lineEdit(), &QLineEdit::textChanged, this, [this](const QString& text) {
     if (text.isEmpty()) {
-      m_ui.m_txtName->setStatus(LineEditWithStatus::StatusType::Error, tr("Label's name cannot be empty."));
+      m_ui.m_txtName->setStatus(LineEditWithStatus::StatusType::Error, tr("Probe name cannot be empty."));
     }
     else {
       m_ui.m_txtName->setStatus(LineEditWithStatus::StatusType::Ok, tr("Perfect!"));
     }
   });
+
   connect(m_ui.m_txtFilter->lineEdit(), &QLineEdit::textChanged, this, [this](const QString& text) {
     if (text.isEmpty()) {
-      m_ui.m_txtFilter->setStatus(LineEditWithStatus::StatusType::Error, tr("Probe name cannot be empty."));
+      m_ui.m_txtFilter->setStatus(LineEditWithStatus::StatusType::Error, tr("Probe filter cannot be empty."));
     }
     else if (!QRegularExpression(text).isValid()) {
       m_ui.m_txtFilter->setStatus(LineEditWithStatus::StatusType::Error, tr("Regular expression is not well-formed."));

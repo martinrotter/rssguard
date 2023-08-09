@@ -12,6 +12,7 @@
 #include "miscellaneous/textfactory.h"
 #include "services/abstract/category.h"
 #include "services/abstract/label.h"
+#include "services/abstract/search.h"
 #include "services/abstract/serviceroot.h"
 
 #include <QJsonDocument>
@@ -45,6 +46,10 @@ class DatabaseQueries {
     static bool updateLabel(const QSqlDatabase& db, Label* label);
     static bool deleteLabel(const QSqlDatabase& db, Label* label);
     static bool createLabel(const QSqlDatabase& db, Label* label, int account_id);
+
+    // Probe operators.
+    static void createProbe(const QSqlDatabase& db, Search* probe, int account_id);
+    static QList<Search*> getProbesForAccount(const QSqlDatabase& db, int account_id);
 
     // Message operators.
     static bool markLabelledMessagesReadUnread(const QSqlDatabase& db, Label* label, RootItem::ReadStatus read);
@@ -143,7 +148,8 @@ class DatabaseQueries {
     template <typename T>
     static QList<ServiceRoot*> getAccounts(const QSqlDatabase& db, const QString& code, bool* ok = nullptr);
 
-    template <typename Categ, typename Fee> static void loadRootFromDatabase(ServiceRoot* root);
+    template <typename Categ, typename Fee>
+    static void loadRootFromDatabase(ServiceRoot* root);
     static bool storeNewOauthTokens(const QSqlDatabase& db, const QString& refresh_token, int account_id);
     static void createOverwriteAccount(const QSqlDatabase& db, ServiceRoot* account);
 
@@ -169,7 +175,8 @@ class DatabaseQueries {
     static bool deleteFeed(const QSqlDatabase& db, Feed* feed, int account_id);
     static bool deleteCategory(const QSqlDatabase& db, Category* category);
 
-    template <typename T> static Assignment getCategories(const QSqlDatabase& db, int account_id, bool* ok = nullptr);
+    template <typename T>
+    static Assignment getCategories(const QSqlDatabase& db, int account_id, bool* ok = nullptr);
 
     template <typename T>
     static Assignment getFeeds(const QSqlDatabase& db,
@@ -249,7 +256,8 @@ QList<ServiceRoot*> DatabaseQueries::getAccounts(const QSqlDatabase& db, const Q
   return roots;
 }
 
-template <typename T> Assignment DatabaseQueries::getCategories(const QSqlDatabase& db, int account_id, bool* ok) {
+template <typename T>
+Assignment DatabaseQueries::getCategories(const QSqlDatabase& db, int account_id, bool* ok) {
   Assignment categories;
 
   // Obtain data for categories from the database.
@@ -381,13 +389,15 @@ Assignment DatabaseQueries::getFeeds(const QSqlDatabase& db,
   return feeds;
 }
 
-template <typename Categ, typename Fee> void DatabaseQueries::loadRootFromDatabase(ServiceRoot* root) {
+template <typename Categ, typename Fee>
+void DatabaseQueries::loadRootFromDatabase(ServiceRoot* root) {
   QSqlDatabase database = qApp->database()->driver()->connection(root->metaObject()->className());
   Assignment categories = DatabaseQueries::getCategories<Categ>(database, root->accountId());
   Assignment feeds = DatabaseQueries::getFeeds<Fee>(database, qApp->feedReader()->messageFilters(), root->accountId());
   auto labels = DatabaseQueries::getLabelsForAccount(database, root->accountId());
+  auto probes = DatabaseQueries::getProbesForAccount(database, root->accountId());
 
-  root->performInitialAssembly(categories, feeds, labels);
+  root->performInitialAssembly(categories, feeds, labels, probes);
 }
 
 #endif // DATABASEQUERIES_H

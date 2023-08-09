@@ -565,10 +565,13 @@ void ServiceRoot::syncIn() {
 
 void ServiceRoot::performInitialAssembly(const Assignment& categories,
                                          const Assignment& feeds,
-                                         const QList<Label*>& labels) {
+                                         const QList<Label*>& labels,
+                                         const QList<Search*>& probes) {
   assembleCategories(categories);
   assembleFeeds(feeds);
   labelsNode()->loadLabels(labels);
+  probesNode()->loadProbes(probes);
+
   updateCounts(true);
 }
 

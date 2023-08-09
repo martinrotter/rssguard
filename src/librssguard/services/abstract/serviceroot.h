@@ -43,7 +43,11 @@ class ServiceRoot : public RootItem {
       Synchronised = 8
     };
 
-    enum class BagOfMessages { Read, Unread, Starred };
+    enum class BagOfMessages {
+      Read,
+      Unread,
+      Starred
+    };
 
   public:
     explicit ServiceRoot(RootItem* parent = nullptr);
@@ -235,7 +239,10 @@ class ServiceRoot : public RootItem {
     QStringList customIDSOfMessagesForItem(RootItem* item,
                                            RootItem::ReadStatus target_read = RootItem::ReadStatus::Unknown);
 
-    void performInitialAssembly(const Assignment& categories, const Assignment& feeds, const QList<Label*>& labels);
+    void performInitialAssembly(const Assignment& categories,
+                                const Assignment& feeds,
+                                const QList<Label*>& labels,
+                                const QList<Search*>& probes);
 
   public slots:
     virtual void addNewFeed(RootItem* selected_item, const QString& url = QString());
