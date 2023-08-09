@@ -2,6 +2,7 @@
 
 #include "services/abstract/feed.h"
 
+#include "3rd-party/boolinq/boolinq.h"
 #include "database/databasequeries.h"
 #include "definitions/definitions.h"
 #include "miscellaneous/application.h"
@@ -371,12 +372,25 @@ QString Feed::additionalTooltip() const {
     stat += QSL(" (%1)").arg(m_statusString);
   }
 
+  auto std_fltrs = boolinq::from(m_messageFilters)
+                     .select([](const QPointer<MessageFilter>& pn) {
+                       return pn->name();
+                     })
+                     .toStdList();
+  QStringList fltrs = FROM_STD_LIST(QStringList, std_fltrs);
+
   return tr("Auto-update status: %1\n"
             "Active message filters: %2\n"
             "Status: %3\n"
             "Source: <a href=\"%4\">%4</a>\n"
             "Item ID: %5")
-    .arg(getAutoUpdateStatusDescription(), QString::number(m_messageFilters.size()), stat, m_source, customId());
+    .arg(getAutoUpdateStatusDescription(),
+         m_messageFilters.size() > 0
+           ? QSL("%1 (%2)").arg(QString::number(m_messageFilters.size()), fltrs.join(QSL(", ")))
+           : QString::number(m_messageFilters.size()),
+         stat,
+         m_source,
+         customId());
 }
 
 Qt::ItemFlags Feed::additionalFlags() const {

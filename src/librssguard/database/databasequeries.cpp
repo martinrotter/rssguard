@@ -288,6 +288,23 @@ bool DatabaseQueries::createLabel(const QSqlDatabase& db, Label* label, int acco
   return q.exec() && res;
 }
 
+void DatabaseQueries::updateProbe(const QSqlDatabase& db, Search* probe) {
+  QSqlQuery q(db);
+
+  q.setForwardOnly(true);
+  q.prepare(QSL("UPDATE Probes SET name = :name, fltr = :fltr, color = :color "
+                "WHERE id = :id AND account_id = :account_id;"));
+  q.bindValue(QSL(":name"), probe->title());
+  q.bindValue(QSL(":fltr"), probe->filter());
+  q.bindValue(QSL(":color"), probe->color().name());
+  q.bindValue(QSL(":id"), probe->id());
+  q.bindValue(QSL(":account_id"), probe->getParentServiceRoot()->accountId());
+
+  if (!q.exec()) {
+    throw ApplicationException(q.lastError().text());
+  }
+}
+
 void DatabaseQueries::createProbe(const QSqlDatabase& db, Search* probe, int account_id) {
   QSqlQuery q(db);
 
