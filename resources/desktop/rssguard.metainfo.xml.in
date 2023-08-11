@@ -31,7 +31,7 @@
       <li>Tiny Tiny RSS</li>
     </ul>
     <p>
-      NOTE: If you want to have built-in RSS Guard autostart feature working, then you need to enable access to additional folders with this one-liner: <pre>$ flatpak override --user --filesystem=xdg-config/autostart io.github.martinrotter.rssguard</pre>
+      NOTE: If you want to have built-in RSS Guard autostart feature working, then you need to enable access to additional folders with this one-liner: <pre>$ flatpak override --user --filesystem=xdg-config/autostart @APP_REVERSE_NAME@</pre>
     </p>
   </description>
   <launchable type="desktop-id">@APP_REVERSE_NAME@.desktop</launchable>
