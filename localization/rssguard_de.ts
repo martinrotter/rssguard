@@ -6998,12 +6998,12 @@ Es existieren auch einige integrierte Sounds. Beginne zu tippen mit &quot;:&quot
 <context>
     <name>SqliteDriver</name>
     <message>
-        <location filename="../src/librssguard/database/sqlitedriver.cpp" line="360"/>
+        <location filename="../src/librssguard/database/sqlitedriver.cpp" line="375"/>
         <source>SQLite (embedded database)</source>
         <translation>SQLite (eingebettete Datenbank)</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/database/sqlitedriver.cpp" line="372"/>
+        <location filename="../src/librssguard/database/sqlitedriver.cpp" line="387"/>
         <source>Database file not copied to output directory successfully.</source>
         <translation>Datenbank konnte nicht in das Ausgabeverzeichnis geschrieben werden.</translation>
     </message>
@@ -7383,11 +7383,6 @@ Du kannst die generierten Feed Daten auch mit einem extra Nachbearbeituns-Skript
 <context>
     <name>StandardServiceRoot</name>
     <message>
-        <location filename="../src/librssguard/services/standard/standardserviceroot.cpp" line="44"/>
-        <source>This is obligatory service account for standard RSS/RDF/ATOM feeds.</source>
-        <translation>Obligates Konto für den Dienst zum Zugriff auf standardmäßige RSS/RDF/ATOM Feeds.</translation>
-    </message>
-    <message>
         <location filename="../src/librssguard/services/standard/standardserviceroot.cpp" line="60"/>
         <source>Do you want to load initial set of feeds?</source>
         <translation>Soll zu Beginn eine Auswahl von Feeds geladen werden?</translation>
@@ -7416,6 +7411,11 @@ Du kannst die generierten Feed Daten auch mit einem extra Nachbearbeituns-Skript
         <location filename="../src/librssguard/services/standard/standardserviceroot.cpp" line="59"/>
         <source>This new account does not include any feeds. You can now add default set of feeds.</source>
         <translation>Dieses neu eingerichtete Konto enthält noch keine Feeds. Sie können jetzt eine standardmäßige Zusammenstellung von Feeds integrieren.</translation>
+    </message>
+    <message>
+        <location filename="../src/librssguard/services/standard/standardserviceroot.cpp" line="44"/>
+        <source>This is the obligatory service account for standard RSS/RDF/ATOM feeds.</source>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="../src/librssguard/services/standard/standardserviceroot.cpp" line="131"/>

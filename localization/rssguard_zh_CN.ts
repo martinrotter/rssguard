@@ -6974,12 +6974,12 @@ Also, there are some built-in sounds. Just start typing &quot;:&quot; and they w
 <context>
     <name>SqliteDriver</name>
     <message>
-        <location filename="../src/librssguard/database/sqlitedriver.cpp" line="360"/>
+        <location filename="../src/librssguard/database/sqlitedriver.cpp" line="375"/>
         <source>SQLite (embedded database)</source>
         <translation>SQLite（嵌入式数据库）</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/database/sqlitedriver.cpp" line="372"/>
+        <location filename="../src/librssguard/database/sqlitedriver.cpp" line="387"/>
         <source>Database file not copied to output directory successfully.</source>
         <translation>数据库文件未能成功复制到输出目录。</translation>
     </message>
@@ -7357,11 +7357,6 @@ Also, you can post-process generated feed data with yet another script if you wi
 <context>
     <name>StandardServiceRoot</name>
     <message>
-        <location filename="../src/librssguard/services/standard/standardserviceroot.cpp" line="44"/>
-        <source>This is obligatory service account for standard RSS/RDF/ATOM feeds.</source>
-        <translation>标准 RSS/RDF/ATOM Feeds 默认的服务账户。</translation>
-    </message>
-    <message>
         <location filename="../src/librssguard/services/standard/standardserviceroot.cpp" line="60"/>
         <source>Do you want to load initial set of feeds?</source>
         <translation>你想要载入预设的 Feeds 集吗？</translation>
@@ -7390,6 +7385,11 @@ Also, you can post-process generated feed data with yet another script if you wi
         <location filename="../src/librssguard/services/standard/standardserviceroot.cpp" line="59"/>
         <source>This new account does not include any feeds. You can now add default set of feeds.</source>
         <translation>新账户不包含任何 Feeds，你现在可以添加预设的 Feeds 集合。</translation>
+    </message>
+    <message>
+        <location filename="../src/librssguard/services/standard/standardserviceroot.cpp" line="44"/>
+        <source>This is the obligatory service account for standard RSS/RDF/ATOM feeds.</source>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="../src/librssguard/services/standard/standardserviceroot.cpp" line="131"/>

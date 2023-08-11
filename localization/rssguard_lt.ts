@@ -6960,12 +6960,12 @@ Also, there are some built-in sounds. Just start typing &quot;:&quot; and they w
 <context>
     <name>SqliteDriver</name>
     <message>
-        <location filename="../src/librssguard/database/sqlitedriver.cpp" line="360"/>
+        <location filename="../src/librssguard/database/sqlitedriver.cpp" line="375"/>
         <source>SQLite (embedded database)</source>
         <translation>SQLite (įtaisyta duomenų bazė)</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/database/sqlitedriver.cpp" line="372"/>
+        <location filename="../src/librssguard/database/sqlitedriver.cpp" line="387"/>
         <source>Database file not copied to output directory successfully.</source>
         <translation>Duomenų bazės failas nebuvo sėkmingai nukopijuotas į išvesties katalogą.</translation>
     </message>
@@ -7341,11 +7341,6 @@ Also, you can post-process generated feed data with yet another script if you wi
 <context>
     <name>StandardServiceRoot</name>
     <message>
-        <location filename="../src/librssguard/services/standard/standardserviceroot.cpp" line="44"/>
-        <source>This is obligatory service account for standard RSS/RDF/ATOM feeds.</source>
-        <translation>Tai yra būtina paslaugos paskyra, skirta standartiniams RSS/RDF/ATOM kanalams.</translation>
-    </message>
-    <message>
         <location filename="../src/librssguard/services/standard/standardserviceroot.cpp" line="60"/>
         <source>Do you want to load initial set of feeds?</source>
         <translation>Ar norite įkelti pradinį kanalų rinkinį?</translation>
@@ -7374,6 +7369,11 @@ Also, you can post-process generated feed data with yet another script if you wi
         <location filename="../src/librssguard/services/standard/standardserviceroot.cpp" line="59"/>
         <source>This new account does not include any feeds. You can now add default set of feeds.</source>
         <translation>Šioje naujoje paskyroje nėra jokių kanalų. Jūs galite dabar pridėti numatytąjį kanalų rinkinį.</translation>
+    </message>
+    <message>
+        <location filename="../src/librssguard/services/standard/standardserviceroot.cpp" line="44"/>
+        <source>This is the obligatory service account for standard RSS/RDF/ATOM feeds.</source>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="../src/librssguard/services/standard/standardserviceroot.cpp" line="131"/>

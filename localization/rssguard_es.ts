@@ -7006,12 +7006,12 @@ Además, hay algunos sonidos incorporados. Simplemente comience a escribir &quot
 <context>
     <name>SqliteDriver</name>
     <message>
-        <location filename="../src/librssguard/database/sqlitedriver.cpp" line="360"/>
+        <location filename="../src/librssguard/database/sqlitedriver.cpp" line="375"/>
         <source>SQLite (embedded database)</source>
         <translation>SQLite (base de datos integrada)</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/database/sqlitedriver.cpp" line="372"/>
+        <location filename="../src/librssguard/database/sqlitedriver.cpp" line="387"/>
         <source>Database file not copied to output directory successfully.</source>
         <translation>El archivo de base de datos no se copió satisfactoriamente a la carpeta de salida.</translation>
     </message>
@@ -7393,11 +7393,6 @@ Además, puede posprocesar los datos de alimentación generados con otro guión 
 <context>
     <name>StandardServiceRoot</name>
     <message>
-        <location filename="../src/librssguard/services/standard/standardserviceroot.cpp" line="44"/>
-        <source>This is obligatory service account for standard RSS/RDF/ATOM feeds.</source>
-        <translation>Esta es la cuenta de servicio obligatorio para fuentes estándar RSS/RDF/ATOM.</translation>
-    </message>
-    <message>
         <location filename="../src/librssguard/services/standard/standardserviceroot.cpp" line="60"/>
         <source>Do you want to load initial set of feeds?</source>
         <translation>¿Quiere cargar el conjunto inicial de fuentes?</translation>
@@ -7426,6 +7421,11 @@ Además, puede posprocesar los datos de alimentación generados con otro guión 
         <location filename="../src/librssguard/services/standard/standardserviceroot.cpp" line="59"/>
         <source>This new account does not include any feeds. You can now add default set of feeds.</source>
         <translation>Esta nueva cuenta no contiene fuentes. Puede añadirle ahora el conjunto predeterminado de fuentes.</translation>
+    </message>
+    <message>
+        <location filename="../src/librssguard/services/standard/standardserviceroot.cpp" line="44"/>
+        <source>This is the obligatory service account for standard RSS/RDF/ATOM feeds.</source>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="../src/librssguard/services/standard/standardserviceroot.cpp" line="131"/>

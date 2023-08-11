@@ -6952,12 +6952,12 @@ Also, there are some built-in sounds. Just start typing &quot;:&quot; and they w
 <context>
     <name>SqliteDriver</name>
     <message>
-        <location filename="../src/librssguard/database/sqlitedriver.cpp" line="360"/>
+        <location filename="../src/librssguard/database/sqlitedriver.cpp" line="375"/>
         <source>SQLite (embedded database)</source>
         <translation>SQLite (database tertanam)</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/database/sqlitedriver.cpp" line="372"/>
+        <location filename="../src/librssguard/database/sqlitedriver.cpp" line="387"/>
         <source>Database file not copied to output directory successfully.</source>
         <translation>Berkas database tidak berhasil disalin ke direktori keluaran.</translation>
     </message>
@@ -7333,11 +7333,6 @@ Also, you can post-process generated feed data with yet another script if you wi
 <context>
     <name>StandardServiceRoot</name>
     <message>
-        <location filename="../src/librssguard/services/standard/standardserviceroot.cpp" line="44"/>
-        <source>This is obligatory service account for standard RSS/RDF/ATOM feeds.</source>
-        <translation>Ini adalah akun layanan wajib untuk standar feed RSS/RDF/ATOM.</translation>
-    </message>
-    <message>
         <location filename="../src/librssguard/services/standard/standardserviceroot.cpp" line="60"/>
         <source>Do you want to load initial set of feeds?</source>
         <translation>Apakah anda ingin memuat kumpulan awal dari feed?</translation>
@@ -7366,6 +7361,11 @@ Also, you can post-process generated feed data with yet another script if you wi
         <location filename="../src/librssguard/services/standard/standardserviceroot.cpp" line="59"/>
         <source>This new account does not include any feeds. You can now add default set of feeds.</source>
         <translation>Akun baru ini tidak berisi feed apapun. Anda sekarang dapat menambah kumpulan feed bawaan.</translation>
+    </message>
+    <message>
+        <location filename="../src/librssguard/services/standard/standardserviceroot.cpp" line="44"/>
+        <source>This is the obligatory service account for standard RSS/RDF/ATOM feeds.</source>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="../src/librssguard/services/standard/standardserviceroot.cpp" line="131"/>

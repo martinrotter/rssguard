@@ -1104,7 +1104,7 @@ ou cette fonctionnalité n&apos;est pas encore implémentée.</translation>
     <message>
         <location filename="../src/librssguard/gui/feedsview.cpp" line="875"/>
         <source>Context menu for regex query</source>
-        <translation type="unfinished"/>
+        <translation>Le menu contextuel pour votre requête d&apos;expression régulière</translation>
     </message>
     <message>
         <location filename="../src/librssguard/gui/feedsview.cpp" line="136"/>
@@ -1345,7 +1345,7 @@ Dossier du cache Moteur Web QT -&gt; &quot;%7&quot;</translation>
     <message>
         <location filename="../src/librssguard/services/abstract/gui/formaddeditprobe.cpp" line="12"/>
         <source>Name for your query</source>
-        <translation type="unfinished"/>
+        <translation>Le nom de votre requête</translation>
     </message>
     <message>
         <location filename="../src/librssguard/services/abstract/gui/formaddeditprobe.cpp" line="13"/>
@@ -1355,7 +1355,7 @@ Dossier du cache Moteur Web QT -&gt; &quot;%7&quot;</translation>
     <message>
         <location filename="../src/librssguard/services/abstract/gui/formaddeditprobe.cpp" line="17"/>
         <source>Regex query name cannot be empty.</source>
-        <translation type="unfinished"/>
+        <translation>Le nom de l&apos;expression régulière ne peut pas être vide.</translation>
     </message>
     <message>
         <location filename="../src/librssguard/services/abstract/gui/formaddeditprobe.cpp" line="20"/>
@@ -1366,17 +1366,17 @@ Dossier du cache Moteur Web QT -&gt; &quot;%7&quot;</translation>
     <message>
         <location filename="../src/librssguard/services/abstract/gui/formaddeditprobe.cpp" line="26"/>
         <source>Regular expression cannot be empty.</source>
-        <translation type="unfinished"/>
+        <translation>L&apos;expression régulière ne peut pas être vide.</translation>
     </message>
     <message>
         <location filename="../src/librssguard/services/abstract/gui/formaddeditprobe.cpp" line="41"/>
         <source>Create new regex query</source>
-        <translation type="unfinished"/>
+        <translation>Créer une nouvelle requête d&apos;expression régulière</translation>
     </message>
     <message>
         <location filename="../src/librssguard/services/abstract/gui/formaddeditprobe.cpp" line="62"/>
         <source>Edit regex query &apos;%1&apos;</source>
-        <translation type="unfinished"/>
+        <translation>Modifier la requête d&apos;expression régulière &apos;%1&apos;</translation>
     </message>
     <message>
         <location filename="../src/librssguard/services/abstract/gui/formaddeditprobe.cpp" line="29"/>
@@ -5416,7 +5416,7 @@ Liste d&apos;agrégateurs compatibles:</translation>
     <message>
         <location filename="../src/librssguard/services/greader/greaderentrypoint.cpp" line="35"/>
         <source>and possibly others.</source>
-        <translation type="unfinished"/>
+        <translation>et potentiellement d&apos;autres.</translation>
     </message>
     <message>
         <location filename="../src/librssguard/miscellaneous/notification.cpp" line="139"/>
@@ -5823,17 +5823,17 @@ Expiration de jetons d&apos;authentification: %2</translation>
     <message>
         <location filename="../src/librssguard/services/abstract/searchsnode.cpp" line="19"/>
         <source>Regex queries</source>
-        <translation type="unfinished"/>
+        <translation>Requêtes d&apos;expressions régulières</translation>
     </message>
     <message>
         <location filename="../src/librssguard/services/abstract/searchsnode.cpp" line="20"/>
         <source>You can see all your permanent regex queries here.</source>
-        <translation type="unfinished"/>
+        <translation>Vous pouvez voir toutes vos requêtes d&apos;expressions régulières ici.</translation>
     </message>
     <message>
         <location filename="../src/librssguard/services/abstract/searchsnode.cpp" line="115"/>
         <source>New regex query</source>
-        <translation type="unfinished"/>
+        <translation>Nouvelle requête d&apos;expression régulière</translation>
     </message>
 </context>
 <context>
@@ -7007,12 +7007,12 @@ Aussi, il y a des sons pre-ajoutés. Si vous tapez &quot;:&quot;, ils se présen
 <context>
     <name>SqliteDriver</name>
     <message>
-        <location filename="../src/librssguard/database/sqlitedriver.cpp" line="360"/>
+        <location filename="../src/librssguard/database/sqlitedriver.cpp" line="375"/>
         <source>SQLite (embedded database)</source>
         <translation>SQLite (base de données embarquée)</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/database/sqlitedriver.cpp" line="372"/>
+        <location filename="../src/librssguard/database/sqlitedriver.cpp" line="387"/>
         <source>Database file not copied to output directory successfully.</source>
         <translation>Le fichier de base de données n&apos;a pas été copié correctement dans le répertoire de destination.</translation>
     </message>
@@ -7392,11 +7392,6 @@ Vous pouvez aussi post-traiter la data de flux avec encore un autre script si vo
 <context>
     <name>StandardServiceRoot</name>
     <message>
-        <location filename="../src/librssguard/services/standard/standardserviceroot.cpp" line="44"/>
-        <source>This is obligatory service account for standard RSS/RDF/ATOM feeds.</source>
-        <translation>Ceci est un compte de service obligatoire pour les flux RSS/RDF/ATOM standards.</translation>
-    </message>
-    <message>
         <location filename="../src/librssguard/services/standard/standardserviceroot.cpp" line="60"/>
         <source>Do you want to load initial set of feeds?</source>
         <translation>Voulez-vous charger l&apos;ensemble de flux initiaux?</translation>
@@ -7425,6 +7420,11 @@ Vous pouvez aussi post-traiter la data de flux avec encore un autre script si vo
         <location filename="../src/librssguard/services/standard/standardserviceroot.cpp" line="59"/>
         <source>This new account does not include any feeds. You can now add default set of feeds.</source>
         <translation>Ce nouveau compte ne contien aucun flux. Vous pouvez maintenant ajouter l&apos;ensemble de flux de base.</translation>
+    </message>
+    <message>
+        <location filename="../src/librssguard/services/standard/standardserviceroot.cpp" line="44"/>
+        <source>This is the obligatory service account for standard RSS/RDF/ATOM feeds.</source>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="../src/librssguard/services/standard/standardserviceroot.cpp" line="131"/>

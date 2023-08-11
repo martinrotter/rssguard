@@ -518,6 +518,12 @@ list(APPEND SOURCES
   3rd-party/boolinq/boolinq.h
 )
 
+# Add sqlite.
+list(APPEND SOURCES
+  3rd-party/sqlite/sqlite3.c
+  3rd-party/sqlite/sqlite3.h
+)
+
 # Add SimpleCrypt.
 list(APPEND SOURCES
   3rd-party/sc/simplecrypt.cpp

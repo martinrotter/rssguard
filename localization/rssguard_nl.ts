@@ -27,7 +27,7 @@
     <message>
         <location filename="../src/librssguard/network-web/adblock/adblockdialog.cpp" line="64"/>
         <source>There is some error in AdBlock component and it cannot be enabled. Check error message below (or application debug log) for more information.</source>
-        <translation>Er is een fout in het AdBlock-component en het kan niet worden ingeschakeld. Controleer het onderstaande foutbericht (of het foutopsporingslogboek van de toepassing) voor meer informatie.</translation>
+        <translation>Er is een fout in het AdBlock-component en het kan niet worden ingeschakeld. Controleer het onderstaande foutbericht (of het applicatielog van de toepassing) voor meer informatie.</translation>
     </message>
     <message>
         <location filename="../src/librssguard/network-web/adblock/adblockdialog.cpp" line="98"/>
@@ -1103,7 +1103,7 @@ of omdat deze functie nog niet is geïmplementeerd.</translation>
     <message>
         <location filename="../src/librssguard/gui/feedsview.cpp" line="875"/>
         <source>Context menu for regex query</source>
-        <translation type="unfinished"/>
+        <translation>Menu voor regex zoeken</translation>
     </message>
     <message>
         <location filename="../src/librssguard/gui/feedsview.cpp" line="136"/>
@@ -1344,7 +1344,7 @@ QtWebEngine cache map -&gt; &quot;%7&quot;</translation>
     <message>
         <location filename="../src/librssguard/services/abstract/gui/formaddeditprobe.cpp" line="12"/>
         <source>Name for your query</source>
-        <translation type="unfinished"/>
+        <translation>Naam voor de zoekopdracht</translation>
     </message>
     <message>
         <location filename="../src/librssguard/services/abstract/gui/formaddeditprobe.cpp" line="13"/>
@@ -1354,7 +1354,7 @@ QtWebEngine cache map -&gt; &quot;%7&quot;</translation>
     <message>
         <location filename="../src/librssguard/services/abstract/gui/formaddeditprobe.cpp" line="17"/>
         <source>Regex query name cannot be empty.</source>
-        <translation type="unfinished"/>
+        <translation>Regex zoekopdrachtnaam mag niet leeg zijn.</translation>
     </message>
     <message>
         <location filename="../src/librssguard/services/abstract/gui/formaddeditprobe.cpp" line="20"/>
@@ -1365,17 +1365,17 @@ QtWebEngine cache map -&gt; &quot;%7&quot;</translation>
     <message>
         <location filename="../src/librssguard/services/abstract/gui/formaddeditprobe.cpp" line="26"/>
         <source>Regular expression cannot be empty.</source>
-        <translation type="unfinished"/>
+        <translation>Reguliere expressie mag niet leeg zijn.</translation>
     </message>
     <message>
         <location filename="../src/librssguard/services/abstract/gui/formaddeditprobe.cpp" line="41"/>
         <source>Create new regex query</source>
-        <translation type="unfinished"/>
+        <translation>Maak nieuwe regex zoekopdracht</translation>
     </message>
     <message>
         <location filename="../src/librssguard/services/abstract/gui/formaddeditprobe.cpp" line="62"/>
         <source>Edit regex query &apos;%1&apos;</source>
-        <translation type="unfinished"/>
+        <translation>Bewerk regex zoekopdracht &apos;%1&apos;</translation>
     </message>
     <message>
         <location filename="../src/librssguard/services/abstract/gui/formaddeditprobe.cpp" line="29"/>
@@ -5820,17 +5820,17 @@ Logintoken verloopt: %2</translation>
     <message>
         <location filename="../src/librssguard/services/abstract/searchsnode.cpp" line="19"/>
         <source>Regex queries</source>
-        <translation type="unfinished"/>
+        <translation>Regex zoekopdracht(en)</translation>
     </message>
     <message>
         <location filename="../src/librssguard/services/abstract/searchsnode.cpp" line="20"/>
         <source>You can see all your permanent regex queries here.</source>
-        <translation type="unfinished"/>
+        <translation>Hier staan al je permanente regex zoekopdrachten.</translation>
     </message>
     <message>
         <location filename="../src/librssguard/services/abstract/searchsnode.cpp" line="115"/>
         <source>New regex query</source>
-        <translation type="unfinished"/>
+        <translation>Nieuwe regex zoekopdracht</translation>
     </message>
 </context>
 <context>
@@ -7004,12 +7004,12 @@ Er zijn ook een aantal ingebouwde geluiden beschikbaar. Typ &quot;:&quot; om de 
 <context>
     <name>SqliteDriver</name>
     <message>
-        <location filename="../src/librssguard/database/sqlitedriver.cpp" line="360"/>
+        <location filename="../src/librssguard/database/sqlitedriver.cpp" line="375"/>
         <source>SQLite (embedded database)</source>
         <translation>SQLite (ingesloten databank)</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/database/sqlitedriver.cpp" line="372"/>
+        <location filename="../src/librssguard/database/sqlitedriver.cpp" line="387"/>
         <source>Database file not copied to output directory successfully.</source>
         <translation>Het databankbestand is niet gekopieerd naar de uitvoermap.</translation>
     </message>
@@ -7389,11 +7389,6 @@ Je kunt ook gegenereerde feedgegevens nabewerken met nog een ander script als je
 <context>
     <name>StandardServiceRoot</name>
     <message>
-        <location filename="../src/librssguard/services/standard/standardserviceroot.cpp" line="44"/>
-        <source>This is obligatory service account for standard RSS/RDF/ATOM feeds.</source>
-        <translation>Dit is het verplichte service account voor standaard RSS/RDF/ATOM feeds.</translation>
-    </message>
-    <message>
         <location filename="../src/librssguard/services/standard/standardserviceroot.cpp" line="60"/>
         <source>Do you want to load initial set of feeds?</source>
         <translation>Wil je de eerste set van feeds laden?</translation>
@@ -7424,6 +7419,11 @@ Je kunt ook gegenereerde feedgegevens nabewerken met nog een ander script als je
         <translation>Dit nieuwe account bevat geen feeds. De standaard feeds kunnen toegevoegd worden.</translation>
     </message>
     <message>
+        <location filename="../src/librssguard/services/standard/standardserviceroot.cpp" line="44"/>
+        <source>This is the obligatory service account for standard RSS/RDF/ATOM feeds.</source>
+        <translation>Dit is het verplichte service account voor standaard RSS/RDF/ATOM feeds.</translation>
+    </message>
+    <message>
         <location filename="../src/librssguard/services/standard/standardserviceroot.cpp" line="131"/>
         <source>Cannot add item</source>
         <translation>Kan item niet toevoegen</translation>
@@ -7451,7 +7451,7 @@ Je kunt ook gegenereerde feedgegevens nabewerken met nog een ander script als je
     <message>
         <location filename="../src/librssguard/services/standard/standardserviceroot.cpp" line="377"/>
         <source>Some feeds/categories were not imported due to error, check debug log for more details.</source>
-        <translation>Sommige feed/categorieën zijn niet geïmporteerd vanwege een fout, controleer het opsporingslogboek voor mer details.</translation>
+        <translation>Sommige feed/categorieën zijn niet geïmporteerd vanwege een fout, controleer het applicatielog voor meer details.</translation>
     </message>
 </context>
 <context>
