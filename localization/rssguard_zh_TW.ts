@@ -125,7 +125,7 @@ Error: %1</source>
 <context>
     <name>Application</name>
     <message>
-        <location filename="../src/librssguard/miscellaneous/application.cpp" line="1088"/>
+        <location filename="../src/librssguard/miscellaneous/application.cpp" line="1086"/>
         <source>Application is already running.</source>
         <translation>應用程式已在執行。</translation>
     </message>
@@ -155,32 +155,32 @@ Error: %1</source>
         <translation>設定檔複製到輸出目錄失敗。</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/miscellaneous/application.cpp" line="583"/>
+        <location filename="../src/librssguard/miscellaneous/application.cpp" line="581"/>
         <source>Database restoration was not initiated. Make sure that output directory is writable.</source>
         <translation>未復原資料庫。請確認輸出目錄可寫入。</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/miscellaneous/application.cpp" line="590"/>
+        <location filename="../src/librssguard/miscellaneous/application.cpp" line="588"/>
         <source>Settings restoration was not initiated. Make sure that output directory is writable.</source>
         <translation>未復原設定。請確認輸出目錄可寫入。</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/miscellaneous/application.cpp" line="1106"/>
+        <location filename="../src/librssguard/miscellaneous/application.cpp" line="1104"/>
         <source>Cannot add feed</source>
         <translation>無法新增文源</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/miscellaneous/application.cpp" line="1107"/>
+        <location filename="../src/librssguard/miscellaneous/application.cpp" line="1105"/>
         <source>Feed cannot be added because there is no active account which can add feeds.</source>
         <translation>無法加入文源，因為無使用的、可加入文源的帳號。</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/miscellaneous/application.cpp" line="1265"/>
+        <location filename="../src/librssguard/miscellaneous/application.cpp" line="1263"/>
         <source>Packages %1 were updated.</source>
         <translation>套件 %1 更新過。</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/miscellaneous/application.cpp" line="983"/>
+        <location filename="../src/librssguard/miscellaneous/application.cpp" line="981"/>
         <source>Unread articles fetched</source>
         <translation>下載了未讀的文章</translation>
     </message>
@@ -190,7 +190,7 @@ Error: %1</source>
         <translation>前往檢視變更紀錄</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/miscellaneous/application.cpp" line="1037"/>
+        <location filename="../src/librssguard/miscellaneous/application.cpp" line="1035"/>
         <source>AdBlock needs to be configured</source>
         <translation>須設定 AdBlock</translation>
     </message>
@@ -211,17 +211,17 @@ version by clicking this popup notification.</source>
 查閱此版的新鮮事。</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/miscellaneous/application.cpp" line="1038"/>
+        <location filename="../src/librssguard/miscellaneous/application.cpp" line="1036"/>
         <source>AdBlock is not configured properly. Go to &quot;Settings&quot; -&gt; &quot;Node.js&quot; and check if your Node.js is properly configured.</source>
         <translation>AdBlock 未恰當設定。請於 &quot;設定&quot; -&gt; &quot;Node.js&quot;，檢查 Node.js 是否恰當設定。</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/miscellaneous/application.cpp" line="1087"/>
+        <location filename="../src/librssguard/miscellaneous/application.cpp" line="1085"/>
         <source>Already running</source>
         <translation>已在執行</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/miscellaneous/application.cpp" line="1256"/>
+        <location filename="../src/librssguard/miscellaneous/application.cpp" line="1254"/>
         <source>Packages %1 were NOT updated because of error: %2.</source>
         <translation>套件 %1 沒更新新過，因為後面錯誤: %2。</translation>
     </message>
@@ -1101,7 +1101,7 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <location filename="../src/librssguard/gui/feedsview.cpp" line="875"/>
-        <source>Context menu for probe</source>
+        <source>Context menu for regex query</source>
         <translation type="unfinished"/>
     </message>
     <message>
@@ -1336,7 +1336,7 @@ QtWebEngine cache folder -&gt; &quot;%7&quot;</source>
     </message>
     <message>
         <location filename="../src/librssguard/services/abstract/gui/formaddeditprobe.cpp" line="12"/>
-        <source>Name for your probe</source>
+        <source>Name for your query</source>
         <translation type="unfinished"/>
     </message>
     <message>
@@ -1345,19 +1345,29 @@ QtWebEngine cache folder -&gt; &quot;%7&quot;</source>
         <translation>類型式</translation>
     </message>
     <message>
+        <location filename="../src/librssguard/services/abstract/gui/formaddeditprobe.cpp" line="17"/>
+        <source>Regex query name cannot be empty.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
         <location filename="../src/librssguard/services/abstract/gui/formaddeditprobe.cpp" line="20"/>
         <location filename="../src/librssguard/services/abstract/gui/formaddeditprobe.cpp" line="32"/>
         <source>Perfect!</source>
         <translation>太棒了！</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/services/abstract/gui/formaddeditprobe.cpp" line="17"/>
-        <source>Probe name cannot be empty.</source>
+        <location filename="../src/librssguard/services/abstract/gui/formaddeditprobe.cpp" line="26"/>
+        <source>Regular expression cannot be empty.</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../src/librssguard/services/abstract/gui/formaddeditprobe.cpp" line="26"/>
-        <source>Probe filter cannot be empty.</source>
+        <location filename="../src/librssguard/services/abstract/gui/formaddeditprobe.cpp" line="41"/>
+        <source>Create new regex query</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <location filename="../src/librssguard/services/abstract/gui/formaddeditprobe.cpp" line="62"/>
+        <source>Edit regex query &apos;%1&apos;</source>
         <translation type="unfinished"/>
     </message>
     <message>
@@ -1366,19 +1376,9 @@ QtWebEngine cache folder -&gt; &quot;%7&quot;</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../src/librssguard/services/abstract/gui/formaddeditprobe.cpp" line="41"/>
-        <source>Create new probe</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
         <location filename="../src/librssguard/services/abstract/gui/formaddeditprobe.cpp" line="44"/>
         <source>Hot stuff</source>
         <translation>熱門</translation>
-    </message>
-    <message>
-        <location filename="../src/librssguard/services/abstract/gui/formaddeditprobe.cpp" line="62"/>
-        <source>Edit probe &apos;%1&apos;</source>
-        <translation type="unfinished"/>
     </message>
 </context>
 <context>
@@ -4113,32 +4113,32 @@ Login tokens expiration: %2</source>
 <context>
     <name>MariaDbDriver</name>
     <message>
-        <location filename="../src/librssguard/database/mariadbdriver.cpp" line="77"/>
+        <location filename="../src/librssguard/database/mariadbdriver.cpp" line="75"/>
         <source>MySQL server works as expected.</source>
         <translation>MySQL 伺服器如預期運作。</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/database/mariadbdriver.cpp" line="80"/>
+        <location filename="../src/librssguard/database/mariadbdriver.cpp" line="78"/>
         <source>Selected database does not exist (yet). It will be created. It&apos;s okay.</source>
         <translation>所選資料庫並不(尚未)存在。會建立。沒問題。</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/database/mariadbdriver.cpp" line="85"/>
+        <location filename="../src/librssguard/database/mariadbdriver.cpp" line="83"/>
         <source>No MySQL server is running in the target destination.</source>
         <translation>目的處無 MySQL 伺服器運行。</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/database/mariadbdriver.cpp" line="88"/>
+        <location filename="../src/librssguard/database/mariadbdriver.cpp" line="86"/>
         <source>Access denied. Invalid username or password used.</source>
         <translation>存取被拒。用了無效的使用者名稱與密碼。</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/database/mariadbdriver.cpp" line="91"/>
+        <location filename="../src/librssguard/database/mariadbdriver.cpp" line="89"/>
         <source>Unknown error: &apos;%1&apos;.</source>
         <translation>未知的錯誤: &apos;%1&apos;。</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/database/mariadbdriver.cpp" line="96"/>
+        <location filename="../src/librssguard/database/mariadbdriver.cpp" line="94"/>
         <source>MariaDB</source>
         <translation>MariaDB</translation>
     </message>
@@ -5809,17 +5809,17 @@ Login tokens expiration: %2</source>
     <name>SearchsNode</name>
     <message>
         <location filename="../src/librssguard/services/abstract/searchsnode.cpp" line="19"/>
-        <source>Article probes</source>
+        <source>Regex queries</source>
         <translation type="unfinished"/>
     </message>
     <message>
         <location filename="../src/librssguard/services/abstract/searchsnode.cpp" line="20"/>
-        <source>You can see all your permanent article probes here.</source>
+        <source>You can see all your permanent regex queries here.</source>
         <translation type="unfinished"/>
     </message>
     <message>
         <location filename="../src/librssguard/services/abstract/searchsnode.cpp" line="115"/>
-        <source>New article probe</source>
+        <source>New regex query</source>
         <translation type="unfinished"/>
     </message>
 </context>
@@ -7001,7 +7001,7 @@ Also, there are some built-in sounds. Just start typing &quot;:&quot; and they w
         <translation>SQLite (嵌入的資料庫)</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/database/sqlitedriver.cpp" line="370"/>
+        <location filename="../src/librssguard/database/sqlitedriver.cpp" line="372"/>
         <source>Database file not copied to output directory successfully.</source>
         <translation>資料庫檔複製到輸出目錄失敗。</translation>
     </message>

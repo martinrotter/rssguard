@@ -127,7 +127,7 @@ Erreur : %1</translation>
 <context>
     <name>Application</name>
     <message>
-        <location filename="../src/librssguard/miscellaneous/application.cpp" line="1088"/>
+        <location filename="../src/librssguard/miscellaneous/application.cpp" line="1086"/>
         <source>Application is already running.</source>
         <translation>L&apos;application est déjà lancée</translation>
     </message>
@@ -157,32 +157,32 @@ Erreur : %1</translation>
         <translation>Le fichier de réglages n&apos;a pas été copié correctement dans le répertoire de destination.</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/miscellaneous/application.cpp" line="583"/>
+        <location filename="../src/librssguard/miscellaneous/application.cpp" line="581"/>
         <source>Database restoration was not initiated. Make sure that output directory is writable.</source>
         <translation>La restauration de la base de données n&apos;a pas été initiée. Vérifier que le répertoire de destination est accessible en écriture.</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/miscellaneous/application.cpp" line="590"/>
+        <location filename="../src/librssguard/miscellaneous/application.cpp" line="588"/>
         <source>Settings restoration was not initiated. Make sure that output directory is writable.</source>
         <translation>La restauration des paramètres n&apos;a pas été initiée. Vérifier que le répertoire de destination est accessible en écriture.</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/miscellaneous/application.cpp" line="1106"/>
+        <location filename="../src/librssguard/miscellaneous/application.cpp" line="1104"/>
         <source>Cannot add feed</source>
         <translation>Impossible d&apos;ajouter le flux</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/miscellaneous/application.cpp" line="1107"/>
+        <location filename="../src/librssguard/miscellaneous/application.cpp" line="1105"/>
         <source>Feed cannot be added because there is no active account which can add feeds.</source>
         <translation>Le flux ne peut pas être ajouté car il n&apos;y a aucun compte actif autorisant l&apos;ajout de flux.</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/miscellaneous/application.cpp" line="1265"/>
+        <location filename="../src/librssguard/miscellaneous/application.cpp" line="1263"/>
         <source>Packages %1 were updated.</source>
         <translation>Les paquets %1 ont été mis à jour.</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/miscellaneous/application.cpp" line="983"/>
+        <location filename="../src/librssguard/miscellaneous/application.cpp" line="981"/>
         <source>Unread articles fetched</source>
         <translation>Articles non lus obtenus</translation>
     </message>
@@ -192,7 +192,7 @@ Erreur : %1</translation>
         <translation>Consulter le journal des modifications</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/miscellaneous/application.cpp" line="1037"/>
+        <location filename="../src/librssguard/miscellaneous/application.cpp" line="1035"/>
         <source>AdBlock needs to be configured</source>
         <translation>AdBlock doit être configuré</translation>
     </message>
@@ -213,17 +213,17 @@ Découvrez les nouveautés de cette
 version en cliquant sur cette notification.</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/miscellaneous/application.cpp" line="1038"/>
+        <location filename="../src/librssguard/miscellaneous/application.cpp" line="1036"/>
         <source>AdBlock is not configured properly. Go to &quot;Settings&quot; -&gt; &quot;Node.js&quot; and check if your Node.js is properly configured.</source>
         <translation>AdBlock n&apos;a pas été configuré correctement. Allez dans &quot;Paramètres&quot; -&gt; &quot;Node.js&quot; et vérifiez que Node.js ait été correctement configuré.</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/miscellaneous/application.cpp" line="1087"/>
+        <location filename="../src/librssguard/miscellaneous/application.cpp" line="1085"/>
         <source>Already running</source>
         <translation>Déjà en fonctionnement</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/miscellaneous/application.cpp" line="1256"/>
+        <location filename="../src/librssguard/miscellaneous/application.cpp" line="1254"/>
         <source>Packages %1 were NOT updated because of error: %2.</source>
         <translation>Les paquets %1 n&apos;ont PAS été mis à jour à cause de l&apos;erreur : %2.</translation>
     </message>
@@ -1103,8 +1103,8 @@ ou cette fonctionnalité n&apos;est pas encore implémentée.</translation>
     </message>
     <message>
         <location filename="../src/librssguard/gui/feedsview.cpp" line="875"/>
-        <source>Context menu for probe</source>
-        <translation>Menu contextuel de votre sonde</translation>
+        <source>Context menu for regex query</source>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="../src/librssguard/gui/feedsview.cpp" line="136"/>
@@ -1344,13 +1344,18 @@ Dossier du cache Moteur Web QT -&gt; &quot;%7&quot;</translation>
     </message>
     <message>
         <location filename="../src/librssguard/services/abstract/gui/formaddeditprobe.cpp" line="12"/>
-        <source>Name for your probe</source>
-        <translation>Nom de votre sonde</translation>
+        <source>Name for your query</source>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="../src/librssguard/services/abstract/gui/formaddeditprobe.cpp" line="13"/>
         <source>Regular expression</source>
         <translation>Expression regulière</translation>
+    </message>
+    <message>
+        <location filename="../src/librssguard/services/abstract/gui/formaddeditprobe.cpp" line="17"/>
+        <source>Regex query name cannot be empty.</source>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="../src/librssguard/services/abstract/gui/formaddeditprobe.cpp" line="20"/>
@@ -1359,14 +1364,19 @@ Dossier du cache Moteur Web QT -&gt; &quot;%7&quot;</translation>
         <translation>Parfait !</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/services/abstract/gui/formaddeditprobe.cpp" line="17"/>
-        <source>Probe name cannot be empty.</source>
-        <translation>Le nom de votre sonde ne peut pas être vide.</translation>
+        <location filename="../src/librssguard/services/abstract/gui/formaddeditprobe.cpp" line="26"/>
+        <source>Regular expression cannot be empty.</source>
+        <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../src/librssguard/services/abstract/gui/formaddeditprobe.cpp" line="26"/>
-        <source>Probe filter cannot be empty.</source>
-        <translation>Le filtre de la sonde ne peut pas être vide.</translation>
+        <location filename="../src/librssguard/services/abstract/gui/formaddeditprobe.cpp" line="41"/>
+        <source>Create new regex query</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <location filename="../src/librssguard/services/abstract/gui/formaddeditprobe.cpp" line="62"/>
+        <source>Edit regex query &apos;%1&apos;</source>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="../src/librssguard/services/abstract/gui/formaddeditprobe.cpp" line="29"/>
@@ -1374,19 +1384,9 @@ Dossier du cache Moteur Web QT -&gt; &quot;%7&quot;</translation>
         <translation>L&apos;expression régulière n&apos;est pas bien formattée.</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/services/abstract/gui/formaddeditprobe.cpp" line="41"/>
-        <source>Create new probe</source>
-        <translation>Créer une nouvelle sonde</translation>
-    </message>
-    <message>
         <location filename="../src/librssguard/services/abstract/gui/formaddeditprobe.cpp" line="44"/>
         <source>Hot stuff</source>
         <translation>Génial</translation>
-    </message>
-    <message>
-        <location filename="../src/librssguard/services/abstract/gui/formaddeditprobe.cpp" line="62"/>
-        <source>Edit probe &apos;%1&apos;</source>
-        <translation>Modifier sonde &apos;%1&apos;</translation>
     </message>
 </context>
 <context>
@@ -4122,32 +4122,32 @@ Expiration de jetons d&apos;authentification: %2</translation>
 <context>
     <name>MariaDbDriver</name>
     <message>
-        <location filename="../src/librssguard/database/mariadbdriver.cpp" line="77"/>
+        <location filename="../src/librssguard/database/mariadbdriver.cpp" line="75"/>
         <source>MySQL server works as expected.</source>
         <translation>Le serveur MySQL fonctionne parfaitement.</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/database/mariadbdriver.cpp" line="80"/>
+        <location filename="../src/librssguard/database/mariadbdriver.cpp" line="78"/>
         <source>Selected database does not exist (yet). It will be created. It&apos;s okay.</source>
         <translation>La base de données sélectionnée n&apos;existe pas (encore). Elle sera créée. C&apos;est bon.</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/database/mariadbdriver.cpp" line="85"/>
+        <location filename="../src/librssguard/database/mariadbdriver.cpp" line="83"/>
         <source>No MySQL server is running in the target destination.</source>
         <translation>Aucun serveur MySQL n&apos;est en cours d&apos;exécution sur la destination choisie.</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/database/mariadbdriver.cpp" line="88"/>
+        <location filename="../src/librssguard/database/mariadbdriver.cpp" line="86"/>
         <source>Access denied. Invalid username or password used.</source>
         <translation>Accès refusé. Nom d&apos;utilisateur incorrect ou mot de passe utilisé.</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/database/mariadbdriver.cpp" line="91"/>
+        <location filename="../src/librssguard/database/mariadbdriver.cpp" line="89"/>
         <source>Unknown error: &apos;%1&apos;.</source>
         <translation>Erreur inconnue : &apos;%1&apos;.</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/database/mariadbdriver.cpp" line="96"/>
+        <location filename="../src/librssguard/database/mariadbdriver.cpp" line="94"/>
         <source>MariaDB</source>
         <translation>MariaDB (Base de données Maria)</translation>
     </message>
@@ -5822,18 +5822,18 @@ Expiration de jetons d&apos;authentification: %2</translation>
     <name>SearchsNode</name>
     <message>
         <location filename="../src/librssguard/services/abstract/searchsnode.cpp" line="19"/>
-        <source>Article probes</source>
-        <translation>Sondes d&apos;article</translation>
+        <source>Regex queries</source>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="../src/librssguard/services/abstract/searchsnode.cpp" line="20"/>
-        <source>You can see all your permanent article probes here.</source>
-        <translation>Vous pouvez voir toutes vos sondes d&apos;articles permanentes ici.</translation>
+        <source>You can see all your permanent regex queries here.</source>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="../src/librssguard/services/abstract/searchsnode.cpp" line="115"/>
-        <source>New article probe</source>
-        <translation>Nouvelle sonde d&apos;article</translation>
+        <source>New regex query</source>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
@@ -7012,7 +7012,7 @@ Aussi, il y a des sons pre-ajoutés. Si vous tapez &quot;:&quot;, ils se présen
         <translation>SQLite (base de données embarquée)</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/database/sqlitedriver.cpp" line="370"/>
+        <location filename="../src/librssguard/database/sqlitedriver.cpp" line="372"/>
         <source>Database file not copied to output directory successfully.</source>
         <translation>Le fichier de base de données n&apos;a pas été copié correctement dans le répertoire de destination.</translation>
     </message>

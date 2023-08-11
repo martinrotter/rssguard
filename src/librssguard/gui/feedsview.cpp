@@ -872,7 +872,7 @@ QMenu* FeedsView::initializeContextMenuLabel(RootItem* clicked_item) {
 
 QMenu* FeedsView::initializeContextMenuProbe(RootItem* clicked_item) {
   if (m_contextMenuProbe == nullptr) {
-    m_contextMenuProbe = new QMenu(tr("Context menu for probe"), this);
+    m_contextMenuProbe = new QMenu(tr("Context menu for regex query"), this);
   }
   else {
     m_contextMenuProbe->clear();

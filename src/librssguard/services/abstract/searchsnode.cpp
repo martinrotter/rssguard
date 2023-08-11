@@ -16,8 +16,8 @@ SearchsNode::SearchsNode(RootItem* parent_item) : RootItem(parent_item), m_actPr
   setKind(RootItem::Kind::Probes);
   setId(ID_PROBES);
   setIcon(qApp->icons()->fromTheme(QSL("system-search")));
-  setTitle(tr("Article probes"));
-  setDescription(tr("You can see all your permanent article probes here."));
+  setTitle(tr("Regex queries"));
+  setDescription(tr("You can see all your permanent regex queries here."));
 }
 
 void SearchsNode::loadProbes(const QList<Search*>& probes) {
@@ -112,7 +112,7 @@ QList<Search*> SearchsNode::probes() const {
 
 QList<QAction*> SearchsNode::contextMenuFeedsList() {
   if (m_actProbeNew == nullptr) {
-    m_actProbeNew = new QAction(qApp->icons()->fromTheme(QSL("system-search")), tr("New article probe"), this);
+    m_actProbeNew = new QAction(qApp->icons()->fromTheme(QSL("system-search")), tr("New regex query"), this);
 
     connect(m_actProbeNew, &QAction::triggered, this, &SearchsNode::createProbe);
   }
