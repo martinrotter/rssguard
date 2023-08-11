@@ -10,6 +10,7 @@ UnreadNode::UnreadNode(RootItem* parent_item) : RootItem(parent_item) {
   setKind(RootItem::Kind::Unread);
   setId(ID_UNREAD);
   setIcon(qApp->icons()->fromTheme(QSL("mail-mark-unread")));
+
   setTitle(tr("Unread articles"));
   setDescription(tr("You can find all unread articles here."));
 }

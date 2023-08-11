@@ -9,8 +9,7 @@
 #include <QLocale>
 #include <QTranslator>
 
-Localization::Localization(QObject* parent)
-  : QObject(parent) {}
+Localization::Localization(QObject* parent) : QObject(parent) {}
 
 Localization::~Localization() = default;
 
@@ -23,8 +22,7 @@ void Localization::loadActiveLanguage() {
   auto* app_translator = new QTranslator(qApp);
   QString desired_localization = desiredLanguage();
 
-  qDebugNN << LOGSEC_CORE
-           << "Starting to load active localization. Desired localization is"
+  qDebugNN << LOGSEC_CORE << "Starting to load active localization. Desired localization is"
            << QUOTE_W_SPACE_DOT(desired_localization);
 
   if (app_translator->load(QLocale(desired_localization), QSL("rssguard"), QSL("_"), APP_LANG_PATH)) {
@@ -32,21 +30,14 @@ void Localization::loadActiveLanguage() {
 
     QCoreApplication::installTranslator(app_translator);
 
-    qDebugNN << LOGSEC_CORE
-             << "Application localization"
-             << QUOTE_W_SPACE(desired_localization)
-             << "loaded successfully, specifically sublocalization"
-             << QUOTE_W_SPACE(real_loaded_locale)
+    qDebugNN << LOGSEC_CORE << "Application localization" << QUOTE_W_SPACE(desired_localization)
+             << "loaded successfully, specifically sublocalization" << QUOTE_W_SPACE(real_loaded_locale)
              << "was loaded.";
     desired_localization = real_loaded_locale;
   }
   else {
-    qWarningNN << LOGSEC_CORE
-               << "Application localization"
-               << QUOTE_W_SPACE(desired_localization)
-               << "was not loaded. Loading"
-               << QUOTE_W_SPACE(DEFAULT_LOCALE)
-               << "instead.";
+    qWarningNN << LOGSEC_CORE << "Application localization" << QUOTE_W_SPACE(desired_localization)
+               << "was not loaded. Loading" << QUOTE_W_SPACE(DEFAULT_LOCALE) << "instead.";
     desired_localization = QSL(DEFAULT_LOCALE);
 
     if (!app_translator->load(QLocale(desired_localization), QSL("rssguard"), QSL("_"), APP_LANG_PATH)) {
@@ -59,15 +50,10 @@ void Localization::loadActiveLanguage() {
   if (qt_translator->load(QLocale(desired_localization), QSL("qtbase"), QSL("_"), APP_LANG_PATH)) {
     QCoreApplication::installTranslator(qt_translator);
 
-    qDebugNN << LOGSEC_CORE
-             << "Qt localization"
-             << QUOTE_W_SPACE(desired_localization)
-             << "loaded successfully.";
+    qDebugNN << LOGSEC_CORE << "Qt localization" << QUOTE_W_SPACE(desired_localization) << "loaded successfully.";
   }
   else {
-    qWarningNN << LOGSEC_CORE
-               << "Qt localization"
-               << QUOTE_W_SPACE(desired_localization)
+    qWarningNN << LOGSEC_CORE << "Qt localization" << QUOTE_W_SPACE(desired_localization)
                << "WAS NOT loaded successfully.";
   }
 
