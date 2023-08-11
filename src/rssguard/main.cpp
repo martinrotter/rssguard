@@ -76,8 +76,6 @@ int main(int argc, char* argv[]) {
     return EXIT_FAILURE;
   }
 
-  // Load localization and setup locale before any widget is constructed.
-  qApp->localization()->loadActiveLanguage();
   qApp->setFeedReader(new FeedReader(&application));
 
   // Register needed metatypes.

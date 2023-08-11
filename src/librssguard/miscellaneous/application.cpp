@@ -93,12 +93,15 @@ Application::Application(const QString& id, int& argc, char** argv, const QStrin
   }
 #endif
 
+  m_localization = new Localization(this);
+
+  m_localization->loadActiveLanguage();
+
   m_nodejs = new NodeJs(m_settings, this);
   m_workHorsePool = new QThreadPool(this);
   m_webFactory = new WebFactory(this);
   m_system = new SystemFactory(this);
   m_skins = new SkinFactory(this);
-  m_localization = new Localization(this);
   m_icons = new IconFactory(this);
   m_database = new DatabaseFactory(this);
   m_downloadManager = nullptr;
