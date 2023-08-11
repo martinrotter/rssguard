@@ -139,17 +139,17 @@ Chyba: %1</translation>
     <message>
         <location filename="../src/librssguard/miscellaneous/application.cpp" line="310"/>
         <source>%1 survey</source>
-        <translation type="unfinished"/>
+        <translation>%1 průzkum</translation>
     </message>
     <message>
         <location filename="../src/librssguard/miscellaneous/application.cpp" line="311"/>
         <source>Please, fill the survey.</source>
-        <translation type="unfinished"/>
+        <translation>Prosím, vyplňte průzkum.</translation>
     </message>
     <message>
         <location filename="../src/librssguard/miscellaneous/application.cpp" line="314"/>
         <source>Go to survey</source>
-        <translation type="unfinished"/>
+        <translation>Přejít na průzkum</translation>
     </message>
     <message>
         <location filename="../src/librssguard/miscellaneous/application.cpp" line="563"/>
@@ -730,7 +730,11 @@ Active message filters: %2
 Status: %3
 Source: &lt;a href=&quot;%4&quot;&gt;%4&lt;/a&gt;
 Item ID: %5</source>
-        <translation type="unfinished"/>
+        <translation>Status aktualizací: %1
+Aktivní filtry zpráv: %2
+Status: %3
+Zdroj: &lt;a href=&quot;%4&quot;&gt;%4&lt;/a&gt;
+ID položky: %5</translation>
     </message>
 </context>
 <context>
@@ -976,7 +980,7 @@ Item ID: %5</source>
     <message>
         <location filename="../src/librssguard/core/feedsmodel.cpp" line="517"/>
         <source>Do you really want to clean all articles from selected item?</source>
-        <translation type="unfinished"/>
+        <translation>Opravdu chcete všechny zprávičky ze všech položek smazat?</translation>
     </message>
     <message>
         <location filename="../src/librssguard/core/feedsmodel.cpp" line="32"/>
@@ -1109,7 +1113,7 @@ or this functionality is not implemented yet.</source>
     <message>
         <location filename="../src/librssguard/gui/feedsview.cpp" line="875"/>
         <source>Context menu for probe</source>
-        <translation type="unfinished"/>
+        <translation>Kontextové menu pro rychlý filtr</translation>
     </message>
     <message>
         <location filename="../src/librssguard/gui/feedsview.cpp" line="136"/>
@@ -1175,7 +1179,13 @@ Skins base folder -&gt; &quot;%4&quot;
 Icon themes base folder -&gt; &quot;%8&quot;
 Node.js package folder -&gt; &quot;%6&quot;
 QtWebEngine cache folder -&gt; &quot;%7&quot;</source>
-        <translation type="unfinished"/>
+        <translation>Složka uživatelských dat (&quot;%5&quot;) -&gt; &quot;%1&quot;
+
+Soubor nastavení (%3) -&gt; &quot;%2&quot;
+Základní složka skinů -&gt; &quot;%4&quot;
+Základní složky ikon -&gt; &quot;%8&quot;
+Složka balíčku pro Node.js -&gt; &quot;%6&quot;
+Složka cache pro QtWebEngine -&gt; &quot;%7&quot;</translation>
     </message>
     <message>
         <location filename="../src/librssguard/gui/dialogs/formabout.cpp" line="127"/>
@@ -1345,7 +1355,7 @@ QtWebEngine cache folder -&gt; &quot;%7&quot;</source>
     <message>
         <location filename="../src/librssguard/services/abstract/gui/formaddeditprobe.cpp" line="12"/>
         <source>Name for your probe</source>
-        <translation type="unfinished"/>
+        <translation>Jméno pro rychlý filtr</translation>
     </message>
     <message>
         <location filename="../src/librssguard/services/abstract/gui/formaddeditprobe.cpp" line="13"/>
@@ -1361,22 +1371,22 @@ QtWebEngine cache folder -&gt; &quot;%7&quot;</source>
     <message>
         <location filename="../src/librssguard/services/abstract/gui/formaddeditprobe.cpp" line="17"/>
         <source>Probe name cannot be empty.</source>
-        <translation type="unfinished"/>
+        <translation>Jméno rychlého filtru nemůže být prázdné.</translation>
     </message>
     <message>
         <location filename="../src/librssguard/services/abstract/gui/formaddeditprobe.cpp" line="26"/>
         <source>Probe filter cannot be empty.</source>
-        <translation type="unfinished"/>
+        <translation>Filtrovací regulární výraz nemůže být prázdný.</translation>
     </message>
     <message>
         <location filename="../src/librssguard/services/abstract/gui/formaddeditprobe.cpp" line="29"/>
         <source>Regular expression is not well-formed.</source>
-        <translation type="unfinished"/>
+        <translation>Regulární výraz obsahuje chybu.</translation>
     </message>
     <message>
         <location filename="../src/librssguard/services/abstract/gui/formaddeditprobe.cpp" line="41"/>
         <source>Create new probe</source>
-        <translation type="unfinished"/>
+        <translation>Vytvořit rychlý filtr</translation>
     </message>
     <message>
         <location filename="../src/librssguard/services/abstract/gui/formaddeditprobe.cpp" line="44"/>
@@ -1386,7 +1396,7 @@ QtWebEngine cache folder -&gt; &quot;%7&quot;</source>
     <message>
         <location filename="../src/librssguard/services/abstract/gui/formaddeditprobe.cpp" line="62"/>
         <source>Edit probe &apos;%1&apos;</source>
-        <translation type="unfinished"/>
+        <translation>Upravit filtr &apos;%1&apos;</translation>
     </message>
 </context>
 <context>
@@ -1822,12 +1832,12 @@ QtWebEngine cache folder -&gt; &quot;%7&quot;</source>
     <message>
         <location filename="../src/librssguard/services/abstract/gui/formfeeddetails.ui" line="72"/>
         <source>Add articles with any date into the database</source>
-        <translation type="unfinished"/>
+        <translation>Přidávat do databáze všechny články, nehledě na datum vytvoření</translation>
     </message>
     <message>
         <location filename="../src/librssguard/services/abstract/gui/formfeeddetails.ui" line="82"/>
         <source>Avoid adding articles before this date into the database</source>
-        <translation type="unfinished"/>
+        <translation>Nepřidávat starší články než nastavené datum do databáze</translation>
     </message>
     <message>
         <location filename="../src/librssguard/services/abstract/gui/formfeeddetails.ui" line="118"/>
@@ -1842,7 +1852,7 @@ QtWebEngine cache folder -&gt; &quot;%7&quot;</source>
     <message>
         <location filename="../src/librssguard/services/abstract/gui/formfeeddetails.ui" line="138"/>
         <source>Right-to-left layout</source>
-        <translation type="unfinished"/>
+        <translation>Rozhraní zprava-doleva</translation>
     </message>
     <message>
         <location filename="../src/librssguard/services/abstract/gui/formfeeddetails.ui" line="124"/>
@@ -2459,27 +2469,27 @@ QtWebEngine cache folder -&gt; &quot;%7&quot;</source>
     <message>
         <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="917"/>
         <source>Scroll &amp;up browser</source>
-        <translation type="unfinished"/>
+        <translation>Skrolovat prohlížeč &amp;nahoru</translation>
     </message>
     <message>
         <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="922"/>
         <source>Scroll &amp;down browser</source>
-        <translation type="unfinished"/>
+        <translation>Skrolovat prohlížeč &amp;dolů</translation>
     </message>
     <message>
         <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="927"/>
         <source>Rearrange &amp;subcategories alphabetically</source>
-        <translation type="unfinished"/>
+        <translation>Přetřídit &amp;podkategorie abecedně</translation>
     </message>
     <message>
         <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="932"/>
         <source>Rearrange &amp;feeds alphabetically</source>
-        <translation type="unfinished"/>
+        <translation>Přetřídit &amp;kanály abecedně</translation>
     </message>
     <message>
         <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="937"/>
         <source>Cleanup web cac&amp;he</source>
-        <translation type="unfinished"/>
+        <translation>Vyčistit webovou cac&amp;he</translation>
     </message>
     <message>
         <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="750"/>
@@ -3057,12 +3067,12 @@ Musíte restartovat manuálně.</translation>
     <message>
         <location filename="../src/librssguard/services/standard/gui/formstandardimportexport.ui" line="64"/>
         <source>Do not fetch titles</source>
-        <translation type="unfinished"/>
+        <translation>Nenačítat názvy kanálů</translation>
     </message>
     <message>
         <location filename="../src/librssguard/services/standard/gui/formstandardimportexport.ui" line="71"/>
         <source>Do not fetch icons</source>
-        <translation type="unfinished"/>
+        <translation>Nenačítat ikony kanálů</translation>
     </message>
     <message>
         <location filename="../src/librssguard/services/standard/gui/formstandardimportexport.ui" line="78"/>
@@ -3468,7 +3478,7 @@ Nyní ho můžete nainstalovat.</translation>
     <message>
         <location filename="../src/librssguard/services/gmail/gmailnetworkfactory.cpp" line="184"/>
         <source>failed to download list of labels</source>
-        <translation type="unfinished"/>
+        <translation>stažení seznamu štítků selhalo</translation>
     </message>
     <message>
         <location filename="../src/librssguard/services/gmail/gmailnetworkfactory.cpp" line="448"/>
@@ -3909,138 +3919,138 @@ Tokeny vyprší: %2</translation>
     <message>
         <location filename="../src/librssguard/gui/richtexteditor/mrichtextedit.ui" line="56"/>
         <source>Paragraph formatting</source>
-        <translation type="unfinished"/>
+        <translation>Formátování odstavce</translation>
     </message>
     <message>
         <location filename="../src/librssguard/gui/richtexteditor/mrichtextedit.ui" line="79"/>
         <source>Undo (CTRL+Z)</source>
-        <translation type="unfinished"/>
+        <translation>Zpět (CTRL+Z)</translation>
     </message>
     <message>
         <location filename="../src/librssguard/gui/richtexteditor/mrichtextedit.ui" line="82"/>
         <source>Undo</source>
-        <translation type="unfinished"/>
+        <translation>Zpět</translation>
     </message>
     <message>
         <location filename="../src/librssguard/gui/richtexteditor/mrichtextedit.ui" line="101"/>
         <location filename="../src/librssguard/gui/richtexteditor/mrichtextedit.ui" line="104"/>
         <source>Redo</source>
-        <translation type="unfinished"/>
+        <translation>Vpřed</translation>
     </message>
     <message>
         <location filename="../src/librssguard/gui/richtexteditor/mrichtextedit.ui" line="120"/>
         <source>Cut (CTRL+X)</source>
-        <translation type="unfinished"/>
+        <translation>Vyjmout (CTRL+X)</translation>
     </message>
     <message>
         <location filename="../src/librssguard/gui/richtexteditor/mrichtextedit.ui" line="123"/>
         <source>Cut</source>
-        <translation type="unfinished"/>
+        <translation>Vyjmout</translation>
     </message>
     <message>
         <location filename="../src/librssguard/gui/richtexteditor/mrichtextedit.ui" line="139"/>
         <source>Copy (CTRL+C)</source>
-        <translation type="unfinished"/>
+        <translation>Kopírovat (CTRL+C)</translation>
     </message>
     <message>
         <location filename="../src/librssguard/gui/richtexteditor/mrichtextedit.ui" line="142"/>
         <source>Copy</source>
-        <translation type="unfinished"/>
+        <translation>Kopírovat</translation>
     </message>
     <message>
         <location filename="../src/librssguard/gui/richtexteditor/mrichtextedit.ui" line="158"/>
         <source>Paste (CTRL+V)</source>
-        <translation type="unfinished"/>
+        <translation>Vložit (CTRL+V)</translation>
     </message>
     <message>
         <location filename="../src/librssguard/gui/richtexteditor/mrichtextedit.ui" line="161"/>
         <source>Paste</source>
-        <translation type="unfinished"/>
+        <translation>Vložit</translation>
     </message>
     <message>
         <location filename="../src/librssguard/gui/richtexteditor/mrichtextedit.ui" line="184"/>
         <source>Link (CTRL+L)</source>
-        <translation type="unfinished"/>
+        <translation>Odkaz (CTRL+L)</translation>
     </message>
     <message>
         <location filename="../src/librssguard/gui/richtexteditor/mrichtextedit.ui" line="187"/>
         <source>Link</source>
-        <translation type="unfinished"/>
+        <translation>Odkaz</translation>
     </message>
     <message>
         <location filename="../src/librssguard/gui/richtexteditor/mrichtextedit.ui" line="216"/>
         <source>Bold</source>
-        <translation type="unfinished"/>
+        <translation>Tučně</translation>
     </message>
     <message>
         <location filename="../src/librssguard/gui/richtexteditor/mrichtextedit.ui" line="235"/>
         <source>Italic (CTRL+I)</source>
-        <translation type="unfinished"/>
+        <translation>Kurzíva (CTRL+I)</translation>
     </message>
     <message>
         <location filename="../src/librssguard/gui/richtexteditor/mrichtextedit.ui" line="238"/>
         <source>Italic</source>
-        <translation type="unfinished"/>
+        <translation>Kurzíva</translation>
     </message>
     <message>
         <location filename="../src/librssguard/gui/richtexteditor/mrichtextedit.ui" line="257"/>
         <source>Underline (CTRL+U)</source>
-        <translation type="unfinished"/>
+        <translation>Podtržení (CTRL+U)</translation>
     </message>
     <message>
         <location filename="../src/librssguard/gui/richtexteditor/mrichtextedit.ui" line="260"/>
         <source>Underline</source>
-        <translation type="unfinished"/>
+        <translation>Podtržení</translation>
     </message>
     <message>
         <location filename="../src/librssguard/gui/richtexteditor/mrichtextedit.ui" line="276"/>
         <source>Strike Out</source>
-        <translation type="unfinished"/>
+        <translation>Přeškrtnutí</translation>
     </message>
     <message>
         <location filename="../src/librssguard/gui/richtexteditor/mrichtextedit.ui" line="296"/>
         <source>Bullet list (CTRL+-)</source>
-        <translation type="unfinished"/>
+        <translation>Odrážky (CTRL+-)</translation>
     </message>
     <message>
         <location filename="../src/librssguard/gui/richtexteditor/mrichtextedit.ui" line="299"/>
         <source>Bullet list</source>
-        <translation type="unfinished"/>
+        <translation>Odrážky</translation>
     </message>
     <message>
         <location filename="../src/librssguard/gui/richtexteditor/mrichtextedit.ui" line="318"/>
         <source>Ordered list (CTRL+=)</source>
-        <translation type="unfinished"/>
+        <translation>Číslovaný seznam (CTRL+=)</translation>
     </message>
     <message>
         <location filename="../src/librssguard/gui/richtexteditor/mrichtextedit.ui" line="321"/>
         <source>Ordered list</source>
-        <translation type="unfinished"/>
+        <translation>Číslovaný seznam</translation>
     </message>
     <message>
         <location filename="../src/librssguard/gui/richtexteditor/mrichtextedit.ui" line="340"/>
         <source>Decrease indentation (CTRL+,)</source>
-        <translation type="unfinished"/>
+        <translation>Snížit odsazení (CTR+,)</translation>
     </message>
     <message>
         <location filename="../src/librssguard/gui/richtexteditor/mrichtextedit.ui" line="343"/>
         <source>Decrease indentation</source>
-        <translation type="unfinished"/>
+        <translation>Snížit odsazení</translation>
     </message>
     <message>
         <location filename="../src/librssguard/gui/richtexteditor/mrichtextedit.ui" line="359"/>
         <source>Increase indentation (CTRL+.)</source>
-        <translation type="unfinished"/>
+        <translation>Zvýšit odsazení (CTR+.)</translation>
     </message>
     <message>
         <location filename="../src/librssguard/gui/richtexteditor/mrichtextedit.ui" line="362"/>
         <source>Increase indentation</source>
-        <translation type="unfinished"/>
+        <translation>Zvýšit odsazení</translation>
     </message>
     <message>
         <location filename="../src/librssguard/gui/richtexteditor/mrichtextedit.ui" line="397"/>
         <source>Text foreground color</source>
-        <translation type="unfinished"/>
+        <translation>Barva textu</translation>
     </message>
     <message>
         <location filename="../src/librssguard/gui/richtexteditor/mrichtextedit.ui" line="400"/>
@@ -4051,12 +4061,12 @@ Tokeny vyprší: %2</translation>
     <message>
         <location filename="../src/librssguard/gui/richtexteditor/mrichtextedit.ui" line="428"/>
         <source>Text background color</source>
-        <translation type="unfinished"/>
+        <translation>Barva pozadí textu</translation>
     </message>
     <message>
         <location filename="../src/librssguard/gui/richtexteditor/mrichtextedit.ui" line="447"/>
         <source>Font size</source>
-        <translation type="unfinished"/>
+        <translation>Velikost písma</translation>
     </message>
     <message>
         <location filename="../src/librssguard/gui/richtexteditor/mrichtextedit.ui" line="484"/>
@@ -4066,77 +4076,77 @@ Tokeny vyprší: %2</translation>
     <message>
         <location filename="../src/librssguard/gui/richtexteditor/mrichtextedit.cpp" line="67"/>
         <source>Standard</source>
-        <translation type="unfinished"/>
+        <translation>Standardní</translation>
     </message>
     <message>
         <location filename="../src/librssguard/gui/richtexteditor/mrichtextedit.cpp" line="67"/>
         <source>Heading 1</source>
-        <translation type="unfinished"/>
+        <translation>Nadpis 1</translation>
     </message>
     <message>
         <location filename="../src/librssguard/gui/richtexteditor/mrichtextedit.cpp" line="67"/>
         <source>Heading 2</source>
-        <translation type="unfinished"/>
+        <translation>Nadpis 2</translation>
     </message>
     <message>
         <location filename="../src/librssguard/gui/richtexteditor/mrichtextedit.cpp" line="67"/>
         <source>Heading 3</source>
-        <translation type="unfinished"/>
+        <translation>Nadpis 3</translation>
     </message>
     <message>
         <location filename="../src/librssguard/gui/richtexteditor/mrichtextedit.cpp" line="67"/>
         <source>Heading 4</source>
-        <translation type="unfinished"/>
+        <translation>Nadpis 4</translation>
     </message>
     <message>
         <location filename="../src/librssguard/gui/richtexteditor/mrichtextedit.cpp" line="67"/>
         <source>Monospace</source>
-        <translation type="unfinished"/>
+        <translation>Neproporcionální</translation>
     </message>
     <message>
         <location filename="../src/librssguard/gui/richtexteditor/mrichtextedit.cpp" line="118"/>
         <source>Remove character formatting</source>
-        <translation type="unfinished"/>
+        <translation>Vymazat formátování znaků</translation>
     </message>
     <message>
         <location filename="../src/librssguard/gui/richtexteditor/mrichtextedit.cpp" line="123"/>
         <source>Remove all formatting</source>
-        <translation type="unfinished"/>
+        <translation>Vymazat veškeré formátování</translation>
     </message>
     <message>
         <location filename="../src/librssguard/gui/richtexteditor/mrichtextedit.cpp" line="127"/>
         <source>Edit document source</source>
-        <translation type="unfinished"/>
+        <translation>Upravit zdrojový kód</translation>
     </message>
     <message>
         <location filename="../src/librssguard/gui/richtexteditor/mrichtextedit.cpp" line="132"/>
         <source>Clear all content</source>
-        <translation type="unfinished"/>
+        <translation>Vymazat vše</translation>
     </message>
     <message>
         <location filename="../src/librssguard/gui/richtexteditor/mrichtextedit.cpp" line="196"/>
         <source>Document source</source>
-        <translation type="unfinished"/>
+        <translation>Zdrojový kód</translation>
     </message>
     <message>
         <location filename="../src/librssguard/gui/richtexteditor/mrichtextedit.cpp" line="319"/>
         <source>Create a link</source>
-        <translation type="unfinished"/>
+        <translation>Vytvořit odkaz</translation>
     </message>
     <message>
         <location filename="../src/librssguard/gui/richtexteditor/mrichtextedit.cpp" line="319"/>
         <source>Link URL:</source>
-        <translation type="unfinished"/>
+        <translation>Odkaz:</translation>
     </message>
     <message>
         <location filename="../src/librssguard/gui/richtexteditor/mrichtextedit.cpp" line="637"/>
         <source>Select an image</source>
-        <translation type="unfinished"/>
+        <translation>Zvolit obrázek</translation>
     </message>
     <message>
         <location filename="../src/librssguard/gui/richtexteditor/mrichtextedit.cpp" line="639"/>
         <source>JPEG (*.jpg);; GIF (*.gif);; PNG (*.png);; BMP (*.bmp);; All (*)</source>
-        <translation type="unfinished"/>
+        <translation>JPEG (*.jpg);; GIF (*.gif);; PNG (*.png);; BMP (*.bmp);; Vše (*)</translation>
     </message>
 </context>
 <context>
@@ -4309,12 +4319,12 @@ Tokeny vyprší: %2</translation>
     <message>
         <location filename="../src/librssguard/core/messagesforfiltersmodel.cpp" line="36"/>
         <source>true</source>
-        <translation type="unfinished"/>
+        <translation>ano</translation>
     </message>
     <message>
         <location filename="../src/librssguard/core/messagesforfiltersmodel.cpp" line="37"/>
         <source>false</source>
-        <translation type="unfinished"/>
+        <translation>ne</translation>
     </message>
 </context>
 <context>
@@ -4422,22 +4432,22 @@ Tokeny vyprší: %2</translation>
     <message>
         <location filename="../src/librssguard/core/messagesmodel.cpp" line="119"/>
         <source>dot</source>
-        <translation type="unfinished"/>
+        <translation>tečka</translation>
     </message>
     <message>
         <location filename="../src/librssguard/core/messagesmodel.cpp" line="122"/>
         <source>envelope</source>
-        <translation type="unfinished"/>
+        <translation>obálka</translation>
     </message>
     <message>
         <location filename="../src/librssguard/core/messagesmodel.cpp" line="125"/>
         <source>feed icon</source>
-        <translation type="unfinished"/>
+        <translation>ikona kanálu</translation>
     </message>
     <message>
         <location filename="../src/librssguard/core/messagesmodel.cpp" line="297"/>
         <source>RTL</source>
-        <translation type="unfinished"/>
+        <translation>RTL</translation>
     </message>
     <message>
         <location filename="../src/librssguard/core/messagesmodel.cpp" line="299"/>
@@ -4447,7 +4457,7 @@ Tokeny vyprší: %2</translation>
     <message>
         <location filename="../src/librssguard/core/messagesmodel.cpp" line="300"/>
         <source>Assigned label IDs</source>
-        <translation type="unfinished"/>
+        <translation>Přiřazená ID štítků</translation>
     </message>
     <message>
         <location filename="../src/librssguard/core/messagesmodel.cpp" line="302"/>
@@ -4537,7 +4547,7 @@ Tokeny vyprší: %2</translation>
     <message>
         <location filename="../src/librssguard/core/messagesmodel.cpp" line="309"/>
         <source>Layout direction of the article</source>
-        <translation type="unfinished"/>
+        <translation>Směru toku textu článku</translation>
     </message>
     <message>
         <location filename="../src/librssguard/core/messagesmodel.cpp" line="310"/>
@@ -4547,7 +4557,7 @@ Tokeny vyprší: %2</translation>
     <message>
         <location filename="../src/librssguard/core/messagesmodel.cpp" line="310"/>
         <source>Label IDs assigned to the article.</source>
-        <translation type="unfinished"/>
+        <translation>ID štítků přiřazených ke článku.</translation>
     </message>
     <message numerus="yes">
         <location filename="../src/librssguard/core/messagesmodel.cpp" line="353"/>
@@ -5404,7 +5414,7 @@ Feedly je bezpečný prostor, kde můžete soukromě organizovat a prohledávat 
     <message>
         <location filename="../src/librssguard/miscellaneous/notification.cpp" line="151"/>
         <source>Node.js - package(s) failed to update</source>
-        <translation type="unfinished"/>
+        <translation>Node.js - selhala aktualizace balíčků</translation>
     </message>
     <message>
         <location filename="../src/librssguard/miscellaneous/notification.cpp" line="154"/>
@@ -5565,7 +5575,7 @@ Podporované čtečky:</translation>
     <message>
         <location filename="../src/librssguard/services/abstract/recyclebin.cpp" line="106"/>
         <source>Do you really want to empty your recycle bin?</source>
-        <translation type="unfinished"/>
+        <translation>Chcete opravdu vysypat koš?</translation>
     </message>
     <message>
         <location filename="../src/librssguard/services/abstract/recyclebin.cpp" line="18"/>
@@ -5840,17 +5850,17 @@ Tokeny vyprší: %2</translation>
     <message>
         <location filename="../src/librssguard/services/abstract/searchsnode.cpp" line="19"/>
         <source>Article probes</source>
-        <translation type="unfinished"/>
+        <translation>Rychlé filtry</translation>
     </message>
     <message>
         <location filename="../src/librssguard/services/abstract/searchsnode.cpp" line="20"/>
         <source>You can see all your permanent article probes here.</source>
-        <translation type="unfinished"/>
+        <translation>Zde můžete vidět všechny Vaše rychlé filtry.</translation>
     </message>
     <message>
         <location filename="../src/librssguard/services/abstract/searchsnode.cpp" line="115"/>
         <source>New article probe</source>
-        <translation type="unfinished"/>
+        <translation>Vytvořit rychlý filtr</translation>
     </message>
 </context>
 <context>
@@ -5950,7 +5960,7 @@ File filter for external e-mail selection dialog.</extracomment>
     <message>
         <location filename="../src/librssguard/gui/settings/settingsbrowsermail.ui" line="39"/>
         <source>WebEngine</source>
-        <translation type="unfinished"/>
+        <translation>WebEngine</translation>
     </message>
     <message>
         <location filename="../src/librssguard/gui/settings/settingsbrowsermail.ui" line="45"/>
@@ -6369,12 +6379,12 @@ Autoři této aplikace nenesou žádnou odpovědnost za ztrátu Vašich dat.</tr
     <message>
         <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="86"/>
         <source>Support very fast auto-fetching intervals (under 10 seconds)</source>
-        <translation type="unfinished"/>
+        <translation>Podpora pro velmi rychlý aktualizační cyklus kanálů (pod 10 vteřin)</translation>
     </message>
     <message>
         <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="128"/>
         <source>Avoid adding articles before this date into the database</source>
-        <translation type="unfinished"/>
+        <translation>Nepřidávat starší články než nastavené datum do databáze</translation>
     </message>
     <message>
         <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="164"/>
@@ -6449,7 +6459,7 @@ Autoři této aplikace nenesou žádnou odpovědnost za ztrátu Vašich dat.</tr
     <message>
         <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="638"/>
         <source>Unread article icon type</source>
-        <translation type="unfinished"/>
+        <translation>Typ indikace nepřečtených článků</translation>
     </message>
     <message>
         <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="332"/>
@@ -6469,7 +6479,7 @@ Autoři této aplikace nenesou žádnou odpovědnost za ztrátu Vašich dat.</tr
     <message>
         <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="345"/>
         <source>Display attachments directly in article</source>
-        <translation type="unfinished"/>
+        <translation>Zobrazovat obrazové přílohy přímo v článku</translation>
     </message>
     <message>
         <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="354"/>
@@ -6479,7 +6489,7 @@ Autoři této aplikace nenesou žádnou odpovědnost za ztrátu Vašich dat.</tr
     <message>
         <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="438"/>
         <source>Keep article viewer always visible</source>
-        <translation type="unfinished"/>
+        <translation>Držet panel zobrazení detailu článku stále viditelný</translation>
     </message>
     <message>
         <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="446"/>
