@@ -75,9 +75,6 @@
         <property name="focusPolicy">
          <enum>Qt::ClickFocus</enum>
         </property>
-        <property name="toolTip">
-         <string>Undo (CTRL+Z)</string>
-        </property>
         <property name="text">
          <string>Undo</string>
         </property>
@@ -97,9 +94,6 @@
         <property name="focusPolicy">
          <enum>Qt::ClickFocus</enum>
         </property>
-        <property name="toolTip">
-         <string>Redo</string>
-        </property>
         <property name="text">
          <string>Redo</string>
         </property>
@@ -116,9 +110,6 @@
         <property name="focusPolicy">
          <enum>Qt::ClickFocus</enum>
         </property>
-        <property name="toolTip">
-         <string>Cut (CTRL+X)</string>
-        </property>
         <property name="text">
          <string>Cut</string>
         </property>
@@ -134,9 +125,6 @@
        <widget class="PlainToolButton" name="f_copy">
         <property name="focusPolicy">
          <enum>Qt::ClickFocus</enum>
-        </property>
-        <property name="toolTip">
-         <string>Copy (CTRL+C)</string>
         </property>
         <property name="text">
          <string>Copy</string>

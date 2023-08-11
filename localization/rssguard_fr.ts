@@ -32,7 +32,7 @@
     <message>
         <location filename="../src/librssguard/network-web/adblock/adblockdialog.cpp" line="98"/>
         <source>OK!</source>
-        <translation>OK !</translation>
+        <translation>OK!</translation>
     </message>
     <message>
         <location filename="../src/librssguard/network-web/adblock/adblockdialog.cpp" line="113"/>
@@ -139,12 +139,12 @@ Erreur : %1</translation>
     <message>
         <location filename="../src/librssguard/miscellaneous/application.cpp" line="310"/>
         <source>%1 survey</source>
-        <translation type="unfinished"/>
+        <translation>Sondage %1</translation>
     </message>
     <message>
         <location filename="../src/librssguard/miscellaneous/application.cpp" line="311"/>
         <source>Please, fill the survey.</source>
-        <translation type="unfinished"/>
+        <translation>Veuillez remplir le sondage s&apos;il vous plaît.</translation>
     </message>
     <message>
         <location filename="../src/librssguard/miscellaneous/application.cpp" line="314"/>
@@ -291,7 +291,7 @@ version en cliquant sur cette notification.</translation>
     <message>
         <location filename="../src/librssguard/services/abstract/gui/authenticationdetails.cpp" line="51"/>
         <source>Username/token is ok or it is not needed.</source>
-        <translation>Le nom d&apos;utilisateur/jeton est ok ou n&apos;est pas nécessaire.</translation>
+        <translation>Le nom d&apos;utilisateur/jeton est valide ou n&apos;est pas nécessaire.</translation>
     </message>
     <message>
         <location filename="../src/librssguard/services/abstract/gui/authenticationdetails.cpp" line="52"/>
@@ -730,8 +730,8 @@ Active message filters: %2
 Status: %3
 Source: &lt;a href=&quot;%4&quot;&gt;%4&lt;/a&gt;
 Item ID: %5</source>
-        <translation>État de la mise à jour automatique: %1
-Filtres de messages actifs: %2
+        <translation>Statut de l&apos;obtention d&apos;articles automatique: %1
+Filtres d&apos;articles attribués: %2
 Statut: %3
 Source: &lt;a href=&quot;%4&quot;&gt;%4&lt;/a&gt;
 Identifiant d&apos;élément: %5</translation>
@@ -1179,13 +1179,13 @@ Skins base folder -&gt; &quot;%4&quot;
 Icon themes base folder -&gt; &quot;%8&quot;
 Node.js package folder -&gt; &quot;%6&quot;
 QtWebEngine cache folder -&gt; &quot;%7&quot;</source>
-        <translation>Fichier de données utilisée (&quot;%5&quot;) -&gt; &quot;%1&quot;
+        <translation>Dossier des données-utilisateur (&quot;%5&quot;) -&gt; &quot;%1&quot;
 
 Fichier des paramètres (%3) -&gt; &quot;%2&quot;
 Dossier des thèmes de base -&gt; &quot;%4&quot;
 Dossier des thèmes d&apos;icônes de base -&gt; &quot;%8&quot;
 Dossier des paquets Node.js -&gt; &quot;%6&quot;
-Dossier du cache WebEngineQT -&gt; &quot;%7&quot;</translation>
+Dossier du cache Moteur Web QT -&gt; &quot;%7&quot;</translation>
     </message>
     <message>
         <location filename="../src/librssguard/gui/dialogs/formabout.cpp" line="127"/>
@@ -1424,7 +1424,7 @@ Dossier du cache WebEngineQT -&gt; &quot;%7&quot;</translation>
     <message>
         <location filename="../src/librssguard/gui/dialogs/formbackupdatabasesettings.cpp" line="81"/>
         <source>Backup name looks okay.</source>
-        <translation>Le nom de la sauvegarde semble bon.</translation>
+        <translation>Le nom de la sauvegarde semble valide.</translation>
     </message>
     <message>
         <location filename="../src/librssguard/gui/dialogs/formbackupdatabasesettings.cpp" line="57"/>
@@ -1502,7 +1502,7 @@ Dossier du cache WebEngineQT -&gt; &quot;%7&quot;</translation>
     <message>
         <location filename="../src/librssguard/services/abstract/gui/formcategorydetails.cpp" line="127"/>
         <source>Category name is ok.</source>
-        <translation>Le nom de la catégorie est correct.</translation>
+        <translation>Le nom de la catégorie est valide.</translation>
     </message>
     <message>
         <location filename="../src/librssguard/services/abstract/gui/formcategorydetails.cpp" line="131"/>
@@ -1517,7 +1517,7 @@ Dossier du cache WebEngineQT -&gt; &quot;%7&quot;</translation>
     <message>
         <location filename="../src/librssguard/services/abstract/gui/formcategorydetails.cpp" line="140"/>
         <source>The description is ok.</source>
-        <translation>La description est correcte.</translation>
+        <translation>La description est valide.</translation>
     </message>
     <message>
         <location filename="../src/librssguard/services/abstract/gui/formcategorydetails.cpp" line="155"/>
@@ -2956,7 +2956,7 @@ Vous devez redémarrer manuellement.</translation>
     <message>
         <location filename="../src/librssguard/services/standard/gui/formstandardimportexport.cpp" line="158"/>
         <source>Command is ok.</source>
-        <translation>La commande est ok.</translation>
+        <translation>La commande est valide.</translation>
     </message>
     <message>
         <location filename="../src/librssguard/services/standard/gui/formstandardimportexport.cpp" line="161"/>
@@ -5197,7 +5197,7 @@ Expiration de jetons d&apos;authentification: %2</translation>
     <message>
         <location filename="../src/librssguard/services/owncloud/gui/owncloudaccountdetails.cpp" line="77"/>
         <source>Nextcloud News server is okay.</source>
-        <translation>Le serveur Nextcloud News est ok.</translation>
+        <translation>Le serveur Nextcloud News est valide.</translation>
     </message>
     <message>
         <location filename="../src/librssguard/services/owncloud/gui/owncloudaccountdetails.cpp" line="82"/>
@@ -5960,7 +5960,7 @@ File filter for external e-mail selection dialog.</extracomment>
     <message>
         <location filename="../src/librssguard/gui/settings/settingsbrowsermail.ui" line="39"/>
         <source>WebEngine</source>
-        <translation>MoteurWeb</translation>
+        <translation>Moteur Web</translation>
     </message>
     <message>
         <location filename="../src/librssguard/gui/settings/settingsbrowsermail.ui" line="45"/>
@@ -6133,7 +6133,7 @@ File filter for external e-mail selection dialog.</extracomment>
     <message>
         <location filename="../src/librssguard/gui/settings/settingsdatabase.cpp" line="117"/>
         <source>Hostname looks ok.</source>
-        <translation>Le nom de l&apos;hôte semble correct.</translation>
+        <translation>Le nom de l&apos;hôte semble valide.</translation>
     </message>
     <message>
         <location filename="../src/librssguard/gui/settings/settingsdatabase.cpp" line="123"/>
@@ -6143,7 +6143,7 @@ File filter for external e-mail selection dialog.</extracomment>
     <message>
         <location filename="../src/librssguard/gui/settings/settingsdatabase.cpp" line="126"/>
         <source>Username looks ok.</source>
-        <translation>Le nom d&apos;utilisateur semble correct.</translation>
+        <translation>Le nom d&apos;utilisateur semble valide.</translation>
     </message>
     <message>
         <location filename="../src/librssguard/gui/settings/settingsdatabase.cpp" line="132"/>
@@ -6153,7 +6153,7 @@ File filter for external e-mail selection dialog.</extracomment>
     <message>
         <location filename="../src/librssguard/gui/settings/settingsdatabase.cpp" line="135"/>
         <source>Password looks ok.</source>
-        <translation>Le mot de passe semble correct.</translation>
+        <translation>Le mot de passe semble valide.</translation>
     </message>
     <message>
         <location filename="../src/librssguard/gui/settings/settingsdatabase.cpp" line="141"/>
@@ -6163,7 +6163,7 @@ File filter for external e-mail selection dialog.</extracomment>
     <message>
         <location filename="../src/librssguard/gui/settings/settingsdatabase.cpp" line="144"/>
         <source>Working database is ok.</source>
-        <translation>La base de données fonctionnelle est ok.</translation>
+        <translation>La base de données fonctionnelle est valide.</translation>
     </message>
     <message>
         <location filename="../src/librssguard/gui/settings/settingsdatabase.cpp" line="165"/>
@@ -6861,12 +6861,12 @@ Et aussi, redémarrez la fenêtre &quot;Paramètres&quot; après avoir installé
     <message>
         <location filename="../src/librssguard/gui/settings/settingsnodejs.cpp" line="135"/>
         <source>You cannot choose file, you have to choose FOLDER.</source>
-        <translation>Vous ne pouvez pas sélectionner un fichier, vous devez sélectionner un DOSSIER.</translation>
+        <translation>Vous ne pouvez pas sélectionner un fichier, vous devez sélectionner un dossier.</translation>
     </message>
     <message>
         <location filename="../src/librssguard/gui/settings/settingsnodejs.cpp" line="139"/>
         <source>Package folder is OK.</source>
-        <translation>Le dossier paquet est ok.</translation>
+        <translation>Le dossier paquets est bon.</translation>
     </message>
     <message>
         <location filename="../src/librssguard/gui/settings/settingsnodejs.cpp" line="143"/>
@@ -6876,7 +6876,7 @@ Et aussi, redémarrez la fenêtre &quot;Paramètres&quot; après avoir installé
     <message>
         <location filename="../src/librssguard/gui/settings/settingsnodejs.cpp" line="28"/>
         <source>%1 automatically installs some Node.js packages so that you do not have to. %1 does not use global package folder because that requires administrator rights, therefore by default it uses subfolder placed in your &quot;user data&quot; folder.</source>
-        <translation>%1 installe quelques paquets Node.js automatiquement pour que vous n&apos;ayez pas à le faire. %1 n&apos;utilise pas le fichier paquet globale parce que ça requiert les droits d&apos;administrateur, donc par défault ça utilise le sous-fichier placé dans votre fichier &quot;données utilisateur&quot;.</translation>
+        <translation>%1 installe quelques paquets Node.js automatiquement pour que vous n&apos;ayez pas à le faire. %1 n&apos;utilise pas le dossier paquets globale parce que ça requiert les droits d&apos;administrateur, donc par défault ça utilise le sous-fichier placé dans votre dossier &quot;données utilisateur&quot;.</translation>
     </message>
     <message>
         <location filename="../src/librssguard/gui/settings/settingsnodejs.ui" line="14"/>
@@ -6903,7 +6903,7 @@ Et aussi, redémarrez la fenêtre &quot;Paramètres&quot; après avoir installé
     <message>
         <location filename="../src/librssguard/gui/settings/settingsnodejs.ui" line="83"/>
         <source>Package folder </source>
-        <translation>Dossier paquet</translation>
+        <translation>Dossier paquets</translation>
     </message>
     <message>
         <location filename="../src/librssguard/gui/settings/settingsnodejs.ui" line="116"/>
@@ -7204,7 +7204,7 @@ Type: %3</translation>
     <message>
         <location filename="../src/librssguard/services/standard/gui/standardfeeddetails.cpp" line="233"/>
         <source>Feed name is ok.</source>
-        <translation>Le nom du flux est correct.</translation>
+        <translation>Le nom du flux est valide.</translation>
     </message>
     <message>
         <location filename="../src/librssguard/services/standard/gui/standardfeeddetails.cpp" line="236"/>
@@ -7224,7 +7224,7 @@ Type: %3</translation>
     <message>
         <location filename="../src/librssguard/services/standard/gui/standardfeeddetails.cpp" line="252"/>
         <source>The URL is ok.</source>
-        <translation>Le lien est ok.</translation>
+        <translation>Le lien est valide.</translation>
     </message>
     <message>
         <location filename="../src/librssguard/services/standard/gui/standardfeeddetails.cpp" line="256"/>
@@ -7296,7 +7296,7 @@ Type: %3</translation>
         <location filename="../src/librssguard/services/standard/gui/standardfeeddetails.cpp" line="268"/>
         <location filename="../src/librssguard/services/standard/gui/standardfeeddetails.cpp" line="272"/>
         <source>The source is ok.</source>
-        <translation>La source est ok.</translation>
+        <translation>La source est valide.</translation>
     </message>
     <message>
         <location filename="../src/librssguard/services/standard/gui/standardfeeddetails.cpp" line="265"/>
@@ -7306,7 +7306,7 @@ Type: %3</translation>
     <message>
         <location filename="../src/librssguard/services/standard/gui/standardfeeddetails.cpp" line="278"/>
         <source>Command is ok.</source>
-        <translation>La commande est ok.</translation>
+        <translation>La commande est valide.</translation>
     </message>
     <message>
         <location filename="../src/librssguard/services/standard/gui/standardfeeddetails.cpp" line="281"/>
@@ -7794,7 +7794,7 @@ Actualités non-lus: %2</translation>
     <message>
         <location filename="../src/librssguard/services/tt-rss/gui/ttrssaccountdetails.cpp" line="119"/>
         <source>Tiny Tiny RSS server is okay.</source>
-        <translation>Le serveur Tiny Tiny RSS est ok.</translation>
+        <translation>Le serveur Tiny Tiny RSS est valide.</translation>
     </message>
     <message>
         <location filename="../src/librssguard/services/tt-rss/gui/ttrssaccountdetails.cpp" line="125"/>
@@ -7949,7 +7949,7 @@ Actualités non-lus: %2</translation>
     <message>
         <location filename="../src/librssguard/services/tt-rss/gui/ttrssfeeddetails.cpp" line="21"/>
         <source>The URL is ok.</source>
-        <translation>Le lien est ok.</translation>
+        <translation>Le lien est valide.</translation>
     </message>
     <message>
         <location filename="../src/librssguard/services/tt-rss/gui/ttrssfeeddetails.cpp" line="27"/>

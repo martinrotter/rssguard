@@ -85,7 +85,7 @@ Fout: %1</translation>
     <message>
         <location filename="../src/librssguard/network-web/adblock/adblockdialog.ui" line="64"/>
         <source>Add your direct links to filter lists here (one URL per line)</source>
-        <translation>Voeg hier je directe links toe aan filterlijsten (een URL per lijn)</translation>
+        <translation>Voeg hier je directe links toe aan filterlijsten (één URL per regel)</translation>
     </message>
     <message>
         <location filename="../src/librssguard/network-web/adblock/adblockdialog.ui" line="78"/>
@@ -139,12 +139,12 @@ Fout: %1</translation>
     <message>
         <location filename="../src/librssguard/miscellaneous/application.cpp" line="310"/>
         <source>%1 survey</source>
-        <translation type="unfinished"/>
+        <translation>%1 enquête</translation>
     </message>
     <message>
         <location filename="../src/librssguard/miscellaneous/application.cpp" line="311"/>
         <source>Please, fill the survey.</source>
-        <translation type="unfinished"/>
+        <translation>Enquête invullen?</translation>
     </message>
     <message>
         <location filename="../src/librssguard/miscellaneous/application.cpp" line="314"/>
@@ -823,7 +823,7 @@ Onderdeel ID: %5</translation>
     <message>
         <location filename="../src/librssguard/services/feedly/gui/feedlyaccountdetails.cpp" line="32"/>
         <source>Here, results of connection test are shown.</source>
-        <translation>Hier worden resultaten van verbinding getoond.</translation>
+        <translation>Hier worden de resultaten van de verbindingstest getoond.</translation>
     </message>
     <message>
         <location filename="../src/librssguard/services/feedly/gui/feedlyaccountdetails.cpp" line="39"/>
@@ -1178,7 +1178,13 @@ Skins base folder -&gt; &quot;%4&quot;
 Icon themes base folder -&gt; &quot;%8&quot;
 Node.js package folder -&gt; &quot;%6&quot;
 QtWebEngine cache folder -&gt; &quot;%7&quot;</source>
-        <translation type="unfinished"/>
+        <translation>Gebruikersdata map (&quot;%5&quot;) -&gt; &quot;%1&quot;
+
+Instellingenbestand (%3) -&gt; &quot;%2&quot;
+Thema basis map -&gt; &quot;%4&quot;
+Icoon thema basis map -&gt; &quot;%8&quot;
+Node.js pakketten map -&gt; &quot;%6&quot;
+QtWebEngine cache map -&gt; &quot;%7&quot;</translation>
     </message>
     <message>
         <location filename="../src/librssguard/gui/dialogs/formabout.cpp" line="127"/>
@@ -1369,7 +1375,7 @@ QtWebEngine cache folder -&gt; &quot;%7&quot;</source>
     <message>
         <location filename="../src/librssguard/services/abstract/gui/formaddeditprobe.cpp" line="26"/>
         <source>Probe filter cannot be empty.</source>
-        <translation type="unfinished"/>
+        <translation>Testfilter mag niet leeg zijn.</translation>
     </message>
     <message>
         <location filename="../src/librssguard/services/abstract/gui/formaddeditprobe.cpp" line="29"/>
@@ -1482,7 +1488,7 @@ QtWebEngine cache folder -&gt; &quot;%7&quot;</source>
     <message>
         <location filename="../src/librssguard/gui/dialogs/formbackupdatabasesettings.ui" line="89"/>
         <source>Operation results</source>
-        <translation>Resultaten</translation>
+        <translation>Actie status</translation>
     </message>
 </context>
 <context>
@@ -1515,7 +1521,7 @@ QtWebEngine cache folder -&gt; &quot;%7&quot;</source>
     <message>
         <location filename="../src/librssguard/services/abstract/gui/formcategorydetails.cpp" line="155"/>
         <source>Select icon file for the category</source>
-        <translation>Kies pictogrambestand voor de categorie</translation>
+        <translation>Kies icoonbestand voor de categorie</translation>
     </message>
     <message>
         <location filename="../src/librssguard/services/abstract/gui/formcategorydetails.cpp" line="157"/>
@@ -1525,7 +1531,7 @@ QtWebEngine cache folder -&gt; &quot;%7&quot;</source>
     <message>
         <location filename="../src/librssguard/services/abstract/gui/formcategorydetails.cpp" line="163"/>
         <source>Select icon</source>
-        <translation>Selecteer pictogram</translation>
+        <translation>Selecteer icoon</translation>
     </message>
     <message>
         <location filename="../src/librssguard/services/abstract/gui/formcategorydetails.cpp" line="164"/>
@@ -1541,12 +1547,12 @@ QtWebEngine cache folder -&gt; &quot;%7&quot;</source>
     <message>
         <location filename="../src/librssguard/services/abstract/gui/formcategorydetails.cpp" line="168"/>
         <source>Icon name:</source>
-        <translation>Pictogramnaam:</translation>
+        <translation>Icoonnaam:</translation>
     </message>
     <message>
         <location filename="../src/librssguard/services/abstract/gui/formcategorydetails.cpp" line="169"/>
         <source>Icon type:</source>
-        <translation>Type pictogram:</translation>
+        <translation>Type icoon:</translation>
     </message>
     <message>
         <location filename="../src/librssguard/services/abstract/gui/formcategorydetails.cpp" line="185"/>
@@ -1571,17 +1577,17 @@ QtWebEngine cache folder -&gt; &quot;%7&quot;</source>
     <message>
         <location filename="../src/librssguard/services/abstract/gui/formcategorydetails.cpp" line="194"/>
         <source>Icon selection</source>
-        <translation>Pictogramselectie</translation>
+        <translation>Icoonselectie</translation>
     </message>
     <message>
         <location filename="../src/librssguard/services/abstract/gui/formcategorydetails.cpp" line="196"/>
         <source>Load icon from file...</source>
-        <translation>Laad pictogram uit een bestand...</translation>
+        <translation>Laad icoon uit een bestand...</translation>
     </message>
     <message>
         <location filename="../src/librssguard/services/abstract/gui/formcategorydetails.cpp" line="198"/>
         <source>Use default icon from icon theme</source>
-        <translation>Standaardpictogrammen van systeem gebruiken</translation>
+        <translation>Standaardiconen van systeem gebruiken</translation>
     </message>
     <message>
         <location filename="../src/librssguard/services/abstract/gui/formcategorydetails.cpp" line="83"/>
@@ -1611,12 +1617,12 @@ QtWebEngine cache folder -&gt; &quot;%7&quot;</source>
     <message>
         <location filename="../src/librssguard/services/abstract/gui/formcategorydetails.ui" line="74"/>
         <source>Icon</source>
-        <translation>Pictogram</translation>
+        <translation>Icoon</translation>
     </message>
     <message>
         <location filename="../src/librssguard/services/abstract/gui/formcategorydetails.ui" line="96"/>
         <source>Select icon for your category.</source>
-        <translation>Selecteer pictogram voor je categorie.</translation>
+        <translation>Selecteer icoon voor je categorie.</translation>
     </message>
 </context>
 <context>
@@ -1629,7 +1635,7 @@ QtWebEngine cache folder -&gt; &quot;%7&quot;</source>
     <message>
         <location filename="../src/librssguard/gui/dialogs/formdatabasecleanup.cpp" line="30"/>
         <source>I am ready.</source>
-        <translation>Het is klaar.</translation>
+        <translation>Ik ben klaar.</translation>
     </message>
     <message>
         <location filename="../src/librssguard/gui/dialogs/formdatabasecleanup.cpp" line="76"/>
@@ -1981,12 +1987,12 @@ QtWebEngine cache folder -&gt; &quot;%7&quot;</source>
     <message>
         <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="267"/>
         <source>&amp;Fullscreen</source>
-        <translation>&amp;Beeldvullend</translation>
+        <translation>&amp;Schermvullend</translation>
     </message>
     <message>
         <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="270"/>
         <source>Switch fullscreen mode.</source>
-        <translation>In volledig scherm weergeven.</translation>
+        <translation>Schakel naar scherm vullende mode.</translation>
     </message>
     <message>
         <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="278"/>
@@ -2136,7 +2142,7 @@ QtWebEngine cache folder -&gt; &quot;%7&quot;</source>
     <message>
         <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="451"/>
         <source>Switch main window visibility</source>
-        <translation>Tussen zichtbaarheid van venster schakelen</translation>
+        <translation>Wissel hoofdscherm zichtbaarheid</translation>
     </message>
     <message>
         <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="454"/>
@@ -2216,7 +2222,7 @@ QtWebEngine cache folder -&gt; &quot;%7&quot;</source>
     <message>
         <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="564"/>
         <source>Switch visibility of main toolbars.</source>
-        <translation>Zichtbaarheid van werkbalken.</translation>
+        <translation>Wissel zichtbaarheid van hoofdwerkbalken.</translation>
     </message>
     <message>
         <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="578"/>
@@ -2246,12 +2252,12 @@ QtWebEngine cache folder -&gt; &quot;%7&quot;</source>
     <message>
         <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="618"/>
         <source>&amp;Backup settings</source>
-        <translation>&amp;Backup-instellingen</translation>
+        <translation>&amp;Instellingen back-uppen </translation>
     </message>
     <message>
         <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="626"/>
         <source>Switch layout</source>
-        <translation>Van lay-out wisselen</translation>
+        <translation>Wissel van lay-out </translation>
     </message>
     <message>
         <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="634"/>
@@ -2816,7 +2822,7 @@ QtWebEngine cache folder -&gt; &quot;%7&quot;</source>
     <message>
         <location filename="../src/librssguard/gui/dialogs/formrestoredatabasesettings.ui" line="33"/>
         <source>Operation results</source>
-        <translation>Resultaten</translation>
+        <translation>Actie status</translation>
     </message>
     <message>
         <location filename="../src/librssguard/gui/dialogs/formrestoredatabasesettings.ui" line="59"/>
@@ -3035,7 +3041,7 @@ Je moet handmatig herstarten.</translation>
         <location filename="../src/librssguard/services/standard/gui/formstandardimportexport.cpp" line="171"/>
         <location filename="../src/librssguard/services/standard/gui/formstandardimportexport.cpp" line="216"/>
         <source>TXT files [one URL per line] (*.txt)</source>
-        <translation>TXT bestanden (een url per lijn) (*.txt)</translation>
+        <translation>TXT bestanden [één url per regel] (*.txt)</translation>
     </message>
     <message>
         <location filename="../src/librssguard/services/standard/gui/formstandardimportexport.cpp" line="75"/>
@@ -3065,7 +3071,7 @@ Je moet handmatig herstarten.</translation>
     <message>
         <location filename="../src/librssguard/services/standard/gui/formstandardimportexport.ui" line="71"/>
         <source>Do not fetch icons</source>
-        <translation>Pictogrammen niet ophalen</translation>
+        <translation>Iconen niet ophalen</translation>
     </message>
     <message>
         <location filename="../src/librssguard/services/standard/gui/formstandardimportexport.ui" line="78"/>
@@ -3100,7 +3106,7 @@ Je moet handmatig herstarten.</translation>
     <message>
         <location filename="../src/librssguard/services/standard/gui/formstandardimportexport.ui" line="226"/>
         <source>Operation result</source>
-        <translation>Operatie resultaat</translation>
+        <translation>Actie status</translation>
     </message>
 </context>
 <context>
@@ -3578,7 +3584,7 @@ Logintoken verloopt: %2</translation>
     <message>
         <location filename="../src/librssguard/services/greader/gui/greaderaccountdetails.cpp" line="45"/>
         <source>Here, results of connection test are shown.</source>
-        <translation>Hier, worden resultaten van verbinding getoond.</translation>
+        <translation>Hier worden de resultaten van de verbindingstest getoond.</translation>
     </message>
     <message>
         <location filename="../src/librssguard/services/greader/gui/greaderaccountdetails.cpp" line="203"/>
@@ -3623,12 +3629,12 @@ Logintoken verloopt: %2</translation>
     <message>
         <location filename="../src/librssguard/services/greader/gui/greaderaccountdetails.cpp" line="238"/>
         <source>URL cannot be empty.</source>
-        <translation>Url mag niet leeg zijn.</translation>
+        <translation>URL mag niet leeg zijn.</translation>
     </message>
     <message>
         <location filename="../src/librssguard/services/greader/gui/greaderaccountdetails.cpp" line="241"/>
         <source>URL is okay.</source>
-        <translation>Url is goed.</translation>
+        <translation>URL is goed.</translation>
     </message>
     <message>
         <location filename="../src/librssguard/services/greader/gui/greaderaccountdetails.cpp" line="47"/>
@@ -3775,7 +3781,7 @@ Logintoken verloopt: %2</translation>
         <location filename="../src/librssguard/services/greader/greadernetwork.cpp" line="485"/>
         <location filename="../src/librssguard/services/greader/greadernetwork.cpp" line="551"/>
         <source>login failed</source>
-        <translation>login mislukt</translation>
+        <translation>inloggen mislukt</translation>
     </message>
     <message>
         <location filename="../src/librssguard/services/greader/greadernetwork.cpp" line="1099"/>
@@ -3838,7 +3844,7 @@ Logintoken verloopt: %2</translation>
     <message>
         <location filename="../src/librssguard/services/abstract/importantnode.cpp" line="15"/>
         <source>Important articles</source>
-        <translation>belangrijke artikelen</translation>
+        <translation>Belangrijke artikelen</translation>
     </message>
     <message>
         <location filename="../src/librssguard/services/abstract/importantnode.cpp" line="16"/>
@@ -3906,7 +3912,7 @@ Logintoken verloopt: %2</translation>
     <message>
         <location filename="../src/librssguard/gui/reusable/locationlineedit.cpp" line="11"/>
         <source>Website address goes here</source>
-        <translation>Tik Website adres hier</translation>
+        <translation>Vul websiteadres hier in</translation>
     </message>
 </context>
 <context>
@@ -4314,12 +4320,12 @@ Logintoken verloopt: %2</translation>
     <message>
         <location filename="../src/librssguard/core/messagesforfiltersmodel.cpp" line="36"/>
         <source>true</source>
-        <translation type="unfinished"/>
+        <translation>waar</translation>
     </message>
     <message>
         <location filename="../src/librssguard/core/messagesforfiltersmodel.cpp" line="37"/>
         <source>false</source>
-        <translation type="unfinished"/>
+        <translation>niet waar</translation>
     </message>
 </context>
 <context>
@@ -4357,7 +4363,7 @@ Logintoken verloopt: %2</translation>
     <message>
         <location filename="../src/librssguard/core/messagesmodel.cpp" line="287"/>
         <source>Url</source>
-        <translation>Url</translation>
+        <translation>URL</translation>
     </message>
     <message>
         <location filename="../src/librssguard/core/messagesmodel.cpp" line="288"/>
@@ -4437,7 +4443,7 @@ Logintoken verloopt: %2</translation>
     <message>
         <location filename="../src/librssguard/core/messagesmodel.cpp" line="125"/>
         <source>feed icon</source>
-        <translation>feed pictogram</translation>
+        <translation>feed icoon</translation>
     </message>
     <message>
         <location filename="../src/librssguard/core/messagesmodel.cpp" line="297"/>
@@ -4986,7 +4992,7 @@ Logintoken verloopt: %2</translation>
     <message>
         <location filename="../src/librssguard/services/newsblur/gui/newsbluraccountdetails.cpp" line="24"/>
         <source>URL of your server, without any service-specific path</source>
-        <translation>URL van de server zonder pad naar enige service</translation>
+        <translation>URL van de server zonder service specifiek pad</translation>
     </message>
     <message>
         <location filename="../src/librssguard/services/newsblur/gui/newsbluraccountdetails.cpp" line="26"/>
@@ -4996,7 +5002,7 @@ Logintoken verloopt: %2</translation>
     <message>
         <location filename="../src/librssguard/services/newsblur/gui/newsbluraccountdetails.cpp" line="27"/>
         <source>Here, results of connection test are shown.</source>
-        <translation>Hier worden resultaten van verbinding getoond.</translation>
+        <translation>Hier worden de resultaten van de verbindingstest getoond.</translation>
     </message>
     <message>
         <location filename="../src/librssguard/services/newsblur/gui/newsbluraccountdetails.cpp" line="29"/>
@@ -5159,7 +5165,7 @@ Logintoken verloopt: %2</translation>
     <message>
         <location filename="../src/librssguard/services/owncloud/gui/owncloudaccountdetails.cpp" line="24"/>
         <source>Here, results of connection test are shown.</source>
-        <translation>Hier, worden resultaten van verbinding getoond.</translation>
+        <translation>Hier worden de resultaten van de verbindingstest getoond.</translation>
     </message>
     <message>
         <location filename="../src/librssguard/services/owncloud/gui/owncloudaccountdetails.cpp" line="28"/>
@@ -5221,12 +5227,12 @@ Logintoken verloopt: %2</translation>
     <message>
         <location filename="../src/librssguard/services/owncloud/gui/owncloudaccountdetails.cpp" line="113"/>
         <source>URL cannot be empty.</source>
-        <translation>Url mag niet leeg zijn.</translation>
+        <translation>URL mag niet leeg zijn.</translation>
     </message>
     <message>
         <location filename="../src/librssguard/services/owncloud/gui/owncloudaccountdetails.cpp" line="116"/>
         <source>URL is okay.</source>
-        <translation>Url is goed.</translation>
+        <translation>URL is goed.</translation>
     </message>
     <message>
         <location filename="../src/librssguard/services/owncloud/gui/owncloudaccountdetails.cpp" line="31"/>
@@ -5390,12 +5396,12 @@ Feedly is een beveiligde ruimte waar u de onderwerpen en trends die voor u van b
     <message>
         <location filename="../src/librssguard/miscellaneous/notification.cpp" line="142"/>
         <source>New %1 version is available</source>
-        <translation>Nieuw %1 versie beschikbaar</translation>
+        <translation>Nieuwe %1 versie beschikbaar</translation>
     </message>
     <message>
         <location filename="../src/librssguard/miscellaneous/notification.cpp" line="145"/>
         <source>Miscellaneous events</source>
-        <translation>Diverse evenementen</translation>
+        <translation>Diverse gebeurtenissen</translation>
     </message>
     <message>
         <location filename="../src/librssguard/miscellaneous/notification.cpp" line="148"/>
@@ -5439,7 +5445,7 @@ Lijst met ondersteunde lezers:</translation>
     <message>
         <location filename="../src/librssguard/miscellaneous/notification.cpp" line="139"/>
         <source>Login failed</source>
-        <translation>login mislukt</translation>
+        <translation>Inloggen mislukt</translation>
     </message>
     <message>
         <location filename="../src/librssguard/services/standard/standardserviceentrypoint.cpp" line="16"/>
@@ -5911,7 +5917,7 @@ File filter for external e-mail selection dialog.</extracomment>
     <message>
         <location filename="../src/librssguard/gui/settings/settingsbrowsermail.cpp" line="151"/>
         <source>Select e-mail executable</source>
-        <translation>Selecteer exe bestand voor e-mail</translation>
+        <translation>Selecteer uitvoerbaar bestand voor e-mail</translation>
     </message>
     <message>
         <location filename="../src/librssguard/gui/settings/settingsbrowsermail.cpp" line="177"/>
@@ -5931,7 +5937,7 @@ File filter for external e-mail selection dialog.</extracomment>
     <message>
         <location filename="../src/librssguard/gui/settings/settingsbrowsermail.cpp" line="40"/>
         <source>Executable</source>
-        <translation>UItvoerbaar</translation>
+        <translation>UItvoerbaar bestand</translation>
     </message>
     <message>
         <location filename="../src/librssguard/gui/settings/settingsbrowsermail.ui" line="18"/>
@@ -6277,7 +6283,7 @@ Makers van de applicatie zijn niet verantwoordelijk voor dataverlies.</translati
     <message>
         <location filename="../src/librssguard/gui/settings/settingsdownloads.ui" line="32"/>
         <source>Save all downloaded files to</source>
-        <translation>Sla alle gedownloade bestanden op naar</translation>
+        <translation>Sla alle gedownloade bestanden op in</translation>
     </message>
     <message>
         <location filename="../src/librssguard/gui/settings/settingsdownloads.ui" line="45"/>
@@ -6538,7 +6544,7 @@ Makers van de applicatie zijn niet verantwoordelijk voor dataverlies.</translati
     <message>
         <location filename="../src/librssguard/gui/settings/settingsgeneral.ui" line="17"/>
         <source>Launch %1 on operating system startup</source>
-        <translation>Laad %1 als systeem opstart</translation>
+        <translation>%1 automatisch starten als de computer opstart</translation>
     </message>
     <message>
         <location filename="../src/librssguard/gui/settings/settingsgeneral.ui" line="24"/>
@@ -6571,7 +6577,7 @@ Makers van de applicatie zijn niet verantwoordelijk voor dataverlies.</translati
     <message>
         <location filename="../src/librssguard/gui/settings/settingsgui.cpp" line="276"/>
         <source>Icon only</source>
-        <translation>Alleen pictogram</translation>
+        <translation>Alleen iconen</translation>
     </message>
     <message>
         <location filename="../src/librssguard/gui/settings/settingsgui.cpp" line="277"/>
@@ -6581,12 +6587,12 @@ Makers van de applicatie zijn niet verantwoordelijk voor dataverlies.</translati
     <message>
         <location filename="../src/librssguard/gui/settings/settingsgui.cpp" line="278"/>
         <source>Text beside icon</source>
-        <translation>Tekst naast pictogram</translation>
+        <translation>Tekst naast icoon</translation>
     </message>
     <message>
         <location filename="../src/librssguard/gui/settings/settingsgui.cpp" line="279"/>
         <source>Text under icon</source>
-        <translation>Tekst onder pictogram</translation>
+        <translation>Tekst onder icoon</translation>
     </message>
     <message>
         <location filename="../src/librssguard/gui/settings/settingsgui.cpp" line="280"/>
@@ -6607,7 +6613,7 @@ Makers van de applicatie zijn niet verantwoordelijk voor dataverlies.</translati
     <message>
         <location filename="../src/librssguard/gui/settings/settingsgui.cpp" line="157"/>
         <source>(Your OS does not support tray icons at the moment.)</source>
-        <translation>(Je OS ondersteunt momenteel geen systeemvakpictogrammen)</translation>
+        <translation>(Je OS ondersteunt momenteel geen systeemvakiconen)</translation>
     </message>
     <message>
         <location filename="../src/librssguard/gui/settings/settingsgui.cpp" line="34"/>
@@ -6643,12 +6649,12 @@ Omschrijving: %3</translation>
     <message>
         <location filename="../src/librssguard/gui/settings/settingsgui.ui" line="27"/>
         <source>Icons &amp;&amp; skins</source>
-        <translation>Pictogrammen &amp;&amp; skins</translation>
+        <translation>Iconen &amp;&amp; thema&apos;s</translation>
     </message>
     <message>
         <location filename="../src/librssguard/gui/settings/settingsgui.ui" line="33"/>
         <source>Icon theme</source>
-        <translation>Pictogramthema</translation>
+        <translation>Icoonthema</translation>
     </message>
     <message>
         <location filename="../src/librssguard/gui/settings/settingsgui.ui" line="46"/>
@@ -6683,7 +6689,7 @@ Omschrijving: %3</translation>
     <message>
         <location filename="../src/librssguard/gui/settings/settingsgui.ui" line="153"/>
         <source>Tray icon</source>
-        <translation>Pictogram in het systeemvak</translation>
+        <translation>Icoon in het systeemvak</translation>
     </message>
     <message>
         <location filename="../src/librssguard/gui/settings/settingsgui.ui" line="165"/>
@@ -6774,7 +6780,7 @@ Omschrijving: %3</translation>
     <message>
         <location filename="../src/librssguard/gui/settings/settingsgui.ui" line="424"/>
         <source>Icon size</source>
-        <translation>Pictogramgrootte</translation>
+        <translation>Icoongrootte</translation>
     </message>
     <message>
         <location filename="../src/librssguard/gui/settings/settingsgui.h" line="35"/>
@@ -6909,7 +6915,7 @@ Start ook het dialoogvenster &quot;Instellingen&quot; opnieuw nadat je Node.js h
         <source>You must have &quot;tray icon&quot; activated to have balloon notifications working.
 
 Also, there are some built-in sounds. Just start typing &quot;:&quot; and they will show up.</source>
-        <translation>Ballonberichten werken alleen als het systeemvakpictogram is ingeschakeld.
+        <translation>Ballonberichten werken alleen als het systeemvakicoon is ingeschakeld.
 
 Er zijn ook een aantal ingebouwde geluiden beschikbaar. Typ &quot;:&quot; om de lijst weer te geven.</translation>
     </message>
@@ -7135,12 +7141,12 @@ Model: %3</translation>
     <message>
         <location filename="../src/librssguard/services/standard/gui/standardfeeddetails.cpp" line="72"/>
         <source>Icon selection</source>
-        <translation>Pictogramselectie</translation>
+        <translation>Icoonselectie</translation>
     </message>
     <message>
         <location filename="../src/librssguard/services/standard/gui/standardfeeddetails.cpp" line="74"/>
         <source>Load icon from file...</source>
-        <translation>Laad pictogram uit een bestand...</translation>
+        <translation>Laad icoon uit een bestand...</translation>
     </message>
     <message>
         <location filename="../src/librssguard/services/standard/gui/standardfeeddetails.cpp" line="76"/>
@@ -7150,7 +7156,7 @@ Model: %3</translation>
     <message>
         <location filename="../src/librssguard/services/standard/gui/standardfeeddetails.cpp" line="78"/>
         <source>Fetch icon from feed</source>
-        <translation>Pictogram van feed gebruiken</translation>
+        <translation>Icoon van feed gebruiken</translation>
     </message>
     <message>
         <location filename="../src/librssguard/services/standard/gui/standardfeeddetails.cpp" line="88"/>
@@ -7161,19 +7167,19 @@ Model: %3</translation>
     <message>
         <location filename="../src/librssguard/services/standard/gui/standardfeeddetails.cpp" line="152"/>
         <source>Icon fetched successfully.</source>
-        <translation>Pictogram met succes opgehaald.</translation>
+        <translation>Icoon met succes opgehaald.</translation>
     </message>
     <message>
         <location filename="../src/librssguard/services/standard/gui/standardfeeddetails.cpp" line="153"/>
         <source>Icon metadata fetched.</source>
-        <translation>Pictogram uit metadata opgehaald.</translation>
+        <translation>Icoon uit metadata opgehaald.</translation>
     </message>
     <message>
         <location filename="../src/librssguard/services/standard/gui/standardfeeddetails.cpp" line="161"/>
         <location filename="../src/librssguard/services/standard/gui/standardfeeddetails.cpp" line="166"/>
         <location filename="../src/librssguard/services/standard/gui/standardfeeddetails.cpp" line="171"/>
         <source>No icon fetched.</source>
-        <translation>Geen pictogram opgehaald.</translation>
+        <translation>Geen icoon opgehaald.</translation>
     </message>
     <message>
         <location filename="../src/librssguard/services/standard/gui/standardfeeddetails.cpp" line="208"/>
@@ -7183,7 +7189,7 @@ Model: %3</translation>
     <message>
         <location filename="../src/librssguard/services/standard/gui/standardfeeddetails.cpp" line="209"/>
         <source>Feed and icon metadata fetched.</source>
-        <translation>Metadata opgehaald voor feed en pictogram.</translation>
+        <translation>Metadata opgehaald voor feed en icoon.</translation>
     </message>
     <message>
         <location filename="../src/librssguard/services/standard/gui/standardfeeddetails.cpp" line="217"/>
@@ -7230,7 +7236,7 @@ Model: %3</translation>
     <message>
         <location filename="../src/librssguard/services/standard/gui/standardfeeddetails.cpp" line="296"/>
         <source>Select icon file for the feed</source>
-        <translation>Selecteer pictogrambestand voor de feed</translation>
+        <translation>Selecteer icoonbestand voor de feed</translation>
     </message>
     <message>
         <location filename="../src/librssguard/services/standard/gui/standardfeeddetails.cpp" line="298"/>
@@ -7240,7 +7246,7 @@ Model: %3</translation>
     <message>
         <location filename="../src/librssguard/services/standard/gui/standardfeeddetails.cpp" line="304"/>
         <source>Select icon</source>
-        <translation>Selecteer pictogram</translation>
+        <translation>Selecteer icoon</translation>
     </message>
     <message>
         <location filename="../src/librssguard/services/standard/gui/standardfeeddetails.cpp" line="305"/>
@@ -7256,12 +7262,12 @@ Model: %3</translation>
     <message>
         <location filename="../src/librssguard/services/standard/gui/standardfeeddetails.cpp" line="309"/>
         <source>Icon name:</source>
-        <translation>Pictogramnaam:</translation>
+        <translation>Icoonnaam:</translation>
     </message>
     <message>
         <location filename="../src/librssguard/services/standard/gui/standardfeeddetails.cpp" line="310"/>
         <source>Icon type:</source>
-        <translation>Type pictogram:</translation>
+        <translation>Type icoon:</translation>
     </message>
     <message>
         <location filename="../src/librssguard/services/standard/gui/standardfeeddetails.cpp" line="33"/>
@@ -7271,7 +7277,7 @@ Model: %3</translation>
     <message>
         <location filename="../src/librssguard/services/standard/gui/standardfeeddetails.cpp" line="34"/>
         <source>Full feed source identifier which can be URL.</source>
-        <translation>Volledige bron van feed – dit kan een URL zijn.</translation>
+        <translation>Volledige bron van de feed – dit kan een URL zijn.</translation>
     </message>
     <message>
         <location filename="../src/librssguard/services/standard/gui/standardfeeddetails.cpp" line="35"/>
@@ -7399,12 +7405,12 @@ Je kunt ook gegenereerde feedgegevens nabewerken met nog een ander script als je
     <message>
         <location filename="../src/librssguard/services/standard/gui/standardfeeddetails.ui" line="192"/>
         <source>Icon</source>
-        <translation>Pictogram</translation>
+        <translation>Icoon</translation>
     </message>
     <message>
         <location filename="../src/librssguard/services/standard/gui/standardfeeddetails.ui" line="214"/>
         <source>Select icon for your feed.</source>
-        <translation>Selecteer pictogram voor je feed.</translation>
+        <translation>Selecteer icoon voor je feed.</translation>
     </message>
 </context>
 <context>
@@ -7752,7 +7758,7 @@ Ongelezen nieuws: %2</translation>
     <message>
         <location filename="../src/librssguard/services/tt-rss/gui/ttrssaccountdetails.cpp" line="36"/>
         <source>Here, results of connection test are shown.</source>
-        <translation>Hier worden resultaten van verbinding getoond.</translation>
+        <translation>Hier worden de resultaten van de verbindingstest getoond.</translation>
     </message>
     <message>
         <location filename="../src/librssguard/services/tt-rss/gui/ttrssaccountdetails.cpp" line="93"/>

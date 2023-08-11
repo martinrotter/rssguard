@@ -139,17 +139,17 @@ Error: %1</translation>
     <message>
         <location filename="../src/librssguard/miscellaneous/application.cpp" line="310"/>
         <source>%1 survey</source>
-        <translation type="unfinished"/>
+        <translation>%1 Encuesta</translation>
     </message>
     <message>
         <location filename="../src/librssguard/miscellaneous/application.cpp" line="311"/>
         <source>Please, fill the survey.</source>
-        <translation type="unfinished"/>
+        <translation>Rellene la encuesta.</translation>
     </message>
     <message>
         <location filename="../src/librssguard/miscellaneous/application.cpp" line="314"/>
         <source>Go to survey</source>
-        <translation type="unfinished"/>
+        <translation>Ir a la encuesta</translation>
     </message>
     <message>
         <location filename="../src/librssguard/miscellaneous/application.cpp" line="563"/>
@@ -980,7 +980,7 @@ ID artículo: %5</translation>
     <message>
         <location filename="../src/librssguard/core/feedsmodel.cpp" line="517"/>
         <source>Do you really want to clean all articles from selected item?</source>
-        <translation type="unfinished"/>
+        <translation>¿Quieres limpiar todos los articulos seleccionados?</translation>
     </message>
     <message>
         <location filename="../src/librssguard/core/feedsmodel.cpp" line="32"/>
@@ -1114,7 +1114,7 @@ o debido a que esta función aún no está implementada.</translation>
     <message>
         <location filename="../src/librssguard/gui/feedsview.cpp" line="875"/>
         <source>Context menu for probe</source>
-        <translation type="unfinished"/>
+        <translation>Menú de contexto para el sondeo</translation>
     </message>
     <message>
         <location filename="../src/librssguard/gui/feedsview.cpp" line="136"/>
@@ -1179,7 +1179,13 @@ Skins base folder -&gt; &quot;%4&quot;
 Icon themes base folder -&gt; &quot;%8&quot;
 Node.js package folder -&gt; &quot;%6&quot;
 QtWebEngine cache folder -&gt; &quot;%7&quot;</source>
-        <translation type="unfinished"/>
+        <translation>Archivo de datos del usuario (&quot;%5&quot;) -&gt; &quot;%1&quot;
+
+Archivo de configuración (%3) -&gt; &quot;%2&quot;
+Archivo de Skins -&gt; &quot;%4&quot;
+Archivo de iconos -&gt; &quot;%8&quot;
+Archivo de Node.js Paquetes -&gt; &quot;%6&quot;
+Archivo de QtWebEngine memoria -&gt; &quot;%7&quot;</translation>
     </message>
     <message>
         <location filename="../src/librssguard/gui/dialogs/formabout.cpp" line="127"/>
@@ -1349,7 +1355,7 @@ QtWebEngine cache folder -&gt; &quot;%7&quot;</source>
     <message>
         <location filename="../src/librssguard/services/abstract/gui/formaddeditprobe.cpp" line="12"/>
         <source>Name for your probe</source>
-        <translation type="unfinished"/>
+        <translation>Nombre para tu sondeo</translation>
     </message>
     <message>
         <location filename="../src/librssguard/services/abstract/gui/formaddeditprobe.cpp" line="13"/>
@@ -1365,22 +1371,22 @@ QtWebEngine cache folder -&gt; &quot;%7&quot;</source>
     <message>
         <location filename="../src/librssguard/services/abstract/gui/formaddeditprobe.cpp" line="17"/>
         <source>Probe name cannot be empty.</source>
-        <translation type="unfinished"/>
+        <translation>El nombre del sondeo no puede estar vacío.</translation>
     </message>
     <message>
         <location filename="../src/librssguard/services/abstract/gui/formaddeditprobe.cpp" line="26"/>
         <source>Probe filter cannot be empty.</source>
-        <translation type="unfinished"/>
+        <translation>El filtro del sondeo no puede estar vacío</translation>
     </message>
     <message>
         <location filename="../src/librssguard/services/abstract/gui/formaddeditprobe.cpp" line="29"/>
         <source>Regular expression is not well-formed.</source>
-        <translation type="unfinished"/>
+        <translation>La expresión regular no está bien formada.</translation>
     </message>
     <message>
         <location filename="../src/librssguard/services/abstract/gui/formaddeditprobe.cpp" line="41"/>
         <source>Create new probe</source>
-        <translation type="unfinished"/>
+        <translation>Crear nuevo sondeo</translation>
     </message>
     <message>
         <location filename="../src/librssguard/services/abstract/gui/formaddeditprobe.cpp" line="44"/>
@@ -1390,7 +1396,7 @@ QtWebEngine cache folder -&gt; &quot;%7&quot;</source>
     <message>
         <location filename="../src/librssguard/services/abstract/gui/formaddeditprobe.cpp" line="62"/>
         <source>Edit probe &apos;%1&apos;</source>
-        <translation type="unfinished"/>
+        <translation>Editar sondeo &apos;%1&apos;</translation>
     </message>
 </context>
 <context>
@@ -1826,12 +1832,12 @@ QtWebEngine cache folder -&gt; &quot;%7&quot;</source>
     <message>
         <location filename="../src/librssguard/services/abstract/gui/formfeeddetails.ui" line="72"/>
         <source>Add articles with any date into the database</source>
-        <translation type="unfinished"/>
+        <translation>Añadir artículos con cualquier fecha dentro de la base de datos</translation>
     </message>
     <message>
         <location filename="../src/librssguard/services/abstract/gui/formfeeddetails.ui" line="82"/>
         <source>Avoid adding articles before this date into the database</source>
-        <translation type="unfinished"/>
+        <translation>Evitar añadir artículos antes de esta fecha dentro de la base de datos</translation>
     </message>
     <message>
         <location filename="../src/librssguard/services/abstract/gui/formfeeddetails.ui" line="118"/>
@@ -1846,7 +1852,7 @@ QtWebEngine cache folder -&gt; &quot;%7&quot;</source>
     <message>
         <location filename="../src/librssguard/services/abstract/gui/formfeeddetails.ui" line="138"/>
         <source>Right-to-left layout</source>
-        <translation type="unfinished"/>
+        <translation>Disposición de derecha a izquierda</translation>
     </message>
     <message>
         <location filename="../src/librssguard/services/abstract/gui/formfeeddetails.ui" line="124"/>
@@ -3065,7 +3071,7 @@ La aplicación tiene que reiniciarla manualmente.</translation>
     <message>
         <location filename="../src/librssguard/services/standard/gui/formstandardimportexport.ui" line="71"/>
         <source>Do not fetch icons</source>
-        <translation type="unfinished"/>
+        <translation>No bajar iconos</translation>
     </message>
     <message>
         <location filename="../src/librssguard/services/standard/gui/formstandardimportexport.ui" line="78"/>
@@ -3473,7 +3479,7 @@ Puede instalarlo ahora.</translation>
     <message>
         <location filename="../src/librssguard/services/gmail/gmailnetworkfactory.cpp" line="184"/>
         <source>failed to download list of labels</source>
-        <translation type="unfinished"/>
+        <translation>Error en bajar la lista de etiquetas</translation>
     </message>
     <message>
         <location filename="../src/librssguard/services/gmail/gmailnetworkfactory.cpp" line="448"/>
@@ -4314,12 +4320,12 @@ Expiración de identificadores de acceso: %2</translation>
     <message>
         <location filename="../src/librssguard/core/messagesforfiltersmodel.cpp" line="36"/>
         <source>true</source>
-        <translation type="unfinished"/>
+        <translation>Verdadero</translation>
     </message>
     <message>
         <location filename="../src/librssguard/core/messagesforfiltersmodel.cpp" line="37"/>
         <source>false</source>
-        <translation type="unfinished"/>
+        <translation>Falso</translation>
     </message>
 </context>
 <context>
@@ -4442,7 +4448,7 @@ Expiración de identificadores de acceso: %2</translation>
     <message>
         <location filename="../src/librssguard/core/messagesmodel.cpp" line="297"/>
         <source>RTL</source>
-        <translation type="unfinished"/>
+        <translation>RTL</translation>
     </message>
     <message>
         <location filename="../src/librssguard/core/messagesmodel.cpp" line="299"/>
@@ -4542,7 +4548,7 @@ Expiración de identificadores de acceso: %2</translation>
     <message>
         <location filename="../src/librssguard/core/messagesmodel.cpp" line="309"/>
         <source>Layout direction of the article</source>
-        <translation type="unfinished"/>
+        <translation>La dirección de la disposición del artículo</translation>
     </message>
     <message>
         <location filename="../src/librssguard/core/messagesmodel.cpp" line="310"/>
@@ -5407,7 +5413,7 @@ Feedly es un espacio seguro donde puede organizar e investigar de forma privada 
     <message>
         <location filename="../src/librssguard/miscellaneous/notification.cpp" line="151"/>
         <source>Node.js - package(s) failed to update</source>
-        <translation type="unfinished"/>
+        <translation>Node.js - El paquete ha fallado en actualizarse</translation>
     </message>
     <message>
         <location filename="../src/librssguard/miscellaneous/notification.cpp" line="154"/>
@@ -5568,7 +5574,7 @@ Lista de lectores compatibles:</translation>
     <message>
         <location filename="../src/librssguard/services/abstract/recyclebin.cpp" line="106"/>
         <source>Do you really want to empty your recycle bin?</source>
-        <translation type="unfinished"/>
+        <translation>¿Quieres realmente vaciar tu papelera de reciclaje?</translation>
     </message>
     <message>
         <location filename="../src/librssguard/services/abstract/recyclebin.cpp" line="18"/>
@@ -5843,17 +5849,17 @@ Expiración de identificadores de acceso: %2</translation>
     <message>
         <location filename="../src/librssguard/services/abstract/searchsnode.cpp" line="19"/>
         <source>Article probes</source>
-        <translation type="unfinished"/>
+        <translation>Sondeos de artículos</translation>
     </message>
     <message>
         <location filename="../src/librssguard/services/abstract/searchsnode.cpp" line="20"/>
         <source>You can see all your permanent article probes here.</source>
-        <translation type="unfinished"/>
+        <translation>Aquí puedes ver todos tus sondeos de artículos</translation>
     </message>
     <message>
         <location filename="../src/librssguard/services/abstract/searchsnode.cpp" line="115"/>
         <source>New article probe</source>
-        <translation type="unfinished"/>
+        <translation>Nuevo sondeo de artículo</translation>
     </message>
 </context>
 <context>
@@ -6377,7 +6383,7 @@ Los autores de esta aplicación se deslindan de toda responsabilidad derivado de
     <message>
         <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="128"/>
         <source>Avoid adding articles before this date into the database</source>
-        <translation type="unfinished"/>
+        <translation>Evitar añadir artículos antes de esta fecha dentro de la base de datos</translation>
     </message>
     <message>
         <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="164"/>

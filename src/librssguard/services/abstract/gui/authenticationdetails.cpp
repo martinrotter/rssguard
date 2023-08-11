@@ -2,6 +2,8 @@
 
 #include "services/abstract/gui/authenticationdetails.h"
 
+#include "definitions/definitions.h"
+
 AuthenticationDetails::AuthenticationDetails(bool only_basic, QWidget* parent) : QWidget(parent) {
   setupUi(this);
 
@@ -14,10 +16,10 @@ AuthenticationDetails::AuthenticationDetails(bool only_basic, QWidget* parent) :
 
   m_cbAuthType->addItem(tr("No authentication"),
                         QVariant::fromValue(NetworkFactory::NetworkAuthentication::NoAuthentication));
-  m_cbAuthType->addItem(tr("HTTP Basic"), QVariant::fromValue(NetworkFactory::NetworkAuthentication::Basic));
+  m_cbAuthType->addItem(QSL("HTTP Basic"), QVariant::fromValue(NetworkFactory::NetworkAuthentication::Basic));
 
   if (!only_basic) {
-    m_cbAuthType->addItem(tr("Token"), QVariant::fromValue(NetworkFactory::NetworkAuthentication::Token));
+    m_cbAuthType->addItem(QSL("Token"), QVariant::fromValue(NetworkFactory::NetworkAuthentication::Token));
   }
 
   connect(m_txtUsername->lineEdit(), &BaseLineEdit::textChanged, this, &AuthenticationDetails::onUsernameChanged);

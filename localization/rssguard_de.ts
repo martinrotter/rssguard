@@ -139,12 +139,12 @@ Error: %1</translation>
     <message>
         <location filename="../src/librssguard/miscellaneous/application.cpp" line="310"/>
         <source>%1 survey</source>
-        <translation type="unfinished"/>
+        <translation>%1 Umfrage</translation>
     </message>
     <message>
         <location filename="../src/librssguard/miscellaneous/application.cpp" line="311"/>
         <source>Please, fill the survey.</source>
-        <translation type="unfinished"/>
+        <translation>Bitte fülle die Umfrage aus.</translation>
     </message>
     <message>
         <location filename="../src/librssguard/miscellaneous/application.cpp" line="314"/>
@@ -2090,7 +2090,7 @@ QtWebEngine Zwischenspeicher -&gt; &quot;%7&quot;</translation>
     <message>
         <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="390"/>
         <source>Open in &amp;external browser</source>
-        <translation>Mit &amp;externem Browser Öffnen</translation>
+        <translation>Im &amp;externen Browser Öffnen</translation>
     </message>
     <message>
         <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="393"/>
@@ -4195,7 +4195,7 @@ Ablauf des Login tokens: %2</translation>
     <message>
         <location filename="../src/librssguard/gui/messagebrowser.cpp" line="173"/>
         <source>Open in external browser</source>
-        <translation>In externem Browser öffnen</translation>
+        <translation>Im externen Browser öffnen</translation>
     </message>
     <message>
         <location filename="../src/librssguard/gui/messagebrowser.cpp" line="174"/>
@@ -4205,7 +4205,7 @@ Ablauf des Login tokens: %2</translation>
     <message>
         <location filename="../src/librssguard/gui/messagebrowser.cpp" line="178"/>
         <source>Always open links in external browser.</source>
-        <translation>Links immer im externem Browser öffnen.</translation>
+        <translation>Links immer im externen Browser öffnen.</translation>
     </message>
     <message>
         <location filename="../src/librssguard/gui/messagebrowser.cpp" line="201"/>
@@ -7587,7 +7587,7 @@ Ungelesene Nachrichten: %2</translation>
     <message>
         <location filename="../src/librssguard/gui/webviewers/qtextbrowser/textbrowserviewer.cpp" line="366"/>
         <source>Open in external browser</source>
-        <translation>In externem Browser öffnen</translation>
+        <translation>Im externen Browser öffnen</translation>
     </message>
     <message>
         <location filename="../src/librssguard/gui/webviewers/qtextbrowser/textbrowserviewer.cpp" line="368"/>
@@ -8074,7 +8074,7 @@ Letzte Anmeldung am: %4</translation>
     <message>
         <location filename="../src/librssguard/gui/webviewers/webengine/webengineviewer.cpp" line="94"/>
         <source>Open link in external browser</source>
-        <translation>In externem Browser öffnen</translation>
+        <translation>Im externen Browser öffnen</translation>
     </message>
     <message>
         <location filename="../src/librssguard/gui/webviewers/webengine/webengineviewer.cpp" line="111"/>
