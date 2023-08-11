@@ -125,82 +125,82 @@ Error: %1</source>
 <context>
     <name>Application</name>
     <message>
-        <location filename="../src/librssguard/miscellaneous/application.cpp" line="1085"/>
+        <location filename="../src/librssguard/miscellaneous/application.cpp" line="1088"/>
         <source>Application is already running.</source>
         <translation>應用程式已在執行。</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/miscellaneous/application.cpp" line="555"/>
+        <location filename="../src/librssguard/miscellaneous/application.cpp" line="558"/>
         <source>Output directory is not writable.</source>
         <translation>輸出目錄是無法寫入。</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/miscellaneous/application.cpp" line="310"/>
+        <location filename="../src/librssguard/miscellaneous/application.cpp" line="313"/>
         <source>%1 survey</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../src/librssguard/miscellaneous/application.cpp" line="311"/>
+        <location filename="../src/librssguard/miscellaneous/application.cpp" line="314"/>
         <source>Please, fill the survey.</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../src/librssguard/miscellaneous/application.cpp" line="314"/>
+        <location filename="../src/librssguard/miscellaneous/application.cpp" line="317"/>
         <source>Go to survey</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../src/librssguard/miscellaneous/application.cpp" line="563"/>
+        <location filename="../src/librssguard/miscellaneous/application.cpp" line="566"/>
         <source>Settings file not copied to output directory successfully.</source>
         <translation>設定檔複製到輸出目錄失敗。</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/miscellaneous/application.cpp" line="580"/>
+        <location filename="../src/librssguard/miscellaneous/application.cpp" line="583"/>
         <source>Database restoration was not initiated. Make sure that output directory is writable.</source>
         <translation>未復原資料庫。請確認輸出目錄可寫入。</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/miscellaneous/application.cpp" line="587"/>
+        <location filename="../src/librssguard/miscellaneous/application.cpp" line="590"/>
         <source>Settings restoration was not initiated. Make sure that output directory is writable.</source>
         <translation>未復原設定。請確認輸出目錄可寫入。</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/miscellaneous/application.cpp" line="1103"/>
+        <location filename="../src/librssguard/miscellaneous/application.cpp" line="1106"/>
         <source>Cannot add feed</source>
         <translation>無法新增文源</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/miscellaneous/application.cpp" line="1104"/>
+        <location filename="../src/librssguard/miscellaneous/application.cpp" line="1107"/>
         <source>Feed cannot be added because there is no active account which can add feeds.</source>
         <translation>無法加入文源，因為無使用的、可加入文源的帳號。</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/miscellaneous/application.cpp" line="1262"/>
+        <location filename="../src/librssguard/miscellaneous/application.cpp" line="1265"/>
         <source>Packages %1 were updated.</source>
         <translation>套件 %1 更新過。</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/miscellaneous/application.cpp" line="980"/>
+        <location filename="../src/librssguard/miscellaneous/application.cpp" line="983"/>
         <source>Unread articles fetched</source>
         <translation>下載了未讀的文章</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/miscellaneous/application.cpp" line="331"/>
+        <location filename="../src/librssguard/miscellaneous/application.cpp" line="334"/>
         <source>Go to changelog</source>
         <translation>前往檢視變更紀錄</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/miscellaneous/application.cpp" line="1034"/>
+        <location filename="../src/librssguard/miscellaneous/application.cpp" line="1037"/>
         <source>AdBlock needs to be configured</source>
         <translation>須設定 AdBlock</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/miscellaneous/application.cpp" line="325"/>
+        <location filename="../src/librssguard/miscellaneous/application.cpp" line="328"/>
         <source>Welcome</source>
         <translation>歡迎</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/miscellaneous/application.cpp" line="326"/>
+        <location filename="../src/librssguard/miscellaneous/application.cpp" line="329"/>
         <source>Welcome to %1.
 
 Please, check NEW stuff included in this
@@ -211,17 +211,17 @@ version by clicking this popup notification.</source>
 查閱此版的新鮮事。</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/miscellaneous/application.cpp" line="1035"/>
+        <location filename="../src/librssguard/miscellaneous/application.cpp" line="1038"/>
         <source>AdBlock is not configured properly. Go to &quot;Settings&quot; -&gt; &quot;Node.js&quot; and check if your Node.js is properly configured.</source>
         <translation>AdBlock 未恰當設定。請於 &quot;設定&quot; -&gt; &quot;Node.js&quot;，檢查 Node.js 是否恰當設定。</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/miscellaneous/application.cpp" line="1084"/>
+        <location filename="../src/librssguard/miscellaneous/application.cpp" line="1087"/>
         <source>Already running</source>
         <translation>已在執行</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/miscellaneous/application.cpp" line="1253"/>
+        <location filename="../src/librssguard/miscellaneous/application.cpp" line="1256"/>
         <source>Packages %1 were NOT updated because of error: %2.</source>
         <translation>套件 %1 沒更新新過，因為後面錯誤: %2。</translation>
     </message>
@@ -250,64 +250,54 @@ version by clicking this popup notification.</source>
     </message>
     <message>
         <location filename="../src/librssguard/services/abstract/gui/authenticationdetails.ui" line="35"/>
-        <location filename="../src/librssguard/services/abstract/gui/authenticationdetails.cpp" line="10"/>
-        <location filename="../src/librssguard/services/abstract/gui/authenticationdetails.cpp" line="77"/>
+        <location filename="../src/librssguard/services/abstract/gui/authenticationdetails.cpp" line="12"/>
+        <location filename="../src/librssguard/services/abstract/gui/authenticationdetails.cpp" line="79"/>
         <source>Username</source>
         <translation>使用者名稱</translation>
     </message>
     <message>
         <location filename="../src/librssguard/services/abstract/gui/authenticationdetails.ui" line="48"/>
-        <location filename="../src/librssguard/services/abstract/gui/authenticationdetails.cpp" line="12"/>
+        <location filename="../src/librssguard/services/abstract/gui/authenticationdetails.cpp" line="14"/>
         <source>Password</source>
         <translation>密碼</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/services/abstract/gui/authenticationdetails.cpp" line="11"/>
+        <location filename="../src/librssguard/services/abstract/gui/authenticationdetails.cpp" line="13"/>
         <source>Set username to access the feed.</source>
         <translation>設定讀取文源的使用者名稱。</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/services/abstract/gui/authenticationdetails.cpp" line="13"/>
+        <location filename="../src/librssguard/services/abstract/gui/authenticationdetails.cpp" line="15"/>
         <source>Set password to access the feed.</source>
         <translation>設定讀取文源的密碼。</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/services/abstract/gui/authenticationdetails.cpp" line="15"/>
+        <location filename="../src/librssguard/services/abstract/gui/authenticationdetails.cpp" line="17"/>
         <source>No authentication</source>
         <translation>無認證</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/services/abstract/gui/authenticationdetails.cpp" line="17"/>
-        <source>HTTP Basic</source>
-        <translation>HTTP 基本</translation>
-    </message>
-    <message>
-        <location filename="../src/librssguard/services/abstract/gui/authenticationdetails.cpp" line="20"/>
-        <source>Token</source>
-        <translation>權杖</translation>
-    </message>
-    <message>
-        <location filename="../src/librssguard/services/abstract/gui/authenticationdetails.cpp" line="51"/>
+        <location filename="../src/librssguard/services/abstract/gui/authenticationdetails.cpp" line="53"/>
         <source>Username/token is ok or it is not needed.</source>
         <translation>使用者名稱/權杖無問題或不必要。</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/services/abstract/gui/authenticationdetails.cpp" line="52"/>
+        <location filename="../src/librssguard/services/abstract/gui/authenticationdetails.cpp" line="54"/>
         <source>Username/token is empty.</source>
         <translation>缺使用者名稱/權杖。</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/services/abstract/gui/authenticationdetails.cpp" line="74"/>
+        <location filename="../src/librssguard/services/abstract/gui/authenticationdetails.cpp" line="76"/>
         <source>Access token</source>
         <translation>存取之權杖</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/services/abstract/gui/authenticationdetails.cpp" line="61"/>
+        <location filename="../src/librssguard/services/abstract/gui/authenticationdetails.cpp" line="63"/>
         <source>Password is ok or it is not needed.</source>
         <translation>密碼無問題或不必要。</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/services/abstract/gui/authenticationdetails.cpp" line="61"/>
+        <location filename="../src/librssguard/services/abstract/gui/authenticationdetails.cpp" line="63"/>
         <source>Password is empty.</source>
         <translation>缺密碼。</translation>
     </message>
@@ -3851,12 +3841,6 @@ Login tokens expiration: %2</source>
         <source>Form</source>
         <translation>表單</translation>
     </message>
-    <message>
-        <location filename="../src/librssguard/gui/itemdetails.ui" line="26"/>
-        <location filename="../src/librssguard/gui/itemdetails.ui" line="42"/>
-        <source>TextLabel</source>
-        <translation>文字標籤</translation>
-    </message>
 </context>
 <context>
     <name>LabelsMenu</name>
@@ -3916,153 +3900,137 @@ Login tokens expiration: %2</source>
     </message>
     <message>
         <location filename="../src/librssguard/gui/richtexteditor/mrichtextedit.ui" line="79"/>
-        <source>Undo (CTRL+Z)</source>
-        <translation>復原 (CTRL+Z)</translation>
-    </message>
-    <message>
-        <location filename="../src/librssguard/gui/richtexteditor/mrichtextedit.ui" line="82"/>
         <source>Undo</source>
         <translation>復原</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/gui/richtexteditor/mrichtextedit.ui" line="101"/>
-        <location filename="../src/librssguard/gui/richtexteditor/mrichtextedit.ui" line="104"/>
+        <location filename="../src/librssguard/gui/richtexteditor/mrichtextedit.ui" line="98"/>
         <source>Redo</source>
         <translation>再一次</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/gui/richtexteditor/mrichtextedit.ui" line="120"/>
-        <source>Cut (CTRL+X)</source>
-        <translation>剪下 (CTRL+X)</translation>
-    </message>
-    <message>
-        <location filename="../src/librssguard/gui/richtexteditor/mrichtextedit.ui" line="123"/>
+        <location filename="../src/librssguard/gui/richtexteditor/mrichtextedit.ui" line="114"/>
         <source>Cut</source>
         <translation>剪下</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/gui/richtexteditor/mrichtextedit.ui" line="139"/>
-        <source>Copy (CTRL+C)</source>
-        <translation>複製 (CTRL+C)</translation>
-    </message>
-    <message>
-        <location filename="../src/librssguard/gui/richtexteditor/mrichtextedit.ui" line="142"/>
+        <location filename="../src/librssguard/gui/richtexteditor/mrichtextedit.ui" line="130"/>
         <source>Copy</source>
         <translation>複製</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/gui/richtexteditor/mrichtextedit.ui" line="158"/>
+        <location filename="../src/librssguard/gui/richtexteditor/mrichtextedit.ui" line="146"/>
         <source>Paste (CTRL+V)</source>
         <translation>貼上 (CTRL+V)</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/gui/richtexteditor/mrichtextedit.ui" line="161"/>
+        <location filename="../src/librssguard/gui/richtexteditor/mrichtextedit.ui" line="149"/>
         <source>Paste</source>
         <translation>貼上</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/gui/richtexteditor/mrichtextedit.ui" line="184"/>
+        <location filename="../src/librssguard/gui/richtexteditor/mrichtextedit.ui" line="172"/>
         <source>Link (CTRL+L)</source>
         <translation>連結 (CTRL+L)</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/gui/richtexteditor/mrichtextedit.ui" line="187"/>
+        <location filename="../src/librssguard/gui/richtexteditor/mrichtextedit.ui" line="175"/>
         <source>Link</source>
         <translation>連結</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/gui/richtexteditor/mrichtextedit.ui" line="216"/>
+        <location filename="../src/librssguard/gui/richtexteditor/mrichtextedit.ui" line="204"/>
         <source>Bold</source>
         <translation>粗體</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/gui/richtexteditor/mrichtextedit.ui" line="235"/>
+        <location filename="../src/librssguard/gui/richtexteditor/mrichtextedit.ui" line="223"/>
         <source>Italic (CTRL+I)</source>
         <translation>斜體 (CTRL+I)</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/gui/richtexteditor/mrichtextedit.ui" line="238"/>
+        <location filename="../src/librssguard/gui/richtexteditor/mrichtextedit.ui" line="226"/>
         <source>Italic</source>
         <translation>斜體</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/gui/richtexteditor/mrichtextedit.ui" line="257"/>
+        <location filename="../src/librssguard/gui/richtexteditor/mrichtextedit.ui" line="245"/>
         <source>Underline (CTRL+U)</source>
         <translation>底線 (CTRL+U)</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/gui/richtexteditor/mrichtextedit.ui" line="260"/>
+        <location filename="../src/librssguard/gui/richtexteditor/mrichtextedit.ui" line="248"/>
         <source>Underline</source>
         <translation>底線</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/gui/richtexteditor/mrichtextedit.ui" line="276"/>
+        <location filename="../src/librssguard/gui/richtexteditor/mrichtextedit.ui" line="264"/>
         <source>Strike Out</source>
         <translation>刪除線</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/gui/richtexteditor/mrichtextedit.ui" line="296"/>
+        <location filename="../src/librssguard/gui/richtexteditor/mrichtextedit.ui" line="284"/>
         <source>Bullet list (CTRL+-)</source>
         <translation>清單項目號 (CTRL+-)</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/gui/richtexteditor/mrichtextedit.ui" line="299"/>
+        <location filename="../src/librssguard/gui/richtexteditor/mrichtextedit.ui" line="287"/>
         <source>Bullet list</source>
         <translation>清單項目符號</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/gui/richtexteditor/mrichtextedit.ui" line="318"/>
+        <location filename="../src/librssguard/gui/richtexteditor/mrichtextedit.ui" line="306"/>
         <source>Ordered list (CTRL+=)</source>
         <translation>清單項目序號 (CTRL+=)</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/gui/richtexteditor/mrichtextedit.ui" line="321"/>
+        <location filename="../src/librssguard/gui/richtexteditor/mrichtextedit.ui" line="309"/>
         <source>Ordered list</source>
         <translation>清單項目序號</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/gui/richtexteditor/mrichtextedit.ui" line="340"/>
+        <location filename="../src/librssguard/gui/richtexteditor/mrichtextedit.ui" line="328"/>
         <source>Decrease indentation (CTRL+,)</source>
         <translation>減少縮排 (CTRL+,)</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/gui/richtexteditor/mrichtextedit.ui" line="343"/>
+        <location filename="../src/librssguard/gui/richtexteditor/mrichtextedit.ui" line="331"/>
         <source>Decrease indentation</source>
         <translation>減少縮排</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/gui/richtexteditor/mrichtextedit.ui" line="359"/>
+        <location filename="../src/librssguard/gui/richtexteditor/mrichtextedit.ui" line="347"/>
         <source>Increase indentation (CTRL+.)</source>
         <translation>增加縮排 (CTRL+.)</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/gui/richtexteditor/mrichtextedit.ui" line="362"/>
+        <location filename="../src/librssguard/gui/richtexteditor/mrichtextedit.ui" line="350"/>
         <source>Increase indentation</source>
         <translation>增加縮排</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/gui/richtexteditor/mrichtextedit.ui" line="397"/>
+        <location filename="../src/librssguard/gui/richtexteditor/mrichtextedit.ui" line="385"/>
         <source>Text foreground color</source>
         <translation>文字色</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/gui/richtexteditor/mrichtextedit.ui" line="400"/>
-        <location filename="../src/librssguard/gui/richtexteditor/mrichtextedit.ui" line="431"/>
+        <location filename="../src/librssguard/gui/richtexteditor/mrichtextedit.ui" line="388"/>
+        <location filename="../src/librssguard/gui/richtexteditor/mrichtextedit.ui" line="419"/>
         <source>.</source>
         <translation>.</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/gui/richtexteditor/mrichtextedit.ui" line="428"/>
+        <location filename="../src/librssguard/gui/richtexteditor/mrichtextedit.ui" line="416"/>
         <source>Text background color</source>
         <translation>文字背景色</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/gui/richtexteditor/mrichtextedit.ui" line="447"/>
+        <location filename="../src/librssguard/gui/richtexteditor/mrichtextedit.ui" line="435"/>
         <source>Font size</source>
         <translation>字型大小</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/gui/richtexteditor/mrichtextedit.ui" line="484"/>
+        <location filename="../src/librssguard/gui/richtexteditor/mrichtextedit.ui" line="472"/>
         <source>...</source>
         <translation>…</translation>
     </message>
@@ -5288,22 +5256,22 @@ Login tokens expiration: %2</source>
 <context>
     <name>QObject</name>
     <message>
-        <location filename="../src/librssguard/miscellaneous/application.cpp" line="138"/>
-        <location filename="../src/librssguard/miscellaneous/localization.cpp" line="31"/>
-        <location filename="../src/librssguard/miscellaneous/localization.cpp" line="91"/>
+        <location filename="../src/librssguard/miscellaneous/application.cpp" line="141"/>
+        <location filename="../src/librssguard/miscellaneous/localization.cpp" line="29"/>
+        <location filename="../src/librssguard/miscellaneous/localization.cpp" line="77"/>
         <source>LANG_ABBREV</source>
         <extracomment>Abbreviation of language, e.g. en. Use ISO 639-1 code here combined with ISO 3166-1 (alpha-2) code. Examples: &quot;cs&quot;, &quot;en&quot;, &quot;it&quot;, &quot;cs_CZ&quot;, &quot;en_GB&quot;, &quot;en_US&quot;.</extracomment>
         <translation>zh_TW</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/miscellaneous/application.cpp" line="141"/>
-        <location filename="../src/librssguard/miscellaneous/localization.cpp" line="92"/>
+        <location filename="../src/librssguard/miscellaneous/application.cpp" line="144"/>
+        <location filename="../src/librssguard/miscellaneous/localization.cpp" line="78"/>
         <source>LANG_AUTHOR</source>
         <extracomment>Name of translator - optional.</extracomment>
         <translation>wck317</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/miscellaneous/localization.cpp" line="93"/>
+        <location filename="../src/librssguard/miscellaneous/localization.cpp" line="79"/>
         <source>LANG_EMAIL</source>
         <translation>wck317@pchome.com.tw</translation>
     </message>
@@ -5431,6 +5399,11 @@ List of supported readers:</source>
         <translation>Google Reader API 為眾多線上 RSS 閱讀器所用。
 
 所支援的閱讀器清單:</translation>
+    </message>
+    <message>
+        <location filename="../src/librssguard/services/greader/greaderentrypoint.cpp" line="35"/>
+        <source>and possibly others.</source>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="../src/librssguard/miscellaneous/notification.cpp" line="139"/>
@@ -8001,12 +7974,12 @@ Last login on: %4</source>
 <context>
     <name>UnreadNode</name>
     <message>
-        <location filename="../src/librssguard/services/abstract/unreadnode.cpp" line="13"/>
+        <location filename="../src/librssguard/services/abstract/unreadnode.cpp" line="14"/>
         <source>Unread articles</source>
         <translation>未讀的文章</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/services/abstract/unreadnode.cpp" line="14"/>
+        <location filename="../src/librssguard/services/abstract/unreadnode.cpp" line="15"/>
         <source>You can find all unread articles here.</source>
         <translation>於此能找出全部未讀文章。</translation>
     </message>

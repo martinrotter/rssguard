@@ -127,82 +127,82 @@ Erreur : %1</translation>
 <context>
     <name>Application</name>
     <message>
-        <location filename="../src/librssguard/miscellaneous/application.cpp" line="1085"/>
+        <location filename="../src/librssguard/miscellaneous/application.cpp" line="1088"/>
         <source>Application is already running.</source>
         <translation>L&apos;application est déjà lancée</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/miscellaneous/application.cpp" line="555"/>
+        <location filename="../src/librssguard/miscellaneous/application.cpp" line="558"/>
         <source>Output directory is not writable.</source>
         <translation>Le répertoire de destination n&apos;est pas accessible en écriture</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/miscellaneous/application.cpp" line="310"/>
+        <location filename="../src/librssguard/miscellaneous/application.cpp" line="313"/>
         <source>%1 survey</source>
         <translation>Sondage %1</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/miscellaneous/application.cpp" line="311"/>
+        <location filename="../src/librssguard/miscellaneous/application.cpp" line="314"/>
         <source>Please, fill the survey.</source>
         <translation>Veuillez remplir le sondage s&apos;il vous plaît.</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/miscellaneous/application.cpp" line="314"/>
+        <location filename="../src/librssguard/miscellaneous/application.cpp" line="317"/>
         <source>Go to survey</source>
         <translation>Aller au sondage</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/miscellaneous/application.cpp" line="563"/>
+        <location filename="../src/librssguard/miscellaneous/application.cpp" line="566"/>
         <source>Settings file not copied to output directory successfully.</source>
         <translation>Le fichier de réglages n&apos;a pas été copié correctement dans le répertoire de destination.</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/miscellaneous/application.cpp" line="580"/>
+        <location filename="../src/librssguard/miscellaneous/application.cpp" line="583"/>
         <source>Database restoration was not initiated. Make sure that output directory is writable.</source>
         <translation>La restauration de la base de données n&apos;a pas été initiée. Vérifier que le répertoire de destination est accessible en écriture.</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/miscellaneous/application.cpp" line="587"/>
+        <location filename="../src/librssguard/miscellaneous/application.cpp" line="590"/>
         <source>Settings restoration was not initiated. Make sure that output directory is writable.</source>
         <translation>La restauration des paramètres n&apos;a pas été initiée. Vérifier que le répertoire de destination est accessible en écriture.</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/miscellaneous/application.cpp" line="1103"/>
+        <location filename="../src/librssguard/miscellaneous/application.cpp" line="1106"/>
         <source>Cannot add feed</source>
         <translation>Impossible d&apos;ajouter le flux</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/miscellaneous/application.cpp" line="1104"/>
+        <location filename="../src/librssguard/miscellaneous/application.cpp" line="1107"/>
         <source>Feed cannot be added because there is no active account which can add feeds.</source>
         <translation>Le flux ne peut pas être ajouté car il n&apos;y a aucun compte actif autorisant l&apos;ajout de flux.</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/miscellaneous/application.cpp" line="1262"/>
+        <location filename="../src/librssguard/miscellaneous/application.cpp" line="1265"/>
         <source>Packages %1 were updated.</source>
         <translation>Les paquets %1 ont été mis à jour.</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/miscellaneous/application.cpp" line="980"/>
+        <location filename="../src/librssguard/miscellaneous/application.cpp" line="983"/>
         <source>Unread articles fetched</source>
         <translation>Articles non lus obtenus</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/miscellaneous/application.cpp" line="331"/>
+        <location filename="../src/librssguard/miscellaneous/application.cpp" line="334"/>
         <source>Go to changelog</source>
         <translation>Consulter le journal des modifications</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/miscellaneous/application.cpp" line="1034"/>
+        <location filename="../src/librssguard/miscellaneous/application.cpp" line="1037"/>
         <source>AdBlock needs to be configured</source>
         <translation>AdBlock doit être configuré</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/miscellaneous/application.cpp" line="325"/>
+        <location filename="../src/librssguard/miscellaneous/application.cpp" line="328"/>
         <source>Welcome</source>
         <translation>Bienvenue</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/miscellaneous/application.cpp" line="326"/>
+        <location filename="../src/librssguard/miscellaneous/application.cpp" line="329"/>
         <source>Welcome to %1.
 
 Please, check NEW stuff included in this
@@ -213,17 +213,17 @@ Découvrez les nouveautés de cette
 version en cliquant sur cette notification.</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/miscellaneous/application.cpp" line="1035"/>
+        <location filename="../src/librssguard/miscellaneous/application.cpp" line="1038"/>
         <source>AdBlock is not configured properly. Go to &quot;Settings&quot; -&gt; &quot;Node.js&quot; and check if your Node.js is properly configured.</source>
         <translation>AdBlock n&apos;a pas été configuré correctement. Allez dans &quot;Paramètres&quot; -&gt; &quot;Node.js&quot; et vérifiez que Node.js ait été correctement configuré.</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/miscellaneous/application.cpp" line="1084"/>
+        <location filename="../src/librssguard/miscellaneous/application.cpp" line="1087"/>
         <source>Already running</source>
         <translation>Déjà en fonctionnement</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/miscellaneous/application.cpp" line="1253"/>
+        <location filename="../src/librssguard/miscellaneous/application.cpp" line="1256"/>
         <source>Packages %1 were NOT updated because of error: %2.</source>
         <translation>Les paquets %1 n&apos;ont PAS été mis à jour à cause de l&apos;erreur : %2.</translation>
     </message>
@@ -252,64 +252,54 @@ version en cliquant sur cette notification.</translation>
     </message>
     <message>
         <location filename="../src/librssguard/services/abstract/gui/authenticationdetails.ui" line="35"/>
-        <location filename="../src/librssguard/services/abstract/gui/authenticationdetails.cpp" line="10"/>
-        <location filename="../src/librssguard/services/abstract/gui/authenticationdetails.cpp" line="77"/>
+        <location filename="../src/librssguard/services/abstract/gui/authenticationdetails.cpp" line="12"/>
+        <location filename="../src/librssguard/services/abstract/gui/authenticationdetails.cpp" line="79"/>
         <source>Username</source>
         <translation>Nom d&apos;utilisateur</translation>
     </message>
     <message>
         <location filename="../src/librssguard/services/abstract/gui/authenticationdetails.ui" line="48"/>
-        <location filename="../src/librssguard/services/abstract/gui/authenticationdetails.cpp" line="12"/>
+        <location filename="../src/librssguard/services/abstract/gui/authenticationdetails.cpp" line="14"/>
         <source>Password</source>
         <translation>Mot de passe</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/services/abstract/gui/authenticationdetails.cpp" line="11"/>
+        <location filename="../src/librssguard/services/abstract/gui/authenticationdetails.cpp" line="13"/>
         <source>Set username to access the feed.</source>
         <translation>Définir le nom d&apos;utilisateur pour accéder au flux.</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/services/abstract/gui/authenticationdetails.cpp" line="13"/>
+        <location filename="../src/librssguard/services/abstract/gui/authenticationdetails.cpp" line="15"/>
         <source>Set password to access the feed.</source>
         <translation>Définir le mot de passe pour accéder au flux.</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/services/abstract/gui/authenticationdetails.cpp" line="15"/>
+        <location filename="../src/librssguard/services/abstract/gui/authenticationdetails.cpp" line="17"/>
         <source>No authentication</source>
         <translation>Aucune authentification</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/services/abstract/gui/authenticationdetails.cpp" line="17"/>
-        <source>HTTP Basic</source>
-        <translation>HTTP Basique</translation>
-    </message>
-    <message>
-        <location filename="../src/librssguard/services/abstract/gui/authenticationdetails.cpp" line="20"/>
-        <source>Token</source>
-        <translation>Jeton</translation>
-    </message>
-    <message>
-        <location filename="../src/librssguard/services/abstract/gui/authenticationdetails.cpp" line="51"/>
+        <location filename="../src/librssguard/services/abstract/gui/authenticationdetails.cpp" line="53"/>
         <source>Username/token is ok or it is not needed.</source>
         <translation>Le nom d&apos;utilisateur/jeton est valide ou n&apos;est pas nécessaire.</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/services/abstract/gui/authenticationdetails.cpp" line="52"/>
+        <location filename="../src/librssguard/services/abstract/gui/authenticationdetails.cpp" line="54"/>
         <source>Username/token is empty.</source>
         <translation>Le nom d&apos;utilisateur/jeton est vide.</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/services/abstract/gui/authenticationdetails.cpp" line="74"/>
+        <location filename="../src/librssguard/services/abstract/gui/authenticationdetails.cpp" line="76"/>
         <source>Access token</source>
         <translation>Jeton d&apos;accès</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/services/abstract/gui/authenticationdetails.cpp" line="61"/>
+        <location filename="../src/librssguard/services/abstract/gui/authenticationdetails.cpp" line="63"/>
         <source>Password is ok or it is not needed.</source>
         <translation>Le mot de passe  est correct ou non nécessaire.</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/services/abstract/gui/authenticationdetails.cpp" line="61"/>
+        <location filename="../src/librssguard/services/abstract/gui/authenticationdetails.cpp" line="63"/>
         <source>Password is empty.</source>
         <translation>Le mot de passe est vide.</translation>
     </message>
@@ -3860,12 +3850,6 @@ Expiration de jetons d&apos;authentification: %2</translation>
         <source>Form</source>
         <translation>Formulaire</translation>
     </message>
-    <message>
-        <location filename="../src/librssguard/gui/itemdetails.ui" line="26"/>
-        <location filename="../src/librssguard/gui/itemdetails.ui" line="42"/>
-        <source>TextLabel</source>
-        <translation>ÉtiquetteTexte</translation>
-    </message>
 </context>
 <context>
     <name>LabelsMenu</name>
@@ -3925,153 +3909,137 @@ Expiration de jetons d&apos;authentification: %2</translation>
     </message>
     <message>
         <location filename="../src/librssguard/gui/richtexteditor/mrichtextedit.ui" line="79"/>
-        <source>Undo (CTRL+Z)</source>
-        <translation>Défaire (CTRL+Z)</translation>
-    </message>
-    <message>
-        <location filename="../src/librssguard/gui/richtexteditor/mrichtextedit.ui" line="82"/>
         <source>Undo</source>
         <translation>Défaire</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/gui/richtexteditor/mrichtextedit.ui" line="101"/>
-        <location filename="../src/librssguard/gui/richtexteditor/mrichtextedit.ui" line="104"/>
+        <location filename="../src/librssguard/gui/richtexteditor/mrichtextedit.ui" line="98"/>
         <source>Redo</source>
         <translation>Refaire</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/gui/richtexteditor/mrichtextedit.ui" line="120"/>
-        <source>Cut (CTRL+X)</source>
-        <translation>Couper (CTRL+X)</translation>
-    </message>
-    <message>
-        <location filename="../src/librssguard/gui/richtexteditor/mrichtextedit.ui" line="123"/>
+        <location filename="../src/librssguard/gui/richtexteditor/mrichtextedit.ui" line="114"/>
         <source>Cut</source>
         <translation>Couper</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/gui/richtexteditor/mrichtextedit.ui" line="139"/>
-        <source>Copy (CTRL+C)</source>
-        <translation>Copier (CTRL+C)</translation>
-    </message>
-    <message>
-        <location filename="../src/librssguard/gui/richtexteditor/mrichtextedit.ui" line="142"/>
+        <location filename="../src/librssguard/gui/richtexteditor/mrichtextedit.ui" line="130"/>
         <source>Copy</source>
         <translation>Copier</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/gui/richtexteditor/mrichtextedit.ui" line="158"/>
+        <location filename="../src/librssguard/gui/richtexteditor/mrichtextedit.ui" line="146"/>
         <source>Paste (CTRL+V)</source>
         <translation>Coller (CTRL+V)</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/gui/richtexteditor/mrichtextedit.ui" line="161"/>
+        <location filename="../src/librssguard/gui/richtexteditor/mrichtextedit.ui" line="149"/>
         <source>Paste</source>
         <translation>Coller</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/gui/richtexteditor/mrichtextedit.ui" line="184"/>
+        <location filename="../src/librssguard/gui/richtexteditor/mrichtextedit.ui" line="172"/>
         <source>Link (CTRL+L)</source>
         <translation>Lier (CTRL+L)</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/gui/richtexteditor/mrichtextedit.ui" line="187"/>
+        <location filename="../src/librssguard/gui/richtexteditor/mrichtextedit.ui" line="175"/>
         <source>Link</source>
         <translation>Lier</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/gui/richtexteditor/mrichtextedit.ui" line="216"/>
+        <location filename="../src/librssguard/gui/richtexteditor/mrichtextedit.ui" line="204"/>
         <source>Bold</source>
         <translation>Gras</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/gui/richtexteditor/mrichtextedit.ui" line="235"/>
+        <location filename="../src/librssguard/gui/richtexteditor/mrichtextedit.ui" line="223"/>
         <source>Italic (CTRL+I)</source>
         <translation>Italique (CTRL+I)</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/gui/richtexteditor/mrichtextedit.ui" line="238"/>
+        <location filename="../src/librssguard/gui/richtexteditor/mrichtextedit.ui" line="226"/>
         <source>Italic</source>
         <translation>Italique</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/gui/richtexteditor/mrichtextedit.ui" line="257"/>
+        <location filename="../src/librssguard/gui/richtexteditor/mrichtextedit.ui" line="245"/>
         <source>Underline (CTRL+U)</source>
         <translation>Soulignement (CTRL+U)</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/gui/richtexteditor/mrichtextedit.ui" line="260"/>
+        <location filename="../src/librssguard/gui/richtexteditor/mrichtextedit.ui" line="248"/>
         <source>Underline</source>
         <translation>Soulignement</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/gui/richtexteditor/mrichtextedit.ui" line="276"/>
+        <location filename="../src/librssguard/gui/richtexteditor/mrichtextedit.ui" line="264"/>
         <source>Strike Out</source>
         <translation>Rayer</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/gui/richtexteditor/mrichtextedit.ui" line="296"/>
+        <location filename="../src/librssguard/gui/richtexteditor/mrichtextedit.ui" line="284"/>
         <source>Bullet list (CTRL+-)</source>
         <translation>Liste à points (CTRL+-)</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/gui/richtexteditor/mrichtextedit.ui" line="299"/>
+        <location filename="../src/librssguard/gui/richtexteditor/mrichtextedit.ui" line="287"/>
         <source>Bullet list</source>
         <translation>Liste à points</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/gui/richtexteditor/mrichtextedit.ui" line="318"/>
+        <location filename="../src/librssguard/gui/richtexteditor/mrichtextedit.ui" line="306"/>
         <source>Ordered list (CTRL+=)</source>
         <translation>Liste ordonnée (CTRL+=)</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/gui/richtexteditor/mrichtextedit.ui" line="321"/>
+        <location filename="../src/librssguard/gui/richtexteditor/mrichtextedit.ui" line="309"/>
         <source>Ordered list</source>
         <translation>Liste ordonnée</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/gui/richtexteditor/mrichtextedit.ui" line="340"/>
+        <location filename="../src/librssguard/gui/richtexteditor/mrichtextedit.ui" line="328"/>
         <source>Decrease indentation (CTRL+,)</source>
         <translation>Réduire l&apos;indentation (CTRL+,)</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/gui/richtexteditor/mrichtextedit.ui" line="343"/>
+        <location filename="../src/librssguard/gui/richtexteditor/mrichtextedit.ui" line="331"/>
         <source>Decrease indentation</source>
         <translation>Réduire l&apos;indentation</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/gui/richtexteditor/mrichtextedit.ui" line="359"/>
+        <location filename="../src/librssguard/gui/richtexteditor/mrichtextedit.ui" line="347"/>
         <source>Increase indentation (CTRL+.)</source>
         <translation>Augmenter l&apos;indentation (CTRL+.)</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/gui/richtexteditor/mrichtextedit.ui" line="362"/>
+        <location filename="../src/librssguard/gui/richtexteditor/mrichtextedit.ui" line="350"/>
         <source>Increase indentation</source>
         <translation>Augmenter l&apos;indentation</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/gui/richtexteditor/mrichtextedit.ui" line="397"/>
+        <location filename="../src/librssguard/gui/richtexteditor/mrichtextedit.ui" line="385"/>
         <source>Text foreground color</source>
         <translation>Couleur du texte en premier plan</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/gui/richtexteditor/mrichtextedit.ui" line="400"/>
-        <location filename="../src/librssguard/gui/richtexteditor/mrichtextedit.ui" line="431"/>
+        <location filename="../src/librssguard/gui/richtexteditor/mrichtextedit.ui" line="388"/>
+        <location filename="../src/librssguard/gui/richtexteditor/mrichtextedit.ui" line="419"/>
         <source>.</source>
         <translation>.</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/gui/richtexteditor/mrichtextedit.ui" line="428"/>
+        <location filename="../src/librssguard/gui/richtexteditor/mrichtextedit.ui" line="416"/>
         <source>Text background color</source>
         <translation>Couleur du texte en arrière plan</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/gui/richtexteditor/mrichtextedit.ui" line="447"/>
+        <location filename="../src/librssguard/gui/richtexteditor/mrichtextedit.ui" line="435"/>
         <source>Font size</source>
         <translation>Taille de police</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/gui/richtexteditor/mrichtextedit.ui" line="484"/>
+        <location filename="../src/librssguard/gui/richtexteditor/mrichtextedit.ui" line="472"/>
         <source>...</source>
         <translation>...</translation>
     </message>
@@ -5297,22 +5265,22 @@ Expiration de jetons d&apos;authentification: %2</translation>
 <context>
     <name>QObject</name>
     <message>
-        <location filename="../src/librssguard/miscellaneous/application.cpp" line="138"/>
-        <location filename="../src/librssguard/miscellaneous/localization.cpp" line="31"/>
-        <location filename="../src/librssguard/miscellaneous/localization.cpp" line="91"/>
+        <location filename="../src/librssguard/miscellaneous/application.cpp" line="141"/>
+        <location filename="../src/librssguard/miscellaneous/localization.cpp" line="29"/>
+        <location filename="../src/librssguard/miscellaneous/localization.cpp" line="77"/>
         <source>LANG_ABBREV</source>
         <extracomment>Abbreviation of language, e.g. en. Use ISO 639-1 code here combined with ISO 3166-1 (alpha-2) code. Examples: &quot;cs&quot;, &quot;en&quot;, &quot;it&quot;, &quot;cs_CZ&quot;, &quot;en_GB&quot;, &quot;en_US&quot;.</extracomment>
         <translation>fr</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/miscellaneous/application.cpp" line="141"/>
-        <location filename="../src/librssguard/miscellaneous/localization.cpp" line="92"/>
+        <location filename="../src/librssguard/miscellaneous/application.cpp" line="144"/>
+        <location filename="../src/librssguard/miscellaneous/localization.cpp" line="78"/>
         <source>LANG_AUTHOR</source>
         <extracomment>Name of translator - optional.</extracomment>
         <translation>Darkitty, Lenade, leperlier.n, lucassifoni, ParisBrest82, peletloick, Rinbo, sylvie.pierrard</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/miscellaneous/localization.cpp" line="93"/>
+        <location filename="../src/librssguard/miscellaneous/localization.cpp" line="79"/>
         <source>LANG_EMAIL</source>
         <translation>nicolaslegall34@gmail.com</translation>
     </message>
@@ -5444,6 +5412,11 @@ List of supported readers:</source>
         <translation>API Google Reader est utilise par beaucoup d&apos;agrégateurs web de flux RSS.
 
 Liste d&apos;agrégateurs compatibles:</translation>
+    </message>
+    <message>
+        <location filename="../src/librssguard/services/greader/greaderentrypoint.cpp" line="35"/>
+        <source>and possibly others.</source>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="../src/librssguard/miscellaneous/notification.cpp" line="139"/>
@@ -8014,12 +7987,12 @@ Dernière connection le: %4</translation>
 <context>
     <name>UnreadNode</name>
     <message>
-        <location filename="../src/librssguard/services/abstract/unreadnode.cpp" line="13"/>
+        <location filename="../src/librssguard/services/abstract/unreadnode.cpp" line="14"/>
         <source>Unread articles</source>
         <translation>Articles non-lus</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/services/abstract/unreadnode.cpp" line="14"/>
+        <location filename="../src/librssguard/services/abstract/unreadnode.cpp" line="15"/>
         <source>You can find all unread articles here.</source>
         <translation>Vous pouvez retrouver tous les articles non-lus ici.</translation>
     </message>

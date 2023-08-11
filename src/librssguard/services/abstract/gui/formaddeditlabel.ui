@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>270</width>
-    <height>97</height>
+    <width>350</width>
+    <height>100</height>
    </rect>
   </property>
   <layout class="QVBoxLayout" name="verticalLayout">
@@ -52,15 +52,15 @@
  </widget>
  <customwidgets>
   <customwidget>
+   <class>ColorToolButton</class>
+   <extends>QToolButton</extends>
+   <header>colortoolbutton.h</header>
+  </customwidget>
+  <customwidget>
    <class>LineEditWithStatus</class>
    <extends>QWidget</extends>
    <header>lineeditwithstatus.h</header>
    <container>1</container>
-  </customwidget>
-  <customwidget>
-   <class>ColorToolButton</class>
-   <extends>QToolButton</extends>
-   <header>colortoolbutton.h</header>
   </customwidget>
  </customwidgets>
  <tabstops>

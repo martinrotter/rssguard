@@ -365,6 +365,8 @@ QString SqliteDriver::qtDriverCode() const {
 }
 
 void SqliteDriver::backupDatabase(const QString& backup_folder, const QString& backup_name) {
+  saveDatabase();
+
   if (!IOFactory::copyFile(databaseFilePath(),
                            backup_folder + QDir::separator() + backup_name + BACKUP_SUFFIX_DATABASE)) {
     throw ApplicationException(tr("Database file not copied to output directory successfully."));

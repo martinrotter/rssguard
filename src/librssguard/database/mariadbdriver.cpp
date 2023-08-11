@@ -17,8 +17,10 @@ QString MariaDbDriver::ddlFilePrefix() const {
   return QSL("mysql");
 }
 
-MariaDbDriver::MariaDbError MariaDbDriver::testConnection(const QString& hostname, int port,
-                                                          const QString& w_database, const QString& username,
+MariaDbDriver::MariaDbError MariaDbDriver::testConnection(const QString& hostname,
+                                                          int port,
+                                                          const QString& w_database,
+                                                          const QString& username,
                                                           const QString& password) {
   QSqlDatabase database = QSqlDatabase::addDatabase(QSL(APP_DB_MYSQL_DRIVER), QSL(APP_DB_MYSQL_TEST));
 
@@ -32,9 +34,7 @@ MariaDbDriver::MariaDbError MariaDbDriver::testConnection(const QString& hostnam
     QSqlQuery query(QSL("SELECT version();"), database);
 
     if (!query.lastError().isValid() && query.next()) {
-      qDebugNN << LOGSEC_DB
-               << "Checked MySQL database, version is"
-               << QUOTE_W_SPACE_DOT(query.value(0).toString());
+      qDebugNN << LOGSEC_DB << "Checked MySQL database, version is" << QUOTE_W_SPACE_DOT(query.value(0).toString());
 
       // Connection succeeded, clean up the mess and return OK status.
       database.close();
@@ -54,9 +54,7 @@ MariaDbDriver::MariaDbError MariaDbDriver::testConnection(const QString& hostnam
       return static_cast<MariaDbError>(nat_int);
     }
     else {
-      qWarningNN << LOGSEC_DB
-                 << "Failed to recognize MySQL error code:"
-                 << QUOTE_W_SPACE_DOT(nat);
+      qWarningNN << LOGSEC_DB << "Failed to recognize MySQL error code:" << QUOTE_W_SPACE_DOT(nat);
 
       return MariaDbError::UnknownError;
     }
@@ -108,8 +106,7 @@ bool MariaDbDriver::vacuumDatabase() {
   QSqlDatabase database = connection(objectName());
   QSqlQuery query_vacuum(database);
 
-  return query_vacuum.exec(QSL("OPTIMIZE TABLE Feeds;")) &&
-         query_vacuum.exec(QSL("OPTIMIZE TABLE Messages;"));
+  return query_vacuum.exec(QSL("OPTIMIZE TABLE Feeds;")) && query_vacuum.exec(QSL("OPTIMIZE TABLE Messages;"));
 }
 
 bool MariaDbDriver::saveDatabase() {
@@ -119,6 +116,8 @@ bool MariaDbDriver::saveDatabase() {
 void MariaDbDriver::backupDatabase(const QString& backup_folder, const QString& backup_name) {
   Q_UNUSED(backup_folder)
   Q_UNUSED(backup_name)
+
+  saveDatabase();
 }
 
 bool MariaDbDriver::initiateRestoration(const QString& database_package_file) {
@@ -200,12 +199,8 @@ QSqlDatabase MariaDbDriver::initializeDatabase(const QString& connection_name) {
       if (installed_db_schema < QSL(APP_DB_SCHEMA_VERSION).toInt()) {
         try {
           updateDatabaseSchema(query_db, installed_db_schema, database_name);
-          qDebugNN << LOGSEC_DB
-                   << "Database schema was updated from"
-                   << QUOTE_W_SPACE(installed_db_schema)
-                   << "to"
-                   << QUOTE_W_SPACE(APP_DB_SCHEMA_VERSION)
-                   << "successully.";
+          qDebugNN << LOGSEC_DB << "Database schema was updated from" << QUOTE_W_SPACE(installed_db_schema) << "to"
+                   << QUOTE_W_SPACE(APP_DB_SCHEMA_VERSION) << "successully.";
         }
         catch (const ApplicationException& ex) {
           qFatal("Error when updating DB schema from %d: %s.", installed_db_schema, qPrintable(ex.message()));
@@ -225,7 +220,8 @@ void MariaDbDriver::setPragmas(QSqlQuery& query) {
   query.exec(QSL("SET CHARACTER SET utf8mb4;"));
 }
 
-QSqlDatabase MariaDbDriver::connection(const QString& connection_name, DatabaseDriver::DesiredStorageType desired_type) {
+QSqlDatabase MariaDbDriver::connection(const QString& connection_name,
+                                       DatabaseDriver::DesiredStorageType desired_type) {
   Q_UNUSED(desired_type)
 
   if (!m_databaseInitialized) {
@@ -236,10 +232,7 @@ QSqlDatabase MariaDbDriver::connection(const QString& connection_name, DatabaseD
     QSqlDatabase database;
 
     if (QSqlDatabase::contains(connection_name)) {
-      qDebugNN << LOGSEC_DB
-               << "MySQL connection '"
-               << connection_name
-               << "' is already active.";
+      qDebugNN << LOGSEC_DB << "MySQL connection '" << connection_name << "' is already active.";
 
       // This database connection was added previously, no need to
       // setup its properties.
@@ -261,12 +254,8 @@ QSqlDatabase MariaDbDriver::connection(const QString& connection_name, DatabaseD
       throw ApplicationException(database.lastError().text());
     }
     else {
-      qDebugNN << LOGSEC_DB
-               << "MySQL database connection"
-               << QUOTE_W_SPACE(connection_name)
-               << "to file"
-               << QUOTE_W_SPACE(QDir::toNativeSeparators(database.databaseName()))
-               << "seems to be established.";
+      qDebugNN << LOGSEC_DB << "MySQL database connection" << QUOTE_W_SPACE(connection_name) << "to file"
+               << QUOTE_W_SPACE(QDir::toNativeSeparators(database.databaseName())) << "seems to be established.";
     }
 
     QSqlQuery query_db(database);

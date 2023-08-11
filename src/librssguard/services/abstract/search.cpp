@@ -53,6 +53,8 @@ bool Search::editViaGui() {
 
     try {
       DatabaseQueries::updateProbe(db, this);
+      updateCounts(true);
+      getParentServiceRoot()->itemChanged({this});
       return true;
     }
     catch (const ApplicationException& ex) {

@@ -568,8 +568,6 @@ void Application::backupDatabaseSettings(bool backup_database,
   }
 
   if (backup_database) {
-    // We need to save the database first.
-    database()->driver()->saveDatabase();
     database()->driver()->backupDatabase(target_path, backup_name);
   }
 }
