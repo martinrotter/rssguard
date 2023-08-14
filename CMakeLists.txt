@@ -110,7 +110,7 @@ endif()
 
 # Global compilation switches.
 option(BUILD_WITH_QT6 "Build application with Qt 6" OFF)
-option(USE_SYSTEM_SQLITE "Use system-wide SQLite3 library." OFF)
+option(USE_SYSTEM_SQLITE "Use system-wide SQLite3 library." ON)
 option(USE_WEBENGINE "Use QtWebEngine for embedded web browser" ON)
 option(UPDATE_TRANSLATIONS "Call lupdate to update translation files from source (Qt 6 only)" OFF)
 option(FORCE_COLORED_OUTPUT "Always produce ANSI-colored output (GCC/Clang only)" OFF)
