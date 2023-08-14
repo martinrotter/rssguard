@@ -519,10 +519,20 @@ list(APPEND SOURCES
 )
 
 # Add sqlite.
-list(APPEND SOURCES
-  3rd-party/sqlite/sqlite3.c
-  3rd-party/sqlite/sqlite3.h
-)
+if(USE_SYSTEM_SQLITE)
+  find_package(SQLite3)
+endif()
+
+if(SQLite3_FOUND)
+  # Include directory and library are linked to below.
+else()
+  message(STATUS "Using bundled SQLite3.")
+
+  list(APPEND SOURCES
+    3rd-party/sqlite/sqlite3.c
+    3rd-party/sqlite/sqlite3.h
+  )
+endif()
 
 # Add SimpleCrypt.
 list(APPEND SOURCES
@@ -643,6 +653,17 @@ target_include_directories(rssguard
   ${CMAKE_CURRENT_SOURCE_DIR}/gui/toolbars
   ${CMAKE_CURRENT_SOURCE_DIR}/gui/richtexteditor
 )
+
+if(SQLite3_FOUND)
+  target_include_directories(rssguard AFTER
+    PRIVATE
+    ${SQLite3_INCLUDE_DIRS}
+  )
+
+  target_link_libraries(rssguard PRIVATE
+    ${SQLite3_LIBRARIES}
+  )
+endif()
 
 # Qt.
 target_link_libraries(rssguard PUBLIC

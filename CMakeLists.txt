@@ -20,6 +20,8 @@
 #
 # Variables:
 #   BUILD_WITH_QT6 - Build either with Qt 6 or Qt 5.
+#   USE_SYSTEM_SQLITE - Use system-wide SQLite3 library and header file. Defaults to "OFF" in whic
+#                       case bundled "sqlite3.h" and "sqlite3.c" are used.
 #   NO_UPDATE_CHECK - Disable automatic checking for new application updates.
 #   IS_FLATPAK_BUILD - Set to "ON" when building RSS Guard with Flatpak.
 #   FORCE_BUNDLE_ICONS - Forcibly bundles icons into executables.
@@ -34,7 +36,7 @@
 #   - supports Windows, Linux, *BSD, macOS, OS/2, Android,
 #   - Qt 5.12.0 or newer is required,
 #   - Qt 6.3.0 or newer is required,
-#   - cmake 3.9.0 or newer is required,
+#   - cmake 3.14.0 or newer is required,
 #   - if you wish to make packages for Windows, then you must initialize all submodules
 #     within repository before compilation,
 #   - C++ 17 is required.
@@ -54,7 +56,7 @@
 #
 #################################################################
 
-cmake_minimum_required(VERSION 3.9.0)
+cmake_minimum_required(VERSION 3.14.0)
 
 # Global variables describing the project.
 string(TIMESTAMP YEAR "%Y")
@@ -108,6 +110,7 @@ endif()
 
 # Global compilation switches.
 option(BUILD_WITH_QT6 "Build application with Qt 6" OFF)
+option(USE_SYSTEM_SQLITE "Use system-wide SQLite3 library." OFF)
 option(USE_WEBENGINE "Use QtWebEngine for embedded web browser" ON)
 option(UPDATE_TRANSLATIONS "Call lupdate to update translation files from source (Qt 6 only)" OFF)
 option(FORCE_COLORED_OUTPUT "Always produce ANSI-colored output (GCC/Clang only)" OFF)
