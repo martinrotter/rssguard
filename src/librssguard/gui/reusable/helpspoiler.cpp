@@ -7,19 +7,19 @@
 #include "gui/reusable/plaintoolbutton.h"
 #include "miscellaneous/application.h"
 #include "miscellaneous/iconfactory.h"
+#include "network-web/webfactory.h"
 
 #include <QGridLayout>
 #include <QParallelAnimationGroup>
 #include <QPropertyAnimation>
 #include <QScrollArea>
-#include <QTextEdit>
+#include <QTextBrowser>
 #include <QToolButton>
 
 HelpSpoiler::HelpSpoiler(QWidget* parent)
   : QWidget(parent), m_btnToggle(new QToolButton(this)), m_content(new QScrollArea(this)),
-    m_animation(new QParallelAnimationGroup(this)), m_layout(new QGridLayout(this)), m_text(new QTextEdit(this)),
+    m_animation(new QParallelAnimationGroup(this)), m_layout(new QGridLayout(this)), m_text(new QTextBrowser(this)),
     m_btnHelp(new PlainToolButton(this)) {
-
   m_btnToggle->setStyleSheet(QSL("QToolButton { border: none; }"));
   m_btnToggle->setToolButtonStyle(Qt::ToolButtonStyle::ToolButtonTextBesideIcon);
   m_btnToggle->setArrowType(Qt::ArrowType::RightArrow);
@@ -47,7 +47,9 @@ HelpSpoiler::HelpSpoiler(QWidget* parent)
   m_layout->addWidget(m_btnToggle, 0, 1, 1, 1, Qt::AlignmentFlag::AlignLeft);
   m_layout->addWidget(m_content, 1, 0, 1, 2);
 
-  QObject::connect(m_btnToggle, &QToolButton::clicked, [this](const bool checked) {
+  connect(m_text, &QTextBrowser::anchorClicked, this, &HelpSpoiler::onAnchorClicked);
+
+  connect(m_btnToggle, &QToolButton::clicked, [this](const bool checked) {
     const auto collapsed_height = m_btnHelp->height();
     auto content_height = m_text->document()->size().height() + 22;
 
@@ -74,7 +76,8 @@ HelpSpoiler::HelpSpoiler(QWidget* parent)
 
   m_text->viewport()->setAutoFillBackground(false);
   m_text->setFrameShape(QFrame::Shape::NoFrame);
-  m_text->setTextInteractionFlags(Qt::TextInteractionFlag::TextBrowserInteraction);
+  m_text->setOpenLinks(false);
+  m_text->setOpenExternalLinks(false);
   m_text->setVerticalScrollBarPolicy(Qt::ScrollBarPolicy::ScrollBarAlwaysOff);
   m_text->setHorizontalScrollBarPolicy(Qt::ScrollBarPolicy::ScrollBarAlwaysOff);
   m_text->setWordWrapMode(QTextOption::WrapMode::WordWrap);
@@ -101,4 +104,8 @@ void HelpSpoiler::setHelpText(const QString& text, bool is_warning, bool force_h
                                 : qApp->icons()->fromTheme(QSL("dialog-question")));
 
   m_text->document()->setDocumentMargin(0);
+}
+
+void HelpSpoiler::onAnchorClicked(const QUrl& url) {
+  qApp->web()->openUrlInExternalBrowser(url.toString());
 }

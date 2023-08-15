@@ -1857,6 +1857,38 @@ bool DatabaseQueries::cleanLabelledMessages(const QSqlDatabase& db, bool clean_r
   }
 }
 
+void DatabaseQueries::cleanProbedMessages(const QSqlDatabase& db, bool clean_read_only, Search* probe) {
+  QSqlQuery q(db);
+
+  q.setForwardOnly(true);
+
+  if (clean_read_only) {
+    q.prepare(QSL("UPDATE Messages SET is_deleted = :deleted "
+                  "WHERE "
+                  "  is_deleted = 0 AND "
+                  "  is_pdeleted = 0 AND "
+                  "  is_read = 1 AND "
+                  "  account_id = :account_id AND "
+                  "  (title REGEXP :fltr OR contents REGEXP :fltr);"));
+  }
+  else {
+    q.prepare(QSL("UPDATE Messages SET is_deleted = :deleted "
+                  "WHERE "
+                  "  is_deleted = 0 AND "
+                  "  is_pdeleted = 0 AND "
+                  "  account_id = :account_id AND "
+                  "  (title REGEXP :fltr OR contents REGEXP :fltr);"));
+  }
+
+  q.bindValue(QSL(":deleted"), 1);
+  q.bindValue(QSL(":account_id"), probe->getParentServiceRoot()->accountId());
+  q.bindValue(QSL(":fltr"), probe->filter());
+
+  if (!q.exec()) {
+    throw ApplicationException(q.lastError().text());
+  }
+}
+
 bool DatabaseQueries::cleanImportantMessages(const QSqlDatabase& db, bool clean_read_only, int account_id) {
   QSqlQuery q(db);
 

@@ -151,18 +151,21 @@ bool Search::cleanMessages(bool clear_only_read) {
   ServiceRoot* service = getParentServiceRoot();
   QSqlDatabase database = qApp->database()->driver()->connection(metaObject()->className());
 
-  return false;
-  /*
-  if (DatabaseQueries::cleanLabelledMessages(database, clear_only_read, this)) {
+  try {
+    DatabaseQueries::cleanProbedMessages(database, clear_only_read, this);
     service->updateCounts(true);
     service->itemChanged(service->getSubTree());
     service->requestReloadMessageList(true);
     return true;
   }
-  else {
+  catch (const ApplicationException& ex) {
+    qCriticalNN << LOGSEC_CORE << "Failed to clean messages of probe:" << QUOTE_W_SPACE_DOT(ex.message());
     return false;
   }
-  */
+}
+
+QString Search::additionalTooltip() const {
+  return tr("Regular expression: %1").arg(QSL("<code>%1</code>").arg(filter()));
 }
 
 bool Search::markAsReadUnread(RootItem::ReadStatus status) {

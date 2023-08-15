@@ -173,6 +173,7 @@ class DatabaseQueries {
                                   bool delete_messages_too,
                                   bool delete_labels_too);
     static bool cleanLabelledMessages(const QSqlDatabase& db, bool clean_read_only, Label* label);
+    static void cleanProbedMessages(const QSqlDatabase& db, bool clean_read_only, Search* probe);
     static bool cleanImportantMessages(const QSqlDatabase& db, bool clean_read_only, int account_id);
     static bool cleanUnreadMessages(const QSqlDatabase& db, int account_id);
     static bool cleanFeeds(const QSqlDatabase& db, const QStringList& ids, bool clean_read_only, int account_id);

@@ -12,6 +12,14 @@ FormAddEditProbe::FormAddEditProbe(QWidget* parent) : QDialog(parent), m_editabl
   m_ui.m_txtName->lineEdit()->setPlaceholderText(tr("Name for your query"));
   m_ui.m_txtFilter->lineEdit()->setPlaceholderText(tr("Regular expression"));
 
+  m_ui.m_help->setHelpText(
+    tr("What is regular expression?"),
+    tr(
+      "A regular expression (shortened as regex or regexp) is a sequence of characters that "
+      R"(specifies a match pattern in text. See more <a href="https://learn.microsoft.com/en-us/dotnet/standard/base-types/regular-expression-language-quick-reference">info</a>.)"),
+    false,
+    true);
+
   connect(m_ui.m_txtName->lineEdit(), &QLineEdit::textChanged, this, [this](const QString& text) {
     if (text.isEmpty()) {
       m_ui.m_txtName->setStatus(LineEditWithStatus::StatusType::Error, tr("Regex query name cannot be empty."));
