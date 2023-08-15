@@ -20,8 +20,7 @@
 #
 # Variables:
 #   BUILD_WITH_QT6 - Build either with Qt 6 or Qt 5.
-#   USE_SYSTEM_SQLITE - Use system-wide SQLite3 library and header file. Defaults to "OFF" in whic
-#                       case bundled "sqlite3.h" and "sqlite3.c" are used.
+#   USE_SYSTEM_SQLITE - Use system-wide SQLite3 library and header file. Defaults to "ON".
 #   NO_UPDATE_CHECK - Disable automatic checking for new application updates.
 #   IS_FLATPAK_BUILD - Set to "ON" when building RSS Guard with Flatpak.
 #   FORCE_BUNDLE_ICONS - Forcibly bundles icons into executables.
@@ -29,8 +28,8 @@
 #                   Otherwise simple text component is used and some features will be disabled.
 #                   Default value is "false". If QtWebEngine is installed during compilation, then
 #                   value of this variable is tweaked automatically.
-#   {FEEDLY,GMAIL,INOREADER}_CLIENT_ID - preconfigured OAuth cliend ID.
-#   {FEEDLY,GMAIL,INOREADER}_CLIENT_SECRET - preconfigured OAuth cliend SECRET.
+#   {FEEDLY,GMAIL,INOREADER}_CLIENT_ID - preconfigured OAuth client ID.
+#   {FEEDLY,GMAIL,INOREADER}_CLIENT_SECRET - preconfigured OAuth client SECRET.
 #
 # Other information:
 #   - supports Windows, Linux, *BSD, macOS, OS/2, Android,

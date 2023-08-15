@@ -744,6 +744,33 @@ ArticleCounts DatabaseQueries::getMessageCountsForLabel(const QSqlDatabase& db,
   }
 }
 
+ArticleCounts DatabaseQueries::getMessageCountsForProbe(const QSqlDatabase& db, Search* probe, int account_id) {
+  QSqlQuery q(db);
+
+  q.setForwardOnly(true);
+  q.prepare(QSL("SELECT COUNT(*), SUM(is_read) FROM Messages "
+                "WHERE "
+                "  is_deleted = 0 AND "
+                "  is_pdeleted = 0 AND "
+                "  account_id = :account_id AND "
+                "  (title REGEXP :fltr OR contents REGEXP :fltr);"));
+
+  q.bindValue(QSL(":account_id"), account_id);
+  q.bindValue(QSL(":fltr"), probe->filter());
+
+  if (q.exec() && q.next()) {
+    ArticleCounts ac;
+
+    ac.m_total = q.value(0).toInt();
+    ac.m_unread = ac.m_total - q.value(1).toInt();
+
+    return ac;
+  }
+  else {
+    throw ApplicationException(q.lastError().text());
+  }
+}
+
 QMap<QString, ArticleCounts> DatabaseQueries::getMessageCountsForAllLabels(const QSqlDatabase& db,
                                                                            int account_id,
                                                                            bool* ok) {
@@ -2017,6 +2044,54 @@ QStringList DatabaseQueries::customIdsOfMessagesFromLabel(const QSqlDatabase& db
   }
   else {
     q.exec();
+  }
+
+  while (q.next()) {
+    ids.append(q.value(0).toString());
+  }
+
+  return ids;
+}
+
+void DatabaseQueries::markProbeReadUnread(const QSqlDatabase& db, Search* probe, RootItem::ReadStatus read) {
+  QSqlQuery q(db);
+
+  q.setForwardOnly(true);
+  q.prepare(QSL("UPDATE Messages SET is_read = :read "
+                "WHERE "
+                "    is_deleted = 0 AND "
+                "    is_pdeleted = 0 AND "
+                "    account_id = :account_id AND "
+                "    (title REGEXP :fltr OR contents REGEXP :fltr);"));
+  q.bindValue(QSL(":read"), read == RootItem::ReadStatus::Read ? 1 : 0);
+  q.bindValue(QSL(":account_id"), probe->getParentServiceRoot()->accountId());
+  q.bindValue(QSL(":fltr"), probe->filter());
+
+  if (!q.exec()) {
+    throw ApplicationException(q.lastError().text());
+  }
+}
+
+QStringList DatabaseQueries::customIdsOfMessagesFromProbe(const QSqlDatabase& db,
+                                                          Search* probe,
+                                                          RootItem::ReadStatus target_read) {
+  QSqlQuery q(db);
+  QStringList ids;
+
+  q.setForwardOnly(true);
+  q.prepare(QSL("SELECT custom_id FROM Messages "
+                "WHERE "
+                "    is_read = :read AND "
+                "    is_deleted = 0 AND "
+                "    is_pdeleted = 0 AND "
+                "    account_id = :account_id AND "
+                "    (title REGEXP :fltr OR contents REGEXP :fltr);"));
+  q.bindValue(QSL(":account_id"), probe->getParentServiceRoot()->accountId());
+  q.bindValue(QSL(":read"), target_read == RootItem::ReadStatus::Read ? 0 : 1);
+  q.bindValue(QSL(":fltr"), probe->filter());
+
+  if (!q.exec()) {
+    throw ApplicationException(q.lastError().text());
   }
 
   while (q.next()) {

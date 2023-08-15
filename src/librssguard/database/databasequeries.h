@@ -54,6 +54,7 @@ class DatabaseQueries {
     static void updateProbe(const QSqlDatabase& db, Search* probe);
 
     // Message operators.
+    static void markProbeReadUnread(const QSqlDatabase& db, Search* probe, RootItem::ReadStatus read);
     static bool markLabelledMessagesReadUnread(const QSqlDatabase& db, Label* label, RootItem::ReadStatus read);
     static bool markImportantMessagesReadUnread(const QSqlDatabase& db, int account_id, RootItem::ReadStatus read);
     static bool markUnreadMessagesRead(const QSqlDatabase& db, int account_id);
@@ -97,6 +98,7 @@ class DatabaseQueries {
                                                   Label* label,
                                                   int account_id,
                                                   bool* ok = nullptr);
+    static ArticleCounts getMessageCountsForProbe(const QSqlDatabase& db, Search* probe, int account_id);
     static QMap<QString, ArticleCounts> getMessageCountsForAllLabels(const QSqlDatabase& db,
                                                                      int account_id,
                                                                      bool* ok = nullptr);
@@ -127,6 +129,9 @@ class DatabaseQueries {
                                                     Label* label,
                                                     RootItem::ReadStatus target_read,
                                                     bool* ok = nullptr);
+    static QStringList customIdsOfMessagesFromProbe(const QSqlDatabase& db,
+                                                    Search* probe,
+                                                    RootItem::ReadStatus target_read);
     static QStringList customIdsOfImportantMessages(const QSqlDatabase& db,
                                                     RootItem::ReadStatus target_read,
                                                     int account_id,

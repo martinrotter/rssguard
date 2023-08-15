@@ -142,7 +142,7 @@ void ServiceRoot::updateCounts(bool including_total_count) {
       feeds.append(child->toFeed());
     }
     else if (child->kind() != RootItem::Kind::Label && child->kind() != RootItem::Kind::Category &&
-             child->kind() != RootItem::Kind::ServiceRoot) {
+             child->kind() != RootItem::Kind::ServiceRoot && child->kind() != RootItem::Kind::Probe) {
       child->updateCounts(including_total_count);
     }
   }
@@ -589,6 +589,7 @@ QStringList ServiceRoot::customIDSOfMessagesForItem(RootItem* item, ReadStatus t
 
     switch (item->kind()) {
       case RootItem::Kind::Labels:
+      case RootItem::Kind::Probes:
       case RootItem::Kind::Category: {
         auto chi = item->childItems();
 
@@ -603,6 +604,13 @@ QStringList ServiceRoot::customIDSOfMessagesForItem(RootItem* item, ReadStatus t
         QSqlDatabase database = qApp->database()->driver()->connection(metaObject()->className());
 
         list = DatabaseQueries::customIdsOfMessagesFromLabel(database, item->toLabel(), target_read);
+        break;
+      }
+
+      case RootItem::Kind::Probe: {
+        QSqlDatabase database = qApp->database()->driver()->connection(metaObject()->className());
+
+        list = DatabaseQueries::customIdsOfMessagesFromProbe(database, item->toProbe(), target_read);
         break;
       }
 
@@ -740,7 +748,7 @@ bool ServiceRoot::loadMessagesForItem(RootItem* item, MessagesModel* model) {
   }
   else if (item->kind() == RootItem::Kind::Probe) {
     model->setFilter(QSL("Messages.is_deleted = 0 AND Messages.is_pdeleted = 0 AND Messages.account_id = %1 AND "
-                         "Messages.contents REGEXP '%2'")
+                         "(Messages.title REGEXP '%2' OR Messages.contents REGEXP '%2')")
                        .arg(QString::number(accountId()), item->toProbe()->filter()));
   }
   else if (item->kind() == RootItem::Kind::Label) {
@@ -802,13 +810,14 @@ bool ServiceRoot::onAfterSetMessagesRead(RootItem* selected_item,
   Q_UNUSED(messages)
   Q_UNUSED(read)
 
-  // TODO: We know that some messages were marked as read or unread, therefore we do not need to recount
+  // We know that some messages were marked as read or unread, therefore we do not need to recount
   // all items, but only some:
   //  - recycle bin (if recycle bin IS selected)
   //  - feeds of those messages (if recycle bin is NOT selected)
   //  - important articles (if some messages IS important AND recycle bin is NOT selected)
   //  - unread articles (if some messages IS unread AND recycle bin is NOT selected)
   //  - labels assigned to articles (if recycle bin is NOT selected)
+  //  - probes (if recycle bin is NOT selected)
   QList<RootItem*> to_update;
 
   if (selected_item->kind() == RootItem::Kind::Bin) {
@@ -871,16 +880,11 @@ bool ServiceRoot::onAfterSetMessagesRead(RootItem* selected_item,
         l->updateCounts(false);
         to_update << l;
       }
-      /*
-            for (const QString& lbl_custom_id : lbls.keys()) {
-              auto* lbl = labelsNode()->labelById(lbl_custom_id);
-
-              if (lbl != nullptr) {
-                lbl->setCountOfUnreadMessages(lbls.value(lbl_custom_id).m_unread);
-                to_update << lbl;
-              }
-            }*/
     }
+
+    // 5. Probes.
+    m_probesNode->updateCounts(false);
+    to_update << m_probesNode->childItems();
   }
 
   itemChanged(to_update);
@@ -1134,6 +1138,10 @@ QPair<int, int> ServiceRoot::updateMessages(QList<Message>& messages, Feed* feed
 
     if (labelsNode() != nullptr) {
       labelsNode()->updateCounts(true);
+    }
+
+    if (probesNode() != nullptr) {
+      probesNode()->updateCounts(true);
     }
   }
 

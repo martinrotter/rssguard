@@ -88,15 +88,24 @@ void Search::updateCounts(bool including_total_count) {
   QSqlDatabase database = qApp->database()->driver()->threadSafeConnection(metaObject()->className());
   int account_id = getParentServiceRoot()->accountId();
 
-  /*
-  auto ac = DatabaseQueries::getMessageCountsForLabel(database, this, account_id);
+  try {
+    auto ac = DatabaseQueries::getMessageCountsForProbe(database, this, account_id);
 
-  if (including_total_count) {
-    setCountOfAllMessages(ac.m_total);
+    if (including_total_count) {
+      setCountOfAllMessages(ac.m_total);
+    }
+
+    setCountOfUnreadMessages(ac.m_unread);
   }
+  catch (const ApplicationException& ex) {
+    qCriticalNN << LOGSEC_CORE << "Failed to get counts of probe:" << QUOTE_W_SPACE_DOT(ex.message());
 
-  setCountOfUnreadMessages(ac.m_unread);
-  */
+    if (including_total_count) {
+      setCountOfAllMessages(-1);
+    }
+
+    setCountOfUnreadMessages(-1);
+  }
 }
 
 QList<Message> Search::undeletedMessages() const {
@@ -160,23 +169,27 @@ bool Search::markAsReadUnread(RootItem::ReadStatus status) {
   ServiceRoot* service = getParentServiceRoot();
   auto* cache = dynamic_cast<CacheForServiceRoot*>(service);
 
-  /*
   if (cache != nullptr) {
-    cache->addMessageStatesToCache(service->customIDSOfMessagesForItem(this, status), status);
+    try {
+      cache->addMessageStatesToCache(service->customIDSOfMessagesForItem(this, status), status);
+    }
+    catch (const ApplicationException& ex) {
+      qCriticalNN << LOGSEC_DB << "Cannot add some IDs to state cache:" << QUOTE_W_SPACE_DOT(ex.message());
+      return false;
+    }
   }
 
   QSqlDatabase database = qApp->database()->driver()->connection(metaObject()->className());
 
-  if (DatabaseQueries::markLabelledMessagesReadUnread(database, this, status)) {
+  try {
+    DatabaseQueries::markProbeReadUnread(database, this, status);
     service->updateCounts(false);
     service->itemChanged(service->getSubTree());
     service->requestReloadMessageList(status == RootItem::ReadStatus::Read);
     return true;
   }
-  else {
+  catch (const ApplicationException& ex) {
+    qCriticalNN << LOGSEC_DB << "Cannot mark probe as read/unread:" << QUOTE_W_SPACE_DOT(ex.message());
     return false;
   }
-  */
-
-  return false;
 }

@@ -33,65 +33,6 @@ QList<Message> SearchsNode::undeletedMessages() const {
   // return DatabaseQueries::getUndeletedLabelledMessages(database, getParentServiceRoot()->accountId());
 }
 
-int SearchsNode::countOfUnreadMessages() const {
-  auto chi = childItems();
-
-  if (chi.isEmpty()) {
-    return 0;
-  }
-
-  return boolinq::from(chi)
-    .max([](RootItem* it) {
-      return it->countOfUnreadMessages();
-    })
-    ->countOfUnreadMessages();
-}
-
-int SearchsNode::countOfAllMessages() const {
-  auto chi = childItems();
-
-  if (chi.isEmpty()) {
-    return 0;
-  }
-
-  return boolinq::from(chi)
-    .max([](RootItem* it) {
-      return it->countOfAllMessages();
-    })
-    ->countOfAllMessages();
-}
-
-void SearchsNode::updateCounts(bool including_total_count) {
-  // TODO: This is still rather slow because this is automatically
-  // called when message is marked (un)read or starred.
-  // It would be enough if only labels which are assigned to article
-  // are recounted, not all.
-
-  QSqlDatabase database = qApp->database()->driver()->threadSafeConnection(metaObject()->className());
-  int account_id = getParentServiceRoot()->accountId();
-  auto acc = DatabaseQueries::getMessageCountsForAllLabels(database, account_id);
-  /*
-  for (Label* lbl : probes()) {
-    if (!acc.contains(lbl->customId())) {
-      if (including_total_count) {
-        lbl->setCountOfAllMessages(0);
-      }
-
-      lbl->setCountOfUnreadMessages(0);
-    }
-    else {
-      auto ac = acc.value(lbl->customId());
-
-      if (including_total_count) {
-        lbl->setCountOfAllMessages(ac.m_total);
-      }
-
-      lbl->setCountOfUnreadMessages(ac.m_unread);
-    }
-  }
-  */
-}
-
 Search* SearchsNode::probeById(const QString& custom_id) {
   auto chi = childItems();
 
@@ -120,6 +61,34 @@ QList<QAction*> SearchsNode::contextMenuFeedsList() {
   return QList<QAction*>{m_actProbeNew};
 }
 
+int SearchsNode::countOfUnreadMessages() const {
+  auto chi = childItems();
+
+  if (chi.isEmpty()) {
+    return 0;
+  }
+
+  return boolinq::from(chi)
+    .max([](RootItem* it) {
+      return it->countOfUnreadMessages();
+    })
+    ->countOfUnreadMessages();
+}
+
+int SearchsNode::countOfAllMessages() const {
+  auto chi = childItems();
+
+  if (chi.isEmpty()) {
+    return 0;
+  }
+
+  return boolinq::from(chi)
+    .max([](RootItem* it) {
+      return it->countOfAllMessages();
+    })
+    ->countOfAllMessages();
+}
+
 void SearchsNode::createProbe() {
   FormAddEditProbe frm(qApp->mainFormWidget());
   Search* new_prb = frm.execForAdd();
@@ -132,6 +101,8 @@ void SearchsNode::createProbe() {
 
       getParentServiceRoot()->requestItemReassignment(new_prb, this);
       getParentServiceRoot()->requestItemExpand({this}, true);
+
+      new_prb->updateCounts(true);
     }
     catch (const ApplicationException&) {
       new_prb->deleteLater();

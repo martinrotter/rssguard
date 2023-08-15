@@ -218,7 +218,7 @@ bool RootItem::performDragDropChange(RootItem* target_item) {
 int RootItem::countOfUnreadMessages() const {
   return boolinq::from(m_childItems).sum([](RootItem* it) {
     return (it->kind() == RootItem::Kind::Important || it->kind() == RootItem::Kind::Unread ||
-            it->kind() == RootItem::Kind::Labels)
+            it->kind() == RootItem::Kind::Labels || it->kind() == RootItem::Kind::Probes)
              ? 0
              : it->countOfUnreadMessages();
   });
@@ -227,7 +227,7 @@ int RootItem::countOfUnreadMessages() const {
 int RootItem::countOfAllMessages() const {
   return boolinq::from(m_childItems).sum([](RootItem* it) {
     return (it->kind() == RootItem::Kind::Important || it->kind() == RootItem::Kind::Unread ||
-            it->kind() == RootItem::Kind::Labels)
+            it->kind() == RootItem::Kind::Labels || it->kind() == RootItem::Kind::Probes)
              ? 0
              : it->countOfAllMessages();
   });
