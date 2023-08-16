@@ -109,12 +109,9 @@ void Search::updateCounts(bool including_total_count) {
 }
 
 QList<Message> Search::undeletedMessages() const {
-  return {};
-  /*
   QSqlDatabase database = qApp->database()->driver()->connection(metaObject()->className());
 
-  return DatabaseQueries::getUndeletedMessagesWithLabel(database, this);
-  */
+  return DatabaseQueries::getUndeletedMessagesForProbe(database, this);
 }
 
 QIcon Search::generateIcon(const QColor& color) {

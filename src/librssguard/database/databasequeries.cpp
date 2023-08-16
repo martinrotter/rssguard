@@ -980,6 +980,40 @@ ArticleCounts DatabaseQueries::getMessageCountsForBin(const QSqlDatabase& db, in
   }
 }
 
+QList<Message> DatabaseQueries::getUndeletedMessagesForProbe(const QSqlDatabase& db, const Search* probe) {
+  QList<Message> messages;
+  QSqlQuery q(db);
+
+  q.prepare(QSL("SELECT %1 "
+                "FROM Messages "
+                "WHERE "
+                "  Messages.is_deleted = 0 AND "
+                "  Messages.is_pdeleted = 0 AND "
+                "  Messages.account_id = :account_id AND "
+                "  (title REGEXP :fltr OR contents REGEXP :fltr);")
+              .arg(messageTableAttributes(true, db.driverName() == QSL(APP_DB_SQLITE_DRIVER))
+                     .values()
+                     .join(QSL(", "))));
+  q.bindValue(QSL(":account_id"), probe->getParentServiceRoot()->accountId());
+  q.bindValue(QSL(":fltr"), probe->filter());
+
+  if (q.exec()) {
+    while (q.next()) {
+      bool decoded;
+      Message message = Message::fromSqlRecord(q.record(), &decoded);
+
+      if (decoded) {
+        messages.append(message);
+      }
+    }
+  }
+  else {
+    throw ApplicationException(q.lastError().text());
+  }
+
+  return messages;
+}
+
 QList<Message> DatabaseQueries::getUndeletedMessagesWithLabel(const QSqlDatabase& db, const Label* label, bool* ok) {
   QList<Message> messages;
   QSqlQuery q(db);

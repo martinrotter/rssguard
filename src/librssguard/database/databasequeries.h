@@ -111,6 +111,7 @@ class DatabaseQueries {
     static ArticleCounts getMessageCountsForBin(const QSqlDatabase& db, int account_id, bool* ok = nullptr);
 
     // Get messages (for newspaper view for example).
+    static QList<Message> getUndeletedMessagesForProbe(const QSqlDatabase& db, const Search* probe);
     static QList<Message> getUndeletedMessagesWithLabel(const QSqlDatabase& db, const Label* label, bool* ok = nullptr);
     static QList<Message> getUndeletedLabelledMessages(const QSqlDatabase& db, int account_id, bool* ok = nullptr);
     static QList<Message> getUndeletedImportantMessages(const QSqlDatabase& db, int account_id, bool* ok = nullptr);
