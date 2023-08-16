@@ -6,7 +6,6 @@
 #include "definitions/definitions.h"
 #include "miscellaneous/application.h"
 #include "miscellaneous/iconfactory.h"
-#include "services/greader/definitions.h"
 #include "services/greader/greaderserviceroot.h"
 #include "services/greader/gui/formeditgreaderaccount.h"
 

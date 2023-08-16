@@ -3,14 +3,21 @@
 #include "miscellaneous/application.h"
 
 #include "3rd-party/boolinq/boolinq.h"
+
+#if defined(SYSTEM_SQLITE3)
+#include <sqlite3.h>
+#else
 #include "3rd-party/sqlite/sqlite3.h"
+#endif
+
+#include "3rd-party/sqlite/sqlite3.h"
+
+#include "core/feedsmodel.h"
 #include "dynamic-shortcuts/dynamicshortcuts.h"
 #include "exceptions/applicationexception.h"
 #include "gui/dialogs/formabout.h"
 #include "gui/dialogs/formlog.h"
 #include "gui/dialogs/formmain.h"
-#include "gui/feedmessageviewer.h"
-#include "gui/feedsview.h"
 #include "gui/messagebox.h"
 #include "gui/toolbars/statusbar.h"
 #include "gui/webviewers/qtextbrowser/textbrowserviewer.h"
@@ -23,10 +30,6 @@
 #include "network-web/adblock/adblockmanager.h"
 #include "network-web/webfactory.h"
 #include "services/abstract/serviceroot.h"
-#include "services/owncloud/owncloudserviceentrypoint.h"
-#include "services/standard/standardserviceentrypoint.h"
-#include "services/standard/standardserviceroot.h"
-#include "services/tt-rss/ttrssserviceentrypoint.h"
 
 #include <iostream>
 

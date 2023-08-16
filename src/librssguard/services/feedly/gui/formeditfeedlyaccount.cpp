@@ -2,10 +2,7 @@
 
 #include "services/feedly/gui/formeditfeedlyaccount.h"
 
-#include "gui/guiutilities.h"
 #include "miscellaneous/iconfactory.h"
-#include "network-web/networkfactory.h"
-#include "services/feedly/definitions.h"
 #include "services/feedly/feedlynetwork.h"
 #include "services/feedly/feedlyserviceroot.h"
 #include "services/feedly/gui/feedlyaccountdetails.h"
@@ -34,9 +31,12 @@ void FormEditFeedlyAccount::apply() {
     m_details->m_ui.m_txtUsername->lineEdit()->text() != account<FeedlyServiceRoot>()->network()->username();
 
   account<FeedlyServiceRoot>()->network()->setUsername(m_details->m_ui.m_txtUsername->lineEdit()->text());
-  account<FeedlyServiceRoot>()->network()->setDownloadOnlyUnreadMessages(m_details->m_ui.m_checkDownloadOnlyUnreadMessages->isChecked());
+  account<FeedlyServiceRoot>()
+    ->network()
+    ->setDownloadOnlyUnreadMessages(m_details->m_ui.m_checkDownloadOnlyUnreadMessages->isChecked());
   account<FeedlyServiceRoot>()->network()->setBatchSize(m_details->m_ui.m_spinLimitMessages->value());
-  account<FeedlyServiceRoot>()->network()->setDeveloperAccessToken(m_details->m_ui.m_txtDeveloperAccessToken->lineEdit()->text());
+  account<FeedlyServiceRoot>()->network()->setDeveloperAccessToken(m_details->m_ui.m_txtDeveloperAccessToken->lineEdit()
+                                                                     ->text());
   account<FeedlyServiceRoot>()->network()->setIntelligentSynchronization(m_details->m_ui.m_cbNewAlgorithm->isChecked());
 
   account<FeedlyServiceRoot>()->saveAccountDataToDatabase();
@@ -60,8 +60,10 @@ void FormEditFeedlyAccount::loadAccountData() {
 #endif
 
   m_details->m_ui.m_txtUsername->lineEdit()->setText(account<FeedlyServiceRoot>()->network()->username());
-  m_details->m_ui.m_txtDeveloperAccessToken->lineEdit()->setText(account<FeedlyServiceRoot>()->network()->developerAccessToken());
-  m_details->m_ui.m_checkDownloadOnlyUnreadMessages->setChecked(account<FeedlyServiceRoot>()->network()->downloadOnlyUnreadMessages());
+  m_details->m_ui.m_txtDeveloperAccessToken->lineEdit()
+    ->setText(account<FeedlyServiceRoot>()->network()->developerAccessToken());
+  m_details->m_ui.m_checkDownloadOnlyUnreadMessages
+    ->setChecked(account<FeedlyServiceRoot>()->network()->downloadOnlyUnreadMessages());
   m_details->m_ui.m_spinLimitMessages->setValue(account<FeedlyServiceRoot>()->network()->batchSize());
   m_details->m_ui.m_cbNewAlgorithm->setChecked(account<FeedlyServiceRoot>()->network()->intelligentSynchronization());
 }

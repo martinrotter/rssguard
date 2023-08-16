@@ -6,7 +6,6 @@
 #include "definitions/definitions.h"
 #include "miscellaneous/application.h"
 #include "miscellaneous/iconfactory.h"
-#include "services/feedly/definitions.h"
 #include "services/feedly/feedlyserviceroot.h"
 #include "services/feedly/gui/formeditfeedlyaccount.h"
 

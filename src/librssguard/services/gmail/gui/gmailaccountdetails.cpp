@@ -3,15 +3,13 @@
 #include "services/gmail/gui/gmailaccountdetails.h"
 
 #include "exceptions/applicationexception.h"
-#include "gui/guiutilities.h"
 #include "miscellaneous/application.h"
 #include "network-web/oauth2service.h"
 #include "network-web/webfactory.h"
 #include "services/gmail/definitions.h"
 #include "services/gmail/gmailnetworkfactory.h"
 
-GmailAccountDetails::GmailAccountDetails(QWidget* parent)
-  : QWidget(parent), m_oauth(nullptr), m_lastProxy({}) {
+GmailAccountDetails::GmailAccountDetails(QWidget* parent) : QWidget(parent), m_oauth(nullptr), m_lastProxy({}) {
   m_ui.setupUi(this);
 
 #if defined(GMAIL_OFFICIAL_SUPPORT)
@@ -100,9 +98,7 @@ void GmailAccountDetails::onAuthGranted() {
     m_ui.m_txtUsername->lineEdit()->setText(resp[QSL("emailAddress")].toString());
   }
   catch (const ApplicationException& ex) {
-    qCriticalNN << LOGSEC_GMAIL
-                << "Failed to obtain profile with error:"
-                << QUOTE_W_SPACE_DOT(ex.message());
+    qCriticalNN << LOGSEC_GMAIL << "Failed to obtain profile with error:" << QUOTE_W_SPACE_DOT(ex.message());
   }
 }
 

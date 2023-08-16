@@ -4,8 +4,6 @@
 
 #include "database/databasequeries.h"
 #include "miscellaneous/application.h"
-#include "miscellaneous/iconfactory.h"
-#include "miscellaneous/textfactory.h"
 #include "services/abstract/cacheforserviceroot.h"
 #include "services/abstract/feed.h"
 #include "services/abstract/serviceroot.h"

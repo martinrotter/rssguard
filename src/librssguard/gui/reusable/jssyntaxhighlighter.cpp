@@ -20,7 +20,7 @@ JsSyntaxHighlighter::JsSyntaxHighlighter(QTextDocument* parent) : QSyntaxHighlig
 
   keywords = FROM_STD_LIST(QStringList, std_keywords);
 
-  for (const QString& pattern : keywords) {
+  for (const QString& pattern : qAsConst(keywords)) {
     rule.m_pattern = QRegularExpression(pattern);
     rule.m_format = m_keywordFormat;
 

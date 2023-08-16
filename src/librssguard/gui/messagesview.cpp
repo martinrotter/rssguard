@@ -15,7 +15,6 @@
 #include "miscellaneous/externaltool.h"
 #include "miscellaneous/feedreader.h"
 #include "miscellaneous/settings.h"
-#include "network-web/networkfactory.h"
 #include "network-web/webfactory.h"
 #include "qnamespace.h"
 #include "services/abstract/labelsnode.h"

@@ -2,25 +2,17 @@
 
 #include "services/standard/standardfeed.h"
 
-#include "3rd-party/sc/simplecrypt.h"
-#include "core/feedsmodel.h"
 #include "database/databasequeries.h"
 #include "definitions/definitions.h"
 #include "exceptions/applicationexception.h"
 #include "exceptions/networkexception.h"
 #include "exceptions/scriptexception.h"
-#include "gui/feedmessageviewer.h"
-#include "gui/feedsview.h"
-#include "miscellaneous/iconfactory.h"
 #include "miscellaneous/settings.h"
 #include "miscellaneous/textfactory.h"
-#include "services/abstract/recyclebin.h"
 #include "services/standard/definitions.h"
 #include "services/standard/gui/formstandardfeeddetails.h"
 #include "services/standard/parsers/atomparser.h"
-#include "services/standard/parsers/jsonparser.h"
 #include "services/standard/parsers/rdfparser.h"
-#include "services/standard/parsers/rssparser.h"
 #include "services/standard/standardserviceroot.h"
 
 #include <QCommandLineParser>

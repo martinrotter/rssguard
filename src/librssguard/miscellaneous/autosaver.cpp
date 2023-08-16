@@ -2,15 +2,15 @@
 
 #include "miscellaneous/autosaver.h"
 
+#include "definitions/definitions.h"
+
 #include <QCoreApplication>
 #include <QDir>
 #include <QMetaObject>
 
-#include "definitions/definitions.h"
-
 AutoSaver::AutoSaver(QObject* parent, const QString& saving_slot, int max_wait_secs, int periodic_save_secs)
-  : QObject(parent), m_savingSlot(saving_slot), m_maxWaitMsecs(max_wait_secs * 1000),
-    m_periodicSaveMsecs(periodic_save_secs * 1000) {
+  : QObject(parent), m_maxWaitMsecs(max_wait_secs * 1000), m_periodicSaveMsecs(periodic_save_secs * 1000),
+    m_savingSlot(saving_slot) {
   Q_ASSERT(parent);
 
   connect(&m_timer, &QTimer::timeout, this, &AutoSaver::saveIfNeccessary);

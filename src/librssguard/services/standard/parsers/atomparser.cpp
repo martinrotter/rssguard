@@ -2,12 +2,7 @@
 
 #include "services/standard/parsers/atomparser.h"
 
-#include "miscellaneous/application.h"
 #include "miscellaneous/textfactory.h"
-#include "network-web/webfactory.h"
-#include "services/standard/definitions.h"
-
-#include "exceptions/applicationexception.h"
 
 AtomParser::AtomParser(const QString& data) : FeedParser(data) {
   QString version = m_xml.documentElement().attribute(QSL("version"));

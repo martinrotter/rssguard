@@ -2,21 +2,13 @@
 
 #include "services/abstract/gui/formfeeddetails.h"
 
-#include "core/feedsmodel.h"
 #include "database/databasequeries.h"
 #include "definitions/definitions.h"
 #include "exceptions/applicationexception.h"
 #include "gui/guiutilities.h"
-#include "gui/messagebox.h"
-#include "gui/reusable/baselineedit.h"
-#include "gui/systemtrayicon.h"
 #include "miscellaneous/iconfactory.h"
 #include "miscellaneous/textfactory.h"
-#include "network-web/networkfactory.h"
-#include "services/abstract/category.h"
 #include "services/abstract/rootitem.h"
-#include "services/standard/standardfeed.h"
-#include "services/standard/standardserviceroot.h"
 
 #include <QMenu>
 #include <QNetworkReply>

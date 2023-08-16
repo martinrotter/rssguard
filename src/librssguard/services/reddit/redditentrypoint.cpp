@@ -6,7 +6,6 @@
 #include "definitions/definitions.h"
 #include "miscellaneous/application.h"
 #include "miscellaneous/iconfactory.h"
-#include "services/reddit/definitions.h"
 #include "services/reddit/gui/formeditredditaccount.h"
 #include "services/reddit/redditserviceroot.h"
 

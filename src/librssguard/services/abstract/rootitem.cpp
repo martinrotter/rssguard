@@ -8,7 +8,6 @@
 #include "services/abstract/category.h"
 #include "services/abstract/feed.h"
 #include "services/abstract/label.h"
-#include "services/abstract/recyclebin.h"
 #include "services/abstract/search.h"
 #include "services/abstract/serviceroot.h"
 

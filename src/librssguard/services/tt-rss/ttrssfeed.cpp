@@ -6,7 +6,6 @@
 #include "definitions/definitions.h"
 #include "miscellaneous/application.h"
 #include "miscellaneous/iconfactory.h"
-#include "miscellaneous/textfactory.h"
 #include "services/tt-rss/definitions.h"
 #include "services/tt-rss/ttrssnetworkfactory.h"
 #include "services/tt-rss/ttrssserviceroot.h"
@@ -24,8 +23,8 @@ bool TtRssFeed::canBeDeleted() const {
 }
 
 bool TtRssFeed::deleteViaGui() {
-  TtRssUnsubscribeFeedResponse response = serviceRoot()->network()->unsubscribeFeed(customNumericId(),
-                                                                                    getParentServiceRoot()->networkProxy());
+  TtRssUnsubscribeFeedResponse response =
+    serviceRoot()->network()->unsubscribeFeed(customNumericId(), getParentServiceRoot()->networkProxy());
 
   if (response.code() == QSL(UFF_OK) && removeItself()) {
     serviceRoot()->requestItemRemoval(this);
@@ -33,8 +32,7 @@ bool TtRssFeed::deleteViaGui() {
   }
   else {
     qWarningNN << LOGSEC_TTRSS
-               << "Unsubscribing from feed failed, received JSON:"
-               << QUOTE_W_SPACE_DOT(response.toString());
+               << "Unsubscribing from feed failed, received JSON:" << QUOTE_W_SPACE_DOT(response.toString());
     return false;
   }
 }
@@ -44,9 +42,8 @@ QList<QAction*> TtRssFeed::contextMenuFeedsList() {
 
   if (customNumericId() == TTRSS_PUBLISHED_FEED_ID) {
     if (m_actionShareToPublished == nullptr) {
-      m_actionShareToPublished = new QAction(qApp->icons()->fromTheme(QSL("emblem-shared")),
-                                             tr("Share to published"),
-                                             this);
+      m_actionShareToPublished =
+        new QAction(qApp->icons()->fromTheme(QSL("emblem-shared")), tr("Share to published"), this);
 
       connect(m_actionShareToPublished, &QAction::triggered, serviceRoot(), &TtRssServiceRoot::shareToPublished);
     }

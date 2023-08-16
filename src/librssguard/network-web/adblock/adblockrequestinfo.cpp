@@ -8,7 +8,6 @@
 AdblockRequestInfo::AdblockRequestInfo(const QWebEngineUrlRequestInfo& webengine_info) {
   initialize(webengine_info);
 }
-
 #endif
 
 AdblockRequestInfo::AdblockRequestInfo(const QUrl& url) {

@@ -6,7 +6,6 @@
 #include "exceptions/applicationexception.h"
 #include "miscellaneous/application.h"
 #include "miscellaneous/iconfactory.h"
-#include "network-web/oauth2service.h"
 #include "services/abstract/category.h"
 
 #include <QSqlDriver>

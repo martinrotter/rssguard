@@ -3,8 +3,6 @@
 #include "gui/toolbars/basetoolbar.h"
 
 #include "definitions/definitions.h"
-#include "gui/dialogs/formmain.h"
-#include "miscellaneous/settings.h"
 
 #include <QWidgetAction>
 

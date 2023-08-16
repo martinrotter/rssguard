@@ -3,9 +3,7 @@
 #include "network-web/networkfactory.h"
 
 #include "definitions/definitions.h"
-#include "miscellaneous/settings.h"
 #include "network-web/downloader.h"
-#include "network-web/silentnetworkaccessmanager.h"
 
 #include <QEventLoop>
 #include <QIcon>

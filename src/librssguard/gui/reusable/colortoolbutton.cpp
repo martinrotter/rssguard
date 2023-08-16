@@ -2,7 +2,6 @@
 
 #include "gui/reusable/colortoolbutton.h"
 
-#include "definitions/definitions.h"
 #include "miscellaneous/textfactory.h"
 
 #include <QColorDialog>

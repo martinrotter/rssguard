@@ -5,7 +5,11 @@
 #include "exceptions/applicationexception.h"
 #include "miscellaneous/application.h"
 
+#if defined(SYSTEM_SQLITE3)
+#include <sqlite3.h>
+#else
 #include "3rd-party/sqlite/sqlite3.h"
+#endif
 
 #include <QDir>
 #include <QSqlDriver>

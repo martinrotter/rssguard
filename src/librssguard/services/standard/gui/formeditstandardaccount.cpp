@@ -2,12 +2,7 @@
 
 #include "services/standard/gui/formeditstandardaccount.h"
 
-#include "database/databasefactory.h"
-#include "database/databasequeries.h"
-#include "miscellaneous/application.h"
-#include "miscellaneous/iconfactory.h"
 #include "services/standard/standardserviceentrypoint.h"
-#include "services/standard/standardserviceroot.h"
 
 FormEditStandardAccount::FormEditStandardAccount(QWidget* parent)
   : FormAccountDetails(StandardServiceEntryPoint().icon(), parent) {}

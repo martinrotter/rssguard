@@ -2,7 +2,6 @@
 
 #include "services/standard/parsers/jsonparser.h"
 
-#include "exceptions/feedfetchexception.h"
 #include "miscellaneous/textfactory.h"
 
 #include <QJsonArray>
@@ -34,9 +33,8 @@ QString JsonParser::jsonMessageUrl(const QJsonObject& msg_element) const {
 }
 
 QString JsonParser::jsonMessageDescription(const QJsonObject& msg_element) const {
-  return msg_element.contains(QSL("content_html"))
-            ? msg_element[QSL("content_html")].toString()
-            : msg_element[QSL("content_text")].toString();
+  return msg_element.contains(QSL("content_html")) ? msg_element[QSL("content_html")].toString()
+                                                   : msg_element[QSL("content_text")].toString();
 }
 
 QString JsonParser::jsonMessageAuthor(const QJsonObject& msg_element) const {
@@ -53,8 +51,8 @@ QString JsonParser::jsonMessageAuthor(const QJsonObject& msg_element) const {
 
 QDateTime JsonParser::jsonMessageDateCreated(const QJsonObject& msg_element) const {
   return TextFactory::parseDateTime(msg_element.contains(QSL("date_modified"))
-                                                   ? msg_element[QSL("date_modified")].toString()
-                                                   : msg_element[QSL("date_published")].toString());
+                                      ? msg_element[QSL("date_modified")].toString()
+                                      : msg_element[QSL("date_published")].toString());
 }
 
 QString JsonParser::jsonMessageId(const QJsonObject& msg_element) const {

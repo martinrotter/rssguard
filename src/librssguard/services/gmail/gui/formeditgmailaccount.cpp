@@ -2,12 +2,9 @@
 
 #include "services/gmail/gui/formeditgmailaccount.h"
 
-#include "gui/guiutilities.h"
 #include "miscellaneous/application.h"
 #include "miscellaneous/iconfactory.h"
 #include "network-web/oauth2service.h"
-#include "network-web/webfactory.h"
-#include "services/gmail/definitions.h"
 #include "services/gmail/gmailserviceroot.h"
 #include "services/gmail/gui/gmailaccountdetails.h"
 
@@ -26,7 +23,7 @@ void FormEditGmailAccount::apply() {
   FormAccountDetails::apply();
 
   bool using_another_acc =
-    m_details->m_ui.m_txtUsername->lineEdit()->text() !=account<GmailServiceRoot>()->network()->username();
+    m_details->m_ui.m_txtUsername->lineEdit()->text() != account<GmailServiceRoot>()->network()->username();
 
   // Make sure that the data copied from GUI are used for brand new login.
   account<GmailServiceRoot>()->network()->oauth()->logout(false);
@@ -37,7 +34,8 @@ void FormEditGmailAccount::apply() {
 
   account<GmailServiceRoot>()->network()->setUsername(m_details->m_ui.m_txtUsername->lineEdit()->text());
   account<GmailServiceRoot>()->network()->setBatchSize(m_details->m_ui.m_spinLimitMessages->value());
-  account<GmailServiceRoot>()->network()->setDownloadOnlyUnreadMessages(m_details->m_ui.m_cbDownloadOnlyUnreadMessages->isChecked());
+  account<GmailServiceRoot>()->network()->setDownloadOnlyUnreadMessages(m_details->m_ui.m_cbDownloadOnlyUnreadMessages
+                                                                          ->isChecked());
 
   account<GmailServiceRoot>()->saveAccountDataToDatabase();
   accept();
@@ -64,5 +62,6 @@ void FormEditGmailAccount::loadAccountData() {
 
   m_details->m_ui.m_txtUsername->lineEdit()->setText(account<GmailServiceRoot>()->network()->username());
   m_details->m_ui.m_spinLimitMessages->setValue(account<GmailServiceRoot>()->network()->batchSize());
-  m_details->m_ui.m_cbDownloadOnlyUnreadMessages->setChecked(account<GmailServiceRoot>()->network()->downloadOnlyUnreadMessages());
+  m_details->m_ui.m_cbDownloadOnlyUnreadMessages
+    ->setChecked(account<GmailServiceRoot>()->network()->downloadOnlyUnreadMessages());
 }

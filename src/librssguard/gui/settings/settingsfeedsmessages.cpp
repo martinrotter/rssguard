@@ -2,12 +2,10 @@
 
 #include "gui/settings/settingsfeedsmessages.h"
 
+#include "core/feedsmodel.h"
 #include "definitions/definitions.h"
 #include "gui/dialogs/formmain.h"
 #include "gui/feedmessageviewer.h"
-#include "gui/feedsview.h"
-#include "gui/guiutilities.h"
-#include "gui/messagesview.h"
 #include "gui/reusable/timespinbox.h"
 #include "miscellaneous/application.h"
 #include "miscellaneous/feedreader.h"

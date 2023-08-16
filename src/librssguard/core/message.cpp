@@ -2,7 +2,6 @@
 
 #include "core/message.h"
 
-#include "3rd-party/boolinq/boolinq.h"
 #include "miscellaneous/textfactory.h"
 #include "services/abstract/feed.h"
 #include "services/abstract/label.h"

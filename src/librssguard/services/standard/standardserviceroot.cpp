@@ -2,7 +2,6 @@
 
 #include "services/standard/standardserviceroot.h"
 
-#include "core/feedsmodel.h"
 #include "database/databasequeries.h"
 #include "definitions/definitions.h"
 #include "exceptions/applicationexception.h"
@@ -14,11 +13,7 @@
 #include "miscellaneous/mutex.h"
 #include "miscellaneous/settings.h"
 #include "network-web/networkfactory.h"
-#include "network-web/webfactory.h"
 #include "services/abstract/gui/formcategorydetails.h"
-#include "services/abstract/importantnode.h"
-#include "services/abstract/labelsnode.h"
-#include "services/abstract/recyclebin.h"
 #include "services/standard/definitions.h"
 #include "services/standard/gui/formeditstandardaccount.h"
 #include "services/standard/gui/formstandardfeeddetails.h"

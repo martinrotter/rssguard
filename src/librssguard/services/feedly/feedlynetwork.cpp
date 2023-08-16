@@ -3,7 +3,6 @@
 #include "services/feedly/feedlynetwork.h"
 
 #include "3rd-party/boolinq/boolinq.h"
-#include "database/databasequeries.h"
 #include "exceptions/networkexception.h"
 #include "miscellaneous/application.h"
 #include "network-web/networkfactory.h"

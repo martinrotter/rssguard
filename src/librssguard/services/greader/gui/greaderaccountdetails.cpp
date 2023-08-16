@@ -4,10 +4,8 @@
 
 #include "definitions/definitions.h"
 #include "exceptions/applicationexception.h"
-#include "gui/guiutilities.h"
 #include "miscellaneous/application.h"
 #include "miscellaneous/iconfactory.h"
-#include "miscellaneous/systemfactory.h"
 #include "network-web/oauth2service.h"
 #include "network-web/webfactory.h"
 #include "services/greader/definitions.h"

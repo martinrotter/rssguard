@@ -3,13 +3,8 @@
 #include "services/reddit/redditserviceroot.h"
 
 #include "database/databasequeries.h"
-#include "exceptions/feedfetchexception.h"
 #include "miscellaneous/application.h"
-#include "miscellaneous/iconfactory.h"
 #include "network-web/oauth2service.h"
-#include "services/abstract/importantnode.h"
-#include "services/abstract/recyclebin.h"
-#include "services/reddit/definitions.h"
 #include "services/reddit/gui/formeditredditaccount.h"
 #include "services/reddit/redditcategory.h"
 #include "services/reddit/redditentrypoint.h"

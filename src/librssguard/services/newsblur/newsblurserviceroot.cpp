@@ -6,19 +6,12 @@
 #include "definitions/definitions.h"
 #include "exceptions/feedfetchexception.h"
 #include "miscellaneous/application.h"
-#include "miscellaneous/iconfactory.h"
-#include "miscellaneous/mutex.h"
 #include "miscellaneous/textfactory.h"
-#include "network-web/oauth2service.h"
-#include "services/abstract/importantnode.h"
-#include "services/abstract/recyclebin.h"
-#include "services/newsblur/definitions.h"
 #include "services/newsblur/gui/formeditnewsbluraccount.h"
 #include "services/newsblur/newsblurentrypoint.h"
 #include "services/newsblur/newsblurnetwork.h"
 
-NewsBlurServiceRoot::NewsBlurServiceRoot(RootItem* parent)
-  : ServiceRoot(parent), m_network(new NewsBlurNetwork(this)) {
+NewsBlurServiceRoot::NewsBlurServiceRoot(RootItem* parent) : ServiceRoot(parent), m_network(new NewsBlurNetwork(this)) {
   m_network->setRoot(this);
   setIcon(NewsBlurEntryPoint().icon());
 }
@@ -55,7 +48,8 @@ void NewsBlurServiceRoot::setCustomDatabaseData(const QVariantHash& data) {
 }
 
 QList<Message> NewsBlurServiceRoot::obtainNewMessages(Feed* feed,
-                                                      const QHash<ServiceRoot::BagOfMessages, QStringList>& stated_messages,
+                                                      const QHash<ServiceRoot::BagOfMessages, QStringList>&
+                                                        stated_messages,
                                                       const QHash<QString, QStringList>& tagged_messages) {
   Feed::Status error = Feed::Status::Normal;
   QList<Message> msgs;
@@ -139,5 +133,6 @@ void NewsBlurServiceRoot::updateTitleIcon() {
 }
 
 RootItem* NewsBlurServiceRoot::obtainNewTreeForSyncIn() const {
-  return m_network->categoriesFeedsLabelsTree(networkProxy());;
+  return m_network->categoriesFeedsLabelsTree(networkProxy());
+  ;
 }

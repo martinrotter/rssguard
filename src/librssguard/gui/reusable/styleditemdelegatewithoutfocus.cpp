@@ -2,7 +2,7 @@
 
 #include "gui/reusable/styleditemdelegatewithoutfocus.h"
 
-#include "miscellaneous/application.h"
+#include "definitions/definitions.h"
 
 StyledItemDelegateWithoutFocus::StyledItemDelegateWithoutFocus(int height_row, int padding_row, QObject* parent)
   : QStyledItemDelegate(parent), m_rowHeight(height_row), m_rowPadding(padding_row) {}

@@ -2,12 +2,7 @@
 
 #include "services/standard/parsers/rssparser.h"
 
-#include "exceptions/applicationexception.h"
-#include "miscellaneous/application.h"
-#include "miscellaneous/iofactory.h"
 #include "miscellaneous/textfactory.h"
-#include "network-web/webfactory.h"
-#include "services/standard/definitions.h"
 
 #include <QDomDocument>
 #include <QTextStream>

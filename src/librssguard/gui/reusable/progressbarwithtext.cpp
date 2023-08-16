@@ -3,7 +3,6 @@
 #include "gui/reusable/progressbarwithtext.h"
 
 #include "definitions/definitions.h"
-#include "miscellaneous/application.h"
 
 ProgressBarWithText::ProgressBarWithText(QWidget* parent) : QProgressBar(parent) {}
 

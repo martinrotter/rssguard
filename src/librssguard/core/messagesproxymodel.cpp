@@ -5,9 +5,7 @@
 #include "core/messagesmodel.h"
 #include "core/messagesmodelcache.h"
 #include "definitions/globals.h"
-#include "miscellaneous/application.h"
 #include "miscellaneous/regexfactory.h"
-#include "miscellaneous/settings.h"
 
 #include <QTimer>
 

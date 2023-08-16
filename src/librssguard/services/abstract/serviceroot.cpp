@@ -3,7 +3,6 @@
 #include "services/abstract/serviceroot.h"
 
 #include "3rd-party/boolinq/boolinq.h"
-#include "core/feedsmodel.h"
 #include "core/messagesmodel.h"
 #include "database/databasequeries.h"
 #include "exceptions/applicationexception.h"

@@ -5,7 +5,6 @@
 #include "database/databasefactory.h"
 #include "database/mariadbdriver.h"
 #include "definitions/definitions.h"
-#include "gui/guiutilities.h"
 #include "miscellaneous/application.h"
 
 SettingsDatabase::SettingsDatabase(Settings* settings, QWidget* parent)

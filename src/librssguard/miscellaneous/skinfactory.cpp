@@ -2,7 +2,6 @@
 
 #include "miscellaneous/skinfactory.h"
 
-#include "exceptions/ioexception.h"
 #include "miscellaneous/application.h"
 #include "network-web/networkfactory.h"
 #include "services/abstract/rootitem.h"

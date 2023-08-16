@@ -2,14 +2,14 @@
 
 #include "gui/toolbars/toolbareditor.h"
 
-#include "gui/dialogs/formmain.h"
 #include "gui/toolbars/basetoolbar.h"
+#include "miscellaneous/application.h"
+#include "miscellaneous/iconfactory.h"
 
 #include <QKeyEvent>
 #include <QWidgetAction>
 
-ToolBarEditor::ToolBarEditor(QWidget* parent)
-  : QWidget(parent), m_ui(new Ui::ToolBarEditor), m_toolBar(nullptr) {
+ToolBarEditor::ToolBarEditor(QWidget* parent) : QWidget(parent), m_ui(new Ui::ToolBarEditor), m_toolBar(nullptr) {
   m_ui->setupUi(this);
 
   // Create connections.
@@ -21,8 +21,14 @@ ToolBarEditor::ToolBarEditor(QWidget* parent)
   connect(m_ui->m_btnMoveActionUp, &QToolButton::clicked, this, &ToolBarEditor::moveActionUp);
   connect(m_ui->m_btnMoveActionDown, &QToolButton::clicked, this, &ToolBarEditor::moveActionDown);
   connect(m_ui->m_btnReset, &QToolButton::clicked, this, &ToolBarEditor::resetToolBar);
-  connect(m_ui->m_listAvailableActions, &QListWidget::itemSelectionChanged, this, &ToolBarEditor::updateActionsAvailability);
-  connect(m_ui->m_listActivatedActions, &QListWidget::itemSelectionChanged, this, &ToolBarEditor::updateActionsAvailability);
+  connect(m_ui->m_listAvailableActions,
+          &QListWidget::itemSelectionChanged,
+          this,
+          &ToolBarEditor::updateActionsAvailability);
+  connect(m_ui->m_listActivatedActions,
+          &QListWidget::itemSelectionChanged,
+          this,
+          &ToolBarEditor::updateActionsAvailability);
   connect(m_ui->m_listActivatedActions, &QListWidget::itemDoubleClicked, this, &ToolBarEditor::deleteSelectedAction);
   connect(m_ui->m_listAvailableActions, &QListWidget::itemDoubleClicked, this, &ToolBarEditor::addSelectedAction);
 
@@ -68,9 +74,8 @@ void ToolBarEditor::loadEditor(const QList<QAction*>& activated_actions, const Q
   m_ui->m_listAvailableActions->clear();
 
   for (const QAction* action : activated_actions) {
-    QListWidgetItem* action_item = new QListWidgetItem(action->icon(),
-                                                       action->text().replace('&', QL1S("")),
-                                                       m_ui->m_listActivatedActions);
+    QListWidgetItem* action_item =
+      new QListWidgetItem(action->icon(), action->text().replace('&', QL1S("")), m_ui->m_listActivatedActions);
 
     if (action->isSeparator()) {
       action_item->setData(Qt::ItemDataRole::UserRole, SEPARATOR_ACTION_NAME);
@@ -103,9 +108,8 @@ void ToolBarEditor::loadEditor(const QList<QAction*>& activated_actions, const Q
 
   for (QAction* action : available_actions) {
     if (!activated_actions.contains(action)) {
-      QListWidgetItem* action_item = new QListWidgetItem(action->icon(),
-                                                         action->text().replace('&', QL1S("")),
-                                                         m_ui->m_listAvailableActions);
+      QListWidgetItem* action_item =
+        new QListWidgetItem(action->icon(), action->text().replace('&', QL1S("")), m_ui->m_listAvailableActions);
 
       if (action->isSeparator()) {
         action_item->setData(Qt::ItemDataRole::UserRole, QSL(SEPARATOR_ACTION_NAME));
@@ -140,12 +144,14 @@ bool ToolBarEditor::eventFilter(QObject* object, QEvent* event) {
         return true;
       }
       else if (key_event->key() == Qt::Key::Key_Down &&
-               (key_event->modifiers() & Qt::KeyboardModifier::ControlModifier) == Qt::KeyboardModifier::ControlModifier) {
+               (key_event->modifiers() & Qt::KeyboardModifier::ControlModifier) ==
+                 Qt::KeyboardModifier::ControlModifier) {
         moveActionDown();
         return true;
       }
       else if (key_event->key() == Qt::Key::Key_Up &&
-               (key_event->modifiers() & Qt::KeyboardModifier::ControlModifier) == Qt::KeyboardModifier::ControlModifier) {
+               (key_event->modifiers() & Qt::KeyboardModifier::ControlModifier) ==
+                 Qt::KeyboardModifier::ControlModifier) {
         moveActionUp();
         return true;
       }
@@ -161,7 +167,8 @@ void ToolBarEditor::updateActionsAvailability() {
   m_ui->m_btnMoveActionUp->setEnabled(m_ui->m_listActivatedActions->selectedItems().size() == 1 &&
                                       m_ui->m_listActivatedActions->currentRow() > 0);
   m_ui->m_btnMoveActionDown->setEnabled(m_ui->m_listActivatedActions->selectedItems().size() == 1 &&
-                                        m_ui->m_listActivatedActions->currentRow() < m_ui->m_listActivatedActions->count() - 1);
+                                        m_ui->m_listActivatedActions->currentRow() <
+                                          m_ui->m_listActivatedActions->count() - 1);
   m_ui->m_btnAddSelectedAction->setEnabled(m_ui->m_listAvailableActions->selectedItems().size() > 0);
 }
 
@@ -222,9 +229,9 @@ void ToolBarEditor::addSelectedAction() {
   if (items.size() == 1) {
     QListWidgetItem* selected_item = items.at(0);
 
-    m_ui->m_listActivatedActions->insertItem(
-      m_ui->m_listActivatedActions->currentRow() + 1,
-      m_ui->m_listAvailableActions->takeItem(m_ui->m_listAvailableActions->row(selected_item)));
+    m_ui->m_listActivatedActions
+      ->insertItem(m_ui->m_listActivatedActions->currentRow() + 1,
+                   m_ui->m_listAvailableActions->takeItem(m_ui->m_listAvailableActions->row(selected_item)));
     m_ui->m_listActivatedActions->setCurrentRow(m_ui->m_listActivatedActions->currentRow() + 1);
     emit setupChanged();
   }
@@ -242,9 +249,9 @@ void ToolBarEditor::deleteSelectedAction() {
       updateActionsAvailability();
     }
     else {
-      m_ui->m_listAvailableActions->insertItem(
-        m_ui->m_listAvailableActions->currentRow() + 1,
-        m_ui->m_listActivatedActions->takeItem(m_ui->m_listActivatedActions->row(selected_item)));
+      m_ui->m_listAvailableActions
+        ->insertItem(m_ui->m_listAvailableActions->currentRow() + 1,
+                     m_ui->m_listActivatedActions->takeItem(m_ui->m_listActivatedActions->row(selected_item)));
       m_ui->m_listAvailableActions->sortItems(Qt::SortOrder::AscendingOrder);
       m_ui->m_listAvailableActions->setCurrentRow(m_ui->m_listAvailableActions->currentRow() + 1);
     }

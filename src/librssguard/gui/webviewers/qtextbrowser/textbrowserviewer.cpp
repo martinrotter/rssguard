@@ -4,7 +4,6 @@
 
 #include "3rd-party/boolinq/boolinq.h"
 #include "gui/dialogs/formmain.h"
-#include "gui/messagebox.h"
 #include "gui/webbrowser.h"
 #include "miscellaneous/application.h"
 #include "miscellaneous/externaltool.h"

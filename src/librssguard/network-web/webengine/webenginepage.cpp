@@ -8,8 +8,6 @@
 #include "network-web/adblock/adblockmanager.h"
 #include "network-web/adblock/adblockrequestinfo.h"
 #include "network-web/webfactory.h"
-#include "services/abstract/rootitem.h"
-#include "services/abstract/serviceroot.h"
 
 #include <QString>
 #include <QStringList>

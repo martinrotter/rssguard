@@ -6,7 +6,6 @@
 #include "exceptions/applicationexception.h"
 #include "exceptions/networkexception.h"
 #include "exceptions/scriptexception.h"
-#include "gui/guiutilities.h"
 #include "miscellaneous/iconfactory.h"
 #include "network-web/networkfactory.h"
 #include "services/abstract/category.h"

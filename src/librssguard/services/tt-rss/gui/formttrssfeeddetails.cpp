@@ -4,11 +4,9 @@
 
 #include "exceptions/applicationexception.h"
 #include "miscellaneous/application.h"
-#include "services/abstract/feed.h"
 #include "services/abstract/gui/authenticationdetails.h"
 #include "services/tt-rss/definitions.h"
 #include "services/tt-rss/gui/ttrssfeeddetails.h"
-#include "services/tt-rss/ttrssfeed.h"
 #include "services/tt-rss/ttrssnetworkfactory.h"
 #include "services/tt-rss/ttrssserviceroot.h"
 
@@ -39,7 +37,8 @@ void FormTtRssFeedDetails::apply() {
       root->network()->subscribeToFeed(m_feedDetails->ui.m_txtUrl->lineEdit()->text(),
                                        category_id,
                                        m_serviceRoot->networkProxy(),
-                                       m_authDetails->authenticationType() == NetworkFactory::NetworkAuthentication::Basic,
+                                       m_authDetails->authenticationType() ==
+                                         NetworkFactory::NetworkAuthentication::Basic,
                                        m_authDetails->m_txtUsername->lineEdit()->text(),
                                        m_authDetails->m_txtPassword->lineEdit()->text());
 

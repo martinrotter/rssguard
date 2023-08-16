@@ -3,16 +3,11 @@
 #include "services/newsblur/newsblurnetwork.h"
 
 #include "3rd-party/boolinq/boolinq.h"
-#include "database/databasequeries.h"
 #include "exceptions/applicationexception.h"
-#include "exceptions/feedfetchexception.h"
 #include "exceptions/networkexception.h"
 #include "miscellaneous/application.h"
 #include "network-web/networkfactory.h"
-#include "network-web/webfactory.h"
 #include "services/abstract/category.h"
-#include "services/abstract/label.h"
-#include "services/abstract/labelsnode.h"
 #include "services/newsblur/definitions.h"
 
 #include <QJsonArray>

@@ -3,7 +3,6 @@
 #include "network-web/basenetworkaccessmanager.h"
 
 #include "miscellaneous/application.h"
-#include "miscellaneous/textfactory.h"
 #include "network-web/webfactory.h"
 
 #include <QNetworkProxy>

@@ -4,19 +4,14 @@
 
 #include "database/databasequeries.h"
 #include "exceptions/applicationexception.h"
-#include "gui/messagebox.h"
 #include "miscellaneous/application.h"
-#include "miscellaneous/iconfactory.h"
-#include "network-web/cookiejar.h"
 #include "network-web/networkfactory.h"
 #include "network-web/webfactory.h"
 #include "services/abstract/category.h"
 #include "services/abstract/gui/authenticationdetails.h"
 #include "services/abstract/serviceroot.h"
-#include "services/standard/definitions.h"
 #include "services/standard/gui/standardfeeddetails.h"
 #include "services/standard/standardfeed.h"
-#include "services/standard/standardserviceroot.h"
 
 #include <QFileDialog>
 #include <QNetworkCookie>

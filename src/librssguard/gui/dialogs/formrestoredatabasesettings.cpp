@@ -3,12 +3,10 @@
 #include "gui/dialogs/formrestoredatabasesettings.h"
 
 #include "exceptions/applicationexception.h"
-#include "gui/dialogs/formmain.h"
 #include "gui/guiutilities.h"
-#include "gui/messagebox.h"
 #include "miscellaneous/iconfactory.h"
 
-#include "QFileDialog"
+#include <QFileDialog>
 
 FormRestoreDatabaseSettings::FormRestoreDatabaseSettings(QWidget& parent) : QDialog(&parent), m_shouldRestart(false) {
   m_ui.setupUi(this);

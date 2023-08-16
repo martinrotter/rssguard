@@ -2,7 +2,6 @@
 
 #include "gui/settings/settingsgui.h"
 
-#include "3rd-party/boolinq/boolinq.h"
 #include "core/feedsmodel.h"
 #include "gui/dialogs/formmain.h"
 #include "gui/feedmessageviewer.h"

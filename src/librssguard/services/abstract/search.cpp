@@ -7,7 +7,6 @@
 #include "miscellaneous/application.h"
 #include "services/abstract/cacheforserviceroot.h"
 #include "services/abstract/gui/formaddeditprobe.h"
-#include "services/abstract/labelsnode.h"
 #include "services/abstract/serviceroot.h"
 
 #include <QPainter>

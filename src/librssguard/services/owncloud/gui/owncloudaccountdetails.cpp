@@ -3,7 +3,6 @@
 #include "services/owncloud/gui/owncloudaccountdetails.h"
 
 #include "definitions/definitions.h"
-#include "gui/guiutilities.h"
 #include "miscellaneous/systemfactory.h"
 #include "services/owncloud/definitions.h"
 #include "services/owncloud/owncloudnetworkfactory.h"
@@ -12,9 +11,10 @@ OwnCloudAccountDetails::OwnCloudAccountDetails(QWidget* parent) : QWidget(parent
   m_ui.setupUi(this);
 
   m_ui.m_lblTestResult->label()->setWordWrap(true);
-  m_ui.m_lblServerSideUpdateInformation->setHelpText(tr("Leaving this option on causes that updates "
-                                                        "of feeds will be probably much slower and may time-out often."),
-                                                     true);
+  m_ui.m_lblServerSideUpdateInformation
+    ->setHelpText(tr("Leaving this option on causes that updates "
+                     "of feeds will be probably much slower and may time-out often."),
+                  true);
   m_ui.m_txtPassword->lineEdit()->setPlaceholderText(tr("Password for your Nextcloud account"));
   m_ui.m_txtPassword->lineEdit()->setPasswordMode(true);
   m_ui.m_txtUsername->lineEdit()->setPlaceholderText(tr("Username for your Nextcloud account"));
@@ -23,14 +23,17 @@ OwnCloudAccountDetails::OwnCloudAccountDetails(QWidget* parent) : QWidget(parent
                                   tr("No test done yet."),
                                   tr("Here, results of connection test are shown."));
 
-  connect(m_ui.m_spinLimitMessages, static_cast<void (QSpinBox::*)(int)>(&QSpinBox::valueChanged), this, [=](int value) {
-    if (value <= 0) {
-      m_ui.m_spinLimitMessages->setSuffix(QSL(" ") + tr("= unlimited"));
-    }
-    else {
-      m_ui.m_spinLimitMessages->setSuffix(QSL(" ") + tr("articles"));
-    }
-  });
+  connect(m_ui.m_spinLimitMessages,
+          static_cast<void (QSpinBox::*)(int)>(&QSpinBox::valueChanged),
+          this,
+          [=](int value) {
+            if (value <= 0) {
+              m_ui.m_spinLimitMessages->setSuffix(QSL(" ") + tr("= unlimited"));
+            }
+            else {
+              m_ui.m_spinLimitMessages->setSuffix(QSL(" ") + tr("articles"));
+            }
+          });
 
   connect(m_ui.m_txtPassword->lineEdit(), &BaseLineEdit::textChanged, this, &OwnCloudAccountDetails::onPasswordChanged);
   connect(m_ui.m_txtUsername->lineEdit(), &BaseLineEdit::textChanged, this, &OwnCloudAccountDetails::onUsernameChanged);
@@ -59,21 +62,22 @@ void OwnCloudAccountDetails::performTest(const QNetworkProxy& custom_proxy) {
   OwnCloudStatusResponse result = factory.status(custom_proxy);
 
   if (result.networkError() != QNetworkReply::NetworkError::NoError) {
-    m_ui.m_lblTestResult->setStatus(WidgetWithStatus::StatusType::Error,
-                                    tr("Network error: '%1'.").arg(NetworkFactory::networkErrorText(result.networkError())),
-                                    tr("Network error, have you entered correct Nextcloud endpoint and password?"));
+    m_ui.m_lblTestResult
+      ->setStatus(WidgetWithStatus::StatusType::Error,
+                  tr("Network error: '%1'.").arg(NetworkFactory::networkErrorText(result.networkError())),
+                  tr("Network error, have you entered correct Nextcloud endpoint and password?"));
   }
   else if (result.isLoaded()) {
     if (!SystemFactory::isVersionEqualOrNewer(result.version(), QSL(OWNCLOUD_MIN_VERSION))) {
       m_ui.m_lblTestResult->setStatus(WidgetWithStatus::StatusType::Error,
-                                      tr("Installed version: %1, required at least: %2.").arg(result.version(),
-                                                                                              QSL(OWNCLOUD_MIN_VERSION)),
+                                      tr("Installed version: %1, required at least: %2.")
+                                        .arg(result.version(), QSL(OWNCLOUD_MIN_VERSION)),
                                       tr("Selected Nextcloud News server is running unsupported version."));
     }
     else {
       m_ui.m_lblTestResult->setStatus(WidgetWithStatus::StatusType::Ok,
-                                      tr("Installed version: %1, required at least: %2.").arg(result.version(),
-                                                                                              QSL(OWNCLOUD_MIN_VERSION)),
+                                      tr("Installed version: %1, required at least: %2.")
+                                        .arg(result.version(), QSL(OWNCLOUD_MIN_VERSION)),
                                       tr("Nextcloud News server is okay."));
     }
   }

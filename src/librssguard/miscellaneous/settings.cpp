@@ -4,6 +4,7 @@
 
 #include "miscellaneous/application.h"
 #include "miscellaneous/iofactory.h"
+
 #include <QDebug>
 #include <QDir>
 #include <QLocale>

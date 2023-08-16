@@ -2,33 +2,16 @@
 
 #include "gui/feedmessageviewer.h"
 
-#include "3rd-party/boolinq/boolinq.h"
-#include "core/feeddownloader.h"
-#include "core/feedsproxymodel.h"
 #include "core/messagesproxymodel.h"
-#include "database/databasecleaner.h"
-#include "database/databasefactory.h"
-#include "exceptions/applicationexception.h"
-#include "gui/dialogs/formdatabasecleanup.h"
 #include "gui/dialogs/formmain.h"
 #include "gui/feedsview.h"
-#include "gui/messagebox.h"
 #include "gui/messagepreviewer.h"
 #include "gui/messagesview.h"
-#include "gui/systemtrayicon.h"
 #include "gui/toolbars/feedstoolbar.h"
 #include "gui/toolbars/messagestoolbar.h"
-#include "gui/toolbars/statusbar.h"
 #include "gui/webbrowser.h"
-#include "miscellaneous/feedreader.h"
-#include "miscellaneous/iconfactory.h"
-#include "miscellaneous/mutex.h"
 #include "miscellaneous/settings.h"
-#include "miscellaneous/systemfactory.h"
 #include "miscellaneous/templates.h"
-#include "services/standard/standardfeed.h"
-#include "services/standard/standardfeedsimportexportmodel.h"
-#include "services/standard/standardserviceroot.h"
 
 #include <QAction>
 #include <QDebug>

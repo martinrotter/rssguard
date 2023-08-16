@@ -6,7 +6,6 @@
 #include "definitions/definitions.h"
 #include "miscellaneous/application.h"
 #include "miscellaneous/iconfactory.h"
-#include "services/gmail/definitions.h"
 #include "services/gmail/gmailserviceroot.h"
 #include "services/gmail/gui/formeditgmailaccount.h"
 

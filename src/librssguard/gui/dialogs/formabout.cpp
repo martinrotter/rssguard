@@ -2,10 +2,7 @@
 
 #include "gui/dialogs/formabout.h"
 
-#include "database/databasedriver.h"
-#include "database/databasefactory.h"
 #include "definitions/definitions.h"
-#include "exceptions/applicationexception.h"
 #include "gui/guiutilities.h"
 #include "miscellaneous/application.h"
 #include "miscellaneous/iconfactory.h"

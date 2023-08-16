@@ -3,15 +3,13 @@
 #include "services/reddit/gui/redditaccountdetails.h"
 
 #include "exceptions/applicationexception.h"
-#include "gui/guiutilities.h"
 #include "miscellaneous/application.h"
 #include "network-web/oauth2service.h"
 #include "network-web/webfactory.h"
 #include "services/reddit/definitions.h"
 #include "services/reddit/redditnetworkfactory.h"
 
-RedditAccountDetails::RedditAccountDetails(QWidget* parent)
-  : QWidget(parent), m_oauth(nullptr), m_lastProxy({}) {
+RedditAccountDetails::RedditAccountDetails(QWidget* parent) : QWidget(parent), m_oauth(nullptr), m_lastProxy({}) {
   m_ui.setupUi(this);
 
   m_ui.m_lblInfo->setHelpText(tr("You have to fill in your client ID/secret and also fill in correct redirect URL."),
@@ -90,9 +88,7 @@ void RedditAccountDetails::onAuthGranted() {
     m_ui.m_txtUsername->lineEdit()->setText(resp[QSL("name")].toString());
   }
   catch (const ApplicationException& ex) {
-    qCriticalNN << LOGSEC_REDDIT
-                << "Failed to obtain profile with error:"
-                << QUOTE_W_SPACE_DOT(ex.message());
+    qCriticalNN << LOGSEC_REDDIT << "Failed to obtain profile with error:" << QUOTE_W_SPACE_DOT(ex.message());
   }
 }
 

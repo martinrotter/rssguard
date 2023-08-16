@@ -4,9 +4,7 @@
 
 #include "definitions/definitions.h"
 #include "exceptions/networkexception.h"
-#include "gui/guiutilities.h"
 #include "miscellaneous/application.h"
-#include "miscellaneous/systemfactory.h"
 #include "network-web/webfactory.h"
 #include "services/feedly/definitions.h"
 #include "services/feedly/feedlynetwork.h"
@@ -33,13 +31,15 @@ FeedlyAccountDetails::FeedlyAccountDetails(QWidget* parent) : QWidget(parent), m
 
 #if defined(FEEDLY_OFFICIAL_SUPPORT)
   m_ui.m_lblInfo->setHelpText(tr("Your %1 build has official Feedly support. You do not have to use \"developer access "
-                                 "token\". You can therefore leave corresponding field empty.").arg(QSL(APP_NAME)),
+                                 "token\". You can therefore leave corresponding field empty.")
+                                .arg(QSL(APP_NAME)),
                               false);
 #else
   m_ui.m_lblInfo->setHelpText(tr("Your %1 does not offer official Feedly support, thus you must "
                                  "authorize via special authorization code called \"developer access token\". "
                                  "These tokens are usually valid only for 1 month and allow only 250 API calls "
-                                 "each day.").arg(QSL(APP_NAME)),
+                                 "each day.")
+                                .arg(QSL(APP_NAME)),
                               true);
 #endif
 
@@ -57,8 +57,10 @@ FeedlyAccountDetails::FeedlyAccountDetails(QWidget* parent) : QWidget(parent), m
 
   connect(m_ui.m_btnGetToken, &QPushButton::clicked, this, &FeedlyAccountDetails::getDeveloperAccessToken);
   connect(m_ui.m_txtUsername->lineEdit(), &BaseLineEdit::textChanged, this, &FeedlyAccountDetails::onUsernameChanged);
-  connect(m_ui.m_txtDeveloperAccessToken->lineEdit(), &BaseLineEdit::textChanged,
-          this, &FeedlyAccountDetails::onDeveloperAccessTokenChanged);
+  connect(m_ui.m_txtDeveloperAccessToken->lineEdit(),
+          &BaseLineEdit::textChanged,
+          this,
+          &FeedlyAccountDetails::onDeveloperAccessTokenChanged);
 
   setTabOrder(m_ui.m_txtUsername->lineEdit(), m_ui.m_btnGetToken);
   setTabOrder(m_ui.m_btnGetToken, m_ui.m_txtDeveloperAccessToken->lineEdit());
@@ -115,9 +117,7 @@ void FeedlyAccountDetails::onAuthGranted() {
                                     tr("Your access was approved."));
   }
   catch (const ApplicationException& ex) {
-    qCriticalNN << LOGSEC_FEEDLY
-                << "Failed to obtain profile with error:"
-                << QUOTE_W_SPACE_DOT(ex.message());
+    qCriticalNN << LOGSEC_FEEDLY << "Failed to obtain profile with error:" << QUOTE_W_SPACE_DOT(ex.message());
   }
 }
 

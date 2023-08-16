@@ -2,7 +2,6 @@
 
 #include "gui/dialogs/formmain.h"
 
-#include "database/databasefactory.h"
 #include "definitions/definitions.h"
 #include "gui/dialogs/formabout.h"
 #include "gui/dialogs/formaddaccount.h"
@@ -13,10 +12,8 @@
 #include "gui/dialogs/formupdate.h"
 #include "gui/feedmessageviewer.h"
 #include "gui/feedsview.h"
-#include "gui/messagebox.h"
 #include "gui/messagepreviewer.h"
 #include "gui/messagesview.h"
-#include "gui/reusable/plaintoolbutton.h"
 #include "gui/reusable/searchlineedit.h"
 #include "gui/systemtrayicon.h"
 #include "gui/tabbar.h"
@@ -28,14 +25,11 @@
 #include "miscellaneous/iconfactory.h"
 #include "miscellaneous/mutex.h"
 #include "miscellaneous/settings.h"
-#include "miscellaneous/systemfactory.h"
 #include "network-web/adblock/adblockicon.h"
 #include "network-web/adblock/adblockmanager.h"
 #include "network-web/webfactory.h"
 #include "services/abstract/recyclebin.h"
 #include "services/abstract/serviceroot.h"
-#include "services/owncloud/owncloudnetworkfactory.h"
-#include "services/standard/gui/formstandardimportexport.h"
 
 #include <QCloseEvent>
 #include <QFileDialog>

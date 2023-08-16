@@ -5,11 +5,6 @@
 #include "definitions/definitions.h"
 #include "exceptions/applicationexception.h"
 #include "exceptions/networkexception.h"
-#include "gui/guiutilities.h"
-#include "miscellaneous/application.h"
-#include "miscellaneous/systemfactory.h"
-#include "network-web/webfactory.h"
-#include "services/newsblur/definitions.h"
 #include "services/newsblur/newsblurnetwork.h"
 
 #include <QVariantHash>
@@ -60,18 +55,17 @@ void NewsBlurAccountDetails::performTest(const QNetworkProxy& custom_proxy) {
     LoginResult result = factory.login(custom_proxy);
 
     if (result.m_authenticated && !result.m_sessiodId.isEmpty()) {
-      m_ui.m_lblTestResult->setStatus(WidgetWithStatus::StatusType::Ok,
-                                      tr("You are good to go!"),
-                                      tr("Yeah."));
+      m_ui.m_lblTestResult->setStatus(WidgetWithStatus::StatusType::Ok, tr("You are good to go!"), tr("Yeah."));
     }
     else {
       throw ApplicationException(result.m_errors.join(QSL(", ")));
     }
   }
   catch (const NetworkException& netEx) {
-    m_ui.m_lblTestResult->setStatus(WidgetWithStatus::StatusType::Error,
-                                    tr("Network error: '%1'.").arg(NetworkFactory::networkErrorText(netEx.networkError())),
-                                    tr("Network error, have you entered correct username and password?"));
+    m_ui.m_lblTestResult
+      ->setStatus(WidgetWithStatus::StatusType::Error,
+                  tr("Network error: '%1'.").arg(NetworkFactory::networkErrorText(netEx.networkError())),
+                  tr("Network error, have you entered correct username and password?"));
   }
   catch (const ApplicationException& ex) {
     m_ui.m_lblTestResult->setStatus(WidgetWithStatus::StatusType::Error,

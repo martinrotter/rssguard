@@ -10,12 +10,10 @@
 #include "gui/messagebox.h"
 #include "miscellaneous/feedreader.h"
 #include "miscellaneous/iconfactory.h"
-#include "miscellaneous/textfactory.h"
 #include "services/abstract/feed.h"
 #include "services/abstract/recyclebin.h"
 #include "services/abstract/serviceentrypoint.h"
 #include "services/abstract/serviceroot.h"
-#include "services/standard/standardserviceroot.h"
 
 #include <QMimeData>
 #include <QPair>

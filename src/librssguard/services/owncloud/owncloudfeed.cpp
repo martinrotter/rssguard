@@ -3,7 +3,6 @@
 #include "services/owncloud/owncloudfeed.h"
 
 #include "database/databasequeries.h"
-#include "miscellaneous/iconfactory.h"
 #include "services/owncloud/owncloudnetworkfactory.h"
 #include "services/owncloud/owncloudserviceroot.h"
 
@@ -16,8 +15,7 @@ bool OwnCloudFeed::canBeDeleted() const {
 }
 
 bool OwnCloudFeed::deleteViaGui() {
-  if (serviceRoot()->network()->deleteFeed(customId(), getParentServiceRoot()->networkProxy()) &&
-      removeItself()) {
+  if (serviceRoot()->network()->deleteFeed(customId(), getParentServiceRoot()->networkProxy()) && removeItself()) {
     serviceRoot()->requestItemRemoval(this);
     return true;
   }

@@ -5,7 +5,6 @@
 #include "definitions/definitions.h"
 #include "gui/reusable/plaintoolbutton.h"
 #include "miscellaneous/settings.h"
-#include "miscellaneous/templates.h"
 
 #include <QMouseEvent>
 #include <QStyle>
@@ -21,9 +20,8 @@ TabBar::~TabBar() {
 }
 
 void TabBar::setTabType(int index, TabBar::TabType type) {
-  const auto button_position = static_cast<ButtonPosition>(style()->styleHint(QStyle::StyleHint::SH_TabBar_CloseButtonPosition,
-                                                                              nullptr,
-                                                                              this));
+  const auto button_position =
+    static_cast<ButtonPosition>(style()->styleHint(QStyle::StyleHint::SH_TabBar_CloseButtonPosition, nullptr, this));
 
   switch (type) {
     case TabBar::TabType::DownloadManager:
@@ -51,9 +49,8 @@ void TabBar::setTabType(int index, TabBar::TabType type) {
 
 void TabBar::closeTabViaButton() {
   const auto* close_button = qobject_cast<QAbstractButton*>(sender());
-  const auto button_position = static_cast<ButtonPosition>(style()->styleHint(QStyle::StyleHint::SH_TabBar_CloseButtonPosition,
-                                                                              nullptr,
-                                                                              this));
+  const auto button_position =
+    static_cast<ButtonPosition>(style()->styleHint(QStyle::StyleHint::SH_TabBar_CloseButtonPosition, nullptr, this));
 
   if (close_button != nullptr) {
     // Find index of tab for this close button.
@@ -75,15 +72,11 @@ void TabBar::wheelEvent(QWheelEvent* event) {
   if (number_of_tabs > 1) {
     if (event->angleDelta().y() > 0) {
       // Scroll to the LEFT tab.
-      setCurrentIndex(current_index == 0
-                      ? number_of_tabs - 1
-                      : current_index - 1);
+      setCurrentIndex(current_index == 0 ? number_of_tabs - 1 : current_index - 1);
     }
     else if (event->angleDelta().y() < 0) {
       // Scroll to the RIGHT tab.
-      setCurrentIndex(current_index == number_of_tabs - 1
-                      ? 0
-                      : current_index + 1);
+      setCurrentIndex(current_index == number_of_tabs - 1 ? 0 : current_index + 1);
     }
   }
 }

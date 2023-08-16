@@ -3,7 +3,6 @@
 #include "gui/settings/settingsbrowsermail.h"
 
 #include "exceptions/applicationexception.h"
-#include "gui/guiutilities.h"
 #include "gui/reusable/networkproxydetails.h"
 #include "miscellaneous/application.h"
 #include "miscellaneous/externaltool.h"

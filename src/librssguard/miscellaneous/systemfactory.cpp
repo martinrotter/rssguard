@@ -8,7 +8,6 @@
 #include "gui/dialogs/formupdate.h"
 #include "miscellaneous/application.h"
 #include "miscellaneous/systemfactory.h"
-#include "network-web/networkfactory.h"
 
 #if defined(Q_OS_WIN)
 #include <QSettings>

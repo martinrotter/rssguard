@@ -6,7 +6,6 @@
 #include "gui/messagebox.h"
 #include "miscellaneous/application.h"
 #include "miscellaneous/iconfactory.h"
-#include "network-web/oauth2service.h"
 #include "services/gmail/definitions.h"
 #include "services/gmail/gmailnetworkfactory.h"
 #include "services/gmail/gmailserviceroot.h"

@@ -2,11 +2,8 @@
 
 #include "services/greader/gui/formeditgreaderaccount.h"
 
-#include "gui/guiutilities.h"
 #include "miscellaneous/iconfactory.h"
-#include "network-web/networkfactory.h"
 #include "network-web/oauth2service.h"
-#include "services/greader/definitions.h"
 #include "services/greader/greadernetwork.h"
 #include "services/greader/greaderserviceroot.h"
 #include "services/greader/gui/greaderaccountdetails.h"
@@ -25,10 +22,9 @@ void FormEditGreaderAccount::apply() {
   FormAccountDetails::apply();
 
   GreaderServiceRoot* existing_root = account<GreaderServiceRoot>();
-  bool using_another_acc =
-    m_details->m_ui.m_txtUsername->lineEdit()->text() != existing_root->network()->username() ||
-    m_details->service() != existing_root->network()->service() ||
-    m_details->m_ui.m_txtUrl->lineEdit()->text() != existing_root->network()->baseUrl();
+  bool using_another_acc = m_details->m_ui.m_txtUsername->lineEdit()->text() != existing_root->network()->username() ||
+                           m_details->service() != existing_root->network()->service() ||
+                           m_details->m_ui.m_txtUrl->lineEdit()->text() != existing_root->network()->baseUrl();
 
   existing_root->network()->setBaseUrl(m_details->m_ui.m_txtUrl->lineEdit()->text());
   existing_root->network()->setUsername(m_details->m_ui.m_txtUsername->lineEdit()->text());
@@ -44,8 +40,7 @@ void FormEditGreaderAccount::apply() {
   if (existing_root->network()->service() == GreaderServiceRoot::Service::Inoreader) {
     existing_root->network()->oauth()->setClientId(m_details->m_ui.m_txtAppId->lineEdit()->text());
     existing_root->network()->oauth()->setClientSecret(m_details->m_ui.m_txtAppKey->lineEdit()->text());
-    existing_root->network()->oauth()->setRedirectUrl(m_details->m_ui.m_txtRedirectUrl->lineEdit()->text(),
-                                                      true);
+    existing_root->network()->oauth()->setRedirectUrl(m_details->m_ui.m_txtRedirectUrl->lineEdit()->text(), true);
   }
 
   existing_root->saveAccountDataToDatabase();

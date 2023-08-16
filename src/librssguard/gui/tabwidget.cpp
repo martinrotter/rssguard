@@ -14,7 +14,6 @@
 #include "miscellaneous/iconfactory.h"
 #include "miscellaneous/settings.h"
 #include "miscellaneous/textfactory.h"
-#include "network-web/webfactory.h"
 
 #include <QMenu>
 #include <QTimer>

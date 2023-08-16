@@ -2,14 +2,10 @@
 
 #include "services/standard/gui/formstandardimportexport.h"
 
-#include "core/feedsmodel.h"
 #include "exceptions/ioexception.h"
-#include "gui/dialogs/formmain.h"
-#include "gui/feedmessageviewer.h"
-#include "gui/feedsview.h"
 #include "gui/guiutilities.h"
-#include "gui/messagebox.h"
 #include "miscellaneous/application.h"
+#include "miscellaneous/iconfactory.h"
 #include "services/abstract/category.h"
 #include "services/standard/standardfeedsimportexportmodel.h"
 #include "services/standard/standardserviceroot.h"

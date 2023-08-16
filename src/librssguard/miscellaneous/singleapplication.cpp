@@ -2,8 +2,6 @@
 
 #include "miscellaneous/singleapplication.h"
 
-#include "definitions/definitions.h"
-
 #include <QDataStream>
 #include <QLocalServer>
 #include <QLocalSocket>

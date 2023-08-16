@@ -2,7 +2,6 @@
 
 #include "gui/webbrowser.h"
 
-#include "database/databasequeries.h"
 #include "gui/dialogs/formmain.h"
 #include "gui/messagebox.h"
 #include "gui/reusable/discoverfeedsbutton.h"
@@ -15,7 +14,6 @@
 #include "network-web/networkfactory.h"
 #include "network-web/readability.h"
 #include "network-web/webfactory.h"
-#include "services/abstract/serviceroot.h"
 
 #include <QKeyEvent>
 #include <QScrollBar>

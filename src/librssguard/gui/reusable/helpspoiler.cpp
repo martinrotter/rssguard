@@ -3,7 +3,6 @@
 #include "gui/reusable/helpspoiler.h"
 
 #include "definitions/definitions.h"
-#include "gui/guiutilities.h"
 #include "gui/reusable/plaintoolbutton.h"
 #include "miscellaneous/application.h"
 #include "miscellaneous/iconfactory.h"

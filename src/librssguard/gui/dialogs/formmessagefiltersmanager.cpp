@@ -1,9 +1,5 @@
 // For license of this file, see <project-root-folder>/LICENSE.md.
 
-#include <QDateTime>
-#include <QJSEngine>
-#include <QProcess>
-
 #include "gui/dialogs/formmessagefiltersmanager.h"
 
 #include "3rd-party/boolinq/boolinq.h"
@@ -20,7 +16,10 @@
 #include "network-web/webfactory.h"
 #include "services/abstract/accountcheckmodel.h"
 #include "services/abstract/feed.h"
-#include "services/abstract/labelsnode.h"
+
+#include <QDateTime>
+#include <QJSEngine>
+#include <QProcess>
 
 FormMessageFiltersManager::FormMessageFiltersManager(FeedReader* reader,
                                                      const QList<ServiceRoot*>& accounts,

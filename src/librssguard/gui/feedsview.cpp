@@ -8,16 +8,11 @@
 #include "gui/dialogs/formmain.h"
 #include "gui/messagebox.h"
 #include "gui/reusable/styleditemdelegatewithoutfocus.h"
-#include "gui/systemtrayicon.h"
 #include "miscellaneous/feedreader.h"
 #include "miscellaneous/mutex.h"
-#include "miscellaneous/systemfactory.h"
 #include "services/abstract/feed.h"
-#include "services/abstract/gui/formcategorydetails.h"
 #include "services/abstract/rootitem.h"
 #include "services/abstract/serviceroot.h"
-#include "services/standard/standardcategory.h"
-#include "services/standard/standardfeed.h"
 
 #include <QClipboard>
 #include <QContextMenuEvent>

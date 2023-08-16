@@ -3,7 +3,6 @@
 #include "core/feeddownloader.h"
 
 #include "3rd-party/boolinq/boolinq.h"
-#include "core/feedsmodel.h"
 #include "core/messagefilter.h"
 #include "database/databasequeries.h"
 #include "definitions/definitions.h"

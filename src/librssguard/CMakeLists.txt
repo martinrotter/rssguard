@@ -525,6 +525,7 @@ endif()
 
 if(SQLite3_FOUND)
   # Include directory and library are linked to below.
+  message(STATUS "Using system SQLite3 ${SQLite3_VERSION}.")
 else()
   message(STATUS "Using bundled SQLite3.")
 
@@ -658,6 +659,12 @@ if(SQLite3_FOUND)
   target_include_directories(rssguard AFTER
     PRIVATE
     ${SQLite3_INCLUDE_DIRS}
+  )
+
+  target_compile_definitions(rssguard
+    PRIVATE
+
+    SYSTEM_SQLITE3
   )
 
   target_link_libraries(rssguard PRIVATE

@@ -25,7 +25,6 @@
 #include "network-web/oauth2service.h"
 
 #include "definitions/definitions.h"
-#include "gui/messagebox.h"
 #include "miscellaneous/application.h"
 #include "network-web/networkfactory.h"
 #include "network-web/oauthhttphandler.h"

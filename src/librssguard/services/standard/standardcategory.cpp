@@ -2,15 +2,9 @@
 
 #include "services/standard/standardcategory.h"
 
-#include "core/feedsmodel.h"
 #include "database/databasequeries.h"
 #include "definitions/definitions.h"
 #include "exceptions/applicationexception.h"
-#include "gui/feedmessageviewer.h"
-#include "gui/feedsview.h"
-#include "miscellaneous/iconfactory.h"
-#include "miscellaneous/settings.h"
-#include "miscellaneous/textfactory.h"
 #include "services/abstract/gui/formcategorydetails.h"
 #include "services/standard/standardfeed.h"
 #include "services/standard/standardserviceroot.h"
@@ -36,13 +30,11 @@ bool StandardCategory::performDragDropChange(RootItem* target_item) {
     return true;
   }
   catch (const ApplicationException& ex) {
-    qCriticalNN << LOGSEC_DB
-                << "Cannot overwrite category:"
-                << QUOTE_W_SPACE_DOT(ex.message());
-    qApp->showGuiMessage(Notification::Event::GeneralEvent, {
-      tr("Cannot save category data"),
-      tr("Cannot save data for category, detailed information was logged via debug log."),
-      QSystemTrayIcon::MessageIcon::Critical });
+    qCriticalNN << LOGSEC_DB << "Cannot overwrite category:" << QUOTE_W_SPACE_DOT(ex.message());
+    qApp->showGuiMessage(Notification::Event::GeneralEvent,
+                         {tr("Cannot save category data"),
+                          tr("Cannot save data for category, detailed information was logged via debug log."),
+                          QSystemTrayIcon::MessageIcon::Critical});
     return false;
   }
 }

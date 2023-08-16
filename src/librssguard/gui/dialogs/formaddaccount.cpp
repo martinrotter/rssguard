@@ -6,7 +6,7 @@
 #include "gui/guiutilities.h"
 #include "miscellaneous/application.h"
 #include "miscellaneous/iconfactory.h"
-#include "services/standard/standardserviceentrypoint.h"
+#include "services/abstract/serviceentrypoint.h"
 
 #include <QDialogButtonBox>
 #include <QListWidget>

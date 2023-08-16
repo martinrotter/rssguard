@@ -2,15 +2,17 @@
 
 #include "network-web/silentnetworkaccessmanager.h"
 
-#include "miscellaneous/application.h"
+#include "definitions/definitions.h"
 
 #include <QAuthenticator>
 #include <QNetworkReply>
 
-SilentNetworkAccessManager::SilentNetworkAccessManager(QObject* parent)
-  : BaseNetworkAccessManager(parent) {
-  connect(this, &SilentNetworkAccessManager::authenticationRequired,
-          this, &SilentNetworkAccessManager::onAuthenticationRequired, Qt::DirectConnection);
+SilentNetworkAccessManager::SilentNetworkAccessManager(QObject* parent) : BaseNetworkAccessManager(parent) {
+  connect(this,
+          &SilentNetworkAccessManager::authenticationRequired,
+          this,
+          &SilentNetworkAccessManager::onAuthenticationRequired,
+          Qt::DirectConnection);
 }
 
 SilentNetworkAccessManager::~SilentNetworkAccessManager() {
@@ -23,18 +25,14 @@ void SilentNetworkAccessManager::onAuthenticationRequired(QNetworkReply* reply, 
     authenticator->setUser(reply->property("username").toString());
     authenticator->setPassword(reply->property("password").toString());
     reply->setProperty("authentication-given", true);
-    qDebugNN << LOGSEC_NETWORK
-             << "URL"
-             << QUOTE_W_SPACE(reply->url().toString())
+    qDebugNN << LOGSEC_NETWORK << "URL" << QUOTE_W_SPACE(reply->url().toString())
              << "requested authentication and got it.";
   }
   else {
     reply->setProperty("authentication-given", false);
 
     // Authentication is required but this item does not contain it.
-    qWarningNN << LOGSEC_NETWORK
-               << "Item"
-               << QUOTE_W_SPACE(reply->url().toString())
+    qWarningNN << LOGSEC_NETWORK << "Item" << QUOTE_W_SPACE(reply->url().toString())
                << "requested authentication but username/password is not available.";
   }
 }

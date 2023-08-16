@@ -4,7 +4,6 @@
 
 #include "definitions/definitions.h"
 #include "gui/dialogs/formmain.h"
-#include "gui/dialogs/formsettings.h"
 #include "miscellaneous/application.h"
 #include "miscellaneous/settings.h"
 

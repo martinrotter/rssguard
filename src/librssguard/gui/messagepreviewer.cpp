@@ -2,21 +2,14 @@
 
 #include "gui/messagepreviewer.h"
 
-#include "3rd-party/boolinq/boolinq.h"
 #include "database/databasequeries.h"
-#include "gui/dialogs/formmain.h"
 #include "gui/itemdetails.h"
-#include "gui/messagebox.h"
-#include "gui/reusable/plaintoolbutton.h"
-#include "gui/reusable/searchtextwidget.h"
 #include "gui/webbrowser.h"
 #include "miscellaneous/application.h"
-#include "network-web/webfactory.h"
 #include "services/abstract/gui/custommessagepreviewer.h"
 #include "services/abstract/label.h"
 #include "services/abstract/labelsnode.h"
 #include "services/abstract/serviceroot.h"
-#include "services/gmail/gui/emailpreviewer.h"
 
 #include <QCheckBox>
 #include <QGridLayout>

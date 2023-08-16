@@ -7,16 +7,10 @@
 #include "definitions/definitions.h"
 #include "miscellaneous/application.h"
 #include "miscellaneous/feedreader.h"
-#include "miscellaneous/iconfactory.h"
-#include "miscellaneous/mutex.h"
 #include "miscellaneous/textfactory.h"
 #include "services/abstract/cacheforserviceroot.h"
 #include "services/abstract/gui/formfeeddetails.h"
-#include "services/abstract/importantnode.h"
-#include "services/abstract/labelsnode.h"
-#include "services/abstract/recyclebin.h"
 #include "services/abstract/serviceroot.h"
-#include "services/abstract/unreadnode.h"
 
 Feed::Feed(RootItem* parent)
   : RootItem(parent), m_source(QString()), m_status(Status::Normal), m_statusString(QString()),

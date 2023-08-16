@@ -2,9 +2,7 @@
 
 #include "services/abstract/cacheforserviceroot.h"
 
-#include "3rd-party/boolinq/boolinq.h"
 #include "miscellaneous/application.h"
-#include "miscellaneous/mutex.h"
 #include "services/abstract/label.h"
 
 #include <QDir>

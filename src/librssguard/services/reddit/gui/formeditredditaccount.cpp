@@ -2,14 +2,11 @@
 
 #include "services/reddit/gui/formeditredditaccount.h"
 
-#include "gui/guiutilities.h"
 #include "miscellaneous/application.h"
 #include "miscellaneous/iconfactory.h"
 #include "network-web/oauth2service.h"
-#include "network-web/webfactory.h"
-#include "services/reddit/definitions.h"
-#include "services/reddit/redditserviceroot.h"
 #include "services/reddit/gui/redditaccountdetails.h"
+#include "services/reddit/redditserviceroot.h"
 
 FormEditRedditAccount::FormEditRedditAccount(QWidget* parent)
   : FormAccountDetails(qApp->icons()->miscIcon(QSL("reddit")), parent), m_details(new RedditAccountDetails(this)) {
@@ -26,18 +23,19 @@ void FormEditRedditAccount::apply() {
   FormAccountDetails::apply();
 
   bool using_another_acc =
-    m_details->m_ui.m_txtUsername->lineEdit()->text() !=account<RedditServiceRoot>()->network()->username();
+    m_details->m_ui.m_txtUsername->lineEdit()->text() != account<RedditServiceRoot>()->network()->username();
 
   // Make sure that the data copied from GUI are used for brand new login.
   account<RedditServiceRoot>()->network()->oauth()->logout(false);
   account<RedditServiceRoot>()->network()->oauth()->setClientId(m_details->m_ui.m_txtAppId->lineEdit()->text());
   account<RedditServiceRoot>()->network()->oauth()->setClientSecret(m_details->m_ui.m_txtAppKey->lineEdit()->text());
   account<RedditServiceRoot>()->network()->oauth()->setRedirectUrl(m_details->m_ui.m_txtRedirectUrl->lineEdit()->text(),
-                                                                  true);
+                                                                   true);
 
   account<RedditServiceRoot>()->network()->setUsername(m_details->m_ui.m_txtUsername->lineEdit()->text());
   account<RedditServiceRoot>()->network()->setBatchSize(m_details->m_ui.m_spinLimitMessages->value());
-  account<RedditServiceRoot>()->network()->setDownloadOnlyUnreadMessages(m_details->m_ui.m_cbDownloadOnlyUnreadMessages->isChecked());
+  account<RedditServiceRoot>()->network()->setDownloadOnlyUnreadMessages(m_details->m_ui.m_cbDownloadOnlyUnreadMessages
+                                                                           ->isChecked());
 
   account<RedditServiceRoot>()->saveAccountDataToDatabase();
   accept();
@@ -64,5 +62,6 @@ void FormEditRedditAccount::loadAccountData() {
 
   m_details->m_ui.m_txtUsername->lineEdit()->setText(account<RedditServiceRoot>()->network()->username());
   m_details->m_ui.m_spinLimitMessages->setValue(account<RedditServiceRoot>()->network()->batchSize());
-  m_details->m_ui.m_cbDownloadOnlyUnreadMessages->setChecked(account<RedditServiceRoot>()->network()->downloadOnlyUnreadMessages());
+  m_details->m_ui.m_cbDownloadOnlyUnreadMessages
+    ->setChecked(account<RedditServiceRoot>()->network()->downloadOnlyUnreadMessages());
 }

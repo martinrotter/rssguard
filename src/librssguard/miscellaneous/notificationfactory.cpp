@@ -4,7 +4,6 @@
 
 #include "3rd-party/boolinq/boolinq.h"
 #include "definitions/definitions.h"
-#include "exceptions/applicationexception.h"
 #include "miscellaneous/application.h"
 #include "miscellaneous/settings.h"
 
@@ -58,7 +57,8 @@ void NotificationFactory::save(const QList<Notification>& new_notifications, Set
   for (const auto& n : qAsConst(m_notifications)) {
     settings->setValue(GROUP(Notifications),
                        QString::number(int(n.event())),
-                       QStringList{
-                         n.balloonEnabled() ? QSL("1") : QSL("0"), n.soundPath(), QString::number(n.volume())});
+                       QStringList{n.balloonEnabled() ? QSL("1") : QSL("0"),
+                                   n.soundPath(),
+                                   QString::number(n.volume())});
   }
 }

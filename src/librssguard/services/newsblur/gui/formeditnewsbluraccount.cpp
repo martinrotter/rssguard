@@ -2,10 +2,7 @@
 
 #include "services/newsblur/gui/formeditnewsbluraccount.h"
 
-#include "gui/guiutilities.h"
 #include "miscellaneous/iconfactory.h"
-#include "network-web/networkfactory.h"
-#include "services/newsblur/definitions.h"
 #include "services/newsblur/gui/newsbluraccountdetails.h"
 #include "services/newsblur/newsblurnetwork.h"
 #include "services/newsblur/newsblurserviceroot.h"
@@ -24,9 +21,8 @@ void FormEditNewsBlurAccount::apply() {
   FormAccountDetails::apply();
 
   NewsBlurServiceRoot* existing_root = account<NewsBlurServiceRoot>();
-  bool using_another_acc =
-    m_details->m_ui.m_txtUsername->lineEdit()->text() != existing_root->network()->username() ||
-    m_details->m_ui.m_txtUrl->lineEdit()->text() != existing_root->network()->baseUrl();
+  bool using_another_acc = m_details->m_ui.m_txtUsername->lineEdit()->text() != existing_root->network()->username() ||
+                           m_details->m_ui.m_txtUrl->lineEdit()->text() != existing_root->network()->baseUrl();
 
   existing_root->network()->setBaseUrl(m_details->m_ui.m_txtUrl->lineEdit()->text());
   existing_root->network()->setUsername(m_details->m_ui.m_txtUsername->lineEdit()->text());
