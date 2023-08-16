@@ -32,34 +32,6 @@ QList<Message> LabelsNode::undeletedMessages() const {
   return DatabaseQueries::getUndeletedLabelledMessages(database, getParentServiceRoot()->accountId());
 }
 
-int LabelsNode::countOfUnreadMessages() const {
-  auto chi = childItems();
-
-  if (chi.isEmpty()) {
-    return 0;
-  }
-
-  return boolinq::from(chi)
-    .max([](RootItem* it) {
-      return it->countOfUnreadMessages();
-    })
-    ->countOfUnreadMessages();
-}
-
-int LabelsNode::countOfAllMessages() const {
-  auto chi = childItems();
-
-  if (chi.isEmpty()) {
-    return 0;
-  }
-
-  return boolinq::from(chi)
-    .max([](RootItem* it) {
-      return it->countOfAllMessages();
-    })
-    ->countOfAllMessages();
-}
-
 void LabelsNode::updateCounts(bool including_total_count) {
   // TODO: This is still rather slow because this is automatically
   // called when message is marked (un)read or starred.

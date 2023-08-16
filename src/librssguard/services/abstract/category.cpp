@@ -20,13 +20,13 @@ Category::Category(const Category& other) : RootItem(other) {
 
 void Category::updateCounts(bool including_total_count) {
   QList<Feed*> feeds;
-  auto str = getSubTree();
+  auto str = childItems();
 
   for (RootItem* child : qAsConst(str)) {
     if (child->kind() == RootItem::Kind::Feed) {
       feeds.append(child->toFeed());
     }
-    else if (child->kind() != RootItem::Kind::Category && child->kind() != RootItem::Kind::ServiceRoot) {
+    else if (child->kind() == RootItem::Kind::Category) {
       child->updateCounts(including_total_count);
     }
   }

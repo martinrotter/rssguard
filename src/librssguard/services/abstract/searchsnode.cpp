@@ -61,34 +61,6 @@ QList<QAction*> SearchsNode::contextMenuFeedsList() {
   return QList<QAction*>{m_actProbeNew};
 }
 
-int SearchsNode::countOfUnreadMessages() const {
-  auto chi = childItems();
-
-  if (chi.isEmpty()) {
-    return 0;
-  }
-
-  return boolinq::from(chi)
-    .max([](RootItem* it) {
-      return it->countOfUnreadMessages();
-    })
-    ->countOfUnreadMessages();
-}
-
-int SearchsNode::countOfAllMessages() const {
-  auto chi = childItems();
-
-  if (chi.isEmpty()) {
-    return 0;
-  }
-
-  return boolinq::from(chi)
-    .max([](RootItem* it) {
-      return it->countOfAllMessages();
-    })
-    ->countOfAllMessages();
-}
-
 void SearchsNode::createProbe() {
   FormAddEditProbe frm(qApp->mainFormWidget());
   Search* new_prb = frm.execForAdd();

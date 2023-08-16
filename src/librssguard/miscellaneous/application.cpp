@@ -3,6 +3,7 @@
 #include "miscellaneous/application.h"
 
 #include "3rd-party/boolinq/boolinq.h"
+#include "3rd-party/sqlite/sqlite3.h"
 #include "dynamic-shortcuts/dynamicshortcuts.h"
 #include "exceptions/applicationexception.h"
 #include "gui/dialogs/formabout.h"
@@ -233,6 +234,7 @@ Application::Application(const QString& id, int& argc, char** argv, const QStrin
 
   setupWorkHorsePool();
 
+  qDebugNN << LOGSEC_CORE << "SQLite version:" << QUOTE_W_SPACE_DOT(SQLITE_VERSION);
   qDebugNN << LOGSEC_CORE << "OpenSSL version:" << QUOTE_W_SPACE_DOT(QSslSocket::sslLibraryVersionString());
   qDebugNN << LOGSEC_CORE << "OpenSSL supported:" << QUOTE_W_SPACE_DOT(QSslSocket::supportsSsl());
   qDebugNN << LOGSEC_CORE << "Global thread pool has"

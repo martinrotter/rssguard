@@ -18,8 +18,6 @@ class LabelsNode : public RootItem {
 
     virtual QList<Message> undeletedMessages() const;
     virtual QList<QAction*> contextMenuFeedsList();
-    virtual int countOfUnreadMessages() const;
-    virtual int countOfAllMessages() const;
     virtual void updateCounts(bool including_total_count);
 
     Label* labelById(const QString& custom_id);
