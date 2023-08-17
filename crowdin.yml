@@ -1,6 +1,5 @@
-commit_message: "%language% translation for %original_file_name% [skip ci]"
-append_commit_message: false
-
+commit_message: '%language% translation for %original_file_name% [skip ci]'
+append_commit_message: 
 files:
   - source: /localization/rssguard_en.ts
-    translation: /localization/rssguard_%locale_with_underscore%.ts
+    translation: /localization/rssguard_%osx_locale%.ts
