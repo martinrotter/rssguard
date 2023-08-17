@@ -5323,7 +5323,7 @@ Login tokens expiration: %2</translation>
     </message>
     <message>
       <location filename="../src/librssguard/miscellaneous/application.cpp" line="143"/>
-      <location filename="../src/librssguard/miscellaneous/localization.cpp" line="78"/>
+      <location filename="../src/librssguard/miscellaneous/localization.cpp" line="79"/>
       <source>LANG_AUTHOR</source>
       <extracomment>Name of translator - optional.</extracomment>
       <translation>flywheeldk</translation>
@@ -6829,19 +6829,44 @@ Description: %3</translation>
   <context>
     <name>SettingsLocalization</name>
     <message>
-      <location filename="../src/librssguard/gui/settings/settingslocalization.cpp" line="16"/>
+      <location filename="../src/librssguard/gui/settings/settingslocalization.cpp" line="22"/>
       <source>Language</source>
       <translation>Sprog</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/settings/settingslocalization.cpp" line="17"/>
+      <location filename="../src/librssguard/gui/settings/settingslocalization.cpp" line="23"/>
       <source>Code</source>
       <translation>Kode</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/settings/settingslocalization.cpp" line="18"/>
+      <location filename="../src/librssguard/gui/settings/settingslocalization.cpp" line="24"/>
       <source>Author</source>
       <translation>Udvikler</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard/gui/settings/settingslocalization.cpp" line="24"/>
+      <source>Translation progress</source>
+      <translation type="unfinished">Translation progress</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard/gui/settings/settingslocalization.cpp" line="26"/>
+      <source>Help us to improve %1 &lt;a href=&quot;%2&quot;&gt;translations&lt;/a&gt;.</source>
+      <translation type="unfinished">Help us to improve %1 &lt;a href=&quot;%2&quot;&gt;translations&lt;/a&gt;.</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard/gui/settings/settingslocalization.cpp" line="136"/>
+      <source>Translators needed!</source>
+      <translation type="unfinished">Translators needed!</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard/gui/settings/settingslocalization.cpp" line="137"/>
+      <source>The translation &apos;%1&apos; is incomplete and anyone able to help with translating %2 is greatly welcomed.</source>
+      <translation type="unfinished">The translation &apos;%1&apos; is incomplete and anyone able to help with translating %2 is greatly welcomed.</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard/gui/settings/settingslocalization.cpp" line="139"/>
+      <source>Do you want to help with the translation now?</source>
+      <translation type="unfinished">Do you want to help with the translation now?</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingslocalization.h" line="26"/>
