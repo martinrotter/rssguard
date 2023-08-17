@@ -74,7 +74,7 @@ QList<Language> Localization::installedLanguages() const {
     if (translator.load(file.absoluteFilePath())) {
       Language new_language;
 
-      new_language.m_code = translator.language();
+      new_language.m_code = translator.language().replace(QSL("-"), QSL("_"));
       new_language.m_author = translator.translate("QObject", "LANG_AUTHOR");
       new_language.m_name = QLocale(new_language.m_code).nativeLanguageName();
       languages << new_language;

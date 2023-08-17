@@ -56,7 +56,7 @@
     <file>graphics/misc/flags/de.png</file>
     <file>graphics/misc/flags/en_GB.png</file>
     <file>graphics/misc/flags/en_US.png</file>
-    <file>graphics/misc/flags/es.png</file>
+    <file>graphics/misc/flags/es_ES.png</file>
     <file>graphics/misc/flags/fi.png</file>
     <file>graphics/misc/flags/fr.png</file>
     <file>graphics/misc/flags/gl.png</file>
@@ -70,7 +70,7 @@
     <file>graphics/misc/flags/pt_BR.png</file>
     <file>graphics/misc/flags/pt_PT.png</file>
     <file>graphics/misc/flags/ru.png</file>
-    <file>graphics/misc/flags/sv.png</file>
+    <file>graphics/misc/flags/sv_SE.png</file>
     <file>graphics/misc/flags/uk.png</file>
     <file>graphics/misc/flags/zh_CN.png</file>
     <file>graphics/misc/flags/zh_TW.png</file>
@@ -94,26 +94,26 @@
 
     <file>desktop/rssguard.desktop.in</file>
 
-    <file>../localization/rssguard_cs_CZ.qm</file>
-    <file>../localization/rssguard_da_DK.qm</file>
-    <file>../localization/rssguard_de_DE.qm</file>
+    <file>../localization/rssguard_cs.qm</file>
+    <file>../localization/rssguard_da.qm</file>
+    <file>../localization/rssguard_de.qm</file>
     <file>../localization/rssguard_en_GB.qm</file>
     <file>../localization/rssguard_en_US.qm</file>
-    <file>../localization/rssguard_es_ES.qm</file>
-    <file>../localization/rssguard_fi_FI.qm</file>
-    <file>../localization/rssguard_fr_FR.qm</file>
-    <file>../localization/rssguard_gl_ES.qm</file>
-    <file>../localization/rssguard_id_ID.qm</file>
-    <file>../localization/rssguard_it_IT.qm</file>
-    <file>../localization/rssguard_ja_JP.qm</file>
-    <file>../localization/rssguard_lt_LT.qm</file>
-    <file>../localization/rssguard_nl_NL.qm</file>
-    <file>../localization/rssguard_pl_PL.qm</file>
+    <file>../localization/rssguard_es.qm</file>
+    <file>../localization/rssguard_fi.qm</file>
+    <file>../localization/rssguard_fr.qm</file>
+    <file>../localization/rssguard_gl.qm</file>
+    <file>../localization/rssguard_id.qm</file>
+    <file>../localization/rssguard_it.qm</file>
+    <file>../localization/rssguard_ja.qm</file>
+    <file>../localization/rssguard_lt.qm</file>
+    <file>../localization/rssguard_nl.qm</file>
+    <file>../localization/rssguard_pl.qm</file>
+    <file>../localization/rssguard_pt.qm</file>
     <file>../localization/rssguard_pt_BR.qm</file>
-    <file>../localization/rssguard_pt_PT.qm</file>
-    <file>../localization/rssguard_ru_RU.qm</file>
-    <file>../localization/rssguard_sv_SE.qm</file>
-    <file>../localization/rssguard_uk_UA.qm</file>
+    <file>../localization/rssguard_ru.qm</file>
+    <file>../localization/rssguard_sv.qm</file>
+    <file>../localization/rssguard_uk.qm</file>
     <file>../localization/rssguard_zh_CN.qm</file>
     <file>../localization/rssguard_zh_TW.qm</file>
 
