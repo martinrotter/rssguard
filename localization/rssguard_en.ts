@@ -6800,17 +6800,17 @@ Description: %3</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/librssguard/gui/settings/settingslocalization.cpp" line="132"/>
+        <location filename="../src/librssguard/gui/settings/settingslocalization.cpp" line="136"/>
         <source>Translators needed!</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/librssguard/gui/settings/settingslocalization.cpp" line="133"/>
+        <location filename="../src/librssguard/gui/settings/settingslocalization.cpp" line="137"/>
         <source>The translation &apos;%1&apos; is incomplete and anyone able to help with translating %2 is greatly welcomed.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/librssguard/gui/settings/settingslocalization.cpp" line="135"/>
+        <location filename="../src/librssguard/gui/settings/settingslocalization.cpp" line="139"/>
         <source>Do you want to help with the translation now?</source>
         <translation type="unfinished"></translation>
     </message>

@@ -66,6 +66,10 @@ void SettingsLocalization::loadSettings() {
       QString lang_id = val_lang.toObject()["data"].toObject()["languageId"].toString().replace(QSL("-"), QSL("_"));
       int lang_completion = val_lang.toObject()["data"].toObject()["translationProgress"].toInt();
 
+      if (lang_id == QSL("en_US")) {
+        lang_completion = 100;
+      }
+
       percentages_langs.insert(lang_id, lang_completion);
     }
   }
