@@ -6,12 +6,12 @@
     <message>
       <location filename="../src/librssguard/services/abstract/accountcheckmodel.cpp" line="183"/>
       <source>(category)</source>
-      <translation type="unfinished">(category)</translation>
+      <translation>(kategori)</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/abstract/accountcheckmodel.cpp" line="186"/>
       <source>(feed)</source>
-      <translation type="unfinished">(feed)</translation>
+      <translation>(feed)</translation>
     </message>
   </context>
   <context>
@@ -19,7 +19,7 @@
     <message>
       <location filename="../src/librssguard/network-web/adblock/adblockdialog.cpp" line="26"/>
       <source>AdBlock configuration</source>
-      <translation type="unfinished">AdBlock configuration</translation>
+      <translation>Konfigurasi AdBlock</translation>
     </message>
     <message>
       <location filename="../src/librssguard/network-web/adblock/adblockdialog.cpp" line="63"/>
@@ -72,12 +72,12 @@ Error: %1</translation>
     <message>
       <location filename="../src/librssguard/network-web/adblock/adblockdialog.ui" line="20"/>
       <source>Enable AdBlock</source>
-      <translation type="unfinished">Enable AdBlock</translation>
+      <translation>Nyalakan AdBlock</translation>
     </message>
     <message>
       <location filename="../src/librssguard/network-web/adblock/adblockdialog.ui" line="32"/>
       <source>&amp;Help</source>
-      <translation type="unfinished">&amp;Help</translation>
+      <translation>Bant&amp;uan</translation>
     </message>
     <message>
       <location filename="../src/librssguard/network-web/adblock/adblockdialog.ui" line="58"/>
@@ -105,12 +105,12 @@ Error: %1</translation>
     <message>
       <location filename="../src/librssguard/network-web/adblock/adblockicon.cpp" line="12"/>
       <source>AdBlock lets you block unwanted content on web pages</source>
-      <translation type="unfinished">AdBlock lets you block unwanted content on web pages</translation>
+      <translation>AdBlock mempersilahkan anda menghalangi konten yang tak dikehendaki pada halaman web</translation>
     </message>
     <message>
       <location filename="../src/librssguard/network-web/adblock/adblockicon.cpp" line="45"/>
       <source>Show AdBlock &amp;settings</source>
-      <translation type="unfinished">Show AdBlock &amp;settings</translation>
+      <translation>Tampilkan &amp;pengaturan AdBlock</translation>
     </message>
   </context>
   <context>
@@ -131,12 +131,12 @@ Error: %1</translation>
     <message>
       <location filename="../src/librssguard/miscellaneous/application.cpp" line="1086"/>
       <source>Application is already running.</source>
-      <translation type="unfinished">Application is already running.</translation>
+      <translation>Aplikasi sedang berjalan.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/miscellaneous/application.cpp" line="558"/>
       <source>Output directory is not writable.</source>
-      <translation type="unfinished">Output directory is not writable.</translation>
+      <translation>Direktori keluaran tidak dapat ditulisi.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/miscellaneous/application.cpp" line="313"/>
@@ -156,22 +156,22 @@ Error: %1</translation>
     <message>
       <location filename="../src/librssguard/miscellaneous/application.cpp" line="566"/>
       <source>Settings file not copied to output directory successfully.</source>
-      <translation type="unfinished">Settings file not copied to output directory successfully.</translation>
+      <translation>Berkas pengaturan tidak berhasil disalin ke direktori keluaran.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/miscellaneous/application.cpp" line="581"/>
       <source>Database restoration was not initiated. Make sure that output directory is writable.</source>
-      <translation type="unfinished">Database restoration was not initiated. Make sure that output directory is writable.</translation>
+      <translation>Pemulihan database tidak dapat dimulai. Pastikan direktori keluaran dapat ditulisi.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/miscellaneous/application.cpp" line="588"/>
       <source>Settings restoration was not initiated. Make sure that output directory is writable.</source>
-      <translation type="unfinished">Settings restoration was not initiated. Make sure that output directory is writable.</translation>
+      <translation>Pemulihan pengaturan tidak dapat dimulai. Pastikan direktori keluaran dapat ditulisi.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/miscellaneous/application.cpp" line="1104"/>
       <source>Cannot add feed</source>
-      <translation type="unfinished">Cannot add feed</translation>
+      <translation>Tidak dapat menambah feed</translation>
     </message>
     <message>
       <location filename="../src/librssguard/miscellaneous/application.cpp" line="1105"/>
@@ -209,10 +209,10 @@ Error: %1</translation>
 
 Please, check NEW stuff included in this
 version by clicking this popup notification.</source>
-      <translation type="unfinished">Welcome to %1.
+      <translation>Selamat datang di %1.
 
-Please, check NEW stuff included in this
-version by clicking this popup notification.</translation>
+Silahkan, memeriksa hal BARU yang termasuk
+di versi ini dengan meng-klik popup notifikasi ini.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/miscellaneous/application.cpp" line="1036"/>
@@ -235,12 +235,12 @@ version by clicking this popup notification.</translation>
     <message>
       <location filename="../src/librssguard/services/abstract/gui/authenticationdetails.ui" line="14"/>
       <source>Form</source>
-      <translation type="unfinished">Form</translation>
+      <translation>Formulir</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/abstract/gui/authenticationdetails.ui" line="20"/>
       <source>Some feeds require authentication, including GMail feeds. BASIC, NTLM-2 and DIGEST-MD5 authentication schemes are supported.</source>
-      <translation type="unfinished">Some feeds require authentication, including GMail feeds. BASIC, NTLM-2 and DIGEST-MD5 authentication schemes are supported.</translation>
+      <translation>Beberapa feed butuh autentikasi, termasuk feed GMail. Skema autentikasi BASIC, NTLM-2 and DIGEST-MD5 didukung.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/abstract/gui/authenticationdetails.ui" line="23"/>
@@ -257,23 +257,23 @@ version by clicking this popup notification.</translation>
       <location filename="../src/librssguard/services/abstract/gui/authenticationdetails.cpp" line="12"/>
       <location filename="../src/librssguard/services/abstract/gui/authenticationdetails.cpp" line="79"/>
       <source>Username</source>
-      <translation type="unfinished">Username</translation>
+      <translation>Nama pengguna</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/abstract/gui/authenticationdetails.ui" line="48"/>
       <location filename="../src/librssguard/services/abstract/gui/authenticationdetails.cpp" line="14"/>
       <source>Password</source>
-      <translation type="unfinished">Password</translation>
+      <translation>Kata sandi</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/abstract/gui/authenticationdetails.cpp" line="13"/>
       <source>Set username to access the feed.</source>
-      <translation type="unfinished">Set username to access the feed.</translation>
+      <translation>Setel nama pengguna untuk mengakses feed.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/abstract/gui/authenticationdetails.cpp" line="15"/>
       <source>Set password to access the feed.</source>
-      <translation type="unfinished">Set password to access the feed.</translation>
+      <translation>Setel kata sandi untuk mengakses feed.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/abstract/gui/authenticationdetails.cpp" line="17"/>
@@ -298,12 +298,12 @@ version by clicking this popup notification.</translation>
     <message>
       <location filename="../src/librssguard/services/abstract/gui/authenticationdetails.cpp" line="63"/>
       <source>Password is ok or it is not needed.</source>
-      <translation type="unfinished">Password is ok or it is not needed.</translation>
+      <translation>Kata sandi ok atau ini tidak diperlukan.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/abstract/gui/authenticationdetails.cpp" line="63"/>
       <source>Password is empty.</source>
-      <translation type="unfinished">Password is empty.</translation>
+      <translation>Kata sandi kosong.</translation>
     </message>
   </context>
   <context>
@@ -319,12 +319,12 @@ version by clicking this popup notification.</translation>
     <message>
       <location filename="../src/librssguard/gui/reusable/colortoolbutton.cpp" line="15"/>
       <source>Click me to change color!</source>
-      <translation type="unfinished">Click me to change color!</translation>
+      <translation>Klik saya untuk mengubah warna!</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/reusable/colortoolbutton.cpp" line="20"/>
       <source>Select new color</source>
-      <translation type="unfinished">Select new color</translation>
+      <translation>Pilih warna baru</translation>
     </message>
   </context>
   <context>
@@ -332,22 +332,22 @@ version by clicking this popup notification.</translation>
     <message>
       <location filename="../src/librssguard/database/databasecleaner.cpp" line="65"/>
       <source>Shrinking database file...</source>
-      <translation type="unfinished">Shrinking database file...</translation>
+      <translation>Susutkan berkas database...</translation>
     </message>
     <message>
       <location filename="../src/librssguard/database/databasecleaner.cpp" line="70"/>
       <source>Database file shrinked...</source>
-      <translation type="unfinished">Database file shrinked...</translation>
+      <translation>Berkas database disusutkan...</translation>
     </message>
     <message>
       <location filename="../src/librssguard/database/databasecleaner.cpp" line="40"/>
       <source>Recycle bin purged...</source>
-      <translation type="unfinished">Recycle bin purged...</translation>
+      <translation>Tong sampah dibersihkan...</translation>
     </message>
     <message>
       <location filename="../src/librssguard/database/databasecleaner.cpp" line="35"/>
       <source>Purging recycle bin...</source>
-      <translation type="unfinished">Purging recycle bin...</translation>
+      <translation>Bersihkan tong sampah...</translation>
     </message>
     <message>
       <location filename="../src/librssguard/database/databasecleaner.cpp" line="25"/>
@@ -398,12 +398,12 @@ version by clicking this popup notification.</translation>
     <message>
       <location filename="../src/librssguard/gui/reusable/discoverfeedsbutton.cpp" line="56"/>
       <source>Given account does not support adding feeds.</source>
-      <translation type="unfinished">Given account does not support adding feeds.</translation>
+      <translation>Akun yang diberikan tidak mendukung penambahan feed.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/reusable/discoverfeedsbutton.cpp" line="79"/>
       <source>Feeds were detected, but no suitable accounts are configured.</source>
-      <translation type="unfinished">Feeds were detected, but no suitable accounts are configured.</translation>
+      <translation>Feed terdeteksi, namun tak ada akun yang cocok yang terkonfigurasi.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/reusable/discoverfeedsbutton.cpp" line="32"/>
@@ -428,62 +428,62 @@ version by clicking this popup notification.</translation>
     <message>
       <location filename="../src/librssguard/network-web/downloadmanager.cpp" line="262"/>
       <source>Error opening output file: %1</source>
-      <translation type="unfinished">Error opening output file: %1</translation>
+      <translation>Eror membuka berkas keluaran: %1</translation>
     </message>
     <message>
       <location filename="../src/librssguard/network-web/downloadmanager.cpp" line="106"/>
       <source>Select destination for downloaded file</source>
-      <translation type="unfinished">Select destination for downloaded file</translation>
+      <translation>Pilih tujuan untuk berkas yang diunduh</translation>
     </message>
     <message>
       <location filename="../src/librssguard/network-web/downloadmanager.cpp" line="288"/>
       <source>Error: %1</source>
-      <translation type="unfinished">Error: %1</translation>
+      <translation>Eror: %1</translation>
     </message>
     <message>
       <location filename="../src/librssguard/network-web/downloadmanager.cpp" line="132"/>
       <source>Download directory couldn&apos;t be created</source>
-      <translation type="unfinished">Download directory couldn&apos;t be created</translation>
+      <translation>Direktori unduhan tidak dapat dibuat</translation>
     </message>
     <message>
       <location filename="../src/librssguard/network-web/downloadmanager.cpp" line="273"/>
       <source>Error when saving file: %1</source>
-      <translation type="unfinished">Error when saving file: %1</translation>
+      <translation>Eror ketika menyimpan berkas: %1</translation>
     </message>
     <message>
       <location filename="../src/librssguard/network-web/downloadmanager.cpp" line="380"/>
       <source>%1 of %2 (%3 per second) - %4</source>
-      <translation type="unfinished">%1 of %2 (%3 per second) - %4</translation>
+      <translation>%1 dari %2 (%3 per detik) - %4</translation>
     </message>
     <message>
       <location filename="../src/librssguard/network-web/downloadmanager.cpp" line="390"/>
       <source>%1 of %2 - download completed</source>
-      <translation type="unfinished">%1 of %2 - download completed</translation>
+      <translation>%1 dari %2 - mengunduh selesai</translation>
     </message>
     <message>
       <location filename="../src/librssguard/network-web/downloadmanager.cpp" line="212"/>
       <source>Cannot open file</source>
-      <translation type="unfinished">Cannot open file</translation>
+      <translation>Tidak dapat membuka berkas</translation>
     </message>
     <message>
       <location filename="../src/librssguard/network-web/downloadmanager.cpp" line="212"/>
       <source>Cannot open output file. Open it manually.</source>
-      <translation type="unfinished">Cannot open output file. Open it manually.</translation>
+      <translation>Tidak dapat membuka berkas keluaran. Buka secara manual.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/network-web/downloadmanager.cpp" line="220"/>
       <source>Cannot open directory</source>
-      <translation type="unfinished">Cannot open directory</translation>
+      <translation>Tidak dapat membuka direktori</translation>
     </message>
     <message>
       <location filename="../src/librssguard/network-web/downloadmanager.cpp" line="221"/>
       <source>Cannot open output directory. Open it manually.</source>
-      <translation type="unfinished">Cannot open output directory. Open it manually.</translation>
+      <translation>Tidak dapat membuka direktori keluaran. Buka secara manual.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/network-web/downloadmanager.cpp" line="431"/>
       <source>Download finished</source>
-      <translation type="unfinished">Download finished</translation>
+      <translation>Mengunduh selesai</translation>
     </message>
     <message>
       <location filename="../src/librssguard/network-web/downloadmanager.cpp" line="432"/>
@@ -495,17 +495,17 @@ Click here to open parent directory.</translation>
     <message>
       <location filename="../src/librssguard/network-web/downloadmanager.cpp" line="442"/>
       <source>URL: %1</source>
-      <translation type="unfinished">URL: %1</translation>
+      <translation>URL: %1</translation>
     </message>
     <message>
       <location filename="../src/librssguard/network-web/downloadmanager.cpp" line="443"/>
       <source>Local file: %1</source>
-      <translation type="unfinished">Local file: %1</translation>
+      <translation>Berkas lokal: %1</translation>
     </message>
     <message>
       <location filename="../src/librssguard/network-web/downloadmanager.cpp" line="112"/>
       <source>Selection of local file cancelled.</source>
-      <translation type="unfinished">Selection of local file cancelled.</translation>
+      <translation>Pilihan berkas lokal dibatalkan.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/network-web/downloadmanager.cpp" line="435"/>
@@ -515,27 +515,27 @@ Click here to open parent directory.</translation>
     <message>
       <location filename="../src/librssguard/network-web/downloaditem.ui" line="54"/>
       <source>Filename</source>
-      <translation type="unfinished">Filename</translation>
+      <translation>Nama file</translation>
     </message>
     <message>
       <location filename="../src/librssguard/network-web/downloaditem.ui" line="86"/>
       <source>&amp;Try again</source>
-      <translation type="unfinished">&amp;Try again</translation>
+      <translation>&amp;Coba lagi</translation>
     </message>
     <message>
       <location filename="../src/librssguard/network-web/downloaditem.ui" line="93"/>
       <source>&amp;Stop</source>
-      <translation type="unfinished">&amp;Stop</translation>
+      <translation>Ber&amp;henti</translation>
     </message>
     <message>
       <location filename="../src/librssguard/network-web/downloaditem.ui" line="100"/>
       <source>&amp;Open file</source>
-      <translation type="unfinished">&amp;Open file</translation>
+      <translation>&amp;Buka berkas</translation>
     </message>
     <message>
       <location filename="../src/librssguard/network-web/downloaditem.ui" line="107"/>
       <source>Open &amp;directory</source>
-      <translation type="unfinished">Open &amp;directory</translation>
+      <translation>Buka &amp;direktori</translation>
     </message>
   </context>
   <context>
@@ -543,48 +543,48 @@ Click here to open parent directory.</translation>
     <message numerus="yes">
       <location filename="../src/librssguard/network-web/downloadmanager.cpp" line="725"/>
       <source>%n minutes remaining</source>
-      <translation type="unfinished">
-        <numerusform>%n minutes remaining</numerusform>
+      <translation>
+        <numerusform>%n menit tersisa</numerusform>
       </translation>
     </message>
     <message numerus="yes">
       <location filename="../src/librssguard/network-web/downloadmanager.cpp" line="729"/>
       <source>%n seconds remaining</source>
-      <translation type="unfinished">
-        <numerusform>%n seconds remaining</numerusform>
+      <translation>
+        <numerusform>%n detik tersisa</numerusform>
       </translation>
     </message>
     <message>
       <location filename="../src/librssguard/network-web/downloadmanager.cpp" line="741"/>
       <source>bytes</source>
-      <translation type="unfinished">bytes</translation>
+      <translation>bytes</translation>
     </message>
     <message>
       <location filename="../src/librssguard/network-web/downloadmanager.cpp" line="745"/>
       <source>kB</source>
-      <translation type="unfinished">kB</translation>
+      <translation>kB</translation>
     </message>
     <message>
       <location filename="../src/librssguard/network-web/downloadmanager.cpp" line="749"/>
       <source>MB</source>
-      <translation type="unfinished">MB</translation>
+      <translation>MB</translation>
     </message>
     <message>
       <location filename="../src/librssguard/network-web/downloadmanager.cpp" line="753"/>
       <source>GB</source>
-      <translation type="unfinished">GB</translation>
+      <translation>GB</translation>
     </message>
     <message numerus="yes">
       <location filename="../src/librssguard/network-web/downloadmanager.cpp" line="583"/>
       <source>Downloading %n file(s)...</source>
-      <translation type="unfinished">
-        <numerusform>Downloading %n file(s)...</numerusform>
+      <translation>
+        <numerusform>Mengunduh %n berkas...</numerusform>
       </translation>
     </message>
     <message>
       <location filename="../src/librssguard/network-web/downloadmanager.ui" line="38"/>
       <source>Clean up</source>
-      <translation type="unfinished">Clean up</translation>
+      <translation>Bersihkan</translation>
     </message>
   </context>
   <context>
@@ -592,7 +592,7 @@ Click here to open parent directory.</translation>
     <message>
       <location filename="../src/librssguard/services/gmail/gui/emailpreviewer.ui" line="14"/>
       <source>Form</source>
-      <translation type="unfinished">Form</translation>
+      <translation>Formulir</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/gmail/gui/emailpreviewer.ui" line="20"/>
@@ -617,12 +617,12 @@ Click here to open parent directory.</translation>
     <message>
       <location filename="../src/librssguard/services/gmail/gui/emailpreviewer.ui" line="87"/>
       <source>Subject</source>
-      <translation type="unfinished">Subject</translation>
+      <translation>Subjek</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/gmail/gui/emailpreviewer.ui" line="104"/>
       <source>To</source>
-      <translation type="unfinished">To</translation>
+      <translation>Ke</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/gmail/gui/emailpreviewer.cpp" line="114"/>
@@ -646,27 +646,27 @@ Click here to open parent directory.</translation>
     <message>
       <location filename="../src/librssguard/services/gmail/gui/emailrecipientcontrol.cpp" line="37"/>
       <source>To</source>
-      <translation type="unfinished">To</translation>
+      <translation>Ke</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/gmail/gui/emailrecipientcontrol.cpp" line="38"/>
       <source>Cc</source>
-      <translation type="unfinished">Cc</translation>
+      <translation>Tembusan</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/gmail/gui/emailrecipientcontrol.cpp" line="39"/>
       <source>Bcc</source>
-      <translation type="unfinished">Bcc</translation>
+      <translation>Tembusan samar</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/gmail/gui/emailrecipientcontrol.cpp" line="40"/>
       <source>Reply-to</source>
-      <translation type="unfinished">Reply-to</translation>
+      <translation>Balas ke</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/gmail/gui/emailrecipientcontrol.cpp" line="27"/>
       <source>E-mail address</source>
-      <translation type="unfinished">E-mail address</translation>
+      <translation>Alamat surel</translation>
     </message>
   </context>
   <context>
@@ -679,7 +679,7 @@ Click here to open parent directory.</translation>
     <message>
       <location filename="../src/librssguard/services/abstract/feed.cpp" line="305"/>
       <source>no errors</source>
-      <translation type="unfinished">no errors</translation>
+      <translation>tidak ada eror</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/abstract/feed.cpp" line="311"/>
@@ -746,7 +746,7 @@ Item ID: %5</translation>
     <message>
       <location filename="../src/librssguard/gui/feedmessageviewer.cpp" line="48"/>
       <source>Toolbar for feeds</source>
-      <translation type="unfinished">Toolbar for feeds</translation>
+      <translation>Bilah alat untuk feed</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/feedmessageviewer.cpp" line="49"/>
@@ -784,7 +784,7 @@ Item ID: %5</translation>
     <message>
       <location filename="../src/librssguard/services/feedly/gui/feedlyaccountdetails.ui" line="17"/>
       <source>Username</source>
-      <translation type="unfinished">Username</translation>
+      <translation>Nama pengguna</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/feedly/gui/feedlyaccountdetails.ui" line="27"/>
@@ -810,7 +810,7 @@ Item ID: %5</translation>
     <message>
       <location filename="../src/librssguard/services/feedly/gui/feedlyaccountdetails.ui" line="110"/>
       <source>&amp;Login</source>
-      <translation type="unfinished">&amp;Login</translation>
+      <translation>&amp;Log masuk</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/feedly/gui/feedlyaccountdetails.ui" line="51"/>
@@ -825,12 +825,12 @@ Item ID: %5</translation>
     <message>
       <location filename="../src/librssguard/services/feedly/gui/feedlyaccountdetails.cpp" line="31"/>
       <source>No test done yet.</source>
-      <translation type="unfinished">No test done yet.</translation>
+      <translation>Belum ada tes yang dilakukan.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/feedly/gui/feedlyaccountdetails.cpp" line="32"/>
       <source>Here, results of connection test are shown.</source>
-      <translation type="unfinished">Here, results of connection test are shown.</translation>
+      <translation>Ini, hasil dari tes koneksi ditampilkan.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/feedly/gui/feedlyaccountdetails.cpp" line="39"/>
@@ -845,33 +845,33 @@ Item ID: %5</translation>
     <message>
       <location filename="../src/librssguard/services/feedly/gui/feedlyaccountdetails.cpp" line="92"/>
       <source>You did not grant access.</source>
-      <translation type="unfinished">You did not grant access.</translation>
+      <translation>Anda tidak diberikan ijin akses.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/feedly/gui/feedlyaccountdetails.cpp" line="93"/>
       <location filename="../src/librssguard/services/feedly/gui/feedlyaccountdetails.cpp" line="101"/>
       <source>There was error during testing.</source>
-      <translation type="unfinished">There was error during testing.</translation>
+      <translation>Ada eror ketika pengujian.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/feedly/gui/feedlyaccountdetails.cpp" line="100"/>
       <source>There is error. %1</source>
-      <translation type="unfinished">There is error. %1</translation>
+      <translation>Ada eror. %1</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/feedly/gui/feedlyaccountdetails.cpp" line="114"/>
       <source>Tested successfully. You may be prompted to login once more.</source>
-      <translation type="unfinished">Tested successfully. You may be prompted to login once more.</translation>
+      <translation>Pengujian berhasil. Anda mungkin disarankan untuk log masuk sekali lagi.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/feedly/gui/feedlyaccountdetails.cpp" line="115"/>
       <source>Your access was approved.</source>
-      <translation type="unfinished">Your access was approved.</translation>
+      <translation>Akses anda disetujui.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/feedly/gui/feedlyaccountdetails.cpp" line="148"/>
       <source>Access granted.</source>
-      <translation type="unfinished">Access granted.</translation>
+      <translation>Akses diterima.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/feedly/gui/feedlyaccountdetails.cpp" line="147"/>
@@ -891,12 +891,12 @@ Item ID: %5</translation>
     <message>
       <location filename="../src/librssguard/services/feedly/gui/feedlyaccountdetails.cpp" line="161"/>
       <source>Username cannot be empty.</source>
-      <translation type="unfinished">Username cannot be empty.</translation>
+      <translation>Nama pengguna tidak dapat kosong.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/feedly/gui/feedlyaccountdetails.cpp" line="164"/>
       <source>Username is okay.</source>
-      <translation type="unfinished">Username is okay.</translation>
+      <translation>Nama pengguna ok.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/feedly/gui/feedlyaccountdetails.cpp" line="178"/>
@@ -929,7 +929,7 @@ Item ID: %5</translation>
     <message>
       <location filename="../src/librssguard/services/feedly/feedlynetwork.cpp" line="714"/>
       <source>Click this to login again. Error is: &apos;%1&apos;</source>
-      <translation type="unfinished">Click this to login again. Error is: &apos;%1&apos;</translation>
+      <translation>Klik ini untuk log masuk kembali. Eror adalah: &apos;%1&apos;</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/feedly/feedlynetwork.cpp" line="728"/>
@@ -939,7 +939,7 @@ Item ID: %5</translation>
     <message>
       <location filename="../src/librssguard/services/feedly/feedlynetwork.cpp" line="729"/>
       <source>Click this to login again.</source>
-      <translation type="unfinished">Click this to login again.</translation>
+      <translation>Klik ini untuk log masuk kembali.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/feedly/feedlynetwork.cpp" line="717"/>
@@ -963,7 +963,7 @@ Item ID: %5</translation>
     <message>
       <location filename="../src/librssguard/services/standard/standardfeedsimportexportmodel.cpp" line="376"/>
       <source>Category </source>
-      <translation type="unfinished">Category </translation>
+      <translation>Kategori </translation>
     </message>
   </context>
   <context>
@@ -971,17 +971,17 @@ Item ID: %5</translation>
     <message>
       <location filename="../src/librssguard/core/feedsmodel.cpp" line="39"/>
       <source>Title</source>
-      <translation type="unfinished">Title</translation>
+      <translation>Judul</translation>
     </message>
     <message>
       <location filename="../src/librssguard/core/feedsmodel.cpp" line="40"/>
       <source>Titles of feeds/categories.</source>
-      <translation type="unfinished">Titles of feeds/categories.</translation>
+      <translation>Judul dari feed/kategori.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/core/feedsmodel.cpp" line="516"/>
       <source>Are you sure?</source>
-      <translation type="unfinished">Are you sure?</translation>
+      <translation>Apakah anda yakin?</translation>
     </message>
     <message>
       <location filename="../src/librssguard/core/feedsmodel.cpp" line="517"/>
@@ -991,12 +991,12 @@ Item ID: %5</translation>
     <message>
       <location filename="../src/librssguard/core/feedsmodel.cpp" line="32"/>
       <source>Root</source>
-      <translation type="unfinished">Root</translation>
+      <translation>Root</translation>
     </message>
     <message>
       <location filename="../src/librssguard/core/feedsmodel.cpp" line="41"/>
       <source>Counts of unread/all mesages.</source>
-      <translation type="unfinished">Counts of unread/all mesages.</translation>
+      <translation>Jumlah pesan belum terbaca/keseluruhan.</translation>
     </message>
   </context>
   <context>
@@ -1004,12 +1004,12 @@ Item ID: %5</translation>
     <message>
       <location filename="../src/librssguard/core/feedsproxymodel.cpp" line="229"/>
       <source>Cannot perform drag &amp; drop operation</source>
-      <translation type="unfinished">Cannot perform drag &amp; drop operation</translation>
+      <translation>Tidak dapat melakukan operasi tarik &amp; jatuh</translation>
     </message>
     <message>
       <location filename="../src/librssguard/core/feedsproxymodel.cpp" line="230"/>
       <source>You can&apos;t transfer dragged item into different account, this is not supported.</source>
-      <translation type="unfinished">You can&apos;t transfer dragged item into different account, this is not supported.</translation>
+      <translation>Anda tidak dapat memindahkan item tertarik ke akun berbeda, ini tidak didukung.</translation>
     </message>
   </context>
   <context>
@@ -1017,7 +1017,7 @@ Item ID: %5</translation>
     <message>
       <location filename="../src/librssguard/gui/toolbars/feedstoolbar.cpp" line="76"/>
       <source>Toolbar spacer</source>
-      <translation type="unfinished">Toolbar spacer</translation>
+      <translation>Pengatur jarak bilah alat</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/toolbars/feedstoolbar.cpp" line="118"/>
@@ -1046,76 +1046,76 @@ Item ID: %5</translation>
       <location filename="../src/librssguard/gui/feedsview.cpp" line="216"/>
       <location filename="../src/librssguard/gui/feedsview.cpp" line="229"/>
       <source>Cannot edit item</source>
-      <translation type="unfinished">Cannot edit item</translation>
+      <translation>Tidak dapat menyunting item</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/feedsview.cpp" line="248"/>
       <source>Cannot delete item</source>
-      <translation type="unfinished">Cannot delete item</translation>
+      <translation>Tidak dapat menghapus item</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/feedsview.cpp" line="821"/>
       <source>Context menu for empty space</source>
-      <translation type="unfinished">Context menu for empty space</translation>
+      <translation>Menu konteks untuk ruang kosong</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/feedsview.cpp" line="217"/>
       <source>Selected item cannot be edited because another critical operation is ongoing.</source>
-      <translation type="unfinished">Selected item cannot be edited because another critical operation is ongoing.</translation>
+      <translation>Item yang dipilih tidak dapat disunting karena operasi genting lain sedang berlangsung.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/feedsview.cpp" line="249"/>
       <source>Selected item cannot be deleted because another critical operation is ongoing.</source>
-      <translation type="unfinished">Selected item cannot be deleted because another critical operation is ongoing.</translation>
+      <translation>Item yang dipilih tidak dapat dihapus karena operasi genting lain sedang berlangsung.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/feedsview.cpp" line="697"/>
       <location filename="../src/librssguard/gui/feedsview.cpp" line="750"/>
       <source>Context menu for categories</source>
-      <translation type="unfinished">Context menu for categories</translation>
+      <translation>Menu konteks untuk kategori</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/feedsview.cpp" line="230"/>
       <source>Selected item cannot be edited, this is not (yet?) supported.</source>
-      <translation type="unfinished">Selected item cannot be edited, this is not (yet?) supported.</translation>
+      <translation>Item yang dipilih tidak dapat disunting, ini tidak (belum?) didukung.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/feedsview.cpp" line="269"/>
       <source>Deleting &quot;%1&quot;</source>
-      <translation type="unfinished">Deleting &quot;%1&quot;</translation>
+      <translation>Hapus &quot;%1&quot;</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/feedsview.cpp" line="270"/>
       <source>You are about to completely delete item &quot;%1&quot;.</source>
-      <translation type="unfinished">You are about to completely delete item &quot;%1&quot;.</translation>
+      <translation>Anda akan benar-benar menghapus item &quot;%1&quot;.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/feedsview.cpp" line="271"/>
       <source>Are you sure?</source>
-      <translation type="unfinished">Are you sure?</translation>
+      <translation>Apakah anda yakin?</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/feedsview.cpp" line="285"/>
       <location filename="../src/librssguard/gui/feedsview.cpp" line="292"/>
       <source>Cannot delete &quot;%1&quot;</source>
-      <translation type="unfinished">Cannot delete &quot;%1&quot;</translation>
+      <translation>Tidak dapat menghapus &quot;%1&quot;</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/feedsview.cpp" line="286"/>
       <source>This item cannot be deleted because something critically failed. Submit bug report.</source>
-      <translation type="unfinished">This item cannot be deleted because something critically failed. Submit bug report.</translation>
+      <translation>Item ini tidak dapat dihapus karena sesuatu gagal secara genting. Kirim laporan bug.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/feedsview.cpp" line="293"/>
       <source>This item cannot be deleted, because it does not support it
 or this functionality is not implemented yet.</source>
-      <translation type="unfinished">This item cannot be deleted, because it does not support it
-or this functionality is not implemented yet.</translation>
+      <translation>Item ini tidak dapat dihapus, karena ini tidak mendukung
+atau fungsi ini belum diimplementasikan.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/feedsview.cpp" line="831"/>
       <source>Context menu for other items</source>
-      <translation type="unfinished">Context menu for other items</translation>
+      <translation>Menu konteks untuk item lain</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/feedsview.cpp" line="875"/>
@@ -1125,12 +1125,12 @@ or this functionality is not implemented yet.</translation>
     <message>
       <location filename="../src/librssguard/gui/feedsview.cpp" line="136"/>
       <source>Selected account does not support adding of new feeds.</source>
-      <translation type="unfinished">Selected account does not support adding of new feeds.</translation>
+      <translation>Akun yang dipilih tidak mendukung penambahan feed baru.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/feedsview.cpp" line="154"/>
       <source>Selected account does not support adding of new categories.</source>
-      <translation type="unfinished">Selected account does not support adding of new categories.</translation>
+      <translation>Akun yang dipilih tidak mendukung penambahan kategori baru.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/feedsview.cpp" line="451"/>
@@ -1164,17 +1164,17 @@ or this functionality is not implemented yet.</translation>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formabout.cpp" line="107"/>
       <source>Changelog not found.</source>
-      <translation type="unfinished">Changelog not found.</translation>
+      <translation>Daftar perubahan tidak ditemukan.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formabout.cpp" line="27"/>
       <source>About %1</source>
-      <translation type="unfinished">About %1</translation>
+      <translation>Tentang %1</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formabout.cpp" line="46"/>
       <source>FULLY portable</source>
-      <translation type="unfinished">FULLY portable</translation>
+      <translation>Sepenuhnya portable</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formabout.cpp" line="57"/>
@@ -1196,12 +1196,12 @@ QtWebEngine cache folder -&gt; &quot;%7&quot;</translation>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formabout.cpp" line="127"/>
       <source>&lt;body&gt;%5 is a (very) tiny feed reader.&lt;br&gt;&lt;br&gt;This software is distributed under the terms of GNU General Public License, version 3.&lt;br&gt;&lt;br&gt;Contacts:&lt;ul&gt;&lt;li&gt;&lt;a href=&quot;mailto://%1&quot;&gt;%1&lt;/a&gt; ~e-mail&lt;/li&gt;&lt;li&gt;&lt;a href=&quot;%2&quot;&gt;%2&lt;/a&gt; ~website&lt;/li&gt;&lt;/ul&gt;You can obtain source code for %5 from its website.&lt;br&gt;&lt;br&gt;&lt;br&gt;Copyright (C) 2011-%3 %4&lt;/body&gt;</source>
-      <translation type="unfinished">&lt;body&gt;%5 is a (very) tiny feed reader.&lt;br&gt;&lt;br&gt;This software is distributed under the terms of GNU General Public License, version 3.&lt;br&gt;&lt;br&gt;Contacts:&lt;ul&gt;&lt;li&gt;&lt;a href=&quot;mailto://%1&quot;&gt;%1&lt;/a&gt; ~e-mail&lt;/li&gt;&lt;li&gt;&lt;a href=&quot;%2&quot;&gt;%2&lt;/a&gt; ~website&lt;/li&gt;&lt;/ul&gt;You can obtain source code for %5 from its website.&lt;br&gt;&lt;br&gt;&lt;br&gt;Copyright (C) 2011-%3 %4&lt;/body&gt;</translation>
+      <translation>&lt;body&gt;%5 merupakan sebuah pembaca feed yang sangat kecil.&lt;br&gt;&lt;br&gt;Perangkat lunak ini didistribusikan di bawah ketentuan dari Lisensi Publik Umum GNU, versi 3.&lt;br&gt;&lt;br&gt;Kontak:&lt;ul&gt;&lt;li&gt;&lt;a href=&quot;mailto://%1&quot;&gt;%1&lt;/a&gt; ~surel&lt;/li&gt;&lt;li&gt;&lt;a href=&quot;%2&quot;&gt;%2&lt;/a&gt; ~situs web&lt;/li&gt;&lt;/ul&gt;Anda dapat memperoleh kode sumber untuk %5 dari situs web-nya.&lt;br&gt;&lt;br&gt;&lt;br&gt;Hak cipta (C) 2011-%3 %4&lt;/body&gt;</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formabout.cpp" line="111"/>
       <source>&lt;b&gt;%8&lt;/b&gt;&lt;br&gt;&lt;b&gt;Version:&lt;/b&gt; %1 (built on %2/%3)&lt;br&gt;&lt;b&gt;Revision:&lt;/b&gt; %4&lt;br&gt;&lt;b&gt;Build date:&lt;/b&gt; %5&lt;br&gt;&lt;b&gt;Qt:&lt;/b&gt; %6 (compiled against %7)&lt;br&gt;</source>
-      <translation type="unfinished">&lt;b&gt;%8&lt;/b&gt;&lt;br&gt;&lt;b&gt;Version:&lt;/b&gt; %1 (built on %2/%3)&lt;br&gt;&lt;b&gt;Revision:&lt;/b&gt; %4&lt;br&gt;&lt;b&gt;Build date:&lt;/b&gt; %5&lt;br&gt;&lt;b&gt;Qt:&lt;/b&gt; %6 (compiled against %7)&lt;br&gt;</translation>
+      <translation>&lt;b&gt;%8&lt;/b&gt;&lt;br&gt;&lt;b&gt;Versi:&lt;/b&gt; %1 (dibangun di %2/%3)&lt;br&gt;&lt;b&gt;Revisi:&lt;/b&gt; %4&lt;br&gt;&lt;b&gt;Tanggal dibangun:&lt;/b&gt; %5&lt;br&gt;&lt;b&gt;Qt:&lt;/b&gt; %6 (dikompilasi terhadap %7)&lt;br&gt;</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formabout.cpp" line="52"/>
@@ -1216,32 +1216,32 @@ QtWebEngine cache folder -&gt; &quot;%7&quot;</translation>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formabout.ui" line="102"/>
       <source>Information</source>
-      <translation type="unfinished">Information</translation>
+      <translation>Informasi</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formabout.ui" line="147"/>
       <source>Licenses</source>
-      <translation type="unfinished">Licenses</translation>
+      <translation>Lisensi</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formabout.ui" line="159"/>
       <source>Licenses page is available only in English language.</source>
-      <translation type="unfinished">Licenses page is available only in English language.</translation>
+      <translation>Halaman lisensi hanya tersedia dalam bahasa Inggris.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formabout.ui" line="167"/>
       <source>Changelog</source>
-      <translation type="unfinished">Changelog</translation>
+      <translation>Daftar perubahan</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formabout.ui" line="199"/>
       <source>Changelog page is available only in English language.</source>
-      <translation type="unfinished">Changelog page is available only in English language.</translation>
+      <translation>Daftar perubahan hanya tersedia dalam bahasa Inggris.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formabout.ui" line="207"/>
       <source>Resources</source>
-      <translation type="unfinished">Resources</translation>
+      <translation>Sumber</translation>
     </message>
   </context>
   <context>
@@ -1254,7 +1254,7 @@ QtWebEngine cache folder -&gt; &quot;%7&quot;</translation>
     <message>
       <location filename="../src/librssguard/services/abstract/gui/formaccountdetails.cpp" line="39"/>
       <source>Add new account</source>
-      <translation type="unfinished">Add new account</translation>
+      <translation>Tambah akun baru</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/abstract/gui/formaccountdetails.cpp" line="42"/>
@@ -1267,7 +1267,7 @@ QtWebEngine cache folder -&gt; &quot;%7&quot;</translation>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formaddaccount.ui" line="14"/>
       <source>Add new account</source>
-      <translation type="unfinished">Add new account</translation>
+      <translation>Tambah akun baru</translation>
     </message>
   </context>
   <context>
@@ -1275,42 +1275,42 @@ QtWebEngine cache folder -&gt; &quot;%7&quot;</translation>
     <message>
       <location filename="../src/librssguard/services/gmail/gui/formaddeditemail.cpp" line="28"/>
       <source>Add new recipient.</source>
-      <translation type="unfinished">Add new recipient.</translation>
+      <translation>Tambah penerima baru.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/gmail/gui/formaddeditemail.cpp" line="182"/>
       <source>E-mail NOT sent</source>
-      <translation type="unfinished">E-mail NOT sent</translation>
+      <translation>Surel tidak terkirim</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/gmail/gui/formaddeditemail.cpp" line="183"/>
       <source>Your e-mail message wasn&apos;t sent.</source>
-      <translation type="unfinished">Your e-mail message wasn&apos;t sent.</translation>
+      <translation>Alamat surel anda tidak terkirim.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/gmail/gui/formaddeditemail.ui" line="14"/>
       <source>Write e-mail message</source>
-      <translation type="unfinished">Write e-mail message</translation>
+      <translation>Tulis pesan surel</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/gmail/gui/formaddeditemail.ui" line="35"/>
       <source>...</source>
-      <translation type="unfinished">...</translation>
+      <translation>...</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/gmail/gui/formaddeditemail.ui" line="50"/>
       <source>Contents of your e-mail message</source>
-      <translation type="unfinished">Contents of your e-mail message</translation>
+      <translation>Konten dari pesan surel anda</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/gmail/gui/formaddeditemail.ui" line="67"/>
       <source>Subject</source>
-      <translation type="unfinished">Subject</translation>
+      <translation>Subjek</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/gmail/gui/formaddeditemail.ui" line="77"/>
       <source>Title of your message</source>
-      <translation type="unfinished">Title of your message</translation>
+      <translation>Judul dari pesan anda</translation>
     </message>
   </context>
   <context>
@@ -1318,17 +1318,17 @@ QtWebEngine cache folder -&gt; &quot;%7&quot;</translation>
     <message>
       <location filename="../src/librssguard/services/abstract/gui/formaddeditlabel.cpp" line="12"/>
       <source>Name for your label</source>
-      <translation type="unfinished">Name for your label</translation>
+      <translation>Nama dari label anda</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/abstract/gui/formaddeditlabel.cpp" line="18"/>
       <source>Label&apos;s name cannot be empty.</source>
-      <translation type="unfinished">Label&apos;s name cannot be empty.</translation>
+      <translation>Nama label tidak dapat kosong.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/abstract/gui/formaddeditlabel.cpp" line="21"/>
       <source>Perfect!</source>
-      <translation type="unfinished">Perfect!</translation>
+      <translation>Sempurna!</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/abstract/gui/formaddeditlabel.cpp" line="30"/>
@@ -1338,17 +1338,17 @@ QtWebEngine cache folder -&gt; &quot;%7&quot;</translation>
     <message>
       <location filename="../src/librssguard/services/abstract/gui/formaddeditlabel.cpp" line="27"/>
       <source>Create new label</source>
-      <translation type="unfinished">Create new label</translation>
+      <translation>Buat label baru</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/abstract/gui/formaddeditlabel.cpp" line="46"/>
       <source>Edit label &apos;%1&apos;</source>
-      <translation type="unfinished">Edit label &apos;%1&apos;</translation>
+      <translation>Sunting label &apos;%1&apos;</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/abstract/gui/formaddeditlabel.ui" line="19"/>
       <source>...</source>
-      <translation type="unfinished">...</translation>
+      <translation>...</translation>
     </message>
   </context>
   <context>
@@ -1356,7 +1356,7 @@ QtWebEngine cache folder -&gt; &quot;%7&quot;</translation>
     <message>
       <location filename="../src/librssguard/services/abstract/gui/formaddeditprobe.ui" line="17"/>
       <source>...</source>
-      <translation type="unfinished">...</translation>
+      <translation>...</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/abstract/gui/formaddeditprobe.cpp" line="12"/>
@@ -1377,7 +1377,7 @@ QtWebEngine cache folder -&gt; &quot;%7&quot;</translation>
       <location filename="../src/librssguard/services/abstract/gui/formaddeditprobe.cpp" line="20"/>
       <location filename="../src/librssguard/services/abstract/gui/formaddeditprobe.cpp" line="32"/>
       <source>Perfect!</source>
-      <translation type="unfinished">Perfect!</translation>
+      <translation>Sempurna!</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/abstract/gui/formaddeditprobe.cpp" line="26"/>
@@ -1410,92 +1410,92 @@ QtWebEngine cache folder -&gt; &quot;%7&quot;</translation>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formbackupdatabasesettings.cpp" line="21"/>
       <source>Common name for backup files</source>
-      <translation type="unfinished">Common name for backup files</translation>
+      <translation>Nama umum untuk backup berkas</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formbackupdatabasesettings.cpp" line="34"/>
       <source>No operation executed yet.</source>
-      <translation type="unfinished">No operation executed yet.</translation>
+      <translation>Belum ada operasi dijalankan.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formbackupdatabasesettings.cpp" line="54"/>
       <source>Backup was created successfully.</source>
-      <translation type="unfinished">Backup was created successfully.</translation>
+      <translation>Backup telah berhasil dibuat.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formbackupdatabasesettings.cpp" line="78"/>
       <source>Backup name cannot be empty.</source>
-      <translation type="unfinished">Backup name cannot be empty.</translation>
+      <translation>Nama backup tidak dapat kosong.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formbackupdatabasesettings.cpp" line="81"/>
       <source>Backup name looks okay.</source>
-      <translation type="unfinished">Backup name looks okay.</translation>
+      <translation>Nama backup terlihat ok.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formbackupdatabasesettings.cpp" line="57"/>
       <source>Backup failed.</source>
-      <translation type="unfinished">Backup failed.</translation>
+      <translation>Backup gagal.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formbackupdatabasesettings.cpp" line="53"/>
       <source>Backup was created successfully and stored in target directory.</source>
-      <translation type="unfinished">Backup was created successfully and stored in target directory.</translation>
+      <translation>Backup berhasil dibuat dan disimpan di direktori tujuan.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formbackupdatabasesettings.cpp" line="67"/>
       <source>Select destination directory</source>
-      <translation type="unfinished">Select destination directory</translation>
+      <translation>Pilih direktori tujuan</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formbackupdatabasesettings.cpp" line="72"/>
       <source>Good destination directory is specified.</source>
-      <translation type="unfinished">Good destination directory is specified.</translation>
+      <translation>Direktori tujuan yang baik ditetapkan.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formbackupdatabasesettings.ui" line="14"/>
       <source>Backup database/settings</source>
-      <translation type="unfinished">Backup database/settings</translation>
+      <translation>Backup database/pengaturan</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formbackupdatabasesettings.ui" line="20"/>
       <source>Output directory</source>
-      <translation type="unfinished">Output directory</translation>
+      <translation>Direktori keluaran</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formbackupdatabasesettings.ui" line="26"/>
       <source>&amp;Select directory</source>
-      <translation type="unfinished">&amp;Select directory</translation>
+      <translation>&amp;Pilih direktori</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formbackupdatabasesettings.ui" line="43"/>
       <source>Backup properties</source>
-      <translation type="unfinished">Backup properties</translation>
+      <translation>Properti backup</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formbackupdatabasesettings.ui" line="49"/>
       <source>Items to backup</source>
-      <translation type="unfinished">Items to backup</translation>
+      <translation>Item untuk di-backup</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formbackupdatabasesettings.ui" line="56"/>
       <source>Database</source>
-      <translation type="unfinished">Database</translation>
+      <translation>Database</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formbackupdatabasesettings.ui" line="66"/>
       <source>Settings</source>
-      <translation type="unfinished">Settings</translation>
+      <translation>Pengaturan</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formbackupdatabasesettings.ui" line="76"/>
       <source>Backup name</source>
-      <translation type="unfinished">Backup name</translation>
+      <translation>Nama backup</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formbackupdatabasesettings.ui" line="89"/>
       <source>Operation results</source>
-      <translation type="unfinished">Operation results</translation>
+      <translation>Hasil operasi</translation>
     </message>
   </context>
   <context>
@@ -1503,32 +1503,32 @@ QtWebEngine cache folder -&gt; &quot;%7&quot;</translation>
     <message>
       <location filename="../src/librssguard/services/abstract/gui/formcategorydetails.cpp" line="61"/>
       <source>Add new category</source>
-      <translation type="unfinished">Add new category</translation>
+      <translation>Tambah kategori baru</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/abstract/gui/formcategorydetails.cpp" line="127"/>
       <source>Category name is ok.</source>
-      <translation type="unfinished">Category name is ok.</translation>
+      <translation>Nama kategori ok.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/abstract/gui/formcategorydetails.cpp" line="131"/>
       <source>Category name is too short.</source>
-      <translation type="unfinished">Category name is too short.</translation>
+      <translation>Nama kategori terlalu pendek.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/abstract/gui/formcategorydetails.cpp" line="137"/>
       <source>Description is empty.</source>
-      <translation type="unfinished">Description is empty.</translation>
+      <translation>Deskripsi kosong.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/abstract/gui/formcategorydetails.cpp" line="140"/>
       <source>The description is ok.</source>
-      <translation type="unfinished">The description is ok.</translation>
+      <translation>Deskripsi ok.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/abstract/gui/formcategorydetails.cpp" line="155"/>
       <source>Select icon file for the category</source>
-      <translation type="unfinished">Select icon file for the category</translation>
+      <translation>Pilih berkas ikon untuk kategori</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/abstract/gui/formcategorydetails.cpp" line="157"/>
@@ -1538,63 +1538,63 @@ QtWebEngine cache folder -&gt; &quot;%7&quot;</translation>
     <message>
       <location filename="../src/librssguard/services/abstract/gui/formcategorydetails.cpp" line="163"/>
       <source>Select icon</source>
-      <translation type="unfinished">Select icon</translation>
+      <translation>Pilih ikon</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/abstract/gui/formcategorydetails.cpp" line="164"/>
       <source>Cancel</source>
-      <translation type="unfinished">Cancel</translation>
+      <translation>Batal</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/abstract/gui/formcategorydetails.cpp" line="167"/>
       <source>Look in:</source>
       <extracomment>Label to describe the folder for icon file selection dialog.</extracomment>
-      <translation type="unfinished">Look in:</translation>
+      <translation>Lihat ke dalam:</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/abstract/gui/formcategorydetails.cpp" line="168"/>
       <source>Icon name:</source>
-      <translation type="unfinished">Icon name:</translation>
+      <translation>Nama ikon:</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/abstract/gui/formcategorydetails.cpp" line="169"/>
       <source>Icon type:</source>
-      <translation type="unfinished">Icon type:</translation>
+      <translation>Jenis ikon:</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/abstract/gui/formcategorydetails.cpp" line="185"/>
       <source>Category title</source>
-      <translation type="unfinished">Category title</translation>
+      <translation>Judul kategori</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/abstract/gui/formcategorydetails.cpp" line="186"/>
       <source>Set title for your category.</source>
-      <translation type="unfinished">Set title for your category.</translation>
+      <translation>Setel judul untuk kategori anda.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/abstract/gui/formcategorydetails.cpp" line="187"/>
       <source>Category description</source>
-      <translation type="unfinished">Category description</translation>
+      <translation>Deskripsi kategori</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/abstract/gui/formcategorydetails.cpp" line="188"/>
       <source>Set description for your category.</source>
-      <translation type="unfinished">Set description for your category.</translation>
+      <translation>Setel deskripsi untuk kategori anda.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/abstract/gui/formcategorydetails.cpp" line="194"/>
       <source>Icon selection</source>
-      <translation type="unfinished">Icon selection</translation>
+      <translation>Pilihan ikon</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/abstract/gui/formcategorydetails.cpp" line="196"/>
       <source>Load icon from file...</source>
-      <translation type="unfinished">Load icon from file...</translation>
+      <translation>Memuat ikon dari berkas...</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/abstract/gui/formcategorydetails.cpp" line="198"/>
       <source>Use default icon from icon theme</source>
-      <translation type="unfinished">Use default icon from icon theme</translation>
+      <translation>Gunakan ikon bawaan dari tema ikon</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/abstract/gui/formcategorydetails.cpp" line="83"/>
@@ -1609,27 +1609,27 @@ QtWebEngine cache folder -&gt; &quot;%7&quot;</translation>
     <message>
       <location filename="../src/librssguard/services/abstract/gui/formcategorydetails.ui" line="41"/>
       <source>Select parent item for your category.</source>
-      <translation type="unfinished">Select parent item for your category.</translation>
+      <translation>Pilih item induk untuk kategori anda.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/abstract/gui/formcategorydetails.ui" line="54"/>
       <source>Title</source>
-      <translation type="unfinished">Title</translation>
+      <translation>Judul</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/abstract/gui/formcategorydetails.ui" line="64"/>
       <source>Description</source>
-      <translation type="unfinished">Description</translation>
+      <translation>Deskripsi</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/abstract/gui/formcategorydetails.ui" line="74"/>
       <source>Icon</source>
-      <translation type="unfinished">Icon</translation>
+      <translation>Ikon</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/abstract/gui/formcategorydetails.ui" line="96"/>
       <source>Select icon for your category.</source>
-      <translation type="unfinished">Select icon for your category.</translation>
+      <translation>Pilih ikon untuk kategori anda.</translation>
     </message>
   </context>
   <context>
@@ -1637,41 +1637,41 @@ QtWebEngine cache folder -&gt; &quot;%7&quot;</translation>
     <message numerus="yes">
       <location filename="../src/librssguard/gui/dialogs/formdatabasecleanup.cpp" line="57"/>
       <source> day(s)</source>
-      <translation type="unfinished">
-        <numerusform> day(s)</numerusform>
+      <translation>
+        <numerusform> hari</numerusform>
       </translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formdatabasecleanup.cpp" line="30"/>
       <source>I am ready.</source>
-      <translation type="unfinished">I am ready.</translation>
+      <translation>Saya siap.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formdatabasecleanup.cpp" line="76"/>
       <location filename="../src/librssguard/gui/dialogs/formdatabasecleanup.cpp" line="77"/>
       <source>Database cleanup is running.</source>
-      <translation type="unfinished">Database cleanup is running.</translation>
+      <translation>Pembersihan database sedang berjalan.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formdatabasecleanup.cpp" line="91"/>
       <location filename="../src/librssguard/gui/dialogs/formdatabasecleanup.cpp" line="92"/>
       <source>Database cleanup is completed.</source>
-      <translation type="unfinished">Database cleanup is completed.</translation>
+      <translation>Pembersihan database selesai.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formdatabasecleanup.cpp" line="95"/>
       <source>Database cleanup failed.</source>
-      <translation type="unfinished">Database cleanup failed.</translation>
+      <translation>Pembersihan database gagal.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formdatabasecleanup.cpp" line="103"/>
       <source>unknown</source>
-      <translation type="unfinished">unknown</translation>
+      <translation>Tidak dikenal</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formdatabasecleanup.ui" line="14"/>
       <source>Cleanup database</source>
-      <translation type="unfinished">Cleanup database</translation>
+      <translation>Pembersihan database</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formdatabasecleanup.ui" line="20"/>
@@ -1706,7 +1706,7 @@ QtWebEngine cache folder -&gt; &quot;%7&quot;</translation>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formdatabasecleanup.ui" line="96"/>
       <source>Database information</source>
-      <translation type="unfinished">Database information</translation>
+      <translation>Informasi database</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formdatabasecleanup.ui" line="102"/>
@@ -1716,12 +1716,12 @@ QtWebEngine cache folder -&gt; &quot;%7&quot;</translation>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formdatabasecleanup.ui" line="119"/>
       <source>Database type</source>
-      <translation type="unfinished">Database type</translation>
+      <translation>Jenis database</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formdatabasecleanup.ui" line="139"/>
       <source>Progress</source>
-      <translation type="unfinished">Progress</translation>
+      <translation>Perkembangan</translation>
     </message>
   </context>
   <context>
@@ -1785,7 +1785,7 @@ QtWebEngine cache folder -&gt; &quot;%7&quot;</translation>
     <message>
       <location filename="../src/librssguard/services/abstract/gui/formfeeddetails.cpp" line="98"/>
       <source>Add new feed</source>
-      <translation type="unfinished">Add new feed</translation>
+      <translation>Tambah feed baru</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/abstract/gui/formfeeddetails.cpp" line="124"/>
@@ -1881,17 +1881,17 @@ QtWebEngine cache folder -&gt; &quot;%7&quot;</translation>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.cpp" line="410"/>
       <source>No possible actions</source>
-      <translation type="unfinished">No possible actions</translation>
+      <translation>Tidak ada aksi yang mungkin</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.cpp" line="369"/>
       <source>No recycle bin</source>
-      <translation type="unfinished">No recycle bin</translation>
+      <translation>Tidak ada tong sampah</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.cpp" line="66"/>
       <source>Main menu</source>
-      <translation type="unfinished">Main menu</translation>
+      <translation>Menu utama</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.cpp" line="79"/>
@@ -1906,27 +1906,27 @@ QtWebEngine cache folder -&gt; &quot;%7&quot;</translation>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="53"/>
       <source>&amp;File</source>
-      <translation type="unfinished">&amp;File</translation>
+      <translation>&amp;Berkas</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="63"/>
       <source>&amp;Help</source>
-      <translation type="unfinished">&amp;Help</translation>
+      <translation>Bant&amp;uan</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="74"/>
       <source>&amp;View</source>
-      <translation type="unfinished">&amp;View</translation>
+      <translation>T&amp;ilik</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="78"/>
       <source>Show/hide</source>
-      <translation type="unfinished">Show/hide</translation>
+      <translation>Tampilkan/sembunyikan</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="95"/>
       <source>&amp;Tools</source>
-      <translation type="unfinished">&amp;Tools</translation>
+      <translation>Ala&amp;t</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="105"/>
@@ -1951,12 +1951,12 @@ QtWebEngine cache folder -&gt; &quot;%7&quot;</translation>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="183"/>
       <source>&amp;Recycle bin(s)</source>
-      <translation type="unfinished">&amp;Recycle bin(s)</translation>
+      <translation>Tong &amp;sampah</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="190"/>
       <source>&amp;Accounts</source>
-      <translation type="unfinished">&amp;Accounts</translation>
+      <translation>&amp;Akun</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="198"/>
@@ -1966,42 +1966,42 @@ QtWebEngine cache folder -&gt; &quot;%7&quot;</translation>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="225"/>
       <source>&amp;Quit</source>
-      <translation type="unfinished">&amp;Quit</translation>
+      <translation>&amp;Keluar</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="228"/>
       <source>Quit the application.</source>
-      <translation type="unfinished">Quit the application.</translation>
+      <translation>Keluar dari aplikasi.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="239"/>
       <source>&amp;Settings</source>
-      <translation type="unfinished">&amp;Settings</translation>
+      <translation>&amp;Pengaturan</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="242"/>
       <source>Display settings of the application.</source>
-      <translation type="unfinished">Display settings of the application.</translation>
+      <translation>Tampilkan pengaturan aplikasi.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="250"/>
       <source>&amp;About application</source>
-      <translation type="unfinished">&amp;About application</translation>
+      <translation>&amp;Tentang aplikasi</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="253"/>
       <source>Displays extra info about this application.</source>
-      <translation type="unfinished">Displays extra info about this application.</translation>
+      <translation>Tampilkan info tambahan seputar aplikasi ini.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="267"/>
       <source>&amp;Fullscreen</source>
-      <translation type="unfinished">&amp;Fullscreen</translation>
+      <translation>&amp;Layar penuh</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="270"/>
       <source>Switch fullscreen mode.</source>
-      <translation type="unfinished">Switch fullscreen mode.</translation>
+      <translation>Ganti mode layar penuh.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="278"/>
@@ -2026,12 +2026,12 @@ QtWebEngine cache folder -&gt; &quot;%7&quot;</translation>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="300"/>
       <source>&amp;Edit selected item</source>
-      <translation type="unfinished">&amp;Edit selected item</translation>
+      <translation>&amp;Sunting item yang dipilih</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="308"/>
       <source>&amp;Delete selected item</source>
-      <translation type="unfinished">&amp;Delete selected item</translation>
+      <translation>&amp;Hapus item yang dipilih</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="316"/>
@@ -2071,7 +2071,7 @@ QtWebEngine cache folder -&gt; &quot;%7&quot;</translation>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="352"/>
       <source>Mark all messages (without message filters) from selected items as read.</source>
-      <translation type="unfinished">Mark all messages (without message filters) from selected items as read.</translation>
+      <translation>Tandai semua pesan (tanpa penyaring pesan) dari item yang dipilih sebagai terbaca.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="360"/>
@@ -2081,7 +2081,7 @@ QtWebEngine cache folder -&gt; &quot;%7&quot;</translation>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="363"/>
       <source>Mark all messages (without message filters) from selected items as unread.</source>
-      <translation type="unfinished">Mark all messages (without message filters) from selected items as unread.</translation>
+      <translation>Tandai semua pesan (tanpa penyaring pesan) dari item yang dipilih sebagai belum terbaca.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="371"/>
@@ -2096,7 +2096,7 @@ QtWebEngine cache folder -&gt; &quot;%7&quot;</translation>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="382"/>
       <source>Deletes all messages from selected items.</source>
-      <translation type="unfinished">Deletes all messages from selected items.</translation>
+      <translation>Hapus semua pesan dari item yang dipilih.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="390"/>
@@ -2121,12 +2121,12 @@ QtWebEngine cache folder -&gt; &quot;%7&quot;</translation>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="415"/>
       <source>No actions available</source>
-      <translation type="unfinished">No actions available</translation>
+      <translation>Tidak ada aksi tersedia</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="418"/>
       <source>No actions are available right now.</source>
-      <translation type="unfinished">No actions are available right now.</translation>
+      <translation>Tidak ada aksi tersedia saat ini.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="426"/>
@@ -2136,7 +2136,7 @@ QtWebEngine cache folder -&gt; &quot;%7&quot;</translation>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="429"/>
       <source>Marks all messages in all items read. This does not take message filters into account.</source>
-      <translation type="unfinished">Marks all messages in all items read. This does not take message filters into account.</translation>
+      <translation>Tandai semua pesan di semua item terbaca. Ini tidak mengambil penyaring pesan ke akun.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="437"/>
@@ -2146,7 +2146,7 @@ QtWebEngine cache folder -&gt; &quot;%7&quot;</translation>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="440"/>
       <source>Displays all messages from selected item in a new &quot;newspaper mode&quot; tab. Note that messages are not set as read automatically.</source>
-      <translation type="unfinished">Displays all messages from selected item in a new &quot;newspaper mode&quot; tab. Note that messages are not set as read automatically.</translation>
+      <translation>Tampilkan semua pesan dari item yang dipilih ke dalam tab &quot;mode koran&quot; baru. Perhatikan bahwa pesan tidak disetel sebagai terbaca secara otomatis.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="451"/>
@@ -2156,17 +2156,17 @@ QtWebEngine cache folder -&gt; &quot;%7&quot;</translation>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="454"/>
       <source>Hides main window if it is visible and shows it if it is hidden.</source>
-      <translation type="unfinished">Hides main window if it is visible and shows it if it is hidden.</translation>
+      <translation>Sembunyikan jendela utama jika terlihat dan menampilkannya jika tersembunyi.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="468"/>
       <source>&amp;Feed list</source>
-      <translation type="unfinished">&amp;Feed list</translation>
+      <translation>&amp;Daftar feed</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="471"/>
       <source>Hides or shows the list of feeds/categories.</source>
-      <translation type="unfinished">Hides or shows the list of feeds/categories.</translation>
+      <translation>Sembunyikan atau Tampilkan daftar feed/kategori.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="479"/>
@@ -2176,7 +2176,7 @@ QtWebEngine cache folder -&gt; &quot;%7&quot;</translation>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="482"/>
       <source>Deletes all messages from all items.</source>
-      <translation type="unfinished">Deletes all messages from all items.</translation>
+      <translation>Hapus semua pesan dari semua item.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="490"/>
@@ -2201,37 +2201,37 @@ QtWebEngine cache folder -&gt; &quot;%7&quot;</translation>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="522"/>
       <source>Check for &amp;updates</source>
-      <translation type="unfinished">Check for &amp;updates</translation>
+      <translation>&amp;Periksa pembaruan</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="525"/>
       <source>Check if new update for the application is available for download.</source>
-      <translation type="unfinished">Check if new update for the application is available for download.</translation>
+      <translation>Periksa jika pembaruan terkini untuk aplikasi tersedia untuk diunduh.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="539"/>
       <source>&amp;Main menu</source>
-      <translation type="unfinished">&amp;Main menu</translation>
+      <translation>Menu &amp;utama</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="542"/>
       <source>Hides or displays the main menu.</source>
-      <translation type="unfinished">Hides or displays the main menu.</translation>
+      <translation>Sembunyikan atau tampilkan menu utama.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="550"/>
       <source>Report a &amp;bug...</source>
-      <translation type="unfinished">Report a &amp;bug...</translation>
+      <translation>Laporkan &amp;bug...</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="561"/>
       <source>&amp;Toolbars</source>
-      <translation type="unfinished">&amp;Toolbars</translation>
+      <translation>&amp;Bilah alat</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="564"/>
       <source>Switch visibility of main toolbars.</source>
-      <translation type="unfinished">Switch visibility of main toolbars.</translation>
+      <translation>Ganti visibilitas dari bilah alat utama.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="578"/>
@@ -2241,17 +2241,17 @@ QtWebEngine cache folder -&gt; &quot;%7&quot;</translation>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="586"/>
       <source>&amp;Donate...</source>
-      <translation type="unfinished">&amp;Donate...</translation>
+      <translation>&amp;Donasi...</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="594"/>
       <source>Display &amp;documentation</source>
-      <translation type="unfinished">Display &amp;documentation</translation>
+      <translation>Tampilkan &amp;dokumentasi</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="602"/>
       <source>&amp;Restart</source>
-      <translation type="unfinished">&amp;Restart</translation>
+      <translation>&amp;Jalankan ulang</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="610"/>
@@ -2271,7 +2271,7 @@ QtWebEngine cache folder -&gt; &quot;%7&quot;</translation>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="634"/>
       <source>&amp;Downloads</source>
-      <translation type="unfinished">&amp;Downloads</translation>
+      <translation>&amp;Unduhan</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="642"/>
@@ -2286,7 +2286,7 @@ QtWebEngine cache folder -&gt; &quot;%7&quot;</translation>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="653"/>
       <source>&amp;Cleanup database</source>
-      <translation type="unfinished">&amp;Cleanup database</translation>
+      <translation>Pembersihan &amp;database</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="664"/>
@@ -2296,7 +2296,7 @@ QtWebEngine cache folder -&gt; &quot;%7&quot;</translation>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="672"/>
       <source>&amp;Expand/collapse selected item</source>
-      <translation type="unfinished">&amp;Expand/collapse selected item</translation>
+      <translation>Per&amp;lebar/persempit item yang dipilih</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="680"/>
@@ -2311,12 +2311,12 @@ QtWebEngine cache folder -&gt; &quot;%7&quot;</translation>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="696"/>
       <source>&amp;Restore all recycle bins</source>
-      <translation type="unfinished">&amp;Restore all recycle bins</translation>
+      <translation>P&amp;ulihkan semua tong sampah</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="704"/>
       <source>&amp;Empty all recycle bins</source>
-      <translation type="unfinished">&amp;Empty all recycle bins</translation>
+      <translation>K&amp;osongkan semua tong sampah</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="712"/>
@@ -2326,23 +2326,23 @@ QtWebEngine cache folder -&gt; &quot;%7&quot;</translation>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="726"/>
       <source>Status bar</source>
-      <translation type="unfinished">Status bar</translation>
+      <translation>Bilah status</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="734"/>
       <source>&amp;Edit selected account</source>
-      <translation type="unfinished">&amp;Edit selected account</translation>
+      <translation>&amp;Sunting akun yang dipilih</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="742"/>
       <source>&amp;Delete selected account</source>
-      <translation type="unfinished">&amp;Delete selected account</translation>
+      <translation>&amp;Hapus akun yang dipilih</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="755"/>
       <location filename="../src/librssguard/gui/dialogs/formmain.cpp" line="315"/>
       <source>Add new category</source>
-      <translation type="unfinished">Add new category</translation>
+      <translation>Tambah kategori baru</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="760"/>
@@ -2357,22 +2357,22 @@ QtWebEngine cache folder -&gt; &quot;%7&quot;</translation>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="776"/>
       <source>Close all tabs</source>
-      <translation type="unfinished">Close all tabs</translation>
+      <translation>Tutup semua tab</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="781"/>
       <source>Close all tabs except current</source>
-      <translation type="unfinished">Close all tabs except current</translation>
+      <translation>Tutup semua tab kecuali ini</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="786"/>
       <source>Go to &amp;next tab</source>
-      <translation type="unfinished">Go to &amp;next tab</translation>
+      <translation>Ke tab sela&amp;njutnya</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="791"/>
       <source>Go to &amp;previous tab</source>
-      <translation type="unfinished">Go to &amp;previous tab</translation>
+      <translation>Ke tab se&amp;belumnya</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="799"/>
@@ -2503,27 +2503,27 @@ QtWebEngine cache folder -&gt; &quot;%7&quot;</translation>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="750"/>
       <location filename="../src/librssguard/gui/dialogs/formmain.cpp" line="325"/>
       <source>Add new feed</source>
-      <translation type="unfinished">Add new feed</translation>
+      <translation>Tambah feed baru</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.cpp" line="376"/>
       <source>No actions possible</source>
-      <translation type="unfinished">No actions possible</translation>
+      <translation>Tidak ada aksi yang mungkin</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.cpp" line="154"/>
       <source>Cannot cleanup database</source>
-      <translation type="unfinished">Cannot cleanup database</translation>
+      <translation>Tidak dapat membersihkan database</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.cpp" line="155"/>
       <source>Cannot cleanup database, because another critical action is running.</source>
-      <translation type="unfinished">Cannot cleanup database, because another critical action is running.</translation>
+      <translation>Tidak dapat membersihkan database, karena aksi genting lain sedang berjalan.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.cpp" line="523"/>
       <source>Close opened modal dialogs first.</source>
-      <translation type="unfinished">Close opened modal dialogs first.</translation>
+      <translation>Tutup dialog modal yang terbuka lebih dulu.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.cpp" line="445"/>
@@ -2541,55 +2541,55 @@ QtWebEngine cache folder -&gt; &quot;%7&quot;</translation>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.cpp" line="318"/>
       <source>ACCEPTED</source>
-      <translation type="unfinished">ACCEPTED</translation>
+      <translation>DITERIMA</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.cpp" line="318"/>
       <source>REJECTED</source>
-      <translation type="unfinished">REJECTED</translation>
+      <translation>DITOLAK</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.cpp" line="331"/>
       <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.cpp" line="332"/>
       <source>yes</source>
-      <translation type="unfinished">yes</translation>
+      <translation>ya</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.cpp" line="331"/>
       <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.cpp" line="332"/>
       <source>no</source>
-      <translation type="unfinished">no</translation>
+      <translation>tidak</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.cpp" line="603"/>
       <source>Cannot find &apos;clang-format&apos;</source>
-      <translation type="unfinished">Cannot find &apos;clang-format&apos;</translation>
+      <translation>Tidak dapat menemukan &apos;clang-format&apos;</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.cpp" line="604"/>
       <source>Script was not beautified, because &apos;clang-format&apos; tool was not found.</source>
-      <translation type="unfinished">Script was not beautified, because &apos;clang-format&apos; tool was not found.</translation>
+      <translation>Skrip tidak dipercantik, dikarenakan alat &apos;clang-format&apos; tidak ditemukan.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.cpp" line="247"/>
       <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.cpp" line="622"/>
       <source>Error</source>
-      <translation type="unfinished">Error</translation>
+      <translation>Eror</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.cpp" line="623"/>
       <source>Script was not beautified, because &apos;clang-format&apos; tool thrown error.</source>
-      <translation type="unfinished">Script was not beautified, because &apos;clang-format&apos; tool thrown error.</translation>
+      <translation>Skrip tidak dipercantik, dikarenakan alat &apos;clang-format&apos; melempar eror.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.cpp" line="632"/>
       <source>Beautifier was running for too long time</source>
-      <translation type="unfinished">Beautifier was running for too long time</translation>
+      <translation>Pemercantik berjalan terlalu lama</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.cpp" line="633"/>
       <source>Script was not beautified, is &apos;clang-format&apos; installed?</source>
-      <translation type="unfinished">Script was not beautified, is &apos;clang-format&apos; installed?</translation>
+      <translation>Skrip tidak dipercantik, apakah &apos;clang-format&apos; dipasang?</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.cpp" line="248"/>
@@ -2656,7 +2656,7 @@ QtWebEngine cache folder -&gt; &quot;%7&quot;</translation>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.cpp" line="211"/>
       <source>Are you sure?</source>
-      <translation type="unfinished">Are you sure?</translation>
+      <translation>Apakah anda yakin?</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.cpp" line="212"/>
@@ -2671,17 +2671,17 @@ QtWebEngine cache folder -&gt; &quot;%7&quot;</translation>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.ui" line="35"/>
       <source>&amp;Check all</source>
-      <translation type="unfinished">&amp;Check all</translation>
+      <translation>&amp;Tandai semua</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.ui" line="65"/>
       <source>&amp;Uncheck all</source>
-      <translation type="unfinished">&amp;Uncheck all</translation>
+      <translation>Tidak tandai sem&amp;ua</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.ui" line="79"/>
       <source>Remove selected</source>
-      <translation type="unfinished">Remove selected</translation>
+      <translation>Hapus yang terpilih</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.ui" line="86"/>
@@ -2697,7 +2697,7 @@ QtWebEngine cache folder -&gt; &quot;%7&quot;</translation>
       <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.ui" line="121"/>
       <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.ui" line="313"/>
       <source>Title</source>
-      <translation type="unfinished">Title</translation>
+      <translation>Judul</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.ui" line="145"/>
@@ -2712,7 +2712,7 @@ QtWebEngine cache folder -&gt; &quot;%7&quot;</translation>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.ui" line="174"/>
       <source>JavaScript code</source>
-      <translation type="unfinished">JavaScript code</translation>
+      <translation>Kode JavaScript</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.ui" line="192"/>
@@ -2737,7 +2737,7 @@ QtWebEngine cache folder -&gt; &quot;%7&quot;</translation>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.ui" line="227"/>
       <source>Detailed &amp;help</source>
-      <translation type="unfinished">Detailed &amp;help</translation>
+      <translation>&amp;Bantuan yang didetilkan</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.ui" line="263"/>
@@ -2752,37 +2752,37 @@ QtWebEngine cache folder -&gt; &quot;%7&quot;</translation>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.ui" line="326"/>
       <source>URL</source>
-      <translation type="unfinished">URL</translation>
+      <translation>URL</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.ui" line="339"/>
       <source>Author</source>
-      <translation type="unfinished">Author</translation>
+      <translation>Penulis</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.ui" line="352"/>
       <source>Created on</source>
-      <translation type="unfinished">Created on</translation>
+      <translation>Dibuat pada</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.ui" line="365"/>
       <source>Contents</source>
-      <translation type="unfinished">Contents</translation>
+      <translation>Konten</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.ui" line="380"/>
       <source>Read</source>
-      <translation type="unfinished">Read</translation>
+      <translation>Terbaca</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.ui" line="387"/>
       <source>Important</source>
-      <translation type="unfinished">Important</translation>
+      <translation>Penting</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.ui" line="410"/>
       <source>Script output</source>
-      <translation type="unfinished">Script output</translation>
+      <translation>Keluaran skrip</translation>
     </message>
   </context>
   <context>
@@ -2791,67 +2791,67 @@ QtWebEngine cache folder -&gt; &quot;%7&quot;</translation>
       <location filename="../src/librssguard/gui/dialogs/formrestoredatabasesettings.cpp" line="17"/>
       <location filename="../src/librssguard/gui/dialogs/formrestoredatabasesettings.cpp" line="18"/>
       <source>No operation executed yet.</source>
-      <translation type="unfinished">No operation executed yet.</translation>
+      <translation>Belum ada operasi dijalankan.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formrestoredatabasesettings.cpp" line="56"/>
       <source>Restoration was initiated. Restart to proceed.</source>
-      <translation type="unfinished">Restoration was initiated. Restart to proceed.</translation>
+      <translation>Pemulihan dimulai. Restart untuk melanjutkan.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formrestoredatabasesettings.cpp" line="57"/>
       <source>You need to restart application for restoration process to finish.</source>
-      <translation type="unfinished">You need to restart application for restoration process to finish.</translation>
+      <translation>Anda perlu untuk me-restart aplikasi untuk proses pemulihan selesai.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formrestoredatabasesettings.cpp" line="62"/>
       <source>Database and/or settings were not copied to restoration directory successully.</source>
-      <translation type="unfinished">Database and/or settings were not copied to restoration directory successully.</translation>
+      <translation>Database dan/atau pengaturan tidak berhasil disalin ke direktori pemulihan.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formrestoredatabasesettings.cpp" line="81"/>
       <source>Select source directory</source>
-      <translation type="unfinished">Select source directory</translation>
+      <translation>Pilih direktori sumber</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formrestoredatabasesettings.cpp" line="87"/>
       <source>Good source directory is specified.</source>
-      <translation type="unfinished">Good source directory is specified.</translation>
+      <translation>Direktori sumber yang baik telah ditetapkan.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formrestoredatabasesettings.cpp" line="15"/>
       <source>Restart</source>
-      <translation type="unfinished">Restart</translation>
+      <translation>Jalankan ulang</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formrestoredatabasesettings.ui" line="14"/>
       <source>Restore database/settings</source>
-      <translation type="unfinished">Restore database/settings</translation>
+      <translation>Pulihkan database/pengaturan</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formrestoredatabasesettings.ui" line="33"/>
       <source>Operation results</source>
-      <translation type="unfinished">Operation results</translation>
+      <translation>Hasil operasi</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formrestoredatabasesettings.ui" line="59"/>
       <source>Source directory</source>
-      <translation type="unfinished">Source directory</translation>
+      <translation>Direktori sumber</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formrestoredatabasesettings.ui" line="65"/>
       <source>&amp;Select directory</source>
-      <translation type="unfinished">&amp;Select directory</translation>
+      <translation>&amp;Pilih direktori</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formrestoredatabasesettings.ui" line="82"/>
       <source>Restore database</source>
-      <translation type="unfinished">Restore database</translation>
+      <translation>Pulihkan database</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formrestoredatabasesettings.ui" line="100"/>
       <source>Restore settings</source>
-      <translation type="unfinished">Restore settings</translation>
+      <translation>Pulihkan pengaturan</translation>
     </message>
   </context>
   <context>
@@ -2859,49 +2859,49 @@ QtWebEngine cache folder -&gt; &quot;%7&quot;</translation>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formsettings.cpp" line="101"/>
       <source>Critical settings were changed</source>
-      <translation type="unfinished">Critical settings were changed</translation>
+      <translation>Pengaturan genting berubah</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formsettings.cpp" line="106"/>
       <location filename="../src/librssguard/gui/dialogs/formsettings.cpp" line="143"/>
       <source>Changed categories of settings:
 %1.</source>
-      <translation type="unfinished">Changed categories of settings:
+      <translation>Kategori berubah dari pengaturan:
 %1.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formsettings.cpp" line="140"/>
       <source>Some settings are changed and will be lost</source>
-      <translation type="unfinished">Some settings are changed and will be lost</translation>
+      <translation>Beberapa pengaturan diubah dan akan hilang</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formsettings.cpp" line="141"/>
       <source>Some settings were changed and by cancelling this dialog, you would lose these changes.</source>
-      <translation type="unfinished">Some settings were changed and by cancelling this dialog, you would lose these changes.</translation>
+      <translation>Beberapa pengaturan berubah dan dengan membatalkan dialog ini, Anda akan kehilangan perubahan ini.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formsettings.cpp" line="142"/>
       <source>Do you really want to close this dialog without saving any settings?</source>
-      <translation type="unfinished">Do you really want to close this dialog without saving any settings?</translation>
+      <translation>Apakah anda ingin menutup dialog ini tanpa menyimpan pengaturan?</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formsettings.cpp" line="102"/>
       <source>Some critical settings were changed and will be applied after the application gets restarted. 
 
 You have to restart manually.</source>
-      <translation type="unfinished">Some critical settings were changed and will be applied after the application gets restarted. 
+      <translation>Beberapa pengaturan genting berubah dan akan berlaku setelah aplikasi di-restart.
 
-You have to restart manually.</translation>
+Anda harus me-restart secara manual.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formsettings.cpp" line="105"/>
       <source>Do you want to restart now?</source>
-      <translation type="unfinished">Do you want to restart now?</translation>
+      <translation>Apakah anda ingin menjalankan ulang sekarang?</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formsettings.ui" line="14"/>
       <source>Settings</source>
-      <translation type="unfinished">Settings</translation>
+      <translation>Pengaturan</translation>
     </message>
   </context>
   <context>
@@ -2909,7 +2909,7 @@ You have to restart manually.</translation>
     <message>
       <location filename="../src/librssguard/services/standard/gui/formstandardfeeddetails.cpp" line="30"/>
       <source>General</source>
-      <translation type="unfinished">General</translation>
+      <translation>Umum</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/standard/gui/formstandardfeeddetails.cpp" line="31"/>
@@ -2923,43 +2923,43 @@ You have to restart manually.</translation>
       <location filename="../src/librssguard/services/standard/gui/formstandardimportexport.cpp" line="37"/>
       <location filename="../src/librssguard/services/standard/gui/formstandardimportexport.cpp" line="38"/>
       <source>No file is selected.</source>
-      <translation type="unfinished">No file is selected.</translation>
+      <translation>Tidak ada berkas yang dipilih.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/standard/gui/formstandardimportexport.cpp" line="41"/>
       <location filename="../src/librssguard/services/standard/gui/formstandardimportexport.cpp" line="42"/>
       <source>No operation executed yet.</source>
-      <translation type="unfinished">No operation executed yet.</translation>
+      <translation>Belum ada operasi dijalankan.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/standard/gui/formstandardimportexport.cpp" line="73"/>
       <source>Destination file</source>
-      <translation type="unfinished">Destination file</translation>
+      <translation>Tujuan berkas</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/standard/gui/formstandardimportexport.cpp" line="74"/>
       <source>Source feeds &amp;&amp; categories</source>
-      <translation type="unfinished">Source feeds &amp;&amp; categories</translation>
+      <translation>Sumber feed &amp;&amp; kategori</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/standard/gui/formstandardimportexport.cpp" line="76"/>
       <source>Export feeds</source>
-      <translation type="unfinished">Export feeds</translation>
+      <translation>Ekspor feed</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/standard/gui/formstandardimportexport.cpp" line="84"/>
       <source>Source file</source>
-      <translation type="unfinished">Source file</translation>
+      <translation>Berkas sumber</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/standard/gui/formstandardimportexport.cpp" line="85"/>
       <source>Target feeds &amp;&amp; categories</source>
-      <translation type="unfinished">Target feeds &amp;&amp; categories</translation>
+      <translation>Tujuan feed &amp;&amp; kategori</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/standard/gui/formstandardimportexport.cpp" line="92"/>
       <source>Import feeds</source>
-      <translation type="unfinished">Import feeds</translation>
+      <translation>Impor feed</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/standard/gui/formstandardimportexport.cpp" line="158"/>
@@ -2974,23 +2974,23 @@ You have to restart manually.</translation>
     <message>
       <location filename="../src/librssguard/services/standard/gui/formstandardimportexport.cpp" line="181"/>
       <source>Select file for feeds export</source>
-      <translation type="unfinished">Select file for feeds export</translation>
+      <translation>Pilih berkas untuk ekspor feed</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/standard/gui/formstandardimportexport.cpp" line="206"/>
       <location filename="../src/librssguard/services/standard/gui/formstandardimportexport.cpp" line="242"/>
       <source>File is selected.</source>
-      <translation type="unfinished">File is selected.</translation>
+      <translation>Berkas dipilih.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/standard/gui/formstandardimportexport.cpp" line="225"/>
       <source>Select file for feeds import</source>
-      <translation type="unfinished">Select file for feeds import</translation>
+      <translation>Pilih berkas untuk impor feed</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/standard/gui/formstandardimportexport.cpp" line="139"/>
       <source>Feeds were loaded.</source>
-      <translation type="unfinished">Feeds were loaded.</translation>
+      <translation>Feed dimuat.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/standard/gui/formstandardimportexport.cpp" line="31"/>
@@ -3022,18 +3022,18 @@ You have to restart manually.</translation>
       <location filename="../src/librssguard/services/standard/gui/formstandardimportexport.cpp" line="336"/>
       <location filename="../src/librssguard/services/standard/gui/formstandardimportexport.cpp" line="337"/>
       <source>Feeds were exported successfully.</source>
-      <translation type="unfinished">Feeds were exported successfully.</translation>
+      <translation>Feed berhasil diekspor.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/standard/gui/formstandardimportexport.cpp" line="347"/>
       <location filename="../src/librssguard/services/standard/gui/formstandardimportexport.cpp" line="348"/>
       <source>Critical error occurred.</source>
-      <translation type="unfinished">Critical error occurred.</translation>
+      <translation>Eror genting terjadi.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/standard/gui/formstandardimportexport.cpp" line="119"/>
       <source>Parsing data...</source>
-      <translation type="unfinished">Parsing data...</translation>
+      <translation>Mengurai data...</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/standard/gui/formstandardimportexport.cpp" line="170"/>
@@ -3044,28 +3044,28 @@ You have to restart manually.</translation>
     <message>
       <location filename="../src/librssguard/services/standard/gui/formstandardimportexport.cpp" line="341"/>
       <source>Cannot write into destination file: &apos;%1&apos;.</source>
-      <translation type="unfinished">Cannot write into destination file: &apos;%1&apos;.</translation>
+      <translation>Tidak dapat menulis ke berkas tujuan: &apos;%1&apos;.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/standard/gui/formstandardimportexport.cpp" line="171"/>
       <location filename="../src/librssguard/services/standard/gui/formstandardimportexport.cpp" line="216"/>
       <source>TXT files [one URL per line] (*.txt)</source>
-      <translation type="unfinished">TXT files [one URL per line] (*.txt)</translation>
+      <translation>Berkas TXT [satu URL per baris] (*.txt)</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/standard/gui/formstandardimportexport.cpp" line="75"/>
       <source>&amp;Export to file</source>
-      <translation type="unfinished">&amp;Export to file</translation>
+      <translation>&amp;Ekspor ke berkas</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/standard/gui/formstandardimportexport.cpp" line="87"/>
       <source>&amp;Import from file</source>
-      <translation type="unfinished">&amp;Import from file</translation>
+      <translation>&amp;Impor dari berkas</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/standard/gui/formstandardimportexport.ui" line="38"/>
       <source>&amp;Select file</source>
-      <translation type="unfinished">&amp;Select file</translation>
+      <translation>&amp;Pilih berkas</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/standard/gui/formstandardimportexport.ui" line="55"/>
@@ -3090,12 +3090,12 @@ You have to restart manually.</translation>
     <message>
       <location filename="../src/librssguard/services/standard/gui/formstandardimportexport.ui" line="109"/>
       <source>Root node</source>
-      <translation type="unfinished">Root node</translation>
+      <translation>Root node</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/standard/gui/formstandardimportexport.ui" line="119"/>
       <source>Select parent item for your feed.</source>
-      <translation type="unfinished">Select parent item for your feed.</translation>
+      <translation>Pilih item induk untuk feed anda.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/standard/gui/formstandardimportexport.ui" line="137"/>
@@ -3123,12 +3123,12 @@ You have to restart manually.</translation>
     <message>
       <location filename="../src/librssguard/services/tt-rss/gui/formttrssfeeddetails.cpp" line="49"/>
       <source>Feed added</source>
-      <translation type="unfinished">Feed added</translation>
+      <translation>Feed ditambahkan</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/tt-rss/gui/formttrssfeeddetails.cpp" line="64"/>
       <source>General</source>
-      <translation type="unfinished">General</translation>
+      <translation>Umum</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/tt-rss/gui/formttrssfeeddetails.cpp" line="65"/>
@@ -3176,12 +3176,12 @@ You have to restart manually.</translation>
     <message>
       <location filename="../src/librssguard/services/tt-rss/gui/formttrssnote.ui" line="17"/>
       <source>Title</source>
-      <translation type="unfinished">Title</translation>
+      <translation>Judul</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/tt-rss/gui/formttrssnote.ui" line="56"/>
       <source>URL</source>
-      <translation type="unfinished">URL</translation>
+      <translation>URL</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/tt-rss/gui/formttrssnote.ui" line="66"/>
@@ -3195,152 +3195,151 @@ You have to restart manually.</translation>
       <location filename="../src/librssguard/gui/dialogs/formupdate.cpp" line="68"/>
       <source>unknown</source>
       <extracomment>Unknown release.</extracomment>
-      <translation type="unfinished">unknown</translation>
+      <translation>Tidak dikenal</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formupdate.cpp" line="72"/>
       <source>List with updates was not
 downloaded successfully.</source>
-      <translation type="unfinished">List with updates was not
-downloaded successfully.</translation>
+      <translation>Daftar dengan pembaruan tidak
+diunduh dengan berhasil.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formupdate.cpp" line="89"/>
       <source>New release available.</source>
-      <translation type="unfinished">New release available.</translation>
+      <translation>Rilis baru tersedia.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formupdate.cpp" line="71"/>
       <source>Error: &apos;%1&apos;.</source>
-      <translation type="unfinished">Error: &apos;%1&apos;.</translation>
+      <translation>Eror: &apos;%1&apos;.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formupdate.cpp" line="98"/>
       <source>No new release available.</source>
-      <translation type="unfinished">No new release available.</translation>
+      <translation>Tidak ada rilis baru tersedia.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formupdate.cpp" line="99"/>
       <source>This release is not newer than
 currently installed one.</source>
-      <translation type="unfinished">This release is not newer than
-currently installed one.</translation>
+      <translation>Rilis ini bukan yang lebih terkini dari
+yang ter-install sekarang.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formupdate.cpp" line="34"/>
       <source>Download new installation files.</source>
-      <translation type="unfinished">Download new installation files.</translation>
+      <translation>Mengunduh berkas instalasi baru.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formupdate.cpp" line="233"/>
       <source>Cannot update application</source>
-      <translation type="unfinished">Cannot update application</translation>
+      <translation>Tidak dapat memperbarui aplikasi</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formupdate.cpp" line="110"/>
       <source>Downloaded %1% (update size is %2 kB).</source>
-      <translation type="unfinished">Downloaded %1% (update size is %2 kB).</translation>
+      <translation>Terunduh %1% (ukuran pembaruan adalah %2 kB).</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formupdate.cpp" line="115"/>
       <location filename="../src/librssguard/gui/dialogs/formupdate.cpp" line="247"/>
       <source>Downloading update...</source>
-      <translation type="unfinished">Downloading update...</translation>
+      <translation>Mengunduh pembaruan...</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formupdate.cpp" line="189"/>
       <source>Downloaded successfully</source>
-      <translation type="unfinished">Downloaded successfully</translation>
+      <translation>Berhasil diunduh</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formupdate.cpp" line="197"/>
       <location filename="../src/librssguard/gui/dialogs/formupdate.cpp" line="199"/>
       <source>Error occured</source>
-      <translation type="unfinished">Error occured</translation>
+      <translation>Eror terjadi</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formupdate.cpp" line="198"/>
       <source>Error occured during downloading of the package.</source>
-      <translation type="unfinished">Error occured during downloading of the package.</translation>
+      <translation>Eror terjadi saat pengunduhan paket.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formupdate.cpp" line="38"/>
       <source>Go to application website</source>
-      <translation type="unfinished">Go to application website</translation>
+      <translation>Pergi ke situs web aplikasi</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formupdate.cpp" line="90"/>
       <source>This is new version which can be
 downloaded.</source>
-      <translation type="unfinished">This is new version which can be
-downloaded.</translation>
+      <translation>Ini adalah versi baru yang dapat
+diunduh.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formupdate.cpp" line="191"/>
       <source>Install</source>
-      <translation type="unfinished">Install</translation>
+      <translation>Instal</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formupdate.cpp" line="234"/>
       <source>Cannot launch external updater. Update application manually.</source>
-      <translation type="unfinished">Cannot launch external updater. Update application manually.</translation>
+      <translation>Tidak dapat meluncurkan pembaru. Pembaruan aplikasi secara manual.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formupdate.cpp" line="33"/>
       <source>Download selected update</source>
-      <translation type="unfinished">Download selected update</translation>
+      <translation>Unduh pembaharuan yang dipilih</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formupdate.cpp" line="39"/>
       <source>Go to application website to get update packages manually.</source>
-      <translation type="unfinished">Go to application website to get update packages manually.</translation>
+      <translation>Kunjungi situs aplikasi untuk mendapatkan paket pembaharuan secara manual.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formupdate.cpp" line="157"/>
       <source> (size </source>
-      <translation type="unfinished"> (size </translation>
+      <translation> (ukuran </translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formupdate.cpp" line="172"/>
       <source>Available update files</source>
-      <translation type="unfinished">Available update files</translation>
+      <translation>Berkas pembaharuan tersedia</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formupdate.cpp" line="190"/>
       <source>Package was downloaded successfully.
 You can install it now.</source>
-      <translation type="unfinished">Package was downloaded successfully.
-You can install it now.</translation>
+      <translation>Paket telah berhasil diunduh. Anda dapat instal sekarang.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formupdate.ui" line="14"/>
       <source>Check for updates</source>
-      <translation type="unfinished">Check for updates</translation>
+      <translation>Periksa untuk pembaruan</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formupdate.ui" line="20"/>
       <source>Current release</source>
-      <translation type="unfinished">Current release</translation>
+      <translation>Rilis saat ini</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formupdate.ui" line="34"/>
       <source>Available release</source>
-      <translation type="unfinished">Available release</translation>
+      <translation>Rilis yang tersedia</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formupdate.ui" line="48"/>
       <source>Status</source>
-      <translation type="unfinished">Status</translation>
+      <translation>Status</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formupdate.ui" line="69"/>
       <source>Changelog</source>
-      <translation type="unfinished">Changelog</translation>
+      <translation>Daftar perubahan</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formupdate.ui" line="125"/>
       <source>Available files</source>
-      <translation type="unfinished">Available files</translation>
+      <translation>Berkas tersedia</translation>
     </message>
   </context>
   <context>
@@ -3349,53 +3348,53 @@ You can install it now.</translation>
       <location filename="../src/librssguard/services/gmail/gui/gmailaccountdetails.cpp" line="30"/>
       <location filename="../src/librssguard/services/gmail/gui/gmailaccountdetails.cpp" line="31"/>
       <source>Not tested yet.</source>
-      <translation type="unfinished">Not tested yet.</translation>
+      <translation>Belum teruji.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/gmail/gui/gmailaccountdetails.cpp" line="33"/>
       <source>User-visible username</source>
-      <translation type="unfinished">User-visible username</translation>
+      <translation>Nama pengguna yang terlihat</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/gmail/gui/gmailaccountdetails.cpp" line="67"/>
       <source>No username entered.</source>
-      <translation type="unfinished">No username entered.</translation>
+      <translation>Tak ada nama pengguna dimasukkan.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/gmail/gui/gmailaccountdetails.cpp" line="70"/>
       <source>Some username entered.</source>
-      <translation type="unfinished">Some username entered.</translation>
+      <translation>Beberapa nama pengguna dimasukkan.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/gmail/gui/gmailaccountdetails.cpp" line="76"/>
       <source>You did not grant access.</source>
-      <translation type="unfinished">You did not grant access.</translation>
+      <translation>Anda tidak diberikan ijin akses.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/gmail/gui/gmailaccountdetails.cpp" line="77"/>
       <location filename="../src/librssguard/services/gmail/gui/gmailaccountdetails.cpp" line="85"/>
       <source>There was error during testing.</source>
-      <translation type="unfinished">There was error during testing.</translation>
+      <translation>Ada eror ketika pengujian.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/gmail/gui/gmailaccountdetails.cpp" line="90"/>
       <source>Tested successfully. You may be prompted to login once more.</source>
-      <translation type="unfinished">Tested successfully. You may be prompted to login once more.</translation>
+      <translation>Pengujian berhasil. Anda mungkin disarankan untuk log masuk sekali lagi.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/gmail/gui/gmailaccountdetails.cpp" line="91"/>
       <source>Your access was approved.</source>
-      <translation type="unfinished">Your access was approved.</translation>
+      <translation>Akses anda disetujui.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/gmail/gui/gmailaccountdetails.cpp" line="127"/>
       <source>Empty value is entered.</source>
-      <translation type="unfinished">Empty value is entered.</translation>
+      <translation>Nilai kosong dimasukkan.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/gmail/gui/gmailaccountdetails.cpp" line="131"/>
       <source>Some value is entered.</source>
-      <translation type="unfinished">Some value is entered.</translation>
+      <translation>Beberapa nilai dimasukkan.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/gmail/gui/gmailaccountdetails.cpp" line="18"/>
@@ -3420,12 +3419,12 @@ You can install it now.</translation>
     <message>
       <location filename="../src/librssguard/services/gmail/gui/gmailaccountdetails.ui" line="17"/>
       <source>Username</source>
-      <translation type="unfinished">Username</translation>
+      <translation>Nama pengguna</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/gmail/gui/gmailaccountdetails.ui" line="33"/>
       <source>OAuth 2.0 settings</source>
-      <translation type="unfinished">OAuth 2.0 settings</translation>
+      <translation>Pengaturan OAuth 2.0</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/gmail/gui/gmailaccountdetails.ui" line="39"/>
@@ -3455,7 +3454,7 @@ You can install it now.</translation>
     <message>
       <location filename="../src/librssguard/services/gmail/gui/gmailaccountdetails.ui" line="134"/>
       <source>&amp;Login</source>
-      <translation type="unfinished">&amp;Login</translation>
+      <translation>&amp;Log masuk</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/gmail/gui/gmailaccountdetails.ui" line="163"/>
@@ -3468,22 +3467,22 @@ You can install it now.</translation>
     <message>
       <location filename="../src/librssguard/services/gmail/gmailnetworkfactory.cpp" line="497"/>
       <source>Click this to login again. Error is: &apos;%1&apos;</source>
-      <translation type="unfinished">Click this to login again. Error is: &apos;%1&apos;</translation>
+      <translation>Klik ini untuk log masuk kembali. Eror adalah: &apos;%1&apos;</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/gmail/gmailnetworkfactory.cpp" line="510"/>
       <source>Click this to login again.</source>
-      <translation type="unfinished">Click this to login again.</translation>
+      <translation>Klik ini untuk log masuk kembali.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/gmail/gmailnetworkfactory.cpp" line="583"/>
       <source>No subject</source>
-      <translation type="unfinished">No subject</translation>
+      <translation>Tanpa subjek</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/gmail/gmailnetworkfactory.cpp" line="496"/>
       <source>Gmail: authentication error</source>
-      <translation type="unfinished">Gmail: authentication error</translation>
+      <translation>Gmail: pengesahan eror</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/gmail/gmailnetworkfactory.cpp" line="184"/>
@@ -3498,18 +3497,18 @@ You can install it now.</translation>
     <message>
       <location filename="../src/librssguard/services/gmail/gmailnetworkfactory.cpp" line="509"/>
       <source>Gmail: authorization denied</source>
-      <translation type="unfinished">Gmail: authorization denied</translation>
+      <translation>Gmail: pengesahan ditolak</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/gmail/gmailnetworkfactory.cpp" line="460"/>
       <location filename="../src/librssguard/services/gmail/gmailnetworkfactory.cpp" line="660"/>
       <source>you are not logged in</source>
-      <translation type="unfinished">you are not logged in</translation>
+      <translation>anda belum log masuk</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/gmail/gmailnetworkfactory.cpp" line="696"/>
       <source>failed to get metadata</source>
-      <translation type="unfinished">failed to get metadata</translation>
+      <translation>gagal mendapatkan metadata</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/gmail/gmailnetworkfactory.cpp" line="500"/>
@@ -3523,22 +3522,22 @@ You can install it now.</translation>
     <message>
       <location filename="../src/librssguard/services/gmail/gmailserviceroot.cpp" line="44"/>
       <source>Inbox</source>
-      <translation type="unfinished">Inbox</translation>
+      <translation>Kotak Masuk</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/gmail/gmailserviceroot.cpp" line="53"/>
       <source>Sent</source>
-      <translation type="unfinished">Sent</translation>
+      <translation>Terkirim</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/gmail/gmailserviceroot.cpp" line="54"/>
       <source>Drafts</source>
-      <translation type="unfinished">Drafts</translation>
+      <translation>Draf</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/gmail/gmailserviceroot.cpp" line="58"/>
       <source>Spam</source>
-      <translation type="unfinished">Spam</translation>
+      <translation>Spam</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/gmail/gmailserviceroot.cpp" line="134"/>
@@ -3549,23 +3548,23 @@ You can install it now.</translation>
       <location filename="../src/librssguard/services/gmail/gmailserviceroot.cpp" line="211"/>
       <source>Authentication status: %1
 Login tokens expiration: %2</source>
-      <translation type="unfinished">Authentication status: %1
-Login tokens expiration: %2</translation>
+      <translation>Status pengesahan: %1
+Waktu berakhir log masuk: %2</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/gmail/gmailserviceroot.cpp" line="213"/>
       <source>logged-in</source>
-      <translation type="unfinished">logged-in</translation>
+      <translation>telah log masuk</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/gmail/gmailserviceroot.cpp" line="213"/>
       <source>NOT logged-in</source>
-      <translation type="unfinished">NOT logged-in</translation>
+      <translation>BELUM log masuk</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/gmail/gmailserviceroot.cpp" line="150"/>
       <source>Write new e-mail message</source>
-      <translation type="unfinished">Write new e-mail message</translation>
+      <translation>Tulis pesan surel baru</translation>
     </message>
   </context>
   <context>
@@ -3588,17 +3587,17 @@ Login tokens expiration: %2</translation>
     <message>
       <location filename="../src/librssguard/services/greader/gui/greaderaccountdetails.cpp" line="44"/>
       <source>No test done yet.</source>
-      <translation type="unfinished">No test done yet.</translation>
+      <translation>Belum ada tes yang dilakukan.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/greader/gui/greaderaccountdetails.cpp" line="45"/>
       <source>Here, results of connection test are shown.</source>
-      <translation type="unfinished">Here, results of connection test are shown.</translation>
+      <translation>Ini, hasil dari tes koneksi ditampilkan.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/greader/gui/greaderaccountdetails.cpp" line="203"/>
       <source>Network error: &apos;%1&apos;.</source>
-      <translation type="unfinished">Network error: &apos;%1&apos;.</translation>
+      <translation>Eror jaringan: &apos;%1&apos;.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/greader/gui/greaderaccountdetails.cpp" line="204"/>
@@ -3618,32 +3617,32 @@ Login tokens expiration: %2</translation>
     <message>
       <location filename="../src/librssguard/services/greader/gui/greaderaccountdetails.cpp" line="216"/>
       <source>Username cannot be empty.</source>
-      <translation type="unfinished">Username cannot be empty.</translation>
+      <translation>Nama pengguna tidak dapat kosong.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/greader/gui/greaderaccountdetails.cpp" line="219"/>
       <source>Username is okay.</source>
-      <translation type="unfinished">Username is okay.</translation>
+      <translation>Nama pengguna ok.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/greader/gui/greaderaccountdetails.cpp" line="227"/>
       <source>Password cannot be empty.</source>
-      <translation type="unfinished">Password cannot be empty.</translation>
+      <translation>Kata sandi tidak dapat kosong.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/greader/gui/greaderaccountdetails.cpp" line="230"/>
       <source>Password is okay.</source>
-      <translation type="unfinished">Password is okay.</translation>
+      <translation>Kata sandi ok.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/greader/gui/greaderaccountdetails.cpp" line="238"/>
       <source>URL cannot be empty.</source>
-      <translation type="unfinished">URL cannot be empty.</translation>
+      <translation>URL tidak dapat kosong.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/greader/gui/greaderaccountdetails.cpp" line="241"/>
       <source>URL is okay.</source>
-      <translation type="unfinished">URL is okay.</translation>
+      <translation>URL ok.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/greader/gui/greaderaccountdetails.cpp" line="47"/>
@@ -3668,28 +3667,28 @@ Login tokens expiration: %2</translation>
     <message>
       <location filename="../src/librssguard/services/greader/gui/greaderaccountdetails.cpp" line="110"/>
       <source>You did not grant access.</source>
-      <translation type="unfinished">You did not grant access.</translation>
+      <translation>Anda tidak diberikan ijin akses.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/greader/gui/greaderaccountdetails.cpp" line="111"/>
       <location filename="../src/librssguard/services/greader/gui/greaderaccountdetails.cpp" line="119"/>
       <source>There was error during testing.</source>
-      <translation type="unfinished">There was error during testing.</translation>
+      <translation>Ada eror ketika pengujian.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/greader/gui/greaderaccountdetails.cpp" line="118"/>
       <source>There is error. %1</source>
-      <translation type="unfinished">There is error. %1</translation>
+      <translation>Ada eror. %1</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/greader/gui/greaderaccountdetails.cpp" line="124"/>
       <source>Tested successfully. You may be prompted to login once more.</source>
-      <translation type="unfinished">Tested successfully. You may be prompted to login once more.</translation>
+      <translation>Pengujian berhasil. Anda mungkin disarankan untuk log masuk sekali lagi.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/greader/gui/greaderaccountdetails.cpp" line="125"/>
       <source>Your access was approved.</source>
-      <translation type="unfinished">Your access was approved.</translation>
+      <translation>Akses anda disetujui.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/greader/gui/greaderaccountdetails.cpp" line="159"/>
@@ -3699,12 +3698,12 @@ Login tokens expiration: %2</translation>
     <message>
       <location filename="../src/librssguard/services/greader/gui/greaderaccountdetails.cpp" line="161"/>
       <source>Empty value is entered.</source>
-      <translation type="unfinished">Empty value is entered.</translation>
+      <translation>Nilai kosong dimasukkan.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/greader/gui/greaderaccountdetails.cpp" line="165"/>
       <source>Some value is entered.</source>
-      <translation type="unfinished">Some value is entered.</translation>
+      <translation>Beberapa nilai dimasukkan.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/greader/gui/greaderaccountdetails.ui" line="17"/>
@@ -3714,7 +3713,7 @@ Login tokens expiration: %2</translation>
     <message>
       <location filename="../src/librssguard/services/greader/gui/greaderaccountdetails.ui" line="27"/>
       <source>URL</source>
-      <translation type="unfinished">URL</translation>
+      <translation>URL</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/greader/gui/greaderaccountdetails.ui" line="40"/>
@@ -3739,22 +3738,22 @@ Login tokens expiration: %2</translation>
     <message>
       <location filename="../src/librssguard/services/greader/gui/greaderaccountdetails.ui" line="95"/>
       <source>Authentication</source>
-      <translation type="unfinished">Authentication</translation>
+      <translation>Autentikasi</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/greader/gui/greaderaccountdetails.ui" line="101"/>
       <source>Username</source>
-      <translation type="unfinished">Username</translation>
+      <translation>Nama pengguna</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/greader/gui/greaderaccountdetails.ui" line="145"/>
       <source>Password</source>
-      <translation type="unfinished">Password</translation>
+      <translation>Kata sandi</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/greader/gui/greaderaccountdetails.ui" line="186"/>
       <source>OAuth 2.0 settings</source>
-      <translation type="unfinished">OAuth 2.0 settings</translation>
+      <translation>Pengaturan OAuth 2.0</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/greader/gui/greaderaccountdetails.ui" line="192"/>
@@ -3779,7 +3778,7 @@ Login tokens expiration: %2</translation>
     <message>
       <location filename="../src/librssguard/services/greader/gui/greaderaccountdetails.ui" line="270"/>
       <source>&amp;Test setup</source>
-      <translation type="unfinished">&amp;Test setup</translation>
+      <translation>&amp;Tes setelan</translation>
     </message>
   </context>
   <context>
@@ -3795,22 +3794,22 @@ Login tokens expiration: %2</translation>
     <message>
       <location filename="../src/librssguard/services/greader/greadernetwork.cpp" line="1099"/>
       <source>Inoreader: authentication error</source>
-      <translation type="unfinished">Inoreader: authentication error</translation>
+      <translation>Inoreader: pengesahan eror</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/greader/greadernetwork.cpp" line="1100"/>
       <source>Click this to login again. Error is: &apos;%1&apos;</source>
-      <translation type="unfinished">Click this to login again. Error is: &apos;%1&apos;</translation>
+      <translation>Klik ini untuk log masuk kembali. Eror adalah: &apos;%1&apos;</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/greader/greadernetwork.cpp" line="1112"/>
       <source>Inoreader: authorization denied</source>
-      <translation type="unfinished">Inoreader: authorization denied</translation>
+      <translation>Inoreader: pengesahan ditolak</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/greader/greadernetwork.cpp" line="1113"/>
       <source>Click this to login again.</source>
-      <translation type="unfinished">Click this to login again.</translation>
+      <translation>Klik ini untuk log masuk kembali.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/greader/greadernetwork.cpp" line="1103"/>
@@ -3840,12 +3839,12 @@ Login tokens expiration: %2</translation>
     <message>
       <location filename="../src/librssguard/miscellaneous/iofactory.cpp" line="151"/>
       <source>Cannot open file &apos;%1&apos; for reading.</source>
-      <translation type="unfinished">Cannot open file &apos;%1&apos; for reading.</translation>
+      <translation>Tidak dapat membuka berkas &apos;%1&apos; untuk membaca.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/miscellaneous/iofactory.cpp" line="163"/>
       <source>Cannot open file &apos;%1&apos; for writting.</source>
-      <translation type="unfinished">Cannot open file &apos;%1&apos; for writting.</translation>
+      <translation>Tidak dapat membuka berkas &apos;%1&apos; untuk menulis.</translation>
     </message>
   </context>
   <context>
@@ -3866,7 +3865,7 @@ Login tokens expiration: %2</translation>
     <message>
       <location filename="../src/librssguard/gui/itemdetails.ui" line="20"/>
       <source>Form</source>
-      <translation type="unfinished">Form</translation>
+      <translation>Formulir</translation>
     </message>
   </context>
   <context>
@@ -3874,7 +3873,7 @@ Login tokens expiration: %2</translation>
     <message>
       <location filename="../src/librssguard/gui/reusable/labelsmenu.cpp" line="15"/>
       <source>Labels</source>
-      <translation type="unfinished">Labels</translation>
+      <translation>Label</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/reusable/labelsmenu.cpp" line="19"/>
@@ -3887,27 +3886,27 @@ Login tokens expiration: %2</translation>
     <message>
       <location filename="../src/librssguard/services/abstract/labelsnode.cpp" line="19"/>
       <source>Labels</source>
-      <translation type="unfinished">Labels</translation>
+      <translation>Label</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/abstract/labelsnode.cpp" line="20"/>
       <source>You can see all your labels (tags) here.</source>
-      <translation type="unfinished">You can see all your labels (tags) here.</translation>
+      <translation>Anda dapat melihat semua label (tag) disini.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/abstract/labelsnode.cpp" line="114"/>
       <source>New label</source>
-      <translation type="unfinished">New label</translation>
+      <translation>Label baru</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/abstract/labelsnode.cpp" line="144"/>
       <source>This account does not allow you to create labels.</source>
-      <translation type="unfinished">This account does not allow you to create labels.</translation>
+      <translation>Akun ini tidak megijinkan anda untuk membuat label.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/abstract/labelsnode.cpp" line="145"/>
       <source>Not allowed</source>
-      <translation type="unfinished">Not allowed</translation>
+      <translation>Tidak diijinkan</translation>
     </message>
   </context>
   <context>
@@ -3915,7 +3914,7 @@ Login tokens expiration: %2</translation>
     <message>
       <location filename="../src/librssguard/gui/reusable/locationlineedit.cpp" line="11"/>
       <source>Website address goes here</source>
-      <translation type="unfinished">Website address goes here</translation>
+      <translation>Alamat situs web menuju kesini</translation>
     </message>
   </context>
   <context>
@@ -4059,7 +4058,7 @@ Login tokens expiration: %2</translation>
     <message>
       <location filename="../src/librssguard/gui/richtexteditor/mrichtextedit.ui" line="472"/>
       <source>...</source>
-      <translation type="unfinished">...</translation>
+      <translation>...</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/richtexteditor/mrichtextedit.cpp" line="67"/>
@@ -4142,27 +4141,27 @@ Login tokens expiration: %2</translation>
     <message>
       <location filename="../src/librssguard/database/mariadbdriver.cpp" line="75"/>
       <source>MySQL server works as expected.</source>
-      <translation type="unfinished">MySQL server works as expected.</translation>
+      <translation>Server MySQL bekerja sesuai yang diharapkan.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/database/mariadbdriver.cpp" line="78"/>
       <source>Selected database does not exist (yet). It will be created. It&apos;s okay.</source>
-      <translation type="unfinished">Selected database does not exist (yet). It will be created. It&apos;s okay.</translation>
+      <translation>Database yang dipilih tidak tersedia. Ini akan dibuat. Itu baik-baik saja.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/database/mariadbdriver.cpp" line="83"/>
       <source>No MySQL server is running in the target destination.</source>
-      <translation type="unfinished">No MySQL server is running in the target destination.</translation>
+      <translation>Tidak ada server MySQL yang sedang berjalan di target tujuan.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/database/mariadbdriver.cpp" line="86"/>
       <source>Access denied. Invalid username or password used.</source>
-      <translation type="unfinished">Access denied. Invalid username or password used.</translation>
+      <translation>Akses ditolak. Nama pengguna atau kata sandi yang digunakan tidak benar.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/database/mariadbdriver.cpp" line="89"/>
       <source>Unknown error: &apos;%1&apos;.</source>
-      <translation type="unfinished">Unknown error: &apos;%1&apos;.</translation>
+      <translation>Eror tak dikenal:  &apos;%1&apos;.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/database/mariadbdriver.cpp" line="94"/>
@@ -4175,47 +4174,47 @@ Login tokens expiration: %2</translation>
     <message>
       <location filename="../src/librssguard/gui/messagebrowser.cpp" line="169"/>
       <source>You clicked some link. You can download the link contents or open it in external web browser.</source>
-      <translation type="unfinished">You clicked some link. You can download the link contents or open it in external web browser.</translation>
+      <translation>Anda meng-klik beberapa tautan. Anda dapat mengunduh konten tautan atau membukanya di peramban web eksternal.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/messagebrowser.cpp" line="170"/>
       <source>What action do you want to take?</source>
-      <translation type="unfinished">What action do you want to take?</translation>
+      <translation>Apa aksi yang anda ingin ambil?</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/messagebrowser.cpp" line="173"/>
       <source>Open in external browser</source>
-      <translation type="unfinished">Open in external browser</translation>
+      <translation>Buka di peramban eksternal</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/messagebrowser.cpp" line="174"/>
       <source>Download</source>
-      <translation type="unfinished">Download</translation>
+      <translation>Unduh</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/messagebrowser.cpp" line="178"/>
       <source>Always open links in external browser.</source>
-      <translation type="unfinished">Always open links in external browser.</translation>
+      <translation>Selalu buka tautan di peramban eksternal.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/messagebrowser.cpp" line="201"/>
       <source>Incorrect link</source>
-      <translation type="unfinished">Incorrect link</translation>
+      <translation>Tautan salah</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/messagebrowser.cpp" line="201"/>
       <source>Selected hyperlink is invalid.</source>
-      <translation type="unfinished">Selected hyperlink is invalid.</translation>
+      <translation>Hiperlink yang dipilih tidak sah.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/messagebrowser.cpp" line="48"/>
       <source>Click this link to download it or open it with external browser.</source>
-      <translation type="unfinished">Click this link to download it or open it with external browser.</translation>
+      <translation>Klik tautan ini untuk mengunduh ini atau membukanya dengan peramban eksternal.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/messagebrowser.cpp" line="97"/>
       <source>image</source>
-      <translation type="unfinished">image</translation>
+      <translation>gambar</translation>
     </message>
   </context>
   <context>
@@ -4223,7 +4222,7 @@ Login tokens expiration: %2</translation>
     <message>
       <location filename="../src/librssguard/gui/reusable/messagecountspinbox.cpp" line="12"/>
       <source>= unlimited</source>
-      <translation type="unfinished">= unlimited</translation>
+      <translation>= tak terbatas</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/reusable/messagecountspinbox.cpp" line="15"/>
@@ -4259,7 +4258,7 @@ Login tokens expiration: %2</translation>
     <message>
       <location filename="../src/librssguard/gui/messagetextbrowser.cpp" line="65"/>
       <source>Open with external tool</source>
-      <translation type="unfinished">Open with external tool</translation>
+      <translation>Buka dengan alat eksternal</translation>
     </message>
   </context>
   <context>
@@ -4267,12 +4266,12 @@ Login tokens expiration: %2</translation>
     <message>
       <location filename="../src/librssguard/core/messagesforfiltersmodel.cpp" line="12"/>
       <source>Read</source>
-      <translation type="unfinished">Read</translation>
+      <translation>Terbaca</translation>
     </message>
     <message>
       <location filename="../src/librssguard/core/messagesforfiltersmodel.cpp" line="12"/>
       <source>Important</source>
-      <translation type="unfinished">Important</translation>
+      <translation>Penting</translation>
     </message>
     <message>
       <location filename="../src/librssguard/core/messagesforfiltersmodel.cpp" line="12"/>
@@ -4282,17 +4281,17 @@ Login tokens expiration: %2</translation>
     <message>
       <location filename="../src/librssguard/core/messagesforfiltersmodel.cpp" line="12"/>
       <source>Title</source>
-      <translation type="unfinished">Title</translation>
+      <translation>Judul</translation>
     </message>
     <message>
       <location filename="../src/librssguard/core/messagesforfiltersmodel.cpp" line="12"/>
       <source>URL</source>
-      <translation type="unfinished">URL</translation>
+      <translation>URL</translation>
     </message>
     <message>
       <location filename="../src/librssguard/core/messagesforfiltersmodel.cpp" line="12"/>
       <source>Author</source>
-      <translation type="unfinished">Author</translation>
+      <translation>Penulis</translation>
     </message>
     <message>
       <location filename="../src/librssguard/core/messagesforfiltersmodel.cpp" line="13"/>
@@ -4320,82 +4319,82 @@ Login tokens expiration: %2</translation>
     <message>
       <location filename="../src/librssguard/core/messagesmodel.cpp" line="280"/>
       <source>Id</source>
-      <translation type="unfinished">Id</translation>
+      <translation>Id</translation>
     </message>
     <message>
       <location filename="../src/librssguard/core/messagesmodel.cpp" line="281"/>
       <source>Read</source>
-      <translation type="unfinished">Read</translation>
+      <translation>Terbaca</translation>
     </message>
     <message>
       <location filename="../src/librssguard/core/messagesmodel.cpp" line="283"/>
       <source>Deleted</source>
-      <translation type="unfinished">Deleted</translation>
+      <translation>Terhapus</translation>
     </message>
     <message>
       <location filename="../src/librssguard/core/messagesmodel.cpp" line="282"/>
       <source>Important</source>
-      <translation type="unfinished">Important</translation>
+      <translation>Penting</translation>
     </message>
     <message>
       <location filename="../src/librssguard/core/messagesmodel.cpp" line="296"/>
       <source>Feed</source>
-      <translation type="unfinished">Feed</translation>
+      <translation>Feed</translation>
     </message>
     <message>
       <location filename="../src/librssguard/core/messagesmodel.cpp" line="286"/>
       <source>Title</source>
-      <translation type="unfinished">Title</translation>
+      <translation>Judul</translation>
     </message>
     <message>
       <location filename="../src/librssguard/core/messagesmodel.cpp" line="287"/>
       <source>Url</source>
-      <translation type="unfinished">Url</translation>
+      <translation>Url</translation>
     </message>
     <message>
       <location filename="../src/librssguard/core/messagesmodel.cpp" line="288"/>
       <source>Author</source>
-      <translation type="unfinished">Author</translation>
+      <translation>Penulis</translation>
     </message>
     <message>
       <location filename="../src/librssguard/core/messagesmodel.cpp" line="290"/>
       <source>Contents</source>
-      <translation type="unfinished">Contents</translation>
+      <translation>Konten</translation>
     </message>
     <message>
       <location filename="../src/librssguard/core/messagesmodel.cpp" line="284"/>
       <source>Permanently deleted</source>
-      <translation type="unfinished">Permanently deleted</translation>
+      <translation>Terhapus permanen</translation>
     </message>
     <message>
       <location filename="../src/librssguard/core/messagesmodel.cpp" line="291"/>
       <source>Attachments</source>
-      <translation type="unfinished">Attachments</translation>
+      <translation>Lampiran</translation>
     </message>
     <message>
       <location filename="../src/librssguard/core/messagesmodel.cpp" line="306"/>
       <source>List of attachments.</source>
-      <translation type="unfinished">List of attachments.</translation>
+      <translation>Daftar dari lampiran.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/core/messagesmodel.cpp" line="293"/>
       <source>Account ID</source>
-      <translation type="unfinished">Account ID</translation>
+      <translation>ID akun</translation>
     </message>
     <message>
       <location filename="../src/librssguard/core/messagesmodel.cpp" line="294"/>
       <source>Custom ID</source>
-      <translation type="unfinished">Custom ID</translation>
+      <translation>ID tersuai</translation>
     </message>
     <message>
       <location filename="../src/librssguard/core/messagesmodel.cpp" line="295"/>
       <source>Custom hash</source>
-      <translation type="unfinished">Custom hash</translation>
+      <translation>Hash tersuai</translation>
     </message>
     <message>
       <location filename="../src/librssguard/core/messagesmodel.cpp" line="285"/>
       <source>Feed ID</source>
-      <translation type="unfinished">Feed ID</translation>
+      <translation>ID feed</translation>
     </message>
     <message>
       <location filename="../src/librssguard/core/messagesmodel.cpp" line="298"/>
@@ -4603,12 +4602,12 @@ Login tokens expiration: %2</translation>
     <message>
       <location filename="../src/librssguard/gui/toolbars/messagestoolbar.cpp" line="251"/>
       <source>No extra highlighting</source>
-      <translation type="unfinished">No extra highlighting</translation>
+      <translation>Tanpa penyorotan ekstra</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/toolbars/messagestoolbar.cpp" line="92"/>
       <source>Toolbar spacer</source>
-      <translation type="unfinished">Toolbar spacer</translation>
+      <translation>Pengatur jarak bilah alat</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/toolbars/messagestoolbar.cpp" line="217"/>
@@ -4727,27 +4726,27 @@ Login tokens expiration: %2</translation>
     <message>
       <location filename="../src/librssguard/gui/messagesview.cpp" line="667"/>
       <source>Problem with starting external e-mail client</source>
-      <translation type="unfinished">Problem with starting external e-mail client</translation>
+      <translation>Masalah dengan memulai klien surel eksternal</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/messagesview.cpp" line="668"/>
       <source>External e-mail client could not be started.</source>
-      <translation type="unfinished">External e-mail client could not be started.</translation>
+      <translation>Klien surel eksternal tidak dapat dimulai.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/messagesview.cpp" line="419"/>
       <source>Open with external tool</source>
-      <translation type="unfinished">Open with external tool</translation>
+      <translation>Buka dengan alat eksternal</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/messagesview.cpp" line="877"/>
       <source>Cannot run external tool</source>
-      <translation type="unfinished">Cannot run external tool</translation>
+      <translation>Tidak dapat menjalankan alat eksternal</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/messagesview.cpp" line="878"/>
       <source>External tool &apos;%1&apos; could not be started.</source>
-      <translation type="unfinished">External tool &apos;%1&apos; could not be started.</translation>
+      <translation>Alat eksternal &apos;%1&apos; tidak dapat dijalankan.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/messagesview.cpp" line="436"/>
@@ -4765,7 +4764,7 @@ Login tokens expiration: %2</translation>
     <message>
       <location filename="../src/librssguard/gui/messagebox.cpp" line="85"/>
       <source>Do not show this dialog again.</source>
-      <translation type="unfinished">Do not show this dialog again.</translation>
+      <translation>Jangan tampilkan dialog ini lagi.</translation>
     </message>
   </context>
   <context>
@@ -4774,67 +4773,67 @@ Login tokens expiration: %2</translation>
       <location filename="../src/librssguard/network-web/networkfactory.cpp" line="81"/>
       <source>protocol error</source>
       <extracomment>Network status.</extracomment>
-      <translation type="unfinished">protocol error</translation>
+      <translation>protokol eror</translation>
     </message>
     <message>
       <location filename="../src/librssguard/network-web/networkfactory.cpp" line="89"/>
       <source>host not found</source>
       <extracomment>Network status.</extracomment>
-      <translation type="unfinished">host not found</translation>
+      <translation>host tidak ditemukan</translation>
     </message>
     <message>
       <location filename="../src/librssguard/network-web/networkfactory.cpp" line="99"/>
       <source>connection refused</source>
       <extracomment>Network status.</extracomment>
-      <translation type="unfinished">connection refused</translation>
+      <translation>koneksi ditolak</translation>
     </message>
     <message>
       <location filename="../src/librssguard/network-web/networkfactory.cpp" line="104"/>
       <source>connection timed out</source>
       <extracomment>Network status.</extracomment>
-      <translation type="unfinished">connection timed out</translation>
+      <translation>autentikasi proxy dibutuhkan</translation>
     </message>
     <message>
       <location filename="../src/librssguard/network-web/networkfactory.cpp" line="109"/>
       <source>SSL handshake failed</source>
       <extracomment>Network status.</extracomment>
-      <translation type="unfinished">SSL handshake failed</translation>
+      <translation>SSL handshake gagal</translation>
     </message>
     <message>
       <location filename="../src/librssguard/network-web/networkfactory.cpp" line="115"/>
       <source>proxy server connection refused</source>
       <extracomment>Network status.</extracomment>
-      <translation type="unfinished">proxy server connection refused</translation>
+      <translation>koneksi server proxy ditolak</translation>
     </message>
     <message>
       <location filename="../src/librssguard/network-web/networkfactory.cpp" line="120"/>
       <source>temporary failure</source>
       <extracomment>Network status.</extracomment>
-      <translation type="unfinished">temporary failure</translation>
+      <translation>gagal sementara</translation>
     </message>
     <message>
       <location filename="../src/librssguard/network-web/networkfactory.cpp" line="125"/>
       <source>authentication failed</source>
       <extracomment>Network status.</extracomment>
-      <translation type="unfinished">authentication failed</translation>
+      <translation>autentikasi gagal</translation>
     </message>
     <message>
       <location filename="../src/librssguard/network-web/networkfactory.cpp" line="130"/>
       <source>proxy authentication required</source>
       <extracomment>Network status.</extracomment>
-      <translation type="unfinished">proxy authentication required</translation>
+      <translation>autentikasi proxy dibutuhkan</translation>
     </message>
     <message>
       <location filename="../src/librssguard/network-web/networkfactory.cpp" line="135"/>
       <source>proxy server not found</source>
       <extracomment>Network status.</extracomment>
-      <translation type="unfinished">proxy server not found</translation>
+      <translation>server proxy tidak ditemukan</translation>
     </message>
     <message>
       <location filename="../src/librssguard/network-web/networkfactory.cpp" line="150"/>
       <source>content not found</source>
       <extracomment>Network status.</extracomment>
-      <translation type="unfinished">content not found</translation>
+      <translation>konten tidak ditemukan</translation>
     </message>
     <message>
       <location filename="../src/librssguard/network-web/networkfactory.cpp" line="156"/>
@@ -4846,23 +4845,23 @@ Login tokens expiration: %2</translation>
       <location filename="../src/librssguard/network-web/networkfactory.cpp" line="140"/>
       <source>no errors</source>
       <extracomment>Network status.</extracomment>
-      <translation type="unfinished">no errors</translation>
+      <translation>tidak ada eror</translation>
     </message>
     <message>
       <location filename="../src/librssguard/network-web/networkfactory.cpp" line="84"/>
       <source>access to content was denied</source>
-      <translation type="unfinished">access to content was denied</translation>
+      <translation>akses ke konten ditolak</translation>
     </message>
     <message>
       <location filename="../src/librssguard/network-web/networkfactory.cpp" line="93"/>
       <source>connection timed out or was cancelled</source>
-      <translation type="unfinished">connection timed out or was cancelled</translation>
+      <translation>koneksi kehabisan waktu atau dibatalkan</translation>
     </message>
     <message>
       <location filename="../src/librssguard/network-web/networkfactory.cpp" line="145"/>
       <source>unknown content</source>
       <extracomment>Network status.</extracomment>
-      <translation type="unfinished">unknown content</translation>
+      <translation>konten tak dikenal</translation>
     </message>
   </context>
   <context>
@@ -4870,73 +4869,73 @@ Login tokens expiration: %2</translation>
     <message>
       <location filename="../src/librssguard/gui/reusable/networkproxydetails.cpp" line="18"/>
       <source>No proxy</source>
-      <translation type="unfinished">No proxy</translation>
+      <translation>Tanpa proxy</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/reusable/networkproxydetails.cpp" line="19"/>
       <source>System proxy</source>
-      <translation type="unfinished">System proxy</translation>
+      <translation>Proxy sistem</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/reusable/networkproxydetails.cpp" line="20"/>
       <source>Socks5</source>
-      <translation type="unfinished">Socks5</translation>
+      <translation>Socks5</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/reusable/networkproxydetails.cpp" line="21"/>
       <source>Http</source>
-      <translation type="unfinished">Http</translation>
+      <translation>Http</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/reusable/networkproxydetails.ui" line="14"/>
       <source>Form</source>
-      <translation type="unfinished">Form</translation>
+      <translation>Formulir</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/reusable/networkproxydetails.ui" line="23"/>
       <source>Host</source>
-      <translation type="unfinished">Host</translation>
+      <translation>Host</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/reusable/networkproxydetails.ui" line="41"/>
       <source>Hostname or IP of your proxy server</source>
-      <translation type="unfinished">Hostname or IP of your proxy server</translation>
+      <translation>Nama host atau IP dari server proxy anda</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/reusable/networkproxydetails.ui" line="48"/>
       <source>Port</source>
-      <translation type="unfinished">Port</translation>
+      <translation>Port</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/reusable/networkproxydetails.ui" line="76"/>
       <source>Username</source>
-      <translation type="unfinished">Username</translation>
+      <translation>Nama pengguna</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/reusable/networkproxydetails.ui" line="92"/>
       <source>Your username for proxy server authentication</source>
-      <translation type="unfinished">Your username for proxy server authentication</translation>
+      <translation>Nama pengguna anda untuk autentikasi server proxy</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/reusable/networkproxydetails.ui" line="99"/>
       <source>Password</source>
-      <translation type="unfinished">Password</translation>
+      <translation>Kata sandi</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/reusable/networkproxydetails.ui" line="118"/>
       <source>Your password for proxy server authentication</source>
-      <translation type="unfinished">Your password for proxy server authentication</translation>
+      <translation>Kata sandi anda untuk autentikasi server proxy</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/reusable/networkproxydetails.cpp" line="12"/>
       <source>Note that these settings are applied only on newly established connections.</source>
-      <translation type="unfinished">Note that these settings are applied only on newly established connections.</translation>
+      <translation>Perhatikan bahwa pengaturan ini berlaku hanya pada koneksi yang baru dibentuk.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/reusable/networkproxydetails.ui" line="146"/>
       <source>Type</source>
       <extracomment>Proxy server type.</extracomment>
-      <translation type="unfinished">Type</translation>
+      <translation>Jenis</translation>
     </message>
   </context>
   <context>
@@ -4944,7 +4943,7 @@ Login tokens expiration: %2</translation>
     <message>
       <location filename="../src/librssguard/services/newsblur/gui/newsbluraccountdetails.ui" line="17"/>
       <source>URL</source>
-      <translation type="unfinished">URL</translation>
+      <translation>URL</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/newsblur/gui/newsbluraccountdetails.ui" line="30"/>
@@ -4959,22 +4958,22 @@ Login tokens expiration: %2</translation>
     <message>
       <location filename="../src/librssguard/services/newsblur/gui/newsbluraccountdetails.ui" line="63"/>
       <source>Authentication</source>
-      <translation type="unfinished">Authentication</translation>
+      <translation>Autentikasi</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/newsblur/gui/newsbluraccountdetails.ui" line="69"/>
       <source>Username</source>
-      <translation type="unfinished">Username</translation>
+      <translation>Nama pengguna</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/newsblur/gui/newsbluraccountdetails.ui" line="82"/>
       <source>Password</source>
-      <translation type="unfinished">Password</translation>
+      <translation>Kata sandi</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/newsblur/gui/newsbluraccountdetails.ui" line="100"/>
       <source>&amp;Test setup</source>
-      <translation type="unfinished">&amp;Test setup</translation>
+      <translation>&amp;Tes setelan</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/newsblur/gui/newsbluraccountdetails.cpp" line="22"/>
@@ -4994,12 +4993,12 @@ Login tokens expiration: %2</translation>
     <message>
       <location filename="../src/librssguard/services/newsblur/gui/newsbluraccountdetails.cpp" line="26"/>
       <source>No test done yet.</source>
-      <translation type="unfinished">No test done yet.</translation>
+      <translation>Belum ada tes yang dilakukan.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/newsblur/gui/newsbluraccountdetails.cpp" line="27"/>
       <source>Here, results of connection test are shown.</source>
-      <translation type="unfinished">Here, results of connection test are shown.</translation>
+      <translation>Ini, hasil dari tes koneksi ditampilkan.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/newsblur/gui/newsbluraccountdetails.cpp" line="29"/>
@@ -5019,7 +5018,7 @@ Login tokens expiration: %2</translation>
     <message>
       <location filename="../src/librssguard/services/newsblur/gui/newsbluraccountdetails.cpp" line="73"/>
       <source>Network error: &apos;%1&apos;.</source>
-      <translation type="unfinished">Network error: &apos;%1&apos;.</translation>
+      <translation>Eror jaringan: &apos;%1&apos;.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/newsblur/gui/newsbluraccountdetails.cpp" line="74"/>
@@ -5029,7 +5028,7 @@ Login tokens expiration: %2</translation>
     <message>
       <location filename="../src/librssguard/services/newsblur/gui/newsbluraccountdetails.cpp" line="78"/>
       <source>Error: &apos;%1&apos;.</source>
-      <translation type="unfinished">Error: &apos;%1&apos;.</translation>
+      <translation>Eror: &apos;%1&apos;.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/newsblur/gui/newsbluraccountdetails.cpp" line="79"/>
@@ -5039,32 +5038,32 @@ Login tokens expiration: %2</translation>
     <message>
       <location filename="../src/librssguard/services/newsblur/gui/newsbluraccountdetails.cpp" line="87"/>
       <source>Username cannot be empty.</source>
-      <translation type="unfinished">Username cannot be empty.</translation>
+      <translation>Nama pengguna tidak dapat kosong.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/newsblur/gui/newsbluraccountdetails.cpp" line="90"/>
       <source>Username is okay.</source>
-      <translation type="unfinished">Username is okay.</translation>
+      <translation>Nama pengguna ok.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/newsblur/gui/newsbluraccountdetails.cpp" line="98"/>
       <source>Password cannot be empty.</source>
-      <translation type="unfinished">Password cannot be empty.</translation>
+      <translation>Kata sandi tidak dapat kosong.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/newsblur/gui/newsbluraccountdetails.cpp" line="101"/>
       <source>Password is okay.</source>
-      <translation type="unfinished">Password is okay.</translation>
+      <translation>Kata sandi ok.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/newsblur/gui/newsbluraccountdetails.cpp" line="109"/>
       <source>URL cannot be empty.</source>
-      <translation type="unfinished">URL cannot be empty.</translation>
+      <translation>URL tidak dapat kosong.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/newsblur/gui/newsbluraccountdetails.cpp" line="112"/>
       <source>URL is okay.</source>
-      <translation type="unfinished">URL is okay.</translation>
+      <translation>URL ok.</translation>
     </message>
   </context>
   <context>
@@ -5101,22 +5100,22 @@ Login tokens expiration: %2</translation>
     <message>
       <location filename="../src/librssguard/network-web/oauth2service.cpp" line="92"/>
       <source>Click here to login.</source>
-      <translation type="unfinished">Click here to login.</translation>
+      <translation>Klik ini untuk log masuk.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/network-web/oauth2service.cpp" line="222"/>
       <source>Logging in via OAuth 2.0...</source>
-      <translation type="unfinished">Logging in via OAuth 2.0...</translation>
+      <translation>Log masuk dengan OAuth 2.0...</translation>
     </message>
     <message>
       <location filename="../src/librssguard/network-web/oauth2service.cpp" line="223"/>
       <source>Refreshing login tokens for &apos;%1&apos;...</source>
-      <translation type="unfinished">Refreshing login tokens for &apos;%1&apos;...</translation>
+      <translation>Segarkan bukti log masuk untuk &apos;%1&apos;...</translation>
     </message>
     <message>
       <location filename="../src/librssguard/network-web/oauth2service.cpp" line="91"/>
       <source>You have to login first</source>
-      <translation type="unfinished">You have to login first</translation>
+      <translation>Anda harus log masuk terlebih dulu</translation>
     </message>
     <message>
       <location filename="../src/librssguard/network-web/oauth2service.cpp" line="52"/>
@@ -5139,42 +5138,42 @@ Login tokens expiration: %2</translation>
     <message>
       <location filename="../src/librssguard/services/owncloud/gui/owncloudaccountdetails.cpp" line="15"/>
       <source>Leaving this option on causes that updates of feeds will be probably much slower and may time-out often.</source>
-      <translation type="unfinished">Leaving this option on causes that updates of feeds will be probably much slower and may time-out often.</translation>
+      <translation>Membiarkan pilihan ini menyala menyebabkan pembaruan dari feed mungkin akan lebih lambat dan bisa sering kehabisan waktu.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/owncloud/gui/owncloudaccountdetails.cpp" line="18"/>
       <source>Password for your Nextcloud account</source>
-      <translation type="unfinished">Password for your Nextcloud account</translation>
+      <translation>Kata sandi untuk akun Nextcloud anda</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/owncloud/gui/owncloudaccountdetails.cpp" line="20"/>
       <source>Username for your Nextcloud account</source>
-      <translation type="unfinished">Username for your Nextcloud account</translation>
+      <translation>Nama pengguna untuk akun Nextcloud anda</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/owncloud/gui/owncloudaccountdetails.cpp" line="21"/>
       <source>URL of your Nextcloud server, without any API path</source>
-      <translation type="unfinished">URL of your Nextcloud server, without any API path</translation>
+      <translation>URL ke server Nextcloud anda, tanpa jalur API apapun</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/owncloud/gui/owncloudaccountdetails.cpp" line="23"/>
       <source>No test done yet.</source>
-      <translation type="unfinished">No test done yet.</translation>
+      <translation>Belum ada tes yang dilakukan.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/owncloud/gui/owncloudaccountdetails.cpp" line="24"/>
       <source>Here, results of connection test are shown.</source>
-      <translation type="unfinished">Here, results of connection test are shown.</translation>
+      <translation>Ini, hasil dari tes koneksi ditampilkan.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/owncloud/gui/owncloudaccountdetails.cpp" line="28"/>
       <source>= unlimited</source>
-      <translation type="unfinished">= unlimited</translation>
+      <translation>= tak terbatas</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/owncloud/gui/owncloudaccountdetails.cpp" line="63"/>
       <source>Network error: &apos;%1&apos;.</source>
-      <translation type="unfinished">Network error: &apos;%1&apos;.</translation>
+      <translation>Eror jaringan: &apos;%1&apos;.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/owncloud/gui/owncloudaccountdetails.cpp" line="64"/>
@@ -5190,48 +5189,48 @@ Login tokens expiration: %2</translation>
     <message>
       <location filename="../src/librssguard/services/owncloud/gui/owncloudaccountdetails.cpp" line="71"/>
       <source>Selected Nextcloud News server is running unsupported version.</source>
-      <translation type="unfinished">Selected Nextcloud News server is running unsupported version.</translation>
+      <translation>Server Nextcloud News terpilih menjalankan versi yang tak didukung.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/owncloud/gui/owncloudaccountdetails.cpp" line="77"/>
       <source>Nextcloud News server is okay.</source>
-      <translation type="unfinished">Nextcloud News server is okay.</translation>
+      <translation>Server Nextcloud News baik-baik saja.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/owncloud/gui/owncloudaccountdetails.cpp" line="82"/>
       <location filename="../src/librssguard/services/owncloud/gui/owncloudaccountdetails.cpp" line="83"/>
       <source>Unspecified error, did you enter correct URL?</source>
-      <translation type="unfinished">Unspecified error, did you enter correct URL?</translation>
+      <translation>Eror tidak ditentukan, apakah anda memasukkan URL yang benar?</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/owncloud/gui/owncloudaccountdetails.cpp" line="91"/>
       <source>Username cannot be empty.</source>
-      <translation type="unfinished">Username cannot be empty.</translation>
+      <translation>Nama pengguna tidak dapat kosong.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/owncloud/gui/owncloudaccountdetails.cpp" line="94"/>
       <source>Username is okay.</source>
-      <translation type="unfinished">Username is okay.</translation>
+      <translation>Nama pengguna ok.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/owncloud/gui/owncloudaccountdetails.cpp" line="102"/>
       <source>Password cannot be empty.</source>
-      <translation type="unfinished">Password cannot be empty.</translation>
+      <translation>Kata sandi tidak dapat kosong.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/owncloud/gui/owncloudaccountdetails.cpp" line="105"/>
       <source>Password is okay.</source>
-      <translation type="unfinished">Password is okay.</translation>
+      <translation>Kata sandi ok.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/owncloud/gui/owncloudaccountdetails.cpp" line="113"/>
       <source>URL cannot be empty.</source>
-      <translation type="unfinished">URL cannot be empty.</translation>
+      <translation>URL tidak dapat kosong.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/owncloud/gui/owncloudaccountdetails.cpp" line="116"/>
       <source>URL is okay.</source>
-      <translation type="unfinished">URL is okay.</translation>
+      <translation>URL ok.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/owncloud/gui/owncloudaccountdetails.cpp" line="31"/>
@@ -5241,7 +5240,7 @@ Login tokens expiration: %2</translation>
     <message>
       <location filename="../src/librssguard/services/owncloud/gui/owncloudaccountdetails.ui" line="19"/>
       <source>URL</source>
-      <translation type="unfinished">URL</translation>
+      <translation>URL</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/owncloud/gui/owncloudaccountdetails.ui" line="34"/>
@@ -5256,27 +5255,27 @@ Login tokens expiration: %2</translation>
     <message>
       <location filename="../src/librssguard/services/owncloud/gui/owncloudaccountdetails.ui" line="81"/>
       <source>Some feeds require authentication, including GMail feeds. BASIC, NTLM-2 and DIGEST-MD5 authentication schemes are supported.</source>
-      <translation type="unfinished">Some feeds require authentication, including GMail feeds. BASIC, NTLM-2 and DIGEST-MD5 authentication schemes are supported.</translation>
+      <translation>Beberapa feed butuh autentikasi, termasuk feed GMail. Skema autentikasi BASIC, NTLM-2 and DIGEST-MD5 didukung.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/owncloud/gui/owncloudaccountdetails.ui" line="84"/>
       <source>Authentication</source>
-      <translation type="unfinished">Authentication</translation>
+      <translation>Autentikasi</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/owncloud/gui/owncloudaccountdetails.ui" line="96"/>
       <source>Username</source>
-      <translation type="unfinished">Username</translation>
+      <translation>Nama pengguna</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/owncloud/gui/owncloudaccountdetails.ui" line="109"/>
       <source>Password</source>
-      <translation type="unfinished">Password</translation>
+      <translation>Kata sandi</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/owncloud/gui/owncloudaccountdetails.ui" line="127"/>
       <source>&amp;Test setup</source>
-      <translation type="unfinished">&amp;Test setup</translation>
+      <translation>&amp;Tes setelan</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/owncloud/gui/owncloudaccountdetails.ui" line="162"/>
@@ -5300,35 +5299,35 @@ Login tokens expiration: %2</translation>
       <location filename="../src/librssguard/miscellaneous/localization.cpp" line="77"/>
       <source>LANG_ABBREV</source>
       <extracomment>Abbreviation of language, e.g. en. Use ISO 639-1 code here combined with ISO 3166-1 (alpha-2) code. Examples: &quot;cs&quot;, &quot;en&quot;, &quot;it&quot;, &quot;cs_CZ&quot;, &quot;en_GB&quot;, &quot;en_US&quot;.</extracomment>
-      <translation type="unfinished">LANG_ABBREV</translation>
+      <translation>id</translation>
     </message>
     <message>
       <location filename="../src/librssguard/miscellaneous/application.cpp" line="144"/>
       <location filename="../src/librssguard/miscellaneous/localization.cpp" line="78"/>
       <source>LANG_AUTHOR</source>
       <extracomment>Name of translator - optional.</extracomment>
-      <translation type="unfinished">LANG_AUTHOR</translation>
+      <translation>Rachman</translation>
     </message>
     <message>
       <location filename="../src/librssguard/miscellaneous/localization.cpp" line="79"/>
       <source>LANG_EMAIL</source>
-      <translation type="unfinished">LANG_EMAIL</translation>
+      <translation>LANG_EMAIL</translation>
     </message>
     <message numerus="yes">
       <location filename="../src/librssguard/core/feeddownloader.cpp" line="537"/>
       <source>
 
 + %n other feeds.</source>
-      <translation type="unfinished">
+      <translation>
         <numerusform>
 
-+ %n other feeds.</numerusform>
++ %n feed lain.</numerusform>
       </translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/standard/standardserviceroot.cpp" line="58"/>
       <source>Load initial set of feeds</source>
-      <translation type="unfinished">Load initial set of feeds</translation>
+      <translation>Memuat kumpulan awal dari feed</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/tt-rss/ttrssserviceentrypoint.cpp" line="17"/>
@@ -5337,11 +5336,10 @@ Login tokens expiration: %2</translation>
 Tiny Tiny RSS is an open source web-based news feed (RSS/Atom) reader and aggregator, designed to allow you to read news from any location, while feeling as close to a real desktop application as possible.
 
 At least API level %1 is required.</source>
-      <translation type="unfinished">This service offers integration with Tiny Tiny RSS.
+      <translation>Layanan ini menawarkan integrasi dengan Tiny Tiny RSS.
+Tiny Tiny RSS merupakan pengumpul dan pembaca feed berita (RSS/Atom) berbasis web bersumber terbuka, didesain untuk memperkenankan ada untuk membaca berita dari lokasi manapun, sambil sebisa mungkin merasa seperti pada aplikasi desktopyang sesungguhnya.
 
-Tiny Tiny RSS is an open source web-based news feed (RSS/Atom) reader and aggregator, designed to allow you to read news from any location, while feeling as close to a real desktop application as possible.
-
-At least API level %1 is required.</translation>
+Setidaknya API level %1 dibutuhkan.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/owncloud/owncloudserviceentrypoint.cpp" line="34"/>
@@ -5351,12 +5349,12 @@ At least API level %1 is required.</translation>
     <message>
       <location filename="../src/librssguard/miscellaneous/systemfactory.cpp" line="266"/>
       <source>New version available</source>
-      <translation type="unfinished">New version available</translation>
+      <translation>Versi baru tersedia</translation>
     </message>
     <message>
       <location filename="../src/librssguard/miscellaneous/systemfactory.cpp" line="267"/>
       <source>Click the bubble for more information.</source>
-      <translation type="unfinished">Click the bubble for more information.</translation>
+      <translation>Klik gelembung untuk informasi lebih.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/miscellaneous/externaltool.cpp" line="41"/>
@@ -5556,22 +5554,22 @@ List of supported readers:</translation>
     <message>
       <location filename="../src/librssguard/services/abstract/recyclebin.cpp" line="17"/>
       <source>Recycle bin</source>
-      <translation type="unfinished">Recycle bin</translation>
+      <translation>Tong sampah</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/abstract/recyclebin.cpp" line="47"/>
       <source>Restore recycle bin</source>
-      <translation type="unfinished">Restore recycle bin</translation>
+      <translation>Pulihkan tong sampah</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/abstract/recyclebin.cpp" line="48"/>
       <source>Empty recycle bin</source>
-      <translation type="unfinished">Empty recycle bin</translation>
+      <translation>Kosongkan tong sampah</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/abstract/recyclebin.cpp" line="105"/>
       <source>Are you sure?</source>
-      <translation type="unfinished">Are you sure?</translation>
+      <translation>Apakah anda yakin?</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/abstract/recyclebin.cpp" line="106"/>
@@ -5602,33 +5600,33 @@ List of supported readers:</translation>
       <location filename="../src/librssguard/services/reddit/gui/redditaccountdetails.cpp" line="20"/>
       <location filename="../src/librssguard/services/reddit/gui/redditaccountdetails.cpp" line="21"/>
       <source>Not tested yet.</source>
-      <translation type="unfinished">Not tested yet.</translation>
+      <translation>Belum teruji.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/reddit/gui/redditaccountdetails.cpp" line="23"/>
       <source>User-visible username</source>
-      <translation type="unfinished">User-visible username</translation>
+      <translation>Nama pengguna yang terlihat</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/reddit/gui/redditaccountdetails.cpp" line="57"/>
       <source>No username entered.</source>
-      <translation type="unfinished">No username entered.</translation>
+      <translation>Tak ada nama pengguna dimasukkan.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/reddit/gui/redditaccountdetails.cpp" line="60"/>
       <source>Some username entered.</source>
-      <translation type="unfinished">Some username entered.</translation>
+      <translation>Beberapa nama pengguna dimasukkan.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/reddit/gui/redditaccountdetails.cpp" line="66"/>
       <source>You did not grant access.</source>
-      <translation type="unfinished">You did not grant access.</translation>
+      <translation>Anda tidak diberikan ijin akses.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/reddit/gui/redditaccountdetails.cpp" line="67"/>
       <location filename="../src/librssguard/services/reddit/gui/redditaccountdetails.cpp" line="75"/>
       <source>There was error during testing.</source>
-      <translation type="unfinished">There was error during testing.</translation>
+      <translation>Ada eror ketika pengujian.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/reddit/gui/redditaccountdetails.cpp" line="74"/>
@@ -5638,12 +5636,12 @@ List of supported readers:</translation>
     <message>
       <location filename="../src/librssguard/services/reddit/gui/redditaccountdetails.cpp" line="80"/>
       <source>Tested successfully. You may be prompted to login once more.</source>
-      <translation type="unfinished">Tested successfully. You may be prompted to login once more.</translation>
+      <translation>Pengujian berhasil. Anda mungkin disarankan untuk log masuk sekali lagi.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/reddit/gui/redditaccountdetails.cpp" line="81"/>
       <source>Your access was approved.</source>
-      <translation type="unfinished">Your access was approved.</translation>
+      <translation>Akses anda disetujui.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/reddit/gui/redditaccountdetails.cpp" line="115"/>
@@ -5653,22 +5651,22 @@ List of supported readers:</translation>
     <message>
       <location filename="../src/librssguard/services/reddit/gui/redditaccountdetails.cpp" line="117"/>
       <source>Empty value is entered.</source>
-      <translation type="unfinished">Empty value is entered.</translation>
+      <translation>Nilai kosong dimasukkan.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/reddit/gui/redditaccountdetails.cpp" line="121"/>
       <source>Some value is entered.</source>
-      <translation type="unfinished">Some value is entered.</translation>
+      <translation>Beberapa nilai dimasukkan.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/reddit/gui/redditaccountdetails.ui" line="17"/>
       <source>Username</source>
-      <translation type="unfinished">Username</translation>
+      <translation>Nama pengguna</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/reddit/gui/redditaccountdetails.ui" line="33"/>
       <source>OAuth 2.0 settings</source>
-      <translation type="unfinished">OAuth 2.0 settings</translation>
+      <translation>Pengaturan OAuth 2.0</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/reddit/gui/redditaccountdetails.ui" line="39"/>
@@ -5698,7 +5696,7 @@ List of supported readers:</translation>
     <message>
       <location filename="../src/librssguard/services/reddit/gui/redditaccountdetails.ui" line="134"/>
       <source>&amp;Login</source>
-      <translation type="unfinished">&amp;Login</translation>
+      <translation>&amp;Log masuk</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/reddit/gui/redditaccountdetails.ui" line="163"/>
@@ -5721,7 +5719,7 @@ List of supported readers:</translation>
       <location filename="../src/librssguard/services/reddit/redditnetworkfactory.cpp" line="137"/>
       <location filename="../src/librssguard/services/reddit/redditnetworkfactory.cpp" line="225"/>
       <source>you are not logged in</source>
-      <translation type="unfinished">you are not logged in</translation>
+      <translation>anda belum log masuk</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/reddit/redditnetworkfactory.cpp" line="307"/>
@@ -5731,7 +5729,7 @@ List of supported readers:</translation>
     <message>
       <location filename="../src/librssguard/services/reddit/redditnetworkfactory.cpp" line="308"/>
       <source>Click this to login again. Error is: &apos;%1&apos;</source>
-      <translation type="unfinished">Click this to login again. Error is: &apos;%1&apos;</translation>
+      <translation>Klik ini untuk log masuk kembali. Eror adalah: &apos;%1&apos;</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/reddit/redditnetworkfactory.cpp" line="311"/>
@@ -5747,7 +5745,7 @@ List of supported readers:</translation>
     <message>
       <location filename="../src/librssguard/services/reddit/redditnetworkfactory.cpp" line="321"/>
       <source>Click this to login again.</source>
-      <translation type="unfinished">Click this to login again.</translation>
+      <translation>Klik ini untuk log masuk kembali.</translation>
     </message>
   </context>
   <context>
@@ -5756,18 +5754,18 @@ List of supported readers:</translation>
       <location filename="../src/librssguard/services/reddit/redditserviceroot.cpp" line="127"/>
       <source>Authentication status: %1
 Login tokens expiration: %2</source>
-      <translation type="unfinished">Authentication status: %1
-Login tokens expiration: %2</translation>
+      <translation>Status pengesahan: %1
+Waktu berakhir log masuk: %2</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/reddit/redditserviceroot.cpp" line="129"/>
       <source>logged-in</source>
-      <translation type="unfinished">logged-in</translation>
+      <translation>telah log masuk</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/reddit/redditserviceroot.cpp" line="129"/>
       <source>NOT logged-in</source>
-      <translation type="unfinished">NOT logged-in</translation>
+      <translation>BELUM log masuk</translation>
     </message>
   </context>
   <context>
@@ -5806,7 +5804,7 @@ Login tokens expiration: %2</translation>
     <message>
       <location filename="../src/librssguard/exceptions/scriptexception.cpp" line="37"/>
       <source>unknown error</source>
-      <translation type="unfinished">unknown error</translation>
+      <translation>eror tidak dikenal</translation>
     </message>
   </context>
   <context>
@@ -5842,12 +5840,12 @@ Login tokens expiration: %2</translation>
     <message>
       <location filename="../src/librssguard/gui/reusable/searchtextwidget.ui" line="39"/>
       <source>Find previous occurence</source>
-      <translation type="unfinished">Find previous occurence</translation>
+      <translation>Temukan kejadian sebelumnya</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/reusable/searchtextwidget.ui" line="49"/>
       <source>Find next occurence</source>
-      <translation type="unfinished">Find next occurence</translation>
+      <translation>Temukan kejadian setelahnya</translation>
     </message>
   </context>
   <context>
@@ -5903,7 +5901,7 @@ Number of categories: %2</translation>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsbrowsermail.cpp" line="106"/>
       <source>Select web browser executable</source>
-      <translation type="unfinished">Select web browser executable</translation>
+      <translation>Pilih peramban web yang dapat dijalankan</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsbrowsermail.cpp" line="111"/>
@@ -5913,29 +5911,29 @@ Number of categories: %2</translation>
       <extracomment>File filter for external browser selection dialog.
 ----------
 File filter for external e-mail selection dialog.</extracomment>
-      <translation type="unfinished">Executables (*)</translation>
+      <translation>Yang dapat dijalankan (*)</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsbrowsermail.cpp" line="113"/>
       <location filename="../src/librssguard/gui/settings/settingsbrowsermail.cpp" line="158"/>
       <location filename="../src/librssguard/gui/settings/settingsbrowsermail.cpp" line="291"/>
       <source>Executables (*.*)</source>
-      <translation type="unfinished">Executables (*.*)</translation>
+      <translation>Yang dapat dijalankan (*.*)</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsbrowsermail.cpp" line="151"/>
       <source>Select e-mail executable</source>
-      <translation type="unfinished">Select e-mail executable</translation>
+      <translation>Pilih surel yang dapat dijalankan</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsbrowsermail.cpp" line="177"/>
       <source>Opera 12 or older</source>
-      <translation type="unfinished">Opera 12 or older</translation>
+      <translation>Opera 12 atau lebih tua</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsbrowsermail.cpp" line="186"/>
       <source>Mozilla Thunderbird</source>
-      <translation type="unfinished">Mozilla Thunderbird</translation>
+      <translation>Mozilla Thunderbird</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsbrowsermail.cpp" line="301"/>
@@ -5980,7 +5978,7 @@ File filter for external e-mail selection dialog.</extracomment>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsbrowsermail.ui" line="63"/>
       <source>External web browser</source>
-      <translation type="unfinished">External web browser</translation>
+      <translation>Peramban web eksternal</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsbrowsermail.ui" line="69"/>
@@ -5991,28 +5989,28 @@ File filter for external e-mail selection dialog.</extracomment>
       <location filename="../src/librssguard/gui/settings/settingsbrowsermail.ui" line="89"/>
       <location filename="../src/librssguard/gui/settings/settingsbrowsermail.ui" line="203"/>
       <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;If unchecked, then default system-wide web browser is used.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-      <translation type="unfinished">&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;If unchecked, then default system-wide web browser is used.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
+      <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Jika tidak tercentang, maka  peramban web bawaan di seluruh sistem yang digunakan.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsbrowsermail.ui" line="92"/>
       <source>Use custom external web browser</source>
-      <translation type="unfinished">Use custom external web browser</translation>
+      <translation>Gunakan peramban web eksternal tersuai</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsbrowsermail.ui" line="104"/>
       <source>Web browser executable</source>
-      <translation type="unfinished">Web browser executable</translation>
+      <translation>Peramban web yang dapat dijalankan</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsbrowsermail.ui" line="116"/>
       <source>Executable file of web browser</source>
-      <translation type="unfinished">Executable file of web browser</translation>
+      <translation>Berkas yang dapat dijalankan dari peramban web</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsbrowsermail.ui" line="129"/>
       <location filename="../src/librssguard/gui/settings/settingsbrowsermail.ui" line="246"/>
       <source>&amp;Browse</source>
-      <translation type="unfinished">&amp;Browse</translation>
+      <translation>&amp;Telisik</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsbrowsermail.ui" line="138"/>
@@ -6031,51 +6029,51 @@ File filter for external e-mail selection dialog.</extracomment>
       <location filename="../src/librssguard/gui/settings/settingsbrowsermail.ui" line="155"/>
       <location filename="../src/librssguard/gui/settings/settingsbrowsermail.ui" line="272"/>
       <source>Use sample arguments for</source>
-      <translation type="unfinished">Use sample arguments for</translation>
+      <translation>Gunakan argumen sampel untuk</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsbrowsermail.ui" line="169"/>
       <source>Select browser</source>
-      <translation type="unfinished">Select browser</translation>
+      <translation>Pilih browser</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsbrowsermail.cpp" line="25"/>
       <source>Note that &quot;%1&quot; (without quotation marks) is placeholder for URL of selected message.</source>
-      <translation type="unfinished">Note that &quot;%1&quot; (without quotation marks) is placeholder for URL of selected message.</translation>
+      <translation>Perhatikan bahwa &quot;%1&quot; (tanpa tanda kutip) adalah tempat bagi URL dari pesan yang dipilih.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsbrowsermail.ui" line="184"/>
       <source>External e-mail client</source>
-      <translation type="unfinished">External e-mail client</translation>
+      <translation>Klien surel eksternal</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsbrowsermail.ui" line="206"/>
       <source>Use custom external e-mail client</source>
-      <translation type="unfinished">Use custom external e-mail client</translation>
+      <translation>Gunakan klien surel eksternal tersuai</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsbrowsermail.ui" line="218"/>
       <source>E-mail client executable</source>
-      <translation type="unfinished">E-mail client executable</translation>
+      <translation>Klien surel yang dapat dijalankan</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsbrowsermail.ui" line="233"/>
       <source>Executable file of e-mail client</source>
-      <translation type="unfinished">Executable file of e-mail client</translation>
+      <translation>Berkas yang dapat dijalankan dari klien surel</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsbrowsermail.ui" line="286"/>
       <source>Select client</source>
-      <translation type="unfinished">Select client</translation>
+      <translation>Pilih klien</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsbrowsermail.cpp" line="29"/>
       <source>Placeholders:
  • %1 - title of selected message,
  • %2 - body of selected message.</source>
-      <translation type="unfinished">Placeholders:
- • %1 - title of selected message,
- • %2 - body of selected message.</translation>
+      <translation>Placeholder:
+ • %1 - judul dari pesan yang dipilih,
+ • %2 - badan dari pesan yang dipilih.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsbrowsermail.ui" line="301"/>
@@ -6128,77 +6126,77 @@ File filter for external e-mail selection dialog.</extracomment>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsdatabase.cpp" line="15"/>
       <source>Note that speed of used MySQL server and latency of used connection medium HEAVILY influences the final performance of this application. Using slow database connections leads to bad performance when browsing feeds or messages.</source>
-      <translation type="unfinished">Note that speed of used MySQL server and latency of used connection medium HEAVILY influences the final performance of this application. Using slow database connections leads to bad performance when browsing feeds or messages.</translation>
+      <translation>Perhatikan bahwa kecepatan dari server MySQL yang digunakan dan latensi dari media koneksi yang digunakan sangat mempengaruhi kinerja akhir dari aplikasi ini. Menggunakan koneksi database lamban menyebabkan kinerja buruk ketika menilik feed dari pesan.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsdatabase.cpp" line="114"/>
       <source>Hostname is empty.</source>
-      <translation type="unfinished">Hostname is empty.</translation>
+      <translation>Nama host kosong.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsdatabase.cpp" line="117"/>
       <source>Hostname looks ok.</source>
-      <translation type="unfinished">Hostname looks ok.</translation>
+      <translation>Nama host terlihat ok.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsdatabase.cpp" line="123"/>
       <source>Username is empty.</source>
-      <translation type="unfinished">Username is empty.</translation>
+      <translation>Nama pengguna kosong.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsdatabase.cpp" line="126"/>
       <source>Username looks ok.</source>
-      <translation type="unfinished">Username looks ok.</translation>
+      <translation>Nama pengguna terlihat ok.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsdatabase.cpp" line="132"/>
       <source>Password is empty.</source>
-      <translation type="unfinished">Password is empty.</translation>
+      <translation>Kata sandi kosong.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsdatabase.cpp" line="135"/>
       <source>Password looks ok.</source>
-      <translation type="unfinished">Password looks ok.</translation>
+      <translation>Kata sandi terlihat ok.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsdatabase.cpp" line="141"/>
       <source>Working database is empty.</source>
-      <translation type="unfinished">Working database is empty.</translation>
+      <translation>Database kerja kosong.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsdatabase.cpp" line="144"/>
       <source>Working database is ok.</source>
-      <translation type="unfinished">Working database is ok.</translation>
+      <translation>Database kerja ok.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsdatabase.cpp" line="165"/>
       <source>No connection test triggered so far.</source>
-      <translation type="unfinished">No connection test triggered so far.</translation>
+      <translation>Tidak ada tes koneksi yang dipicu sejauh ini.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsdatabase.cpp" line="166"/>
       <source>You did not executed any connection test yet.</source>
-      <translation type="unfinished">You did not executed any connection test yet.</translation>
+      <translation>Anda belum mengeksekusi tes koneksi apapun.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsdatabase.cpp" line="189"/>
       <source>Hostname of your MySQL server</source>
-      <translation type="unfinished">Hostname of your MySQL server</translation>
+      <translation>Nama host dari server MySQL anda</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsdatabase.cpp" line="190"/>
       <source>Username to login with</source>
-      <translation type="unfinished">Username to login with</translation>
+      <translation>Nama pengguna untuk login</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsdatabase.cpp" line="191"/>
       <source>Password for your username</source>
-      <translation type="unfinished">Password for your username</translation>
+      <translation>Kata sandi untuk nama pengguna anda</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsdatabase.cpp" line="192"/>
       <source>Working database which you have full access to.</source>
-      <translation type="unfinished">Working database which you have full access to.</translation>
+      <translation>Database kerja yang mempunyai akses menyeluruh.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsdatabase.cpp" line="22"/>
@@ -6228,47 +6226,47 @@ Authors of this application are NOT responsible for lost data.</translation>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsdatabase.ui" line="17"/>
       <source>Database driver</source>
-      <translation type="unfinished">Database driver</translation>
+      <translation>Driver database</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsdatabase.ui" line="52"/>
       <source>Use in-memory database as the working database</source>
-      <translation type="unfinished">Use in-memory database as the working database</translation>
+      <translation>Gunakan database di memori sebagai database bekerja</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsdatabase.ui" line="81"/>
       <source>Hostname</source>
-      <translation type="unfinished">Hostname</translation>
+      <translation>Nama host</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsdatabase.ui" line="96"/>
       <source>Port</source>
-      <translation type="unfinished">Port</translation>
+      <translation>Port</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsdatabase.ui" line="127"/>
       <source>Working database</source>
-      <translation type="unfinished">Working database</translation>
+      <translation>Database kerja</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsdatabase.ui" line="137"/>
       <source>Username</source>
-      <translation type="unfinished">Username</translation>
+      <translation>Nama pengguna</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsdatabase.ui" line="150"/>
       <source>Password</source>
-      <translation type="unfinished">Password</translation>
+      <translation>Kata sandi</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsdatabase.ui" line="165"/>
       <source>Test setup</source>
-      <translation type="unfinished">Test setup</translation>
+      <translation>Tes setelan</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsdatabase.h" line="33"/>
       <source>Data storage</source>
-      <translation type="unfinished">Data storage</translation>
+      <translation>Penyimpanan data</translation>
     </message>
   </context>
   <context>
@@ -6276,42 +6274,42 @@ Authors of this application are NOT responsible for lost data.</translation>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsdownloads.cpp" line="26"/>
       <source>Select downloads target directory</source>
-      <translation type="unfinished">Select downloads target directory</translation>
+      <translation>Pilih direktori tujuan unduhan</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsdownloads.ui" line="17"/>
       <source>Open download manager when new download is started</source>
-      <translation type="unfinished">Open download manager when new download is started</translation>
+      <translation>Buka pengelola unduhan ketika penguduhan baru dimulai</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsdownloads.ui" line="24"/>
       <source>Target directory for downloaded files</source>
-      <translation type="unfinished">Target directory for downloaded files</translation>
+      <translation>Direktori tujuan untuk berkas yang diunduh</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsdownloads.ui" line="32"/>
       <source>Save all downloaded files to</source>
-      <translation type="unfinished">Save all downloaded files to</translation>
+      <translation>Simpan semua berkas yang diunduh ke</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsdownloads.ui" line="45"/>
       <source>Target directory where all downloaded files are saved</source>
-      <translation type="unfinished">Target directory where all downloaded files are saved</translation>
+      <translation>Direktori tujuan tempat semua berkas yang diunduh disimpan</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsdownloads.ui" line="52"/>
       <source>&amp;Browse</source>
-      <translation type="unfinished">&amp;Browse</translation>
+      <translation>&amp;Telisik</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsdownloads.ui" line="74"/>
       <source>Ask for each individual downloaded file</source>
-      <translation type="unfinished">Ask for each individual downloaded file</translation>
+      <translation>Bertanya untuk setiap berkas yang diunduh</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsdownloads.h" line="29"/>
       <source>Downloads</source>
-      <translation type="unfinished">Downloads</translation>
+      <translation>Unduhan</translation>
     </message>
   </context>
   <context>
@@ -6319,7 +6317,7 @@ Authors of this application are NOT responsible for lost data.</translation>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.cpp" line="231"/>
       <source>Select new font</source>
-      <translation type="unfinished">Select new font</translation>
+      <translation>Pilih fon baru</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.cpp" line="30"/>
@@ -6371,17 +6369,17 @@ Authors of this application are NOT responsible for lost data.</translation>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="93"/>
       <source>Feed connection timeout</source>
-      <translation type="unfinished">Feed connection timeout</translation>
+      <translation>Batas waktu koneksi feed</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="109"/>
       <source>Connection timeout is time interval which is reserved for downloading new messages for the feed. If this time interval elapses, then download process is aborted.</source>
-      <translation type="unfinished">Connection timeout is time interval which is reserved for downloading new messages for the feed. If this time interval elapses, then download process is aborted.</translation>
+      <translation>Batas waktu koneksi merupakan interval waktu yang dipesan untuk mengunduh pesan baru untuk feed. Jika interval waktu ini berlalu, maka proses pengunduhan dibatalkan.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="112"/>
       <source> ms</source>
-      <translation type="unfinished"> ms</translation>
+      <translation> ms</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="86"/>
@@ -6407,21 +6405,21 @@ Authors of this application are NOT responsible for lost data.</translation>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="207"/>
       <source>Feed list font</source>
-      <translation type="unfinished">Feed list font</translation>
+      <translation>Fon daftar feed</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="219"/>
       <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="400"/>
       <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="615"/>
       <source>Font preview</source>
-      <translation type="unfinished">Font preview</translation>
+      <translation>Pratinjau fon</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="229"/>
       <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="410"/>
       <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="625"/>
       <source>&amp;Change font</source>
-      <translation type="unfinished">&amp;Change font</translation>
+      <translation>&amp;Ganti fon</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="254"/>
@@ -6549,12 +6547,12 @@ Authors of this application are NOT responsible for lost data.</translation>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsgeneral.cpp" line="45"/>
       <source> (not supported on this platform)</source>
-      <translation type="unfinished"> (not supported on this platform)</translation>
+      <translation> (tidak didukung di platform ini)</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsgeneral.ui" line="17"/>
       <source>Launch %1 on operating system startup</source>
-      <translation type="unfinished">Launch %1 on operating system startup</translation>
+      <translation>Jalankan %1 pada startup sistem operasi</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsgeneral.ui" line="24"/>
@@ -6564,7 +6562,7 @@ Authors of this application are NOT responsible for lost data.</translation>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsgeneral.h" line="26"/>
       <source>General</source>
-      <translation type="unfinished">General</translation>
+      <translation>Umum</translation>
     </message>
   </context>
   <context>
@@ -6572,12 +6570,12 @@ Authors of this application are NOT responsible for lost data.</translation>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsgui.cpp" line="34"/>
       <source>Name</source>
-      <translation type="unfinished">Name</translation>
+      <translation>Nama</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsgui.cpp" line="34"/>
       <source>Author</source>
-      <translation type="unfinished">Author</translation>
+      <translation>Penulis</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsgui.cpp" line="34"/>
@@ -6587,27 +6585,27 @@ Authors of this application are NOT responsible for lost data.</translation>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsgui.cpp" line="276"/>
       <source>Icon only</source>
-      <translation type="unfinished">Icon only</translation>
+      <translation>Hanya ikon</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsgui.cpp" line="277"/>
       <source>Text only</source>
-      <translation type="unfinished">Text only</translation>
+      <translation>Hanya teks</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsgui.cpp" line="278"/>
       <source>Text beside icon</source>
-      <translation type="unfinished">Text beside icon</translation>
+      <translation>Teks di samping ikon</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsgui.cpp" line="279"/>
       <source>Text under icon</source>
-      <translation type="unfinished">Text under icon</translation>
+      <translation>Teks di bawah ikon</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsgui.cpp" line="280"/>
       <source>Follow OS style</source>
-      <translation type="unfinished">Follow OS style</translation>
+      <translation>Mengikuti gaya sistem operasi</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsgui.cpp" line="174"/>
@@ -6659,22 +6657,22 @@ Description: %3</translation>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsgui.ui" line="27"/>
       <source>Icons &amp;&amp; skins</source>
-      <translation type="unfinished">Icons &amp;&amp; skins</translation>
+      <translation>Ikon &amp;&amp; skin</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsgui.ui" line="33"/>
       <source>Icon theme</source>
-      <translation type="unfinished">Icon theme</translation>
+      <translation>Tema ikon</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsgui.ui" line="46"/>
       <source>Style</source>
-      <translation type="unfinished">Style</translation>
+      <translation>Gaya</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsgui.ui" line="59"/>
       <source>Skin</source>
-      <translation type="unfinished">Skin</translation>
+      <translation>Skin</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsgui.ui" line="112"/>
@@ -6699,7 +6697,7 @@ Description: %3</translation>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsgui.ui" line="153"/>
       <source>Tray icon</source>
-      <translation type="unfinished">Tray icon</translation>
+      <translation>Ikon baki</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsgui.ui" line="165"/>
@@ -6715,12 +6713,12 @@ Description: %3</translation>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsgui.ui" line="179"/>
       <source>Hide main window when it is minimized</source>
-      <translation type="unfinished">Hide main window when it is minimized</translation>
+      <translation>Sembunyikan jendela utama ketika di-minimize</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsgui.ui" line="186"/>
       <source>Start application hidden</source>
-      <translation type="unfinished">Start application hidden</translation>
+      <translation>Mulai aplikasi secara sembunyi</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsgui.ui" line="210"/>
@@ -6730,17 +6728,17 @@ Description: %3</translation>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsgui.ui" line="224"/>
       <source>Tabs</source>
-      <translation type="unfinished">Tabs</translation>
+      <translation>Tab</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsgui.ui" line="236"/>
       <source>Close tabs with</source>
-      <translation type="unfinished">Close tabs with</translation>
+      <translation>Tutup tab dengan</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsgui.ui" line="242"/>
       <source>Middle mouse button single-click</source>
-      <translation type="unfinished">Middle mouse button single-click</translation>
+      <translation>Sekali klik tombol tengah tetikus</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsgui.ui" line="249"/>
@@ -6750,22 +6748,22 @@ Description: %3</translation>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsgui.ui" line="259"/>
       <source>Open new tabs with left mouse button double-click on tab bar</source>
-      <translation type="unfinished">Open new tabs with left mouse button double-click on tab bar</translation>
+      <translation>Buka tab baru dengan dua kali klik pada tab bar</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsgui.ui" line="266"/>
       <source>Hide tab bar if just one tab is visible</source>
-      <translation type="unfinished">Hide tab bar if just one tab is visible</translation>
+      <translation>Sembunyikan bilah tab jika hanya satu tab terlihat</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsgui.ui" line="287"/>
       <source>Toolbars</source>
-      <translation type="unfinished">Toolbars</translation>
+      <translation>Bilah alat</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsgui.ui" line="300"/>
       <source>Toolbar for feeds list</source>
-      <translation type="unfinished">Toolbar for feeds list</translation>
+      <translation>Bilah alat untuk daftar feed</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsgui.ui" line="305"/>
@@ -6775,7 +6773,7 @@ Description: %3</translation>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsgui.ui" line="310"/>
       <source>Statusbar</source>
-      <translation type="unfinished">Statusbar</translation>
+      <translation>Bilah status</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsgui.ui" line="388"/>
@@ -6795,7 +6793,7 @@ Description: %3</translation>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsgui.h" line="35"/>
       <source>User interface</source>
-      <translation type="unfinished">User interface</translation>
+      <translation>Antarmuka pengguna</translation>
     </message>
   </context>
   <context>
@@ -6803,17 +6801,17 @@ Description: %3</translation>
     <message>
       <location filename="../src/librssguard/gui/settings/settingslocalization.cpp" line="16"/>
       <source>Language</source>
-      <translation type="unfinished">Language</translation>
+      <translation>Bahasa</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingslocalization.cpp" line="17"/>
       <source>Code</source>
-      <translation type="unfinished">Code</translation>
+      <translation>Kode</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingslocalization.cpp" line="18"/>
       <source>Author</source>
-      <translation type="unfinished">Author</translation>
+      <translation>Penulis</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingslocalization.h" line="26"/>
@@ -6888,7 +6886,7 @@ Also, relaunch &quot;Settings&quot; dialog after you install Node.js.</translati
     <message>
       <location filename="../src/librssguard/gui/settings/settingsnodejs.ui" line="14"/>
       <source>Form</source>
-      <translation type="unfinished">Form</translation>
+      <translation>Formulir</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsnodejs.ui" line="23"/>
@@ -6900,7 +6898,7 @@ Also, relaunch &quot;Settings&quot; dialog after you install Node.js.</translati
       <location filename="../src/librssguard/gui/settings/settingsnodejs.ui" line="74"/>
       <location filename="../src/librssguard/gui/settings/settingsnodejs.ui" line="104"/>
       <source>&amp;Browse</source>
-      <translation type="unfinished">&amp;Browse</translation>
+      <translation>&amp;Telisik</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsnodejs.ui" line="53"/>
@@ -6945,7 +6943,7 @@ Also, there are some built-in sounds. Just start typing &quot;:&quot; and they w
     <message>
       <location filename="../src/librssguard/gui/settings/settingsshortcuts.h" line="26"/>
       <source>Keyboard shortcuts</source>
-      <translation type="unfinished">Keyboard shortcuts</translation>
+      <translation>Pintasan keyboard</translation>
     </message>
   </context>
   <context>
@@ -6953,17 +6951,17 @@ Also, there are some built-in sounds. Just start typing &quot;:&quot; and they w
     <message>
       <location filename="../src/librssguard/dynamic-shortcuts/shortcutcatcher.cpp" line="23"/>
       <source>Reset to original shortcut.</source>
-      <translation type="unfinished">Reset to original shortcut.</translation>
+      <translation>Ulang ke pintasan asli.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/dynamic-shortcuts/shortcutcatcher.cpp" line="29"/>
       <source>Clear current shortcut.</source>
-      <translation type="unfinished">Clear current shortcut.</translation>
+      <translation>Bersihkan pintasan saat ini.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/dynamic-shortcuts/shortcutcatcher.cpp" line="35"/>
       <source>Click and hit new shortcut.</source>
-      <translation type="unfinished">Click and hit new shortcut.</translation>
+      <translation>Klik dan tekan pintasan baru.</translation>
     </message>
   </context>
   <context>
@@ -6996,7 +6994,7 @@ Also, there are some built-in sounds. Just start typing &quot;:&quot; and they w
     <message>
       <location filename="../src/librssguard/gui/notifications/singlenotificationeditor.ui" line="70"/>
       <source>&amp;Browse</source>
-      <translation type="unfinished">&amp;Browse</translation>
+      <translation>&amp;Telisik</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/notifications/singlenotificationeditor.ui" line="77"/>
@@ -7015,7 +7013,7 @@ Also, there are some built-in sounds. Just start typing &quot;:&quot; and they w
       <location filename="../src/librssguard/miscellaneous/skinfactory.cpp" line="221"/>
       <location filename="../src/librssguard/miscellaneous/skinfactory.cpp" line="224"/>
       <source>This page was blocked by AdBlock</source>
-      <translation type="unfinished">This page was blocked by AdBlock</translation>
+      <translation>Halaman ini dihalangi oleh AdBlock</translation>
     </message>
     <message>
       <location filename="../src/librssguard/miscellaneous/skinfactory.cpp" line="222"/>
@@ -7025,17 +7023,17 @@ Also, there are some built-in sounds. Just start typing &quot;:&quot; and they w
     <message>
       <location filename="../src/librssguard/miscellaneous/skinfactory.cpp" line="281"/>
       <source>Written by </source>
-      <translation type="unfinished">Written by </translation>
+      <translation>Ditulis oleh </translation>
     </message>
     <message>
       <location filename="../src/librssguard/miscellaneous/skinfactory.cpp" line="282"/>
       <source>unknown author</source>
-      <translation type="unfinished">unknown author</translation>
+      <translation>pengarang tak diketahui</translation>
     </message>
     <message>
       <location filename="../src/librssguard/miscellaneous/skinfactory.cpp" line="297"/>
       <source>Newspaper view</source>
-      <translation type="unfinished">Newspaper view</translation>
+      <translation>Tampilan koran</translation>
     </message>
   </context>
   <context>
@@ -7043,12 +7041,12 @@ Also, there are some built-in sounds. Just start typing &quot;:&quot; and they w
     <message>
       <location filename="../src/librssguard/database/sqlitedriver.cpp" line="373"/>
       <source>SQLite (embedded database)</source>
-      <translation type="unfinished">SQLite (embedded database)</translation>
+      <translation>SQLite (database tertanam)</translation>
     </message>
     <message>
       <location filename="../src/librssguard/database/sqlitedriver.cpp" line="385"/>
       <source>Database file not copied to output directory successfully.</source>
-      <translation type="unfinished">Database file not copied to output directory successfully.</translation>
+      <translation>Berkas database tidak berhasil disalin ke direktori keluaran.</translation>
     </message>
   </context>
   <context>
@@ -7131,122 +7129,122 @@ Type: %3</translation>
     <message>
       <location filename="../src/librssguard/services/standard/gui/standardfeeddetails.cpp" line="29"/>
       <source>Feed title</source>
-      <translation type="unfinished">Feed title</translation>
+      <translation>Judul feed</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/standard/gui/standardfeeddetails.cpp" line="30"/>
       <source>Set title for your feed.</source>
-      <translation type="unfinished">Set title for your feed.</translation>
+      <translation>Setel judul untuk feed anda.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/standard/gui/standardfeeddetails.cpp" line="31"/>
       <source>Feed description</source>
-      <translation type="unfinished">Feed description</translation>
+      <translation>Deskripsi feed</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/standard/gui/standardfeeddetails.cpp" line="32"/>
       <source>Set description for your feed.</source>
-      <translation type="unfinished">Set description for your feed.</translation>
+      <translation>Setel deskripsi untuk feed anda.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/standard/gui/standardfeeddetails.cpp" line="72"/>
       <source>Icon selection</source>
-      <translation type="unfinished">Icon selection</translation>
+      <translation>Pilihan ikon</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/standard/gui/standardfeeddetails.cpp" line="74"/>
       <source>Load icon from file...</source>
-      <translation type="unfinished">Load icon from file...</translation>
+      <translation>Memuat ikon dari berkas...</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/standard/gui/standardfeeddetails.cpp" line="76"/>
       <source>Use default icon from icon theme</source>
-      <translation type="unfinished">Use default icon from icon theme</translation>
+      <translation>Gunakan ikon bawaan dari tema ikon</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/standard/gui/standardfeeddetails.cpp" line="78"/>
       <source>Fetch icon from feed</source>
-      <translation type="unfinished">Fetch icon from feed</translation>
+      <translation>Mengambil ikon dari feed</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/standard/gui/standardfeeddetails.cpp" line="88"/>
       <location filename="../src/librssguard/services/standard/gui/standardfeeddetails.cpp" line="89"/>
       <source>No metadata fetched so far.</source>
-      <translation type="unfinished">No metadata fetched so far.</translation>
+      <translation>Tidak ada metadata yang diambil sejauh ini.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/standard/gui/standardfeeddetails.cpp" line="152"/>
       <source>Icon fetched successfully.</source>
-      <translation type="unfinished">Icon fetched successfully.</translation>
+      <translation>Ikon berhasil diambil.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/standard/gui/standardfeeddetails.cpp" line="153"/>
       <source>Icon metadata fetched.</source>
-      <translation type="unfinished">Icon metadata fetched.</translation>
+      <translation>Metadata ikon diambil.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/standard/gui/standardfeeddetails.cpp" line="161"/>
       <location filename="../src/librssguard/services/standard/gui/standardfeeddetails.cpp" line="166"/>
       <location filename="../src/librssguard/services/standard/gui/standardfeeddetails.cpp" line="171"/>
       <source>No icon fetched.</source>
-      <translation type="unfinished">No icon fetched.</translation>
+      <translation>Tidak ada ikon yang diambil.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/standard/gui/standardfeeddetails.cpp" line="208"/>
       <source>All metadata fetched successfully.</source>
-      <translation type="unfinished">All metadata fetched successfully.</translation>
+      <translation>Semua metadata diambil dengan berhasil.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/standard/gui/standardfeeddetails.cpp" line="209"/>
       <source>Feed and icon metadata fetched.</source>
-      <translation type="unfinished">Feed and icon metadata fetched.</translation>
+      <translation>Metadata feed dan ikon diambil.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/standard/gui/standardfeeddetails.cpp" line="217"/>
       <location filename="../src/librssguard/services/standard/gui/standardfeeddetails.cpp" line="222"/>
       <location filename="../src/librssguard/services/standard/gui/standardfeeddetails.cpp" line="227"/>
       <source>No metadata fetched.</source>
-      <translation type="unfinished">No metadata fetched.</translation>
+      <translation>Tidak ada metadata yang diambil.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/standard/gui/standardfeeddetails.cpp" line="233"/>
       <source>Feed name is ok.</source>
-      <translation type="unfinished">Feed name is ok.</translation>
+      <translation>Nama feed ok.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/standard/gui/standardfeeddetails.cpp" line="236"/>
       <source>Feed name is too short.</source>
-      <translation type="unfinished">Feed name is too short.</translation>
+      <translation>Nama feed terlalu pendek.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/standard/gui/standardfeeddetails.cpp" line="242"/>
       <source>Description is empty.</source>
-      <translation type="unfinished">Description is empty.</translation>
+      <translation>Deskripsi kosong.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/standard/gui/standardfeeddetails.cpp" line="245"/>
       <source>The description is ok.</source>
-      <translation type="unfinished">The description is ok.</translation>
+      <translation>Deskripsi ok.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/standard/gui/standardfeeddetails.cpp" line="252"/>
       <source>The URL is ok.</source>
-      <translation type="unfinished">The URL is ok.</translation>
+      <translation>URL ok.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/standard/gui/standardfeeddetails.cpp" line="256"/>
       <source>The URL does not meet standard pattern. Does your URL start with &quot;http://&quot; or &quot;https://&quot; prefix.</source>
-      <translation type="unfinished">The URL does not meet standard pattern. Does your URL start with &quot;http://&quot; or &quot;https://&quot; prefix.</translation>
+      <translation>URL tidak memenuhi pola standar. Apakah URL anda dimulai dengan awalan &quot;http://&quot; atau &quot;https://&quot;.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/standard/gui/standardfeeddetails.cpp" line="260"/>
       <source>The URL is empty.</source>
-      <translation type="unfinished">The URL is empty.</translation>
+      <translation>URL kosong.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/standard/gui/standardfeeddetails.cpp" line="296"/>
       <source>Select icon file for the feed</source>
-      <translation type="unfinished">Select icon file for the feed</translation>
+      <translation>Pilih berkas ikon untuk feed</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/standard/gui/standardfeeddetails.cpp" line="298"/>
@@ -7256,28 +7254,28 @@ Type: %3</translation>
     <message>
       <location filename="../src/librssguard/services/standard/gui/standardfeeddetails.cpp" line="304"/>
       <source>Select icon</source>
-      <translation type="unfinished">Select icon</translation>
+      <translation>Pilih ikon</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/standard/gui/standardfeeddetails.cpp" line="305"/>
       <source>Cancel</source>
-      <translation type="unfinished">Cancel</translation>
+      <translation>Batal</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/standard/gui/standardfeeddetails.cpp" line="308"/>
       <source>Look in:</source>
       <extracomment>Label for field with icon file name textbox for selection dialog.</extracomment>
-      <translation type="unfinished">Look in:</translation>
+      <translation>Lihat ke dalam:</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/standard/gui/standardfeeddetails.cpp" line="309"/>
       <source>Icon name:</source>
-      <translation type="unfinished">Icon name:</translation>
+      <translation>Nama ikon:</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/standard/gui/standardfeeddetails.cpp" line="310"/>
       <source>Icon type:</source>
-      <translation type="unfinished">Icon type:</translation>
+      <translation>Jenis ikon:</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/standard/gui/standardfeeddetails.cpp" line="33"/>
@@ -7336,7 +7334,7 @@ Type: %3</translation>
       <location filename="../src/librssguard/services/standard/gui/standardfeeddetails.cpp" line="170"/>
       <location filename="../src/librssguard/services/standard/gui/standardfeeddetails.cpp" line="226"/>
       <source>Error: %1</source>
-      <translation type="unfinished">Error: %1</translation>
+      <translation>Eror: %1</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/standard/gui/standardfeeddetails.cpp" line="118"/>
@@ -7355,7 +7353,7 @@ Also, you can post-process generated feed data with yet another script if you wi
     <message>
       <location filename="../src/librssguard/services/standard/gui/standardfeeddetails.ui" line="14"/>
       <source>Form</source>
-      <translation type="unfinished">Form</translation>
+      <translation>Formulir</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/standard/gui/standardfeeddetails.ui" line="20"/>
@@ -7365,32 +7363,32 @@ Also, you can post-process generated feed data with yet another script if you wi
     <message>
       <location filename="../src/librssguard/services/standard/gui/standardfeeddetails.ui" line="30"/>
       <source>Select parent item for your feed.</source>
-      <translation type="unfinished">Select parent item for your feed.</translation>
+      <translation>Pilih item induk untuk feed anda.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/standard/gui/standardfeeddetails.ui" line="46"/>
       <source>Type</source>
-      <translation type="unfinished">Type</translation>
+      <translation>Jenis</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/standard/gui/standardfeeddetails.ui" line="58"/>
       <source>Select type of the standard feed.</source>
-      <translation type="unfinished">Select type of the standard feed.</translation>
+      <translation>Pilih jenis dari feed standar.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/standard/gui/standardfeeddetails.ui" line="65"/>
       <source>Select encoding of the standard feed. If you are unsure about the encoding, then select &quot;UTF-8&quot; encoding.</source>
-      <translation type="unfinished">Select encoding of the standard feed. If you are unsure about the encoding, then select &quot;UTF-8&quot; encoding.</translation>
+      <translation>Pilih encoding untuk feed standar. Jika anda tidak yakin mengenai encoding, maka pilih encoding &quot;UTF-8&quot;.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/standard/gui/standardfeeddetails.ui" line="74"/>
       <source>Title</source>
-      <translation type="unfinished">Title</translation>
+      <translation>Judul</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/standard/gui/standardfeeddetails.ui" line="87"/>
       <source>Description</source>
-      <translation type="unfinished">Description</translation>
+      <translation>Deskripsi</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/standard/gui/standardfeeddetails.ui" line="100"/>
@@ -7405,22 +7403,22 @@ Also, you can post-process generated feed data with yet another script if you wi
     <message>
       <location filename="../src/librssguard/services/standard/gui/standardfeeddetails.ui" line="158"/>
       <source>Fetch metadata</source>
-      <translation type="unfinished">Fetch metadata</translation>
+      <translation>Ambil metadata</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/standard/gui/standardfeeddetails.ui" line="170"/>
       <source>Fetch it now</source>
-      <translation type="unfinished">Fetch it now</translation>
+      <translation>Ambil sekarang</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/standard/gui/standardfeeddetails.ui" line="192"/>
       <source>Icon</source>
-      <translation type="unfinished">Icon</translation>
+      <translation>Ikon</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/standard/gui/standardfeeddetails.ui" line="214"/>
       <source>Select icon for your feed.</source>
-      <translation type="unfinished">Select icon for your feed.</translation>
+      <translation>Pilih ikon untuk feed anda.</translation>
     </message>
   </context>
   <context>
@@ -7428,32 +7426,32 @@ Also, you can post-process generated feed data with yet another script if you wi
     <message>
       <location filename="../src/librssguard/services/standard/standardserviceroot.cpp" line="60"/>
       <source>Do you want to load initial set of feeds?</source>
-      <translation type="unfinished">Do you want to load initial set of feeds?</translation>
+      <translation>Apakah anda ingin memuat kumpulan awal dari feed?</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/standard/standardserviceroot.cpp" line="88"/>
       <source>Error when loading initial feeds</source>
-      <translation type="unfinished">Error when loading initial feeds</translation>
+      <translation>Eror ketika memuat feed awal</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/standard/standardserviceroot.cpp" line="266"/>
       <source>Fetch metadata</source>
-      <translation type="unfinished">Fetch metadata</translation>
+      <translation>Ambil metadata</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/standard/standardserviceroot.cpp" line="426"/>
       <source>Export feeds</source>
-      <translation type="unfinished">Export feeds</translation>
+      <translation>Ekspor feed</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/standard/standardserviceroot.cpp" line="427"/>
       <source>Import feeds</source>
-      <translation type="unfinished">Import feeds</translation>
+      <translation>Impor feed</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/standard/standardserviceroot.cpp" line="59"/>
       <source>This new account does not include any feeds. You can now add default set of feeds.</source>
-      <translation type="unfinished">This new account does not include any feeds. You can now add default set of feeds.</translation>
+      <translation>Akun baru ini tidak berisi feed apapun. Anda sekarang dapat menambah kumpulan feed bawaan.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/standard/standardserviceroot.cpp" line="44"/>
@@ -7463,27 +7461,27 @@ Also, you can post-process generated feed data with yet another script if you wi
     <message>
       <location filename="../src/librssguard/services/standard/standardserviceroot.cpp" line="131"/>
       <source>Cannot add item</source>
-      <translation type="unfinished">Cannot add item</translation>
+      <translation>Tidak dapat menambah item</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/standard/standardserviceroot.cpp" line="132"/>
       <source>Cannot add feed because another critical operation is ongoing.</source>
-      <translation type="unfinished">Cannot add feed because another critical operation is ongoing.</translation>
+      <translation>Tidak dapat menambah feed dikarenakan operasi genting lain sedang berlangsung.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/standard/standardserviceroot.cpp" line="392"/>
       <source>Cannot add category</source>
-      <translation type="unfinished">Cannot add category</translation>
+      <translation>Tidak dapat menambah kategori</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/standard/standardserviceroot.cpp" line="393"/>
       <source>Cannot add category because another critical operation is ongoing.</source>
-      <translation type="unfinished">Cannot add category because another critical operation is ongoing.</translation>
+      <translation>Tidak dapat menambah kategori karena operasi genting lain sedang berlangsung.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/standard/standardserviceroot.cpp" line="380"/>
       <source>Import was completely successful.</source>
-      <translation type="unfinished">Import was completely successful.</translation>
+      <translation>Impor benar-benar berhasil.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/standard/standardserviceroot.cpp" line="377"/>
@@ -7496,17 +7494,17 @@ Also, you can post-process generated feed data with yet another script if you wi
     <message>
       <location filename="../src/librssguard/gui/toolbars/statusbar.cpp" line="26"/>
       <source>Feed update progress bar</source>
-      <translation type="unfinished">Feed update progress bar</translation>
+      <translation>Bilah perkembangan pembaruan feed</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/toolbars/statusbar.cpp" line="36"/>
       <source>File download progress bar</source>
-      <translation type="unfinished">File download progress bar</translation>
+      <translation>Bilah perkembangan pengunduhan berkas</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/toolbars/statusbar.cpp" line="125"/>
       <source>Toolbar spacer</source>
-      <translation type="unfinished">Toolbar spacer</translation>
+      <translation>Pengatur jarak bilah alat</translation>
     </message>
   </context>
   <context>
@@ -7514,12 +7512,12 @@ Also, you can post-process generated feed data with yet another script if you wi
     <message>
       <location filename="../src/librssguard/miscellaneous/systemfactory.cpp" line="230"/>
       <source>anonymous</source>
-      <translation type="unfinished">anonymous</translation>
+      <translation>anonymous</translation>
     </message>
     <message>
       <location filename="../src/librssguard/miscellaneous/systemfactory.cpp" line="325"/>
       <source> bytes</source>
-      <translation type="unfinished"> bytes</translation>
+      <translation> byte</translation>
     </message>
     <message>
       <location filename="../src/librssguard/miscellaneous/systemfactory.cpp" line="270"/>
@@ -7533,8 +7531,8 @@ Also, you can post-process generated feed data with yet another script if you wi
       <location filename="../src/librssguard/gui/systemtrayicon.cpp" line="102"/>
       <source>%1
 Unread news: %2</source>
-      <translation type="unfinished">%1
-Unread news: %2</translation>
+      <translation>%1
+Berita belum terbaca:%2</translation>
     </message>
   </context>
   <context>
@@ -7542,12 +7540,12 @@ Unread news: %2</translation>
     <message>
       <location filename="../src/librssguard/gui/tabbar.cpp" line="34"/>
       <source>Close this tab.</source>
-      <translation type="unfinished">Close this tab.</translation>
+      <translation>Tutup tab ini.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/tabbar.cpp" line="35"/>
       <source>Close tab</source>
-      <translation type="unfinished">Close tab</translation>
+      <translation>Tutup tab</translation>
     </message>
   </context>
   <context>
@@ -7555,32 +7553,32 @@ Unread news: %2</translation>
     <message>
       <location filename="../src/librssguard/gui/tabwidget.cpp" line="139"/>
       <source>Feeds</source>
-      <translation type="unfinished">Feeds</translation>
+      <translation>Feed</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/tabwidget.cpp" line="38"/>
       <source>Displays main menu.</source>
-      <translation type="unfinished">Displays main menu.</translation>
+      <translation>Tampilkan menu utama.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/tabwidget.cpp" line="47"/>
       <source>Main menu</source>
-      <translation type="unfinished">Main menu</translation>
+      <translation>Menu utama</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/tabwidget.cpp" line="78"/>
       <source>Downloads</source>
-      <translation type="unfinished">Downloads</translation>
+      <translation>Unduhan</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/tabwidget.cpp" line="215"/>
       <source>Newspaper view</source>
-      <translation type="unfinished">Newspaper view</translation>
+      <translation>Tampilan koran</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/tabwidget.cpp" line="239"/>
       <source>Web browser</source>
-      <translation type="unfinished">Web browser</translation>
+      <translation>Peramban web</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/tabwidget.cpp" line="141"/>
@@ -7593,7 +7591,7 @@ Unread news: %2</translation>
     <message>
       <location filename="../src/librssguard/gui/webviewers/qtextbrowser/textbrowserviewer.cpp" line="148"/>
       <source>image</source>
-      <translation type="unfinished">image</translation>
+      <translation>gambar</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/webviewers/qtextbrowser/textbrowserviewer.cpp" line="363"/>
@@ -7603,17 +7601,17 @@ Unread news: %2</translation>
     <message>
       <location filename="../src/librssguard/gui/webviewers/qtextbrowser/textbrowserviewer.cpp" line="366"/>
       <source>Open in external browser</source>
-      <translation type="unfinished">Open in external browser</translation>
+      <translation>Buka di peramban eksternal</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/webviewers/qtextbrowser/textbrowserviewer.cpp" line="368"/>
       <source>Download</source>
-      <translation type="unfinished">Download</translation>
+      <translation>Unduh</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/webviewers/qtextbrowser/textbrowserviewer.cpp" line="393"/>
       <source>Open with external tool</source>
-      <translation type="unfinished">Open with external tool</translation>
+      <translation>Buka dengan alat eksternal</translation>
     </message>
   </context>
   <context>
@@ -7621,29 +7619,29 @@ Unread news: %2</translation>
     <message numerus="yes">
       <location filename="../src/librssguard/gui/reusable/timespinbox.cpp" line="54"/>
       <source>%n hour(s)</source>
-      <translation type="unfinished">
-        <numerusform>%n hour(s)</numerusform>
+      <translation>
+        <numerusform>%n jam</numerusform>
       </translation>
     </message>
     <message numerus="yes">
       <location filename="../src/librssguard/gui/reusable/timespinbox.cpp" line="55"/>
       <location filename="../src/librssguard/gui/reusable/timespinbox.cpp" line="65"/>
       <source>%n minute(s)</source>
-      <translation type="unfinished">
-        <numerusform>%n minute(s)</numerusform>
+      <translation>
+        <numerusform>%n menit</numerusform>
       </translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/reusable/timespinbox.cpp" line="57"/>
       <location filename="../src/librssguard/gui/reusable/timespinbox.cpp" line="67"/>
       <source> and </source>
-      <translation type="unfinished"> and </translation>
+      <translation> dan </translation>
     </message>
     <message numerus="yes">
       <location filename="../src/librssguard/gui/reusable/timespinbox.cpp" line="64"/>
       <source>%n second(s)</source>
-      <translation type="unfinished">
-        <numerusform>%n second(s)</numerusform>
+      <translation>
+        <numerusform>%n detik</numerusform>
       </translation>
     </message>
   </context>
@@ -7657,62 +7655,62 @@ Unread news: %2</translation>
       <location filename="../src/librssguard/gui/toolbars/toolbareditor.cpp" line="181"/>
       <location filename="../src/librssguard/gui/toolbars/toolbareditor.cpp" line="184"/>
       <source>Separator</source>
-      <translation type="unfinished">Separator</translation>
+      <translation>Pemisah</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/toolbars/toolbareditor.cpp" line="170"/>
       <source>Toolbar spacer</source>
-      <translation type="unfinished">Toolbar spacer</translation>
+      <translation>Pengatur jarak</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/toolbars/toolbareditor.ui" line="32"/>
       <source>Activated actions</source>
-      <translation type="unfinished">Activated actions</translation>
+      <translation>Aksi yang aktif</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/toolbars/toolbareditor.ui" line="39"/>
       <source>Available actions</source>
-      <translation type="unfinished">Available actions</translation>
+      <translation>Aksi tersedia</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/toolbars/toolbareditor.ui" line="76"/>
       <source>Move action up</source>
-      <translation type="unfinished">Move action up</translation>
+      <translation>Pindah aksi ke atas</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/toolbars/toolbareditor.ui" line="89"/>
       <source>Move action down</source>
-      <translation type="unfinished">Move action down</translation>
+      <translation>Pindah aksi ke bawah</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/toolbars/toolbareditor.ui" line="109"/>
       <source>Insert separator</source>
-      <translation type="unfinished">Insert separator</translation>
+      <translation>Masukkan pemisah</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/toolbars/toolbareditor.ui" line="122"/>
       <source>Insert spacer</source>
-      <translation type="unfinished">Insert spacer</translation>
+      <translation>Masukkan pemberi jarak</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/toolbars/toolbareditor.ui" line="142"/>
       <source>Add selected action</source>
-      <translation type="unfinished">Add selected action</translation>
+      <translation>Tambah aksi yang dipilih</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/toolbars/toolbareditor.ui" line="155"/>
       <source>Delete selected action</source>
-      <translation type="unfinished">Delete selected action</translation>
+      <translation>Hapus aksi yang dipilih</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/toolbars/toolbareditor.ui" line="168"/>
       <source>Delete all actions</source>
-      <translation type="unfinished">Delete all actions</translation>
+      <translation>Hapus semua aksi</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/toolbars/toolbareditor.ui" line="181"/>
       <source>Reset toolbar</source>
-      <translation type="unfinished">Reset toolbar</translation>
+      <translation>Set ulang bilah alat</translation>
     </message>
   </context>
   <context>
@@ -7720,7 +7718,7 @@ Unread news: %2</translation>
     <message>
       <location filename="../src/librssguard/gui/systemtrayicon.cpp" line="22"/>
       <source>Close opened modal dialogs first.</source>
-      <translation type="unfinished">Close opened modal dialogs first.</translation>
+      <translation>Tutup dialog modal yang terbuka lebih dulu.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/systemtrayicon.cpp" line="21"/>
@@ -7738,60 +7736,60 @@ Unread news: %2</translation>
     <message>
       <location filename="../src/librssguard/services/tt-rss/gui/ttrssaccountdetails.cpp" line="26"/>
       <source>Leaving this option on causes that updates of feeds will be probably much slower and may time-out often.</source>
-      <translation type="unfinished">Leaving this option on causes that updates of feeds will be probably much slower and may time-out often.</translation>
+      <translation>Membiarkan pilihan ini menyala menyebabkan pembaruan dari feed mungkin akan lebih lambat dan bisa sering kehabisan waktu.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/tt-rss/gui/ttrssaccountdetails.cpp" line="29"/>
       <source>HTTP authentication username</source>
-      <translation type="unfinished">HTTP authentication username</translation>
+      <translation>Autentikasi HTTP nama pengguna</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/tt-rss/gui/ttrssaccountdetails.cpp" line="30"/>
       <source>HTTP authentication password</source>
-      <translation type="unfinished">HTTP authentication password</translation>
+      <translation>Autentikasi HTTP kata sandi</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/tt-rss/gui/ttrssaccountdetails.cpp" line="31"/>
       <source>Password for your TT-RSS account</source>
-      <translation type="unfinished">Password for your TT-RSS account</translation>
+      <translation>Kata sandi untuk akun TT-RSS anda</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/tt-rss/gui/ttrssaccountdetails.cpp" line="32"/>
       <source>Username for your TT-RSS account</source>
-      <translation type="unfinished">Username for your TT-RSS account</translation>
+      <translation>Nama pengguna untuk akun TT-RSS anda</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/tt-rss/gui/ttrssaccountdetails.cpp" line="33"/>
       <source>URL of your TT-RSS instance WITHOUT trailing &quot;/api/&quot; string</source>
-      <translation type="unfinished">URL of your TT-RSS instance WITHOUT trailing &quot;/api/&quot; string</translation>
+      <translation>URL dari instansi TT-RSS anda tanpa mengikuti rangkaian &quot;/api/&quot;</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/tt-rss/gui/ttrssaccountdetails.cpp" line="35"/>
       <source>No test done yet.</source>
-      <translation type="unfinished">No test done yet.</translation>
+      <translation>Belum ada tes yang dilakukan.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/tt-rss/gui/ttrssaccountdetails.cpp" line="36"/>
       <source>Here, results of connection test are shown.</source>
-      <translation type="unfinished">Here, results of connection test are shown.</translation>
+      <translation>Ini, hasil dari tes koneksi ditampilkan.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/tt-rss/gui/ttrssaccountdetails.cpp" line="93"/>
       <location filename="../src/librssguard/services/tt-rss/gui/ttrssaccountdetails.cpp" line="94"/>
       <source>API access on selected server is not enabled.</source>
-      <translation type="unfinished">API access on selected server is not enabled.</translation>
+      <translation>Akses API pada server yang dipilih tidak diaktifkan.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/tt-rss/gui/ttrssaccountdetails.cpp" line="98"/>
       <location filename="../src/librssguard/services/tt-rss/gui/ttrssaccountdetails.cpp" line="99"/>
       <source>Entered credentials are incorrect.</source>
-      <translation type="unfinished">Entered credentials are incorrect.</translation>
+      <translation>Kredensial masukkan salah.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/tt-rss/gui/ttrssaccountdetails.cpp" line="103"/>
       <location filename="../src/librssguard/services/tt-rss/gui/ttrssaccountdetails.cpp" line="104"/>
       <source>Other error occurred, contact developers.</source>
-      <translation type="unfinished">Other error occurred, contact developers.</translation>
+      <translation>Eror lain terjadi, hubungi pengembang.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/tt-rss/gui/ttrssaccountdetails.cpp" line="109"/>
@@ -7802,88 +7800,88 @@ Unread news: %2</translation>
     <message>
       <location filename="../src/librssguard/services/tt-rss/gui/ttrssaccountdetails.cpp" line="112"/>
       <source>Selected Tiny Tiny RSS server is running unsupported version of API.</source>
-      <translation type="unfinished">Selected Tiny Tiny RSS server is running unsupported version of API.</translation>
+      <translation>Server Tiny Tiny RSS yang dipilih menjalankan versi API yang tidak didukung.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/tt-rss/gui/ttrssaccountdetails.cpp" line="119"/>
       <source>Tiny Tiny RSS server is okay.</source>
-      <translation type="unfinished">Tiny Tiny RSS server is okay.</translation>
+      <translation>Server Tiny Tiny RSS ok.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/tt-rss/gui/ttrssaccountdetails.cpp" line="125"/>
       <source>Network error: &apos;%1&apos;.</source>
-      <translation type="unfinished">Network error: &apos;%1&apos;.</translation>
+      <translation>Eror jaringan: &apos;%1&apos;.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/tt-rss/gui/ttrssaccountdetails.cpp" line="126"/>
       <source>Network error, have you entered correct Tiny Tiny RSS API endpoint and password?</source>
-      <translation type="unfinished">Network error, have you entered correct Tiny Tiny RSS API endpoint and password?</translation>
+      <translation>Eror jaringan, sudahkan anda memasukkan endpoint API Tiny Tiny RSS and kata sandi yang benar?</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/tt-rss/gui/ttrssaccountdetails.cpp" line="130"/>
       <location filename="../src/librssguard/services/tt-rss/gui/ttrssaccountdetails.cpp" line="131"/>
       <source>Unspecified error, did you enter correct URL?</source>
-      <translation type="unfinished">Unspecified error, did you enter correct URL?</translation>
+      <translation>Eror tidak ditentukan, apakah anda memasukkan URL yang benar?</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/tt-rss/gui/ttrssaccountdetails.cpp" line="139"/>
       <source>Username cannot be empty.</source>
-      <translation type="unfinished">Username cannot be empty.</translation>
+      <translation>Nama pengguna tidak dapat kosong.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/tt-rss/gui/ttrssaccountdetails.cpp" line="142"/>
       <source>Username is okay.</source>
-      <translation type="unfinished">Username is okay.</translation>
+      <translation>Nama pengguna ok.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/tt-rss/gui/ttrssaccountdetails.cpp" line="150"/>
       <source>Password cannot be empty.</source>
-      <translation type="unfinished">Password cannot be empty.</translation>
+      <translation>Kata sandi tidak dapat kosong.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/tt-rss/gui/ttrssaccountdetails.cpp" line="153"/>
       <source>Password is okay.</source>
-      <translation type="unfinished">Password is okay.</translation>
+      <translation>Kata sandi ok.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/tt-rss/gui/ttrssaccountdetails.cpp" line="163"/>
       <source>Username is ok or it is not needed.</source>
-      <translation type="unfinished">Username is ok or it is not needed.</translation>
+      <translation>Nama pengguna ok atau ini tidak diperlukan.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/tt-rss/gui/ttrssaccountdetails.cpp" line="164"/>
       <source>Username is empty.</source>
-      <translation type="unfinished">Username is empty.</translation>
+      <translation>Nama pengguna kosong.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/tt-rss/gui/ttrssaccountdetails.cpp" line="173"/>
       <source>Password is ok or it is not needed.</source>
-      <translation type="unfinished">Password is ok or it is not needed.</translation>
+      <translation>Kata sandi ok atau ini tidak diperlukan.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/tt-rss/gui/ttrssaccountdetails.cpp" line="174"/>
       <source>Password is empty.</source>
-      <translation type="unfinished">Password is empty.</translation>
+      <translation>Kata sandi kosong.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/tt-rss/gui/ttrssaccountdetails.cpp" line="181"/>
       <source>URL cannot be empty.</source>
-      <translation type="unfinished">URL cannot be empty.</translation>
+      <translation>URL tidak dapat kosong.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/tt-rss/gui/ttrssaccountdetails.cpp" line="184"/>
       <source>URL should NOT end with &quot;/api/&quot;.</source>
-      <translation type="unfinished">URL should NOT end with &quot;/api/&quot;.</translation>
+      <translation>URL jangan diakhiri dengan &quot;/api/&quot;.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/tt-rss/gui/ttrssaccountdetails.cpp" line="187"/>
       <source>URL is okay.</source>
-      <translation type="unfinished">URL is okay.</translation>
+      <translation>URL ok.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/tt-rss/gui/ttrssaccountdetails.ui" line="32"/>
       <source>URL</source>
-      <translation type="unfinished">URL</translation>
+      <translation>URL</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/tt-rss/gui/ttrssaccountdetails.ui" line="84"/>
@@ -7909,34 +7907,34 @@ Unread news: %2</translation>
       <location filename="../src/librssguard/services/tt-rss/gui/ttrssaccountdetails.ui" line="105"/>
       <location filename="../src/librssguard/services/tt-rss/gui/ttrssaccountdetails.ui" line="149"/>
       <source>Some feeds require authentication, including GMail feeds. BASIC, NTLM-2 and DIGEST-MD5 authentication schemes are supported.</source>
-      <translation type="unfinished">Some feeds require authentication, including GMail feeds. BASIC, NTLM-2 and DIGEST-MD5 authentication schemes are supported.</translation>
+      <translation>Beberapa feed butuh autentikasi, termasuk feed GMail. Skema autentikasi BASIC, NTLM-2 and DIGEST-MD5 didukung.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/tt-rss/gui/ttrssaccountdetails.ui" line="108"/>
       <source>Authentication</source>
-      <translation type="unfinished">Authentication</translation>
+      <translation>Autentikasi</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/tt-rss/gui/ttrssaccountdetails.ui" line="120"/>
       <location filename="../src/librssguard/services/tt-rss/gui/ttrssaccountdetails.ui" line="167"/>
       <source>Username</source>
-      <translation type="unfinished">Username</translation>
+      <translation>Nama pengguna</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/tt-rss/gui/ttrssaccountdetails.ui" line="133"/>
       <location filename="../src/librssguard/services/tt-rss/gui/ttrssaccountdetails.ui" line="180"/>
       <source>Password</source>
-      <translation type="unfinished">Password</translation>
+      <translation>Kata sandi</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/tt-rss/gui/ttrssaccountdetails.ui" line="152"/>
       <source>Requires HTTP authentication</source>
-      <translation type="unfinished">Requires HTTP authentication</translation>
+      <translation>Membutuhkan autentikasi HTTP</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/tt-rss/gui/ttrssaccountdetails.ui" line="198"/>
       <source>&amp;Test setup</source>
-      <translation type="unfinished">&amp;Test setup</translation>
+      <translation>&amp;Tes setelan</translation>
     </message>
   </context>
   <context>
@@ -7962,22 +7960,22 @@ Unread news: %2</translation>
     <message>
       <location filename="../src/librssguard/services/tt-rss/gui/ttrssfeeddetails.cpp" line="21"/>
       <source>The URL is ok.</source>
-      <translation type="unfinished">The URL is ok.</translation>
+      <translation>URL ok.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/tt-rss/gui/ttrssfeeddetails.cpp" line="27"/>
       <source>The URL does not meet standard pattern. Does your URL start with &quot;http://&quot; or &quot;https://&quot; prefix.</source>
-      <translation type="unfinished">The URL does not meet standard pattern. Does your URL start with &quot;http://&quot; or &quot;https://&quot; prefix.</translation>
+      <translation>URL tidak memenuhi pola standar. Apakah URL anda dimulai dengan awalan &quot;http://&quot; atau &quot;https://&quot;.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/tt-rss/gui/ttrssfeeddetails.cpp" line="31"/>
       <source>The URL is empty.</source>
-      <translation type="unfinished">The URL is empty.</translation>
+      <translation>URL kosong.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/tt-rss/gui/ttrssfeeddetails.ui" line="14"/>
       <source>Form</source>
-      <translation type="unfinished">Form</translation>
+      <translation>Formulir</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/tt-rss/gui/ttrssfeeddetails.ui" line="20"/>
@@ -7987,12 +7985,12 @@ Unread news: %2</translation>
     <message>
       <location filename="../src/librssguard/services/tt-rss/gui/ttrssfeeddetails.ui" line="30"/>
       <source>Select parent item for your feed.</source>
-      <translation type="unfinished">Select parent item for your feed.</translation>
+      <translation>Pilih item induk untuk feed anda.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/tt-rss/gui/ttrssfeeddetails.ui" line="46"/>
       <source>URL</source>
-      <translation type="unfinished">URL</translation>
+      <translation>URL</translation>
     </message>
   </context>
   <context>
@@ -8000,12 +7998,12 @@ Unread news: %2</translation>
     <message>
       <location filename="../src/librssguard/services/tt-rss/ttrssserviceroot.cpp" line="104"/>
       <source>Cannot add item</source>
-      <translation type="unfinished">Cannot add item</translation>
+      <translation>Tidak dapat menambah item</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/tt-rss/ttrssserviceroot.cpp" line="105"/>
       <source>Cannot add feed because another critical operation is ongoing.</source>
-      <translation type="unfinished">Cannot add feed because another critical operation is ongoing.</translation>
+      <translation>Tidak dapat menambah feed dikarenakan operasi genting lain sedang berlangsung.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/tt-rss/ttrssserviceroot.cpp" line="367"/>
@@ -8013,10 +8011,10 @@ Unread news: %2</translation>
 Server: %2
 Last error: %3
 Last login on: %4</source>
-      <translation type="unfinished">Username: %1
+      <translation>Nama pengguna: %1
 Server: %2
-Last error: %3
-Last login on: %4</translation>
+Eror terakhir: %3
+Log masuk terakhir pada: %4</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/tt-rss/ttrssserviceroot.cpp" line="410"/>
@@ -8042,7 +8040,7 @@ Last login on: %4</translation>
     <message>
       <location filename="../src/librssguard/gui/webbrowser.cpp" line="28"/>
       <source>Navigation panel</source>
-      <translation type="unfinished">Navigation panel</translation>
+      <translation>Papan navigasi</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/webbrowser.cpp" line="35"/>
@@ -8053,7 +8051,7 @@ Last login on: %4</translation>
       <location filename="../src/librssguard/gui/webbrowser.cpp" line="244"/>
       <source>No title</source>
       <extracomment>Webbrowser tab title when no title is available.</extracomment>
-      <translation type="unfinished">No title</translation>
+      <translation>Tanpa judul</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/webbrowser.cpp" line="278"/>
@@ -8068,22 +8066,22 @@ Last login on: %4</translation>
     <message>
       <location filename="../src/librssguard/gui/webbrowser.cpp" line="290"/>
       <source>Back</source>
-      <translation type="unfinished">Back</translation>
+      <translation>Kembali</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/webbrowser.cpp" line="291"/>
       <source>Forward</source>
-      <translation type="unfinished">Forward</translation>
+      <translation>Maju</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/webbrowser.cpp" line="292"/>
       <source>Reload</source>
-      <translation type="unfinished">Reload</translation>
+      <translation>Muat ulang</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/webbrowser.cpp" line="293"/>
       <source>Stop</source>
-      <translation type="unfinished">Stop</translation>
+      <translation>Hentikan</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/webbrowser.cpp" line="32"/>
@@ -8096,12 +8094,12 @@ Last login on: %4</translation>
     <message>
       <location filename="../src/librssguard/gui/webviewers/webengine/webengineviewer.cpp" line="94"/>
       <source>Open link in external browser</source>
-      <translation type="unfinished">Open link in external browser</translation>
+      <translation>Buka tautan di perambah ekstenal</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/webviewers/webengine/webengineviewer.cpp" line="111"/>
       <source>Open with external tool</source>
-      <translation type="unfinished">Open with external tool</translation>
+      <translation>Buka dengan alat eksternal</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/webviewers/webengine/webengineviewer.cpp" line="130"/>
@@ -8114,17 +8112,17 @@ Last login on: %4</translation>
     <message>
       <location filename="../src/librssguard/network-web/webfactory.cpp" line="320"/>
       <source>Web engine settings</source>
-      <translation type="unfinished">Web engine settings</translation>
+      <translation>Pengaturan Web engine</translation>
     </message>
     <message>
       <location filename="../src/librssguard/network-web/webfactory.cpp" line="343"/>
       <source>Auto-load images</source>
-      <translation type="unfinished">Auto-load images</translation>
+      <translation>Oto-muat gambar</translation>
     </message>
     <message>
       <location filename="../src/librssguard/network-web/webfactory.cpp" line="344"/>
       <source>JS enabled</source>
-      <translation type="unfinished">JS enabled</translation>
+      <translation>JS dinyalakan</translation>
     </message>
     <message>
       <location filename="../src/librssguard/network-web/webfactory.cpp" line="345"/>
@@ -8134,7 +8132,7 @@ Last login on: %4</translation>
     <message>
       <location filename="../src/librssguard/network-web/webfactory.cpp" line="347"/>
       <source>JS can access clipboard</source>
-      <translation type="unfinished">JS can access clipboard</translation>
+      <translation>JS dapat mengakses papan klip</translation>
     </message>
     <message>
       <location filename="../src/librssguard/network-web/webfactory.cpp" line="349"/>
@@ -8144,7 +8142,7 @@ Last login on: %4</translation>
     <message>
       <location filename="../src/librssguard/network-web/webfactory.cpp" line="351"/>
       <source>Local storage enabled</source>
-      <translation type="unfinished">Local storage enabled</translation>
+      <translation>Penyimpan lokal dinyalakan</translation>
     </message>
     <message>
       <location filename="../src/librssguard/network-web/webfactory.cpp" line="353"/>
@@ -8184,12 +8182,12 @@ Last login on: %4</translation>
     <message>
       <location filename="../src/librssguard/network-web/webfactory.cpp" line="366"/>
       <source>Plugins enabled</source>
-      <translation type="unfinished">Plugins enabled</translation>
+      <translation>Plugin dinyalakan</translation>
     </message>
     <message>
       <location filename="../src/librssguard/network-web/webfactory.cpp" line="367"/>
       <source>Fullscreen enabled</source>
-      <translation type="unfinished">Fullscreen enabled</translation>
+      <translation>Layar penuh dinyalakan</translation>
     </message>
     <message>
       <location filename="../src/librssguard/network-web/webfactory.cpp" line="371"/>
@@ -8199,7 +8197,7 @@ Last login on: %4</translation>
     <message>
       <location filename="../src/librssguard/network-web/webfactory.cpp" line="373"/>
       <source>WebGL enabled</source>
-      <translation type="unfinished">WebGL enabled</translation>
+      <translation>WebGL dinyalakan</translation>
     </message>
     <message>
       <location filename="../src/librssguard/network-web/webfactory.cpp" line="374"/>
