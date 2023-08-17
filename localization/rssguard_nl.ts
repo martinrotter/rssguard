@@ -3127,7 +3127,7 @@ Je moet handmatig herstarten.</translation>
     <message>
       <location filename="../src/librssguard/services/standard/gui/formstandardimportexport.ui" line="216"/>
       <source>&amp;Uncheck all feeds</source>
-      <translation>&amp;Alle feeds uitvinken</translation>
+      <translation>&amp;Alle feeds deselecteren</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/standard/gui/formstandardimportexport.ui" line="226"/>
