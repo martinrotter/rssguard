@@ -1,0 +1,3 @@
+files:
+  - source: /localization/rssguard_en.ts
+    translation: /localization/rssguard_%locale_with_underscore%.ts
