@@ -6,6 +6,7 @@
 #include "miscellaneous/iconfactory.h"
 #include "miscellaneous/localization.h"
 #include "miscellaneous/settings.h"
+#include "network-web/webfactory.h"
 
 SettingsLocalization::SettingsLocalization(Settings* settings, QWidget* parent)
   : SettingsPanel(settings, parent), m_ui(new Ui::SettingsLocalization) {
@@ -14,8 +15,12 @@ SettingsLocalization::SettingsLocalization(Settings* settings, QWidget* parent)
   m_ui->m_treeLanguages->setHeaderHidden(false);
   m_ui->m_treeLanguages->setHeaderLabels(QStringList()
                                          << /*: Language column of language list. */ tr("Language")
-                                         << /*: Lang. code column of language list. */ tr("Code")
-                                         << tr("Author"));
+                                         << /*: Lang. code column of language list. */ tr("Code") << tr("Author"));
+
+  m_ui->m_lblHelp->setText(tr(R"(Help us to improve %1 <a href="%2">translations</a>.)")
+                             .arg(QSL(APP_NAME), QSL("https://crowdin.com/project/rssguard")));
+
+  connect(m_ui->m_lblHelp, &QLabel::linkActivated, qApp->web(), &WebFactory::openUrlInExternalBrowser);
 
   // Setup languages.
   m_ui->m_treeLanguages->header()->setSectionResizeMode(0, QHeaderView::ResizeMode::ResizeToContents);
@@ -44,9 +49,8 @@ void SettingsLocalization::loadSettings() {
   }
 
   m_ui->m_treeLanguages->sortByColumn(0, Qt::SortOrder::AscendingOrder);
-  QList<QTreeWidgetItem*> matching_items = m_ui->m_treeLanguages->findItems(qApp->localization()->loadedLanguage(),
-                                                                            Qt::MatchFlag::MatchContains,
-                                                                            1);
+  QList<QTreeWidgetItem*> matching_items =
+    m_ui->m_treeLanguages->findItems(qApp->localization()->loadedLanguage(), Qt::MatchFlag::MatchContains, 1);
 
   if (!matching_items.isEmpty()) {
     m_ui->m_treeLanguages->setCurrentItem(matching_items[0]);

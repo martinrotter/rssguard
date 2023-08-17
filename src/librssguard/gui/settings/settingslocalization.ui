@@ -10,7 +10,7 @@
     <height>263</height>
    </rect>
   </property>
-  <layout class="QHBoxLayout" name="horizontalLayout">
+  <layout class="QVBoxLayout" name="verticalLayout">
    <item>
     <widget class="QTreeWidget" name="m_treeLanguages">
      <property name="editTriggers">
@@ -35,6 +35,9 @@
       <number>80</number>
      </attribute>
     </widget>
+   </item>
+   <item>
+    <widget class="QLabel" name="m_lblHelp"/>
    </item>
   </layout>
  </widget>

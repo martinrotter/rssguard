@@ -52,7 +52,6 @@ class WebFactory : public QObject {
     Readability* readability() const;
 
     void updateProxy();
-    bool openUrlInExternalBrowser(const QString& url) const;
     bool sendMessageViaEmail(const Message& message);
 
 #if defined(USE_WEBENGINE)
@@ -66,6 +65,8 @@ class WebFactory : public QObject {
 #if defined(USE_WEBENGINE)
     void cleanupCache();
 #endif
+
+    bool openUrlInExternalBrowser(const QString& url) const;
 
 #if defined(USE_WEBENGINE)
   private slots:

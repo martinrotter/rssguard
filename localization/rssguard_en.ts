@@ -6775,12 +6775,12 @@ Description: %3</source>
 <context>
     <name>SettingsLocalization</name>
     <message>
-        <location filename="../src/librssguard/gui/settings/settingslocalization.cpp" line="16"/>
+        <location filename="../src/librssguard/gui/settings/settingslocalization.cpp" line="17"/>
         <source>Language</source>
         <translation type="unfinished">Language</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/gui/settings/settingslocalization.cpp" line="17"/>
+        <location filename="../src/librssguard/gui/settings/settingslocalization.cpp" line="18"/>
         <source>Code</source>
         <translation type="unfinished">Code</translation>
     </message>
@@ -6788,6 +6788,11 @@ Description: %3</source>
         <location filename="../src/librssguard/gui/settings/settingslocalization.cpp" line="18"/>
         <source>Author</source>
         <translation type="unfinished">Author</translation>
+    </message>
+    <message>
+        <location filename="../src/librssguard/gui/settings/settingslocalization.cpp" line="20"/>
+        <source>Help us to improve %1 &lt;a href=&quot;%2&quot;&gt;translations&lt;/a&gt;.</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../src/librssguard/gui/settings/settingslocalization.h" line="26"/>
