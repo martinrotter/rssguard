@@ -3,7 +3,7 @@ name: rssguard
 
 on:
   push:
-    branches-ignore: ["l10n_master"]
+    branches: ["*"]
     tags: ["*"]
 
 jobs:
