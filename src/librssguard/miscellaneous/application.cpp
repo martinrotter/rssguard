@@ -139,11 +139,6 @@ Application::Application(const QString& id, int& argc, char** argv, const QStrin
 
   determineFirstRuns();
 
-  //: Abbreviation of language, e.g. en.
-  //: Use ISO 639-1 code here combined with ISO 3166-1 (alpha-2) code.
-  //: Examples: "cs", "en", "it", "cs_CZ", "en_GB", "en_US".
-  QObject::tr("LANG_ABBREV");
-
   //: Name of translator - optional.
   QObject::tr("LANG_AUTHOR");
 
