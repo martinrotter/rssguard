@@ -6,12 +6,12 @@
     <message>
       <location filename="../src/librssguard/services/abstract/accountcheckmodel.cpp" line="183"/>
       <source>(category)</source>
-      <translation type="unfinished">(category)</translation>
+      <translation>(kategori)</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/abstract/accountcheckmodel.cpp" line="186"/>
       <source>(feed)</source>
-      <translation type="unfinished">(feed)</translation>
+      <translation>(flöde)</translation>
     </message>
   </context>
   <context>
@@ -19,22 +19,22 @@
     <message>
       <location filename="../src/librssguard/network-web/adblock/adblockdialog.cpp" line="26"/>
       <source>AdBlock configuration</source>
-      <translation type="unfinished">AdBlock configuration</translation>
+      <translation>AdBlock-inställningar</translation>
     </message>
     <message>
       <location filename="../src/librssguard/network-web/adblock/adblockdialog.cpp" line="63"/>
       <source>Cannot enable AdBlock</source>
-      <translation type="unfinished">Cannot enable AdBlock</translation>
+      <translation>Kan inte aktivera AdBlock</translation>
     </message>
     <message>
       <location filename="../src/librssguard/network-web/adblock/adblockdialog.cpp" line="64"/>
       <source>There is some error in AdBlock component and it cannot be enabled. Check error message below (or application debug log) for more information.</source>
-      <translation type="unfinished">There is some error in AdBlock component and it cannot be enabled. Check error message below (or application debug log) for more information.</translation>
+      <translation>Det finns fel i AdBlock-komponenten och den kan inte aktiveras. Kolla felmeddelande nedan (eller programloggen) för mer information.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/network-web/adblock/adblockdialog.cpp" line="98"/>
       <source>OK!</source>
-      <translation type="unfinished">OK!</translation>
+      <translation>OK!</translation>
     </message>
     <message>
       <location filename="../src/librssguard/network-web/adblock/adblockdialog.cpp" line="113"/>
@@ -46,15 +46,15 @@
       <source>There is error, check application log for more details and head to online documentation. Also make sure that Node.js is installed.
 
 Error: %1</source>
-      <translation type="unfinished">There is error, check application log for more details and head to online documentation. Also make sure that Node.js is installed.
+      <translation>Något är fel, kolla programloggen för mer detaljerad info och konsultera online-dokumentationen. Tillse också att Node.js är installerad.
 
-Error: %1</translation>
+Fel: %1</translation>
     </message>
     <message>
       <location filename="../src/librssguard/network-web/adblock/adblockdialog.cpp" line="88"/>
       <location filename="../src/librssguard/network-web/adblock/adblockdialog.cpp" line="115"/>
       <source>ERROR!</source>
-      <translation type="unfinished">ERROR!</translation>
+      <translation>FEL!</translation>
     </message>
     <message>
       <location filename="../src/librssguard/network-web/adblock/adblockdialog.cpp" line="38"/>
@@ -72,32 +72,32 @@ Error: %1</translation>
     <message>
       <location filename="../src/librssguard/network-web/adblock/adblockdialog.ui" line="20"/>
       <source>Enable AdBlock</source>
-      <translation type="unfinished">Enable AdBlock</translation>
+      <translation>Aktivera AdBlock</translation>
     </message>
     <message>
       <location filename="../src/librssguard/network-web/adblock/adblockdialog.ui" line="32"/>
       <source>&amp;Help</source>
-      <translation type="unfinished">&amp;Help</translation>
+      <translation>&amp;Hjälp</translation>
     </message>
     <message>
       <location filename="../src/librssguard/network-web/adblock/adblockdialog.ui" line="58"/>
       <source>Filter lists</source>
-      <translation type="unfinished">Filter lists</translation>
+      <translation>Filterlistor</translation>
     </message>
     <message>
       <location filename="../src/librssguard/network-web/adblock/adblockdialog.ui" line="64"/>
       <source>Add your direct links to filter lists here (one URL per line)</source>
-      <translation type="unfinished">Add your direct links to filter lists here (one URL per line)</translation>
+      <translation>Lägg till dina direktlänkar till filterlistor här (en URL per rad)</translation>
     </message>
     <message>
       <location filename="../src/librssguard/network-web/adblock/adblockdialog.ui" line="78"/>
       <source>Custom filters</source>
-      <translation type="unfinished">Custom filters</translation>
+      <translation>Anpassade filter</translation>
     </message>
     <message>
       <location filename="../src/librssguard/network-web/adblock/adblockdialog.ui" line="84"/>
       <source>Add your custom filters here (one filter per line)</source>
-      <translation type="unfinished">Add your custom filters here (one filter per line)</translation>
+      <translation>Lägg till dina anpassade filter här (ett filter per rad)</translation>
     </message>
   </context>
   <context>
@@ -105,12 +105,12 @@ Error: %1</translation>
     <message>
       <location filename="../src/librssguard/network-web/adblock/adblockicon.cpp" line="12"/>
       <source>AdBlock lets you block unwanted content on web pages</source>
-      <translation type="unfinished">AdBlock lets you block unwanted content on web pages</translation>
+      <translation>AdBlock låter dig blockera oönskat innehåll på webbsidor</translation>
     </message>
     <message>
       <location filename="../src/librssguard/network-web/adblock/adblockicon.cpp" line="45"/>
       <source>Show AdBlock &amp;settings</source>
-      <translation type="unfinished">Show AdBlock &amp;settings</translation>
+      <translation>Visa AdBlock-&amp;inställningar</translation>
     </message>
   </context>
   <context>
@@ -123,7 +123,7 @@ Error: %1</translation>
     <message>
       <location filename="../src/librssguard/network-web/adblock/adblockmanager.cpp" line="375"/>
       <source>failed to download filter list &apos;%1&apos;</source>
-      <translation type="unfinished">failed to download filter list &apos;%1&apos;</translation>
+      <translation>kunde inte ladda ner filterlista &quot;%1&quot;</translation>
     </message>
   </context>
   <context>
@@ -131,12 +131,12 @@ Error: %1</translation>
     <message>
       <location filename="../src/librssguard/miscellaneous/application.cpp" line="1086"/>
       <source>Application is already running.</source>
-      <translation type="unfinished">Application is already running.</translation>
+      <translation>Programmet är redan startat.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/miscellaneous/application.cpp" line="558"/>
       <source>Output directory is not writable.</source>
-      <translation type="unfinished">Output directory is not writable.</translation>
+      <translation>Utdatamappen är inte skrivbar.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/miscellaneous/application.cpp" line="313"/>
@@ -156,27 +156,27 @@ Error: %1</translation>
     <message>
       <location filename="../src/librssguard/miscellaneous/application.cpp" line="566"/>
       <source>Settings file not copied to output directory successfully.</source>
-      <translation type="unfinished">Settings file not copied to output directory successfully.</translation>
+      <translation>Inställningsfilen kopierades inte till utdatamappen.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/miscellaneous/application.cpp" line="581"/>
       <source>Database restoration was not initiated. Make sure that output directory is writable.</source>
-      <translation type="unfinished">Database restoration was not initiated. Make sure that output directory is writable.</translation>
+      <translation>Databasåterställning startades inte. Tillse att utdatamappen är skrivbar.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/miscellaneous/application.cpp" line="588"/>
       <source>Settings restoration was not initiated. Make sure that output directory is writable.</source>
-      <translation type="unfinished">Settings restoration was not initiated. Make sure that output directory is writable.</translation>
+      <translation>Inställningsåterställning startades inte. Tillse att utdatamappen är skrivbar.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/miscellaneous/application.cpp" line="1104"/>
       <source>Cannot add feed</source>
-      <translation type="unfinished">Cannot add feed</translation>
+      <translation>Kan inte lägga till flödet</translation>
     </message>
     <message>
       <location filename="../src/librssguard/miscellaneous/application.cpp" line="1105"/>
       <source>Feed cannot be added because there is no active account which can add feeds.</source>
-      <translation type="unfinished">Feed cannot be added because there is no active account which can add feeds.</translation>
+      <translation>Flödet kan inte läggas till eftersom det saknas ett aktivt konto som kan lägga till flöden.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/miscellaneous/application.cpp" line="1263"/>
@@ -196,7 +196,7 @@ Error: %1</translation>
     <message>
       <location filename="../src/librssguard/miscellaneous/application.cpp" line="1035"/>
       <source>AdBlock needs to be configured</source>
-      <translation type="unfinished">AdBlock needs to be configured</translation>
+      <translation>AdBlock behöver konfigureras</translation>
     </message>
     <message>
       <location filename="../src/librssguard/miscellaneous/application.cpp" line="328"/>
@@ -209,10 +209,10 @@ Error: %1</translation>
 
 Please, check NEW stuff included in this
 version by clicking this popup notification.</source>
-      <translation type="unfinished">Welcome to %1.
+      <translation>Välkommen till %1.
 
-Please, check NEW stuff included in this
-version by clicking this popup notification.</translation>
+Kolla in NYA grejer i den här versionen 
+genom att klicka på denna popup-avisering.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/miscellaneous/application.cpp" line="1036"/>
@@ -235,12 +235,12 @@ version by clicking this popup notification.</translation>
     <message>
       <location filename="../src/librssguard/services/abstract/gui/authenticationdetails.ui" line="14"/>
       <source>Form</source>
-      <translation type="unfinished">Form</translation>
+      <translation>Form</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/abstract/gui/authenticationdetails.ui" line="20"/>
       <source>Some feeds require authentication, including GMail feeds. BASIC, NTLM-2 and DIGEST-MD5 authentication schemes are supported.</source>
-      <translation type="unfinished">Some feeds require authentication, including GMail feeds. BASIC, NTLM-2 and DIGEST-MD5 authentication schemes are supported.</translation>
+      <translation>Vissa flöden kräver autentisering. Inklusive Gmail-flöden. BASIC, NTLM-2 och DIGEST-MD5 autentiseringsscheman stöds.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/abstract/gui/authenticationdetails.ui" line="23"/>
@@ -257,23 +257,23 @@ version by clicking this popup notification.</translation>
       <location filename="../src/librssguard/services/abstract/gui/authenticationdetails.cpp" line="12"/>
       <location filename="../src/librssguard/services/abstract/gui/authenticationdetails.cpp" line="79"/>
       <source>Username</source>
-      <translation type="unfinished">Username</translation>
+      <translation>Användarnamn</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/abstract/gui/authenticationdetails.ui" line="48"/>
       <location filename="../src/librssguard/services/abstract/gui/authenticationdetails.cpp" line="14"/>
       <source>Password</source>
-      <translation type="unfinished">Password</translation>
+      <translation>Lösenord</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/abstract/gui/authenticationdetails.cpp" line="13"/>
       <source>Set username to access the feed.</source>
-      <translation type="unfinished">Set username to access the feed.</translation>
+      <translation>Ange användarnamn för att få åtkomst till flödet.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/abstract/gui/authenticationdetails.cpp" line="15"/>
       <source>Set password to access the feed.</source>
-      <translation type="unfinished">Set password to access the feed.</translation>
+      <translation>Ange lösenord för att få åtkomst till flödet.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/abstract/gui/authenticationdetails.cpp" line="17"/>
@@ -298,12 +298,12 @@ version by clicking this popup notification.</translation>
     <message>
       <location filename="../src/librssguard/services/abstract/gui/authenticationdetails.cpp" line="63"/>
       <source>Password is ok or it is not needed.</source>
-      <translation type="unfinished">Password is ok or it is not needed.</translation>
+      <translation>Lösenordet är ok, eller behövs inte.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/abstract/gui/authenticationdetails.cpp" line="63"/>
       <source>Password is empty.</source>
-      <translation type="unfinished">Password is empty.</translation>
+      <translation>Lösenord saknas.</translation>
     </message>
   </context>
   <context>
@@ -319,12 +319,12 @@ version by clicking this popup notification.</translation>
     <message>
       <location filename="../src/librssguard/gui/reusable/colortoolbutton.cpp" line="15"/>
       <source>Click me to change color!</source>
-      <translation type="unfinished">Click me to change color!</translation>
+      <translation>Klicka för att ändra färg</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/reusable/colortoolbutton.cpp" line="20"/>
       <source>Select new color</source>
-      <translation type="unfinished">Select new color</translation>
+      <translation>Välj ny färg</translation>
     </message>
   </context>
   <context>
@@ -332,27 +332,27 @@ version by clicking this popup notification.</translation>
     <message>
       <location filename="../src/librssguard/database/databasecleaner.cpp" line="65"/>
       <source>Shrinking database file...</source>
-      <translation type="unfinished">Shrinking database file...</translation>
+      <translation>Krymper databasfilen...</translation>
     </message>
     <message>
       <location filename="../src/librssguard/database/databasecleaner.cpp" line="70"/>
       <source>Database file shrinked...</source>
-      <translation type="unfinished">Database file shrinked...</translation>
+      <translation>Databasfilen krympt...</translation>
     </message>
     <message>
       <location filename="../src/librssguard/database/databasecleaner.cpp" line="40"/>
       <source>Recycle bin purged...</source>
-      <translation type="unfinished">Recycle bin purged...</translation>
+      <translation>Papperskorgen rensad...</translation>
     </message>
     <message>
       <location filename="../src/librssguard/database/databasecleaner.cpp" line="35"/>
       <source>Purging recycle bin...</source>
-      <translation type="unfinished">Purging recycle bin...</translation>
+      <translation>Rensar papperskorgen...</translation>
     </message>
     <message>
       <location filename="../src/librssguard/database/databasecleaner.cpp" line="25"/>
       <source>Removing read articles...</source>
-      <translation type="unfinished">Removing read articles...</translation>
+      <translation>Tar bort lästa meddelanden...</translation>
     </message>
     <message>
       <location filename="../src/librssguard/database/databasecleaner.cpp" line="30"/>
@@ -385,12 +385,12 @@ version by clicking this popup notification.</translation>
     <message>
       <location filename="../src/librssguard/database/databasefactory.cpp" line="61"/>
       <source>Cannot connect to database</source>
-      <translation type="unfinished">Cannot connect to database</translation>
+      <translation>Kan inte ansluta till databas</translation>
     </message>
     <message>
       <location filename="../src/librssguard/database/databasefactory.cpp" line="62"/>
       <source>Connection to your database was not established with error: &apos;%1&apos;. Falling back to SQLite.</source>
-      <translation type="unfinished">Connection to your database was not established with error: &apos;%1&apos;. Falling back to SQLite.</translation>
+      <translation>Anslutning till din databas upprättades inte, med felkod: &quot;%1&quot;. Faller tillbaka på SQLite.</translation>
     </message>
   </context>
   <context>
@@ -398,24 +398,24 @@ version by clicking this popup notification.</translation>
     <message>
       <location filename="../src/librssguard/gui/reusable/discoverfeedsbutton.cpp" line="56"/>
       <source>Given account does not support adding feeds.</source>
-      <translation type="unfinished">Given account does not support adding feeds.</translation>
+      <translation>Angivet kontot stöder inte tillägg av nya flöden.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/reusable/discoverfeedsbutton.cpp" line="79"/>
       <source>Feeds were detected, but no suitable accounts are configured.</source>
-      <translation type="unfinished">Feeds were detected, but no suitable accounts are configured.</translation>
+      <translation>Flöden har identifierats, men inget passande konto är konfigurerat.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/reusable/discoverfeedsbutton.cpp" line="32"/>
       <source>This website does not contain any feeds</source>
-      <translation type="unfinished">This website does not contain any feeds</translation>
+      <translation>Denna webbsida innehåller inga flöden</translation>
     </message>
     <message numerus="yes">
       <location filename="../src/librssguard/gui/reusable/discoverfeedsbutton.cpp" line="33"/>
       <source>Add one of %n feed(s)</source>
-      <translation type="unfinished">
-        <numerusform>Add one of %n feed(s)</numerusform>
-        <numerusform>Add one of %n feed(s)</numerusform>
+      <translation>
+        <numerusform>Lägg till ett av %n flöde</numerusform>
+        <numerusform>Lägg till ett av %n flöden</numerusform>
       </translation>
     </message>
     <message>
@@ -429,62 +429,62 @@ version by clicking this popup notification.</translation>
     <message>
       <location filename="../src/librssguard/network-web/downloadmanager.cpp" line="262"/>
       <source>Error opening output file: %1</source>
-      <translation type="unfinished">Error opening output file: %1</translation>
+      <translation>Kunde inte öppna utdatafil: %1</translation>
     </message>
     <message>
       <location filename="../src/librssguard/network-web/downloadmanager.cpp" line="106"/>
       <source>Select destination for downloaded file</source>
-      <translation type="unfinished">Select destination for downloaded file</translation>
+      <translation>Välj destination för nedladdad fil</translation>
     </message>
     <message>
       <location filename="../src/librssguard/network-web/downloadmanager.cpp" line="288"/>
       <source>Error: %1</source>
-      <translation type="unfinished">Error: %1</translation>
+      <translation>Fel: %1</translation>
     </message>
     <message>
       <location filename="../src/librssguard/network-web/downloadmanager.cpp" line="132"/>
       <source>Download directory couldn&apos;t be created</source>
-      <translation type="unfinished">Download directory couldn&apos;t be created</translation>
+      <translation>Nedladdningsplatsen kunde inte skapas</translation>
     </message>
     <message>
       <location filename="../src/librssguard/network-web/downloadmanager.cpp" line="273"/>
       <source>Error when saving file: %1</source>
-      <translation type="unfinished">Error when saving file: %1</translation>
+      <translation>Fel när filen skulle sparas: %1</translation>
     </message>
     <message>
       <location filename="../src/librssguard/network-web/downloadmanager.cpp" line="380"/>
       <source>%1 of %2 (%3 per second) - %4</source>
-      <translation type="unfinished">%1 of %2 (%3 per second) - %4</translation>
+      <translation>%1 av %2 (%3 per sekund) - %4</translation>
     </message>
     <message>
       <location filename="../src/librssguard/network-web/downloadmanager.cpp" line="390"/>
       <source>%1 of %2 - download completed</source>
-      <translation type="unfinished">%1 of %2 - download completed</translation>
+      <translation>%1 av %2 - Nedladdning slutförd</translation>
     </message>
     <message>
       <location filename="../src/librssguard/network-web/downloadmanager.cpp" line="212"/>
       <source>Cannot open file</source>
-      <translation type="unfinished">Cannot open file</translation>
+      <translation>Kan inte öppna filen</translation>
     </message>
     <message>
       <location filename="../src/librssguard/network-web/downloadmanager.cpp" line="212"/>
       <source>Cannot open output file. Open it manually.</source>
-      <translation type="unfinished">Cannot open output file. Open it manually.</translation>
+      <translation>Kan inte öppna utdatafilen. Öppna den manuellt.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/network-web/downloadmanager.cpp" line="220"/>
       <source>Cannot open directory</source>
-      <translation type="unfinished">Cannot open directory</translation>
+      <translation>Kan inte öppna mappen</translation>
     </message>
     <message>
       <location filename="../src/librssguard/network-web/downloadmanager.cpp" line="221"/>
       <source>Cannot open output directory. Open it manually.</source>
-      <translation type="unfinished">Cannot open output directory. Open it manually.</translation>
+      <translation>Kan inte öppna utdatamappen. Öppna den manuellt.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/network-web/downloadmanager.cpp" line="431"/>
       <source>Download finished</source>
-      <translation type="unfinished">Download finished</translation>
+      <translation>Nedladdning slutförd</translation>
     </message>
     <message>
       <location filename="../src/librssguard/network-web/downloadmanager.cpp" line="432"/>
@@ -496,17 +496,17 @@ Click here to open parent directory.</translation>
     <message>
       <location filename="../src/librssguard/network-web/downloadmanager.cpp" line="442"/>
       <source>URL: %1</source>
-      <translation type="unfinished">URL: %1</translation>
+      <translation>URL: %1</translation>
     </message>
     <message>
       <location filename="../src/librssguard/network-web/downloadmanager.cpp" line="443"/>
       <source>Local file: %1</source>
-      <translation type="unfinished">Local file: %1</translation>
+      <translation>Lokal fil: %1</translation>
     </message>
     <message>
       <location filename="../src/librssguard/network-web/downloadmanager.cpp" line="112"/>
       <source>Selection of local file cancelled.</source>
-      <translation type="unfinished">Selection of local file cancelled.</translation>
+      <translation>Val av lokal fil avbröts.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/network-web/downloadmanager.cpp" line="435"/>
@@ -516,27 +516,27 @@ Click here to open parent directory.</translation>
     <message>
       <location filename="../src/librssguard/network-web/downloaditem.ui" line="54"/>
       <source>Filename</source>
-      <translation type="unfinished">Filename</translation>
+      <translation>Filnamn</translation>
     </message>
     <message>
       <location filename="../src/librssguard/network-web/downloaditem.ui" line="86"/>
       <source>&amp;Try again</source>
-      <translation type="unfinished">&amp;Try again</translation>
+      <translation>&amp;Försök igen</translation>
     </message>
     <message>
       <location filename="../src/librssguard/network-web/downloaditem.ui" line="93"/>
       <source>&amp;Stop</source>
-      <translation type="unfinished">&amp;Stop</translation>
+      <translation>&amp;Stopp</translation>
     </message>
     <message>
       <location filename="../src/librssguard/network-web/downloaditem.ui" line="100"/>
       <source>&amp;Open file</source>
-      <translation type="unfinished">&amp;Open file</translation>
+      <translation>&amp;Öppna fil</translation>
     </message>
     <message>
       <location filename="../src/librssguard/network-web/downloaditem.ui" line="107"/>
       <source>Open &amp;directory</source>
-      <translation type="unfinished">Open &amp;directory</translation>
+      <translation>Öppna &amp;mapp</translation>
     </message>
   </context>
   <context>
@@ -544,51 +544,51 @@ Click here to open parent directory.</translation>
     <message numerus="yes">
       <location filename="../src/librssguard/network-web/downloadmanager.cpp" line="725"/>
       <source>%n minutes remaining</source>
-      <translation type="unfinished">
-        <numerusform>%n minutes remaining</numerusform>
-        <numerusform>%n minutes remaining</numerusform>
+      <translation>
+        <numerusform>%n minut kvar</numerusform>
+        <numerusform>%n minuter kvar</numerusform>
       </translation>
     </message>
     <message numerus="yes">
       <location filename="../src/librssguard/network-web/downloadmanager.cpp" line="729"/>
       <source>%n seconds remaining</source>
-      <translation type="unfinished">
-        <numerusform>%n seconds remaining</numerusform>
-        <numerusform>%n seconds remaining</numerusform>
+      <translation>
+        <numerusform>%n sekund kvar</numerusform>
+        <numerusform>%n sekunder kvar</numerusform>
       </translation>
     </message>
     <message>
       <location filename="../src/librssguard/network-web/downloadmanager.cpp" line="741"/>
       <source>bytes</source>
-      <translation type="unfinished">bytes</translation>
+      <translation>byte</translation>
     </message>
     <message>
       <location filename="../src/librssguard/network-web/downloadmanager.cpp" line="745"/>
       <source>kB</source>
-      <translation type="unfinished">kB</translation>
+      <translation>kB</translation>
     </message>
     <message>
       <location filename="../src/librssguard/network-web/downloadmanager.cpp" line="749"/>
       <source>MB</source>
-      <translation type="unfinished">MB</translation>
+      <translation>MB</translation>
     </message>
     <message>
       <location filename="../src/librssguard/network-web/downloadmanager.cpp" line="753"/>
       <source>GB</source>
-      <translation type="unfinished">GB</translation>
+      <translation>GB</translation>
     </message>
     <message numerus="yes">
       <location filename="../src/librssguard/network-web/downloadmanager.cpp" line="583"/>
       <source>Downloading %n file(s)...</source>
-      <translation type="unfinished">
-        <numerusform>Downloading %n file(s)...</numerusform>
-        <numerusform>Downloading %n file(s)...</numerusform>
+      <translation>
+        <numerusform>Laddar ner %n fil...</numerusform>
+        <numerusform>Laddar ner %n filer...</numerusform>
       </translation>
     </message>
     <message>
       <location filename="../src/librssguard/network-web/downloadmanager.ui" line="38"/>
       <source>Clean up</source>
-      <translation type="unfinished">Clean up</translation>
+      <translation>Rensa</translation>
     </message>
   </context>
   <context>
@@ -596,12 +596,12 @@ Click here to open parent directory.</translation>
     <message>
       <location filename="../src/librssguard/services/gmail/gui/emailpreviewer.ui" line="14"/>
       <source>Form</source>
-      <translation type="unfinished">Form</translation>
+      <translation>Form</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/gmail/gui/emailpreviewer.ui" line="20"/>
       <source>From</source>
-      <translation type="unfinished">From</translation>
+      <translation>Från</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/gmail/gui/emailpreviewer.ui" line="52"/>
@@ -621,12 +621,12 @@ Click here to open parent directory.</translation>
     <message>
       <location filename="../src/librssguard/services/gmail/gui/emailpreviewer.ui" line="87"/>
       <source>Subject</source>
-      <translation type="unfinished">Subject</translation>
+      <translation>Ämne</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/gmail/gui/emailpreviewer.ui" line="104"/>
       <source>To</source>
-      <translation type="unfinished">To</translation>
+      <translation>Till</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/gmail/gui/emailpreviewer.cpp" line="114"/>
@@ -650,27 +650,27 @@ Click here to open parent directory.</translation>
     <message>
       <location filename="../src/librssguard/services/gmail/gui/emailrecipientcontrol.cpp" line="37"/>
       <source>To</source>
-      <translation type="unfinished">To</translation>
+      <translation>Till</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/gmail/gui/emailrecipientcontrol.cpp" line="38"/>
       <source>Cc</source>
-      <translation type="unfinished">Cc</translation>
+      <translation>Cc</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/gmail/gui/emailrecipientcontrol.cpp" line="39"/>
       <source>Bcc</source>
-      <translation type="unfinished">Bcc</translation>
+      <translation>Bcc</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/gmail/gui/emailrecipientcontrol.cpp" line="40"/>
       <source>Reply-to</source>
-      <translation type="unfinished">Reply-to</translation>
+      <translation>Svara till</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/gmail/gui/emailrecipientcontrol.cpp" line="27"/>
       <source>E-mail address</source>
-      <translation type="unfinished">E-mail address</translation>
+      <translation>E-postadress</translation>
     </message>
   </context>
   <context>
@@ -683,17 +683,17 @@ Click here to open parent directory.</translation>
     <message>
       <location filename="../src/librssguard/services/abstract/feed.cpp" line="305"/>
       <source>no errors</source>
-      <translation type="unfinished">no errors</translation>
+      <translation>Inga fel</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/abstract/feed.cpp" line="311"/>
       <source>authentication error</source>
-      <translation type="unfinished">authentication error</translation>
+      <translation>autentiseringsfel</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/abstract/feed.cpp" line="314"/>
       <source>network error</source>
-      <translation type="unfinished">network error</translation>
+      <translation>nätverksfel</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/abstract/feed.cpp" line="267"/>
@@ -752,7 +752,7 @@ Item ID: %5</translation>
     <message>
       <location filename="../src/librssguard/gui/feedmessageviewer.cpp" line="48"/>
       <source>Toolbar for feeds</source>
-      <translation type="unfinished">Toolbar for feeds</translation>
+      <translation>Verktygsfält för flöden</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/feedmessageviewer.cpp" line="49"/>
@@ -791,18 +791,18 @@ Item ID: %5</translation>
     <message>
       <location filename="../src/librssguard/services/feedly/gui/feedlyaccountdetails.ui" line="17"/>
       <source>Username</source>
-      <translation type="unfinished">Username</translation>
+      <translation>Användarnamn</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/feedly/gui/feedlyaccountdetails.ui" line="27"/>
       <location filename="../src/librssguard/services/feedly/gui/feedlyaccountdetails.cpp" line="29"/>
       <source>Developer access token</source>
-      <translation type="unfinished">Developer access token</translation>
+      <translation>Åtkomst-token för utvecklare</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/feedly/gui/feedlyaccountdetails.ui" line="36"/>
       <source>Get token</source>
-      <translation type="unfinished">Get token</translation>
+      <translation>Hämta token</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/feedly/gui/feedlyaccountdetails.ui" line="58"/>
@@ -812,37 +812,37 @@ Item ID: %5</translation>
     <message>
       <location filename="../src/librssguard/services/feedly/gui/feedlyaccountdetails.ui" line="70"/>
       <source>Only download newest X articles per feed</source>
-      <translation type="unfinished">Only download newest X articles per feed</translation>
+      <translation>Ladda endast ner X nyaste artiklar per flöde</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/feedly/gui/feedlyaccountdetails.ui" line="110"/>
       <source>&amp;Login</source>
-      <translation type="unfinished">&amp;Login</translation>
+      <translation>&amp;Logga in</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/feedly/gui/feedlyaccountdetails.ui" line="51"/>
       <source>Download unread articles only</source>
-      <translation type="unfinished">Download unread articles only</translation>
+      <translation>Ladda bara ner olästa artiklar</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/feedly/gui/feedlyaccountdetails.cpp" line="28"/>
       <source>Username for your account</source>
-      <translation type="unfinished">Username for your account</translation>
+      <translation>Användarnamn för ditt konto</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/feedly/gui/feedlyaccountdetails.cpp" line="31"/>
       <source>No test done yet.</source>
-      <translation type="unfinished">No test done yet.</translation>
+      <translation>Inget test utfört ännu.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/feedly/gui/feedlyaccountdetails.cpp" line="32"/>
       <source>Here, results of connection test are shown.</source>
-      <translation type="unfinished">Here, results of connection test are shown.</translation>
+      <translation>Här visas resultat av anslutningstest.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/feedly/gui/feedlyaccountdetails.cpp" line="39"/>
       <source>Your %1 does not offer official Feedly support, thus you must authorize via special authorization code called &quot;developer access token&quot;. These tokens are usually valid only for 1 month and allow only 250 API calls each day.</source>
-      <translation type="unfinished">Your %1 does not offer official Feedly support, thus you must authorize via special authorization code called &quot;developer access token&quot;. These tokens are usually valid only for 1 month and allow only 250 API calls each day.</translation>
+      <translation>Din %1 har inte officiellt Feedly-stöd. Därför måste du använda en speciell auktoriseringskod kallad &quot;Åtkomst-token för utvecklare&quot;. Dessa token är vanligtvis giltiga i endast en månad och tillåter bara 250 API-anrop per dag.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/feedly/gui/feedlyaccountdetails.cpp" line="51"/>
@@ -852,38 +852,38 @@ Item ID: %5</translation>
     <message>
       <location filename="../src/librssguard/services/feedly/gui/feedlyaccountdetails.cpp" line="92"/>
       <source>You did not grant access.</source>
-      <translation type="unfinished">You did not grant access.</translation>
+      <translation>Du beviljade inte åtkomst.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/feedly/gui/feedlyaccountdetails.cpp" line="93"/>
       <location filename="../src/librssguard/services/feedly/gui/feedlyaccountdetails.cpp" line="101"/>
       <source>There was error during testing.</source>
-      <translation type="unfinished">There was error during testing.</translation>
+      <translation>Fel uppstod vid testning.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/feedly/gui/feedlyaccountdetails.cpp" line="100"/>
       <source>There is error. %1</source>
-      <translation type="unfinished">There is error. %1</translation>
+      <translation>Fel. %1</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/feedly/gui/feedlyaccountdetails.cpp" line="114"/>
       <source>Tested successfully. You may be prompted to login once more.</source>
-      <translation type="unfinished">Tested successfully. You may be prompted to login once more.</translation>
+      <translation>Testet lyckades. Du kan behöva logga in igen.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/feedly/gui/feedlyaccountdetails.cpp" line="115"/>
       <source>Your access was approved.</source>
-      <translation type="unfinished">Your access was approved.</translation>
+      <translation>Åtkomst beviljades.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/feedly/gui/feedlyaccountdetails.cpp" line="148"/>
       <source>Access granted.</source>
-      <translation type="unfinished">Access granted.</translation>
+      <translation>Åtkomst beviljad.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/feedly/gui/feedlyaccountdetails.cpp" line="147"/>
       <source>Login was successful.</source>
-      <translation type="unfinished">Login was successful.</translation>
+      <translation>Inloggning slutförd</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/feedly/gui/feedlyaccountdetails.cpp" line="35"/>
@@ -893,32 +893,32 @@ Item ID: %5</translation>
     <message>
       <location filename="../src/librssguard/services/feedly/gui/feedlyaccountdetails.cpp" line="153"/>
       <source>Some problems.</source>
-      <translation type="unfinished">Some problems.</translation>
+      <translation>Lite problem.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/feedly/gui/feedlyaccountdetails.cpp" line="161"/>
       <source>Username cannot be empty.</source>
-      <translation type="unfinished">Username cannot be empty.</translation>
+      <translation>Användarnamn saknas.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/feedly/gui/feedlyaccountdetails.cpp" line="164"/>
       <source>Username is okay.</source>
-      <translation type="unfinished">Username is okay.</translation>
+      <translation>Användarnamn okay.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/feedly/gui/feedlyaccountdetails.cpp" line="178"/>
       <source>Access token is empty.</source>
-      <translation type="unfinished">Access token is empty.</translation>
+      <translation>Åtkomst-token saknas.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/feedly/gui/feedlyaccountdetails.cpp" line="181"/>
       <source>Access token is okay.</source>
-      <translation type="unfinished">Access token is okay.</translation>
+      <translation>Åtkomst-token är OK.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/feedly/gui/feedlyaccountdetails.cpp" line="152"/>
       <source>Error: &apos;%1&apos;</source>
-      <translation type="unfinished">Error: &apos;%1&apos;</translation>
+      <translation>Fel: &quot;%1&quot;</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/feedly/gui/feedlyaccountdetails.cpp" line="46"/>
@@ -931,22 +931,22 @@ Item ID: %5</translation>
     <message>
       <location filename="../src/librssguard/services/feedly/feedlynetwork.cpp" line="713"/>
       <source>Feedly: authentication error</source>
-      <translation type="unfinished">Feedly: authentication error</translation>
+      <translation>Feedly: Autentiseringsfel</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/feedly/feedlynetwork.cpp" line="714"/>
       <source>Click this to login again. Error is: &apos;%1&apos;</source>
-      <translation type="unfinished">Click this to login again. Error is: &apos;%1&apos;</translation>
+      <translation>Klicka här för att logga in igen. Felet är: &quot;%1&quot;</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/feedly/feedlynetwork.cpp" line="728"/>
       <source>Feedly: authorization denied</source>
-      <translation type="unfinished">Feedly: authorization denied</translation>
+      <translation>Feedly: Autentisering nekad</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/feedly/feedlynetwork.cpp" line="729"/>
       <source>Click this to login again.</source>
-      <translation type="unfinished">Click this to login again.</translation>
+      <translation>Klicka här för att logga in igen.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/feedly/feedlynetwork.cpp" line="717"/>
@@ -970,7 +970,7 @@ Item ID: %5</translation>
     <message>
       <location filename="../src/librssguard/services/standard/standardfeedsimportexportmodel.cpp" line="376"/>
       <source>Category </source>
-      <translation type="unfinished">Category </translation>
+      <translation>Kategori </translation>
     </message>
   </context>
   <context>
@@ -978,17 +978,17 @@ Item ID: %5</translation>
     <message>
       <location filename="../src/librssguard/core/feedsmodel.cpp" line="39"/>
       <source>Title</source>
-      <translation type="unfinished">Title</translation>
+      <translation>Namn</translation>
     </message>
     <message>
       <location filename="../src/librssguard/core/feedsmodel.cpp" line="40"/>
       <source>Titles of feeds/categories.</source>
-      <translation type="unfinished">Titles of feeds/categories.</translation>
+      <translation>Namn på kategorier/flöden.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/core/feedsmodel.cpp" line="516"/>
       <source>Are you sure?</source>
-      <translation type="unfinished">Are you sure?</translation>
+      <translation>Är du säker?</translation>
     </message>
     <message>
       <location filename="../src/librssguard/core/feedsmodel.cpp" line="517"/>
@@ -998,12 +998,12 @@ Item ID: %5</translation>
     <message>
       <location filename="../src/librssguard/core/feedsmodel.cpp" line="32"/>
       <source>Root</source>
-      <translation type="unfinished">Root</translation>
+      <translation>Root</translation>
     </message>
     <message>
       <location filename="../src/librssguard/core/feedsmodel.cpp" line="41"/>
       <source>Counts of unread/all mesages.</source>
-      <translation type="unfinished">Counts of unread/all mesages.</translation>
+      <translation>Antal olästa/alla meddelanden.</translation>
     </message>
   </context>
   <context>
@@ -1011,12 +1011,12 @@ Item ID: %5</translation>
     <message>
       <location filename="../src/librssguard/core/feedsproxymodel.cpp" line="229"/>
       <source>Cannot perform drag &amp; drop operation</source>
-      <translation type="unfinished">Cannot perform drag &amp; drop operation</translation>
+      <translation>Kan inte utföra dra och släpp-åtgärd</translation>
     </message>
     <message>
       <location filename="../src/librssguard/core/feedsproxymodel.cpp" line="230"/>
       <source>You can&apos;t transfer dragged item into different account, this is not supported.</source>
-      <translation type="unfinished">You can&apos;t transfer dragged item into different account, this is not supported.</translation>
+      <translation>Du kan inte överföra objekt till annat konto med dra &amp; släpp. Stöd saknas för detta.</translation>
     </message>
   </context>
   <context>
@@ -1024,7 +1024,7 @@ Item ID: %5</translation>
     <message>
       <location filename="../src/librssguard/gui/toolbars/feedstoolbar.cpp" line="76"/>
       <source>Toolbar spacer</source>
-      <translation type="unfinished">Toolbar spacer</translation>
+      <translation>Avgränsare för verktygsfält</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/toolbars/feedstoolbar.cpp" line="118"/>
@@ -1039,12 +1039,12 @@ Item ID: %5</translation>
     <message>
       <location filename="../src/librssguard/gui/toolbars/feedstoolbar.cpp" line="123"/>
       <source>Search feeds</source>
-      <translation type="unfinished">Search feeds</translation>
+      <translation>Sök flöden</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/toolbars/feedstoolbar.cpp" line="131"/>
       <source>Feeds search box</source>
-      <translation type="unfinished">Feeds search box</translation>
+      <translation>Flödessök</translation>
     </message>
   </context>
   <context>
@@ -1053,76 +1053,76 @@ Item ID: %5</translation>
       <location filename="../src/librssguard/gui/feedsview.cpp" line="216"/>
       <location filename="../src/librssguard/gui/feedsview.cpp" line="229"/>
       <source>Cannot edit item</source>
-      <translation type="unfinished">Cannot edit item</translation>
+      <translation>Kan inte redigera objektet</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/feedsview.cpp" line="248"/>
       <source>Cannot delete item</source>
-      <translation type="unfinished">Cannot delete item</translation>
+      <translation>Kan inte bort objektet</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/feedsview.cpp" line="821"/>
       <source>Context menu for empty space</source>
-      <translation type="unfinished">Context menu for empty space</translation>
+      <translation>Kontextmeny för tomt utrymme</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/feedsview.cpp" line="217"/>
       <source>Selected item cannot be edited because another critical operation is ongoing.</source>
-      <translation type="unfinished">Selected item cannot be edited because another critical operation is ongoing.</translation>
+      <translation>Markerat objekt kan inte redigeras, eftersom en annan kritisk åtgärd pågår.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/feedsview.cpp" line="249"/>
       <source>Selected item cannot be deleted because another critical operation is ongoing.</source>
-      <translation type="unfinished">Selected item cannot be deleted because another critical operation is ongoing.</translation>
+      <translation>Markerat objekt kan inte tas bort, eftersom en annan kritisk åtgärd pågår.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/feedsview.cpp" line="697"/>
       <location filename="../src/librssguard/gui/feedsview.cpp" line="750"/>
       <source>Context menu for categories</source>
-      <translation type="unfinished">Context menu for categories</translation>
+      <translation>Kontextmeny för kategorier</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/feedsview.cpp" line="230"/>
       <source>Selected item cannot be edited, this is not (yet?) supported.</source>
-      <translation type="unfinished">Selected item cannot be edited, this is not (yet?) supported.</translation>
+      <translation>Det valda objektet kan inte redigeras. Stöd saknas (för närvarande?).</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/feedsview.cpp" line="269"/>
       <source>Deleting &quot;%1&quot;</source>
-      <translation type="unfinished">Deleting &quot;%1&quot;</translation>
+      <translation>Tar bort &quot;%1&quot;</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/feedsview.cpp" line="270"/>
       <source>You are about to completely delete item &quot;%1&quot;.</source>
-      <translation type="unfinished">You are about to completely delete item &quot;%1&quot;.</translation>
+      <translation>Du är på väg att helt ta bort &quot;%1&quot;.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/feedsview.cpp" line="271"/>
       <source>Are you sure?</source>
-      <translation type="unfinished">Are you sure?</translation>
+      <translation>Är du säker?</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/feedsview.cpp" line="285"/>
       <location filename="../src/librssguard/gui/feedsview.cpp" line="292"/>
       <source>Cannot delete &quot;%1&quot;</source>
-      <translation type="unfinished">Cannot delete &quot;%1&quot;</translation>
+      <translation>Kan inte ta bort &quot;%1&quot;</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/feedsview.cpp" line="286"/>
       <source>This item cannot be deleted because something critically failed. Submit bug report.</source>
-      <translation type="unfinished">This item cannot be deleted because something critically failed. Submit bug report.</translation>
+      <translation>Objektet kan inte tas bort på grund av ett kritiskt fel. Skicka gärna en felrapport.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/feedsview.cpp" line="293"/>
       <source>This item cannot be deleted, because it does not support it
 or this functionality is not implemented yet.</source>
-      <translation type="unfinished">This item cannot be deleted, because it does not support it
-or this functionality is not implemented yet.</translation>
+      <translation>Objektet kan inte tas bort eftersom stöd saknas, eller för
+att funktionen inte är implementerad än.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/feedsview.cpp" line="831"/>
       <source>Context menu for other items</source>
-      <translation type="unfinished">Context menu for other items</translation>
+      <translation>Kontextmeny för andra objekt</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/feedsview.cpp" line="875"/>
@@ -1132,27 +1132,27 @@ or this functionality is not implemented yet.</translation>
     <message>
       <location filename="../src/librssguard/gui/feedsview.cpp" line="136"/>
       <source>Selected account does not support adding of new feeds.</source>
-      <translation type="unfinished">Selected account does not support adding of new feeds.</translation>
+      <translation>Det valda kontot stöder inte tillägg av nya flöden.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/feedsview.cpp" line="154"/>
       <source>Selected account does not support adding of new categories.</source>
-      <translation type="unfinished">Selected account does not support adding of new categories.</translation>
+      <translation>Det valda kontot stöder inte tillägg av nya kategorier.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/feedsview.cpp" line="451"/>
       <source>Context menu for recycle bins</source>
-      <translation type="unfinished">Context menu for recycle bins</translation>
+      <translation>Kontextmeny för papperskorgar</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/feedsview.cpp" line="473"/>
       <source>Context menu for accounts</source>
-      <translation type="unfinished">Context menu for accounts</translation>
+      <translation>Kontextmeny för konton</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/feedsview.cpp" line="852"/>
       <source>Context menu for label</source>
-      <translation type="unfinished">Context menu for label</translation>
+      <translation>Kontextmeny för etikett</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/feedsview.cpp" line="799"/>
@@ -1171,17 +1171,17 @@ or this functionality is not implemented yet.</translation>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formabout.cpp" line="107"/>
       <source>Changelog not found.</source>
-      <translation type="unfinished">Changelog not found.</translation>
+      <translation>Ändringsloggen hittades inte.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formabout.cpp" line="27"/>
       <source>About %1</source>
-      <translation type="unfinished">About %1</translation>
+      <translation>Om %1</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formabout.cpp" line="46"/>
       <source>FULLY portable</source>
-      <translation type="unfinished">FULLY portable</translation>
+      <translation>FULLT portabel</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formabout.cpp" line="57"/>
@@ -1203,52 +1203,52 @@ QtWebEngine cache folder -&gt; &quot;%7&quot;</translation>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formabout.cpp" line="127"/>
       <source>&lt;body&gt;%5 is a (very) tiny feed reader.&lt;br&gt;&lt;br&gt;This software is distributed under the terms of GNU General Public License, version 3.&lt;br&gt;&lt;br&gt;Contacts:&lt;ul&gt;&lt;li&gt;&lt;a href=&quot;mailto://%1&quot;&gt;%1&lt;/a&gt; ~e-mail&lt;/li&gt;&lt;li&gt;&lt;a href=&quot;%2&quot;&gt;%2&lt;/a&gt; ~website&lt;/li&gt;&lt;/ul&gt;You can obtain source code for %5 from its website.&lt;br&gt;&lt;br&gt;&lt;br&gt;Copyright (C) 2011-%3 %4&lt;/body&gt;</source>
-      <translation type="unfinished">&lt;body&gt;%5 is a (very) tiny feed reader.&lt;br&gt;&lt;br&gt;This software is distributed under the terms of GNU General Public License, version 3.&lt;br&gt;&lt;br&gt;Contacts:&lt;ul&gt;&lt;li&gt;&lt;a href=&quot;mailto://%1&quot;&gt;%1&lt;/a&gt; ~e-mail&lt;/li&gt;&lt;li&gt;&lt;a href=&quot;%2&quot;&gt;%2&lt;/a&gt; ~website&lt;/li&gt;&lt;/ul&gt;You can obtain source code for %5 from its website.&lt;br&gt;&lt;br&gt;&lt;br&gt;Copyright (C) 2011-%3 %4&lt;/body&gt;</translation>
+      <translation>&lt;body&gt;%5 är en (mycket) liten flödesläsare.&lt;br&gt;&lt;br&gt;Mjukvaran distribueras under GNU General Public License, version 3.&lt;br&gt;&lt;br&gt;Kontakt:&lt;ul&gt;&lt;li&gt;&lt;a href=&quot;mailto://%1&quot;&gt;%1&lt;/a&gt; ~e-post&lt;/li&gt;&lt;li&gt;&lt;a href=&quot;%2&quot;&gt;%2&lt;/a&gt; ~webbsida&lt;/li&gt;&lt;/ul&gt;Du kan hämta källkod för %5 från webbsidan.&lt;br&gt;&lt;br&gt;&lt;br&gt;Copyright (C) 2011-%3 %4&lt;/body&gt;</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formabout.cpp" line="111"/>
       <source>&lt;b&gt;%8&lt;/b&gt;&lt;br&gt;&lt;b&gt;Version:&lt;/b&gt; %1 (built on %2/%3)&lt;br&gt;&lt;b&gt;Revision:&lt;/b&gt; %4&lt;br&gt;&lt;b&gt;Build date:&lt;/b&gt; %5&lt;br&gt;&lt;b&gt;Qt:&lt;/b&gt; %6 (compiled against %7)&lt;br&gt;</source>
-      <translation type="unfinished">&lt;b&gt;%8&lt;/b&gt;&lt;br&gt;&lt;b&gt;Version:&lt;/b&gt; %1 (built on %2/%3)&lt;br&gt;&lt;b&gt;Revision:&lt;/b&gt; %4&lt;br&gt;&lt;b&gt;Build date:&lt;/b&gt; %5&lt;br&gt;&lt;b&gt;Qt:&lt;/b&gt; %6 (compiled against %7)&lt;br&gt;</translation>
+      <translation>&lt;b&gt;%8&lt;/b&gt;&lt;br&gt;&lt;b&gt;Version:&lt;/b&gt; %1 (byggd på %2/%3)&lt;br&gt;&lt;b&gt;Revision:&lt;/b&gt; %4&lt;br&gt;&lt;b&gt;Byggdatum:&lt;/b&gt; %5&lt;br&gt;&lt;b&gt;Qt:&lt;/b&gt; %6 (kompilerad mot %7)&lt;br&gt;</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formabout.cpp" line="52"/>
       <source>NOT portable</source>
-      <translation type="unfinished">NOT portable</translation>
+      <translation>INTE portabel</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formabout.cpp" line="49"/>
       <source>CUSTOM</source>
-      <translation type="unfinished">CUSTOM</translation>
+      <translation>ANPASSAT</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formabout.ui" line="102"/>
       <source>Information</source>
-      <translation type="unfinished">Information</translation>
+      <translation>Information</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formabout.ui" line="147"/>
       <source>Licenses</source>
-      <translation type="unfinished">Licenses</translation>
+      <translation>Licenser</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formabout.ui" line="159"/>
       <source>Licenses page is available only in English language.</source>
-      <translation type="unfinished">Licenses page is available only in English language.</translation>
+      <translation>Licenssidan visas endast på Engelska.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formabout.ui" line="167"/>
       <source>Changelog</source>
-      <translation type="unfinished">Changelog</translation>
+      <translation>Ändringslogg</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formabout.ui" line="199"/>
       <source>Changelog page is available only in English language.</source>
-      <translation type="unfinished">Changelog page is available only in English language.</translation>
+      <translation>Ändringsloggen visas endast på Engelska.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formabout.ui" line="207"/>
       <source>Resources</source>
-      <translation type="unfinished">Resources</translation>
+      <translation>Resurser</translation>
     </message>
   </context>
   <context>
@@ -1256,12 +1256,12 @@ QtWebEngine cache folder -&gt; &quot;%7&quot;</translation>
     <message>
       <location filename="../src/librssguard/services/abstract/gui/formaccountdetails.cpp" line="14"/>
       <source>Network proxy</source>
-      <translation type="unfinished">Network proxy</translation>
+      <translation>Nätverksproxy</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/abstract/gui/formaccountdetails.cpp" line="39"/>
       <source>Add new account</source>
-      <translation type="unfinished">Add new account</translation>
+      <translation>Lägg till nytt konto</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/abstract/gui/formaccountdetails.cpp" line="42"/>
@@ -1274,7 +1274,7 @@ QtWebEngine cache folder -&gt; &quot;%7&quot;</translation>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formaddaccount.ui" line="14"/>
       <source>Add new account</source>
-      <translation type="unfinished">Add new account</translation>
+      <translation>Lägg till nytt konto</translation>
     </message>
   </context>
   <context>
@@ -1282,42 +1282,42 @@ QtWebEngine cache folder -&gt; &quot;%7&quot;</translation>
     <message>
       <location filename="../src/librssguard/services/gmail/gui/formaddeditemail.cpp" line="28"/>
       <source>Add new recipient.</source>
-      <translation type="unfinished">Add new recipient.</translation>
+      <translation>Lägg till ny mottagare.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/gmail/gui/formaddeditemail.cpp" line="182"/>
       <source>E-mail NOT sent</source>
-      <translation type="unfinished">E-mail NOT sent</translation>
+      <translation>E-postmeddelande INTE skickat</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/gmail/gui/formaddeditemail.cpp" line="183"/>
       <source>Your e-mail message wasn&apos;t sent.</source>
-      <translation type="unfinished">Your e-mail message wasn&apos;t sent.</translation>
+      <translation>Ditt e-postmeddelande skickades inte.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/gmail/gui/formaddeditemail.ui" line="14"/>
       <source>Write e-mail message</source>
-      <translation type="unfinished">Write e-mail message</translation>
+      <translation>Skriv e-postmeddelande</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/gmail/gui/formaddeditemail.ui" line="35"/>
       <source>...</source>
-      <translation type="unfinished">...</translation>
+      <translation>...</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/gmail/gui/formaddeditemail.ui" line="50"/>
       <source>Contents of your e-mail message</source>
-      <translation type="unfinished">Contents of your e-mail message</translation>
+      <translation>Innehåll i ditt e-postmeddelande</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/gmail/gui/formaddeditemail.ui" line="67"/>
       <source>Subject</source>
-      <translation type="unfinished">Subject</translation>
+      <translation>Ämne</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/gmail/gui/formaddeditemail.ui" line="77"/>
       <source>Title of your message</source>
-      <translation type="unfinished">Title of your message</translation>
+      <translation>Meddelandetitel</translation>
     </message>
   </context>
   <context>
@@ -1325,37 +1325,37 @@ QtWebEngine cache folder -&gt; &quot;%7&quot;</translation>
     <message>
       <location filename="../src/librssguard/services/abstract/gui/formaddeditlabel.cpp" line="12"/>
       <source>Name for your label</source>
-      <translation type="unfinished">Name for your label</translation>
+      <translation>Etikettnamn</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/abstract/gui/formaddeditlabel.cpp" line="18"/>
       <source>Label&apos;s name cannot be empty.</source>
-      <translation type="unfinished">Label&apos;s name cannot be empty.</translation>
+      <translation>Etikettnamnet kan inte lämnas tomt.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/abstract/gui/formaddeditlabel.cpp" line="21"/>
       <source>Perfect!</source>
-      <translation type="unfinished">Perfect!</translation>
+      <translation>Perfekt!</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/abstract/gui/formaddeditlabel.cpp" line="30"/>
       <source>Hot stuff</source>
-      <translation type="unfinished">Hot stuff</translation>
+      <translation>Hett material</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/abstract/gui/formaddeditlabel.cpp" line="27"/>
       <source>Create new label</source>
-      <translation type="unfinished">Create new label</translation>
+      <translation>Skapa ny etikett</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/abstract/gui/formaddeditlabel.cpp" line="46"/>
       <source>Edit label &apos;%1&apos;</source>
-      <translation type="unfinished">Edit label &apos;%1&apos;</translation>
+      <translation>Redigera etiketten &quot;%1&quot;</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/abstract/gui/formaddeditlabel.ui" line="19"/>
       <source>...</source>
-      <translation type="unfinished">...</translation>
+      <translation>...</translation>
     </message>
   </context>
   <context>
@@ -1363,7 +1363,7 @@ QtWebEngine cache folder -&gt; &quot;%7&quot;</translation>
     <message>
       <location filename="../src/librssguard/services/abstract/gui/formaddeditprobe.ui" line="17"/>
       <source>...</source>
-      <translation type="unfinished">...</translation>
+      <translation>...</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/abstract/gui/formaddeditprobe.cpp" line="12"/>
@@ -1384,7 +1384,7 @@ QtWebEngine cache folder -&gt; &quot;%7&quot;</translation>
       <location filename="../src/librssguard/services/abstract/gui/formaddeditprobe.cpp" line="20"/>
       <location filename="../src/librssguard/services/abstract/gui/formaddeditprobe.cpp" line="32"/>
       <source>Perfect!</source>
-      <translation type="unfinished">Perfect!</translation>
+      <translation>Perfekt!</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/abstract/gui/formaddeditprobe.cpp" line="26"/>
@@ -1409,7 +1409,7 @@ QtWebEngine cache folder -&gt; &quot;%7&quot;</translation>
     <message>
       <location filename="../src/librssguard/services/abstract/gui/formaddeditprobe.cpp" line="44"/>
       <source>Hot stuff</source>
-      <translation type="unfinished">Hot stuff</translation>
+      <translation>Hett material</translation>
     </message>
   </context>
   <context>
@@ -1417,92 +1417,92 @@ QtWebEngine cache folder -&gt; &quot;%7&quot;</translation>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formbackupdatabasesettings.cpp" line="21"/>
       <source>Common name for backup files</source>
-      <translation type="unfinished">Common name for backup files</translation>
+      <translation>Namn för säkerhetskopior</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formbackupdatabasesettings.cpp" line="34"/>
       <source>No operation executed yet.</source>
-      <translation type="unfinished">No operation executed yet.</translation>
+      <translation>Ingen åtgärd slutförd än.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formbackupdatabasesettings.cpp" line="54"/>
       <source>Backup was created successfully.</source>
-      <translation type="unfinished">Backup was created successfully.</translation>
+      <translation>Säkerhetskopiering slutförd.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formbackupdatabasesettings.cpp" line="78"/>
       <source>Backup name cannot be empty.</source>
-      <translation type="unfinished">Backup name cannot be empty.</translation>
+      <translation>Säkerhetskopians namn saknas.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formbackupdatabasesettings.cpp" line="81"/>
       <source>Backup name looks okay.</source>
-      <translation type="unfinished">Backup name looks okay.</translation>
+      <translation>Säkerhetskopians namn är godkänt.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formbackupdatabasesettings.cpp" line="57"/>
       <source>Backup failed.</source>
-      <translation type="unfinished">Backup failed.</translation>
+      <translation>Säkerhetskopiering misslyckades.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formbackupdatabasesettings.cpp" line="53"/>
       <source>Backup was created successfully and stored in target directory.</source>
-      <translation type="unfinished">Backup was created successfully and stored in target directory.</translation>
+      <translation>Säkerhetskopia skapad, och lagrad i målmappen.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formbackupdatabasesettings.cpp" line="67"/>
       <source>Select destination directory</source>
-      <translation type="unfinished">Select destination directory</translation>
+      <translation>Välj målmapp</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formbackupdatabasesettings.cpp" line="72"/>
       <source>Good destination directory is specified.</source>
-      <translation type="unfinished">Good destination directory is specified.</translation>
+      <translation>Målmappen är godkänd.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formbackupdatabasesettings.ui" line="14"/>
       <source>Backup database/settings</source>
-      <translation type="unfinished">Backup database/settings</translation>
+      <translation>Säkerhetskopiera databas/inställningar</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formbackupdatabasesettings.ui" line="20"/>
       <source>Output directory</source>
-      <translation type="unfinished">Output directory</translation>
+      <translation>Utdatamapp</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formbackupdatabasesettings.ui" line="26"/>
       <source>&amp;Select directory</source>
-      <translation type="unfinished">&amp;Select directory</translation>
+      <translation>&amp;Välj mapp</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formbackupdatabasesettings.ui" line="43"/>
       <source>Backup properties</source>
-      <translation type="unfinished">Backup properties</translation>
+      <translation>Säkerhetskopiering</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formbackupdatabasesettings.ui" line="49"/>
       <source>Items to backup</source>
-      <translation type="unfinished">Items to backup</translation>
+      <translation>Kopiera</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formbackupdatabasesettings.ui" line="56"/>
       <source>Database</source>
-      <translation type="unfinished">Database</translation>
+      <translation>Databas</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formbackupdatabasesettings.ui" line="66"/>
       <source>Settings</source>
-      <translation type="unfinished">Settings</translation>
+      <translation>Inställningar</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formbackupdatabasesettings.ui" line="76"/>
       <source>Backup name</source>
-      <translation type="unfinished">Backup name</translation>
+      <translation>Kopians namn</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formbackupdatabasesettings.ui" line="89"/>
       <source>Operation results</source>
-      <translation type="unfinished">Operation results</translation>
+      <translation>Åtgärdsresultat</translation>
     </message>
   </context>
   <context>
@@ -1510,32 +1510,32 @@ QtWebEngine cache folder -&gt; &quot;%7&quot;</translation>
     <message>
       <location filename="../src/librssguard/services/abstract/gui/formcategorydetails.cpp" line="61"/>
       <source>Add new category</source>
-      <translation type="unfinished">Add new category</translation>
+      <translation>Lägg till ny kategori</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/abstract/gui/formcategorydetails.cpp" line="127"/>
       <source>Category name is ok.</source>
-      <translation type="unfinished">Category name is ok.</translation>
+      <translation>Kategorinamnet är ok.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/abstract/gui/formcategorydetails.cpp" line="131"/>
       <source>Category name is too short.</source>
-      <translation type="unfinished">Category name is too short.</translation>
+      <translation>Kategorinamnet är för kort.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/abstract/gui/formcategorydetails.cpp" line="137"/>
       <source>Description is empty.</source>
-      <translation type="unfinished">Description is empty.</translation>
+      <translation>Beskrivning saknas.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/abstract/gui/formcategorydetails.cpp" line="140"/>
       <source>The description is ok.</source>
-      <translation type="unfinished">The description is ok.</translation>
+      <translation>Beskrivningen är ok.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/abstract/gui/formcategorydetails.cpp" line="155"/>
       <source>Select icon file for the category</source>
-      <translation type="unfinished">Select icon file for the category</translation>
+      <translation>Välj ikonfil för kategorin</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/abstract/gui/formcategorydetails.cpp" line="157"/>
@@ -1545,63 +1545,63 @@ QtWebEngine cache folder -&gt; &quot;%7&quot;</translation>
     <message>
       <location filename="../src/librssguard/services/abstract/gui/formcategorydetails.cpp" line="163"/>
       <source>Select icon</source>
-      <translation type="unfinished">Select icon</translation>
+      <translation>Välj ikon</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/abstract/gui/formcategorydetails.cpp" line="164"/>
       <source>Cancel</source>
-      <translation type="unfinished">Cancel</translation>
+      <translation>Avbryt</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/abstract/gui/formcategorydetails.cpp" line="167"/>
       <source>Look in:</source>
       <extracomment>Label to describe the folder for icon file selection dialog.</extracomment>
-      <translation type="unfinished">Look in:</translation>
+      <translation>Sök i:</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/abstract/gui/formcategorydetails.cpp" line="168"/>
       <source>Icon name:</source>
-      <translation type="unfinished">Icon name:</translation>
+      <translation>Ikonnamn:</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/abstract/gui/formcategorydetails.cpp" line="169"/>
       <source>Icon type:</source>
-      <translation type="unfinished">Icon type:</translation>
+      <translation>Ikontyp:</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/abstract/gui/formcategorydetails.cpp" line="185"/>
       <source>Category title</source>
-      <translation type="unfinished">Category title</translation>
+      <translation>Kategorinamn</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/abstract/gui/formcategorydetails.cpp" line="186"/>
       <source>Set title for your category.</source>
-      <translation type="unfinished">Set title for your category.</translation>
+      <translation>Ange namnet på din kategori.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/abstract/gui/formcategorydetails.cpp" line="187"/>
       <source>Category description</source>
-      <translation type="unfinished">Category description</translation>
+      <translation>Kategoribeskrivning</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/abstract/gui/formcategorydetails.cpp" line="188"/>
       <source>Set description for your category.</source>
-      <translation type="unfinished">Set description for your category.</translation>
+      <translation>Beskriv din kategori.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/abstract/gui/formcategorydetails.cpp" line="194"/>
       <source>Icon selection</source>
-      <translation type="unfinished">Icon selection</translation>
+      <translation>Ikonval</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/abstract/gui/formcategorydetails.cpp" line="196"/>
       <source>Load icon from file...</source>
-      <translation type="unfinished">Load icon from file...</translation>
+      <translation>Hämta ikon från fil...</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/abstract/gui/formcategorydetails.cpp" line="198"/>
       <source>Use default icon from icon theme</source>
-      <translation type="unfinished">Use default icon from icon theme</translation>
+      <translation>Använd standardikon från ikontemat</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/abstract/gui/formcategorydetails.cpp" line="83"/>
@@ -1611,32 +1611,32 @@ QtWebEngine cache folder -&gt; &quot;%7&quot;</translation>
     <message>
       <location filename="../src/librssguard/services/abstract/gui/formcategorydetails.ui" line="31"/>
       <source>Parent folder</source>
-      <translation type="unfinished">Parent folder</translation>
+      <translation>Överordnad mapp</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/abstract/gui/formcategorydetails.ui" line="41"/>
       <source>Select parent item for your category.</source>
-      <translation type="unfinished">Select parent item for your category.</translation>
+      <translation>Välj överordnad mapp för kategorin.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/abstract/gui/formcategorydetails.ui" line="54"/>
       <source>Title</source>
-      <translation type="unfinished">Title</translation>
+      <translation>Titel</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/abstract/gui/formcategorydetails.ui" line="64"/>
       <source>Description</source>
-      <translation type="unfinished">Description</translation>
+      <translation>Beskrivning</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/abstract/gui/formcategorydetails.ui" line="74"/>
       <source>Icon</source>
-      <translation type="unfinished">Icon</translation>
+      <translation>Ikon</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/abstract/gui/formcategorydetails.ui" line="96"/>
       <source>Select icon for your category.</source>
-      <translation type="unfinished">Select icon for your category.</translation>
+      <translation>Välj ikon för kategorin.</translation>
     </message>
   </context>
   <context>
@@ -1644,47 +1644,47 @@ QtWebEngine cache folder -&gt; &quot;%7&quot;</translation>
     <message numerus="yes">
       <location filename="../src/librssguard/gui/dialogs/formdatabasecleanup.cpp" line="57"/>
       <source> day(s)</source>
-      <translation type="unfinished">
-        <numerusform> day(s)</numerusform>
-        <numerusform> day(s)</numerusform>
+      <translation>
+        <numerusform>dag</numerusform>
+        <numerusform>dagar</numerusform>
       </translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formdatabasecleanup.cpp" line="30"/>
       <source>I am ready.</source>
-      <translation type="unfinished">I am ready.</translation>
+      <translation>Jag är klar.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formdatabasecleanup.cpp" line="76"/>
       <location filename="../src/librssguard/gui/dialogs/formdatabasecleanup.cpp" line="77"/>
       <source>Database cleanup is running.</source>
-      <translation type="unfinished">Database cleanup is running.</translation>
+      <translation>Databasrensning körs.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formdatabasecleanup.cpp" line="91"/>
       <location filename="../src/librssguard/gui/dialogs/formdatabasecleanup.cpp" line="92"/>
       <source>Database cleanup is completed.</source>
-      <translation type="unfinished">Database cleanup is completed.</translation>
+      <translation>Databasrensning slutförd.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formdatabasecleanup.cpp" line="95"/>
       <source>Database cleanup failed.</source>
-      <translation type="unfinished">Database cleanup failed.</translation>
+      <translation>Databasrensning misslyckades.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formdatabasecleanup.cpp" line="103"/>
       <source>unknown</source>
-      <translation type="unfinished">unknown</translation>
+      <translation>Okänd</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formdatabasecleanup.ui" line="14"/>
       <source>Cleanup database</source>
-      <translation type="unfinished">Cleanup database</translation>
+      <translation>Rensa databasen</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formdatabasecleanup.ui" line="20"/>
       <source>Cleanup settings</source>
-      <translation type="unfinished">Cleanup settings</translation>
+      <translation>Rensningsinställningar</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formdatabasecleanup.ui" line="26"/>
@@ -1714,22 +1714,22 @@ QtWebEngine cache folder -&gt; &quot;%7&quot;</translation>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formdatabasecleanup.ui" line="96"/>
       <source>Database information</source>
-      <translation type="unfinished">Database information</translation>
+      <translation>Databasinformation</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formdatabasecleanup.ui" line="102"/>
       <source>Total data size</source>
-      <translation type="unfinished">Total data size</translation>
+      <translation>Total datastorlek</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formdatabasecleanup.ui" line="119"/>
       <source>Database type</source>
-      <translation type="unfinished">Database type</translation>
+      <translation>Databastyp</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formdatabasecleanup.ui" line="139"/>
       <source>Progress</source>
-      <translation type="unfinished">Progress</translation>
+      <translation>Förlopp</translation>
     </message>
   </context>
   <context>
@@ -1737,7 +1737,7 @@ QtWebEngine cache folder -&gt; &quot;%7&quot;</translation>
     <message>
       <location filename="../src/librssguard/services/feedly/gui/formeditfeedlyaccount.cpp" line="19"/>
       <source>Service setup</source>
-      <translation type="unfinished">Service setup</translation>
+      <translation>Tjänstinställning</translation>
     </message>
   </context>
   <context>
@@ -1745,7 +1745,7 @@ QtWebEngine cache folder -&gt; &quot;%7&quot;</translation>
     <message>
       <location filename="../src/librssguard/services/gmail/gui/formeditgmailaccount.cpp" line="16"/>
       <source>Server setup</source>
-      <translation type="unfinished">Server setup</translation>
+      <translation>Serverinställning</translation>
     </message>
   </context>
   <context>
@@ -1753,7 +1753,7 @@ QtWebEngine cache folder -&gt; &quot;%7&quot;</translation>
     <message>
       <location filename="../src/librssguard/services/greader/gui/formeditgreaderaccount.cpp" line="16"/>
       <source>Server setup</source>
-      <translation type="unfinished">Server setup</translation>
+      <translation>Serverinställning</translation>
     </message>
   </context>
   <context>
@@ -1761,7 +1761,7 @@ QtWebEngine cache folder -&gt; &quot;%7&quot;</translation>
     <message>
       <location filename="../src/librssguard/services/newsblur/gui/formeditnewsbluraccount.cpp" line="15"/>
       <source>Server setup</source>
-      <translation type="unfinished">Server setup</translation>
+      <translation>Serverinställning</translation>
     </message>
   </context>
   <context>
@@ -1769,7 +1769,7 @@ QtWebEngine cache folder -&gt; &quot;%7&quot;</translation>
     <message>
       <location filename="../src/librssguard/services/owncloud/gui/formeditowncloudaccount.cpp" line="15"/>
       <source>Server setup</source>
-      <translation type="unfinished">Server setup</translation>
+      <translation>Serverinställning</translation>
     </message>
   </context>
   <context>
@@ -1777,7 +1777,7 @@ QtWebEngine cache folder -&gt; &quot;%7&quot;</translation>
     <message>
       <location filename="../src/librssguard/services/reddit/gui/formeditredditaccount.cpp" line="16"/>
       <source>Server setup</source>
-      <translation type="unfinished">Server setup</translation>
+      <translation>Serverinställning</translation>
     </message>
   </context>
   <context>
@@ -1785,7 +1785,7 @@ QtWebEngine cache folder -&gt; &quot;%7&quot;</translation>
     <message>
       <location filename="../src/librssguard/services/tt-rss/gui/formeditttrssaccount.cpp" line="13"/>
       <source>Server setup</source>
-      <translation type="unfinished">Server setup</translation>
+      <translation>Serverinställning</translation>
     </message>
   </context>
   <context>
@@ -1793,12 +1793,12 @@ QtWebEngine cache folder -&gt; &quot;%7&quot;</translation>
     <message>
       <location filename="../src/librssguard/services/abstract/gui/formfeeddetails.cpp" line="98"/>
       <source>Add new feed</source>
-      <translation type="unfinished">Add new feed</translation>
+      <translation>Lägg till nytt flöde</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/abstract/gui/formfeeddetails.cpp" line="124"/>
       <source>Cannot save changes: %1</source>
-      <translation type="unfinished">Cannot save changes: %1</translation>
+      <translation>Kan inte spara ändringar: %1</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/abstract/gui/formfeeddetails.cpp" line="101"/>
@@ -1828,17 +1828,17 @@ QtWebEngine cache folder -&gt; &quot;%7&quot;</translation>
     <message>
       <location filename="../src/librssguard/services/abstract/gui/formfeeddetails.ui" line="24"/>
       <source>Articles</source>
-      <translation type="unfinished">Articles</translation>
+      <translation>Artiklar</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/abstract/gui/formfeeddetails.ui" line="30"/>
       <source>Auto-downloading of articles</source>
-      <translation type="unfinished">Auto-downloading of articles</translation>
+      <translation>Automatisk nerladdning av artiklar</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/abstract/gui/formfeeddetails.ui" line="42"/>
       <source>Select the auto-download strategy for messages of this feed. Default auto-download strategy means that new messges of this feed will be downloaded in time intervals set in application settings.</source>
-      <translation type="unfinished">Select the auto-download strategy for messages of this feed. Default auto-download strategy means that new messges of this feed will be downloaded in time intervals set in application settings.</translation>
+      <translation>Välj strategi för automatisk nerladdning av meddelanden i det här flödet. Standardstrategi för automatisk nerladdning, innebär att nya meddelanden i det här flödet kommer att laddas ner med tidsintervall angivna i programinställningarna.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/abstract/gui/formfeeddetails.ui" line="58"/>
@@ -1889,17 +1889,17 @@ QtWebEngine cache folder -&gt; &quot;%7&quot;</translation>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.cpp" line="410"/>
       <source>No possible actions</source>
-      <translation type="unfinished">No possible actions</translation>
+      <translation>Inga möjliga åtgärder</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.cpp" line="369"/>
       <source>No recycle bin</source>
-      <translation type="unfinished">No recycle bin</translation>
+      <translation>Ingen papperskorg</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.cpp" line="66"/>
       <source>Main menu</source>
-      <translation type="unfinished">Main menu</translation>
+      <translation>Huvudmeny</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.cpp" line="79"/>
@@ -1914,27 +1914,27 @@ QtWebEngine cache folder -&gt; &quot;%7&quot;</translation>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="53"/>
       <source>&amp;File</source>
-      <translation type="unfinished">&amp;File</translation>
+      <translation>&amp;Arkiv</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="63"/>
       <source>&amp;Help</source>
-      <translation type="unfinished">&amp;Help</translation>
+      <translation>&amp;Hjälp</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="74"/>
       <source>&amp;View</source>
-      <translation type="unfinished">&amp;View</translation>
+      <translation>V&amp;isa</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="78"/>
       <source>Show/hide</source>
-      <translation type="unfinished">Show/hide</translation>
+      <translation>Dölj/Visa</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="95"/>
       <source>&amp;Tools</source>
-      <translation type="unfinished">&amp;Tools</translation>
+      <translation>V&amp;erktyg</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="105"/>
@@ -1944,7 +1944,7 @@ QtWebEngine cache folder -&gt; &quot;%7&quot;</translation>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="109"/>
       <source>&amp;Add item</source>
-      <translation type="unfinished">&amp;Add item</translation>
+      <translation>&amp;Lägg till objekt</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="114"/>
@@ -1959,12 +1959,12 @@ QtWebEngine cache folder -&gt; &quot;%7&quot;</translation>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="183"/>
       <source>&amp;Recycle bin(s)</source>
-      <translation type="unfinished">&amp;Recycle bin(s)</translation>
+      <translation>&amp;Papperskorg(ar)</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="190"/>
       <source>&amp;Accounts</source>
-      <translation type="unfinished">&amp;Accounts</translation>
+      <translation>&amp;Konton</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="198"/>
@@ -1974,102 +1974,102 @@ QtWebEngine cache folder -&gt; &quot;%7&quot;</translation>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="225"/>
       <source>&amp;Quit</source>
-      <translation type="unfinished">&amp;Quit</translation>
+      <translation>A&amp;vsluta</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="228"/>
       <source>Quit the application.</source>
-      <translation type="unfinished">Quit the application.</translation>
+      <translation>Avsluta programmet.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="239"/>
       <source>&amp;Settings</source>
-      <translation type="unfinished">&amp;Settings</translation>
+      <translation>&amp;Inställningar</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="242"/>
       <source>Display settings of the application.</source>
-      <translation type="unfinished">Display settings of the application.</translation>
+      <translation>Visa inställningar för programmet.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="250"/>
       <source>&amp;About application</source>
-      <translation type="unfinished">&amp;About application</translation>
+      <translation>&amp;Om programmet</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="253"/>
       <source>Displays extra info about this application.</source>
-      <translation type="unfinished">Displays extra info about this application.</translation>
+      <translation>Visa extra information om det här programmet.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="267"/>
       <source>&amp;Fullscreen</source>
-      <translation type="unfinished">&amp;Fullscreen</translation>
+      <translation>&amp;Fullskärm</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="270"/>
       <source>Switch fullscreen mode.</source>
-      <translation type="unfinished">Switch fullscreen mode.</translation>
+      <translation>Växla fönster-/fullskärmsläge.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="278"/>
       <source>&amp;Fetch all</source>
-      <translation type="unfinished">&amp;Fetch all</translation>
+      <translation>&amp;Hämta alla</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="281"/>
       <source>Fetch all feeds</source>
-      <translation type="unfinished">Fetch all feeds</translation>
+      <translation>Hämta alla flöden</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="289"/>
       <source>Fetch &amp;selected</source>
-      <translation type="unfinished">Fetch &amp;selected</translation>
+      <translation>Hämta &amp;markerade</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="292"/>
       <source>Fetch selected feeds</source>
-      <translation type="unfinished">Fetch selected feeds</translation>
+      <translation>Hämta markerade flöden</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="300"/>
       <source>&amp;Edit selected item</source>
-      <translation type="unfinished">&amp;Edit selected item</translation>
+      <translation>&amp;Redigera markerade objekt</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="308"/>
       <source>&amp;Delete selected item</source>
-      <translation type="unfinished">&amp;Delete selected item</translation>
+      <translation>&amp;Ta bort markerade objekt</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="316"/>
       <source>Mark articles &amp;read</source>
-      <translation type="unfinished">Mark articles &amp;read</translation>
+      <translation>Märk artiklar som &amp;lästa</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="319"/>
       <source>Mark selected articles read</source>
-      <translation type="unfinished">Mark selected articles read</translation>
+      <translation>Märk markerade artiklar som lästa</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="327"/>
       <source>Mark articles &amp;unread</source>
-      <translation type="unfinished">Mark articles &amp;unread</translation>
+      <translation>Märk artiklar som &amp;olästa</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="330"/>
       <source>Mark selected articles unread</source>
-      <translation type="unfinished">Mark selected articles unread</translation>
+      <translation>Märk markerade artiklar som olästa</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="338"/>
       <source>Switch &amp;importance</source>
-      <translation type="unfinished">Switch &amp;importance</translation>
+      <translation>Växla &amp;betydelse</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="341"/>
       <source>Switch importance of selected articles</source>
-      <translation type="unfinished">Switch importance of selected articles</translation>
+      <translation>Växla betydelse på markerade artiklar</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="349"/>
@@ -2079,7 +2079,7 @@ QtWebEngine cache folder -&gt; &quot;%7&quot;</translation>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="352"/>
       <source>Mark all messages (without message filters) from selected items as read.</source>
-      <translation type="unfinished">Mark all messages (without message filters) from selected items as read.</translation>
+      <translation>Märk alla meddelanden (utan meddelandefilter) från markerade objekt som lästa.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="360"/>
@@ -2089,72 +2089,72 @@ QtWebEngine cache folder -&gt; &quot;%7&quot;</translation>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="363"/>
       <source>Mark all messages (without message filters) from selected items as unread.</source>
-      <translation type="unfinished">Mark all messages (without message filters) from selected items as unread.</translation>
+      <translation>Märk alla meddelanden (utan meddelandefilter) från markerade objekt som olästa.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="371"/>
       <source>&amp;Delete articles</source>
-      <translation type="unfinished">&amp;Delete articles</translation>
+      <translation>&amp;Ta bort artiklar</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="379"/>
       <source>&amp;Clean selected item</source>
-      <translation type="unfinished">&amp;Clean selected item</translation>
+      <translation>&amp;Ta bort markerat objekt</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="382"/>
       <source>Deletes all messages from selected items.</source>
-      <translation type="unfinished">Deletes all messages from selected items.</translation>
+      <translation>Tar bort alla meddelanden från markerade objekt.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="390"/>
       <source>Open in &amp;external browser</source>
-      <translation type="unfinished">Open in &amp;external browser</translation>
+      <translation>Öppna i &amp;extern webbläsare</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="393"/>
       <source>Open selected articles in external browser</source>
-      <translation type="unfinished">Open selected articles in external browser</translation>
+      <translation>Öppna markerade artiklar i extern webbläsare</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="401"/>
       <source>Open in &amp;internal browser</source>
-      <translation type="unfinished">Open in &amp;internal browser</translation>
+      <translation>Öppna i &amp;intern webbläsare</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="404"/>
       <source>Open selected articles in internal browser</source>
-      <translation type="unfinished">Open selected articles in internal browser</translation>
+      <translation>Öppna markerade artiklar i intern webbläsare</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="415"/>
       <source>No actions available</source>
-      <translation type="unfinished">No actions available</translation>
+      <translation>Inga åtgärder tillgängliga</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="418"/>
       <source>No actions are available right now.</source>
-      <translation type="unfinished">No actions are available right now.</translation>
+      <translation>Inga åtgärder tillgängliga just nu.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="426"/>
       <source>&amp;Mark all read</source>
-      <translation type="unfinished">&amp;Mark all read</translation>
+      <translation>&amp;Märk alla som lästa</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="429"/>
       <source>Marks all messages in all items read. This does not take message filters into account.</source>
-      <translation type="unfinished">Marks all messages in all items read. This does not take message filters into account.</translation>
+      <translation>Märker all meddelanden i alla objekt som lästa. Tar inte hänsyn till meddelandefilter.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="437"/>
       <source>View selected item in &amp;newspaper mode</source>
-      <translation type="unfinished">View selected item in &amp;newspaper mode</translation>
+      <translation>Visa markerat objekt i &amp;tidningsläge</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="440"/>
       <source>Displays all messages from selected item in a new &quot;newspaper mode&quot; tab. Note that messages are not set as read automatically.</source>
-      <translation type="unfinished">Displays all messages from selected item in a new &quot;newspaper mode&quot; tab. Note that messages are not set as read automatically.</translation>
+      <translation>Visar alla meddelanden från markerade objekt i en ny &quot;tidningsvy&quot;. Notera att meddelanden inte automatiskt märks som lästa.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="451"/>
@@ -2164,27 +2164,27 @@ QtWebEngine cache folder -&gt; &quot;%7&quot;</translation>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="454"/>
       <source>Hides main window if it is visible and shows it if it is hidden.</source>
-      <translation type="unfinished">Hides main window if it is visible and shows it if it is hidden.</translation>
+      <translation>Dölj programfönstret om det är synligt, och visa det om det är dolt.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="468"/>
       <source>&amp;Feed list</source>
-      <translation type="unfinished">&amp;Feed list</translation>
+      <translation>&amp;Flödeslista</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="471"/>
       <source>Hides or shows the list of feeds/categories.</source>
-      <translation type="unfinished">Hides or shows the list of feeds/categories.</translation>
+      <translation>Dölj/Visa listan med flöden/kategorier.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="479"/>
       <source>&amp;Clean all</source>
-      <translation type="unfinished">&amp;Clean all</translation>
+      <translation>&amp;Rensa allt</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="482"/>
       <source>Deletes all messages from all items.</source>
-      <translation type="unfinished">Deletes all messages from all items.</translation>
+      <translation>Tar bort smtliga meddelanden från alla objekt.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="490"/>
@@ -2199,193 +2199,193 @@ QtWebEngine cache folder -&gt; &quot;%7&quot;</translation>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="506"/>
       <source>&amp;Next article</source>
-      <translation type="unfinished">&amp;Next article</translation>
+      <translation>&amp;Nästa artikel</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="514"/>
       <source>&amp;Previous article</source>
-      <translation type="unfinished">&amp;Previous article</translation>
+      <translation>&amp;Föregående artikel</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="522"/>
       <source>Check for &amp;updates</source>
-      <translation type="unfinished">Check for &amp;updates</translation>
+      <translation>Sök efter &amp;uppdateringar</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="525"/>
       <source>Check if new update for the application is available for download.</source>
-      <translation type="unfinished">Check if new update for the application is available for download.</translation>
+      <translation>Sök efter ny programuppdatering.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="539"/>
       <source>&amp;Main menu</source>
-      <translation type="unfinished">&amp;Main menu</translation>
+      <translation>&amp;Huvudmeny</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="542"/>
       <source>Hides or displays the main menu.</source>
-      <translation type="unfinished">Hides or displays the main menu.</translation>
+      <translation>Dölj/Visa huvudmenyn.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="550"/>
       <source>Report a &amp;bug...</source>
-      <translation type="unfinished">Report a &amp;bug...</translation>
+      <translation>Rapportera ett &amp;fel...</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="561"/>
       <source>&amp;Toolbars</source>
-      <translation type="unfinished">&amp;Toolbars</translation>
+      <translation>&amp;Verktygsfält</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="564"/>
       <source>Switch visibility of main toolbars.</source>
-      <translation type="unfinished">Switch visibility of main toolbars.</translation>
+      <translation>Visa/Dölj verktygsfält.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="578"/>
       <source>&amp;List headers</source>
-      <translation type="unfinished">&amp;List headers</translation>
+      <translation>&amp;Listrubriker</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="586"/>
       <source>&amp;Donate...</source>
-      <translation type="unfinished">&amp;Donate...</translation>
+      <translation>&amp;Donera...</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="594"/>
       <source>Display &amp;documentation</source>
-      <translation type="unfinished">Display &amp;documentation</translation>
+      <translation>Visa &amp;dokumentation</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="602"/>
       <source>&amp;Restart</source>
-      <translation type="unfinished">&amp;Restart</translation>
+      <translation>&amp;Starta om</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="610"/>
       <source>&amp;Restore settings</source>
-      <translation type="unfinished">&amp;Restore settings</translation>
+      <translation>&amp;Återställ inställningar</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="618"/>
       <source>&amp;Backup settings</source>
-      <translation type="unfinished">&amp;Backup settings</translation>
+      <translation>&amp;Säkerhetskopiera inställningar</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="626"/>
       <source>Switch layout</source>
-      <translation type="unfinished">Switch layout</translation>
+      <translation>Växla layout</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="634"/>
       <source>&amp;Downloads</source>
-      <translation type="unfinished">&amp;Downloads</translation>
+      <translation>&amp;Nedladdningar</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="642"/>
       <source>Send via e-mail</source>
-      <translation type="unfinished">Send via e-mail</translation>
+      <translation>Skicka via e-post</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="645"/>
       <source>Send selected articles via e-mail</source>
-      <translation type="unfinished">Send selected articles via e-mail</translation>
+      <translation>Skicka markerade artiklar via e-post</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="653"/>
       <source>&amp;Cleanup database</source>
-      <translation type="unfinished">&amp;Cleanup database</translation>
+      <translation>&amp;Rensa databasen</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="664"/>
       <source>Show unread items only</source>
-      <translation type="unfinished">Show unread items only</translation>
+      <translation>Visa endast olästa objekt</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="672"/>
       <source>&amp;Expand/collapse selected item</source>
-      <translation type="unfinished">&amp;Expand/collapse selected item</translation>
+      <translation>&amp;Expandera/Komprimera markerade objekt</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="680"/>
       <source>&amp;Add account</source>
-      <translation type="unfinished">&amp;Add account</translation>
+      <translation>&amp;Lägg till konto</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="688"/>
       <source>&amp;Restore articles</source>
-      <translation type="unfinished">&amp;Restore articles</translation>
+      <translation>&amp;Återställ artiklar</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="696"/>
       <source>&amp;Restore all recycle bins</source>
-      <translation type="unfinished">&amp;Restore all recycle bins</translation>
+      <translation>&amp;Återställ alla papperskorgar</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="704"/>
       <source>&amp;Empty all recycle bins</source>
-      <translation type="unfinished">&amp;Empty all recycle bins</translation>
+      <translation>&amp;Töm alla papperskorgar</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="712"/>
       <source>Next &amp;unread article</source>
-      <translation type="unfinished">Next &amp;unread article</translation>
+      <translation>Nästa &amp;olästa artikel</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="726"/>
       <source>Status bar</source>
-      <translation type="unfinished">Status bar</translation>
+      <translation>Statusfält</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="734"/>
       <source>&amp;Edit selected account</source>
-      <translation type="unfinished">&amp;Edit selected account</translation>
+      <translation>&amp;Redigera markerat konto</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="742"/>
       <source>&amp;Delete selected account</source>
-      <translation type="unfinished">&amp;Delete selected account</translation>
+      <translation>&amp;Ta bort markerat konto</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="755"/>
       <location filename="../src/librssguard/gui/dialogs/formmain.cpp" line="315"/>
       <source>Add new category</source>
-      <translation type="unfinished">Add new category</translation>
+      <translation>Lägg till ny kategori</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="760"/>
       <source>Stop ongoing fetching</source>
-      <translation type="unfinished">Stop ongoing fetching</translation>
+      <translation>Stoppa pågående hämtning</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="768"/>
       <source>New browser tab</source>
-      <translation type="unfinished">New browser tab</translation>
+      <translation>Ny webbläsarflik</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="776"/>
       <source>Close all tabs</source>
-      <translation type="unfinished">Close all tabs</translation>
+      <translation>Stäng alla flikar</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="781"/>
       <source>Close all tabs except current</source>
-      <translation type="unfinished">Close all tabs except current</translation>
+      <translation>Stäng alla flikar utom den aktuella</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="786"/>
       <source>Go to &amp;next tab</source>
-      <translation type="unfinished">Go to &amp;next tab</translation>
+      <translation>Gå till &amp;nästa flik</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="791"/>
       <source>Go to &amp;previous tab</source>
-      <translation type="unfinished">Go to &amp;previous tab</translation>
+      <translation>Gå till &amp;föregående flik</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="799"/>
       <source>&amp;Enable article preview</source>
-      <translation type="unfinished">&amp;Enable article preview</translation>
+      <translation>&amp;Aktivera förhandsvisning av artiklar</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="804"/>
@@ -2400,32 +2400,32 @@ QtWebEngine cache folder -&gt; &quot;%7&quot;</translation>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="817"/>
       <source>&amp;Show tree expanders</source>
-      <translation type="unfinished">&amp;Show tree expanders</translation>
+      <translation>&amp;Visa trädexpandrar</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="822"/>
       <source>Fetch feeds with &amp;custom auto-download policy</source>
-      <translation type="unfinished">Fetch feeds with &amp;custom auto-download policy</translation>
+      <translation>Hämta flöden med &amp;anpassad policy för automatisk nerladdning</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="830"/>
       <source>Alternate row colors in lists</source>
-      <translation type="unfinished">Alternate row colors in lists</translation>
+      <translation>Växla radfärger i listan</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="838"/>
       <source>Automatically &amp;expand item when selected</source>
-      <translation type="unfinished">Automatically &amp;expand item when selected</translation>
+      <translation>&amp;Expandera automatiskt objekt vid markering</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="849"/>
       <source>Message viewer toolbars</source>
-      <translation type="unfinished">Message viewer toolbars</translation>
+      <translation>Verktygsfält i meddelandeläsare</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="854"/>
       <source>Expand/collapse selected item &amp;recursively</source>
-      <translation type="unfinished">Expand/collapse selected item &amp;recursively</translation>
+      <translation>Expandera/Komprimera markerat objekt &amp;rekursivt</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="859"/>
@@ -2511,27 +2511,27 @@ QtWebEngine cache folder -&gt; &quot;%7&quot;</translation>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="750"/>
       <location filename="../src/librssguard/gui/dialogs/formmain.cpp" line="325"/>
       <source>Add new feed</source>
-      <translation type="unfinished">Add new feed</translation>
+      <translation>Lägg till nytt flöde</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.cpp" line="376"/>
       <source>No actions possible</source>
-      <translation type="unfinished">No actions possible</translation>
+      <translation>Inga åtgärder möjliga</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.cpp" line="154"/>
       <source>Cannot cleanup database</source>
-      <translation type="unfinished">Cannot cleanup database</translation>
+      <translation>Kan inte rensa databasen</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.cpp" line="155"/>
       <source>Cannot cleanup database, because another critical action is running.</source>
-      <translation type="unfinished">Cannot cleanup database, because another critical action is running.</translation>
+      <translation>Kan inte rensa databasen, eftersom en annan kritisk åtgärd pågår.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.cpp" line="523"/>
       <source>Close opened modal dialogs first.</source>
-      <translation type="unfinished">Close opened modal dialogs first.</translation>
+      <translation>Stäng öppna dialogrutor först.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.cpp" line="445"/>
@@ -2549,65 +2549,65 @@ QtWebEngine cache folder -&gt; &quot;%7&quot;</translation>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.cpp" line="318"/>
       <source>ACCEPTED</source>
-      <translation type="unfinished">ACCEPTED</translation>
+      <translation>ACCEPTERAT</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.cpp" line="318"/>
       <source>REJECTED</source>
-      <translation type="unfinished">REJECTED</translation>
+      <translation>AVVISAT</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.cpp" line="331"/>
       <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.cpp" line="332"/>
       <source>yes</source>
-      <translation type="unfinished">yes</translation>
+      <translation>ja</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.cpp" line="331"/>
       <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.cpp" line="332"/>
       <source>no</source>
-      <translation type="unfinished">no</translation>
+      <translation>nej</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.cpp" line="603"/>
       <source>Cannot find &apos;clang-format&apos;</source>
-      <translation type="unfinished">Cannot find &apos;clang-format&apos;</translation>
+      <translation>Kan inte hitta &quot;clang-format&quot;</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.cpp" line="604"/>
       <source>Script was not beautified, because &apos;clang-format&apos; tool was not found.</source>
-      <translation type="unfinished">Script was not beautified, because &apos;clang-format&apos; tool was not found.</translation>
+      <translation>Skriptet har inte förskönats, eftersom verktyget &quot;clang-format&quot; inte hittades.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.cpp" line="247"/>
       <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.cpp" line="622"/>
       <source>Error</source>
-      <translation type="unfinished">Error</translation>
+      <translation>Fel</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.cpp" line="623"/>
       <source>Script was not beautified, because &apos;clang-format&apos; tool thrown error.</source>
-      <translation type="unfinished">Script was not beautified, because &apos;clang-format&apos; tool thrown error.</translation>
+      <translation>Skriptet har inte förskönats, eftersom ett fel inträffat i verktyget &quot;clang-format&quot; .</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.cpp" line="632"/>
       <source>Beautifier was running for too long time</source>
-      <translation type="unfinished">Beautifier was running for too long time</translation>
+      <translation>Försköningsverktyget arbetade för länge</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.cpp" line="633"/>
       <source>Script was not beautified, is &apos;clang-format&apos; installed?</source>
-      <translation type="unfinished">Script was not beautified, is &apos;clang-format&apos; installed?</translation>
+      <translation>Skriptet har inte förskönats, är &quot;clang-format&quot; installerat?</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.cpp" line="248"/>
       <source>Cannot save new filter, error: &apos;%1&apos;.</source>
-      <translation type="unfinished">Cannot save new filter, error: &apos;%1&apos;.</translation>
+      <translation>Kan inte spara nytt filter, fel: &quot;%1&quot;</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.cpp" line="193"/>
       <source>Context menu</source>
-      <translation type="unfinished">Context menu</translation>
+      <translation>Kontextmeny</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.cpp" line="195"/>
@@ -2664,7 +2664,7 @@ QtWebEngine cache folder -&gt; &quot;%7&quot;</translation>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.cpp" line="211"/>
       <source>Are you sure?</source>
-      <translation type="unfinished">Are you sure?</translation>
+      <translation>Är du säker?</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.cpp" line="212"/>
@@ -2679,22 +2679,22 @@ QtWebEngine cache folder -&gt; &quot;%7&quot;</translation>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.ui" line="35"/>
       <source>&amp;Check all</source>
-      <translation type="unfinished">&amp;Check all</translation>
+      <translation>&amp;Markera alla</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.ui" line="65"/>
       <source>&amp;Uncheck all</source>
-      <translation type="unfinished">&amp;Uncheck all</translation>
+      <translation>&amp;Avmarkera alla</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.ui" line="79"/>
       <source>Remove selected</source>
-      <translation type="unfinished">Remove selected</translation>
+      <translation>Ta bort markerat</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.ui" line="86"/>
       <source>&amp;New filter</source>
-      <translation type="unfinished">&amp;New filter</translation>
+      <translation>&amp;Nytt filter</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.ui" line="115"/>
@@ -2705,7 +2705,7 @@ QtWebEngine cache folder -&gt; &quot;%7&quot;</translation>
       <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.ui" line="121"/>
       <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.ui" line="313"/>
       <source>Title</source>
-      <translation type="unfinished">Title</translation>
+      <translation>Titel</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.ui" line="145"/>
@@ -2720,7 +2720,7 @@ QtWebEngine cache folder -&gt; &quot;%7&quot;</translation>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.ui" line="174"/>
       <source>JavaScript code</source>
-      <translation type="unfinished">JavaScript code</translation>
+      <translation>JavaScript-kod</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.ui" line="192"/>
@@ -2730,67 +2730,67 @@ QtWebEngine cache folder -&gt; &quot;%7&quot;</translation>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.ui" line="206"/>
       <source>&amp;Test</source>
-      <translation type="unfinished">&amp;Test</translation>
+      <translation>&amp;Testa</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.ui" line="213"/>
       <source>Process checked feeds</source>
-      <translation type="unfinished">Process checked feeds</translation>
+      <translation>Bearbeta markerade flöden</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.ui" line="220"/>
       <source>&amp;Beautify</source>
-      <translation type="unfinished">&amp;Beautify</translation>
+      <translation>&amp;Försköna</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.ui" line="227"/>
       <source>Detailed &amp;help</source>
-      <translation type="unfinished">Detailed &amp;help</translation>
+      <translation>Detaljerad &amp;hjälp</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.ui" line="263"/>
       <source>Existing articles</source>
-      <translation type="unfinished">Existing articles</translation>
+      <translation>Befintliga artiklar</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.ui" line="295"/>
       <source>Sample article</source>
-      <translation type="unfinished">Sample article</translation>
+      <translation>Exempelartikel</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.ui" line="326"/>
       <source>URL</source>
-      <translation type="unfinished">URL</translation>
+      <translation>URL</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.ui" line="339"/>
       <source>Author</source>
-      <translation type="unfinished">Author</translation>
+      <translation>Författare</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.ui" line="352"/>
       <source>Created on</source>
-      <translation type="unfinished">Created on</translation>
+      <translation>Skapad</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.ui" line="365"/>
       <source>Contents</source>
-      <translation type="unfinished">Contents</translation>
+      <translation>Innehåll</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.ui" line="380"/>
       <source>Read</source>
-      <translation type="unfinished">Read</translation>
+      <translation>Läst</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.ui" line="387"/>
       <source>Important</source>
-      <translation type="unfinished">Important</translation>
+      <translation>Viktigt</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.ui" line="410"/>
       <source>Script output</source>
-      <translation type="unfinished">Script output</translation>
+      <translation>Skriptutdata</translation>
     </message>
   </context>
   <context>
@@ -2799,67 +2799,67 @@ QtWebEngine cache folder -&gt; &quot;%7&quot;</translation>
       <location filename="../src/librssguard/gui/dialogs/formrestoredatabasesettings.cpp" line="17"/>
       <location filename="../src/librssguard/gui/dialogs/formrestoredatabasesettings.cpp" line="18"/>
       <source>No operation executed yet.</source>
-      <translation type="unfinished">No operation executed yet.</translation>
+      <translation>Ingen åtgärd slutförd än.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formrestoredatabasesettings.cpp" line="56"/>
       <source>Restoration was initiated. Restart to proceed.</source>
-      <translation type="unfinished">Restoration was initiated. Restart to proceed.</translation>
+      <translation>Återställning inledd. Starta om programmet för att slutföra.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formrestoredatabasesettings.cpp" line="57"/>
       <source>You need to restart application for restoration process to finish.</source>
-      <translation type="unfinished">You need to restart application for restoration process to finish.</translation>
+      <translation>Du måste starta om programmet för att slutföra återställningen.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formrestoredatabasesettings.cpp" line="62"/>
       <source>Database and/or settings were not copied to restoration directory successully.</source>
-      <translation type="unfinished">Database and/or settings were not copied to restoration directory successully.</translation>
+      <translation>Databas och/eller inställningar kopierades inte till återställningsmappen.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formrestoredatabasesettings.cpp" line="81"/>
       <source>Select source directory</source>
-      <translation type="unfinished">Select source directory</translation>
+      <translation>Välj källmapp</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formrestoredatabasesettings.cpp" line="87"/>
       <source>Good source directory is specified.</source>
-      <translation type="unfinished">Good source directory is specified.</translation>
+      <translation>Källmappen är godkänd.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formrestoredatabasesettings.cpp" line="15"/>
       <source>Restart</source>
-      <translation type="unfinished">Restart</translation>
+      <translation>Starta om</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formrestoredatabasesettings.ui" line="14"/>
       <source>Restore database/settings</source>
-      <translation type="unfinished">Restore database/settings</translation>
+      <translation>Återställ databas/inställningar</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formrestoredatabasesettings.ui" line="33"/>
       <source>Operation results</source>
-      <translation type="unfinished">Operation results</translation>
+      <translation>Åtgärdsresultat</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formrestoredatabasesettings.ui" line="59"/>
       <source>Source directory</source>
-      <translation type="unfinished">Source directory</translation>
+      <translation>Källmapp</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formrestoredatabasesettings.ui" line="65"/>
       <source>&amp;Select directory</source>
-      <translation type="unfinished">&amp;Select directory</translation>
+      <translation>&amp;Välj mapp</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formrestoredatabasesettings.ui" line="82"/>
       <source>Restore database</source>
-      <translation type="unfinished">Restore database</translation>
+      <translation>Återställ databas</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formrestoredatabasesettings.ui" line="100"/>
       <source>Restore settings</source>
-      <translation type="unfinished">Restore settings</translation>
+      <translation>Återställ inställningar</translation>
     </message>
   </context>
   <context>
@@ -2867,49 +2867,49 @@ QtWebEngine cache folder -&gt; &quot;%7&quot;</translation>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formsettings.cpp" line="101"/>
       <source>Critical settings were changed</source>
-      <translation type="unfinished">Critical settings were changed</translation>
+      <translation>Kritiska inställningar har ändrats</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formsettings.cpp" line="106"/>
       <location filename="../src/librssguard/gui/dialogs/formsettings.cpp" line="143"/>
       <source>Changed categories of settings:
 %1.</source>
-      <translation type="unfinished">Changed categories of settings:
+      <translation>Ändrade inställningskategorier:
 %1.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formsettings.cpp" line="140"/>
       <source>Some settings are changed and will be lost</source>
-      <translation type="unfinished">Some settings are changed and will be lost</translation>
+      <translation>Vissa inställningar har ändrats och kommer att förloras</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formsettings.cpp" line="141"/>
       <source>Some settings were changed and by cancelling this dialog, you would lose these changes.</source>
-      <translation type="unfinished">Some settings were changed and by cancelling this dialog, you would lose these changes.</translation>
+      <translation>Vissa inställningar har ändrats och genom att avbryta denna dialog, kommer du att förlora ändringarna.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formsettings.cpp" line="142"/>
       <source>Do you really want to close this dialog without saving any settings?</source>
-      <translation type="unfinished">Do you really want to close this dialog without saving any settings?</translation>
+      <translation>Vill du verkligen stänga denna dialog utan att spara några inställningar?</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formsettings.cpp" line="102"/>
       <source>Some critical settings were changed and will be applied after the application gets restarted. 
 
 You have to restart manually.</source>
-      <translation type="unfinished">Some critical settings were changed and will be applied after the application gets restarted. 
+      <translation>Vissa kritiska inställningar har ändrats och kommer att verkställas efter att programmet har startats om. 
 
-You have to restart manually.</translation>
+Du måste starta om manuellt.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formsettings.cpp" line="105"/>
       <source>Do you want to restart now?</source>
-      <translation type="unfinished">Do you want to restart now?</translation>
+      <translation>Vill du starta om nu?</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formsettings.ui" line="14"/>
       <source>Settings</source>
-      <translation type="unfinished">Settings</translation>
+      <translation>Inställningar</translation>
     </message>
   </context>
   <context>
@@ -2917,12 +2917,12 @@ You have to restart manually.</translation>
     <message>
       <location filename="../src/librssguard/services/standard/gui/formstandardfeeddetails.cpp" line="30"/>
       <source>General</source>
-      <translation type="unfinished">General</translation>
+      <translation>Allmänt</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/standard/gui/formstandardfeeddetails.cpp" line="31"/>
       <source>Network</source>
-      <translation type="unfinished">Network</translation>
+      <translation>Nätverk</translation>
     </message>
   </context>
   <context>
@@ -2931,89 +2931,89 @@ You have to restart manually.</translation>
       <location filename="../src/librssguard/services/standard/gui/formstandardimportexport.cpp" line="37"/>
       <location filename="../src/librssguard/services/standard/gui/formstandardimportexport.cpp" line="38"/>
       <source>No file is selected.</source>
-      <translation type="unfinished">No file is selected.</translation>
+      <translation>Ingen fil har valts.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/standard/gui/formstandardimportexport.cpp" line="41"/>
       <location filename="../src/librssguard/services/standard/gui/formstandardimportexport.cpp" line="42"/>
       <source>No operation executed yet.</source>
-      <translation type="unfinished">No operation executed yet.</translation>
+      <translation>Ingen åtgärd slutförd än.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/standard/gui/formstandardimportexport.cpp" line="73"/>
       <source>Destination file</source>
-      <translation type="unfinished">Destination file</translation>
+      <translation>Målfil</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/standard/gui/formstandardimportexport.cpp" line="74"/>
       <source>Source feeds &amp;&amp; categories</source>
-      <translation type="unfinished">Source feeds &amp;&amp; categories</translation>
+      <translation>Källflöden &amp;&amp; -kategorier</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/standard/gui/formstandardimportexport.cpp" line="76"/>
       <source>Export feeds</source>
-      <translation type="unfinished">Export feeds</translation>
+      <translation>Exportera flöden</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/standard/gui/formstandardimportexport.cpp" line="84"/>
       <source>Source file</source>
-      <translation type="unfinished">Source file</translation>
+      <translation>Källfil</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/standard/gui/formstandardimportexport.cpp" line="85"/>
       <source>Target feeds &amp;&amp; categories</source>
-      <translation type="unfinished">Target feeds &amp;&amp; categories</translation>
+      <translation>Målflöden &amp;&amp; -kategorier</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/standard/gui/formstandardimportexport.cpp" line="92"/>
       <source>Import feeds</source>
-      <translation type="unfinished">Import feeds</translation>
+      <translation>Importera flöden</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/standard/gui/formstandardimportexport.cpp" line="158"/>
       <source>Command is ok.</source>
-      <translation type="unfinished">Command is ok.</translation>
+      <translation>Kommandot är OK.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/standard/gui/formstandardimportexport.cpp" line="161"/>
       <source>Command is empty.</source>
-      <translation type="unfinished">Command is empty.</translation>
+      <translation>Kommano saknas.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/standard/gui/formstandardimportexport.cpp" line="181"/>
       <source>Select file for feeds export</source>
-      <translation type="unfinished">Select file for feeds export</translation>
+      <translation>Välj fil för flödesexport</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/standard/gui/formstandardimportexport.cpp" line="206"/>
       <location filename="../src/librssguard/services/standard/gui/formstandardimportexport.cpp" line="242"/>
       <source>File is selected.</source>
-      <translation type="unfinished">File is selected.</translation>
+      <translation>Fil är vald.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/standard/gui/formstandardimportexport.cpp" line="225"/>
       <source>Select file for feeds import</source>
-      <translation type="unfinished">Select file for feeds import</translation>
+      <translation>Välj fil för flödesimport</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/standard/gui/formstandardimportexport.cpp" line="139"/>
       <source>Feeds were loaded.</source>
-      <translation type="unfinished">Feeds were loaded.</translation>
+      <translation>Flöden lästes in.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/standard/gui/formstandardimportexport.cpp" line="31"/>
       <source>Full command to execute</source>
-      <translation type="unfinished">Full command to execute</translation>
+      <translation>Fullständigt kommando att köra</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/standard/gui/formstandardimportexport.cpp" line="32"/>
       <source>You can enter full command including interpreter here.</source>
-      <translation type="unfinished">You can enter full command including interpreter here.</translation>
+      <translation>Du kan ange fullständigt kommando inklusive tolk här.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/standard/gui/formstandardimportexport.cpp" line="34"/>
       <source>Here you can enter script executaion line, including interpreter.</source>
-      <translation type="unfinished">Here you can enter script executaion line, including interpreter.</translation>
+      <translation>Här kan du ange skriptexekveringsrad, inklusive tolk.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/standard/gui/formstandardimportexport.cpp" line="135"/>
@@ -3030,18 +3030,18 @@ You have to restart manually.</translation>
       <location filename="../src/librssguard/services/standard/gui/formstandardimportexport.cpp" line="336"/>
       <location filename="../src/librssguard/services/standard/gui/formstandardimportexport.cpp" line="337"/>
       <source>Feeds were exported successfully.</source>
-      <translation type="unfinished">Feeds were exported successfully.</translation>
+      <translation>Flöden exporterades korrekt.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/standard/gui/formstandardimportexport.cpp" line="347"/>
       <location filename="../src/librssguard/services/standard/gui/formstandardimportexport.cpp" line="348"/>
       <source>Critical error occurred.</source>
-      <translation type="unfinished">Critical error occurred.</translation>
+      <translation>Ett allvarligt fel uppstod.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/standard/gui/formstandardimportexport.cpp" line="119"/>
       <source>Parsing data...</source>
-      <translation type="unfinished">Parsing data...</translation>
+      <translation>Analyserar data...</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/standard/gui/formstandardimportexport.cpp" line="170"/>
@@ -3052,28 +3052,28 @@ You have to restart manually.</translation>
     <message>
       <location filename="../src/librssguard/services/standard/gui/formstandardimportexport.cpp" line="341"/>
       <source>Cannot write into destination file: &apos;%1&apos;.</source>
-      <translation type="unfinished">Cannot write into destination file: &apos;%1&apos;.</translation>
+      <translation>Kan inte skriva till målfilen: %1.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/standard/gui/formstandardimportexport.cpp" line="171"/>
       <location filename="../src/librssguard/services/standard/gui/formstandardimportexport.cpp" line="216"/>
       <source>TXT files [one URL per line] (*.txt)</source>
-      <translation type="unfinished">TXT files [one URL per line] (*.txt)</translation>
+      <translation>TXT-filer [en URL per rad] (*.txt)</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/standard/gui/formstandardimportexport.cpp" line="75"/>
       <source>&amp;Export to file</source>
-      <translation type="unfinished">&amp;Export to file</translation>
+      <translation>&amp;Exportera till fil</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/standard/gui/formstandardimportexport.cpp" line="87"/>
       <source>&amp;Import from file</source>
-      <translation type="unfinished">&amp;Import from file</translation>
+      <translation>&amp;Importera från fil</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/standard/gui/formstandardimportexport.ui" line="38"/>
       <source>&amp;Select file</source>
-      <translation type="unfinished">&amp;Select file</translation>
+      <translation>&amp;Välj fil</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/standard/gui/formstandardimportexport.ui" line="55"/>
@@ -3098,12 +3098,12 @@ You have to restart manually.</translation>
     <message>
       <location filename="../src/librssguard/services/standard/gui/formstandardimportexport.ui" line="109"/>
       <source>Root node</source>
-      <translation type="unfinished">Root node</translation>
+      <translation>Rotnod</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/standard/gui/formstandardimportexport.ui" line="119"/>
       <source>Select parent item for your feed.</source>
-      <translation type="unfinished">Select parent item for your feed.</translation>
+      <translation>Välj övergripande objekt för ditt flöde.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/standard/gui/formstandardimportexport.ui" line="137"/>
@@ -3113,17 +3113,17 @@ You have to restart manually.</translation>
     <message>
       <location filename="../src/librssguard/services/standard/gui/formstandardimportexport.ui" line="209"/>
       <source>&amp;Check all feeds</source>
-      <translation type="unfinished">&amp;Check all feeds</translation>
+      <translation>&amp;Markera alla flöden</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/standard/gui/formstandardimportexport.ui" line="216"/>
       <source>&amp;Uncheck all feeds</source>
-      <translation type="unfinished">&amp;Uncheck all feeds</translation>
+      <translation>&amp;Avmarkera alla flöden</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/standard/gui/formstandardimportexport.ui" line="226"/>
       <source>Operation result</source>
-      <translation type="unfinished">Operation result</translation>
+      <translation>Åtgärdsresultat</translation>
     </message>
   </context>
   <context>
@@ -3131,27 +3131,27 @@ You have to restart manually.</translation>
     <message>
       <location filename="../src/librssguard/services/tt-rss/gui/formttrssfeeddetails.cpp" line="49"/>
       <source>Feed added</source>
-      <translation type="unfinished">Feed added</translation>
+      <translation>Flöde tillagt</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/tt-rss/gui/formttrssfeeddetails.cpp" line="64"/>
       <source>General</source>
-      <translation type="unfinished">General</translation>
+      <translation>Allmänt</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/tt-rss/gui/formttrssfeeddetails.cpp" line="65"/>
       <source>Network</source>
-      <translation type="unfinished">Network</translation>
+      <translation>Nätverk</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/tt-rss/gui/formttrssfeeddetails.cpp" line="50"/>
       <source>Feed was added, obtaining new tree of feeds now.</source>
-      <translation type="unfinished">Feed was added, obtaining new tree of feeds now.</translation>
+      <translation>Flöde lades till, erhåller nytt flödesträd nu.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/tt-rss/gui/formttrssfeeddetails.cpp" line="55"/>
       <source>API returned error code %1</source>
-      <translation type="unfinished">API returned error code %1</translation>
+      <translation>API:n returnerade felkod %1</translation>
     </message>
   </context>
   <context>
@@ -3184,12 +3184,12 @@ You have to restart manually.</translation>
     <message>
       <location filename="../src/librssguard/services/tt-rss/gui/formttrssnote.ui" line="17"/>
       <source>Title</source>
-      <translation type="unfinished">Title</translation>
+      <translation>Titel</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/tt-rss/gui/formttrssnote.ui" line="56"/>
       <source>URL</source>
-      <translation type="unfinished">URL</translation>
+      <translation>URL</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/tt-rss/gui/formttrssnote.ui" line="66"/>
@@ -3203,152 +3203,151 @@ You have to restart manually.</translation>
       <location filename="../src/librssguard/gui/dialogs/formupdate.cpp" line="68"/>
       <source>unknown</source>
       <extracomment>Unknown release.</extracomment>
-      <translation type="unfinished">unknown</translation>
+      <translation>Okänd</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formupdate.cpp" line="72"/>
       <source>List with updates was not
 downloaded successfully.</source>
-      <translation type="unfinished">List with updates was not
-downloaded successfully.</translation>
+      <translation>Listan med uppdateringar
+laddades inte ner korrekt.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formupdate.cpp" line="89"/>
       <source>New release available.</source>
-      <translation type="unfinished">New release available.</translation>
+      <translation>Ny version tillgänglig.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formupdate.cpp" line="71"/>
       <source>Error: &apos;%1&apos;.</source>
-      <translation type="unfinished">Error: &apos;%1&apos;.</translation>
+      <translation>Fel: &apos;%1&apos;.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formupdate.cpp" line="98"/>
       <source>No new release available.</source>
-      <translation type="unfinished">No new release available.</translation>
+      <translation>Ingen ny version tillgänglig.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formupdate.cpp" line="99"/>
       <source>This release is not newer than
 currently installed one.</source>
-      <translation type="unfinished">This release is not newer than
-currently installed one.</translation>
+      <translation>Den här versionen är nyare än den installerade.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formupdate.cpp" line="34"/>
       <source>Download new installation files.</source>
-      <translation type="unfinished">Download new installation files.</translation>
+      <translation>Ladda ner ny installationsfil.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formupdate.cpp" line="233"/>
       <source>Cannot update application</source>
-      <translation type="unfinished">Cannot update application</translation>
+      <translation>Kan inte uppdatera programmet</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formupdate.cpp" line="110"/>
       <source>Downloaded %1% (update size is %2 kB).</source>
-      <translation type="unfinished">Downloaded %1% (update size is %2 kB).</translation>
+      <translation>%1% nerladdat (uppdateringens storlek är %2 kB).</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formupdate.cpp" line="115"/>
       <location filename="../src/librssguard/gui/dialogs/formupdate.cpp" line="247"/>
       <source>Downloading update...</source>
-      <translation type="unfinished">Downloading update...</translation>
+      <translation>Laddar ner uppdatering...</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formupdate.cpp" line="189"/>
       <source>Downloaded successfully</source>
-      <translation type="unfinished">Downloaded successfully</translation>
+      <translation>Nedladdning slutförd</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formupdate.cpp" line="197"/>
       <location filename="../src/librssguard/gui/dialogs/formupdate.cpp" line="199"/>
       <source>Error occured</source>
-      <translation type="unfinished">Error occured</translation>
+      <translation>Ett fel uppstod</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formupdate.cpp" line="198"/>
       <source>Error occured during downloading of the package.</source>
-      <translation type="unfinished">Error occured during downloading of the package.</translation>
+      <translation>Ett fel uppstod vid nedladdningen.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formupdate.cpp" line="38"/>
       <source>Go to application website</source>
-      <translation type="unfinished">Go to application website</translation>
+      <translation>Gå till programmets hemsida</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formupdate.cpp" line="90"/>
       <source>This is new version which can be
 downloaded.</source>
-      <translation type="unfinished">This is new version which can be
-downloaded.</translation>
+      <translation>Detta är en ny version som kan
+laddas ner.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formupdate.cpp" line="191"/>
       <source>Install</source>
-      <translation type="unfinished">Install</translation>
+      <translation>Installera</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formupdate.cpp" line="234"/>
       <source>Cannot launch external updater. Update application manually.</source>
-      <translation type="unfinished">Cannot launch external updater. Update application manually.</translation>
+      <translation>Kan inte starta extern uppdaterare. Uppdatera programmet manuellt.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formupdate.cpp" line="33"/>
       <source>Download selected update</source>
-      <translation type="unfinished">Download selected update</translation>
+      <translation>Ladda ner vald uppdatering</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formupdate.cpp" line="39"/>
       <source>Go to application website to get update packages manually.</source>
-      <translation type="unfinished">Go to application website to get update packages manually.</translation>
+      <translation>Gå till programmets webbsida för att hämta uppdateringspaketet manuellt.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formupdate.cpp" line="157"/>
       <source> (size </source>
-      <translation type="unfinished"> (size </translation>
+      <translation> (storlek </translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formupdate.cpp" line="172"/>
       <source>Available update files</source>
-      <translation type="unfinished">Available update files</translation>
+      <translation>Tillgängliga uppdateringsfiler</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formupdate.cpp" line="190"/>
       <source>Package was downloaded successfully.
 You can install it now.</source>
-      <translation type="unfinished">Package was downloaded successfully.
-You can install it now.</translation>
+      <translation>Paketet har laddats ner.
+Du kan installera det nu.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formupdate.ui" line="14"/>
       <source>Check for updates</source>
-      <translation type="unfinished">Check for updates</translation>
+      <translation>Sök efter uppdateringar</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formupdate.ui" line="20"/>
       <source>Current release</source>
-      <translation type="unfinished">Current release</translation>
+      <translation>Aktuell version</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formupdate.ui" line="34"/>
       <source>Available release</source>
-      <translation type="unfinished">Available release</translation>
+      <translation>Tillgänglig version</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formupdate.ui" line="48"/>
       <source>Status</source>
-      <translation type="unfinished">Status</translation>
+      <translation>Status</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formupdate.ui" line="69"/>
       <source>Changelog</source>
-      <translation type="unfinished">Changelog</translation>
+      <translation>Ändringslogg</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formupdate.ui" line="125"/>
       <source>Available files</source>
-      <translation type="unfinished">Available files</translation>
+      <translation>Tillgängliga filer</translation>
     </message>
   </context>
   <context>
@@ -3357,118 +3356,118 @@ You can install it now.</translation>
       <location filename="../src/librssguard/services/gmail/gui/gmailaccountdetails.cpp" line="30"/>
       <location filename="../src/librssguard/services/gmail/gui/gmailaccountdetails.cpp" line="31"/>
       <source>Not tested yet.</source>
-      <translation type="unfinished">Not tested yet.</translation>
+      <translation>Inte testat ännu.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/gmail/gui/gmailaccountdetails.cpp" line="33"/>
       <source>User-visible username</source>
-      <translation type="unfinished">User-visible username</translation>
+      <translation>Användarsynligt användarnamn</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/gmail/gui/gmailaccountdetails.cpp" line="67"/>
       <source>No username entered.</source>
-      <translation type="unfinished">No username entered.</translation>
+      <translation>Inget användarnamn angivet.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/gmail/gui/gmailaccountdetails.cpp" line="70"/>
       <source>Some username entered.</source>
-      <translation type="unfinished">Some username entered.</translation>
+      <translation>Användarnamn angivet.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/gmail/gui/gmailaccountdetails.cpp" line="76"/>
       <source>You did not grant access.</source>
-      <translation type="unfinished">You did not grant access.</translation>
+      <translation>Du beviljade inte åtkomst.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/gmail/gui/gmailaccountdetails.cpp" line="77"/>
       <location filename="../src/librssguard/services/gmail/gui/gmailaccountdetails.cpp" line="85"/>
       <source>There was error during testing.</source>
-      <translation type="unfinished">There was error during testing.</translation>
+      <translation>Fel uppstod vid testning.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/gmail/gui/gmailaccountdetails.cpp" line="90"/>
       <source>Tested successfully. You may be prompted to login once more.</source>
-      <translation type="unfinished">Tested successfully. You may be prompted to login once more.</translation>
+      <translation>Testet lyckades. Du kan behöva logga in igen.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/gmail/gui/gmailaccountdetails.cpp" line="91"/>
       <source>Your access was approved.</source>
-      <translation type="unfinished">Your access was approved.</translation>
+      <translation>Åtkomst beviljades.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/gmail/gui/gmailaccountdetails.cpp" line="127"/>
       <source>Empty value is entered.</source>
-      <translation type="unfinished">Empty value is entered.</translation>
+      <translation>Ett tomt värde angavs.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/gmail/gui/gmailaccountdetails.cpp" line="131"/>
       <source>Some value is entered.</source>
-      <translation type="unfinished">Some value is entered.</translation>
+      <translation>Ett värde angavs.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/gmail/gui/gmailaccountdetails.cpp" line="18"/>
       <source>There are some preconfigured OAuth tokens so you do not have to fill in your client ID/secret, but it is strongly recommended to obtain your own as it preconfigured tokens have limited global usage quota. If you wish to use preconfigured tokens, simply leave those fields empty and make sure to leave default value of redirect URL.</source>
-      <translation type="unfinished">There are some preconfigured OAuth tokens so you do not have to fill in your client ID/secret, but it is strongly recommended to obtain your own as it preconfigured tokens have limited global usage quota. If you wish to use preconfigured tokens, simply leave those fields empty and make sure to leave default value of redirect URL.</translation>
+      <translation>Det finns några förkonfigurerade OAuth-token så att du inte behöver fylla i ditt klient-ID/din hemlighet, men vi rekommenderar starkt att du skaffar en egen eftersom förkonfigurerade token har begränsad global användningskvot. Om du vill använda förkonfigurerade token lämnar du bara fälten tomma och ser till att lämna kvar standardvärdet för omdirigerings-URL.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/gmail/gui/gmailaccountdetails.cpp" line="25"/>
       <source>You have to fill in your client ID/secret and also fill in correct redirect URL.</source>
-      <translation type="unfinished">You have to fill in your client ID/secret and also fill in correct redirect URL.</translation>
+      <translation>Du måste fylla i ditt klient-ID/din hemlighet och även korrekt omdirigerings-URL.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/gmail/gui/gmailaccountdetails.cpp" line="84"/>
       <source>There is error: %1</source>
-      <translation type="unfinished">There is error: %1</translation>
+      <translation>Det finns fel: %1 </translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/gmail/gui/gmailaccountdetails.cpp" line="125"/>
       <source>Preconfigured client ID/secret will be used.</source>
-      <translation type="unfinished">Preconfigured client ID/secret will be used.</translation>
+      <translation>Förkonfigurerad klient-ID/hemlighet kommer att användas.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/gmail/gui/gmailaccountdetails.ui" line="17"/>
       <source>Username</source>
-      <translation type="unfinished">Username</translation>
+      <translation>Användarnamn</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/gmail/gui/gmailaccountdetails.ui" line="33"/>
       <source>OAuth 2.0 settings</source>
-      <translation type="unfinished">OAuth 2.0 settings</translation>
+      <translation>OAuth 2.0 inställningar</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/gmail/gui/gmailaccountdetails.ui" line="39"/>
       <source>Client ID</source>
-      <translation type="unfinished">Client ID</translation>
+      <translation>Klient-ID</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/gmail/gui/gmailaccountdetails.ui" line="52"/>
       <source>Client secret</source>
-      <translation type="unfinished">Client secret</translation>
+      <translation>Klienthemlighet</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/gmail/gui/gmailaccountdetails.ui" line="65"/>
       <source>Redirect URL</source>
-      <translation type="unfinished">Redirect URL</translation>
+      <translation>Omdirigera URL</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/gmail/gui/gmailaccountdetails.ui" line="80"/>
       <source>Get my credentials</source>
-      <translation type="unfinished">Get my credentials</translation>
+      <translation>Hämta mina inloggningsuppgifter</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/gmail/gui/gmailaccountdetails.ui" line="110"/>
       <source>Only download newest X articles per feed</source>
-      <translation type="unfinished">Only download newest X articles per feed</translation>
+      <translation>Ladda endast ner X nyaste artiklar per flöde</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/gmail/gui/gmailaccountdetails.ui" line="134"/>
       <source>&amp;Login</source>
-      <translation type="unfinished">&amp;Login</translation>
+      <translation>&amp;Logga in</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/gmail/gui/gmailaccountdetails.ui" line="163"/>
       <source>Download unread articles only</source>
-      <translation type="unfinished">Download unread articles only</translation>
+      <translation>Ladda bara ner olästa artiklar</translation>
     </message>
   </context>
   <context>
@@ -3476,22 +3475,22 @@ You can install it now.</translation>
     <message>
       <location filename="../src/librssguard/services/gmail/gmailnetworkfactory.cpp" line="497"/>
       <source>Click this to login again. Error is: &apos;%1&apos;</source>
-      <translation type="unfinished">Click this to login again. Error is: &apos;%1&apos;</translation>
+      <translation>Klicka här för att logga in igen. Felet är: &quot;%1&quot;</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/gmail/gmailnetworkfactory.cpp" line="510"/>
       <source>Click this to login again.</source>
-      <translation type="unfinished">Click this to login again.</translation>
+      <translation>Klicka här för att logga in igen.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/gmail/gmailnetworkfactory.cpp" line="583"/>
       <source>No subject</source>
-      <translation type="unfinished">No subject</translation>
+      <translation>Inget ämne</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/gmail/gmailnetworkfactory.cpp" line="496"/>
       <source>Gmail: authentication error</source>
-      <translation type="unfinished">Gmail: authentication error</translation>
+      <translation>Gmail: Autentiseringsfel</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/gmail/gmailnetworkfactory.cpp" line="184"/>
@@ -3506,18 +3505,18 @@ You can install it now.</translation>
     <message>
       <location filename="../src/librssguard/services/gmail/gmailnetworkfactory.cpp" line="509"/>
       <source>Gmail: authorization denied</source>
-      <translation type="unfinished">Gmail: authorization denied</translation>
+      <translation>Gmail: Autentisering nekades</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/gmail/gmailnetworkfactory.cpp" line="460"/>
       <location filename="../src/librssguard/services/gmail/gmailnetworkfactory.cpp" line="660"/>
       <source>you are not logged in</source>
-      <translation type="unfinished">you are not logged in</translation>
+      <translation>Du är inte inloggad</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/gmail/gmailnetworkfactory.cpp" line="696"/>
       <source>failed to get metadata</source>
-      <translation type="unfinished">failed to get metadata</translation>
+      <translation>Kunde inte hämta metadata</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/gmail/gmailnetworkfactory.cpp" line="500"/>
@@ -3531,22 +3530,22 @@ You can install it now.</translation>
     <message>
       <location filename="../src/librssguard/services/gmail/gmailserviceroot.cpp" line="44"/>
       <source>Inbox</source>
-      <translation type="unfinished">Inbox</translation>
+      <translation>Inkorg</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/gmail/gmailserviceroot.cpp" line="53"/>
       <source>Sent</source>
-      <translation type="unfinished">Sent</translation>
+      <translation>Skickat</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/gmail/gmailserviceroot.cpp" line="54"/>
       <source>Drafts</source>
-      <translation type="unfinished">Drafts</translation>
+      <translation>Utkast</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/gmail/gmailserviceroot.cpp" line="58"/>
       <source>Spam</source>
-      <translation type="unfinished">Spam</translation>
+      <translation>Skräp</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/gmail/gmailserviceroot.cpp" line="134"/>
@@ -3557,23 +3556,23 @@ You can install it now.</translation>
       <location filename="../src/librssguard/services/gmail/gmailserviceroot.cpp" line="211"/>
       <source>Authentication status: %1
 Login tokens expiration: %2</source>
-      <translation type="unfinished">Authentication status: %1
-Login tokens expiration: %2</translation>
+      <translation>Autentiseringsstatus: %1
+Inloggningstoken upphör: %2</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/gmail/gmailserviceroot.cpp" line="213"/>
       <source>logged-in</source>
-      <translation type="unfinished">logged-in</translation>
+      <translation>inloggad</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/gmail/gmailserviceroot.cpp" line="213"/>
       <source>NOT logged-in</source>
-      <translation type="unfinished">NOT logged-in</translation>
+      <translation>INTE inloggad</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/gmail/gmailserviceroot.cpp" line="150"/>
       <source>Write new e-mail message</source>
-      <translation type="unfinished">Write new e-mail message</translation>
+      <translation>Skriv nytt e-postmeddelande</translation>
     </message>
   </context>
   <context>
@@ -3581,77 +3580,77 @@ Login tokens expiration: %2</translation>
     <message>
       <location filename="../src/librssguard/services/greader/gui/greaderaccountdetails.cpp" line="40"/>
       <source>Password for your account</source>
-      <translation type="unfinished">Password for your account</translation>
+      <translation>Lösenord för ditt konto</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/greader/gui/greaderaccountdetails.cpp" line="41"/>
       <source>Username for your account</source>
-      <translation type="unfinished">Username for your account</translation>
+      <translation>Användarnamn för ditt konto</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/greader/gui/greaderaccountdetails.cpp" line="42"/>
       <source>URL of your server, without any service-specific path</source>
-      <translation type="unfinished">URL of your server, without any service-specific path</translation>
+      <translation>URL för din server, utan serverspecifik sökväg</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/greader/gui/greaderaccountdetails.cpp" line="44"/>
       <source>No test done yet.</source>
-      <translation type="unfinished">No test done yet.</translation>
+      <translation>Inget test utfört ännu.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/greader/gui/greaderaccountdetails.cpp" line="45"/>
       <source>Here, results of connection test are shown.</source>
-      <translation type="unfinished">Here, results of connection test are shown.</translation>
+      <translation>Här visas resultat av anslutningstest.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/greader/gui/greaderaccountdetails.cpp" line="203"/>
       <source>Network error: &apos;%1&apos;.</source>
-      <translation type="unfinished">Network error: &apos;%1&apos;.</translation>
+      <translation>Nätverksfel: &apos;%1&apos;.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/greader/gui/greaderaccountdetails.cpp" line="204"/>
       <source>Network error, have you entered correct Nextcloud endpoint and password?</source>
-      <translation type="unfinished">Network error, have you entered correct Nextcloud endpoint and password?</translation>
+      <translation>Nätverksfel! Har du angett korrekt Nextcloud-slutpunkt och lösenord?</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/greader/gui/greaderaccountdetails.cpp" line="207"/>
       <source>You are good to go!</source>
-      <translation type="unfinished">You are good to go!</translation>
+      <translation>Då kör vi!</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/greader/gui/greaderaccountdetails.cpp" line="207"/>
       <source>Yeah.</source>
-      <translation type="unfinished">Yeah.</translation>
+      <translation>Ja.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/greader/gui/greaderaccountdetails.cpp" line="216"/>
       <source>Username cannot be empty.</source>
-      <translation type="unfinished">Username cannot be empty.</translation>
+      <translation>Användarnamn saknas.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/greader/gui/greaderaccountdetails.cpp" line="219"/>
       <source>Username is okay.</source>
-      <translation type="unfinished">Username is okay.</translation>
+      <translation>Användarnamn okay.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/greader/gui/greaderaccountdetails.cpp" line="227"/>
       <source>Password cannot be empty.</source>
-      <translation type="unfinished">Password cannot be empty.</translation>
+      <translation>Lösenord saknas.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/greader/gui/greaderaccountdetails.cpp" line="230"/>
       <source>Password is okay.</source>
-      <translation type="unfinished">Password is okay.</translation>
+      <translation>Lösenord okay.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/greader/gui/greaderaccountdetails.cpp" line="238"/>
       <source>URL cannot be empty.</source>
-      <translation type="unfinished">URL cannot be empty.</translation>
+      <translation>URL saknas.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/greader/gui/greaderaccountdetails.cpp" line="241"/>
       <source>URL is okay.</source>
-      <translation type="unfinished">URL is okay.</translation>
+      <translation>URL okay.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/greader/gui/greaderaccountdetails.cpp" line="47"/>
@@ -3671,63 +3670,63 @@ Login tokens expiration: %2</translation>
     <message>
       <location filename="../src/librssguard/services/greader/gui/greaderaccountdetails.cpp" line="69"/>
       <source>You have to fill in your client ID/secret and also fill in correct redirect URL.</source>
-      <translation type="unfinished">You have to fill in your client ID/secret and also fill in correct redirect URL.</translation>
+      <translation>Du måste fylla i ditt klient-ID/din hemlighet och även korrekt omdirigerings-URL.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/greader/gui/greaderaccountdetails.cpp" line="110"/>
       <source>You did not grant access.</source>
-      <translation type="unfinished">You did not grant access.</translation>
+      <translation>Du beviljade inte åtkomst.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/greader/gui/greaderaccountdetails.cpp" line="111"/>
       <location filename="../src/librssguard/services/greader/gui/greaderaccountdetails.cpp" line="119"/>
       <source>There was error during testing.</source>
-      <translation type="unfinished">There was error during testing.</translation>
+      <translation>Fel uppstod vid testning.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/greader/gui/greaderaccountdetails.cpp" line="118"/>
       <source>There is error. %1</source>
-      <translation type="unfinished">There is error. %1</translation>
+      <translation>Fel. %1</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/greader/gui/greaderaccountdetails.cpp" line="124"/>
       <source>Tested successfully. You may be prompted to login once more.</source>
-      <translation type="unfinished">Tested successfully. You may be prompted to login once more.</translation>
+      <translation>Testet lyckades. Du kan behöva logga in igen.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/greader/gui/greaderaccountdetails.cpp" line="125"/>
       <source>Your access was approved.</source>
-      <translation type="unfinished">Your access was approved.</translation>
+      <translation>Åtkomst beviljades.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/greader/gui/greaderaccountdetails.cpp" line="159"/>
       <source>Preconfigured client ID/secret will be used.</source>
-      <translation type="unfinished">Preconfigured client ID/secret will be used.</translation>
+      <translation>Förkonfigurerad klient-ID/hemlighet kommer att användas.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/greader/gui/greaderaccountdetails.cpp" line="161"/>
       <source>Empty value is entered.</source>
-      <translation type="unfinished">Empty value is entered.</translation>
+      <translation>Ett tomt värde angavs.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/greader/gui/greaderaccountdetails.cpp" line="165"/>
       <source>Some value is entered.</source>
-      <translation type="unfinished">Some value is entered.</translation>
+      <translation>Ett värde angavs.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/greader/gui/greaderaccountdetails.ui" line="17"/>
       <source>Service</source>
-      <translation type="unfinished">Service</translation>
+      <translation>Tjänst</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/greader/gui/greaderaccountdetails.ui" line="27"/>
       <source>URL</source>
-      <translation type="unfinished">URL</translation>
+      <translation>URL</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/greader/gui/greaderaccountdetails.ui" line="40"/>
       <source>Download unread articles only</source>
-      <translation type="unfinished">Download unread articles only</translation>
+      <translation>Ladda bara ner olästa artiklar</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/greader/gui/greaderaccountdetails.ui" line="47"/>
@@ -3742,52 +3741,52 @@ Login tokens expiration: %2</translation>
     <message>
       <location filename="../src/librssguard/services/greader/gui/greaderaccountdetails.ui" line="74"/>
       <source>Only download newest X articles per feed</source>
-      <translation type="unfinished">Only download newest X articles per feed</translation>
+      <translation>Ladda endast ner X nyaste artiklar per flöde</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/greader/gui/greaderaccountdetails.ui" line="95"/>
       <source>Authentication</source>
-      <translation type="unfinished">Authentication</translation>
+      <translation>Autentisering</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/greader/gui/greaderaccountdetails.ui" line="101"/>
       <source>Username</source>
-      <translation type="unfinished">Username</translation>
+      <translation>Användarnamn</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/greader/gui/greaderaccountdetails.ui" line="145"/>
       <source>Password</source>
-      <translation type="unfinished">Password</translation>
+      <translation>Lösenord</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/greader/gui/greaderaccountdetails.ui" line="186"/>
       <source>OAuth 2.0 settings</source>
-      <translation type="unfinished">OAuth 2.0 settings</translation>
+      <translation>OAuth 2.0 inställningar</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/greader/gui/greaderaccountdetails.ui" line="192"/>
       <source>App ID</source>
-      <translation type="unfinished">App ID</translation>
+      <translation>Program-ID</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/greader/gui/greaderaccountdetails.ui" line="205"/>
       <source>App key</source>
-      <translation type="unfinished">App key</translation>
+      <translation>Programnyckel</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/greader/gui/greaderaccountdetails.ui" line="218"/>
       <source>Redirect URL</source>
-      <translation type="unfinished">Redirect URL</translation>
+      <translation>Omdirigera URL</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/greader/gui/greaderaccountdetails.ui" line="233"/>
       <source>Get my own App ID</source>
-      <translation type="unfinished">Get my own App ID</translation>
+      <translation>Hämta mitt eget program-ID</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/greader/gui/greaderaccountdetails.ui" line="270"/>
       <source>&amp;Test setup</source>
-      <translation type="unfinished">&amp;Test setup</translation>
+      <translation>&amp;Testa inställning</translation>
     </message>
   </context>
   <context>
@@ -3803,22 +3802,22 @@ Login tokens expiration: %2</translation>
     <message>
       <location filename="../src/librssguard/services/greader/greadernetwork.cpp" line="1099"/>
       <source>Inoreader: authentication error</source>
-      <translation type="unfinished">Inoreader: authentication error</translation>
+      <translation>Inoreader: Autentiseringsfel</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/greader/greadernetwork.cpp" line="1100"/>
       <source>Click this to login again. Error is: &apos;%1&apos;</source>
-      <translation type="unfinished">Click this to login again. Error is: &apos;%1&apos;</translation>
+      <translation>Klicka här för att logga in igen. Felet är: &quot;%1&quot;</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/greader/greadernetwork.cpp" line="1112"/>
       <source>Inoreader: authorization denied</source>
-      <translation type="unfinished">Inoreader: authorization denied</translation>
+      <translation>Inoreader: Autentisering nekades</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/greader/greadernetwork.cpp" line="1113"/>
       <source>Click this to login again.</source>
-      <translation type="unfinished">Click this to login again.</translation>
+      <translation>Klicka här för att logga in igen.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/greader/greadernetwork.cpp" line="1103"/>
@@ -3832,7 +3831,7 @@ Login tokens expiration: %2</translation>
     <message>
       <location filename="../src/librssguard/services/greader/greaderserviceroot.cpp" line="125"/>
       <source>Other services</source>
-      <translation type="unfinished">Other services</translation>
+      <translation>Andra tjänster</translation>
     </message>
   </context>
   <context>
@@ -3848,12 +3847,12 @@ Login tokens expiration: %2</translation>
     <message>
       <location filename="../src/librssguard/miscellaneous/iofactory.cpp" line="151"/>
       <source>Cannot open file &apos;%1&apos; for reading.</source>
-      <translation type="unfinished">Cannot open file &apos;%1&apos; for reading.</translation>
+      <translation>Kunde inte öppna filen &apos;%1&apos; för inläsning.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/miscellaneous/iofactory.cpp" line="163"/>
       <source>Cannot open file &apos;%1&apos; for writting.</source>
-      <translation type="unfinished">Cannot open file &apos;%1&apos; for writting.</translation>
+      <translation>Kan inte öppna filen &apos;%1&apos; för skrivning.</translation>
     </message>
   </context>
   <context>
@@ -3861,12 +3860,12 @@ Login tokens expiration: %2</translation>
     <message>
       <location filename="../src/librssguard/services/abstract/importantnode.cpp" line="15"/>
       <source>Important articles</source>
-      <translation type="unfinished">Important articles</translation>
+      <translation>Viktiga artiklar</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/abstract/importantnode.cpp" line="16"/>
       <source>You can find all important articles here.</source>
-      <translation type="unfinished">You can find all important articles here.</translation>
+      <translation>Du hittar alla viktiga artiklar här.</translation>
     </message>
   </context>
   <context>
@@ -3874,7 +3873,7 @@ Login tokens expiration: %2</translation>
     <message>
       <location filename="../src/librssguard/gui/itemdetails.ui" line="20"/>
       <source>Form</source>
-      <translation type="unfinished">Form</translation>
+      <translation>Form</translation>
     </message>
   </context>
   <context>
@@ -3882,7 +3881,7 @@ Login tokens expiration: %2</translation>
     <message>
       <location filename="../src/librssguard/gui/reusable/labelsmenu.cpp" line="15"/>
       <source>Labels</source>
-      <translation type="unfinished">Labels</translation>
+      <translation>Etiketter</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/reusable/labelsmenu.cpp" line="19"/>
@@ -3895,27 +3894,27 @@ Login tokens expiration: %2</translation>
     <message>
       <location filename="../src/librssguard/services/abstract/labelsnode.cpp" line="19"/>
       <source>Labels</source>
-      <translation type="unfinished">Labels</translation>
+      <translation>Etiketter</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/abstract/labelsnode.cpp" line="20"/>
       <source>You can see all your labels (tags) here.</source>
-      <translation type="unfinished">You can see all your labels (tags) here.</translation>
+      <translation>Du kan se alla dina etiketter (taggar) här.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/abstract/labelsnode.cpp" line="114"/>
       <source>New label</source>
-      <translation type="unfinished">New label</translation>
+      <translation>Ny etikett</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/abstract/labelsnode.cpp" line="144"/>
       <source>This account does not allow you to create labels.</source>
-      <translation type="unfinished">This account does not allow you to create labels.</translation>
+      <translation>Detta konto tillåter inte att du skapar etiketter.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/abstract/labelsnode.cpp" line="145"/>
       <source>Not allowed</source>
-      <translation type="unfinished">Not allowed</translation>
+      <translation>Ej tillåtet</translation>
     </message>
   </context>
   <context>
@@ -3923,7 +3922,7 @@ Login tokens expiration: %2</translation>
     <message>
       <location filename="../src/librssguard/gui/reusable/locationlineedit.cpp" line="11"/>
       <source>Website address goes here</source>
-      <translation type="unfinished">Website address goes here</translation>
+      <translation>Webbadress anges här</translation>
     </message>
   </context>
   <context>
@@ -4067,7 +4066,7 @@ Login tokens expiration: %2</translation>
     <message>
       <location filename="../src/librssguard/gui/richtexteditor/mrichtextedit.ui" line="472"/>
       <source>...</source>
-      <translation type="unfinished">...</translation>
+      <translation>...</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/richtexteditor/mrichtextedit.cpp" line="67"/>
@@ -4150,32 +4149,32 @@ Login tokens expiration: %2</translation>
     <message>
       <location filename="../src/librssguard/database/mariadbdriver.cpp" line="75"/>
       <source>MySQL server works as expected.</source>
-      <translation type="unfinished">MySQL server works as expected.</translation>
+      <translation>MySQL-servern fungerar som förväntat.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/database/mariadbdriver.cpp" line="78"/>
       <source>Selected database does not exist (yet). It will be created. It&apos;s okay.</source>
-      <translation type="unfinished">Selected database does not exist (yet). It will be created. It&apos;s okay.</translation>
+      <translation>Den valda databasen finns inte (än). Den kommer att skapas.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/database/mariadbdriver.cpp" line="83"/>
       <source>No MySQL server is running in the target destination.</source>
-      <translation type="unfinished">No MySQL server is running in the target destination.</translation>
+      <translation>Ingen MySQL-server. körs på målplatsen.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/database/mariadbdriver.cpp" line="86"/>
       <source>Access denied. Invalid username or password used.</source>
-      <translation type="unfinished">Access denied. Invalid username or password used.</translation>
+      <translation>Åtkomst nekad. Ogiltigt användarnamn eller lösenord.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/database/mariadbdriver.cpp" line="89"/>
       <source>Unknown error: &apos;%1&apos;.</source>
-      <translation type="unfinished">Unknown error: &apos;%1&apos;.</translation>
+      <translation>Okänt fel: &quot;%1&quot;</translation>
     </message>
     <message>
       <location filename="../src/librssguard/database/mariadbdriver.cpp" line="94"/>
       <source>MariaDB</source>
-      <translation type="unfinished">MariaDB</translation>
+      <translation>MariaDB</translation>
     </message>
   </context>
   <context>
@@ -4183,47 +4182,47 @@ Login tokens expiration: %2</translation>
     <message>
       <location filename="../src/librssguard/gui/messagebrowser.cpp" line="169"/>
       <source>You clicked some link. You can download the link contents or open it in external web browser.</source>
-      <translation type="unfinished">You clicked some link. You can download the link contents or open it in external web browser.</translation>
+      <translation>Du klickade på en länk. Du kan ladda ner länkinnehållet eller öppna den i extern webbläsare.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/messagebrowser.cpp" line="170"/>
       <source>What action do you want to take?</source>
-      <translation type="unfinished">What action do you want to take?</translation>
+      <translation>Vad vill du göra?</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/messagebrowser.cpp" line="173"/>
       <source>Open in external browser</source>
-      <translation type="unfinished">Open in external browser</translation>
+      <translation>Öppna i extern webbläsare</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/messagebrowser.cpp" line="174"/>
       <source>Download</source>
-      <translation type="unfinished">Download</translation>
+      <translation>Ladda ner</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/messagebrowser.cpp" line="178"/>
       <source>Always open links in external browser.</source>
-      <translation type="unfinished">Always open links in external browser.</translation>
+      <translation>Öppna alltid länkar i extern webbläsare.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/messagebrowser.cpp" line="201"/>
       <source>Incorrect link</source>
-      <translation type="unfinished">Incorrect link</translation>
+      <translation>Felaktig länk</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/messagebrowser.cpp" line="201"/>
       <source>Selected hyperlink is invalid.</source>
-      <translation type="unfinished">Selected hyperlink is invalid.</translation>
+      <translation>Den valda hyperlänken är ogiltig.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/messagebrowser.cpp" line="48"/>
       <source>Click this link to download it or open it with external browser.</source>
-      <translation type="unfinished">Click this link to download it or open it with external browser.</translation>
+      <translation>Klicka på denna länk för att ladda ner, eller för att öppna den i extern webbläsare.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/messagebrowser.cpp" line="97"/>
       <source>image</source>
-      <translation type="unfinished">image</translation>
+      <translation>bild</translation>
     </message>
   </context>
   <context>
@@ -4231,7 +4230,7 @@ Login tokens expiration: %2</translation>
     <message>
       <location filename="../src/librssguard/gui/reusable/messagecountspinbox.cpp" line="12"/>
       <source>= unlimited</source>
-      <translation type="unfinished">= unlimited</translation>
+      <translation>= obegränsat</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/reusable/messagecountspinbox.cpp" line="15"/>
@@ -4267,7 +4266,7 @@ Login tokens expiration: %2</translation>
     <message>
       <location filename="../src/librssguard/gui/messagetextbrowser.cpp" line="65"/>
       <source>Open with external tool</source>
-      <translation type="unfinished">Open with external tool</translation>
+      <translation>Öppna med externt verktyg</translation>
     </message>
   </context>
   <context>
@@ -4275,42 +4274,42 @@ Login tokens expiration: %2</translation>
     <message>
       <location filename="../src/librssguard/core/messagesforfiltersmodel.cpp" line="12"/>
       <source>Read</source>
-      <translation type="unfinished">Read</translation>
+      <translation>Läst</translation>
     </message>
     <message>
       <location filename="../src/librssguard/core/messagesforfiltersmodel.cpp" line="12"/>
       <source>Important</source>
-      <translation type="unfinished">Important</translation>
+      <translation>Viktigt</translation>
     </message>
     <message>
       <location filename="../src/librssguard/core/messagesforfiltersmodel.cpp" line="12"/>
       <source>In recycle bin</source>
-      <translation type="unfinished">In recycle bin</translation>
+      <translation>I papperskorgen</translation>
     </message>
     <message>
       <location filename="../src/librssguard/core/messagesforfiltersmodel.cpp" line="12"/>
       <source>Title</source>
-      <translation type="unfinished">Title</translation>
+      <translation>Titel</translation>
     </message>
     <message>
       <location filename="../src/librssguard/core/messagesforfiltersmodel.cpp" line="12"/>
       <source>URL</source>
-      <translation type="unfinished">URL</translation>
+      <translation>URL</translation>
     </message>
     <message>
       <location filename="../src/librssguard/core/messagesforfiltersmodel.cpp" line="12"/>
       <source>Author</source>
-      <translation type="unfinished">Author</translation>
+      <translation>Författare</translation>
     </message>
     <message>
       <location filename="../src/librssguard/core/messagesforfiltersmodel.cpp" line="13"/>
       <source>Score</source>
-      <translation type="unfinished">Score</translation>
+      <translation>Poäng</translation>
     </message>
     <message>
       <location filename="../src/librssguard/core/messagesforfiltersmodel.cpp" line="13"/>
       <source>Date</source>
-      <translation type="unfinished">Date</translation>
+      <translation>Datum</translation>
     </message>
     <message>
       <location filename="../src/librssguard/core/messagesforfiltersmodel.cpp" line="36"/>
@@ -4328,97 +4327,97 @@ Login tokens expiration: %2</translation>
     <message>
       <location filename="../src/librssguard/core/messagesmodel.cpp" line="280"/>
       <source>Id</source>
-      <translation type="unfinished">Id</translation>
+      <translation>ID</translation>
     </message>
     <message>
       <location filename="../src/librssguard/core/messagesmodel.cpp" line="281"/>
       <source>Read</source>
-      <translation type="unfinished">Read</translation>
+      <translation>Läst</translation>
     </message>
     <message>
       <location filename="../src/librssguard/core/messagesmodel.cpp" line="283"/>
       <source>Deleted</source>
-      <translation type="unfinished">Deleted</translation>
+      <translation>Borttaget</translation>
     </message>
     <message>
       <location filename="../src/librssguard/core/messagesmodel.cpp" line="282"/>
       <source>Important</source>
-      <translation type="unfinished">Important</translation>
+      <translation>Viktigt</translation>
     </message>
     <message>
       <location filename="../src/librssguard/core/messagesmodel.cpp" line="296"/>
       <source>Feed</source>
-      <translation type="unfinished">Feed</translation>
+      <translation>Flöde</translation>
     </message>
     <message>
       <location filename="../src/librssguard/core/messagesmodel.cpp" line="286"/>
       <source>Title</source>
-      <translation type="unfinished">Title</translation>
+      <translation>Titel</translation>
     </message>
     <message>
       <location filename="../src/librssguard/core/messagesmodel.cpp" line="287"/>
       <source>Url</source>
-      <translation type="unfinished">Url</translation>
+      <translation>URL</translation>
     </message>
     <message>
       <location filename="../src/librssguard/core/messagesmodel.cpp" line="288"/>
       <source>Author</source>
-      <translation type="unfinished">Author</translation>
+      <translation>Författare</translation>
     </message>
     <message>
       <location filename="../src/librssguard/core/messagesmodel.cpp" line="290"/>
       <source>Contents</source>
-      <translation type="unfinished">Contents</translation>
+      <translation>Innehåll</translation>
     </message>
     <message>
       <location filename="../src/librssguard/core/messagesmodel.cpp" line="284"/>
       <source>Permanently deleted</source>
-      <translation type="unfinished">Permanently deleted</translation>
+      <translation>Permanent borttagna</translation>
     </message>
     <message>
       <location filename="../src/librssguard/core/messagesmodel.cpp" line="291"/>
       <source>Attachments</source>
-      <translation type="unfinished">Attachments</translation>
+      <translation>Bilagor</translation>
     </message>
     <message>
       <location filename="../src/librssguard/core/messagesmodel.cpp" line="306"/>
       <source>List of attachments.</source>
-      <translation type="unfinished">List of attachments.</translation>
+      <translation>Lista över bilagor.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/core/messagesmodel.cpp" line="293"/>
       <source>Account ID</source>
-      <translation type="unfinished">Account ID</translation>
+      <translation>Konto-ID</translation>
     </message>
     <message>
       <location filename="../src/librssguard/core/messagesmodel.cpp" line="294"/>
       <source>Custom ID</source>
-      <translation type="unfinished">Custom ID</translation>
+      <translation>Anpassat ID</translation>
     </message>
     <message>
       <location filename="../src/librssguard/core/messagesmodel.cpp" line="295"/>
       <source>Custom hash</source>
-      <translation type="unfinished">Custom hash</translation>
+      <translation>Anpassad hash</translation>
     </message>
     <message>
       <location filename="../src/librssguard/core/messagesmodel.cpp" line="285"/>
       <source>Feed ID</source>
-      <translation type="unfinished">Feed ID</translation>
+      <translation>Flödes-ID</translation>
     </message>
     <message>
       <location filename="../src/librssguard/core/messagesmodel.cpp" line="298"/>
       <source>Has enclosures</source>
-      <translation type="unfinished">Has enclosures</translation>
+      <translation>Har infogade bilagor</translation>
     </message>
     <message>
       <location filename="../src/librssguard/core/messagesmodel.cpp" line="292"/>
       <source>Score</source>
-      <translation type="unfinished">Score</translation>
+      <translation>Poäng</translation>
     </message>
     <message>
       <location filename="../src/librssguard/core/messagesmodel.cpp" line="289"/>
       <source>Date</source>
-      <translation type="unfinished">Date</translation>
+      <translation>Datum</translation>
     </message>
     <message>
       <location filename="../src/librssguard/core/messagesmodel.cpp" line="200"/>
@@ -4616,12 +4615,12 @@ Login tokens expiration: %2</translation>
     <message>
       <location filename="../src/librssguard/gui/toolbars/messagestoolbar.cpp" line="251"/>
       <source>No extra highlighting</source>
-      <translation type="unfinished">No extra highlighting</translation>
+      <translation>Ingen färgmarkering</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/toolbars/messagestoolbar.cpp" line="92"/>
       <source>Toolbar spacer</source>
-      <translation type="unfinished">Toolbar spacer</translation>
+      <translation>Verktygsavskiljare</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/toolbars/messagestoolbar.cpp" line="217"/>
@@ -4740,32 +4739,32 @@ Login tokens expiration: %2</translation>
     <message>
       <location filename="../src/librssguard/gui/messagesview.cpp" line="667"/>
       <source>Problem with starting external e-mail client</source>
-      <translation type="unfinished">Problem with starting external e-mail client</translation>
+      <translation>Problem att starta extern e-postklient</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/messagesview.cpp" line="668"/>
       <source>External e-mail client could not be started.</source>
-      <translation type="unfinished">External e-mail client could not be started.</translation>
+      <translation>Extern e-postklient kunde inte startas.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/messagesview.cpp" line="419"/>
       <source>Open with external tool</source>
-      <translation type="unfinished">Open with external tool</translation>
+      <translation>Öppna med externt verktyg</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/messagesview.cpp" line="877"/>
       <source>Cannot run external tool</source>
-      <translation type="unfinished">Cannot run external tool</translation>
+      <translation>Kan inte köra externt verktyg</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/messagesview.cpp" line="878"/>
       <source>External tool &apos;%1&apos; could not be started.</source>
-      <translation type="unfinished">External tool &apos;%1&apos; could not be started.</translation>
+      <translation>Det externa verktyget &quot;%1&quot; kan inte startas.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/messagesview.cpp" line="436"/>
       <source>No external tools activated</source>
-      <translation type="unfinished">No external tools activated</translation>
+      <translation>Inga externa verktyg aktiverade</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/messagesview.cpp" line="399"/>
@@ -4778,7 +4777,7 @@ Login tokens expiration: %2</translation>
     <message>
       <location filename="../src/librssguard/gui/messagebox.cpp" line="85"/>
       <source>Do not show this dialog again.</source>
-      <translation type="unfinished">Do not show this dialog again.</translation>
+      <translation>Visa inte denna dialog igen.</translation>
     </message>
   </context>
   <context>
@@ -4787,67 +4786,67 @@ Login tokens expiration: %2</translation>
       <location filename="../src/librssguard/network-web/networkfactory.cpp" line="81"/>
       <source>protocol error</source>
       <extracomment>Network status.</extracomment>
-      <translation type="unfinished">protocol error</translation>
+      <translation>Protokollfel</translation>
     </message>
     <message>
       <location filename="../src/librssguard/network-web/networkfactory.cpp" line="89"/>
       <source>host not found</source>
       <extracomment>Network status.</extracomment>
-      <translation type="unfinished">host not found</translation>
+      <translation>Värddatorn kan inte hittas</translation>
     </message>
     <message>
       <location filename="../src/librssguard/network-web/networkfactory.cpp" line="99"/>
       <source>connection refused</source>
       <extracomment>Network status.</extracomment>
-      <translation type="unfinished">connection refused</translation>
+      <translation>Anslutning nekades</translation>
     </message>
     <message>
       <location filename="../src/librssguard/network-web/networkfactory.cpp" line="104"/>
       <source>connection timed out</source>
       <extracomment>Network status.</extracomment>
-      <translation type="unfinished">connection timed out</translation>
+      <translation>Anslutningstiden överskreds</translation>
     </message>
     <message>
       <location filename="../src/librssguard/network-web/networkfactory.cpp" line="109"/>
       <source>SSL handshake failed</source>
       <extracomment>Network status.</extracomment>
-      <translation type="unfinished">SSL handshake failed</translation>
+      <translation>SSL-handskakning misslyckades</translation>
     </message>
     <message>
       <location filename="../src/librssguard/network-web/networkfactory.cpp" line="115"/>
       <source>proxy server connection refused</source>
       <extracomment>Network status.</extracomment>
-      <translation type="unfinished">proxy server connection refused</translation>
+      <translation>Proxy-anslutning nekades</translation>
     </message>
     <message>
       <location filename="../src/librssguard/network-web/networkfactory.cpp" line="120"/>
       <source>temporary failure</source>
       <extracomment>Network status.</extracomment>
-      <translation type="unfinished">temporary failure</translation>
+      <translation>Temporärt fel</translation>
     </message>
     <message>
       <location filename="../src/librssguard/network-web/networkfactory.cpp" line="125"/>
       <source>authentication failed</source>
       <extracomment>Network status.</extracomment>
-      <translation type="unfinished">authentication failed</translation>
+      <translation>Autentiseringen misslyckades</translation>
     </message>
     <message>
       <location filename="../src/librssguard/network-web/networkfactory.cpp" line="130"/>
       <source>proxy authentication required</source>
       <extracomment>Network status.</extracomment>
-      <translation type="unfinished">proxy authentication required</translation>
+      <translation>Proxyautentisering krävs</translation>
     </message>
     <message>
       <location filename="../src/librssguard/network-web/networkfactory.cpp" line="135"/>
       <source>proxy server not found</source>
       <extracomment>Network status.</extracomment>
-      <translation type="unfinished">proxy server not found</translation>
+      <translation>Proxyservern hittades inte</translation>
     </message>
     <message>
       <location filename="../src/librssguard/network-web/networkfactory.cpp" line="150"/>
       <source>content not found</source>
       <extracomment>Network status.</extracomment>
-      <translation type="unfinished">content not found</translation>
+      <translation>Inget innehåll hittades</translation>
     </message>
     <message>
       <location filename="../src/librssguard/network-web/networkfactory.cpp" line="156"/>
@@ -4859,23 +4858,23 @@ Login tokens expiration: %2</translation>
       <location filename="../src/librssguard/network-web/networkfactory.cpp" line="140"/>
       <source>no errors</source>
       <extracomment>Network status.</extracomment>
-      <translation type="unfinished">no errors</translation>
+      <translation>Inga fel</translation>
     </message>
     <message>
       <location filename="../src/librssguard/network-web/networkfactory.cpp" line="84"/>
       <source>access to content was denied</source>
-      <translation type="unfinished">access to content was denied</translation>
+      <translation>åtkomst till innehållet nekades</translation>
     </message>
     <message>
       <location filename="../src/librssguard/network-web/networkfactory.cpp" line="93"/>
       <source>connection timed out or was cancelled</source>
-      <translation type="unfinished">connection timed out or was cancelled</translation>
+      <translation>anslutningstiden överskreds, eller avbröts</translation>
     </message>
     <message>
       <location filename="../src/librssguard/network-web/networkfactory.cpp" line="145"/>
       <source>unknown content</source>
       <extracomment>Network status.</extracomment>
-      <translation type="unfinished">unknown content</translation>
+      <translation>okänt innehåll</translation>
     </message>
   </context>
   <context>
@@ -4883,73 +4882,73 @@ Login tokens expiration: %2</translation>
     <message>
       <location filename="../src/librssguard/gui/reusable/networkproxydetails.cpp" line="18"/>
       <source>No proxy</source>
-      <translation type="unfinished">No proxy</translation>
+      <translation>Ingen proxy</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/reusable/networkproxydetails.cpp" line="19"/>
       <source>System proxy</source>
-      <translation type="unfinished">System proxy</translation>
+      <translation>Systemets proxy</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/reusable/networkproxydetails.cpp" line="20"/>
       <source>Socks5</source>
-      <translation type="unfinished">Socks5</translation>
+      <translation>Socks5</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/reusable/networkproxydetails.cpp" line="21"/>
       <source>Http</source>
-      <translation type="unfinished">Http</translation>
+      <translation>HTTP</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/reusable/networkproxydetails.ui" line="14"/>
       <source>Form</source>
-      <translation type="unfinished">Form</translation>
+      <translation>Form</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/reusable/networkproxydetails.ui" line="23"/>
       <source>Host</source>
-      <translation type="unfinished">Host</translation>
+      <translation>Värd</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/reusable/networkproxydetails.ui" line="41"/>
       <source>Hostname or IP of your proxy server</source>
-      <translation type="unfinished">Hostname or IP of your proxy server</translation>
+      <translation>Värdnamn eller IP-adress till din proxyserver</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/reusable/networkproxydetails.ui" line="48"/>
       <source>Port</source>
-      <translation type="unfinished">Port</translation>
+      <translation>Port</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/reusable/networkproxydetails.ui" line="76"/>
       <source>Username</source>
-      <translation type="unfinished">Username</translation>
+      <translation>Användarnamn</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/reusable/networkproxydetails.ui" line="92"/>
       <source>Your username for proxy server authentication</source>
-      <translation type="unfinished">Your username for proxy server authentication</translation>
+      <translation>Ditt användarnamn för proxyserverns autentisering</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/reusable/networkproxydetails.ui" line="99"/>
       <source>Password</source>
-      <translation type="unfinished">Password</translation>
+      <translation>Lösenord</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/reusable/networkproxydetails.ui" line="118"/>
       <source>Your password for proxy server authentication</source>
-      <translation type="unfinished">Your password for proxy server authentication</translation>
+      <translation>Ditt lösenord för proxyserverns autentisering</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/reusable/networkproxydetails.cpp" line="12"/>
       <source>Note that these settings are applied only on newly established connections.</source>
-      <translation type="unfinished">Note that these settings are applied only on newly established connections.</translation>
+      <translation>Notera att dess inställningar endast verkställs för nyetablerade anslutningar.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/reusable/networkproxydetails.ui" line="146"/>
       <source>Type</source>
       <extracomment>Proxy server type.</extracomment>
-      <translation type="unfinished">Type</translation>
+      <translation>Typ</translation>
     </message>
   </context>
   <context>
@@ -4957,62 +4956,62 @@ Login tokens expiration: %2</translation>
     <message>
       <location filename="../src/librssguard/services/newsblur/gui/newsbluraccountdetails.ui" line="17"/>
       <source>URL</source>
-      <translation type="unfinished">URL</translation>
+      <translation>URL</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/newsblur/gui/newsbluraccountdetails.ui" line="30"/>
       <source>Download unread articles only</source>
-      <translation type="unfinished">Download unread articles only</translation>
+      <translation>Ladda bara ner olästa artiklar</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/newsblur/gui/newsbluraccountdetails.ui" line="39"/>
       <source>Only download newest X articles per feed</source>
-      <translation type="unfinished">Only download newest X articles per feed</translation>
+      <translation>Ladda endast ner X nyaste artiklar per flöde</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/newsblur/gui/newsbluraccountdetails.ui" line="63"/>
       <source>Authentication</source>
-      <translation type="unfinished">Authentication</translation>
+      <translation>Autentisering</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/newsblur/gui/newsbluraccountdetails.ui" line="69"/>
       <source>Username</source>
-      <translation type="unfinished">Username</translation>
+      <translation>Användarnamn</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/newsblur/gui/newsbluraccountdetails.ui" line="82"/>
       <source>Password</source>
-      <translation type="unfinished">Password</translation>
+      <translation>Lösenord</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/newsblur/gui/newsbluraccountdetails.ui" line="100"/>
       <source>&amp;Test setup</source>
-      <translation type="unfinished">&amp;Test setup</translation>
+      <translation>&amp;Testa inställning</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/newsblur/gui/newsbluraccountdetails.cpp" line="22"/>
       <source>Password for your account</source>
-      <translation type="unfinished">Password for your account</translation>
+      <translation>Lösenord för ditt konto</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/newsblur/gui/newsbluraccountdetails.cpp" line="23"/>
       <source>Username for your account</source>
-      <translation type="unfinished">Username for your account</translation>
+      <translation>Användarnamn för ditt konto</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/newsblur/gui/newsbluraccountdetails.cpp" line="24"/>
       <source>URL of your server, without any service-specific path</source>
-      <translation type="unfinished">URL of your server, without any service-specific path</translation>
+      <translation>URL för din server, utan serverspecifik sökväg</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/newsblur/gui/newsbluraccountdetails.cpp" line="26"/>
       <source>No test done yet.</source>
-      <translation type="unfinished">No test done yet.</translation>
+      <translation>Inget test utfört ännu.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/newsblur/gui/newsbluraccountdetails.cpp" line="27"/>
       <source>Here, results of connection test are shown.</source>
-      <translation type="unfinished">Here, results of connection test are shown.</translation>
+      <translation>Här visas resultat av anslutningstest.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/newsblur/gui/newsbluraccountdetails.cpp" line="29"/>
@@ -5022,17 +5021,17 @@ Login tokens expiration: %2</translation>
     <message>
       <location filename="../src/librssguard/services/newsblur/gui/newsbluraccountdetails.cpp" line="64"/>
       <source>You are good to go!</source>
-      <translation type="unfinished">You are good to go!</translation>
+      <translation>Då kör vi!</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/newsblur/gui/newsbluraccountdetails.cpp" line="65"/>
       <source>Yeah.</source>
-      <translation type="unfinished">Yeah.</translation>
+      <translation>Ja.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/newsblur/gui/newsbluraccountdetails.cpp" line="73"/>
       <source>Network error: &apos;%1&apos;.</source>
-      <translation type="unfinished">Network error: &apos;%1&apos;.</translation>
+      <translation>Nätverksfel: &apos;%1&apos;.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/newsblur/gui/newsbluraccountdetails.cpp" line="74"/>
@@ -5042,7 +5041,7 @@ Login tokens expiration: %2</translation>
     <message>
       <location filename="../src/librssguard/services/newsblur/gui/newsbluraccountdetails.cpp" line="78"/>
       <source>Error: &apos;%1&apos;.</source>
-      <translation type="unfinished">Error: &apos;%1&apos;.</translation>
+      <translation>Fel: &apos;%1&apos;.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/newsblur/gui/newsbluraccountdetails.cpp" line="79"/>
@@ -5052,32 +5051,32 @@ Login tokens expiration: %2</translation>
     <message>
       <location filename="../src/librssguard/services/newsblur/gui/newsbluraccountdetails.cpp" line="87"/>
       <source>Username cannot be empty.</source>
-      <translation type="unfinished">Username cannot be empty.</translation>
+      <translation>Användarnamn saknas.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/newsblur/gui/newsbluraccountdetails.cpp" line="90"/>
       <source>Username is okay.</source>
-      <translation type="unfinished">Username is okay.</translation>
+      <translation>Användarnamn okay.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/newsblur/gui/newsbluraccountdetails.cpp" line="98"/>
       <source>Password cannot be empty.</source>
-      <translation type="unfinished">Password cannot be empty.</translation>
+      <translation>Lösenord saknas.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/newsblur/gui/newsbluraccountdetails.cpp" line="101"/>
       <source>Password is okay.</source>
-      <translation type="unfinished">Password is okay.</translation>
+      <translation>Lösenord okay.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/newsblur/gui/newsbluraccountdetails.cpp" line="109"/>
       <source>URL cannot be empty.</source>
-      <translation type="unfinished">URL cannot be empty.</translation>
+      <translation>URL saknas.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/newsblur/gui/newsbluraccountdetails.cpp" line="112"/>
       <source>URL is okay.</source>
-      <translation type="unfinished">URL is okay.</translation>
+      <translation>URL okay.</translation>
     </message>
   </context>
   <context>
@@ -5115,32 +5114,32 @@ Login tokens expiration: %2</translation>
     <message>
       <location filename="../src/librssguard/network-web/oauth2service.cpp" line="92"/>
       <source>Click here to login.</source>
-      <translation type="unfinished">Click here to login.</translation>
+      <translation>Klicka här för att logga in.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/network-web/oauth2service.cpp" line="222"/>
       <source>Logging in via OAuth 2.0...</source>
-      <translation type="unfinished">Logging in via OAuth 2.0...</translation>
+      <translation>Loggar in via OAuth 2.0...</translation>
     </message>
     <message>
       <location filename="../src/librssguard/network-web/oauth2service.cpp" line="223"/>
       <source>Refreshing login tokens for &apos;%1&apos;...</source>
-      <translation type="unfinished">Refreshing login tokens for &apos;%1&apos;...</translation>
+      <translation>Uppdaterar inloggningstoken för &quot;%1&quot;...</translation>
     </message>
     <message>
       <location filename="../src/librssguard/network-web/oauth2service.cpp" line="91"/>
       <source>You have to login first</source>
-      <translation type="unfinished">You have to login first</translation>
+      <translation>Du måste logga in först</translation>
     </message>
     <message>
       <location filename="../src/librssguard/network-web/oauth2service.cpp" line="52"/>
       <source>You can close this window now. Go back to %1.</source>
-      <translation type="unfinished">You can close this window now. Go back to %1.</translation>
+      <translation>Du kan stänga det här fönstret nu. Gå tillbaka till %1.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/network-web/oauth2service.cpp" line="347"/>
       <source>Failed to start OAuth redirection listener. Maybe your rights are not high enough.</source>
-      <translation type="unfinished">Failed to start OAuth redirection listener. Maybe your rights are not high enough.</translation>
+      <translation>Kunde inte starta OAuth vidarebefordringslyssnare. Dina rättigheter kanske inte är höga nog.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/network-web/oauth2service.cpp" line="95"/>
@@ -5153,99 +5152,99 @@ Login tokens expiration: %2</translation>
     <message>
       <location filename="../src/librssguard/services/owncloud/gui/owncloudaccountdetails.cpp" line="15"/>
       <source>Leaving this option on causes that updates of feeds will be probably much slower and may time-out often.</source>
-      <translation type="unfinished">Leaving this option on causes that updates of feeds will be probably much slower and may time-out often.</translation>
+      <translation>Aktivering av det här alternativet orsakar troligen att flödesuppdateringar tar längre tid och att tidsgränsen oftare överskrids.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/owncloud/gui/owncloudaccountdetails.cpp" line="18"/>
       <source>Password for your Nextcloud account</source>
-      <translation type="unfinished">Password for your Nextcloud account</translation>
+      <translation>Lösenord för ditt Nextcloud-konto</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/owncloud/gui/owncloudaccountdetails.cpp" line="20"/>
       <source>Username for your Nextcloud account</source>
-      <translation type="unfinished">Username for your Nextcloud account</translation>
+      <translation>Användarnamn för ditt Nextcloud-konto</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/owncloud/gui/owncloudaccountdetails.cpp" line="21"/>
       <source>URL of your Nextcloud server, without any API path</source>
-      <translation type="unfinished">URL of your Nextcloud server, without any API path</translation>
+      <translation>URL för din Nextcloud-server, utan API-sökväg</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/owncloud/gui/owncloudaccountdetails.cpp" line="23"/>
       <source>No test done yet.</source>
-      <translation type="unfinished">No test done yet.</translation>
+      <translation>Inget test utfört ännu.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/owncloud/gui/owncloudaccountdetails.cpp" line="24"/>
       <source>Here, results of connection test are shown.</source>
-      <translation type="unfinished">Here, results of connection test are shown.</translation>
+      <translation>Här visas resultat av anslutningstest.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/owncloud/gui/owncloudaccountdetails.cpp" line="28"/>
       <source>= unlimited</source>
-      <translation type="unfinished">= unlimited</translation>
+      <translation>= obegränsat</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/owncloud/gui/owncloudaccountdetails.cpp" line="63"/>
       <source>Network error: &apos;%1&apos;.</source>
-      <translation type="unfinished">Network error: &apos;%1&apos;.</translation>
+      <translation>Nätverksfel: &apos;%1&apos;.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/owncloud/gui/owncloudaccountdetails.cpp" line="64"/>
       <source>Network error, have you entered correct Nextcloud endpoint and password?</source>
-      <translation type="unfinished">Network error, have you entered correct Nextcloud endpoint and password?</translation>
+      <translation>Nätverksfel! Har du angett korrekt Nextcloud-slutpunkt och lösenord?</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/owncloud/gui/owncloudaccountdetails.cpp" line="69"/>
       <location filename="../src/librssguard/services/owncloud/gui/owncloudaccountdetails.cpp" line="75"/>
       <source>Installed version: %1, required at least: %2.</source>
-      <translation type="unfinished">Installed version: %1, required at least: %2.</translation>
+      <translation>Installerad version: %1, minsta krav: %2.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/owncloud/gui/owncloudaccountdetails.cpp" line="71"/>
       <source>Selected Nextcloud News server is running unsupported version.</source>
-      <translation type="unfinished">Selected Nextcloud News server is running unsupported version.</translation>
+      <translation>Den valda Nextcloud News-servern kör en version som inte stöds.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/owncloud/gui/owncloudaccountdetails.cpp" line="77"/>
       <source>Nextcloud News server is okay.</source>
-      <translation type="unfinished">Nextcloud News server is okay.</translation>
+      <translation>Nextclouds nyhetsserver är okay.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/owncloud/gui/owncloudaccountdetails.cpp" line="82"/>
       <location filename="../src/librssguard/services/owncloud/gui/owncloudaccountdetails.cpp" line="83"/>
       <source>Unspecified error, did you enter correct URL?</source>
-      <translation type="unfinished">Unspecified error, did you enter correct URL?</translation>
+      <translation>Ospecificerat fel! Angav du korrekt URL?</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/owncloud/gui/owncloudaccountdetails.cpp" line="91"/>
       <source>Username cannot be empty.</source>
-      <translation type="unfinished">Username cannot be empty.</translation>
+      <translation>Användarnamn saknas.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/owncloud/gui/owncloudaccountdetails.cpp" line="94"/>
       <source>Username is okay.</source>
-      <translation type="unfinished">Username is okay.</translation>
+      <translation>Användarnamn okay.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/owncloud/gui/owncloudaccountdetails.cpp" line="102"/>
       <source>Password cannot be empty.</source>
-      <translation type="unfinished">Password cannot be empty.</translation>
+      <translation>Lösenord saknas.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/owncloud/gui/owncloudaccountdetails.cpp" line="105"/>
       <source>Password is okay.</source>
-      <translation type="unfinished">Password is okay.</translation>
+      <translation>Lösenord okay.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/owncloud/gui/owncloudaccountdetails.cpp" line="113"/>
       <source>URL cannot be empty.</source>
-      <translation type="unfinished">URL cannot be empty.</translation>
+      <translation>URL saknas.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/owncloud/gui/owncloudaccountdetails.cpp" line="116"/>
       <source>URL is okay.</source>
-      <translation type="unfinished">URL is okay.</translation>
+      <translation>URL okay.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/owncloud/gui/owncloudaccountdetails.cpp" line="31"/>
@@ -5255,42 +5254,42 @@ Login tokens expiration: %2</translation>
     <message>
       <location filename="../src/librssguard/services/owncloud/gui/owncloudaccountdetails.ui" line="19"/>
       <source>URL</source>
-      <translation type="unfinished">URL</translation>
+      <translation>URL</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/owncloud/gui/owncloudaccountdetails.ui" line="34"/>
       <source>Download unread articles only</source>
-      <translation type="unfinished">Download unread articles only</translation>
+      <translation>Ladda bara ner olästa artiklar</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/owncloud/gui/owncloudaccountdetails.ui" line="43"/>
       <source>Only download newest X articles per feed</source>
-      <translation type="unfinished">Only download newest X articles per feed</translation>
+      <translation>Ladda endast ner X nyaste artiklar per flöde</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/owncloud/gui/owncloudaccountdetails.ui" line="81"/>
       <source>Some feeds require authentication, including GMail feeds. BASIC, NTLM-2 and DIGEST-MD5 authentication schemes are supported.</source>
-      <translation type="unfinished">Some feeds require authentication, including GMail feeds. BASIC, NTLM-2 and DIGEST-MD5 authentication schemes are supported.</translation>
+      <translation>Vissa flöden kräver autentisering. Inklusive Gmail-flöden. BASIC, NTLM-2 och DIGEST-MD5 autentiseringsscheman stöds.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/owncloud/gui/owncloudaccountdetails.ui" line="84"/>
       <source>Authentication</source>
-      <translation type="unfinished">Authentication</translation>
+      <translation>Autentisering</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/owncloud/gui/owncloudaccountdetails.ui" line="96"/>
       <source>Username</source>
-      <translation type="unfinished">Username</translation>
+      <translation>Användarnamn</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/owncloud/gui/owncloudaccountdetails.ui" line="109"/>
       <source>Password</source>
-      <translation type="unfinished">Password</translation>
+      <translation>Lösenord</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/owncloud/gui/owncloudaccountdetails.ui" line="127"/>
       <source>&amp;Test setup</source>
-      <translation type="unfinished">&amp;Test setup</translation>
+      <translation>&amp;Testa inställning</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/owncloud/gui/owncloudaccountdetails.ui" line="162"/>
@@ -5314,38 +5313,38 @@ Login tokens expiration: %2</translation>
       <location filename="../src/librssguard/miscellaneous/localization.cpp" line="77"/>
       <source>LANG_ABBREV</source>
       <extracomment>Abbreviation of language, e.g. en. Use ISO 639-1 code here combined with ISO 3166-1 (alpha-2) code. Examples: &quot;cs&quot;, &quot;en&quot;, &quot;it&quot;, &quot;cs_CZ&quot;, &quot;en_GB&quot;, &quot;en_US&quot;.</extracomment>
-      <translation type="unfinished">LANG_ABBREV</translation>
+      <translation>sv</translation>
     </message>
     <message>
       <location filename="../src/librssguard/miscellaneous/application.cpp" line="144"/>
       <location filename="../src/librssguard/miscellaneous/localization.cpp" line="78"/>
       <source>LANG_AUTHOR</source>
       <extracomment>Name of translator - optional.</extracomment>
-      <translation type="unfinished">LANG_AUTHOR</translation>
+      <translation>Åke Engelbrektson</translation>
     </message>
     <message>
       <location filename="../src/librssguard/miscellaneous/localization.cpp" line="79"/>
       <source>LANG_EMAIL</source>
-      <translation type="unfinished">LANG_EMAIL</translation>
+      <translation>eson57@gmail.com</translation>
     </message>
     <message numerus="yes">
       <location filename="../src/librssguard/core/feeddownloader.cpp" line="537"/>
       <source>
 
 + %n other feeds.</source>
-      <translation type="unfinished">
+      <translation>
         <numerusform>
 
-+ %n other feeds.</numerusform>
++ %n annat flöde.</numerusform>
         <numerusform>
 
-+ %n other feeds.</numerusform>
++ %n andra flöden.</numerusform>
       </translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/standard/standardserviceroot.cpp" line="58"/>
       <source>Load initial set of feeds</source>
-      <translation type="unfinished">Load initial set of feeds</translation>
+      <translation>Läs in inledande flödesuppsättning</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/tt-rss/ttrssserviceentrypoint.cpp" line="17"/>
@@ -5354,45 +5353,45 @@ Login tokens expiration: %2</translation>
 Tiny Tiny RSS is an open source web-based news feed (RSS/Atom) reader and aggregator, designed to allow you to read news from any location, while feeling as close to a real desktop application as possible.
 
 At least API level %1 is required.</source>
-      <translation type="unfinished">This service offers integration with Tiny Tiny RSS.
+      <translation>Denna tjänst erbjuder integration med Tiny Tiny RSS.
 
-Tiny Tiny RSS is an open source web-based news feed (RSS/Atom) reader and aggregator, designed to allow you to read news from any location, while feeling as close to a real desktop application as possible.
+Tiny Tiny RSS är en öppen källkods, webbaserad flödesläsare (RSS/Atom) och aggregator, designad för att låta dig läsa nyheter från valfri webbplats, med känslan så nära en riktig skrivbordsklient som möjligt.
 
-At least API level %1 is required.</translation>
+Minst API-nivå %1 krävs.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/owncloud/owncloudserviceentrypoint.cpp" line="34"/>
       <source>The News app is an RSS/Atom feed aggregator. It is part of Nextcloud suite. This plugin implements %1 API.</source>
-      <translation type="unfinished">The News app is an RSS/Atom feed aggregator. It is part of Nextcloud suite. This plugin implements %1 API.</translation>
+      <translation>Nyhetsappen är en RSS/Atom flödesaggregator. Den är en del av Nextcloud-sviten. Denna tilläggsmodul implementerar %1 API.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/miscellaneous/systemfactory.cpp" line="266"/>
       <source>New version available</source>
-      <translation type="unfinished">New version available</translation>
+      <translation>Ny tillgänglig version</translation>
     </message>
     <message>
       <location filename="../src/librssguard/miscellaneous/systemfactory.cpp" line="267"/>
       <source>Click the bubble for more information.</source>
-      <translation type="unfinished">Click the bubble for more information.</translation>
+      <translation>Klicka på detta meddelande för mer information.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/miscellaneous/externaltool.cpp" line="41"/>
       <source>Passed external tool representation is not valid.</source>
-      <translation type="unfinished">Passed external tool representation is not valid.</translation>
+      <translation>Det begärda externa verktyget är inte giltigt.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/gmail/gmailentrypoint.cpp" line="36"/>
       <source>Simple Gmail integration via JSON API. Allows sending e-mails too.</source>
-      <translation type="unfinished">Simple Gmail integration via JSON API. Allows sending e-mails too.</translation>
+      <translation>Enkel Gmail-integrering via JSON API. Låter dig skicka e-post också.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/feedly/feedlyentrypoint.cpp" line="34"/>
       <source>Keep up with the topics and trends you care about, without the overwhelm.
 
 Feedly is a secure space where you can privately organize and research the topics and trends that matter to you.</source>
-      <translation type="unfinished">Keep up with the topics and trends you care about, without the overwhelm.
+      <translation>Håll koll på de ämnen och trender du bryr dig om, utan att överdriva.
 
-Feedly is a secure space where you can privately organize and research the topics and trends that matter to you.</translation>
+Feedly är ett säkert utrymme där du privat kan organisera och utforska de ämnen och trender som är viktiga för dig.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/database/databasequeries.cpp" line="2510"/>
@@ -5549,7 +5548,7 @@ List of supported readers:</translation>
     <message>
       <location filename="../src/librssguard/network-web/readability.cpp" line="60"/>
       <source>There is error: %1</source>
-      <translation type="unfinished">There is error: %1</translation>
+      <translation>Det finns fel: %1 </translation>
     </message>
     <message>
       <location filename="../src/librssguard/network-web/readability.cpp" line="83"/>
@@ -5573,22 +5572,22 @@ List of supported readers:</translation>
     <message>
       <location filename="../src/librssguard/services/abstract/recyclebin.cpp" line="17"/>
       <source>Recycle bin</source>
-      <translation type="unfinished">Recycle bin</translation>
+      <translation>Papperskorgen</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/abstract/recyclebin.cpp" line="47"/>
       <source>Restore recycle bin</source>
-      <translation type="unfinished">Restore recycle bin</translation>
+      <translation>Återställ papperskorgen</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/abstract/recyclebin.cpp" line="48"/>
       <source>Empty recycle bin</source>
-      <translation type="unfinished">Empty recycle bin</translation>
+      <translation>Töm papperskorgen</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/abstract/recyclebin.cpp" line="105"/>
       <source>Are you sure?</source>
-      <translation type="unfinished">Are you sure?</translation>
+      <translation>Är du säker?</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/abstract/recyclebin.cpp" line="106"/>
@@ -5614,114 +5613,114 @@ List of supported readers:</translation>
     <message>
       <location filename="../src/librssguard/services/reddit/gui/redditaccountdetails.cpp" line="17"/>
       <source>You have to fill in your client ID/secret and also fill in correct redirect URL.</source>
-      <translation type="unfinished">You have to fill in your client ID/secret and also fill in correct redirect URL.</translation>
+      <translation>Du måste fylla i ditt klient-ID/din hemlighet och även korrekt omdirigerings-URL.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/reddit/gui/redditaccountdetails.cpp" line="20"/>
       <location filename="../src/librssguard/services/reddit/gui/redditaccountdetails.cpp" line="21"/>
       <source>Not tested yet.</source>
-      <translation type="unfinished">Not tested yet.</translation>
+      <translation>Inte testat ännu.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/reddit/gui/redditaccountdetails.cpp" line="23"/>
       <source>User-visible username</source>
-      <translation type="unfinished">User-visible username</translation>
+      <translation>Användarsynligt användarnamn</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/reddit/gui/redditaccountdetails.cpp" line="57"/>
       <source>No username entered.</source>
-      <translation type="unfinished">No username entered.</translation>
+      <translation>Inget användarnamn angivet.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/reddit/gui/redditaccountdetails.cpp" line="60"/>
       <source>Some username entered.</source>
-      <translation type="unfinished">Some username entered.</translation>
+      <translation>Användarnamn angivet.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/reddit/gui/redditaccountdetails.cpp" line="66"/>
       <source>You did not grant access.</source>
-      <translation type="unfinished">You did not grant access.</translation>
+      <translation>Du beviljade inte åtkomst.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/reddit/gui/redditaccountdetails.cpp" line="67"/>
       <location filename="../src/librssguard/services/reddit/gui/redditaccountdetails.cpp" line="75"/>
       <source>There was error during testing.</source>
-      <translation type="unfinished">There was error during testing.</translation>
+      <translation>Fel uppstod vid testning.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/reddit/gui/redditaccountdetails.cpp" line="74"/>
       <source>There is error: %1</source>
-      <translation type="unfinished">There is error: %1</translation>
+      <translation>Det finns fel: %1 </translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/reddit/gui/redditaccountdetails.cpp" line="80"/>
       <source>Tested successfully. You may be prompted to login once more.</source>
-      <translation type="unfinished">Tested successfully. You may be prompted to login once more.</translation>
+      <translation>Testet lyckades. Du kan behöva logga in igen.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/reddit/gui/redditaccountdetails.cpp" line="81"/>
       <source>Your access was approved.</source>
-      <translation type="unfinished">Your access was approved.</translation>
+      <translation>Åtkomst beviljades.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/reddit/gui/redditaccountdetails.cpp" line="115"/>
       <source>Preconfigured client ID/secret will be used.</source>
-      <translation type="unfinished">Preconfigured client ID/secret will be used.</translation>
+      <translation>Förkonfigurerad klient-ID/hemlighet kommer att användas.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/reddit/gui/redditaccountdetails.cpp" line="117"/>
       <source>Empty value is entered.</source>
-      <translation type="unfinished">Empty value is entered.</translation>
+      <translation>Ett tomt värde angavs.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/reddit/gui/redditaccountdetails.cpp" line="121"/>
       <source>Some value is entered.</source>
-      <translation type="unfinished">Some value is entered.</translation>
+      <translation>Ett värde angavs.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/reddit/gui/redditaccountdetails.ui" line="17"/>
       <source>Username</source>
-      <translation type="unfinished">Username</translation>
+      <translation>Användarnamn</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/reddit/gui/redditaccountdetails.ui" line="33"/>
       <source>OAuth 2.0 settings</source>
-      <translation type="unfinished">OAuth 2.0 settings</translation>
+      <translation>OAuth 2.0 inställningar</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/reddit/gui/redditaccountdetails.ui" line="39"/>
       <source>Client ID</source>
-      <translation type="unfinished">Client ID</translation>
+      <translation>Klient-ID</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/reddit/gui/redditaccountdetails.ui" line="52"/>
       <source>Client secret</source>
-      <translation type="unfinished">Client secret</translation>
+      <translation>Klienthemlighet</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/reddit/gui/redditaccountdetails.ui" line="65"/>
       <source>Redirect URL</source>
-      <translation type="unfinished">Redirect URL</translation>
+      <translation>Omdirigera URL</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/reddit/gui/redditaccountdetails.ui" line="80"/>
       <source>Get my credentials</source>
-      <translation type="unfinished">Get my credentials</translation>
+      <translation>Hämta mina inloggningsuppgifter</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/reddit/gui/redditaccountdetails.ui" line="110"/>
       <source>Only download newest X articles per feed</source>
-      <translation type="unfinished">Only download newest X articles per feed</translation>
+      <translation>Ladda endast ner X nyaste artiklar per flöde</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/reddit/gui/redditaccountdetails.ui" line="134"/>
       <source>&amp;Login</source>
-      <translation type="unfinished">&amp;Login</translation>
+      <translation>&amp;Logga in</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/reddit/gui/redditaccountdetails.ui" line="163"/>
       <source>Download unread articles only</source>
-      <translation type="unfinished">Download unread articles only</translation>
+      <translation>Ladda bara ner olästa artiklar</translation>
     </message>
   </context>
   <context>
@@ -5739,7 +5738,7 @@ List of supported readers:</translation>
       <location filename="../src/librssguard/services/reddit/redditnetworkfactory.cpp" line="137"/>
       <location filename="../src/librssguard/services/reddit/redditnetworkfactory.cpp" line="225"/>
       <source>you are not logged in</source>
-      <translation type="unfinished">you are not logged in</translation>
+      <translation>Du är inte inloggad</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/reddit/redditnetworkfactory.cpp" line="307"/>
@@ -5749,7 +5748,7 @@ List of supported readers:</translation>
     <message>
       <location filename="../src/librssguard/services/reddit/redditnetworkfactory.cpp" line="308"/>
       <source>Click this to login again. Error is: &apos;%1&apos;</source>
-      <translation type="unfinished">Click this to login again. Error is: &apos;%1&apos;</translation>
+      <translation>Klicka här för att logga in igen. Felet är: &quot;%1&quot;</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/reddit/redditnetworkfactory.cpp" line="311"/>
@@ -5765,7 +5764,7 @@ List of supported readers:</translation>
     <message>
       <location filename="../src/librssguard/services/reddit/redditnetworkfactory.cpp" line="321"/>
       <source>Click this to login again.</source>
-      <translation type="unfinished">Click this to login again.</translation>
+      <translation>Klicka här för att logga in igen.</translation>
     </message>
   </context>
   <context>
@@ -5774,18 +5773,18 @@ List of supported readers:</translation>
       <location filename="../src/librssguard/services/reddit/redditserviceroot.cpp" line="127"/>
       <source>Authentication status: %1
 Login tokens expiration: %2</source>
-      <translation type="unfinished">Authentication status: %1
-Login tokens expiration: %2</translation>
+      <translation>Autentiseringsstatus: %1
+Inloggningstoken upphör: %2</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/reddit/redditserviceroot.cpp" line="129"/>
       <source>logged-in</source>
-      <translation type="unfinished">logged-in</translation>
+      <translation>inloggad</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/reddit/redditserviceroot.cpp" line="129"/>
       <source>NOT logged-in</source>
-      <translation type="unfinished">NOT logged-in</translation>
+      <translation>INTE inloggad</translation>
     </message>
   </context>
   <context>
@@ -5805,27 +5804,27 @@ Login tokens expiration: %2</translation>
     <message>
       <location filename="../src/librssguard/exceptions/scriptexception.cpp" line="24"/>
       <source>script line is not well-formed</source>
-      <translation type="unfinished">script line is not well-formed</translation>
+      <translation>skriptraden är inte väl formaterad</translation>
     </message>
     <message>
       <location filename="../src/librssguard/exceptions/scriptexception.cpp" line="27"/>
       <source>script threw an error</source>
-      <translation type="unfinished">script threw an error</translation>
+      <translation>skriptet rapporterade ett fel</translation>
     </message>
     <message>
       <location filename="../src/librssguard/exceptions/scriptexception.cpp" line="30"/>
       <source>script&apos;s interpreter was not found</source>
-      <translation type="unfinished">script&apos;s interpreter was not found</translation>
+      <translation>skriptets tolk hittades inte</translation>
     </message>
     <message>
       <location filename="../src/librssguard/exceptions/scriptexception.cpp" line="33"/>
       <source>script execution took too long</source>
-      <translation type="unfinished">script execution took too long</translation>
+      <translation>skriptexekvering tog för lång tid</translation>
     </message>
     <message>
       <location filename="../src/librssguard/exceptions/scriptexception.cpp" line="37"/>
       <source>unknown error</source>
-      <translation type="unfinished">unknown error</translation>
+      <translation>Okänt fel</translation>
     </message>
   </context>
   <context>
@@ -5861,12 +5860,12 @@ Login tokens expiration: %2</translation>
     <message>
       <location filename="../src/librssguard/gui/reusable/searchtextwidget.ui" line="39"/>
       <source>Find previous occurence</source>
-      <translation type="unfinished">Find previous occurence</translation>
+      <translation>Sök föregående förekomst</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/reusable/searchtextwidget.ui" line="49"/>
       <source>Find next occurence</source>
-      <translation type="unfinished">Find next occurence</translation>
+      <translation>Sök nästa förekomst</translation>
     </message>
   </context>
   <context>
@@ -5892,7 +5891,7 @@ Login tokens expiration: %2</translation>
     <message>
       <location filename="../src/librssguard/services/abstract/serviceroot.cpp" line="99"/>
       <source>Synchronize folders &amp;&amp; other items</source>
-      <translation type="unfinished">Synchronize folders &amp;&amp; other items</translation>
+      <translation>Synkronisera mappar &amp;&amp; andra objekt</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/abstract/serviceroot.cpp" line="108"/>
@@ -5922,7 +5921,7 @@ Number of categories: %2</translation>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsbrowsermail.cpp" line="106"/>
       <source>Select web browser executable</source>
-      <translation type="unfinished">Select web browser executable</translation>
+      <translation>Välj startfil för webbläsaren</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsbrowsermail.cpp" line="111"/>
@@ -5932,29 +5931,29 @@ Number of categories: %2</translation>
       <extracomment>File filter for external browser selection dialog.
 ----------
 File filter for external e-mail selection dialog.</extracomment>
-      <translation type="unfinished">Executables (*)</translation>
+      <translation>Körbara (*)</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsbrowsermail.cpp" line="113"/>
       <location filename="../src/librssguard/gui/settings/settingsbrowsermail.cpp" line="158"/>
       <location filename="../src/librssguard/gui/settings/settingsbrowsermail.cpp" line="291"/>
       <source>Executables (*.*)</source>
-      <translation type="unfinished">Executables (*.*)</translation>
+      <translation>exe-filer (*.*)</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsbrowsermail.cpp" line="151"/>
       <source>Select e-mail executable</source>
-      <translation type="unfinished">Select e-mail executable</translation>
+      <translation>Välj startfil för e-postklienten</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsbrowsermail.cpp" line="177"/>
       <source>Opera 12 or older</source>
-      <translation type="unfinished">Opera 12 or older</translation>
+      <translation>Opera 12 eller äldre</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsbrowsermail.cpp" line="186"/>
       <source>Mozilla Thunderbird</source>
-      <translation type="unfinished">Mozilla Thunderbird</translation>
+      <translation>Mozilla Thunderbird</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsbrowsermail.cpp" line="301"/>
@@ -5964,12 +5963,12 @@ File filter for external e-mail selection dialog.</extracomment>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsbrowsermail.cpp" line="40"/>
       <source>Executable</source>
-      <translation type="unfinished">Executable</translation>
+      <translation>Körbar fil</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsbrowsermail.ui" line="18"/>
       <source>Network</source>
-      <translation type="unfinished">Network</translation>
+      <translation>Nätverk</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsbrowsermail.ui" line="24"/>
@@ -5999,7 +5998,7 @@ File filter for external e-mail selection dialog.</extracomment>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsbrowsermail.ui" line="63"/>
       <source>External web browser</source>
-      <translation type="unfinished">External web browser</translation>
+      <translation>Extern webbläsare</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsbrowsermail.ui" line="69"/>
@@ -6010,96 +6009,96 @@ File filter for external e-mail selection dialog.</extracomment>
       <location filename="../src/librssguard/gui/settings/settingsbrowsermail.ui" line="89"/>
       <location filename="../src/librssguard/gui/settings/settingsbrowsermail.ui" line="203"/>
       <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;If unchecked, then default system-wide web browser is used.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-      <translation type="unfinished">&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;If unchecked, then default system-wide web browser is used.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
+      <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Om kryssrutan lämnas omarkerad, används systemets standardwebbläsare.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsbrowsermail.ui" line="92"/>
       <source>Use custom external web browser</source>
-      <translation type="unfinished">Use custom external web browser</translation>
+      <translation>Använd anpassad extern webbläsare</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsbrowsermail.ui" line="104"/>
       <source>Web browser executable</source>
-      <translation type="unfinished">Web browser executable</translation>
+      <translation>Startfil för webbläsare</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsbrowsermail.ui" line="116"/>
       <source>Executable file of web browser</source>
-      <translation type="unfinished">Executable file of web browser</translation>
+      <translation>Webbläsarens startfil</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsbrowsermail.ui" line="129"/>
       <location filename="../src/librssguard/gui/settings/settingsbrowsermail.ui" line="246"/>
       <source>&amp;Browse</source>
-      <translation type="unfinished">&amp;Browse</translation>
+      <translation>&amp;Bläddra</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsbrowsermail.ui" line="138"/>
       <location filename="../src/librssguard/gui/settings/settingsbrowsermail.ui" line="255"/>
       <location filename="../src/librssguard/gui/settings/settingsbrowsermail.cpp" line="40"/>
       <source>Parameters</source>
-      <translation type="unfinished">Parameters</translation>
+      <translation>Parametrar</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsbrowsermail.ui" line="148"/>
       <location filename="../src/librssguard/gui/settings/settingsbrowsermail.ui" line="265"/>
       <source>Parameters passed to executable</source>
-      <translation type="unfinished">Parameters passed to executable</translation>
+      <translation>Parametrar skickade till startfilen</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsbrowsermail.ui" line="155"/>
       <location filename="../src/librssguard/gui/settings/settingsbrowsermail.ui" line="272"/>
       <source>Use sample arguments for</source>
-      <translation type="unfinished">Use sample arguments for</translation>
+      <translation>Använd argument för</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsbrowsermail.ui" line="169"/>
       <source>Select browser</source>
-      <translation type="unfinished">Select browser</translation>
+      <translation>Välj webbläsare</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsbrowsermail.cpp" line="25"/>
       <source>Note that &quot;%1&quot; (without quotation marks) is placeholder for URL of selected message.</source>
-      <translation type="unfinished">Note that &quot;%1&quot; (without quotation marks) is placeholder for URL of selected message.</translation>
+      <translation>Notera att &quot;%1&quot; (utan citationstecken) är platshållare för det markerade meddelandets URL.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsbrowsermail.ui" line="184"/>
       <source>External e-mail client</source>
-      <translation type="unfinished">External e-mail client</translation>
+      <translation>Extern e-postklient</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsbrowsermail.ui" line="206"/>
       <source>Use custom external e-mail client</source>
-      <translation type="unfinished">Use custom external e-mail client</translation>
+      <translation>Använd extern anpassad e-postklient</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsbrowsermail.ui" line="218"/>
       <source>E-mail client executable</source>
-      <translation type="unfinished">E-mail client executable</translation>
+      <translation>E-postklientens programfil</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsbrowsermail.ui" line="233"/>
       <source>Executable file of e-mail client</source>
-      <translation type="unfinished">Executable file of e-mail client</translation>
+      <translation>E-postklientens startfil</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsbrowsermail.ui" line="286"/>
       <source>Select client</source>
-      <translation type="unfinished">Select client</translation>
+      <translation>Välj klient</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsbrowsermail.cpp" line="29"/>
       <source>Placeholders:
  • %1 - title of selected message,
  • %2 - body of selected message.</source>
-      <translation type="unfinished">Placeholders:
- • %1 - title of selected message,
- • %2 - body of selected message.</translation>
+      <translation>Platshållare:
+ • %1 - titel för aktuellt meddelande
+ • %2 - brödtext för.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsbrowsermail.ui" line="301"/>
       <source>External tools</source>
-      <translation type="unfinished">External tools</translation>
+      <translation>Externa verktyg</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsbrowsermail.ui" line="336"/>
@@ -6124,17 +6123,17 @@ File filter for external e-mail selection dialog.</extracomment>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsbrowsermail.cpp" line="288"/>
       <source>Select external tool</source>
-      <translation type="unfinished">Select external tool</translation>
+      <translation>Välj externt verktyg</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsbrowsermail.cpp" line="300"/>
       <source>Enter parameters</source>
-      <translation type="unfinished">Enter parameters</translation>
+      <translation>Ange parametrar</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsbrowsermail.cpp" line="23"/>
       <source>Network proxy</source>
-      <translation type="unfinished">Network proxy</translation>
+      <translation>Nätverksproxy</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsbrowsermail.h" line="46"/>
@@ -6147,77 +6146,77 @@ File filter for external e-mail selection dialog.</extracomment>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsdatabase.cpp" line="15"/>
       <source>Note that speed of used MySQL server and latency of used connection medium HEAVILY influences the final performance of this application. Using slow database connections leads to bad performance when browsing feeds or messages.</source>
-      <translation type="unfinished">Note that speed of used MySQL server and latency of used connection medium HEAVILY influences the final performance of this application. Using slow database connections leads to bad performance when browsing feeds or messages.</translation>
+      <translation>Notera att hastigheten på den använda MySQL-servern och latensen för aktuellt anslutningsmedium, KRAFTIGT påverkar detta programs prestanda. Användning av långsamma databasanslutningar leder till dålig prestanda vid navigering bland flöden och meddelanden.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsdatabase.cpp" line="114"/>
       <source>Hostname is empty.</source>
-      <translation type="unfinished">Hostname is empty.</translation>
+      <translation>Värdnamn saknas.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsdatabase.cpp" line="117"/>
       <source>Hostname looks ok.</source>
-      <translation type="unfinished">Hostname looks ok.</translation>
+      <translation>Värdnamnet verkar OK.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsdatabase.cpp" line="123"/>
       <source>Username is empty.</source>
-      <translation type="unfinished">Username is empty.</translation>
+      <translation>Användarnamn saknas.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsdatabase.cpp" line="126"/>
       <source>Username looks ok.</source>
-      <translation type="unfinished">Username looks ok.</translation>
+      <translation>Användarnamnet ser ok ut.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsdatabase.cpp" line="132"/>
       <source>Password is empty.</source>
-      <translation type="unfinished">Password is empty.</translation>
+      <translation>Lösenord saknas.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsdatabase.cpp" line="135"/>
       <source>Password looks ok.</source>
-      <translation type="unfinished">Password looks ok.</translation>
+      <translation>Lösenordet ser ok ut.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsdatabase.cpp" line="141"/>
       <source>Working database is empty.</source>
-      <translation type="unfinished">Working database is empty.</translation>
+      <translation>Arbetsdatabasen är tom.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsdatabase.cpp" line="144"/>
       <source>Working database is ok.</source>
-      <translation type="unfinished">Working database is ok.</translation>
+      <translation>Arbetsdatabasen är OK.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsdatabase.cpp" line="165"/>
       <source>No connection test triggered so far.</source>
-      <translation type="unfinished">No connection test triggered so far.</translation>
+      <translation>Inget anslutningstest utfört än.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsdatabase.cpp" line="166"/>
       <source>You did not executed any connection test yet.</source>
-      <translation type="unfinished">You did not executed any connection test yet.</translation>
+      <translation>Du har inte utfört något anslutningstest än.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsdatabase.cpp" line="189"/>
       <source>Hostname of your MySQL server</source>
-      <translation type="unfinished">Hostname of your MySQL server</translation>
+      <translation>Värdnamn för din MySQL-server</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsdatabase.cpp" line="190"/>
       <source>Username to login with</source>
-      <translation type="unfinished">Username to login with</translation>
+      <translation>Användarnamn för att logga in</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsdatabase.cpp" line="191"/>
       <source>Password for your username</source>
-      <translation type="unfinished">Password for your username</translation>
+      <translation>Lösenord för ditt användarnamn</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsdatabase.cpp" line="192"/>
       <source>Working database which you have full access to.</source>
-      <translation type="unfinished">Working database which you have full access to.</translation>
+      <translation>Arbetsdatabas som du har full åtkomst till.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsdatabase.cpp" line="22"/>
@@ -6247,47 +6246,47 @@ Authors of this application are NOT responsible for lost data.</translation>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsdatabase.ui" line="17"/>
       <source>Database driver</source>
-      <translation type="unfinished">Database driver</translation>
+      <translation>Databasdrivrutin</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsdatabase.ui" line="52"/>
       <source>Use in-memory database as the working database</source>
-      <translation type="unfinished">Use in-memory database as the working database</translation>
+      <translation>Använd minnesdatabas (IMDB) som arbetsdatabas</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsdatabase.ui" line="81"/>
       <source>Hostname</source>
-      <translation type="unfinished">Hostname</translation>
+      <translation>Värdnamn</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsdatabase.ui" line="96"/>
       <source>Port</source>
-      <translation type="unfinished">Port</translation>
+      <translation>Port</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsdatabase.ui" line="127"/>
       <source>Working database</source>
-      <translation type="unfinished">Working database</translation>
+      <translation>Arbetsdatabas</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsdatabase.ui" line="137"/>
       <source>Username</source>
-      <translation type="unfinished">Username</translation>
+      <translation>Användarnamn</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsdatabase.ui" line="150"/>
       <source>Password</source>
-      <translation type="unfinished">Password</translation>
+      <translation>Lösenord</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsdatabase.ui" line="165"/>
       <source>Test setup</source>
-      <translation type="unfinished">Test setup</translation>
+      <translation>Testa</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsdatabase.h" line="33"/>
       <source>Data storage</source>
-      <translation type="unfinished">Data storage</translation>
+      <translation>Datalagring</translation>
     </message>
   </context>
   <context>
@@ -6295,42 +6294,42 @@ Authors of this application are NOT responsible for lost data.</translation>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsdownloads.cpp" line="26"/>
       <source>Select downloads target directory</source>
-      <translation type="unfinished">Select downloads target directory</translation>
+      <translation>Välj nedladdningsmapp</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsdownloads.ui" line="17"/>
       <source>Open download manager when new download is started</source>
-      <translation type="unfinished">Open download manager when new download is started</translation>
+      <translation>Öppna nedladdningshanteraren när ny nedladdning startas</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsdownloads.ui" line="24"/>
       <source>Target directory for downloaded files</source>
-      <translation type="unfinished">Target directory for downloaded files</translation>
+      <translation>Målmapp för nedladdade filer</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsdownloads.ui" line="32"/>
       <source>Save all downloaded files to</source>
-      <translation type="unfinished">Save all downloaded files to</translation>
+      <translation>Spara alla nedladdade filer i</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsdownloads.ui" line="45"/>
       <source>Target directory where all downloaded files are saved</source>
-      <translation type="unfinished">Target directory where all downloaded files are saved</translation>
+      <translation>Målmapp där alla nedladdade filer sparas</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsdownloads.ui" line="52"/>
       <source>&amp;Browse</source>
-      <translation type="unfinished">&amp;Browse</translation>
+      <translation>&amp;Bläddra</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsdownloads.ui" line="74"/>
       <source>Ask for each individual downloaded file</source>
-      <translation type="unfinished">Ask for each individual downloaded file</translation>
+      <translation>Fråga om varje enskild fil</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsdownloads.h" line="29"/>
       <source>Downloads</source>
-      <translation type="unfinished">Downloads</translation>
+      <translation>Nedladdningar</translation>
     </message>
   </context>
   <context>
@@ -6338,7 +6337,7 @@ Authors of this application are NOT responsible for lost data.</translation>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.cpp" line="231"/>
       <source>Select new font</source>
-      <translation type="unfinished">Select new font</translation>
+      <translation>Välj nytt teckensnitt</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.cpp" line="30"/>
@@ -6391,17 +6390,17 @@ Authors of this application are NOT responsible for lost data.</translation>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="93"/>
       <source>Feed connection timeout</source>
-      <translation type="unfinished">Feed connection timeout</translation>
+      <translation>Anslutnings-timeout för flöden</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="109"/>
       <source>Connection timeout is time interval which is reserved for downloading new messages for the feed. If this time interval elapses, then download process is aborted.</source>
-      <translation type="unfinished">Connection timeout is time interval which is reserved for downloading new messages for the feed. If this time interval elapses, then download process is aborted.</translation>
+      <translation>Anslutnings-timeout är det tidsintervall som reserverats föratt ladda ner nya meddelanden. Om detta tidsintervall överskrids, kommer nedladdningsprocessen att avbrytas.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="112"/>
       <source> ms</source>
-      <translation type="unfinished"> ms</translation>
+      <translation> ms</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="86"/>
@@ -6427,21 +6426,21 @@ Authors of this application are NOT responsible for lost data.</translation>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="207"/>
       <source>Feed list font</source>
-      <translation type="unfinished">Feed list font</translation>
+      <translation>Teckensnitt för flödeslista</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="219"/>
       <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="400"/>
       <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="615"/>
       <source>Font preview</source>
-      <translation type="unfinished">Font preview</translation>
+      <translation>Teckengranskning</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="229"/>
       <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="410"/>
       <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="625"/>
       <source>&amp;Change font</source>
-      <translation type="unfinished">&amp;Change font</translation>
+      <translation>&amp;Ändra teckensnitt</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="254"/>
@@ -6466,12 +6465,12 @@ Authors of this application are NOT responsible for lost data.</translation>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="305"/>
       <source>Articles</source>
-      <translation type="unfinished">Articles</translation>
+      <translation>Artiklar</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="311"/>
       <source>Remove all read articles from all feeds on application exit</source>
-      <translation type="unfinished">Remove all read articles from all feeds on application exit</translation>
+      <translation>Ta bort alla lästa artiklar från alla flöden vid programavslut</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="318"/>
@@ -6491,12 +6490,12 @@ Authors of this application are NOT responsible for lost data.</translation>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="332"/>
       <source>Bring application window to front once article is opened in external web browser</source>
-      <translation type="unfinished">Bring application window to front once article is opened in external web browser</translation>
+      <translation>Flytta programfönstret längst fram när artikel öppnas i extern webbläsare</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="394"/>
       <source>Article browser font</source>
-      <translation type="unfinished">Article browser font</translation>
+      <translation>Teckensnitt för artikel i webbläsare</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="325"/>
@@ -6551,7 +6550,7 @@ Authors of this application are NOT responsible for lost data.</translation>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="603"/>
       <source>Article list font</source>
-      <translation type="unfinished">Article list font</translation>
+      <translation>Teckensnitt för artikellista</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="586"/>
@@ -6561,7 +6560,7 @@ Authors of this application are NOT responsible for lost data.</translation>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.h" line="34"/>
       <source>Feeds &amp; articles</source>
-      <translation type="unfinished">Feeds &amp; articles</translation>
+      <translation>Flöden &amp; artiklar</translation>
     </message>
   </context>
   <context>
@@ -6569,12 +6568,12 @@ Authors of this application are NOT responsible for lost data.</translation>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsgeneral.cpp" line="45"/>
       <source> (not supported on this platform)</source>
-      <translation type="unfinished"> (not supported on this platform)</translation>
+      <translation> (stöds inte på den här plattformen)</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsgeneral.ui" line="17"/>
       <source>Launch %1 on operating system startup</source>
-      <translation type="unfinished">Launch %1 on operating system startup</translation>
+      <translation>Starta %1 vid systemstart</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsgeneral.ui" line="24"/>
@@ -6584,7 +6583,7 @@ Authors of this application are NOT responsible for lost data.</translation>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsgeneral.h" line="26"/>
       <source>General</source>
-      <translation type="unfinished">General</translation>
+      <translation>Allmänt</translation>
     </message>
   </context>
   <context>
@@ -6592,12 +6591,12 @@ Authors of this application are NOT responsible for lost data.</translation>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsgui.cpp" line="34"/>
       <source>Name</source>
-      <translation type="unfinished">Name</translation>
+      <translation>Namn</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsgui.cpp" line="34"/>
       <source>Author</source>
-      <translation type="unfinished">Author</translation>
+      <translation>Författare</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsgui.cpp" line="34"/>
@@ -6607,43 +6606,43 @@ Authors of this application are NOT responsible for lost data.</translation>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsgui.cpp" line="276"/>
       <source>Icon only</source>
-      <translation type="unfinished">Icon only</translation>
+      <translation>Endast ikon</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsgui.cpp" line="277"/>
       <source>Text only</source>
-      <translation type="unfinished">Text only</translation>
+      <translation>Endast text</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsgui.cpp" line="278"/>
       <source>Text beside icon</source>
-      <translation type="unfinished">Text beside icon</translation>
+      <translation>Text bredvid ikon</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsgui.cpp" line="279"/>
       <source>Text under icon</source>
-      <translation type="unfinished">Text under icon</translation>
+      <translation>Text under ikon</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsgui.cpp" line="280"/>
       <source>Follow OS style</source>
-      <translation type="unfinished">Follow OS style</translation>
+      <translation>Operativsystemets stil</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsgui.cpp" line="174"/>
       <source>system icon theme</source>
       <extracomment>Label for disabling icon theme.</extracomment>
-      <translation type="unfinished">system icon theme</translation>
+      <translation>systemets ikontema</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsgui.cpp" line="176"/>
       <source>no icon theme</source>
-      <translation type="unfinished">no icon theme</translation>
+      <translation>inget ikontema</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsgui.cpp" line="157"/>
       <source>(Your OS does not support tray icons at the moment.)</source>
-      <translation type="unfinished">(Your OS does not support tray icons at the moment.)</translation>
+      <translation>(Ditt OS stödjer inte systemfältsikoner för närvarande)</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsgui.cpp" line="34"/>
@@ -6679,22 +6678,22 @@ Description: %3</translation>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsgui.ui" line="27"/>
       <source>Icons &amp;&amp; skins</source>
-      <translation type="unfinished">Icons &amp;&amp; skins</translation>
+      <translation>Ikoner &amp;&amp; teman</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsgui.ui" line="33"/>
       <source>Icon theme</source>
-      <translation type="unfinished">Icon theme</translation>
+      <translation>Ikontema</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsgui.ui" line="46"/>
       <source>Style</source>
-      <translation type="unfinished">Style</translation>
+      <translation>Stil</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsgui.ui" line="59"/>
       <source>Skin</source>
-      <translation type="unfinished">Skin</translation>
+      <translation>Tema</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsgui.ui" line="112"/>
@@ -6719,28 +6718,28 @@ Description: %3</translation>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsgui.ui" line="153"/>
       <source>Tray icon</source>
-      <translation type="unfinished">Tray icon</translation>
+      <translation>Meddelandefältsikon</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsgui.ui" line="165"/>
       <source>Use monochrome icon</source>
-      <translation type="unfinished">Use monochrome icon</translation>
+      <translation>Använd monokrom ikon</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsgui.ui" line="172"/>
       <location filename="../src/librssguard/gui/settings/settingsgui.ui" line="216"/>
       <source>Display count of unread messages</source>
-      <translation type="unfinished">Display count of unread messages</translation>
+      <translation>Visa räkneverk för olästa meddelanden</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsgui.ui" line="179"/>
       <source>Hide main window when it is minimized</source>
-      <translation type="unfinished">Hide main window when it is minimized</translation>
+      <translation>Dölj programfönstret vid minimering</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsgui.ui" line="186"/>
       <source>Start application hidden</source>
-      <translation type="unfinished">Start application hidden</translation>
+      <translation>Starta programmet dolt</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsgui.ui" line="210"/>
@@ -6750,42 +6749,42 @@ Description: %3</translation>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsgui.ui" line="224"/>
       <source>Tabs</source>
-      <translation type="unfinished">Tabs</translation>
+      <translation>Flikar</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsgui.ui" line="236"/>
       <source>Close tabs with</source>
-      <translation type="unfinished">Close tabs with</translation>
+      <translation>Stäng flikar med</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsgui.ui" line="242"/>
       <source>Middle mouse button single-click</source>
-      <translation type="unfinished">Middle mouse button single-click</translation>
+      <translation>Enkelklick på mushjulsknappen</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsgui.ui" line="249"/>
       <source>Left mouse button double-click</source>
-      <translation type="unfinished">Left mouse button double-click</translation>
+      <translation>Dubbelklick på vänster musknapp</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsgui.ui" line="259"/>
       <source>Open new tabs with left mouse button double-click on tab bar</source>
-      <translation type="unfinished">Open new tabs with left mouse button double-click on tab bar</translation>
+      <translation>Öppna nya flikar med dubbelklick i flikfältet</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsgui.ui" line="266"/>
       <source>Hide tab bar if just one tab is visible</source>
-      <translation type="unfinished">Hide tab bar if just one tab is visible</translation>
+      <translation>Dölj flikfältet om endast en flik är öppen</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsgui.ui" line="287"/>
       <source>Toolbars</source>
-      <translation type="unfinished">Toolbars</translation>
+      <translation>Verktygsfält</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsgui.ui" line="300"/>
       <source>Toolbar for feeds list</source>
-      <translation type="unfinished">Toolbar for feeds list</translation>
+      <translation>Verktygsfält för flödeslista</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsgui.ui" line="305"/>
@@ -6795,7 +6794,7 @@ Description: %3</translation>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsgui.ui" line="310"/>
       <source>Statusbar</source>
-      <translation type="unfinished">Statusbar</translation>
+      <translation>Statusfält</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsgui.ui" line="388"/>
@@ -6815,7 +6814,7 @@ Description: %3</translation>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsgui.h" line="35"/>
       <source>User interface</source>
-      <translation type="unfinished">User interface</translation>
+      <translation>Utseende</translation>
     </message>
   </context>
   <context>
@@ -6823,22 +6822,22 @@ Description: %3</translation>
     <message>
       <location filename="../src/librssguard/gui/settings/settingslocalization.cpp" line="16"/>
       <source>Language</source>
-      <translation type="unfinished">Language</translation>
+      <translation>Språk</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingslocalization.cpp" line="17"/>
       <source>Code</source>
-      <translation type="unfinished">Code</translation>
+      <translation>Språkkod</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingslocalization.cpp" line="18"/>
       <source>Author</source>
-      <translation type="unfinished">Author</translation>
+      <translation>Författare</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingslocalization.h" line="26"/>
       <source>Localization</source>
-      <translation type="unfinished">Localization</translation>
+      <translation>Översättning</translation>
     </message>
   </context>
   <context>
@@ -6908,7 +6907,7 @@ Also, relaunch &quot;Settings&quot; dialog after you install Node.js.</translati
     <message>
       <location filename="../src/librssguard/gui/settings/settingsnodejs.ui" line="14"/>
       <source>Form</source>
-      <translation type="unfinished">Form</translation>
+      <translation>Form</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsnodejs.ui" line="23"/>
@@ -6920,7 +6919,7 @@ Also, relaunch &quot;Settings&quot; dialog after you install Node.js.</translati
       <location filename="../src/librssguard/gui/settings/settingsnodejs.ui" line="74"/>
       <location filename="../src/librssguard/gui/settings/settingsnodejs.ui" line="104"/>
       <source>&amp;Browse</source>
-      <translation type="unfinished">&amp;Browse</translation>
+      <translation>&amp;Bläddra</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsnodejs.ui" line="53"/>
@@ -6957,7 +6956,7 @@ Also, there are some built-in sounds. Just start typing &quot;:&quot; and they w
     <message>
       <location filename="../src/librssguard/gui/settings/settingsnotifications.h" line="27"/>
       <source>Notifications</source>
-      <translation type="unfinished">Notifications</translation>
+      <translation>Avisering</translation>
     </message>
   </context>
   <context>
@@ -6965,7 +6964,7 @@ Also, there are some built-in sounds. Just start typing &quot;:&quot; and they w
     <message>
       <location filename="../src/librssguard/gui/settings/settingsshortcuts.h" line="26"/>
       <source>Keyboard shortcuts</source>
-      <translation type="unfinished">Keyboard shortcuts</translation>
+      <translation>Tangentbordsgenvägar</translation>
     </message>
   </context>
   <context>
@@ -6973,17 +6972,17 @@ Also, there are some built-in sounds. Just start typing &quot;:&quot; and they w
     <message>
       <location filename="../src/librssguard/dynamic-shortcuts/shortcutcatcher.cpp" line="23"/>
       <source>Reset to original shortcut.</source>
-      <translation type="unfinished">Reset to original shortcut.</translation>
+      <translation>Återställ ursprunglig ikon.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/dynamic-shortcuts/shortcutcatcher.cpp" line="29"/>
       <source>Clear current shortcut.</source>
-      <translation type="unfinished">Clear current shortcut.</translation>
+      <translation>Rensa aktuell genväg.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/dynamic-shortcuts/shortcutcatcher.cpp" line="35"/>
       <source>Click and hit new shortcut.</source>
-      <translation type="unfinished">Click and hit new shortcut.</translation>
+      <translation>Klicka och välj ny snabbtangent.</translation>
     </message>
   </context>
   <context>
@@ -7016,7 +7015,7 @@ Also, there are some built-in sounds. Just start typing &quot;:&quot; and they w
     <message>
       <location filename="../src/librssguard/gui/notifications/singlenotificationeditor.ui" line="70"/>
       <source>&amp;Browse</source>
-      <translation type="unfinished">&amp;Browse</translation>
+      <translation>&amp;Bläddra</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/notifications/singlenotificationeditor.ui" line="77"/>
@@ -7035,27 +7034,27 @@ Also, there are some built-in sounds. Just start typing &quot;:&quot; and they w
       <location filename="../src/librssguard/miscellaneous/skinfactory.cpp" line="221"/>
       <location filename="../src/librssguard/miscellaneous/skinfactory.cpp" line="224"/>
       <source>This page was blocked by AdBlock</source>
-      <translation type="unfinished">This page was blocked by AdBlock</translation>
+      <translation>Denna sida blockerades av AdBlock</translation>
     </message>
     <message>
       <location filename="../src/librssguard/miscellaneous/skinfactory.cpp" line="222"/>
       <source>Blocked URL: &quot;%1&quot;&lt;br/&gt;Used filter: &quot;%2&quot;</source>
-      <translation type="unfinished">Blocked URL: &quot;%1&quot;&lt;br/&gt;Used filter: &quot;%2&quot;</translation>
+      <translation>Blockerad URL: &quot;%1&quot;&lt;br/&gt;Använt filter: &quot;%2&quot;</translation>
     </message>
     <message>
       <location filename="../src/librssguard/miscellaneous/skinfactory.cpp" line="281"/>
       <source>Written by </source>
-      <translation type="unfinished">Written by </translation>
+      <translation>Skriven av </translation>
     </message>
     <message>
       <location filename="../src/librssguard/miscellaneous/skinfactory.cpp" line="282"/>
       <source>unknown author</source>
-      <translation type="unfinished">unknown author</translation>
+      <translation>okänd författare</translation>
     </message>
     <message>
       <location filename="../src/librssguard/miscellaneous/skinfactory.cpp" line="297"/>
       <source>Newspaper view</source>
-      <translation type="unfinished">Newspaper view</translation>
+      <translation>Tidningsvy</translation>
     </message>
   </context>
   <context>
@@ -7063,12 +7062,12 @@ Also, there are some built-in sounds. Just start typing &quot;:&quot; and they w
     <message>
       <location filename="../src/librssguard/database/sqlitedriver.cpp" line="373"/>
       <source>SQLite (embedded database)</source>
-      <translation type="unfinished">SQLite (embedded database)</translation>
+      <translation>SQLite (inbäddad databas)</translation>
     </message>
     <message>
       <location filename="../src/librssguard/database/sqlitedriver.cpp" line="385"/>
       <source>Database file not copied to output directory successfully.</source>
-      <translation type="unfinished">Database file not copied to output directory successfully.</translation>
+      <translation>Databasfilen kopierades inte till utdatamappen.</translation>
     </message>
   </context>
   <context>
@@ -7076,7 +7075,7 @@ Also, there are some built-in sounds. Just start typing &quot;:&quot; and they w
     <message>
       <location filename="../src/librssguard/services/standard/standardcategory.cpp" line="44"/>
       <source>Cannot save data for category, detailed information was logged via debug log.</source>
-      <translation type="unfinished">Cannot save data for category, detailed information was logged via debug log.</translation>
+      <translation>Kan inte spara data för kategori, detaljerad information loggades i felsökningsloggen.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/standard/standardcategory.cpp" line="43"/>
@@ -7089,22 +7088,22 @@ Also, there are some built-in sounds. Just start typing &quot;:&quot; and they w
     <message>
       <location filename="../src/librssguard/services/standard/standardfeed.cpp" line="171"/>
       <source>Script</source>
-      <translation type="unfinished">Script</translation>
+      <translation>Skript</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/standard/standardfeed.cpp" line="174"/>
       <source>Local file</source>
-      <translation type="unfinished">Local file</translation>
+      <translation>Lokal fil</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/standard/standardfeed.cpp" line="177"/>
       <source>Unknown</source>
-      <translation type="unfinished">Unknown</translation>
+      <translation>Okänd</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/standard/standardfeed.cpp" line="210"/>
       <source>Cannot save data for feed: %1</source>
-      <translation type="unfinished">Cannot save data for feed: %1</translation>
+      <translation>Kan inte spara data för flöde: %1</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/standard/standardfeed.cpp" line="299"/>
@@ -7114,17 +7113,17 @@ Also, there are some built-in sounds. Just start typing &quot;:&quot; and they w
     <message>
       <location filename="../src/librssguard/services/standard/standardfeed.cpp" line="359"/>
       <source>XML is not well-formed, %1</source>
-      <translation type="unfinished">XML is not well-formed, %1</translation>
+      <translation>XML är inte väl formaterad, %1</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/standard/standardfeed.cpp" line="442"/>
       <source>XML feed file format unrecognized</source>
-      <translation type="unfinished">XML feed file format unrecognized</translation>
+      <translation>Flödets XML-filformat okänt</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/standard/standardfeed.cpp" line="482"/>
       <source>Cannot move feed, detailed information was logged via debug log.</source>
-      <translation type="unfinished">Cannot move feed, detailed information was logged via debug log.</translation>
+      <translation>Kan inte flytta flöde, detaljerad information loggades i felsökningsloggen.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/standard/standardfeed.cpp" line="64"/>
@@ -7151,122 +7150,122 @@ Type: %3</translation>
     <message>
       <location filename="../src/librssguard/services/standard/gui/standardfeeddetails.cpp" line="29"/>
       <source>Feed title</source>
-      <translation type="unfinished">Feed title</translation>
+      <translation>Flödesnamn</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/standard/gui/standardfeeddetails.cpp" line="30"/>
       <source>Set title for your feed.</source>
-      <translation type="unfinished">Set title for your feed.</translation>
+      <translation>Ange flödets namn.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/standard/gui/standardfeeddetails.cpp" line="31"/>
       <source>Feed description</source>
-      <translation type="unfinished">Feed description</translation>
+      <translation>Flödesbeskrivning</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/standard/gui/standardfeeddetails.cpp" line="32"/>
       <source>Set description for your feed.</source>
-      <translation type="unfinished">Set description for your feed.</translation>
+      <translation>Beskriv flödet.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/standard/gui/standardfeeddetails.cpp" line="72"/>
       <source>Icon selection</source>
-      <translation type="unfinished">Icon selection</translation>
+      <translation>Ikonval</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/standard/gui/standardfeeddetails.cpp" line="74"/>
       <source>Load icon from file...</source>
-      <translation type="unfinished">Load icon from file...</translation>
+      <translation>Hämta ikon från fil...</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/standard/gui/standardfeeddetails.cpp" line="76"/>
       <source>Use default icon from icon theme</source>
-      <translation type="unfinished">Use default icon from icon theme</translation>
+      <translation>Använd standardikon från ikontemat</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/standard/gui/standardfeeddetails.cpp" line="78"/>
       <source>Fetch icon from feed</source>
-      <translation type="unfinished">Fetch icon from feed</translation>
+      <translation>Hämta ikon från flödet</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/standard/gui/standardfeeddetails.cpp" line="88"/>
       <location filename="../src/librssguard/services/standard/gui/standardfeeddetails.cpp" line="89"/>
       <source>No metadata fetched so far.</source>
-      <translation type="unfinished">No metadata fetched so far.</translation>
+      <translation>Ingen metadata hämtad.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/standard/gui/standardfeeddetails.cpp" line="152"/>
       <source>Icon fetched successfully.</source>
-      <translation type="unfinished">Icon fetched successfully.</translation>
+      <translation>Ikon hämtades.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/standard/gui/standardfeeddetails.cpp" line="153"/>
       <source>Icon metadata fetched.</source>
-      <translation type="unfinished">Icon metadata fetched.</translation>
+      <translation>Ikonmetadata hämtad.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/standard/gui/standardfeeddetails.cpp" line="161"/>
       <location filename="../src/librssguard/services/standard/gui/standardfeeddetails.cpp" line="166"/>
       <location filename="../src/librssguard/services/standard/gui/standardfeeddetails.cpp" line="171"/>
       <source>No icon fetched.</source>
-      <translation type="unfinished">No icon fetched.</translation>
+      <translation>Ikon hämtades inte.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/standard/gui/standardfeeddetails.cpp" line="208"/>
       <source>All metadata fetched successfully.</source>
-      <translation type="unfinished">All metadata fetched successfully.</translation>
+      <translation>All metadata hämtades korrekt.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/standard/gui/standardfeeddetails.cpp" line="209"/>
       <source>Feed and icon metadata fetched.</source>
-      <translation type="unfinished">Feed and icon metadata fetched.</translation>
+      <translation>Flödes- och ikonmetadata hämtad.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/standard/gui/standardfeeddetails.cpp" line="217"/>
       <location filename="../src/librssguard/services/standard/gui/standardfeeddetails.cpp" line="222"/>
       <location filename="../src/librssguard/services/standard/gui/standardfeeddetails.cpp" line="227"/>
       <source>No metadata fetched.</source>
-      <translation type="unfinished">No metadata fetched.</translation>
+      <translation>Ingen metadata hämtades.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/standard/gui/standardfeeddetails.cpp" line="233"/>
       <source>Feed name is ok.</source>
-      <translation type="unfinished">Feed name is ok.</translation>
+      <translation>Flödesnamnet är ok.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/standard/gui/standardfeeddetails.cpp" line="236"/>
       <source>Feed name is too short.</source>
-      <translation type="unfinished">Feed name is too short.</translation>
+      <translation>Flödesnamnet är för kort.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/standard/gui/standardfeeddetails.cpp" line="242"/>
       <source>Description is empty.</source>
-      <translation type="unfinished">Description is empty.</translation>
+      <translation>Beskrivning saknas.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/standard/gui/standardfeeddetails.cpp" line="245"/>
       <source>The description is ok.</source>
-      <translation type="unfinished">The description is ok.</translation>
+      <translation>Beskrivningen är ok.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/standard/gui/standardfeeddetails.cpp" line="252"/>
       <source>The URL is ok.</source>
-      <translation type="unfinished">The URL is ok.</translation>
+      <translation>URL:en är OK.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/standard/gui/standardfeeddetails.cpp" line="256"/>
       <source>The URL does not meet standard pattern. Does your URL start with &quot;http://&quot; or &quot;https://&quot; prefix.</source>
-      <translation type="unfinished">The URL does not meet standard pattern. Does your URL start with &quot;http://&quot; or &quot;https://&quot; prefix.</translation>
+      <translation>URL:en stämmer inte med standardmönstret. Börjar din URL med prefixet &quot;http://&quot; eller &quot;https://&quot;?</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/standard/gui/standardfeeddetails.cpp" line="260"/>
       <source>The URL is empty.</source>
-      <translation type="unfinished">The URL is empty.</translation>
+      <translation>URL saknas.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/standard/gui/standardfeeddetails.cpp" line="296"/>
       <source>Select icon file for the feed</source>
-      <translation type="unfinished">Select icon file for the feed</translation>
+      <translation>Välj ikonfil för flödet</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/standard/gui/standardfeeddetails.cpp" line="298"/>
@@ -7276,87 +7275,87 @@ Type: %3</translation>
     <message>
       <location filename="../src/librssguard/services/standard/gui/standardfeeddetails.cpp" line="304"/>
       <source>Select icon</source>
-      <translation type="unfinished">Select icon</translation>
+      <translation>Välj ikon</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/standard/gui/standardfeeddetails.cpp" line="305"/>
       <source>Cancel</source>
-      <translation type="unfinished">Cancel</translation>
+      <translation>Avbryt</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/standard/gui/standardfeeddetails.cpp" line="308"/>
       <source>Look in:</source>
       <extracomment>Label for field with icon file name textbox for selection dialog.</extracomment>
-      <translation type="unfinished">Look in:</translation>
+      <translation>Sök i:</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/standard/gui/standardfeeddetails.cpp" line="309"/>
       <source>Icon name:</source>
-      <translation type="unfinished">Icon name:</translation>
+      <translation>Ikonnamn:</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/standard/gui/standardfeeddetails.cpp" line="310"/>
       <source>Icon type:</source>
-      <translation type="unfinished">Icon type:</translation>
+      <translation>Ikontyp:</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/standard/gui/standardfeeddetails.cpp" line="33"/>
       <source>Full feed source identifier</source>
-      <translation type="unfinished">Full feed source identifier</translation>
+      <translation>Fullständig källidentifierare</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/standard/gui/standardfeeddetails.cpp" line="34"/>
       <source>Full feed source identifier which can be URL.</source>
-      <translation type="unfinished">Full feed source identifier which can be URL.</translation>
+      <translation>Fullständig källidentifierare, som kan vara en URL.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/standard/gui/standardfeeddetails.cpp" line="35"/>
       <source>Full command to execute</source>
-      <translation type="unfinished">Full command to execute</translation>
+      <translation>Fullständigt kommando att köra</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/standard/gui/standardfeeddetails.cpp" line="36"/>
       <source>You can enter full command including interpreter here.</source>
-      <translation type="unfinished">You can enter full command including interpreter here.</translation>
+      <translation>Du kan ange fullständigt kommando inklusive tolk här.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/standard/gui/standardfeeddetails.cpp" line="268"/>
       <location filename="../src/librssguard/services/standard/gui/standardfeeddetails.cpp" line="272"/>
       <source>The source is ok.</source>
-      <translation type="unfinished">The source is ok.</translation>
+      <translation>Källan är OK.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/standard/gui/standardfeeddetails.cpp" line="265"/>
       <source>The source is empty.</source>
-      <translation type="unfinished">The source is empty.</translation>
+      <translation>Källan är tom.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/standard/gui/standardfeeddetails.cpp" line="278"/>
       <source>Command is ok.</source>
-      <translation type="unfinished">Command is ok.</translation>
+      <translation>Kommandot är OK.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/standard/gui/standardfeeddetails.cpp" line="281"/>
       <source>Command is empty.</source>
-      <translation type="unfinished">Command is empty.</translation>
+      <translation>Kommano saknas.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/standard/gui/standardfeeddetails.cpp" line="160"/>
       <location filename="../src/librssguard/services/standard/gui/standardfeeddetails.cpp" line="216"/>
       <source>Script failed: %1</source>
-      <translation type="unfinished">Script failed: %1</translation>
+      <translation>Skript misslyckades: %1</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/standard/gui/standardfeeddetails.cpp" line="165"/>
       <location filename="../src/librssguard/services/standard/gui/standardfeeddetails.cpp" line="221"/>
       <source>Network error: %1</source>
-      <translation type="unfinished">Network error: %1</translation>
+      <translation>Nätverksfel: %1</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/standard/gui/standardfeeddetails.cpp" line="170"/>
       <location filename="../src/librssguard/services/standard/gui/standardfeeddetails.cpp" line="226"/>
       <source>Error: %1</source>
-      <translation type="unfinished">Error: %1</translation>
+      <translation>Fel: %1</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/standard/gui/standardfeeddetails.cpp" line="118"/>
@@ -7375,47 +7374,47 @@ Also, you can post-process generated feed data with yet another script if you wi
     <message>
       <location filename="../src/librssguard/services/standard/gui/standardfeeddetails.ui" line="14"/>
       <source>Form</source>
-      <translation type="unfinished">Form</translation>
+      <translation>Form</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/standard/gui/standardfeeddetails.ui" line="20"/>
       <source>Parent folder</source>
-      <translation type="unfinished">Parent folder</translation>
+      <translation>Överordnad mapp</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/standard/gui/standardfeeddetails.ui" line="30"/>
       <source>Select parent item for your feed.</source>
-      <translation type="unfinished">Select parent item for your feed.</translation>
+      <translation>Välj övergripande objekt för ditt flöde.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/standard/gui/standardfeeddetails.ui" line="46"/>
       <source>Type</source>
-      <translation type="unfinished">Type</translation>
+      <translation>Typ</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/standard/gui/standardfeeddetails.ui" line="58"/>
       <source>Select type of the standard feed.</source>
-      <translation type="unfinished">Select type of the standard feed.</translation>
+      <translation>Välj flödestyp.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/standard/gui/standardfeeddetails.ui" line="65"/>
       <source>Select encoding of the standard feed. If you are unsure about the encoding, then select &quot;UTF-8&quot; encoding.</source>
-      <translation type="unfinished">Select encoding of the standard feed. If you are unsure about the encoding, then select &quot;UTF-8&quot; encoding.</translation>
+      <translation>Välj flödeskodning. Välj &quot;UTF-8&quot; om du är osäker på kodningen.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/standard/gui/standardfeeddetails.ui" line="74"/>
       <source>Title</source>
-      <translation type="unfinished">Title</translation>
+      <translation>Titel</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/standard/gui/standardfeeddetails.ui" line="87"/>
       <source>Description</source>
-      <translation type="unfinished">Description</translation>
+      <translation>Beskrivning</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/standard/gui/standardfeeddetails.ui" line="100"/>
       <source>Source</source>
-      <translation type="unfinished">Source</translation>
+      <translation>Källa</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/standard/gui/standardfeeddetails.ui" line="129"/>
@@ -7425,22 +7424,22 @@ Also, you can post-process generated feed data with yet another script if you wi
     <message>
       <location filename="../src/librssguard/services/standard/gui/standardfeeddetails.ui" line="158"/>
       <source>Fetch metadata</source>
-      <translation type="unfinished">Fetch metadata</translation>
+      <translation>Hämta metadata</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/standard/gui/standardfeeddetails.ui" line="170"/>
       <source>Fetch it now</source>
-      <translation type="unfinished">Fetch it now</translation>
+      <translation>Hämta nu</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/standard/gui/standardfeeddetails.ui" line="192"/>
       <source>Icon</source>
-      <translation type="unfinished">Icon</translation>
+      <translation>Ikon</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/standard/gui/standardfeeddetails.ui" line="214"/>
       <source>Select icon for your feed.</source>
-      <translation type="unfinished">Select icon for your feed.</translation>
+      <translation>Välj ikon för flödet.</translation>
     </message>
   </context>
   <context>
@@ -7448,32 +7447,32 @@ Also, you can post-process generated feed data with yet another script if you wi
     <message>
       <location filename="../src/librssguard/services/standard/standardserviceroot.cpp" line="60"/>
       <source>Do you want to load initial set of feeds?</source>
-      <translation type="unfinished">Do you want to load initial set of feeds?</translation>
+      <translation>Vill du läsa in flödesuppsättningen?</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/standard/standardserviceroot.cpp" line="88"/>
       <source>Error when loading initial feeds</source>
-      <translation type="unfinished">Error when loading initial feeds</translation>
+      <translation>Fel vid inläsning av flöden</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/standard/standardserviceroot.cpp" line="266"/>
       <source>Fetch metadata</source>
-      <translation type="unfinished">Fetch metadata</translation>
+      <translation>Hämta metadata</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/standard/standardserviceroot.cpp" line="426"/>
       <source>Export feeds</source>
-      <translation type="unfinished">Export feeds</translation>
+      <translation>Exportera flöden</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/standard/standardserviceroot.cpp" line="427"/>
       <source>Import feeds</source>
-      <translation type="unfinished">Import feeds</translation>
+      <translation>Importera flöden</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/standard/standardserviceroot.cpp" line="59"/>
       <source>This new account does not include any feeds. You can now add default set of feeds.</source>
-      <translation type="unfinished">This new account does not include any feeds. You can now add default set of feeds.</translation>
+      <translation>Detta nya konto inkluderar inte några flöden. Du kan nu läsa in standarduppsättningen av flöden.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/standard/standardserviceroot.cpp" line="44"/>
@@ -7483,32 +7482,32 @@ Also, you can post-process generated feed data with yet another script if you wi
     <message>
       <location filename="../src/librssguard/services/standard/standardserviceroot.cpp" line="131"/>
       <source>Cannot add item</source>
-      <translation type="unfinished">Cannot add item</translation>
+      <translation>Kan inte lägga till objekt</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/standard/standardserviceroot.cpp" line="132"/>
       <source>Cannot add feed because another critical operation is ongoing.</source>
-      <translation type="unfinished">Cannot add feed because another critical operation is ongoing.</translation>
+      <translation>Kan inte lägga till flöde, eftersom en annan kritisk åtgärd pågår.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/standard/standardserviceroot.cpp" line="392"/>
       <source>Cannot add category</source>
-      <translation type="unfinished">Cannot add category</translation>
+      <translation>Kan inte lägga till kategori</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/standard/standardserviceroot.cpp" line="393"/>
       <source>Cannot add category because another critical operation is ongoing.</source>
-      <translation type="unfinished">Cannot add category because another critical operation is ongoing.</translation>
+      <translation>Kan inte lägga till kategori, eftersom en annan kritisk åtgärd pågår.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/standard/standardserviceroot.cpp" line="380"/>
       <source>Import was completely successful.</source>
-      <translation type="unfinished">Import was completely successful.</translation>
+      <translation>Importen slutfördes korrekt.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/standard/standardserviceroot.cpp" line="377"/>
       <source>Some feeds/categories were not imported due to error, check debug log for more details.</source>
-      <translation type="unfinished">Some feeds/categories were not imported due to error, check debug log for more details.</translation>
+      <translation>Vissa flöden/kategorier importerades inte på grund av något fel, kolla loggen för mer information.</translation>
     </message>
   </context>
   <context>
@@ -7516,17 +7515,17 @@ Also, you can post-process generated feed data with yet another script if you wi
     <message>
       <location filename="../src/librssguard/gui/toolbars/statusbar.cpp" line="26"/>
       <source>Feed update progress bar</source>
-      <translation type="unfinished">Feed update progress bar</translation>
+      <translation>Förloppsindikator för flödesuppdatering</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/toolbars/statusbar.cpp" line="36"/>
       <source>File download progress bar</source>
-      <translation type="unfinished">File download progress bar</translation>
+      <translation>Förloppsindikator för nedladdning</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/toolbars/statusbar.cpp" line="125"/>
       <source>Toolbar spacer</source>
-      <translation type="unfinished">Toolbar spacer</translation>
+      <translation>Mellanrum</translation>
     </message>
   </context>
   <context>
@@ -7534,12 +7533,12 @@ Also, you can post-process generated feed data with yet another script if you wi
     <message>
       <location filename="../src/librssguard/miscellaneous/systemfactory.cpp" line="230"/>
       <source>anonymous</source>
-      <translation type="unfinished">anonymous</translation>
+      <translation>anonym</translation>
     </message>
     <message>
       <location filename="../src/librssguard/miscellaneous/systemfactory.cpp" line="325"/>
       <source> bytes</source>
-      <translation type="unfinished"> bytes</translation>
+      <translation> byte</translation>
     </message>
     <message>
       <location filename="../src/librssguard/miscellaneous/systemfactory.cpp" line="270"/>
@@ -7553,8 +7552,8 @@ Also, you can post-process generated feed data with yet another script if you wi
       <location filename="../src/librssguard/gui/systemtrayicon.cpp" line="102"/>
       <source>%1
 Unread news: %2</source>
-      <translation type="unfinished">%1
-Unread news: %2</translation>
+      <translation>%1
+Olästa nyheter: %2</translation>
     </message>
   </context>
   <context>
@@ -7562,12 +7561,12 @@ Unread news: %2</translation>
     <message>
       <location filename="../src/librssguard/gui/tabbar.cpp" line="34"/>
       <source>Close this tab.</source>
-      <translation type="unfinished">Close this tab.</translation>
+      <translation>Stäng den här fliken.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/tabbar.cpp" line="35"/>
       <source>Close tab</source>
-      <translation type="unfinished">Close tab</translation>
+      <translation>Stäng fliken</translation>
     </message>
   </context>
   <context>
@@ -7575,32 +7574,32 @@ Unread news: %2</translation>
     <message>
       <location filename="../src/librssguard/gui/tabwidget.cpp" line="139"/>
       <source>Feeds</source>
-      <translation type="unfinished">Feeds</translation>
+      <translation>Flöden</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/tabwidget.cpp" line="38"/>
       <source>Displays main menu.</source>
-      <translation type="unfinished">Displays main menu.</translation>
+      <translation>Visar den primära menyn.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/tabwidget.cpp" line="47"/>
       <source>Main menu</source>
-      <translation type="unfinished">Main menu</translation>
+      <translation>Huvudmeny</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/tabwidget.cpp" line="78"/>
       <source>Downloads</source>
-      <translation type="unfinished">Downloads</translation>
+      <translation>Nedladdningar</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/tabwidget.cpp" line="215"/>
       <source>Newspaper view</source>
-      <translation type="unfinished">Newspaper view</translation>
+      <translation>Tidningsvy</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/tabwidget.cpp" line="239"/>
       <source>Web browser</source>
-      <translation type="unfinished">Web browser</translation>
+      <translation>Webbläsare</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/tabwidget.cpp" line="141"/>
@@ -7613,7 +7612,7 @@ Unread news: %2</translation>
     <message>
       <location filename="../src/librssguard/gui/webviewers/qtextbrowser/textbrowserviewer.cpp" line="148"/>
       <source>image</source>
-      <translation type="unfinished">image</translation>
+      <translation>bild</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/webviewers/qtextbrowser/textbrowserviewer.cpp" line="363"/>
@@ -7623,17 +7622,17 @@ Unread news: %2</translation>
     <message>
       <location filename="../src/librssguard/gui/webviewers/qtextbrowser/textbrowserviewer.cpp" line="366"/>
       <source>Open in external browser</source>
-      <translation type="unfinished">Open in external browser</translation>
+      <translation>Öppna i extern webbläsare</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/webviewers/qtextbrowser/textbrowserviewer.cpp" line="368"/>
       <source>Download</source>
-      <translation type="unfinished">Download</translation>
+      <translation>Ladda ner</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/webviewers/qtextbrowser/textbrowserviewer.cpp" line="393"/>
       <source>Open with external tool</source>
-      <translation type="unfinished">Open with external tool</translation>
+      <translation>Öppna med externt verktyg</translation>
     </message>
   </context>
   <context>
@@ -7641,32 +7640,32 @@ Unread news: %2</translation>
     <message numerus="yes">
       <location filename="../src/librssguard/gui/reusable/timespinbox.cpp" line="54"/>
       <source>%n hour(s)</source>
-      <translation type="unfinished">
-        <numerusform>%n hour(s)</numerusform>
-        <numerusform>%n hour(s)</numerusform>
+      <translation>
+        <numerusform>%n timma</numerusform>
+        <numerusform>%n timmar</numerusform>
       </translation>
     </message>
     <message numerus="yes">
       <location filename="../src/librssguard/gui/reusable/timespinbox.cpp" line="55"/>
       <location filename="../src/librssguard/gui/reusable/timespinbox.cpp" line="65"/>
       <source>%n minute(s)</source>
-      <translation type="unfinished">
-        <numerusform>%n minute(s)</numerusform>
-        <numerusform>%n minute(s)</numerusform>
+      <translation>
+        <numerusform>%n minut</numerusform>
+        <numerusform>%n minuter</numerusform>
       </translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/reusable/timespinbox.cpp" line="57"/>
       <location filename="../src/librssguard/gui/reusable/timespinbox.cpp" line="67"/>
       <source> and </source>
-      <translation type="unfinished"> and </translation>
+      <translation> och </translation>
     </message>
     <message numerus="yes">
       <location filename="../src/librssguard/gui/reusable/timespinbox.cpp" line="64"/>
       <source>%n second(s)</source>
-      <translation type="unfinished">
-        <numerusform>%n second(s)</numerusform>
-        <numerusform>%n second(s)</numerusform>
+      <translation>
+        <numerusform>%n sekund</numerusform>
+        <numerusform>%n sekunder</numerusform>
       </translation>
     </message>
   </context>
@@ -7680,62 +7679,62 @@ Unread news: %2</translation>
       <location filename="../src/librssguard/gui/toolbars/toolbareditor.cpp" line="181"/>
       <location filename="../src/librssguard/gui/toolbars/toolbareditor.cpp" line="184"/>
       <source>Separator</source>
-      <translation type="unfinished">Separator</translation>
+      <translation>Separator</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/toolbars/toolbareditor.cpp" line="170"/>
       <source>Toolbar spacer</source>
-      <translation type="unfinished">Toolbar spacer</translation>
+      <translation>Mellanrum</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/toolbars/toolbareditor.ui" line="32"/>
       <source>Activated actions</source>
-      <translation type="unfinished">Activated actions</translation>
+      <translation>Aktiverade åtgärder</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/toolbars/toolbareditor.ui" line="39"/>
       <source>Available actions</source>
-      <translation type="unfinished">Available actions</translation>
+      <translation>Tillgängliga åtgärder</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/toolbars/toolbareditor.ui" line="76"/>
       <source>Move action up</source>
-      <translation type="unfinished">Move action up</translation>
+      <translation>Flytta upp åtgärden</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/toolbars/toolbareditor.ui" line="89"/>
       <source>Move action down</source>
-      <translation type="unfinished">Move action down</translation>
+      <translation>Flytta ner åtgärden</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/toolbars/toolbareditor.ui" line="109"/>
       <source>Insert separator</source>
-      <translation type="unfinished">Insert separator</translation>
+      <translation>Infoga separator</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/toolbars/toolbareditor.ui" line="122"/>
       <source>Insert spacer</source>
-      <translation type="unfinished">Insert spacer</translation>
+      <translation>Infoga mellanrum</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/toolbars/toolbareditor.ui" line="142"/>
       <source>Add selected action</source>
-      <translation type="unfinished">Add selected action</translation>
+      <translation>Lägg till vald åtgärd</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/toolbars/toolbareditor.ui" line="155"/>
       <source>Delete selected action</source>
-      <translation type="unfinished">Delete selected action</translation>
+      <translation>Ta bort vald åtgärd</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/toolbars/toolbareditor.ui" line="168"/>
       <source>Delete all actions</source>
-      <translation type="unfinished">Delete all actions</translation>
+      <translation>Ta bort alla åtgärder</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/toolbars/toolbareditor.ui" line="181"/>
       <source>Reset toolbar</source>
-      <translation type="unfinished">Reset toolbar</translation>
+      <translation>Återställ verktygsfältet</translation>
     </message>
   </context>
   <context>
@@ -7743,7 +7742,7 @@ Unread news: %2</translation>
     <message>
       <location filename="../src/librssguard/gui/systemtrayicon.cpp" line="22"/>
       <source>Close opened modal dialogs first.</source>
-      <translation type="unfinished">Close opened modal dialogs first.</translation>
+      <translation>Stäng öppna dialogrutor först.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/systemtrayicon.cpp" line="21"/>
@@ -7761,162 +7760,162 @@ Unread news: %2</translation>
     <message>
       <location filename="../src/librssguard/services/tt-rss/gui/ttrssaccountdetails.cpp" line="26"/>
       <source>Leaving this option on causes that updates of feeds will be probably much slower and may time-out often.</source>
-      <translation type="unfinished">Leaving this option on causes that updates of feeds will be probably much slower and may time-out often.</translation>
+      <translation>Aktivering av det här alternativet orsakar troligen att flödesuppdateringar tar längre tid och att tidsgränsen oftare överskrids.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/tt-rss/gui/ttrssaccountdetails.cpp" line="29"/>
       <source>HTTP authentication username</source>
-      <translation type="unfinished">HTTP authentication username</translation>
+      <translation>Användarnamn för HTTP-autentisering</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/tt-rss/gui/ttrssaccountdetails.cpp" line="30"/>
       <source>HTTP authentication password</source>
-      <translation type="unfinished">HTTP authentication password</translation>
+      <translation>Lösenord för HTTP-autentisering</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/tt-rss/gui/ttrssaccountdetails.cpp" line="31"/>
       <source>Password for your TT-RSS account</source>
-      <translation type="unfinished">Password for your TT-RSS account</translation>
+      <translation>Lösenord för ditt TT RSS-konto</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/tt-rss/gui/ttrssaccountdetails.cpp" line="32"/>
       <source>Username for your TT-RSS account</source>
-      <translation type="unfinished">Username for your TT-RSS account</translation>
+      <translation>Användarnamn för ditt TT RSS-konto</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/tt-rss/gui/ttrssaccountdetails.cpp" line="33"/>
       <source>URL of your TT-RSS instance WITHOUT trailing &quot;/api/&quot; string</source>
-      <translation type="unfinished">URL of your TT-RSS instance WITHOUT trailing &quot;/api/&quot; string</translation>
+      <translation>URL för din TT-RSS-instans UTAN vidhängande API-sträng</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/tt-rss/gui/ttrssaccountdetails.cpp" line="35"/>
       <source>No test done yet.</source>
-      <translation type="unfinished">No test done yet.</translation>
+      <translation>Inget test utfört ännu.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/tt-rss/gui/ttrssaccountdetails.cpp" line="36"/>
       <source>Here, results of connection test are shown.</source>
-      <translation type="unfinished">Here, results of connection test are shown.</translation>
+      <translation>Här visas resultat av anslutningstest.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/tt-rss/gui/ttrssaccountdetails.cpp" line="93"/>
       <location filename="../src/librssguard/services/tt-rss/gui/ttrssaccountdetails.cpp" line="94"/>
       <source>API access on selected server is not enabled.</source>
-      <translation type="unfinished">API access on selected server is not enabled.</translation>
+      <translation>API-åtkomst är inte aktiverad på den valda servern.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/tt-rss/gui/ttrssaccountdetails.cpp" line="98"/>
       <location filename="../src/librssguard/services/tt-rss/gui/ttrssaccountdetails.cpp" line="99"/>
       <source>Entered credentials are incorrect.</source>
-      <translation type="unfinished">Entered credentials are incorrect.</translation>
+      <translation>Inloggningsuppgifter är felaktiga.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/tt-rss/gui/ttrssaccountdetails.cpp" line="103"/>
       <location filename="../src/librssguard/services/tt-rss/gui/ttrssaccountdetails.cpp" line="104"/>
       <source>Other error occurred, contact developers.</source>
-      <translation type="unfinished">Other error occurred, contact developers.</translation>
+      <translation>Annat fel uppstod! Kontakta utvecklaren.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/tt-rss/gui/ttrssaccountdetails.cpp" line="109"/>
       <location filename="../src/librssguard/services/tt-rss/gui/ttrssaccountdetails.cpp" line="116"/>
       <source>Installed version: %1, required at least: %2.</source>
-      <translation type="unfinished">Installed version: %1, required at least: %2.</translation>
+      <translation>Installerad version: %1, minsta krav: %2.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/tt-rss/gui/ttrssaccountdetails.cpp" line="112"/>
       <source>Selected Tiny Tiny RSS server is running unsupported version of API.</source>
-      <translation type="unfinished">Selected Tiny Tiny RSS server is running unsupported version of API.</translation>
+      <translation>Den valda Tiny Tiny RSS-servern kör en API-version som inte stöds.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/tt-rss/gui/ttrssaccountdetails.cpp" line="119"/>
       <source>Tiny Tiny RSS server is okay.</source>
-      <translation type="unfinished">Tiny Tiny RSS server is okay.</translation>
+      <translation>Tiny Tiny RSS-servern är okay.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/tt-rss/gui/ttrssaccountdetails.cpp" line="125"/>
       <source>Network error: &apos;%1&apos;.</source>
-      <translation type="unfinished">Network error: &apos;%1&apos;.</translation>
+      <translation>Nätverksfel: &apos;%1&apos;.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/tt-rss/gui/ttrssaccountdetails.cpp" line="126"/>
       <source>Network error, have you entered correct Tiny Tiny RSS API endpoint and password?</source>
-      <translation type="unfinished">Network error, have you entered correct Tiny Tiny RSS API endpoint and password?</translation>
+      <translation>Nätverksfel! Har du angett korrekt Tiny Tiny RSS API-slutpunkt och lösenord?</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/tt-rss/gui/ttrssaccountdetails.cpp" line="130"/>
       <location filename="../src/librssguard/services/tt-rss/gui/ttrssaccountdetails.cpp" line="131"/>
       <source>Unspecified error, did you enter correct URL?</source>
-      <translation type="unfinished">Unspecified error, did you enter correct URL?</translation>
+      <translation>Ospecificerat fel! Angav du korrekt URL?</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/tt-rss/gui/ttrssaccountdetails.cpp" line="139"/>
       <source>Username cannot be empty.</source>
-      <translation type="unfinished">Username cannot be empty.</translation>
+      <translation>Användarnamn saknas.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/tt-rss/gui/ttrssaccountdetails.cpp" line="142"/>
       <source>Username is okay.</source>
-      <translation type="unfinished">Username is okay.</translation>
+      <translation>Användarnamn okay.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/tt-rss/gui/ttrssaccountdetails.cpp" line="150"/>
       <source>Password cannot be empty.</source>
-      <translation type="unfinished">Password cannot be empty.</translation>
+      <translation>Lösenord saknas.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/tt-rss/gui/ttrssaccountdetails.cpp" line="153"/>
       <source>Password is okay.</source>
-      <translation type="unfinished">Password is okay.</translation>
+      <translation>Lösenord okay.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/tt-rss/gui/ttrssaccountdetails.cpp" line="163"/>
       <source>Username is ok or it is not needed.</source>
-      <translation type="unfinished">Username is ok or it is not needed.</translation>
+      <translation>Användarnamnet är OK, eller behövs inte.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/tt-rss/gui/ttrssaccountdetails.cpp" line="164"/>
       <source>Username is empty.</source>
-      <translation type="unfinished">Username is empty.</translation>
+      <translation>Användarnamn saknas.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/tt-rss/gui/ttrssaccountdetails.cpp" line="173"/>
       <source>Password is ok or it is not needed.</source>
-      <translation type="unfinished">Password is ok or it is not needed.</translation>
+      <translation>Lösenordet är ok, eller behövs inte.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/tt-rss/gui/ttrssaccountdetails.cpp" line="174"/>
       <source>Password is empty.</source>
-      <translation type="unfinished">Password is empty.</translation>
+      <translation>Lösenord saknas.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/tt-rss/gui/ttrssaccountdetails.cpp" line="181"/>
       <source>URL cannot be empty.</source>
-      <translation type="unfinished">URL cannot be empty.</translation>
+      <translation>URL saknas.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/tt-rss/gui/ttrssaccountdetails.cpp" line="184"/>
       <source>URL should NOT end with &quot;/api/&quot;.</source>
-      <translation type="unfinished">URL should NOT end with &quot;/api/&quot;.</translation>
+      <translation>URL:en skall INTE sluta med &quot;/api/&quot;.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/tt-rss/gui/ttrssaccountdetails.cpp" line="187"/>
       <source>URL is okay.</source>
-      <translation type="unfinished">URL is okay.</translation>
+      <translation>URL okay.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/tt-rss/gui/ttrssaccountdetails.ui" line="32"/>
       <source>URL</source>
-      <translation type="unfinished">URL</translation>
+      <translation>URL</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/tt-rss/gui/ttrssaccountdetails.ui" line="84"/>
       <source>Download unread articles only</source>
-      <translation type="unfinished">Download unread articles only</translation>
+      <translation>Ladda bara ner olästa artiklar</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/tt-rss/gui/ttrssaccountdetails.ui" line="49"/>
       <source>Only download newest X articles per feed</source>
-      <translation type="unfinished">Only download newest X articles per feed</translation>
+      <translation>Ladda endast ner X nyaste artiklar per flöde</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/tt-rss/gui/ttrssaccountdetails.ui" line="91"/>
@@ -7932,34 +7931,34 @@ Unread news: %2</translation>
       <location filename="../src/librssguard/services/tt-rss/gui/ttrssaccountdetails.ui" line="105"/>
       <location filename="../src/librssguard/services/tt-rss/gui/ttrssaccountdetails.ui" line="149"/>
       <source>Some feeds require authentication, including GMail feeds. BASIC, NTLM-2 and DIGEST-MD5 authentication schemes are supported.</source>
-      <translation type="unfinished">Some feeds require authentication, including GMail feeds. BASIC, NTLM-2 and DIGEST-MD5 authentication schemes are supported.</translation>
+      <translation>Vissa flöden kräver autentisering. Inklusive Gmail-flöden. BASIC, NTLM-2 och DIGEST-MD5 autentiseringsscheman stöds.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/tt-rss/gui/ttrssaccountdetails.ui" line="108"/>
       <source>Authentication</source>
-      <translation type="unfinished">Authentication</translation>
+      <translation>Autentisering</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/tt-rss/gui/ttrssaccountdetails.ui" line="120"/>
       <location filename="../src/librssguard/services/tt-rss/gui/ttrssaccountdetails.ui" line="167"/>
       <source>Username</source>
-      <translation type="unfinished">Username</translation>
+      <translation>Användarnamn</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/tt-rss/gui/ttrssaccountdetails.ui" line="133"/>
       <location filename="../src/librssguard/services/tt-rss/gui/ttrssaccountdetails.ui" line="180"/>
       <source>Password</source>
-      <translation type="unfinished">Password</translation>
+      <translation>Lösenord</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/tt-rss/gui/ttrssaccountdetails.ui" line="152"/>
       <source>Requires HTTP authentication</source>
-      <translation type="unfinished">Requires HTTP authentication</translation>
+      <translation>Kräver HTTP-autentisering</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/tt-rss/gui/ttrssaccountdetails.ui" line="198"/>
       <source>&amp;Test setup</source>
-      <translation type="unfinished">&amp;Test setup</translation>
+      <translation>&amp;Testa inställning</translation>
     </message>
   </context>
   <context>
@@ -7975,47 +7974,47 @@ Unread news: %2</translation>
     <message>
       <location filename="../src/librssguard/services/tt-rss/gui/ttrssfeeddetails.cpp" line="11"/>
       <source>Full feed URL including scheme</source>
-      <translation type="unfinished">Full feed URL including scheme</translation>
+      <translation>Fullständig flödes-URL inkluderingsscema</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/tt-rss/gui/ttrssfeeddetails.cpp" line="12"/>
       <source>Provide URL for your feed.</source>
-      <translation type="unfinished">Provide URL for your feed.</translation>
+      <translation>Ange URL för ditt flöde.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/tt-rss/gui/ttrssfeeddetails.cpp" line="21"/>
       <source>The URL is ok.</source>
-      <translation type="unfinished">The URL is ok.</translation>
+      <translation>URL:en är OK.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/tt-rss/gui/ttrssfeeddetails.cpp" line="27"/>
       <source>The URL does not meet standard pattern. Does your URL start with &quot;http://&quot; or &quot;https://&quot; prefix.</source>
-      <translation type="unfinished">The URL does not meet standard pattern. Does your URL start with &quot;http://&quot; or &quot;https://&quot; prefix.</translation>
+      <translation>URL:en stämmer inte med standardmönstret. Börjar din URL med prefixet &quot;http://&quot; eller &quot;https://&quot;?</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/tt-rss/gui/ttrssfeeddetails.cpp" line="31"/>
       <source>The URL is empty.</source>
-      <translation type="unfinished">The URL is empty.</translation>
+      <translation>URL saknas.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/tt-rss/gui/ttrssfeeddetails.ui" line="14"/>
       <source>Form</source>
-      <translation type="unfinished">Form</translation>
+      <translation>Form</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/tt-rss/gui/ttrssfeeddetails.ui" line="20"/>
       <source>Parent folder</source>
-      <translation type="unfinished">Parent folder</translation>
+      <translation>Överordnad mapp</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/tt-rss/gui/ttrssfeeddetails.ui" line="30"/>
       <source>Select parent item for your feed.</source>
-      <translation type="unfinished">Select parent item for your feed.</translation>
+      <translation>Välj övergripande objekt för ditt flöde.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/tt-rss/gui/ttrssfeeddetails.ui" line="46"/>
       <source>URL</source>
-      <translation type="unfinished">URL</translation>
+      <translation>URL</translation>
     </message>
   </context>
   <context>
@@ -8023,12 +8022,12 @@ Unread news: %2</translation>
     <message>
       <location filename="../src/librssguard/services/tt-rss/ttrssserviceroot.cpp" line="104"/>
       <source>Cannot add item</source>
-      <translation type="unfinished">Cannot add item</translation>
+      <translation>Kan inte lägga till objekt</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/tt-rss/ttrssserviceroot.cpp" line="105"/>
       <source>Cannot add feed because another critical operation is ongoing.</source>
-      <translation type="unfinished">Cannot add feed because another critical operation is ongoing.</translation>
+      <translation>Kan inte lägga till flöde, eftersom en annan kritisk åtgärd pågår.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/tt-rss/ttrssserviceroot.cpp" line="367"/>
@@ -8036,10 +8035,10 @@ Unread news: %2</translation>
 Server: %2
 Last error: %3
 Last login on: %4</source>
-      <translation type="unfinished">Username: %1
+      <translation>Användarnamn: %1
 Server: %2
-Last error: %3
-Last login on: %4</translation>
+Senast fel: %3
+Senaste inloggning: %4</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/tt-rss/ttrssserviceroot.cpp" line="410"/>
@@ -8052,12 +8051,12 @@ Last login on: %4</translation>
     <message>
       <location filename="../src/librssguard/services/abstract/unreadnode.cpp" line="14"/>
       <source>Unread articles</source>
-      <translation type="unfinished">Unread articles</translation>
+      <translation>Olästa artiklar</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/abstract/unreadnode.cpp" line="15"/>
       <source>You can find all unread articles here.</source>
-      <translation type="unfinished">You can find all unread articles here.</translation>
+      <translation>Du hittar alla olästa artiklar här.</translation>
     </message>
   </context>
   <context>
@@ -8065,7 +8064,7 @@ Last login on: %4</translation>
     <message>
       <location filename="../src/librssguard/gui/webbrowser.cpp" line="28"/>
       <source>Navigation panel</source>
-      <translation type="unfinished">Navigation panel</translation>
+      <translation>Navigationspanel</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/webbrowser.cpp" line="35"/>
@@ -8076,7 +8075,7 @@ Last login on: %4</translation>
       <location filename="../src/librssguard/gui/webbrowser.cpp" line="244"/>
       <source>No title</source>
       <extracomment>Webbrowser tab title when no title is available.</extracomment>
-      <translation type="unfinished">No title</translation>
+      <translation>Ingen titel</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/webbrowser.cpp" line="278"/>
@@ -8091,27 +8090,27 @@ Last login on: %4</translation>
     <message>
       <location filename="../src/librssguard/gui/webbrowser.cpp" line="290"/>
       <source>Back</source>
-      <translation type="unfinished">Back</translation>
+      <translation>Tillbaka</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/webbrowser.cpp" line="291"/>
       <source>Forward</source>
-      <translation type="unfinished">Forward</translation>
+      <translation>Framåt</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/webbrowser.cpp" line="292"/>
       <source>Reload</source>
-      <translation type="unfinished">Reload</translation>
+      <translation>Uppdatera</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/webbrowser.cpp" line="293"/>
       <source>Stop</source>
-      <translation type="unfinished">Stop</translation>
+      <translation>Stopp</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/webbrowser.cpp" line="32"/>
       <source>Open this website in system web browser</source>
-      <translation type="unfinished">Open this website in system web browser</translation>
+      <translation>Öppna denna webbsida i systemets webbläsare</translation>
     </message>
   </context>
   <context>
@@ -8119,17 +8118,17 @@ Last login on: %4</translation>
     <message>
       <location filename="../src/librssguard/gui/webviewers/webengine/webengineviewer.cpp" line="94"/>
       <source>Open link in external browser</source>
-      <translation type="unfinished">Open link in external browser</translation>
+      <translation>Öppna länk i extern webbläsare</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/webviewers/webengine/webengineviewer.cpp" line="111"/>
       <source>Open with external tool</source>
-      <translation type="unfinished">Open with external tool</translation>
+      <translation>Öppna med externt verktyg</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/webviewers/webengine/webengineviewer.cpp" line="130"/>
       <source>No external tools activated</source>
-      <translation type="unfinished">No external tools activated</translation>
+      <translation>Inga externa verktyg aktiverade</translation>
     </message>
   </context>
   <context>
@@ -8137,112 +8136,112 @@ Last login on: %4</translation>
     <message>
       <location filename="../src/librssguard/network-web/webfactory.cpp" line="320"/>
       <source>Web engine settings</source>
-      <translation type="unfinished">Web engine settings</translation>
+      <translation>Webbmotorinställningar</translation>
     </message>
     <message>
       <location filename="../src/librssguard/network-web/webfactory.cpp" line="343"/>
       <source>Auto-load images</source>
-      <translation type="unfinished">Auto-load images</translation>
+      <translation>Läs in bilder automatiskt</translation>
     </message>
     <message>
       <location filename="../src/librssguard/network-web/webfactory.cpp" line="344"/>
       <source>JS enabled</source>
-      <translation type="unfinished">JS enabled</translation>
+      <translation>JavaScript aktiverat</translation>
     </message>
     <message>
       <location filename="../src/librssguard/network-web/webfactory.cpp" line="345"/>
       <source>JS can open popup windows</source>
-      <translation type="unfinished">JS can open popup windows</translation>
+      <translation>JavaScript kan öppna popup-fönster</translation>
     </message>
     <message>
       <location filename="../src/librssguard/network-web/webfactory.cpp" line="347"/>
       <source>JS can access clipboard</source>
-      <translation type="unfinished">JS can access clipboard</translation>
+      <translation>JavaScript har åtkomst till urklipp</translation>
     </message>
     <message>
       <location filename="../src/librssguard/network-web/webfactory.cpp" line="349"/>
       <source>Hyperlinks can get focus</source>
-      <translation type="unfinished">Hyperlinks can get focus</translation>
+      <translation>Länkar kan ta fokus</translation>
     </message>
     <message>
       <location filename="../src/librssguard/network-web/webfactory.cpp" line="351"/>
       <source>Local storage enabled</source>
-      <translation type="unfinished">Local storage enabled</translation>
+      <translation>Lokal lagring aktiverad</translation>
     </message>
     <message>
       <location filename="../src/librssguard/network-web/webfactory.cpp" line="353"/>
       <source>Local content can access remote URLs</source>
-      <translation type="unfinished">Local content can access remote URLs</translation>
+      <translation>Lokalt innehåll har åtkomst till fjärr-URL:er</translation>
     </message>
     <message>
       <location filename="../src/librssguard/network-web/webfactory.cpp" line="355"/>
       <source>XSS auditing enabled</source>
-      <translation type="unfinished">XSS auditing enabled</translation>
+      <translation>XSS-granskning aktiverad</translation>
     </message>
     <message>
       <location filename="../src/librssguard/network-web/webfactory.cpp" line="357"/>
       <source>Spatial navigation enabled</source>
-      <translation type="unfinished">Spatial navigation enabled</translation>
+      <translation>Spatial navigering aktiverad</translation>
     </message>
     <message>
       <location filename="../src/librssguard/network-web/webfactory.cpp" line="359"/>
       <source>Local content can access local files</source>
-      <translation type="unfinished">Local content can access local files</translation>
+      <translation>Lokalt innehåll har åtkomst till lokala filer</translation>
     </message>
     <message>
       <location filename="../src/librssguard/network-web/webfactory.cpp" line="361"/>
       <source>Hyperlink auditing enabled</source>
-      <translation type="unfinished">Hyperlink auditing enabled</translation>
+      <translation>Hyperlänkgranskning aktiverad</translation>
     </message>
     <message>
       <location filename="../src/librssguard/network-web/webfactory.cpp" line="363"/>
       <source>Animate scrolling</source>
-      <translation type="unfinished">Animate scrolling</translation>
+      <translation>Animera skrollning</translation>
     </message>
     <message>
       <location filename="../src/librssguard/network-web/webfactory.cpp" line="365"/>
       <source>Error pages enabled</source>
-      <translation type="unfinished">Error pages enabled</translation>
+      <translation>Felsidor aktiverade</translation>
     </message>
     <message>
       <location filename="../src/librssguard/network-web/webfactory.cpp" line="366"/>
       <source>Plugins enabled</source>
-      <translation type="unfinished">Plugins enabled</translation>
+      <translation>Insticksmoduler aktiverade</translation>
     </message>
     <message>
       <location filename="../src/librssguard/network-web/webfactory.cpp" line="367"/>
       <source>Fullscreen enabled</source>
-      <translation type="unfinished">Fullscreen enabled</translation>
+      <translation>Helskärmsläge aktiverat</translation>
     </message>
     <message>
       <location filename="../src/librssguard/network-web/webfactory.cpp" line="371"/>
       <source>Screen capture enabled</source>
-      <translation type="unfinished">Screen capture enabled</translation>
+      <translation>Skärmklipp aktiverat</translation>
     </message>
     <message>
       <location filename="../src/librssguard/network-web/webfactory.cpp" line="373"/>
       <source>WebGL enabled</source>
-      <translation type="unfinished">WebGL enabled</translation>
+      <translation>WebGL aktiverat</translation>
     </message>
     <message>
       <location filename="../src/librssguard/network-web/webfactory.cpp" line="374"/>
       <source>Accelerate 2D canvas</source>
-      <translation type="unfinished">Accelerate 2D canvas</translation>
+      <translation>Accelerera arbetsytor i 2D</translation>
     </message>
     <message>
       <location filename="../src/librssguard/network-web/webfactory.cpp" line="376"/>
       <source>Print element backgrounds</source>
-      <translation type="unfinished">Print element backgrounds</translation>
+      <translation>Rita upp elementbakgrunder</translation>
     </message>
     <message>
       <location filename="../src/librssguard/network-web/webfactory.cpp" line="378"/>
       <source>Allow running insecure content</source>
-      <translation type="unfinished">Allow running insecure content</translation>
+      <translation>Tillåt körning av osäkert innehåll</translation>
     </message>
     <message>
       <location filename="../src/librssguard/network-web/webfactory.cpp" line="380"/>
       <source>Allow geolocation on insecure origins</source>
-      <translation type="unfinished">Allow geolocation on insecure origins</translation>
+      <translation>Tillåt geolokalisering av osäkert ursprung</translation>
     </message>
     <message>
       <location filename="../src/librssguard/network-web/webfactory.cpp" line="711"/>
@@ -8257,12 +8256,12 @@ Last login on: %4</translation>
     <message>
       <location filename="../src/librssguard/network-web/webfactory.cpp" line="150"/>
       <source>Navigate to website manually</source>
-      <translation type="unfinished">Navigate to website manually</translation>
+      <translation>Navigera manuellt till webbsidan</translation>
     </message>
     <message>
       <location filename="../src/librssguard/network-web/webfactory.cpp" line="151"/>
       <source>%1 was unable to launch your web browser with the given URL, you need to open the below website URL in your web browser manually.</source>
-      <translation type="unfinished">%1 was unable to launch your web browser with the given URL, you need to open the below website URL in your web browser manually.</translation>
+      <translation>%1 kunde inte starta din webbläsare med den givna URL:en. Du måste öppna nedanstående URL, manuellt i din webbläsare.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/network-web/webfactory.cpp" line="384"/>
