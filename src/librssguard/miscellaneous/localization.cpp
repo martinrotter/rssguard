@@ -67,7 +67,8 @@ QList<Language> Localization::installedLanguages() const {
   QList<Language> languages;
   const QDir file_dir(APP_LANG_PATH);
   QTranslator translator;
-  auto lang_files = file_dir.entryInfoList(QStringList() << QSL("rssguard_*.qm"), QDir::Files, QDir::Name);
+  auto lang_files =
+    file_dir.entryInfoList(QStringList() << QSL("rssguard_*.qm"), QDir::Filter::Files, QDir::SortFlag::Name);
 
   // Iterate all found language files.
   for (const QFileInfo& file : qAsConst(lang_files)) {
