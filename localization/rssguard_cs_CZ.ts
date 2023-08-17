@@ -5915,12 +5915,12 @@ Tokeny vyprší: %2</translation>
     <message>
       <location filename="../src/librssguard/services/abstract/searchsnode.cpp" line="20"/>
       <source>You can see all your permanent regex queries here.</source>
-      <translation type="unfinished">You can see all your permanent regex queries here.</translation>
+      <translation>Zde můžete vidět všechny vaše trvalé regex dotazy.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/abstract/searchsnode.cpp" line="115"/>
       <source>New regex query</source>
-      <translation type="unfinished">New regex query</translation>
+      <translation>Nový regex dotaz</translation>
     </message>
   </context>
   <context>
@@ -6895,13 +6895,13 @@ Popis: %3</translation>
 Note that usually all required Node.js tools should be available via your &quot;PATH&quot; environment variable, so you do not have to specify full paths.
 
 Also, relaunch &quot;Settings&quot; dialog after you install Node.js.</source>
-      <translation type="unfinished">Node.js is asynchronous event-driven JavaScript runtime, designed to build scalable network applications.
+      <translation>Node.js je asynchronní běh JavaScriptu řízený událostí, navržený pro vytváření škálovatelných síťových aplikací.
 
-%1 integrates Node.js to bring some modern features like Adblock.
+%1 integruje Node.js a přináší několik moderních funkcí jako je Adblock.
 
-Note that usually all required Node.js tools should be available via your &quot;PATH&quot; environment variable, so you do not have to specify full paths.
+Všimněte si, že obvykle všechny potřebné Node.js nástroje by měly být k dispozici prostřednictvím proměnné prostředí &quot;PATH&quot;, abyste nemuseli specifikovat plné cesty.
 
-Also, relaunch &quot;Settings&quot; dialog after you install Node.js.</translation>
+Po instalaci Node.js také restartujte dialog &quot;Nastavení&quot;.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsnodejs.cpp" line="107"/>
