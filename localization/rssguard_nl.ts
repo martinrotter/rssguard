@@ -97,7 +97,7 @@ Fout: %1</translation>
     <message>
       <location filename="../src/librssguard/network-web/adblock/adblockdialog.ui" line="84"/>
       <source>Add your custom filters here (one filter per line)</source>
-      <translation>Voeg hier je aangepaste filters toe (een filter per regel)</translation>
+      <translation>Voeg hier je aangepaste filters toe (één filter per regel)</translation>
     </message>
   </context>
   <context>
@@ -1382,7 +1382,7 @@ QtWebEngine cache map -&gt; &quot;%7&quot;</translation>
     <message>
       <location filename="../src/librssguard/services/abstract/gui/formaddeditprobe.cpp" line="17"/>
       <source>A regular expression (shortened as regex or regexp) is a sequence of characters that specifies a match pattern in text. See more &lt;a href=&quot;https://learn.microsoft.com/en-us/dotnet/standard/base-types/regular-expression-language-quick-reference&quot;&gt;info&lt;/a&gt;.</source>
-      <translation>Een reguliere expressie (afgekort als regex of regexp) is een reeks tekens die een overeenkomend patroon in tekst specificeert.Voor meer info &lt;a href=&quot;https://learn.microsoft.com/en-us/dotnet/standard/base-types/regular-expression-language-quick-reference&quot;&gt;&lt;/a&gt;.</translation>
+      <translation>Een reguliere expressie (afgekort als regex of regexp) is een reeks tekens die een overeenkomend patroon in tekst specificeert.Voor meer &lt;a href=&quot;https://learn.microsoft.com/en-us/dotnet/standard/base-types/regular-expression-language-quick-reference&quot;&gt;info&lt;/a&gt;.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/abstract/gui/formaddeditprobe.cpp" line="25"/>
@@ -2253,7 +2253,7 @@ QtWebEngine cache map -&gt; &quot;%7&quot;</translation>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="578"/>
       <source>&amp;List headers</source>
-      <translation>&amp;Lijstkoppen</translation>
+      <translation>&amp;Kolomnamen</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="586"/>
@@ -2640,7 +2640,7 @@ QtWebEngine cache map -&gt; &quot;%7&quot;</translation>
       <source>Article will be %1.
 
 </source>
-      <translation>Artikel zal zijn %1.
+      <translation>Artikel zal %1 zijn.
 
 </translation>
     </message>
@@ -2719,7 +2719,7 @@ QtWebEngine cache map -&gt; &quot;%7&quot;</translation>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.ui" line="145"/>
       <source>Title of article filter</source>
-      <translation>Naam van Artikel filter</translation>
+      <translation>Naam van Artikelfilter</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.ui" line="152"/>
@@ -3067,7 +3067,7 @@ Je moet handmatig herstarten.</translation>
       <location filename="../src/librssguard/services/standard/gui/formstandardimportexport.cpp" line="167"/>
       <location filename="../src/librssguard/services/standard/gui/formstandardimportexport.cpp" line="212"/>
       <source>TXT files [one URL per line] (*.txt)</source>
-      <translation>TXT bestanden [één url per regel] (*.txt)</translation>
+      <translation>TXT bestanden [één URL per regel] (*.txt)</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/standard/gui/formstandardimportexport.cpp" line="71"/>
@@ -3122,7 +3122,7 @@ Je moet handmatig herstarten.</translation>
     <message>
       <location filename="../src/librssguard/services/standard/gui/formstandardimportexport.ui" line="209"/>
       <source>&amp;Check all feeds</source>
-      <translation>&amp;Controleer alle feeds</translation>
+      <translation>Alle feeds &amp;selecteren</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/standard/gui/formstandardimportexport.ui" line="216"/>
@@ -4324,12 +4324,12 @@ Logintoken verloopt: %2</translation>
     <message>
       <location filename="../src/librssguard/core/messagesforfiltersmodel.cpp" line="36"/>
       <source>true</source>
-      <translation>waar</translation>
+      <translation>ja</translation>
     </message>
     <message>
       <location filename="../src/librssguard/core/messagesforfiltersmodel.cpp" line="37"/>
       <source>false</source>
-      <translation>niet waar</translation>
+      <translation>nee</translation>
     </message>
   </context>
   <context>
@@ -5324,7 +5324,7 @@ Logintoken verloopt: %2</translation>
     </message>
     <message>
       <location filename="../src/librssguard/miscellaneous/application.cpp" line="143"/>
-      <location filename="../src/librssguard/miscellaneous/localization.cpp" line="78"/>
+      <location filename="../src/librssguard/miscellaneous/localization.cpp" line="79"/>
       <source>LANG_AUTHOR</source>
       <extracomment>Name of translator - optional.</extracomment>
       <translation>Elbert Pol, KyraWertho</translation>
@@ -6830,19 +6830,44 @@ Omschrijving: %3</translation>
   <context>
     <name>SettingsLocalization</name>
     <message>
-      <location filename="../src/librssguard/gui/settings/settingslocalization.cpp" line="16"/>
+      <location filename="../src/librssguard/gui/settings/settingslocalization.cpp" line="22"/>
       <source>Language</source>
       <translation>Taal</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/settings/settingslocalization.cpp" line="17"/>
+      <location filename="../src/librssguard/gui/settings/settingslocalization.cpp" line="23"/>
       <source>Code</source>
       <translation>Code</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/settings/settingslocalization.cpp" line="18"/>
+      <location filename="../src/librssguard/gui/settings/settingslocalization.cpp" line="24"/>
       <source>Author</source>
       <translation>Auteur</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard/gui/settings/settingslocalization.cpp" line="24"/>
+      <source>Translation progress</source>
+      <translation type="unfinished">Translation progress</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard/gui/settings/settingslocalization.cpp" line="26"/>
+      <source>Help us to improve %1 &lt;a href=&quot;%2&quot;&gt;translations&lt;/a&gt;.</source>
+      <translation>Help met het verbeteren van de %1 &lt;a href=&quot;%2&quot;&gt;vertaling(en)&lt;/a&gt;.</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard/gui/settings/settingslocalization.cpp" line="136"/>
+      <source>Translators needed!</source>
+      <translation type="unfinished">Translators needed!</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard/gui/settings/settingslocalization.cpp" line="137"/>
+      <source>The translation &apos;%1&apos; is incomplete and anyone able to help with translating %2 is greatly welcomed.</source>
+      <translation type="unfinished">The translation &apos;%1&apos; is incomplete and anyone able to help with translating %2 is greatly welcomed.</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard/gui/settings/settingslocalization.cpp" line="139"/>
+      <source>Do you want to help with the translation now?</source>
+      <translation type="unfinished">Do you want to help with the translation now?</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingslocalization.h" line="26"/>
