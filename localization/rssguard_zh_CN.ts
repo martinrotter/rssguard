@@ -292,7 +292,7 @@ version by clicking this popup notification.</source>
     <message>
       <location filename="../src/librssguard/services/abstract/gui/authenticationdetails.cpp" line="76"/>
       <source>Access token</source>
-      <translation type="unfinished">Access token</translation>
+      <translation>访问令牌</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/abstract/gui/authenticationdetails.cpp" line="63"/>
