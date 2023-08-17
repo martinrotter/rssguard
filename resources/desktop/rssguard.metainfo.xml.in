@@ -47,7 +47,7 @@
   <url type="homepage">https://github.com/martinrotter/rssguard</url>
   <url type="bugtracker">https://github.com/martinrotter/rssguard/issues</url>
   <url type="donation">https://github.com/sponsors/martinrotter</url>
-  <url type="translate">https://explore.transifex.com/martinrotter/rssguard</url>
+  <url type="translate">https://crowdin.com/project/rssguard</url>
   <keywords>
     <keyword translate="no">ATOM</keyword>
     <keyword translate="no">JSON</keyword>
