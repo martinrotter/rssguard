@@ -13,6 +13,9 @@
   <layout class="QHBoxLayout" name="horizontalLayout">
    <item>
     <widget class="QTabWidget" name="m_tabBrowserProxy">
+     <property name="currentIndex">
+      <number>0</number>
+     </property>
      <widget class="QWidget" name="m_tabNetwork">
       <attribute name="title">
        <string>Network</string>
@@ -36,7 +39,7 @@
      </widget>
      <widget class="QWidget" name="m_tabWebEngine">
       <attribute name="title">
-       <string>WebEngine</string>
+       <string notr="true">WebEngine</string>
       </attribute>
       <layout class="QFormLayout" name="formLayout_4">
        <item row="1" column="0">

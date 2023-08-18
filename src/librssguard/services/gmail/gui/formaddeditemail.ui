@@ -30,11 +30,7 @@
       </spacer>
      </item>
      <item>
-      <widget class="PlainToolButton" name="m_btnAdder">
-       <property name="text">
-        <string>...</string>
-       </property>
-      </widget>
+      <widget class="PlainToolButton" name="m_btnAdder"/>
      </item>
     </layout>
    </item>

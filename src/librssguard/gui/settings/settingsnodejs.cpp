@@ -107,7 +107,7 @@ void SettingsNodejs::testNodejs() {
                                        tr("Node.js has version %1.").arg(node_version));
   }
   catch (const ApplicationException& ex) {
-    m_ui.m_tbNodeExecutable->setStatus(WidgetWithStatus::StatusType::Error, tr("Node.js: %1.").arg(ex.message()));
+    m_ui.m_tbNodeExecutable->setStatus(WidgetWithStatus::StatusType::Error, QSL("Node.js: %1.").arg(ex.message()));
   }
 }
 
@@ -118,7 +118,7 @@ void SettingsNodejs::testNpm() {
     m_ui.m_tbNpmExecutable->setStatus(WidgetWithStatus::StatusType::Ok, tr("NPM has version %1.").arg(npm_version));
   }
   catch (const ApplicationException& ex) {
-    m_ui.m_tbNpmExecutable->setStatus(WidgetWithStatus::StatusType::Error, tr("NPM: %1.").arg(ex.message()));
+    m_ui.m_tbNpmExecutable->setStatus(WidgetWithStatus::StatusType::Error, QSL("NPM: %1.").arg(ex.message()));
   }
 }
 

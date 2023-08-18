@@ -384,9 +384,6 @@
         <property name="toolTip">
          <string>Text foreground color</string>
         </property>
-        <property name="text">
-         <string>.</string>
-        </property>
         <property name="iconSize">
          <size>
           <width>16</width>
@@ -414,9 +411,6 @@
         </property>
         <property name="toolTip">
          <string>Text background color</string>
-        </property>
-        <property name="text">
-         <string>.</string>
         </property>
         <property name="iconSize">
          <size>
@@ -447,11 +441,7 @@
        </widget>
       </item>
       <item>
-       <widget class="PlainToolButton" name="f_image">
-        <property name="text">
-         <string notr="true">...</string>
-        </property>
-       </widget>
+       <widget class="PlainToolButton" name="f_image"/>
       </item>
       <item>
        <spacer name="horizontalSpacer">
@@ -467,11 +457,7 @@
        </spacer>
       </item>
       <item>
-       <widget class="PlainToolButton" name="f_menu">
-        <property name="text">
-         <string>...</string>
-        </property>
-       </widget>
+       <widget class="PlainToolButton" name="f_menu"/>
       </item>
      </layout>
      <zorder>f_paragraph</zorder>
@@ -516,6 +502,11 @@
  </widget>
  <customwidgets>
   <customwidget>
+   <class>ColorToolButton</class>
+   <extends>QToolButton</extends>
+   <header>colortoolbutton.h</header>
+  </customwidget>
+  <customwidget>
    <class>PlainToolButton</class>
    <extends>QToolButton</extends>
    <header>plaintoolbutton.h</header>
@@ -524,11 +515,6 @@
    <class>MTextEdit</class>
    <extends>QTextEdit</extends>
    <header>mtextedit.h</header>
-  </customwidget>
-  <customwidget>
-   <class>ColorToolButton</class>
-   <extends>QToolButton</extends>
-   <header>colortoolbutton.h</header>
   </customwidget>
  </customwidgets>
  <tabstops>

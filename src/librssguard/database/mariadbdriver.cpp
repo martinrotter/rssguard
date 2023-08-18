@@ -91,7 +91,7 @@ QString MariaDbDriver::interpretErrorCode(MariaDbDriver::MariaDbError error_code
 }
 
 QString MariaDbDriver::humanDriverType() const {
-  return tr("MariaDB");
+  return QSL("MariaDB");
 }
 
 QString MariaDbDriver::qtDriverCode() const {

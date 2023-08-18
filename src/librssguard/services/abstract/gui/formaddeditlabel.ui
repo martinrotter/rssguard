@@ -14,11 +14,7 @@
    <item>
     <layout class="QHBoxLayout" name="horizontalLayout">
      <item>
-      <widget class="ColorToolButton" name="m_btnColor">
-       <property name="text">
-        <string>...</string>
-       </property>
-      </widget>
+      <widget class="ColorToolButton" name="m_btnColor"/>
      </item>
      <item>
       <widget class="LineEditWithStatus" name="m_txtName" native="true"/>

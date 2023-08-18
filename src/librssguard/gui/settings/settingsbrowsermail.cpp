@@ -182,7 +182,7 @@ void SettingsBrowserMail::loadSettings() {
     ->setChecked(settings()->value(GROUP(Browser), SETTING(Browser::CustomExternalBrowserEnabled)).toBool());
 
   // Load settings of e-mail.
-  m_ui->m_cmbExternalEmailPreset->addItem(tr("Mozilla Thunderbird"), QSL("-compose \"subject='%1',body='%2'\""));
+  m_ui->m_cmbExternalEmailPreset->addItem(QSL("Mozilla Thunderbird"), QSL("-compose \"subject='%1',body='%2'\""));
   m_ui->m_txtExternalEmailExecutable
     ->setText(settings()->value(GROUP(Browser), SETTING(Browser::CustomExternalEmailExecutable)).toString());
   m_ui->m_txtExternalEmailArguments

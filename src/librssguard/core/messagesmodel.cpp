@@ -284,7 +284,7 @@ void MessagesModel::setupHeaderData() {
     /*: Tooltip for "pdeleted" column in msg list.*/ tr("Permanently deleted") <<
     /*: Tooltip for custom ID of feed of message.*/ tr("Feed ID") <<
     /*: Tooltip for title of message.*/ tr("Title") <<
-    /*: Tooltip for url of message.*/ tr("Url") <<
+    /*: Tooltip for url of message.*/ tr("URL") <<
     /*: Tooltip for author of message.*/ tr("Author") <<
     /*: Tooltip for creation date of message.*/ tr("Date") <<
     /*: Tooltip for contents of message.*/ tr("Contents") <<
