@@ -146,12 +146,12 @@ Błąd: %1</translation>
     <message>
       <location filename="../src/librssguard/miscellaneous/application.cpp" line="314"/>
       <source>Please, fill the survey.</source>
-      <translation type="unfinished">Please, fill the survey.</translation>
+      <translation>Proszę wypełnić ankietę.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/miscellaneous/application.cpp" line="317"/>
       <source>Go to survey</source>
-      <translation type="unfinished">Go to survey</translation>
+      <translation>Idź do ankiety</translation>
     </message>
     <message>
       <location filename="../src/librssguard/miscellaneous/application.cpp" line="566"/>
@@ -235,7 +235,7 @@ tej wersji, klikając na to powiadomienie.</translation>
     <message>
       <location filename="../src/librssguard/services/abstract/gui/authenticationdetails.ui" line="14"/>
       <source>Form</source>
-      <translation type="unfinished">Form</translation>
+      <translation>Formularz</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/abstract/gui/authenticationdetails.ui" line="20"/>
@@ -245,12 +245,12 @@ tej wersji, klikając na to powiadomienie.</translation>
     <message>
       <location filename="../src/librssguard/services/abstract/gui/authenticationdetails.ui" line="23"/>
       <source>Credentials</source>
-      <translation type="unfinished">Credentials</translation>
+      <translation>Dane logowania</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/abstract/gui/authenticationdetails.ui" line="64"/>
       <source>Authentication type</source>
-      <translation type="unfinished">Authentication type</translation>
+      <translation>Typ uwierzytelnienia</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/abstract/gui/authenticationdetails.ui" line="35"/>
@@ -278,7 +278,7 @@ tej wersji, klikając na to powiadomienie.</translation>
     <message>
       <location filename="../src/librssguard/services/abstract/gui/authenticationdetails.cpp" line="17"/>
       <source>No authentication</source>
-      <translation type="unfinished">No authentication</translation>
+      <translation>Brak uwierzytelnienia</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/abstract/gui/authenticationdetails.cpp" line="53"/>
@@ -604,7 +604,7 @@ Click here to open parent directory.</translation>
     <message>
       <location filename="../src/librssguard/services/gmail/gui/emailpreviewer.ui" line="14"/>
       <source>Form</source>
-      <translation type="unfinished">Form</translation>
+      <translation>Formularz</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/gmail/gui/emailpreviewer.ui" line="20"/>
@@ -3900,7 +3900,7 @@ Login tokens expiration: %2</translation>
     <message>
       <location filename="../src/librssguard/gui/itemdetails.ui" line="20"/>
       <source>Form</source>
-      <translation type="unfinished">Form</translation>
+      <translation>Formularz</translation>
     </message>
   </context>
   <context>
@@ -4939,7 +4939,7 @@ Login tokens expiration: %2</translation>
     <message>
       <location filename="../src/librssguard/gui/reusable/networkproxydetails.ui" line="14"/>
       <source>Form</source>
-      <translation type="unfinished">Form</translation>
+      <translation>Formularz</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/reusable/networkproxydetails.ui" line="23"/>
@@ -6983,7 +6983,7 @@ Also, relaunch &quot;Settings&quot; dialog after you install Node.js.</translati
     <message>
       <location filename="../src/librssguard/gui/settings/settingsnodejs.ui" line="14"/>
       <source>Form</source>
-      <translation type="unfinished">Form</translation>
+      <translation>Formularz</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsnodejs.ui" line="23"/>
@@ -7450,7 +7450,7 @@ Also, you can post-process generated feed data with yet another script if you wi
     <message>
       <location filename="../src/librssguard/services/standard/gui/standardfeeddetails.ui" line="14"/>
       <source>Form</source>
-      <translation type="unfinished">Form</translation>
+      <translation>Formularz</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/standard/gui/standardfeeddetails.ui" line="20"/>
@@ -8081,7 +8081,7 @@ Nieprzeczytanych wiadomości: %2</translation>
     <message>
       <location filename="../src/librssguard/services/tt-rss/gui/ttrssfeeddetails.ui" line="14"/>
       <source>Form</source>
-      <translation type="unfinished">Form</translation>
+      <translation>Formularz</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/tt-rss/gui/ttrssfeeddetails.ui" line="20"/>
