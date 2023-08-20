@@ -8,21 +8,8 @@ There is a [Discord server](https://discord.gg/7xbVMPPNqH) for user communicatio
 - [What is RSS Guard?](#wirss)
 - [Downloads](#dwn)
 - [Supported Operating Systems](#sos)
-- [Major Features](#mfe)
-    - [Supported Feed Readers](#sfr)
-    - [Article Filtering](#fltr)
-    - [Websites Scraping](#scrap)
-    - [Notifications](#notif)
-    - [Database Backends](#datab)
-    - [User Data Portability](#userd)
-    - [Built-in Web Browser with AdBlock](#webb)
-- [Minor Features](#mife)
-    - [Files Downloader](#downl)
-    - [Node.js](#node)
-    - [Labels](#lbls)
-    - [Skins](#skin)
-    - [GUI Tweaking](#guit)
-    - [Command Line Interface (CLI)](#cli)
+- [Supported Feed Readers](#sfr)
+- [Features](#fe)
 - [For Contributors and Other Topics](#contrib)
     - [Donations](#donat)
     - [Compiling RSS Guard](#compil)
@@ -34,30 +21,30 @@ There is a [Discord server](https://discord.gg/7xbVMPPNqH) for user communicatio
 <hr style="margin: 40px;"/>
 
 ## What is RSS Guard? <a id="wirss"></a>
-RSS Guard is an [open-source](https://en.wikipedia.org/wiki/Open_source) [cross-platform](#sos) [multi-protocol](#sfr) desktop feed reader. It is able to fetch feeds in RSS/RDF/ATOM/JSON formats. RSS Guard is developed on top of the [Qt library](http://qt-project.org).
+RSS Guard is an [open-source](https://en.wikipedia.org/wiki/Open_source) [cross-platform](#sos) [multi-protocol](#sfr) desktop feed reader. It is able to fetch feeds in RSS/RDF/ATOM/JSON formats and connect to multiple web-based feed readers. RSS Guard is developed on top of the [Qt library](http://qt-project.org).
 
 ## Downloads <a id="dwn"></a>
 Official place to download RSS Guard is at [Github Releases page](https://github.com/martinrotter/rssguard/releases). You can also download the [development (beta) build](https://github.com/martinrotter/rssguard/releases/tag/devbuild), which is updated automatically every time the source code is updated.
 
-RSS Guard is also available in [repositories of many Linux distributions](https://repology.org/project/rssguard/versions), and via [Flathub](https://flathub.org/about) with two different versions:
+RSS Guard is also available in [repositories of many Linux distributions](https://repology.org/project/rssguard/versions), and via [Flathub](https://flathub.org/about).
 
-- [Regular](https://flathub.org/apps/details/io.github.martinrotter.rssguard): Includes an integrated web browser (built with `-DUSE_WEBENGINE=ON`).
-- [Lite](https://flathub.org/apps/details/io.github.martinrotter.rssguardlite): Does not include an integrated web browser (built with `-DUSE_WEBENGINE=OFF`).
+The are two different flavors:
+
+- [Regular](https://flathub.org/apps/details/io.github.martinrotter.rssguard): Includes an (almost) full-blown integrated web browser (built with `-DUSE_WEBENGINE=ON`).
+- [Lite](https://flathub.org/apps/details/io.github.martinrotter.rssguardlite): Includes simpler, safer (and less memory hungry integrated web browser (built with `-DUSE_WEBENGINE=OFF`).
 
 I highly recommend to download RSS Guard only from trusted sources.
 
 ## Supported Operating Systems <a id="sos"></a>
 RSS Guard is a cross-platform application, and at this point it is known to work on:
-* Windows 10+
-* GNU/Linux with glibc 2.31+ (including PinePhone and other Linux-based phone operating systems)
+* Windows 7+
+* GNU/Linux (including PinePhone and other Linux-based phone operating systems)
 * BSD (FreeBSD, OpenBSD, NetBSD, etc.)
 * macOS 10.14+
 * OS/2 (ArcaOS, eComStation)
 
-## Major Features <a id="mfe"></a>
-
-### Supported Feed Readers <a id="sfr"></a>
-RSS Guard is multi-account application and supports many web-based feed readers via [built-in plugins](#papi). One of the plugins, of course, provides the support for standard list of **RSS/ATOM/JSON** feeds with the set of features everyone would expect from classic feed reader, like OPML support, etc.
+## Supported Feed Readers <a id="sfr"></a>
+RSS Guard is multi-account application and supports many web-based feed readers via [built-in plugins](#papi). One of the plugins, of course, provides the support for standard list of **RSS/ATOM/JSON** feeds with the set of features everyone would expect from classic feed reader.
 
 I organized the supported web-based feed readers into an elegant table:
 
@@ -71,21 +58,56 @@ I organized the supported web-based feed readers into an elegant table:
 
 <sup>1</sup> Some plugins support next-gen intelligent synchronization algorithm (ISA) which has some benefits, as it usually offers superior synchronization speed, and transfers much less data over your network connection. <a id="intel"></a>
 
-<img alt="alt-img" src="images/intel.png" width="350px">
-
-With ISA, RSS Guard only downloads articles which are new or were updated. The old algorithm usually always fetches all available articles, even if they are not needed, which leads to unnecessary overload of your network connection and the RSS Guard.
+With ISA, RSS Guard only downloads articles which are new or were updated by remote server. The old algorithm usually always fetches all available articles, even if they are not needed, which leads to unnecessary overload of your network connection and the RSS Guard.
 
 <sup>2</sup> Note that [labels](#lbls) are supported for all plugins, but for some plugins they are local-only, and are not synchronized with the service. Usually because service itself does not support the feature.
 
 <sup>3</sup> Tested services are:
 * Bazqux
-* Reedah
+* FreshRSS
 * Inoreader
 * Miniflux
+* Reedah
 * TheOldReader
-* FreshRSS
 
 <sup>4</sup> [OAuth](https://en.wikipedia.org/wiki/OAuth) is a secure way of authenticating users in online applications.
+
+## Features & How-tos <a id="fe"></a>
+Here you can read detailed description of all RSS Guard features.
+
+### General GUI concepts & manipulating accounts & adding feeds.
+Main RSS Guard window is separated into three main areas:
+* feed list (left side)
+* article list (top-right side)
+* article preview (top-bottom side)
+
+<img alt="alt-img" src="images/rssguard-window.png">
+
+Feed list displays all your feeds and other items such as recycle bin.
+
+Article list displays all your articles depending on what is selected in feed list.
+
+Article preview displays details of selected article or information about selected item from feed list if no article is selected.
+
+Titlebar of RSS Guard display number of unread articles in square brackets.
+
+There are two toolbars available, separate toolbar for feed list and for article list.
+
+----
+
+When you start RSS Guard for the very first time, you are greeted with `Add account` dialog where you select which account you want to operate with. If you want to have classic `RSS/ATOM` feed reader, then select `RSS/RDF/ATOM/JSON` option.
+
+<img alt="alt-img" src="images/accounts.png">
+
+Each "account" offers account-specific actions which are accessible in relevant submenu.
+
+<img alt="alt-img" src="images/account-menu.png">
+
+To add new feed into the account you simply use `Feeds -> Add item -> Add a new feed` menu item.
+
+<img alt="alt-img" src="images/feed-details.png">
+
+In 99 % of cases, you only need to insert feed URL into `Source` field and then hit `Fetch it now` button which will download feed metadata and fill all other needed textboxes.
 
 ### Article Filtering <a id="fltr"></a>
 Sometimes you need to automatically tweak the incoming article - mark it starred, remove ads from its contents, or simply ignore it. That's where filtering feature comes in.
