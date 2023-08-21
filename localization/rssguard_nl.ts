@@ -426,89 +426,89 @@ Om te zien wat er NIEUW is in deze versie: klik op deze melding.</translation>
   <context>
     <name>DownloadItem</name>
     <message>
-      <location filename="../src/librssguard/network-web/downloadmanager.cpp" line="262"/>
+      <location filename="../src/librssguard/network-web/downloadmanager.cpp" line="272"/>
       <source>Error opening output file: %1</source>
       <translation>Fout bij openen van uitvoerbestand: %1</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/network-web/downloadmanager.cpp" line="106"/>
+      <location filename="../src/librssguard/network-web/downloadmanager.cpp" line="110"/>
       <source>Select destination for downloaded file</source>
       <translation>Kies een bestemming voor het gedownloade bestand</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/network-web/downloadmanager.cpp" line="288"/>
+      <location filename="../src/librssguard/network-web/downloadmanager.cpp" line="298"/>
       <source>Error: %1</source>
       <translation>Fout: %1</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/network-web/downloadmanager.cpp" line="132"/>
+      <location filename="../src/librssguard/network-web/downloadmanager.cpp" line="137"/>
       <source>Download directory couldn&apos;t be created</source>
       <translation>De downloadmap kan niet worden aangemaakt</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/network-web/downloadmanager.cpp" line="273"/>
+      <location filename="../src/librssguard/network-web/downloadmanager.cpp" line="283"/>
       <source>Error when saving file: %1</source>
       <translation>Fout bij opslaan van bestand: %1</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/network-web/downloadmanager.cpp" line="380"/>
+      <location filename="../src/librssguard/network-web/downloadmanager.cpp" line="390"/>
       <source>%1 of %2 (%3 per second) - %4</source>
       <translation>%1 of %2 (%3 per seconde) - %4</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/network-web/downloadmanager.cpp" line="390"/>
+      <location filename="../src/librssguard/network-web/downloadmanager.cpp" line="401"/>
       <source>%1 of %2 - download completed</source>
       <translation>%1 of %2 - downloaden voltooid</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/network-web/downloadmanager.cpp" line="212"/>
+      <location filename="../src/librssguard/network-web/downloadmanager.cpp" line="217"/>
       <source>Cannot open file</source>
       <translation>Kan bestand niet openen</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/network-web/downloadmanager.cpp" line="212"/>
+      <location filename="../src/librssguard/network-web/downloadmanager.cpp" line="218"/>
       <source>Cannot open output file. Open it manually.</source>
       <translation>Kan dit uitvoerbestand niet openen - open het handmatig.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/network-web/downloadmanager.cpp" line="220"/>
+      <location filename="../src/librssguard/network-web/downloadmanager.cpp" line="228"/>
       <source>Cannot open directory</source>
       <translation>Kan map niet openen</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/network-web/downloadmanager.cpp" line="221"/>
+      <location filename="../src/librssguard/network-web/downloadmanager.cpp" line="229"/>
       <source>Cannot open output directory. Open it manually.</source>
       <translation>Kan de uitvoermap niet openen - open deze handmatig.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/network-web/downloadmanager.cpp" line="431"/>
+      <location filename="../src/librssguard/network-web/downloadmanager.cpp" line="442"/>
       <source>Download finished</source>
       <translation>Downloaden voltooid</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/network-web/downloadmanager.cpp" line="432"/>
+      <location filename="../src/librssguard/network-web/downloadmanager.cpp" line="443"/>
       <source>File &apos;%1&apos; is downloaded.
 Click here to open parent directory.</source>
       <translation>Bestand &apos;%1&apos; is gedownload.
 Klik hier op de huidige map to openen.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/network-web/downloadmanager.cpp" line="442"/>
+      <location filename="../src/librssguard/network-web/downloadmanager.cpp" line="454"/>
       <source>URL: %1</source>
       <translation>URL: %1</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/network-web/downloadmanager.cpp" line="443"/>
+      <location filename="../src/librssguard/network-web/downloadmanager.cpp" line="455"/>
       <source>Local file: %1</source>
       <translation>Lokaal bestand: %1</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/network-web/downloadmanager.cpp" line="112"/>
+      <location filename="../src/librssguard/network-web/downloadmanager.cpp" line="116"/>
       <source>Selection of local file cancelled.</source>
       <translation>Selectie van lokaal bestand afgebroken.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/network-web/downloadmanager.cpp" line="435"/>
+      <location filename="../src/librssguard/network-web/downloadmanager.cpp" line="447"/>
       <source>Open folder</source>
       <translation>Map openen</translation>
     </message>
@@ -541,7 +541,7 @@ Klik hier op de huidige map to openen.</translation>
   <context>
     <name>DownloadManager</name>
     <message numerus="yes">
-      <location filename="../src/librssguard/network-web/downloadmanager.cpp" line="725"/>
+      <location filename="../src/librssguard/network-web/downloadmanager.cpp" line="742"/>
       <source>%n minutes remaining</source>
       <translation>
         <numerusform>nog %n minuut te gaan</numerusform>
@@ -549,7 +549,7 @@ Klik hier op de huidige map to openen.</translation>
       </translation>
     </message>
     <message numerus="yes">
-      <location filename="../src/librssguard/network-web/downloadmanager.cpp" line="729"/>
+      <location filename="../src/librssguard/network-web/downloadmanager.cpp" line="746"/>
       <source>%n seconds remaining</source>
       <translation>
         <numerusform>nog %n seconde te gaan</numerusform>
@@ -557,27 +557,12 @@ Klik hier op de huidige map to openen.</translation>
       </translation>
     </message>
     <message>
-      <location filename="../src/librssguard/network-web/downloadmanager.cpp" line="741"/>
+      <location filename="../src/librssguard/network-web/downloadmanager.cpp" line="758"/>
       <source>bytes</source>
       <translation>bytes</translation>
     </message>
-    <message>
-      <location filename="../src/librssguard/network-web/downloadmanager.cpp" line="745"/>
-      <source>kB</source>
-      <translation>kB</translation>
-    </message>
-    <message>
-      <location filename="../src/librssguard/network-web/downloadmanager.cpp" line="749"/>
-      <source>MB</source>
-      <translation>MB</translation>
-    </message>
-    <message>
-      <location filename="../src/librssguard/network-web/downloadmanager.cpp" line="753"/>
-      <source>GB</source>
-      <translation>GB</translation>
-    </message>
     <message numerus="yes">
-      <location filename="../src/librssguard/network-web/downloadmanager.cpp" line="583"/>
+      <location filename="../src/librssguard/network-web/downloadmanager.cpp" line="599"/>
       <source>Downloading %n file(s)...</source>
       <translation>
         <numerusform>Bezig met downloaden van %n bestand...</numerusform>
@@ -1299,22 +1284,17 @@ QtWebEngine cache map -&gt; &quot;%7&quot;</translation>
       <translation>E-mail opstellen</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/services/gmail/gui/formaddeditemail.ui" line="35"/>
-      <source>...</source>
-      <translation>...</translation>
-    </message>
-    <message>
-      <location filename="../src/librssguard/services/gmail/gui/formaddeditemail.ui" line="50"/>
+      <location filename="../src/librssguard/services/gmail/gui/formaddeditemail.ui" line="46"/>
       <source>Contents of your e-mail message</source>
       <translation>Inhoud van het bericht</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/services/gmail/gui/formaddeditemail.ui" line="67"/>
+      <location filename="../src/librssguard/services/gmail/gui/formaddeditemail.ui" line="63"/>
       <source>Subject</source>
       <translation>Onderwerp</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/services/gmail/gui/formaddeditemail.ui" line="77"/>
+      <location filename="../src/librssguard/services/gmail/gui/formaddeditemail.ui" line="73"/>
       <source>Title of your message</source>
       <translation>Berichttitel</translation>
     </message>
@@ -1351,19 +1331,9 @@ QtWebEngine cache map -&gt; &quot;%7&quot;</translation>
       <source>Edit label &apos;%1&apos;</source>
       <translation>Label &apos;%1&apos; bewerken</translation>
     </message>
-    <message>
-      <location filename="../src/librssguard/services/abstract/gui/formaddeditlabel.ui" line="19"/>
-      <source>...</source>
-      <translation>...</translation>
-    </message>
   </context>
   <context>
     <name>FormAddEditProbe</name>
-    <message>
-      <location filename="../src/librssguard/services/abstract/gui/formaddeditprobe.ui" line="17"/>
-      <source>...</source>
-      <translation>...</translation>
-    </message>
     <message>
       <location filename="../src/librssguard/services/abstract/gui/formaddeditprobe.cpp" line="12"/>
       <source>Name for your query</source>
@@ -4058,25 +4028,14 @@ Logintoken verloopt: %2</translation>
       <translation>Tekst voorgrondkleur</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/richtexteditor/mrichtextedit.ui" line="388"/>
-      <location filename="../src/librssguard/gui/richtexteditor/mrichtextedit.ui" line="419"/>
-      <source>.</source>
-      <translation>.</translation>
-    </message>
-    <message>
-      <location filename="../src/librssguard/gui/richtexteditor/mrichtextedit.ui" line="416"/>
+      <location filename="../src/librssguard/gui/richtexteditor/mrichtextedit.ui" line="413"/>
       <source>Text background color</source>
       <translation>Tekst achtergrondkleur</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/richtexteditor/mrichtextedit.ui" line="435"/>
+      <location filename="../src/librssguard/gui/richtexteditor/mrichtextedit.ui" line="429"/>
       <source>Font size</source>
       <translation>Tekstgrootte</translation>
-    </message>
-    <message>
-      <location filename="../src/librssguard/gui/richtexteditor/mrichtextedit.ui" line="472"/>
-      <source>...</source>
-      <translation>...</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/richtexteditor/mrichtextedit.cpp" line="67"/>
@@ -4180,11 +4139,6 @@ Logintoken verloopt: %2</translation>
       <location filename="../src/librssguard/database/mariadbdriver.cpp" line="89"/>
       <source>Unknown error: &apos;%1&apos;.</source>
       <translation>Onbekende fout: &apos;%1&apos;.</translation>
-    </message>
-    <message>
-      <location filename="../src/librssguard/database/mariadbdriver.cpp" line="94"/>
-      <source>MariaDB</source>
-      <translation>MariaDB</translation>
     </message>
   </context>
   <context>
@@ -4365,11 +4319,6 @@ Logintoken verloopt: %2</translation>
       <translation>Titel</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/core/messagesmodel.cpp" line="287"/>
-      <source>Url</source>
-      <translation>URL</translation>
-    </message>
-    <message>
       <location filename="../src/librssguard/core/messagesmodel.cpp" line="288"/>
       <source>Author</source>
       <translation>Auteur</translation>
@@ -4448,6 +4397,11 @@ Logintoken verloopt: %2</translation>
       <location filename="../src/librssguard/core/messagesmodel.cpp" line="125"/>
       <source>feed icon</source>
       <translation>feed icoon</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard/core/messagesmodel.cpp" line="287"/>
+      <source>URL</source>
+      <translation>URL</translation>
     </message>
     <message>
       <location filename="../src/librssguard/core/messagesmodel.cpp" line="297"/>
@@ -4890,24 +4844,14 @@ Logintoken verloopt: %2</translation>
   <context>
     <name>NetworkProxyDetails</name>
     <message>
-      <location filename="../src/librssguard/gui/reusable/networkproxydetails.cpp" line="18"/>
+      <location filename="../src/librssguard/gui/reusable/networkproxydetails.cpp" line="21"/>
       <source>No proxy</source>
       <translation>Geen proxy</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/reusable/networkproxydetails.cpp" line="19"/>
+      <location filename="../src/librssguard/gui/reusable/networkproxydetails.cpp" line="22"/>
       <source>System proxy</source>
       <translation>Systeemproxy</translation>
-    </message>
-    <message>
-      <location filename="../src/librssguard/gui/reusable/networkproxydetails.cpp" line="20"/>
-      <source>Socks5</source>
-      <translation>Socks5</translation>
-    </message>
-    <message>
-      <location filename="../src/librssguard/gui/reusable/networkproxydetails.cpp" line="21"/>
-      <source>Http</source>
-      <translation>Http</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/reusable/networkproxydetails.ui" line="14"/>
@@ -5961,11 +5905,6 @@ File filter for external e-mail selection dialog.</extracomment>
       <translation>Opera 12 of ouder</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/settings/settingsbrowsermail.cpp" line="185"/>
-      <source>Mozilla Thunderbird</source>
-      <translation>Mozilla Thunderbird</translation>
-    </message>
-    <message>
       <location filename="../src/librssguard/gui/settings/settingsbrowsermail.cpp" line="300"/>
       <source>Enter (optional) parameters:</source>
       <translation>(Optionele) parameters invullen:</translation>
@@ -5976,93 +5915,88 @@ File filter for external e-mail selection dialog.</extracomment>
       <translation>UItvoerbaar bestand</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/settings/settingsbrowsermail.ui" line="18"/>
+      <location filename="../src/librssguard/gui/settings/settingsbrowsermail.ui" line="21"/>
       <source>Network</source>
       <translation>Netwerk</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/settings/settingsbrowsermail.ui" line="24"/>
+      <location filename="../src/librssguard/gui/settings/settingsbrowsermail.ui" line="27"/>
       <source>Do not accept any incoming cookies</source>
       <translation>Accepteer geen inkomende cookies</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/settings/settingsbrowsermail.ui" line="31"/>
+      <location filename="../src/librssguard/gui/settings/settingsbrowsermail.ui" line="34"/>
       <source>Enable HTTP/2</source>
       <translation>HTTP/2 Inschakelen</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/settings/settingsbrowsermail.ui" line="39"/>
-      <source>WebEngine</source>
-      <translation>Webengine</translation>
-    </message>
-    <message>
-      <location filename="../src/librssguard/gui/settings/settingsbrowsermail.ui" line="45"/>
+      <location filename="../src/librssguard/gui/settings/settingsbrowsermail.ui" line="48"/>
       <source>Custom &quot;QTWEBENGINE_CHROMIUM_FLAGS&quot; flags</source>
       <translation>Aangepaste &quot;QTWEBENGINE_CHROMIUM_FLAGS&quot; vlaggen</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/settings/settingsbrowsermail.ui" line="55"/>
+      <location filename="../src/librssguard/gui/settings/settingsbrowsermail.ui" line="58"/>
       <source>Disable cache</source>
       <translation>Cache uitschakelen</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/settings/settingsbrowsermail.ui" line="63"/>
+      <location filename="../src/librssguard/gui/settings/settingsbrowsermail.ui" line="66"/>
       <source>External web browser</source>
       <translation>Externe webbrowser</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/settings/settingsbrowsermail.ui" line="69"/>
+      <location filename="../src/librssguard/gui/settings/settingsbrowsermail.ui" line="72"/>
       <source>Always open hyperlinks in external web browser</source>
       <translation>Links altijd in externe browser openen</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/settings/settingsbrowsermail.ui" line="89"/>
-      <location filename="../src/librssguard/gui/settings/settingsbrowsermail.ui" line="203"/>
+      <location filename="../src/librssguard/gui/settings/settingsbrowsermail.ui" line="92"/>
+      <location filename="../src/librssguard/gui/settings/settingsbrowsermail.ui" line="206"/>
       <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;If unchecked, then default system-wide web browser is used.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
       <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Indien aangevinkt, wordt de standaardbrowser van het systeem gebruikt.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/settings/settingsbrowsermail.ui" line="92"/>
+      <location filename="../src/librssguard/gui/settings/settingsbrowsermail.ui" line="95"/>
       <source>Use custom external web browser</source>
       <translation>Gebruik aangepaste externe webbrowser</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/settings/settingsbrowsermail.ui" line="104"/>
+      <location filename="../src/librssguard/gui/settings/settingsbrowsermail.ui" line="107"/>
       <source>Web browser executable</source>
       <translation>Uitvoerbaar bestand van webbrowser</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/settings/settingsbrowsermail.ui" line="116"/>
+      <location filename="../src/librssguard/gui/settings/settingsbrowsermail.ui" line="119"/>
       <source>Executable file of web browser</source>
       <translation>Uitvoerbaar bestand van webbrowser</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/settings/settingsbrowsermail.ui" line="129"/>
-      <location filename="../src/librssguard/gui/settings/settingsbrowsermail.ui" line="246"/>
+      <location filename="../src/librssguard/gui/settings/settingsbrowsermail.ui" line="132"/>
+      <location filename="../src/librssguard/gui/settings/settingsbrowsermail.ui" line="249"/>
       <source>&amp;Browse</source>
       <translation>&amp;Bladeren</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/settings/settingsbrowsermail.ui" line="138"/>
-      <location filename="../src/librssguard/gui/settings/settingsbrowsermail.ui" line="255"/>
+      <location filename="../src/librssguard/gui/settings/settingsbrowsermail.ui" line="141"/>
+      <location filename="../src/librssguard/gui/settings/settingsbrowsermail.ui" line="258"/>
       <location filename="../src/librssguard/gui/settings/settingsbrowsermail.cpp" line="39"/>
       <source>Parameters</source>
       <translation>Parameters</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/settings/settingsbrowsermail.ui" line="148"/>
-      <location filename="../src/librssguard/gui/settings/settingsbrowsermail.ui" line="265"/>
+      <location filename="../src/librssguard/gui/settings/settingsbrowsermail.ui" line="151"/>
+      <location filename="../src/librssguard/gui/settings/settingsbrowsermail.ui" line="268"/>
       <source>Parameters passed to executable</source>
       <translation>Toe te voegen parameters voor uitvoerbaar bestand</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/settings/settingsbrowsermail.ui" line="155"/>
-      <location filename="../src/librssguard/gui/settings/settingsbrowsermail.ui" line="272"/>
+      <location filename="../src/librssguard/gui/settings/settingsbrowsermail.ui" line="158"/>
+      <location filename="../src/librssguard/gui/settings/settingsbrowsermail.ui" line="275"/>
       <source>Use sample arguments for</source>
       <translation>Gebruik voorbeeldargumenten voor</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/settings/settingsbrowsermail.ui" line="169"/>
+      <location filename="../src/librssguard/gui/settings/settingsbrowsermail.ui" line="172"/>
       <source>Select browser</source>
       <translation>Browser selecteren</translation>
     </message>
@@ -6072,27 +6006,27 @@ File filter for external e-mail selection dialog.</extracomment>
       <translation>Let op &quot;%1&quot; (zonder aanhalingstekens) is een tijdelijke aanduiding voor de URL van het geselecteerde bericht.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/settings/settingsbrowsermail.ui" line="184"/>
+      <location filename="../src/librssguard/gui/settings/settingsbrowsermail.ui" line="187"/>
       <source>External e-mail client</source>
       <translation>Externe e-mailclient</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/settings/settingsbrowsermail.ui" line="206"/>
+      <location filename="../src/librssguard/gui/settings/settingsbrowsermail.ui" line="209"/>
       <source>Use custom external e-mail client</source>
       <translation>Gebruik een aangepaste externe e-mailclient</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/settings/settingsbrowsermail.ui" line="218"/>
+      <location filename="../src/librssguard/gui/settings/settingsbrowsermail.ui" line="221"/>
       <source>E-mail client executable</source>
       <translation>Selecteer exe bestand voor e-mail</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/settings/settingsbrowsermail.ui" line="233"/>
+      <location filename="../src/librssguard/gui/settings/settingsbrowsermail.ui" line="236"/>
       <source>Executable file of e-mail client</source>
       <translation>Uitvoerbaar bestand van e-mailclient</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/settings/settingsbrowsermail.ui" line="286"/>
+      <location filename="../src/librssguard/gui/settings/settingsbrowsermail.ui" line="289"/>
       <source>Select client</source>
       <translation>Selecteer client</translation>
     </message>
@@ -6106,22 +6040,22 @@ File filter for external e-mail selection dialog.</extracomment>
  • %2 - inhoud van geselecteerde bericht.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/settings/settingsbrowsermail.ui" line="301"/>
+      <location filename="../src/librssguard/gui/settings/settingsbrowsermail.ui" line="304"/>
       <source>External tools</source>
       <translation>Externe applicatie</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/settings/settingsbrowsermail.ui" line="336"/>
+      <location filename="../src/librssguard/gui/settings/settingsbrowsermail.ui" line="339"/>
       <source>&amp;Add tool</source>
       <translation>&amp;Applicatie toevoegen</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/settings/settingsbrowsermail.ui" line="346"/>
+      <location filename="../src/librssguard/gui/settings/settingsbrowsermail.ui" line="349"/>
       <source>&amp;Edit selected tool</source>
       <translation>&amp;Bewerk geselecteerde applicatie</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/settings/settingsbrowsermail.ui" line="356"/>
+      <location filename="../src/librssguard/gui/settings/settingsbrowsermail.ui" line="359"/>
       <source>&amp;Delete selected tool</source>
       <translation>&amp;Verwijder geselecteerde applicatie</translation>
     </message>
@@ -6905,19 +6839,9 @@ Start ook het dialoogvenster &quot;Instellingen&quot; opnieuw nadat je Node.js h
       <translation>Node.js heeft versie %1.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/settings/settingsnodejs.cpp" line="110"/>
-      <source>Node.js: %1.</source>
-      <translation>Node.js: %1.</translation>
-    </message>
-    <message>
       <location filename="../src/librssguard/gui/settings/settingsnodejs.cpp" line="118"/>
       <source>NPM has version %1.</source>
       <translation>NPM heeft versie %1.</translation>
-    </message>
-    <message>
-      <location filename="../src/librssguard/gui/settings/settingsnodejs.cpp" line="121"/>
-      <source>NPM: %1.</source>
-      <translation>NPM: %1.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsnodejs.cpp" line="135"/>

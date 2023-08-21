@@ -427,89 +427,89 @@ version en cliquant sur cette notification.</translation>
   <context>
     <name>DownloadItem</name>
     <message>
-      <location filename="../src/librssguard/network-web/downloadmanager.cpp" line="262"/>
+      <location filename="../src/librssguard/network-web/downloadmanager.cpp" line="272"/>
       <source>Error opening output file: %1</source>
       <translation>Erreur lors de l&apos;ouverture du fichier de destination : %1</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/network-web/downloadmanager.cpp" line="106"/>
+      <location filename="../src/librssguard/network-web/downloadmanager.cpp" line="110"/>
       <source>Select destination for downloaded file</source>
       <translation>Selectionnez la destination du fichier téléchargé</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/network-web/downloadmanager.cpp" line="288"/>
+      <location filename="../src/librssguard/network-web/downloadmanager.cpp" line="298"/>
       <source>Error: %1</source>
       <translation>Erreur : %1</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/network-web/downloadmanager.cpp" line="132"/>
+      <location filename="../src/librssguard/network-web/downloadmanager.cpp" line="137"/>
       <source>Download directory couldn&apos;t be created</source>
       <translation>Le répertoire de téléchargement n&apos;a pas pu être créé</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/network-web/downloadmanager.cpp" line="273"/>
+      <location filename="../src/librssguard/network-web/downloadmanager.cpp" line="283"/>
       <source>Error when saving file: %1</source>
       <translation>Erreur lors de l&apos;enregistrement du fichier : %1</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/network-web/downloadmanager.cpp" line="380"/>
+      <location filename="../src/librssguard/network-web/downloadmanager.cpp" line="390"/>
       <source>%1 of %2 (%3 per second) - %4</source>
       <translation>%1 sur %2 (%3 par seconde) - %4</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/network-web/downloadmanager.cpp" line="390"/>
+      <location filename="../src/librssguard/network-web/downloadmanager.cpp" line="401"/>
       <source>%1 of %2 - download completed</source>
       <translation>%1 sur %2 - téléchargement terminé</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/network-web/downloadmanager.cpp" line="212"/>
+      <location filename="../src/librssguard/network-web/downloadmanager.cpp" line="217"/>
       <source>Cannot open file</source>
       <translation>Impossible d&apos;ouvrir le fichier</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/network-web/downloadmanager.cpp" line="212"/>
+      <location filename="../src/librssguard/network-web/downloadmanager.cpp" line="218"/>
       <source>Cannot open output file. Open it manually.</source>
       <translation>Impossible d&apos;ouvrir le fichier de destination. Ouvrez le manuellement.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/network-web/downloadmanager.cpp" line="220"/>
+      <location filename="../src/librssguard/network-web/downloadmanager.cpp" line="228"/>
       <source>Cannot open directory</source>
       <translation>Impossible d&apos;ouvrir ce répertoire</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/network-web/downloadmanager.cpp" line="221"/>
+      <location filename="../src/librssguard/network-web/downloadmanager.cpp" line="229"/>
       <source>Cannot open output directory. Open it manually.</source>
       <translation>Impossible d&apos;ouvrir ce répertoire. Ouvrez-le manuellement.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/network-web/downloadmanager.cpp" line="431"/>
+      <location filename="../src/librssguard/network-web/downloadmanager.cpp" line="442"/>
       <source>Download finished</source>
       <translation>Téléchargement terminé</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/network-web/downloadmanager.cpp" line="432"/>
+      <location filename="../src/librssguard/network-web/downloadmanager.cpp" line="443"/>
       <source>File &apos;%1&apos; is downloaded.
 Click here to open parent directory.</source>
       <translation>Téléchargement du fichier &apos;%1&apos; réussi.
 Cliquez-ici pour ouvrir le répertoire parent.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/network-web/downloadmanager.cpp" line="442"/>
+      <location filename="../src/librssguard/network-web/downloadmanager.cpp" line="454"/>
       <source>URL: %1</source>
       <translation>URL: %1</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/network-web/downloadmanager.cpp" line="443"/>
+      <location filename="../src/librssguard/network-web/downloadmanager.cpp" line="455"/>
       <source>Local file: %1</source>
       <translation>Fichier local : %1</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/network-web/downloadmanager.cpp" line="112"/>
+      <location filename="../src/librssguard/network-web/downloadmanager.cpp" line="116"/>
       <source>Selection of local file cancelled.</source>
       <translation>Sélection du fichier local annulée.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/network-web/downloadmanager.cpp" line="435"/>
+      <location filename="../src/librssguard/network-web/downloadmanager.cpp" line="447"/>
       <source>Open folder</source>
       <translation>Ouvrir le dossier</translation>
     </message>
@@ -542,7 +542,7 @@ Cliquez-ici pour ouvrir le répertoire parent.</translation>
   <context>
     <name>DownloadManager</name>
     <message numerus="yes">
-      <location filename="../src/librssguard/network-web/downloadmanager.cpp" line="725"/>
+      <location filename="../src/librssguard/network-web/downloadmanager.cpp" line="742"/>
       <source>%n minutes remaining</source>
       <translation>
         <numerusform>%n minute restante</numerusform>
@@ -550,7 +550,7 @@ Cliquez-ici pour ouvrir le répertoire parent.</translation>
       </translation>
     </message>
     <message numerus="yes">
-      <location filename="../src/librssguard/network-web/downloadmanager.cpp" line="729"/>
+      <location filename="../src/librssguard/network-web/downloadmanager.cpp" line="746"/>
       <source>%n seconds remaining</source>
       <translation>
         <numerusform>%n seconde restante</numerusform>
@@ -558,27 +558,12 @@ Cliquez-ici pour ouvrir le répertoire parent.</translation>
       </translation>
     </message>
     <message>
-      <location filename="../src/librssguard/network-web/downloadmanager.cpp" line="741"/>
+      <location filename="../src/librssguard/network-web/downloadmanager.cpp" line="758"/>
       <source>bytes</source>
       <translation>octets</translation>
     </message>
-    <message>
-      <location filename="../src/librssguard/network-web/downloadmanager.cpp" line="745"/>
-      <source>kB</source>
-      <translation>Ko</translation>
-    </message>
-    <message>
-      <location filename="../src/librssguard/network-web/downloadmanager.cpp" line="749"/>
-      <source>MB</source>
-      <translation>Mo</translation>
-    </message>
-    <message>
-      <location filename="../src/librssguard/network-web/downloadmanager.cpp" line="753"/>
-      <source>GB</source>
-      <translation>Go</translation>
-    </message>
     <message numerus="yes">
-      <location filename="../src/librssguard/network-web/downloadmanager.cpp" line="583"/>
+      <location filename="../src/librssguard/network-web/downloadmanager.cpp" line="599"/>
       <source>Downloading %n file(s)...</source>
       <translation>
         <numerusform>Téléchargement de %n fichier(s)...</numerusform>
@@ -1300,22 +1285,17 @@ Dossier du cache Moteur Web QT -&gt; &quot;%7&quot;</translation>
       <translation>Écrire un e-mail</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/services/gmail/gui/formaddeditemail.ui" line="35"/>
-      <source>...</source>
-      <translation>...</translation>
-    </message>
-    <message>
-      <location filename="../src/librssguard/services/gmail/gui/formaddeditemail.ui" line="50"/>
+      <location filename="../src/librssguard/services/gmail/gui/formaddeditemail.ui" line="46"/>
       <source>Contents of your e-mail message</source>
       <translation>Contenu de votre e-mail</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/services/gmail/gui/formaddeditemail.ui" line="67"/>
+      <location filename="../src/librssguard/services/gmail/gui/formaddeditemail.ui" line="63"/>
       <source>Subject</source>
       <translation>Sujet</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/services/gmail/gui/formaddeditemail.ui" line="77"/>
+      <location filename="../src/librssguard/services/gmail/gui/formaddeditemail.ui" line="73"/>
       <source>Title of your message</source>
       <translation>Titre de votre message</translation>
     </message>
@@ -1352,19 +1332,9 @@ Dossier du cache Moteur Web QT -&gt; &quot;%7&quot;</translation>
       <source>Edit label &apos;%1&apos;</source>
       <translation>Modifier l&apos;étiquette &apos;%1&apos;</translation>
     </message>
-    <message>
-      <location filename="../src/librssguard/services/abstract/gui/formaddeditlabel.ui" line="19"/>
-      <source>...</source>
-      <translation>...</translation>
-    </message>
   </context>
   <context>
     <name>FormAddEditProbe</name>
-    <message>
-      <location filename="../src/librssguard/services/abstract/gui/formaddeditprobe.ui" line="17"/>
-      <source>...</source>
-      <translation>...</translation>
-    </message>
     <message>
       <location filename="../src/librssguard/services/abstract/gui/formaddeditprobe.cpp" line="12"/>
       <source>Name for your query</source>
@@ -4059,25 +4029,14 @@ Expiration de jetons d&apos;authentification: %2</translation>
       <translation>Couleur du texte en premier plan</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/richtexteditor/mrichtextedit.ui" line="388"/>
-      <location filename="../src/librssguard/gui/richtexteditor/mrichtextedit.ui" line="419"/>
-      <source>.</source>
-      <translation>.</translation>
-    </message>
-    <message>
-      <location filename="../src/librssguard/gui/richtexteditor/mrichtextedit.ui" line="416"/>
+      <location filename="../src/librssguard/gui/richtexteditor/mrichtextedit.ui" line="413"/>
       <source>Text background color</source>
       <translation>Couleur du texte en arrière plan</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/richtexteditor/mrichtextedit.ui" line="435"/>
+      <location filename="../src/librssguard/gui/richtexteditor/mrichtextedit.ui" line="429"/>
       <source>Font size</source>
       <translation>Taille de police</translation>
-    </message>
-    <message>
-      <location filename="../src/librssguard/gui/richtexteditor/mrichtextedit.ui" line="472"/>
-      <source>...</source>
-      <translation>...</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/richtexteditor/mrichtextedit.cpp" line="67"/>
@@ -4181,11 +4140,6 @@ Expiration de jetons d&apos;authentification: %2</translation>
       <location filename="../src/librssguard/database/mariadbdriver.cpp" line="89"/>
       <source>Unknown error: &apos;%1&apos;.</source>
       <translation>Erreur inconnue : &apos;%1&apos;.</translation>
-    </message>
-    <message>
-      <location filename="../src/librssguard/database/mariadbdriver.cpp" line="94"/>
-      <source>MariaDB</source>
-      <translation>MariaDB (Base de données Maria)</translation>
     </message>
   </context>
   <context>
@@ -4366,11 +4320,6 @@ Expiration de jetons d&apos;authentification: %2</translation>
       <translation>Titre</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/core/messagesmodel.cpp" line="287"/>
-      <source>Url</source>
-      <translation>Lien</translation>
-    </message>
-    <message>
       <location filename="../src/librssguard/core/messagesmodel.cpp" line="288"/>
       <source>Author</source>
       <translation>Auteur</translation>
@@ -4449,6 +4398,11 @@ Expiration de jetons d&apos;authentification: %2</translation>
       <location filename="../src/librssguard/core/messagesmodel.cpp" line="125"/>
       <source>feed icon</source>
       <translation>icône du flux</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard/core/messagesmodel.cpp" line="287"/>
+      <source>URL</source>
+      <translation>Lien</translation>
     </message>
     <message>
       <location filename="../src/librssguard/core/messagesmodel.cpp" line="297"/>
@@ -4891,24 +4845,14 @@ Expiration de jetons d&apos;authentification: %2</translation>
   <context>
     <name>NetworkProxyDetails</name>
     <message>
-      <location filename="../src/librssguard/gui/reusable/networkproxydetails.cpp" line="18"/>
+      <location filename="../src/librssguard/gui/reusable/networkproxydetails.cpp" line="21"/>
       <source>No proxy</source>
       <translation>Pas de proxy</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/reusable/networkproxydetails.cpp" line="19"/>
+      <location filename="../src/librssguard/gui/reusable/networkproxydetails.cpp" line="22"/>
       <source>System proxy</source>
       <translation>Proxy du système</translation>
-    </message>
-    <message>
-      <location filename="../src/librssguard/gui/reusable/networkproxydetails.cpp" line="20"/>
-      <source>Socks5</source>
-      <translation>SOCKS5</translation>
-    </message>
-    <message>
-      <location filename="../src/librssguard/gui/reusable/networkproxydetails.cpp" line="21"/>
-      <source>Http</source>
-      <translation>HTTP</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/reusable/networkproxydetails.ui" line="14"/>
@@ -5962,11 +5906,6 @@ File filter for external e-mail selection dialog.</extracomment>
       <translation>Opera 12 ou plus récent</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/settings/settingsbrowsermail.cpp" line="185"/>
-      <source>Mozilla Thunderbird</source>
-      <translation>Mozilla Thunderbird</translation>
-    </message>
-    <message>
       <location filename="../src/librssguard/gui/settings/settingsbrowsermail.cpp" line="300"/>
       <source>Enter (optional) parameters:</source>
       <translation>Entrez des paramètres (optionnel):</translation>
@@ -5977,93 +5916,88 @@ File filter for external e-mail selection dialog.</extracomment>
       <translation>Executable</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/settings/settingsbrowsermail.ui" line="18"/>
+      <location filename="../src/librssguard/gui/settings/settingsbrowsermail.ui" line="21"/>
       <source>Network</source>
       <translation>Réseau</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/settings/settingsbrowsermail.ui" line="24"/>
+      <location filename="../src/librssguard/gui/settings/settingsbrowsermail.ui" line="27"/>
       <source>Do not accept any incoming cookies</source>
       <translation>Ne pas accepter les cookies entrants</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/settings/settingsbrowsermail.ui" line="31"/>
+      <location filename="../src/librssguard/gui/settings/settingsbrowsermail.ui" line="34"/>
       <source>Enable HTTP/2</source>
       <translation>Activer HTTP/2</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/settings/settingsbrowsermail.ui" line="39"/>
-      <source>WebEngine</source>
-      <translation>Moteur Web</translation>
-    </message>
-    <message>
-      <location filename="../src/librssguard/gui/settings/settingsbrowsermail.ui" line="45"/>
+      <location filename="../src/librssguard/gui/settings/settingsbrowsermail.ui" line="48"/>
       <source>Custom &quot;QTWEBENGINE_CHROMIUM_FLAGS&quot; flags</source>
       <translation>Drapeaux &quot;QTWEBENGINE_CHROMIUM_FLAGS&quot; personnalisés</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/settings/settingsbrowsermail.ui" line="55"/>
+      <location filename="../src/librssguard/gui/settings/settingsbrowsermail.ui" line="58"/>
       <source>Disable cache</source>
       <translation>Désactiver le cache</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/settings/settingsbrowsermail.ui" line="63"/>
+      <location filename="../src/librssguard/gui/settings/settingsbrowsermail.ui" line="66"/>
       <source>External web browser</source>
       <translation>Navigateur web externe</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/settings/settingsbrowsermail.ui" line="69"/>
+      <location filename="../src/librssguard/gui/settings/settingsbrowsermail.ui" line="72"/>
       <source>Always open hyperlinks in external web browser</source>
       <translation>Toujours ouvrir les liens dans le navigateur web externe</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/settings/settingsbrowsermail.ui" line="89"/>
-      <location filename="../src/librssguard/gui/settings/settingsbrowsermail.ui" line="203"/>
+      <location filename="../src/librssguard/gui/settings/settingsbrowsermail.ui" line="92"/>
+      <location filename="../src/librssguard/gui/settings/settingsbrowsermail.ui" line="206"/>
       <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;If unchecked, then default system-wide web browser is used.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
       <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Si décoché, alors le navigateur internet du système par défaut est utilisé.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/settings/settingsbrowsermail.ui" line="92"/>
+      <location filename="../src/librssguard/gui/settings/settingsbrowsermail.ui" line="95"/>
       <source>Use custom external web browser</source>
       <translation>Utiliser le navigateur web externe</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/settings/settingsbrowsermail.ui" line="104"/>
+      <location filename="../src/librssguard/gui/settings/settingsbrowsermail.ui" line="107"/>
       <source>Web browser executable</source>
       <translation>Exécutable du navigateur web</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/settings/settingsbrowsermail.ui" line="116"/>
+      <location filename="../src/librssguard/gui/settings/settingsbrowsermail.ui" line="119"/>
       <source>Executable file of web browser</source>
       <translation>Fichier d&apos;exécution du navigateur web</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/settings/settingsbrowsermail.ui" line="129"/>
-      <location filename="../src/librssguard/gui/settings/settingsbrowsermail.ui" line="246"/>
+      <location filename="../src/librssguard/gui/settings/settingsbrowsermail.ui" line="132"/>
+      <location filename="../src/librssguard/gui/settings/settingsbrowsermail.ui" line="249"/>
       <source>&amp;Browse</source>
       <translation>&amp;Parcourir</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/settings/settingsbrowsermail.ui" line="138"/>
-      <location filename="../src/librssguard/gui/settings/settingsbrowsermail.ui" line="255"/>
+      <location filename="../src/librssguard/gui/settings/settingsbrowsermail.ui" line="141"/>
+      <location filename="../src/librssguard/gui/settings/settingsbrowsermail.ui" line="258"/>
       <location filename="../src/librssguard/gui/settings/settingsbrowsermail.cpp" line="39"/>
       <source>Parameters</source>
       <translation>Paramètres</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/settings/settingsbrowsermail.ui" line="148"/>
-      <location filename="../src/librssguard/gui/settings/settingsbrowsermail.ui" line="265"/>
+      <location filename="../src/librssguard/gui/settings/settingsbrowsermail.ui" line="151"/>
+      <location filename="../src/librssguard/gui/settings/settingsbrowsermail.ui" line="268"/>
       <source>Parameters passed to executable</source>
       <translation>Paramètres relayés à l&apos;éxécutable</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/settings/settingsbrowsermail.ui" line="155"/>
-      <location filename="../src/librssguard/gui/settings/settingsbrowsermail.ui" line="272"/>
+      <location filename="../src/librssguard/gui/settings/settingsbrowsermail.ui" line="158"/>
+      <location filename="../src/librssguard/gui/settings/settingsbrowsermail.ui" line="275"/>
       <source>Use sample arguments for</source>
       <translation>Utiliser des arguments de l&apos;échantillon pour</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/settings/settingsbrowsermail.ui" line="169"/>
+      <location filename="../src/librssguard/gui/settings/settingsbrowsermail.ui" line="172"/>
       <source>Select browser</source>
       <translation>Sélectionner le navigateur</translation>
     </message>
@@ -6073,27 +6007,27 @@ File filter for external e-mail selection dialog.</extracomment>
       <translation>Notez que &quot;%1&quot; (sans les guillemets) est l&apos;espace réservé pour l&apos;URL d&apos;un message sélectionné.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/settings/settingsbrowsermail.ui" line="184"/>
+      <location filename="../src/librssguard/gui/settings/settingsbrowsermail.ui" line="187"/>
       <source>External e-mail client</source>
       <translation>Client e-mail externe</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/settings/settingsbrowsermail.ui" line="206"/>
+      <location filename="../src/librssguard/gui/settings/settingsbrowsermail.ui" line="209"/>
       <source>Use custom external e-mail client</source>
       <translation>Utiliser un client e-mail externe personnalisé</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/settings/settingsbrowsermail.ui" line="218"/>
+      <location filename="../src/librssguard/gui/settings/settingsbrowsermail.ui" line="221"/>
       <source>E-mail client executable</source>
       <translation>Exécutable du client e-mail</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/settings/settingsbrowsermail.ui" line="233"/>
+      <location filename="../src/librssguard/gui/settings/settingsbrowsermail.ui" line="236"/>
       <source>Executable file of e-mail client</source>
       <translation>Fichier exécutable du client e-mail</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/settings/settingsbrowsermail.ui" line="286"/>
+      <location filename="../src/librssguard/gui/settings/settingsbrowsermail.ui" line="289"/>
       <source>Select client</source>
       <translation>Sélectionner un client</translation>
     </message>
@@ -6107,22 +6041,22 @@ File filter for external e-mail selection dialog.</extracomment>
 • %2 - corps du message sélectionné.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/settings/settingsbrowsermail.ui" line="301"/>
+      <location filename="../src/librssguard/gui/settings/settingsbrowsermail.ui" line="304"/>
       <source>External tools</source>
       <translation>Outils éxternes</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/settings/settingsbrowsermail.ui" line="336"/>
+      <location filename="../src/librssguard/gui/settings/settingsbrowsermail.ui" line="339"/>
       <source>&amp;Add tool</source>
       <translation>&amp;Ajouter un outil</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/settings/settingsbrowsermail.ui" line="346"/>
+      <location filename="../src/librssguard/gui/settings/settingsbrowsermail.ui" line="349"/>
       <source>&amp;Edit selected tool</source>
       <translation>&amp;Modifier l&apos;outil sélectionné</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/settings/settingsbrowsermail.ui" line="356"/>
+      <location filename="../src/librssguard/gui/settings/settingsbrowsermail.ui" line="359"/>
       <source>&amp;Delete selected tool</source>
       <translation>&amp;Supprimer l&apos;outil sélectionné</translation>
     </message>
@@ -6906,19 +6840,9 @@ Et aussi, redémarrez la fenêtre &quot;Paramètres&quot; après avoir installé
       <translation>Node.js est sur la version %1.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/settings/settingsnodejs.cpp" line="110"/>
-      <source>Node.js: %1.</source>
-      <translation>Node.js: %1.</translation>
-    </message>
-    <message>
       <location filename="../src/librssguard/gui/settings/settingsnodejs.cpp" line="118"/>
       <source>NPM has version %1.</source>
       <translation>NPM a la version %1.</translation>
-    </message>
-    <message>
-      <location filename="../src/librssguard/gui/settings/settingsnodejs.cpp" line="121"/>
-      <source>NPM: %1.</source>
-      <translation>NPM: %1.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsnodejs.cpp" line="135"/>

@@ -425,89 +425,89 @@ version by clicking this popup notification.</source>
   <context>
     <name>DownloadItem</name>
     <message>
-      <location filename="../src/librssguard/network-web/downloadmanager.cpp" line="262"/>
+      <location filename="../src/librssguard/network-web/downloadmanager.cpp" line="272"/>
       <source>Error opening output file: %1</source>
       <translation>打开输出文件时发生错误：%1</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/network-web/downloadmanager.cpp" line="106"/>
+      <location filename="../src/librssguard/network-web/downloadmanager.cpp" line="110"/>
       <source>Select destination for downloaded file</source>
       <translation>选择文件下载目录</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/network-web/downloadmanager.cpp" line="288"/>
+      <location filename="../src/librssguard/network-web/downloadmanager.cpp" line="298"/>
       <source>Error: %1</source>
       <translation>错误：%1</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/network-web/downloadmanager.cpp" line="132"/>
+      <location filename="../src/librssguard/network-web/downloadmanager.cpp" line="137"/>
       <source>Download directory couldn&apos;t be created</source>
       <translation>无法创建下载目录</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/network-web/downloadmanager.cpp" line="273"/>
+      <location filename="../src/librssguard/network-web/downloadmanager.cpp" line="283"/>
       <source>Error when saving file: %1</source>
       <translation>保存文件时发生错误：%1</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/network-web/downloadmanager.cpp" line="380"/>
+      <location filename="../src/librssguard/network-web/downloadmanager.cpp" line="390"/>
       <source>%1 of %2 (%3 per second) - %4</source>
       <translation>%1 / %2 (%3 /s) - %4</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/network-web/downloadmanager.cpp" line="390"/>
+      <location filename="../src/librssguard/network-web/downloadmanager.cpp" line="401"/>
       <source>%1 of %2 - download completed</source>
       <translation>%1 / %2 - 下载完成</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/network-web/downloadmanager.cpp" line="212"/>
+      <location filename="../src/librssguard/network-web/downloadmanager.cpp" line="217"/>
       <source>Cannot open file</source>
       <translation>无法打开文件</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/network-web/downloadmanager.cpp" line="212"/>
+      <location filename="../src/librssguard/network-web/downloadmanager.cpp" line="218"/>
       <source>Cannot open output file. Open it manually.</source>
       <translation>无法打开输出文件，请手动打开。</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/network-web/downloadmanager.cpp" line="220"/>
+      <location filename="../src/librssguard/network-web/downloadmanager.cpp" line="228"/>
       <source>Cannot open directory</source>
       <translation>无法打开目录</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/network-web/downloadmanager.cpp" line="221"/>
+      <location filename="../src/librssguard/network-web/downloadmanager.cpp" line="229"/>
       <source>Cannot open output directory. Open it manually.</source>
       <translation>无法打开输出目录，请手动打开。</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/network-web/downloadmanager.cpp" line="431"/>
+      <location filename="../src/librssguard/network-web/downloadmanager.cpp" line="442"/>
       <source>Download finished</source>
       <translation>下载完成</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/network-web/downloadmanager.cpp" line="432"/>
+      <location filename="../src/librssguard/network-web/downloadmanager.cpp" line="443"/>
       <source>File &apos;%1&apos; is downloaded.
 Click here to open parent directory.</source>
       <translation type="unfinished">File &apos;%1&apos; is downloaded.
 Click here to open parent directory.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/network-web/downloadmanager.cpp" line="442"/>
+      <location filename="../src/librssguard/network-web/downloadmanager.cpp" line="454"/>
       <source>URL: %1</source>
       <translation>URL：%1</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/network-web/downloadmanager.cpp" line="443"/>
+      <location filename="../src/librssguard/network-web/downloadmanager.cpp" line="455"/>
       <source>Local file: %1</source>
       <translation>本地文件：%1</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/network-web/downloadmanager.cpp" line="112"/>
+      <location filename="../src/librssguard/network-web/downloadmanager.cpp" line="116"/>
       <source>Selection of local file cancelled.</source>
       <translation>已取消选择本地文件。</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/network-web/downloadmanager.cpp" line="435"/>
+      <location filename="../src/librssguard/network-web/downloadmanager.cpp" line="447"/>
       <source>Open folder</source>
       <translation>打开文件夹</translation>
     </message>
@@ -540,41 +540,26 @@ Click here to open parent directory.</translation>
   <context>
     <name>DownloadManager</name>
     <message numerus="yes">
-      <location filename="../src/librssguard/network-web/downloadmanager.cpp" line="725"/>
+      <location filename="../src/librssguard/network-web/downloadmanager.cpp" line="742"/>
       <source>%n minutes remaining</source>
       <translation>
         <numerusform>剩余 %n 分钟</numerusform>
       </translation>
     </message>
     <message numerus="yes">
-      <location filename="../src/librssguard/network-web/downloadmanager.cpp" line="729"/>
+      <location filename="../src/librssguard/network-web/downloadmanager.cpp" line="746"/>
       <source>%n seconds remaining</source>
       <translation>
         <numerusform>剩余 %n 秒</numerusform>
       </translation>
     </message>
     <message>
-      <location filename="../src/librssguard/network-web/downloadmanager.cpp" line="741"/>
+      <location filename="../src/librssguard/network-web/downloadmanager.cpp" line="758"/>
       <source>bytes</source>
       <translation>bytes</translation>
     </message>
-    <message>
-      <location filename="../src/librssguard/network-web/downloadmanager.cpp" line="745"/>
-      <source>kB</source>
-      <translation>kB</translation>
-    </message>
-    <message>
-      <location filename="../src/librssguard/network-web/downloadmanager.cpp" line="749"/>
-      <source>MB</source>
-      <translation>MB</translation>
-    </message>
-    <message>
-      <location filename="../src/librssguard/network-web/downloadmanager.cpp" line="753"/>
-      <source>GB</source>
-      <translation>GB</translation>
-    </message>
     <message numerus="yes">
-      <location filename="../src/librssguard/network-web/downloadmanager.cpp" line="583"/>
+      <location filename="../src/librssguard/network-web/downloadmanager.cpp" line="599"/>
       <source>Downloading %n file(s)...</source>
       <translation>
         <numerusform>正在下载 %n 个文件(s)…</numerusform>
@@ -1291,22 +1276,17 @@ QtWebEngine cache folder -&gt; &quot;%7&quot;</translation>
       <translation>撰写邮件</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/services/gmail/gui/formaddeditemail.ui" line="35"/>
-      <source>...</source>
-      <translation>…</translation>
-    </message>
-    <message>
-      <location filename="../src/librssguard/services/gmail/gui/formaddeditemail.ui" line="50"/>
+      <location filename="../src/librssguard/services/gmail/gui/formaddeditemail.ui" line="46"/>
       <source>Contents of your e-mail message</source>
       <translation>电子邮件的内容</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/services/gmail/gui/formaddeditemail.ui" line="67"/>
+      <location filename="../src/librssguard/services/gmail/gui/formaddeditemail.ui" line="63"/>
       <source>Subject</source>
       <translation>对象</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/services/gmail/gui/formaddeditemail.ui" line="77"/>
+      <location filename="../src/librssguard/services/gmail/gui/formaddeditemail.ui" line="73"/>
       <source>Title of your message</source>
       <translation>消息标题</translation>
     </message>
@@ -1343,19 +1323,9 @@ QtWebEngine cache folder -&gt; &quot;%7&quot;</translation>
       <source>Edit label &apos;%1&apos;</source>
       <translation>编辑标签 &apos;%1&apos;</translation>
     </message>
-    <message>
-      <location filename="../src/librssguard/services/abstract/gui/formaddeditlabel.ui" line="19"/>
-      <source>...</source>
-      <translation>…</translation>
-    </message>
   </context>
   <context>
     <name>FormAddEditProbe</name>
-    <message>
-      <location filename="../src/librssguard/services/abstract/gui/formaddeditprobe.ui" line="17"/>
-      <source>...</source>
-      <translation>…</translation>
-    </message>
     <message>
       <location filename="../src/librssguard/services/abstract/gui/formaddeditprobe.cpp" line="12"/>
       <source>Name for your query</source>
@@ -4045,25 +4015,14 @@ Token 过期时间：%2</translation>
       <translation type="unfinished">Text foreground color</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/richtexteditor/mrichtextedit.ui" line="388"/>
-      <location filename="../src/librssguard/gui/richtexteditor/mrichtextedit.ui" line="419"/>
-      <source>.</source>
-      <translation type="unfinished">.</translation>
-    </message>
-    <message>
-      <location filename="../src/librssguard/gui/richtexteditor/mrichtextedit.ui" line="416"/>
+      <location filename="../src/librssguard/gui/richtexteditor/mrichtextedit.ui" line="413"/>
       <source>Text background color</source>
       <translation type="unfinished">Text background color</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/richtexteditor/mrichtextedit.ui" line="435"/>
+      <location filename="../src/librssguard/gui/richtexteditor/mrichtextedit.ui" line="429"/>
       <source>Font size</source>
       <translation type="unfinished">Font size</translation>
-    </message>
-    <message>
-      <location filename="../src/librssguard/gui/richtexteditor/mrichtextedit.ui" line="472"/>
-      <source>...</source>
-      <translation>…</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/richtexteditor/mrichtextedit.cpp" line="67"/>
@@ -4167,11 +4126,6 @@ Token 过期时间：%2</translation>
       <location filename="../src/librssguard/database/mariadbdriver.cpp" line="89"/>
       <source>Unknown error: &apos;%1&apos;.</source>
       <translation>未知错误：&apos;%1&apos;。</translation>
-    </message>
-    <message>
-      <location filename="../src/librssguard/database/mariadbdriver.cpp" line="94"/>
-      <source>MariaDB</source>
-      <translation>Maria数据库</translation>
     </message>
   </context>
   <context>
@@ -4352,11 +4306,6 @@ Token 过期时间：%2</translation>
       <translation>标题</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/core/messagesmodel.cpp" line="287"/>
-      <source>Url</source>
-      <translation>URL</translation>
-    </message>
-    <message>
       <location filename="../src/librssguard/core/messagesmodel.cpp" line="288"/>
       <source>Author</source>
       <translation>作者</translation>
@@ -4435,6 +4384,11 @@ Token 过期时间：%2</translation>
       <location filename="../src/librssguard/core/messagesmodel.cpp" line="125"/>
       <source>feed icon</source>
       <translation type="unfinished">feed icon</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard/core/messagesmodel.cpp" line="287"/>
+      <source>URL</source>
+      <translation>URL</translation>
     </message>
     <message>
       <location filename="../src/librssguard/core/messagesmodel.cpp" line="297"/>
@@ -4872,24 +4826,14 @@ Token 过期时间：%2</translation>
   <context>
     <name>NetworkProxyDetails</name>
     <message>
-      <location filename="../src/librssguard/gui/reusable/networkproxydetails.cpp" line="18"/>
+      <location filename="../src/librssguard/gui/reusable/networkproxydetails.cpp" line="21"/>
       <source>No proxy</source>
       <translation>无代理</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/reusable/networkproxydetails.cpp" line="19"/>
+      <location filename="../src/librssguard/gui/reusable/networkproxydetails.cpp" line="22"/>
       <source>System proxy</source>
       <translation>系统代理</translation>
-    </message>
-    <message>
-      <location filename="../src/librssguard/gui/reusable/networkproxydetails.cpp" line="20"/>
-      <source>Socks5</source>
-      <translation>Socks5</translation>
-    </message>
-    <message>
-      <location filename="../src/librssguard/gui/reusable/networkproxydetails.cpp" line="21"/>
-      <source>Http</source>
-      <translation>HTTP</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/reusable/networkproxydetails.ui" line="14"/>
@@ -5937,11 +5881,6 @@ File filter for external e-mail selection dialog.</extracomment>
       <translation>Opera 12 或更早版本</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/settings/settingsbrowsermail.cpp" line="185"/>
-      <source>Mozilla Thunderbird</source>
-      <translation>Mozilla Thunderbird</translation>
-    </message>
-    <message>
       <location filename="../src/librssguard/gui/settings/settingsbrowsermail.cpp" line="300"/>
       <source>Enter (optional) parameters:</source>
       <translation>输入（可选）参数。</translation>
@@ -5952,93 +5891,88 @@ File filter for external e-mail selection dialog.</extracomment>
       <translation>可执行文件</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/settings/settingsbrowsermail.ui" line="18"/>
+      <location filename="../src/librssguard/gui/settings/settingsbrowsermail.ui" line="21"/>
       <source>Network</source>
       <translation>网络</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/settings/settingsbrowsermail.ui" line="24"/>
+      <location filename="../src/librssguard/gui/settings/settingsbrowsermail.ui" line="27"/>
       <source>Do not accept any incoming cookies</source>
       <translation>不接受任何传入的cookies</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/settings/settingsbrowsermail.ui" line="31"/>
+      <location filename="../src/librssguard/gui/settings/settingsbrowsermail.ui" line="34"/>
       <source>Enable HTTP/2</source>
       <translation type="unfinished">Enable HTTP/2</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/settings/settingsbrowsermail.ui" line="39"/>
-      <source>WebEngine</source>
-      <translation type="unfinished">WebEngine</translation>
-    </message>
-    <message>
-      <location filename="../src/librssguard/gui/settings/settingsbrowsermail.ui" line="45"/>
+      <location filename="../src/librssguard/gui/settings/settingsbrowsermail.ui" line="48"/>
       <source>Custom &quot;QTWEBENGINE_CHROMIUM_FLAGS&quot; flags</source>
       <translation type="unfinished">Custom &quot;QTWEBENGINE_CHROMIUM_FLAGS&quot; flags</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/settings/settingsbrowsermail.ui" line="55"/>
+      <location filename="../src/librssguard/gui/settings/settingsbrowsermail.ui" line="58"/>
       <source>Disable cache</source>
       <translation type="unfinished">Disable cache</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/settings/settingsbrowsermail.ui" line="63"/>
+      <location filename="../src/librssguard/gui/settings/settingsbrowsermail.ui" line="66"/>
       <source>External web browser</source>
       <translation>外部浏览器</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/settings/settingsbrowsermail.ui" line="69"/>
+      <location filename="../src/librssguard/gui/settings/settingsbrowsermail.ui" line="72"/>
       <source>Always open hyperlinks in external web browser</source>
       <translation>始终在外部网络浏览器中打开超链接</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/settings/settingsbrowsermail.ui" line="89"/>
-      <location filename="../src/librssguard/gui/settings/settingsbrowsermail.ui" line="203"/>
+      <location filename="../src/librssguard/gui/settings/settingsbrowsermail.ui" line="92"/>
+      <location filename="../src/librssguard/gui/settings/settingsbrowsermail.ui" line="206"/>
       <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;If unchecked, then default system-wide web browser is used.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
       <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;如果取消勾选，将使用系统默认浏览器&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/settings/settingsbrowsermail.ui" line="92"/>
+      <location filename="../src/librssguard/gui/settings/settingsbrowsermail.ui" line="95"/>
       <source>Use custom external web browser</source>
       <translation>使用自定义外部浏览器</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/settings/settingsbrowsermail.ui" line="104"/>
+      <location filename="../src/librssguard/gui/settings/settingsbrowsermail.ui" line="107"/>
       <source>Web browser executable</source>
       <translation>浏览器可执行文件</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/settings/settingsbrowsermail.ui" line="116"/>
+      <location filename="../src/librssguard/gui/settings/settingsbrowsermail.ui" line="119"/>
       <source>Executable file of web browser</source>
       <translation>浏览器可执行文件</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/settings/settingsbrowsermail.ui" line="129"/>
-      <location filename="../src/librssguard/gui/settings/settingsbrowsermail.ui" line="246"/>
+      <location filename="../src/librssguard/gui/settings/settingsbrowsermail.ui" line="132"/>
+      <location filename="../src/librssguard/gui/settings/settingsbrowsermail.ui" line="249"/>
       <source>&amp;Browse</source>
       <translation>浏览 (&amp;B)</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/settings/settingsbrowsermail.ui" line="138"/>
-      <location filename="../src/librssguard/gui/settings/settingsbrowsermail.ui" line="255"/>
+      <location filename="../src/librssguard/gui/settings/settingsbrowsermail.ui" line="141"/>
+      <location filename="../src/librssguard/gui/settings/settingsbrowsermail.ui" line="258"/>
       <location filename="../src/librssguard/gui/settings/settingsbrowsermail.cpp" line="39"/>
       <source>Parameters</source>
       <translation>参数</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/settings/settingsbrowsermail.ui" line="148"/>
-      <location filename="../src/librssguard/gui/settings/settingsbrowsermail.ui" line="265"/>
+      <location filename="../src/librssguard/gui/settings/settingsbrowsermail.ui" line="151"/>
+      <location filename="../src/librssguard/gui/settings/settingsbrowsermail.ui" line="268"/>
       <source>Parameters passed to executable</source>
       <translation>要传递给可执行文件的参数</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/settings/settingsbrowsermail.ui" line="155"/>
-      <location filename="../src/librssguard/gui/settings/settingsbrowsermail.ui" line="272"/>
+      <location filename="../src/librssguard/gui/settings/settingsbrowsermail.ui" line="158"/>
+      <location filename="../src/librssguard/gui/settings/settingsbrowsermail.ui" line="275"/>
       <source>Use sample arguments for</source>
       <translation>预设参数</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/settings/settingsbrowsermail.ui" line="169"/>
+      <location filename="../src/librssguard/gui/settings/settingsbrowsermail.ui" line="172"/>
       <source>Select browser</source>
       <translation>选择浏览器</translation>
     </message>
@@ -6048,27 +5982,27 @@ File filter for external e-mail selection dialog.</extracomment>
       <translation>注意，&quot;%1&quot;（不包括双引号）代表所选消息的 URL。</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/settings/settingsbrowsermail.ui" line="184"/>
+      <location filename="../src/librssguard/gui/settings/settingsbrowsermail.ui" line="187"/>
       <source>External e-mail client</source>
       <translation>外部邮件客户端</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/settings/settingsbrowsermail.ui" line="206"/>
+      <location filename="../src/librssguard/gui/settings/settingsbrowsermail.ui" line="209"/>
       <source>Use custom external e-mail client</source>
       <translation>使用自定义的外部邮件客户端</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/settings/settingsbrowsermail.ui" line="218"/>
+      <location filename="../src/librssguard/gui/settings/settingsbrowsermail.ui" line="221"/>
       <source>E-mail client executable</source>
       <translation>邮件客户端的可执行文件</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/settings/settingsbrowsermail.ui" line="233"/>
+      <location filename="../src/librssguard/gui/settings/settingsbrowsermail.ui" line="236"/>
       <source>Executable file of e-mail client</source>
       <translation>邮件客户端的可执行文件</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/settings/settingsbrowsermail.ui" line="286"/>
+      <location filename="../src/librssguard/gui/settings/settingsbrowsermail.ui" line="289"/>
       <source>Select client</source>
       <translation>选择客户端</translation>
     </message>
@@ -6082,22 +6016,22 @@ File filter for external e-mail selection dialog.</extracomment>
  • %2 - 所选消息的内容。</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/settings/settingsbrowsermail.ui" line="301"/>
+      <location filename="../src/librssguard/gui/settings/settingsbrowsermail.ui" line="304"/>
       <source>External tools</source>
       <translation>外部工具</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/settings/settingsbrowsermail.ui" line="336"/>
+      <location filename="../src/librssguard/gui/settings/settingsbrowsermail.ui" line="339"/>
       <source>&amp;Add tool</source>
       <translation>&amp;添加工具</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/settings/settingsbrowsermail.ui" line="346"/>
+      <location filename="../src/librssguard/gui/settings/settingsbrowsermail.ui" line="349"/>
       <source>&amp;Edit selected tool</source>
       <translation>编辑选定的工具</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/settings/settingsbrowsermail.ui" line="356"/>
+      <location filename="../src/librssguard/gui/settings/settingsbrowsermail.ui" line="359"/>
       <source>&amp;Delete selected tool</source>
       <translation>删除所选工具</translation>
     </message>
@@ -6870,19 +6804,9 @@ Also, relaunch &quot;Settings&quot; dialog after you install Node.js.</source>
       <translation>Node.js有%1的版本。</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/settings/settingsnodejs.cpp" line="110"/>
-      <source>Node.js: %1.</source>
-      <translation>Node.js: %1.</translation>
-    </message>
-    <message>
       <location filename="../src/librssguard/gui/settings/settingsnodejs.cpp" line="118"/>
       <source>NPM has version %1.</source>
       <translation>NPM的版本为%1。</translation>
-    </message>
-    <message>
-      <location filename="../src/librssguard/gui/settings/settingsnodejs.cpp" line="121"/>
-      <source>NPM: %1.</source>
-      <translation>NPM: %1.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsnodejs.cpp" line="135"/>
