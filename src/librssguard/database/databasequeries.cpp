@@ -678,8 +678,7 @@ ArticleCounts DatabaseQueries::getMessageCountsForFeed(const QSqlDatabase& db,
 
   q.setForwardOnly(true);
   q.prepare(QSL("SELECT COUNT(*), SUM(is_read) FROM Messages "
-                "WHERE feed = :feed AND is_deleted = 0 AND is_pdeleted = 0 AND "
-                "      is_read = 0 AND account_id = :account_id;"));
+                "WHERE feed = :feed AND is_deleted = 0 AND is_pdeleted = 0 AND account_id = :account_id;"));
 
   q.bindValue(QSL(":feed"), feed_custom_id);
   q.bindValue(QSL(":account_id"), account_id);
