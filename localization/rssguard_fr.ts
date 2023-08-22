@@ -2400,7 +2400,7 @@ Dossier du cache Moteur Web QT -&gt; &quot;%7&quot;</translation>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="849"/>
       <source>Message viewer toolbars</source>
-      <translation>Les barres d&apos;outils du lecteur de message</translation>
+      <translation>Les barres d&apos;outils du lecteur de messages</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="854"/>
@@ -2486,6 +2486,16 @@ Dossier du cache Moteur Web QT -&gt; &quot;%7&quot;</translation>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="937"/>
       <source>Cleanup web cac&amp;he</source>
       <translation>Nettoyer le &amp;cache web</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="945"/>
+      <source>You must add new account first</source>
+      <translation>Vous devez d'abord ajouter un nouveau compte</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="948"/>
+      <source>You must add new account first.</source>
+      <translation>Vous devez d'abord ajouter un nouveau compte.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="750"/>
@@ -5341,7 +5351,7 @@ Feedly is a secure space where you can privately organize and research the topic
 Feedly est un éspace sécurisé où vous pouvez organiser et rechercher les sujets et tendances qui vous intéressent en privé.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/database/databasequeries.cpp" line="2650"/>
+      <location filename="../src/librssguard/database/databasequeries.cpp" line="2649"/>
       <source>Cannot insert article filter, because current database cannot return last inserted row ID.</source>
       <translation>Impossible d&apos;insérer le filtre d&apos;article, parce que la base de données actuelle ne peut pas retourner l&apos;identifiant du rang qui a été inséré en dernier.</translation>
     </message>
@@ -7046,61 +7056,63 @@ Aussi, il y a des sons pre-ajoutés. Si vous tapez &quot;:&quot;, ils se présen
   <context>
     <name>StandardFeed</name>
     <message>
-      <location filename="../src/librssguard/services/standard/standardfeed.cpp" line="163"/>
+      <location filename="../src/librssguard/services/standard/standardfeed.cpp" line="56"/>
+      <source>
+Encoding: %1
+Type: %2
+Post-processing script: %3</source>
+      <translation>
+Encodage: %1
+Type: %2
+Script de post-traitement: %3</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard/services/standard/standardfeed.cpp" line="166"/>
       <source>Script</source>
       <translation>Script</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/services/standard/standardfeed.cpp" line="166"/>
+      <location filename="../src/librssguard/services/standard/standardfeed.cpp" line="169"/>
       <source>Local file</source>
       <translation>Fichier local</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/services/standard/standardfeed.cpp" line="169"/>
+      <location filename="../src/librssguard/services/standard/standardfeed.cpp" line="172"/>
       <source>Unknown</source>
       <translation>Inconnu</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/services/standard/standardfeed.cpp" line="202"/>
+      <location filename="../src/librssguard/services/standard/standardfeed.cpp" line="205"/>
       <source>Cannot save data for feed: %1</source>
       <translation>Impossible de sauvegarder les données pour le flux: %1</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/services/standard/standardfeed.cpp" line="291"/>
+      <location filename="../src/librssguard/services/standard/standardfeed.cpp" line="294"/>
       <source>JSON error &apos;%1&apos;</source>
       <translation>Erreur JSON &apos;%1&apos;</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/services/standard/standardfeed.cpp" line="351"/>
+      <location filename="../src/librssguard/services/standard/standardfeed.cpp" line="354"/>
       <source>XML is not well-formed, %1</source>
       <translation>L&apos;XML n&apos;est pas formatté correctement, %1</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/services/standard/standardfeed.cpp" line="434"/>
+      <location filename="../src/librssguard/services/standard/standardfeed.cpp" line="437"/>
       <source>XML feed file format unrecognized</source>
       <translation>Le format du fichier flux XML n&apos;est pas reconnu</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/services/standard/standardfeed.cpp" line="474"/>
+      <location filename="../src/librssguard/services/standard/standardfeed.cpp" line="477"/>
       <source>Cannot move feed, detailed information was logged via debug log.</source>
       <translation>Impossible de déplacer le flux, des infos détaillées ont été enregistrées via le log débug.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/services/standard/standardfeed.cpp" line="56"/>
-      <source>
-Encoding: %2
-Type: %3</source>
-      <translation>
-Encodage: %2
-Type: %3</translation>
-    </message>
-    <message>
-      <location filename="../src/librssguard/services/standard/standardfeed.cpp" line="201"/>
+      <location filename="../src/librssguard/services/standard/standardfeed.cpp" line="204"/>
       <source>Cannot save feed data</source>
       <translation>Impossible de sauvegarder les données du flux</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/services/standard/standardfeed.cpp" line="473"/>
+      <location filename="../src/librssguard/services/standard/standardfeed.cpp" line="476"/>
       <source>Cannot move feed</source>
       <translation>Impossible de déplacer le flux</translation>
     </message>

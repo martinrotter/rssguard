@@ -2504,6 +2504,16 @@ Složka cache pro QtWebEngine -&gt; &quot;%7&quot;</translation>
       <translation>Vyčistit webovou cac&amp;he</translation>
     </message>
     <message>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="945"/>
+      <source>You must add new account first</source>
+      <translation type="unfinished">You must add new account first</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="948"/>
+      <source>You must add new account first.</source>
+      <translation type="unfinished">You must add new account first.</translation>
+    </message>
+    <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="750"/>
       <location filename="../src/librssguard/gui/dialogs/formmain.cpp" line="319"/>
       <source>Add new feed</source>
@@ -5373,7 +5383,7 @@ Feedly is a secure space where you can privately organize and research the topic
 Feedly je bezpečný prostor, kde můžete soukromě organizovat a prohledávat témata a trendy, které jsou pro vás důležité.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/database/databasequeries.cpp" line="2650"/>
+      <location filename="../src/librssguard/database/databasequeries.cpp" line="2649"/>
       <source>Cannot insert article filter, because current database cannot return last inserted row ID.</source>
       <translation>Nelze vložit filtr zpráv, protože databáze neumí vrátit ID.</translation>
     </message>
@@ -7084,61 +7094,63 @@ Jsou obsaženy zabudované zvuky, napište &quot;:&quot; a seznam se zobrazí.</
   <context>
     <name>StandardFeed</name>
     <message>
-      <location filename="../src/librssguard/services/standard/standardfeed.cpp" line="163"/>
+      <location filename="../src/librssguard/services/standard/standardfeed.cpp" line="56"/>
+      <source>
+Encoding: %1
+Type: %2
+Post-processing script: %3</source>
+      <translation type="unfinished">
+Encoding: %1
+Type: %2
+Post-processing script: %3</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard/services/standard/standardfeed.cpp" line="166"/>
       <source>Script</source>
       <translation>Skript</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/services/standard/standardfeed.cpp" line="166"/>
+      <location filename="../src/librssguard/services/standard/standardfeed.cpp" line="169"/>
       <source>Local file</source>
       <translation>Místní soubor</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/services/standard/standardfeed.cpp" line="169"/>
+      <location filename="../src/librssguard/services/standard/standardfeed.cpp" line="172"/>
       <source>Unknown</source>
       <translation>Neznámý</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/services/standard/standardfeed.cpp" line="202"/>
+      <location filename="../src/librssguard/services/standard/standardfeed.cpp" line="205"/>
       <source>Cannot save data for feed: %1</source>
       <translation>Data pro kanál nelze uložit: %1</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/services/standard/standardfeed.cpp" line="291"/>
+      <location filename="../src/librssguard/services/standard/standardfeed.cpp" line="294"/>
       <source>JSON error &apos;%1&apos;</source>
       <translation>JSON chyba &apos;%1&apos;</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/services/standard/standardfeed.cpp" line="351"/>
+      <location filename="../src/librssguard/services/standard/standardfeed.cpp" line="354"/>
       <source>XML is not well-formed, %1</source>
       <translation>XML nemá správný tvar, %1</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/services/standard/standardfeed.cpp" line="434"/>
+      <location filename="../src/librssguard/services/standard/standardfeed.cpp" line="437"/>
       <source>XML feed file format unrecognized</source>
       <translation>Formát XML souboru nerozpoznán</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/services/standard/standardfeed.cpp" line="474"/>
+      <location filename="../src/librssguard/services/standard/standardfeed.cpp" line="477"/>
       <source>Cannot move feed, detailed information was logged via debug log.</source>
       <translation>Kanál nelze přesunout, více informací najdete v aplikačním logu.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/services/standard/standardfeed.cpp" line="56"/>
-      <source>
-Encoding: %2
-Type: %3</source>
-      <translation>
-Kódování: %2
-Typ: %3</translation>
-    </message>
-    <message>
-      <location filename="../src/librssguard/services/standard/standardfeed.cpp" line="201"/>
+      <location filename="../src/librssguard/services/standard/standardfeed.cpp" line="204"/>
       <source>Cannot save feed data</source>
       <translation>Nelze uložit vlastnosti kanálu</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/services/standard/standardfeed.cpp" line="473"/>
+      <location filename="../src/librssguard/services/standard/standardfeed.cpp" line="476"/>
       <source>Cannot move feed</source>
       <translation>Kanál nelze přesunout</translation>
     </message>
