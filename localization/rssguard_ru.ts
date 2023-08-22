@@ -2503,6 +2503,16 @@ QtWebEngine cache folder -&gt; &quot;%7&quot;</translation>
       <translation type="unfinished">Cleanup web cac&amp;he</translation>
     </message>
     <message>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="945"/>
+      <source>You must add new account first</source>
+      <translation type="unfinished">You must add new account first</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="948"/>
+      <source>You must add new account first.</source>
+      <translation type="unfinished">You must add new account first.</translation>
+    </message>
+    <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="750"/>
       <location filename="../src/librssguard/gui/dialogs/formmain.cpp" line="319"/>
       <source>Add new feed</source>
@@ -5375,7 +5385,7 @@ Feedly is a secure space where you can privately organize and research the topic
 Feedly - это безопасное пространство, где вы можете в частном порядке организовывать и исследовать важные для вас темы и тенденции.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/database/databasequeries.cpp" line="2650"/>
+      <location filename="../src/librssguard/database/databasequeries.cpp" line="2649"/>
       <source>Cannot insert article filter, because current database cannot return last inserted row ID.</source>
       <translation>Невозможно вставить фильтр статьи, поскольку текущая база данных не может вернуть идентификатор последней добавленной строки.</translation>
     </message>
@@ -7086,61 +7096,63 @@ Also, there are some built-in sounds. Just start typing &quot;:&quot; and they w
   <context>
     <name>StandardFeed</name>
     <message>
-      <location filename="../src/librssguard/services/standard/standardfeed.cpp" line="163"/>
+      <location filename="../src/librssguard/services/standard/standardfeed.cpp" line="56"/>
+      <source>
+Encoding: %1
+Type: %2
+Post-processing script: %3</source>
+      <translation type="unfinished">
+Encoding: %1
+Type: %2
+Post-processing script: %3</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard/services/standard/standardfeed.cpp" line="166"/>
       <source>Script</source>
       <translation>Скрипт</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/services/standard/standardfeed.cpp" line="166"/>
+      <location filename="../src/librssguard/services/standard/standardfeed.cpp" line="169"/>
       <source>Local file</source>
       <translation>Локальный файл</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/services/standard/standardfeed.cpp" line="169"/>
+      <location filename="../src/librssguard/services/standard/standardfeed.cpp" line="172"/>
       <source>Unknown</source>
       <translation>Неизвестно</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/services/standard/standardfeed.cpp" line="202"/>
+      <location filename="../src/librssguard/services/standard/standardfeed.cpp" line="205"/>
       <source>Cannot save data for feed: %1</source>
       <translation>Не удалось сохранить данные канала: %1</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/services/standard/standardfeed.cpp" line="291"/>
+      <location filename="../src/librssguard/services/standard/standardfeed.cpp" line="294"/>
       <source>JSON error &apos;%1&apos;</source>
       <translation>Ошибка JSON &apos;%1&apos;</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/services/standard/standardfeed.cpp" line="351"/>
+      <location filename="../src/librssguard/services/standard/standardfeed.cpp" line="354"/>
       <source>XML is not well-formed, %1</source>
       <translation>XML имеет неправильный формат, %1</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/services/standard/standardfeed.cpp" line="434"/>
+      <location filename="../src/librssguard/services/standard/standardfeed.cpp" line="437"/>
       <source>XML feed file format unrecognized</source>
       <translation>Неизвестный формат файла канала XML</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/services/standard/standardfeed.cpp" line="474"/>
+      <location filename="../src/librssguard/services/standard/standardfeed.cpp" line="477"/>
       <source>Cannot move feed, detailed information was logged via debug log.</source>
       <translation>Невозможно переместить канал, подробная информация записана в журнале отладки.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/services/standard/standardfeed.cpp" line="56"/>
-      <source>
-Encoding: %2
-Type: %3</source>
-      <translation>
-Кодировка: %2
-Тип: %3</translation>
-    </message>
-    <message>
-      <location filename="../src/librssguard/services/standard/standardfeed.cpp" line="201"/>
+      <location filename="../src/librssguard/services/standard/standardfeed.cpp" line="204"/>
       <source>Cannot save feed data</source>
       <translation>Не удается сохранить данные канала</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/services/standard/standardfeed.cpp" line="473"/>
+      <location filename="../src/librssguard/services/standard/standardfeed.cpp" line="476"/>
       <source>Cannot move feed</source>
       <translation>Не удается переместить канал</translation>
     </message>
