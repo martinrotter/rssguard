@@ -2400,7 +2400,7 @@ Dossier du cache Moteur Web QT -&gt; &quot;%7&quot;</translation>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="849"/>
       <source>Message viewer toolbars</source>
-      <translation>Les barres d&apos;outils du lecteur de message</translation>
+      <translation>Les barres d&apos;outils du lecteur de messages</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="854"/>
@@ -2490,12 +2490,12 @@ Dossier du cache Moteur Web QT -&gt; &quot;%7&quot;</translation>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="945"/>
       <source>You must add new account first</source>
-      <translation type="unfinished">You must add new account first</translation>
+      <translation>Vous devez d'abord ajouter un nouveau compte</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="948"/>
       <source>You must add new account first.</source>
-      <translation type="unfinished">You must add new account first.</translation>
+      <translation>Vous devez d'abord ajouter un nouveau compte.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="750"/>
@@ -7061,10 +7061,10 @@ Aussi, il y a des sons pre-ajoutés. Si vous tapez &quot;:&quot;, ils se présen
 Encoding: %1
 Type: %2
 Post-processing script: %3</source>
-      <translation type="unfinished">
-Encoding: %1
+      <translation>
+Encodage: %1
 Type: %2
-Post-processing script: %3</translation>
+Script de post-traitement: %3</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/standard/standardfeed.cpp" line="166"/>
