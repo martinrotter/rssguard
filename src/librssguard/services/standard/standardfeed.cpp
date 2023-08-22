@@ -53,9 +53,12 @@ QList<QAction*> StandardFeed::contextMenuFeedsList() {
 }
 
 QString StandardFeed::additionalTooltip() const {
-  return Feed::additionalTooltip() + tr("\nEncoding: %2\n"
-                                        "Type: %3")
-                                       .arg(encoding(), StandardFeed::typeToString(type()));
+  return Feed::additionalTooltip() + tr("\nEncoding: %1\n"
+                                        "Type: %2\n"
+                                        "Post-processing script: %3")
+                                       .arg(encoding(),
+                                            StandardFeed::typeToString(type()),
+                                            m_postProcessScript.isEmpty() ? QSL("-") : m_postProcessScript);
 }
 
 bool StandardFeed::canBeDeleted() const {

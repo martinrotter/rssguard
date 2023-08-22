@@ -259,6 +259,8 @@ void FeedDownloader::updateOneFeed(ServiceRoot* acc,
       }
     }
 
+    QMutexLocker lck(&m_mutexDb);
+
     if (!feed->messageFilters().isEmpty()) {
       tmr.restart();
 
@@ -276,8 +278,6 @@ void FeedDownloader::updateOneFeed(ServiceRoot* acc,
       QList<Message> read_msgs, important_msgs;
 
       for (int i = 0; i < msgs.size(); i++) {
-        QMutexLocker lck(&m_mutexDb);
-
         Message msg_original(msgs[i]);
         Message* msg_tweaked_by_filter = &msgs[i];
 
@@ -406,7 +406,7 @@ void FeedDownloader::updateOneFeed(ServiceRoot* acc,
     removeDuplicateMessages(msgs);
 
     tmr.restart();
-    auto updated_messages = acc->updateMessages(msgs, feed, false, &m_mutexDb);
+    auto updated_messages = acc->updateMessages(msgs, feed, false, nullptr);
 
     qDebugNN << LOGSEC_FEEDDOWNLOADER << "Updating messages in DB took" << NONQUOTE_W_SPACE(tmr.nsecsElapsed() / 1000)
              << "microseconds.";
