@@ -937,6 +937,17 @@
     <string>Cleanup web cac&amp;he</string>
    </property>
   </action>
+  <action name="m_actionNoAccounts">
+   <property name="enabled">
+    <bool>false</bool>
+   </property>
+   <property name="text">
+    <string>You must add new account first</string>
+   </property>
+   <property name="toolTip">
+    <string>You must add new account first.</string>
+   </property>
+  </action>
  </widget>
  <customwidgets>
   <customwidget>

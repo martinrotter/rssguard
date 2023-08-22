@@ -341,7 +341,7 @@ void FormMain::updateAddItemMenu() {
     m_ui->m_menuAddItem->addAction(m_ui->m_actionAddFeedIntoSelectedItem);
   }
   else {
-    m_ui->m_menuAddItem->addAction(m_ui->m_actionNoActions);
+    m_ui->m_menuAddItem->addAction(m_ui->m_actionNoAccounts);
   }
 }
 
