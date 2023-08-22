@@ -2489,12 +2489,12 @@ QtWebEngine cache map -&gt; &quot;%7&quot;</translation>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="945"/>
       <source>You must add new account first</source>
-      <translation type="unfinished">You must add new account first</translation>
+      <translation>Je moet eerst een nieuw account toevoegen</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="948"/>
       <source>You must add new account first.</source>
-      <translation type="unfinished">You must add new account first.</translation>
+      <translation>Je moet eerst een nieuw account toevoegen.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="750"/>
@@ -7060,10 +7060,10 @@ Er zijn ook een aantal ingebouwde geluiden beschikbaar. Typ &quot;:&quot; om de 
 Encoding: %1
 Type: %2
 Post-processing script: %3</source>
-      <translation type="unfinished">
-Encoding: %1
+      <translation>
+Codering: %1
 Type: %2
-Post-processing script: %3</translation>
+Achteraf-toepassen script: %3</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/standard/standardfeed.cpp" line="166"/>
