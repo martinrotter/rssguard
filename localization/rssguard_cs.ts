@@ -34,7 +34,7 @@
     <message>
       <location filename="../src/librssguard/network-web/adblock/adblockdialog.cpp" line="98"/>
       <source>OK!</source>
-      <translation type="unfinished">OK!</translation>
+      <translation>OK!</translation>
     </message>
     <message>
       <location filename="../src/librssguard/network-web/adblock/adblockdialog.cpp" line="113"/>
@@ -429,89 +429,89 @@ na tuto bublinu.</translation>
   <context>
     <name>DownloadItem</name>
     <message>
-      <location filename="../src/librssguard/network-web/downloadmanager.cpp" line="262"/>
+      <location filename="../src/librssguard/network-web/downloadmanager.cpp" line="272"/>
       <source>Error opening output file: %1</source>
       <translation>Problém s otevřením souboru: %1</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/network-web/downloadmanager.cpp" line="106"/>
+      <location filename="../src/librssguard/network-web/downloadmanager.cpp" line="110"/>
       <source>Select destination for downloaded file</source>
       <translation>Zvolit cílové umístění pro stahovaný soubor</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/network-web/downloadmanager.cpp" line="288"/>
+      <location filename="../src/librssguard/network-web/downloadmanager.cpp" line="298"/>
       <source>Error: %1</source>
       <translation>Chyba: %1</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/network-web/downloadmanager.cpp" line="132"/>
+      <location filename="../src/librssguard/network-web/downloadmanager.cpp" line="137"/>
       <source>Download directory couldn&apos;t be created</source>
       <translation>Cílový adresář nemohl být vytvořen</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/network-web/downloadmanager.cpp" line="273"/>
+      <location filename="../src/librssguard/network-web/downloadmanager.cpp" line="283"/>
       <source>Error when saving file: %1</source>
       <translation>Chyba při ukládání souboru: %1</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/network-web/downloadmanager.cpp" line="380"/>
+      <location filename="../src/librssguard/network-web/downloadmanager.cpp" line="390"/>
       <source>%1 of %2 (%3 per second) - %4</source>
       <translation>%1 of %2 (%3 za vteřinu) - %4</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/network-web/downloadmanager.cpp" line="390"/>
+      <location filename="../src/librssguard/network-web/downloadmanager.cpp" line="401"/>
       <source>%1 of %2 - download completed</source>
       <translation>%1 z %2 - stahování dokončeno</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/network-web/downloadmanager.cpp" line="212"/>
+      <location filename="../src/librssguard/network-web/downloadmanager.cpp" line="217"/>
       <source>Cannot open file</source>
       <translation>Soubor nelze otevřít</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/network-web/downloadmanager.cpp" line="212"/>
+      <location filename="../src/librssguard/network-web/downloadmanager.cpp" line="218"/>
       <source>Cannot open output file. Open it manually.</source>
       <translation>Výstupní soubor nelze otevří, otevřete jej ručně.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/network-web/downloadmanager.cpp" line="220"/>
+      <location filename="../src/librssguard/network-web/downloadmanager.cpp" line="228"/>
       <source>Cannot open directory</source>
       <translation>Adresář nelze otevřít</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/network-web/downloadmanager.cpp" line="221"/>
+      <location filename="../src/librssguard/network-web/downloadmanager.cpp" line="229"/>
       <source>Cannot open output directory. Open it manually.</source>
       <translation>Výstupní adresář nelze otevří, otevřete jej ručně.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/network-web/downloadmanager.cpp" line="431"/>
+      <location filename="../src/librssguard/network-web/downloadmanager.cpp" line="442"/>
       <source>Download finished</source>
       <translation>Stahování dokončeno</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/network-web/downloadmanager.cpp" line="432"/>
+      <location filename="../src/librssguard/network-web/downloadmanager.cpp" line="443"/>
       <source>File &apos;%1&apos; is downloaded.
 Click here to open parent directory.</source>
       <translation>Soubor &apos;%1&apos; je stažen.
 Klikněte zde pro otevření nadřazeného adresáře.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/network-web/downloadmanager.cpp" line="442"/>
+      <location filename="../src/librssguard/network-web/downloadmanager.cpp" line="454"/>
       <source>URL: %1</source>
       <translation>Adresa: %1</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/network-web/downloadmanager.cpp" line="443"/>
+      <location filename="../src/librssguard/network-web/downloadmanager.cpp" line="455"/>
       <source>Local file: %1</source>
       <translation>Lokální soubor: %1</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/network-web/downloadmanager.cpp" line="112"/>
+      <location filename="../src/librssguard/network-web/downloadmanager.cpp" line="116"/>
       <source>Selection of local file cancelled.</source>
       <translation>Výběr lokálního souboru zrušen.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/network-web/downloadmanager.cpp" line="435"/>
+      <location filename="../src/librssguard/network-web/downloadmanager.cpp" line="447"/>
       <source>Open folder</source>
       <translation>Otevřít složku</translation>
     </message>
@@ -544,7 +544,7 @@ Klikněte zde pro otevření nadřazeného adresáře.</translation>
   <context>
     <name>DownloadManager</name>
     <message numerus="yes">
-      <location filename="../src/librssguard/network-web/downloadmanager.cpp" line="725"/>
+      <location filename="../src/librssguard/network-web/downloadmanager.cpp" line="742"/>
       <source>%n minutes remaining</source>
       <translation>
         <numerusform>%n minuta do konce</numerusform>
@@ -554,7 +554,7 @@ Klikněte zde pro otevření nadřazeného adresáře.</translation>
       </translation>
     </message>
     <message numerus="yes">
-      <location filename="../src/librssguard/network-web/downloadmanager.cpp" line="729"/>
+      <location filename="../src/librssguard/network-web/downloadmanager.cpp" line="746"/>
       <source>%n seconds remaining</source>
       <translation>
         <numerusform>%n vteřina do konce</numerusform>
@@ -564,27 +564,12 @@ Klikněte zde pro otevření nadřazeného adresáře.</translation>
       </translation>
     </message>
     <message>
-      <location filename="../src/librssguard/network-web/downloadmanager.cpp" line="741"/>
+      <location filename="../src/librssguard/network-web/downloadmanager.cpp" line="758"/>
       <source>bytes</source>
       <translation>bajtů</translation>
     </message>
-    <message>
-      <location filename="../src/librssguard/network-web/downloadmanager.cpp" line="745"/>
-      <source>kB</source>
-      <translation type="unfinished">kB</translation>
-    </message>
-    <message>
-      <location filename="../src/librssguard/network-web/downloadmanager.cpp" line="749"/>
-      <source>MB</source>
-      <translation type="unfinished">MB</translation>
-    </message>
-    <message>
-      <location filename="../src/librssguard/network-web/downloadmanager.cpp" line="753"/>
-      <source>GB</source>
-      <translation type="unfinished">GB</translation>
-    </message>
     <message numerus="yes">
-      <location filename="../src/librssguard/network-web/downloadmanager.cpp" line="583"/>
+      <location filename="../src/librssguard/network-web/downloadmanager.cpp" line="599"/>
       <source>Downloading %n file(s)...</source>
       <translation>
         <numerusform>Stahuji %n soubor...</numerusform>
@@ -1314,22 +1299,17 @@ Složka cache pro QtWebEngine -&gt; &quot;%7&quot;</translation>
       <translation>Napsat e-mailovou zprávu</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/services/gmail/gui/formaddeditemail.ui" line="35"/>
-      <source>...</source>
-      <translation type="unfinished">...</translation>
-    </message>
-    <message>
-      <location filename="../src/librssguard/services/gmail/gui/formaddeditemail.ui" line="50"/>
+      <location filename="../src/librssguard/services/gmail/gui/formaddeditemail.ui" line="46"/>
       <source>Contents of your e-mail message</source>
       <translation>Tělo e-mailové zprávy</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/services/gmail/gui/formaddeditemail.ui" line="67"/>
+      <location filename="../src/librssguard/services/gmail/gui/formaddeditemail.ui" line="63"/>
       <source>Subject</source>
       <translation>Předmět</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/services/gmail/gui/formaddeditemail.ui" line="77"/>
+      <location filename="../src/librssguard/services/gmail/gui/formaddeditemail.ui" line="73"/>
       <source>Title of your message</source>
       <translation>Nadpis zprávy</translation>
     </message>
@@ -1366,19 +1346,9 @@ Složka cache pro QtWebEngine -&gt; &quot;%7&quot;</translation>
       <source>Edit label &apos;%1&apos;</source>
       <translation>Upravit štítek &apos;%1&apos;</translation>
     </message>
-    <message>
-      <location filename="../src/librssguard/services/abstract/gui/formaddeditlabel.ui" line="19"/>
-      <source>...</source>
-      <translation type="unfinished">...</translation>
-    </message>
   </context>
   <context>
     <name>FormAddEditProbe</name>
-    <message>
-      <location filename="../src/librssguard/services/abstract/gui/formaddeditprobe.ui" line="17"/>
-      <source>...</source>
-      <translation type="unfinished">...</translation>
-    </message>
     <message>
       <location filename="../src/librssguard/services/abstract/gui/formaddeditprobe.cpp" line="12"/>
       <source>Name for your query</source>
@@ -2649,7 +2619,7 @@ Složka cache pro QtWebEngine -&gt; &quot;%7&quot;</translation>
       <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.cpp" line="299"/>
       <source>EXISTING articles filtering error: &apos;%1&apos;.
 </source>
-      <translation type="unfinished">EXISTING articles filtering error: &apos;%1&apos;.
+      <translation>Chyba filtrování EXISTUJÍCÍCH článků: &apos;%1&apos;.
 </translation>
     </message>
     <message>
@@ -2671,20 +2641,20 @@ Složka cache pro QtWebEngine -&gt; &quot;%7&quot;</translation>
   Created on = &apos;%6&apos;
   Contents = &apos;%7&apos;
   RAW contents = &apos;%8&apos;</source>
-      <translation type="unfinished">Output (modified) article is:
-  Title = &apos;%1&apos;
+      <translation>Výstupní (upravený) článek je:
+  Název = &apos;%1&apos;
   URL = &apos;%2&apos;
-  Author = &apos;%3&apos;
-  Is read/important = &apos;%4/%5&apos;
-  Created on = &apos;%6&apos;
-  Contents = &apos;%7&apos;
-  RAW contents = &apos;%8&apos;</translation>
+  Autor = &apos;%3&apos;
+  Je přečten/důležitý = &apos;%4/%5&apos;
+  Vytvořeno = &apos;%6&apos;
+  Obsah = &apos;%7&apos;
+  SUROVÝ obsah = &apos;%8&apos;</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.cpp" line="340"/>
       <source>SAMPLE article filtering error: &apos;%1&apos;.
 </source>
-      <translation type="unfinished">SAMPLE article filtering error: &apos;%1&apos;.
+      <translation>Chyba filtrování VZOROVÉHO článku: &apos;%1&apos;.
 </translation>
     </message>
     <message>
@@ -2786,7 +2756,7 @@ Složka cache pro QtWebEngine -&gt; &quot;%7&quot;</translation>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.ui" line="326"/>
       <source>URL</source>
-      <translation type="unfinished">URL</translation>
+      <translation>URL</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.ui" line="339"/>
@@ -3215,7 +3185,7 @@ Musíte restartovat manuálně.</translation>
     <message>
       <location filename="../src/librssguard/services/tt-rss/gui/formttrssnote.ui" line="56"/>
       <source>URL</source>
-      <translation type="unfinished">URL</translation>
+      <translation>URL</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/tt-rss/gui/formttrssnote.ui" line="66"/>
@@ -3746,7 +3716,7 @@ Tokeny vyprší: %2</translation>
     <message>
       <location filename="../src/librssguard/services/greader/gui/greaderaccountdetails.ui" line="27"/>
       <source>URL</source>
-      <translation type="unfinished">URL</translation>
+      <translation>URL</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/greader/gui/greaderaccountdetails.ui" line="40"/>
@@ -4073,25 +4043,14 @@ Tokeny vyprší: %2</translation>
       <translation>Barva textu</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/richtexteditor/mrichtextedit.ui" line="388"/>
-      <location filename="../src/librssguard/gui/richtexteditor/mrichtextedit.ui" line="419"/>
-      <source>.</source>
-      <translation type="unfinished">.</translation>
-    </message>
-    <message>
-      <location filename="../src/librssguard/gui/richtexteditor/mrichtextedit.ui" line="416"/>
+      <location filename="../src/librssguard/gui/richtexteditor/mrichtextedit.ui" line="413"/>
       <source>Text background color</source>
       <translation>Barva pozadí textu</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/richtexteditor/mrichtextedit.ui" line="435"/>
+      <location filename="../src/librssguard/gui/richtexteditor/mrichtextedit.ui" line="429"/>
       <source>Font size</source>
       <translation>Velikost písma</translation>
-    </message>
-    <message>
-      <location filename="../src/librssguard/gui/richtexteditor/mrichtextedit.ui" line="472"/>
-      <source>...</source>
-      <translation type="unfinished">...</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/richtexteditor/mrichtextedit.cpp" line="67"/>
@@ -4195,11 +4154,6 @@ Tokeny vyprší: %2</translation>
       <location filename="../src/librssguard/database/mariadbdriver.cpp" line="89"/>
       <source>Unknown error: &apos;%1&apos;.</source>
       <translation>Neznámá chyba: &apos;%1&apos;.</translation>
-    </message>
-    <message>
-      <location filename="../src/librssguard/database/mariadbdriver.cpp" line="94"/>
-      <source>MariaDB</source>
-      <translation type="unfinished">MariaDB</translation>
     </message>
   </context>
   <context>
@@ -4319,7 +4273,7 @@ Tokeny vyprší: %2</translation>
     <message>
       <location filename="../src/librssguard/core/messagesforfiltersmodel.cpp" line="12"/>
       <source>URL</source>
-      <translation type="unfinished">URL</translation>
+      <translation>URL</translation>
     </message>
     <message>
       <location filename="../src/librssguard/core/messagesforfiltersmodel.cpp" line="12"/>
@@ -4378,11 +4332,6 @@ Tokeny vyprší: %2</translation>
       <location filename="../src/librssguard/core/messagesmodel.cpp" line="286"/>
       <source>Title</source>
       <translation>Nadpis</translation>
-    </message>
-    <message>
-      <location filename="../src/librssguard/core/messagesmodel.cpp" line="287"/>
-      <source>Url</source>
-      <translation type="unfinished">Url</translation>
     </message>
     <message>
       <location filename="../src/librssguard/core/messagesmodel.cpp" line="288"/>
@@ -4463,6 +4412,11 @@ Tokeny vyprší: %2</translation>
       <location filename="../src/librssguard/core/messagesmodel.cpp" line="125"/>
       <source>feed icon</source>
       <translation>ikona kanálu</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard/core/messagesmodel.cpp" line="287"/>
+      <source>URL</source>
+      <translation>URL</translation>
     </message>
     <message>
       <location filename="../src/librssguard/core/messagesmodel.cpp" line="297"/>
@@ -4915,24 +4869,14 @@ Tokeny vyprší: %2</translation>
   <context>
     <name>NetworkProxyDetails</name>
     <message>
-      <location filename="../src/librssguard/gui/reusable/networkproxydetails.cpp" line="18"/>
+      <location filename="../src/librssguard/gui/reusable/networkproxydetails.cpp" line="21"/>
       <source>No proxy</source>
       <translation>Bez proxy</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/reusable/networkproxydetails.cpp" line="19"/>
+      <location filename="../src/librssguard/gui/reusable/networkproxydetails.cpp" line="22"/>
       <source>System proxy</source>
       <translation>Systémová proxy</translation>
-    </message>
-    <message>
-      <location filename="../src/librssguard/gui/reusable/networkproxydetails.cpp" line="20"/>
-      <source>Socks5</source>
-      <translation type="unfinished">Socks5</translation>
-    </message>
-    <message>
-      <location filename="../src/librssguard/gui/reusable/networkproxydetails.cpp" line="21"/>
-      <source>Http</source>
-      <translation type="unfinished">Http</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/reusable/networkproxydetails.ui" line="14"/>
@@ -4991,7 +4935,7 @@ Tokeny vyprší: %2</translation>
     <message>
       <location filename="../src/librssguard/services/newsblur/gui/newsbluraccountdetails.ui" line="17"/>
       <source>URL</source>
-      <translation type="unfinished">URL</translation>
+      <translation>URL</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/newsblur/gui/newsbluraccountdetails.ui" line="30"/>
@@ -5291,7 +5235,7 @@ Tokeny vyprší: %2</translation>
     <message>
       <location filename="../src/librssguard/services/owncloud/gui/owncloudaccountdetails.ui" line="19"/>
       <source>URL</source>
-      <translation type="unfinished">URL</translation>
+      <translation>URL</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/owncloud/gui/owncloudaccountdetails.ui" line="34"/>
@@ -5871,7 +5815,7 @@ Tokeny vyprší: %2</translation>
     <message>
       <location filename="../src/librssguard/services/abstract/search.cpp" line="164"/>
       <source>Regular expression: %1</source>
-      <translation type="unfinished">Regular expression: %1</translation>
+      <translation>Regulární výraz: %1</translation>
     </message>
   </context>
   <context>
@@ -5998,11 +5942,6 @@ File filter for external e-mail selection dialog.</extracomment>
       <translation>Opera 12 nebo starší</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/settings/settingsbrowsermail.cpp" line="185"/>
-      <source>Mozilla Thunderbird</source>
-      <translation type="unfinished">Mozilla Thunderbird</translation>
-    </message>
-    <message>
       <location filename="../src/librssguard/gui/settings/settingsbrowsermail.cpp" line="300"/>
       <source>Enter (optional) parameters:</source>
       <translation>Zadat (volitelné) parametry:</translation>
@@ -6013,93 +5952,88 @@ File filter for external e-mail selection dialog.</extracomment>
       <translation>Spouštěč</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/settings/settingsbrowsermail.ui" line="18"/>
+      <location filename="../src/librssguard/gui/settings/settingsbrowsermail.ui" line="21"/>
       <source>Network</source>
       <translation>Síť</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/settings/settingsbrowsermail.ui" line="24"/>
+      <location filename="../src/librssguard/gui/settings/settingsbrowsermail.ui" line="27"/>
       <source>Do not accept any incoming cookies</source>
       <translation>Ignorovat veškeré cookies</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/settings/settingsbrowsermail.ui" line="31"/>
+      <location filename="../src/librssguard/gui/settings/settingsbrowsermail.ui" line="34"/>
       <source>Enable HTTP/2</source>
       <translation>Povolit HTTP/2</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/settings/settingsbrowsermail.ui" line="39"/>
-      <source>WebEngine</source>
-      <translation type="unfinished">WebEngine</translation>
-    </message>
-    <message>
-      <location filename="../src/librssguard/gui/settings/settingsbrowsermail.ui" line="45"/>
+      <location filename="../src/librssguard/gui/settings/settingsbrowsermail.ui" line="48"/>
       <source>Custom &quot;QTWEBENGINE_CHROMIUM_FLAGS&quot; flags</source>
       <translation>Vlastní &quot;QTWEBENGINE_CHROMIUM_FLAGS&quot; přepínače</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/settings/settingsbrowsermail.ui" line="55"/>
+      <location filename="../src/librssguard/gui/settings/settingsbrowsermail.ui" line="58"/>
       <source>Disable cache</source>
       <translation>Zakázat cache</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/settings/settingsbrowsermail.ui" line="63"/>
+      <location filename="../src/librssguard/gui/settings/settingsbrowsermail.ui" line="66"/>
       <source>External web browser</source>
       <translation>Externí webový prohlížeč</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/settings/settingsbrowsermail.ui" line="69"/>
+      <location filename="../src/librssguard/gui/settings/settingsbrowsermail.ui" line="72"/>
       <source>Always open hyperlinks in external web browser</source>
       <translation>Odkazy vždy otevírat v externím webovém prohlížeči</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/settings/settingsbrowsermail.ui" line="89"/>
-      <location filename="../src/librssguard/gui/settings/settingsbrowsermail.ui" line="203"/>
+      <location filename="../src/librssguard/gui/settings/settingsbrowsermail.ui" line="92"/>
+      <location filename="../src/librssguard/gui/settings/settingsbrowsermail.ui" line="206"/>
       <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;If unchecked, then default system-wide web browser is used.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
       <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Pokud bude nezaškrtnuto, pak se použije výchozí systémový webový prohlížeč.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/settings/settingsbrowsermail.ui" line="92"/>
+      <location filename="../src/librssguard/gui/settings/settingsbrowsermail.ui" line="95"/>
       <source>Use custom external web browser</source>
       <translation>Použít vlastní webový prohlížeč</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/settings/settingsbrowsermail.ui" line="104"/>
+      <location filename="../src/librssguard/gui/settings/settingsbrowsermail.ui" line="107"/>
       <source>Web browser executable</source>
       <translation>Spouštěcí soubor</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/settings/settingsbrowsermail.ui" line="116"/>
+      <location filename="../src/librssguard/gui/settings/settingsbrowsermail.ui" line="119"/>
       <source>Executable file of web browser</source>
       <translation>Spouštěcí soubor prohlžeče webu</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/settings/settingsbrowsermail.ui" line="129"/>
-      <location filename="../src/librssguard/gui/settings/settingsbrowsermail.ui" line="246"/>
+      <location filename="../src/librssguard/gui/settings/settingsbrowsermail.ui" line="132"/>
+      <location filename="../src/librssguard/gui/settings/settingsbrowsermail.ui" line="249"/>
       <source>&amp;Browse</source>
       <translation>&amp;Procházet</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/settings/settingsbrowsermail.ui" line="138"/>
-      <location filename="../src/librssguard/gui/settings/settingsbrowsermail.ui" line="255"/>
+      <location filename="../src/librssguard/gui/settings/settingsbrowsermail.ui" line="141"/>
+      <location filename="../src/librssguard/gui/settings/settingsbrowsermail.ui" line="258"/>
       <location filename="../src/librssguard/gui/settings/settingsbrowsermail.cpp" line="39"/>
       <source>Parameters</source>
       <translation>Parametry</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/settings/settingsbrowsermail.ui" line="148"/>
-      <location filename="../src/librssguard/gui/settings/settingsbrowsermail.ui" line="265"/>
+      <location filename="../src/librssguard/gui/settings/settingsbrowsermail.ui" line="151"/>
+      <location filename="../src/librssguard/gui/settings/settingsbrowsermail.ui" line="268"/>
       <source>Parameters passed to executable</source>
       <translation>Parametry předávané programu</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/settings/settingsbrowsermail.ui" line="155"/>
-      <location filename="../src/librssguard/gui/settings/settingsbrowsermail.ui" line="272"/>
+      <location filename="../src/librssguard/gui/settings/settingsbrowsermail.ui" line="158"/>
+      <location filename="../src/librssguard/gui/settings/settingsbrowsermail.ui" line="275"/>
       <source>Use sample arguments for</source>
       <translation>Použít typické argumenty pro</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/settings/settingsbrowsermail.ui" line="169"/>
+      <location filename="../src/librssguard/gui/settings/settingsbrowsermail.ui" line="172"/>
       <source>Select browser</source>
       <translation>Zvolte prohlížeč</translation>
     </message>
@@ -6109,27 +6043,27 @@ File filter for external e-mail selection dialog.</extracomment>
       <translation>Mějte na vědomí, že &quot;%1&quot; (bez uvozovek) je zástupný symbol pro URL dané zprávy.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/settings/settingsbrowsermail.ui" line="184"/>
+      <location filename="../src/librssguard/gui/settings/settingsbrowsermail.ui" line="187"/>
       <source>External e-mail client</source>
       <translation>Externí e-mailový klient</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/settings/settingsbrowsermail.ui" line="206"/>
+      <location filename="../src/librssguard/gui/settings/settingsbrowsermail.ui" line="209"/>
       <source>Use custom external e-mail client</source>
       <translation>Použít vlastní e-mailový klient</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/settings/settingsbrowsermail.ui" line="218"/>
+      <location filename="../src/librssguard/gui/settings/settingsbrowsermail.ui" line="221"/>
       <source>E-mail client executable</source>
       <translation>Spustitelný soubor e-mailového klienta</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/settings/settingsbrowsermail.ui" line="233"/>
+      <location filename="../src/librssguard/gui/settings/settingsbrowsermail.ui" line="236"/>
       <source>Executable file of e-mail client</source>
       <translation>Spustitelný soubor e-mailového klienta</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/settings/settingsbrowsermail.ui" line="286"/>
+      <location filename="../src/librssguard/gui/settings/settingsbrowsermail.ui" line="289"/>
       <source>Select client</source>
       <translation>Zvolit klienta</translation>
     </message>
@@ -6143,22 +6077,22 @@ File filter for external e-mail selection dialog.</extracomment>
  • %2 - tělo vybrané zprávy.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/settings/settingsbrowsermail.ui" line="301"/>
+      <location filename="../src/librssguard/gui/settings/settingsbrowsermail.ui" line="304"/>
       <source>External tools</source>
       <translation>Externá nástroje pro zprávy</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/settings/settingsbrowsermail.ui" line="336"/>
+      <location filename="../src/librssguard/gui/settings/settingsbrowsermail.ui" line="339"/>
       <source>&amp;Add tool</source>
       <translation>&amp;Přidat nástroj</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/settings/settingsbrowsermail.ui" line="346"/>
+      <location filename="../src/librssguard/gui/settings/settingsbrowsermail.ui" line="349"/>
       <source>&amp;Edit selected tool</source>
       <translation>Upravit &amp;vybraný nástroj</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/settings/settingsbrowsermail.ui" line="356"/>
+      <location filename="../src/librssguard/gui/settings/settingsbrowsermail.ui" line="359"/>
       <source>&amp;Delete selected tool</source>
       <translation>&amp;Smazat vybraný nástroj</translation>
     </message>
@@ -6886,27 +6820,27 @@ Popis: %3</translation>
     <message>
       <location filename="../src/librssguard/gui/settings/settingslocalization.cpp" line="24"/>
       <source>Translation progress</source>
-      <translation type="unfinished">Translation progress</translation>
+      <translation>Postup překladu</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingslocalization.cpp" line="26"/>
       <source>Help us to improve %1 &lt;a href=&quot;%2&quot;&gt;translations&lt;/a&gt;.</source>
-      <translation type="unfinished">Help us to improve %1 &lt;a href=&quot;%2&quot;&gt;translations&lt;/a&gt;.</translation>
+      <translation>Pomozte nám zlepšit %1 &lt;a href=&quot;%2&quot;&gt;překlady&lt;/a&gt;.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingslocalization.cpp" line="136"/>
       <source>Translators needed!</source>
-      <translation type="unfinished">Translators needed!</translation>
+      <translation>Potřební překladatelé!</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingslocalization.cpp" line="137"/>
       <source>The translation &apos;%1&apos; is incomplete and anyone able to help with translating %2 is greatly welcomed.</source>
-      <translation type="unfinished">The translation &apos;%1&apos; is incomplete and anyone able to help with translating %2 is greatly welcomed.</translation>
+      <translation>Překlad &apos;%1&apos; je neúplný a každý, kdo může pomoci s překladem %2, je vítán.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingslocalization.cpp" line="139"/>
       <source>Do you want to help with the translation now?</source>
-      <translation type="unfinished">Do you want to help with the translation now?</translation>
+      <translation>Chcete pomoci s překladem nyní?</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingslocalization.h" line="26"/>
@@ -6944,19 +6878,9 @@ Po instalaci Node.js také restartujte dialog &quot;Nastavení&quot;.</translati
       <translation>Node.js má verzi %1.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/settings/settingsnodejs.cpp" line="110"/>
-      <source>Node.js: %1.</source>
-      <translation type="unfinished">Node.js: %1.</translation>
-    </message>
-    <message>
       <location filename="../src/librssguard/gui/settings/settingsnodejs.cpp" line="118"/>
       <source>NPM has version %1.</source>
       <translation>NPM má verzi %1.</translation>
-    </message>
-    <message>
-      <location filename="../src/librssguard/gui/settings/settingsnodejs.cpp" line="121"/>
-      <source>NPM: %1.</source>
-      <translation type="unfinished">NPM: %1.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsnodejs.cpp" line="135"/>
@@ -6976,7 +6900,7 @@ Po instalaci Node.js také restartujte dialog &quot;Nastavení&quot;.</translati
     <message>
       <location filename="../src/librssguard/gui/settings/settingsnodejs.cpp" line="28"/>
       <source>%1 automatically installs some Node.js packages so that you do not have to. %1 does not use global package folder because that requires administrator rights, therefore by default it uses subfolder placed in your &quot;user data&quot; folder.</source>
-      <translation type="unfinished">%1 automatically installs some Node.js packages so that you do not have to. %1 does not use global package folder because that requires administrator rights, therefore by default it uses subfolder placed in your &quot;user data&quot; folder.</translation>
+      <translation>%1 automaticky nainstaluje některé balíčky Node.js, takže to nemusíte dělat manuálně. %1 nepoužívá globální složku balíčků, protože to vyžaduje práva správce, proto ve výchozím nastavení používá podsložku umístěnou ve vaší uživatelské datové složce.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsnodejs.ui" line="14"/>
@@ -7551,7 +7475,7 @@ Stažená data kanálů můžete také dodatečně zpracovat post-procesním skr
     <message>
       <location filename="../src/librssguard/services/standard/standardserviceroot.cpp" line="39"/>
       <source>This is the obligatory service account for standard RSS/RDF/ATOM feeds.</source>
-      <translation type="unfinished">This is the obligatory service account for standard RSS/RDF/ATOM feeds.</translation>
+      <translation>Jedná se o klasicky účet pro standardní RSS/RDF/ATOM kanály.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/standard/standardserviceroot.cpp" line="126"/>
@@ -7835,7 +7759,7 @@ Nepřečtené zprávy: %2</translation>
     <message>
       <location filename="../src/librssguard/services/tt-rss/gui/ttrssaccountdetails.cpp" line="15"/>
       <source>If you select intelligent synchronization, then only not-yet-fetched or updated articles are downloaded. Network usage is greatly reduced and overall synchronization speed is greatly improved, but first feed fetching could be slow anyway if your feed contains huge number of articles.&lt;br/&gt;&lt;br/&gt;Also, make sure to install &lt;a href=&quot;https://www.google.com&quot;&gt;api_newsplus&lt;/a&gt; TT-RSS plugin to your server instance.</source>
-      <translation type="unfinished">If you select intelligent synchronization, then only not-yet-fetched or updated articles are downloaded. Network usage is greatly reduced and overall synchronization speed is greatly improved, but first feed fetching could be slow anyway if your feed contains huge number of articles.&lt;br/&gt;&lt;br/&gt;Also, make sure to install &lt;a href=&quot;https://www.google.com&quot;&gt;api_newsplus&lt;/a&gt; TT-RSS plugin to your server instance.</translation>
+      <translation>Zvolíte-li inteligentní synchronizaci, stahují se pouze nestažené nebo aktualizované články. Využití sítě je značně omezeno a celková synchronizační rychlost se výrazně zlepšuje, ale první načtení kanálu může být i tak pomalé, pokud váš kanál obsahuje obrovské množství článků.&lt;br/&gt;&lt;br/&gt;Také se ujistěte, že nainstalujete &lt;a href=&quot;https://www.google.com&quot;&gt;api_newsplus&lt;/a&gt; TT-RSS plugin na instanci serveru.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/tt-rss/gui/ttrssaccountdetails.cpp" line="25"/>
@@ -7985,7 +7909,7 @@ Nepřečtené zprávy: %2</translation>
     <message>
       <location filename="../src/librssguard/services/tt-rss/gui/ttrssaccountdetails.ui" line="32"/>
       <source>URL</source>
-      <translation type="unfinished">URL</translation>
+      <translation>URL</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/tt-rss/gui/ttrssaccountdetails.ui" line="84"/>
@@ -8094,7 +8018,7 @@ Nepřečtené zprávy: %2</translation>
     <message>
       <location filename="../src/librssguard/services/tt-rss/gui/ttrssfeeddetails.ui" line="46"/>
       <source>URL</source>
-      <translation type="unfinished">URL</translation>
+      <translation>URL</translation>
     </message>
   </context>
   <context>
@@ -8326,12 +8250,12 @@ Poslední čas přihlášení: %4</translation>
     <message>
       <location filename="../src/librssguard/network-web/webfactory.cpp" line="710"/>
       <source>Web cache is going to be cleared</source>
-      <translation type="unfinished">Web cache is going to be cleared</translation>
+      <translation>Webová mezipaměť bude vymazána</translation>
     </message>
     <message>
       <location filename="../src/librssguard/network-web/webfactory.cpp" line="711"/>
       <source>Do you really want to clear web cache?</source>
-      <translation type="unfinished">Do you really want to clear web cache?</translation>
+      <translation>Opravdu chcete vymazat mezipaměť?</translation>
     </message>
     <message>
       <location filename="../src/librssguard/network-web/webfactory.cpp" line="149"/>
