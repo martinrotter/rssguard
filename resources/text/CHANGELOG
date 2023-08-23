@@ -3,11 +3,30 @@
 
 !!! Note that at this point, NO new features will be added for at least 4-5 new releases as I must concentrate on fixing bugs and polishing already existing features !!!
 
-Localizations are now translated on Crowdin: https://crowdin.com/project/rssguard
+Localizations are now translated via Crowdin: https://crowdin.com/project/rssguard
 
 Added:
+* Right-to-left optional layout for feeds/articles. You can switch this in each feed properties.
+* Gmail: Labels are now fetched from the service too and they are synchronizable.
+* New feature called "regex queries" allowing users to have (persistent) regular expression based article list filters. See your feed list for "Regex queries" item and right click to add one.
+* "reader mode" feature now uses skin-based format & colors.
+* All features which generate random colors now use better HSV-based algorithm.
+* Added application-wide and feed-wide ability to limit articles based on article date/time. This can be changed in application settings in "Feed fetching" section and in feed properties dialog in "Articles" section.
+* JavaScript code of article filters now has syntax highlighting.
+* Use non-standard "url" element as fallback for article URLs in RSS format.
+* Percentages of localization progres for each translation is now shown in "Localization" settings section.
+* "clang-format" updated.
 
 Fixed:
+* Fixed a problem where article filters are sometimes not applied correctly when feed is fetched.
+* Skin's pallete (dark) are now applied depending on slightly enhanced logic.
+* Skin's custom colors are now applied depending on slightly enhanced logic.
+* HTTP redirection was not working sometimes, breaking some feeds.
+* Docs updated.
+* Feedly: Fix errors when some feeds did not have titles.
+* Almost all localizations refreshed.
+* Fixed multiple crashes.
+* Correctly show numeric badge on Windows if RSS Guard starts in tray/minimized mode.
 
 4.4.0
 -----
