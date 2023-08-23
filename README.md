@@ -16,7 +16,7 @@ RSS Guard is a simple RSS/ATOM feed reader for Windows, Linux, BSD, OS/2 or macO
 * [Nextcloud News](https://apps.nextcloud.com/apps/news)
 * [Tiny Tiny RSS](https://tt-rss.org)
 
-![RSS Guard](resources/docs/videos/rssguard.gif)
+![RSS Guard](resources/graphics/official_pictures/main-window-linux.png)
 
 Contributed graphics:
 * RSS Guard logo - [Siddharth Yadav](mailto:illustrationdesignsid@gmail.com), [@Siddharth_yd](https://www.instagram.com/siddharth_yd/)
