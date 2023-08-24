@@ -1188,7 +1188,7 @@ QtWebEngine cache folder -&gt; &quot;%7&quot;</translation>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formabout.cpp" line="124"/>
       <source>&lt;body&gt;%5 is a (very) tiny feed reader.&lt;br&gt;&lt;br&gt;This software is distributed under the terms of GNU General Public License, version 3.&lt;br&gt;&lt;br&gt;Contacts:&lt;ul&gt;&lt;li&gt;&lt;a href=&quot;mailto://%1&quot;&gt;%1&lt;/a&gt; ~e-mail&lt;/li&gt;&lt;li&gt;&lt;a href=&quot;%2&quot;&gt;%2&lt;/a&gt; ~website&lt;/li&gt;&lt;/ul&gt;You can obtain source code for %5 from its website.&lt;br&gt;&lt;br&gt;&lt;br&gt;Copyright (C) 2011-%3 %4&lt;/body&gt;</source>
-      <translation>&lt;body&gt;%5 is a (very) tiny feed reader.&lt;br&gt;&lt;br&gt;This software is distributed under the terms of GNU General Public License, version 3.&lt;br&gt;&lt;br&gt;Contacts:&lt;ul&gt;&lt;li&gt;&lt;a href=&quot;mailto://%1&quot;&gt;%1&lt;/a&gt; ~e-mail&lt;/li&gt;&lt;li&gt;&lt;a href=&quot;%2&quot;&gt;%2&lt;/a&gt; ~website&lt;/li&gt;&lt;/ul&gt;You can obtain source code for %5 from its website.&lt;br&gt;&lt;br&gt;&lt;br&gt;Copyright © 2011-%3 %4&lt;/body&gt;</translation>
+      <translation>&lt;body&gt;%5 is a (very) tiny feed reader.&lt;br&gt;&lt;br&gt;This software is distributed under the terms of GNU General Public License, version 3.&lt;br&gt;&lt;br&gt;Contacts:&lt;ul&gt;&lt;li&gt;&lt;a href=&quot;mailto://%1&quot;&gt;%1&lt;/a&gt; ~e-mail&lt;/li&gt;&lt;li&gt;&lt;a href=&quot;%2&quot;&gt;%2&lt;/a&gt; ~website&lt;/li&gt;&lt;/ul&gt;You can obtain the source code for %5 from its website.&lt;br&gt;&lt;br&gt;&lt;br&gt;Copyright © 2011-%3 %4&lt;/body&gt;</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formabout.cpp" line="108"/>
@@ -1325,7 +1325,7 @@ QtWebEngine cache folder -&gt; &quot;%7&quot;</translation>
     <message>
       <location filename="../src/librssguard/services/abstract/gui/formaddeditlabel.cpp" line="27"/>
       <source>Create new label</source>
-      <translation type="unfinished">Create new label</translation>
+      <translation>Create a new label</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/abstract/gui/formaddeditlabel.cpp" line="46"/>
@@ -1348,12 +1348,12 @@ QtWebEngine cache folder -&gt; &quot;%7&quot;</translation>
     <message>
       <location filename="../src/librssguard/services/abstract/gui/formaddeditprobe.cpp" line="16"/>
       <source>What is regular expression?</source>
-      <translation type="unfinished">What is regular expression?</translation>
+      <translation>What is a regular expression?</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/abstract/gui/formaddeditprobe.cpp" line="17"/>
       <source>A regular expression (shortened as regex or regexp) is a sequence of characters that specifies a match pattern in text. See more &lt;a href=&quot;https://learn.microsoft.com/en-us/dotnet/standard/base-types/regular-expression-language-quick-reference&quot;&gt;info&lt;/a&gt;.</source>
-      <translation type="unfinished">A regular expression (shortened as regex or regexp) is a sequence of characters that specifies a match pattern in text. See more &lt;a href=&quot;https://learn.microsoft.com/en-us/dotnet/standard/base-types/regular-expression-language-quick-reference&quot;&gt;info&lt;/a&gt;.</translation>
+      <translation>A regular expression ("regex" or "regexp" for short) is a sequence of characters that specifies a match pattern in text. Learn more &lt;a href=&quot;https://learn.microsoft.com/en-us/dotnet/standard/base-types/regular-expression-language-quick-reference&quot;&gt;here&lt;/a&gt;.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/abstract/gui/formaddeditprobe.cpp" line="25"/>
@@ -1374,7 +1374,7 @@ QtWebEngine cache folder -&gt; &quot;%7&quot;</translation>
     <message>
       <location filename="../src/librssguard/services/abstract/gui/formaddeditprobe.cpp" line="49"/>
       <source>Create new regex query</source>
-      <translation type="unfinished">Create new regex query</translation>
+      <translation>Create a new regex query</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/abstract/gui/formaddeditprobe.cpp" line="70"/>
@@ -1833,7 +1833,7 @@ QtWebEngine cache folder -&gt; &quot;%7&quot;</translation>
     <message>
       <location filename="../src/librssguard/services/abstract/gui/formfeeddetails.ui" line="82"/>
       <source>Avoid adding articles before this date into the database</source>
-      <translation type="unfinished">Avoid adding articles before this date into the database</translation>
+      <translation>Avoid adding articles before this date to the database</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/abstract/gui/formfeeddetails.ui" line="118"/>
@@ -2689,7 +2689,7 @@ QtWebEngine cache folder -&gt; &quot;%7&quot;</translation>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.ui" line="115"/>
       <source>Article filter details</source>
-      <translation type="unfinished">Article filter details</translation>
+      <translation>Details of selected article filter</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.ui" line="121"/>
@@ -2887,7 +2887,7 @@ QtWebEngine cache folder -&gt; &quot;%7&quot;</translation>
       <source>Some critical settings were changed and will be applied after the application gets restarted. 
 
 You have to restart manually.</source>
-      <translation type="unfinished">Some critical settings were changed and will be applied after the application gets restarted. 
+      <translation>Some critical settings were changed and will be applied after the application restarts. 
 
 You have to restart manually.</translation>
     </message>
@@ -6297,7 +6297,7 @@ Authors of this application are NOT responsible for lost data.</translation>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.cpp" line="28"/>
       <source>Enter format for count of articles displayed next to each feed/category in feed list. Use &quot;%all&quot; and &quot;%unread&quot; strings which are placeholders for the actual count of all (or unread) articles.</source>
-      <translation type="unfinished">Enter format for count of articles displayed next to each feed/category in feed list. Use &quot;%all&quot; and &quot;%unread&quot; strings which are placeholders for the actual count of all (or unread) articles.</translation>
+      <translation>Enter a format for the article count displayed next to each feed/category in the feed list. Use &quot;%all&quot; and &quot;%unread&quot; strings which are placeholders for the actual count of all (or unread) articles.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.cpp" line="32"/>
@@ -6365,7 +6365,7 @@ Authors of this application are NOT responsible for lost data.</translation>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="128"/>
       <source>Avoid adding articles before this date into the database</source>
-      <translation type="unfinished">Avoid adding articles before this date into the database</translation>
+      <translation>Avoid adding articles before this date to the database</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="164"/>
