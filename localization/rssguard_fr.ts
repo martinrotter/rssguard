@@ -281,6 +281,16 @@ version en cliquant sur cette notification.</translation>
       <translation>Aucune authentification</translation>
     </message>
     <message>
+      <location filename="../src/librssguard/services/abstract/gui/authenticationdetails.cpp" line="19"/>
+      <source>HTTP Basic</source>
+      <translation>HTTP Basique</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard/services/abstract/gui/authenticationdetails.cpp" line="22"/>
+      <source>Token</source>
+      <translation>Jeton</translation>
+    </message>
+    <message>
       <location filename="../src/librssguard/services/abstract/gui/authenticationdetails.cpp" line="53"/>
       <source>Username/token is ok or it is not needed.</source>
       <translation>Le nom d&apos;utilisateur/jeton est valide ou n&apos;est pas nécessaire.</translation>
