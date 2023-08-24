@@ -281,6 +281,16 @@ version en cliquant sur cette notification.</translation>
       <translation>Aucune authentification</translation>
     </message>
     <message>
+      <location filename="../src/librssguard/services/abstract/gui/authenticationdetails.cpp" line="19"/>
+      <source>HTTP Basic</source>
+      <translation>HTTP Basique</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard/services/abstract/gui/authenticationdetails.cpp" line="22"/>
+      <source>Token</source>
+      <translation>Jeton</translation>
+    </message>
+    <message>
       <location filename="../src/librssguard/services/abstract/gui/authenticationdetails.cpp" line="53"/>
       <source>Username/token is ok or it is not needed.</source>
       <translation>Le nom d&apos;utilisateur/jeton est valide ou n&apos;est pas nécessaire.</translation>
@@ -1112,7 +1122,7 @@ ou cette fonctionnalité n&apos;est pas encore implémentée.</translation>
     <message>
       <location filename="../src/librssguard/gui/feedsview.cpp" line="870"/>
       <source>Context menu for regex query</source>
-      <translation>Le menu contextuel pour votre requête d&apos;expression régulière</translation>
+      <translation>Le menu contextuel pour votre recherche par expression régulière</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/feedsview.cpp" line="131"/>
@@ -1338,7 +1348,7 @@ Dossier du cache Moteur Web QT -&gt; &quot;%7&quot;</translation>
     <message>
       <location filename="../src/librssguard/services/abstract/gui/formaddeditprobe.cpp" line="12"/>
       <source>Name for your query</source>
-      <translation>Le nom de votre requête</translation>
+      <translation>Le nom de votre recherche</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/abstract/gui/formaddeditprobe.cpp" line="13"/>
@@ -1353,12 +1363,13 @@ Dossier du cache Moteur Web QT -&gt; &quot;%7&quot;</translation>
     <message>
       <location filename="../src/librssguard/services/abstract/gui/formaddeditprobe.cpp" line="17"/>
       <source>A regular expression (shortened as regex or regexp) is a sequence of characters that specifies a match pattern in text. See more &lt;a href=&quot;https://learn.microsoft.com/en-us/dotnet/standard/base-types/regular-expression-language-quick-reference&quot;&gt;info&lt;/a&gt;.</source>
-      <translation>Une expression régulière (raccourcie sous "regex" ou "regexp") est une séquence de caractères qui spécifie un motif de correspondance dans un texte. Pour en savoir plus veuillez cliquer &lt;a href=&quot;https://learn.microsoft.com/en-us/dotnet/standard/base-types/regular-expression-language-quick-reference&quot;&gt;ici&lt;/a&gt;.</translation>
+      <translation>Une expression régulière (raccourcie sous "regex" ou "regexp") est une séquence de caractères qui spécifie un motif de correspondance dans un texte. 
+Pour en savoir plus veuillez cliquer &lt;a href=&quot;https://learn.microsoft.com/en-us/dotnet/standard/base-types/regular-expression-language-quick-reference&quot;&gt;ici&lt;/a&gt;.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/abstract/gui/formaddeditprobe.cpp" line="25"/>
       <source>Regex query name cannot be empty.</source>
-      <translation>Le nom de l&apos;expression régulière ne peut pas être vide.</translation>
+      <translation>Le nom de votre recherche par expression régulière ne peut pas être vide.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/abstract/gui/formaddeditprobe.cpp" line="28"/>
@@ -1374,12 +1385,12 @@ Dossier du cache Moteur Web QT -&gt; &quot;%7&quot;</translation>
     <message>
       <location filename="../src/librssguard/services/abstract/gui/formaddeditprobe.cpp" line="49"/>
       <source>Create new regex query</source>
-      <translation>Créer une nouvelle requête d&apos;expression régulière</translation>
+      <translation>Créer une nouvelle recherche par expression régulière</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/abstract/gui/formaddeditprobe.cpp" line="70"/>
       <source>Edit regex query &apos;%1&apos;</source>
-      <translation>Modifier la requête d&apos;expression régulière &apos;%1&apos;</translation>
+      <translation>Modifier la recherche par expression régulière &apos;%1&apos;</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/abstract/gui/formaddeditprobe.cpp" line="37"/>
@@ -1788,7 +1799,7 @@ Dossier du cache Moteur Web QT -&gt; &quot;%7&quot;</translation>
     <message>
       <location filename="../src/librssguard/services/abstract/gui/formfeeddetails.cpp" line="134"/>
       <source>Fetch articles using global interval</source>
-      <translation>Obtenir les articles utilisant l&apos;intervalle globale</translation>
+      <translation>Obtenir les articles en utilisant l&apos;intervalle globale</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/abstract/gui/formfeeddetails.cpp" line="136"/>
@@ -1828,12 +1839,12 @@ Dossier du cache Moteur Web QT -&gt; &quot;%7&quot;</translation>
     <message>
       <location filename="../src/librssguard/services/abstract/gui/formfeeddetails.ui" line="72"/>
       <source>Add articles with any date into the database</source>
-      <translation>Ajouter des articles avec une date quelconque dans la base de données</translation>
+      <translation>Ajouter des articles avec une date quelconque à la base de données</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/abstract/gui/formfeeddetails.ui" line="82"/>
       <source>Avoid adding articles before this date into the database</source>
-      <translation>Éviter d&apos;ajouter des articles qui datent d&apos;avant la date spécifiée dans la base de données</translation>
+      <translation>Éviter d&apos;ajouter des articles qui datent d&apos;avant la date spécifiée à la base de données</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/abstract/gui/formfeeddetails.ui" line="118"/>
@@ -5838,17 +5849,17 @@ Expiration de jetons d&apos;authentification: %2</translation>
     <message>
       <location filename="../src/librssguard/services/abstract/searchsnode.cpp" line="19"/>
       <source>Regex queries</source>
-      <translation>Requêtes d&apos;expressions régulières</translation>
+      <translation>Recherches par expressions régulières</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/abstract/searchsnode.cpp" line="20"/>
       <source>You can see all your permanent regex queries here.</source>
-      <translation>Vous pouvez voir toutes vos requêtes d&apos;expressions régulières ici.</translation>
+      <translation>Vous pouvez voir toutes vos recherches par expressions régulières ici.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/abstract/searchsnode.cpp" line="56"/>
       <source>New regex query</source>
-      <translation>Nouvelle requête d&apos;expression régulière</translation>
+      <translation>Nouvelle recherche par expression régulière</translation>
     </message>
   </context>
   <context>
@@ -6365,7 +6376,7 @@ Les auteurs de cette appli NE SONT PAS responsables de pertes de donnees éventu
     <message>
       <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="128"/>
       <source>Avoid adding articles before this date into the database</source>
-      <translation>Éviter d&apos;ajouter des articles qui datent d&apos;avant la date spécifiée dans la base de données</translation>
+      <translation>Éviter d&apos;ajouter des articles qui datent d&apos;avant la date spécifiée à la base de données</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="164"/>

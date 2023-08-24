@@ -280,6 +280,16 @@ Om te zien wat er NIEUW is in deze versie: klik op deze melding.</translation>
       <translation>Geen authenticatie</translation>
     </message>
     <message>
+      <location filename="../src/librssguard/services/abstract/gui/authenticationdetails.cpp" line="19"/>
+      <source>HTTP Basic</source>
+      <translation>HTTP Basic</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard/services/abstract/gui/authenticationdetails.cpp" line="22"/>
+      <source>Token</source>
+      <translation>Token</translation>
+    </message>
+    <message>
       <location filename="../src/librssguard/services/abstract/gui/authenticationdetails.cpp" line="53"/>
       <source>Username/token is ok or it is not needed.</source>
       <translation>Gebruikersnaam/token is ok of is niet benodigd.</translation>
