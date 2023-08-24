@@ -281,6 +281,16 @@ version by clicking this popup notification.</translation>
       <translation type="unfinished">No authentication</translation>
     </message>
     <message>
+      <location filename="../src/librssguard/services/abstract/gui/authenticationdetails.cpp" line="19"/>
+      <source>HTTP Basic</source>
+      <translation>Basic HTTP</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard/services/abstract/gui/authenticationdetails.cpp" line="22"/>
+      <source>Token</source>
+      <translation type="unfinished">Token</translation>
+    </message>
+    <message>
       <location filename="../src/librssguard/services/abstract/gui/authenticationdetails.cpp" line="53"/>
       <source>Username/token is ok or it is not needed.</source>
       <translation>Username/token is ok or is not needed.</translation>
@@ -1959,7 +1969,7 @@ QtWebEngine cache folder -&gt; &quot;%7&quot;</translation>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="228"/>
       <source>Quit the application.</source>
-      <translation>Quit RSS Guard</translation>
+      <translation>Quit RSS Guard.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="239"/>
@@ -1969,7 +1979,7 @@ QtWebEngine cache folder -&gt; &quot;%7&quot;</translation>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="242"/>
       <source>Display settings of the application.</source>
-      <translation>Display the application&apos;s settings</translation>
+      <translation>Display the application&apos;s settings.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="250"/>
@@ -1989,7 +1999,7 @@ QtWebEngine cache folder -&gt; &quot;%7&quot;</translation>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="270"/>
       <source>Switch fullscreen mode.</source>
-      <translation>Switch fullscreen mode</translation>
+      <translation>Switch fullscreen mode.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="278"/>
@@ -1999,7 +2009,7 @@ QtWebEngine cache folder -&gt; &quot;%7&quot;</translation>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="281"/>
       <source>Fetch all feeds</source>
-      <translation>Fetch articles for all feeds</translation>
+      <translation>Fetch articles for all feeds.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="289"/>
@@ -2009,7 +2019,7 @@ QtWebEngine cache folder -&gt; &quot;%7&quot;</translation>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="292"/>
       <source>Fetch selected feeds</source>
-      <translation type="unfinished">Fetch selected feeds</translation>
+      <translation>Fetch selected feeds.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="300"/>
@@ -2124,7 +2134,7 @@ QtWebEngine cache folder -&gt; &quot;%7&quot;</translation>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="429"/>
       <source>Marks all messages in all items read. This does not take message filters into account.</source>
-      <translation>Marks all messages in all items as read. This does not take message filters into account.</translation>
+      <translation>Mark all messages in all items as read. This does not take message filters into account.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="437"/>
@@ -2204,7 +2214,7 @@ QtWebEngine cache folder -&gt; &quot;%7&quot;</translation>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="542"/>
       <source>Hides or displays the main menu.</source>
-      <translation>Toggle main menu caption bar</translation>
+      <translation>Toggle main menu caption bar.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="550"/>
@@ -2269,7 +2279,7 @@ QtWebEngine cache folder -&gt; &quot;%7&quot;</translation>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="645"/>
       <source>Send selected articles via e-mail</source>
-      <translation type="unfinished">Send selected articles via e-mail</translation>
+      <translation>Send selected articles via e-mail.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="653"/>
@@ -2335,7 +2345,7 @@ QtWebEngine cache folder -&gt; &quot;%7&quot;</translation>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="760"/>
       <source>Stop ongoing fetching</source>
-      <translation type="unfinished">Stop ongoing fetching</translation>
+      <translation>Stop ongoing fetching.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="768"/>
