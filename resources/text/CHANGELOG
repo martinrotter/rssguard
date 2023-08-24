@@ -6,6 +6,7 @@
 Localizations are now translated via Crowdin: https://crowdin.com/project/rssguard
 
 Added:
+* List of article filters assigned to feed is now visible in feed details pane. (#1045)
 * Right-to-left optional layout for feeds/articles. You can switch this in each feed properties.
 * Gmail: Labels are now fetched from the service too and they are synchronizable.
 * New feature called "regex queries" allowing users to have (persistent) regular expression based article list filters. See your feed list for "Regex queries" item and right click to add one.
@@ -16,8 +17,13 @@ Added:
 * Use non-standard "url" element as fallback for article URLs in RSS format.
 * Percentages of localization progres for each translation is now shown in "Localization" settings section.
 * "clang-format" updated.
+* User CSS styles can now be supplied via file `<user-data-folder>/web/user-styles.css`.
+* When fetching metadata during OPML import, there is now option to NOT fetch icons. (#1009)
 
 Fixed:
+* Icons in feed list are now correctly vertically centered. (#999)
+* Fixes related to word-wrap of long texts in article list and feed details pane. (#1033)
+* Multi-column sorting is now correctly persistent. (#1039)
 * Fixed a problem where article filters are sometimes not applied correctly when feed is fetched.
 * Skin's pallete (dark) are now applied depending on slightly enhanced logic.
 * Skin's custom colors are now applied depending on slightly enhanced logic.

@@ -6,22 +6,20 @@ There is a [Discord server](https://discord.gg/7xbVMPPNqH) for user communicatio
 
 ## Table of Contents
 - [What is RSS Guard?](#wirss)
+- [Donations](#donat)
 - [Downloads](#dwn)
 - [Supported Operating Systems](#sos)
 - [Supported Feed Readers](#sfr)
 - [Features](#fe)
 - [For Contributors and Other Topics](#contrib)
-    - [Donations](#donat)
-    - [Compiling RSS Guard](#compil)
-    - [Plugin API](#papi)
-    - [Reporting Bugs or Feature Requests](#reprt)
-    - [Localization](#locali)
-    - [Migrating data](#migratt)
 
 <hr style="margin: 40px;"/>
 
 ## What is RSS Guard? <a id="wirss"></a>
 RSS Guard is an [open-source](https://en.wikipedia.org/wiki/Open_source) [cross-platform](#sos) [multi-protocol](#sfr) desktop feed reader. It is able to fetch feeds in RSS/RDF/ATOM/JSON formats and connect to multiple web-based feed readers. RSS Guard is developed on top of the [Qt library](http://qt-project.org).
+
+## Donations <a id="donat"></a>
+You can support author of RSS Guard via [donations](https://github.com/sponsors/martinrotter).
 
 ## Downloads <a id="dwn"></a>
 Official place to download RSS Guard is at [Github Releases page](https://github.com/martinrotter/rssguard/releases). You can also download the [development (beta) build](https://github.com/martinrotter/rssguard/releases/tag/devbuild), which is updated automatically every time the source code is updated.
@@ -462,7 +460,8 @@ SQLite backend is very simple to use, no further configuration needed. All your 
 ```
 <user-data-folder>\database\database.db
 ```
-(For path to user data folder, see [User Data Portability](#userd) section.)  
+(For path to user data folder, see [User Data Portability](#userd) section.)
+
 This backend offers an `in-memory` database option, which automatically copies all your data into RAM when application launches, making RSS Guard incredibly fast. Data is written back to database file on disk when application exits. This option is not expected to be used often because RSS Guard should be fast enough with classic SQLite persistent DB files. Use this option only with huge amount of article data, and when you know what you are doing.
 
 Also note, that some new versions of RSS Guard introduce changes to how application data are stored in database file. When this change happens, backup of your SQLite database file is created automatically.
@@ -586,6 +585,8 @@ Note that not all skins have to provide a full-blown theming for every UI compon
 
 Skins usually define custom palette of colors which is yet another mechanism to change look of RSS Guard. This skin subfeature is enabled with `Use skin colors` checkbox on `Settings -> User interface` dialog section.
 
+Also, user can define custom CSS styles independently in file `<user-data-folder>/web/user-styles.css`. The file would be then loaded by RSS Guard and its styles applied to internal web browser.
+
 ### GUI Tweaking <a id="guit"></a>
 Appearance of the main window can be tweaked in many ways. You can hide menu, toolbars, status bar, you can also change orientation of article viewer to suit widescreen devices.
 
@@ -637,11 +638,8 @@ In order to easily add the feed directly from your web browser of choice, withou
 
 ## For Contributors <a id="contrib"></a>
 
-### Donations <a id="donat"></a>
-You can support author of RSS Guard via [donations](https://github.com/sponsors/martinrotter).
-
 ### Compiling RSS Guard <a id="compil"></a>
-RSS Guard is a C++ application. All common build instructions can be found at the top of [CMakeLists.txt](https://github.com/martinrotter/rssguard/blob/master/CMakeLists.txt).
+RSS Guard is a `C++` application. All common build instructions can be found at the top of [CMakeLists.txt](https://github.com/martinrotter/rssguard/blob/master/CMakeLists.txt).
 
 Here's a quick example of how to build it on Linux:
 
@@ -663,11 +661,11 @@ sudo make -C build-dir install
 ```
 
 ### <a id="papi"></a>Plugin API
-A simple C++ API allows creating new service plugins. All base <!-- TODO: should it be "basic"?--> API classes can be found in the [**abstract** folder](https://github.com/martinrotter/rssguard/tree/master/src/librssguard/services/abstract). User must create a <!-- TODO: "create" right? --> subclass and implement all interface classes:
+A simple `C++` API allows creating new service plugins. All base API classes can be found in the [`abstract`](https://github.com/martinrotter/rssguard/tree/master/src/librssguard/services/abstract) folder. User must declare a subclass and implement all interface classes:
 
 | Class                 | Purpose   |
 | :---                  | ---       |
-| `ServiceEntryPoint`   | The base <!-- TODO: Here's "basic" too? or is it the `base` class? --> class which provides basic information about the plugin name, author, etc. It also provides methods which are called when new account is created or when existing accounts are loaded from database. |
+| `ServiceEntryPoint`   | The base class which provides basic information about the plugin name, author, etc. It also provides methods which are called when new account is created or when existing accounts are loaded from database. |
 | `ServiceRoot`         | This is the core "account" class which represents an account node in feed's list, and offers interface for all critical functionality of a plugin, including handlers which are called with plugin's start/stop, marking messages as read/unread/starred/deleted, unassigning labels, etc. |
 
 API is reasonably simple to understand but relatively extensive. Sane defaults are used where it makes sense.
