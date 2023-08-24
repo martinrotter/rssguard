@@ -1353,7 +1353,7 @@ Dossier du cache Moteur Web QT -&gt; &quot;%7&quot;</translation>
     <message>
       <location filename="../src/librssguard/services/abstract/gui/formaddeditprobe.cpp" line="17"/>
       <source>A regular expression (shortened as regex or regexp) is a sequence of characters that specifies a match pattern in text. See more &lt;a href=&quot;https://learn.microsoft.com/en-us/dotnet/standard/base-types/regular-expression-language-quick-reference&quot;&gt;info&lt;/a&gt;.</source>
-      <translation>Une expression régulière (raccourcie comme regex ou regexp) est une séquence de caractères qui spécifie un motif de correspondance dans un texte. Pour en savoir plus veuillez visiter &lt;a href=&quot;https://learn.microsoft.com/en-us/dotnet/standard/base-types/regular-expression-language-quick-reference&quot;&gt;&lt;/a&gt;.</translation>
+      <translation>Une expression régulière (raccourcie sous "regex" ou "regexp") est une séquence de caractères qui spécifie un motif de correspondance dans un texte. Pour en savoir plus veuillez cliquer &lt;a href=&quot;https://learn.microsoft.com/en-us/dotnet/standard/base-types/regular-expression-language-quick-reference&quot;&gt;ici&lt;/a&gt;.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/abstract/gui/formaddeditprobe.cpp" line="25"/>
@@ -2664,7 +2664,7 @@ Dossier du cache Moteur Web QT -&gt; &quot;%7&quot;</translation>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.ui" line="14"/>
       <source>Article filters</source>
-      <translation>Filtres d&apos;article</translation>
+      <translation>Filtres d&apos;articles</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.ui" line="35"/>
@@ -2689,7 +2689,7 @@ Dossier du cache Moteur Web QT -&gt; &quot;%7&quot;</translation>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.ui" line="115"/>
       <source>Article filter details</source>
-      <translation>Détails du filtre d&apos;article</translation>
+      <translation>Détails du filtre d&apos;articles sélectionné</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.ui" line="121"/>
