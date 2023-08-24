@@ -1799,7 +1799,7 @@ Pour en savoir plus veuillez cliquer &lt;a href=&quot;https://learn.microsoft.co
     <message>
       <location filename="../src/librssguard/services/abstract/gui/formfeeddetails.cpp" line="134"/>
       <source>Fetch articles using global interval</source>
-      <translation>Obtenir les articles utilisant l&apos;intervalle globale</translation>
+      <translation>Obtenir les articles en utilisant l&apos;intervalle globale</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/abstract/gui/formfeeddetails.cpp" line="136"/>
@@ -1839,12 +1839,12 @@ Pour en savoir plus veuillez cliquer &lt;a href=&quot;https://learn.microsoft.co
     <message>
       <location filename="../src/librssguard/services/abstract/gui/formfeeddetails.ui" line="72"/>
       <source>Add articles with any date into the database</source>
-      <translation>Ajouter des articles avec une date quelconque dans la base de données</translation>
+      <translation>Ajouter des articles avec une date quelconque à la base de données</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/abstract/gui/formfeeddetails.ui" line="82"/>
       <source>Avoid adding articles before this date into the database</source>
-      <translation>Éviter d&apos;ajouter des articles qui datent d&apos;avant la date spécifiée dans la base de données</translation>
+      <translation>Éviter d&apos;ajouter des articles qui datent d&apos;avant la date spécifiée à la base de données</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/abstract/gui/formfeeddetails.ui" line="118"/>
@@ -6376,7 +6376,7 @@ Les auteurs de cette appli NE SONT PAS responsables de pertes de donnees éventu
     <message>
       <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="128"/>
       <source>Avoid adding articles before this date into the database</source>
-      <translation>Éviter d&apos;ajouter des articles qui datent d&apos;avant la date spécifiée dans la base de données</translation>
+      <translation>Éviter d&apos;ajouter des articles qui datent d&apos;avant la date spécifiée à la base de données</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="164"/>
