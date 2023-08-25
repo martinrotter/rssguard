@@ -2005,7 +2005,8 @@ Pour en savoir plus veuillez cliquer &lt;a href=&quot;https://learn.microsoft.co
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="278"/>
       <source>&amp;Fetch all</source>
-      <translation>&amp;Obtenir des articles de tous les flux</translation>
+      <translation>&amp;Obtenir des articles 
+de tous les flux</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="281"/>
@@ -2065,7 +2066,8 @@ Pour en savoir plus veuillez cliquer &lt;a href=&quot;https://learn.microsoft.co
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="349"/>
       <source>Mark selected item &amp;read</source>
-      <translation>Marquer les éléments sélectionnés comme &amp;lus</translation>
+      <translation>Marquer les éléments 
+sélectionnés comme &amp;lus</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="352"/>
@@ -2090,7 +2092,8 @@ Pour en savoir plus veuillez cliquer &lt;a href=&quot;https://learn.microsoft.co
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="379"/>
       <source>&amp;Clean selected item</source>
-      <translation>&amp;Nettoyer l&apos;élément sélectionné</translation>
+      <translation>&amp;Nettoyer l&apos;élément 
+sélectionné</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="382"/>
@@ -3329,12 +3332,12 @@ Vous pouvez désormais l&apos;installer.</translation>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formupdate.ui" line="20"/>
       <source>Current release</source>
-      <translation>Version actuelle</translation>
+      <translation>Version actuelle:</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formupdate.ui" line="34"/>
       <source>Available release</source>
-      <translation>Version disponible</translation>
+      <translation>Version disponible:</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formupdate.ui" line="48"/>
@@ -4651,7 +4654,8 @@ Expiration de jetons d&apos;authentification: %2</translation>
     <message>
       <location filename="../src/librssguard/gui/toolbars/messagestoolbar.cpp" line="269"/>
       <source>No extra filtering</source>
-      <translation>Pas de filtrage supplémentaire</translation>
+      <translation>Pas de filtrage 
+supplémentaire</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/toolbars/messagestoolbar.cpp" line="274"/>
