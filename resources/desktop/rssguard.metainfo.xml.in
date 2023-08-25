@@ -31,10 +31,10 @@
       <li>Tiny Tiny RSS</li>
     </ul>
     <p>
-      Note for Flatpak users: The autostart feature can only work if you manually allow us access to the <pre>~/.config/autostart</pre> directory. You can easily do that with the following command:
+      Note for Flatpak users: The autostart feature can only work if you manually allow us access to the ~/.config/autostart directory. You can easily do that with the following command:
     </p>
     <p>
-      <pre>flatpak override --user --filesystem=xdg-config/autostart @APP_REVERSE_NAME@</pre>
+      flatpak override --user --filesystem=xdg-config/autostart @APP_REVERSE_NAME@
     </p>
   </description>
   <launchable type="desktop-id">@APP_REVERSE_NAME@.desktop</launchable>
