@@ -790,7 +790,13 @@ void Application::onAboutToQuit() {
   }
 
   qApp->feedReader()->quit();
-  database()->driver()->saveDatabase();
+
+  try {
+    database()->driver()->saveDatabase();
+  }
+  catch (const ApplicationException& ex) {
+    qCriticalNN << LOGSEC_DB << "Error when saving DB:" << QUOTE_W_SPACE_DOT(ex.message());
+  }
 
   if (mainForm() != nullptr) {
     mainForm()->saveSize();

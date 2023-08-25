@@ -5,8 +5,14 @@
 
 #include "database/databasedriver.h"
 
+#if defined(SYSTEM_SQLITE3)
+#include <sqlite3.h>
+#else
+#include "3rd-party/sqlite/sqlite3.h"
+#endif
+
 class SqliteDriver : public DatabaseDriver {
-  Q_OBJECT
+    Q_OBJECT
 
   public:
     explicit SqliteDriver(bool in_memory, QObject* parent = nullptr);
@@ -19,7 +25,8 @@ class SqliteDriver : public DatabaseDriver {
     virtual bool initiateRestoration(const QString& database_package_file);
     virtual bool finishRestoration();
     virtual QSqlDatabase connection(const QString& connection_name,
-                                    DatabaseDriver::DesiredStorageType desired_type = DatabaseDriver::DesiredStorageType::FromSettings);
+                                    DatabaseDriver::DesiredStorageType desired_type =
+                                      DatabaseDriver::DesiredStorageType::FromSettings);
     virtual qint64 databaseDataSize();
     virtual QString humanDriverType() const;
     virtual QString qtDriverCode() const;
@@ -31,6 +38,9 @@ class SqliteDriver : public DatabaseDriver {
     QSqlDatabase initializeDatabase(const QString& connection_name, bool in_memory);
     void setPragmas(QSqlQuery& query);
     QString databaseFilePath() const;
+
+    // Uses native "sqlite3" handle to save or load in-memory DB from/to file.
+    int loadOrSaveDbInMemoryDb(sqlite3* in_memory_db, const char* db_filename, bool save);
 
   private:
     bool m_inMemoryDatabase;
