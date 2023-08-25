@@ -1,0 +1,6 @@
+[submodule "resources/scripts/7za"]
+	path = resources/scripts/7za
+	url = https://github.com/martinrotter/7za.git
+[submodule "resources/scripts/nsis"]
+	path = resources/scripts/nsis
+	url = https://github.com/martinrotter/nsis.git

@@ -281,6 +281,16 @@ durch Klicken auf diese Benachrichtigung.</translation>
       <translation>Keine Authentifizierung</translation>
     </message>
     <message>
+      <location filename="../src/librssguard/services/abstract/gui/authenticationdetails.cpp" line="19"/>
+      <source>HTTP Basic</source>
+      <translation type="unfinished">HTTP Basic</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard/services/abstract/gui/authenticationdetails.cpp" line="22"/>
+      <source>Token</source>
+      <translation type="unfinished">Token</translation>
+    </message>
+    <message>
       <location filename="../src/librssguard/services/abstract/gui/authenticationdetails.cpp" line="53"/>
       <source>Username/token is ok or it is not needed.</source>
       <translation>Benutzername/Token ist in Ordnung oder wird nicht benötigt.</translation>
