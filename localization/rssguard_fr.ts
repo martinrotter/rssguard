@@ -2748,7 +2748,7 @@ sélectionné</translation>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.ui" line="227"/>
       <source>Detailed &amp;help</source>
-      <translation>&amp;Aide détaillée</translation>
+      <translation>&amp;Aide (⧉)</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.ui" line="263"/>
