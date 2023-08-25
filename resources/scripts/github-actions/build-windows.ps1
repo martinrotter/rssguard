@@ -24,13 +24,13 @@ if ($use_qt5 -eq "ON") {
   $qt_version = "5.15.2"
 }
 else {
-  $qt_version = "6.5.2"
+  $qt_version = "6.4.3"
 }
 
-$maria_version = "10.6.14"
+$maria_version = "10.6.15"
 $maria_link = "https://archive.mariadb.org/mariadb-$maria_version/winx64-packages/mariadb-$maria_version-winx64.zip"
 $maria_output = "maria.zip"
-$cmake_version = "3.27.1"
+$cmake_version = "3.27.4"
 $cmake_link = "https://github.com/Kitware/CMake/releases/download/v$cmake_version/cmake-$cmake_version-windows-x86_64.zip"
 $cmake_output = "cmake.zip"
 
