@@ -563,7 +563,7 @@ Cliquez-ici pour ouvrir le répertoire parent.</translation>
       <location filename="../src/librssguard/network-web/downloadmanager.cpp" line="746"/>
       <source>%n seconds remaining</source>
       <translation>
-        <numerusform>%n seconde restante</numerusform>
+        <numerusform>%n secondes restantes</numerusform>
         <numerusform>%n secondes restantes</numerusform>
       </translation>
     </message>
@@ -1363,8 +1363,7 @@ Dossier du cache Moteur Web QT -&gt; &quot;%7&quot;</translation>
     <message>
       <location filename="../src/librssguard/services/abstract/gui/formaddeditprobe.cpp" line="17"/>
       <source>A regular expression (shortened as regex or regexp) is a sequence of characters that specifies a match pattern in text. See more &lt;a href=&quot;https://learn.microsoft.com/en-us/dotnet/standard/base-types/regular-expression-language-quick-reference&quot;&gt;info&lt;/a&gt;.</source>
-      <translation>Une expression régulière (raccourcie sous "regex" ou "regexp") est une séquence de caractères qui spécifie un motif de correspondance dans un texte. 
-Pour en savoir plus veuillez cliquer &lt;a href=&quot;https://learn.microsoft.com/en-us/dotnet/standard/base-types/regular-expression-language-quick-reference&quot;&gt;ici&lt;/a&gt;.</translation>
+      <translation>Une expression régulière (raccourcie sous "regex" ou "regexp") est une séquence de caractères qui spécifie un motif de correspondance dans un texte. Voir plus d'infos &lt;a href=&quot;https://learn.microsoft.com/en-us/dotnet/standard/base-types/regular-expression-language-quick-reference&quot;&gt;ici&lt;/a&gt;.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/abstract/gui/formaddeditprobe.cpp" line="25"/>
@@ -1872,7 +1871,7 @@ Pour en savoir plus veuillez cliquer &lt;a href=&quot;https://learn.microsoft.co
     <message>
       <location filename="../src/librssguard/gui/dialogs/formlog.cpp" line="16"/>
       <source>Application log</source>
-      <translation>Log de l&apos;application</translation>
+      <translation>Journal de bord de l&apos;application</translation>
     </message>
   </context>
   <context>
@@ -2223,7 +2222,7 @@ sélectionné</translation>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="550"/>
       <source>Report a &amp;bug...</source>
-      <translation>Signaler un &amp;bug</translation>
+      <translation>Signaler un &amp;bug (⧉)</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="561"/>
@@ -2243,12 +2242,12 @@ sélectionné</translation>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="586"/>
       <source>&amp;Donate...</source>
-      <translation>&amp;Faire un don ♥</translation>
+      <translation>&amp;Faire un don ♥ (⧉)</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="594"/>
       <source>Display &amp;documentation</source>
-      <translation>Afficher &amp;la documentation</translation>
+      <translation>Afficher &amp;la documentation (⧉)</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="602"/>
@@ -2464,7 +2463,7 @@ sélectionné</translation>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="902"/>
       <source>Display application &amp;log</source>
-      <translation>Afficher le &amp;log de l&apos;appli</translation>
+      <translation>Afficher le &amp;journal de bord de l&apos;appli</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="907"/>
@@ -6201,7 +6200,7 @@ Disadvantages:
  • application startup and shutdown can take little longer (max. 2 seconds).
 
 Authors of this application are NOT responsible for lost data.</source>
-      <translation>L&apos;usage de bases de données fonctionnelles intra-memoire a un nombre d&apos;avantages et inconvéniants. Soyez-sûr que vous êtes à l&apos;aise avec elles avant que vous activiez cette fonctionnalité.
+      <translation>L&apos;usage de bases de données fonctionnelles intra-memoire a un nombre d&apos;avantages et inconvéniants. Soyez-sûr d'être à l&apos;aise avec celles-ci avant d'activer cette fonctionnalité.
 
 Avantages:
 •Vitesse supérieur pour la manipulation de flux/messages (surtout si des milliers de messages sont affichés),
@@ -6211,7 +6210,7 @@ Inconvéniants:
 •Si l&apos;appli plante, vos changements de la dernière session ne seront pas pris en compte,
 •Le démarrage et la fermeture de l&apos;appli peuvent prendre plus longtemps (2 secondes max.).
 
-Les auteurs de cette appli NE SONT PAS responsables de pertes de donnees éventuelles.</translation>
+Les auteurs de cette appli NE SONT PAS responsables d'éventuelles pertes de données.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsdatabase.ui" line="17"/>
@@ -6812,7 +6811,7 @@ Déscription: %3</translation>
     <message>
       <location filename="../src/librssguard/gui/settings/settingslocalization.cpp" line="26"/>
       <source>Help us to improve %1 &lt;a href=&quot;%2&quot;&gt;translations&lt;/a&gt;.</source>
-      <translation>Aidez-nous à d'avantage traduire %1 &lt;a href=&quot;%2&quot;&gt;&lt;/a&gt;.</translation>
+      <translation>Aidez-nous à d'avantage &lt;a href=&quot;%2&quot;&gt;traduire&lt;/a&gt; %1.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingslocalization.cpp" line="136"/>
@@ -7651,7 +7650,7 @@ Actualités non-lus: %2</translation>
       <location filename="../src/librssguard/gui/reusable/timespinbox.cpp" line="64"/>
       <source>%n second(s)</source>
       <translation>
-        <numerusform>%n seconde</numerusform>
+        <numerusform>%n seconde(s)</numerusform>
         <numerusform>%n secondes</numerusform>
       </translation>
     </message>
