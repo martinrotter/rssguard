@@ -87,7 +87,7 @@ Virhe: %1</translation>
     <message>
       <location filename="../src/librssguard/network-web/adblock/adblockdialog.ui" line="64"/>
       <source>Add your direct links to filter lists here (one URL per line)</source>
-      <translation type="unfinished">Add your direct links to filter lists here (one URL per line)</translation>
+      <translation>Lisää suodatuslistojesi suorat linkit tähän (yksi URL riviä kohti)</translation>
     </message>
     <message>
       <location filename="../src/librssguard/network-web/adblock/adblockdialog.ui" line="78"/>
@@ -97,7 +97,7 @@ Virhe: %1</translation>
     <message>
       <location filename="../src/librssguard/network-web/adblock/adblockdialog.ui" line="84"/>
       <source>Add your custom filters here (one filter per line)</source>
-      <translation type="unfinished">Add your custom filters here (one filter per line)</translation>
+      <translation>Lisää omat suodattimesi tähän (yksi suodatin riviä kohti)</translation>
     </message>
   </context>
   <context>
@@ -118,7 +118,7 @@ Virhe: %1</translation>
     <message>
       <location filename="../src/librssguard/network-web/adblock/adblockmanager.cpp" line="198"/>
       <source>Failed to setup filters and start server: %1.</source>
-      <translation type="unfinished">Failed to setup filters and start server: %1.</translation>
+      <translation>Suodattimien määrittäminen ja palvelimen käynnistäminen epäonnistui: %1.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/network-web/adblock/adblockmanager.cpp" line="375"/>
@@ -136,32 +136,32 @@ Virhe: %1</translation>
     <message>
       <location filename="../src/librssguard/miscellaneous/application.cpp" line="558"/>
       <source>Output directory is not writable.</source>
-      <translation type="unfinished">Output directory is not writable.</translation>
+      <translation>Kohdekansioon ei voi kirjoittaa.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/miscellaneous/application.cpp" line="313"/>
       <source>%1 survey</source>
-      <translation type="unfinished">%1 survey</translation>
+      <translation>%1 kysely</translation>
     </message>
     <message>
       <location filename="../src/librssguard/miscellaneous/application.cpp" line="314"/>
       <source>Please, fill the survey.</source>
-      <translation type="unfinished">Please, fill the survey.</translation>
+      <translation>Ole hyvä ja täytä kysely.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/miscellaneous/application.cpp" line="317"/>
       <source>Go to survey</source>
-      <translation type="unfinished">Go to survey</translation>
+      <translation>Siirry kyselyyn</translation>
     </message>
     <message>
       <location filename="../src/librssguard/miscellaneous/application.cpp" line="566"/>
       <source>Settings file not copied to output directory successfully.</source>
-      <translation type="unfinished">Settings file not copied to output directory successfully.</translation>
+      <translation>Asetustiedoston kopiointi kohdekansioon epäonnistui.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/miscellaneous/application.cpp" line="581"/>
       <source>Database restoration was not initiated. Make sure that output directory is writable.</source>
-      <translation type="unfinished">Database restoration was not initiated. Make sure that output directory is writable.</translation>
+      <translation>Tietokannan palautusta ei aloitettu. Varmista, että kohdekansioon voi kirjoittaa.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/miscellaneous/application.cpp" line="588"/>
