@@ -3203,7 +3203,7 @@ You have to restart manually.</translation>
       <location filename="../src/librssguard/gui/dialogs/formupdate.cpp" line="66"/>
       <source>unknown</source>
       <extracomment>Unknown release.</extracomment>
-      <translation type="unfinished">unknown</translation>
+      <translation>unknown</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formupdate.cpp" line="70"/>
@@ -3225,7 +3225,7 @@ downloaded successfully.</translation>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formupdate.cpp" line="96"/>
       <source>No new release available.</source>
-      <translation type="unfinished">No new release available.</translation>
+      <translation>No new release available.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formupdate.cpp" line="97"/>
@@ -3328,17 +3328,17 @@ You can install it now.</translation>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formupdate.ui" line="20"/>
       <source>Current release</source>
-      <translation type="unfinished">Current release</translation>
+      <translation>Current release:</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formupdate.ui" line="34"/>
       <source>Available release</source>
-      <translation type="unfinished">Available release</translation>
+      <translation>Available release:</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formupdate.ui" line="48"/>
       <source>Status</source>
-      <translation type="unfinished">Status</translation>
+      <translation>Status:</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formupdate.ui" line="69"/>
@@ -4407,17 +4407,17 @@ Login tokens expiration: %2</translation>
     <message>
       <location filename="../src/librssguard/core/messagesmodel.cpp" line="119"/>
       <source>dot</source>
-      <translation type="unfinished">dot</translation>
+      <translation>Dot</translation>
     </message>
     <message>
       <location filename="../src/librssguard/core/messagesmodel.cpp" line="122"/>
       <source>envelope</source>
-      <translation type="unfinished">envelope</translation>
+      <translation>Envelope</translation>
     </message>
     <message>
       <location filename="../src/librssguard/core/messagesmodel.cpp" line="125"/>
       <source>feed icon</source>
-      <translation type="unfinished">feed icon</translation>
+      <translation>Feed icon</translation>
     </message>
     <message>
       <location filename="../src/librssguard/core/messagesmodel.cpp" line="287"/>
