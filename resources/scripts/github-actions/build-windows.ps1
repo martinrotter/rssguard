@@ -24,7 +24,7 @@ if ($use_qt5 -eq "ON") {
   $qt_version = "5.15.2"
 }
 else {
-  $qt_version = "6.4.3"
+  $qt_version = "6.5.2"
 }
 
 $maria_version = "10.6.15"
