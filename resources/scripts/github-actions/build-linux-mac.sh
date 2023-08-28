@@ -66,7 +66,7 @@ else
   aqt install-tool -O "$QTPATH" "$QTTARGET" "desktop" "tools_ninja"
 
   export QT_PLUGIN_PATH="$QTPATH/$QTVERSION/$QTOS/plugins"
-  export PATH="$QTBIN:$QTPATH/Tools/CMake/bin:$QTPATH/Tools/Ninja:$PATH"
+  export PATH="$QTBIN:$QTPATH/Tools/CMake/CMake.app/Contents/bin:$QTPATH/Tools/Ninja:$PATH"
 fi
 
 cmake --version

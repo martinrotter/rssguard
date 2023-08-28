@@ -61,6 +61,21 @@ QList<QAction*> SearchsNode::contextMenuFeedsList() {
   return QList<QAction*>{m_actProbeNew};
 }
 
+void SearchsNode::updateCounts(bool including_total_count) {
+  Q_UNUSED(including_total_count)
+
+  // NOTE: We do not update all counts here because it is simply taking too much time.
+  // This is true when user has many regex queries added because SQLite (MariaDB) simply
+  // takes too long to finish SQL queries with REGEXPs.
+  //
+  // We only update one by one.
+  if (childCount() <= 10) {
+    RootItem::updateCounts(including_total_count);
+  }
+  else {
+  }
+}
+
 void SearchsNode::createProbe() {
   FormAddEditProbe frm(qApp->mainFormWidget());
   Search* new_prb = frm.execForAdd();
