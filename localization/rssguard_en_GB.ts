@@ -555,7 +555,7 @@ Click here to open parent directory.</translation>
       <location filename="../src/librssguard/network-web/downloadmanager.cpp" line="742"/>
       <source>%n minutes remaining</source>
       <translation type="unfinished">
-        <numerusform>%n minute remaining</numerusform>
+        <numerusform>%n minute(s) remaining</numerusform>
         <numerusform>%n minutes remaining</numerusform>
       </translation>
     </message>
@@ -700,7 +700,7 @@ Click here to open parent directory.</translation>
       <location filename="../src/librssguard/services/abstract/feed.cpp" line="272"/>
       <source>uses global settings (%n minute(s) to next auto-fetch of articles)</source>
       <translation>
-        <numerusform>uses global settings (%n minute to next auto-fetch of articles)</numerusform>
+        <numerusform>uses global settings (%n minute(s) to next auto-fetch of articles)</numerusform>
         <numerusform>uses global settings (%n minutes to next auto-fetch of articles)</numerusform>
       </translation>
     </message>
@@ -709,7 +709,7 @@ Click here to open parent directory.</translation>
       <source>uses specific settings (%n minute(s) to next auto-fetching of new articles)</source>
       <extracomment>Describes feed auto-update status.</extracomment>
       <translation>
-        <numerusform>uses specific settings (%n minute to next auto-fetching of new articles)</numerusform>
+        <numerusform>uses specific settings (%n minute(s) to next auto-fetching of new articles)</numerusform>
         <numerusform>uses specific settings (%n minutes to next auto-fetching of new articles)</numerusform>
       </translation>
     </message>
@@ -4580,7 +4580,7 @@ Login tokens expiration: %2</translation>
       <location filename="../src/librssguard/core/messagesmodel.cpp" line="373"/>
       <source>%n minutes ago</source>
       <translation type="unfinished">
-        <numerusform>%n minute ago</numerusform>
+        <numerusform>%n minute(s) ago</numerusform>
         <numerusform>%n minutes ago</numerusform>
       </translation>
     </message>
@@ -7632,7 +7632,7 @@ Unread news: %2</translation>
       <location filename="../src/librssguard/gui/reusable/timespinbox.cpp" line="65"/>
       <source>%n minute(s)</source>
       <translation>
-        <numerusform>%n minute</numerusform>
+        <numerusform>%n minute(s)</numerusform>
         <numerusform>%n minutes</numerusform>
       </translation>
     </message>
