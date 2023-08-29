@@ -2030,12 +2030,14 @@ de tous les flux</translation>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="308"/>
       <source>&amp;Delete selected item</source>
-      <translation>&amp;Supprimer l&apos;élément sélectionné</translation>
+      <translation>&amp;Supprimer l&apos;élément
+sélectionné</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="316"/>
       <source>Mark articles &amp;read</source>
-      <translation>Marquer les articles comme &amp;lus</translation>
+      <translation>Marquer les articles 
+comme &amp;lus</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="319"/>
@@ -2045,7 +2047,8 @@ de tous les flux</translation>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="327"/>
       <source>Mark articles &amp;unread</source>
-      <translation>Marquer les articles comme &amp;non-lus</translation>
+      <translation>Marquer les articles 
+comme &amp;non-lus</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="330"/>
@@ -2076,7 +2079,8 @@ sélectionnés comme &amp;lus</translation>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="360"/>
       <source>Mark selected item &amp;unread</source>
-      <translation>Marquer les éléments sélectionnés comme &amp;non-lus</translation>
+      <translation>Marquer les éléments 
+sélectionnés comme &amp;non-lus</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="363"/>
@@ -2142,7 +2146,8 @@ sélectionné</translation>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="437"/>
       <source>View selected item in &amp;newspaper mode</source>
-      <translation>Voir l&apos;élément sélectionné en &amp;mode journal</translation>
+      <translation>Voir l&apos;élément
+sélectionné en &amp;mode journal</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="440"/>
@@ -2152,7 +2157,8 @@ sélectionné</translation>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="451"/>
       <source>Switch main window visibility</source>
-      <translation>Changer la visibilité de la fenêtre principale</translation>
+      <translation>Changer la visibilité 
+de la fenêtre principale</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="454"/>
@@ -2297,7 +2303,8 @@ sélectionné</translation>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="672"/>
       <source>&amp;Expand/collapse selected item</source>
-      <translation>&amp;Étendre/rétracter l&apos;élément selectionné</translation>
+      <translation>&amp;Étendre/rétracter 
+l&apos;élément selectionné</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="680"/>
@@ -2337,7 +2344,8 @@ sélectionné</translation>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="742"/>
       <source>&amp;Delete selected account</source>
-      <translation>&amp;Supprimer le compte sélectionné</translation>
+      <translation>&amp;Supprimer le compte 
+sélectionné</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="755"/>
@@ -2398,27 +2406,32 @@ sélectionné</translation>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="822"/>
       <source>Fetch feeds with &amp;custom auto-download policy</source>
-      <translation>Obtenir les flux avec une politique de téléchargement automatique &amp;personnalisée</translation>
+      <translation>Obtenir les flux avec une politique de 
+téléchargement automatique &amp;personnalisée</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="830"/>
       <source>Alternate row colors in lists</source>
-      <translation>Alterner les couleurs de rangs dans les listes</translation>
+      <translation>Alterner les couleurs 
+de rangs dans les listes</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="838"/>
       <source>Automatically &amp;expand item when selected</source>
-      <translation>Élargir l&apos;élément automatiquement lorsqu&apos;il est selectionné</translation>
+      <translation>Élargir l&apos;élément automatiquement 
+lorsqu&apos;il est selectionné</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="849"/>
       <source>Message viewer toolbars</source>
-      <translation>Les barres d&apos;outils du lecteur de messages</translation>
+      <translation>Barres d&apos;outils du
+lecteur de messages</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="854"/>
       <source>Expand/collapse selected item &amp;recursively</source>
-      <translation>&amp;Étendre/rétracter l&apos;élément selectionné d&apos;une manière &amp;récursive</translation>
+      <translation>&amp;Étendre/rétracter l&apos;élément 
+selectionné d&apos;une manière &amp;récursive</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="859"/>
@@ -2433,7 +2446,8 @@ sélectionné</translation>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="869"/>
       <source>Open in internal browser (no new tab)</source>
-      <translation>Ouvrir dans le navigateur interne (pas de nouvel onglet)</translation>
+      <translation>Ouvrir dans le navigateur interne
+(pas de nouvel onglet)</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="877"/>
@@ -2468,12 +2482,14 @@ sélectionné</translation>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="907"/>
       <source>Focus feeds search box</source>
-      <translation>Focaliser la boîte de recherche de flux</translation>
+      <translation>Focaliser la boîte 
+de recherche de flux</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="912"/>
       <source>Focus articles search box</source>
-      <translation>Focaliser la boîte de recherche d&apos;articles</translation>
+      <translation>Focaliser la boîte de 
+recherche d&apos;articles</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="917"/>
@@ -4410,17 +4426,17 @@ Expiration de jetons d&apos;authentification: %2</translation>
     <message>
       <location filename="../src/librssguard/core/messagesmodel.cpp" line="119"/>
       <source>dot</source>
-      <translation>point</translation>
+      <translation>Point</translation>
     </message>
     <message>
       <location filename="../src/librssguard/core/messagesmodel.cpp" line="122"/>
       <source>envelope</source>
-      <translation>enveloppe</translation>
+      <translation>Enveloppe</translation>
     </message>
     <message>
       <location filename="../src/librssguard/core/messagesmodel.cpp" line="125"/>
       <source>feed icon</source>
-      <translation>icône du flux</translation>
+      <translation>Icône du flux</translation>
     </message>
     <message>
       <location filename="../src/librssguard/core/messagesmodel.cpp" line="287"/>
