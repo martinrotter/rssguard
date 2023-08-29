@@ -555,7 +555,7 @@ Cliquez-ici pour ouvrir le répertoire parent.</translation>
       <location filename="../src/librssguard/network-web/downloadmanager.cpp" line="742"/>
       <source>%n minutes remaining</source>
       <translation>
-        <numerusform>%n minute restante</numerusform>
+        <numerusform>%n minute(s) restante(s)</numerusform>
         <numerusform>%n minutes restantes</numerusform>
       </translation>
     </message>
@@ -709,7 +709,7 @@ Cliquez-ici pour ouvrir le répertoire parent.</translation>
       <source>uses specific settings (%n minute(s) to next auto-fetching of new articles)</source>
       <extracomment>Describes feed auto-update status.</extracomment>
       <translation>
-        <numerusform>utilise des paramètres particuliers (prochaine obtention automatique des articles dans %n minute)</numerusform>
+        <numerusform>utilise des paramètres particuliers (prochaine obtention automatique des articles dans %n minute(s))</numerusform>
         <numerusform>utilise des paramètres particuliers (prochaine obtention automatique des articles dans %n minute(s))</numerusform>
       </translation>
     </message>
@@ -4602,7 +4602,7 @@ Expiration de jetons d&apos;authentification: %2</translation>
       <location filename="../src/librssguard/core/messagesmodel.cpp" line="373"/>
       <source>%n minutes ago</source>
       <translation>
-        <numerusform>il y a %n minute</numerusform>
+        <numerusform>il y a %n minute(s)</numerusform>
         <numerusform>il y a %n minutes</numerusform>
       </translation>
     </message>
@@ -7656,7 +7656,7 @@ Actualités non-lus: %2</translation>
       <location filename="../src/librssguard/gui/reusable/timespinbox.cpp" line="65"/>
       <source>%n minute(s)</source>
       <translation>
-        <numerusform>%n minute</numerusform>
+        <numerusform>%n minute(s)</numerusform>
         <numerusform>%n minutes</numerusform>
       </translation>
     </message>
