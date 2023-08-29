@@ -2886,7 +2886,7 @@ recherche d&apos;articles</translation>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formsettings.cpp" line="101"/>
       <source>Critical settings were changed</source>
-      <translation>Les paramètres important ont changé</translation>
+      <translation>Les paramètres importants ont changés</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formsettings.cpp" line="106"/>
