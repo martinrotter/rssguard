@@ -10,8 +10,6 @@
 #include "3rd-party/sqlite/sqlite3.h"
 #endif
 
-#include "3rd-party/sqlite/sqlite3.h"
-
 #include "core/feedsmodel.h"
 #include "dynamic-shortcuts/dynamicshortcuts.h"
 #include "exceptions/applicationexception.h"

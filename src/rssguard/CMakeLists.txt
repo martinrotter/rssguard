@@ -31,8 +31,6 @@ if(QT_VERSION_MAJOR EQUAL 6)
 endif()
 
 if(APPLE)
-  target_compile_options(app PUBLIC -mmacosx-version-min=10.10)
-  target_link_options(app PUBLIC -mmacosx-version-min=10.10)
   set_target_properties(app PROPERTIES
     MACOSX_BUNDLE FALSE
   )

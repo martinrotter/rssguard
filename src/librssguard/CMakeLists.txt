@@ -721,8 +721,6 @@ if(UNIX AND NOT APPLE AND NOT ANDROID)
 endif()
 
 if(APPLE)
-  target_compile_options(rssguard PUBLIC -mmacosx-version-min=10.13)
-  target_link_options(rssguard PUBLIC -mmacosx-version-min=10.13)
   target_link_libraries(rssguard PUBLIC
     "-framework AppKit"
   )
