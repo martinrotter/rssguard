@@ -555,7 +555,7 @@ Cliquez-ici pour ouvrir le répertoire parent.</translation>
       <location filename="../src/librssguard/network-web/downloadmanager.cpp" line="742"/>
       <source>%n minutes remaining</source>
       <translation>
-        <numerusform>%n minute restante</numerusform>
+        <numerusform>%n minute(s) restante(s)</numerusform>
         <numerusform>%n minutes restantes</numerusform>
       </translation>
     </message>
@@ -709,7 +709,7 @@ Cliquez-ici pour ouvrir le répertoire parent.</translation>
       <source>uses specific settings (%n minute(s) to next auto-fetching of new articles)</source>
       <extracomment>Describes feed auto-update status.</extracomment>
       <translation>
-        <numerusform>utilise des paramètres particuliers (prochaine obtention automatique des articles dans %n minute)</numerusform>
+        <numerusform>utilise des paramètres particuliers (prochaine obtention automatique des articles dans %n minute(s))</numerusform>
         <numerusform>utilise des paramètres particuliers (prochaine obtention automatique des articles dans %n minute(s))</numerusform>
       </translation>
     </message>
@@ -1034,7 +1034,7 @@ Identifiant d&apos;élément: %5</translation>
     <message>
       <location filename="../src/librssguard/gui/toolbars/feedstoolbar.cpp" line="123"/>
       <source>Search feeds</source>
-      <translation>Chercher des flux</translation>
+      <translation>Chercher des flux...</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/toolbars/feedstoolbar.cpp" line="131"/>
@@ -2004,7 +2004,7 @@ Dossier du cache Moteur Web QT -&gt; &quot;%7&quot;</translation>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="278"/>
       <source>&amp;Fetch all</source>
-      <translation>&amp;Obtenir des articles 
+      <translation>&amp;Obtenir des articles
 de tous les flux</translation>
     </message>
     <message>
@@ -2036,7 +2036,7 @@ sélectionné</translation>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="316"/>
       <source>Mark articles &amp;read</source>
-      <translation>Marquer les articles 
+      <translation>Marquer les articles
 comme &amp;lus</translation>
     </message>
     <message>
@@ -2047,7 +2047,7 @@ comme &amp;lus</translation>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="327"/>
       <source>Mark articles &amp;unread</source>
-      <translation>Marquer les articles 
+      <translation>Marquer les articles
 comme &amp;non-lus</translation>
     </message>
     <message>
@@ -2136,7 +2136,8 @@ sélectionné</translation>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="426"/>
       <source>&amp;Mark all read</source>
-      <translation>&amp;Tout marquer comme lu</translation>
+      <translation>&amp;Tout marquer
+comme lu</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="429"/>
@@ -2157,7 +2158,7 @@ sélectionné en &amp;mode journal</translation>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="451"/>
       <source>Switch main window visibility</source>
-      <translation>Changer la visibilité 
+      <translation>Changer la visibilité
 de la fenêtre principale</translation>
     </message>
     <message>
@@ -2258,7 +2259,7 @@ de la fenêtre principale</translation>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="602"/>
       <source>&amp;Restart</source>
-      <translation>&amp;Redémarrer RSS Guard.</translation>
+      <translation>&amp;Redémarrer RSS Guard</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="610"/>
@@ -2303,7 +2304,7 @@ de la fenêtre principale</translation>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="672"/>
       <source>&amp;Expand/collapse selected item</source>
-      <translation>&amp;Étendre/rétracter 
+      <translation>&amp;Étendre/rétracter
 l&apos;élément selectionné</translation>
     </message>
     <message>
@@ -2351,12 +2352,14 @@ sélectionné</translation>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="755"/>
       <location filename="../src/librssguard/gui/dialogs/formmain.cpp" line="309"/>
       <source>Add new category</source>
-      <translation>Ajouter une nouvelle catégorie</translation>
+      <translation>Ajouter une 
+nouvelle catégorie</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="760"/>
       <source>Stop ongoing fetching</source>
-      <translation>Arrêter l&apos;obtention en cours.</translation>
+      <translation>Arrêter l&apos;obtention 
+en cours</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="768"/>
@@ -2406,19 +2409,19 @@ sélectionné</translation>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="822"/>
       <source>Fetch feeds with &amp;custom auto-download policy</source>
-      <translation>Obtenir les flux avec une politique de 
+      <translation>Obtenir les flux avec une politique de
 téléchargement automatique &amp;personnalisée</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="830"/>
       <source>Alternate row colors in lists</source>
-      <translation>Alterner les couleurs 
+      <translation>Alterner les couleurs
 de rangs dans les listes</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="838"/>
       <source>Automatically &amp;expand item when selected</source>
-      <translation>Élargir l&apos;élément automatiquement 
+      <translation>Élargir l&apos;élément automatiquement
 lorsqu&apos;il est selectionné</translation>
     </message>
     <message>
@@ -2430,7 +2433,7 @@ lecteur de messages</translation>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="854"/>
       <source>Expand/collapse selected item &amp;recursively</source>
-      <translation>&amp;Étendre/rétracter l&apos;élément 
+      <translation>&amp;Étendre/rétracter l&apos;élément
 selectionné d&apos;une manière &amp;récursive</translation>
     </message>
     <message>
@@ -2482,7 +2485,7 @@ selectionné d&apos;une manière &amp;récursive</translation>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="907"/>
       <source>Focus feeds search box</source>
-      <translation>Focaliser la boîte 
+      <translation>Focaliser la boîte
 de recherche de flux</translation>
     </message>
     <message>
@@ -4599,7 +4602,7 @@ Expiration de jetons d&apos;authentification: %2</translation>
       <location filename="../src/librssguard/core/messagesmodel.cpp" line="373"/>
       <source>%n minutes ago</source>
       <translation>
-        <numerusform>il y a %n minute</numerusform>
+        <numerusform>il y a %n minute(s)</numerusform>
         <numerusform>il y a %n minutes</numerusform>
       </translation>
     </message>
@@ -4619,7 +4622,8 @@ Expiration de jetons d&apos;authentification: %2</translation>
     <message>
       <location filename="../src/librssguard/gui/toolbars/messagestoolbar.cpp" line="251"/>
       <source>No extra highlighting</source>
-      <translation>Pas de surlignement supplémentaire</translation>
+      <translation>Pas de surlignement 
+supplémentaire</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/toolbars/messagestoolbar.cpp" line="92"/>
@@ -4639,7 +4643,7 @@ Expiration de jetons d&apos;authentification: %2</translation>
     <message>
       <location filename="../src/librssguard/gui/toolbars/messagestoolbar.cpp" line="222"/>
       <source>Search articles</source>
-      <translation>Chercher des articles</translation>
+      <translation>Chercher des articles...</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/toolbars/messagestoolbar.cpp" line="229"/>
@@ -7652,7 +7656,7 @@ Actualités non-lus: %2</translation>
       <location filename="../src/librssguard/gui/reusable/timespinbox.cpp" line="65"/>
       <source>%n minute(s)</source>
       <translation>
-        <numerusform>%n minute</numerusform>
+        <numerusform>%n minute(s)</numerusform>
         <numerusform>%n minutes</numerusform>
       </translation>
     </message>
