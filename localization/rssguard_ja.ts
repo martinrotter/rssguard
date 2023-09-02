@@ -6,12 +6,12 @@
     <message>
       <location filename="../src/librssguard/services/abstract/accountcheckmodel.cpp" line="183"/>
       <source>(category)</source>
-      <translation type="unfinished">(category)</translation>
+      <translation>(カテゴリー)</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/abstract/accountcheckmodel.cpp" line="186"/>
       <source>(feed)</source>
-      <translation type="unfinished">(feed)</translation>
+      <translation>(フィード)</translation>
     </message>
   </context>
   <context>
@@ -19,12 +19,12 @@
     <message>
       <location filename="../src/librssguard/network-web/adblock/adblockdialog.cpp" line="26"/>
       <source>AdBlock configuration</source>
-      <translation type="unfinished">AdBlock configuration</translation>
+      <translation>AdBlockの設定</translation>
     </message>
     <message>
       <location filename="../src/librssguard/network-web/adblock/adblockdialog.cpp" line="63"/>
       <source>Cannot enable AdBlock</source>
-      <translation type="unfinished">Cannot enable AdBlock</translation>
+      <translation>AdBlockを有効にできません</translation>
     </message>
     <message>
       <location filename="../src/librssguard/network-web/adblock/adblockdialog.cpp" line="64"/>
