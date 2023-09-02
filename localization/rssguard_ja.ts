@@ -19,12 +19,12 @@
     <message>
       <location filename="../src/librssguard/network-web/adblock/adblockdialog.cpp" line="26"/>
       <source>AdBlock configuration</source>
-      <translation>AdBlockの設定</translation>
+      <translation type="unfinished">AdBlock configuration</translation>
     </message>
     <message>
       <location filename="../src/librssguard/network-web/adblock/adblockdialog.cpp" line="63"/>
       <source>Cannot enable AdBlock</source>
-      <translation>AdBlockを有効にできません</translation>
+      <translation type="unfinished">Cannot enable AdBlock</translation>
     </message>
     <message>
       <location filename="../src/librssguard/network-web/adblock/adblockdialog.cpp" line="64"/>
@@ -4622,12 +4622,12 @@ Login tokens expiration: %2</translation>
     <message>
       <location filename="../src/librssguard/gui/toolbars/messagestoolbar.cpp" line="256"/>
       <source>Highlight unread articles</source>
-      <translation type="unfinished">Highlight unread articles</translation>
+      <translation>未読の記事をハイライト</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/toolbars/messagestoolbar.cpp" line="261"/>
       <source>Highlight important articles</source>
-      <translation type="unfinished">Highlight important articles</translation>
+      <translation>重要な記事をハイライト</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/toolbars/messagestoolbar.cpp" line="265"/>
@@ -4637,17 +4637,17 @@ Login tokens expiration: %2</translation>
     <message>
       <location filename="../src/librssguard/gui/toolbars/messagestoolbar.cpp" line="269"/>
       <source>No extra filtering</source>
-      <translation type="unfinished">No extra filtering</translation>
+      <translation>フィルターなし</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/toolbars/messagestoolbar.cpp" line="274"/>
       <source>Show unread articles</source>
-      <translation type="unfinished">Show unread articles</translation>
+      <translation>未読の記事のみを表示</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/toolbars/messagestoolbar.cpp" line="279"/>
       <source>Show important articles</source>
-      <translation type="unfinished">Show important articles</translation>
+      <translation>重要な記事のみを表示</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/toolbars/messagestoolbar.cpp" line="284"/>
