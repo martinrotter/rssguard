@@ -3832,7 +3832,7 @@ Login tokens expiration: %2</translation>
     <message>
       <location filename="../src/librssguard/gui/reusable/helpspoiler.cpp" line="25"/>
       <source>View more information on this</source>
-      <translation type="unfinished">View more information on this</translation>
+      <translation>詳細を表示</translation>
     </message>
   </context>
   <context>
@@ -4399,17 +4399,17 @@ Login tokens expiration: %2</translation>
     <message>
       <location filename="../src/librssguard/core/messagesmodel.cpp" line="119"/>
       <source>dot</source>
-      <translation type="unfinished">dot</translation>
+      <translation>ドット</translation>
     </message>
     <message>
       <location filename="../src/librssguard/core/messagesmodel.cpp" line="122"/>
       <source>envelope</source>
-      <translation type="unfinished">envelope</translation>
+      <translation>封筒</translation>
     </message>
     <message>
       <location filename="../src/librssguard/core/messagesmodel.cpp" line="125"/>
       <source>feed icon</source>
-      <translation type="unfinished">feed icon</translation>
+      <translation>フィードアイコン</translation>
     </message>
     <message>
       <location filename="../src/librssguard/core/messagesmodel.cpp" line="287"/>
@@ -6293,7 +6293,7 @@ Authors of this application are NOT responsible for lost data.</translation>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.cpp" line="32"/>
       <source>Note that enabling this might have drastic consequences on performance of article list with big number of articles.</source>
-      <translation type="unfinished">Note that enabling this might have drastic consequences on performance of article list with big number of articles.</translation>
+      <translation>これを有効にすると、記事数の多い記事リストのパフォーマンスに大幅な影響を与える可能性があることに注意してください。</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.cpp" line="52"/>
@@ -6350,7 +6350,7 @@ Authors of this application are NOT responsible for lost data.</translation>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="86"/>
       <source>Support very fast auto-fetching intervals (under 10 seconds)</source>
-      <translation>非常に高速な自動取得間隔をサポート(10秒以内)</translation>
+      <translation>非常に高速な自動取得間隔 (10 秒以内) をサポートする</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="128"/>
@@ -6366,7 +6366,7 @@ Authors of this application are NOT responsible for lost data.</translation>
       <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="170"/>
       <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="476"/>
       <source>Row height</source>
-      <translation type="unfinished">Row height</translation>
+      <translation>行の高さ</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="207"/>
@@ -6395,17 +6395,17 @@ Authors of this application are NOT responsible for lost data.</translation>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="283"/>
       <source>Hide article counts if there are no unread articles</source>
-      <translation type="unfinished">Hide article counts if there are no unread articles</translation>
+      <translation>未読の記事がない場合は記事カウントを非表示にする</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="290"/>
       <source>Allow only basic keyboard shortcuts for feed/article list</source>
-      <translation type="unfinished">Allow only basic keyboard shortcuts for feed/article list</translation>
+      <translation>フィード/記事リストに基本的なキーボードショートカットのみを許可する</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="297"/>
       <source>Display tooltips for feeds and articles</source>
-      <translation type="unfinished">Display tooltips for feeds and articles</translation>
+      <translation>フィードと記事のツールチップを表示する</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="305"/>
@@ -6415,12 +6415,12 @@ Authors of this application are NOT responsible for lost data.</translation>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="311"/>
       <source>Remove all read articles from all feeds on application exit</source>
-      <translation type="unfinished">Remove all read articles from all feeds on application exit</translation>
+      <translation>アプリケーション終了時にすべてのフィードから既読記事を削除する</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="318"/>
       <source>Ignore changes in article body when new articles are being fetched</source>
-      <translation type="unfinished">Ignore changes in article body when new articles are being fetched</translation>
+      <translation>新しい記事が取得されている時に記事本文の変更を無視する</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="339"/>
@@ -6430,12 +6430,12 @@ Authors of this application are NOT responsible for lost data.</translation>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="638"/>
       <source>Unread article icon type</source>
-      <translation type="unfinished">Unread article icon type</translation>
+      <translation>未読記事アイコンの種類</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="332"/>
       <source>Bring application window to front once article is opened in external web browser</source>
-      <translation type="unfinished">Bring application window to front once article is opened in external web browser</translation>
+      <translation>記事が外部Webブラウザで開かれると、アプリケーションウィンドウをフロントに表示する</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="394"/>
@@ -6445,22 +6445,22 @@ Authors of this application are NOT responsible for lost data.</translation>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="325"/>
       <source>Fixup date/time of articles which are in the future</source>
-      <translation type="unfinished">Fixup date/time of articles which are in the future</translation>
+      <translation>将来の記事の日付/時刻を修正する</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="345"/>
       <source>Display attachments directly in article</source>
-      <translation type="unfinished">Display attachments directly in article</translation>
+      <translation>記事に添付ファイルを直接表示する</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="354"/>
       <source>Limit height of pictures</source>
-      <translation type="unfinished">Limit height of pictures</translation>
+      <translation>写真の高さを制限する</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="438"/>
       <source>Keep article viewer always visible</source>
-      <translation type="unfinished">Keep article viewer always visible</translation>
+      <translation>記事ビューアを常に表示する</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="446"/>
@@ -6470,22 +6470,22 @@ Authors of this application are NOT responsible for lost data.</translation>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="452"/>
       <source>Keep article selection in the middle of the article list viewport</source>
-      <translation type="unfinished">Keep article selection in the middle of the article list viewport</translation>
+      <translation>記事リストのビューポートを中央で維持する</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="459"/>
       <source>Enable multiline items</source>
-      <translation type="unfinished">Enable multiline items</translation>
+      <translation>複数行のアイテムを有効にする</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="505"/>
       <source>Top/bottom row padding</source>
-      <translation type="unfinished">Top/bottom row padding</translation>
+      <translation>上/下行の余白</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="534"/>
       <source>Use custom date/time format</source>
-      <translation type="unfinished">Use custom date/time format</translation>
+      <translation>日付／時刻形式をカスタマイズする</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="560"/>
