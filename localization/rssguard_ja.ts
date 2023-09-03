@@ -6320,7 +6320,7 @@ Authors of this application are NOT responsible for lost data.</translation>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="27"/>
       <source>Fetch all articles on startup with initial delay of</source>
-      <translation>起動時にすべての記事を取得する。初期遅延の設定</translation>
+      <translation>起動時にすべての記事を取得する。その際の遅延時間</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="53"/>
