@@ -1666,32 +1666,32 @@ QtWebEngine cache folder -&gt; &quot;%7&quot;</translation>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formdatabasecleanup.ui" line="20"/>
       <source>Cleanup settings</source>
-      <translation type="unfinished">Cleanup settings</translation>
+      <translation>クリーンアップ設定</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formdatabasecleanup.ui" line="26"/>
       <source>Optimize database file</source>
-      <translation type="unfinished">Optimize database file</translation>
+      <translation>データベースファイルを最適化する</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formdatabasecleanup.ui" line="36"/>
       <source>Remove all read articles</source>
-      <translation type="unfinished">Remove all read articles</translation>
+      <translation>既読の記事をすべて削除する</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formdatabasecleanup.ui" line="53"/>
       <source>Remove all articles from recycle bin</source>
-      <translation type="unfinished">Remove all articles from recycle bin</translation>
+      <translation>ごみ箱からすべての記事を削除する</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formdatabasecleanup.ui" line="63"/>
       <source>Remove all articles older than</source>
-      <translation type="unfinished">Remove all articles older than</translation>
+      <translation>何日以前の記事をすべて削除する</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formdatabasecleanup.ui" line="86"/>
       <source>Remove all starred articles</source>
-      <translation type="unfinished">Remove all starred articles</translation>
+      <translation>スター付きの記事をすべて削除する</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formdatabasecleanup.ui" line="96"/>
@@ -2081,7 +2081,7 @@ QtWebEngine cache folder -&gt; &quot;%7&quot;</translation>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="379"/>
       <source>&amp;Clean selected item</source>
-      <translation type="unfinished">&amp;Clean selected item</translation>
+      <translation>選択したアイテムを削除する</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="382"/>
@@ -2091,7 +2091,7 @@ QtWebEngine cache folder -&gt; &quot;%7&quot;</translation>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="390"/>
       <source>Open in &amp;external browser</source>
-      <translation type="unfinished">Open in &amp;external browser</translation>
+      <translation>外部ブラウザで開く</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="393"/>
@@ -2101,7 +2101,7 @@ QtWebEngine cache folder -&gt; &quot;%7&quot;</translation>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="401"/>
       <source>Open in &amp;internal browser</source>
-      <translation type="unfinished">Open in &amp;internal browser</translation>
+      <translation>内部ブラウザで開く</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="404"/>
@@ -2161,7 +2161,7 @@ QtWebEngine cache folder -&gt; &quot;%7&quot;</translation>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="479"/>
       <source>&amp;Clean all</source>
-      <translation type="unfinished">&amp;Clean all</translation>
+      <translation>すべて削除</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="482"/>
@@ -2171,22 +2171,22 @@ QtWebEngine cache folder -&gt; &quot;%7&quot;</translation>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="490"/>
       <source>&amp;Next item</source>
-      <translation type="unfinished">&amp;Next item</translation>
+      <translation>次のアイテム</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="498"/>
       <source>&amp;Previous item</source>
-      <translation type="unfinished">&amp;Previous item</translation>
+      <translation>前のアイテム</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="506"/>
       <source>&amp;Next article</source>
-      <translation type="unfinished">&amp;Next article</translation>
+      <translation>次の記事</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="514"/>
       <source>&amp;Previous article</source>
-      <translation type="unfinished">&amp;Previous article</translation>
+      <translation>前の記事</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="522"/>
@@ -2266,7 +2266,7 @@ QtWebEngine cache folder -&gt; &quot;%7&quot;</translation>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="642"/>
       <source>Send via e-mail</source>
-      <translation type="unfinished">Send via e-mail</translation>
+      <translation>E-mailで送信</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="645"/>
@@ -2311,7 +2311,7 @@ QtWebEngine cache folder -&gt; &quot;%7&quot;</translation>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="712"/>
       <source>Next &amp;unread article</source>
-      <translation type="unfinished">Next &amp;unread article</translation>
+      <translation>次の未読記事へ</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="726"/>
@@ -2367,7 +2367,7 @@ QtWebEngine cache folder -&gt; &quot;%7&quot;</translation>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="799"/>
       <source>&amp;Enable article preview</source>
-      <translation type="unfinished">&amp;Enable article preview</translation>
+      <translation>記事のプレビューを有効にする</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="804"/>
@@ -2422,7 +2422,7 @@ QtWebEngine cache folder -&gt; &quot;%7&quot;</translation>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="869"/>
       <source>Open in internal browser (no new tab)</source>
-      <translation type="unfinished">Open in internal browser (no new tab)</translation>
+      <translation>内部ブラウザで開く (新規タブなし)</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="877"/>
