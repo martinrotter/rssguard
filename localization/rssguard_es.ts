@@ -151,7 +151,7 @@ Error: %1</translation>
     <message>
       <location filename="../src/librssguard/miscellaneous/application.cpp" line="317"/>
       <source>Go to survey</source>
-      <translation>Ir a la encuesta</translation>
+      <translation>Ir a encuesta</translation>
     </message>
     <message>
       <location filename="../src/librssguard/miscellaneous/application.cpp" line="566"/>
@@ -222,12 +222,12 @@ versión pulsando en esta notificación emergente.</translation>
     <message>
       <location filename="../src/librssguard/miscellaneous/application.cpp" line="1085"/>
       <source>Already running</source>
-      <translation>Ya se está ejecutando</translation>
+      <translation>Ya está ejecutándose</translation>
     </message>
     <message>
       <location filename="../src/librssguard/miscellaneous/application.cpp" line="1254"/>
       <source>Packages %1 were NOT updated because of error: %2.</source>
-      <translation>Fue imposible actualizar %1 paquetes debido al error: %2.</translation>
+      <translation>Imposible actualizar %1 paquetes debido al error: %2.</translation>
     </message>
   </context>
   <context>
