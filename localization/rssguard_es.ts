@@ -283,12 +283,12 @@ versión pulsando en esta notificación emergente.</translation>
     <message>
       <location filename="../src/librssguard/services/abstract/gui/authenticationdetails.cpp" line="19"/>
       <source>HTTP Basic</source>
-      <translation type="unfinished">HTTP Basic</translation>
+      <translation>HTTP básico</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/abstract/gui/authenticationdetails.cpp" line="22"/>
       <source>Token</source>
-      <translation type="unfinished">Token</translation>
+      <translation>Identificador</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/abstract/gui/authenticationdetails.cpp" line="53"/>
@@ -2500,12 +2500,12 @@ Archivo de QtWebEngine memoria -&gt; &quot;%7&quot;</translation>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="945"/>
       <source>You must add new account first</source>
-      <translation type="unfinished">You must add new account first</translation>
+      <translation>Primero debe agregar una nueva cuenta</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="948"/>
       <source>You must add new account first.</source>
-      <translation type="unfinished">You must add new account first.</translation>
+      <translation>Primero debe agregar una nueva cuenta.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="750"/>
@@ -7070,10 +7070,10 @@ Además, hay algunos sonidos incorporados. Simplemente comience a escribir &quot
 Encoding: %1
 Type: %2
 Post-processing script: %3</source>
-      <translation type="unfinished">
-Encoding: %1
-Type: %2
-Post-processing script: %3</translation>
+      <translation>
+Codificación: %1
+Tipo: %2
+Código posprocesado: %3</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/standard/standardfeed.cpp" line="166"/>
