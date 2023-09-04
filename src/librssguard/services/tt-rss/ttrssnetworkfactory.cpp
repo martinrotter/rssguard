@@ -87,7 +87,9 @@ TtRssLoginResponse TtRssNetworkFactory::login(const QNetworkProxy& proxy) {
   QList<QPair<QByteArray, QByteArray>> headers;
 
   headers << QPair<QByteArray, QByteArray>(HTTP_HEADERS_CONTENT_TYPE, TTRSS_CONTENT_TYPE_JSON);
-  headers << NetworkFactory::generateBasicAuthHeader(NetworkFactory::NetworkAuthentication::Basic, m_authUsername, m_authPassword);
+  headers << NetworkFactory::generateBasicAuthHeader(NetworkFactory::NetworkAuthentication::Basic,
+                                                     m_authUsername,
+                                                     m_authPassword);
 
   NetworkResult network_reply =
     NetworkFactory::performNetworkOperation(m_fullUrl,
@@ -173,7 +175,9 @@ TtRssGetLabelsResponse TtRssNetworkFactory::getLabels(const QNetworkProxy& proxy
   QList<QPair<QByteArray, QByteArray>> headers;
 
   headers << QPair<QByteArray, QByteArray>(HTTP_HEADERS_CONTENT_TYPE, TTRSS_CONTENT_TYPE_JSON);
-  headers << NetworkFactory::generateBasicAuthHeader(NetworkFactory::NetworkAuthentication::Basic, m_authUsername, m_authPassword);
+  headers << NetworkFactory::generateBasicAuthHeader(NetworkFactory::NetworkAuthentication::Basic,
+                                                     m_authUsername,
+                                                     m_authPassword);
 
   NetworkResult network_reply =
     NetworkFactory::performNetworkOperation(m_fullUrl,
@@ -181,7 +185,11 @@ TtRssGetLabelsResponse TtRssNetworkFactory::getLabels(const QNetworkProxy& proxy
                                             QJsonDocument(json).toJson(QJsonDocument::JsonFormat::Compact),
                                             result_raw,
                                             QNetworkAccessManager::Operation::PostOperation,
-                                            headers);
+                                            headers,
+                                            false,
+                                            {},
+                                            {},
+                                            proxy);
   TtRssGetLabelsResponse result(QString::fromUtf8(result_raw));
 
   if (result.isNotLoggedIn()) {
@@ -224,7 +232,9 @@ TtRssResponse TtRssNetworkFactory::shareToPublished(const TtRssNoteToPublish& no
   QList<QPair<QByteArray, QByteArray>> headers;
 
   headers << QPair<QByteArray, QByteArray>(HTTP_HEADERS_CONTENT_TYPE, TTRSS_CONTENT_TYPE_JSON);
-  headers << NetworkFactory::generateBasicAuthHeader(NetworkFactory::NetworkAuthentication::Basic, m_authUsername, m_authPassword);
+  headers << NetworkFactory::generateBasicAuthHeader(NetworkFactory::NetworkAuthentication::Basic,
+                                                     m_authUsername,
+                                                     m_authPassword);
 
   NetworkResult network_reply =
     NetworkFactory::performNetworkOperation(m_fullUrl,
@@ -277,7 +287,9 @@ TtRssGetFeedsCategoriesResponse TtRssNetworkFactory::getFeedsCategories(const QN
   QList<QPair<QByteArray, QByteArray>> headers;
 
   headers << QPair<QByteArray, QByteArray>(HTTP_HEADERS_CONTENT_TYPE, TTRSS_CONTENT_TYPE_JSON);
-  headers << NetworkFactory::generateBasicAuthHeader(NetworkFactory::NetworkAuthentication::Basic, m_authUsername, m_authPassword);
+  headers << NetworkFactory::generateBasicAuthHeader(NetworkFactory::NetworkAuthentication::Basic,
+                                                     m_authUsername,
+                                                     m_authPassword);
 
   NetworkResult network_reply =
     NetworkFactory::performNetworkOperation(m_fullUrl,
@@ -337,7 +349,9 @@ TtRssGetCompactHeadlinesResponse TtRssNetworkFactory::getCompactHeadlines(int fe
   QList<QPair<QByteArray, QByteArray>> headers;
 
   headers << QPair<QByteArray, QByteArray>(HTTP_HEADERS_CONTENT_TYPE, TTRSS_CONTENT_TYPE_JSON);
-  headers << NetworkFactory::generateBasicAuthHeader(NetworkFactory::NetworkAuthentication::Basic, m_authUsername, m_authPassword);
+  headers << NetworkFactory::generateBasicAuthHeader(NetworkFactory::NetworkAuthentication::Basic,
+                                                     m_authUsername,
+                                                     m_authPassword);
 
   NetworkResult network_reply =
     NetworkFactory::performNetworkOperation(m_fullUrl,
@@ -399,7 +413,9 @@ TtRssGetHeadlinesResponse TtRssNetworkFactory::getArticle(const QStringList& art
   QList<QPair<QByteArray, QByteArray>> headers;
 
   headers << QPair<QByteArray, QByteArray>(HTTP_HEADERS_CONTENT_TYPE, TTRSS_CONTENT_TYPE_JSON);
-  headers << NetworkFactory::generateBasicAuthHeader(NetworkFactory::NetworkAuthentication::Basic, m_authUsername, m_authPassword);
+  headers << NetworkFactory::generateBasicAuthHeader(NetworkFactory::NetworkAuthentication::Basic,
+                                                     m_authUsername,
+                                                     m_authPassword);
 
   NetworkResult network_reply =
     NetworkFactory::performNetworkOperation(m_fullUrl,
@@ -466,7 +482,9 @@ TtRssGetHeadlinesResponse TtRssNetworkFactory::getHeadlines(int feed_id,
   QList<QPair<QByteArray, QByteArray>> headers;
 
   headers << QPair<QByteArray, QByteArray>(HTTP_HEADERS_CONTENT_TYPE, TTRSS_CONTENT_TYPE_JSON);
-  headers << NetworkFactory::generateBasicAuthHeader(NetworkFactory::NetworkAuthentication::Basic, m_authUsername, m_authPassword);
+  headers << NetworkFactory::generateBasicAuthHeader(NetworkFactory::NetworkAuthentication::Basic,
+                                                     m_authUsername,
+                                                     m_authPassword);
 
   NetworkResult network_reply =
     NetworkFactory::performNetworkOperation(m_fullUrl,
@@ -524,7 +542,9 @@ TtRssResponse TtRssNetworkFactory::setArticleLabel(const QStringList& article_id
   QList<QPair<QByteArray, QByteArray>> headers;
 
   headers << QPair<QByteArray, QByteArray>(HTTP_HEADERS_CONTENT_TYPE, TTRSS_CONTENT_TYPE_JSON);
-  headers << NetworkFactory::generateBasicAuthHeader(NetworkFactory::NetworkAuthentication::Basic, m_authUsername, m_authPassword);
+  headers << NetworkFactory::generateBasicAuthHeader(NetworkFactory::NetworkAuthentication::Basic,
+                                                     m_authUsername,
+                                                     m_authPassword);
 
   NetworkResult network_reply =
     NetworkFactory::performNetworkOperation(m_fullUrl,
@@ -583,7 +603,9 @@ TtRssUpdateArticleResponse TtRssNetworkFactory::updateArticles(const QStringList
   QList<QPair<QByteArray, QByteArray>> headers;
 
   headers << QPair<QByteArray, QByteArray>(HTTP_HEADERS_CONTENT_TYPE, TTRSS_CONTENT_TYPE_JSON);
-  headers << NetworkFactory::generateBasicAuthHeader(NetworkFactory::NetworkAuthentication::Basic, m_authUsername, m_authPassword);
+  headers << NetworkFactory::generateBasicAuthHeader(NetworkFactory::NetworkAuthentication::Basic,
+                                                     m_authUsername,
+                                                     m_authPassword);
 
   NetworkResult network_reply =
     NetworkFactory::performNetworkOperation(m_fullUrl,
@@ -647,7 +669,9 @@ TtRssSubscribeToFeedResponse TtRssNetworkFactory::subscribeToFeed(const QString&
   QList<QPair<QByteArray, QByteArray>> headers;
 
   headers << QPair<QByteArray, QByteArray>(HTTP_HEADERS_CONTENT_TYPE, TTRSS_CONTENT_TYPE_JSON);
-  headers << NetworkFactory::generateBasicAuthHeader(NetworkFactory::NetworkAuthentication::Basic, m_authUsername, m_authPassword);
+  headers << NetworkFactory::generateBasicAuthHeader(NetworkFactory::NetworkAuthentication::Basic,
+                                                     m_authUsername,
+                                                     m_authPassword);
 
   NetworkResult network_reply =
     NetworkFactory::performNetworkOperation(m_fullUrl,
@@ -699,7 +723,9 @@ TtRssUnsubscribeFeedResponse TtRssNetworkFactory::unsubscribeFeed(int feed_id, c
   QList<QPair<QByteArray, QByteArray>> headers;
 
   headers << QPair<QByteArray, QByteArray>(HTTP_HEADERS_CONTENT_TYPE, TTRSS_CONTENT_TYPE_JSON);
-  headers << NetworkFactory::generateBasicAuthHeader(NetworkFactory::NetworkAuthentication::Basic, m_authUsername, m_authPassword);
+  headers << NetworkFactory::generateBasicAuthHeader(NetworkFactory::NetworkAuthentication::Basic,
+                                                     m_authUsername,
+                                                     m_authPassword);
 
   NetworkResult network_reply =
     NetworkFactory::performNetworkOperation(m_fullUrl,

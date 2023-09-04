@@ -541,7 +541,7 @@ void FormMain::display() {
   activateWindow();
 
   // Raise alert event. Check the documentation for more info on this.
-  Application::alert(this);
+  QApplication::alert(this);
 }
 
 void FormMain::setupIcons() {

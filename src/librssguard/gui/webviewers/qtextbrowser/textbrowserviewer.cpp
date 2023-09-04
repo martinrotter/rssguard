@@ -485,6 +485,14 @@ void TextBrowserViewer::onAnchorClicked(const QUrl& url) {
 
       if (open_externally_now) {
         qApp->web()->openUrlInExternalBrowser(resolved_url.toString());
+
+        if (qApp->settings()
+              ->value(GROUP(Messages), SETTING(Messages::BringAppToFrontAfterMessageOpenedExternally))
+              .toBool()) {
+          QTimer::singleShot(1000, qApp, []() {
+            qApp->mainForm()->display();
+          });
+        }
       }
       else {
         setUrl(resolved_url);

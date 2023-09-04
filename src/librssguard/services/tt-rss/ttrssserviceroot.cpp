@@ -391,6 +391,7 @@ void TtRssServiceRoot::updateTitle() {
 RootItem* TtRssServiceRoot::obtainNewTreeForSyncIn() const {
   TtRssGetFeedsCategoriesResponse feed_cats = m_network->getFeedsCategories(networkProxy());
   TtRssGetLabelsResponse labels = m_network->getLabels(networkProxy());
+
   auto lst_error = m_network->lastError();
 
   if (lst_error == QNetworkReply::NoError) {
