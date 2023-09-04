@@ -28,7 +28,7 @@ QColor Search::color() const {
 }
 
 void Search::setColor(const QColor& color) {
-  setIcon(generateIcon(color));
+  setIcon(IconFactory::generateIcon(color));
   m_color = color;
 }
 
@@ -111,20 +111,6 @@ QList<Message> Search::undeletedMessages() const {
   QSqlDatabase database = qApp->database()->driver()->connection(metaObject()->className());
 
   return DatabaseQueries::getUndeletedMessagesForProbe(database, this);
-}
-
-QIcon Search::generateIcon(const QColor& color) {
-  QPixmap pxm(64, 64);
-
-  pxm.fill(Qt::GlobalColor::transparent);
-
-  QPainter paint(&pxm);
-
-  paint.setBrush(color);
-  paint.setPen(Qt::GlobalColor::transparent);
-  paint.drawEllipse(pxm.rect().marginsRemoved(QMargins(2, 2, 2, 2)));
-
-  return pxm;
 }
 
 QString Search::filter() const {

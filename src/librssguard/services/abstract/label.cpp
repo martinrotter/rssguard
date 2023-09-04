@@ -26,7 +26,7 @@ QColor Label::color() const {
 }
 
 void Label::setColor(const QColor& color) {
-  setIcon(generateIcon(color));
+  setIcon(IconFactory::generateIcon(color));
   m_color = color;
 }
 
@@ -91,20 +91,6 @@ QList<Message> Label::undeletedMessages() const {
   QSqlDatabase database = qApp->database()->driver()->connection(metaObject()->className());
 
   return DatabaseQueries::getUndeletedMessagesWithLabel(database, this);
-}
-
-QIcon Label::generateIcon(const QColor& color) {
-  QPixmap pxm(64, 64);
-
-  pxm.fill(Qt::GlobalColor::transparent);
-
-  QPainter paint(&pxm);
-
-  paint.setBrush(color);
-  paint.setPen(Qt::GlobalColor::transparent);
-  paint.drawEllipse(pxm.rect().marginsRemoved(QMargins(2, 2, 2, 2)));
-
-  return pxm;
 }
 
 void Label::assignToMessage(const Message& msg, bool reload_model) {

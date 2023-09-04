@@ -220,7 +220,7 @@ int RootItem::countOfUnreadMessages() const {
             it->kind() == RootItem::Kind::Unread || it->kind() == RootItem::Kind::Labels ||
             it->kind() == RootItem::Kind::Probes)
              ? 0
-             : it->countOfUnreadMessages();
+             : std::max(it->countOfUnreadMessages(), 0);
   });
 }
 
@@ -230,7 +230,7 @@ int RootItem::countOfAllMessages() const {
             it->kind() == RootItem::Kind::Unread || it->kind() == RootItem::Kind::Labels ||
             it->kind() == RootItem::Kind::Probes)
              ? 0
-             : it->countOfAllMessages();
+             : std::max(it->countOfAllMessages(), 0);
   });
 }
 

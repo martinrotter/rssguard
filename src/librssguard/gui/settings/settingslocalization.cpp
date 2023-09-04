@@ -33,6 +33,7 @@ SettingsLocalization::SettingsLocalization(Settings* settings, QWidget* parent)
   m_ui->m_treeLanguages->header()->setSectionResizeMode(1, QHeaderView::ResizeMode::ResizeToContents);
   m_ui->m_treeLanguages->header()->setSectionResizeMode(2, QHeaderView::ResizeMode::ResizeToContents);
   m_ui->m_treeLanguages->header()->setSectionResizeMode(3, QHeaderView::ResizeMode::ResizeToContents);
+
   connect(m_ui->m_treeLanguages, &QTreeWidget::currentItemChanged, this, &SettingsLocalization::requireRestart);
   connect(m_ui->m_treeLanguages, &QTreeWidget::currentItemChanged, this, &SettingsLocalization::dirtifySettings);
 }
@@ -89,17 +90,9 @@ void SettingsLocalization::loadSettings() {
     item->setText(3, language.m_author);
     item->setIcon(0, qApp->icons()->miscIcon(QSL(FLAG_ICON_SUBFOLDER) + QDir::separator() + language.m_code));
 
-    if (perc_translated < 40) {
-      item->setBackground(2,
-                          qApp->skins()->colorForModel(SkinEnums::PaletteColors::FgError).value<QColor>().darker(110));
-    }
-    else if (perc_translated < 75) {
-      item->setBackground(2,
-                          qApp->skins()->colorForModel(SkinEnums::PaletteColors::FgError).value<QColor>().darker(90));
-    }
-    else {
-      item->setBackground(2, qApp->skins()->colorForModel(SkinEnums::PaletteColors::Allright).value<QColor>());
-    }
+    QColor col_translated = QColor::fromHsv(perc_translated, 200, 230);
+
+    item->setIcon(2, IconFactory::generateIcon(col_translated));
   }
 
   m_ui->m_treeLanguages->sortByColumn(0, Qt::SortOrder::AscendingOrder);

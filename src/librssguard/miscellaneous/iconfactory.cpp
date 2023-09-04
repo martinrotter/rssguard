@@ -6,11 +6,26 @@
 #include "miscellaneous/settings.h"
 
 #include <QBuffer>
+#include <QPainter>
 
 IconFactory::IconFactory(QObject* parent) : QObject(parent) {}
 
 IconFactory::~IconFactory() {
   qDebugNN << LOGSEC_GUI << "Destroying IconFactory instance.";
+}
+
+QIcon IconFactory::generateIcon(const QColor& color) {
+  QPixmap pxm(64, 64);
+
+  pxm.fill(Qt::GlobalColor::transparent);
+
+  QPainter paint(&pxm);
+
+  paint.setBrush(color);
+  paint.setPen(Qt::GlobalColor::transparent);
+  paint.drawEllipse(pxm.rect().marginsRemoved(QMargins(2, 2, 2, 2)));
+
+  return pxm;
 }
 
 QIcon IconFactory::fromByteArray(QByteArray array) {
@@ -61,14 +76,11 @@ QIcon IconFactory::miscIcon(const QString& name) {
 void IconFactory::setupSearchPaths() {
   auto paths = QIcon::themeSearchPaths();
 
-  paths << APP_THEME_PATH
-        << qApp->userDataFolder() + QDir::separator() + APP_LOCAL_ICON_THEME_FOLDER
+  paths << APP_THEME_PATH << qApp->userDataFolder() + QDir::separator() + APP_LOCAL_ICON_THEME_FOLDER
         << qApp->applicationDirPath() + QDir::separator() + APP_LOCAL_ICON_THEME_FOLDER;
 
   QIcon::setThemeSearchPaths(paths);
-  qDebugNN << LOGSEC_GUI
-           << "Available icon theme paths: "
-           << paths;
+  qDebugNN << LOGSEC_GUI << "Available icon theme paths: " << paths;
 }
 
 void IconFactory::setCurrentIconTheme(const QString& theme_name) {
@@ -87,8 +99,9 @@ void IconFactory::loadCurrentIconTheme() {
   // Display list of installed themes.
   qDebugNN << LOGSEC_GUI << "Installed icon themes are: "
            << QStringList(installed_themes)
-    .replaceInStrings(QRegularExpression(QSL("^|$")), QSL("\'"))
-    .replaceInStrings(QRegularExpression(QSL("^\\'$")), QSL("\'\'")).join(QSL(", "));
+                .replaceInStrings(QRegularExpression(QSL("^|$")), QSL("\'"))
+                .replaceInStrings(QRegularExpression(QSL("^\\'$")), QSL("\'\'"))
+                .join(QSL(", "));
 
   if (installed_themes.contains(theme_name_from_settings)) {
     // Desired icon theme is installed and can be loaded.
@@ -109,12 +122,10 @@ void IconFactory::loadCurrentIconTheme() {
     // Desired icon theme is not currently available.
     // Activate "default" or "no" icon theme instead.
 #if defined(Q_OS_UNIX) && !defined(Q_OS_MACOS)
-    qWarningNN << "Icon theme"
-               << QUOTE_W_SPACE(theme_name_from_settings)
+    qWarningNN << "Icon theme" << QUOTE_W_SPACE(theme_name_from_settings)
                << "cannot be loaded because it is not installed. Activating \"no\" icon theme.";
 #else
-    qWarningNN << "Icon theme"
-               << QUOTE_W_SPACE(theme_name_from_settings)
+    qWarningNN << "Icon theme" << QUOTE_W_SPACE(theme_name_from_settings)
                << "cannot be loaded because it is not installed. Activating \"no\" icon theme.";
     QIcon::setThemeName(QSL(APP_NO_THEME));
 #endif
@@ -122,7 +133,7 @@ void IconFactory::loadCurrentIconTheme() {
 }
 
 QStringList IconFactory::installedIconThemes() const {
-  QStringList icon_theme_names = { QSL(APP_NO_THEME) };
+  QStringList icon_theme_names = {QSL(APP_NO_THEME)};
 
   // Iterate all directories with icon themes.
   QStringList icon_themes_paths = QIcon::themeSearchPaths();
@@ -133,10 +144,10 @@ QStringList IconFactory::installedIconThemes() const {
 
   for (const QString& icon_path : icon_themes_paths) {
     const QDir icon_dir(icon_path);
-    auto icon_paths = icon_dir.entryInfoList(QDir::Filter::Dirs | QDir::Filter::NoDotAndDotDot |
-                                             QDir::Filter::Readable | QDir::Filter::CaseSensitive |
-                                             QDir::Filter::NoSymLinks,
-                                             QDir::SortFlag::Time);
+    auto icon_paths =
+      icon_dir.entryInfoList(QDir::Filter::Dirs | QDir::Filter::NoDotAndDotDot | QDir::Filter::Readable |
+                               QDir::Filter::CaseSensitive | QDir::Filter::NoSymLinks,
+                             QDir::SortFlag::Time);
 
     // Iterate all icon themes in this directory.
     for (const QFileInfo& icon_theme_path : qAsConst(icon_paths)) {

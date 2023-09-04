@@ -746,6 +746,9 @@ bool ServiceRoot::loadMessagesForItem(RootItem* item, MessagesModel* model) {
                        .arg(QString::number(accountId())));
   }
   else if (item->kind() == RootItem::Kind::Probe) {
+    item->updateCounts(true);
+    itemChanged({item});
+
     model->setFilter(QSL("Messages.is_deleted = 0 AND Messages.is_pdeleted = 0 AND Messages.account_id = %1 AND "
                          "(Messages.title REGEXP '%2' OR Messages.contents REGEXP '%2')")
                        .arg(QString::number(accountId()), item->toProbe()->filter()));
@@ -766,7 +769,12 @@ bool ServiceRoot::loadMessagesForItem(RootItem* item, MessagesModel* model) {
     model->setFilter(QSL("Messages.is_deleted = 0 AND Messages.is_pdeleted = 0 AND Messages.account_id = %1")
                        .arg(QString::number(accountId())));
 
-    qDebugNN << "Displaying messages from account:" << QUOTE_W_SPACE_DOT(accountId());
+    qDebugNN << LOGSEC_CORE << "Displaying messages from account:" << QUOTE_W_SPACE_DOT(accountId());
+  }
+  else if (item->kind() == RootItem::Kind::Probes) {
+    model->setFilter(QSL(DEFAULT_SQL_MESSAGES_FILTER));
+
+    qWarningNN << LOGSEC_CORE << "Showing of all regex queries combined is not supported.";
   }
   else {
     QList<Feed*> children = item->getSubTreeFeeds();
@@ -782,7 +790,7 @@ bool ServiceRoot::loadMessagesForItem(RootItem* item, MessagesModel* model) {
 
     QString urls = textualFeedUrls(children).join(QSL(", "));
 
-    qDebugNN << "Displaying messages from feeds IDs:" << QUOTE_W_SPACE(filter_clause)
+    qDebugNN << LOGSEC_CORE << "Displaying messages from feeds IDs:" << QUOTE_W_SPACE(filter_clause)
              << "and URLs:" << QUOTE_W_SPACE_DOT(urls);
   }
 

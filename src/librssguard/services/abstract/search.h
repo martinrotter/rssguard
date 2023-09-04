@@ -38,9 +38,6 @@ class RSSGUARD_DLLSPEC Search : public RootItem {
     virtual void updateCounts(bool including_total_count);
     virtual QList<Message> undeletedMessages() const;
 
-  public:
-    static QIcon generateIcon(const QColor& color);
-
   private:
     QString m_filter;
     QColor m_color;

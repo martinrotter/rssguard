@@ -282,7 +282,7 @@ void MessagePreviewer::updateLabels(bool only_clear) {
     for (auto* label : lbls) {
       LabelToolbarAction* act_label = new LabelToolbarAction(this);
 
-      act_label->setIcon(Label::generateIcon(label->color()));
+      act_label->setIcon(IconFactory::generateIcon(label->color()));
       act_label->setText(QSL(" ") + label->title());
       act_label->setCheckable(true);
       act_label->setChecked(m_message.m_assignedLabelsIds.contains(label->customId()));

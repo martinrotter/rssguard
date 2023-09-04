@@ -30,7 +30,6 @@ QList<Message> SearchsNode::undeletedMessages() const {
   QSqlDatabase database = qApp->database()->driver()->connection(metaObject()->className());
 
   return {};
-  // return DatabaseQueries::getUndeletedLabelledMessages(database, getParentServiceRoot()->accountId());
 }
 
 Search* SearchsNode::probeById(const QString& custom_id) {
@@ -73,6 +72,12 @@ void SearchsNode::updateCounts(bool including_total_count) {
     RootItem::updateCounts(including_total_count);
   }
   else {
+    for (RootItem* child : qAsConst(childItems())) {
+      auto* sear = qobject_cast<Search*>(child);
+
+      sear->setCountOfAllMessages(-1);
+      sear->setCountOfUnreadMessages(-1);
+    }
   }
 }
 

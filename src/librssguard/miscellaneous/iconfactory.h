@@ -14,11 +14,14 @@
 #include <QString>
 
 class RSSGUARD_DLLSPEC IconFactory : public QObject {
-  Q_OBJECT
+    Q_OBJECT
 
   public:
     explicit IconFactory(QObject* parent = nullptr);
     virtual ~IconFactory();
+
+    // Generates round icon of given color.
+    static QIcon generateIcon(const QColor& color);
 
     // Used to store/retrieve QIcons from/to Base64-encoded
     // byte array.
