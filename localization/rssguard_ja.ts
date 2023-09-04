@@ -6177,17 +6177,17 @@ Disadvantages:
  • application startup and shutdown can take little longer (max. 2 seconds).
 
 Authors of this application are NOT responsible for lost data.</source>
-      <translation type="unfinished">Usage of in-memory working database has several advantages and pitfalls. Make sure that you are familiar with these before you turn this feature on.
+      <translation>インメモリ作業データベースの使用には、いくつかの利点と落とし穴があります。この機能をオンにする前に、これらについてよく理解しておいてください。
 
-Advantages:
- • higher speed for feed/message manipulations (especially with thousands of messages displayed),
- • whole database stored in RAM, thus your hard drive can rest more.
+メリット:
+ • フィード/メッセージ操作の高速化 (特に数千のメッセージが表示される場合)
+ • データベース全体が RAM に保存されるため、ハードドライブをより多く休ませることができます。
 
-Disadvantages:
- • if application crashes, your changes from last session are lost,
- • application startup and shutdown can take little longer (max. 2 seconds).
+デメリット:
+ • アプリケーションがクラッシュした場合、最後のセッションからの変更は失われます。
+ • アプリケーションの起動とシャットダウンに少し時間がかかります (最大 2 秒)。
 
-Authors of this application are NOT responsible for lost data.</translation>
+このアプリケーションの作成者は、失われたデータに対して責任を負いません。</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsdatabase.ui" line="17"/>
