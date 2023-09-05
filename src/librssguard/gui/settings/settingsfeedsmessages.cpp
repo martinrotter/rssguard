@@ -6,6 +6,7 @@
 #include "definitions/definitions.h"
 #include "gui/dialogs/formmain.h"
 #include "gui/feedmessageviewer.h"
+#include "gui/messagebox.h"
 #include "gui/reusable/timespinbox.h"
 #include "miscellaneous/application.h"
 #include "miscellaneous/feedreader.h"
@@ -343,9 +344,28 @@ void SettingsFeedsMessages::saveSettings() {
 
   settings()->setValue(GROUP(Feeds), Feeds::HideCountsIfNoUnread, m_ui->m_cbHideCountsIfNoUnread->isChecked());
   settings()->setValue(GROUP(Messages), Messages::UnreadIconType, m_ui->m_cmbUnreadIconType->currentData().toInt());
+
+  // Make registry hack to make "show app window after external viewer called" feature
+  // work more reliably on Windows 10+.
+#if defined(Q_OS_WIN)
+  if (!settings()->value(GROUP(Messages), SETTING(Messages::BringAppToFrontAfterMessageOpenedExternally)).toBool() &&
+      m_ui->m_checkBringToForegroundAfterMsgOpened->isChecked()) {
+    QSettings registry_key(QSL("HKEY_CURRENT_USER\\Control Panel\\Desktop"), QSettings::Format::NativeFormat);
+
+    registry_key.setValue(QSL("ForegroundFlashCount"), 3);
+    registry_key.setValue(QSL("ForegroundLockTimeout"), 0);
+
+    MsgBox::show(this,
+                 QMessageBox::Icon::Warning,
+                 tr("PC restart needed"),
+                 tr("Your PC needs to be restarted to make some of enabled features fully working."));
+  }
+#endif
+
   settings()->setValue(GROUP(Messages),
                        Messages::BringAppToFrontAfterMessageOpenedExternally,
                        m_ui->m_checkBringToForegroundAfterMsgOpened->isChecked());
+
   settings()->setValue(GROUP(Messages),
                        Messages::KeepCursorInCenter,
                        m_ui->m_checkKeppMessagesInTheMiddle->isChecked());
