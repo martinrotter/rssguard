@@ -306,6 +306,7 @@ void Application::loadDynamicShortcuts() {
 }
 
 void Application::offerPolls() const {
+  /*
   if (isFirstRunCurrentVersion()) {
     qApp->showGuiMessage(Notification::Event::GeneralEvent,
                          {tr("%1 survey").arg(QSL(APP_NAME)),
@@ -318,6 +319,7 @@ void Application::offerPolls() const {
                                                                       "Tvq8y7XQ/viewform?usp=sf_link"));
                           }});
   }
+  */
 }
 
 void Application::offerChanges() const {
