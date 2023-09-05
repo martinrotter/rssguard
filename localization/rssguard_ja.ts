@@ -981,7 +981,7 @@ Item ID: %5</translation>
     <message>
       <location filename="../src/librssguard/core/feedsmodel.cpp" line="515"/>
       <source>Do you really want to clean all articles from selected item?</source>
-      <translation type="unfinished">Do you really want to clean all articles from selected item?</translation>
+      <translation>選択したアイテムからすべての記事を削除しますか？</translation>
     </message>
     <message>
       <location filename="../src/librssguard/core/feedsmodel.cpp" line="30"/>
@@ -1815,7 +1815,7 @@ QtWebEngine cache folder -&gt; &quot;%7&quot;</translation>
     <message>
       <location filename="../src/librssguard/services/abstract/gui/formfeeddetails.ui" line="30"/>
       <source>Auto-downloading of articles</source>
-      <translation type="unfinished">Auto-downloading of articles</translation>
+      <translation>記事の自動ダウンロード</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/abstract/gui/formfeeddetails.ui" line="42"/>
@@ -2661,7 +2661,7 @@ QtWebEngine cache folder -&gt; &quot;%7&quot;</translation>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.cpp" line="211"/>
       <source>Do you really want to remove selected filter?</source>
-      <translation type="unfinished">Do you really want to remove selected filter?</translation>
+      <translation>選択したフィルターを本当に削除しますか？</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.ui" line="14"/>
@@ -2882,7 +2882,7 @@ QtWebEngine cache folder -&gt; &quot;%7&quot;</translation>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formsettings.cpp" line="142"/>
       <source>Do you really want to close this dialog without saving any settings?</source>
-      <translation type="unfinished">Do you really want to close this dialog without saving any settings?</translation>
+      <translation>設定を保存せずにこのダイアログを閉じますか？</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formsettings.cpp" line="102"/>
@@ -4622,7 +4622,7 @@ Login tokens expiration: %2</translation>
     <message>
       <location filename="../src/librssguard/gui/toolbars/messagestoolbar.cpp" line="256"/>
       <source>Highlight unread articles</source>
-      <translation>未読の記事をハイライト</translation>
+      <translation>未読記事をハイライト</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/toolbars/messagestoolbar.cpp" line="261"/>
@@ -4652,37 +4652,37 @@ Login tokens expiration: %2</translation>
     <message>
       <location filename="../src/librssguard/gui/toolbars/messagestoolbar.cpp" line="284"/>
       <source>Show today&apos;s articles</source>
-      <translation type="unfinished">Show today&apos;s articles</translation>
+      <translation>今日の記事を表示</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/toolbars/messagestoolbar.cpp" line="289"/>
       <source>Show yesterday&apos;s articles</source>
-      <translation type="unfinished">Show yesterday&apos;s articles</translation>
+      <translation>昨日の記事を表示</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/toolbars/messagestoolbar.cpp" line="294"/>
       <source>Show articles in last 24 hours</source>
-      <translation type="unfinished">Show articles in last 24 hours</translation>
+      <translation>過去 24 時間の記事を表示</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/toolbars/messagestoolbar.cpp" line="299"/>
       <source>Show articles in last 48 hours</source>
-      <translation type="unfinished">Show articles in last 48 hours</translation>
+      <translation>過去 48 時間の記事を表示</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/toolbars/messagestoolbar.cpp" line="304"/>
       <source>Show this week&apos;s articles</source>
-      <translation type="unfinished">Show this week&apos;s articles</translation>
+      <translation>今週の記事を表示</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/toolbars/messagestoolbar.cpp" line="309"/>
       <source>Show last week&apos;s articles</source>
-      <translation type="unfinished">Show last week&apos;s articles</translation>
+      <translation>先週の記事を表示</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/toolbars/messagestoolbar.cpp" line="314"/>
       <source>Show articles with attachments</source>
-      <translation type="unfinished">Show articles with attachments</translation>
+      <translation>添付ファイル付きの記事を表示</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/toolbars/messagestoolbar.cpp" line="319"/>
@@ -5420,7 +5420,7 @@ List of supported readers:</translation>
     <message>
       <location filename="../src/librssguard/services/standard/standardserviceentrypoint.cpp" line="16"/>
       <source>This service offers integration with standard online RSS/RDF/ATOM/JSON feeds and podcasts.</source>
-      <translation type="unfinished">This service offers integration with standard online RSS/RDF/ATOM/JSON feeds and podcasts.</translation>
+      <translation>このサービスは、標準的なオンラインRSS/RDF/ATOM/JSONフィードやポッドキャストとの統合を提供します。</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/reddit/redditentrypoint.cpp" line="35"/>
@@ -5542,7 +5542,7 @@ List of supported readers:</translation>
     <message>
       <location filename="../src/librssguard/services/abstract/recyclebin.cpp" line="105"/>
       <source>Do you really want to empty your recycle bin?</source>
-      <translation type="unfinished">Do you really want to empty your recycle bin?</translation>
+      <translation>本当にごみ箱を空にしますか?</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/abstract/recyclebin.cpp" line="17"/>
@@ -7409,7 +7409,7 @@ Also, you can post-process generated feed data with yet another script if you wi
     <message>
       <location filename="../src/librssguard/services/standard/standardserviceroot.cpp" line="55"/>
       <source>Do you want to load initial set of feeds?</source>
-      <translation type="unfinished">Do you want to load initial set of feeds?</translation>
+      <translation>フィードの初期セットを読み込みますか?</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/standard/standardserviceroot.cpp" line="83"/>
@@ -7434,7 +7434,7 @@ Also, you can post-process generated feed data with yet another script if you wi
     <message>
       <location filename="../src/librssguard/services/standard/standardserviceroot.cpp" line="54"/>
       <source>This new account does not include any feeds. You can now add default set of feeds.</source>
-      <translation type="unfinished">This new account does not include any feeds. You can now add default set of feeds.</translation>
+      <translation>この新しいアカウントにはフィードが含まれていません。デフォルトのフィードセットを追加することができます。</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/standard/standardserviceroot.cpp" line="39"/>
