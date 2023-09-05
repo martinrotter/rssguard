@@ -4,6 +4,7 @@
 
 #include "database/databasefactory.h"
 #include "database/databasequeries.h"
+#include "definitions/globals.h"
 #include "miscellaneous/application.h"
 #include "services/abstract/cacheforserviceroot.h"
 #include "services/abstract/gui/formaddeditlabel.h"
@@ -39,8 +40,7 @@ int Label::countOfAllMessages() const {
 }
 
 bool Label::canBeEdited() const {
-  return (getParentServiceRoot()->supportedLabelOperations() & ServiceRoot::LabelOperation::Editing) ==
-         ServiceRoot::LabelOperation::Editing;
+  return Globals::hasFlag(getParentServiceRoot()->supportedLabelOperations(), ServiceRoot::LabelOperation::Editing);
 }
 
 bool Label::editViaGui() {
@@ -57,8 +57,7 @@ bool Label::editViaGui() {
 }
 
 bool Label::canBeDeleted() const {
-  return (getParentServiceRoot()->supportedLabelOperations() & ServiceRoot::LabelOperation::Deleting) ==
-         ServiceRoot::LabelOperation::Deleting;
+  return Globals::hasFlag(getParentServiceRoot()->supportedLabelOperations(), ServiceRoot::LabelOperation::Deleting);
 }
 
 bool Label::deleteViaGui() {

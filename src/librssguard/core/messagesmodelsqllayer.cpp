@@ -4,6 +4,7 @@
 
 #include "database/databasequeries.h"
 #include "definitions/definitions.h"
+#include "definitions/globals.h"
 #include "miscellaneous/application.h"
 
 MessagesModelSqlLayer::MessagesModelSqlLayer()
@@ -44,8 +45,8 @@ MessagesModelSqlLayer::MessagesModelSqlLayer()
 
 void MessagesModelSqlLayer::addSortState(int column, Qt::SortOrder order, bool ignore_multicolumn_sorting) {
   int existing = m_sortColumns.indexOf(column);
-  bool is_ctrl_pressed = (QApplication::queryKeyboardModifiers() & Qt::KeyboardModifier::ControlModifier) ==
-                         Qt::KeyboardModifier::ControlModifier;
+  bool is_ctrl_pressed =
+    Globals::hasFlag(QApplication::queryKeyboardModifiers(), Qt::KeyboardModifier::ControlModifier);
 
   if (existing >= 0) {
     m_sortColumns.removeAt(existing);

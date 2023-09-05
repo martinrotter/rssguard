@@ -3,6 +3,7 @@
 #include "database/databasequeries.h"
 
 #include "3rd-party/boolinq/boolinq.h"
+#include "definitions/globals.h"
 #include "exceptions/applicationexception.h"
 #include "miscellaneous/application.h"
 #include "miscellaneous/iconfactory.h"
@@ -1710,9 +1711,8 @@ QPair<int, int> DatabaseQueries::updateMessages(const QSqlDatabase& db,
     }
   }
 
-  const bool uses_online_labels =
-    (feed->getParentServiceRoot()->supportedLabelOperations() & ServiceRoot::LabelOperation::Synchronised) ==
-    ServiceRoot::LabelOperation::Synchronised;
+  const bool uses_online_labels = Globals::hasFlag(feed->getParentServiceRoot()->supportedLabelOperations(),
+                                                   ServiceRoot::LabelOperation::Synchronised);
 
   for (Message& message : messages) {
     if (!message.m_customId.isEmpty() || message.m_id > 0) {

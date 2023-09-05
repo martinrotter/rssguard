@@ -2,6 +2,7 @@
 
 #include "gui/toolbars/toolbareditor.h"
 
+#include "definitions/globals.h"
 #include "gui/toolbars/basetoolbar.h"
 #include "miscellaneous/application.h"
 #include "miscellaneous/iconfactory.h"
@@ -144,14 +145,12 @@ bool ToolBarEditor::eventFilter(QObject* object, QEvent* event) {
         return true;
       }
       else if (key_event->key() == Qt::Key::Key_Down &&
-               (key_event->modifiers() & Qt::KeyboardModifier::ControlModifier) ==
-                 Qt::KeyboardModifier::ControlModifier) {
+               Globals::hasFlag(key_event->modifiers(), Qt::KeyboardModifier::ControlModifier)) {
         moveActionDown();
         return true;
       }
       else if (key_event->key() == Qt::Key::Key_Up &&
-               (key_event->modifiers() & Qt::KeyboardModifier::ControlModifier) ==
-                 Qt::KeyboardModifier::ControlModifier) {
+               Globals::hasFlag(key_event->modifiers(), Qt::KeyboardModifier::ControlModifier)) {
         moveActionUp();
         return true;
       }

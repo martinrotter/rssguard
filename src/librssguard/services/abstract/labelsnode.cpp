@@ -4,6 +4,7 @@
 
 #include "database/databasefactory.h"
 #include "database/databasequeries.h"
+#include "definitions/globals.h"
 #include "exceptions/applicationexception.h"
 #include "miscellaneous/application.h"
 #include "miscellaneous/iconfactory.h"
@@ -92,8 +93,7 @@ QList<QAction*> LabelsNode::contextMenuFeedsList() {
 }
 
 void LabelsNode::createLabel() {
-  if ((getParentServiceRoot()->supportedLabelOperations() & ServiceRoot::LabelOperation::Adding) ==
-      ServiceRoot::LabelOperation::Adding) {
+  if (Globals::hasFlag(getParentServiceRoot()->supportedLabelOperations(), ServiceRoot::LabelOperation::Adding)) {
     FormAddEditLabel frm(qApp->mainFormWidget());
     Label* new_lbl = frm.execForAdd();
 

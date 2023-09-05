@@ -562,7 +562,7 @@ QVariant Skin::colorForModel(SkinEnums::PaletteColors type, bool use_skin_colors
     }
   }
 
-  return (use_skin_colors & m_colorPalette.contains(type)) ? m_colorPalette[type] : QVariant();
+  return (use_skin_colors && m_colorPalette.contains(type)) ? m_colorPalette[type] : QVariant();
 }
 
 QPalette Skin::extractPalette() const {

@@ -6,6 +6,7 @@
 #include "database/databasefactory.h"
 #include "database/databasequeries.h"
 #include "definitions/definitions.h"
+#include "definitions/globals.h"
 #include "services/abstract/labelsnode.h"
 
 #include <QRandomGenerator>
@@ -41,27 +42,27 @@ bool MessageObject::isDuplicateWithAttribute(MessageObject::DuplicateCheck attri
   QVector<QPair<QString, QVariant>> bind_values;
 
   // Now we construct the query according to parameter.
-  if ((attribute_check & DuplicateCheck::SameTitle) == DuplicateCheck::SameTitle) {
+  if (Globals::hasFlag(attribute_check, DuplicateCheck::SameTitle)) {
     where_clauses.append(QSL("title = :title"));
     bind_values.append({QSL(":title"), title()});
   }
 
-  if ((attribute_check & DuplicateCheck::SameUrl) == DuplicateCheck::SameUrl) {
+  if (Globals::hasFlag(attribute_check, DuplicateCheck::SameUrl)) {
     where_clauses.append(QSL("url = :url"));
     bind_values.append({QSL(":url"), url()});
   }
 
-  if ((attribute_check & DuplicateCheck::SameAuthor) == DuplicateCheck::SameAuthor) {
+  if (Globals::hasFlag(attribute_check, DuplicateCheck::SameAuthor)) {
     where_clauses.append(QSL("author = :author"));
     bind_values.append({QSL(":author"), author()});
   }
 
-  if ((attribute_check & DuplicateCheck::SameDateCreated) == DuplicateCheck::SameDateCreated) {
+  if (Globals::hasFlag(attribute_check, DuplicateCheck::SameDateCreated)) {
     where_clauses.append(QSL("date_created = :date_created"));
     bind_values.append({QSL(":date_created"), created().toMSecsSinceEpoch()});
   }
 
-  if ((attribute_check & DuplicateCheck::SameCustomId) == DuplicateCheck::SameCustomId) {
+  if (Globals::hasFlag(attribute_check, DuplicateCheck::SameCustomId)) {
     where_clauses.append(QSL("custom_id = :custom_id"));
     bind_values.append({QSL(":custom_id"), customId()});
   }
@@ -76,7 +77,7 @@ bool MessageObject::isDuplicateWithAttribute(MessageObject::DuplicateCheck attri
     bind_values.append({QSL(":id"), QString::number(m_message->m_id)});
   }
 
-  if ((attribute_check & DuplicateCheck::AllFeedsSameAccount) != DuplicateCheck::AllFeedsSameAccount) {
+  if (!Globals::hasFlag(attribute_check, DuplicateCheck::AllFeedsSameAccount)) {
     // Limit to current feed.
     where_clauses.append(QSL("feed = :feed"));
     bind_values.append({QSL(":feed"), feedCustomId()});
@@ -177,8 +178,7 @@ QString MessageObject::createLabelId(const QString& title, const QString& hex_co
     return lbl_id;
   }
 
-  if ((m_account->supportedLabelOperations() & ServiceRoot::LabelOperation::Adding) !=
-      ServiceRoot::LabelOperation::Adding) {
+  if (!Globals::hasFlag(m_account->supportedLabelOperations(), ServiceRoot::LabelOperation::Adding)) {
     qWarningNN << LOGSEC_CORE << "This account does not support creating labels.";
     return nullptr;
   }

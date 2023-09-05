@@ -56,7 +56,7 @@ class MessagesProxyModel : public QSortFilterProxyModel {
     QModelIndex getNextImportantItemIndex(int default_row, int max_row) const;
     QModelIndex getNextUnreadItemIndex(int default_row, int max_row) const;
 
-    bool filterAcceptsMessage(const Message& msg) const;
+    bool filterAcceptsMessage(int msg_row_index) const;
 
     virtual bool lessThan(const QModelIndex& left, const QModelIndex& right) const;
     virtual bool filterAcceptsRow(int source_row, const QModelIndex& source_parent) const;
@@ -64,7 +64,7 @@ class MessagesProxyModel : public QSortFilterProxyModel {
     // Source model pointer.
     MessagesModel* m_sourceModel;
     MessageListFilter m_filter;
-    QMap<MessageListFilter, std::function<bool(const Message&)>> m_filters;
+    QMap<MessageListFilter, std::function<bool(int)>> m_filters;
     QList<MessageListFilter> m_filterKeys;
 };
 

@@ -3,6 +3,7 @@
 #include "gui/webviewers/qtextbrowser/textbrowserviewer.h"
 
 #include "3rd-party/boolinq/boolinq.h"
+#include "definitions/globals.h"
 #include "gui/dialogs/formmain.h"
 #include "gui/webbrowser.h"
 #include "miscellaneous/application.h"
@@ -472,8 +473,8 @@ void TextBrowserViewer::downloadLink() {
 void TextBrowserViewer::onAnchorClicked(const QUrl& url) {
   if (!url.isEmpty()) {
     const QUrl resolved_url = (m_currentUrl.isValid() && url.isRelative()) ? m_currentUrl.resolved(url) : url;
-    const bool ctrl_pressed = (QGuiApplication::keyboardModifiers() & Qt::KeyboardModifier::ControlModifier) ==
-                              Qt::KeyboardModifier::ControlModifier;
+    const bool ctrl_pressed =
+      Globals::hasFlag(QGuiApplication::keyboardModifiers(), Qt::KeyboardModifier::ControlModifier);
 
     if (ctrl_pressed) {
       // Open in new tab.

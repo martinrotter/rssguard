@@ -2,6 +2,7 @@
 
 #include "gui/webbrowser.h"
 
+#include "definitions/globals.h"
 #include "gui/dialogs/formmain.h"
 #include "gui/messagebox.h"
 #include "gui/reusable/discoverfeedsbutton.h"
@@ -173,7 +174,7 @@ bool WebBrowser::eventFilter(QObject* watched, QEvent* event) {
     QWheelEvent* wh_event = static_cast<QWheelEvent*>(event);
 
     // Zoom with mouse.
-    if ((wh_event->modifiers() & Qt::KeyboardModifier::ControlModifier) > 0) {
+    if (Globals::hasFlag(wh_event->modifiers(), Qt::KeyboardModifier::ControlModifier)) {
       if (wh_event->angleDelta().y() > 0 && m_webView->canZoomIn()) {
         m_webView->zoomIn();
         onZoomFactorChanged();

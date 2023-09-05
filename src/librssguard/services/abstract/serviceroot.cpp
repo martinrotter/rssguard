@@ -5,6 +5,7 @@
 #include "3rd-party/boolinq/boolinq.h"
 #include "core/messagesmodel.h"
 #include "database/databasequeries.h"
+#include "definitions/globals.h"
 #include "exceptions/applicationexception.h"
 #include "miscellaneous/application.h"
 #include "miscellaneous/iconfactory.h"
@@ -495,8 +496,7 @@ void ServiceRoot::syncIn() {
     auto categories_custom_data = storeCustomCategoriesData();
 
     // Remove from feeds model, then from SQL but leave messages intact.
-    bool uses_remote_labels =
-      (supportedLabelOperations() & LabelOperation::Synchronised) == LabelOperation::Synchronised;
+    bool uses_remote_labels = Globals::hasFlag(supportedLabelOperations(), LabelOperation::Synchronised);
 
     // Remove stuff.
     cleanAllItemsFromModel(uses_remote_labels);

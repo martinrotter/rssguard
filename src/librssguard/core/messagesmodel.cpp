@@ -579,8 +579,8 @@ QVariant MessagesModel::data(const QModelIndex& idx, int role) const {
         return dta.toInt() == 1 ? m_favoriteIcon : QVariant();
       }
       else if (index_column == MSG_DB_HAS_ENCLOSURES) {
-        QModelIndex idx_important = index(idx.row(), MSG_DB_HAS_ENCLOSURES);
-        QVariant dta = QSqlQueryModel::data(idx_important);
+        QModelIndex idx_enc = index(idx.row(), MSG_DB_HAS_ENCLOSURES);
+        QVariant dta = QSqlQueryModel::data(idx_enc);
 
         return dta.toBool() ? m_enclosuresIcon : QVariant();
       }

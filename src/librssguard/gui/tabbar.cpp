@@ -3,6 +3,7 @@
 #include "gui/tabbar.h"
 
 #include "definitions/definitions.h"
+#include "definitions/globals.h"
 #include "gui/reusable/plaintoolbutton.h"
 #include "miscellaneous/settings.h"
 
@@ -91,7 +92,7 @@ void TabBar::mousePressEvent(QMouseEvent* event) {
     // Check if user clicked tab with middle button.
     // NOTE: This needs to be done here because
     // destination does not know the original event.
-    if ((event->button() & Qt::MiddleButton) == Qt::MiddleButton &&
+    if (Globals::hasFlag(event->button(), Qt::MouseButton::MiddleButton) &&
         qApp->settings()->value(GROUP(GUI), SETTING(GUI::TabCloseMiddleClick)).toBool()) {
       if (tabType(tab_index) == TabBar::TabType::Closable || tabType(tab_index) == TabBar::TabType::DownloadManager) {
         // This tab is closable, so we can close it.
@@ -110,7 +111,7 @@ void TabBar::mouseDoubleClickEvent(QMouseEvent* event) {
     // Check if user clicked tab with middle button.
     // NOTE: This needs to be done here because
     // destination does not know the original event.
-    if ((event->button() & Qt::LeftButton) == Qt::LeftButton &&
+    if (Globals::hasFlag(event->button(), Qt::MouseButton::LeftButton) &&
         qApp->settings()->value(GROUP(GUI), SETTING(GUI::TabCloseDoubleClick)).toBool()) {
       if (int(tabType(tab_index) & (TabBar::TabType::Closable | TabBar::TabType::DownloadManager)) > 0) {
         // This tab is closable, so we can close it.

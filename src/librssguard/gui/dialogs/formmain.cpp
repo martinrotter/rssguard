@@ -3,6 +3,7 @@
 #include "gui/dialogs/formmain.h"
 
 #include "definitions/definitions.h"
+#include "definitions/globals.h"
 #include "gui/dialogs/formabout.h"
 #include "gui/dialogs/formaddaccount.h"
 #include "gui/dialogs/formbackupdatabasesettings.h"
@@ -1042,8 +1043,8 @@ void FormMain::restoreDatabaseSettings() {
 void FormMain::changeEvent(QEvent* event) {
   switch (event->type()) {
     case QEvent::Type::WindowStateChange: {
-      if ((windowState() & Qt::WindowState::WindowMinimized) == Qt::WindowState::WindowMinimized &&
-          SystemTrayIcon::isSystemTrayDesired() && SystemTrayIcon::isSystemTrayAreaAvailable() &&
+      if (Globals::hasFlag(windowState(), Qt::WindowState::WindowMinimized) && SystemTrayIcon::isSystemTrayDesired() &&
+          SystemTrayIcon::isSystemTrayAreaAvailable() &&
           qApp->settings()->value(GROUP(GUI), SETTING(GUI::HideMainWindowWhenMinimized)).toBool()) {
         event->ignore();
 
