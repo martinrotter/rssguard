@@ -746,7 +746,7 @@ Item ID: %5</translation>
     <message>
       <location filename="../src/librssguard/gui/feedmessageviewer.cpp" line="32"/>
       <source>Toolbar for articles</source>
-      <translation type="unfinished">Toolbar for articles</translation>
+      <translation>記事のツールバー</translation>
     </message>
   </context>
   <context>
@@ -1328,7 +1328,7 @@ QtWebEngine cache folder -&gt; &quot;%7&quot;</translation>
     <message>
       <location filename="../src/librssguard/services/abstract/gui/formaddeditlabel.cpp" line="27"/>
       <source>Create new label</source>
-      <translation type="unfinished">Create new label</translation>
+      <translation>新しいラベルを作成</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/abstract/gui/formaddeditlabel.cpp" line="46"/>
@@ -1346,17 +1346,17 @@ QtWebEngine cache folder -&gt; &quot;%7&quot;</translation>
     <message>
       <location filename="../src/librssguard/services/abstract/gui/formaddeditprobe.cpp" line="13"/>
       <source>Regular expression</source>
-      <translation type="unfinished">Regular expression</translation>
+      <translation>正規表現</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/abstract/gui/formaddeditprobe.cpp" line="16"/>
       <source>What is regular expression?</source>
-      <translation type="unfinished">What is regular expression?</translation>
+      <translation>正規表現とは?</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/abstract/gui/formaddeditprobe.cpp" line="17"/>
       <source>A regular expression (shortened as regex or regexp) is a sequence of characters that specifies a match pattern in text. See more &lt;a href=&quot;https://learn.microsoft.com/en-us/dotnet/standard/base-types/regular-expression-language-quick-reference&quot;&gt;info&lt;/a&gt;.</source>
-      <translation type="unfinished">A regular expression (shortened as regex or regexp) is a sequence of characters that specifies a match pattern in text. See more &lt;a href=&quot;https://learn.microsoft.com/en-us/dotnet/standard/base-types/regular-expression-language-quick-reference&quot;&gt;info&lt;/a&gt;.</translation>
+      <translation>正規表現(regexまたはregexpと略されます)とは、テキスト中の一致パターンを指定する文字の並びのことです。 &lt;a href=&quot;https://learn.microsoft.com/en-us/dotnet/standard/base-types/regular-expression-language-quick-reference&quot;&gt;詳細情報&lt;/a&gt; を参照してください。</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/abstract/gui/formaddeditprobe.cpp" line="25"/>
@@ -1372,12 +1372,12 @@ QtWebEngine cache folder -&gt; &quot;%7&quot;</translation>
     <message>
       <location filename="../src/librssguard/services/abstract/gui/formaddeditprobe.cpp" line="34"/>
       <source>Regular expression cannot be empty.</source>
-      <translation type="unfinished">Regular expression cannot be empty.</translation>
+      <translation>正規表現は空にできません</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/abstract/gui/formaddeditprobe.cpp" line="49"/>
       <source>Create new regex query</source>
-      <translation type="unfinished">Create new regex query</translation>
+      <translation>新しい正規表現クエリを作成</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/abstract/gui/formaddeditprobe.cpp" line="70"/>
@@ -1387,7 +1387,7 @@ QtWebEngine cache folder -&gt; &quot;%7&quot;</translation>
     <message>
       <location filename="../src/librssguard/services/abstract/gui/formaddeditprobe.cpp" line="37"/>
       <source>Regular expression is not well-formed.</source>
-      <translation type="unfinished">Regular expression is not well-formed.</translation>
+      <translation>正規表現が適切ではありません</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/abstract/gui/formaddeditprobe.cpp" line="52"/>
@@ -2051,7 +2051,7 @@ QtWebEngine cache folder -&gt; &quot;%7&quot;</translation>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="341"/>
       <source>Switch importance of selected articles</source>
-      <translation type="unfinished">Switch importance of selected articles</translation>
+      <translation>選択した記事の重要を切り替える</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="349"/>
@@ -2141,7 +2141,7 @@ QtWebEngine cache folder -&gt; &quot;%7&quot;</translation>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="451"/>
       <source>Switch main window visibility</source>
-      <translation type="unfinished">Switch main window visibility</translation>
+      <translation>メインウィンドウの表示を切り替える</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="454"/>
@@ -2226,7 +2226,7 @@ QtWebEngine cache folder -&gt; &quot;%7&quot;</translation>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="578"/>
       <source>&amp;List headers</source>
-      <translation type="unfinished">&amp;List headers</translation>
+      <translation>ヘッダーリスト</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="586"/>
@@ -2337,7 +2337,7 @@ QtWebEngine cache folder -&gt; &quot;%7&quot;</translation>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="760"/>
       <source>Stop ongoing fetching</source>
-      <translation type="unfinished">Stop ongoing fetching</translation>
+      <translation>進行中の取得を停止する</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="768"/>
@@ -2377,7 +2377,7 @@ QtWebEngine cache folder -&gt; &quot;%7&quot;</translation>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="809"/>
       <source>Article &amp;filters</source>
-      <translation type="unfinished">Article &amp;filters</translation>
+      <translation>記事フィルター</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="817"/>
@@ -2397,17 +2397,17 @@ QtWebEngine cache folder -&gt; &quot;%7&quot;</translation>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="838"/>
       <source>Automatically &amp;expand item when selected</source>
-      <translation type="unfinished">Automatically &amp;expand item when selected</translation>
+      <translation>アイテムを選択すると自動的に展開する</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="849"/>
       <source>Message viewer toolbars</source>
-      <translation type="unfinished">Message viewer toolbars</translation>
+      <translation>メッセージビューアのツールバー</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="854"/>
       <source>Expand/collapse selected item &amp;recursively</source>
-      <translation type="unfinished">Expand/collapse selected item &amp;recursively</translation>
+      <translation>選択したアイテムを再帰的に展開/折りたたむ</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="859"/>
@@ -2457,12 +2457,12 @@ QtWebEngine cache folder -&gt; &quot;%7&quot;</translation>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="907"/>
       <source>Focus feeds search box</source>
-      <translation type="unfinished">Focus feeds search box</translation>
+      <translation>フィード検索ボックスへ</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="912"/>
       <source>Focus articles search box</source>
-      <translation type="unfinished">Focus articles search box</translation>
+      <translation>記事検索ボックスへ</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="917"/>
@@ -2666,7 +2666,7 @@ QtWebEngine cache folder -&gt; &quot;%7&quot;</translation>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.ui" line="14"/>
       <source>Article filters</source>
-      <translation type="unfinished">Article filters</translation>
+      <translation>記事フィルター</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.ui" line="35"/>
@@ -2691,7 +2691,7 @@ QtWebEngine cache folder -&gt; &quot;%7&quot;</translation>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.ui" line="115"/>
       <source>Article filter details</source>
-      <translation type="unfinished">Article filter details</translation>
+      <translation>記事フィルターの詳細</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.ui" line="121"/>
@@ -2742,12 +2742,12 @@ QtWebEngine cache folder -&gt; &quot;%7&quot;</translation>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.ui" line="263"/>
       <source>Existing articles</source>
-      <translation type="unfinished">Existing articles</translation>
+      <translation>既存の記事</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.ui" line="295"/>
       <source>Sample article</source>
-      <translation type="unfinished">Sample article</translation>
+      <translation>サンプル記事</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.ui" line="326"/>
@@ -2923,7 +2923,7 @@ You have to restart manually.</translation>
       <location filename="../src/librssguard/services/standard/gui/formstandardimportexport.cpp" line="33"/>
       <location filename="../src/librssguard/services/standard/gui/formstandardimportexport.cpp" line="34"/>
       <source>No file is selected.</source>
-      <translation type="unfinished">No file is selected.</translation>
+      <translation>ファイルが選択されていません</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/standard/gui/formstandardimportexport.cpp" line="37"/>
@@ -2934,12 +2934,12 @@ You have to restart manually.</translation>
     <message>
       <location filename="../src/librssguard/services/standard/gui/formstandardimportexport.cpp" line="69"/>
       <source>Destination file</source>
-      <translation type="unfinished">Destination file</translation>
+      <translation>保存先ファイル</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/standard/gui/formstandardimportexport.cpp" line="70"/>
       <source>Source feeds &amp;&amp; categories</source>
-      <translation type="unfinished">Source feeds &amp;&amp; categories</translation>
+      <translation>ソースフィードとカテゴリー</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/standard/gui/formstandardimportexport.cpp" line="72"/>
@@ -2949,12 +2949,12 @@ You have to restart manually.</translation>
     <message>
       <location filename="../src/librssguard/services/standard/gui/formstandardimportexport.cpp" line="80"/>
       <source>Source file</source>
-      <translation type="unfinished">Source file</translation>
+      <translation>ソースファイル</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/standard/gui/formstandardimportexport.cpp" line="81"/>
       <source>Target feeds &amp;&amp; categories</source>
-      <translation type="unfinished">Target feeds &amp;&amp; categories</translation>
+      <translation>ターゲットフィードとカテゴリー</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/standard/gui/formstandardimportexport.cpp" line="88"/>
@@ -3075,12 +3075,12 @@ You have to restart manually.</translation>
     <message>
       <location filename="../src/librssguard/services/standard/gui/formstandardimportexport.ui" line="64"/>
       <source>Do not fetch titles</source>
-      <translation type="unfinished">Do not fetch titles</translation>
+      <translation>タイトルを取得しない</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/standard/gui/formstandardimportexport.ui" line="71"/>
       <source>Do not fetch icons</source>
-      <translation type="unfinished">Do not fetch icons</translation>
+      <translation>アイコンを取得しない</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/standard/gui/formstandardimportexport.ui" line="78"/>
@@ -3100,7 +3100,7 @@ You have to restart manually.</translation>
     <message>
       <location filename="../src/librssguard/services/standard/gui/formstandardimportexport.ui" line="137"/>
       <source>Export icons</source>
-      <translation type="unfinished">Export icons</translation>
+      <translation>アイコンをエクスポートする</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/standard/gui/formstandardimportexport.ui" line="209"/>
@@ -3115,7 +3115,7 @@ You have to restart manually.</translation>
     <message>
       <location filename="../src/librssguard/services/standard/gui/formstandardimportexport.ui" line="226"/>
       <source>Operation result</source>
-      <translation type="unfinished">Operation result</translation>
+      <translation>実行結果</translation>
     </message>
   </context>
   <context>
@@ -3853,12 +3853,12 @@ Login tokens expiration: %2</translation>
     <message>
       <location filename="../src/librssguard/services/abstract/importantnode.cpp" line="15"/>
       <source>Important articles</source>
-      <translation type="unfinished">Important articles</translation>
+      <translation>重要な記事</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/abstract/importantnode.cpp" line="16"/>
       <source>You can find all important articles here.</source>
-      <translation type="unfinished">You can find all important articles here.</translation>
+      <translation>重要な記事はすべてここで見ることができます</translation>
     </message>
   </context>
   <context>
@@ -3892,12 +3892,12 @@ Login tokens expiration: %2</translation>
     <message>
       <location filename="../src/librssguard/services/abstract/labelsnode.cpp" line="20"/>
       <source>You can see all your labels (tags) here.</source>
-      <translation type="unfinished">You can see all your labels (tags) here.</translation>
+      <translation>ここですべてのラベル (タグ) を確認できます</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/abstract/labelsnode.cpp" line="86"/>
       <source>New label</source>
-      <translation type="unfinished">New label</translation>
+      <translation>新しいラベル</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/abstract/labelsnode.cpp" line="116"/>
@@ -4235,7 +4235,7 @@ Login tokens expiration: %2</translation>
     <message>
       <location filename="../src/librssguard/gui/messagepreviewer.cpp" line="37"/>
       <source>Switch article importance</source>
-      <translation type="unfinished">Switch article importance</translation>
+      <translation>記事の重要を切り替える</translation>
     </message>
   </context>
   <context>
@@ -4424,12 +4424,12 @@ Login tokens expiration: %2</translation>
     <message>
       <location filename="../src/librssguard/core/messagesmodel.cpp" line="299"/>
       <source>Assigned labels</source>
-      <translation>Labels</translation>
+      <translation>ラベル</translation>
     </message>
     <message>
       <location filename="../src/librssguard/core/messagesmodel.cpp" line="300"/>
       <source>Assigned label IDs</source>
-      <translation>Labels ID</translation>
+      <translation>ラベルID</translation>
     </message>
     <message>
       <location filename="../src/librssguard/core/messagesmodel.cpp" line="302"/>
@@ -4642,7 +4642,7 @@ Login tokens expiration: %2</translation>
     <message>
       <location filename="../src/librssguard/gui/toolbars/messagestoolbar.cpp" line="274"/>
       <source>Show unread articles</source>
-      <translation>未読の記事のみを表示</translation>
+      <translation>未読記事のみを表示</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/toolbars/messagestoolbar.cpp" line="279"/>
@@ -4904,7 +4904,7 @@ Login tokens expiration: %2</translation>
     <message>
       <location filename="../src/librssguard/gui/reusable/networkproxydetails.cpp" line="12"/>
       <source>Note that these settings are applied only on newly established connections.</source>
-      <translation type="unfinished">Note that these settings are applied only on newly established connections.</translation>
+      <translation>これらの設定は、新しく確立された接続にのみ適用されることに注意してください。</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/reusable/networkproxydetails.ui" line="146"/>
@@ -5361,12 +5361,12 @@ Feedly is a secure space where you can privately organize and research the topic
     <message>
       <location filename="../src/librssguard/miscellaneous/notification.cpp" line="142"/>
       <source>New %1 version is available</source>
-      <translation type="unfinished">New %1 version is available</translation>
+      <translation>新しい%1バージョンが利用可能</translation>
     </message>
     <message>
       <location filename="../src/librssguard/miscellaneous/notification.cpp" line="145"/>
       <source>Miscellaneous events</source>
-      <translation type="unfinished">Miscellaneous events</translation>
+      <translation>その他のイベント</translation>
     </message>
     <message>
       <location filename="../src/librssguard/miscellaneous/notification.cpp" line="148"/>
@@ -5780,7 +5780,7 @@ Login tokens expiration: %2</translation>
     <message>
       <location filename="../src/librssguard/services/abstract/search.cpp" line="164"/>
       <source>Regular expression: %1</source>
-      <translation type="unfinished">Regular expression: %1</translation>
+      <translation>正規表現: %1</translation>
     </message>
   </context>
   <context>
@@ -5803,7 +5803,7 @@ Login tokens expiration: %2</translation>
     <message>
       <location filename="../src/librssguard/gui/reusable/searchlineedit.cpp" line="107"/>
       <source>Regular expression</source>
-      <translation type="unfinished">Regular expression</translation>
+      <translation>正規表現</translation>
     </message>
   </context>
   <context>
@@ -5829,17 +5829,17 @@ Login tokens expiration: %2</translation>
     <message>
       <location filename="../src/librssguard/services/abstract/searchsnode.cpp" line="19"/>
       <source>Regex queries</source>
-      <translation type="unfinished">Regex queries</translation>
+      <translation>正規表現クエリ</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/abstract/searchsnode.cpp" line="20"/>
       <source>You can see all your permanent regex queries here.</source>
-      <translation type="unfinished">You can see all your permanent regex queries here.</translation>
+      <translation>永久的な正規表現クエリはすべてここで見ることができます</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/abstract/searchsnode.cpp" line="56"/>
       <source>New regex query</source>
-      <translation type="unfinished">New regex query</translation>
+      <translation>新しい正規表現クエリ</translation>
     </message>
   </context>
   <context>
@@ -6618,7 +6618,7 @@ Description: %3</translation>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsgui.cpp" line="101"/>
       <source> = default icon size</source>
-      <translation type="unfinished"> = default icon size</translation>
+      <translation> = デフォルトのアイコンサイズ</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsgui.ui" line="27"/>
@@ -6633,12 +6633,12 @@ Description: %3</translation>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsgui.ui" line="46"/>
       <source>Style</source>
-      <translation type="unfinished">Style</translation>
+      <translation>スタイル</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsgui.ui" line="59"/>
       <source>Skin</source>
-      <translation type="unfinished">Skin</translation>
+      <translation>スキン</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsgui.ui" line="112"/>
@@ -6658,7 +6658,7 @@ Description: %3</translation>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsgui.ui" line="141"/>
       <source>Tray area</source>
-      <translation type="unfinished">Tray area</translation>
+      <translation>システムトレイ</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsgui.ui" line="153"/>
@@ -6689,7 +6689,7 @@ Description: %3</translation>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsgui.ui" line="210"/>
       <source>Task bar</source>
-      <translation type="unfinished">Task bar</translation>
+      <translation>タスクバー</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsgui.ui" line="224"/>
@@ -6699,7 +6699,7 @@ Description: %3</translation>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsgui.ui" line="236"/>
       <source>Close tabs with</source>
-      <translation>以下の設定でタブを閉じる</translation>
+      <translation>次の設定でタブを閉じる</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsgui.ui" line="242"/>
@@ -6734,7 +6734,7 @@ Description: %3</translation>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsgui.ui" line="305"/>
       <source>Toolbar for articles list</source>
-      <translation type="unfinished">Toolbar for articles list</translation>
+      <translation>記事リストのツールバー</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsgui.ui" line="310"/>
@@ -6744,17 +6744,17 @@ Description: %3</translation>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsgui.ui" line="388"/>
       <source>Button style</source>
-      <translation type="unfinished">Button style</translation>
+      <translation>ボタンスタイル</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsgui.ui" line="398"/>
       <source>Toolbar editor</source>
-      <translation type="unfinished">Toolbar editor</translation>
+      <translation>ツールバー エディタ</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsgui.ui" line="424"/>
       <source>Icon size</source>
-      <translation type="unfinished">Icon size</translation>
+      <translation>アイコンのサイズ</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsgui.h" line="35"/>
@@ -6807,7 +6807,7 @@ Description: %3</translation>
     <message>
       <location filename="../src/librssguard/gui/settings/settingslocalization.h" line="26"/>
       <source>Localization</source>
-      <translation type="unfinished">Localization</translation>
+      <translation>ローカライゼーション</translation>
     </message>
   </context>
   <context>
@@ -6916,7 +6916,7 @@ Also, there are some built-in sounds. Just start typing &quot;:&quot; and they w
     <message>
       <location filename="../src/librssguard/gui/settings/settingsnotifications.h" line="27"/>
       <source>Notifications</source>
-      <translation type="unfinished">Notifications</translation>
+      <translation>通知</translation>
     </message>
   </context>
   <context>
@@ -6965,7 +6965,7 @@ Also, there are some built-in sounds. Just start typing &quot;:&quot; and they w
     <message>
       <location filename="../src/librssguard/gui/notifications/singlenotificationeditor.ui" line="51"/>
       <source>Sound</source>
-      <translation type="unfinished">Sound</translation>
+      <translation>Sound</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/notifications/singlenotificationeditor.ui" line="63"/>
@@ -6980,12 +6980,12 @@ Also, there are some built-in sounds. Just start typing &quot;:&quot; and they w
     <message>
       <location filename="../src/librssguard/gui/notifications/singlenotificationeditor.ui" line="77"/>
       <source>&amp;Play</source>
-      <translation type="unfinished">&amp;Play</translation>
+      <translation>Play</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/notifications/singlenotificationeditor.ui" line="96"/>
       <source>Volume</source>
-      <translation type="unfinished">Volume</translation>
+      <translation>Volume</translation>
     </message>
   </context>
   <context>
@@ -7439,7 +7439,7 @@ Also, you can post-process generated feed data with yet another script if you wi
     <message>
       <location filename="../src/librssguard/services/standard/standardserviceroot.cpp" line="39"/>
       <source>This is the obligatory service account for standard RSS/RDF/ATOM feeds.</source>
-      <translation type="unfinished">This is the obligatory service account for standard RSS/RDF/ATOM feeds.</translation>
+      <translation>これは標準的なRSS/RDF/ATOMフィードに必須のサービスアカウントです。</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/standard/standardserviceroot.cpp" line="126"/>
@@ -7541,7 +7541,7 @@ Unread news: %2</translation>
     <message>
       <location filename="../src/librssguard/gui/tabwidget.cpp" line="37"/>
       <source>Displays main menu.</source>
-      <translation type="unfinished">Displays main menu.</translation>
+      <translation>メインメニューを表示</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/tabwidget.cpp" line="46"/>
@@ -7648,12 +7648,12 @@ Unread news: %2</translation>
     <message>
       <location filename="../src/librssguard/gui/toolbars/toolbareditor.ui" line="32"/>
       <source>Activated actions</source>
-      <translation type="unfinished">Activated actions</translation>
+      <translation>アクティベートされたアクション</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/toolbars/toolbareditor.ui" line="39"/>
       <source>Available actions</source>
-      <translation type="unfinished">Available actions</translation>
+      <translation>利用可能なアクション</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/toolbars/toolbareditor.ui" line="76"/>
@@ -8010,12 +8010,12 @@ Last login on: %4</translation>
     <message>
       <location filename="../src/librssguard/services/abstract/unreadnode.cpp" line="14"/>
       <source>Unread articles</source>
-      <translation type="unfinished">Unread articles</translation>
+      <translation>未読記事</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/abstract/unreadnode.cpp" line="15"/>
       <source>You can find all unread articles here.</source>
-      <translation type="unfinished">You can find all unread articles here.</translation>
+      <translation>未読記事はすべてここで見ることができます</translation>
     </message>
   </context>
   <context>
