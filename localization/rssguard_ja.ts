@@ -1082,7 +1082,7 @@ Item ID: %5</translation>
     <message>
       <location filename="../src/librssguard/gui/feedsview.cpp" line="265"/>
       <source>You are about to completely delete item &quot;%1&quot;.</source>
-      <translation type="unfinished">You are about to completely delete item &quot;%1&quot;.</translation>
+      <translation>アイテム &quot;%1&quot; を完全に削除しようとしています。</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/feedsview.cpp" line="266"/>
@@ -1921,22 +1921,22 @@ QtWebEngine cache folder -&gt; &quot;%7&quot;</translation>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="105"/>
       <source>F&amp;eeds</source>
-      <translation type="unfinished">F&amp;eeds</translation>
+      <translation>フィード</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="109"/>
       <source>&amp;Add item</source>
-      <translation type="unfinished">&amp;Add item</translation>
+      <translation>アイテムを追加</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="114"/>
       <source>&amp;Move</source>
-      <translation type="unfinished">&amp;Move</translation>
+      <translation>移動</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="158"/>
       <source>Art&amp;icles</source>
-      <translation type="unfinished">Art&amp;icles</translation>
+      <translation>記事</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="183"/>
@@ -1951,7 +1951,7 @@ QtWebEngine cache folder -&gt; &quot;%7&quot;</translation>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="198"/>
       <source>&amp;Web browser &amp;&amp; tabs</source>
-      <translation type="unfinished">&amp;Web browser &amp;&amp; tabs</translation>
+      <translation>Webブラウザ＆タブ</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="225"/>
@@ -1996,7 +1996,7 @@ QtWebEngine cache folder -&gt; &quot;%7&quot;</translation>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="278"/>
       <source>&amp;Fetch all</source>
-      <translation type="unfinished">&amp;Fetch all</translation>
+      <translation>すべて取得</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="281"/>
@@ -2006,7 +2006,7 @@ QtWebEngine cache folder -&gt; &quot;%7&quot;</translation>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="289"/>
       <source>Fetch &amp;selected</source>
-      <translation type="unfinished">Fetch &amp;selected</translation>
+      <translation>選択したものを取得</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="292"/>
@@ -2026,7 +2026,7 @@ QtWebEngine cache folder -&gt; &quot;%7&quot;</translation>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="316"/>
       <source>Mark articles &amp;read</source>
-      <translation type="unfinished">Mark articles &amp;read</translation>
+      <translation>記事を既読にする</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="319"/>
@@ -2036,7 +2036,7 @@ QtWebEngine cache folder -&gt; &quot;%7&quot;</translation>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="327"/>
       <source>Mark articles &amp;unread</source>
-      <translation type="unfinished">Mark articles &amp;unread</translation>
+      <translation>記事を未読にする</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="330"/>
@@ -2046,7 +2046,7 @@ QtWebEngine cache folder -&gt; &quot;%7&quot;</translation>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="338"/>
       <source>Switch &amp;importance</source>
-      <translation type="unfinished">Switch &amp;importance</translation>
+      <translation>重要の切り替え</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="341"/>
@@ -2246,12 +2246,12 @@ QtWebEngine cache folder -&gt; &quot;%7&quot;</translation>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="610"/>
       <source>&amp;Restore settings</source>
-      <translation type="unfinished">&amp;Restore settings</translation>
+      <translation>設定の復元</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="618"/>
       <source>&amp;Backup settings</source>
-      <translation type="unfinished">&amp;Backup settings</translation>
+      <translation>設定のバックアップ</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="626"/>
@@ -2291,12 +2291,12 @@ QtWebEngine cache folder -&gt; &quot;%7&quot;</translation>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="680"/>
       <source>&amp;Add account</source>
-      <translation type="unfinished">&amp;Add account</translation>
+      <translation>アカウントを追加</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="688"/>
       <source>&amp;Restore articles</source>
-      <translation type="unfinished">&amp;Restore articles</translation>
+      <translation>記事を復元</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="696"/>
@@ -2372,7 +2372,7 @@ QtWebEngine cache folder -&gt; &quot;%7&quot;</translation>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="804"/>
       <source>&amp;Copy URL of selected item</source>
-      <translation type="unfinished">&amp;Copy URL of selected item</translation>
+      <translation>選択したアイテムのURLをコピーする</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="809"/>
@@ -2382,12 +2382,12 @@ QtWebEngine cache folder -&gt; &quot;%7&quot;</translation>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="817"/>
       <source>&amp;Show tree expanders</source>
-      <translation type="unfinished">&amp;Show tree expanders</translation>
+      <translation>ツリーエキスパンダーを表示する</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="822"/>
       <source>Fetch feeds with &amp;custom auto-download policy</source>
-      <translation type="unfinished">Fetch feeds with &amp;custom auto-download policy</translation>
+      <translation>カスタム自動ダウンロードポリシーでフィードを取得する</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="830"/>
@@ -2412,12 +2412,12 @@ QtWebEngine cache folder -&gt; &quot;%7&quot;</translation>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="859"/>
       <source>Close &amp;current tab</source>
-      <translation type="unfinished">Close &amp;current tab</translation>
+      <translation>現在のタブを閉じる</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="864"/>
       <source>&amp;Copy URLs of selected articles</source>
-      <translation type="unfinished">&amp;Copy URLs of selected articles</translation>
+      <translation>選択した記事のURLをコピーする</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="869"/>
@@ -2477,12 +2477,12 @@ QtWebEngine cache folder -&gt; &quot;%7&quot;</translation>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="927"/>
       <source>Rearrange &amp;subcategories alphabetically</source>
-      <translation type="unfinished">Rearrange &amp;subcategories alphabetically</translation>
+      <translation>サブカテゴリをアルファベット順に並べ替える</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="932"/>
       <source>Rearrange &amp;feeds alphabetically</source>
-      <translation type="unfinished">Rearrange &amp;feeds alphabetically</translation>
+      <translation>フィードをアルファベット順に並べ替える</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="937"/>
@@ -6523,7 +6523,7 @@ Authors of this application are NOT responsible for lost data.</source>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsgeneral.ui" line="24"/>
       <source>Check for %1 updates on application startup</source>
-      <translation type="unfinished">Check for %1 updates on application startup</translation>
+      <translation>アプリケーションの起動時に %1 のアップデートを確認する</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsgeneral.h" line="26"/>
@@ -6597,7 +6597,7 @@ Authors of this application are NOT responsible for lost data.</source>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsgui.cpp" line="42"/>
       <source>You can override some colors defined by your skin here. Some colors are used dynamically throughout the application.</source>
-      <translation type="unfinished">You can override some colors defined by your skin here. Some colors are used dynamically throughout the application.</translation>
+      <translation>スキンによって定義されたいくつかの色は、ここでオーバーライドすることができます。いくつかの色はアプリケーション全体で動的に使用されます。</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsgui.cpp" line="229"/>
@@ -6643,17 +6643,17 @@ Description: %3</translation>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsgui.ui" line="112"/>
       <source>Use skin colors</source>
-      <translation type="unfinished">Use skin colors</translation>
+      <translation>スキンカラーを使用</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsgui.ui" line="120"/>
       <source>Custom skin colors</source>
-      <translation type="unfinished">Custom skin colors</translation>
+      <translation>カスタムスキンカラー</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsgui.ui" line="129"/>
       <source>Force custom skin colors</source>
-      <translation type="unfinished">Force custom skin colors</translation>
+      <translation>カスタムスキンの色に変更する</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsgui.ui" line="141"/>
