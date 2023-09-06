@@ -41,8 +41,8 @@ class RSSGUARD_DLLSPEC Search : public RootItem {
   private:
     QString m_filter;
     QColor m_color;
-    int m_totalCount{};
-    int m_unreadCount{};
+    int m_totalCount = -1;
+    int m_unreadCount = -1;
 };
 
 #endif // SEARCH_H
