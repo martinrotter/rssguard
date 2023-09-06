@@ -417,7 +417,7 @@ version by clicking this popup notification.</source>
     <message>
       <location filename="../src/librssguard/gui/reusable/discoverfeedsbutton.cpp" line="32"/>
       <source>This website does not contain any feeds</source>
-      <translation type="unfinished">This website does not contain any feeds</translation>
+      <translation>このウェブサイトにはフィードが含まれていません</translation>
     </message>
     <message numerus="yes">
       <location filename="../src/librssguard/gui/reusable/discoverfeedsbutton.cpp" line="33"/>
@@ -728,11 +728,11 @@ Active message filters: %2
 Status: %3
 Source: &lt;a href=&quot;%4&quot;&gt;%4&lt;/a&gt;
 Item ID: %5</source>
-      <translation type="unfinished">Auto-update status: %1
-Active message filters: %2
-Status: %3
-Source: &lt;a href=&quot;%4&quot;&gt;%4&lt;/a&gt;
-Item ID: %5</translation>
+      <translation>自動更新ステータス: %1
+アクティブなメッセージフィルター: %2
+ステータス: %3
+ソース: &lt;a href=&quot;%4&quot;&gt;%4&lt;/a&gt;
+アイテムID: %5</translation>
     </message>
   </context>
   <context>
@@ -2795,17 +2795,17 @@ QtWebEngine cache folder -&gt; &quot;%7&quot;</translation>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formrestoredatabasesettings.cpp" line="54"/>
       <source>Restoration was initiated. Restart to proceed.</source>
-      <translation type="unfinished">Restoration was initiated. Restart to proceed.</translation>
+      <translation>復元が開始されました。続行するに続行するにはください。</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formrestoredatabasesettings.cpp" line="55"/>
       <source>You need to restart application for restoration process to finish.</source>
-      <translation type="unfinished">You need to restart application for restoration process to finish.</translation>
+      <translation>復元プロセスを完了するには、アプリケーションを再起動する必要があります。</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formrestoredatabasesettings.cpp" line="60"/>
       <source>Database and/or settings were not copied to restoration directory successully.</source>
-      <translation type="unfinished">Database and/or settings were not copied to restoration directory successully.</translation>
+      <translation>データベース、または設定が復元ディレクトリにコピーされませんでした。</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formrestoredatabasesettings.cpp" line="79"/>
@@ -5546,13 +5546,13 @@ List of supported readers:</translation>
     <message>
       <location filename="../src/librssguard/services/abstract/recyclebin.cpp" line="17"/>
       <source>Recycle bin contains all deleted articles from all feeds.</source>
-      <translation type="unfinished">Recycle bin contains all deleted articles from all feeds.</translation>
+      <translation>ごみ箱には、すべてのフィードから削除されたすべての記事が含まれています。</translation>
     </message>
     <message numerus="yes">
       <location filename="../src/librssguard/services/abstract/recyclebin.cpp" line="21"/>
       <source>%n deleted article(s).</source>
-      <translation type="unfinished">
-        <numerusform>%n deleted article(s).</numerusform>
+      <translation>
+        <numerusform>%n 個の削除された記事。</numerusform>
       </translation>
     </message>
   </context>
@@ -6814,7 +6814,7 @@ Description: %3</translation>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsnodejs.cpp" line="17"/>
       <source>What is Node.js?</source>
-      <translation type="unfinished">What is Node.js?</translation>
+      <translation>Node.jsとは？</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsnodejs.cpp" line="18"/>
@@ -6825,13 +6825,13 @@ Description: %3</translation>
 Note that usually all required Node.js tools should be available via your &quot;PATH&quot; environment variable, so you do not have to specify full paths.
 
 Also, relaunch &quot;Settings&quot; dialog after you install Node.js.</source>
-      <translation type="unfinished">Node.js is asynchronous event-driven JavaScript runtime, designed to build scalable network applications.
+      <translation>Node.jsは、スケーラブルなネットワークアプリケーションを構築するために設計された、非同期イベント駆動型のJavaScriptランタイムです。
 
-%1 integrates Node.js to bring some modern features like Adblock.
+%1はNode.jsを統合し、Adblockのような現代的な機能をもたらします。
 
-Note that usually all required Node.js tools should be available via your &quot;PATH&quot; environment variable, so you do not have to specify full paths.
+通常、必要なNode.jsツールはすべて &quot;PATH&quot; 環境変数から利用できるはずなので、フルパスを指定する必要はありません。
 
-Also, relaunch &quot;Settings&quot; dialog after you install Node.js.</translation>
+また、Node.jsをインストールした後、&quot;設定&quot; ダイアログを再起動します</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsnodejs.cpp" line="107"/>
@@ -7050,10 +7050,10 @@ Also, there are some built-in sounds. Just start typing &quot;:&quot; and they w
 Encoding: %1
 Type: %2
 Post-processing script: %3</source>
-      <translation type="unfinished">
-Encoding: %1
-Type: %2
-Post-processing script: %3</translation>
+      <translation>
+エンコーディング: %1
+タイプ: %2
+後処理スクリプト: %3</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/standard/standardfeed.cpp" line="166"/>
@@ -8027,7 +8027,7 @@ Last login on: %4</translation>
     <message>
       <location filename="../src/librssguard/gui/webbrowser.cpp" line="33"/>
       <source>View website in reader mode</source>
-      <translation type="unfinished">View website in reader mode</translation>
+      <translation>リーダーモードでウェブサイトを表示</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/webbrowser.cpp" line="242"/>
@@ -8068,7 +8068,7 @@ Last login on: %4</translation>
     <message>
       <location filename="../src/librssguard/gui/webbrowser.cpp" line="30"/>
       <source>Open this website in system web browser</source>
-      <translation type="unfinished">Open this website in system web browser</translation>
+      <translation>このウェブサイトをシステムのウェブブラウザで開く</translation>
     </message>
   </context>
   <context>
