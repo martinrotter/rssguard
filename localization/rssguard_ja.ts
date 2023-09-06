@@ -799,7 +799,7 @@ Item ID: %5</source>
     <message>
       <location filename="../src/librssguard/services/feedly/gui/feedlyaccountdetails.ui" line="70"/>
       <source>Only download newest X articles per feed</source>
-      <translation type="unfinished">Only download newest X articles per feed</translation>
+      <translation>フィードごとに最新X件の記事のみをダウンロードする</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/feedly/gui/feedlyaccountdetails.ui" line="110"/>
@@ -809,7 +809,7 @@ Item ID: %5</source>
     <message>
       <location filename="../src/librssguard/services/feedly/gui/feedlyaccountdetails.ui" line="51"/>
       <source>Download unread articles only</source>
-      <translation type="unfinished">Download unread articles only</translation>
+      <translation>未読記事のみをダウンロード</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/feedly/gui/feedlyaccountdetails.cpp" line="26"/>
@@ -834,7 +834,7 @@ Item ID: %5</source>
     <message>
       <location filename="../src/librssguard/services/feedly/gui/feedlyaccountdetails.cpp" line="51"/>
       <source>If you select intelligent synchronization, then only not-yet-fetched or updated articles are downloaded. Network usage is greatly reduced and overall synchronization speed is greatly improved, but first feed fetching could be slow anyway if your feed contains huge number of articles.</source>
-      <translation type="unfinished">If you select intelligent synchronization, then only not-yet-fetched or updated articles are downloaded. Network usage is greatly reduced and overall synchronization speed is greatly improved, but first feed fetching could be slow anyway if your feed contains huge number of articles.</translation>
+      <translation>インテリジェント同期を選択すると、まだ取得されていない記事や更新された記事のみがダウンロードされます。ネットワーク使用量が大幅に削減され、全体的な同期速度が大幅に改善されますが、フィードに膨大な数の記事が含まれている場合、最初のフィードの取得は遅くなる可能性があります。</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/feedly/gui/feedlyaccountdetails.cpp" line="94"/>
@@ -875,7 +875,7 @@ Item ID: %5</source>
     <message>
       <location filename="../src/librssguard/services/feedly/gui/feedlyaccountdetails.cpp" line="33"/>
       <source>Your %1 build has official Feedly support. You do not have to use &quot;developer access token&quot;. You can therefore leave corresponding field empty.</source>
-      <translation type="unfinished">Your %1 build has official Feedly support. You do not have to use &quot;developer access token&quot;. You can therefore leave corresponding field empty.</translation>
+      <translation>%1ビルドはFeedlyを公式にサポートしています。&quot;開発者アクセストークン&quot;を使用する必要はありません。そのため、該当するフィールドは空のままにしておくことができます。</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/feedly/gui/feedlyaccountdetails.cpp" line="153"/>
@@ -910,7 +910,7 @@ Item ID: %5</source>
     <message>
       <location filename="../src/librssguard/services/feedly/gui/feedlyaccountdetails.cpp" line="46"/>
       <source>Beware of downloading too many articles, because Feedly permanently caches ALL articles of the feed, so you might end up with thousands of articles which you will never read anyway.</source>
-      <translation type="unfinished">Beware of downloading too many articles, because Feedly permanently caches ALL articles of the feed, so you might end up with thousands of articles which you will never read anyway.</translation>
+      <translation>Feedly はフィードのすべての記事を永続的にキャッシュするため、読むことのない記事が何千件もダウンロードされてしまう可能性があるため注意してください。</translation>
     </message>
   </context>
   <context>
@@ -1243,7 +1243,7 @@ QtWebEngine cache folder -&gt; &quot;%7&quot;</translation>
     <message>
       <location filename="../src/librssguard/services/abstract/gui/formaccountdetails.cpp" line="14"/>
       <source>Network proxy</source>
-      <translation type="unfinished">Network proxy</translation>
+      <translation>ネットワークプロキシ</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/abstract/gui/formaccountdetails.cpp" line="39"/>
@@ -1718,7 +1718,7 @@ QtWebEngine cache folder -&gt; &quot;%7&quot;</translation>
     <message>
       <location filename="../src/librssguard/services/feedly/gui/formeditfeedlyaccount.cpp" line="16"/>
       <source>Service setup</source>
-      <translation type="unfinished">Service setup</translation>
+      <translation>サービスのセットアップ</translation>
     </message>
   </context>
   <context>
@@ -1980,7 +1980,7 @@ QtWebEngine cache folder -&gt; &quot;%7&quot;</translation>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="253"/>
       <source>Displays extra info about this application.</source>
-      <translation type="unfinished">Displays extra info about this application.</translation>
+      <translation>このアプリケーションに関する追加情報を表示します</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="267"/>
@@ -2085,7 +2085,7 @@ QtWebEngine cache folder -&gt; &quot;%7&quot;</translation>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="382"/>
       <source>Deletes all messages from selected items.</source>
-      <translation type="unfinished">Deletes all messages from selected items.</translation>
+      <translation>選択したアイテムからすべてのメッセージを削除します</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="390"/>
@@ -2095,7 +2095,7 @@ QtWebEngine cache folder -&gt; &quot;%7&quot;</translation>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="393"/>
       <source>Open selected articles in external browser</source>
-      <translation type="unfinished">Open selected articles in external browser</translation>
+      <translation>選択した記事を外部ブラウザで開く</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="401"/>
@@ -2105,7 +2105,7 @@ QtWebEngine cache folder -&gt; &quot;%7&quot;</translation>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="404"/>
       <source>Open selected articles in internal browser</source>
-      <translation type="unfinished">Open selected articles in internal browser</translation>
+      <translation>選択した記事を内部ブラウザで開く</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="415"/>
@@ -2270,7 +2270,7 @@ QtWebEngine cache folder -&gt; &quot;%7&quot;</translation>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="645"/>
       <source>Send selected articles via e-mail</source>
-      <translation type="unfinished">Send selected articles via e-mail</translation>
+      <translation>選択した記事をe-mailで送信</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="653"/>
@@ -3449,7 +3449,7 @@ You can install it now.</translation>
     <message>
       <location filename="../src/librssguard/services/gmail/gui/gmailaccountdetails.ui" line="110"/>
       <source>Only download newest X articles per feed</source>
-      <translation type="unfinished">Only download newest X articles per feed</translation>
+      <translation>フィードごとに最新X件の記事のみをダウンロードする</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/gmail/gui/gmailaccountdetails.ui" line="134"/>
@@ -3459,7 +3459,7 @@ You can install it now.</translation>
     <message>
       <location filename="../src/librssguard/services/gmail/gui/gmailaccountdetails.ui" line="163"/>
       <source>Download unread articles only</source>
-      <translation type="unfinished">Download unread articles only</translation>
+      <translation>未読記事のみをダウンロード</translation>
     </message>
   </context>
   <context>
@@ -3652,7 +3652,7 @@ Login tokens expiration: %2</translation>
     <message>
       <location filename="../src/librssguard/services/greader/gui/greaderaccountdetails.cpp" line="51"/>
       <source>If you select intelligent synchronization, then only not-yet-fetched or updated articles are downloaded. Network usage is greatly reduced and overall synchronization speed is greatly improved, but first feed fetching could be slow anyway if your feed contains huge number of articles.</source>
-      <translation type="unfinished">If you select intelligent synchronization, then only not-yet-fetched or updated articles are downloaded. Network usage is greatly reduced and overall synchronization speed is greatly improved, but first feed fetching could be slow anyway if your feed contains huge number of articles.</translation>
+      <translation>インテリジェント同期を選択すると、まだ取得されていない記事や更新された記事のみがダウンロードされます。ネットワーク使用量が大幅に削減され、全体的な同期速度が大幅に改善されますが、フィードに膨大な数の記事が含まれている場合、最初のフィードの取得は遅くなる可能性があります。</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/greader/gui/greaderaccountdetails.cpp" line="60"/>
@@ -3718,7 +3718,7 @@ Login tokens expiration: %2</translation>
     <message>
       <location filename="../src/librssguard/services/greader/gui/greaderaccountdetails.ui" line="40"/>
       <source>Download unread articles only</source>
-      <translation type="unfinished">Download unread articles only</translation>
+      <translation>未読記事のみをダウンロード</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/greader/gui/greaderaccountdetails.ui" line="47"/>
@@ -3733,7 +3733,7 @@ Login tokens expiration: %2</translation>
     <message>
       <location filename="../src/librssguard/services/greader/gui/greaderaccountdetails.ui" line="74"/>
       <source>Only download newest X articles per feed</source>
-      <translation type="unfinished">Only download newest X articles per feed</translation>
+      <translation>フィードごとに最新X件の記事のみをダウンロードする</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/greader/gui/greaderaccountdetails.ui" line="95"/>
@@ -4922,12 +4922,12 @@ Login tokens expiration: %2</translation>
     <message>
       <location filename="../src/librssguard/services/newsblur/gui/newsbluraccountdetails.ui" line="30"/>
       <source>Download unread articles only</source>
-      <translation type="unfinished">Download unread articles only</translation>
+      <translation>未読記事のみをダウンロード</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/newsblur/gui/newsbluraccountdetails.ui" line="39"/>
       <source>Only download newest X articles per feed</source>
-      <translation type="unfinished">Only download newest X articles per feed</translation>
+      <translation>フィードごとに最新X件の記事のみをダウンロードする</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/newsblur/gui/newsbluraccountdetails.ui" line="63"/>
@@ -5219,12 +5219,12 @@ Login tokens expiration: %2</translation>
     <message>
       <location filename="../src/librssguard/services/owncloud/gui/owncloudaccountdetails.ui" line="34"/>
       <source>Download unread articles only</source>
-      <translation type="unfinished">Download unread articles only</translation>
+      <translation>未読記事のみをダウンロード</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/owncloud/gui/owncloudaccountdetails.ui" line="43"/>
       <source>Only download newest X articles per feed</source>
-      <translation type="unfinished">Only download newest X articles per feed</translation>
+      <translation>フィードごとに最新X件の記事のみをダウンロードする</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/owncloud/gui/owncloudaccountdetails.ui" line="81"/>
@@ -5293,7 +5293,7 @@ Login tokens expiration: %2</translation>
     <message>
       <location filename="../src/librssguard/services/standard/standardserviceroot.cpp" line="53"/>
       <source>Load initial set of feeds</source>
-      <translation type="unfinished">Load initial set of feeds</translation>
+      <translation>フィードの初期セットを読み込む</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/tt-rss/ttrssserviceentrypoint.cpp" line="17"/>
@@ -5302,16 +5302,16 @@ Login tokens expiration: %2</translation>
 Tiny Tiny RSS is an open source web-based news feed (RSS/Atom) reader and aggregator, designed to allow you to read news from any location, while feeling as close to a real desktop application as possible.
 
 At least API level %1 is required.</source>
-      <translation type="unfinished">This service offers integration with Tiny Tiny RSS.
+      <translation>このサービスは、Tiny Tiny RSS との統合を提供します。
 
-Tiny Tiny RSS is an open source web-based news feed (RSS/Atom) reader and aggregator, designed to allow you to read news from any location, while feeling as close to a real desktop application as possible.
+Tiny Tiny RSSは、オープンソースのWebベースのニュースフィード(RSS/Atom) リーダーおよびアグリゲータで、実際のデスクトップアプリケーションにできるだけ近い感覚で、どこからでもニュースを読むことができるように設計されています。
 
-At least API level %1 is required.</translation>
+少なくとも API レベル %1 が必要です。</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/owncloud/owncloudserviceentrypoint.cpp" line="34"/>
       <source>The News app is an RSS/Atom feed aggregator. It is part of Nextcloud suite. This plugin implements %1 API.</source>
-      <translation type="unfinished">The News app is an RSS/Atom feed aggregator. It is part of Nextcloud suite. This plugin implements %1 API.</translation>
+      <translation>ニュースアプリはRSS/Atomフィードアグリゲータです。Nextcloudスイートの一部です。このプラグインは %1 APIを実装しています。</translation>
     </message>
     <message>
       <location filename="../src/librssguard/miscellaneous/systemfactory.cpp" line="265"/>
@@ -5331,16 +5331,16 @@ At least API level %1 is required.</translation>
     <message>
       <location filename="../src/librssguard/services/gmail/gmailentrypoint.cpp" line="35"/>
       <source>Simple Gmail integration via JSON API. Allows sending e-mails too.</source>
-      <translation type="unfinished">Simple Gmail integration via JSON API. Allows sending e-mails too.</translation>
+      <translation>JSON APIでGmailと簡単に連携。メールの送信も可能です。</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/feedly/feedlyentrypoint.cpp" line="33"/>
       <source>Keep up with the topics and trends you care about, without the overwhelm.
 
 Feedly is a secure space where you can privately organize and research the topics and trends that matter to you.</source>
-      <translation type="unfinished">Keep up with the topics and trends you care about, without the overwhelm.
+      <translation>気になるトピックやトレンドに煩わされることなく、追い続けましょう。
 
-Feedly is a secure space where you can privately organize and research the topics and trends that matter to you.</translation>
+Feedlyは、あなたにとって重要なトピックやトレンドを個人的に整理し、リサーチできる安全なスペースです。</translation>
     </message>
     <message>
       <location filename="../src/librssguard/database/databasequeries.cpp" line="2649"/>
@@ -5402,9 +5402,9 @@ Feedly is a secure space where you can privately organize and research the topic
       <source>Google Reader API is used by many online RSS readers.
 
 List of supported readers:</source>
-      <translation type="unfinished">Google Reader API is used by many online RSS readers.
+      <translation>Google Reader API は、多くのオンラインRSSリーダーで使用されています。
 
-List of supported readers:</translation>
+対応リーダー一覧:</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/greader/greaderentrypoint.cpp" line="34"/>
@@ -5658,7 +5658,7 @@ List of supported readers:</translation>
     <message>
       <location filename="../src/librssguard/services/reddit/gui/redditaccountdetails.ui" line="110"/>
       <source>Only download newest X articles per feed</source>
-      <translation type="unfinished">Only download newest X articles per feed</translation>
+      <translation>フィードごとに最新X件の記事のみをダウンロードする</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/reddit/gui/redditaccountdetails.ui" line="134"/>
@@ -5668,7 +5668,7 @@ List of supported readers:</translation>
     <message>
       <location filename="../src/librssguard/services/reddit/gui/redditaccountdetails.ui" line="163"/>
       <source>Download unread articles only</source>
-      <translation type="unfinished">Download unread articles only</translation>
+      <translation>未読記事のみをダウンロード</translation>
     </message>
   </context>
   <context>
@@ -6931,12 +6931,12 @@ Also, there are some built-in sounds. Just start typing &quot;:&quot; and they w
     <message>
       <location filename="../src/librssguard/dynamic-shortcuts/shortcutcatcher.cpp" line="23"/>
       <source>Reset to original shortcut.</source>
-      <translation type="unfinished">Reset to original shortcut.</translation>
+      <translation>元のショートカットに戻す</translation>
     </message>
     <message>
       <location filename="../src/librssguard/dynamic-shortcuts/shortcutcatcher.cpp" line="29"/>
       <source>Clear current shortcut.</source>
-      <translation type="unfinished">Clear current shortcut.</translation>
+      <translation>現在のショートカットを消去</translation>
     </message>
     <message>
       <location filename="../src/librssguard/dynamic-shortcuts/shortcutcatcher.cpp" line="35"/>
@@ -6949,7 +6949,7 @@ Also, there are some built-in sounds. Just start typing &quot;:&quot; and they w
     <message>
       <location filename="../src/librssguard/gui/notifications/singlenotificationeditor.cpp" line="46"/>
       <source>Select sound file</source>
-      <translation type="unfinished">Select sound file</translation>
+      <translation>サウンドファイルを選択</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/notifications/singlenotificationeditor.cpp" line="48"/>
@@ -7413,7 +7413,7 @@ Also, you can post-process generated feed data with yet another script if you wi
     <message>
       <location filename="../src/librssguard/services/standard/standardserviceroot.cpp" line="83"/>
       <source>Error when loading initial feeds</source>
-      <translation type="unfinished">Error when loading initial feeds</translation>
+      <translation>初期フィードの読み込み時のエラー</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/standard/standardserviceroot.cpp" line="261"/>
@@ -7868,17 +7868,17 @@ Unread news: %2</translation>
     <message>
       <location filename="../src/librssguard/services/tt-rss/gui/ttrssaccountdetails.ui" line="84"/>
       <source>Download unread articles only</source>
-      <translation type="unfinished">Download unread articles only</translation>
+      <translation>未読記事のみをダウンロード</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/tt-rss/gui/ttrssaccountdetails.ui" line="49"/>
       <source>Only download newest X articles per feed</source>
-      <translation type="unfinished">Only download newest X articles per feed</translation>
+      <translation>フィードごとに最新X件の記事のみをダウンロードする</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/tt-rss/gui/ttrssaccountdetails.ui" line="91"/>
       <source>Intelligent synchronization algorithm</source>
-      <translation type="unfinished">Intelligent synchronization algorithm</translation>
+      <translation>インテリジェント同期アルゴリズム</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/tt-rss/gui/ttrssaccountdetails.ui" line="98"/>
