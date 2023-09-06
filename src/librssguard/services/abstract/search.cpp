@@ -84,27 +84,10 @@ bool Search::deleteViaGui() {
 }
 
 void Search::updateCounts(bool including_total_count) {
-  QSqlDatabase database = qApp->database()->driver()->threadSafeConnection(metaObject()->className());
-  int account_id = getParentServiceRoot()->accountId();
+  Q_UNUSED(including_total_count)
 
-  try {
-    auto ac = DatabaseQueries::getMessageCountsForProbe(database, this, account_id);
-
-    if (including_total_count) {
-      setCountOfAllMessages(ac.m_total);
-    }
-
-    setCountOfUnreadMessages(ac.m_unread);
-  }
-  catch (const ApplicationException& ex) {
-    qCriticalNN << LOGSEC_CORE << "Failed to get counts of probe:" << QUOTE_W_SPACE_DOT(ex.message());
-
-    if (including_total_count) {
-      setCountOfAllMessages(-1);
-    }
-
-    setCountOfUnreadMessages(-1);
-  }
+  setCountOfAllMessages(-1);
+  setCountOfUnreadMessages(-1);
 }
 
 QList<Message> Search::undeletedMessages() const {

@@ -18,7 +18,6 @@ class SearchsNode : public RootItem {
 
     virtual QList<Message> undeletedMessages() const;
     virtual QList<QAction*> contextMenuFeedsList();
-    virtual void updateCounts(bool including_total_count);
 
     Search* probeById(const QString& custom_id);
 
