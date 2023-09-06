@@ -4260,7 +4260,7 @@ Login tokens expiration: %2</translation>
     <message>
       <location filename="../src/librssguard/core/messagesforfiltersmodel.cpp" line="12"/>
       <source>In recycle bin</source>
-      <translation type="unfinished">In recycle bin</translation>
+      <translation>ごみ箱内</translation>
     </message>
     <message>
       <location filename="../src/librssguard/core/messagesforfiltersmodel.cpp" line="12"/>
@@ -4343,7 +4343,7 @@ Login tokens expiration: %2</translation>
     <message>
       <location filename="../src/librssguard/core/messagesmodel.cpp" line="284"/>
       <source>Permanently deleted</source>
-      <translation type="unfinished">Permanently deleted</translation>
+      <translation>完全に削除済み</translation>
     </message>
     <message>
       <location filename="../src/librssguard/core/messagesmodel.cpp" line="291"/>
@@ -4378,12 +4378,12 @@ Login tokens expiration: %2</translation>
     <message>
       <location filename="../src/librssguard/core/messagesmodel.cpp" line="298"/>
       <source>Has enclosures</source>
-      <translation type="unfinished">Has enclosures</translation>
+      <translation>エンクロージャーあり</translation>
     </message>
     <message>
       <location filename="../src/librssguard/core/messagesmodel.cpp" line="292"/>
       <source>Score</source>
-      <translation type="unfinished">Score</translation>
+      <translation>スコア</translation>
     </message>
     <message>
       <location filename="../src/librssguard/core/messagesmodel.cpp" line="289"/>
@@ -4686,7 +4686,7 @@ Login tokens expiration: %2</translation>
     <message>
       <location filename="../src/librssguard/gui/toolbars/messagestoolbar.cpp" line="319"/>
       <source>Show articles with some score</source>
-      <translation type="unfinished">Show articles with some score</translation>
+      <translation>スコアのある記事を表示する</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/toolbars/messagestoolbar.cpp" line="324"/>
