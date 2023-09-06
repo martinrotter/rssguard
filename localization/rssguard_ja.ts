@@ -3873,12 +3873,12 @@ Login tokens expiration: %2</translation>
     <message>
       <location filename="../src/librssguard/gui/reusable/labelsmenu.cpp" line="15"/>
       <source>Labels</source>
-      <translation type="unfinished">Labels</translation>
+      <translation>ラベル</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/reusable/labelsmenu.cpp" line="19"/>
       <source>No labels found</source>
-      <translation type="unfinished">No labels found</translation>
+      <translation>ラベルが見つかりません</translation>
     </message>
   </context>
   <context>
@@ -3886,7 +3886,7 @@ Login tokens expiration: %2</translation>
     <message>
       <location filename="../src/librssguard/services/abstract/labelsnode.cpp" line="19"/>
       <source>Labels</source>
-      <translation type="unfinished">Labels</translation>
+      <translation>ラベル</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/abstract/labelsnode.cpp" line="20"/>
@@ -6861,7 +6861,7 @@ Also, relaunch &quot;Settings&quot; dialog after you install Node.js.</source>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsnodejs.cpp" line="28"/>
       <source>%1 automatically installs some Node.js packages so that you do not have to. %1 does not use global package folder because that requires administrator rights, therefore by default it uses subfolder placed in your &quot;user data&quot; folder.</source>
-      <translation type="unfinished">%1 automatically installs some Node.js packages so that you do not have to. %1 does not use global package folder because that requires administrator rights, therefore by default it uses subfolder placed in your &quot;user data&quot; folder.</translation>
+      <translation>%1は一部の Node.js パッケージを自動的にインストールするため、ユーザーがインストールする必要はありません。%1は管理者権限が必要なためグローバルパッケージフォルダを使用せず、デフォルトでは&quot;user data&quot;フォルダ内のサブフォルダを使用します。</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsnodejs.ui" line="14"/>
