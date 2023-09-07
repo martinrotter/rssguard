@@ -328,7 +328,7 @@ version by clicking this popup notification.</source>
     <message>
       <location filename="../src/librssguard/gui/reusable/colortoolbutton.cpp" line="14"/>
       <source>Click me to change color!</source>
-      <translation type="unfinished">Click me to change color!</translation>
+      <translation>クリックして色を変更！</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/reusable/colortoolbutton.cpp" line="19"/>
@@ -957,7 +957,7 @@ Item ID: %5</source>
     <message>
       <location filename="../src/librssguard/services/standard/standardfeedsimportexportmodel.cpp" line="376"/>
       <source>Category </source>
-      <translation>カテゴリ</translation>
+      <translation>カテゴリー </translation>
     </message>
   </context>
   <context>
@@ -1317,12 +1317,12 @@ QtWebEngine cache folder -&gt; &quot;%7&quot;</translation>
     <message>
       <location filename="../src/librssguard/services/abstract/gui/formaddeditlabel.cpp" line="21"/>
       <source>Perfect!</source>
-      <translation type="unfinished">Perfect!</translation>
+      <translation>パーフェクト！</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/abstract/gui/formaddeditlabel.cpp" line="30"/>
       <source>Hot stuff</source>
-      <translation type="unfinished">Hot stuff</translation>
+      <translation>ホットなもの</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/abstract/gui/formaddeditlabel.cpp" line="27"/>
@@ -1366,7 +1366,7 @@ QtWebEngine cache folder -&gt; &quot;%7&quot;</translation>
       <location filename="../src/librssguard/services/abstract/gui/formaddeditprobe.cpp" line="28"/>
       <location filename="../src/librssguard/services/abstract/gui/formaddeditprobe.cpp" line="40"/>
       <source>Perfect!</source>
-      <translation type="unfinished">Perfect!</translation>
+      <translation>パーフェクト！</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/abstract/gui/formaddeditprobe.cpp" line="34"/>
@@ -1391,7 +1391,7 @@ QtWebEngine cache folder -&gt; &quot;%7&quot;</translation>
     <message>
       <location filename="../src/librssguard/services/abstract/gui/formaddeditprobe.cpp" line="52"/>
       <source>Hot stuff</source>
-      <translation type="unfinished">Hot stuff</translation>
+      <translation>ホットなもの</translation>
     </message>
   </context>
   <context>
@@ -1492,7 +1492,7 @@ QtWebEngine cache folder -&gt; &quot;%7&quot;</translation>
     <message>
       <location filename="../src/librssguard/services/abstract/gui/formcategorydetails.cpp" line="57"/>
       <source>Add new category</source>
-      <translation>新しいカテゴリを追加</translation>
+      <translation>新しいカテゴリーを追加</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/abstract/gui/formcategorydetails.cpp" line="123"/>
@@ -1502,7 +1502,7 @@ QtWebEngine cache folder -&gt; &quot;%7&quot;</translation>
     <message>
       <location filename="../src/librssguard/services/abstract/gui/formcategorydetails.cpp" line="127"/>
       <source>Category name is too short.</source>
-      <translation>カテゴリ名が短すぎます。</translation>
+      <translation>カテゴリー名が短すぎます。</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/abstract/gui/formcategorydetails.cpp" line="133"/>
@@ -1553,22 +1553,22 @@ QtWebEngine cache folder -&gt; &quot;%7&quot;</translation>
     <message>
       <location filename="../src/librssguard/services/abstract/gui/formcategorydetails.cpp" line="181"/>
       <source>Category title</source>
-      <translation type="unfinished">Category title</translation>
+      <translation>カテゴリータイトル</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/abstract/gui/formcategorydetails.cpp" line="182"/>
       <source>Set title for your category.</source>
-      <translation type="unfinished">Set title for your category.</translation>
+      <translation>カテゴリーのタイトルを設定してください</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/abstract/gui/formcategorydetails.cpp" line="183"/>
       <source>Category description</source>
-      <translation type="unfinished">Category description</translation>
+      <translation>カテゴリーの説明</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/abstract/gui/formcategorydetails.cpp" line="184"/>
       <source>Set description for your category.</source>
-      <translation type="unfinished">Set description for your category.</translation>
+      <translation>カテゴリーの説明を設定してください</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/abstract/gui/formcategorydetails.cpp" line="190"/>
@@ -1583,7 +1583,7 @@ QtWebEngine cache folder -&gt; &quot;%7&quot;</translation>
     <message>
       <location filename="../src/librssguard/services/abstract/gui/formcategorydetails.cpp" line="194"/>
       <source>Use default icon from icon theme</source>
-      <translation type="unfinished">Use default icon from icon theme</translation>
+      <translation>アイコンテーマのデフォルトアイコンを使用する</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/abstract/gui/formcategorydetails.cpp" line="79"/>
@@ -1618,7 +1618,7 @@ QtWebEngine cache folder -&gt; &quot;%7&quot;</translation>
     <message>
       <location filename="../src/librssguard/services/abstract/gui/formcategorydetails.ui" line="96"/>
       <source>Select icon for your category.</source>
-      <translation type="unfinished">Select icon for your category.</translation>
+      <translation>カテゴリーのアイコンを選択してください</translation>
     </message>
   </context>
   <context>
@@ -2331,7 +2331,7 @@ QtWebEngine cache folder -&gt; &quot;%7&quot;</translation>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="755"/>
       <location filename="../src/librssguard/gui/dialogs/formmain.cpp" line="309"/>
       <source>Add new category</source>
-      <translation>新しいカテゴリを追加</translation>
+      <translation>新しいカテゴリーを追加</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="760"/>
@@ -2476,7 +2476,7 @@ QtWebEngine cache folder -&gt; &quot;%7&quot;</translation>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="927"/>
       <source>Rearrange &amp;subcategories alphabetically</source>
-      <translation>サブカテゴリをアルファベット順に並べ替える</translation>
+      <translation>サブカテゴリーをアルファベット順に並べ替える</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="932"/>
@@ -3064,12 +3064,12 @@ You have to restart manually.</source>
     <message>
       <location filename="../src/librssguard/services/standard/gui/formstandardimportexport.ui" line="38"/>
       <source>&amp;Select file</source>
-      <translation type="unfinished">&amp;Select file</translation>
+      <translation>ファイルを選択</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/standard/gui/formstandardimportexport.ui" line="55"/>
       <source>Fetch online metadata</source>
-      <translation type="unfinished">Fetch online metadata</translation>
+      <translation>オンラインメタデータを取得する</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/standard/gui/formstandardimportexport.ui" line="64"/>
@@ -3084,12 +3084,12 @@ You have to restart manually.</source>
     <message>
       <location filename="../src/librssguard/services/standard/gui/formstandardimportexport.ui" line="78"/>
       <source>Optional post-processing script</source>
-      <translation type="unfinished">Optional post-processing script</translation>
+      <translation>オプションの後処理スクリプト</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/standard/gui/formstandardimportexport.ui" line="109"/>
       <source>Root node</source>
-      <translation type="unfinished">Root node</translation>
+      <translation>Root node</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/standard/gui/formstandardimportexport.ui" line="119"/>
@@ -3104,12 +3104,12 @@ You have to restart manually.</source>
     <message>
       <location filename="../src/librssguard/services/standard/gui/formstandardimportexport.ui" line="209"/>
       <source>&amp;Check all feeds</source>
-      <translation type="unfinished">&amp;Check all feeds</translation>
+      <translation>すべてチェック</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/standard/gui/formstandardimportexport.ui" line="216"/>
       <source>&amp;Uncheck all feeds</source>
-      <translation type="unfinished">&amp;Uncheck all feeds</translation>
+      <translation>すべて解除</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/standard/gui/formstandardimportexport.ui" line="226"/>
@@ -5858,7 +5858,7 @@ Login tokens expiration: %2</translation>
       <source>Number of feeds: %1
 Number of categories: %2</source>
       <translation>フィード数： %1
-カテゴリ数： %2</translation>
+カテゴリー数： %2</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/abstract/serviceroot.cpp" line="553"/>
@@ -6287,7 +6287,7 @@ Authors of this application are NOT responsible for lost data.</source>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.cpp" line="28"/>
       <source>Enter format for count of articles displayed next to each feed/category in feed list. Use &quot;%all&quot; and &quot;%unread&quot; strings which are placeholders for the actual count of all (or unread) articles.</source>
-      <translation>フィードリストの各フィード/カテゴリの横に表示される記事数のフォーマットを入力します。&quot;%all&quot; と &quot;%unread&quot; の文字列を使用します。これは、すべて (あるいは未読) の記事をカウントするプレースホルダです。</translation>
+      <translation>フィードリストの各フィード/カテゴリーの横に表示される記事数のフォーマットを入力します。&quot;%all&quot; と &quot;%unread&quot; の文字列を使用します。これは、すべて (あるいは未読) の記事をカウントするプレースホルダです。</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.cpp" line="32"/>
@@ -7141,7 +7141,7 @@ Post-processing script: %3</source>
     <message>
       <location filename="../src/librssguard/services/standard/gui/standardfeeddetails.cpp" line="75"/>
       <source>Use default icon from icon theme</source>
-      <translation type="unfinished">Use default icon from icon theme</translation>
+      <translation>アイコンテーマのデフォルトアイコンを使用する</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/standard/gui/standardfeeddetails.cpp" line="77"/>
