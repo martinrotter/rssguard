@@ -709,7 +709,7 @@ Cliquez-ici pour ouvrir le répertoire parent.</translation>
       <source>uses specific settings (%n minute(s) to next auto-fetching of new articles)</source>
       <extracomment>Describes feed auto-update status.</extracomment>
       <translation>
-        <numerusform>utilise des paramètres particuliers (prochaine obtention automatique des articles dans %n minute(s))</numerusform>
+        <numerusform>Ce flux utilise des paramètres particuliers (prochaine obtention automatique des articles dans %n minute(s))</numerusform>
         <numerusform>utilise des paramètres particuliers (prochaine obtention automatique des articles dans %n minute(s))</numerusform>
       </translation>
     </message>
@@ -747,12 +747,12 @@ Identifiant d&apos;élément: %5</translation>
     <message>
       <location filename="../src/librssguard/gui/feedmessageviewer.cpp" line="31"/>
       <source>Toolbar for feeds</source>
-      <translation>Barre d&apos;outils pour les flux</translation>
+      <translation>Barre d&apos;outils des flux</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/feedmessageviewer.cpp" line="32"/>
       <source>Toolbar for articles</source>
-      <translation>Barre d&apos;outil pour les articles</translation>
+      <translation>Barre d&apos;outil des articles</translation>
     </message>
   </context>
   <context>
@@ -2068,7 +2068,7 @@ comme &amp;non-lus</translation>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="349"/>
       <source>Mark selected item &amp;read</source>
-      <translation>Marquer les éléments 
+      <translation>Marquer les éléments
 sélectionnés comme &amp;lus</translation>
     </message>
     <message>
@@ -2079,7 +2079,7 @@ sélectionnés comme &amp;lus</translation>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="360"/>
       <source>Mark selected item &amp;unread</source>
-      <translation>Marquer les éléments 
+      <translation>Marquer les éléments
 sélectionnés comme &amp;non-lus</translation>
     </message>
     <message>
@@ -2095,7 +2095,7 @@ sélectionnés comme &amp;non-lus</translation>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="379"/>
       <source>&amp;Clean selected item</source>
-      <translation>&amp;Nettoyer l&apos;élément 
+      <translation>&amp;Nettoyer l&apos;élément
 sélectionné</translation>
     </message>
     <message>
@@ -2345,7 +2345,7 @@ l&apos;élément selectionné</translation>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="742"/>
       <source>&amp;Delete selected account</source>
-      <translation>&amp;Supprimer le compte 
+      <translation>&amp;Supprimer le compte
 sélectionné</translation>
     </message>
     <message>
@@ -2533,7 +2533,8 @@ recherche d&apos;articles</translation>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="750"/>
       <location filename="../src/librssguard/gui/dialogs/formmain.cpp" line="319"/>
       <source>Add new feed</source>
-      <translation>Ajouter un nouveau flux</translation>
+      <translation>Ajouter un
+nouveau flux</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.cpp" line="370"/>
@@ -5402,7 +5403,7 @@ Feedly est un éspace sécurisé où vous pouvez organiser et rechercher les suj
     <message>
       <location filename="../src/librssguard/miscellaneous/notification.cpp" line="142"/>
       <source>New %1 version is available</source>
-      <translation>Une nouvelle %1 version est disponible</translation>
+      <translation>Une nouvelle version d'%1 est disponible</translation>
     </message>
     <message>
       <location filename="../src/librssguard/miscellaneous/notification.cpp" line="145"/>
@@ -6374,7 +6375,7 @@ Les auteurs de cette appli NE SONT PAS responsables d'éventuelles pertes de don
     <message>
       <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="79"/>
       <source>Only auto-fetch articles if application is unfocused</source>
-      <translation>Auto-obtenir les articles que si l&apos;appli n&apos;est pas au premier plan</translation>
+      <translation>Obtenir les articles automatiquement que si l&apos;appli n&apos;est pas au premier plan</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="93"/>
@@ -6626,7 +6627,7 @@ Les auteurs de cette appli NE SONT PAS responsables d'éventuelles pertes de don
     <message>
       <location filename="../src/librssguard/gui/settings/settingsgui.cpp" line="175"/>
       <source>no icon theme</source>
-      <translation>aucun thême d&apos;icône</translation>
+      <translation>Aucun thême d&apos;icône</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsgui.cpp" line="156"/>
@@ -6758,7 +6759,7 @@ Déscription: %3</translation>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsgui.ui" line="259"/>
       <source>Open new tabs with left mouse button double-click on tab bar</source>
-      <translation>Ouvrir de nouveaux onglets avec le double clic gauche de la souris sur la barre des onglets</translation>
+      <translation>Ouvrir de nouveaux onglets avec le double-clic gauche de la souris sur la barre des onglets</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsgui.ui" line="266"/>
@@ -6773,12 +6774,12 @@ Déscription: %3</translation>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsgui.ui" line="300"/>
       <source>Toolbar for feeds list</source>
-      <translation>Barre d&apos;outil pour la liste de flux</translation>
+      <translation>Barre d&apos;outils de la liste de flux</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsgui.ui" line="305"/>
       <source>Toolbar for articles list</source>
-      <translation>Barre d&apos;outil pour la liste d&apos;articles</translation>
+      <translation>Barre d&apos;outils de la liste d&apos;articles</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsgui.ui" line="310"/>
@@ -6950,7 +6951,7 @@ Et aussi, redémarrez la fenêtre &quot;Paramètres&quot; après avoir installé
 Also, there are some built-in sounds. Just start typing &quot;:&quot; and they will show up.</source>
       <translation>Vous devez avoir &quot;icône sur la barre d&apos;icônes&quot; activé pour que les notifications de type ballons fonctionnent.
 
-Aussi, il y a des sons pre-ajoutés. Si vous tapez &quot;:&quot;, ils se présenteront.</translation>
+Aussi, il y a des sons pré-ajoutés. Si vous tapez &quot;:&quot;, ils se présenteront.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsnotifications.ui" line="17"/>
@@ -7118,7 +7119,7 @@ Script de post-traitement: %3</translation>
     <message>
       <location filename="../src/librssguard/services/standard/standardfeed.cpp" line="205"/>
       <source>Cannot save data for feed: %1</source>
-      <translation>Impossible de sauvegarder les données pour le flux: %1</translation>
+      <translation>Impossible d'obtenir les métadonnées de ce flux: %1</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/standard/standardfeed.cpp" line="294"/>
@@ -7695,7 +7696,7 @@ Actualités non-lus: %2</translation>
     <message>
       <location filename="../src/librssguard/gui/toolbars/toolbareditor.ui" line="32"/>
       <source>Activated actions</source>
-      <translation>Actions ajoutées</translation>
+      <translation>Actions affichées</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/toolbars/toolbareditor.ui" line="39"/>
