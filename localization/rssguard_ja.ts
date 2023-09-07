@@ -2005,7 +2005,7 @@ QtWebEngine cache folder -&gt; &quot;%7&quot;</translation>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="289"/>
       <source>Fetch &amp;selected</source>
-      <translation>選択したものを取得</translation>
+      <translation>選択して取得</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="292"/>
@@ -2130,7 +2130,7 @@ QtWebEngine cache folder -&gt; &quot;%7&quot;</translation>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="437"/>
       <source>View selected item in &amp;newspaper mode</source>
-      <translation>新聞記事モードで選択したアイテムを表示</translation>
+      <translation>新聞記事モードでアイテムを表示</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="440"/>
@@ -2913,7 +2913,7 @@ You have to restart manually.</source>
     <message>
       <location filename="../src/librssguard/services/standard/gui/formstandardfeeddetails.cpp" line="26"/>
       <source>Network</source>
-      <translation type="unfinished">Network</translation>
+      <translation>ネットワーク</translation>
     </message>
   </context>
   <context>
@@ -6905,7 +6905,7 @@ Also, relaunch &quot;Settings&quot; dialog after you install Node.js.</source>
 Also, there are some built-in sounds. Just start typing &quot;:&quot; and they will show up.</source>
       <translation>バルーン通知を有効にするには、&quot;トレイアイコン&quot;を有効にする必要があります。
 
-また、いくつかのサウンドが内蔵されている。&quot;:&quot; と入力し始めるだけで表示されます。</translation>
+また、いくつかのサウンドが内蔵されています。&quot;:&quot; と入力し始めるだけで表示されます。</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsnotifications.ui" line="17"/>
