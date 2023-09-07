@@ -7144,7 +7144,7 @@ Script de post-traitement: %3</translation>
     <message>
       <location filename="../src/librssguard/services/standard/standardfeed.cpp" line="204"/>
       <source>Cannot save feed data</source>
-      <translation>Impossible de sauvegarder les données du flux</translation>
+      <translation>Impossible d'obtenir les métadonnées de flux</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/standard/standardfeed.cpp" line="476"/>
