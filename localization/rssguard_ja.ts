@@ -5988,7 +5988,7 @@ File filter for external e-mail selection dialog.</extracomment>
       <location filename="../src/librssguard/gui/settings/settingsbrowsermail.ui" line="151"/>
       <location filename="../src/librssguard/gui/settings/settingsbrowsermail.ui" line="268"/>
       <source>Parameters passed to executable</source>
-      <translation type="unfinished">Parameters passed to executable</translation>
+      <translation>実行可能ファイルに渡されたパラメータ</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsbrowsermail.ui" line="158"/>
@@ -6287,7 +6287,7 @@ Authors of this application are NOT responsible for lost data.</source>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.cpp" line="28"/>
       <source>Enter format for count of articles displayed next to each feed/category in feed list. Use &quot;%all&quot; and &quot;%unread&quot; strings which are placeholders for the actual count of all (or unread) articles.</source>
-      <translation type="unfinished">Enter format for count of articles displayed next to each feed/category in feed list. Use &quot;%all&quot; and &quot;%unread&quot; strings which are placeholders for the actual count of all (or unread) articles.</translation>
+      <translation>フィードリストの各フィード/カテゴリの横に表示される記事数のフォーマットを入力します。&quot;%all&quot; と &quot;%unread&quot; の文字列を使用します。これは、すべて (あるいは未読) の記事をカウントするプレースホルダです。</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.cpp" line="32"/>
@@ -6464,7 +6464,7 @@ Authors of this application are NOT responsible for lost data.</source>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="446"/>
       <source>Articles list</source>
-      <translation type="unfinished">Articles list</translation>
+      <translation>記事リスト</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="452"/>
@@ -6941,7 +6941,7 @@ Also, there are some built-in sounds. Just start typing &quot;:&quot; and they w
     <message>
       <location filename="../src/librssguard/dynamic-shortcuts/shortcutcatcher.cpp" line="35"/>
       <source>Click and hit new shortcut.</source>
-      <translation type="unfinished">Click and hit new shortcut.</translation>
+      <translation>クリックして新しいショートカットを押してください</translation>
     </message>
   </context>
   <context>
