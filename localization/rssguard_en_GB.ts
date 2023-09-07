@@ -7119,7 +7119,7 @@ Post-processing script: %3</translation>
     <message>
       <location filename="../src/librssguard/services/standard/standardfeed.cpp" line="204"/>
       <source>Cannot save feed data</source>
-      <translation>Can&apos;t save feed data</translation>
+      <translation>Can&apos;t fetch feed metadata</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/standard/standardfeed.cpp" line="476"/>
