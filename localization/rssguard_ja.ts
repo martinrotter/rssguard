@@ -694,16 +694,16 @@ Click here to open parent directory.</translation>
     <message numerus="yes">
       <location filename="../src/librssguard/services/abstract/feed.cpp" line="272"/>
       <source>uses global settings (%n minute(s) to next auto-fetch of articles)</source>
-      <translation type="unfinished">
-        <numerusform>uses global settings (%n minute(s) to next auto-fetch of articles)</numerusform>
+      <translation>
+        <numerusform>グローバル設定を使用 (次の記事の自動取得まで %n 分)</numerusform>
       </translation>
     </message>
     <message numerus="yes">
       <location filename="../src/librssguard/services/abstract/feed.cpp" line="286"/>
       <source>uses specific settings (%n minute(s) to next auto-fetching of new articles)</source>
       <extracomment>Describes feed auto-update status.</extracomment>
-      <translation type="unfinished">
-        <numerusform>uses specific settings (%n minute(s) to next auto-fetching of new articles)</numerusform>
+      <translation>
+        <numerusform>個別設定を使用 (次の記事の自動取得まで %n 分)</numerusform>
       </translation>
     </message>
     <message>
@@ -7157,19 +7157,19 @@ Post-processing script: %3</source>
     <message>
       <location filename="../src/librssguard/services/standard/gui/standardfeeddetails.cpp" line="151"/>
       <source>Icon fetched successfully.</source>
-      <translation type="unfinished">Icon fetched successfully.</translation>
+      <translation>アイコンの取得に成功しました。</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/standard/gui/standardfeeddetails.cpp" line="152"/>
       <source>Icon metadata fetched.</source>
-      <translation type="unfinished">Icon metadata fetched.</translation>
+      <translation>アイコンのメタデータを取得しました。</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/standard/gui/standardfeeddetails.cpp" line="160"/>
       <location filename="../src/librssguard/services/standard/gui/standardfeeddetails.cpp" line="165"/>
       <location filename="../src/librssguard/services/standard/gui/standardfeeddetails.cpp" line="170"/>
       <source>No icon fetched.</source>
-      <translation type="unfinished">No icon fetched.</translation>
+      <translation>アイコンは取得されませんでした。</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/standard/gui/standardfeeddetails.cpp" line="207"/>
@@ -7179,14 +7179,14 @@ Post-processing script: %3</source>
     <message>
       <location filename="../src/librssguard/services/standard/gui/standardfeeddetails.cpp" line="208"/>
       <source>Feed and icon metadata fetched.</source>
-      <translation type="unfinished">Feed and icon metadata fetched.</translation>
+      <translation>フィードとアイコンのメタデータを取得しました。</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/standard/gui/standardfeeddetails.cpp" line="216"/>
       <location filename="../src/librssguard/services/standard/gui/standardfeeddetails.cpp" line="221"/>
       <location filename="../src/librssguard/services/standard/gui/standardfeeddetails.cpp" line="226"/>
       <source>No metadata fetched.</source>
-      <translation type="unfinished">No metadata fetched.</translation>
+      <translation>メタデータは取得されませんでした。</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/standard/gui/standardfeeddetails.cpp" line="232"/>
@@ -7283,12 +7283,12 @@ Post-processing script: %3</source>
       <location filename="../src/librssguard/services/standard/gui/standardfeeddetails.cpp" line="267"/>
       <location filename="../src/librssguard/services/standard/gui/standardfeeddetails.cpp" line="271"/>
       <source>The source is ok.</source>
-      <translation type="unfinished">The source is ok.</translation>
+      <translation>ソースはOKです。</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/standard/gui/standardfeeddetails.cpp" line="264"/>
       <source>The source is empty.</source>
-      <translation type="unfinished">The source is empty.</translation>
+      <translation>ソースは空です。</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/standard/gui/standardfeeddetails.cpp" line="277"/>
