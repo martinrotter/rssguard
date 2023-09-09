@@ -6297,13 +6297,13 @@ Authors of this application are NOT responsible for lost data.</source>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.cpp" line="52"/>
       <source>days (turned off)</source>
-      <translation>日 (オフ)</translation>
+      <translation>日数（使用しない）</translation>
     </message>
     <message numerus="yes">
       <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.cpp" line="55"/>
       <source>day(s)</source>
       <translation>
-        <numerusform>日</numerusform>
+        <numerusform>日まで</numerusform>
       </translation>
     </message>
     <message>
@@ -6499,7 +6499,7 @@ Authors of this application are NOT responsible for lost data.</source>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="586"/>
       <source>Show relative time for articles not older than</source>
-      <translation>より以前の記事を相対時間で表示する</translation>
+      <translation>記事を相対時間で表示する</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.h" line="34"/>
