@@ -4554,7 +4554,7 @@ Login tokens expiration: %2</translation>
     <message>
       <location filename="../src/librssguard/core/messagesmodel.cpp" line="365"/>
       <source>yesterday</source>
-      <translation type="unfinished">yesterday</translation>
+      <translation>昨日</translation>
     </message>
     <message numerus="yes">
       <location filename="../src/librssguard/core/messagesmodel.cpp" line="369"/>
@@ -6297,13 +6297,13 @@ Authors of this application are NOT responsible for lost data.</source>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.cpp" line="52"/>
       <source>days (turned off)</source>
-      <translation type="unfinished">days (turned off)</translation>
+      <translation>日前 (オフ)</translation>
     </message>
     <message numerus="yes">
       <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.cpp" line="55"/>
       <source>day(s)</source>
-      <translation type="unfinished">
-        <numerusform>day(s)</numerusform>
+      <translation>
+        <numerusform>日前</numerusform>
       </translation>
     </message>
     <message>
