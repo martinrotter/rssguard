@@ -4533,22 +4533,22 @@ Login tokens expiration: %2</translation>
     <message numerus="yes">
       <location filename="../src/librssguard/core/messagesmodel.cpp" line="353"/>
       <source>%n months ago</source>
-      <translation type="unfinished">
-        <numerusform>%n months ago</numerusform>
+      <translation>
+        <numerusform>%n ヶ月前</numerusform>
       </translation>
     </message>
     <message numerus="yes">
       <location filename="../src/librssguard/core/messagesmodel.cpp" line="357"/>
       <source>%n weeks ago</source>
-      <translation type="unfinished">
-        <numerusform>%n weeks ago</numerusform>
+      <translation>
+        <numerusform>%n 週間前</numerusform>
       </translation>
     </message>
     <message numerus="yes">
       <location filename="../src/librssguard/core/messagesmodel.cpp" line="361"/>
       <source>%n days ago</source>
-      <translation type="unfinished">
-        <numerusform>%n days ago</numerusform>
+      <translation>
+        <numerusform>%n 日前</numerusform>
       </translation>
     </message>
     <message>
@@ -6048,17 +6048,17 @@ File filter for external e-mail selection dialog.</extracomment>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsbrowsermail.ui" line="339"/>
       <source>&amp;Add tool</source>
-      <translation type="unfinished">&amp;Add tool</translation>
+      <translation>ツールを追加</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsbrowsermail.ui" line="349"/>
       <source>&amp;Edit selected tool</source>
-      <translation type="unfinished">&amp;Edit selected tool</translation>
+      <translation>選択したツールを編集</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsbrowsermail.ui" line="359"/>
       <source>&amp;Delete selected tool</source>
-      <translation type="unfinished">&amp;Delete selected tool</translation>
+      <translation>選択したツールを削除</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsbrowsermail.cpp" line="33"/>
@@ -6297,19 +6297,19 @@ Authors of this application are NOT responsible for lost data.</source>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.cpp" line="52"/>
       <source>days (turned off)</source>
-      <translation>日前 (オフ)</translation>
+      <translation>日 (オフ)</translation>
     </message>
     <message numerus="yes">
       <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.cpp" line="55"/>
       <source>day(s)</source>
       <translation>
-        <numerusform>日前</numerusform>
+        <numerusform>日</numerusform>
       </translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.cpp" line="61"/>
       <source> = unchanged size</source>
-      <translation type="unfinished"> = unchanged size</translation>
+      <translation> = サイズ変更なし</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="21"/>
@@ -6339,7 +6339,7 @@ Authors of this application are NOT responsible for lost data.</source>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="109"/>
       <source>Connection timeout is time interval which is reserved for downloading new messages for the feed. If this time interval elapses, then download process is aborted.</source>
-      <translation type="unfinished">Connection timeout is time interval which is reserved for downloading new messages for the feed. If this time interval elapses, then download process is aborted.</translation>
+      <translation>接続タイムアウトは、フィードの新しいメッセージをダウンロードするために予約されている時間間隔です。この時間間隔が経過したすると、ダウンロードプロセスは中止されます。</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="112"/>
