@@ -1016,7 +1016,7 @@ Item ID: %5</source>
     <message>
       <location filename="../src/librssguard/gui/toolbars/feedstoolbar.cpp" line="118"/>
       <source>Everywhere</source>
-      <translation type="unfinished">Everywhere</translation>
+      <translation>全体</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/toolbars/feedstoolbar.cpp" line="119"/>
@@ -4596,7 +4596,7 @@ Login tokens expiration: %2</translation>
     <message>
       <location filename="../src/librssguard/gui/toolbars/messagestoolbar.cpp" line="217"/>
       <source>Everywhere</source>
-      <translation type="unfinished">Everywhere</translation>
+      <translation>全体</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/toolbars/messagestoolbar.cpp" line="218"/>
@@ -5792,7 +5792,7 @@ Login tokens expiration: %2</translation>
     <message>
       <location filename="../src/librssguard/gui/reusable/searchlineedit.cpp" line="101"/>
       <source>Fixed text</source>
-      <translation type="unfinished">Fixed text</translation>
+      <translation>固定テキスト</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/reusable/searchlineedit.cpp" line="104"/>
