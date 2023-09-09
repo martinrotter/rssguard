@@ -2130,7 +2130,7 @@ QtWebEngineキャッシュフォルダ -&gt; &quot;%7&quot;</translation>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="437"/>
       <source>View selected item in &amp;newspaper mode</source>
-      <translation>新聞記事モードでアイテムを表示</translation>
+      <translation>新聞モードでアイテムを表示</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="440"/>
@@ -7013,7 +7013,7 @@ Also, there are some built-in sounds. Just start typing &quot;:&quot; and they w
     <message>
       <location filename="../src/librssguard/miscellaneous/skinfactory.cpp" line="296"/>
       <source>Newspaper view</source>
-      <translation type="unfinished">Newspaper view</translation>
+      <translation>新聞ビュー</translation>
     </message>
   </context>
   <context>
@@ -7557,7 +7557,7 @@ Unread news: %2</translation>
     <message>
       <location filename="../src/librssguard/gui/tabwidget.cpp" line="214"/>
       <source>Newspaper view</source>
-      <translation type="unfinished">Newspaper view</translation>
+      <translation>新聞ビュー</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/tabwidget.cpp" line="238"/>
