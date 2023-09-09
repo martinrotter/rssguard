@@ -5429,37 +5429,37 @@ List of supported readers:</source>
     <message>
       <location filename="../src/librssguard/miscellaneous/skinfactory.cpp" line="597"/>
       <source>interesting stuff</source>
-      <translation type="unfinished">interesting stuff</translation>
+      <translation>未読の記事の色</translation>
     </message>
     <message>
       <location filename="../src/librssguard/miscellaneous/skinfactory.cpp" line="600"/>
       <source>interesting stuff (highlighted)</source>
-      <translation type="unfinished">interesting stuff (highlighted)</translation>
+      <translation>未読の記事の色 (フォーカスがあるとき)</translation>
     </message>
     <message>
       <location filename="../src/librssguard/miscellaneous/skinfactory.cpp" line="603"/>
       <source>errored items</source>
-      <translation type="unfinished">errored items</translation>
+      <translation>エラーアイテムの色</translation>
     </message>
     <message>
       <location filename="../src/librssguard/miscellaneous/skinfactory.cpp" line="606"/>
       <source>errored items (highlighted)</source>
-      <translation type="unfinished">errored items (highlighted)</translation>
+      <translation>エラーアイテムの色 (フォーカスがあるとき)</translation>
     </message>
     <message>
       <location filename="../src/librssguard/miscellaneous/skinfactory.cpp" line="609"/>
       <source>items with new articles</source>
-      <translation type="unfinished">items with new articles</translation>
+      <translation>新しい記事があるアイテムの色</translation>
     </message>
     <message>
       <location filename="../src/librssguard/miscellaneous/skinfactory.cpp" line="612"/>
       <source>items with new articles (highlighted)</source>
-      <translation type="unfinished">items with new articles (highlighted)</translation>
+      <translation>新しい記事があるアイテムの色 (フォーカスがあるとき)</translation>
     </message>
     <message>
       <location filename="../src/librssguard/miscellaneous/skinfactory.cpp" line="615"/>
       <source>OK-ish color</source>
-      <translation type="unfinished">OK-ish color</translation>
+      <translation>OKっぽい色</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/tt-rss/ttrssnetworkfactory.cpp" line="983"/>
@@ -5787,7 +5787,7 @@ Login tokens expiration: %2</translation>
     <message>
       <location filename="../src/librssguard/gui/reusable/searchlineedit.cpp" line="30"/>
       <source>Case-sensitive</source>
-      <translation type="unfinished">Case-sensitive</translation>
+      <translation>大文字と小文字を区別する</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/reusable/searchlineedit.cpp" line="101"/>
@@ -5797,7 +5797,7 @@ Login tokens expiration: %2</translation>
     <message>
       <location filename="../src/librssguard/gui/reusable/searchlineedit.cpp" line="104"/>
       <source>Wildcard</source>
-      <translation type="unfinished">Wildcard</translation>
+      <translation>ワイルドカード</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/reusable/searchlineedit.cpp" line="107"/>
