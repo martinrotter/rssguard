@@ -2270,7 +2270,7 @@ QtWebEngineキャッシュフォルダ -&gt; &quot;%7&quot;</translation>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="645"/>
       <source>Send selected articles via e-mail</source>
-      <translation>選択した記事をe-mailで送信</translation>
+      <translation>選択した記事を電子メールで送信</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="653"/>
@@ -5898,7 +5898,7 @@ File filter for external e-mail selection dialog.</extracomment>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsbrowsermail.cpp" line="150"/>
       <source>Select e-mail executable</source>
-      <translation type="unfinished">Select e-mail executable</translation>
+      <translation>電子メール実行可能ファイルを選択</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsbrowsermail.cpp" line="176"/>
@@ -6019,7 +6019,7 @@ File filter for external e-mail selection dialog.</extracomment>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsbrowsermail.ui" line="221"/>
       <source>E-mail client executable</source>
-      <translation>E-mail client executable</translation>
+      <translation>電子メール クライアント実行可能ファイル</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsbrowsermail.ui" line="236"/>
@@ -6581,12 +6581,12 @@ Authors of this application are NOT responsible for lost data.</source>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsgui.cpp" line="175"/>
       <source>no icon theme</source>
-      <translation type="unfinished">no icon theme</translation>
+      <translation>アイコンテーマなし</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsgui.cpp" line="156"/>
       <source>(Your OS does not support tray icons at the moment.)</source>
-      <translation type="unfinished">(Your OS does not support tray icons at the moment.)</translation>
+      <translation>(お使いのOSは現在トレイアイコンをサポートしていません)</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsgui.cpp" line="33"/>
@@ -6604,10 +6604,10 @@ Authors of this application are NOT responsible for lost data.</source>
 
 Version: %2
 Description: %3</source>
-      <translation type="unfinished">%1
+      <translation>%1
 
-Version: %2
-Description: %3</translation>
+バージョン: %2
+説明: %3</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsgui.cpp" line="302"/>
