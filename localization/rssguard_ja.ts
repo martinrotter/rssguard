@@ -333,7 +333,7 @@ version by clicking this popup notification.</source>
     <message>
       <location filename="../src/librssguard/gui/reusable/colortoolbutton.cpp" line="19"/>
       <source>Select new color</source>
-      <translation type="unfinished">Select new color</translation>
+      <translation>新しい色を選択</translation>
     </message>
   </context>
   <context>
@@ -442,7 +442,7 @@ version by clicking this popup notification.</source>
     <message>
       <location filename="../src/librssguard/network-web/downloadmanager.cpp" line="110"/>
       <source>Select destination for downloaded file</source>
-      <translation type="unfinished">Select destination for downloaded file</translation>
+      <translation>ダウンロードしたファイルの保存先を選択する</translation>
     </message>
     <message>
       <location filename="../src/librssguard/network-web/downloadmanager.cpp" line="298"/>
@@ -694,16 +694,16 @@ Click here to open parent directory.</translation>
     <message numerus="yes">
       <location filename="../src/librssguard/services/abstract/feed.cpp" line="272"/>
       <source>uses global settings (%n minute(s) to next auto-fetch of articles)</source>
-      <translation type="unfinished">
-        <numerusform>uses global settings (%n minute(s) to next auto-fetch of articles)</numerusform>
+      <translation>
+        <numerusform>グローバル設定を使用 (次の記事の自動取得まで %n 分)</numerusform>
       </translation>
     </message>
     <message numerus="yes">
       <location filename="../src/librssguard/services/abstract/feed.cpp" line="286"/>
       <source>uses specific settings (%n minute(s) to next auto-fetching of new articles)</source>
       <extracomment>Describes feed auto-update status.</extracomment>
-      <translation type="unfinished">
-        <numerusform>uses specific settings (%n minute(s) to next auto-fetching of new articles)</numerusform>
+      <translation>
+        <numerusform>個別設定を使用 (次の記事の自動取得まで %n 分)</numerusform>
       </translation>
     </message>
     <message>
@@ -1016,7 +1016,7 @@ Item ID: %5</source>
     <message>
       <location filename="../src/librssguard/gui/toolbars/feedstoolbar.cpp" line="118"/>
       <source>Everywhere</source>
-      <translation type="unfinished">Everywhere</translation>
+      <translation>全体</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/toolbars/feedstoolbar.cpp" line="119"/>
@@ -1179,23 +1179,23 @@ Skins base folder -&gt; &quot;%4&quot;
 Icon themes base folder -&gt; &quot;%8&quot;
 Node.js package folder -&gt; &quot;%6&quot;
 QtWebEngine cache folder -&gt; &quot;%7&quot;</source>
-      <translation type="unfinished">User data folder (&quot;%5&quot;) -&gt; &quot;%1&quot;
+      <translation>ユーザーデータフォルダ (&quot;%5&quot;) -&gt; &quot;%1&quot;
 
-Settings file (%3) -&gt; &quot;%2&quot;
-Skins base folder -&gt; &quot;%4&quot;
-Icon themes base folder -&gt; &quot;%8&quot;
-Node.js package folder -&gt; &quot;%6&quot;
-QtWebEngine cache folder -&gt; &quot;%7&quot;</translation>
+設定ファイル (%3) -&gt; &quot;%2&quot;
+スキンベースフォルダ -&gt; &quot;%4&quot;
+アイコンテーマベースフォルダ -&gt; &quot;%8&quot;
+Node.jsパッケージフォルダ -&gt; &quot;%6&quot;
+QtWebEngineキャッシュフォルダ -&gt; &quot;%7&quot;</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formabout.cpp" line="124"/>
       <source>&lt;body&gt;%5 is a (very) tiny feed reader.&lt;br&gt;&lt;br&gt;This software is distributed under the terms of GNU General Public License, version 3.&lt;br&gt;&lt;br&gt;Contacts:&lt;ul&gt;&lt;li&gt;&lt;a href=&quot;mailto://%1&quot;&gt;%1&lt;/a&gt; ~e-mail&lt;/li&gt;&lt;li&gt;&lt;a href=&quot;%2&quot;&gt;%2&lt;/a&gt; ~website&lt;/li&gt;&lt;/ul&gt;You can obtain source code for %5 from its website.&lt;br&gt;&lt;br&gt;&lt;br&gt;Copyright (C) 2011-%3 %4&lt;/body&gt;</source>
-      <translation type="unfinished">&lt;body&gt;%5 is a (very) tiny feed reader.&lt;br&gt;&lt;br&gt;This software is distributed under the terms of GNU General Public License, version 3.&lt;br&gt;&lt;br&gt;Contacts:&lt;ul&gt;&lt;li&gt;&lt;a href=&quot;mailto://%1&quot;&gt;%1&lt;/a&gt; ~e-mail&lt;/li&gt;&lt;li&gt;&lt;a href=&quot;%2&quot;&gt;%2&lt;/a&gt; ~website&lt;/li&gt;&lt;/ul&gt;You can obtain source code for %5 from its website.&lt;br&gt;&lt;br&gt;&lt;br&gt;Copyright (C) 2011-%3 %4&lt;/body&gt;</translation>
+      <translation>&lt;body&gt;%5 は(とても)小さなフィードリーダーです。&lt;br&gt;&lt;br&gt;本ソフトウェアはGNU General Public License, version 3の下で配布されています。&lt;br&gt;&lt;br&gt;問い合わせ:&lt;ul&gt;&lt;li&gt;&lt;a href=&quot;mailto://%1&quot;&gt;%1&lt;/a&gt; ~e-mail&lt;/li&gt;&lt;li&gt;&lt;a href=&quot;%2&quot;&gt;%2&lt;/a&gt; ~website&lt;/li&gt;&lt;/ul&gt;%5 のソースコードはウェブサイトから入手できます。&lt;br&gt;&lt;br&gt;&lt;br&gt;Copyright (C) 2011-%3 %4&lt;/body&gt;</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formabout.cpp" line="108"/>
       <source>&lt;b&gt;%8&lt;/b&gt;&lt;br&gt;&lt;b&gt;Version:&lt;/b&gt; %1 (built on %2/%3)&lt;br&gt;&lt;b&gt;Revision:&lt;/b&gt; %4&lt;br&gt;&lt;b&gt;Build date:&lt;/b&gt; %5&lt;br&gt;&lt;b&gt;Qt:&lt;/b&gt; %6 (compiled against %7)&lt;br&gt;</source>
-      <translation type="unfinished">&lt;b&gt;%8&lt;/b&gt;&lt;br&gt;&lt;b&gt;Version:&lt;/b&gt; %1 (built on %2/%3)&lt;br&gt;&lt;b&gt;Revision:&lt;/b&gt; %4&lt;br&gt;&lt;b&gt;Build date:&lt;/b&gt; %5&lt;br&gt;&lt;b&gt;Qt:&lt;/b&gt; %6 (compiled against %7)&lt;br&gt;</translation>
+      <translation>&lt;b&gt;%8&lt;/b&gt;&lt;br&gt;&lt;b&gt;Version:&lt;/b&gt; %1 (built on %2/%3)&lt;br&gt;&lt;b&gt;Revision:&lt;/b&gt; %4&lt;br&gt;&lt;b&gt;Build date:&lt;/b&gt; %5&lt;br&gt;&lt;b&gt;Qt:&lt;/b&gt; %6 (compiled against %7)&lt;br&gt;</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formabout.cpp" line="49"/>
@@ -1220,7 +1220,7 @@ QtWebEngine cache folder -&gt; &quot;%7&quot;</translation>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formabout.ui" line="159"/>
       <source>Licenses page is available only in English language.</source>
-      <translation>ライセンスのページは英語のみとなります</translation>
+      <translation>ライセンスページは英語のみとなります。</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formabout.ui" line="167"/>
@@ -1230,7 +1230,7 @@ QtWebEngine cache folder -&gt; &quot;%7&quot;</translation>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formabout.ui" line="199"/>
       <source>Changelog page is available only in English language.</source>
-      <translation type="unfinished">Changelog page is available only in English language.</translation>
+      <translation>変更履歴ページは英語のみとなります。</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formabout.ui" line="207"/>
@@ -1307,12 +1307,12 @@ QtWebEngine cache folder -&gt; &quot;%7&quot;</translation>
     <message>
       <location filename="../src/librssguard/services/abstract/gui/formaddeditlabel.cpp" line="12"/>
       <source>Name for your label</source>
-      <translation type="unfinished">Name for your label</translation>
+      <translation>ラベルの名前</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/abstract/gui/formaddeditlabel.cpp" line="18"/>
       <source>Label&apos;s name cannot be empty.</source>
-      <translation type="unfinished">Label&apos;s name cannot be empty.</translation>
+      <translation>ラベル名を空にすることはできません。</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/abstract/gui/formaddeditlabel.cpp" line="21"/>
@@ -1332,7 +1332,7 @@ QtWebEngine cache folder -&gt; &quot;%7&quot;</translation>
     <message>
       <location filename="../src/librssguard/services/abstract/gui/formaddeditlabel.cpp" line="46"/>
       <source>Edit label &apos;%1&apos;</source>
-      <translation type="unfinished">Edit label &apos;%1&apos;</translation>
+      <translation>ラベルを編集 &apos;%1&apos;</translation>
     </message>
   </context>
   <context>
@@ -1340,7 +1340,7 @@ QtWebEngine cache folder -&gt; &quot;%7&quot;</translation>
     <message>
       <location filename="../src/librssguard/services/abstract/gui/formaddeditprobe.cpp" line="12"/>
       <source>Name for your query</source>
-      <translation type="unfinished">Name for your query</translation>
+      <translation>クエリの名前</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/abstract/gui/formaddeditprobe.cpp" line="13"/>
@@ -1360,7 +1360,7 @@ QtWebEngine cache folder -&gt; &quot;%7&quot;</translation>
     <message>
       <location filename="../src/librssguard/services/abstract/gui/formaddeditprobe.cpp" line="25"/>
       <source>Regex query name cannot be empty.</source>
-      <translation type="unfinished">Regex query name cannot be empty.</translation>
+      <translation>正規表現のクエリ名を空にすることはできません</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/abstract/gui/formaddeditprobe.cpp" line="28"/>
@@ -1381,7 +1381,7 @@ QtWebEngine cache folder -&gt; &quot;%7&quot;</translation>
     <message>
       <location filename="../src/librssguard/services/abstract/gui/formaddeditprobe.cpp" line="70"/>
       <source>Edit regex query &apos;%1&apos;</source>
-      <translation type="unfinished">Edit regex query &apos;%1&apos;</translation>
+      <translation>正規表現クエリを編集 &apos;%1&apos;</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/abstract/gui/formaddeditprobe.cpp" line="37"/>
@@ -1497,12 +1497,12 @@ QtWebEngine cache folder -&gt; &quot;%7&quot;</translation>
     <message>
       <location filename="../src/librssguard/services/abstract/gui/formcategorydetails.cpp" line="123"/>
       <source>Category name is ok.</source>
-      <translation type="unfinished">Category name is ok.</translation>
+      <translation>カテゴリー名はOKです</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/abstract/gui/formcategorydetails.cpp" line="127"/>
       <source>Category name is too short.</source>
-      <translation>カテゴリー名が短すぎます。</translation>
+      <translation>カテゴリ名が短すぎます。</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/abstract/gui/formcategorydetails.cpp" line="133"/>
@@ -1512,12 +1512,12 @@ QtWebEngine cache folder -&gt; &quot;%7&quot;</translation>
     <message>
       <location filename="../src/librssguard/services/abstract/gui/formcategorydetails.cpp" line="136"/>
       <source>The description is ok.</source>
-      <translation type="unfinished">The description is ok.</translation>
+      <translation>説明はOKです</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/abstract/gui/formcategorydetails.cpp" line="151"/>
       <source>Select icon file for the category</source>
-      <translation type="unfinished">Select icon file for the category</translation>
+      <translation>カテゴリーのアイコンファイルを選択</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/abstract/gui/formcategorydetails.cpp" line="153"/>
@@ -1538,17 +1538,17 @@ QtWebEngine cache folder -&gt; &quot;%7&quot;</translation>
       <location filename="../src/librssguard/services/abstract/gui/formcategorydetails.cpp" line="163"/>
       <source>Look in:</source>
       <extracomment>Label to describe the folder for icon file selection dialog.</extracomment>
-      <translation type="unfinished">Look in:</translation>
+      <translation>参照:</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/abstract/gui/formcategorydetails.cpp" line="164"/>
       <source>Icon name:</source>
-      <translation type="unfinished">Icon name:</translation>
+      <translation>アイコン名:</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/abstract/gui/formcategorydetails.cpp" line="165"/>
       <source>Icon type:</source>
-      <translation type="unfinished">Icon type:</translation>
+      <translation>アイコンタイプ:</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/abstract/gui/formcategorydetails.cpp" line="181"/>
@@ -1588,7 +1588,7 @@ QtWebEngine cache folder -&gt; &quot;%7&quot;</translation>
     <message>
       <location filename="../src/librssguard/services/abstract/gui/formcategorydetails.cpp" line="79"/>
       <source>Edit &quot;%1&quot;</source>
-      <translation type="unfinished">Edit &quot;%1&quot;</translation>
+      <translation>編集 &quot;%1&quot;</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/abstract/gui/formcategorydetails.ui" line="31"/>
@@ -1598,7 +1598,7 @@ QtWebEngine cache folder -&gt; &quot;%7&quot;</translation>
     <message>
       <location filename="../src/librssguard/services/abstract/gui/formcategorydetails.ui" line="41"/>
       <source>Select parent item for your category.</source>
-      <translation type="unfinished">Select parent item for your category.</translation>
+      <translation>カテゴリの親アイテムを選択してください。</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/abstract/gui/formcategorydetails.ui" line="54"/>
@@ -1784,7 +1784,7 @@ QtWebEngine cache folder -&gt; &quot;%7&quot;</translation>
     <message>
       <location filename="../src/librssguard/services/abstract/gui/formfeeddetails.cpp" line="93"/>
       <source>Edit &quot;%1&quot;</source>
-      <translation type="unfinished">Edit &quot;%1&quot;</translation>
+      <translation>編集 &quot;%1&quot;</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/abstract/gui/formfeeddetails.cpp" line="134"/>
@@ -1862,7 +1862,7 @@ QtWebEngine cache folder -&gt; &quot;%7&quot;</translation>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formlog.cpp" line="16"/>
       <source>Application log</source>
-      <translation type="unfinished">Application log</translation>
+      <translation>アプリケーションログ</translation>
     </message>
   </context>
   <context>
@@ -2005,7 +2005,7 @@ QtWebEngine cache folder -&gt; &quot;%7&quot;</translation>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="289"/>
       <source>Fetch &amp;selected</source>
-      <translation>選択したものを取得</translation>
+      <translation>選択して取得</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="292"/>
@@ -2130,7 +2130,7 @@ QtWebEngine cache folder -&gt; &quot;%7&quot;</translation>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="437"/>
       <source>View selected item in &amp;newspaper mode</source>
-      <translation>新聞記事モードで選択したアイテムを表示</translation>
+      <translation>新聞モードでアイテムを表示</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="440"/>
@@ -2230,7 +2230,7 @@ QtWebEngine cache folder -&gt; &quot;%7&quot;</translation>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="586"/>
       <source>&amp;Donate...</source>
-      <translation type="unfinished">&amp;Donate...</translation>
+      <translation>寄付...</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="594"/>
@@ -2270,7 +2270,7 @@ QtWebEngine cache folder -&gt; &quot;%7&quot;</translation>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="645"/>
       <source>Send selected articles via e-mail</source>
-      <translation>選択した記事をe-mailで送信</translation>
+      <translation>選択した記事を電子メールで送信</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="653"/>
@@ -2721,22 +2721,22 @@ QtWebEngine cache folder -&gt; &quot;%7&quot;</translation>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.ui" line="206"/>
       <source>&amp;Test</source>
-      <translation type="unfinished">&amp;Test</translation>
+      <translation>テスト</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.ui" line="213"/>
       <source>Process checked feeds</source>
-      <translation type="unfinished">Process checked feeds</translation>
+      <translation>チェック済みフィードを処理</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.ui" line="220"/>
       <source>&amp;Beautify</source>
-      <translation type="unfinished">&amp;Beautify</translation>
+      <translation>自動整形</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.ui" line="227"/>
       <source>Detailed &amp;help</source>
-      <translation type="unfinished">Detailed &amp;help</translation>
+      <translation>詳細なヘルプ</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.ui" line="263"/>
@@ -2751,7 +2751,7 @@ QtWebEngine cache folder -&gt; &quot;%7&quot;</translation>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.ui" line="326"/>
       <source>URL</source>
-      <translation type="unfinished">URL</translation>
+      <translation>URL</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.ui" line="339"/>
@@ -2913,7 +2913,7 @@ You have to restart manually.</source>
     <message>
       <location filename="../src/librssguard/services/standard/gui/formstandardfeeddetails.cpp" line="26"/>
       <source>Network</source>
-      <translation type="unfinished">Network</translation>
+      <translation>ネットワーク</translation>
     </message>
   </context>
   <context>
@@ -3180,7 +3180,7 @@ You have to restart manually.</source>
     <message>
       <location filename="../src/librssguard/services/tt-rss/gui/formttrssnote.ui" line="56"/>
       <source>URL</source>
-      <translation type="unfinished">URL</translation>
+      <translation>URL</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/tt-rss/gui/formttrssnote.ui" line="66"/>
@@ -3713,7 +3713,7 @@ Login tokens expiration: %2</translation>
     <message>
       <location filename="../src/librssguard/services/greader/gui/greaderaccountdetails.ui" line="27"/>
       <source>URL</source>
-      <translation type="unfinished">URL</translation>
+      <translation>URL</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/greader/gui/greaderaccountdetails.ui" line="40"/>
@@ -4270,7 +4270,7 @@ Login tokens expiration: %2</translation>
     <message>
       <location filename="../src/librssguard/core/messagesforfiltersmodel.cpp" line="12"/>
       <source>URL</source>
-      <translation type="unfinished">URL</translation>
+      <translation>URL</translation>
     </message>
     <message>
       <location filename="../src/librssguard/core/messagesforfiltersmodel.cpp" line="12"/>
@@ -4413,7 +4413,7 @@ Login tokens expiration: %2</translation>
     <message>
       <location filename="../src/librssguard/core/messagesmodel.cpp" line="287"/>
       <source>URL</source>
-      <translation type="unfinished">URL</translation>
+      <translation>URL</translation>
     </message>
     <message>
       <location filename="../src/librssguard/core/messagesmodel.cpp" line="297"/>
@@ -4533,28 +4533,28 @@ Login tokens expiration: %2</translation>
     <message numerus="yes">
       <location filename="../src/librssguard/core/messagesmodel.cpp" line="353"/>
       <source>%n months ago</source>
-      <translation type="unfinished">
-        <numerusform>%n months ago</numerusform>
+      <translation>
+        <numerusform>%n ヶ月前</numerusform>
       </translation>
     </message>
     <message numerus="yes">
       <location filename="../src/librssguard/core/messagesmodel.cpp" line="357"/>
       <source>%n weeks ago</source>
-      <translation type="unfinished">
-        <numerusform>%n weeks ago</numerusform>
+      <translation>
+        <numerusform>%n 週間前</numerusform>
       </translation>
     </message>
     <message numerus="yes">
       <location filename="../src/librssguard/core/messagesmodel.cpp" line="361"/>
       <source>%n days ago</source>
-      <translation type="unfinished">
-        <numerusform>%n days ago</numerusform>
+      <translation>
+        <numerusform>%n 日前</numerusform>
       </translation>
     </message>
     <message>
       <location filename="../src/librssguard/core/messagesmodel.cpp" line="365"/>
       <source>yesterday</source>
-      <translation type="unfinished">yesterday</translation>
+      <translation>昨日</translation>
     </message>
     <message numerus="yes">
       <location filename="../src/librssguard/core/messagesmodel.cpp" line="369"/>
@@ -4596,7 +4596,7 @@ Login tokens expiration: %2</translation>
     <message>
       <location filename="../src/librssguard/gui/toolbars/messagestoolbar.cpp" line="217"/>
       <source>Everywhere</source>
-      <translation type="unfinished">Everywhere</translation>
+      <translation>全体</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/toolbars/messagestoolbar.cpp" line="218"/>
@@ -4823,7 +4823,7 @@ Login tokens expiration: %2</translation>
       <location filename="../src/librssguard/network-web/networkfactory.cpp" line="154"/>
       <source>unknown error (%1)</source>
       <extracomment>Network status.</extracomment>
-      <translation type="unfinished">unknown error (%1)</translation>
+      <translation>不明なエラー (%1)</translation>
     </message>
     <message>
       <location filename="../src/librssguard/network-web/networkfactory.cpp" line="138"/>
@@ -4917,7 +4917,7 @@ Login tokens expiration: %2</translation>
     <message>
       <location filename="../src/librssguard/services/newsblur/gui/newsbluraccountdetails.ui" line="17"/>
       <source>URL</source>
-      <translation type="unfinished">URL</translation>
+      <translation>URL</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/newsblur/gui/newsbluraccountdetails.ui" line="30"/>
@@ -5214,7 +5214,7 @@ Login tokens expiration: %2</translation>
     <message>
       <location filename="../src/librssguard/services/owncloud/gui/owncloudaccountdetails.ui" line="19"/>
       <source>URL</source>
-      <translation type="unfinished">URL</translation>
+      <translation>URL</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/owncloud/gui/owncloudaccountdetails.ui" line="34"/>
@@ -5429,37 +5429,37 @@ List of supported readers:</source>
     <message>
       <location filename="../src/librssguard/miscellaneous/skinfactory.cpp" line="597"/>
       <source>interesting stuff</source>
-      <translation type="unfinished">interesting stuff</translation>
+      <translation>未読の記事の色</translation>
     </message>
     <message>
       <location filename="../src/librssguard/miscellaneous/skinfactory.cpp" line="600"/>
       <source>interesting stuff (highlighted)</source>
-      <translation type="unfinished">interesting stuff (highlighted)</translation>
+      <translation>未読の記事の色 (フォーカスがあるとき)</translation>
     </message>
     <message>
       <location filename="../src/librssguard/miscellaneous/skinfactory.cpp" line="603"/>
       <source>errored items</source>
-      <translation type="unfinished">errored items</translation>
+      <translation>エラーアイテムの色</translation>
     </message>
     <message>
       <location filename="../src/librssguard/miscellaneous/skinfactory.cpp" line="606"/>
       <source>errored items (highlighted)</source>
-      <translation type="unfinished">errored items (highlighted)</translation>
+      <translation>エラーアイテムの色 (フォーカスがあるとき)</translation>
     </message>
     <message>
       <location filename="../src/librssguard/miscellaneous/skinfactory.cpp" line="609"/>
       <source>items with new articles</source>
-      <translation type="unfinished">items with new articles</translation>
+      <translation>新しい記事があるアイテムの色</translation>
     </message>
     <message>
       <location filename="../src/librssguard/miscellaneous/skinfactory.cpp" line="612"/>
       <source>items with new articles (highlighted)</source>
-      <translation type="unfinished">items with new articles (highlighted)</translation>
+      <translation>新しい記事があるアイテムの色 (フォーカスがあるとき)</translation>
     </message>
     <message>
       <location filename="../src/librssguard/miscellaneous/skinfactory.cpp" line="615"/>
       <source>OK-ish color</source>
-      <translation type="unfinished">OK-ish color</translation>
+      <translation>OKっぽい色</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/tt-rss/ttrssnetworkfactory.cpp" line="983"/>
@@ -5787,17 +5787,17 @@ Login tokens expiration: %2</translation>
     <message>
       <location filename="../src/librssguard/gui/reusable/searchlineedit.cpp" line="30"/>
       <source>Case-sensitive</source>
-      <translation type="unfinished">Case-sensitive</translation>
+      <translation>大文字と小文字を区別する</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/reusable/searchlineedit.cpp" line="101"/>
       <source>Fixed text</source>
-      <translation type="unfinished">Fixed text</translation>
+      <translation>固定テキスト</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/reusable/searchlineedit.cpp" line="104"/>
       <source>Wildcard</source>
-      <translation type="unfinished">Wildcard</translation>
+      <translation>ワイルドカード</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/reusable/searchlineedit.cpp" line="107"/>
@@ -5898,7 +5898,7 @@ File filter for external e-mail selection dialog.</extracomment>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsbrowsermail.cpp" line="150"/>
       <source>Select e-mail executable</source>
-      <translation type="unfinished">Select e-mail executable</translation>
+      <translation>電子メール実行可能ファイルを選択</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsbrowsermail.cpp" line="176"/>
@@ -6019,7 +6019,7 @@ File filter for external e-mail selection dialog.</extracomment>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsbrowsermail.ui" line="221"/>
       <source>E-mail client executable</source>
-      <translation>E-mail client executable</translation>
+      <translation>電子メール クライアント実行可能ファイル</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsbrowsermail.ui" line="236"/>
@@ -6048,17 +6048,17 @@ File filter for external e-mail selection dialog.</extracomment>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsbrowsermail.ui" line="339"/>
       <source>&amp;Add tool</source>
-      <translation type="unfinished">&amp;Add tool</translation>
+      <translation>ツールを追加</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsbrowsermail.ui" line="349"/>
       <source>&amp;Edit selected tool</source>
-      <translation type="unfinished">&amp;Edit selected tool</translation>
+      <translation>選択したツールを編集</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsbrowsermail.ui" line="359"/>
       <source>&amp;Delete selected tool</source>
-      <translation type="unfinished">&amp;Delete selected tool</translation>
+      <translation>選択したツールを削除</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsbrowsermail.cpp" line="33"/>
@@ -6239,7 +6239,7 @@ Authors of this application are NOT responsible for lost data.</source>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsdownloads.cpp" line="26"/>
       <source>Select downloads target directory</source>
-      <translation type="unfinished">Select downloads target directory</translation>
+      <translation>ダウンロード先ディレクトリを選択</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsdownloads.ui" line="17"/>
@@ -6297,19 +6297,19 @@ Authors of this application are NOT responsible for lost data.</source>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.cpp" line="52"/>
       <source>days (turned off)</source>
-      <translation type="unfinished">days (turned off)</translation>
+      <translation>日数（使用しない）</translation>
     </message>
     <message numerus="yes">
       <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.cpp" line="55"/>
       <source>day(s)</source>
-      <translation type="unfinished">
-        <numerusform>day(s)</numerusform>
+      <translation>
+        <numerusform>日まで</numerusform>
       </translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.cpp" line="61"/>
       <source> = unchanged size</source>
-      <translation type="unfinished"> = unchanged size</translation>
+      <translation> = サイズ変更なし</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="21"/>
@@ -6339,7 +6339,7 @@ Authors of this application are NOT responsible for lost data.</source>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="109"/>
       <source>Connection timeout is time interval which is reserved for downloading new messages for the feed. If this time interval elapses, then download process is aborted.</source>
-      <translation type="unfinished">Connection timeout is time interval which is reserved for downloading new messages for the feed. If this time interval elapses, then download process is aborted.</translation>
+      <translation>接続タイムアウトは、フィードの新しいメッセージをダウンロードするために予約されている時間間隔です。この時間間隔が経過したすると、ダウンロードプロセスは中止されます。</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="112"/>
@@ -6499,7 +6499,7 @@ Authors of this application are NOT responsible for lost data.</source>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="586"/>
       <source>Show relative time for articles not older than</source>
-      <translation>何日以上前の記事の相対時間を表示する</translation>
+      <translation>記事を相対時間で表示する</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.h" line="34"/>
@@ -6581,12 +6581,12 @@ Authors of this application are NOT responsible for lost data.</source>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsgui.cpp" line="175"/>
       <source>no icon theme</source>
-      <translation type="unfinished">no icon theme</translation>
+      <translation>アイコンテーマなし</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsgui.cpp" line="156"/>
       <source>(Your OS does not support tray icons at the moment.)</source>
-      <translation type="unfinished">(Your OS does not support tray icons at the moment.)</translation>
+      <translation>(お使いのOSは現在トレイアイコンをサポートしていません)</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsgui.cpp" line="33"/>
@@ -6604,10 +6604,10 @@ Authors of this application are NOT responsible for lost data.</source>
 
 Version: %2
 Description: %3</source>
-      <translation type="unfinished">%1
+      <translation>%1
 
-Version: %2
-Description: %3</translation>
+バージョン: %2
+説明: %3</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsgui.cpp" line="302"/>
@@ -6851,12 +6851,12 @@ Also, relaunch &quot;Settings&quot; dialog after you install Node.js.</source>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsnodejs.cpp" line="139"/>
       <source>Package folder is OK.</source>
-      <translation type="unfinished">Package folder is OK.</translation>
+      <translation>パッケージフォルダはOKです</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsnodejs.cpp" line="143"/>
       <source>Package folder will be created!</source>
-      <translation type="unfinished">Package folder will be created!</translation>
+      <translation>パッケージフォルダが作成されます！</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsnodejs.cpp" line="28"/>
@@ -6905,7 +6905,7 @@ Also, relaunch &quot;Settings&quot; dialog after you install Node.js.</source>
 Also, there are some built-in sounds. Just start typing &quot;:&quot; and they will show up.</source>
       <translation>バルーン通知を有効にするには、&quot;トレイアイコン&quot;を有効にする必要があります。
 
-また、いくつかのサウンドが内蔵されている。&quot;:&quot; と入力し始めるだけで表示されます。</translation>
+また、いくつかのサウンドが内蔵されています。&quot;:&quot; と入力し始めるだけで表示されます。</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsnotifications.ui" line="17"/>
@@ -7013,7 +7013,7 @@ Also, there are some built-in sounds. Just start typing &quot;:&quot; and they w
     <message>
       <location filename="../src/librssguard/miscellaneous/skinfactory.cpp" line="296"/>
       <source>Newspaper view</source>
-      <translation type="unfinished">Newspaper view</translation>
+      <translation>新聞ビュー</translation>
     </message>
   </context>
   <context>
@@ -7157,19 +7157,19 @@ Post-processing script: %3</source>
     <message>
       <location filename="../src/librssguard/services/standard/gui/standardfeeddetails.cpp" line="151"/>
       <source>Icon fetched successfully.</source>
-      <translation type="unfinished">Icon fetched successfully.</translation>
+      <translation>アイコンの取得に成功しました。</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/standard/gui/standardfeeddetails.cpp" line="152"/>
       <source>Icon metadata fetched.</source>
-      <translation type="unfinished">Icon metadata fetched.</translation>
+      <translation>アイコンのメタデータを取得しました。</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/standard/gui/standardfeeddetails.cpp" line="160"/>
       <location filename="../src/librssguard/services/standard/gui/standardfeeddetails.cpp" line="165"/>
       <location filename="../src/librssguard/services/standard/gui/standardfeeddetails.cpp" line="170"/>
       <source>No icon fetched.</source>
-      <translation type="unfinished">No icon fetched.</translation>
+      <translation>アイコンは取得されませんでした。</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/standard/gui/standardfeeddetails.cpp" line="207"/>
@@ -7179,14 +7179,14 @@ Post-processing script: %3</source>
     <message>
       <location filename="../src/librssguard/services/standard/gui/standardfeeddetails.cpp" line="208"/>
       <source>Feed and icon metadata fetched.</source>
-      <translation type="unfinished">Feed and icon metadata fetched.</translation>
+      <translation>フィードとアイコンのメタデータを取得しました。</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/standard/gui/standardfeeddetails.cpp" line="216"/>
       <location filename="../src/librssguard/services/standard/gui/standardfeeddetails.cpp" line="221"/>
       <location filename="../src/librssguard/services/standard/gui/standardfeeddetails.cpp" line="226"/>
       <source>No metadata fetched.</source>
-      <translation type="unfinished">No metadata fetched.</translation>
+      <translation>メタデータは取得されませんでした。</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/standard/gui/standardfeeddetails.cpp" line="232"/>
@@ -7226,7 +7226,7 @@ Post-processing script: %3</source>
     <message>
       <location filename="../src/librssguard/services/standard/gui/standardfeeddetails.cpp" line="295"/>
       <source>Select icon file for the feed</source>
-      <translation type="unfinished">Select icon file for the feed</translation>
+      <translation>フィードのアイコンファイルを選択</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/standard/gui/standardfeeddetails.cpp" line="297"/>
@@ -7247,17 +7247,17 @@ Post-processing script: %3</source>
       <location filename="../src/librssguard/services/standard/gui/standardfeeddetails.cpp" line="307"/>
       <source>Look in:</source>
       <extracomment>Label for field with icon file name textbox for selection dialog.</extracomment>
-      <translation type="unfinished">Look in:</translation>
+      <translation>参照:</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/standard/gui/standardfeeddetails.cpp" line="308"/>
       <source>Icon name:</source>
-      <translation type="unfinished">Icon name:</translation>
+      <translation>アイコン名:</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/standard/gui/standardfeeddetails.cpp" line="309"/>
       <source>Icon type:</source>
-      <translation type="unfinished">Icon type:</translation>
+      <translation>アイコンタイプ:</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/standard/gui/standardfeeddetails.cpp" line="32"/>
@@ -7283,12 +7283,12 @@ Post-processing script: %3</source>
       <location filename="../src/librssguard/services/standard/gui/standardfeeddetails.cpp" line="267"/>
       <location filename="../src/librssguard/services/standard/gui/standardfeeddetails.cpp" line="271"/>
       <source>The source is ok.</source>
-      <translation type="unfinished">The source is ok.</translation>
+      <translation>ソースはOKです。</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/standard/gui/standardfeeddetails.cpp" line="264"/>
       <source>The source is empty.</source>
-      <translation type="unfinished">The source is empty.</translation>
+      <translation>ソースは空です。</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/standard/gui/standardfeeddetails.cpp" line="277"/>
@@ -7557,7 +7557,7 @@ Unread news: %2</translation>
     <message>
       <location filename="../src/librssguard/gui/tabwidget.cpp" line="214"/>
       <source>Newspaper view</source>
-      <translation type="unfinished">Newspaper view</translation>
+      <translation>新聞ビュー</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/tabwidget.cpp" line="238"/>
@@ -7611,21 +7611,21 @@ Unread news: %2</translation>
       <location filename="../src/librssguard/gui/reusable/timespinbox.cpp" line="55"/>
       <location filename="../src/librssguard/gui/reusable/timespinbox.cpp" line="65"/>
       <source>%n minute(s)</source>
-      <translation type="unfinished">
-        <numerusform>%n minute(s)</numerusform>
+      <translation>
+        <numerusform>%n 分</numerusform>
       </translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/reusable/timespinbox.cpp" line="57"/>
       <location filename="../src/librssguard/gui/reusable/timespinbox.cpp" line="67"/>
       <source> and </source>
-      <translation type="unfinished"> and </translation>
+      <translation> と </translation>
     </message>
     <message numerus="yes">
       <location filename="../src/librssguard/gui/reusable/timespinbox.cpp" line="64"/>
       <source>%n second(s)</source>
-      <translation type="unfinished">
-        <numerusform>%n second(s)</numerusform>
+      <translation>
+        <numerusform>%n 秒</numerusform>
       </translation>
     </message>
   </context>
@@ -7865,7 +7865,7 @@ Unread news: %2</translation>
     <message>
       <location filename="../src/librssguard/services/tt-rss/gui/ttrssaccountdetails.ui" line="32"/>
       <source>URL</source>
-      <translation type="unfinished">URL</translation>
+      <translation>URL</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/tt-rss/gui/ttrssaccountdetails.ui" line="84"/>
