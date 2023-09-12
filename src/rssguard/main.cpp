@@ -64,6 +64,11 @@ int main(int argc, char* argv[]) {
   QTextCodec::setCodecForLocale(QTextCodec::codecForName("UTF-8"));
 #endif
 
+  // Set some names.
+  QCoreApplication::setApplicationName(QSL(APP_NAME));
+  QCoreApplication::setApplicationVersion(QSL(APP_VERSION));
+  QCoreApplication::setOrganizationDomain(QSL(APP_URL));
+
   // Instantiate base application object.
   Application application(QSL(APP_LOW_NAME), argc, argv, raw_cli_args);
 
@@ -84,11 +89,8 @@ int main(int argc, char* argv[]) {
   qRegisterMetaType<QList<Label*>>("QList<Label*>");
   qRegisterMetaType<Label*>("Label*");
 
-  // These settings needs to be set before any QSettings object.
-  Application::setApplicationName(QSL(APP_NAME));
-  Application::setApplicationVersion(QSL(APP_VERSION));
-  Application::setOrganizationDomain(QSL(APP_URL));
-  Application::setWindowIcon(qApp->desktopAwareIcon());
+  // Set window icon, particularly for Linux/Wayland.
+  QGuiApplication::setWindowIcon(qApp->desktopAwareIcon());
 
   qApp->reactOnForeignNotifications();
 
