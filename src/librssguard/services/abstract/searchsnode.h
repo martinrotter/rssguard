@@ -19,6 +19,9 @@ class SearchsNode : public RootItem {
     virtual QList<Message> undeletedMessages() const;
     virtual QList<QAction*> contextMenuFeedsList();
 
+    virtual int countOfUnreadMessages() const;
+    virtual int countOfAllMessages() const;
+
     Search* probeById(const QString& custom_id);
 
   public slots:

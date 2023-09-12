@@ -17,6 +17,7 @@
 #include "gui/dialogs/formlog.h"
 #include "gui/dialogs/formmain.h"
 #include "gui/messagebox.h"
+#include "gui/notifications/toastnotificationsmanager.h"
 #include "gui/toolbars/statusbar.h"
 #include "gui/webviewers/qtextbrowser/textbrowserviewer.h"
 #include "miscellaneous/feedreader.h"
@@ -108,6 +109,7 @@ Application::Application(const QString& id, int& argc, char** argv, const QStrin
   m_database = new DatabaseFactory(this);
   m_downloadManager = nullptr;
   m_notifications = new NotificationFactory(this);
+  m_toastNotifications = new ToastNotificationsManager(this);
   m_shouldRestart = false;
 
 #if defined(Q_OS_WIN)
@@ -679,6 +681,8 @@ void Application::showGuiMessageCore(Notification::Event event,
                                      GuiMessageDestination dest,
                                      const GuiAction& action,
                                      QWidget* parent) {
+  m_toastNotifications->showNotification(event, msg, action);
+
   if (SystemTrayIcon::areNotificationsEnabled()) {
     auto notification = m_notifications->notificationForEvent(event);
 

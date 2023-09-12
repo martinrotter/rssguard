@@ -44,6 +44,7 @@ class QWebEngineDownloadItem;
 
 class WebFactory;
 class NotificationFactory;
+class ToastNotificationsManager;
 class WebViewer;
 
 #if defined(Q_OS_WIN)
@@ -277,6 +278,7 @@ class RSSGUARD_DLLSPEC Application : public SingleApplication {
     DatabaseFactory* m_database;
     DownloadManager* m_downloadManager;
     NotificationFactory* m_notifications;
+    ToastNotificationsManager* m_toastNotifications;
     NodeJs* m_nodejs;
     QThreadPool* m_workHorsePool;
     bool m_shouldRestart;

@@ -99,7 +99,7 @@ bool MessageObject::isDuplicateWithAttribute(MessageObject::DuplicateCheck attri
     qDebugNN << LOGSEC_DB << "Executed SQL for message duplicates check:"
              << QUOTE_W_SPACE_DOT(DatabaseFactory::lastExecutedQuery(q));
 
-    if (q.record().value(0).toInt() > 0) {
+    if (q.value(0).toInt() > 0) {
       // Whoops, we have the "same" message in database.
       qDebugNN << LOGSEC_CORE << "Message" << QUOTE_W_SPACE(title()) << "was identified as duplicate by filter script.";
       return true;

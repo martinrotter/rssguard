@@ -60,6 +60,14 @@ QList<QAction*> SearchsNode::contextMenuFeedsList() {
   return QList<QAction*>{m_actProbeNew};
 }
 
+int SearchsNode::countOfUnreadMessages() const {
+  return -1;
+}
+
+int SearchsNode::countOfAllMessages() const {
+  return -1;
+}
+
 void SearchsNode::createProbe() {
   FormAddEditProbe frm(qApp->mainFormWidget());
   Search* new_prb = frm.execForAdd();

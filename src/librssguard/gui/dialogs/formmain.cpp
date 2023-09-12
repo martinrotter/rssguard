@@ -47,6 +47,8 @@
 #include <QDesktopWidget>
 #endif
 
+#include <QWindow>
+
 FormMain::FormMain(QWidget* parent, Qt::WindowFlags f)
   : QMainWindow(parent, f), m_ui(new Ui::FormMain), m_trayMenu(nullptr), m_statusBar(nullptr) {
   qDebugNN << LOGSEC_GUI

@@ -93,6 +93,8 @@ set(SOURCES
   gui/messagepreviewer.h
   gui/messagesview.cpp
   gui/messagesview.h
+  gui/notifications/basetoastnotification.cpp
+  gui/notifications/basetoastnotification.h
   gui/notifications/notificationseditor.cpp
   gui/notifications/notificationseditor.h
   gui/notifications/singlenotificationeditor.cpp
@@ -173,6 +175,10 @@ set(SOURCES
   gui/tabcontent.h
   gui/tabwidget.cpp
   gui/tabwidget.h
+  gui/notifications/toastnotification.cpp
+  gui/notifications/toastnotification.h
+  gui/notifications/toastnotificationsmanager.cpp
+  gui/notifications/toastnotificationsmanager.h
   gui/webviewers/webviewer.h
   gui/richtexteditor/mrichtextedit.cpp
   gui/richtexteditor/mrichtextedit.h
@@ -447,6 +453,7 @@ set(UI_FILES
   gui/notifications/singlenotificationeditor.ui
   gui/reusable/networkproxydetails.ui
   gui/itemdetails.ui
+  gui/notifications/toastnotification.ui
   gui/richtexteditor/mrichtextedit.ui
   gui/newspaperpreviewer.ui
   gui/reusable/searchtextwidget.ui

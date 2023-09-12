@@ -2716,15 +2716,14 @@ QList<MessageFilter*> DatabaseQueries::getMessageFilters(const QSqlDatabase& db,
   QList<MessageFilter*> filters;
 
   q.setForwardOnly(true);
-  q.prepare(QSL("SELECT * FROM MessageFilters;"));
+  q.prepare(QSL("SELECT id, name, script FROM MessageFilters;"));
 
   if (q.exec()) {
     while (q.next()) {
-      auto rec = q.record();
-      auto* filter = new MessageFilter(rec.value(0).toInt());
+      auto* filter = new MessageFilter(q.value(0).toInt());
 
-      filter->setName(rec.value(1).toString());
-      filter->setScript(rec.value(2).toString());
+      filter->setName(q.value(1).toString());
+      filter->setScript(q.value(2).toString());
 
       filters.append(filter);
     }
@@ -2753,9 +2752,7 @@ QMultiMap<QString, int> DatabaseQueries::messageFiltersInFeeds(const QSqlDatabas
 
   if (q.exec()) {
     while (q.next()) {
-      auto rec = q.record();
-
-      filters_in_feeds.insert(rec.value(1).toString(), rec.value(0).toInt());
+      filters_in_feeds.insert(q.value(1).toString(), q.value(0).toInt());
     }
 
     if (ok != nullptr) {

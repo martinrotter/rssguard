@@ -22,9 +22,17 @@ class MessagesModel : public QSqlQueryModel, public MessagesModelSqlLayer {
   public:
     // Enum which describes basic highlighting schemes
     // for messages.
-    enum class MessageHighlighter { NoHighlighting = 1, HighlightUnread = 2, HighlightImportant = 4 };
+    enum class MessageHighlighter {
+      NoHighlighting = 1,
+      HighlightUnread = 2,
+      HighlightImportant = 4
+    };
 
-    enum class MessageUnreadIcon { Dot = 1, Envelope = 2, FeedIcon = 3 };
+    enum class MessageUnreadIcon {
+      Dot = 1,
+      Envelope = 2,
+      FeedIcon = 3
+    };
 
     Q_ENUM(MessageUnreadIcon)
 
@@ -42,8 +50,6 @@ class MessagesModel : public QSqlQueryModel, public MessagesModelSqlLayer {
     QVariant data(int row, int column, int role = Qt::DisplayRole) const;
     QVariant headerData(int section, Qt::Orientation orientation, int role) const;
     Qt::ItemFlags flags(const QModelIndex& index) const;
-
-    // Returns message at given index.
 
     QList<Message> messagesAt(const QList<int>& row_indices) const;
     Message messageAt(int row_index) const;

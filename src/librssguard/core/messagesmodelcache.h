@@ -22,7 +22,7 @@ class MessagesModelCache : public QObject {
     QVariant data(const QModelIndex& idx);
 
     void clear();
-    void setData(const QModelIndex& index, const QVariant& value, const QSqlRecord& record);
+    void setData(const QModelIndex& index, const QVariant& value);
 
   private:
     QHash<int, QSqlRecord> m_msgCache;

@@ -255,7 +255,8 @@ void MessagesView::reloadSelections() {
   const bool is_current_selected =
     selectionModel()->selectedRows().contains(m_proxyModel->index(current_index.row(), 0, current_index.parent()));
   const QModelIndex mapped_current_index = m_proxyModel->mapToSource(current_index);
-  const Message selected_message = m_sourceModel->messageAt(mapped_current_index.row());
+  const int selected_message_id =
+    m_sourceModel->data(mapped_current_index.row(), MSG_DB_ID_INDEX, Qt::ItemDataRole::EditRole).toInt();
   const int col = header()->sortIndicatorSection();
   const Qt::SortOrder ord = header()->sortIndicatorOrder();
   bool do_not_mark_read_on_select = false;
@@ -264,19 +265,21 @@ void MessagesView::reloadSelections() {
   sort(col, ord, true, false, false, true);
 
   // Now, we must find the same previously focused message.
-  if (selected_message.m_id > 0) {
+  if (selected_message_id > 0) {
     if (m_proxyModel->rowCount() == 0 || !is_current_selected) {
       current_index = QModelIndex();
     }
     else {
       for (int i = 0; i < m_proxyModel->rowCount(); i++) {
         QModelIndex msg_idx = m_proxyModel->index(i, MSG_DB_TITLE_INDEX);
-        Message msg = m_sourceModel->messageAt(m_proxyModel->mapToSource(msg_idx).row());
+        QModelIndex msg_source_idx = m_proxyModel->mapToSource(msg_idx);
+        int msg_id = m_sourceModel->data(msg_source_idx.row(), MSG_DB_ID_INDEX, Qt::ItemDataRole::EditRole).toInt();
 
-        if (msg.m_id == selected_message.m_id) {
+        if (msg_id == selected_message_id) {
           current_index = msg_idx;
 
-          if (!msg.m_isRead /* && selected_message.m_isRead */) {
+          if (!m_sourceModel->data(msg_source_idx.row(), MSG_DB_READ_INDEX, Qt::ItemDataRole::EditRole)
+                 .toBool() /* && selected_message.m_isRead */) {
             do_not_mark_read_on_select = true;
           }
 
@@ -296,7 +299,7 @@ void MessagesView::reloadSelections() {
     m_processingRightMouseButton = do_not_mark_read_on_select;
 
     setCurrentIndex(current_index);
-    reselectIndexes(QModelIndexList() << current_index);
+    reselectIndexes({current_index});
 
     m_processingRightMouseButton = false;
   }
@@ -867,8 +870,10 @@ void MessagesView::openSelectedMessagesWithExternalTool() {
     auto rws = selectionModel()->selectedRows();
 
     for (const QModelIndex& index : qAsConst(rws)) {
-      const QString link = m_sourceModel->messageAt(m_proxyModel->mapToSource(index).row())
-                             .m_url.replace(QRegularExpression(QSL("[\\t\\n]")), QString());
+      const QString link =
+        m_sourceModel->data(m_proxyModel->mapToSource(index).row(), MSG_DB_URL_INDEX, Qt::ItemDataRole::EditRole)
+          .toString()
+          .replace(QRegularExpression(QSL("[\\t\\n]")), QString());
 
       if (!link.isEmpty()) {
         if (!tool.run(link)) {

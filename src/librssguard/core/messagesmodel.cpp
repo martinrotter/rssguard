@@ -160,7 +160,7 @@ void MessagesModel::repopulate() {
 
 bool MessagesModel::setData(const QModelIndex& index, const QVariant& value, int role) {
   Q_UNUSED(role)
-  m_cache->setData(index, value, record(index.row()));
+  m_cache->setData(index, value);
   return true;
 }
 
@@ -609,9 +609,7 @@ bool MessagesModel::setMessageRead(int row_index, RootItem::ReadStatus read) {
 
   Message message = messageAt(row_index);
 
-  if (!m_selectedItem->getParentServiceRoot()->onBeforeSetMessagesRead(m_selectedItem,
-                                                                       QList<Message>() << message,
-                                                                       read)) {
+  if (!m_selectedItem->getParentServiceRoot()->onBeforeSetMessagesRead(m_selectedItem, {message}, read)) {
     // Cannot change read status of the item. Abort.
     return false;
   }
@@ -760,7 +758,7 @@ bool MessagesModel::setBatchMessagesDeleted(const QModelIndexList& messages) {
     msgs.append(msg);
     message_ids.append(QString::number(msg.m_id));
 
-    if (qobject_cast<RecycleBin*>(m_selectedItem) != nullptr) {
+    if (m_selectedItem->kind() == RootItem::Kind::Bin) {
       setData(index(message.row(), MSG_DB_PDELETED_INDEX), 1);
     }
     else {

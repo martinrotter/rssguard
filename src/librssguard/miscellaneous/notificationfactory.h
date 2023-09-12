@@ -10,7 +10,7 @@
 class Settings;
 
 class NotificationFactory : public QObject {
-  Q_OBJECT
+    Q_OBJECT
 
   public:
     explicit NotificationFactory(QObject* parent = nullptr);
@@ -26,7 +26,6 @@ class NotificationFactory : public QObject {
 
   private:
     QList<Notification> m_notifications = {};
-
 };
 
 #endif // NOTIFICATIONFACTORY_H
