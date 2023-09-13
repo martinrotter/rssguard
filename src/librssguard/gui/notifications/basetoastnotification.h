@@ -14,8 +14,17 @@ class BaseToastNotification : public QDialog {
     explicit BaseToastNotification(QWidget* parent = nullptr);
     virtual ~BaseToastNotification();
 
+    // If true, then notification is always moved as close to top as possible.
+    virtual bool alwaysOnTop() const = 0;
+
   protected:
+    virtual bool eventFilter(QObject* watched, QEvent* event);
+    virtual void closeEvent(QCloseEvent* event);
+
     void setupCloseButton(QAbstractButton* btn);
+
+  signals:
+    void closeRequested();
 };
 
 #endif // BASETOASTNOTIFICATION_H

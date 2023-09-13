@@ -9,6 +9,7 @@
 
 class BaseToastNotification;
 class ToastNotification;
+class QScreen;
 
 class ToastNotificationsManager : public QObject {
     Q_OBJECT
@@ -40,8 +41,19 @@ class ToastNotificationsManager : public QObject {
     void showNotification(const QList<Message>& new_messages);
 
   private:
+    QScreen* activeScreen() const;
+    QPoint cornerForNewNotification(QRect rect);
+    void moveNotificationToCorner(BaseToastNotification* notif, const QPoint& corner);
+    void makeSpaceForNotification(int height_to_make_space);
+    void removeOutOfBoundsNotifications(int height_to_reserve);
+    QScreen* moveToProperScreen(BaseToastNotification* notif);
+
+  private:
     NotificationPosition m_position;
     int m_screen;
+
+    // List of all displayed notifications, newest notifications are in the beginning of the list
+    // and oldest at the end.
     QList<BaseToastNotification*> m_activeNotifications;
 };
 

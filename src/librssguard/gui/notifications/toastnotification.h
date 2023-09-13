@@ -18,6 +18,8 @@ class ToastNotification : public BaseToastNotification {
                                const GuiAction& action,
                                QWidget* parent = nullptr);
 
+    virtual bool alwaysOnTop() const;
+
   private:
     void loadNotification(Notification::Event event, const GuiMessage& msg, const GuiAction& action);
 

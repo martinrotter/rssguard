@@ -177,9 +177,11 @@ Application::Application(const QString& id, int& argc, char** argv, const QStrin
 #if defined(USE_WEBENGINE)
   m_webFactory->urlIinterceptor()->load();
 
-  m_webFactory->engineProfile()->setCachePath(cacheFolder() + QDir::separator() + QSL("web") + QDir::separator() + QSL("cache"));
+  m_webFactory->engineProfile()->setCachePath(cacheFolder() + QDir::separator() + QSL("web") + QDir::separator() +
+                                              QSL("cache"));
   m_webFactory->engineProfile()->setHttpCacheType(QWebEngineProfile::HttpCacheType::DiskHttpCache);
-  m_webFactory->engineProfile()->setPersistentStoragePath(userDataFolder() + QDir::separator() + QSL("web") + QDir::separator() + QSL("storage"));
+  m_webFactory->engineProfile()->setPersistentStoragePath(userDataFolder() + QDir::separator() + QSL("web") +
+                                                          QDir::separator() + QSL("storage"));
 
   m_webFactory->loadCustomCss(userDataFolder() + QDir::separator() + QSL("web") + QDir::separator() +
                               QSL("user-styles.css"));
@@ -833,7 +835,10 @@ void Application::showMessagesNumber(int unread_messages, bool any_feed_has_new_
     m_trayIcon->setNumber(unread_messages, any_feed_has_new_unread_messages);
   }
 
-  // Set task bar overlay with number of unread articles.
+  // Use Qt function to set "badge" number directly in some cases.
+#if defined(Q_OS_MACOS) && QT_VERSION >= 0x060500 // Qt >= 6.5.0
+  qApp->setBadgeNumber(unread_messages);
+#else
 #if defined(Q_OS_UNIX) && !defined(Q_OS_MACOS)
   // Use D-Bus "LauncherEntry" service on Linux.
   bool task_bar_count_enabled = settings()->value(GROUP(GUI), SETTING(GUI::UnreadNumbersOnTaskBar)).toBool();
@@ -882,6 +887,7 @@ void Application::showMessagesNumber(int unread_messages, bool any_feed_has_new_
   else {
     qCriticalNN << LOGSEC_GUI << "Main form not set for setting numbers.";
   }
+#endif
 #endif
 
   if (m_mainForm != nullptr) {

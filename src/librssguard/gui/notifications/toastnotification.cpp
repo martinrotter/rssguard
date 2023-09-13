@@ -19,6 +19,10 @@ ToastNotification::ToastNotification(Notification::Event event,
   loadNotification(event, msg, action);
 }
 
+bool ToastNotification::alwaysOnTop() const {
+  return false;
+}
+
 void ToastNotification::loadNotification(Notification::Event event, const GuiMessage& msg, const GuiAction& action) {
   m_ui.m_lblTitle->setText(msg.m_title);
   m_ui.m_lblBody->setText(msg.m_message);

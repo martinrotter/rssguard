@@ -61,8 +61,8 @@
 
 #define RELEASES_LIST      "https://api.github.com/repos/martinrotter/rssguard/releases"
 #define MSG_FILTERING_HELP APP_URL_DOCUMENTATION "#fltr"
-#define URL_REGEXP                                                                                                     \
-  "^(http|https|feed|ftp):\\/\\/[\\w\\-_]+(\\.[\\w\\-_]+)+([\\w\\-\\.,@?^=%&amp;:/~\\+#]*[\\w\\-\\@?^=%&amp;/"         \
+#define URL_REGEXP                                                                                             \
+  "^(http|https|feed|ftp):\\/\\/[\\w\\-_]+(\\.[\\w\\-_]+)+([\\w\\-\\.,@?^=%&amp;:/~\\+#]*[\\w\\-\\@?^=%&amp;/" \
   "~\\+#])?$"
 #define SCRIPT_SOURCE_TYPE_REGEXP    "^.+#.*$"
 #define TEXT_TITLE_LIMIT             30
@@ -99,6 +99,8 @@
 #define DEFAULT_NOTIFICATION_VOLUME  50
 #define MAX_THREADPOOL_THREADS       32
 #define WEB_BROWSER_SCROLL_STEP      50.0
+#define NOTIFICATIONS_MARGIN         16
+#define NOTIFICATIONS_WIDTH          256
 
 #define GOOGLE_SEARCH_URL  "https://www.google.com/search?q=%1&ie=utf-8&oe=utf-8"
 #define GOOGLE_SUGGEST_URL "http://suggestqueries.google.com/complete/search?output=toolbar&hl=en&q=%1"
@@ -178,13 +180,13 @@
 #define ZOOM_FACTOR_STEP    0.05f
 
 #if defined(USE_WEBENGINE)
-#define HTTP_COMPLETE_USERAGENT                                                                                        \
-  (qApp->web()->engineProfile()->httpUserAgent().toLocal8Bit() + QByteArrayLiteral(" ") +                              \
+#define HTTP_COMPLETE_USERAGENT                                                           \
+  (qApp->web()->engineProfile()->httpUserAgent().toLocal8Bit() + QByteArrayLiteral(" ") + \
    QByteArrayLiteral(APP_USERAGENT))
 #else
-#define HTTP_COMPLETE_USERAGENT                                                                                        \
-  (QByteArrayLiteral("Mozilla/5.0 (Windows NT 6.2; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) "                \
-                     "QtWebEngine/5.15.2 Chrome/83.0.4103.122 Safari/537.36 ") +                                       \
+#define HTTP_COMPLETE_USERAGENT                                                                         \
+  (QByteArrayLiteral("Mozilla/5.0 (Windows NT 6.2; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) " \
+                     "QtWebEngine/5.15.2 Chrome/83.0.4103.122 Safari/537.36 ") +                        \
    QByteArrayLiteral(APP_USERAGENT))
 #endif
 
