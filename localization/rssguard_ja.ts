@@ -201,7 +201,7 @@ Error: %1</translation>
     <message>
       <location filename="../src/librssguard/miscellaneous/application.cpp" line="328"/>
       <source>Welcome</source>
-      <translation>Welcome</translation>
+      <translation>ようこそ</translation>
     </message>
     <message>
       <location filename="../src/librssguard/miscellaneous/application.cpp" line="329"/>
@@ -2195,7 +2195,7 @@ QtWebEngineキャッシュフォルダ -&gt; &quot;%7&quot;</translation>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="525"/>
       <source>Check if new update for the application is available for download.</source>
-      <translation type="unfinished">Check if new update for the application is available for download.</translation>
+      <translation>アプリケーションの新しいアップデートがダウンロード可能か確認します</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="539"/>
@@ -3233,7 +3233,7 @@ currently installed one.</translation>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formupdate.cpp" line="231"/>
       <source>Cannot update application</source>
-      <translation type="unfinished">Cannot update application</translation>
+      <translation>アプリケーションを更新できません</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formupdate.cpp" line="108"/>
@@ -5385,7 +5385,7 @@ Feedlyは、あなたにとって重要なトピックやトレンドを個人�
     <message>
       <location filename="../src/librssguard/miscellaneous/notification.cpp" line="130"/>
       <source>New (unread) articles fetched</source>
-      <translation>新しい記事(未読) を取得した時</translation>
+      <translation>新しい記事(未読) を取得</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/standard/parsers/feedparser.cpp" line="24"/>
@@ -5741,8 +5741,8 @@ Login tokens expiration: %2</translation>
       <location filename="../src/librssguard/services/abstract/rootitem.cpp" line="143"/>
       <source>%n unread article(s).</source>
       <extracomment>Tooltip for &quot;unread&quot; column of feed list.</extracomment>
-      <translation type="unfinished">
-        <numerusform>%n unread article(s).</numerusform>
+      <translation>
+        <numerusform>%n 個の未読記事</numerusform>
       </translation>
     </message>
   </context>
@@ -7515,8 +7515,8 @@ Also, you can post-process generated feed data with yet another script if you wi
       <location filename="../src/librssguard/gui/systemtrayicon.cpp" line="101"/>
       <source>%1
 Unread news: %2</source>
-      <translation type="unfinished">%1
-Unread news: %2</translation>
+      <translation>%1
+未読のニュース: %2</translation>
     </message>
   </context>
   <context>
