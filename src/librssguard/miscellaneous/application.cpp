@@ -177,11 +177,9 @@ Application::Application(const QString& id, int& argc, char** argv, const QStrin
 #if defined(USE_WEBENGINE)
   m_webFactory->urlIinterceptor()->load();
 
-  const QString web_data_root = userDataFolder() + QDir::separator() + QSL("web");
-
-  m_webFactory->engineProfile()->setCachePath(web_data_root + QDir::separator() + QSL("cache"));
+  m_webFactory->engineProfile()->setCachePath(cacheFolder() + QDir::separator() + QSL("web") + QDir::separator() + QSL("cache"));
   m_webFactory->engineProfile()->setHttpCacheType(QWebEngineProfile::HttpCacheType::DiskHttpCache);
-  m_webFactory->engineProfile()->setPersistentStoragePath(web_data_root + QDir::separator() + QSL("storage"));
+  m_webFactory->engineProfile()->setPersistentStoragePath(userDataFolder() + QDir::separator() + QSL("web") + QDir::separator() + QSL("storage"));
 
   m_webFactory->loadCustomCss(userDataFolder() + QDir::separator() + QSL("web") + QDir::separator() +
                               QSL("user-styles.css"));
@@ -509,6 +507,14 @@ QString Application::userDataFolder() {
   else {
     return userDataHomeFolder();
   }
+}
+
+QString Application::cacheFolder() {
+#if defined(Q_OS_LINUX)
+  return QStandardPaths::writableLocation(QStandardPaths::StandardLocation::CacheLocation);
+#else
+  return userDataFolder();
+#endif
 }
 
 QString Application::replaceDataUserDataFolderPlaceholder(QString text) const {
