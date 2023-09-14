@@ -40,13 +40,18 @@ class ToastNotificationsManager : public QObject {
     void showNotification(Notification::Event event, const GuiMessage& msg, const GuiAction& action);
     void showNotification(const QList<Message>& new_messages);
 
+  private slots:
+    void closeNotification(BaseToastNotification* notif);
+
   private:
     QScreen* activeScreen() const;
-    QPoint cornerForNewNotification(QRect rect);
-    void moveNotificationToCorner(BaseToastNotification* notif, const QPoint& corner);
-    void makeSpaceForNotification(int height_to_make_space);
-    void removeOutOfBoundsNotifications(int height_to_reserve);
     QScreen* moveToProperScreen(BaseToastNotification* notif);
+    QPoint cornerForNewNotification(QRect screen_rect);
+
+    void hookNotification(BaseToastNotification* notif);
+    void moveNotificationToCorner(BaseToastNotification* notif, QPoint corner);
+    void makeSpaceForNotification(int height_to_make_space, bool reverse = false, int stard_idx = 0);
+    void removeOutOfBoundsNotifications(int height_to_reserve);
 
   private:
     NotificationPosition m_position;

@@ -38,9 +38,8 @@ void ToastNotificationsManager::setPosition(NotificationPosition position) {
 }
 
 void ToastNotificationsManager::clear() {
-  for (BaseToastNotification* nt : m_activeNotifications) {
-    nt->close();
-    nt->deleteLater();
+  for (BaseToastNotification* notif : m_activeNotifications) {
+    closeNotification(notif);
   }
 
   m_activeNotifications.clear();
@@ -51,6 +50,8 @@ void ToastNotificationsManager::showNotification(Notification::Event event,
                                                  const GuiAction& action) {
   ToastNotification* notif = new ToastNotification(event, msg, action, qApp->mainFormWidget());
 
+  hookNotification(notif);
+
   auto* screen = moveToProperScreen(notif);
 
   // Insert new notification into free space.
@@ -58,13 +59,12 @@ void ToastNotificationsManager::showNotification(Notification::Event event,
 
   auto notif_new_pos = cornerForNewNotification(screen->availableGeometry());
 
-  moveNotificationToCorner(notif, notif_new_pos);
-
-  notif->move(notif_new_pos);
-
   // Make sure notification is finally resized.
   notif->adjustSize();
   qApp->processEvents();
+
+  // Move notification, at this point we already need to know its precise size.
+  moveNotificationToCorner(notif, notif_new_pos);
 
   // Remove out-of-bounds old notifications and shift existing
   // ones to make space for new notifications.
@@ -75,6 +75,21 @@ void ToastNotificationsManager::showNotification(Notification::Event event,
 }
 
 void ToastNotificationsManager::showNotification(const QList<Message>& new_messages) {}
+
+void ToastNotificationsManager::closeNotification(BaseToastNotification* notif) {
+  auto notif_idx = m_activeNotifications.indexOf(notif);
+
+  notif->deleteLater();
+
+  m_activeNotifications.removeAll(notif);
+
+  // Shift all notifications.
+  if (notif_idx < 0) {
+    return;
+  }
+
+  makeSpaceForNotification(notif->height(), true, notif_idx);
+}
 
 QScreen* ToastNotificationsManager::activeScreen() const {
   if (m_screen >= 0) {
@@ -88,23 +103,28 @@ QScreen* ToastNotificationsManager::activeScreen() const {
   return QGuiApplication::primaryScreen();
 }
 
-QPoint ToastNotificationsManager::cornerForNewNotification(QRect rect) {
+QPoint ToastNotificationsManager::cornerForNewNotification(QRect screen_rect) {
   switch (m_position) {
     case ToastNotificationsManager::TopLeft:
-      return rect.topLeft() + QPoint(NOTIFICATIONS_MARGIN, NOTIFICATIONS_MARGIN);
+      return screen_rect.topLeft() + QPoint(NOTIFICATIONS_MARGIN, NOTIFICATIONS_MARGIN);
 
     case ToastNotificationsManager::TopRight:
-      return rect.topRight() - QPoint(NOTIFICATIONS_WIDTH + NOTIFICATIONS_MARGIN, -NOTIFICATIONS_MARGIN);
+      return screen_rect.topRight() - QPoint(NOTIFICATIONS_WIDTH + NOTIFICATIONS_MARGIN, -NOTIFICATIONS_MARGIN);
 
     case ToastNotificationsManager::BottomLeft:
-      return rect.bottomLeft() - QPoint(-NOTIFICATIONS_MARGIN, NOTIFICATIONS_MARGIN);
+      return screen_rect.bottomLeft() - QPoint(-NOTIFICATIONS_MARGIN, NOTIFICATIONS_MARGIN);
 
     case ToastNotificationsManager::BottomRight:
-      return rect.bottomRight() - QPoint(NOTIFICATIONS_MARGIN, NOTIFICATIONS_MARGIN);
+    default:
+      return screen_rect.bottomRight() - QPoint(NOTIFICATIONS_MARGIN, NOTIFICATIONS_MARGIN);
   }
 }
 
-void ToastNotificationsManager::moveNotificationToCorner(BaseToastNotification* notif, const QPoint& corner) {
+void ToastNotificationsManager::hookNotification(BaseToastNotification* notif) {
+  connect(notif, &BaseToastNotification::closeRequested, this, &ToastNotificationsManager::closeNotification);
+}
+
+void ToastNotificationsManager::moveNotificationToCorner(BaseToastNotification* notif, QPoint corner) {
   switch (m_position) {
     case ToastNotificationsManager::TopLeft:
       notif->move(corner);
@@ -119,14 +139,34 @@ void ToastNotificationsManager::moveNotificationToCorner(BaseToastNotification* 
       break;
 
     case ToastNotificationsManager::BottomRight:
-      notif->move(corner);
+      notif->move(corner.x() - notif->frameGeometry().width(), corner.y() - notif->frameGeometry().height());
       break;
   }
 }
 
-void ToastNotificationsManager::makeSpaceForNotification(int height_to_make_space) {
-  for (BaseToastNotification* notif : m_activeNotifications) {
-    notif->move(notif->pos().x(), notif->pos().y() + height_to_make_space + NOTIFICATIONS_MARGIN);
+void ToastNotificationsManager::makeSpaceForNotification(int height_to_make_space, bool reverse, int stard_idx) {
+  for (int i = stard_idx; i < m_activeNotifications.size(); i++) {
+    BaseToastNotification* notif = m_activeNotifications.at(i);
+
+    switch (m_position) {
+      case ToastNotificationsManager::TopLeft:
+      case ToastNotificationsManager::TopRight: {
+        auto shift_down = reverse ? [](int x, int y) {return x - y;} : [](int x, int y) {return x + y;};
+
+        // Move it all down.
+        notif->move(notif->pos().x(), shift_down(notif->pos().y(), (height_to_make_space + NOTIFICATIONS_MARGIN)));
+        break;
+      }
+
+      case ToastNotificationsManager::BottomLeft:
+      case ToastNotificationsManager::BottomRight: {
+        auto shift_up = reverse ? [](int x, int y) {return x + y;} : [](int x, int y) {return x - y;};
+
+        // Move it all up.
+        notif->move(notif->pos().x(), shift_up(notif->pos().y(), height_to_make_space + NOTIFICATIONS_MARGIN));
+        break;
+      }
+    }
   }
 }
 

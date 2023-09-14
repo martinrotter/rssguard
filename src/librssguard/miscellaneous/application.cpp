@@ -690,6 +690,7 @@ void Application::showGuiMessageCore(Notification::Event event,
                                      const GuiAction& action,
                                      QWidget* parent) {
   m_toastNotifications->showNotification(event, msg, action);
+  return;
 
   if (SystemTrayIcon::areNotificationsEnabled()) {
     auto notification = m_notifications->notificationForEvent(event);
@@ -785,7 +786,7 @@ void Application::onAboutToQuit() {
   // Make sure that we obtain close lock BEFORE even trying to quit the application.
   const bool locked_safely = feedUpdateLock()->tryLock(4 * CLOSE_LOCK_TIMEOUT);
 
-  processEvents();
+  QCoreApplication::processEvents();
   qDebugNN << LOGSEC_CORE << "Cleaning up resources and saving application state.";
 
   if (locked_safely) {

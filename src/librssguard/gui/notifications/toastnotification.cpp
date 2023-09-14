@@ -16,6 +16,7 @@ ToastNotification::ToastNotification(Notification::Event event,
   m_ui.setupUi(this);
 
   setupCloseButton(m_ui.m_btnClose);
+  setupTimedClosing();
   loadNotification(event, msg, action);
 }
 
