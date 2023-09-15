@@ -41,6 +41,15 @@ void ToastNotification::loadNotification(Notification::Event event, const GuiMes
                                 32,
                                 32,
                               }));
+
+  if (action.m_action) {
+    m_ui.m_btnAction->setText(action.m_title.isEmpty() ? tr("Do it!") : action.m_title);
+    connect(m_ui.m_btnAction, &QPushButton::clicked, this, action.m_action);
+  }
+  else {
+    m_ui.m_mainLayout->removeItem(m_ui.m_actionLayout);
+    m_ui.m_btnAction->deleteLater();
+  }
 }
 
 QIcon ToastNotification::iconForType(QSystemTrayIcon::MessageIcon icon) const {

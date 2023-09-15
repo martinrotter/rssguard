@@ -13,9 +13,9 @@
   <property name="windowTitle">
    <string>Dialog</string>
   </property>
-  <layout class="QFormLayout" name="formLayout">
+  <layout class="QFormLayout" name="m_mainLayout">
    <item row="0" column="0" colspan="2">
-    <layout class="QHBoxLayout" name="horizontalLayout_2">
+    <layout class="QHBoxLayout" name="m_titleLayout">
      <item>
       <widget class="QLabel" name="m_lblTitle">
        <property name="text">
@@ -65,7 +65,7 @@
     </widget>
    </item>
    <item row="2" column="1">
-    <layout class="QHBoxLayout" name="horizontalLayout">
+    <layout class="QHBoxLayout" name="m_actionLayout">
      <item>
       <widget class="QPushButton" name="m_btnAction">
        <property name="text">

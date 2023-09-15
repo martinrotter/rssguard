@@ -1099,7 +1099,9 @@ void FormMain::reportABug() {
                                 "quam in scelerisque placerat. Vivamus vel porta tortor. Vivamus nec volutpat sem",
                                 QSystemTrayIcon::MessageIcon::Information),
                      GuiMessageDestination(),
-                     GuiAction("test", []() {}));
+                     GuiAction("test", []() {
+                       qDebugNN << "aa";
+                     }));
 
   // qApp->web()->openUrlInExternalBrowser(QSL(APP_URL_ISSUES_NEW));
 }
