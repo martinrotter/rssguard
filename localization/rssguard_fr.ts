@@ -314,7 +314,7 @@ version en cliquant sur cette notification.</translation>
     <message>
       <location filename="../src/librssguard/gui/notifications/basetoastnotification.cpp" line="36"/>
       <source>Close this notification</source>
-      <translation type="unfinished">Close this notification</translation>
+      <translation>Fermer cette notification</translation>
     </message>
   </context>
   <context>
@@ -6353,12 +6353,12 @@ Les auteurs de cette appli NE SONT PAS responsables d'éventuelles pertes de don
     <message>
       <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.cpp" line="360"/>
       <source>PC restart needed</source>
-      <translation type="unfinished">PC restart needed</translation>
+      <translation>Un redémarrage du PC est nécessaire</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.cpp" line="361"/>
       <source>Your PC needs to be restarted to make some of enabled features fully working.</source>
-      <translation type="unfinished">Your PC needs to be restarted to make some of enabled features fully working.</translation>
+      <translation>Votre PC doit être redémarré pour que certaines fonctionnalités activées fonctionnent correctement.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="21"/>
@@ -7070,7 +7070,7 @@ Aussi, il y a des sons pré-ajoutés. Si vous tapez &quot;:&quot;, ils se prése
     <message>
       <location filename="../src/librssguard/database/sqlitedriver.cpp" line="109"/>
       <source>cannot get native &apos;sqlite3&apos; DB handle</source>
-      <translation type="unfinished">cannot get native &apos;sqlite3&apos; DB handle</translation>
+      <translation>impossible d'obtenir le handle natif de la base de données SQLite3</translation>
     </message>
     <message>
       <location filename="../src/librssguard/database/sqlitedriver.cpp" line="384"/>
@@ -7689,32 +7689,32 @@ Actualités non-lus: %2</translation>
     <message>
       <location filename="../src/librssguard/gui/notifications/toastnotification.ui" line="14"/>
       <source>Dialog</source>
-      <translation type="unfinished">Dialog</translation>
+      <translation>Dialogue</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/notifications/toastnotification.ui" line="47"/>
       <source>...</source>
-      <translation type="unfinished">...</translation>
+      <translation>...</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/notifications/toastnotification.ui" line="62"/>
       <source>11</source>
-      <translation type="unfinished">11</translation>
+      <translation>11</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/notifications/toastnotification.ui" line="72"/>
       <source>TextLabel</source>
-      <translation type="unfinished">TextLabel</translation>
+      <translation>LabelTexte</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/notifications/toastnotification.ui" line="87"/>
       <source>PushButton</source>
-      <translation type="unfinished">PushButton</translation>
+      <translation>BouttonPush</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/notifications/toastnotification.cpp" line="49"/>
       <source>Do it!</source>
-      <translation type="unfinished">Do it!</translation>
+      <translation>C'est parti!</translation>
     </message>
   </context>
   <context>
