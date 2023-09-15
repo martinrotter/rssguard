@@ -109,7 +109,7 @@ QPoint ToastNotificationsManager::cornerForNewNotification(QRect screen_rect) {
       return screen_rect.topLeft() + QPoint(NOTIFICATIONS_MARGIN, NOTIFICATIONS_MARGIN);
 
     case ToastNotificationsManager::TopRight:
-      return screen_rect.topRight() - QPoint(NOTIFICATIONS_WIDTH + NOTIFICATIONS_MARGIN, -NOTIFICATIONS_MARGIN);
+      return screen_rect.topRight() - QPoint(NOTIFICATIONS_MARGIN, -NOTIFICATIONS_MARGIN);
 
     case ToastNotificationsManager::BottomLeft:
       return screen_rect.bottomLeft() - QPoint(-NOTIFICATIONS_MARGIN, NOTIFICATIONS_MARGIN);
@@ -131,11 +131,11 @@ void ToastNotificationsManager::moveNotificationToCorner(BaseToastNotification* 
       break;
 
     case ToastNotificationsManager::TopRight:
-      notif->move(corner);
+      notif->move(corner.x() - notif->frameGeometry().width(), corner.y());
       break;
 
     case ToastNotificationsManager::BottomLeft:
-      notif->move(corner);
+      notif->move(corner.x(), corner.y() - notif->frameGeometry().height());
       break;
 
     case ToastNotificationsManager::BottomRight:
