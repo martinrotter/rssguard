@@ -21,6 +21,7 @@ class ToastNotification : public BaseToastNotification {
     virtual bool alwaysOnTop() const;
 
   private:
+    void setupHeading();
     void loadNotification(Notification::Event event, const GuiMessage& msg, const GuiAction& action);
     QIcon iconForType(QSystemTrayIcon::MessageIcon icon) const;
 

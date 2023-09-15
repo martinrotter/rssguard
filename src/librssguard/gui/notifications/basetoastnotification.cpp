@@ -33,13 +33,14 @@ BaseToastNotification::BaseToastNotification(QWidget* parent) : QDialog(parent) 
 BaseToastNotification::~BaseToastNotification() {}
 
 void BaseToastNotification::setupCloseButton(QAbstractButton* btn) {
+  btn->setToolTip(tr("Close this notification"));
   btn->setIcon(qApp->icons()->fromTheme(QSL("dialog-close"), QSL("gtk-close")));
 
   connect(btn, &QAbstractButton::clicked, this, &BaseToastNotification::close);
 }
 
 void BaseToastNotification::setupTimedClosing() {
-  QTimer::singleShot(15s, this, &BaseToastNotification::close);
+  QTimer::singleShot(NOTIFICATIONS_TIMEOUT, this, &BaseToastNotification::close);
 }
 
 bool BaseToastNotification::eventFilter(QObject* watched, QEvent* event) {

@@ -8,6 +8,15 @@
 #include <Carbon/Carbon.h>
 #endif
 
+void ToastNotification::setupHeading() {
+  auto fon = m_ui.m_lblTitle->font();
+
+  fon.setBold(true);
+  fon.setPointSize(fon.pointSize() * 1.2);
+
+  m_ui.m_lblTitle->setFont(fon);
+}
+
 ToastNotification::ToastNotification(Notification::Event event,
                                      const GuiMessage& msg,
                                      const GuiAction& action,
@@ -15,13 +24,7 @@ ToastNotification::ToastNotification(Notification::Event event,
   : BaseToastNotification(parent) {
   m_ui.setupUi(this);
 
-  auto fon = m_ui.m_lblTitle->font();
-
-  fon.setBold(true);
-  // fon.s
-
-  m_ui.m_lblTitle->setFont(fon);
-
+  setupHeading();
   setupCloseButton(m_ui.m_btnClose);
   setupTimedClosing();
 
