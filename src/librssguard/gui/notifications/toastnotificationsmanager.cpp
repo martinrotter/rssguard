@@ -151,7 +151,7 @@ void ToastNotificationsManager::makeSpaceForNotification(int height_to_make_spac
     switch (m_position) {
       case ToastNotificationsManager::TopLeft:
       case ToastNotificationsManager::TopRight: {
-        auto shift_down = reverse ? [](int x, int y) {return x - y;} : [](int x, int y) {return x + y;};
+        std::function<int(int,int)> shift_down = reverse ? [](int x, int y) {return x - y;} : [](int x, int y) {return x + y;};
 
         // Move it all down.
         notif->move(notif->pos().x(), shift_down(notif->pos().y(), (height_to_make_space + NOTIFICATIONS_MARGIN)));
@@ -160,7 +160,7 @@ void ToastNotificationsManager::makeSpaceForNotification(int height_to_make_spac
 
       case ToastNotificationsManager::BottomLeft:
       case ToastNotificationsManager::BottomRight: {
-        auto shift_up = reverse ? [](int x, int y) {return x + y;} : [](int x, int y) {return x - y;};
+        std::function<int(int,int)> shift_up = reverse ? [](int x, int y) {return x + y;} : [](int x, int y) {return x - y;};
 
         // Move it all up.
         notif->move(notif->pos().x(), shift_up(notif->pos().y(), height_to_make_space + NOTIFICATIONS_MARGIN));
