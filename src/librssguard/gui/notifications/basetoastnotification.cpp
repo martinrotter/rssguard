@@ -7,6 +7,10 @@
 #include <QCloseEvent>
 #include <QTimer>
 
+#include <chrono>
+
+using namespace std::chrono_literals;
+
 BaseToastNotification::BaseToastNotification(QWidget* parent) : QDialog(parent) {
   setAttribute(Qt::WidgetAttribute::WA_ShowWithoutActivating);
   setFixedWidth(NOTIFICATIONS_WIDTH);
@@ -23,7 +27,6 @@ BaseToastNotification::BaseToastNotification(QWidget* parent) : QDialog(parent) 
     Qt::WindowType::FramelessWindowHint | Qt::WindowType::WindowStaysOnTopHint | Qt::WindowType::WindowSystemMenuHint);
 
   setStyleSheet(QSL("BaseToastNotification { border: 1px solid black; }"));
-
   installEventFilter(this);
 }
 
@@ -36,7 +39,7 @@ void BaseToastNotification::setupCloseButton(QAbstractButton* btn) {
 }
 
 void BaseToastNotification::setupTimedClosing() {
-  QTimer::singleShot(15000, this, &BaseToastNotification::close);
+  QTimer::singleShot(15s, this, &BaseToastNotification::close);
 }
 
 bool BaseToastNotification::eventFilter(QObject* watched, QEvent* event) {

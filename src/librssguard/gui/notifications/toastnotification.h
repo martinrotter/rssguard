@@ -22,6 +22,7 @@ class ToastNotification : public BaseToastNotification {
 
   private:
     void loadNotification(Notification::Event event, const GuiMessage& msg, const GuiAction& action);
+    QIcon iconForType(QSystemTrayIcon::MessageIcon icon) const;
 
   private:
     Ui::ToastNotification m_ui;
