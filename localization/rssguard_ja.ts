@@ -313,7 +313,7 @@ version by clicking this popup notification.</source>
     <message>
       <location filename="../src/librssguard/gui/notifications/basetoastnotification.cpp" line="36"/>
       <source>Close this notification</source>
-      <translation type="unfinished">Close this notification</translation>
+      <translation>この通知を閉じる</translation>
     </message>
   </context>
   <context>
@@ -7642,12 +7642,12 @@ Unread news: %2</source>
     <message>
       <location filename="../src/librssguard/gui/notifications/toastnotification.ui" line="14"/>
       <source>Dialog</source>
-      <translation type="unfinished">Dialog</translation>
+      <translation>ダイアログ</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/notifications/toastnotification.ui" line="47"/>
       <source>...</source>
-      <translation type="unfinished">...</translation>
+      <translation>...</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/notifications/toastnotification.ui" line="62"/>
@@ -7657,7 +7657,7 @@ Unread news: %2</source>
     <message>
       <location filename="../src/librssguard/gui/notifications/toastnotification.ui" line="72"/>
       <source>TextLabel</source>
-      <translation type="unfinished">TextLabel</translation>
+      <translation>テキストラベル</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/notifications/toastnotification.ui" line="87"/>
