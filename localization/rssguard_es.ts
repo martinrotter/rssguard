@@ -7044,7 +7044,7 @@ Además, hay algunos sonidos incorporados. Simplemente comience a escribir &quot
     <message>
       <location filename="../src/librssguard/database/sqlitedriver.cpp" line="109"/>
       <source>cannot get native &apos;sqlite3&apos; DB handle</source>
-      <translation type="unfinished">cannot get native &apos;sqlite3&apos; DB handle</translation>
+      <translation>imposible obtener gestor nativo de base de datos &apos;sqlite3&apos;</translation>
     </message>
     <message>
       <location filename="../src/librssguard/database/sqlitedriver.cpp" line="384"/>
@@ -7665,32 +7665,32 @@ Noticias sin leer: %2</translation>
     <message>
       <location filename="../src/librssguard/gui/notifications/toastnotification.ui" line="14"/>
       <source>Dialog</source>
-      <translation type="unfinished">Dialog</translation>
+      <translation>Diálogo</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/notifications/toastnotification.ui" line="47"/>
       <source>...</source>
-      <translation type="unfinished">...</translation>
+      <translation>...</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/notifications/toastnotification.ui" line="62"/>
       <source>11</source>
-      <translation type="unfinished">11</translation>
+      <translation>11</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/notifications/toastnotification.ui" line="72"/>
       <source>TextLabel</source>
-      <translation type="unfinished">TextLabel</translation>
+      <translation>Etiqueta de texto</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/notifications/toastnotification.ui" line="87"/>
       <source>PushButton</source>
-      <translation type="unfinished">PushButton</translation>
+      <translation>Pulsar botón</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/notifications/toastnotification.cpp" line="49"/>
       <source>Do it!</source>
-      <translation type="unfinished">Do it!</translation>
+      <translation>¡Hacerlo!</translation>
     </message>
   </context>
   <context>
