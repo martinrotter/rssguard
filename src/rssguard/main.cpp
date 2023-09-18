@@ -17,6 +17,7 @@
 #endif
 
 #include <QTextCodec>
+#include <QSettings>
 
 int main(int argc, char* argv[]) {
   qSetMessagePattern(QSL("time=\"%{time process}\" type=\"%{type}\" -> %{message}"));
