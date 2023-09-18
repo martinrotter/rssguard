@@ -6,6 +6,7 @@
 #include "database/databasequeries.h"
 #include "exceptions/networkexception.h"
 #include "miscellaneous/application.h"
+#include "miscellaneous/settings.h"
 #include "network-web/networkfactory.h"
 #include "network-web/webfactory.h"
 #include "services/abstract/category.h"

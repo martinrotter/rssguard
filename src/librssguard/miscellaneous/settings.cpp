@@ -285,6 +285,13 @@ DVALUE(bool) GUI::StatusBarVisibleDef = true;
 DKEY GUI::EnableNotifications = "enable_notifications";
 DVALUE(bool) GUI::EnableNotificationsDef = true;
 
+DKEY GUI::UseToastNotifications = "use_toast_notifications";
+DVALUE(bool) GUI::UseToastNotificationsDef = true;
+
+DKEY GUI::ToastNotificationsPosition = "toast_notifications_position";
+DVALUE(ToastNotificationsManager::NotificationPosition)
+GUI::ToastNotificationsPositionDef = ToastNotificationsManager::NotificationPosition::BottomRight;
+
 DKEY GUI::HideMainWindowWhenMinimized = "hide_when_minimized";
 DVALUE(bool) GUI::HideMainWindowWhenMinimizedDef = false;
 

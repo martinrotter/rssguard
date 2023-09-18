@@ -9,6 +9,7 @@
 #include "gui/messagebox.h"
 #include "miscellaneous/application.h"
 #include "miscellaneous/iofactory.h"
+#include "miscellaneous/settings.h"
 #include "miscellaneous/textfactory.h"
 
 #include <QDir>
@@ -17,8 +18,7 @@
 #include <QSqlResult>
 #include <QVariant>
 
-DatabaseFactory::DatabaseFactory(QObject* parent)
-  : QObject(parent), m_dbDriver(nullptr) {
+DatabaseFactory::DatabaseFactory(QObject* parent) : QObject(parent), m_dbDriver(nullptr) {
   determineDriver();
 }
 
@@ -29,8 +29,7 @@ void DatabaseFactory::removeConnection(const QString& connection_name) {
 
 void DatabaseFactory::determineDriver() {
   m_allDbDrivers = {
-    new SqliteDriver(qApp->settings()->value(GROUP(Database), SETTING(Database::UseInMemory)).toBool(), this)
-  };
+    new SqliteDriver(qApp->settings()->value(GROUP(Database), SETTING(Database::UseInMemory)).toBool(), this)};
 
   if (QSqlDatabase::isDriverAvailable(QSL(APP_DB_MYSQL_DRIVER))) {
     m_allDbDrivers.append(new MariaDbDriver(this));
@@ -51,16 +50,15 @@ void DatabaseFactory::determineDriver() {
     m_dbDriver->connection(QSL("DatabaseFactory"));
   }
   catch (const ApplicationException& ex) {
-    qCriticalNN << LOGSEC_DB
-                << "Failed to reach connection to DB source:"
-                << QUOTE_W_SPACE_DOT(ex.message());
+    qCriticalNN << LOGSEC_DB << "Failed to reach connection to DB source:" << QUOTE_W_SPACE_DOT(ex.message());
 
     if (m_dbDriver->driverType() != DatabaseDriver::DriverType::SQLite) {
       MsgBox::show(nullptr,
-                       QMessageBox::Icon::Critical,
-                       tr("Cannot connect to database"),
-                       tr("Connection to your database was not established with error: '%1'. "
-                          "Falling back to SQLite.").arg(ex.message()));
+                   QMessageBox::Icon::Critical,
+                   tr("Cannot connect to database"),
+                   tr("Connection to your database was not established with error: '%1'. "
+                      "Falling back to SQLite.")
+                     .arg(ex.message()));
 
       m_dbDriver = boolinq::from(m_allDbDrivers).first([](DatabaseDriver* driv) {
         return driv->driverType() == DatabaseDriver::DriverType::SQLite;
@@ -88,8 +86,7 @@ QString DatabaseFactory::lastExecutedQuery(const QSqlQuery& query) {
   while (it.hasNext()) {
     it.next();
 
-    if (it.value().type() == QVariant::Type::Char ||
-        it.value().type() == QVariant::Type::String) {
+    if (it.value().type() == QVariant::Type::Char || it.value().type() == QVariant::Type::String) {
       str.replace(it.key(), QSL("'%1'").arg(it.value().toString()));
     }
     else {
@@ -102,8 +99,7 @@ QString DatabaseFactory::lastExecutedQuery(const QSqlQuery& query) {
 }
 
 QString DatabaseFactory::escapeQuery(const QString& query) {
-  return QString(query)
-         .replace(QSL("'"), QSL("''"));
+  return QString(query).replace(QSL("'"), QSL("''"));
 
   //.replace(QSL("\""), QSL("\\\""));
 }

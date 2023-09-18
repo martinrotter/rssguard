@@ -3,6 +3,7 @@
 #include "gui/settings/settingsgeneral.h"
 
 #include "miscellaneous/application.h"
+#include "miscellaneous/settings.h"
 #include "miscellaneous/systemfactory.h"
 
 SettingsGeneral::SettingsGeneral(Settings* settings, QWidget* parent)

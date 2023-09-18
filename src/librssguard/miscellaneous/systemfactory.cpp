@@ -7,6 +7,7 @@
 #include "gui/dialogs/formmain.h"
 #include "gui/dialogs/formupdate.h"
 #include "miscellaneous/application.h"
+#include "miscellaneous/settings.h"
 #include "miscellaneous/systemfactory.h"
 
 #if defined(Q_OS_WIN)

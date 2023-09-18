@@ -7,6 +7,7 @@
 
 #include "definitions/definitions.h"
 
+#include "gui/notifications/toastnotificationsmanager.h"
 #include "miscellaneous/settingsproperties.h"
 #include "miscellaneous/textfactory.h"
 
@@ -18,15 +19,15 @@
 #include <QStringList>
 #include <QWriteLocker>
 
-#define KEY extern const QString
-#define DKEY const QString
-#define VALUE(x) extern const x
-#define NON_CONST_VALUE(x) extern x
-#define DVALUE(x) const x
+#define KEY                 extern const QString
+#define DKEY                const QString
+#define VALUE(x)            extern const x
+#define NON_CONST_VALUE(x)  extern x
+#define DVALUE(x)           const x
 #define NON_CONST_DVALUE(x) x
-#define SETTING(x) x, x##Def
-#define DEFAULT_VALUE(x) x##Def
-#define GROUP(x) x::ID
+#define SETTING(x)          x, x##Def
+#define DEFAULT_VALUE(x)    x##Def
+#define GROUP(x)            x::ID
 
 #if defined(USE_WEBENGINE)
 namespace WebEngineAttributes {
@@ -217,6 +218,12 @@ namespace GUI {
 
   KEY EnableNotifications;
   VALUE(bool) EnableNotificationsDef;
+
+  KEY UseToastNotifications;
+  VALUE(bool) UseToastNotificationsDef;
+
+  KEY ToastNotificationsPosition;
+  VALUE(ToastNotificationsManager::NotificationPosition) ToastNotificationsPositionDef;
 
   KEY MessageViewState;
   VALUE(QString) MessageViewStateDef;

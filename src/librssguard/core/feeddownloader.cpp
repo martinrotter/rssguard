@@ -9,6 +9,7 @@
 #include "exceptions/feedfetchexception.h"
 #include "exceptions/filteringexception.h"
 #include "miscellaneous/application.h"
+#include "miscellaneous/settings.h"
 #include "services/abstract/cacheforserviceroot.h"
 #include "services/abstract/feed.h"
 #include "services/abstract/labelsnode.h"

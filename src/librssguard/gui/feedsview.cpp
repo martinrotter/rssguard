@@ -10,6 +10,8 @@
 #include "gui/reusable/styleditemdelegatewithoutfocus.h"
 #include "miscellaneous/feedreader.h"
 #include "miscellaneous/mutex.h"
+#include "miscellaneous/settings.h"
+#include "miscellaneous/textfactory.h"
 #include "services/abstract/feed.h"
 #include "services/abstract/rootitem.h"
 #include "services/abstract/serviceroot.h"

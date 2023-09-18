@@ -3,6 +3,7 @@
 #include "miscellaneous/skinfactory.h"
 
 #include "miscellaneous/application.h"
+#include "miscellaneous/settings.h"
 #include "network-web/networkfactory.h"
 #include "services/abstract/rootitem.h"
 

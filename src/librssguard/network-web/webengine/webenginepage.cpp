@@ -5,6 +5,7 @@
 #include "definitions/definitions.h"
 #include "gui/webviewers/webengine/webengineviewer.h"
 #include "miscellaneous/application.h"
+#include "miscellaneous/settings.h"
 #include "network-web/adblock/adblockmanager.h"
 #include "network-web/adblock/adblockrequestinfo.h"
 #include "network-web/webfactory.h"

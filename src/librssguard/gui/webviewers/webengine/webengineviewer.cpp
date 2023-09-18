@@ -7,6 +7,7 @@
 #include "gui/webbrowser.h"
 #include "miscellaneous/application.h"
 #include "miscellaneous/externaltool.h"
+#include "miscellaneous/settings.h"
 #include "miscellaneous/skinfactory.h"
 #include "network-web/adblock/adblockicon.h"
 #include "network-web/adblock/adblockmanager.h"
@@ -16,6 +17,7 @@
 #include <QFileIconProvider>
 #include <QTimer>
 #include <QToolTip>
+#include <QWheelEvent>
 
 #if QT_VERSION_MAJOR == 6
 #include <QWebEngineContextMenuRequest>
@@ -23,8 +25,6 @@
 #include <QOpenGLWidget>
 #include <QWebEngineContextMenuData>
 #endif
-
-#include <QWheelEvent>
 
 WebEngineViewer::WebEngineViewer(QWidget* parent) : QWebEngineView(parent), m_browser(nullptr), m_root(nullptr) {
   WebEnginePage* page = new WebEnginePage(this);

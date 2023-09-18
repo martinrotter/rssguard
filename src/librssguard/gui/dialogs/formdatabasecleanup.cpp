@@ -7,20 +7,28 @@
 #include "gui/guiutilities.h"
 #include "miscellaneous/application.h"
 #include "miscellaneous/iconfactory.h"
+#include "miscellaneous/settings.h"
 
 #include <QCloseEvent>
 #include <QDialogButtonBox>
 #include <QPushButton>
 
-FormDatabaseCleanup::FormDatabaseCleanup(QWidget* parent) : QDialog(parent), m_ui(new Ui::FormDatabaseCleanup), m_cleaner(nullptr) {
+FormDatabaseCleanup::FormDatabaseCleanup(QWidget* parent)
+  : QDialog(parent), m_ui(new Ui::FormDatabaseCleanup), m_cleaner(nullptr) {
   m_ui->setupUi(this);
 
   setObjectName(QSL("form_db_cleanup"));
 
   GuiUtilities::applyDialogProperties(*this, qApp->icons()->fromTheme(QSL("edit-clear")));
 
-  connect(m_ui->m_spinDays, static_cast<void (QSpinBox::*)(int)>(&QSpinBox::valueChanged), this, &FormDatabaseCleanup::updateDaysSuffix);
-  connect(m_ui->m_btnBox->button(QDialogButtonBox::StandardButton::Ok), &QPushButton::clicked, this, &FormDatabaseCleanup::startPurging);
+  connect(m_ui->m_spinDays,
+          static_cast<void (QSpinBox::*)(int)>(&QSpinBox::valueChanged),
+          this,
+          &FormDatabaseCleanup::updateDaysSuffix);
+  connect(m_ui->m_btnBox->button(QDialogButtonBox::StandardButton::Ok),
+          &QPushButton::clicked,
+          this,
+          &FormDatabaseCleanup::startPurging);
   connect(this, &FormDatabaseCleanup::purgeRequested, &m_cleaner, &DatabaseCleaner::purgeDatabaseData);
   connect(&m_cleaner, &DatabaseCleaner::purgeStarted, this, &FormDatabaseCleanup::onPurgeStarted);
   connect(&m_cleaner, &DatabaseCleaner::purgeProgress, this, &FormDatabaseCleanup::onPurgeProgress);
@@ -31,8 +39,7 @@ FormDatabaseCleanup::FormDatabaseCleanup(QWidget* parent) : QDialog(parent), m_u
 
   loadDatabaseInfo();
 
-  GuiUtilities::restoreState(this,
-                             qApp->settings()->value(GROUP(GUI), objectName(), QByteArray()).toByteArray());
+  GuiUtilities::restoreState(this, qApp->settings()->value(GROUP(GUI), objectName(), QByteArray()).toByteArray());
 }
 
 void FormDatabaseCleanup::closeEvent(QCloseEvent* event) {
@@ -73,7 +80,8 @@ void FormDatabaseCleanup::startPurging() {
 void FormDatabaseCleanup::onPurgeStarted() {
   m_ui->m_progressBar->setValue(0);
   m_ui->m_btnBox->setEnabled(false);
-  m_ui->m_lblResult->setStatus(WidgetWithStatus::StatusType::Information, tr("Database cleanup is running."),
+  m_ui->m_lblResult->setStatus(WidgetWithStatus::StatusType::Information,
+                               tr("Database cleanup is running."),
                                tr("Database cleanup is running."));
 }
 
@@ -92,7 +100,9 @@ void FormDatabaseCleanup::onPurgeFinished(bool finished) {
                                  tr("Database cleanup is completed."));
   }
   else {
-    m_ui->m_lblResult->setStatus(WidgetWithStatus::StatusType::Error, tr("Database cleanup failed."), tr("Database cleanup failed."));
+    m_ui->m_lblResult->setStatus(WidgetWithStatus::StatusType::Error,
+                                 tr("Database cleanup failed."),
+                                 tr("Database cleanup failed."));
   }
 
   loadDatabaseInfo();

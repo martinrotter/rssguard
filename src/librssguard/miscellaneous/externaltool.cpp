@@ -5,6 +5,7 @@
 #include "definitions/definitions.h"
 #include "exceptions/applicationexception.h"
 #include "miscellaneous/application.h"
+#include "miscellaneous/settings.h"
 
 #include <QDir>
 #include <QObject>

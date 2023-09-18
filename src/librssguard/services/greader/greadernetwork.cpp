@@ -8,6 +8,7 @@
 #include "exceptions/feedfetchexception.h"
 #include "exceptions/networkexception.h"
 #include "miscellaneous/application.h"
+#include "miscellaneous/settings.h"
 #include "network-web/networkfactory.h"
 #include "network-web/oauth2service.h"
 #include "network-web/webfactory.h"

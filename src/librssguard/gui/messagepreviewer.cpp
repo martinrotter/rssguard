@@ -6,6 +6,7 @@
 #include "gui/itemdetails.h"
 #include "gui/webbrowser.h"
 #include "miscellaneous/application.h"
+#include "miscellaneous/settings.h"
 #include "services/abstract/gui/custommessagepreviewer.h"
 #include "services/abstract/label.h"
 #include "services/abstract/labelsnode.h"

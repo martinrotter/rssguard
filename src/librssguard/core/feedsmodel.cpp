@@ -10,6 +10,7 @@
 #include "gui/messagebox.h"
 #include "miscellaneous/feedreader.h"
 #include "miscellaneous/iconfactory.h"
+#include "miscellaneous/settings.h"
 #include "services/abstract/feed.h"
 #include "services/abstract/recyclebin.h"
 #include "services/abstract/serviceentrypoint.h"

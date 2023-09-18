@@ -15,6 +15,14 @@ QList<Notification> NotificationFactory::allNotifications() const {
   return m_notifications;
 }
 
+bool NotificationFactory::areNotificationsEnabled() const {
+  return qApp->settings()->value(GROUP(GUI), SETTING(GUI::EnableNotifications)).toBool();
+}
+
+bool NotificationFactory::useToastNotifications() const {
+  return qApp->settings()->value(GROUP(GUI), SETTING(GUI::EnableNotifications)).toBool();
+}
+
 Notification NotificationFactory::notificationForEvent(Notification::Event event) const {
   if (!qApp->settings()->value(GROUP(GUI), SETTING(GUI::EnableNotifications)).toBool()) {
     return Notification();

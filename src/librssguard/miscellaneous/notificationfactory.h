@@ -18,9 +18,11 @@ class NotificationFactory : public QObject {
     QList<Notification> allNotifications() const;
     Notification notificationForEvent(Notification::Event event) const;
 
-  public slots:
+    // Determines whether balloon tips are enabled or not.
+    bool areNotificationsEnabled() const;
+    bool useToastNotifications() const;
 
-    // Load saved notifications from settings
+  public slots:
     void load(Settings* settings);
     void save(const QList<Notification>& new_notifications, Settings* settings);
 

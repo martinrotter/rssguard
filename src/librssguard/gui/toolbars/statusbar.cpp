@@ -7,6 +7,7 @@
 #include "gui/reusable/progressbarwithtext.h"
 #include "gui/tabwidget.h"
 #include "miscellaneous/iconfactory.h"
+#include "miscellaneous/settings.h"
 
 #include <QLabel>
 #include <QToolButton>

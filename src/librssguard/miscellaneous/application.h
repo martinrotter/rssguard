@@ -12,7 +12,6 @@
 #include "miscellaneous/localization.h"
 #include "miscellaneous/nodejs.h"
 #include "miscellaneous/notification.h"
-#include "miscellaneous/settings.h"
 #include "miscellaneous/singleapplication.h"
 #include "miscellaneous/skinfactory.h"
 #include "miscellaneous/systemfactory.h"
@@ -46,6 +45,7 @@ class WebFactory;
 class NotificationFactory;
 class ToastNotificationsManager;
 class WebViewer;
+class Settings;
 
 #if defined(Q_OS_WIN)
 struct ITaskbarList4;

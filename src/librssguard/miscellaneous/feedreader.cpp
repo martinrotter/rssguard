@@ -12,12 +12,12 @@
 #include "gui/dialogs/formmessagefiltersmanager.h"
 #include "miscellaneous/application.h"
 #include "miscellaneous/mutex.h"
+#include "miscellaneous/settings.h"
 #include "services/abstract/cacheforserviceroot.h"
 #include "services/abstract/serviceroot.h"
 #include "services/feedly/feedlyentrypoint.h"
 #include "services/gmail/gmailentrypoint.h"
 #include "services/greader/greaderentrypoint.h"
-#include "services/newsblur/newsblurentrypoint.h"
 #include "services/owncloud/owncloudserviceentrypoint.h"
 #include "services/reddit/redditentrypoint.h"
 #include "services/standard/standardserviceentrypoint.h"
@@ -65,7 +65,6 @@ QList<ServiceEntryPoint*> FeedReader::feedServices() {
     m_feedServices.append(new OwnCloudServiceEntryPoint());
 
 #if !defined(NDEBUG)
-    m_feedServices.append(new NewsBlurEntryPoint());
     m_feedServices.append(new RedditEntryPoint());
 #endif
 

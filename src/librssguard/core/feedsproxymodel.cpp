@@ -9,6 +9,7 @@
 #include "gui/feedsview.h"
 #include "miscellaneous/application.h"
 #include "miscellaneous/regexfactory.h"
+#include "miscellaneous/settings.h"
 #include "services/abstract/rootitem.h"
 
 #include <QMimeData>

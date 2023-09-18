@@ -6,6 +6,7 @@
 #include "database/mariadbdriver.h"
 #include "definitions/definitions.h"
 #include "miscellaneous/application.h"
+#include "miscellaneous/settings.h"
 
 SettingsDatabase::SettingsDatabase(Settings* settings, QWidget* parent)
   : SettingsPanel(settings, parent), m_ui(new Ui::SettingsDatabase) {

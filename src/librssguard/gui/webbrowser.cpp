@@ -12,6 +12,7 @@
 #include "gui/webviewers/webviewer.h"
 #include "miscellaneous/application.h"
 #include "miscellaneous/iconfactory.h"
+#include "miscellaneous/settings.h"
 #include "network-web/networkfactory.h"
 #include "network-web/readability.h"
 #include "network-web/webfactory.h"

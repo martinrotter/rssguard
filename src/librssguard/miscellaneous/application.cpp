@@ -25,6 +25,7 @@
 #include "miscellaneous/iofactory.h"
 #include "miscellaneous/mutex.h"
 #include "miscellaneous/notificationfactory.h"
+#include "miscellaneous/settings.h"
 #include "network-web/adblock/adblockicon.h"
 #include "network-web/adblock/adblockmanager.h"
 #include "network-web/webfactory.h"
@@ -692,7 +693,7 @@ void Application::showGuiMessageCore(Notification::Event event,
   m_toastNotifications->showNotification(event, msg, action);
   return;
 
-  if (SystemTrayIcon::areNotificationsEnabled()) {
+  if (m_notifications->areNotificationsEnabled()) {
     auto notification = m_notifications->notificationForEvent(event);
 
     notification.playSound(this);
