@@ -13,8 +13,7 @@ SettingsNotifications::SettingsNotifications(Settings* settings, QWidget* parent
   m_ui.setupUi(this);
 
   m_ui.m_lblInfo
-    ->setHelpText(tr("You must have \"tray icon\" activated to have balloon notifications working.\n\n"
-                     "Also, there are some built-in sounds. Just start typing \":\" and they will show up."),
+    ->setHelpText(tr("There are some built-in notification sounds. Just start typing \":\" and they will show up."),
                   true);
 
   connect(m_ui.m_checkEnableNotifications, &QCheckBox::toggled, this, &SettingsNotifications::dirtifySettings);

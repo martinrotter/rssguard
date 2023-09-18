@@ -6734,6 +6734,26 @@ Also, there are some built-in sounds. Just start typing &quot;:&quot; and they w
         <translation type="unfinished"></translation>
     </message>
     <message>
+        <location filename="../src/librssguard/gui/settings/settingsnotifications.ui" line="27"/>
+        <source>Notifications type</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/librssguard/gui/settings/settingsnotifications.ui" line="33"/>
+        <source>Native notifications (tray icon must be enabled)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/librssguard/gui/settings/settingsnotifications.ui" line="40"/>
+        <source>Custom notifications</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/librssguard/gui/settings/settingsnotifications.ui" line="53"/>
+        <source>Position</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
         <location filename="../src/librssguard/gui/settings/settingsnotifications.h" line="27"/>
         <source>Notifications</source>
         <translation type="unfinished"></translation>
