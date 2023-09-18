@@ -6825,22 +6825,22 @@ Aussi, il y a des sons pré-ajoutés. Si vous tapez &quot;:&quot;, ils se prése
     <message>
       <location filename="../src/librssguard/gui/settings/settingsnotifications.ui" line="27"/>
       <source>Notifications type</source>
-      <translation type="unfinished">Notifications type</translation>
+      <translation>Type de notifications</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsnotifications.ui" line="33"/>
       <source>Native notifications (tray icon must be enabled)</source>
-      <translation type="unfinished">Native notifications (tray icon must be enabled)</translation>
+      <translation>Notifications natives (la barre d'icônes doit être activée)</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsnotifications.ui" line="40"/>
       <source>Custom notifications</source>
-      <translation type="unfinished">Custom notifications</translation>
+      <translation>Notifications personnalisées</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsnotifications.ui" line="53"/>
       <source>Position</source>
-      <translation type="unfinished">Position</translation>
+      <translation>Position</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsnotifications.h" line="27"/>
