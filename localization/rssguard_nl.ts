@@ -313,7 +313,7 @@ Om te zien wat er NIEUW is in deze versie: klik op deze melding.</translation>
     <message>
       <location filename="../src/librssguard/gui/notifications/basetoastnotification.cpp" line="36"/>
       <source>Close this notification</source>
-      <translation type="unfinished">Close this notification</translation>
+      <translation>Melding sluiten</translation>
     </message>
   </context>
   <context>
@@ -6188,12 +6188,12 @@ Makers van de applicatie zijn niet verantwoordelijk voor dataverlies.</translati
     <message>
       <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.cpp" line="362"/>
       <source>PC restart needed</source>
-      <translation type="unfinished">PC restart needed</translation>
+      <translation>PC herstart benodigd</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.cpp" line="363"/>
       <source>Your PC needs to be restarted to make some of enabled features fully working.</source>
-      <translation type="unfinished">Your PC needs to be restarted to make some of enabled features fully working.</translation>
+      <translation>De computer moet opnieuw opgestart worden voor dat alle nieuwe features correct werken.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="21"/>
@@ -6794,27 +6794,27 @@ Er zijn ook een aantal ingebouwde geluiden beschikbaar. Typ &quot;:&quot; om de 
     <message>
       <location filename="../src/librssguard/gui/settings/settingsnotifications.ui" line="17"/>
       <source>Enable notifications</source>
-      <translation>Aanzetten van meldingen</translation>
+      <translation>Meldingen inschakelen</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsnotifications.ui" line="27"/>
       <source>Notifications type</source>
-      <translation type="unfinished">Notifications type</translation>
+      <translation>Meldingstype</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsnotifications.ui" line="33"/>
       <source>Native notifications (tray icon must be enabled)</source>
-      <translation type="unfinished">Native notifications (tray icon must be enabled)</translation>
+      <translation>Standaard meldingen (taakbalkicoon moet zijn ingeschakeld)</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsnotifications.ui" line="40"/>
       <source>Custom notifications</source>
-      <translation type="unfinished">Custom notifications</translation>
+      <translation>Aangepaste meldingen</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsnotifications.ui" line="53"/>
       <source>Position</source>
-      <translation type="unfinished">Position</translation>
+      <translation>Positie</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsnotifications.h" line="27"/>
@@ -6925,7 +6925,7 @@ Er zijn ook een aantal ingebouwde geluiden beschikbaar. Typ &quot;:&quot; om de 
     <message>
       <location filename="../src/librssguard/database/sqlitedriver.cpp" line="109"/>
       <source>cannot get native &apos;sqlite3&apos; DB handle</source>
-      <translation type="unfinished">cannot get native &apos;sqlite3&apos; DB handle</translation>
+      <translation>kan geen standaard &apos;sqlite3&apos; DB handle verkrijgen</translation>
     </message>
     <message>
       <location filename="../src/librssguard/database/sqlitedriver.cpp" line="384"/>
@@ -7545,32 +7545,32 @@ Ongelezen nieuws: %2</translation>
     <message>
       <location filename="../src/librssguard/gui/notifications/toastnotification.ui" line="14"/>
       <source>Dialog</source>
-      <translation type="unfinished">Dialog</translation>
+      <translation>Dialoog</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/notifications/toastnotification.ui" line="47"/>
       <source>...</source>
-      <translation type="unfinished">...</translation>
+      <translation>...</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/notifications/toastnotification.ui" line="62"/>
       <source>11</source>
-      <translation type="unfinished">11</translation>
+      <translation>11</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/notifications/toastnotification.ui" line="72"/>
       <source>TextLabel</source>
-      <translation type="unfinished">TextLabel</translation>
+      <translation>TekstLabel</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/notifications/toastnotification.ui" line="87"/>
       <source>PushButton</source>
-      <translation type="unfinished">PushButton</translation>
+      <translation>Drukknop</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/notifications/toastnotification.cpp" line="49"/>
       <source>Do it!</source>
-      <translation type="unfinished">Do it!</translation>
+      <translation>Nu uitvoeren!</translation>
     </message>
   </context>
   <context>
