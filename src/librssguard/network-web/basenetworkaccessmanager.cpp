@@ -63,6 +63,8 @@ QNetworkReply* BaseNetworkAccessManager::createRequest(QNetworkAccessManager::Op
   new_request.setAttribute(QNetworkRequest::Attribute::Http2AllowedAttribute, m_enableHttp2);
 #endif
 
+  // new_request.setMaximumRedirectsAllowed(0);
+
   new_request.setRawHeader(HTTP_HEADERS_COOKIE, QSL("JSESSIONID= ").toLocal8Bit());
 
   auto custom_ua = qApp->web()->customUserAgent();

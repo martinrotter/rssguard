@@ -134,6 +134,14 @@ void Downloader::manipulateData(const QString& url,
   }
 }
 
+static int numberOfRedirections(QNetworkReply* reply) {
+  return reply->property("redirections_count").toInt();
+}
+
+static int setNumberOfRedirections(QNetworkReply* reply, int number) {
+  return reply->setProperty("redirections_count", number);
+}
+
 void Downloader::finished() {
   auto* reply = qobject_cast<QNetworkReply*>(sender());
 
@@ -151,6 +159,19 @@ void Downloader::finished() {
   QUrl redirection_url = reply->attribute(QNetworkRequest::RedirectionTargetAttribute).toUrl();
 
   if (redirection_url.isValid()) {
+    auto redir_number = numberOfRedirections(reply);
+
+    qDebugNN << LOGSEC_NETWORK << "This network request was redirected" << QUOTE_W_SPACE(redir_number) << "times.";
+
+    redir_number++;
+
+    if (redir_number > MAX_NUMBER_OF_REDIRECTIONS) {
+      qDebugNN << LOGSEC_NETWORK << "Aborting request due too many redirections.";
+
+      emit completed(redirection_url, QNetworkReply::NetworkError::TooManyRedirectsError, 404, {});
+      return;
+    }
+
     // Communication indicates that HTTP redirection is needed.
     // Setup redirection URL and download again.
     QNetworkRequest request = reply->request();
@@ -188,6 +209,7 @@ void Downloader::finished() {
 
     if (m_activeReply != nullptr) {
       m_activeReply->setProperty("original_url", original_url);
+      setNumberOfRedirections(m_activeReply, redir_number);
     }
   }
   else {
