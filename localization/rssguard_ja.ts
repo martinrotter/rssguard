@@ -6779,7 +6779,7 @@ Also, there are some built-in sounds. Just start typing &quot;:&quot; and they w
     <message>
       <location filename="../src/librssguard/gui/settings/settingsnotifications.ui" line="27"/>
       <source>Notifications type</source>
-      <translation type="unfinished">Notifications type</translation>
+      <translation>通知タイプ</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsnotifications.ui" line="33"/>
