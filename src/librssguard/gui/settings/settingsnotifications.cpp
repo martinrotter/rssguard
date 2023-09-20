@@ -18,6 +18,21 @@ SettingsNotifications::SettingsNotifications(Settings* settings, QWidget* parent
 
   connect(m_ui.m_checkEnableNotifications, &QCheckBox::toggled, this, &SettingsNotifications::dirtifySettings);
   connect(m_ui.m_editor, &NotificationsEditor::someNotificationChanged, this, &SettingsNotifications::dirtifySettings);
+
+  connect(m_ui.m_rbCustomNotifications, &QRadioButton::toggled, this, &SettingsNotifications::dirtifySettings);
+  connect(m_ui.m_rbCustomNotifications, &QRadioButton::toggled, this, &SettingsNotifications::requireRestart);
+
+  connect(m_ui.m_rbNativeNotifications, &QRadioButton::toggled, this, &SettingsNotifications::dirtifySettings);
+  connect(m_ui.m_rbNativeNotifications, &QRadioButton::toggled, this, &SettingsNotifications::requireRestart);
+
+  connect(m_ui.m_cbCustomNotificationsPosition,
+          &QComboBox::currentIndexChanged,
+          this,
+          &SettingsNotifications::dirtifySettings);
+  connect(m_ui.m_cbCustomNotificationsPosition,
+          &QComboBox::currentIndexChanged,
+          this,
+          &SettingsNotifications::requireRestart);
 }
 
 void SettingsNotifications::loadSettings() {

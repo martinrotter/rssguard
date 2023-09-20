@@ -37,13 +37,16 @@
    <item row="2" column="0" colspan="2">
     <widget class="QGroupBox" name="m_gbNotificationsType">
      <property name="title">
-      <string>Notifications type</string>
+      <string>Balloon notifications type</string>
      </property>
      <layout class="QFormLayout" name="formLayout_2">
       <item row="0" column="0" colspan="2">
        <widget class="QRadioButton" name="m_rbNativeNotifications">
         <property name="text">
          <string>Native notifications (tray icon must be enabled)</string>
+        </property>
+        <property name="checked">
+         <bool>true</bool>
         </property>
        </widget>
       </item>

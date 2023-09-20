@@ -99,6 +99,8 @@ set(SOURCES
   gui/notifications/notificationseditor.h
   gui/notifications/singlenotificationeditor.cpp
   gui/notifications/singlenotificationeditor.h
+  gui/notifications/articlelistnotification.cpp
+  gui/notifications/articlelistnotification.h
   gui/reusable/baselineedit.cpp
   gui/reusable/baselineedit.h
   gui/reusable/basetreeview.cpp
@@ -440,9 +442,10 @@ set(UI_FILES
   gui/dialogs/formupdate.ui
   gui/notifications/notificationseditor.ui
   gui/notifications/singlenotificationeditor.ui
+  gui/notifications/articlelistnotification.ui
+  gui/notifications/toastnotification.ui
   gui/reusable/networkproxydetails.ui
   gui/itemdetails.ui
-  gui/notifications/toastnotification.ui
   gui/richtexteditor/mrichtextedit.ui
   gui/newspaperpreviewer.ui
   gui/reusable/searchtextwidget.ui

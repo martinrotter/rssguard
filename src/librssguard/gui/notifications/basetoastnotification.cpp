@@ -26,7 +26,7 @@ BaseToastNotification::BaseToastNotification(QWidget* parent) : QDialog(parent) 
 #endif
     Qt::WindowType::FramelessWindowHint | Qt::WindowType::WindowStaysOnTopHint | Qt::WindowType::WindowSystemMenuHint);
 
-  setStyleSheet(QSL("BaseToastNotification { border: 1px solid black; }"));
+  setStyleSheet(QSL("BaseToastNotification { border: 1px solid %1; }").arg(palette().windowText().color().name()));
   installEventFilter(this);
 }
 

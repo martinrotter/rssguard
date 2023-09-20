@@ -110,7 +110,12 @@ Application::Application(const QString& id, int& argc, char** argv, const QStrin
   m_database = new DatabaseFactory(this);
   m_downloadManager = nullptr;
   m_notifications = new NotificationFactory(this);
-  m_toastNotifications = new ToastNotificationsManager(this);
+  m_toastNotifications =
+    new ToastNotificationsManager(settings()
+                                    ->value(GROUP(GUI), SETTING(GUI::ToastNotificationsPosition))
+                                    .value<ToastNotificationsManager::NotificationPosition>(),
+                                  settings()->value(GROUP(GUI), SETTING(GUI::ToastNotificationsScreen)).toInt(),
+                                  this);
   m_shouldRestart = false;
 
 #if defined(Q_OS_WIN)

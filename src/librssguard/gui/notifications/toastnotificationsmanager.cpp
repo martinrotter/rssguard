@@ -4,14 +4,16 @@
 
 #include "3rd-party/boolinq/boolinq.h"
 #include "gui/notifications/basetoastnotification.h"
+
+#include "gui/notifications/articlelistnotification.h"
 #include "gui/notifications/toastnotification.h"
 
 #include <QRect>
 #include <QScreen>
 #include <QWindow>
 
-ToastNotificationsManager::ToastNotificationsManager(QObject* parent)
-  : QObject(parent), m_position(NotificationPosition::BottomRight), m_screen(-1) {}
+ToastNotificationsManager::ToastNotificationsManager(NotificationPosition position, int screen, QObject* parent)
+  : QObject(parent), m_position(position), m_screen(screen), m_articleListNotification(nullptr) {}
 
 ToastNotificationsManager::~ToastNotificationsManager() {
   clear();
@@ -39,7 +41,7 @@ void ToastNotificationsManager::setPosition(NotificationPosition position) {
 
 void ToastNotificationsManager::clear() {
   for (BaseToastNotification* notif : m_activeNotifications) {
-    closeNotification(notif);
+    closeNotification(notif, true);
   }
 
   m_activeNotifications.clear();
@@ -74,12 +76,48 @@ void ToastNotificationsManager::showNotification(Notification::Event event,
   m_activeNotifications.prepend(notif);
 }
 
-void ToastNotificationsManager::showNotification(const QList<Message>& new_messages) {}
+void ToastNotificationsManager::showNotification(const QList<Message>& new_messages) {
+  if (m_articleListNotification == nullptr) {
+    m_articleListNotification = new ArticleListNotification();
+    hookNotification(m_articleListNotification);
+  }
 
-void ToastNotificationsManager::closeNotification(BaseToastNotification* notif) {
+  if (!m_activeNotifications.isEmpty() && m_activeNotifications.first() != m_articleListNotification) {
+    // Article notification is somewhere in list, clear first to move it to first positon.
+    closeNotification(m_articleListNotification, false);
+  }
+
+  auto* screen = moveToProperScreen(m_articleListNotification);
+
+  // Insert new notification into free space.
+  m_articleListNotification->show();
+
+  auto notif_new_pos = cornerForNewNotification(screen->availableGeometry());
+
+  // Make sure notification is finally resized.
+  m_articleListNotification->adjustSize();
+  qApp->processEvents();
+
+  // Move notification, at this point we already need to know its precise size.
+  moveNotificationToCorner(m_articleListNotification, notif_new_pos);
+
+  // Remove out-of-bounds old notifications and shift existing
+  // ones to make space for new notifications.
+  removeOutOfBoundsNotifications(m_articleListNotification->height());
+  makeSpaceForNotification(m_articleListNotification->height());
+
+  m_activeNotifications.prepend(m_articleListNotification);
+}
+
+void ToastNotificationsManager::closeNotification(BaseToastNotification* notif, bool delete_from_memory) {
   auto notif_idx = m_activeNotifications.indexOf(notif);
 
-  notif->deleteLater();
+  if (delete_from_memory) {
+    notif->deleteLater();
+  }
+  else {
+    notif->hide();
+  }
 
   m_activeNotifications.removeAll(notif);
 
@@ -121,7 +159,9 @@ QPoint ToastNotificationsManager::cornerForNewNotification(QRect screen_rect) {
 }
 
 void ToastNotificationsManager::hookNotification(BaseToastNotification* notif) {
-  connect(notif, &BaseToastNotification::closeRequested, this, &ToastNotificationsManager::closeNotification);
+  connect(notif, &BaseToastNotification::closeRequested, this, [this](BaseToastNotification* notif) {
+    closeNotification(notif, false);
+  });
 }
 
 void ToastNotificationsManager::moveNotificationToCorner(BaseToastNotification* notif, QPoint corner) {

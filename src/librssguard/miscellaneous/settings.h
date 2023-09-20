@@ -225,6 +225,9 @@ namespace GUI {
   KEY ToastNotificationsPosition;
   VALUE(ToastNotificationsManager::NotificationPosition) ToastNotificationsPositionDef;
 
+  KEY ToastNotificationsScreen;
+  VALUE(int) ToastNotificationsScreenDef;
+
   KEY MessageViewState;
   VALUE(QString) MessageViewStateDef;
 

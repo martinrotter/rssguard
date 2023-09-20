@@ -21,7 +21,7 @@ ToastNotification::ToastNotification(Notification::Event event,
                                      const GuiMessage& msg,
                                      const GuiAction& action,
                                      QWidget* parent)
-  : BaseToastNotification(parent) {
+  : BaseToastNotification() {
   m_ui.setupUi(this);
 
   setupHeading();
@@ -29,10 +29,6 @@ ToastNotification::ToastNotification(Notification::Event event,
   setupTimedClosing();
 
   loadNotification(event, msg, action);
-}
-
-bool ToastNotification::alwaysOnTop() const {
-  return false;
 }
 
 void ToastNotification::loadNotification(Notification::Event event, const GuiMessage& msg, const GuiAction& action) {
