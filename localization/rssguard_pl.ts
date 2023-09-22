@@ -129,67 +129,67 @@ Błąd: %1</translation>
   <context>
     <name>Application</name>
     <message>
-      <location filename="../src/librssguard/miscellaneous/application.cpp" line="1110"/>
+      <location filename="../src/librssguard/miscellaneous/application.cpp" line="1130"/>
       <source>Application is already running.</source>
       <translation>Aplikacja jest już uruchomiona</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/miscellaneous/application.cpp" line="569"/>
+      <location filename="../src/librssguard/miscellaneous/application.cpp" line="576"/>
       <source>Output directory is not writable.</source>
       <translation>Katalog wyjściowy nie jest zapisywalny</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/miscellaneous/application.cpp" line="577"/>
+      <location filename="../src/librssguard/miscellaneous/application.cpp" line="584"/>
       <source>Settings file not copied to output directory successfully.</source>
       <translation>Plik ustawień nie został pomyślnie skopiowany do katalogu wyjściowego.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/miscellaneous/application.cpp" line="592"/>
+      <location filename="../src/librssguard/miscellaneous/application.cpp" line="599"/>
       <source>Database restoration was not initiated. Make sure that output directory is writable.</source>
       <translation>Przywrócenie bazy danych nie zostało zainicjowane. Upewnij się, że katalog wyjściowy jest zapisywalny.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/miscellaneous/application.cpp" line="599"/>
+      <location filename="../src/librssguard/miscellaneous/application.cpp" line="606"/>
       <source>Settings restoration was not initiated. Make sure that output directory is writable.</source>
       <translation>Przywrócenie ustawień nie zostało zainicjowane. Upewnij się, że katalog wyjściowy jest zapisywalny.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/miscellaneous/application.cpp" line="1128"/>
+      <location filename="../src/librssguard/miscellaneous/application.cpp" line="1148"/>
       <source>Cannot add feed</source>
       <translation>Nie można dodać kanału</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/miscellaneous/application.cpp" line="1129"/>
+      <location filename="../src/librssguard/miscellaneous/application.cpp" line="1149"/>
       <source>Feed cannot be added because there is no active account which can add feeds.</source>
       <translation>Kanał nie może być dodany, ponieważ nie ma aktywnego konta, do którego można dodawać kanały.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/miscellaneous/application.cpp" line="1287"/>
+      <location filename="../src/librssguard/miscellaneous/application.cpp" line="1307"/>
       <source>Packages %1 were updated.</source>
       <translation>Pakiety %1 zostały zaktualizowane.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/miscellaneous/application.cpp" line="1005"/>
+      <location filename="../src/librssguard/miscellaneous/application.cpp" line="1014"/>
       <source>Unread articles fetched</source>
       <translation>Pobrano nieprzeczytane artykuły</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/miscellaneous/application.cpp" line="337"/>
+      <location filename="../src/librssguard/miscellaneous/application.cpp" line="344"/>
       <source>Go to changelog</source>
       <translation>Przejdź do listy zmian</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/miscellaneous/application.cpp" line="1059"/>
+      <location filename="../src/librssguard/miscellaneous/application.cpp" line="1079"/>
       <source>AdBlock needs to be configured</source>
       <translation>AdBlock wymaga konfiguracji</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/miscellaneous/application.cpp" line="331"/>
+      <location filename="../src/librssguard/miscellaneous/application.cpp" line="338"/>
       <source>Welcome</source>
       <translation>Witamy</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/miscellaneous/application.cpp" line="332"/>
+      <location filename="../src/librssguard/miscellaneous/application.cpp" line="339"/>
       <source>Welcome to %1.
 
 Please, check NEW stuff included in this
@@ -200,19 +200,57 @@ Sprawdź nowe możliwości dodane w
 tej wersji, klikając na to powiadomienie.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/miscellaneous/application.cpp" line="1060"/>
+      <location filename="../src/librssguard/miscellaneous/application.cpp" line="1080"/>
       <source>AdBlock is not configured properly. Go to &quot;Settings&quot; -&gt; &quot;Node.js&quot; and check if your Node.js is properly configured.</source>
       <translation>AdBlock nie jest prawidłowo skonfigurowany. Przejdź do „Ustawienia” » „Node.js” i sprawdź, czy twój Node.js jest poprawnie skonfigurowany.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/miscellaneous/application.cpp" line="1109"/>
+      <location filename="../src/librssguard/miscellaneous/application.cpp" line="1129"/>
       <source>Already running</source>
       <translation>Już działa</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/miscellaneous/application.cpp" line="1278"/>
+      <location filename="../src/librssguard/miscellaneous/application.cpp" line="1298"/>
       <source>Packages %1 were NOT updated because of error: %2.</source>
       <translation>Pakiety %1 nie zostały zaktualizowane z powodu błędu: %2.</translation>
+    </message>
+  </context>
+  <context>
+    <name>ArticleListNotification</name>
+    <message>
+      <location filename="../src/librssguard/gui/notifications/articlelistnotification.ui" line="69"/>
+      <source>...</source>
+      <translation type="unfinished">...</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard/gui/notifications/articlelistnotification.ui" line="80"/>
+      <source>Go to previous page</source>
+      <translation type="unfinished">Go to previous page</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard/gui/notifications/articlelistnotification.ui" line="87"/>
+      <source>Go to next page</source>
+      <translation type="unfinished">Go to next page</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard/gui/notifications/articlelistnotification.ui" line="123"/>
+      <source>Open article in article list</source>
+      <translation type="unfinished">Open article in article list</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard/gui/notifications/articlelistnotification.ui" line="130"/>
+      <source>Open article in web browser</source>
+      <translation type="unfinished">Open article in web browser</translation>
+    </message>
+    <message numerus="yes">
+      <location filename="../src/librssguard/gui/notifications/articlelistnotification.cpp" line="47"/>
+      <source>%n feeds fetched</source>
+      <translation type="unfinished">
+        <numerusform>%n feeds fetched</numerusform>
+        <numerusform>%n feeds fetched</numerusform>
+        <numerusform>%n feeds fetched</numerusform>
+        <numerusform>%n feeds fetched</numerusform>
+      </translation>
     </message>
   </context>
   <context>
@@ -312,7 +350,7 @@ tej wersji, klikając na to powiadomienie.</translation>
   <context>
     <name>BaseToastNotification</name>
     <message>
-      <location filename="../src/librssguard/gui/notifications/basetoastnotification.cpp" line="36"/>
+      <location filename="../src/librssguard/gui/notifications/basetoastnotification.cpp" line="37"/>
       <source>Close this notification</source>
       <translation type="unfinished">Close this notification</translation>
     </message>
@@ -5175,14 +5213,14 @@ Tokeny logowania wygasają: %2</translation>
       <translation>pl</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/miscellaneous/application.cpp" line="144"/>
+      <location filename="../src/librssguard/miscellaneous/application.cpp" line="151"/>
       <location filename="../src/librssguard/miscellaneous/localization.cpp" line="80"/>
       <source>LANG_AUTHOR</source>
       <extracomment>Name of translator - optional.</extracomment>
       <translation>Piotr Kozica</translation>
     </message>
     <message numerus="yes">
-      <location filename="../src/librssguard/core/feeddownloader.cpp" line="537"/>
+      <location filename="../src/librssguard/core/feeddownloader.cpp" line="539"/>
       <source>
 
 + %n other feeds.</source>
@@ -5381,6 +5419,26 @@ Lista obsługiwanych czytników:</translation>
       <location filename="../src/librssguard/services/tt-rss/ttrssnetworkfactory.cpp" line="1173"/>
       <source>Published articles</source>
       <translation>Opublikowane artykuły</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard/gui/notifications/toastnotificationsmanager.cpp" line="18"/>
+      <source>top-left</source>
+      <translation type="unfinished">top-left</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard/gui/notifications/toastnotificationsmanager.cpp" line="21"/>
+      <source>top-right</source>
+      <translation type="unfinished">top-right</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard/gui/notifications/toastnotificationsmanager.cpp" line="24"/>
+      <source>bottom-left</source>
+      <translation type="unfinished">bottom-left</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard/gui/notifications/toastnotificationsmanager.cpp" line="28"/>
+      <source>bottom-right</source>
+      <translation type="unfinished">bottom-right</translation>
     </message>
   </context>
   <context>
@@ -6824,43 +6882,44 @@ Ponadto po zainstalowaniu Node.js należy ponownie uruchomić okno dialogowe &qu
   <context>
     <name>SettingsNotifications</name>
     <message>
-      <location filename="../src/librssguard/gui/settings/settingsnotifications.cpp" line="16"/>
-      <source>You must have &quot;tray icon&quot; activated to have balloon notifications working.
-
-Also, there are some built-in sounds. Just start typing &quot;:&quot; and they will show up.</source>
-      <translation>Musisz mieć aktywowaną ikonę zasobnika systemowego, aby powiadomienia w dymkach działały.
-
-Istnieją również wbudowane dźwięki. Po prostu wpisz &quot;:&quot; i pojawią się.</translation>
-    </message>
-    <message>
       <location filename="../src/librssguard/gui/settings/settingsnotifications.ui" line="17"/>
       <source>Enable notifications</source>
       <translation>Włącz powiadomienia</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/settings/settingsnotifications.ui" line="27"/>
-      <source>Notifications type</source>
-      <translation type="unfinished">Notifications type</translation>
+      <location filename="../src/librssguard/gui/settings/settingsnotifications.ui" line="40"/>
+      <source>Balloon notifications type</source>
+      <translation type="unfinished">Balloon notifications type</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/settings/settingsnotifications.ui" line="33"/>
+      <location filename="../src/librssguard/gui/settings/settingsnotifications.ui" line="46"/>
       <source>Native notifications (tray icon must be enabled)</source>
       <translation type="unfinished">Native notifications (tray icon must be enabled)</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/settings/settingsnotifications.ui" line="40"/>
+      <location filename="../src/librssguard/gui/settings/settingsnotifications.ui" line="53"/>
       <source>Custom notifications</source>
       <translation type="unfinished">Custom notifications</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/settings/settingsnotifications.ui" line="53"/>
+      <location filename="../src/librssguard/gui/settings/settingsnotifications.ui" line="69"/>
       <source>Position</source>
       <translation type="unfinished">Position</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/settings/settingsnotifications.h" line="27"/>
+      <location filename="../src/librssguard/gui/settings/settingsnotifications.ui" line="89"/>
+      <source>Screen</source>
+      <translation type="unfinished">Screen</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard/gui/settings/settingsnotifications.h" line="30"/>
       <source>Notifications</source>
       <translation>Powiadomienia</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard/gui/settings/settingsnotifications.cpp" line="18"/>
+      <source>There are some built-in notification sounds. Just start typing &quot;:&quot; and they will show up.</source>
+      <translation type="unfinished">There are some built-in notification sounds. Just start typing &quot;:&quot; and they will show up.</translation>
     </message>
   </context>
   <context>
@@ -7589,32 +7648,27 @@ Nieprzeczytanych wiadomości: %2</translation>
   <context>
     <name>ToastNotification</name>
     <message>
-      <location filename="../src/librssguard/gui/notifications/toastnotification.ui" line="14"/>
-      <source>Dialog</source>
-      <translation type="unfinished">Dialog</translation>
-    </message>
-    <message>
-      <location filename="../src/librssguard/gui/notifications/toastnotification.ui" line="47"/>
+      <location filename="../src/librssguard/gui/notifications/toastnotification.ui" line="44"/>
       <source>...</source>
       <translation type="unfinished">...</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/notifications/toastnotification.ui" line="62"/>
+      <location filename="../src/librssguard/gui/notifications/toastnotification.ui" line="59"/>
       <source>11</source>
       <translation type="unfinished">11</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/notifications/toastnotification.ui" line="72"/>
+      <location filename="../src/librssguard/gui/notifications/toastnotification.ui" line="69"/>
       <source>TextLabel</source>
       <translation type="unfinished">TextLabel</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/notifications/toastnotification.ui" line="87"/>
+      <location filename="../src/librssguard/gui/notifications/toastnotification.ui" line="84"/>
       <source>PushButton</source>
       <translation type="unfinished">PushButton</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/notifications/toastnotification.cpp" line="49"/>
+      <location filename="../src/librssguard/gui/notifications/toastnotification.cpp" line="36"/>
       <source>Do it!</source>
       <translation type="unfinished">Do it!</translation>
     </message>
