@@ -33,14 +33,14 @@ SettingsNotifications::SettingsNotifications(Settings* settings, QWidget* parent
   m_ui.m_sbScreen->setMinimum(-1);
   m_ui.m_sbScreen->setMaximum(QGuiApplication::screens().size() - 1);
 
-  connect(m_ui.m_sbScreen, &QSpinBox::valueChanged, this, &SettingsNotifications::showScreenInfo);
+  connect(m_ui.m_sbScreen, QOverload<int>::of(&QSpinBox::valueChanged), this, &SettingsNotifications::showScreenInfo);
 
   connect(m_ui.m_cbCustomNotificationsPosition,
-          &QComboBox::currentIndexChanged,
+          QOverload<int>::of(&QComboBox::currentIndexChanged),
           this,
           &SettingsNotifications::dirtifySettings);
   connect(m_ui.m_cbCustomNotificationsPosition,
-          &QComboBox::currentIndexChanged,
+          QOverload<int>::of(&QComboBox::currentIndexChanged),
           this,
           &SettingsNotifications::requireRestart);
 
