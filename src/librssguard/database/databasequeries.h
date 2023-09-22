@@ -21,11 +21,6 @@
 #include <QSqlError>
 #include <QSqlQuery>
 
-struct ArticleCounts {
-    int m_total = -1;
-    int m_unread = -1;
-};
-
 class DatabaseQueries {
   public:
     static QMap<int, QString> messageTableAttributes(bool only_msg_table, bool is_sqlite);
@@ -162,7 +157,7 @@ class DatabaseQueries {
     static void createOverwriteAccount(const QSqlDatabase& db, ServiceRoot* account);
 
     // Returns counts of updated messages <unread, all>.
-    static QPair<int, int> updateMessages(const QSqlDatabase& db,
+    static UpdatedArticles updateMessages(const QSqlDatabase& db,
                                           QList<Message>& messages,
                                           Feed* feed,
                                           bool force_update,

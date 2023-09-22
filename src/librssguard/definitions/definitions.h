@@ -100,9 +100,10 @@
 #define MAX_THREADPOOL_THREADS       32
 #define WEB_BROWSER_SCROLL_STEP      50.0
 
-#define NOTIFICATIONS_MARGIN  16
-#define NOTIFICATIONS_WIDTH   256
-#define NOTIFICATIONS_TIMEOUT 15s
+#define NOTIFICATIONS_MARGIN    16
+#define NOTIFICATIONS_WIDTH     256
+#define NOTIFICATIONS_TIMEOUT   15s
+#define NOTIFICATIONS_PAGE_SIZE 10
 
 #define GOOGLE_SEARCH_URL  "https://www.google.com/search?q=%1&ie=utf-8&oe=utf-8"
 #define GOOGLE_SUGGEST_URL "http://suggestqueries.google.com/complete/search?output=toolbar&hl=en&q=%1"

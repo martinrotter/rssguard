@@ -43,7 +43,10 @@ void ToastNotification::loadNotification(Notification::Event event, const GuiMes
 
   if (action.m_action) {
     m_ui.m_btnAction->setText(action.m_title.isEmpty() ? tr("Do it!") : action.m_title);
-    connect(m_ui.m_btnAction, &QPushButton::clicked, this, action.m_action);
+    connect(m_ui.m_btnAction, &QPushButton::clicked, this, [this, action]() {
+      action.m_action();
+      emit closeRequested(this);
+    });
   }
   else {
     m_ui.m_mainLayout->removeItem(m_ui.m_actionLayout);

@@ -418,7 +418,7 @@ QList<Message> FeedlyNetwork::decodeStreamContents(const QByteArray& stream_cont
     Message message;
 
     message.m_feedId = entry_obj[QSL("origin")].toObject()[QSL("streamId")].toString();
-    message.m_title = qApp->web()->stripTags(entry_obj[QSL("title")].toString());
+    message.m_title = entry_obj[QSL("title")].toString();
     message.m_author = entry_obj[QSL("author")].toString();
     message.m_contents = entry_obj[QSL("content")].toObject()[QSL("content")].toString();
     message.m_rawContents = QJsonDocument(entry_obj).toJson(QJsonDocument::JsonFormat::Compact);

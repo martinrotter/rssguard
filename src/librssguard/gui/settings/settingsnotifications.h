@@ -10,7 +10,7 @@
 class Settings;
 
 class SettingsNotifications : public SettingsPanel {
-  Q_OBJECT
+    Q_OBJECT
 
   public:
     explicit SettingsNotifications(Settings* settings, QWidget* parent = nullptr);
@@ -18,6 +18,9 @@ class SettingsNotifications : public SettingsPanel {
     virtual QString title() const;
     virtual void loadSettings();
     virtual void saveSettings();
+
+  private slots:
+    void showScreenInfo(int index);
 
   private:
     Ui::SettingsNotifications m_ui;

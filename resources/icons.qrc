@@ -8,6 +8,8 @@
     <file>./graphics/Breeze/categories/32/applications-system.svg</file>
     <file>./graphics/Breeze/actions/32/arrow-down.svg</file>
     <file>./graphics/Breeze/actions/32/arrow-down-double.svg</file>
+    <file>./graphics/Breeze/actions/32/arrow-left.svg</file>
+    <file>./graphics/Breeze/actions/32/arrow-right.svg</file>
     <file>./graphics/Breeze/actions/32/arrow-up.svg</file>
     <file>./graphics/Breeze/actions/32/arrow-up-double.svg</file>
     <file>./graphics/Breeze/actions/32/call-start.svg</file>
@@ -99,6 +101,8 @@
     <file>./graphics/Breeze Dark/categories/32/applications-system.svg</file>
     <file>./graphics/Breeze Dark/actions/32/arrow-down.svg</file>
     <file>./graphics/Breeze Dark/actions/32/arrow-down-double.svg</file>
+    <file>./graphics/Breeze Dark/actions/32/arrow-left.svg</file>
+    <file>./graphics/Breeze Dark/actions/32/arrow-right.svg</file>
     <file>./graphics/Breeze Dark/actions/32/arrow-up.svg</file>
     <file>./graphics/Breeze Dark/actions/32/arrow-up-double.svg</file>
     <file>./graphics/Breeze Dark/actions/32/call-start.svg</file>
@@ -274,6 +278,8 @@
     <file>./graphics/Numix/22/categories/applications-system.svg</file>
     <file>./graphics/Numix/22/actions/arrow-down.svg</file>
     <file>./graphics/Numix/22/actions/arrow-down-double.svg</file>
+    <file>./graphics/Numix/22/actions/arrow-left.svg</file>
+    <file>./graphics/Numix/22/actions/arrow-right.svg</file>
     <file>./graphics/Numix/22/actions/arrow-up.svg</file>
     <file>./graphics/Numix/22/actions/arrow-up-double.svg</file>
     <file>./graphics/Numix/22/actions/browser-download.svg</file>

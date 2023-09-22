@@ -1,4 +1,6 @@
 set(SOURCES
+  core/articlelistnotificationmodel.cpp
+  core/articlelistnotificationmodel.h
   core/feeddownloader.cpp
   core/feeddownloader.h
   core/feedsmodel.cpp

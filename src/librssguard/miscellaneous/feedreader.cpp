@@ -255,19 +255,6 @@ void FeedReader::removeMessageFilterToFeedAssignment(Feed* feed, MessageFilter* 
 }
 
 void FeedReader::updateAllFeeds() {
-  qApp
-    ->showGuiMessage(Notification::Event::GeneralEvent,
-                     GuiMessage(QDateTime::currentDateTime().toString(),
-                                "Quisque ullamcorper ut purus nec tempus. Vivamus eros dolor, sagittis ultrices augue "
-                                "ut, posuere fringilla lorem. Donec posuere, enim sit amet fermentum dignissim, tellus "
-                                "lectus laoreet lectus, vestibulum laoreet felis tortor eget nunc. Curabitur sagittis "
-                                "quam in scelerisque placerat. Vivamus vel porta tortor. Vivamus nec volutpat sem",
-                                QSystemTrayIcon::MessageIcon::Information),
-                     GuiMessageDestination(),
-                     GuiAction("test", []() {
-                       qDebugNN << "aa";
-                     }));
-
   updateFeeds(m_feedsModel->rootItem()->getSubTreeFeeds());
 }
 

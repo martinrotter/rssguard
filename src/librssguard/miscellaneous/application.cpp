@@ -111,11 +111,13 @@ Application::Application(const QString& id, int& argc, char** argv, const QStrin
   m_downloadManager = nullptr;
   m_notifications = new NotificationFactory(this);
   m_toastNotifications =
-    new ToastNotificationsManager(settings()
-                                    ->value(GROUP(GUI), SETTING(GUI::ToastNotificationsPosition))
-                                    .value<ToastNotificationsManager::NotificationPosition>(),
-                                  settings()->value(GROUP(GUI), SETTING(GUI::ToastNotificationsScreen)).toInt(),
-                                  this);
+    settings()->value(GROUP(GUI), SETTING(GUI::UseToastNotifications)).toBool()
+      ? new ToastNotificationsManager(settings()
+                                        ->value(GROUP(GUI), SETTING(GUI::ToastNotificationsPosition))
+                                        .value<ToastNotificationsManager::NotificationPosition>(),
+                                      settings()->value(GROUP(GUI), SETTING(GUI::ToastNotificationsScreen)).toInt(),
+                                      this)
+      : nullptr;
   m_shouldRestart = false;
 
 #if defined(Q_OS_WIN)
@@ -695,22 +697,26 @@ void Application::showGuiMessageCore(Notification::Event event,
                                      GuiMessageDestination dest,
                                      const GuiAction& action,
                                      QWidget* parent) {
-  m_toastNotifications->showNotification(event, msg, action);
-  return;
-
   if (m_notifications->areNotificationsEnabled()) {
     auto notification = m_notifications->notificationForEvent(event);
 
     notification.playSound(this);
 
-    if (SystemTrayIcon::isSystemTrayDesired() && SystemTrayIcon::isSystemTrayAreaAvailable() &&
-        notification.balloonEnabled() && dest.m_tray) {
-      trayIcon()->showMessage(msg.m_title.simplified().isEmpty() ? Notification::nameForEvent(notification.event())
-                                                                 : msg.m_title,
-                              msg.m_message,
-                              msg.m_type,
-                              TRAY_ICON_BUBBLE_TIMEOUT,
-                              std::move(action.m_action));
+    if (notification.balloonEnabled() && dest.m_tray) {
+      if (m_toastNotifications != nullptr) {
+        // Toasts are enabled.
+        m_toastNotifications->showNotification(event, msg, action);
+      }
+      else if (SystemTrayIcon::isSystemTrayDesired() && SystemTrayIcon::isSystemTrayAreaAvailable()) {
+        // Use tray icon balloons (which are implemented as native notifications on most systems.
+        trayIcon()->showMessage(msg.m_title.simplified().isEmpty() ? Notification::nameForEvent(notification.event())
+                                                                   : msg.m_title,
+                                msg.m_message,
+                                msg.m_type,
+                                TRAY_ICON_BUBBLE_TIMEOUT,
+                                std::move(action.m_action));
+      }
+
       return;
     }
   }
@@ -999,15 +1005,24 @@ void Application::onFeedUpdatesProgress(const Feed* feed, int current, int total
 }
 
 void Application::onFeedUpdatesFinished(const FeedDownloadResults& results) {
-  auto fds = results.updatedFeeds();
-  bool some_unquiet_feed = boolinq::from(fds).any([](const QPair<Feed*, int>& fd) {
-    return !fd.first->isQuiet();
+  auto fds = results.updatedFeeds().keys();
+  bool some_unquiet_feed = boolinq::from(fds).any([](Feed* fd) {
+    return !fd->isQuiet();
   });
 
   if (some_unquiet_feed) {
-    // Now, inform about results via GUI message/notification.
-    qApp->showGuiMessage(Notification::Event::NewUnreadArticlesFetched,
-                         {tr("Unread articles fetched"), results.overview(10), QSystemTrayIcon::MessageIcon::NoIcon});
+    GuiMessage msg = {tr("Unread articles fetched"), QString(), QSystemTrayIcon::MessageIcon::NoIcon};
+
+    if (m_toastNotifications != nullptr) {
+      // Show custom and richer overview of updated feeds and articles.
+      msg.m_feedFetchResults = results;
+    }
+    else {
+      // Show simpler overview of updated feeds.
+      msg.m_message = results.overview(10);
+    }
+
+    qApp->showGuiMessage(Notification::Event::NewUnreadArticlesFetched, msg);
   }
 
 #if defined(Q_OS_WIN)

@@ -19,10 +19,12 @@ class BaseToastNotification : public QDialog {
 
   protected:
     virtual bool eventFilter(QObject* watched, QEvent* event);
+    virtual void timerEvent(QTimerEvent* event);
     virtual void closeEvent(QCloseEvent* event);
 
-    void setupCloseButton(QAbstractButton* btn);
     void setupTimedClosing();
+    void setupCloseButton(QAbstractButton* btn);
+    void stopTimedClosing();
 
   signals:
     void closeRequested(BaseToastNotification* notif);

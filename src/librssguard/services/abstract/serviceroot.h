@@ -6,7 +6,6 @@
 #include "services/abstract/rootitem.h"
 
 #include "core/message.h"
-#include "core/messagefilter.h"
 #include "definitions/typedefs.h"
 
 #include <QJsonDocument>
@@ -206,7 +205,7 @@ class ServiceRoot : public RootItem {
     void completelyRemoveAllData();
 
     // Returns counts of updated messages <unread, all>.
-    QPair<int, int> updateMessages(QList<Message>& messages, Feed* feed, bool force_update, QMutex* db_mutex);
+    UpdatedArticles updateMessages(QList<Message>& messages, Feed* feed, bool force_update, QMutex* db_mutex);
 
     QIcon feedIconForMessage(const QString& feed_custom_id) const;
 
