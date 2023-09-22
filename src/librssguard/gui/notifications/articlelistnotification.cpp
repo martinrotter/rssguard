@@ -36,7 +36,10 @@ ArticleListNotification::ArticleListNotification(QWidget* parent)
   m_ui.m_treeArticles->setPalette(pal);
   m_ui.m_treeArticles->setModel(m_model);
 
-  connect(m_ui.m_cmbFeeds, &QComboBox::currentIndexChanged, this, &ArticleListNotification::showFeed);
+  connect(m_ui.m_cmbFeeds,
+          QOverload<int>::of(&QComboBox::currentIndexChanged),
+          this,
+          &ArticleListNotification::showFeed);
 }
 
 void ArticleListNotification::loadResults(const QHash<Feed*, QList<Message>>& new_messages) {
