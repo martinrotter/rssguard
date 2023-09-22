@@ -10,6 +10,7 @@
 #include "ui_articlelistnotification.h"
 
 class Feed;
+class ArticleListNotificationModel;
 
 class ArticleListNotification : public BaseToastNotification {
     Q_OBJECT
@@ -19,8 +20,13 @@ class ArticleListNotification : public BaseToastNotification {
 
     void loadResults(const QHash<Feed*, QList<Message>>& new_messages);
 
+  private slots:
+    void showFeed(int index);
+
   private:
     Ui::ArticleListNotification m_ui;
+    ArticleListNotificationModel* m_model;
+    QHash<Feed*, QList<Message>> m_newMessages;
 };
 
 #endif // ARTICLELISTNOTIFICATION_H

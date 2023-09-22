@@ -19,7 +19,6 @@ class ToastNotification : public BaseToastNotification {
                                QWidget* parent = nullptr);
 
   private:
-    void setupHeading();
     void loadNotification(Notification::Event event, const GuiMessage& msg, const GuiAction& action);
     QIcon iconForType(QSystemTrayIcon::MessageIcon icon) const;
 

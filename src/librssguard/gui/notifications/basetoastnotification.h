@@ -6,6 +6,7 @@
 #include <QDialog>
 
 class QAbstractButton;
+class QLabel;
 
 class BaseToastNotification : public QDialog {
     Q_OBJECT
@@ -22,6 +23,7 @@ class BaseToastNotification : public QDialog {
     virtual void timerEvent(QTimerEvent* event);
     virtual void closeEvent(QCloseEvent* event);
 
+    void setupHeading(QLabel* lbl);
     void setupTimedClosing();
     void setupCloseButton(QAbstractButton* btn);
     void stopTimedClosing();

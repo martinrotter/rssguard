@@ -8,6 +8,8 @@
 #include "core/message.h"
 
 class ArticleListNotificationModel : public QAbstractListModel {
+    Q_OBJECT
+
   public:
     explicit ArticleListNotificationModel(QObject* parent = nullptr);
     virtual ~ArticleListNotificationModel();
@@ -20,6 +22,8 @@ class ArticleListNotificationModel : public QAbstractListModel {
     virtual int rowCount(const QModelIndex& parent) const;
     virtual int columnCount(const QModelIndex& parent) const;
     virtual QVariant data(const QModelIndex& index, int role) const;
+
+    void reloadWholeLayout();
 
   signals:
     void nextPagePossibleChanged(bool possible);

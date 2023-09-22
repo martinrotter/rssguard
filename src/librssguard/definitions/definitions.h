@@ -101,7 +101,7 @@
 #define WEB_BROWSER_SCROLL_STEP      50.0
 
 #define NOTIFICATIONS_MARGIN    16
-#define NOTIFICATIONS_WIDTH     256
+#define NOTIFICATIONS_WIDTH     300
 #define NOTIFICATIONS_TIMEOUT   15s
 #define NOTIFICATIONS_PAGE_SIZE 10
 
@@ -165,6 +165,7 @@
 #define LOGSEC_MESSAGEMODEL   "message-model: "
 #define LOGSEC_JS             "javascript: "
 #define LOGSEC_GUI            "gui: "
+#define LOGSEC_NOTIFICATIONS  "notifications: "
 #define LOGSEC_CORE           "core: "
 #define LOGSEC_NODEJS         "nodejs: "
 #define LOGSEC_DB             "database: "

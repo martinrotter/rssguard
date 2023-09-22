@@ -40,14 +40,29 @@ void BaseToastNotification::setupCloseButton(QAbstractButton* btn) {
   connect(btn, &QAbstractButton::clicked, this, &BaseToastNotification::close);
 }
 
+void BaseToastNotification::setupHeading(QLabel* lbl) {
+  auto fon = lbl->font();
+
+  fon.setBold(true);
+  fon.setPointSize(fon.pointSize() * 1.2);
+
+  lbl->setFont(fon);
+}
+
 void BaseToastNotification::stopTimedClosing() {
-  killTimer(m_timerId);
-  m_timerId = -1;
+  if (m_timerId >= 0) {
+    killTimer(m_timerId);
+    m_timerId = -1;
+
+    qDebugNN << LOGSEC_NOTIFICATIONS << "Stopping timed closing for notification.";
+  }
 }
 
 void BaseToastNotification::setupTimedClosing() {
   if (m_timerId < 0) {
     m_timerId = startTimer(NOTIFICATIONS_TIMEOUT);
+
+    qDebugNN << LOGSEC_NOTIFICATIONS << "Starting timed closing for notification.";
   }
 }
 
