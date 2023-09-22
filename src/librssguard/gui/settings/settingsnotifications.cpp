@@ -27,8 +27,8 @@ SettingsNotifications::SettingsNotifications(Settings* settings, QWidget* parent
   connect(m_ui.m_rbNativeNotifications, &QRadioButton::toggled, this, &SettingsNotifications::dirtifySettings);
   connect(m_ui.m_rbNativeNotifications, &QRadioButton::toggled, this, &SettingsNotifications::requireRestart);
 
-  connect(m_ui.m_sbScreen, &QSpinBox::valueChanged, this, &SettingsNotifications::dirtifySettings);
-  connect(m_ui.m_sbScreen, &QSpinBox::valueChanged, this, &SettingsNotifications::requireRestart);
+  connect(m_ui.m_sbScreen, QOverload<int>::of(&QSpinBox::valueChanged), this, &SettingsNotifications::dirtifySettings);
+  connect(m_ui.m_sbScreen, QOverload<int>::of(&QSpinBox::valueChanged), this, &SettingsNotifications::requireRestart);
 
   m_ui.m_sbScreen->setMinimum(-1);
   m_ui.m_sbScreen->setMaximum(QGuiApplication::screens().size() - 1);

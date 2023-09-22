@@ -10,20 +10,28 @@ ArticleListNotificationModel::ArticleListNotificationModel(QObject* parent)
 ArticleListNotificationModel::~ArticleListNotificationModel() {}
 
 void ArticleListNotificationModel::setArticles(const QList<Message>& msgs) {
-  m_articles = msgs;
   m_currentPage = 0;
+  m_articles = msgs;
 
   reloadWholeLayout();
+  emit nextPagePossibleChanged(nextPageAvailable());
+  emit previousPagePossibleChanged(previousPageAvailable());
 }
 
 void ArticleListNotificationModel::nextPage() {
-  emit nextPagePossibleChanged(true);
-  emit previousPagePossibleChanged(true);
+  m_currentPage++;
+  reloadWholeLayout();
+
+  emit nextPagePossibleChanged(nextPageAvailable());
+  emit previousPagePossibleChanged(previousPageAvailable());
 }
 
 void ArticleListNotificationModel::previousPage() {
-  emit nextPagePossibleChanged(true);
-  emit previousPagePossibleChanged(true);
+  m_currentPage--;
+  reloadWholeLayout();
+
+  emit nextPagePossibleChanged(nextPageAvailable());
+  emit previousPagePossibleChanged(previousPageAvailable());
 }
 
 int ArticleListNotificationModel::rowCount(const QModelIndex& parent) const {
@@ -37,6 +45,7 @@ int ArticleListNotificationModel::columnCount(const QModelIndex& parent) const {
 QVariant ArticleListNotificationModel::data(const QModelIndex& index, int role) const {
   switch (role) {
     case Qt::ItemDataRole::DisplayRole:
+    case Qt::ItemDataRole::ToolTipRole:
       return m_articles.at((m_currentPage * NOTIFICATIONS_PAGE_SIZE) + index.row()).m_title;
   }
 
@@ -46,4 +55,12 @@ QVariant ArticleListNotificationModel::data(const QModelIndex& index, int role) 
 void ArticleListNotificationModel::reloadWholeLayout() {
   emit layoutAboutToBeChanged();
   emit layoutChanged();
+}
+
+bool ArticleListNotificationModel::nextPageAvailable() const {
+  return m_articles.size() - (NOTIFICATIONS_PAGE_SIZE * (m_currentPage + 1)) > 0;
+}
+
+bool ArticleListNotificationModel::previousPageAvailable() const {
+  return m_currentPage > 0;
 }

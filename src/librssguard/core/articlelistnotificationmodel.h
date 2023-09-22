@@ -30,6 +30,10 @@ class ArticleListNotificationModel : public QAbstractListModel {
     void previousPagePossibleChanged(bool possible);
 
   private:
+    bool nextPageAvailable() const;
+    bool previousPageAvailable() const;
+
+  private:
     QList<Message> m_articles;
     int m_currentPage;
 };

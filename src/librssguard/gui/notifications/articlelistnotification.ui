@@ -75,18 +75,7 @@
    <item row="2" column="0" colspan="2">
     <layout class="QHBoxLayout" name="horizontalLayout_2">
      <item>
-      <widget class="PlainToolButton" name="m_btnPreviousPage">
-       <property name="toolTip">
-        <string>Go to previous page</string>
-       </property>
-      </widget>
-     </item>
-     <item>
-      <widget class="PlainToolButton" name="m_btnNextPage">
-       <property name="toolTip">
-        <string>Go to next page</string>
-       </property>
-      </widget>
+      <widget class="QComboBox" name="m_cmbFeeds"/>
      </item>
      <item>
       <spacer name="horizontalSpacer">
@@ -102,20 +91,18 @@
       </spacer>
      </item>
      <item>
-      <widget class="QComboBox" name="m_cmbFeeds"/>
+      <widget class="PlainToolButton" name="m_btnPreviousPage">
+       <property name="toolTip">
+        <string>Go to previous page</string>
+       </property>
+      </widget>
      </item>
      <item>
-      <spacer name="horizontalSpacer_2">
-       <property name="orientation">
-        <enum>Qt::Horizontal</enum>
+      <widget class="PlainToolButton" name="m_btnNextPage">
+       <property name="toolTip">
+        <string>Go to next page</string>
        </property>
-       <property name="sizeHint" stdset="0">
-        <size>
-         <width>40</width>
-         <height>20</height>
-        </size>
-       </property>
-      </spacer>
+      </widget>
      </item>
      <item>
       <widget class="PlainToolButton" name="m_btnOpenArticleList">
@@ -145,9 +132,9 @@
  <tabstops>
   <tabstop>m_btnClose</tabstop>
   <tabstop>m_treeArticles</tabstop>
+  <tabstop>m_cmbFeeds</tabstop>
   <tabstop>m_btnPreviousPage</tabstop>
   <tabstop>m_btnNextPage</tabstop>
-  <tabstop>m_cmbFeeds</tabstop>
   <tabstop>m_btnOpenArticleList</tabstop>
   <tabstop>m_btnOpenWebBrowser</tabstop>
  </tabstops>
