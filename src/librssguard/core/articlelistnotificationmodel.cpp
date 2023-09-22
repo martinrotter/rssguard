@@ -18,6 +18,10 @@ void ArticleListNotificationModel::setArticles(const QList<Message>& msgs) {
   emit previousPagePossibleChanged(previousPageAvailable());
 }
 
+Message ArticleListNotificationModel::message(const QModelIndex& idx) const {
+  return m_articles.at((m_currentPage * NOTIFICATIONS_PAGE_SIZE) + idx.row());
+}
+
 void ArticleListNotificationModel::nextPage() {
   m_currentPage++;
   reloadWholeLayout();

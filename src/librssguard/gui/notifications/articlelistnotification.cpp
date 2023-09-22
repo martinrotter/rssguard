@@ -5,6 +5,8 @@
 #include "core/articlelistnotificationmodel.h"
 #include "miscellaneous/iconfactory.h"
 
+#include <QTreeView>
+
 ArticleListNotification::ArticleListNotification(QWidget* parent)
   : BaseToastNotification(parent), m_model(new ArticleListNotificationModel(this)) {
   m_ui.setupUi(this);
@@ -25,6 +27,12 @@ ArticleListNotification::ArticleListNotification(QWidget* parent)
           &ArticleListNotificationModel::previousPagePossibleChanged,
           m_ui.m_btnPreviousPage,
           &PlainToolButton::setEnabled);
+  connect(m_ui.m_btnNextPage, &PlainToolButton::clicked, m_model, &ArticleListNotificationModel::nextPage);
+  connect(m_ui.m_btnPreviousPage, &PlainToolButton::clicked, m_model, &ArticleListNotificationModel::previousPage);
+  connect(m_ui.m_treeArticles->selectionModel(),
+          &QItemSelectionModel::currentChanged,
+          this,
+          &ArticleListNotificationModel::onMessageSelected);
 
   m_ui.m_treeArticles->setAttribute(Qt::WA_NoSystemBackground, true);
 
@@ -56,6 +64,20 @@ void ArticleListNotification::loadResults(const QHash<Feed*, QList<Message>>& ne
   }
 }
 
+void ArticleListNotification::onMessageSelected(const QModelIndex& current, const QModelIndex& previous) {
+  m_ui.m_btnOpenArticleList->setEnabled(current.isValid());
+  m_ui.m_btnOpenWebBrowser->setEnabled(current.isValid());
+}
+
 void ArticleListNotification::showFeed(int index) {
   m_model->setArticles(m_newMessages.value(m_ui.m_cmbFeeds->itemData(index).value<Feed*>()));
+}
+
+Message ArticleListNotification::selectedMessage() const {
+  if (m_ui.m_treeArticles->currentIndex().isValid()) {
+    return m_model->message(m_ui.m_treeArticles->currentIndex());
+  }
+  else {
+    throw ApplicationException("message cannot be loaded, wrong index");
+  }
 }

@@ -21,7 +21,11 @@ class ArticleListNotification : public BaseToastNotification {
     void loadResults(const QHash<Feed*, QList<Message>>& new_messages);
 
   private slots:
+    void onMessageSelected(const QModelIndex& current, const QModelIndex& previous);
     void showFeed(int index);
+
+  private:
+    Message selectedMessage() const;
 
   private:
     Ui::ArticleListNotification m_ui;
