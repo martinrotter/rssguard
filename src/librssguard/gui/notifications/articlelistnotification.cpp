@@ -32,7 +32,7 @@ ArticleListNotification::ArticleListNotification(QWidget* parent)
   connect(m_ui.m_treeArticles->selectionModel(),
           &QItemSelectionModel::currentChanged,
           this,
-          &ArticleListNotificationModel::onMessageSelected);
+          &ArticleListNotification::onMessageSelected);
 
   m_ui.m_treeArticles->setAttribute(Qt::WA_NoSystemBackground, true);
 
