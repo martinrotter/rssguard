@@ -292,6 +292,9 @@ DKEY GUI::ToastNotificationsPosition = "toast_notifications_position";
 DVALUE(ToastNotificationsManager::NotificationPosition)
 GUI::ToastNotificationsPositionDef = ToastNotificationsManager::NotificationPosition::BottomRight;
 
+DKEY GUI::ToastNotificationsScreen = "toast_notifications_screen";
+DVALUE(int) GUI::ToastNotificationsScreenDef = -1;
+
 DKEY GUI::HideMainWindowWhenMinimized = "hide_when_minimized";
 DVALUE(bool) GUI::HideMainWindowWhenMinimizedDef = false;
 

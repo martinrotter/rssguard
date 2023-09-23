@@ -134,7 +134,7 @@ PreparedHtml TextBrowserViewer::prepareHtmlForMessage(const QList<Message>& mess
     html.m_html += is_plain ? Qt::convertFromPlainText(message.m_contents, Qt::WhiteSpaceMode::WhiteSpaceNormal)
                             : message.m_contents;
 
-    static QRegularExpression img_tag_rgx("\\<img[^\\>]*src\\s*=\\s*[\"\']([^\"\']*)[\"\'][^\\>]*\\>",
+    static QRegularExpression img_tag_rgx(QSL("\\<img[^\\>]*src\\s*=\\s*[\"\']([^\"\']*)[\"\'][^\\>]*\\>"),
                                           QRegularExpression::PatternOption::CaseInsensitiveOption |
                                             QRegularExpression::PatternOption::InvertedGreedinessOption);
 

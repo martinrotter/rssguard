@@ -1354,7 +1354,7 @@ QHash<QString, QStringList> DatabaseQueries::bagsOfMessages(const QSqlDatabase& 
   return ids;
 }
 
-QPair<int, int> DatabaseQueries::updateMessages(const QSqlDatabase& db,
+UpdatedArticles DatabaseQueries::updateMessages(const QSqlDatabase& db,
                                                 QList<Message>& messages,
                                                 Feed* feed,
                                                 bool force_update,
@@ -1362,10 +1362,10 @@ QPair<int, int> DatabaseQueries::updateMessages(const QSqlDatabase& db,
                                                 bool* ok) {
   if (messages.isEmpty()) {
     *ok = true;
-    return {0, 0};
+    return {};
   }
 
-  QPair<int, int> updated_messages = {0, 0};
+  UpdatedArticles updated_messages;
   int account_id = feed->getParentServiceRoot()->accountId();
   auto feed_custom_id = feed->customId();
 
@@ -1615,10 +1615,10 @@ QPair<int, int> DatabaseQueries::updateMessages(const QSqlDatabase& db,
                    << QUOTE_W_SPACE(message.m_url) << "in DB.";
 
           if (!message.m_isRead) {
-            updated_messages.first++;
+            updated_messages.m_unread.append(message);
           }
 
-          updated_messages.second++;
+          updated_messages.m_all.append(message);
           message.m_insertedUpdated = true;
         }
         else if (query_update.lastError().isValid()) {
@@ -1655,10 +1655,10 @@ QPair<int, int> DatabaseQueries::updateMessages(const QSqlDatabase& db,
         }
 
         if (!msg->m_isRead) {
-          updated_messages.first++;
+          updated_messages.m_unread.append(*msg);
         }
 
-        updated_messages.second++;
+        updated_messages.m_all.append(*msg);
         msg->m_insertedUpdated = true;
 
         vals.append(QSL("\n(':feed', ':title', :is_read, :is_important, :is_deleted, "
@@ -1742,10 +1742,10 @@ QPair<int, int> DatabaseQueries::updateMessages(const QSqlDatabase& db,
         // but its assigned labels were changed. Therefore we must count article
         // as updated.
         if (!message.m_isRead) {
-          updated_messages.first++;
+          updated_messages.m_unread.append(message);
         }
 
-        updated_messages.second++;
+        updated_messages.m_all.append(message);
       }
     }
     else {

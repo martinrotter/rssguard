@@ -60,6 +60,7 @@ struct GuiMessage {
     QString m_title;
     QString m_message;
     QSystemTrayIcon::MessageIcon m_type;
+    FeedDownloadResults m_feedFetchResults;
 };
 
 Q_DECLARE_METATYPE(GuiMessage)

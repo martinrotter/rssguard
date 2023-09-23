@@ -9,6 +9,7 @@
 
 class BaseToastNotification;
 class ToastNotification;
+class ArticleListNotification;
 class QScreen;
 
 class ToastNotificationsManager : public QObject {
@@ -22,7 +23,13 @@ class ToastNotificationsManager : public QObject {
       BottomRight = 3
     };
 
-    explicit ToastNotificationsManager(QObject* parent = nullptr);
+    Q_ENUM(NotificationPosition)
+
+    static QString textForPosition(ToastNotificationsManager::NotificationPosition pos);
+
+    explicit ToastNotificationsManager(ToastNotificationsManager::NotificationPosition position,
+                                       int screen,
+                                       QObject* parent = nullptr);
     virtual ~ToastNotificationsManager();
 
     QList<BaseToastNotification*> activeNotifications() const;
@@ -38,10 +45,9 @@ class ToastNotificationsManager : public QObject {
   public slots:
     void clear();
     void showNotification(Notification::Event event, const GuiMessage& msg, const GuiAction& action);
-    void showNotification(const QList<Message>& new_messages);
 
   private slots:
-    void closeNotification(BaseToastNotification* notif);
+    void closeNotification(BaseToastNotification* notif, bool delete_from_memory);
 
   private:
     QScreen* activeScreen() const;
@@ -60,6 +66,8 @@ class ToastNotificationsManager : public QObject {
     // List of all displayed notifications, newest notifications are in the beginning of the list
     // and oldest at the end.
     QList<BaseToastNotification*> m_activeNotifications;
+
+    ArticleListNotification* m_articleListNotification;
 };
 
 #endif // TOASTNOTIFICATIONSMANAGER_H

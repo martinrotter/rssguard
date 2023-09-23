@@ -6,6 +6,7 @@
 #include <QDialog>
 
 class QAbstractButton;
+class QLabel;
 
 class BaseToastNotification : public QDialog {
     Q_OBJECT
@@ -14,18 +15,18 @@ class BaseToastNotification : public QDialog {
     explicit BaseToastNotification(QWidget* parent = nullptr);
     virtual ~BaseToastNotification();
 
-    // If true, then notification is always moved as close to top as possible.
-    virtual bool alwaysOnTop() const = 0;
-
   public slots:
     virtual void reject();
 
   protected:
     virtual bool eventFilter(QObject* watched, QEvent* event);
+    virtual void timerEvent(QTimerEvent* event);
     virtual void closeEvent(QCloseEvent* event);
 
-    void setupCloseButton(QAbstractButton* btn);
+    void setupHeading(QLabel* lbl);
     void setupTimedClosing();
+    void setupCloseButton(QAbstractButton* btn);
+    void stopTimedClosing();
 
   signals:
     void closeRequested(BaseToastNotification* notif);

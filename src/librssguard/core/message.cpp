@@ -2,7 +2,9 @@
 
 #include "core/message.h"
 
+#include "miscellaneous/application.h"
 #include "miscellaneous/textfactory.h"
+#include "network-web/webfactory.h"
 #include "services/abstract/feed.h"
 #include "services/abstract/label.h"
 
@@ -75,6 +77,8 @@ Message::Message() {
 
 void Message::sanitize(const Feed* feed, bool fix_future_datetimes) {
   // Sanitize title.
+  m_title = qApp->web()->stripTags(qApp->web()->unescapeHtml(m_title));
+
   m_title = m_title
 
               // Remove non-breaking spaces.
@@ -88,6 +92,9 @@ void Message::sanitize(const Feed* feed, bool fix_future_datetimes) {
 
               // Remove non-breaking zero-width spaces.
               .remove(QChar(65279));
+
+  // Sanitize author.
+  m_author = qApp->web()->stripTags(qApp->web()->unescapeHtml(m_author));
 
   // Sanitize URL.
   m_url = m_url.trimmed();

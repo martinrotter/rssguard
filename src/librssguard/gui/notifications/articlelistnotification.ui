@@ -1,0 +1,153 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>ArticleListNotification</class>
+ <widget class="QDialog" name="ArticleListNotification">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>338</width>
+    <height>271</height>
+   </rect>
+  </property>
+  <layout class="QFormLayout" name="formLayout">
+   <property name="leftMargin">
+    <number>6</number>
+   </property>
+   <property name="topMargin">
+    <number>6</number>
+   </property>
+   <property name="rightMargin">
+    <number>6</number>
+   </property>
+   <property name="bottomMargin">
+    <number>6</number>
+   </property>
+   <item row="1" column="0" colspan="2">
+    <widget class="QTreeView" name="m_treeArticles">
+     <property name="horizontalScrollBarPolicy">
+      <enum>Qt::ScrollBarAlwaysOff</enum>
+     </property>
+     <property name="indentation">
+      <number>0</number>
+     </property>
+     <property name="rootIsDecorated">
+      <bool>false</bool>
+     </property>
+     <property name="uniformRowHeights">
+      <bool>true</bool>
+     </property>
+     <property name="itemsExpandable">
+      <bool>false</bool>
+     </property>
+     <property name="expandsOnDoubleClick">
+      <bool>false</bool>
+     </property>
+     <attribute name="headerVisible">
+      <bool>false</bool>
+     </attribute>
+    </widget>
+   </item>
+   <item row="0" column="0" colspan="2">
+    <layout class="QHBoxLayout" name="m_titleLayout">
+     <item>
+      <widget class="QLabel" name="m_lblTitle">
+       <property name="text">
+        <string/>
+       </property>
+       <property name="alignment">
+        <set>Qt::AlignCenter</set>
+       </property>
+       <property name="wordWrap">
+        <bool>true</bool>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="PlainToolButton" name="m_btnClose">
+       <property name="text">
+        <string>...</string>
+       </property>
+      </widget>
+     </item>
+    </layout>
+   </item>
+   <item row="2" column="0" colspan="2">
+    <layout class="QHBoxLayout" name="horizontalLayout_2">
+     <item>
+      <widget class="QComboBox" name="m_cmbFeeds">
+       <property name="sizePolicy">
+        <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
+         <horstretch>0</horstretch>
+         <verstretch>0</verstretch>
+        </sizepolicy>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <spacer name="horizontalSpacer">
+       <property name="orientation">
+        <enum>Qt::Horizontal</enum>
+       </property>
+       <property name="sizeType">
+        <enum>QSizePolicy::Minimum</enum>
+       </property>
+       <property name="sizeHint" stdset="0">
+        <size>
+         <width>40</width>
+         <height>20</height>
+        </size>
+       </property>
+      </spacer>
+     </item>
+     <item>
+      <widget class="PlainToolButton" name="m_btnPreviousPage">
+       <property name="toolTip">
+        <string>Go to previous page</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="PlainToolButton" name="m_btnNextPage">
+       <property name="toolTip">
+        <string>Go to next page</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="PlainToolButton" name="m_btnOpenArticleList">
+       <property name="toolTip">
+        <string>Open article in article list</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="PlainToolButton" name="m_btnOpenWebBrowser">
+       <property name="toolTip">
+        <string>Open article in web browser</string>
+       </property>
+      </widget>
+     </item>
+    </layout>
+   </item>
+  </layout>
+ </widget>
+ <customwidgets>
+  <customwidget>
+   <class>PlainToolButton</class>
+   <extends>QToolButton</extends>
+   <header>plaintoolbutton.h</header>
+  </customwidget>
+ </customwidgets>
+ <tabstops>
+  <tabstop>m_btnClose</tabstop>
+  <tabstop>m_treeArticles</tabstop>
+  <tabstop>m_cmbFeeds</tabstop>
+  <tabstop>m_btnPreviousPage</tabstop>
+  <tabstop>m_btnNextPage</tabstop>
+  <tabstop>m_btnOpenArticleList</tabstop>
+  <tabstop>m_btnOpenWebBrowser</tabstop>
+ </tabstops>
+ <resources/>
+ <connections/>
+</ui>

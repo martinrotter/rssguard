@@ -101,9 +101,10 @@
 #define WEB_BROWSER_SCROLL_STEP      50.0
 #define MAX_NUMBER_OF_REDIRECTIONS   4
 
-#define NOTIFICATIONS_MARGIN  16
-#define NOTIFICATIONS_WIDTH   256
-#define NOTIFICATIONS_TIMEOUT 15s
+#define NOTIFICATIONS_MARGIN    16
+#define NOTIFICATIONS_WIDTH     300
+#define NOTIFICATIONS_TIMEOUT   15s
+#define NOTIFICATIONS_PAGE_SIZE 10
 
 #define GOOGLE_SEARCH_URL  "https://www.google.com/search?q=%1&ie=utf-8&oe=utf-8"
 #define GOOGLE_SUGGEST_URL "http://suggestqueries.google.com/complete/search?output=toolbar&hl=en&q=%1"
@@ -165,6 +166,7 @@
 #define LOGSEC_MESSAGEMODEL   "message-model: "
 #define LOGSEC_JS             "javascript: "
 #define LOGSEC_GUI            "gui: "
+#define LOGSEC_NOTIFICATIONS  "notifications: "
 #define LOGSEC_CORE           "core: "
 #define LOGSEC_NODEJS         "nodejs: "
 #define LOGSEC_DB             "database: "

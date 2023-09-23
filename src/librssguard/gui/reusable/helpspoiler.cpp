@@ -26,6 +26,7 @@ HelpSpoiler::HelpSpoiler(QWidget* parent)
   m_btnToggle->setCheckable(true);
   m_btnToggle->setChecked(false);
 
+  m_content->setStyleSheet(QSL("QScrollArea { border: 1px solid %1; }").arg(palette().windowText().color().name()));
   m_content->setSizePolicy(QSizePolicy::Policy::Expanding, QSizePolicy::Policy::Fixed);
   m_content->setMaximumHeight(0);
   m_content->setMinimumHeight(0);
