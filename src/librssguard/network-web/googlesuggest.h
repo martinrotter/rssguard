@@ -60,10 +60,10 @@ class GoogleSuggest : public QObject {
                            const QByteArray& contents);
 
   private:
-    LocationLineEdit* editor;
+    LocationLineEdit* m_editor;
     QScopedPointer<Downloader> m_downloader;
-    QScopedPointer<QListWidget> popup;
-    QTimer* timer;
+    QScopedPointer<QListWidget> m_popup;
+    QTimer* m_timer;
     QString m_enteredText;
 };
 

@@ -44,34 +44,34 @@
 #include <QXmlStreamReader>
 
 GoogleSuggest::GoogleSuggest(LocationLineEdit* editor, QObject* parent)
-  : QObject(parent), editor(editor), m_downloader(new Downloader(this)), popup(new QListWidget()),
+  : QObject(parent), m_editor(editor), m_downloader(new Downloader(this)), m_popup(new QListWidget()),
     m_enteredText(QString()) {
-  popup->setWindowFlags(Qt::WindowType::Popup);
-  popup->setFocusPolicy(Qt::FocusPolicy::NoFocus);
-  popup->setFocusProxy(editor);
-  popup->setMouseTracking(true);
-  popup->setSelectionBehavior(QAbstractItemView::SelectionBehavior::SelectRows);
-  popup->setFrameStyle(QFrame::Shape::Box | QFrame::Shadow::Plain);
-  popup->setHorizontalScrollBarPolicy(Qt::ScrollBarPolicy::ScrollBarAlwaysOff);
-  popup->installEventFilter(this);
-  timer = new QTimer(this);
-  timer->setSingleShot(true);
-  timer->setInterval(500);
+  m_popup->setWindowFlags(Qt::WindowType::Popup);
+  m_popup->setFocusPolicy(Qt::FocusPolicy::NoFocus);
+  m_popup->setFocusProxy(editor);
+  m_popup->setMouseTracking(true);
+  m_popup->setSelectionBehavior(QAbstractItemView::SelectionBehavior::SelectRows);
+  m_popup->setFrameStyle(QFrame::Shape::Box | QFrame::Shadow::Plain);
+  m_popup->setHorizontalScrollBarPolicy(Qt::ScrollBarPolicy::ScrollBarAlwaysOff);
+  m_popup->installEventFilter(this);
+  m_timer = new QTimer(this);
+  m_timer->setSingleShot(true);
+  m_timer->setInterval(500);
 
-  connect(popup.data(), &QListWidget::itemClicked, this, &GoogleSuggest::doneCompletion);
-  connect(timer, &QTimer::timeout, this, &GoogleSuggest::autoSuggest);
-  connect(editor, &LocationLineEdit::textEdited, timer, static_cast<void (QTimer::*)()>(&QTimer::start));
+  connect(m_popup.data(), &QListWidget::itemClicked, this, &GoogleSuggest::doneCompletion);
+  connect(m_timer, &QTimer::timeout, this, &GoogleSuggest::autoSuggest);
+  connect(editor, &LocationLineEdit::textEdited, m_timer, static_cast<void (QTimer::*)()>(&QTimer::start));
   connect(m_downloader.data(), &Downloader::completed, this, &GoogleSuggest::handleNetworkData);
 }
 
 bool GoogleSuggest::eventFilter(QObject* object, QEvent* event) {
-  if (object != popup.data()) {
+  if (object != m_popup.data()) {
     return false;
   }
 
   if (event->type() == QEvent::MouseButtonPress) {
-    popup->hide();
-    editor->setFocus();
+    m_popup->hide();
+    m_editor->setFocus();
     return true;
   }
 
@@ -87,8 +87,8 @@ bool GoogleSuggest::eventFilter(QObject* object, QEvent* event) {
         break;
 
       case Qt::Key_Escape:
-        editor->setFocus();
-        popup->hide();
+        m_editor->setFocus();
+        m_popup->hide();
         consumed = true;
         break;
 
@@ -101,9 +101,9 @@ bool GoogleSuggest::eventFilter(QObject* object, QEvent* event) {
         break;
 
       default:
-        editor->setFocus();
-        editor->event(event);
-        popup->hide();
+        m_editor->setFocus();
+        m_editor->event(event);
+        m_popup->hide();
         break;
     }
 
@@ -118,39 +118,46 @@ void GoogleSuggest::showCompletion(const QStringList& choices) {
     return;
   }
 
-  popup->setUpdatesEnabled(false);
-  popup->clear();
+  m_popup->setUpdatesEnabled(false);
+  m_popup->clear();
 
   for (const QString& choice : choices) {
-    new QListWidgetItem(choice, popup.data());
+    new QListWidgetItem(choice, m_popup.data());
   }
 
-  popup->setCurrentItem(popup->item(0));
-  popup->adjustSize();
-  popup->setUpdatesEnabled(true);
-  popup->resize(editor->width(), popup->sizeHintForRow(0) * qMin(7, choices.count()) + 3);
-  popup->move(editor->mapToGlobal(QPoint(0, editor->height())));
-  popup->setFocus();
-  popup->show();
+  m_popup->setCurrentItem(m_popup->item(0));
+  m_popup->adjustSize();
+  m_popup->setUpdatesEnabled(true);
+  m_popup->resize(m_editor->width(), m_popup->sizeHintForRow(0) * qMin(7, choices.count()) + 3);
+  m_popup->move(m_editor->mapToGlobal(QPoint(0, m_editor->height())));
+  m_popup->setFocus();
+  m_popup->show();
 }
 
 void GoogleSuggest::doneCompletion() {
-  timer->stop();
-  popup->hide();
-  editor->setFocus();
-  QListWidgetItem* item = popup->currentItem();
+  m_timer->stop();
+  m_popup->hide();
+  m_editor->setFocus();
+  QListWidgetItem* item = m_popup->currentItem();
 
   if (item != nullptr) {
-    editor->submit(QSL(GOOGLE_SEARCH_URL).arg(item->text()));
+    m_editor->submit(QSL(GOOGLE_SEARCH_URL).arg(item->text()));
   }
 }
 
 void GoogleSuggest::preventSuggest() {
-  timer->stop();
+  m_timer->stop();
 }
 
 void GoogleSuggest::autoSuggest() {
-  m_enteredText = QUrl::toPercentEncoding(editor->text());
+  if ((m_editor->text().startsWith(QSL("http")) || m_editor->text().startsWith(QSL("www"))) &&
+      QUrl::fromUserInput(m_editor->text()).isValid()) {
+    // Do not suggest when entered URL.
+    preventSuggest();
+    return;
+  }
+
+  m_enteredText = QUrl::toPercentEncoding(m_editor->text());
   QString url = QSL(GOOGLE_SUGGEST_URL).arg(m_enteredText);
 
   m_downloader->downloadFile(url);
