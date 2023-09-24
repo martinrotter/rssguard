@@ -56,7 +56,7 @@ GoogleSuggest::GoogleSuggest(LocationLineEdit* editor, QObject* parent)
   m_popup->installEventFilter(this);
   m_timer = new QTimer(this);
   m_timer->setSingleShot(true);
-  m_timer->setInterval(500);
+  m_timer->setInterval(1500);
 
   connect(m_popup.data(), &QListWidget::itemClicked, this, &GoogleSuggest::doneCompletion);
   connect(m_timer, &QTimer::timeout, this, &GoogleSuggest::autoSuggest);
@@ -150,8 +150,12 @@ void GoogleSuggest::preventSuggest() {
 }
 
 void GoogleSuggest::autoSuggest() {
-  if ((m_editor->text().startsWith(QSL("http")) || m_editor->text().startsWith(QSL("www"))) &&
-      QUrl::fromUserInput(m_editor->text()).isValid()) {
+  QUrl entered_url = QUrl::fromUserInput(m_editor->text());
+
+  if (m_editor->text().size() < 3 || m_editor->text().startsWith(QSL("http")) ||
+      m_editor->text().startsWith(QSL("www")) ||
+      (entered_url.isValid() && !entered_url.isLocalFile() &&
+       (!entered_url.scheme().isEmpty() || entered_url.host().contains(QL1C('.'))))) {
     // Do not suggest when entered URL.
     preventSuggest();
     return;
