@@ -69,7 +69,12 @@ if ($is_qt_6) {
   $openssl_base_path = "$qt_path\Tools\OpenSSLv3\Win_x64"
 }
 else {
-  # Download openssl 1.x source code and compile manually.
+  # Download openssl 1.x from external source.
+  $openssl_link = "https://download.firedaemon.com/FireDaemon-OpenSSL/openssl-1.1.1w.zip";
+  $openssl_output = "openssl.zip"
+  Invoke-WebRequest -Uri "$openssl_link" -OutFile "$openssl_output"
+  & ".\resources\scripts\7za\7za.exe" x $openssl_output
+  $openssl_base_path = "$pwd\openssl-1.1\x64"
 }
 
 # Build dependencies.
