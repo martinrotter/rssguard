@@ -222,31 +222,31 @@ Om te zien wat er NIEUW is in deze versie: klik op deze melding.</translation>
       <translation>...</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/notifications/articlelistnotification.ui" line="80"/>
+      <location filename="../src/librssguard/gui/notifications/articlelistnotification.ui" line="106"/>
       <source>Go to previous page</source>
-      <translation type="unfinished">Go to previous page</translation>
+      <translation>Vorige pagina</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/notifications/articlelistnotification.ui" line="87"/>
+      <location filename="../src/librssguard/gui/notifications/articlelistnotification.ui" line="113"/>
       <source>Go to next page</source>
-      <translation type="unfinished">Go to next page</translation>
+      <translation>Volgende pagina</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/notifications/articlelistnotification.ui" line="123"/>
+      <location filename="../src/librssguard/gui/notifications/articlelistnotification.ui" line="120"/>
       <source>Open article in article list</source>
-      <translation type="unfinished">Open article in article list</translation>
+      <translation>Open artikel in artikellijst</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/notifications/articlelistnotification.ui" line="130"/>
+      <location filename="../src/librssguard/gui/notifications/articlelistnotification.ui" line="127"/>
       <source>Open article in web browser</source>
-      <translation type="unfinished">Open article in web browser</translation>
+      <translation>Open artikel in webbrowser</translation>
     </message>
     <message numerus="yes">
-      <location filename="../src/librssguard/gui/notifications/articlelistnotification.cpp" line="47"/>
+      <location filename="../src/librssguard/gui/notifications/articlelistnotification.cpp" line="65"/>
       <source>%n feeds fetched</source>
-      <translation type="unfinished">
-        <numerusform>%n feeds fetched</numerusform>
-        <numerusform>%n feeds fetched</numerusform>
+      <translation>
+        <numerusform>%n feed opgehaald</numerusform>
+        <numerusform>%n feeds opgehaald</numerusform>
       </translation>
     </message>
   </context>
@@ -5386,22 +5386,22 @@ Lijst met ondersteunde lezers:</translation>
     <message>
       <location filename="../src/librssguard/gui/notifications/toastnotificationsmanager.cpp" line="18"/>
       <source>top-left</source>
-      <translation type="unfinished">top-left</translation>
+      <translation>top-links</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/notifications/toastnotificationsmanager.cpp" line="21"/>
       <source>top-right</source>
-      <translation type="unfinished">top-right</translation>
+      <translation>top-rechts</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/notifications/toastnotificationsmanager.cpp" line="24"/>
       <source>bottom-left</source>
-      <translation type="unfinished">bottom-left</translation>
+      <translation>bodem-links</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/notifications/toastnotificationsmanager.cpp" line="28"/>
       <source>bottom-right</source>
-      <translation type="unfinished">bottom-right</translation>
+      <translation>bodem-rechts</translation>
     </message>
   </context>
   <context>
@@ -6846,7 +6846,7 @@ Start ook het dialoogvenster &quot;Instellingen&quot; opnieuw nadat je Node.js h
     <message>
       <location filename="../src/librssguard/gui/settings/settingsnotifications.ui" line="40"/>
       <source>Balloon notifications type</source>
-      <translation type="unfinished">Balloon notifications type</translation>
+      <translation>Ballonmeldingstype</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsnotifications.ui" line="46"/>
@@ -6866,7 +6866,7 @@ Start ook het dialoogvenster &quot;Instellingen&quot; opnieuw nadat je Node.js h
     <message>
       <location filename="../src/librssguard/gui/settings/settingsnotifications.ui" line="89"/>
       <source>Screen</source>
-      <translation type="unfinished">Screen</translation>
+      <translation>Scherm</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsnotifications.h" line="30"/>
@@ -6876,7 +6876,7 @@ Start ook het dialoogvenster &quot;Instellingen&quot; opnieuw nadat je Node.js h
     <message>
       <location filename="../src/librssguard/gui/settings/settingsnotifications.cpp" line="18"/>
       <source>There are some built-in notification sounds. Just start typing &quot;:&quot; and they will show up.</source>
-      <translation type="unfinished">There are some built-in notification sounds. Just start typing &quot;:&quot; and they will show up.</translation>
+      <translation>Er zijn enkele meegeleverde meldingsgeluiden. Type &quot;:&quot; en ze worden getoond.</translation>
     </message>
   </context>
   <context>
@@ -7599,26 +7599,6 @@ Ongelezen nieuws: %2</translation>
   </context>
   <context>
     <name>ToastNotification</name>
-    <message>
-      <location filename="../src/librssguard/gui/notifications/toastnotification.ui" line="44"/>
-      <source>...</source>
-      <translation>...</translation>
-    </message>
-    <message>
-      <location filename="../src/librssguard/gui/notifications/toastnotification.ui" line="59"/>
-      <source>11</source>
-      <translation>11</translation>
-    </message>
-    <message>
-      <location filename="../src/librssguard/gui/notifications/toastnotification.ui" line="69"/>
-      <source>TextLabel</source>
-      <translation>TekstLabel</translation>
-    </message>
-    <message>
-      <location filename="../src/librssguard/gui/notifications/toastnotification.ui" line="84"/>
-      <source>PushButton</source>
-      <translation>Drukknop</translation>
-    </message>
     <message>
       <location filename="../src/librssguard/gui/notifications/toastnotification.cpp" line="36"/>
       <source>Do it!</source>

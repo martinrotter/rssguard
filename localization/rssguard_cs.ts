@@ -223,33 +223,33 @@ na tuto bublinu.</translation>
       <translation type="unfinished">...</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/notifications/articlelistnotification.ui" line="80"/>
+      <location filename="../src/librssguard/gui/notifications/articlelistnotification.ui" line="106"/>
       <source>Go to previous page</source>
-      <translation type="unfinished">Go to previous page</translation>
+      <translation>Jít na předchozí stránku</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/notifications/articlelistnotification.ui" line="87"/>
+      <location filename="../src/librssguard/gui/notifications/articlelistnotification.ui" line="113"/>
       <source>Go to next page</source>
-      <translation type="unfinished">Go to next page</translation>
+      <translation>Jít na další stránku</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/notifications/articlelistnotification.ui" line="123"/>
+      <location filename="../src/librssguard/gui/notifications/articlelistnotification.ui" line="120"/>
       <source>Open article in article list</source>
-      <translation type="unfinished">Open article in article list</translation>
+      <translation>Otevřít článek v seznamu článků</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/notifications/articlelistnotification.ui" line="130"/>
+      <location filename="../src/librssguard/gui/notifications/articlelistnotification.ui" line="127"/>
       <source>Open article in web browser</source>
-      <translation type="unfinished">Open article in web browser</translation>
+      <translation>Otevřít článek ve webovém prohlížeči</translation>
     </message>
     <message numerus="yes">
-      <location filename="../src/librssguard/gui/notifications/articlelistnotification.cpp" line="47"/>
+      <location filename="../src/librssguard/gui/notifications/articlelistnotification.cpp" line="65"/>
       <source>%n feeds fetched</source>
-      <translation type="unfinished">
-        <numerusform>%n feeds fetched</numerusform>
-        <numerusform>%n feeds fetched</numerusform>
-        <numerusform>%n feeds fetched</numerusform>
-        <numerusform>%n feeds fetched</numerusform>
+      <translation>
+        <numerusform>%n kanál načten</numerusform>
+        <numerusform>%n kanály načteny</numerusform>
+        <numerusform>%n kanálů načteno</numerusform>
+        <numerusform>%n kanálů načteno</numerusform>
       </translation>
     </message>
   </context>
@@ -352,7 +352,7 @@ na tuto bublinu.</translation>
     <message>
       <location filename="../src/librssguard/gui/notifications/basetoastnotification.cpp" line="37"/>
       <source>Close this notification</source>
-      <translation type="unfinished">Close this notification</translation>
+      <translation>Zavřít toto oznámení</translation>
     </message>
   </context>
   <context>
@@ -5421,22 +5421,22 @@ Podporované čtečky:</translation>
     <message>
       <location filename="../src/librssguard/gui/notifications/toastnotificationsmanager.cpp" line="18"/>
       <source>top-left</source>
-      <translation type="unfinished">top-left</translation>
+      <translation>nahoře-vlevo</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/notifications/toastnotificationsmanager.cpp" line="21"/>
       <source>top-right</source>
-      <translation type="unfinished">top-right</translation>
+      <translation>nahoře-vpravo</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/notifications/toastnotificationsmanager.cpp" line="24"/>
       <source>bottom-left</source>
-      <translation type="unfinished">bottom-left</translation>
+      <translation>dole-vlevo</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/notifications/toastnotificationsmanager.cpp" line="28"/>
       <source>bottom-right</source>
-      <translation type="unfinished">bottom-right</translation>
+      <translation>dole-vpravo</translation>
     </message>
   </context>
   <context>
@@ -6285,12 +6285,12 @@ Autoři této aplikace nenesou žádnou odpovědnost za ztrátu Vašich dat.</tr
     <message>
       <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.cpp" line="362"/>
       <source>PC restart needed</source>
-      <translation type="unfinished">PC restart needed</translation>
+      <translation>Je třeba restartovat PC</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.cpp" line="363"/>
       <source>Your PC needs to be restarted to make some of enabled features fully working.</source>
-      <translation type="unfinished">Your PC needs to be restarted to make some of enabled features fully working.</translation>
+      <translation>Váš počítač musí být restartován, aby některé z povolených funkcí plně fungovaly.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="21"/>
@@ -6887,27 +6887,27 @@ Po instalaci Node.js také restartujte dialog &quot;Nastavení&quot;.</translati
     <message>
       <location filename="../src/librssguard/gui/settings/settingsnotifications.ui" line="40"/>
       <source>Balloon notifications type</source>
-      <translation type="unfinished">Balloon notifications type</translation>
+      <translation>Typ notifikací</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsnotifications.ui" line="46"/>
       <source>Native notifications (tray icon must be enabled)</source>
-      <translation type="unfinished">Native notifications (tray icon must be enabled)</translation>
+      <translation>Nativní notifikace (ikona v oznamovací oblasti musí být povolena)</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsnotifications.ui" line="53"/>
       <source>Custom notifications</source>
-      <translation type="unfinished">Custom notifications</translation>
+      <translation>Vlastní notifikace</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsnotifications.ui" line="69"/>
       <source>Position</source>
-      <translation type="unfinished">Position</translation>
+      <translation>Pozice</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsnotifications.ui" line="89"/>
       <source>Screen</source>
-      <translation type="unfinished">Screen</translation>
+      <translation>Obrazovka</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsnotifications.h" line="30"/>
@@ -6917,7 +6917,7 @@ Po instalaci Node.js také restartujte dialog &quot;Nastavení&quot;.</translati
     <message>
       <location filename="../src/librssguard/gui/settings/settingsnotifications.cpp" line="18"/>
       <source>There are some built-in notification sounds. Just start typing &quot;:&quot; and they will show up.</source>
-      <translation type="unfinished">There are some built-in notification sounds. Just start typing &quot;:&quot; and they will show up.</translation>
+      <translation>Existují některé vestavěné zvuky notifikací. Stačí začít psát &quot;:&quot; a zobrazí se.</translation>
     </message>
   </context>
   <context>
@@ -7023,7 +7023,7 @@ Po instalaci Node.js také restartujte dialog &quot;Nastavení&quot;.</translati
     <message>
       <location filename="../src/librssguard/database/sqlitedriver.cpp" line="109"/>
       <source>cannot get native &apos;sqlite3&apos; DB handle</source>
-      <translation type="unfinished">cannot get native &apos;sqlite3&apos; DB handle</translation>
+      <translation>nelze získat nativní &apos;sqlite3&apos; DB ovladač</translation>
     </message>
     <message>
       <location filename="../src/librssguard/database/sqlitedriver.cpp" line="384"/>
@@ -7646,29 +7646,9 @@ Nepřečtené zprávy: %2</translation>
   <context>
     <name>ToastNotification</name>
     <message>
-      <location filename="../src/librssguard/gui/notifications/toastnotification.ui" line="44"/>
-      <source>...</source>
-      <translation type="unfinished">...</translation>
-    </message>
-    <message>
-      <location filename="../src/librssguard/gui/notifications/toastnotification.ui" line="59"/>
-      <source>11</source>
-      <translation type="unfinished">11</translation>
-    </message>
-    <message>
-      <location filename="../src/librssguard/gui/notifications/toastnotification.ui" line="69"/>
-      <source>TextLabel</source>
-      <translation type="unfinished">TextLabel</translation>
-    </message>
-    <message>
-      <location filename="../src/librssguard/gui/notifications/toastnotification.ui" line="84"/>
-      <source>PushButton</source>
-      <translation type="unfinished">PushButton</translation>
-    </message>
-    <message>
       <location filename="../src/librssguard/gui/notifications/toastnotification.cpp" line="36"/>
       <source>Do it!</source>
-      <translation type="unfinished">Do it!</translation>
+      <translation>Provést!</translation>
     </message>
   </context>
   <context>
