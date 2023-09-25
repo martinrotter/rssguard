@@ -20,9 +20,14 @@ class ArticleListNotification : public BaseToastNotification {
 
     void loadResults(const QHash<Feed*, QList<Message>>& new_messages);
 
+  signals:
+    void openingArticleInArticleListRequested(Feed* feed, const Message& msg);
+
   private slots:
+    void openArticleInArticleList();
     void onMessageSelected(const QModelIndex& current, const QModelIndex& previous);
     void showFeed(int index);
+    void openArticleInWebBrowser();
 
   private:
     Message selectedMessage() const;

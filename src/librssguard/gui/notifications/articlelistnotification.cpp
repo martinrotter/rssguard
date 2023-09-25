@@ -4,6 +4,7 @@
 
 #include "core/articlelistnotificationmodel.h"
 #include "miscellaneous/iconfactory.h"
+#include "network-web/webfactory.h"
 
 #include <QTreeView>
 
@@ -19,6 +20,8 @@ ArticleListNotification::ArticleListNotification(QWidget* parent)
   m_ui.m_btnOpenArticleList->setIcon(qApp->icons()->fromTheme(QSL("view-list-details")));
   m_ui.m_btnOpenWebBrowser->setIcon(qApp->icons()->fromTheme(QSL("document-open")));
 
+  m_ui.m_treeArticles->setModel(m_model);
+
   connect(m_model,
           &ArticleListNotificationModel::nextPagePossibleChanged,
           m_ui.m_btnNextPage,
@@ -29,6 +32,11 @@ ArticleListNotification::ArticleListNotification(QWidget* parent)
           &PlainToolButton::setEnabled);
   connect(m_ui.m_btnNextPage, &PlainToolButton::clicked, m_model, &ArticleListNotificationModel::nextPage);
   connect(m_ui.m_btnPreviousPage, &PlainToolButton::clicked, m_model, &ArticleListNotificationModel::previousPage);
+  connect(m_ui.m_btnOpenWebBrowser, &PlainToolButton::clicked, this, &ArticleListNotification::openArticleInWebBrowser);
+  connect(m_ui.m_btnOpenArticleList,
+          &PlainToolButton::clicked,
+          this,
+          &ArticleListNotification::openArticleInArticleList);
   connect(m_ui.m_treeArticles->selectionModel(),
           &QItemSelectionModel::currentChanged,
           this,
@@ -42,7 +50,6 @@ ArticleListNotification::ArticleListNotification(QWidget* parent)
   pal.setColor(QPalette::ColorRole::Base, Qt::transparent);
 
   m_ui.m_treeArticles->setPalette(pal);
-  m_ui.m_treeArticles->setModel(m_model);
 
   connect(m_ui.m_cmbFeeds,
           QOverload<int>::of(&QComboBox::currentIndexChanged),
@@ -57,20 +64,44 @@ void ArticleListNotification::loadResults(const QHash<Feed*, QList<Message>>& ne
 
   m_ui.m_lblTitle->setText(tr("%n feeds fetched", nullptr, new_messages.size()));
 
+  m_ui.m_cmbFeeds->model()->sort(0, Qt::SortOrder::AscendingOrder);
   m_ui.m_cmbFeeds->clear();
 
-  for (Feed* fd : new_messages.keys()) {
+  auto ks = new_messages.keys();
+
+  std::sort(ks.begin(), ks.end(), [](Feed* lhs, Feed* rhs) {
+    return QString::compare(lhs->sanitizedTitle(), rhs->sanitizedTitle(), Qt::CaseSensitivity::CaseInsensitive) < 0;
+  });
+
+  for (Feed* fd : ks) {
     m_ui.m_cmbFeeds->addItem(fd->sanitizedTitle(), QVariant::fromValue(fd));
   }
 }
 
+void ArticleListNotification::openArticleInArticleList() {
+  emit openingArticleInArticleListRequested(m_ui.m_cmbFeeds->currentData().value<Feed*>(), selectedMessage());
+}
+
 void ArticleListNotification::onMessageSelected(const QModelIndex& current, const QModelIndex& previous) {
   m_ui.m_btnOpenArticleList->setEnabled(current.isValid());
-  m_ui.m_btnOpenWebBrowser->setEnabled(current.isValid());
+
+  try {
+    Message msg = selectedMessage();
+
+    m_ui.m_btnOpenWebBrowser->setEnabled(!msg.m_url.isEmpty());
+  }
+  catch (...) {
+    m_ui.m_btnOpenWebBrowser->setEnabled(false);
+  }
 }
 
 void ArticleListNotification::showFeed(int index) {
   m_model->setArticles(m_newMessages.value(m_ui.m_cmbFeeds->itemData(index).value<Feed*>()));
+  onMessageSelected({}, {});
+}
+
+void ArticleListNotification::openArticleInWebBrowser() {
+  qApp->web()->openUrlInExternalBrowser(selectedMessage().m_url);
 }
 
 Message ArticleListNotification::selectedMessage() const {

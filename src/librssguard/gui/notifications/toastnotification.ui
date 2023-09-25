@@ -39,11 +39,7 @@
       </widget>
      </item>
      <item>
-      <widget class="PlainToolButton" name="m_btnClose">
-       <property name="text">
-        <string>...</string>
-       </property>
-      </widget>
+      <widget class="PlainToolButton" name="m_btnClose"/>
      </item>
     </layout>
    </item>
@@ -55,9 +51,6 @@
        <verstretch>0</verstretch>
       </sizepolicy>
      </property>
-     <property name="text">
-      <string>11</string>
-     </property>
      <property name="alignment">
       <set>Qt::AlignHCenter|Qt::AlignTop</set>
      </property>
@@ -65,9 +58,6 @@
    </item>
    <item row="1" column="1">
     <widget class="QLabel" name="m_lblBody">
-     <property name="text">
-      <string>TextLabel</string>
-     </property>
      <property name="alignment">
       <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignTop</set>
      </property>
@@ -79,11 +69,7 @@
    <item row="2" column="1">
     <layout class="QHBoxLayout" name="m_actionLayout">
      <item>
-      <widget class="QPushButton" name="m_btnAction">
-       <property name="text">
-        <string>PushButton</string>
-       </property>
-      </widget>
+      <widget class="QPushButton" name="m_btnAction"/>
      </item>
      <item>
       <spacer name="horizontalSpacer">
