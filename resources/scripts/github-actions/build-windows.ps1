@@ -27,6 +27,8 @@ else {
   $qt_version = "6.5.2"
 }
 
+$is_qt_6 = $qt_version.StartsWith("6")
+
 $maria_version = "10.6.15"
 $maria_link = "https://archive.mariadb.org/mariadb-$maria_version/winx64-packages/mariadb-$maria_version-winx64.zip"
 $maria_output = "maria.zip"
@@ -49,7 +51,7 @@ $qt_path = "$old_pwd\qt"
 pip3 install -U pip
 pip3 install -I git+https://github.com/miurahr/aqtinstall
 
-if ($qt_version.StartsWith("6")) {
+if ($is_qt_6) {
   aqt install-qt -O "$qt_path" windows desktop $qt_version win64_msvc2019_64 -m qtwebengine qtimageformats qtmultimedia qt5compat qtwebchannel qtpositioning
 }
 else {
@@ -61,9 +63,14 @@ aqt install-src -O "$qt_path" windows desktop $qt_version --archives qtbase
 $qt_qmake = "$qt_path\$qt_version\msvc2019_64\bin\qmake.exe"
 $env:PATH = "$qt_path\$qt_version\msvc2019_64\bin\;" + $env:PATH
 
-# Download openssl.
-aqt install-tool -O "$qt_path" windows desktop tools_openssl_x64 qt.tools.openssl.win_x64
-$openssl_base_path = "$qt_path\Tools\OpenSSL\Win_x64"
+if ($is_qt_6) {
+  # Download openssl 3.x.
+  aqt install-tool -O "$qt_path" windows desktop tools_opensslv3_x64 qt.tools.opensslv3.win_x64
+  $openssl_base_path = "$qt_path\Tools\OpenSSLv3\Win_x64"
+}
+else {
+  # Download openssl 1.x source code and compile manually.
+}
 
 # Build dependencies.
 $maria_path = "$old_pwd\mariadb-$maria_version-winx64"
@@ -71,7 +78,7 @@ $qt_sqldrivers_path = "$qt_path\$qt_version\Src\qtbase\src\plugins\sqldrivers"
 
 cd "$qt_sqldrivers_path"
 
-if ($qt_version.StartsWith("6")) {
+if ($is_qt_6) {
   & $cmake_path -G Ninja -DCMAKE_BUILD_TYPE="Release" -DMySQL_INCLUDE_DIR="$maria_path\include\mysql" -DMySQL_LIBRARY="$maria_path\lib\libmariadb.lib"
   & $cmake_path --build .
 
