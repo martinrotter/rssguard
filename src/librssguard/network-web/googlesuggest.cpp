@@ -150,7 +150,12 @@ void GoogleSuggest::preventSuggest() {
 }
 
 void GoogleSuggest::autoSuggest() {
-  QUrl entered_url = QUrl::fromUserInput(m_editor->text());
+  QUrl entered_url = QUrl(m_editor->text());
+
+  // auto a = entered_url.isValid();
+  // auto b = entered_url.isLocalFile();
+  // auto c = entered_url.scheme();
+  // auto d = entered_url.host();
 
   if (m_editor->text().size() < 3 || m_editor->text().startsWith(QSL("http")) ||
       m_editor->text().startsWith(QSL("www")) ||

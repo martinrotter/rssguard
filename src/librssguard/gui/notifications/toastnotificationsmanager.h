@@ -47,6 +47,7 @@ class ToastNotificationsManager : public QObject {
     void showNotification(Notification::Event event, const GuiMessage& msg, const GuiAction& action);
 
   private slots:
+    void openArticleInArticleList(Feed* feed, const Message& msg);
     void closeNotification(BaseToastNotification* notif, bool delete_from_memory);
 
   private:
@@ -54,6 +55,7 @@ class ToastNotificationsManager : public QObject {
     QScreen* moveToProperScreen(BaseToastNotification* notif);
     QPoint cornerForNewNotification(QRect screen_rect);
 
+    void initializeArticleListNotification();
     void hookNotification(BaseToastNotification* notif);
     void moveNotificationToCorner(BaseToastNotification* notif, QPoint corner);
     void makeSpaceForNotification(int height_to_make_space, bool reverse = false, int stard_idx = 0);

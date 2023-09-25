@@ -71,8 +71,7 @@ void ToastNotificationsManager::showNotification(Notification::Event event,
 
   if (!msg.m_feedFetchResults.updatedFeeds().isEmpty()) {
     if (m_articleListNotification == nullptr) {
-      m_articleListNotification = new ArticleListNotification();
-      hookNotification(m_articleListNotification);
+      initializeArticleListNotification();
     }
     else if (m_activeNotifications.contains(m_articleListNotification)) {
       // Article notification is somewhere in list, clear first to move it to first positon.
@@ -109,6 +108,8 @@ void ToastNotificationsManager::showNotification(Notification::Event event,
 
   m_activeNotifications.prepend(notif);
 }
+
+void ToastNotificationsManager::openArticleInArticleList(Feed* feed, const Message& msg) {}
 
 void ToastNotificationsManager::closeNotification(BaseToastNotification* notif, bool delete_from_memory) {
   auto notif_idx = m_activeNotifications.indexOf(notif);
@@ -157,6 +158,17 @@ QPoint ToastNotificationsManager::cornerForNewNotification(QRect screen_rect) {
     default:
       return screen_rect.bottomRight() - QPoint(NOTIFICATIONS_MARGIN, NOTIFICATIONS_MARGIN);
   }
+}
+
+void ToastNotificationsManager::initializeArticleListNotification() {
+  m_articleListNotification = new ArticleListNotification();
+  hookNotification(m_articleListNotification);
+
+  /*
+  connect(m_articleListNotification,
+          &ArticleListNotification::openingArticleInArticleListRequested,
+          this,
+          &ArticleListNotification::)*/
 }
 
 void ToastNotificationsManager::hookNotification(BaseToastNotification* notif) {

@@ -32,6 +32,10 @@ ArticleListNotification::ArticleListNotification(QWidget* parent)
           &PlainToolButton::setEnabled);
   connect(m_ui.m_btnNextPage, &PlainToolButton::clicked, m_model, &ArticleListNotificationModel::nextPage);
   connect(m_ui.m_btnPreviousPage, &PlainToolButton::clicked, m_model, &ArticleListNotificationModel::previousPage);
+  connect(m_ui.m_treeArticles,
+          &QAbstractItemView::doubleClicked,
+          this,
+          &ArticleListNotification::openArticleInWebBrowser);
   connect(m_ui.m_btnOpenWebBrowser, &PlainToolButton::clicked, this, &ArticleListNotification::openArticleInWebBrowser);
   connect(m_ui.m_btnOpenArticleList,
           &PlainToolButton::clicked,
