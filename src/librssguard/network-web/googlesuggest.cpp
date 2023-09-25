@@ -130,7 +130,7 @@ void GoogleSuggest::showCompletion(const QStringList& choices) {
   m_popup->setUpdatesEnabled(true);
   m_popup->resize(m_editor->width(), m_popup->sizeHintForRow(0) * qMin(7, choices.count()) + 3);
   m_popup->move(m_editor->mapToGlobal(QPoint(0, m_editor->height())));
-  m_popup->setFocus();
+  // m_popup->setFocus();
   m_popup->show();
 }
 
@@ -175,12 +175,14 @@ void GoogleSuggest::handleNetworkData(const QUrl& url,
   Q_UNUSED(http_code)
 
   if (status == QNetworkReply::NetworkError::NoError) {
-    QStringList choices;
-    QDomDocument xml;
     const QTextCodec* c = QTextCodec::codecForUtfText(contents);
 
+    QDomDocument xml;
     xml.setContent(c->toUnicode(contents));
     QDomNodeList suggestions = xml.elementsByTagName(QSL("suggestion"));
+    QStringList choices;
+
+    choices.reserve(suggestions.size());
 
     for (int i = 0; i < suggestions.size(); i++) {
       const QDomElement element = suggestions.at(i).toElement();
