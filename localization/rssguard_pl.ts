@@ -223,27 +223,27 @@ tej wersji, klikając na to powiadomienie.</translation>
       <translation>...</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/notifications/articlelistnotification.ui" line="80"/>
+      <location filename="../src/librssguard/gui/notifications/articlelistnotification.ui" line="106"/>
       <source>Go to previous page</source>
       <translation>Przejdź do poprzedniej strony</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/notifications/articlelistnotification.ui" line="87"/>
+      <location filename="../src/librssguard/gui/notifications/articlelistnotification.ui" line="113"/>
       <source>Go to next page</source>
       <translation>Idź do następnej strony</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/notifications/articlelistnotification.ui" line="123"/>
+      <location filename="../src/librssguard/gui/notifications/articlelistnotification.ui" line="120"/>
       <source>Open article in article list</source>
       <translation>Otwórz artykuł na liście artykułów</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/notifications/articlelistnotification.ui" line="130"/>
+      <location filename="../src/librssguard/gui/notifications/articlelistnotification.ui" line="127"/>
       <source>Open article in web browser</source>
       <translation>Otwórz artykuł w przeglądarce internetowej</translation>
     </message>
     <message numerus="yes">
-      <location filename="../src/librssguard/gui/notifications/articlelistnotification.cpp" line="47"/>
+      <location filename="../src/librssguard/gui/notifications/articlelistnotification.cpp" line="65"/>
       <source>%n feeds fetched</source>
       <translation>
         <numerusform>Pobrano %n kanał</numerusform>
@@ -7647,26 +7647,6 @@ Nieprzeczytanych wiadomości: %2</translation>
   </context>
   <context>
     <name>ToastNotification</name>
-    <message>
-      <location filename="../src/librssguard/gui/notifications/toastnotification.ui" line="44"/>
-      <source>...</source>
-      <translation>...</translation>
-    </message>
-    <message>
-      <location filename="../src/librssguard/gui/notifications/toastnotification.ui" line="59"/>
-      <source>11</source>
-      <translation>11</translation>
-    </message>
-    <message>
-      <location filename="../src/librssguard/gui/notifications/toastnotification.ui" line="69"/>
-      <source>TextLabel</source>
-      <translation>Etykieta tekstowa</translation>
-    </message>
-    <message>
-      <location filename="../src/librssguard/gui/notifications/toastnotification.ui" line="84"/>
-      <source>PushButton</source>
-      <translation type="unfinished">PushButton</translation>
-    </message>
     <message>
       <location filename="../src/librssguard/gui/notifications/toastnotification.cpp" line="36"/>
       <source>Do it!</source>
