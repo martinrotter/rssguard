@@ -5386,22 +5386,22 @@ Lijst met ondersteunde lezers:</translation>
     <message>
       <location filename="../src/librssguard/gui/notifications/toastnotificationsmanager.cpp" line="18"/>
       <source>top-left</source>
-      <translation>top-links</translation>
+      <translation>boven-links</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/notifications/toastnotificationsmanager.cpp" line="21"/>
       <source>top-right</source>
-      <translation>top-rechts</translation>
+      <translation>boven-rechts</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/notifications/toastnotificationsmanager.cpp" line="24"/>
       <source>bottom-left</source>
-      <translation>bodem-links</translation>
+      <translation>onder-links</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/notifications/toastnotificationsmanager.cpp" line="28"/>
       <source>bottom-right</source>
-      <translation>bodem-rechts</translation>
+      <translation>onder-rechts</translation>
     </message>
   </context>
   <context>
