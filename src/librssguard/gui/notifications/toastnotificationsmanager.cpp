@@ -109,7 +109,9 @@ void ToastNotificationsManager::showNotification(Notification::Event event,
   m_activeNotifications.prepend(notif);
 }
 
-void ToastNotificationsManager::openArticleInArticleList(Feed* feed, const Message& msg) {}
+void ToastNotificationsManager::openArticleInArticleList(Feed* feed, const Message& msg) {
+  // qApp -, ao
+}
 
 void ToastNotificationsManager::closeNotification(BaseToastNotification* notif, bool delete_from_memory) {
   auto notif_idx = m_activeNotifications.indexOf(notif);
@@ -164,11 +166,10 @@ void ToastNotificationsManager::initializeArticleListNotification() {
   m_articleListNotification = new ArticleListNotification();
   hookNotification(m_articleListNotification);
 
-  /*
   connect(m_articleListNotification,
           &ArticleListNotification::openingArticleInArticleListRequested,
           this,
-          &ArticleListNotification::)*/
+          &ToastNotificationsManager::openArticleInArticleList);
 }
 
 void ToastNotificationsManager::hookNotification(BaseToastNotification* notif) {

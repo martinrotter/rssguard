@@ -33,6 +33,10 @@ BaseToastNotification::BaseToastNotification(QWidget* parent) : QDialog(parent),
 
 BaseToastNotification::~BaseToastNotification() {}
 
+void BaseToastNotification::reject() {
+  close();
+}
+
 void BaseToastNotification::setupCloseButton(QAbstractButton* btn) {
   btn->setToolTip(tr("Close this notification"));
   btn->setIcon(qApp->icons()->fromTheme(QSL("dialog-close"), QSL("gtk-close")));
@@ -67,28 +71,21 @@ void BaseToastNotification::setupTimedClosing() {
 }
 
 bool BaseToastNotification::eventFilter(QObject* watched, QEvent* event) {
-  if (event->type() == QEvent::Type::KeyPress) {
-    return true;
+  if (event->type() == QEvent::Type::Enter) {
+    stopTimedClosing();
   }
-  else {
-    if (event->type() == QEvent::Type::Enter) {
-      stopTimedClosing();
-    }
 
-    if (event->type() == QEvent::Type::Leave) {
-      setupTimedClosing();
-    }
-
-    return QDialog::eventFilter(watched, event);
+  if (event->type() == QEvent::Type::Leave) {
+    setupTimedClosing();
   }
+
+  return QDialog::eventFilter(watched, event);
 }
 
 void BaseToastNotification::closeEvent(QCloseEvent* event) {
   stopTimedClosing();
   emit closeRequested(this);
 }
-
-void BaseToastNotification::reject() {}
 
 void BaseToastNotification::timerEvent(QTimerEvent* event) {
   if (event->timerId() == m_timerId) {
