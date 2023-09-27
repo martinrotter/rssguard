@@ -29,3 +29,4 @@ resources/skins/*/*.map
 
 # Build directory.
 build-dir/
+docs/build
