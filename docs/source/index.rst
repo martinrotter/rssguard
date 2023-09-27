@@ -3,9 +3,12 @@ RSS Guards documentation!
 
 .. toctree::
    :maxdepth: 2
-   :caption: Contents:
 
-   Documentation
+   what
+   donations
+   downloads
+   supported-os
+   supported-readers
 
 Indices and tables
 ==================
