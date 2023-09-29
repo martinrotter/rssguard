@@ -1125,14 +1125,13 @@ Item ID: %5</source>
     <message>
       <location filename="../src/librssguard/gui/feedsview.cpp" line="283"/>
       <source>This item cannot be deleted because something critically failed. Submit bug report.</source>
-      <translation type="unfinished">This item cannot be deleted because something critically failed. Submit bug report.</translation>
+      <translation>重大な障害が発生したため、このアイテムを削除できません。バグレポートを提出してください。</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/feedsview.cpp" line="290"/>
       <source>This item cannot be deleted, because it does not support it
 or this functionality is not implemented yet.</source>
-      <translation type="unfinished">This item cannot be deleted, because it does not support it
-or this functionality is not implemented yet.</translation>
+      <translation>このアイテムは削除できません。サポートされていないか、まだ機能が実装されていないためです</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/feedsview.cpp" line="828"/>
@@ -1147,12 +1146,12 @@ or this functionality is not implemented yet.</translation>
     <message>
       <location filename="../src/librssguard/gui/feedsview.cpp" line="133"/>
       <source>Selected account does not support adding of new feeds.</source>
-      <translation type="unfinished">Selected account does not support adding of new feeds.</translation>
+      <translation>選択したアカウントは、新しいフィードの追加をサポートしていません</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/feedsview.cpp" line="151"/>
       <source>Selected account does not support adding of new categories.</source>
-      <translation type="unfinished">Selected account does not support adding of new categories.</translation>
+      <translation>選択したアカウントは、新しいカテゴリの追加をサポートしていません</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/feedsview.cpp" line="448"/>
