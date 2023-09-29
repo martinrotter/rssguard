@@ -4,7 +4,7 @@ Official place to download RSS Guard is at [Github Releases page](https://github
 
 RSS Guard is also available in [repositories of many Linux distributions](https://repology.org/project/rssguard/versions), and via [Flathub](https://flathub.org/about).
 
-The are two different flavors:
+The are two different [flavors](#features/browseradblock):
 * [Regular](https://flathub.org/apps/details/io.github.martinrotter.rssguard): Includes an (almost) full-blown integrated web browser (built with `-DUSE_WEBENGINE=ON`).
 * [Lite](https://flathub.org/apps/details/io.github.martinrotter.rssguardlite): Includes simpler, safer (and less memory hungry integrated web browser (built with `-DUSE_WEBENGINE=OFF`).
 

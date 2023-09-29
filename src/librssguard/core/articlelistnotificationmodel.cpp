@@ -3,6 +3,7 @@
 #include "core/articlelistnotificationmodel.h"
 
 #include "definitions/definitions.h"
+#include "exceptions/applicationexception.h"
 
 ArticleListNotificationModel::ArticleListNotificationModel(QObject* parent)
   : QAbstractListModel(parent), m_currentPage(-1) {}
@@ -19,7 +20,13 @@ void ArticleListNotificationModel::setArticles(const QList<Message>& msgs) {
 }
 
 Message ArticleListNotificationModel::message(const QModelIndex& idx) const {
-  return m_articles.at((m_currentPage * NOTIFICATIONS_PAGE_SIZE) + idx.row());
+  int list_position = (m_currentPage * NOTIFICATIONS_PAGE_SIZE) + idx.row();
+
+  if (list_position < 0 || list_position >= m_articles.size()) {
+    throw ApplicationException(QSL("message cannot be loaded, wrong index"));
+  }
+
+  return m_articles.at(list_position);
 }
 
 void ArticleListNotificationModel::nextPage() {

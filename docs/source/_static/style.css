@@ -1,3 +1,7 @@
 .wy-nav-content {
   max-width: none !important;
 }
+
+.wy-side-nav-search {
+  background-color: rgb(250, 166, 136) !important;
+}

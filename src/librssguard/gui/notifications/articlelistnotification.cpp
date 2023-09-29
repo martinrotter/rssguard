@@ -113,6 +113,6 @@ Message ArticleListNotification::selectedMessage() const {
     return m_model->message(m_ui.m_treeArticles->currentIndex());
   }
   else {
-    throw ApplicationException("message cannot be loaded, wrong index");
+    throw ApplicationException(QSL("message cannot be loaded, wrong index"));
   }
 }

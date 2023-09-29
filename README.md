@@ -4,7 +4,7 @@ RSS Guard
 [![Total downloads](https://img.shields.io/github/downloads/martinrotter/rssguard/total.svg?maxAge=360)](https://somsubhra.github.io/github-release-stats/?username=martinrotter&repository=rssguard&search=0)
 [![Version](https://img.shields.io/github/release/martinrotter/rssguard.svg?maxAge=360)](https://raw.githubusercontent.com/martinrotter/rssguard/master/resources/text/CHANGELOG)
 [![Packaging status](https://repology.org/badge/tiny-repos/rssguard.svg)](https://repology.org/project/rssguard/versions)
-[![Documentation status](https://readthedocs.org/projects/rssguard/badge/?version=latest)](https://rssguard.readthedocs.io/en/latest/?badge=latest)
+[![Documentation status](https://readthedocs.org/projects/rssguard/badge/?version=latest)](https://rssguard.readthedocs.io)
 [![GitHub issues](https://img.shields.io/github/issues/martinrotter/rssguard.svg?maxAge=360)](https://github.com/martinrotter/rssguard/issues)
 [![License](https://img.shields.io/github/license/martinrotter/rssguard.svg?maxAge=360000)](https://github.com/martinrotter/rssguard/blob/master/LICENSE.md)
 

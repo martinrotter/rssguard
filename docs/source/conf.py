@@ -35,6 +35,7 @@ html_theme_options = {
 
 myst_enable_extensions = [
   "amsmath",
+  "attrs_block",
   "attrs_inline",
   "colon_fence",
   "deflist",
@@ -48,6 +49,10 @@ myst_enable_extensions = [
   "strikethrough",
   "substitution",
   "tasklist",
+]
+
+html_css_files = [
+    'style.css',
 ]
 
 myst_heading_anchors = 4
