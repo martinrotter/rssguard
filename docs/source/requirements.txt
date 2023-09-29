@@ -1,2 +1,3 @@
 myst_parser
+linkify-it-py
 sphinx-rtd-theme

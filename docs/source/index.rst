@@ -1,8 +1,8 @@
 RSS Guards documentation!
-=====================================
+=========================
 
 .. toctree::
-   :maxdepth: 2
+   :maxdepth: 1
 
    what
    donations
@@ -10,8 +10,16 @@ RSS Guards documentation!
    supported-os
    supported-readers
 
+.. toctree::
+   :maxdepth: 1
+   :caption: Features
+   :glob:
+
+   features/gui-concepts
+   features/*
+
 Indices and tables
-==================
+------------------
 
 * :ref:`genindex`
 * :ref:`modindex`
