@@ -10,23 +10,27 @@ The dialog seen below offers you a way of managing your article filters. You can
 <img alt="alt-img" src="images/filters-dialog.png" width="600px">
 
 ## Writing article filter
-Article filters are small scripts which are executed automatically when articles/feeds are downloaded. Article filters are `JavaScript` pieces of code which must provide function with prototype:
+Article filters are small scripts which are executed automatically when articles/feeds are downloaded. Article filters are `JavaScript` snippets which must provide function with prototype:
 
 ```js
 function filterMessage() { }
 ```
 
-The function should be fast and must return values which belong to enumeration `FilteringAction`.
+The function should be fast and must return values which belong to enumeration [`FilteringAction`](#filteringaction-enum).
 
-Each article is accessible in your script via global variable named `msg` of type `MessageObject`, see [this file](https://github.com/martinrotter/rssguard/blob/master/src/librssguard/core/messageobject.h) for the declaration. Some properties are writeable, allowing you to change contents of the article before it is written to RSS Guard DB. You can mark article important, change its description, perhaps change author name or even assign some label to it!!!
+Each article is accessible in your script via global variable named `msg` of type `MessageObject`, see [this file](https://github.com/martinrotter/rssguard/blob/master/src/librssguard/core/messageobject.h) for the declaration. Some properties are writeable, allowing you to change contents of the article before it is written to RSS Guard DB. You can mark article important, change its description, perhaps change author name or even assign some [label](labels) to it!!!
 
+```{note}
 Some attributes (`read/unread/starred` states) are synchronized back to your account's server - so you can for example mark some articles as starred and the change will be propagated back to TT-RSS server if you use TT-RSS.
+```
 
-A special placeholders can be used in article filters.
+```{attention}
+A special [placeholders](userdata.md#data-placeholder) can be used in article filters.
+```
 
 There is also a special variable named `utils`. This variable is of `FilterUtils` type. It offers some useful utility functions for you to use in your filters.
 
-Labels assigned to articles are visible to your filters. You can, therefore, execute actions in your filtering script, based on which labels are assigned to the article. The property is called `assignedLabels` and is an array of the `Label` objects.
+[Labels](labels) assigned to articles are visible to your filters. You can, therefore, execute actions in your filtering script, based on which labels are assigned to the article. The property is called `assignedLabels` and is an array of the `Label` objects.
 
 Passed article also offers a special function:
 
@@ -34,7 +38,7 @@ Passed article also offers a special function:
 Boolean MessageObject.isAlreadyInDatabase(DuplicateCheck)
 ```
 
-which allows you to perform runtime check for existence of the article in RSS Guard's database. Parameter is the value from enumeration `DuplicateCheck`. It specifies how exactly the article should match.
+which allows you to perform runtime check for existence of the article in RSS Guards database. Parameter is the value from enumeration `DuplicateCheck`. It specifies how exactly the article should match.
 
 For example, if you want to check if there is already another article by the same author in a database, you should call `msg.isAlreadyInDatabase(MessageObject.SameAuthor)`.  
 The values of enumeration can be combined in a single call with the [bitwise OR](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Bitwise_OR) (`|`) operator, like this:
@@ -45,7 +49,7 @@ msg.isAlreadyInDatabase(MessageObject.SameAuthor | MessageObject.SameUrl)
 
 ## Class Reference Documentation
 
-Here is the reference of methods and properties of types available in your filtering scripts.
+Here is the reference documentation of types available for your filtering scripts.
 
 ### `MessageObject` class
 | Type      | Name(Parameters)              | Return value  | Read-only  | Synchronized  | Description
@@ -73,7 +77,7 @@ Here is the reference of methods and properties of types available in your filte
 | Method    | `deassignLabel(String label_id)`       | `Boolean`     | ❌         | ❌            | Removes label from the message. The `String` value is the `customId` property of `Label` type. See its API reference for relevant info.
 | Method    | `createLabelId(String title, String color_hex_code)`       | `String`     | ❌         | ❌            | Creates the label with given name and given color hex code in form `#AABBCC`. Color can be omitted in which case auto-generated color is used.
 | Method    | `addEnclosure(String url, String mime_type)`       | `void`     | ❌         | ❌            | Appends new enclosure/attachment with given URL and MIME type to the article.
-| Property  | `runningFilterWhenFetching`   | `Boolean`     | ✅         | ❌            | Returns `true` if message filter is applied when message is fetched. Returns `false` if filter is applied manually, for example from **Article filters** window.<!-- TODO: is there another example when it's applied? should "for example" be dropped? -->
+| Property  | `runningFilterWhenFetching`   | `Boolean`     | ✅         | ❌            | Returns `true` if message filter is applied when message is fetched. Returns `false` if filter is applied manually, for example from `Article filters` window.
 
 ### `Label` class
 | Type      | Name          | Return value  | Read-only | Description
@@ -89,7 +93,9 @@ Here is the reference of methods and properties of types available in your filte
 | `Ignore`          | 2             | Message is ignored and will **NOT** be added or updated in DB. Already existing message will not be purged from DB.
 | `Purge`           | 4             | Existing message is purged from the DB completely. Behaves like `Ignore` when there is a new incoming message.
 
+```{attention}
 The `MessageObject` attributes are synchronized with service even if you return `Purge` or `Ignore`. In other words, even if the filter ignores the article, you can still tweak its properties, and they will be synchronized back to your server.
+```
 
 ### `DuplicateCheck` enum
 | Enumerant name    | Integer value | Description

@@ -4,15 +4,16 @@ Scraping Websites
 Only proceed if you consider yourself a power user, and you know what you are doing!
 ```
 
-RSS Guard offers additional advanced feature inspired by [Liferea](https://lzone.de/liferea/).
+RSS Guard offers additional advanced feature inspired by [Liferea](https://lzone.de/liferea).
 
 Goal of this feature is to allow advanced users to use RSS Guard with data sources which do not provide regular feed. So you can use the feature to generate one.
 
+----
 You can select source type of each feed. If you select URL, then RSS Guard simply downloads feed file from given location and behaves like everyone would expect.
 
-However, if you choose `Script` option, then you cannot provide URL of your feed, and you rely on custom script to generate feed file and provide its contents to [**standard output** (stdout)](https://en.wikipedia.org/wiki/Standard_streams#Standard_output_(stdout)). Data written to standard output should be valid feed file, for example RSS or ATOM XML file.
+However, if you choose `Script` option, then you cannot provide URL of your feed, and you rely on custom script to generate feed file and provide its contents to [**standard output** (stdout)](https://en.wikipedia.org/wiki/Standard_streams#Standard_output_(stdout)). Data written to standard output should be valid feed data.
 
-`Fetch it now` button also works with `Script` option. Therefore, if your source script and (optional) post-process script in cooperation deliver a valid feed file to the output, then all important metadata, like title or icon of the feed, can be discovered :sparkles: automagically :sparkles:.
+`Fetch it now` button also works with `Script` option. Therefore, if your source script and (optional) post-process script in cooperation deliver a valid feed data to the output, then all important metadata, like title or icon of the feed, can be discovered :sparkles: automagically :sparkles:.
 
 <img alt="alt-img" src="images/scrape-source-type.png" width="350px">
 
@@ -33,18 +34,23 @@ Executable file must be always be specified, while arguments do not. Be very car
 | Command       | Explanation   |
 | :---          | ---           |
 | `bash -c "curl 'https://github.com/martinrotter.atom'"`   | Download ATOM feed file using Bash and Curl. |
-| `Powershell Invoke-WebRequest 'https://github.com/martinrotter.atom' \| Select-Object -ExpandProperty Content` | Download ATOM feed file with Powershell. |
-| `php tweeper.php -v 0 https://twitter.com/NSACareers`     | Scrape Twitter RSS feed file with [Tweeper](https://git.ao2.it/tweeper.git). Tweeper is the utility that produces RSS feed from Twitter and other similar social platforms. |
+| `Powershell Invoke-WebRequest "https://github.com/martinrotter.atom" \| Select-Object -ExpandProperty Content` | Download ATOM feed file with Powershell. |
+| `php tweeper.php -v 0 "https://twitter.com/NSACareers"`     | Scrape Twitter RSS feed file with [Tweeper](https://git.ao2.it/tweeper.git). Tweeper is the utility that produces RSS feed from Twitter and other similar social platforms. |
 
-Note that the above examples are cross-platform. You can use exactly the same command on Windows, Linux or macOS, if your operating system is properly configured.
+```{note}
+The above examples are cross-platform. You can use exactly the same command on Windows, Linux or macOS, if your operating system is properly configured.
+```
 
-RSS Guard offers placeholder `%data%` which is automatically replaced with full path to RSS Guard user data folder, allowing you to make your configuration fully portable. You can, therefore, use something like this as a source script line: `bash %data%/scripts/download-feed.sh`.
+RSS Guard offers [placeholder](userdata.md#data-placeholder) `%data%` which is automatically replaced with full path to RSS Guard user data folder, allowing you to make your configuration fully portable. You can, therefore, use something like this as a source script line: `bash %data%/scripts/download-feed.sh`.
 
-Also, working directory of process executing the script is set to point to RSS Guard user's data folder.
+```{attention}
+Working directory of process executing the script is set to point to RSS Guard [user data](userdata) folder.
+```
 
 There are [examples of website scrapers](https://github.com/martinrotter/rssguard/tree/master/resources/scripts/scrapers). Most of them are written in Python 3, so their execution line is similar to `python script.py`. Make sure to examine each script for more information on how to use it.
 
-After your source feed data is downloaded either via URL or custom script, you can optionally post-process it with one more custom script, which will take **raw source data as input**. It must produce valid feed data to [**standard output** (stdout)] while printing all error messages to [**error output** (stderr)].
+----
+After your source feed data is downloaded either via URL or custom script, you can optionally post-process it with one more custom script, which will take **raw source data as input**. It must produce valid feed data to standard output while printing all error messages to error output.
 
 Here is little flowchart explaining where and when scripts are used:
 

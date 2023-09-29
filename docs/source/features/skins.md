@@ -5,7 +5,7 @@ RSS Guard is a skinable application. With [Qt stylesheets](https://doc.qt.io/qt-
 <img alt="alt-img" src="images/gui-dark.png" width="600px">
 
 ```{warning}
-Note that as of RSS Guard `4.1.3`, old skins `vergilius` and `dark` were removed and replaced with `nudus` skins. For now, only `nudus` skins are maintained by RSS Guard developers.  
+Note that as of RSS Guard `4.1.3`, old skins `vergilius` and `dark` were removed and replaced with `nudus-*` skins. For now, only `nudus` skins are maintained by RSS Guard developers.  
 ```
 
 ```{note}
@@ -16,7 +16,7 @@ You can select style and skin in `Settings -> User interface` dialog section.
 
 Try to play around with various combinations of styles and skins to achieve the UI you like.
 
-Creating a custom UI is possible with `skins`. Each skin should be placed in its own root folder and must contain specific files. The [built-in skins](https://github.com/martinrotter/rssguard/tree/master/resources/skins) are stored in folder together with RSS Guard executable, but you can place your own custom skins in a `skins` subfolder in user data folder. Create the folder manually, if it does not exist.
+Creating a custom UI is possible with `skins`. Each skin should be placed in its own root folder and must contain specific files. The [built-in skins](https://github.com/martinrotter/rssguard/tree/master/resources/skins) are stored in folder together with RSS Guard executable, but you can place your own custom skins in a `skins` subfolder in [user data](userdata) folder. Create the folder manually, if it does not exist.
 
 <img alt="alt-img" src="images/about-skins.png" width="600px">
 

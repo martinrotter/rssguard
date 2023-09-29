@@ -20,4 +20,4 @@ Unassigning a message label might easily be done through the message viewer.
 
 Note that unassigning the message labels is also synchronized at regular intervals (with services that support label synchronization).
 
-Message filters can also assign or remove labels from messages.
+[Article filters](filters) can also assign or remove labels.

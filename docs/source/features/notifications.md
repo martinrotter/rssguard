@@ -9,4 +9,4 @@ RSS Guard allows you to customize desktop notifications. There are a number of e
 
 <img alt="alt-img" src="images/notif.png" width="600px">
 
-Your notification can also play `.wav` sounds which you can place under your user data folder and use them via special placeholder. Other audio formats are not supported.
+Your notification can also play `.wav` sounds which you can place under your [user data](userdata) folder and use them via special [placeholder](userdata.md#data-placeholder). Other audio formats are not supported.
