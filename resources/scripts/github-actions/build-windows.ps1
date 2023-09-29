@@ -118,6 +118,11 @@ Copy-Item -Path "$openssl_base_path\bin\libssl*.dll" -Destination ".\app\"
 Copy-Item -Path "$maria_path\lib\libmariadb.dll" -Destination ".\app\"
 Copy-Item -Path "$qt_sqldrivers_path\plugins\sqldrivers\qsqlmysql.dll" -Destination ".\app\sqldrivers\" -Force
 
+# Copy debug symbols for devbuilds.
+if ($git_tag -eq "devbuild") {
+  Copy-Item -Path ".\src\librssguard\rssguard.pdb" -Destination ".\app\"
+}
+
 if ($use_webengine -eq "ON") {
   $packagebase = "rssguard-${git_tag}-${git_revision}-win"
 }

@@ -10,7 +10,10 @@ author = 'Martin Rotter'
 # -- General configuration ---------------------------------------------------
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#general-configuration
 
-extensions = ['myst_parser', 'sphinx.ext.extlinks']
+extensions = [
+  'myst_parser',
+  'sphinxcontrib.mermaid',
+  'sphinx.ext.extlinks']
 templates_path = ['_templates']
 exclude_patterns = [ 'old_docs' ]
 
@@ -46,3 +49,5 @@ myst_enable_extensions = [
   "substitution",
   "tasklist",
 ]
+
+myst_heading_anchors = 4

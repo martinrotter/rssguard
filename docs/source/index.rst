@@ -18,6 +18,13 @@ RSS Guards documentation!
    features/gui-concepts
    features/*
 
+.. toctree::
+   :maxdepth: 1
+   :caption: For Contributors
+   :glob:
+
+   contrib/*
+
 Indices and tables
 ------------------
 

@@ -1,3 +1,4 @@
 myst_parser
 linkify-it-py
+sphinxcontrib-mermaid
 sphinx-rtd-theme
