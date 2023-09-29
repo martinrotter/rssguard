@@ -786,8 +786,8 @@ Item ID: %5</source>
     <message numerus="yes">
       <location filename="../src/librssguard/miscellaneous/feedreader.cpp" line="362"/>
       <source>I will auto-download new articles for %n feed(s).</source>
-      <translation type="unfinished">
-        <numerusform>I will auto-download new articles for %n feed(s).</numerusform>
+      <translation>
+        <numerusform>%n 個のフィードの新しい記事を自動ダウンロードします</numerusform>
       </translation>
     </message>
     <message>
@@ -798,7 +798,7 @@ Item ID: %5</source>
     <message>
       <location filename="../src/librssguard/miscellaneous/feedreader.cpp" line="94"/>
       <source>You cannot fetch new articles now because another critical operation is ongoing.</source>
-      <translation type="unfinished">You cannot fetch new articles now because another critical operation is ongoing.</translation>
+      <translation>別の重要な作業が進行中であるため、新しい記事を取得することはできません</translation>
     </message>
   </context>
   <context>
@@ -852,12 +852,12 @@ Item ID: %5</source>
     <message>
       <location filename="../src/librssguard/services/feedly/gui/feedlyaccountdetails.cpp" line="30"/>
       <source>Here, results of connection test are shown.</source>
-      <translation type="unfinished">Here, results of connection test are shown.</translation>
+      <translation>ここでは接続テストの結果を示します</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/feedly/gui/feedlyaccountdetails.cpp" line="38"/>
       <source>Your %1 does not offer official Feedly support, thus you must authorize via special authorization code called &quot;developer access token&quot;. These tokens are usually valid only for 1 month and allow only 250 API calls each day.</source>
-      <translation type="unfinished">Your %1 does not offer official Feedly support, thus you must authorize via special authorization code called &quot;developer access token&quot;. These tokens are usually valid only for 1 month and allow only 250 API calls each day.</translation>
+      <translation>%1 はFeedlyの公式サポートを提供していないため、&quot;デベロッパーアクセストークン&quot; と呼ばれる特別な認証コードを使用して認証する必要があります。これらのトークンは通常1ヶ月間のみ有効で、1日に250回しかAPIコールができません</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/feedly/gui/feedlyaccountdetails.cpp" line="51"/>
@@ -867,38 +867,38 @@ Item ID: %5</source>
     <message>
       <location filename="../src/librssguard/services/feedly/gui/feedlyaccountdetails.cpp" line="94"/>
       <source>You did not grant access.</source>
-      <translation type="unfinished">You did not grant access.</translation>
+      <translation>アクセスを許可していません</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/feedly/gui/feedlyaccountdetails.cpp" line="95"/>
       <location filename="../src/librssguard/services/feedly/gui/feedlyaccountdetails.cpp" line="103"/>
       <source>There was error during testing.</source>
-      <translation type="unfinished">There was error during testing.</translation>
+      <translation>テスト中にエラーが発生しました</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/feedly/gui/feedlyaccountdetails.cpp" line="102"/>
       <source>There is error. %1</source>
-      <translation type="unfinished">There is error. %1</translation>
+      <translation>エラーが発生しました。 %1</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/feedly/gui/feedlyaccountdetails.cpp" line="116"/>
       <source>Tested successfully. You may be prompted to login once more.</source>
-      <translation type="unfinished">Tested successfully. You may be prompted to login once more.</translation>
+      <translation>テストに成功しました。もう一度ログインするよう求められるかもしれません</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/feedly/gui/feedlyaccountdetails.cpp" line="117"/>
       <source>Your access was approved.</source>
-      <translation type="unfinished">Your access was approved.</translation>
+      <translation>アクセスが承認されました</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/feedly/gui/feedlyaccountdetails.cpp" line="148"/>
       <source>Access granted.</source>
-      <translation type="unfinished">Access granted.</translation>
+      <translation>アクセスが許可されました</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/feedly/gui/feedlyaccountdetails.cpp" line="147"/>
       <source>Login was successful.</source>
-      <translation type="unfinished">Login was successful.</translation>
+      <translation>ログインに成功しました</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/feedly/gui/feedlyaccountdetails.cpp" line="33"/>
@@ -908,7 +908,7 @@ Item ID: %5</source>
     <message>
       <location filename="../src/librssguard/services/feedly/gui/feedlyaccountdetails.cpp" line="153"/>
       <source>Some problems.</source>
-      <translation type="unfinished">Some problems.</translation>
+      <translation>いくつかの問題があります</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/feedly/gui/feedlyaccountdetails.cpp" line="161"/>
@@ -933,7 +933,7 @@ Item ID: %5</source>
     <message>
       <location filename="../src/librssguard/services/feedly/gui/feedlyaccountdetails.cpp" line="152"/>
       <source>Error: &apos;%1&apos;</source>
-      <translation type="unfinished">Error: &apos;%1&apos;</translation>
+      <translation>エラー: &apos;%1&apos;</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/feedly/gui/feedlyaccountdetails.cpp" line="46"/>
@@ -946,7 +946,7 @@ Item ID: %5</source>
     <message>
       <location filename="../src/librssguard/services/feedly/feedlynetwork.cpp" line="714"/>
       <source>Feedly: authentication error</source>
-      <translation type="unfinished">Feedly: authentication error</translation>
+      <translation>Feedly: 認証エラー</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/feedly/feedlynetwork.cpp" line="715"/>
@@ -3390,23 +3390,23 @@ You can install it now.</translation>
     <message>
       <location filename="../src/librssguard/services/gmail/gui/gmailaccountdetails.cpp" line="74"/>
       <source>You did not grant access.</source>
-      <translation type="unfinished">You did not grant access.</translation>
+      <translation>アクセスを許可していません</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/gmail/gui/gmailaccountdetails.cpp" line="75"/>
       <location filename="../src/librssguard/services/gmail/gui/gmailaccountdetails.cpp" line="83"/>
       <source>There was error during testing.</source>
-      <translation type="unfinished">There was error during testing.</translation>
+      <translation>テスト中にエラーが発生しました</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/gmail/gui/gmailaccountdetails.cpp" line="88"/>
       <source>Tested successfully. You may be prompted to login once more.</source>
-      <translation type="unfinished">Tested successfully. You may be prompted to login once more.</translation>
+      <translation>テストに成功しました。もう一度ログインするよう求められるかもしれません</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/gmail/gui/gmailaccountdetails.cpp" line="89"/>
       <source>Your access was approved.</source>
-      <translation type="unfinished">Your access was approved.</translation>
+      <translation>アクセスが承認されました</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/gmail/gui/gmailaccountdetails.cpp" line="123"/>
@@ -3614,7 +3614,7 @@ Login tokens expiration: %2</translation>
     <message>
       <location filename="../src/librssguard/services/greader/gui/greaderaccountdetails.cpp" line="43"/>
       <source>Here, results of connection test are shown.</source>
-      <translation type="unfinished">Here, results of connection test are shown.</translation>
+      <translation>ここでは接続テストの結果を示します</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/greader/gui/greaderaccountdetails.cpp" line="201"/>
@@ -3689,28 +3689,28 @@ Login tokens expiration: %2</translation>
     <message>
       <location filename="../src/librssguard/services/greader/gui/greaderaccountdetails.cpp" line="108"/>
       <source>You did not grant access.</source>
-      <translation type="unfinished">You did not grant access.</translation>
+      <translation>アクセスを許可していません</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/greader/gui/greaderaccountdetails.cpp" line="109"/>
       <location filename="../src/librssguard/services/greader/gui/greaderaccountdetails.cpp" line="117"/>
       <source>There was error during testing.</source>
-      <translation type="unfinished">There was error during testing.</translation>
+      <translation>テスト中にエラーが発生しました</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/greader/gui/greaderaccountdetails.cpp" line="116"/>
       <source>There is error. %1</source>
-      <translation type="unfinished">There is error. %1</translation>
+      <translation>エラーが発生しました。 %1</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/greader/gui/greaderaccountdetails.cpp" line="122"/>
       <source>Tested successfully. You may be prompted to login once more.</source>
-      <translation type="unfinished">Tested successfully. You may be prompted to login once more.</translation>
+      <translation>テストに成功しました。もう一度ログインするよう求められるかもしれません</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/greader/gui/greaderaccountdetails.cpp" line="123"/>
       <source>Your access was approved.</source>
-      <translation type="unfinished">Your access was approved.</translation>
+      <translation>アクセスが承認されました</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/greader/gui/greaderaccountdetails.cpp" line="157"/>
@@ -5031,7 +5031,7 @@ Login tokens expiration: %2</translation>
     <message>
       <location filename="../src/librssguard/services/owncloud/gui/owncloudaccountdetails.cpp" line="24"/>
       <source>Here, results of connection test are shown.</source>
-      <translation type="unfinished">Here, results of connection test are shown.</translation>
+      <translation>ここでは接続テストの結果を示します</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/owncloud/gui/owncloudaccountdetails.cpp" line="31"/>
@@ -5496,13 +5496,13 @@ List of supported readers:</source>
     <message>
       <location filename="../src/librssguard/services/reddit/gui/redditaccountdetails.cpp" line="64"/>
       <source>You did not grant access.</source>
-      <translation type="unfinished">You did not grant access.</translation>
+      <translation>アクセスを許可していません</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/reddit/gui/redditaccountdetails.cpp" line="65"/>
       <location filename="../src/librssguard/services/reddit/gui/redditaccountdetails.cpp" line="73"/>
       <source>There was error during testing.</source>
-      <translation type="unfinished">There was error during testing.</translation>
+      <translation>テスト中にエラーが発生しました</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/reddit/gui/redditaccountdetails.cpp" line="72"/>
@@ -5512,12 +5512,12 @@ List of supported readers:</source>
     <message>
       <location filename="../src/librssguard/services/reddit/gui/redditaccountdetails.cpp" line="78"/>
       <source>Tested successfully. You may be prompted to login once more.</source>
-      <translation type="unfinished">Tested successfully. You may be prompted to login once more.</translation>
+      <translation>テストに成功しました。もう一度ログインするよう求められるかもしれません</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/reddit/gui/redditaccountdetails.cpp" line="79"/>
       <source>Your access was approved.</source>
-      <translation type="unfinished">Your access was approved.</translation>
+      <translation>アクセスが承認されました</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/reddit/gui/redditaccountdetails.cpp" line="111"/>
@@ -7708,7 +7708,7 @@ Unread news: %2</source>
     <message>
       <location filename="../src/librssguard/services/tt-rss/gui/ttrssaccountdetails.cpp" line="35"/>
       <source>Here, results of connection test are shown.</source>
-      <translation type="unfinished">Here, results of connection test are shown.</translation>
+      <translation>ここでは接続テストの結果を示します</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/tt-rss/gui/ttrssaccountdetails.cpp" line="92"/>
