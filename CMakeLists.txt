@@ -70,7 +70,7 @@ set(APP_DONATE_URL "https://github.com/sponsors/martinrotter")
 set(APP_VERSION "4.5.1")
 
 set(APP_URL "https://github.com/martinrotter/rssguard")
-set(APP_URL_DOCUMENTATION "https://github.com/martinrotter/rssguard/blob/${APP_VERSION}/resources/docs/Documentation.md")
+set(APP_URL_DOCUMENTATION "https://rssguard.readthedocs.io")
 set(APP_URL_ISSUES_NEW "https://github.com/martinrotter/rssguard/issues/new/choose")
 
 set(TYPEINFO "????")
