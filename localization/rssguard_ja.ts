@@ -2657,14 +2657,14 @@ QtWebEngineキャッシュフォルダ -&gt; &quot;%7&quot;</translation>
   Created on = &apos;%6&apos;
   Contents = &apos;%7&apos;
   RAW contents = &apos;%8&apos;</source>
-      <translation type="unfinished">Output (modified) article is:
-  Title = &apos;%1&apos;
+      <translation>出力（変更された）記事は:
+  タイトル = &apos;%1&apos;
   URL = &apos;%2&apos;
-  Author = &apos;%3&apos;
-  Is read/important = &apos;%4/%5&apos;
-  Created on = &apos;%6&apos;
-  Contents = &apos;%7&apos;
-  RAW contents = &apos;%8&apos;</translation>
+  投稿者 = &apos;%3&apos;
+  既読/重要 = &apos;%4/%5&apos;
+  作成日時 = &apos;%6&apos;
+  内容 = &apos;%7&apos;
+  RAW コンテンツ = &apos;%8&apos;</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.cpp" line="340"/>
