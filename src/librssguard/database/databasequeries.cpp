@@ -1654,13 +1654,6 @@ UpdatedArticles DatabaseQueries::updateMessages(const QSqlDatabase& db,
           continue;
         }
 
-        if (!msg->m_isRead) {
-          updated_messages.m_unread.append(*msg);
-        }
-
-        updated_messages.m_all.append(*msg);
-        msg->m_insertedUpdated = true;
-
         vals.append(QSL("\n(':feed', ':title', :is_read, :is_important, :is_deleted, "
                         "':url', ':author', :score, :date_created, ':contents', ':enclosures', "
                         "':custom_id', ':custom_hash', :account_id)")
@@ -1705,7 +1698,21 @@ UpdatedArticles DatabaseQueries::updateMessages(const QSqlDatabase& db,
           for (int l = i, c = 1; l < (i + batch_length); l++, c++) {
             Message* msg = msgs_to_insert[l];
 
+            if (msg->m_title.isEmpty()) {
+              // This article was not for sure inserted. Tweak
+              // next ID calculation.
+              c--;
+              continue;
+            }
+
+            msg->m_insertedUpdated = true;
             msg->m_id = last_msg_id - batch_length + c;
+
+            if (!msg->m_isRead) {
+              updated_messages.m_unread.append(*msg);
+            }
+
+            updated_messages.m_all.append(*msg);
           }
         }
       }

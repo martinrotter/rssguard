@@ -128,6 +128,20 @@
        </property>
       </widget>
      </item>
+     <item>
+      <widget class="Line" name="line">
+       <property name="orientation">
+        <enum>Qt::Vertical</enum>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="PlainToolButton" name="m_btnMarkAllRead">
+       <property name="toolTip">
+        <string>Open article in article list</string>
+       </property>
+      </widget>
+     </item>
     </layout>
    </item>
   </layout>
@@ -147,6 +161,7 @@
   <tabstop>m_btnNextPage</tabstop>
   <tabstop>m_btnOpenArticleList</tabstop>
   <tabstop>m_btnOpenWebBrowser</tabstop>
+  <tabstop>m_btnMarkAllRead</tabstop>
  </tabstops>
  <resources/>
  <connections/>

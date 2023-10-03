@@ -9,10 +9,10 @@
 #include <QDir>
 
 #define READABILITY_PACKAGE "@mozilla/readability"
-#define READABILITY_VERSION "0.4.2"
+#define READABILITY_VERSION "0.4.4"
 
 #define JSDOM_PACKAGE "jsdom"
-#define JSDOM_VERSION "19.0.0"
+#define JSDOM_VERSION "22.1.0"
 
 Readability::Readability(QObject* parent) : QObject{parent}, m_modulesInstalling(false), m_modulesInstalled(false) {
   connect(qApp->nodejs(), &NodeJs::packageInstalledUpdated, this, &Readability::onPackageReady);
@@ -83,8 +83,8 @@ void Readability::makeHtmlReadable(const QString& html, const QString& base_url)
                                   .arg(QSL(APP_NAME)),
                                 QSystemTrayIcon::MessageIcon::Warning},
                                {true, true, false});
-          qApp->nodejs()->installPackages({{QSL(READABILITY_PACKAGE), QSL(READABILITY_VERSION)},
-                                           {QSL(JSDOM_PACKAGE), QSL(JSDOM_VERSION)}});
+          qApp->nodejs()->installUpdatePackages({{QSL(READABILITY_PACKAGE), QSL(READABILITY_VERSION)},
+                                                 {QSL(JSDOM_PACKAGE), QSL(JSDOM_VERSION)}});
         }
 
         return;

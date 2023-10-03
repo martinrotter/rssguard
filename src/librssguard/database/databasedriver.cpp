@@ -7,7 +7,6 @@
 #include "miscellaneous/iofactory.h"
 
 #include <QDir>
-#include <QRegularExpression>
 #include <QSqlError>
 #include <QSqlQuery>
 #include <QThread>

@@ -9,12 +9,11 @@ class Settings;
 class QProcess;
 
 class NodeJs : public QObject {
-  Q_OBJECT
+    Q_OBJECT
 
   public:
     struct PackageMetadata {
       public:
-
         // Name of package.
         QString m_name;
 

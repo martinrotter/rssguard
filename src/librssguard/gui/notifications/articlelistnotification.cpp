@@ -3,6 +3,7 @@
 #include "gui/notifications/articlelistnotification.h"
 
 #include "core/articlelistnotificationmodel.h"
+#include "database/databasequeries.h"
 #include "miscellaneous/iconfactory.h"
 #include "network-web/webfactory.h"
 
@@ -100,12 +101,44 @@ void ArticleListNotification::onMessageSelected(const QModelIndex& current, cons
 }
 
 void ArticleListNotification::showFeed(int index) {
-  m_model->setArticles(m_newMessages.value(m_ui.m_cmbFeeds->itemData(index).value<Feed*>()));
+  m_model->setArticles(m_newMessages.value(selectedFeed()));
   onMessageSelected({}, {});
 }
 
 void ArticleListNotification::openArticleInWebBrowser() {
-  qApp->web()->openUrlInExternalBrowser(selectedMessage().m_url);
+  Feed* fd = selectedFeed();
+  Message msg = selectedMessage();
+
+  markAsRead(fd, {msg});
+  qApp->web()->openUrlInExternalBrowser(msg.m_url);
+}
+
+void ArticleListNotification::markAsRead(Feed* feed, const QList<Message>& articles) {
+  ServiceRoot* acc = feed->getParentServiceRoot();
+  QStringList message_ids;
+  message_ids.reserve(articles.size());
+
+  // Obtain IDs of all desired messages.
+  for (const Message& message : articles) {
+    message_ids.append(QString::number(message.m_id));
+  }
+
+  if (acc->onBeforeSetMessagesRead(feed, articles, RootItem::ReadStatus::Read)) {
+    auto db = qApp->database()->driver()->connection(metaObject()->className());
+
+    if (DatabaseQueries::markMessagesReadUnread(db, message_ids, RootItem::ReadStatus::Read)) {
+      acc->onAfterSetMessagesRead(feed, articles, RootItem::ReadStatus::Read);
+    }
+  }
+}
+
+Feed* ArticleListNotification::selectedFeed(int index) const {
+  if (index < 0) {
+    return m_ui.m_cmbFeeds->currentData().value<Feed*>();
+  }
+  else {
+    return m_ui.m_cmbFeeds->itemData(index).value<Feed*>();
+  }
 }
 
 Message ArticleListNotification::selectedMessage() const {

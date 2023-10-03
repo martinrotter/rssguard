@@ -16,8 +16,8 @@
 #endif
 #endif
 
-#include <QTextCodec>
 #include <QSettings>
+#include <QTextCodec>
 
 int main(int argc, char* argv[]) {
   qSetMessagePattern(QSL("time=\"%{time process}\" type=\"%{type}\" -> %{message}"));
@@ -57,6 +57,8 @@ int main(int argc, char* argv[]) {
   char** const av = argv;
   QStringList raw_cli_args;
 
+  raw_cli_args.reserve(argc);
+
   for (int a = 0; a < argc; a++) {
     raw_cli_args << QString::fromLocal8Bit(av[a]);
   }
@@ -70,10 +72,13 @@ int main(int argc, char* argv[]) {
   QCoreApplication::setApplicationVersion(QSL(APP_VERSION));
   QCoreApplication::setOrganizationDomain(QSL(APP_URL));
 
+  qDebugNN << LOGSEC_CORE << "Starting" << NONQUOTE_W_SPACE_DOT(APP_LONG_NAME);
+  qDebugNN << LOGSEC_CORE << "Current UTC date/time is"
+           << NONQUOTE_W_SPACE_DOT(QDateTime::currentDateTimeUtc().toString(Qt::DateFormat::ISODate));
+
   // Instantiate base application object.
   Application application(QSL(APP_LOW_NAME), argc, argv, raw_cli_args);
 
-  qDebugNN << LOGSEC_CORE << "Starting" << NONQUOTE_W_SPACE_DOT(APP_LONG_NAME);
   qDebugNN << LOGSEC_CORE << "Instantiated class " << QUOTE_W_SPACE_DOT(application.metaObject()->className());
 
   // Check if another instance is running.
