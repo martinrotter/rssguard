@@ -20,6 +20,7 @@ ArticleListNotification::ArticleListNotification(QWidget* parent)
   m_ui.m_btnPreviousPage->setIcon(qApp->icons()->fromTheme(QSL("arrow-left"), QSL("stock_left")));
   m_ui.m_btnOpenArticleList->setIcon(qApp->icons()->fromTheme(QSL("view-list-details")));
   m_ui.m_btnOpenWebBrowser->setIcon(qApp->icons()->fromTheme(QSL("document-open")));
+  m_ui.m_btnMarkAllRead->setIcon(qApp->icons()->fromTheme(QSL("mail-mark-read")));
 
   m_ui.m_treeArticles->setModel(m_model);
 
@@ -33,6 +34,7 @@ ArticleListNotification::ArticleListNotification(QWidget* parent)
           &PlainToolButton::setEnabled);
   connect(m_ui.m_btnNextPage, &PlainToolButton::clicked, m_model, &ArticleListNotificationModel::nextPage);
   connect(m_ui.m_btnPreviousPage, &PlainToolButton::clicked, m_model, &ArticleListNotificationModel::previousPage);
+  connect(m_ui.m_btnMarkAllRead, &PlainToolButton::clicked, this, &ArticleListNotification::markAllRead);
   connect(m_ui.m_treeArticles,
           &QAbstractItemView::doubleClicked,
           this,
@@ -111,6 +113,12 @@ void ArticleListNotification::openArticleInWebBrowser() {
 
   markAsRead(fd, {msg});
   qApp->web()->openUrlInExternalBrowser(msg.m_url);
+}
+
+void ArticleListNotification::markAllRead() {
+  for (Feed* fd : m_newMessages.keys()) {
+    markAsRead(fd, m_newMessages.value(fd));
+  }
 }
 
 void ArticleListNotification::markAsRead(Feed* feed, const QList<Message>& articles) {

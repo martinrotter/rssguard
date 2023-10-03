@@ -138,7 +138,7 @@
      <item>
       <widget class="PlainToolButton" name="m_btnMarkAllRead">
        <property name="toolTip">
-        <string>Open article in article list</string>
+        <string>Mark all articles as read</string>
        </property>
       </widget>
      </item>

@@ -28,6 +28,7 @@ class ArticleListNotification : public BaseToastNotification {
     void onMessageSelected(const QModelIndex& current, const QModelIndex& previous);
     void showFeed(int index);
     void openArticleInWebBrowser();
+    void markAllRead();
 
   private:
     void markAsRead(Feed* feed, const QList<Message>& articles);
