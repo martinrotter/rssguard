@@ -242,8 +242,13 @@ version by clicking this popup notification.</translation>
       <source>Open article in web browser</source>
       <translation type="unfinished">Open article in web browser</translation>
     </message>
+    <message>
+      <location filename="../src/librssguard/gui/notifications/articlelistnotification.ui" line="141"/>
+      <source>Mark all articles as read</source>
+      <translation type="unfinished">Mark all articles as read</translation>
+    </message>
     <message numerus="yes">
-      <location filename="../src/librssguard/gui/notifications/articlelistnotification.cpp" line="65"/>
+      <location filename="../src/librssguard/gui/notifications/articlelistnotification.cpp" line="72"/>
       <source>%n feeds fetched</source>
       <translation type="unfinished">
         <numerusform>%n feeds fetched</numerusform>
@@ -347,7 +352,7 @@ version by clicking this popup notification.</translation>
   <context>
     <name>BaseToastNotification</name>
     <message>
-      <location filename="../src/librssguard/gui/notifications/basetoastnotification.cpp" line="37"/>
+      <location filename="../src/librssguard/gui/notifications/basetoastnotification.cpp" line="41"/>
       <source>Close this notification</source>
       <translation type="unfinished">Close this notification</translation>
     </message>
@@ -5238,7 +5243,7 @@ Feedly is a secure space where you can privately organize and research the topic
 Feedly is a secure space where you can privately organize and research the topics and trends that matter to you.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/database/databasequeries.cpp" line="2650"/>
+      <location filename="../src/librssguard/database/databasequeries.cpp" line="2657"/>
       <source>Cannot insert article filter, because current database cannot return last inserted row ID.</source>
       <translation type="unfinished">Cannot insert article filter, because current database cannot return last inserted row ID.</translation>
     </message>
