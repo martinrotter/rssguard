@@ -128,7 +128,7 @@ bool MessagesProxyModel::filterAcceptsMessage(int msg_row_index) const {
   return false;
 }
 
-QModelIndex MessagesProxyModel::getNextPreviousImportantItemIndex(int default_row) {
+QModelIndex MessagesProxyModel::getNextPreviousImportantItemIndex(int default_row) const {
   const bool started_from_zero = default_row == 0;
   QModelIndex next_index = getNextImportantItemIndex(default_row, rowCount() - 1);
 
@@ -140,7 +140,7 @@ QModelIndex MessagesProxyModel::getNextPreviousImportantItemIndex(int default_ro
   return next_index;
 }
 
-QModelIndex MessagesProxyModel::getNextPreviousUnreadItemIndex(int default_row) {
+QModelIndex MessagesProxyModel::getNextPreviousUnreadItemIndex(int default_row) const {
   const bool started_from_zero = default_row == 0;
   QModelIndex next_index = getNextUnreadItemIndex(default_row, rowCount() - 1);
 
@@ -150,6 +150,21 @@ QModelIndex MessagesProxyModel::getNextPreviousUnreadItemIndex(int default_row) 
   }
 
   return next_index;
+}
+
+QModelIndex MessagesProxyModel::indexFromMessage(const Message& msg) const {
+  for (int i = 0; i < rowCount(); i++) {
+    auto idx = index(i, 0);
+    auto id =
+      m_sourceModel->data(m_sourceModel->index(mapToSource(idx).row(), MSG_DB_ID_INDEX), Qt::ItemDataRole::EditRole)
+        .toInt();
+
+    if (id == msg.m_id) {
+      return idx;
+    }
+  }
+
+  return QModelIndex();
 }
 
 QModelIndex MessagesProxyModel::getNextImportantItemIndex(int default_row, int max_row) const {

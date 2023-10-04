@@ -47,8 +47,10 @@ class ToastNotificationsManager : public QObject {
     void showNotification(Notification::Event event, const GuiMessage& msg, const GuiAction& action);
 
   private slots:
-    void openArticleInArticleList(Feed* feed, const Message& msg);
     void closeNotification(BaseToastNotification* notif, bool delete_from_memory);
+
+  signals:
+    void openingArticleInArticleListRequested(Feed* feed, const Message& msg);
 
   private:
     QScreen* activeScreen() const;

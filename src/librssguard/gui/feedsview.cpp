@@ -1032,7 +1032,6 @@ void FeedsView::drawRow(QPainter* painter, const QStyleOptionViewItem& options, 
   auto opts = options;
 
   opts.decorationAlignment = Qt::AlignmentFlag::AlignLeft | Qt::AlignmentFlag::AlignVCenter;
-  // opts.decorationSize = {options.decorationSize.height(), 70};
 
   BaseTreeView::drawRow(painter, opts, index);
 }

@@ -23,6 +23,10 @@ BaseTreeView::BaseTreeView(QWidget* parent) : QTreeView(parent) {
                            Qt::Key::Key_PageDown};
 }
 
+bool BaseTreeView::isIndexHidden(const QModelIndex& idx) const {
+  return QTreeView::isIndexHidden(idx);
+}
+
 void BaseTreeView::keyPressEvent(QKeyEvent* event) {
   if (qApp->settings()->value(GROUP(Feeds), SETTING(Feeds::OnlyBasicShortcutsInLists)).toBool() &&
       !m_allowedKeyboardKeys.contains(event->key()) && !event->matches(QKeySequence::StandardKey::SelectAll)) {

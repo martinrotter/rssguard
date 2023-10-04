@@ -2,6 +2,7 @@
 
 #include "gui/feedmessageviewer.h"
 
+#include "core/feedsproxymodel.h"
 #include "core/messagesproxymodel.h"
 #include "gui/dialogs/formmain.h"
 #include "gui/feedsview.h"
@@ -216,6 +217,46 @@ void FeedMessageViewer::displayMessage(const Message& message, RootItem* root) {
   else {
     m_messagesBrowser->clear();
   }
+}
+
+void FeedMessageViewer::loadMessageToFeedAndArticleList(Feed* feed, const Message& message) {
+  auto idx_src = m_feedsView->sourceModel()->indexForItem(feed);
+  auto idx_map = m_feedsView->model()->mapFromSource(idx_src);
+  auto is_visible = !m_feedsView->isIndexHidden(idx_map);
+
+  if (!idx_map.isValid() || !is_visible) {
+    qApp->showGuiMessage(Notification::Event::GeneralEvent,
+                         GuiMessage(tr("Filtered feed list"),
+                                    tr("Cannot select article in article list as your feed is filtered out from feed "
+                                       "list."),
+                                    QSystemTrayIcon::MessageIcon::Warning),
+                         GuiMessageDestination(true, true));
+    return;
+  }
+
+  // TODO: expand properly
+  m_feedsView->setExpanded(idx_map, true);
+
+  m_feedsView->selectionModel()->select(idx_map,
+                                        QItemSelectionModel::SelectionFlag::ClearAndSelect |
+                                          QItemSelectionModel::SelectionFlag::Rows);
+
+  qApp->processEvents();
+
+  auto idx_map_msg = m_messagesView->model()->indexFromMessage(message);
+  auto msg_is_visible = !m_messagesView->isRowHidden(idx_map_msg.row(), idx_map_msg);
+
+  if (!idx_map_msg.isValid() || !msg_is_visible) {
+    qApp->showGuiMessage(Notification::Event::GeneralEvent,
+                         GuiMessage(tr("Filtered article list"),
+                                    tr("Cannot select article as it seems your article list is filtered."),
+                                    QSystemTrayIcon::MessageIcon::Warning),
+                         GuiMessageDestination(true, true));
+    return;
+  }
+
+  // m_messagesView->selectionModel()->select(idx_map_msg, QItemSelectionModel::SelectionFlag::Clear);
+  m_messagesView->setCurrentIndex(idx_map_msg);
 }
 
 void FeedMessageViewer::onMessageRemoved(RootItem* root) {

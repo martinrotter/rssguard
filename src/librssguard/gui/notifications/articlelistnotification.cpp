@@ -51,11 +51,9 @@ ArticleListNotification::ArticleListNotification(QWidget* parent)
 
   m_ui.m_treeArticles->setAttribute(Qt::WA_NoSystemBackground, true);
 
-  auto pal = m_ui.m_treeArticles->palette();
-
   // Make background transparent.
+  auto pal = m_ui.m_treeArticles->palette();
   pal.setColor(QPalette::ColorRole::Base, Qt::transparent);
-
   m_ui.m_treeArticles->setPalette(pal);
 
   connect(m_ui.m_cmbFeeds,
@@ -90,7 +88,9 @@ void ArticleListNotification::openArticleInArticleList() {
 }
 
 void ArticleListNotification::onMessageSelected(const QModelIndex& current, const QModelIndex& previous) {
-  m_ui.m_btnOpenArticleList->setEnabled(current.isValid());
+  Q_UNUSED(previous)
+
+  m_ui.m_btnOpenArticleList->setEnabled(m_ui.m_treeArticles->currentIndex().isValid());
 
   try {
     Message msg = selectedMessage();

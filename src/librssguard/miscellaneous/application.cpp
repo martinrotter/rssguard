@@ -16,6 +16,7 @@
 #include "gui/dialogs/formabout.h"
 #include "gui/dialogs/formlog.h"
 #include "gui/dialogs/formmain.h"
+#include "gui/feedmessageviewer.h"
 #include "gui/messagebox.h"
 #include "gui/notifications/toastnotificationsmanager.h"
 #include "gui/toolbars/statusbar.h"
@@ -495,6 +496,13 @@ QWidget* Application::mainFormWidget() {
 
 void Application::setMainForm(FormMain* main_form) {
   m_mainForm = main_form;
+
+  if (m_toastNotifications != nullptr) {
+    connect(m_toastNotifications,
+            &ToastNotificationsManager::openingArticleInArticleListRequested,
+            m_mainForm->tabWidget()->feedMessageViewer(),
+            &FeedMessageViewer::loadMessageToFeedAndArticleList);
+  }
 }
 
 QString Application::configFolder() const {
