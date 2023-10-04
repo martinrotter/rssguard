@@ -241,8 +241,13 @@ version by clicking this popup notification.</source>
       <source>Open article in web browser</source>
       <translation>Webブラウザで記事を開く</translation>
     </message>
+    <message>
+      <location filename="../src/librssguard/gui/notifications/articlelistnotification.ui" line="141"/>
+      <source>Mark all articles as read</source>
+      <translation>すべての記事を既読にする</translation>
+    </message>
     <message numerus="yes">
-      <location filename="../src/librssguard/gui/notifications/articlelistnotification.cpp" line="65"/>
+      <location filename="../src/librssguard/gui/notifications/articlelistnotification.cpp" line="72"/>
       <source>%n feeds fetched</source>
       <translation>
         <numerusform>%n 個のフィードが取得されました</numerusform>
@@ -346,7 +351,7 @@ version by clicking this popup notification.</source>
   <context>
     <name>BaseToastNotification</name>
     <message>
-      <location filename="../src/librssguard/gui/notifications/basetoastnotification.cpp" line="37"/>
+      <location filename="../src/librssguard/gui/notifications/basetoastnotification.cpp" line="41"/>
       <source>Close this notification</source>
       <translation>この通知を閉じる</translation>
     </message>
@@ -3943,132 +3948,132 @@ Login tokens expiration: %2</translation>
     <message>
       <location filename="../src/librssguard/gui/richtexteditor/mrichtextedit.ui" line="56"/>
       <source>Paragraph formatting</source>
-      <translation type="unfinished">Paragraph formatting</translation>
+      <translation>段落の書式設定</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/richtexteditor/mrichtextedit.ui" line="79"/>
       <source>Undo</source>
-      <translation type="unfinished">Undo</translation>
+      <translation>元に戻す</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/richtexteditor/mrichtextedit.ui" line="98"/>
       <source>Redo</source>
-      <translation type="unfinished">Redo</translation>
+      <translation>やり直し</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/richtexteditor/mrichtextedit.ui" line="114"/>
       <source>Cut</source>
-      <translation type="unfinished">Cut</translation>
+      <translation>切り取り</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/richtexteditor/mrichtextedit.ui" line="130"/>
       <source>Copy</source>
-      <translation type="unfinished">Copy</translation>
+      <translation>コピー</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/richtexteditor/mrichtextedit.ui" line="146"/>
       <source>Paste (CTRL+V)</source>
-      <translation type="unfinished">Paste (CTRL+V)</translation>
+      <translation>貼り付け (CTRL+V)</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/richtexteditor/mrichtextedit.ui" line="149"/>
       <source>Paste</source>
-      <translation type="unfinished">Paste</translation>
+      <translation>貼り付け</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/richtexteditor/mrichtextedit.ui" line="172"/>
       <source>Link (CTRL+L)</source>
-      <translation type="unfinished">Link (CTRL+L)</translation>
+      <translation>リンク (CTRL+L)</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/richtexteditor/mrichtextedit.ui" line="175"/>
       <source>Link</source>
-      <translation type="unfinished">Link</translation>
+      <translation>リンク</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/richtexteditor/mrichtextedit.ui" line="204"/>
       <source>Bold</source>
-      <translation type="unfinished">Bold</translation>
+      <translation>太字</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/richtexteditor/mrichtextedit.ui" line="223"/>
       <source>Italic (CTRL+I)</source>
-      <translation type="unfinished">Italic (CTRL+I)</translation>
+      <translation>斜体 (CTRL+I)</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/richtexteditor/mrichtextedit.ui" line="226"/>
       <source>Italic</source>
-      <translation type="unfinished">Italic</translation>
+      <translation>斜体</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/richtexteditor/mrichtextedit.ui" line="245"/>
       <source>Underline (CTRL+U)</source>
-      <translation type="unfinished">Underline (CTRL+U)</translation>
+      <translation>下線 (CTRL+U)</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/richtexteditor/mrichtextedit.ui" line="248"/>
       <source>Underline</source>
-      <translation type="unfinished">Underline</translation>
+      <translation>下線</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/richtexteditor/mrichtextedit.ui" line="264"/>
       <source>Strike Out</source>
-      <translation type="unfinished">Strike Out</translation>
+      <translation>取り消し線</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/richtexteditor/mrichtextedit.ui" line="284"/>
       <source>Bullet list (CTRL+-)</source>
-      <translation type="unfinished">Bullet list (CTRL+-)</translation>
+      <translation>箇条書きリスト (CTRL+-)</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/richtexteditor/mrichtextedit.ui" line="287"/>
       <source>Bullet list</source>
-      <translation type="unfinished">Bullet list</translation>
+      <translation>箇条書きリスト</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/richtexteditor/mrichtextedit.ui" line="306"/>
       <source>Ordered list (CTRL+=)</source>
-      <translation type="unfinished">Ordered list (CTRL+=)</translation>
+      <translation>番号付きリスト (CTRL+=)</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/richtexteditor/mrichtextedit.ui" line="309"/>
       <source>Ordered list</source>
-      <translation type="unfinished">Ordered list</translation>
+      <translation>番号付きリスト</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/richtexteditor/mrichtextedit.ui" line="328"/>
       <source>Decrease indentation (CTRL+,)</source>
-      <translation type="unfinished">Decrease indentation (CTRL+,)</translation>
+      <translation>インデントを減らす (CTRL+,)</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/richtexteditor/mrichtextedit.ui" line="331"/>
       <source>Decrease indentation</source>
-      <translation type="unfinished">Decrease indentation</translation>
+      <translation>インデントを減らす</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/richtexteditor/mrichtextedit.ui" line="347"/>
       <source>Increase indentation (CTRL+.)</source>
-      <translation type="unfinished">Increase indentation (CTRL+.)</translation>
+      <translation>インデントを増やす (CTRL+.)</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/richtexteditor/mrichtextedit.ui" line="350"/>
       <source>Increase indentation</source>
-      <translation type="unfinished">Increase indentation</translation>
+      <translation>インデントを増やす</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/richtexteditor/mrichtextedit.ui" line="385"/>
       <source>Text foreground color</source>
-      <translation type="unfinished">Text foreground color</translation>
+      <translation>文字の色</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/richtexteditor/mrichtextedit.ui" line="413"/>
       <source>Text background color</source>
-      <translation type="unfinished">Text background color</translation>
+      <translation>文字の背景色</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/richtexteditor/mrichtextedit.ui" line="429"/>
       <source>Font size</source>
-      <translation type="unfinished">Font size</translation>
+      <translation>フォントサイズ</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/richtexteditor/mrichtextedit.cpp" line="67"/>
@@ -4078,72 +4083,72 @@ Login tokens expiration: %2</translation>
     <message>
       <location filename="../src/librssguard/gui/richtexteditor/mrichtextedit.cpp" line="67"/>
       <source>Heading 1</source>
-      <translation type="unfinished">Heading 1</translation>
+      <translation>見出し 1</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/richtexteditor/mrichtextedit.cpp" line="67"/>
       <source>Heading 2</source>
-      <translation type="unfinished">Heading 2</translation>
+      <translation>見出し 2</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/richtexteditor/mrichtextedit.cpp" line="67"/>
       <source>Heading 3</source>
-      <translation type="unfinished">Heading 3</translation>
+      <translation>見出し 3</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/richtexteditor/mrichtextedit.cpp" line="67"/>
       <source>Heading 4</source>
-      <translation type="unfinished">Heading 4</translation>
+      <translation>見出し 4</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/richtexteditor/mrichtextedit.cpp" line="67"/>
       <source>Monospace</source>
-      <translation type="unfinished">Monospace</translation>
+      <translation>等幅</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/richtexteditor/mrichtextedit.cpp" line="118"/>
       <source>Remove character formatting</source>
-      <translation type="unfinished">Remove character formatting</translation>
+      <translation>文字の書式を削除</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/richtexteditor/mrichtextedit.cpp" line="123"/>
       <source>Remove all formatting</source>
-      <translation type="unfinished">Remove all formatting</translation>
+      <translation>すべての書式を削除</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/richtexteditor/mrichtextedit.cpp" line="127"/>
       <source>Edit document source</source>
-      <translation type="unfinished">Edit document source</translation>
+      <translation>ドキュメントソースを編集</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/richtexteditor/mrichtextedit.cpp" line="132"/>
       <source>Clear all content</source>
-      <translation type="unfinished">Clear all content</translation>
+      <translation>すべてのコンテンツを消去</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/richtexteditor/mrichtextedit.cpp" line="196"/>
       <source>Document source</source>
-      <translation type="unfinished">Document source</translation>
+      <translation>ドキュメント ソース</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/richtexteditor/mrichtextedit.cpp" line="319"/>
       <source>Create a link</source>
-      <translation type="unfinished">Create a link</translation>
+      <translation>リンクの作成</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/richtexteditor/mrichtextedit.cpp" line="319"/>
       <source>Link URL:</source>
-      <translation type="unfinished">Link URL:</translation>
+      <translation>リンクURL:</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/richtexteditor/mrichtextedit.cpp" line="637"/>
       <source>Select an image</source>
-      <translation type="unfinished">Select an image</translation>
+      <translation>画像を選択</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/richtexteditor/mrichtextedit.cpp" line="639"/>
       <source>JPEG (*.jpg);; GIF (*.gif);; PNG (*.png);; BMP (*.bmp);; All (*)</source>
-      <translation type="unfinished">JPEG (*.jpg);; GIF (*.gif);; PNG (*.png);; BMP (*.bmp);; All (*)</translation>
+      <translation>JPEG (*.jpg);; GIF (*.gif);; PNG (*.png);; BMP (*.bmp);; All (*)</translation>
     </message>
   </context>
   <context>
@@ -5236,7 +5241,7 @@ Feedly is a secure space where you can privately organize and research the topic
 Feedlyは、あなたにとって重要なトピックやトレンドを個人的に整理し、リサーチできる安全なスペースです。</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/database/databasequeries.cpp" line="2650"/>
+      <location filename="../src/librssguard/database/databasequeries.cpp" line="2657"/>
       <source>Cannot insert article filter, because current database cannot return last inserted row ID.</source>
       <translation type="unfinished">Cannot insert article filter, because current database cannot return last inserted row ID.</translation>
     </message>

@@ -242,8 +242,13 @@ version en cliquant sur cette notification.</translation>
       <source>Open article in web browser</source>
       <translation>Ouvrir l'article dans le navigateur web</translation>
     </message>
+    <message>
+      <location filename="../src/librssguard/gui/notifications/articlelistnotification.ui" line="141"/>
+      <source>Mark all articles as read</source>
+      <translation>Marquer tous les articles comme lus</translation>
+    </message>
     <message numerus="yes">
-      <location filename="../src/librssguard/gui/notifications/articlelistnotification.cpp" line="65"/>
+      <location filename="../src/librssguard/gui/notifications/articlelistnotification.cpp" line="72"/>
       <source>%n feeds fetched</source>
       <translation>
         <numerusform>%n flux obtenus</numerusform>
@@ -348,7 +353,7 @@ version en cliquant sur cette notification.</translation>
   <context>
     <name>BaseToastNotification</name>
     <message>
-      <location filename="../src/librssguard/gui/notifications/basetoastnotification.cpp" line="37"/>
+      <location filename="../src/librssguard/gui/notifications/basetoastnotification.cpp" line="41"/>
       <source>Close this notification</source>
       <translation>Fermer cette notification</translation>
     </message>
@@ -5281,7 +5286,7 @@ Feedly is a secure space where you can privately organize and research the topic
 Feedly est un éspace sécurisé où vous pouvez organiser et rechercher les sujets et tendances qui vous intéressent en privé.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/database/databasequeries.cpp" line="2650"/>
+      <location filename="../src/librssguard/database/databasequeries.cpp" line="2657"/>
       <source>Cannot insert article filter, because current database cannot return last inserted row ID.</source>
       <translation>Impossible d&apos;insérer le filtre d&apos;article, parce que la base de données actuelle ne peut pas retourner l&apos;identifiant du rang qui a été inséré en dernier.</translation>
     </message>

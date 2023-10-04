@@ -242,8 +242,13 @@ tej wersji, klikając na to powiadomienie.</translation>
       <source>Open article in web browser</source>
       <translation>Otwórz artykuł w przeglądarce internetowej</translation>
     </message>
+    <message>
+      <location filename="../src/librssguard/gui/notifications/articlelistnotification.ui" line="141"/>
+      <source>Mark all articles as read</source>
+      <translation type="unfinished">Mark all articles as read</translation>
+    </message>
     <message numerus="yes">
-      <location filename="../src/librssguard/gui/notifications/articlelistnotification.cpp" line="65"/>
+      <location filename="../src/librssguard/gui/notifications/articlelistnotification.cpp" line="72"/>
       <source>%n feeds fetched</source>
       <translation>
         <numerusform>Pobrano %n kanał</numerusform>
@@ -350,7 +355,7 @@ tej wersji, klikając na to powiadomienie.</translation>
   <context>
     <name>BaseToastNotification</name>
     <message>
-      <location filename="../src/librssguard/gui/notifications/basetoastnotification.cpp" line="37"/>
+      <location filename="../src/librssguard/gui/notifications/basetoastnotification.cpp" line="41"/>
       <source>Close this notification</source>
       <translation>Zamknij powiadomienie</translation>
     </message>
@@ -5292,7 +5297,7 @@ Feedly is a secure space where you can privately organize and research the topic
 Feedly to bezpieczna przestrzeń, w której możesz organizować i badać tematy i trendy, które są dla Ciebie ważne.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/database/databasequeries.cpp" line="2650"/>
+      <location filename="../src/librssguard/database/databasequeries.cpp" line="2657"/>
       <source>Cannot insert article filter, because current database cannot return last inserted row ID.</source>
       <translation>Nie można wstawić filtra artykułu, ponieważ bieżąca baza danych nie może zwrócić ID ostatniego wstawionego wiersza.</translation>
     </message>
