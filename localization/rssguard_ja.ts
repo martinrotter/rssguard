@@ -7279,9 +7279,7 @@ Post-processing script: %3</source>
 Also, you can post-process generated feed data with yet another script if you wish. These are advanced features and make sure to read the documentation before your use them.</source>
       <translation>URLをフィードのソースとして使用することも、カスタムスクリプトでフィードを作成することもできます。
 
-また、生成されたフィードデータを別のスクリプトで後処理することもできます。 これらは高度な機能であり、使用する前に必ずドキュメントを読んでください。
-
-また、生成されたフィードデータを別のスクリプトで後処理することもできます。これらは高度な機能であるため、使用する前に必ずドキュメントを読んでください。</translation>
+また、生成されたフィードデータを別のスクリプトで後処理することもできます。 これらは高度な機能であり、使用する前に必ずドキュメントを読んでください。</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/standard/gui/standardfeeddetails.ui" line="14"/>
