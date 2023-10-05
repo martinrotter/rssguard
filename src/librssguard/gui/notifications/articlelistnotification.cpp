@@ -7,6 +7,7 @@
 #include "miscellaneous/iconfactory.h"
 #include "network-web/webfactory.h"
 
+#include <QMouseEvent>
 #include <QTreeView>
 
 ArticleListNotification::ArticleListNotification(QWidget* parent)
@@ -15,6 +16,8 @@ ArticleListNotification::ArticleListNotification(QWidget* parent)
 
   setupHeading(m_ui.m_lblTitle);
   setupCloseButton(m_ui.m_btnClose);
+
+  m_ui.m_treeArticles->viewport()->installEventFilter(this);
 
   m_ui.m_btnNextPage->setIcon(qApp->icons()->fromTheme(QSL("arrow-right"), QSL("stock_right")));
   m_ui.m_btnPreviousPage->setIcon(qApp->icons()->fromTheme(QSL("arrow-left"), QSL("stock_left")));
@@ -112,6 +115,8 @@ void ArticleListNotification::openArticleInWebBrowser() {
   Message msg = selectedMessage();
 
   markAsRead(fd, {msg});
+  emit reloadMessageListRequested(false);
+
   qApp->web()->openUrlInExternalBrowser(msg.m_url);
 }
 
@@ -119,6 +124,8 @@ void ArticleListNotification::markAllRead() {
   for (Feed* fd : m_newMessages.keys()) {
     markAsRead(fd, m_newMessages.value(fd));
   }
+
+  emit reloadMessageListRequested(false);
 }
 
 void ArticleListNotification::markAsRead(Feed* feed, const QList<Message>& articles) {
@@ -156,4 +163,14 @@ Message ArticleListNotification::selectedMessage() const {
   else {
     throw ApplicationException(QSL("message cannot be loaded, wrong index"));
   }
+}
+
+bool ArticleListNotification::eventFilter(QObject* watched, QEvent* event) {
+  if (event->type() == QEvent::Type::MouseButtonRelease) {
+    if (dynamic_cast<QMouseEvent*>(event)->button() == Qt::MouseButton::MiddleButton) {
+      openArticleInArticleList();
+    }
+  }
+
+  return BaseToastNotification::eventFilter(watched, event);
 }

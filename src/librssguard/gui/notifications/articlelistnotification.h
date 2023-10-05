@@ -22,6 +22,10 @@ class ArticleListNotification : public BaseToastNotification {
 
   signals:
     void openingArticleInArticleListRequested(Feed* feed, const Message& msg);
+    void reloadMessageListRequested(bool mark_selected_messages_read);
+
+  public:
+    virtual bool eventFilter(QObject* watched, QEvent* event);
 
   private slots:
     void openArticleInArticleList();

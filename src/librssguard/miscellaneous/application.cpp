@@ -18,6 +18,7 @@
 #include "gui/dialogs/formmain.h"
 #include "gui/feedmessageviewer.h"
 #include "gui/messagebox.h"
+#include "gui/messagesview.h"
 #include "gui/notifications/toastnotificationsmanager.h"
 #include "gui/toolbars/statusbar.h"
 #include "gui/webviewers/qtextbrowser/textbrowserviewer.h"
@@ -156,6 +157,13 @@ Application::Application(const QString& id, int& argc, char** argv, const QStrin
   m_icons->setupSearchPaths();
   m_icons->loadCurrentIconTheme();
   m_skins->loadCurrentSkin();
+
+  if (m_toastNotifications != nullptr) {
+    connect(m_toastNotifications,
+            &ToastNotificationsManager::openingArticleInArticleListRequested,
+            this,
+            &Application::loadMessageToFeedAndArticleList);
+  }
 
   connect(this, &Application::aboutToQuit, this, &Application::onAboutToQuit);
   connect(this, &Application::commitDataRequest, this, &Application::onCommitData);
@@ -499,9 +507,9 @@ void Application::setMainForm(FormMain* main_form) {
 
   if (m_toastNotifications != nullptr) {
     connect(m_toastNotifications,
-            &ToastNotificationsManager::openingArticleInArticleListRequested,
-            m_mainForm->tabWidget()->feedMessageViewer(),
-            &FeedMessageViewer::loadMessageToFeedAndArticleList);
+            &ToastNotificationsManager::reloadMessageListRequested,
+            m_mainForm->tabWidget()->feedMessageViewer()->messagesView(),
+            &MessagesView::reloadSelections);
   }
 }
 
@@ -749,6 +757,11 @@ void Application::showGuiMessageCore(Notification::Event event,
   else {
     qDebugNN << LOGSEC_CORE << "Silencing GUI message:" << QUOTE_W_SPACE_DOT(msg.m_message);
   }
+}
+
+void Application::loadMessageToFeedAndArticleList(Feed* feed, const Message& message) {
+  m_mainForm->display();
+  m_mainForm->tabWidget()->feedMessageViewer()->loadMessageToFeedAndArticleList(feed, message);
 }
 
 void Application::showGuiMessage(Notification::Event event,

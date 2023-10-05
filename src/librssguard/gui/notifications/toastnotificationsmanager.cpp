@@ -166,6 +166,11 @@ void ToastNotificationsManager::initializeArticleListNotification() {
           &ArticleListNotification::openingArticleInArticleListRequested,
           this,
           &ToastNotificationsManager::openingArticleInArticleListRequested);
+
+  connect(m_articleListNotification,
+          &ArticleListNotification::reloadMessageListRequested,
+          this,
+          &ToastNotificationsManager::reloadMessageListRequested);
 }
 
 void ToastNotificationsManager::hookNotification(BaseToastNotification* notif) {

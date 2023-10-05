@@ -236,11 +236,7 @@ void FeedMessageViewer::loadMessageToFeedAndArticleList(Feed* feed, const Messag
 
   // TODO: expand properly
   m_feedsView->setExpanded(idx_map, true);
-
-  m_feedsView->selectionModel()->select(idx_map,
-                                        QItemSelectionModel::SelectionFlag::ClearAndSelect |
-                                          QItemSelectionModel::SelectionFlag::Rows);
-
+  m_feedsView->setCurrentIndex(idx_map);
   qApp->processEvents();
 
   auto idx_map_msg = m_messagesView->model()->indexFromMessage(message);
@@ -255,7 +251,6 @@ void FeedMessageViewer::loadMessageToFeedAndArticleList(Feed* feed, const Messag
     return;
   }
 
-  // m_messagesView->selectionModel()->select(idx_map_msg, QItemSelectionModel::SelectionFlag::Clear);
   m_messagesView->setCurrentIndex(idx_map_msg);
 }
 

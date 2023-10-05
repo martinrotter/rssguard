@@ -211,6 +211,7 @@ class RSSGUARD_DLLSPEC Application : public SingleApplication {
                             QWidget* parent = nullptr);
 
   private slots:
+    void loadMessageToFeedAndArticleList(Feed* feed, const Message& message);
     void fillCmdArgumentsParser(QCommandLineParser& parser);
 
     void onNodeJsPackageUpdateError(const QList<NodeJs::PackageMetadata>& pkgs, const QString& error);
