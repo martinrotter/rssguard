@@ -5010,7 +5010,7 @@ Login tokens expiration: %2</translation>
     <message>
       <location filename="../src/librssguard/services/owncloud/gui/owncloudaccountdetails.cpp" line="15"/>
       <source>Leaving this option on causes that updates of feeds will be probably much slower and may time-out often.</source>
-      <translation>このオプションをオンのままにすると、フィードの更新がかなり遅くなり、タイムアウトが頻繁に発生する可能性がある。</translation>
+      <translation>このオプションをオンのままにすると、フィードの更新がかなり遅くなり、タイムアウトが頻繁に発生する可能性があります。</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/owncloud/gui/owncloudaccountdetails.cpp" line="18"/>
@@ -7675,7 +7675,7 @@ Unread news: %2</source>
     <message>
       <location filename="../src/librssguard/services/tt-rss/gui/ttrssaccountdetails.cpp" line="25"/>
       <source>Leaving this option on causes that updates of feeds will be probably much slower and may time-out often.</source>
-      <translation>このオプションをオンのままにすると、フィードの更新がかなり遅くなり、タイムアウトが頻繁に発生する可能性がある。</translation>
+      <translation>このオプションをオンのままにすると、フィードの更新がかなり遅くなり、タイムアウトが頻繁に発生する可能性があります。</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/tt-rss/gui/ttrssaccountdetails.cpp" line="28"/>
