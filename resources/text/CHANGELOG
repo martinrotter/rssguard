@@ -1,3 +1,32 @@
+4.5.1
+-----
+
+!!! [Documentation](https://rssguard.readthedocs.io) was migrated to ReadTheDocs platfotm and some parts of it were updated !!!
+
+Added:
+* Completely new, custom "toast" notifications:
+    * Configurable position on screen.
+    * Can be displayed on secondary screens.
+    * Automatically adopts look of currently active RSS Guard skin.
+    * Can be close via close corner button or via `Esc` keyboard button.
+    * When hovered with mouse, notification stays shown, when not hovered, it is automatically hidden after 15 seconds.
+    * Displays list of newly fetched articles and offers some basic actions like marking as read, showing in article list or in web browser.
+    * These notifications do not need "tray icon" to be activated.
+    * Can be tweaked in `Notifications` section of settings.
+* `pdb` debugging file is now distributed with RSS Guard on Windows.
+* NPM packages updated to latest versions.
+
+Fixed:
+* AppData file now does not contain `<pre>` tags.
+* HTTP redirection cycles are now solved.
+* Web cache is now stored in correct directory on Linux. (#1098)
+* Fixed behavior of Google-based phrase suggestion in web browser navigation text box.
+* Many different features of RSS Guard got minor fixes, some parts of source code were refactored. Particularly, one nasty "semi-bug" was fixed which influenced speed of article switching in article list. It should now be faster. Much faster.
+* Article counting for "regex queries" is now disabled because this was very performance-hungry even with small number of regex queries, sadly.
+* Translations of some languages are now more complete.
+* Some unused source code was removed.
+* Some unused deps were removed.
+
 4.5.0
 -----
 
