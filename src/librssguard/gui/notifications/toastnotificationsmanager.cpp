@@ -87,10 +87,10 @@ void ToastNotificationsManager::showNotification(Notification::Event event,
     hookNotification(notif);
   }
 
-  auto* screen = moveToProperScreen(notif);
-
   // Insert new notification into free space.
   notif->show();
+
+  auto* screen = moveToProperScreen(notif);
 
   auto notif_new_pos = cornerForNewNotification(screen->availableGeometry());
 
