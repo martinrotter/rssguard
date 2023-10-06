@@ -257,6 +257,36 @@ function filterMessage() {
 }
 ```
 
+Have multiple separate conditions and assign article to proper label according to condition:
+```js
+// Conditions go here, condition is matched if title contains the condition phrase.
+var conditions = [
+  'notification',
+  'tired',
+  'upgrade'
+];
+
+// Names of your labels go here.
+// Count of names must be same as count of conditions above.
+var labels = [
+  'Notifications',
+  'Tired stuff',
+  'Upgrades'
+];
+
+function filterMessage() {
+  var target_idx = conditions.findIndex(i => msg.title.indexOf(i) >= 0);
+
+  if (target_idx >= 0) {
+    var target_lbl = msg.findLabelId(labels[target_idx]);
+
+    msg.assignLabel(target_lbl);
+  }
+
+  return MessageObject.Accept;
+}
+```
+
 Remove "ads" from messages received from Inoreader. Method simply removes `div` which contains the advertisement:
 ```js
 function filterMessage() {
