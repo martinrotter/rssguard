@@ -5010,7 +5010,7 @@ Login tokens expiration: %2</translation>
     <message>
       <location filename="../src/librssguard/services/owncloud/gui/owncloudaccountdetails.cpp" line="15"/>
       <source>Leaving this option on causes that updates of feeds will be probably much slower and may time-out often.</source>
-      <translation>このオプションをオンのままにすると、フィードの更新がかなり遅くなり、タイムアウトが頻繁に発生する可能性がある。</translation>
+      <translation>このオプションをオンのままにすると、フィードの更新がかなり遅くなり、タイムアウトが頻繁に発生する可能性があります。</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/owncloud/gui/owncloudaccountdetails.cpp" line="18"/>
@@ -7279,9 +7279,7 @@ Post-processing script: %3</source>
 Also, you can post-process generated feed data with yet another script if you wish. These are advanced features and make sure to read the documentation before your use them.</source>
       <translation>URLをフィードのソースとして使用することも、カスタムスクリプトでフィードを作成することもできます。
 
-また、生成されたフィードデータを別のスクリプトで後処理することもできます。 これらは高度な機能であり、使用する前に必ずドキュメントを読んでください。
-
-また、生成されたフィードデータを別のスクリプトで後処理することもできます。これらは高度な機能であるため、使用する前に必ずドキュメントを読んでください。</translation>
+また、生成されたフィードデータを別のスクリプトで後処理することもできます。これらは高度な機能であり、使用する前に必ずドキュメントを読んでください。</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/standard/gui/standardfeeddetails.ui" line="14"/>
@@ -7677,7 +7675,7 @@ Unread news: %2</source>
     <message>
       <location filename="../src/librssguard/services/tt-rss/gui/ttrssaccountdetails.cpp" line="25"/>
       <source>Leaving this option on causes that updates of feeds will be probably much slower and may time-out often.</source>
-      <translation>このオプションをオンのままにすると、フィードの更新がかなり遅くなり、タイムアウトが頻繁に発生する可能性がある。</translation>
+      <translation>このオプションをオンのままにすると、フィードの更新がかなり遅くなり、タイムアウトが頻繁に発生する可能性があります。</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/tt-rss/gui/ttrssaccountdetails.cpp" line="28"/>
