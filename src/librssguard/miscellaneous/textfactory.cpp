@@ -175,45 +175,166 @@ QString TextFactory::capitalizeFirstLetter(const QString& sts) {
   }
 }
 
-QStringList TextFactory::tokenizeProcessArguments(QStringView command) {
+enum class TokenState {
+  // We are not inside argument, we are between arguments.
+  Normal,
+
+  // We have detected escape "\" character coming from double-quoted argument.
+  EscapedFromDoubleQuotes,
+
+  // We have detected escape "\" character coming from spaced argument.
+  EscapedFromSpaced,
+
+  // We are inside argument which was separated by spaces.
+  InsideArgSpaced,
+
+  // We are inside argument.
+  InsideArgDoubleQuotes,
+
+  // We are inside argument, do not evaluate anything, just take it all
+  // as arw text.
+  InsideArgSingleQuotes
+};
+
+QStringList TextFactory::tokenizeProcessArguments(const QString& command) {
+  // Each argument containing spaces must be enclosed with single '' or double "" quotes.
+  // Some characters must be escaped with \ to keep their textual values as
+  // long as double-quoted argument is used.
+
+  if (command.isEmpty()) {
+    return {};
+  }
+
+  // We append space to end of command to make sure that
+  // ending space-separated argument is processed.
+  QString my_command = command + u' ';
+
+  TokenState state = TokenState::Normal;
   QStringList args;
-  QString tmp;
-  int quote_count = 0;
-  bool in_quote = false;
+  QString arg;
 
-  for (int i = 0; i < command.size(); ++i) {
-    if (command.at(i) == QL1C('"')) {
-      ++quote_count;
+  for (QChar chr : my_command) {
+    switch (state) {
+      case TokenState::Normal: {
+        switch (chr.unicode()) {
+          case u'"':
+            // We start double-quoted argument.
+            state = TokenState::InsideArgDoubleQuotes;
+            continue;
 
-      if (quote_count == 3) {
-        quote_count = 0;
-        tmp += command.at(i);
+          case u'\'':
+            // We start single-quoted argument.
+            state = TokenState::InsideArgSingleQuotes;
+            continue;
+
+          case u' ':
+            // Whitespace, just go on.
+            continue;
+
+          default:
+            // We found some actual text which marks
+            // beginning of argument, we assume spaced argument.
+            arg.append(chr);
+            state = TokenState::InsideArgSpaced;
+            continue;
+        }
+
+        break;
       }
 
-      continue;
-    }
-
-    if (quote_count) {
-      if (quote_count == 1) {
-        in_quote = !in_quote;
+      case TokenState::EscapedFromDoubleQuotes: {
+        // Previous character was "\".
+        arg.append(chr);
+        state = TokenState::InsideArgDoubleQuotes;
+        break;
       }
 
-      quote_count = 0;
-    }
-
-    if (!in_quote && command.at(i).isSpace()) {
-      if (!tmp.isEmpty()) {
-        args += tmp;
-        tmp.clear();
+      case TokenState::EscapedFromSpaced: {
+        // Previous character was "\".
+        arg.append(chr);
+        state = TokenState::InsideArgSpaced;
+        break;
       }
-    }
-    else {
-      tmp += command.at(i);
+
+      case TokenState::InsideArgSpaced: {
+        switch (chr.unicode()) {
+          case u'\\':
+            // We found escaped!
+            state = TokenState::EscapedFromSpaced;
+            continue;
+
+          case u' ':
+            // We need to end this argument.
+            args.append(arg);
+            arg.clear();
+            state = TokenState::Normal;
+            continue;
+
+          default:
+            arg.append(chr);
+            break;
+        }
+
+        break;
+      }
+
+      case TokenState::InsideArgDoubleQuotes: {
+        switch (chr.unicode()) {
+          case u'\\':
+            // We found escaped!
+            state = TokenState::EscapedFromDoubleQuotes;
+            continue;
+
+          case u'"':
+            // We need to end this argument.
+            args.append(arg);
+            arg.clear();
+            state = TokenState::Normal;
+            continue;
+
+          default:
+            arg.append(chr);
+            break;
+        }
+
+        break;
+      }
+
+      case TokenState::InsideArgSingleQuotes: {
+        switch (chr.unicode()) {
+          case u'\'':
+            // We need to end this argument.
+            args.append(arg);
+            arg.clear();
+            state = TokenState::Normal;
+            continue;
+
+          default:
+            arg.append(chr);
+            break;
+        }
+
+        break;
+      }
     }
   }
 
-  if (!tmp.isEmpty()) {
-    args += tmp;
+  switch (state) {
+    case TokenState::EscapedFromSpaced:
+    case TokenState::EscapedFromDoubleQuotes:
+      throw ApplicationException(QObject::tr("escape sequence not completed"));
+      break;
+
+    case TokenState::InsideArgDoubleQuotes:
+      throw ApplicationException(QObject::tr("closing \" is missing"));
+      break;
+
+    case TokenState::InsideArgSingleQuotes:
+      throw ApplicationException(QObject::tr("closing ' is missing"));
+      break;
+
+    default:
+      break;
   }
 
   return args;

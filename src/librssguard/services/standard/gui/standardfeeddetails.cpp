@@ -7,6 +7,7 @@
 #include "exceptions/networkexception.h"
 #include "exceptions/scriptexception.h"
 #include "miscellaneous/iconfactory.h"
+#include "miscellaneous/textfactory.h"
 #include "network-web/networkfactory.h"
 #include "services/abstract/category.h"
 #include "services/standard/definitions.h"
@@ -260,11 +261,12 @@ void StandardFeedDetails::onUrlChanged(const QString& new_url) {
     }
   }
   else if (sourceType() == StandardFeed::SourceType::Script) {
-    if (new_url.simplified().isEmpty()) {
-      m_ui.m_txtSource->setStatus(LineEditWithStatus::StatusType::Error, tr("The source is empty."));
+    try {
+      TextFactory::tokenizeProcessArguments(new_url);
+      m_ui.m_txtSource->setStatus(LineEditWithStatus::StatusType::Ok, tr("Source is ok."));
     }
-    else {
-      m_ui.m_txtSource->setStatus(LineEditWithStatus::StatusType::Ok, tr("The source is ok."));
+    catch (const ApplicationException& ex) {
+      m_ui.m_txtSource->setStatus(LineEditWithStatus::StatusType::Error, tr("Error: %1").arg(ex.message()));
     }
   }
   else {
@@ -273,11 +275,12 @@ void StandardFeedDetails::onUrlChanged(const QString& new_url) {
 }
 
 void StandardFeedDetails::onPostProcessScriptChanged(const QString& new_pp) {
-  if (QRegularExpression(QSL(SCRIPT_SOURCE_TYPE_REGEXP)).match(new_pp).hasMatch() || !new_pp.simplified().isEmpty()) {
+  try {
+    TextFactory::tokenizeProcessArguments(new_pp);
     m_ui.m_txtPostProcessScript->setStatus(LineEditWithStatus::StatusType::Ok, tr("Command is ok."));
   }
-  else {
-    m_ui.m_txtPostProcessScript->setStatus(LineEditWithStatus::StatusType::Ok, tr("Command is empty."));
+  catch (const ApplicationException& ex) {
+    m_ui.m_txtPostProcessScript->setStatus(LineEditWithStatus::StatusType::Error, tr("Error: %1").arg(ex.message()));
   }
 }
 

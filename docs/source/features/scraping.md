@@ -19,8 +19,24 @@ However, if you choose `Script` option, then you cannot provide URL of your feed
 
 Any errors in your script must be written to [**error output** (stderr)](https://en.wikipedia.org/wiki/Standard_streams#Standard_error_(stderr)).
 
-```{warning}
-As of RSS Guard 4.2.0, you cannot separate your arguments with `#`. If your argument contains spaces, then enclose it with DOUBLE quotes, for example `"my argument"`. DO NOT use SINGLE quotes to do that.
+:::{warning}
+If your path to executable contains backslashes as directory separators, make sure to escape them with another backslash. Quote each individual argument with double quotes `"arg"` or single quotes `'arg'` and separate all arguments with spaces. You have to escape some characters inside double-quoted argument, for example double quote itself like this `"arg with \"quoted\" part"`.
+
+Examples (one per line):
+
+```
+C:\\MyFolder\\My.exe "arg1" "arg2" "my \"quoted\" arg3" 'my "quoted" arg4'
+
+bash "%data%/scripts/download-feed.sh"
+
+%data%\jq.exe '{ version: "1.1", title: "Stars", items: map( . | .title=.full_name | .content_text=.description | .date_published=.pushed_at)}'
+```
+:::
+
+RSS Guard offers [placeholder](userdata.md#data-placeholder) `%data%` which is automatically replaced with full path to RSS Guard user data folder and you can use this placeholder anywhere in your script call line.
+
+```{attention}
+Working directory of process executing the script is set to point to RSS Guard [user data](userdata) folder.
 ```
 
 Format of post-process script execution line can be seen on picture below.
@@ -31,25 +47,7 @@ If everything goes well, script must return `0` as the process exit code, or a n
 
 Executable file must be always be specified, while arguments do not. Be very careful when quoting arguments. Tested examples of valid execution lines are:
 
-| Command       | Explanation   |
-| :---          | ---           |
-| `bash -c "curl 'https://github.com/martinrotter.atom'"`   | Download ATOM feed file using Bash and Curl. |
-| `Powershell Invoke-WebRequest "https://github.com/martinrotter.atom" \| Select-Object -ExpandProperty Content` | Download ATOM feed file with Powershell. |
-| `php tweeper.php -v 0 "https://twitter.com/NSACareers"`     | Scrape Twitter RSS feed file with [Tweeper](https://git.ao2.it/tweeper.git). Tweeper is the utility that produces RSS feed from Twitter and other similar social platforms. |
-
-```{note}
-The above examples are cross-platform. You can use exactly the same command on Windows, Linux or macOS, if your operating system is properly configured.
-```
-
-RSS Guard offers [placeholder](userdata.md#data-placeholder) `%data%` which is automatically replaced with full path to RSS Guard user data folder, allowing you to make your configuration fully portable. You can, therefore, use something like this as a source script line: `bash %data%/scripts/download-feed.sh`.
-
-```{attention}
-Working directory of process executing the script is set to point to RSS Guard [user data](userdata) folder.
-```
-
-There are [examples of website scrapers](https://github.com/martinrotter/rssguard/tree/master/resources/scripts/scrapers). Most of them are written in Python 3, so their execution line is similar to `python script.py`. Make sure to examine each script for more information on how to use it.
-
-----
+## Dataflow
 After your source feed data is downloaded either via URL or custom script, you can optionally post-process it with one more custom script, which will take **raw source data as input**. It must produce valid feed data to standard output while printing all error messages to error output.
 
 Here is little flowchart explaining where and when scripts are used:
@@ -76,6 +74,10 @@ Typical post-processing filter might do things like CSS formatting, localization
 
 It's completely up to you if you decide to only use script as `Source` of the script or separate your custom functionality between `Source` script and `Post-process` script. Sometimes you might need different `Source` scripts for different online sources and the same `Post-process` script and vice versa.
 
+## Example Scrapers
+There are [examples of website scrapers](https://github.com/martinrotter/rssguard/tree/master/resources/scripts/scrapers). Most of them are written in Python 3, so their execution line is similar to `python "script.py"`. Make sure to examine each script for more information on how to use it.
+
+## 3rd-party Tools
 Third-party tools for scraping made to work with RSS Guard:
 * [CSS2RSS](https://github.com/Owyn/CSS2RSS) - can be used to scrape websites with CSS selectors.
 * [RSSGuardHelper](https://github.com/pipiscrew/RSSGuardHelper) - another CSS selectors helper.
