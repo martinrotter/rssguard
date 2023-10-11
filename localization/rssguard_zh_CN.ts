@@ -11,7 +11,7 @@
     <message>
       <location filename="../src/librssguard/services/abstract/accountcheckmodel.cpp" line="186"/>
       <source>(feed)</source>
-      <translation>（饲料）</translation>
+      <translation>(Feed)</translation>
     </message>
   </context>
   <context>
@@ -456,7 +456,7 @@ version by clicking this popup notification.</source>
       <location filename="../src/librssguard/gui/reusable/discoverfeedsbutton.cpp" line="33"/>
       <source>Add one of %n feed(s)</source>
       <translation>
-        <numerusform>添加%n的饲料之一(s)</numerusform>
+        <numerusform>添加一个feed，共 %n 个feed(s)</numerusform>
       </translation>
     </message>
     <message>
@@ -792,7 +792,7 @@ Item ID: %5</translation>
       <location filename="../src/librssguard/miscellaneous/feedreader.cpp" line="362"/>
       <source>I will auto-download new articles for %n feed(s).</source>
       <translation>
-        <numerusform>我将自动下载新文章的%n饲料（s）。</numerusform>
+        <numerusform>我将自动下载 %n 个feed(s) 的新文章</numerusform>
       </translation>
     </message>
     <message>
@@ -1830,7 +1830,7 @@ QtWebEngine cache folder -&gt; &quot;%7&quot;</translation>
     <message>
       <location filename="../src/librssguard/services/abstract/gui/formfeeddetails.cpp" line="115"/>
       <source>Cannot save feed properties</source>
-      <translation>无法保存饲料属性</translation>
+      <translation>无法保存 feed 属性</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/abstract/gui/formfeeddetails.ui" line="24"/>
@@ -1845,7 +1845,7 @@ QtWebEngine cache folder -&gt; &quot;%7&quot;</translation>
     <message>
       <location filename="../src/librssguard/services/abstract/gui/formfeeddetails.ui" line="42"/>
       <source>Select the auto-download strategy for messages of this feed. Default auto-download strategy means that new messges of this feed will be downloaded in time intervals set in application settings.</source>
-      <translation>选择此饲料的消息的自动下载策略。默认的自动下载策略是指在应用程序设置中设定的时间间隔内下载该饲料的新消息。</translation>
+      <translation>选择此 feed 消息的自动下载策略。默认的自动下载策略是指a按照应用程序设置中设定的时间间隔内下载该feed的新消息。</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/abstract/gui/formfeeddetails.ui" line="58"/>
@@ -1870,7 +1870,7 @@ QtWebEngine cache folder -&gt; &quot;%7&quot;</translation>
     <message>
       <location filename="../src/librssguard/services/abstract/gui/formfeeddetails.ui" line="131"/>
       <source>Disable this feed</source>
-      <translation>禁用该饲料</translation>
+      <translation>禁用该feed</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/abstract/gui/formfeeddetails.ui" line="138"/>
@@ -1946,7 +1946,7 @@ QtWebEngine cache folder -&gt; &quot;%7&quot;</translation>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="105"/>
       <source>F&amp;eeds</source>
-      <translation>饲料</translation>
+      <translation>F&amp;eeds</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="109"/>
@@ -3176,7 +3176,7 @@ You have to restart manually.</source>
     <message>
       <location filename="../src/librssguard/services/tt-rss/gui/formttrssnote.cpp" line="20"/>
       <source>Share note to &quot;Published&quot; feed</source>
-      <translation>分享笔记到“已发布”的饲料</translation>
+      <translation>分享&quot;已发布的&quot;feed的备注</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/tt-rss/gui/formttrssnote.cpp" line="48"/>
@@ -4480,7 +4480,7 @@ Token 过期时间：%2</translation>
     <message>
       <location filename="../src/librssguard/core/messagesmodel.cpp" line="305"/>
       <source>ID of feed which this article belongs to.</source>
-      <translation>这篇文章所属的饲料ID。</translation>
+      <translation>这篇文章所属的feed的ID。</translation>
     </message>
     <message>
       <location filename="../src/librssguard/core/messagesmodel.cpp" line="305"/>
@@ -4530,7 +4530,7 @@ Token 过期时间：%2</translation>
     <message>
       <location filename="../src/librssguard/core/messagesmodel.cpp" line="309"/>
       <source>Name of feed of the article.</source>
-      <translation>文章的饲料名称。</translation>
+      <translation>这篇文章的feed的名称</translation>
     </message>
     <message>
       <location filename="../src/librssguard/core/messagesmodel.cpp" line="310"/>
@@ -6085,7 +6085,17 @@ Disadvantages:
  • application startup and shutdown can take little longer (max. 2 seconds).
 
 Authors of this application are NOT responsible for lost data.</source>
-      <translation>内存工作数据库的使用有几个优点和缺陷。优点： - 饲料/信息操作的速度更高(特别是在显示数千条信息时)， - 整个数据库存储在RAM中，因此你的硬盘可以休息更多。 缺点： - 如果应用程序崩溃，你在上一个会话中的变化就会丢失， - 应用程序的启动和关闭可能需要更长的时间(最多2秒)，本应用程序的作者不对丢失的数据负责。</translation>
+      <translation>使用内存工作数据库有几个优点和缺陷。在你开启本功能前请确保你已熟悉这些优缺点。
+
+优点： 
+ • 更快的 feed/消息操作速度 (尤其是有几千条消息要显示的时候)
+ • 整个数据库都保存在内存中，你的硬盘因而得以更多地休息
+
+缺点：
+ •如程序崩溃，你在上个会话中所做更改将全部丢失。
+ • 可能要花掉更长的时间来打开和关闭程序 (最多多2秒)
+
+本程序作者对数据丢失概不负责。</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsdatabase.ui" line="17"/>
@@ -6223,7 +6233,7 @@ Authors of this application are NOT responsible for lost data.</source>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="21"/>
       <source>Feed fetching</source>
-      <translation>获取饲料</translation>
+      <translation>获取 Feed</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="27"/>
@@ -6308,7 +6318,7 @@ Authors of this application are NOT responsible for lost data.</source>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="290"/>
       <source>Allow only basic keyboard shortcuts for feed/article list</source>
-      <translation>只允许用基本的键盘快捷键来操作饲料/文章列表</translation>
+      <translation>只允许用基本的键盘快捷键来操作feed/文章列表</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="297"/>
@@ -7008,7 +7018,7 @@ Post-processing script: %3</translation>
     <message>
       <location filename="../src/librssguard/services/standard/standardfeed.cpp" line="205"/>
       <source>Cannot save data for feed: %1</source>
-      <translation>无法保存饲料的数据。%1</translation>
+      <translation>无法保存以下feed的数据：%1</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/standard/standardfeed.cpp" line="294"/>
@@ -7023,22 +7033,22 @@ Post-processing script: %3</translation>
     <message>
       <location filename="../src/librssguard/services/standard/standardfeed.cpp" line="437"/>
       <source>XML feed file format unrecognized</source>
-      <translation>XML饲料文件格式未被识别</translation>
+      <translation>XML feed文件格式未被识别</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/standard/standardfeed.cpp" line="477"/>
       <source>Cannot move feed, detailed information was logged via debug log.</source>
-      <translation>不能移动饲料，详细信息通过调试日志记录下来。</translation>
+      <translation>不能移动feed，详细信息记录在调试日志中。</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/standard/standardfeed.cpp" line="204"/>
       <source>Cannot save feed data</source>
-      <translation>不能保存饲料数据</translation>
+      <translation>不能保存feed数据</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/standard/standardfeed.cpp" line="476"/>
       <source>Cannot move feed</source>
-      <translation>不能移动饲料</translation>
+      <translation>不能移动feed</translation>
     </message>
   </context>
   <context>
@@ -7202,7 +7212,7 @@ Post-processing script: %3</translation>
     <message>
       <location filename="../src/librssguard/services/standard/gui/standardfeeddetails.cpp" line="33"/>
       <source>Full feed source identifier which can be URL.</source>
-      <translation>完整的饲料来源标识符，可以是URL。</translation>
+      <translation>完整的feed来源标识符，可以是URL。</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/standard/gui/standardfeeddetails.cpp" line="34"/>
