@@ -29,7 +29,7 @@
     <message>
       <location filename="../src/librssguard/network-web/adblock/adblockdialog.cpp" line="65"/>
       <source>There is some error in AdBlock component and it cannot be enabled. Check error message below (or application debug log) for more information.</source>
-      <translation>AdBlock 组件中存在一些错误，无法启用。请查看下方错误信息（或应用程序调试日志）以了解更多信息。</translation>
+      <translation>AdBlock 组件中存在一些错误，因而无法启用它。请查看下方错误信息(或应用程序调试日志) 以了解更多信息。</translation>
     </message>
     <message>
       <location filename="../src/librssguard/network-web/adblock/adblockdialog.cpp" line="99"/>
@@ -432,7 +432,7 @@ version by clicking this popup notification.</source>
     <message>
       <location filename="../src/librssguard/database/databasefactory.cpp" line="59"/>
       <source>Connection to your database was not established with error: &apos;%1&apos;. Falling back to SQLite.</source>
-      <translation>无法与数据库建立连接，错误：&apos;%1&apos;。回退至 SQLite。</translation>
+      <translation>未与数据库建立连接，错误：&apos;%1&apos;。正回退至 SQLite。</translation>
     </message>
   </context>
   <context>
@@ -761,11 +761,11 @@ Active message filters: %2
 Status: %3
 Source: &lt;a href=&quot;%4&quot;&gt;%4&lt;/a&gt;
 Item ID: %5</source>
-      <translation type="unfinished">Auto-update status: %1
-Active message filters: %2
-Status: %3
-Source: &lt;a href=&quot;%4&quot;&gt;%4&lt;/a&gt;
-Item ID: %5</translation>
+      <translation>自动更新状态: %1
+活动消息过滤器: %2
+状态: %3
+来源: &lt;a href=&quot;%4&quot;&gt;%4&lt;/a&gt;
+项目 ID: %5</translation>
     </message>
   </context>
   <context>
@@ -943,7 +943,7 @@ Item ID: %5</translation>
     <message>
       <location filename="../src/librssguard/services/feedly/gui/feedlyaccountdetails.cpp" line="46"/>
       <source>Beware of downloading too many articles, because Feedly permanently caches ALL articles of the feed, so you might end up with thousands of articles which you will never read anyway.</source>
-      <translation>注意别下太多文章， Feedly 回永久缓存所有 feed 文章， 所以可能会有成千上万的文章，让你失去阅读欲望。</translation>
+      <translation>注意别下载太多文章， Feedly 会永久缓存feed的全部文章， 所以可能会有成千上万的文章，让你失去阅读欲望。</translation>
     </message>
   </context>
   <context>
@@ -1136,7 +1136,8 @@ Item ID: %5</translation>
       <location filename="../src/librssguard/gui/feedsview.cpp" line="290"/>
       <source>This item cannot be deleted, because it does not support it
 or this functionality is not implemented yet.</source>
-      <translation>不支持删除此项目，或有关功能暂未实现。</translation>
+      <translation>此项目无法被删除，因为程序尚不支持
+或有关功能暂未实现。</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/feedsview.cpp" line="828"/>
@@ -1211,13 +1212,13 @@ Skins base folder -&gt; &quot;%4&quot;
 Icon themes base folder -&gt; &quot;%8&quot;
 Node.js package folder -&gt; &quot;%6&quot;
 QtWebEngine cache folder -&gt; &quot;%7&quot;</source>
-      <translation type="unfinished">User data folder (&quot;%5&quot;) -&gt; &quot;%1&quot;
+      <translation>用户数据文件夹 (&quot;%5&quot;) -&gt; &quot;%1&quot;
 
-Settings file (%3) -&gt; &quot;%2&quot;
-Skins base folder -&gt; &quot;%4&quot;
-Icon themes base folder -&gt; &quot;%8&quot;
-Node.js package folder -&gt; &quot;%6&quot;
-QtWebEngine cache folder -&gt; &quot;%7&quot;</translation>
+设置文件 (%3) -&gt; &quot;%2&quot;
+皮肤主文件夹 -&gt; &quot;%4&quot;
+图标主题主文件夹 -&gt; &quot;%8&quot;
+Node.js 包文件夹 -&gt; &quot;%6&quot;
+QtWebEngine 缓存文件夹 -&gt; &quot;%7&quot;</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formabout.cpp" line="125"/>
@@ -1227,7 +1228,7 @@ QtWebEngine cache folder -&gt; &quot;%7&quot;</translation>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formabout.cpp" line="109"/>
       <source>&lt;b&gt;%8&lt;/b&gt;&lt;br&gt;&lt;b&gt;Version:&lt;/b&gt; %1 (built on %2/%3)&lt;br&gt;&lt;b&gt;Revision:&lt;/b&gt; %4&lt;br&gt;&lt;b&gt;Build date:&lt;/b&gt; %5&lt;br&gt;&lt;b&gt;Qt:&lt;/b&gt; %6 (compiled against %7)&lt;br&gt;</source>
-      <translation>&lt;b&gt;%8&lt;/b&gt;&lt;br&gt;&lt;b&gt;版本：&lt;/b&gt;%1（构建于 %2/%3）&lt;br&gt;&lt;b&gt;Git 版本：&lt;/b&gt;%4&lt;br&gt;&lt;b&gt;构建日期：&lt;/b&gt;%5&lt;br&gt;&lt;b&gt;Qt：&lt;/b&gt;%6（基于 %7 构建）&lt;br&gt;</translation>
+      <translation>&lt;b&gt;%8&lt;/b&gt;&lt;br&gt;&lt;b&gt;版本：&lt;/b&gt;%1(构建于 %2/%3)&lt;br&gt;&lt;b&gt;Git 版本：&lt;/b&gt;%4&lt;br&gt;&lt;b&gt;构建日期：&lt;/b&gt;%5&lt;br&gt;&lt;b&gt;Qt：&lt;/b&gt;%6(基于 %7 构建)&lt;br&gt;</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formabout.cpp" line="50"/>
@@ -1387,7 +1388,7 @@ QtWebEngine cache folder -&gt; &quot;%7&quot;</translation>
     <message>
       <location filename="../src/librssguard/services/abstract/gui/formaddeditprobe.cpp" line="17"/>
       <source>A regular expression (shortened as regex or regexp) is a sequence of characters that specifies a match pattern in text. See more &lt;a href=&quot;https://learn.microsoft.com/en-us/dotnet/standard/base-types/regular-expression-language-quick-reference&quot;&gt;info&lt;/a&gt;.</source>
-      <translation type="unfinished">A regular expression (shortened as regex or regexp) is a sequence of characters that specifies a match pattern in text. See more &lt;a href=&quot;https://learn.microsoft.com/en-us/dotnet/standard/base-types/regular-expression-language-quick-reference&quot;&gt;info&lt;/a&gt;.</translation>
+      <translation>正则表达式 (英文缩写为 regex 或 regexp) 是一个字符序列，指定了文本中的匹配模式。 查看更多 &lt;a href=&quot;https://learn.microsoft.com/en-us/dotnet/standard/base-types/regular-expression-language-quick-reference&quot;&gt; 信息 &lt;/a&gt;</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/abstract/gui/formaddeditprobe.cpp" line="25"/>
@@ -2161,7 +2162,7 @@ QtWebEngine cache folder -&gt; &quot;%7&quot;</translation>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="440"/>
       <source>Displays all messages from selected item in a new &quot;newspaper mode&quot; tab. Note that messages are not set as read automatically.</source>
-      <translation>在新的“报纸模式”中显示所选项目里的所有消息，注意消息不会自动设为已读。</translation>
+      <translation>在新的&quot;报纸模式&quot;选项卡中显示所选项目的所有消息，注意消息不会自动设为已读。</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="451"/>
@@ -2661,14 +2662,14 @@ QtWebEngine cache folder -&gt; &quot;%7&quot;</translation>
   Created on = &apos;%6&apos;
   Contents = &apos;%7&apos;
   RAW contents = &apos;%8&apos;</source>
-      <translation type="unfinished">Output (modified) article is:
-  Title = &apos;%1&apos;
+      <translation>输出(修改过的) 文章是：
+  标题 = &apos;%1&apos;
   URL = &apos;%2&apos;
-  Author = &apos;%3&apos;
-  Is read/important = &apos;%4/%5&apos;
-  Created on = &apos;%6&apos;
-  Contents = &apos;%7&apos;
-  RAW contents = &apos;%8&apos;</translation>
+  作者 = &apos;%3&apos;
+  是否已读/重要= &apos;%4/%5&apos;
+  创建于 = &apos;%6&apos;
+  内容= &apos;%7&apos;
+  原始内容 = &apos;%8&apos;</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.cpp" line="340"/>
@@ -3421,7 +3422,7 @@ You can install it now.</source>
     <message>
       <location filename="../src/librssguard/services/gmail/gui/gmailaccountdetails.cpp" line="16"/>
       <source>There are some preconfigured OAuth tokens so you do not have to fill in your client ID/secret, but it is strongly recommended to obtain your own as it preconfigured tokens have limited global usage quota. If you wish to use preconfigured tokens, simply leave those fields empty and make sure to leave default value of redirect URL.</source>
-      <translation>有一些预配置的OAuth令牌，所以你不必填写你的账户ID/密码，但强烈建议你获得自己的，因为预配置的令牌有有限的全球使用配额。如果你想使用预配置的令牌，只需将这些字段留空，并确保保留重定向URL的默认值。</translation>
+      <translation>有一些预配置的OAuth令牌，所以你不必填写你的账户ID/密码，但强烈建议你获得自己的令牌，因为预配置的令牌的全局使用配额有限制。如果你想使用预配置的令牌，只需将这些字段留空，并确保保留重定向URL的默认值。</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/gmail/gui/gmailaccountdetails.cpp" line="23"/>
@@ -3669,7 +3670,7 @@ Token 过期时间：%2</translation>
     <message>
       <location filename="../src/librssguard/services/greader/gui/greaderaccountdetails.cpp" line="45"/>
       <source>Some feeds might contain tens of thousands of articles and downloading all of them could take great amount of time, so sometimes it is good to download only certain amount of newest messages.</source>
-      <translation>一些Feeds可能包含数以万计的文章，下载所有的文章可能需要大量的时间，所以有时只下载一定数量的最新信息是最合适的。</translation>
+      <translation>一些Feeds可能包含数以万计的文章，下载所有的文章可能需要大量的时间，所以有时只下载一定数量的最新信息比较好。</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/greader/gui/greaderaccountdetails.cpp" line="51"/>
@@ -3679,7 +3680,7 @@ Token 过期时间：%2</translation>
     <message>
       <location filename="../src/librssguard/services/greader/gui/greaderaccountdetails.cpp" line="60"/>
       <source>There are some preconfigured OAuth tokens so you do not have to fill in your client ID/secret, but it is strongly recommended to obtain your own as preconfigured tokens have limited global usage quota. If you wish to use preconfigured tokens, simply leave all above fields to their default values even if they are empty.</source>
-      <translation>有一些预配置的OAuth令牌，所以你不必填写你的客户ID/secret，但强烈建议你获得自己的，因为预配置的令牌有有限的全球使用配额。如果你想使用预配置的令牌，只需将上述所有字段保留为默认值，即使它们是空的。</translation>
+      <translation>有一些预配置的OAuth令牌，所以你不必填写你的客户ID/secret，但强烈建议你获得自己的令牌，因为预配置的令牌的全局使用配额有限。如果你想使用预配置的令牌，只需将上述所有字段保留为默认值，即使它们是空的。</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/greader/gui/greaderaccountdetails.cpp" line="67"/>
@@ -5006,7 +5007,7 @@ Token 过期时间：%2</translation>
     <message>
       <location filename="../src/librssguard/services/owncloud/gui/owncloudaccountdetails.cpp" line="15"/>
       <source>Leaving this option on causes that updates of feeds will be probably much slower and may time-out often.</source>
-      <translation>打开这个选项会导致Feeds的更新可能会慢得多，并可能经常超时。</translation>
+      <translation>打开这个选项可能会导致Feeds的更新变慢很多，并可能经常超时。</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/owncloud/gui/owncloudaccountdetails.cpp" line="18"/>
@@ -5232,9 +5233,9 @@ Tiny Tiny RSS是一个开源的基于网络的新闻源（RSS/Atom）阅读器�
       <source>Keep up with the topics and trends you care about, without the overwhelm.
 
 Feedly is a secure space where you can privately organize and research the topics and trends that matter to you.</source>
-      <translation>跟上您所关心的话题和趋势，而不会被淹没。
+      <translation>与您所关心的话题和趋势保持同步，而不被过量消息淹没。
 
-Feedly是一个安全的空间，你可以私下组织和研究与你有关的话题和趋势。</translation>
+Feedly是一个安全的空间，你可以私密组织和研究对你而言重要的话题和趋势。</translation>
     </message>
     <message>
       <location filename="../src/librssguard/database/databasequeries.cpp" line="2657"/>
@@ -6000,7 +6001,7 @@ File filter for external e-mail selection dialog.</extracomment>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsdatabase.cpp" line="15"/>
       <source>Note that speed of used MySQL server and latency of used connection medium HEAVILY influences the final performance of this application. Using slow database connections leads to bad performance when browsing feeds or messages.</source>
-      <translation>注意，MySQL 服务器的性能和网络连接的延迟将严重影响应用的最终性能，性能或连接不佳的数据库将拖慢浏览Feeds 或消息时的速度。</translation>
+      <translation>注意，MySQL 服务器的性能和网络连接介质的延迟将严重影响本应用的最终性能，性能或连接不佳的数据库将拖慢浏览Feeds或消息时的速度。</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsdatabase.cpp" line="114"/>
@@ -6085,7 +6086,7 @@ Disadvantages:
  • application startup and shutdown can take little longer (max. 2 seconds).
 
 Authors of this application are NOT responsible for lost data.</source>
-      <translation>使用内存工作数据库有几个优点和缺陷。在你开启本功能前请确保你已熟悉这些优缺点。
+      <translation>使用内存工作数据库有几处优点和缺陷。在你开启本功能前请确保你已熟悉这些优缺点。
 
 优点： 
  • 更快的 feed/消息操作速度 (尤其是有几千条消息要显示的时候)
@@ -6196,12 +6197,12 @@ Authors of this application are NOT responsible for lost data.</source>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.cpp" line="31"/>
       <source>Enter format for count of articles displayed next to each feed/category in feed list. Use &quot;%all&quot; and &quot;%unread&quot; strings which are placeholders for the actual count of all (or unread) articles.</source>
-      <translation>输入新闻源清单中每个新闻源/分类旁显示的消息数量的格式。 &quot;%all&quot; 和 &quot;%unread&quot; 分别代表所有消息数（或未读消息数）。</translation>
+      <translation>输入新闻源清单中每个新闻源/分类旁显示的文章数量的格式。 &quot;%all&quot; 和 &quot;%unread&quot; 分别代表所有文章(或未读文章) 实际数目的占位符。</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.cpp" line="35"/>
       <source>Note that enabling this might have drastic consequences on performance of article list with big number of articles.</source>
-      <translation>请注意，如果启用这个功能，可能会对有大量文章的文章列表的性能产生巨大的影响。</translation>
+      <translation>请注意，启用这个功能，可能会对有大量文章的文章列表的性能产生巨大的影响。</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.cpp" line="55"/>
@@ -6258,7 +6259,7 @@ Authors of this application are NOT responsible for lost data.</source>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="109"/>
       <source>Connection timeout is time interval which is reserved for downloading new messages for the feed. If this time interval elapses, then download process is aborted.</source>
-      <translation>为新消息下载预留的时间间隔，如果超出这个时间，下载将被中断。</translation>
+      <translation>连接超时是为新消息下载预留的时间间隔，如果超出这个时间，下载将被中断。</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="112"/>
@@ -6715,7 +6716,7 @@ Description: %3</source>
     <message>
       <location filename="../src/librssguard/gui/settings/settingslocalization.cpp" line="130"/>
       <source>The translation &apos;%1&apos; is incomplete and anyone able to help with translating %2 is greatly welcomed.</source>
-      <translation type="unfinished">The translation &apos;%1&apos; is incomplete and anyone able to help with translating %2 is greatly welcomed.</translation>
+      <translation>翻译 &apos;%1&apos; 不完整，我们热烈任何能够帮助翻译 %2 的人。</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingslocalization.cpp" line="132"/>
@@ -6744,11 +6745,11 @@ Description: %3</source>
 Note that usually all required Node.js tools should be available via your &quot;PATH&quot; environment variable, so you do not have to specify full paths.
 
 Also, relaunch &quot;Settings&quot; dialog after you install Node.js.</source>
-      <translation>Node.js是异步事件驱动的JavaScript运行时间，旨在建立可扩展的网络应用。
+      <translation>Node.js是异步事件驱动的JavaScript运行时，旨在构建可扩展的网络应用。
 
-%1集成了Node.js，带来了一些现代的功能，如Adblock。
+%1集成了Node.js，目的是带来一些现代的功能，如Adblock。
 
-注意，通常所有需要的Node.js工具都可以通过你的 &quot;PATH &quot;环境变量获得，所以你不需要指定完整的路径。
+请注意，通常所有需要的Node.js工具都可应该可以通过你的 &quot;PATH &quot;环境变量获得，所以你不需要指定完整的路径。
 
 另外，在安装Node.js后，重新启动 &quot;设置 &quot;对话框。</translation>
     </message>
@@ -6780,7 +6781,7 @@ Also, relaunch &quot;Settings&quot; dialog after you install Node.js.</source>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsnodejs.cpp" line="28"/>
       <source>%1 automatically installs some Node.js packages so that you do not have to. %1 does not use global package folder because that requires administrator rights, therefore by default it uses subfolder placed in your &quot;user data&quot; folder.</source>
-      <translation>%1会自动安装一些Node.js包，这样你就不必安装了。％1不使用全局软件包文件夹，因为那需要管理员权限，因此默认情况下，它使用放在你的 &quot;用户数据 &quot;文件夹中的子文件夹。</translation>
+      <translation>%1会自动安装一些Node.js包，这样你就不必安装了。%1不使用全局软件包文件夹，因为那需要管理员权限，因此默认情况下，它使用放在你的 &quot;用户数据 &quot;文件夹中的子文件夹。</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsnodejs.ui" line="14"/>
@@ -6855,7 +6856,7 @@ Also, relaunch &quot;Settings&quot; dialog after you install Node.js.</source>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsnotifications.cpp" line="18"/>
       <source>There are some built-in notification sounds. Just start typing &quot;:&quot; and they will show up.</source>
-      <translation type="unfinished">There are some built-in notification sounds. Just start typing &quot;:&quot; and they will show up.</translation>
+      <translation>有一些内置的通知声音。只需输入 &quot;：&quot; 这些声音名称就会显示出来。</translation>
     </message>
   </context>
   <context>
@@ -7161,7 +7162,7 @@ Post-processing script: %3</translation>
     <message>
       <location filename="../src/librssguard/services/standard/gui/standardfeeddetails.cpp" line="255"/>
       <source>The URL does not meet standard pattern. Does your URL start with &quot;http://&quot; or &quot;https://&quot; prefix.</source>
-      <translation>URL 不符合标准，请确认是否以 &quot;http://&quot; 或 &quot;https://&quot; 开头。</translation>
+      <translation>URL 不符合标准模式，请确认其是否以 &quot;http://&quot; 或 &quot;https://&quot; 开头。</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/standard/gui/standardfeeddetails.cpp" line="259"/>
@@ -7273,7 +7274,9 @@ Post-processing script: %3</translation>
       <source>You can use URL as a source of your feed or you can produce your feed with custom script.
 
 Also, you can post-process generated feed data with yet another script if you wish. These are advanced features and make sure to read the documentation before your use them.</source>
-      <translation>你可以使用URL作为你的feed的来源，或者你可以用自定义的脚本生成你的feed。这些都是高级功能，在你使用它们之前，请确保阅读文档。</translation>
+      <translation>你可以使用URL作为你的feed的来源，或者你可以用自定义的脚本生成你的feed。
+
+你也可以用另一个你希望的脚本对生成的feed数据进行后期处理。这些是高级功能，在你使用它们之前，请确保阅读文档。</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/standard/gui/standardfeeddetails.ui" line="14"/>
@@ -7664,12 +7667,12 @@ Unread news: %2</source>
     <message>
       <location filename="../src/librssguard/services/tt-rss/gui/ttrssaccountdetails.cpp" line="15"/>
       <source>If you select intelligent synchronization, then only not-yet-fetched or updated articles are downloaded. Network usage is greatly reduced and overall synchronization speed is greatly improved, but first feed fetching could be slow anyway if your feed contains huge number of articles.&lt;br/&gt;&lt;br/&gt;Also, make sure to install &lt;a href=&quot;https://www.google.com&quot;&gt;api_newsplus&lt;/a&gt; TT-RSS plugin to your server instance.</source>
-      <translation type="unfinished">If you select intelligent synchronization, then only not-yet-fetched or updated articles are downloaded. Network usage is greatly reduced and overall synchronization speed is greatly improved, but first feed fetching could be slow anyway if your feed contains huge number of articles.&lt;br/&gt;&lt;br/&gt;Also, make sure to install &lt;a href=&quot;https://www.google.com&quot;&gt;api_newsplus&lt;/a&gt; TT-RSS plugin to your server instance.</translation>
+      <translation>如果您选择智能同步，则只下载尚未获取或已更新的文章。 网络使用大大降低，整体同步速度也大大提高。 但如果你的新闻源包含大量的文章，那么最初的新闻源获取仍然可能很慢。&lt;br/&gt;&lt;br/&gt; 另外，请务必安装 &lt;a href=&quot;https://www.google.com&quot;&gt;api_nespulse&lt;/a&gt; TT-RSS插件到您的服务器实例。</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/tt-rss/gui/ttrssaccountdetails.cpp" line="25"/>
       <source>Leaving this option on causes that updates of feeds will be probably much slower and may time-out often.</source>
-      <translation>启用此选项可能会使Feeds的更新变慢或经常超时。</translation>
+      <translation>启用此选项可能大幅减慢Feeds的更新或造成其经常超时。</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/tt-rss/gui/ttrssaccountdetails.cpp" line="28"/>
@@ -7898,7 +7901,7 @@ Unread news: %2</source>
     <message>
       <location filename="../src/librssguard/services/tt-rss/gui/ttrssfeeddetails.cpp" line="27"/>
       <source>The URL does not meet standard pattern. Does your URL start with &quot;http://&quot; or &quot;https://&quot; prefix.</source>
-      <translation>URL 不符合标准，请确认是否以 &quot;http://&quot; 或 &quot;https://&quot; 开头。</translation>
+      <translation>URL 不符合标准模式，请确认其是否以 &quot;http://&quot; 或 &quot;https://&quot; 开头。</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/tt-rss/gui/ttrssfeeddetails.cpp" line="31"/>
