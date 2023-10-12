@@ -161,7 +161,7 @@ Error: %1</source>
     <message>
       <location filename="../src/librssguard/miscellaneous/application.cpp" line="1149"/>
       <source>Feed cannot be added because there is no active account which can add feeds.</source>
-      <translation>无法添加 Feed，因为没有可用帐号。</translation>
+      <translation>无法添加 Feed，因为没有可用可以添加 Feed 的活跃账户。</translation>
     </message>
     <message>
       <location filename="../src/librssguard/miscellaneous/application.cpp" line="1307"/>
@@ -531,8 +531,8 @@ version by clicking this popup notification.</source>
       <location filename="../src/librssguard/network-web/downloadmanager.cpp" line="443"/>
       <source>File &apos;%1&apos; is downloaded.
 Click here to open parent directory.</source>
-      <translation type="unfinished">File &apos;%1&apos; is downloaded.
-Click here to open parent directory.</translation>
+      <translation>文件 &apos;%1&apos; 已下载。
+点击这里打开父目录。</translation>
     </message>
     <message>
       <location filename="../src/librssguard/network-web/downloadmanager.cpp" line="454"/>
@@ -665,7 +665,7 @@ Click here to open parent directory.</translation>
     <message>
       <location filename="../src/librssguard/services/gmail/gui/emailpreviewer.cpp" line="120"/>
       <source>Attachment cannot be downloaded because some general error happened.</source>
-      <translation>因为发生错误，导致无法下载附件，</translation>
+      <translation>发生了一些一般性错误，导致无法下载附件，</translation>
     </message>
   </context>
   <context>
@@ -701,7 +701,7 @@ Click here to open parent directory.</translation>
     <message>
       <location filename="../src/librssguard/services/abstract/feed.cpp" line="275"/>
       <source>uses global settings, but global auto-fetching of articles is disabled</source>
-      <translation type="unfinished">uses global settings, but global auto-fetching of articles is disabled</translation>
+      <translation>使用全局设置，但已禁用全局自动获取文章</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/abstract/feed.cpp" line="299"/>
@@ -736,7 +736,7 @@ Click here to open parent directory.</translation>
       <source>uses specific settings (%n minute(s) to next auto-fetching of new articles)</source>
       <extracomment>Describes feed auto-update status.</extracomment>
       <translation>
-        <numerusform>使用全局设置 (%n 分钟(s)后自动获取文章)</numerusform>
+        <numerusform>使用特定设置 (%n 分钟(s) 后自动获取文章)</numerusform>
       </translation>
     </message>
     <message>
@@ -1036,7 +1036,7 @@ Item ID: %5</source>
     <message>
       <location filename="../src/librssguard/core/feedsproxymodel.cpp" line="231"/>
       <source>You can&apos;t transfer dragged item into different account, this is not supported.</source>
-      <translation>被拖拽的项目不支持跨账户移动。</translation>
+      <translation>被拖拽的项目&apos;不支持跨账户移动。</translation>
     </message>
   </context>
   <context>
@@ -1871,7 +1871,7 @@ QtWebEngine 缓存文件夹 -&gt; &quot;%7&quot;</translation>
     <message>
       <location filename="../src/librssguard/services/abstract/gui/formfeeddetails.ui" line="131"/>
       <source>Disable this feed</source>
-      <translation>禁用该feed</translation>
+      <translation>禁用该 feed</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/abstract/gui/formfeeddetails.ui" line="138"/>
@@ -2052,7 +2052,7 @@ QtWebEngine 缓存文件夹 -&gt; &quot;%7&quot;</translation>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="316"/>
       <source>Mark articles &amp;read</source>
-      <translation>标记文章&amp;阅读</translation>
+      <translation>标记文章为&amp;已读</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="319"/>
@@ -2082,7 +2082,7 @@ QtWebEngine 缓存文件夹 -&gt; &quot;%7&quot;</translation>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="349"/>
       <source>Mark selected item &amp;read</source>
-      <translation>标记所选项目&amp;阅读</translation>
+      <translation>标记所选项目&amp;已读</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="352"/>
@@ -2615,7 +2615,7 @@ QtWebEngine 缓存文件夹 -&gt; &quot;%7&quot;</translation>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.cpp" line="632"/>
       <source>Script was not beautified, is &apos;clang-format&apos; installed?</source>
-      <translation>脚本未被美化，是否安装了&apos;clang-格式&apos;？</translation>
+      <translation>脚本未被美化，是否安装了&apos;clang-format&apos;？</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.cpp" line="247"/>
@@ -2826,12 +2826,12 @@ QtWebEngine 缓存文件夹 -&gt; &quot;%7&quot;</translation>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formrestoredatabasesettings.cpp" line="55"/>
       <source>You need to restart application for restoration process to finish.</source>
-      <translation>你需要重启应用程序以完成恢复。</translation>
+      <translation>你需要重启应用程序以完成恢复过程。</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formrestoredatabasesettings.cpp" line="60"/>
       <source>Database and/or settings were not copied to restoration directory successully.</source>
-      <translation>数据库或设置未能成功复制到恢复目录。</translation>
+      <translation>数据库和/或设置未能成功复制到恢复目录。</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formrestoredatabasesettings.cpp" line="79"/>
@@ -3037,7 +3037,7 @@ You have to restart manually.</source>
       <location filename="../src/librssguard/services/standard/gui/formstandardimportexport.cpp" line="131"/>
       <location filename="../src/librssguard/services/standard/gui/formstandardimportexport.cpp" line="132"/>
       <source>Some feeds were not loaded properly. Check log for more information.</source>
-      <translation type="unfinished">Some feeds were not loaded properly. Check log for more information.</translation>
+      <translation>有些订阅未正确加载。请检查日志以获取更多信息。</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/standard/gui/formstandardimportexport.cpp" line="273"/>
@@ -3875,7 +3875,7 @@ Token 过期时间：%2</translation>
     <message>
       <location filename="../src/librssguard/services/abstract/importantnode.cpp" line="15"/>
       <source>Important articles</source>
-      <translation>重要条款</translation>
+      <translation>重要文章</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/abstract/importantnode.cpp" line="16"/>
@@ -4145,7 +4145,7 @@ Token 过期时间：%2</translation>
     <message>
       <location filename="../src/librssguard/gui/richtexteditor/mrichtextedit.cpp" line="639"/>
       <source>JPEG (*.jpg);; GIF (*.gif);; PNG (*.png);; BMP (*.bmp);; All (*)</source>
-      <translation type="unfinished">JPEG (*.jpg);; GIF (*.gif);; PNG (*.png);; BMP (*.bmp);; All (*)</translation>
+      <translation>JPEG (*.jpg);; GIF (*.gif);; PNG (*.png);; BMP (*.bmp);; All (*)</translation>
     </message>
   </context>
   <context>
@@ -4158,7 +4158,7 @@ Token 过期时间：%2</translation>
     <message>
       <location filename="../src/librssguard/database/mariadbdriver.cpp" line="78"/>
       <source>Selected database does not exist (yet). It will be created. It&apos;s okay.</source>
-      <translation>所选数据库（尚）不存在，即将创建此数据库。</translation>
+      <translation>所选数据库(尚)不存在，即将创建此数据库。别&apos;担心。</translation>
     </message>
     <message>
       <location filename="../src/librssguard/database/mariadbdriver.cpp" line="83"/>
@@ -4416,7 +4416,7 @@ Token 过期时间：%2</translation>
     <message>
       <location filename="../src/librssguard/core/messagesmodel.cpp" line="201"/>
       <source>Loading of articles failed, maybe messages could not be downloaded.</source>
-      <translation>文章加载失败，可能是信息无法下载。</translation>
+      <translation>文章加载失败，可能是消息无法下载。</translation>
     </message>
     <message>
       <location filename="../src/librssguard/core/messagesmodel.cpp" line="120"/>
@@ -5314,7 +5314,7 @@ List of supported readers:</source>
     <message>
       <location filename="../src/librssguard/services/standard/standardserviceentrypoint.cpp" line="16"/>
       <source>This service offers integration with standard online RSS/RDF/ATOM/JSON feeds and podcasts.</source>
-      <translation>这项服务提供与标准在线RSS/RDF/ATOM/JSON Feeds馈送和播客的整合。</translation>
+      <translation>这项服务提供与标准在线RSS/RDF/ATOM/JSON Feeds和播客的整合。</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/reddit/redditentrypoint.cpp" line="35"/>
@@ -5778,7 +5778,7 @@ Number of categories: %2</translation>
     <message>
       <location filename="../src/librssguard/services/abstract/serviceroot.cpp" line="554"/>
       <source>Feeds &amp; categories for account &apos;%1&apos; were not fetched, error: %2</source>
-      <translation>帐户&apos;%1&apos;的Feeds和类别没有被获取，错误：%2</translation>
+      <translation>账户&apos;%1&apos; 的Feeds和类别没有被获取，错误：%2</translation>
     </message>
   </context>
   <context>
@@ -5914,7 +5914,7 @@ File filter for external e-mail selection dialog.</extracomment>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsbrowsermail.cpp" line="25"/>
       <source>Note that &quot;%1&quot; (without quotation marks) is placeholder for URL of selected message.</source>
-      <translation>注意，&quot;%1&quot;（不包括双引号）代表所选消息的 URL。</translation>
+      <translation>注意，&quot;%1&quot;(不包括双引号) 代表所选消息的 URL。</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsbrowsermail.ui" line="187"/>
@@ -5993,7 +5993,7 @@ File filter for external e-mail selection dialog.</extracomment>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsbrowsermail.h" line="46"/>
       <source>Network &amp; web &amp; tools</source>
-      <translation>网络&amp;网络&amp;工具</translation>
+      <translation>网络&amp;web&amp;工具</translation>
     </message>
   </context>
   <context>
@@ -6229,7 +6229,7 @@ Authors of this application are NOT responsible for lost data.</source>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.cpp" line="363"/>
       <source>Your PC needs to be restarted to make some of enabled features fully working.</source>
-      <translation type="unfinished">Your PC needs to be restarted to make some of enabled features fully working.</translation>
+      <translation>您的 PC 需要重新启动才能使一些已启用的功能完全正常工作。</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="21"/>
@@ -6706,7 +6706,7 @@ Description: %3</source>
     <message>
       <location filename="../src/librssguard/gui/settings/settingslocalization.cpp" line="26"/>
       <source>Help us to improve %1 &lt;a href=&quot;%2&quot;&gt;translations&lt;/a&gt;.</source>
-      <translation type="unfinished">Help us to improve %1 &lt;a href=&quot;%2&quot;&gt;translations&lt;/a&gt;.</translation>
+      <translation>帮助我们改进 %1 &lt;a href=&quot;%2&quot;&gt;翻译&lt;/a&gt;.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingslocalization.cpp" line="129"/>
@@ -6939,7 +6939,7 @@ Also, relaunch &quot;Settings&quot; dialog after you install Node.js.</source>
     <message>
       <location filename="../src/librssguard/miscellaneous/skinfactory.cpp" line="222"/>
       <source>Blocked URL: &quot;%1&quot;&lt;br/&gt;Used filter: &quot;%2&quot;</source>
-      <translation>被阻止的URL。&quot;%1 &quot;&lt;br/&gt;使用的过滤器。&quot;%2&quot;</translation>
+      <translation>被阻止的URL：&quot;%1 &quot;&lt;br/&gt;使用的过滤器：&quot;%2&quot;</translation>
     </message>
     <message>
       <location filename="../src/librssguard/miscellaneous/skinfactory.cpp" line="281"/>
@@ -7384,7 +7384,7 @@ Also, you can post-process generated feed data with yet another script if you wi
     <message>
       <location filename="../src/librssguard/services/standard/standardserviceroot.cpp" line="39"/>
       <source>This is the obligatory service account for standard RSS/RDF/ATOM feeds.</source>
-      <translation type="unfinished">This is the obligatory service account for standard RSS/RDF/ATOM feeds.</translation>
+      <translation>这是标准 RSS/RDF/ATOM 源的必备服务账户。</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/standard/standardserviceroot.cpp" line="126"/>
@@ -7736,7 +7736,7 @@ Unread news: %2</source>
     <message>
       <location filename="../src/librssguard/services/tt-rss/gui/ttrssaccountdetails.cpp" line="111"/>
       <source>Selected Tiny Tiny RSS server is running unsupported version of API.</source>
-      <translation>此 Tiny Tiny RSS 服务器的 API 版本过久，已不受支持。</translation>
+      <translation>此 Tiny Tiny RSS 服务器的 API 版本过旧，已不受支持。</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/tt-rss/gui/ttrssaccountdetails.cpp" line="118"/>
