@@ -8,7 +8,7 @@
 #include <QCoreApplication>
 
 class ScriptException : public ApplicationException {
-  Q_DECLARE_TR_FUNCTIONS(ScriptException)
+    Q_DECLARE_TR_FUNCTIONS(ScriptException)
 
   public:
     enum class Reason {
@@ -19,7 +19,7 @@ class ScriptException : public ApplicationException {
       OtherError
     };
 
-    explicit ScriptException(Reason reason = Reason::OtherError, QString message = QString());
+    explicit ScriptException(Reason reason = Reason::OtherError, const QString& message = QString());
 
     Reason reason() const;
 

@@ -12,9 +12,10 @@
 class RdfParser : public FeedParser {
   public:
     explicit RdfParser(const QString& data);
+    virtual ~RdfParser();
 
-    QString rdfNamespace() const;
-    QString rssNamespace() const;
+    virtual QPair<StandardFeed*, QList<IconLocation>> guessFeed(const QByteArray& content,
+                                                                const QString& content_type) const;
 
   protected:
     virtual QString xmlMessageTitle(const QDomElement& msg_element) const;
@@ -27,6 +28,9 @@ class RdfParser : public FeedParser {
     virtual QDomNodeList xmlMessageElements();
 
   private:
+    QString rdfNamespace() const;
+    QString rssNamespace() const;
+
     QString m_rdfNamespace;
     QString m_rssNamespace;
     QString m_rssCoNamespace;

@@ -2,7 +2,13 @@
 
 #include "services/standard/parsers/atomparser.h"
 
+#include "definitions/definitions.h"
+#include "exceptions/applicationexception.h"
 #include "miscellaneous/textfactory.h"
+#include "services/standard/definitions.h"
+#include "services/standard/standardfeed.h"
+
+#include <QTextCodec>
 
 AtomParser::AtomParser(const QString& data) : FeedParser(data) {
   QString version = m_xml.documentElement().attribute(QSL("version"));
@@ -13,6 +19,70 @@ AtomParser::AtomParser(const QString& data) : FeedParser(data) {
   else {
     m_atomNamespace = QSL("http://www.w3.org/2005/Atom");
   }
+}
+
+AtomParser::~AtomParser() {}
+
+QPair<StandardFeed*, QList<IconLocation>> AtomParser::guessFeed(const QByteArray& content,
+                                                                const QString& content_type) const {
+  QString xml_schema_encoding = QSL(DEFAULT_FEED_ENCODING);
+  QString xml_contents_encoded;
+  QString enc =
+    QRegularExpression(QSL("encoding=\"([A-Z0-9\\-]+)\""), QRegularExpression::PatternOption::CaseInsensitiveOption)
+      .match(content)
+      .captured(1);
+
+  if (!enc.isEmpty()) {
+    // Some "encoding" attribute was found get the encoding
+    // out of it.
+    xml_schema_encoding = enc;
+  }
+
+  QTextCodec* custom_codec = QTextCodec::codecForName(xml_schema_encoding.toLocal8Bit());
+
+  if (custom_codec != nullptr) {
+    xml_contents_encoded = custom_codec->toUnicode(content);
+  }
+  else {
+    xml_contents_encoded = QString::fromUtf8(content);
+  }
+
+  // Feed XML was obtained, guess it now.
+  QDomDocument xml_document;
+  QString error_msg;
+  int error_line, error_column;
+
+  if (!xml_document.setContent(xml_contents_encoded, true, &error_msg, &error_line, &error_column)) {
+    throw ApplicationException(QObject::tr("XML is not well-formed, %1").arg(error_msg));
+  }
+
+  QDomElement root_element = xml_document.documentElement();
+
+  if (root_element.namespaceURI() != atomNamespace()) {
+    throw ApplicationException(QObject::tr("not an ATOM feed"));
+  }
+
+  auto* feed = new StandardFeed();
+  QList<IconLocation> icon_possible_locations;
+
+  feed->setEncoding(xml_schema_encoding);
+  feed->setType(StandardFeed::Type::Atom10);
+  feed->setTitle(root_element.namedItem(QSL("title")).toElement().text());
+  feed->setDescription(root_element.namedItem(QSL("subtitle")).toElement().text());
+
+  QString icon_link = root_element.namedItem(QSL("icon")).toElement().text();
+
+  if (!icon_link.isEmpty()) {
+    icon_possible_locations.append({icon_link, true});
+  }
+
+  QString home_page = root_element.namedItem(QSL("link")).toElement().attribute(QSL("href"));
+
+  if (!home_page.isEmpty()) {
+    icon_possible_locations.prepend({home_page, false});
+  }
+
+  return {feed, icon_possible_locations};
 }
 
 QString AtomParser::feedAuthor() const {

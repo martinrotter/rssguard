@@ -703,7 +703,7 @@ RootItem* GreaderNetwork::decodeTagsSubscriptions(const QString& categories,
 
     if (obtain_icons) {
       QString icon_url = subscription[QSL("iconUrl")].toString();
-      QList<QPair<QString, bool>> icon_urls;
+      QList<IconLocation> icon_urls;
 
       if (!icon_url.isEmpty()) {
         if (icon_url.startsWith(QSL("//"))) {

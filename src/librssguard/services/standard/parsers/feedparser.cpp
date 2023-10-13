@@ -15,6 +15,9 @@
 
 FeedParser::FeedParser(QString data, bool is_xml)
   : m_isXml(is_xml), m_data(std::move(data)), m_mrssNamespace(QSL("http://search.yahoo.com/mrss/")) {
+  if (m_data.isEmpty()) {
+    return;
+  }
 
   if (m_isXml) {
     // XML.
@@ -35,6 +38,8 @@ FeedParser::FeedParser(QString data, bool is_xml)
     }
   }
 }
+
+FeedParser::~FeedParser() {}
 
 QString FeedParser::xmlMessageRawContents(const QDomElement& msg_element) const {
   QString raw_contents;

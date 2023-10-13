@@ -4,12 +4,12 @@
 
 #include "definitions/definitions.h"
 
-ScriptException::ScriptException(Reason reason, QString message) : ApplicationException(message), m_reason(reason) {
+ScriptException::ScriptException(Reason reason, const QString& message)
+  : ApplicationException(message), m_reason(reason) {
   if (message.isEmpty()) {
     setMessage(messageForReason(reason));
   }
-  else if (reason == ScriptException::Reason::InterpreterError ||
-           reason == ScriptException::Reason::OtherError) {
+  else if (reason == ScriptException::Reason::InterpreterError || reason == ScriptException::Reason::OtherError) {
     setMessage(messageForReason(reason) + QSL(": '%1'").arg(message));
   }
 }

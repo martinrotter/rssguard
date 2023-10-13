@@ -160,7 +160,7 @@ QString NetworkFactory::sanitizeUrl(const QString& url) {
   return QString(url).replace(QRegularExpression(QSL("[^\\w\\-.~:\\/?#\\[\\]@!$&'()*+,;=% \\|]")), {});
 }
 
-QNetworkReply::NetworkError NetworkFactory::downloadIcon(const QList<QPair<QString, bool>>& urls,
+QNetworkReply::NetworkError NetworkFactory::downloadIcon(const QList<IconLocation>& urls,
                                                          int timeout,
                                                          QPixmap& output,
                                                          const QList<QPair<QByteArray, QByteArray>>& additional_headers,
@@ -168,15 +168,15 @@ QNetworkReply::NetworkError NetworkFactory::downloadIcon(const QList<QPair<QStri
   QNetworkReply::NetworkError network_result = QNetworkReply::NetworkError::UnknownNetworkError;
 
   for (const auto& url : urls) {
-    if (url.first.isEmpty()) {
+    if (url.m_url.isEmpty()) {
       continue;
     }
 
     QByteArray icon_data;
 
-    if (url.second) {
+    if (url.m_isDirect) {
       // Download directly.
-      network_result = performNetworkOperation(url.first,
+      network_result = performNetworkOperation(url.m_url,
                                                timeout,
                                                {},
                                                icon_data,
@@ -206,7 +206,7 @@ QNetworkReply::NetworkError NetworkFactory::downloadIcon(const QList<QPair<QStri
     }
     else {
       // Duck Duck Go.
-      QUrl url_full = QUrl(url.first);
+      QUrl url_full = QUrl(url.m_url);
       QString host = url_full.host();
 
       if (host.startsWith(QSL("www."))) {

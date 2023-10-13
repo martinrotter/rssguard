@@ -29,9 +29,9 @@ class ArticleListNotification : public BaseToastNotification {
 
   private slots:
     void openArticleInArticleList();
+    void openArticleInWebBrowser();
     void onMessageSelected(const QModelIndex& current, const QModelIndex& previous);
     void showFeed(int index);
-    void openArticleInWebBrowser();
     void markAllRead();
 
   private:

@@ -117,6 +117,7 @@ option(REVISION_FROM_GIT "Get revision using `git rev-parse`" ON)
 option(NO_UPDATE_CHECK "Disable automatic checking for new application updates" OFF)
 option(IS_FLATPAK_BUILD "Set to 'ON' when building RSS Guard with Flatpak." OFF)
 option(FORCE_BUNDLE_ICONS "Forcibly bundle icon themes into RSS Guard." OFF)
+option(ENABLE_COMPRESSED_SITEMAP "Enable support for gzip-compressed sitemap feeds. Requires zlib." OFF)
 
 # Import Qt libraries.
 set(QT6_MIN_VERSION 6.3.0)

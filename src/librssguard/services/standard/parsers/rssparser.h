@@ -12,6 +12,10 @@
 class RssParser : public FeedParser {
   public:
     explicit RssParser(const QString& data);
+    virtual ~RssParser();
+
+    virtual QPair<StandardFeed*, QList<IconLocation>> guessFeed(const QByteArray& content,
+                                                                const QString& content_type) const;
 
   protected:
     virtual QDomNodeList xmlMessageElements();

@@ -10,12 +10,18 @@
 #include <QString>
 
 #include "core/message.h"
+#include "definitions/typedefs.h"
+
+class StandardFeed;
 
 // Base class for all XML-based feed parsers.
 class FeedParser {
   public:
     explicit FeedParser(QString data, bool is_xml = true);
+    virtual ~FeedParser();
 
+    virtual QPair<StandardFeed*, QList<IconLocation>> guessFeed(const QByteArray& content,
+                                                                const QString& content_type) const = 0;
     virtual QList<Message> messages();
 
   protected:

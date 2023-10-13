@@ -5,15 +5,19 @@
 #include "database/databasequeries.h"
 #include "definitions/definitions.h"
 #include "exceptions/applicationexception.h"
+#include "exceptions/feedrecognizedbutfailedexception.h"
 #include "exceptions/networkexception.h"
 #include "exceptions/scriptexception.h"
 #include "miscellaneous/settings.h"
 #include "miscellaneous/textfactory.h"
-#include "services/standard/definitions.h"
 #include "services/standard/gui/formstandardfeeddetails.h"
-#include "services/standard/parsers/atomparser.h"
-#include "services/standard/parsers/rdfparser.h"
 #include "services/standard/standardserviceroot.h"
+
+#include "services/standard/parsers/atomparser.h"
+#include "services/standard/parsers/jsonparser.h"
+#include "services/standard/parsers/rdfparser.h"
+#include "services/standard/parsers/rssparser.h"
+#include "services/standard/parsers/sitemapparser.h"
 
 #include <QCommandLineParser>
 #include <QDomDocument>
@@ -24,6 +28,7 @@
 #include <QPointer>
 #include <QProcess>
 #include <QProcessEnvironment>
+#include <QScopedPointer>
 #include <QTextCodec>
 #include <QVariant>
 #include <QXmlStreamReader>
@@ -151,6 +156,12 @@ QString StandardFeed::typeToString(StandardFeed::Type type) {
     case Type::Json:
       return QSL("JSON 1.0/1.1");
 
+    case Type::Sitemap:
+      return QSL("Sitemap");
+
+    case Type::SitemapIndex:
+      return QSL("Sitemap Index");
+
     case Type::Rss2X:
     default:
       return QSL("RSS 2.0/2.0.1");
@@ -270,172 +281,36 @@ StandardFeed* StandardFeed::guessFeed(StandardFeed::SourceType source_type,
   }
 
   StandardFeed* feed = nullptr;
+  QList<IconLocation> icon_possible_locations;
+  QList<QSharedPointer<FeedParser>> parsers;
 
-  // Now we need to obtain list of URLs of icons.
-  // Priority of links:
-  //   1. Links of "homepage" obtained from feed files which will be processed via DuckDuckGo.
-  //   2. Direct links of "favicon", "icon", "logo" obtained from feed files which will be downloaded directly.
-  //   3. Link of the feed file itself which will be processed via DuckDuckGo.
-  // The "bool" if true means that the URL is direct and download directly, if false then
-  // only use its domain and download via DuckDuckGo.
-  QList<QPair<QString, bool>> icon_possible_locations;
+  parsers.append(QSharedPointer<FeedParser>(new AtomParser({})));
+  parsers.append(QSharedPointer<FeedParser>(new RssParser({})));
+  parsers.append(QSharedPointer<FeedParser>(new RdfParser({})));
+  parsers.append(QSharedPointer<FeedParser>(new JsonParser({})));
+  parsers.append(QSharedPointer<FeedParser>(new SitemapParser({})));
 
-  if (content_type.contains(QSL("json"), Qt::CaseSensitivity::CaseInsensitive) || feed_contents.startsWith('{')) {
-    feed = new StandardFeed();
+  for (const QSharedPointer<FeedParser>& parser : parsers) {
+    try {
+      QPair<StandardFeed*, QList<IconLocation>> res = parser->guessFeed(feed_contents, content_type);
 
-    // We have JSON feed.
-    feed->setEncoding(QSL(DEFAULT_FEED_ENCODING));
-    feed->setType(Type::Json);
-
-    QJsonParseError json_err;
-    QJsonDocument json = QJsonDocument::fromJson(feed_contents, &json_err);
-
-    if (json.isNull() && !json_err.errorString().isEmpty()) {
-      throw ApplicationException(tr("JSON error '%1'").arg(json_err.errorString()));
+      feed = res.first;
+      icon_possible_locations = res.second;
+      break;
     }
-
-    feed->setTitle(json.object()[QSL("title")].toString());
-    feed->setDescription(json.object()[QSL("description")].toString());
-
-    auto home_page = json.object()[QSL("home_page_url")].toString();
-
-    if (!home_page.isEmpty()) {
-      icon_possible_locations.prepend({home_page, false});
+    catch (const FeedRecognizedButFailedException& format_ex) {
+      // Parser reports that it is right parser for this feed
+      // but its support is not enabled or available or it is broken.
+      // In this case abort.
+      throw format_ex;
     }
-
-    auto icon = json.object()[QSL("favicon")].toString();
-
-    if (icon.isEmpty()) {
-      icon = json.object()[QSL("icon")].toString();
-    }
-
-    if (!icon.isEmpty()) {
-      // Low priority, download directly.
-      icon_possible_locations.append({icon, true});
+    catch (const ApplicationException& ex) {
+      qWarningNN << LOGSEC_CORE << "Feed guessing error:" << QUOTE_W_SPACE_DOT(ex.message());
     }
   }
-  else {
-    // Feed XML was obtained, now we need to try to guess
-    // its encoding before we can read further data.
-    QString xml_schema_encoding;
-    QString xml_contents_encoded;
-    QString enc =
-      QRegularExpression(QSL("encoding=\"([A-Z0-9\\-]+)\""), QRegularExpression::PatternOption::CaseInsensitiveOption)
-        .match(feed_contents)
-        .captured(1);
 
-    if (!enc.isEmpty()) {
-      // Some "encoding" attribute was found get the encoding
-      // out of it.
-      xml_schema_encoding = enc;
-    }
-
-    QTextCodec* custom_codec = QTextCodec::codecForName(xml_schema_encoding.toLocal8Bit());
-    QString encod;
-
-    if (custom_codec != nullptr) {
-      // Feed encoding was probably guessed.
-      xml_contents_encoded = custom_codec->toUnicode(feed_contents);
-      encod = xml_schema_encoding;
-    }
-    else {
-      // Feed encoding probably not guessed, set it as
-      // default.
-      xml_contents_encoded = feed_contents;
-      encod = QSL(DEFAULT_FEED_ENCODING);
-    }
-
-    // Feed XML was obtained, guess it now.
-    QDomDocument xml_document;
-    QString error_msg;
-    int error_line, error_column;
-
-    if (!xml_document.setContent(xml_contents_encoded, true, &error_msg, &error_line, &error_column)) {
-      throw ApplicationException(tr("XML is not well-formed, %1").arg(error_msg));
-    }
-
-    feed = new StandardFeed();
-    feed->setEncoding(encod);
-
-    QDomElement root_element = xml_document.documentElement();
-    RdfParser rdf(QSL("<a/>"));
-    AtomParser atom(QSL("<a/>"));
-
-    if (root_element.namespaceURI() == rdf.rdfNamespace()) {
-      // We found RDF feed.
-      QDomElement channel_element =
-        root_element.elementsByTagNameNS(rdf.rssNamespace(), QSL("channel")).at(0).toElement();
-
-      feed->setType(Type::Rdf);
-      feed->setTitle(channel_element.elementsByTagNameNS(rdf.rssNamespace(), QSL("title")).at(0).toElement().text());
-      feed->setDescription(channel_element.elementsByTagNameNS(rdf.rssNamespace(), QSL("description"))
-                             .at(0)
-                             .toElement()
-                             .text());
-
-      QString home_page = channel_element.elementsByTagNameNS(rdf.rssNamespace(), QSL("link")).at(0).toElement().text();
-
-      if (!home_page.isEmpty()) {
-        icon_possible_locations.prepend({home_page, false});
-      }
-    }
-    else if (root_element.tagName() == QL1S("rss")) {
-      // We found RSS 0.91/0.92/0.93/2.0/2.0.1 feed.
-      QString rss_type = root_element.attribute(QSL("version"), QSL("2.0"));
-
-      if (rss_type == QL1S("0.91") || rss_type == QL1S("0.92") || rss_type == QL1S("0.93")) {
-        feed->setType(Type::Rss0X);
-      }
-      else {
-        feed->setType(Type::Rss2X);
-      }
-
-      QDomElement channel_element = root_element.namedItem(QSL("channel")).toElement();
-
-      feed->setTitle(channel_element.namedItem(QSL("title")).toElement().text());
-      feed->setDescription(channel_element.namedItem(QSL("description")).toElement().text());
-
-      QString icon_url_link = channel_element.namedItem(QSL("image")).namedItem(QSL("url")).toElement().text();
-
-      if (!icon_url_link.isEmpty()) {
-        icon_possible_locations.append({icon_url_link, true});
-      }
-
-      auto channel_links = channel_element.elementsByTagName(QSL("link"));
-
-      for (int i = 0; i < channel_links.size(); i++) {
-        QString home_page = channel_links.at(i).toElement().text();
-
-        if (!home_page.isEmpty()) {
-          icon_possible_locations.prepend({home_page, false});
-          break;
-        }
-      }
-    }
-    else if (root_element.namespaceURI() == atom.atomNamespace()) {
-      // We found ATOM feed.
-      feed->setType(Type::Atom10);
-      feed->setTitle(root_element.namedItem(QSL("title")).toElement().text());
-      feed->setDescription(root_element.namedItem(QSL("subtitle")).toElement().text());
-
-      QString icon_link = root_element.namedItem(QSL("icon")).toElement().text();
-
-      if (!icon_link.isEmpty()) {
-        icon_possible_locations.append({icon_link, true});
-      }
-
-      QString home_page = root_element.namedItem(QSL("link")).toElement().attribute(QSL("href"));
-
-      if (!home_page.isEmpty()) {
-        icon_possible_locations.prepend({home_page, false});
-      }
-    }
-    else {
-      // File was downloaded and it really was XML file
-      // but feed format was NOT recognized.
-      feed->deleteLater();
-      throw ApplicationException(tr("XML feed file format unrecognized"));
-    }
+  if (feed == nullptr) {
+    throw ApplicationException(tr("feed format not recognized"));
   }
 
   if (source_type == SourceType::Url && icon_possible_locations.isEmpty()) {
@@ -474,7 +349,9 @@ bool StandardFeed::performDragDropChange(RootItem* target_item) {
 
     qApp->showGuiMessage(Notification::Event::GeneralEvent,
                          {tr("Cannot move feed"),
-                          tr("Cannot move feed, detailed information was logged via debug log."),
+                          tr("Cannot move feed, detailed "
+                             "information was logged via "
+                             "debug log."),
                           QSystemTrayIcon::MessageIcon::Critical});
     return false;
   }
@@ -550,7 +427,10 @@ QString StandardFeed::runScriptProcess(const QStringList& cmd_args,
 
     if (!raw_error.simplified().isEmpty()) {
       qWarningNN << LOGSEC_CORE
-                 << "Received error output from custom script even if it reported that it exited normally:"
+                 << "Received error output from "
+                    "custom script even if it "
+                    "reported that it exited "
+                    "normally:"
                  << QUOTE_W_SPACE_DOT(raw_error);
     }
 

@@ -2,12 +2,96 @@
 
 #include "services/standard/parsers/rssparser.h"
 
+#include "exceptions/applicationexception.h"
 #include "miscellaneous/textfactory.h"
+#include "services/standard/definitions.h"
+#include "services/standard/standardfeed.h"
 
 #include <QDomDocument>
+#include <QTextCodec>
 #include <QTextStream>
 
 RssParser::RssParser(const QString& data) : FeedParser(data) {}
+
+RssParser::~RssParser() {}
+
+QPair<StandardFeed*, QList<IconLocation>> RssParser::guessFeed(const QByteArray& content,
+                                                               const QString& content_type) const {
+  QString xml_schema_encoding = QSL(DEFAULT_FEED_ENCODING);
+  QString xml_contents_encoded;
+  QString enc =
+    QRegularExpression(QSL("encoding=\"([A-Z0-9\\-]+)\""), QRegularExpression::PatternOption::CaseInsensitiveOption)
+      .match(content)
+      .captured(1);
+
+  if (!enc.isEmpty()) {
+    // Some "encoding" attribute was found get the encoding
+    // out of it.
+    xml_schema_encoding = enc;
+  }
+
+  QTextCodec* custom_codec = QTextCodec::codecForName(xml_schema_encoding.toLocal8Bit());
+
+  if (custom_codec != nullptr) {
+    xml_contents_encoded = custom_codec->toUnicode(content);
+  }
+  else {
+    xml_contents_encoded = QString::fromUtf8(content);
+  }
+
+  // Feed XML was obtained, guess it now.
+  QDomDocument xml_document;
+  QString error_msg;
+  int error_line, error_column;
+
+  if (!xml_document.setContent(xml_contents_encoded, true, &error_msg, &error_line, &error_column)) {
+    throw ApplicationException(QObject::tr("XML is not well-formed, %1").arg(error_msg));
+  }
+
+  QDomElement root_element = xml_document.documentElement();
+
+  if (root_element.tagName() != QL1S("rss")) {
+    throw ApplicationException(QObject::tr("not a RSS feed"));
+  }
+
+  auto* feed = new StandardFeed();
+  QList<IconLocation> icon_possible_locations;
+
+  feed->setEncoding(xml_schema_encoding);
+
+  QString rss_type = root_element.attribute(QSL("version"), QSL("2.0"));
+
+  if (rss_type == QL1S("0.91") || rss_type == QL1S("0.92") || rss_type == QL1S("0.93")) {
+    feed->setType(StandardFeed::Type::Rss0X);
+  }
+  else {
+    feed->setType(StandardFeed::Type::Rss2X);
+  }
+
+  QDomElement channel_element = root_element.namedItem(QSL("channel")).toElement();
+
+  feed->setTitle(channel_element.namedItem(QSL("title")).toElement().text());
+  feed->setDescription(channel_element.namedItem(QSL("description")).toElement().text());
+
+  QString icon_url_link = channel_element.namedItem(QSL("image")).namedItem(QSL("url")).toElement().text();
+
+  if (!icon_url_link.isEmpty()) {
+    icon_possible_locations.append({icon_url_link, true});
+  }
+
+  auto channel_links = channel_element.elementsByTagName(QSL("link"));
+
+  for (int i = 0; i < channel_links.size(); i++) {
+    QString home_page = channel_links.at(i).toElement().text();
+
+    if (!home_page.isEmpty()) {
+      icon_possible_locations.prepend({home_page, false});
+      break;
+    }
+  }
+
+  return {feed, icon_possible_locations};
+}
 
 QDomNodeList RssParser::xmlMessageElements() {
   QDomNode channel_elem = m_xml.namedItem(QSL("rss")).namedItem(QSL("channel"));

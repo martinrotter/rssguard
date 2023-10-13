@@ -24,4 +24,12 @@ struct UpdatedArticles {
     QList<Message> m_all;
 };
 
+struct IconLocation {
+    QString m_url;
+
+    // The "bool" if true means that the URL is direct and download directly, if false then
+    // only use its domain and download via 3rd-party service.
+    bool m_isDirect;
+};
+
 #endif // TYPEDEFS_H

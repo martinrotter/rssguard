@@ -13,8 +13,10 @@
 class AtomParser : public FeedParser {
   public:
     explicit AtomParser(const QString& data);
+    virtual ~AtomParser();
 
-    QString atomNamespace() const;
+    virtual QPair<StandardFeed*, QList<IconLocation>> guessFeed(const QByteArray& content,
+                                                                const QString& content_type) const;
 
   protected:
     virtual QString xmlMessageTitle(const QDomElement& msg_element) const;
@@ -29,6 +31,8 @@ class AtomParser : public FeedParser {
     virtual QString feedAuthor() const;
 
   private:
+    QString atomNamespace() const;
+
     QString m_atomNamespace;
 };
 

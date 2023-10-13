@@ -49,6 +49,8 @@ set(SOURCES
   dynamic-shortcuts/shortcutcatcher.h
   exceptions/applicationexception.cpp
   exceptions/applicationexception.h
+  exceptions/feedrecognizedbutfailedexception.cpp
+  exceptions/feedrecognizedbutfailedexception.h
   exceptions/feedfetchexception.cpp
   exceptions/feedfetchexception.h
   exceptions/filteringexception.cpp
@@ -383,6 +385,8 @@ set(SOURCES
   services/standard/parsers/rdfparser.h
   services/standard/parsers/rssparser.cpp
   services/standard/parsers/rssparser.h
+  services/standard/parsers/sitemapparser.cpp
+  services/standard/parsers/sitemapparser.h
   services/standard/standardcategory.cpp
   services/standard/standardcategory.h
   services/standard/standardfeed.cpp
@@ -536,8 +540,25 @@ else()
     3rd-party/sqlite/sqlite3.h
   )
 
-  SET(CMAKE_C_FLAGS  "${CMAKE_C_FLAGS} -DSQLITE_THREADSAFE=1 -DSQLITE_ENABLE_COLUMN_METADATA=1")
+  set(CMAKE_C_FLAGS  "${CMAKE_C_FLAGS} -DSQLITE_THREADSAFE=1 -DSQLITE_ENABLE_COLUMN_METADATA=1")
 endif()
+
+# Add ZLIB.
+set(ZLIB_ROOT "c:\\Users\\rotter\\Downloads\\zlib-1.3")
+
+if(ENABLE_COMPRESSED_SITEMAP)
+  find_package(ZLIB REQUIRED)
+
+  # Add qcompressor.
+  list(APPEND SOURCES
+    3rd-party/qcompressor/qcompressor.cpp
+    3rd-party/qcompressor/qcompressor.h
+  )
+endif(ENABLE_COMPRESSED_SITEMAP)
+
+if(ZLIB_FOUND)
+  message(STATUS "Using system zlib ${ZLIB_VERSION_STRING}.")
+endif(ZLIB_FOUND)
 
 # Add SimpleCrypt.
 list(APPEND SOURCES
@@ -675,6 +696,23 @@ if(SQLite3_FOUND)
     ${SQLite3_LIBRARIES}
   )
 endif()
+
+if(ZLIB_FOUND)
+  target_include_directories(rssguard AFTER
+    PRIVATE
+    ${ZLIB_INCLUDE_DIRS}
+  )
+
+  target_compile_definitions(rssguard
+    PRIVATE
+
+    ENABLE_COMPRESSED_SITEMAP
+  )
+
+  target_link_libraries(rssguard PRIVATE
+    ${ZLIB_LIBRARIES}
+  )
+endif(ZLIB_FOUND)
 
 # Qt.
 target_link_libraries(rssguard PUBLIC

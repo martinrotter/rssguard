@@ -24,14 +24,20 @@ class StandardFeed : public Feed {
     friend class StandardCategory;
 
   public:
-    enum class SourceType { Url = 0, Script = 1, LocalFile = 2 };
+    enum class SourceType {
+      Url = 0,
+      Script = 1,
+      LocalFile = 2
+    };
 
     enum class Type {
       Rss0X = 0,
       Rss2X = 1,
       Rdf = 2, // Sometimes denoted as RSS 1.0.
       Atom10 = 3,
-      Json = 4
+      Json = 4,
+      SitemapIndex = 5,
+      Sitemap = 6
     };
 
     explicit StandardFeed(RootItem* parent_item = nullptr);
@@ -79,8 +85,8 @@ class StandardFeed : public Feed {
                                    const QString& post_process_script,
                                    NetworkFactory::NetworkAuthentication protection,
                                    bool fetch_icons = true,
-                                   const QString& username = QString(),
-                                   const QString& password = QString(),
+                                   const QString& username = {},
+                                   const QString& password = {},
                                    const QNetworkProxy& custom_proxy = QNetworkProxy::ProxyType::DefaultProxy);
 
     // Converts particular feed type to string.

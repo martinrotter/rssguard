@@ -5,6 +5,7 @@
 
 #include "network-web/httpresponse.h"
 
+#include "definitions/typedefs.h"
 #include "services/abstract/feed.h"
 
 #include <QCoreApplication>
@@ -38,7 +39,11 @@ class NetworkFactory {
     explicit NetworkFactory() = default;
 
   public:
-    enum class NetworkAuthentication { NoAuthentication = 0, Basic = 1, Token = 2 };
+    enum class NetworkAuthentication {
+      NoAuthentication = 0,
+      Basic = 1,
+      Token = 2
+    };
 
     static QStringList extractFeedLinksFromHtmlPage(const QUrl& url, const QString& html);
     static QPair<QByteArray, QByteArray> generateBasicAuthHeader(NetworkAuthentication protection,
@@ -51,7 +56,7 @@ class NetworkFactory {
 
     // Performs SYNCHRONOUS favicon download for the site,
     // given URL belongs to.
-    static QNetworkReply::NetworkError downloadIcon(const QList<QPair<QString, bool>>& urls,
+    static QNetworkReply::NetworkError downloadIcon(const QList<IconLocation>& urls,
                                                     int timeout,
                                                     QPixmap& output,
                                                     const QList<QPair<QByteArray, QByteArray>>& additional_headers,

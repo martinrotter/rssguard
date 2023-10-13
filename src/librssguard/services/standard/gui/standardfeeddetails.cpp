@@ -52,6 +52,10 @@ StandardFeedDetails::StandardFeedDetails(QWidget* parent) : QWidget(parent) {
                           QVariant::fromValue(int(StandardFeed::Type::Rss2X)));
   m_ui.m_cmbType->addItem(StandardFeed::typeToString(StandardFeed::Type::Json),
                           QVariant::fromValue(int(StandardFeed::Type::Json)));
+  m_ui.m_cmbType->addItem(StandardFeed::typeToString(StandardFeed::Type::Sitemap),
+                          QVariant::fromValue(int(StandardFeed::Type::Sitemap)));
+  m_ui.m_cmbType->addItem(StandardFeed::typeToString(StandardFeed::Type::SitemapIndex),
+                          QVariant::fromValue(int(StandardFeed::Type::SitemapIndex)));
 
   // Load available encodings.
   const QList<QByteArray> encodings = QTextCodec::availableCodecs();

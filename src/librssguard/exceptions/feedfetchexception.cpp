@@ -2,7 +2,7 @@
 
 #include "exceptions/feedfetchexception.h"
 
-FeedFetchException::FeedFetchException(Feed::Status feed_status, QString message)
+FeedFetchException::FeedFetchException(Feed::Status feed_status, const QString& message)
   : ApplicationException(message), m_feedStatus(feed_status) {}
 
 Feed::Status FeedFetchException::feedStatus() const {
