@@ -544,8 +544,6 @@ else()
 endif()
 
 # Add ZLIB.
-set(ZLIB_ROOT "c:\\Users\\rotter\\Downloads\\zlib-1.3")
-
 if(ENABLE_COMPRESSED_SITEMAP)
   find_package(ZLIB REQUIRED)
 
