@@ -2,7 +2,7 @@
 
 You can contribute to RSS Guard project in a several different ways:
 
-- by translating RSS Guard to some other languages (see [here](https://github.com/martinrotter/rssguard/blob/master/resources/docs/Documentation.md#locali)),
+- by translating RSS Guard to some other languages (see [here](https://rssguard.readthedocs.io/en/stable/contrib/localization.html)),
 - by submitting patches and pull requests (see [here](https://github.com/martinrotter/rssguard/pulls)),
 - by donating some money to support and encourage developers (see **Sponsor** button on the top of this page).
 

@@ -34,7 +34,7 @@ if [ $is_linux = true ]; then
   sudo add-apt-repository ppa:beineri/opt-qt-5.15.2-focal -y
   sudo apt-get update
 
-  sudo apt-get -qy install qt515tools qt515base qt515webengine qt515svg qt515multimedia qt515imageformats
+  sudo apt-get -qy install qt515tools qt515base qt515webengine qt515svg qt515multimedia qt515imageformats appstream-util
   sudo apt-get -qy install cmake ninja-build openssl libssl-dev libgl1-mesa-dev gstreamer1.0-alsa gstreamer1.0-nice gstreamer1.0-plugins-good gstreamer1.0-plugins-base gstreamer1.0-plugins-bad gstreamer1.0-plugins-ugly gstreamer1.0-qt5 gstreamer1.0-pulseaudio
 
   # The script below performs some broken testing, which ends up tripping 'set -e'.
@@ -83,6 +83,9 @@ cmake --build .
 cmake --install . --prefix "$prefix"
 
 if [ $is_linux = true ]; then
+  # Validate AppStream metadata.
+  echo 'Validating AppStream metadata...'
+  appstream-util validate-relax "$prefix/share/metainfo/$app_id.metainfo.xml"
   # Obtain linuxdeployqt.
   wget -qc https://github.com/probonopd/linuxdeployqt/releases/download/continuous/linuxdeployqt-continuous-x86_64.AppImage
   chmod a+x linuxdeployqt-continuous-x86_64.AppImage 
