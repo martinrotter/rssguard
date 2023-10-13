@@ -40,8 +40,8 @@
   <launchable type="desktop-id">@APP_REVERSE_NAME@.desktop</launchable>
   <screenshots>
     <screenshot type="default">
-      <image>
-        https://raw.githubusercontent.com/martinrotter/rssguard/master/resources/graphics/official_pictures/main-window-linux.png</image>
+      <caption>The main window</caption>
+      <image>https://raw.githubusercontent.com/martinrotter/rssguard/master/resources/graphics/official_pictures/main-window-linux.png</image>
     </screenshot>
   </screenshots>
   <url type="homepage">https://github.com/martinrotter/rssguard</url>
