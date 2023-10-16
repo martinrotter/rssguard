@@ -268,13 +268,13 @@ StandardFeed* StandardFeed::guessFeed(StandardFeed::SourceType source_type,
     qDebugNN << LOGSEC_CORE << "Running custom script for guessing" << QUOTE_W_SPACE(source) << "to obtain feed data.";
 
     // Use script to generate feed file.
-    feed_contents = generateFeedFileWithScript(source, timeout).toUtf8();
+    feed_contents = generateFeedFileWithScript(source, timeout);
   }
 
   if (!post_process_script.simplified().isEmpty()) {
     qDebugNN << LOGSEC_CORE << "Post-processing obtained feed data with custom script for guessing"
              << QUOTE_W_SPACE_DOT(post_process_script);
-    feed_contents = postProcessFeedFileWithScript(post_process_script, feed_contents, timeout).toUtf8();
+    feed_contents = postProcessFeedFileWithScript(post_process_script, feed_contents, timeout);
   }
 
   StandardFeed* feed = nullptr;
@@ -382,11 +382,11 @@ QStringList StandardFeed::prepareExecutionLine(const QString& execution_line) {
   return qApp->replaceDataUserDataFolderPlaceholder(args);
 }
 
-QString StandardFeed::runScriptProcess(const QStringList& cmd_args,
-                                       const QString& working_directory,
-                                       int run_timeout,
-                                       bool provide_input,
-                                       const QString& input) {
+QByteArray StandardFeed::runScriptProcess(const QStringList& cmd_args,
+                                          const QString& working_directory,
+                                          int run_timeout,
+                                          bool provide_input,
+                                          const QString& input) {
   QProcess process;
 
   if (provide_input) {
@@ -450,7 +450,7 @@ QString StandardFeed::runScriptProcess(const QStringList& cmd_args,
   }
 }
 
-QString StandardFeed::generateFeedFileWithScript(const QString& execution_line, int run_timeout) {
+QByteArray StandardFeed::generateFeedFileWithScript(const QString& execution_line, int run_timeout) {
   auto prepared_query = prepareExecutionLine(execution_line);
 
   if (prepared_query.isEmpty()) {
@@ -460,9 +460,9 @@ QString StandardFeed::generateFeedFileWithScript(const QString& execution_line, 
   return runScriptProcess(prepared_query, qApp->userDataFolder(), run_timeout, false);
 }
 
-QString StandardFeed::postProcessFeedFileWithScript(const QString& execution_line,
-                                                    const QString& raw_feed_data,
-                                                    int run_timeout) {
+QByteArray StandardFeed::postProcessFeedFileWithScript(const QString& execution_line,
+                                                       const QString& raw_feed_data,
+                                                       int run_timeout) {
   auto prepared_query = prepareExecutionLine(execution_line);
 
   if (prepared_query.isEmpty()) {

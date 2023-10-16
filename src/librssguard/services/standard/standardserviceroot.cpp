@@ -156,13 +156,13 @@ QList<Message> StandardServiceRoot::obtainNewMessages(Feed* feed,
   Q_UNUSED(tagged_messages)
 
   StandardFeed* f = static_cast<StandardFeed*>(feed);
+  QByteArray feed_contents;
   QString formatted_feed_contents;
   int download_timeout = qApp->settings()->value(GROUP(Feeds), SETTING(Feeds::UpdateTimeout)).toInt();
 
   if (f->sourceType() == StandardFeed::SourceType::Url) {
     qDebugNN << LOGSEC_CORE << "Downloading URL" << QUOTE_W_SPACE(feed->source()) << "to obtain feed data.";
 
-    QByteArray feed_contents;
     QList<QPair<QByteArray, QByteArray>> headers;
 
     headers << NetworkFactory::generateBasicAuthHeader(f->protection(), f->username(), f->password());
@@ -198,25 +198,13 @@ QList<Message> StandardServiceRoot::obtainNewMessages(Feed* feed,
       qWarningNN << LOGSEC_CORE << "This feed is gzipped.";
 #endif
     }
-
-    // Encode downloaded data for further parsing.
-    QTextCodec* codec = QTextCodec::codecForName(f->encoding().toLocal8Bit());
-
-    if (codec == nullptr) {
-      // No suitable codec for this encoding was found.
-      // Use non-converted data.
-      formatted_feed_contents = feed_contents;
-    }
-    else {
-      formatted_feed_contents = codec->toUnicode(feed_contents);
-    }
   }
   else {
     qDebugNN << LOGSEC_CORE << "Running custom script" << QUOTE_W_SPACE(feed->source()) << "to obtain feed data.";
 
     // Use script to generate feed file.
     try {
-      formatted_feed_contents = StandardFeed::generateFeedFileWithScript(feed->source(), download_timeout);
+      feed_contents = StandardFeed::generateFeedFileWithScript(feed->source(), download_timeout);
     }
     catch (const ScriptException& ex) {
       qCriticalNN << LOGSEC_CORE << "Custom script for generating feed file failed:" << QUOTE_W_SPACE_DOT(ex.message());
@@ -230,14 +218,26 @@ QList<Message> StandardServiceRoot::obtainNewMessages(Feed* feed,
              << QUOTE_W_SPACE_DOT(f->postProcessScript());
 
     try {
-      formatted_feed_contents =
-        StandardFeed::postProcessFeedFileWithScript(f->postProcessScript(), formatted_feed_contents, download_timeout);
+      feed_contents =
+        StandardFeed::postProcessFeedFileWithScript(f->postProcessScript(), feed_contents, download_timeout);
     }
     catch (const ScriptException& ex) {
       qCriticalNN << LOGSEC_CORE << "Post-processing script for feed file failed:" << QUOTE_W_SPACE_DOT(ex.message());
 
       throw FeedFetchException(Feed::Status::OtherError, ex.message());
     }
+  }
+
+  // Encode obtained data for further parsing.
+  QTextCodec* codec = QTextCodec::codecForName(f->encoding().toLocal8Bit());
+
+  if (codec == nullptr) {
+    // No suitable codec for this encoding was found.
+    // Use UTF-8.
+    formatted_feed_contents = QString::fromUtf8(feed_contents);
+  }
+  else {
+    formatted_feed_contents = codec->toUnicode(feed_contents);
   }
 
   // Feed data are downloaded and encoded.
