@@ -19,6 +19,10 @@
 #include "services/standard/parsers/rssparser.h"
 #include "services/standard/parsers/sitemapparser.h"
 
+#if defined(ENABLE_COMPRESSED_SITEMAP)
+#include "3rd-party/qcompressor/qcompressor.h"
+#endif
+
 #include <QCommandLineParser>
 #include <QDomDocument>
 #include <QDomElement>
@@ -272,6 +276,25 @@ StandardFeed* StandardFeed::guessFeed(StandardFeed::SourceType source_type,
 
     // Use script to generate feed file.
     feed_contents = generateFeedFileWithScript(source, timeout);
+  }
+
+  // Sitemap parser supports gzip-encoded data too.
+  // We need to decode it here before encoding
+  // stuff kicks in.
+  if (SitemapParser::isGzip(feed_contents)) {
+#if defined(ENABLE_COMPRESSED_SITEMAP)
+    qWarningNN << LOGSEC_CORE << "Decompressing gzipped feed data.";
+
+    QByteArray uncompressed_feed_contents;
+
+    if (!QCompressor::gzipDecompress(feed_contents, uncompressed_feed_contents)) {
+      throw ApplicationException("gzip decompression failed");
+    }
+
+    feed_contents = uncompressed_feed_contents;
+#else
+    qWarningNN << LOGSEC_CORE << "This feed is gzipped.";
+#endif
   }
 
   if (!post_process_script.simplified().isEmpty()) {

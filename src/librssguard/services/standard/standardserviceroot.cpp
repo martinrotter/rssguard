@@ -184,20 +184,6 @@ QList<Message> StandardServiceRoot::obtainNewMessages(Feed* feed,
                  << "during fetching of new messages for feed" << QUOTE_W_SPACE_DOT(feed->source());
       throw FeedFetchException(Feed::Status::NetworkError, NetworkFactory::networkErrorText(network_result));
     }
-
-    // Sitemap parser supports gzip-encoded data too.
-    if (SitemapParser::isGzip(feed_contents)) {
-#if defined(ENABLE_COMPRESSED_SITEMAP)
-      qWarningNN << LOGSEC_CORE << "Decompressing gzipped feed data.";
-
-      QByteArray uncompressed_feed_contents;
-      QCompressor::gzipDecompress(feed_contents, uncompressed_feed_contents);
-
-      feed_contents = uncompressed_feed_contents;
-#else
-      qWarningNN << LOGSEC_CORE << "This feed is gzipped.";
-#endif
-    }
   }
   else if (f->sourceType() == StandardFeed::SourceType::LocalFile) {
     feed_contents = IOFactory::readFile(feed->source());
@@ -214,6 +200,25 @@ QList<Message> StandardServiceRoot::obtainNewMessages(Feed* feed,
 
       throw FeedFetchException(Feed::Status::OtherError, ex.message());
     }
+  }
+
+  // Sitemap parser supports gzip-encoded data too.
+  // We need to decode it here before encoding
+  // stuff kicks in.
+  if (SitemapParser::isGzip(feed_contents)) {
+#if defined(ENABLE_COMPRESSED_SITEMAP)
+    qWarningNN << LOGSEC_CORE << "Decompressing gzipped feed data.";
+
+    QByteArray uncompressed_feed_contents;
+
+    if (!QCompressor::gzipDecompress(feed_contents, uncompressed_feed_contents)) {
+      throw ApplicationException("gzip decompression failed");
+    }
+
+    feed_contents = uncompressed_feed_contents;
+#else
+    qWarningNN << LOGSEC_CORE << "This feed is gzipped.";
+#endif
   }
 
   if (!f->postProcessScript().simplified().isEmpty()) {
