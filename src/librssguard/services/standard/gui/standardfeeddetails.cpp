@@ -40,6 +40,8 @@ StandardFeedDetails::StandardFeedDetails(QWidget* parent) : QWidget(parent) {
                                 QVariant::fromValue(StandardFeed::SourceType::Url));
   m_ui.m_cmbSourceType->addItem(StandardFeed::sourceTypeToString(StandardFeed::SourceType::Script),
                                 QVariant::fromValue(StandardFeed::SourceType::Script));
+  m_ui.m_cmbSourceType->addItem(StandardFeed::sourceTypeToString(StandardFeed::SourceType::LocalFile),
+                                QVariant::fromValue(StandardFeed::SourceType::LocalFile));
 
   // Add standard feed types.
   m_ui.m_cmbType->addItem(StandardFeed::typeToString(StandardFeed::Type::Atom10),

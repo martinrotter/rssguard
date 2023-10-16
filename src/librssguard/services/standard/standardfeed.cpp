@@ -264,6 +264,9 @@ StandardFeed* StandardFeed::guessFeed(StandardFeed::SourceType source_type,
       throw NetworkException(network_result.m_networkError);
     }
   }
+  else if (source_type == StandardFeed::SourceType::LocalFile) {
+    feed_contents = IOFactory::readFile(source);
+  }
   else {
     qDebugNN << LOGSEC_CORE << "Running custom script for guessing" << QUOTE_W_SPACE(source) << "to obtain feed data.";
 

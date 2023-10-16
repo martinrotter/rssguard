@@ -199,6 +199,9 @@ QList<Message> StandardServiceRoot::obtainNewMessages(Feed* feed,
 #endif
     }
   }
+  else if (f->sourceType() == StandardFeed::SourceType::LocalFile) {
+    feed_contents = IOFactory::readFile(feed->source());
+  }
   else {
     qDebugNN << LOGSEC_CORE << "Running custom script" << QUOTE_W_SPACE(feed->source()) << "to obtain feed data.";
 
