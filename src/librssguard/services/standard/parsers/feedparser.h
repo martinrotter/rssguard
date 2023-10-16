@@ -20,8 +20,14 @@ class FeedParser {
     explicit FeedParser(QString data, bool is_xml = true);
     virtual ~FeedParser();
 
+    // Returns list of absolute URLs of discovered feeds from provided base URL.
+    virtual QStringList discoverFeeds(const QUrl& url) const;
+
+    // Guesses feed.
     virtual QPair<StandardFeed*, QList<IconLocation>> guessFeed(const QByteArray& content,
                                                                 const QString& content_type) const = 0;
+
+    // Returns list of all messages from the feed.
     virtual QList<Message> messages();
 
   protected:

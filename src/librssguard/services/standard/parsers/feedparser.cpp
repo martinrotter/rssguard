@@ -41,6 +41,10 @@ FeedParser::FeedParser(QString data, bool is_xml)
 
 FeedParser::~FeedParser() {}
 
+QStringList FeedParser::discoverFeeds(const QUrl& url) const {
+  return {};
+}
+
 QString FeedParser::xmlMessageRawContents(const QDomElement& msg_element) const {
   QString raw_contents;
   QTextStream str(&raw_contents);

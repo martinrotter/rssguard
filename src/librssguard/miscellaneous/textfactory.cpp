@@ -258,10 +258,13 @@ QStringList TextFactory::tokenizeProcessArguments(const QString& command) {
 
       case TokenState::InsideArgSpaced: {
         switch (chr.unicode()) {
-          case u'\\':
-            // We found escaped!
-            state = TokenState::EscapedFromSpaced;
-            continue;
+            // NOTE: Probably disable escaping in spaced arguments to provide simpler UX?
+            /*
+            case u'\\':
+              // We found escaped!
+              state = TokenState::EscapedFromSpaced;
+              continue;
+            */
 
           case u' ':
             // We need to end this argument.

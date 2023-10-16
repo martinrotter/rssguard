@@ -122,8 +122,8 @@ bool FeedsImportExportModel::exportToOMPL20(QByteArray& result, bool export_icon
         }
 
         case RootItem::Kind::Feed: {
-          auto* child_feed = dynamic_cast<StandardFeed*>(child_item);
-          QDomElement outline_feed = opml_document.createElement("outline");
+          auto* child_feed = qobject_cast<StandardFeed*>(child_item);
+          QDomElement outline_feed = opml_document.createElement(QSL("outline"));
 
           outline_feed.setAttribute(QSL("type"), QSL("rss"));
           outline_feed.setAttribute(QSL("text"), child_feed->title());
@@ -157,6 +157,14 @@ bool FeedsImportExportModel::exportToOMPL20(QByteArray& result, bool export_icon
               outline_feed.setAttribute(QSL("version"), QSL("JSON"));
               break;
 
+            case StandardFeed::Type::Sitemap:
+              outline_feed.setAttribute(QSL("version"), QSL("Sitemap"));
+              break;
+
+            case StandardFeed::Type::SitemapIndex:
+              outline_feed.setAttribute(QSL("version"), QSL("SitemapIndex"));
+              break;
+
             default:
               break;
           }
@@ -181,17 +189,27 @@ bool FeedsImportExportModel::produceFeed(const FeedLookup& feed_lookup) {
 
   try {
     if (feed_lookup.fetch_metadata_online) {
-      new_feed = StandardFeed::guessFeed(StandardFeed::SourceType::Url,
+      StandardFeed::SourceType source_type =
+        feed_lookup.custom_data.contains(QSL("sourceType"))
+          ? feed_lookup.custom_data[QSL("sourceType")].value<StandardFeed::SourceType>()
+          : StandardFeed::SourceType::Url;
+
+      QString pp_script = !feed_lookup.custom_data[QSL("postProcessScript")].toString().isEmpty()
+                            ? feed_lookup.custom_data[QSL("postProcessScript")].toString()
+                            : feed_lookup.post_process_script;
+
+      new_feed = StandardFeed::guessFeed(source_type,
                                          feed_lookup.url,
-                                         feed_lookup.post_process_script,
+                                         pp_script,
                                          NetworkFactory::NetworkAuthentication::NoAuthentication,
                                          !feed_lookup.do_not_fetch_icons,
                                          {},
                                          {},
                                          feed_lookup.custom_proxy);
 
+      new_feed->setSourceType(source_type);
       new_feed->setSource(feed_lookup.url);
-      new_feed->setPostProcessScript(feed_lookup.post_process_script);
+      new_feed->setPostProcessScript(pp_script);
 
       if (feed_lookup.do_not_fetch_titles) {
         QString old_title = feed_lookup.custom_data[QSL("title")].toString();
@@ -216,6 +234,10 @@ bool FeedsImportExportModel::produceFeed(const FeedLookup& feed_lookup) {
       new_feed = new StandardFeed();
 
       if (feed_lookup.custom_data.isEmpty()) {
+        // We assume these are "best-guess" defaults.
+        new_feed->setSourceType(StandardFeed::SourceType::Url);
+        new_feed->setType(StandardFeed::Type::Rss2X);
+
         new_feed->setSource(feed_lookup.url);
         new_feed->setTitle(feed_lookup.url);
         new_feed->setIcon(qApp->icons()->fromTheme(QSL("application-rss+xml")));
