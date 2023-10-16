@@ -180,7 +180,7 @@ QString AtomParser::xmlMessageUrl(const QDomElement& msg_element) const {
 
 QList<Enclosure> AtomParser::xmlMessageEnclosures(const QDomElement& msg_element) const {
   QList<Enclosure> enclosures;
-  QDomNodeList elem_links = msg_element.toElement().elementsByTagNameNS(m_atomNamespace, QSL("link"));
+  QDomNodeList elem_links = msg_element.elementsByTagNameNS(m_atomNamespace, QSL("link"));
 
   for (int i = 0; i < elem_links.size(); i++) {
     QDomElement link = elem_links.at(i).toElement();

@@ -9,8 +9,8 @@
 #include "definitions/definitions.h"
 #include "exceptions/applicationexception.h"
 #include "exceptions/feedrecognizedbutfailedexception.h"
+#include "miscellaneous/textfactory.h"
 #include "services/standard/definitions.h"
-#include "services/standard/standardfeed.h"
 
 #include <QDomDocument>
 #include <QTextCodec>
@@ -68,7 +68,11 @@ QPair<StandardFeed*, QList<IconLocation>> SitemapParser::guessFeed(const QByteAr
 
   QDomElement root_element = xml_document.documentElement();
 
-  if (root_element.tagName() != QSL("urlset") && root_element.tagName() != QSL("sitemapindex")) {
+  if (root_element.tagName() == QSL("sitemapindex")) {
+    throw FeedRecognizedButFailedException(QObject::tr("sitemap indices are not supported"));
+  }
+
+  if (root_element.tagName() != QSL("urlset")) {
     throw ApplicationException(QObject::tr("not a Sitemap"));
   }
 
@@ -76,17 +80,8 @@ QPair<StandardFeed*, QList<IconLocation>> SitemapParser::guessFeed(const QByteAr
   QList<IconLocation> icon_possible_locations;
 
   feed->setEncoding(xml_schema_encoding);
-
-  if (root_element.tagName() == QSL("urlset")) {
-    // Sitemap.
-    feed->setType(StandardFeed::Type::Sitemap);
-    feed->setTitle(StandardFeed::typeToString(StandardFeed::Type::Sitemap));
-  }
-  else {
-    // Sitemap index.
-    feed->setType(StandardFeed::Type::SitemapIndex);
-    feed->setTitle(StandardFeed::typeToString(StandardFeed::Type::SitemapIndex));
-  }
+  feed->setType(StandardFeed::Type::Sitemap);
+  feed->setTitle(StandardFeed::typeToString(StandardFeed::Type::Sitemap));
 
   return {feed, icon_possible_locations};
 }
@@ -108,45 +103,76 @@ QString SitemapParser::sitemapVideoNamespace() const {
 }
 
 QDomNodeList SitemapParser::xmlMessageElements() {
-  return {};
+  return m_xml.elementsByTagNameNS(sitemapNamespace(), QSL("url"));
 }
 
-// TODO: implement
-
 QString SitemapParser::xmlMessageTitle(const QDomElement& msg_element) const {
-  return {};
+  QString str_title = msg_element.elementsByTagNameNS(sitemapNewsNamespace(), QSL("title")).at(0).toElement().text();
+
+  if (str_title.isEmpty()) {
+    str_title = msg_element.elementsByTagNameNS(sitemapVideoNamespace(), QSL("title")).at(0).toElement().text();
+  }
+
+  return str_title;
 }
 
 QString SitemapParser::xmlMessageUrl(const QDomElement& msg_element) const {
-  return {};
+  return msg_element.elementsByTagNameNS(sitemapNamespace(), QSL("loc")).at(0).toElement().text();
 }
 
 QString SitemapParser::xmlMessageDescription(const QDomElement& msg_element) const {
-  return {};
-}
-
-QString SitemapParser::xmlMessageAuthor(const QDomElement& msg_element) const {
-  return {};
+  return xmlRawChild(msg_element.elementsByTagNameNS(sitemapVideoNamespace(), QSL("description")).at(0).toElement());
 }
 
 QDateTime SitemapParser::xmlMessageDateCreated(const QDomElement& msg_element) const {
-  return {};
+  QString str_date = msg_element.elementsByTagNameNS(sitemapNamespace(), QSL("lastmod")).at(0).toElement().text();
+
+  if (str_date.isEmpty()) {
+    str_date =
+      msg_element.elementsByTagNameNS(sitemapNewsNamespace(), QSL("publication_date")).at(0).toElement().text();
+  }
+
+  return TextFactory::parseDateTime(str_date);
 }
 
 QString SitemapParser::xmlMessageId(const QDomElement& msg_element) const {
-  return {};
+  return xmlMessageUrl(msg_element);
 }
 
 QList<Enclosure> SitemapParser::xmlMessageEnclosures(const QDomElement& msg_element) const {
-  return {};
-}
+  QList<Enclosure> enclosures;
 
-QList<MessageCategory> SitemapParser::xmlMessageCategories(const QDomElement& msg_element) const {
-  return {};
-}
+  // sitemap-image
+  QDomNodeList elem_links = msg_element.elementsByTagNameNS(sitemapImageNamespace(), QSL("image"));
 
-QString SitemapParser::xmlMessageRawContents(const QDomElement& msg_element) const {
-  return {};
+  for (int i = 0; i < elem_links.size(); i++) {
+    QDomElement link = elem_links.at(i).toElement();
+    QString loc = link.elementsByTagNameNS(sitemapImageNamespace(), QSL("loc")).at(0).toElement().text();
+
+    if (!loc.isEmpty()) {
+      // NOTE: The MIME is made up.
+      enclosures.append(Enclosure(loc, QSL("image/png")));
+    }
+  }
+
+  // sitemap-video
+  elem_links = msg_element.elementsByTagNameNS(sitemapVideoNamespace(), QSL("video"));
+
+  for (int i = 0; i < elem_links.size(); i++) {
+    QDomElement link = elem_links.at(i).toElement();
+    QString loc = link.elementsByTagNameNS(sitemapVideoNamespace(), QSL("player_loc")).at(0).toElement().text();
+
+    if (loc.isEmpty()) {
+      loc = link.elementsByTagNameNS(sitemapVideoNamespace(), QSL("content_loc")).at(0).toElement().text();
+    }
+
+    if (!loc.isEmpty()) {
+      // NOTE: The MIME is made up.
+      enclosures.append(Enclosure(loc, QSL("video/mpeg")));
+    }
+  }
+
+  return enclosures;
 }
 
 bool SitemapParser::isGzip(const QByteArray& content) {

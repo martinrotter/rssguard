@@ -159,9 +159,6 @@ QString StandardFeed::typeToString(StandardFeed::Type type) {
     case Type::Sitemap:
       return QSL("Sitemap");
 
-    case Type::SitemapIndex:
-      return QSL("Sitemap Index");
-
     case Type::Rss2X:
     default:
       return QSL("RSS 2.0/2.0.1");

@@ -161,10 +161,6 @@ bool FeedsImportExportModel::exportToOMPL20(QByteArray& result, bool export_icon
               outline_feed.setAttribute(QSL("version"), QSL("Sitemap"));
               break;
 
-            case StandardFeed::Type::SitemapIndex:
-              outline_feed.setAttribute(QSL("version"), QSL("SitemapIndex"));
-              break;
-
             default:
               break;
           }

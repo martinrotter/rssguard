@@ -1,6 +1,6 @@
 Supported Feed Readers
 ======================
-RSS Guard is multi-account application and supports many web-based feed readers via built-in plugins. One of the plugins, of course, provides the support for standard list of `RSS/ATOM/JSON` feeds with the set of features everyone would expect from classic feed reader.
+RSS Guard is multi-account application and supports many web-based feed readers via built-in plugins. One of the plugins, of course, provides the support for standard list of `RSS/ATOM/JSON/Sitemap` feeds with the set of features everyone would expect from classic feed reader.
 
 I organized the supported web-based feed readers into an elegant table:
 

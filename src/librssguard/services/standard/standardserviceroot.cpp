@@ -22,10 +22,15 @@
 #include "services/standard/parsers/jsonparser.h"
 #include "services/standard/parsers/rdfparser.h"
 #include "services/standard/parsers/rssparser.h"
+#include "services/standard/parsers/sitemapparser.h"
 #include "services/standard/standardcategory.h"
 #include "services/standard/standardfeed.h"
 #include "services/standard/standardfeedsimportexportmodel.h"
 #include "services/standard/standardserviceentrypoint.h"
+
+#if defined(ENABLE_COMPRESSED_SITEMAP)
+#include "3rd-party/qcompressor/qcompressor.h"
+#endif
 
 #include <QAction>
 #include <QClipboard>
@@ -180,6 +185,20 @@ QList<Message> StandardServiceRoot::obtainNewMessages(Feed* feed,
       throw FeedFetchException(Feed::Status::NetworkError, NetworkFactory::networkErrorText(network_result));
     }
 
+    // Sitemap parser supports gzip-encoded data too.
+    if (SitemapParser::isGzip(feed_contents)) {
+#if defined(ENABLE_COMPRESSED_SITEMAP)
+      qWarningNN << LOGSEC_CORE << "Decompressing gzipped feed data.";
+
+      QByteArray uncompressed_feed_contents;
+      QCompressor::gzipDecompress(feed_contents, uncompressed_feed_contents);
+
+      feed_contents = uncompressed_feed_contents;
+#else
+      qWarningNN << LOGSEC_CORE << "This feed is gzipped.";
+#endif
+    }
+
     // Encode downloaded data for further parsing.
     QTextCodec* codec = QTextCodec::codecForName(f->encoding().toLocal8Bit());
 
@@ -242,6 +261,9 @@ QList<Message> StandardServiceRoot::obtainNewMessages(Feed* feed,
     case StandardFeed::Type::Json:
       messages = JsonParser(formatted_feed_contents).messages();
       break;
+
+    case StandardFeed::Type::Sitemap:
+      messages = SitemapParser(formatted_feed_contents).messages();
 
     default:
       break;
