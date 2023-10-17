@@ -23,6 +23,10 @@ AtomParser::AtomParser(const QString& data) : FeedParser(data) {
 
 AtomParser::~AtomParser() {}
 
+QList<StandardFeed*> AtomParser::discoverFeeds(ServiceRoot* root, const QUrl& url) const {
+  return {};
+}
+
 QPair<StandardFeed*, QList<IconLocation>> AtomParser::guessFeed(const QByteArray& content,
                                                                 const QString& content_type) const {
   QString xml_schema_encoding = QSL(DEFAULT_FEED_ENCODING);

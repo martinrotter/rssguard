@@ -19,7 +19,6 @@
 #include "services/tt-rss/ttrssnetworkfactory.h"
 #include "services/tt-rss/ttrssserviceentrypoint.h"
 
-#include <QClipboard>
 #include <QPair>
 #include <QSqlTableModel>
 

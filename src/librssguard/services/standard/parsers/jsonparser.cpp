@@ -18,6 +18,10 @@ JsonParser::JsonParser(const QString& data) : FeedParser(data, false) {}
 
 JsonParser::~JsonParser() {}
 
+QList<StandardFeed*> JsonParser::discoverFeeds(ServiceRoot* root, const QUrl& url) const {
+  return {};
+}
+
 QPair<StandardFeed*, QList<IconLocation>> JsonParser::guessFeed(const QByteArray& content,
                                                                 const QString& content_type) const {
   if (content_type.contains(QSL("json"), Qt::CaseSensitivity::CaseInsensitive) ||

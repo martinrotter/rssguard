@@ -12,7 +12,6 @@
 #include "services/abstract/category.h"
 #include "services/standard/definitions.h"
 
-#include <QClipboard>
 #include <QFileDialog>
 #include <QImageReader>
 #include <QMenu>
@@ -251,30 +250,47 @@ void StandardFeedDetails::onDescriptionChanged(const QString& new_description) {
 }
 
 void StandardFeedDetails::onUrlChanged(const QString& new_url) {
-  if (sourceType() == StandardFeed::SourceType::Url) {
-    if (QRegularExpression(QSL(URL_REGEXP)).match(new_url).hasMatch()) {
-      m_ui.m_txtSource->setStatus(LineEditWithStatus::StatusType::Ok, tr("The URL is ok."));
+  switch (sourceType()) {
+    case StandardFeed::SourceType::Url: {
+      if (QUrl(new_url).isValid()) {
+        m_ui.m_txtSource->setStatus(LineEditWithStatus::StatusType::Ok, tr("The URL is ok."));
+      }
+      else if (!new_url.simplified().isEmpty()) {
+        m_ui.m_txtSource->setStatus(LineEditWithStatus::StatusType::Warning,
+                                    tr("The URL does not meet standard pattern. "
+                                       "Does your URL start with \"http://\" or \"https://\" prefix."));
+      }
+      else {
+        m_ui.m_txtSource->setStatus(LineEditWithStatus::StatusType::Error, tr("The URL is empty."));
+      }
+
+      break;
     }
-    else if (!new_url.simplified().isEmpty()) {
-      m_ui.m_txtSource->setStatus(LineEditWithStatus::StatusType::Warning,
-                                  tr("The URL does not meet standard pattern. "
-                                     "Does your URL start with \"http://\" or \"https://\" prefix."));
+
+    case StandardFeed::SourceType::Script: {
+      try {
+        TextFactory::tokenizeProcessArguments(new_url);
+        m_ui.m_txtSource->setStatus(LineEditWithStatus::StatusType::Ok, tr("Source is ok."));
+      }
+      catch (const ApplicationException& ex) {
+        m_ui.m_txtSource->setStatus(LineEditWithStatus::StatusType::Error, tr("Error: %1").arg(ex.message()));
+      }
+
+      break;
     }
-    else {
-      m_ui.m_txtSource->setStatus(LineEditWithStatus::StatusType::Error, tr("The URL is empty."));
+    case StandardFeed::SourceType::LocalFile: {
+      if (QFile::exists(new_url)) {
+        m_ui.m_txtSource->setStatus(LineEditWithStatus::StatusType::Ok, tr("File exists."));
+      }
+      else {
+        m_ui.m_txtSource->setStatus(LineEditWithStatus::StatusType::Error, tr("File does not exist."));
+      }
+
+      break;
     }
-  }
-  else if (sourceType() == StandardFeed::SourceType::Script) {
-    try {
-      TextFactory::tokenizeProcessArguments(new_url);
-      m_ui.m_txtSource->setStatus(LineEditWithStatus::StatusType::Ok, tr("Source is ok."));
-    }
-    catch (const ApplicationException& ex) {
-      m_ui.m_txtSource->setStatus(LineEditWithStatus::StatusType::Error, tr("Error: %1").arg(ex.message()));
-    }
-  }
-  else {
-    m_ui.m_txtSource->setStatus(LineEditWithStatus::StatusType::Ok, tr("The source is ok."));
+
+    default:
+      m_ui.m_txtSource->setStatus(LineEditWithStatus::StatusType::Ok, tr("The source is ok."));
   }
 }
 
@@ -358,9 +374,9 @@ void StandardFeedDetails::prepareForNewFeed(RootItem* parent_to_select, const QS
   if (!url.isEmpty()) {
     m_ui.m_txtSource->textEdit()->setPlainText(url);
   }
-  else if (Application::clipboard()->mimeData()->hasText()) {
+  /*else if (Application::clipboard()->mimeData()->hasText()) {
     m_ui.m_txtSource->textEdit()->setPlainText(Application::clipboard()->text());
-  }
+  }*/
 
   m_ui.m_txtSource->setFocus();
   m_ui.m_txtSource->textEdit()->selectAll();

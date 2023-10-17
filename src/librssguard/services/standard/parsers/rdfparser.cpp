@@ -17,6 +17,10 @@ RdfParser::RdfParser(const QString& data)
 
 RdfParser::~RdfParser() {}
 
+QList<StandardFeed*> RdfParser::discoverFeeds(ServiceRoot* root, const QUrl& url) const {
+  return {};
+}
+
 QPair<StandardFeed*, QList<IconLocation>> RdfParser::guessFeed(const QByteArray& content,
                                                                const QString& content_type) const {
   QString xml_schema_encoding = QSL(DEFAULT_FEED_ENCODING);

@@ -15,6 +15,7 @@
 #include "network-web/networkfactory.h"
 #include "services/abstract/gui/formcategorydetails.h"
 #include "services/standard/definitions.h"
+#include "services/standard/gui/formdiscoverfeeds.h"
 #include "services/standard/gui/formeditstandardaccount.h"
 #include "services/standard/gui/formstandardfeeddetails.h"
 #include "services/standard/gui/formstandardimportexport.h"
@@ -33,7 +34,6 @@
 #endif
 
 #include <QAction>
-#include <QClipboard>
 #include <QSqlTableModel>
 #include <QStack>
 #include <QTextCodec>
@@ -135,12 +135,22 @@ void StandardServiceRoot::addNewFeed(RootItem* selected_item, const QString& url
     return;
   }
 
+  QScopedPointer<FormDiscoverFeeds> form_discover(new FormDiscoverFeeds(this,
+                                                                        selected_item,
+                                                                        url,
+                                                                        qApp->mainFormWidget()));
+
+  form_discover->exec();
+
+  /*
   QScopedPointer<FormStandardFeedDetails> form_pointer(new FormStandardFeedDetails(this,
                                                                                    selected_item,
                                                                                    url,
                                                                                    qApp->mainFormWidget()));
 
   form_pointer->addEditFeed<StandardFeed>();
+  */
+
   qApp->feedUpdateLock()->unlock();
 }
 

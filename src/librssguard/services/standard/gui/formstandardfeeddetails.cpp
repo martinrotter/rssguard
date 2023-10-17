@@ -75,7 +75,7 @@ void FormStandardFeedDetails::apply() {
   StandardFeed::Type type =
     static_cast<StandardFeed::Type>(m_standardFeedDetails->m_ui.m_cmbType
                                       ->itemData(m_standardFeedDetails->m_ui.m_cmbType->currentIndex())
-                                      .value<int>());
+                                      .toInt());
 
   // Setup data for new_feed.
   std_feed->setTitle(m_standardFeedDetails->m_ui.m_txtTitle->lineEdit()->text().simplified());

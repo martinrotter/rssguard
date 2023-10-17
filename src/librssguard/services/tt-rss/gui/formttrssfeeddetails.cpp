@@ -10,7 +10,6 @@
 #include "services/tt-rss/ttrssnetworkfactory.h"
 #include "services/tt-rss/ttrssserviceroot.h"
 
-#include <QClipboard>
 #include <QMimeData>
 #include <QTimer>
 
@@ -69,9 +68,11 @@ void FormTtRssFeedDetails::loadFeedData() {
     if (!m_urlToProcess.isEmpty()) {
       m_feedDetails->ui.m_txtUrl->lineEdit()->setText(m_urlToProcess);
     }
+    /*
     else if (Application::clipboard()->mimeData()->hasText()) {
       m_feedDetails->ui.m_txtUrl->lineEdit()->setText(Application::clipboard()->text());
     }
+    */
 
     m_feedDetails->ui.m_txtUrl->lineEdit()->selectAll();
     m_feedDetails->ui.m_txtUrl->setFocus();

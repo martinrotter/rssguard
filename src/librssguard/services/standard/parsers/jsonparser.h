@@ -12,6 +12,8 @@ class JsonParser : public FeedParser {
     explicit JsonParser(const QString& data);
     virtual ~JsonParser();
 
+    virtual QList<StandardFeed*> discoverFeeds(ServiceRoot* root, const QUrl& url) const;
+
     virtual QPair<StandardFeed*, QList<IconLocation>> guessFeed(const QByteArray& content,
                                                                 const QString& content_type) const;
 

@@ -20,6 +20,10 @@ SitemapParser::SitemapParser(const QString& data) : FeedParser(data) {}
 
 SitemapParser::~SitemapParser() {}
 
+QList<StandardFeed*> SitemapParser::discoverFeeds(ServiceRoot* root, const QUrl& url) const {
+  return {};
+}
+
 QPair<StandardFeed*, QList<IconLocation>> SitemapParser::guessFeed(const QByteArray& content,
                                                                    const QString& content_type) const {
   QByteArray uncompressed_content;

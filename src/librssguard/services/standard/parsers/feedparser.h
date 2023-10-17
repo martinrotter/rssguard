@@ -11,8 +11,7 @@
 
 #include "core/message.h"
 #include "definitions/typedefs.h"
-
-class StandardFeed;
+#include "services/standard/standardfeed.h"
 
 // Base class for all XML-based feed parsers.
 class FeedParser {
@@ -21,7 +20,7 @@ class FeedParser {
     virtual ~FeedParser();
 
     // Returns list of absolute URLs of discovered feeds from provided base URL.
-    virtual QStringList discoverFeeds(const QUrl& url) const;
+    virtual QList<StandardFeed*> discoverFeeds(ServiceRoot* root, const QUrl& url) const;
 
     // Guesses feed.
     virtual QPair<StandardFeed*, QList<IconLocation>> guessFeed(const QByteArray& content,

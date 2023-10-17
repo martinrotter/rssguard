@@ -32,6 +32,7 @@
 #include "services/abstract/recyclebin.h"
 #include "services/abstract/serviceroot.h"
 
+#include <QClipboard>
 #include <QCloseEvent>
 #include <QFileDialog>
 #include <QRect>
@@ -323,7 +324,7 @@ void FormMain::updateAddItemMenu() {
 
       root_menu->addAction(action_new_feed);
       connect(action_new_feed, &QAction::triggered, activated_root, [activated_root]() {
-        activated_root->addNewFeed(activated_root);
+        activated_root->addNewFeed(activated_root, QGuiApplication::clipboard()->text(QClipboard::Mode::Clipboard));
       });
     }
 

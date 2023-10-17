@@ -38,9 +38,9 @@ set(SOURCES
   database/sqlitedriver.cpp
   database/sqlitedriver.h
   definitions/definitions.h
-  definitions/typedefs.h
   definitions/globals.cpp
   definitions/globals.h
+  definitions/typedefs.h
   dynamic-shortcuts/dynamicshortcuts.cpp
   dynamic-shortcuts/dynamicshortcuts.h
   dynamic-shortcuts/dynamicshortcutswidget.cpp
@@ -49,20 +49,20 @@ set(SOURCES
   dynamic-shortcuts/shortcutcatcher.h
   exceptions/applicationexception.cpp
   exceptions/applicationexception.h
-  exceptions/feedrecognizedbutfailedexception.cpp
-  exceptions/feedrecognizedbutfailedexception.h
   exceptions/feedfetchexception.cpp
   exceptions/feedfetchexception.h
+  exceptions/feedrecognizedbutfailedexception.cpp
+  exceptions/feedrecognizedbutfailedexception.h
   exceptions/filteringexception.cpp
   exceptions/filteringexception.h
   exceptions/ioexception.cpp
   exceptions/ioexception.h
   exceptions/networkexception.cpp
   exceptions/networkexception.h
-  exceptions/scriptexception.cpp
-  exceptions/scriptexception.h
   exceptions/processexception.cpp
   exceptions/processexception.h
+  exceptions/scriptexception.cpp
+  exceptions/scriptexception.h
   gui/dialogs/formabout.cpp
   gui/dialogs/formabout.h
   gui/dialogs/formaddaccount.cpp
@@ -71,10 +71,10 @@ set(SOURCES
   gui/dialogs/formbackupdatabasesettings.h
   gui/dialogs/formdatabasecleanup.cpp
   gui/dialogs/formdatabasecleanup.h
-  gui/dialogs/formmain.cpp
-  gui/dialogs/formmain.h  
   gui/dialogs/formlog.cpp
   gui/dialogs/formlog.h
+  gui/dialogs/formmain.cpp
+  gui/dialogs/formmain.h
   gui/dialogs/formmessagefiltersmanager.cpp
   gui/dialogs/formmessagefiltersmanager.h
   gui/dialogs/formrestoredatabasesettings.cpp
@@ -97,14 +97,18 @@ set(SOURCES
   gui/messagepreviewer.h
   gui/messagesview.cpp
   gui/messagesview.h
+  gui/notifications/articlelistnotification.cpp
+  gui/notifications/articlelistnotification.h
   gui/notifications/basetoastnotification.cpp
   gui/notifications/basetoastnotification.h
   gui/notifications/notificationseditor.cpp
   gui/notifications/notificationseditor.h
   gui/notifications/singlenotificationeditor.cpp
   gui/notifications/singlenotificationeditor.h
-  gui/notifications/articlelistnotification.cpp
-  gui/notifications/articlelistnotification.h
+  gui/notifications/toastnotification.cpp
+  gui/notifications/toastnotification.h
+  gui/notifications/toastnotificationsmanager.cpp
+  gui/notifications/toastnotificationsmanager.h
   gui/reusable/baselineedit.cpp
   gui/reusable/baselineedit.h
   gui/reusable/basetreeview.cpp
@@ -113,6 +117,8 @@ set(SOURCES
   gui/reusable/colortoolbutton.h
   gui/reusable/comboboxwithstatus.cpp
   gui/reusable/comboboxwithstatus.h
+  gui/reusable/discoverfeedsbutton.cpp
+  gui/reusable/discoverfeedsbutton.h
   gui/reusable/edittableview.cpp
   gui/reusable/edittableview.h
   gui/reusable/helpspoiler.cpp
@@ -125,6 +131,8 @@ set(SOURCES
   gui/reusable/labelwithstatus.h
   gui/reusable/lineeditwithstatus.cpp
   gui/reusable/lineeditwithstatus.h
+  gui/reusable/locationlineedit.cpp
+  gui/reusable/locationlineedit.h
   gui/reusable/messagecountspinbox.cpp
   gui/reusable/messagecountspinbox.h
   gui/reusable/networkproxydetails.cpp
@@ -137,12 +145,12 @@ set(SOURCES
   gui/reusable/progressbarwithtext.h
   gui/reusable/resizablestackedwidget.cpp
   gui/reusable/resizablestackedwidget.h
+  gui/reusable/searchlineedit.cpp
+  gui/reusable/searchlineedit.h
   gui/reusable/searchtextwidget.cpp
   gui/reusable/searchtextwidget.h
   gui/reusable/squeezelabel.cpp
   gui/reusable/squeezelabel.h
-  gui/reusable/searchlineedit.cpp
-  gui/reusable/searchlineedit.h
   gui/reusable/styleditemdelegatewithoutfocus.cpp
   gui/reusable/styleditemdelegatewithoutfocus.h
   gui/reusable/timespinbox.cpp
@@ -151,6 +159,10 @@ set(SOURCES
   gui/reusable/treeviewcolumnsmenu.h
   gui/reusable/widgetwithstatus.cpp
   gui/reusable/widgetwithstatus.h
+  gui/richtexteditor/mrichtextedit.cpp
+  gui/richtexteditor/mrichtextedit.h
+  gui/richtexteditor/mtextedit.cpp
+  gui/richtexteditor/mtextedit.h
   gui/settings/settingsbrowsermail.cpp
   gui/settings/settingsbrowsermail.h
   gui/settings/settingsdatabase.cpp
@@ -181,15 +193,6 @@ set(SOURCES
   gui/tabcontent.h
   gui/tabwidget.cpp
   gui/tabwidget.h
-  gui/notifications/toastnotification.cpp
-  gui/notifications/toastnotification.h
-  gui/notifications/toastnotificationsmanager.cpp
-  gui/notifications/toastnotificationsmanager.h
-  gui/webviewers/webviewer.h
-  gui/richtexteditor/mrichtextedit.cpp
-  gui/richtexteditor/mrichtextedit.h
-  gui/richtexteditor/mtextedit.cpp
-  gui/richtexteditor/mtextedit.h
   gui/toolbars/basetoolbar.cpp
   gui/toolbars/basetoolbar.h
   gui/toolbars/feedstoolbar.cpp
@@ -200,6 +203,9 @@ set(SOURCES
   gui/toolbars/statusbar.h
   gui/toolbars/toolbareditor.cpp
   gui/toolbars/toolbareditor.h
+  gui/webbrowser.cpp
+  gui/webbrowser.h
+  gui/webviewers/webviewer.h
   miscellaneous/application.cpp
   miscellaneous/application.h
   miscellaneous/autosaver.cpp
@@ -236,6 +242,14 @@ set(SOURCES
   miscellaneous/templates.h
   miscellaneous/textfactory.cpp
   miscellaneous/textfactory.h
+  network-web/adblock/adblockdialog.cpp
+  network-web/adblock/adblockdialog.h
+  network-web/adblock/adblockicon.cpp
+  network-web/adblock/adblockicon.h
+  network-web/adblock/adblockmanager.cpp
+  network-web/adblock/adblockmanager.h
+  network-web/adblock/adblockrequestinfo.cpp
+  network-web/adblock/adblockrequestinfo.h
   network-web/basenetworkaccessmanager.cpp
   network-web/basenetworkaccessmanager.h
   network-web/cookiejar.cpp
@@ -244,6 +258,8 @@ set(SOURCES
   network-web/downloader.h
   network-web/downloadmanager.cpp
   network-web/downloadmanager.h
+  network-web/googlesuggest.cpp
+  network-web/googlesuggest.h
   network-web/httpresponse.cpp
   network-web/httpresponse.h
   network-web/networkfactory.cpp
@@ -268,32 +284,32 @@ set(SOURCES
   services/abstract/feed.h
   services/abstract/gui/authenticationdetails.cpp
   services/abstract/gui/authenticationdetails.h
+  services/abstract/gui/custommessagepreviewer.cpp
+  services/abstract/gui/custommessagepreviewer.h
   services/abstract/gui/formaccountdetails.cpp
   services/abstract/gui/formaccountdetails.h
-  services/abstract/gui/formcategorydetails.cpp
-  services/abstract/gui/formcategorydetails.h
-  services/abstract/gui/formfeeddetails.cpp
-  services/abstract/gui/formfeeddetails.h
   services/abstract/gui/formaddeditlabel.cpp
   services/abstract/gui/formaddeditlabel.h
   services/abstract/gui/formaddeditprobe.cpp
   services/abstract/gui/formaddeditprobe.h
-  services/abstract/gui/custommessagepreviewer.h
-  services/abstract/gui/custommessagepreviewer.cpp
+  services/abstract/gui/formcategorydetails.cpp
+  services/abstract/gui/formcategorydetails.h
+  services/abstract/gui/formfeeddetails.cpp
+  services/abstract/gui/formfeeddetails.h
   services/abstract/importantnode.cpp
   services/abstract/importantnode.h
   services/abstract/label.cpp
   services/abstract/label.h
   services/abstract/labelsnode.cpp
   services/abstract/labelsnode.h
-  services/abstract/search.cpp
-  services/abstract/search.h
-  services/abstract/searchsnode.cpp
-  services/abstract/searchsnode.h
   services/abstract/recyclebin.cpp
   services/abstract/recyclebin.h
   services/abstract/rootitem.cpp
   services/abstract/rootitem.h
+  services/abstract/search.cpp
+  services/abstract/search.h
+  services/abstract/searchsnode.cpp
+  services/abstract/searchsnode.h
   services/abstract/serviceentrypoint.h
   services/abstract/serviceroot.cpp
   services/abstract/serviceroot.h
@@ -317,6 +333,8 @@ set(SOURCES
   services/gmail/gmailnetworkfactory.h
   services/gmail/gmailserviceroot.cpp
   services/gmail/gmailserviceroot.h
+  services/gmail/gui/emailpreviewer.cpp
+  services/gmail/gui/emailpreviewer.h
   services/gmail/gui/emailrecipientcontrol.cpp
   services/gmail/gui/emailrecipientcontrol.h
   services/gmail/gui/formaddeditemail.cpp
@@ -325,8 +343,6 @@ set(SOURCES
   services/gmail/gui/formeditgmailaccount.h
   services/gmail/gui/gmailaccountdetails.cpp
   services/gmail/gui/gmailaccountdetails.h
-  services/gmail/gui/emailpreviewer.h
-  services/gmail/gui/emailpreviewer.cpp
   services/greader/definitions.h
   services/greader/greaderentrypoint.cpp
   services/greader/greaderentrypoint.h
@@ -367,6 +383,8 @@ set(SOURCES
   services/reddit/redditsubscription.cpp
   services/reddit/redditsubscription.h
   services/standard/definitions.h
+  services/standard/gui/formdiscoverfeeds.cpp
+  services/standard/gui/formdiscoverfeeds.h
   services/standard/gui/formeditstandardaccount.cpp
   services/standard/gui/formeditstandardaccount.h
   services/standard/gui/formstandardfeeddetails.cpp
@@ -375,10 +393,10 @@ set(SOURCES
   services/standard/gui/formstandardimportexport.h
   services/standard/gui/standardfeeddetails.cpp
   services/standard/gui/standardfeeddetails.h
-  services/standard/parsers/feedparser.cpp
-  services/standard/parsers/feedparser.h
   services/standard/parsers/atomparser.cpp
   services/standard/parsers/atomparser.h
+  services/standard/parsers/feedparser.cpp
+  services/standard/parsers/feedparser.h
   services/standard/parsers/jsonparser.cpp
   services/standard/parsers/jsonparser.h
   services/standard/parsers/rdfparser.cpp
@@ -417,22 +435,6 @@ set(SOURCES
   services/tt-rss/ttrssserviceentrypoint.h
   services/tt-rss/ttrssserviceroot.cpp
   services/tt-rss/ttrssserviceroot.h
-  gui/reusable/discoverfeedsbutton.cpp
-  gui/reusable/discoverfeedsbutton.h
-  gui/reusable/locationlineedit.cpp
-  gui/reusable/locationlineedit.h
-  gui/webbrowser.cpp
-  gui/webbrowser.h
-  network-web/googlesuggest.cpp
-  network-web/googlesuggest.h
-  network-web/adblock/adblockdialog.cpp
-  network-web/adblock/adblockdialog.h
-  network-web/adblock/adblockicon.cpp
-  network-web/adblock/adblockicon.h
-  network-web/adblock/adblockmanager.cpp
-  network-web/adblock/adblockmanager.h
-  network-web/adblock/adblockrequestinfo.cpp
-  network-web/adblock/adblockrequestinfo.h
 )
 
 set(UI_FILES
@@ -440,21 +442,21 @@ set(UI_FILES
   gui/dialogs/formaddaccount.ui
   gui/dialogs/formbackupdatabasesettings.ui
   gui/dialogs/formdatabasecleanup.ui
-  gui/dialogs/formmain.ui
   gui/dialogs/formlog.ui
+  gui/dialogs/formmain.ui
   gui/dialogs/formmessagefiltersmanager.ui
   gui/dialogs/formrestoredatabasesettings.ui
   gui/dialogs/formsettings.ui
   gui/dialogs/formupdate.ui
+  gui/itemdetails.ui
+  gui/newspaperpreviewer.ui
+  gui/notifications/articlelistnotification.ui
   gui/notifications/notificationseditor.ui
   gui/notifications/singlenotificationeditor.ui
-  gui/notifications/articlelistnotification.ui
   gui/notifications/toastnotification.ui
   gui/reusable/networkproxydetails.ui
-  gui/itemdetails.ui
-  gui/richtexteditor/mrichtextedit.ui
-  gui/newspaperpreviewer.ui
   gui/reusable/searchtextwidget.ui
+  gui/richtexteditor/mrichtextedit.ui
   gui/settings/settingsbrowsermail.ui
   gui/settings/settingsdatabase.ui
   gui/settings/settingsdownloads.ui
@@ -462,44 +464,46 @@ set(UI_FILES
   gui/settings/settingsgeneral.ui
   gui/settings/settingsgui.ui
   gui/settings/settingslocalization.ui
-  gui/settings/settingsnotifications.ui
   gui/settings/settingsnodejs.ui
+  gui/settings/settingsnotifications.ui
   gui/settings/settingsshortcuts.ui
   gui/toolbars/toolbareditor.ui
+  network-web/adblock/adblockdialog.ui
   network-web/downloaditem.ui
   network-web/downloadmanager.ui
   services/abstract/gui/authenticationdetails.ui
   services/abstract/gui/formaccountdetails.ui
-  services/abstract/gui/formcategorydetails.ui
-  services/abstract/gui/formfeeddetails.ui
   services/abstract/gui/formaddeditlabel.ui
   services/abstract/gui/formaddeditprobe.ui
+  services/abstract/gui/formcategorydetails.ui
+  services/abstract/gui/formfeeddetails.ui
   services/feedly/gui/feedlyaccountdetails.ui
+  services/gmail/gui/emailpreviewer.ui
   services/gmail/gui/formaddeditemail.ui
   services/gmail/gui/gmailaccountdetails.ui
-  services/gmail/gui/emailpreviewer.ui
   services/greader/gui/greaderaccountdetails.ui
   services/owncloud/gui/owncloudaccountdetails.ui
   services/reddit/gui/redditaccountdetails.ui
+  services/standard/gui/formdiscoverfeeds.ui
   services/standard/gui/formstandardimportexport.ui
   services/standard/gui/standardfeeddetails.ui
   services/tt-rss/gui/formttrssnote.ui
   services/tt-rss/gui/ttrssaccountdetails.ui
   services/tt-rss/gui/ttrssfeeddetails.ui
-  network-web/adblock/adblockdialog.ui)
+)
 
 if(USE_WEBENGINE)
   list(APPEND SOURCES
     # WebEngine-based web (and message) browser.
-    network-web/webengine/webenginepage.cpp
-    network-web/webengine/webenginepage.h
     gui/webviewers/webengine/webengineviewer.cpp
     gui/webviewers/webengine/webengineviewer.h
+    network-web/adblock/adblockurlinterceptor.cpp
+    network-web/adblock/adblockurlinterceptor.h
     network-web/webengine/networkurlinterceptor.cpp
     network-web/webengine/networkurlinterceptor.h
     network-web/webengine/urlinterceptor.h
-    network-web/adblock/adblockurlinterceptor.cpp
-    network-web/adblock/adblockurlinterceptor.h
+    network-web/webengine/webenginepage.cpp
+    network-web/webengine/webenginepage.h
   )
 endif()
 

@@ -206,8 +206,8 @@ void MessagesView::copyUrlOfSelectedArticles() const {
               .toString();
   }
 
-  if (qApp->clipboard() != nullptr && !urls.isEmpty()) {
-    qApp->clipboard()->setText(urls.join(TextFactory::newline()), QClipboard::Mode::Clipboard);
+  if (QGuiApplication::clipboard() != nullptr && !urls.isEmpty()) {
+    QGuiApplication::clipboard()->setText(urls.join(TextFactory::newline()), QClipboard::Mode::Clipboard);
   }
 }
 
