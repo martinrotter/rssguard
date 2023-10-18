@@ -15,10 +15,10 @@ class FeedsImportExportModel;
 class QMenu;
 
 class StandardServiceRoot : public ServiceRoot {
-  Q_OBJECT
+    Q_OBJECT
 
-  friend class FormStandardFeedDetails;
-  friend class FormStandardImportExport;
+    friend class FormStandardFeedDetails;
+    friend class FormStandardImportExport;
 
   public:
     explicit StandardServiceRoot(RootItem* parent = nullptr);
@@ -48,7 +48,6 @@ class StandardServiceRoot : public ServiceRoot {
     void exportFeeds();
 
   private:
-
     // Takes structure residing under given root item and adds feeds/categories from
     // it to active structure.
     // NOTE: This is used for import/export of the model.

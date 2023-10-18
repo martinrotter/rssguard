@@ -6,6 +6,7 @@
 #include "definitions/typedefs.h"
 #include "exceptions/applicationexception.h"
 #include "exceptions/feedrecognizedbutfailedexception.h"
+#include "miscellaneous/settings.h"
 #include "miscellaneous/textfactory.h"
 #include "services/standard/definitions.h"
 #include "services/standard/standardfeed.h"
@@ -19,7 +20,89 @@ JsonParser::JsonParser(const QString& data) : FeedParser(data, false) {}
 JsonParser::~JsonParser() {}
 
 QList<StandardFeed*> JsonParser::discoverFeeds(ServiceRoot* root, const QUrl& url) const {
-  return {};
+  QString my_url = url.toString();
+  QList<StandardFeed*> feeds;
+
+  // 1. Test direct URL for a feed.
+  // 2. Test embedded JSON feed links from HTML data.
+
+  // Download URL.
+  int timeout = qApp->settings()->value(GROUP(Feeds), SETTING(Feeds::UpdateTimeout)).toInt();
+  QByteArray data;
+  auto res = NetworkFactory::performNetworkOperation(my_url,
+                                                     timeout,
+                                                     {},
+                                                     data,
+                                                     QNetworkAccessManager::Operation::GetOperation,
+                                                     {},
+                                                     {},
+                                                     {},
+                                                     {},
+                                                     root->networkProxy());
+
+  if (res.m_networkError == QNetworkReply::NetworkError::NoError) {
+    try {
+      // 1.
+      auto guessed_feed = guessFeed(data, res.m_contentType);
+
+      guessed_feed.first->setSource(my_url);
+
+      return {guessed_feed.first};
+    }
+    catch (...) {
+      qDebugNN << LOGSEC_CORE << QUOTE_W_SPACE(my_url) << "is not a direct feed file.";
+    }
+
+    // 2.
+    QRegularExpression rx(QSL(JSON_REGEX_MATCHER), QRegularExpression::PatternOption::CaseInsensitiveOption);
+    QRegularExpression rx_href(QSL(JSON_HREF_REGEX_MATCHER), QRegularExpression::PatternOption::CaseInsensitiveOption);
+
+    rx_href.optimize();
+
+    QRegularExpressionMatchIterator it_rx = rx.globalMatch(QString::fromUtf8(data));
+
+    while (it_rx.hasNext()) {
+      QRegularExpressionMatch mat_tx = it_rx.next();
+      QString link_tag = mat_tx.captured();
+      QString feed_link = rx_href.match(link_tag).captured(1);
+
+      if (feed_link.startsWith(QL1S("//"))) {
+        feed_link = QSL(URI_SCHEME_HTTP) + feed_link.mid(2);
+      }
+      else if (feed_link.startsWith(QL1C('/'))) {
+        feed_link = url.toString(QUrl::UrlFormattingOption::RemovePath | QUrl::UrlFormattingOption::RemoveQuery |
+                                 QUrl::UrlFormattingOption::StripTrailingSlash) +
+                    feed_link;
+      }
+
+      QByteArray data;
+      auto res = NetworkFactory::performNetworkOperation(feed_link,
+                                                         timeout,
+                                                         {},
+                                                         data,
+                                                         QNetworkAccessManager::Operation::GetOperation,
+                                                         {},
+                                                         {},
+                                                         {},
+                                                         {},
+                                                         root->networkProxy());
+
+      if (res.m_networkError == QNetworkReply::NetworkError::NoError) {
+        try {
+          auto guessed_feed = guessFeed(data, res.m_contentType);
+
+          guessed_feed.first->setSource(feed_link);
+          feeds.append(guessed_feed.first);
+        }
+        catch (const ApplicationException& ex) {
+          qDebugNN << LOGSEC_CORE << QUOTE_W_SPACE(feed_link)
+                   << " should be direct link to feed file but was not recognized:" << QUOTE_W_SPACE_DOT(ex.message());
+        }
+      }
+    }
+  }
+
+  return feeds;
 }
 
 QPair<StandardFeed*, QList<IconLocation>> JsonParser::guessFeed(const QByteArray& content,

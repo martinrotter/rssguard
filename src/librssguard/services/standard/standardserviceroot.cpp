@@ -140,16 +140,14 @@ void StandardServiceRoot::addNewFeed(RootItem* selected_item, const QString& url
                                                                         url,
                                                                         qApp->mainFormWidget()));
 
-  form_discover->exec();
+  if (form_discover->exec() == ADVANCED_FEED_ADD_DIALOG_CODE) {
+    QScopedPointer<FormStandardFeedDetails> form_pointer(new FormStandardFeedDetails(this,
+                                                                                     selected_item,
+                                                                                     url,
+                                                                                     qApp->mainFormWidget()));
 
-  /*
-  QScopedPointer<FormStandardFeedDetails> form_pointer(new FormStandardFeedDetails(this,
-                                                                                   selected_item,
-                                                                                   url,
-                                                                                   qApp->mainFormWidget()));
-
-  form_pointer->addEditFeed<StandardFeed>();
-  */
+    form_pointer->addEditFeed<StandardFeed>();
+  }
 
   qApp->feedUpdateLock()->unlock();
 }

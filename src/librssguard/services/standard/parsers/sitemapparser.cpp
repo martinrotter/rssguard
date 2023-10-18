@@ -9,6 +9,7 @@
 #include "definitions/definitions.h"
 #include "exceptions/applicationexception.h"
 #include "exceptions/feedrecognizedbutfailedexception.h"
+#include "miscellaneous/settings.h"
 #include "miscellaneous/textfactory.h"
 #include "services/standard/definitions.h"
 
@@ -21,7 +22,108 @@ SitemapParser::SitemapParser(const QString& data) : FeedParser(data) {}
 SitemapParser::~SitemapParser() {}
 
 QList<StandardFeed*> SitemapParser::discoverFeeds(ServiceRoot* root, const QUrl& url) const {
-  return {};
+  QHash<QString, StandardFeed*> feeds;
+  QStringList to_process_sitemaps;
+
+  // 1. Process "URL/robots.txt" file.
+  // 2. Process "URLHOST/robots.txt" file.
+  // 3. Direct URL test. If sitemap index, process its children.
+  // 4. Test "URL/sitemap.xml" endpoint.
+  // 5. Test "URL/sitemap.xml.gz" endpoint.
+
+  // 1.
+  // 2.
+  QStringList to_process_robots = {
+    url.toString(QUrl::UrlFormattingOption::StripTrailingSlash).replace(QRegularExpression(QSL("\\/$")), QString()) +
+      QSL("/robots.txt"),
+    url.toString(QUrl::UrlFormattingOption::RemovePath | QUrl::UrlFormattingOption::RemoveQuery) + QSL("/robots.txt")};
+
+  to_process_robots.removeDuplicates();
+
+  for (const QString& robots_url : to_process_robots) {
+    // Download URL.
+    int timeout = qApp->settings()->value(GROUP(Feeds), SETTING(Feeds::UpdateTimeout)).toInt();
+    QByteArray data;
+    auto res = NetworkFactory::performNetworkOperation(robots_url,
+                                                       timeout,
+                                                       {},
+                                                       data,
+                                                       QNetworkAccessManager::Operation::GetOperation,
+                                                       {},
+                                                       {},
+                                                       {},
+                                                       {},
+                                                       root->networkProxy());
+
+    if (res.m_networkError == QNetworkReply::NetworkError::NoError) {
+      QRegularExpression rx(QSL("Sitemap: ?([^\\r\\n]+)"),
+                            QRegularExpression::PatternOption::CaseInsensitiveOption |
+                              QRegularExpression::PatternOption::MultilineOption);
+      QRegularExpressionMatchIterator it_rx = rx.globalMatch(QString::fromUtf8(data));
+
+      while (it_rx.hasNext()) {
+        QString sitemap_link = it_rx.next().captured(1);
+
+        to_process_sitemaps.append(sitemap_link);
+      }
+    }
+  }
+
+  // 3.
+  to_process_sitemaps.append(url.toString());
+
+  // 4.
+  to_process_sitemaps.append(url.toString(QUrl::UrlFormattingOption::StripTrailingSlash)
+                               .replace(QRegularExpression(QSL("\\/$")), QString()) +
+                             QSL("/sitemap.xml"));
+
+  // 5.
+  to_process_sitemaps.append(url.toString(QUrl::UrlFormattingOption::StripTrailingSlash)
+                               .replace(QRegularExpression(QSL("\\/$")), QString()) +
+                             QSL("/sitemap.xml.gz"));
+
+  while (!to_process_sitemaps.isEmpty()) {
+    to_process_sitemaps.removeDuplicates();
+
+    QString my_url = to_process_sitemaps.takeFirst();
+
+    if (feeds.contains(my_url)) {
+      continue;
+    }
+
+    // Download URL.
+    int timeout = qApp->settings()->value(GROUP(Feeds), SETTING(Feeds::UpdateTimeout)).toInt();
+    QByteArray data;
+    auto res = NetworkFactory::performNetworkOperation(my_url,
+                                                       timeout,
+                                                       {},
+                                                       data,
+                                                       QNetworkAccessManager::Operation::GetOperation,
+                                                       {},
+                                                       {},
+                                                       {},
+                                                       {},
+                                                       root->networkProxy());
+
+    if (res.m_networkError == QNetworkReply::NetworkError::NoError) {
+      try {
+        // 1.
+        auto guessed_feed = guessFeed(data, res.m_contentType);
+
+        guessed_feed.first->setSource(my_url);
+        feeds.insert(my_url, guessed_feed.first);
+      }
+      catch (const FeedRecognizedButFailedException& ex) {
+        // This is index.
+        to_process_sitemaps.append(ex.arbitraryData().toStringList());
+      }
+      catch (const ApplicationException&) {
+        qDebugNN << LOGSEC_CORE << QUOTE_W_SPACE(my_url) << "is not a direct sitemap file.";
+      }
+    }
+  }
+
+  return feeds.values();
 }
 
 QPair<StandardFeed*, QList<IconLocation>> SitemapParser::guessFeed(const QByteArray& content,
@@ -73,7 +175,14 @@ QPair<StandardFeed*, QList<IconLocation>> SitemapParser::guessFeed(const QByteAr
   QDomElement root_element = xml_document.documentElement();
 
   if (root_element.tagName() == QSL("sitemapindex")) {
-    throw FeedRecognizedButFailedException(QObject::tr("sitemap indices are not supported"));
+    QStringList locs;
+    int i = 0;
+
+    for (QDomNodeList ndl = root_element.elementsByTagNameNS(sitemapNamespace(), QSL("loc")); i < ndl.size(); i++) {
+      locs << ndl.at(i).toElement().text();
+    }
+
+    throw FeedRecognizedButFailedException(QObject::tr("sitemap indices are not supported"), locs);
   }
 
   if (root_element.tagName() != QSL("urlset")) {
@@ -180,5 +289,5 @@ QList<Enclosure> SitemapParser::xmlMessageEnclosures(const QDomElement& msg_elem
 }
 
 bool SitemapParser::isGzip(const QByteArray& content) {
-  return ((content[0] & 0xFF) == 0x1f) && ((content[1] & 0xFF) == 0x8b);
+  return content.size() >= 2 && ((content[0] & 0xFF) == 0x1f) && ((content[1] & 0xFF) == 0x8b);
 }

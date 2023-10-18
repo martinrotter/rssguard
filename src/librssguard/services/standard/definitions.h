@@ -6,4 +6,17 @@
 #define FEED_INITIAL_OPML_PATTERN   "feeds-%1.opml"
 #define DEFAULT_ENCLOSURE_MIME_TYPE "image/jpg"
 
+#define ADVANCED_FEED_ADD_DIALOG_CODE 64
+
+#define RSS_REGEX_MATCHER      "<link[^>]+type=\"application\\/(?:rss\\+xml)\"[^>]*>"
+#define RSS_HREF_REGEX_MATCHER "href=\"([^\"]+)\""
+
+#define JSON_REGEX_MATCHER      "<link[^>]+type=\"application\\/(?:feed\\+json|json)\"[^>]*>"
+#define JSON_HREF_REGEX_MATCHER "href=\"([^\"]+)\""
+
+#define ATOM_REGEX_MATCHER      "<link[^>]+type=\"application\\/(?:atom\\+xml|rss\\+xml)\"[^>]*>"
+#define ATOM_HREF_REGEX_MATCHER "href=\"([^\"]+)\""
+
+#define GITHUB_URL_REGEX "github\\.com\\/(\\w+)\\/(\\w+)"
+
 #endif // STANDARD_DEFINITIONS_H

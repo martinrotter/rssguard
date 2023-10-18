@@ -19,12 +19,18 @@ RssParser::RssParser(const QString& data) : FeedParser(data) {}
 RssParser::~RssParser() {}
 
 QList<StandardFeed*> RssParser::discoverFeeds(ServiceRoot* root, const QUrl& url) const {
+  QString my_url = url.toString();
   QList<StandardFeed*> feeds;
+
+  // 1. Test direct URL for a feed.
+  // 2. Test embedded RSS feed links from HTML data.
+  // 3. Test "URL/feed" endpoint.
+  // 4. Test "URL/rss" endpoint.
 
   // Download URL.
   int timeout = qApp->settings()->value(GROUP(Feeds), SETTING(Feeds::UpdateTimeout)).toInt();
   QByteArray data;
-  auto res = NetworkFactory::performNetworkOperation(url.toString(),
+  auto res = NetworkFactory::performNetworkOperation(my_url,
                                                      timeout,
                                                      {},
                                                      data,
@@ -36,20 +42,21 @@ QList<StandardFeed*> RssParser::discoverFeeds(ServiceRoot* root, const QUrl& url
                                                      root->networkProxy());
 
   if (res.m_networkError == QNetworkReply::NetworkError::NoError) {
-    // Parse result, might be HTML or directly the feed file.
     try {
+      // 1.
       auto guessed_feed = guessFeed(data, res.m_contentType);
 
-      guessed_feed.first->setSource(url.toString());
+      guessed_feed.first->setSource(my_url);
 
       return {guessed_feed.first};
     }
     catch (...) {
-      qDebugNN << LOGSEC_CORE << QUOTE_W_SPACE(url) << "is not a direct feed file.";
+      qDebugNN << LOGSEC_CORE << QUOTE_W_SPACE(my_url) << "is not a direct feed file.";
     }
 
-    QRegularExpression rx(QSL(FEED_REGEX_MATCHER), QRegularExpression::PatternOption::CaseInsensitiveOption);
-    QRegularExpression rx_href(QSL(FEED_HREF_REGEX_MATCHER), QRegularExpression::PatternOption::CaseInsensitiveOption);
+    // 2.
+    QRegularExpression rx(QSL(RSS_REGEX_MATCHER), QRegularExpression::PatternOption::CaseInsensitiveOption);
+    QRegularExpression rx_href(QSL(RSS_HREF_REGEX_MATCHER), QRegularExpression::PatternOption::CaseInsensitiveOption);
 
     rx_href.optimize();
 
@@ -82,19 +89,67 @@ QList<StandardFeed*> RssParser::discoverFeeds(ServiceRoot* root, const QUrl& url
                                                          root->networkProxy());
 
       if (res.m_networkError == QNetworkReply::NetworkError::NoError) {
-        // Parse result, might be HTML or directly the feed file.
         try {
           auto guessed_feed = guessFeed(data, res.m_contentType);
 
-          guessed_feed.first->setSource(url.toString());
-
+          guessed_feed.first->setSource(feed_link);
           feeds.append(guessed_feed.first);
         }
         catch (const ApplicationException& ex) {
-          qDebugNN << LOGSEC_CORE << QUOTE_W_SPACE(url)
+          qDebugNN << LOGSEC_CORE << QUOTE_W_SPACE(feed_link)
                    << " should be direct link to feed file but was not recognized:" << QUOTE_W_SPACE_DOT(ex.message());
         }
       }
+    }
+  }
+
+  // 3.
+  my_url = url.toString(QUrl::UrlFormattingOption::StripTrailingSlash) + QSL("/feed");
+  res = NetworkFactory::performNetworkOperation(my_url,
+                                                timeout,
+                                                {},
+                                                data,
+                                                QNetworkAccessManager::Operation::GetOperation,
+                                                {},
+                                                {},
+                                                {},
+                                                {},
+                                                root->networkProxy());
+
+  if (res.m_networkError == QNetworkReply::NetworkError::NoError) {
+    try {
+      auto guessed_feed = guessFeed(data, res.m_contentType);
+
+      guessed_feed.first->setSource(my_url);
+      feeds.append(guessed_feed.first);
+    }
+    catch (...) {
+      qDebugNN << LOGSEC_CORE << QUOTE_W_SPACE(my_url) << "is not a direct feed file.";
+    }
+  }
+
+  // 4.
+  my_url = url.toString(QUrl::UrlFormattingOption::StripTrailingSlash) + QSL("/rss");
+  res = NetworkFactory::performNetworkOperation(my_url,
+                                                timeout,
+                                                {},
+                                                data,
+                                                QNetworkAccessManager::Operation::GetOperation,
+                                                {},
+                                                {},
+                                                {},
+                                                {},
+                                                root->networkProxy());
+
+  if (res.m_networkError == QNetworkReply::NetworkError::NoError) {
+    try {
+      auto guessed_feed = guessFeed(data, res.m_contentType);
+
+      guessed_feed.first->setSource(my_url);
+      feeds.append(guessed_feed.first);
+    }
+    catch (...) {
+      qDebugNN << LOGSEC_CORE << QUOTE_W_SPACE(my_url) << "is not a direct feed file.";
     }
   }
 

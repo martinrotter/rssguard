@@ -2,11 +2,13 @@
 
 #include "services/standard/gui/formdiscoverfeeds.h"
 
+#include "3rd-party/boolinq/boolinq.h"
 #include "gui/guiutilities.h"
 #include "miscellaneous/application.h"
 #include "miscellaneous/iconfactory.h"
 #include "services/abstract/category.h"
 #include "services/abstract/serviceroot.h"
+#include "services/standard/definitions.h"
 #include "services/standard/standardfeed.h"
 
 #include "services/standard/parsers/atomparser.h"
@@ -28,14 +30,20 @@ FormDiscoverFeeds::FormDiscoverFeeds(ServiceRoot* service_root,
 
   m_parsers = {new AtomParser({}), new RssParser({}), new RdfParser({}), new JsonParser({}), new SitemapParser({})};
 
+  m_btnGoAdvanced = m_ui.m_buttonBox->addButton(tr("Close && &advanced mode"), QDialogButtonBox::ButtonRole::NoRole);
   m_btnImportSelectedFeeds =
     m_ui.m_buttonBox->addButton(tr("Import selected feeds"), QDialogButtonBox::ButtonRole::ActionRole);
 
+  m_btnGoAdvanced
+    ->setToolTip(tr("Close this dialog and display dialog for adding individual feeds with advanced options."));
+
+  m_btnGoAdvanced->setIcon(qApp->icons()->fromTheme(QSL("system-upgrade")));
   m_btnImportSelectedFeeds->setIcon(qApp->icons()->fromTheme(QSL("document-import")));
   m_ui.m_btnDiscover->setIcon(qApp->icons()->fromTheme(QSL("system-search")));
 
   connect(m_ui.m_txtUrl->lineEdit(), &QLineEdit::textChanged, this, &FormDiscoverFeeds::onUrlChanged);
   connect(m_btnImportSelectedFeeds, &QPushButton::clicked, this, &FormDiscoverFeeds::importSelectedFeeds);
+  connect(m_btnGoAdvanced, &QPushButton::clicked, this, &FormDiscoverFeeds::userWantsAdvanced);
   connect(m_ui.m_btnDiscover, &QPushButton::clicked, this, &FormDiscoverFeeds::discoverFeeds);
 
   connect(&m_watcherLookup, &QFutureWatcher<QList<StandardFeed*>>::progressValueChanged, this, [=](int prog) {
@@ -145,6 +153,11 @@ void FormDiscoverFeeds::addSingleFeed(StandardFeed* feed) {
 
 void FormDiscoverFeeds::importSelectedFeeds() {}
 
+void FormDiscoverFeeds::userWantsAdvanced() {
+  setResult(ADVANCED_FEED_ADD_DIALOG_CODE);
+  close();
+}
+
 void FormDiscoverFeeds::loadDiscoveredFeeds(const QList<StandardFeed*>& feeds) {
   m_ui.m_pbDiscovery->setVisible(false);
   m_discoveredModel->setDiscoveredFeeds(feeds);
@@ -166,16 +179,27 @@ QVariant DiscoveredFeedsModel::data(const QModelIndex& index, int role) const {
   switch (role) {
     case Qt::ItemDataRole::DisplayRole: {
       if (index.column() == 0) {
-        return m_discoveredFeeds.at(index.row())->title();
+        return m_discoveredFeeds.at(index.row()).m_feed->title();
       }
       else {
-        return StandardFeed::typeToString(m_discoveredFeeds.at(index.row())->type());
+        return StandardFeed::typeToString(m_discoveredFeeds.at(index.row()).m_feed->type());
       }
+    }
+
+    case Qt::ItemDataRole::CheckStateRole: {
+      if (index.column() == 0) {
+        return m_discoveredFeeds.at(index.row()).m_isChecked ? Qt::CheckState::Checked : Qt::CheckState::Unchecked;
+      }
+      else {
+        return {};
+      }
+
+      break;
     }
 
     case Qt::ItemDataRole::DecorationRole: {
       if (index.column() == 0) {
-        return m_discoveredFeeds.at(index.row())->fullIcon();
+        return m_discoveredFeeds.at(index.row()).m_feed->fullIcon();
       }
     }
 
@@ -184,12 +208,18 @@ QVariant DiscoveredFeedsModel::data(const QModelIndex& index, int role) const {
   }
 }
 
-QList<StandardFeed*> DiscoveredFeedsModel::discoveredFeeds() const {
+QList<DiscoveredFeedsModel::FeedItem> DiscoveredFeedsModel::discoveredFeeds() const {
   return m_discoveredFeeds;
 }
 
-void DiscoveredFeedsModel::setDiscoveredFeeds(const QList<StandardFeed*>& newDiscoveredFeeds) {
-  m_discoveredFeeds = newDiscoveredFeeds;
+void DiscoveredFeedsModel::setDiscoveredFeeds(const QList<StandardFeed*>& feeds) {
+  auto std_feeds = boolinq::from(feeds)
+                     .select([](StandardFeed* fd) {
+                       return FeedItem{false, fd};
+                     })
+                     .toStdList();
+
+  m_discoveredFeeds = FROM_STD_LIST(QList<FeedItem>, std_feeds);
 
   emit layoutAboutToBeChanged();
   emit layoutChanged();
@@ -207,4 +237,18 @@ QVariant DiscoveredFeedsModel::headerData(int section, Qt::Orientation orientati
   }
 
   return {};
+}
+
+Qt::ItemFlags DiscoveredFeedsModel::flags(const QModelIndex& index) const {
+  return index.column() == 0 ? Qt::ItemFlag::ItemIsUserCheckable | QAbstractListModel::flags(index)
+                             : QAbstractListModel::flags(index);
+}
+
+bool DiscoveredFeedsModel::setData(const QModelIndex& index, const QVariant& value, int role) {
+  if (role == Qt::ItemDataRole::CheckStateRole && index.column() == 0) {
+    m_discoveredFeeds[index.row()].m_isChecked = value.value<Qt::CheckState>() == Qt::CheckState::Checked;
+    return true;
+  }
+
+  return QAbstractListModel::setData(index, value, role);
 }
