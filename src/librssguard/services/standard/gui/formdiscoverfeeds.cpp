@@ -6,6 +6,7 @@
 #include "gui/guiutilities.h"
 #include "miscellaneous/application.h"
 #include "miscellaneous/iconfactory.h"
+#include "miscellaneous/settings.h"
 #include "services/abstract/category.h"
 #include "services/abstract/serviceroot.h"
 #include "services/standard/definitions.h"
@@ -96,11 +97,26 @@ FormDiscoverFeeds::~FormDiscoverFeeds() {
   qDeleteAll(m_parsers);
 }
 
+QList<StandardFeed*> FormDiscoverFeeds::discoverFeedsWithParser(const FeedParser* parser, const QString& url) {
+  auto feeds = parser->discoverFeeds(m_serviceRoot, url);
+  QPixmap icon;
+  int timeout = qApp->settings()->value(GROUP(Feeds), SETTING(Feeds::UpdateTimeout)).toInt();
+
+  if (NetworkFactory::downloadIcon({{url, false}}, timeout, icon, {}, m_serviceRoot->networkProxy()) ==
+      QNetworkReply::NetworkError::NoError) {
+    for (Feed* feed : feeds) {
+      feed->setIcon(icon);
+    }
+  }
+
+  return feeds;
+}
+
 void FormDiscoverFeeds::discoverFeeds() {
   QString url = m_ui.m_txtUrl->lineEdit()->text();
 
   std::function<QList<StandardFeed*>(const FeedParser*)> func = [=](const FeedParser* parser) -> QList<StandardFeed*> {
-    return parser->discoverFeeds(m_serviceRoot, url);
+    return discoverFeedsWithParser(parser, url);
   };
 
   std::function<QList<StandardFeed*>(QList<StandardFeed*>&, const QList<StandardFeed*>&)> reducer =

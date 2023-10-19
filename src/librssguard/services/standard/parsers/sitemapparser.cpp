@@ -24,6 +24,8 @@ SitemapParser::~SitemapParser() {}
 QList<StandardFeed*> SitemapParser::discoverFeeds(ServiceRoot* root, const QUrl& url) const {
   QHash<QString, StandardFeed*> feeds;
   QStringList to_process_sitemaps;
+  int sitemap_index_limit = 2;
+  int timeout = qApp->settings()->value(GROUP(Feeds), SETTING(Feeds::UpdateTimeout)).toInt();
 
   // 1. Process "URL/robots.txt" file.
   // 2. Process "URLHOST/robots.txt" file.
@@ -42,7 +44,6 @@ QList<StandardFeed*> SitemapParser::discoverFeeds(ServiceRoot* root, const QUrl&
 
   for (const QString& robots_url : to_process_robots) {
     // Download URL.
-    int timeout = qApp->settings()->value(GROUP(Feeds), SETTING(Feeds::UpdateTimeout)).toInt();
     QByteArray data;
     auto res = NetworkFactory::performNetworkOperation(robots_url,
                                                        timeout,
@@ -92,7 +93,6 @@ QList<StandardFeed*> SitemapParser::discoverFeeds(ServiceRoot* root, const QUrl&
     }
 
     // Download URL.
-    int timeout = qApp->settings()->value(GROUP(Feeds), SETTING(Feeds::UpdateTimeout)).toInt();
     QByteArray data;
     auto res = NetworkFactory::performNetworkOperation(my_url,
                                                        timeout,
@@ -111,11 +111,15 @@ QList<StandardFeed*> SitemapParser::discoverFeeds(ServiceRoot* root, const QUrl&
         auto guessed_feed = guessFeed(data, res.m_contentType);
 
         guessed_feed.first->setSource(my_url);
+        guessed_feed.first->setTitle(my_url);
+
         feeds.insert(my_url, guessed_feed.first);
       }
       catch (const FeedRecognizedButFailedException& ex) {
         // This is index.
-        to_process_sitemaps.append(ex.arbitraryData().toStringList());
+        if (sitemap_index_limit-- > 0) {
+          to_process_sitemaps.append(ex.arbitraryData().toStringList());
+        }
       }
       catch (const ApplicationException&) {
         qDebugNN << LOGSEC_CORE << QUOTE_W_SPACE(my_url) << "is not a direct sitemap file.";
@@ -224,6 +228,10 @@ QString SitemapParser::xmlMessageTitle(const QDomElement& msg_element) const {
 
   if (str_title.isEmpty()) {
     str_title = msg_element.elementsByTagNameNS(sitemapVideoNamespace(), QSL("title")).at(0).toElement().text();
+  }
+
+  if (str_title.isEmpty()) {
+    str_title = msg_element.elementsByTagNameNS(sitemapImageNamespace(), QSL("title")).at(0).toElement().text();
   }
 
   return str_title;

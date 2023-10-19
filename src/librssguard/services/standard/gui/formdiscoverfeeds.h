@@ -57,6 +57,8 @@ class FormDiscoverFeeds : public QDialog {
     void importSelectedFeeds();
 
   private:
+    QList<StandardFeed*> discoverFeedsWithParser(const FeedParser* parser, const QString& url);
+
     void userWantsAdvanced();
     void loadDiscoveredFeeds(const QList<StandardFeed*>& feeds);
     void loadCategories(const QList<Category*>& categories, RootItem* root_item);
