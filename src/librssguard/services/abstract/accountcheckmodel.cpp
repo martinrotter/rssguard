@@ -26,12 +26,16 @@ void AccountCheckModel::setRootItem(RootItem* root_item, bool delete_previous_ro
     emit layoutAboutToBeChanged();
   }
 
+  beginResetModel();
+
   if (delete_previous_root && m_rootItem != nullptr) {
     m_rootItem->deleteLater();
   }
 
   m_checkStates.clear();
   m_rootItem = root_item;
+
+  endResetModel();
 
   if (with_layout_change) {
     emit layoutChanged();
@@ -64,7 +68,7 @@ void AccountCheckModel::uncheckAllItems() {
 
 QModelIndex AccountCheckModel::index(int row, int column, const QModelIndex& parent) const {
   if (!hasIndex(row, column, parent)) {
-    return QModelIndex();
+    return {};
   }
 
   RootItem* parent_item = itemForIndex(parent);
@@ -74,7 +78,7 @@ QModelIndex AccountCheckModel::index(int row, int column, const QModelIndex& par
     return createIndex(row, column, child_item);
   }
   else {
-    return QModelIndex();
+    return {};
   }
 }
 
@@ -121,14 +125,14 @@ QModelIndex AccountCheckModel::indexForItem(RootItem* item) const {
 
 QModelIndex AccountCheckModel::parent(const QModelIndex& child) const {
   if (!child.isValid()) {
-    return QModelIndex();
+    return {};
   }
 
   RootItem* child_item = itemForIndex(child);
   RootItem* parent_item = child_item->parent();
 
-  if (parent_item == m_rootItem) {
-    return QModelIndex();
+  if (parent_item == m_rootItem || parent_item == nullptr) {
+    return {};
   }
   else {
     return createIndex(parent_item->row(), 0, parent_item);

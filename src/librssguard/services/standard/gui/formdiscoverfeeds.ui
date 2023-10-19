@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>513</width>
+    <width>593</width>
     <height>360</height>
    </rect>
   </property>
@@ -45,7 +45,7 @@
      </item>
     </layout>
    </item>
-   <item row="1" column="0" colspan="2">
+   <item row="2" column="0" colspan="2">
     <widget class="QGroupBox" name="m_gbFeeds">
      <property name="sizePolicy">
       <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
@@ -57,31 +57,6 @@
       <string>Discovered feeds</string>
      </property>
      <layout class="QFormLayout" name="formLayout_2">
-      <item row="1" column="0" colspan="2">
-       <widget class="QTableView" name="m_tvFeeds">
-        <property name="alternatingRowColors">
-         <bool>true</bool>
-        </property>
-        <property name="selectionMode">
-         <enum>QAbstractItemView::SingleSelection</enum>
-        </property>
-        <property name="selectionBehavior">
-         <enum>QAbstractItemView::SelectRows</enum>
-        </property>
-        <property name="cornerButtonEnabled">
-         <bool>false</bool>
-        </property>
-        <attribute name="horizontalHeaderVisible">
-         <bool>true</bool>
-        </attribute>
-        <attribute name="horizontalHeaderStretchLastSection">
-         <bool>true</bool>
-        </attribute>
-        <attribute name="verticalHeaderVisible">
-         <bool>false</bool>
-        </attribute>
-       </widget>
-      </item>
       <item row="2" column="0">
        <widget class="QLabel" name="m_lblParentCategory">
         <property name="text">
@@ -125,29 +100,57 @@
         </item>
        </layout>
       </item>
-      <item row="0" column="0" colspan="2">
-       <widget class="QProgressBar" name="m_pbDiscovery">
-        <property name="maximumSize">
-         <size>
-          <width>16777215</width>
-          <height>5</height>
-         </size>
+      <item row="1" column="0" colspan="2">
+       <widget class="QTreeView" name="m_tvFeeds">
+        <property name="alternatingRowColors">
+         <bool>true</bool>
         </property>
-        <property name="textVisible">
+        <property name="selectionMode">
+         <enum>QAbstractItemView::SingleSelection</enum>
+        </property>
+        <property name="selectionBehavior">
+         <enum>QAbstractItemView::SelectRows</enum>
+        </property>
+        <property name="indentation">
+         <number>0</number>
+        </property>
+        <property name="uniformRowHeights">
+         <bool>true</bool>
+        </property>
+        <property name="itemsExpandable">
          <bool>false</bool>
         </property>
+        <property name="wordWrap">
+         <bool>true</bool>
+        </property>
+        <attribute name="headerStretchLastSection">
+         <bool>false</bool>
+        </attribute>
        </widget>
       </item>
      </layout>
     </widget>
    </item>
-   <item row="2" column="0" colspan="2">
+   <item row="3" column="0" colspan="2">
     <widget class="QDialogButtonBox" name="m_buttonBox">
      <property name="orientation">
       <enum>Qt::Horizontal</enum>
      </property>
      <property name="standardButtons">
       <set>QDialogButtonBox::Close</set>
+     </property>
+    </widget>
+   </item>
+   <item row="1" column="0" colspan="2">
+    <widget class="QProgressBar" name="m_pbDiscovery">
+     <property name="maximumSize">
+      <size>
+       <width>16777215</width>
+       <height>8</height>
+      </size>
+     </property>
+     <property name="textVisible">
+      <bool>false</bool>
      </property>
     </widget>
    </item>

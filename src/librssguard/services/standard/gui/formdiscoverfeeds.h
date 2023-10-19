@@ -7,6 +7,7 @@
 
 #include "ui_formdiscoverfeeds.h"
 
+#include "services/abstract/accountcheckmodel.h"
 #include "services/standard/parsers/feedparser.h"
 
 #include <QFutureWatcher>
@@ -15,29 +16,15 @@ class ServiceRoot;
 class RootItem;
 class Category;
 
-class DiscoveredFeedsModel : public QAbstractListModel {
+class DiscoveredFeedsModel : public AccountCheckModel {
     Q_OBJECT
 
   public:
-    struct FeedItem {
-        bool m_isChecked;
-        StandardFeed* m_feed;
-    };
-
     explicit DiscoveredFeedsModel(QObject* parent = {});
 
     virtual QVariant headerData(int section, Qt::Orientation orientation, int role) const;
-    virtual int rowCount(const QModelIndex& parent) const;
     virtual int columnCount(const QModelIndex& parent) const;
     virtual QVariant data(const QModelIndex& index, int role) const;
-    virtual bool setData(const QModelIndex& index, const QVariant& value, int role);
-    virtual Qt::ItemFlags flags(const QModelIndex& index) const;
-
-    QList<FeedItem> discoveredFeeds() const;
-    void setDiscoveredFeeds(const QList<StandardFeed*>& feeds);
-
-  private:
-    QList<FeedItem> m_discoveredFeeds;
 };
 
 class FormDiscoverFeeds : public QDialog {
@@ -55,6 +42,9 @@ class FormDiscoverFeeds : public QDialog {
     void onUrlChanged(const QString& new_url);
     void addSingleFeed(StandardFeed* feed);
     void importSelectedFeeds();
+
+    void onDiscoveryProgress(int progress);
+    void onDiscoveryFinished();
 
   private:
     QList<StandardFeed*> discoverFeedsWithParser(const FeedParser* parser, const QString& url);

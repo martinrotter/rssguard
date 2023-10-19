@@ -47,23 +47,22 @@ FormDiscoverFeeds::FormDiscoverFeeds(ServiceRoot* service_root,
   connect(m_btnGoAdvanced, &QPushButton::clicked, this, &FormDiscoverFeeds::userWantsAdvanced);
   connect(m_ui.m_btnDiscover, &QPushButton::clicked, this, &FormDiscoverFeeds::discoverFeeds);
 
-  connect(&m_watcherLookup, &QFutureWatcher<QList<StandardFeed*>>::progressValueChanged, this, [=](int prog) {
-    m_ui.m_pbDiscovery->setValue(prog);
-    qDebugNN << "progress";
-  });
+  connect(&m_watcherLookup,
+          &QFutureWatcher<QList<StandardFeed*>>::progressValueChanged,
+          this,
+          &FormDiscoverFeeds::onDiscoveryProgress);
 
-  connect(&m_watcherLookup, &QFutureWatcher<QList<StandardFeed*>>::finished, this, [=]() {
-    auto res = m_watcherLookup.future().result();
-
-    loadDiscoveredFeeds(res);
-  });
+  connect(&m_watcherLookup,
+          &QFutureWatcher<QList<StandardFeed*>>::finished,
+          this,
+          &FormDiscoverFeeds::onDiscoveryFinished);
 
   loadCategories(m_serviceRoot->getSubTreeCategories(), m_serviceRoot);
 
   m_ui.m_tvFeeds->setModel(m_discoveredModel);
 
-  m_ui.m_tvFeeds->horizontalHeader()->setSectionResizeMode(0, QHeaderView::ResizeMode::Stretch);
-  m_ui.m_tvFeeds->horizontalHeader()->setSectionResizeMode(1, QHeaderView::ResizeMode::ResizeToContents);
+  m_ui.m_tvFeeds->header()->setSectionResizeMode(0, QHeaderView::ResizeMode::Stretch);
+  m_ui.m_tvFeeds->header()->setSectionResizeMode(1, QHeaderView::ResizeMode::ResizeToContents);
 
   m_ui.m_pbDiscovery->setVisible(false);
   m_ui.m_txtUrl->lineEdit()->setText(url);
@@ -93,8 +92,27 @@ FormDiscoverFeeds::FormDiscoverFeeds(ServiceRoot* service_root,
   }
 }
 
+void FormDiscoverFeeds::onDiscoveryProgress(int progress) {
+  m_ui.m_pbDiscovery->setValue(progress);
+}
+
+void FormDiscoverFeeds::onDiscoveryFinished() {
+  try {
+    auto res = m_watcherLookup.future().result();
+
+    loadDiscoveredFeeds(res);
+  }
+  catch (const ApplicationException& ex) {
+    // TODO: display error
+  }
+
+  setEnabled(true);
+}
+
 FormDiscoverFeeds::~FormDiscoverFeeds() {
   qDeleteAll(m_parsers);
+
+  m_discoveredModel->setRootItem(nullptr);
 }
 
 QList<StandardFeed*> FormDiscoverFeeds::discoverFeedsWithParser(const FeedParser* parser, const QString& url) {
@@ -137,6 +155,7 @@ void FormDiscoverFeeds::discoverFeeds() {
   m_ui.m_pbDiscovery->setMaximum(m_parsers.size());
   m_ui.m_pbDiscovery->setValue(0);
   m_ui.m_pbDiscovery->setVisible(true);
+  setEnabled(false);
 }
 
 void FormDiscoverFeeds::onUrlChanged(const QString& new_url) {
@@ -175,70 +194,34 @@ void FormDiscoverFeeds::userWantsAdvanced() {
 }
 
 void FormDiscoverFeeds::loadDiscoveredFeeds(const QList<StandardFeed*>& feeds) {
+  RootItem* root = new RootItem();
+
+  for (Feed* feed : feeds) {
+    root->appendChild(feed);
+  }
+
   m_ui.m_pbDiscovery->setVisible(false);
-  m_discoveredModel->setDiscoveredFeeds(feeds);
+  m_discoveredModel->setRootItem(root);
 
   qDebugNN << "finish";
 }
 
-DiscoveredFeedsModel::DiscoveredFeedsModel(QObject* parent) : QAbstractListModel(parent) {}
-
-int DiscoveredFeedsModel::rowCount(const QModelIndex& parent) const {
-  return m_discoveredFeeds.size();
-}
+DiscoveredFeedsModel::DiscoveredFeedsModel(QObject* parent) : AccountCheckModel(parent) {}
 
 int DiscoveredFeedsModel::columnCount(const QModelIndex& parent) const {
   return 2;
 }
 
 QVariant DiscoveredFeedsModel::data(const QModelIndex& index, int role) const {
-  switch (role) {
-    case Qt::ItemDataRole::DisplayRole: {
-      if (index.column() == 0) {
-        return m_discoveredFeeds.at(index.row()).m_feed->title();
-      }
-      else {
-        return StandardFeed::typeToString(m_discoveredFeeds.at(index.row()).m_feed->type());
-      }
+  if (role == Qt::ItemDataRole::DisplayRole && index.column() == 1) {
+    StandardFeed* fd = qobject_cast<StandardFeed*>(itemForIndex(index));
+
+    if (fd != nullptr) {
+      return StandardFeed::typeToString(fd->type());
     }
-
-    case Qt::ItemDataRole::CheckStateRole: {
-      if (index.column() == 0) {
-        return m_discoveredFeeds.at(index.row()).m_isChecked ? Qt::CheckState::Checked : Qt::CheckState::Unchecked;
-      }
-      else {
-        return {};
-      }
-
-      break;
-    }
-
-    case Qt::ItemDataRole::DecorationRole: {
-      if (index.column() == 0) {
-        return m_discoveredFeeds.at(index.row()).m_feed->fullIcon();
-      }
-    }
-
-    default:
-      return {};
   }
-}
 
-QList<DiscoveredFeedsModel::FeedItem> DiscoveredFeedsModel::discoveredFeeds() const {
-  return m_discoveredFeeds;
-}
-
-void DiscoveredFeedsModel::setDiscoveredFeeds(const QList<StandardFeed*>& feeds) {
-  auto std_feeds = boolinq::from(feeds)
-                     .select([](StandardFeed* fd) {
-                       return FeedItem{false, fd};
-                     })
-                     .toStdList();
-
-  m_discoveredFeeds = FROM_STD_LIST(QList<FeedItem>, std_feeds);
-
-  emit layoutAboutToBeChanged();
-  emit layoutChanged();
+  return AccountCheckModel::data(index, role);
 }
 
 QVariant DiscoveredFeedsModel::headerData(int section, Qt::Orientation orientation, int role) const {
@@ -253,18 +236,4 @@ QVariant DiscoveredFeedsModel::headerData(int section, Qt::Orientation orientati
   }
 
   return {};
-}
-
-Qt::ItemFlags DiscoveredFeedsModel::flags(const QModelIndex& index) const {
-  return index.column() == 0 ? Qt::ItemFlag::ItemIsUserCheckable | QAbstractListModel::flags(index)
-                             : QAbstractListModel::flags(index);
-}
-
-bool DiscoveredFeedsModel::setData(const QModelIndex& index, const QVariant& value, int role) {
-  if (role == Qt::ItemDataRole::CheckStateRole && index.column() == 0) {
-    m_discoveredFeeds[index.row()].m_isChecked = value.value<Qt::CheckState>() == Qt::CheckState::Checked;
-    return true;
-  }
-
-  return QAbstractListModel::setData(index, value, role);
 }
