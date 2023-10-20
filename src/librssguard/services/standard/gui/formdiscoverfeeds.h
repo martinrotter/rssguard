@@ -25,6 +25,9 @@ class DiscoveredFeedsModel : public AccountCheckModel {
     virtual QVariant headerData(int section, Qt::Orientation orientation, int role) const;
     virtual int columnCount(const QModelIndex& parent) const;
     virtual QVariant data(const QModelIndex& index, int role) const;
+
+    RootItem* removeItem(RootItem *it);
+    RootItem* removeItem(const QModelIndex& idx);
 };
 
 class FormDiscoverFeeds : public QDialog {

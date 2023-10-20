@@ -3,6 +3,7 @@
 #include "services/standard/gui/formdiscoverfeeds.h"
 
 #include "3rd-party/boolinq/boolinq.h"
+#include "database/databasequeries.h"
 #include "gui/guiutilities.h"
 #include "miscellaneous/application.h"
 #include "miscellaneous/iconfactory.h"
@@ -201,15 +202,40 @@ void FormDiscoverFeeds::addSingleFeed() {
     return;
   }
 
+  auto idx = m_ui.m_tvFeeds->currentIndex();
+
   QScopedPointer<FormStandardFeedDetails> form_pointer(new FormStandardFeedDetails(m_serviceRoot,
                                                                                    targetParent(),
                                                                                    fd->source(),
                                                                                    qApp->mainFormWidget()));
 
-  form_pointer->addEditFeed<StandardFeed>();
+  if (form_pointer->addEditFeed<StandardFeed>() != nullptr) {
+    // Feed was added, remove from list.
+    if (m_discoveredModel->removeItem(idx) != nullptr) {
+      // Feed was guessed by the dialog, we do not need this object.
+      fd->deleteLater();
+    }
+  }
 }
 
-void FormDiscoverFeeds::importSelectedFeeds() {}
+void FormDiscoverFeeds::importSelectedFeeds() {
+  for (RootItem* it : m_discoveredModel->checkedItems()) {
+    Feed* std_feed = it->toFeed();
+    RootItem* parent = targetParent();
+    QSqlDatabase database = qApp->database()->driver()->connection(metaObject()->className());
+
+    try {
+      DatabaseQueries::createOverwriteFeed(database, std_feed, m_serviceRoot->accountId(), parent->id());
+
+      m_discoveredModel->removeItem(std_feed);
+      m_serviceRoot->requestItemReassignment(std_feed, parent);
+      m_serviceRoot->itemChanged({std_feed});
+    }
+    catch (const ApplicationException& ex) {
+      qFatal("Cannot save feed: '%s'.", qPrintable(ex.message()));
+    }
+  }
+}
 
 void FormDiscoverFeeds::onFeedSelectionChanged() {
   m_ui.m_btnAddIndividually->setEnabled(selectedFeed() != nullptr);
@@ -279,4 +305,32 @@ void FormDiscoverFeeds::closeEvent(QCloseEvent* event) {
   m_discoveredModel->setRootItem(nullptr);
 
   QDialog::closeEvent(event);
+}
+
+RootItem* DiscoveredFeedsModel::removeItem(RootItem* it) {
+  auto idx = indexForItem(it);
+
+  if (it == nullptr || it == m_rootItem || it->parent() == nullptr) {
+    return nullptr;
+  }
+
+  beginRemoveRows(idx.parent(), idx.row(), idx.row());
+  it->parent()->removeChild(it);
+  endRemoveRows();
+
+  return it;
+}
+
+RootItem* DiscoveredFeedsModel::removeItem(const QModelIndex& idx) {
+  RootItem* it = itemForIndex(idx);
+
+  if (it == nullptr || it == m_rootItem || it->parent() == nullptr) {
+    return nullptr;
+  }
+
+  beginRemoveRows(idx.parent(), idx.row(), idx.row());
+  it->parent()->removeChild(it);
+  endRemoveRows();
+
+  return it;
 }

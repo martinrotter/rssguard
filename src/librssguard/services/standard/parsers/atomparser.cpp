@@ -169,7 +169,7 @@ QList<StandardFeed*> AtomParser::discoverFeeds(ServiceRoot* root, const QUrl& ur
 
   auto mtch = QRegularExpression(QSL(GITHUB_URL_REGEX)).match(my_url);
 
-  if (mtch.isValid()) {
+  if (mtch.isValid() && mtch.hasMatch()) {
     QStringList github_feeds = {QSL("releases.atom"), QSL("commits.atom"), QSL("tags.atom")};
     QString gh_username = mtch.captured(1);
     QString gh_repo = mtch.captured(2);
