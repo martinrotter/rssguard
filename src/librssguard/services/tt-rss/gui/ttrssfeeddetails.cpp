@@ -35,19 +35,18 @@ void TtRssFeedDetails::onUrlChanged(const QString& new_url) {
 void TtRssFeedDetails::loadCategories(const QList<Category*>& categories,
                                       RootItem* root_item,
                                       RootItem* parent_to_select) {
-  ui.m_cmbParentCategory->addItem(root_item->fullIcon(), root_item->title(), QVariant::fromValue((void*)root_item));
+  ui.m_cmbParentCategory->addItem(root_item->fullIcon(), root_item->title(), QVariant::fromValue(root_item));
 
   for (Category* category : categories) {
-    ui.m_cmbParentCategory->addItem(category->fullIcon(), category->title(), QVariant::fromValue((void*)category));
+    ui.m_cmbParentCategory->addItem(category->fullIcon(), category->title(), QVariant::fromValue(category));
   }
 
   if (parent_to_select != nullptr) {
     if (parent_to_select->kind() == RootItem::Kind::Category) {
-      ui.m_cmbParentCategory
-        ->setCurrentIndex(ui.m_cmbParentCategory->findData(QVariant::fromValue((void*)parent_to_select)));
+      ui.m_cmbParentCategory->setCurrentIndex(ui.m_cmbParentCategory->findData(QVariant::fromValue(parent_to_select)));
     }
     else if (parent_to_select->kind() == RootItem::Kind::Feed) {
-      int target_item = ui.m_cmbParentCategory->findData(QVariant::fromValue((void*)parent_to_select->parent()));
+      int target_item = ui.m_cmbParentCategory->findData(QVariant::fromValue(parent_to_select->parent()));
 
       if (target_item >= 0) {
         ui.m_cmbParentCategory->setCurrentIndex(target_item);

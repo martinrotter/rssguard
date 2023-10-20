@@ -64,10 +64,10 @@ void FormCategoryDetails::loadCategoryData() {
     if (m_parentToSelect != nullptr) {
       if (m_parentToSelect->kind() == RootItem::Kind::Category) {
         m_ui->m_cmbParentCategory
-          ->setCurrentIndex(m_ui->m_cmbParentCategory->findData(QVariant::fromValue((void*)m_parentToSelect)));
+          ->setCurrentIndex(m_ui->m_cmbParentCategory->findData(QVariant::fromValue(m_parentToSelect)));
       }
       else if (m_parentToSelect->kind() == RootItem::Kind::Feed) {
-        int target_item = m_ui->m_cmbParentCategory->findData(QVariant::fromValue((void*)m_parentToSelect->parent()));
+        int target_item = m_ui->m_cmbParentCategory->findData(QVariant::fromValue(m_parentToSelect->parent()));
 
         if (target_item >= 0) {
           m_ui->m_cmbParentCategory->setCurrentIndex(target_item);
@@ -79,7 +79,7 @@ void FormCategoryDetails::loadCategoryData() {
     GuiUtilities::applyDialogProperties(*this, m_category->fullIcon(), tr("Edit \"%1\"").arg(m_category->title()));
 
     m_ui->m_cmbParentCategory
-      ->setCurrentIndex(m_ui->m_cmbParentCategory->findData(QVariant::fromValue((void*)m_category->parent())));
+      ->setCurrentIndex(m_ui->m_cmbParentCategory->findData(QVariant::fromValue(m_category->parent())));
   }
 
   m_ui->m_txtTitle->lineEdit()->setText(m_category->title());
@@ -90,9 +90,7 @@ void FormCategoryDetails::loadCategoryData() {
 }
 
 void FormCategoryDetails::apply() {
-  RootItem* parent =
-    static_cast<RootItem*>(m_ui->m_cmbParentCategory->itemData(m_ui->m_cmbParentCategory->currentIndex())
-                             .value<void*>());
+  RootItem* parent = m_ui->m_cmbParentCategory->currentData().value<RootItem*>();
 
   m_category->setTitle(m_ui->m_txtTitle->lineEdit()->text());
   m_category->setDescription(m_ui->m_txtDescription->lineEdit()->text());
@@ -207,7 +205,7 @@ void FormCategoryDetails::initialize() {
 void FormCategoryDetails::loadCategories(const QList<Category*>& categories,
                                          RootItem* root_item,
                                          Category* input_category) {
-  m_ui->m_cmbParentCategory->addItem(root_item->icon(), root_item->title(), QVariant::fromValue((void*)root_item));
+  m_ui->m_cmbParentCategory->addItem(root_item->icon(), root_item->title(), QVariant::fromValue(root_item));
 
   for (Category* category : categories) {
     if (input_category != nullptr && (category == input_category || category->isChildOf(input_category))) {
@@ -219,6 +217,6 @@ void FormCategoryDetails::loadCategories(const QList<Category*>& categories,
 
     m_ui->m_cmbParentCategory->addItem(category->data(FDS_MODEL_TITLE_INDEX, Qt::DecorationRole).value<QIcon>(),
                                        category->title(),
-                                       QVariant::fromValue((void*)category));
+                                       QVariant::fromValue(category));
   }
 }

@@ -357,10 +357,10 @@ void StandardFeedDetails::prepareForNewFeed(RootItem* parent_to_select, const QS
   if (parent_to_select != nullptr) {
     if (parent_to_select->kind() == RootItem::Kind::Category) {
       m_ui.m_cmbParentCategory
-        ->setCurrentIndex(m_ui.m_cmbParentCategory->findData(QVariant::fromValue((void*)parent_to_select)));
+        ->setCurrentIndex(m_ui.m_cmbParentCategory->findData(QVariant::fromValue(parent_to_select)));
     }
     else if (parent_to_select->kind() == RootItem::Kind::Feed) {
-      int target_item = m_ui.m_cmbParentCategory->findData(QVariant::fromValue((void*)parent_to_select->parent()));
+      int target_item = m_ui.m_cmbParentCategory->findData(QVariant::fromValue(parent_to_select->parent()));
 
       if (target_item >= 0) {
         m_ui.m_cmbParentCategory->setCurrentIndex(target_item);
@@ -384,8 +384,7 @@ void StandardFeedDetails::prepareForNewFeed(RootItem* parent_to_select, const QS
 
 void StandardFeedDetails::setExistingFeed(StandardFeed* feed) {
   m_ui.m_cmbSourceType->setCurrentIndex(m_ui.m_cmbSourceType->findData(QVariant::fromValue(feed->sourceType())));
-  m_ui.m_cmbParentCategory
-    ->setCurrentIndex(m_ui.m_cmbParentCategory->findData(QVariant::fromValue((void*)feed->parent())));
+  m_ui.m_cmbParentCategory->setCurrentIndex(m_ui.m_cmbParentCategory->findData(QVariant::fromValue(feed->parent())));
   m_ui.m_txtTitle->lineEdit()->setText(feed->title());
   m_ui.m_txtDescription->lineEdit()->setText(feed->description());
   m_ui.m_btnIcon->setIcon(feed->icon());
@@ -398,9 +397,9 @@ void StandardFeedDetails::setExistingFeed(StandardFeed* feed) {
 }
 
 void StandardFeedDetails::loadCategories(const QList<Category*>& categories, RootItem* root_item) {
-  m_ui.m_cmbParentCategory->addItem(root_item->fullIcon(), root_item->title(), QVariant::fromValue((void*)root_item));
+  m_ui.m_cmbParentCategory->addItem(root_item->fullIcon(), root_item->title(), QVariant::fromValue(root_item));
 
   for (Category* category : categories) {
-    m_ui.m_cmbParentCategory->addItem(category->fullIcon(), category->title(), QVariant::fromValue((void*)category));
+    m_ui.m_cmbParentCategory->addItem(category->fullIcon(), category->title(), QVariant::fromValue(category));
   }
 }

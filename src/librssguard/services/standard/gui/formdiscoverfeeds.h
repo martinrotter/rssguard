@@ -37,16 +37,23 @@ class FormDiscoverFeeds : public QDialog {
                                QWidget* parent = {});
     virtual ~FormDiscoverFeeds();
 
+  protected:
+    virtual void closeEvent(QCloseEvent* event);
+
   private slots:
     void discoverFeeds();
     void onUrlChanged(const QString& new_url);
-    void addSingleFeed(StandardFeed* feed);
+    void addSingleFeed();
     void importSelectedFeeds();
 
+    void onFeedSelectionChanged();
     void onDiscoveryProgress(int progress);
     void onDiscoveryFinished();
 
   private:
+    StandardFeed* selectedFeed() const;
+    RootItem* targetParent() const;
+
     QList<StandardFeed*> discoverFeedsWithParser(const FeedParser* parser, const QString& url);
 
     void userWantsAdvanced();
@@ -55,7 +62,6 @@ class FormDiscoverFeeds : public QDialog {
 
   private:
     Ui::FormDiscoverFeeds m_ui;
-    QPushButton* m_btnImportSelectedFeeds;
     QPushButton* m_btnGoAdvanced;
     ServiceRoot* m_serviceRoot;
     QList<FeedParser*> m_parsers;

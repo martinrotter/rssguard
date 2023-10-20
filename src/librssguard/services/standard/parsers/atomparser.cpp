@@ -167,11 +167,15 @@ QList<StandardFeed*> AtomParser::discoverFeeds(ServiceRoot* root, const QUrl& ur
   // 5.
   my_url = url.toString(QUrl::UrlFormattingOption::StripTrailingSlash);
 
-  if (QRegularExpression(QSL(GITHUB_URL_REGEX)).match(my_url).isValid()) {
+  auto mtch = QRegularExpression(QSL(GITHUB_URL_REGEX)).match(my_url);
+
+  if (mtch.isValid()) {
     QStringList github_feeds = {QSL("releases.atom"), QSL("commits.atom"), QSL("tags.atom")};
+    QString gh_username = mtch.captured(1);
+    QString gh_repo = mtch.captured(2);
 
     for (const QString& github_feed : github_feeds) {
-      my_url = url.toString(QUrl::UrlFormattingOption::StripTrailingSlash) + QL1C('/') + github_feed;
+      my_url = QSL("https://github.com/%1/%2/%3").arg(gh_username, gh_repo, github_feed);
       res = NetworkFactory::performNetworkOperation(my_url,
                                                     timeout,
                                                     {},

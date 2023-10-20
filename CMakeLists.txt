@@ -25,7 +25,9 @@
 #   IS_FLATPAK_BUILD - Set to "ON" when building RSS Guard with Flatpak.
 #   FORCE_BUNDLE_ICONS - Forcibly bundles icons into executables.
 #   ENABLE_COMPRESSED_SITEMAP - Set to "ON" if you want to enable support for "sitemap.xml.gz" format.
-#                               This requires "zlib" library.
+#                               This requires "zlib" library and if you want to use specific
+#                               zlib location, then use "ZLIB_ROOT" variable, for example
+#                               -DZLIB_ROOT="C:\\zlib"
 #   USE_WEBENGINE - if specified, then QtWebEngine module for internal web browser is used.
 #                   Otherwise simple text component is used and some features will be disabled.
 #                   Default value is "false". If QtWebEngine is installed during compilation, then

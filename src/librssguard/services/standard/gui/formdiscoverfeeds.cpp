@@ -10,6 +10,7 @@
 #include "services/abstract/category.h"
 #include "services/abstract/serviceroot.h"
 #include "services/standard/definitions.h"
+#include "services/standard/gui/formstandardfeeddetails.h"
 #include "services/standard/standardfeed.h"
 
 #include "services/standard/parsers/atomparser.h"
@@ -32,26 +33,29 @@ FormDiscoverFeeds::FormDiscoverFeeds(ServiceRoot* service_root,
   m_parsers = {new AtomParser({}), new RssParser({}), new RdfParser({}), new JsonParser({}), new SitemapParser({})};
 
   m_btnGoAdvanced = m_ui.m_buttonBox->addButton(tr("Close && &advanced mode"), QDialogButtonBox::ButtonRole::NoRole);
-  m_btnImportSelectedFeeds =
-    m_ui.m_buttonBox->addButton(tr("Import selected feeds"), QDialogButtonBox::ButtonRole::ActionRole);
-
   m_btnGoAdvanced
     ->setToolTip(tr("Close this dialog and display dialog for adding individual feeds with advanced options."));
 
+  m_ui.m_btnSelecAll->setIcon(qApp->icons()->fromTheme(QSL("dialog-yes"), QSL("edit-select-all")));
+  m_ui.m_btnSelectNone->setIcon(qApp->icons()->fromTheme(QSL("dialog-no"), QSL("edit-select-none")));
+  m_ui.m_btnAddIndividually->setIcon(qApp->icons()->fromTheme(QSL("list-add")));
   m_btnGoAdvanced->setIcon(qApp->icons()->fromTheme(QSL("system-upgrade")));
-  m_btnImportSelectedFeeds->setIcon(qApp->icons()->fromTheme(QSL("document-import")));
+  m_ui.m_btnImportSelected->setIcon(qApp->icons()->fromTheme(QSL("document-import")));
+  m_ui.m_buttonBox->button(QDialogButtonBox::StandardButton::Close)
+    ->setIcon(qApp->icons()->fromTheme(QSL("window-close")));
   m_ui.m_btnDiscover->setIcon(qApp->icons()->fromTheme(QSL("system-search")));
 
   connect(m_ui.m_txtUrl->lineEdit(), &QLineEdit::textChanged, this, &FormDiscoverFeeds::onUrlChanged);
-  connect(m_btnImportSelectedFeeds, &QPushButton::clicked, this, &FormDiscoverFeeds::importSelectedFeeds);
+  connect(m_ui.m_btnImportSelected, &QPushButton::clicked, this, &FormDiscoverFeeds::importSelectedFeeds);
+  connect(m_ui.m_btnSelecAll, &QPushButton::clicked, m_discoveredModel, &DiscoveredFeedsModel::checkAllItems);
+  connect(m_ui.m_btnSelectNone, &QPushButton::clicked, m_discoveredModel, &DiscoveredFeedsModel::uncheckAllItems);
+  connect(m_ui.m_btnAddIndividually, &QPushButton::clicked, this, &FormDiscoverFeeds::addSingleFeed);
   connect(m_btnGoAdvanced, &QPushButton::clicked, this, &FormDiscoverFeeds::userWantsAdvanced);
   connect(m_ui.m_btnDiscover, &QPushButton::clicked, this, &FormDiscoverFeeds::discoverFeeds);
-
   connect(&m_watcherLookup,
           &QFutureWatcher<QList<StandardFeed*>>::progressValueChanged,
           this,
           &FormDiscoverFeeds::onDiscoveryProgress);
-
   connect(&m_watcherLookup,
           &QFutureWatcher<QList<StandardFeed*>>::finished,
           this,
@@ -63,6 +67,11 @@ FormDiscoverFeeds::FormDiscoverFeeds(ServiceRoot* service_root,
 
   m_ui.m_tvFeeds->header()->setSectionResizeMode(0, QHeaderView::ResizeMode::Stretch);
   m_ui.m_tvFeeds->header()->setSectionResizeMode(1, QHeaderView::ResizeMode::ResizeToContents);
+
+  connect(m_ui.m_tvFeeds->selectionModel(),
+          &QItemSelectionModel::selectionChanged,
+          this,
+          &FormDiscoverFeeds::onFeedSelectionChanged);
 
   m_ui.m_pbDiscovery->setVisible(false);
   m_ui.m_txtUrl->lineEdit()->setText(url);
@@ -77,10 +86,10 @@ FormDiscoverFeeds::FormDiscoverFeeds(ServiceRoot* service_root,
   if (parent_to_select != nullptr) {
     if (parent_to_select->kind() == RootItem::Kind::Category) {
       m_ui.m_cmbParentCategory
-        ->setCurrentIndex(m_ui.m_cmbParentCategory->findData(QVariant::fromValue((void*)parent_to_select)));
+        ->setCurrentIndex(m_ui.m_cmbParentCategory->findData(QVariant::fromValue(parent_to_select)));
     }
     else if (parent_to_select->kind() == RootItem::Kind::Feed) {
-      int target_item = m_ui.m_cmbParentCategory->findData(QVariant::fromValue((void*)parent_to_select->parent()));
+      int target_item = m_ui.m_cmbParentCategory->findData(QVariant::fromValue(parent_to_select->parent()));
 
       if (target_item >= 0) {
         m_ui.m_cmbParentCategory->setCurrentIndex(target_item);
@@ -107,6 +116,16 @@ void FormDiscoverFeeds::onDiscoveryFinished() {
   }
 
   setEnabled(true);
+}
+
+StandardFeed* FormDiscoverFeeds::selectedFeed() const {
+  RootItem* it = m_discoveredModel->itemForIndex(m_ui.m_tvFeeds->currentIndex());
+
+  return qobject_cast<StandardFeed*>(it);
+}
+
+RootItem* FormDiscoverFeeds::targetParent() const {
+  return m_ui.m_cmbParentCategory->currentData().value<RootItem*>();
 }
 
 FormDiscoverFeeds::~FormDiscoverFeeds() {
@@ -168,25 +187,33 @@ void FormDiscoverFeeds::onUrlChanged(const QString& new_url) {
 }
 
 void FormDiscoverFeeds::loadCategories(const QList<Category*>& categories, RootItem* root_item) {
-  m_ui.m_cmbParentCategory->addItem(root_item->fullIcon(), root_item->title(), QVariant::fromValue((void*)root_item));
+  m_ui.m_cmbParentCategory->addItem(root_item->fullIcon(), root_item->title(), QVariant::fromValue(root_item));
 
   for (Category* category : categories) {
-    m_ui.m_cmbParentCategory->addItem(category->fullIcon(), category->title(), QVariant::fromValue((void*)category));
+    m_ui.m_cmbParentCategory->addItem(category->fullIcon(), category->title(), QVariant::fromValue(category));
   }
 }
 
-void FormDiscoverFeeds::addSingleFeed(StandardFeed* feed) {
-  /*
-  QScopedPointer<FormStandardFeedDetails> form_pointer(new FormStandardFeedDetails(this,
-                                                                                   selected_item,
-                                                                                   feed->source(),
+void FormDiscoverFeeds::addSingleFeed() {
+  auto* fd = selectedFeed();
+
+  if (fd == nullptr) {
+    return;
+  }
+
+  QScopedPointer<FormStandardFeedDetails> form_pointer(new FormStandardFeedDetails(m_serviceRoot,
+                                                                                   targetParent(),
+                                                                                   fd->source(),
                                                                                    qApp->mainFormWidget()));
 
   form_pointer->addEditFeed<StandardFeed>();
-  */
 }
 
 void FormDiscoverFeeds::importSelectedFeeds() {}
+
+void FormDiscoverFeeds::onFeedSelectionChanged() {
+  m_ui.m_btnAddIndividually->setEnabled(selectedFeed() != nullptr);
+}
 
 void FormDiscoverFeeds::userWantsAdvanced() {
   setResult(ADVANCED_FEED_ADD_DIALOG_CODE);
@@ -236,4 +263,20 @@ QVariant DiscoveredFeedsModel::headerData(int section, Qt::Orientation orientati
   }
 
   return {};
+}
+
+void FormDiscoverFeeds::closeEvent(QCloseEvent* event) {
+  try {
+    // Wait for discovery to finish.
+    if (m_watcherLookup.isRunning()) {
+      m_watcherLookup.result();
+    }
+  }
+  catch (...) {
+  }
+
+  // Clear all remaining items.
+  m_discoveredModel->setRootItem(nullptr);
+
+  QDialog::closeEvent(event);
 }

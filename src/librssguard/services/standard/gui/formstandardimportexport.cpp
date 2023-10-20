@@ -347,8 +347,7 @@ void FormStandardImportExport::exportFeeds() {
 
 void FormStandardImportExport::importFeeds() {
   QString output_message;
-  RootItem* parent =
-    static_cast<RootItem*>(m_ui->m_cmbRootNode->itemData(m_ui->m_cmbRootNode->currentIndex()).value<void*>());
+  RootItem* parent = m_ui->m_cmbRootNode->currentData().value<RootItem*>();
 
   if (m_serviceRoot->mergeImportExportModel(m_model, parent, output_message)) {
     m_serviceRoot->requestItemExpand(parent->getSubTree(), true);
@@ -360,9 +359,9 @@ void FormStandardImportExport::importFeeds() {
 }
 
 void FormStandardImportExport::loadCategories(const QList<Category*>& categories, RootItem* root_item) {
-  m_ui->m_cmbRootNode->addItem(root_item->icon(), root_item->title(), QVariant::fromValue((void*)root_item));
+  m_ui->m_cmbRootNode->addItem(root_item->icon(), root_item->title(), QVariant::fromValue(root_item));
 
   for (Category* category : categories) {
-    m_ui->m_cmbRootNode->addItem(category->icon(), category->title(), QVariant::fromValue((void*)category));
+    m_ui->m_cmbRootNode->addItem(category->icon(), category->title(), QVariant::fromValue(category));
   }
 }

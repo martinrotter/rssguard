@@ -67,10 +67,7 @@ void FormStandardFeedDetails::apply() {
   FormFeedDetails::apply();
 
   auto* std_feed = feed<StandardFeed>();
-  RootItem* parent =
-    static_cast<RootItem*>(m_standardFeedDetails->m_ui.m_cmbParentCategory
-                             ->itemData(m_standardFeedDetails->m_ui.m_cmbParentCategory->currentIndex())
-                             .value<void*>());
+  RootItem* parent = m_standardFeedDetails->m_ui.m_cmbParentCategory->currentData().value<RootItem*>();
 
   StandardFeed::Type type =
     static_cast<StandardFeed::Type>(m_standardFeedDetails->m_ui.m_cmbType
