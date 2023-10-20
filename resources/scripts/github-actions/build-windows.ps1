@@ -32,17 +32,26 @@ $is_qt_6 = $qt_version.StartsWith("6")
 $maria_version = "10.6.15"
 $maria_link = "https://archive.mariadb.org/mariadb-$maria_version/winx64-packages/mariadb-$maria_version-winx64.zip"
 $maria_output = "maria.zip"
+
 $cmake_version = "3.27.6"
 $cmake_link = "https://github.com/Kitware/CMake/releases/download/v$cmake_version/cmake-$cmake_version-windows-x86_64.zip"
 $cmake_output = "cmake.zip"
 
+$zlib_version = "1.3"
+$zlib_link = "https://github.com/madler/zlib/archive/refs/tags/v$zlib_version.zip"
+$zlib_output = "zlib.zip"
+
 Invoke-WebRequest -Uri "$maria_link" -OutFile "$maria_output"
-& ".\resources\scripts\7za\7za.exe" x $maria_output
+& ".\resources\scripts\7za\7za.exe" x "$maria_output"
 
 Invoke-WebRequest -Uri "$cmake_link" -OutFile "$cmake_output"
-& ".\resources\scripts\7za\7za.exe" x $cmake_output
+& ".\resources\scripts\7za\7za.exe" x "$cmake_output"
+
+Invoke-WebRequest -Uri "$zlib_link" -OutFile "$zlib_output"
+& ".\resources\scripts\7za\7za.exe" x "$zlib_output"
 
 $cmake_path = "$old_pwd\cmake-$cmake_version-windows-x86_64\bin\cmake.exe"
+$zlib_path = "$old_pwd\zlib-$zlib_version"
 
 # Download Qt itself.
 $qt_path = "$old_pwd\qt"
@@ -78,6 +87,8 @@ else {
 }
 
 # Build dependencies.
+
+# MariaDB.
 $maria_path = "$old_pwd\mariadb-$maria_version-winx64"
 $qt_sqldrivers_path = "$qt_path\$qt_version\Src\qtbase\src\plugins\sqldrivers"
 
@@ -96,13 +107,17 @@ else {
   $with_qt6 = "OFF"
 }
 
+# zlib
+cd "$zlib_path"
+nmake.exe -f "win32\Makefile.msc"
+
 cd "$old_pwd"
 
 # Build application.
 mkdir "rssguard-build"
 cd "rssguard-build"
 
-& "$cmake_path" ".." -G Ninja -DCMAKE_BUILD_TYPE="RelWithDebInfo" -DCMAKE_VERBOSE_MAKEFILE="ON" -DBUILD_WITH_QT6="$with_qt6" -DREVISION_FROM_GIT="ON" -DUSE_SYSTEM_SQLITE="OFF" -DENABLE_COMPRESSED_SITEMAP="ON" -DUSE_WEBENGINE="$use_webengine" -DFEEDLY_CLIENT_ID="$env:FEEDLY_CLIENT_ID" -DFEEDLY_CLIENT_SECRET="$env:FEEDLY_CLIENT_SECRET" -DGMAIL_CLIENT_ID="$env:GMAIL_CLIENT_ID" -DGMAIL_CLIENT_SECRET="$env:GMAIL_CLIENT_SECRET"
+& "$cmake_path" ".." -G Ninja -DCMAKE_BUILD_TYPE="RelWithDebInfo" -DCMAKE_VERBOSE_MAKEFILE="ON" -DBUILD_WITH_QT6="$with_qt6" -DREVISION_FROM_GIT="ON" -DUSE_SYSTEM_SQLITE="OFF" -DZLIB_ROOT="$zlib_path" -DENABLE_COMPRESSED_SITEMAP="ON" -DUSE_WEBENGINE="$use_webengine" -DFEEDLY_CLIENT_ID="$env:FEEDLY_CLIENT_ID" -DFEEDLY_CLIENT_SECRET="$env:FEEDLY_CLIENT_SECRET" -DGMAIL_CLIENT_ID="$env:GMAIL_CLIENT_ID" -DGMAIL_CLIENT_SECRET="$env:GMAIL_CLIENT_SECRET"
 & "$cmake_path" --build .
 & "$cmake_path" --install . --prefix app
 
