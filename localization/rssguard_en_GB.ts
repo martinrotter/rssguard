@@ -1826,7 +1826,7 @@ QtWebEngine cache folder -&gt; &quot;%7&quot;</translation>
     <message>
       <location filename="../src/librssguard/services/standard/gui/formdiscoverfeeds.cpp" line="34"/>
       <source>Close &amp;&amp; &amp;advanced mode</source>
-      <translation type="unfinished">Close &amp;&amp; &amp;advanced mode</translation>
+      <translation>&amp;Advanced mode..</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/standard/gui/formdiscoverfeeds.cpp" line="36"/>
