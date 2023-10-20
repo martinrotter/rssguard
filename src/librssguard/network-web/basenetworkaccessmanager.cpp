@@ -66,18 +66,15 @@ QNetworkReply* BaseNetworkAccessManager::createRequest(QNetworkAccessManager::Op
   // new_request.setMaximumRedirectsAllowed(0);
 
   new_request.setRawHeader(HTTP_HEADERS_COOKIE, QSL("JSESSIONID= ").toLocal8Bit());
-  /*
-    auto custom_ua = qApp->web()->customUserAgent();
 
-    if (custom_ua.isEmpty()) {
-      new_request.setRawHeader(HTTP_HEADERS_USER_AGENT, HTTP_COMPLETE_USERAGENT);
-    }
-    else {
-      new_request.setRawHeader(HTTP_HEADERS_USER_AGENT, custom_ua.toLocal8Bit());
-    }
-  */
+  auto custom_ua = qApp->web()->customUserAgent();
 
-  new_request.setRawHeader(HTTP_HEADERS_USER_AGENT, " ");
+  if (custom_ua.isEmpty()) {
+    new_request.setRawHeader(HTTP_HEADERS_USER_AGENT, HTTP_COMPLETE_USERAGENT);
+  }
+  else {
+    new_request.setRawHeader(HTTP_HEADERS_USER_AGENT, custom_ua.toLocal8Bit());
+  }
 
   auto reply = QNetworkAccessManager::createRequest(op, new_request, outgoingData);
   return reply;

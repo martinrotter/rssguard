@@ -17,6 +17,6 @@
 #define ATOM_REGEX_MATCHER      "<link[^>]+type=\"application\\/(?:atom\\+xml|rss\\+xml)\"[^>]*>"
 #define ATOM_HREF_REGEX_MATCHER "href=\"([^\"]+)\""
 
-#define GITHUB_URL_REGEX "github\\.com\\/(\\w+)\\/(\\w+)"
+#define GITHUB_URL_REGEX "github\\.com\\/([^\\s]+)\\/([^\\s]+)"
 
 #endif // STANDARD_DEFINITIONS_H
