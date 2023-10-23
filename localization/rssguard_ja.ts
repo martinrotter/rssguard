@@ -1815,7 +1815,7 @@ QtWebEngineキャッシュフォルダ -&gt; &quot;%7&quot;</translation>
     <message>
       <location filename="../src/librssguard/services/standard/gui/formdiscoverfeeds.cpp" line="34"/>
       <source>Close &amp;&amp; &amp;advanced mode</source>
-      <translation>詳細モードを閉じる</translation>
+      <translation>閉じて詳細モードへ</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/standard/gui/formdiscoverfeeds.cpp" line="36"/>
