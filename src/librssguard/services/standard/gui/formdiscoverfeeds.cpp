@@ -33,7 +33,7 @@ FormDiscoverFeeds::FormDiscoverFeeds(ServiceRoot* service_root,
 
   m_parsers = {new AtomParser({}), new RssParser({}), new RdfParser({}), new JsonParser({}), new SitemapParser({})};
 
-  m_btnGoAdvanced = m_ui.m_buttonBox->addButton(tr("Close && &advanced mode"), QDialogButtonBox::ButtonRole::NoRole);
+  m_btnGoAdvanced = m_ui.m_buttonBox->addButton(tr("Switch to &advanced mode"), QDialogButtonBox::ButtonRole::NoRole);
   m_btnGoAdvanced
     ->setToolTip(tr("Close this dialog and display dialog for adding individual feeds with advanced options."));
 
