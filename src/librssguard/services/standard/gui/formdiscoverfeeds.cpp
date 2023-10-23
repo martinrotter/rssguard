@@ -75,7 +75,10 @@ FormDiscoverFeeds::FormDiscoverFeeds(ServiceRoot* service_root,
           &FormDiscoverFeeds::onFeedSelectionChanged);
 
   m_ui.m_pbDiscovery->setVisible(false);
-  m_ui.m_txtUrl->lineEdit()->setText(url);
+
+  if (QUrl(url).isValid()) {
+    m_ui.m_txtUrl->lineEdit()->setText(url);
+  }
 
   if (url.isEmpty()) {
     emit m_ui.m_txtUrl->lineEdit()->textChanged(url);
