@@ -15,7 +15,11 @@ Each "account" offers account-specific actions which are accessible in relevant 
 
 <img alt="alt-img" src="images/account-menu.png">
 
-To add new feed into the account you simply use `Feeds -> Add item -> Add a new feed` menu item.
+To add new feed into the account you simply use `Feeds -> Add item -> Add a new feed` menu item. You do not need to know direct URL address of your feed file, it is enough to enter just the URL of the website you are interested in, for example `https://www.hltv.org`, and RSS Guard will find all available feed sources.
+
+<img alt="alt-img" src="images/discover-feeds.png">
+
+You can also switch to more advanced dialog for adding individual feeds.
 
 <img alt="alt-img" src="images/feed-details.png">
 
