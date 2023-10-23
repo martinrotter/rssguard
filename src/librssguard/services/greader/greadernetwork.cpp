@@ -923,7 +923,9 @@ QString GreaderNetwork::convertShortStreamIdToLongStreamId(const QString& stream
 }
 
 QString GreaderNetwork::simplifyStreamId(const QString& stream_id) const {
-  return QString(stream_id).replace(QRegularExpression(QSL("\\/\\d+\\/")), QSL("/-/"));
+  static QRegularExpression reg(QSL("\\/\\d+\\/"));
+
+  return QString(stream_id).replace(reg, QSL("/-/"));
 }
 
 QStringList GreaderNetwork::decodeItemIds(const QString& stream_json_data, QString& continuation) {

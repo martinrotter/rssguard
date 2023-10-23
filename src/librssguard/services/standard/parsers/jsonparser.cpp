@@ -54,8 +54,9 @@ QList<StandardFeed*> JsonParser::discoverFeeds(ServiceRoot* root, const QUrl& ur
     }
 
     // 2.
-    QRegularExpression rx(QSL(JSON_REGEX_MATCHER), QRegularExpression::PatternOption::CaseInsensitiveOption);
-    QRegularExpression rx_href(QSL(JSON_HREF_REGEX_MATCHER), QRegularExpression::PatternOption::CaseInsensitiveOption);
+    static QRegularExpression rx(QSL(JSON_REGEX_MATCHER), QRegularExpression::PatternOption::CaseInsensitiveOption);
+    static QRegularExpression rx_href(QSL(JSON_HREF_REGEX_MATCHER),
+                                      QRegularExpression::PatternOption::CaseInsensitiveOption);
 
     rx_href.optimize();
 

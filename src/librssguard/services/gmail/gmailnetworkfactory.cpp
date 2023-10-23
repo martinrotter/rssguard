@@ -20,7 +20,6 @@
 #include <QJsonArray>
 #include <QJsonDocument>
 #include <QJsonObject>
-#include <QRegularExpression>
 #include <QUrl>
 
 GmailNetworkFactory::GmailNetworkFactory(QObject* parent)

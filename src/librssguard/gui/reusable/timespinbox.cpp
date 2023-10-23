@@ -21,7 +21,7 @@ double TimeSpinBox::valueFromText(const QString& text) const {
     return value;
   }
   else {
-    QRegularExpression rx(QSL("\\b[0-9]{1,}\\b"));
+    static QRegularExpression rx(QSL("\\b[0-9]{1,}\\b"));
     QStringList numbers;
     int pos = 0;
     int count = 0;

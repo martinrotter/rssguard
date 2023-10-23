@@ -274,7 +274,9 @@ QList<HttpResponse> Downloader::decodeMultipartAnswer(QNetworkReply* reply) {
 
   QString content_type = reply->header(QNetworkRequest::KnownHeaders::ContentTypeHeader).toString();
   QString boundary = content_type.mid(content_type.indexOf(QL1S("boundary=")) + 9);
-  QRegularExpression regex(QL1S("--") + boundary + QL1S("(--)?(\\r\\n)?"));
+
+  static QRegularExpression regex(QL1S("--") + boundary + QL1S("(--)?(\\r\\n)?"));
+
   QStringList list = QString::fromUtf8(data).split(regex,
 #if QT_VERSION >= 0x050F00 // Qt >= 5.15.0
                                                    Qt::SplitBehaviorFlags::SkipEmptyParts);
@@ -289,12 +291,18 @@ QList<HttpResponse> Downloader::decodeMultipartAnswer(QNetworkReply* reply) {
   for (const QString& http_response_str : list) {
     // We separate headers and body.
     HttpResponse new_part;
+
+    static QRegularExpression reg_headers(QSL("\\r\\r?\\n"));
+    static QRegularExpression reg_body(QSL("(\\r\\r?\\n){2,}"));
+    static QRegularExpression reg_whites(QSL("[\\n\\r]+"));
+
     int start_of_http = http_response_str.indexOf(QL1S("HTTP/1.1"));
-    int start_of_headers = http_response_str.indexOf(QRegularExpression(QSL("\\r\\r?\\n")), start_of_http);
-    int start_of_body = http_response_str.indexOf(QRegularExpression(QSL("(\\r\\r?\\n){2,}")), start_of_headers + 2);
+    int start_of_headers = http_response_str.indexOf(reg_headers, start_of_http);
+    int start_of_body = http_response_str.indexOf(reg_body, start_of_headers + 2);
+
     QString body = http_response_str.mid(start_of_body);
-    QString headers = http_response_str.mid(start_of_headers, start_of_body - start_of_headers)
-                        .replace(QRegularExpression(QSL("[\\n\\r]+")), QSL("\n"));
+    QString headers =
+      http_response_str.mid(start_of_headers, start_of_body - start_of_headers).replace(reg_whites, QSL("\n"));
 
     auto header_lines = headers.split(QL1C('\n'),
 #if QT_VERSION >= 0x050F00 // Qt >= 5.15.0

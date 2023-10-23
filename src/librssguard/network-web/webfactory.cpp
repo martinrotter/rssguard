@@ -160,7 +160,9 @@ bool WebFactory::openUrlInExternalBrowser(const QString& url) const {
 }
 
 QString WebFactory::stripTags(QString text) {
-  return text.remove(QRegularExpression(QSL("<[^>]*>")));
+  static QRegularExpression reg_tags(QSL("<[^>]*>"));
+
+  return text.remove(reg_tags);
 }
 
 QString WebFactory::unescapeHtml(const QString& html) {

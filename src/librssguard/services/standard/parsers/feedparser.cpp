@@ -195,7 +195,9 @@ QList<Message> FeedParser::messages() {
     }
 
     // Url.
-    new_message.m_url = new_message.m_url.replace(QRegularExpression(QSL("[\\t\\n]")), QString());
+    static QRegularExpression reg_non_url(QSL("[\\t\\n]"));
+
+    new_message.m_url = new_message.m_url.replace(reg_non_url, {});
   }
 
   return messages;

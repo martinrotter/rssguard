@@ -68,8 +68,9 @@ QList<StandardFeed*> AtomParser::discoverFeeds(ServiceRoot* root, const QUrl& ur
     IOFactory::writeFile("aaaa", data);
 
     // 2.
-    QRegularExpression rx(QSL(ATOM_REGEX_MATCHER), QRegularExpression::PatternOption::CaseInsensitiveOption);
-    QRegularExpression rx_href(QSL(ATOM_HREF_REGEX_MATCHER), QRegularExpression::PatternOption::CaseInsensitiveOption);
+    static QRegularExpression rx(QSL(ATOM_REGEX_MATCHER), QRegularExpression::PatternOption::CaseInsensitiveOption);
+    static QRegularExpression rx_href(QSL(ATOM_HREF_REGEX_MATCHER),
+                                      QRegularExpression::PatternOption::CaseInsensitiveOption);
 
     rx_href.optimize();
 
@@ -208,6 +209,8 @@ QList<StandardFeed*> AtomParser::discoverFeeds(ServiceRoot* root, const QUrl& ur
 
 QPair<StandardFeed*, QList<IconLocation>> AtomParser::guessFeed(const QByteArray& content,
                                                                 const QString& content_type) const {
+  Q_UNUSED(content_type)
+
   QString xml_schema_encoding = QSL(DEFAULT_FEED_ENCODING);
   QString xml_contents_encoded;
   QString enc =

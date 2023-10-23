@@ -55,8 +55,9 @@ QList<StandardFeed*> RssParser::discoverFeeds(ServiceRoot* root, const QUrl& url
     }
 
     // 2.
-    QRegularExpression rx(QSL(RSS_REGEX_MATCHER), QRegularExpression::PatternOption::CaseInsensitiveOption);
-    QRegularExpression rx_href(QSL(RSS_HREF_REGEX_MATCHER), QRegularExpression::PatternOption::CaseInsensitiveOption);
+    static QRegularExpression rx(QSL(RSS_REGEX_MATCHER), QRegularExpression::PatternOption::CaseInsensitiveOption);
+    static QRegularExpression rx_href(QSL(RSS_HREF_REGEX_MATCHER),
+                                      QRegularExpression::PatternOption::CaseInsensitiveOption);
 
     rx_href.optimize();
 

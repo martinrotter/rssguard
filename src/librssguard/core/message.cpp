@@ -76,19 +76,23 @@ Message::Message() {
 }
 
 void Message::sanitize(const Feed* feed, bool fix_future_datetimes) {
+  static QRegularExpression reg_spaces(QString::fromUtf8(QByteArray("[\xE2\x80\xAF]")));
+  static QRegularExpression reg_whites(QSL("[\\s]{2,}"));
+  static QRegularExpression reg_news(QSL("([\\n\\r])|(^\\s)"));
+
   // Sanitize title.
   m_title = qApp->web()->stripTags(qApp->web()->unescapeHtml(m_title));
 
   m_title = m_title
 
               // Remove non-breaking spaces.
-              .replace(QRegularExpression(QString::fromUtf8(QByteArray("[\xE2\x80\xAF]"))), QSL(" "))
+              .replace(reg_spaces, QSL(" "))
 
               // Shrink consecutive whitespaces.
-              .replace(QRegularExpression(QSL("[\\s]{2,}")), QSL(" "))
+              .replace(reg_whites, QSL(" "))
 
               // Remove all newlines and leading white space.
-              .remove(QRegularExpression(QSL("([\\n\\r])|(^\\s)")))
+              .remove(reg_news)
 
               // Remove non-breaking zero-width spaces.
               .remove(QChar(65279));
