@@ -70,81 +70,15 @@
       <string>Discovered feeds</string>
      </property>
      <layout class="QFormLayout" name="formLayout_2">
-      <item row="1" column="0" colspan="2">
-       <widget class="QTreeView" name="m_tvFeeds">
-        <property name="alternatingRowColors">
-         <bool>true</bool>
+      <item row="0" column="0">
+       <widget class="QLabel" name="m_lblParentCategory">
+        <property name="text">
+         <string>Target parent folder</string>
         </property>
-        <property name="selectionMode">
-         <enum>QAbstractItemView::SingleSelection</enum>
+        <property name="buddy">
+         <cstring>m_cmbParentCategory</cstring>
         </property>
-        <property name="selectionBehavior">
-         <enum>QAbstractItemView::SelectRows</enum>
-        </property>
-        <property name="indentation">
-         <number>0</number>
-        </property>
-        <property name="uniformRowHeights">
-         <bool>true</bool>
-        </property>
-        <property name="itemsExpandable">
-         <bool>false</bool>
-        </property>
-        <property name="wordWrap">
-         <bool>true</bool>
-        </property>
-        <attribute name="headerStretchLastSection">
-         <bool>false</bool>
-        </attribute>
        </widget>
-      </item>
-      <item row="2" column="0" colspan="2">
-       <layout class="QHBoxLayout" name="horizontalLayout_4">
-        <item>
-         <widget class="QPushButton" name="m_btnSelecAll">
-          <property name="text">
-           <string>Select &amp;all</string>
-          </property>
-         </widget>
-        </item>
-        <item>
-         <widget class="QPushButton" name="m_btnSelectNone">
-          <property name="text">
-           <string>&amp;Unselect all</string>
-          </property>
-         </widget>
-        </item>
-        <item>
-         <widget class="QPushButton" name="m_btnAddIndividually">
-          <property name="enabled">
-           <bool>false</bool>
-          </property>
-          <property name="text">
-           <string>Add single feed with advanced details</string>
-          </property>
-         </widget>
-        </item>
-        <item>
-         <widget class="QPushButton" name="m_btnImportSelected">
-          <property name="text">
-           <string>&amp;Import checked feeds</string>
-          </property>
-         </widget>
-        </item>
-        <item>
-         <spacer name="horizontalSpacer_2">
-          <property name="orientation">
-           <enum>Qt::Horizontal</enum>
-          </property>
-          <property name="sizeHint" stdset="0">
-           <size>
-            <width>40</width>
-            <height>20</height>
-           </size>
-          </property>
-         </spacer>
-        </item>
-       </layout>
       </item>
       <item row="0" column="1">
        <layout class="QHBoxLayout" name="horizontalLayout_2">
@@ -179,15 +113,98 @@
         </item>
        </layout>
       </item>
-      <item row="0" column="0">
-       <widget class="QLabel" name="m_lblParentCategory">
-        <property name="text">
-         <string>Target parent folder</string>
+      <item row="1" column="0" colspan="2">
+       <layout class="QHBoxLayout" name="horizontalLayout_5">
+        <item>
+         <widget class="QPushButton" name="m_btnSelecAll">
+          <property name="text">
+           <string>Select &amp;all</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QPushButton" name="m_btnSelectNone">
+          <property name="text">
+           <string>&amp;Unselect all</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <spacer name="horizontalSpacer_3">
+          <property name="orientation">
+           <enum>Qt::Horizontal</enum>
+          </property>
+          <property name="sizeHint" stdset="0">
+           <size>
+            <width>40</width>
+            <height>20</height>
+           </size>
+          </property>
+         </spacer>
+        </item>
+       </layout>
+      </item>
+      <item row="2" column="0" colspan="2">
+       <widget class="QTreeView" name="m_tvFeeds">
+        <property name="alternatingRowColors">
+         <bool>true</bool>
         </property>
-        <property name="buddy">
-         <cstring>m_cmbParentCategory</cstring>
+        <property name="selectionMode">
+         <enum>QAbstractItemView::SingleSelection</enum>
         </property>
+        <property name="selectionBehavior">
+         <enum>QAbstractItemView::SelectRows</enum>
+        </property>
+        <property name="indentation">
+         <number>0</number>
+        </property>
+        <property name="uniformRowHeights">
+         <bool>true</bool>
+        </property>
+        <property name="itemsExpandable">
+         <bool>false</bool>
+        </property>
+        <property name="wordWrap">
+         <bool>true</bool>
+        </property>
+        <attribute name="headerStretchLastSection">
+         <bool>false</bool>
+        </attribute>
        </widget>
+      </item>
+      <item row="3" column="0" colspan="2">
+       <layout class="QHBoxLayout" name="horizontalLayout_4">
+        <item>
+         <widget class="QPushButton" name="m_btnAddIndividually">
+          <property name="enabled">
+           <bool>false</bool>
+          </property>
+          <property name="text">
+           <string>Add single feed with advanced details</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QPushButton" name="m_btnImportSelected">
+          <property name="text">
+           <string>&amp;Import checked feeds</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <spacer name="horizontalSpacer_2">
+          <property name="orientation">
+           <enum>Qt::Horizontal</enum>
+          </property>
+          <property name="sizeHint" stdset="0">
+           <size>
+            <width>40</width>
+            <height>20</height>
+           </size>
+          </property>
+         </spacer>
+        </item>
+       </layout>
       </item>
      </layout>
     </widget>
@@ -215,8 +232,6 @@
  <tabstops>
   <tabstop>m_btnDiscover</tabstop>
   <tabstop>m_tvFeeds</tabstop>
-  <tabstop>m_btnSelecAll</tabstop>
-  <tabstop>m_btnSelectNone</tabstop>
   <tabstop>m_btnAddIndividually</tabstop>
   <tabstop>m_cmbParentCategory</tabstop>
  </tabstops>
