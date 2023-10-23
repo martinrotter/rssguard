@@ -19,7 +19,7 @@
     <message>
       <location filename="../src/librssguard/network-web/adblock/adblockdialog.cpp" line="27"/>
       <source>AdBlock configuration</source>
-      <translation>Configurazione di AdBlock</translation>
+      <translation>Configurazione AdBlock</translation>
     </message>
     <message>
       <location filename="../src/librssguard/network-web/adblock/adblockdialog.cpp" line="64"/>
@@ -110,7 +110,7 @@ Errore: %1</translation>
     <message>
       <location filename="../src/librssguard/network-web/adblock/adblockicon.cpp" line="45"/>
       <source>Show AdBlock &amp;settings</source>
-      <translation type="unfinished">Show AdBlock &amp;settings</translation>
+      <translation>Mostra &amp;impostazioni AdBlock</translation>
     </message>
   </context>
   <context>
@@ -118,12 +118,12 @@ Errore: %1</translation>
     <message>
       <location filename="../src/librssguard/network-web/adblock/adblockmanager.cpp" line="198"/>
       <source>Failed to setup filters and start server: %1.</source>
-      <translation type="unfinished">Failed to setup filters and start server: %1.</translation>
+      <translation>Impossibile impostare i filtri e avviare il server: %1.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/network-web/adblock/adblockmanager.cpp" line="375"/>
       <source>failed to download filter list &apos;%1&apos;</source>
-      <translation type="unfinished">failed to download filter list &apos;%1&apos;</translation>
+      <translation>impossibile scaricare la lista di filtri &apos;%1&apos;</translation>
     </message>
   </context>
   <context>
@@ -131,7 +131,7 @@ Errore: %1</translation>
     <message>
       <location filename="../src/librssguard/miscellaneous/application.cpp" line="1151"/>
       <source>Application is already running.</source>
-      <translation>L&apos;applicazione è già in esecuzione.</translation>
+      <translation>Applicazione già in esecuzione.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/miscellaneous/application.cpp" line="592"/>
@@ -161,12 +161,12 @@ Errore: %1</translation>
     <message>
       <location filename="../src/librssguard/miscellaneous/application.cpp" line="1170"/>
       <source>Feed cannot be added because there is no active account which can add feeds.</source>
-      <translation type="unfinished">Feed cannot be added because there is no active account which can add feeds.</translation>
+      <translation>Il feed non può essere aggiunto perché non c'è un account attivo che possa aggiungere feed.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/miscellaneous/application.cpp" line="1328"/>
       <source>Packages %1 were updated.</source>
-      <translation type="unfinished">Packages %1 were updated.</translation>
+      <translation>%1 pacchetti aggiornati.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/miscellaneous/application.cpp" line="1035"/>
