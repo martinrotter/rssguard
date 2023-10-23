@@ -21,7 +21,7 @@ struct NetworkResult {
     int m_httpCode;
     QString m_contentType;
     QList<QNetworkCookie> m_cookies;
-    QList<QNetworkReply::RawHeaderPair> m_headers;
+    QMap<QString, QString> m_headers;
 
     explicit NetworkResult();
     explicit NetworkResult(QNetworkReply::NetworkError err,

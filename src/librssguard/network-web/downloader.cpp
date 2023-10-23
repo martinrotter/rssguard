@@ -236,7 +236,11 @@ void Downloader::finished() {
     m_lastContentType = reply->header(QNetworkRequest::KnownHeaders::ContentTypeHeader);
     m_lastOutputError = reply->error();
     m_lastHttpStatusCode = reply->attribute(QNetworkRequest::Attribute::HttpStatusCodeAttribute).toInt();
-    m_lastHeaders = reply->rawHeaderPairs();
+    m_lastHeaders.clear();
+
+    for (const QNetworkReply::RawHeaderPair& head : reply->rawHeaderPairs()) {
+      m_lastHeaders.insert(head.first, head.second);
+    }
 
     // original_url = m_activeReply->property("original_url").toUrl();
 
@@ -366,7 +370,7 @@ void Downloader::runGetRequest(const QNetworkRequest& request) {
   connect(m_activeReply, &QNetworkReply::finished, this, &Downloader::finished);
 }
 
-QList<QNetworkReply::RawHeaderPair> Downloader::lastHeaders() const {
+QMap<QString, QString> Downloader::lastHeaders() const {
   return m_lastHeaders;
 }
 

@@ -184,13 +184,15 @@ QList<Message> StandardServiceRoot::obtainNewMessages(Feed* feed,
                                                                   false,
                                                                   {},
                                                                   {},
-                                                                  networkProxy())
-                            .m_networkError;
+                                                                  networkProxy());
 
-    if (network_result != QNetworkReply::NetworkError::NoError) {
-      qWarningNN << LOGSEC_CORE << "Error" << QUOTE_W_SPACE(network_result)
+    qDebugNN << "etag:" << network_result.m_headers["ETag"];
+
+    if (network_result.m_networkError != QNetworkReply::NetworkError::NoError) {
+      qWarningNN << LOGSEC_CORE << "Error" << QUOTE_W_SPACE(network_result.m_networkError)
                  << "during fetching of new messages for feed" << QUOTE_W_SPACE_DOT(feed->source());
-      throw FeedFetchException(Feed::Status::NetworkError, NetworkFactory::networkErrorText(network_result));
+      throw FeedFetchException(Feed::Status::NetworkError,
+                               NetworkFactory::networkErrorText(network_result.m_networkError));
     }
   }
   else if (f->sourceType() == StandardFeed::SourceType::LocalFile) {
