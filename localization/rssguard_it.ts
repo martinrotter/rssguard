@@ -6774,7 +6774,7 @@ Description: %3</translation>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsgui.ui" line="179"/>
       <source>Hide main window when it is minimized</source>
-      <translation>Nascondi finestra pricnipale quando minimizata </translation>
+      <translation>Nascondi finestra principale quando minimizzata</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsgui.ui" line="186"/>
