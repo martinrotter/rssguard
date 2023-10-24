@@ -65,8 +65,6 @@ QList<StandardFeed*> AtomParser::discoverFeeds(ServiceRoot* root, const QUrl& ur
       qDebugNN << LOGSEC_CORE << QUOTE_W_SPACE(my_url) << "is not a direct feed file.";
     }
 
-    IOFactory::writeFile("aaaa", data);
-
     // 2.
     static QRegularExpression rx(QSL(ATOM_REGEX_MATCHER), QRegularExpression::PatternOption::CaseInsensitiveOption);
     static QRegularExpression rx_href(QSL(ATOM_HREF_REGEX_MATCHER),
