@@ -2113,7 +2113,7 @@ Dossier du cache Moteur Web QT -&gt; &quot;%7&quot;</translation>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="242"/>
       <source>Display settings of the application.</source>
-      <translation>Afficher les paramètres de l&apos;application.</translation>
+      <translation>Afficher les paramètres de l'appli</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="250"/>
@@ -2123,7 +2123,7 @@ Dossier du cache Moteur Web QT -&gt; &quot;%7&quot;</translation>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="253"/>
       <source>Displays extra info about this application.</source>
-      <translation>Afficher des informations supplémentaires à propos de l&apos;application.</translation>
+      <translation>Afficher des informations supplémentaires à propos d'RSS Guard</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="267"/>
@@ -2208,7 +2208,7 @@ sélectionnés comme &amp;lus</translation>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="352"/>
       <source>Mark all messages (without message filters) from selected items as read.</source>
-      <translation>Marquer tous les messages (sans filtres de messages) des éléments sélectionnés comme lus.</translation>
+      <translation>Marquer tous les messages (sans filtres de messages) des éléments sélectionnés comme lus</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="360"/>
@@ -2219,7 +2219,7 @@ sélectionnés comme &amp;non-lus</translation>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="363"/>
       <source>Mark all messages (without message filters) from selected items as unread.</source>
-      <translation>Marquer tous les messages (sans filtres de messages) des éléments sélectionnés comme non-lus.</translation>
+      <translation>Marquer tous les messages (sans filtres de messages) des éléments sélectionnés comme non-lus</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="371"/>
@@ -2276,7 +2276,7 @@ comme lu</translation>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="429"/>
       <source>Marks all messages in all items read. This does not take message filters into account.</source>
-      <translation>Marquer tous les messages de tous les éléments comme lus. Cela ne prend pas les filtres de message en compte.</translation>
+      <translation>Marquer tous les messages de tous les éléments comme lus. Cela ne prend pas les filtres de message en compte</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="437"/>
@@ -2287,7 +2287,7 @@ sélectionné en &amp;mode journal</translation>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="440"/>
       <source>Displays all messages from selected item in a new &quot;newspaper mode&quot; tab. Note that messages are not set as read automatically.</source>
-      <translation>Afficher tous les messages de l&apos;élement selectionné dans un nouvel onglet &quot;mode journal&quot;. Notez que les messages ne sont pas automatiquement considérés comme lus.</translation>
+      <translation>Afficher tous les messages de l&apos;élement selectionné dans un nouvel onglet &quot;mode journal&quot;. Notez que les messages ne sont pas automatiquement considérés comme lus</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="451"/>
@@ -2298,7 +2298,7 @@ de la fenêtre principale</translation>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="454"/>
       <source>Hides main window if it is visible and shows it if it is hidden.</source>
-      <translation>Minimiser la fenêtre principale si elle est au premier plan et la montrer si elle est minimisée.</translation>
+      <translation>Minimiser la fenêtre principale si elle est au premier plan et la montrer si elle est minimisée</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="468"/>
@@ -2368,12 +2368,12 @@ de la fenêtre principale</translation>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="561"/>
       <source>&amp;Toolbars</source>
-      <translation>&amp;Les barres d&apos;outiles</translation>
+      <translation>&amp;Les barres d&apos;outils</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="564"/>
       <source>Switch visibility of main toolbars.</source>
-      <translation>Changer la visibilité des barres d&apos;outils principales.</translation>
+      <translation>Changer la visibilité des barres d&apos;outils principales</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="578"/>
@@ -6042,7 +6042,7 @@ File filter for external e-mail selection dialog.</extracomment>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsbrowsermail.cpp" line="40"/>
       <source>Executable</source>
-      <translation>Executable</translation>
+      <translation>Exécutable</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsbrowsermail.ui" line="21"/>
@@ -6416,7 +6416,7 @@ Les auteurs de cette appli NE SONT PAS responsables d'éventuelles pertes de don
     <message>
       <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.cpp" line="31"/>
       <source>Enter format for count of articles displayed next to each feed/category in feed list. Use &quot;%all&quot; and &quot;%unread&quot; strings which are placeholders for the actual count of all (or unread) articles.</source>
-      <translation>Entrer un format pour le compteur des articles affichés à côté de chaque flux/catégorie dans la liste des flux. Utiliser &quot;%all&quot; et &quot;%unread&quot; qui sont des remplaçants pour le compteur actuel de tous les articles (ou ceux non-lus).</translation>
+      <translation>Entrez un format pour le compteur des articles affichés à côté de chaque flux/catégorie dans la liste des flux. Utiliser &quot;%all&quot; et &quot;%unread&quot; qui sont des remplaçants pour le compteur actuel de tous les articles (ou ceux non-lus).</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.cpp" line="35"/>
@@ -6464,7 +6464,7 @@ Les auteurs de cette appli NE SONT PAS responsables d'éventuelles pertes de don
     <message>
       <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="53"/>
       <source>Auto-fetch articles for all feeds every</source>
-      <translation>Obtenir les articles automatiquement de tous les flux tout les</translation>
+      <translation>Obtenir les articles automatiquement de tous les flux tous les</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="79"/>
@@ -6529,7 +6529,7 @@ Les auteurs de cette appli NE SONT PAS responsables d'éventuelles pertes de don
     <message>
       <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="254"/>
       <source>Article count format</source>
-      <translation>Le format du compte d&apos;articles</translation>
+      <translation>Format du compte d&apos;articles</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="283"/>
@@ -6662,7 +6662,7 @@ Les auteurs de cette appli NE SONT PAS responsables d'éventuelles pertes de don
     <message>
       <location filename="../src/librssguard/gui/settings/settingsgeneral.ui" line="24"/>
       <source>Check for %1 updates on application startup</source>
-      <translation>Vérifier les mises à jour de %1 au démarrage de l&apos;application</translation>
+      <translation>Vérifier si une mise à jour %1 est disponible au démarrage de l&apos;application</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsgeneral.h" line="26"/>
@@ -6710,7 +6710,7 @@ Les auteurs de cette appli NE SONT PAS responsables d'éventuelles pertes de don
     <message>
       <location filename="../src/librssguard/gui/settings/settingsgui.cpp" line="279"/>
       <source>Follow OS style</source>
-      <translation>Suivre le style de l&apos;OS</translation>
+      <translation>Suivre le style du système d'exploitation</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsgui.cpp" line="173"/>
@@ -6888,7 +6888,7 @@ Déscription: %3</translation>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsgui.ui" line="398"/>
       <source>Toolbar editor</source>
-      <translation>Personnalisateur de la barre d&apos;outils</translation>
+      <translation>Personnalisateur de barres d&apos;outils</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsgui.ui" line="424"/>
@@ -7011,7 +7011,7 @@ Et aussi, redémarrez la fenêtre &quot;Paramètres&quot; après avoir installé
     <message>
       <location filename="../src/librssguard/gui/settings/settingsnodejs.ui" line="23"/>
       <source>Node.js executable</source>
-      <translation>Executable Node.js</translation>
+      <translation>Exécutable Node.js</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsnodejs.ui" line="44"/>
