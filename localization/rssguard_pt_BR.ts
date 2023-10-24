@@ -1048,12 +1048,12 @@ ID do item: %5</translation>
       <translation>Títulos de feeds/categorias.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/core/feedsmodel.cpp" line="515"/>
+      <location filename="../src/librssguard/core/feedsmodel.cpp" line="521"/>
       <source>Are you sure?</source>
       <translation>Tem certeza?</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/core/feedsmodel.cpp" line="516"/>
+      <location filename="../src/librssguard/core/feedsmodel.cpp" line="522"/>
       <source>Do you really want to clean all articles from selected item?</source>
       <translation>Você deseja realmente limpar todos os artigos do item selecionado?</translation>
     </message>
@@ -2011,12 +2011,12 @@ Pasta de cache do QtWebEngine -&gt; &quot;%7&quot;</translation>
   <context>
     <name>FormMain</name>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.cpp" line="408"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.cpp" line="409"/>
       <source>No possible actions</source>
       <translation>Nenhuma ação possível</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.cpp" line="367"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.cpp" line="368"/>
       <source>No recycle bin</source>
       <translation>Nenhuma lixeira</translation>
     </message>
@@ -2472,7 +2472,7 @@ Pasta de cache do QtWebEngine -&gt; &quot;%7&quot;</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="755"/>
-      <location filename="../src/librssguard/gui/dialogs/formmain.cpp" line="313"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.cpp" line="314"/>
       <source>Add new category</source>
       <translation>Adicionar nova categoria</translation>
     </message>
@@ -2643,37 +2643,37 @@ Pasta de cache do QtWebEngine -&gt; &quot;%7&quot;</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="750"/>
-      <location filename="../src/librssguard/gui/dialogs/formmain.cpp" line="323"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.cpp" line="324"/>
       <source>Add new feed</source>
       <translation>Adicionar novo feed</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.cpp" line="374"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.cpp" line="375"/>
       <source>No actions possible</source>
       <translation>Nenhuma ação possível</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.cpp" line="152"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.cpp" line="153"/>
       <source>Cannot cleanup database</source>
       <translation>Não é possível limpar o banco de dados</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.cpp" line="153"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.cpp" line="154"/>
       <source>Cannot cleanup database, because another critical action is running.</source>
       <translation>Não é possível limpar o banco de dados, pois outra ação crítica está em execução.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.cpp" line="521"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.cpp" line="522"/>
       <source>Close opened modal dialogs first.</source>
       <translation>Fecha as caixas de diálogo restritas abertas primeiro.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.cpp" line="443"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.cpp" line="444"/>
       <source>Fetching common data</source>
       <translation>Buscando dados comuns</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.cpp" line="520"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.cpp" line="521"/>
       <source>Close dialogs</source>
       <translation>Fechar diálogos</translation>
     </message>
@@ -5315,7 +5315,7 @@ Expiração dos tokens de login: %2</translation>
       </translation>
     </message>
     <message>
-      <location filename="../src/librssguard/services/standard/standardserviceroot.cpp" line="58"/>
+      <location filename="../src/librssguard/services/standard/standardserviceroot.cpp" line="64"/>
       <source>Load initial set of feeds</source>
       <translation>Carregar conjunto inicial de feeds</translation>
     </message>
@@ -5531,7 +5531,7 @@ Lista de leitores suportados:</translation>
       <translation type="unfinished">closing &apos; is missing</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/services/standard/parsers/atomparser.cpp" line="242"/>
+      <location filename="../src/librssguard/services/standard/parsers/atomparser.cpp" line="240"/>
       <location filename="../src/librssguard/services/standard/parsers/rdfparser.cpp" line="190"/>
       <location filename="../src/librssguard/services/standard/parsers/rssparser.cpp" line="190"/>
       <location filename="../src/librssguard/services/standard/parsers/sitemapparser.cpp" line="176"/>
@@ -5539,7 +5539,7 @@ Lista de leitores suportados:</translation>
       <translation type="unfinished">XML is not well-formed, %1</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/services/standard/parsers/atomparser.cpp" line="248"/>
+      <location filename="../src/librssguard/services/standard/parsers/atomparser.cpp" line="246"/>
       <source>not an ATOM feed</source>
       <translation type="unfinished">not an ATOM feed</translation>
     </message>
@@ -5965,12 +5965,12 @@ Number of categories: %2</source>
 Número de categorias: %2</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/services/abstract/serviceroot.cpp" line="553"/>
+      <location filename="../src/librssguard/services/abstract/serviceroot.cpp" line="555"/>
       <source>Error when fetching list of feeds</source>
       <translation>Erro ao buscar lista de feeds</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/services/abstract/serviceroot.cpp" line="554"/>
+      <location filename="../src/librssguard/services/abstract/serviceroot.cpp" line="556"/>
       <source>Feeds &amp; categories for account &apos;%1&apos; were not fetched, error: %2</source>
       <translation>Feeds &amp; categorias para a conta &apos;%1&apos; não foram buscados, erro: %2</translation>
     </message>
@@ -7543,32 +7543,32 @@ Além disso, você pode pós-processar dados de feed gerados com outro script, s
   <context>
     <name>StandardServiceRoot</name>
     <message>
-      <location filename="../src/librssguard/services/standard/standardserviceroot.cpp" line="60"/>
+      <location filename="../src/librssguard/services/standard/standardserviceroot.cpp" line="66"/>
       <source>Do you want to load initial set of feeds?</source>
       <translation>Deseja carregar o conjunto inicial de feeds?</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/services/standard/standardserviceroot.cpp" line="88"/>
+      <location filename="../src/librssguard/services/standard/standardserviceroot.cpp" line="94"/>
       <source>Error when loading initial feeds</source>
       <translation>Erro ao carregar feeds iniciais</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/services/standard/standardserviceroot.cpp" line="301"/>
+      <location filename="../src/librssguard/services/standard/standardserviceroot.cpp" line="314"/>
       <source>Fetch metadata</source>
       <translation>Obter metadados</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/services/standard/standardserviceroot.cpp" line="461"/>
+      <location filename="../src/librssguard/services/standard/standardserviceroot.cpp" line="474"/>
       <source>Export feeds</source>
       <translation>Exportar feeds</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/services/standard/standardserviceroot.cpp" line="462"/>
+      <location filename="../src/librssguard/services/standard/standardserviceroot.cpp" line="475"/>
       <source>Import feeds</source>
       <translation>Importar feeds</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/services/standard/standardserviceroot.cpp" line="59"/>
+      <location filename="../src/librssguard/services/standard/standardserviceroot.cpp" line="65"/>
       <source>This new account does not include any feeds. You can now add default set of feeds.</source>
       <translation>Esta nova conta não inclui nenhum feed. Você pode adicionar agora um conjunto padrão de feeds.</translation>
     </message>
@@ -7578,32 +7578,32 @@ Além disso, você pode pós-processar dados de feed gerados com outro script, s
       <translation type="unfinished">This is the obligatory service account for standard RSS/RDF/ATOM feeds.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/services/standard/standardserviceroot.cpp" line="131"/>
+      <location filename="../src/librssguard/services/standard/standardserviceroot.cpp" line="137"/>
       <source>Cannot add item</source>
       <translation>Não é possível adicionar o item</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/services/standard/standardserviceroot.cpp" line="132"/>
+      <location filename="../src/librssguard/services/standard/standardserviceroot.cpp" line="138"/>
       <source>Cannot add feed because another critical operation is ongoing.</source>
       <translation>Não é possível adicionar o feed pois outra operação crítica está em andamento.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/services/standard/standardserviceroot.cpp" line="427"/>
+      <location filename="../src/librssguard/services/standard/standardserviceroot.cpp" line="440"/>
       <source>Cannot add category</source>
       <translation>Não foi possível adicionar a categoria</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/services/standard/standardserviceroot.cpp" line="428"/>
+      <location filename="../src/librssguard/services/standard/standardserviceroot.cpp" line="441"/>
       <source>Cannot add category because another critical operation is ongoing.</source>
       <translation>Não é possível adicionar a categoria pois outra operação crítica está em andamento.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/services/standard/standardserviceroot.cpp" line="415"/>
+      <location filename="../src/librssguard/services/standard/standardserviceroot.cpp" line="428"/>
       <source>Import was completely successful.</source>
       <translation>A importação foi concluída com sucesso.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/services/standard/standardserviceroot.cpp" line="412"/>
+      <location filename="../src/librssguard/services/standard/standardserviceroot.cpp" line="425"/>
       <source>Some feeds/categories were not imported due to error, check debug log for more details.</source>
       <translation>Alguns feeds/categorias não foram importados devido a um erro, verifique o log de depuração para obter mais detalhes.</translation>
     </message>
