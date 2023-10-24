@@ -7486,17 +7486,17 @@ Also, you can post-process generated feed data with yet another script if you wi
         <translation>Error when loading initial feeds</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/services/standard/standardserviceroot.cpp" line="301"/>
+        <location filename="../src/librssguard/services/standard/standardserviceroot.cpp" line="308"/>
         <source>Fetch metadata</source>
         <translation>Fetch metadata</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/services/standard/standardserviceroot.cpp" line="461"/>
+        <location filename="../src/librssguard/services/standard/standardserviceroot.cpp" line="468"/>
         <source>Export feeds</source>
         <translation>Export feeds</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/services/standard/standardserviceroot.cpp" line="462"/>
+        <location filename="../src/librssguard/services/standard/standardserviceroot.cpp" line="469"/>
         <source>Import feeds</source>
         <translation>Import feeds</translation>
     </message>
@@ -7521,22 +7521,22 @@ Also, you can post-process generated feed data with yet another script if you wi
         <translation>Cannot add feed because another critical operation is ongoing.</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/services/standard/standardserviceroot.cpp" line="427"/>
+        <location filename="../src/librssguard/services/standard/standardserviceroot.cpp" line="434"/>
         <source>Cannot add category</source>
         <translation>Cannot add category</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/services/standard/standardserviceroot.cpp" line="428"/>
+        <location filename="../src/librssguard/services/standard/standardserviceroot.cpp" line="435"/>
         <source>Cannot add category because another critical operation is ongoing.</source>
         <translation>Cannot add category because another critical operation is ongoing.</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/services/standard/standardserviceroot.cpp" line="415"/>
+        <location filename="../src/librssguard/services/standard/standardserviceroot.cpp" line="422"/>
         <source>Import was completely successful.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/librssguard/services/standard/standardserviceroot.cpp" line="412"/>
+        <location filename="../src/librssguard/services/standard/standardserviceroot.cpp" line="419"/>
         <source>Some feeds/categories were not imported due to error, check debug log for more details.</source>
         <translation type="unfinished"></translation>
     </message>

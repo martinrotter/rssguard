@@ -81,6 +81,7 @@ void FormStandardFeedDetails::apply() {
   std_feed->setIcon(m_standardFeedDetails->m_ui.m_btnIcon->icon());
 
   std_feed->setSource(m_standardFeedDetails->m_ui.m_txtSource->textEdit()->toPlainText());
+  std_feed->setLastEtag({});
 
   std_feed->setEncoding(m_standardFeedDetails->m_ui.m_cmbEncoding->currentText());
   std_feed->setType(type);

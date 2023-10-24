@@ -40,11 +40,11 @@
 StandardFeed::StandardFeed(RootItem* parent_item) : Feed(parent_item) {
   m_type = Type::Rss0X;
   m_sourceType = SourceType::Url;
-  m_encoding = m_postProcessScript = QString();
+  m_encoding = m_postProcessScript = {};
 
   m_protection = NetworkFactory::NetworkAuthentication::NoAuthentication;
-  m_username = QString();
-  m_password = QString();
+  m_username = {};
+  m_password = {};
 }
 
 StandardFeed::StandardFeed(const StandardFeed& other) : Feed(other) {
@@ -384,6 +384,14 @@ bool StandardFeed::removeItself() {
   QSqlDatabase database = qApp->database()->driver()->connection(metaObject()->className());
 
   return DatabaseQueries::deleteFeed(database, this, getParentServiceRoot()->accountId());
+}
+
+QString StandardFeed::lastEtag() const {
+  return m_lastEtag;
+}
+
+void StandardFeed::setLastEtag(const QString& etag) {
+  m_lastEtag = etag;
 }
 
 StandardFeed::Type StandardFeed::type() const {

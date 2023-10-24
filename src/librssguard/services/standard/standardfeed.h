@@ -104,6 +104,9 @@ class StandardFeed : public Feed {
                                        bool provide_input,
                                        const QString& input = {});
 
+    QString lastEtag() const;
+    void setLastEtag(const QString& etag);
+
   public slots:
     void fetchMetadataForItself();
 
@@ -119,6 +122,7 @@ class StandardFeed : public Feed {
     NetworkFactory::NetworkAuthentication m_protection = NetworkFactory::NetworkAuthentication::NoAuthentication;
     QString m_username;
     QString m_password;
+    QString m_lastEtag;
 };
 
 Q_DECLARE_METATYPE(StandardFeed::SourceType)

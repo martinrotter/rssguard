@@ -59,6 +59,7 @@ class ServiceRoot : public RootItem {
     SearchsNode* probesNode() const;
     UnreadNode* unreadNode() const;
 
+    virtual void onDatabaseCleanup();
     virtual void updateCounts(bool including_total_count);
     virtual bool canBeDeleted() const;
     virtual bool deleteViaGui();

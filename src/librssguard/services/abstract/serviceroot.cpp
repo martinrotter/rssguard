@@ -479,6 +479,8 @@ UnreadNode* ServiceRoot::unreadNode() const {
   return m_unreadNode;
 }
 
+void ServiceRoot::onDatabaseCleanup() {}
+
 void ServiceRoot::syncIn() {
   QIcon original_icon = icon();
 

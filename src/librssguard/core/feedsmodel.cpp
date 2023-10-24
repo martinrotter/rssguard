@@ -392,6 +392,12 @@ void FeedsModel::setupFonts() {
   m_boldStrikedFont.setStrikeOut(true);
 }
 
+void FeedsModel::informAboutDatabaseCleanup() {
+  for (ServiceRoot* acc : serviceRoots()) {
+    acc->onDatabaseCleanup();
+  }
+}
+
 void FeedsModel::reloadWholeLayout() {
   emit layoutAboutToBeChanged();
   emit layoutChanged();

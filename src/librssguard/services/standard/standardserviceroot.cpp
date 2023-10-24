@@ -48,6 +48,12 @@ StandardServiceRoot::~StandardServiceRoot() {
   qDeleteAll(m_feedContextMenu);
 }
 
+void StandardServiceRoot::onDatabaseCleanup() {
+  for (Feed* fd : getSubTreeFeeds()) {
+    qobject_cast<StandardFeed*>(fd)->setLastEtag({});
+  }
+}
+
 void StandardServiceRoot::start(bool freshly_activated) {
   DatabaseQueries::loadRootFromDatabase<StandardCategory, StandardFeed>(this);
 
@@ -175,6 +181,12 @@ QList<Message> StandardServiceRoot::obtainNewMessages(Feed* feed,
 
     headers << NetworkFactory::generateBasicAuthHeader(f->protection(), f->username(), f->password());
 
+    if (!f->lastEtag().isEmpty()) {
+      headers.append({QSL("If-None-Match").toLocal8Bit(), f->lastEtag().toLocal8Bit()});
+
+      qDebugNN << "Using ETag value:" << QUOTE_W_SPACE_DOT(f->lastEtag());
+    }
+
     auto network_result = NetworkFactory::performNetworkOperation(feed->source(),
                                                                   download_timeout,
                                                                   {},
@@ -186,13 +198,14 @@ QList<Message> StandardServiceRoot::obtainNewMessages(Feed* feed,
                                                                   {},
                                                                   networkProxy());
 
-    // qDebugNN << "etag:" << network_result.m_headers["ETag"];
-
     if (network_result.m_networkError != QNetworkReply::NetworkError::NoError) {
       qWarningNN << LOGSEC_CORE << "Error" << QUOTE_W_SPACE(network_result.m_networkError)
                  << "during fetching of new messages for feed" << QUOTE_W_SPACE_DOT(feed->source());
       throw FeedFetchException(Feed::Status::NetworkError,
                                NetworkFactory::networkErrorText(network_result.m_networkError));
+    }
+    else {
+      f->setLastEtag(network_result.m_headers.value(QSL("ETag")));
     }
   }
   else if (f->sourceType() == StandardFeed::SourceType::LocalFile) {

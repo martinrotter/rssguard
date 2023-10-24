@@ -145,6 +145,7 @@ void FormMain::showDbCleanupAssistant() {
     // Reload needed stuff.
     qApp->feedUpdateLock()->unlock();
     tabWidget()->feedMessageViewer()->messagesView()->reloadSelections();
+    qApp->feedReader()->feedsModel()->informAboutDatabaseCleanup();
     qApp->feedReader()->feedsModel()->reloadCountsOfWholeModel();
   }
   else {

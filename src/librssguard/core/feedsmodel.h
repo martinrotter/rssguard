@@ -79,6 +79,7 @@ class RSSGUARD_DLLSPEC FeedsModel : public QAbstractItemModel {
     RootItem* rootItem() const;
 
     void setupFonts();
+    void informAboutDatabaseCleanup();
 
   public slots:
     void loadActivatedServiceAccounts();

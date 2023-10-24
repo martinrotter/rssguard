@@ -24,6 +24,7 @@ class StandardServiceRoot : public ServiceRoot {
     explicit StandardServiceRoot(RootItem* parent = nullptr);
     virtual ~StandardServiceRoot();
 
+    virtual void onDatabaseCleanup();
     virtual void start(bool freshly_activated);
     virtual void stop();
     virtual QString code() const;
