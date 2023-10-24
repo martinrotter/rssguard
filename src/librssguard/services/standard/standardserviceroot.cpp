@@ -186,7 +186,7 @@ QList<Message> StandardServiceRoot::obtainNewMessages(Feed* feed,
                                                                   {},
                                                                   networkProxy());
 
-    qDebugNN << "etag:" << network_result.m_headers["ETag"];
+    // qDebugNN << "etag:" << network_result.m_headers["ETag"];
 
     if (network_result.m_networkError != QNetworkReply::NetworkError::NoError) {
       qWarningNN << LOGSEC_CORE << "Error" << QUOTE_W_SPACE(network_result.m_networkError)
