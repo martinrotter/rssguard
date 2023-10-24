@@ -295,7 +295,7 @@ QList<Message> GmailNetworkFactory::messages(const QString& stream_id,
     to_download += moved_unread;
   }
 
-  qDebugNN << LOGSEC_GMAIL << "Will download" << QUOTE_W_SPACE(to_download.size()) << "e-mails.";
+  qDebugNN << LOGSEC_GMAIL << "Will download" << NONQUOTE_W_SPACE(to_download.size()) << "e-mails.";
 
   auto messages = obtainAndDecodeFullMessages(QList<QString>(to_download.values()), stream_id, custom_proxy);
 

@@ -318,7 +318,7 @@ void FeedReader::executeNextAutoUpdate() {
 
   if (!qApp->feedUpdateLock()->tryLock()) {
     qDebugNN << LOGSEC_CORE << "Delaying scheduled feed auto-downloads and message state synchronization for "
-             << "one minute due to another running update.";
+             << "some time due to another running update.";
 
     // Cannot update, quit.
     return;
