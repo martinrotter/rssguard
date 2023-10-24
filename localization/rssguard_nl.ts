@@ -1047,12 +1047,12 @@ Onderdeel ID: %5</translation>
       <translation>Naam van feeds/categorieën.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/core/feedsmodel.cpp" line="515"/>
+      <location filename="../src/librssguard/core/feedsmodel.cpp" line="521"/>
       <source>Are you sure?</source>
       <translation>Weet je het zeker?</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/core/feedsmodel.cpp" line="516"/>
+      <location filename="../src/librssguard/core/feedsmodel.cpp" line="522"/>
       <source>Do you really want to clean all articles from selected item?</source>
       <translation>Weet je zeker dat je alle artikelen van het geselecteerde item wilt verwijderen?</translation>
     </message>
@@ -1825,27 +1825,27 @@ QtWebEngine cache map -&gt; &quot;%7&quot;</translation>
     <message>
       <location filename="../src/librssguard/services/standard/gui/formdiscoverfeeds.ui" line="121"/>
       <source>Select &amp;all</source>
-      <translation type="unfinished">Select &amp;all</translation>
+      <translation>Alles &amp;selecteren</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/standard/gui/formdiscoverfeeds.ui" line="128"/>
       <source>&amp;Unselect all</source>
-      <translation type="unfinished">&amp;Unselect all</translation>
+      <translation>Alles &amp;deselecteren</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/standard/gui/formdiscoverfeeds.ui" line="183"/>
       <source>Add single feed with advanced details</source>
-      <translation type="unfinished">Add single feed with advanced details</translation>
+      <translation>Enkele feed met geavanceerde instellingen toevoegen</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/standard/gui/formdiscoverfeeds.ui" line="190"/>
       <source>&amp;Import checked feeds</source>
-      <translation type="unfinished">&amp;Import checked feeds</translation>
+      <translation>&amp;Geselecteerde feeds importeren</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/standard/gui/formdiscoverfeeds.cpp" line="36"/>
       <source>Switch to &amp;advanced mode</source>
-      <translation type="unfinished">Switch to &amp;advanced mode</translation>
+      <translation>Schakel naar ge&amp;avanceerde modus</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/standard/gui/formdiscoverfeeds.cpp" line="38"/>
@@ -2010,12 +2010,12 @@ QtWebEngine cache map -&gt; &quot;%7&quot;</translation>
   <context>
     <name>FormMain</name>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.cpp" line="408"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.cpp" line="409"/>
       <source>No possible actions</source>
       <translation>Geen mogelijke acties</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.cpp" line="367"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.cpp" line="368"/>
       <source>No recycle bin</source>
       <translation>Geen prullenbak</translation>
     </message>
@@ -2471,7 +2471,7 @@ QtWebEngine cache map -&gt; &quot;%7&quot;</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="755"/>
-      <location filename="../src/librssguard/gui/dialogs/formmain.cpp" line="313"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.cpp" line="314"/>
       <source>Add new category</source>
       <translation>Nieuwe categorie toevoegen</translation>
     </message>
@@ -2642,37 +2642,37 @@ QtWebEngine cache map -&gt; &quot;%7&quot;</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="750"/>
-      <location filename="../src/librssguard/gui/dialogs/formmain.cpp" line="323"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.cpp" line="324"/>
       <source>Add new feed</source>
       <translation>Nieuwe feed toevoegen</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.cpp" line="374"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.cpp" line="375"/>
       <source>No actions possible</source>
       <translation>Acties niet mogelijk</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.cpp" line="152"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.cpp" line="153"/>
       <source>Cannot cleanup database</source>
       <translation>Kan database niet opschonen</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.cpp" line="153"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.cpp" line="154"/>
       <source>Cannot cleanup database, because another critical action is running.</source>
       <translation>De database kan nu niet opgeschoond worden omdat er een kritieke handeling uitgevoerd wordt.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.cpp" line="521"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.cpp" line="522"/>
       <source>Close opened modal dialogs first.</source>
       <translation>Sluit geopende modaalvensters eerst.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.cpp" line="443"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.cpp" line="444"/>
       <source>Fetching common data</source>
       <translation>Algemene gegevens ophalen</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.cpp" line="520"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.cpp" line="521"/>
       <source>Close dialogs</source>
       <translation>Dialogen sluiten</translation>
     </message>
@@ -5314,7 +5314,7 @@ Logintoken verloopt: %2</translation>
       </translation>
     </message>
     <message>
-      <location filename="../src/librssguard/services/standard/standardserviceroot.cpp" line="58"/>
+      <location filename="../src/librssguard/services/standard/standardserviceroot.cpp" line="64"/>
       <source>Load initial set of feeds</source>
       <translation>Laad eerste set van de feeds</translation>
     </message>
@@ -5530,7 +5530,7 @@ Lijst met ondersteunde lezers:</translation>
       <translation>afsluitende &apos; ontbreekt</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/services/standard/parsers/atomparser.cpp" line="242"/>
+      <location filename="../src/librssguard/services/standard/parsers/atomparser.cpp" line="240"/>
       <location filename="../src/librssguard/services/standard/parsers/rdfparser.cpp" line="190"/>
       <location filename="../src/librssguard/services/standard/parsers/rssparser.cpp" line="190"/>
       <location filename="../src/librssguard/services/standard/parsers/sitemapparser.cpp" line="176"/>
@@ -5538,7 +5538,7 @@ Lijst met ondersteunde lezers:</translation>
       <translation>XML is niet goed samengesteld, %1</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/services/standard/parsers/atomparser.cpp" line="248"/>
+      <location filename="../src/librssguard/services/standard/parsers/atomparser.cpp" line="246"/>
       <source>not an ATOM feed</source>
       <translation>geen ATOM feed</translation>
     </message>
@@ -5964,12 +5964,12 @@ Number of categories: %2</source>
 Aantal categorieën: %2 </translation>
     </message>
     <message>
-      <location filename="../src/librssguard/services/abstract/serviceroot.cpp" line="553"/>
+      <location filename="../src/librssguard/services/abstract/serviceroot.cpp" line="555"/>
       <source>Error when fetching list of feeds</source>
       <translation>Fout tijdens het ophalen van de feeds</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/services/abstract/serviceroot.cpp" line="554"/>
+      <location filename="../src/librssguard/services/abstract/serviceroot.cpp" line="556"/>
       <source>Feeds &amp; categories for account &apos;%1&apos; were not fetched, error: %2</source>
       <translation>Feeds &amp; categorieën voor account &apos;%1&apos; zijn niet opgehaald, fout: %2 </translation>
     </message>
@@ -7542,32 +7542,32 @@ Je kunt ook gegenereerde feedgegevens nabewerken met nog een ander script als je
   <context>
     <name>StandardServiceRoot</name>
     <message>
-      <location filename="../src/librssguard/services/standard/standardserviceroot.cpp" line="60"/>
+      <location filename="../src/librssguard/services/standard/standardserviceroot.cpp" line="66"/>
       <source>Do you want to load initial set of feeds?</source>
       <translation>Wil je de eerste set van feeds laden?</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/services/standard/standardserviceroot.cpp" line="88"/>
+      <location filename="../src/librssguard/services/standard/standardserviceroot.cpp" line="94"/>
       <source>Error when loading initial feeds</source>
       <translation>Fout bij het laden van de eerste feeds</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/services/standard/standardserviceroot.cpp" line="301"/>
+      <location filename="../src/librssguard/services/standard/standardserviceroot.cpp" line="314"/>
       <source>Fetch metadata</source>
       <translation>Metadata ophalen</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/services/standard/standardserviceroot.cpp" line="461"/>
+      <location filename="../src/librssguard/services/standard/standardserviceroot.cpp" line="474"/>
       <source>Export feeds</source>
       <translation>Feeds exporteren</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/services/standard/standardserviceroot.cpp" line="462"/>
+      <location filename="../src/librssguard/services/standard/standardserviceroot.cpp" line="475"/>
       <source>Import feeds</source>
       <translation>Feeds importeren</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/services/standard/standardserviceroot.cpp" line="59"/>
+      <location filename="../src/librssguard/services/standard/standardserviceroot.cpp" line="65"/>
       <source>This new account does not include any feeds. You can now add default set of feeds.</source>
       <translation>Dit nieuwe account bevat geen feeds. De standaard feeds kunnen toegevoegd worden.</translation>
     </message>
@@ -7577,32 +7577,32 @@ Je kunt ook gegenereerde feedgegevens nabewerken met nog een ander script als je
       <translation>Dit is het verplichte service account voor standaard RSS/RDF/ATOM feeds.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/services/standard/standardserviceroot.cpp" line="131"/>
+      <location filename="../src/librssguard/services/standard/standardserviceroot.cpp" line="137"/>
       <source>Cannot add item</source>
       <translation>Kan item niet toevoegen</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/services/standard/standardserviceroot.cpp" line="132"/>
+      <location filename="../src/librssguard/services/standard/standardserviceroot.cpp" line="138"/>
       <source>Cannot add feed because another critical operation is ongoing.</source>
       <translation>Kan geen feed toevoegen omdat een andere kritieke operatie aan de gang is.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/services/standard/standardserviceroot.cpp" line="427"/>
+      <location filename="../src/librssguard/services/standard/standardserviceroot.cpp" line="440"/>
       <source>Cannot add category</source>
       <translation>Kan geen categorie toevoegen</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/services/standard/standardserviceroot.cpp" line="428"/>
+      <location filename="../src/librssguard/services/standard/standardserviceroot.cpp" line="441"/>
       <source>Cannot add category because another critical operation is ongoing.</source>
       <translation>Kan geen categorie toevoegen omdat een andere kritieke operatie aan de gang is.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/services/standard/standardserviceroot.cpp" line="415"/>
+      <location filename="../src/librssguard/services/standard/standardserviceroot.cpp" line="428"/>
       <source>Import was completely successful.</source>
       <translation>Importeren is helemaal geslaagd.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/services/standard/standardserviceroot.cpp" line="412"/>
+      <location filename="../src/librssguard/services/standard/standardserviceroot.cpp" line="425"/>
       <source>Some feeds/categories were not imported due to error, check debug log for more details.</source>
       <translation>Sommige feed/categorieën zijn niet geïmporteerd vanwege een fout, controleer het applicatielog voor meer details.</translation>
     </message>

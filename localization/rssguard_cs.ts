@@ -1064,12 +1064,12 @@ ID položky: %5</translation>
       <translation>Názvy kanálů/kategorií.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/core/feedsmodel.cpp" line="515"/>
+      <location filename="../src/librssguard/core/feedsmodel.cpp" line="521"/>
       <source>Are you sure?</source>
       <translation>Jste si jistý?</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/core/feedsmodel.cpp" line="516"/>
+      <location filename="../src/librssguard/core/feedsmodel.cpp" line="522"/>
       <source>Do you really want to clean all articles from selected item?</source>
       <translation>Opravdu chcete všechny zprávičky ze všech položek smazat?</translation>
     </message>
@@ -2029,12 +2029,12 @@ Složka cache pro QtWebEngine -&gt; &quot;%7&quot;</translation>
   <context>
     <name>FormMain</name>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.cpp" line="408"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.cpp" line="409"/>
       <source>No possible actions</source>
       <translation>Žádná možná akce</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.cpp" line="367"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.cpp" line="368"/>
       <source>No recycle bin</source>
       <translation>Žádný koš</translation>
     </message>
@@ -2490,7 +2490,7 @@ Složka cache pro QtWebEngine -&gt; &quot;%7&quot;</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="755"/>
-      <location filename="../src/librssguard/gui/dialogs/formmain.cpp" line="313"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.cpp" line="314"/>
       <source>Add new category</source>
       <translation>Přidat novou kategorii</translation>
     </message>
@@ -2661,37 +2661,37 @@ Složka cache pro QtWebEngine -&gt; &quot;%7&quot;</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="750"/>
-      <location filename="../src/librssguard/gui/dialogs/formmain.cpp" line="323"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.cpp" line="324"/>
       <source>Add new feed</source>
       <translation>Přidat nový kanál</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.cpp" line="374"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.cpp" line="375"/>
       <source>No actions possible</source>
       <translation>Žádná možná akce</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.cpp" line="152"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.cpp" line="153"/>
       <source>Cannot cleanup database</source>
       <translation>Nelze vyčistit databázi</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.cpp" line="153"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.cpp" line="154"/>
       <source>Cannot cleanup database, because another critical action is running.</source>
       <translation>Databázi nelze v současné době vyčistit, protože běží jiná kritická akce. Zkuste to později.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.cpp" line="521"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.cpp" line="522"/>
       <source>Close opened modal dialogs first.</source>
       <translation>Nejdříve ukončete otevřené modální dialogy.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.cpp" line="443"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.cpp" line="444"/>
       <source>Fetching common data</source>
       <translation>Stahuji obecná data</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.cpp" line="520"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.cpp" line="521"/>
       <source>Close dialogs</source>
       <translation>Zavřít dialogy</translation>
     </message>
@@ -5349,7 +5349,7 @@ Tokeny vyprší: %2</translation>
       </translation>
     </message>
     <message>
-      <location filename="../src/librssguard/services/standard/standardserviceroot.cpp" line="58"/>
+      <location filename="../src/librssguard/services/standard/standardserviceroot.cpp" line="64"/>
       <source>Load initial set of feeds</source>
       <translation>Načíst úvodní sadu kanálů</translation>
     </message>
@@ -5565,7 +5565,7 @@ Podporované čtečky:</translation>
       <translation type="unfinished">closing &apos; is missing</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/services/standard/parsers/atomparser.cpp" line="242"/>
+      <location filename="../src/librssguard/services/standard/parsers/atomparser.cpp" line="240"/>
       <location filename="../src/librssguard/services/standard/parsers/rdfparser.cpp" line="190"/>
       <location filename="../src/librssguard/services/standard/parsers/rssparser.cpp" line="190"/>
       <location filename="../src/librssguard/services/standard/parsers/sitemapparser.cpp" line="176"/>
@@ -5573,7 +5573,7 @@ Podporované čtečky:</translation>
       <translation type="unfinished">XML is not well-formed, %1</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/services/standard/parsers/atomparser.cpp" line="248"/>
+      <location filename="../src/librssguard/services/standard/parsers/atomparser.cpp" line="246"/>
       <source>not an ATOM feed</source>
       <translation type="unfinished">not an ATOM feed</translation>
     </message>
@@ -6003,12 +6003,12 @@ Number of categories: %2</source>
 Počet kategorií: %2</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/services/abstract/serviceroot.cpp" line="553"/>
+      <location filename="../src/librssguard/services/abstract/serviceroot.cpp" line="555"/>
       <source>Error when fetching list of feeds</source>
       <translation>Chyba při načítání seznamu kanálů</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/services/abstract/serviceroot.cpp" line="554"/>
+      <location filename="../src/librssguard/services/abstract/serviceroot.cpp" line="556"/>
       <source>Feeds &amp; categories for account &apos;%1&apos; were not fetched, error: %2</source>
       <translation>Kanály &amp; kategorie pro účet &apos;%1&apos; nebyly staženy, chyba: %2</translation>
     </message>
@@ -7583,32 +7583,32 @@ Stažená data kanálů můžete také dodatečně zpracovat post-procesním skr
   <context>
     <name>StandardServiceRoot</name>
     <message>
-      <location filename="../src/librssguard/services/standard/standardserviceroot.cpp" line="60"/>
+      <location filename="../src/librssguard/services/standard/standardserviceroot.cpp" line="66"/>
       <source>Do you want to load initial set of feeds?</source>
       <translation>Chcete načíst úvodní set kanálů?</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/services/standard/standardserviceroot.cpp" line="88"/>
+      <location filename="../src/librssguard/services/standard/standardserviceroot.cpp" line="94"/>
       <source>Error when loading initial feeds</source>
       <translation>Chyba při načítání úvodních kanálů</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/services/standard/standardserviceroot.cpp" line="301"/>
+      <location filename="../src/librssguard/services/standard/standardserviceroot.cpp" line="314"/>
       <source>Fetch metadata</source>
       <translation>Načíst metadata</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/services/standard/standardserviceroot.cpp" line="461"/>
+      <location filename="../src/librssguard/services/standard/standardserviceroot.cpp" line="474"/>
       <source>Export feeds</source>
       <translation>Exportovat kanály</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/services/standard/standardserviceroot.cpp" line="462"/>
+      <location filename="../src/librssguard/services/standard/standardserviceroot.cpp" line="475"/>
       <source>Import feeds</source>
       <translation>Importovat kanály</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/services/standard/standardserviceroot.cpp" line="59"/>
+      <location filename="../src/librssguard/services/standard/standardserviceroot.cpp" line="65"/>
       <source>This new account does not include any feeds. You can now add default set of feeds.</source>
       <translation>Tento nový účet doposud neobsahuje žádné kanály, chcete nyní přidat výchozí sadu kanálů?</translation>
     </message>
@@ -7618,32 +7618,32 @@ Stažená data kanálů můžete také dodatečně zpracovat post-procesním skr
       <translation>Jedná se o klasicky účet pro standardní RSS/RDF/ATOM kanály.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/services/standard/standardserviceroot.cpp" line="131"/>
+      <location filename="../src/librssguard/services/standard/standardserviceroot.cpp" line="137"/>
       <source>Cannot add item</source>
       <translation>Nelze přidat položku</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/services/standard/standardserviceroot.cpp" line="132"/>
+      <location filename="../src/librssguard/services/standard/standardserviceroot.cpp" line="138"/>
       <source>Cannot add feed because another critical operation is ongoing.</source>
       <translation>Nelze přidat kanál, protože probíhá jiná kritická operace.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/services/standard/standardserviceroot.cpp" line="427"/>
+      <location filename="../src/librssguard/services/standard/standardserviceroot.cpp" line="440"/>
       <source>Cannot add category</source>
       <translation>Nelze přidat kategorii</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/services/standard/standardserviceroot.cpp" line="428"/>
+      <location filename="../src/librssguard/services/standard/standardserviceroot.cpp" line="441"/>
       <source>Cannot add category because another critical operation is ongoing.</source>
       <translation>Nelze přidat kategorii, protože probíhá jiná kritická operace.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/services/standard/standardserviceroot.cpp" line="415"/>
+      <location filename="../src/librssguard/services/standard/standardserviceroot.cpp" line="428"/>
       <source>Import was completely successful.</source>
       <translation>Import byl úspěšný.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/services/standard/standardserviceroot.cpp" line="412"/>
+      <location filename="../src/librssguard/services/standard/standardserviceroot.cpp" line="425"/>
       <source>Some feeds/categories were not imported due to error, check debug log for more details.</source>
       <translation>Některé kanály/kategorie nebyly importovány kvůli chybě. Mrkněte do aplikačního logu.</translation>
     </message>
