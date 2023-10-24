@@ -40,11 +40,11 @@
 StandardFeed::StandardFeed(RootItem* parent_item) : Feed(parent_item) {
   m_type = Type::Rss0X;
   m_sourceType = SourceType::Url;
-  m_encoding = m_postProcessScript = {};
+  m_encoding = m_postProcessScript = QString();
 
   m_protection = NetworkFactory::NetworkAuthentication::NoAuthentication;
-  m_username = {};
-  m_password = {};
+  m_username = QString();
+  m_password = QString();
 }
 
 StandardFeed::StandardFeed(const StandardFeed& other) : Feed(other) {
