@@ -279,7 +279,7 @@ QList<HttpResponse> Downloader::decodeMultipartAnswer(QNetworkReply* reply) {
   QString content_type = reply->header(QNetworkRequest::KnownHeaders::ContentTypeHeader).toString();
   QString boundary = content_type.mid(content_type.indexOf(QL1S("boundary=")) + 9);
 
-  static QRegularExpression regex(QL1S("--") + boundary + QL1S("(--)?(\\r\\n)?"));
+  QRegularExpression regex(QL1S("--") + boundary + QL1S("(--)?(\\r\\n)?"));
 
   QStringList list = QString::fromUtf8(data).split(regex,
 #if QT_VERSION >= 0x050F00 // Qt >= 5.15.0
