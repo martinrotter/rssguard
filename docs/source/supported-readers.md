@@ -1,8 +1,13 @@
 Supported Feed Readers
 ======================
-RSS Guard is multi-account application and supports many web-based feed readers via built-in plugins. One of the plugins, of course, provides the support for standard list of `RSS/ATOM/JSON/Sitemap` feeds with the set of features everyone would expect from classic feed reader.
+RSS Guard is multi-account application and supports many web-based feed readers via built-in plugins. Its `standard` plugin provides support for these feed formats:
+* RSS (2.0, 2.0.1)
+* ATOM
+* RDF
+* [JSON](https://www.jsonfeed.org)
+* [Sitemap](https://en.wikipedia.org/wiki/Sitemaps) (including Sitemap index discovery and compressed sitemaps)
 
-I organized the supported web-based feed readers into an elegant table:
+When it comes to online web-based feed readers, these are supported:
 
 | Service | Two-way Synchronization | Intelligent Synchronization Algorithm (ISA) [^1] | Synchronized Labels [^2] | OAuth [^3] |
 | :---              | :---:  | :---: | :---: | :---:
