@@ -471,12 +471,12 @@ version en cliquant sur cette notification.</translation>
   <context>
     <name>DiscoveredFeedsModel</name>
     <message>
-      <location filename="../src/librssguard/services/standard/gui/formdiscoverfeeds.cpp" line="232"/>
+      <location filename="../src/librssguard/services/standard/gui/formdiscoverfeeds.cpp" line="288"/>
       <source>Title</source>
       <translation>Titre</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/services/standard/gui/formdiscoverfeeds.cpp" line="232"/>
+      <location filename="../src/librssguard/services/standard/gui/formdiscoverfeeds.cpp" line="288"/>
       <source>Type</source>
       <translation>Type</translation>
     </message>
@@ -1571,93 +1571,93 @@ Dossier du cache Moteur Web QT -&gt; &quot;%7&quot;</translation>
       <translation>Ajouter une nouvelle catégorie</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/services/abstract/gui/formcategorydetails.cpp" line="123"/>
+      <location filename="../src/librssguard/services/abstract/gui/formcategorydetails.cpp" line="121"/>
       <source>Category name is ok.</source>
       <translation>Le nom de la catégorie est valide.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/services/abstract/gui/formcategorydetails.cpp" line="127"/>
+      <location filename="../src/librssguard/services/abstract/gui/formcategorydetails.cpp" line="125"/>
       <source>Category name is too short.</source>
       <translation>Le nom de la catégorie est trop court.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/services/abstract/gui/formcategorydetails.cpp" line="133"/>
+      <location filename="../src/librssguard/services/abstract/gui/formcategorydetails.cpp" line="131"/>
       <source>Description is empty.</source>
       <translation>La description est vide.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/services/abstract/gui/formcategorydetails.cpp" line="136"/>
+      <location filename="../src/librssguard/services/abstract/gui/formcategorydetails.cpp" line="134"/>
       <source>The description is ok.</source>
       <translation>La description est valide.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/services/abstract/gui/formcategorydetails.cpp" line="151"/>
+      <location filename="../src/librssguard/services/abstract/gui/formcategorydetails.cpp" line="149"/>
       <source>Select icon file for the category</source>
       <translation>Sélectionner un icône pour la catégorie</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/services/abstract/gui/formcategorydetails.cpp" line="153"/>
+      <location filename="../src/librssguard/services/abstract/gui/formcategorydetails.cpp" line="151"/>
       <source>Images (%1)</source>
       <translation>Images (%1)</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/services/abstract/gui/formcategorydetails.cpp" line="159"/>
+      <location filename="../src/librssguard/services/abstract/gui/formcategorydetails.cpp" line="157"/>
       <source>Select icon</source>
       <translation>Sélectionner l&apos;icône</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/services/abstract/gui/formcategorydetails.cpp" line="160"/>
+      <location filename="../src/librssguard/services/abstract/gui/formcategorydetails.cpp" line="158"/>
       <source>Cancel</source>
       <translation>Annuler</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/services/abstract/gui/formcategorydetails.cpp" line="163"/>
+      <location filename="../src/librssguard/services/abstract/gui/formcategorydetails.cpp" line="161"/>
       <source>Look in:</source>
       <extracomment>Label to describe the folder for icon file selection dialog.</extracomment>
       <translation>Rechercher dans :</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/services/abstract/gui/formcategorydetails.cpp" line="164"/>
+      <location filename="../src/librssguard/services/abstract/gui/formcategorydetails.cpp" line="162"/>
       <source>Icon name:</source>
       <translation>Nom de l&apos;icône :</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/services/abstract/gui/formcategorydetails.cpp" line="165"/>
+      <location filename="../src/librssguard/services/abstract/gui/formcategorydetails.cpp" line="163"/>
       <source>Icon type:</source>
       <translation>Type d&apos;icône :</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/services/abstract/gui/formcategorydetails.cpp" line="181"/>
+      <location filename="../src/librssguard/services/abstract/gui/formcategorydetails.cpp" line="179"/>
       <source>Category title</source>
       <translation>Titre de la catégorie</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/services/abstract/gui/formcategorydetails.cpp" line="182"/>
+      <location filename="../src/librssguard/services/abstract/gui/formcategorydetails.cpp" line="180"/>
       <source>Set title for your category.</source>
       <translation>Définir un titre pour votre catégorie</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/services/abstract/gui/formcategorydetails.cpp" line="183"/>
+      <location filename="../src/librssguard/services/abstract/gui/formcategorydetails.cpp" line="181"/>
       <source>Category description</source>
       <translation>Description de la catégorie</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/services/abstract/gui/formcategorydetails.cpp" line="184"/>
+      <location filename="../src/librssguard/services/abstract/gui/formcategorydetails.cpp" line="182"/>
       <source>Set description for your category.</source>
       <translation>Définir une description pour votre catégorie.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/services/abstract/gui/formcategorydetails.cpp" line="190"/>
+      <location filename="../src/librssguard/services/abstract/gui/formcategorydetails.cpp" line="188"/>
       <source>Icon selection</source>
       <translation>Sélection de l&apos;icône</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/services/abstract/gui/formcategorydetails.cpp" line="192"/>
+      <location filename="../src/librssguard/services/abstract/gui/formcategorydetails.cpp" line="190"/>
       <source>Load icon from file...</source>
       <translation>Charger l&apos;icône depuis un fichier...</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/services/abstract/gui/formcategorydetails.cpp" line="194"/>
+      <location filename="../src/librssguard/services/abstract/gui/formcategorydetails.cpp" line="192"/>
       <source>Use default icon from icon theme</source>
       <translation>Utiliser l’icône par défaut du thème d’icônes</translation>
     </message>
@@ -1809,42 +1809,57 @@ Dossier du cache Moteur Web QT -&gt; &quot;%7&quot;</translation>
       <translation>Trouver!</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/services/standard/gui/formdiscoverfeeds.ui" line="57"/>
+      <location filename="../src/librssguard/services/standard/gui/formdiscoverfeeds.ui" line="70"/>
       <source>Discovered feeds</source>
       <translation>Flux trouvés</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/services/standard/gui/formdiscoverfeeds.ui" line="63"/>
+      <location filename="../src/librssguard/services/standard/gui/formdiscoverfeeds.ui" line="76"/>
       <source>Target parent folder</source>
       <translation>Dossier parent cible</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/services/standard/gui/formdiscoverfeeds.ui" line="75"/>
+      <location filename="../src/librssguard/services/standard/gui/formdiscoverfeeds.ui" line="88"/>
       <source>Select parent item for your feed.</source>
       <translation>Sélectionner l&apos;article parent pour votre flux.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/services/standard/gui/formdiscoverfeeds.cpp" line="34"/>
-      <source>Close &amp;&amp; &amp;advanced mode</source>
-      <translation>Mode &amp;avancé</translation>
+      <location filename="../src/librssguard/services/standard/gui/formdiscoverfeeds.ui" line="121"/>
+      <source>Select &amp;all</source>
+      <translation type="unfinished">Select &amp;all</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard/services/standard/gui/formdiscoverfeeds.ui" line="128"/>
+      <source>&amp;Unselect all</source>
+      <translation type="unfinished">&amp;Unselect all</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard/services/standard/gui/formdiscoverfeeds.ui" line="183"/>
+      <source>Add single feed with advanced details</source>
+      <translation type="unfinished">Add single feed with advanced details</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard/services/standard/gui/formdiscoverfeeds.ui" line="190"/>
+      <source>&amp;Import checked feeds</source>
+      <translation type="unfinished">&amp;Import checked feeds</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/standard/gui/formdiscoverfeeds.cpp" line="36"/>
-      <source>Import selected feeds</source>
-      <translation>Importer les flux sélectionnés</translation>
+      <source>Switch to &amp;advanced mode</source>
+      <translation type="unfinished">Switch to &amp;advanced mode</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/services/standard/gui/formdiscoverfeeds.cpp" line="39"/>
+      <location filename="../src/librssguard/services/standard/gui/formdiscoverfeeds.cpp" line="38"/>
       <source>Close this dialog and display dialog for adding individual feeds with advanced options.</source>
       <translation>Fermer cette boîte de dialogue et afficher la boîte de dialogue pour ajouter des flux individuels avec des options avancées.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/services/standard/gui/formdiscoverfeeds.cpp" line="163"/>
+      <location filename="../src/librssguard/services/standard/gui/formdiscoverfeeds.cpp" line="186"/>
       <source>URL is valid.</source>
       <translation>L'URL est valide.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/services/standard/gui/formdiscoverfeeds.cpp" line="166"/>
+      <location filename="../src/librssguard/services/standard/gui/formdiscoverfeeds.cpp" line="189"/>
       <source>URL is NOT valid.</source>
       <translation>L'URL n'est pas valide.</translation>
     </message>
@@ -3271,27 +3286,27 @@ Vous devez redémarrer manuellement.</translation>
   <context>
     <name>FormTtRssFeedDetails</name>
     <message>
-      <location filename="../src/librssguard/services/tt-rss/gui/formttrssfeeddetails.cpp" line="47"/>
+      <location filename="../src/librssguard/services/tt-rss/gui/formttrssfeeddetails.cpp" line="45"/>
       <source>Feed added</source>
       <translation>Flux ajouté</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/services/tt-rss/gui/formttrssfeeddetails.cpp" line="62"/>
+      <location filename="../src/librssguard/services/tt-rss/gui/formttrssfeeddetails.cpp" line="60"/>
       <source>General</source>
       <translation>Général</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/services/tt-rss/gui/formttrssfeeddetails.cpp" line="63"/>
+      <location filename="../src/librssguard/services/tt-rss/gui/formttrssfeeddetails.cpp" line="61"/>
       <source>Network</source>
       <translation>Réseau</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/services/tt-rss/gui/formttrssfeeddetails.cpp" line="48"/>
+      <location filename="../src/librssguard/services/tt-rss/gui/formttrssfeeddetails.cpp" line="46"/>
       <source>Feed was added, obtaining new tree of feeds now.</source>
       <translation>Le flux a été ajouté, obtention d&apos;un nouvel arbre de flux en cours.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/services/tt-rss/gui/formttrssfeeddetails.cpp" line="53"/>
+      <location filename="../src/librssguard/services/tt-rss/gui/formttrssfeeddetails.cpp" line="51"/>
       <source>API returned error code %1</source>
       <translation>L&apos;API a renvoyé une erreur avec le code %1</translation>
     </message>
@@ -3616,54 +3631,54 @@ Vous pouvez désormais l&apos;installer.</translation>
   <context>
     <name>GmailNetworkFactory</name>
     <message>
-      <location filename="../src/librssguard/services/gmail/gmailnetworkfactory.cpp" line="493"/>
+      <location filename="../src/librssguard/services/gmail/gmailnetworkfactory.cpp" line="492"/>
       <source>Click this to login again. Error is: &apos;%1&apos;</source>
       <translation>Cliquez ici pour réessayer l&apos;identification. L&apos;erreur est : &apos;%1&apos;</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/services/gmail/gmailnetworkfactory.cpp" line="506"/>
+      <location filename="../src/librssguard/services/gmail/gmailnetworkfactory.cpp" line="505"/>
       <source>Click this to login again.</source>
       <translation>Cliquez ici pour réessayer l&apos;identification.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/services/gmail/gmailnetworkfactory.cpp" line="579"/>
+      <location filename="../src/librssguard/services/gmail/gmailnetworkfactory.cpp" line="578"/>
       <source>No subject</source>
       <translation>Aucun sujet</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/services/gmail/gmailnetworkfactory.cpp" line="492"/>
+      <location filename="../src/librssguard/services/gmail/gmailnetworkfactory.cpp" line="491"/>
       <source>Gmail: authentication error</source>
       <translation>Gmail : erreur d&apos;authentification</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/services/gmail/gmailnetworkfactory.cpp" line="180"/>
+      <location filename="../src/librssguard/services/gmail/gmailnetworkfactory.cpp" line="179"/>
       <source>failed to download list of labels</source>
       <translation>le téléchargement de la liste d&apos;étiquettes a echoué</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/services/gmail/gmailnetworkfactory.cpp" line="444"/>
+      <location filename="../src/librssguard/services/gmail/gmailnetworkfactory.cpp" line="443"/>
       <source>failed to download IDs of e-mail messages</source>
       <translation>le téléchargement des identifiants de messages e-mail a échoué</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/services/gmail/gmailnetworkfactory.cpp" line="505"/>
+      <location filename="../src/librssguard/services/gmail/gmailnetworkfactory.cpp" line="504"/>
       <source>Gmail: authorization denied</source>
       <translation>Gmail : autorisation refusée</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/services/gmail/gmailnetworkfactory.cpp" line="456"/>
-      <location filename="../src/librssguard/services/gmail/gmailnetworkfactory.cpp" line="656"/>
+      <location filename="../src/librssguard/services/gmail/gmailnetworkfactory.cpp" line="455"/>
+      <location filename="../src/librssguard/services/gmail/gmailnetworkfactory.cpp" line="655"/>
       <source>you are not logged in</source>
       <translation>vous n&apos;êtes pas connecté</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/services/gmail/gmailnetworkfactory.cpp" line="692"/>
+      <location filename="../src/librssguard/services/gmail/gmailnetworkfactory.cpp" line="691"/>
       <source>failed to get metadata</source>
       <translation>échec du téléchargement des métadonnées</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/services/gmail/gmailnetworkfactory.cpp" line="496"/>
-      <location filename="../src/librssguard/services/gmail/gmailnetworkfactory.cpp" line="509"/>
+      <location filename="../src/librssguard/services/gmail/gmailnetworkfactory.cpp" line="495"/>
+      <location filename="../src/librssguard/services/gmail/gmailnetworkfactory.cpp" line="508"/>
       <source>Login</source>
       <translation>Se connecter</translation>
     </message>
@@ -3943,28 +3958,28 @@ Expiration de jetons d&apos;authentification: %2</translation>
       <translation>connection échoué</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/services/greader/greadernetwork.cpp" line="1100"/>
+      <location filename="../src/librssguard/services/greader/greadernetwork.cpp" line="1102"/>
       <source>Inoreader: authentication error</source>
       <translation>Inoreader: erreur d&apos;authentification</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/services/greader/greadernetwork.cpp" line="1101"/>
+      <location filename="../src/librssguard/services/greader/greadernetwork.cpp" line="1103"/>
       <source>Click this to login again. Error is: &apos;%1&apos;</source>
       <translation>Cliquez ici pour réessayer l&apos;identification. L&apos;erreur est : &apos;%1&apos;</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/services/greader/greadernetwork.cpp" line="1113"/>
+      <location filename="../src/librssguard/services/greader/greadernetwork.cpp" line="1115"/>
       <source>Inoreader: authorization denied</source>
       <translation>Inoreader: autorisation refusée</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/services/greader/greadernetwork.cpp" line="1114"/>
+      <location filename="../src/librssguard/services/greader/greadernetwork.cpp" line="1116"/>
       <source>Click this to login again.</source>
       <translation>Cliquez ici pour réessayer l&apos;identification.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/services/greader/greadernetwork.cpp" line="1104"/>
-      <location filename="../src/librssguard/services/greader/greadernetwork.cpp" line="1117"/>
+      <location filename="../src/librssguard/services/greader/greadernetwork.cpp" line="1106"/>
+      <location filename="../src/librssguard/services/greader/greadernetwork.cpp" line="1119"/>
       <source>Login</source>
       <translation>Se connecter</translation>
     </message>
@@ -5541,47 +5556,47 @@ Liste d&apos;agrégateurs compatibles:</translation>
       <translation>apostrophe fermante manquante</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/services/standard/parsers/atomparser.cpp" line="233"/>
-      <location filename="../src/librssguard/services/standard/parsers/rdfparser.cpp" line="189"/>
-      <location filename="../src/librssguard/services/standard/parsers/rssparser.cpp" line="189"/>
+      <location filename="../src/librssguard/services/standard/parsers/atomparser.cpp" line="242"/>
+      <location filename="../src/librssguard/services/standard/parsers/rdfparser.cpp" line="190"/>
+      <location filename="../src/librssguard/services/standard/parsers/rssparser.cpp" line="190"/>
       <location filename="../src/librssguard/services/standard/parsers/sitemapparser.cpp" line="176"/>
       <source>XML is not well-formed, %1</source>
       <translation>L'XML n'est pas formatté correctement, %1</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/services/standard/parsers/atomparser.cpp" line="239"/>
+      <location filename="../src/librssguard/services/standard/parsers/atomparser.cpp" line="248"/>
       <source>not an ATOM feed</source>
       <translation>n'est pas un flux ATOM</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/services/standard/parsers/jsonparser.cpp" line="116"/>
+      <location filename="../src/librssguard/services/standard/parsers/jsonparser.cpp" line="117"/>
       <source>JSON error &apos;%1&apos;</source>
       <translation>Erreur JSON &apos;%1&apos;</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/services/standard/parsers/jsonparser.cpp" line="147"/>
+      <location filename="../src/librssguard/services/standard/parsers/jsonparser.cpp" line="148"/>
       <source>not a JSON feed</source>
       <translation>n'est pas un flux JSON</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/services/standard/parsers/rdfparser.cpp" line="195"/>
+      <location filename="../src/librssguard/services/standard/parsers/rdfparser.cpp" line="196"/>
       <source>not an RDF feed</source>
       <translation>n'est pas un flux RDF</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/services/standard/parsers/rssparser.cpp" line="195"/>
+      <location filename="../src/librssguard/services/standard/parsers/rssparser.cpp" line="196"/>
       <source>not a RSS feed</source>
       <translation>n'est pas un flux RSS</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/standard/parsers/sitemapparser.cpp" line="141"/>
       <source>support for gzipped sitemaps is not enabled</source>
-      <translation type="unfinished">support for gzipped sitemaps is not enabled</translation>
+      <translation>le support pour les cartes-site gzippés n'est pas activé</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/standard/parsers/sitemapparser.cpp" line="189"/>
       <source>sitemap indices are not supported</source>
-      <translation type="unfinished">sitemap indices are not supported</translation>
+      <translation>les indices de type carte-site ne sont pas supportés</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/standard/parsers/sitemapparser.cpp" line="193"/>
@@ -7563,17 +7578,17 @@ Vous pouvez aussi post-traiter la data de flux avec encore un autre script si vo
       <translation>Erreur lors du chargement des flux initiaux</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/services/standard/standardserviceroot.cpp" line="299"/>
+      <location filename="../src/librssguard/services/standard/standardserviceroot.cpp" line="301"/>
       <source>Fetch metadata</source>
       <translation>Obtenir les métadonnées</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/services/standard/standardserviceroot.cpp" line="459"/>
+      <location filename="../src/librssguard/services/standard/standardserviceroot.cpp" line="461"/>
       <source>Export feeds</source>
       <translation>Exporter les flux</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/services/standard/standardserviceroot.cpp" line="460"/>
+      <location filename="../src/librssguard/services/standard/standardserviceroot.cpp" line="462"/>
       <source>Import feeds</source>
       <translation>Importer des flux</translation>
     </message>
@@ -7598,22 +7613,22 @@ Vous pouvez aussi post-traiter la data de flux avec encore un autre script si vo
       <translation>Impossible d&apos;ajouter un flux car une autre opération critique est en cours.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/services/standard/standardserviceroot.cpp" line="425"/>
+      <location filename="../src/librssguard/services/standard/standardserviceroot.cpp" line="427"/>
       <source>Cannot add category</source>
       <translation>Impossible d&apos;ajouter une catégorie</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/services/standard/standardserviceroot.cpp" line="426"/>
+      <location filename="../src/librssguard/services/standard/standardserviceroot.cpp" line="428"/>
       <source>Cannot add category because another critical operation is ongoing.</source>
       <translation>Impossible d&apos;ajouter une catégorie car une autre opération critique est en cours.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/services/standard/standardserviceroot.cpp" line="413"/>
+      <location filename="../src/librssguard/services/standard/standardserviceroot.cpp" line="415"/>
       <source>Import was completely successful.</source>
       <translation>L&apos;import a réussi.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/services/standard/standardserviceroot.cpp" line="410"/>
+      <location filename="../src/librssguard/services/standard/standardserviceroot.cpp" line="412"/>
       <source>Some feeds/categories were not imported due to error, check debug log for more details.</source>
       <translation>Certains flux/categories n&apos;ont pas pu être importés à cause d&apos;une erreur, veuillez consulter le log debug pour plus d&apos;infos.</translation>
     </message>
@@ -8250,122 +8265,122 @@ Dernière connection le: %4</translation>
   <context>
     <name>WebFactory</name>
     <message>
-      <location filename="../src/librssguard/network-web/webfactory.cpp" line="320"/>
+      <location filename="../src/librssguard/network-web/webfactory.cpp" line="322"/>
       <source>Web engine settings</source>
       <translation>Paramètres du moteur de rendu web</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/network-web/webfactory.cpp" line="343"/>
+      <location filename="../src/librssguard/network-web/webfactory.cpp" line="345"/>
       <source>Auto-load images</source>
       <translation>Activer le chargement automatique des images</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/network-web/webfactory.cpp" line="344"/>
+      <location filename="../src/librssguard/network-web/webfactory.cpp" line="346"/>
       <source>JS enabled</source>
       <translation>Activer JavaScript</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/network-web/webfactory.cpp" line="345"/>
+      <location filename="../src/librssguard/network-web/webfactory.cpp" line="347"/>
       <source>JS can open popup windows</source>
       <translation>JS peut ouvrir des fenêtres pop-up</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/network-web/webfactory.cpp" line="347"/>
+      <location filename="../src/librssguard/network-web/webfactory.cpp" line="349"/>
       <source>JS can access clipboard</source>
       <translation>JS peut accèder au presse-papier</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/network-web/webfactory.cpp" line="349"/>
+      <location filename="../src/librssguard/network-web/webfactory.cpp" line="351"/>
       <source>Hyperlinks can get focus</source>
       <translation>Les hyperliens peuvent être focalisés</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/network-web/webfactory.cpp" line="351"/>
+      <location filename="../src/librssguard/network-web/webfactory.cpp" line="353"/>
       <source>Local storage enabled</source>
       <translation>Stockage local activé</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/network-web/webfactory.cpp" line="353"/>
+      <location filename="../src/librssguard/network-web/webfactory.cpp" line="355"/>
       <source>Local content can access remote URLs</source>
       <translation>Le contenu local peut accéder aux liens à distance</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/network-web/webfactory.cpp" line="355"/>
+      <location filename="../src/librssguard/network-web/webfactory.cpp" line="357"/>
       <source>XSS auditing enabled</source>
       <translation>L&apos;audit XSS est activé</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/network-web/webfactory.cpp" line="357"/>
+      <location filename="../src/librssguard/network-web/webfactory.cpp" line="359"/>
       <source>Spatial navigation enabled</source>
       <translation>Navigation spatiale activée</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/network-web/webfactory.cpp" line="359"/>
+      <location filename="../src/librssguard/network-web/webfactory.cpp" line="361"/>
       <source>Local content can access local files</source>
       <translation>Le contenu local peut accéder les fichiers locaux</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/network-web/webfactory.cpp" line="361"/>
+      <location filename="../src/librssguard/network-web/webfactory.cpp" line="363"/>
       <source>Hyperlink auditing enabled</source>
       <translation>L&apos;audit des hyperliens est activé</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/network-web/webfactory.cpp" line="363"/>
+      <location filename="../src/librssguard/network-web/webfactory.cpp" line="365"/>
       <source>Animate scrolling</source>
       <translation>Animer les défilements</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/network-web/webfactory.cpp" line="365"/>
+      <location filename="../src/librssguard/network-web/webfactory.cpp" line="367"/>
       <source>Error pages enabled</source>
       <translation>Activer les pages d&apos;erreurs</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/network-web/webfactory.cpp" line="366"/>
+      <location filename="../src/librssguard/network-web/webfactory.cpp" line="368"/>
       <source>Plugins enabled</source>
       <translation>Activer les plugins</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/network-web/webfactory.cpp" line="367"/>
+      <location filename="../src/librssguard/network-web/webfactory.cpp" line="369"/>
       <source>Fullscreen enabled</source>
       <translation>Acitver le plein-écran</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/network-web/webfactory.cpp" line="371"/>
+      <location filename="../src/librssguard/network-web/webfactory.cpp" line="373"/>
       <source>Screen capture enabled</source>
       <translation>Activer la capture d&apos;écran</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/network-web/webfactory.cpp" line="373"/>
+      <location filename="../src/librssguard/network-web/webfactory.cpp" line="375"/>
       <source>WebGL enabled</source>
       <translation>Activer WebGL</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/network-web/webfactory.cpp" line="374"/>
+      <location filename="../src/librssguard/network-web/webfactory.cpp" line="376"/>
       <source>Accelerate 2D canvas</source>
       <translation>Accélerer les canevas 2D</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/network-web/webfactory.cpp" line="376"/>
+      <location filename="../src/librssguard/network-web/webfactory.cpp" line="378"/>
       <source>Print element backgrounds</source>
       <translation>Imprimer les fonds d&apos;éléments</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/network-web/webfactory.cpp" line="378"/>
+      <location filename="../src/librssguard/network-web/webfactory.cpp" line="380"/>
       <source>Allow running insecure content</source>
       <translation>Autoriser l&apos;éxécution de contenu insécurisé</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/network-web/webfactory.cpp" line="380"/>
+      <location filename="../src/librssguard/network-web/webfactory.cpp" line="382"/>
       <source>Allow geolocation on insecure origins</source>
       <translation>Autoriser la géo-localisation sur des origines non securisées</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/network-web/webfactory.cpp" line="711"/>
+      <location filename="../src/librssguard/network-web/webfactory.cpp" line="713"/>
       <source>Web cache is going to be cleared</source>
       <translation>Le cache web va être vidé</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/network-web/webfactory.cpp" line="712"/>
+      <location filename="../src/librssguard/network-web/webfactory.cpp" line="714"/>
       <source>Do you really want to clear web cache?</source>
       <translation>Voulez-vous vraiment vider le cache web?</translation>
     </message>
@@ -8380,37 +8395,37 @@ Dernière connection le: %4</translation>
       <translation>%1 n&apos;a pas pu lancer votre navigateur web avec le lien fourni, vous devez ouvrir le lien ci-dessous dans votre navigateur manuellement.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/network-web/webfactory.cpp" line="384"/>
+      <location filename="../src/librssguard/network-web/webfactory.cpp" line="386"/>
       <source>JS can activate windows</source>
       <translation>JS peut activer des fenêtres</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/network-web/webfactory.cpp" line="386"/>
+      <location filename="../src/librssguard/network-web/webfactory.cpp" line="388"/>
       <source>Show scrollbars</source>
       <translation>Montrer les barres de défilement</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/network-web/webfactory.cpp" line="387"/>
+      <location filename="../src/librssguard/network-web/webfactory.cpp" line="389"/>
       <source>Media playback with gestures</source>
       <translation>Lecture media avec gestes</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/network-web/webfactory.cpp" line="389"/>
+      <location filename="../src/librssguard/network-web/webfactory.cpp" line="391"/>
       <source>WebRTC uses only public interfaces</source>
       <translation>WebRTC utilise que des interfaces publiques</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/network-web/webfactory.cpp" line="391"/>
+      <location filename="../src/librssguard/network-web/webfactory.cpp" line="393"/>
       <source>JS can paste from clipboard</source>
       <translation>JS peut coller depuis le presse-papier</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/network-web/webfactory.cpp" line="393"/>
+      <location filename="../src/librssguard/network-web/webfactory.cpp" line="395"/>
       <source>DNS prefetch enabled</source>
       <translation>Pre-obtention DNS activée</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/network-web/webfactory.cpp" line="397"/>
+      <location filename="../src/librssguard/network-web/webfactory.cpp" line="399"/>
       <source>PDF viewer enabled</source>
       <translation>Lecteur PDF activé</translation>
     </message>
