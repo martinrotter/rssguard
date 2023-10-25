@@ -88,6 +88,11 @@ void ArticleListNotification::loadResults(const QHash<Feed*, QList<Message>>& ne
 
 void ArticleListNotification::openArticleInArticleList() {
   emit openingArticleInArticleListRequested(m_ui.m_cmbFeeds->currentData().value<Feed*>(), selectedMessage());
+
+  if (m_newMessages.size() == 1 && m_newMessages.value(m_newMessages.keys().at(0)).size() == 1) {
+    // We only have 1 message in 1 feed.
+    emit closeRequested(this);
+  }
 }
 
 void ArticleListNotification::onMessageSelected(const QModelIndex& current, const QModelIndex& previous) {
@@ -118,6 +123,11 @@ void ArticleListNotification::openArticleInWebBrowser() {
   emit reloadMessageListRequested(false);
 
   qApp->web()->openUrlInExternalBrowser(msg.m_url);
+
+  if (m_newMessages.size() == 1 && m_newMessages.value(m_newMessages.keys().at(0)).size() == 1) {
+    // We only have 1 message in 1 feed.
+    emit closeRequested(this);
+  }
 }
 
 void ArticleListNotification::markAllRead() {

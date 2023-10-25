@@ -7132,42 +7132,42 @@ Post-processing script: %3</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/librssguard/services/standard/standardfeed.cpp" line="178"/>
+        <location filename="../src/librssguard/services/standard/standardfeed.cpp" line="181"/>
         <source>Script</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/librssguard/services/standard/standardfeed.cpp" line="181"/>
+        <location filename="../src/librssguard/services/standard/standardfeed.cpp" line="184"/>
         <source>Local file</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/librssguard/services/standard/standardfeed.cpp" line="184"/>
+        <location filename="../src/librssguard/services/standard/standardfeed.cpp" line="187"/>
         <source>Unknown</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/librssguard/services/standard/standardfeed.cpp" line="217"/>
+        <location filename="../src/librssguard/services/standard/standardfeed.cpp" line="220"/>
         <source>Cannot save data for feed: %1</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/librssguard/services/standard/standardfeed.cpp" line="375"/>
+        <location filename="../src/librssguard/services/standard/standardfeed.cpp" line="378"/>
         <source>Cannot move feed, detailed information was logged via debug log.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/librssguard/services/standard/standardfeed.cpp" line="216"/>
+        <location filename="../src/librssguard/services/standard/standardfeed.cpp" line="219"/>
         <source>Cannot save feed data</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/librssguard/services/standard/standardfeed.cpp" line="336"/>
+        <location filename="../src/librssguard/services/standard/standardfeed.cpp" line="339"/>
         <source>feed format not recognized</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/librssguard/services/standard/standardfeed.cpp" line="374"/>
+        <location filename="../src/librssguard/services/standard/standardfeed.cpp" line="377"/>
         <source>Cannot move feed</source>
         <translation type="unfinished"></translation>
     </message>

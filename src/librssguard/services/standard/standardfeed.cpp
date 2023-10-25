@@ -84,7 +84,10 @@ bool StandardFeed::editViaGui() {
                                                                                    {},
                                                                                    qApp->mainFormWidget()));
 
-  form_pointer->addEditFeed(this);
+  if (form_pointer->addEditFeed(this) != nullptr) {
+    setLastEtag({});
+  }
+
   return false;
 }
 
