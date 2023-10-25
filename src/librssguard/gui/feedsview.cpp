@@ -898,7 +898,6 @@ void FeedsView::setupAppearance() {
 
   setUniformRowHeights(true);
   setAnimated(true);
-
   setSortingEnabled(false);
   setItemsExpandable(true);
   setAutoExpandDelay(800);
@@ -912,7 +911,7 @@ void FeedsView::setupAppearance() {
   setDragDropMode(QAbstractItemView::DragDropMode::InternalMove);
   setAllColumnsShowFocus(false);
   setRootIsDecorated(false);
-  setSelectionMode(QAbstractItemView::SelectionMode::SingleSelection);
+  setSelectionMode(QAbstractItemView::SelectionMode::ExtendedSelection);
   setItemDelegate(new StyledItemDelegateWithoutFocus(qApp->settings()
                                                        ->value(GROUP(GUI), SETTING(GUI::HeightRowFeeds))
                                                        .toInt(),

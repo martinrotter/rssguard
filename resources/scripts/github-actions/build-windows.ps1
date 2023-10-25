@@ -24,7 +24,7 @@ if ($use_qt5 -eq "ON") {
   $qt_version = "5.15.2"
 }
 else {
-  $qt_version = "6.5.2"
+  $qt_version = "6.5.3"
 }
 
 $is_qt_6 = $qt_version.StartsWith("6")
