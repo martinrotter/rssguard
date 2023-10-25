@@ -202,17 +202,17 @@ versione facendo clic su questa notifica a scomparsa.</translation>
     <message>
       <location filename="../src/librssguard/miscellaneous/application.cpp" line="1101"/>
       <source>AdBlock is not configured properly. Go to &quot;Settings&quot; -&gt; &quot;Node.js&quot; and check if your Node.js is properly configured.</source>
-      <translation type="unfinished">AdBlock is not configured properly. Go to &quot;Settings&quot; -&gt; &quot;Node.js&quot; and check if your Node.js is properly configured.</translation>
+      <translation>AdBlock non è configurato correttamente. Vai a &quot;Impostazioni&quot; -&gt; &quot;Node.js&quot; e controlla se Node.js è configurato correttamente.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/miscellaneous/application.cpp" line="1150"/>
       <source>Already running</source>
-      <translation type="unfinished">Already running</translation>
+      <translation>Già in esecuzione</translation>
     </message>
     <message>
       <location filename="../src/librssguard/miscellaneous/application.cpp" line="1319"/>
       <source>Packages %1 were NOT updated because of error: %2.</source>
-      <translation type="unfinished">Packages %1 were NOT updated because of error: %2.</translation>
+      <translation>I pacchetti %1 NON sono stati aggiornati a causa di errore: %2.</translation>
     </message>
   </context>
   <context>
@@ -220,38 +220,38 @@ versione facendo clic su questa notifica a scomparsa.</translation>
     <message>
       <location filename="../src/librssguard/gui/notifications/articlelistnotification.ui" line="69"/>
       <source>...</source>
-      <translation type="unfinished">...</translation>
+      <translation>...</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/notifications/articlelistnotification.ui" line="90"/>
       <source>Go to previous page</source>
-      <translation type="unfinished">Go to previous page</translation>
+      <translation>Vai alla pagina precedente</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/notifications/articlelistnotification.ui" line="97"/>
       <source>Go to next page</source>
-      <translation type="unfinished">Go to next page</translation>
+      <translation>Vai alla pagina successiva</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/notifications/articlelistnotification.ui" line="104"/>
       <source>Open article in article list</source>
-      <translation type="unfinished">Open article in article list</translation>
+      <translation>Apri l'articolo nella lista degli articoli</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/notifications/articlelistnotification.ui" line="111"/>
       <source>Open article in web browser</source>
-      <translation type="unfinished">Open article in web browser</translation>
+      <translation>Apri l'articolo nel browser web</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/notifications/articlelistnotification.ui" line="125"/>
       <source>Mark all articles as read</source>
-      <translation type="unfinished">Mark all articles as read</translation>
+      <translation>Segna tutti gli articoli come letti</translation>
     </message>
     <message numerus="yes">
       <location filename="../src/librssguard/gui/notifications/articlelistnotification.cpp" line="73"/>
       <source>%n feeds fetched</source>
       <translation type="unfinished">
-        <numerusform>%n feeds fetched</numerusform>
+        <numerusform>%n fonti recuperate</numerusform>
         <numerusform>%n feeds fetched</numerusform>
       </translation>
     </message>
@@ -271,12 +271,12 @@ versione facendo clic su questa notifica a scomparsa.</translation>
     <message>
       <location filename="../src/librssguard/services/abstract/gui/authenticationdetails.ui" line="23"/>
       <source>Credentials</source>
-      <translation type="unfinished">Credentials</translation>
+      <translation>Credenziali</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/abstract/gui/authenticationdetails.ui" line="64"/>
       <source>Authentication type</source>
-      <translation type="unfinished">Authentication type</translation>
+      <translation>Tipo di autenticazione</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/abstract/gui/authenticationdetails.ui" line="35"/>
