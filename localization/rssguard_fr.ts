@@ -884,7 +884,7 @@ Identifiant d&apos;élément: %5</translation>
     <message>
       <location filename="../src/librssguard/services/feedly/gui/feedlyaccountdetails.ui" line="51"/>
       <source>Download unread articles only</source>
-      <translation>Ne télécharger que les articles non-lus</translation>
+      <translation>Télécharger que les articles non-lus</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/feedly/gui/feedlyaccountdetails.cpp" line="26"/>
@@ -3625,7 +3625,7 @@ Vous pouvez désormais l&apos;installer.</translation>
     <message>
       <location filename="../src/librssguard/services/gmail/gui/gmailaccountdetails.ui" line="163"/>
       <source>Download unread articles only</source>
-      <translation>Ne télécharger que les articles non-lus</translation>
+      <translation>Télécharger que les articles non-lus</translation>
     </message>
   </context>
   <context>
@@ -3884,7 +3884,7 @@ Expiration de jetons d&apos;authentification: %2</translation>
     <message>
       <location filename="../src/librssguard/services/greader/gui/greaderaccountdetails.ui" line="40"/>
       <source>Download unread articles only</source>
-      <translation>Ne télécharger que les articles non-lus</translation>
+      <translation>Télécharger que les articles non-lus</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/greader/gui/greaderaccountdetails.ui" line="47"/>
@@ -4990,7 +4990,7 @@ supplémentaire</translation>
       <location filename="../src/librssguard/network-web/networkfactory.cpp" line="148"/>
       <source>content not found</source>
       <extracomment>Network status.</extracomment>
-      <translation>Contenu  non trouvé</translation>
+      <translation>Contenu non trouvé</translation>
     </message>
     <message>
       <location filename="../src/librssguard/network-web/networkfactory.cpp" line="154"/>
@@ -5265,7 +5265,7 @@ supplémentaire</translation>
     <message>
       <location filename="../src/librssguard/services/owncloud/gui/owncloudaccountdetails.ui" line="34"/>
       <source>Download unread articles only</source>
-      <translation>Ne télécharger que les articles non-lus</translation>
+      <translation>Télécharger que les articles non-lus</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/owncloud/gui/owncloudaccountdetails.ui" line="43"/>
@@ -5796,7 +5796,7 @@ Liste d&apos;agrégateurs compatibles:</translation>
     <message>
       <location filename="../src/librssguard/services/reddit/gui/redditaccountdetails.ui" line="163"/>
       <source>Download unread articles only</source>
-      <translation>Ne télécharger que les articles non-lus</translation>
+      <translation>Télécharger que les articles non-lus</translation>
     </message>
   </context>
   <context>
@@ -7222,42 +7222,42 @@ Type: %2
 Script de post-traitement: %3</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/services/standard/standardfeed.cpp" line="178"/>
+      <location filename="../src/librssguard/services/standard/standardfeed.cpp" line="181"/>
       <source>Script</source>
       <translation>Script</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/services/standard/standardfeed.cpp" line="181"/>
+      <location filename="../src/librssguard/services/standard/standardfeed.cpp" line="184"/>
       <source>Local file</source>
       <translation>Fichier local</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/services/standard/standardfeed.cpp" line="184"/>
+      <location filename="../src/librssguard/services/standard/standardfeed.cpp" line="187"/>
       <source>Unknown</source>
       <translation>Inconnu</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/services/standard/standardfeed.cpp" line="217"/>
+      <location filename="../src/librssguard/services/standard/standardfeed.cpp" line="220"/>
       <source>Cannot save data for feed: %1</source>
       <translation>Impossible d'obtenir les métadonnées de ce flux: %1</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/services/standard/standardfeed.cpp" line="375"/>
+      <location filename="../src/librssguard/services/standard/standardfeed.cpp" line="378"/>
       <source>Cannot move feed, detailed information was logged via debug log.</source>
       <translation>Impossible de déplacer le flux, des infos détaillées ont été enregistrées via le log débug.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/services/standard/standardfeed.cpp" line="216"/>
+      <location filename="../src/librssguard/services/standard/standardfeed.cpp" line="219"/>
       <source>Cannot save feed data</source>
       <translation>Impossible d'obtenir les métadonnées de flux</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/services/standard/standardfeed.cpp" line="336"/>
+      <location filename="../src/librssguard/services/standard/standardfeed.cpp" line="339"/>
       <source>feed format not recognized</source>
       <translation>format de flux non reconnu</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/services/standard/standardfeed.cpp" line="374"/>
+      <location filename="../src/librssguard/services/standard/standardfeed.cpp" line="377"/>
       <source>Cannot move feed</source>
       <translation>Impossible de déplacer le flux</translation>
     </message>
@@ -7886,7 +7886,7 @@ Actualités non-lus: %2</translation>
     <message>
       <location filename="../src/librssguard/services/tt-rss/gui/ttrssaccountdetails.cpp" line="15"/>
       <source>If you select intelligent synchronization, then only not-yet-fetched or updated articles are downloaded. Network usage is greatly reduced and overall synchronization speed is greatly improved, but first feed fetching could be slow anyway if your feed contains huge number of articles.&lt;br/&gt;&lt;br/&gt;Also, make sure to install &lt;a href=&quot;https://www.google.com&quot;&gt;api_newsplus&lt;/a&gt; TT-RSS plugin to your server instance.</source>
-      <translation>Si vous sélectionnez la synchronisation intelligente, alors seulement les articles pas encore obtenus ou mis à jour seront téléchargés. La consommation de données est fortement réduite et la vitesse de synchronisation générale est fortement améliorée, mais la première obtention de flux peut être lente de toute façon si votre flux contient un nombre d&apos;articles très important.&lt;br/&gt;&lt;br/&gt;Et aussi, soyez-sûr d&apos;installer le plugin TT-RSS&lt;a href=&quot;https://www.google.com&quot;&gt;api_newsplus&lt;/a&gt; à votre instance de serveur.</translation>
+      <translation>Si vous sélectionnez la synchronisation intelligente, alors seulement les articles pas encore obtenus ou mis à jour seront téléchargés. La consommation de données est fortement réduite et la vitesse de synchronisation générale est fortement améliorée, mais la première obtention de flux peut être lente de toute façon si votre flux contient un nombre d&apos;articles très important.&lt;br/&gt;&lt;br/&gt;Et aussi, soyez-sûr d&apos;installer le plugin TT-RSS &lt;a href=&quot;https://www.google.com&quot;&gt;api_newsplus&lt;/a&gt; à votre instance de serveur.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/tt-rss/gui/ttrssaccountdetails.cpp" line="25"/>
@@ -8041,7 +8041,7 @@ Actualités non-lus: %2</translation>
     <message>
       <location filename="../src/librssguard/services/tt-rss/gui/ttrssaccountdetails.ui" line="84"/>
       <source>Download unread articles only</source>
-      <translation>Ne télécharger que les articles non-lus</translation>
+      <translation>Télécharger que les articles non-lus</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/tt-rss/gui/ttrssaccountdetails.ui" line="49"/>
