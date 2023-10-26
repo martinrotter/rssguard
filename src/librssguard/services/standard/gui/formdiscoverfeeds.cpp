@@ -212,7 +212,7 @@ void FormDiscoverFeeds::addSingleFeed() {
                                                                                    fd->source(),
                                                                                    qApp->mainFormWidget()));
 
-  if (form_pointer->addEditFeed<StandardFeed>() != nullptr) {
+  if (!form_pointer->addEditFeed<StandardFeed>().isEmpty()) {
     // Feed was added, remove from list.
     if (m_discoveredModel->removeItem(idx) != nullptr) {
       // Feed was guessed by the dialog, we do not need this object.

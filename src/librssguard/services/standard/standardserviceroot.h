@@ -30,6 +30,7 @@ class StandardServiceRoot : public ServiceRoot {
     virtual QString code() const;
     virtual bool canBeEdited() const;
     virtual bool editViaGui();
+    virtual void editItemsViaGui(const QList<RootItem*>& items);
     virtual bool supportsFeedAdding() const;
     virtual bool supportsCategoryAdding() const;
     virtual Qt::ItemFlags additionalFlags() const;

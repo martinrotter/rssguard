@@ -44,6 +44,8 @@ bool ServiceRoot::deleteViaGui() {
   }
 }
 
+void ServiceRoot::editItemsViaGui(const QList<RootItem*>& items) {}
+
 bool ServiceRoot::markAsReadUnread(RootItem::ReadStatus status) {
   auto* cache = dynamic_cast<CacheForServiceRoot*>(this);
 
@@ -354,6 +356,12 @@ void ServiceRoot::requestItemExpandStateSave(RootItem* subtree_root) {
 
 void ServiceRoot::requestItemReassignment(RootItem* item, RootItem* new_parent) {
   emit itemReassignmentRequested(item, new_parent);
+}
+
+void ServiceRoot::requestItemsReassignment(const QList<RootItem*>& items, RootItem* new_parent) {
+  for (RootItem* it : items) {
+    requestItemReassignment(it, new_parent);
+  }
 }
 
 void ServiceRoot::requestItemRemoval(RootItem* item) {

@@ -8,6 +8,7 @@
 #include "gui/guiutilities.h"
 #include "miscellaneous/iconfactory.h"
 #include "miscellaneous/textfactory.h"
+#include "services/abstract/gui/multifeededitcheckbox.h"
 #include "services/abstract/rootitem.h"
 
 #include <QMenu>
@@ -17,92 +18,109 @@
 #include <QTextCodec>
 
 FormFeedDetails::FormFeedDetails(ServiceRoot* service_root, QWidget* parent)
-  : QDialog(parent), m_feed(nullptr), m_serviceRoot(service_root) {
+  : QDialog(parent), m_serviceRoot(service_root) {
   initialize();
   createConnections();
+
+  m_ui.m_mcbAutoDownloading->addActionWidget(m_ui.m_cmbAutoUpdateType);
+  m_ui.m_mcbAutoDownloading->addActionWidget(m_ui.m_spinAutoUpdateInterval);
+  m_ui.m_mcbAddAnyDateArticles->addActionWidget(m_ui.m_cbAddAnyDateArticles);
+  m_ui.m_mcbOpenArticlesAutomatically->addActionWidget(m_ui.m_cbOpenArticlesAutomatically);
+  m_ui.m_mcbAvoidOldArticles->addActionWidget(m_ui.m_gbAvoidOldArticles);
 }
 
 void FormFeedDetails::activateTab(int index) {
-  m_ui->m_tabWidget->setCurrentIndex(index);
+  m_ui.m_tabWidget->setCurrentIndex(index);
 }
 
 void FormFeedDetails::clearTabs() {
-  m_ui->m_tabWidget->clear();
+  m_ui.m_tabWidget->clear();
 }
 
 void FormFeedDetails::insertCustomTab(QWidget* custom_tab, const QString& title, int index) {
-  m_ui->m_tabWidget->insertTab(index, custom_tab, title);
+  m_ui.m_tabWidget->insertTab(index, custom_tab, title);
 }
 
 void FormFeedDetails::apply() {
+  Feed* fd = feed<Feed>();
+
   // Setup common data for the feed.
-  m_feed->setAutoUpdateType(static_cast<Feed::AutoUpdateType>(m_ui->m_cmbAutoUpdateType
-                                                                ->itemData(m_ui->m_cmbAutoUpdateType->currentIndex())
-                                                                .toInt()));
-  m_feed->setAutoUpdateInterval(int(m_ui->m_spinAutoUpdateInterval->value()));
-  m_feed->setOpenArticlesDirectly(m_ui->m_cbOpenArticlesAutomatically->isChecked());
-  m_feed->setIsRtl(m_ui->m_cbFeedRTL->isChecked());
-  m_feed->setAddAnyDatetimeArticles(m_ui->m_cbAddAnyDateArticles->isChecked());
-  m_feed->setDatetimeToAvoid(m_ui->m_gbAvoidOldArticles->isChecked() ? m_ui->m_dtDateTimeToAvoid->dateTime()
-                                                                     : TextFactory::parseDateTime(0));
-  m_feed->setIsSwitchedOff(m_ui->m_cbDisableFeed->isChecked());
-  m_feed->setIsQuiet(m_ui->m_cbSuppressFeed->isChecked());
+  fd->setAutoUpdateType(static_cast<Feed::AutoUpdateType>(m_ui.m_cmbAutoUpdateType
+                                                            ->itemData(m_ui.m_cmbAutoUpdateType->currentIndex())
+                                                            .toInt()));
+  fd->setAutoUpdateInterval(int(m_ui.m_spinAutoUpdateInterval->value()));
+  fd->setOpenArticlesDirectly(m_ui.m_cbOpenArticlesAutomatically->isChecked());
+  fd->setIsRtl(m_ui.m_cbFeedRTL->isChecked());
+  fd->setAddAnyDatetimeArticles(m_ui.m_cbAddAnyDateArticles->isChecked());
+  fd->setDatetimeToAvoid(m_ui.m_gbAvoidOldArticles->isChecked() ? m_ui.m_dtDateTimeToAvoid->dateTime()
+                                                                : TextFactory::parseDateTime(0));
+  fd->setIsSwitchedOff(m_ui.m_cbDisableFeed->isChecked());
+  fd->setIsQuiet(m_ui.m_cbSuppressFeed->isChecked());
 
   if (!m_creatingNew) {
     // We need to make sure that common data are saved.
     QSqlDatabase database = qApp->database()->driver()->connection(metaObject()->className());
 
-    DatabaseQueries::createOverwriteFeed(database, m_feed, m_serviceRoot->accountId(), m_feed->parent()->id());
+    DatabaseQueries::createOverwriteFeed(database, fd, m_serviceRoot->accountId(), fd->parent()->id());
   }
 }
 
 void FormFeedDetails::onAutoUpdateTypeChanged(int new_index) {
   Feed::AutoUpdateType auto_update_type =
-    static_cast<Feed::AutoUpdateType>(m_ui->m_cmbAutoUpdateType->itemData(new_index).toInt());
+    static_cast<Feed::AutoUpdateType>(m_ui.m_cmbAutoUpdateType->itemData(new_index).toInt());
 
   switch (auto_update_type) {
     case Feed::AutoUpdateType::DontAutoUpdate:
     case Feed::AutoUpdateType::DefaultAutoUpdate:
-      m_ui->m_spinAutoUpdateInterval->setEnabled(false);
+      m_ui.m_spinAutoUpdateInterval->setEnabled(false);
       break;
 
     default:
-      m_ui->m_spinAutoUpdateInterval->setEnabled(true);
+      m_ui.m_spinAutoUpdateInterval->setEnabled(true);
   }
 }
 
 void FormFeedDetails::createConnections() {
-  connect(m_ui->m_buttonBox, &QDialogButtonBox::accepted, this, &FormFeedDetails::acceptIfPossible);
-  connect(m_ui->m_cmbAutoUpdateType,
+  connect(m_ui.m_buttonBox, &QDialogButtonBox::accepted, this, &FormFeedDetails::acceptIfPossible);
+  connect(m_ui.m_cmbAutoUpdateType,
           static_cast<void (QComboBox::*)(int)>(&QComboBox::currentIndexChanged),
           this,
           &FormFeedDetails::onAutoUpdateTypeChanged);
 
-  connect(m_ui->m_cbAddAnyDateArticles, &QCheckBox::toggled, this, [this](bool checked) {
-    m_ui->m_gbAvoidOldArticles->setEnabled(!checked);
+  connect(m_ui.m_cbAddAnyDateArticles, &QCheckBox::toggled, this, [this](bool checked) {
+    m_ui.m_gbAvoidOldArticles->setEnabled(!checked);
   });
 }
 
 void FormFeedDetails::loadFeedData() {
+  Feed* fd = feed<Feed>();
+
   if (m_creatingNew) {
     GuiUtilities::applyDialogProperties(*this,
                                         qApp->icons()->fromTheme(QSL("application-rss+xml")),
                                         tr("Add new feed"));
   }
   else {
-    GuiUtilities::applyDialogProperties(*this, m_feed->fullIcon(), tr("Edit \"%1\"").arg(m_feed->title()));
+    if (m_feeds.size() == 1) {
+      GuiUtilities::applyDialogProperties(*this, fd->fullIcon(), tr("Edit \"%1\"").arg(fd->title()));
+    }
+    else {
+      GuiUtilities::applyDialogProperties(*this,
+                                          qApp->icons()->fromTheme(QSL("application-rss+xml")),
+                                          tr("Edit %n feeds", nullptr, m_feeds.size()));
+    }
   }
 
-  m_ui->m_cmbAutoUpdateType
-    ->setCurrentIndex(m_ui->m_cmbAutoUpdateType->findData(QVariant::fromValue(int(m_feed->autoUpdateType()))));
-  m_ui->m_spinAutoUpdateInterval->setValue(m_feed->autoUpdateInterval());
-  m_ui->m_cbOpenArticlesAutomatically->setChecked(m_feed->openArticlesDirectly());
-  m_ui->m_cbFeedRTL->setChecked(m_feed->isRtl());
-  m_ui->m_cbAddAnyDateArticles->setChecked(m_feed->addAnyDatetimeArticles());
-  m_ui->m_gbAvoidOldArticles->setChecked(m_feed->datetimeToAvoid().toMSecsSinceEpoch() > 0);
-  m_ui->m_dtDateTimeToAvoid->setDateTime(m_feed->datetimeToAvoid());
-  m_ui->m_cbDisableFeed->setChecked(m_feed->isSwitchedOff());
-  m_ui->m_cbSuppressFeed->setChecked(m_feed->isQuiet());
+  m_ui.m_cmbAutoUpdateType
+    ->setCurrentIndex(m_ui.m_cmbAutoUpdateType->findData(QVariant::fromValue(int(fd->autoUpdateType()))));
+  m_ui.m_spinAutoUpdateInterval->setValue(fd->autoUpdateInterval());
+  m_ui.m_cbOpenArticlesAutomatically->setChecked(fd->openArticlesDirectly());
+  m_ui.m_cbFeedRTL->setChecked(fd->isRtl());
+  m_ui.m_cbAddAnyDateArticles->setChecked(fd->addAnyDatetimeArticles());
+  m_ui.m_gbAvoidOldArticles->setChecked(fd->datetimeToAvoid().toMSecsSinceEpoch() > 0);
+  m_ui.m_dtDateTimeToAvoid->setDateTime(fd->datetimeToAvoid());
+  m_ui.m_cbDisableFeed->setChecked(fd->isSwitchedOff());
+  m_ui.m_cbSuppressFeed->setChecked(fd->isQuiet());
 }
 
 void FormFeedDetails::acceptIfPossible() {
@@ -122,19 +140,18 @@ void FormFeedDetails::acceptIfPossible() {
 }
 
 void FormFeedDetails::initialize() {
-  m_ui.reset(new Ui::FormFeedDetails());
-  m_ui->setupUi(this);
+  m_ui.setupUi(this);
 
-  m_ui->m_dtDateTimeToAvoid
+  m_ui.m_dtDateTimeToAvoid
     ->setDisplayFormat(qApp->localization()->loadedLocale().dateTimeFormat(QLocale::FormatType::ShortFormat));
 
   // Setup auto-update options.
-  m_ui->m_spinAutoUpdateInterval->setMode(TimeSpinBox::Mode::MinutesSeconds);
-  m_ui->m_spinAutoUpdateInterval->setValue(DEFAULT_AUTO_UPDATE_INTERVAL);
-  m_ui->m_cmbAutoUpdateType->addItem(tr("Fetch articles using global interval"),
-                                     QVariant::fromValue(int(Feed::AutoUpdateType::DefaultAutoUpdate)));
-  m_ui->m_cmbAutoUpdateType->addItem(tr("Fetch articles every"),
-                                     QVariant::fromValue(int(Feed::AutoUpdateType::SpecificAutoUpdate)));
-  m_ui->m_cmbAutoUpdateType->addItem(tr("Disable auto-fetching of articles"),
-                                     QVariant::fromValue(int(Feed::AutoUpdateType::DontAutoUpdate)));
+  m_ui.m_spinAutoUpdateInterval->setMode(TimeSpinBox::Mode::MinutesSeconds);
+  m_ui.m_spinAutoUpdateInterval->setValue(DEFAULT_AUTO_UPDATE_INTERVAL);
+  m_ui.m_cmbAutoUpdateType->addItem(tr("Fetch articles using global interval"),
+                                    QVariant::fromValue(int(Feed::AutoUpdateType::DefaultAutoUpdate)));
+  m_ui.m_cmbAutoUpdateType->addItem(tr("Fetch articles every"),
+                                    QVariant::fromValue(int(Feed::AutoUpdateType::SpecificAutoUpdate)));
+  m_ui.m_cmbAutoUpdateType->addItem(tr("Disable auto-fetching of articles"),
+                                    QVariant::fromValue(int(Feed::AutoUpdateType::DontAutoUpdate)));
 }

@@ -120,6 +120,21 @@ bool StandardServiceRoot::editViaGui() {
   return true;
 }
 
+void StandardServiceRoot::editItemsViaGui(const QList<RootItem*>& items) {
+  auto std_feeds = boolinq::from(items)
+                     .select([](RootItem* it) {
+                       return qobject_cast<Feed*>(it);
+                     })
+                     .toStdList();
+
+  QScopedPointer<FormStandardFeedDetails> form_pointer(new FormStandardFeedDetails(this,
+                                                                                   nullptr,
+                                                                                   {},
+                                                                                   qApp->mainFormWidget()));
+
+  form_pointer->addEditFeed<StandardFeed>(FROM_STD_LIST(QList<Feed*>, std_feeds));
+}
+
 bool StandardServiceRoot::supportsFeedAdding() const {
   return true;
 }

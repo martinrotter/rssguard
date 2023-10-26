@@ -63,6 +63,7 @@ class ServiceRoot : public RootItem {
     virtual void updateCounts(bool including_total_count);
     virtual bool canBeDeleted() const;
     virtual bool deleteViaGui();
+    virtual void editItemsViaGui(const QList<RootItem*>& items);
     virtual bool markAsReadUnread(ReadStatus status);
     virtual QList<Message> undeletedMessages() const;
     virtual bool supportsFeedAdding() const;
@@ -222,6 +223,7 @@ class ServiceRoot : public RootItem {
     void requestItemExpand(const QList<RootItem*>& items, bool expand);
     void requestItemExpandStateSave(RootItem* subtree_root);
     void requestItemReassignment(RootItem* item, RootItem* new_parent);
+    void requestItemsReassignment(const QList<RootItem*>& items, RootItem* new_parent);
     void requestItemRemoval(RootItem* item);
 
     // Some message/feed attribute selectors.

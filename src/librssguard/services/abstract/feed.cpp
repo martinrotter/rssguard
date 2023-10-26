@@ -153,7 +153,7 @@ bool Feed::canBeEdited() const {
 bool Feed::editViaGui() {
   QScopedPointer<FormFeedDetails> form_pointer(new FormFeedDetails(getParentServiceRoot(), qApp->mainFormWidget()));
 
-  form_pointer->addEditFeed(this);
+  form_pointer->addEditFeed<Feed>({this});
   return false;
 }
 

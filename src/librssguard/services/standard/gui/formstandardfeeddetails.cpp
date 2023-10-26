@@ -60,13 +60,13 @@ void FormStandardFeedDetails::guessIconOnly() {
 }
 
 void FormStandardFeedDetails::onTitleChanged(const QString& title) {
-  m_ui->m_buttonBox->button(QDialogButtonBox::StandardButton::Ok)->setEnabled(!title.simplified().isEmpty());
+  m_ui.m_buttonBox->button(QDialogButtonBox::StandardButton::Ok)->setEnabled(!title.simplified().isEmpty());
 }
 
 void FormStandardFeedDetails::apply() {
   FormFeedDetails::apply();
 
-  auto* std_feed = feed<StandardFeed>();
+  StandardFeed* std_feed = feed<StandardFeed>();
   RootItem* parent = m_standardFeedDetails->m_ui.m_cmbParentCategory->currentData().value<RootItem*>();
 
   StandardFeed::Type type =
@@ -101,8 +101,13 @@ void FormStandardFeedDetails::apply() {
     qFatal("Cannot save feed: '%s'.", qPrintable(ex.message()));
   }
 
-  m_serviceRoot->requestItemReassignment(m_feed, parent);
-  m_serviceRoot->itemChanged({m_feed});
+  auto all_feeds = feeds<RootItem>();
+
+  // TODO: for all_feeds
+  // setLastEtag({});
+
+  m_serviceRoot->requestItemsReassignment(all_feeds, parent);
+  m_serviceRoot->itemChanged(all_feeds);
 }
 
 void FormStandardFeedDetails::loadFeedData() {
