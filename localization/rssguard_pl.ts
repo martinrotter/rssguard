@@ -7239,42 +7239,42 @@ Typ: %2
 Skrypt po przetwarzaniu: %3</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/services/standard/standardfeed.cpp" line="178"/>
+      <location filename="../src/librssguard/services/standard/standardfeed.cpp" line="181"/>
       <source>Script</source>
       <translation>Skrypt</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/services/standard/standardfeed.cpp" line="181"/>
+      <location filename="../src/librssguard/services/standard/standardfeed.cpp" line="184"/>
       <source>Local file</source>
       <translation>Plik lokalny</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/services/standard/standardfeed.cpp" line="184"/>
+      <location filename="../src/librssguard/services/standard/standardfeed.cpp" line="187"/>
       <source>Unknown</source>
       <translation>Nieznany</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/services/standard/standardfeed.cpp" line="217"/>
+      <location filename="../src/librssguard/services/standard/standardfeed.cpp" line="220"/>
       <source>Cannot save data for feed: %1</source>
       <translation>Nie można zapisać danych dla kanału: %1</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/services/standard/standardfeed.cpp" line="375"/>
+      <location filename="../src/librssguard/services/standard/standardfeed.cpp" line="378"/>
       <source>Cannot move feed, detailed information was logged via debug log.</source>
       <translation>Nie można przenieść kanału. Szczegółowe informacje zostały zapisane w dzienniku aplikacji.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/services/standard/standardfeed.cpp" line="216"/>
+      <location filename="../src/librssguard/services/standard/standardfeed.cpp" line="219"/>
       <source>Cannot save feed data</source>
       <translation>Nie można zapisać danych kanału</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/services/standard/standardfeed.cpp" line="336"/>
+      <location filename="../src/librssguard/services/standard/standardfeed.cpp" line="339"/>
       <source>feed format not recognized</source>
       <translation type="unfinished">feed format not recognized</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/services/standard/standardfeed.cpp" line="374"/>
+      <location filename="../src/librssguard/services/standard/standardfeed.cpp" line="377"/>
       <source>Cannot move feed</source>
       <translation>Nie można przenieść kanału</translation>
     </message>

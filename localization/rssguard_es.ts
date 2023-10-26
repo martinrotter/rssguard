@@ -7196,42 +7196,42 @@ Tipo: %2
 Código posprocesado: %3</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/services/standard/standardfeed.cpp" line="178"/>
+      <location filename="../src/librssguard/services/standard/standardfeed.cpp" line="181"/>
       <source>Script</source>
       <translation>Guión</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/services/standard/standardfeed.cpp" line="181"/>
+      <location filename="../src/librssguard/services/standard/standardfeed.cpp" line="184"/>
       <source>Local file</source>
       <translation>Archivo local</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/services/standard/standardfeed.cpp" line="184"/>
+      <location filename="../src/librssguard/services/standard/standardfeed.cpp" line="187"/>
       <source>Unknown</source>
       <translation>Desconocido</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/services/standard/standardfeed.cpp" line="217"/>
+      <location filename="../src/librssguard/services/standard/standardfeed.cpp" line="220"/>
       <source>Cannot save data for feed: %1</source>
       <translation>Imposible gardar datos para la fuente: %1</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/services/standard/standardfeed.cpp" line="375"/>
+      <location filename="../src/librssguard/services/standard/standardfeed.cpp" line="378"/>
       <source>Cannot move feed, detailed information was logged via debug log.</source>
       <translation>Imposible mover la fuente, la información detallada se registró a través del registro de depuración.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/services/standard/standardfeed.cpp" line="216"/>
+      <location filename="../src/librssguard/services/standard/standardfeed.cpp" line="219"/>
       <source>Cannot save feed data</source>
       <translation>Imposible gardar datos de fuente</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/services/standard/standardfeed.cpp" line="336"/>
+      <location filename="../src/librssguard/services/standard/standardfeed.cpp" line="339"/>
       <source>feed format not recognized</source>
       <translation type="unfinished">feed format not recognized</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/services/standard/standardfeed.cpp" line="374"/>
+      <location filename="../src/librssguard/services/standard/standardfeed.cpp" line="377"/>
       <source>Cannot move feed</source>
       <translation>Imposible mover fuente</translation>
     </message>
