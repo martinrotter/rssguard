@@ -434,7 +434,7 @@ versione facendo clic su questa notifica a scomparsa.</translation>
     <message>
       <location filename="../src/librssguard/database/databasefactory.cpp" line="59"/>
       <source>Connection to your database was not established with error: &apos;%1&apos;. Falling back to SQLite.</source>
-      <translation type="unfinished">Connection to your database was not established with error: &apos;%1&apos;. Falling back to SQLite.</translation>
+      <translation>La connessione al tuo database non è stata stabilita con errore: &apos;%1&apos;. Ripiegamento su SQLite.</translation>
     </message>
   </context>
   <context>
@@ -447,7 +447,7 @@ versione facendo clic su questa notifica a scomparsa.</translation>
     <message>
       <location filename="../src/librssguard/gui/reusable/discoverfeedsbutton.cpp" line="79"/>
       <source>Feeds were detected, but no suitable accounts are configured.</source>
-      <translation type="unfinished">Feeds were detected, but no suitable accounts are configured.</translation>
+      <translation>Feed rilevati, ma non sono presenti account configurati adatti.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/reusable/discoverfeedsbutton.cpp" line="32"/>
