@@ -152,26 +152,47 @@
        <string>Miscellaneous</string>
       </attribute>
       <layout class="QFormLayout" name="formLayout_2">
-       <item row="0" column="0">
-        <widget class="QCheckBox" name="m_cbSuppressFeed">
-         <property name="text">
-          <string>Ignore notifications for this feed</string>
-         </property>
-        </widget>
+       <item row="0" column="0" colspan="2">
+        <layout class="QHBoxLayout" name="horizontalLayout_5">
+         <item>
+          <widget class="MultiFeedEditCheckBox" name="m_mcbSuppressFeed"/>
+         </item>
+         <item>
+          <widget class="QCheckBox" name="m_cbSuppressFeed">
+           <property name="text">
+            <string>Ignore notifications for this feed</string>
+           </property>
+          </widget>
+         </item>
+        </layout>
        </item>
-       <item row="1" column="0">
-        <widget class="QCheckBox" name="m_cbDisableFeed">
-         <property name="text">
-          <string>Disable this feed</string>
-         </property>
-        </widget>
+       <item row="1" column="0" colspan="2">
+        <layout class="QHBoxLayout" name="horizontalLayout_6">
+         <item>
+          <widget class="MultiFeedEditCheckBox" name="m_mcbDisableFeed"/>
+         </item>
+         <item>
+          <widget class="QCheckBox" name="m_cbDisableFeed">
+           <property name="text">
+            <string>Disable this feed</string>
+           </property>
+          </widget>
+         </item>
+        </layout>
        </item>
-       <item row="2" column="0">
-        <widget class="QCheckBox" name="m_cbFeedRTL">
-         <property name="text">
-          <string>Right-to-left layout</string>
-         </property>
-        </widget>
+       <item row="2" column="0" colspan="2">
+        <layout class="QHBoxLayout" name="horizontalLayout_7">
+         <item>
+          <widget class="MultiFeedEditCheckBox" name="m_mcbFeedRtl"/>
+         </item>
+         <item>
+          <widget class="QCheckBox" name="m_cbFeedRTL">
+           <property name="text">
+            <string>Right-to-left layout</string>
+           </property>
+          </widget>
+         </item>
+        </layout>
        </item>
       </layout>
      </widget>

@@ -47,6 +47,8 @@ class FormFeedDetails : public QDialog {
     virtual void apply();
 
   protected:
+    bool isChangeAllowed(MultiFeedEditCheckBox* mcb) const;
+
     void insertCustomTab(QWidget* custom_tab, const QString& title, int index);
 
     // Sets the feed which will be edited.

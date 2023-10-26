@@ -27,6 +27,10 @@ FormFeedDetails::FormFeedDetails(ServiceRoot* service_root, QWidget* parent)
   m_ui.m_mcbAddAnyDateArticles->addActionWidget(m_ui.m_cbAddAnyDateArticles);
   m_ui.m_mcbOpenArticlesAutomatically->addActionWidget(m_ui.m_cbOpenArticlesAutomatically);
   m_ui.m_mcbAvoidOldArticles->addActionWidget(m_ui.m_gbAvoidOldArticles);
+
+  m_ui.m_mcbDisableFeed->addActionWidget(m_ui.m_cbDisableFeed);
+  m_ui.m_mcbSuppressFeed->addActionWidget(m_ui.m_cbSuppressFeed);
+  m_ui.m_mcbFeedRtl->addActionWidget(m_ui.m_cbFeedRTL);
 }
 
 void FormFeedDetails::activateTab(int index) {
@@ -42,27 +46,53 @@ void FormFeedDetails::insertCustomTab(QWidget* custom_tab, const QString& title,
 }
 
 void FormFeedDetails::apply() {
-  Feed* fd = feed<Feed>();
+  QList<Feed*> fds = feeds<Feed>();
 
-  // Setup common data for the feed.
-  fd->setAutoUpdateType(static_cast<Feed::AutoUpdateType>(m_ui.m_cmbAutoUpdateType
-                                                            ->itemData(m_ui.m_cmbAutoUpdateType->currentIndex())
-                                                            .toInt()));
-  fd->setAutoUpdateInterval(int(m_ui.m_spinAutoUpdateInterval->value()));
-  fd->setOpenArticlesDirectly(m_ui.m_cbOpenArticlesAutomatically->isChecked());
-  fd->setIsRtl(m_ui.m_cbFeedRTL->isChecked());
-  fd->setAddAnyDatetimeArticles(m_ui.m_cbAddAnyDateArticles->isChecked());
-  fd->setDatetimeToAvoid(m_ui.m_gbAvoidOldArticles->isChecked() ? m_ui.m_dtDateTimeToAvoid->dateTime()
-                                                                : TextFactory::parseDateTime(0));
-  fd->setIsSwitchedOff(m_ui.m_cbDisableFeed->isChecked());
-  fd->setIsQuiet(m_ui.m_cbSuppressFeed->isChecked());
+  for (Feed* fd : fds) {
+    // Setup common data for the feed.
+    if (isChangeAllowed(m_ui.m_mcbAutoDownloading)) {
+      fd->setAutoUpdateType(static_cast<Feed::AutoUpdateType>(m_ui.m_cmbAutoUpdateType
+                                                                ->itemData(m_ui.m_cmbAutoUpdateType->currentIndex())
+                                                                .toInt()));
+      fd->setAutoUpdateInterval(int(m_ui.m_spinAutoUpdateInterval->value()));
+    }
 
-  if (!m_creatingNew) {
-    // We need to make sure that common data are saved.
-    QSqlDatabase database = qApp->database()->driver()->connection(metaObject()->className());
+    if (isChangeAllowed(m_ui.m_mcbOpenArticlesAutomatically)) {
+      fd->setOpenArticlesDirectly(m_ui.m_cbOpenArticlesAutomatically->isChecked());
+    }
 
-    DatabaseQueries::createOverwriteFeed(database, fd, m_serviceRoot->accountId(), fd->parent()->id());
+    if (isChangeAllowed(m_ui.m_mcbFeedRtl)) {
+      fd->setIsRtl(m_ui.m_cbFeedRTL->isChecked());
+    }
+
+    if (isChangeAllowed(m_ui.m_mcbAddAnyDateArticles)) {
+      fd->setAddAnyDatetimeArticles(m_ui.m_cbAddAnyDateArticles->isChecked());
+    }
+
+    if (isChangeAllowed(m_ui.m_mcbAvoidOldArticles)) {
+      fd->setDatetimeToAvoid(m_ui.m_gbAvoidOldArticles->isChecked() ? m_ui.m_dtDateTimeToAvoid->dateTime()
+                                                                    : TextFactory::parseDateTime(0));
+    }
+
+    if (isChangeAllowed(m_ui.m_mcbDisableFeed)) {
+      fd->setIsSwitchedOff(m_ui.m_cbDisableFeed->isChecked());
+    }
+
+    if (isChangeAllowed(m_ui.m_mcbSuppressFeed)) {
+      fd->setIsQuiet(m_ui.m_cbSuppressFeed->isChecked());
+    }
+
+    if (!m_creatingNew) {
+      // We need to make sure that common data are saved.
+      QSqlDatabase database = qApp->database()->driver()->connection(metaObject()->className());
+
+      DatabaseQueries::createOverwriteFeed(database, fd, m_serviceRoot->accountId(), fd->parent()->id());
+    }
   }
+}
+
+bool FormFeedDetails::isChangeAllowed(MultiFeedEditCheckBox* mcb) const {
+  return m_feeds.size() <= 1 || mcb->isChecked();
 }
 
 void FormFeedDetails::onAutoUpdateTypeChanged(int new_index) {

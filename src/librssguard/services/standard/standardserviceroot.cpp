@@ -125,14 +125,22 @@ void StandardServiceRoot::editItemsViaGui(const QList<RootItem*>& items) {
                      .select([](RootItem* it) {
                        return qobject_cast<Feed*>(it);
                      })
+                     .where([](Feed* fd) {
+                       return fd != nullptr;
+                     })
                      .toStdList();
 
-  QScopedPointer<FormStandardFeedDetails> form_pointer(new FormStandardFeedDetails(this,
-                                                                                   nullptr,
-                                                                                   {},
-                                                                                   qApp->mainFormWidget()));
+  if (!std_feeds.empty()) {
+    QScopedPointer<FormStandardFeedDetails> form_pointer(new FormStandardFeedDetails(this,
+                                                                                     nullptr,
+                                                                                     {},
+                                                                                     qApp->mainFormWidget()));
 
-  form_pointer->addEditFeed<StandardFeed>(FROM_STD_LIST(QList<Feed*>, std_feeds));
+    form_pointer->addEditFeed<StandardFeed>(FROM_STD_LIST(QList<Feed*>, std_feeds));
+  }
+  else {
+    ServiceRoot::editItemsViaGui(items);
+  }
 }
 
 bool StandardServiceRoot::supportsFeedAdding() const {

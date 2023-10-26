@@ -14,6 +14,8 @@
 #include "services/abstract/category.h"
 #include "services/abstract/feed.h"
 #include "services/abstract/gui/custommessagepreviewer.h"
+#include "services/abstract/gui/formcategorydetails.h"
+#include "services/abstract/gui/formfeeddetails.h"
 #include "services/abstract/importantnode.h"
 #include "services/abstract/labelsnode.h"
 #include "services/abstract/recyclebin.h"
@@ -44,7 +46,39 @@ bool ServiceRoot::deleteViaGui() {
   }
 }
 
-void ServiceRoot::editItemsViaGui(const QList<RootItem*>& items) {}
+void ServiceRoot::editItemsViaGui(const QList<RootItem*>& items) {
+  auto std_feeds = boolinq::from(items)
+                     .select([](RootItem* it) {
+                       return qobject_cast<Feed*>(it);
+                     })
+                     .where([](Feed* fd) {
+                       return fd != nullptr;
+                     })
+                     .toStdList();
+
+  if (!std_feeds.empty()) {
+    QScopedPointer<FormFeedDetails> form_pointer(new FormFeedDetails(this, qApp->mainFormWidget()));
+
+    form_pointer->addEditFeed<Feed>(FROM_STD_LIST(QList<Feed*>, std_feeds));
+  }
+  else {
+    auto std_categories = boolinq::from(items)
+                            .select([](RootItem* it) {
+                              return qobject_cast<Category*>(it);
+                            })
+                            .where([](Category* fd) {
+                              return fd != nullptr;
+                            })
+                            .toStdList();
+
+    if (!std_categories.empty()) {
+      QScopedPointer<FormCategoryDetails> form_pointer(new FormCategoryDetails(this, nullptr, qApp->mainFormWidget()));
+
+      // TODO: todo
+      // form_pointer->addEditCategory<Feed>(FROM_STD_LIST(QList<Feed*>, std_feeds));
+    }
+  }
+}
 
 bool ServiceRoot::markAsReadUnread(RootItem::ReadStatus status) {
   auto* cache = dynamic_cast<CacheForServiceRoot*>(this);

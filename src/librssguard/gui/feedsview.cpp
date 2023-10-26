@@ -292,6 +292,23 @@ void FeedsView::editSelectedItem() {
     return;
   }
 
+  std::list<RootItem::Kind> distinct_types = boolinq::from(std_editable_items)
+                                               .select([](RootItem* it) {
+                                                 return it->kind();
+                                               })
+                                               .distinct()
+                                               .toStdList();
+
+  if (distinct_types.size() != 1) {
+    qApp->showGuiMessage(Notification::Event::GeneralEvent,
+                         {tr("Cannot edit items"),
+                          tr("%1 does not support batch editing of items of varying types.").arg(QSL(APP_NAME)),
+                          QSystemTrayIcon::MessageIcon::Critical});
+
+    qApp->feedUpdateLock()->unlock();
+    return;
+  }
+
   if (std_editable_items.size() < selected_items.size()) {
     // Some items are not editable.
     qApp->showGuiMessage(Notification::Event::GeneralEvent,
