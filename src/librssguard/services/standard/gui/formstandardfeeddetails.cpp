@@ -66,39 +66,42 @@ void FormStandardFeedDetails::onTitleChanged(const QString& title) {
 void FormStandardFeedDetails::apply() {
   FormFeedDetails::apply();
 
-  StandardFeed* std_feed = feed<StandardFeed>();
-  RootItem* parent = m_standardFeedDetails->m_ui.m_cmbParentCategory->currentData().value<RootItem*>();
+  QList<StandardFeed*> fds = feeds<StandardFeed>();
 
-  StandardFeed::Type type =
-    static_cast<StandardFeed::Type>(m_standardFeedDetails->m_ui.m_cmbType
-                                      ->itemData(m_standardFeedDetails->m_ui.m_cmbType->currentIndex())
-                                      .toInt());
+  for (StandardFeed* std_feed : fds) {
+    RootItem* parent = m_standardFeedDetails->m_ui.m_cmbParentCategory->currentData().value<RootItem*>();
 
-  // Setup data for new_feed.
-  std_feed->setTitle(m_standardFeedDetails->m_ui.m_txtTitle->lineEdit()->text().simplified());
-  std_feed->setCreationDate(QDateTime::currentDateTime());
-  std_feed->setDescription(m_standardFeedDetails->m_ui.m_txtDescription->lineEdit()->text());
-  std_feed->setIcon(m_standardFeedDetails->m_ui.m_btnIcon->icon());
+    StandardFeed::Type type =
+      static_cast<StandardFeed::Type>(m_standardFeedDetails->m_ui.m_cmbType
+                                        ->itemData(m_standardFeedDetails->m_ui.m_cmbType->currentIndex())
+                                        .toInt());
 
-  std_feed->setSource(m_standardFeedDetails->m_ui.m_txtSource->textEdit()->toPlainText());
-  std_feed->setLastEtag({});
+    // Setup data for new_feed.
+    std_feed->setTitle(m_standardFeedDetails->m_ui.m_txtTitle->lineEdit()->text().simplified());
+    std_feed->setCreationDate(QDateTime::currentDateTime());
+    std_feed->setDescription(m_standardFeedDetails->m_ui.m_txtDescription->lineEdit()->text());
+    std_feed->setIcon(m_standardFeedDetails->m_ui.m_btnIcon->icon());
 
-  std_feed->setEncoding(m_standardFeedDetails->m_ui.m_cmbEncoding->currentText());
-  std_feed->setType(type);
-  std_feed->setSourceType(m_standardFeedDetails->sourceType());
-  std_feed->setPostProcessScript(m_standardFeedDetails->m_ui.m_txtPostProcessScript->textEdit()->toPlainText());
+    std_feed->setSource(m_standardFeedDetails->m_ui.m_txtSource->textEdit()->toPlainText());
+    std_feed->setLastEtag({});
 
-  std_feed->setProtection(m_authDetails->authenticationType());
-  std_feed->setUsername(m_authDetails->m_txtUsername->lineEdit()->text());
-  std_feed->setPassword(m_authDetails->m_txtPassword->lineEdit()->text());
+    std_feed->setEncoding(m_standardFeedDetails->m_ui.m_cmbEncoding->currentText());
+    std_feed->setType(type);
+    std_feed->setSourceType(m_standardFeedDetails->sourceType());
+    std_feed->setPostProcessScript(m_standardFeedDetails->m_ui.m_txtPostProcessScript->textEdit()->toPlainText());
 
-  QSqlDatabase database = qApp->database()->driver()->connection(metaObject()->className());
+    std_feed->setProtection(m_authDetails->authenticationType());
+    std_feed->setUsername(m_authDetails->m_txtUsername->lineEdit()->text());
+    std_feed->setPassword(m_authDetails->m_txtPassword->lineEdit()->text());
 
-  try {
-    DatabaseQueries::createOverwriteFeed(database, std_feed, m_serviceRoot->accountId(), parent->id());
-  }
-  catch (const ApplicationException& ex) {
-    qFatal("Cannot save feed: '%s'.", qPrintable(ex.message()));
+    QSqlDatabase database = qApp->database()->driver()->connection(metaObject()->className());
+
+    try {
+      DatabaseQueries::createOverwriteFeed(database, std_feed, m_serviceRoot->accountId(), parent->id());
+    }
+    catch (const ApplicationException& ex) {
+      qFatal("Cannot save feed: '%s'.", qPrintable(ex.message()));
+    }
   }
 
   auto all_feeds = feeds<RootItem>();

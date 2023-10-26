@@ -89,6 +89,11 @@ void FormFeedDetails::apply() {
       DatabaseQueries::createOverwriteFeed(database, fd, m_serviceRoot->accountId(), fd->parent()->id());
     }
   }
+
+  if (!m_creatingNew) {
+    auto all_feeds = feeds<RootItem>();
+    m_serviceRoot->itemChanged(all_feeds);
+  }
 }
 
 bool FormFeedDetails::isChangeAllowed(MultiFeedEditCheckBox* mcb) const {
