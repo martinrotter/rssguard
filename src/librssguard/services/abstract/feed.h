@@ -17,7 +17,11 @@ class Feed : public RootItem {
 
   public:
     // Specifies the auto-download strategy for the feed.
-    enum class AutoUpdateType { DontAutoUpdate = 0, DefaultAutoUpdate = 1, SpecificAutoUpdate = 2 };
+    enum class AutoUpdateType {
+      DontAutoUpdate = 0,
+      DefaultAutoUpdate = 1,
+      SpecificAutoUpdate = 2
+    };
 
     // Specifies the actual "status" of the feed.
     // For example if it has new messages, error
@@ -47,7 +51,6 @@ class Feed : public RootItem {
     virtual QVariantHash customDatabaseData() const;
     virtual void setCustomDatabaseData(const QVariantHash& data);
     virtual bool canBeEdited() const;
-    virtual bool editViaGui();
     virtual QVariant data(int column, int role) const;
 
     void setCountOfAllMessages(int count_all_messages);

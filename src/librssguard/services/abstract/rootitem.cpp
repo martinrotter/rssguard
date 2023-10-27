@@ -59,10 +59,6 @@ bool RootItem::canBeEdited() const {
   return false;
 }
 
-bool RootItem::editViaGui() {
-  return false;
-}
-
 bool RootItem::canBeDeleted() const {
   return false;
 }

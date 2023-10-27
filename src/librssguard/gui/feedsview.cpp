@@ -14,6 +14,7 @@
 #include "miscellaneous/settings.h"
 #include "miscellaneous/textfactory.h"
 #include "services/abstract/feed.h"
+#include "services/abstract/gui/formaccountdetails.h"
 #include "services/abstract/rootitem.h"
 #include "services/abstract/serviceroot.h"
 
@@ -315,6 +316,18 @@ void FeedsView::editSelectedItem() {
                          {tr("Cannot edit some items"),
                           tr("Some of selected items cannot be edited. Proceeding to edit the rest."),
                           QSystemTrayIcon::MessageIcon::Warning});
+  }
+
+  if (std_editable_items.front()->kind() == RootItem::Kind::ServiceRoot) {
+    if (std_editable_items.size() > 1) {
+      qApp->showGuiMessage(Notification::Event::GeneralEvent,
+                           {tr("Cannot edit items"),
+                            tr("%1 does not support batch editing of multiple accounts.").arg(QSL(APP_NAME)),
+                            QSystemTrayIcon::MessageIcon::Critical});
+    }
+
+    qApp->feedUpdateLock()->unlock();
+    return;
   }
 
   distinct_accounts.front()->editItemsViaGui(FROM_STD_LIST(QList<RootItem*>, std_editable_items));

@@ -48,7 +48,6 @@ class FormFeedDetails : public QDialog {
 
   protected:
     bool isChangeAllowed(MultiFeedEditCheckBox* mcb) const;
-
     void insertCustomTab(QWidget* custom_tab, const QString& title, int index);
 
     // Sets the feed which will be edited.
@@ -69,11 +68,13 @@ class FormFeedDetails : public QDialog {
     QList<Feed*> m_feeds;
     ServiceRoot* m_serviceRoot;
     bool m_creatingNew;
+    bool m_isBatchEdit;
 };
 
 template <class T>
 inline QList<T*> FormFeedDetails::addEditFeed(const QList<Feed*>& feeds_to_edit) {
   m_creatingNew = feeds_to_edit.isEmpty();
+  m_isBatchEdit = feeds_to_edit.size() > 1;
 
   if (m_creatingNew) {
     m_feeds.append(new T());

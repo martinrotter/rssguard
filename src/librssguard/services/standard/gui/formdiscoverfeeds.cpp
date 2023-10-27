@@ -116,7 +116,10 @@ void FormDiscoverFeeds::onDiscoveryFinished() {
     loadDiscoveredFeeds(res);
   }
   catch (const ApplicationException& ex) {
-    // TODO: display error
+    qApp->showGuiMessage(Notification::Event::GeneralEvent,
+                         {tr("Cannot discover feeds"),
+                          tr("Error: %1").arg(ex.message()),
+                          QSystemTrayIcon::MessageIcon::Critical});
   }
 
   setEnabled(true);

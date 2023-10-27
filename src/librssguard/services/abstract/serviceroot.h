@@ -24,6 +24,7 @@ class Label;
 class MessagesModel;
 class CustomMessagePreviewer;
 class CacheForServiceRoot;
+class FormAccountDetails;
 
 // THIS IS the root node of the service.
 // NOTE: The root usually contains some core functionality of the
@@ -59,6 +60,7 @@ class ServiceRoot : public RootItem {
     SearchsNode* probesNode() const;
     UnreadNode* unreadNode() const;
 
+    virtual FormAccountDetails* accountSetupDialog() const;
     virtual void onDatabaseCleanup();
     virtual void updateCounts(bool including_total_count);
     virtual bool canBeDeleted() const;

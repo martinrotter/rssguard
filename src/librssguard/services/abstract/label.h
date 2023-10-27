@@ -28,7 +28,6 @@ class RSSGUARD_DLLSPEC Label : public RootItem {
     virtual int countOfAllMessages() const;
     virtual int countOfUnreadMessages() const;
     virtual bool canBeEdited() const;
-    virtual bool editViaGui();
     virtual bool canBeDeleted() const;
     virtual bool deleteViaGui();
     virtual void updateCounts(bool including_total_count);

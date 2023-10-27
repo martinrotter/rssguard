@@ -44,28 +44,6 @@ bool Search::canBeEdited() const {
   return true;
 }
 
-bool Search::editViaGui() {
-  FormAddEditProbe form(qApp->mainFormWidget());
-
-  if (form.execForEdit(this)) {
-    QSqlDatabase db = qApp->database()->driver()->connection(metaObject()->className());
-
-    try {
-      DatabaseQueries::updateProbe(db, this);
-      updateCounts(true);
-      getParentServiceRoot()->itemChanged({this});
-      return true;
-    }
-    catch (const ApplicationException& ex) {
-      qCriticalNN << LOGSEC_CORE << "Failed to edit probe:" << QUOTE_W_SPACE_DOT(ex.message());
-      return false;
-    }
-  }
-  else {
-    return true;
-  }
-}
-
 bool Search::canBeDeleted() const {
   return true;
 }

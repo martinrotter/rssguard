@@ -28,7 +28,8 @@ class GreaderServiceRoot : public ServiceRoot, public CacheForServiceRoot {
 
     virtual bool isSyncable() const;
     virtual bool canBeEdited() const;
-    virtual bool editViaGui();
+    virtual void editItemsViaGui(const QList<RootItem*>& items);
+    virtual FormAccountDetails* accountSetupDialog() const;
     virtual void start(bool freshly_activated);
     virtual QString code() const;
     virtual void saveAllCachedData(bool ignore_errors);

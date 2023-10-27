@@ -12,7 +12,7 @@ class OwnCloudNetworkFactory;
 class Mutex;
 
 class OwnCloudServiceRoot : public ServiceRoot, public CacheForServiceRoot {
-  Q_OBJECT
+    Q_OBJECT
 
   public:
     explicit OwnCloudServiceRoot(RootItem* parent = nullptr);
@@ -20,7 +20,8 @@ class OwnCloudServiceRoot : public ServiceRoot, public CacheForServiceRoot {
 
     virtual bool isSyncable() const;
     virtual bool canBeEdited() const;
-    virtual bool editViaGui();
+    virtual void editItemsViaGui(const QList<RootItem*>& items);
+    virtual FormAccountDetails* accountSetupDialog() const;
     virtual bool supportsFeedAdding() const;
     virtual bool supportsCategoryAdding() const;
     virtual void start(bool freshly_activated);

@@ -112,6 +112,31 @@ void FormStandardFeedDetails::apply() {
 void FormStandardFeedDetails::loadFeedData() {
   FormFeedDetails::loadFeedData();
 
+  if (m_isBatchEdit) {
+    // We hook batch selectors.
+    m_standardFeedDetails->m_ui.m_mcbDescription->addActionWidget(m_standardFeedDetails->m_ui.m_txtDescription);
+    m_standardFeedDetails->m_ui.m_mcbIcon->addActionWidget(m_standardFeedDetails->m_ui.m_btnIcon);
+    m_standardFeedDetails->m_ui.m_mcbParentCategory->addActionWidget(m_standardFeedDetails->m_ui.m_cmbParentCategory);
+    m_standardFeedDetails->m_ui.m_mcbPostProcessScript
+      ->addActionWidget(m_standardFeedDetails->m_ui.m_txtPostProcessScript);
+    m_standardFeedDetails->m_ui.m_mcbSource->addActionWidget(m_standardFeedDetails->m_ui.m_cmbSourceType);
+    m_standardFeedDetails->m_ui.m_mcbSource->addActionWidget(m_standardFeedDetails->m_ui.m_txtSource);
+    m_standardFeedDetails->m_ui.m_mcbTitle->addActionWidget(m_standardFeedDetails->m_ui.m_txtTitle);
+    m_standardFeedDetails->m_ui.m_mcbTypeEncoding->addActionWidget(m_standardFeedDetails->m_ui.m_cmbType);
+    m_standardFeedDetails->m_ui.m_mcbTypeEncoding->addActionWidget(m_standardFeedDetails->m_ui.m_cmbEncoding);
+
+    m_authDetails->m_mcbAuthType->addActionWidget(m_authDetails->m_cbAuthType);
+    m_authDetails->m_mcbAuthentication->addActionWidget(m_authDetails->m_gbAuthentication);
+
+    m_standardFeedDetails->m_ui.m_btnFetchMetadata->setEnabled(false);
+  }
+  else {
+    // We hide batch selectors.
+    for (auto* cb : findChildren<MultiFeedEditCheckBox*>()) {
+      cb->hide();
+    }
+  }
+
   auto* std_feed = feed<StandardFeed>();
 
   // Load categories.

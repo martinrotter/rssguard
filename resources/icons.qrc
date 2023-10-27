@@ -27,6 +27,7 @@
     <file>./graphics/Breeze/actions/32/document-open.svg</file>
     <file>./graphics/Breeze/actions/32/document-revert.svg</file>
     <file>./graphics/Breeze/actions/22/download.svg</file>
+    <file>./graphics/Breeze/actions/22/draw-line.svg</file>
     <file>./graphics/Breeze/actions/22/edit-clear.svg</file>
     <file>./graphics/Breeze/actions/22/edit-copy.svg</file>
     <file>./graphics/Breeze/actions/22/edit-cut.svg</file>
@@ -120,6 +121,7 @@
     <file>./graphics/Breeze Dark/actions/32/document-open.svg</file>
     <file>./graphics/Breeze Dark/actions/32/document-revert.svg</file>
     <file>./graphics/Breeze Dark/actions/22/download.svg</file>
+    <file>./graphics/Breeze Dark/actions/22/draw-line.svg</file>
     <file>./graphics/Breeze Dark/actions/22/edit-clear.svg</file>
     <file>./graphics/Breeze Dark/actions/22/edit-copy.svg</file>
     <file>./graphics/Breeze Dark/actions/22/edit-cut.svg</file>

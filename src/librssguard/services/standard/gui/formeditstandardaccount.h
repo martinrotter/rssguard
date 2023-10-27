@@ -6,6 +6,8 @@
 #include "services/abstract/gui/formaccountdetails.h"
 
 class FormEditStandardAccount : public FormAccountDetails {
+    Q_OBJECT
+
   public:
     explicit FormEditStandardAccount(QWidget* parent = nullptr);
 

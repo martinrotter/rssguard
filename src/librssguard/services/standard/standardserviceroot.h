@@ -24,12 +24,12 @@ class StandardServiceRoot : public ServiceRoot {
     explicit StandardServiceRoot(RootItem* parent = nullptr);
     virtual ~StandardServiceRoot();
 
+    virtual FormAccountDetails* accountSetupDialog() const;
     virtual void onDatabaseCleanup();
     virtual void start(bool freshly_activated);
     virtual void stop();
     virtual QString code() const;
     virtual bool canBeEdited() const;
-    virtual bool editViaGui();
     virtual void editItemsViaGui(const QList<RootItem*>& items);
     virtual bool supportsFeedAdding() const;
     virtual bool supportsCategoryAdding() const;

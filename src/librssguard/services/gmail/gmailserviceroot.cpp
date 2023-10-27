@@ -162,11 +162,19 @@ bool GmailServiceRoot::canBeEdited() const {
   return true;
 }
 
-bool GmailServiceRoot::editViaGui() {
-  FormEditGmailAccount form_pointer(qApp->mainFormWidget());
+FormAccountDetails* GmailServiceRoot::accountSetupDialog() const {
+  return new FormEditGmailAccount(qApp->mainFormWidget());
+}
 
-  form_pointer.addEditAccount(this);
-  return true;
+void GmailServiceRoot::editItemsViaGui(const QList<RootItem*>& items) {
+  if (items.first()->kind() == RootItem::Kind::ServiceRoot) {
+    QScopedPointer<FormEditGmailAccount> p(qobject_cast<FormEditGmailAccount*>(accountSetupDialog()));
+
+    p->addEditAccount(this);
+    return;
+  }
+
+  ServiceRoot::editItemsViaGui(items);
 }
 
 bool GmailServiceRoot::supportsFeedAdding() const {

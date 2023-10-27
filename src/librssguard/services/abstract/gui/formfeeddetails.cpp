@@ -21,16 +21,6 @@ FormFeedDetails::FormFeedDetails(ServiceRoot* service_root, QWidget* parent)
   : QDialog(parent), m_serviceRoot(service_root) {
   initialize();
   createConnections();
-
-  m_ui.m_mcbAutoDownloading->addActionWidget(m_ui.m_wdgAutoUpdate);
-
-  m_ui.m_mcbAddAnyDateArticles->addActionWidget(m_ui.m_cbAddAnyDateArticles);
-  m_ui.m_mcbOpenArticlesAutomatically->addActionWidget(m_ui.m_cbOpenArticlesAutomatically);
-  m_ui.m_mcbAvoidOldArticles->addActionWidget(m_ui.m_gbAvoidOldArticles);
-
-  m_ui.m_mcbDisableFeed->addActionWidget(m_ui.m_cbDisableFeed);
-  m_ui.m_mcbSuppressFeed->addActionWidget(m_ui.m_cbSuppressFeed);
-  m_ui.m_mcbFeedRtl->addActionWidget(m_ui.m_cbFeedRTL);
 }
 
 void FormFeedDetails::activateTab(int index) {
@@ -96,7 +86,7 @@ void FormFeedDetails::apply() {
 }
 
 bool FormFeedDetails::isChangeAllowed(MultiFeedEditCheckBox* mcb) const {
-  return m_feeds.size() <= 1 || mcb->isChecked();
+  return !m_isBatchEdit || mcb->isChecked();
 }
 
 void FormFeedDetails::onAutoUpdateTypeChanged(int new_index) {
@@ -128,6 +118,23 @@ void FormFeedDetails::createConnections() {
 
 void FormFeedDetails::loadFeedData() {
   Feed* fd = feed<Feed>();
+
+  if (m_isBatchEdit) {
+    // We hook batch selectors.
+    m_ui.m_mcbAutoDownloading->addActionWidget(m_ui.m_wdgAutoUpdate);
+    m_ui.m_mcbAddAnyDateArticles->addActionWidget(m_ui.m_cbAddAnyDateArticles);
+    m_ui.m_mcbOpenArticlesAutomatically->addActionWidget(m_ui.m_cbOpenArticlesAutomatically);
+    m_ui.m_mcbAvoidOldArticles->addActionWidget(m_ui.m_gbAvoidOldArticles);
+    m_ui.m_mcbDisableFeed->addActionWidget(m_ui.m_cbDisableFeed);
+    m_ui.m_mcbSuppressFeed->addActionWidget(m_ui.m_cbSuppressFeed);
+    m_ui.m_mcbFeedRtl->addActionWidget(m_ui.m_cbFeedRTL);
+  }
+  else {
+    // We hide batch selectors.
+    for (auto* cb : findChildren<MultiFeedEditCheckBox*>()) {
+      cb->hide();
+    }
+  }
 
   if (m_creatingNew) {
     GuiUtilities::applyDialogProperties(*this,

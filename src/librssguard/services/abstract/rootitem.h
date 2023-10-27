@@ -28,11 +28,19 @@ class RSSGUARD_DLLSPEC RootItem : public QObject {
     Q_PROPERTY(QString customId READ customId)
 
   public:
-    enum class ReadStatus { Unread = 0, Read = 1, Unknown = 256 };
+    enum class ReadStatus {
+      Unread = 0,
+      Read = 1,
+      Unknown = 256
+    };
 
     // Holds statuses for messages
     // to be switched importance (starred).
-    enum class Importance { NotImportant = 0, Important = 1, Unknown = 256 };
+    enum class Importance {
+      NotImportant = 0,
+      Important = 1,
+      Unknown = 256
+    };
 
     // Describes the kind of the item.
     enum class Kind {
@@ -65,10 +73,6 @@ class RSSGUARD_DLLSPEC RootItem : public QObject {
 
     // Can properties of this item be edited?
     virtual bool canBeEdited() const;
-
-    // Performs editing of properties of this item (probably via dialog)
-    // and returns result status.
-    virtual bool editViaGui();
 
     // Can the item be deleted?
     virtual bool canBeDeleted() const;

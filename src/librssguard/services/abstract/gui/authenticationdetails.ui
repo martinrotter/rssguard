@@ -7,73 +7,92 @@
     <x>0</x>
     <y>0</y>
     <width>350</width>
-    <height>196</height>
+    <height>153</height>
    </rect>
   </property>
   <property name="windowTitle">
    <string>Form</string>
   </property>
   <layout class="QFormLayout" name="formLayout">
-   <item row="1" column="0" colspan="2">
-    <widget class="QGroupBox" name="m_gbAuthentication">
-     <property name="toolTip">
-      <string>Some feeds require authentication, including GMail feeds. BASIC, NTLM-2 and DIGEST-MD5 authentication schemes are supported.</string>
-     </property>
-     <property name="title">
-      <string>Credentials</string>
-     </property>
-     <property name="flat">
-      <bool>false</bool>
-     </property>
-     <property name="checked">
-      <bool>false</bool>
-     </property>
-     <layout class="QFormLayout" name="formLayout_2">
-      <item row="0" column="0">
-       <widget class="QLabel" name="m_lblUsername">
-        <property name="text">
-         <string>Username</string>
-        </property>
-        <property name="buddy">
-         <cstring>m_txtUsername</cstring>
-        </property>
-       </widget>
-      </item>
-      <item row="0" column="1">
-       <widget class="LineEditWithStatus" name="m_txtUsername" native="true"/>
-      </item>
-      <item row="1" column="0">
-       <widget class="QLabel" name="m_lblPassword">
-        <property name="text">
-         <string>Password</string>
-        </property>
-        <property name="buddy">
-         <cstring>m_txtPassword</cstring>
-        </property>
-       </widget>
-      </item>
-      <item row="1" column="1">
-       <widget class="LineEditWithStatus" name="m_txtPassword" native="true"/>
-      </item>
-     </layout>
-    </widget>
-   </item>
    <item row="0" column="0">
-    <widget class="QLabel" name="label">
-     <property name="text">
-      <string>Authentication type</string>
-     </property>
-     <property name="buddy">
-      <cstring>m_cbAuthType</cstring>
-     </property>
-    </widget>
+    <layout class="QHBoxLayout" name="horizontalLayout">
+     <item>
+      <widget class="MultiFeedEditCheckBox" name="m_mcbAuthType"/>
+     </item>
+     <item>
+      <widget class="QLabel" name="label">
+       <property name="text">
+        <string>Authentication type</string>
+       </property>
+       <property name="buddy">
+        <cstring>m_cbAuthType</cstring>
+       </property>
+      </widget>
+     </item>
+    </layout>
    </item>
    <item row="0" column="1">
     <widget class="QComboBox" name="m_cbAuthType"/>
    </item>
+   <item row="1" column="0" colspan="2">
+    <layout class="QHBoxLayout" name="horizontalLayout_2">
+     <item>
+      <widget class="MultiFeedEditCheckBox" name="m_mcbAuthentication"/>
+     </item>
+     <item>
+      <widget class="QGroupBox" name="m_gbAuthentication">
+       <property name="toolTip">
+        <string>Some feeds require authentication, including GMail feeds. BASIC, NTLM-2 and DIGEST-MD5 authentication schemes are supported.</string>
+       </property>
+       <property name="title">
+        <string>Credentials</string>
+       </property>
+       <property name="flat">
+        <bool>false</bool>
+       </property>
+       <property name="checked">
+        <bool>false</bool>
+       </property>
+       <layout class="QFormLayout" name="formLayout_2">
+        <item row="0" column="0">
+         <widget class="QLabel" name="m_lblUsername">
+          <property name="text">
+           <string>Username</string>
+          </property>
+          <property name="buddy">
+           <cstring>m_txtUsername</cstring>
+          </property>
+         </widget>
+        </item>
+        <item row="0" column="1">
+         <widget class="LineEditWithStatus" name="m_txtUsername" native="true"/>
+        </item>
+        <item row="1" column="0">
+         <widget class="QLabel" name="m_lblPassword">
+          <property name="text">
+           <string>Password</string>
+          </property>
+          <property name="buddy">
+           <cstring>m_txtPassword</cstring>
+          </property>
+         </widget>
+        </item>
+        <item row="1" column="1">
+         <widget class="LineEditWithStatus" name="m_txtPassword" native="true"/>
+        </item>
+       </layout>
+      </widget>
+     </item>
+    </layout>
+   </item>
   </layout>
  </widget>
  <customwidgets>
+  <customwidget>
+   <class>MultiFeedEditCheckBox</class>
+   <extends>QCheckBox</extends>
+   <header>multifeededitcheckbox.h</header>
+  </customwidget>
   <customwidget>
    <class>LineEditWithStatus</class>
    <extends>QWidget</extends>

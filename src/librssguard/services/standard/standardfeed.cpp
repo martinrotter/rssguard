@@ -78,19 +78,6 @@ StandardServiceRoot* StandardFeed::serviceRoot() const {
   return qobject_cast<StandardServiceRoot*>(getParentServiceRoot());
 }
 
-bool StandardFeed::editViaGui() {
-  QScopedPointer<FormStandardFeedDetails> form_pointer(new FormStandardFeedDetails(serviceRoot(),
-                                                                                   nullptr,
-                                                                                   {},
-                                                                                   qApp->mainFormWidget()));
-
-  if (!form_pointer->addEditFeed<StandardFeed>({this}).isEmpty()) {
-    setLastEtag({});
-  }
-
-  return false;
-}
-
 bool StandardFeed::deleteViaGui() {
   if (removeItself()) {
     serviceRoot()->requestItemRemoval(this);

@@ -9,14 +9,15 @@
 class FeedlyNetwork;
 
 class FeedlyServiceRoot : public ServiceRoot, public CacheForServiceRoot {
-  Q_OBJECT
+    Q_OBJECT
 
   public:
     explicit FeedlyServiceRoot(RootItem* parent = nullptr);
 
     virtual bool isSyncable() const;
     virtual bool canBeEdited() const;
-    virtual bool editViaGui();
+    virtual void editItemsViaGui(const QList<RootItem*>& items);
+    virtual FormAccountDetails* accountSetupDialog() const;
     virtual void start(bool freshly_activated);
     virtual QString code() const;
     virtual void saveAllCachedData(bool ignore_errors);

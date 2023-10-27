@@ -43,19 +43,6 @@ bool Label::canBeEdited() const {
   return Globals::hasFlag(getParentServiceRoot()->supportedLabelOperations(), ServiceRoot::LabelOperation::Editing);
 }
 
-bool Label::editViaGui() {
-  FormAddEditLabel form(qApp->mainFormWidget());
-
-  if (form.execForEdit(this)) {
-    QSqlDatabase db = qApp->database()->driver()->connection(metaObject()->className());
-
-    return DatabaseQueries::updateLabel(db, this);
-  }
-  else {
-    return false;
-  }
-}
-
 bool Label::canBeDeleted() const {
   return Globals::hasFlag(getParentServiceRoot()->supportedLabelOperations(), ServiceRoot::LabelOperation::Deleting);
 }

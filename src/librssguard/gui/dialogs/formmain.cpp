@@ -231,6 +231,8 @@ QList<QAction*> FormMain::allActions() const {
   actions << m_ui->m_actionExpandCollapseItem;
   actions << m_ui->m_actionExpandCollapseItemRecursively;
   actions << m_ui->m_actionMessageFilters;
+  actions << m_ui->m_actionEmptyAllRecycleBins;
+  actions << m_ui->m_actionRestoreAllRecycleBins;
   actions << m_ui->m_actionTabNewWebBrowser;
   actions << m_ui->m_actionTabsCloseCurrent;
   actions << m_ui->m_actionTabsCloseAll;
