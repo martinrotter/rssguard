@@ -117,8 +117,6 @@ set(SOURCES
   gui/reusable/colortoolbutton.h
   gui/reusable/comboboxwithstatus.cpp
   gui/reusable/comboboxwithstatus.h
-  gui/reusable/discoverfeedsbutton.cpp
-  gui/reusable/discoverfeedsbutton.h
   gui/reusable/edittableview.cpp
   gui/reusable/edittableview.h
   gui/reusable/helpspoiler.cpp
@@ -676,6 +674,7 @@ target_include_directories(rssguard
   ${CMAKE_CURRENT_SOURCE_DIR}/gui
   ${CMAKE_CURRENT_SOURCE_DIR}/gui/dialogs
   ${CMAKE_CURRENT_SOURCE_DIR}/gui/reusable
+  ${CMAKE_CURRENT_SOURCE_DIR}/services/abstract/gui
   ${CMAKE_CURRENT_SOURCE_DIR}/dynamic-shortcuts
 
   PRIVATE

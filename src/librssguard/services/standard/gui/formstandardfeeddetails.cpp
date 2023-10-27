@@ -66,17 +66,16 @@ void FormStandardFeedDetails::onTitleChanged(const QString& title) {
 void FormStandardFeedDetails::apply() {
   FormFeedDetails::apply();
 
+  RootItem* parent = m_standardFeedDetails->m_ui.m_cmbParentCategory->currentData().value<RootItem*>();
+  StandardFeed::Type type =
+    static_cast<StandardFeed::Type>(m_standardFeedDetails->m_ui.m_cmbType
+                                      ->itemData(m_standardFeedDetails->m_ui.m_cmbType->currentIndex())
+                                      .toInt());
+
   QList<StandardFeed*> fds = feeds<StandardFeed>();
 
   for (StandardFeed* std_feed : fds) {
-    RootItem* parent = m_standardFeedDetails->m_ui.m_cmbParentCategory->currentData().value<RootItem*>();
-
-    StandardFeed::Type type =
-      static_cast<StandardFeed::Type>(m_standardFeedDetails->m_ui.m_cmbType
-                                        ->itemData(m_standardFeedDetails->m_ui.m_cmbType->currentIndex())
-                                        .toInt());
-
-    // Setup data for new_feed.
+    // Setup data for the feed.
     std_feed->setTitle(m_standardFeedDetails->m_ui.m_txtTitle->lineEdit()->text().simplified());
     std_feed->setCreationDate(QDateTime::currentDateTime());
     std_feed->setDescription(m_standardFeedDetails->m_ui.m_txtDescription->lineEdit()->text());
@@ -93,6 +92,7 @@ void FormStandardFeedDetails::apply() {
     std_feed->setProtection(m_authDetails->authenticationType());
     std_feed->setUsername(m_authDetails->m_txtUsername->lineEdit()->text());
     std_feed->setPassword(m_authDetails->m_txtPassword->lineEdit()->text());
+    std_feed->setLastEtag({});
 
     QSqlDatabase database = qApp->database()->driver()->connection(metaObject()->className());
 
@@ -102,15 +102,11 @@ void FormStandardFeedDetails::apply() {
     catch (const ApplicationException& ex) {
       qFatal("Cannot save feed: '%s'.", qPrintable(ex.message()));
     }
+
+    m_serviceRoot->requestItemReassignment(std_feed, parent);
   }
 
-  auto all_feeds = feeds<RootItem>();
-
-  // TODO: for all_feeds
-  // setLastEtag({});
-
-  m_serviceRoot->requestItemsReassignment(all_feeds, parent);
-  m_serviceRoot->itemChanged(all_feeds);
+  m_serviceRoot->itemChanged(feeds<RootItem>());
 }
 
 void FormStandardFeedDetails::loadFeedData() {

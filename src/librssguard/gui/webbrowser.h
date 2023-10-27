@@ -22,7 +22,6 @@ class QLabel;
 class TabWidget;
 class WebViewer;
 class LocationLineEdit;
-class DiscoverFeedsButton;
 class SearchTextWidget;
 
 class WebBrowser : public TabContent {
@@ -91,8 +90,6 @@ class WebBrowser : public TabContent {
     SearchTextWidget* m_searchWidget;
     LocationLineEdit* m_txtLocation;
     QAction* m_txtLocationAction;
-    DiscoverFeedsButton* m_btnDiscoverFeeds;
-    QWidgetAction* m_btnDiscoverFeedsAction;
     QProgressBar* m_loadingProgress;
     QAction* m_actionBack;
     QAction* m_actionForward;

@@ -309,7 +309,7 @@ void FeedsView::editSelectedItem() {
     return;
   }
 
-  if (std_editable_items.size() < selected_items.size()) {
+  if (qsizetype(std_editable_items.size()) < selected_items.size()) {
     // Some items are not editable.
     qApp->showGuiMessage(Notification::Event::GeneralEvent,
                          {tr("Cannot edit some items"),

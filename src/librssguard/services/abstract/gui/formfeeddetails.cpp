@@ -22,8 +22,8 @@ FormFeedDetails::FormFeedDetails(ServiceRoot* service_root, QWidget* parent)
   initialize();
   createConnections();
 
-  m_ui.m_mcbAutoDownloading->addActionWidget(m_ui.m_cmbAutoUpdateType);
-  m_ui.m_mcbAutoDownloading->addActionWidget(m_ui.m_spinAutoUpdateInterval);
+  m_ui.m_mcbAutoDownloading->addActionWidget(m_ui.m_wdgAutoUpdate);
+
   m_ui.m_mcbAddAnyDateArticles->addActionWidget(m_ui.m_cbAddAnyDateArticles);
   m_ui.m_mcbOpenArticlesAutomatically->addActionWidget(m_ui.m_cbOpenArticlesAutomatically);
   m_ui.m_mcbAvoidOldArticles->addActionWidget(m_ui.m_gbAvoidOldArticles);
@@ -91,8 +91,7 @@ void FormFeedDetails::apply() {
   }
 
   if (!m_creatingNew) {
-    auto all_feeds = feeds<RootItem>();
-    m_serviceRoot->itemChanged(all_feeds);
+    m_serviceRoot->itemChanged(feeds<RootItem>());
   }
 }
 

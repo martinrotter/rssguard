@@ -130,6 +130,16 @@ StandardFeedDetails::StandardFeedDetails(QWidget* parent) : QWidget(parent) {
   onDescriptionChanged({});
   onUrlChanged({});
   onPostProcessScriptChanged({});
+
+  m_ui.m_mcbDescription->addActionWidget(m_ui.m_txtDescription);
+  m_ui.m_mcbIcon->addActionWidget(m_ui.m_btnIcon);
+  m_ui.m_mcbParentCategory->addActionWidget(m_ui.m_cmbParentCategory);
+  m_ui.m_mcbPostProcessScript->addActionWidget(m_ui.m_txtPostProcessScript);
+  m_ui.m_mcbSource->addActionWidget(m_ui.m_cmbSourceType);
+  m_ui.m_mcbSource->addActionWidget(m_ui.m_txtSource);
+  m_ui.m_mcbTitle->addActionWidget(m_ui.m_txtTitle);
+  m_ui.m_mcbTypeEncoding->addActionWidget(m_ui.m_cmbType);
+  m_ui.m_mcbTypeEncoding->addActionWidget(m_ui.m_cmbEncoding);
 }
 
 void StandardFeedDetails::guessIconOnly(StandardFeed::SourceType source_type,

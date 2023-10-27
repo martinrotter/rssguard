@@ -23,39 +23,53 @@
       <attribute name="title">
        <string>Articles</string>
       </attribute>
-      <layout class="QFormLayout" name="formLayout_3">
+      <layout class="QFormLayout" name="formLayout">
        <item row="0" column="0" colspan="2">
         <layout class="QHBoxLayout" name="horizontalLayout">
          <item>
           <widget class="MultiFeedEditCheckBox" name="m_mcbAutoDownloading"/>
          </item>
          <item>
-          <layout class="QFormLayout" name="formLayout">
-           <item row="0" column="0">
-            <widget class="QLabel" name="label_6">
-             <property name="text">
-              <string>Auto-downloading of articles</string>
-             </property>
-             <property name="buddy">
-              <cstring>m_cmbAutoUpdateType</cstring>
-             </property>
-            </widget>
-           </item>
-           <item row="0" column="1">
-            <widget class="QComboBox" name="m_cmbAutoUpdateType">
-             <property name="toolTip">
-              <string>Select the auto-download strategy for messages of this feed. Default auto-download strategy means that new messges of this feed will be downloaded in time intervals set in application settings.</string>
-             </property>
-            </widget>
-           </item>
-           <item row="1" column="1">
-            <widget class="TimeSpinBox" name="m_spinAutoUpdateInterval">
-             <property name="enabled">
-              <bool>false</bool>
-             </property>
-            </widget>
-           </item>
-          </layout>
+          <widget class="QWidget" name="m_wdgAutoUpdate" native="true">
+           <layout class="QFormLayout" name="formLayout_3">
+            <property name="leftMargin">
+             <number>0</number>
+            </property>
+            <property name="topMargin">
+             <number>0</number>
+            </property>
+            <property name="rightMargin">
+             <number>0</number>
+            </property>
+            <property name="bottomMargin">
+             <number>0</number>
+            </property>
+            <item row="0" column="0">
+             <widget class="QLabel" name="label_6">
+              <property name="text">
+               <string>Auto-downloading of articles</string>
+              </property>
+              <property name="buddy">
+               <cstring>m_cmbAutoUpdateType</cstring>
+              </property>
+             </widget>
+            </item>
+            <item row="0" column="1">
+             <widget class="QComboBox" name="m_cmbAutoUpdateType">
+              <property name="toolTip">
+               <string>Select the auto-download strategy for messages of this feed. Default auto-download strategy means that new messges of this feed will be downloaded in time intervals set in application settings.</string>
+              </property>
+             </widget>
+            </item>
+            <item row="1" column="1">
+             <widget class="TimeSpinBox" name="m_spinAutoUpdateInterval">
+              <property name="enabled">
+               <bool>false</bool>
+              </property>
+             </widget>
+            </item>
+           </layout>
+          </widget>
          </item>
         </layout>
        </item>
@@ -226,8 +240,6 @@
   </customwidget>
  </customwidgets>
  <tabstops>
-  <tabstop>m_cmbAutoUpdateType</tabstop>
-  <tabstop>m_spinAutoUpdateInterval</tabstop>
   <tabstop>m_cbOpenArticlesAutomatically</tabstop>
   <tabstop>m_cbAddAnyDateArticles</tabstop>
   <tabstop>m_gbAvoidOldArticles</tabstop>
