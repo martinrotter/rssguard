@@ -24,17 +24,17 @@
     <message>
       <location filename="../src/librssguard/network-web/adblock/adblockdialog.cpp" line="64"/>
       <source>Cannot enable AdBlock</source>
-      <translation type="unfinished">Cannot enable AdBlock</translation>
+      <translation>Tidak dapat mengaktifkan AdBlock</translation>
     </message>
     <message>
       <location filename="../src/librssguard/network-web/adblock/adblockdialog.cpp" line="65"/>
       <source>There is some error in AdBlock component and it cannot be enabled. Check error message below (or application debug log) for more information.</source>
-      <translation type="unfinished">There is some error in AdBlock component and it cannot be enabled. Check error message below (or application debug log) for more information.</translation>
+      <translation>Terdapat beberapa kesalahan dalam komponen AdBlock dan tidak dapat diaktifkan. Periksa pesan galat di bawah (atau catatan debug aplikasi) untuk informasi lebih lanjut.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/network-web/adblock/adblockdialog.cpp" line="99"/>
       <source>OK!</source>
-      <translation type="unfinished">OK!</translation>
+      <translation>OK!</translation>
     </message>
     <message>
       <location filename="../src/librssguard/network-web/adblock/adblockdialog.cpp" line="114"/>

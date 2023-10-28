@@ -406,22 +406,22 @@ versione facendo clic su questa notifica a scomparsa.</translation>
     <message>
       <location filename="../src/librssguard/database/databasecleaner.cpp" line="45"/>
       <source>Removing old articles...</source>
-      <translation type="unfinished">Removing old articles...</translation>
+      <translation>Rimozione dei vecchi articoli...</translation>
     </message>
     <message>
       <location filename="../src/librssguard/database/databasecleaner.cpp" line="50"/>
       <source>Old articles purged...</source>
-      <translation type="unfinished">Old articles purged...</translation>
+      <translation>Vecchi articoli rimossi...</translation>
     </message>
     <message>
       <location filename="../src/librssguard/database/databasecleaner.cpp" line="55"/>
       <source>Removing starred articles...</source>
-      <translation type="unfinished">Removing starred articles...</translation>
+      <translation>Rimozione degli articoli preferiti...</translation>
     </message>
     <message>
       <location filename="../src/librssguard/database/databasecleaner.cpp" line="60"/>
       <source>Starred articles purged...</source>
-      <translation type="unfinished">Starred articles purged...</translation>
+      <translation>Articoli preferiti rimossi...</translation>
     </message>
   </context>
   <context>
@@ -429,12 +429,12 @@ versione facendo clic su questa notifica a scomparsa.</translation>
     <message>
       <location filename="../src/librssguard/database/databasefactory.cpp" line="58"/>
       <source>Cannot connect to database</source>
-      <translation type="unfinished">Cannot connect to database</translation>
+      <translation>Impossibile connettersi al database</translation>
     </message>
     <message>
       <location filename="../src/librssguard/database/databasefactory.cpp" line="59"/>
       <source>Connection to your database was not established with error: &apos;%1&apos;. Falling back to SQLite.</source>
-      <translation type="unfinished">Connection to your database was not established with error: &apos;%1&apos;. Falling back to SQLite.</translation>
+      <translation>La connessione al tuo database non è stata stabilita con errore: &apos;%1&apos;. Ripiegamento su SQLite.</translation>
     </message>
   </context>
   <context>
@@ -447,7 +447,7 @@ versione facendo clic su questa notifica a scomparsa.</translation>
     <message>
       <location filename="../src/librssguard/gui/reusable/discoverfeedsbutton.cpp" line="79"/>
       <source>Feeds were detected, but no suitable accounts are configured.</source>
-      <translation type="unfinished">Feeds were detected, but no suitable accounts are configured.</translation>
+      <translation>Feed rilevati, ma non sono presenti account configurati adatti.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/reusable/discoverfeedsbutton.cpp" line="32"/>
