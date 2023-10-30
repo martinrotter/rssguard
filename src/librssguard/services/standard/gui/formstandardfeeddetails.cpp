@@ -76,34 +76,71 @@ void FormStandardFeedDetails::apply() {
 
   for (StandardFeed* std_feed : fds) {
     // Setup data for the feed.
-    std_feed->setTitle(m_standardFeedDetails->m_ui.m_txtTitle->lineEdit()->text().simplified());
+    if (isChangeAllowed(m_standardFeedDetails->m_ui.m_mcbTitle)) {
+      std_feed->setTitle(m_standardFeedDetails->m_ui.m_txtTitle->lineEdit()->text().simplified());
+    }
+
+    if (isChangeAllowed(m_standardFeedDetails->m_ui.m_mcbDescription)) {
+      std_feed->setDescription(m_standardFeedDetails->m_ui.m_txtDescription->lineEdit()->text());
+    }
+
+    if (isChangeAllowed(m_standardFeedDetails->m_ui.m_mcbIcon)) {
+      std_feed->setIcon(m_standardFeedDetails->m_ui.m_btnIcon->icon());
+    }
+
+    if (isChangeAllowed(m_standardFeedDetails->m_ui.m_mcbSource)) {
+      std_feed->setSource(m_standardFeedDetails->m_ui.m_txtSource->textEdit()->toPlainText());
+    }
+
+    if (isChangeAllowed(m_standardFeedDetails->m_ui.m_mcbSourceType)) {
+      std_feed->setSourceType(m_standardFeedDetails->sourceType());
+    }
+
+    if (isChangeAllowed(m_standardFeedDetails->m_ui.m_mcbType)) {
+      std_feed->setType(type);
+    }
+
+    if (isChangeAllowed(m_standardFeedDetails->m_ui.m_mcbEncoding)) {
+      std_feed->setEncoding(m_standardFeedDetails->m_ui.m_cmbEncoding->currentText());
+    }
+
+    if (isChangeAllowed(m_standardFeedDetails->m_ui.m_mcbPostProcessScript)) {
+      std_feed->setPostProcessScript(m_standardFeedDetails->m_ui.m_txtPostProcessScript->textEdit()->toPlainText());
+    }
+
+    if (isChangeAllowed(m_authDetails->m_mcbAuthType)) {
+      std_feed->setProtection(m_authDetails->authenticationType());
+    }
+
+    if (isChangeAllowed(m_authDetails->m_mcbAuthentication)) {
+      std_feed->setUsername(m_authDetails->m_txtUsername->lineEdit()->text());
+      std_feed->setPassword(m_authDetails->m_txtPassword->lineEdit()->text());
+    }
+
     std_feed->setCreationDate(QDateTime::currentDateTime());
-    std_feed->setDescription(m_standardFeedDetails->m_ui.m_txtDescription->lineEdit()->text());
-    std_feed->setIcon(m_standardFeedDetails->m_ui.m_btnIcon->icon());
-
-    std_feed->setSource(m_standardFeedDetails->m_ui.m_txtSource->textEdit()->toPlainText());
-    std_feed->setLastEtag({});
-
-    std_feed->setEncoding(m_standardFeedDetails->m_ui.m_cmbEncoding->currentText());
-    std_feed->setType(type);
-    std_feed->setSourceType(m_standardFeedDetails->sourceType());
-    std_feed->setPostProcessScript(m_standardFeedDetails->m_ui.m_txtPostProcessScript->textEdit()->toPlainText());
-
-    std_feed->setProtection(m_authDetails->authenticationType());
-    std_feed->setUsername(m_authDetails->m_txtUsername->lineEdit()->text());
-    std_feed->setPassword(m_authDetails->m_txtPassword->lineEdit()->text());
     std_feed->setLastEtag({});
 
     QSqlDatabase database = qApp->database()->driver()->connection(metaObject()->className());
 
+    int new_parent_id;
+
+    if (isChangeAllowed(m_standardFeedDetails->m_ui.m_mcbParentCategory)) {
+      new_parent_id = parent->id();
+    }
+    else {
+      new_parent_id = std_feed->parent()->id();
+    }
+
     try {
-      DatabaseQueries::createOverwriteFeed(database, std_feed, m_serviceRoot->accountId(), parent->id());
+      DatabaseQueries::createOverwriteFeed(database, std_feed, m_serviceRoot->accountId(), new_parent_id);
     }
     catch (const ApplicationException& ex) {
       qFatal("Cannot save feed: '%s'.", qPrintable(ex.message()));
     }
 
-    m_serviceRoot->requestItemReassignment(std_feed, parent);
+    if (isChangeAllowed(m_standardFeedDetails->m_ui.m_mcbParentCategory)) {
+      m_serviceRoot->requestItemReassignment(std_feed, parent);
+    }
   }
 
   m_serviceRoot->itemChanged(feeds<RootItem>());
@@ -119,11 +156,11 @@ void FormStandardFeedDetails::loadFeedData() {
     m_standardFeedDetails->m_ui.m_mcbParentCategory->addActionWidget(m_standardFeedDetails->m_ui.m_cmbParentCategory);
     m_standardFeedDetails->m_ui.m_mcbPostProcessScript
       ->addActionWidget(m_standardFeedDetails->m_ui.m_txtPostProcessScript);
-    m_standardFeedDetails->m_ui.m_mcbSource->addActionWidget(m_standardFeedDetails->m_ui.m_cmbSourceType);
+    m_standardFeedDetails->m_ui.m_mcbSourceType->addActionWidget(m_standardFeedDetails->m_ui.m_cmbSourceType);
     m_standardFeedDetails->m_ui.m_mcbSource->addActionWidget(m_standardFeedDetails->m_ui.m_txtSource);
     m_standardFeedDetails->m_ui.m_mcbTitle->addActionWidget(m_standardFeedDetails->m_ui.m_txtTitle);
-    m_standardFeedDetails->m_ui.m_mcbTypeEncoding->addActionWidget(m_standardFeedDetails->m_ui.m_cmbType);
-    m_standardFeedDetails->m_ui.m_mcbTypeEncoding->addActionWidget(m_standardFeedDetails->m_ui.m_cmbEncoding);
+    m_standardFeedDetails->m_ui.m_mcbType->addActionWidget(m_standardFeedDetails->m_ui.m_cmbType);
+    m_standardFeedDetails->m_ui.m_mcbEncoding->addActionWidget(m_standardFeedDetails->m_ui.m_cmbEncoding);
 
     m_authDetails->m_mcbAuthType->addActionWidget(m_authDetails->m_cbAuthType);
     m_authDetails->m_mcbAuthentication->addActionWidget(m_authDetails->m_gbAuthentication);

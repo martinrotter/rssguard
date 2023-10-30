@@ -50,7 +50,7 @@
    <item row="1" column="0">
     <layout class="QHBoxLayout" name="horizontalLayout_4">
      <item>
-      <widget class="MultiFeedEditCheckBox" name="m_mcbTypeEncoding"/>
+      <widget class="MultiFeedEditCheckBox" name="m_mcbType"/>
      </item>
      <item>
       <widget class="QLabel" name="label_3">
@@ -72,6 +72,9 @@
         <string>Select type of the standard feed.</string>
        </property>
       </widget>
+     </item>
+     <item>
+      <widget class="MultiFeedEditCheckBox" name="m_mcbEncoding"/>
      </item>
      <item>
       <widget class="QComboBox" name="m_cmbEncoding">
@@ -125,7 +128,7 @@
    <item row="4" column="0">
     <layout class="QHBoxLayout" name="horizontalLayout_7">
      <item>
-      <widget class="MultiFeedEditCheckBox" name="m_mcbSource"/>
+      <widget class="MultiFeedEditCheckBox" name="m_mcbSourceType"/>
      </item>
      <item>
       <widget class="QLabel" name="label">
@@ -142,7 +145,7 @@
    <item row="4" column="1">
     <widget class="QComboBox" name="m_cmbSourceType"/>
    </item>
-   <item row="5" column="0" colspan="2">
+   <item row="5" column="1">
     <widget class="TextEditWithStatus" name="m_txtSource" native="true">
      <property name="minimumSize">
       <size>
@@ -195,14 +198,14 @@
     <widget class="HelpSpoiler" name="m_lblScriptInfo" native="true"/>
    </item>
    <item row="9" column="0">
-   <widget class="QLabel" name="label_7">
-    <property name="text">
-     <string>Fetch metadata</string>
-    </property>
-    <property name="buddy">
-     <cstring>m_btnFetchMetadata</cstring>
-    </property>
-   </widget>
+    <widget class="QLabel" name="label_7">
+     <property name="text">
+      <string>Fetch metadata</string>
+     </property>
+     <property name="buddy">
+      <cstring>m_btnFetchMetadata</cstring>
+     </property>
+    </widget>
    </item>
    <item row="9" column="1">
     <layout class="QHBoxLayout" name="horizontalLayout_2">
@@ -294,6 +297,9 @@
       </size>
      </property>
     </spacer>
+   </item>
+   <item row="5" column="0">
+    <widget class="MultiFeedEditCheckBox" name="m_mcbSource"/>
    </item>
   </layout>
  </widget>
