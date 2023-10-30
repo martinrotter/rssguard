@@ -436,8 +436,31 @@ void FeedsView::deleteSelectedItem() {
 }
 
 void FeedsView::moveSelectedItemUp() {
-  for (RootItem* it : selectedItems()) {
+  auto its = selectedItems();
+  auto std_its = boolinq::from(its)
+                   .orderBy([](RootItem* it) {
+                     return it->sortOrder();
+                   })
+                   .toStdList();
+
+  for (RootItem* it : std_its) {
     m_sourceModel->changeSortOrder(it, false, false, it->sortOrder() - 1);
+  }
+
+  m_proxyModel->invalidate();
+}
+
+void FeedsView::moveSelectedItemDown() {
+  auto its = selectedItems();
+  auto std_its = boolinq::from(its)
+                   .orderBy([](RootItem* it) {
+                     return it->sortOrder();
+                   })
+                   .reverse()
+                   .toStdList();
+
+  for (RootItem* it : std_its) {
+    m_sourceModel->changeSortOrder(it, false, false, it->sortOrder() + 1);
   }
 
   m_proxyModel->invalidate();
@@ -454,14 +477,6 @@ void FeedsView::moveSelectedItemTop() {
 void FeedsView::moveSelectedItemBottom() {
   for (RootItem* it : selectedItems()) {
     m_sourceModel->changeSortOrder(it, false, true);
-  }
-
-  m_proxyModel->invalidate();
-}
-
-void FeedsView::moveSelectedItemDown() {
-  for (RootItem* it : selectedItems()) {
-    m_sourceModel->changeSortOrder(it, false, false, it->sortOrder() + 1);
   }
 
   m_proxyModel->invalidate();
