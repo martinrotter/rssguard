@@ -7,6 +7,9 @@
 
 #include <QDialog>
 
+#include "3rd-party/boolinq/boolinq.h"
+#include "definitions/definitions.h"
+
 namespace Ui {
   class FormCategoryDetails;
 }
@@ -17,21 +20,29 @@ class FeedsModel;
 class RootItem;
 class QMenu;
 class QAction;
+class MultiFeedEditCheckBox;
 
 class FormCategoryDetails : public QDialog {
-  Q_OBJECT
+    Q_OBJECT
 
   public:
-    explicit FormCategoryDetails(ServiceRoot* service_root, RootItem* parent_to_select = nullptr, QWidget* parent = nullptr);
+    explicit FormCategoryDetails(ServiceRoot* service_root,
+                                 RootItem* parent_to_select = nullptr,
+                                 QWidget* parent = nullptr);
     virtual ~FormCategoryDetails();
 
-    template<class T>
-    T* addEditCategory(T* category_to_edit = nullptr);
+    template <class T>
+    QList<T*> addEditCategory(const QList<Category*>& cats_to_edit = {});
 
-    template<class T>
+    template <class T>
     T* category() const;
 
+    // Returns all cats.
+    template <class T>
+    QList<T*> categories() const;
+
   protected:
+    bool isChangeAllowed(MultiFeedEditCheckBox* mcb) const;
     virtual void loadCategoryData();
 
   protected slots:
@@ -58,39 +69,52 @@ class FormCategoryDetails : public QDialog {
 
   private:
     QScopedPointer<Ui::FormCategoryDetails> m_ui;
-    Category* m_category;
+    QList<Category*> m_categories;
     ServiceRoot* m_serviceRoot;
     QMenu* m_iconMenu{};
     QAction* m_actionLoadIconFromFile{};
     QAction* m_actionUseDefaultIcon{};
     RootItem* m_parentToSelect;
     bool m_creatingNew;
+    bool m_isBatchEdit;
 };
 
-template<class T>
-inline T* FormCategoryDetails::addEditCategory(T* category_to_edit) {
-  m_creatingNew = category_to_edit == nullptr;
+template <class T>
+inline QList<T*> FormCategoryDetails::addEditCategory(const QList<Category*>& cats_to_edit) {
+  m_creatingNew = cats_to_edit.isEmpty();
+  m_isBatchEdit = cats_to_edit.size() > 1;
 
   if (m_creatingNew) {
-    m_category = new T();
+    m_categories.append(new T());
   }
   else {
-    m_category = category_to_edit;
+    m_categories.append(cats_to_edit);
   }
 
   loadCategoryData();
 
   if (exec() == QDialog::DialogCode::Accepted) {
-    return category<T>();
+    return categories<T>();
   }
   else {
-    return nullptr;
+    return {};
   }
 }
 
-template<class T>
+template <class T>
 inline T* FormCategoryDetails::category() const {
-  return qobject_cast<T*>(m_category);
+  return qobject_cast<T*>(m_categories.first());
+}
+
+template <class T>
+inline QList<T*> FormCategoryDetails::categories() const {
+  std::list<T*> std_cats = boolinq::from(m_categories)
+                             .select([](Category* fd) {
+                               return qobject_cast<T*>(fd);
+                             })
+                             .toStdList();
+
+  return FROM_STD_LIST(QList<T*>, std_cats);
 }
 
 #endif // FORMCATEGORYDETAILS_H

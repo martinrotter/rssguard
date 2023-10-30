@@ -83,7 +83,6 @@ inline QList<T*> FormFeedDetails::addEditFeed(const QList<Feed*>& feeds_to_edit)
     m_feeds.append(feeds_to_edit);
   }
 
-  // Load custom logic for feed data loading.
   loadFeedData();
 
   if (exec() == QDialog::DialogCode::Accepted) {

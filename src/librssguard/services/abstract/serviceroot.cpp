@@ -80,8 +80,7 @@ void ServiceRoot::editItemsViaGui(const QList<RootItem*>& items) {
   if (!std_categories.empty()) {
     QScopedPointer<FormCategoryDetails> form_pointer(new FormCategoryDetails(this, nullptr, qApp->mainFormWidget()));
 
-    // TODO: todo
-    // form_pointer->addEditCategory<Feed>(FROM_STD_LIST(QList<Feed*>, std_feeds));
+    form_pointer->addEditCategory<Category>(FROM_STD_LIST(QList<Category*>, std_categories));
     return;
   }
 

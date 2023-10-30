@@ -66,6 +66,7 @@ void FormStandardFeedDetails::onTitleChanged(const QString& title) {
 void FormStandardFeedDetails::apply() {
   FormFeedDetails::apply();
 
+  QSqlDatabase database = qApp->database()->driver()->connection(metaObject()->className());
   RootItem* parent = m_standardFeedDetails->m_ui.m_cmbParentCategory->currentData().value<RootItem*>();
   StandardFeed::Type type =
     static_cast<StandardFeed::Type>(m_standardFeedDetails->m_ui.m_cmbType
@@ -119,8 +120,6 @@ void FormStandardFeedDetails::apply() {
 
     std_feed->setCreationDate(QDateTime::currentDateTime());
     std_feed->setLastEtag({});
-
-    QSqlDatabase database = qApp->database()->driver()->connection(metaObject()->className());
 
     int new_parent_id;
 

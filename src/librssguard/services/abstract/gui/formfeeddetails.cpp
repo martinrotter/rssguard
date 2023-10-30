@@ -142,7 +142,7 @@ void FormFeedDetails::loadFeedData() {
                                         tr("Add new feed"));
   }
   else {
-    if (m_feeds.size() == 1) {
+    if (!m_isBatchEdit) {
       GuiUtilities::applyDialogProperties(*this, fd->fullIcon(), tr("Edit \"%1\"").arg(fd->title()));
     }
     else {

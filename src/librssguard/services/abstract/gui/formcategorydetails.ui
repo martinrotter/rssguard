@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>397</width>
-    <height>209</height>
+    <width>455</width>
+    <height>262</height>
    </rect>
   </property>
   <property name="minimumSize">
@@ -19,13 +19,13 @@
   <property name="windowTitle">
    <string notr="true"/>
   </property>
-  <layout class="QVBoxLayout" name="verticalLayout">
-   <item>
-    <layout class="QFormLayout" name="formLayout">
-     <property name="fieldGrowthPolicy">
-      <enum>QFormLayout::AllNonFixedFieldsGrow</enum>
-     </property>
-     <item row="0" column="0">
+  <layout class="QFormLayout" name="formLayout">
+   <item row="0" column="0">
+    <layout class="QHBoxLayout" name="horizontalLayout">
+     <item>
+      <widget class="MultiFeedEditCheckBox" name="m_mcbParent"/>
+     </item>
+     <item>
       <widget class="QLabel" name="m_lblParentCategory">
        <property name="text">
         <string>Parent folder</string>
@@ -35,20 +35,27 @@
        </property>
       </widget>
      </item>
-     <item row="0" column="1">
-      <widget class="QComboBox" name="m_cmbParentCategory">
-       <property name="toolTip">
-        <string>Select parent item for your category.</string>
-       </property>
-       <property name="iconSize">
-        <size>
-         <width>13</width>
-         <height>12</height>
-        </size>
-       </property>
-      </widget>
+    </layout>
+   </item>
+   <item row="0" column="1">
+    <widget class="QComboBox" name="m_cmbParentCategory">
+     <property name="toolTip">
+      <string>Select parent item for your category.</string>
+     </property>
+     <property name="iconSize">
+      <size>
+       <width>13</width>
+       <height>12</height>
+      </size>
+     </property>
+    </widget>
+   </item>
+   <item row="1" column="0">
+    <layout class="QHBoxLayout" name="horizontalLayout_2">
+     <item>
+      <widget class="MultiFeedEditCheckBox" name="m_mcbTitle"/>
      </item>
-     <item row="1" column="0">
+     <item>
       <widget class="QLabel" name="m_lblTitle">
        <property name="text">
         <string>Title</string>
@@ -58,7 +65,17 @@
        </property>
       </widget>
      </item>
-     <item row="2" column="0">
+    </layout>
+   </item>
+   <item row="1" column="1">
+    <widget class="LineEditWithStatus" name="m_txtTitle" native="true"/>
+   </item>
+   <item row="2" column="0">
+    <layout class="QHBoxLayout" name="horizontalLayout_3">
+     <item>
+      <widget class="MultiFeedEditCheckBox" name="m_mcbDescription"/>
+     </item>
+     <item>
       <widget class="QLabel" name="m_lblDescription">
        <property name="text">
         <string>Description</string>
@@ -68,7 +85,17 @@
        </property>
       </widget>
      </item>
-     <item row="3" column="0">
+    </layout>
+   </item>
+   <item row="2" column="1">
+    <widget class="LineEditWithStatus" name="m_txtDescription" native="true"/>
+   </item>
+   <item row="3" column="0">
+    <layout class="QHBoxLayout" name="horizontalLayout_4">
+     <item>
+      <widget class="MultiFeedEditCheckBox" name="m_mcbIcon"/>
+     </item>
+     <item>
       <widget class="QLabel" name="m_lblIcon">
        <property name="text">
         <string>Icon</string>
@@ -78,52 +105,46 @@
        </property>
       </widget>
      </item>
-     <item row="3" column="1">
-      <widget class="QToolButton" name="m_btnIcon">
-       <property name="sizePolicy">
-        <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
-         <horstretch>0</horstretch>
-         <verstretch>0</verstretch>
-        </sizepolicy>
-       </property>
-       <property name="minimumSize">
-        <size>
-         <width>40</width>
-         <height>40</height>
-        </size>
-       </property>
-       <property name="toolTip">
-        <string>Select icon for your category.</string>
-       </property>
-       <property name="text">
-        <string notr="true"/>
-       </property>
-       <property name="iconSize">
-        <size>
-         <width>20</width>
-         <height>20</height>
-        </size>
-       </property>
-       <property name="popupMode">
-        <enum>QToolButton::InstantPopup</enum>
-       </property>
-       <property name="autoRaise">
-        <bool>false</bool>
-       </property>
-       <property name="arrowType">
-        <enum>Qt::NoArrow</enum>
-       </property>
-      </widget>
-     </item>
-     <item row="1" column="1">
-      <widget class="LineEditWithStatus" name="m_txtTitle" native="true"/>
-     </item>
-     <item row="2" column="1">
-      <widget class="LineEditWithStatus" name="m_txtDescription" native="true"/>
-     </item>
     </layout>
    </item>
-   <item>
+   <item row="3" column="1">
+    <widget class="QToolButton" name="m_btnIcon">
+     <property name="sizePolicy">
+      <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+       <horstretch>0</horstretch>
+       <verstretch>0</verstretch>
+      </sizepolicy>
+     </property>
+     <property name="minimumSize">
+      <size>
+       <width>40</width>
+       <height>40</height>
+      </size>
+     </property>
+     <property name="toolTip">
+      <string>Select icon for your category.</string>
+     </property>
+     <property name="text">
+      <string notr="true"/>
+     </property>
+     <property name="iconSize">
+      <size>
+       <width>20</width>
+       <height>20</height>
+      </size>
+     </property>
+     <property name="popupMode">
+      <enum>QToolButton::InstantPopup</enum>
+     </property>
+     <property name="autoRaise">
+      <bool>false</bool>
+     </property>
+     <property name="arrowType">
+      <enum>Qt::NoArrow</enum>
+     </property>
+    </widget>
+   </item>
+   <item row="5" column="0" colspan="2">
     <widget class="QDialogButtonBox" name="m_buttonBox">
      <property name="orientation">
       <enum>Qt::Horizontal</enum>
@@ -133,9 +154,27 @@
      </property>
     </widget>
    </item>
+   <item row="4" column="0" colspan="2">
+    <spacer name="verticalSpacer">
+     <property name="orientation">
+      <enum>Qt::Vertical</enum>
+     </property>
+     <property name="sizeHint" stdset="0">
+      <size>
+       <width>20</width>
+       <height>40</height>
+      </size>
+     </property>
+    </spacer>
+   </item>
   </layout>
  </widget>
  <customwidgets>
+  <customwidget>
+   <class>MultiFeedEditCheckBox</class>
+   <extends>QCheckBox</extends>
+   <header>multifeededitcheckbox.h</header>
+  </customwidget>
   <customwidget>
    <class>LineEditWithStatus</class>
    <extends>QWidget</extends>
@@ -157,8 +196,8 @@
    <slot>reject()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>325</x>
-     <y>170</y>
+     <x>340</x>
+     <y>353</y>
     </hint>
     <hint type="destinationlabel">
      <x>286</x>
