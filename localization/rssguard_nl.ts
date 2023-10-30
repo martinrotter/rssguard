@@ -1141,12 +1141,12 @@ Onderdeel ID: %5</translation>
       <location filename="../src/librssguard/gui/feedsview.cpp" line="298"/>
       <location filename="../src/librssguard/gui/feedsview.cpp" line="315"/>
       <source>Cannot edit items</source>
-      <translation type="unfinished">Cannot edit items</translation>
+      <translation>Kan items niet bewerken</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/feedsview.cpp" line="271"/>
       <source>Selected items cannot be edited. This is not supported (yet).</source>
-      <translation type="unfinished">Selected items cannot be edited. This is not supported (yet).</translation>
+      <translation>Geselecteerde items kunnen niet worden bewerkt. Dit wordt (nog) niet ondersteund.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/feedsview.cpp" line="281"/>
