@@ -126,6 +126,8 @@
     <addaction name="separator"/>
     <addaction name="m_menuAddItem"/>
     <addaction name="m_actionEditSelectedItem"/>
+    <addaction name="m_actionEditChildFeeds"/>
+    <addaction name="m_actionEditChildFeedsRecursive"/>
     <addaction name="m_actionDeleteSelectedItem"/>
     <addaction name="separator"/>
     <addaction name="m_actionSortFeedsAlphabetically"/>
@@ -297,10 +299,7 @@
   </action>
   <action name="m_actionEditSelectedItem">
    <property name="text">
-    <string>&amp;Edit selected item</string>
-   </property>
-   <property name="shortcut">
-    <string notr="true"/>
+    <string>&amp;Edit selected items</string>
    </property>
   </action>
   <action name="m_actionDeleteSelectedItem">
@@ -946,6 +945,16 @@
    </property>
    <property name="toolTip">
     <string>You must add new account first.</string>
+   </property>
+  </action>
+  <action name="m_actionEditChildFeeds">
+   <property name="text">
+    <string>Edit &amp;child feeds</string>
+   </property>
+  </action>
+  <action name="m_actionEditChildFeedsRecursive">
+   <property name="text">
+    <string>Edit child feeds (&amp;recursive)</string>
    </property>
   </action>
  </widget>

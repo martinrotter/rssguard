@@ -207,6 +207,8 @@ QList<QAction*> FormMain::allActions() const {
   actions << m_ui->m_actionUpdateSelectedItemsWithCustomTimers;
   actions << m_ui->m_actionStopRunningItemsUpdate;
   actions << m_ui->m_actionEditSelectedItem;
+  actions << m_ui->m_actionEditChildFeeds;
+  actions << m_ui->m_actionEditChildFeedsRecursive;
   actions << m_ui->m_actionCopyUrlSelectedFeed;
   actions << m_ui->m_actionCopyUrlSelectedArticles;
   actions << m_ui->m_actionFocusSearchFeeds;
@@ -489,6 +491,9 @@ void FormMain::updateFeedButtonsAvailability() {
   m_ui->m_actionClearSelectedItems->setEnabled(anything_selected);
   m_ui->m_actionDeleteSelectedItem->setEnabled(!critical_action_running && anything_selected);
   m_ui->m_actionEditSelectedItem->setEnabled(!critical_action_running && anything_selected);
+  m_ui->m_actionEditChildFeeds->setEnabled(!critical_action_running && (service_selected || category_selected));
+  m_ui->m_actionEditChildFeedsRecursive->setEnabled(!critical_action_running &&
+                                                    (service_selected || category_selected));
   m_ui->m_actionCopyUrlSelectedFeed->setEnabled(service_selected || feed_selected || category_selected);
   m_ui->m_actionMarkSelectedItemsAsRead->setEnabled(anything_selected);
   m_ui->m_actionMarkSelectedItemsAsUnread->setEnabled(anything_selected);
@@ -593,6 +598,8 @@ void FormMain::setupIcons() {
   m_ui->m_actionDeleteSelectedItem->setIcon(icon_theme_factory->fromTheme(QSL("list-remove")));
   m_ui->m_actionDeleteSelectedMessages->setIcon(icon_theme_factory->fromTheme(QSL("mail-mark-junk")));
   m_ui->m_actionEditSelectedItem->setIcon(icon_theme_factory->fromTheme(QSL("document-edit")));
+  m_ui->m_actionEditChildFeeds->setIcon(icon_theme_factory->fromTheme(QSL("document-edit")));
+  m_ui->m_actionEditChildFeedsRecursive->setIcon(icon_theme_factory->fromTheme(QSL("document-edit")));
   m_ui->m_actionCopyUrlSelectedFeed->setIcon(icon_theme_factory->fromTheme(QSL("edit-copy")));
   m_ui->m_actionCopyUrlSelectedArticles->setIcon(icon_theme_factory->fromTheme(QSL("edit-copy")));
   m_ui->m_actionMarkAllItemsRead->setIcon(icon_theme_factory->fromTheme(QSL("mail-mark-read")));
@@ -931,7 +938,15 @@ void FormMain::createConnections() {
   connect(m_ui->m_actionEditSelectedItem,
           &QAction::triggered,
           tabWidget()->feedMessageViewer()->feedsView(),
-          &FeedsView::editSelectedItem);
+          &FeedsView::editSelectedItems);
+  connect(m_ui->m_actionEditChildFeeds,
+          &QAction::triggered,
+          tabWidget()->feedMessageViewer()->feedsView(),
+          &FeedsView::editChildFeeds);
+  connect(m_ui->m_actionEditChildFeedsRecursive,
+          &QAction::triggered,
+          tabWidget()->feedMessageViewer()->feedsView(),
+          &FeedsView::editRecursiveFeeds);
   connect(m_ui->m_actionViewSelectedItemsNewspaperMode,
           &QAction::triggered,
           tabWidget()->feedMessageViewer()->feedsView(),

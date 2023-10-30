@@ -238,7 +238,7 @@ void FeedsView::clearAllFeeds() {
   m_sourceModel->markItemCleared(m_sourceModel->rootItem(), false, true);
 }
 
-void FeedsView::editSelectedItem() {
+void FeedsView::editItems(const QList<RootItem*>& items) {
   if (!qApp->feedUpdateLock()->tryLock()) {
     // Lock was not obtained because
     // it is used probably by feed updater or application
@@ -252,14 +252,12 @@ void FeedsView::editSelectedItem() {
     return;
   }
 
-  auto selected_items = selectedItems();
-
-  if (selected_items.isEmpty()) {
+  if (items.isEmpty()) {
     qApp->feedUpdateLock()->unlock();
     return;
   }
 
-  auto std_editable_items = boolinq::from(selected_items)
+  auto std_editable_items = boolinq::from(items)
                               .where([](RootItem* it) {
                                 return it->canBeEdited();
                               })
@@ -320,7 +318,7 @@ void FeedsView::editSelectedItem() {
     return;
   }
 
-  if (qsizetype(std_editable_items.size()) < selected_items.size()) {
+  if (qsizetype(std_editable_items.size()) < items.size()) {
     // Some items are not editable.
     qApp->showGuiMessage(Notification::Event::GeneralEvent,
                          {tr("Cannot edit some items"),
@@ -332,10 +330,33 @@ void FeedsView::editSelectedItem() {
 
   // Changes are done, unlock the update master lock.
   qApp->feedUpdateLock()->unlock();
+}
 
-  // TODO: NOTE: Make sure to refresh article list if RTL is changed?
-  // RootItem* selected_item = selectedItem();
-  // emit itemSelected(selected_item);
+void FeedsView::editChildFeeds() {
+  auto* item = selectedItem();
+
+  if (item != nullptr) {
+    auto children = item->childItems();
+    auto std_feeds = boolinq::from(children)
+                       .where([](RootItem* ch) {
+                         return ch->kind() == RootItem::Kind::Feed;
+                       })
+                       .toStdList();
+
+    editItems(FROM_STD_LIST(QList<RootItem*>, std_feeds));
+  }
+}
+
+void FeedsView::editRecursiveFeeds() {
+  auto* item = selectedItem();
+
+  if (item != nullptr) {
+    editItems(item->getSubTree(RootItem::Kind::Feed));
+  }
+}
+
+void FeedsView::editSelectedItems() {
+  editItems(selectedItems());
 }
 
 void FeedsView::deleteSelectedItem() {
@@ -579,6 +600,8 @@ QMenu* FeedsView::initializeContextMenuService(RootItem* clicked_item) {
 
   m_contextMenuService->addActions({qApp->mainForm()->m_ui->m_actionUpdateSelectedItems,
                                     qApp->mainForm()->m_ui->m_actionEditSelectedItem,
+                                    qApp->mainForm()->m_ui->m_actionEditChildFeeds,
+                                    qApp->mainForm()->m_ui->m_actionEditChildFeedsRecursive,
                                     qApp->mainForm()->m_ui->m_actionCopyUrlSelectedFeed,
                                     qApp->mainForm()->m_ui->m_actionViewSelectedItemsNewspaperMode,
                                     qApp->mainForm()->m_ui->m_actionExpandCollapseItem,
@@ -803,6 +826,8 @@ QMenu* FeedsView::initializeContextMenuCategories(RootItem* clicked_item) {
 
   m_contextMenuCategories->addActions({qApp->mainForm()->m_ui->m_actionUpdateSelectedItems,
                                        qApp->mainForm()->m_ui->m_actionEditSelectedItem,
+                                       qApp->mainForm()->m_ui->m_actionEditChildFeeds,
+                                       qApp->mainForm()->m_ui->m_actionEditChildFeedsRecursive,
                                        qApp->mainForm()->m_ui->m_actionCopyUrlSelectedFeed,
                                        qApp->mainForm()->m_ui->m_actionViewSelectedItemsNewspaperMode,
                                        qApp->mainForm()->m_ui->m_actionExpandCollapseItem,

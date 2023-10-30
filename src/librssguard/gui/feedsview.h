@@ -66,7 +66,10 @@ class RSSGUARD_DLLSPEC FeedsView : public BaseTreeView {
     void clearAllFeeds();
 
     // Base manipulators.
-    void editSelectedItem();
+    void editItems(const QList<RootItem*>& items);
+    void editSelectedItems();
+    void editChildFeeds();
+    void editRecursiveFeeds();
     void deleteSelectedItem();
 
     // Sort order manipulations.
