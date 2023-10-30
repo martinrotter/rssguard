@@ -2207,7 +2207,7 @@ QtWebEngine cache folder -&gt; &quot;%7&quot;</source>
     </message>
     <message>
         <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="370"/>
-        <source>&amp;delete article/s</source>
+        <source>&amp;Delete article/s</source>
         <translation type="unfinished"></translation>
     </message>
     <message>

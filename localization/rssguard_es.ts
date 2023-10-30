@@ -2217,7 +2217,7 @@ Archivo de QtWebEngine memoria -&gt; &quot;%7&quot;</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="371"/>
-      <source>&amp;delete article/s</source>
+      <source>&amp;Delete article/s</source>
       <translation>&amp;Eliminar artículos</translation>
     </message>
     <message>
