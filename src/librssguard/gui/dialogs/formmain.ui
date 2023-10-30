@@ -304,7 +304,7 @@
   </action>
   <action name="m_actionDeleteSelectedItem">
    <property name="text">
-    <string>&amp;Delete selected item</string>
+    <string>&amp;Delete selected items</string>
    </property>
    <property name="shortcut">
     <string notr="true"/>
@@ -345,7 +345,7 @@
   </action>
   <action name="m_actionMarkSelectedItemsAsRead">
    <property name="text">
-    <string>Mark selected item &amp;read</string>
+    <string>Mark selected items &amp;read</string>
    </property>
    <property name="toolTip">
     <string>Mark all messages (without message filters) from selected items as read.</string>
@@ -356,7 +356,7 @@
   </action>
   <action name="m_actionMarkSelectedItemsAsUnread">
    <property name="text">
-    <string>Mark selected item &amp;unread</string>
+    <string>Mark selected items &amp;unread</string>
    </property>
    <property name="toolTip">
     <string>Mark all messages (without message filters) from selected items as unread.</string>
@@ -375,7 +375,7 @@
   </action>
   <action name="m_actionClearSelectedItems">
    <property name="text">
-    <string>&amp;Clean selected item</string>
+    <string>&amp;Clean selected items</string>
    </property>
    <property name="toolTip">
     <string>Deletes all messages from selected items.</string>
