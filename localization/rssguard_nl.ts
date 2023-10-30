@@ -2216,7 +2216,7 @@ QtWebEngine cache map -&gt; &quot;%7&quot;</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="371"/>
-      <source>&amp;Delete articles</source>
+      <source>&amp;delete article/s</source>
       <translation>&amp;Verwijder artikelen</translation>
     </message>
     <message>

@@ -367,7 +367,7 @@
   </action>
   <action name="m_actionDeleteSelectedMessages">
    <property name="text">
-    <string>&amp;Delete articles</string>
+    <string>&amp;delete article/s</string>
    </property>
    <property name="shortcut">
     <string notr="true"/>
