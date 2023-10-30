@@ -1,3 +1,20 @@
+4.5.2
+-----
+
+Added:
+* Added new "Discover feeds" dialog which is automatically opened when user hits "Add new feed" button. In this dialog, use does not have to input exact feed address but can enter just regular website address and RSS Guard will try to discover all available feeds possible. (#1134)
+* ATOM/RSS/JSON/Sitemap feeds now automatically use "ETag" HTTP headers which has potential speedup when fetching feeds with no new messages. This can bring 10-80 % speedup if user uses more feeds which do support "ETag". (#1136)
+* Support for Sitemap "sitemap.xml" files is added! Vast majority of websites have sitemaps and RSS Guard now can read them in the same way it does with RSS/ATOM formats. "Discover feeds" dialog has Sitemaps support integrated and it even is able to traverse sitemap indexes. GZipped sitemaps are supported too. (#1129)
+* Added multiple/extended selection to feeds list! Now it is possible to select multiple items at once (feeds, categories, etc.) and perform batch actions on them - batch editing, deleting, marking read/unread, re-sorting - when some feeds are selected it is now in "Edit selected items" dialog possible to batch change only some properties in a very clean and universal way. (#1010, #89)
+* Localizations updated.
+* Documentation updated.
+* Arguments parsing is now totally overhauled. It is now possible to use both double and single quotes to quote arguments. Read "Scraping Websites" chapter in [docs](https://rssguard.readthedocs.io/en/latest/features/scraping.html#scraping-websites) to know more.
+* Local files can now be used directly as sources for feeds, just select "Local file" in add/edit feed dialog.
+
+Fixed:
+* Fixed OPML import/export when some feeds use custom script as source. (#1133)
+* RSS/ATOM parsing is now greatly enhanced.
+
 4.5.1
 -----
 
