@@ -14,6 +14,11 @@
 #include "services/abstract/category.h"
 #include "services/abstract/feed.h"
 #include "services/abstract/gui/custommessagepreviewer.h"
+#include "services/abstract/gui/formaccountdetails.h"
+#include "services/abstract/gui/formaddeditlabel.h"
+#include "services/abstract/gui/formaddeditprobe.h"
+#include "services/abstract/gui/formcategorydetails.h"
+#include "services/abstract/gui/formfeeddetails.h"
 #include "services/abstract/importantnode.h"
 #include "services/abstract/labelsnode.h"
 #include "services/abstract/recyclebin.h"
@@ -42,6 +47,95 @@ bool ServiceRoot::deleteViaGui() {
   else {
     return false;
   }
+}
+
+void ServiceRoot::editItemsViaGui(const QList<RootItem*>& items) {
+  // Feed editing.
+  auto std_feeds = boolinq::from(items)
+                     .select([](RootItem* it) {
+                       return qobject_cast<Feed*>(it);
+                     })
+                     .where([](Feed* fd) {
+                       return fd != nullptr;
+                     })
+                     .toStdList();
+
+  if (!std_feeds.empty()) {
+    QScopedPointer<FormFeedDetails> form_pointer(new FormFeedDetails(this, qApp->mainFormWidget()));
+
+    form_pointer->addEditFeed<Feed>(FROM_STD_LIST(QList<Feed*>, std_feeds));
+    return;
+  }
+
+  // Category editing.
+  auto std_categories = boolinq::from(items)
+                          .select([](RootItem* it) {
+                            return qobject_cast<Category*>(it);
+                          })
+                          .where([](Category* fd) {
+                            return fd != nullptr;
+                          })
+                          .toStdList();
+
+  if (!std_categories.empty()) {
+    QScopedPointer<FormCategoryDetails> form_pointer(new FormCategoryDetails(this, nullptr, qApp->mainFormWidget()));
+
+    form_pointer->addEditCategory<Category>(FROM_STD_LIST(QList<Category*>, std_categories));
+    return;
+  }
+
+  // Label editing.
+  auto std_labels = boolinq::from(items)
+                      .select([](RootItem* it) {
+                        return qobject_cast<Label*>(it);
+                      })
+                      .where([](Label* fd) {
+                        return fd != nullptr;
+                      })
+                      .toStdList();
+
+  if (std_labels.size() == 1) {
+    // Support editing labels one by one.
+    FormAddEditLabel form(qApp->mainFormWidget());
+    Label* lbl = std_labels.front();
+
+    if (form.execForEdit(lbl)) {
+      QSqlDatabase db = qApp->database()->driver()->connection(metaObject()->className());
+
+      DatabaseQueries::updateLabel(db, lbl);
+    }
+
+    return;
+  }
+
+  // Probe editing.
+  auto std_probes = boolinq::from(items)
+                      .select([](RootItem* it) {
+                        return qobject_cast<Search*>(it);
+                      })
+                      .where([](Search* fd) {
+                        return fd != nullptr;
+                      })
+                      .toStdList();
+
+  if (std_probes.size() == 1) {
+    // Support editing probes one by one.
+    FormAddEditProbe form(qApp->mainFormWidget());
+    Search* probe = std_probes.front();
+
+    if (form.execForEdit(probe)) {
+      QSqlDatabase db = qApp->database()->driver()->connection(metaObject()->className());
+
+      DatabaseQueries::updateProbe(db, probe);
+      updateCounts(probe);
+      itemChanged({probe});
+    }
+
+    return;
+  }
+
+  qApp->showGuiMessage(Notification::Event::GeneralEvent,
+                       {tr("Unsupported"), tr("This is not suppported (yet)."), QSystemTrayIcon::MessageIcon::Warning});
 }
 
 bool ServiceRoot::markAsReadUnread(RootItem::ReadStatus status) {
@@ -356,6 +450,12 @@ void ServiceRoot::requestItemReassignment(RootItem* item, RootItem* new_parent) 
   emit itemReassignmentRequested(item, new_parent);
 }
 
+void ServiceRoot::requestItemsReassignment(const QList<RootItem*>& items, RootItem* new_parent) {
+  for (RootItem* it : items) {
+    requestItemReassignment(it, new_parent);
+  }
+}
+
 void ServiceRoot::requestItemRemoval(RootItem* item) {
   emit itemRemovalRequested(item);
 }
@@ -477,6 +577,10 @@ SearchsNode* ServiceRoot::probesNode() const {
 
 UnreadNode* ServiceRoot::unreadNode() const {
   return m_unreadNode;
+}
+
+FormAccountDetails* ServiceRoot::accountSetupDialog() const {
+  return nullptr;
 }
 
 void ServiceRoot::onDatabaseCleanup() {}

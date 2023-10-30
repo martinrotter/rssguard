@@ -60,53 +60,118 @@ void FormStandardFeedDetails::guessIconOnly() {
 }
 
 void FormStandardFeedDetails::onTitleChanged(const QString& title) {
-  m_ui->m_buttonBox->button(QDialogButtonBox::StandardButton::Ok)->setEnabled(!title.simplified().isEmpty());
+  m_ui.m_buttonBox->button(QDialogButtonBox::StandardButton::Ok)->setEnabled(!title.simplified().isEmpty());
 }
 
 void FormStandardFeedDetails::apply() {
   FormFeedDetails::apply();
 
-  auto* std_feed = feed<StandardFeed>();
+  QSqlDatabase database = qApp->database()->driver()->connection(metaObject()->className());
   RootItem* parent = m_standardFeedDetails->m_ui.m_cmbParentCategory->currentData().value<RootItem*>();
-
   StandardFeed::Type type =
     static_cast<StandardFeed::Type>(m_standardFeedDetails->m_ui.m_cmbType
                                       ->itemData(m_standardFeedDetails->m_ui.m_cmbType->currentIndex())
                                       .toInt());
 
-  // Setup data for new_feed.
-  std_feed->setTitle(m_standardFeedDetails->m_ui.m_txtTitle->lineEdit()->text().simplified());
-  std_feed->setCreationDate(QDateTime::currentDateTime());
-  std_feed->setDescription(m_standardFeedDetails->m_ui.m_txtDescription->lineEdit()->text());
-  std_feed->setIcon(m_standardFeedDetails->m_ui.m_btnIcon->icon());
+  QList<StandardFeed*> fds = feeds<StandardFeed>();
 
-  std_feed->setSource(m_standardFeedDetails->m_ui.m_txtSource->textEdit()->toPlainText());
-  std_feed->setLastEtag({});
+  for (StandardFeed* std_feed : fds) {
+    // Setup data for the feed.
+    if (isChangeAllowed(m_standardFeedDetails->m_ui.m_mcbTitle)) {
+      std_feed->setTitle(m_standardFeedDetails->m_ui.m_txtTitle->lineEdit()->text().simplified());
+    }
 
-  std_feed->setEncoding(m_standardFeedDetails->m_ui.m_cmbEncoding->currentText());
-  std_feed->setType(type);
-  std_feed->setSourceType(m_standardFeedDetails->sourceType());
-  std_feed->setPostProcessScript(m_standardFeedDetails->m_ui.m_txtPostProcessScript->textEdit()->toPlainText());
+    if (isChangeAllowed(m_standardFeedDetails->m_ui.m_mcbDescription)) {
+      std_feed->setDescription(m_standardFeedDetails->m_ui.m_txtDescription->lineEdit()->text());
+    }
 
-  std_feed->setProtection(m_authDetails->authenticationType());
-  std_feed->setUsername(m_authDetails->m_txtUsername->lineEdit()->text());
-  std_feed->setPassword(m_authDetails->m_txtPassword->lineEdit()->text());
+    if (isChangeAllowed(m_standardFeedDetails->m_ui.m_mcbIcon)) {
+      std_feed->setIcon(m_standardFeedDetails->m_ui.m_btnIcon->icon());
+    }
 
-  QSqlDatabase database = qApp->database()->driver()->connection(metaObject()->className());
+    if (isChangeAllowed(m_standardFeedDetails->m_ui.m_mcbSource)) {
+      std_feed->setSource(m_standardFeedDetails->m_ui.m_txtSource->textEdit()->toPlainText());
+    }
 
-  try {
-    DatabaseQueries::createOverwriteFeed(database, std_feed, m_serviceRoot->accountId(), parent->id());
+    if (isChangeAllowed(m_standardFeedDetails->m_ui.m_mcbSourceType)) {
+      std_feed->setSourceType(m_standardFeedDetails->sourceType());
+    }
+
+    if (isChangeAllowed(m_standardFeedDetails->m_ui.m_mcbType)) {
+      std_feed->setType(type);
+    }
+
+    if (isChangeAllowed(m_standardFeedDetails->m_ui.m_mcbEncoding)) {
+      std_feed->setEncoding(m_standardFeedDetails->m_ui.m_cmbEncoding->currentText());
+    }
+
+    if (isChangeAllowed(m_standardFeedDetails->m_ui.m_mcbPostProcessScript)) {
+      std_feed->setPostProcessScript(m_standardFeedDetails->m_ui.m_txtPostProcessScript->textEdit()->toPlainText());
+    }
+
+    if (isChangeAllowed(m_authDetails->m_mcbAuthType)) {
+      std_feed->setProtection(m_authDetails->authenticationType());
+    }
+
+    if (isChangeAllowed(m_authDetails->m_mcbAuthentication)) {
+      std_feed->setUsername(m_authDetails->m_txtUsername->lineEdit()->text());
+      std_feed->setPassword(m_authDetails->m_txtPassword->lineEdit()->text());
+    }
+
+    std_feed->setCreationDate(QDateTime::currentDateTime());
+    std_feed->setLastEtag({});
+
+    int new_parent_id;
+
+    if (isChangeAllowed(m_standardFeedDetails->m_ui.m_mcbParentCategory)) {
+      new_parent_id = parent->id();
+    }
+    else {
+      new_parent_id = std_feed->parent()->id();
+    }
+
+    try {
+      DatabaseQueries::createOverwriteFeed(database, std_feed, m_serviceRoot->accountId(), new_parent_id);
+    }
+    catch (const ApplicationException& ex) {
+      qFatal("Cannot save feed: '%s'.", qPrintable(ex.message()));
+    }
+
+    if (isChangeAllowed(m_standardFeedDetails->m_ui.m_mcbParentCategory)) {
+      m_serviceRoot->requestItemReassignment(std_feed, parent);
+    }
   }
-  catch (const ApplicationException& ex) {
-    qFatal("Cannot save feed: '%s'.", qPrintable(ex.message()));
-  }
 
-  m_serviceRoot->requestItemReassignment(m_feed, parent);
-  m_serviceRoot->itemChanged({m_feed});
+  m_serviceRoot->itemChanged(feeds<RootItem>());
 }
 
 void FormStandardFeedDetails::loadFeedData() {
   FormFeedDetails::loadFeedData();
+
+  if (m_isBatchEdit) {
+    // We hook batch selectors.
+    m_standardFeedDetails->m_ui.m_mcbDescription->addActionWidget(m_standardFeedDetails->m_ui.m_txtDescription);
+    m_standardFeedDetails->m_ui.m_mcbIcon->addActionWidget(m_standardFeedDetails->m_ui.m_btnIcon);
+    m_standardFeedDetails->m_ui.m_mcbParentCategory->addActionWidget(m_standardFeedDetails->m_ui.m_cmbParentCategory);
+    m_standardFeedDetails->m_ui.m_mcbPostProcessScript
+      ->addActionWidget(m_standardFeedDetails->m_ui.m_txtPostProcessScript);
+    m_standardFeedDetails->m_ui.m_mcbSourceType->addActionWidget(m_standardFeedDetails->m_ui.m_cmbSourceType);
+    m_standardFeedDetails->m_ui.m_mcbSource->addActionWidget(m_standardFeedDetails->m_ui.m_txtSource);
+    m_standardFeedDetails->m_ui.m_mcbTitle->addActionWidget(m_standardFeedDetails->m_ui.m_txtTitle);
+    m_standardFeedDetails->m_ui.m_mcbType->addActionWidget(m_standardFeedDetails->m_ui.m_cmbType);
+    m_standardFeedDetails->m_ui.m_mcbEncoding->addActionWidget(m_standardFeedDetails->m_ui.m_cmbEncoding);
+
+    m_authDetails->m_mcbAuthType->addActionWidget(m_authDetails->m_cbAuthType);
+    m_authDetails->m_mcbAuthentication->addActionWidget(m_authDetails->m_gbAuthentication);
+
+    m_standardFeedDetails->m_ui.m_btnFetchMetadata->setEnabled(false);
+  }
+  else {
+    // We hide batch selectors.
+    for (auto* cb : findChildren<MultiFeedEditCheckBox*>()) {
+      cb->hide();
+    }
+  }
 
   auto* std_feed = feed<StandardFeed>();
 

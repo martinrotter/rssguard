@@ -116,7 +116,10 @@ void FormDiscoverFeeds::onDiscoveryFinished() {
     loadDiscoveredFeeds(res);
   }
   catch (const ApplicationException& ex) {
-    // TODO: display error
+    qApp->showGuiMessage(Notification::Event::GeneralEvent,
+                         {tr("Cannot discover feeds"),
+                          tr("Error: %1").arg(ex.message()),
+                          QSystemTrayIcon::MessageIcon::Critical});
   }
 
   setEnabled(true);
@@ -212,7 +215,7 @@ void FormDiscoverFeeds::addSingleFeed() {
                                                                                    fd->source(),
                                                                                    qApp->mainFormWidget()));
 
-  if (form_pointer->addEditFeed<StandardFeed>() != nullptr) {
+  if (!form_pointer->addEditFeed<StandardFeed>().isEmpty()) {
     // Feed was added, remove from list.
     if (m_discoveredModel->removeItem(idx) != nullptr) {
       // Feed was guessed by the dialog, we do not need this object.

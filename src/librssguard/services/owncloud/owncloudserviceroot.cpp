@@ -30,11 +30,19 @@ bool OwnCloudServiceRoot::canBeEdited() const {
   return true;
 }
 
-bool OwnCloudServiceRoot::editViaGui() {
-  QScopedPointer<FormEditOwnCloudAccount> form_pointer(new FormEditOwnCloudAccount(qApp->mainFormWidget()));
+FormAccountDetails* OwnCloudServiceRoot::accountSetupDialog() const {
+  return new FormEditOwnCloudAccount(qApp->mainFormWidget());
+}
 
-  form_pointer->addEditAccount(this);
-  return true;
+void OwnCloudServiceRoot::editItemsViaGui(const QList<RootItem*>& items) {
+  if (items.first()->kind() == RootItem::Kind::ServiceRoot) {
+    QScopedPointer<FormEditOwnCloudAccount> p(qobject_cast<FormEditOwnCloudAccount*>(accountSetupDialog()));
+
+    p->addEditAccount(this);
+    return;
+  }
+
+  ServiceRoot::editItemsViaGui(items);
 }
 
 bool OwnCloudServiceRoot::supportsFeedAdding() const {

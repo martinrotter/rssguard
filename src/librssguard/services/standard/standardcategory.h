@@ -10,7 +10,7 @@
 class StandardServiceRoot;
 
 class StandardCategory : public Category {
-  Q_OBJECT
+    Q_OBJECT
 
   public:
     explicit StandardCategory(RootItem* parent_item = nullptr);
@@ -21,7 +21,6 @@ class StandardCategory : public Category {
     virtual Qt::ItemFlags additionalFlags() const;
     virtual bool performDragDropChange(RootItem* target_item);
     virtual bool canBeEdited() const;
-    virtual bool editViaGui();
     virtual bool canBeDeleted() const;
     virtual bool deleteViaGui();
 

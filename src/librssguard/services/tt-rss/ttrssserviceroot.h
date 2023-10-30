@@ -26,7 +26,8 @@ class TtRssServiceRoot : public ServiceRoot, public CacheForServiceRoot {
     virtual QString code() const;
     virtual bool isSyncable() const;
     virtual bool canBeEdited() const;
-    virtual bool editViaGui();
+    virtual void editItemsViaGui(const QList<RootItem*>& items);
+    virtual FormAccountDetails* accountSetupDialog() const;
     virtual bool supportsFeedAdding() const;
     virtual bool supportsCategoryAdding() const;
     virtual void addNewFeed(RootItem* selected_item, const QString& url = QString());

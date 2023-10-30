@@ -75,11 +75,19 @@ bool TtRssServiceRoot::isSyncable() const {
   return true;
 }
 
-bool TtRssServiceRoot::editViaGui() {
-  QScopedPointer<FormEditTtRssAccount> form_pointer(new FormEditTtRssAccount(qApp->mainFormWidget()));
+FormAccountDetails* TtRssServiceRoot::accountSetupDialog() const {
+  return new FormEditTtRssAccount(qApp->mainFormWidget());
+}
 
-  form_pointer->addEditAccount(this);
-  return true;
+void TtRssServiceRoot::editItemsViaGui(const QList<RootItem*>& items) {
+  if (items.first()->kind() == RootItem::Kind::ServiceRoot) {
+    QScopedPointer<FormEditTtRssAccount> p(qobject_cast<FormEditTtRssAccount*>(accountSetupDialog()));
+
+    p->addEditAccount(this);
+    return;
+  }
+
+  ServiceRoot::editItemsViaGui(items);
 }
 
 bool TtRssServiceRoot::supportsFeedAdding() const {

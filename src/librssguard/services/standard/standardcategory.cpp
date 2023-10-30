@@ -47,15 +47,6 @@ bool StandardCategory::canBeDeleted() const {
   return true;
 }
 
-bool StandardCategory::editViaGui() {
-  QScopedPointer<FormCategoryDetails> form_pointer(new FormCategoryDetails(serviceRoot(),
-                                                                           nullptr,
-                                                                           qApp->mainFormWidget()));
-
-  form_pointer->addEditCategory(this);
-  return false;
-}
-
 bool StandardCategory::deleteViaGui() {
   if (removeItself()) {
     serviceRoot()->requestItemRemoval(this);

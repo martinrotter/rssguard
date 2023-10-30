@@ -348,6 +348,7 @@ void StandardFeedDetails::prepareForNewFeed(RootItem* parent_to_select, const QS
   // Make sure that "default" icon is used as the default option for new
   // feed.
   m_actionUseDefaultIcon->trigger();
+
   int default_encoding_index = m_ui.m_cmbEncoding->findText(QSL(DEFAULT_FEED_ENCODING));
 
   if (default_encoding_index >= 0) {

@@ -46,7 +46,6 @@ class StandardFeed : public Feed {
     virtual QString additionalTooltip() const;
     virtual bool canBeDeleted() const;
     virtual bool deleteViaGui();
-    virtual bool editViaGui();
     virtual QVariantHash customDatabaseData() const;
     virtual void setCustomDatabaseData(const QVariantHash& data);
     virtual Qt::ItemFlags additionalFlags() const;

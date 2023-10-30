@@ -32,9 +32,11 @@ class RSSGUARD_DLLSPEC FeedsView : public BaseTreeView {
     // NOTE: This is recursive method which returns all descendants.
     QList<Feed*> selectedFeeds() const;
 
-    // Returns pointers to selected feed/category if they are really
-    // selected.
+    // Returns selected item. If multiple items are selected, returns
+    // the one of them which is also "current". If none of them is
+    // "current", returns firs item of selected ones.
     RootItem* selectedItem() const;
+    QList<RootItem*> selectedItems() const;
 
     // Saves/loads expand states of all nodes (feeds/categories) of the list to/from settings.
     void saveAllExpandStates();

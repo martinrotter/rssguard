@@ -26,11 +26,19 @@ bool GreaderServiceRoot::canBeEdited() const {
   return true;
 }
 
-bool GreaderServiceRoot::editViaGui() {
-  FormEditGreaderAccount form_pointer(qApp->mainFormWidget());
+FormAccountDetails* GreaderServiceRoot::accountSetupDialog() const {
+  return new FormEditGreaderAccount(qApp->mainFormWidget());
+}
 
-  form_pointer.addEditAccount(this);
-  return true;
+void GreaderServiceRoot::editItemsViaGui(const QList<RootItem*>& items) {
+  if (items.first()->kind() == RootItem::Kind::ServiceRoot) {
+    QScopedPointer<FormEditGreaderAccount> p(qobject_cast<FormEditGreaderAccount*>(accountSetupDialog()));
+
+    p->addEditAccount(this);
+    return;
+  }
+
+  ServiceRoot::editItemsViaGui(items);
 }
 
 QVariantHash GreaderServiceRoot::customDatabaseData() const {

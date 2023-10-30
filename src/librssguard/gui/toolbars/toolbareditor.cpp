@@ -80,7 +80,7 @@ void ToolBarEditor::loadEditor(const QList<QAction*>& activated_actions, const Q
 
     if (action->isSeparator()) {
       action_item->setData(Qt::ItemDataRole::UserRole, SEPARATOR_ACTION_NAME);
-      action_item->setIcon(qApp->icons()->fromTheme(QSL("insert-object")));
+      action_item->setIcon(qApp->icons()->fromTheme(QSL("draw-line"), QSL("insert-object")));
       action_item->setText(tr("Separator"));
       action_item->setToolTip(tr("Separator"));
     }

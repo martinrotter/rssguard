@@ -150,13 +150,6 @@ bool Feed::canBeEdited() const {
   return true;
 }
 
-bool Feed::editViaGui() {
-  QScopedPointer<FormFeedDetails> form_pointer(new FormFeedDetails(getParentServiceRoot(), qApp->mainFormWidget()));
-
-  form_pointer->addEditFeed(this);
-  return false;
-}
-
 void Feed::setAutoUpdateInterval(int auto_update_interval) {
   // If new initial auto-update interval is set, then
   // we should reset time that remains to the next auto-update.

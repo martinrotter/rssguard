@@ -32,11 +32,19 @@ bool FeedlyServiceRoot::canBeEdited() const {
   return true;
 }
 
-bool FeedlyServiceRoot::editViaGui() {
-  FormEditFeedlyAccount form_pointer(qApp->mainFormWidget());
+FormAccountDetails* FeedlyServiceRoot::accountSetupDialog() const {
+  return new FormEditFeedlyAccount(qApp->mainFormWidget());
+}
 
-  form_pointer.addEditAccount(this);
-  return true;
+void FeedlyServiceRoot::editItemsViaGui(const QList<RootItem*>& items) {
+  if (items.first()->kind() == RootItem::Kind::ServiceRoot) {
+    QScopedPointer<FormEditFeedlyAccount> p(qobject_cast<FormEditFeedlyAccount*>(accountSetupDialog()));
+
+    p->addEditAccount(this);
+    return;
+  }
+
+  ServiceRoot::editItemsViaGui(items);
 }
 
 QVariantHash FeedlyServiceRoot::customDatabaseData() const {

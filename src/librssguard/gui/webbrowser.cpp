@@ -5,7 +5,6 @@
 #include "definitions/globals.h"
 #include "gui/dialogs/formmain.h"
 #include "gui/messagebox.h"
-#include "gui/reusable/discoverfeedsbutton.h"
 #include "gui/reusable/locationlineedit.h"
 #include "gui/reusable/searchtextwidget.h"
 #include "gui/tabwidget.h"
@@ -27,7 +26,6 @@
 WebBrowser::WebBrowser(WebViewer* viewer, QWidget* parent)
   : TabContent(parent), m_layout(new QVBoxLayout(this)), m_toolBar(new QToolBar(tr("Navigation panel"), this)),
     m_webView(viewer), m_searchWidget(new SearchTextWidget(this)), m_txtLocation(new LocationLineEdit(this)),
-    m_btnDiscoverFeeds(new DiscoverFeedsButton(this)),
     m_actionOpenInSystemBrowser(new QAction(qApp->icons()->fromTheme(QSL("document-open")),
                                             tr("Open this website in system web browser"),
                                             this)),
@@ -297,14 +295,8 @@ void WebBrowser::initializeLayout() {
   m_actionReload->setIcon(qApp->icons()->fromTheme(QSL("reload"), QSL("view-refresh")));
   m_actionStop->setIcon(qApp->icons()->fromTheme(QSL("process-stop")));
 
-  m_btnDiscoverFeedsAction = new QWidgetAction(this);
-
   m_actionOpenInSystemBrowser->setEnabled(false);
   m_actionReadabilePage->setEnabled(false);
-
-  // m_btnDiscoverFeedsAction->setDefaultWidget(new QWidget(this));
-
-  m_btnDiscoverFeedsAction->setDefaultWidget(m_btnDiscoverFeeds);
 
   // Add needed actions into toolbar.
   m_toolBar->addAction(m_actionBack);
@@ -314,7 +306,6 @@ void WebBrowser::initializeLayout() {
   m_toolBar->addAction(m_actionOpenInSystemBrowser);
   m_toolBar->addAction(m_actionReadabilePage);
 
-  m_toolBar->addAction(m_btnDiscoverFeedsAction);
   m_txtLocationAction = m_toolBar->addWidget(m_txtLocation);
 
   m_loadingProgress = new QProgressBar(this);
@@ -336,7 +327,6 @@ void WebBrowser::initializeLayout() {
 }
 
 void WebBrowser::onLoadingStarted() {
-  m_btnDiscoverFeeds->clearFeedAddresses();
   m_loadingProgress->show();
   m_actionOpenInSystemBrowser->setEnabled(false);
   m_actionReadabilePage->setEnabled(false);
@@ -359,15 +349,6 @@ void WebBrowser::onLoadingFinished(bool success) {
       m_actionOpenInSystemBrowser->setEnabled(false);
       m_actionReadabilePage->setEnabled(false);
     }
-
-    // TODO: nevolat toto u internich "rssguard" adres
-    // Let's check if there are any feeds defined on the web and eventually
-    // display "Add feeds" button.
-    m_btnDiscoverFeeds->setFeedAddresses(NetworkFactory::extractFeedLinksFromHtmlPage(m_webView->url(),
-                                                                                      m_webView->html()));
-  }
-  else {
-    m_btnDiscoverFeeds->clearFeedAddresses();
   }
 
   m_loadingProgress->hide();

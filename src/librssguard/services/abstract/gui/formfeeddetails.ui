@@ -24,92 +24,140 @@
        <string>Articles</string>
       </attribute>
       <layout class="QFormLayout" name="formLayout">
-       <item row="0" column="0">
-        <widget class="QLabel" name="label_6">
-         <property name="text">
-          <string>Auto-downloading of articles</string>
-         </property>
-         <property name="buddy">
-          <cstring>m_cmbAutoUpdateType</cstring>
-         </property>
-        </widget>
-       </item>
-       <item row="0" column="1">
-        <layout class="QVBoxLayout" name="verticalLayout_2">
+       <item row="0" column="0" colspan="2">
+        <layout class="QHBoxLayout" name="horizontalLayout">
          <item>
-          <widget class="QComboBox" name="m_cmbAutoUpdateType">
-           <property name="toolTip">
-            <string>Select the auto-download strategy for messages of this feed. Default auto-download strategy means that new messges of this feed will be downloaded in time intervals set in application settings.</string>
-           </property>
-          </widget>
+          <widget class="MultiFeedEditCheckBox" name="m_mcbAutoDownloading"/>
          </item>
          <item>
-          <widget class="TimeSpinBox" name="m_spinAutoUpdateInterval">
-           <property name="enabled">
-            <bool>false</bool>
-           </property>
+          <widget class="QWidget" name="m_wdgAutoUpdate" native="true">
+           <layout class="QFormLayout" name="formLayout_3">
+            <property name="leftMargin">
+             <number>0</number>
+            </property>
+            <property name="topMargin">
+             <number>0</number>
+            </property>
+            <property name="rightMargin">
+             <number>0</number>
+            </property>
+            <property name="bottomMargin">
+             <number>0</number>
+            </property>
+            <item row="0" column="0">
+             <widget class="QLabel" name="label_6">
+              <property name="text">
+               <string>Auto-downloading of articles</string>
+              </property>
+              <property name="buddy">
+               <cstring>m_cmbAutoUpdateType</cstring>
+              </property>
+             </widget>
+            </item>
+            <item row="0" column="1">
+             <widget class="QComboBox" name="m_cmbAutoUpdateType">
+              <property name="toolTip">
+               <string>Select the auto-download strategy for messages of this feed. Default auto-download strategy means that new messges of this feed will be downloaded in time intervals set in application settings.</string>
+              </property>
+             </widget>
+            </item>
+            <item row="1" column="1">
+             <widget class="TimeSpinBox" name="m_spinAutoUpdateInterval">
+              <property name="enabled">
+               <bool>false</bool>
+              </property>
+             </widget>
+            </item>
+           </layout>
           </widget>
          </item>
         </layout>
        </item>
        <item row="1" column="0" colspan="2">
-        <widget class="QCheckBox" name="m_cbOpenArticlesAutomatically">
-         <property name="text">
-          <string>Open articles via their URL automatically</string>
-         </property>
-        </widget>
+        <layout class="QHBoxLayout" name="horizontalLayout_4">
+         <item>
+          <widget class="MultiFeedEditCheckBox" name="m_mcbOpenArticlesAutomatically"/>
+         </item>
+         <item>
+          <widget class="QCheckBox" name="m_cbOpenArticlesAutomatically">
+           <property name="text">
+            <string>Open articles via their URL automatically</string>
+           </property>
+          </widget>
+         </item>
+        </layout>
        </item>
        <item row="2" column="0" colspan="2">
         <widget class="Line" name="line">
+         <property name="minimumSize">
+          <size>
+           <width>150</width>
+           <height>0</height>
+          </size>
+         </property>
          <property name="orientation">
           <enum>Qt::Horizontal</enum>
          </property>
         </widget>
        </item>
        <item row="3" column="0" colspan="2">
-        <widget class="QCheckBox" name="m_cbAddAnyDateArticles">
-         <property name="text">
-          <string>Add articles with any date into the database</string>
-         </property>
-        </widget>
+        <layout class="QHBoxLayout" name="horizontalLayout_3">
+         <item>
+          <widget class="MultiFeedEditCheckBox" name="m_mcbAddAnyDateArticles"/>
+         </item>
+         <item>
+          <widget class="QCheckBox" name="m_cbAddAnyDateArticles">
+           <property name="text">
+            <string>Add articles with any date into the database</string>
+           </property>
+          </widget>
+         </item>
+        </layout>
        </item>
        <item row="4" column="0" colspan="2">
-        <widget class="QGroupBox" name="m_gbAvoidOldArticles">
-         <property name="enabled">
-          <bool>true</bool>
-         </property>
-         <property name="title">
-          <string>Avoid adding articles before this date into the database</string>
-         </property>
-         <property name="checkable">
-          <bool>true</bool>
-         </property>
-         <property name="checked">
-          <bool>false</bool>
-         </property>
-         <layout class="QGridLayout" name="gridLayout">
-          <item row="1" column="0">
-           <widget class="QDateTimeEdit" name="m_dtDateTimeToAvoid">
-            <property name="calendarPopup">
-             <bool>true</bool>
-            </property>
-           </widget>
-          </item>
-          <item row="1" column="1">
-           <spacer name="horizontalSpacer">
-            <property name="orientation">
-             <enum>Qt::Horizontal</enum>
-            </property>
-            <property name="sizeHint" stdset="0">
-             <size>
-              <width>40</width>
-              <height>20</height>
-             </size>
-            </property>
-           </spacer>
-          </item>
-         </layout>
-        </widget>
+        <layout class="QHBoxLayout" name="horizontalLayout_2">
+         <item>
+          <widget class="MultiFeedEditCheckBox" name="m_mcbAvoidOldArticles"/>
+         </item>
+         <item>
+          <widget class="QGroupBox" name="m_gbAvoidOldArticles">
+           <property name="enabled">
+            <bool>true</bool>
+           </property>
+           <property name="title">
+            <string>Avoid adding articles before this date into the database</string>
+           </property>
+           <property name="checkable">
+            <bool>true</bool>
+           </property>
+           <property name="checked">
+            <bool>false</bool>
+           </property>
+           <layout class="QGridLayout" name="gridLayout">
+            <item row="1" column="0">
+             <widget class="QDateTimeEdit" name="m_dtDateTimeToAvoid">
+              <property name="calendarPopup">
+               <bool>true</bool>
+              </property>
+             </widget>
+            </item>
+            <item row="1" column="1">
+             <spacer name="horizontalSpacer">
+              <property name="orientation">
+               <enum>Qt::Horizontal</enum>
+              </property>
+              <property name="sizeHint" stdset="0">
+               <size>
+                <width>40</width>
+                <height>20</height>
+               </size>
+              </property>
+             </spacer>
+            </item>
+           </layout>
+          </widget>
+         </item>
+        </layout>
        </item>
       </layout>
      </widget>
@@ -118,26 +166,47 @@
        <string>Miscellaneous</string>
       </attribute>
       <layout class="QFormLayout" name="formLayout_2">
-       <item row="0" column="0">
-        <widget class="QCheckBox" name="m_cbSuppressFeed">
-         <property name="text">
-          <string>Ignore notifications for this feed</string>
-         </property>
-        </widget>
+       <item row="0" column="0" colspan="2">
+        <layout class="QHBoxLayout" name="horizontalLayout_5">
+         <item>
+          <widget class="MultiFeedEditCheckBox" name="m_mcbSuppressFeed"/>
+         </item>
+         <item>
+          <widget class="QCheckBox" name="m_cbSuppressFeed">
+           <property name="text">
+            <string>Ignore notifications for this feed</string>
+           </property>
+          </widget>
+         </item>
+        </layout>
        </item>
-       <item row="1" column="0">
-        <widget class="QCheckBox" name="m_cbDisableFeed">
-         <property name="text">
-          <string>Disable this feed</string>
-         </property>
-        </widget>
+       <item row="1" column="0" colspan="2">
+        <layout class="QHBoxLayout" name="horizontalLayout_6">
+         <item>
+          <widget class="MultiFeedEditCheckBox" name="m_mcbDisableFeed"/>
+         </item>
+         <item>
+          <widget class="QCheckBox" name="m_cbDisableFeed">
+           <property name="text">
+            <string>Disable this feed</string>
+           </property>
+          </widget>
+         </item>
+        </layout>
        </item>
-       <item row="2" column="0">
-        <widget class="QCheckBox" name="m_cbFeedRTL">
-         <property name="text">
-          <string>Right-to-left layout</string>
-         </property>
-        </widget>
+       <item row="2" column="0" colspan="2">
+        <layout class="QHBoxLayout" name="horizontalLayout_7">
+         <item>
+          <widget class="MultiFeedEditCheckBox" name="m_mcbFeedRtl"/>
+         </item>
+         <item>
+          <widget class="QCheckBox" name="m_cbFeedRTL">
+           <property name="text">
+            <string>Right-to-left layout</string>
+           </property>
+          </widget>
+         </item>
+        </layout>
        </item>
       </layout>
      </widget>
@@ -164,11 +233,13 @@
    <extends>QDoubleSpinBox</extends>
    <header>timespinbox.h</header>
   </customwidget>
+  <customwidget>
+   <class>MultiFeedEditCheckBox</class>
+   <extends>QCheckBox</extends>
+   <header>multifeededitcheckbox.h</header>
+  </customwidget>
  </customwidgets>
  <tabstops>
-  <tabstop>m_tabWidget</tabstop>
-  <tabstop>m_cmbAutoUpdateType</tabstop>
-  <tabstop>m_spinAutoUpdateInterval</tabstop>
   <tabstop>m_cbOpenArticlesAutomatically</tabstop>
   <tabstop>m_cbAddAnyDateArticles</tabstop>
   <tabstop>m_gbAvoidOldArticles</tabstop>

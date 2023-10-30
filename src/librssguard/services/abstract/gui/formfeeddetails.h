@@ -7,6 +7,9 @@
 
 #include "ui_formfeeddetails.h"
 
+#include "3rd-party/boolinq/boolinq.h"
+#include "definitions/definitions.h"
+
 namespace Ui {
   class FormFeedDetails;
 }
@@ -17,17 +20,22 @@ class Category;
 class RootItem;
 
 class FormFeedDetails : public QDialog {
-  Q_OBJECT
+    Q_OBJECT
 
   public:
     explicit FormFeedDetails(ServiceRoot* service_root, QWidget* parent = nullptr);
     virtual ~FormFeedDetails() = default;
 
-    template<class T>
-    T* addEditFeed(T* feed_to_edit = nullptr);
+    template <class T>
+    QList<T*> addEditFeed(const QList<Feed*>& feeds_to_edit = {});
 
-    template<class T>
+    // Returns first feed.
+    template <class T>
     T* feed() const;
+
+    // Returns all feeds.
+    template <class T>
+    QList<T*> feeds() const;
 
   protected slots:
     void activateTab(int index);
@@ -39,6 +47,7 @@ class FormFeedDetails : public QDialog {
     virtual void apply();
 
   protected:
+    bool isChangeAllowed(MultiFeedEditCheckBox* mcb) const;
     void insertCustomTab(QWidget* custom_tab, const QString& title, int index);
 
     // Sets the feed which will be edited.
@@ -55,37 +64,49 @@ class FormFeedDetails : public QDialog {
     void initialize();
 
   protected:
-    QScopedPointer<Ui::FormFeedDetails> m_ui;
-    Feed* m_feed;
+    Ui::FormFeedDetails m_ui;
+    QList<Feed*> m_feeds;
     ServiceRoot* m_serviceRoot;
     bool m_creatingNew;
+    bool m_isBatchEdit;
 };
 
-template<class T>
-inline T* FormFeedDetails::addEditFeed(T* feed_to_edit) {
-  m_creatingNew = feed_to_edit == nullptr;
+template <class T>
+inline QList<T*> FormFeedDetails::addEditFeed(const QList<Feed*>& feeds_to_edit) {
+  m_creatingNew = feeds_to_edit.isEmpty();
+  m_isBatchEdit = feeds_to_edit.size() > 1;
 
   if (m_creatingNew) {
-    m_feed = new T();
+    m_feeds.append(new T());
   }
   else {
-    m_feed = feed_to_edit;
+    m_feeds.append(feeds_to_edit);
   }
 
-  // Load custom logic for feed data loading.
   loadFeedData();
 
   if (exec() == QDialog::DialogCode::Accepted) {
-    return feed<T>();
+    return feeds<T>();
   }
   else {
-    return nullptr;
+    return {};
   }
 }
 
-template<class T>
+template <class T>
 inline T* FormFeedDetails::feed() const {
-  return qobject_cast<T*>(m_feed);
+  return qobject_cast<T*>(m_feeds.first());
+}
+
+template <class T>
+inline QList<T*> FormFeedDetails::feeds() const {
+  std::list<T*> std_fds = boolinq::from(m_feeds)
+                            .select([](Feed* fd) {
+                              return qobject_cast<T*>(fd);
+                            })
+                            .toStdList();
+
+  return FROM_STD_LIST(QList<T*>, std_fds);
 }
 
 #endif // FORMFEEDDETAILS_H

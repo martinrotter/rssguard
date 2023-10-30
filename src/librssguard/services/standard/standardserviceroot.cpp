@@ -113,11 +113,38 @@ bool StandardServiceRoot::canBeEdited() const {
   return true;
 }
 
-bool StandardServiceRoot::editViaGui() {
-  FormEditStandardAccount form_pointer(qApp->mainFormWidget());
+FormAccountDetails* StandardServiceRoot::accountSetupDialog() const {
+  return new FormEditStandardAccount(qApp->mainFormWidget());
+}
 
-  form_pointer.addEditAccount(this);
-  return true;
+void StandardServiceRoot::editItemsViaGui(const QList<RootItem*>& items) {
+  auto std_feeds = boolinq::from(items)
+                     .select([](RootItem* it) {
+                       return qobject_cast<Feed*>(it);
+                     })
+                     .where([](Feed* fd) {
+                       return fd != nullptr;
+                     })
+                     .toStdList();
+
+  if (!std_feeds.empty()) {
+    QScopedPointer<FormStandardFeedDetails> form_pointer(new FormStandardFeedDetails(this,
+                                                                                     nullptr,
+                                                                                     {},
+                                                                                     qApp->mainFormWidget()));
+
+    form_pointer->addEditFeed<StandardFeed>(FROM_STD_LIST(QList<Feed*>, std_feeds));
+    return;
+  }
+
+  if (items.first()->kind() == RootItem::Kind::ServiceRoot) {
+    QScopedPointer<FormEditStandardAccount> p(qobject_cast<FormEditStandardAccount*>(accountSetupDialog()));
+
+    p->addEditAccount(this);
+    return;
+  }
+
+  ServiceRoot::editItemsViaGui(items);
 }
 
 bool StandardServiceRoot::supportsFeedAdding() const {

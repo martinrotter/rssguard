@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>400</width>
+    <width>505</width>
     <height>520</height>
    </rect>
   </property>
@@ -15,14 +15,21 @@
   </property>
   <layout class="QFormLayout" name="formLayout">
    <item row="0" column="0">
-    <widget class="QLabel" name="m_lblParentCategory">
-     <property name="text">
-      <string>Parent folder</string>
-     </property>
-     <property name="buddy">
-      <cstring>m_cmbParentCategory</cstring>
-     </property>
-    </widget>
+    <layout class="QHBoxLayout" name="horizontalLayout_3">
+     <item>
+      <widget class="MultiFeedEditCheckBox" name="m_mcbParentCategory"/>
+     </item>
+     <item>
+      <widget class="QLabel" name="m_lblParentCategory">
+       <property name="text">
+        <string>Parent folder</string>
+       </property>
+       <property name="buddy">
+        <cstring>m_cmbParentCategory</cstring>
+       </property>
+      </widget>
+     </item>
+    </layout>
    </item>
    <item row="0" column="1">
     <widget class="QComboBox" name="m_cmbParentCategory">
@@ -41,14 +48,21 @@
     </widget>
    </item>
    <item row="1" column="0">
-    <widget class="QLabel" name="label_3">
-     <property name="text">
-      <string>Type</string>
-     </property>
-     <property name="buddy">
-      <cstring>m_cmbType</cstring>
-     </property>
-    </widget>
+    <layout class="QHBoxLayout" name="horizontalLayout_4">
+     <item>
+      <widget class="MultiFeedEditCheckBox" name="m_mcbType"/>
+     </item>
+     <item>
+      <widget class="QLabel" name="label_3">
+       <property name="text">
+        <string>Type</string>
+       </property>
+       <property name="buddy">
+        <cstring>m_cmbType</cstring>
+       </property>
+      </widget>
+     </item>
+    </layout>
    </item>
    <item row="1" column="1">
     <layout class="QHBoxLayout" name="horizontalLayout">
@@ -60,6 +74,9 @@
       </widget>
      </item>
      <item>
+      <widget class="MultiFeedEditCheckBox" name="m_mcbEncoding"/>
+     </item>
+     <item>
       <widget class="QComboBox" name="m_cmbEncoding">
        <property name="toolTip">
         <string>Select encoding of the standard feed. If you are unsure about the encoding, then select &quot;UTF-8&quot; encoding.</string>
@@ -69,45 +86,66 @@
     </layout>
    </item>
    <item row="2" column="0">
-    <widget class="QLabel" name="m_lblTitle">
-     <property name="text">
-      <string>Title</string>
-     </property>
-     <property name="buddy">
-      <cstring>m_txtTitle</cstring>
-     </property>
-    </widget>
+    <layout class="QHBoxLayout" name="horizontalLayout_5">
+     <item>
+      <widget class="MultiFeedEditCheckBox" name="m_mcbTitle"/>
+     </item>
+     <item>
+      <widget class="QLabel" name="m_lblTitle">
+       <property name="text">
+        <string>Title</string>
+       </property>
+       <property name="buddy">
+        <cstring>m_txtTitle</cstring>
+       </property>
+      </widget>
+     </item>
+    </layout>
    </item>
    <item row="2" column="1">
     <widget class="LineEditWithStatus" name="m_txtTitle" native="true"/>
    </item>
    <item row="3" column="0">
-    <widget class="QLabel" name="m_lblDescription">
-     <property name="text">
-      <string>Description</string>
-     </property>
-     <property name="buddy">
-      <cstring>m_txtDescription</cstring>
-     </property>
-    </widget>
+    <layout class="QHBoxLayout" name="horizontalLayout_6">
+     <item>
+      <widget class="MultiFeedEditCheckBox" name="m_mcbDescription"/>
+     </item>
+     <item>
+      <widget class="QLabel" name="m_lblDescription">
+       <property name="text">
+        <string>Description</string>
+       </property>
+       <property name="buddy">
+        <cstring>m_txtDescription</cstring>
+       </property>
+      </widget>
+     </item>
+    </layout>
    </item>
    <item row="3" column="1">
     <widget class="LineEditWithStatus" name="m_txtDescription" native="true"/>
    </item>
    <item row="4" column="0">
-    <widget class="QLabel" name="label">
-     <property name="text">
-      <string>Source</string>
-     </property>
-     <property name="buddy">
-      <cstring>m_txtSource</cstring>
-     </property>
-    </widget>
+    <layout class="QHBoxLayout" name="horizontalLayout_7">
+     <item>
+      <widget class="MultiFeedEditCheckBox" name="m_mcbSourceType"/>
+     </item>
+     <item>
+      <widget class="QLabel" name="label">
+       <property name="text">
+        <string>Source</string>
+       </property>
+       <property name="buddy">
+        <cstring>m_txtSource</cstring>
+       </property>
+      </widget>
+     </item>
+    </layout>
    </item>
    <item row="4" column="1">
     <widget class="QComboBox" name="m_cmbSourceType"/>
    </item>
-   <item row="5" column="0" colspan="2">
+   <item row="5" column="1">
     <widget class="TextEditWithStatus" name="m_txtSource" native="true">
      <property name="minimumSize">
       <size>
@@ -124,14 +162,21 @@
     </widget>
    </item>
    <item row="6" column="0" colspan="2">
-    <widget class="QLabel" name="label_4">
-     <property name="text">
-      <string>Post-processing script</string>
-     </property>
-     <property name="buddy">
-      <cstring>m_txtPostProcessScript</cstring>
-     </property>
-    </widget>
+    <layout class="QHBoxLayout" name="horizontalLayout_8">
+     <item>
+      <widget class="MultiFeedEditCheckBox" name="m_mcbPostProcessScript"/>
+     </item>
+     <item>
+      <widget class="QLabel" name="label_4">
+       <property name="text">
+        <string>Post-processing script</string>
+       </property>
+       <property name="buddy">
+        <cstring>m_txtPostProcessScript</cstring>
+       </property>
+      </widget>
+     </item>
+    </layout>
    </item>
    <item row="7" column="0" colspan="2">
     <widget class="TextEditWithStatus" name="m_txtPostProcessScript" native="true">
@@ -187,14 +232,21 @@
     </layout>
    </item>
    <item row="10" column="0">
-    <widget class="QLabel" name="m_lblIcon">
-     <property name="text">
-      <string>Icon</string>
-     </property>
-     <property name="buddy">
-      <cstring>m_btnIcon</cstring>
-     </property>
-    </widget>
+    <layout class="QHBoxLayout" name="horizontalLayout_10">
+     <item>
+      <widget class="MultiFeedEditCheckBox" name="m_mcbIcon"/>
+     </item>
+     <item>
+      <widget class="QLabel" name="m_lblIcon">
+       <property name="text">
+        <string>Icon</string>
+       </property>
+       <property name="buddy">
+        <cstring>m_btnIcon</cstring>
+       </property>
+      </widget>
+     </item>
+    </layout>
    </item>
    <item row="10" column="1">
     <widget class="QToolButton" name="m_btnIcon">
@@ -246,9 +298,17 @@
      </property>
     </spacer>
    </item>
+   <item row="5" column="0">
+    <widget class="MultiFeedEditCheckBox" name="m_mcbSource"/>
+   </item>
   </layout>
  </widget>
  <customwidgets>
+  <customwidget>
+   <class>MultiFeedEditCheckBox</class>
+   <extends>QCheckBox</extends>
+   <header>multifeededitcheckbox.h</header>
+  </customwidget>
   <customwidget>
    <class>HelpSpoiler</class>
    <extends>QWidget</extends>
