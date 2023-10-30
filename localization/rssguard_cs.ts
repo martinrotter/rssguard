@@ -24,7 +24,7 @@
     <message>
       <location filename="../src/librssguard/network-web/adblock/adblockdialog.cpp" line="64"/>
       <source>Cannot enable AdBlock</source>
-      <translation>AdBlock nelze povolit</translation>
+      <translation>Nelze povolit AdBlock</translation>
     </message>
     <message>
       <location filename="../src/librssguard/network-web/adblock/adblockdialog.cpp" line="65"/>
@@ -220,7 +220,7 @@ na tuto bublinu.</translation>
     <message>
       <location filename="../src/librssguard/gui/notifications/articlelistnotification.ui" line="69"/>
       <source>...</source>
-      <translation type="unfinished">...</translation>
+      <translation>...</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/notifications/articlelistnotification.ui" line="90"/>
@@ -316,7 +316,7 @@ na tuto bublinu.</translation>
     <message>
       <location filename="../src/librssguard/services/abstract/gui/authenticationdetails.cpp" line="22"/>
       <source>Token</source>
-      <translation type="unfinished">Token</translation>
+      <translation>Token</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/abstract/gui/authenticationdetails.cpp" line="53"/>
@@ -1156,7 +1156,7 @@ ID položky: %5</translation>
       <location filename="../src/librssguard/gui/feedsview.cpp" line="298"/>
       <location filename="../src/librssguard/gui/feedsview.cpp" line="315"/>
       <source>Cannot edit items</source>
-      <translation type="unfinished">Cannot edit items</translation>
+      <translation>Nelze upravit položku</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/feedsview.cpp" line="271"/>
@@ -1181,7 +1181,7 @@ ID položky: %5</translation>
     <message>
       <location filename="../src/librssguard/gui/feedsview.cpp" line="326"/>
       <source>Cannot edit some items</source>
-      <translation type="unfinished">Cannot edit some items</translation>
+      <translation>Nelze upravit nějaké položky</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/feedsview.cpp" line="327"/>
@@ -1196,7 +1196,7 @@ ID položky: %5</translation>
     <message>
       <location filename="../src/librssguard/gui/feedsview.cpp" line="400"/>
       <source>Some selected items will not be deleted, because they cannot be deleted.</source>
-      <translation type="unfinished">Some selected items will not be deleted, because they cannot be deleted.</translation>
+      <translation>Některé vybrané položky nebudou odstraněny, protože nemůžou být odstranit.</translation>
     </message>
     <message numerus="yes">
       <location filename="../src/librssguard/gui/feedsview.cpp" line="407"/>
@@ -1205,7 +1205,7 @@ ID položky: %5</translation>
         <numerusform>Deleting %n items</numerusform>
         <numerusform>Deleting %n items</numerusform>
         <numerusform>Deleting %n items</numerusform>
-        <numerusform>Deleting %n items</numerusform>
+        <numerusform>Smazání %n položek</numerusform>
       </translation>
     </message>
     <message numerus="yes">
@@ -1826,7 +1826,7 @@ Složka cache pro QtWebEngine -&gt; &quot;%7&quot;</translation>
     <message>
       <location filename="../src/librssguard/services/standard/gui/formdiscoverfeeds.ui" line="14"/>
       <source>Discover feeds</source>
-      <translation type="unfinished">Discover feeds</translation>
+      <translation>Objevuj kanály</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/standard/gui/formdiscoverfeeds.ui" line="20"/>
@@ -1836,12 +1836,12 @@ Složka cache pro QtWebEngine -&gt; &quot;%7&quot;</translation>
     <message>
       <location filename="../src/librssguard/services/standard/gui/formdiscoverfeeds.ui" line="42"/>
       <source>Discover!</source>
-      <translation type="unfinished">Discover!</translation>
+      <translation>Objevujte!</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/standard/gui/formdiscoverfeeds.ui" line="70"/>
       <source>Discovered feeds</source>
-      <translation type="unfinished">Discovered feeds</translation>
+      <translation>Objevené kanály</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/standard/gui/formdiscoverfeeds.ui" line="76"/>
@@ -1866,7 +1866,7 @@ Složka cache pro QtWebEngine -&gt; &quot;%7&quot;</translation>
     <message>
       <location filename="../src/librssguard/services/standard/gui/formdiscoverfeeds.ui" line="183"/>
       <source>Add single feed with advanced details</source>
-      <translation type="unfinished">Add single feed with advanced details</translation>
+      <translation>Přidat kanál s pokročilými detaily</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/standard/gui/formdiscoverfeeds.ui" line="190"/>
@@ -1896,12 +1896,12 @@ Složka cache pro QtWebEngine -&gt; &quot;%7&quot;</translation>
     <message>
       <location filename="../src/librssguard/services/standard/gui/formdiscoverfeeds.cpp" line="189"/>
       <source>URL is valid.</source>
-      <translation type="unfinished">URL is valid.</translation>
+      <translation>Adresa URL je platná.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/standard/gui/formdiscoverfeeds.cpp" line="192"/>
       <source>URL is NOT valid.</source>
-      <translation type="unfinished">URL is NOT valid.</translation>
+      <translation>URL adresa není platná.</translation>
     </message>
   </context>
   <context>
@@ -1976,7 +1976,7 @@ Složka cache pro QtWebEngine -&gt; &quot;%7&quot;</translation>
         <numerusform>Edit %n feeds</numerusform>
         <numerusform>Edit %n feeds</numerusform>
         <numerusform>Edit %n feeds</numerusform>
-        <numerusform>Edit %n feeds</numerusform>
+        <numerusform>Upravit %n kanálů</numerusform>
       </translation>
     </message>
     <message>
@@ -4504,7 +4504,7 @@ Tokeny vyprší: %2</translation>
     <message>
       <location filename="../src/librssguard/core/messagesmodel.cpp" line="281"/>
       <source>Id</source>
-      <translation type="unfinished">Id</translation>
+      <translation>Id</translation>
     </message>
     <message>
       <location filename="../src/librssguard/core/messagesmodel.cpp" line="282"/>
@@ -4619,7 +4619,7 @@ Tokeny vyprší: %2</translation>
     <message>
       <location filename="../src/librssguard/core/messagesmodel.cpp" line="298"/>
       <source>RTL</source>
-      <translation type="unfinished">RTL</translation>
+      <translation>RTL</translation>
     </message>
     <message>
       <location filename="../src/librssguard/core/messagesmodel.cpp" line="300"/>
@@ -4972,7 +4972,7 @@ Tokeny vyprší: %2</translation>
     <message>
       <location filename="../src/librssguard/services/abstract/gui/multifeededitcheckbox.cpp" line="6"/>
       <source>Apply this to all edited feeds.</source>
-      <translation type="unfinished">Apply this to all edited feeds.</translation>
+      <translation>Použí to na všechny upravované kanály.</translation>
     </message>
   </context>
   <context>
@@ -5102,7 +5102,7 @@ Tokeny vyprší: %2</translation>
     <message>
       <location filename="../src/librssguard/gui/reusable/networkproxydetails.ui" line="48"/>
       <source>Port</source>
-      <translation type="unfinished">Port</translation>
+      <translation>Port</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/reusable/networkproxydetails.ui" line="76"/>
@@ -5625,7 +5625,7 @@ Podporované čtečky:</translation>
     <message>
       <location filename="../src/librssguard/services/standard/parsers/atomparser.cpp" line="246"/>
       <source>not an ATOM feed</source>
-      <translation type="unfinished">not an ATOM feed</translation>
+      <translation>není ATOM feed</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/standard/parsers/jsonparser.cpp" line="117"/>
@@ -6408,7 +6408,7 @@ Autoři této aplikace nenesou žádnou odpovědnost za ztrátu Vašich dat.</tr
     <message>
       <location filename="../src/librssguard/gui/settings/settingsdatabase.ui" line="96"/>
       <source>Port</source>
-      <translation type="unfinished">Port</translation>
+      <translation>Port</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsdatabase.ui" line="127"/>
