@@ -171,13 +171,13 @@ void FeedsView::addFeedIntoSelectedAccount() {
 }
 
 void FeedsView::addCategoryIntoSelectedAccount() {
-  const RootItem* selected = selectedItem();
+  RootItem* selected = selectedItem();
 
   if (selected != nullptr) {
     ServiceRoot* root = selected->getParentServiceRoot();
 
     if (root->supportsCategoryAdding()) {
-      root->addNewCategory(selectedItem());
+      root->addNewCategory(selected);
     }
     else {
       qApp->showGuiMessage(Notification::Event::GeneralEvent,
@@ -231,7 +231,9 @@ void FeedsView::updateSelectedItems() {
 }
 
 void FeedsView::clearSelectedFeeds() {
-  m_sourceModel->markItemCleared(selectedItem(), false, true);
+  for (auto* it : selectedItems()) {
+    m_sourceModel->markItemCleared(it, false, true);
+  }
 }
 
 void FeedsView::clearAllFeeds() {
@@ -373,46 +375,59 @@ void FeedsView::deleteSelectedItem() {
     return;
   }
 
+  /*
   if (!currentIndex().isValid()) {
-    // Changes are done, unlock the update master lock and exit.
+    qApp->feedUpdateLock()->unlock();
+    return;
+  }
+  */
+
+  QList<RootItem*> selected_items = selectedItems();
+  auto std_deletable_items = boolinq::from(selected_items)
+                               .where([](RootItem* it) {
+                                 return it->canBeDeleted();
+                               })
+                               .toStdList();
+
+  if (std_deletable_items.empty()) {
     qApp->feedUpdateLock()->unlock();
     return;
   }
 
-  RootItem* selected_item = selectedItem();
+  if (qsizetype(std_deletable_items.size()) < selected_items.size()) {
+    qApp->showGuiMessage(Notification::Event::GeneralEvent,
+                         GuiMessage(tr("Some items won't be deleted"),
+                                    tr("Some selected items will not be deleted, because they cannot be deleted."),
+                                    QSystemTrayIcon::MessageIcon::Warning));
+  }
 
-  if (selected_item != nullptr) {
-    if (selected_item->canBeDeleted()) {
-      // Ask user first.
-      if (MsgBox::show(qApp->mainFormWidget(),
-                       QMessageBox::Icon::Question,
-                       tr("Deleting \"%1\"").arg(selected_item->title()),
-                       tr("You are about to completely delete item \"%1\".").arg(selected_item->title()),
-                       tr("Are you sure?"),
-                       QString(),
-                       QMessageBox::StandardButton::Yes | QMessageBox::StandardButton::No,
-                       QMessageBox::StandardButton::Yes) == QMessageBox::StandardButton::No) {
-        // User refused.
-        qApp->feedUpdateLock()->unlock();
-        return;
-      }
+  // Ask user first.
+  if (MsgBox::show(qApp->mainFormWidget(),
+                   QMessageBox::Icon::Question,
+                   tr("Deleting %n items", nullptr, int(std_deletable_items.size())),
+                   tr("You are about to completely delete %n items.", nullptr, int(std_deletable_items.size())),
+                   tr("Are you sure?"),
+                   QString(),
+                   QMessageBox::StandardButton::Yes | QMessageBox::StandardButton::No,
+                   QMessageBox::StandardButton::Yes) == QMessageBox::StandardButton::No) {
+    // User refused.
+    qApp->feedUpdateLock()->unlock();
+    return;
+  }
 
-      // We have deleteable item selected, remove it via GUI.
-      if (!selected_item->deleteViaGui()) {
-        m_proxyModel->invalidate();
+  auto std_pointed_items = boolinq::from(std_deletable_items)
+                             .select([](RootItem* it) {
+                               return QPointer<RootItem>(it);
+                             })
+                             .toStdList();
 
-        qApp->showGuiMessage(Notification::Event::GeneralEvent,
-                             {tr("Cannot delete \"%1\"").arg(selected_item->title()),
-                              tr("This item cannot be deleted because something critically failed. Submit bug report."),
-                              QSystemTrayIcon::MessageIcon::Critical});
-      }
+  for (const QPointer<RootItem>& pnt : std_pointed_items) {
+    if (pnt.isNull()) {
+      continue;
     }
-    else {
-      qApp->showGuiMessage(Notification::Event::GeneralEvent,
-                           {tr("Cannot delete \"%1\"").arg(selected_item->title()),
-                            tr("This item cannot be deleted, because it does not support it\nor this functionality is "
-                               "not implemented yet."),
-                            QSystemTrayIcon::MessageIcon::Critical});
+
+    if (pnt->deleteViaGui()) {
+      m_proxyModel->invalidate();
     }
   }
 
@@ -421,37 +436,57 @@ void FeedsView::deleteSelectedItem() {
 }
 
 void FeedsView::moveSelectedItemUp() {
-  m_sourceModel->changeSortOrder(selectedItem(), false, false, selectedItem()->sortOrder() - 1);
+  for (RootItem* it : selectedItems()) {
+    m_sourceModel->changeSortOrder(it, false, false, it->sortOrder() - 1);
+  }
+
   m_proxyModel->invalidate();
 }
 
 void FeedsView::moveSelectedItemTop() {
-  m_sourceModel->changeSortOrder(selectedItem(), true, false);
+  for (RootItem* it : selectedItems()) {
+    m_sourceModel->changeSortOrder(it, true, false);
+  }
+
   m_proxyModel->invalidate();
 }
 
 void FeedsView::moveSelectedItemBottom() {
-  m_sourceModel->changeSortOrder(selectedItem(), false, true);
+  for (RootItem* it : selectedItems()) {
+    m_sourceModel->changeSortOrder(it, false, true);
+  }
+
   m_proxyModel->invalidate();
 }
 
 void FeedsView::moveSelectedItemDown() {
-  m_sourceModel->changeSortOrder(selectedItem(), false, false, selectedItem()->sortOrder() + 1);
+  for (RootItem* it : selectedItems()) {
+    m_sourceModel->changeSortOrder(it, false, false, it->sortOrder() + 1);
+  }
+
   m_proxyModel->invalidate();
 }
 
 void FeedsView::rearrangeCategoriesOfSelectedItem() {
-  m_sourceModel->sortDirectDescendants(selectedItem(), RootItem::Kind::Category);
+  for (RootItem* it : selectedItems()) {
+    m_sourceModel->sortDirectDescendants(it, RootItem::Kind::Category);
+  }
+
   m_proxyModel->invalidate();
 }
 
 void FeedsView::rearrangeFeedsOfSelectedItem() {
-  m_sourceModel->sortDirectDescendants(selectedItem(), RootItem::Kind::Feed);
+  for (RootItem* it : selectedItems()) {
+    m_sourceModel->sortDirectDescendants(it, RootItem::Kind::Feed);
+  }
+
   m_proxyModel->invalidate();
 }
 
 void FeedsView::markSelectedItemReadStatus(RootItem::ReadStatus read) {
-  m_sourceModel->markItemRead(selectedItem(), read);
+  for (RootItem* it : selectedItems()) {
+    m_sourceModel->markItemRead(it, read);
+  }
 }
 
 void FeedsView::markSelectedItemRead() {

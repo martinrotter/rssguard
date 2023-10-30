@@ -199,7 +199,9 @@ void FeedsModel::removeItem(RootItem* deleting_item) {
       deleting_item->getParentServiceRoot()->updateCounts(true);
     }
 
-    deleting_item->deleteLater();
+    delete deleting_item;
+    // deleting_item->deleteLater();
+
     notifyWithCounts();
   }
 }
