@@ -8,7 +8,7 @@ body:
     attributes:
       value: |
         Dear RSS Guard contributor, ALWAYS, ALWAYS, ALWAYS attach DEBUG LOG to your bug report!!!
-        How to generate it see [here](https://github.com/martinrotter/rssguard/blob/master/resources/docs/Documentation.md#reprt).
+        How to generate it see [here](https://rssguard.readthedocs.io/en/stable/contrib/bugs.html).
 
         Please, RESPECT this template. You might be interested in reading [www.chiark.greenend.org.uk](http://www.chiark.greenend.org.uk/~sgtatham/bugs.html).
   - type: textarea
