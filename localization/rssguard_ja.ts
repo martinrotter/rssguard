@@ -1186,8 +1186,8 @@ Item ID: %5</source>
     <message numerus="yes">
       <location filename="../src/librssguard/gui/feedsview.cpp" line="408"/>
       <source>You are about to completely delete %n items.</source>
-      <translation type="unfinished">
-        <numerusform>You are about to completely delete %n items.</numerusform>
+      <translation>
+        <numerusform>%n 個のアイテムを完全に削除しようとしています</numerusform>
       </translation>
     </message>
     <message>
@@ -4921,7 +4921,7 @@ Login tokens expiration: %2</translation>
     <message>
       <location filename="../src/librssguard/services/abstract/gui/multifeededitcheckbox.cpp" line="6"/>
       <source>Apply this to all edited feeds.</source>
-      <translation type="unfinished">Apply this to all edited feeds.</translation>
+      <translation>編集したすべてのフィードに適用する</translation>
     </message>
   </context>
   <context>
