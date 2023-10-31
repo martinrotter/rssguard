@@ -1,6 +1,16 @@
 4.5.2
 -----
 
+Dear users. Note that one of upcoming releases will break-backwards compatibility thus it will be labelled as "5.0.0". Backwards compatibility will be broken in several areas of the application - particularly I want to greatly enhance syntax/API of article filtering scripts, where I plan to restructure existing functions, make it all bit more clear and add some more functions.
+
+Also, some other areas of RSS Guard might be touched so I will use the opportunity to make again some enhancements. I do not expect that DB incompatibility will be as high as it was when transitioning from 3.x to 4.x and I expect that existing RSS Guard databases will be converted to "5.x" format automatically.
+
+Moreover, I thank to all users of this app. Currently according to my internal "guess" I believe that RSS Guard has 5000+ regular users and it is likely one of the most used RSS desktop cross-platform applications. I hope we will grow and I also send big thanks to all who donated some money. It is not much, but I have used some of it to buy parts for my home PC on which I develop RSS guard mostly. Thanks.
+
+Btw, just thinking out loud. If each user contributed 5 USD per year, I could do RSS Guard development as my full-time job, which I would love to. :D
+
+That's all I wanted to say. Thanks, users.
+
 Added:
 * Added new "Discover feeds" dialog which is automatically opened when user hits "Add new feed" button. In this dialog, use does not have to input exact feed address but can enter just regular website address and RSS Guard will try to discover all available feeds possible. (#1134)
 * ATOM/RSS/JSON/Sitemap feeds now automatically use "ETag" HTTP headers which has potential speedup when fetching feeds with no new messages. This can bring 10-80 % speedup if user uses more feeds which do support "ETag". (#1136)
