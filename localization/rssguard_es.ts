@@ -773,22 +773,22 @@ ID artículo: %5</translation>
     <message>
       <location filename="../src/librssguard/gui/feedmessageviewer.cpp" line="229"/>
       <source>Filtered feed list</source>
-      <translation type="unfinished">Filtered feed list</translation>
+      <translation>Lista de fuentes filtrada</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/feedmessageviewer.cpp" line="230"/>
       <source>Cannot select article in article list as your feed is filtered out from feed list.</source>
-      <translation type="unfinished">Cannot select article in article list as your feed is filtered out from feed list.</translation>
+      <translation>Imposible seleccionar artículo en la lista de artículos porque su fuente está filtrada en la lista de fuentes.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/feedmessageviewer.cpp" line="247"/>
       <source>Filtered article list</source>
-      <translation type="unfinished">Filtered article list</translation>
+      <translation>Lista de artículos filtrada</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/feedmessageviewer.cpp" line="248"/>
       <source>Cannot select article as it seems your article list is filtered.</source>
-      <translation type="unfinished">Cannot select article as it seems your article list is filtered.</translation>
+      <translation>Imposible seleccionar el artículo porque parece que su lista de artículos está filtrada.</translation>
     </message>
   </context>
   <context>
@@ -1142,53 +1142,53 @@ ID artículo: %5</translation>
       <location filename="../src/librssguard/gui/feedsview.cpp" line="298"/>
       <location filename="../src/librssguard/gui/feedsview.cpp" line="315"/>
       <source>Cannot edit items</source>
-      <translation type="unfinished">Cannot edit items</translation>
+      <translation>Imposible editar elementos</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/feedsview.cpp" line="271"/>
       <source>Selected items cannot be edited. This is not supported (yet).</source>
-      <translation type="unfinished">Selected items cannot be edited. This is not supported (yet).</translation>
+      <translation>Imposible editar elementos seleccionados. Ésto carece de soporte (aún).</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/feedsview.cpp" line="281"/>
       <source>%1 does not support batch editing of multiple accounts.</source>
-      <translation type="unfinished">%1 does not support batch editing of multiple accounts.</translation>
+      <translation>%1 carece de soporte para edición por lotes de múltiples cuentas.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/feedsview.cpp" line="299"/>
       <source>%1 does not support batch editing of items from multiple accounts.</source>
-      <translation type="unfinished">%1 does not support batch editing of items from multiple accounts.</translation>
+      <translation>%1 carece de soporte para edición por lotes de elementos para múltiples cuentas.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/feedsview.cpp" line="316"/>
       <source>%1 does not support batch editing of items of varying types.</source>
-      <translation type="unfinished">%1 does not support batch editing of items of varying types.</translation>
+      <translation>%1 carece de soporte para la edición por lotes de elementos de distintos tipos.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/feedsview.cpp" line="326"/>
       <source>Cannot edit some items</source>
-      <translation type="unfinished">Cannot edit some items</translation>
+      <translation>Imposible editar algunos elementos</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/feedsview.cpp" line="327"/>
       <source>Some of selected items cannot be edited. Proceeding to edit the rest.</source>
-      <translation type="unfinished">Some of selected items cannot be edited. Proceeding to edit the rest.</translation>
+      <translation>Imposible editar algunos elementos. Procediendo a editar el resto.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/feedsview.cpp" line="399"/>
       <source>Some items won&apos;t be deleted</source>
-      <translation type="unfinished">Some items won&apos;t be deleted</translation>
+      <translation>Será imposible eliminar algunos elementos</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/feedsview.cpp" line="400"/>
       <source>Some selected items will not be deleted, because they cannot be deleted.</source>
-      <translation type="unfinished">Some selected items will not be deleted, because they cannot be deleted.</translation>
+      <translation>Será imposible eliminar algunos elementos seleccionados, porque es imposible eliminar éstos.</translation>
     </message>
     <message numerus="yes">
       <location filename="../src/librssguard/gui/feedsview.cpp" line="407"/>
       <source>Deleting %n items</source>
       <translation type="unfinished">
-        <numerusform>Deleting %n items</numerusform>
+        <numerusform>Eliminando %n elementos</numerusform>
         <numerusform>Deleting %n items</numerusform>
       </translation>
     </message>
@@ -1196,7 +1196,7 @@ ID artículo: %5</translation>
       <location filename="../src/librssguard/gui/feedsview.cpp" line="408"/>
       <source>You are about to completely delete %n items.</source>
       <translation type="unfinished">
-        <numerusform>You are about to completely delete %n items.</numerusform>
+        <numerusform>Está a punto de eliminar por completo %n elementos.</numerusform>
         <numerusform>You are about to completely delete %n items.</numerusform>
       </translation>
     </message>
@@ -1573,7 +1573,7 @@ Archivo de QtWebEngine memoria -&gt; &quot;%7&quot;</translation>
       <location filename="../src/librssguard/services/abstract/gui/formcategorydetails.cpp" line="106"/>
       <source>Edit %n categories</source>
       <translation type="unfinished">
-        <numerusform>Edit %n categories</numerusform>
+        <numerusform>Editar %n categorías</numerusform>
         <numerusform>Edit %n categories</numerusform>
       </translation>
     </message>
@@ -1803,7 +1803,7 @@ Archivo de QtWebEngine memoria -&gt; &quot;%7&quot;</translation>
     <message>
       <location filename="../src/librssguard/services/standard/gui/formdiscoverfeeds.ui" line="14"/>
       <source>Discover feeds</source>
-      <translation type="unfinished">Discover feeds</translation>
+      <translation>Descubrir canales</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/standard/gui/formdiscoverfeeds.ui" line="20"/>
@@ -1813,17 +1813,17 @@ Archivo de QtWebEngine memoria -&gt; &quot;%7&quot;</translation>
     <message>
       <location filename="../src/librssguard/services/standard/gui/formdiscoverfeeds.ui" line="42"/>
       <source>Discover!</source>
-      <translation type="unfinished">Discover!</translation>
+      <translation>¡Descubrir!</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/standard/gui/formdiscoverfeeds.ui" line="70"/>
       <source>Discovered feeds</source>
-      <translation type="unfinished">Discovered feeds</translation>
+      <translation>Canales descubiertos</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/standard/gui/formdiscoverfeeds.ui" line="76"/>
       <source>Target parent folder</source>
-      <translation type="unfinished">Target parent folder</translation>
+      <translation>Carpeta principal de destino</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/standard/gui/formdiscoverfeeds.ui" line="88"/>
@@ -1833,37 +1833,37 @@ Archivo de QtWebEngine memoria -&gt; &quot;%7&quot;</translation>
     <message>
       <location filename="../src/librssguard/services/standard/gui/formdiscoverfeeds.ui" line="121"/>
       <source>Select &amp;all</source>
-      <translation type="unfinished">Select &amp;all</translation>
+      <translation>Seleccionar todo</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/standard/gui/formdiscoverfeeds.ui" line="128"/>
       <source>&amp;Unselect all</source>
-      <translation type="unfinished">&amp;Unselect all</translation>
+      <translation>De-seleccionar todo</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/standard/gui/formdiscoverfeeds.ui" line="183"/>
       <source>Add single feed with advanced details</source>
-      <translation type="unfinished">Add single feed with advanced details</translation>
+      <translation>Añadir una fuente única con detalles avanzados</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/standard/gui/formdiscoverfeeds.ui" line="190"/>
       <source>&amp;Import checked feeds</source>
-      <translation type="unfinished">&amp;Import checked feeds</translation>
+      <translation>&amp;Importar fuentes comprobadas</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/standard/gui/formdiscoverfeeds.cpp" line="36"/>
       <source>Switch to &amp;advanced mode</source>
-      <translation type="unfinished">Switch to &amp;advanced mode</translation>
+      <translation>Cambiar a modo avanzado</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/standard/gui/formdiscoverfeeds.cpp" line="38"/>
       <source>Close this dialog and display dialog for adding individual feeds with advanced options.</source>
-      <translation type="unfinished">Close this dialog and display dialog for adding individual feeds with advanced options.</translation>
+      <translation>Cierre este diálogo y muestre el diálogo para añadir fuentes individuales con opciones avanzadas.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/standard/gui/formdiscoverfeeds.cpp" line="120"/>
       <source>Cannot discover feeds</source>
-      <translation type="unfinished">Cannot discover feeds</translation>
+      <translation>Imposible descubrir fuentes</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/standard/gui/formdiscoverfeeds.cpp" line="121"/>
@@ -1873,12 +1873,12 @@ Archivo de QtWebEngine memoria -&gt; &quot;%7&quot;</translation>
     <message>
       <location filename="../src/librssguard/services/standard/gui/formdiscoverfeeds.cpp" line="189"/>
       <source>URL is valid.</source>
-      <translation type="unfinished">URL is valid.</translation>
+      <translation>URL es válida.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/standard/gui/formdiscoverfeeds.cpp" line="192"/>
       <source>URL is NOT valid.</source>
-      <translation type="unfinished">URL is NOT valid.</translation>
+      <translation>URL es inválida.</translation>
     </message>
   </context>
   <context>
@@ -1950,7 +1950,7 @@ Archivo de QtWebEngine memoria -&gt; &quot;%7&quot;</translation>
       <location filename="../src/librssguard/services/abstract/gui/formfeeddetails.cpp" line="151"/>
       <source>Edit %n feeds</source>
       <translation type="unfinished">
-        <numerusform>Edit %n feeds</numerusform>
+        <numerusform>Editar %n fuentes</numerusform>
         <numerusform>Edit %n feeds</numerusform>
       </translation>
     </message>
@@ -2228,27 +2228,27 @@ Archivo de QtWebEngine memoria -&gt; &quot;%7&quot;</translation>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="302"/>
       <source>&amp;Edit selected items</source>
-      <translation type="unfinished">&amp;Edit selected items</translation>
+      <translation>&amp;Editar elementos seleccionados</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="307"/>
       <source>&amp;Delete selected items</source>
-      <translation type="unfinished">&amp;Delete selected items</translation>
+      <translation>&amp;Eliminar elementos seleccionados</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="348"/>
       <source>Mark selected items &amp;read</source>
-      <translation type="unfinished">Mark selected items &amp;read</translation>
+      <translation>Marca&amp;r elemento seleccionado como leído</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="359"/>
       <source>Mark selected items &amp;unread</source>
-      <translation type="unfinished">Mark selected items &amp;unread</translation>
+      <translation>Marca&amp;r elemento seleccionado como sin leer</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="378"/>
       <source>&amp;Clean selected items</source>
-      <translation type="unfinished">&amp;Clean selected items</translation>
+      <translation>Limpiar elementos sele&amp;ccionados</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="381"/>
@@ -2669,12 +2669,12 @@ Archivo de QtWebEngine memoria -&gt; &quot;%7&quot;</translation>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="952"/>
       <source>Edit &amp;child feeds</source>
-      <translation type="unfinished">Edit &amp;child feeds</translation>
+      <translation>Editar fuentes se&amp;cundarias</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="957"/>
       <source>Edit child feeds (&amp;recursive)</source>
-      <translation type="unfinished">Edit child feeds (&amp;recursive)</translation>
+      <translation>Editar fuentes secunda&amp;rias (descendente)</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="749"/>
@@ -4938,7 +4938,7 @@ Expiración de identificadores de acceso: %2</translation>
     <message>
       <location filename="../src/librssguard/services/abstract/gui/multifeededitcheckbox.cpp" line="6"/>
       <source>Apply this to all edited feeds.</source>
-      <translation type="unfinished">Apply this to all edited feeds.</translation>
+      <translation>Aplicar esto a todas las fuentes editadas.</translation>
     </message>
   </context>
   <context>
@@ -5560,17 +5560,17 @@ Lista de lectores compatibles:</translation>
     <message>
       <location filename="../src/librssguard/miscellaneous/textfactory.cpp" line="328"/>
       <source>escape sequence not completed</source>
-      <translation type="unfinished">escape sequence not completed</translation>
+      <translation>secuencia de escape incompleta</translation>
     </message>
     <message>
       <location filename="../src/librssguard/miscellaneous/textfactory.cpp" line="332"/>
       <source>closing &quot; is missing</source>
-      <translation type="unfinished">closing &quot; is missing</translation>
+      <translation>falta cerrar &quot;</translation>
     </message>
     <message>
       <location filename="../src/librssguard/miscellaneous/textfactory.cpp" line="336"/>
       <source>closing &apos; is missing</source>
-      <translation type="unfinished">closing &apos; is missing</translation>
+      <translation>falta cerrar &apos;</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/standard/parsers/atomparser.cpp" line="240"/>
@@ -5578,47 +5578,47 @@ Lista de lectores compatibles:</translation>
       <location filename="../src/librssguard/services/standard/parsers/rssparser.cpp" line="190"/>
       <location filename="../src/librssguard/services/standard/parsers/sitemapparser.cpp" line="176"/>
       <source>XML is not well-formed, %1</source>
-      <translation type="unfinished">XML is not well-formed, %1</translation>
+      <translation>XML está mal formado, %1</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/standard/parsers/atomparser.cpp" line="246"/>
       <source>not an ATOM feed</source>
-      <translation type="unfinished">not an ATOM feed</translation>
+      <translation>no es un canal ATOM</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/standard/parsers/jsonparser.cpp" line="117"/>
       <source>JSON error &apos;%1&apos;</source>
-      <translation type="unfinished">JSON error &apos;%1&apos;</translation>
+      <translation>Error JSON &apos;%1&apos;</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/standard/parsers/jsonparser.cpp" line="148"/>
       <source>not a JSON feed</source>
-      <translation type="unfinished">not a JSON feed</translation>
+      <translation>no es un canal RSS</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/standard/parsers/rdfparser.cpp" line="196"/>
       <source>not an RDF feed</source>
-      <translation type="unfinished">not an RDF feed</translation>
+      <translation>no es un canal RDF</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/standard/parsers/rssparser.cpp" line="196"/>
       <source>not a RSS feed</source>
-      <translation type="unfinished">not a RSS feed</translation>
+      <translation>no es un canal RSS</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/standard/parsers/sitemapparser.cpp" line="141"/>
       <source>support for gzipped sitemaps is not enabled</source>
-      <translation type="unfinished">support for gzipped sitemaps is not enabled</translation>
+      <translation>soporte para mapas de sitio comprimidos con gzip está inhabilitado</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/standard/parsers/sitemapparser.cpp" line="189"/>
       <source>sitemap indices are not supported</source>
-      <translation type="unfinished">sitemap indices are not supported</translation>
+      <translation>los índices del mapa del sitio carecen de soporte</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/standard/parsers/sitemapparser.cpp" line="193"/>
       <source>not a Sitemap</source>
-      <translation type="unfinished">not a Sitemap</translation>
+      <translation>no es un Mapa de Sitio</translation>
     </message>
   </context>
   <context>
@@ -5992,12 +5992,12 @@ Expiración de identificadores de acceso: %2</translation>
     <message>
       <location filename="../src/librssguard/services/abstract/serviceroot.cpp" line="138"/>
       <source>Unsupported</source>
-      <translation type="unfinished">Unsupported</translation>
+      <translation>Sin soporte</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/abstract/serviceroot.cpp" line="138"/>
       <source>This is not suppported (yet).</source>
-      <translation type="unfinished">This is not suppported (yet).</translation>
+      <translation>Ésto carece de soporte (aun).</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/abstract/serviceroot.cpp" line="193"/>
@@ -7281,7 +7281,7 @@ Código posprocesado: %3</translation>
     <message>
       <location filename="../src/librssguard/services/standard/standardfeed.cpp" line="326"/>
       <source>feed format not recognized</source>
-      <translation type="unfinished">feed format not recognized</translation>
+      <translation>formato de canal desconocido</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/standard/standardfeed.cpp" line="364"/>
@@ -7409,17 +7409,17 @@ Código posprocesado: %3</translation>
     <message>
       <location filename="../src/librssguard/services/standard/gui/standardfeeddetails.cpp" line="273"/>
       <source>Source is ok.</source>
-      <translation type="unfinished">Source is ok.</translation>
+      <translation>La fuente está bien.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/standard/gui/standardfeeddetails.cpp" line="283"/>
       <source>File exists.</source>
-      <translation type="unfinished">File exists.</translation>
+      <translation>El archivo existe.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/standard/gui/standardfeeddetails.cpp" line="286"/>
       <source>File does not exist.</source>
-      <translation type="unfinished">File does not exist.</translation>
+      <translation>Archivo inexistente.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/standard/gui/standardfeeddetails.cpp" line="318"/>
