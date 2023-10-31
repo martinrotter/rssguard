@@ -19,12 +19,12 @@
     <message>
       <location filename="../src/librssguard/network-web/adblock/adblockdialog.cpp" line="27"/>
       <source>AdBlock configuration</source>
-      <translation>AdBlock a jeho nastavení</translation>
+      <translation>AdBlock nastavení</translation>
     </message>
     <message>
       <location filename="../src/librssguard/network-web/adblock/adblockdialog.cpp" line="64"/>
       <source>Cannot enable AdBlock</source>
-      <translation>Nelze povolit AdBlock</translation>
+      <translation>AdBlock nemůže být povolen</translation>
     </message>
     <message>
       <location filename="../src/librssguard/network-web/adblock/adblockdialog.cpp" line="65"/>
@@ -311,7 +311,7 @@ na tuto bublinu.</translation>
     <message>
       <location filename="../src/librssguard/services/abstract/gui/authenticationdetails.cpp" line="19"/>
       <source>HTTP Basic</source>
-      <translation type="unfinished">HTTP Basic</translation>
+      <translation>HTTP Basic</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/abstract/gui/authenticationdetails.cpp" line="22"/>
@@ -1161,7 +1161,7 @@ ID položky: %5</translation>
     <message>
       <location filename="../src/librssguard/gui/feedsview.cpp" line="271"/>
       <source>Selected items cannot be edited. This is not supported (yet).</source>
-      <translation>Vybrané položky nelze upravit. Toto není podporováno (zatím).</translation>
+      <translation>Vybrané položky nemůžpu být upraveny. Toto není podporováno (zatím).</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/feedsview.cpp" line="281"/>
@@ -1196,7 +1196,7 @@ ID položky: %5</translation>
     <message>
       <location filename="../src/librssguard/gui/feedsview.cpp" line="400"/>
       <source>Some selected items will not be deleted, because they cannot be deleted.</source>
-      <translation>Některé vybrané položky nebudou odstraněny, protože nemůžou být odstranit.</translation>
+      <translation>Některé vybrané položky nebudou odstraněny, protože nemůžou být odstraněny.</translation>
     </message>
     <message numerus="yes">
       <location filename="../src/librssguard/gui/feedsview.cpp" line="407"/>
@@ -1211,10 +1211,10 @@ ID položky: %5</translation>
     <message numerus="yes">
       <location filename="../src/librssguard/gui/feedsview.cpp" line="408"/>
       <source>You are about to completely delete %n items.</source>
-      <translation type="unfinished">
+      <translation>
         <numerusform>Chystáte se odstranit %n položku.</numerusform>
         <numerusform>Chystáte se odstranit %n položky.</numerusform>
-        <numerusform>You are about to completely delete %n items.</numerusform>
+        <numerusform>Chystáte se odstranit %n položek.</numerusform>
         <numerusform>Chystáte se odstranit %n položek.</numerusform>
       </translation>
     </message>
@@ -4972,7 +4972,7 @@ Tokeny vyprší: %2</translation>
     <message>
       <location filename="../src/librssguard/services/abstract/gui/multifeededitcheckbox.cpp" line="6"/>
       <source>Apply this to all edited feeds.</source>
-      <translation>Použí to na všechny upravované kanály.</translation>
+      <translation>Použít to na všechny upravované kanály.</translation>
     </message>
   </context>
   <context>
