@@ -2226,7 +2226,7 @@ comme &amp;non-lus</translation>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="370"/>
       <source>&amp;Delete articles</source>
-      <translation>&amp;Supprimer</translation>
+      <translation>&amp;Supprimer les articles sélectionnés</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="302"/>

@@ -1196,15 +1196,15 @@ ID položky: %5</translation>
     <message>
       <location filename="../src/librssguard/gui/feedsview.cpp" line="400"/>
       <source>Some selected items will not be deleted, because they cannot be deleted.</source>
-      <translation>Některé vybrané položky nebudou odstraněny, protože nemůžou být odstraněny.</translation>
+      <translation>Některé vybrané položky nebudou odstraněny, protože je nelze odstranit.</translation>
     </message>
     <message numerus="yes">
       <location filename="../src/librssguard/gui/feedsview.cpp" line="407"/>
       <source>Deleting %n items</source>
       <translation>
-        <numerusform>Mažu %n položku</numerusform>
-        <numerusform>Mažu %n položky</numerusform>
-        <numerusform>Mažu %n položek</numerusform>
+        <numerusform>Smazání %n položky</numerusform>
+        <numerusform>Smazání %n položek</numerusform>
+        <numerusform>Smazání %n položek</numerusform>
         <numerusform>Mažu %n položek</numerusform>
       </translation>
     </message>
@@ -1503,7 +1503,7 @@ Složka cache pro QtWebEngine -&gt; &quot;%7&quot;</translation>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formbackupdatabasesettings.cpp" line="68"/>
       <source>Backup was created successfully.</source>
-      <translation>Záloha byla vytvořena.</translation>
+      <translation>Záloha byla úspěšně vytvořena.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formbackupdatabasesettings.cpp" line="95"/>
