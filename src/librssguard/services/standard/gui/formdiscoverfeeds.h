@@ -26,7 +26,7 @@ class DiscoveredFeedsModel : public AccountCheckModel {
     virtual int columnCount(const QModelIndex& parent) const;
     virtual QVariant data(const QModelIndex& index, int role) const;
 
-    RootItem* removeItem(RootItem *it);
+    RootItem* removeItem(RootItem* it);
     RootItem* removeItem(const QModelIndex& idx);
 };
 

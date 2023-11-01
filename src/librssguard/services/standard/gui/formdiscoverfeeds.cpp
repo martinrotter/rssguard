@@ -158,9 +158,15 @@ QList<StandardFeed*> FormDiscoverFeeds::discoverFeedsWithParser(const FeedParser
 
 void FormDiscoverFeeds::discoverFeeds() {
   QString url = m_ui.m_txtUrl->lineEdit()->text();
+  bool sitemap_discover = m_ui.m_cbDiscoverSitemaps->isChecked();
 
   std::function<QList<StandardFeed*>(const FeedParser*)> func = [=](const FeedParser* parser) -> QList<StandardFeed*> {
-    return discoverFeedsWithParser(parser, url);
+    if (!sitemap_discover && dynamic_cast<const SitemapParser*>(parser) != nullptr) {
+      return {};
+    }
+    else {
+      return discoverFeedsWithParser(parser, url);
+    }
   };
 
   std::function<QList<StandardFeed*>(QList<StandardFeed*>&, const QList<StandardFeed*>&)> reducer =

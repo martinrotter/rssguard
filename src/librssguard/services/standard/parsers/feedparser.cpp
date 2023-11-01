@@ -45,6 +45,11 @@ QList<StandardFeed*> FeedParser::discoverFeeds(ServiceRoot* root, const QUrl& ur
   return {};
 }
 
+QPair<StandardFeed*, QList<IconLocation>> FeedParser::guessFeed(const QByteArray& content,
+                                                                const QString& content_type) const {
+  return {};
+}
+
 QString FeedParser::xmlMessageRawContents(const QDomElement& msg_element) const {
   QString raw_contents;
   QTextStream str(&raw_contents);
