@@ -1169,18 +1169,18 @@ Item ID: %5</source>
     <message>
       <location filename="../src/librssguard/gui/feedsview.cpp" line="399"/>
       <source>Some items won&apos;t be deleted</source>
-      <translation type="unfinished">Some items won&apos;t be deleted</translation>
+      <translation>一部のアイテムは削除されません</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/feedsview.cpp" line="400"/>
       <source>Some selected items will not be deleted, because they cannot be deleted.</source>
-      <translation type="unfinished">Some selected items will not be deleted, because they cannot be deleted.</translation>
+      <translation>選択した一部のアイテムは削除できないため、削除されません</translation>
     </message>
     <message numerus="yes">
       <location filename="../src/librssguard/gui/feedsview.cpp" line="407"/>
       <source>Deleting %n items</source>
-      <translation type="unfinished">
-        <numerusform>Deleting %n items</numerusform>
+      <translation>
+        <numerusform>%n 個のアイテムを削除</numerusform>
       </translation>
     </message>
     <message numerus="yes">
@@ -3175,7 +3175,7 @@ You have to restart manually.</source>
       <location filename="../src/librssguard/services/standard/gui/formstandardimportexport.cpp" line="131"/>
       <location filename="../src/librssguard/services/standard/gui/formstandardimportexport.cpp" line="132"/>
       <source>Some feeds were not loaded properly. Check log for more information.</source>
-      <translation type="unfinished">Some feeds were not loaded properly. Check log for more information.</translation>
+      <translation>一部のフィードが正しく読み込まれませんでした。詳細についてはログを確認してください</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/standard/gui/formstandardimportexport.cpp" line="273"/>
@@ -5587,17 +5587,17 @@ List of supported readers:</source>
     <message>
       <location filename="../src/librssguard/services/standard/parsers/sitemapparser.cpp" line="141"/>
       <source>support for gzipped sitemaps is not enabled</source>
-      <translation type="unfinished">support for gzipped sitemaps is not enabled</translation>
+      <translation>gzip 形式のサイトマップのサポートが有効になっていません</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/standard/parsers/sitemapparser.cpp" line="189"/>
       <source>sitemap indices are not supported</source>
-      <translation type="unfinished">sitemap indices are not supported</translation>
+      <translation>サイトマップインデックスはサポートされていません</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/standard/parsers/sitemapparser.cpp" line="193"/>
       <source>not a Sitemap</source>
-      <translation type="unfinished">not a Sitemap</translation>
+      <translation>サイトマップではありません</translation>
     </message>
   </context>
   <context>
@@ -7247,7 +7247,7 @@ Post-processing script: %3</source>
     <message>
       <location filename="../src/librssguard/services/standard/standardfeed.cpp" line="365"/>
       <source>Cannot move feed, detailed information was logged via debug log.</source>
-      <translation type="unfinished">Cannot move feed, detailed information was logged via debug log.</translation>
+      <translation>フィードを移動できません。詳細情報はデバッグログに記録されています</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/standard/standardfeed.cpp" line="206"/>
@@ -7257,7 +7257,7 @@ Post-processing script: %3</source>
     <message>
       <location filename="../src/librssguard/services/standard/standardfeed.cpp" line="326"/>
       <source>feed format not recognized</source>
-      <translation type="unfinished">feed format not recognized</translation>
+      <translation>フィード形式が認識されません</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/standard/standardfeed.cpp" line="364"/>
