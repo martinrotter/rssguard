@@ -118,7 +118,7 @@ Fejl: %1</translation>
     <message>
       <location filename="../src/librssguard/network-web/adblock/adblockmanager.cpp" line="198"/>
       <source>Failed to setup filters and start server: %1.</source>
-      <translation type="unfinished">Failed to setup filters and start server: %1.</translation>
+      <translation>Kunne ikke indstille filtre og starte serveren: %1.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/network-web/adblock/adblockmanager.cpp" line="375"/>
@@ -166,7 +166,7 @@ Fejl: %1</translation>
     <message>
       <location filename="../src/librssguard/miscellaneous/application.cpp" line="1328"/>
       <source>Packages %1 were updated.</source>
-      <translation type="unfinished">Packages %1 were updated.</translation>
+      <translation>%1 pakker er blevet ajourført.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/miscellaneous/application.cpp" line="1035"/>
@@ -203,7 +203,7 @@ påmindelse.</translation>
     <message>
       <location filename="../src/librssguard/miscellaneous/application.cpp" line="1101"/>
       <source>AdBlock is not configured properly. Go to &quot;Settings&quot; -&gt; &quot;Node.js&quot; and check if your Node.js is properly configured.</source>
-      <translation type="unfinished">AdBlock is not configured properly. Go to &quot;Settings&quot; -&gt; &quot;Node.js&quot; and check if your Node.js is properly configured.</translation>
+      <translation>AdBlock er ikke indstillet rigtigt. Gå til &quot;Indstillinger&quot; -&gt; &quot;Node.js&quot; og tjek om node.js er indstillet rigtigt.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/miscellaneous/application.cpp" line="1150"/>
@@ -213,7 +213,7 @@ påmindelse.</translation>
     <message>
       <location filename="../src/librssguard/miscellaneous/application.cpp" line="1319"/>
       <source>Packages %1 were NOT updated because of error: %2.</source>
-      <translation type="unfinished">Packages %1 were NOT updated because of error: %2.</translation>
+      <translation>%1 pakker blev IKKE ajourført på grund af en fejl: %2.</translation>
     </message>
   </context>
   <context>
@@ -221,7 +221,7 @@ påmindelse.</translation>
     <message>
       <location filename="../src/librssguard/gui/notifications/articlelistnotification.ui" line="69"/>
       <source>...</source>
-      <translation type="unfinished">...</translation>
+      <translation>...</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/notifications/articlelistnotification.ui" line="90"/>
@@ -310,12 +310,12 @@ påmindelse.</translation>
     <message>
       <location filename="../src/librssguard/services/abstract/gui/authenticationdetails.cpp" line="19"/>
       <source>HTTP Basic</source>
-      <translation type="unfinished">HTTP Basic</translation>
+      <translation>Basal HTTP</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/abstract/gui/authenticationdetails.cpp" line="22"/>
       <source>Token</source>
-      <translation type="unfinished">Token</translation>
+      <translation>Symbol</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/abstract/gui/authenticationdetails.cpp" line="53"/>
@@ -356,7 +356,7 @@ påmindelse.</translation>
     <message>
       <location filename="../src/librssguard/gui/notifications/basetoastnotification.cpp" line="41"/>
       <source>Close this notification</source>
-      <translation type="unfinished">Close this notification</translation>
+      <translation>Luk denne påmindelse</translation>
     </message>
   </context>
   <context>
@@ -517,8 +517,8 @@ påmindelse.</translation>
       <location filename="../src/librssguard/network-web/downloadmanager.cpp" line="443"/>
       <source>File &apos;%1&apos; is downloaded.
 Click here to open parent directory.</source>
-      <translation type="unfinished">File &apos;%1&apos; is downloaded.
-Click here to open parent directory.</translation>
+      <translation>Fil &apos;%1&apos; er hentet ned.
+Klik her for at åbne den overordnede mappe.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/network-web/downloadmanager.cpp" line="454"/>
@@ -618,7 +618,7 @@ Click here to open parent directory.</translation>
     <message>
       <location filename="../src/librssguard/services/gmail/gui/emailpreviewer.ui" line="52"/>
       <source>&amp;Attachments</source>
-      <translation type="unfinished">&amp;Attachments</translation>
+      <translation>&amp;Vedhæftninger</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/gmail/gui/emailpreviewer.ui" line="65"/>
@@ -644,17 +644,17 @@ Click here to open parent directory.</translation>
       <location filename="../src/librssguard/services/gmail/gui/emailpreviewer.cpp" line="113"/>
       <location filename="../src/librssguard/services/gmail/gui/emailpreviewer.cpp" line="119"/>
       <source>Cannot download attachment</source>
-      <translation type="unfinished">Cannot download attachment</translation>
+      <translation>Kan ikke hente vedhæftningen</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/gmail/gui/emailpreviewer.cpp" line="114"/>
       <source>Attachment cannot be downloaded because you are not logged-in.</source>
-      <translation type="unfinished">Attachment cannot be downloaded because you are not logged-in.</translation>
+      <translation>Vedhæftning kan ikke hentes, fordi du ikke er logget ind.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/gmail/gui/emailpreviewer.cpp" line="120"/>
       <source>Attachment cannot be downloaded because some general error happened.</source>
-      <translation type="unfinished">Attachment cannot be downloaded because some general error happened.</translation>
+      <translation>Vedhæftning kan ikke hentes, fordi der opstod en generel fejl.</translation>
     </message>
   </context>
   <context>
