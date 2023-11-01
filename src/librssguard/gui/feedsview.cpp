@@ -72,14 +72,17 @@ void FeedsView::setSortingEnabled(bool enable) {
 }
 
 QList<Feed*> FeedsView::selectedFeeds() const {
-  const QModelIndex current_index = currentIndex();
+  auto its = selectedItems();
+  auto std_feeds = boolinq::from(its)
+                     .select([](RootItem* it) {
+                       return it->toFeed();
+                     })
+                     .where([](Feed* fd) {
+                       return fd != nullptr;
+                     })
+                     .toStdList();
 
-  if (current_index.isValid()) {
-    return m_sourceModel->feedsForIndex(m_proxyModel->mapToSource(current_index));
-  }
-  else {
-    return QList<Feed*>();
-  }
+  return FROM_STD_LIST(QList<Feed*>, std_feeds);
 }
 
 RootItem* FeedsView::selectedItem() const {
