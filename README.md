@@ -20,10 +20,9 @@ RSS Guard is a simple RSS/ATOM feed reader for Windows, Linux, BSD, OS/2 or macO
 ![RSS Guard](resources/graphics/official_pictures/main-window-linux.png)
 
 ## Contributing to RSS Guard
+To start contributing to RSS Guard, please read [CONTRIBUTING.md](CONTRIBUTING.md). Any contributions are appreciated.
 
-To start contributing to RSS Guard, please read [CONTRIBUTING.md](CONTRIBUTING.md).
-Any contributions are appreciated. Thank you!
-
+## Thank you!
 Contributed graphics:
 * RSS Guard logo - [Siddharth Yadav](mailto:illustrationdesignsid@gmail.com), [@Siddharth_yd](https://www.instagram.com/siddharth_yd/)
 * Flag icons - [IconDrawer](http://www.icondrawer.com)
