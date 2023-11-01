@@ -900,11 +900,11 @@ void FormMain::createConnections() {
   connect(m_ui->m_actionClearSelectedItems,
           &QAction::triggered,
           tabWidget()->feedMessageViewer()->feedsView(),
-          &FeedsView::clearSelectedFeeds);
+          &FeedsView::clearSelectedItems);
   connect(m_ui->m_actionClearAllItems,
           &QAction::triggered,
           tabWidget()->feedMessageViewer()->feedsView(),
-          &FeedsView::clearAllFeeds);
+          &FeedsView::clearAllItems);
   connect(m_ui->m_actionUpdateSelectedItems,
           &QAction::triggered,
           tabWidget()->feedMessageViewer()->feedsView(),

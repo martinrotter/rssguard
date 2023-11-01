@@ -73,14 +73,13 @@ void FeedsView::setSortingEnabled(bool enable) {
 
 QList<Feed*> FeedsView::selectedFeeds() const {
   auto its = selectedItems();
-  auto std_feeds = boolinq::from(its)
-                     .select([](RootItem* it) {
-                       return it->toFeed();
-                     })
-                     .where([](Feed* fd) {
-                       return fd != nullptr;
-                     })
-                     .toStdList();
+  QList<Feed*> feeds;
+
+  for (RootItem* it : its) {
+    feeds.append(it->getSubTreeFeeds());
+  }
+
+  auto std_feeds = boolinq::from(feeds).distinct().toStdList();
 
   return FROM_STD_LIST(QList<Feed*>, std_feeds);
 }
@@ -233,14 +232,34 @@ void FeedsView::updateSelectedItems() {
   qApp->feedReader()->updateFeeds(selectedFeeds());
 }
 
-void FeedsView::clearSelectedFeeds() {
+void FeedsView::clearSelectedItems() {
+  if (MsgBox::show(nullptr,
+                   QMessageBox::Icon::Question,
+                   tr("Are you sure?"),
+                   tr("Do you really want to clean all articles from selected items?"),
+                   {},
+                   {},
+                   QMessageBox::StandardButton::Yes | QMessageBox::StandardButton::No,
+                   QMessageBox::StandardButton::No) != QMessageBox::StandardButton::Yes) {
+  }
+
   for (auto* it : selectedItems()) {
-    m_sourceModel->markItemCleared(it, false, true);
+    m_sourceModel->markItemCleared(it, false);
   }
 }
 
-void FeedsView::clearAllFeeds() {
-  m_sourceModel->markItemCleared(m_sourceModel->rootItem(), false, true);
+void FeedsView::clearAllItems() {
+  if (MsgBox::show(nullptr,
+                   QMessageBox::Icon::Question,
+                   tr("Are you sure?"),
+                   tr("Do you really want to clean all articles from selected items?"),
+                   {},
+                   {},
+                   QMessageBox::StandardButton::Yes | QMessageBox::StandardButton::No,
+                   QMessageBox::StandardButton::No) != QMessageBox::StandardButton::Yes) {
+  }
+
+  m_sourceModel->markItemCleared(m_sourceModel->rootItem(), false);
 }
 
 void FeedsView::editItems(const QList<RootItem*>& items) {

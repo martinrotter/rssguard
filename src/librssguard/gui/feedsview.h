@@ -62,8 +62,8 @@ class RSSGUARD_DLLSPEC FeedsView : public BaseTreeView {
     void openSelectedItemsInNewspaperMode();
 
     // Feed clearers.
-    void clearSelectedFeeds();
-    void clearAllFeeds();
+    void clearSelectedItems();
+    void clearAllItems();
 
     // Base manipulators.
     void editItems(const QList<RootItem*>& items);

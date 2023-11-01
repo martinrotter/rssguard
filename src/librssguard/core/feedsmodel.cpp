@@ -516,19 +516,8 @@ bool FeedsModel::markItemRead(RootItem* item, RootItem::ReadStatus read) {
   return true;
 }
 
-bool FeedsModel::markItemCleared(RootItem* item, bool clean_read_only, bool ask) {
+bool FeedsModel::markItemCleared(RootItem* item, bool clean_read_only) {
   if (item != nullptr) {
-    if (ask && MsgBox::show(nullptr,
-                            QMessageBox::Icon::Question,
-                            tr("Are you sure?"),
-                            tr("Do you really want to clean all articles from selected item?"),
-                            {},
-                            {},
-                            QMessageBox::StandardButton::Yes | QMessageBox::StandardButton::No,
-                            QMessageBox::StandardButton::No) != QMessageBox::StandardButton::Yes) {
-      return false;
-    }
-
     return item->cleanMessages(clean_read_only);
   }
 
