@@ -1,3 +1,14 @@
+4.5.3
+-----
+
+Added:
+* Article and feed toolbar heights are now normalized to same values.
+
+Fixed:
+* Fixed couple of cases where feed multi-selection and/or batch operations were not taking multi-selection properly into account.
+* Fixed some unnecessary prompts to restart app in settings dialog.
+* Updated translations and readme.
+
 4.5.2
 -----
 
