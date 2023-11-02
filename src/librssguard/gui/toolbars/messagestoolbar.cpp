@@ -50,6 +50,8 @@ QList<QAction*> MessagesToolBar::convertActions(const QStringList& actions) {
   QList<QAction*> available_actions = availableActions();
   QList<QAction*> spec_actions;
 
+  spec_actions.reserve(actions.size());
+
   // Iterate action names and add respectable actions into the toolbar.
   for (const QString& action_name : actions) {
     auto* matching_action = findMatchingAction(action_name, available_actions);

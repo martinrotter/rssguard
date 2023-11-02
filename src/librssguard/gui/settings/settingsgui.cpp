@@ -440,6 +440,8 @@ void SettingsGui::saveSettings() {
   m_ui->m_editorMessagesToolbar->saveToolBar();
   m_ui->m_editorStatusbar->saveToolBar();
 
+  qApp->mainForm()->tabWidget()->feedMessageViewer()->normalizeToolbarHeights();
+
   qApp->mainForm()->tabWidget()->checkTabBarVisibility();
   qApp->mainForm()->tabWidget()->feedMessageViewer()->refreshVisualProperties();
 

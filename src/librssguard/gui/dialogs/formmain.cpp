@@ -1090,6 +1090,12 @@ void FormMain::closeEvent(QCloseEvent* event) {
   qDebugNN << LOGSEC_GUI << "Main window's close event";
 }
 
+void FormMain::showEvent(QShowEvent* event) {
+  QMainWindow::showEvent(event);
+
+  tabWidget()->feedMessageViewer()->normalizeToolbarHeights();
+}
+
 void FormMain::hideEvent(QHideEvent* event) {
   QMainWindow::hideEvent(event);
 

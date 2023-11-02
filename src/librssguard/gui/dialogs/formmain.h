@@ -11,11 +11,11 @@ class StatusBar;
 class QWidgetAction;
 
 class RSSGUARD_DLLSPEC FormMain : public QMainWindow {
-  Q_OBJECT
+    Q_OBJECT
 
-  friend class TabWidget;
-  friend class MessagesView;
-  friend class FeedsView;
+    friend class TabWidget;
+    friend class MessagesView;
+    friend class FeedsView;
 
   public:
     explicit FormMain(QWidget* parent = nullptr, Qt::WindowFlags f = Qt::WindowType::Widget);
@@ -70,6 +70,7 @@ class RSSGUARD_DLLSPEC FormMain : public QMainWindow {
     virtual void resizeEvent(QResizeEvent* event);
     virtual void changeEvent(QEvent* event);
     virtual void closeEvent(QCloseEvent* event);
+    virtual void showEvent(QShowEvent* event);
     virtual void hideEvent(QHideEvent* event);
 
   signals:

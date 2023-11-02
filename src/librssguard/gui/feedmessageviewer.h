@@ -38,6 +38,8 @@ class RSSGUARD_DLLSPEC FeedMessageViewer : public TabContent {
     bool areToolBarsEnabled() const;
     bool areListHeadersEnabled() const;
 
+    void normalizeToolbarHeights();
+
   public slots:
     void saveSize();
     void loadSize();

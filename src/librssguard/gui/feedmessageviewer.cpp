@@ -109,6 +109,13 @@ bool FeedMessageViewer::areListHeadersEnabled() const {
   return m_listHeadersEnabled;
 }
 
+void FeedMessageViewer::normalizeToolbarHeights() {
+  auto max_height = std::max(m_toolBarFeeds->height(), m_toolBarMessages->height());
+
+  m_toolBarFeeds->setMinimumHeight(max_height);
+  m_toolBarMessages->setMinimumHeight(max_height);
+}
+
 void FeedMessageViewer::onFeedSplitterResized() {
   qDebugNN << LOGSEC_GUI << "Feed splitter moved.";
 
