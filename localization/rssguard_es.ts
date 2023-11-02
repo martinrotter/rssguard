@@ -1187,17 +1187,17 @@ ID artículo: %5</translation>
     <message numerus="yes">
       <location filename="../src/librssguard/gui/feedsview.cpp" line="407"/>
       <source>Deleting %n items</source>
-      <translation type="unfinished">
+      <translation>
+        <numerusform>Eliminando %n elemento</numerusform>
         <numerusform>Eliminando %n elementos</numerusform>
-        <numerusform>Deleting %n items</numerusform>
       </translation>
     </message>
     <message numerus="yes">
       <location filename="../src/librssguard/gui/feedsview.cpp" line="408"/>
       <source>You are about to completely delete %n items.</source>
-      <translation type="unfinished">
+      <translation>
+        <numerusform>Está a punto de eliminar por completo %n elemento.</numerusform>
         <numerusform>Está a punto de eliminar por completo %n elementos.</numerusform>
-        <numerusform>You are about to completely delete %n items.</numerusform>
       </translation>
     </message>
     <message>
@@ -1572,9 +1572,9 @@ Archivo de QtWebEngine memoria -&gt; &quot;%7&quot;</translation>
     <message numerus="yes">
       <location filename="../src/librssguard/services/abstract/gui/formcategorydetails.cpp" line="106"/>
       <source>Edit %n categories</source>
-      <translation type="unfinished">
+      <translation>
         <numerusform>Editar %n categorías</numerusform>
-        <numerusform>Edit %n categories</numerusform>
+        <numerusform>Editar %n categorías</numerusform>
       </translation>
     </message>
     <message>
@@ -1949,9 +1949,9 @@ Archivo de QtWebEngine memoria -&gt; &quot;%7&quot;</translation>
     <message numerus="yes">
       <location filename="../src/librssguard/services/abstract/gui/formfeeddetails.cpp" line="151"/>
       <source>Edit %n feeds</source>
-      <translation type="unfinished">
+      <translation>
         <numerusform>Editar %n fuentes</numerusform>
-        <numerusform>Edit %n feeds</numerusform>
+        <numerusform>Editar %n fuentes</numerusform>
       </translation>
     </message>
     <message>
