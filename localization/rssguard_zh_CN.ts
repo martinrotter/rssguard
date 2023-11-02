@@ -29,7 +29,7 @@
     <message>
       <location filename="../src/librssguard/network-web/adblock/adblockdialog.cpp" line="65"/>
       <source>There is some error in AdBlock component and it cannot be enabled. Check error message below (or application debug log) for more information.</source>
-      <translation>AdBlock 组件中存在一些错误，无法启用。请查看下方的错误消息（或应用程序调试日志）以获取更多信息。</translation>
+      <translation>AdBlock 组件中存在某些错误，无法启用。请查看下面的错误消息（或应用程序调试日志）以获取更多信息。</translation>
     </message>
     <message>
       <location filename="../src/librssguard/network-web/adblock/adblockdialog.cpp" line="99"/>
@@ -39,14 +39,14 @@
     <message>
       <location filename="../src/librssguard/network-web/adblock/adblockdialog.cpp" line="114"/>
       <source>There is error, check application log for more details and head to online documentation.</source>
-      <translation>出现了错误，请查看应用程序日志以获取更多详细信息，并前往在线文档进行参考。</translation>
+      <translation>存在错误，请检查应用程序日志以获取更多详细信息，并前往在线文档。</translation>
     </message>
     <message>
       <location filename="../src/librssguard/network-web/adblock/adblockdialog.cpp" line="85"/>
       <source>There is error, check application log for more details and head to online documentation. Also make sure that Node.js is installed.
 
 Error: %1</source>
-      <translation>出现错误，请检查应用程序日志以获取更多详细信息，并查阅在线文档。同时，请确保已正确安装 Node.js。
+      <translation>存在错误，请检查应用程序日志以获取更多详细信息，并前往在线文档。另外，请确保已安装 Node.js。
 
 错误：%1</translation>
     </message>
@@ -62,12 +62,12 @@ Error: %1</source>
       <location filename="../src/librssguard/network-web/adblock/adblockdialog.cpp" line="106"/>
       <location filename="../src/librssguard/network-web/adblock/adblockdialog.cpp" line="107"/>
       <source>No additional info.</source>
-      <translation>无附加信息。</translation>
+      <translation>无其他信息。</translation>
     </message>
     <message>
       <location filename="../src/librssguard/network-web/adblock/adblockdialog.cpp" line="98"/>
       <source>It seems your AdBlock runs fine, but wait few seconds to be sure.</source>
-      <translation>看起来 AdBlock 运行正常，但请稍等几秒钟以确保一切顺利。</translation>
+      <translation>似乎您的 AdBlock 运行正常，但请等待几秒钟以确保。</translation>
     </message>
     <message>
       <location filename="../src/librssguard/network-web/adblock/adblockdialog.ui" line="20"/>
@@ -82,22 +82,22 @@ Error: %1</source>
     <message>
       <location filename="../src/librssguard/network-web/adblock/adblockdialog.ui" line="58"/>
       <source>Filter lists</source>
-      <translation>过滤清单</translation>
+      <translation>过滤器列表</translation>
     </message>
     <message>
       <location filename="../src/librssguard/network-web/adblock/adblockdialog.ui" line="64"/>
       <source>Add your direct links to filter lists here (one URL per line)</source>
-      <translation>在这里添加你的直链至过滤清单（每行一个URL）</translation>
+      <translation>在此处添加您的直接链接到过滤器列表（每行一个 URL）</translation>
     </message>
     <message>
       <location filename="../src/librssguard/network-web/adblock/adblockdialog.ui" line="78"/>
       <source>Custom filters</source>
-      <translation>自定义过滤规则</translation>
+      <translation>自定义过滤器</translation>
     </message>
     <message>
       <location filename="../src/librssguard/network-web/adblock/adblockdialog.ui" line="84"/>
       <source>Add your custom filters here (one filter per line)</source>
-      <translation>在此处添加自定义过滤规则（每行一个）</translation>
+      <translation>在此处添加您的自定义过滤器（每行一个过滤器）</translation>
     </message>
   </context>
   <context>
@@ -105,7 +105,7 @@ Error: %1</source>
     <message>
       <location filename="../src/librssguard/network-web/adblock/adblockicon.cpp" line="12"/>
       <source>AdBlock lets you block unwanted content on web pages</source>
-      <translation>AdBlock 可以让你在网页上屏蔽不想要的内容</translation>
+      <translation>AdBlock 可帮助您屏蔽网页上的不需要的内容</translation>
     </message>
     <message>
       <location filename="../src/librssguard/network-web/adblock/adblockicon.cpp" line="45"/>
@@ -123,7 +123,7 @@ Error: %1</source>
     <message>
       <location filename="../src/librssguard/network-web/adblock/adblockmanager.cpp" line="375"/>
       <source>failed to download filter list &apos;%1&apos;</source>
-      <translation>无法下载过滤规则列表 &apos;%1&apos;</translation>
+      <translation>下载过滤器列表 &apos;%1&apos; 失败</translation>
     </message>
   </context>
   <context>
@@ -131,7 +131,7 @@ Error: %1</source>
     <message>
       <location filename="../src/librssguard/miscellaneous/application.cpp" line="1151"/>
       <source>Application is already running.</source>
-      <translation>应用程序已经在运行。</translation>
+      <translation>应用程序已在运行。</translation>
     </message>
     <message>
       <location filename="../src/librssguard/miscellaneous/application.cpp" line="592"/>
@@ -141,32 +141,32 @@ Error: %1</source>
     <message>
       <location filename="../src/librssguard/miscellaneous/application.cpp" line="600"/>
       <source>Settings file not copied to output directory successfully.</source>
-      <translation>配置文件未能成功复制到输出目录。</translation>
+      <translation>设置文件未成功复制到输出目录。</translation>
     </message>
     <message>
       <location filename="../src/librssguard/miscellaneous/application.cpp" line="615"/>
       <source>Database restoration was not initiated. Make sure that output directory is writable.</source>
-      <translation>无法开始恢复数据库，请确保输出目录可写。</translation>
+      <translation>未启动数据库恢复。请确保输出目录可写。</translation>
     </message>
     <message>
       <location filename="../src/librssguard/miscellaneous/application.cpp" line="622"/>
       <source>Settings restoration was not initiated. Make sure that output directory is writable.</source>
-      <translation>无法开始恢复设置，请确保输出目录可写。</translation>
+      <translation>未启动设置恢复。请确保输出目录可写。</translation>
     </message>
     <message>
       <location filename="../src/librssguard/miscellaneous/application.cpp" line="1169"/>
       <source>Cannot add feed</source>
-      <translation>无法添加 Feed</translation>
+      <translation>无法添加订阅源</translation>
     </message>
     <message>
       <location filename="../src/librssguard/miscellaneous/application.cpp" line="1170"/>
       <source>Feed cannot be added because there is no active account which can add feeds.</source>
-      <translation>无法添加 Feed，因为没有可用的活跃账户可以添加 Feed。</translation>
+      <translation>因为没有可以添加订阅源的活动帐户，所以无法添加订阅源。</translation>
     </message>
     <message>
       <location filename="../src/librssguard/miscellaneous/application.cpp" line="1328"/>
       <source>Packages %1 were updated.</source>
-      <translation>软件包 %1 已被更新。</translation>
+      <translation>软件包 %1 已更新。</translation>
     </message>
     <message>
       <location filename="../src/librssguard/miscellaneous/application.cpp" line="1035"/>
@@ -176,12 +176,12 @@ Error: %1</source>
     <message>
       <location filename="../src/librssguard/miscellaneous/application.cpp" line="353"/>
       <source>Go to changelog</source>
-      <translation>前往更新日志</translation>
+      <translation>转到更新日志</translation>
     </message>
     <message>
       <location filename="../src/librssguard/miscellaneous/application.cpp" line="1100"/>
       <source>AdBlock needs to be configured</source>
-      <translation>需要对 AdBlock 进行配置</translation>
+      <translation>需要配置 AdBlock</translation>
     </message>
     <message>
       <location filename="../src/librssguard/miscellaneous/application.cpp" line="347"/>
@@ -196,12 +196,12 @@ Please, check NEW stuff included in this
 version by clicking this popup notification.</source>
       <translation>欢迎使用 %1。
 
-请点击此弹出通知来查看此版本中新增的内容。</translation>
+请点击此弹出通知，查看此版本中包含的新功能。</translation>
     </message>
     <message>
       <location filename="../src/librssguard/miscellaneous/application.cpp" line="1101"/>
       <source>AdBlock is not configured properly. Go to &quot;Settings&quot; -&gt; &quot;Node.js&quot; and check if your Node.js is properly configured.</source>
-      <translation>AdBlock 配置不正确。请前往 &quot;设置&quot; -&gt; &quot;Node.js&quot; 检查 Node.js 是否正确配置。</translation>
+      <translation>AdBlock 没有正确配置。转到 &quot;设置&quot; -&gt; &quot;Node.js&quot; 并检查您的 Node.js 是否配置正确。</translation>
     </message>
     <message>
       <location filename="../src/librssguard/miscellaneous/application.cpp" line="1150"/>
@@ -211,7 +211,7 @@ version by clicking this popup notification.</source>
     <message>
       <location filename="../src/librssguard/miscellaneous/application.cpp" line="1319"/>
       <source>Packages %1 were NOT updated because of error: %2.</source>
-      <translation>由于错误：%2，软件包 %1 没有更新。</translation>
+      <translation>软件包 %1 由于错误：%2 未更新。</translation>
     </message>
   </context>
   <context>
@@ -239,7 +239,7 @@ version by clicking this popup notification.</source>
     <message>
       <location filename="../src/librssguard/gui/notifications/articlelistnotification.ui" line="111"/>
       <source>Open article in web browser</source>
-      <translation>在浏览器中打开文章</translation>
+      <translation>在网络浏览器中打开文章</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/notifications/articlelistnotification.ui" line="125"/>
@@ -250,7 +250,7 @@ version by clicking this popup notification.</source>
       <location filename="../src/librssguard/gui/notifications/articlelistnotification.cpp" line="73"/>
       <source>%n feeds fetched</source>
       <translation>
-        <numerusform>已获取 %n 个 feed</numerusform>
+        <numerusform>已获取 %n 个订阅源</numerusform>
       </translation>
     </message>
   </context>
@@ -264,7 +264,7 @@ version by clicking this popup notification.</source>
     <message>
       <location filename="../src/librssguard/services/abstract/gui/authenticationdetails.ui" line="45"/>
       <source>Some feeds require authentication, including GMail feeds. BASIC, NTLM-2 and DIGEST-MD5 authentication schemes are supported.</source>
-      <translation>某些 Feed，包括 Gmail Feed，需要身份验证，我们支持 BASIC、NTLM-2 和 DIGEST-MD5 三种认证方式。</translation>
+      <translation>一些订阅源需要身份验证，包括 GMail 订阅源。支持 BASIC、NTLM-2 和 DIGEST-MD5 认证方案。</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/abstract/gui/authenticationdetails.ui" line="48"/>
@@ -292,32 +292,32 @@ version by clicking this popup notification.</source>
     <message>
       <location filename="../src/librssguard/services/abstract/gui/authenticationdetails.cpp" line="13"/>
       <source>Set username to access the feed.</source>
-      <translation>填写用于访问此 Feed 的用户名。</translation>
+      <translation>设置访问此订阅源的用户名。</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/abstract/gui/authenticationdetails.cpp" line="15"/>
       <source>Set password to access the feed.</source>
-      <translation>填写用于访问此 Feed 的密码。</translation>
+      <translation>设置访问此订阅源的密码。</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/abstract/gui/authenticationdetails.cpp" line="17"/>
       <source>No authentication</source>
-      <translation>无身份验证</translation>
+      <translation>无需验证</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/abstract/gui/authenticationdetails.cpp" line="19"/>
       <source>HTTP Basic</source>
-      <translation>HTTP 基本设置</translation>
+      <translation>HTTP 基本验证</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/abstract/gui/authenticationdetails.cpp" line="22"/>
       <source>Token</source>
-      <translation>Token</translation>
+      <translation>令牌</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/abstract/gui/authenticationdetails.cpp" line="53"/>
       <source>Username/token is ok or it is not needed.</source>
-      <translation>用户名/令牌可以使用，否则不需要。</translation>
+      <translation>用户名/令牌正确或不需要。</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/abstract/gui/authenticationdetails.cpp" line="54"/>
@@ -332,7 +332,7 @@ version by clicking this popup notification.</source>
     <message>
       <location filename="../src/librssguard/services/abstract/gui/authenticationdetails.cpp" line="63"/>
       <source>Password is ok or it is not needed.</source>
-      <translation>密码可用，即使不必要。</translation>
+      <translation>密码正确或不需要。</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/abstract/gui/authenticationdetails.cpp" line="63"/>
@@ -345,7 +345,7 @@ version by clicking this popup notification.</source>
     <message>
       <location filename="../src/librssguard/gui/reusable/baselineedit.cpp" line="13"/>
       <source>Show/hide the password</source>
-      <translation>展示或隐藏密码</translation>
+      <translation>显示/隐藏密码</translation>
     </message>
   </context>
   <context>
@@ -361,7 +361,7 @@ version by clicking this popup notification.</source>
     <message>
       <location filename="../src/librssguard/gui/reusable/colortoolbutton.cpp" line="14"/>
       <source>Click me to change color!</source>
-      <translation>点我更换颜色！</translation>
+      <translation>点击我以更改颜色！</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/reusable/colortoolbutton.cpp" line="19"/>
@@ -394,32 +394,32 @@ version by clicking this popup notification.</source>
     <message>
       <location filename="../src/librssguard/database/databasecleaner.cpp" line="25"/>
       <source>Removing read articles...</source>
-      <translation>移除已读文章中…</translation>
+      <translation>正在移除已读文章...</translation>
     </message>
     <message>
       <location filename="../src/librssguard/database/databasecleaner.cpp" line="30"/>
       <source>Read articles purged...</source>
-      <translation>清除已读文章…</translation>
+      <translation>已读文章已清空...</translation>
     </message>
     <message>
       <location filename="../src/librssguard/database/databasecleaner.cpp" line="45"/>
       <source>Removing old articles...</source>
-      <translation>移除旧文章中…</translation>
+      <translation>正在移除旧文章...</translation>
     </message>
     <message>
       <location filename="../src/librssguard/database/databasecleaner.cpp" line="50"/>
       <source>Old articles purged...</source>
-      <translation>清除旧文章…</translation>
+      <translation>旧文章已清空...</translation>
     </message>
     <message>
       <location filename="../src/librssguard/database/databasecleaner.cpp" line="55"/>
       <source>Removing starred articles...</source>
-      <translation>移除收藏文章中…</translation>
+      <translation>正在移除收藏文章...</translation>
     </message>
     <message>
       <location filename="../src/librssguard/database/databasecleaner.cpp" line="60"/>
       <source>Starred articles purged...</source>
-      <translation>清除收藏文章…</translation>
+      <translation>收藏文章已清空...</translation>
     </message>
   </context>
   <context>
@@ -427,12 +427,12 @@ version by clicking this popup notification.</source>
     <message>
       <location filename="../src/librssguard/database/databasefactory.cpp" line="58"/>
       <source>Cannot connect to database</source>
-      <translation>无法连接数据库</translation>
+      <translation>无法连接到数据库</translation>
     </message>
     <message>
       <location filename="../src/librssguard/database/databasefactory.cpp" line="59"/>
       <source>Connection to your database was not established with error: &apos;%1&apos;. Falling back to SQLite.</source>
-      <translation>未与数据库建立连接，错误：&apos;%1&apos;。正回退至 SQLite。</translation>
+      <translation>您的数据库连接未建立，错误为：&apos;%1&apos;。退回到 SQLite。</translation>
     </message>
   </context>
   <context>
@@ -440,7 +440,7 @@ version by clicking this popup notification.</source>
     <message>
       <location filename="../src/librssguard/services/standard/gui/formdiscoverfeeds.cpp" line="297"/>
       <source>Title</source>
-      <translation>名称</translation>
+      <translation>标题</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/standard/gui/formdiscoverfeeds.cpp" line="297"/>
@@ -453,7 +453,7 @@ version by clicking this popup notification.</source>
     <message>
       <location filename="../src/librssguard/network-web/downloadmanager.cpp" line="272"/>
       <source>Error opening output file: %1</source>
-      <translation>打开输出文件时发生错误：%1</translation>
+      <translation>打开输出文件时出错：%1</translation>
     </message>
     <message>
       <location filename="../src/librssguard/network-web/downloadmanager.cpp" line="110"/>
@@ -473,7 +473,7 @@ version by clicking this popup notification.</source>
     <message>
       <location filename="../src/librssguard/network-web/downloadmanager.cpp" line="283"/>
       <source>Error when saving file: %1</source>
-      <translation>保存文件时发生错误：%1</translation>
+      <translation>保存文件时出错：%1</translation>
     </message>
     <message>
       <location filename="../src/librssguard/network-web/downloadmanager.cpp" line="390"/>
@@ -588,7 +588,7 @@ Click here to open parent directory.</source>
       <location filename="../src/librssguard/network-web/downloadmanager.cpp" line="599"/>
       <source>Downloading %n file(s)...</source>
       <translation>
-        <numerusform>正在下载 %n 个文件(s)…</numerusform>
+        <numerusform>正在下载 %n 个文件...</numerusform>
       </translation>
     </message>
     <message>
@@ -607,48 +607,48 @@ Click here to open parent directory.</source>
     <message>
       <location filename="../src/librssguard/services/gmail/gui/emailpreviewer.ui" line="20"/>
       <source>From</source>
-      <translation>来自</translation>
+      <translation>发件人</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/gmail/gui/emailpreviewer.ui" line="52"/>
       <source>&amp;Attachments</source>
-      <translation>附件 &amp;A</translation>
+      <translation>附件 (&amp;A)</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/gmail/gui/emailpreviewer.ui" line="65"/>
       <source>&amp;Reply</source>
-      <translation>回复 &amp;R</translation>
+      <translation>回复 (&amp;R)</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/gmail/gui/emailpreviewer.ui" line="75"/>
       <source>&amp;Forward</source>
-      <translation>转发 &amp;F</translation>
+      <translation>转发 (&amp;F)</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/gmail/gui/emailpreviewer.ui" line="87"/>
       <source>Subject</source>
-      <translation>对象</translation>
+      <translation>主题</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/gmail/gui/emailpreviewer.ui" line="104"/>
       <source>To</source>
-      <translation>发至</translation>
+      <translation>收件人</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/gmail/gui/emailpreviewer.cpp" line="113"/>
       <location filename="../src/librssguard/services/gmail/gui/emailpreviewer.cpp" line="119"/>
       <source>Cannot download attachment</source>
-      <translation>附件无法下载</translation>
+      <translation>无法下载附件</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/gmail/gui/emailpreviewer.cpp" line="114"/>
       <source>Attachment cannot be downloaded because you are not logged-in.</source>
-      <translation>因为没有登录，导致无法下载附件，</translation>
+      <translation>附件无法下载，因为您尚未登录。</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/gmail/gui/emailpreviewer.cpp" line="120"/>
       <source>Attachment cannot be downloaded because some general error happened.</source>
-      <translation>发生了一些一般性错误，导致无法下载附件，</translation>
+      <translation>由于发生了某些常规错误，附件无法下载。</translation>
     </message>
   </context>
   <context>
@@ -656,7 +656,7 @@ Click here to open parent directory.</source>
     <message>
       <location filename="../src/librssguard/services/gmail/gui/emailrecipientcontrol.cpp" line="37"/>
       <source>To</source>
-      <translation>发至</translation>
+      <translation>收件人</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/gmail/gui/emailrecipientcontrol.cpp" line="38"/>
@@ -666,7 +666,7 @@ Click here to open parent directory.</source>
     <message>
       <location filename="../src/librssguard/services/gmail/gui/emailrecipientcontrol.cpp" line="39"/>
       <source>Bcc</source>
-      <translation>密件抄送</translation>
+      <translation>密送</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/gmail/gui/emailrecipientcontrol.cpp" line="40"/>
@@ -676,7 +676,7 @@ Click here to open parent directory.</source>
     <message>
       <location filename="../src/librssguard/services/gmail/gui/emailrecipientcontrol.cpp" line="27"/>
       <source>E-mail address</source>
-      <translation>邮箱地址</translation>
+      <translation>电子邮件地址</translation>
     </message>
   </context>
   <context>
@@ -684,17 +684,17 @@ Click here to open parent directory.</source>
     <message>
       <location filename="../src/librssguard/services/abstract/feed.cpp" line="268"/>
       <source>uses global settings, but global auto-fetching of articles is disabled</source>
-      <translation>使用全局设置，但已禁用全局自动获取文章</translation>
+      <translation>使用全局设置，但全局自动获取文章已被禁用</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/abstract/feed.cpp" line="292"/>
       <source>no errors</source>
-      <translation>正常</translation>
+      <translation>没有错误</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/abstract/feed.cpp" line="298"/>
       <source>authentication error</source>
-      <translation>身份认证错误</translation>
+      <translation>身份验证错误</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/abstract/feed.cpp" line="301"/>
@@ -711,7 +711,7 @@ Click here to open parent directory.</source>
       <location filename="../src/librssguard/services/abstract/feed.cpp" line="265"/>
       <source>uses global settings (%n minute(s) to next auto-fetch of articles)</source>
       <translation>
-        <numerusform>使用全局设置 (%n 分钟(s)后自动获取文章)</numerusform>
+        <numerusform>使用全局设置 (%n 分钟后自动获取文章)</numerusform>
       </translation>
     </message>
     <message numerus="yes">
@@ -719,7 +719,7 @@ Click here to open parent directory.</source>
       <source>uses specific settings (%n minute(s) to next auto-fetching of new articles)</source>
       <extracomment>Describes feed auto-update status.</extracomment>
       <translation>
-        <numerusform>使用特定设置 (%n 分钟(s) 后自动获取文章)</numerusform>
+        <numerusform>使用特定设置 (%n 分钟后自动获取文章)</numerusform>
       </translation>
     </message>
     <message>
@@ -730,7 +730,7 @@ Click here to open parent directory.</source>
     <message>
       <location filename="../src/librssguard/services/abstract/feed.cpp" line="304"/>
       <source>parsing error</source>
-      <translation>解析错误中</translation>
+      <translation>解析错误</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/abstract/feed.cpp" line="307"/>
@@ -756,7 +756,7 @@ Item ID: %5</source>
     <message>
       <location filename="../src/librssguard/gui/feedmessageviewer.cpp" line="32"/>
       <source>Toolbar for feeds</source>
-      <translation>Feed 工具栏</translation>
+      <translation>订阅源工具栏</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/feedmessageviewer.cpp" line="33"/>
@@ -766,22 +766,22 @@ Item ID: %5</source>
     <message>
       <location filename="../src/librssguard/gui/feedmessageviewer.cpp" line="236"/>
       <source>Filtered feed list</source>
-      <translation>过滤后的 feed 列表</translation>
+      <translation>过滤后的订阅源列表</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/feedmessageviewer.cpp" line="237"/>
       <source>Cannot select article in article list as your feed is filtered out from feed list.</source>
-      <translation>无法在文章列表中选择文章，因为您的 feed 已被从 feed 列表中过滤掉。</translation>
+      <translation>由于您的订阅源从订阅源列表中被过滤掉，因此无法在文章列表中选择文章。</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/feedmessageviewer.cpp" line="254"/>
       <source>Filtered article list</source>
-      <translation>已过滤文章列表</translation>
+      <translation>过滤后的文章列表</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/feedmessageviewer.cpp" line="255"/>
       <source>Cannot select article as it seems your article list is filtered.</source>
-      <translation>无法选择文章，因为似乎您的文章列表已经被过滤。</translation>
+      <translation>无法选择文章，因为您的文章列表似乎已被过滤。</translation>
     </message>
   </context>
   <context>
@@ -789,13 +789,13 @@ Item ID: %5</source>
     <message>
       <location filename="../src/librssguard/miscellaneous/feedreader.cpp" line="361"/>
       <source>Starting auto-download of some feeds&apos; articles</source>
-      <translation>开始自动下载一些 feed 文章</translation>
+      <translation>开始自动下载某些订阅源的文章</translation>
     </message>
     <message numerus="yes">
       <location filename="../src/librssguard/miscellaneous/feedreader.cpp" line="362"/>
       <source>I will auto-download new articles for %n feed(s).</source>
       <translation>
-        <numerusform>我将自动下载 %n 个feed(s) 的新文章</numerusform>
+        <numerusform>我将为 %n 个订阅源自动下载新文章。</numerusform>
       </translation>
     </message>
     <message>
@@ -806,7 +806,7 @@ Item ID: %5</source>
     <message>
       <location filename="../src/librssguard/miscellaneous/feedreader.cpp" line="94"/>
       <source>You cannot fetch new articles now because another critical operation is ongoing.</source>
-      <translation>因为另一个关键操作正在进行，所以暂时无法获取新文章。</translation>
+      <translation>您现在无法获取新文章，因为另一个关键操作正在进行中。</translation>
     </message>
   </context>
   <context>
@@ -825,7 +825,7 @@ Item ID: %5</source>
     <message>
       <location filename="../src/librssguard/services/feedly/gui/feedlyaccountdetails.ui" line="36"/>
       <source>Get token</source>
-      <translation>&amp;获取令牌</translation>
+      <translation>获取令牌</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/feedly/gui/feedlyaccountdetails.ui" line="58"/>
@@ -835,12 +835,12 @@ Item ID: %5</source>
     <message>
       <location filename="../src/librssguard/services/feedly/gui/feedlyaccountdetails.ui" line="70"/>
       <source>Only download newest X articles per feed</source>
-      <translation>仅下载 feed 最新的 X 个文章</translation>
+      <translation>只下载每个订阅源最新的 X 篇文章</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/feedly/gui/feedlyaccountdetails.ui" line="110"/>
       <source>&amp;Login</source>
-      <translation>&amp;登录</translation>
+      <translation>登录 (&amp;L)</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/feedly/gui/feedlyaccountdetails.ui" line="51"/>
@@ -855,7 +855,7 @@ Item ID: %5</source>
     <message>
       <location filename="../src/librssguard/services/feedly/gui/feedlyaccountdetails.cpp" line="29"/>
       <source>No test done yet.</source>
-      <translation>尚未测试。</translation>
+      <translation>尚未进行测试。</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/feedly/gui/feedlyaccountdetails.cpp" line="30"/>
@@ -1124,7 +1124,7 @@ Item ID: %5</source>
       <location filename="../src/librssguard/gui/feedsview.cpp" line="239"/>
       <location filename="../src/librssguard/gui/feedsview.cpp" line="255"/>
       <source>Do you really want to clean all articles from selected items?</source>
-      <translation type="unfinished">Do you really want to clean all articles from selected items?</translation>
+      <translation>您真的想从选中的项目中清除所有文章吗？</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/feedsview.cpp" line="293"/>
@@ -1804,7 +1804,7 @@ QtWebEngine 缓存文件夹 -&gt; &quot;%7&quot;</translation>
     <message>
       <location filename="../src/librssguard/services/standard/gui/formdiscoverfeeds.ui" line="51"/>
       <source>Discover Sitemaps too (can take some time for bigger websites)</source>
-      <translation type="unfinished">Discover Sitemaps too (can take some time for bigger websites)</translation>
+      <translation>也发现 Sitemaps（对于较大的网站可能需要一些时间）</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/standard/gui/formdiscoverfeeds.ui" line="77"/>
@@ -2659,12 +2659,12 @@ QtWebEngine 缓存文件夹 -&gt; &quot;%7&quot;</translation>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="952"/>
       <source>Edit &amp;child feeds</source>
-      <translation type="unfinished">Edit &amp;child feeds</translation>
+      <translation>编辑子订阅 (&amp;c)</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="957"/>
       <source>Edit child feeds (&amp;recursive)</source>
-      <translation type="unfinished">Edit child feeds (&amp;recursive)</translation>
+      <translation>编辑子订阅（递归） (&amp;r)</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="749"/>
@@ -2782,7 +2782,7 @@ QtWebEngine 缓存文件夹 -&gt; &quot;%7&quot;</translation>
       <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.cpp" line="299"/>
       <source>EXISTING articles filtering error: &apos;%1&apos;.
 </source>
-      <translation type="unfinished">EXISTING articles filtering error: &apos;%1&apos;.
+      <translation>现有文章过滤错误：&apos;%1&apos;。
 </translation>
     </message>
     <message>
@@ -2816,7 +2816,7 @@ QtWebEngine 缓存文件夹 -&gt; &quot;%7&quot;</translation>
       <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.cpp" line="340"/>
       <source>SAMPLE article filtering error: &apos;%1&apos;.
 </source>
-      <translation type="unfinished">SAMPLE article filtering error: &apos;%1&apos;.
+      <translation>示例文章过滤错误：&apos;%1&apos;。
 </translation>
     </message>
     <message>
@@ -2873,7 +2873,7 @@ QtWebEngine 缓存文件夹 -&gt; &quot;%7&quot;</translation>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.ui" line="152"/>
       <source>Pre-made filters</source>
-      <translation type="unfinished">Pre-made filters</translation>
+      <translation>预制过滤器</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.ui" line="174"/>
@@ -3183,7 +3183,7 @@ You have to restart manually.</source>
     <message>
       <location filename="../src/librssguard/services/standard/gui/formstandardimportexport.cpp" line="273"/>
       <source>cannot open file</source>
-      <translation type="unfinished">cannot open file</translation>
+      <translation>无法打开文件</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/standard/gui/formstandardimportexport.cpp" line="332"/>
@@ -3206,7 +3206,7 @@ You have to restart manually.</source>
       <location filename="../src/librssguard/services/standard/gui/formstandardimportexport.cpp" line="166"/>
       <location filename="../src/librssguard/services/standard/gui/formstandardimportexport.cpp" line="211"/>
       <source>OPML 2.0 files (*.opml *.xml)</source>
-      <translation type="unfinished">OPML 2.0 files (*.opml *.xml)</translation>
+      <translation>OPML 2.0 文件 (*.opml *.xml)</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/standard/gui/formstandardimportexport.cpp" line="337"/>
@@ -3237,22 +3237,22 @@ You have to restart manually.</source>
     <message>
       <location filename="../src/librssguard/services/standard/gui/formstandardimportexport.ui" line="55"/>
       <source>Fetch online metadata</source>
-      <translation type="unfinished">Fetch online metadata</translation>
+      <translation>获取在线元数据</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/standard/gui/formstandardimportexport.ui" line="64"/>
       <source>Do not fetch titles</source>
-      <translation type="unfinished">Do not fetch titles</translation>
+      <translation>不获取标题</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/standard/gui/formstandardimportexport.ui" line="71"/>
       <source>Do not fetch icons</source>
-      <translation type="unfinished">Do not fetch icons</translation>
+      <translation>不获取图标</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/standard/gui/formstandardimportexport.ui" line="78"/>
       <source>Optional post-processing script</source>
-      <translation type="unfinished">Optional post-processing script</translation>
+      <translation>可选的后处理脚本</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/standard/gui/formstandardimportexport.ui" line="109"/>
@@ -3651,7 +3651,7 @@ You can install it now.</source>
     <message>
       <location filename="../src/librssguard/services/gmail/gmailnetworkfactory.cpp" line="179"/>
       <source>failed to download list of labels</source>
-      <translation type="unfinished">failed to download list of labels</translation>
+      <translation>下载标签列表失败</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/gmail/gmailnetworkfactory.cpp" line="443"/>
@@ -4086,122 +4086,122 @@ Token 过期时间：%2</translation>
     <message>
       <location filename="../src/librssguard/gui/richtexteditor/mrichtextedit.ui" line="56"/>
       <source>Paragraph formatting</source>
-      <translation type="unfinished">Paragraph formatting</translation>
+      <translation>段落格式化</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/richtexteditor/mrichtextedit.ui" line="79"/>
       <source>Undo</source>
-      <translation type="unfinished">Undo</translation>
+      <translation>撤销</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/richtexteditor/mrichtextedit.ui" line="98"/>
       <source>Redo</source>
-      <translation type="unfinished">Redo</translation>
+      <translation>重做</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/richtexteditor/mrichtextedit.ui" line="114"/>
       <source>Cut</source>
-      <translation type="unfinished">Cut</translation>
+      <translation>剪切</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/richtexteditor/mrichtextedit.ui" line="130"/>
       <source>Copy</source>
-      <translation type="unfinished">Copy</translation>
+      <translation>复制</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/richtexteditor/mrichtextedit.ui" line="146"/>
       <source>Paste (CTRL+V)</source>
-      <translation type="unfinished">Paste (CTRL+V)</translation>
+      <translation>粘贴 (CTRL+V)</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/richtexteditor/mrichtextedit.ui" line="149"/>
       <source>Paste</source>
-      <translation type="unfinished">Paste</translation>
+      <translation>粘贴</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/richtexteditor/mrichtextedit.ui" line="172"/>
       <source>Link (CTRL+L)</source>
-      <translation type="unfinished">Link (CTRL+L)</translation>
+      <translation>链接 (CTRL+L)</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/richtexteditor/mrichtextedit.ui" line="175"/>
       <source>Link</source>
-      <translation type="unfinished">Link</translation>
+      <translation>链接</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/richtexteditor/mrichtextedit.ui" line="204"/>
       <source>Bold</source>
-      <translation type="unfinished">Bold</translation>
+      <translation>粗体</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/richtexteditor/mrichtextedit.ui" line="223"/>
       <source>Italic (CTRL+I)</source>
-      <translation type="unfinished">Italic (CTRL+I)</translation>
+      <translation>斜体 (CTRL+I)</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/richtexteditor/mrichtextedit.ui" line="226"/>
       <source>Italic</source>
-      <translation type="unfinished">Italic</translation>
+      <translation>斜体</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/richtexteditor/mrichtextedit.ui" line="245"/>
       <source>Underline (CTRL+U)</source>
-      <translation type="unfinished">Underline (CTRL+U)</translation>
+      <translation>下划线 (CTRL+U)</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/richtexteditor/mrichtextedit.ui" line="248"/>
       <source>Underline</source>
-      <translation type="unfinished">Underline</translation>
+      <translation>下划线</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/richtexteditor/mrichtextedit.ui" line="264"/>
       <source>Strike Out</source>
-      <translation type="unfinished">Strike Out</translation>
+      <translation>删除线</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/richtexteditor/mrichtextedit.ui" line="284"/>
       <source>Bullet list (CTRL+-)</source>
-      <translation type="unfinished">Bullet list (CTRL+-)</translation>
+      <translation>子弹列表 (CTRL+-)</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/richtexteditor/mrichtextedit.ui" line="287"/>
       <source>Bullet list</source>
-      <translation type="unfinished">Bullet list</translation>
+      <translation>子弹列表</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/richtexteditor/mrichtextedit.ui" line="306"/>
       <source>Ordered list (CTRL+=)</source>
-      <translation type="unfinished">Ordered list (CTRL+=)</translation>
+      <translation>有序列表 (CTRL+=)</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/richtexteditor/mrichtextedit.ui" line="309"/>
       <source>Ordered list</source>
-      <translation type="unfinished">Ordered list</translation>
+      <translation>有序列表</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/richtexteditor/mrichtextedit.ui" line="328"/>
       <source>Decrease indentation (CTRL+,)</source>
-      <translation type="unfinished">Decrease indentation (CTRL+,)</translation>
+      <translation>减少缩进 (CTRL+,)</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/richtexteditor/mrichtextedit.ui" line="331"/>
       <source>Decrease indentation</source>
-      <translation type="unfinished">Decrease indentation</translation>
+      <translation>减少缩进</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/richtexteditor/mrichtextedit.ui" line="347"/>
       <source>Increase indentation (CTRL+.)</source>
-      <translation type="unfinished">Increase indentation (CTRL+.)</translation>
+      <translation>增加缩进 (CTRL+.)</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/richtexteditor/mrichtextedit.ui" line="350"/>
       <source>Increase indentation</source>
-      <translation type="unfinished">Increase indentation</translation>
+      <translation>增加缩进</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/richtexteditor/mrichtextedit.ui" line="385"/>
       <source>Text foreground color</source>
-      <translation type="unfinished">Text foreground color</translation>
+      <translation>文字前景色</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/richtexteditor/mrichtextedit.ui" line="413"/>
