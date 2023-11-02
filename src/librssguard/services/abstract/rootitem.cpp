@@ -397,9 +397,10 @@ QHash<QString, Feed*> RootItem::getHashedSubTreeFeeds() const {
   return children;
 }
 
-QList<Feed*> RootItem::getSubTreeFeeds() const {
+QList<Feed*> RootItem::getSubTreeFeeds(bool recursive) const {
   QList<Feed*> children;
   QList<RootItem*> traversable_items;
+  bool traversed = false;
 
   traversable_items.append(const_cast<RootItem* const>(this));
 
@@ -411,7 +412,10 @@ QList<Feed*> RootItem::getSubTreeFeeds() const {
       children.append(active_item->toFeed());
     }
 
-    traversable_items.append(active_item->childItems());
+    if (recursive || !traversed) {
+      traversed = true;
+      traversable_items.append(active_item->childItems());
+    }
   }
 
   return children;

@@ -71,12 +71,12 @@ void FeedsView::setSortingEnabled(bool enable) {
   connect(header(), &QHeaderView::sortIndicatorChanged, this, &FeedsView::saveSortState);
 }
 
-QList<Feed*> FeedsView::selectedFeeds() const {
+QList<Feed*> FeedsView::selectedFeeds(bool recursive) const {
   auto its = selectedItems();
   QList<Feed*> feeds;
 
   for (RootItem* it : its) {
-    feeds.append(it->getSubTreeFeeds());
+    feeds.append(it->getSubTreeFeeds(recursive));
   }
 
   auto std_feeds = boolinq::from(feeds).distinct().toStdList();
@@ -128,7 +128,7 @@ QList<RootItem*> FeedsView::selectedItems() const {
 }
 
 void FeedsView::copyUrlOfSelectedFeeds() const {
-  auto feeds = selectedFeeds();
+  auto feeds = selectedFeeds(true);
   QStringList urls;
 
   for (const auto* feed : feeds) {
@@ -229,7 +229,7 @@ void FeedsView::expandCollapseCurrentItem(bool recursive) {
 }
 
 void FeedsView::updateSelectedItems() {
-  qApp->feedReader()->updateFeeds(selectedFeeds());
+  qApp->feedReader()->updateFeeds(selectedFeeds(true));
 }
 
 void FeedsView::clearSelectedItems() {
@@ -285,6 +285,7 @@ void FeedsView::editItems(const QList<RootItem*>& items) {
                               .where([](RootItem* it) {
                                 return it->canBeEdited();
                               })
+                              .distinct()
                               .toStdList();
 
   if (std_editable_items.empty()) {
@@ -357,25 +358,30 @@ void FeedsView::editItems(const QList<RootItem*>& items) {
 }
 
 void FeedsView::editChildFeeds() {
-  auto* item = selectedItem();
+  auto items = selectedFeeds(false);
 
-  if (item != nullptr) {
-    auto children = item->childItems();
-    auto std_feeds = boolinq::from(children)
-                       .where([](RootItem* ch) {
-                         return ch->kind() == RootItem::Kind::Feed;
-                       })
-                       .toStdList();
+  if (!items.isEmpty()) {
+    auto root_items = boolinq::from(items)
+                        .select([](Feed* fd) {
+                          return fd;
+                        })
+                        .toStdList();
 
-    editItems(FROM_STD_LIST(QList<RootItem*>, std_feeds));
+    editItems(FROM_STD_LIST(QList<RootItem*>, root_items));
   }
 }
 
 void FeedsView::editRecursiveFeeds() {
-  auto* item = selectedItem();
+  auto items = selectedFeeds(true);
 
-  if (item != nullptr) {
-    editItems(item->getSubTree(RootItem::Kind::Feed));
+  if (!items.isEmpty()) {
+    auto root_items = boolinq::from(items)
+                        .select([](Feed* fd) {
+                          return fd;
+                        })
+                        .toStdList();
+
+    editItems(FROM_STD_LIST(QList<RootItem*>, root_items));
   }
 }
 

@@ -30,7 +30,7 @@ class RSSGUARD_DLLSPEC FeedsView : public BaseTreeView {
 
     // Returns list of selected/all feeds.
     // NOTE: This is recursive method which returns all descendants.
-    QList<Feed*> selectedFeeds() const;
+    QList<Feed*> selectedFeeds(bool recursive) const;
 
     // Returns selected item. If multiple items are selected, returns
     // the one of them which is also "current". If none of them is

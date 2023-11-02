@@ -156,7 +156,7 @@ class RSSGUARD_DLLSPEC RootItem : public QObject {
     // Returns list of feeds complemented by their own string CUSTOM ID.
     QHash<QString, Feed*> getHashedSubTreeFeeds() const;
 
-    QList<Feed*> getSubTreeFeeds() const;
+    QList<Feed*> getSubTreeFeeds(bool recursive = true) const;
     QList<Feed*> getSubTreeAutoFetchingWithManualIntervalsFeeds() const;
     QList<Feed*> getSubAutoFetchingEnabledFeeds() const;
 
