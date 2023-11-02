@@ -6,7 +6,7 @@
     <message>
       <location filename="../src/librssguard/services/abstract/accountcheckmodel.cpp" line="187"/>
       <source>(category)</source>
-      <translation>（分类）</translation>
+      <translation>(分类)</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/abstract/accountcheckmodel.cpp" line="190"/>
@@ -29,7 +29,7 @@
     <message>
       <location filename="../src/librssguard/network-web/adblock/adblockdialog.cpp" line="65"/>
       <source>There is some error in AdBlock component and it cannot be enabled. Check error message below (or application debug log) for more information.</source>
-      <translation>AdBlock 组件中存在一些错误，因而无法启用它。请查看下方错误信息(或应用程序调试日志) 以了解更多信息。</translation>
+      <translation>AdBlock 组件中存在一些错误，无法启用。请查看下方的错误消息（或应用程序调试日志）以获取更多信息。</translation>
     </message>
     <message>
       <location filename="../src/librssguard/network-web/adblock/adblockdialog.cpp" line="99"/>
@@ -39,14 +39,14 @@
     <message>
       <location filename="../src/librssguard/network-web/adblock/adblockdialog.cpp" line="114"/>
       <source>There is error, check application log for more details and head to online documentation.</source>
-      <translation>出现错误，请检查应用程序日志以了解更多细节，并前往在线文档。</translation>
+      <translation>出现了错误，请查看应用程序日志以获取更多详细信息，并前往在线文档进行参考。</translation>
     </message>
     <message>
       <location filename="../src/librssguard/network-web/adblock/adblockdialog.cpp" line="85"/>
       <source>There is error, check application log for more details and head to online documentation. Also make sure that Node.js is installed.
 
 Error: %1</source>
-      <translation>出现错误，请检查应用程序日志以了解更多细节，并前往在线文档。并确保 Node.js 被正确安装。
+      <translation>出现错误，请检查应用程序日志以获取更多详细信息，并查阅在线文档。同时，请确保已正确安装 Node.js。
 
 错误：%1</translation>
     </message>
@@ -67,7 +67,7 @@ Error: %1</source>
     <message>
       <location filename="../src/librssguard/network-web/adblock/adblockdialog.cpp" line="98"/>
       <source>It seems your AdBlock runs fine, but wait few seconds to be sure.</source>
-      <translation>看起来 AdBlock 运行正常，但稍等片刻确保正确无误。</translation>
+      <translation>看起来 AdBlock 运行正常，但请稍等几秒钟以确保一切顺利。</translation>
     </message>
     <message>
       <location filename="../src/librssguard/network-web/adblock/adblockdialog.ui" line="20"/>
@@ -77,27 +77,27 @@ Error: %1</source>
     <message>
       <location filename="../src/librssguard/network-web/adblock/adblockdialog.ui" line="32"/>
       <source>&amp;Help</source>
-      <translation>帮助</translation>
+      <translation>&amp;帮助</translation>
     </message>
     <message>
       <location filename="../src/librssguard/network-web/adblock/adblockdialog.ui" line="58"/>
       <source>Filter lists</source>
-      <translation>过滤列表</translation>
+      <translation>过滤清单</translation>
     </message>
     <message>
       <location filename="../src/librssguard/network-web/adblock/adblockdialog.ui" line="64"/>
       <source>Add your direct links to filter lists here (one URL per line)</source>
-      <translation>添加你的直链至过滤清单(一行一个)</translation>
+      <translation>在这里添加你的直链至过滤清单（每行一个URL）</translation>
     </message>
     <message>
       <location filename="../src/librssguard/network-web/adblock/adblockdialog.ui" line="78"/>
       <source>Custom filters</source>
-      <translation>自定义过滤器</translation>
+      <translation>自定义过滤规则</translation>
     </message>
     <message>
       <location filename="../src/librssguard/network-web/adblock/adblockdialog.ui" line="84"/>
       <source>Add your custom filters here (one filter per line)</source>
-      <translation>在此处添加自定义过滤器(一行一个)</translation>
+      <translation>在此处添加自定义过滤规则（每行一个）</translation>
     </message>
   </context>
   <context>
@@ -105,7 +105,7 @@ Error: %1</source>
     <message>
       <location filename="../src/librssguard/network-web/adblock/adblockicon.cpp" line="12"/>
       <source>AdBlock lets you block unwanted content on web pages</source>
-      <translation>AdBlock 可以让你屏蔽网页上不想看到的内容</translation>
+      <translation>AdBlock 可以让你在网页上屏蔽不想要的内容</translation>
     </message>
     <message>
       <location filename="../src/librssguard/network-web/adblock/adblockicon.cpp" line="45"/>
@@ -118,12 +118,12 @@ Error: %1</source>
     <message>
       <location filename="../src/librssguard/network-web/adblock/adblockmanager.cpp" line="198"/>
       <source>Failed to setup filters and start server: %1.</source>
-      <translation>设置过滤器及启动服务器失败：%1。</translation>
+      <translation>无法设置过滤器并启动服务器：%1。</translation>
     </message>
     <message>
       <location filename="../src/librssguard/network-web/adblock/adblockmanager.cpp" line="375"/>
       <source>failed to download filter list &apos;%1&apos;</source>
-      <translation>无法下载过滤器规则 &apos;%1&apos;</translation>
+      <translation>无法下载过滤规则列表 &apos;%1&apos;</translation>
     </message>
   </context>
   <context>
@@ -131,7 +131,7 @@ Error: %1</source>
     <message>
       <location filename="../src/librssguard/miscellaneous/application.cpp" line="1151"/>
       <source>Application is already running.</source>
-      <translation>应用已在运行。</translation>
+      <translation>应用程序已经在运行。</translation>
     </message>
     <message>
       <location filename="../src/librssguard/miscellaneous/application.cpp" line="592"/>
