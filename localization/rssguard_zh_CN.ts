@@ -1977,12 +1977,12 @@ QtWebEngine 缓存文件夹 -&gt; &quot;%7&quot;</translation>
     <message>
       <location filename="../src/librssguard/services/abstract/gui/formfeeddetails.ui" line="60"/>
       <source>Select the auto-download strategy for messages of this feed. Default auto-download strategy means that new messges of this feed will be downloaded in time intervals set in application settings.</source>
-      <translation>选择此 feed 消息的自动下载策略。默认的自动下载策略是指a按照应用程序设置中设定的时间间隔内下载该feed的新消息。</translation>
+      <translation>选择此订阅源的消息的自动下载策略。默认的自动下载策略意味着该订阅源的新消息将按照应用程序设置中的时间间隔下载。</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/abstract/gui/formfeeddetails.ui" line="84"/>
       <source>Open articles via their URL automatically</source>
-      <translation>通过其URL自动打开文章</translation>
+      <translation>通过其 URL 自动打开文章</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/abstract/gui/formfeeddetails.ui" line="111"/>
@@ -1992,7 +1992,7 @@ QtWebEngine 缓存文件夹 -&gt; &quot;%7&quot;</translation>
     <message>
       <location filename="../src/librssguard/services/abstract/gui/formfeeddetails.ui" line="128"/>
       <source>Avoid adding articles before this date into the database</source>
-      <translation>避免在这个日期之前将文章添加到数据库中</translation>
+      <translation>避免在此日期之前将文章添加到数据库中</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/abstract/gui/formfeeddetails.ui" line="166"/>
@@ -2002,12 +2002,12 @@ QtWebEngine 缓存文件夹 -&gt; &quot;%7&quot;</translation>
     <message>
       <location filename="../src/librssguard/services/abstract/gui/formfeeddetails.ui" line="191"/>
       <source>Disable this feed</source>
-      <translation>禁用该 feed</translation>
+      <translation>禁用此订阅源</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/abstract/gui/formfeeddetails.ui" line="205"/>
       <source>Right-to-left layout</source>
-      <translation>从右到左布局</translation>
+      <translation>从右到左的布局</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/abstract/gui/formfeeddetails.ui" line="177"/>
@@ -2048,7 +2048,7 @@ QtWebEngine 缓存文件夹 -&gt; &quot;%7&quot;</translation>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.cpp" line="85"/>
       <source>Open &amp;main menu</source>
-      <translation>打开&amp;主菜单</translation>
+      <translation>打开主菜单 (&amp;M)</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="53"/>
@@ -2078,22 +2078,22 @@ QtWebEngine 缓存文件夹 -&gt; &quot;%7&quot;</translation>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="105"/>
       <source>F&amp;eeds</source>
-      <translation>F&amp;eeds</translation>
+      <translation>订阅源 (&amp;E)</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="109"/>
       <source>&amp;Add item</source>
-      <translation>添加项目</translation>
+      <translation>添加项目 (&amp;A)</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="114"/>
       <source>&amp;Move</source>
-      <translation>移动</translation>
+      <translation>移动 (&amp;M)</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="160"/>
       <source>Art&amp;icles</source>
-      <translation>文章</translation>
+      <translation>文章 (&amp;A)</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="185"/>
@@ -2108,7 +2108,7 @@ QtWebEngine 缓存文件夹 -&gt; &quot;%7&quot;</translation>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="200"/>
       <source>&amp;Web browser &amp;&amp; tabs</source>
-      <translation>网络浏览器&amp;标签页</translation>
+      <translation>网络浏览器与标签页 (&amp;W)</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="227"/>
@@ -2128,117 +2128,117 @@ QtWebEngine 缓存文件夹 -&gt; &quot;%7&quot;</translation>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="244"/>
       <source>Display settings of the application.</source>
-      <translation>显示应用程序设置。</translation>
+      <translation>显示应用程序的设置。</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="252"/>
       <source>&amp;About application</source>
-      <translation>关于应用 (&amp;T)</translation>
+      <translation>关于应用程序 (&amp;A)</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="255"/>
       <source>Displays extra info about this application.</source>
-      <translation>显示关于此应用的额外信息。</translation>
+      <translation>显示此应用程序的额外信息。</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="269"/>
       <source>&amp;Fullscreen</source>
-      <translation>全屏</translation>
+      <translation>全屏 (&amp;F)</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="272"/>
       <source>Switch fullscreen mode.</source>
-      <translation>切换全屏模式。</translation>
+      <translation>切换到全屏模式。</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="280"/>
       <source>&amp;Fetch all</source>
-      <translation>获取全部</translation>
+      <translation>获取全部 (&amp;F)</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="283"/>
       <source>Fetch all feeds</source>
-      <translation>获取全部Feeds</translation>
+      <translation>获取所有订阅源</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="291"/>
       <source>Fetch &amp;selected</source>
-      <translation>获取所选</translation>
+      <translation>获取所选 (&amp;S)</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="294"/>
       <source>Fetch selected feeds</source>
-      <translation>获取所选的Feeds</translation>
+      <translation>获取所选的订阅源</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="315"/>
       <source>Mark articles &amp;read</source>
-      <translation>标记文章为&amp;已读</translation>
+      <translation>标记文章为已读 (&amp;R)</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="318"/>
       <source>Mark selected articles read</source>
-      <translation>标记选定的文章已读</translation>
+      <translation>标记所选文章为已读</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="326"/>
       <source>Mark articles &amp;unread</source>
-      <translation>标记文章&amp;未读</translation>
+      <translation>标记文章为未读 (&amp;U)</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="329"/>
       <source>Mark selected articles unread</source>
-      <translation>标记选定的文章未读</translation>
+      <translation>标记所选文章为未读</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="337"/>
       <source>Switch &amp;importance</source>
-      <translation>开关&amp;重要性</translation>
+      <translation>切换重要性 (&amp;I)</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="340"/>
       <source>Switch importance of selected articles</source>
-      <translation>选定的文章的开关重要性</translation>
+      <translation>切换所选文章的重要性</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="351"/>
       <source>Mark all messages (without message filters) from selected items as read.</source>
-      <translation>将所选项目中所有消息（忽略消息过滤器）设为已读。</translation>
+      <translation>将所选项中的所有消息（不包括消息过滤器）标记为已读。</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="362"/>
       <source>Mark all messages (without message filters) from selected items as unread.</source>
-      <translation>将所选项目中所有消息（忽略消息过滤器）设为未读。</translation>
+      <translation>将所选项中的所有消息（不包括消息过滤器）标记为未读。</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="370"/>
       <source>&amp;Delete articles</source>
-      <translation>删除文章</translation>
+      <translation>删除文章 (&amp;D)</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="302"/>
       <source>&amp;Edit selected items</source>
-      <translation>&amp;编辑所选项目</translation>
+      <translation>编辑所选项目 (&amp;E)</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="307"/>
       <source>&amp;Delete selected items</source>
-      <translation>&amp;删除所选项目</translation>
+      <translation>删除所选项目 (&amp;D)</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="348"/>
       <source>Mark selected items &amp;read</source>
-      <translation>标记所选项目 &amp;已读</translation>
+      <translation>标记所选项目为已读 (&amp;R)</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="359"/>
       <source>Mark selected items &amp;unread</source>
-      <translation>标记所选项目 &amp;未读</translation>
+      <translation>标记所选项目为未读 (&amp;U)</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="378"/>
       <source>&amp;Clean selected items</source>
-      <translation>&amp;清除所选项目</translation>
+      <translation>清除所选项目 (&amp;C)</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="381"/>
@@ -2248,7 +2248,7 @@ QtWebEngine 缓存文件夹 -&gt; &quot;%7&quot;</translation>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="389"/>
       <source>Open in &amp;external browser</source>
-      <translation>用外部浏览器打开</translation>
+      <translation>用外部浏览器打开 (&amp;E)</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="392"/>
@@ -2258,7 +2258,7 @@ QtWebEngine 缓存文件夹 -&gt; &quot;%7&quot;</translation>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="400"/>
       <source>Open in &amp;internal browser</source>
-      <translation>用内部浏览器打开</translation>
+      <translation>用内部浏览器打开 (&amp;I)</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="403"/>
@@ -2278,72 +2278,72 @@ QtWebEngine 缓存文件夹 -&gt; &quot;%7&quot;</translation>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="425"/>
       <source>&amp;Mark all read</source>
-      <translation>标记所有已读</translation>
+      <translation>标记所有为已读 (&amp;M)</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="428"/>
       <source>Marks all messages in all items read. This does not take message filters into account.</source>
-      <translation>将所有消息设为已读，不考虑消息过滤器。</translation>
+      <translation>将所有项目中的消息标记为已读，不考虑消息过滤器。</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="436"/>
       <source>View selected item in &amp;newspaper mode</source>
-      <translation>以报纸模式查看所选项目</translation>
+      <translation>以报纸模式查看所选项目 (&amp;N)</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="439"/>
       <source>Displays all messages from selected item in a new &quot;newspaper mode&quot; tab. Note that messages are not set as read automatically.</source>
-      <translation>在新的&quot;报纸模式&quot;选项卡中显示所选项目的所有消息，注意消息不会自动设为已读。</translation>
+      <translation>在新的 &quot;报纸模式&quot; 选项卡中显示所选项目的所有消息。注意，消息不会自动被标记为已读。</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="450"/>
       <source>Switch main window visibility</source>
-      <translation>切换主窗口的可见度</translation>
+      <translation>切换主窗口的可见性</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="453"/>
       <source>Hides main window if it is visible and shows it if it is hidden.</source>
-      <translation>主窗口显示时隐藏它，反之，主窗口隐藏时显示它。</translation>
+      <translation>主窗口可见时将其隐藏，反之则显示。</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="467"/>
       <source>&amp;Feed list</source>
-      <translation>Feed 列表 (&amp;F)</translation>
+      <translation>订阅源列表 (&amp;F)</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="470"/>
       <source>Hides or shows the list of feeds/categories.</source>
-      <translation>隐藏或显示 Feeds/分类列表。</translation>
+      <translation>隐藏或显示 订阅源/分类 列表。</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="478"/>
       <source>&amp;Clean all</source>
-      <translation>清除所有</translation>
+      <translation>清除所有 (&amp;C)</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="481"/>
       <source>Deletes all messages from all items.</source>
-      <translation>删除所有项目中所有消息。</translation>
+      <translation>删除所有项目中的消息。</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="489"/>
       <source>&amp;Next item</source>
-      <translation>下一个项目</translation>
+      <translation>下一个项目 (&amp;N)</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="497"/>
       <source>&amp;Previous item</source>
-      <translation>上一个项目</translation>
+      <translation>上一个项目 (&amp;P)</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="505"/>
       <source>&amp;Next article</source>
-      <translation>下一篇文章</translation>
+      <translation>下一篇文章 (&amp;N)</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="513"/>
       <source>&amp;Previous article</source>
-      <translation>上一篇文章</translation>
+      <translation>上一篇文章 (&amp;P)</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="521"/>
@@ -2353,7 +2353,7 @@ QtWebEngine 缓存文件夹 -&gt; &quot;%7&quot;</translation>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="524"/>
       <source>Check if new update for the application is available for download.</source>
-      <translation>检查是否有应用更新可供下载。</translation>
+      <translation>检查是否有新的应用更新可供下载。</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="538"/>
@@ -2368,7 +2368,7 @@ QtWebEngine 缓存文件夹 -&gt; &quot;%7&quot;</translation>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="549"/>
       <source>Report a &amp;bug...</source>
-      <translation>报告 BUG (&amp;B)…</translation>
+      <translation>报告错误 (&amp;B)…</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="560"/>
@@ -2378,12 +2378,12 @@ QtWebEngine 缓存文件夹 -&gt; &quot;%7&quot;</translation>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="563"/>
       <source>Switch visibility of main toolbars.</source>
-      <translation>切换主工具栏可见性。</translation>
+      <translation>切换主工具栏的可见性。</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="577"/>
       <source>&amp;List headers</source>
-      <translation>列表标题</translation>
+      <translation>列表标题 (&amp;L)</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="585"/>
@@ -2393,7 +2393,7 @@ QtWebEngine 缓存文件夹 -&gt; &quot;%7&quot;</translation>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="593"/>
       <source>Display &amp;documentation</source>
-      <translation>展示&amp;文档</translation>
+      <translation>查看文档 (&amp;D)</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="601"/>
@@ -2403,17 +2403,17 @@ QtWebEngine 缓存文件夹 -&gt; &quot;%7&quot;</translation>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="609"/>
       <source>&amp;Restore settings</source>
-      <translation>恢复设定</translation>
+      <translation>恢复设置 (&amp;R)</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="617"/>
       <source>&amp;Backup settings</source>
-      <translation>备份设定</translation>
+      <translation>备份设置 (&amp;B)</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="625"/>
       <source>Switch layout</source>
-      <translation>开关布局</translation>
+      <translation>切换布局</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="633"/>
@@ -2448,27 +2448,27 @@ QtWebEngine 缓存文件夹 -&gt; &quot;%7&quot;</translation>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="679"/>
       <source>&amp;Add account</source>
-      <translation>添加账户</translation>
+      <translation>添加账户 (&amp;A)</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="687"/>
       <source>&amp;Restore articles</source>
-      <translation>恢复文章</translation>
+      <translation>恢复文章 (&amp;R)</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="695"/>
       <source>&amp;Restore all recycle bins</source>
-      <translation>还原回收站</translation>
+      <translation>还原所有回收站 (&amp;R)</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="703"/>
       <source>&amp;Empty all recycle bins</source>
-      <translation>清空回收站</translation>
+      <translation>清空所有回收站 (&amp;E)</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="711"/>
       <source>Next &amp;unread article</source>
-      <translation>下一篇&amp;未读文章</translation>
+      <translation>下一篇未读文章 (&amp;U)</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="725"/>
@@ -2514,102 +2514,102 @@ QtWebEngine 缓存文件夹 -&gt; &quot;%7&quot;</translation>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="785"/>
       <source>Go to &amp;next tab</source>
-      <translation>下一个标签页 (&amp;N)</translation>
+      <translation>跳转到下一个标签页 (&amp;N)</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="790"/>
       <source>Go to &amp;previous tab</source>
-      <translation>上一个标签页 (&amp;P)</translation>
+      <translation>跳转到上一个标签页 (&amp;P)</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="798"/>
       <source>&amp;Enable article preview</source>
-      <translation>启用文章预览</translation>
+      <translation>启用文章预览 (&amp;E)</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="803"/>
       <source>&amp;Copy URL of selected item</source>
-      <translation>复制所选项目的URL</translation>
+      <translation>复制所选项目的 URL (&amp;C)</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="808"/>
       <source>Article &amp;filters</source>
-      <translation>文章 &amp; 筛选器</translation>
+      <translation>文章筛选 (&amp;F)</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="816"/>
       <source>&amp;Show tree expanders</source>
-      <translation>显示树形扩展程序</translation>
+      <translation>显示树状扩展 (&amp;S)</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="821"/>
       <source>Fetch feeds with &amp;custom auto-download policy</source>
-      <translation>用自定义的自动下载策略获取Feeds</translation>
+      <translation>用自定义自动下载策略获取 Feeds (&amp;C)</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="829"/>
       <source>Alternate row colors in lists</source>
-      <translation>列表中替代行的颜色</translation>
+      <translation>列表交替显示行颜色</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="837"/>
       <source>Automatically &amp;expand item when selected</source>
-      <translation>选择时自动展开项目</translation>
+      <translation>当选择时自动展开项目 (&amp;E)</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="848"/>
       <source>Message viewer toolbars</source>
-      <translation>消息查看器的工具条</translation>
+      <translation>消息查看器工具栏</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="853"/>
       <source>Expand/collapse selected item &amp;recursively</source>
-      <translation>展开/折叠所选项目并递归</translation>
+      <translation>递归展开/折叠所选项目 (&amp;R)</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="858"/>
       <source>Close &amp;current tab</source>
-      <translation>关闭当前标签页</translation>
+      <translation>关闭当前标签页 (&amp;C)</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="863"/>
       <source>&amp;Copy URLs of selected articles</source>
-      <translation>复制所选文章的URL</translation>
+      <translation>复制所选文章的 URL (&amp;C)</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="868"/>
       <source>Open in internal browser (no new tab)</source>
-      <translation>用内部浏览器打开（没有新标签页）</translation>
+      <translation>在内部浏览器中打开（不开新标签页）</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="876"/>
       <source>&amp;Sort alphabetically</source>
-      <translation>按字母顺序排序</translation>
+      <translation>按字母顺序排序 (&amp;S)</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="881"/>
       <source>Move &amp;up</source>
-      <translation>向上移动</translation>
+      <translation>向上移动 (&amp;U)</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="886"/>
       <source>Move to &amp;top</source>
-      <translation>移至顶部</translation>
+      <translation>移至顶部 (&amp;T)</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="891"/>
       <source>Move &amp;down</source>
-      <translation>向下移动</translation>
+      <translation>向下移动 (&amp;D)</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="896"/>
       <source>Move to &amp;bottom</source>
-      <translation>移至底部</translation>
+      <translation>移至底部 (&amp;B)</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="901"/>
       <source>Display application &amp;log</source>
-      <translation>显示应用程序 &amp;日志</translation>
+      <translation>显示应用程序日志 (&amp;L)</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="906"/>
@@ -2624,32 +2624,32 @@ QtWebEngine 缓存文件夹 -&gt; &quot;%7&quot;</translation>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="916"/>
       <source>Scroll &amp;up browser</source>
-      <translation>滚动 &amp;上移浏览器</translation>
+      <translation>浏览器向上滚动 (&amp;U)</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="921"/>
       <source>Scroll &amp;down browser</source>
-      <translation>滚动 &amp;下移浏览器</translation>
+      <translation>浏览器向下滚动 (&amp;D)</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="926"/>
       <source>Rearrange &amp;subcategories alphabetically</source>
-      <translation>重新按字母顺序排列 &amp;子类别</translation>
+      <translation>按字母顺序重新排列子类别 (&amp;S)</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="931"/>
       <source>Rearrange &amp;feeds alphabetically</source>
-      <translation>重新按字母顺序排列 &amp;订阅源</translation>
+      <translation>按字母顺序重新排列订阅源 (&amp;F)</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="936"/>
       <source>Cleanup web cac&amp;he</source>
-      <translation>清理网络缓存</translation>
+      <translation>清理网络缓存 (&amp;H)</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="944"/>
       <source>You must add new account first</source>
-      <translation>你必须先添加新账户</translation>
+      <translation>你必须首先添加新账户</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="947"/>
@@ -2659,23 +2659,23 @@ QtWebEngine 缓存文件夹 -&gt; &quot;%7&quot;</translation>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="952"/>
       <source>Edit &amp;child feeds</source>
-      <translation>编辑子订阅 (&amp;C)</translation>
+      <translation>编辑子订阅源 (&amp;C)</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="957"/>
       <source>Edit child feeds (&amp;recursive)</source>
-      <translation>编辑子订阅（递归） (&amp;r)</translation>
+      <translation>递归编辑子订阅源 (&amp;R)</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="749"/>
       <location filename="../src/librssguard/gui/dialogs/formmain.cpp" line="328"/>
       <source>Add new feed</source>
-      <translation>添加 Feed</translation>
+      <translation>添加新订阅源</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.cpp" line="379"/>
       <source>No actions possible</source>
-      <translation>没有可用操作</translation>
+      <translation>无可用操作</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.cpp" line="153"/>
@@ -2685,17 +2685,17 @@ QtWebEngine 缓存文件夹 -&gt; &quot;%7&quot;</translation>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.cpp" line="154"/>
       <source>Cannot cleanup database, because another critical action is running.</source>
-      <translation>另一项关键操作正在执行，无法清理数据库。</translation>
+      <translation>由于另一项关键操作正在执行，无法清理数据库。</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.cpp" line="529"/>
       <source>Close opened modal dialogs first.</source>
-      <translation>请先关闭已打开的对话框。</translation>
+      <translation>请先关闭已打开的模式对话框。</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.cpp" line="448"/>
       <source>Fetching common data</source>
-      <translation>获取公共数据</translation>
+      <translation>获取通用数据</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.cpp" line="528"/>
@@ -2708,12 +2708,12 @@ QtWebEngine 缓存文件夹 -&gt; &quot;%7&quot;</translation>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.cpp" line="317"/>
       <source>ACCEPTED</source>
-      <translation>接受</translation>
+      <translation>已接受</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.cpp" line="317"/>
       <source>REJECTED</source>
-      <translation>拒绝</translation>
+      <translation>已拒绝</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.cpp" line="330"/>
@@ -6496,7 +6496,7 @@ Authors of this application are NOT responsible for lost data.</source>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="128"/>
       <source>Avoid adding articles before this date into the database</source>
-      <translation>避免在这个日期之前将文章添加到数据库中</translation>
+      <translation>避免在此日期之前将文章添加到数据库中</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="164"/>
