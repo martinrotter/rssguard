@@ -30,9 +30,6 @@ SettingsNotifications::SettingsNotifications(Settings* settings, QWidget* parent
   connect(m_ui.m_sbScreen, QOverload<int>::of(&QSpinBox::valueChanged), this, &SettingsNotifications::dirtifySettings);
   connect(m_ui.m_sbScreen, QOverload<int>::of(&QSpinBox::valueChanged), this, &SettingsNotifications::requireRestart);
 
-  m_ui.m_sbScreen->setMinimum(-1);
-  m_ui.m_sbScreen->setMaximum(QGuiApplication::screens().size() - 1);
-
   connect(m_ui.m_sbScreen, QOverload<int>::of(&QSpinBox::valueChanged), this, &SettingsNotifications::showScreenInfo);
 
   connect(m_ui.m_cbCustomNotificationsPosition,
@@ -43,6 +40,13 @@ SettingsNotifications::SettingsNotifications(Settings* settings, QWidget* parent
           QOverload<int>::of(&QComboBox::currentIndexChanged),
           this,
           &SettingsNotifications::requireRestart);
+}
+
+void SettingsNotifications::loadSettings() {
+  onBeginLoadSettings();
+
+  m_ui.m_sbScreen->setMinimum(-1);
+  m_ui.m_sbScreen->setMaximum(QGuiApplication::screens().size() - 1);
 
   QMetaEnum enm = QMetaEnum::fromType<ToastNotificationsManager::NotificationPosition>();
 
@@ -52,10 +56,6 @@ SettingsNotifications::SettingsNotifications(Settings* settings, QWidget* parent
                   textForPosition(ToastNotificationsManager::NotificationPosition(enm.value(i))),
                 enm.value(i));
   }
-}
-
-void SettingsNotifications::loadSettings() {
-  onBeginLoadSettings();
 
   // Load fancy notification settings.
   m_ui.m_checkEnableNotifications

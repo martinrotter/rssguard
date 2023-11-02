@@ -5,7 +5,8 @@
 #include "miscellaneous/settings.h"
 
 SettingsPanel::SettingsPanel(Settings* settings, QWidget* parent)
-  : QWidget(parent), m_requiresRestart(false), m_isDirty(false), m_isLoading(false), m_isLoaded(false), m_settings(settings) {}
+  : QWidget(parent), m_requiresRestart(false), m_isDirty(false), m_isLoading(false), m_isLoaded(false),
+    m_settings(settings) {}
 
 void SettingsPanel::onBeginLoadSettings() {
   m_isLoading = true;
@@ -41,7 +42,9 @@ void SettingsPanel::setRequiresRestart(bool requiresRestart) {
 }
 
 void SettingsPanel::requireRestart() {
-  setRequiresRestart(true);
+  if (!m_isLoading) {
+    setRequiresRestart(true);
+  }
 }
 
 bool SettingsPanel::isLoaded() const {
