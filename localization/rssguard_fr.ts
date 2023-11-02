@@ -440,12 +440,12 @@ version en cliquant sur cette notification.</translation>
   <context>
     <name>DiscoveredFeedsModel</name>
     <message>
-      <location filename="../src/librssguard/services/standard/gui/formdiscoverfeeds.cpp" line="291"/>
+      <location filename="../src/librssguard/services/standard/gui/formdiscoverfeeds.cpp" line="297"/>
       <source>Title</source>
       <translation>Titre</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/services/standard/gui/formdiscoverfeeds.cpp" line="291"/>
+      <location filename="../src/librssguard/services/standard/gui/formdiscoverfeeds.cpp" line="297"/>
       <source>Type</source>
       <translation>Type</translation>
     </message>
@@ -771,22 +771,22 @@ Identifiant d&apos;élément: %5</translation>
       <translation>Barre d&apos;outil des articles</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/feedmessageviewer.cpp" line="229"/>
+      <location filename="../src/librssguard/gui/feedmessageviewer.cpp" line="236"/>
       <source>Filtered feed list</source>
       <translation>Liste de flux filtrés</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/feedmessageviewer.cpp" line="230"/>
+      <location filename="../src/librssguard/gui/feedmessageviewer.cpp" line="237"/>
       <source>Cannot select article in article list as your feed is filtered out from feed list.</source>
       <translation>Impossible de sélectionner l'article dans la liste d'articles car votre flux est filtré hors de la liste des flux.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/feedmessageviewer.cpp" line="247"/>
+      <location filename="../src/librssguard/gui/feedmessageviewer.cpp" line="254"/>
       <source>Filtered article list</source>
       <translation>Liste d'articles filtrés</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/feedmessageviewer.cpp" line="248"/>
+      <location filename="../src/librssguard/gui/feedmessageviewer.cpp" line="255"/>
       <source>Cannot select article as it seems your article list is filtered.</source>
       <translation>Impossible de sélectionner l'article car il semble que votre liste d'articles est filtrée.</translation>
     </message>
@@ -1017,16 +1017,6 @@ Identifiant d&apos;élément: %5</translation>
       <translation>Titres des flux/catégories.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/core/feedsmodel.cpp" line="523"/>
-      <source>Are you sure?</source>
-      <translation>Êtes-vous sûr(e)?</translation>
-    </message>
-    <message>
-      <location filename="../src/librssguard/core/feedsmodel.cpp" line="524"/>
-      <source>Do you really want to clean all articles from selected item?</source>
-      <translation>Voulez-vous vraiment nettoyer tous les articles de l&apos;élément sélectionné?</translation>
-    </message>
-    <message>
       <location filename="../src/librssguard/core/feedsmodel.cpp" line="31"/>
       <source>Root</source>
       <translation>Racine</translation>
@@ -1053,27 +1043,27 @@ Identifiant d&apos;élément: %5</translation>
   <context>
     <name>FeedsToolBar</name>
     <message>
-      <location filename="../src/librssguard/gui/toolbars/feedstoolbar.cpp" line="76"/>
+      <location filename="../src/librssguard/gui/toolbars/feedstoolbar.cpp" line="78"/>
       <source>Toolbar spacer</source>
       <translation>Séparation de barre d&apos;outils</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/toolbars/feedstoolbar.cpp" line="118"/>
+      <location filename="../src/librssguard/gui/toolbars/feedstoolbar.cpp" line="120"/>
       <source>Everywhere</source>
       <translation>Partout</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/toolbars/feedstoolbar.cpp" line="119"/>
+      <location filename="../src/librssguard/gui/toolbars/feedstoolbar.cpp" line="121"/>
       <source>Titles only</source>
       <translation>Titres uniquement</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/toolbars/feedstoolbar.cpp" line="123"/>
+      <location filename="../src/librssguard/gui/toolbars/feedstoolbar.cpp" line="125"/>
       <source>Search feeds</source>
       <translation>Chercher des flux...</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/toolbars/feedstoolbar.cpp" line="131"/>
+      <location filename="../src/librssguard/gui/toolbars/feedstoolbar.cpp" line="133"/>
       <source>Feeds search box</source>
       <translation>Barre de recherche des flux</translation>
     </message>
@@ -1081,111 +1071,119 @@ Identifiant d&apos;élément: %5</translation>
   <context>
     <name>FeedsView</name>
     <message>
-      <location filename="../src/librssguard/gui/feedsview.cpp" line="249"/>
+      <location filename="../src/librssguard/gui/feedsview.cpp" line="271"/>
       <source>Cannot edit item</source>
       <translation>Impossible de modifier l&apos;article</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/feedsview.cpp" line="370"/>
+      <location filename="../src/librssguard/gui/feedsview.cpp" line="398"/>
       <source>Cannot delete item</source>
       <translation>Impossible de supprimer l&apos;article</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/feedsview.cpp" line="980"/>
+      <location filename="../src/librssguard/gui/feedsview.cpp" line="1023"/>
       <source>Context menu for empty space</source>
       <translation>Menu contextuel pour les espaces vides</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/feedsview.cpp" line="250"/>
+      <location filename="../src/librssguard/gui/feedsview.cpp" line="272"/>
       <source>Selected item cannot be edited because another critical operation is ongoing.</source>
       <translation>L&apos;élément sélectionné ne peut être édité car une autre opération critique est en cours.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/feedsview.cpp" line="371"/>
+      <location filename="../src/librssguard/gui/feedsview.cpp" line="399"/>
       <source>Selected item cannot be deleted because another critical operation is ongoing.</source>
       <translation>L&apos;élément sélectionné ne peut être supprimé car une autre opération critique est en cours.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/feedsview.cpp" line="854"/>
-      <location filename="../src/librssguard/gui/feedsview.cpp" line="909"/>
+      <location filename="../src/librssguard/gui/feedsview.cpp" line="897"/>
+      <location filename="../src/librssguard/gui/feedsview.cpp" line="952"/>
       <source>Context menu for categories</source>
       <translation>Menu contextuel des catégories</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/feedsview.cpp" line="409"/>
+      <location filename="../src/librssguard/gui/feedsview.cpp" line="238"/>
+      <location filename="../src/librssguard/gui/feedsview.cpp" line="254"/>
+      <location filename="../src/librssguard/gui/feedsview.cpp" line="437"/>
       <source>Are you sure?</source>
       <translation>Êtes-vous sûr(e)?</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/feedsview.cpp" line="990"/>
+      <location filename="../src/librssguard/gui/feedsview.cpp" line="1033"/>
       <source>Context menu for other items</source>
       <translation>Menu contextuel pour les autres éléments</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/feedsview.cpp" line="1034"/>
+      <location filename="../src/librssguard/gui/feedsview.cpp" line="1077"/>
       <source>Context menu for regex query</source>
       <translation>Le menu contextuel pour votre recherche par expression régulière</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/feedsview.cpp" line="167"/>
+      <location filename="../src/librssguard/gui/feedsview.cpp" line="169"/>
       <source>Selected account does not support adding of new feeds.</source>
       <translation>Le compte sélectionné ne supporte pas l&apos;ajout de flux.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/feedsview.cpp" line="185"/>
+      <location filename="../src/librssguard/gui/feedsview.cpp" line="187"/>
       <source>Selected account does not support adding of new categories.</source>
       <translation>Le compte fourni ne supporte pas l&apos;ajout de nouvelles catégories.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/feedsview.cpp" line="270"/>
-      <location filename="../src/librssguard/gui/feedsview.cpp" line="280"/>
-      <location filename="../src/librssguard/gui/feedsview.cpp" line="298"/>
-      <location filename="../src/librssguard/gui/feedsview.cpp" line="315"/>
+      <location filename="../src/librssguard/gui/feedsview.cpp" line="239"/>
+      <location filename="../src/librssguard/gui/feedsview.cpp" line="255"/>
+      <source>Do you really want to clean all articles from selected items?</source>
+      <translation type="unfinished">Do you really want to clean all articles from selected items?</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard/gui/feedsview.cpp" line="293"/>
+      <location filename="../src/librssguard/gui/feedsview.cpp" line="303"/>
+      <location filename="../src/librssguard/gui/feedsview.cpp" line="321"/>
+      <location filename="../src/librssguard/gui/feedsview.cpp" line="338"/>
       <source>Cannot edit items</source>
       <translation>Impossible de modifier les éléments</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/feedsview.cpp" line="271"/>
+      <location filename="../src/librssguard/gui/feedsview.cpp" line="294"/>
       <source>Selected items cannot be edited. This is not supported (yet).</source>
       <translation>Les éléments sélectionnés ne peuvent pas être modifiés. Ce n'est pas encore supporté.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/feedsview.cpp" line="281"/>
+      <location filename="../src/librssguard/gui/feedsview.cpp" line="304"/>
       <source>%1 does not support batch editing of multiple accounts.</source>
       <translation>%1 ne supporte pas la modification par lots de plusieurs comptes.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/feedsview.cpp" line="299"/>
+      <location filename="../src/librssguard/gui/feedsview.cpp" line="322"/>
       <source>%1 does not support batch editing of items from multiple accounts.</source>
       <translation>%1 ne supporte pas la modification par lots par plusieurs comptes.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/feedsview.cpp" line="316"/>
+      <location filename="../src/librssguard/gui/feedsview.cpp" line="339"/>
       <source>%1 does not support batch editing of items of varying types.</source>
       <translation>%1 ne supporte pas la modification par lots d'éléments de différents types.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/feedsview.cpp" line="326"/>
+      <location filename="../src/librssguard/gui/feedsview.cpp" line="349"/>
       <source>Cannot edit some items</source>
       <translation>Impossible de modifier certains éléments</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/feedsview.cpp" line="327"/>
+      <location filename="../src/librssguard/gui/feedsview.cpp" line="350"/>
       <source>Some of selected items cannot be edited. Proceeding to edit the rest.</source>
       <translation>Certains éléments sélectionnés ne peuvent pas être modifiés. Modification du reste en cours.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/feedsview.cpp" line="399"/>
+      <location filename="../src/librssguard/gui/feedsview.cpp" line="427"/>
       <source>Some items won&apos;t be deleted</source>
       <translation>Certains éléments ne seront pas supprimés</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/feedsview.cpp" line="400"/>
+      <location filename="../src/librssguard/gui/feedsview.cpp" line="428"/>
       <source>Some selected items will not be deleted, because they cannot be deleted.</source>
       <translation>Certains éléments sélectionnés ne seront pas supprimés, car ils ne peuvent pas être supprimés.</translation>
     </message>
     <message numerus="yes">
-      <location filename="../src/librssguard/gui/feedsview.cpp" line="407"/>
+      <location filename="../src/librssguard/gui/feedsview.cpp" line="435"/>
       <source>Deleting %n items</source>
       <translation>
         <numerusform>Suppression de %n élément en cours</numerusform>
@@ -1193,7 +1191,7 @@ Identifiant d&apos;élément: %5</translation>
       </translation>
     </message>
     <message numerus="yes">
-      <location filename="../src/librssguard/gui/feedsview.cpp" line="408"/>
+      <location filename="../src/librssguard/gui/feedsview.cpp" line="436"/>
       <source>You are about to completely delete %n items.</source>
       <translation>
         <numerusform>Vous êtes sur le point de définitivement supprimer %n élément.</numerusform>
@@ -1201,28 +1199,28 @@ Identifiant d&apos;élément: %5</translation>
       </translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/feedsview.cpp" line="606"/>
+      <location filename="../src/librssguard/gui/feedsview.cpp" line="649"/>
       <source>Context menu for recycle bins</source>
       <translation>Menu contextuel des corbeilles</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/feedsview.cpp" line="628"/>
+      <location filename="../src/librssguard/gui/feedsview.cpp" line="671"/>
       <source>Context menu for accounts</source>
       <translation>Menu contextuel des comptes</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/feedsview.cpp" line="1011"/>
+      <location filename="../src/librssguard/gui/feedsview.cpp" line="1054"/>
       <source>Context menu for label</source>
       <translation>Menu contextuel des étiquettes</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/feedsview.cpp" line="958"/>
+      <location filename="../src/librssguard/gui/feedsview.cpp" line="1001"/>
       <source>Context menu for important articles</source>
       <translation>Menu contextuel des articles importants</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/feedsview.cpp" line="166"/>
-      <location filename="../src/librssguard/gui/feedsview.cpp" line="184"/>
+      <location filename="../src/librssguard/gui/feedsview.cpp" line="168"/>
+      <location filename="../src/librssguard/gui/feedsview.cpp" line="186"/>
       <source>Not supported by account</source>
       <translation>Incompatible avec le compte</translation>
     </message>
@@ -1816,37 +1814,42 @@ Dossier du cache Moteur Web QT -&gt; &quot;%7&quot;</translation>
       <translation>Trouver!</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/services/standard/gui/formdiscoverfeeds.ui" line="70"/>
+      <location filename="../src/librssguard/services/standard/gui/formdiscoverfeeds.ui" line="51"/>
+      <source>Discover Sitemaps too (can take some time for bigger websites)</source>
+      <translation type="unfinished">Discover Sitemaps too (can take some time for bigger websites)</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard/services/standard/gui/formdiscoverfeeds.ui" line="77"/>
       <source>Discovered feeds</source>
       <translation>Flux trouvés</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/services/standard/gui/formdiscoverfeeds.ui" line="76"/>
+      <location filename="../src/librssguard/services/standard/gui/formdiscoverfeeds.ui" line="83"/>
       <source>Target parent folder</source>
       <translation>Dossier parent cible</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/services/standard/gui/formdiscoverfeeds.ui" line="88"/>
+      <location filename="../src/librssguard/services/standard/gui/formdiscoverfeeds.ui" line="95"/>
       <source>Select parent item for your feed.</source>
       <translation>Sélectionner l&apos;article parent pour votre flux.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/services/standard/gui/formdiscoverfeeds.ui" line="121"/>
+      <location filename="../src/librssguard/services/standard/gui/formdiscoverfeeds.ui" line="128"/>
       <source>Select &amp;all</source>
       <translation>Tout &amp;sélectionner</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/services/standard/gui/formdiscoverfeeds.ui" line="128"/>
+      <location filename="../src/librssguard/services/standard/gui/formdiscoverfeeds.ui" line="135"/>
       <source>&amp;Unselect all</source>
       <translation>&amp;Tout désélectionner</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/services/standard/gui/formdiscoverfeeds.ui" line="183"/>
+      <location filename="../src/librssguard/services/standard/gui/formdiscoverfeeds.ui" line="190"/>
       <source>Add single feed with advanced details</source>
       <translation>Ajouter un seul flux avec des détails avancés</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/services/standard/gui/formdiscoverfeeds.ui" line="190"/>
+      <location filename="../src/librssguard/services/standard/gui/formdiscoverfeeds.ui" line="197"/>
       <source>&amp;Import checked feeds</source>
       <translation>&amp;Importer les flux sélectionnés</translation>
     </message>
@@ -1871,12 +1874,12 @@ Dossier du cache Moteur Web QT -&gt; &quot;%7&quot;</translation>
       <translation>Erreur : %1</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/services/standard/gui/formdiscoverfeeds.cpp" line="189"/>
+      <location filename="../src/librssguard/services/standard/gui/formdiscoverfeeds.cpp" line="195"/>
       <source>URL is valid.</source>
       <translation>L'URL est valide.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/services/standard/gui/formdiscoverfeeds.cpp" line="192"/>
+      <location filename="../src/librssguard/services/standard/gui/formdiscoverfeeds.cpp" line="198"/>
       <source>URL is NOT valid.</source>
       <translation>L'URL n'est pas valide.</translation>
     </message>
@@ -4788,125 +4791,125 @@ Expiration de jetons d&apos;authentification: %2</translation>
   <context>
     <name>MessagesToolBar</name>
     <message>
-      <location filename="../src/librssguard/gui/toolbars/messagestoolbar.cpp" line="251"/>
+      <location filename="../src/librssguard/gui/toolbars/messagestoolbar.cpp" line="253"/>
       <source>No extra highlighting</source>
       <translation>Pas de surlignement 
 supplémentaire</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/toolbars/messagestoolbar.cpp" line="92"/>
+      <location filename="../src/librssguard/gui/toolbars/messagestoolbar.cpp" line="94"/>
       <source>Toolbar spacer</source>
       <translation>Séparation de barre d&apos;outils</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/toolbars/messagestoolbar.cpp" line="217"/>
+      <location filename="../src/librssguard/gui/toolbars/messagestoolbar.cpp" line="219"/>
       <source>Everywhere</source>
       <translation>Partout</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/toolbars/messagestoolbar.cpp" line="218"/>
+      <location filename="../src/librssguard/gui/toolbars/messagestoolbar.cpp" line="220"/>
       <source>Titles only</source>
       <translation>Titres uniquement</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/toolbars/messagestoolbar.cpp" line="222"/>
+      <location filename="../src/librssguard/gui/toolbars/messagestoolbar.cpp" line="224"/>
       <source>Search articles</source>
       <translation>Chercher des articles...</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/toolbars/messagestoolbar.cpp" line="229"/>
+      <location filename="../src/librssguard/gui/toolbars/messagestoolbar.cpp" line="231"/>
       <source>Article search box</source>
       <translation>Barre de recherche des articles</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/toolbars/messagestoolbar.cpp" line="247"/>
+      <location filename="../src/librssguard/gui/toolbars/messagestoolbar.cpp" line="249"/>
       <source>Menu for highlighting articles</source>
       <translation>Menu pour surligner les articles</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/toolbars/messagestoolbar.cpp" line="256"/>
+      <location filename="../src/librssguard/gui/toolbars/messagestoolbar.cpp" line="258"/>
       <source>Highlight unread articles</source>
       <translation>Surligner les articles non-lus</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/toolbars/messagestoolbar.cpp" line="261"/>
+      <location filename="../src/librssguard/gui/toolbars/messagestoolbar.cpp" line="263"/>
       <source>Highlight important articles</source>
       <translation>Surligner les article importants</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/toolbars/messagestoolbar.cpp" line="265"/>
+      <location filename="../src/librssguard/gui/toolbars/messagestoolbar.cpp" line="267"/>
       <source>Menu for filtering articles</source>
       <translation>Menu pour filtrer les articles</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/toolbars/messagestoolbar.cpp" line="269"/>
+      <location filename="../src/librssguard/gui/toolbars/messagestoolbar.cpp" line="271"/>
       <source>No extra filtering</source>
       <translation>Pas de filtrage 
 supplémentaire</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/toolbars/messagestoolbar.cpp" line="274"/>
+      <location filename="../src/librssguard/gui/toolbars/messagestoolbar.cpp" line="276"/>
       <source>Show unread articles</source>
       <translation>Montrer les articles non-lus</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/toolbars/messagestoolbar.cpp" line="279"/>
+      <location filename="../src/librssguard/gui/toolbars/messagestoolbar.cpp" line="281"/>
       <source>Show important articles</source>
       <translation>Montrer les articles importants</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/toolbars/messagestoolbar.cpp" line="284"/>
+      <location filename="../src/librssguard/gui/toolbars/messagestoolbar.cpp" line="286"/>
       <source>Show today&apos;s articles</source>
       <translation>Montrer les articles d&apos;aujourd&apos;hui</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/toolbars/messagestoolbar.cpp" line="289"/>
+      <location filename="../src/librssguard/gui/toolbars/messagestoolbar.cpp" line="291"/>
       <source>Show yesterday&apos;s articles</source>
       <translation>Montrer les articles d&apos;hier</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/toolbars/messagestoolbar.cpp" line="294"/>
+      <location filename="../src/librssguard/gui/toolbars/messagestoolbar.cpp" line="296"/>
       <source>Show articles in last 24 hours</source>
       <translation>Montrer les articles des dernières 24 heures</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/toolbars/messagestoolbar.cpp" line="299"/>
+      <location filename="../src/librssguard/gui/toolbars/messagestoolbar.cpp" line="301"/>
       <source>Show articles in last 48 hours</source>
       <translation>Montrer les articles des dernières 48 heures</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/toolbars/messagestoolbar.cpp" line="304"/>
+      <location filename="../src/librssguard/gui/toolbars/messagestoolbar.cpp" line="306"/>
       <source>Show this week&apos;s articles</source>
       <translation>Montrer les articles de cette semaine</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/toolbars/messagestoolbar.cpp" line="309"/>
+      <location filename="../src/librssguard/gui/toolbars/messagestoolbar.cpp" line="311"/>
       <source>Show last week&apos;s articles</source>
       <translation>Montrer les articles de la semaine denière</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/toolbars/messagestoolbar.cpp" line="314"/>
+      <location filename="../src/librssguard/gui/toolbars/messagestoolbar.cpp" line="316"/>
       <source>Show articles with attachments</source>
       <translation>Montrer les articles qui ont des pièces-jointes</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/toolbars/messagestoolbar.cpp" line="319"/>
+      <location filename="../src/librssguard/gui/toolbars/messagestoolbar.cpp" line="321"/>
       <source>Show articles with some score</source>
       <translation>Montrer les articles qui ont un score</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/toolbars/messagestoolbar.cpp" line="324"/>
-      <location filename="../src/librssguard/gui/toolbars/messagestoolbar.cpp" line="331"/>
+      <location filename="../src/librssguard/gui/toolbars/messagestoolbar.cpp" line="326"/>
+      <location filename="../src/librssguard/gui/toolbars/messagestoolbar.cpp" line="333"/>
       <source>Display all articles</source>
       <translation>Afficher tous les articles</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/toolbars/messagestoolbar.cpp" line="341"/>
+      <location filename="../src/librssguard/gui/toolbars/messagestoolbar.cpp" line="343"/>
       <source>Article highlighter</source>
       <translation>Surligneur d&apos;article</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/toolbars/messagestoolbar.cpp" line="347"/>
+      <location filename="../src/librssguard/gui/toolbars/messagestoolbar.cpp" line="349"/>
       <source>Article list filter</source>
       <translation>Filtre de la liste d&apos;articles</translation>
     </message>
@@ -7697,7 +7700,7 @@ Vous pouvez aussi post-traiter la data de flux avec encore un autre script si vo
       <translation>Barre de progrès de téléchargement de fichier</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/toolbars/statusbar.cpp" line="125"/>
+      <location filename="../src/librssguard/gui/toolbars/statusbar.cpp" line="127"/>
       <source>Toolbar spacer</source>
       <translation>Séparation de barre d&apos;outils</translation>
     </message>
