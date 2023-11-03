@@ -79,10 +79,18 @@ bool BaseToastNotification::eventFilter(QObject* watched, QEvent* event) {
     setupTimedClosing();
   }
 
+  if (event->type() == QEvent::Type::MouseButtonPress) {
+    if (dynamic_cast<QMouseEvent*>(event)->button() == Qt::MouseButton::RightButton) {
+      close();
+    }
+  }
+
   return QDialog::eventFilter(watched, event);
 }
 
 void BaseToastNotification::closeEvent(QCloseEvent* event) {
+  Q_UNUSED(event)
+
   stopTimedClosing();
   emit closeRequested(this);
 }
