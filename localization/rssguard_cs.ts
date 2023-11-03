@@ -442,12 +442,12 @@ na tuto bublinu.</translation>
   <context>
     <name>DiscoveredFeedsModel</name>
     <message>
-      <location filename="../src/librssguard/services/standard/gui/formdiscoverfeeds.cpp" line="291"/>
+      <location filename="../src/librssguard/services/standard/gui/formdiscoverfeeds.cpp" line="297"/>
       <source>Title</source>
       <translation>Nadpis</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/services/standard/gui/formdiscoverfeeds.cpp" line="291"/>
+      <location filename="../src/librssguard/services/standard/gui/formdiscoverfeeds.cpp" line="297"/>
       <source>Type</source>
       <translation>Typ</translation>
     </message>
@@ -783,22 +783,22 @@ ID položky: %5</translation>
       <translation>Nástrojová lišta pro zprávy</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/feedmessageviewer.cpp" line="229"/>
+      <location filename="../src/librssguard/gui/feedmessageviewer.cpp" line="236"/>
       <source>Filtered feed list</source>
       <translation>Seznam filtrovaných kanálů</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/feedmessageviewer.cpp" line="230"/>
+      <location filename="../src/librssguard/gui/feedmessageviewer.cpp" line="237"/>
       <source>Cannot select article in article list as your feed is filtered out from feed list.</source>
       <translation>Nelze vybrat článek v seznamu článků, protože je váš kanál filtrován ze seznamu zdrojů.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/feedmessageviewer.cpp" line="247"/>
+      <location filename="../src/librssguard/gui/feedmessageviewer.cpp" line="254"/>
       <source>Filtered article list</source>
       <translation>Filtrovaný seznam článků</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/feedmessageviewer.cpp" line="248"/>
+      <location filename="../src/librssguard/gui/feedmessageviewer.cpp" line="255"/>
       <source>Cannot select article as it seems your article list is filtered.</source>
       <translation>Nelze vybrat článek, protože se zdá, že je váš seznam článků filtrován.</translation>
     </message>
@@ -1031,16 +1031,6 @@ ID položky: %5</translation>
       <translation>Názvy kanálů/kategorií.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/core/feedsmodel.cpp" line="523"/>
-      <source>Are you sure?</source>
-      <translation>Jste si jistý?</translation>
-    </message>
-    <message>
-      <location filename="../src/librssguard/core/feedsmodel.cpp" line="524"/>
-      <source>Do you really want to clean all articles from selected item?</source>
-      <translation>Opravdu chcete všechny zprávičky ze všech položek smazat?</translation>
-    </message>
-    <message>
       <location filename="../src/librssguard/core/feedsmodel.cpp" line="31"/>
       <source>Root</source>
       <translation>Kořen</translation>
@@ -1067,27 +1057,27 @@ ID položky: %5</translation>
   <context>
     <name>FeedsToolBar</name>
     <message>
-      <location filename="../src/librssguard/gui/toolbars/feedstoolbar.cpp" line="76"/>
+      <location filename="../src/librssguard/gui/toolbars/feedstoolbar.cpp" line="78"/>
       <source>Toolbar spacer</source>
       <translation>Mezera</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/toolbars/feedstoolbar.cpp" line="118"/>
+      <location filename="../src/librssguard/gui/toolbars/feedstoolbar.cpp" line="120"/>
       <source>Everywhere</source>
       <translation>Všude</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/toolbars/feedstoolbar.cpp" line="119"/>
+      <location filename="../src/librssguard/gui/toolbars/feedstoolbar.cpp" line="121"/>
       <source>Titles only</source>
       <translation>Pouze v nadpisech</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/toolbars/feedstoolbar.cpp" line="123"/>
+      <location filename="../src/librssguard/gui/toolbars/feedstoolbar.cpp" line="125"/>
       <source>Search feeds</source>
       <translation>Prohledávat kanály</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/toolbars/feedstoolbar.cpp" line="131"/>
+      <location filename="../src/librssguard/gui/toolbars/feedstoolbar.cpp" line="133"/>
       <source>Feeds search box</source>
       <translation>Hledací panel kanálů</translation>
     </message>
@@ -1095,111 +1085,119 @@ ID položky: %5</translation>
   <context>
     <name>FeedsView</name>
     <message>
-      <location filename="../src/librssguard/gui/feedsview.cpp" line="249"/>
+      <location filename="../src/librssguard/gui/feedsview.cpp" line="271"/>
       <source>Cannot edit item</source>
       <translation>Nelze upravit položku</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/feedsview.cpp" line="370"/>
+      <location filename="../src/librssguard/gui/feedsview.cpp" line="398"/>
       <source>Cannot delete item</source>
       <translation>Nelze smazat položku</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/feedsview.cpp" line="980"/>
+      <location filename="../src/librssguard/gui/feedsview.cpp" line="1023"/>
       <source>Context menu for empty space</source>
       <translation>Kontextové menu pro prázdný prostor</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/feedsview.cpp" line="250"/>
+      <location filename="../src/librssguard/gui/feedsview.cpp" line="272"/>
       <source>Selected item cannot be edited because another critical operation is ongoing.</source>
       <translation>Nelze editovat vybranou položku, protože už běží jiná kritická operace.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/feedsview.cpp" line="371"/>
+      <location filename="../src/librssguard/gui/feedsview.cpp" line="399"/>
       <source>Selected item cannot be deleted because another critical operation is ongoing.</source>
       <translation>Nelze smazat vybranou položku, protože už běží jiná kritická operace.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/feedsview.cpp" line="854"/>
-      <location filename="../src/librssguard/gui/feedsview.cpp" line="909"/>
+      <location filename="../src/librssguard/gui/feedsview.cpp" line="897"/>
+      <location filename="../src/librssguard/gui/feedsview.cpp" line="952"/>
       <source>Context menu for categories</source>
       <translation>Kontextové menu pro kategorie</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/feedsview.cpp" line="409"/>
+      <location filename="../src/librssguard/gui/feedsview.cpp" line="238"/>
+      <location filename="../src/librssguard/gui/feedsview.cpp" line="254"/>
+      <location filename="../src/librssguard/gui/feedsview.cpp" line="437"/>
       <source>Are you sure?</source>
       <translation>Jste si jistý?</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/feedsview.cpp" line="990"/>
+      <location filename="../src/librssguard/gui/feedsview.cpp" line="1033"/>
       <source>Context menu for other items</source>
       <translation>Kontextové menu pro ostatní položky</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/feedsview.cpp" line="1034"/>
+      <location filename="../src/librssguard/gui/feedsview.cpp" line="1077"/>
       <source>Context menu for regex query</source>
       <translation>Kontextové menu pro regex dotaz</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/feedsview.cpp" line="167"/>
+      <location filename="../src/librssguard/gui/feedsview.cpp" line="169"/>
       <source>Selected account does not support adding of new feeds.</source>
       <translation>Vybraný účet nepodporuje přidávání nových kanálů.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/feedsview.cpp" line="185"/>
+      <location filename="../src/librssguard/gui/feedsview.cpp" line="187"/>
       <source>Selected account does not support adding of new categories.</source>
       <translation>Vybraný účet nepodporuje přidávání nových kategorií.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/feedsview.cpp" line="270"/>
-      <location filename="../src/librssguard/gui/feedsview.cpp" line="280"/>
-      <location filename="../src/librssguard/gui/feedsview.cpp" line="298"/>
-      <location filename="../src/librssguard/gui/feedsview.cpp" line="315"/>
+      <location filename="../src/librssguard/gui/feedsview.cpp" line="239"/>
+      <location filename="../src/librssguard/gui/feedsview.cpp" line="255"/>
+      <source>Do you really want to clean all articles from selected items?</source>
+      <translation type="unfinished">Do you really want to clean all articles from selected items?</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard/gui/feedsview.cpp" line="293"/>
+      <location filename="../src/librssguard/gui/feedsview.cpp" line="303"/>
+      <location filename="../src/librssguard/gui/feedsview.cpp" line="321"/>
+      <location filename="../src/librssguard/gui/feedsview.cpp" line="338"/>
       <source>Cannot edit items</source>
       <translation>Nelze upravit položku</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/feedsview.cpp" line="271"/>
+      <location filename="../src/librssguard/gui/feedsview.cpp" line="294"/>
       <source>Selected items cannot be edited. This is not supported (yet).</source>
       <translation>Vybrané položky nemůžpu být upraveny. Toto není podporováno (zatím).</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/feedsview.cpp" line="281"/>
+      <location filename="../src/librssguard/gui/feedsview.cpp" line="304"/>
       <source>%1 does not support batch editing of multiple accounts.</source>
       <translation>%1 nepodporuje dávkovou editaci více účtů.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/feedsview.cpp" line="299"/>
+      <location filename="../src/librssguard/gui/feedsview.cpp" line="322"/>
       <source>%1 does not support batch editing of items from multiple accounts.</source>
       <translation>%1 nepodporuje dávkové úpravy položek z více účtů.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/feedsview.cpp" line="316"/>
+      <location filename="../src/librssguard/gui/feedsview.cpp" line="339"/>
       <source>%1 does not support batch editing of items of varying types.</source>
       <translation>%1 nepodporuje dávkové úpravy položek různých typů.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/feedsview.cpp" line="326"/>
+      <location filename="../src/librssguard/gui/feedsview.cpp" line="349"/>
       <source>Cannot edit some items</source>
       <translation>Nelze upravit nějaké položky</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/feedsview.cpp" line="327"/>
+      <location filename="../src/librssguard/gui/feedsview.cpp" line="350"/>
       <source>Some of selected items cannot be edited. Proceeding to edit the rest.</source>
       <translation>Některé z vybraných položek nelze upravit. Pokračuji s úpravou zbytku.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/feedsview.cpp" line="399"/>
+      <location filename="../src/librssguard/gui/feedsview.cpp" line="427"/>
       <source>Some items won&apos;t be deleted</source>
       <translation>Některé položky nebudou odstraněny</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/feedsview.cpp" line="400"/>
+      <location filename="../src/librssguard/gui/feedsview.cpp" line="428"/>
       <source>Some selected items will not be deleted, because they cannot be deleted.</source>
       <translation>Některé vybrané položky nebudou odstraněny, protože je nelze odstranit.</translation>
     </message>
     <message numerus="yes">
-      <location filename="../src/librssguard/gui/feedsview.cpp" line="407"/>
+      <location filename="../src/librssguard/gui/feedsview.cpp" line="435"/>
       <source>Deleting %n items</source>
       <translation>
         <numerusform>Smazání %n položky</numerusform>
@@ -1209,7 +1207,7 @@ ID položky: %5</translation>
       </translation>
     </message>
     <message numerus="yes">
-      <location filename="../src/librssguard/gui/feedsview.cpp" line="408"/>
+      <location filename="../src/librssguard/gui/feedsview.cpp" line="436"/>
       <source>You are about to completely delete %n items.</source>
       <translation>
         <numerusform>Chystáte se odstranit %n položku.</numerusform>
@@ -1219,29 +1217,29 @@ ID položky: %5</translation>
       </translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/feedsview.cpp" line="606"/>
+      <location filename="../src/librssguard/gui/feedsview.cpp" line="649"/>
       <source>Context menu for recycle bins</source>
       <translation>Kontextové menu pro odp. koše
 </translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/feedsview.cpp" line="628"/>
+      <location filename="../src/librssguard/gui/feedsview.cpp" line="671"/>
       <source>Context menu for accounts</source>
       <translation>Kontextové menu pro účty</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/feedsview.cpp" line="1011"/>
+      <location filename="../src/librssguard/gui/feedsview.cpp" line="1054"/>
       <source>Context menu for label</source>
       <translation>Kontextové menu pro štítek</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/feedsview.cpp" line="958"/>
+      <location filename="../src/librssguard/gui/feedsview.cpp" line="1001"/>
       <source>Context menu for important articles</source>
       <translation>Kontextové menu pro důležité zprávy</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/feedsview.cpp" line="166"/>
-      <location filename="../src/librssguard/gui/feedsview.cpp" line="184"/>
+      <location filename="../src/librssguard/gui/feedsview.cpp" line="168"/>
+      <location filename="../src/librssguard/gui/feedsview.cpp" line="186"/>
       <source>Not supported by account</source>
       <translation>Není podporováno</translation>
     </message>
@@ -1839,37 +1837,42 @@ Složka cache pro QtWebEngine -&gt; &quot;%7&quot;</translation>
       <translation>Objevujte!</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/services/standard/gui/formdiscoverfeeds.ui" line="70"/>
+      <location filename="../src/librssguard/services/standard/gui/formdiscoverfeeds.ui" line="51"/>
+      <source>Discover Sitemaps too (can take some time for bigger websites)</source>
+      <translation type="unfinished">Discover Sitemaps too (can take some time for bigger websites)</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard/services/standard/gui/formdiscoverfeeds.ui" line="77"/>
       <source>Discovered feeds</source>
       <translation>Objevené kanály</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/services/standard/gui/formdiscoverfeeds.ui" line="76"/>
+      <location filename="../src/librssguard/services/standard/gui/formdiscoverfeeds.ui" line="83"/>
       <source>Target parent folder</source>
       <translation>Cílová nadřazená složka</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/services/standard/gui/formdiscoverfeeds.ui" line="88"/>
+      <location filename="../src/librssguard/services/standard/gui/formdiscoverfeeds.ui" line="95"/>
       <source>Select parent item for your feed.</source>
       <translation>Zvolte nadřazenou kategorii pro Váš kanál.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/services/standard/gui/formdiscoverfeeds.ui" line="121"/>
+      <location filename="../src/librssguard/services/standard/gui/formdiscoverfeeds.ui" line="128"/>
       <source>Select &amp;all</source>
       <translation>Vybrat vše</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/services/standard/gui/formdiscoverfeeds.ui" line="128"/>
+      <location filename="../src/librssguard/services/standard/gui/formdiscoverfeeds.ui" line="135"/>
       <source>&amp;Unselect all</source>
       <translation>Zrušit výběr</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/services/standard/gui/formdiscoverfeeds.ui" line="183"/>
+      <location filename="../src/librssguard/services/standard/gui/formdiscoverfeeds.ui" line="190"/>
       <source>Add single feed with advanced details</source>
       <translation>Přidat kanál s pokročilými detaily</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/services/standard/gui/formdiscoverfeeds.ui" line="190"/>
+      <location filename="../src/librssguard/services/standard/gui/formdiscoverfeeds.ui" line="197"/>
       <source>&amp;Import checked feeds</source>
       <translation>&amp;Importovat zaškrtnuté kanály</translation>
     </message>
@@ -1894,12 +1897,12 @@ Složka cache pro QtWebEngine -&gt; &quot;%7&quot;</translation>
       <translation>Chyba: %1</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/services/standard/gui/formdiscoverfeeds.cpp" line="189"/>
+      <location filename="../src/librssguard/services/standard/gui/formdiscoverfeeds.cpp" line="195"/>
       <source>URL is valid.</source>
       <translation>Adresa URL je platná.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/services/standard/gui/formdiscoverfeeds.cpp" line="192"/>
+      <location filename="../src/librssguard/services/standard/gui/formdiscoverfeeds.cpp" line="198"/>
       <source>URL is NOT valid.</source>
       <translation>URL adresa není platná.</translation>
     </message>
@@ -4800,123 +4803,123 @@ Tokeny vyprší: %2</translation>
   <context>
     <name>MessagesToolBar</name>
     <message>
-      <location filename="../src/librssguard/gui/toolbars/messagestoolbar.cpp" line="251"/>
+      <location filename="../src/librssguard/gui/toolbars/messagestoolbar.cpp" line="253"/>
       <source>No extra highlighting</source>
       <translation>Nic nezvýrazňovat</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/toolbars/messagestoolbar.cpp" line="92"/>
+      <location filename="../src/librssguard/gui/toolbars/messagestoolbar.cpp" line="94"/>
       <source>Toolbar spacer</source>
       <translation>Mezera</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/toolbars/messagestoolbar.cpp" line="217"/>
+      <location filename="../src/librssguard/gui/toolbars/messagestoolbar.cpp" line="219"/>
       <source>Everywhere</source>
       <translation>Všude</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/toolbars/messagestoolbar.cpp" line="218"/>
+      <location filename="../src/librssguard/gui/toolbars/messagestoolbar.cpp" line="220"/>
       <source>Titles only</source>
       <translation>Pouze v nadpisech</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/toolbars/messagestoolbar.cpp" line="222"/>
+      <location filename="../src/librssguard/gui/toolbars/messagestoolbar.cpp" line="224"/>
       <source>Search articles</source>
       <translation>Prohledávat zprávy</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/toolbars/messagestoolbar.cpp" line="229"/>
+      <location filename="../src/librssguard/gui/toolbars/messagestoolbar.cpp" line="231"/>
       <source>Article search box</source>
       <translation>Hledací panel zpráv</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/toolbars/messagestoolbar.cpp" line="247"/>
+      <location filename="../src/librssguard/gui/toolbars/messagestoolbar.cpp" line="249"/>
       <source>Menu for highlighting articles</source>
       <translation>Menu pro zvýrazňování zpráv</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/toolbars/messagestoolbar.cpp" line="256"/>
+      <location filename="../src/librssguard/gui/toolbars/messagestoolbar.cpp" line="258"/>
       <source>Highlight unread articles</source>
       <translation>Zvýraznit nepřečtené zprávy</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/toolbars/messagestoolbar.cpp" line="261"/>
+      <location filename="../src/librssguard/gui/toolbars/messagestoolbar.cpp" line="263"/>
       <source>Highlight important articles</source>
       <translation>Zvýraznit důležité zprávy</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/toolbars/messagestoolbar.cpp" line="265"/>
+      <location filename="../src/librssguard/gui/toolbars/messagestoolbar.cpp" line="267"/>
       <source>Menu for filtering articles</source>
       <translation>Menu pro filtrování zpráv</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/toolbars/messagestoolbar.cpp" line="269"/>
+      <location filename="../src/librssguard/gui/toolbars/messagestoolbar.cpp" line="271"/>
       <source>No extra filtering</source>
       <translation>Žádný filtr</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/toolbars/messagestoolbar.cpp" line="274"/>
+      <location filename="../src/librssguard/gui/toolbars/messagestoolbar.cpp" line="276"/>
       <source>Show unread articles</source>
       <translation>Jen nepřečtené zprávy</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/toolbars/messagestoolbar.cpp" line="279"/>
+      <location filename="../src/librssguard/gui/toolbars/messagestoolbar.cpp" line="281"/>
       <source>Show important articles</source>
       <translation>Jen důležité zprávy</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/toolbars/messagestoolbar.cpp" line="284"/>
+      <location filename="../src/librssguard/gui/toolbars/messagestoolbar.cpp" line="286"/>
       <source>Show today&apos;s articles</source>
       <translation>Dnešní zprávy</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/toolbars/messagestoolbar.cpp" line="289"/>
+      <location filename="../src/librssguard/gui/toolbars/messagestoolbar.cpp" line="291"/>
       <source>Show yesterday&apos;s articles</source>
       <translation>Včerejší zprávy</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/toolbars/messagestoolbar.cpp" line="294"/>
+      <location filename="../src/librssguard/gui/toolbars/messagestoolbar.cpp" line="296"/>
       <source>Show articles in last 24 hours</source>
       <translation>Zprávy z posledních 24 hodin</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/toolbars/messagestoolbar.cpp" line="299"/>
+      <location filename="../src/librssguard/gui/toolbars/messagestoolbar.cpp" line="301"/>
       <source>Show articles in last 48 hours</source>
       <translation>Zprávy z posledních 48 hodin</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/toolbars/messagestoolbar.cpp" line="304"/>
+      <location filename="../src/librssguard/gui/toolbars/messagestoolbar.cpp" line="306"/>
       <source>Show this week&apos;s articles</source>
       <translation>Zprávy z tohoto týdne</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/toolbars/messagestoolbar.cpp" line="309"/>
+      <location filename="../src/librssguard/gui/toolbars/messagestoolbar.cpp" line="311"/>
       <source>Show last week&apos;s articles</source>
       <translation>Zprávy z minulého týdne</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/toolbars/messagestoolbar.cpp" line="314"/>
+      <location filename="../src/librssguard/gui/toolbars/messagestoolbar.cpp" line="316"/>
       <source>Show articles with attachments</source>
       <translation>Zobrazit zprávy s přílohami</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/toolbars/messagestoolbar.cpp" line="319"/>
+      <location filename="../src/librssguard/gui/toolbars/messagestoolbar.cpp" line="321"/>
       <source>Show articles with some score</source>
       <translation>Zobrazit oskórované zprávy</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/toolbars/messagestoolbar.cpp" line="324"/>
-      <location filename="../src/librssguard/gui/toolbars/messagestoolbar.cpp" line="331"/>
+      <location filename="../src/librssguard/gui/toolbars/messagestoolbar.cpp" line="326"/>
+      <location filename="../src/librssguard/gui/toolbars/messagestoolbar.cpp" line="333"/>
       <source>Display all articles</source>
       <translation>Zobrazit všechny zprávy</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/toolbars/messagestoolbar.cpp" line="341"/>
+      <location filename="../src/librssguard/gui/toolbars/messagestoolbar.cpp" line="343"/>
       <source>Article highlighter</source>
       <translation>Zvýrazňovač zpráv</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/toolbars/messagestoolbar.cpp" line="347"/>
+      <location filename="../src/librssguard/gui/toolbars/messagestoolbar.cpp" line="349"/>
       <source>Article list filter</source>
       <translation>Filtr seznamu zpráv</translation>
     </message>
@@ -7721,7 +7724,7 @@ Stažená data kanálů můžete také dodatečně zpracovat post-procesním skr
       <translation>Průběhový pruh stahování souboru</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/toolbars/statusbar.cpp" line="125"/>
+      <location filename="../src/librssguard/gui/toolbars/statusbar.cpp" line="127"/>
       <source>Toolbar spacer</source>
       <translation>Mezera</translation>
     </message>
