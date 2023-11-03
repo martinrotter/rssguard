@@ -20,7 +20,7 @@
    <item>
     <widget class="QTabWidget" name="m_tabUi">
      <property name="currentIndex">
-      <number>0</number>
+      <number>1</number>
      </property>
      <widget class="QWidget" name="m_tabIconSkin">
       <attribute name="title">
@@ -126,7 +126,7 @@
        <item row="2" column="0">
         <widget class="QGroupBox" name="m_gbCustomSkinColors">
          <property name="title">
-          <string>Force custom skin colors</string>
+          <string>Customize predefined colors</string>
          </property>
          <property name="checkable">
           <bool>true</bool>

@@ -22,7 +22,6 @@ ColorToolButton::ColorToolButton(QWidget* parent) : QToolButton(parent), m_color
 
     if (new_color.isValid()) {
       setColor(new_color);
-      emit colorChanged(new_color);
     }
   });
 }
@@ -34,13 +33,14 @@ QColor ColorToolButton::color() const {
 void ColorToolButton::setColor(const QColor& color) {
   m_color = color;
   repaint();
+
+  emit colorChanged(m_color);
 }
 
 void ColorToolButton::setRandomColor() {
   auto clr = TextFactory::generateRandomColor();
 
   setColor(clr);
-  emit colorChanged(clr);
 }
 
 void ColorToolButton::paintEvent(QPaintEvent* e) {
@@ -76,6 +76,5 @@ void ColorToolButton::mouseReleaseEvent(QMouseEvent* event) {
 
   if (event->button() == Qt::MouseButton::RightButton) {
     setColor(m_alternateColor);
-    emit colorChanged(m_alternateColor);
   }
 }
