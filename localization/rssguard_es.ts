@@ -5611,7 +5611,7 @@ Lista de lectores compatibles:</translation>
     <message>
       <location filename="../src/librssguard/services/standard/parsers/sitemapparser.cpp" line="141"/>
       <source>support for gzipped sitemaps is not enabled</source>
-      <translation>soporte para Mapas de Sitio comprimidos con gzip está inhabilitado</translation>
+      <translation>el soporte para Mapas de Sitio comprimidos con gzip está inhabilitado</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/standard/parsers/sitemapparser.cpp" line="189"/>
@@ -5621,7 +5621,7 @@ Lista de lectores compatibles:</translation>
     <message>
       <location filename="../src/librssguard/services/standard/parsers/sitemapparser.cpp" line="193"/>
       <source>not a Sitemap</source>
-      <translation>no es un Mapa de Sitio</translation>
+      <translation>difiere de ser un Mapa de Sitio</translation>
     </message>
   </context>
   <context>
