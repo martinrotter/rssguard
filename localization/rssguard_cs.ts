@@ -1146,7 +1146,7 @@ ID položky: %5</translation>
       <location filename="../src/librssguard/gui/feedsview.cpp" line="239"/>
       <location filename="../src/librssguard/gui/feedsview.cpp" line="255"/>
       <source>Do you really want to clean all articles from selected items?</source>
-      <translation type="unfinished">Do you really want to clean all articles from selected items?</translation>
+      <translation>Opravdu chcete smazat všechny články z vybraných položek?</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/feedsview.cpp" line="293"/>
