@@ -1142,17 +1142,17 @@ Item ID: %5</source>
     <message>
       <location filename="../src/librssguard/gui/feedsview.cpp" line="304"/>
       <source>%1 does not support batch editing of multiple accounts.</source>
-      <translation type="unfinished">%1 does not support batch editing of multiple accounts.</translation>
+      <translation>%1 は複数アカウントの一括編集をサポートしていません</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/feedsview.cpp" line="322"/>
       <source>%1 does not support batch editing of items from multiple accounts.</source>
-      <translation type="unfinished">%1 does not support batch editing of items from multiple accounts.</translation>
+      <translation>%1 は複数アカウントからのアイテムの一括編集をサポートしていません。</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/feedsview.cpp" line="339"/>
       <source>%1 does not support batch editing of items of varying types.</source>
-      <translation type="unfinished">%1 does not support batch editing of items of varying types.</translation>
+      <translation>%1 は、さまざまなタイプからのアイテムの一括編集をサポートしていません</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/feedsview.cpp" line="349"/>
@@ -2746,7 +2746,7 @@ QtWebEngineキャッシュフォルダ -&gt; &quot;%7&quot;</translation>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.cpp" line="622"/>
       <source>Script was not beautified, because &apos;clang-format&apos; tool thrown error.</source>
-      <translation type="unfinished">Script was not beautified, because &apos;clang-format&apos; tool thrown error.</translation>
+      <translation>&apos;clang-format&apos; ツールがエラーをスローしたため、スクリプトは整形されませんでした</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.cpp" line="631"/>
@@ -3195,7 +3195,7 @@ You have to restart manually.</source>
       <location filename="../src/librssguard/services/standard/gui/formstandardimportexport.cpp" line="343"/>
       <location filename="../src/librssguard/services/standard/gui/formstandardimportexport.cpp" line="344"/>
       <source>Critical error occurred.</source>
-      <translation type="unfinished">Critical error occurred.</translation>
+      <translation>重大なエラーが発生しました</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/standard/gui/formstandardimportexport.cpp" line="115"/>
@@ -3406,7 +3406,7 @@ currently installed one.</translation>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formupdate.cpp" line="108"/>
       <source>Downloaded %1% (update size is %2 kB).</source>
-      <translation type="unfinished">Downloaded %1% (update size is %2 kB).</translation>
+      <translation>%1% ダウンロードされました (更新サイズは %2 kB)</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formupdate.cpp" line="113"/>
@@ -4727,15 +4727,15 @@ Login tokens expiration: %2</translation>
     <message numerus="yes">
       <location filename="../src/librssguard/core/messagesmodel.cpp" line="370"/>
       <source>%n hours ago</source>
-      <translation type="unfinished">
-        <numerusform>%n hours ago</numerusform>
+      <translation>
+        <numerusform>%n 時間前</numerusform>
       </translation>
     </message>
     <message numerus="yes">
       <location filename="../src/librssguard/core/messagesmodel.cpp" line="374"/>
       <source>%n minutes ago</source>
-      <translation type="unfinished">
-        <numerusform>%n minutes ago</numerusform>
+      <translation>
+        <numerusform>%n 分前</numerusform>
       </translation>
     </message>
     <message>
@@ -5332,10 +5332,10 @@ Login tokens expiration: %2</translation>
       <source>
 
 + %n other feeds.</source>
-      <translation type="unfinished">
+      <translation>
         <numerusform>
 
-+ %n other feeds.</numerusform>
++ %n 個の他のフィード</numerusform>
       </translation>
     </message>
     <message>
@@ -5438,12 +5438,12 @@ Feedlyは、あなたにとって重要なトピックやトレンドを個人�
     <message>
       <location filename="../src/librssguard/services/standard/parsers/feedparser.cpp" line="27"/>
       <source>XML problem: %1</source>
-      <translation type="unfinished">XML problem: %1</translation>
+      <translation>XMLの問題: %1</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/standard/parsers/feedparser.cpp" line="37"/>
       <source>JSON problem: %1</source>
-      <translation type="unfinished">JSON problem: %1</translation>
+      <translation>JSONの問題: %1</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/greader/greaderentrypoint.cpp" line="33"/>
@@ -5560,7 +5560,7 @@ List of supported readers:</source>
       <location filename="../src/librssguard/services/standard/parsers/rssparser.cpp" line="190"/>
       <location filename="../src/librssguard/services/standard/parsers/sitemapparser.cpp" line="176"/>
       <source>XML is not well-formed, %1</source>
-      <translation type="unfinished">XML is not well-formed, %1</translation>
+      <translation>XMLが整形式ではありません。 %1</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/standard/parsers/atomparser.cpp" line="246"/>
@@ -5570,7 +5570,7 @@ List of supported readers:</source>
     <message>
       <location filename="../src/librssguard/services/standard/parsers/jsonparser.cpp" line="117"/>
       <source>JSON error &apos;%1&apos;</source>
-      <translation type="unfinished">JSON error &apos;%1&apos;</translation>
+      <translation>JSONエラー &apos;%1&apos;</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/standard/parsers/jsonparser.cpp" line="148"/>
@@ -5877,22 +5877,22 @@ Login tokens expiration: %2</translation>
     <message>
       <location filename="../src/librssguard/exceptions/scriptexception.cpp" line="24"/>
       <source>script line is not well-formed</source>
-      <translation type="unfinished">script line is not well-formed</translation>
+      <translation>スクリプトの行が整形式ではありません</translation>
     </message>
     <message>
       <location filename="../src/librssguard/exceptions/scriptexception.cpp" line="27"/>
       <source>script threw an error</source>
-      <translation type="unfinished">script threw an error</translation>
+      <translation>スクリプトがエラーをスローしました</translation>
     </message>
     <message>
       <location filename="../src/librssguard/exceptions/scriptexception.cpp" line="30"/>
       <source>script&apos;s interpreter was not found</source>
-      <translation type="unfinished">script&apos;s interpreter was not found</translation>
+      <translation>スクリプトのインタプリタが見つかりませんでした</translation>
     </message>
     <message>
       <location filename="../src/librssguard/exceptions/scriptexception.cpp" line="33"/>
       <source>script execution took too long</source>
-      <translation type="unfinished">script execution took too long</translation>
+      <translation>スクリプトの実行に時間がかかり過ぎました</translation>
     </message>
     <message>
       <location filename="../src/librssguard/exceptions/scriptexception.cpp" line="37"/>
@@ -6932,7 +6932,7 @@ Description: %3</source>
     <message>
       <location filename="../src/librssguard/gui/settings/settingslocalization.cpp" line="26"/>
       <source>Help us to improve %1 &lt;a href=&quot;%2&quot;&gt;translations&lt;/a&gt;.</source>
-      <translation>%1 &lt;a href=&quot;%2&quot;&gt;の翻訳&lt;/a&gt; の改善にご協力ください。</translation>
+      <translation>%1の &lt;a href=&quot;%2&quot;&gt;翻訳&lt;/a&gt; の改善にご協力ください。</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingslocalization.cpp" line="129"/>
@@ -6942,7 +6942,7 @@ Description: %3</source>
     <message>
       <location filename="../src/librssguard/gui/settings/settingslocalization.cpp" line="130"/>
       <source>The translation &apos;%1&apos; is incomplete and anyone able to help with translating %2 is greatly welcomed.</source>
-      <translation type="unfinished">The translation &apos;%1&apos; is incomplete and anyone able to help with translating %2 is greatly welcomed.</translation>
+      <translation>&apos;%1&apos; の翻訳は不完全なので、%2 の翻訳を手伝ってくれる人は大歓迎です</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingslocalization.cpp" line="132"/>
@@ -7165,7 +7165,7 @@ Also, relaunch &quot;Settings&quot; dialog after you install Node.js.</source>
     <message>
       <location filename="../src/librssguard/miscellaneous/skinfactory.cpp" line="222"/>
       <source>Blocked URL: &quot;%1&quot;&lt;br/&gt;Used filter: &quot;%2&quot;</source>
-      <translation type="unfinished">Blocked URL: &quot;%1&quot;&lt;br/&gt;Used filter: &quot;%2&quot;</translation>
+      <translation>ブロックされたURL: &quot;%1&quot;&lt;br/&gt; 使用フィルター: &quot;%2&quot;</translation>
     </message>
     <message>
       <location filename="../src/librssguard/miscellaneous/skinfactory.cpp" line="281"/>
@@ -7245,7 +7245,7 @@ Post-processing script: %3</source>
     <message>
       <location filename="../src/librssguard/services/standard/standardfeed.cpp" line="207"/>
       <source>Cannot save data for feed: %1</source>
-      <translation type="unfinished">Cannot save data for feed: %1</translation>
+      <translation>フィードのデータを保存できません: %1</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/standard/standardfeed.cpp" line="365"/>
@@ -7470,13 +7470,13 @@ Post-processing script: %3</source>
       <location filename="../src/librssguard/services/standard/gui/standardfeeddetails.cpp" line="163"/>
       <location filename="../src/librssguard/services/standard/gui/standardfeeddetails.cpp" line="219"/>
       <source>Script failed: %1</source>
-      <translation type="unfinished">Script failed: %1</translation>
+      <translation>スクリプトは失敗しました: %1</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/standard/gui/standardfeeddetails.cpp" line="168"/>
       <location filename="../src/librssguard/services/standard/gui/standardfeeddetails.cpp" line="224"/>
       <source>Network error: %1</source>
-      <translation type="unfinished">Network error: %1</translation>
+      <translation>ネットワーク エラー: %1</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/standard/gui/standardfeeddetails.cpp" line="173"/>
@@ -7636,7 +7636,7 @@ Also, you can post-process generated feed data with yet another script if you wi
     <message>
       <location filename="../src/librssguard/services/standard/standardserviceroot.cpp" line="452"/>
       <source>Some feeds/categories were not imported due to error, check debug log for more details.</source>
-      <translation type="unfinished">Some feeds/categories were not imported due to error, check debug log for more details.</translation>
+      <translation>一部のフィード/カテゴリーがエラーによりインポートされませんでした。詳細についてはデバッグログを確認してください</translation>
     </message>
   </context>
   <context>
@@ -7947,7 +7947,7 @@ Unread news: %2</source>
       <location filename="../src/librssguard/services/tt-rss/gui/ttrssaccountdetails.cpp" line="102"/>
       <location filename="../src/librssguard/services/tt-rss/gui/ttrssaccountdetails.cpp" line="103"/>
       <source>Other error occurred, contact developers.</source>
-      <translation type="unfinished">Other error occurred, contact developers.</translation>
+      <translation>その他のエラーが発生しました。開発者にお問い合わせください</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/tt-rss/gui/ttrssaccountdetails.cpp" line="108"/>

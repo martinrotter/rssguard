@@ -1146,7 +1146,7 @@ Item ID: %5</translation>
     <message>
       <location filename="../src/librssguard/gui/feedsview.cpp" line="294"/>
       <source>Selected items cannot be edited. This is not supported (yet).</source>
-      <translation type="unfinished">Selected items cannot be edited. This is not supported (yet).</translation>
+      <translation>Valgte element kan ikke redigeres, dette er (endnu?) ikke understøttet).</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/feedsview.cpp" line="304"/>
@@ -1186,9 +1186,9 @@ Item ID: %5</translation>
     <message numerus="yes">
       <location filename="../src/librssguard/gui/feedsview.cpp" line="435"/>
       <source>Deleting %n items</source>
-      <translation type="unfinished">
-        <numerusform>Deleting %n items</numerusform>
-        <numerusform>Deleting %n items</numerusform>
+      <translation>
+        <numerusform>Sletter %n element</numerusform>
+        <numerusform>Sletter %n elementer</numerusform>
       </translation>
     </message>
     <message numerus="yes">
@@ -1413,7 +1413,7 @@ QtWebEngine cache folder -&gt; &quot;%7&quot;</translation>
     <message>
       <location filename="../src/librssguard/services/abstract/gui/formaddeditprobe.cpp" line="12"/>
       <source>Name for your query</source>
-      <translation type="unfinished">Name for your query</translation>
+      <translation>Navn på din forespørgsel</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/abstract/gui/formaddeditprobe.cpp" line="13"/>
@@ -1423,17 +1423,17 @@ QtWebEngine cache folder -&gt; &quot;%7&quot;</translation>
     <message>
       <location filename="../src/librssguard/services/abstract/gui/formaddeditprobe.cpp" line="16"/>
       <source>What is regular expression?</source>
-      <translation type="unfinished">What is regular expression?</translation>
+      <translation>Hvad er et regulært udtryk?</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/abstract/gui/formaddeditprobe.cpp" line="17"/>
       <source>A regular expression (shortened as regex or regexp) is a sequence of characters that specifies a match pattern in text. See more &lt;a href=&quot;https://learn.microsoft.com/en-us/dotnet/standard/base-types/regular-expression-language-quick-reference&quot;&gt;info&lt;/a&gt;.</source>
-      <translation type="unfinished">A regular expression (shortened as regex or regexp) is a sequence of characters that specifies a match pattern in text. See more &lt;a href=&quot;https://learn.microsoft.com/en-us/dotnet/standard/base-types/regular-expression-language-quick-reference&quot;&gt;info&lt;/a&gt;.</translation>
+      <translation>Et regulært udtryk (forkortet som regex eller regexp) er en sekvens af tegn som angiver et matchmønster i tekst. Se mere &lt;a href=&quot;https://learn.microsoft.com/en-us/dotnet/standard/base-types/regular-expression-language-quick-reference&quot;&gt;info&lt;/a&gt;.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/abstract/gui/formaddeditprobe.cpp" line="25"/>
       <source>Regex query name cannot be empty.</source>
-      <translation type="unfinished">Regex query name cannot be empty.</translation>
+      <translation>Navnet på et regulært udtryk kan ikke være tomt.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/abstract/gui/formaddeditprobe.cpp" line="28"/>
@@ -1444,12 +1444,12 @@ QtWebEngine cache folder -&gt; &quot;%7&quot;</translation>
     <message>
       <location filename="../src/librssguard/services/abstract/gui/formaddeditprobe.cpp" line="34"/>
       <source>Regular expression cannot be empty.</source>
-      <translation type="unfinished">Regular expression cannot be empty.</translation>
+      <translation>Den regulære forespørgsel kan ikke være tomt.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/abstract/gui/formaddeditprobe.cpp" line="49"/>
       <source>Create new regex query</source>
-      <translation type="unfinished">Create new regex query</translation>
+      <translation>Opret nyt regulært udtryk</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/abstract/gui/formaddeditprobe.cpp" line="70"/>
@@ -1459,7 +1459,7 @@ QtWebEngine cache folder -&gt; &quot;%7&quot;</translation>
     <message>
       <location filename="../src/librssguard/services/abstract/gui/formaddeditprobe.cpp" line="37"/>
       <source>Regular expression is not well-formed.</source>
-      <translation type="unfinished">Regular expression is not well-formed.</translation>
+      <translation>Regulært udtryk er ikke godt udformet.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/abstract/gui/formaddeditprobe.cpp" line="52"/>
@@ -1675,7 +1675,7 @@ QtWebEngine cache folder -&gt; &quot;%7&quot;</translation>
     <message>
       <location filename="../src/librssguard/services/abstract/gui/formcategorydetails.ui" line="31"/>
       <source>Parent folder</source>
-      <translation type="unfinished">Parent folder</translation>
+      <translation>Overordnet mappe</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/abstract/gui/formcategorydetails.ui" line="43"/>
@@ -1784,7 +1784,7 @@ QtWebEngine cache folder -&gt; &quot;%7&quot;</translation>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formdatabasecleanup.ui" line="102"/>
       <source>Total data size</source>
-      <translation type="unfinished">Total data size</translation>
+      <translation>Samlet datastørrelse</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formdatabasecleanup.ui" line="119"/>
@@ -1817,7 +1817,7 @@ QtWebEngine cache folder -&gt; &quot;%7&quot;</translation>
     <message>
       <location filename="../src/librssguard/services/standard/gui/formdiscoverfeeds.ui" line="51"/>
       <source>Discover Sitemaps too (can take some time for bigger websites)</source>
-      <translation type="unfinished">Discover Sitemaps too (can take some time for bigger websites)</translation>
+      <translation>Opdag også Sitemaps (kan tage lidt tid til større hjemmesider)</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/standard/gui/formdiscoverfeeds.ui" line="77"/>
@@ -1832,7 +1832,7 @@ QtWebEngine cache folder -&gt; &quot;%7&quot;</translation>
     <message>
       <location filename="../src/librssguard/services/standard/gui/formdiscoverfeeds.ui" line="95"/>
       <source>Select parent item for your feed.</source>
-      <translation type="unfinished">Select parent item for your feed.</translation>
+      <translation>Vælg overordnet element til din nyhedskilde.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/standard/gui/formdiscoverfeeds.ui" line="128"/>
@@ -1847,7 +1847,7 @@ QtWebEngine cache folder -&gt; &quot;%7&quot;</translation>
     <message>
       <location filename="../src/librssguard/services/standard/gui/formdiscoverfeeds.ui" line="190"/>
       <source>Add single feed with advanced details</source>
-      <translation type="unfinished">Add single feed with advanced details</translation>
+      <translation>Tilføj enkelt nyhedskilde med avancerede detaljer</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/standard/gui/formdiscoverfeeds.ui" line="197"/>
@@ -1877,12 +1877,12 @@ QtWebEngine cache folder -&gt; &quot;%7&quot;</translation>
     <message>
       <location filename="../src/librssguard/services/standard/gui/formdiscoverfeeds.cpp" line="195"/>
       <source>URL is valid.</source>
-      <translation type="unfinished">URL is valid.</translation>
+      <translation>Webadressen er gyldig.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/standard/gui/formdiscoverfeeds.cpp" line="198"/>
       <source>URL is NOT valid.</source>
-      <translation type="unfinished">URL is NOT valid.</translation>
+      <translation>Webadressen er IKKE gyldig.</translation>
     </message>
   </context>
   <context>
@@ -3352,7 +3352,7 @@ Du skal genstarte programmet manuelt.</translation>
     <message>
       <location filename="../src/librssguard/services/tt-rss/gui/formttrssnote.cpp" line="72"/>
       <source>Enter valid URL.</source>
-      <translation type="unfinished">Enter valid URL.</translation>
+      <translation>Indtast en gyldig Webadresse.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/tt-rss/gui/formttrssnote.ui" line="17"/>
@@ -7532,7 +7532,7 @@ Also, you can post-process generated feed data with yet another script if you wi
     <message>
       <location filename="../src/librssguard/services/standard/gui/standardfeeddetails.ui" line="25"/>
       <source>Parent folder</source>
-      <translation type="unfinished">Parent folder</translation>
+      <translation>Overordnet mappe</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/standard/gui/standardfeeddetails.ui" line="37"/>
@@ -8165,7 +8165,7 @@ Ulæste nyheder: %2</translation>
     <message>
       <location filename="../src/librssguard/services/tt-rss/gui/ttrssfeeddetails.ui" line="20"/>
       <source>Parent folder</source>
-      <translation type="unfinished">Parent folder</translation>
+      <translation>Overordnet mappe</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/tt-rss/gui/ttrssfeeddetails.ui" line="30"/>
