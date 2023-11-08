@@ -80,7 +80,7 @@ bool RedditServiceRoot::canBeEdited() const {
   return true;
 }
 
-void RedditServiceRoot::editItemsViaGui(const QList<RootItem*>& items) {
+void RedditServiceRoot::editItems(const QList<RootItem*>& items) {
   if (items.first()->kind() == RootItem::Kind::ServiceRoot) {
     QScopedPointer<FormEditRedditAccount> p(qobject_cast<FormEditRedditAccount*>(accountSetupDialog()));
 
@@ -88,7 +88,7 @@ void RedditServiceRoot::editItemsViaGui(const QList<RootItem*>& items) {
     return;
   }
 
-  ServiceRoot::editItemsViaGui(items);
+  ServiceRoot::editItems(items);
 }
 
 FormAccountDetails* RedditServiceRoot::accountSetupDialog() const {

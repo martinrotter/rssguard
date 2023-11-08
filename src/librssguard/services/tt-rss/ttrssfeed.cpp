@@ -22,7 +22,7 @@ bool TtRssFeed::canBeDeleted() const {
   return true;
 }
 
-bool TtRssFeed::deleteViaGui() {
+bool TtRssFeed::deleteItem() {
   TtRssUnsubscribeFeedResponse response =
     serviceRoot()->network()->unsubscribeFeed(customNumericId(), getParentServiceRoot()->networkProxy());
 

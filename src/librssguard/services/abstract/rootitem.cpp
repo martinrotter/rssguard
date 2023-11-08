@@ -63,7 +63,7 @@ bool RootItem::canBeDeleted() const {
   return false;
 }
 
-bool RootItem::deleteViaGui() {
+bool RootItem::deleteItem() {
   return false;
 }
 

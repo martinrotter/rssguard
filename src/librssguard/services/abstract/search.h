@@ -33,7 +33,7 @@ class RSSGUARD_DLLSPEC Search : public RootItem {
     virtual int countOfUnreadMessages() const;
     virtual bool canBeEdited() const;
     virtual bool canBeDeleted() const;
-    virtual bool deleteViaGui();
+    virtual bool deleteItem();
     virtual void updateCounts(bool including_total_count);
     virtual QList<Message> undeletedMessages() const;
 

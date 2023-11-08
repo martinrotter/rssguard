@@ -22,9 +22,9 @@
 
 TextBrowserViewer::TextBrowserViewer(QWidget* parent)
   : QTextBrowser(parent), m_resourcesEnabled(false), m_resourceDownloader(new Downloader(this)), m_loadedResources({}),
-    m_placeholderImage(qApp->icons()->miscPixmap("image-placeholder")),
-    m_placeholderImageError(qApp->icons()->miscPixmap("image-placeholder-error")), m_downloader(new Downloader(this)),
-    m_document(new TextBrowserDocument(this)) {
+    m_placeholderImage(qApp->icons()->miscPixmap(QSL("image-placeholder"))),
+    m_placeholderImageError(qApp->icons()->miscPixmap(QSL("image-placeholder-error"))),
+    m_downloader(new Downloader(this)), m_document(new TextBrowserDocument(this)) {
   setAutoFillBackground(true);
   setFrameShape(QFrame::Shape::NoFrame);
   setFrameShadow(QFrame::Shadow::Plain);
@@ -44,7 +44,12 @@ TextBrowserViewer::TextBrowserViewer(QWidget* parent)
     a_color = qApp->palette().color(QPalette::ColorRole::Highlight);
   }
 
-  m_document.data()->setDefaultStyleSheet(QSL("a { color: %1; }").arg(a_color.name()));
+  // m_document.data()->setDefaultStyleSheet(QSL("a { color: %1; }").arg(a_color.name()));
+
+  m_document->setDefaultStyleSheet("p {"
+                                   "background-color: yellow;"
+                                   "border: 1px solid black;"
+                                   "}");
 
   connect(this, &TextBrowserViewer::reloadDocument, this, [this]() {
     const auto scr = verticalScrollBarPosition();

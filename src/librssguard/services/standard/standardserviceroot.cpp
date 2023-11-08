@@ -117,7 +117,7 @@ FormAccountDetails* StandardServiceRoot::accountSetupDialog() const {
   return new FormEditStandardAccount(qApp->mainFormWidget());
 }
 
-void StandardServiceRoot::editItemsViaGui(const QList<RootItem*>& items) {
+void StandardServiceRoot::editItems(const QList<RootItem*>& items) {
   auto std_feeds = boolinq::from(items)
                      .select([](RootItem* it) {
                        return qobject_cast<Feed*>(it);
@@ -144,7 +144,7 @@ void StandardServiceRoot::editItemsViaGui(const QList<RootItem*>& items) {
     return;
   }
 
-  ServiceRoot::editItemsViaGui(items);
+  ServiceRoot::editItems(items);
 }
 
 bool StandardServiceRoot::supportsFeedAdding() const {

@@ -16,7 +16,7 @@ class FeedlyServiceRoot : public ServiceRoot, public CacheForServiceRoot {
 
     virtual bool isSyncable() const;
     virtual bool canBeEdited() const;
-    virtual void editItemsViaGui(const QList<RootItem*>& items);
+    virtual void editItems(const QList<RootItem*>& items);
     virtual FormAccountDetails* accountSetupDialog() const;
     virtual void start(bool freshly_activated);
     virtual QString code() const;

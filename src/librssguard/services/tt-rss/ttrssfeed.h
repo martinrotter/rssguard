@@ -14,7 +14,7 @@ class TtRssFeed : public Feed {
     explicit TtRssFeed(RootItem* parent = nullptr);
 
     virtual bool canBeDeleted() const;
-    virtual bool deleteViaGui();
+    virtual bool deleteItem();
     virtual QList<QAction*> contextMenuFeedsList();
 
   private:

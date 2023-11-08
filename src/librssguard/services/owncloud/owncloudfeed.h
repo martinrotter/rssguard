@@ -14,7 +14,7 @@ class OwnCloudFeed : public Feed {
     explicit OwnCloudFeed(RootItem* parent = nullptr);
 
     virtual bool canBeDeleted() const;
-    virtual bool deleteViaGui();
+    virtual bool deleteItem();
 
   private:
     bool removeItself();

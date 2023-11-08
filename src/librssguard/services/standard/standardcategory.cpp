@@ -47,7 +47,7 @@ bool StandardCategory::canBeDeleted() const {
   return true;
 }
 
-bool StandardCategory::deleteViaGui() {
+bool StandardCategory::deleteItem() {
   if (removeItself()) {
     serviceRoot()->requestItemRemoval(this);
     return true;

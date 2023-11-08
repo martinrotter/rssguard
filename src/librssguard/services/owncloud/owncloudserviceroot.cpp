@@ -34,7 +34,7 @@ FormAccountDetails* OwnCloudServiceRoot::accountSetupDialog() const {
   return new FormEditOwnCloudAccount(qApp->mainFormWidget());
 }
 
-void OwnCloudServiceRoot::editItemsViaGui(const QList<RootItem*>& items) {
+void OwnCloudServiceRoot::editItems(const QList<RootItem*>& items) {
   if (items.first()->kind() == RootItem::Kind::ServiceRoot) {
     QScopedPointer<FormEditOwnCloudAccount> p(qobject_cast<FormEditOwnCloudAccount*>(accountSetupDialog()));
 
@@ -42,7 +42,7 @@ void OwnCloudServiceRoot::editItemsViaGui(const QList<RootItem*>& items) {
     return;
   }
 
-  ServiceRoot::editItemsViaGui(items);
+  ServiceRoot::editItems(items);
 }
 
 bool OwnCloudServiceRoot::supportsFeedAdding() const {

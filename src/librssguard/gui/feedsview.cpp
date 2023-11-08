@@ -351,7 +351,7 @@ void FeedsView::editItems(const QList<RootItem*>& items) {
                           QSystemTrayIcon::MessageIcon::Warning});
   }
 
-  distinct_accounts.front()->editItemsViaGui(FROM_STD_LIST(QList<RootItem*>, std_editable_items));
+  distinct_accounts.front()->editItems(FROM_STD_LIST(QList<RootItem*>, std_editable_items));
 
   // Changes are done, unlock the update master lock.
   qApp->feedUpdateLock()->unlock();
@@ -454,7 +454,7 @@ void FeedsView::deleteSelectedItem() {
       continue;
     }
 
-    if (pnt->deleteViaGui()) {
+    if (pnt->deleteItem()) {
       m_proxyModel->invalidate();
     }
   }

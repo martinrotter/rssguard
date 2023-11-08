@@ -78,7 +78,7 @@ StandardServiceRoot* StandardFeed::serviceRoot() const {
   return qobject_cast<StandardServiceRoot*>(getParentServiceRoot());
 }
 
-bool StandardFeed::deleteViaGui() {
+bool StandardFeed::deleteItem() {
   if (removeItself()) {
     serviceRoot()->requestItemRemoval(this);
     return true;

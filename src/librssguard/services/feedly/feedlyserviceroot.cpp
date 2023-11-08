@@ -36,7 +36,7 @@ FormAccountDetails* FeedlyServiceRoot::accountSetupDialog() const {
   return new FormEditFeedlyAccount(qApp->mainFormWidget());
 }
 
-void FeedlyServiceRoot::editItemsViaGui(const QList<RootItem*>& items) {
+void FeedlyServiceRoot::editItems(const QList<RootItem*>& items) {
   if (items.first()->kind() == RootItem::Kind::ServiceRoot) {
     QScopedPointer<FormEditFeedlyAccount> p(qobject_cast<FormEditFeedlyAccount*>(accountSetupDialog()));
 
@@ -44,7 +44,7 @@ void FeedlyServiceRoot::editItemsViaGui(const QList<RootItem*>& items) {
     return;
   }
 
-  ServiceRoot::editItemsViaGui(items);
+  ServiceRoot::editItems(items);
 }
 
 QVariantHash FeedlyServiceRoot::customDatabaseData() const {

@@ -80,7 +80,7 @@ class RSSGUARD_DLLSPEC RootItem : public QObject {
     // Performs deletion of the item, this
     // method should NOT display any additional dialogs.
     // Returns result status.
-    virtual bool deleteViaGui();
+    virtual bool deleteItem();
 
     // Performs all needed steps (DB update, remote server update)
     // to mark this item as read/unread.

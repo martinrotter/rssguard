@@ -79,7 +79,7 @@ FormAccountDetails* TtRssServiceRoot::accountSetupDialog() const {
   return new FormEditTtRssAccount(qApp->mainFormWidget());
 }
 
-void TtRssServiceRoot::editItemsViaGui(const QList<RootItem*>& items) {
+void TtRssServiceRoot::editItems(const QList<RootItem*>& items) {
   if (items.first()->kind() == RootItem::Kind::ServiceRoot) {
     QScopedPointer<FormEditTtRssAccount> p(qobject_cast<FormEditTtRssAccount*>(accountSetupDialog()));
 
@@ -87,7 +87,7 @@ void TtRssServiceRoot::editItemsViaGui(const QList<RootItem*>& items) {
     return;
   }
 
-  ServiceRoot::editItemsViaGui(items);
+  ServiceRoot::editItems(items);
 }
 
 bool TtRssServiceRoot::supportsFeedAdding() const {

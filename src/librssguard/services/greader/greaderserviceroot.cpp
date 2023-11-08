@@ -30,7 +30,7 @@ FormAccountDetails* GreaderServiceRoot::accountSetupDialog() const {
   return new FormEditGreaderAccount(qApp->mainFormWidget());
 }
 
-void GreaderServiceRoot::editItemsViaGui(const QList<RootItem*>& items) {
+void GreaderServiceRoot::editItems(const QList<RootItem*>& items) {
   if (items.first()->kind() == RootItem::Kind::ServiceRoot) {
     QScopedPointer<FormEditGreaderAccount> p(qobject_cast<FormEditGreaderAccount*>(accountSetupDialog()));
 
@@ -38,7 +38,7 @@ void GreaderServiceRoot::editItemsViaGui(const QList<RootItem*>& items) {
     return;
   }
 
-  ServiceRoot::editItemsViaGui(items);
+  ServiceRoot::editItems(items);
 }
 
 QVariantHash GreaderServiceRoot::customDatabaseData() const {

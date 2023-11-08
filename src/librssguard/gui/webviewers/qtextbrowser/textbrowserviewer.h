@@ -41,12 +41,9 @@ class TextBrowserViewer : public QTextBrowser, public WebViewer {
   public:
     explicit TextBrowserViewer(QWidget* parent = nullptr);
 
-    virtual QSize sizeHint() const;
-
-  public:
     QVariant loadOneResource(int type, const QUrl& name);
 
-  public:
+    virtual QSize sizeHint() const;
     virtual void bindToBrowser(WebBrowser* browser);
     virtual void findText(const QString& text, bool backwards);
     virtual void setUrl(const QUrl& url);
@@ -62,6 +59,9 @@ class TextBrowserViewer : public QTextBrowser, public WebViewer {
     virtual qreal zoomFactor() const;
     virtual void setZoomFactor(qreal zoom_factor);
 
+    bool resourcesEnabled() const;
+    void setResourcesEnabled(bool enabled);
+
   protected:
     virtual void contextMenuEvent(QContextMenuEvent* event);
     virtual void resizeEvent(QResizeEvent* event);
@@ -72,14 +72,6 @@ class TextBrowserViewer : public QTextBrowser, public WebViewer {
     void openLinkInExternalBrowser();
     void downloadLink();
     void onAnchorClicked(const QUrl& url);
-
-    bool resourcesEnabled() const;
-    void setResourcesEnabled(bool enabled);
-
-  signals:
-    void reloadDocument();
-
-  private slots:
     void reloadHtmlDelayed();
     void downloadNextNeededResource();
     void resourceDownloaded(const QUrl& url,
@@ -87,15 +79,8 @@ class TextBrowserViewer : public QTextBrowser, public WebViewer {
                             int http_code,
                             QByteArray contents = QByteArray());
 
-  private:
-    bool m_resourcesEnabled;
-    QList<QUrl> m_neededResources; // All URLs here must be resolved.
-    QScopedPointer<Downloader> m_resourceDownloader;
-    QMap<QUrl, QByteArray> m_loadedResources; // All URLs here must be resolved.
-    QPixmap m_placeholderImage;
-    QPixmap m_placeholderImageError;
-
   signals:
+    void reloadDocument();
     void pageTitleChanged(const QString& new_title);
     void pageUrlChanged(const QUrl& url);
     void pageIconChanged(const QIcon&);
@@ -114,6 +99,12 @@ class TextBrowserViewer : public QTextBrowser, public WebViewer {
     PreparedHtml prepareHtmlForMessage(const QList<Message>& messages, RootItem* selected_item) const;
 
   private:
+    bool m_resourcesEnabled;
+    QList<QUrl> m_neededResources; // All URLs here must be resolved.
+    QScopedPointer<Downloader> m_resourceDownloader;
+    QMap<QUrl, QByteArray> m_loadedResources; // All URLs here must be resolved.
+    QPixmap m_placeholderImage;
+    QPixmap m_placeholderImageError;
     QUrl m_currentUrl;
     QString m_currentHtml;
 

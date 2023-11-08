@@ -36,7 +36,7 @@ ServiceRoot::ServiceRoot(RootItem* parent)
 
 ServiceRoot::~ServiceRoot() {}
 
-bool ServiceRoot::deleteViaGui() {
+bool ServiceRoot::deleteItem() {
   QSqlDatabase database = qApp->database()->driver()->connection(metaObject()->className());
 
   if (DatabaseQueries::deleteAccount(database, this)) {
@@ -49,7 +49,7 @@ bool ServiceRoot::deleteViaGui() {
   }
 }
 
-void ServiceRoot::editItemsViaGui(const QList<RootItem*>& items) {
+void ServiceRoot::editItems(const QList<RootItem*>& items) {
   // Feed editing.
   auto std_feeds = boolinq::from(items)
                      .select([](RootItem* it) {

@@ -64,8 +64,8 @@ class ServiceRoot : public RootItem {
     virtual void onDatabaseCleanup();
     virtual void updateCounts(bool including_total_count);
     virtual bool canBeDeleted() const;
-    virtual bool deleteViaGui();
-    virtual void editItemsViaGui(const QList<RootItem*>& items);
+    virtual bool deleteItem();
+    virtual void editItems(const QList<RootItem*>& items);
     virtual bool markAsReadUnread(ReadStatus status);
     virtual QList<Message> undeletedMessages() const;
     virtual bool supportsFeedAdding() const;

@@ -166,7 +166,7 @@ FormAccountDetails* GmailServiceRoot::accountSetupDialog() const {
   return new FormEditGmailAccount(qApp->mainFormWidget());
 }
 
-void GmailServiceRoot::editItemsViaGui(const QList<RootItem*>& items) {
+void GmailServiceRoot::editItems(const QList<RootItem*>& items) {
   if (items.first()->kind() == RootItem::Kind::ServiceRoot) {
     QScopedPointer<FormEditGmailAccount> p(qobject_cast<FormEditGmailAccount*>(accountSetupDialog()));
 
@@ -174,7 +174,7 @@ void GmailServiceRoot::editItemsViaGui(const QList<RootItem*>& items) {
     return;
   }
 
-  ServiceRoot::editItemsViaGui(items);
+  ServiceRoot::editItems(items);
 }
 
 bool GmailServiceRoot::supportsFeedAdding() const {

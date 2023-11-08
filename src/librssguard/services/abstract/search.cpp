@@ -48,7 +48,7 @@ bool Search::canBeDeleted() const {
   return true;
 }
 
-bool Search::deleteViaGui() {
+bool Search::deleteItem() {
   try {
     QSqlDatabase db = qApp->database()->driver()->connection(metaObject()->className());
     DatabaseQueries::deleteProbe(db, this);

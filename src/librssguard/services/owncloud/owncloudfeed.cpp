@@ -14,7 +14,7 @@ bool OwnCloudFeed::canBeDeleted() const {
   return true;
 }
 
-bool OwnCloudFeed::deleteViaGui() {
+bool OwnCloudFeed::deleteItem() {
   if (serviceRoot()->network()->deleteFeed(customId(), getParentServiceRoot()->networkProxy()) && removeItself()) {
     serviceRoot()->requestItemRemoval(this);
     return true;

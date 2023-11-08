@@ -22,7 +22,7 @@ class StandardCategory : public Category {
     virtual bool performDragDropChange(RootItem* target_item);
     virtual bool canBeEdited() const;
     virtual bool canBeDeleted() const;
-    virtual bool deleteViaGui();
+    virtual bool deleteItem();
 
   private:
     bool removeItself();
