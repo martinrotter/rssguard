@@ -3,10 +3,10 @@
 #include "gui/notifications/toastnotificationsmanager.h"
 
 #include "3rd-party/boolinq/boolinq.h"
-#include "gui/notifications/basetoastnotification.h"
-
 #include "gui/notifications/articlelistnotification.h"
+#include "gui/notifications/basetoastnotification.h"
 #include "gui/notifications/toastnotification.h"
+#include "miscellaneous/settings.h"
 
 #include <QRect>
 #include <QScreen>
@@ -29,11 +29,14 @@ QString ToastNotificationsManager::textForPosition(ToastNotificationsManager::No
   }
 }
 
-ToastNotificationsManager::ToastNotificationsManager(NotificationPosition position, int screen, QObject* parent)
-  : QObject(parent), m_position(position), m_screen(screen), m_articleListNotification(nullptr) {}
+ToastNotificationsManager::ToastNotificationsManager(QObject* parent)
+  : QObject(parent), m_position(ToastNotificationsManager::NotificationPosition::TopRight), m_screen(0), m_margins(0),
+    m_articleListNotification(nullptr) {
+  resetNotifications(false);
+}
 
 ToastNotificationsManager::~ToastNotificationsManager() {
-  clear();
+  clear(true);
 }
 
 QList<BaseToastNotification*> ToastNotificationsManager::activeNotifications() const {
@@ -56,14 +59,57 @@ void ToastNotificationsManager::setPosition(NotificationPosition position) {
   m_position = position;
 }
 
-void ToastNotificationsManager::resetNotifications() {}
+void ToastNotificationsManager::resetNotifications(bool reload_existing_notifications) {
+  m_position = qApp->settings()
+                 ->value(GROUP(GUI), SETTING(GUI::ToastNotificationsPosition))
+                 .value<ToastNotificationsManager::NotificationPosition>();
+  m_screen = qApp->settings()->value(GROUP(GUI), SETTING(GUI::ToastNotificationsScreen)).toInt();
+  m_margins = qApp->settings()->value(GROUP(GUI), SETTING(GUI::ToastNotificationsMargin)).toInt();
 
-void ToastNotificationsManager::clear() {
+  auto notif_width = qApp->settings()->value(GROUP(GUI), SETTING(GUI::ToastNotificationsWidth)).toInt();
+
+  if (reload_existing_notifications) {
+    auto notif = m_activeNotifications;
+
+    clear(false);
+
+    while (!notif.isEmpty()) {
+      BaseToastNotification* one_notif = notif.takeLast();
+
+      one_notif->setFixedWidth(notif_width);
+
+      processNotification(one_notif);
+    }
+  }
+}
+
+void ToastNotificationsManager::clear(bool delete_from_memory) {
   for (BaseToastNotification* notif : m_activeNotifications) {
-    closeNotification(notif, true);
+    closeNotification(notif, delete_from_memory);
   }
 
   m_activeNotifications.clear();
+}
+
+void ToastNotificationsManager::processNotification(BaseToastNotification* notif) {
+  notif->show();
+
+  auto* screen = moveToProperScreen(notif);
+  auto notif_new_pos = cornerForNewNotification(screen->availableGeometry());
+
+  // Make sure notification is finally resized.
+  notif->adjustSize();
+  qApp->processEvents();
+
+  // Move notification, at this point we already need to know its precise size.
+  moveNotificationToCorner(notif, notif_new_pos);
+
+  // Remove out-of-bounds old notifications and shift existing
+  // ones to make space for new notifications.
+  removeOutOfBoundsNotifications(notif->height());
+  makeSpaceForNotification(notif->height());
+
+  m_activeNotifications.prepend(notif);
 }
 
 void ToastNotificationsManager::showNotification(Notification::Event event,
@@ -89,26 +135,7 @@ void ToastNotificationsManager::showNotification(Notification::Event event,
     hookNotification(notif);
   }
 
-  // Insert new notification into free space.
-  notif->show();
-
-  auto* screen = moveToProperScreen(notif);
-
-  auto notif_new_pos = cornerForNewNotification(screen->availableGeometry());
-
-  // Make sure notification is finally resized.
-  notif->adjustSize();
-  qApp->processEvents();
-
-  // Move notification, at this point we already need to know its precise size.
-  moveNotificationToCorner(notif, notif_new_pos);
-
-  // Remove out-of-bounds old notifications and shift existing
-  // ones to make space for new notifications.
-  removeOutOfBoundsNotifications(notif->height());
-  makeSpaceForNotification(notif->height());
-
-  m_activeNotifications.prepend(notif);
+  processNotification(notif);
 }
 
 void ToastNotificationsManager::closeNotification(BaseToastNotification* notif, bool delete_from_memory) {
@@ -146,17 +173,17 @@ QScreen* ToastNotificationsManager::activeScreen() const {
 QPoint ToastNotificationsManager::cornerForNewNotification(QRect screen_rect) {
   switch (m_position) {
     case ToastNotificationsManager::TopLeft:
-      return screen_rect.topLeft() + QPoint(NOTIFICATIONS_MARGIN, NOTIFICATIONS_MARGIN);
+      return screen_rect.topLeft() + QPoint(m_margins, m_margins);
 
     case ToastNotificationsManager::TopRight:
-      return screen_rect.topRight() - QPoint(NOTIFICATIONS_MARGIN, -NOTIFICATIONS_MARGIN);
+      return screen_rect.topRight() - QPoint(m_margins, -m_margins);
 
     case ToastNotificationsManager::BottomLeft:
-      return screen_rect.bottomLeft() - QPoint(-NOTIFICATIONS_MARGIN, NOTIFICATIONS_MARGIN);
+      return screen_rect.bottomLeft() - QPoint(-m_margins, m_margins);
 
     case ToastNotificationsManager::BottomRight:
     default:
-      return screen_rect.bottomRight() - QPoint(NOTIFICATIONS_MARGIN, NOTIFICATIONS_MARGIN);
+      return screen_rect.bottomRight() - QPoint(m_margins, m_margins);
   }
 }
 
@@ -222,7 +249,7 @@ void ToastNotificationsManager::makeSpaceForNotification(int height_to_make_spac
         }
 
         // Move it all down.
-        notif->move(notif->pos().x(), shift_down(notif->pos().y(), (height_to_make_space + NOTIFICATIONS_MARGIN)));
+        notif->move(notif->pos().x(), shift_down(notif->pos().y(), (height_to_make_space + m_margins)));
         break;
       }
 
@@ -242,7 +269,7 @@ void ToastNotificationsManager::makeSpaceForNotification(int height_to_make_spac
         }
 
         // Move it all up.
-        notif->move(notif->pos().x(), shift_up(notif->pos().y(), height_to_make_space + NOTIFICATIONS_MARGIN));
+        notif->move(notif->pos().x(), shift_up(notif->pos().y(), height_to_make_space + m_margins));
         break;
       }
     }
@@ -254,8 +281,8 @@ void ToastNotificationsManager::removeOutOfBoundsNotifications(int height_to_res
 
   int available_height = screen->availableSize().height();
 
-  while (boolinq::from(m_activeNotifications).sum([](BaseToastNotification* notif) {
-    return notif->height() + NOTIFICATIONS_MARGIN;
+  while (boolinq::from(m_activeNotifications).sum([this](BaseToastNotification* notif) {
+    return notif->height() + m_margins;
   }) + height_to_reserve >
          available_height) {
     if (!m_activeNotifications.isEmpty()) {

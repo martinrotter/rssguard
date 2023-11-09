@@ -27,9 +27,7 @@ class ToastNotificationsManager : public QObject {
 
     static QString textForPosition(ToastNotificationsManager::NotificationPosition pos);
 
-    explicit ToastNotificationsManager(ToastNotificationsManager::NotificationPosition position,
-                                       int screen,
-                                       QObject* parent = nullptr);
+    explicit ToastNotificationsManager(QObject* parent = nullptr);
     virtual ~ToastNotificationsManager();
 
     QList<BaseToastNotification*> activeNotifications() const;
@@ -42,11 +40,11 @@ class ToastNotificationsManager : public QObject {
     NotificationPosition position() const;
     void setPosition(NotificationPosition position);
 
-    void resetNotifications();
+    void resetNotifications(bool reload_existing_notifications);
 
   public slots:
-    void clear();
-    void showNotification(Notification::Event event, const GuiMessage& msg, const GuiAction& action);
+    void clear(bool delete_from_memory);
+    void showNotification(Notification::Event event, const GuiMessage& msg, const GuiAction& action = {});
 
   private slots:
     void closeNotification(BaseToastNotification* notif, bool delete_from_memory);
@@ -60,6 +58,7 @@ class ToastNotificationsManager : public QObject {
     QScreen* moveToProperScreen(BaseToastNotification* notif);
     QPoint cornerForNewNotification(QRect screen_rect);
 
+    void processNotification(BaseToastNotification* notif);
     void initializeArticleListNotification();
     void hookNotification(BaseToastNotification* notif);
     void moveNotificationToCorner(BaseToastNotification* notif, QPoint corner);
@@ -69,6 +68,7 @@ class ToastNotificationsManager : public QObject {
   private:
     NotificationPosition m_position;
     int m_screen;
+    int m_margins;
 
     // List of all displayed notifications, newest notifications are in the beginning of the list
     // and oldest at the end.

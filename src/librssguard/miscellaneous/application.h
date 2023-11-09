@@ -132,6 +132,8 @@ class RSSGUARD_DLLSPEC Application : public SingleApplication {
     SystemTrayIcon* trayIcon();
     NotificationFactory* notifications() const;
     NodeJs* nodejs() const;
+    QThreadPool* workHorsePool() const;
+    ToastNotificationsManager* toastNotifications() const;
 
     QIcon desktopAwareIcon() const;
 
@@ -150,6 +152,8 @@ class RSSGUARD_DLLSPEC Application : public SingleApplication {
     QString userDataFolder();
 
     QString cacheFolder();
+
+    int customAdblockPort() const;
 
     QString replaceDataUserDataFolderPlaceholder(QString text) const;
     QStringList replaceDataUserDataFolderPlaceholder(QStringList texts) const;
@@ -189,10 +193,6 @@ class RSSGUARD_DLLSPEC Application : public SingleApplication {
 
     // Custom debug/console log handler.
     static void performLogging(QtMsgType type, const QMessageLogContext& context, const QString& msg);
-
-    int customAdblockPort() const;
-
-    QThreadPool* workHorsePool() const;
 
   public slots:
     // Restarts the application.

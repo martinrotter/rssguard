@@ -112,14 +112,9 @@ Application::Application(const QString& id, int& argc, char** argv, const QStrin
   m_database = new DatabaseFactory(this);
   m_downloadManager = nullptr;
   m_notifications = new NotificationFactory(this);
-  m_toastNotifications =
-    settings()->value(GROUP(GUI), SETTING(GUI::UseToastNotifications)).toBool()
-      ? new ToastNotificationsManager(settings()
-                                        ->value(GROUP(GUI), SETTING(GUI::ToastNotificationsPosition))
-                                        .value<ToastNotificationsManager::NotificationPosition>(),
-                                      settings()->value(GROUP(GUI), SETTING(GUI::ToastNotificationsScreen)).toInt(),
-                                      this)
-      : nullptr;
+  m_toastNotifications = settings()->value(GROUP(GUI), SETTING(GUI::UseToastNotifications)).toBool()
+                           ? new ToastNotificationsManager(this)
+                           : nullptr;
   m_shouldRestart = false;
 
 #if defined(Q_OS_WIN)
@@ -426,6 +421,10 @@ void Application::displayLogMessageInDialog(const QString& message) {
   if (m_logForm != nullptr && m_logForm->isVisible()) {
     emit sendLogToDialog(message);
   }
+}
+
+ToastNotificationsManager* Application::toastNotifications() const {
+  return m_toastNotifications;
 }
 
 QThreadPool* Application::workHorsePool() const {

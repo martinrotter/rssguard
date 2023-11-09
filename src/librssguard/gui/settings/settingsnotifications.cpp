@@ -28,8 +28,6 @@ SettingsNotifications::SettingsNotifications(Settings* settings, QWidget* parent
   connect(m_ui.m_rbNativeNotifications, &QRadioButton::toggled, this, &SettingsNotifications::requireRestart);
 
   connect(m_ui.m_sbScreen, QOverload<int>::of(&QSpinBox::valueChanged), this, &SettingsNotifications::dirtifySettings);
-  connect(m_ui.m_sbScreen, QOverload<int>::of(&QSpinBox::valueChanged), this, &SettingsNotifications::requireRestart);
-
   connect(m_ui.m_sbMargin, QOverload<int>::of(&QSpinBox::valueChanged), this, &SettingsNotifications::dirtifySettings);
   connect(m_ui.m_sbWidth, QOverload<int>::of(&QSpinBox::valueChanged), this, &SettingsNotifications::dirtifySettings);
 
@@ -39,10 +37,6 @@ SettingsNotifications::SettingsNotifications(Settings* settings, QWidget* parent
           QOverload<int>::of(&QComboBox::currentIndexChanged),
           this,
           &SettingsNotifications::dirtifySettings);
-  connect(m_ui.m_cbCustomNotificationsPosition,
-          QOverload<int>::of(&QComboBox::currentIndexChanged),
-          this,
-          &SettingsNotifications::requireRestart);
 }
 
 void SettingsNotifications::loadSettings() {
@@ -97,7 +91,13 @@ void SettingsNotifications::saveSettings() {
                        m_ui.m_cbCustomNotificationsPosition->currentData()
                          .value<ToastNotificationsManager::NotificationPosition>());
 
-  // qApp->m_toastNotifications
+  qApp->toastNotifications()->resetNotifications(true);
+  qApp->toastNotifications()->showNotification(Notification::Event::GeneralEvent,
+                                               GuiMessage(tr("How do I look?"),
+                                                          tr("Just testing new notifications settings. "
+                                                             "That's all."),
+                                                          QSystemTrayIcon::MessageIcon::Warning));
+
   onEndSaveSettings();
 }
 
