@@ -241,6 +241,7 @@ void FeedsView::clearSelectedItems() {
                    {},
                    QMessageBox::StandardButton::Yes | QMessageBox::StandardButton::No,
                    QMessageBox::StandardButton::No) != QMessageBox::StandardButton::Yes) {
+    return;
   }
 
   for (auto* it : selectedItems()) {
@@ -257,6 +258,7 @@ void FeedsView::clearAllItems() {
                    {},
                    QMessageBox::StandardButton::Yes | QMessageBox::StandardButton::No,
                    QMessageBox::StandardButton::No) != QMessageBox::StandardButton::Yes) {
+    return;
   }
 
   m_sourceModel->markItemCleared(m_sourceModel->rootItem(), false);

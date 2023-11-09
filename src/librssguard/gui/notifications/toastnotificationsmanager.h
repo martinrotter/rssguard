@@ -42,6 +42,8 @@ class ToastNotificationsManager : public QObject {
     NotificationPosition position() const;
     void setPosition(NotificationPosition position);
 
+    void resetNotifications();
+
   public slots:
     void clear();
     void showNotification(Notification::Event event, const GuiMessage& msg, const GuiAction& action);

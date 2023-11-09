@@ -32,6 +32,7 @@ class GreaderServiceRoot : public ServiceRoot, public CacheForServiceRoot {
     virtual FormAccountDetails* accountSetupDialog() const;
     virtual void start(bool freshly_activated);
     virtual QString code() const;
+    virtual QList<QAction*> serviceMenu();
     virtual void saveAllCachedData(bool ignore_errors);
     virtual LabelOperation supportedLabelOperations() const;
     virtual QVariantHash customDatabaseData() const;
@@ -48,6 +49,10 @@ class GreaderServiceRoot : public ServiceRoot, public CacheForServiceRoot {
     GreaderNetwork* network() const;
 
     static QString serviceToString(Service service);
+
+  private slots:
+    void importFeeds();
+    void exportFeeds();
 
   protected:
     virtual RootItem* obtainNewTreeForSyncIn() const;

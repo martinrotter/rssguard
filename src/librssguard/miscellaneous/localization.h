@@ -11,7 +11,6 @@
 struct Language {
     QString m_name;
     QString m_code;
-    QString m_author;
 };
 
 class RSSGUARD_DLLSPEC Localization : public QObject {

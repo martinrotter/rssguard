@@ -4,6 +4,7 @@
 
 #include "database/databasequeries.h"
 #include "definitions/definitions.h"
+#include "gui/messagebox.h"
 #include "miscellaneous/application.h"
 #include "miscellaneous/iconfactory.h"
 #include "miscellaneous/textfactory.h"
@@ -12,6 +13,8 @@
 #include "services/greader/greaderentrypoint.h"
 #include "services/greader/greadernetwork.h"
 #include "services/greader/gui/formeditgreaderaccount.h"
+
+#include <QFileDialog>
 
 GreaderServiceRoot::GreaderServiceRoot(RootItem* parent) : ServiceRoot(parent), m_network(new GreaderNetwork(this)) {
   setIcon(GreaderEntryPoint().icon());
@@ -130,6 +133,59 @@ QString GreaderServiceRoot::serviceToString(Service service) {
   }
 }
 
+void GreaderServiceRoot::importFeeds() {
+  const QString filter_opml20 = tr("OPML 2.0 files (*.opml *.xml)");
+  const QString selected_file = QFileDialog::getOpenFileName(qApp->mainFormWidget(),
+                                                             tr("Select file for feeds import"),
+                                                             qApp->homeFolder(),
+                                                             filter_opml20);
+
+  if (!QFile::exists(selected_file)) {
+    return;
+  }
+
+  try {
+    m_network->subscriptionImport(IOFactory::readFile(selected_file), networkProxy());
+    MsgBox::show(qApp->mainFormWidget(),
+                 QMessageBox::Icon::Information,
+                 tr("Done"),
+                 tr("Data imported successfully. Reloading feed tree."));
+
+    syncIn();
+  }
+  catch (const ApplicationException& ex) {
+    MsgBox::show(qApp->mainFormWidget(),
+                 QMessageBox::Icon::Critical,
+                 tr("Cannot import feeds"),
+                 tr("Error: %1").arg(ex.message()));
+  }
+}
+
+void GreaderServiceRoot::exportFeeds() {
+  const QString the_file = qApp->homeFolder() + QDir::separator() +
+                           QSL("rssguard_feeds_%1.opml").arg(QDate::currentDate().toString(Qt::DateFormat::ISODate));
+  const QString filter_opml20 = tr("OPML 2.0 files (*.opml *.xml)");
+  const QString selected_file =
+    QFileDialog::getSaveFileName(qApp->mainFormWidget(), tr("Select file for feeds export"), the_file, filter_opml20);
+
+  if (selected_file.isEmpty()) {
+    return;
+  }
+
+  try {
+    QByteArray data = m_network->subscriptionExport(networkProxy());
+    IOFactory::writeFile(selected_file, data);
+
+    MsgBox::show(qApp->mainFormWidget(), QMessageBox::Icon::Information, tr("Done"), tr("Data exported successfully."));
+  }
+  catch (const ApplicationException& ex) {
+    MsgBox::show(qApp->mainFormWidget(),
+                 QMessageBox::Icon::Critical,
+                 tr("Cannot export feeds"),
+                 tr("Error: %1").arg(ex.message()));
+  }
+}
+
 QList<Message> GreaderServiceRoot::obtainNewMessages(Feed* feed,
                                                      const QHash<ServiceRoot::BagOfMessages, QStringList>&
                                                        stated_messages,
@@ -176,6 +232,23 @@ void GreaderServiceRoot::start(bool freshly_activated) {
 
 QString GreaderServiceRoot::code() const {
   return GreaderEntryPoint().code();
+}
+
+QList<QAction*> GreaderServiceRoot::serviceMenu() {
+  if (m_serviceMenu.isEmpty()) {
+    ServiceRoot::serviceMenu();
+
+    auto* action_export_feeds = new QAction(qApp->icons()->fromTheme(QSL("document-export")), tr("Export feeds"), this);
+    auto* action_import_feeds = new QAction(qApp->icons()->fromTheme(QSL("document-import")), tr("Import feeds"), this);
+
+    connect(action_export_feeds, &QAction::triggered, this, &GreaderServiceRoot::exportFeeds);
+    connect(action_import_feeds, &QAction::triggered, this, &GreaderServiceRoot::importFeeds);
+
+    m_serviceMenu.append(action_export_feeds);
+    m_serviceMenu.append(action_import_feeds);
+  }
+
+  return m_serviceMenu;
 }
 
 void GreaderServiceRoot::saveAllCachedData(bool ignore_errors) {

@@ -56,6 +56,8 @@ void ToastNotificationsManager::setPosition(NotificationPosition position) {
   m_position = position;
 }
 
+void ToastNotificationsManager::resetNotifications() {}
+
 void ToastNotificationsManager::clear() {
   for (BaseToastNotification* notif : m_activeNotifications) {
     closeNotification(notif, true);

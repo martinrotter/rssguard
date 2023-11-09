@@ -228,6 +228,12 @@ namespace GUI {
   KEY ToastNotificationsScreen;
   VALUE(int) ToastNotificationsScreenDef;
 
+  KEY ToastNotificationsMargin;
+  VALUE(int) ToastNotificationsMarginDef;
+
+  KEY ToastNotificationsWidth;
+  VALUE(int) ToastNotificationsWidthDef;
+
   KEY MessageViewState;
   VALUE(QString) MessageViewStateDef;
 

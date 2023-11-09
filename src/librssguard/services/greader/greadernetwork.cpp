@@ -341,6 +341,61 @@ QNetworkReply::NetworkError GreaderNetwork::markMessagesStarred(RootItem::Import
                     proxy);
 }
 
+void GreaderNetwork::subscriptionImport(const QByteArray& opml_data, const QNetworkProxy& proxy) {
+  if (!ensureLogin(proxy)) {
+    throw ApplicationException(tr("login failed"));
+  }
+
+  QString full_url = generateFullUrl(Operations::SubscriptionImport);
+  auto timeout = qApp->settings()->value(GROUP(Feeds), SETTING(Feeds::UpdateTimeout)).toInt();
+
+  QByteArray output;
+  auto result = NetworkFactory::performNetworkOperation(full_url,
+                                                        timeout,
+                                                        opml_data,
+                                                        output,
+                                                        QNetworkAccessManager::Operation::PostOperation,
+                                                        {authHeader()},
+                                                        false,
+                                                        {},
+                                                        {},
+                                                        proxy);
+
+  if (result.m_networkError != QNetworkReply::NetworkError::NoError) {
+    qCriticalNN << LOGSEC_GREADER << "Cannot get OPML data, network error:" << QUOTE_W_SPACE_DOT(result.m_networkError);
+    throw NetworkException(result.m_networkError, output);
+  }
+}
+
+QByteArray GreaderNetwork::subscriptionExport(const QNetworkProxy& proxy) {
+  if (!ensureLogin(proxy)) {
+    throw ApplicationException(tr("login failed"));
+  }
+
+  QString full_url = generateFullUrl(Operations::SubscriptionExport);
+  auto timeout = qApp->settings()->value(GROUP(Feeds), SETTING(Feeds::UpdateTimeout)).toInt();
+
+  QByteArray output;
+  auto result = NetworkFactory::performNetworkOperation(full_url,
+                                                        timeout,
+                                                        {},
+                                                        output,
+                                                        QNetworkAccessManager::Operation::GetOperation,
+                                                        {authHeader()},
+                                                        false,
+                                                        {},
+                                                        {},
+                                                        proxy);
+
+  if (result.m_networkError != QNetworkReply::NetworkError::NoError) {
+    qCriticalNN << LOGSEC_GREADER << "Cannot get OPML data, network error:" << QUOTE_W_SPACE_DOT(result.m_networkError);
+    throw NetworkException(result.m_networkError, output);
+  }
+  else {
+    return output;
+  }
+}
+
 QStringList GreaderNetwork::itemIds(const QString& stream_id,
                                     bool unread_only,
                                     const QNetworkProxy& proxy,
@@ -357,7 +412,7 @@ QStringList GreaderNetwork::itemIds(const QString& stream_id,
     QString full_url =
       generateFullUrl(Operations::ItemIds)
         .arg(m_service == GreaderServiceRoot::Service::TheOldReader ? stream_id : QUrl::toPercentEncoding(stream_id),
-             QString::number(max_count <= 0 ? GREADET_API_ITEM_IDS_MAX : max_count));
+             QString::number(max_count <= 0 ? GREADER_API_ITEM_IDS_MAX : max_count));
     auto timeout = qApp->settings()->value(GROUP(Feeds), SETTING(Feeds::UpdateTimeout)).toInt();
 
     if (unread_only) {
@@ -1065,6 +1120,12 @@ QString GreaderNetwork::generateFullUrl(GreaderNetwork::Operations operation) co
   switch (operation) {
     case Operations::ClientLogin:
       return sanitizedBaseUrl() + QSL(GREADER_API_CLIENT_LOGIN);
+
+    case Operations::SubscriptionExport:
+      return sanitizedBaseUrl() + QSL(GREADER_API_SUBSCRIPTION_EXPORT);
+
+    case Operations::SubscriptionImport:
+      return sanitizedBaseUrl() + QSL(GREADER_API_SUBSCRIPTION_IMPORT);
 
     case Operations::Token:
       return sanitizedBaseUrl() + QSL(GREADER_API_TOKEN);

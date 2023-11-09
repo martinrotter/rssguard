@@ -149,9 +149,6 @@ Application::Application(const QString& id, int& argc, char** argv, const QStrin
 
   determineFirstRuns();
 
-  //: Name of translator - optional.
-  QObject::tr("LANG_AUTHOR");
-
   // Add an extra path for non-system icon themes and set current icon theme
   // and skin.
   m_icons->setupSearchPaths();

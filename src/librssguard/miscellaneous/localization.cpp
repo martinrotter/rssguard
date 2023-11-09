@@ -27,7 +27,7 @@ void Localization::loadActiveLanguage() {
            << QUOTE_W_SPACE_DOT(desired_localization);
 
   if (app_translator->load(QLocale(desired_localization), QSL("rssguard"), QSL("_"), APP_LANG_PATH)) {
-    const QString real_loaded_locale = app_translator->translate("QObject", "LANG_ABBREV");
+    const QString real_loaded_locale = app_translator->language();
 
     QCoreApplication::installTranslator(app_translator);
 
@@ -76,8 +76,7 @@ QList<Language> Localization::installedLanguages() const {
     if (translator.load(file.absoluteFilePath())) {
       Language new_language;
 
-      new_language.m_code = translator.language().replace(QSL("-"), QSL("_"));
-      new_language.m_author = translator.translate("QObject", "LANG_AUTHOR");
+      new_language.m_code = translator.language();
       new_language.m_name = QLocale(new_language.m_code).nativeLanguageName();
       languages << new_language;
     }
