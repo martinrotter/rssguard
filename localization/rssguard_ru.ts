@@ -118,7 +118,9 @@ Error: %1</source>
     <message>
       <location filename="../src/librssguard/network-web/adblock/adblockmanager.cpp" line="198"/>
       <source>Failed to setup filters and start server: %1.</source>
-      <translation type="unfinished">Failed to setup filters and start server: %1.</translation>
+      <translation>Ключ: AdBlock Manager ['Не удалось настроить фильтры и запустить сервер: %1.'].
+
+AdBlock Manager../src/librssguard/network-web/adblock/adblockmanager. cpp: 198.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/network-web/adblock/adblockmanager.cpp" line="375"/>
@@ -220,41 +222,61 @@ version by clicking this popup notification.</source>
     <message>
       <location filename="../src/librssguard/gui/notifications/articlelistnotification.ui" line="69"/>
       <source>...</source>
-      <translation type="unfinished">...</translation>
+      <translation>Ключ: Уведомление о перечне статей ['...']
+
+Уведомление о списке статей...</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/notifications/articlelistnotification.ui" line="90"/>
       <source>Go to previous page</source>
-      <translation type="unfinished">Go to previous page</translation>
+      <translation>Ключ: Уведомление о перечне статей ['Перейти на предыдущую страницу']
+
+Уведомление о списке статей../src/librssguard/gui/notifications/articlelistnotification. ui: 90</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/notifications/articlelistnotification.ui" line="97"/>
       <source>Go to next page</source>
-      <translation type="unfinished">Go to next page</translation>
+      <translation>Ключ: Уведомление о перечне статей ['Перейти на следующую страницу']
+
+Уведомление о списке статей../src/librssguard/gui/notifications/articlelistnotification. ui: 97</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/notifications/articlelistnotification.ui" line="104"/>
       <source>Open article in article list</source>
-      <translation type="unfinished">Open article in article list</translation>
+      <translation>Ключ: Уведомление о списке статей ['Открыть статью в списке статей']
+
+Уведомление о списке статей../src/librssguard/gui/notifications/articlelistnotification. ui: 104</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/notifications/articlelistnotification.ui" line="111"/>
       <source>Open article in web browser</source>
-      <translation type="unfinished">Open article in web browser</translation>
+      <translation>Ключ: Уведомление о списке статей ['Открыть статью в веб-браузере']
+
+Уведомление о списке статей../src/librssguard/gui/notifications/articlelistnotification. ui: 111</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/notifications/articlelistnotification.ui" line="125"/>
       <source>Mark all articles as read</source>
-      <translation type="unfinished">Mark all articles as read</translation>
+      <translation>Ключ: Уведомление о списке статей ["Пометить все статьи как прочитанные"]
+
+Уведомление о списке статей../src/librssguard/gui/notifications/articlelistnotification. ui: 125</translation>
     </message>
     <message numerus="yes">
       <location filename="../src/librssguard/gui/notifications/articlelistnotification.cpp" line="73"/>
       <source>%n feeds fetched</source>
-      <translation type="unfinished">
-        <numerusform>%n feeds fetched</numerusform>
-        <numerusform>%n feeds fetched</numerusform>
-        <numerusform>%n feeds fetched</numerusform>
-        <numerusform>%n feeds fetched</numerusform>
+      <translation>
+        <numerusform>Ключ: Уведомление о списке статей ['%n feeds fetched']
+
+Уведомление о списке статей../src/librssguard/gui/notifications/articlelistnotification. cpp: 73</numerusform>
+        <numerusform>Ключ: Уведомление о списке статей ['%n feeds fetched']
+
+Уведомление о списке статей../src/librssguard/gui/notifications/articlelistnotification. cpp: 73</numerusform>
+        <numerusform>Ключ: Уведомление о списке статей ['%n feeds fetched']
+
+Уведомление о списке статей../src/librssguard/gui/notifications/articlelistnotification. cpp: 73</numerusform>
+        <numerusform>Ключ: Уведомление о списке статей ['%n feeds fetched']
+
+Уведомление о списке статей../src/librssguard/gui/notifications/articlelistnotification. cpp: 73</numerusform>
       </translation>
     </message>
   </context>
@@ -273,12 +295,16 @@ version by clicking this popup notification.</source>
     <message>
       <location filename="../src/librssguard/services/abstract/gui/authenticationdetails.ui" line="48"/>
       <source>Credentials</source>
-      <translation type="unfinished">Credentials</translation>
+      <translation>Ключ: Authentication Details [' Учетные данные ']
+
+Детали аутентификации../src/librssguard/services/abstract/gui/authenticationdetails. ui: 48</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/abstract/gui/authenticationdetails.ui" line="25"/>
       <source>Authentication type</source>
-      <translation type="unfinished">Authentication type</translation>
+      <translation>Ключ: Подробности аутентификации [' Тип аутентификации ']
+
+Детали аутентификации../src/librssguard/services/abstract/gui/authenticationdetails. ui: 25</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/abstract/gui/authenticationdetails.ui" line="60"/>
@@ -306,32 +332,42 @@ version by clicking this popup notification.</source>
     <message>
       <location filename="../src/librssguard/services/abstract/gui/authenticationdetails.cpp" line="17"/>
       <source>No authentication</source>
-      <translation type="unfinished">No authentication</translation>
+      <translation>Ключ: Подробности аутентификации ['Без аутентификации']
+
+Детали аутентификации../src/librssguard/services/abstract/gui/authenticationdetails. cpp: 17</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/abstract/gui/authenticationdetails.cpp" line="19"/>
       <source>HTTP Basic</source>
-      <translation type="unfinished">HTTP Basic</translation>
+      <translation>Ключ: Детали аутентификации ['HTTP Basic']
+
+Детали аутентификации../src/librssguard/services/abstract/gui/authenticationdetails. cpp: 19</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/abstract/gui/authenticationdetails.cpp" line="22"/>
       <source>Token</source>
-      <translation type="unfinished">Token</translation>
+      <translation>Ключ: Authentication Details [Токен]
+
+Детали аутентификации../src/librssguard/services/abstract/gui/authenticationdetails. cpp: 22</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/abstract/gui/authenticationdetails.cpp" line="53"/>
       <source>Username/token is ok or it is not needed.</source>
-      <translation type="unfinished">Username/token is ok or it is not needed.</translation>
+      <translation>Ключ: Детали аутентификации [' Имя пользователя / токен в порядке или он не нужен'].
+
+Детали аутентификации../src/librssguard/services/abstract/gui/authenticationdetails. cpp: 53.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/abstract/gui/authenticationdetails.cpp" line="54"/>
       <source>Username/token is empty.</source>
-      <translation type="unfinished">Username/token is empty.</translation>
+      <translation>Ключ: Детали аутентификации ['Имя пользователя / токен пусты'].
+
+Детали аутентификации../src/librssguard/services/abstract/gui/authenticationdetails. cpp: 54.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/abstract/gui/authenticationdetails.cpp" line="76"/>
       <source>Access token</source>
-      <translation type="unfinished">Access token</translation>
+      <translation>Токен доступа</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/abstract/gui/authenticationdetails.cpp" line="63"/>
@@ -357,7 +393,7 @@ version by clicking this popup notification.</source>
     <message>
       <location filename="../src/librssguard/gui/notifications/basetoastnotification.cpp" line="41"/>
       <source>Close this notification</source>
-      <translation type="unfinished">Close this notification</translation>
+      <translation>Закрыть данное уведомление</translation>
     </message>
   </context>
   <context>
@@ -518,8 +554,9 @@ version by clicking this popup notification.</source>
       <location filename="../src/librssguard/network-web/downloadmanager.cpp" line="443"/>
       <source>File &apos;%1&apos; is downloaded.
 Click here to open parent directory.</source>
-      <translation type="unfinished">File &apos;%1&apos; is downloaded.
-Click here to open parent directory.</translation>
+      <translation>Файл &apos;%1&apos; загружен.
+
+Щелкните здесь, чтобы открыть родительский каталог.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/network-web/downloadmanager.cpp" line="454"/>
@@ -697,7 +734,7 @@ Click here to open parent directory.</translation>
     <message>
       <location filename="../src/librssguard/services/abstract/feed.cpp" line="268"/>
       <source>uses global settings, but global auto-fetching of articles is disabled</source>
-      <translation type="unfinished">uses global settings, but global auto-fetching of articles is disabled</translation>
+      <translation>использует глобальные настройки, но глобальная автоподборка статей отключена</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/abstract/feed.cpp" line="292"/>
@@ -763,11 +800,15 @@ Active message filters: %2
 Status: %3
 Source: &lt;a href=&quot;%4&quot;&gt;%4&lt;/a&gt;
 Item ID: %5</source>
-      <translation type="unfinished">Auto-update status: %1
-Active message filters: %2
-Status: %3
-Source: &lt;a href=&quot;%4&quot;&gt;%4&lt;/a&gt;
-Item ID: %5</translation>
+      <translation>Статус автообновления: %1
+
+Активные фильтры сообщений: %2
+
+Статус: %3
+
+Источник: &lt;a href=&quot;%4&quot;&gt;%4&lt;/a&gt;
+
+ID элемента: %5</translation>
     </message>
   </context>
   <context>
@@ -785,22 +826,22 @@ Item ID: %5</translation>
     <message>
       <location filename="../src/librssguard/gui/feedmessageviewer.cpp" line="236"/>
       <source>Filtered feed list</source>
-      <translation type="unfinished">Filtered feed list</translation>
+      <translation>Список фильтрованных лент</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/feedmessageviewer.cpp" line="237"/>
       <source>Cannot select article in article list as your feed is filtered out from feed list.</source>
-      <translation type="unfinished">Cannot select article in article list as your feed is filtered out from feed list.</translation>
+      <translation>Невозможно выбрать статью в списке статей, так как ваша лента отфильтрована из списка лент.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/feedmessageviewer.cpp" line="254"/>
       <source>Filtered article list</source>
-      <translation type="unfinished">Filtered article list</translation>
+      <translation>Отфильтрованный список статей</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/feedmessageviewer.cpp" line="255"/>
       <source>Cannot select article as it seems your article list is filtered.</source>
-      <translation type="unfinished">Cannot select article as it seems your article list is filtered.</translation>
+      <translation>Невозможно выбрать статью, так как, по-видимому, список статей отфильтрован.</translation>
     </message>
   </context>
   <context>
@@ -1005,12 +1046,12 @@ Item ID: %5</translation>
     <message>
       <location filename="../src/librssguard/services/standard/standardfeedsimportexportmodel.cpp" line="310"/>
       <source>OPML document contains errors</source>
-      <translation type="unfinished">OPML document contains errors</translation>
+      <translation>OPML-документ содержит ошибки</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/standard/standardfeedsimportexportmodel.cpp" line="315"/>
       <source>this is likely not OPML document</source>
-      <translation type="unfinished">this is likely not OPML document</translation>
+      <translation>скорее всего, это не OPML-документ</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/standard/standardfeedsimportexportmodel.cpp" line="394"/>
@@ -1064,12 +1105,12 @@ Item ID: %5</translation>
     <message>
       <location filename="../src/librssguard/gui/toolbars/feedstoolbar.cpp" line="120"/>
       <source>Everywhere</source>
-      <translation type="unfinished">Everywhere</translation>
+      <translation>Везде</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/toolbars/feedstoolbar.cpp" line="121"/>
       <source>Titles only</source>
-      <translation type="unfinished">Titles only</translation>
+      <translation>Только заголовки</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/toolbars/feedstoolbar.cpp" line="125"/>
@@ -1130,7 +1171,7 @@ Item ID: %5</translation>
     <message>
       <location filename="../src/librssguard/gui/feedsview.cpp" line="1077"/>
       <source>Context menu for regex query</source>
-      <translation type="unfinished">Context menu for regex query</translation>
+      <translation>Контекстное меню для запроса регулярных выражений</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/feedsview.cpp" line="169"/>
@@ -1146,7 +1187,7 @@ Item ID: %5</translation>
       <location filename="../src/librssguard/gui/feedsview.cpp" line="239"/>
       <location filename="../src/librssguard/gui/feedsview.cpp" line="255"/>
       <source>Do you really want to clean all articles from selected items?</source>
-      <translation type="unfinished">Do you really want to clean all articles from selected items?</translation>
+      <translation>Вы действительно хотите очистить все статьи от выбранных элементов?</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/feedsview.cpp" line="293"/>
@@ -1154,66 +1195,66 @@ Item ID: %5</translation>
       <location filename="../src/librssguard/gui/feedsview.cpp" line="321"/>
       <location filename="../src/librssguard/gui/feedsview.cpp" line="338"/>
       <source>Cannot edit items</source>
-      <translation type="unfinished">Cannot edit items</translation>
+      <translation>Невозможность редактирования элементов</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/feedsview.cpp" line="294"/>
       <source>Selected items cannot be edited. This is not supported (yet).</source>
-      <translation type="unfinished">Selected items cannot be edited. This is not supported (yet).</translation>
+      <translation>Выбранные элементы не могут быть отредактированы. Это не поддерживается (пока).</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/feedsview.cpp" line="304"/>
       <source>%1 does not support batch editing of multiple accounts.</source>
-      <translation type="unfinished">%1 does not support batch editing of multiple accounts.</translation>
+      <translation>%1 не поддерживает пакетное редактирование нескольких учетных записей.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/feedsview.cpp" line="322"/>
       <source>%1 does not support batch editing of items from multiple accounts.</source>
-      <translation type="unfinished">%1 does not support batch editing of items from multiple accounts.</translation>
+      <translation>%1 не поддерживает пакетное редактирование элементов из нескольких аккаунтов.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/feedsview.cpp" line="339"/>
       <source>%1 does not support batch editing of items of varying types.</source>
-      <translation type="unfinished">%1 does not support batch editing of items of varying types.</translation>
+      <translation>%1 не поддерживает пакетное редактирование элементов разного типа.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/feedsview.cpp" line="349"/>
       <source>Cannot edit some items</source>
-      <translation type="unfinished">Cannot edit some items</translation>
+      <translation>Невозможность редактирования некоторых элементов</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/feedsview.cpp" line="350"/>
       <source>Some of selected items cannot be edited. Proceeding to edit the rest.</source>
-      <translation type="unfinished">Some of selected items cannot be edited. Proceeding to edit the rest.</translation>
+      <translation>Некоторые из выбранных элементов не могут быть отредактированы. Переход к редактированию других.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/feedsview.cpp" line="427"/>
       <source>Some items won&apos;t be deleted</source>
-      <translation type="unfinished">Some items won&apos;t be deleted</translation>
+      <translation>Некоторые элементы не будут удалены</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/feedsview.cpp" line="428"/>
       <source>Some selected items will not be deleted, because they cannot be deleted.</source>
-      <translation type="unfinished">Some selected items will not be deleted, because they cannot be deleted.</translation>
+      <translation>Некоторые выбранные элементы не будут удалены, поскольку их нельзя удалить.</translation>
     </message>
     <message numerus="yes">
       <location filename="../src/librssguard/gui/feedsview.cpp" line="435"/>
       <source>Deleting %n items</source>
-      <translation type="unfinished">
-        <numerusform>Deleting %n items</numerusform>
-        <numerusform>Deleting %n items</numerusform>
-        <numerusform>Deleting %n items</numerusform>
-        <numerusform>Deleting %n items</numerusform>
+      <translation>
+        <numerusform>Удаление %n элемента</numerusform>
+        <numerusform>Удаление %n элементов</numerusform>
+        <numerusform>Удаление %n элементов</numerusform>
+        <numerusform>Удаление %n элементов</numerusform>
       </translation>
     </message>
     <message numerus="yes">
       <location filename="../src/librssguard/gui/feedsview.cpp" line="436"/>
       <source>You are about to completely delete %n items.</source>
-      <translation type="unfinished">
-        <numerusform>You are about to completely delete %n items.</numerusform>
-        <numerusform>You are about to completely delete %n items.</numerusform>
-        <numerusform>You are about to completely delete %n items.</numerusform>
-        <numerusform>You are about to completely delete %n items.</numerusform>
+      <translation>
+        <numerusform>Вы собираетесь полностью удалить %n элемент.</numerusform>
+        <numerusform>Вы собираетесь полностью удалить %n элементов.</numerusform>
+        <numerusform>Вы собираетесь полностью удалить %n элементов.</numerusform>
+        <numerusform>Вы собираетесь полностью удалить %n элементов.</numerusform>
       </translation>
     </message>
     <message>
@@ -1269,13 +1310,18 @@ Skins base folder -&gt; &quot;%4&quot;
 Icon themes base folder -&gt; &quot;%8&quot;
 Node.js package folder -&gt; &quot;%6&quot;
 QtWebEngine cache folder -&gt; &quot;%7&quot;</source>
-      <translation type="unfinished">User data folder (&quot;%5&quot;) -&gt; &quot;%1&quot;
+      <translation>Папка данных пользователя (&quot;%5&quot;) -&gt; &quot;%1&quot;
 
-Settings file (%3) -&gt; &quot;%2&quot;
-Skins base folder -&gt; &quot;%4&quot;
-Icon themes base folder -&gt; &quot;%8&quot;
-Node.js package folder -&gt; &quot;%6&quot;
-QtWebEngine cache folder -&gt; &quot;%7&quot;</translation>
+
+Файл настроек (%3) -&gt; &quot;%2&quot;
+
+Базовая папка темы -&gt; &quot;%4&quot;
+
+Базовая папка тем иконок -&gt; &quot;%8&quot;
+
+Папка пакета Node.js -&gt; &quot;%6&quot;
+
+Папка кэша QtWebEngine -&gt; &quot;%7&quot;</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formabout.cpp" line="125"/>
@@ -1430,17 +1476,17 @@ QtWebEngine cache folder -&gt; &quot;%7&quot;</translation>
     <message>
       <location filename="../src/librssguard/services/abstract/gui/formaddeditprobe.cpp" line="12"/>
       <source>Name for your query</source>
-      <translation type="unfinished">Name for your query</translation>
+      <translation>Имя для запроса</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/abstract/gui/formaddeditprobe.cpp" line="13"/>
       <source>Regular expression</source>
-      <translation type="unfinished">Regular expression</translation>
+      <translation>Регулярное выражение</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/abstract/gui/formaddeditprobe.cpp" line="16"/>
       <source>What is regular expression?</source>
-      <translation type="unfinished">What is regular expression?</translation>
+      <translation>Что такое регулярное выражение?</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/abstract/gui/formaddeditprobe.cpp" line="17"/>
@@ -4816,12 +4862,12 @@ Login tokens expiration: %2</source>
     <message>
       <location filename="../src/librssguard/gui/toolbars/messagestoolbar.cpp" line="219"/>
       <source>Everywhere</source>
-      <translation type="unfinished">Everywhere</translation>
+      <translation>Везде</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/toolbars/messagestoolbar.cpp" line="220"/>
       <source>Titles only</source>
-      <translation type="unfinished">Titles only</translation>
+      <translation>Только заголовки</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/toolbars/messagestoolbar.cpp" line="224"/>
@@ -5999,7 +6045,7 @@ Login tokens expiration: %2</source>
     <message>
       <location filename="../src/librssguard/gui/reusable/searchlineedit.cpp" line="107"/>
       <source>Regular expression</source>
-      <translation type="unfinished">Regular expression</translation>
+      <translation>Регулярное выражение</translation>
     </message>
   </context>
   <context>
