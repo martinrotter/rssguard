@@ -51,15 +51,12 @@
    <item row="0" column="0" colspan="2">
     <layout class="QHBoxLayout" name="m_titleLayout">
      <item>
-      <widget class="QLabel" name="m_lblTitle">
+      <widget class="SqueezeLabel" name="m_lblTitle">
        <property name="text">
         <string/>
        </property>
        <property name="alignment">
         <set>Qt::AlignCenter</set>
-       </property>
-       <property name="wordWrap">
-        <bool>true</bool>
        </property>
       </widget>
      </item>
@@ -135,6 +132,11 @@
    <class>PlainToolButton</class>
    <extends>QToolButton</extends>
    <header>plaintoolbutton.h</header>
+  </customwidget>
+  <customwidget>
+   <class>SqueezeLabel</class>
+   <extends>QLabel</extends>
+   <header>squeezelabel.h</header>
   </customwidget>
  </customwidgets>
  <tabstops>

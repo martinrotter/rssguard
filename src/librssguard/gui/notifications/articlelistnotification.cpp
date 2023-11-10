@@ -71,6 +71,7 @@ void ArticleListNotification::loadResults(const QHash<Feed*, QList<Message>>& ne
   m_newMessages = new_messages;
 
   m_ui.m_lblTitle->setText(tr("%n feeds fetched", nullptr, new_messages.size()));
+  m_ui.m_lblTitle->setToolTip(m_ui.m_lblTitle->text());
 
   m_ui.m_cmbFeeds->model()->sort(0, Qt::SortOrder::AscendingOrder);
   m_ui.m_cmbFeeds->clear();

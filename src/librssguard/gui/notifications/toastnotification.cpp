@@ -24,7 +24,9 @@ ToastNotification::ToastNotification(Notification::Event event,
 
 void ToastNotification::loadNotification(Notification::Event event, const GuiMessage& msg, const GuiAction& action) {
   m_ui.m_lblTitle->setText(msg.m_title);
+  m_ui.m_lblTitle->setToolTip(msg.m_title);
   m_ui.m_lblBody->setText(msg.m_message);
+  m_ui.m_lblBody->setToolTip(msg.m_message);
 
   m_ui.m_lblIcon->setPixmap(iconForType(msg.m_type)
                               .pixmap({
@@ -41,6 +43,7 @@ void ToastNotification::loadNotification(Notification::Event event, const GuiMes
   }
   else {
     m_ui.m_mainLayout->removeItem(m_ui.m_actionLayout);
+    m_ui.m_mainLayout->update();
     m_ui.m_btnAction->deleteLater();
   }
 }

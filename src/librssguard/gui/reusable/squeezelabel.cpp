@@ -10,7 +10,7 @@ void SqueezeLabel::paintEvent(QPaintEvent* event) {
     QFontMetrics fm = fontMetrics();
 
     if (fm.horizontalAdvance(m_squeezedTextCache) > contentsRect().width()) {
-      setText(fm.elidedText(text(), Qt::ElideMiddle, width()));
+      setText(fm.elidedText(text(), Qt::TextElideMode::ElideRight, width()));
     }
   }
 
