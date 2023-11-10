@@ -39,7 +39,6 @@
 #include <QTextCodec>
 
 StandardServiceRoot::StandardServiceRoot(RootItem* parent) : ServiceRoot(parent) {
-  setTitle(qApp->system()->loggedInUser() + QSL(" (RSS/ATOM/JSON)"));
   setIcon(StandardServiceEntryPoint().icon());
   setDescription(tr("This is the obligatory service account for standard RSS/RDF/ATOM feeds."));
 }
@@ -350,6 +349,24 @@ QList<QAction*> StandardServiceRoot::getContextMenuForFeed(StandardFeed* feed) {
   m_feedForMetadata = feed;
 
   return m_feedContextMenu;
+}
+
+QVariantHash StandardServiceRoot::customDatabaseData() const {
+  QVariantHash data = ServiceRoot::customDatabaseData();
+
+  data[QSL("title")] = title();
+
+  return data;
+}
+
+void StandardServiceRoot::setCustomDatabaseData(const QVariantHash& data) {
+  ServiceRoot::setCustomDatabaseData(data);
+
+  setTitle(data.value(QSL("title"), defaultTitle()).toString());
+}
+
+QString StandardServiceRoot::defaultTitle() {
+  return qApp->system()->loggedInUser() + QSL(" (RSS/ATOM/JSON)");
 }
 
 bool StandardServiceRoot::mergeImportExportModel(FeedsImportExportModel* model,

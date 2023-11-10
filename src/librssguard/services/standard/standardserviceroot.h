@@ -34,12 +34,16 @@ class StandardServiceRoot : public ServiceRoot {
     virtual bool supportsFeedAdding() const;
     virtual bool supportsCategoryAdding() const;
     virtual Qt::ItemFlags additionalFlags() const;
+    virtual QVariantHash customDatabaseData() const;
+    virtual void setCustomDatabaseData(const QVariantHash& data);
     virtual QList<Message> obtainNewMessages(Feed* feed,
                                              const QHash<ServiceRoot::BagOfMessages, QStringList>& stated_messages,
                                              const QHash<QString, QStringList>& tagged_messages);
 
     QList<QAction*> serviceMenu();
     QList<QAction*> getContextMenuForFeed(StandardFeed* feed);
+
+    static QString defaultTitle();
 
   public slots:
     void addNewFeed(RootItem* selected_item, const QString& url = QString());

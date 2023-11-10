@@ -395,6 +395,8 @@ set(SOURCES
   services/standard/gui/formstandardimportexport.h
   services/standard/gui/standardfeeddetails.cpp
   services/standard/gui/standardfeeddetails.h
+  services/standard/gui/standardaccountdetails.cpp
+  services/standard/gui/standardaccountdetails.h
   services/standard/parsers/atomparser.cpp
   services/standard/parsers/atomparser.h
   services/standard/parsers/feedparser.cpp
@@ -490,6 +492,7 @@ set(UI_FILES
   services/standard/gui/formdiscoverfeeds.ui
   services/standard/gui/formstandardimportexport.ui
   services/standard/gui/standardfeeddetails.ui
+  services/standard/gui/standardaccountdetails.ui
   services/tt-rss/gui/formttrssnote.ui
   services/tt-rss/gui/ttrssaccountdetails.ui
   services/tt-rss/gui/ttrssfeeddetails.ui

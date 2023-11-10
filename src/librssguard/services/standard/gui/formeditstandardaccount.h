@@ -5,14 +5,22 @@
 
 #include "services/abstract/gui/formaccountdetails.h"
 
+class StandardAccountDetails;
+
 class FormEditStandardAccount : public FormAccountDetails {
     Q_OBJECT
 
   public:
     explicit FormEditStandardAccount(QWidget* parent = nullptr);
 
+  protected:
+    virtual void loadAccountData();
+
   protected slots:
     virtual void apply();
+
+  private:
+    StandardAccountDetails* m_standardDetails;
 };
 
 #endif // FORMEDITSTANDARDACCOUNT_H
