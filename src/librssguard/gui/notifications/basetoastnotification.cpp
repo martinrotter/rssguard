@@ -15,9 +15,8 @@ using namespace std::chrono_literals;
 
 BaseToastNotification::BaseToastNotification(QWidget* parent) : QDialog(parent), m_timerId(-1) {
   setAttribute(Qt::WidgetAttribute::WA_ShowWithoutActivating);
-  setFixedWidth(qApp->settings()->value(GROUP(GUI), SETTING(GUI::ToastNotificationsWidth)).toInt());
+  // setFixedWidth(qApp->settings()->value(GROUP(GUI), SETTING(GUI::ToastNotificationsWidth)).toInt());
   setFocusPolicy(Qt::FocusPolicy::NoFocus);
-
   setAttribute(Qt::WidgetAttribute::WA_DeleteOnClose, false);
 
   setWindowFlags(

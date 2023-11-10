@@ -298,6 +298,9 @@ DVALUE(int) GUI::ToastNotificationsScreenDef = -1;
 DKEY GUI::ToastNotificationsMargin = "toast_notifications_margin";
 DVALUE(int) GUI::ToastNotificationsMarginDef = NOTIFICATIONS_MARGIN;
 
+DKEY GUI::ToastNotificationsOpacity = "toast_notifications_opacity";
+DVALUE(double) GUI::ToastNotificationsOpacityDef = 0.9;
+
 DKEY GUI::ToastNotificationsWidth = "toast_notifications_width";
 DVALUE(int) GUI::ToastNotificationsWidthDef = NOTIFICATIONS_WIDTH;
 

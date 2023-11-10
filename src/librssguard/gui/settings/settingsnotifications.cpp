@@ -30,6 +30,7 @@ SettingsNotifications::SettingsNotifications(Settings* settings, QWidget* parent
   connect(m_ui.m_sbScreen, QOverload<int>::of(&QSpinBox::valueChanged), this, &SettingsNotifications::dirtifySettings);
   connect(m_ui.m_sbMargin, QOverload<int>::of(&QSpinBox::valueChanged), this, &SettingsNotifications::dirtifySettings);
   connect(m_ui.m_sbWidth, QOverload<int>::of(&QSpinBox::valueChanged), this, &SettingsNotifications::dirtifySettings);
+  connect(m_ui.m_sbOpacity, QOverload<int>::of(&QSpinBox::valueChanged), this, &SettingsNotifications::dirtifySettings);
 
   connect(m_ui.m_sbScreen, QOverload<int>::of(&QSpinBox::valueChanged), this, &SettingsNotifications::showScreenInfo);
 
@@ -64,6 +65,7 @@ void SettingsNotifications::loadSettings() {
   m_ui.m_sbScreen->setValue(settings()->value(GROUP(GUI), SETTING(GUI::ToastNotificationsScreen)).toInt());
   m_ui.m_sbWidth->setValue(settings()->value(GROUP(GUI), SETTING(GUI::ToastNotificationsWidth)).toInt());
   m_ui.m_sbMargin->setValue(settings()->value(GROUP(GUI), SETTING(GUI::ToastNotificationsMargin)).toInt());
+  m_ui.m_sbOpacity->setValue(settings()->value(GROUP(GUI), SETTING(GUI::ToastNotificationsOpacity)).toDouble() * 100);
 
   m_ui.m_cbCustomNotificationsPosition
     ->setCurrentIndex(m_ui.m_cbCustomNotificationsPosition
@@ -85,6 +87,7 @@ void SettingsNotifications::saveSettings() {
   settings()->setValue(GROUP(GUI), GUI::ToastNotificationsScreen, m_ui.m_sbScreen->value());
   settings()->setValue(GROUP(GUI), GUI::ToastNotificationsWidth, m_ui.m_sbWidth->value());
   settings()->setValue(GROUP(GUI), GUI::ToastNotificationsMargin, m_ui.m_sbMargin->value());
+  settings()->setValue(GROUP(GUI), GUI::ToastNotificationsOpacity, m_ui.m_sbOpacity->value() / 100.0);
 
   settings()->setValue(GROUP(GUI),
                        GUI::ToastNotificationsPosition,

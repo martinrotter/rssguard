@@ -231,6 +231,9 @@ namespace GUI {
   KEY ToastNotificationsMargin;
   VALUE(int) ToastNotificationsMarginDef;
 
+  KEY ToastNotificationsOpacity;
+  VALUE(double) ToastNotificationsOpacityDef;
+
   KEY ToastNotificationsWidth;
   VALUE(int) ToastNotificationsWidthDef;
 

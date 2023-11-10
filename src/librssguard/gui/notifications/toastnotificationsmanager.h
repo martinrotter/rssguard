@@ -69,6 +69,8 @@ class ToastNotificationsManager : public QObject {
     NotificationPosition m_position;
     int m_screen;
     int m_margins;
+    int m_width;
+    double m_opacity;
 
     // List of all displayed notifications, newest notifications are in the beginning of the list
     // and oldest at the end.

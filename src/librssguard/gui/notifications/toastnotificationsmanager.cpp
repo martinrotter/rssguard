@@ -31,7 +31,7 @@ QString ToastNotificationsManager::textForPosition(ToastNotificationsManager::No
 
 ToastNotificationsManager::ToastNotificationsManager(QObject* parent)
   : QObject(parent), m_position(ToastNotificationsManager::NotificationPosition::TopRight), m_screen(0), m_margins(0),
-    m_articleListNotification(nullptr) {
+    m_width(0), m_opacity(0.0), m_articleListNotification(nullptr) {
   resetNotifications(false);
 }
 
@@ -65,8 +65,8 @@ void ToastNotificationsManager::resetNotifications(bool reload_existing_notifica
                  .value<ToastNotificationsManager::NotificationPosition>();
   m_screen = qApp->settings()->value(GROUP(GUI), SETTING(GUI::ToastNotificationsScreen)).toInt();
   m_margins = qApp->settings()->value(GROUP(GUI), SETTING(GUI::ToastNotificationsMargin)).toInt();
-
-  auto notif_width = qApp->settings()->value(GROUP(GUI), SETTING(GUI::ToastNotificationsWidth)).toInt();
+  m_opacity = qApp->settings()->value(GROUP(GUI), SETTING(GUI::ToastNotificationsOpacity)).toDouble();
+  m_width = qApp->settings()->value(GROUP(GUI), SETTING(GUI::ToastNotificationsWidth)).toInt();
 
   if (reload_existing_notifications) {
     auto notif = m_activeNotifications;
@@ -75,8 +75,6 @@ void ToastNotificationsManager::resetNotifications(bool reload_existing_notifica
 
     while (!notif.isEmpty()) {
       BaseToastNotification* one_notif = notif.takeLast();
-
-      one_notif->setFixedWidth(notif_width);
 
       processNotification(one_notif);
     }
@@ -92,6 +90,9 @@ void ToastNotificationsManager::clear(bool delete_from_memory) {
 }
 
 void ToastNotificationsManager::processNotification(BaseToastNotification* notif) {
+  notif->setWindowOpacity(m_opacity);
+  notif->setFixedWidth(m_width);
+
   notif->show();
 
   auto* screen = moveToProperScreen(notif);
