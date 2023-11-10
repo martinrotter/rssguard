@@ -4298,17 +4298,17 @@ Login tokens expiration: %2</translation>
     <message>
       <location filename="../src/librssguard/database/mariadbdriver.cpp" line="75"/>
       <source>MySQL server works as expected.</source>
-      <translation type="unfinished">MySQL server works as expected.</translation>
+      <translation>MySQLサーバーは期待通りに動作します</translation>
     </message>
     <message>
       <location filename="../src/librssguard/database/mariadbdriver.cpp" line="78"/>
       <source>Selected database does not exist (yet). It will be created. It&apos;s okay.</source>
-      <translation type="unfinished">Selected database does not exist (yet). It will be created. It&apos;s okay.</translation>
+      <translation>選択したデータベースは (まだ) 存在しません。 作成されますので大丈夫です</translation>
     </message>
     <message>
       <location filename="../src/librssguard/database/mariadbdriver.cpp" line="83"/>
       <source>No MySQL server is running in the target destination.</source>
-      <translation type="unfinished">No MySQL server is running in the target destination.</translation>
+      <translation>MySQLサーバーがターゲット先で実行されていません</translation>
     </message>
     <message>
       <location filename="../src/librssguard/database/mariadbdriver.cpp" line="86"/>
@@ -5093,19 +5093,19 @@ Login tokens expiration: %2</translation>
     <message numerus="yes">
       <location filename="../src/librssguard/gui/newspaperpreviewer.cpp" line="45"/>
       <source>Show more articles (%n remaining)</source>
-      <translation type="unfinished">
-        <numerusform>Show more articles (%n remaining)</numerusform>
+      <translation>
+        <numerusform>さらに記事を表示 (残り %n)</numerusform>
       </translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/newspaperpreviewer.cpp" line="51"/>
       <source>Cannot show more articles</source>
-      <translation type="unfinished">Cannot show more articles</translation>
+      <translation>これ以上記事を表示できません</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/newspaperpreviewer.cpp" line="52"/>
       <source>Cannot show more articles because parent feed was removed.</source>
-      <translation type="unfinished">Cannot show more articles because parent feed was removed.</translation>
+      <translation>親フィードが削除されたため、これ以上記事を表示できません</translation>
     </message>
   </context>
   <context>
@@ -6691,7 +6691,7 @@ Authors of this application are NOT responsible for lost data.</source>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsgui.cpp" line="33"/>
       <source>Forced skin colors</source>
-      <translation type="unfinished">Forced skin colors</translation>
+      <translation>スキンカラーの強制</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsgui.cpp" line="275"/>
@@ -6722,7 +6722,7 @@ Authors of this application are NOT responsible for lost data.</source>
       <location filename="../src/librssguard/gui/settings/settingsgui.cpp" line="173"/>
       <source>system icon theme</source>
       <extracomment>Label for disabling icon theme.</extracomment>
-      <translation type="unfinished">system icon theme</translation>
+      <translation>システムアイコンのテーマ</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsgui.cpp" line="175"/>
@@ -6737,7 +6737,7 @@ Authors of this application are NOT responsible for lost data.</source>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsgui.cpp" line="33"/>
       <source>Forced style</source>
-      <translation type="unfinished">Forced style</translation>
+      <translation>スタイルの強制</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsgui.cpp" line="42"/>
@@ -6937,7 +6937,7 @@ Description: %3</source>
     <message>
       <location filename="../src/librssguard/gui/settings/settingslocalization.cpp" line="129"/>
       <source>Translators needed!</source>
-      <translation type="unfinished">Translators needed!</translation>
+      <translation>翻訳者募集中！</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingslocalization.cpp" line="130"/>
@@ -6947,7 +6947,7 @@ Description: %3</source>
     <message>
       <location filename="../src/librssguard/gui/settings/settingslocalization.cpp" line="132"/>
       <source>Do you want to help with the translation now?</source>
-      <translation type="unfinished">Do you want to help with the translation now?</translation>
+      <translation>今すぐに翻訳を手伝ってみませんか?</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingslocalization.h" line="26"/>
