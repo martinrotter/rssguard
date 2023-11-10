@@ -248,6 +248,18 @@ class ServiceRoot : public RootItem {
                                 const QList<Label*>& labels,
                                 const QList<Search*>& probes);
 
+    bool nodeShowUnread() const;
+    void setNodeShowUnread(bool enabled);
+
+    bool nodeShowImportant() const;
+    void setNodeShowImportant(bool enabled);
+
+    bool nodeShowLabels() const;
+    void setNodeShowLabels(bool enabled);
+
+    bool nodeShowProbes() const;
+    void setNodeShowProbes(bool enabled);
+
   public slots:
     virtual void addNewFeed(RootItem* selected_item, const QString& url = QString());
     virtual void addNewCategory(RootItem* selected_item);
@@ -315,6 +327,10 @@ class ServiceRoot : public RootItem {
     int m_accountId;
     QList<QAction*> m_serviceMenu;
     QNetworkProxy m_networkProxy;
+    bool m_nodeShowUnread;
+    bool m_nodeShowImportant;
+    bool m_nodeShowLabels;
+    bool m_nodeShowProbes;
 };
 
 #if QT_VERSION_MAJOR == 6

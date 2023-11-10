@@ -407,11 +407,17 @@ void ServiceRoot::saveAccountDataToDatabase() {
 }
 
 QVariantHash ServiceRoot::customDatabaseData() const {
-  return {};
+  return {{QSL("show_node_unread"), m_nodeShowUnread},
+          {QSL("show_node_important"), m_nodeShowImportant},
+          {QSL("show_node_labels"), m_nodeShowLabels},
+          {QSL("show_node_probes"), m_nodeShowProbes}};
 }
 
 void ServiceRoot::setCustomDatabaseData(const QVariantHash& data) {
-  Q_UNUSED(data)
+  m_nodeShowUnread = data.value(QSL("show_node_unread"), true).toBool();
+  m_nodeShowImportant = data.value(QSL("show_node_important"), true).toBool();
+  m_nodeShowLabels = data.value(QSL("show_node_labels"), true).toBool();
+  m_nodeShowProbes = data.value(QSL("show_node_probes"), true).toBool();
 }
 
 bool ServiceRoot::wantsBaggedIdsOfExistingMessages() const {
@@ -551,6 +557,38 @@ void ServiceRoot::restoreCustomCategoriesData(const QMap<QString, QVariantMap>& 
                                               const QHash<QString, Category*>& cats) {
   Q_UNUSED(data)
   Q_UNUSED(cats)
+}
+
+bool ServiceRoot::nodeShowProbes() const {
+  return m_nodeShowProbes;
+}
+
+void ServiceRoot::setNodeShowProbes(bool enabled) {
+  m_nodeShowProbes = enabled;
+}
+
+bool ServiceRoot::nodeShowLabels() const {
+  return m_nodeShowLabels;
+}
+
+void ServiceRoot::setNodeShowLabels(bool enabled) {
+  m_nodeShowLabels = enabled;
+}
+
+bool ServiceRoot::nodeShowImportant() const {
+  return m_nodeShowImportant;
+}
+
+void ServiceRoot::setNodeShowImportant(bool enabled) {
+  m_nodeShowImportant = enabled;
+}
+
+bool ServiceRoot::nodeShowUnread() const {
+  return m_nodeShowUnread;
+}
+
+void ServiceRoot::setNodeShowUnread(bool enabled) {
+  m_nodeShowUnread = enabled;
 }
 
 QNetworkProxy ServiceRoot::networkProxy() const {

@@ -36,7 +36,7 @@ RootItem* RedditServiceRoot::obtainNewTreeForSyncIn() const {
 }
 
 QVariantHash RedditServiceRoot::customDatabaseData() const {
-  QVariantHash data;
+  QVariantHash data = ServiceRoot::customDatabaseData();
 
   data[QSL("username")] = m_network->username();
   data[QSL("batch_size")] = m_network->batchSize();
@@ -50,6 +50,8 @@ QVariantHash RedditServiceRoot::customDatabaseData() const {
 }
 
 void RedditServiceRoot::setCustomDatabaseData(const QVariantHash& data) {
+  ServiceRoot::setCustomDatabaseData(data);
+
   m_network->setUsername(data[QSL("username")].toString());
   m_network->setBatchSize(data[QSL("batch_size")].toInt());
   m_network->setDownloadOnlyUnreadMessages(data[QSL("download_only_unread")].toBool());

@@ -280,6 +280,8 @@ set(SOURCES
   services/abstract/category.h
   services/abstract/feed.cpp
   services/abstract/feed.h
+  services/abstract/gui/accountdetails.cpp
+  services/abstract/gui/accountdetails.h
   services/abstract/gui/authenticationdetails.cpp
   services/abstract/gui/authenticationdetails.h
   services/abstract/gui/custommessagepreviewer.cpp
@@ -471,6 +473,7 @@ set(UI_FILES
   network-web/adblock/adblockdialog.ui
   network-web/downloaditem.ui
   network-web/downloadmanager.ui
+  services/abstract/gui/accountdetails.ui
   services/abstract/gui/authenticationdetails.ui
   services/abstract/gui/formaccountdetails.ui
   services/abstract/gui/formaddeditlabel.ui

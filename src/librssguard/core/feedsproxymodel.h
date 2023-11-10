@@ -78,7 +78,6 @@ class FeedsProxyModel : public QSortFilterProxyModel {
     bool m_showNodeProbes;
     bool m_showNodeLabels;
     bool m_showNodeImportant;
-    QList<QPair<int, QModelIndex>> m_hiddenIndices;
     QList<RootItem::Kind> m_priorities;
 };
 

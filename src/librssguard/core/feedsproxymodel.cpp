@@ -322,34 +322,6 @@ bool FeedsProxyModel::lessThan(const QModelIndex& left, const QModelIndex& right
 
 bool FeedsProxyModel::filterAcceptsRow(int source_row, const QModelIndex& source_parent) const {
   bool should_show = filterAcceptsRowInternal(source_row, source_parent);
-
-  /*
-  qDebugNN << LOGSEC_CORE << "Filter accepts row"
-           << QUOTE_W_SPACE(m_sourceModel->itemForIndex(m_sourceModel->index(source_row, 0, source_parent))->title())
-           << "and filter result is:" << QUOTE_W_SPACE_DOT(should_show);
-  */
-
-  /*
-     if (should_show && (!filterRegularExpression().pattern().isEmpty() ||
-                      m_showUnreadOnly)) {
-     emit expandAfterFilterIn(m_sourceModel->index(source_row, 0, source_parent));
-     }
-   */
-
-  if (should_show && m_hiddenIndices.contains(QPair<int, QModelIndex>(source_row, source_parent))) {
-    qDebugNN << LOGSEC_CORE << "Item was previously hidden and now shows up, expand.";
-
-    const_cast<FeedsProxyModel*>(this)->m_hiddenIndices.removeAll(QPair<int, QModelIndex>(source_row, source_parent));
-
-    // Now, item now should be displayed and previously it was not.
-    // Expand!
-    emit expandAfterFilterIn(m_sourceModel->index(source_row, 0, source_parent));
-  }
-
-  if (!should_show) {
-    const_cast<FeedsProxyModel*>(this)->m_hiddenIndices.append(QPair<int, QModelIndex>(source_row, source_parent));
-  }
-
   return should_show;
 }
 
@@ -361,6 +333,22 @@ bool FeedsProxyModel::filterAcceptsRowInternal(int source_row, const QModelIndex
   }
 
   const RootItem* item = m_sourceModel->itemForIndex(idx);
+
+  if (item->kind() == RootItem::Kind::Important && !item->getParentServiceRoot()->nodeShowImportant()) {
+    return false;
+  }
+
+  if (item->kind() == RootItem::Kind::Unread && !item->getParentServiceRoot()->nodeShowUnread()) {
+    return false;
+  }
+
+  if (item->kind() == RootItem::Kind::Probes && !item->getParentServiceRoot()->nodeShowProbes()) {
+    return false;
+  }
+
+  if (item->kind() == RootItem::Kind::Labels && !item->getParentServiceRoot()->nodeShowLabels()) {
+    return false;
+  }
 
   if (item->kind() != RootItem::Kind::Category && item->kind() != RootItem::Kind::Feed &&
       item->kind() != RootItem::Kind::Label) {

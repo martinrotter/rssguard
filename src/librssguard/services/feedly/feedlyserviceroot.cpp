@@ -48,7 +48,7 @@ void FeedlyServiceRoot::editItems(const QList<RootItem*>& items) {
 }
 
 QVariantHash FeedlyServiceRoot::customDatabaseData() const {
-  QVariantHash data;
+  QVariantHash data = ServiceRoot::customDatabaseData();
 
   data[QSL("username")] = m_network->username();
   data[QSL("dat")] = m_network->developerAccessToken();
@@ -65,6 +65,8 @@ QVariantHash FeedlyServiceRoot::customDatabaseData() const {
 }
 
 void FeedlyServiceRoot::setCustomDatabaseData(const QVariantHash& data) {
+  ServiceRoot::setCustomDatabaseData(data);
+
   m_network->setUsername(data[QSL("username")].toString());
   m_network->setDeveloperAccessToken(data[QSL("dat")].toString());
 

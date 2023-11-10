@@ -45,7 +45,7 @@ void GreaderServiceRoot::editItems(const QList<RootItem*>& items) {
 }
 
 QVariantHash GreaderServiceRoot::customDatabaseData() const {
-  QVariantHash data;
+  QVariantHash data = ServiceRoot::customDatabaseData();
 
   data[QSL("service")] = int(m_network->service());
   data[QSL("username")] = m_network->username();
@@ -72,6 +72,8 @@ QVariantHash GreaderServiceRoot::customDatabaseData() const {
 }
 
 void GreaderServiceRoot::setCustomDatabaseData(const QVariantHash& data) {
+  ServiceRoot::setCustomDatabaseData(data);
+
   m_network->setService(GreaderServiceRoot::Service(data[QSL("service")].toInt()));
   m_network->setUsername(data[QSL("username")].toString());
   m_network->setPassword(TextFactory::decrypt(data[QSL("password")].toString()));

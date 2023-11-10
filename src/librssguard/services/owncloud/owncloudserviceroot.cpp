@@ -135,7 +135,7 @@ RootItem* OwnCloudServiceRoot::obtainNewTreeForSyncIn() const {
 }
 
 QVariantHash OwnCloudServiceRoot::customDatabaseData() const {
-  QVariantHash data;
+  QVariantHash data = ServiceRoot::customDatabaseData();
 
   data[QSL("auth_username")] = m_network->authUsername();
   data[QSL("auth_password")] = TextFactory::encrypt(m_network->authPassword());
@@ -148,6 +148,8 @@ QVariantHash OwnCloudServiceRoot::customDatabaseData() const {
 }
 
 void OwnCloudServiceRoot::setCustomDatabaseData(const QVariantHash& data) {
+  ServiceRoot::setCustomDatabaseData(data);
+
   m_network->setAuthUsername(data[QSL("auth_username")].toString());
   m_network->setAuthPassword(TextFactory::decrypt(data[QSL("auth_password")].toString()));
   m_network->setUrl(data[QSL("url")].toString());

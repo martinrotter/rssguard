@@ -71,11 +71,11 @@ void BaseToastNotification::setupTimedClosing() {
 }
 
 bool BaseToastNotification::eventFilter(QObject* watched, QEvent* event) {
-  if (event->type() == QEvent::Type::Enter) {
+  if (watched == this && event->type() == QEvent::Type::Enter) {
     stopTimedClosing();
   }
 
-  if (event->type() == QEvent::Type::Leave) {
+  if (watched == this && event->type() == QEvent::Type::Leave) {
     setupTimedClosing();
   }
 

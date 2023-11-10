@@ -227,7 +227,7 @@ void TtRssServiceRoot::saveAllCachedData(bool ignore_errors) {
 }
 
 QVariantHash TtRssServiceRoot::customDatabaseData() const {
-  QVariantHash data;
+  QVariantHash data = ServiceRoot::customDatabaseData();
 
   data[QSL("username")] = m_network->username();
   data[QSL("password")] = TextFactory::encrypt(m_network->password());
@@ -244,6 +244,8 @@ QVariantHash TtRssServiceRoot::customDatabaseData() const {
 }
 
 void TtRssServiceRoot::setCustomDatabaseData(const QVariantHash& data) {
+  ServiceRoot::setCustomDatabaseData(data);
+
   m_network->setUsername(data[QSL("username")].toString());
   m_network->setPassword(TextFactory::decrypt(data[QSL("password")].toString()));
   m_network->setAuthIsUsed(data[QSL("auth_protected")].toBool());
