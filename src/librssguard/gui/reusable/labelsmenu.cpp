@@ -78,13 +78,13 @@ void LabelsMenu::changeLabelAssignment(Qt::CheckState state) {
   if (origin != nullptr) {
     if (state == Qt::CheckState::Checked) {
       // Assign this label to selected messages.
-      for (const auto& msg : qAsConst(m_messages)) {
+      for (const auto& msg : std::as_const(m_messages)) {
         origin->label()->assignToMessage(msg);
       }
     }
     else if (state == Qt::CheckState::Unchecked) {
       // Remove label from selected messages.
-      for (const auto& msg : qAsConst(m_messages)) {
+      for (const auto& msg : std::as_const(m_messages)) {
         origin->label()->deassignFromMessage(msg);
       }
     }

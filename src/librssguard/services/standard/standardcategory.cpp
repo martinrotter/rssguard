@@ -64,7 +64,7 @@ bool StandardCategory::removeItself() {
   // from the database.
   auto chi = childItems();
 
-  for (RootItem* child : qAsConst(chi)) {
+  for (RootItem* child : std::as_const(chi)) {
     if (child->kind() == RootItem::Kind::Category) {
       children_removed &= qobject_cast<StandardCategory*>(child)->removeItself();
     }

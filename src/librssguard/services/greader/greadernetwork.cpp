@@ -663,11 +663,11 @@ RootItem* GreaderNetwork::decodeTagsSubscriptions(const QString& categories,
     // We need to process subscription list first and extract categories.
     json = QJsonDocument::fromJson(feeds.toUtf8()).object()[QSL("subscriptions")].toArray();
 
-    for (const QJsonValue& feed : qAsConst(json)) {
+    for (const QJsonValue& feed : std::as_const(json)) {
       auto subscription = feed.toObject();
       auto json_cats = subscription[QSL("categories")].toArray();
 
-      for (const QJsonValue& cat : qAsConst(json_cats)) {
+      for (const QJsonValue& cat : std::as_const(json_cats)) {
         auto cat_obj = cat.toObject();
         auto cat_id = cat_obj[QSL("id")].toString();
 
@@ -687,7 +687,7 @@ RootItem* GreaderNetwork::decodeTagsSubscriptions(const QString& categories,
   json = QJsonDocument::fromJson(categories.toUtf8()).object()[QSL("tags")].toArray();
   cats.insert(QString(), parent);
 
-  for (const QJsonValue& obj : qAsConst(json)) {
+  for (const QJsonValue& obj : std::as_const(json)) {
     auto label = obj.toObject();
     QString label_id = label[QSL("id")].toString();
 
@@ -727,7 +727,7 @@ RootItem* GreaderNetwork::decodeTagsSubscriptions(const QString& categories,
 
   json = QJsonDocument::fromJson(feeds.toUtf8()).object()[QSL("subscriptions")].toArray();
 
-  for (const QJsonValue& obj : qAsConst(json)) {
+  for (const QJsonValue& obj : std::as_const(json)) {
     auto subscription = obj.toObject();
     QString id = subscription[QSL("id")].toString();
     QString title = subscription[QSL("title")].toString();
@@ -739,7 +739,7 @@ RootItem* GreaderNetwork::decodeTagsSubscriptions(const QString& categories,
       continue;
     }
 
-    for (const QJsonValue& cat : qAsConst(assigned_categories)) {
+    for (const QJsonValue& cat : std::as_const(assigned_categories)) {
       QString potential_id = cat.toObject()[QSL("id")].toString();
 
       if (potential_id.contains(QSL("/label/"))) {

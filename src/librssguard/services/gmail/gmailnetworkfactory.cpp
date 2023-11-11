@@ -531,7 +531,7 @@ bool GmailNetworkFactory::fillFullMessage(Message& msg, const QJsonObject& json,
   QHash<QString, QString> headers;
   auto json_headers = json[QSL("payload")].toObject()[QSL("headers")].toArray();
 
-  for (const QJsonValue& header : qAsConst(json_headers)) {
+  for (const QJsonValue& header : std::as_const(json_headers)) {
     headers.insert(header.toObject()[QSL("name")].toString(), header.toObject()["value"].toString());
   }
 
@@ -541,7 +541,7 @@ bool GmailNetworkFactory::fillFullMessage(Message& msg, const QJsonObject& json,
   auto active_labels = m_service->labelsNode() != nullptr ? m_service->labelsNode()->labels() : QList<Label*>();
   auto active_labels_linq = boolinq::from(active_labels);
 
-  for (const QVariant& label : qAsConst(labelids)) {
+  for (const QVariant& label : std::as_const(labelids)) {
     QString lbl = label.toString();
 
     if (lbl == QSL(GMAIL_SYSTEM_LABEL_UNREAD)) {
@@ -587,7 +587,7 @@ bool GmailNetworkFactory::fillFullMessage(Message& msg, const QJsonObject& json,
     auto this_part = parts_to_process.takeFirst();
     auto nested_parts = this_part[QSL("parts")].toArray();
 
-    for (const QJsonValue& prt : qAsConst(nested_parts)) {
+    for (const QJsonValue& prt : std::as_const(nested_parts)) {
       auto prt_obj = prt.toObject();
 
       parts.append(prt_obj);
@@ -599,7 +599,7 @@ bool GmailNetworkFactory::fillFullMessage(Message& msg, const QJsonObject& json,
     parts.prepend(json[QSL("payload")].toObject());
   }
 
-  for (const QJsonObject& part : qAsConst(parts)) {
+  for (const QJsonObject& part : std::as_const(parts)) {
     QJsonObject body = part[QSL("body")].toObject();
     QString mime = part[QSL("mimeType")].toString();
     QString filename = part[QSL("filename")].toString();
@@ -743,7 +743,7 @@ QList<Message> GmailNetworkFactory::obtainAndDecodeFullMessages(const QStringLis
 
     if (res.m_networkError == QNetworkReply::NetworkError::NoError) {
       // We parse each part of HTTP response (it contains HTTP headers and payload with msg full data).
-      for (const HttpResponse& part : qAsConst(output)) {
+      for (const HttpResponse& part : std::as_const(output)) {
         QJsonObject msg_doc = QJsonDocument::fromJson(part.body().toUtf8()).object();
         QString msg_id = msg_doc[QSL("id")].toString();
 

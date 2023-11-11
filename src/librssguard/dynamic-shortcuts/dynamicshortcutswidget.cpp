@@ -41,7 +41,7 @@ bool DynamicShortcutsWidget::areShortcutsUnique() const {
 }
 
 void DynamicShortcutsWidget::updateShortcuts() {
-  for (const ActionBinding& binding : qAsConst(m_actionBindings)) {
+  for (const ActionBinding& binding : std::as_const(m_actionBindings)) {
     binding.first->setShortcut(binding.second->shortcut());
   }
 }

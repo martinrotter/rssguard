@@ -42,7 +42,7 @@ FormAddEditEmail::FormAddEditEmail(GmailServiceRoot* root, QWidget* parent)
   m_possibleRecipients = DatabaseQueries::getAllGmailRecipients(db, m_root->accountId());
   auto ctrls = recipientControls();
 
-  for (auto* rec : qAsConst(ctrls)) {
+  for (auto* rec : std::as_const(ctrls)) {
     rec->setPossibleRecipients(m_possibleRecipients);
   }
 }

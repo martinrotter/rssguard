@@ -388,7 +388,7 @@ bool StandardServiceRoot::mergeImportExportModel(FeedsImportExportModel* model,
     RootItem* source_parent = new_parents.pop();
     auto sour_chi = source_parent->childItems();
 
-    for (RootItem* source_item : qAsConst(sour_chi)) {
+    for (RootItem* source_item : std::as_const(sour_chi)) {
       if (!model->sourceModel()->isItemChecked(source_item)) {
         // We can skip this item, because it is not checked and should not be imported.
         // NOTE: All descendants are thus skipped too.
@@ -420,7 +420,7 @@ bool StandardServiceRoot::mergeImportExportModel(FeedsImportExportModel* model,
           RootItem* existing_category = nullptr;
           auto tar_chi = target_parent->childItems();
 
-          for (RootItem* child : qAsConst(tar_chi)) {
+          for (RootItem* child : std::as_const(tar_chi)) {
             if (child->kind() == RootItem::Kind::Category && child->title() == new_category_title) {
               existing_category = child;
             }

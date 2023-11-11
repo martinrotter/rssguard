@@ -62,7 +62,7 @@ void NotificationFactory::save(const QList<Notification>& new_notifications, Set
   settings->remove(GROUP(Notifications));
   m_notifications = new_notifications;
 
-  for (const auto& n : qAsConst(m_notifications)) {
+  for (const auto& n : std::as_const(m_notifications)) {
     settings->setValue(GROUP(Notifications),
                        QString::number(int(n.event())),
                        QStringList{n.balloonEnabled() ? QSL("1") : QSL("0"),

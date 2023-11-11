@@ -33,7 +33,7 @@ void NetworkUrlInterceptor::interceptRequest(QWebEngineUrlRequestInfo& info) {
 
   // NOTE: Here we can add custom headers for each webengine request, for example "User-Agent".
 
-  for (UrlInterceptor* interceptor : qAsConst(m_interceptors)) {
+  for (UrlInterceptor* interceptor : std::as_const(m_interceptors)) {
     interceptor->interceptRequest(info);
   }
 }

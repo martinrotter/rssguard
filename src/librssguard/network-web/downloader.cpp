@@ -315,7 +315,7 @@ QList<HttpResponse> Downloader::decodeMultipartAnswer(QNetworkReply* reply) {
                                       QString::SplitBehavior::SkipEmptyParts);
 #endif
 
-    for (const QString& header_line : qAsConst(header_lines)) {
+    for (const QString& header_line : std::as_const(header_lines)) {
       int index_colon = header_line.indexOf(QL1C(':'));
 
       if (index_colon > 0) {

@@ -150,7 +150,7 @@ QStringList IconFactory::installedIconThemes() const {
                              QDir::SortFlag::Time);
 
     // Iterate all icon themes in this directory.
-    for (const QFileInfo& icon_theme_path : qAsConst(icon_paths)) {
+    for (const QFileInfo& icon_theme_path : std::as_const(icon_paths)) {
       QDir icon_theme_dir = QDir(icon_theme_path.absoluteFilePath());
 
       if (icon_theme_dir.exists(filters_index.at(0))) {

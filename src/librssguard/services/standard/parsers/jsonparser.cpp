@@ -202,7 +202,7 @@ QList<Enclosure> JsonParser::jsonMessageEnclosures(const QJsonObject& msg_elemen
   auto json_att = msg_element[QSL("attachments")].toArray();
   QList<Enclosure> enc;
 
-  for (const QJsonValue& att : qAsConst(json_att)) {
+  for (const QJsonValue& att : std::as_const(json_att)) {
     QJsonObject att_obj = att.toObject();
 
     enc.append(Enclosure(att_obj[QSL("url")].toString(), att_obj[QSL("mime_type")].toString()));

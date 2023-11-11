@@ -28,7 +28,7 @@ QList<Enclosure> Enclosures::decodeEnclosuresFromString(const QString& enclosure
   QList<Enclosure> enclosures;
   enclosures.reserve(enc.size());
 
-  for (const QString& single_enclosure : qAsConst(enc)) {
+  for (const QString& single_enclosure : std::as_const(enc)) {
     Enclosure enclosure;
 
     if (single_enclosure.contains(ECNLOSURES_INNER_SEPARATOR)) {

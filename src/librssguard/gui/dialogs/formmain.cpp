@@ -306,7 +306,7 @@ void FormMain::updateAddItemMenu() {
 
   auto srts = qApp->feedReader()->feedsModel()->serviceRoots();
 
-  for (ServiceRoot* activated_root : qAsConst(srts)) {
+  for (ServiceRoot* activated_root : std::as_const(srts)) {
     QMenu* root_menu = new QMenu(activated_root->title(), m_ui->m_menuAddItem);
 
     root_menu->setIcon(activated_root->icon());
@@ -359,7 +359,7 @@ void FormMain::updateRecycleBinMenu() {
 
   auto srts = qApp->feedReader()->feedsModel()->serviceRoots();
 
-  for (const ServiceRoot* activated_root : qAsConst(srts)) {
+  for (const ServiceRoot* activated_root : std::as_const(srts)) {
     QMenu* root_menu = new QMenu(activated_root->title(), m_ui->m_menuRecycleBin);
 
     root_menu->setIcon(activated_root->icon());

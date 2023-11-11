@@ -20,7 +20,7 @@ void Category::updateCounts(bool including_total_count) {
   QList<Feed*> feeds;
   auto str = childItems();
 
-  for (RootItem* child : qAsConst(str)) {
+  for (RootItem* child : std::as_const(str)) {
     if (child->kind() == RootItem::Kind::Feed) {
       feeds.append(child->toFeed());
     }

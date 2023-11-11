@@ -46,7 +46,7 @@ void AccountCheckModel::checkAllItems() {
   if (m_rootItem != nullptr) {
     auto chi = m_rootItem->childItems();
 
-    for (RootItem* root_child : qAsConst(chi)) {
+    for (RootItem* root_child : std::as_const(chi)) {
       if (root_child->kind() == RootItem::Kind::Feed || root_child->kind() == RootItem::Kind::Category) {
         setItemChecked(root_child, Qt::CheckState::Checked);
       }
@@ -58,7 +58,7 @@ void AccountCheckModel::uncheckAllItems() {
   if (m_rootItem != nullptr) {
     auto chi = m_rootItem->childItems();
 
-    for (RootItem* root_child : qAsConst(chi)) {
+    for (RootItem* root_child : std::as_const(chi)) {
       if (root_child->kind() == RootItem::Kind::Feed || root_child->kind() == RootItem::Kind::Category) {
         setData(indexForItem(root_child), Qt::CheckState::Unchecked, Qt::ItemDataRole::CheckStateRole);
       }
@@ -219,7 +219,7 @@ bool AccountCheckModel::setData(const QModelIndex& index, const QVariant& value,
     // Set new data for all descendants of this actual item.
     auto chi = item->childItems();
 
-    for (RootItem* child : qAsConst(chi)) {
+    for (RootItem* child : std::as_const(chi)) {
       setData(indexForItem(child), value, Qt::CheckStateRole);
     }
 
@@ -238,7 +238,7 @@ bool AccountCheckModel::setData(const QModelIndex& index, const QVariant& value,
       bool all_unchecked = true;
       auto childr = item->childItems();
 
-      for (RootItem* child_of_parent : qAsConst(childr)) {
+      for (RootItem* child_of_parent : std::as_const(childr)) {
         if (m_checkStates.contains(child_of_parent)) {
           all_checked &= m_checkStates[child_of_parent] == Qt::CheckState::Checked;
           all_unchecked &= m_checkStates[child_of_parent] == Qt::CheckState::Unchecked;

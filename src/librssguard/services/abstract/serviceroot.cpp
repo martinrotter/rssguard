@@ -231,7 +231,7 @@ void ServiceRoot::updateCounts(bool including_total_count) {
   QList<Feed*> feeds;
   auto str = getSubTree();
 
-  for (RootItem* child : qAsConst(str)) {
+  for (RootItem* child : std::as_const(str)) {
     if (child->kind() == RootItem::Kind::Feed) {
       feeds.append(child->toFeed());
     }
@@ -306,7 +306,7 @@ void ServiceRoot::removeOldAccountFromDatabase(bool delete_messages_too, bool de
 void ServiceRoot::cleanAllItemsFromModel(bool clean_labels_too) {
   auto chi = childItems();
 
-  for (RootItem* top_level_item : qAsConst(chi)) {
+  for (RootItem* top_level_item : std::as_const(chi)) {
     if (top_level_item->kind() != RootItem::Kind::Bin && top_level_item->kind() != RootItem::Kind::Important &&
         top_level_item->kind() != RootItem::Kind::Unread && top_level_item->kind() != RootItem::Kind::Probes &&
         top_level_item->kind() != RootItem::Kind::Labels) {
@@ -317,7 +317,7 @@ void ServiceRoot::cleanAllItemsFromModel(bool clean_labels_too) {
   if (labelsNode() != nullptr && clean_labels_too) {
     auto lbl_chi = labelsNode()->childItems();
 
-    for (RootItem* lbl : qAsConst(lbl_chi)) {
+    for (RootItem* lbl : std::as_const(lbl_chi)) {
       requestItemRemoval(lbl);
     }
   }
@@ -479,7 +479,7 @@ QMap<QString, QVariantMap> ServiceRoot::storeCustomFeedsData() {
   QMap<QString, QVariantMap> custom_data;
   auto str = getSubTreeFeeds();
 
-  for (const Feed* feed : qAsConst(str)) {
+  for (const Feed* feed : std::as_const(str)) {
     QVariantMap feed_custom_data;
 
     // TODO: This could potentially call Feed::customDatabaseData() and append it
@@ -510,7 +510,7 @@ QMap<QString, QVariantMap> ServiceRoot::storeCustomCategoriesData() {
   QMap<QString, QVariantMap> custom_data;
   auto str = getSubTreeCategories();
 
-  for (const Category* cat : qAsConst(str)) {
+  for (const Category* cat : std::as_const(str)) {
     QVariantMap cat_custom_data;
 
     // NOTE: This is here specifically to be able to restore custom sort order.
@@ -666,7 +666,7 @@ void ServiceRoot::syncIn() {
 
     auto chi = new_tree->childItems();
 
-    for (RootItem* top_level_item : qAsConst(chi)) {
+    for (RootItem* top_level_item : std::as_const(chi)) {
       if (top_level_item->kind() != Kind::Labels) {
         top_level_item->setParent(nullptr);
         requestItemReassignment(top_level_item, this);
@@ -676,7 +676,7 @@ void ServiceRoot::syncIn() {
         if (labelsNode() != nullptr) {
           auto lbl_chi = top_level_item->childItems();
 
-          for (RootItem* new_lbl : qAsConst(lbl_chi)) {
+          for (RootItem* new_lbl : std::as_const(lbl_chi)) {
             new_lbl->setParent(nullptr);
             requestItemReassignment(new_lbl, labelsNode());
           }
@@ -736,7 +736,7 @@ QStringList ServiceRoot::customIDSOfMessagesForItem(RootItem* item, ReadStatus t
       case RootItem::Kind::Category: {
         auto chi = item->childItems();
 
-        for (RootItem* child : qAsConst(chi)) {
+        for (RootItem* child : std::as_const(chi)) {
           list.append(customIDSOfMessagesForItem(child, target_read));
         }
 

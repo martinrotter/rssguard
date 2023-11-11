@@ -353,7 +353,7 @@ void AdBlockManager::updateUnifiedFiltersFileAndStartServer() {
   auto filter_lists = filterLists();
 
   // Download filters one by one and append.
-  for (const QString& filter_list_url : qAsConst(filter_lists)) {
+  for (const QString& filter_list_url : std::as_const(filter_lists)) {
     if (filter_list_url.simplified().isEmpty()) {
       continue;
     }

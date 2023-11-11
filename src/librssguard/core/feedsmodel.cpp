@@ -234,7 +234,7 @@ QList<ServiceRoot*> FeedsModel::serviceRoots() const {
   QList<ServiceRoot*> roots;
   auto ch = m_rootItem->childItems();
 
-  for (RootItem* root : qAsConst(ch)) {
+  for (RootItem* root : std::as_const(ch)) {
     if (root->kind() == RootItem::Kind::ServiceRoot) {
       roots.append(root->toServiceRoot());
     }
@@ -248,7 +248,7 @@ QList<Feed*> FeedsModel::feedsForScheduledUpdate(bool auto_update_now) {
   auto stf = m_rootItem->getSubTreeFeeds();
   auto cur_date = QDateTime::currentDateTimeUtc();
 
-  for (Feed* feed : qAsConst(stf)) {
+  for (Feed* feed : std::as_const(stf)) {
     switch (feed->autoUpdateType()) {
       case Feed::AutoUpdateType::DontAutoUpdate:
         // Do not auto-update this feed ever.
@@ -432,7 +432,7 @@ bool FeedsModel::restoreAllBins() {
   bool result = true;
   auto srts = serviceRoots();
 
-  for (ServiceRoot* root : qAsConst(srts)) {
+  for (ServiceRoot* root : std::as_const(srts)) {
     RecycleBin* bin_of_root = root->recycleBin();
 
     if (bin_of_root != nullptr) {
@@ -447,7 +447,7 @@ bool FeedsModel::emptyAllBins() {
   bool result = true;
   auto srts = serviceRoots();
 
-  for (ServiceRoot* root : qAsConst(srts)) {
+  for (ServiceRoot* root : std::as_const(srts)) {
     RecycleBin* bin_of_root = root->recycleBin();
 
     if (bin_of_root != nullptr) {
@@ -480,7 +480,7 @@ void FeedsModel::loadActivatedServiceAccounts() {
   auto serv = qApp->feedReader()->feedServices();
 
   // Iterate all globally available feed "service plugins".
-  for (const ServiceEntryPoint* entry_point : qAsConst(serv)) {
+  for (const ServiceEntryPoint* entry_point : std::as_const(serv)) {
     // Load all stored root nodes from the entry point and add those to the model.
     QList<ServiceRoot*> roots = entry_point->initializeSubtree();
 
@@ -499,7 +499,7 @@ void FeedsModel::loadActivatedServiceAccounts() {
 void FeedsModel::stopServiceAccounts() {
   auto serv = serviceRoots();
 
-  for (ServiceRoot* account : qAsConst(serv)) {
+  for (ServiceRoot* account : std::as_const(serv)) {
     account->stop();
   }
 }

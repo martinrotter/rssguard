@@ -112,7 +112,7 @@ void SettingsLocalization::loadSettings() {
                                   tr("Big thanks to all translators!"));
   }
 
-  for (const Language& language : qAsConst(langs)) {
+  for (const Language& language : std::as_const(langs)) {
     auto* item = new QTreeWidgetItem(m_ui->m_treeLanguages);
     int perc_translated = percentages_langs.value(language.m_code);
 

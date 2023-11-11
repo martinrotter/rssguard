@@ -221,7 +221,7 @@ void FormMessageFiltersManager::removeSelectedFilter() {
 void FormMessageFiltersManager::loadFilters() {
   auto flt = m_reader->messageFilters();
 
-  for (auto* fltr : qAsConst(flt)) {
+  for (auto* fltr : std::as_const(flt)) {
     auto* it = new QListWidgetItem(fltr->name(), m_ui.m_listFilters);
 
     it->setData(Qt::ItemDataRole::UserRole, QVariant::fromValue<MessageFilter*>(fltr));
@@ -421,7 +421,7 @@ void FormMessageFiltersManager::processCheckedFeeds() {
         }
 
         // Process changed labels.
-        for (Label* lbl : qAsConst(msg_backup.m_assignedLabels)) {
+        for (Label* lbl : std::as_const(msg_backup.m_assignedLabels)) {
           if (!msg->m_assignedLabels.contains(lbl)) {
             // Label is not there anymore, it was deassigned.
             lbl->deassignFromMessage(*msg);
@@ -431,7 +431,7 @@ void FormMessageFiltersManager::processCheckedFeeds() {
           }
         }
 
-        for (Label* lbl : qAsConst(msg->m_assignedLabels)) {
+        for (Label* lbl : std::as_const(msg->m_assignedLabels)) {
           if (!msg_backup.m_assignedLabels.contains(lbl)) {
             // Label is in new message, but is not in old message, it
             // was newly assigned.
@@ -504,7 +504,7 @@ void FormMessageFiltersManager::loadFilterFeedAssignments(MessageFilter* filter,
   m_loadingFilter = true;
   auto stf = account->getSubTreeFeeds();
 
-  for (auto* feed : qAsConst(stf)) {
+  for (auto* feed : std::as_const(stf)) {
     if (feed->messageFilters().contains(filter)) {
       m_feedsModel->sourceModel()->setItemChecked(feed, Qt::CheckState::Checked);
     }
@@ -578,7 +578,7 @@ void FormMessageFiltersManager::showFilter(MessageFilter* filter) {
 }
 
 void FormMessageFiltersManager::loadAccounts() {
-  for (auto* acc : qAsConst(m_accounts)) {
+  for (auto* acc : std::as_const(m_accounts)) {
     m_ui.m_cmbAccounts->addItem(acc->icon(), acc->title(), QVariant::fromValue(acc));
   }
 }

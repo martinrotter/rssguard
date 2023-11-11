@@ -1812,7 +1812,7 @@ bool DatabaseQueries::deleteAccount(const QSqlDatabase& db, ServiceRoot* account
           << QSL("DELETE FROM Labels WHERE account_id = :account_id;")
           << QSL("DELETE FROM Accounts WHERE id = :account_id;");
 
-  for (const QString& q : qAsConst(queries)) {
+  for (const QString& q : std::as_const(queries)) {
     query.prepare(q);
     query.bindValue(QSL(":account_id"), account->accountId());
 
@@ -2045,7 +2045,7 @@ void DatabaseQueries::storeAccountTree(const QSqlDatabase& db, RootItem* tree_ro
   // Iterate all children.
   auto str = tree_root->getSubTree();
 
-  for (RootItem* child : qAsConst(str)) {
+  for (RootItem* child : std::as_const(str)) {
     if (child->kind() == RootItem::Kind::Category) {
       createOverwriteCategory(db, child->toCategory(), account_id, child->parent()->id());
     }
@@ -2056,7 +2056,7 @@ void DatabaseQueries::storeAccountTree(const QSqlDatabase& db, RootItem* tree_ro
       // Add all labels.
       auto ch = child->childItems();
 
-      for (RootItem* lbl : qAsConst(ch)) {
+      for (RootItem* lbl : std::as_const(ch)) {
         Label* label = lbl->toLabel();
 
         createLabel(db, label, account_id);

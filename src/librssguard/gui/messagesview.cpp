@@ -423,7 +423,7 @@ void MessagesView::initializeContextMenu() {
 
   menu_ext_tools->setIcon(qApp->icons()->fromTheme(QSL("document-open")));
 
-  for (const ExternalTool& tool : qAsConst(tools)) {
+  for (const ExternalTool& tool : std::as_const(tools)) {
     QAction* act_tool = new QAction(QFileInfo(tool.executable()).fileName(), menu_ext_tools);
 
     act_tool->setIcon(icon_provider.icon(QFileInfo(tool.executable())));
@@ -612,7 +612,7 @@ void MessagesView::changeFilter(MessagesProxyModel::MessageListFilter filter) {
 void MessagesView::openSelectedSourceMessagesExternally() {
   auto rws = selectionModel()->selectedRows();
 
-  for (const QModelIndex& index : qAsConst(rws)) {
+  for (const QModelIndex& index : std::as_const(rws)) {
     QString link = m_sourceModel->messageAt(m_proxyModel->mapToSource(index).row())
                      .m_url.replace(QRegularExpression(QSL("[\\t\\n]")), QString());
 
@@ -637,7 +637,7 @@ void MessagesView::openSelectedMessagesInternally() {
   QList<Message> messages;
   auto rws = selectionModel()->selectedRows();
 
-  for (const QModelIndex& index : qAsConst(rws)) {
+  for (const QModelIndex& index : std::as_const(rws)) {
     messages << m_sourceModel->messageAt(m_proxyModel->mapToSource(index).row());
   }
 
@@ -869,7 +869,7 @@ void MessagesView::openSelectedMessagesWithExternalTool() {
     auto tool = sndr->data().value<ExternalTool>();
     auto rws = selectionModel()->selectedRows();
 
-    for (const QModelIndex& index : qAsConst(rws)) {
+    for (const QModelIndex& index : std::as_const(rws)) {
       const QString link =
         m_sourceModel->data(m_proxyModel->mapToSource(index).row(), MSG_DB_URL_INDEX, Qt::ItemDataRole::EditRole)
           .toString()

@@ -58,7 +58,7 @@ ServiceEntryPoint* FormAddAccount::selectedEntryPoint() const {
 void FormAddAccount::loadEntryPoints() {
   int classic_row = 0, i = 0;
 
-  for (const ServiceEntryPoint* entry_point : qAsConst(m_entryPoints)) {
+  for (const ServiceEntryPoint* entry_point : std::as_const(m_entryPoints)) {
     if (entry_point->code() == QSL(SERVICE_CODE_STD_RSS)) {
       classic_row = i;
     }

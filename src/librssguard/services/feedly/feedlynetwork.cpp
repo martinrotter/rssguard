@@ -413,7 +413,7 @@ QList<Message> FeedlyNetwork::decodeStreamContents(const QByteArray& stream_cont
 
   auto items = nested_items ? json.object()[QSL("items")].toArray() : json.array();
 
-  for (const QJsonValue& entry : qAsConst(items)) {
+  for (const QJsonValue& entry : std::as_const(items)) {
     const QJsonObject& entry_obj = entry.toObject();
     Message message;
 
@@ -451,7 +451,7 @@ QList<Message> FeedlyNetwork::decodeStreamContents(const QByteArray& stream_cont
 
     auto enclosures = entry_obj[QSL("enclosure")].toArray();
 
-    for (const QJsonValue& enc : qAsConst(enclosures)) {
+    for (const QJsonValue& enc : std::as_const(enclosures)) {
       const QJsonObject& enc_obj = enc.toObject();
       const QString& enc_href = enc_obj[QSL("href")].toString();
 
@@ -464,7 +464,7 @@ QList<Message> FeedlyNetwork::decodeStreamContents(const QByteArray& stream_cont
 
     auto tags = entry_obj[QSL("tags")].toArray();
 
-    for (const QJsonValue& tag : qAsConst(tags)) {
+    for (const QJsonValue& tag : std::as_const(tags)) {
       const QJsonObject& tag_obj = tag.toObject();
       const QString& tag_id = tag_obj[QSL("id")].toString();
 
@@ -532,7 +532,7 @@ RootItem* FeedlyNetwork::decodeCollections(const QByteArray& json,
   QList<QString> used_feeds;
   auto coll = doc.array();
 
-  for (const QJsonValue& cat : qAsConst(coll)) {
+  for (const QJsonValue& cat : std::as_const(coll)) {
     QJsonObject cat_obj = cat.toObject();
     auto* category = new Category(parent);
 
@@ -541,7 +541,7 @@ RootItem* FeedlyNetwork::decodeCollections(const QByteArray& json,
 
     auto feeds = cat[QSL("feeds")].toArray();
 
-    for (const QJsonValue& fee : qAsConst(feeds)) {
+    for (const QJsonValue& fee : std::as_const(feeds)) {
       QJsonObject fee_obj = fee.toObject();
 
       if (used_feeds.contains(fee_obj[QSL("id")].toString())) {
@@ -663,7 +663,7 @@ QList<RootItem*> FeedlyNetwork::tags() {
   QList<RootItem*> lbls;
   auto tags = json.array();
 
-  for (const QJsonValue& tag : qAsConst(tags)) {
+  for (const QJsonValue& tag : std::as_const(tags)) {
     const QJsonObject& tag_obj = tag.toObject();
     QString name_id = tag_obj[QSL("id")].toString();
 

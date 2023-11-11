@@ -202,7 +202,7 @@ void FeedReader::loadSavedMessageFilters() {
   m_messageFilters =
     DatabaseQueries::getMessageFilters(qApp->database()->driver()->connection(metaObject()->className()));
 
-  for (auto* filter : qAsConst(m_messageFilters)) {
+  for (auto* filter : std::as_const(m_messageFilters)) {
     filter->setParent(this);
   }
 }

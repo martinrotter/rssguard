@@ -82,7 +82,7 @@ void CookieJar::loadCookies() {
   Settings* sett = qApp->settings();
   auto keys = sett->allKeys(GROUP(Cookies));
 
-  for (const QString& cookie_key : qAsConst(keys)) {
+  for (const QString& cookie_key : std::as_const(keys)) {
     QByteArray encoded = sett->password(GROUP(Cookies), cookie_key, {}).toByteArray();
 
     if (!encoded.isEmpty()) {

@@ -1151,7 +1151,7 @@ void Application::parseCmdArgumentsFromOtherInstance(const QString& message) {
 
   messages = cmd_parser.positionalArguments();
 
-  for (const QString& msg : qAsConst(messages)) {
+  for (const QString& msg : std::as_const(messages)) {
     // Application was running, and someone wants to add new feed.
     ServiceRoot* rt = boolinq::from(feedReader()->feedsModel()->serviceRoots()).firstOrDefault([](ServiceRoot* root) {
       return root->supportsFeedAdding();

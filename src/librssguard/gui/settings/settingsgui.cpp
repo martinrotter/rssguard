@@ -165,7 +165,7 @@ void SettingsGui::loadSettings() {
   const QString current_theme = qApp->icons()->currentIconTheme();
   auto icons = qApp->icons()->installedIconThemes();
 
-  for (const QString& icon_theme_name : qAsConst(icons)) {
+  for (const QString& icon_theme_name : std::as_const(icons)) {
     if (icon_theme_name == QSL(APP_NO_THEME)) {
       // Add just "no theme" on other systems.
       //: Label for disabling icon theme.
@@ -201,7 +201,7 @@ void SettingsGui::loadSettings() {
   // Load styles.
   auto styles = QStyleFactory::keys();
 
-  for (const QString& style_name : qAsConst(styles)) {
+  for (const QString& style_name : std::as_const(styles)) {
     m_ui->m_cmbStyles->addItem(style_name);
   }
 
@@ -218,7 +218,7 @@ void SettingsGui::loadSettings() {
   const QString selected_skin = qApp->skins()->selectedSkinName();
   auto skins = qApp->skins()->installedSkins();
 
-  for (const Skin& skin : qAsConst(skins)) {
+  for (const Skin& skin : std::as_const(skins)) {
     QTreeWidgetItem* new_item =
       new QTreeWidgetItem({skin.m_visibleName,
                            skin.m_author,

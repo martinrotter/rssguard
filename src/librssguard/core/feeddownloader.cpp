@@ -353,14 +353,14 @@ void FeedDownloader::updateOneFeed(ServiceRoot* acc,
         // and store the fact to server (of synchronized) and local DB later.
         // This is mainly because articles might not even be in DB yet.
         // So first insert articles, then update their label assignments etc.
-        for (Label* lbl : qAsConst(msg_original.m_assignedLabels)) {
+        for (Label* lbl : std::as_const(msg_original.m_assignedLabels)) {
           if (!msg_tweaked_by_filter->m_assignedLabels.contains(lbl)) {
             // Label is not there anymore, it was deassigned.
             msg_tweaked_by_filter->m_deassignedLabelsByFilter << lbl;
           }
         }
 
-        for (Label* lbl : qAsConst(msg_tweaked_by_filter->m_assignedLabels)) {
+        for (Label* lbl : std::as_const(msg_tweaked_by_filter->m_assignedLabels)) {
           if (!msg_original.m_assignedLabels.contains(lbl)) {
             // Label is in new message, but is not in old message, it
             // was newly assigned.
