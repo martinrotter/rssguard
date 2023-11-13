@@ -1,3 +1,17 @@
+4.5.4
+-----
+
+Added:
+* Toast notifications now have configurable width, margins and opacity. Couple of related GUI fixes are also there. (#1125)
+* Standard RSS/ATOM account now can be renamed. (#824)
+* Aux nodes "Important", "Probes", "Unread" and "Labels" now can be disabled per-account separately in account settings dialog. (#584)
+* Toast notifications can be closed with right mouse button click.
+* Google Reader API plugin now offers OPML import and export function. See context menu for it.
+
+Fixed:
+* Updated translations.
+* Fixed integration with Miniflux via Google Reader API plugin. This requires additional testing. (#837)
+
 4.5.3
 -----
 
