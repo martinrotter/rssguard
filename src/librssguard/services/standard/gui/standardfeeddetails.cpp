@@ -375,9 +375,6 @@ void StandardFeedDetails::prepareForNewFeed(RootItem* parent_to_select, const QS
   if (!url.isEmpty()) {
     m_ui.m_txtSource->textEdit()->setPlainText(url);
   }
-  /*else if (Application::clipboard()->mimeData()->hasText()) {
-    m_ui.m_txtSource->textEdit()->setPlainText(Application::clipboard()->text());
-  }*/
 
   m_ui.m_txtSource->setFocus();
   m_ui.m_txtSource->textEdit()->selectAll();

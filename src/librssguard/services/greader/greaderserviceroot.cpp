@@ -37,6 +37,25 @@ FormAccountDetails* GreaderServiceRoot::accountSetupDialog() const {
 }
 
 void GreaderServiceRoot::editItems(const QList<RootItem*>& items) {
+  auto feeds = boolinq::from(items)
+                 .select([](RootItem* it) {
+                   return qobject_cast<Feed*>(it);
+                 })
+                 .where([](Feed* fd) {
+                   return fd != nullptr;
+                 })
+                 .toStdList();
+
+  if (!feeds.empty()) {
+    QScopedPointer<FormGreaderFeedDetails> form_pointer(new FormGreaderFeedDetails(this,
+                                                                                   nullptr,
+                                                                                   {},
+                                                                                   qApp->mainFormWidget()));
+
+    form_pointer->addEditFeed<GreaderFeed>(FROM_STD_LIST(QList<Feed*>, feeds));
+    return;
+  }
+
   if (items.first()->kind() == RootItem::Kind::ServiceRoot) {
     QScopedPointer<FormEditGreaderAccount> p(qobject_cast<FormEditGreaderAccount*>(accountSetupDialog()));
 
