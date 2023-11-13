@@ -16,6 +16,7 @@
 #include "services/abstract/label.h"
 #include "services/abstract/labelsnode.h"
 #include "services/greader/definitions.h"
+#include "services/greader/greaderfeed.h"
 
 #include <QJsonArray>
 #include <QJsonDocument>
@@ -339,6 +340,57 @@ QNetworkReply::NetworkError GreaderNetwork::markMessagesStarred(RootItem::Import
                     importance == RootItem::Importance::Important,
                     msg_custom_ids,
                     proxy);
+}
+
+void GreaderNetwork::subscriptionEdit(const QString& op,
+                                      const QString& stream_id,
+                                      const QString& new_title,
+                                      const QString& set_label,
+                                      const QString& unset_label,
+                                      const QNetworkProxy& proxy) {
+  if (!ensureLogin(proxy)) {
+    throw ApplicationException(tr("login failed"));
+  }
+
+  QString full_url = generateFullUrl(Operations::SubscriptionEdit).arg(op, stream_id);
+
+  if (op == QSL(GREADER_API_EDIT_SUBSCRIPTION_ADD)) {
+    full_url += QSL("&t=%1").arg(new_title);
+
+    if (!set_label.isEmpty()) {
+      full_url += QSL("&a=%1").arg(set_label);
+    }
+  }
+
+  if (op == QSL(GREADER_API_EDIT_SUBSCRIPTION_MODIFY)) {
+    full_url += QSL("&t=%1").arg(new_title);
+
+    if (!set_label.isEmpty()) {
+      full_url += QSL("&a=%1").arg(set_label);
+    }
+    else if (!unset_label.isEmpty()) {
+      full_url += QSL("&r=%1").arg(unset_label);
+    }
+  }
+
+  auto timeout = qApp->settings()->value(GROUP(Feeds), SETTING(Feeds::UpdateTimeout)).toInt();
+
+  QByteArray output;
+  auto result = NetworkFactory::performNetworkOperation(full_url,
+                                                        timeout,
+                                                        {},
+                                                        output,
+                                                        QNetworkAccessManager::Operation::PostOperation,
+                                                        {authHeader()},
+                                                        false,
+                                                        {},
+                                                        {},
+                                                        proxy);
+
+  if (result.m_networkError != QNetworkReply::NetworkError::NoError) {
+    qCriticalNN << LOGSEC_GREADER << "Cannot edit subscription:" << QUOTE_W_SPACE_DOT(result.m_networkError);
+    throw NetworkException(result.m_networkError, output);
+  }
 }
 
 void GreaderNetwork::subscriptionImport(const QByteArray& opml_data, const QNetworkProxy& proxy) {
@@ -749,7 +801,7 @@ RootItem* GreaderNetwork::decodeTagsSubscriptions(const QString& categories,
     }
 
     // We have label (not "state").
-    auto* feed = new Feed();
+    auto* feed = new GreaderFeed();
 
     feed->setDescription(url);
     feed->setSource(url);
@@ -1126,6 +1178,9 @@ QString GreaderNetwork::generateFullUrl(GreaderNetwork::Operations operation) co
 
     case Operations::SubscriptionImport:
       return sanitizedBaseUrl() + QSL(GREADER_API_SUBSCRIPTION_IMPORT);
+
+    case Operations::SubscriptionEdit:
+      return sanitizedBaseUrl() + QSL(GREADER_API_SUBSCRIPTION_EDIT);
 
     case Operations::Token:
       return sanitizedBaseUrl() + QSL(GREADER_API_TOKEN);

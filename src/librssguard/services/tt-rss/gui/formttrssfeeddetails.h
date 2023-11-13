@@ -11,8 +11,10 @@ class AuthenticationDetails;
 
 class FormTtRssFeedDetails : public FormFeedDetails {
   public:
-    explicit FormTtRssFeedDetails(ServiceRoot* service_root, RootItem* parent_to_select = nullptr,
-                                  const QString& url = QString(), QWidget* parent = nullptr);
+    explicit FormTtRssFeedDetails(ServiceRoot* service_root,
+                                  RootItem* parent_to_select = nullptr,
+                                  const QString& url = QString(),
+                                  QWidget* parent = nullptr);
 
   protected slots:
     virtual void apply();

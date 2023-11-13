@@ -26,7 +26,8 @@ class GreaderNetwork : public QObject {
       ItemIds,
       ItemContents,
       SubscriptionExport,
-      SubscriptionImport
+      SubscriptionImport,
+      SubscriptionEdit
     };
 
     explicit GreaderNetwork(QObject* parent = nullptr);
@@ -84,6 +85,12 @@ class GreaderNetwork : public QObject {
     void setOauth(OAuth2Service* oauth);
 
     // API methods.
+    void subscriptionEdit(const QString& op,
+                          const QString& stream_id,
+                          const QString& new_title,
+                          const QString& set_label,
+                          const QString& unset_label,
+                          const QNetworkProxy& proxy);
     void subscriptionImport(const QByteArray& opml_data, const QNetworkProxy& proxy);
     QByteArray subscriptionExport(const QNetworkProxy& proxy);
     QNetworkReply::NetworkError editLabels(const QString& state,

@@ -35,6 +35,8 @@ class GreaderServiceRoot : public ServiceRoot, public CacheForServiceRoot {
     virtual QList<QAction*> serviceMenu();
     virtual void saveAllCachedData(bool ignore_errors);
     virtual LabelOperation supportedLabelOperations() const;
+    virtual bool supportsFeedAdding() const;
+    virtual void addNewFeed(RootItem* selected_item, const QString& url = QString());
     virtual QVariantHash customDatabaseData() const;
     virtual void setCustomDatabaseData(const QVariantHash& data);
     virtual void aboutToBeginFeedFetching(const QList<Feed*>& feeds,

@@ -29,10 +29,16 @@
 #define GREADER_API_EDIT_TAG            "reader/api/0/edit-tag"
 #define GREADER_API_SUBSCRIPTION_EXPORT "reader/api/0/subscription/export"
 #define GREADER_API_SUBSCRIPTION_IMPORT "reader/api/0/subscription/import"
+#define GREADER_API_SUBSCRIPTION_EDIT   "reader/api/0/subscription/edit?ac=%1&s=%2"
 #define GREADER_API_ITEM_IDS            "reader/api/0/stream/items/ids?output=json&n=%2&s=%1"
 #define GREADER_API_ITEM_CONTENTS       "reader/api/0/stream/items/contents?output=json&n=200000"
 #define GREADER_API_TOKEN               "reader/api/0/token"
 #define GREADER_API_USER_INFO           "reader/api/0/user-info?output=json"
+
+// Edit subscription ops.
+#define GREADER_API_EDIT_SUBSCRIPTION_ADD    "subscribe"
+#define GREADER_API_EDIT_SUBSCRIPTION_MODIFY "edit"
+#define GREADER_API_EDIT_SUBSCRIPTION_DELETE "unsubscribe"
 
 // Misc.
 #define GREADER_API_ITEM_IDS_MAX        200000

@@ -7,12 +7,15 @@
 #include "gui/messagebox.h"
 #include "miscellaneous/application.h"
 #include "miscellaneous/iconfactory.h"
+#include "miscellaneous/mutex.h"
 #include "miscellaneous/textfactory.h"
 #include "network-web/oauth2service.h"
 #include "services/greader/definitions.h"
 #include "services/greader/greaderentrypoint.h"
+#include "services/greader/greaderfeed.h"
 #include "services/greader/greadernetwork.h"
 #include "services/greader/gui/formeditgreaderaccount.h"
+#include "services/greader/gui/formgreaderfeeddetails.h"
 
 #include <QFileDialog>
 
@@ -211,7 +214,7 @@ bool GreaderServiceRoot::wantsBaggedIdsOfExistingMessages() const {
 
 void GreaderServiceRoot::start(bool freshly_activated) {
   if (!freshly_activated) {
-    DatabaseQueries::loadRootFromDatabase<Category, Feed>(this);
+    DatabaseQueries::loadRootFromDatabase<Category, GreaderFeed>(this);
     loadCacheFromFile();
   }
 
@@ -329,6 +332,32 @@ void GreaderServiceRoot::saveAllCachedData(bool ignore_errors) {
 
 ServiceRoot::LabelOperation GreaderServiceRoot::supportedLabelOperations() const {
   return ServiceRoot::LabelOperation::Synchronised;
+}
+
+bool GreaderServiceRoot::supportsFeedAdding() const {
+  return true;
+}
+
+void GreaderServiceRoot::addNewFeed(RootItem* selected_item, const QString& url) {
+  if (!qApp->feedUpdateLock()->tryLock()) {
+    // Lock was not obtained because
+    // it is used probably by feed updater or application
+    // is quitting.
+    qApp->showGuiMessage(Notification::Event::GeneralEvent,
+                         {tr("Cannot add item"),
+                          tr("Cannot add feed because another critical operation is ongoing."),
+                          QSystemTrayIcon::MessageIcon::Warning});
+
+    return;
+  }
+
+  QScopedPointer<FormGreaderFeedDetails> form_pointer(new FormGreaderFeedDetails(this,
+                                                                                 selected_item,
+                                                                                 url,
+                                                                                 qApp->mainFormWidget()));
+
+  form_pointer->addEditFeed<GreaderFeed>();
+  qApp->feedUpdateLock()->unlock();
 }
 
 void GreaderServiceRoot::updateTitleIcon() {

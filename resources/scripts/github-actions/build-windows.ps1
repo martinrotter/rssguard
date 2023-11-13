@@ -30,7 +30,7 @@ else {
 $is_qt_6 = $qt_version.StartsWith("6")
 
 $maria_version = "11.1.2"
-$maria_link = "https://archive.mariadb.org/mariadb-$maria_version/winx64-packages/mariadb-$maria_version-winx64.zip"
+$maria_link = "https://mirror.netcologne.de/mariadb/mariadb-$maria_version/winx64-packages/mariadb-$maria_version-winx64.zip"
 $maria_output = "maria.zip"
 
 $cmake_version = "3.27.7"

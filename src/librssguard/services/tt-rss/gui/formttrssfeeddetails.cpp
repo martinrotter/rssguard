@@ -29,7 +29,7 @@ void FormTtRssFeedDetails::apply() {
   else {
     RootItem* parent = m_feedDetails->ui.m_cmbParentCategory->currentData().value<RootItem*>();
     auto* root = qobject_cast<TtRssServiceRoot*>(parent->getParentServiceRoot());
-    const int category_id = parent->kind() == RootItem::Kind::ServiceRoot ? 0 : parent->customId().toInt();
+    const int category_id = parent->kind() == RootItem::Kind::ServiceRoot ? 0 : parent->customNumericId();
     const TtRssSubscribeToFeedResponse response =
       root->network()->subscribeToFeed(m_feedDetails->ui.m_txtUrl->lineEdit()->text(),
                                        category_id,
@@ -66,11 +66,6 @@ void FormTtRssFeedDetails::loadFeedData() {
     if (!m_urlToProcess.isEmpty()) {
       m_feedDetails->ui.m_txtUrl->lineEdit()->setText(m_urlToProcess);
     }
-    /*
-    else if (Application::clipboard()->mimeData()->hasText()) {
-      m_feedDetails->ui.m_txtUrl->lineEdit()->setText(Application::clipboard()->text());
-    }
-    */
 
     m_feedDetails->ui.m_txtUrl->lineEdit()->selectAll();
     m_feedDetails->ui.m_txtUrl->setFocus();
