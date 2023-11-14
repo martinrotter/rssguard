@@ -796,7 +796,7 @@ Item ID: %5</translation>
     <message>
       <location filename="../src/librssguard/gui/feedmessageviewer.cpp" line="32"/>
       <source>Toolbar for feeds</source>
-      <translation>Toolbar per le fonti</translation>
+      <translation>Barra degli strumenti per le fonti</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/feedmessageviewer.cpp" line="33"/>
@@ -806,7 +806,7 @@ Item ID: %5</translation>
     <message>
       <location filename="../src/librssguard/gui/feedmessageviewer.cpp" line="236"/>
       <source>Filtered feed list</source>
-      <translation type="unfinished">Filtered feed list</translation>
+      <translation>Elenco di fonti filtrate</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/feedmessageviewer.cpp" line="237"/>
@@ -1093,7 +1093,7 @@ Item ID: %5</translation>
     <message>
       <location filename="../src/librssguard/gui/toolbars/feedstoolbar.cpp" line="125"/>
       <source>Search feeds</source>
-      <translation type="unfinished">Search feeds</translation>
+      <translation>Ricerca fonti</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/toolbars/feedstoolbar.cpp" line="133"/>
@@ -1821,7 +1821,7 @@ QtWebEngine cache folder -&gt; &quot;%7&quot;</translation>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formdatabasecleanup.ui" line="102"/>
       <source>Total data size</source>
-      <translation type="unfinished">Total data size</translation>
+      <translation>Dimensione totale dati</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formdatabasecleanup.ui" line="119"/>
@@ -1839,7 +1839,7 @@ QtWebEngine cache folder -&gt; &quot;%7&quot;</translation>
     <message>
       <location filename="../src/librssguard/services/standard/gui/formdiscoverfeeds.ui" line="14"/>
       <source>Discover feeds</source>
-      <translation>Scopri i feed</translation>
+      <translation type="unfinished">Discover feeds</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/standard/gui/formdiscoverfeeds.ui" line="20"/>
@@ -1859,7 +1859,7 @@ QtWebEngine cache folder -&gt; &quot;%7&quot;</translation>
     <message>
       <location filename="../src/librssguard/services/standard/gui/formdiscoverfeeds.ui" line="77"/>
       <source>Discovered feeds</source>
-      <translation>Feed scoperti</translation>
+      <translation>Fonti scoperte</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/standard/gui/formdiscoverfeeds.ui" line="83"/>
@@ -1869,7 +1869,7 @@ QtWebEngine cache folder -&gt; &quot;%7&quot;</translation>
     <message>
       <location filename="../src/librssguard/services/standard/gui/formdiscoverfeeds.ui" line="95"/>
       <source>Select parent item for your feed.</source>
-      <translation>Seleziona l&apos;elemento genitore per la fonte.</translation>
+      <translation>Seleziona l&apos;elemento principale per la fonte.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/standard/gui/formdiscoverfeeds.ui" line="128"/>
@@ -1914,12 +1914,12 @@ QtWebEngine cache folder -&gt; &quot;%7&quot;</translation>
     <message>
       <location filename="../src/librssguard/services/standard/gui/formdiscoverfeeds.cpp" line="195"/>
       <source>URL is valid.</source>
-      <translation type="unfinished">URL is valid.</translation>
+      <translation>L'URL è valido.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/standard/gui/formdiscoverfeeds.cpp" line="198"/>
       <source>URL is NOT valid.</source>
-      <translation type="unfinished">URL is NOT valid.</translation>
+      <translation>L'URL NON è valido.</translation>
     </message>
   </context>
   <context>
@@ -2026,7 +2026,7 @@ QtWebEngine cache folder -&gt; &quot;%7&quot;</translation>
     <message>
       <location filename="../src/librssguard/services/abstract/gui/formfeeddetails.ui" line="24"/>
       <source>Articles</source>
-      <translation type="unfinished">Articles</translation>
+      <translation>Articoli</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/abstract/gui/formfeeddetails.ui" line="50"/>
@@ -2061,7 +2061,7 @@ QtWebEngine cache folder -&gt; &quot;%7&quot;</translation>
     <message>
       <location filename="../src/librssguard/services/abstract/gui/formfeeddetails.ui" line="191"/>
       <source>Disable this feed</source>
-      <translation type="unfinished">Disable this feed</translation>
+      <translation>Disabilita questa fonte</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/abstract/gui/formfeeddetails.ui" line="205"/>
@@ -3339,7 +3339,7 @@ Dovrai riavviare manualmente.</translation>
     <message>
       <location filename="../src/librssguard/services/standard/gui/formstandardimportexport.ui" line="119"/>
       <source>Select parent item for your feed.</source>
-      <translation>Seleziona l&apos;elemento genitore per la fonte.</translation>
+      <translation>Seleziona l&apos;elemento principale per la fonte.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/standard/gui/formstandardimportexport.ui" line="137"/>
@@ -4041,7 +4041,7 @@ Login tokens expiration: %2</translation>
     <message>
       <location filename="../src/librssguard/services/greader/gui/greaderfeeddetails.ui" line="30"/>
       <source>Select parent item for your feed.</source>
-      <translation>Seleziona l&apos;elemento genitore per la fonte.</translation>
+      <translation>Seleziona l&apos;elemento principale per la fonte.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/greader/gui/greaderfeeddetails.ui" line="46"/>
@@ -4161,7 +4161,7 @@ Login tokens expiration: %2</translation>
     <message>
       <location filename="../src/librssguard/services/greader/greaderserviceroot.cpp" line="183"/>
       <source>Cannot import feeds</source>
-      <translation type="unfinished">Cannot import feeds</translation>
+      <translation>Impossibile importare fonti</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/greader/greaderserviceroot.cpp" line="184"/>
@@ -4182,7 +4182,7 @@ Login tokens expiration: %2</translation>
     <message>
       <location filename="../src/librssguard/services/greader/greaderserviceroot.cpp" line="208"/>
       <source>Cannot export feeds</source>
-      <translation type="unfinished">Cannot export feeds</translation>
+      <translation>Impossibile esportare fonti</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/greader/greaderserviceroot.cpp" line="265"/>
@@ -4787,7 +4787,7 @@ Login tokens expiration: %2</translation>
     <message>
       <location filename="../src/librssguard/core/messagesmodel.cpp" line="126"/>
       <source>feed icon</source>
-      <translation type="unfinished">feed icon</translation>
+      <translation>icona fonte</translation>
     </message>
     <message>
       <location filename="../src/librssguard/core/messagesmodel.cpp" line="288"/>
@@ -5556,7 +5556,7 @@ Tiny Tiny RSS is an open source web-based news feed (RSS/Atom) reader and aggreg
 At least API level %1 is required.</source>
       <translation>Questo servizio offre integrazione con Tiny Tiny RSS.
 
-Tiny Tiny RSS è un lettore e aggregatore di fonti di notizie (RSS/Atom) open source e ad interfaccia web, progettato per permetterti di leggere notizie da qualunque luogo, pur mantenendo la sensazione d&apos;uso di una vera applicazione desktop il più possibile.
+Tiny Tiny RSS è un lettore e aggregatore di feed di notizie (RSS/Atom) basato su un interfaccia web, open source e progettato per consentirti di leggere notizie da qualsiasi posto. L'obiettivo è offrire un'esperienza il più possibile simile di un applicazione desktop reale.
 
 È richiesta almeno la API livello %1.</translation>
     </message>
@@ -6762,7 +6762,7 @@ Authors of this application are NOT responsible for lost data.</translation>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="305"/>
       <source>Articles</source>
-      <translation type="unfinished">Articles</translation>
+      <translation>Articoli</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="311"/>
