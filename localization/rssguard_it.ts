@@ -34,7 +34,7 @@
     <message>
       <location filename="../src/librssguard/services/abstract/gui/accountdetails.ui" line="33"/>
       <source>Unread</source>
-      <translation type="unfinished">Unread</translation>
+      <translation>Non letto</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/abstract/gui/accountdetails.ui" line="40"/>
@@ -709,12 +709,12 @@ Clicca qui per aprire la cartella genitore.</translation>
     <message>
       <location filename="../src/librssguard/services/gmail/gui/emailrecipientcontrol.cpp" line="40"/>
       <source>Reply-to</source>
-      <translation type="unfinished">Reply-to</translation>
+      <translation>Rispondi a</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/gmail/gui/emailrecipientcontrol.cpp" line="27"/>
       <source>E-mail address</source>
-      <translation type="unfinished">E-mail address</translation>
+      <translation>Indirizzo E-mail</translation>
     </message>
   </context>
   <context>
@@ -732,7 +732,7 @@ Clicca qui per aprire la cartella genitore.</translation>
     <message>
       <location filename="../src/librssguard/services/abstract/feed.cpp" line="298"/>
       <source>authentication error</source>
-      <translation type="unfinished">authentication error</translation>
+      <translation>errore di autenticazione</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/abstract/feed.cpp" line="301"/>
@@ -775,7 +775,7 @@ Clicca qui per aprire la cartella genitore.</translation>
     <message>
       <location filename="../src/librssguard/services/abstract/feed.cpp" line="307"/>
       <source>error</source>
-      <translation type="unfinished">error</translation>
+      <translation>errore</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/abstract/feed.cpp" line="369"/>
@@ -957,7 +957,7 @@ Item ID: %5</translation>
     <message>
       <location filename="../src/librssguard/services/feedly/gui/feedlyaccountdetails.cpp" line="153"/>
       <source>Some problems.</source>
-      <translation type="unfinished">Some problems.</translation>
+      <translation>Alcuni problemi.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/feedly/gui/feedlyaccountdetails.cpp" line="161"/>
@@ -977,7 +977,7 @@ Item ID: %5</translation>
     <message>
       <location filename="../src/librssguard/services/feedly/gui/feedlyaccountdetails.cpp" line="181"/>
       <source>Access token is okay.</source>
-      <translation type="unfinished">Access token is okay.</translation>
+      <translation>Il token di accesso è corretto.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/feedly/gui/feedlyaccountdetails.cpp" line="152"/>
@@ -987,7 +987,7 @@ Item ID: %5</translation>
     <message>
       <location filename="../src/librssguard/services/feedly/gui/feedlyaccountdetails.cpp" line="46"/>
       <source>Beware of downloading too many articles, because Feedly permanently caches ALL articles of the feed, so you might end up with thousands of articles which you will never read anyway.</source>
-      <translation type="unfinished">Beware of downloading too many articles, because Feedly permanently caches ALL articles of the feed, so you might end up with thousands of articles which you will never read anyway.</translation>
+      <translation>Attenzione a scaricare troppi articoli, perché Feedly memorizza permanentemente in cache TUTTI gli articoli del feed, e potresti finire con migliaia di articoli che non leggerai comunque.</translation>
     </message>
   </context>
   <context>
@@ -995,12 +995,12 @@ Item ID: %5</translation>
     <message>
       <location filename="../src/librssguard/services/feedly/feedlynetwork.cpp" line="714"/>
       <source>Feedly: authentication error</source>
-      <translation type="unfinished">Feedly: authentication error</translation>
+      <translation>Feedly: errore di autenticazione</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/feedly/feedlynetwork.cpp" line="715"/>
       <source>Click this to login again. Error is: &apos;%1&apos;</source>
-      <translation type="unfinished">Click this to login again. Error is: &apos;%1&apos;</translation>
+      <translation>Clicca qui per effettuare nuovamente il login. L'errore è: &apos;%1&apos;</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/feedly/feedlynetwork.cpp" line="729"/>
@@ -1476,7 +1476,7 @@ QtWebEngine cache folder -&gt; &quot;%7&quot;</translation>
       <location filename="../src/librssguard/services/abstract/gui/formaddeditprobe.cpp" line="28"/>
       <location filename="../src/librssguard/services/abstract/gui/formaddeditprobe.cpp" line="40"/>
       <source>Perfect!</source>
-      <translation type="unfinished">Perfect!</translation>
+      <translation>Perfetto!</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/abstract/gui/formaddeditprobe.cpp" line="34"/>
@@ -1641,7 +1641,7 @@ QtWebEngine cache folder -&gt; &quot;%7&quot;</translation>
     <message>
       <location filename="../src/librssguard/services/abstract/gui/formcategorydetails.cpp" line="199"/>
       <source>Images (%1)</source>
-      <translation type="unfinished">Images (%1)</translation>
+      <translation>Immagini (%1)</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/abstract/gui/formcategorydetails.cpp" line="205"/>
@@ -1702,7 +1702,7 @@ QtWebEngine cache folder -&gt; &quot;%7&quot;</translation>
     <message>
       <location filename="../src/librssguard/services/abstract/gui/formcategorydetails.cpp" line="240"/>
       <source>Use default icon from icon theme</source>
-      <translation type="unfinished">Use default icon from icon theme</translation>
+      <translation>Usa l'icona predefinita dal tema delle icone</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/abstract/gui/formcategorydetails.cpp" line="101"/>
@@ -1712,7 +1712,7 @@ QtWebEngine cache folder -&gt; &quot;%7&quot;</translation>
     <message>
       <location filename="../src/librssguard/services/abstract/gui/formcategorydetails.ui" line="31"/>
       <source>Parent folder</source>
-      <translation type="unfinished">Parent folder</translation>
+      <translation>Cartella superiore</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/abstract/gui/formcategorydetails.ui" line="43"/>
@@ -1839,7 +1839,7 @@ QtWebEngine cache folder -&gt; &quot;%7&quot;</translation>
     <message>
       <location filename="../src/librssguard/services/standard/gui/formdiscoverfeeds.ui" line="14"/>
       <source>Discover feeds</source>
-      <translation type="unfinished">Discover feeds</translation>
+      <translation>Scopri i feed</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/standard/gui/formdiscoverfeeds.ui" line="20"/>
@@ -1849,17 +1849,17 @@ QtWebEngine cache folder -&gt; &quot;%7&quot;</translation>
     <message>
       <location filename="../src/librssguard/services/standard/gui/formdiscoverfeeds.ui" line="42"/>
       <source>Discover!</source>
-      <translation type="unfinished">Discover!</translation>
+      <translation>Scopri!</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/standard/gui/formdiscoverfeeds.ui" line="51"/>
       <source>Discover Sitemaps too (can take some time for bigger websites)</source>
-      <translation type="unfinished">Discover Sitemaps too (can take some time for bigger websites)</translation>
+      <translation>Scopri anche le mappe del sito (potrebbe richiedere del tempo per i siti web più grandi)</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/standard/gui/formdiscoverfeeds.ui" line="77"/>
       <source>Discovered feeds</source>
-      <translation type="unfinished">Discovered feeds</translation>
+      <translation>Feed scoperti</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/standard/gui/formdiscoverfeeds.ui" line="83"/>
@@ -3712,7 +3712,7 @@ Ora lo puoi installare.</translation>
     <message>
       <location filename="../src/librssguard/services/gmail/gmailnetworkfactory.cpp" line="492"/>
       <source>Click this to login again. Error is: &apos;%1&apos;</source>
-      <translation type="unfinished">Click this to login again. Error is: &apos;%1&apos;</translation>
+      <translation>Clicca qui per effettuare nuovamente il login. L'errore è: &apos;%1&apos;</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/gmail/gmailnetworkfactory.cpp" line="505"/>
@@ -4036,7 +4036,7 @@ Login tokens expiration: %2</translation>
     <message>
       <location filename="../src/librssguard/services/greader/gui/greaderfeeddetails.ui" line="20"/>
       <source>Parent folder</source>
-      <translation type="unfinished">Parent folder</translation>
+      <translation>Cartella superiore</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/greader/gui/greaderfeeddetails.ui" line="30"/>
@@ -4110,7 +4110,7 @@ Login tokens expiration: %2</translation>
     <message>
       <location filename="../src/librssguard/services/greader/greadernetwork.cpp" line="1219"/>
       <source>Click this to login again. Error is: &apos;%1&apos;</source>
-      <translation type="unfinished">Click this to login again. Error is: &apos;%1&apos;</translation>
+      <translation>Clicca qui per effettuare nuovamente il login. L'errore è: &apos;%1&apos;</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/greader/greadernetwork.cpp" line="1231"/>
@@ -6027,7 +6027,7 @@ List of supported readers:</translation>
     <message>
       <location filename="../src/librssguard/services/reddit/redditnetworkfactory.cpp" line="303"/>
       <source>Click this to login again. Error is: &apos;%1&apos;</source>
-      <translation type="unfinished">Click this to login again. Error is: &apos;%1&apos;</translation>
+      <translation>Clicca qui per effettuare nuovamente il login. L'errore è: &apos;%1&apos;</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/reddit/redditnetworkfactory.cpp" line="306"/>
@@ -7555,7 +7555,7 @@ Post-processing script: %3</translation>
     <message>
       <location filename="../src/librssguard/services/standard/gui/standardfeeddetails.cpp" line="79"/>
       <source>Use default icon from icon theme</source>
-      <translation type="unfinished">Use default icon from icon theme</translation>
+      <translation>Usa l'icona predefinita dal tema delle icone</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/standard/gui/standardfeeddetails.cpp" line="81"/>
@@ -7660,7 +7660,7 @@ Post-processing script: %3</translation>
     <message>
       <location filename="../src/librssguard/services/standard/gui/standardfeeddetails.cpp" line="320"/>
       <source>Images (%1)</source>
-      <translation type="unfinished">Images (%1)</translation>
+      <translation>Immagini (%1)</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/standard/gui/standardfeeddetails.cpp" line="326"/>
@@ -7760,7 +7760,7 @@ Also, you can post-process generated feed data with yet another script if you wi
     <message>
       <location filename="../src/librssguard/services/standard/gui/standardfeeddetails.ui" line="25"/>
       <source>Parent folder</source>
-      <translation type="unfinished">Parent folder</translation>
+      <translation>Cartella superiore</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/standard/gui/standardfeeddetails.ui" line="37"/>
@@ -8393,7 +8393,7 @@ Notizie non lette: %2</translation>
     <message>
       <location filename="../src/librssguard/services/tt-rss/gui/ttrssfeeddetails.ui" line="20"/>
       <source>Parent folder</source>
-      <translation type="unfinished">Parent folder</translation>
+      <translation>Cartella superiore</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/tt-rss/gui/ttrssfeeddetails.ui" line="30"/>
