@@ -81,6 +81,7 @@ bool BaseToastNotification::eventFilter(QObject* watched, QEvent* event) {
 
   if (event->type() == QEvent::Type::MouseButtonPress) {
     if (dynamic_cast<QMouseEvent*>(event)->button() == Qt::MouseButton::RightButton) {
+      event->ignore();
       close();
     }
   }

@@ -2,6 +2,7 @@
 
 #include "services/greader/gui/formgreaderfeeddetails.h"
 
+#include "database/databasequeries.h"
 #include "exceptions/applicationexception.h"
 #include "miscellaneous/application.h"
 #include "services/greader/definitions.h"
@@ -21,59 +22,65 @@ FormGreaderFeedDetails::FormGreaderFeedDetails(ServiceRoot* service_root,
     m_urlToProcess(url) {}
 
 void FormGreaderFeedDetails::apply() {
-  if (!m_creatingNew) {
-    if (!m_isBatchEdit) {
-      GreaderFeed* fd = feed<GreaderFeed>();
-      RootItem* parent = m_feedDetails->ui.m_cmbParentCategory->currentData().value<RootItem*>();
-      const QString category_id = parent->kind() == RootItem::Kind::ServiceRoot ? QString() : parent->customId();
+  GreaderFeed* fd = feed<GreaderFeed>();
+  GreaderServiceRoot* root = qobject_cast<GreaderServiceRoot*>(m_serviceRoot);
+  RootItem* parent =
+    m_feedDetails != nullptr ? m_feedDetails->ui.m_cmbParentCategory->currentData().value<RootItem*>() : nullptr;
 
-      try {
-        fd->serviceRoot()->network()->subscriptionEdit(QSL(GREADER_API_EDIT_SUBSCRIPTION_MODIFY),
-                                                       fd->customId(),
-                                                       m_feedDetails->ui.m_txtTitle->lineEdit()->text(),
-                                                       category_id,
-                                                       {},
-                                                       m_serviceRoot->networkProxy());
-      }
-      catch (const ApplicationException& ex) {
-        qApp->showGuiMessage(Notification::Event::GeneralEvent,
-                             {tr("Feed NOT updated"),
-                              tr("Error: %1").arg(ex.message()),
-                              QSystemTrayIcon::MessageIcon::Critical},
-                             GuiMessageDestination(true, true));
-      }
-    }
-
-    // NOTE: We can only edit base properties, therefore
-    // base method is fine.
-    FormFeedDetails::apply();
-  }
-  else {
-    RootItem* parent = m_feedDetails->ui.m_cmbParentCategory->currentData().value<RootItem*>();
-    auto* root = qobject_cast<GreaderServiceRoot*>(parent->getParentServiceRoot());
-    const QString category_id = parent->kind() == RootItem::Kind::ServiceRoot ? QString() : parent->customId();
+  if (m_creatingNew || !m_isBatchEdit) {
+    QString feed_id = m_creatingNew ? (QSL("feed/") + m_feedDetails->ui.m_txtUrl->lineEdit()->text()) : fd->customId();
+    QString category_to_add = parent->kind() == RootItem::Kind::ServiceRoot ? QString() : parent->customId();
+    QString category_to_remove =
+      (!m_creatingNew && fd->parent()->customId() != category_to_add) ? fd->parent()->customId() : QString();
 
     try {
-      root->network()->subscriptionEdit(QSL(GREADER_API_EDIT_SUBSCRIPTION_ADD),
-                                        QSL("feed/") + m_feedDetails->ui.m_txtUrl->lineEdit()->text(),
+      // Change online
+      root->network()->subscriptionEdit(m_creatingNew ? QSL(GREADER_API_EDIT_SUBSCRIPTION_ADD)
+                                                      : QSL(GREADER_API_EDIT_SUBSCRIPTION_MODIFY),
+                                        feed_id,
                                         m_feedDetails->ui.m_txtTitle->lineEdit()->text(),
-                                        category_id,
-                                        {},
+                                        QUrl::toPercentEncoding(category_to_add),
+                                        QUrl::toPercentEncoding(category_to_remove),
                                         m_serviceRoot->networkProxy());
 
-      qApp->showGuiMessage(Notification::Event::GeneralEvent,
-                           {tr("Feed added"),
-                            tr("Feed was added, obtaining new tree of feeds now."),
-                            QSystemTrayIcon::MessageIcon::Information});
-      QTimer::singleShot(300, root, &GreaderServiceRoot::syncIn);
+      if (m_creatingNew) {
+        qApp->showGuiMessage(Notification::Event::GeneralEvent,
+                             {tr("Feed added"),
+                              tr("Feed was added, refreshing feed tree..."),
+                              QSystemTrayIcon::MessageIcon::Information});
+        QTimer::singleShot(300, root, &GreaderServiceRoot::syncIn);
+
+        // NOTE: Feed object was not used, delete.
+        fd->deleteLater();
+        return;
+      }
+      else {
+        fd->setTitle(m_feedDetails->ui.m_txtTitle->lineEdit()->text());
+      }
     }
     catch (const ApplicationException& ex) {
       qApp->showGuiMessage(Notification::Event::GeneralEvent,
-                           {tr("Feed NOT added"),
+                           {tr("Feed NOT updated or added"),
                             tr("Error: %1").arg(ex.message()),
                             QSystemTrayIcon::MessageIcon::Critical},
                            GuiMessageDestination(true, true));
+      return;
     }
+  }
+
+  FormFeedDetails::apply();
+
+  if (!m_isBatchEdit) {
+    try {
+      QSqlDatabase database = qApp->database()->driver()->connection(metaObject()->className());
+      DatabaseQueries::createOverwriteFeed(database, fd, m_serviceRoot->accountId(), parent->id());
+    }
+    catch (const ApplicationException& ex) {
+      qFatal("Cannot save feed: '%s'.", qPrintable(ex.message()));
+    }
+
+    m_serviceRoot->requestItemReassignment(fd, parent);
+    m_serviceRoot->itemChanged({fd});
   }
 }
 
@@ -102,7 +109,10 @@ void FormGreaderFeedDetails::loadFeedData() {
     }
     else {
       m_feedDetails->ui.m_txtTitle->lineEdit()->setText(fd->title());
-      m_feedDetails->ui.m_txtUrl->lineEdit()->setText(fd->source());
+
+      // NOTE: User cannot edit URL.
+      m_feedDetails->ui.m_lblUrl->hide();
+      m_feedDetails->ui.m_txtUrl->hide();
     }
   }
 }

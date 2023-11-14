@@ -41,7 +41,7 @@
     </widget>
    </item>
    <item row="2" column="0">
-    <widget class="QLabel" name="label">
+    <widget class="QLabel" name="m_lblUrl">
      <property name="text">
       <string>URL</string>
      </property>
@@ -57,7 +57,7 @@
     <widget class="LineEditWithStatus" name="m_txtTitle" native="true"/>
    </item>
    <item row="1" column="0">
-    <widget class="QLabel" name="label_2">
+    <widget class="QLabel" name="m_lblTitle">
      <property name="text">
       <string>Title</string>
      </property>
