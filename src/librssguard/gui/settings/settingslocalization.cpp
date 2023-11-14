@@ -20,9 +20,7 @@ SettingsLocalization::SettingsLocalization(Settings* settings, QWidget* parent)
   m_ui->m_lblAuthors->label()->setWordWrap(true);
   m_ui->m_treeLanguages->setColumnCount(3);
   m_ui->m_treeLanguages->setHeaderHidden(false);
-  m_ui->m_treeLanguages->setHeaderLabels(QStringList() << /*: Language column of language list. */ tr("Language")
-                                                       << /*: Lang. code column of language list. */ tr("Code")
-                                                       << tr("Translation progress"));
+  m_ui->m_treeLanguages->setHeaderLabels(QStringList() << tr("Language") << tr("Code") << tr("Translation progress"));
 
   m_ui->m_lblHelp->setText(tr(R"(Help us to improve %1 <a href="%2">translations</a>.)")
                              .arg(QSL(APP_NAME), QSL("https://crowdin.com/project/rssguard")));
@@ -74,7 +72,8 @@ void SettingsLocalization::loadSettings() {
                                             QNetworkAccessManager::Operation::GetOperation,
                                             hdrs);
 
-  if (stats_res.m_networkError == QNetworkReply::NetworkError::NoError) {
+  if (stats_res.m_networkError == QNetworkReply::NetworkError::NoError &&
+      people_res.m_networkError == QNetworkReply::NetworkError::NoError) {
     QJsonDocument stats_doc = QJsonDocument::fromJson(stats_out);
     QJsonDocument people_doc = QJsonDocument::fromJson(people_out);
     QJsonArray people_arr = people_doc.object()["data"].toArray();
@@ -84,10 +83,12 @@ void SettingsLocalization::loadSettings() {
       return b.toObject()["data"].toObject()["username"].toString();
     });
 
-    all_translators =
-      std::accumulate(std::next(people_desc.begin()), people_desc.end(), people_desc.at(0), [](auto lhs, auto rhs) {
-        return std::move(lhs) + ", " + rhs;
-      });
+    all_translators = std::accumulate(std::next(people_desc.begin()),
+                                      people_desc.end(),
+                                      people_desc.at(0),
+                                      [](const QString& lhs, const QString& rhs) {
+                                        return QString(lhs + ", " + rhs);
+                                      });
 
     for (const QJsonValue& val_lang : stats_doc.object()["data"].toArray()) {
       QString lang_id = val_lang.toObject()["data"].toObject()["languageId"].toString().replace(QSL("-"), QSL("_"));
@@ -118,16 +119,11 @@ void SettingsLocalization::loadSettings() {
 
     item->setText(0, language.m_name);
     item->setText(1, language.m_code);
-
-    if (perc_translated >= 0) {
-      item->setToolTip(2, QString::number(perc_translated));
-    }
-
     item->setText(2, QSL("%1 %").arg(perc_translated >= 0 ? QString::number(perc_translated) : QSL("-")));
-    item->setIcon(0, qApp->icons()->miscIcon(QSL(FLAG_ICON_SUBFOLDER) + QDir::separator() + language.m_code));
 
     QColor col_translated = QColor::fromHsv(perc_translated, 200, 230);
 
+    item->setIcon(0, qApp->icons()->miscIcon(QSL(FLAG_ICON_SUBFOLDER) + QDir::separator() + language.m_code));
     item->setIcon(2, IconFactory::generateIcon(col_translated));
   }
 
