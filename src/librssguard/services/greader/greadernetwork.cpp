@@ -375,10 +375,11 @@ void GreaderNetwork::subscriptionEdit(const QString& op,
 
   auto timeout = qApp->settings()->value(GROUP(Feeds), SETTING(Feeds::UpdateTimeout)).toInt();
 
+  QByteArray input = tokenParameter().toUtf8();
   QByteArray output;
   auto result = NetworkFactory::performNetworkOperation(full_url,
                                                         timeout,
-                                                        {},
+                                                        input,
                                                         output,
                                                         QNetworkAccessManager::Operation::PostOperation,
                                                         {authHeader()},
