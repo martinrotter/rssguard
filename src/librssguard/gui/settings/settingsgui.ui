@@ -20,7 +20,7 @@
    <item>
     <widget class="QTabWidget" name="m_tabUi">
      <property name="currentIndex">
-      <number>1</number>
+      <number>0</number>
      </property>
      <widget class="QWidget" name="m_tabIconSkin">
       <attribute name="title">
