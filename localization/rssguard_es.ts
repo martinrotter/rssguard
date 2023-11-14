@@ -2079,7 +2079,7 @@ Archivo de QtWebEngine memoria -&gt; &quot;%7&quot;</translation>
     <message>
       <location filename="../src/librssguard/services/greader/gui/formgreaderfeeddetails.cpp" line="51"/>
       <source>Feed NOT updated or added</source>
-      <translation type="unfinished">Feed NOT updated or added</translation>
+      <translation>Fuente SIN actualizar o añadir</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/greader/gui/formgreaderfeeddetails.cpp" line="52"/>
@@ -7029,7 +7029,7 @@ Descripción: %3</translation>
       <location filename="../src/librssguard/gui/settings/settingsgui.ui" line="172"/>
       <location filename="../src/librssguard/gui/settings/settingsgui.ui" line="216"/>
       <source>Display count of unread messages</source>
-      <translation>Mostrar la recueto de los mensajes son leer</translation>
+      <translation>Mostrar recuento de mensajes sin leer</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsgui.ui" line="179"/>

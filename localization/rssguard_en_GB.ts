@@ -24,7 +24,7 @@
     <message>
       <location filename="../src/librssguard/services/abstract/gui/accountdetails.ui" line="20"/>
       <source>Display additional nodes</source>
-      <translation type="unfinished">Display additional nodes</translation>
+      <translation>Display additional nodes</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/abstract/gui/accountdetails.ui" line="26"/>
@@ -34,7 +34,7 @@
     <message>
       <location filename="../src/librssguard/services/abstract/gui/accountdetails.ui" line="33"/>
       <source>Unread</source>
-      <translation type="unfinished">Unread</translation>
+      <translation>Unread</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/abstract/gui/accountdetails.ui" line="40"/>
@@ -44,7 +44,7 @@
     <message>
       <location filename="../src/librssguard/services/abstract/gui/accountdetails.ui" line="47"/>
       <source>Probes</source>
-      <translation type="unfinished">Probes</translation>
+      <translation>Probes</translation>
     </message>
   </context>
   <context>
@@ -1967,7 +1967,7 @@ QtWebEngine cache folder -&gt; &quot;%7&quot;</translation>
     <message>
       <location filename="../src/librssguard/services/standard/gui/formeditstandardaccount.cpp" line="13"/>
       <source>Account setup</source>
-      <translation type="unfinished">Account setup</translation>
+      <translation>Account setup</translation>
     </message>
   </context>
   <context>
@@ -2079,7 +2079,7 @@ QtWebEngine cache folder -&gt; &quot;%7&quot;</translation>
     <message>
       <location filename="../src/librssguard/services/greader/gui/formgreaderfeeddetails.cpp" line="51"/>
       <source>Feed NOT updated or added</source>
-      <translation type="unfinished">Feed NOT updated or added</translation>
+      <translation>Feed NOT updated or added</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/greader/gui/formgreaderfeeddetails.cpp" line="52"/>
@@ -4081,12 +4081,12 @@ Login tokens expiration: %2</translation>
     <message>
       <location filename="../src/librssguard/services/greader/gui/greaderfeeddetails.cpp" line="40"/>
       <source>Title is entered.</source>
-      <translation type="unfinished">Title is entered.</translation>
+      <translation>Title is entered.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/greader/gui/greaderfeeddetails.cpp" line="44"/>
       <source>No title is entered. If you are creating new feed, title will be automatically extracted from it.</source>
-      <translation type="unfinished">No title is entered. If you are creating new feed, title will be automatically extracted from it.</translation>
+      <translation>No title is entered. If you are creating a new feed, the title will be automatically extracted from it.</translation>
     </message>
   </context>
   <context>
@@ -4151,17 +4151,17 @@ Login tokens expiration: %2</translation>
       <location filename="../src/librssguard/services/greader/greaderserviceroot.cpp" line="175"/>
       <location filename="../src/librssguard/services/greader/greaderserviceroot.cpp" line="203"/>
       <source>Done</source>
-      <translation type="unfinished">Done</translation>
+      <translation>Done</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/greader/greaderserviceroot.cpp" line="176"/>
       <source>Data imported successfully. Reloading feed tree.</source>
-      <translation type="unfinished">Data imported successfully. Reloading feed tree.</translation>
+      <translation>Data imported successfully. Reloading feed tree.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/greader/greaderserviceroot.cpp" line="183"/>
       <source>Cannot import feeds</source>
-      <translation type="unfinished">Cannot import feeds</translation>
+      <translation>Cannot import feeds</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/greader/greaderserviceroot.cpp" line="184"/>
@@ -4177,12 +4177,12 @@ Login tokens expiration: %2</translation>
     <message>
       <location filename="../src/librssguard/services/greader/greaderserviceroot.cpp" line="203"/>
       <source>Data exported successfully.</source>
-      <translation type="unfinished">Data exported successfully.</translation>
+      <translation>Data exported successfully.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/greader/greaderserviceroot.cpp" line="208"/>
       <source>Cannot export feeds</source>
-      <translation type="unfinished">Cannot export feeds</translation>
+      <translation>Cannot export feeds</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/greader/greaderserviceroot.cpp" line="265"/>
@@ -7009,7 +7009,7 @@ Description: %3</translation>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsgui.ui" line="129"/>
       <source>Customize predefined colors</source>
-      <translation type="unfinished">Customize predefined colors</translation>
+      <translation>Customise predefined colours</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsgui.ui" line="141"/>
@@ -7145,12 +7145,12 @@ Description: %3</translation>
       <location filename="../src/librssguard/gui/settings/settingslocalization.cpp" line="108"/>
       <location filename="../src/librssguard/gui/settings/settingslocalization.cpp" line="113"/>
       <source>Big thanks to all translators!</source>
-      <translation type="unfinished">Big thanks to all translators!</translation>
+      <translation>A big thank you to all translators!</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingslocalization.cpp" line="112"/>
       <source>Translations provided by: %1</source>
-      <translation type="unfinished">Translations provided by: %1</translation>
+      <translation>Translations provided by: %1</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingslocalization.cpp" line="161"/>
@@ -7290,12 +7290,12 @@ Also, relaunch &quot;Settings&quot; dialog after you install Node.js.</translati
     <message>
       <location filename="../src/librssguard/gui/settings/settingsnotifications.ui" line="82"/>
       <source>Width</source>
-      <translation type="unfinished">Width</translation>
+      <translation>Width</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsnotifications.ui" line="105"/>
       <source>Margins</source>
-      <translation type="unfinished">Margins</translation>
+      <translation>Margins</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsnotifications.ui" line="125"/>
@@ -7305,7 +7305,7 @@ Also, relaunch &quot;Settings&quot; dialog after you install Node.js.</translati
     <message>
       <location filename="../src/librssguard/gui/settings/settingsnotifications.ui" line="159"/>
       <source>Opacity</source>
-      <translation type="unfinished">Opacity</translation>
+      <translation>Opacity</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsnotifications.h" line="30"/>
@@ -7320,12 +7320,12 @@ Also, relaunch &quot;Settings&quot; dialog after you install Node.js.</translati
     <message>
       <location filename="../src/librssguard/gui/settings/settingsnotifications.cpp" line="99"/>
       <source>How do I look?</source>
-      <translation type="unfinished">How do I look?</translation>
+      <translation>How do I look?</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsnotifications.cpp" line="100"/>
       <source>Just testing new notifications settings. That&apos;s all.</source>
-      <translation type="unfinished">Just testing new notifications settings. That&apos;s all.</translation>
+      <translation>Just testing new notifications settings. That&apos;s all.</translation>
     </message>
   </context>
   <context>

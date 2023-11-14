@@ -24,7 +24,7 @@
     <message>
       <location filename="../src/librssguard/services/abstract/gui/accountdetails.ui" line="20"/>
       <source>Display additional nodes</source>
-      <translation>表示する追加ノード</translation>
+      <translation>追加のノードを表示する</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/abstract/gui/accountdetails.ui" line="26"/>
@@ -1315,7 +1315,7 @@ QtWebEngineキャッシュフォルダ -&gt; &quot;%7&quot;</translation>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formabout.ui" line="159"/>
       <source>Licenses page is available only in English language.</source>
-      <translation>ライセンスページは英語のみとなります。</translation>
+      <translation>ライセンスページは英語のみとなります</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formabout.ui" line="167"/>
@@ -1325,7 +1325,7 @@ QtWebEngineキャッシュフォルダ -&gt; &quot;%7&quot;</translation>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formabout.ui" line="199"/>
       <source>Changelog page is available only in English language.</source>
-      <translation>変更履歴ページは英語のみとなります。</translation>
+      <translation>変更履歴ページは英語のみとなります</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formabout.ui" line="207"/>
@@ -1510,7 +1510,7 @@ QtWebEngineキャッシュフォルダ -&gt; &quot;%7&quot;</translation>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formbackupdatabasesettings.cpp" line="68"/>
       <source>Backup was created successfully.</source>
-      <translation type="unfinished">Backup was created successfully.</translation>
+      <translation>バックアップは正常に作成されました</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formbackupdatabasesettings.cpp" line="95"/>
@@ -1520,7 +1520,7 @@ QtWebEngineキャッシュフォルダ -&gt; &quot;%7&quot;</translation>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formbackupdatabasesettings.cpp" line="98"/>
       <source>Backup name looks okay.</source>
-      <translation type="unfinished">Backup name looks okay.</translation>
+      <translation>バックアップ名はOKです</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formbackupdatabasesettings.cpp" line="71"/>
@@ -1530,7 +1530,7 @@ QtWebEngineキャッシュフォルダ -&gt; &quot;%7&quot;</translation>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formbackupdatabasesettings.cpp" line="67"/>
       <source>Backup was created successfully and stored in target directory.</source>
-      <translation type="unfinished">Backup was created successfully and stored in target directory.</translation>
+      <translation>バックアップが正常に作成され、ターゲットディレクトリに保存されました</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formbackupdatabasesettings.cpp" line="82"/>
@@ -1540,7 +1540,7 @@ QtWebEngineキャッシュフォルダ -&gt; &quot;%7&quot;</translation>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formbackupdatabasesettings.cpp" line="89"/>
       <source>Good destination directory is specified.</source>
-      <translation type="unfinished">Good destination directory is specified.</translation>
+      <translation>適切な保存先ディレクトリが指定されています</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formbackupdatabasesettings.ui" line="14"/>
@@ -3454,8 +3454,8 @@ downloaded successfully.</translation>
       <location filename="../src/librssguard/gui/dialogs/formupdate.cpp" line="97"/>
       <source>This release is not newer than
 currently installed one.</source>
-      <translation type="unfinished">This release is not newer than
-currently installed one.</translation>
+      <translation>このリリースは現在インストールされているものより
+新しいものではありません</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formupdate.cpp" line="32"/>
@@ -3503,8 +3503,8 @@ currently installed one.</translation>
       <location filename="../src/librssguard/gui/dialogs/formupdate.cpp" line="88"/>
       <source>This is new version which can be
 downloaded.</source>
-      <translation type="unfinished">This is new version which can be
-downloaded.</translation>
+      <translation>これは新しいバージョンで
+ダウンロードできます</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formupdate.cpp" line="189"/>
@@ -7120,12 +7120,12 @@ Description: %3</source>
       <location filename="../src/librssguard/gui/settings/settingslocalization.cpp" line="108"/>
       <location filename="../src/librssguard/gui/settings/settingslocalization.cpp" line="113"/>
       <source>Big thanks to all translators!</source>
-      <translation type="unfinished">Big thanks to all translators!</translation>
+      <translation>翻訳者の皆様に多大なる感謝を!</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingslocalization.cpp" line="112"/>
       <source>Translations provided by: %1</source>
-      <translation type="unfinished">Translations provided by: %1</translation>
+      <translation>翻訳提供者: %1</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingslocalization.cpp" line="161"/>
