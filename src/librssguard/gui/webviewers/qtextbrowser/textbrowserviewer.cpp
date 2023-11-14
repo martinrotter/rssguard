@@ -44,13 +44,14 @@ TextBrowserViewer::TextBrowserViewer(QWidget* parent)
     a_color = qApp->palette().color(QPalette::ColorRole::Highlight);
   }
 
-  // m_document.data()->setDefaultStyleSheet(QSL("a { color: %1; }").arg(a_color.name()));
+  m_document.data()->setDefaultStyleSheet(QSL("a { color: %1; }").arg(a_color.name()));
 
+  /*
   m_document->setDefaultStyleSheet("p {"
                                    "background-color: yellow;"
                                    "border: 1px solid black;"
                                    "}");
-
+*/
   connect(this, &TextBrowserViewer::reloadDocument, this, [this]() {
     const auto scr = verticalScrollBarPosition();
     setHtmlPrivate(html(), m_currentUrl);
