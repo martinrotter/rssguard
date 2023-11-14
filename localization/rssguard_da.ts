@@ -2078,33 +2078,17 @@ QtWebEngine cache folder -&gt; &quot;%7&quot;</translation>
   <context>
     <name>FormGreaderFeedDetails</name>
     <message>
-      <location filename="../src/librssguard/services/greader/gui/formgreaderfeeddetails.cpp" line="40"/>
-      <source>Feed NOT updated</source>
-      <translation type="unfinished">Feed NOT updated</translation>
+      <location filename="../src/librssguard/services/greader/gui/formgreaderfeeddetails.cpp" line="51"/>
+      <source>Feed NOT updated or added</source>
+      <translation type="unfinished">Feed NOT updated or added</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/services/greader/gui/formgreaderfeeddetails.cpp" line="41"/>
-      <location filename="../src/librssguard/services/greader/gui/formgreaderfeeddetails.cpp" line="73"/>
+      <location filename="../src/librssguard/services/greader/gui/formgreaderfeeddetails.cpp" line="52"/>
       <source>Error: %1</source>
       <translation>Fejl: %1</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/services/greader/gui/formgreaderfeeddetails.cpp" line="65"/>
-      <source>Feed added</source>
-      <translation>Nyhedskilde tilføjet</translation>
-    </message>
-    <message>
-      <location filename="../src/librssguard/services/greader/gui/formgreaderfeeddetails.cpp" line="66"/>
-      <source>Feed was added, obtaining new tree of feeds now.</source>
-      <translation>En nyhedskilde blev tilføjet, et nyt kildetræ indhentes nu.</translation>
-    </message>
-    <message>
-      <location filename="../src/librssguard/services/greader/gui/formgreaderfeeddetails.cpp" line="72"/>
-      <source>Feed NOT added</source>
-      <translation type="unfinished">Feed NOT added</translation>
-    </message>
-    <message>
-      <location filename="../src/librssguard/services/greader/gui/formgreaderfeeddetails.cpp" line="86"/>
+      <location filename="../src/librssguard/services/greader/gui/formgreaderfeeddetails.cpp" line="83"/>
       <source>General</source>
       <translation>Generelt</translation>
     </message>

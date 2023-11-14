@@ -24,17 +24,17 @@
     <message>
       <location filename="../src/librssguard/services/abstract/gui/accountdetails.ui" line="20"/>
       <source>Display additional nodes</source>
-      <translation type="unfinished">Display additional nodes</translation>
+      <translation>表示する追加ノード</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/abstract/gui/accountdetails.ui" line="26"/>
       <source>Important</source>
-      <translation>重要</translation>
+      <translation>重要な記事</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/abstract/gui/accountdetails.ui" line="33"/>
       <source>Unread</source>
-      <translation type="unfinished">Unread</translation>
+      <translation>未読記事</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/abstract/gui/accountdetails.ui" line="40"/>
@@ -44,7 +44,7 @@
     <message>
       <location filename="../src/librssguard/services/abstract/gui/accountdetails.ui" line="47"/>
       <source>Probes</source>
-      <translation type="unfinished">Probes</translation>
+      <translation>プローブ</translation>
     </message>
   </context>
   <context>
@@ -1955,7 +1955,7 @@ QtWebEngineキャッシュフォルダ -&gt; &quot;%7&quot;</translation>
     <message>
       <location filename="../src/librssguard/services/standard/gui/formeditstandardaccount.cpp" line="13"/>
       <source>Account setup</source>
-      <translation type="unfinished">Account setup</translation>
+      <translation>アカウント設定</translation>
     </message>
   </context>
   <context>
@@ -2064,33 +2064,17 @@ QtWebEngineキャッシュフォルダ -&gt; &quot;%7&quot;</translation>
   <context>
     <name>FormGreaderFeedDetails</name>
     <message>
-      <location filename="../src/librssguard/services/greader/gui/formgreaderfeeddetails.cpp" line="40"/>
-      <source>Feed NOT updated</source>
-      <translation type="unfinished">Feed NOT updated</translation>
+      <location filename="../src/librssguard/services/greader/gui/formgreaderfeeddetails.cpp" line="51"/>
+      <source>Feed NOT updated or added</source>
+      <translation type="unfinished">Feed NOT updated or added</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/services/greader/gui/formgreaderfeeddetails.cpp" line="41"/>
-      <location filename="../src/librssguard/services/greader/gui/formgreaderfeeddetails.cpp" line="73"/>
+      <location filename="../src/librssguard/services/greader/gui/formgreaderfeeddetails.cpp" line="52"/>
       <source>Error: %1</source>
       <translation>エラー: %1</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/services/greader/gui/formgreaderfeeddetails.cpp" line="65"/>
-      <source>Feed added</source>
-      <translation>フィードが追加されました</translation>
-    </message>
-    <message>
-      <location filename="../src/librssguard/services/greader/gui/formgreaderfeeddetails.cpp" line="66"/>
-      <source>Feed was added, obtaining new tree of feeds now.</source>
-      <translation type="unfinished">Feed was added, obtaining new tree of feeds now.</translation>
-    </message>
-    <message>
-      <location filename="../src/librssguard/services/greader/gui/formgreaderfeeddetails.cpp" line="72"/>
-      <source>Feed NOT added</source>
-      <translation type="unfinished">Feed NOT added</translation>
-    </message>
-    <message>
-      <location filename="../src/librssguard/services/greader/gui/formgreaderfeeddetails.cpp" line="86"/>
+      <location filename="../src/librssguard/services/greader/gui/formgreaderfeeddetails.cpp" line="83"/>
       <source>General</source>
       <translation>一般</translation>
     </message>
@@ -7000,7 +6984,7 @@ Description: %3</source>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsgui.ui" line="129"/>
       <source>Customize predefined colors</source>
-      <translation type="unfinished">Customize predefined colors</translation>
+      <translation>定義済みの色をカスタマイズする</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsgui.ui" line="141"/>
@@ -7281,12 +7265,12 @@ Also, relaunch &quot;Settings&quot; dialog after you install Node.js.</source>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsnotifications.ui" line="82"/>
       <source>Width</source>
-      <translation type="unfinished">Width</translation>
+      <translation>横幅</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsnotifications.ui" line="105"/>
       <source>Margins</source>
-      <translation type="unfinished">Margins</translation>
+      <translation>余白</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsnotifications.ui" line="125"/>
@@ -7296,7 +7280,7 @@ Also, relaunch &quot;Settings&quot; dialog after you install Node.js.</source>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsnotifications.ui" line="159"/>
       <source>Opacity</source>
-      <translation type="unfinished">Opacity</translation>
+      <translation>不透明度</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsnotifications.h" line="30"/>
