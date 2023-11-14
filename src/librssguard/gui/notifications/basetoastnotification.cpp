@@ -79,10 +79,11 @@ bool BaseToastNotification::eventFilter(QObject* watched, QEvent* event) {
     setupTimedClosing();
   }
 
-  if (event->type() == QEvent::Type::MouseButtonPress) {
+  if (event->type() == QEvent::Type::MouseButtonPress || event->type() == QEvent::Type::MouseButtonRelease) {
     if (dynamic_cast<QMouseEvent*>(event)->button() == Qt::MouseButton::RightButton) {
-      event->ignore();
-      close();
+      event->accept();
+      QTimer::singleShot(100, this, &BaseToastNotification::close);
+      return true;
     }
   }
 
