@@ -1,3 +1,13 @@
+4.5.5
+-----
+
+Added:
+* Added feed manipulation for Google Reader API plugin - creating, editing, deleting feeds.
+
+Fixed:
+* Fixed yellow background in nowebengine version.
+* No more double right mouse button click when closing notifications.
+
 4.5.4
 -----
 
