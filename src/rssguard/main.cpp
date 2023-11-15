@@ -35,7 +35,7 @@ int main(int argc, char* argv[]) {
 #endif
 
 #if defined(Q_OS_UNIX) && !defined(Q_OS_MACOS)
-  QApplication::setDesktopFileName(APP_REVERSE_NAME + QSL(".desktop"));
+  QApplication::setDesktopFileName(APP_REVERSE_NAME);
 #endif
 
 #if defined(QT_STATIC)
