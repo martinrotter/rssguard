@@ -24,7 +24,7 @@
     <message>
       <location filename="../src/librssguard/services/abstract/gui/accountdetails.ui" line="20"/>
       <source>Display additional nodes</source>
-      <translation>追加のノードを表示する</translation>
+      <translation>追加ノードの表示</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/abstract/gui/accountdetails.ui" line="26"/>
@@ -3211,7 +3211,7 @@ You have to restart manually.</source>
       <location filename="../src/librssguard/services/standard/gui/formstandardimportexport.cpp" line="202"/>
       <location filename="../src/librssguard/services/standard/gui/formstandardimportexport.cpp" line="238"/>
       <source>File is selected.</source>
-      <translation type="unfinished">File is selected.</translation>
+      <translation>ファイルが選択されています</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/standard/gui/formstandardimportexport.cpp" line="221"/>
@@ -3247,7 +3247,7 @@ You have to restart manually.</source>
     <message>
       <location filename="../src/librssguard/services/standard/gui/formstandardimportexport.cpp" line="273"/>
       <source>cannot open file</source>
-      <translation type="unfinished">cannot open file</translation>
+      <translation>ファイルを開けません</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/standard/gui/formstandardimportexport.cpp" line="332"/>
@@ -3270,18 +3270,18 @@ You have to restart manually.</source>
       <location filename="../src/librssguard/services/standard/gui/formstandardimportexport.cpp" line="166"/>
       <location filename="../src/librssguard/services/standard/gui/formstandardimportexport.cpp" line="211"/>
       <source>OPML 2.0 files (*.opml *.xml)</source>
-      <translation type="unfinished">OPML 2.0 files (*.opml *.xml)</translation>
+      <translation>OPML 2.0 ファイル (*.opml *.xml)</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/standard/gui/formstandardimportexport.cpp" line="337"/>
       <source>Cannot write into destination file: &apos;%1&apos;.</source>
-      <translation type="unfinished">Cannot write into destination file: &apos;%1&apos;.</translation>
+      <translation>保存先ファイルに書き込めません: &apos;%1&apos;</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/standard/gui/formstandardimportexport.cpp" line="167"/>
       <location filename="../src/librssguard/services/standard/gui/formstandardimportexport.cpp" line="212"/>
       <source>TXT files [one URL per line] (*.txt)</source>
-      <translation type="unfinished">TXT files [one URL per line] (*.txt)</translation>
+      <translation>TXT ファイル [1行に1つの URL] (*.txt)</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/standard/gui/formstandardimportexport.cpp" line="71"/>
@@ -3534,7 +3534,7 @@ downloaded.</source>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formupdate.cpp" line="170"/>
       <source>Available update files</source>
-      <translation type="unfinished">Available update files</translation>
+      <translation>利用可能なアップデートファイル</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formupdate.cpp" line="188"/>
@@ -3571,7 +3571,7 @@ You can install it now.</translation>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formupdate.ui" line="125"/>
       <source>Available files</source>
-      <translation type="unfinished">Available files</translation>
+      <translation>利用可能なファイル</translation>
     </message>
   </context>
   <context>
@@ -4127,7 +4127,7 @@ Login tokens expiration: %2</translation>
       <location filename="../src/librssguard/services/greader/greaderserviceroot.cpp" line="161"/>
       <location filename="../src/librssguard/services/greader/greaderserviceroot.cpp" line="191"/>
       <source>OPML 2.0 files (*.opml *.xml)</source>
-      <translation type="unfinished">OPML 2.0 files (*.opml *.xml)</translation>
+      <translation>OPML 2.0 ファイル (*.opml *.xml)</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/greader/greaderserviceroot.cpp" line="163"/>
@@ -4205,12 +4205,12 @@ Login tokens expiration: %2</translation>
     <message>
       <location filename="../src/librssguard/miscellaneous/iofactory.cpp" line="151"/>
       <source>Cannot open file &apos;%1&apos; for reading.</source>
-      <translation type="unfinished">Cannot open file &apos;%1&apos; for reading.</translation>
+      <translation>読み込むための &apos;%1&apos; ファイルが開けません</translation>
     </message>
     <message>
       <location filename="../src/librssguard/miscellaneous/iofactory.cpp" line="163"/>
       <source>Cannot open file &apos;%1&apos; for writting.</source>
-      <translation type="unfinished">Cannot open file &apos;%1&apos; for writting.</translation>
+      <translation>書き込むための &apos;%1&apos; ファイルが開けません</translation>
     </message>
   </context>
   <context>
@@ -5312,7 +5312,7 @@ Login tokens expiration: %2</translation>
       <location filename="../src/librssguard/miscellaneous/nodejs.cpp" line="76"/>
       <location filename="../src/librssguard/miscellaneous/nodejs.cpp" line="84"/>
       <source>file not found</source>
-      <translation type="unfinished">file not found</translation>
+      <translation>ファイルが見つかりません</translation>
     </message>
   </context>
   <context>
@@ -7185,7 +7185,7 @@ Also, relaunch &quot;Settings&quot; dialog after you install Node.js.</source>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsnodejs.cpp" line="135"/>
       <source>You cannot choose file, you have to choose FOLDER.</source>
-      <translation type="unfinished">You cannot choose file, you have to choose FOLDER.</translation>
+      <translation>ファイルを選択するのではなく、フォルダを選択する必要があります</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsnodejs.cpp" line="139"/>
@@ -7339,7 +7339,7 @@ Also, relaunch &quot;Settings&quot; dialog after you install Node.js.</source>
     <message>
       <location filename="../src/librssguard/gui/notifications/singlenotificationeditor.cpp" line="48"/>
       <source>WAV files (*.wav);;MP3 files (*.mp3)</source>
-      <translation type="unfinished">WAV files (*.wav);;MP3 files (*.mp3)</translation>
+      <translation>WAV ファイル (*.wav);;MP3 ファイル (*.mp3)</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/notifications/singlenotificationeditor.ui" line="23"/>
@@ -7416,7 +7416,7 @@ Also, relaunch &quot;Settings&quot; dialog after you install Node.js.</source>
     <message>
       <location filename="../src/librssguard/database/sqlitedriver.cpp" line="398"/>
       <source>Database file not copied to output directory successfully.</source>
-      <translation type="unfinished">Database file not copied to output directory successfully.</translation>
+      <translation>データベースファイルが出力ディレクトリに正常にコピーされませんでした</translation>
     </message>
   </context>
   <context>
@@ -7466,7 +7466,7 @@ Post-processing script: %3</source>
     <message>
       <location filename="../src/librssguard/services/standard/standardfeed.cpp" line="171"/>
       <source>Local file</source>
-      <translation type="unfinished">Local file</translation>
+      <translation>ローカルファイル</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/standard/standardfeed.cpp" line="174"/>
@@ -7624,12 +7624,12 @@ Post-processing script: %3</source>
     <message>
       <location filename="../src/librssguard/services/standard/gui/standardfeeddetails.cpp" line="283"/>
       <source>File exists.</source>
-      <translation type="unfinished">File exists.</translation>
+      <translation>ファイルが存在します</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/standard/gui/standardfeeddetails.cpp" line="286"/>
       <source>File does not exist.</source>
-      <translation type="unfinished">File does not exist.</translation>
+      <translation>ファイルが存在しません</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/standard/gui/standardfeeddetails.cpp" line="318"/>
@@ -8031,7 +8031,7 @@ Unread news: %2</source>
     <message>
       <location filename="../src/librssguard/gui/notifications/toastnotification.cpp" line="38"/>
       <source>Do it!</source>
-      <translation type="unfinished">Do it!</translation>
+      <translation>やってみよう！</translation>
     </message>
   </context>
   <context>
@@ -8551,7 +8551,7 @@ Last login on: %4</translation>
     <message>
       <location filename="../src/librssguard/network-web/webfactory.cpp" line="361"/>
       <source>Local content can access local files</source>
-      <translation type="unfinished">Local content can access local files</translation>
+      <translation>ローカルコンテンツはローカルファイルにアクセスできます</translation>
     </message>
     <message>
       <location filename="../src/librssguard/network-web/webfactory.cpp" line="363"/>
