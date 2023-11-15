@@ -44,7 +44,7 @@
     <message>
       <location filename="../src/librssguard/services/abstract/gui/accountdetails.ui" line="47"/>
       <source>Probes</source>
-      <translation>プローブ</translation>
+      <translation>正規表現クエリ</translation>
     </message>
   </context>
   <context>
