@@ -1409,7 +1409,7 @@ QtWebEngine cache folder -&gt; &quot;%7&quot;</translation>
     <message>
       <location filename="../src/librssguard/services/gmail/gui/formaddeditemail.ui" line="73"/>
       <source>Title of your message</source>
-      <translation type="unfinished">Title of your message</translation>
+      <translation>Titolo del tuo messaggio</translation>
     </message>
   </context>
   <context>
@@ -2079,7 +2079,7 @@ QtWebEngine cache folder -&gt; &quot;%7&quot;</translation>
     <message>
       <location filename="../src/librssguard/services/greader/gui/formgreaderfeeddetails.cpp" line="51"/>
       <source>Feed NOT updated or added</source>
-      <translation type="unfinished">Feed NOT updated or added</translation>
+      <translation>Fonte NON aggiornata o aggiunta</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/greader/gui/formgreaderfeeddetails.cpp" line="52"/>
@@ -4664,7 +4664,7 @@ Login tokens expiration: %2</translation>
     <message>
       <location filename="../src/librssguard/core/messagesforfiltersmodel.cpp" line="13"/>
       <source>Date</source>
-      <translation type="unfinished">Date</translation>
+      <translation>Data</translation>
     </message>
     <message>
       <location filename="../src/librssguard/core/messagesforfiltersmodel.cpp" line="36"/>
@@ -4767,7 +4767,7 @@ Login tokens expiration: %2</translation>
     <message>
       <location filename="../src/librssguard/core/messagesmodel.cpp" line="290"/>
       <source>Date</source>
-      <translation type="unfinished">Date</translation>
+      <translation>Data</translation>
     </message>
     <message>
       <location filename="../src/librssguard/core/messagesmodel.cpp" line="201"/>
@@ -4842,7 +4842,7 @@ Login tokens expiration: %2</translation>
     <message>
       <location filename="../src/librssguard/core/messagesmodel.cpp" line="305"/>
       <source>Title of the article.</source>
-      <translation type="unfinished">Title of the article.</translation>
+      <translation>Titolo dell'articolo.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/core/messagesmodel.cpp" line="306"/>
@@ -4852,12 +4852,12 @@ Login tokens expiration: %2</translation>
     <message>
       <location filename="../src/librssguard/core/messagesmodel.cpp" line="306"/>
       <source>Author of the article.</source>
-      <translation type="unfinished">Author of the article.</translation>
+      <translation>Autore dell'articolo.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/core/messagesmodel.cpp" line="306"/>
       <source>Creation date of the article.</source>
-      <translation type="unfinished">Creation date of the article.</translation>
+      <translation>Data di creazione dell' articolo.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/core/messagesmodel.cpp" line="307"/>
