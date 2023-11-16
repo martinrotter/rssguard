@@ -555,9 +555,11 @@ void MRichTextEdit::fontChanged(const QFont& f) {
 void MRichTextEdit::onCurrentCharFormatChanged(const QTextCharFormat& format) {
   fontChanged(format.font());
   m_ui.f_bgcolor->setColor(format.background().isOpaque() ? format.background().color()
-                                                          : m_ui.f_bgcolor->alternateColor());
+                                                          : m_ui.f_bgcolor->alternateColor(),
+                           false);
   m_ui.f_fgcolor->setColor(format.foreground().isOpaque() ? format.foreground().color()
-                                                          : m_ui.f_fgcolor->alternateColor());
+                                                          : m_ui.f_fgcolor->alternateColor(),
+                           false);
   m_ui.f_link->setChecked(format.isAnchor());
 }
 

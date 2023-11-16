@@ -688,7 +688,7 @@ QMap<QString, QString> GmailNetworkFactory::getMessageMetadata(const QString& ms
     return result;
   }
   else {
-    throw ApplicationException(tr("failed to get metadata"));
+    throw NetworkException(res.m_networkError);
   }
 }
 

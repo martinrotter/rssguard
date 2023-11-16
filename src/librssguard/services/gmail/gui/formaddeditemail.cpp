@@ -59,11 +59,6 @@ void FormAddEditEmail::execForReply(Message* original_message) {
   m_ui.m_txtSubject->setEnabled(false);
   m_ui.m_txtMessage->setFocus();
 
-  auto from_header =
-    m_root->network()->getMessageMetadata(original_message->m_customId, {QSL("FROM")}, m_root->networkProxy());
-
-  // TODO: konverze html > plain
-  // QTextDocumentFragment::fromHtml(m_originalMessage->m_contents).toPlainText()
   m_ui.m_txtMessage->setText(m_originalMessage->m_contents);
   m_ui.m_txtMessage->editor()->moveCursor(QTextCursor::MoveOperation::Start);
   m_ui.m_txtMessage->editor()->insertHtml(QSL("<p>"
@@ -71,7 +66,15 @@ void FormAddEditEmail::execForReply(Message* original_message) {
                                               "</p><br/>"));
   m_ui.m_txtMessage->editor()->moveCursor(QTextCursor::MoveOperation::Start);
 
-  addRecipientRow(from_header[QSL("From")]);
+  try {
+    auto from_header =
+      m_root->network()->getMessageMetadata(original_message->m_customId, {QSL("FROM")}, m_root->networkProxy());
+    addRecipientRow(from_header.value(QSL("From")));
+  }
+  catch (const ApplicationException& ex) {
+    qWarningNN << LOGSEC_GMAIL << "Failed to get message metadata:" << QUOTE_W_SPACE_DOT(ex.message());
+  }
+
   exec();
 }
 
@@ -187,6 +190,10 @@ void FormAddEditEmail::onOkClicked() {
 }
 
 EmailRecipientControl* FormAddEditEmail::addRecipientRow(const QString& recipient) {
+  if (recipient.isEmpty()) {
+    return nullptr;
+  }
+
   auto* mail_rec = new EmailRecipientControl(recipient, this);
 
   connect(mail_rec, &EmailRecipientControl::removalRequested, this, &FormAddEditEmail::removeRecipientRow);

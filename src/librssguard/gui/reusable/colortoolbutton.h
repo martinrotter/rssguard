@@ -12,7 +12,7 @@ class ColorToolButton : public QToolButton {
     explicit ColorToolButton(QWidget* parent = nullptr);
 
     QColor color() const;
-    void setColor(const QColor& color);
+    void setColor(const QColor& color, bool inform_about_changes = true);
 
     QColor alternateColor() const;
     void setAlternateColor(const QColor& alt_color);

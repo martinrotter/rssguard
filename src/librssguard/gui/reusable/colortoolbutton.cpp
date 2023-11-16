@@ -30,11 +30,13 @@ QColor ColorToolButton::color() const {
   return m_color;
 }
 
-void ColorToolButton::setColor(const QColor& color) {
+void ColorToolButton::setColor(const QColor& color, bool inform_about_changes) {
   m_color = color;
   repaint();
 
-  emit colorChanged(m_color);
+  if (inform_about_changes) {
+    emit colorChanged(m_color);
+  }
 }
 
 void ColorToolButton::setRandomColor() {
