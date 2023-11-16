@@ -78,6 +78,7 @@ class RSSGUARD_DLLSPEC FeedsModel : public QAbstractItemModel {
     // Access to root item.
     RootItem* rootItem() const;
 
+    void setupBehaviorDuringFetching();
     void setupFonts();
     void informAboutDatabaseCleanup();
 
@@ -149,6 +150,8 @@ class RSSGUARD_DLLSPEC FeedsModel : public QAbstractItemModel {
     void reloadMessageListRequested(bool mark_selected_messages_read);
 
   private:
+    bool m_updateDuringFetching;
+    QIcon m_updateItemIcon;
     RootItem* m_rootItem;
     QList<QString> m_headerData;
     QList<QString> m_tooltipData;

@@ -32,7 +32,8 @@ class Feed : public RootItem {
       NetworkError = 2,
       AuthError = 3,
       ParsingError = 4,
-      OtherError = 5
+      OtherError = 5,
+      Fetching = 6
     };
 
     Q_ENUM(Status)
@@ -51,6 +52,7 @@ class Feed : public RootItem {
     virtual QVariantHash customDatabaseData() const;
     virtual void setCustomDatabaseData(const QVariantHash& data);
     virtual bool canBeEdited() const;
+    virtual bool isFetching() const;
     virtual QVariant data(int column, int role) const;
 
     void setCountOfAllMessages(int count_all_messages);

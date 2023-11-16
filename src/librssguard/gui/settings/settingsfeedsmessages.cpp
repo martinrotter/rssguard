@@ -74,6 +74,7 @@ SettingsFeedsMessages::SettingsFeedsMessages(Settings* settings, QWidget* parent
   connect(m_ui->m_cmbIgnoreContentsChanges, &QCheckBox::toggled, this, &SettingsFeedsMessages::dirtifySettings);
   connect(m_ui->m_cbHideCountsIfNoUnread, &QCheckBox::toggled, this, &SettingsFeedsMessages::dirtifySettings);
   connect(m_ui->m_checkAutoUpdate, &QCheckBox::toggled, this, &SettingsFeedsMessages::dirtifySettings);
+  connect(m_ui->m_cbUpdateFeedListDuringFetching, &QCheckBox::toggled, this, &SettingsFeedsMessages::dirtifySettings);
   connect(m_ui->m_checkAutoUpdateOnlyUnfocused, &QCheckBox::toggled, this, &SettingsFeedsMessages::dirtifySettings);
   connect(m_ui->m_cmbUnreadIconType,
           QOverload<int>::of(&QComboBox::currentIndexChanged),
@@ -247,6 +248,8 @@ void SettingsFeedsMessages::loadSettings() {
   m_ui->m_spinHeightRowsMessages->setValue(settings()->value(GROUP(GUI), SETTING(GUI::HeightRowMessages)).toInt());
   m_ui->m_spinHeightRowsFeeds->setValue(settings()->value(GROUP(GUI), SETTING(GUI::HeightRowFeeds)).toInt());
 
+  m_ui->m_cbUpdateFeedListDuringFetching
+    ->setChecked(settings()->value(GROUP(Feeds), SETTING(Feeds::UpdateFeedListDuringFetching)).toBool());
   m_ui->m_cbListsRestrictedShortcuts
     ->setChecked(settings()->value(GROUP(Feeds), SETTING(Feeds::OnlyBasicShortcutsInLists)).toBool());
   m_ui->m_cbHideCountsIfNoUnread
@@ -342,6 +345,9 @@ void SettingsFeedsMessages::saveSettings() {
   settings()->setValue(GROUP(GUI), GUI::HeightRowMessages, m_ui->m_spinHeightRowsMessages->value());
   settings()->setValue(GROUP(GUI), GUI::HeightRowFeeds, m_ui->m_spinHeightRowsFeeds->value());
 
+  settings()->setValue(GROUP(Feeds),
+                       Feeds::UpdateFeedListDuringFetching,
+                       m_ui->m_cbUpdateFeedListDuringFetching->isChecked());
   settings()->setValue(GROUP(Feeds), Feeds::OnlyBasicShortcutsInLists, m_ui->m_cbListsRestrictedShortcuts->isChecked());
 
   settings()->setValue(GROUP(Feeds), Feeds::HideCountsIfNoUnread, m_ui->m_cbHideCountsIfNoUnread->isChecked());
@@ -415,6 +421,7 @@ void SettingsFeedsMessages::saveSettings() {
   qApp->mainForm()->tabWidget()->feedMessageViewer()->loadMessageViewerFonts();
 
   qApp->feedReader()->updateAutoUpdateStatus();
+  qApp->feedReader()->feedsModel()->setupBehaviorDuringFetching();
   qApp->feedReader()->feedsModel()->reloadWholeLayout();
 
   qApp->feedReader()->messagesModel()->updateDateFormat();

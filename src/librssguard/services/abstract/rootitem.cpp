@@ -67,6 +67,10 @@ bool RootItem::deleteItem() {
   return false;
 }
 
+bool RootItem::isFetching() const {
+  return false;
+}
+
 bool RootItem::markAsReadUnread(ReadStatus status) {
   bool result = true;
 

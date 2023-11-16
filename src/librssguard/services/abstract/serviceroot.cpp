@@ -1296,6 +1296,7 @@ UpdatedArticles ServiceRoot::updateMessages(QList<Message>& messages, Feed* feed
     }
   }
 
-  // NOTE: Do not update model items here. We update only once when all feeds are fetched.
+  // NOTE: Do not update model items here. We update only once when all feeds are fetched
+  // or separately in downloader, if user has this enabled.
   return updated_messages;
 }

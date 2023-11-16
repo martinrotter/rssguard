@@ -150,6 +150,10 @@ bool Feed::canBeEdited() const {
   return true;
 }
 
+bool Feed::isFetching() const {
+  return m_status == Status::Fetching;
+}
+
 void Feed::setAutoUpdateInterval(int auto_update_interval) {
   // If new initial auto-update interval is set, then
   // we should reset time that remains to the next auto-update.

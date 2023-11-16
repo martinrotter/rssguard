@@ -284,17 +284,24 @@
          </property>
         </widget>
        </item>
-       <item row="5" column="0" colspan="2">
+       <item row="6" column="0" colspan="2">
         <widget class="QCheckBox" name="m_cbListsRestrictedShortcuts">
          <property name="text">
           <string>Allow only basic keyboard shortcuts for feed/article list</string>
          </property>
         </widget>
        </item>
-       <item row="6" column="0" colspan="2">
+       <item row="7" column="0" colspan="2">
         <widget class="QCheckBox" name="m_checkShowTooltips">
          <property name="text">
           <string>Display tooltips for feeds and articles</string>
+         </property>
+        </widget>
+       </item>
+       <item row="5" column="0" colspan="2">
+        <widget class="QCheckBox" name="m_cbUpdateFeedListDuringFetching">
+         <property name="text">
+          <string>Update feed list during feed fetching</string>
          </property>
         </widget>
        </item>
@@ -673,6 +680,7 @@
   <tabstop>m_btnChangeFeedListFont</tabstop>
   <tabstop>m_cmbCountsFeedList</tabstop>
   <tabstop>m_cbHideCountsIfNoUnread</tabstop>
+  <tabstop>m_cbUpdateFeedListDuringFetching</tabstop>
   <tabstop>m_cbListsRestrictedShortcuts</tabstop>
   <tabstop>m_checkShowTooltips</tabstop>
   <tabstop>m_checkRemoveReadMessagesOnExit</tabstop>
@@ -697,6 +705,8 @@
   <tabstop>m_tabFeedsMessages</tabstop>
   <tabstop>m_gbFeedListFont</tabstop>
   <tabstop>m_gbArticleListFont</tabstop>
+  <tabstop>m_gbAvoidOldArticles</tabstop>
+  <tabstop>m_dtDateTimeToAvoid</tabstop>
  </tabstops>
  <resources/>
  <connections/>

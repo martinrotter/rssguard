@@ -211,6 +211,15 @@ void FeedDownloader::updateOneFeed(ServiceRoot* acc,
                                    Feed* feed,
                                    const QHash<ServiceRoot::BagOfMessages, QStringList>& stated_messages,
                                    const QHash<QString, QStringList>& tagged_messages) {
+  feed->setStatus(Feed::Status::Fetching);
+
+  const bool update_feed_list =
+    qApp->settings()->value(GROUP(Feeds), SETTING(Feeds::UpdateFeedListDuringFetching)).toBool();
+
+  if (update_feed_list) {
+    acc->itemChanged({feed});
+  }
+
   qlonglong thread_id = qlonglong(QThread::currentThreadId());
 
   qDebugNN << LOGSEC_FEEDDOWNLOADER << "Downloading new messages for feed ID" << QUOTE_W_SPACE(feed->customId())
@@ -437,6 +446,10 @@ void FeedDownloader::updateOneFeed(ServiceRoot* acc,
                 << "message:" << QUOTE_W_SPACE_DOT(app_ex.message());
 
     feed->setStatus(Feed::Status::OtherError, app_ex.message());
+  }
+
+  if (update_feed_list) {
+    acc->itemChanged({feed});
   }
 
   qDebugNN << LOGSEC_FEEDDOWNLOADER << "Made progress in feed updates, total feeds count "

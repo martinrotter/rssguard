@@ -82,6 +82,8 @@ class RSSGUARD_DLLSPEC RootItem : public QObject {
     // Returns result status.
     virtual bool deleteItem();
 
+    virtual bool isFetching() const;
+
     // Performs all needed steps (DB update, remote server update)
     // to mark this item as read/unread.
     virtual bool markAsReadUnread(ReadStatus status);

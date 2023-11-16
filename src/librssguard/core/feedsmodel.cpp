@@ -40,6 +40,7 @@ FeedsModel::FeedsModel(QObject* parent) : QAbstractItemModel(parent), m_rootItem
                 << /*: Feed list header "counts" column tooltip.*/ tr("Counts of unread/all mesages.");
 
   setupFonts();
+  setupBehaviorDuringFetching();
 }
 
 FeedsModel::~FeedsModel() {
@@ -329,6 +330,14 @@ RootItem* FeedsModel::rootItem() const {
   return m_rootItem;
 }
 
+void FeedsModel::setupBehaviorDuringFetching() {
+  m_updateDuringFetching = qApp->settings()->value(GROUP(Feeds), SETTING(Feeds::UpdateFeedListDuringFetching)).toBool();
+
+  if (m_updateDuringFetching) {
+    m_updateItemIcon = qApp->icons()->fromTheme(QSL("view-refresh"));
+  }
+}
+
 void FeedsModel::reloadChangedLayout(QModelIndexList list) {
   while (!list.isEmpty()) {
     QModelIndex indx = list.takeFirst();
@@ -345,7 +354,7 @@ void FeedsModel::reloadChangedLayout(QModelIndexList list) {
 }
 
 void FeedsModel::reloadChangedItem(RootItem* item) {
-  reloadChangedLayout(QModelIndexList() << indexForItem(item));
+  reloadChangedLayout({indexForItem(item)});
 }
 
 void FeedsModel::notifyWithCounts() {
@@ -543,6 +552,16 @@ QVariant FeedsModel::data(const QModelIndex& index, int role) const {
       if (!qApp->settings()->value(GROUP(Feeds), SETTING(Feeds::EnableTooltipsFeedsMessages)).toBool()) {
         return QVariant();
       }
+
+    case Qt::ItemDataRole::DecorationRole: {
+      if (index.column() == FDS_MODEL_TITLE_INDEX && m_updateDuringFetching) {
+        RootItem* it = itemForIndex(index);
+
+        if (it->isFetching()) {
+          return m_updateItemIcon;
+        }
+      }
+    }
 
     default:
       return itemForIndex(index)->data(index.column(), role);

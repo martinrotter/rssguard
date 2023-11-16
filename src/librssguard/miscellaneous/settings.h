@@ -108,6 +108,9 @@ namespace Feeds {
   KEY HideCountsIfNoUnread;
   VALUE(bool) HideCountsIfNoUnreadDef;
 
+  KEY UpdateFeedListDuringFetching;
+  VALUE(bool) UpdateFeedListDuringFetchingDef;
+
   KEY AutoExpandOnSelection;
   VALUE(bool) AutoExpandOnSelectionDef;
 
