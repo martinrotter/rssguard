@@ -634,15 +634,12 @@ void MessagesView::openSelectedSourceMessagesExternally() {
 }
 
 void MessagesView::openSelectedMessagesInternally() {
-  QList<Message> messages;
   auto rws = selectionModel()->selectedRows();
 
-  for (const QModelIndex& index : std::as_const(rws)) {
-    messages << m_sourceModel->messageAt(m_proxyModel->mapToSource(index).row());
-  }
+  if (!rws.isEmpty()) {
+    auto msg = m_sourceModel->messageAt(m_proxyModel->mapToSource(rws.first()).row());
 
-  if (!messages.isEmpty()) {
-    emit openMessagesInNewspaperView(m_sourceModel->loadedItem(), messages);
+    emit openSingleMessageInNewTab(m_sourceModel->loadedItem(), msg);
   }
 }
 

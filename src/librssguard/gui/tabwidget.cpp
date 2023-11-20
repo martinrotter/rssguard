@@ -6,6 +6,7 @@
 #include "gui/dialogs/formmain.h"
 #include "gui/feedmessageviewer.h"
 #include "gui/feedsview.h"
+#include "gui/messagepreviewer.h"
 #include "gui/messagesview.h"
 #include "gui/reusable/plaintoolbutton.h"
 #include "gui/tabbar.h"
@@ -123,13 +124,9 @@ void TabWidget::createConnections() {
   connect(tabBar(), &TabBar::tabMoved, this, &TabWidget::fixContentsAfterMove);
 
   connect(feedMessageViewer()->messagesView(),
-          &MessagesView::openMessagesInNewspaperView,
+          &MessagesView::openSingleMessageInNewTab,
           this,
-          &TabWidget::addNewspaperView);
-  connect(feedMessageViewer()->feedsView(),
-          &FeedsView::openMessagesInNewspaperView,
-          this,
-          &TabWidget::addNewspaperView);
+          &TabWidget::addSingleMessageView);
 }
 
 void TabWidget::initializeTabs() {
@@ -206,16 +203,18 @@ void TabWidget::closeCurrentTab() {
   closeTab(currentIndex());
 }
 
-int TabWidget::addNewspaperView(RootItem* root, const QList<Message>& messages) {
-  WebBrowser* browser = new WebBrowser(nullptr, this);
+int TabWidget::addSingleMessageView(RootItem* root, const Message& message) {
+  auto* browser = new MessagePreviewer(this);
+  auto* msg_mdl = qApp->mainForm()->tabWidget()->feedMessageViewer()->messagesView()->sourceModel();
 
-  int index = addTab(browser,
-                     qApp->icons()->fromTheme(QSL("format-justify-fill")),
-                     tr("Newspaper view"),
-                     TabBar::TabType::Closable);
+  connect(browser, &MessagePreviewer::markMessageRead, msg_mdl, &MessagesModel::setMessageReadById);
+  connect(browser, &MessagePreviewer::markMessageImportant, msg_mdl, &MessagesModel::setMessageImportantById);
+  connect(browser, &MessagePreviewer::setMessageLabelIds, msg_mdl, &MessagesModel::setMessageLabelsById);
 
-  QTimer::singleShot(300, browser, [browser, root, messages]() {
-    browser->loadMessages(messages, root);
+  int index = addTab(browser, root->fullIcon(), message.m_title, TabBar::TabType::Closable);
+
+  QTimer::singleShot(500, browser, [browser, root, message]() {
+    browser->loadMessage(message, root);
   });
 
   return index;

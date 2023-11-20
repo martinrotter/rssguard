@@ -224,7 +224,6 @@ QList<QAction*> FormMain::allActions() const {
   actions << m_ui->m_actionFeedMoveTop;
   actions << m_ui->m_actionFeedMoveBottom;
   actions << m_ui->m_actionAddCategoryIntoSelectedItem;
-  actions << m_ui->m_actionViewSelectedItemsNewspaperMode;
   actions << m_ui->m_actionSelectNextItem;
   actions << m_ui->m_actionSelectPreviousItem;
   actions << m_ui->m_actionSelectNextMessage;
@@ -466,7 +465,7 @@ void FormMain::updateMessageButtonsAvailability() {
   m_ui->m_actionMarkSelectedMessagesAsRead->setEnabled(atleast_one_message_selected);
   m_ui->m_actionMarkSelectedMessagesAsUnread->setEnabled(atleast_one_message_selected);
   m_ui->m_actionOpenSelectedMessagesInternallyNoTab->setEnabled(one_message_selected);
-  m_ui->m_actionOpenSelectedMessagesInternally->setEnabled(atleast_one_message_selected);
+  m_ui->m_actionOpenSelectedMessagesInternally->setEnabled(one_message_selected);
   m_ui->m_actionOpenSelectedSourceArticlesExternally->setEnabled(atleast_one_message_selected);
   m_ui->m_actionCopyUrlSelectedArticles->setEnabled(atleast_one_message_selected);
   m_ui->m_actionSendMessageViaEmail->setEnabled(one_message_selected);
@@ -501,7 +500,6 @@ void FormMain::updateFeedButtonsAvailability() {
   m_ui->m_actionUpdateSelectedItemsWithCustomTimers->setEnabled(!critical_action_running);
   m_ui->m_actionUpdateSelectedItems->setEnabled(!critical_action_running &&
                                                 (feed_selected || category_selected || service_selected));
-  m_ui->m_actionViewSelectedItemsNewspaperMode->setEnabled(anything_selected);
   m_ui->m_actionExpandCollapseItem->setEnabled(category_selected || service_selected);
   m_ui->m_actionExpandCollapseItemRecursively->setEnabled(category_selected || service_selected);
   m_ui->m_actionServiceDelete->setEnabled(service_selected);
@@ -612,7 +610,6 @@ void FormMain::setupIcons() {
   m_ui->m_actionOpenSelectedMessagesInternally->setIcon(icon_theme_factory->fromTheme(QSL("document-open")));
   m_ui->m_actionOpenSelectedMessagesInternallyNoTab->setIcon(icon_theme_factory->fromTheme(QSL("document-open")));
   m_ui->m_actionSendMessageViaEmail->setIcon(icon_theme_factory->fromTheme(QSL("mail-send")));
-  m_ui->m_actionViewSelectedItemsNewspaperMode->setIcon(icon_theme_factory->fromTheme(QSL("format-justify-fill")));
   m_ui->m_actionSelectNextItem->setIcon(icon_theme_factory->fromTheme(QSL("arrow-down")));
   m_ui->m_actionSelectPreviousItem->setIcon(icon_theme_factory->fromTheme(QSL("arrow-up")));
   m_ui->m_actionSelectNextMessage->setIcon(icon_theme_factory->fromTheme(QSL("arrow-down")));
@@ -947,10 +944,6 @@ void FormMain::createConnections() {
           &QAction::triggered,
           tabWidget()->feedMessageViewer()->feedsView(),
           &FeedsView::editRecursiveFeeds);
-  connect(m_ui->m_actionViewSelectedItemsNewspaperMode,
-          &QAction::triggered,
-          tabWidget()->feedMessageViewer()->feedsView(),
-          &FeedsView::openSelectedItemsInNewspaperMode);
   connect(m_ui->m_actionDeleteSelectedItem,
           &QAction::triggered,
           tabWidget()->feedMessageViewer()->feedsView(),

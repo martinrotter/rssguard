@@ -73,7 +73,7 @@ class TabWidget : public QTabWidget {
     // Displays download manager.
     void showDownloadManager();
 
-    int addNewspaperView(RootItem* root, const QList<Message>& messages);
+    int addSingleMessageView(RootItem* root, const Message& message);
 
     // Adds new WebBrowser tab to global TabWidget.
     int addEmptyBrowser();

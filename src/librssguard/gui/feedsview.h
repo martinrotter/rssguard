@@ -58,9 +58,6 @@ class RSSGUARD_DLLSPEC FeedsView : public BaseTreeView {
     void markSelectedItemUnread();
     void markAllItemsRead();
 
-    // Newspaper accessors.
-    void openSelectedItemsInNewspaperMode();
-
     // Feed clearers.
     void clearSelectedItems();
     void clearAllItems();
@@ -98,7 +95,6 @@ class RSSGUARD_DLLSPEC FeedsView : public BaseTreeView {
   signals:
     void itemSelected(RootItem* item);
     void requestViewNextUnreadMessage();
-    void openMessagesInNewspaperView(RootItem* root, const QList<Message>& messages);
 
   protected:
     void drawBranches(QPainter* painter, const QRect& rect, const QModelIndex& index) const;

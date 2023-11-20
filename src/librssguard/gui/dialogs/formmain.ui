@@ -148,7 +148,6 @@
     <addaction name="m_actionClearAllItems"/>
     <addaction name="separator"/>
     <addaction name="m_actionCopyUrlSelectedFeed"/>
-    <addaction name="m_actionViewSelectedItemsNewspaperMode"/>
     <addaction name="m_actionMarkSelectedItemsAsRead"/>
     <addaction name="m_actionMarkSelectedItemsAsUnread"/>
     <addaction name="m_actionClearSelectedItems"/>
@@ -426,17 +425,6 @@
    </property>
    <property name="toolTip">
     <string>Marks all messages in all items read. This does not take message filters into account.</string>
-   </property>
-   <property name="shortcut">
-    <string notr="true"/>
-   </property>
-  </action>
-  <action name="m_actionViewSelectedItemsNewspaperMode">
-   <property name="text">
-    <string>View selected item in &amp;newspaper mode</string>
-   </property>
-   <property name="toolTip">
-    <string>Displays all messages from selected item in a new &quot;newspaper mode&quot; tab. Note that messages are not set as read automatically.</string>
    </property>
    <property name="shortcut">
     <string notr="true"/>

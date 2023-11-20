@@ -550,15 +550,6 @@ void FeedsView::markAllItemsRead() {
   markAllItemsReadStatus(RootItem::ReadStatus::Read);
 }
 
-void FeedsView::openSelectedItemsInNewspaperMode() {
-  RootItem* selected_item = selectedItem();
-  const QList<Message> messages = m_sourceModel->messagesForItem(selected_item);
-
-  if (!messages.isEmpty()) {
-    emit openMessagesInNewspaperView(selected_item, messages);
-  }
-}
-
 void FeedsView::selectNextItem() {
   QModelIndex index_next = moveCursor(QAbstractItemView::CursorAction::MoveDown, Qt::KeyboardModifier::NoModifier);
 
@@ -656,9 +647,8 @@ QMenu* FeedsView::initializeContextMenuBin(RootItem* clicked_item) {
 
   QList<QAction*> specific_actions = clicked_item->contextMenuFeedsList();
 
-  m_contextMenuBin->addActions(QList<QAction*>() << qApp->mainForm()->m_ui->m_actionViewSelectedItemsNewspaperMode
-                                                 << qApp->mainForm()->m_ui->m_actionMarkSelectedItemsAsRead
-                                                 << qApp->mainForm()->m_ui->m_actionMarkSelectedItemsAsUnread);
+  m_contextMenuBin->addActions({qApp->mainForm()->m_ui->m_actionMarkSelectedItemsAsRead,
+                                qApp->mainForm()->m_ui->m_actionMarkSelectedItemsAsUnread});
 
   if (!specific_actions.isEmpty()) {
     m_contextMenuBin->addSeparator();
@@ -683,7 +673,6 @@ QMenu* FeedsView::initializeContextMenuService(RootItem* clicked_item) {
                                     qApp->mainForm()->m_ui->m_actionEditChildFeeds,
                                     qApp->mainForm()->m_ui->m_actionEditChildFeedsRecursive,
                                     qApp->mainForm()->m_ui->m_actionCopyUrlSelectedFeed,
-                                    qApp->mainForm()->m_ui->m_actionViewSelectedItemsNewspaperMode,
                                     qApp->mainForm()->m_ui->m_actionExpandCollapseItem,
                                     qApp->mainForm()->m_ui->m_actionExpandCollapseItemRecursively,
                                     qApp->mainForm()->m_ui->m_actionRearrangeCategories,
@@ -909,7 +898,6 @@ QMenu* FeedsView::initializeContextMenuCategories(RootItem* clicked_item) {
                                        qApp->mainForm()->m_ui->m_actionEditChildFeeds,
                                        qApp->mainForm()->m_ui->m_actionEditChildFeedsRecursive,
                                        qApp->mainForm()->m_ui->m_actionCopyUrlSelectedFeed,
-                                       qApp->mainForm()->m_ui->m_actionViewSelectedItemsNewspaperMode,
                                        qApp->mainForm()->m_ui->m_actionExpandCollapseItem,
                                        qApp->mainForm()->m_ui->m_actionExpandCollapseItemRecursively,
                                        qApp->mainForm()->m_ui->m_actionRearrangeCategories,
@@ -962,7 +950,6 @@ QMenu* FeedsView::initializeContextMenuFeeds(RootItem* clicked_item) {
   m_contextMenuFeeds->addActions(QList<QAction*>() << qApp->mainForm()->m_ui->m_actionUpdateSelectedItems
                                                    << qApp->mainForm()->m_ui->m_actionEditSelectedItem
                                                    << qApp->mainForm()->m_ui->m_actionCopyUrlSelectedFeed
-                                                   << qApp->mainForm()->m_ui->m_actionViewSelectedItemsNewspaperMode
                                                    << qApp->mainForm()->m_ui->m_actionMarkSelectedItemsAsRead
                                                    << qApp->mainForm()->m_ui->m_actionMarkSelectedItemsAsUnread
                                                    << qApp->mainForm()->m_ui->m_actionDeleteSelectedItem);
@@ -1008,9 +995,8 @@ QMenu* FeedsView::initializeContextMenuImportant(RootItem* clicked_item) {
 
   QList<QAction*> specific_actions = clicked_item->contextMenuFeedsList();
 
-  m_contextMenuImportant->addActions(QList<QAction*>() << qApp->mainForm()->m_ui->m_actionViewSelectedItemsNewspaperMode
-                                                       << qApp->mainForm()->m_ui->m_actionMarkSelectedItemsAsRead
-                                                       << qApp->mainForm()->m_ui->m_actionMarkSelectedItemsAsUnread);
+  m_contextMenuImportant->addActions({qApp->mainForm()->m_ui->m_actionMarkSelectedItemsAsRead,
+                                      qApp->mainForm()->m_ui->m_actionMarkSelectedItemsAsUnread});
 
   if (!specific_actions.isEmpty()) {
     m_contextMenuImportant->addSeparator();
@@ -1194,20 +1180,6 @@ void FeedsView::contextMenuEvent(QContextMenuEvent* event) {
 }
 
 void FeedsView::mouseDoubleClickEvent(QMouseEvent* event) {
-  QModelIndex idx = indexAt(event->pos());
-
-  if (idx.isValid()) {
-    RootItem* item = m_sourceModel->itemForIndex(m_proxyModel->mapToSource(idx));
-
-    if (item->kind() == RootItem::Kind::Feed || item->kind() == RootItem::Kind::Bin) {
-      const QList<Message> messages = m_sourceModel->messagesForItem(item);
-
-      if (!messages.isEmpty()) {
-        emit openMessagesInNewspaperView(item, messages);
-      }
-    }
-  }
-
   QTreeView::mouseDoubleClickEvent(event);
 }
 
