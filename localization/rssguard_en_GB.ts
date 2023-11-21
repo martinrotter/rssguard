@@ -2084,7 +2084,7 @@ QtWebEngine cache folder -&gt; &quot;%7&quot;</translation>
     <message>
       <location filename="../src/librssguard/services/greader/gui/formgreaderfeeddetails.cpp" line="49"/>
       <source>Feed was added, refreshing feed tree...</source>
-      <translation type="unfinished">Feed was added, refreshing feed tree...</translation>
+      <translation>Feed was added, refreshing feed tree...</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/greader/gui/formgreaderfeeddetails.cpp" line="63"/>
@@ -6761,7 +6761,7 @@ Authors of this application are NOT responsible for lost data.</translation>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="304"/>
       <source>Update feed list during feed fetching</source>
-      <translation type="unfinished">Update feed list during feed fetching</translation>
+      <translation>Update feed list during feed fetching</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="312"/>
