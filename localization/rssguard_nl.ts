@@ -1853,7 +1853,7 @@ QtWebEngine cache map -&gt; &quot;%7&quot;</translation>
     <message>
       <location filename="../src/librssguard/services/standard/gui/formdiscoverfeeds.ui" line="51"/>
       <source>Recursive discovery (can take some time for bigger websites)</source>
-      <translation type="unfinished">Recursive discovery (can take some time for bigger websites)</translation>
+      <translation>Recursief zoeken (kan even duren voor grotere websites)</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/standard/gui/formdiscoverfeeds.ui" line="77"/>
@@ -4536,42 +4536,42 @@ Logintoken verloopt: %2</translation>
     <message>
       <location filename="../src/librssguard/gui/reusable/mediaplayer.cpp" line="134"/>
       <source>No media</source>
-      <translation type="unfinished">No media</translation>
+      <translation>Geen media</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/reusable/mediaplayer.cpp" line="137"/>
       <source>Loading...</source>
-      <translation type="unfinished">Loading...</translation>
+      <translation>Bezig met laden...</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/reusable/mediaplayer.cpp" line="140"/>
       <source>Media loaded</source>
-      <translation type="unfinished">Media loaded</translation>
+      <translation>Media geladen</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/reusable/mediaplayer.cpp" line="143"/>
       <source>Media stalled</source>
-      <translation type="unfinished">Media stalled</translation>
+      <translation>Media vastgelopen</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/reusable/mediaplayer.cpp" line="146"/>
       <source>Buffering...</source>
-      <translation type="unfinished">Buffering...</translation>
+      <translation>Bufferen...</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/reusable/mediaplayer.cpp" line="149"/>
       <source>Loaded</source>
-      <translation type="unfinished">Loaded</translation>
+      <translation>Geladen</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/reusable/mediaplayer.cpp" line="152"/>
       <source>Ended</source>
-      <translation type="unfinished">Ended</translation>
+      <translation>Beëindigd</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/reusable/mediaplayer.cpp" line="155"/>
       <source>Media is invalid</source>
-      <translation type="unfinished">Media is invalid</translation>
+      <translation>Media is ongeldig</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/reusable/mediaplayer.cpp" line="158"/>
@@ -8032,7 +8032,7 @@ Ongelezen nieuws: %2</translation>
     <message>
       <location filename="../src/librssguard/gui/tabwidget.cpp" line="232"/>
       <source>Media player</source>
-      <translation type="unfinished">Media player</translation>
+      <translation>Mediaspeler</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/tabwidget.cpp" line="257"/>
@@ -8569,7 +8569,7 @@ Laatste login: %4</translation>
     <message>
       <location filename="../src/librssguard/gui/webviewers/webengine/webengineviewer.cpp" line="104"/>
       <source>Open link as audio/video</source>
-      <translation type="unfinished">Open link as audio/video</translation>
+      <translation>Link openen als audio/video</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/webviewers/webengine/webengineviewer.cpp" line="113"/>
