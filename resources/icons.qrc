@@ -12,6 +12,7 @@
     <file>./graphics/Breeze/actions/32/arrow-right.svg</file>
     <file>./graphics/Breeze/actions/32/arrow-up.svg</file>
     <file>./graphics/Breeze/actions/32/arrow-up-double.svg</file>
+    <file>./graphics/Breeze/status/22/audio-volume-muted.svg</file>
     <file>./graphics/Breeze/actions/32/call-start.svg</file>
     <file>./graphics/Breeze/actions/32/dialog-cancel.svg</file>
     <file>./graphics/Breeze/actions/22/dialog-close.svg</file>
@@ -77,7 +78,11 @@
     <file>./graphics/Breeze/actions/32/mail-reply-sender.svg</file>
     <file>./graphics/Breeze/actions/32/mail-send.svg</file>
     <file>./graphics/Breeze/actions/32/mail-sent.svg</file>
+    <file>./graphics/Breeze/actions/32/media-playback-pause.svg</file>
     <file>./graphics/Breeze/actions/32/media-playback-start.svg</file>
+    <file>./graphics/Breeze/actions/32/media-playback-stop.svg</file>
+    <file>./graphics/Breeze/actions/22/player-volume.svg</file>
+    <file>./graphics/Breeze/actions/22/player-volume-muted.svg</file>
     <file>./graphics/Breeze/actions/22/process-stop.svg</file>
     <file>./graphics/Breeze/actions/22/system-search.svg</file>
     <file>./graphics/Breeze/actions/22/system-upgrade.svg</file>
@@ -106,6 +111,7 @@
     <file>./graphics/Breeze Dark/actions/32/arrow-right.svg</file>
     <file>./graphics/Breeze Dark/actions/32/arrow-up.svg</file>
     <file>./graphics/Breeze Dark/actions/32/arrow-up-double.svg</file>
+    <file>./graphics/Breeze Dark/status/22/audio-volume-muted.svg</file>
     <file>./graphics/Breeze Dark/actions/32/call-start.svg</file>
     <file>./graphics/Breeze Dark/actions/32/dialog-cancel.svg</file>
     <file>./graphics/Breeze Dark/actions/22/dialog-close.svg</file>
@@ -171,7 +177,11 @@
     <file>./graphics/Breeze Dark/actions/32/mail-reply-sender.svg</file>
     <file>./graphics/Breeze Dark/actions/32/mail-send.svg</file>
     <file>./graphics/Breeze Dark/actions/32/mail-sent.svg</file>
+    <file>./graphics/Breeze Dark/actions/32/media-playback-pause.svg</file>
     <file>./graphics/Breeze Dark/actions/32/media-playback-start.svg</file>
+    <file>./graphics/Breeze Dark/actions/32/media-playback-stop.svg</file>
+    <file>./graphics/Breeze Dark/actions/22/player-volume.svg</file>
+    <file>./graphics/Breeze Dark/actions/22/player-volume-muted.svg</file>
     <file>./graphics/Breeze Dark/actions/22/process-stop.svg</file>
     <file>./graphics/Breeze Dark/actions/22/system-search.svg</file>
     <file>./graphics/Breeze Dark/actions/22/system-upgrade.svg</file>
@@ -194,6 +204,7 @@
     <file>./graphics/Faenza/categories/64/applications-office.png</file>
     <file>./graphics/Faenza/categories/64/applications-science.png</file>
     <file>./graphics/Faenza/categories/64/applications-system.png</file>
+    <file>./graphics/Faenza/status/64/audio-volume-muted.png</file>
     <file>./graphics/Faenza/actions/64/browser-download.png</file>
     <file>./graphics/Faenza/actions/64/call-start.png</file>
     <file>./graphics/Faenza/status/64/dialog-error.png</file>
@@ -256,7 +267,9 @@
     <file>./graphics/Faenza/actions/64/mail-reply-sender.png</file>
     <file>./graphics/Faenza/actions/64/mail-send.png</file>
     <file>./graphics/Faenza/actions/64/mail-sent.png</file>
+    <file>./graphics/Faenza/actions/64/media-playback-pause.png</file>
     <file>./graphics/Faenza/actions/64/media-playback-start.png</file>
+    <file>./graphics/Faenza/actions/64/media-playback-stop.png</file>
     <file>./graphics/Faenza/actions/64/process-stop.png</file>
     <file>./graphics/Faenza/actions/64/reload.png</file>
     <file>./graphics/Faenza/actions/64/system-search.png</file>
@@ -284,6 +297,7 @@
     <file>./graphics/Numix/22/actions/arrow-right.svg</file>
     <file>./graphics/Numix/22/actions/arrow-up.svg</file>
     <file>./graphics/Numix/22/actions/arrow-up-double.svg</file>
+    <file>./graphics/Numix/22/status/audio-volume-muted.svg</file>
     <file>./graphics/Numix/22/actions/browser-download.svg</file>
     <file>./graphics/Numix/22/actions/call-start.svg</file>
     <file>./graphics/Numix/22/actions/dialog-cancel.svg</file>
@@ -349,7 +363,9 @@
     <file>./graphics/Numix/22/actions/mail-reply-sender.svg</file>
     <file>./graphics/Numix/22/actions/mail-send.svg</file>
     <file>./graphics/Numix/22/places/mail-sent.svg</file>
+    <file>./graphics/Numix/22/actions/media-playback-pause.svg</file>
     <file>./graphics/Numix/22/actions/media-playback-start.svg</file>
+    <file>./graphics/Numix/22/actions/media-playback-stop.svg</file>
     <file>./graphics/Numix/22/actions/process-stop.svg</file>
     <file>./graphics/Numix/22/actions/reload.svg</file>
     <file>./graphics/Numix/22/actions/system-search.svg</file>

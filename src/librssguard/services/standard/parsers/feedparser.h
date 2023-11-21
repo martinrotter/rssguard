@@ -20,7 +20,7 @@ class FeedParser {
     virtual ~FeedParser();
 
     // Returns list of absolute URLs of discovered feeds from provided base URL.
-    virtual QList<StandardFeed*> discoverFeeds(ServiceRoot* root, const QUrl& url) const;
+    virtual QList<StandardFeed*> discoverFeeds(ServiceRoot* root, const QUrl& url, bool greedy) const;
 
     // Guesses feed.
     virtual QPair<StandardFeed*, QList<IconLocation>> guessFeed(const QByteArray& content,

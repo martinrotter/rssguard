@@ -141,8 +141,10 @@ FormDiscoverFeeds::~FormDiscoverFeeds() {
   m_discoveredModel->setRootItem(nullptr);
 }
 
-QList<StandardFeed*> FormDiscoverFeeds::discoverFeedsWithParser(const FeedParser* parser, const QString& url) {
-  auto feeds = parser->discoverFeeds(m_serviceRoot, url);
+QList<StandardFeed*> FormDiscoverFeeds::discoverFeedsWithParser(const FeedParser* parser,
+                                                                const QString& url,
+                                                                bool greedy) {
+  auto feeds = parser->discoverFeeds(m_serviceRoot, url, greedy);
   QPixmap icon;
   int timeout = qApp->settings()->value(GROUP(Feeds), SETTING(Feeds::UpdateTimeout)).toInt();
 
@@ -158,15 +160,10 @@ QList<StandardFeed*> FormDiscoverFeeds::discoverFeedsWithParser(const FeedParser
 
 void FormDiscoverFeeds::discoverFeeds() {
   QString url = m_ui.m_txtUrl->lineEdit()->text();
-  bool sitemap_discover = m_ui.m_cbDiscoverSitemaps->isChecked();
+  bool greedy_discover = m_ui.m_cbDiscoverRecursive->isChecked();
 
   std::function<QList<StandardFeed*>(const FeedParser*)> func = [=](const FeedParser* parser) -> QList<StandardFeed*> {
-    if (!sitemap_discover && dynamic_cast<const SitemapParser*>(parser) != nullptr) {
-      return {};
-    }
-    else {
-      return discoverFeedsWithParser(parser, url);
-    }
+    return discoverFeedsWithParser(parser, url, greedy_discover);
   };
 
   std::function<QList<StandardFeed*>(QList<StandardFeed*>&, const QList<StandardFeed*>&)> reducer =

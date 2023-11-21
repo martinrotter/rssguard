@@ -21,20 +21,24 @@ SitemapParser::SitemapParser(const QString& data) : FeedParser(data) {}
 
 SitemapParser::~SitemapParser() {}
 
-QList<StandardFeed*> SitemapParser::discoverFeeds(ServiceRoot* root, const QUrl& url) const {
+QList<StandardFeed*> SitemapParser::discoverFeeds(ServiceRoot* root, const QUrl& url, bool greedy) const {
   QHash<QString, StandardFeed*> feeds;
   QStringList to_process_sitemaps;
   int sitemap_index_limit = 2;
   int timeout = qApp->settings()->value(GROUP(Feeds), SETTING(Feeds::UpdateTimeout)).toInt();
 
-  // 1. Process "URL/robots.txt" file.
-  // 2. Process "URLHOST/robots.txt" file.
-  // 3. Direct URL test. If sitemap index, process its children.
+  // 1. Direct URL test. If sitemap index, process its children. If found, stop if non-recursive
+  //    discovery is chosen.
+  // 2. Process "URL/robots.txt" file.
+  // 3. Process "URLHOST/robots.txt" file.
   // 4. Test "URL/sitemap.xml" endpoint.
   // 5. Test "URL/sitemap.xml.gz" endpoint.
 
   // 1.
+  to_process_sitemaps.append(url.toString());
+
   // 2.
+  // 3.
   QStringList to_process_robots = {
     url.toString(QUrl::UrlFormattingOption::StripTrailingSlash).replace(QRegularExpression(QSL("\\/$")), QString()) +
       QSL("/robots.txt"),
@@ -70,9 +74,6 @@ QList<StandardFeed*> SitemapParser::discoverFeeds(ServiceRoot* root, const QUrl&
     }
   }
 
-  // 3.
-  to_process_sitemaps.append(url.toString());
-
   // 4.
   to_process_sitemaps.append(url.toString(QUrl::UrlFormattingOption::StripTrailingSlash)
                                .replace(QRegularExpression(QSL("\\/$")), QString()) +
@@ -107,13 +108,16 @@ QList<StandardFeed*> SitemapParser::discoverFeeds(ServiceRoot* root, const QUrl&
 
     if (res.m_networkError == QNetworkReply::NetworkError::NoError) {
       try {
-        // 1.
         auto guessed_feed = guessFeed(data, res.m_contentType);
 
         guessed_feed.first->setSource(my_url);
         guessed_feed.first->setTitle(my_url);
 
         feeds.insert(my_url, guessed_feed.first);
+
+        if (!greedy) {
+          break;
+        }
       }
       catch (const FeedRecognizedButFailedException& ex) {
         // This is index.

@@ -78,6 +78,8 @@ class TabWidget : public QTabWidget {
     // Adds new WebBrowser tab to global TabWidget.
     int addEmptyBrowser();
 
+    int addMediaPlayer(const QString& url, bool make_active);
+
     // Adds new WebBrowser with link. This is used when user
     // selects to "Open link in new tab.".
     int addLinkedBrowser(const QUrl& initial_url = QUrl());

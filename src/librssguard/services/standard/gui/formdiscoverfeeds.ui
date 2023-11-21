@@ -46,9 +46,9 @@
     </layout>
    </item>
    <item row="1" column="0" colspan="2">
-    <widget class="QCheckBox" name="m_cbDiscoverSitemaps">
+    <widget class="QCheckBox" name="m_cbDiscoverRecursive">
      <property name="text">
-      <string>Discover Sitemaps too (can take some time for bigger websites)</string>
+      <string>Recursive discovery (can take some time for bigger websites)</string>
      </property>
     </widget>
    </item>

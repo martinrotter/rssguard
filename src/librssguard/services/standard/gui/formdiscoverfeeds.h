@@ -57,7 +57,7 @@ class FormDiscoverFeeds : public QDialog {
     StandardFeed* selectedFeed() const;
     RootItem* targetParent() const;
 
-    QList<StandardFeed*> discoverFeedsWithParser(const FeedParser* parser, const QString& url);
+    QList<StandardFeed*> discoverFeedsWithParser(const FeedParser* parser, const QString& url, bool greedy);
 
     void userWantsAdvanced();
     void loadDiscoveredFeeds(const QList<StandardFeed*>& feeds);

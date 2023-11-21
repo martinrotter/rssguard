@@ -673,7 +673,7 @@ void FormMain::loadSize() {
     setWindowState(windowState() | Qt::WindowState::WindowMaximized);
 
     // We process events so that window is really maximized fast.
-    qApp->processEvents();
+    QCoreApplication::processEvents();
   }
 
   m_ui->m_actionMessagePreviewEnabled

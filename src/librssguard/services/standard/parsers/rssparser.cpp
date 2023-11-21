@@ -18,7 +18,9 @@ RssParser::RssParser(const QString& data) : FeedParser(data) {}
 
 RssParser::~RssParser() {}
 
-QList<StandardFeed*> RssParser::discoverFeeds(ServiceRoot* root, const QUrl& url) const {
+QList<StandardFeed*> RssParser::discoverFeeds(ServiceRoot* root, const QUrl& url, bool greedy) const {
+  Q_UNUSED(greedy)
+
   QString my_url = url.toString();
   QList<StandardFeed*> feeds;
 

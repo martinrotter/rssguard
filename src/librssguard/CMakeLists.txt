@@ -133,6 +133,8 @@ set(SOURCES
   gui/reusable/locationlineedit.h
   gui/reusable/messagecountspinbox.cpp
   gui/reusable/messagecountspinbox.h
+  gui/reusable/mediaplayer.cpp
+  gui/reusable/mediaplayer.h
   gui/reusable/networkproxydetails.cpp
   gui/reusable/networkproxydetails.h
   gui/reusable/nonclosablemenu.cpp
@@ -464,6 +466,7 @@ set(UI_FILES
   gui/notifications/notificationseditor.ui
   gui/notifications/singlenotificationeditor.ui
   gui/notifications/toastnotification.ui
+  gui/reusable/mediaplayer.ui
   gui/reusable/networkproxydetails.ui
   gui/reusable/searchtextwidget.ui
   gui/richtexteditor/mrichtextedit.ui
@@ -769,6 +772,7 @@ endif()
 if(NOT OS2)
   target_link_libraries(rssguard PUBLIC
     Qt${QT_VERSION_MAJOR}::Multimedia
+    Qt${QT_VERSION_MAJOR}::MultimediaWidgets
   )
 endif()
 

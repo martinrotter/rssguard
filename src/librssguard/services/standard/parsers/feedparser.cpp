@@ -41,7 +41,11 @@ FeedParser::FeedParser(QString data, bool is_xml)
 
 FeedParser::~FeedParser() {}
 
-QList<StandardFeed*> FeedParser::discoverFeeds(ServiceRoot* root, const QUrl& url) const {
+QList<StandardFeed*> FeedParser::discoverFeeds(ServiceRoot* root, const QUrl& url, bool greedy) const {
+  Q_UNUSED(root)
+  Q_UNUSED(url)
+  Q_UNUSED(greedy)
+
   return {};
 }
 

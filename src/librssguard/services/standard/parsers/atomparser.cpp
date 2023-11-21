@@ -25,7 +25,9 @@ AtomParser::AtomParser(const QString& data) : FeedParser(data) {
 
 AtomParser::~AtomParser() {}
 
-QList<StandardFeed*> AtomParser::discoverFeeds(ServiceRoot* root, const QUrl& url) const {
+QList<StandardFeed*> AtomParser::discoverFeeds(ServiceRoot* root, const QUrl& url, bool greedy) const {
+  Q_UNUSED(greedy)
+
   QString my_url = url.toString();
   QList<StandardFeed*> feeds;
 

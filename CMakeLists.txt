@@ -140,7 +140,7 @@ set(QT_COMPONENTS
 )
 
 if(NOT OS2)
-  list(APPEND QT_COMPONENTS Multimedia)
+  list(APPEND QT_COMPONENTS Multimedia MultimediaWidgets)
 endif()
 
 if(WIN32 AND NOT BUILD_WITH_QT6)

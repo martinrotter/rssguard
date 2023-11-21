@@ -8,6 +8,7 @@
 #include "gui/feedsview.h"
 #include "gui/messagepreviewer.h"
 #include "gui/messagesview.h"
+#include "gui/reusable/mediaplayer.h"
 #include "gui/reusable/plaintoolbutton.h"
 #include "gui/tabbar.h"
 #include "gui/webbrowser.h"
@@ -86,14 +87,13 @@ void TabWidget::checkTabBarVisibility() {
 
   if (should_be_visible) {
     setCornerWidget(m_btnMainMenu, Qt::Corner::TopLeftCorner);
-    m_btnMainMenu->setVisible(true);
   }
   else {
     setCornerWidget(nullptr, Qt::Corner::TopLeftCorner);
     setCornerWidget(nullptr, Qt::Corner::TopRightCorner);
-    m_btnMainMenu->setVisible(false);
   }
 
+  m_btnMainMenu->setVisible(should_be_visible);
   tabBar()->setVisible(should_be_visible);
 }
 
@@ -222,6 +222,26 @@ int TabWidget::addSingleMessageView(RootItem* root, const Message& message) {
 
 int TabWidget::addEmptyBrowser() {
   return addBrowser(false, true);
+}
+
+int TabWidget::addMediaPlayer(const QString& url, bool make_active) {
+  auto* player = new MediaPlayer(this);
+
+  int index = addTab(player,
+                     qApp->icons()->fromTheme(QSL("player_play"), QSL("media-playback-start")),
+                     tr("Media player"),
+                     TabBar::TabType::Closable);
+
+  if (make_active) {
+    setCurrentIndex(index);
+    player->setFocus(Qt::FocusReason::OtherFocusReason);
+  }
+
+  QTimer::singleShot(500, player, [player, url]() {
+    player->playUrl(url);
+  });
+
+  return index;
 }
 
 int TabWidget::addLinkedBrowser(const QUrl& initial_url) {

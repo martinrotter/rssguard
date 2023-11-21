@@ -14,7 +14,7 @@ class RdfParser : public FeedParser {
     explicit RdfParser(const QString& data);
     virtual ~RdfParser();
 
-    virtual QList<StandardFeed*> discoverFeeds(ServiceRoot* root, const QUrl& url) const;
+    virtual QList<StandardFeed*> discoverFeeds(ServiceRoot* root, const QUrl& url, bool greedy) const;
 
     virtual QPair<StandardFeed*, QList<IconLocation>> guessFeed(const QByteArray& content,
                                                                 const QString& content_type) const;

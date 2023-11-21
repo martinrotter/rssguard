@@ -22,11 +22,11 @@ void PlainToolButton::paintEvent(QPaintEvent* e) {
 
   if (isEnabled()) {
     if (underMouse() || isChecked()) {
-      p.setOpacity(0.7);
+      p.setOpacity(0.8);
     }
   }
   else {
-    p.setOpacity(0.3);
+    p.setOpacity(0.2);
   }
 
   icon().paint(&p, rect);

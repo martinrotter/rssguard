@@ -15,7 +15,6 @@ using namespace std::chrono_literals;
 
 BaseToastNotification::BaseToastNotification(QWidget* parent) : QDialog(parent), m_timerId(-1) {
   setAttribute(Qt::WidgetAttribute::WA_ShowWithoutActivating);
-  // setFixedWidth(qApp->settings()->value(GROUP(GUI), SETTING(GUI::ToastNotificationsWidth)).toInt());
   setFocusPolicy(Qt::FocusPolicy::NoFocus);
   setAttribute(Qt::WidgetAttribute::WA_DeleteOnClose, false);
 
@@ -82,7 +81,8 @@ bool BaseToastNotification::eventFilter(QObject* watched, QEvent* event) {
   if (event->type() == QEvent::Type::MouseButtonPress || event->type() == QEvent::Type::MouseButtonRelease) {
     if (dynamic_cast<QMouseEvent*>(event)->button() == Qt::MouseButton::RightButton) {
       event->accept();
-      QTimer::singleShot(100, this, &BaseToastNotification::close);
+      QCoreApplication::processEvents();
+      QTimer::singleShot(200, this, &BaseToastNotification::close);
       return true;
     }
   }

@@ -100,7 +100,7 @@ void ToastNotificationsManager::processNotification(BaseToastNotification* notif
 
   // Make sure notification is finally resized.
   notif->adjustSize();
-  qApp->processEvents();
+  QCoreApplication::processEvents();
 
   // Move notification, at this point we already need to know its precise size.
   moveNotificationToCorner(notif, notif_new_pos);

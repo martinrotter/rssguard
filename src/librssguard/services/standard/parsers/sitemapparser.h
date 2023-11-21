@@ -12,7 +12,7 @@ class SitemapParser : public FeedParser {
     explicit SitemapParser(const QString& data);
     virtual ~SitemapParser();
 
-    virtual QList<StandardFeed*> discoverFeeds(ServiceRoot* root, const QUrl& url) const;
+    virtual QList<StandardFeed*> discoverFeeds(ServiceRoot* root, const QUrl& url, bool greedy) const;
 
     virtual QPair<StandardFeed*, QList<IconLocation>> guessFeed(const QByteArray& content,
                                                                 const QString& content_type) const;
