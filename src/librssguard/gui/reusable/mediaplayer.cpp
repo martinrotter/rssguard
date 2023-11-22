@@ -103,7 +103,12 @@ void MediaPlayer::onDurationChanged(qint64 duration) {
 }
 
 void MediaPlayer::onErrorOccurred(QMediaPlayer::Error error, const QString& error_string) {
-  m_ui.m_lblStatus->setText(error_string);
+  if (error_string.isEmpty()) {
+    m_ui.m_lblStatus->setText(errorToString(error));
+  }
+  else {
+    m_ui.m_lblStatus->setText(error_string);
+  }
 }
 
 void MediaPlayer::onAudioAvailable(bool available) {
@@ -153,6 +158,36 @@ void MediaPlayer::onSeekableChanged(bool seekable) {
 
   if (!seekable) {
     onPositionChanged(0);
+  }
+}
+
+QString MediaPlayer::errorToString(QMediaPlayer::Error error) const {
+  switch (error) {
+    case QMediaPlayer::ResourceError:
+      return tr("Cannot load media (missing codecs)");
+
+    case QMediaPlayer::FormatError:
+      return tr("Unrecognized format");
+
+    case QMediaPlayer::NetworkError:
+      return tr("Network problem");
+
+    case QMediaPlayer::AccessDeniedError:
+      return tr("Access denied");
+
+#if QT_VERSION_MAJOR == 5
+    case QMediaPlayer::ServiceMissingError:
+      return tr("Service is missing");
+
+    case QMediaPlayer::MediaIsPlaylist:
+      return tr("This is playlist");
+#endif
+
+    case QMediaPlayer::NoError:
+      return tr("No errors");
+
+    default:
+      return tr("Unknown error");
   }
 }
 

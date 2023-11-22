@@ -64,6 +64,7 @@ class MediaPlayer : public TabContent {
     qint64 convertSliderProgress(int slider_progress) const;
     int convertToSliderProgress(qint64 player_progress) const;
 
+    QString errorToString(QMediaPlayer::Error error) const;
     QString mediaStatusToString(QMediaPlayer::MediaStatus status) const;
 
     void setupIcons();
