@@ -17,12 +17,15 @@ MediaPlayer::MediaPlayer(QWidget* parent)
   m_ui.setupUi(this);
 
   m_player->setVideoOutput(m_ui.m_video);
+
+#if QT_VERSION_MAJOR == 6
   m_player->setAudioOutput(m_audio);
+#endif
 
   setupIcons();
   createConnections();
 
-  onPlaybackStateChanged(QMediaPlayer::PlaybackState::StoppedState);
+  onPlaybackStateChanged(QMediaPlayer::PLAYBACK_STATE::StoppedState);
   onMediaStatusChanged(QMediaPlayer::MediaStatus::NoMedia);
 }
 
@@ -33,14 +36,24 @@ WebBrowser* MediaPlayer::webBrowser() const {
 }
 
 void MediaPlayer::playUrl(const QString& url) {
-  setVolume(m_ui.m_slidVolume->value());
+  if (m_muted) {
+    muteUnmute();
+  }
+  else {
+    setVolume(m_ui.m_slidVolume->value());
+  }
 
+#if QT_VERSION_MAJOR == 6
   m_player->setSource(url);
+#else
+  m_player->setMedia(QUrl(url));
+#endif
+
   m_player->play();
 }
 
 void MediaPlayer::playPause() {
-  if (m_player->playbackState() != QMediaPlayer::PlaybackState::PlayingState) {
+  if (m_player->PLAYBACK_STATE_METHOD() != QMediaPlayer::PLAYBACK_STATE::PlayingState) {
     m_player->play();
   }
   else {
@@ -53,7 +66,13 @@ void MediaPlayer::stop() {
 }
 
 void MediaPlayer::download() {
-  emit urlDownloadRequested(m_player->source());
+  emit urlDownloadRequested(
+#if QT_VERSION_MAJOR == 6
+    m_player->source()
+#else
+    m_player->media().request().url()
+#endif
+  );
 }
 
 void MediaPlayer::muteUnmute() {
@@ -64,12 +83,17 @@ void MediaPlayer::muteUnmute() {
 }
 
 void MediaPlayer::setVolume(int volume) {
-  m_player->audioOutput()->setVolume(volume / 100.0f);
+#if QT_VERSION_MAJOR == 6
+  m_player->audioOutput()->setVolume(convertSliderVolume(volume));
+#else
+  m_player->setVolume(volume);
+#endif
+
   m_ui.m_btnVolume->setIcon(volume <= 0 ? m_iconMute : m_iconUnmute);
 }
 
 void MediaPlayer::seek(int position) {
-  m_player->setPosition(position * 1000);
+  m_player->setPosition(convertSliderProgress(position));
 }
 
 void MediaPlayer::onDurationChanged(qint64 duration) {
@@ -95,19 +119,19 @@ void MediaPlayer::onMediaStatusChanged(QMediaPlayer::MediaStatus status) {
   m_ui.m_lblStatus->setText(mediaStatusToString(status));
 }
 
-void MediaPlayer::onPlaybackStateChanged(QMediaPlayer::PlaybackState state) {
+void MediaPlayer::onPlaybackStateChanged(QMediaPlayer::PLAYBACK_STATE state) {
   switch (state) {
-    case QMediaPlayer::StoppedState:
+    case QMediaPlayer::PLAYBACK_STATE::StoppedState:
       m_ui.m_btnPlayPause->setIcon(m_iconPlay);
       m_ui.m_btnStop->setEnabled(false);
       break;
 
-    case QMediaPlayer::PlayingState:
+    case QMediaPlayer::PLAYBACK_STATE::PlayingState:
       m_ui.m_btnPlayPause->setIcon(m_iconPause);
       m_ui.m_btnStop->setEnabled(true);
       break;
 
-    case QMediaPlayer::PausedState:
+    case QMediaPlayer::PLAYBACK_STATE::PausedState:
       m_ui.m_btnPlayPause->setIcon(m_iconPlay);
       m_ui.m_btnStop->setEnabled(true);
       break;
@@ -116,8 +140,12 @@ void MediaPlayer::onPlaybackStateChanged(QMediaPlayer::PlaybackState state) {
 
 void MediaPlayer::onPositionChanged(qint64 position) {
   m_ui.m_slidProgress->blockSignals(true);
-  m_ui.m_slidProgress->setValue(position / 1000);
+  m_ui.m_slidProgress->setValue(convertToSliderProgress(position));
   m_ui.m_slidProgress->blockSignals(false);
+}
+
+int MediaPlayer::convertToSliderProgress(qint64 player_progress) const {
+  return player_progress / 1000;
 }
 
 void MediaPlayer::onSeekableChanged(bool seekable) {
@@ -126,6 +154,14 @@ void MediaPlayer::onSeekableChanged(bool seekable) {
   if (!seekable) {
     onPositionChanged(0);
   }
+}
+
+float MediaPlayer::convertSliderVolume(int slider_volume) const {
+  return slider_volume / 100.0f;
+}
+
+qint64 MediaPlayer::convertSliderProgress(int slider_progress) const {
+  return qint64(slider_progress) * qint64(1000);
 }
 
 QString MediaPlayer::mediaStatusToString(QMediaPlayer::MediaStatus status) const {
@@ -171,11 +207,26 @@ void MediaPlayer::setupIcons() {
 
 void MediaPlayer::createConnections() {
   connect(m_player, &QMediaPlayer::durationChanged, this, &MediaPlayer::onDurationChanged);
+
+#if QT_VERSION_MAJOR == 6
   connect(m_player, &QMediaPlayer::errorOccurred, this, &MediaPlayer::onErrorOccurred);
+#else
+  connect(m_player, QOverload<QMediaPlayer::Error>::of(&QMediaPlayer::error), this, [this](QMediaPlayer::Error error) {
+    onErrorOccurred(error);
+  });
+#endif
+
+#if QT_VERSION_MAJOR == 6
   connect(m_player, &QMediaPlayer::hasAudioChanged, this, &MediaPlayer::onAudioAvailable);
   connect(m_player, &QMediaPlayer::hasVideoChanged, this, &MediaPlayer::onVideoAvailable);
-  connect(m_player, &QMediaPlayer::mediaStatusChanged, this, &MediaPlayer::onMediaStatusChanged);
   connect(m_player, &QMediaPlayer::playbackStateChanged, this, &MediaPlayer::onPlaybackStateChanged);
+#else
+  connect(m_player, &QMediaPlayer::audioAvailableChanged, this, &MediaPlayer::onAudioAvailable);
+  connect(m_player, &QMediaPlayer::videoAvailableChanged, this, &MediaPlayer::onVideoAvailable);
+  connect(m_player, &QMediaPlayer::stateChanged, this, &MediaPlayer::onPlaybackStateChanged);
+#endif
+
+  connect(m_player, &QMediaPlayer::mediaStatusChanged, this, &MediaPlayer::onMediaStatusChanged);
   connect(m_player, &QMediaPlayer::positionChanged, this, &MediaPlayer::onPositionChanged);
   connect(m_player, &QMediaPlayer::seekableChanged, this, &MediaPlayer::onSeekableChanged);
 

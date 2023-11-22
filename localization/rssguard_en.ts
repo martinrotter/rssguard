@@ -4504,47 +4504,47 @@ Login tokens expiration: %2</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/librssguard/gui/reusable/mediaplayer.cpp" line="134"/>
+        <location filename="../src/librssguard/gui/reusable/mediaplayer.cpp" line="151"/>
         <source>No media</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/librssguard/gui/reusable/mediaplayer.cpp" line="137"/>
+        <location filename="../src/librssguard/gui/reusable/mediaplayer.cpp" line="154"/>
         <source>Loading...</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/librssguard/gui/reusable/mediaplayer.cpp" line="140"/>
+        <location filename="../src/librssguard/gui/reusable/mediaplayer.cpp" line="157"/>
         <source>Media loaded</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/librssguard/gui/reusable/mediaplayer.cpp" line="143"/>
+        <location filename="../src/librssguard/gui/reusable/mediaplayer.cpp" line="160"/>
         <source>Media stalled</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/librssguard/gui/reusable/mediaplayer.cpp" line="146"/>
+        <location filename="../src/librssguard/gui/reusable/mediaplayer.cpp" line="163"/>
         <source>Buffering...</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/librssguard/gui/reusable/mediaplayer.cpp" line="149"/>
+        <location filename="../src/librssguard/gui/reusable/mediaplayer.cpp" line="166"/>
         <source>Loaded</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/librssguard/gui/reusable/mediaplayer.cpp" line="152"/>
+        <location filename="../src/librssguard/gui/reusable/mediaplayer.cpp" line="169"/>
         <source>Ended</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/librssguard/gui/reusable/mediaplayer.cpp" line="155"/>
+        <location filename="../src/librssguard/gui/reusable/mediaplayer.cpp" line="172"/>
         <source>Media is invalid</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/librssguard/gui/reusable/mediaplayer.cpp" line="158"/>
+        <location filename="../src/librssguard/gui/reusable/mediaplayer.cpp" line="175"/>
         <source>Unknown</source>
         <translation type="unfinished"></translation>
     </message>
@@ -7963,12 +7963,12 @@ Unread news: %2</translation>
         <translation>Downloads</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/gui/tabwidget.cpp" line="232"/>
+        <location filename="../src/librssguard/gui/tabwidget.cpp" line="237"/>
         <source>Media player</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/librssguard/gui/tabwidget.cpp" line="257"/>
+        <location filename="../src/librssguard/gui/tabwidget.cpp" line="262"/>
         <source>Web browser</source>
         <translation>Web browser</translation>
     </message>
@@ -8497,17 +8497,17 @@ Last login on: %4</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/librssguard/gui/webviewers/webengine/webengineviewer.cpp" line="104"/>
+        <location filename="../src/librssguard/gui/webviewers/webengine/webengineviewer.cpp" line="105"/>
         <source>Open link as audio/video</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/librssguard/gui/webviewers/webengine/webengineviewer.cpp" line="113"/>
+        <location filename="../src/librssguard/gui/webviewers/webengine/webengineviewer.cpp" line="115"/>
         <source>Open with external tool</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/librssguard/gui/webviewers/webengine/webengineviewer.cpp" line="132"/>
+        <location filename="../src/librssguard/gui/webviewers/webengine/webengineviewer.cpp" line="134"/>
         <source>No external tools activated</source>
         <translation type="unfinished"></translation>
     </message>

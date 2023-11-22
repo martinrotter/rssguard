@@ -101,9 +101,11 @@ void WebEngineViewer::contextMenuEvent(QContextMenuEvent* event) {
       }
     });
 
-    menu->addAction(qApp->icons()->fromTheme(QSL("document-open")), tr("Open link as audio/video"), [link_url]() {
-      qApp->mainForm()->tabWidget()->addMediaPlayer(link_url, true);
-    });
+    menu->addAction(qApp->icons()->fromTheme(QSL("player_play"), QSL("media-playback-start")),
+                    tr("Open link as audio/video"),
+                    [link_url]() {
+                      qApp->mainForm()->tabWidget()->addMediaPlayer(link_url, true);
+                    });
   }
 
   if (menu_data.mediaUrl().isValid() || menu_data.linkUrl().isValid()) {

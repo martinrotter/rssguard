@@ -83,6 +83,10 @@ void ArticleListNotification::loadResults(const QHash<Feed*, QList<Message>>& ne
   });
 
   for (Feed* fd : ks) {
+    if (fd->isQuiet()) {
+      continue;
+    }
+
     m_ui.m_cmbFeeds->addItem(fd->sanitizedTitle(), QVariant::fromValue(fd));
   }
 }

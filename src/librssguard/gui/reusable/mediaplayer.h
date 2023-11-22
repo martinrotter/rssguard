@@ -9,6 +9,14 @@
 
 #include <QMediaPlayer>
 
+#if QT_VERSION_MAJOR == 6
+#define PLAYBACK_STATE        PlaybackState
+#define PLAYBACK_STATE_METHOD playbackState
+#else
+#define PLAYBACK_STATE        State
+#define PLAYBACK_STATE_METHOD state
+#endif
+
 class QAudioOutput;
 
 class MediaPlayer : public TabContent {
@@ -29,7 +37,8 @@ class MediaPlayer : public TabContent {
     void download();
     void muteUnmute();
 
-    // NOTE: Volume is from 0 to 100.
+    // NOTE: Volume is from 0 to 100 taken directly from slider or
+    // elsewhere.
     void setVolume(int volume);
 
     // NOTE: Media is seekable in miliseconds, but that is too muc
@@ -37,11 +46,13 @@ class MediaPlayer : public TabContent {
     void seek(int position);
 
     void onDurationChanged(qint64 duration);
-    void onErrorOccurred(QMediaPlayer::Error error, const QString& error_string);
+    void onErrorOccurred(QMediaPlayer::Error error, const QString& error_string = {});
     void onAudioAvailable(bool available);
     void onVideoAvailable(bool available);
     void onMediaStatusChanged(QMediaPlayer::MediaStatus status);
-    void onPlaybackStateChanged(QMediaPlayer::PlaybackState state);
+
+    void onPlaybackStateChanged(QMediaPlayer::PLAYBACK_STATE state);
+
     void onPositionChanged(qint64 position);
     void onSeekableChanged(bool seekable);
 
@@ -49,6 +60,10 @@ class MediaPlayer : public TabContent {
     void urlDownloadRequested(const QUrl& url);
 
   private:
+    float convertSliderVolume(int slider_volume) const;
+    qint64 convertSliderProgress(int slider_progress) const;
+    int convertToSliderProgress(qint64 player_progress) const;
+
     QString mediaStatusToString(QMediaPlayer::MediaStatus status) const;
 
     void setupIcons();

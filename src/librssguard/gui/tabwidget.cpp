@@ -227,6 +227,11 @@ int TabWidget::addEmptyBrowser() {
 int TabWidget::addMediaPlayer(const QString& url, bool make_active) {
   auto* player = new MediaPlayer(this);
 
+  connect(player,
+          &MediaPlayer::urlDownloadRequested,
+          qApp->downloadManager(),
+          QOverload<const QUrl&>::of(&DownloadManager::download));
+
   int index = addTab(player,
                      qApp->icons()->fromTheme(QSL("player_play"), QSL("media-playback-start")),
                      tr("Media player"),

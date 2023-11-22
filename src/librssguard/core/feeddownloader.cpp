@@ -542,8 +542,14 @@ QString FeedDownloadResults::overview(int how_many_feeds) const {
   QStringList result;
 
   for (int i = 0, number_items_output = qMin(how_many_feeds, m_updatedFeeds.size()); i < number_items_output; i++) {
-    result.append(m_updatedFeeds.keys().at(i)->title() + QSL(": ") +
-                  QString::number(m_updatedFeeds.value(m_updatedFeeds.keys().at(i)).size()));
+    auto* fd = m_updatedFeeds.keys().at(i);
+    auto msgs = m_updatedFeeds.value(fd);
+
+    if (fd->isQuiet()) {
+      continue;
+    }
+
+    result.append(fd->title() + QSL(": ") + QString::number(msgs.size()));
   }
 
   QString res_str = result.join(QSL("\n"));
