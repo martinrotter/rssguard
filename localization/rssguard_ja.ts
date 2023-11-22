@@ -4524,47 +4524,47 @@ Login tokens expiration: %2</translation>
     <message>
       <location filename="../src/librssguard/gui/reusable/mediaplayer.cpp" line="134"/>
       <source>No media</source>
-      <translation type="unfinished">No media</translation>
+      <translation>メディアがありません</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/reusable/mediaplayer.cpp" line="137"/>
       <source>Loading...</source>
-      <translation type="unfinished">Loading...</translation>
+      <translation>読み込み中…</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/reusable/mediaplayer.cpp" line="140"/>
       <source>Media loaded</source>
-      <translation type="unfinished">Media loaded</translation>
+      <translation>メディアが読み込まれました</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/reusable/mediaplayer.cpp" line="143"/>
       <source>Media stalled</source>
-      <translation type="unfinished">Media stalled</translation>
+      <translation>メディアが停止しました</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/reusable/mediaplayer.cpp" line="146"/>
       <source>Buffering...</source>
-      <translation type="unfinished">Buffering...</translation>
+      <translation>バッファリング中...</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/reusable/mediaplayer.cpp" line="149"/>
       <source>Loaded</source>
-      <translation type="unfinished">Loaded</translation>
+      <translation>読み込まれました</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/reusable/mediaplayer.cpp" line="152"/>
       <source>Ended</source>
-      <translation type="unfinished">Ended</translation>
+      <translation>終了</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/reusable/mediaplayer.cpp" line="155"/>
       <source>Media is invalid</source>
-      <translation type="unfinished">Media is invalid</translation>
+      <translation>メディアが無効です</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/reusable/mediaplayer.cpp" line="158"/>
       <source>Unknown</source>
-      <translation type="unfinished">Unknown</translation>
+      <translation>不明</translation>
     </message>
   </context>
   <context>
@@ -8007,7 +8007,7 @@ Unread news: %2</source>
     <message>
       <location filename="../src/librssguard/gui/tabwidget.cpp" line="232"/>
       <source>Media player</source>
-      <translation type="unfinished">Media player</translation>
+      <translation>メディアプレーヤー</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/tabwidget.cpp" line="257"/>
@@ -8541,7 +8541,7 @@ Last login on: %4</translation>
     <message>
       <location filename="../src/librssguard/gui/webviewers/webengine/webengineviewer.cpp" line="104"/>
       <source>Open link as audio/video</source>
-      <translation type="unfinished">Open link as audio/video</translation>
+      <translation>リンクをオーディオ/ビデオとして開く</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/webviewers/webengine/webengineviewer.cpp" line="113"/>
