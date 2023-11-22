@@ -386,7 +386,7 @@ version en cliquant sur cette notification.</translation>
   <context>
     <name>BaseToastNotification</name>
     <message>
-      <location filename="../src/librssguard/gui/notifications/basetoastnotification.cpp" line="41"/>
+      <location filename="../src/librssguard/gui/notifications/basetoastnotification.cpp" line="40"/>
       <source>Close this notification</source>
       <translation>Fermer cette notification</translation>
     </message>
@@ -473,12 +473,12 @@ version en cliquant sur cette notification.</translation>
   <context>
     <name>DiscoveredFeedsModel</name>
     <message>
-      <location filename="../src/librssguard/services/standard/gui/formdiscoverfeeds.cpp" line="297"/>
+      <location filename="../src/librssguard/services/standard/gui/formdiscoverfeeds.cpp" line="294"/>
       <source>Title</source>
       <translation>Titre</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/services/standard/gui/formdiscoverfeeds.cpp" line="297"/>
+      <location filename="../src/librssguard/services/standard/gui/formdiscoverfeeds.cpp" line="294"/>
       <source>Type</source>
       <translation>Type</translation>
     </message>
@@ -1853,8 +1853,8 @@ Dossier du cache Moteur Web QT -&gt; &quot;%7&quot;</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/standard/gui/formdiscoverfeeds.ui" line="51"/>
-      <source>Discover Sitemaps too (can take some time for bigger websites)</source>
-      <translation>Trouver les sitemaps (peut prendre du temps pour les sites plus larges)</translation>
+      <source>Recursive discovery (can take some time for bigger websites)</source>
+      <translation>Découverte récursive (peut prendre un certain temps pour les sites plus gros)</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/standard/gui/formdiscoverfeeds.ui" line="77"/>
@@ -1912,12 +1912,12 @@ Dossier du cache Moteur Web QT -&gt; &quot;%7&quot;</translation>
       <translation>Erreur : %1</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/services/standard/gui/formdiscoverfeeds.cpp" line="195"/>
+      <location filename="../src/librssguard/services/standard/gui/formdiscoverfeeds.cpp" line="192"/>
       <source>URL is valid.</source>
       <translation>L'URL est valide.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/services/standard/gui/formdiscoverfeeds.cpp" line="198"/>
+      <location filename="../src/librssguard/services/standard/gui/formdiscoverfeeds.cpp" line="195"/>
       <source>URL is NOT valid.</source>
       <translation>L'URL n'est pas valide.</translation>
     </message>
@@ -2084,7 +2084,7 @@ Dossier du cache Moteur Web QT -&gt; &quot;%7&quot;</translation>
     <message>
       <location filename="../src/librssguard/services/greader/gui/formgreaderfeeddetails.cpp" line="49"/>
       <source>Feed was added, refreshing feed tree...</source>
-      <translation type="unfinished">Feed was added, refreshing feed tree...</translation>
+      <translation>Flux ajouté, rafraîchissement de l'arborescence des flux en cours...</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/greader/gui/formgreaderfeeddetails.cpp" line="63"/>
@@ -4548,6 +4548,59 @@ Expiration de jetons d&apos;authentification: %2</translation>
     </message>
   </context>
   <context>
+    <name>MediaPlayer</name>
+    <message>
+      <location filename="../src/librssguard/gui/reusable/mediaplayer.ui" line="14"/>
+      <source>Form</source>
+      <translation>Formulaire</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard/gui/reusable/mediaplayer.cpp" line="134"/>
+      <source>No media</source>
+      <translation>Aucun média</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard/gui/reusable/mediaplayer.cpp" line="137"/>
+      <source>Loading...</source>
+      <translation>Chargement ...</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard/gui/reusable/mediaplayer.cpp" line="140"/>
+      <source>Media loaded</source>
+      <translation>Média chargé</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard/gui/reusable/mediaplayer.cpp" line="143"/>
+      <source>Media stalled</source>
+      <translation>Média bloqué</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard/gui/reusable/mediaplayer.cpp" line="146"/>
+      <source>Buffering...</source>
+      <translation>Mise en mémoire tampon...</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard/gui/reusable/mediaplayer.cpp" line="149"/>
+      <source>Loaded</source>
+      <translation>Chargé</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard/gui/reusable/mediaplayer.cpp" line="152"/>
+      <source>Ended</source>
+      <translation>Terminé</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard/gui/reusable/mediaplayer.cpp" line="155"/>
+      <source>Media is invalid</source>
+      <translation>Média invalide</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard/gui/reusable/mediaplayer.cpp" line="158"/>
+      <source>Unknown</source>
+      <translation>Inconnu</translation>
+    </message>
+  </context>
+  <context>
     <name>MessageBrowser</name>
     <message>
       <location filename="../src/librssguard/gui/messagebrowser.cpp" line="169"/>
@@ -5780,50 +5833,50 @@ Liste d&apos;agrégateurs compatibles:</translation>
       <translation>apostrophe fermante manquante</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/services/standard/parsers/atomparser.cpp" line="240"/>
-      <location filename="../src/librssguard/services/standard/parsers/rdfparser.cpp" line="190"/>
-      <location filename="../src/librssguard/services/standard/parsers/rssparser.cpp" line="190"/>
-      <location filename="../src/librssguard/services/standard/parsers/sitemapparser.cpp" line="176"/>
+      <location filename="../src/librssguard/services/standard/parsers/atomparser.cpp" line="242"/>
+      <location filename="../src/librssguard/services/standard/parsers/rdfparser.cpp" line="192"/>
+      <location filename="../src/librssguard/services/standard/parsers/rssparser.cpp" line="192"/>
+      <location filename="../src/librssguard/services/standard/parsers/sitemapparser.cpp" line="180"/>
       <source>XML is not well-formed, %1</source>
       <translation>L'XML n'est pas formatté correctement, %1</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/services/standard/parsers/atomparser.cpp" line="246"/>
+      <location filename="../src/librssguard/services/standard/parsers/atomparser.cpp" line="248"/>
       <source>not an ATOM feed</source>
       <translation>n'est pas un flux ATOM</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/services/standard/parsers/jsonparser.cpp" line="117"/>
+      <location filename="../src/librssguard/services/standard/parsers/jsonparser.cpp" line="119"/>
       <source>JSON error &apos;%1&apos;</source>
       <translation>Erreur JSON &apos;%1&apos;</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/services/standard/parsers/jsonparser.cpp" line="148"/>
+      <location filename="../src/librssguard/services/standard/parsers/jsonparser.cpp" line="150"/>
       <source>not a JSON feed</source>
       <translation>n'est pas un flux JSON</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/services/standard/parsers/rdfparser.cpp" line="196"/>
+      <location filename="../src/librssguard/services/standard/parsers/rdfparser.cpp" line="198"/>
       <source>not an RDF feed</source>
       <translation>n'est pas un flux RDF</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/services/standard/parsers/rssparser.cpp" line="196"/>
+      <location filename="../src/librssguard/services/standard/parsers/rssparser.cpp" line="198"/>
       <source>not a RSS feed</source>
       <translation>n'est pas un flux RSS</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/services/standard/parsers/sitemapparser.cpp" line="141"/>
+      <location filename="../src/librssguard/services/standard/parsers/sitemapparser.cpp" line="145"/>
       <source>support for gzipped sitemaps is not enabled</source>
       <translation>le support pour les cartes-site gzippés n'est pas activé</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/services/standard/parsers/sitemapparser.cpp" line="189"/>
+      <location filename="../src/librssguard/services/standard/parsers/sitemapparser.cpp" line="193"/>
       <source>sitemap indices are not supported</source>
       <translation>les indices de type carte-site ne sont pas supportés</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/services/standard/parsers/sitemapparser.cpp" line="193"/>
+      <location filename="../src/librssguard/services/standard/parsers/sitemapparser.cpp" line="197"/>
       <source>not a Sitemap</source>
       <translation>n'est pas une carte-site</translation>
     </message>
@@ -6783,7 +6836,7 @@ Les auteurs de cette appli NE SONT PAS responsables d'éventuelles pertes de don
     <message>
       <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="304"/>
       <source>Update feed list during feed fetching</source>
-      <translation type="unfinished">Update feed list during feed fetching</translation>
+      <translation>Mettre à jour la liste des flux pendant l'obtention des flux</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="312"/>
@@ -7984,22 +8037,27 @@ Actualités non-lus: %2</translation>
       <translation>Flux</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/tabwidget.cpp" line="38"/>
+      <location filename="../src/librssguard/gui/tabwidget.cpp" line="39"/>
       <source>Displays main menu.</source>
       <translation>Afficher le menu principal</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/tabwidget.cpp" line="47"/>
+      <location filename="../src/librssguard/gui/tabwidget.cpp" line="48"/>
       <source>Main menu</source>
       <translation>Menu principal</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/tabwidget.cpp" line="78"/>
+      <location filename="../src/librssguard/gui/tabwidget.cpp" line="79"/>
       <source>Downloads</source>
       <translation>Téléchargements</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/tabwidget.cpp" line="237"/>
+      <location filename="../src/librssguard/gui/tabwidget.cpp" line="232"/>
+      <source>Media player</source>
+      <translation>Lecteur multimédia</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard/gui/tabwidget.cpp" line="257"/>
       <source>Web browser</source>
       <translation>Navigateur web</translation>
     </message>
@@ -8531,12 +8589,17 @@ Dernière connection le: %4</translation>
       <translation>Ouvrir le lien dans le navigateur externe</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/webviewers/webengine/webengineviewer.cpp" line="109"/>
+      <location filename="../src/librssguard/gui/webviewers/webengine/webengineviewer.cpp" line="104"/>
+      <source>Open link as audio/video</source>
+      <translation>Ouvrir le lien en tant que audio/vidéo</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard/gui/webviewers/webengine/webengineviewer.cpp" line="113"/>
       <source>Open with external tool</source>
       <translation>Ouvrir avec l&apos;outil externe</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/webviewers/webengine/webengineviewer.cpp" line="128"/>
+      <location filename="../src/librssguard/gui/webviewers/webengine/webengineviewer.cpp" line="132"/>
       <source>No external tools activated</source>
       <translation>Aucun outil externe est activé</translation>
     </message>
