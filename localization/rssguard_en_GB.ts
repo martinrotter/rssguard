@@ -4537,42 +4537,42 @@ Login tokens expiration: %2</translation>
     <message>
       <location filename="../src/librssguard/gui/reusable/mediaplayer.cpp" line="167"/>
       <source>Cannot load media (missing codecs)</source>
-      <translation type="unfinished">Cannot load media (missing codecs)</translation>
+      <translation>Cannot load media (missing codecs)</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/reusable/mediaplayer.cpp" line="170"/>
       <source>Unrecognized format</source>
-      <translation type="unfinished">Unrecognized format</translation>
+      <translation>Unrecognized format</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/reusable/mediaplayer.cpp" line="173"/>
       <source>Network problem</source>
-      <translation type="unfinished">Network problem</translation>
+      <translation>Network problem</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/reusable/mediaplayer.cpp" line="176"/>
       <source>Access denied</source>
-      <translation type="unfinished">Access denied</translation>
+      <translation>Access denied</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/reusable/mediaplayer.cpp" line="180"/>
       <source>Service is missing</source>
-      <translation type="unfinished">Service is missing</translation>
+      <translation>Service is missing</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/reusable/mediaplayer.cpp" line="183"/>
       <source>This is playlist</source>
-      <translation type="unfinished">This is playlist</translation>
+      <translation>This is a playlist</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/reusable/mediaplayer.cpp" line="187"/>
       <source>No errors</source>
-      <translation type="unfinished">No errors</translation>
+      <translation>No errors</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/reusable/mediaplayer.cpp" line="190"/>
       <source>Unknown error</source>
-      <translation type="unfinished">Unknown error</translation>
+      <translation>Unknown error</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/reusable/mediaplayer.cpp" line="205"/>
