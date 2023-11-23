@@ -5911,7 +5911,7 @@ List of supported readers:</translation>
     <message>
       <location filename="../src/librssguard/gui/webviewers/webviewer.cpp" line="98"/>
       <source>Play link as audio/video</source>
-      <translation type="unfinished">Play link as audio/video</translation>
+      <translation>Play link as audio/video</translation>
     </message>
   </context>
   <context>
@@ -7536,7 +7536,7 @@ Also, relaunch &quot;Settings&quot; dialog after you install Node.js.</translati
     <message>
       <location filename="../src/librssguard/miscellaneous/skinfactory.cpp" line="526"/>
       <source>file %1 not found</source>
-      <translation type="unfinished">file %1 not found</translation>
+      <translation>file %1 not found</translation>
     </message>
   </context>
   <context>
