@@ -4536,42 +4536,42 @@ Logintoken verloopt: %2</translation>
     <message>
       <location filename="../src/librssguard/gui/reusable/mediaplayer.cpp" line="167"/>
       <source>Cannot load media (missing codecs)</source>
-      <translation type="unfinished">Cannot load media (missing codecs)</translation>
+      <translation>Kan media niet laden (codecs ontbreken)</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/reusable/mediaplayer.cpp" line="170"/>
       <source>Unrecognized format</source>
-      <translation type="unfinished">Unrecognized format</translation>
+      <translation>Niet herkend formaat</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/reusable/mediaplayer.cpp" line="173"/>
       <source>Network problem</source>
-      <translation type="unfinished">Network problem</translation>
+      <translation>Netwerkprobleem</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/reusable/mediaplayer.cpp" line="176"/>
       <source>Access denied</source>
-      <translation type="unfinished">Access denied</translation>
+      <translation>Toegang geweigerd</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/reusable/mediaplayer.cpp" line="180"/>
       <source>Service is missing</source>
-      <translation type="unfinished">Service is missing</translation>
+      <translation>Service ontbreekt</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/reusable/mediaplayer.cpp" line="183"/>
       <source>This is playlist</source>
-      <translation type="unfinished">This is playlist</translation>
+      <translation>Dit is de afspeellijst</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/reusable/mediaplayer.cpp" line="187"/>
       <source>No errors</source>
-      <translation type="unfinished">No errors</translation>
+      <translation>Geen fouten</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/reusable/mediaplayer.cpp" line="190"/>
       <source>Unknown error</source>
-      <translation type="unfinished">Unknown error</translation>
+      <translation>Onbekende fout</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/reusable/mediaplayer.cpp" line="205"/>
@@ -5910,7 +5910,7 @@ Lijst met ondersteunde lezers:</translation>
     <message>
       <location filename="../src/librssguard/gui/webviewers/webviewer.cpp" line="98"/>
       <source>Play link as audio/video</source>
-      <translation type="unfinished">Play link as audio/video</translation>
+      <translation>Link openen als audio/video</translation>
     </message>
   </context>
   <context>
@@ -7535,7 +7535,7 @@ Start ook het dialoogvenster &quot;Instellingen&quot; opnieuw nadat je Node.js h
     <message>
       <location filename="../src/librssguard/miscellaneous/skinfactory.cpp" line="526"/>
       <source>file %1 not found</source>
-      <translation type="unfinished">file %1 not found</translation>
+      <translation>bestand %1 niet gevonden</translation>
     </message>
   </context>
   <context>
