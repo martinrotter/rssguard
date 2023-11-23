@@ -184,6 +184,8 @@ class RSSGUARD_DLLSPEC Application : public SingleApplication {
 
     WebViewer* createWebView();
 
+    bool usingNoWebEngine() const;
+
 #if defined(USE_WEBENGINE)
     bool forcedNoWebEngine() const;
 #endif

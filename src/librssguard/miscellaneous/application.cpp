@@ -148,7 +148,7 @@ Application::Application(const QString& id, int& argc, char** argv, const QStrin
   // and skin.
   m_icons->setupSearchPaths();
   m_icons->loadCurrentIconTheme();
-  m_skins->loadCurrentSkin();
+  m_skins->loadCurrentSkin(usingNoWebEngine());
 
   if (m_toastNotifications != nullptr) {
     connect(m_toastNotifications,
@@ -785,6 +785,14 @@ WebViewer* Application::createWebView() {
   else {
     return new WebEngineViewer();
   }
+#endif
+}
+
+bool Application::usingNoWebEngine() const {
+#if !defined(USE_WEBENGINE)
+  return true;
+#else
+  return forcedNoWebEngine();
 #endif
 }
 

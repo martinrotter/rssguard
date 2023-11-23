@@ -25,14 +25,14 @@ TextBrowserViewer::TextBrowserViewer(QWidget* parent)
     m_placeholderImage(qApp->icons()->miscPixmap(QSL("image-placeholder"))),
     m_placeholderImageError(qApp->icons()->miscPixmap(QSL("image-placeholder-error"))),
     m_downloader(new Downloader(this)), m_document(new TextBrowserDocument(this)) {
-  setAutoFillBackground(true);
+  setAutoFillBackground(false);
   setFrameShape(QFrame::Shape::NoFrame);
   setFrameShadow(QFrame::Shadow::Plain);
   setTabChangesFocus(true);
   setOpenLinks(false);
   setWordWrapMode(QTextOption::WrapMode::WordWrap);
 
-  viewport()->setAutoFillBackground(true);
+  viewport()->setAutoFillBackground(false);
 
   setResourcesEnabled(qApp->settings()->value(GROUP(Messages), SETTING(Messages::ShowResourcesInArticles)).toBool());
   setDocument(m_document.data());
@@ -298,23 +298,13 @@ void TextBrowserViewer::loadMessages(const QList<Message>& messages, RootItem* r
   emit loadingStarted();
   m_root = root;
 
-  auto html_messages = prepareHtmlForMessage(messages, root);
+  auto html_messages = qApp->skins()->generateHtmlOfArticles(messages, root);
 
-  // TODO: Make this switchable? To allow for more formatted output even in notwebengine.
-  // auto html_messages = qApp->skins()->generateHtmlOfArticles(messages, root);
+  if (html_messages.m_html.isEmpty()) {
+    html_messages = prepareHtmlForMessage(messages, root);
+  }
 
   setHtml(html_messages.m_html, html_messages.m_baseUrl);
-
-  /*
-  auto* feed = root != nullptr
-                 ? root->getParentServiceRoot()
-                     ->getItemFromSubTree([messages](const RootItem* it) {
-                       return it->kind() == RootItem::Kind::Feed && it->customId() == messages.at(0).m_feedId;
-                     })
-                     ->toFeed()
-                 : nullptr;
-  bool is_rtl_feed = feed != nullptr && feed->isRtl();
-  */
 
   QTextOption op;
   op.setTextDirection(messages.at(0).m_isRtl ? Qt::LayoutDirection::RightToLeft : Qt::LayoutDirection::LeftToRight);

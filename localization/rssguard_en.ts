@@ -160,7 +160,7 @@ Error: %1</source>
 <context>
     <name>Application</name>
     <message>
-        <location filename="../src/librssguard/miscellaneous/application.cpp" line="1147"/>
+        <location filename="../src/librssguard/miscellaneous/application.cpp" line="1155"/>
         <source>Application is already running.</source>
         <translation>Application is already running</translation>
     </message>
@@ -185,22 +185,22 @@ Error: %1</source>
         <translation>Settings restoration was not initiated. Make sure that output directory is writable.</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/miscellaneous/application.cpp" line="1165"/>
+        <location filename="../src/librssguard/miscellaneous/application.cpp" line="1173"/>
         <source>Cannot add feed</source>
         <translation>Cannot add feed</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/miscellaneous/application.cpp" line="1166"/>
+        <location filename="../src/librssguard/miscellaneous/application.cpp" line="1174"/>
         <source>Feed cannot be added because there is no active account which can add feeds.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/librssguard/miscellaneous/application.cpp" line="1324"/>
+        <location filename="../src/librssguard/miscellaneous/application.cpp" line="1332"/>
         <source>Packages %1 were updated.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/librssguard/miscellaneous/application.cpp" line="1031"/>
+        <location filename="../src/librssguard/miscellaneous/application.cpp" line="1039"/>
         <source>Unread articles fetched</source>
         <translation type="unfinished"></translation>
     </message>
@@ -210,7 +210,7 @@ Error: %1</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/librssguard/miscellaneous/application.cpp" line="1096"/>
+        <location filename="../src/librssguard/miscellaneous/application.cpp" line="1104"/>
         <source>AdBlock needs to be configured</source>
         <translation type="unfinished"></translation>
     </message>
@@ -228,17 +228,17 @@ version by clicking this popup notification.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/librssguard/miscellaneous/application.cpp" line="1097"/>
+        <location filename="../src/librssguard/miscellaneous/application.cpp" line="1105"/>
         <source>AdBlock is not configured properly. Go to &quot;Settings&quot; -&gt; &quot;Node.js&quot; and check if your Node.js is properly configured.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/librssguard/miscellaneous/application.cpp" line="1146"/>
+        <location filename="../src/librssguard/miscellaneous/application.cpp" line="1154"/>
         <source>Already running</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/librssguard/miscellaneous/application.cpp" line="1315"/>
+        <location filename="../src/librssguard/miscellaneous/application.cpp" line="1323"/>
         <source>Packages %1 were NOT updated because of error: %2.</source>
         <translation type="unfinished"></translation>
     </message>
@@ -5732,37 +5732,37 @@ List of supported readers:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/librssguard/miscellaneous/skinfactory.cpp" line="598"/>
+        <location filename="../src/librssguard/miscellaneous/skinfactory.cpp" line="608"/>
         <source>interesting stuff</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/librssguard/miscellaneous/skinfactory.cpp" line="601"/>
+        <location filename="../src/librssguard/miscellaneous/skinfactory.cpp" line="611"/>
         <source>interesting stuff (highlighted)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/librssguard/miscellaneous/skinfactory.cpp" line="604"/>
+        <location filename="../src/librssguard/miscellaneous/skinfactory.cpp" line="614"/>
         <source>errored items</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/librssguard/miscellaneous/skinfactory.cpp" line="607"/>
+        <location filename="../src/librssguard/miscellaneous/skinfactory.cpp" line="617"/>
         <source>errored items (highlighted)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/librssguard/miscellaneous/skinfactory.cpp" line="610"/>
+        <location filename="../src/librssguard/miscellaneous/skinfactory.cpp" line="620"/>
         <source>items with new articles</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/librssguard/miscellaneous/skinfactory.cpp" line="613"/>
+        <location filename="../src/librssguard/miscellaneous/skinfactory.cpp" line="623"/>
         <source>items with new articles (highlighted)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/librssguard/miscellaneous/skinfactory.cpp" line="616"/>
+        <location filename="../src/librssguard/miscellaneous/skinfactory.cpp" line="626"/>
         <source>OK-ish color</source>
         <translation type="unfinished"></translation>
     </message>
@@ -7457,19 +7457,24 @@ Also, relaunch &quot;Settings&quot; dialog after you install Node.js.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/librssguard/miscellaneous/skinfactory.cpp" line="281"/>
+        <location filename="../src/librssguard/miscellaneous/skinfactory.cpp" line="278"/>
         <source>Written by </source>
         <translation type="unfinished">Written by </translation>
     </message>
     <message>
-        <location filename="../src/librssguard/miscellaneous/skinfactory.cpp" line="282"/>
+        <location filename="../src/librssguard/miscellaneous/skinfactory.cpp" line="279"/>
         <source>unknown author</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/librssguard/miscellaneous/skinfactory.cpp" line="297"/>
+        <location filename="../src/librssguard/miscellaneous/skinfactory.cpp" line="294"/>
         <source>Newspaper view</source>
         <translation type="unfinished">Newspaper view</translation>
+    </message>
+    <message>
+        <location filename="../src/librssguard/miscellaneous/skinfactory.cpp" line="526"/>
+        <source>file %1 not found</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -8041,12 +8046,12 @@ Unread news: %2</translation>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/librssguard/gui/webviewers/qtextbrowser/textbrowserviewer.cpp" line="370"/>
+        <location filename="../src/librssguard/gui/webviewers/qtextbrowser/textbrowserviewer.cpp" line="360"/>
         <source>Enable external resources</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/librssguard/gui/webviewers/qtextbrowser/textbrowserviewer.cpp" line="372"/>
+        <location filename="../src/librssguard/gui/webviewers/qtextbrowser/textbrowserviewer.cpp" line="362"/>
         <source>Download</source>
         <translation type="unfinished"></translation>
     </message>
