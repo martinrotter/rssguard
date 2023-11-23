@@ -5933,7 +5933,7 @@ Liste d&apos;agrégateurs compatibles:</translation>
     <message>
       <location filename="../src/librssguard/gui/webviewers/webviewer.cpp" line="98"/>
       <source>Open link as audio/video</source>
-      <translation type="unfinished">Open link as audio/video</translation>
+      <translation>Ouvrir le lien en tant que audio/vidéo</translation>
     </message>
   </context>
   <context>
