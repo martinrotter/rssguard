@@ -5933,7 +5933,7 @@ Liste d&apos;agrégateurs compatibles:</translation>
     <message>
       <location filename="../src/librssguard/gui/webviewers/webviewer.cpp" line="98"/>
       <source>Play link as audio/video</source>
-      <translation type="unfinished">Play link as audio/video</translation>
+      <translation>Jouer le lien en tant que audio/vidéo</translation>
     </message>
   </context>
   <context>
@@ -7558,7 +7558,7 @@ Et aussi, redémarrez la fenêtre &quot;Paramètres&quot; après avoir installé
     <message>
       <location filename="../src/librssguard/miscellaneous/skinfactory.cpp" line="526"/>
       <source>file %1 not found</source>
-      <translation type="unfinished">file %1 not found</translation>
+      <translation>fichier %1 non trouvé</translation>
     </message>
   </context>
   <context>
