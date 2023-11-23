@@ -5897,6 +5897,21 @@ Lijst met ondersteunde lezers:</translation>
       <source>not a Sitemap</source>
       <translation>geen Sitemap</translation>
     </message>
+    <message>
+      <location filename="../src/librssguard/gui/webviewers/webviewer.cpp" line="34"/>
+      <source>Open with external tool</source>
+      <translation>Met externe applicatie openen</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard/gui/webviewers/webviewer.cpp" line="95"/>
+      <source>Open in external browser</source>
+      <translation>In de externe browser openen</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard/gui/webviewers/webviewer.cpp" line="98"/>
+      <source>Open link as audio/video</source>
+      <translation type="unfinished">Open link as audio/video</translation>
+    </message>
   </context>
   <context>
     <name>Readability</name>
@@ -8093,24 +8108,14 @@ Ongelezen nieuws: %2</translation>
       <translation>Beeld</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/webviewers/qtextbrowser/textbrowserviewer.cpp" line="370"/>
+      <location filename="../src/librssguard/gui/webviewers/qtextbrowser/textbrowserviewer.cpp" line="375"/>
       <source>Enable external resources</source>
       <translation>Externe bronnen toestaan</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/webviewers/qtextbrowser/textbrowserviewer.cpp" line="373"/>
-      <source>Open in external browser</source>
-      <translation>In de externe browser openen</translation>
-    </message>
-    <message>
-      <location filename="../src/librssguard/gui/webviewers/qtextbrowser/textbrowserviewer.cpp" line="375"/>
+      <location filename="../src/librssguard/gui/webviewers/qtextbrowser/textbrowserviewer.cpp" line="377"/>
       <source>Download</source>
       <translation>Downloaden</translation>
-    </message>
-    <message>
-      <location filename="../src/librssguard/gui/webviewers/qtextbrowser/textbrowserviewer.cpp" line="400"/>
-      <source>Open with external tool</source>
-      <translation>Met externe applicatie openen</translation>
     </message>
   </context>
   <context>
@@ -8597,29 +8602,6 @@ Laatste login: %4</translation>
       <location filename="../src/librssguard/gui/webbrowser.cpp" line="30"/>
       <source>Open this website in system web browser</source>
       <translation>Deze website in systeembrowser openen</translation>
-    </message>
-  </context>
-  <context>
-    <name>WebEngineViewer</name>
-    <message>
-      <location filename="../src/librssguard/gui/webviewers/webengine/webengineviewer.cpp" line="92"/>
-      <source>Open link in external browser</source>
-      <translation>Open koppeling in externe browser</translation>
-    </message>
-    <message>
-      <location filename="../src/librssguard/gui/webviewers/webengine/webengineviewer.cpp" line="105"/>
-      <source>Open link as audio/video</source>
-      <translation>Link openen als audio/video</translation>
-    </message>
-    <message>
-      <location filename="../src/librssguard/gui/webviewers/webengine/webengineviewer.cpp" line="115"/>
-      <source>Open with external tool</source>
-      <translation>Met externe applicatie openen</translation>
-    </message>
-    <message>
-      <location filename="../src/librssguard/gui/webviewers/webengine/webengineviewer.cpp" line="134"/>
-      <source>No external tools activated</source>
-      <translation>Geen externe applicaties geactiveerd</translation>
     </message>
   </context>
   <context>
