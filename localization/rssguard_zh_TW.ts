@@ -7094,7 +7094,7 @@ Description: %3</source>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsgui.ui" line="129"/>
       <source>Customize predefined colors</source>
-      <translation type="unfinished">Customize predefined colors</translation>
+      <translation>自訂預先定義的顏色</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsgui.ui" line="141"/>
@@ -7223,34 +7223,34 @@ Description: %3</source>
     <message>
       <location filename="../src/librssguard/gui/settings/settingslocalization.cpp" line="25"/>
       <source>Help us to improve %1 &lt;a href=&quot;%2&quot;&gt;translations&lt;/a&gt;.</source>
-      <translation type="unfinished">Help us to improve %1 &lt;a href=&quot;%2&quot;&gt;translations&lt;/a&gt;.</translation>
+      <translation>幫我們改善 %1 &lt;a href=&quot;%2&quot;&gt;譯文&lt;/a&gt;。</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingslocalization.cpp" line="111"/>
       <location filename="../src/librssguard/gui/settings/settingslocalization.cpp" line="112"/>
       <location filename="../src/librssguard/gui/settings/settingslocalization.cpp" line="117"/>
       <source>Big thanks to all translators!</source>
-      <translation type="unfinished">Big thanks to all translators!</translation>
+      <translation>萬分感謝所有的翻譯者！</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingslocalization.cpp" line="116"/>
       <source>Translations provided by: %1</source>
-      <translation type="unfinished">Translations provided by: %1</translation>
+      <translation>提供翻譯者: %1</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingslocalization.cpp" line="165"/>
       <source>Translators needed!</source>
-      <translation type="unfinished">Translators needed!</translation>
+      <translation>需要翻譯者！</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingslocalization.cpp" line="166"/>
       <source>The translation &apos;%1&apos; is incomplete and anyone able to help with translating %2 is greatly welcomed.</source>
-      <translation type="unfinished">The translation &apos;%1&apos; is incomplete and anyone able to help with translating %2 is greatly welcomed.</translation>
+      <translation>譯文 &apos;%1&apos; 不完整，竭誠歡迎能幫忙翻譯 %2 的人。</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingslocalization.cpp" line="168"/>
       <source>Do you want to help with the translation now?</source>
-      <translation type="unfinished">Do you want to help with the translation now?</translation>
+      <translation>想要立即幫忙翻譯嗎？</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingslocalization.h" line="26"/>
@@ -7355,42 +7355,42 @@ Also, relaunch &quot;Settings&quot; dialog after you install Node.js.</source>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsnotifications.ui" line="40"/>
       <source>Balloon notifications type</source>
-      <translation type="unfinished">Balloon notifications type</translation>
+      <translation>跳出式通知類型</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsnotifications.ui" line="46"/>
       <source>Native notifications (tray icon must be enabled)</source>
-      <translation type="unfinished">Native notifications (tray icon must be enabled)</translation>
+      <translation>原生通知 (一定得啟用系統匣圖示)</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsnotifications.ui" line="53"/>
       <source>Custom notifications</source>
-      <translation type="unfinished">Custom notifications</translation>
+      <translation>自訂通知</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsnotifications.ui" line="69"/>
       <source>Position</source>
-      <translation type="unfinished">Position</translation>
+      <translation>位置</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsnotifications.ui" line="82"/>
       <source>Width</source>
-      <translation type="unfinished">Width</translation>
+      <translation>寬度</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsnotifications.ui" line="105"/>
       <source>Margins</source>
-      <translation type="unfinished">Margins</translation>
+      <translation>邊距</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsnotifications.ui" line="125"/>
       <source>Screen</source>
-      <translation type="unfinished">Screen</translation>
+      <translation>螢幕</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsnotifications.ui" line="159"/>
       <source>Opacity</source>
-      <translation type="unfinished">Opacity</translation>
+      <translation>不透明度</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsnotifications.h" line="30"/>
@@ -7739,12 +7739,12 @@ Post-processing script: %3</translation>
     <message>
       <location filename="../src/librssguard/services/standard/gui/standardfeeddetails.cpp" line="283"/>
       <source>File exists.</source>
-      <translation type="unfinished">File exists.</translation>
+      <translation>檔案已存在。</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/standard/gui/standardfeeddetails.cpp" line="286"/>
       <source>File does not exist.</source>
-      <translation type="unfinished">File does not exist.</translation>
+      <translation>檔案不存在。</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/standard/gui/standardfeeddetails.cpp" line="318"/>
@@ -8067,7 +8067,7 @@ Unread news: %2</source>
     <message>
       <location filename="../src/librssguard/gui/tabwidget.cpp" line="237"/>
       <source>Media player</source>
-      <translation type="unfinished">Media player</translation>
+      <translation>媒體播放器</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/tabwidget.cpp" line="262"/>
@@ -8134,7 +8134,7 @@ Unread news: %2</source>
     <message>
       <location filename="../src/librssguard/gui/notifications/toastnotification.cpp" line="38"/>
       <source>Do it!</source>
-      <translation type="unfinished">Do it!</translation>
+      <translation>執行它！</translation>
     </message>
   </context>
   <context>
