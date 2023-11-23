@@ -4522,47 +4522,87 @@ Login tokens expiration: %2</translation>
       <translation>フォーム</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/reusable/mediaplayer.cpp" line="134"/>
+      <location filename="../src/librssguard/gui/reusable/mediaplayer.cpp" line="167"/>
+      <source>Cannot load media (missing codecs)</source>
+      <translation>メディアを読み込めません (コーデックがありません)</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard/gui/reusable/mediaplayer.cpp" line="170"/>
+      <source>Unrecognized format</source>
+      <translation>認識できないフォーマット</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard/gui/reusable/mediaplayer.cpp" line="173"/>
+      <source>Network problem</source>
+      <translation>ネットワークの問題</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard/gui/reusable/mediaplayer.cpp" line="176"/>
+      <source>Access denied</source>
+      <translation>アクセスが拒否されました</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard/gui/reusable/mediaplayer.cpp" line="180"/>
+      <source>Service is missing</source>
+      <translation>サービスが見つかりません</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard/gui/reusable/mediaplayer.cpp" line="183"/>
+      <source>This is playlist</source>
+      <translation>これはプレイリストです</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard/gui/reusable/mediaplayer.cpp" line="187"/>
+      <source>No errors</source>
+      <translation>エラーはありません</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard/gui/reusable/mediaplayer.cpp" line="190"/>
+      <source>Unknown error</source>
+      <translation>不明なエラー</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard/gui/reusable/mediaplayer.cpp" line="205"/>
       <source>No media</source>
       <translation>メディアがありません</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/reusable/mediaplayer.cpp" line="137"/>
+      <location filename="../src/librssguard/gui/reusable/mediaplayer.cpp" line="208"/>
       <source>Loading...</source>
       <translation>読み込み中…</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/reusable/mediaplayer.cpp" line="140"/>
+      <location filename="../src/librssguard/gui/reusable/mediaplayer.cpp" line="211"/>
       <source>Media loaded</source>
       <translation>メディアが読み込まれました</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/reusable/mediaplayer.cpp" line="143"/>
+      <location filename="../src/librssguard/gui/reusable/mediaplayer.cpp" line="214"/>
       <source>Media stalled</source>
       <translation>メディアが停止しました</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/reusable/mediaplayer.cpp" line="146"/>
+      <location filename="../src/librssguard/gui/reusable/mediaplayer.cpp" line="217"/>
       <source>Buffering...</source>
       <translation>バッファリング中...</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/reusable/mediaplayer.cpp" line="149"/>
+      <location filename="../src/librssguard/gui/reusable/mediaplayer.cpp" line="220"/>
       <source>Loaded</source>
       <translation>読み込まれました</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/reusable/mediaplayer.cpp" line="152"/>
+      <location filename="../src/librssguard/gui/reusable/mediaplayer.cpp" line="223"/>
       <source>Ended</source>
       <translation>終了</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/reusable/mediaplayer.cpp" line="155"/>
+      <location filename="../src/librssguard/gui/reusable/mediaplayer.cpp" line="226"/>
       <source>Media is invalid</source>
       <translation>メディアが無効です</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/reusable/mediaplayer.cpp" line="158"/>
+      <location filename="../src/librssguard/gui/reusable/mediaplayer.cpp" line="229"/>
       <source>Unknown</source>
       <translation>不明</translation>
     </message>
@@ -5562,7 +5602,7 @@ Login tokens expiration: %2</translation>
   <context>
     <name>QObject</name>
     <message numerus="yes">
-      <location filename="../src/librssguard/core/feeddownloader.cpp" line="552"/>
+      <location filename="../src/librssguard/core/feeddownloader.cpp" line="558"/>
       <source>
 
 + %n other feeds.</source>
@@ -5835,6 +5875,21 @@ List of supported readers:</source>
       <location filename="../src/librssguard/services/standard/parsers/sitemapparser.cpp" line="197"/>
       <source>not a Sitemap</source>
       <translation>サイトマップではありません</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard/gui/webviewers/webviewer.cpp" line="34"/>
+      <source>Open with external tool</source>
+      <translation>外部ツールで開く</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard/gui/webviewers/webviewer.cpp" line="95"/>
+      <source>Open in external browser</source>
+      <translation>外部ブラウザで開く</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard/gui/webviewers/webviewer.cpp" line="98"/>
+      <source>Open link as audio/video</source>
+      <translation type="unfinished">Open link as audio/video</translation>
     </message>
   </context>
   <context>
@@ -8005,12 +8060,12 @@ Unread news: %2</source>
       <translation>ダウンロード</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/tabwidget.cpp" line="232"/>
+      <location filename="../src/librssguard/gui/tabwidget.cpp" line="237"/>
       <source>Media player</source>
       <translation>メディアプレーヤー</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/tabwidget.cpp" line="257"/>
+      <location filename="../src/librssguard/gui/tabwidget.cpp" line="262"/>
       <source>Web browser</source>
       <translation>ウェブブラウザ</translation>
     </message>
@@ -8028,24 +8083,14 @@ Unread news: %2</source>
       <translation type="unfinished">image</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/webviewers/qtextbrowser/textbrowserviewer.cpp" line="370"/>
+      <location filename="../src/librssguard/gui/webviewers/qtextbrowser/textbrowserviewer.cpp" line="375"/>
       <source>Enable external resources</source>
       <translation>外部リソースを有効にする</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/webviewers/qtextbrowser/textbrowserviewer.cpp" line="373"/>
-      <source>Open in external browser</source>
-      <translation>外部ブラウザで開く</translation>
-    </message>
-    <message>
-      <location filename="../src/librssguard/gui/webviewers/qtextbrowser/textbrowserviewer.cpp" line="375"/>
+      <location filename="../src/librssguard/gui/webviewers/qtextbrowser/textbrowserviewer.cpp" line="377"/>
       <source>Download</source>
       <translation>ダウンロード</translation>
-    </message>
-    <message>
-      <location filename="../src/librssguard/gui/webviewers/qtextbrowser/textbrowserviewer.cpp" line="400"/>
-      <source>Open with external tool</source>
-      <translation>外部ツールで開く</translation>
     </message>
   </context>
   <context>
@@ -8529,29 +8574,6 @@ Last login on: %4</translation>
       <location filename="../src/librssguard/gui/webbrowser.cpp" line="30"/>
       <source>Open this website in system web browser</source>
       <translation>このウェブサイトをシステムのウェブブラウザで開く</translation>
-    </message>
-  </context>
-  <context>
-    <name>WebEngineViewer</name>
-    <message>
-      <location filename="../src/librssguard/gui/webviewers/webengine/webengineviewer.cpp" line="92"/>
-      <source>Open link in external browser</source>
-      <translation>リンクを外部ブラウザで開く</translation>
-    </message>
-    <message>
-      <location filename="../src/librssguard/gui/webviewers/webengine/webengineviewer.cpp" line="104"/>
-      <source>Open link as audio/video</source>
-      <translation>リンクをオーディオ/ビデオとして開く</translation>
-    </message>
-    <message>
-      <location filename="../src/librssguard/gui/webviewers/webengine/webengineviewer.cpp" line="113"/>
-      <source>Open with external tool</source>
-      <translation>外部ツールで開く</translation>
-    </message>
-    <message>
-      <location filename="../src/librssguard/gui/webviewers/webengine/webengineviewer.cpp" line="132"/>
-      <source>No external tools activated</source>
-      <translation>有効な外部ツールがありません</translation>
     </message>
   </context>
   <context>

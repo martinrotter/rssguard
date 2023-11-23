@@ -4555,47 +4555,87 @@ Expiration de jetons d&apos;authentification: %2</translation>
       <translation>Formulaire</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/reusable/mediaplayer.cpp" line="134"/>
+      <location filename="../src/librssguard/gui/reusable/mediaplayer.cpp" line="167"/>
+      <source>Cannot load media (missing codecs)</source>
+      <translation>Impossible de charger le média (codecs manquants)</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard/gui/reusable/mediaplayer.cpp" line="170"/>
+      <source>Unrecognized format</source>
+      <translation>Format non reconnu</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard/gui/reusable/mediaplayer.cpp" line="173"/>
+      <source>Network problem</source>
+      <translation>Problème réseau</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard/gui/reusable/mediaplayer.cpp" line="176"/>
+      <source>Access denied</source>
+      <translation>Accès refusé</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard/gui/reusable/mediaplayer.cpp" line="180"/>
+      <source>Service is missing</source>
+      <translation>Service manquant</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard/gui/reusable/mediaplayer.cpp" line="183"/>
+      <source>This is playlist</source>
+      <translation>Ceci est une playlist</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard/gui/reusable/mediaplayer.cpp" line="187"/>
+      <source>No errors</source>
+      <translation>Pas d'erreurs</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard/gui/reusable/mediaplayer.cpp" line="190"/>
+      <source>Unknown error</source>
+      <translation>Erreur inconnue</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard/gui/reusable/mediaplayer.cpp" line="205"/>
       <source>No media</source>
       <translation>Aucun média</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/reusable/mediaplayer.cpp" line="137"/>
+      <location filename="../src/librssguard/gui/reusable/mediaplayer.cpp" line="208"/>
       <source>Loading...</source>
       <translation>Chargement ...</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/reusable/mediaplayer.cpp" line="140"/>
+      <location filename="../src/librssguard/gui/reusable/mediaplayer.cpp" line="211"/>
       <source>Media loaded</source>
       <translation>Média chargé</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/reusable/mediaplayer.cpp" line="143"/>
+      <location filename="../src/librssguard/gui/reusable/mediaplayer.cpp" line="214"/>
       <source>Media stalled</source>
       <translation>Média bloqué</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/reusable/mediaplayer.cpp" line="146"/>
+      <location filename="../src/librssguard/gui/reusable/mediaplayer.cpp" line="217"/>
       <source>Buffering...</source>
       <translation>Mise en mémoire tampon...</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/reusable/mediaplayer.cpp" line="149"/>
+      <location filename="../src/librssguard/gui/reusable/mediaplayer.cpp" line="220"/>
       <source>Loaded</source>
       <translation>Chargé</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/reusable/mediaplayer.cpp" line="152"/>
+      <location filename="../src/librssguard/gui/reusable/mediaplayer.cpp" line="223"/>
       <source>Ended</source>
       <translation>Terminé</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/reusable/mediaplayer.cpp" line="155"/>
+      <location filename="../src/librssguard/gui/reusable/mediaplayer.cpp" line="226"/>
       <source>Media is invalid</source>
       <translation>Média invalide</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/reusable/mediaplayer.cpp" line="158"/>
+      <location filename="../src/librssguard/gui/reusable/mediaplayer.cpp" line="229"/>
       <source>Unknown</source>
       <translation>Inconnu</translation>
     </message>
@@ -5603,7 +5643,7 @@ supplémentaire</translation>
   <context>
     <name>QObject</name>
     <message numerus="yes">
-      <location filename="../src/librssguard/core/feeddownloader.cpp" line="552"/>
+      <location filename="../src/librssguard/core/feeddownloader.cpp" line="558"/>
       <source>
 
 + %n other feeds.</source>
@@ -5879,6 +5919,21 @@ Liste d&apos;agrégateurs compatibles:</translation>
       <location filename="../src/librssguard/services/standard/parsers/sitemapparser.cpp" line="197"/>
       <source>not a Sitemap</source>
       <translation>n'est pas une carte-site</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard/gui/webviewers/webviewer.cpp" line="34"/>
+      <source>Open with external tool</source>
+      <translation>Ouvrir avec l&apos;outil externe</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard/gui/webviewers/webviewer.cpp" line="95"/>
+      <source>Open in external browser</source>
+      <translation>Ouvrir dans le navigateur externe</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard/gui/webviewers/webviewer.cpp" line="98"/>
+      <source>Open link as audio/video</source>
+      <translation type="unfinished">Open link as audio/video</translation>
     </message>
   </context>
   <context>
@@ -8052,12 +8107,12 @@ Actualités non-lus: %2</translation>
       <translation>Téléchargements</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/tabwidget.cpp" line="232"/>
+      <location filename="../src/librssguard/gui/tabwidget.cpp" line="237"/>
       <source>Media player</source>
       <translation>Lecteur multimédia</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/tabwidget.cpp" line="257"/>
+      <location filename="../src/librssguard/gui/tabwidget.cpp" line="262"/>
       <source>Web browser</source>
       <translation>Navigateur web</translation>
     </message>
@@ -8075,24 +8130,14 @@ Actualités non-lus: %2</translation>
       <translation>Image</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/webviewers/qtextbrowser/textbrowserviewer.cpp" line="370"/>
+      <location filename="../src/librssguard/gui/webviewers/qtextbrowser/textbrowserviewer.cpp" line="375"/>
       <source>Enable external resources</source>
       <translation>Activer les ressources éxterieurs</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/webviewers/qtextbrowser/textbrowserviewer.cpp" line="373"/>
-      <source>Open in external browser</source>
-      <translation>Ouvrir dans le navigateur externe</translation>
-    </message>
-    <message>
-      <location filename="../src/librssguard/gui/webviewers/qtextbrowser/textbrowserviewer.cpp" line="375"/>
+      <location filename="../src/librssguard/gui/webviewers/qtextbrowser/textbrowserviewer.cpp" line="377"/>
       <source>Download</source>
       <translation>Téléchargement</translation>
-    </message>
-    <message>
-      <location filename="../src/librssguard/gui/webviewers/qtextbrowser/textbrowserviewer.cpp" line="400"/>
-      <source>Open with external tool</source>
-      <translation>Ouvrir avec l&apos;outil externe</translation>
     </message>
   </context>
   <context>
@@ -8579,29 +8624,6 @@ Dernière connection le: %4</translation>
       <location filename="../src/librssguard/gui/webbrowser.cpp" line="30"/>
       <source>Open this website in system web browser</source>
       <translation>Ouvrir ce site dans le navigateur web du système</translation>
-    </message>
-  </context>
-  <context>
-    <name>WebEngineViewer</name>
-    <message>
-      <location filename="../src/librssguard/gui/webviewers/webengine/webengineviewer.cpp" line="92"/>
-      <source>Open link in external browser</source>
-      <translation>Ouvrir le lien dans le navigateur externe</translation>
-    </message>
-    <message>
-      <location filename="../src/librssguard/gui/webviewers/webengine/webengineviewer.cpp" line="104"/>
-      <source>Open link as audio/video</source>
-      <translation>Ouvrir le lien en tant que audio/vidéo</translation>
-    </message>
-    <message>
-      <location filename="../src/librssguard/gui/webviewers/webengine/webengineviewer.cpp" line="113"/>
-      <source>Open with external tool</source>
-      <translation>Ouvrir avec l&apos;outil externe</translation>
-    </message>
-    <message>
-      <location filename="../src/librssguard/gui/webviewers/webengine/webengineviewer.cpp" line="132"/>
-      <source>No external tools activated</source>
-      <translation>Aucun outil externe est activé</translation>
     </message>
   </context>
   <context>
