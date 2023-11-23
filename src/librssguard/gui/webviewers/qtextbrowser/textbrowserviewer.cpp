@@ -365,69 +365,33 @@ void TextBrowserViewer::contextMenuEvent(QContextMenuEvent* event) {
     return;
   }
 
+  /*
+  connect(menu, &QMenu::aboutToHide, this, [menu] {
+    menu->deleteLater();
+  });*/
+
   if (m_actionEnableResources.isNull()) {
     m_actionEnableResources.reset(new QAction(qApp->icons()->fromTheme(QSL("viewimage"), QSL("image-x-generic")),
                                               tr("Enable external resources"),
                                               this));
-    m_actionOpenExternalBrowser.reset(new QAction(qApp->icons()->fromTheme(QSL("document-open")),
-                                                  tr("Open in external browser"),
-                                                  this));
     m_actionDownloadLink.reset(new QAction(qApp->icons()->fromTheme(QSL("download")), tr("Download"), this));
 
     m_actionEnableResources.data()->setCheckable(true);
     m_actionEnableResources.data()->setChecked(resourcesEnabled());
 
-    connect(m_actionOpenExternalBrowser.data(),
-            &QAction::triggered,
-            this,
-            &TextBrowserViewer::openLinkInExternalBrowser);
     connect(m_actionDownloadLink.data(), &QAction::triggered, this, &TextBrowserViewer::downloadLink);
     connect(m_actionEnableResources.data(), &QAction::toggled, this, &TextBrowserViewer::enableResources);
   }
 
   menu->addAction(m_actionEnableResources.data());
-  menu->addAction(m_actionOpenExternalBrowser.data());
   menu->addAction(m_actionDownloadLink.data());
 
   auto anchor = anchorAt(event->pos());
 
   m_lastContextMenuPos = event->pos();
-  m_actionOpenExternalBrowser.data()->setEnabled(!anchor.isEmpty());
   m_actionDownloadLink.data()->setEnabled(!anchor.isEmpty());
 
-  if (!anchor.isEmpty()) {
-    QFileIconProvider icon_provider;
-    QMenu* menu_ext_tools = new QMenu(tr("Open with external tool"), menu);
-    auto tools = ExternalTool::toolsFromSettings();
-
-    menu_ext_tools->setIcon(qApp->icons()->fromTheme(QSL("document-open")));
-
-    for (const ExternalTool& tool : std::as_const(tools)) {
-      QAction* act_tool = new QAction(QFileInfo(tool.executable()).fileName(), menu_ext_tools);
-
-      act_tool->setIcon(icon_provider.icon(QFileInfo(tool.executable())));
-      act_tool->setToolTip(tool.executable());
-      act_tool->setData(QVariant::fromValue(tool));
-      menu_ext_tools->addAction(act_tool);
-
-      connect(act_tool, &QAction::triggered, this, [act_tool, anchor]() {
-        act_tool->data().value<ExternalTool>().run(anchor);
-      });
-    }
-
-    if (menu_ext_tools->actions().isEmpty()) {
-      QAction* act_not_tools = new QAction("No external tools activated");
-
-      act_not_tools->setEnabled(false);
-      menu_ext_tools->addAction(act_not_tools);
-    }
-
-    menu->addMenu(menu_ext_tools);
-  }
-
-  connect(menu, &QMenu::aboutToHide, this, [menu] {
-    menu->deleteLater();
-  });
+  processContextMenu(menu, event);
 
   menu->popup(event->globalPos());
 }
@@ -447,24 +411,6 @@ void TextBrowserViewer::wheelEvent(QWheelEvent* event) {
 void TextBrowserViewer::enableResources(bool enable) {
   qApp->settings()->setValue(GROUP(Messages), Messages::ShowResourcesInArticles, enable);
   setResourcesEnabled(enable);
-}
-
-void TextBrowserViewer::openLinkInExternalBrowser() {
-  auto url = QUrl(anchorAt(m_lastContextMenuPos));
-
-  if (url.isValid()) {
-    const QUrl resolved_url = (m_currentUrl.isValid() && url.isRelative()) ? m_currentUrl.resolved(url) : url;
-
-    qApp->web()->openUrlInExternalBrowser(resolved_url.toString());
-
-    if (qApp->settings()
-          ->value(GROUP(Messages), SETTING(Messages::BringAppToFrontAfterMessageOpenedExternally))
-          .toBool()) {
-      QTimer::singleShot(1000, qApp, []() {
-        qApp->mainForm()->display();
-      });
-    }
-  }
 }
 
 void TextBrowserViewer::downloadLink() {
@@ -643,4 +589,16 @@ bool TextBrowserViewer::resourcesEnabled() const {
 
 void TextBrowserViewer::setResourcesEnabled(bool enabled) {
   m_resourcesEnabled = enabled;
+}
+
+ContextMenuData TextBrowserViewer::provideContextMenuData(QContextMenuEvent* event) const {
+  ContextMenuData c;
+
+  QString anchor = anchorAt(event->pos());
+
+  if (!anchor.isEmpty()) {
+    c.m_linkUrl = anchor;
+  }
+
+  return c;
 }

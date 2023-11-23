@@ -21,8 +21,6 @@ class WebEngineViewer : public QWebEngineView, public WebViewer {
   public:
     explicit WebEngineViewer(QWidget* parent = nullptr);
 
-    RootItem* root() const;
-
   public:
     virtual void loadMessages(const QList<Message>& messages, RootItem* root);
     virtual void bindToBrowser(WebBrowser* browser);
@@ -51,6 +49,8 @@ class WebEngineViewer : public QWebEngineView, public WebViewer {
     void closeWindowRequested();
 
   protected:
+    virtual ContextMenuData provideContextMenuData(QContextMenuEvent* event) const;
+
     virtual QWebEngineView* createWindow(QWebEnginePage::WebWindowType type);
     virtual void contextMenuEvent(QContextMenuEvent* event);
     virtual bool event(QEvent* event);

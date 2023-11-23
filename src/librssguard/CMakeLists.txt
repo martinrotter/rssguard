@@ -205,6 +205,7 @@ set(SOURCES
   gui/toolbars/toolbareditor.h
   gui/webbrowser.cpp
   gui/webbrowser.h
+  gui/webviewers/webviewer.cpp
   gui/webviewers/webviewer.h
   miscellaneous/application.cpp
   miscellaneous/application.h

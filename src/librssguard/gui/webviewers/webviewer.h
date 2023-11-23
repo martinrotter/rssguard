@@ -1,3 +1,5 @@
+// For license of this file, see <project-root-folder>/LICENSE.md.
+
 #ifndef WEBVIEWER_H
 #define WEBVIEWER_H
 
@@ -5,7 +7,11 @@
 
 #include "definitions/definitions.h"
 
+#include <QAction>
 #include <QUrl>
+
+class QMenu;
+class QContextMenuEvent;
 
 class WebBrowser;
 class RootItem;
@@ -15,9 +21,15 @@ struct PreparedHtml {
     QUrl m_baseUrl;
 };
 
+struct ContextMenuData {
+    QUrl m_linkUrl;
+    QUrl m_mediaUrl;
+};
+
 // Interface for web/article viewers.
 class WebViewer {
   public:
+    WebViewer();
     virtual ~WebViewer();
 
     // Performs necessary steps to make viewer work with browser.
@@ -68,6 +80,11 @@ class WebViewer {
     virtual qreal zoomFactor() const = 0;
     virtual void setZoomFactor(qreal zoom_factor) = 0;
 
+  protected:
+    void processContextMenu(QMenu* specific_menu, QContextMenuEvent* event);
+
+    virtual ContextMenuData provideContextMenuData(QContextMenuEvent* event) const = 0;
+
   signals:
     virtual void pageTitleChanged(const QString& new_title) = 0;
     virtual void pageUrlChanged(const QUrl& url) = 0;
@@ -78,11 +95,19 @@ class WebViewer {
     virtual void loadingFinished(bool success) = 0;
     virtual void newWindowRequested(WebViewer* viewer) = 0;
     virtual void closeWindowRequested() = 0;
+
+  private:
+    void playClickedLinkAsMedia();
+    void openClickedLinkInExternalBrowser();
+    void initializeCommonMenuItems();
+
+  private:
+    QScopedPointer<QAction> m_actionOpenExternalBrowser;
+    QScopedPointer<QAction> m_actionPlayLink;
+    ContextMenuData m_contextMenuData;
 };
 
 Q_DECLARE_INTERFACE(WebViewer, "WebViewer")
-
-inline WebViewer::~WebViewer() {}
 
 inline void WebViewer::zoomIn() {
   setZoomFactor(zoomFactor() + double(ZOOM_FACTOR_STEP));

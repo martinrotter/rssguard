@@ -63,13 +63,14 @@ class TextBrowserViewer : public QTextBrowser, public WebViewer {
     void setResourcesEnabled(bool enabled);
 
   protected:
+    virtual ContextMenuData provideContextMenuData(QContextMenuEvent* event) const;
+
     virtual void contextMenuEvent(QContextMenuEvent* event);
     virtual void resizeEvent(QResizeEvent* event);
     virtual void wheelEvent(QWheelEvent* event);
 
   private slots:
     void enableResources(bool enable);
-    void openLinkInExternalBrowser();
     void downloadLink();
     void onAnchorClicked(const QUrl& url);
     void reloadHtmlDelayed();
@@ -112,7 +113,6 @@ class TextBrowserViewer : public QTextBrowser, public WebViewer {
     QFont m_baseFont;
     qreal m_zoomFactor = 1.0;
     QScopedPointer<QAction> m_actionEnableResources;
-    QScopedPointer<QAction> m_actionOpenExternalBrowser;
     QScopedPointer<QAction> m_actionDownloadLink;
     QScopedPointer<TextBrowserDocument> m_document;
     QPoint m_lastContextMenuPos;
