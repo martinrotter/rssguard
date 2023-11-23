@@ -5897,6 +5897,21 @@ List of supported readers:</translation>
       <source>not a Sitemap</source>
       <translation type="unfinished">not a Sitemap</translation>
     </message>
+    <message>
+      <location filename="../src/librssguard/gui/webviewers/webviewer.cpp" line="34"/>
+      <source>Open with external tool</source>
+      <translation>Åben med eksternt værktøj</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard/gui/webviewers/webviewer.cpp" line="95"/>
+      <source>Open in external browser</source>
+      <translation>Åben i ekstern netlæser</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard/gui/webviewers/webviewer.cpp" line="98"/>
+      <source>Open link as audio/video</source>
+      <translation type="unfinished">Open link as audio/video</translation>
+    </message>
   </context>
   <context>
     <name>Readability</name>
@@ -8092,24 +8107,14 @@ Ulæste nyheder: %2</translation>
       <translation>billede</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/webviewers/qtextbrowser/textbrowserviewer.cpp" line="370"/>
+      <location filename="../src/librssguard/gui/webviewers/qtextbrowser/textbrowserviewer.cpp" line="375"/>
       <source>Enable external resources</source>
       <translation>Aktivér eksterne ressourcer</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/webviewers/qtextbrowser/textbrowserviewer.cpp" line="373"/>
-      <source>Open in external browser</source>
-      <translation>Åben i ekstern netlæser</translation>
-    </message>
-    <message>
-      <location filename="../src/librssguard/gui/webviewers/qtextbrowser/textbrowserviewer.cpp" line="375"/>
+      <location filename="../src/librssguard/gui/webviewers/qtextbrowser/textbrowserviewer.cpp" line="377"/>
       <source>Download</source>
       <translation>Hent</translation>
-    </message>
-    <message>
-      <location filename="../src/librssguard/gui/webviewers/qtextbrowser/textbrowserviewer.cpp" line="400"/>
-      <source>Open with external tool</source>
-      <translation>Åben med eksternt værktøj</translation>
     </message>
   </context>
   <context>
@@ -8596,29 +8601,6 @@ Sidst logget på: %4</translation>
       <location filename="../src/librssguard/gui/webbrowser.cpp" line="30"/>
       <source>Open this website in system web browser</source>
       <translation>Åben denne hjemmeside i systemets standardnetlæser</translation>
-    </message>
-  </context>
-  <context>
-    <name>WebEngineViewer</name>
-    <message>
-      <location filename="../src/librssguard/gui/webviewers/webengine/webengineviewer.cpp" line="92"/>
-      <source>Open link in external browser</source>
-      <translation>Åben henvisning i ekstern netlæser</translation>
-    </message>
-    <message>
-      <location filename="../src/librssguard/gui/webviewers/webengine/webengineviewer.cpp" line="105"/>
-      <source>Open link as audio/video</source>
-      <translation type="unfinished">Open link as audio/video</translation>
-    </message>
-    <message>
-      <location filename="../src/librssguard/gui/webviewers/webengine/webengineviewer.cpp" line="115"/>
-      <source>Open with external tool</source>
-      <translation>Åben med eksternt værktøj</translation>
-    </message>
-    <message>
-      <location filename="../src/librssguard/gui/webviewers/webengine/webengineviewer.cpp" line="134"/>
-      <source>No external tools activated</source>
-      <translation>Intet eksternt værktøj aktiveret</translation>
     </message>
   </context>
   <context>
