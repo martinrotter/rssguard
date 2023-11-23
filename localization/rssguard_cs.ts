@@ -5939,6 +5939,21 @@ Podporované čtečky:</translation>
       <source>not a Sitemap</source>
       <translation>není sitemapa</translation>
     </message>
+    <message>
+      <location filename="../src/librssguard/gui/webviewers/webviewer.cpp" line="34"/>
+      <source>Open with external tool</source>
+      <translation>Otevřít s externím nástrojem</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard/gui/webviewers/webviewer.cpp" line="95"/>
+      <source>Open in external browser</source>
+      <translation>Otevřít v externím webovém prohlížeči</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard/gui/webviewers/webviewer.cpp" line="98"/>
+      <source>Open link as audio/video</source>
+      <translation type="unfinished">Open link as audio/video</translation>
+    </message>
   </context>
   <context>
     <name>Readability</name>
@@ -8140,24 +8155,14 @@ Nepřečtené zprávy: %2</translation>
       <translation>obrázek</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/webviewers/qtextbrowser/textbrowserviewer.cpp" line="370"/>
+      <location filename="../src/librssguard/gui/webviewers/qtextbrowser/textbrowserviewer.cpp" line="375"/>
       <source>Enable external resources</source>
       <translation>Povolit externí zdroje</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/webviewers/qtextbrowser/textbrowserviewer.cpp" line="373"/>
-      <source>Open in external browser</source>
-      <translation>Otevřít v externím webovém prohlížeči</translation>
-    </message>
-    <message>
-      <location filename="../src/librssguard/gui/webviewers/qtextbrowser/textbrowserviewer.cpp" line="375"/>
+      <location filename="../src/librssguard/gui/webviewers/qtextbrowser/textbrowserviewer.cpp" line="377"/>
       <source>Download</source>
       <translation>Stáhnout</translation>
-    </message>
-    <message>
-      <location filename="../src/librssguard/gui/webviewers/qtextbrowser/textbrowserviewer.cpp" line="400"/>
-      <source>Open with external tool</source>
-      <translation>Otevřít s externím nástrojem</translation>
     </message>
   </context>
   <context>
@@ -8650,29 +8655,6 @@ Poslední čas přihlášení: %4</translation>
       <location filename="../src/librssguard/gui/webbrowser.cpp" line="30"/>
       <source>Open this website in system web browser</source>
       <translation>Otevřít stránku v systémovém webovém prohlížeči</translation>
-    </message>
-  </context>
-  <context>
-    <name>WebEngineViewer</name>
-    <message>
-      <location filename="../src/librssguard/gui/webviewers/webengine/webengineviewer.cpp" line="92"/>
-      <source>Open link in external browser</source>
-      <translation>Otevřít odkaz v externím prohlížeči</translation>
-    </message>
-    <message>
-      <location filename="../src/librssguard/gui/webviewers/webengine/webengineviewer.cpp" line="105"/>
-      <source>Open link as audio/video</source>
-      <translation type="unfinished">Open link as audio/video</translation>
-    </message>
-    <message>
-      <location filename="../src/librssguard/gui/webviewers/webengine/webengineviewer.cpp" line="115"/>
-      <source>Open with external tool</source>
-      <translation>Otevřít s externím nástrojem</translation>
-    </message>
-    <message>
-      <location filename="../src/librssguard/gui/webviewers/webengine/webengineviewer.cpp" line="134"/>
-      <source>No external tools activated</source>
-      <translation>Nemáte žádné externí nástroje</translation>
     </message>
   </context>
   <context>
