@@ -5876,6 +5876,21 @@ List of supported readers:</source>
       <source>not a Sitemap</source>
       <translation>サイトマップではありません</translation>
     </message>
+    <message>
+      <location filename="../src/librssguard/gui/webviewers/webviewer.cpp" line="34"/>
+      <source>Open with external tool</source>
+      <translation>外部ツールで開く</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard/gui/webviewers/webviewer.cpp" line="95"/>
+      <source>Open in external browser</source>
+      <translation>外部ブラウザで開く</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard/gui/webviewers/webviewer.cpp" line="98"/>
+      <source>Open link as audio/video</source>
+      <translation type="unfinished">Open link as audio/video</translation>
+    </message>
   </context>
   <context>
     <name>Readability</name>
@@ -8068,24 +8083,14 @@ Unread news: %2</source>
       <translation type="unfinished">image</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/webviewers/qtextbrowser/textbrowserviewer.cpp" line="370"/>
+      <location filename="../src/librssguard/gui/webviewers/qtextbrowser/textbrowserviewer.cpp" line="375"/>
       <source>Enable external resources</source>
       <translation>外部リソースを有効にする</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/webviewers/qtextbrowser/textbrowserviewer.cpp" line="373"/>
-      <source>Open in external browser</source>
-      <translation>外部ブラウザで開く</translation>
-    </message>
-    <message>
-      <location filename="../src/librssguard/gui/webviewers/qtextbrowser/textbrowserviewer.cpp" line="375"/>
+      <location filename="../src/librssguard/gui/webviewers/qtextbrowser/textbrowserviewer.cpp" line="377"/>
       <source>Download</source>
       <translation>ダウンロード</translation>
-    </message>
-    <message>
-      <location filename="../src/librssguard/gui/webviewers/qtextbrowser/textbrowserviewer.cpp" line="400"/>
-      <source>Open with external tool</source>
-      <translation>外部ツールで開く</translation>
     </message>
   </context>
   <context>
@@ -8569,29 +8574,6 @@ Last login on: %4</translation>
       <location filename="../src/librssguard/gui/webbrowser.cpp" line="30"/>
       <source>Open this website in system web browser</source>
       <translation>このウェブサイトをシステムのウェブブラウザで開く</translation>
-    </message>
-  </context>
-  <context>
-    <name>WebEngineViewer</name>
-    <message>
-      <location filename="../src/librssguard/gui/webviewers/webengine/webengineviewer.cpp" line="92"/>
-      <source>Open link in external browser</source>
-      <translation>リンクを外部ブラウザで開く</translation>
-    </message>
-    <message>
-      <location filename="../src/librssguard/gui/webviewers/webengine/webengineviewer.cpp" line="105"/>
-      <source>Open link as audio/video</source>
-      <translation>リンクをオーディオ/ビデオとして開く</translation>
-    </message>
-    <message>
-      <location filename="../src/librssguard/gui/webviewers/webengine/webengineviewer.cpp" line="115"/>
-      <source>Open with external tool</source>
-      <translation>外部ツールで開く</translation>
-    </message>
-    <message>
-      <location filename="../src/librssguard/gui/webviewers/webengine/webengineviewer.cpp" line="134"/>
-      <source>No external tools activated</source>
-      <translation>有効な外部ツールがありません</translation>
     </message>
   </context>
   <context>
