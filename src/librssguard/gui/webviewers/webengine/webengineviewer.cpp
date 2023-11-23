@@ -82,6 +82,8 @@ void WebEngineViewer::contextMenuEvent(QContextMenuEvent* event) {
   QMenu* menu = page()->createStandardContextMenu();
 #endif
 
+  menu->removeAction(page()->action(QWebEnginePage::WebAction::OpenLinkInNewWindow));
+
   menu->addAction(qApp->web()->adBlock()->adBlockIcon());
   menu->addAction(qApp->web()->engineSettingsAction());
 

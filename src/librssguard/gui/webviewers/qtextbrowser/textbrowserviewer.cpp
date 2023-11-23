@@ -193,15 +193,10 @@ PreparedHtml TextBrowserViewer::prepareHtmlForMessage(const QList<Message>& mess
 void TextBrowserViewer::bindToBrowser(WebBrowser* browser) {
   installEventFilter(browser);
 
-  browser->m_actionBack = new QAction(this);
-  browser->m_actionForward = new QAction(this);
-  browser->m_actionReload = new QAction(this);
-  browser->m_actionStop = new QAction(this);
-
-  browser->m_actionBack->setEnabled(false);
-  browser->m_actionForward->setEnabled(false);
-  browser->m_actionReload->setEnabled(false);
-  browser->m_actionStop->setEnabled(false);
+  browser->m_actionBack = nullptr;
+  browser->m_actionForward = nullptr;
+  browser->m_actionReload = nullptr;
+  browser->m_actionStop = nullptr;
 }
 
 void TextBrowserViewer::findText(const QString& text, bool backwards) {

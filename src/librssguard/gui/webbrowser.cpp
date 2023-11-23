@@ -285,24 +285,34 @@ void WebBrowser::initializeLayout() {
   m_toolBar->setAllowedAreas(Qt::ToolBarArea::TopToolBarArea);
 
   // Modify action texts.
-  m_actionBack->setText(tr("Back"));
-  m_actionForward->setText(tr("Forward"));
-  m_actionReload->setText(tr("Reload"));
-  m_actionStop->setText(tr("Stop"));
+  if (m_actionBack != nullptr) {
+    m_actionBack->setText(tr("Back"));
+    m_actionBack->setIcon(qApp->icons()->fromTheme(QSL("go-previous")));
+    m_toolBar->addAction(m_actionBack);
+  }
 
-  m_actionBack->setIcon(qApp->icons()->fromTheme(QSL("go-previous")));
-  m_actionForward->setIcon(qApp->icons()->fromTheme(QSL("go-next")));
-  m_actionReload->setIcon(qApp->icons()->fromTheme(QSL("reload"), QSL("view-refresh")));
-  m_actionStop->setIcon(qApp->icons()->fromTheme(QSL("process-stop")));
+  if (m_actionForward != nullptr) {
+    m_actionForward->setText(tr("Forward"));
+    m_actionForward->setIcon(qApp->icons()->fromTheme(QSL("go-next")));
+    m_toolBar->addAction(m_actionForward);
+  }
+
+  if (m_actionReload != nullptr) {
+    m_actionReload->setText(tr("Reload"));
+    m_actionReload->setIcon(qApp->icons()->fromTheme(QSL("reload"), QSL("view-refresh")));
+    m_toolBar->addAction(m_actionReload);
+  }
+
+  if (m_actionStop != nullptr) {
+    m_actionStop->setText(tr("Stop"));
+    m_actionStop->setIcon(qApp->icons()->fromTheme(QSL("process-stop")));
+    m_toolBar->addAction(m_actionStop);
+  }
 
   m_actionOpenInSystemBrowser->setEnabled(false);
   m_actionReadabilePage->setEnabled(false);
 
   // Add needed actions into toolbar.
-  m_toolBar->addAction(m_actionBack);
-  m_toolBar->addAction(m_actionForward);
-  m_toolBar->addAction(m_actionReload);
-  m_toolBar->addAction(m_actionStop);
   m_toolBar->addAction(m_actionOpenInSystemBrowser);
   m_toolBar->addAction(m_actionReadabilePage);
 

@@ -5871,7 +5871,7 @@ List of supported readers:</source>
     </message>
     <message>
         <location filename="../src/librssguard/gui/webviewers/webviewer.cpp" line="98"/>
-        <source>Open link as audio/video</source>
+        <source>Play link as audio/video</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -8041,12 +8041,12 @@ Unread news: %2</translation>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/librssguard/gui/webviewers/qtextbrowser/textbrowserviewer.cpp" line="375"/>
+        <location filename="../src/librssguard/gui/webviewers/qtextbrowser/textbrowserviewer.cpp" line="370"/>
         <source>Enable external resources</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/librssguard/gui/webviewers/qtextbrowser/textbrowserviewer.cpp" line="377"/>
+        <location filename="../src/librssguard/gui/webviewers/qtextbrowser/textbrowserviewer.cpp" line="372"/>
         <source>Download</source>
         <translation type="unfinished"></translation>
     </message>
@@ -8509,22 +8509,22 @@ Last login on: %4</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/librssguard/gui/webbrowser.cpp" line="288"/>
+        <location filename="../src/librssguard/gui/webbrowser.cpp" line="289"/>
         <source>Back</source>
         <translation>Back</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/gui/webbrowser.cpp" line="289"/>
+        <location filename="../src/librssguard/gui/webbrowser.cpp" line="295"/>
         <source>Forward</source>
         <translation>Forward</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/gui/webbrowser.cpp" line="290"/>
+        <location filename="../src/librssguard/gui/webbrowser.cpp" line="301"/>
         <source>Reload</source>
         <translation>Reload</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/gui/webbrowser.cpp" line="291"/>
+        <location filename="../src/librssguard/gui/webbrowser.cpp" line="307"/>
         <source>Stop</source>
         <translation>Stop</translation>
     </message>
