@@ -5184,7 +5184,7 @@ Login tokens expiration: %2</translation>
     <message>
       <location filename="../src/librssguard/gui/messagesview.cpp" line="879"/>
       <source>External tool &apos;%1&apos; could not be started.</source>
-      <translation type="unfinished">External tool &apos;%1&apos; could not be started.</translation>
+      <translation>外部ツール &apos;%1&apos; を開始できませんでした</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/messagesview.cpp" line="438"/>
@@ -7511,7 +7511,7 @@ Also, relaunch &quot;Settings&quot; dialog after you install Node.js.</source>
     <message>
       <location filename="../src/librssguard/miscellaneous/skinfactory.cpp" line="526"/>
       <source>file %1 not found</source>
-      <translation type="unfinished">file %1 not found</translation>
+      <translation>ファイル %1 が見つかりません</translation>
     </message>
   </context>
   <context>
