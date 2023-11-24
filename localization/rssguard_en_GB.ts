@@ -4537,7 +4537,7 @@ Login tokens expiration: %2</translation>
     <message>
       <location filename="../src/librssguard/gui/reusable/mediaplayer.ui" line="35"/>
       <source>Play/pause</source>
-      <translation type="unfinished">Play/pause</translation>
+      <translation>Play/pause</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/reusable/mediaplayer.ui" line="42"/>
@@ -4547,7 +4547,7 @@ Login tokens expiration: %2</translation>
     <message>
       <location filename="../src/librssguard/gui/reusable/mediaplayer.ui" line="49"/>
       <source>Speed</source>
-      <translation type="unfinished">Speed</translation>
+      <translation>Speed</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/reusable/mediaplayer.ui" line="77"/>
@@ -4557,12 +4557,12 @@ Login tokens expiration: %2</translation>
     <message>
       <location filename="../src/librssguard/gui/reusable/mediaplayer.ui" line="87"/>
       <source>Duration</source>
-      <translation type="unfinished">Duration</translation>
+      <translation>Duration</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/reusable/mediaplayer.ui" line="94"/>
       <source>Mute/unmute</source>
-      <translation type="unfinished">Mute/unmute</translation>
+      <translation>Mute/unmute</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/reusable/mediaplayer.ui" line="107"/>
