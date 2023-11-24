@@ -4534,87 +4534,127 @@ Logintoken verloopt: %2</translation>
       <translation>Form</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/reusable/mediaplayer.cpp" line="167"/>
+      <location filename="../src/librssguard/gui/reusable/mediaplayer.ui" line="35"/>
+      <source>Play/pause</source>
+      <translation type="unfinished">Play/pause</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard/gui/reusable/mediaplayer.ui" line="42"/>
+      <source>Stop</source>
+      <translation>Stoppen</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard/gui/reusable/mediaplayer.ui" line="49"/>
+      <source>Speed</source>
+      <translation type="unfinished">Speed</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard/gui/reusable/mediaplayer.ui" line="77"/>
+      <source>Progress</source>
+      <translation>Voortgang</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard/gui/reusable/mediaplayer.ui" line="87"/>
+      <source>Duration</source>
+      <translation type="unfinished">Duration</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard/gui/reusable/mediaplayer.ui" line="94"/>
+      <source>Mute/unmute</source>
+      <translation type="unfinished">Mute/unmute</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard/gui/reusable/mediaplayer.ui" line="107"/>
+      <source>Volume</source>
+      <translation>Volume</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard/gui/reusable/mediaplayer.ui" line="126"/>
+      <source>Download</source>
+      <translation>Downloaden</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard/gui/reusable/mediaplayer.cpp" line="199"/>
       <source>Cannot load media (missing codecs)</source>
       <translation>Kan media niet laden (codecs ontbreken)</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/reusable/mediaplayer.cpp" line="170"/>
+      <location filename="../src/librssguard/gui/reusable/mediaplayer.cpp" line="202"/>
       <source>Unrecognized format</source>
       <translation>Niet herkend formaat</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/reusable/mediaplayer.cpp" line="173"/>
+      <location filename="../src/librssguard/gui/reusable/mediaplayer.cpp" line="205"/>
       <source>Network problem</source>
       <translation>Netwerkprobleem</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/reusable/mediaplayer.cpp" line="176"/>
+      <location filename="../src/librssguard/gui/reusable/mediaplayer.cpp" line="208"/>
       <source>Access denied</source>
       <translation>Toegang geweigerd</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/reusable/mediaplayer.cpp" line="180"/>
+      <location filename="../src/librssguard/gui/reusable/mediaplayer.cpp" line="212"/>
       <source>Service is missing</source>
       <translation>Service ontbreekt</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/reusable/mediaplayer.cpp" line="183"/>
+      <location filename="../src/librssguard/gui/reusable/mediaplayer.cpp" line="215"/>
       <source>This is playlist</source>
       <translation>Dit is de afspeellijst</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/reusable/mediaplayer.cpp" line="187"/>
+      <location filename="../src/librssguard/gui/reusable/mediaplayer.cpp" line="219"/>
       <source>No errors</source>
       <translation>Geen fouten</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/reusable/mediaplayer.cpp" line="190"/>
+      <location filename="../src/librssguard/gui/reusable/mediaplayer.cpp" line="222"/>
       <source>Unknown error</source>
       <translation>Onbekende fout</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/reusable/mediaplayer.cpp" line="205"/>
+      <location filename="../src/librssguard/gui/reusable/mediaplayer.cpp" line="237"/>
       <source>No media</source>
       <translation>Geen media</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/reusable/mediaplayer.cpp" line="208"/>
+      <location filename="../src/librssguard/gui/reusable/mediaplayer.cpp" line="240"/>
       <source>Loading...</source>
       <translation>Bezig met laden...</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/reusable/mediaplayer.cpp" line="211"/>
+      <location filename="../src/librssguard/gui/reusable/mediaplayer.cpp" line="243"/>
       <source>Media loaded</source>
       <translation>Media geladen</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/reusable/mediaplayer.cpp" line="214"/>
+      <location filename="../src/librssguard/gui/reusable/mediaplayer.cpp" line="246"/>
       <source>Media stalled</source>
       <translation>Media vastgelopen</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/reusable/mediaplayer.cpp" line="217"/>
+      <location filename="../src/librssguard/gui/reusable/mediaplayer.cpp" line="249"/>
       <source>Buffering...</source>
       <translation>Bufferen...</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/reusable/mediaplayer.cpp" line="220"/>
+      <location filename="../src/librssguard/gui/reusable/mediaplayer.cpp" line="252"/>
       <source>Loaded</source>
       <translation>Geladen</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/reusable/mediaplayer.cpp" line="223"/>
+      <location filename="../src/librssguard/gui/reusable/mediaplayer.cpp" line="255"/>
       <source>Ended</source>
       <translation>Beëindigd</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/reusable/mediaplayer.cpp" line="226"/>
+      <location filename="../src/librssguard/gui/reusable/mediaplayer.cpp" line="258"/>
       <source>Media is invalid</source>
       <translation>Media is ongeldig</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/reusable/mediaplayer.cpp" line="229"/>
+      <location filename="../src/librssguard/gui/reusable/mediaplayer.cpp" line="261"/>
       <source>Unknown</source>
       <translation>Onbekend</translation>
     </message>
