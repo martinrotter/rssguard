@@ -82,6 +82,10 @@ void MediaPlayer::muteUnmute() {
   m_muted = !m_muted;
 }
 
+void MediaPlayer::setSpeed(int speed) {
+  m_player->setPlaybackRate(convertSpeed(speed));
+}
+
 void MediaPlayer::setVolume(int volume) {
 #if QT_VERSION_MAJOR == 6
   m_player->audioOutput()->setVolume(convertSliderVolume(volume));
@@ -96,19 +100,36 @@ void MediaPlayer::seek(int position) {
   m_player->setPosition(convertSliderProgress(position));
 }
 
+void MediaPlayer::onPlaybackRateChanged(qreal speed) {
+  m_ui.m_spinSpeed->blockSignals(true);
+  m_ui.m_spinSpeed->setValue(convertSpinSpeed(speed));
+  m_ui.m_spinSpeed->blockSignals(false);
+}
+
 void MediaPlayer::onDurationChanged(qint64 duration) {
   m_ui.m_slidProgress->blockSignals(true);
-  m_ui.m_slidProgress->setMaximum(duration / 1000);
+  m_ui.m_slidProgress->setMaximum(convertDuration(duration));
   m_ui.m_slidProgress->blockSignals(false);
+
+  updateTimeAndProgress(convertToSliderProgress(m_player->position()), convertDuration(duration));
+}
+
+void MediaPlayer::onPositionChanged(qint64 position) {
+  m_ui.m_slidProgress->blockSignals(true);
+  m_ui.m_slidProgress->setValue(convertToSliderProgress(position));
+  m_ui.m_slidProgress->blockSignals(false);
+
+  updateTimeAndProgress(convertToSliderProgress(position), convertDuration(m_player->duration()));
+}
+
+void MediaPlayer::updateTimeAndProgress(int progress, int total) {
+  m_ui.m_lblTime->setText(QSL("%1/%2").arg(QDateTime::fromSecsSinceEpoch(progress).toUTC().toString("hh:mm:ss"),
+                                           QDateTime::fromSecsSinceEpoch(total).toUTC().toString("hh:mm:ss")));
 }
 
 void MediaPlayer::onErrorOccurred(QMediaPlayer::Error error, const QString& error_string) {
-  if (error_string.isEmpty()) {
-    m_ui.m_lblStatus->setText(errorToString(error));
-  }
-  else {
-    m_ui.m_lblStatus->setText(error_string);
-  }
+  QString err = error_string.isEmpty() ? errorToString(error) : error_string;
+  m_ui.m_lblStatus->setStatus(WidgetWithStatus::StatusType::Error, err, err);
 }
 
 void MediaPlayer::onAudioAvailable(bool available) {
@@ -121,7 +142,12 @@ void MediaPlayer::onVideoAvailable(bool available) {
 }
 
 void MediaPlayer::onMediaStatusChanged(QMediaPlayer::MediaStatus status) {
-  m_ui.m_lblStatus->setText(mediaStatusToString(status));
+  QString st = mediaStatusToString(status);
+  m_ui.m_lblStatus->setStatus(status == QMediaPlayer::MediaStatus::InvalidMedia
+                                ? WidgetWithStatus::StatusType::Error
+                                : WidgetWithStatus::StatusType::Information,
+                              st,
+                              st);
 }
 
 void MediaPlayer::onPlaybackStateChanged(QMediaPlayer::PLAYBACK_STATE state) {
@@ -143,14 +169,20 @@ void MediaPlayer::onPlaybackStateChanged(QMediaPlayer::PLAYBACK_STATE state) {
   }
 }
 
-void MediaPlayer::onPositionChanged(qint64 position) {
-  m_ui.m_slidProgress->blockSignals(true);
-  m_ui.m_slidProgress->setValue(convertToSliderProgress(position));
-  m_ui.m_slidProgress->blockSignals(false);
-}
-
 int MediaPlayer::convertToSliderProgress(qint64 player_progress) const {
   return player_progress / 1000;
+}
+
+int MediaPlayer::convertDuration(qint64 duration) const {
+  return duration / 1000;
+}
+
+qreal MediaPlayer::convertSpeed(int speed) const {
+  return speed / 100.0;
+}
+
+int MediaPlayer::convertSpinSpeed(qreal speed) const {
+  return speed * 100;
 }
 
 void MediaPlayer::onSeekableChanged(bool seekable) {
@@ -264,6 +296,7 @@ void MediaPlayer::createConnections() {
   connect(m_player, &QMediaPlayer::mediaStatusChanged, this, &MediaPlayer::onMediaStatusChanged);
   connect(m_player, &QMediaPlayer::positionChanged, this, &MediaPlayer::onPositionChanged);
   connect(m_player, &QMediaPlayer::seekableChanged, this, &MediaPlayer::onSeekableChanged);
+  connect(m_player, &QMediaPlayer::playbackRateChanged, this, &MediaPlayer::onPlaybackRateChanged);
 
   connect(m_ui.m_btnPlayPause, &PlainToolButton::clicked, this, &MediaPlayer::playPause);
   connect(m_ui.m_btnStop, &PlainToolButton::clicked, this, &MediaPlayer::stop);
@@ -271,4 +304,5 @@ void MediaPlayer::createConnections() {
   connect(m_ui.m_btnVolume, &PlainToolButton::clicked, this, &MediaPlayer::muteUnmute);
   connect(m_ui.m_slidVolume, &QSlider::valueChanged, this, &MediaPlayer::setVolume);
   connect(m_ui.m_slidProgress, &QSlider::valueChanged, this, &MediaPlayer::seek);
+  connect(m_ui.m_spinSpeed, &QSpinBox::valueChanged, this, &MediaPlayer::setSpeed);
 }

@@ -36,6 +36,7 @@ class MediaPlayer : public TabContent {
     void stop();
     void download();
     void muteUnmute();
+    void setSpeed(int speed);
 
     // NOTE: Volume is from 0 to 100 taken directly from slider or
     // elsewhere.
@@ -45,14 +46,13 @@ class MediaPlayer : public TabContent {
     // for "int" data type, therefore we seek by second.
     void seek(int position);
 
+    void onPlaybackRateChanged(qreal speed);
     void onDurationChanged(qint64 duration);
     void onErrorOccurred(QMediaPlayer::Error error, const QString& error_string = {});
     void onAudioAvailable(bool available);
     void onVideoAvailable(bool available);
     void onMediaStatusChanged(QMediaPlayer::MediaStatus status);
-
     void onPlaybackStateChanged(QMediaPlayer::PLAYBACK_STATE state);
-
     void onPositionChanged(qint64 position);
     void onSeekableChanged(bool seekable);
 
@@ -63,10 +63,14 @@ class MediaPlayer : public TabContent {
     float convertSliderVolume(int slider_volume) const;
     qint64 convertSliderProgress(int slider_progress) const;
     int convertToSliderProgress(qint64 player_progress) const;
+    int convertDuration(qint64 duration) const;
+    qreal convertSpeed(int speed) const;
+    int convertSpinSpeed(qreal speed) const;
 
     QString errorToString(QMediaPlayer::Error error) const;
     QString mediaStatusToString(QMediaPlayer::MediaStatus status) const;
 
+    void updateTimeAndProgress(int progress, int total);
     void setupIcons();
     void createConnections();
 

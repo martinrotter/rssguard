@@ -27,26 +27,73 @@
    <item>
     <layout class="QHBoxLayout" name="horizontalLayout">
      <item>
-      <widget class="QLabel" name="m_lblStatus"/>
+      <widget class="LabelWithStatus" name="m_lblStatus" native="true"/>
      </item>
      <item>
-      <widget class="PlainToolButton" name="m_btnPlayPause"/>
+      <widget class="PlainToolButton" name="m_btnPlayPause">
+       <property name="toolTip">
+        <string>Play/pause</string>
+       </property>
+      </widget>
      </item>
      <item>
-      <widget class="PlainToolButton" name="m_btnStop"/>
+      <widget class="PlainToolButton" name="m_btnStop">
+       <property name="toolTip">
+        <string>Stop</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QSpinBox" name="m_spinSpeed">
+       <property name="toolTip">
+        <string>Speed</string>
+       </property>
+       <property name="accelerated">
+        <bool>true</bool>
+       </property>
+       <property name="correctionMode">
+        <enum>QAbstractSpinBox::CorrectToNearestValue</enum>
+       </property>
+       <property name="suffix">
+        <string notr="true"> %</string>
+       </property>
+       <property name="minimum">
+        <number>1</number>
+       </property>
+       <property name="maximum">
+        <number>1000</number>
+       </property>
+       <property name="singleStep">
+        <number>10</number>
+       </property>
+       <property name="value">
+        <number>100</number>
+       </property>
+      </widget>
      </item>
      <item>
       <widget class="QSlider" name="m_slidProgress">
+       <property name="toolTip">
+        <string>Progress</string>
+       </property>
        <property name="orientation">
         <enum>Qt::Horizontal</enum>
        </property>
       </widget>
      </item>
      <item>
-      <widget class="QLabel" name="m_lblTime"/>
+      <widget class="QLabel" name="m_lblTime">
+       <property name="toolTip">
+        <string>Duration</string>
+       </property>
+      </widget>
      </item>
      <item>
-      <widget class="PlainToolButton" name="m_btnVolume"/>
+      <widget class="PlainToolButton" name="m_btnVolume">
+       <property name="toolTip">
+        <string>Mute/unmute</string>
+       </property>
+      </widget>
      </item>
      <item>
       <widget class="QSlider" name="m_slidVolume">
@@ -55,6 +102,9 @@
          <horstretch>0</horstretch>
          <verstretch>0</verstretch>
         </sizepolicy>
+       </property>
+       <property name="toolTip">
+        <string>Volume</string>
        </property>
        <property name="maximum">
         <number>100</number>
@@ -71,7 +121,11 @@
       </widget>
      </item>
      <item>
-      <widget class="PlainToolButton" name="m_btnDownload"/>
+      <widget class="PlainToolButton" name="m_btnDownload">
+       <property name="toolTip">
+        <string>Download</string>
+       </property>
+      </widget>
      </item>
     </layout>
    </item>
@@ -89,7 +143,22 @@
    <extends>QToolButton</extends>
    <header>plaintoolbutton.h</header>
   </customwidget>
+  <customwidget>
+   <class>LabelWithStatus</class>
+   <extends>QWidget</extends>
+   <header>labelwithstatus.h</header>
+   <container>1</container>
+  </customwidget>
  </customwidgets>
+ <tabstops>
+  <tabstop>m_btnPlayPause</tabstop>
+  <tabstop>m_btnStop</tabstop>
+  <tabstop>m_spinSpeed</tabstop>
+  <tabstop>m_slidProgress</tabstop>
+  <tabstop>m_btnVolume</tabstop>
+  <tabstop>m_slidVolume</tabstop>
+  <tabstop>m_btnDownload</tabstop>
+ </tabstops>
  <resources/>
  <connections/>
 </ui>
