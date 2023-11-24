@@ -162,7 +162,7 @@ Error: %1</translation>
   <context>
     <name>Application</name>
     <message>
-      <location filename="../src/librssguard/miscellaneous/application.cpp" line="1147"/>
+      <location filename="../src/librssguard/miscellaneous/application.cpp" line="1155"/>
       <source>Application is already running.</source>
       <translation>Die Anwendung läuft bereits.</translation>
     </message>
@@ -187,22 +187,22 @@ Error: %1</translation>
       <translation>Wiederherstellung der Einstellungen wurde nicht initiiert. Stellen Sie sicher, dass das Ausgabeverzeichnis beschrieben werden kann.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/miscellaneous/application.cpp" line="1165"/>
+      <location filename="../src/librssguard/miscellaneous/application.cpp" line="1173"/>
       <source>Cannot add feed</source>
       <translation>Kann Feed nicht hinzufügen</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/miscellaneous/application.cpp" line="1166"/>
+      <location filename="../src/librssguard/miscellaneous/application.cpp" line="1174"/>
       <source>Feed cannot be added because there is no active account which can add feeds.</source>
       <translation>Feed konnte nicht hinzugefügt werden, weil kein aktiver Zugang existiert, der Feeds hinzufügen kann.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/miscellaneous/application.cpp" line="1324"/>
+      <location filename="../src/librssguard/miscellaneous/application.cpp" line="1332"/>
       <source>Packages %1 were updated.</source>
       <translation>%1 Pakete wurden aktualisiert.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/miscellaneous/application.cpp" line="1031"/>
+      <location filename="../src/librssguard/miscellaneous/application.cpp" line="1039"/>
       <source>Unread articles fetched</source>
       <translation>Ungelesene Artikel aktualisiert</translation>
     </message>
@@ -212,7 +212,7 @@ Error: %1</translation>
       <translation>Geh zum Changelog</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/miscellaneous/application.cpp" line="1096"/>
+      <location filename="../src/librssguard/miscellaneous/application.cpp" line="1104"/>
       <source>AdBlock needs to be configured</source>
       <translation>AdBlock muss noch konfiguriert werden</translation>
     </message>
@@ -233,17 +233,17 @@ Bitte überprüfen Sie die in dieser Version enthaltene Neuerungen
 durch Klicken auf diese Benachrichtigung.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/miscellaneous/application.cpp" line="1097"/>
+      <location filename="../src/librssguard/miscellaneous/application.cpp" line="1105"/>
       <source>AdBlock is not configured properly. Go to &quot;Settings&quot; -&gt; &quot;Node.js&quot; and check if your Node.js is properly configured.</source>
       <translation>AdBlock ist nicht richtig konfiguriert. Gehe zu &quot;Einstellungen&quot; -&gt; &quot;Node.js&quot; und stelle sicher, dass Node.js korrekt eingerichtet ist.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/miscellaneous/application.cpp" line="1146"/>
+      <location filename="../src/librssguard/miscellaneous/application.cpp" line="1154"/>
       <source>Already running</source>
       <translation>Bereits aktiv</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/miscellaneous/application.cpp" line="1315"/>
+      <location filename="../src/librssguard/miscellaneous/application.cpp" line="1323"/>
       <source>Packages %1 were NOT updated because of error: %2.</source>
       <translation>Packete %1 wurden NICHT aktualisiert, wegen Fehler: %2.</translation>
     </message>
@@ -5766,37 +5766,37 @@ Liste aller unterstützten Leser:</translation>
       <translation>Einfacher Reddit Client</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/miscellaneous/skinfactory.cpp" line="598"/>
+      <location filename="../src/librssguard/miscellaneous/skinfactory.cpp" line="608"/>
       <source>interesting stuff</source>
       <translation>Interessantes</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/miscellaneous/skinfactory.cpp" line="601"/>
+      <location filename="../src/librssguard/miscellaneous/skinfactory.cpp" line="611"/>
       <source>interesting stuff (highlighted)</source>
       <translation>Interessantes (hervorgehoben)</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/miscellaneous/skinfactory.cpp" line="604"/>
+      <location filename="../src/librssguard/miscellaneous/skinfactory.cpp" line="614"/>
       <source>errored items</source>
       <translation>Fehlgeschlagene Einträge</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/miscellaneous/skinfactory.cpp" line="607"/>
+      <location filename="../src/librssguard/miscellaneous/skinfactory.cpp" line="617"/>
       <source>errored items (highlighted)</source>
       <translation>Fehlgeschlagene Einträge (hervorgehoben)</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/miscellaneous/skinfactory.cpp" line="610"/>
+      <location filename="../src/librssguard/miscellaneous/skinfactory.cpp" line="620"/>
       <source>items with new articles</source>
       <translation>Einträge mit neuen Artikeln</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/miscellaneous/skinfactory.cpp" line="613"/>
+      <location filename="../src/librssguard/miscellaneous/skinfactory.cpp" line="623"/>
       <source>items with new articles (highlighted)</source>
       <translation>Einträge mit neuen Artikeln (hervorgehoben)</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/miscellaneous/skinfactory.cpp" line="616"/>
+      <location filename="../src/librssguard/miscellaneous/skinfactory.cpp" line="626"/>
       <source>OK-ish color</source>
       <translation>OK-ische Farbe</translation>
     </message>
@@ -5905,8 +5905,8 @@ Liste aller unterstützten Leser:</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/webviewers/webviewer.cpp" line="98"/>
-      <source>Open link as audio/video</source>
-      <translation type="unfinished">Open link as audio/video</translation>
+      <source>Play link as audio/video</source>
+      <translation type="unfinished">Play link as audio/video</translation>
     </message>
   </context>
   <context>
@@ -7514,19 +7514,24 @@ Schließe und Öffne den Einstellungsdiealog erneut, nachdem du Node.js installi
       <translation>Blockierte URL: &quot;%1&quot; &lt;br/&gt; Verwendete Filter: &quot;%2&quot;</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/miscellaneous/skinfactory.cpp" line="281"/>
+      <location filename="../src/librssguard/miscellaneous/skinfactory.cpp" line="278"/>
       <source>Written by </source>
       <translation>Geschrieben von </translation>
     </message>
     <message>
-      <location filename="../src/librssguard/miscellaneous/skinfactory.cpp" line="282"/>
+      <location filename="../src/librssguard/miscellaneous/skinfactory.cpp" line="279"/>
       <source>unknown author</source>
       <translation>unbekannter Autor</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/miscellaneous/skinfactory.cpp" line="297"/>
+      <location filename="../src/librssguard/miscellaneous/skinfactory.cpp" line="294"/>
       <source>Newspaper view</source>
       <translation>Zeitungsansicht</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard/miscellaneous/skinfactory.cpp" line="526"/>
+      <source>file %1 not found</source>
+      <translation type="unfinished">file %1 not found</translation>
     </message>
   </context>
   <context>
@@ -8103,12 +8108,12 @@ Ungelesene Nachrichten: %2</translation>
       <translation>Graphik</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/webviewers/qtextbrowser/textbrowserviewer.cpp" line="375"/>
+      <location filename="../src/librssguard/gui/webviewers/qtextbrowser/textbrowserviewer.cpp" line="360"/>
       <source>Enable external resources</source>
       <translation>Aktiviere externe Ressourcen</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/webviewers/qtextbrowser/textbrowserviewer.cpp" line="377"/>
+      <location filename="../src/librssguard/gui/webviewers/qtextbrowser/textbrowserviewer.cpp" line="362"/>
       <source>Download</source>
       <translation>Herunterladen</translation>
     </message>
@@ -8574,22 +8579,22 @@ Letzte Anmeldung am: %4</translation>
       <translation>Lesemodus kann auf der aktuellen Seite nicht angewendet werden.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/webbrowser.cpp" line="288"/>
+      <location filename="../src/librssguard/gui/webbrowser.cpp" line="289"/>
       <source>Back</source>
       <translation>Zurück</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/webbrowser.cpp" line="289"/>
+      <location filename="../src/librssguard/gui/webbrowser.cpp" line="295"/>
       <source>Forward</source>
       <translation>Vorwärts</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/webbrowser.cpp" line="290"/>
+      <location filename="../src/librssguard/gui/webbrowser.cpp" line="301"/>
       <source>Reload</source>
       <translation>Neu laden</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/webbrowser.cpp" line="291"/>
+      <location filename="../src/librssguard/gui/webbrowser.cpp" line="307"/>
       <source>Stop</source>
       <translation>Stopp</translation>
     </message>
