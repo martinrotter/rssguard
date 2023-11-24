@@ -6,6 +6,7 @@
 
 #if QT_VERSION_MAJOR == 6
 #include <QAudioOutput>
+#include <QWindow>
 #endif
 
 MediaPlayer::MediaPlayer(QWidget* parent)
@@ -304,5 +305,5 @@ void MediaPlayer::createConnections() {
   connect(m_ui.m_btnVolume, &PlainToolButton::clicked, this, &MediaPlayer::muteUnmute);
   connect(m_ui.m_slidVolume, &QSlider::valueChanged, this, &MediaPlayer::setVolume);
   connect(m_ui.m_slidProgress, &QSlider::valueChanged, this, &MediaPlayer::seek);
-  connect(m_ui.m_spinSpeed, &QSpinBox::valueChanged, this, &MediaPlayer::setSpeed);
+  connect(m_ui.m_spinSpeed, QOverload<int>::of(&QSpinBox::valueChanged), this, &MediaPlayer::setSpeed);
 }

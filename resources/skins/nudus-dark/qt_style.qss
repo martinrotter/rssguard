@@ -1,6 +1,6 @@
 QListWidget,
 QScrollArea {
-    border: 1px solid palette(dark);
+    border: 1px solid palette(light);
 }
 
 
@@ -14,19 +14,15 @@ QToolTip {
     border-radius: 2px;
 }
 
-/* TODO: Fine for now, may be improved in future */
 QProgressBar {
     background-color: palette(highlight);
     color: palette(window);
 }
 
 QSplitter::handle {
-    background: palette(dark);
+    background: palette(light);
 }
 
-/*
- * For `qt5-styleplugins`: motif, cde, gtk2, etc.
- */
 QStatusBar::item {
     border: none;
 }
