@@ -5179,7 +5179,7 @@ Login tokens expiration: %2</translation>
     <message>
       <location filename="../src/librssguard/gui/messagesview.cpp" line="878"/>
       <source>Cannot run external tool</source>
-      <translation type="unfinished">Cannot run external tool</translation>
+      <translation>外部ツールを実行できません</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/messagesview.cpp" line="879"/>
