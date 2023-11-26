@@ -4524,7 +4524,7 @@ Login tokens expiration: %2</source>
     <message>
       <location filename="../src/librssguard/gui/reusable/mediaplayer.ui" line="35"/>
       <source>Play/pause</source>
-      <translation type="unfinished">Play/pause</translation>
+      <translation>播放/暫停</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/reusable/mediaplayer.ui" line="42"/>
@@ -4534,7 +4534,7 @@ Login tokens expiration: %2</source>
     <message>
       <location filename="../src/librssguard/gui/reusable/mediaplayer.ui" line="49"/>
       <source>Speed</source>
-      <translation type="unfinished">Speed</translation>
+      <translation>速度</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/reusable/mediaplayer.ui" line="77"/>
@@ -4544,12 +4544,12 @@ Login tokens expiration: %2</source>
     <message>
       <location filename="../src/librssguard/gui/reusable/mediaplayer.ui" line="87"/>
       <source>Duration</source>
-      <translation type="unfinished">Duration</translation>
+      <translation>片長</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/reusable/mediaplayer.ui" line="94"/>
       <source>Mute/unmute</source>
-      <translation type="unfinished">Mute/unmute</translation>
+      <translation>靜音/取消靜音</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/reusable/mediaplayer.ui" line="107"/>
@@ -4589,17 +4589,17 @@ Login tokens expiration: %2</source>
     <message>
       <location filename="../src/librssguard/gui/reusable/mediaplayer.cpp" line="216"/>
       <source>This is playlist</source>
-      <translation type="unfinished">This is playlist</translation>
+      <translation>這是播放清單</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/reusable/mediaplayer.cpp" line="220"/>
       <source>No errors</source>
-      <translation type="unfinished">No errors</translation>
+      <translation>無錯誤</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/reusable/mediaplayer.cpp" line="223"/>
       <source>Unknown error</source>
-      <translation type="unfinished">Unknown error</translation>
+      <translation>未知的錯誤</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/reusable/mediaplayer.cpp" line="238"/>
