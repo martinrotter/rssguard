@@ -160,6 +160,8 @@ void MediaPlayer::setupIcons() {
 }
 
 void MediaPlayer::createBackendConnections() {
+  installEventFilter(m_backend);
+
   connect(m_backend, &PlayerBackend::speedChanged, this, &MediaPlayer::onSpeedChanged);
   connect(m_backend, &PlayerBackend::durationChanged, this, &MediaPlayer::onDurationChanged);
   connect(m_backend, &PlayerBackend::positionChanged, this, &MediaPlayer::onPositionChanged);

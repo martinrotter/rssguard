@@ -5,13 +5,18 @@
 
 #include "gui/mediaplayer/playerbackend.h"
 
-class MpvWidget;
+struct mpv_handle;
+struct mpv_event;
 
 class LibMpvBackend : public PlayerBackend {
     Q_OBJECT
 
   public:
     explicit LibMpvBackend(QWidget* parent = nullptr);
+    virtual ~LibMpvBackend();
+
+  public:
+    virtual bool eventFilter(QObject* watched, QEvent* event);
 
     virtual QUrl url() const;
     virtual int position() const;
@@ -26,8 +31,20 @@ class LibMpvBackend : public PlayerBackend {
     virtual void setVolume(int volume);
     virtual void setPosition(int position);
 
+  private slots:
+    void onMpvEvents();
+
+  signals:
+    void launchMpvEvents();
+
   private:
-    MpvWidget* m_video;
+    void append_log(const QString& text);
+    void create_player();
+    void handle_mpv_event(mpv_event* event);
+
+  private:
+    QWidget* m_mpvContainer;
+    mpv_handle* m_mpvHandle;
 };
 
 #endif // LIBMPVBACKEND_H

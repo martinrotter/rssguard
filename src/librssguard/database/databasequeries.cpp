@@ -1679,9 +1679,6 @@ UpdatedArticles DatabaseQueries::updateMessages(const QSqlDatabase& db,
         QMutexLocker lck(db_mutex);
 
         auto bulk_query = QSqlQuery(final_bulk, db);
-
-        bulk_query.exec();
-
         auto bulk_error = bulk_query.lastError();
 
         if (bulk_error.isValid()) {
