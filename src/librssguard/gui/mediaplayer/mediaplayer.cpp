@@ -4,16 +4,26 @@
 
 #include "miscellaneous/iconfactory.h"
 
+#if defined(ENABLE_MEDIAPLAYER_QTMULTIMEDIA)
 #include "gui/mediaplayer/qtmultimedia/qtmultimediabackend.h"
+#elif defined(ENABLE_MEDIAPLAYER_LIBMPV)
+#include "gui/mediaplayer/libmpv/libmpvbackend.h"
+#endif
 
 MediaPlayer::MediaPlayer(QWidget* parent)
-  : TabContent(parent), m_backend(new QtMultimediaBackend(this)), m_muted(false) {
+  : TabContent(parent), m_backend(
+#if defined(ENABLE_MEDIAPLAYER_QTMULTIMEDIA)
+                          new QtMultimediaBackend(this)
+#else
+                          new LibMpvBackend(this)
+#endif
+                            ),
+    m_muted(false) {
   m_ui.setupUi(this);
 
   m_ui.m_layoutMain->insertWidget(0, m_backend, 1);
 
   setupIcons();
-
   createBackendConnections();
   createConnections();
 }

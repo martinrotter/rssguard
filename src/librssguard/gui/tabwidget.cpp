@@ -21,6 +21,7 @@
 #endif
 
 #include <QMenu>
+#include <QQuickWindow>
 #include <QTimer>
 #include <QToolButton>
 
@@ -229,6 +230,10 @@ int TabWidget::addEmptyBrowser() {
 
 #if defined(ENABLE_MEDIAPLAYER)
 int TabWidget::addMediaPlayer(const QString& url, bool make_active) {
+#if defined(ENABLE_MEDIAPLAYER_LIBMPV)
+  QQuickWindow::setGraphicsApi(QSGRendererInterface::GraphicsApi::OpenGL);
+#endif
+
   auto* player = new MediaPlayer(this);
 
   connect(player,

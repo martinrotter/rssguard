@@ -25,6 +25,8 @@
 #   IS_FLATPAK_BUILD - Set to "ON" when building RSS Guard with Flatpak.
 #   FORCE_BUNDLE_ICONS - Forcibly bundles icons into executables.
 #   ENABLE_MEDIAPLAYER_QTMULTIMEDIA - Enable media player (QtMultimedia/ffmpeg implementation).
+#   ENABLE_MEDIAPLAYER_LIBMPV - Enable media player (libmpv implementation). Use "LibMPV_ROOT" variable to specify
+#                               base libmpv directory.
 #   ENABLE_COMPRESSED_SITEMAP - Set to "ON" if you want to enable support for "sitemap.xml.gz" format.
 #                               This requires "zlib" library and if you want to use specific
 #                               zlib location, then use "ZLIB_ROOT" variable, for example
@@ -113,7 +115,7 @@ if(FORCE_COLORED_OUTPUT)
 endif()
 
 # Global compilation switches.
-option(BUILD_WITH_QT6 "Build application with Qt 6" OFF)
+option(BUILD_WITH_QT6 "Build application with Qt 6" ON)
 option(USE_SYSTEM_SQLITE "Use system-wide SQLite3 library." ON)
 option(USE_WEBENGINE "Use QtWebEngine for embedded web browser" ON)
 option(UPDATE_TRANSLATIONS "Call lupdate to update translation files from source (Qt 6 only)" OFF)
@@ -123,7 +125,8 @@ option(NO_UPDATE_CHECK "Disable automatic checking for new application updates" 
 option(IS_FLATPAK_BUILD "Set to 'ON' when building RSS Guard with Flatpak." OFF)
 option(FORCE_BUNDLE_ICONS "Forcibly bundle icon themes into RSS Guard." OFF)
 option(ENABLE_COMPRESSED_SITEMAP "Enable support for gzip-compressed sitemap feeds. Requires zlib." OFF)
-option(ENABLE_MEDIAPLAYER_QTMULTIMEDIA "Enable built-in media player. Requires QtMultimedia FFMPEG plugin." ON)
+option(ENABLE_MEDIAPLAYER_QTMULTIMEDIA "Enable built-in media player. Requires QtMultimedia FFMPEG plugin." OFF)
+option(ENABLE_MEDIAPLAYER_LIBMPV "Enable built-in media player. Requires libmpv library." ON)
 
 # Import Qt libraries.
 set(QT6_MIN_VERSION 6.3.0)
@@ -145,12 +148,28 @@ if(WIN32 AND NOT BUILD_WITH_QT6)
   list(APPEND QT_COMPONENTS WinExtras)
 endif()
 
+if(NOT OS2)
+  list(APPEND QT_COMPONENTS Multimedia)
+endif()
+
 if(ENABLE_MEDIAPLAYER_QTMULTIMEDIA)
-  list(APPEND QT_COMPONENTS Multimedia MultimediaWidgets)
+  list(APPEND QT_COMPONENTS MultimediaWidgets)
   add_compile_definitions(ENABLE_MEDIAPLAYER_QTMULTIMEDIA)
 endif()
 
-if(ENABLE_MEDIAPLAYER_QTMULTIMEDIA OR ENABLE_MEDIAPLAYER_LIBMVP)
+if(ENABLE_MEDIAPLAYER_LIBMPV)
+  if(WIN32 AND NOT LibMPV_ROOT)
+    set(LibMPV_ROOT "${CMAKE_SOURCE_DIR}/resources/scripts/libmpv")
+  endif()
+
+  if(BUILD_WITH_QT6)
+    list(APPEND QT_COMPONENTS OpenGL OpenGLWidgets)
+  endif()
+
+  add_compile_definitions(ENABLE_MEDIAPLAYER_LIBMPV)
+endif()
+
+if(ENABLE_MEDIAPLAYER_QTMULTIMEDIA OR ENABLE_MEDIAPLAYER_LIBMPV)
   set(ENABLE_MEDIAPLAYER TRUE)
   add_compile_definitions(ENABLE_MEDIAPLAYER)
 endif()

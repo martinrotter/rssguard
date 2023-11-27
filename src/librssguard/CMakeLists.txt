@@ -524,8 +524,36 @@ if(ENABLE_MEDIAPLAYER_QTMULTIMEDIA)
     gui/mediaplayer/qtmultimedia/qtmultimediabackend.cpp
     gui/mediaplayer/qtmultimedia/qtmultimediabackend.h
   )
-endif()
+elseif(ENABLE_MEDIAPLAYER_LIBMPV)
+  list(APPEND SOURCES
+    gui/mediaplayer/libmpv/libmpvbackend.cpp
+    gui/mediaplayer/libmpv/libmpvbackend.h
+    gui/mediaplayer/libmpv/libmpvwidget.cpp
+    gui/mediaplayer/libmpv/libmpvwidget.h
+    gui/mediaplayer/libmpv/qthelper.h
+  )
 
+  if(WIN32)
+    # Tweak finding of libs to make it work with official libmpv libs.
+    list(APPEND CMAKE_FIND_LIBRARY_SUFFIXES ".dll.a")
+  endif()
+
+  # Search libmvp.
+  find_library(LibMPV_LIBRARIES
+    NAMES "mpv" "libmpv" "libmpv-v2"
+    HINTS "${LibMPV_ROOT}"
+    NO_CACHE
+    REQUIRED
+  )
+
+  find_path(LibMPV_INCLUDE_DIRS
+    NAMES "mpv/client.h"
+    PATH_SUFFIXES "include"
+    HINTS "${LibMPV_ROOT}"
+    NO_CACHE
+    REQUIRED
+  )
+endif()
 
 if(USE_WEBENGINE)
   list(APPEND SOURCES
@@ -788,10 +816,26 @@ if(WIN32 AND NOT BUILD_WITH_QT6)
   )
 endif()
 
-if(ENABLE_MEDIAPLAYER_QTMULTIMEDIA)
+if(NOT OS2)
   target_link_libraries(rssguard PUBLIC
     Qt${QT_VERSION_MAJOR}::Multimedia
+  )
+endif()
+
+if(ENABLE_MEDIAPLAYER_QTMULTIMEDIA)
+  target_link_libraries(rssguard PUBLIC
     Qt${QT_VERSION_MAJOR}::MultimediaWidgets
+  )
+elseif(ENABLE_MEDIAPLAYER_LIBMPV)
+  target_include_directories(rssguard AFTER
+    PRIVATE
+    ${LibMPV_INCLUDE_DIRS}
+  )
+
+  target_link_libraries(rssguard PUBLIC
+    Qt${QT_VERSION_MAJOR}::OpenGL
+    Qt${QT_VERSION_MAJOR}::OpenGLWidgets
+    ${LibMPV_LIBRARIES}
   )
 endif()
 

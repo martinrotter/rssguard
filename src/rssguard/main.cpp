@@ -48,9 +48,7 @@ int main(int argc, char* argv[]) {
   // Ensure that ini format is used as application settings storage on macOS.
   QSettings::setDefaultFormat(QSettings::IniFormat);
 
-#if defined(Q_OS_MACOS)
-  QApplication::setAttribute(Qt::AA_DontShowIconsInMenus);
-#endif
+  QApplication::setAttribute(Qt::AA_UseDesktopOpenGL, true);
 
   // We create our own "arguments" list as Qt strips something
   // sometimes out.

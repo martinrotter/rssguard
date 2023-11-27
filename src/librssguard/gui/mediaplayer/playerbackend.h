@@ -5,6 +5,8 @@
 
 #include <QWidget>
 
+#include <QUrl>
+
 class QVBoxLayout;
 
 class PlayerBackend : public QWidget {
