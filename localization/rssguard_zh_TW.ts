@@ -5874,7 +5874,7 @@ List of supported readers:</source>
       <location filename="../src/librssguard/services/standard/parsers/rssparser.cpp" line="192"/>
       <location filename="../src/librssguard/services/standard/parsers/sitemapparser.cpp" line="180"/>
       <source>XML is not well-formed, %1</source>
-      <translation type="unfinished">XML is not well-formed, %1</translation>
+      <translation>XML 語法錯誤，%1</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/standard/parsers/atomparser.cpp" line="248"/>
@@ -7440,17 +7440,17 @@ Also, relaunch &quot;Settings&quot; dialog after you install Node.js.</source>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsnotifications.cpp" line="18"/>
       <source>There are some built-in notification sounds. Just start typing &quot;:&quot; and they will show up.</source>
-      <translation type="unfinished">There are some built-in notification sounds. Just start typing &quot;:&quot; and they will show up.</translation>
+      <translation>有一些內建的通知音效。只要鍵入 &quot;:&quot; 就會示範播放。</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsnotifications.cpp" line="99"/>
       <source>How do I look?</source>
-      <translation type="unfinished">How do I look?</translation>
+      <translation>看來如何？</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsnotifications.cpp" line="100"/>
       <source>Just testing new notifications settings. That&apos;s all.</source>
-      <translation type="unfinished">Just testing new notifications settings. That&apos;s all.</translation>
+      <translation>只是測試新的通知設定而已。</translation>
     </message>
   </context>
   <context>
@@ -7553,7 +7553,7 @@ Also, relaunch &quot;Settings&quot; dialog after you install Node.js.</source>
     <message>
       <location filename="../src/librssguard/miscellaneous/skinfactory.cpp" line="526"/>
       <source>file %1 not found</source>
-      <translation type="unfinished">file %1 not found</translation>
+      <translation>未找到檔案 %1</translation>
     </message>
   </context>
   <context>
@@ -7561,7 +7561,7 @@ Also, relaunch &quot;Settings&quot; dialog after you install Node.js.</source>
     <message>
       <location filename="../src/librssguard/database/sqlitedriver.cpp" line="109"/>
       <source>cannot get native &apos;sqlite3&apos; DB handle</source>
-      <translation type="unfinished">cannot get native &apos;sqlite3&apos; DB handle</translation>
+      <translation>無法取得原生 &apos;sqlite3&apos; DB handle</translation>
     </message>
     <message>
       <location filename="../src/librssguard/database/sqlitedriver.cpp" line="384"/>
@@ -7608,10 +7608,10 @@ Also, relaunch &quot;Settings&quot; dialog after you install Node.js.</source>
 Encoding: %1
 Type: %2
 Post-processing script: %3</source>
-      <translation type="unfinished">
-Encoding: %1
-Type: %2
-Post-processing script: %3</translation>
+      <translation>
+編碼方式: %1
+類型: %2
+後續處理的隨譯即行碼: %3</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/standard/standardfeed.cpp" line="168"/>
@@ -7646,7 +7646,7 @@ Post-processing script: %3</translation>
     <message>
       <location filename="../src/librssguard/services/standard/standardfeed.cpp" line="326"/>
       <source>feed format not recognized</source>
-      <translation type="unfinished">feed format not recognized</translation>
+      <translation>無法識別的文源格式</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/standard/standardfeed.cpp" line="364"/>
@@ -7774,7 +7774,7 @@ Post-processing script: %3</translation>
     <message>
       <location filename="../src/librssguard/services/standard/gui/standardfeeddetails.cpp" line="273"/>
       <source>Source is ok.</source>
-      <translation type="unfinished">Source is ok.</translation>
+      <translation>來源 ok。</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/standard/gui/standardfeeddetails.cpp" line="283"/>
@@ -7990,7 +7990,7 @@ Also, you can post-process generated feed data with yet another script if you wi
     <message>
       <location filename="../src/librssguard/services/standard/standardserviceroot.cpp" line="43"/>
       <source>This is the obligatory service account for standard RSS/RDF/ATOM feeds.</source>
-      <translation type="unfinished">This is the obligatory service account for standard RSS/RDF/ATOM feeds.</translation>
+      <translation>這是標準的 RSS/RDF/ATOM 文源必有的服務帳號。</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/standard/standardserviceroot.cpp" line="163"/>
