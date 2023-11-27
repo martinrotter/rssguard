@@ -4604,42 +4604,42 @@ Login tokens expiration: %2</source>
     <message>
       <location filename="../src/librssguard/gui/reusable/mediaplayer.cpp" line="238"/>
       <source>No media</source>
-      <translation type="unfinished">No media</translation>
+      <translation>無影音檔</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/reusable/mediaplayer.cpp" line="241"/>
       <source>Loading...</source>
-      <translation type="unfinished">Loading...</translation>
+      <translation>載入中...</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/reusable/mediaplayer.cpp" line="244"/>
       <source>Media loaded</source>
-      <translation type="unfinished">Media loaded</translation>
+      <translation>載入的影音檔</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/reusable/mediaplayer.cpp" line="247"/>
       <source>Media stalled</source>
-      <translation type="unfinished">Media stalled</translation>
+      <translation>停滯的影音檔</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/reusable/mediaplayer.cpp" line="250"/>
       <source>Buffering...</source>
-      <translation type="unfinished">Buffering...</translation>
+      <translation>載入緩衝中...</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/reusable/mediaplayer.cpp" line="253"/>
       <source>Loaded</source>
-      <translation type="unfinished">Loaded</translation>
+      <translation>已載入</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/reusable/mediaplayer.cpp" line="256"/>
       <source>Ended</source>
-      <translation type="unfinished">Ended</translation>
+      <translation>已結束</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/reusable/mediaplayer.cpp" line="259"/>
       <source>Media is invalid</source>
-      <translation type="unfinished">Media is invalid</translation>
+      <translation>影音檔無效</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/reusable/mediaplayer.cpp" line="262"/>
@@ -4784,12 +4784,12 @@ Login tokens expiration: %2</source>
     <message>
       <location filename="../src/librssguard/core/messagesforfiltersmodel.cpp" line="36"/>
       <source>true</source>
-      <translation type="unfinished">true</translation>
+      <translation>真</translation>
     </message>
     <message>
       <location filename="../src/librssguard/core/messagesforfiltersmodel.cpp" line="37"/>
       <source>false</source>
-      <translation type="unfinished">false</translation>
+      <translation>假</translation>
     </message>
   </context>
   <context>
@@ -4912,7 +4912,7 @@ Login tokens expiration: %2</source>
     <message>
       <location filename="../src/librssguard/core/messagesmodel.cpp" line="298"/>
       <source>RTL</source>
-      <translation type="unfinished">RTL</translation>
+      <translation>右至左</translation>
     </message>
     <message>
       <location filename="../src/librssguard/core/messagesmodel.cpp" line="300"/>
@@ -5012,7 +5012,7 @@ Login tokens expiration: %2</source>
     <message>
       <location filename="../src/librssguard/core/messagesmodel.cpp" line="310"/>
       <source>Layout direction of the article</source>
-      <translation type="unfinished">Layout direction of the article</translation>
+      <translation>文章字走向</translation>
     </message>
     <message>
       <location filename="../src/librssguard/core/messagesmodel.cpp" line="311"/>
@@ -5250,7 +5250,7 @@ Login tokens expiration: %2</source>
     <message>
       <location filename="../src/librssguard/services/abstract/gui/multifeededitcheckbox.cpp" line="6"/>
       <source>Apply this to all edited feeds.</source>
-      <translation type="unfinished">Apply this to all edited feeds.</translation>
+      <translation>套用此至所有編輯過的文源</translation>
     </message>
   </context>
   <context>
@@ -5737,7 +5737,7 @@ Feedly 是個能私密組織、研究與您關切的議題與趨勢的所在。<
     <message>
       <location filename="../src/librssguard/miscellaneous/notification.cpp" line="151"/>
       <source>Node.js - package(s) failed to update</source>
-      <translation type="unfinished">Node.js - package(s) failed to update</translation>
+      <translation>Node.js - 套件無法更新</translation>
     </message>
     <message>
       <location filename="../src/librssguard/miscellaneous/notification.cpp" line="154"/>
@@ -5771,7 +5771,7 @@ List of supported readers:</source>
     <message>
       <location filename="../src/librssguard/services/greader/greaderentrypoint.cpp" line="34"/>
       <source>and possibly others.</source>
-      <translation type="unfinished">and possibly others.</translation>
+      <translation>而且可能還有其他的東西。</translation>
     </message>
     <message>
       <location filename="../src/librssguard/miscellaneous/notification.cpp" line="139"/>
@@ -5836,22 +5836,22 @@ List of supported readers:</source>
     <message>
       <location filename="../src/librssguard/gui/notifications/toastnotificationsmanager.cpp" line="18"/>
       <source>top-left</source>
-      <translation type="unfinished">top-left</translation>
+      <translation>頂左</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/notifications/toastnotificationsmanager.cpp" line="21"/>
       <source>top-right</source>
-      <translation type="unfinished">top-right</translation>
+      <translation>頂右</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/notifications/toastnotificationsmanager.cpp" line="24"/>
       <source>bottom-left</source>
-      <translation type="unfinished">bottom-left</translation>
+      <translation>底左</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/notifications/toastnotificationsmanager.cpp" line="28"/>
       <source>bottom-right</source>
-      <translation type="unfinished">bottom-right</translation>
+      <translation>底右</translation>
     </message>
     <message>
       <location filename="../src/librssguard/miscellaneous/textfactory.cpp" line="328"/>
@@ -6234,7 +6234,7 @@ Login tokens expiration: %2</source>
     <message>
       <location filename="../src/librssguard/services/abstract/search.cpp" line="111"/>
       <source>Regular expression: %1</source>
-      <translation type="unfinished">Regular expression: %1</translation>
+      <translation>類型式: %1</translation>
     </message>
   </context>
   <context>
@@ -6283,17 +6283,17 @@ Login tokens expiration: %2</source>
     <message>
       <location filename="../src/librssguard/services/abstract/searchsnode.cpp" line="19"/>
       <source>Regex queries</source>
-      <translation type="unfinished">Regex queries</translation>
+      <translation>類型式查詢</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/abstract/searchsnode.cpp" line="20"/>
       <source>You can see all your permanent regex queries here.</source>
-      <translation type="unfinished">You can see all your permanent regex queries here.</translation>
+      <translation>此處可一覽所有查詢用的恆常類型式</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/abstract/searchsnode.cpp" line="55"/>
       <source>New regex query</source>
-      <translation type="unfinished">New regex query</translation>
+      <translation>新增查詢用的類型式</translation>
     </message>
   </context>
   <context>
@@ -6301,12 +6301,12 @@ Login tokens expiration: %2</source>
     <message>
       <location filename="../src/librssguard/services/abstract/serviceroot.cpp" line="138"/>
       <source>Unsupported</source>
-      <translation type="unfinished">Unsupported</translation>
+      <translation>未支援的</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/abstract/serviceroot.cpp" line="138"/>
       <source>This is not suppported (yet).</source>
-      <translation type="unfinished">This is not suppported (yet).</translation>
+      <translation>(尚)未支援此。</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/abstract/serviceroot.cpp" line="193"/>
