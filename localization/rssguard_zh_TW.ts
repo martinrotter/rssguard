@@ -5861,12 +5861,12 @@ List of supported readers:</source>
     <message>
       <location filename="../src/librssguard/miscellaneous/textfactory.cpp" line="332"/>
       <source>closing &quot; is missing</source>
-      <translation type="unfinished">closing &quot; is missing</translation>
+      <translation>缺少尾端 &quot;</translation>
     </message>
     <message>
       <location filename="../src/librssguard/miscellaneous/textfactory.cpp" line="336"/>
       <source>closing &apos; is missing</source>
-      <translation type="unfinished">closing &apos; is missing</translation>
+      <translation>缺少尾端 &apos;</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/standard/parsers/atomparser.cpp" line="242"/>
