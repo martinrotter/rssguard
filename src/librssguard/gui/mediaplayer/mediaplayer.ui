@@ -13,17 +13,7 @@
   <property name="windowTitle">
    <string>Form</string>
   </property>
-  <layout class="QVBoxLayout" name="verticalLayout">
-   <item>
-    <widget class="QVideoWidget" name="m_video" native="true">
-     <property name="sizePolicy">
-      <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
-       <horstretch>0</horstretch>
-       <verstretch>1</verstretch>
-      </sizepolicy>
-     </property>
-    </widget>
-   </item>
+  <layout class="QVBoxLayout" name="m_layoutMain">
    <item>
     <layout class="QHBoxLayout" name="horizontalLayout">
      <item>
@@ -132,12 +122,6 @@
   </layout>
  </widget>
  <customwidgets>
-  <customwidget>
-   <class>QVideoWidget</class>
-   <extends>QWidget</extends>
-   <header>qvideowidget.h</header>
-   <container>1</container>
-  </customwidget>
   <customwidget>
    <class>PlainToolButton</class>
    <extends>QToolButton</extends>

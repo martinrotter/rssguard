@@ -5,6 +5,8 @@
 
 #include <QDialog>
 
+#include <QTimer>
+
 class QAbstractButton;
 class QLabel;
 
@@ -32,6 +34,7 @@ class BaseToastNotification : public QDialog {
     void closeRequested(BaseToastNotification* notif);
 
   private:
+    QTimer m_timerClosingClick;
     int m_timerId;
 };
 

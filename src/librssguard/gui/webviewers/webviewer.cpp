@@ -27,7 +27,10 @@ void WebViewer::processContextMenu(QMenu* specific_menu, QContextMenuEvent* even
   specific_menu->addAction(m_actionPlayLink.data());
 
   m_actionOpenExternalBrowser.data()->setEnabled(m_contextMenuData.m_linkUrl.isValid());
+
+#if defined(ENABLE_MEDIAPLAYER)
   m_actionPlayLink.data()->setEnabled(m_contextMenuData.m_linkUrl.isValid());
+#endif
 
   if (m_contextMenuData.m_linkUrl.isValid()) {
     QFileIconProvider icon_provider;
@@ -61,11 +64,13 @@ void WebViewer::processContextMenu(QMenu* specific_menu, QContextMenuEvent* even
 }
 
 void WebViewer::playClickedLinkAsMedia() {
+#if defined(ENABLE_MEDIAPLAYER)
   auto context_url = m_contextMenuData.m_linkUrl;
 
   if (context_url.isValid()) {
     qApp->mainForm()->tabWidget()->addMediaPlayer(context_url.toString(), true);
   }
+#endif
 }
 
 void WebViewer::openClickedLinkInExternalBrowser() {
@@ -96,6 +101,11 @@ void WebViewer::initializeCommonMenuItems() {
 
   m_actionPlayLink.reset(new QAction(qApp->icons()->fromTheme(QSL("player_play"), QSL("media-playback-start")),
                                      QObject::tr("Play link as audio/video")));
+
+#if !defined(ENABLE_MEDIAPLAYER)
+  m_actionPlayLink->setText(m_actionPlayLink->text() + QSL(" ") + QObject::tr("(not supported)"));
+  m_actionPlayLink->setEnabled(false);
+#endif
 
   QObject::connect(m_actionOpenExternalBrowser.data(),
                    &QAction::triggered,

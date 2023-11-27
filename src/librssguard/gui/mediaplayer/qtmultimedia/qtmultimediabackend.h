@@ -1,11 +1,11 @@
 // For license of this file, see <project-root-folder>/LICENSE.md.
 
-#ifndef MEDIAPLAYER_H
-#define MEDIAPLAYER_H
+#ifndef QTMULTIMEDIABACKEND_H
+#define QTMULTIMEDIABACKEND_H
 
-#include "gui/tabcontent.h"
+#include "gui/mediaplayer/playerbackend.h"
 
-#include "ui_mediaplayer.h"
+#include <QObject>
 
 #include <QMediaPlayer>
 
@@ -17,35 +17,32 @@
 #define PLAYBACK_STATE_METHOD state
 #endif
 
+#if QT_VERSION_MAJOR == 6
 class QAudioOutput;
+#endif
 
-class MediaPlayer : public TabContent {
+class QVideoWidget;
+
+class QtMultimediaBackend : public PlayerBackend {
     Q_OBJECT
 
   public:
-    explicit MediaPlayer(QWidget* parent = nullptr);
-    virtual ~MediaPlayer();
+    explicit QtMultimediaBackend(QWidget* parent = nullptr);
 
-    virtual WebBrowser* webBrowser() const;
+    virtual QUrl url() const;
+    virtual int position() const;
+    virtual int duration() const;
 
   public slots:
-    void playUrl(const QString& url);
+    virtual void playUrl(const QUrl& url);
+    virtual void playPause();
+    virtual void pause();
+    virtual void stop();
+    virtual void setPlaybackSpeed(int speed);
+    virtual void setVolume(int volume);
+    virtual void setPosition(int position);
 
   private slots:
-    void playPause();
-    void stop();
-    void download();
-    void muteUnmute();
-    void setSpeed(int speed);
-
-    // NOTE: Volume is from 0 to 100 taken directly from slider or
-    // elsewhere.
-    void setVolume(int volume);
-
-    // NOTE: Media is seekable in miliseconds, but that is too muc
-    // for "int" data type, therefore we seek by second.
-    void seek(int position);
-
     void onPlaybackRateChanged(qreal speed);
     void onDurationChanged(qint64 duration);
     void onErrorOccurred(QMediaPlayer::Error error, const QString& error_string = {});
@@ -55,9 +52,6 @@ class MediaPlayer : public TabContent {
     void onPlaybackStateChanged(QMediaPlayer::PLAYBACK_STATE state);
     void onPositionChanged(qint64 position);
     void onSeekableChanged(bool seekable);
-
-  signals:
-    void urlDownloadRequested(const QUrl& url);
 
   private:
     float convertSliderVolume(int slider_volume) const;
@@ -70,23 +64,13 @@ class MediaPlayer : public TabContent {
     QString errorToString(QMediaPlayer::Error error) const;
     QString mediaStatusToString(QMediaPlayer::MediaStatus status) const;
 
-    void updateTimeAndProgress(int progress, int total);
-    void setupIcons();
-    void createConnections();
-
   private:
-    Ui::MediaPlayer m_ui;
-
 #if QT_VERSION_MAJOR == 6
     QAudioOutput* m_audio;
 #endif
 
     QMediaPlayer* m_player;
-    QIcon m_iconPlay;
-    QIcon m_iconPause;
-    QIcon m_iconMute;
-    QIcon m_iconUnmute;
-    bool m_muted;
+    QVideoWidget* m_video;
 };
 
-#endif // MEDIAPLAYER_H
+#endif // QTMULTIMEDIABACKEND_H

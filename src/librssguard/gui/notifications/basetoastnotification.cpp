@@ -6,7 +6,6 @@
 #include "miscellaneous/settings.h"
 
 #include <QCloseEvent>
-#include <QTimer>
 #include <QTimerEvent>
 
 #include <chrono>
@@ -28,6 +27,11 @@ BaseToastNotification::BaseToastNotification(QWidget* parent) : QDialog(parent),
 
   setStyleSheet(QSL("BaseToastNotification { border: 1px solid %1; }").arg(palette().windowText().color().name()));
   installEventFilter(this);
+
+  m_timerClosingClick.setInterval(200);
+  m_timerClosingClick.setSingleShot(true);
+
+  connect(&m_timerClosingClick, &QTimer::timeout, this, &BaseToastNotification::close);
 }
 
 BaseToastNotification::~BaseToastNotification() {}
@@ -82,7 +86,7 @@ bool BaseToastNotification::eventFilter(QObject* watched, QEvent* event) {
     if (dynamic_cast<QMouseEvent*>(event)->button() == Qt::MouseButton::RightButton) {
       event->accept();
       QCoreApplication::processEvents();
-      QTimer::singleShot(200, this, &BaseToastNotification::close);
+      m_timerClosingClick.start();
       return true;
     }
   }

@@ -24,6 +24,7 @@
 #   NO_UPDATE_CHECK - Disable automatic checking for new application updates.
 #   IS_FLATPAK_BUILD - Set to "ON" when building RSS Guard with Flatpak.
 #   FORCE_BUNDLE_ICONS - Forcibly bundles icons into executables.
+#   ENABLE_MEDIAPLAYER_QTMULTIMEDIA - Enable media player (QtMultimedia/ffmpeg implementation).
 #   ENABLE_COMPRESSED_SITEMAP - Set to "ON" if you want to enable support for "sitemap.xml.gz" format.
 #                               This requires "zlib" library and if you want to use specific
 #                               zlib location, then use "ZLIB_ROOT" variable, for example
@@ -122,6 +123,7 @@ option(NO_UPDATE_CHECK "Disable automatic checking for new application updates" 
 option(IS_FLATPAK_BUILD "Set to 'ON' when building RSS Guard with Flatpak." OFF)
 option(FORCE_BUNDLE_ICONS "Forcibly bundle icon themes into RSS Guard." OFF)
 option(ENABLE_COMPRESSED_SITEMAP "Enable support for gzip-compressed sitemap feeds. Requires zlib." OFF)
+option(ENABLE_MEDIAPLAYER_QTMULTIMEDIA "Enable built-in media player. Requires QtMultimedia FFMPEG plugin." ON)
 
 # Import Qt libraries.
 set(QT6_MIN_VERSION 6.3.0)
@@ -139,12 +141,18 @@ set(QT_COMPONENTS
   Concurrent
 )
 
-if(NOT OS2)
-  list(APPEND QT_COMPONENTS Multimedia MultimediaWidgets)
-endif()
-
 if(WIN32 AND NOT BUILD_WITH_QT6)
   list(APPEND QT_COMPONENTS WinExtras)
+endif()
+
+if(ENABLE_MEDIAPLAYER_QTMULTIMEDIA)
+  list(APPEND QT_COMPONENTS Multimedia MultimediaWidgets)
+  add_compile_definitions(ENABLE_MEDIAPLAYER_QTMULTIMEDIA)
+endif()
+
+if(ENABLE_MEDIAPLAYER_QTMULTIMEDIA OR ENABLE_MEDIAPLAYER_LIBMVP)
+  set(ENABLE_MEDIAPLAYER TRUE)
+  add_compile_definitions(ENABLE_MEDIAPLAYER)
 endif()
 
 if(USE_WEBENGINE)

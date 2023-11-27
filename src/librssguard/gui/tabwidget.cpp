@@ -8,7 +8,6 @@
 #include "gui/feedsview.h"
 #include "gui/messagepreviewer.h"
 #include "gui/messagesview.h"
-#include "gui/reusable/mediaplayer.h"
 #include "gui/reusable/plaintoolbutton.h"
 #include "gui/tabbar.h"
 #include "gui/webbrowser.h"
@@ -16,6 +15,10 @@
 #include "miscellaneous/iconfactory.h"
 #include "miscellaneous/settings.h"
 #include "miscellaneous/textfactory.h"
+
+#if defined(ENABLE_MEDIAPLAYER)
+#include "gui/mediaplayer/mediaplayer.h"
+#endif
 
 #include <QMenu>
 #include <QTimer>
@@ -224,6 +227,7 @@ int TabWidget::addEmptyBrowser() {
   return addBrowser(false, true);
 }
 
+#if defined(ENABLE_MEDIAPLAYER)
 int TabWidget::addMediaPlayer(const QString& url, bool make_active) {
   auto* player = new MediaPlayer(this);
 
@@ -248,6 +252,7 @@ int TabWidget::addMediaPlayer(const QString& url, bool make_active) {
 
   return index;
 }
+#endif
 
 int TabWidget::addLinkedBrowser(const QUrl& initial_url) {
   return addBrowser(false, false, initial_url);
