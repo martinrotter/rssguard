@@ -57,8 +57,14 @@ LibMpvBackend::LibMpvBackend(QWidget* parent)
   // mpv_set_option_string(m_mpvHandle, "input-builtin-bindings", "no");
   // mpv_set_option_string(m_mpvHandle, "input-test", "yes");
   mpv_set_option_string(m_mpvHandle, "msg-level", "all=v");
-  // mpv_set_option_string(m_mpvHandle, "terminal", "yes");
+  mpv_set_option_string(m_mpvHandle, "terminal", "yes");
   mpv_set_option_string(m_mpvHandle, "keep-open", "yes");
+
+  // mpv_set_option_string(m_mpvHandle, "no-resume-playback", "yes");
+  mpv_set_option_string(m_mpvHandle, "watch-later-dir", "mpv");
+  mpv_set_option_string(m_mpvHandle, "config-dir", "mpv");
+  mpv_set_option_string(m_mpvHandle, "config", "yes");
+
   // mpv_set_option_string(m_mpvHandle, "input-terminal", "yes");
   mpv_set_option_string(m_mpvHandle, "hwdec", "auto");
   mpv_set_option_string(m_mpvHandle, "osd-playing-msg", "${media-title}");
