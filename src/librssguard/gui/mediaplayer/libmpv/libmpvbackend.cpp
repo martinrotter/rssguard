@@ -37,6 +37,9 @@ LibMpvBackend::LibMpvBackend(QWidget* parent)
   m_mpvContainer->setAttribute(Qt::WidgetAttribute::WA_DontCreateNativeAncestors);
   m_mpvContainer->setAttribute(Qt::WidgetAttribute::WA_NativeWindow);
 
+  m_mpvContainer->setMouseTracking(true);
+  setMouseTracking(true);
+
   layout()->addWidget(m_mpvContainer);
 
   auto raw_wid = m_mpvContainer->winId();
@@ -51,8 +54,10 @@ LibMpvBackend::LibMpvBackend(QWidget* parent)
 
   mpv_set_option(m_mpvHandle, "wid", MPV_FORMAT_INT64, &wid);
   mpv_set_option_string(m_mpvHandle, "input-default-bindings", "yes");
+  // mpv_set_option_string(m_mpvHandle, "input-builtin-bindings", "no");
+  // mpv_set_option_string(m_mpvHandle, "input-test", "yes");
   mpv_set_option_string(m_mpvHandle, "msg-level", "all=v");
-  mpv_set_option_string(m_mpvHandle, "terminal", "yes");
+  // mpv_set_option_string(m_mpvHandle, "terminal", "yes");
   mpv_set_option_string(m_mpvHandle, "keep-open", "yes");
   // mpv_set_option_string(m_mpvHandle, "input-terminal", "yes");
   mpv_set_option_string(m_mpvHandle, "hwdec", "auto");
@@ -196,8 +201,72 @@ bool LibMpvBackend::eventFilter(QObject* watched, QEvent* event) {
     return true;
   }
 
-  if (event->type() == QEvent::Type::KeyPress) {
-    if (m_mpvHandle != nullptr) {
+  if (m_mpvHandle != nullptr) {
+    if (event->type() == QEvent::Type::Wheel && watched == this) {
+      auto* mouse_event = dynamic_cast<QWheelEvent*>(event);
+
+      bool is_up = mouse_event->angleDelta().y() >= 0;
+
+      qDebugNN << "scroll: " << is_up;
+
+      const char* args[] = {"keypress", is_up ? "MOUSE_BTN3" : "MOUSE_BTN4", nullptr};
+
+      mpv_command_async(m_mpvHandle, 0, args);
+    }
+
+    if (event->type() == QEvent::Type::MouseButtonRelease && watched == this) {
+      auto* mouse_event = dynamic_cast<QMouseEvent*>(event);
+      auto position = mouse_event->pos();
+
+      qDebugNN << "release";
+
+      auto x_str = QString::number(position.x()).toLocal8Bit();
+      auto y_str = QString::number(position.y()).toLocal8Bit();
+
+      const char* x = x_str.constData();
+      const char* y = y_str.constData();
+
+      const char* args[] = {"keyup", "MOUSE_BTN0", nullptr};
+
+      mpv_command_async(m_mpvHandle, 0, args);
+    }
+
+    if (event->type() == QEvent::Type::MouseButtonPress && watched == this) {
+      auto* mouse_event = dynamic_cast<QMouseEvent*>(event);
+      auto position = mouse_event->pos();
+
+      qDebugNN << "press";
+
+      auto x_str = QString::number(position.x()).toLocal8Bit();
+      auto y_str = QString::number(position.y()).toLocal8Bit();
+
+      const char* x = x_str.constData();
+      const char* y = y_str.constData();
+
+      const char* args[] = {"keydown", "MOUSE_BTN0", nullptr};
+
+      mpv_command_async(m_mpvHandle, 0, args);
+    }
+
+    if (event->type() == QEvent::Type::MouseMove && watched == this) {
+      auto* mouse_event = dynamic_cast<QMouseEvent*>(event);
+      auto position = mouse_event->pos();
+
+      qDebugNN << "move";
+
+      auto x_str = QString::number(position.x()).toLocal8Bit();
+      auto y_str = QString::number(position.y()).toLocal8Bit();
+
+      const char* x = x_str.constData();
+      const char* y = y_str.constData();
+
+      const char* args[] = {"mouse", x, y, nullptr};
+
+      mpv_command_async(m_mpvHandle, 0, args);
+    }
+
+    if (event->type() == QEvent::Type::KeyPress) {
+      // We catch all keypresses (even from surrounding widgets.
       char txt = (char)dynamic_cast<QKeyEvent*>(event)->key();
       char str[2];
 
@@ -207,10 +276,10 @@ bool LibMpvBackend::eventFilter(QObject* watched, QEvent* event) {
       const char* args[] = {"keypress", str, nullptr};
 
       mpv_command_async(m_mpvHandle, 0, args);
-    }
 
-    event->accept();
-    return true;
+      event->accept();
+      return true;
+    }
   }
 
   return false;
