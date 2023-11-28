@@ -38,9 +38,9 @@ class LibMpvBackend : public PlayerBackend {
     void launchMpvEvents();
 
   private:
-    void append_log(const QString& text);
-    void create_player();
-    void handle_mpv_event(mpv_event* event);
+    void appendLog(const QString& text);
+    void createPlayer();
+    void handleMpvEvent(mpv_event* event);
 
   private:
     QWidget* m_mpvContainer;

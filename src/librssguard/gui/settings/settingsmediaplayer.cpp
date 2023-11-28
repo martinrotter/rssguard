@@ -23,7 +23,9 @@ void SettingsMediaPlayer::loadSettings() {
                                false);
 #elif defined(ENABLE_MEDIAPLAYER_QTMULTIMEDIA)
   m_ui.m_txtBackend->setText(QSL("libmpv"));
-  m_ui.m_helpInfo->setHelpText(tr("You use lightweight QtMultimedia-based media player backend."), false);
+  m_ui.m_helpInfo->setHelpText(tr("You use lightweight QtMultimedia-based media player backend. If some videos do not "
+                                  "play, then you likely need to install some codec pack."),
+                               false);
 #else
   m_ui.m_txtBackend->setText(tr("no backend installed"));
   m_ui.m_helpInfo->setHelpText(tr("You do not have any media player available. Media player is only supported on "

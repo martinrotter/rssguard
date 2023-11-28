@@ -84,7 +84,7 @@ LibMpvBackend::~LibMpvBackend() {
   }
 }
 
-void LibMpvBackend::handle_mpv_event(mpv_event* event) {
+void LibMpvBackend::handleMpvEvent(mpv_event* event) {
   switch (event->event_id) {
     case MPV_EVENT_PROPERTY_CHANGE: {
       mpv_event_property* prop = (mpv_event_property*)event->data;
@@ -103,8 +103,8 @@ void LibMpvBackend::handle_mpv_event(mpv_event* event) {
           QVariant v = mpv::qt::node_to_variant((mpv_node*)prop->data);
           // Abuse JSON support for easily printing the mpv_node contents.
           QJsonDocument d = QJsonDocument::fromVariant(v);
-          append_log("Change property " + QString(prop->name) + ":\n");
-          append_log(d.toJson().data());
+          appendLog("Change property " + QString(prop->name) + ":\n");
+          appendLog(d.toJson().data());
         }
       }
       break;
@@ -155,11 +155,11 @@ void LibMpvBackend::onMpvEvents() {
       break;
     }
 
-    handle_mpv_event(event);
+    handleMpvEvent(event);
   }
 }
 
-void LibMpvBackend::append_log(const QString& text) {
+void LibMpvBackend::appendLog(const QString& text) {
   qDebugNN << LOGSEC_MPV << text;
 }
 
