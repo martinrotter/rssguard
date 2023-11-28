@@ -33,13 +33,14 @@ LibMpvBackend::LibMpvBackend(QWidget* parent)
   }
 
   // Create a video child window. Force Qt to create a native window, and
-  // pass the window ID to the mpv wid option. Works on: X11, win32, Cocoa
+  // pass the window ID to the mpv wid option. Works on: X11, win32, Cocoa.
   m_mpvContainer->setAttribute(Qt::WidgetAttribute::WA_DontCreateNativeAncestors);
   m_mpvContainer->setAttribute(Qt::WidgetAttribute::WA_NativeWindow);
 
   layout()->addWidget(m_mpvContainer);
 
   auto raw_wid = m_mpvContainer->winId();
+
 #if defined(Q_OS_WIN)
   // Truncate to 32-bit, as all Windows handles are. This also ensures
   // it doesn't go negative.
@@ -49,10 +50,19 @@ LibMpvBackend::LibMpvBackend(QWidget* parent)
 #endif
 
   mpv_set_option(m_mpvHandle, "wid", MPV_FORMAT_INT64, &wid);
-
   mpv_set_option_string(m_mpvHandle, "input-default-bindings", "yes");
   mpv_set_option_string(m_mpvHandle, "msg-level", "all=v");
-  mpv::qt::set_option_variant(m_mpvHandle, "hwdec", "auto");
+  mpv_set_option_string(m_mpvHandle, "terminal", "yes");
+  mpv_set_option_string(m_mpvHandle, "keep-open", "yes");
+  // mpv_set_option_string(m_mpvHandle, "input-terminal", "yes");
+  mpv_set_option_string(m_mpvHandle, "hwdec", "auto");
+  mpv_set_option_string(m_mpvHandle, "osd-playing-msg", "${media-title}");
+  mpv_set_option_string(m_mpvHandle, "osc", "yes");
+  mpv_set_option_string(m_mpvHandle, "input-cursor", "yes");
+
+  // mpv_set_option_string(m_mpvHandle, "osd-on-seek", "msg-bar");
+
+  // mpv::qt::set_option_variant(m_mpvHandle, "hwdec", "auto");
 
   // Enable keyboard input on the X11 window. For the messy details, see
   // --input-vo-keyboard on the manpage.
@@ -62,6 +72,8 @@ LibMpvBackend::LibMpvBackend(QWidget* parent)
   mpv_observe_property(m_mpvHandle, 0, "time-pos", MPV_FORMAT_DOUBLE);
   mpv_observe_property(m_mpvHandle, 0, "track-list", MPV_FORMAT_NODE);
   mpv_observe_property(m_mpvHandle, 0, "chapter-list", MPV_FORMAT_NODE);
+  mpv_observe_property(m_mpvHandle, 0, "duration", MPV_FORMAT_NODE);
+  mpv_observe_property(m_mpvHandle, 0, "volume", MPV_FORMAT_NODE);
 
   // From this point on, the wakeup function will be called. The callback
   // can come from any thread, so we use the QueuedConnection mechanism to
@@ -71,6 +83,7 @@ LibMpvBackend::LibMpvBackend(QWidget* parent)
           this,
           &LibMpvBackend::onMpvEvents,
           Qt::ConnectionType::QueuedConnection);
+
   mpv_set_wakeup_callback(m_mpvHandle, wakeup, this);
 
   if (mpv_initialize(m_mpvHandle) < 0) {
@@ -88,25 +101,8 @@ void LibMpvBackend::handleMpvEvent(mpv_event* event) {
   switch (event->event_id) {
     case MPV_EVENT_PROPERTY_CHANGE: {
       mpv_event_property* prop = (mpv_event_property*)event->data;
-      if (strcmp(prop->name, "time-pos") == 0) {
-        if (prop->format == MPV_FORMAT_DOUBLE) {
-          double time = *(double*)prop->data;
-          std::stringstream ss;
-          ss << "At: " << time;
-        }
-        else if (prop->format == MPV_FORMAT_NONE) {
-        }
-      }
-      else if (strcmp(prop->name, "chapter-list") == 0 || strcmp(prop->name, "track-list") == 0) {
-        // Dump the properties as JSON for demo purposes.
-        if (prop->format == MPV_FORMAT_NODE) {
-          QVariant v = mpv::qt::node_to_variant((mpv_node*)prop->data);
-          // Abuse JSON support for easily printing the mpv_node contents.
-          QJsonDocument d = QJsonDocument::fromVariant(v);
-          appendLog("Change property " + QString(prop->name) + ":\n");
-          appendLog(d.toJson().data());
-        }
-      }
+
+      processPropertyChange(prop);
       break;
     }
 
@@ -128,16 +124,14 @@ void LibMpvBackend::handleMpvEvent(mpv_event* event) {
     }
 
     case MPV_EVENT_LOG_MESSAGE: {
-      struct mpv_event_log_message* msg = (struct mpv_event_log_message*)event->data;
-      std::stringstream ss;
-      ss << "[" << msg->prefix << "] " << msg->level << ": " << msg->text;
-      qDebugNN << LOGSEC_MPV << QString::fromStdString(ss.str());
-      break;
+      mpv_event_log_message* msg = (mpv_event_log_message*)event->data;
+
+      processLogMessage(msg);
     }
 
     case MPV_EVENT_SHUTDOWN: {
       mpv_terminate_destroy(m_mpvHandle);
-      m_mpvHandle = NULL;
+      m_mpvHandle = nullptr;
       break;
     }
 
@@ -159,6 +153,35 @@ void LibMpvBackend::onMpvEvents() {
   }
 }
 
+void LibMpvBackend::processPropertyChange(mpv_event_property* prop) {
+  if (strcmp(prop->name, "time-pos") == 0) {
+    if (prop->format == MPV_FORMAT_DOUBLE) {
+      double time = *(double*)prop->data;
+      std::stringstream ss;
+      ss << "At: " << time;
+    }
+    else if (prop->format == MPV_FORMAT_NONE) {
+    }
+  }
+  else if (strcmp(prop->name, "chapter-list") == 0 || strcmp(prop->name, "track-list") == 0) {
+    // Dump the properties as JSON for demo purposes.
+    if (prop->format == MPV_FORMAT_NODE) {
+      QVariant v = mpv::qt::node_to_variant((mpv_node*)prop->data);
+      // Abuse JSON support for easily printing the mpv_node contents.
+      QJsonDocument d = QJsonDocument::fromVariant(v);
+      appendLog("Change property " + QString(prop->name) + ":\n");
+      appendLog(d.toJson().data());
+    }
+  }
+}
+
+void LibMpvBackend::processLogMessage(mpv_event_log_message* msg) {
+  std::stringstream ss;
+  ss << "[" << msg->prefix << "] " << msg->level << ": " << msg->text;
+
+  appendLog(QString::fromStdString(ss.str()));
+}
+
 void LibMpvBackend::appendLog(const QString& text) {
   qDebugNN << LOGSEC_MPV << text;
 }
@@ -166,16 +189,27 @@ void LibMpvBackend::appendLog(const QString& text) {
 bool LibMpvBackend::eventFilter(QObject* watched, QEvent* event) {
   Q_UNUSED(watched)
 
+  if (event->type() == QEvent::Type::ShortcutOverride) {
+    // NOTE: If user presses key which is application-wide assigned to some
+    // action, do not propagate the shortcut to application.
+    event->accept();
+    return true;
+  }
+
   if (event->type() == QEvent::Type::KeyPress) {
-    char txt = (char)dynamic_cast<QKeyEvent*>(event)->key();
-    char str[2];
+    if (m_mpvHandle != nullptr) {
+      char txt = (char)dynamic_cast<QKeyEvent*>(event)->key();
+      char str[2];
 
-    str[0] = txt;
-    str[1] = '\0';
+      str[0] = txt;
+      str[1] = '\0';
 
-    const char* args[] = {"keypress", str, NULL};
+      const char* args[] = {"keypress", str, nullptr};
 
-    mpv_command_async(m_mpvHandle, 0, args);
+      mpv_command_async(m_mpvHandle, 0, args);
+    }
+
+    event->accept();
     return true;
   }
 
@@ -185,7 +219,7 @@ bool LibMpvBackend::eventFilter(QObject* watched, QEvent* event) {
 void LibMpvBackend::playUrl(const QUrl& url) {
   auto eb = url.toString().toLocal8Bit();
   const char* css = eb.data();
-  const char* args[] = {"loadfile", css, NULL};
+  const char* args[] = {"loadfile", css, nullptr};
   mpv_command_async(m_mpvHandle, 0, args);
 }
 

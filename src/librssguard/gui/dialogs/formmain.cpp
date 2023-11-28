@@ -528,7 +528,7 @@ void FormMain::switchVisibility(bool force_hide) {
                               QSystemTrayIcon::MessageIcon::Warning});
       }
       else {
-        close();
+        hide();
       }
     }
     else {
@@ -1078,9 +1078,15 @@ void FormMain::changeEvent(QEvent* event) {
 }
 
 void FormMain::closeEvent(QCloseEvent* event) {
-  QMainWindow::closeEvent(event);
+  if (qApp->quitOnLastWindowClosed()) {
+    QMainWindow::closeEvent(event);
+  }
+  else /*if (!event->spontaneous())*/ {
+    event->ignore();
+    hide();
+  }
 
-  qDebugNN << LOGSEC_GUI << "Main window's close event";
+  qDebugNN << LOGSEC_GUI << "Main window close event";
 }
 
 void FormMain::showEvent(QShowEvent* event) {
@@ -1092,7 +1098,7 @@ void FormMain::showEvent(QShowEvent* event) {
 void FormMain::hideEvent(QHideEvent* event) {
   QMainWindow::hideEvent(event);
 
-  qDebugNN << LOGSEC_GUI << "Main window's hide event";
+  qDebugNN << LOGSEC_GUI << "Main window hide event";
 }
 
 void FormMain::showDocs() {

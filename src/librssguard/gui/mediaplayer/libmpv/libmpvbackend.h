@@ -7,6 +7,8 @@
 
 struct mpv_handle;
 struct mpv_event;
+struct mpv_event_property;
+struct mpv_event_log_message;
 
 class LibMpvBackend : public PlayerBackend {
     Q_OBJECT
@@ -38,6 +40,8 @@ class LibMpvBackend : public PlayerBackend {
     void launchMpvEvents();
 
   private:
+    void processPropertyChange(mpv_event_property* prop);
+    void processLogMessage(mpv_event_log_message* msg);
     void appendLog(const QString& text);
     void createPlayer();
     void handleMpvEvent(mpv_event* event);

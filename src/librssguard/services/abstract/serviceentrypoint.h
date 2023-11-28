@@ -19,7 +19,7 @@ class ServiceEntryPoint {
     // into the model. This method can for example display
     // some kind of first-time configuration dialog inside itself
     // before returning the root item.
-    // Returns NULL if initialization of new root cannot be done.
+    // Returns nullptr if initialization of new root cannot be done.
     virtual ServiceRoot* createNewRoot() const = 0;
 
     // Performs initialization of all service accounts created using this entry
