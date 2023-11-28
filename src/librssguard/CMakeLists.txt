@@ -171,6 +171,8 @@ set(SOURCES
   gui/settings/settingsfeedsmessages.h
   gui/settings/settingsgeneral.cpp
   gui/settings/settingsgeneral.h
+  gui/settings/settingsmediaplayer.cpp
+  gui/settings/settingsmediaplayer.h
   gui/settings/settingsgui.cpp
   gui/settings/settingsgui.h
   gui/settings/settingslocalization.cpp
@@ -478,6 +480,7 @@ set(UI_FILES
   gui/settings/settingsnodejs.ui
   gui/settings/settingsnotifications.ui
   gui/settings/settingsshortcuts.ui
+  gui/settings/settingsmediaplayer.ui
   gui/toolbars/toolbareditor.ui
   network-web/adblock/adblockdialog.ui
   network-web/downloaditem.ui
@@ -506,7 +509,7 @@ set(UI_FILES
   services/tt-rss/gui/ttrssfeeddetails.ui
 )
 
-if(ENABLE_MEDIAPLAYER)
+if(ENABLE_MEDIAPLAYER) 
   list(APPEND SOURCES
     gui/mediaplayer/playerbackend.cpp
     gui/mediaplayer/playerbackend.h

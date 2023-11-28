@@ -16,6 +16,7 @@
 #include "gui/settings/settingsgeneral.h"
 #include "gui/settings/settingsgui.h"
 #include "gui/settings/settingslocalization.h"
+#include "gui/settings/settingsmediaplayer.h"
 #include "gui/settings/settingsnodejs.h"
 #include "gui/settings/settingsnotifications.h"
 #include "gui/settings/settingsshortcuts.h"
@@ -24,12 +25,12 @@
 #include <QScrollArea>
 #include <QScrollBar>
 
-FormSettings::FormSettings(QWidget& parent)
-  : QDialog(&parent), m_settings(*qApp->settings()) {
+FormSettings::FormSettings(QWidget& parent) : QDialog(&parent), m_settings(*qApp->settings()) {
   m_ui.setupUi(this);
 
   // Set flags and attributes.
-  GuiUtilities::applyDialogProperties(*this, qApp->icons()->fromTheme(QSL("emblem-system"), QSL("applications-system")));
+  GuiUtilities::applyDialogProperties(*this,
+                                      qApp->icons()->fromTheme(QSL("emblem-system"), QSL("applications-system")));
 
   m_btnApply = m_ui.m_buttonBox->button(QDialogButtonBox::StandardButton::Apply);
 
@@ -49,10 +50,12 @@ FormSettings::FormSettings(QWidget& parent)
   addSettingsPanel(new SettingsShortcuts(&m_settings, this));
   addSettingsPanel(new SettingsBrowserMail(&m_settings, this));
   addSettingsPanel(new SettingsNodejs(&m_settings, this));
+  addSettingsPanel(new SettingsMediaPlayer(&m_settings, this));
   addSettingsPanel(new SettingsDownloads(&m_settings, this));
   addSettingsPanel(new SettingsFeedsMessages(&m_settings, this));
 
-  m_ui.m_listSettings->setMaximumWidth(m_ui.m_listSettings->sizeHintForColumn(0) + 6 * m_ui.m_listSettings->frameWidth());
+  m_ui.m_listSettings->setMaximumWidth(m_ui.m_listSettings->sizeHintForColumn(0) +
+                                       6 * m_ui.m_listSettings->frameWidth());
   m_ui.m_listSettings->setCurrentRow(0);
 
   resize(qApp->settings()->value(GROUP(GUI), GUI::SettingsWindowInitialSize, size()).toSize());
@@ -63,7 +66,7 @@ FormSettings::~FormSettings() {
 }
 
 void FormSettings::openSettingsCategory(int category) {
-  if (category >=0 && category < m_panels.size()) {
+  if (category >= 0 && category < m_panels.size()) {
     if (!m_panels.at(category)->isLoaded()) {
       m_panels.at(category)->loadSettings();
     }
@@ -94,20 +97,18 @@ void FormSettings::applySettings() {
   }
 
   if (!panels_for_restart.isEmpty()) {
-    const QStringList changed_settings_description = panels_for_restart.replaceInStrings(QRegularExpression(QSL("^")),
-                                                                                         QString::fromUtf8(QByteArray(" • ")));
-    const QMessageBox::StandardButton clicked_button = MsgBox::show(this,
-                                                                        QMessageBox::Icon::Question,
-                                                                        tr("Critical settings were changed"),
-                                                                        tr(
-                                                                          "Some critical settings were changed and will be applied after the application gets restarted. "
-                                                                          "\n\nYou have to restart manually."),
-                                                                        tr("Do you want to restart now?"),
-                                                                        tr("Changed categories of settings:\n%1.").arg(
-                                                                          changed_settings_description.join(QSL(",\n"))),
-                                                                        QMessageBox::StandardButton::Yes |
-                                                                        QMessageBox::StandardButton::No,
-                                                                        QMessageBox::StandardButton::Yes);
+    const QStringList changed_settings_description =
+      panels_for_restart.replaceInStrings(QRegularExpression(QSL("^")), QString::fromUtf8(QByteArray(" • ")));
+    const QMessageBox::StandardButton clicked_button =
+      MsgBox::show(this,
+                   QMessageBox::Icon::Question,
+                   tr("Critical settings were changed"),
+                   tr("Some critical settings were changed and will be applied after the application gets restarted. "
+                      "\n\nYou have to restart manually."),
+                   tr("Do you want to restart now?"),
+                   tr("Changed categories of settings:\n%1.").arg(changed_settings_description.join(QSL(",\n"))),
+                   QMessageBox::StandardButton::Yes | QMessageBox::StandardButton::No,
+                   QMessageBox::StandardButton::Yes);
 
     if (clicked_button == QMessageBox::Yes) {
       qApp->restart();
@@ -132,18 +133,17 @@ void FormSettings::cancelSettings() {
     reject();
   }
   else {
-    const QStringList changed_settings_description = changed_panels.replaceInStrings(QRegularExpression(QSL("^")),
-                                                                                     QString::fromUtf8(QByteArray(" • ")));
+    const QStringList changed_settings_description =
+      changed_panels.replaceInStrings(QRegularExpression(QSL("^")), QString::fromUtf8(QByteArray(" • ")));
 
     if (MsgBox::show(this,
-                         QMessageBox::Icon::Critical,
-                         tr("Some settings are changed and will be lost"),
-                         tr("Some settings were changed and by cancelling this dialog, you would lose these changes."),
-                         tr("Do you really want to close this dialog without saving any settings?"),
-                         tr("Changed categories of settings:\n%1.").arg(changed_settings_description.join(QSL(",\n"))),
-                         QMessageBox::StandardButton::Yes | QMessageBox::StandardButton::No,
-                         QMessageBox::StandardButton::Yes) ==
-        QMessageBox::StandardButton::Yes) {
+                     QMessageBox::Icon::Critical,
+                     tr("Some settings are changed and will be lost"),
+                     tr("Some settings were changed and by cancelling this dialog, you would lose these changes."),
+                     tr("Do you really want to close this dialog without saving any settings?"),
+                     tr("Changed categories of settings:\n%1.").arg(changed_settings_description.join(QSL(",\n"))),
+                     QMessageBox::StandardButton::Yes | QMessageBox::StandardButton::No,
+                     QMessageBox::StandardButton::Yes) == QMessageBox::StandardButton::Yes) {
       reject();
     }
   }
