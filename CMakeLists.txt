@@ -168,12 +168,6 @@ if(ENABLE_MEDIAPLAYER_LIBMPV)
     set(LibMPV_ROOT "${CMAKE_SOURCE_DIR}/resources/scripts/libmpv")
   endif()
 
-  list(APPEND QT_COMPONENTS OpenGL)
-
-  if(BUILD_WITH_QT6)
-    list(APPEND QT_COMPONENTS OpenGLWidgets)
-  endif()
-
   add_compile_definitions(ENABLE_MEDIAPLAYER_LIBMPV)
 endif()
 
