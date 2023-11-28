@@ -10,7 +10,7 @@
 #include <QLocale>
 #include <QPointer>
 
-#if defined(USE_WEBENGINE)
+#if defined(NO_LITE)
 // WebEngine.
 DKEY WebEngineAttributes::ID = "web_engine_attributes";
 #endif

@@ -14,7 +14,7 @@
 #include <QProcess>
 #include <QUrl>
 
-#if defined(USE_WEBENGINE)
+#if defined(NO_LITE)
 #include "network-web/webengine/networkurlinterceptor.h"
 
 #if QT_VERSION_MAJOR == 6
@@ -31,7 +31,7 @@
 WebFactory::WebFactory(QObject* parent) : QObject(parent), m_customUserAgent(QString()) {
   m_adBlock = new AdBlockManager(this);
 
-#if defined(USE_WEBENGINE)
+#if defined(NO_LITE)
   if (qApp->settings()->value(GROUP(Browser), SETTING(Browser::DisableCache)).toBool()) {
     qWarningNN << LOGSEC_NETWORK << "Using off-the-record WebEngine profile.";
 
@@ -48,7 +48,7 @@ WebFactory::WebFactory(QObject* parent) : QObject(parent), m_customUserAgent(QSt
   m_cookieJar = new CookieJar(this);
   m_readability = new Readability(this);
 
-#if defined(USE_WEBENGINE)
+#if defined(NO_LITE)
 #if QT_VERSION >= 0x050D00 // Qt >= 5.13.0
   m_engineProfile->setUrlRequestInterceptor(m_urlInterceptor);
 #else
@@ -58,7 +58,7 @@ WebFactory::WebFactory(QObject* parent) : QObject(parent), m_customUserAgent(QSt
 }
 
 WebFactory::~WebFactory() {
-#if defined(USE_WEBENGINE)
+#if defined(NO_LITE)
   if (m_engineSettings != nullptr && m_engineSettings->menu() != nullptr) {
     m_engineSettings->menu()->deleteLater();
   }
@@ -89,7 +89,7 @@ bool WebFactory::sendMessageViaEmail(const Message& message) {
   }
 }
 
-#if defined(USE_WEBENGINE)
+#if defined(NO_LITE)
 void WebFactory::loadCustomCss(const QString user_styles_path) {
   if (QFile::exists(user_styles_path)) {
     QByteArray css_data = IOFactory::readFile(user_styles_path);
@@ -307,7 +307,7 @@ AdBlockManager* WebFactory::adBlock() const {
   return m_adBlock;
 }
 
-#if defined(USE_WEBENGINE)
+#if defined(NO_LITE)
 NetworkUrlInterceptor* WebFactory::urlIinterceptor() const {
   return m_urlInterceptor;
 }
@@ -706,7 +706,7 @@ void WebFactory::setCustomUserAgent(const QString& user_agent) {
   m_customUserAgent = user_agent;
 }
 
-#if defined(USE_WEBENGINE)
+#if defined(NO_LITE)
 void WebFactory::cleanupCache() {
   if (MsgBox::show(nullptr,
                    QMessageBox::Icon::Question,

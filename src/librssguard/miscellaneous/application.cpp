@@ -49,7 +49,7 @@
 #include <QDBusMessage>
 #endif
 
-#if defined(USE_WEBENGINE)
+#if defined(NO_LITE)
 #include "gui/webviewers/webengine/webengineviewer.h" // WebEngine-based web browsing.
 #include "network-web/webengine/networkurlinterceptor.h"
 
@@ -92,8 +92,8 @@ Application::Application(const QString& id, int& argc, char** argv, const QStrin
   m_trayIcon = nullptr;
   m_settings = Settings::setupSettings(this);
 
-#if defined(USE_WEBENGINE)
-  if (!m_forcedNoWebEngine && qEnvironmentVariableIsEmpty("QTWEBENGINE_CHROMIUM_FLAGS")) {
+#if defined(NO_LITE)
+  if (!m_forcedLite && qEnvironmentVariableIsEmpty("QTWEBENGINE_CHROMIUM_FLAGS")) {
     qputenv("QTWEBENGINE_CHROMIUM_FLAGS",
             settings()->value(GROUP(Browser), SETTING(Browser::WebEngineChromiumFlags)).toString().toLocal8Bit());
   }
@@ -148,7 +148,7 @@ Application::Application(const QString& id, int& argc, char** argv, const QStrin
   // and skin.
   m_icons->setupSearchPaths();
   m_icons->loadCurrentIconTheme();
-  m_skins->loadCurrentSkin(usingNoWebEngine());
+  m_skins->loadCurrentSkin(usingLite());
 
   if (m_toastNotifications != nullptr) {
     connect(m_toastNotifications,
@@ -183,7 +183,7 @@ Application::Application(const QString& id, int& argc, char** argv, const QStrin
 
   m_webFactory->setCustomUserAgent(custom_ua);
 
-#if defined(USE_WEBENGINE)
+#if defined(NO_LITE)
   m_webFactory->urlIinterceptor()->load();
 
   m_webFactory->engineProfile()->setCachePath(cacheFolder() + QDir::separator() + QSL("web") + QDir::separator() +
@@ -439,9 +439,9 @@ QStringList Application::rawCliArgs() const {
   return m_rawCliArgs;
 }
 
-#if defined(USE_WEBENGINE)
-bool Application::forcedNoWebEngine() const {
-  return m_forcedNoWebEngine;
+#if defined(NO_LITE)
+bool Application::forcedLite() const {
+  return m_forcedLite;
 }
 #endif
 
@@ -776,10 +776,10 @@ void Application::showGuiMessage(Notification::Event event,
 }
 
 WebViewer* Application::createWebView() {
-#if !defined(USE_WEBENGINE)
+#if !defined(NO_LITE)
   return new TextBrowserViewer();
 #else
-  if (forcedNoWebEngine()) {
+  if (forcedLite()) {
     return new TextBrowserViewer();
   }
   else {
@@ -788,11 +788,11 @@ WebViewer* Application::createWebView() {
 #endif
 }
 
-bool Application::usingNoWebEngine() const {
-#if !defined(USE_WEBENGINE)
+bool Application::usingLite() const {
+#if !defined(NO_LITE)
   return true;
 #else
-  return forcedNoWebEngine();
+  return forcedLite();
 #endif
 }
 
@@ -993,7 +993,7 @@ void Application::restart() {
   quit();
 }
 
-#if defined(USE_WEBENGINE)
+#if defined(NO_LITE)
 
 #if QT_VERSION_MAJOR == 6
 void Application::downloadRequested(QWebEngineDownloadRequest* download_item) {
@@ -1220,10 +1220,10 @@ void Application::parseCmdArgumentsFromMyInstance(const QStringList& raw_cli_arg
     m_cmdParser.showVersion();
   }
 
-#if defined(USE_WEBENGINE)
-  m_forcedNoWebEngine = m_cmdParser.isSet(QSL(CLI_FORCE_NOWEBENGINE_SHORT));
+#if defined(NO_LITE)
+  m_forcedLite = m_cmdParser.isSet(QSL(CLI_FORCE_LITE_SHORT));
 
-  if (m_forcedNoWebEngine) {
+  if (m_forcedLite) {
     qDebugNN << LOGSEC_CORE << "Forcing no-web-engine.";
   }
 #endif
@@ -1279,9 +1279,9 @@ void Application::fillCmdArgumentsParser(QCommandLineParser& parser) {
   QCommandLineOption disable_singleinstance({QSL(CLI_SIN_SHORT), QSL(CLI_SIN_LONG)},
                                             QSL("Allow running of multiple application instances."));
 
-#if defined(USE_WEBENGINE)
-  QCommandLineOption force_nowebengine({QSL(CLI_FORCE_NOWEBENGINE_SHORT), QSL(CLI_FORCE_NOWEBENGINE_LONG)},
-                                       QSL("Force usage of simpler text-based embedded web browser."));
+#if defined(NO_LITE)
+  QCommandLineOption force_lite({QSL(CLI_FORCE_LITE_SHORT), QSL(CLI_FORCE_LITE_LONG)},
+                                QSL("Force lite variant of application."));
 #endif
 
   QCommandLineOption disable_only_debug({QSL(CLI_NDEBUG_SHORT), QSL(CLI_NDEBUG_LONG)},
@@ -1307,8 +1307,8 @@ void Application::fillCmdArgumentsParser(QCommandLineParser& parser) {
 
   parser.addOptions({
     help, version, log_file, custom_data_folder, disable_singleinstance, disable_only_debug, disable_debug,
-#if defined(USE_WEBENGINE)
-      force_nowebengine,
+#if defined(NO_LITE)
+      force_lite,
 #endif
       forced_style, adblock_port, custom_ua, custom_threads
   });

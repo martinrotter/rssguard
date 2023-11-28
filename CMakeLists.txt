@@ -31,10 +31,8 @@
 #                               This requires "zlib" library and if you want to use specific
 #                               zlib location, then use "ZLIB_ROOT" variable, for example
 #                               -DZLIB_ROOT="C:\\zlib"
-#   USE_WEBENGINE - if specified, then QtWebEngine module for internal web browser is used.
-#                   Otherwise simple text component is used and some features will be disabled.
-#                   Default value is "false". If QtWebEngine is installed during compilation, then
-#                   value of this variable is tweaked automatically.
+#   NO_LITE - if specified, then QtWebEngine module for internal web browser is used
+#             and also other more demanding parts of application are used.
 #   {FEEDLY,GMAIL,INOREADER}_CLIENT_ID - preconfigured OAuth client ID.
 #   {FEEDLY,GMAIL,INOREADER}_CLIENT_SECRET - preconfigured OAuth client SECRET.
 #
@@ -115,18 +113,22 @@ if(FORCE_COLORED_OUTPUT)
 endif()
 
 # Global compilation switches.
-option(BUILD_WITH_QT6 "Build application with Qt 6" ON)
+option(BUILD_WITH_QT6 "Build application with Qt 6." ON)
 option(USE_SYSTEM_SQLITE "Use system-wide SQLite3 library." ON)
-option(USE_WEBENGINE "Use QtWebEngine for embedded web browser" ON)
-option(UPDATE_TRANSLATIONS "Call lupdate to update translation files from source (Qt 6 only)" OFF)
-option(FORCE_COLORED_OUTPUT "Always produce ANSI-colored output (GCC/Clang only)" OFF)
-option(REVISION_FROM_GIT "Get revision using `git rev-parse`" ON)
-option(NO_UPDATE_CHECK "Disable automatic checking for new application updates" OFF)
+option(NO_LITE "Enable QtWebEngine and other more demanding components." ON)
+option(UPDATE_TRANSLATIONS "Call lupdate to update translation files from source (Qt 6 only)." OFF)
+option(FORCE_COLORED_OUTPUT "Always produce ANSI-colored output (GCC/Clang only)." OFF)
+option(REVISION_FROM_GIT "Get revision using `git rev-parse`." ON)
+option(NO_UPDATE_CHECK "Disable automatic checking for new application updates." OFF)
 option(IS_FLATPAK_BUILD "Set to 'ON' when building RSS Guard with Flatpak." OFF)
 option(FORCE_BUNDLE_ICONS "Forcibly bundle icon themes into RSS Guard." OFF)
 option(ENABLE_COMPRESSED_SITEMAP "Enable support for gzip-compressed sitemap feeds. Requires zlib." OFF)
 option(ENABLE_MEDIAPLAYER_QTMULTIMEDIA "Enable built-in media player. Requires QtMultimedia FFMPEG plugin." OFF)
 option(ENABLE_MEDIAPLAYER_LIBMPV "Enable built-in media player. Requires libmpv library." ON)
+
+if(USE_WEBENGINE)
+  set(NO_LITE ON)
+endif()
 
 # Import Qt libraries.
 set(QT6_MIN_VERSION 6.3.0)
@@ -174,9 +176,9 @@ if(ENABLE_MEDIAPLAYER_QTMULTIMEDIA OR ENABLE_MEDIAPLAYER_LIBMPV)
   add_compile_definitions(ENABLE_MEDIAPLAYER)
 endif()
 
-if(USE_WEBENGINE)
+if(NO_LITE)
   list(APPEND QT_COMPONENTS WebEngineWidgets)
-  add_compile_definitions(USE_WEBENGINE)
+  add_compile_definitions(NO_LITE)
 endif()
 
 if(UNIX AND NOT APPLE AND NOT ANDROID)
@@ -228,9 +230,9 @@ else()
   set(APP_REVISION "")
 endif()
 
-if(NOT USE_WEBENGINE)
+if(NOT NO_LITE)
   set(APP_REVERSE_NAME "io.github.martinrotter.rssguardlite")
-  set(APP_REVISION "${APP_REVISION}-nowebengine")
+  set(APP_REVISION "${APP_REVISION}-lite")
 endif()
 
 set(APP_LOW_NAME "${CMAKE_PROJECT_NAME}")

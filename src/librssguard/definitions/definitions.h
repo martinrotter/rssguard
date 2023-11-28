@@ -144,8 +144,8 @@
 #define CLI_NDEBUG_SHORT "g"
 #define CLI_NDEBUG_LONG  "no-debug-output"
 
-#define CLI_FORCE_NOWEBENGINE_SHORT "w"
-#define CLI_FORCE_NOWEBENGINE_LONG  "no-web-engine"
+#define CLI_FORCE_LITE_SHORT "w"
+#define CLI_FORCE_LITE_LONG  "lite"
 
 #define CLI_QUIT_INSTANCE "q"
 #define CLI_IS_RUNNING    "a"
@@ -185,7 +185,7 @@
 #define DEFAULT_ZOOM_FACTOR 1.0f
 #define ZOOM_FACTOR_STEP    0.05f
 
-#if defined(USE_WEBENGINE)
+#if defined(NO_LITE)
 #define HTTP_COMPLETE_USERAGENT                                                           \
   (qApp->web()->engineProfile()->httpUserAgent().toLocal8Bit() + QByteArrayLiteral(" ") + \
    QByteArrayLiteral(APP_USERAGENT))

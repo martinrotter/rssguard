@@ -528,8 +528,6 @@ elseif(ENABLE_MEDIAPLAYER_LIBMPV)
   list(APPEND SOURCES
     gui/mediaplayer/libmpv/libmpvbackend.cpp
     gui/mediaplayer/libmpv/libmpvbackend.h
-    gui/mediaplayer/libmpv/libmpvwidget.cpp
-    gui/mediaplayer/libmpv/libmpvwidget.h
     gui/mediaplayer/libmpv/qthelper.h
   )
 
@@ -555,7 +553,7 @@ elseif(ENABLE_MEDIAPLAYER_LIBMPV)
   )
 endif()
 
-if(USE_WEBENGINE)
+if(NO_LITE)
   list(APPEND SOURCES
     # WebEngine-based web (and message) browser.
     gui/webviewers/webengine/webengineviewer.cpp
@@ -804,7 +802,7 @@ if(WIN32)
   )
 endif()
 
-if(USE_WEBENGINE)
+if(NO_LITE)
   target_link_libraries(rssguard PUBLIC
     Qt${QT_VERSION_MAJOR}::WebEngineWidgets
   )

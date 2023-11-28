@@ -67,7 +67,7 @@ void FormAbout::loadSettingsAndPaths() {
                                           QSL(USER_DATA_PLACEHOLDER),
                                           QDir::toNativeSeparators(qApp->nodejs()->packageFolder())
                                             .replace(user_data_path, QSL(USER_DATA_PLACEHOLDER)),
-#if defined(USE_WEBENGINE)
+#if defined(NO_LITE)
                                           QDir::toNativeSeparators(qApp->web()->engineProfile()->cachePath())
                                             .replace(user_data_path, QSL(USER_DATA_PLACEHOLDER)),
 #else

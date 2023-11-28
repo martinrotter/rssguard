@@ -25,12 +25,12 @@ jobs:
 
   build-rssguard:
     needs: check-build-script
-    name: "${{ matrix.os }}; webengine = ${{ matrix.use_webengine }}; qt5 = ${{ matrix.use_qt5 }}"
+    name: "${{ matrix.os }}; no-lite = ${{ matrix.no_lite }}; qt5 = ${{ matrix.use_qt5 }}"
     runs-on: "${{ matrix.os }}"
     strategy:
       matrix:
         os: [windows-2019, ubuntu-20.04, macos-11]
-        use_webengine: ["ON", "OFF"]
+        no_lite: ["ON", "OFF"]
         use_qt5: ["ON", "OFF"]
         include:
           - os: windows-2019
@@ -52,7 +52,7 @@ jobs:
           submodules: true
          
       - name: Prepare environment and compile application
-        run: ${{ matrix.script_name }} "${{ matrix.os }}" "${{ matrix.use_webengine }}" "${{ matrix.use_qt5 }}"
+        run: ${{ matrix.script_name }} "${{ matrix.os }}" "${{ matrix.no_lite }}" "${{ matrix.use_qt5 }}"
         env:
           GMAIL_CLIENT_ID: ${{ secrets.GMAIL_CLIENT_ID }}
           GMAIL_CLIENT_SECRET: ${{ secrets.GMAIL_CLIENT_SECRET }}
@@ -63,7 +63,7 @@ jobs:
         uses: actions/upload-artifact@v3
         with:
           if-no-files-found: error
-          name: RSS_Guard-${{ runner.os }}${{ matrix.use_webengine == 'ON' && '-' || '-nowebengine-' }}Qt${{ matrix.use_qt5 == 'ON' && '5' || '6' }}
+          name: RSS_Guard-${{ runner.os }}${{ matrix.no_lite == 'ON' && '-' || '-nowebengine-' }}Qt${{ matrix.use_qt5 == 'ON' && '5' || '6' }}
           path: |
             ./rssguard-build/rssguard-*win*.exe
             ./rssguard-build/rssguard-*win*.7z

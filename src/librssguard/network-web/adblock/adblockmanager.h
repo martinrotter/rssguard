@@ -88,7 +88,7 @@ class AdBlockManager : public QObject {
     bool m_installing;
     AdBlockIcon* m_adblockIcon;
 
-#if defined(USE_WEBENGINE)
+#if defined(NO_LITE)
     AdBlockUrlInterceptor* m_interceptor;
 #endif
 

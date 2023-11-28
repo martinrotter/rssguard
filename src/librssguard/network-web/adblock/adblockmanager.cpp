@@ -13,7 +13,7 @@
 #include "network-web/networkfactory.h"
 #include "network-web/webfactory.h"
 
-#if defined(USE_WEBENGINE)
+#if defined(NO_LITE)
 #include "network-web/adblock/adblockurlinterceptor.h"
 #include "network-web/webengine/networkurlinterceptor.h"
 #endif
@@ -29,7 +29,7 @@
 
 AdBlockManager::AdBlockManager(QObject* parent)
   : QObject(parent), m_loaded(false), m_enabled(false), m_installing(false),
-#if defined(USE_WEBENGINE)
+#if defined(NO_LITE)
     m_interceptor(new AdBlockUrlInterceptor(this)),
 #endif
     m_serverProcess(nullptr), m_cacheBlocks({}) {
@@ -94,7 +94,7 @@ void AdBlockManager::setEnabled(bool enabled) {
   }
 
   if (!m_loaded) {
-#if defined(USE_WEBENGINE)
+#if defined(NO_LITE)
     qApp->web()->urlIinterceptor()->installUrlInterceptor(m_interceptor);
 #endif
     m_loaded = true;

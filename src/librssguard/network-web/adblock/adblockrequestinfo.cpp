@@ -4,7 +4,7 @@
 
 #include "definitions/definitions.h"
 
-#if defined(USE_WEBENGINE)
+#if defined(NO_LITE)
 AdblockRequestInfo::AdblockRequestInfo(const QWebEngineUrlRequestInfo& webengine_info) {
   initialize(webengine_info);
 }
@@ -46,7 +46,7 @@ void AdblockRequestInfo::setRequestMethod(const QByteArray& request_method) {
   m_requestMethod = request_method;
 }
 
-#if defined(USE_WEBENGINE)
+#if defined(NO_LITE)
 void AdblockRequestInfo::initialize(const QWebEngineUrlRequestInfo& webengine_info) {
   setFirstPartyUrl(webengine_info.firstPartyUrl());
   setRequestMethod(webengine_info.requestMethod());
@@ -99,7 +99,7 @@ void AdblockRequestInfo::initialize(const QUrl& url) {
   setRequestMethod(QSL("GET").toLocal8Bit());
   setRequestUrl(url);
 
-#if defined(USE_WEBENGINE)
+#if defined(NO_LITE)
   setResourceType(convertResourceType(QWebEngineUrlRequestInfo::ResourceType::ResourceTypeMainFrame));
 #else
   setResourceType(QSL("main_frame"));

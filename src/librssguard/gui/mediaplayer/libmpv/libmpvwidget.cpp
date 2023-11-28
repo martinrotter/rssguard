@@ -13,7 +13,7 @@
 #include <QOpenGLContext>
 
 static void wakeup(void* ctx) {
-  QMetaObject::invokeMethod((MpvWidget*)ctx, "on_mpv_events", Qt::QueuedConnection);
+  QMetaObject::invokeMethod((LibMpvWidget*)ctx, "on_mpv_events", Qt::QueuedConnection);
 }
 
 static void* get_proc_address(void* ctx, const char* name) {
@@ -24,7 +24,7 @@ static void* get_proc_address(void* ctx, const char* name) {
   return reinterpret_cast<void*>(glctx->getProcAddress(QByteArray(name)));
 }
 
-MpvWidget::MpvWidget(QWidget* parent, Qt::WindowFlags f) : QOpenGLWidget(parent, f) {
+LibMpvWidget::LibMpvWidget(QWidget* parent, Qt::WindowFlags f) : QOpenGLWidget(parent, f) {
   mpv = mpv_create();
   if (!mpv)
     throw std::runtime_error("could not create mpv context");
@@ -57,26 +57,26 @@ MpvWidget::MpvWidget(QWidget* parent, Qt::WindowFlags f) : QOpenGLWidget(parent,
   installEventFilter(this);
 }
 
-MpvWidget::~MpvWidget() {
+LibMpvWidget::~LibMpvWidget() {
   makeCurrent();
   if (mpv_gl)
     mpv_render_context_free(mpv_gl);
   mpv_terminate_destroy(mpv);
 }
 
-void MpvWidget::command(const QVariant& params) {
+void LibMpvWidget::command(const QVariant& params) {
   mpv::qt::command_variant(mpv, params);
 }
 
-void MpvWidget::setProperty(const QString& name, const QVariant& value) {
+void LibMpvWidget::setProperty(const QString& name, const QVariant& value) {
   mpv::qt::set_property_variant(mpv, name, value);
 }
 
-QVariant MpvWidget::getProperty(const QString& name) const {
+QVariant LibMpvWidget::getProperty(const QString& name) const {
   return mpv::qt::get_property_variant(mpv, name);
 }
 
-void MpvWidget::initializeGL() {
+void LibMpvWidget::initializeGL() {
   mpv_opengl_init_params gl_init_params[1] = {get_proc_address, nullptr};
   mpv_render_param params[]{{MPV_RENDER_PARAM_API_TYPE, const_cast<char*>(MPV_RENDER_API_TYPE_OPENGL)},
                             {MPV_RENDER_PARAM_OPENGL_INIT_PARAMS, &gl_init_params},
@@ -84,10 +84,10 @@ void MpvWidget::initializeGL() {
 
   if (mpv_render_context_create(&mpv_gl, mpv, params) < 0)
     throw std::runtime_error("failed to initialize mpv GL context");
-  mpv_render_context_set_update_callback(mpv_gl, MpvWidget::on_update, reinterpret_cast<void*>(this));
+  mpv_render_context_set_update_callback(mpv_gl, LibMpvWidget::on_update, reinterpret_cast<void*>(this));
 }
 
-void MpvWidget::paintGL() {
+void LibMpvWidget::paintGL() {
   mpv_opengl_fbo mpfbo{static_cast<int>(defaultFramebufferObject()), width(), height(), 0};
   int flip_y{1};
 
@@ -99,7 +99,7 @@ void MpvWidget::paintGL() {
   mpv_render_context_render(mpv_gl, params);
 }
 
-void MpvWidget::on_mpv_events() {
+void LibMpvWidget::on_mpv_events() {
   // Process all events, until the event queue is empty.
   while (mpv) {
     mpv_event* event = mpv_wait_event(mpv, 0);
@@ -110,7 +110,7 @@ void MpvWidget::on_mpv_events() {
   }
 }
 
-void MpvWidget::handle_mpv_event(mpv_event* event) {
+void LibMpvWidget::handle_mpv_event(mpv_event* event) {
   switch (event->event_id) {
     case MPV_EVENT_PROPERTY_CHANGE: {
       mpv_event_property* prop = (mpv_event_property*)event->data;
@@ -134,7 +134,7 @@ void MpvWidget::handle_mpv_event(mpv_event* event) {
 }
 
 // Make Qt invoke mpv_render_context_render() to draw a new/updated video frame.
-void MpvWidget::maybeUpdate() {
+void LibMpvWidget::maybeUpdate() {
   // If the Qt window is not visible, Qt's update() will just skip rendering.
   // This confuses mpv's render API, and may lead to small occasional
   // freezes due to video rendering timing out.
@@ -153,15 +153,15 @@ void MpvWidget::maybeUpdate() {
   }
 }
 
-void MpvWidget::on_update(void* ctx) {
-  QMetaObject::invokeMethod((MpvWidget*)ctx, "maybeUpdate");
+void LibMpvWidget::on_update(void* ctx) {
+  QMetaObject::invokeMethod((LibMpvWidget*)ctx, "maybeUpdate");
 }
 
-void MpvWidget::keyPressEvent(QKeyEvent* event) {
+void LibMpvWidget::keyPressEvent(QKeyEvent* event) {
   mpv_set_option_string(mpv, "keypress", event->text().toLocal8Bit().constData());
 }
 
-bool MpvWidget::eventFilter(QObject* watched, QEvent* event) {
+bool LibMpvWidget::eventFilter(QObject* watched, QEvent* event) {
   if (event->type() == QEvent::Type::KeyPress) {
     QString txt = dynamic_cast<QKeyEvent*>(event)->text();
 

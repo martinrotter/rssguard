@@ -3,7 +3,7 @@
 #ifndef ADBLOCKREQUESTINFO_H
 #define ADBLOCKREQUESTINFO_H
 
-#if defined(USE_WEBENGINE)
+#if defined(NO_LITE)
 #include <QWebEngineUrlRequestInfo>
 #endif
 
@@ -11,7 +11,7 @@
 
 class AdblockRequestInfo {
   public:
-#if defined(USE_WEBENGINE)
+#if defined(NO_LITE)
     explicit AdblockRequestInfo(const QWebEngineUrlRequestInfo& webengine_info);
 #endif
 
@@ -32,7 +32,7 @@ class AdblockRequestInfo {
   private:
     void initialize(const QUrl& url);
 
-#if defined(USE_WEBENGINE)
+#if defined(NO_LITE)
     void initialize(const QWebEngineUrlRequestInfo& webengine_info);
     QString convertResourceType(QWebEngineUrlRequestInfo::ResourceType rt) const;
 #endif

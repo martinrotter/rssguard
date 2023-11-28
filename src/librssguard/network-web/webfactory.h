@@ -9,7 +9,7 @@
 
 #include <QMap>
 
-#if defined(USE_WEBENGINE)
+#if defined(NO_LITE)
 #include <QWebEngineProfile>
 #include <QWebEngineSettings>
 
@@ -42,7 +42,7 @@ class WebFactory : public QObject {
 
     AdBlockManager* adBlock() const;
 
-#if defined(USE_WEBENGINE)
+#if defined(NO_LITE)
     QAction* engineSettingsAction();
     NetworkUrlInterceptor* urlIinterceptor() const;
     QWebEngineProfile* engineProfile() const;
@@ -54,7 +54,7 @@ class WebFactory : public QObject {
     void updateProxy();
     bool sendMessageViaEmail(const Message& message);
 
-#if defined(USE_WEBENGINE)
+#if defined(NO_LITE)
     void loadCustomCss(const QString user_styles_path);
 #endif
 
@@ -62,13 +62,13 @@ class WebFactory : public QObject {
     void setCustomUserAgent(const QString& user_agent);
 
   public slots:
-#if defined(USE_WEBENGINE)
+#if defined(NO_LITE)
     void cleanupCache();
 #endif
 
     bool openUrlInExternalBrowser(const QString& url) const;
 
-#if defined(USE_WEBENGINE)
+#if defined(NO_LITE)
   private slots:
     void createMenu(QMenu* menu = nullptr);
     void webEngineSettingChanged(bool enabled);
@@ -83,7 +83,7 @@ class WebFactory : public QObject {
   private:
     AdBlockManager* m_adBlock;
 
-#if defined(USE_WEBENGINE)
+#if defined(NO_LITE)
     QWebEngineProfile* m_engineProfile;
     NetworkUrlInterceptor* m_urlInterceptor;
     QAction* m_engineSettings;

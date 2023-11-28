@@ -184,10 +184,10 @@ class RSSGUARD_DLLSPEC Application : public SingleApplication {
 
     WebViewer* createWebView();
 
-    bool usingNoWebEngine() const;
+    bool usingLite() const;
 
-#if defined(USE_WEBENGINE)
-    bool forcedNoWebEngine() const;
+#if defined(NO_LITE)
+    bool forcedLite() const;
 #endif
 
     // Returns pointer to "GOD" application singleton.
@@ -224,7 +224,7 @@ class RSSGUARD_DLLSPEC Application : public SingleApplication {
     void showMessagesNumber(int unread_messages, bool any_feed_has_new_unread_messages);
     void onAdBlockFailure();
 
-#if defined(USE_WEBENGINE)
+#if defined(NO_LITE)
 #if QT_VERSION_MAJOR == 6
     void downloadRequested(QWebEngineDownloadRequest* download_item);
 #else
@@ -294,8 +294,8 @@ class RSSGUARD_DLLSPEC Application : public SingleApplication {
     int m_customAdblockPort;
     bool m_allowMultipleInstances;
 
-#if defined(USE_WEBENGINE)
-    bool m_forcedNoWebEngine;
+#if defined(NO_LITE)
+    bool m_forcedLite;
 #endif
 
 #if defined(Q_OS_WIN)

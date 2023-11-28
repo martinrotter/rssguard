@@ -29,7 +29,7 @@
 #define DEFAULT_VALUE(x)    x##Def
 #define GROUP(x)            x::ID
 
-#if defined(USE_WEBENGINE)
+#if defined(NO_LITE)
 namespace WebEngineAttributes {
   KEY ID;
 }

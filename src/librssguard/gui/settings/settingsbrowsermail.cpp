@@ -80,7 +80,7 @@ SettingsBrowserMail::SettingsBrowserMail(Settings* settings, QWidget* parent)
             m_ui->m_btnEditTool->setEnabled(current != nullptr);
           });
 
-#if !defined(USE_WEBENGINE)
+#if !defined(NO_LITE)
   // Remove WebEngine tab.
   m_ui->m_tabBrowserProxy->removeTab(2);
 #else

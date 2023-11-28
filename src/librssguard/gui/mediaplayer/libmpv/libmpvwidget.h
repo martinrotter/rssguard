@@ -9,12 +9,12 @@ struct mpv_handle;
 struct mpv_event;
 struct mpv_render_context;
 
-class MpvWidget : public QOpenGLWidget {
+class LibMpvWidget : public QOpenGLWidget {
     Q_OBJECT
 
   public:
-    explicit MpvWidget(QWidget* parent = nullptr, Qt::WindowFlags f = {});
-    virtual ~MpvWidget();
+    explicit LibMpvWidget(QWidget* parent = nullptr, Qt::WindowFlags f = {});
+    virtual ~LibMpvWidget();
 
     void command(const QVariant& params);
     void setProperty(const QString& name, const QVariant& value);

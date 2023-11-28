@@ -91,7 +91,7 @@ FormMain::FormMain(QWidget* parent, Qt::WindowFlags f)
 
   m_ui->m_menuWebBrowserTabs->addAction(qApp->web()->adBlock()->adBlockIcon());
 
-#if defined(USE_WEBENGINE)
+#if defined(NO_LITE)
   m_ui->m_menuWebBrowserTabs->addAction(qApp->web()->engineSettingsAction());
 #endif
 
@@ -765,7 +765,7 @@ void FormMain::createConnections() {
   connect(m_ui->m_actionDownloadManager, &QAction::triggered, m_ui->m_tabWidget, &TabWidget::showDownloadManager);
   connect(m_ui->m_actionCleanupDatabase, &QAction::triggered, this, &FormMain::showDbCleanupAssistant);
 
-#if defined(USE_WEBENGINE)
+#if defined(NO_LITE)
   connect(m_ui->m_actionCleanupWebCache, &QAction::triggered, qApp->web(), &WebFactory::cleanupCache);
 #else
   m_ui->m_menuTools->removeAction(m_ui->m_actionCleanupWebCache);

@@ -2,8 +2,10 @@ $os = $args[0]
 $use_webengine = $args[1]
 $use_qt5 = $args[2]
 
+not_use_webengine = "OFF" if use_webengine == "ON" else "ON"
+
 echo "We are building for MS Windows."
-echo "OS: $os; WebEngine: $use_webengine; Qt5: $use_qt5"
+echo "OS: $os; Not lite: $use_webengine; Qt5: $use_qt5"
 
 $git_revlist = git rev-list --tags --max-count=1
 $git_tag = git describe --tags $git_revlist
@@ -117,7 +119,7 @@ cd "$old_pwd"
 mkdir "rssguard-build"
 cd "rssguard-build"
 
-& "$cmake_path" ".." -G Ninja -DCMAKE_BUILD_TYPE="RelWithDebInfo" -DCMAKE_VERBOSE_MAKEFILE="ON" -DBUILD_WITH_QT6="$with_qt6" -DREVISION_FROM_GIT="ON" -DUSE_SYSTEM_SQLITE="OFF" -DZLIB_ROOT="$zlib_path" -DENABLE_COMPRESSED_SITEMAP="ON" -DUSE_WEBENGINE="$use_webengine" -DFEEDLY_CLIENT_ID="$env:FEEDLY_CLIENT_ID" -DFEEDLY_CLIENT_SECRET="$env:FEEDLY_CLIENT_SECRET" -DGMAIL_CLIENT_ID="$env:GMAIL_CLIENT_ID" -DGMAIL_CLIENT_SECRET="$env:GMAIL_CLIENT_SECRET"
+& "$cmake_path" ".." -G Ninja -DCMAKE_BUILD_TYPE="RelWithDebInfo" -DCMAKE_VERBOSE_MAKEFILE="ON" -DBUILD_WITH_QT6="$with_qt6" -DREVISION_FROM_GIT="ON" -DUSE_SYSTEM_SQLITE="OFF" -DZLIB_ROOT="$zlib_path" -DENABLE_COMPRESSED_SITEMAP="ON" -DENABLE_MEDIAPLAYER_LIBMPV="$use_webengine" -DENABLE_MEDIAPLAYER_QTMULTIMEDIA="$not_use_webengine" -DNO_LITE="$use_webengine" -DFEEDLY_CLIENT_ID="$env:FEEDLY_CLIENT_ID" -DFEEDLY_CLIENT_SECRET="$env:FEEDLY_CLIENT_SECRET" -DGMAIL_CLIENT_ID="$env:GMAIL_CLIENT_ID" -DGMAIL_CLIENT_SECRET="$env:GMAIL_CLIENT_SECRET"
 & "$cmake_path" --build .
 & "$cmake_path" --install . --prefix app
 
@@ -145,7 +147,7 @@ if ($use_webengine -eq "ON") {
   $packagebase = "rssguard-${git_tag}-${git_revision}-win"
 }
 else {
-  $packagebase = "rssguard-${git_tag}-${git_revision}-nowebengine-win"
+  $packagebase = "rssguard-${git_tag}-${git_revision}-lite-win"
 }
 
 if ($use_qt5 -eq "ON") {

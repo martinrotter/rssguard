@@ -12,13 +12,13 @@
 #include <QNetworkCookie>
 #include <QSettings>
 
-#if defined(USE_WEBENGINE)
+#if defined(NO_LITE)
 #include <QWebEngineCookieStore>
 #endif
 
 CookieJar::CookieJar(QObject* parent)
   : QNetworkCookieJar(parent), m_saver(AutoSaver(this, QSL("saveCookies"), 30, 45)) {
-#if defined(USE_WEBENGINE)
+#if defined(NO_LITE)
   auto* web_factory = qobject_cast<WebFactory*>(parent);
 
   if (web_factory != nullptr) {
@@ -34,7 +34,7 @@ CookieJar::CookieJar(QObject* parent)
   updateSettings();
   loadCookies();
 
-#if defined(USE_WEBENGINE)
+#if defined(NO_LITE)
   // When cookies change in WebEngine, then change in main cookie jar too.
   //
   // Also, the synchronization between WebEngine cookie jar and main cookie jar is this:
@@ -136,7 +136,7 @@ bool CookieJar::insertCookieInternal(const QNetworkCookie& cookie, bool notify_o
       // saveCookies();
     }
 
-#if defined(USE_WEBENGINE)
+#if defined(NO_LITE)
     if (notify_others) {
       m_webEngineCookies->setCookie(cookie);
     }
@@ -155,7 +155,7 @@ bool CookieJar::updateCookieInternal(const QNetworkCookie& cookie, bool notify_o
     m_saver.changeOccurred();
     // saveCookies();
 
-#if defined(USE_WEBENGINE)
+#if defined(NO_LITE)
     if (notify_others) {
       m_webEngineCookies->setCookie(cookie);
     }
@@ -174,7 +174,7 @@ bool CookieJar::deleteCookieInternal(const QNetworkCookie& cookie, bool notify_o
     m_saver.changeOccurred();
     // saveCookies();
 
-#if defined(USE_WEBENGINE)
+#if defined(NO_LITE)
     if (notify_others) {
       m_webEngineCookies->deleteCookie(cookie);
     }
