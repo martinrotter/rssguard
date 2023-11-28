@@ -551,6 +551,8 @@ elseif(ENABLE_MEDIAPLAYER_LIBMPV)
     NO_CACHE
     REQUIRED
   )
+
+  message(STATUS "Found libmpv: ${LibMPV_LIBRARIES}.")
 endif()
 
 if(NO_LITE)
