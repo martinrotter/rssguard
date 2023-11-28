@@ -155,23 +155,29 @@ if(NOT OS2)
 endif()
 
 if(ENABLE_MEDIAPLAYER_QTMULTIMEDIA)
-  list(APPEND QT_COMPONENTS MultimediaWidgets)
+  message(STATUS "Enabling QtMultimedia media player backend.")
+
+  list(APPEND QT_COMPONENTS OpenGL MultimediaWidgets)
   add_compile_definitions(ENABLE_MEDIAPLAYER_QTMULTIMEDIA)
 endif()
 
 if(ENABLE_MEDIAPLAYER_LIBMPV)
+  message(STATUS "Enabling libmpv media player backend.")
+
   if(WIN32 AND NOT LibMPV_ROOT)
     set(LibMPV_ROOT "${CMAKE_SOURCE_DIR}/resources/scripts/libmpv")
   endif()
 
+  list(APPEND QT_COMPONENTS OpenGL)
+
   if(BUILD_WITH_QT6)
-    list(APPEND QT_COMPONENTS OpenGL OpenGLWidgets)
+    list(APPEND QT_COMPONENTS OpenGLWidgets)
   endif()
 
   add_compile_definitions(ENABLE_MEDIAPLAYER_LIBMPV)
 endif()
 
-if(ENABLE_MEDIAPLAYER_QTMULTIMEDIA OR ENABLE_MEDIAPLAYER_LIBMPV)
+if(ENABLE_MEDIAPLAYER_QTMULTIMEDIA OR ENABLE_MEDIAPLAYER_LIBMPV)    
   set(ENABLE_MEDIAPLAYER TRUE)
   add_compile_definitions(ENABLE_MEDIAPLAYER)
 endif()

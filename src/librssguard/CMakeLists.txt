@@ -830,11 +830,18 @@ elseif(ENABLE_MEDIAPLAYER_LIBMPV)
     ${LibMPV_INCLUDE_DIRS}
   )
 
-  target_link_libraries(rssguard PUBLIC
-    Qt${QT_VERSION_MAJOR}::OpenGL
-    Qt${QT_VERSION_MAJOR}::OpenGLWidgets
-    ${LibMPV_LIBRARIES}
-  )
+  if(BUILD_WITH_QT6)
+    target_link_libraries(rssguard PUBLIC
+      Qt${QT_VERSION_MAJOR}::OpenGL
+      Qt${QT_VERSION_MAJOR}::OpenGLWidgets
+      ${LibMPV_LIBRARIES}
+    )
+  else()
+    target_link_libraries(rssguard PUBLIC
+      Qt${QT_VERSION_MAJOR}::OpenGL
+      ${LibMPV_LIBRARIES}
+    )
+  endif()
 endif()
 
 if(UNIX AND NOT APPLE AND NOT ANDROID)
