@@ -44,7 +44,7 @@
     <message>
       <location filename="../src/librssguard/services/abstract/gui/accountdetails.ui" line="47"/>
       <source>Probes</source>
-      <translation type="unfinished">Probes</translation>
+      <translation>探測</translation>
     </message>
   </context>
   <context>
@@ -67,7 +67,7 @@
     <message>
       <location filename="../src/librssguard/network-web/adblock/adblockdialog.cpp" line="99"/>
       <source>OK!</source>
-      <translation>確定!</translation>
+      <translation>無問題！</translation>
     </message>
     <message>
       <location filename="../src/librssguard/network-web/adblock/adblockdialog.cpp" line="114"/>
@@ -349,17 +349,17 @@ version by clicking this popup notification.</source>
     <message>
       <location filename="../src/librssguard/services/abstract/gui/authenticationdetails.cpp" line="53"/>
       <source>Username/token is ok or it is not needed.</source>
-      <translation>使用者名稱/權杖無問題或不必要。</translation>
+      <translation>使用者名稱/存取權碼無問題或不需要。</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/abstract/gui/authenticationdetails.cpp" line="54"/>
       <source>Username/token is empty.</source>
-      <translation>缺使用者名稱/權杖。</translation>
+      <translation>缺使用者名稱/存取權碼。</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/abstract/gui/authenticationdetails.cpp" line="76"/>
       <source>Access token</source>
-      <translation>存取之權杖</translation>
+      <translation>存取權碼</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/abstract/gui/authenticationdetails.cpp" line="63"/>
@@ -852,12 +852,12 @@ Item ID: %5</source>
       <location filename="../src/librssguard/services/feedly/gui/feedlyaccountdetails.ui" line="27"/>
       <location filename="../src/librssguard/services/feedly/gui/feedlyaccountdetails.cpp" line="27"/>
       <source>Developer access token</source>
-      <translation>開發者實驗存取權碼</translation>
+      <translation>開發者存取權碼</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/feedly/gui/feedlyaccountdetails.ui" line="36"/>
       <source>Get token</source>
-      <translation>取得實驗存取權碼</translation>
+      <translation>取得存取權碼</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/feedly/gui/feedlyaccountdetails.ui" line="58"/>
@@ -897,7 +897,7 @@ Item ID: %5</source>
     <message>
       <location filename="../src/librssguard/services/feedly/gui/feedlyaccountdetails.cpp" line="38"/>
       <source>Your %1 does not offer official Feedly support, thus you must authorize via special authorization code called &quot;developer access token&quot;. These tokens are usually valid only for 1 month and allow only 250 API calls each day.</source>
-      <translation>您的 %1 沒有 Feedly 的正式支援。，因此您一定得使用 &quot;開發者實驗存取權碼&quot; 作為您的認證碼。這碼只有一個月的效期，而且每天的 API 呼叫只到 250 次。</translation>
+      <translation>您的 %1 沒有 Feedly 的正式支援。，因此您一定得使用 &quot;開發者存取權碼&quot; 作為您的認證碼。這碼只有一個月的效期，而且每天的 API 呼叫只到 250 次。</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/feedly/gui/feedlyaccountdetails.cpp" line="51"/>
@@ -963,12 +963,12 @@ Item ID: %5</source>
     <message>
       <location filename="../src/librssguard/services/feedly/gui/feedlyaccountdetails.cpp" line="178"/>
       <source>Access token is empty.</source>
-      <translation>缺實驗存取權碼。</translation>
+      <translation>缺存取權碼。</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/feedly/gui/feedlyaccountdetails.cpp" line="181"/>
       <source>Access token is okay.</source>
-      <translation>實驗存取權碼無問題。</translation>
+      <translation>存取權碼無問題。</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/feedly/gui/feedlyaccountdetails.cpp" line="152"/>
@@ -1519,7 +1519,7 @@ QtWebEngine 快取資料夾 -&gt; &quot;%7&quot;</translation>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formbackupdatabasesettings.cpp" line="98"/>
       <source>Backup name looks okay.</source>
-      <translation>備份名稱看起來 ok。</translation>
+      <translation>備份名稱看起來無問題。</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formbackupdatabasesettings.cpp" line="71"/>
@@ -3194,7 +3194,7 @@ You have to restart manually.</source>
     <message>
       <location filename="../src/librssguard/services/standard/gui/formstandardimportexport.cpp" line="154"/>
       <source>Command is ok.</source>
-      <translation>命令 ok。</translation>
+      <translation>命令無問題。</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/standard/gui/formstandardimportexport.cpp" line="157"/>
@@ -3631,7 +3631,7 @@ You can install it now.</source>
     <message>
       <location filename="../src/librssguard/services/gmail/gui/gmailaccountdetails.cpp" line="16"/>
       <source>There are some preconfigured OAuth tokens so you do not have to fill in your client ID/secret, but it is strongly recommended to obtain your own as it preconfigured tokens have limited global usage quota. If you wish to use preconfigured tokens, simply leave those fields empty and make sure to leave default value of redirect URL.</source>
-      <translation>有一些預先設定的 OAuth 字串，使得不必輸入客戶端 ID/秘密。但是強烈建議取得自己的。因為預先設定的字串會限制全局使用的額度。如想使用預先設定的字串，就將這些欄位留白，確認未更動預設的重導向網址。</translation>
+      <translation>有一些預先設定的 OAuth 存取權碼，使得不必輸入客戶端 ID/秘密。但是強烈建議取得自己的。因為預先設定的存取權碼會限制全局使用的額度。如想使用預先設定的存取權碼，就將這些欄位留白，確認未更動預設的重導向網址。</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/gmail/gui/gmailaccountdetails.cpp" line="23"/>
@@ -3776,7 +3776,7 @@ You can install it now.</source>
       <source>Authentication status: %1
 Login tokens expiration: %2</source>
       <translation>認證狀態: %1
-登入用的語詞過期: %2</translation>
+登入用的存取權碼過期: %2</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/gmail/gmailserviceroot.cpp" line="221"/>
@@ -3884,7 +3884,7 @@ Login tokens expiration: %2</source>
     <message>
       <location filename="../src/librssguard/services/greader/gui/greaderaccountdetails.cpp" line="60"/>
       <source>There are some preconfigured OAuth tokens so you do not have to fill in your client ID/secret, but it is strongly recommended to obtain your own as preconfigured tokens have limited global usage quota. If you wish to use preconfigured tokens, simply leave all above fields to their default values even if they are empty.</source>
-      <translation>有一些預先設定的 OAuth 字串，使得不必輸入客戶端 ID/秘密。但是強烈建議取得自己的。因為預先設定的字串會限制全局使用的額度。如想使用預先設定的字串，就不更動所有以上欄位，以維持預設值，即使原預設值是空白的。</translation>
+      <translation>有一些預先設定的 OAuth 存取權碼，使得不必輸入客戶端 ID/秘密。但是強烈建議取得自己的。因為預先設定的存取權碼會限制全局使用的額度。如想使用預先設定的存取權碼，就不更動所有以上欄位，以維持預設值，即使原預設值是空白的。</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/greader/gui/greaderaccountdetails.cpp" line="67"/>
@@ -5458,7 +5458,7 @@ Login tokens expiration: %2</source>
     <message>
       <location filename="../src/librssguard/network-web/oauth2service.cpp" line="222"/>
       <source>Refreshing login tokens for &apos;%1&apos;...</source>
-      <translation>為 &apos;%1&apos; 重整登入用的語詞中…</translation>
+      <translation>為 &apos;%1&apos; 重整登入用的存取權碼中…</translation>
     </message>
     <message>
       <location filename="../src/librssguard/network-web/oauth2service.cpp" line="90"/>
@@ -5821,7 +5821,7 @@ List of supported readers:</source>
     <message>
       <location filename="../src/librssguard/miscellaneous/skinfactory.cpp" line="626"/>
       <source>OK-ish color</source>
-      <translation>像 OK 的顏色</translation>
+      <translation>像無問題(OK)的顏色</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/tt-rss/ttrssnetworkfactory.cpp" line="1010"/>
@@ -6177,7 +6177,7 @@ List of supported readers:</source>
       <source>Authentication status: %1
 Login tokens expiration: %2</source>
       <translation>認證狀態: %1
-登入用的語詞過期: %2</translation>
+登入用的存取權碼過期: %2</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/reddit/redditserviceroot.cpp" line="134"/>
@@ -7340,7 +7340,7 @@ Also, relaunch &quot;Settings&quot; dialog after you install Node.js.</source>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsnodejs.cpp" line="139"/>
       <source>Package folder is OK.</source>
-      <translation>套件資料夾 OK。</translation>
+      <translation>套件資料夾無問題。</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsnodejs.cpp" line="143"/>
@@ -7774,7 +7774,7 @@ Post-processing script: %3</source>
     <message>
       <location filename="../src/librssguard/services/standard/gui/standardfeeddetails.cpp" line="273"/>
       <source>Source is ok.</source>
-      <translation>來源 ok。</translation>
+      <translation>來源無問題。</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/standard/gui/standardfeeddetails.cpp" line="283"/>
@@ -7845,12 +7845,12 @@ Post-processing script: %3</source>
     <message>
       <location filename="../src/librssguard/services/standard/gui/standardfeeddetails.cpp" line="293"/>
       <source>The source is ok.</source>
-      <translation>源碼 ok。</translation>
+      <translation>來源無問題。</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/standard/gui/standardfeeddetails.cpp" line="300"/>
       <source>Command is ok.</source>
-      <translation>命令 ok。</translation>
+      <translation>命令無問題。</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/standard/gui/standardfeeddetails.cpp" line="163"/>
