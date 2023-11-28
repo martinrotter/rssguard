@@ -49,6 +49,9 @@ $zlib_version = "1.3"
 $zlib_link = "https://github.com/madler/zlib/archive/refs/tags/v$zlib_version.zip"
 $zlib_output = "zlib.zip"
 
+$libmpv_link = "https://deac-fra.dl.sourceforge.net/project/mpv-player-windows/64bit-v3/mpv-x86_64-v3-20231126-git-6898d57.7z"
+$libmpv_output = "mpv.zip"
+
 Invoke-WebRequest -Uri "$maria_link" -OutFile "$maria_output"
 & ".\resources\scripts\7za\7za.exe" x "$maria_output"
 
@@ -58,8 +61,12 @@ Invoke-WebRequest -Uri "$cmake_link" -OutFile "$cmake_output"
 Invoke-WebRequest -Uri "$zlib_link" -OutFile "$zlib_output"
 & ".\resources\scripts\7za\7za.exe" x "$zlib_output"
 
+Invoke-WebRequest -Uri "$libmpv_link" -OutFile "$libmpv_output"
+& ".\resources\scripts\7za\7za.exe" x "$libmpv_output" -ompv
+
 $cmake_path = "$old_pwd\cmake-$cmake_version-windows-x86_64\bin\cmake.exe"
 $zlib_path = "$old_pwd\zlib-$zlib_version"
+$libmpv_path = "$old_pwd\mpv"
 
 # Download Qt itself.
 $qt_path = "$old_pwd\qt"
@@ -125,7 +132,7 @@ cd "$old_pwd"
 mkdir "rssguard-build"
 cd "rssguard-build"
 
-& "$cmake_path" ".." -G Ninja -DCMAKE_BUILD_TYPE="RelWithDebInfo" -DCMAKE_VERBOSE_MAKEFILE="ON" -DBUILD_WITH_QT6="$with_qt6" -DREVISION_FROM_GIT="ON" -DUSE_SYSTEM_SQLITE="OFF" -DZLIB_ROOT="$zlib_path" -DENABLE_COMPRESSED_SITEMAP="ON" -DENABLE_MEDIAPLAYER_LIBMPV="$use_webengine" -DENABLE_MEDIAPLAYER_QTMULTIMEDIA="$not_use_webengine" -DNO_LITE="$use_webengine" -DFEEDLY_CLIENT_ID="$env:FEEDLY_CLIENT_ID" -DFEEDLY_CLIENT_SECRET="$env:FEEDLY_CLIENT_SECRET" -DGMAIL_CLIENT_ID="$env:GMAIL_CLIENT_ID" -DGMAIL_CLIENT_SECRET="$env:GMAIL_CLIENT_SECRET"
+& "$cmake_path" ".." -G Ninja -DCMAKE_BUILD_TYPE="RelWithDebInfo" -DCMAKE_VERBOSE_MAKEFILE="ON" -DBUILD_WITH_QT6="$with_qt6" -DREVISION_FROM_GIT="ON" -DUSE_SYSTEM_SQLITE="OFF" -DZLIB_ROOT="$zlib_path" -DENABLE_COMPRESSED_SITEMAP="ON" -DENABLE_MEDIAPLAYER_LIBMPV="$use_webengine" -DENABLE_MEDIAPLAYER_QTMULTIMEDIA="$not_use_webengine" -DLibMPV_ROOT="$libmpv_path" -DNO_LITE="$use_webengine" -DFEEDLY_CLIENT_ID="$env:FEEDLY_CLIENT_ID" -DFEEDLY_CLIENT_SECRET="$env:FEEDLY_CLIENT_SECRET" -DGMAIL_CLIENT_ID="$env:GMAIL_CLIENT_ID" -DGMAIL_CLIENT_SECRET="$env:GMAIL_CLIENT_SECRET"
 & "$cmake_path" --build .
 & "$cmake_path" --install . --prefix app
 
@@ -150,6 +157,9 @@ if ($git_tag -eq "devbuild") {
 }
 
 if ($use_webengine -eq "ON") {
+  # Copy libmpv.
+  Copy-Item -Path "$libmpv_path\libmpv*.dll" -Destination ".\app\"
+
   $packagebase = "rssguard-${git_tag}-${git_revision}-win"
 }
 else {
