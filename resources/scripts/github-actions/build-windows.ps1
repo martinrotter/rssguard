@@ -2,7 +2,7 @@ $os = $args[0]
 $use_webengine = $args[1]
 $use_qt5 = $args[2]
 
-not_use_webengine = "OFF" if use_webengine == "ON" else "ON"
+$not_use_webengine = "OFF" if use_webengine == "ON" else "ON"
 
 echo "We are building for MS Windows."
 echo "OS: $os; Not lite: $use_webengine; Qt5: $use_qt5"
