@@ -6548,7 +6548,7 @@ File filter for external e-mail selection dialog.</extracomment>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsbrowsermail.h" line="46"/>
       <source>Network &amp; web &amp; tools</source>
-      <translation>網路 &amp; 網絡 &amp; 工具</translation>
+      <translation>網路 &amp; 網站 &amp; 工具</translation>
     </message>
   </context>
   <context>
