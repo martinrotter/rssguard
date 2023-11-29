@@ -17,14 +17,14 @@ void SettingsMediaPlayer::loadSettings() {
   onBeginLoadSettings();
 
 #if defined(ENABLE_MEDIAPLAYER_LIBMPV)
-  m_ui.m_txtBackend->setText(QSL("QtMultimedia"));
+  m_ui.m_txtBackend->setText(QSL("libmpv"));
   m_ui.m_helpInfo->setHelpText(tr("You use modern libmpv-based media player backend with API version %1.")
                                  .arg(mpv_client_api_version()),
                                false);
 #elif defined(ENABLE_MEDIAPLAYER_QTMULTIMEDIA)
-  m_ui.m_txtBackend->setText(QSL("libmpv"));
+  m_ui.m_txtBackend->setText(QSL("QtMultimedia"));
   m_ui.m_helpInfo->setHelpText(tr("You use lightweight QtMultimedia-based media player backend. If some videos do not "
-                                  "play, then you likely need to install some codec pack."),
+                                  "play, then you likely need to install some codecs."),
                                false);
 #else
   m_ui.m_txtBackend->setText(tr("no backend installed"));

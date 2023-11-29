@@ -174,10 +174,46 @@ void QtMultimediaBackend::setVolume(int volume) {
 #else
   m_player->setVolume(volume);
 #endif
+
+  emit volumeChanged(volume);
 }
 
 void QtMultimediaBackend::setPosition(int position) {
   m_player->setPosition(convertSliderProgress(position));
+}
+
+void QtMultimediaBackend::setFullscreen(bool fullscreen) {
+  Q_UNUSED(fullscreen)
+  // No extra work needed here.
+}
+
+void QtMultimediaBackend::setMuted(bool muted) {
+  // This backend audio class does not support muting on Qt 5, so we emulate
+  // muting by seting volume to 0;
+  if (muted) {
+    // Remember volume and mute.
+#if QT_VERSION_MAJOR == 6
+    m_volume = convertToSliderVolume(m_player->audioOutput()->volume());
+#else
+    m_volume = m_player->volume();
+#endif
+
+#if QT_VERSION_MAJOR == 6
+    m_player->audioOutput()->setVolume(convertSliderVolume(0));
+#else
+    m_player->setVolume(0);
+#endif
+  }
+  else {
+    // Unmute.
+#if QT_VERSION_MAJOR == 6
+    m_player->audioOutput()->setVolume(convertSliderVolume(m_volume));
+#else
+    m_player->setVolume(m_volume);
+#endif
+  }
+
+  emit mutedChanged(muted);
 }
 
 QUrl QtMultimediaBackend::url() const {
@@ -245,4 +281,8 @@ void QtMultimediaBackend::onPlaybackStateChanged(QMediaPlayer::PLAYBACK_STATE st
 
 void QtMultimediaBackend::onSeekableChanged(bool seekable) {
   emit seekableChanged(seekable);
+}
+
+int QtMultimediaBackend::convertToSliderVolume(float volume) const {
+  return volume * 100;
 }

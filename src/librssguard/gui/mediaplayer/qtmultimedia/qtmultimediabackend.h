@@ -38,9 +38,12 @@ class QtMultimediaBackend : public PlayerBackend {
     virtual void playPause();
     virtual void pause();
     virtual void stop();
+
     virtual void setPlaybackSpeed(int speed);
     virtual void setVolume(int volume);
     virtual void setPosition(int position);
+    virtual void setFullscreen(bool fullscreen);
+    virtual void setMuted(bool muted);
 
   private slots:
     void onPlaybackRateChanged(qreal speed);
@@ -54,6 +57,7 @@ class QtMultimediaBackend : public PlayerBackend {
     void onSeekableChanged(bool seekable);
 
   private:
+    int convertToSliderVolume(float volume) const;
     float convertSliderVolume(int slider_volume) const;
     qint64 convertSliderProgress(int slider_progress) const;
     int convertToSliderProgress(qint64 player_progress) const;
@@ -71,6 +75,7 @@ class QtMultimediaBackend : public PlayerBackend {
 
     QMediaPlayer* m_player;
     QVideoWidget* m_video;
+    int m_volume;
 };
 
 #endif // QTMULTIMEDIABACKEND_H
