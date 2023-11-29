@@ -386,7 +386,7 @@ version en cliquant sur cette notification.</translation>
   <context>
     <name>BaseToastNotification</name>
     <message>
-      <location filename="../src/librssguard/gui/notifications/basetoastnotification.cpp" line="40"/>
+      <location filename="../src/librssguard/gui/notifications/basetoastnotification.cpp" line="44"/>
       <source>Close this notification</source>
       <translation>Fermer cette notification</translation>
     </message>
@@ -3121,35 +3121,35 @@ nouveau flux</translation>
   <context>
     <name>FormSettings</name>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formsettings.cpp" line="101"/>
+      <location filename="../src/librssguard/gui/dialogs/formsettings.cpp" line="105"/>
       <source>Critical settings were changed</source>
       <translation>Les paramètres importants ont changés</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formsettings.cpp" line="106"/>
-      <location filename="../src/librssguard/gui/dialogs/formsettings.cpp" line="143"/>
+      <location filename="../src/librssguard/gui/dialogs/formsettings.cpp" line="109"/>
+      <location filename="../src/librssguard/gui/dialogs/formsettings.cpp" line="144"/>
       <source>Changed categories of settings:
 %1.</source>
       <translation>Paramètres de catégories modifiées:
 %1.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formsettings.cpp" line="140"/>
+      <location filename="../src/librssguard/gui/dialogs/formsettings.cpp" line="141"/>
       <source>Some settings are changed and will be lost</source>
       <translation>Certains paramètres ont été modifiés et seront perdus</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formsettings.cpp" line="141"/>
+      <location filename="../src/librssguard/gui/dialogs/formsettings.cpp" line="142"/>
       <source>Some settings were changed and by cancelling this dialog, you would lose these changes.</source>
       <translation>Certains paramètres ont changés et en fermant cette fenêtre, les changements ne seront pas pris en compte.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formsettings.cpp" line="142"/>
+      <location filename="../src/librssguard/gui/dialogs/formsettings.cpp" line="143"/>
       <source>Do you really want to close this dialog without saving any settings?</source>
       <translation>Voulez-vous vraiment fermer cette fenêtre en enregistrant aucuns paramêtres?</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formsettings.cpp" line="102"/>
+      <location filename="../src/librssguard/gui/dialogs/formsettings.cpp" line="106"/>
       <source>Some critical settings were changed and will be applied after the application gets restarted. 
 
 You have to restart manually.</source>
@@ -3158,7 +3158,7 @@ You have to restart manually.</source>
 Vous devez redémarrer manuellement.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formsettings.cpp" line="105"/>
+      <location filename="../src/librssguard/gui/dialogs/formsettings.cpp" line="108"/>
       <source>Do you want to restart now?</source>
       <translation>Voulez-vous redémarrer maintenant ?</translation>
     </message>
@@ -4304,6 +4304,114 @@ Expiration de jetons d&apos;authentification: %2</translation>
     </message>
   </context>
   <context>
+    <name>LibMpvBackend</name>
+    <message>
+      <location filename="../src/librssguard/gui/mediaplayer/libmpv/libmpvbackend.cpp" line="149"/>
+      <source>File loaded</source>
+      <translation type="unfinished">File loaded</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard/gui/mediaplayer/libmpv/libmpvbackend.cpp" line="200"/>
+      <source>App restart required</source>
+      <translation type="unfinished">App restart required</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard/gui/mediaplayer/libmpv/libmpvbackend.cpp" line="203"/>
+      <source>Out of memory</source>
+      <translation type="unfinished">Out of memory</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard/gui/mediaplayer/libmpv/libmpvbackend.cpp" line="206"/>
+      <source>Not initialized yet</source>
+      <translation type="unfinished">Not initialized yet</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard/gui/mediaplayer/libmpv/libmpvbackend.cpp" line="209"/>
+      <source>Invalid parameter</source>
+      <translation type="unfinished">Invalid parameter</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard/gui/mediaplayer/libmpv/libmpvbackend.cpp" line="212"/>
+      <source>Option not found</source>
+      <translation type="unfinished">Option not found</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard/gui/mediaplayer/libmpv/libmpvbackend.cpp" line="215"/>
+      <source>Option badly formatted</source>
+      <translation type="unfinished">Option badly formatted</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard/gui/mediaplayer/libmpv/libmpvbackend.cpp" line="218"/>
+      <source>Cannot set option</source>
+      <translation type="unfinished">Cannot set option</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard/gui/mediaplayer/libmpv/libmpvbackend.cpp" line="221"/>
+      <source>Property does not existing</source>
+      <translation type="unfinished">Property does not existing</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard/gui/mediaplayer/libmpv/libmpvbackend.cpp" line="224"/>
+      <source>Property badly formatted</source>
+      <translation type="unfinished">Property badly formatted</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard/gui/mediaplayer/libmpv/libmpvbackend.cpp" line="227"/>
+      <source>Property N/A</source>
+      <translation type="unfinished">Property N/A</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard/gui/mediaplayer/libmpv/libmpvbackend.cpp" line="230"/>
+      <source>Cannot set property</source>
+      <translation type="unfinished">Cannot set property</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard/gui/mediaplayer/libmpv/libmpvbackend.cpp" line="233"/>
+      <source>Cannot run command</source>
+      <translation type="unfinished">Cannot run command</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard/gui/mediaplayer/libmpv/libmpvbackend.cpp" line="236"/>
+      <source>Loading failed</source>
+      <translation type="unfinished">Loading failed</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard/gui/mediaplayer/libmpv/libmpvbackend.cpp" line="239"/>
+      <source>Cannot initialize audio</source>
+      <translation type="unfinished">Cannot initialize audio</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard/gui/mediaplayer/libmpv/libmpvbackend.cpp" line="242"/>
+      <source>Cannot initialize video</source>
+      <translation type="unfinished">Cannot initialize video</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard/gui/mediaplayer/libmpv/libmpvbackend.cpp" line="245"/>
+      <source>Not a media file</source>
+      <translation type="unfinished">Not a media file</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard/gui/mediaplayer/libmpv/libmpvbackend.cpp" line="248"/>
+      <source>Unknown file format</source>
+      <translation type="unfinished">Unknown file format</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard/gui/mediaplayer/libmpv/libmpvbackend.cpp" line="251"/>
+      <source>Unsupported file format</source>
+      <translation type="unfinished">Unsupported file format</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard/gui/mediaplayer/libmpv/libmpvbackend.cpp" line="255"/>
+      <source>Unknown error (%1)</source>
+      <translation type="unfinished">Unknown error (%1)</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard/gui/mediaplayer/libmpv/libmpvbackend.cpp" line="276"/>
+      <source>File ended</source>
+      <translation type="unfinished">File ended</translation>
+    </message>
+  </context>
+  <context>
     <name>LocationLineEdit</name>
     <message>
       <location filename="../src/librssguard/gui/reusable/locationlineedit.cpp" line="11"/>
@@ -4550,134 +4658,55 @@ Expiration de jetons d&apos;authentification: %2</translation>
   <context>
     <name>MediaPlayer</name>
     <message>
-      <location filename="../src/librssguard/gui/reusable/mediaplayer.ui" line="14"/>
+      <location filename="../src/librssguard/gui/mediaplayer/mediaplayer.ui" line="14"/>
       <source>Form</source>
       <translation>Formulaire</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/reusable/mediaplayer.ui" line="35"/>
+      <location filename="../src/librssguard/gui/mediaplayer/mediaplayer.ui" line="64"/>
       <source>Play/pause</source>
       <translation>Lecture/Pause</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/reusable/mediaplayer.ui" line="42"/>
+      <location filename="../src/librssguard/gui/mediaplayer/mediaplayer.ui" line="71"/>
       <source>Stop</source>
       <translation>Stop</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/reusable/mediaplayer.ui" line="49"/>
+      <location filename="../src/librssguard/gui/mediaplayer/mediaplayer.ui" line="78"/>
       <source>Speed</source>
       <translation>Vitesse</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/reusable/mediaplayer.ui" line="77"/>
+      <location filename="../src/librssguard/gui/mediaplayer/mediaplayer.ui" line="106"/>
       <source>Progress</source>
       <translation>Progression</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/reusable/mediaplayer.ui" line="87"/>
+      <location filename="../src/librssguard/gui/mediaplayer/mediaplayer.ui" line="116"/>
       <source>Duration</source>
       <translation>Durée</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/reusable/mediaplayer.ui" line="94"/>
+      <location filename="../src/librssguard/gui/mediaplayer/mediaplayer.ui" line="123"/>
       <source>Mute/unmute</source>
       <translation>Activer/Désactiver le son</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/reusable/mediaplayer.ui" line="107"/>
+      <location filename="../src/librssguard/gui/mediaplayer/mediaplayer.ui" line="136"/>
       <source>Volume</source>
       <translation>Volume</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/reusable/mediaplayer.ui" line="126"/>
+      <location filename="../src/librssguard/gui/mediaplayer/mediaplayer.ui" line="155"/>
+      <location filename="../src/librssguard/gui/mediaplayer/mediaplayer.ui" line="162"/>
       <source>Download</source>
       <translation>Téléchargement</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/reusable/mediaplayer.cpp" line="200"/>
-      <source>Cannot load media (missing codecs)</source>
-      <translation>Impossible de charger le média (codecs manquants)</translation>
-    </message>
-    <message>
-      <location filename="../src/librssguard/gui/reusable/mediaplayer.cpp" line="203"/>
-      <source>Unrecognized format</source>
-      <translation>Format non reconnu</translation>
-    </message>
-    <message>
-      <location filename="../src/librssguard/gui/reusable/mediaplayer.cpp" line="206"/>
-      <source>Network problem</source>
-      <translation>Problème réseau</translation>
-    </message>
-    <message>
-      <location filename="../src/librssguard/gui/reusable/mediaplayer.cpp" line="209"/>
-      <source>Access denied</source>
-      <translation>Accès refusé</translation>
-    </message>
-    <message>
-      <location filename="../src/librssguard/gui/reusable/mediaplayer.cpp" line="213"/>
-      <source>Service is missing</source>
-      <translation>Service manquant</translation>
-    </message>
-    <message>
-      <location filename="../src/librssguard/gui/reusable/mediaplayer.cpp" line="216"/>
-      <source>This is playlist</source>
-      <translation>Ceci est une playlist</translation>
-    </message>
-    <message>
-      <location filename="../src/librssguard/gui/reusable/mediaplayer.cpp" line="220"/>
-      <source>No errors</source>
-      <translation>Pas d'erreurs</translation>
-    </message>
-    <message>
-      <location filename="../src/librssguard/gui/reusable/mediaplayer.cpp" line="223"/>
-      <source>Unknown error</source>
-      <translation>Erreur inconnue</translation>
-    </message>
-    <message>
-      <location filename="../src/librssguard/gui/reusable/mediaplayer.cpp" line="238"/>
-      <source>No media</source>
-      <translation>Aucun média</translation>
-    </message>
-    <message>
-      <location filename="../src/librssguard/gui/reusable/mediaplayer.cpp" line="241"/>
-      <source>Loading...</source>
-      <translation>Chargement ...</translation>
-    </message>
-    <message>
-      <location filename="../src/librssguard/gui/reusable/mediaplayer.cpp" line="244"/>
-      <source>Media loaded</source>
-      <translation>Média chargé</translation>
-    </message>
-    <message>
-      <location filename="../src/librssguard/gui/reusable/mediaplayer.cpp" line="247"/>
-      <source>Media stalled</source>
-      <translation>Média bloqué</translation>
-    </message>
-    <message>
-      <location filename="../src/librssguard/gui/reusable/mediaplayer.cpp" line="250"/>
-      <source>Buffering...</source>
-      <translation>Mise en mémoire tampon...</translation>
-    </message>
-    <message>
-      <location filename="../src/librssguard/gui/reusable/mediaplayer.cpp" line="253"/>
-      <source>Loaded</source>
-      <translation>Chargé</translation>
-    </message>
-    <message>
-      <location filename="../src/librssguard/gui/reusable/mediaplayer.cpp" line="256"/>
-      <source>Ended</source>
-      <translation>Terminé</translation>
-    </message>
-    <message>
-      <location filename="../src/librssguard/gui/reusable/mediaplayer.cpp" line="259"/>
-      <source>Media is invalid</source>
-      <translation>Média invalide</translation>
-    </message>
-    <message>
-      <location filename="../src/librssguard/gui/reusable/mediaplayer.cpp" line="262"/>
-      <source>Unknown</source>
-      <translation>Inconnu</translation>
+      <location filename="../src/librssguard/gui/mediaplayer/mediaplayer.cpp" line="43"/>
+      <source>Starting</source>
+      <translation type="unfinished">Starting</translation>
     </message>
   </context>
   <context>
@@ -5961,19 +5990,112 @@ Liste d&apos;agrégateurs compatibles:</translation>
       <translation>n'est pas une carte-site</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/webviewers/webviewer.cpp" line="34"/>
+      <location filename="../src/librssguard/gui/webviewers/webviewer.cpp" line="37"/>
       <source>Open with external tool</source>
       <translation>Ouvrir avec l&apos;outil externe</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/webviewers/webviewer.cpp" line="95"/>
+      <location filename="../src/librssguard/gui/webviewers/webviewer.cpp" line="100"/>
       <source>Open in external browser</source>
       <translation>Ouvrir dans le navigateur externe</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/webviewers/webviewer.cpp" line="98"/>
-      <source>Play link as audio/video</source>
-      <translation>Jouer le lien en tant que audio/vidéo</translation>
+      <location filename="../src/librssguard/gui/webviewers/webviewer.cpp" line="103"/>
+      <source>Play in media player</source>
+      <translation type="unfinished">Play in media player</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard/gui/webviewers/webviewer.cpp" line="106"/>
+      <source>(not supported)</source>
+      <translation type="unfinished">(not supported)</translation>
+    </message>
+  </context>
+  <context>
+    <name>QtMultimediaBackend</name>
+    <message>
+      <location filename="../src/librssguard/gui/mediaplayer/qtmultimedia/qtmultimediabackend.cpp" line="82"/>
+      <source>No media</source>
+      <translation type="unfinished">No media</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard/gui/mediaplayer/qtmultimedia/qtmultimediabackend.cpp" line="85"/>
+      <source>Loading...</source>
+      <translation type="unfinished">Loading...</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard/gui/mediaplayer/qtmultimedia/qtmultimediabackend.cpp" line="88"/>
+      <source>Media loaded</source>
+      <translation type="unfinished">Media loaded</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard/gui/mediaplayer/qtmultimedia/qtmultimediabackend.cpp" line="91"/>
+      <source>Media stalled</source>
+      <translation type="unfinished">Media stalled</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard/gui/mediaplayer/qtmultimedia/qtmultimediabackend.cpp" line="94"/>
+      <source>Buffering...</source>
+      <translation type="unfinished">Buffering...</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard/gui/mediaplayer/qtmultimedia/qtmultimediabackend.cpp" line="97"/>
+      <source>Loaded</source>
+      <translation type="unfinished">Loaded</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard/gui/mediaplayer/qtmultimedia/qtmultimediabackend.cpp" line="100"/>
+      <source>Ended</source>
+      <translation type="unfinished">Ended</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard/gui/mediaplayer/qtmultimedia/qtmultimediabackend.cpp" line="103"/>
+      <source>Media is invalid</source>
+      <translation type="unfinished">Media is invalid</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard/gui/mediaplayer/qtmultimedia/qtmultimediabackend.cpp" line="106"/>
+      <source>Unknown</source>
+      <translation>Inconnu</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard/gui/mediaplayer/qtmultimedia/qtmultimediabackend.cpp" line="113"/>
+      <source>Cannot load media (missing codecs)</source>
+      <translation type="unfinished">Cannot load media (missing codecs)</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard/gui/mediaplayer/qtmultimedia/qtmultimediabackend.cpp" line="116"/>
+      <source>Unrecognized format</source>
+      <translation type="unfinished">Unrecognized format</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard/gui/mediaplayer/qtmultimedia/qtmultimediabackend.cpp" line="119"/>
+      <source>Network problem</source>
+      <translation type="unfinished">Network problem</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard/gui/mediaplayer/qtmultimedia/qtmultimediabackend.cpp" line="122"/>
+      <source>Access denied</source>
+      <translation type="unfinished">Access denied</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard/gui/mediaplayer/qtmultimedia/qtmultimediabackend.cpp" line="126"/>
+      <source>Service is missing</source>
+      <translation type="unfinished">Service is missing</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard/gui/mediaplayer/qtmultimedia/qtmultimediabackend.cpp" line="129"/>
+      <source>This is playlist</source>
+      <translation type="unfinished">This is playlist</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard/gui/mediaplayer/qtmultimedia/qtmultimediabackend.cpp" line="133"/>
+      <source>No errors</source>
+      <translation type="unfinished">No errors</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard/gui/mediaplayer/qtmultimedia/qtmultimediabackend.cpp" line="136"/>
+      <source>Unknown error</source>
+      <translation type="unfinished">Unknown error</translation>
     </message>
   </context>
   <context>
@@ -7344,6 +7466,39 @@ Déscription: %3</translation>
     </message>
   </context>
   <context>
+    <name>SettingsMediaPlayer</name>
+    <message>
+      <location filename="../src/librssguard/gui/settings/settingsmediaplayer.ui" line="17"/>
+      <source>Backend</source>
+      <translation type="unfinished">Backend</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard/gui/settings/settingsmediaplayer.cpp" line="21"/>
+      <source>You use modern libmpv-based media player backend with API version %1.</source>
+      <translation type="unfinished">You use modern libmpv-based media player backend with API version %1.</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard/gui/settings/settingsmediaplayer.cpp" line="26"/>
+      <source>You use lightweight QtMultimedia-based media player backend. If some videos do not play, then you likely need to install some codecs.</source>
+      <translation type="unfinished">You use lightweight QtMultimedia-based media player backend. If some videos do not play, then you likely need to install some codecs.</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard/gui/settings/settingsmediaplayer.cpp" line="30"/>
+      <source>no backend installed</source>
+      <translation type="unfinished">no backend installed</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard/gui/settings/settingsmediaplayer.cpp" line="31"/>
+      <source>You do not have any media player available. Media player is only supported on modern platforms where needed libraries are available. You must manually recompile %1 to be able to use media player.</source>
+      <translation type="unfinished">You do not have any media player available. Media player is only supported on modern platforms where needed libraries are available. You must manually recompile %1 to be able to use media player.</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard/gui/settings/settingsmediaplayer.h" line="25"/>
+      <source>Media player</source>
+      <translation>Lecteur multimédia</translation>
+    </message>
+  </context>
+  <context>
     <name>SettingsNodejs</name>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsnodejs.cpp" line="17"/>
@@ -8132,37 +8287,37 @@ Actualités non-lus: %2</translation>
   <context>
     <name>TabWidget</name>
     <message>
-      <location filename="../src/librssguard/gui/tabwidget.cpp" line="135"/>
+      <location filename="../src/librssguard/gui/tabwidget.cpp" line="138"/>
       <source>Feeds</source>
       <translation>Flux</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/tabwidget.cpp" line="39"/>
+      <location filename="../src/librssguard/gui/tabwidget.cpp" line="42"/>
       <source>Displays main menu.</source>
       <translation>Afficher le menu principal</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/tabwidget.cpp" line="48"/>
+      <location filename="../src/librssguard/gui/tabwidget.cpp" line="51"/>
       <source>Main menu</source>
       <translation>Menu principal</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/tabwidget.cpp" line="79"/>
+      <location filename="../src/librssguard/gui/tabwidget.cpp" line="82"/>
       <source>Downloads</source>
       <translation>Téléchargements</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/tabwidget.cpp" line="237"/>
+      <location filename="../src/librssguard/gui/tabwidget.cpp" line="247"/>
       <source>Media player</source>
       <translation>Lecteur multimédia</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/tabwidget.cpp" line="262"/>
+      <location filename="../src/librssguard/gui/tabwidget.cpp" line="273"/>
       <source>Web browser</source>
       <translation>Navigateur web</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/tabwidget.cpp" line="137"/>
+      <location filename="../src/librssguard/gui/tabwidget.cpp" line="140"/>
       <source>Browse your feeds and articles</source>
       <translation>Naviguez vos flux et articles</translation>
     </message>
