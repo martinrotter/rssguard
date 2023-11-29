@@ -263,5 +263,7 @@ void MediaPlayer::createConnections() {
   connect(m_ui.m_slidVolume, &QSlider::valueChanged, this, &MediaPlayer::setVolume);
   connect(m_ui.m_slidProgress, &QSlider::valueChanged, this, &MediaPlayer::seek);
   connect(m_ui.m_spinSpeed, QOverload<int>::of(&QSpinBox::valueChanged), this, &MediaPlayer::setSpeed);
-  connect(m_ui.m_btnFullscreen, &PlainToolButton::clicked, this, &MediaPlayer::switchFullScreen);
+  connect(m_ui.m_btnFullscreen, &PlainToolButton::clicked, this, [this]() {
+    switchFullScreen(true);
+  });
 }

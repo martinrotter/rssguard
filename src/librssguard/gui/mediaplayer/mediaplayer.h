@@ -40,7 +40,7 @@ class MediaPlayer : public TabContent {
     void showPlayerNormal();
     void showPlayerFullscreen();
     void escapeFromFullscreen();
-    void switchFullScreen(bool send_event_to_backend = true);
+    void switchFullScreen(bool send_event_to_backend);
 
     void onFullscreenChanged(bool fullscreen);
     void onMutedChanged(bool muted);

@@ -6,8 +6,6 @@
 #include "definitions/definitions.h"
 #include "gui/mediaplayer/libmpv/qthelper.h"
 
-#include <mpv/client.h>
-
 #include <clocale>
 #include <sstream>
 #include <stdexcept>
@@ -25,6 +23,9 @@
 #define EVENT_CODE_SPEED    7
 #define EVENT_CODE_SEEKABLE 8
 #define EVENT_CODE_TRACKS   9
+#define EVENT_CODE_PAUSE    10
+#define EVENT_CODE_IDLE     11
+#define EVENT_CODE_STOP     12
 
 static void wakeup(void* ctx) {
   // This callback is invoked from any mpv thread (but possibly also
@@ -105,6 +106,8 @@ LibMpvBackend::LibMpvBackend(QWidget* parent)
   mpv_observe_property(m_mpvHandle, EVENT_CODE_POSITION, "time-pos", MPV_FORMAT_INT64);
   mpv_observe_property(m_mpvHandle, EVENT_CODE_SPEED, "speed", MPV_FORMAT_DOUBLE);
   mpv_observe_property(m_mpvHandle, EVENT_CODE_SEEKABLE, "seekable", MPV_FORMAT_FLAG);
+  mpv_observe_property(m_mpvHandle, EVENT_CODE_PAUSE, "pause", MPV_FORMAT_FLAG);
+  mpv_observe_property(m_mpvHandle, EVENT_CODE_IDLE, "idle-active", MPV_FORMAT_FLAG);
   mpv_observe_property(m_mpvHandle, EVENT_CODE_TRACKS, "track-list", MPV_FORMAT_NODE);
 
   // From this point on, the wakeup function will be called. The callback
@@ -139,6 +142,16 @@ void LibMpvBackend::handleMpvEvent(mpv_event* event) {
     case MPV_EVENT_PROPERTY_CHANGE: {
       mpv_event_property* prop = (mpv_event_property*)event->data;
       processPropertyChange(prop, event->reply_userdata);
+      break;
+    }
+
+    case MPV_EVENT_FILE_LOADED:
+      emit statusChanged(tr("File loaded"));
+      break;
+
+    case MPV_EVENT_END_FILE: {
+      mpv_event_end_file* end_file = (mpv_event_end_file*)event->data;
+      processEndFile(end_file);
       break;
     }
 
@@ -181,6 +194,68 @@ double LibMpvBackend::mpvDecodeDouble(void* data) const {
   return *(double*)data;
 }
 
+QString LibMpvBackend::errorToString(mpv_error error) const {
+  switch (mpv_error(error)) {
+    case mpv_error::MPV_ERROR_EVENT_QUEUE_FULL:
+      return tr("App restart required");
+
+    case mpv_error::MPV_ERROR_NOMEM:
+      return tr("Out of memory");
+
+    case mpv_error::MPV_ERROR_UNINITIALIZED:
+      return tr("Not initialized yet");
+
+    case mpv_error::MPV_ERROR_INVALID_PARAMETER:
+      return tr("Invalid parameter");
+
+    case mpv_error::MPV_ERROR_OPTION_NOT_FOUND:
+      return tr("Option not found");
+
+    case mpv_error::MPV_ERROR_OPTION_FORMAT:
+      return tr("Option badly formatted");
+
+    case mpv_error::MPV_ERROR_OPTION_ERROR:
+      return tr("Cannot set option");
+
+    case mpv_error::MPV_ERROR_PROPERTY_NOT_FOUND:
+      return tr("Property does not existing");
+
+    case mpv_error::MPV_ERROR_PROPERTY_FORMAT:
+      return tr("Property badly formatted");
+
+    case mpv_error::MPV_ERROR_PROPERTY_UNAVAILABLE:
+      return tr("Property N/A");
+
+    case mpv_error::MPV_ERROR_PROPERTY_ERROR:
+      return tr("Cannot set property");
+
+    case mpv_error::MPV_ERROR_COMMAND:
+      return tr("Cannot run command");
+
+    case mpv_error::MPV_ERROR_LOADING_FAILED:
+      return tr("Loading failed");
+
+    case mpv_error::MPV_ERROR_AO_INIT_FAILED:
+      return tr("Cannot initialize audio");
+
+    case mpv_error::MPV_ERROR_VO_INIT_FAILED:
+      return tr("Cannot initialize video");
+
+    case mpv_error::MPV_ERROR_NOTHING_TO_PLAY:
+      return tr("Not a media file");
+
+    case mpv_error::MPV_ERROR_UNKNOWN_FORMAT:
+      return tr("Unknown file format");
+
+    case mpv_error::MPV_ERROR_UNSUPPORTED:
+      return tr("Unsupported file format");
+
+    case mpv_error::MPV_ERROR_NOT_IMPLEMENTED:
+    default:
+      return tr("Unknown error (%1)").arg(error);
+  }
+}
+
 void LibMpvBackend::onMpvEvents() {
   while (m_mpvHandle != nullptr) {
     mpv_event* event = mpv_wait_event(m_mpvHandle, 0);
@@ -190,6 +265,26 @@ void LibMpvBackend::onMpvEvents() {
     }
 
     handleMpvEvent(event);
+  }
+}
+
+void LibMpvBackend::processEndFile(mpv_event_end_file* end_file) {
+  switch (end_file->reason) {
+    case MPV_END_FILE_REASON_EOF:
+    case MPV_END_FILE_REASON_STOP:
+    case MPV_END_FILE_REASON_QUIT:
+      emit statusChanged(tr("File ended"));
+      emit playbackStateChanged(PlayerBackend::PlaybackState::StoppedState);
+      break;
+
+    case MPV_END_FILE_REASON_ERROR:
+      emit errorOccurred(errorToString(mpv_error(end_file->error)));
+      emit playbackStateChanged(PlayerBackend::PlaybackState::StoppedState);
+      break;
+
+    case MPV_END_FILE_REASON_REDIRECT:
+    default:
+      break;
   }
 }
 
@@ -205,7 +300,8 @@ void LibMpvBackend::processTracks(const QJsonDocument& json) {
     return var.toHash().value("type") == QSL("video");
   });
 
-  int a = 7;
+  emit audioAvailable(any_audio_track);
+  emit videoAvailable(any_video_track);
 }
 
 void LibMpvBackend::processPropertyChange(mpv_event_property* prop, uint64_t property_code) {
@@ -236,13 +332,37 @@ void LibMpvBackend::processPropertyChange(mpv_event_property* prop, uint64_t pro
       break;
     }
 
+    case EVENT_CODE_IDLE: {
+      /*
+      bool idle = mpvDecodeBool(prop->data);
+
+      if (idle) {
+        emit playbackStateChanged(PlayerBackend::PlaybackState::StoppedState);
+      }
+*/
+      break;
+    }
+
+    case EVENT_CODE_PAUSE: {
+      bool paused = mpvDecodeBool(prop->data);
+
+      if (paused) {
+        emit playbackStateChanged(PlayerBackend::PlaybackState::PausedState);
+      }
+      else {
+        emit playbackStateChanged(PlayerBackend::PlaybackState::PlayingState);
+      }
+
+      break;
+    }
+
     case EVENT_CODE_SEEKABLE:
       emit seekableChanged(mpvDecodeBool(prop->data));
       break;
 
     case EVENT_CODE_SPEED: {
       double sp = mpvDecodeDouble(prop->data);
-      emit speedChanged(std::min(100, int(sp * 100)));
+      emit speedChanged(int(sp * 100));
       break;
     }
 
@@ -264,28 +384,6 @@ void LibMpvBackend::processPropertyChange(mpv_event_property* prop, uint64_t pro
     default:
       break;
   }
-
-  /*
-  if (strcmp(prop->name, "time-pos") == 0) {
-    if (prop->format == MPV_FORMAT_DOUBLE) {
-      double time = *(double*)prop->data;
-      std::stringstream ss;
-      ss << "At: " << time;
-    }
-    else if (prop->format == MPV_FORMAT_NONE) {
-    }
-  }
-  else if (strcmp(prop->name, "chapter-list") == 0 || strcmp(prop->name, "track-list") == 0) {
-    // Dump the properties as JSON for demo purposes.
-    if (prop->format == MPV_FORMAT_NODE) {
-      QVariant v = mpv::qt::node_to_variant((mpv_node*)prop->data);
-      // Abuse JSON support for easily printing the mpv_node contents.
-      QJsonDocument d = QJsonDocument::fromVariant(v);
-      appendLog("Change property " + QString(prop->name) + ":\n");
-      appendLog(d.toJson().data());
-    }
-  }
-  */
 }
 
 void LibMpvBackend::processLogMessage(mpv_event_log_message* msg) {
@@ -370,6 +468,8 @@ bool LibMpvBackend::eventFilter(QObject* watched, QEvent* event) {
 }
 
 void LibMpvBackend::playUrl(const QUrl& url) {
+  m_url = url;
+
   if (m_mpvHandle != nullptr) {
     auto eb = url.toString().toLocal8Bit();
     const char* css = eb.data();
@@ -378,13 +478,31 @@ void LibMpvBackend::playUrl(const QUrl& url) {
   }
 }
 
-void LibMpvBackend::playPause() {}
+void LibMpvBackend::playPause() {
+  int paused;
+  mpv_get_property(m_mpvHandle, "pause", MPV_FORMAT_FLAG, &paused);
 
-void LibMpvBackend::pause() {}
+  paused = paused == 0 ? 1 : 0;
 
-void LibMpvBackend::stop() {}
+  mpv_set_property_async(m_mpvHandle, EVENT_CODE_PAUSE, "pause", MPV_FORMAT_FLAG, &paused);
+}
 
-void LibMpvBackend::setPlaybackSpeed(int speed) {}
+void LibMpvBackend::pause() {
+  int in = 1;
+  mpv_set_property_async(m_mpvHandle, EVENT_CODE_PAUSE, "pause", MPV_FORMAT_FLAG, &in);
+}
+
+void LibMpvBackend::stop() {
+  const char* args[] = {"stop", nullptr};
+  mpv_command_async(m_mpvHandle, EVENT_CODE_STOP, args);
+}
+
+void LibMpvBackend::setPlaybackSpeed(int speed) {
+  if (m_mpvHandle != nullptr) {
+    double sp = speed / 100.0;
+    mpv_set_property_async(m_mpvHandle, EVENT_CODE_SPEED, "speed", MPV_FORMAT_DOUBLE, &sp);
+  }
+}
 
 void LibMpvBackend::setVolume(int volume) {
   if (m_mpvHandle != nullptr) {
@@ -393,7 +511,12 @@ void LibMpvBackend::setVolume(int volume) {
   }
 }
 
-void LibMpvBackend::setPosition(int position) {}
+void LibMpvBackend::setPosition(int position) {
+  if (m_mpvHandle != nullptr) {
+    uint64_t pos = position;
+    mpv_set_property_async(m_mpvHandle, EVENT_CODE_POSITION, "time-pos", MPV_FORMAT_INT64, &pos);
+  }
+}
 
 void LibMpvBackend::setFullscreen(bool fullscreen) {
   if (m_mpvHandle != nullptr) {
@@ -403,7 +526,7 @@ void LibMpvBackend::setFullscreen(bool fullscreen) {
 }
 
 QUrl LibMpvBackend::url() const {
-  return {};
+  return m_url;
 }
 
 int LibMpvBackend::position() const {
