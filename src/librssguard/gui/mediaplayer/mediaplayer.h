@@ -37,9 +37,17 @@ class MediaPlayer : public TabContent {
     // NOTE: We seek by second.
     void seek(int position);
 
+    void showPlayerNormal();
+    void showPlayerFullscreen();
+    void escapeFromFullscreen();
+    void switchFullScreen(bool send_event_to_backend = true);
+
+    void onFullscreenChanged(bool fullscreen);
+    void onMutedChanged(bool muted);
     void onSpeedChanged(int speed);
     void onDurationChanged(int duration);
     void onPositionChanged(int position);
+    void onVolumeChanged(int volume);
     void onErrorOccurred(const QString& error_string);
     void onStatusChanged(const QString& status);
     void onPlaybackStateChanged(PlayerBackend::PlaybackState state);
@@ -49,8 +57,11 @@ class MediaPlayer : public TabContent {
 
   signals:
     void urlDownloadRequested(const QUrl& url);
+    void closed();
 
   private:
+    bool isFullScreen() const;
+
     void updateTimeAndProgress(int progress, int total);
     void setupIcons();
 

@@ -173,8 +173,8 @@ bool TabWidget::closeTab(int index) {
   }
 }
 
-void TabWidget::closeBrowserTab() {
-  auto idx = indexOf(qobject_cast<WebBrowser*>(sender()));
+void TabWidget::closeTabWithSender() {
+  auto idx = indexOf(qobject_cast<QWidget*>(sender()));
 
   if (idx >= 0) {
     closeTab(idx);
@@ -240,6 +240,8 @@ int TabWidget::addMediaPlayer(const QString& url, bool make_active) {
           qApp->downloadManager(),
           QOverload<const QUrl&>::of(&DownloadManager::download));
 
+  connect(player, &MediaPlayer::closed, this, &TabWidget::closeTabWithSender);
+
   int index = addTab(player,
                      qApp->icons()->fromTheme(QSL("player_play"), QSL("media-playback-start")),
                      tr("Media player"),
@@ -291,7 +293,7 @@ int TabWidget::addBrowser(bool move_after_current, bool make_active, WebBrowser*
   // Make connections.
   connect(browser, &WebBrowser::titleChanged, this, &TabWidget::changeTitle);
   connect(browser, &WebBrowser::iconChanged, this, &TabWidget::changeIcon);
-  connect(browser, &WebBrowser::windowCloseRequested, this, &TabWidget::closeBrowserTab);
+  connect(browser, &WebBrowser::windowCloseRequested, this, &TabWidget::closeTabWithSender);
 
   // Setup the tab index.
   browser->setIndex(final_index);

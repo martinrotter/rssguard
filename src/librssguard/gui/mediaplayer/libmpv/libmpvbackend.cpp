@@ -2,6 +2,7 @@
 
 #include "gui/mediaplayer/libmpv/libmpvbackend.h"
 
+#include "3rd-party/boolinq/boolinq.h"
 #include "definitions/definitions.h"
 #include "gui/mediaplayer/libmpv/qthelper.h"
 
@@ -11,9 +12,19 @@
 #include <sstream>
 #include <stdexcept>
 
+#include <QJsonArray>
 #include <QJsonDocument>
 #include <QKeyEvent>
 #include <QLayout>
+
+#define EVENT_CODE_FS       2
+#define EVENT_CODE_VOLUME   3
+#define EVENT_CODE_DURATION 4
+#define EVENT_CODE_MUTE     5
+#define EVENT_CODE_POSITION 6
+#define EVENT_CODE_SPEED    7
+#define EVENT_CODE_SEEKABLE 8
+#define EVENT_CODE_TRACKS   9
 
 static void wakeup(void* ctx) {
   // This callback is invoked from any mpv thread (but possibly also
@@ -26,6 +37,8 @@ static void wakeup(void* ctx) {
 
 LibMpvBackend::LibMpvBackend(QWidget* parent)
   : PlayerBackend(parent), m_mpvContainer(new QWidget(this)), m_mpvHandle(nullptr) {
+  installEventFilter(this);
+
   m_mpvHandle = mpv_create();
 
   if (m_mpvHandle == nullptr) {
@@ -80,11 +93,19 @@ LibMpvBackend::LibMpvBackend(QWidget* parent)
   // mpv_set_option_string(mpv, "input-vo-keyboard", "yes");
 
   // Observe some properties.
-  mpv_observe_property(m_mpvHandle, 0, "time-pos", MPV_FORMAT_DOUBLE);
-  mpv_observe_property(m_mpvHandle, 0, "track-list", MPV_FORMAT_NODE);
-  mpv_observe_property(m_mpvHandle, 0, "chapter-list", MPV_FORMAT_NODE);
-  mpv_observe_property(m_mpvHandle, 0, "duration", MPV_FORMAT_NODE);
-  mpv_observe_property(m_mpvHandle, 0, "volume", MPV_FORMAT_NODE);
+  // mpv_observe_property(m_mpvHandle, 0, "time-pos", MPV_FORMAT_DOUBLE);
+  // mpv_observe_property(m_mpvHandle, 0, "track-list", MPV_FORMAT_NODE);
+  // mpv_observe_property(m_mpvHandle, 0, "chapter-list", MPV_FORMAT_NODE);
+  // mpv_observe_property(m_mpvHandle, 0, "duration", MPV_FORMAT_NODE);
+  // mpv_observe_property(m_mpvHandle, 0, "volume", MPV_FORMAT_NODE);
+  mpv_observe_property(m_mpvHandle, EVENT_CODE_FS, "fullscreen", MPV_FORMAT_FLAG);
+  mpv_observe_property(m_mpvHandle, EVENT_CODE_VOLUME, "volume", MPV_FORMAT_INT64);
+  mpv_observe_property(m_mpvHandle, EVENT_CODE_DURATION, "duration", MPV_FORMAT_INT64);
+  mpv_observe_property(m_mpvHandle, EVENT_CODE_MUTE, "mute", MPV_FORMAT_FLAG);
+  mpv_observe_property(m_mpvHandle, EVENT_CODE_POSITION, "time-pos", MPV_FORMAT_INT64);
+  mpv_observe_property(m_mpvHandle, EVENT_CODE_SPEED, "speed", MPV_FORMAT_DOUBLE);
+  mpv_observe_property(m_mpvHandle, EVENT_CODE_SEEKABLE, "seekable", MPV_FORMAT_FLAG);
+  mpv_observe_property(m_mpvHandle, EVENT_CODE_TRACKS, "track-list", MPV_FORMAT_NODE);
 
   // From this point on, the wakeup function will be called. The callback
   // can come from any thread, so we use the QueuedConnection mechanism to
@@ -102,47 +123,39 @@ LibMpvBackend::LibMpvBackend(QWidget* parent)
   }
 }
 
-LibMpvBackend::~LibMpvBackend() {
+void LibMpvBackend::destroyHandle() {
   if (m_mpvHandle != nullptr) {
     mpv_terminate_destroy(m_mpvHandle);
+    m_mpvHandle = nullptr;
   }
+}
+
+LibMpvBackend::~LibMpvBackend() {
+  destroyHandle();
 }
 
 void LibMpvBackend::handleMpvEvent(mpv_event* event) {
   switch (event->event_id) {
     case MPV_EVENT_PROPERTY_CHANGE: {
       mpv_event_property* prop = (mpv_event_property*)event->data;
-
-      processPropertyChange(prop);
+      processPropertyChange(prop, event->reply_userdata);
       break;
     }
 
-    case MPV_EVENT_VIDEO_RECONFIG: {
-      // Retrieve the new video size.
-      int64_t w, h;
-      if (mpv_get_property(m_mpvHandle, "dwidth", MPV_FORMAT_INT64, &w) >= 0 &&
-          mpv_get_property(m_mpvHandle, "dheight", MPV_FORMAT_INT64, &h) >= 0 && w > 0 && h > 0) {
-        // Note that the MPV_EVENT_VIDEO_RECONFIG event doesn't necessarily
-        // imply a resize, and you should check yourself if the video
-        // dimensions really changed.
-        // mpv itself will scale/letter box the video to the container size
-        // if the video doesn't fit.
-        std::stringstream ss;
-        ss << "Reconfig: " << w << " " << h;
-        // statusBar()->showMessage(QString::fromStdString(ss.str()));
-      }
+    case MPV_EVENT_COMMAND_REPLY:
       break;
-    }
+
+    case MPV_EVENT_VIDEO_RECONFIG:
+      break;
 
     case MPV_EVENT_LOG_MESSAGE: {
       mpv_event_log_message* msg = (mpv_event_log_message*)event->data;
-
       processLogMessage(msg);
     }
 
     case MPV_EVENT_SHUTDOWN: {
-      mpv_terminate_destroy(m_mpvHandle);
-      m_mpvHandle = nullptr;
+      destroyHandle();
+      emit closed();
       break;
     }
 
@@ -150,6 +163,22 @@ void LibMpvBackend::handleMpvEvent(mpv_event* event) {
       // Ignore uninteresting or unknown events.
       break;
   }
+}
+
+const char* LibMpvBackend::mpvDecodeString(void* data) const {
+  return *(char**)data;
+}
+
+bool LibMpvBackend::mpvDecodeBool(void* data) const {
+  return mpvDecodeInt(data) != 0;
+}
+
+int LibMpvBackend::mpvDecodeInt(void* data) const {
+  return *(int*)data;
+}
+
+double LibMpvBackend::mpvDecodeDouble(void* data) const {
+  return *(double*)data;
 }
 
 void LibMpvBackend::onMpvEvents() {
@@ -164,7 +193,79 @@ void LibMpvBackend::onMpvEvents() {
   }
 }
 
-void LibMpvBackend::processPropertyChange(mpv_event_property* prop) {
+void LibMpvBackend::processTracks(const QJsonDocument& json) {
+  QVariantList vars = json.array().toVariantList();
+  auto linq = boolinq::from(vars);
+
+  bool any_audio_track = linq.any([](const QVariant& var) {
+    return var.toHash().value("type") == QSL("audio");
+  });
+
+  bool any_video_track = linq.any([](const QVariant& var) {
+    return var.toHash().value("type") == QSL("video");
+  });
+
+  int a = 7;
+}
+
+void LibMpvBackend::processPropertyChange(mpv_event_property* prop, uint64_t property_code) {
+  if (prop == nullptr || prop->data == nullptr) {
+    return;
+  }
+
+  switch (property_code) {
+    case EVENT_CODE_FS:
+      emit fullscreenChanged(mpvDecodeBool(prop->data));
+      break;
+
+    case EVENT_CODE_VOLUME: {
+      int volume = mpvDecodeInt(prop->data);
+      emit volumeChanged(volume);
+      break;
+    }
+
+    case EVENT_CODE_POSITION: {
+      int pos = mpvDecodeInt(prop->data);
+      emit positionChanged(pos);
+      break;
+    }
+
+    case EVENT_CODE_DURATION: {
+      int dr = mpvDecodeInt(prop->data);
+      emit durationChanged(dr);
+      break;
+    }
+
+    case EVENT_CODE_SEEKABLE:
+      emit seekableChanged(mpvDecodeBool(prop->data));
+      break;
+
+    case EVENT_CODE_SPEED: {
+      double sp = mpvDecodeDouble(prop->data);
+      emit speedChanged(std::min(100, int(sp * 100)));
+      break;
+    }
+
+    case EVENT_CODE_TRACKS: {
+      if (prop->format == MPV_FORMAT_NODE) {
+        QVariant v = mpv::qt::node_to_variant((mpv_node*)prop->data);
+        QJsonDocument d = QJsonDocument::fromVariant(v);
+
+        processTracks(d);
+      }
+
+      break;
+    }
+
+    case EVENT_CODE_MUTE:
+      emit mutedChanged(mpvDecodeBool(prop->data));
+      break;
+
+    default:
+      break;
+  }
+
+  /*
   if (strcmp(prop->name, "time-pos") == 0) {
     if (prop->format == MPV_FORMAT_DOUBLE) {
       double time = *(double*)prop->data;
@@ -184,6 +285,7 @@ void LibMpvBackend::processPropertyChange(mpv_event_property* prop) {
       appendLog(d.toJson().data());
     }
   }
+  */
 }
 
 void LibMpvBackend::processLogMessage(mpv_event_log_message* msg) {
@@ -210,59 +312,35 @@ bool LibMpvBackend::eventFilter(QObject* watched, QEvent* event) {
   if (m_mpvHandle != nullptr) {
     if (event->type() == QEvent::Type::Wheel && watched == this) {
       auto* mouse_event = dynamic_cast<QWheelEvent*>(event);
-
       bool is_up = mouse_event->angleDelta().y() >= 0;
 
-      qDebugNN << "scroll: " << is_up;
+      qDebugNN << LOGSEC_MPV << "Wheel:" << QUOTE_W_SPACE_DOT(is_up);
 
       const char* args[] = {"keypress", is_up ? "MOUSE_BTN3" : "MOUSE_BTN4", nullptr};
 
       mpv_command_async(m_mpvHandle, 0, args);
+      event->accept();
+      return true;
     }
 
-    if (event->type() == QEvent::Type::MouseButtonRelease && watched == this) {
-      auto* mouse_event = dynamic_cast<QMouseEvent*>(event);
-      auto position = mouse_event->pos();
+    if ((event->type() == QEvent::Type::MouseButtonRelease || event->type() == QEvent::Type::MouseButtonPress) &&
+        watched == this) {
+      bool press = event->type() == QEvent::Type::MouseButtonPress;
 
-      qDebugNN << "release";
+      qDebugNN << LOGSEC_MPV << "Mouse press/release.";
 
-      auto x_str = QString::number(position.x()).toLocal8Bit();
-      auto y_str = QString::number(position.y()).toLocal8Bit();
-
-      const char* x = x_str.constData();
-      const char* y = y_str.constData();
-
-      const char* args[] = {"keyup", "MOUSE_BTN0", nullptr};
+      const char* args[] = {press ? "keydown" : "keyup", "MOUSE_BTN0", nullptr};
 
       mpv_command_async(m_mpvHandle, 0, args);
-    }
-
-    if (event->type() == QEvent::Type::MouseButtonPress && watched == this) {
-      auto* mouse_event = dynamic_cast<QMouseEvent*>(event);
-      auto position = mouse_event->pos();
-
-      qDebugNN << "press";
-
-      auto x_str = QString::number(position.x()).toLocal8Bit();
-      auto y_str = QString::number(position.y()).toLocal8Bit();
-
-      const char* x = x_str.constData();
-      const char* y = y_str.constData();
-
-      const char* args[] = {"keydown", "MOUSE_BTN0", nullptr};
-
-      mpv_command_async(m_mpvHandle, 0, args);
+      event->accept();
+      return true;
     }
 
     if (event->type() == QEvent::Type::MouseMove && watched == this) {
       auto* mouse_event = dynamic_cast<QMouseEvent*>(event);
       auto position = mouse_event->pos();
-
-      qDebugNN << "move";
-
       auto x_str = QString::number(position.x()).toLocal8Bit();
       auto y_str = QString::number(position.y()).toLocal8Bit();
-
       const char* x = x_str.constData();
       const char* y = y_str.constData();
 
@@ -272,8 +350,9 @@ bool LibMpvBackend::eventFilter(QObject* watched, QEvent* event) {
     }
 
     if (event->type() == QEvent::Type::KeyPress) {
-      // We catch all keypresses (even from surrounding widgets.
-      char txt = (char)dynamic_cast<QKeyEvent*>(event)->key();
+      // We catch all keypresses (even from surrounding widgets).
+      QKeyEvent* key_event = dynamic_cast<QKeyEvent*>(event);
+      char txt = (char)key_event->key();
       char str[2];
 
       str[0] = txt;
@@ -282,7 +361,6 @@ bool LibMpvBackend::eventFilter(QObject* watched, QEvent* event) {
       const char* args[] = {"keypress", str, nullptr};
 
       mpv_command_async(m_mpvHandle, 0, args);
-
       event->accept();
       return true;
     }
@@ -292,10 +370,12 @@ bool LibMpvBackend::eventFilter(QObject* watched, QEvent* event) {
 }
 
 void LibMpvBackend::playUrl(const QUrl& url) {
-  auto eb = url.toString().toLocal8Bit();
-  const char* css = eb.data();
-  const char* args[] = {"loadfile", css, nullptr};
-  mpv_command_async(m_mpvHandle, 0, args);
+  if (m_mpvHandle != nullptr) {
+    auto eb = url.toString().toLocal8Bit();
+    const char* css = eb.data();
+    const char* args[] = {"loadfile", css, nullptr};
+    mpv_command_async(m_mpvHandle, 0, args);
+  }
 }
 
 void LibMpvBackend::playPause() {}
@@ -306,18 +386,43 @@ void LibMpvBackend::stop() {}
 
 void LibMpvBackend::setPlaybackSpeed(int speed) {}
 
-void LibMpvBackend::setVolume(int volume) {}
+void LibMpvBackend::setVolume(int volume) {
+  if (m_mpvHandle != nullptr) {
+    uint64_t vol = volume;
+    mpv_set_property_async(m_mpvHandle, EVENT_CODE_VOLUME, "volume", MPV_FORMAT_INT64, &vol);
+  }
+}
 
 void LibMpvBackend::setPosition(int position) {}
+
+void LibMpvBackend::setFullscreen(bool fullscreen) {
+  if (m_mpvHandle != nullptr) {
+    const char* fs = fullscreen ? "yes" : "no";
+    mpv_set_property_async(m_mpvHandle, EVENT_CODE_FS, "fullscreen", MPV_FORMAT_STRING, &fs);
+  }
+}
 
 QUrl LibMpvBackend::url() const {
   return {};
 }
 
 int LibMpvBackend::position() const {
-  return 0;
+  uint64_t out;
+  mpv_get_property(m_mpvHandle, "time-pos", MPV_FORMAT_INT64, &out);
+
+  return out;
 }
 
 int LibMpvBackend::duration() const {
-  return 0;
+  uint64_t out;
+  mpv_get_property(m_mpvHandle, "duration", MPV_FORMAT_INT64, &out);
+
+  return out;
+}
+
+void LibMpvBackend::setMuted(bool muted) {
+  if (m_mpvHandle != nullptr) {
+    const char* mtd = muted ? "yes" : "no";
+    mpv_set_property_async(m_mpvHandle, EVENT_CODE_MUTE, "mute", MPV_FORMAT_STRING, &mtd);
+  }
 }

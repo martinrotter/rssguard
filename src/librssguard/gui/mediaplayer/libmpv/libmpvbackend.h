@@ -25,6 +25,7 @@ class LibMpvBackend : public PlayerBackend {
     virtual int duration() const;
 
   public slots:
+    virtual void setMuted(bool muted);
     virtual void playUrl(const QUrl& url);
     virtual void playPause();
     virtual void pause();
@@ -32,6 +33,7 @@ class LibMpvBackend : public PlayerBackend {
     virtual void setPlaybackSpeed(int speed);
     virtual void setVolume(int volume);
     virtual void setPosition(int position);
+    virtual void setFullscreen(bool fullscreen);
 
   private slots:
     void onMpvEvents();
@@ -40,11 +42,19 @@ class LibMpvBackend : public PlayerBackend {
     void launchMpvEvents();
 
   private:
-    void processPropertyChange(mpv_event_property* prop);
+    void processTracks(const QJsonDocument& json);
+    void processPropertyChange(mpv_event_property* prop, uint64_t property_code);
     void processLogMessage(mpv_event_log_message* msg);
     void appendLog(const QString& text);
     void createPlayer();
     void handleMpvEvent(mpv_event* event);
+
+    const char* mpvDecodeString(void* data) const;
+    bool mpvDecodeBool(void* data) const;
+    int mpvDecodeInt(void* data) const;
+    double mpvDecodeDouble(void* data) const;
+
+    void destroyHandle();
 
   private:
     QWidget* m_mpvContainer;

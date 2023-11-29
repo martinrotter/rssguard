@@ -100,7 +100,7 @@ void WebViewer::initializeCommonMenuItems() {
                                                 QObject::tr("Open in external browser")));
 
   m_actionPlayLink.reset(new QAction(qApp->icons()->fromTheme(QSL("player_play"), QSL("media-playback-start")),
-                                     QObject::tr("Play link as audio/video")));
+                                     QObject::tr("Play in media player")));
 
 #if !defined(ENABLE_MEDIAPLAYER)
   m_actionPlayLink->setText(m_actionPlayLink->text() + QSL(" ") + QObject::tr("(not supported)"));

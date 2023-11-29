@@ -26,15 +26,20 @@ class PlayerBackend : public QWidget {
     virtual int duration() const = 0;
 
   signals:
+    void closed();
+    void fullscreenChanged(bool fullscreen);
+    void mutedChanged(bool muted);
     void speedChanged(int speed);
     void durationChanged(int duration);
     void positionChanged(int position);
-    void errorOccurred(const QString& error_string);
-    void statusChanged(const QString& status);
-    void playbackStateChanged(PlaybackState state);
+    void volumeChanged(int volume);
     void audioAvailable(bool available);
     void videoAvailable(bool available);
     void seekableChanged(bool seekable);
+
+    void errorOccurred(const QString& error_string);
+    void statusChanged(const QString& status);
+    void playbackStateChanged(PlayerBackend::PlaybackState state);
 
   public slots:
     virtual void playUrl(const QUrl& url) = 0;
@@ -42,6 +47,8 @@ class PlayerBackend : public QWidget {
     virtual void pause() = 0;
     virtual void stop() = 0;
 
+    virtual void setFullscreen(bool fullscreen) = 0;
+    virtual void setMuted(bool muted) = 0;
     virtual void setPlaybackSpeed(int speed) = 0;
     virtual void setVolume(int volume) = 0;
     virtual void setPosition(int position) = 0;

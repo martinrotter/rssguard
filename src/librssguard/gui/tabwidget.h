@@ -65,7 +65,7 @@ class TabWidget : public QTabWidget {
 
     // Tab closing.
     bool closeTab(int index);
-    void closeBrowserTab();
+    void closeTabWithSender();
     void closeAllTabsExceptCurrent();
     void closeAllTabs();
     void closeCurrentTab();

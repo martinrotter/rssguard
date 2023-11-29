@@ -167,6 +167,7 @@
 #define LOGSEC_JS             "javascript: "
 #define LOGSEC_GUI            "gui: "
 #define LOGSEC_MPV            "libmpv: "
+#define LOGSEC_QTMULTIMEDIA   "qtmultimedia: "
 #define LOGSEC_NOTIFICATIONS  "notifications: "
 #define LOGSEC_CORE           "core: "
 #define LOGSEC_NODEJS         "nodejs: "

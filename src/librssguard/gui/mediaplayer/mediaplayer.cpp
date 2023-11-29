@@ -8,6 +8,8 @@
 #include "gui/mediaplayer/qtmultimedia/qtmultimediabackend.h"
 #elif defined(ENABLE_MEDIAPLAYER_LIBMPV)
 #include "gui/mediaplayer/libmpv/libmpvbackend.h"
+
+#include <QKeyEvent>
 #endif
 
 MediaPlayer::MediaPlayer(QWidget* parent)
@@ -21,14 +23,29 @@ MediaPlayer::MediaPlayer(QWidget* parent)
     m_muted(false) {
   m_ui.setupUi(this);
 
-  m_ui.m_layoutMain->insertWidget(0, m_backend, 1);
+  m_ui.m_container->setWindowFlags(Qt::WindowType::Widget | Qt::WindowType::FramelessWindowHint);
+  m_ui.m_layoutContainer->insertWidget(0, m_backend, 1);
 
+  showPlayerNormal();
   setupIcons();
   createBackendConnections();
   createConnections();
+
+  // Create default state.
+  onAudioAvailable(true);
+  onVideoAvailable(true);
+  onMutedChanged(false);
+  onPositionChanged(0);
+  onDurationChanged(100);
+  onSeekableChanged(true);
+  onSpeedChanged(100);
+  onVolumeChanged(50);
+  onStatusChanged(tr("Starting"));
 }
 
-MediaPlayer::~MediaPlayer() {}
+MediaPlayer::~MediaPlayer() {
+  m_backend->deleteLater();
+}
 
 WebBrowser* MediaPlayer::webBrowser() const {
   return nullptr;
@@ -38,9 +55,11 @@ void MediaPlayer::playUrl(const QString& url) {
   if (m_muted) {
     muteUnmute();
   }
+  /*
   else {
     setVolume(m_ui.m_slidVolume->value());
   }
+  */
 
   m_backend->playUrl(url);
 }
@@ -57,11 +76,17 @@ void MediaPlayer::download() {
   emit urlDownloadRequested(m_backend->url());
 }
 
-void MediaPlayer::muteUnmute() {
-  m_ui.m_slidVolume->setEnabled(m_muted);
-  setVolume(m_muted ? m_ui.m_slidVolume->value() : 0);
+void MediaPlayer::onMutedChanged(bool muted) {
+  m_muted = muted;
 
+  m_ui.m_slidVolume->setEnabled(!muted);
+  m_ui.m_btnVolume->setIcon(muted ? m_iconMute : m_iconUnmute);
+}
+
+void MediaPlayer::muteUnmute() {
   m_muted = !m_muted;
+
+  m_backend->setMuted(m_muted);
 }
 
 void MediaPlayer::setSpeed(int speed) {
@@ -84,6 +109,12 @@ void MediaPlayer::onPositionChanged(int position) {
   m_ui.m_slidProgress->blockSignals(false);
 
   updateTimeAndProgress(position, m_backend->duration());
+}
+
+void MediaPlayer::onVolumeChanged(int volume) {
+  m_ui.m_slidVolume->blockSignals(true);
+  m_ui.m_slidVolume->setValue(volume);
+  m_ui.m_slidVolume->blockSignals(false);
 }
 
 void MediaPlayer::onSpeedChanged(int speed) {
@@ -149,21 +180,71 @@ void MediaPlayer::onSeekableChanged(bool seekable) {
   }
 }
 
+bool MediaPlayer::isFullScreen() const {
+  return m_ui.m_container->parent() == nullptr;
+}
+
 void MediaPlayer::setupIcons() {
   m_iconPlay = qApp->icons()->fromTheme(QSL("media-playback-start"), QSL("player_play"));
   m_iconPause = qApp->icons()->fromTheme(QSL("media-playback-pause"), QSL("player_pause"));
   m_iconMute = qApp->icons()->fromTheme(QSL("player-volume-muted"), QSL("audio-volume-muted"));
   m_iconUnmute = qApp->icons()->fromTheme(QSL("player-volume"), QSL("stock_volume"));
 
+  m_ui.m_btnFullscreen->setIcon(qApp->icons()->fromTheme(QSL("view-fullscreen")));
   m_ui.m_btnDownload->setIcon(qApp->icons()->fromTheme(QSL("download"), QSL("browser-download")));
   m_ui.m_btnStop->setIcon(qApp->icons()->fromTheme(QSL("media-playback-stop"), QSL("player_stop")));
 }
 
-void MediaPlayer::createBackendConnections() {
-  installEventFilter(m_backend);
-  m_backend->installEventFilter(m_backend);
+void MediaPlayer::showPlayerNormal() {
+  m_ui.m_layoutMain->addWidget(m_ui.m_container);
+}
 
+void MediaPlayer::showPlayerFullscreen() {
+  m_ui.m_layoutMain->removeWidget(m_ui.m_container);
+
+  m_ui.m_container->setParent(nullptr);
+  m_ui.m_container->showFullScreen();
+}
+
+void MediaPlayer::escapeFromFullscreen() {
+  m_ui.m_container->showNormal();
+  m_ui.m_container->setParent(this);
+}
+
+void MediaPlayer::switchFullScreen(bool send_event_to_backend) {
+  bool is_fullscreen = isFullScreen();
+
+  if (is_fullscreen) {
+    escapeFromFullscreen();
+    showPlayerNormal();
+  }
+  else {
+    showPlayerFullscreen();
+  }
+
+  if (send_event_to_backend) {
+    m_backend->setFullscreen(!is_fullscreen);
+  }
+}
+
+void MediaPlayer::onFullscreenChanged(bool fullscreen) {
+  if (isFullScreen() != fullscreen) {
+    // Fullscreen was changed via OSC directly from backend.
+    // therefore we need to change it visually to, but
+    // we do not want to re-trigger the information back to backend.
+    switchFullScreen(false);
+  }
+}
+
+void MediaPlayer::createBackendConnections() {
+  // This is used so backend can catch all keypresses done on player controls.
+  installEventFilter(m_backend);
+
+  connect(m_backend, &PlayerBackend::mutedChanged, this, &MediaPlayer::onMutedChanged);
+  connect(m_backend, &PlayerBackend::closed, this, &MediaPlayer::closed);
+  connect(m_backend, &PlayerBackend::fullscreenChanged, this, &MediaPlayer::onFullscreenChanged);
   connect(m_backend, &PlayerBackend::speedChanged, this, &MediaPlayer::onSpeedChanged);
+  connect(m_backend, &PlayerBackend::volumeChanged, this, &MediaPlayer::onVolumeChanged);
   connect(m_backend, &PlayerBackend::durationChanged, this, &MediaPlayer::onDurationChanged);
   connect(m_backend, &PlayerBackend::positionChanged, this, &MediaPlayer::onPositionChanged);
   connect(m_backend, &PlayerBackend::errorOccurred, this, &MediaPlayer::onErrorOccurred);
@@ -182,4 +263,5 @@ void MediaPlayer::createConnections() {
   connect(m_ui.m_slidVolume, &QSlider::valueChanged, this, &MediaPlayer::setVolume);
   connect(m_ui.m_slidProgress, &QSlider::valueChanged, this, &MediaPlayer::seek);
   connect(m_ui.m_spinSpeed, QOverload<int>::of(&QSpinBox::valueChanged), this, &MediaPlayer::setSpeed);
+  connect(m_ui.m_btnFullscreen, &PlainToolButton::clicked, this, &MediaPlayer::switchFullScreen);
 }
