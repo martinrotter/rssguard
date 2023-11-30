@@ -9,7 +9,10 @@ webengine="$2"
 if [[ "$os" == *"ubuntu"* ]]; then
   echo "We are building for GNU/Linux on Ubuntu."
   is_linux=true
+  libmpv="ON"
+  qtmultimedia="OFF"
   prefix="AppDir/usr"
+
   if [[ "$webengine" == "ON" ]]; then
     app_id="io.github.martinrotter.rssguard"
   else
@@ -18,6 +21,8 @@ if [[ "$os" == *"ubuntu"* ]]; then
 else
   echo "We are building for macOS."
   is_linux=false
+  libmpv="OFF"
+  qtmultimedia="ON"
   prefix="RSS Guard.app"
 fi
 
@@ -31,11 +36,11 @@ if [ $is_linux = true ]; then
   QTARCH="gcc_64"
   USE_QT6="OFF"
 
-  sudo add-apt-repository ppa:beineri/opt-qt-5.15.2-focal -y
+  sudo add-apt-repository ppa:beineri/opt-qt-5.15.4-focal -y
   sudo apt-get update
 
   sudo apt-get -qy install qt515tools qt515base qt515webengine qt515svg qt515multimedia qt515imageformats appstream-util
-  sudo apt-get -qy install cmake ninja-build openssl libssl-dev libgl1-mesa-dev gstreamer1.0-alsa gstreamer1.0-nice gstreamer1.0-plugins-good gstreamer1.0-plugins-base gstreamer1.0-plugins-bad gstreamer1.0-plugins-ugly gstreamer1.0-qt5 gstreamer1.0-pulseaudio
+  sudo apt-get -qy install cmake ninja-build openssl libssl-dev libgl1-mesa-dev gstreamer1.0-alsa gstreamer1.0-nice gstreamer1.0-plugins-good gstreamer1.0-plugins-base gstreamer1.0-plugins-bad gstreamer1.0-plugins-ugly gstreamer1.0-qt5 gstreamer1.0-pulseaudio libmpv-dev
 
   # The script below performs some broken testing, which ends up tripping 'set -e'.
   # So we temporarily ignore errors when sourcing the script, and re-enable them afterward.
@@ -78,7 +83,7 @@ git_revision=$(git rev-parse --short HEAD)
 mkdir rssguard-build
 cd rssguard-build
 
-cmake .. --warn-uninitialized -G Ninja -DCMAKE_OSX_ARCHITECTURES="x86_64;arm64" -DCMAKE_OSX_DEPLOYMENT_TARGET="10.15" -DFORCE_BUNDLE_ICONS="ON" -DCMAKE_BUILD_TYPE="MinSizeRel" -DCMAKE_VERBOSE_MAKEFILE="ON" -DCMAKE_INSTALL_PREFIX="$prefix" -DREVISION_FROM_GIT="ON" -DBUILD_WITH_QT6="$USE_QT6" -DENABLE_COMPRESSED_SITEMAP="ON" -DENABLE_MEDIAPLAYER_LIBMPV="OFF" -DENABLE_MEDIAPLAYER_QTMULTIMEDIA="OFF" -DNO_LITE="$webengine" -DFEEDLY_CLIENT_ID="$FEEDLY_CLIENT_ID" -DFEEDLY_CLIENT_SECRET="$FEEDLY_CLIENT_SECRET" -DGMAIL_CLIENT_ID="$GMAIL_CLIENT_ID" -DGMAIL_CLIENT_SECRET="$GMAIL_CLIENT_SECRET"
+cmake .. --warn-uninitialized -G Ninja -DCMAKE_OSX_ARCHITECTURES="x86_64;arm64" -DCMAKE_OSX_DEPLOYMENT_TARGET="10.15" -DFORCE_BUNDLE_ICONS="ON" -DCMAKE_BUILD_TYPE="MinSizeRel" -DCMAKE_VERBOSE_MAKEFILE="ON" -DCMAKE_INSTALL_PREFIX="$prefix" -DREVISION_FROM_GIT="ON" -DBUILD_WITH_QT6="$USE_QT6" -DENABLE_COMPRESSED_SITEMAP="ON" -DENABLE_MEDIAPLAYER_LIBMPV="$libmpv" -DENABLE_MEDIAPLAYER_QTMULTIMEDIA="$qtmultimedia" -DNO_LITE="$webengine" -DFEEDLY_CLIENT_ID="$FEEDLY_CLIENT_ID" -DFEEDLY_CLIENT_SECRET="$FEEDLY_CLIENT_SECRET" -DGMAIL_CLIENT_ID="$GMAIL_CLIENT_ID" -DGMAIL_CLIENT_SECRET="$GMAIL_CLIENT_SECRET"
 cmake --build .
 cmake --install . --prefix "$prefix"
 
