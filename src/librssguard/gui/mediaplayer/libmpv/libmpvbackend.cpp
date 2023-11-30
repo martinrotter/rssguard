@@ -75,10 +75,11 @@ LibMpvBackend::LibMpvBackend(QWidget* parent)
   mpv_set_option_string(m_mpvHandle, "osd-playing-msg", "${media-title}");
   mpv_set_option_string(m_mpvHandle, "osc", "yes");
   mpv_set_option_string(m_mpvHandle, "input-cursor", "yes");
-  mpv_set_option_string(m_mpvHandle, "keep-open", "no");
+  // mpv_set_option_string(m_mpvHandle, "keep-open", "no");
   mpv_set_option_string(m_mpvHandle, "idle", "yes");
   mpv_set_option_string(m_mpvHandle, "save-position-on-quit", "no");
   mpv_set_option_string(m_mpvHandle, "no-resume-playback", "yes");
+
 #if !defined(NDEBUG)
   mpv_set_option_string(m_mpvHandle, "terminal", "yes");
 #endif
@@ -142,6 +143,7 @@ void LibMpvBackend::handleMpvEvent(mpv_event* event) {
 
     case MPV_EVENT_FILE_LOADED:
       emit statusChanged(tr("File loaded"));
+      emit playbackStateChanged(PlayerBackend::PlaybackState::PlayingState);
       break;
 
     case MPV_EVENT_END_FILE: {
@@ -265,8 +267,12 @@ void LibMpvBackend::onMpvEvents() {
 
 void LibMpvBackend::processEndFile(mpv_event_end_file* end_file) {
   switch (end_file->reason) {
-    case MPV_END_FILE_REASON_EOF:
     case MPV_END_FILE_REASON_STOP:
+      emit statusChanged(tr("Stopped"));
+      emit playbackStateChanged(PlayerBackend::PlaybackState::StoppedState);
+      break;
+
+    case MPV_END_FILE_REASON_EOF:
     case MPV_END_FILE_REASON_QUIT:
       emit statusChanged(tr("File ended"));
       emit playbackStateChanged(PlayerBackend::PlaybackState::StoppedState);
@@ -474,12 +480,20 @@ void LibMpvBackend::playUrl(const QUrl& url) {
 }
 
 void LibMpvBackend::playPause() {
-  int paused;
-  mpv_get_property(m_mpvHandle, "pause", MPV_FORMAT_FLAG, &paused);
+  int idle;
+  mpv_get_property(m_mpvHandle, "idle-active", MPV_FORMAT_FLAG, &idle);
 
-  paused = paused == 0 ? 1 : 0;
+  if (idle) {
+    playUrl(m_url);
+  }
+  else {
+    int paused;
+    mpv_get_property(m_mpvHandle, "pause", MPV_FORMAT_FLAG, &paused);
 
-  mpv_set_property_async(m_mpvHandle, EVENT_CODE_PAUSE, "pause", MPV_FORMAT_FLAG, &paused);
+    paused = paused == 0 ? 1 : 0;
+
+    mpv_set_property_async(m_mpvHandle, EVENT_CODE_PAUSE, "pause", MPV_FORMAT_FLAG, &paused);
+  }
 }
 
 void LibMpvBackend::pause() {

@@ -132,8 +132,12 @@ void MediaPlayer::onDurationChanged(int duration) {
 }
 
 void MediaPlayer::updateTimeAndProgress(int progress, int total) {
-  m_ui.m_lblTime->setText(QSL("%1/%2").arg(QDateTime::fromSecsSinceEpoch(progress).toUTC().toString("hh:mm:ss"),
-                                           QDateTime::fromSecsSinceEpoch(total).toUTC().toString("hh:mm:ss")));
+  static QString format_hours = QSL("hh:mm:ss");
+  static QString format_minutes = QSL("mm:ss");
+  QString format = total >= 3600 ? format_hours : format_minutes;
+
+  m_ui.m_lblTime->setText(QSL("%1/%2").arg(QDateTime::fromSecsSinceEpoch(progress).toUTC().toString(format),
+                                           QDateTime::fromSecsSinceEpoch(total).toUTC().toString(format)));
 }
 
 void MediaPlayer::onErrorOccurred(const QString& error_string) {
