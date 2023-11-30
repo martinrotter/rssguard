@@ -24,7 +24,7 @@
     <message>
       <location filename="../src/librssguard/services/abstract/gui/accountdetails.ui" line="20"/>
       <source>Display additional nodes</source>
-      <translation type="unfinished">Display additional nodes</translation>
+      <translation>顯示額外的節點</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/abstract/gui/accountdetails.ui" line="26"/>
@@ -44,7 +44,7 @@
     <message>
       <location filename="../src/librssguard/services/abstract/gui/accountdetails.ui" line="47"/>
       <source>Probes</source>
-      <translation type="unfinished">Probes</translation>
+      <translation>探測</translation>
     </message>
   </context>
   <context>
@@ -67,7 +67,7 @@
     <message>
       <location filename="../src/librssguard/network-web/adblock/adblockdialog.cpp" line="99"/>
       <source>OK!</source>
-      <translation>確定!</translation>
+      <translation>無問題！</translation>
     </message>
     <message>
       <location filename="../src/librssguard/network-web/adblock/adblockdialog.cpp" line="114"/>
@@ -339,27 +339,27 @@ version by clicking this popup notification.</source>
     <message>
       <location filename="../src/librssguard/services/abstract/gui/authenticationdetails.cpp" line="19"/>
       <source>HTTP Basic</source>
-      <translation type="unfinished">HTTP Basic</translation>
+      <translation>HTTP 基本存取認證</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/abstract/gui/authenticationdetails.cpp" line="22"/>
       <source>Token</source>
-      <translation type="unfinished">Token</translation>
+      <translation>存取權碼</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/abstract/gui/authenticationdetails.cpp" line="53"/>
       <source>Username/token is ok or it is not needed.</source>
-      <translation>使用者名稱/權杖無問題或不必要。</translation>
+      <translation>使用者名稱/存取權碼無問題或不需要。</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/abstract/gui/authenticationdetails.cpp" line="54"/>
       <source>Username/token is empty.</source>
-      <translation>缺使用者名稱/權杖。</translation>
+      <translation>缺使用者名稱/存取權碼。</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/abstract/gui/authenticationdetails.cpp" line="76"/>
       <source>Access token</source>
-      <translation>存取之權杖</translation>
+      <translation>存取權碼</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/abstract/gui/authenticationdetails.cpp" line="63"/>
@@ -383,7 +383,7 @@ version by clicking this popup notification.</source>
   <context>
     <name>BaseToastNotification</name>
     <message>
-      <location filename="../src/librssguard/gui/notifications/basetoastnotification.cpp" line="40"/>
+      <location filename="../src/librssguard/gui/notifications/basetoastnotification.cpp" line="44"/>
       <source>Close this notification</source>
       <translation>關閉此通知</translation>
     </message>
@@ -852,12 +852,12 @@ Item ID: %5</source>
       <location filename="../src/librssguard/services/feedly/gui/feedlyaccountdetails.ui" line="27"/>
       <location filename="../src/librssguard/services/feedly/gui/feedlyaccountdetails.cpp" line="27"/>
       <source>Developer access token</source>
-      <translation>開發者實驗存取權碼</translation>
+      <translation>開發者存取權碼</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/feedly/gui/feedlyaccountdetails.ui" line="36"/>
       <source>Get token</source>
-      <translation>取得實驗存取權碼</translation>
+      <translation>取得存取權碼</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/feedly/gui/feedlyaccountdetails.ui" line="58"/>
@@ -897,7 +897,7 @@ Item ID: %5</source>
     <message>
       <location filename="../src/librssguard/services/feedly/gui/feedlyaccountdetails.cpp" line="38"/>
       <source>Your %1 does not offer official Feedly support, thus you must authorize via special authorization code called &quot;developer access token&quot;. These tokens are usually valid only for 1 month and allow only 250 API calls each day.</source>
-      <translation>您的 %1 沒有 Feedly 的正式支援。，因此您一定得使用 &quot;開發者實驗存取權碼&quot; 作為您的認證碼。這碼只有一個月的效期，而且每天的 API 呼叫只到 250 次。</translation>
+      <translation>您的 %1 沒有 Feedly 的正式支援。，因此您一定得使用 &quot;開發者存取權碼&quot; 作為您的認證碼。這碼只有一個月的效期，而且每天的 API 呼叫只到 250 次。</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/feedly/gui/feedlyaccountdetails.cpp" line="51"/>
@@ -963,12 +963,12 @@ Item ID: %5</source>
     <message>
       <location filename="../src/librssguard/services/feedly/gui/feedlyaccountdetails.cpp" line="178"/>
       <source>Access token is empty.</source>
-      <translation>缺實驗存取權碼。</translation>
+      <translation>缺存取權碼。</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/feedly/gui/feedlyaccountdetails.cpp" line="181"/>
       <source>Access token is okay.</source>
-      <translation>實驗存取權碼無問題。</translation>
+      <translation>存取權碼無問題。</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/feedly/gui/feedlyaccountdetails.cpp" line="152"/>
@@ -1519,7 +1519,7 @@ QtWebEngine 快取資料夾 -&gt; &quot;%7&quot;</translation>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formbackupdatabasesettings.cpp" line="98"/>
       <source>Backup name looks okay.</source>
-      <translation>備份名稱看起來 ok。</translation>
+      <translation>備份名稱看起來無問題。</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formbackupdatabasesettings.cpp" line="71"/>
@@ -3087,35 +3087,35 @@ QtWebEngine 快取資料夾 -&gt; &quot;%7&quot;</translation>
   <context>
     <name>FormSettings</name>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formsettings.cpp" line="101"/>
+      <location filename="../src/librssguard/gui/dialogs/formsettings.cpp" line="105"/>
       <source>Critical settings were changed</source>
       <translation>關鍵設定已更改</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formsettings.cpp" line="106"/>
-      <location filename="../src/librssguard/gui/dialogs/formsettings.cpp" line="143"/>
+      <location filename="../src/librssguard/gui/dialogs/formsettings.cpp" line="109"/>
+      <location filename="../src/librssguard/gui/dialogs/formsettings.cpp" line="144"/>
       <source>Changed categories of settings:
 %1.</source>
       <translation>設定中變更過的分類:
 %1</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formsettings.cpp" line="140"/>
+      <location filename="../src/librssguard/gui/dialogs/formsettings.cpp" line="141"/>
       <source>Some settings are changed and will be lost</source>
       <translation>某些設定已變更，會失去</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formsettings.cpp" line="141"/>
+      <location filename="../src/librssguard/gui/dialogs/formsettings.cpp" line="142"/>
       <source>Some settings were changed and by cancelling this dialog, you would lose these changes.</source>
       <translation>某些設定已變更，取消目前對話，會失去這些變更。</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formsettings.cpp" line="142"/>
+      <location filename="../src/librssguard/gui/dialogs/formsettings.cpp" line="143"/>
       <source>Do you really want to close this dialog without saving any settings?</source>
       <translation>真的要不儲存設定而要關閉對話嗎？</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formsettings.cpp" line="102"/>
+      <location filename="../src/librssguard/gui/dialogs/formsettings.cpp" line="106"/>
       <source>Some critical settings were changed and will be applied after the application gets restarted. 
 
 You have to restart manually.</source>
@@ -3124,7 +3124,7 @@ You have to restart manually.</source>
 請重新啟動。</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formsettings.cpp" line="105"/>
+      <location filename="../src/librssguard/gui/dialogs/formsettings.cpp" line="108"/>
       <source>Do you want to restart now?</source>
       <translation>要立即重新啟動嗎？</translation>
     </message>
@@ -3194,7 +3194,7 @@ You have to restart manually.</source>
     <message>
       <location filename="../src/librssguard/services/standard/gui/formstandardimportexport.cpp" line="154"/>
       <source>Command is ok.</source>
-      <translation>命令 ok。</translation>
+      <translation>命令無問題。</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/standard/gui/formstandardimportexport.cpp" line="157"/>
@@ -3631,7 +3631,7 @@ You can install it now.</source>
     <message>
       <location filename="../src/librssguard/services/gmail/gui/gmailaccountdetails.cpp" line="16"/>
       <source>There are some preconfigured OAuth tokens so you do not have to fill in your client ID/secret, but it is strongly recommended to obtain your own as it preconfigured tokens have limited global usage quota. If you wish to use preconfigured tokens, simply leave those fields empty and make sure to leave default value of redirect URL.</source>
-      <translation>有一些預先設定的 OAuth 字串，使得不必輸入客戶端 ID/秘密。但是強烈建議取得自己的。因為預先設定的字串會限制全局使用的額度。如想使用預先設定的字串，就將這些欄位留白，確認未更動預設的重導向網址。</translation>
+      <translation>有一些預先設定的 OAuth 存取權碼，使得不必輸入客戶端 ID/秘密。但是強烈建議取得自己的。因為預先設定的存取權碼會限制全局使用的額度。如想使用預先設定的存取權碼，就將這些欄位留白，確認未更動預設的重導向網址。</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/gmail/gui/gmailaccountdetails.cpp" line="23"/>
@@ -3776,7 +3776,7 @@ You can install it now.</source>
       <source>Authentication status: %1
 Login tokens expiration: %2</source>
       <translation>認證狀態: %1
-登入用的語詞過期: %2</translation>
+登入用的存取權碼過期: %2</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/gmail/gmailserviceroot.cpp" line="221"/>
@@ -3884,7 +3884,7 @@ Login tokens expiration: %2</source>
     <message>
       <location filename="../src/librssguard/services/greader/gui/greaderaccountdetails.cpp" line="60"/>
       <source>There are some preconfigured OAuth tokens so you do not have to fill in your client ID/secret, but it is strongly recommended to obtain your own as preconfigured tokens have limited global usage quota. If you wish to use preconfigured tokens, simply leave all above fields to their default values even if they are empty.</source>
-      <translation>有一些預先設定的 OAuth 字串，使得不必輸入客戶端 ID/秘密。但是強烈建議取得自己的。因為預先設定的字串會限制全局使用的額度。如想使用預先設定的字串，就不更動所有以上欄位，以維持預設值，即使原預設值是空白的。</translation>
+      <translation>有一些預先設定的 OAuth 存取權碼，使得不必輸入客戶端 ID/秘密。但是強烈建議取得自己的。因為預先設定的存取權碼會限制全局使用的額度。如想使用預先設定的存取權碼，就不更動所有以上欄位，以維持預設值，即使原預設值是空白的。</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/greader/gui/greaderaccountdetails.cpp" line="67"/>
@@ -4271,6 +4271,114 @@ Login tokens expiration: %2</source>
     </message>
   </context>
   <context>
+    <name>LibMpvBackend</name>
+    <message>
+      <location filename="../src/librssguard/gui/mediaplayer/libmpv/libmpvbackend.cpp" line="149"/>
+      <source>File loaded</source>
+      <translation type="unfinished">File loaded</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard/gui/mediaplayer/libmpv/libmpvbackend.cpp" line="200"/>
+      <source>App restart required</source>
+      <translation type="unfinished">App restart required</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard/gui/mediaplayer/libmpv/libmpvbackend.cpp" line="203"/>
+      <source>Out of memory</source>
+      <translation type="unfinished">Out of memory</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard/gui/mediaplayer/libmpv/libmpvbackend.cpp" line="206"/>
+      <source>Not initialized yet</source>
+      <translation type="unfinished">Not initialized yet</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard/gui/mediaplayer/libmpv/libmpvbackend.cpp" line="209"/>
+      <source>Invalid parameter</source>
+      <translation type="unfinished">Invalid parameter</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard/gui/mediaplayer/libmpv/libmpvbackend.cpp" line="212"/>
+      <source>Option not found</source>
+      <translation type="unfinished">Option not found</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard/gui/mediaplayer/libmpv/libmpvbackend.cpp" line="215"/>
+      <source>Option badly formatted</source>
+      <translation type="unfinished">Option badly formatted</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard/gui/mediaplayer/libmpv/libmpvbackend.cpp" line="218"/>
+      <source>Cannot set option</source>
+      <translation type="unfinished">Cannot set option</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard/gui/mediaplayer/libmpv/libmpvbackend.cpp" line="221"/>
+      <source>Property does not existing</source>
+      <translation type="unfinished">Property does not existing</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard/gui/mediaplayer/libmpv/libmpvbackend.cpp" line="224"/>
+      <source>Property badly formatted</source>
+      <translation type="unfinished">Property badly formatted</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard/gui/mediaplayer/libmpv/libmpvbackend.cpp" line="227"/>
+      <source>Property N/A</source>
+      <translation type="unfinished">Property N/A</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard/gui/mediaplayer/libmpv/libmpvbackend.cpp" line="230"/>
+      <source>Cannot set property</source>
+      <translation type="unfinished">Cannot set property</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard/gui/mediaplayer/libmpv/libmpvbackend.cpp" line="233"/>
+      <source>Cannot run command</source>
+      <translation type="unfinished">Cannot run command</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard/gui/mediaplayer/libmpv/libmpvbackend.cpp" line="236"/>
+      <source>Loading failed</source>
+      <translation type="unfinished">Loading failed</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard/gui/mediaplayer/libmpv/libmpvbackend.cpp" line="239"/>
+      <source>Cannot initialize audio</source>
+      <translation type="unfinished">Cannot initialize audio</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard/gui/mediaplayer/libmpv/libmpvbackend.cpp" line="242"/>
+      <source>Cannot initialize video</source>
+      <translation type="unfinished">Cannot initialize video</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard/gui/mediaplayer/libmpv/libmpvbackend.cpp" line="245"/>
+      <source>Not a media file</source>
+      <translation type="unfinished">Not a media file</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard/gui/mediaplayer/libmpv/libmpvbackend.cpp" line="248"/>
+      <source>Unknown file format</source>
+      <translation type="unfinished">Unknown file format</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard/gui/mediaplayer/libmpv/libmpvbackend.cpp" line="251"/>
+      <source>Unsupported file format</source>
+      <translation type="unfinished">Unsupported file format</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard/gui/mediaplayer/libmpv/libmpvbackend.cpp" line="255"/>
+      <source>Unknown error (%1)</source>
+      <translation type="unfinished">Unknown error (%1)</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard/gui/mediaplayer/libmpv/libmpvbackend.cpp" line="276"/>
+      <source>File ended</source>
+      <translation type="unfinished">File ended</translation>
+    </message>
+  </context>
+  <context>
     <name>LocationLineEdit</name>
     <message>
       <location filename="../src/librssguard/gui/reusable/locationlineedit.cpp" line="11"/>
@@ -4517,94 +4625,55 @@ Login tokens expiration: %2</source>
   <context>
     <name>MediaPlayer</name>
     <message>
-      <location filename="../src/librssguard/gui/reusable/mediaplayer.ui" line="14"/>
+      <location filename="../src/librssguard/gui/mediaplayer/mediaplayer.ui" line="14"/>
       <source>Form</source>
       <translation>表單</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/reusable/mediaplayer.cpp" line="167"/>
-      <source>Cannot load media (missing codecs)</source>
-      <translation>無法載入媒體檔 (缺codes)</translation>
+      <location filename="../src/librssguard/gui/mediaplayer/mediaplayer.ui" line="64"/>
+      <source>Play/pause</source>
+      <translation>播放/暫停</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/reusable/mediaplayer.cpp" line="170"/>
-      <source>Unrecognized format</source>
-      <translation>無法識別的格式</translation>
+      <location filename="../src/librssguard/gui/mediaplayer/mediaplayer.ui" line="71"/>
+      <source>Stop</source>
+      <translation>停止</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/reusable/mediaplayer.cpp" line="173"/>
-      <source>Network problem</source>
-      <translation>網路問題</translation>
+      <location filename="../src/librssguard/gui/mediaplayer/mediaplayer.ui" line="78"/>
+      <source>Speed</source>
+      <translation>速度</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/reusable/mediaplayer.cpp" line="176"/>
-      <source>Access denied</source>
-      <translation>存取被拒</translation>
+      <location filename="../src/librssguard/gui/mediaplayer/mediaplayer.ui" line="106"/>
+      <source>Progress</source>
+      <translation>進度</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/reusable/mediaplayer.cpp" line="180"/>
-      <source>Service is missing</source>
-      <translation>缺服務</translation>
+      <location filename="../src/librssguard/gui/mediaplayer/mediaplayer.ui" line="116"/>
+      <source>Duration</source>
+      <translation>片長</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/reusable/mediaplayer.cpp" line="183"/>
-      <source>This is playlist</source>
-      <translation type="unfinished">This is playlist</translation>
+      <location filename="../src/librssguard/gui/mediaplayer/mediaplayer.ui" line="123"/>
+      <source>Mute/unmute</source>
+      <translation>靜音/取消靜音</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/reusable/mediaplayer.cpp" line="187"/>
-      <source>No errors</source>
-      <translation type="unfinished">No errors</translation>
+      <location filename="../src/librssguard/gui/mediaplayer/mediaplayer.ui" line="136"/>
+      <source>Volume</source>
+      <translation>音量</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/reusable/mediaplayer.cpp" line="190"/>
-      <source>Unknown error</source>
-      <translation type="unfinished">Unknown error</translation>
+      <location filename="../src/librssguard/gui/mediaplayer/mediaplayer.ui" line="155"/>
+      <location filename="../src/librssguard/gui/mediaplayer/mediaplayer.ui" line="162"/>
+      <source>Download</source>
+      <translation>下載</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/reusable/mediaplayer.cpp" line="205"/>
-      <source>No media</source>
-      <translation type="unfinished">No media</translation>
-    </message>
-    <message>
-      <location filename="../src/librssguard/gui/reusable/mediaplayer.cpp" line="208"/>
-      <source>Loading...</source>
-      <translation type="unfinished">Loading...</translation>
-    </message>
-    <message>
-      <location filename="../src/librssguard/gui/reusable/mediaplayer.cpp" line="211"/>
-      <source>Media loaded</source>
-      <translation type="unfinished">Media loaded</translation>
-    </message>
-    <message>
-      <location filename="../src/librssguard/gui/reusable/mediaplayer.cpp" line="214"/>
-      <source>Media stalled</source>
-      <translation type="unfinished">Media stalled</translation>
-    </message>
-    <message>
-      <location filename="../src/librssguard/gui/reusable/mediaplayer.cpp" line="217"/>
-      <source>Buffering...</source>
-      <translation type="unfinished">Buffering...</translation>
-    </message>
-    <message>
-      <location filename="../src/librssguard/gui/reusable/mediaplayer.cpp" line="220"/>
-      <source>Loaded</source>
-      <translation type="unfinished">Loaded</translation>
-    </message>
-    <message>
-      <location filename="../src/librssguard/gui/reusable/mediaplayer.cpp" line="223"/>
-      <source>Ended</source>
-      <translation type="unfinished">Ended</translation>
-    </message>
-    <message>
-      <location filename="../src/librssguard/gui/reusable/mediaplayer.cpp" line="226"/>
-      <source>Media is invalid</source>
-      <translation type="unfinished">Media is invalid</translation>
-    </message>
-    <message>
-      <location filename="../src/librssguard/gui/reusable/mediaplayer.cpp" line="229"/>
-      <source>Unknown</source>
-      <translation>未知的東西</translation>
+      <location filename="../src/librssguard/gui/mediaplayer/mediaplayer.cpp" line="43"/>
+      <source>Starting</source>
+      <translation type="unfinished">Starting</translation>
     </message>
   </context>
   <context>
@@ -4744,12 +4813,12 @@ Login tokens expiration: %2</source>
     <message>
       <location filename="../src/librssguard/core/messagesforfiltersmodel.cpp" line="36"/>
       <source>true</source>
-      <translation type="unfinished">true</translation>
+      <translation>真</translation>
     </message>
     <message>
       <location filename="../src/librssguard/core/messagesforfiltersmodel.cpp" line="37"/>
       <source>false</source>
-      <translation type="unfinished">false</translation>
+      <translation>假</translation>
     </message>
   </context>
   <context>
@@ -4872,7 +4941,7 @@ Login tokens expiration: %2</source>
     <message>
       <location filename="../src/librssguard/core/messagesmodel.cpp" line="298"/>
       <source>RTL</source>
-      <translation type="unfinished">RTL</translation>
+      <translation>右至左</translation>
     </message>
     <message>
       <location filename="../src/librssguard/core/messagesmodel.cpp" line="300"/>
@@ -4972,7 +5041,7 @@ Login tokens expiration: %2</source>
     <message>
       <location filename="../src/librssguard/core/messagesmodel.cpp" line="310"/>
       <source>Layout direction of the article</source>
-      <translation type="unfinished">Layout direction of the article</translation>
+      <translation>文章字走向</translation>
     </message>
     <message>
       <location filename="../src/librssguard/core/messagesmodel.cpp" line="311"/>
@@ -5210,7 +5279,7 @@ Login tokens expiration: %2</source>
     <message>
       <location filename="../src/librssguard/services/abstract/gui/multifeededitcheckbox.cpp" line="6"/>
       <source>Apply this to all edited feeds.</source>
-      <translation type="unfinished">Apply this to all edited feeds.</translation>
+      <translation>套用此至所有編輯過的文源</translation>
     </message>
   </context>
   <context>
@@ -5418,7 +5487,7 @@ Login tokens expiration: %2</source>
     <message>
       <location filename="../src/librssguard/network-web/oauth2service.cpp" line="222"/>
       <source>Refreshing login tokens for &apos;%1&apos;...</source>
-      <translation>為 &apos;%1&apos; 重整登入用的語詞中…</translation>
+      <translation>為 &apos;%1&apos; 重整登入用的存取權碼中…</translation>
     </message>
     <message>
       <location filename="../src/librssguard/network-web/oauth2service.cpp" line="90"/>
@@ -5697,7 +5766,7 @@ Feedly 是個能私密組織、研究與您關切的議題與趨勢的所在。<
     <message>
       <location filename="../src/librssguard/miscellaneous/notification.cpp" line="151"/>
       <source>Node.js - package(s) failed to update</source>
-      <translation type="unfinished">Node.js - package(s) failed to update</translation>
+      <translation>Node.js - 套件無法更新</translation>
     </message>
     <message>
       <location filename="../src/librssguard/miscellaneous/notification.cpp" line="154"/>
@@ -5731,7 +5800,7 @@ List of supported readers:</source>
     <message>
       <location filename="../src/librssguard/services/greader/greaderentrypoint.cpp" line="34"/>
       <source>and possibly others.</source>
-      <translation type="unfinished">and possibly others.</translation>
+      <translation>而且可能還有其他的東西。</translation>
     </message>
     <message>
       <location filename="../src/librssguard/miscellaneous/notification.cpp" line="139"/>
@@ -5781,7 +5850,7 @@ List of supported readers:</source>
     <message>
       <location filename="../src/librssguard/miscellaneous/skinfactory.cpp" line="626"/>
       <source>OK-ish color</source>
-      <translation>像 OK 的顏色</translation>
+      <translation>像無問題(OK)的顏色</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/tt-rss/ttrssnetworkfactory.cpp" line="1010"/>
@@ -5796,37 +5865,37 @@ List of supported readers:</source>
     <message>
       <location filename="../src/librssguard/gui/notifications/toastnotificationsmanager.cpp" line="18"/>
       <source>top-left</source>
-      <translation type="unfinished">top-left</translation>
+      <translation>頂左</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/notifications/toastnotificationsmanager.cpp" line="21"/>
       <source>top-right</source>
-      <translation type="unfinished">top-right</translation>
+      <translation>頂右</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/notifications/toastnotificationsmanager.cpp" line="24"/>
       <source>bottom-left</source>
-      <translation type="unfinished">bottom-left</translation>
+      <translation>底左</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/notifications/toastnotificationsmanager.cpp" line="28"/>
       <source>bottom-right</source>
-      <translation type="unfinished">bottom-right</translation>
+      <translation>底右</translation>
     </message>
     <message>
       <location filename="../src/librssguard/miscellaneous/textfactory.cpp" line="328"/>
       <source>escape sequence not completed</source>
-      <translation type="unfinished">escape sequence not completed</translation>
+      <translation>轉義字串未完成</translation>
     </message>
     <message>
       <location filename="../src/librssguard/miscellaneous/textfactory.cpp" line="332"/>
       <source>closing &quot; is missing</source>
-      <translation type="unfinished">closing &quot; is missing</translation>
+      <translation>缺少尾端 &quot;</translation>
     </message>
     <message>
       <location filename="../src/librssguard/miscellaneous/textfactory.cpp" line="336"/>
       <source>closing &apos; is missing</source>
-      <translation type="unfinished">closing &apos; is missing</translation>
+      <translation>缺少尾端 &apos;</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/standard/parsers/atomparser.cpp" line="242"/>
@@ -5834,62 +5903,155 @@ List of supported readers:</source>
       <location filename="../src/librssguard/services/standard/parsers/rssparser.cpp" line="192"/>
       <location filename="../src/librssguard/services/standard/parsers/sitemapparser.cpp" line="180"/>
       <source>XML is not well-formed, %1</source>
-      <translation type="unfinished">XML is not well-formed, %1</translation>
+      <translation>XML 語法錯誤，%1</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/standard/parsers/atomparser.cpp" line="248"/>
       <source>not an ATOM feed</source>
-      <translation type="unfinished">not an ATOM feed</translation>
+      <translation>非 ATOM 文源</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/standard/parsers/jsonparser.cpp" line="119"/>
       <source>JSON error &apos;%1&apos;</source>
-      <translation type="unfinished">JSON error &apos;%1&apos;</translation>
+      <translation>JSON 錯誤 &apos;%1&apos;</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/standard/parsers/jsonparser.cpp" line="150"/>
       <source>not a JSON feed</source>
-      <translation type="unfinished">not a JSON feed</translation>
+      <translation>非 JSON 文源</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/standard/parsers/rdfparser.cpp" line="198"/>
       <source>not an RDF feed</source>
-      <translation type="unfinished">not an RDF feed</translation>
+      <translation>非 RDF 文源</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/standard/parsers/rssparser.cpp" line="198"/>
       <source>not a RSS feed</source>
-      <translation type="unfinished">not a RSS feed</translation>
+      <translation>非 RSS 文源</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/standard/parsers/sitemapparser.cpp" line="145"/>
       <source>support for gzipped sitemaps is not enabled</source>
-      <translation type="unfinished">support for gzipped sitemaps is not enabled</translation>
+      <translation>未啟用支援 Gzip 壓縮網站地圖</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/standard/parsers/sitemapparser.cpp" line="193"/>
       <source>sitemap indices are not supported</source>
-      <translation type="unfinished">sitemap indices are not supported</translation>
+      <translation>未支援網站地圖索引</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/standard/parsers/sitemapparser.cpp" line="197"/>
       <source>not a Sitemap</source>
-      <translation type="unfinished">not a Sitemap</translation>
+      <translation>非網站地圖</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/webviewers/webviewer.cpp" line="34"/>
+      <location filename="../src/librssguard/gui/webviewers/webviewer.cpp" line="37"/>
       <source>Open with external tool</source>
       <translation>使用外部工具開啟</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/webviewers/webviewer.cpp" line="95"/>
+      <location filename="../src/librssguard/gui/webviewers/webviewer.cpp" line="100"/>
       <source>Open in external browser</source>
       <translation>於外部瀏覽器開啟</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/webviewers/webviewer.cpp" line="98"/>
-      <source>Play link as audio/video</source>
-      <translation type="unfinished">Play link as audio/video</translation>
+      <location filename="../src/librssguard/gui/webviewers/webviewer.cpp" line="103"/>
+      <source>Play in media player</source>
+      <translation type="unfinished">Play in media player</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard/gui/webviewers/webviewer.cpp" line="106"/>
+      <source>(not supported)</source>
+      <translation type="unfinished">(not supported)</translation>
+    </message>
+  </context>
+  <context>
+    <name>QtMultimediaBackend</name>
+    <message>
+      <location filename="../src/librssguard/gui/mediaplayer/qtmultimedia/qtmultimediabackend.cpp" line="82"/>
+      <source>No media</source>
+      <translation type="unfinished">No media</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard/gui/mediaplayer/qtmultimedia/qtmultimediabackend.cpp" line="85"/>
+      <source>Loading...</source>
+      <translation type="unfinished">Loading...</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard/gui/mediaplayer/qtmultimedia/qtmultimediabackend.cpp" line="88"/>
+      <source>Media loaded</source>
+      <translation type="unfinished">Media loaded</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard/gui/mediaplayer/qtmultimedia/qtmultimediabackend.cpp" line="91"/>
+      <source>Media stalled</source>
+      <translation type="unfinished">Media stalled</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard/gui/mediaplayer/qtmultimedia/qtmultimediabackend.cpp" line="94"/>
+      <source>Buffering...</source>
+      <translation type="unfinished">Buffering...</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard/gui/mediaplayer/qtmultimedia/qtmultimediabackend.cpp" line="97"/>
+      <source>Loaded</source>
+      <translation type="unfinished">Loaded</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard/gui/mediaplayer/qtmultimedia/qtmultimediabackend.cpp" line="100"/>
+      <source>Ended</source>
+      <translation type="unfinished">Ended</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard/gui/mediaplayer/qtmultimedia/qtmultimediabackend.cpp" line="103"/>
+      <source>Media is invalid</source>
+      <translation type="unfinished">Media is invalid</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard/gui/mediaplayer/qtmultimedia/qtmultimediabackend.cpp" line="106"/>
+      <source>Unknown</source>
+      <translation>未知的東西</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard/gui/mediaplayer/qtmultimedia/qtmultimediabackend.cpp" line="113"/>
+      <source>Cannot load media (missing codecs)</source>
+      <translation type="unfinished">Cannot load media (missing codecs)</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard/gui/mediaplayer/qtmultimedia/qtmultimediabackend.cpp" line="116"/>
+      <source>Unrecognized format</source>
+      <translation type="unfinished">Unrecognized format</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard/gui/mediaplayer/qtmultimedia/qtmultimediabackend.cpp" line="119"/>
+      <source>Network problem</source>
+      <translation type="unfinished">Network problem</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard/gui/mediaplayer/qtmultimedia/qtmultimediabackend.cpp" line="122"/>
+      <source>Access denied</source>
+      <translation type="unfinished">Access denied</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard/gui/mediaplayer/qtmultimedia/qtmultimediabackend.cpp" line="126"/>
+      <source>Service is missing</source>
+      <translation type="unfinished">Service is missing</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard/gui/mediaplayer/qtmultimedia/qtmultimediabackend.cpp" line="129"/>
+      <source>This is playlist</source>
+      <translation type="unfinished">This is playlist</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard/gui/mediaplayer/qtmultimedia/qtmultimediabackend.cpp" line="133"/>
+      <source>No errors</source>
+      <translation type="unfinished">No errors</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard/gui/mediaplayer/qtmultimedia/qtmultimediabackend.cpp" line="136"/>
+      <source>Unknown error</source>
+      <translation type="unfinished">Unknown error</translation>
     </message>
   </context>
   <context>
@@ -5956,7 +6118,7 @@ List of supported readers:</source>
     <message>
       <location filename="../src/librssguard/services/abstract/recyclebin.cpp" line="105"/>
       <source>Do you really want to empty your recycle bin?</source>
-      <translation type="unfinished">Do you really want to empty your recycle bin?</translation>
+      <translation>真的要清空資源回收筒？</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/abstract/recyclebin.cpp" line="17"/>
@@ -6137,7 +6299,7 @@ List of supported readers:</source>
       <source>Authentication status: %1
 Login tokens expiration: %2</source>
       <translation>認證狀態: %1
-登入用的語詞過期: %2</translation>
+登入用的存取權碼過期: %2</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/reddit/redditserviceroot.cpp" line="134"/>
@@ -6194,7 +6356,7 @@ Login tokens expiration: %2</source>
     <message>
       <location filename="../src/librssguard/services/abstract/search.cpp" line="111"/>
       <source>Regular expression: %1</source>
-      <translation type="unfinished">Regular expression: %1</translation>
+      <translation>類型式: %1</translation>
     </message>
   </context>
   <context>
@@ -6243,17 +6405,17 @@ Login tokens expiration: %2</source>
     <message>
       <location filename="../src/librssguard/services/abstract/searchsnode.cpp" line="19"/>
       <source>Regex queries</source>
-      <translation type="unfinished">Regex queries</translation>
+      <translation>類型式查詢</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/abstract/searchsnode.cpp" line="20"/>
       <source>You can see all your permanent regex queries here.</source>
-      <translation type="unfinished">You can see all your permanent regex queries here.</translation>
+      <translation>此處可一覽所有查詢用的恆常類型式</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/abstract/searchsnode.cpp" line="55"/>
       <source>New regex query</source>
-      <translation type="unfinished">New regex query</translation>
+      <translation>新增查詢用的類型式</translation>
     </message>
   </context>
   <context>
@@ -6261,12 +6423,12 @@ Login tokens expiration: %2</source>
     <message>
       <location filename="../src/librssguard/services/abstract/serviceroot.cpp" line="138"/>
       <source>Unsupported</source>
-      <translation type="unfinished">Unsupported</translation>
+      <translation>未支援的</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/abstract/serviceroot.cpp" line="138"/>
       <source>This is not suppported (yet).</source>
-      <translation type="unfinished">This is not suppported (yet).</translation>
+      <translation>(尚)未支援此。</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/abstract/serviceroot.cpp" line="193"/>
@@ -6508,7 +6670,7 @@ File filter for external e-mail selection dialog.</extracomment>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsbrowsermail.h" line="46"/>
       <source>Network &amp; web &amp; tools</source>
-      <translation>網路 &amp; 網絡 &amp; 工具</translation>
+      <translation>網路 &amp; 網站 &amp; 工具</translation>
     </message>
   </context>
   <context>
@@ -6740,12 +6902,12 @@ Authors of this application are NOT responsible for lost data.</source>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.cpp" line="368"/>
       <source>PC restart needed</source>
-      <translation type="unfinished">PC restart needed</translation>
+      <translation>須重啟 PC</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.cpp" line="369"/>
       <source>Your PC needs to be restarted to make some of enabled features fully working.</source>
-      <translation type="unfinished">Your PC needs to be restarted to make some of enabled features fully working.</translation>
+      <translation>PC 必須重新啟動以使某些啟用的功能完整運作起來。</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="21"/>
@@ -6846,7 +7008,7 @@ Authors of this application are NOT responsible for lost data.</source>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="304"/>
       <source>Update feed list during feed fetching</source>
-      <translation type="unfinished">Update feed list during feed fetching</translation>
+      <translation>於抓取文源時更新文源清單</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="312"/>
@@ -7218,7 +7380,7 @@ Description: %3</source>
     <message>
       <location filename="../src/librssguard/gui/settings/settingslocalization.cpp" line="23"/>
       <source>Translation progress</source>
-      <translation type="unfinished">Translation progress</translation>
+      <translation>翻譯進度</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingslocalization.cpp" line="25"/>
@@ -7256,6 +7418,39 @@ Description: %3</source>
       <location filename="../src/librssguard/gui/settings/settingslocalization.h" line="26"/>
       <source>Localization</source>
       <translation>本地化</translation>
+    </message>
+  </context>
+  <context>
+    <name>SettingsMediaPlayer</name>
+    <message>
+      <location filename="../src/librssguard/gui/settings/settingsmediaplayer.ui" line="17"/>
+      <source>Backend</source>
+      <translation type="unfinished">Backend</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard/gui/settings/settingsmediaplayer.cpp" line="21"/>
+      <source>You use modern libmpv-based media player backend with API version %1.</source>
+      <translation type="unfinished">You use modern libmpv-based media player backend with API version %1.</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard/gui/settings/settingsmediaplayer.cpp" line="26"/>
+      <source>You use lightweight QtMultimedia-based media player backend. If some videos do not play, then you likely need to install some codecs.</source>
+      <translation type="unfinished">You use lightweight QtMultimedia-based media player backend. If some videos do not play, then you likely need to install some codecs.</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard/gui/settings/settingsmediaplayer.cpp" line="30"/>
+      <source>no backend installed</source>
+      <translation type="unfinished">no backend installed</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard/gui/settings/settingsmediaplayer.cpp" line="31"/>
+      <source>You do not have any media player available. Media player is only supported on modern platforms where needed libraries are available. You must manually recompile %1 to be able to use media player.</source>
+      <translation type="unfinished">You do not have any media player available. Media player is only supported on modern platforms where needed libraries are available. You must manually recompile %1 to be able to use media player.</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard/gui/settings/settingsmediaplayer.h" line="25"/>
+      <source>Media player</source>
+      <translation>媒體播放器</translation>
     </message>
   </context>
   <context>
@@ -7300,7 +7495,7 @@ Also, relaunch &quot;Settings&quot; dialog after you install Node.js.</source>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsnodejs.cpp" line="139"/>
       <source>Package folder is OK.</source>
-      <translation>套件資料夾 OK。</translation>
+      <translation>套件資料夾無問題。</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsnodejs.cpp" line="143"/>
@@ -7400,17 +7595,17 @@ Also, relaunch &quot;Settings&quot; dialog after you install Node.js.</source>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsnotifications.cpp" line="18"/>
       <source>There are some built-in notification sounds. Just start typing &quot;:&quot; and they will show up.</source>
-      <translation type="unfinished">There are some built-in notification sounds. Just start typing &quot;:&quot; and they will show up.</translation>
+      <translation>有一些內建的通知音效。只要鍵入 &quot;:&quot; 就會示範播放。</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsnotifications.cpp" line="99"/>
       <source>How do I look?</source>
-      <translation type="unfinished">How do I look?</translation>
+      <translation>看來如何？</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsnotifications.cpp" line="100"/>
       <source>Just testing new notifications settings. That&apos;s all.</source>
-      <translation type="unfinished">Just testing new notifications settings. That&apos;s all.</translation>
+      <translation>只是測試新的通知設定而已。</translation>
     </message>
   </context>
   <context>
@@ -7513,7 +7708,7 @@ Also, relaunch &quot;Settings&quot; dialog after you install Node.js.</source>
     <message>
       <location filename="../src/librssguard/miscellaneous/skinfactory.cpp" line="526"/>
       <source>file %1 not found</source>
-      <translation type="unfinished">file %1 not found</translation>
+      <translation>未找到檔案 %1</translation>
     </message>
   </context>
   <context>
@@ -7521,7 +7716,7 @@ Also, relaunch &quot;Settings&quot; dialog after you install Node.js.</source>
     <message>
       <location filename="../src/librssguard/database/sqlitedriver.cpp" line="109"/>
       <source>cannot get native &apos;sqlite3&apos; DB handle</source>
-      <translation type="unfinished">cannot get native &apos;sqlite3&apos; DB handle</translation>
+      <translation>無法取得原生 &apos;sqlite3&apos; DB handle</translation>
     </message>
     <message>
       <location filename="../src/librssguard/database/sqlitedriver.cpp" line="384"/>
@@ -7568,10 +7763,10 @@ Also, relaunch &quot;Settings&quot; dialog after you install Node.js.</source>
 Encoding: %1
 Type: %2
 Post-processing script: %3</source>
-      <translation type="unfinished">
-Encoding: %1
-Type: %2
-Post-processing script: %3</translation>
+      <translation>
+編碼方式: %1
+類型: %2
+後續處理的隨譯即行碼: %3</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/standard/standardfeed.cpp" line="168"/>
@@ -7606,7 +7801,7 @@ Post-processing script: %3</translation>
     <message>
       <location filename="../src/librssguard/services/standard/standardfeed.cpp" line="326"/>
       <source>feed format not recognized</source>
-      <translation type="unfinished">feed format not recognized</translation>
+      <translation>無法識別的文源格式</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/standard/standardfeed.cpp" line="364"/>
@@ -7734,7 +7929,7 @@ Post-processing script: %3</translation>
     <message>
       <location filename="../src/librssguard/services/standard/gui/standardfeeddetails.cpp" line="273"/>
       <source>Source is ok.</source>
-      <translation type="unfinished">Source is ok.</translation>
+      <translation>來源無問題。</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/standard/gui/standardfeeddetails.cpp" line="283"/>
@@ -7805,12 +8000,12 @@ Post-processing script: %3</translation>
     <message>
       <location filename="../src/librssguard/services/standard/gui/standardfeeddetails.cpp" line="293"/>
       <source>The source is ok.</source>
-      <translation>源碼 ok。</translation>
+      <translation>來源無問題。</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/standard/gui/standardfeeddetails.cpp" line="300"/>
       <source>Command is ok.</source>
-      <translation>命令 ok。</translation>
+      <translation>命令無問題。</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/standard/gui/standardfeeddetails.cpp" line="163"/>
@@ -7950,7 +8145,7 @@ Also, you can post-process generated feed data with yet another script if you wi
     <message>
       <location filename="../src/librssguard/services/standard/standardserviceroot.cpp" line="43"/>
       <source>This is the obligatory service account for standard RSS/RDF/ATOM feeds.</source>
-      <translation type="unfinished">This is the obligatory service account for standard RSS/RDF/ATOM feeds.</translation>
+      <translation>這是標準的 RSS/RDF/ATOM 文源必有的服務帳號。</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/standard/standardserviceroot.cpp" line="163"/>
@@ -8045,37 +8240,37 @@ Unread news: %2</source>
   <context>
     <name>TabWidget</name>
     <message>
-      <location filename="../src/librssguard/gui/tabwidget.cpp" line="135"/>
+      <location filename="../src/librssguard/gui/tabwidget.cpp" line="138"/>
       <source>Feeds</source>
       <translation>文源</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/tabwidget.cpp" line="39"/>
+      <location filename="../src/librssguard/gui/tabwidget.cpp" line="42"/>
       <source>Displays main menu.</source>
       <translation>顯示主功能表。</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/tabwidget.cpp" line="48"/>
+      <location filename="../src/librssguard/gui/tabwidget.cpp" line="51"/>
       <source>Main menu</source>
       <translation>主功能表</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/tabwidget.cpp" line="79"/>
+      <location filename="../src/librssguard/gui/tabwidget.cpp" line="82"/>
       <source>Downloads</source>
       <translation>下載</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/tabwidget.cpp" line="237"/>
+      <location filename="../src/librssguard/gui/tabwidget.cpp" line="247"/>
       <source>Media player</source>
       <translation>媒體播放器</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/tabwidget.cpp" line="262"/>
+      <location filename="../src/librssguard/gui/tabwidget.cpp" line="273"/>
       <source>Web browser</source>
       <translation>網路瀏覽器</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/tabwidget.cpp" line="137"/>
+      <location filename="../src/librssguard/gui/tabwidget.cpp" line="140"/>
       <source>Browse your feeds and articles</source>
       <translation>瀏覽文源與文章</translation>
     </message>
