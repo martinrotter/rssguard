@@ -212,6 +212,10 @@ SettingsFeedsMessages::~SettingsFeedsMessages() {
   delete m_ui;
 }
 
+QIcon SettingsFeedsMessages::icon() const {
+  return qApp->icons()->fromTheme(QSL("mail-mark-read"));
+}
+
 void SettingsFeedsMessages::initializeMessageDateFormats() {
   QStringList patterns = TextFactory::dateTimePatterns();
 

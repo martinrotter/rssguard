@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>360</width>
-    <height>148</height>
+    <width>512</width>
+    <height>328</height>
    </rect>
   </property>
   <layout class="QFormLayout" name="formLayout">
@@ -26,9 +26,47 @@
     </widget>
    </item>
    <item row="2" column="0" colspan="2">
-    <widget class="QStackedWidget" name="stackedWidget">
+    <widget class="QStackedWidget" name="m_stackedDetails">
      <widget class="QWidget" name="m_pageQtMultimedia"/>
-     <widget class="QWidget" name="m_pageLibmpv"/>
+     <widget class="QWidget" name="m_pageLibmpv">
+      <layout class="QFormLayout" name="formLayout_2">
+       <item row="0" column="0" colspan="2">
+        <widget class="QGroupBox" name="m_gbMpvCustomConfigFolder">
+         <property name="title">
+          <string>Use custom MPV configuration folder</string>
+         </property>
+         <property name="checkable">
+          <bool>true</bool>
+         </property>
+         <layout class="QHBoxLayout" name="horizontalLayout">
+          <item>
+           <widget class="QLineEdit" name="m_txtMpvConfigFolder"/>
+          </item>
+          <item>
+           <widget class="QPushButton" name="m_btnMpvConfigFolder">
+            <property name="text">
+             <string>Browse</string>
+            </property>
+           </widget>
+          </item>
+         </layout>
+        </widget>
+       </item>
+       <item row="1" column="0" colspan="2">
+        <spacer name="verticalSpacer">
+         <property name="orientation">
+          <enum>Qt::Vertical</enum>
+         </property>
+         <property name="sizeHint" stdset="0">
+          <size>
+           <width>20</width>
+           <height>40</height>
+          </size>
+         </property>
+        </spacer>
+       </item>
+      </layout>
+     </widget>
      <widget class="QWidget" name="m_pageNothing"/>
     </widget>
    </item>

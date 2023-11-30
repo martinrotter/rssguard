@@ -8,18 +8,18 @@
 #include "ui_settingsgui.h"
 
 class SettingsGui : public SettingsPanel {
-  Q_OBJECT
+    Q_OBJECT
 
   public:
     explicit SettingsGui(Settings* settings, QWidget* parent = nullptr);
     virtual ~SettingsGui();
 
+    virtual QIcon icon() const;
     virtual QString title() const;
     virtual void loadSettings();
     virtual void saveSettings();
 
   protected:
-
     // Does check of controls before dialog can be submitted.
     bool eventFilter(QObject* obj, QEvent* e);
 

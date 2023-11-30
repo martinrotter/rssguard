@@ -5,6 +5,7 @@
 #include "3rd-party/boolinq/boolinq.h"
 #include "definitions/definitions.h"
 #include "gui/mediaplayer/libmpv/qthelper.h"
+#include "miscellaneous/settings.h"
 
 #include <clocale>
 #include <sstream>
@@ -36,9 +37,10 @@ static void wakeup(void* ctx) {
   emit backend->launchMpvEvents();
 }
 
-LibMpvBackend::LibMpvBackend(QWidget* parent)
-  : PlayerBackend(parent), m_mpvContainer(new QWidget(this)), m_mpvHandle(nullptr) {
+LibMpvBackend::LibMpvBackend(Application* app, QWidget* parent)
+  : PlayerBackend(app, parent), m_mpvContainer(new QWidget(this)), m_mpvHandle(nullptr) {
   installEventFilter(this);
+  loadSettings();
 
   m_mpvHandle = mpv_create();
 
@@ -84,9 +86,12 @@ LibMpvBackend::LibMpvBackend(QWidget* parent)
   mpv_set_option_string(m_mpvHandle, "terminal", "yes");
 #endif
 
+  // mpv_set_option_string(m_mpvHandle, "osd-italic", "yes");
+  // mpv_set_option_string(m_mpvHandle, "osd-color", "1.0/0.0/0.0");
+
   //
   // mpv_set_option_string(m_mpvHandle, "watch-later-dir", "mpv");
-  // mpv_set_option_string(m_mpvHandle, "config-dir", "mpv");
+  mpv_set_option_string(m_mpvHandle, "config-dir", "mpv");
   // mpv_set_option_string(m_mpvHandle, "input-builtin-bindings", "no");
   // mpv_set_option_string(m_mpvHandle, "input-test", "yes");
 
@@ -128,6 +133,8 @@ void LibMpvBackend::destroyHandle() {
     m_mpvHandle = nullptr;
   }
 }
+
+void LibMpvBackend::loadSettings() {}
 
 LibMpvBackend::~LibMpvBackend() {
   destroyHandle();
@@ -469,6 +476,10 @@ bool LibMpvBackend::eventFilter(QObject* watched, QEvent* event) {
 }
 
 void LibMpvBackend::playUrl(const QUrl& url) {
+  char* str;
+
+  mpv_get_property(m_mpvHandle, "ytdl_path", MPV_FORMAT_STRING, &str);
+
   m_url = url;
 
   if (m_mpvHandle != nullptr) {

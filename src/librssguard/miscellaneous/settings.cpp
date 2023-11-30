@@ -15,6 +15,15 @@
 DKEY WebEngineAttributes::ID = "web_engine_attributes";
 #endif
 
+// Media player.
+KEY VideoPlayer::ID = "media_player";
+
+DKEY VideoPlayer::MpvUseCustomConfigFolder = "mpv_use_custom_config_folder";
+DVALUE(bool) VideoPlayer::MpvUseCustomConfigFolderDef = true;
+
+DKEY VideoPlayer::MpvCustomConfigFolder = "mpv_config_folder";
+DVALUE(QString) VideoPlayer::MpvCustomConfigFolderDef = "%data%/mpv";
+
 // Node.js.
 DKEY Node::ID = "nodejs";
 

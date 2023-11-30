@@ -3,6 +3,7 @@
 #include "gui/settings/settingsgeneral.h"
 
 #include "miscellaneous/application.h"
+#include "miscellaneous/iconfactory.h"
 #include "miscellaneous/settings.h"
 #include "miscellaneous/systemfactory.h"
 
@@ -22,6 +23,10 @@ SettingsGeneral::SettingsGeneral(Settings* settings, QWidget* parent)
 
 SettingsGeneral::~SettingsGeneral() {
   delete m_ui;
+}
+
+QIcon SettingsGeneral::icon() const {
+  return qApp->icons()->fromTheme(QSL("applications-system"), QSL("emblem-system"));
 }
 
 void SettingsGeneral::loadSettings() {

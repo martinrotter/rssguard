@@ -8,12 +8,13 @@
 #include "ui_settingslocalization.h"
 
 class SettingsLocalization : public SettingsPanel {
-  Q_OBJECT
+    Q_OBJECT
 
   public:
     explicit SettingsLocalization(Settings* settings, QWidget* parent = nullptr);
     virtual ~SettingsLocalization();
 
+    virtual QIcon icon() const;
     virtual QString title() const;
     virtual void loadSettings();
     virtual void saveSettings();

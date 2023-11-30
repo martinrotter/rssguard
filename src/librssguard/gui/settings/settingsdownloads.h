@@ -8,12 +8,13 @@
 #include "ui_settingsdownloads.h"
 
 class SettingsDownloads : public SettingsPanel {
-  Q_OBJECT
+    Q_OBJECT
 
   public:
     explicit SettingsDownloads(Settings* settings, QWidget* parent = nullptr);
     virtual ~SettingsDownloads();
 
+    virtual QIcon icon() const;
     virtual QString title() const;
     virtual void loadSettings();
     virtual void saveSettings();

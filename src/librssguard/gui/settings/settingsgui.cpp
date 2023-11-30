@@ -110,6 +110,10 @@ SettingsGui::~SettingsGui() {
   delete m_ui;
 }
 
+QIcon SettingsGui::icon() const {
+  return qApp->icons()->fromTheme(QSL("draw-freehand"), QSL("draw-star"));
+}
+
 bool SettingsGui::eventFilter(QObject* obj, QEvent* e) {
   Q_UNUSED(obj)
 

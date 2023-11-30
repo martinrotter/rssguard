@@ -159,7 +159,7 @@
         <item>
          <widget class="PlainToolButton" name="m_btnFullscreen">
           <property name="toolTip">
-           <string>Download</string>
+           <string>Switch fullscreen mode</string>
           </property>
          </widget>
         </item>

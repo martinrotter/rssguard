@@ -40,6 +40,10 @@ SettingsLocalization::~SettingsLocalization() {
   delete m_ui;
 }
 
+QIcon SettingsLocalization::icon() const {
+  return qApp->icons()->fromTheme(QSL("text-x-gettext-translation"));
+}
+
 void SettingsLocalization::loadSettings() {
   onBeginLoadSettings();
 

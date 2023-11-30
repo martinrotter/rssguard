@@ -8,12 +8,13 @@
 #include "ui_settingsfeedsmessages.h"
 
 class SettingsFeedsMessages : public SettingsPanel {
-  Q_OBJECT
+    Q_OBJECT
 
   public:
     explicit SettingsFeedsMessages(Settings* settings, QWidget* parent = nullptr);
     virtual ~SettingsFeedsMessages();
 
+    virtual QIcon icon() const;
     virtual QString title() const;
     virtual void loadSettings();
     virtual void saveSettings();

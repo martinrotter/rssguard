@@ -8,12 +8,13 @@
 class Settings;
 
 class SettingsPanel : public QWidget {
-  Q_OBJECT
+    Q_OBJECT
 
   public:
     explicit SettingsPanel(Settings* settings, QWidget* parent = nullptr);
 
     virtual QString title() const = 0;
+    virtual QIcon icon() const = 0;
     virtual void loadSettings() = 0;
     virtual void saveSettings() = 0;
 

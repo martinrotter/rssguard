@@ -52,6 +52,16 @@ namespace Node {
   VALUE(QString) PackageFolderDef;
 } // namespace Node
 
+namespace VideoPlayer {
+  KEY ID;
+
+  KEY MpvUseCustomConfigFolder;
+  VALUE(bool) MpvUseCustomConfigFolderDef;
+
+  KEY MpvCustomConfigFolder;
+  VALUE(QString) MpvCustomConfigFolderDef;
+} // namespace VideoPlayer
+
 namespace AdBlock {
   KEY ID;
 

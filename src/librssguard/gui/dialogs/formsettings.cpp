@@ -150,7 +150,12 @@ void FormSettings::cancelSettings() {
 }
 
 void FormSettings::addSettingsPanel(SettingsPanel* panel) {
-  m_ui.m_listSettings->addItem(panel->title());
+  QListWidgetItem* itm = new QListWidgetItem(m_ui.m_listSettings);
+
+  itm->setText(panel->title());
+  itm->setIcon(panel->icon());
+
+  // m_ui.m_listSettings->addItem(itm);
   m_panels.append(panel);
 
   QScrollArea* scr = new QScrollArea(m_ui.m_stackedSettings);

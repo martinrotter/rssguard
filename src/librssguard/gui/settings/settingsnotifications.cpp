@@ -4,6 +4,7 @@
 
 #include "gui/notifications/notificationseditor.h"
 #include "miscellaneous/application.h"
+#include "miscellaneous/iconfactory.h"
 #include "miscellaneous/notificationfactory.h"
 #include "miscellaneous/settings.h"
 
@@ -38,6 +39,10 @@ SettingsNotifications::SettingsNotifications(Settings* settings, QWidget* parent
           QOverload<int>::of(&QComboBox::currentIndexChanged),
           this,
           &SettingsNotifications::dirtifySettings);
+}
+
+QIcon SettingsNotifications::icon() const {
+  return qApp->icons()->fromTheme(QSL("notifications"), QSL("dialog-information"));
 }
 
 void SettingsNotifications::loadSettings() {

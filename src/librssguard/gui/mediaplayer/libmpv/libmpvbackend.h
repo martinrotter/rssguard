@@ -11,7 +11,7 @@ class LibMpvBackend : public PlayerBackend {
     Q_OBJECT
 
   public:
-    explicit LibMpvBackend(QWidget* parent = nullptr);
+    explicit LibMpvBackend(Application* app, QWidget* parent = nullptr);
     virtual ~LibMpvBackend();
 
   public:
@@ -54,6 +54,7 @@ class LibMpvBackend : public PlayerBackend {
     QString errorToString(mpv_error error) const;
 
     void destroyHandle();
+    void loadSettings();
 
   private:
     QWidget* m_mpvContainer;

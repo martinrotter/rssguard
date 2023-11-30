@@ -8,12 +8,13 @@
 #include "ui_settingsshortcuts.h"
 
 class SettingsShortcuts : public SettingsPanel {
-  Q_OBJECT
+    Q_OBJECT
 
   public:
     explicit SettingsShortcuts(Settings* settings, QWidget* parent = nullptr);
     virtual ~SettingsShortcuts();
 
+    virtual QIcon icon() const;
     virtual QString title() const;
     virtual void loadSettings();
     virtual void saveSettings();

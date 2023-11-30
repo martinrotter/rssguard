@@ -8,6 +8,7 @@
 #include <QUrl>
 
 class QVBoxLayout;
+class Application;
 
 class PlayerBackend : public QWidget {
     Q_OBJECT
@@ -19,7 +20,7 @@ class PlayerBackend : public QWidget {
       PausedState
     };
 
-    explicit PlayerBackend(QWidget* parent = nullptr);
+    explicit PlayerBackend(Application* app, QWidget* parent = nullptr);
 
     virtual QUrl url() const = 0;
     virtual int position() const = 0;
@@ -53,7 +54,8 @@ class PlayerBackend : public QWidget {
     virtual void setVolume(int volume) = 0;
     virtual void setPosition(int position) = 0;
 
-  signals:
+  protected:
+    Application* m_app;
 
   private:
     QVBoxLayout* m_mainLayout;

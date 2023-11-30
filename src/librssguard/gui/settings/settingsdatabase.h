@@ -8,12 +8,13 @@
 #include "ui_settingsdatabase.h"
 
 class SettingsDatabase : public SettingsPanel {
-  Q_OBJECT
+    Q_OBJECT
 
   public:
     explicit SettingsDatabase(Settings* settings, QWidget* parent = nullptr);
     virtual ~SettingsDatabase();
 
+    virtual QIcon icon() const;
     virtual QString title() const;
     virtual void loadSettings();
     virtual void saveSettings();

@@ -8,11 +8,12 @@
 #include "ui_settingsnodejs.h"
 
 class SettingsNodejs : public SettingsPanel {
-  Q_OBJECT
+    Q_OBJECT
 
   public:
     explicit SettingsNodejs(Settings* settings, QWidget* parent = nullptr);
 
+    virtual QIcon icon() const;
     virtual QString title() const;
     virtual void loadSettings();
     virtual void saveSettings();

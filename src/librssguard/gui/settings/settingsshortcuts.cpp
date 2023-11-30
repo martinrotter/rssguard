@@ -4,6 +4,7 @@
 
 #include "dynamic-shortcuts/dynamicshortcuts.h"
 #include "miscellaneous/application.h"
+#include "miscellaneous/iconfactory.h"
 
 SettingsShortcuts::SettingsShortcuts(Settings* settings, QWidget* parent)
   : SettingsPanel(settings, parent), m_ui(new Ui::SettingsShortcuts) {
@@ -13,6 +14,10 @@ SettingsShortcuts::SettingsShortcuts(Settings* settings, QWidget* parent)
 
 SettingsShortcuts::~SettingsShortcuts() {
   delete m_ui;
+}
+
+QIcon SettingsShortcuts::icon() const {
+  return qApp->icons()->fromTheme(QSL("configure-shortcuts"), QSL("keyboard"));
 }
 
 void SettingsShortcuts::loadSettings() {

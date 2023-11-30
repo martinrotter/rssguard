@@ -8,12 +8,13 @@
 #include "ui_settingsgeneral.h"
 
 class SettingsGeneral : public SettingsPanel {
-  Q_OBJECT
+    Q_OBJECT
 
   public:
     explicit SettingsGeneral(Settings* settings, QWidget* parent = nullptr);
     virtual ~SettingsGeneral();
 
+    virtual QIcon icon() const;
     virtual QString title() const;
     virtual void loadSettings();
     virtual void saveSettings();

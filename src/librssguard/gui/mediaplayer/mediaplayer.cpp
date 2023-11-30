@@ -15,9 +15,9 @@
 MediaPlayer::MediaPlayer(QWidget* parent)
   : TabContent(parent), m_backend(
 #if defined(ENABLE_MEDIAPLAYER_QTMULTIMEDIA)
-                          new QtMultimediaBackend(this)
+                          new QtMultimediaBackend(qApp, this)
 #else
-                          new LibMpvBackend(this)
+                          new LibMpvBackend(qApp, this)
 #endif
                             ),
     m_muted(false) {

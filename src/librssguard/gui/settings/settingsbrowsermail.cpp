@@ -95,6 +95,10 @@ SettingsBrowserMail::~SettingsBrowserMail() {
   delete m_ui;
 }
 
+QIcon SettingsBrowserMail::icon() const {
+  return qApp->icons()->fromTheme(QSL("applications-internet"), QSL("internet-services"));
+}
+
 void SettingsBrowserMail::changeDefaultBrowserArguments(int index) {
   if (index != 0) {
     m_ui->m_txtExternalBrowserArguments->setText(m_ui->m_cmbExternalBrowserPreset->itemData(index).toString());

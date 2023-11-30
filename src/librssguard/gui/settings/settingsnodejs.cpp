@@ -5,6 +5,7 @@
 #include "definitions/definitions.h"
 #include "exceptions/applicationexception.h"
 #include "miscellaneous/application.h"
+#include "miscellaneous/iconfactory.h"
 #include "miscellaneous/nodejs.h"
 #include "network-web/webfactory.h"
 
@@ -52,6 +53,10 @@ SettingsNodejs::SettingsNodejs(Settings* settings, QWidget* parent) : SettingsPa
   connect(m_ui.m_btnNpmExecutable, &QPushButton::clicked, this, [this]() {
     changeFileFolder(m_ui.m_tbPackageFolder, false, QSL("NPM (npm*)"));
   });
+}
+
+QIcon SettingsNodejs::icon() const {
+  return qApp->icons()->fromTheme(QSL("node-join"), QSL("node"));
 }
 
 void SettingsNodejs::changeFileFolder(LineEditWithStatus* tb, bool directory_select, const QString& file_filter) {

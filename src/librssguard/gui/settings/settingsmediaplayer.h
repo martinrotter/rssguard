@@ -13,6 +13,7 @@ class SettingsMediaPlayer : public SettingsPanel {
   public:
     explicit SettingsMediaPlayer(Settings* settings, QWidget* parent = nullptr);
 
+    virtual QIcon icon() const;
     virtual QString title() const;
     virtual void loadSettings();
     virtual void saveSettings();

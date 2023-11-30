@@ -18,6 +18,7 @@ class SettingsBrowserMail : public SettingsPanel {
     explicit SettingsBrowserMail(Settings* settings, QWidget* parent = nullptr);
     virtual ~SettingsBrowserMail();
 
+    virtual QIcon icon() const;
     virtual QString title() const;
     virtual void loadSettings();
     virtual void saveSettings();
