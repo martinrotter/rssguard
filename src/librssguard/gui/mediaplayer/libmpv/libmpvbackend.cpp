@@ -71,34 +71,28 @@ LibMpvBackend::LibMpvBackend(QWidget* parent)
   // mpv_set_option_string(m_mpvHandle, "input-builtin-bindings", "no");
   // mpv_set_option_string(m_mpvHandle, "input-test", "yes");
   mpv_set_option_string(m_mpvHandle, "msg-level", "all=v");
+
+#if !defined(NDEBUG)
   mpv_set_option_string(m_mpvHandle, "terminal", "yes");
+#endif
+
   mpv_set_option_string(m_mpvHandle, "keep-open", "yes");
 
   // mpv_set_option_string(m_mpvHandle, "no-resume-playback", "yes");
-  mpv_set_option_string(m_mpvHandle, "watch-later-dir", "mpv");
-  mpv_set_option_string(m_mpvHandle, "config-dir", "mpv");
-  mpv_set_option_string(m_mpvHandle, "config", "yes");
+  // mpv_set_option_string(m_mpvHandle, "watch-later-dir", "mpv");
+  // mpv_set_option_string(m_mpvHandle, "config-dir", "mpv");
 
-  // mpv_set_option_string(m_mpvHandle, "input-terminal", "yes");
+  mpv_set_option_string(m_mpvHandle, "config", "yes");
   mpv_set_option_string(m_mpvHandle, "hwdec", "auto");
   mpv_set_option_string(m_mpvHandle, "osd-playing-msg", "${media-title}");
   mpv_set_option_string(m_mpvHandle, "osc", "yes");
   mpv_set_option_string(m_mpvHandle, "input-cursor", "yes");
-
-  // mpv_set_option_string(m_mpvHandle, "osd-on-seek", "msg-bar");
-
-  // mpv::qt::set_option_variant(m_mpvHandle, "hwdec", "auto");
 
   // Enable keyboard input on the X11 window. For the messy details, see
   // --input-vo-keyboard on the manpage.
   // mpv_set_option_string(mpv, "input-vo-keyboard", "yes");
 
   // Observe some properties.
-  // mpv_observe_property(m_mpvHandle, 0, "time-pos", MPV_FORMAT_DOUBLE);
-  // mpv_observe_property(m_mpvHandle, 0, "track-list", MPV_FORMAT_NODE);
-  // mpv_observe_property(m_mpvHandle, 0, "chapter-list", MPV_FORMAT_NODE);
-  // mpv_observe_property(m_mpvHandle, 0, "duration", MPV_FORMAT_NODE);
-  // mpv_observe_property(m_mpvHandle, 0, "volume", MPV_FORMAT_NODE);
   mpv_observe_property(m_mpvHandle, EVENT_CODE_FS, "fullscreen", MPV_FORMAT_FLAG);
   mpv_observe_property(m_mpvHandle, EVENT_CODE_VOLUME, "volume", MPV_FORMAT_INT64);
   mpv_observe_property(m_mpvHandle, EVENT_CODE_DURATION, "duration", MPV_FORMAT_INT64);
