@@ -41,6 +41,8 @@ MediaPlayer::MediaPlayer(QWidget* parent)
   onSpeedChanged(100);
   onVolumeChanged(50);
   onStatusChanged(tr("Starting"));
+
+  updateTimeAndProgress(0, 0);
 }
 
 MediaPlayer::~MediaPlayer() {
