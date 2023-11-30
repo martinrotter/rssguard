@@ -67,26 +67,27 @@ LibMpvBackend::LibMpvBackend(QWidget* parent)
 #endif
 
   mpv_set_option(m_mpvHandle, "wid", MPV_FORMAT_INT64, &wid);
+
   mpv_set_option_string(m_mpvHandle, "input-default-bindings", "yes");
-  // mpv_set_option_string(m_mpvHandle, "input-builtin-bindings", "no");
-  // mpv_set_option_string(m_mpvHandle, "input-test", "yes");
   mpv_set_option_string(m_mpvHandle, "msg-level", "all=v");
-
-#if !defined(NDEBUG)
-  mpv_set_option_string(m_mpvHandle, "terminal", "yes");
-#endif
-
-  mpv_set_option_string(m_mpvHandle, "keep-open", "yes");
-
-  // mpv_set_option_string(m_mpvHandle, "no-resume-playback", "yes");
-  // mpv_set_option_string(m_mpvHandle, "watch-later-dir", "mpv");
-  // mpv_set_option_string(m_mpvHandle, "config-dir", "mpv");
-
   mpv_set_option_string(m_mpvHandle, "config", "yes");
   mpv_set_option_string(m_mpvHandle, "hwdec", "auto");
   mpv_set_option_string(m_mpvHandle, "osd-playing-msg", "${media-title}");
   mpv_set_option_string(m_mpvHandle, "osc", "yes");
   mpv_set_option_string(m_mpvHandle, "input-cursor", "yes");
+  mpv_set_option_string(m_mpvHandle, "keep-open", "no");
+  mpv_set_option_string(m_mpvHandle, "idle", "yes");
+  mpv_set_option_string(m_mpvHandle, "save-position-on-quit", "no");
+  mpv_set_option_string(m_mpvHandle, "no-resume-playback", "yes");
+#if !defined(NDEBUG)
+  mpv_set_option_string(m_mpvHandle, "terminal", "yes");
+#endif
+
+  //
+  // mpv_set_option_string(m_mpvHandle, "watch-later-dir", "mpv");
+  // mpv_set_option_string(m_mpvHandle, "config-dir", "mpv");
+  // mpv_set_option_string(m_mpvHandle, "input-builtin-bindings", "no");
+  // mpv_set_option_string(m_mpvHandle, "input-test", "yes");
 
   // Enable keyboard input on the X11 window. For the messy details, see
   // --input-vo-keyboard on the manpage.

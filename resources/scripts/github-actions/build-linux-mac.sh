@@ -9,21 +9,24 @@ webengine="$2"
 if [[ "$os" == *"ubuntu"* ]]; then
   echo "We are building for GNU/Linux on Ubuntu."
   is_linux=true
-  libmpv="ON"
-  qtmultimedia="OFF"
   prefix="AppDir/usr"
 
   if [[ "$webengine" == "ON" ]]; then
+    libmpv="ON"
+    qtmultimedia="OFF"
     app_id="io.github.martinrotter.rssguard"
   else
+    libmpv="OFF"
+    qtmultimedia="ON"
     app_id="io.github.martinrotter.rssguardlite"
   fi
 else
   echo "We are building for macOS."
   is_linux=false
+  prefix="RSS Guard.app"
+
   libmpv="OFF"
   qtmultimedia="ON"
-  prefix="RSS Guard.app"
 fi
 
 echo "OS: $os; Not lite: $webengine"

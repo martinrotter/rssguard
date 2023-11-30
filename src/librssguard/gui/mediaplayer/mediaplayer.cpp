@@ -36,7 +36,7 @@ MediaPlayer::MediaPlayer(QWidget* parent)
   onVideoAvailable(true);
   onMutedChanged(false);
   onPositionChanged(0);
-  onDurationChanged(100);
+  onDurationChanged(0);
   onSeekableChanged(true);
   onSpeedChanged(100);
   onVolumeChanged(50);
