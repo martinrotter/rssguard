@@ -27,7 +27,7 @@ class QtMultimediaBackend : public PlayerBackend {
     Q_OBJECT
 
   public:
-    explicit QtMultimediaBackend(QWidget* parent = nullptr);
+    explicit QtMultimediaBackend(Application* app, QWidget* parent = nullptr);
 
     virtual QUrl url() const;
     virtual int position() const;

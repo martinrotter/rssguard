@@ -10,8 +10,8 @@
 #include <QLayout>
 #include <QVideoWidget>
 
-QtMultimediaBackend::QtMultimediaBackend(QWidget* parent)
-  : PlayerBackend(parent),
+QtMultimediaBackend::QtMultimediaBackend(Application* app, QWidget* parent)
+  : PlayerBackend(app, parent),
 #if QT_VERSION_MAJOR == 6
     m_audio(new QAudioOutput(this)),
 #endif
