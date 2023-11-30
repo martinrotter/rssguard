@@ -2222,7 +2222,7 @@ QtWebEngineキャッシュフォルダ -&gt; &quot;%7&quot;</translation>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="271"/>
       <source>Switch fullscreen mode.</source>
-      <translation>全画面モードを切り替え</translation>
+      <translation>全画面モードに切り替え</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="279"/>
@@ -5820,12 +5820,12 @@ List of supported readers:</source>
     <message>
       <location filename="../src/librssguard/miscellaneous/skinfactory.cpp" line="608"/>
       <source>interesting stuff</source>
-      <translation>未読の記事の色</translation>
+      <translation>未読記事の色</translation>
     </message>
     <message>
       <location filename="../src/librssguard/miscellaneous/skinfactory.cpp" line="611"/>
       <source>interesting stuff (highlighted)</source>
-      <translation>未読の記事の色 (フォーカスがあるとき)</translation>
+      <translation>未読記事の色 (フォーカスがあるとき)</translation>
     </message>
     <message>
       <location filename="../src/librssguard/miscellaneous/skinfactory.cpp" line="614"/>
