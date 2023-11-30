@@ -18,6 +18,9 @@
     <file>sounds/fanfare2.wav</file>
     <file>sounds/goodresult.wav</file>
 
+    <file>scripts/mpv/mpv.conf</file>
+    <file>scripts/mpv/input.conf</file>
+
     <file>scripts/adblock/adblock-server.js</file>
     <file>scripts/readability/readabilize-article.js</file>
 

@@ -539,13 +539,13 @@ QString Application::cacheFolder() {
 #endif
 }
 
-QString Application::replaceDataUserDataFolderPlaceholder(QString text) const {
+QString Application::replaceUserDataFolderPlaceholder(QString text) const {
   auto user_data_folder = qApp->userDataFolder();
 
   return text.replace(QSL(USER_DATA_PLACEHOLDER), user_data_folder);
 }
 
-QStringList Application::replaceDataUserDataFolderPlaceholder(QStringList texts) const {
+QStringList Application::replaceUserDataFolderPlaceholder(QStringList texts) const {
   auto user_data_folder = qApp->userDataFolder();
 
   return texts.replaceInStrings(QSL(USER_DATA_PLACEHOLDER), user_data_folder);

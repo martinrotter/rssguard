@@ -21,6 +21,8 @@ class LibMpvBackend : public PlayerBackend {
     virtual int position() const;
     virtual int duration() const;
 
+    static void installCustomConfig(const QString& directory);
+
   public slots:
     virtual void setMuted(bool muted);
     virtual void playUrl(const QUrl& url);
@@ -51,12 +53,14 @@ class LibMpvBackend : public PlayerBackend {
     bool mpvDecodeBool(void* data) const;
     int mpvDecodeInt(void* data) const;
     double mpvDecodeDouble(void* data) const;
+    QString mpvEncodeKeyboardButton(int btn) const;
     QString errorToString(mpv_error error) const;
 
     void destroyHandle();
     void loadSettings();
 
   private:
+    QString m_customConfigFolder;
     QWidget* m_mpvContainer;
     mpv_handle* m_mpvHandle;
     QUrl m_url;

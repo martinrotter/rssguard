@@ -155,7 +155,6 @@ void FormSettings::addSettingsPanel(SettingsPanel* panel) {
   itm->setText(panel->title());
   itm->setIcon(panel->icon());
 
-  // m_ui.m_listSettings->addItem(itm);
   m_panels.append(panel);
 
   QScrollArea* scr = new QScrollArea(m_ui.m_stackedSettings);

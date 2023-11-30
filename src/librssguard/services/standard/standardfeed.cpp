@@ -403,7 +403,7 @@ void StandardFeed::setEncoding(const QString& encoding) {
 QStringList StandardFeed::prepareExecutionLine(const QString& execution_line) {
   auto args = TextFactory::tokenizeProcessArguments(execution_line);
 
-  return qApp->replaceDataUserDataFolderPlaceholder(args);
+  return qApp->replaceUserDataFolderPlaceholder(args);
 }
 
 QByteArray StandardFeed::runScriptProcess(const QStringList& cmd_args,

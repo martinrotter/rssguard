@@ -155,8 +155,8 @@ class RSSGUARD_DLLSPEC Application : public SingleApplication {
 
     int customAdblockPort() const;
 
-    QString replaceDataUserDataFolderPlaceholder(QString text) const;
-    QStringList replaceDataUserDataFolderPlaceholder(QStringList texts) const;
+    QString replaceUserDataFolderPlaceholder(QString text) const;
+    QStringList replaceUserDataFolderPlaceholder(QStringList texts) const;
 
     void setMainForm(FormMain* main_form);
 

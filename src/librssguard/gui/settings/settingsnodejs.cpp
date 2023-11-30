@@ -71,7 +71,7 @@ void SettingsNodejs::changeFileFolder(LineEditWithStatus* tb, bool directory_sel
     d.setNameFilter(file_filter);
   }
 
-  QString current = qApp->replaceDataUserDataFolderPlaceholder(tb->lineEdit()->text());
+  QString current = qApp->replaceUserDataFolderPlaceholder(tb->lineEdit()->text());
 
   d.selectFile(current);
 
@@ -128,7 +128,7 @@ void SettingsNodejs::testNpm() {
 }
 
 void SettingsNodejs::testPackageFolder() {
-  QString folder = qApp->replaceDataUserDataFolderPlaceholder(m_ui.m_tbPackageFolder->lineEdit()->text());
+  QString folder = qApp->replaceUserDataFolderPlaceholder(m_ui.m_tbPackageFolder->lineEdit()->text());
 
   const auto fi = QFileInfo(folder);
   const auto is_file = fi.isFile() && fi.exists();

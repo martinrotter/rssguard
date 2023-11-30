@@ -9,7 +9,7 @@
 MessageFilter::MessageFilter(int id, QObject* parent) : QObject(parent), m_id(id) {}
 
 MessageObject::FilteringAction MessageFilter::filterMessage(QJSEngine* engine) {
-  QJSValue filter_func = engine->evaluate(qApp->replaceDataUserDataFolderPlaceholder(m_script));
+  QJSValue filter_func = engine->evaluate(qApp->replaceUserDataFolderPlaceholder(m_script));
 
   if (filter_func.isError()) {
     QJSValue::ErrorType error = filter_func.errorType();

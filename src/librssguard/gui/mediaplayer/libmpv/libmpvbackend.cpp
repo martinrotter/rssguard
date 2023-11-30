@@ -6,11 +6,13 @@
 #include "definitions/definitions.h"
 #include "gui/mediaplayer/libmpv/qthelper.h"
 #include "miscellaneous/settings.h"
+#include "miscellaneous/textfactory.h"
 
 #include <clocale>
 #include <sstream>
 #include <stdexcept>
 
+#include <QDir>
 #include <QJsonArray>
 #include <QJsonDocument>
 #include <QKeyEvent>
@@ -27,6 +29,9 @@
 #define EVENT_CODE_PAUSE    10
 #define EVENT_CODE_IDLE     11
 #define EVENT_CODE_STOP     12
+
+#define CONFIG_MAIN_NAME  "mpv.conf"
+#define CONFIG_INPUT_NAME "input.conf"
 
 static void wakeup(void* ctx) {
   // This callback is invoked from any mpv thread (but possibly also
@@ -70,34 +75,35 @@ LibMpvBackend::LibMpvBackend(Application* app, QWidget* parent)
 
   mpv_set_option(m_mpvHandle, "wid", MPV_FORMAT_INT64, &wid);
 
-  mpv_set_option_string(m_mpvHandle, "input-default-bindings", "yes");
   mpv_set_option_string(m_mpvHandle, "msg-level", "all=v");
   mpv_set_option_string(m_mpvHandle, "config", "yes");
   mpv_set_option_string(m_mpvHandle, "hwdec", "auto");
   mpv_set_option_string(m_mpvHandle, "osd-playing-msg", "${media-title}");
   mpv_set_option_string(m_mpvHandle, "osc", "yes");
   mpv_set_option_string(m_mpvHandle, "input-cursor", "yes");
-  // mpv_set_option_string(m_mpvHandle, "keep-open", "no");
   mpv_set_option_string(m_mpvHandle, "idle", "yes");
   mpv_set_option_string(m_mpvHandle, "save-position-on-quit", "no");
   mpv_set_option_string(m_mpvHandle, "no-resume-playback", "yes");
 
-#if !defined(NDEBUG)
-  mpv_set_option_string(m_mpvHandle, "terminal", "yes");
-#endif
-
+  //
+  // NOTE: Just random options for testing here.
+  //
+  // mpv_set_option_string(m_mpvHandle, "keep-open", "no");
+  // mpv_set_option_string(m_mpvHandle, "terminal", "yes");
   // mpv_set_option_string(m_mpvHandle, "osd-italic", "yes");
   // mpv_set_option_string(m_mpvHandle, "osd-color", "1.0/0.0/0.0");
-
-  //
   // mpv_set_option_string(m_mpvHandle, "watch-later-dir", "mpv");
-  mpv_set_option_string(m_mpvHandle, "config-dir", "mpv");
   // mpv_set_option_string(m_mpvHandle, "input-builtin-bindings", "no");
   // mpv_set_option_string(m_mpvHandle, "input-test", "yes");
 
-  // Enable keyboard input on the X11 window. For the messy details, see
-  // --input-vo-keyboard on the manpage.
-  // mpv_set_option_string(mpv, "input-vo-keyboard", "yes");
+  if (!m_customConfigFolder.isEmpty()) {
+    QByteArray cfg_folder = QDir::toNativeSeparators(m_customConfigFolder).toLocal8Bit();
+
+    mpv_set_option_string(m_mpvHandle, "config-dir", cfg_folder.constData());
+  }
+  else {
+    mpv_set_option_string(m_mpvHandle, "input-default-bindings", "yes");
+  }
 
   // Observe some properties.
   mpv_observe_property(m_mpvHandle, EVENT_CODE_FS, "fullscreen", MPV_FORMAT_FLAG);
@@ -134,7 +140,16 @@ void LibMpvBackend::destroyHandle() {
   }
 }
 
-void LibMpvBackend::loadSettings() {}
+void LibMpvBackend::loadSettings() {
+  if (m_app->settings()->value(GROUP(VideoPlayer), SETTING(VideoPlayer::MpvUseCustomConfigFolder)).toBool()) {
+    m_customConfigFolder =
+      m_app->replaceUserDataFolderPlaceholder(m_app->settings()
+                                                ->value(GROUP(VideoPlayer), SETTING(VideoPlayer::MpvCustomConfigFolder))
+                                                .toString());
+
+    installCustomConfig(m_customConfigFolder);
+  }
+}
 
 LibMpvBackend::~LibMpvBackend() {
   destroyHandle();
@@ -196,6 +211,10 @@ int LibMpvBackend::mpvDecodeInt(void* data) const {
 
 double LibMpvBackend::mpvDecodeDouble(void* data) const {
   return *(double*)data;
+}
+
+QString LibMpvBackend::mpvEncodeKeyboardButton(int btn) const {
+  return QString((QChar)btn);
 }
 
 QString LibMpvBackend::errorToString(mpv_error error) const {
@@ -455,16 +474,14 @@ bool LibMpvBackend::eventFilter(QObject* watched, QEvent* event) {
       mpv_command_async(m_mpvHandle, 0, args);
     }
 
-    if (event->type() == QEvent::Type::KeyPress) {
+    if (event->type() == QEvent::Type::KeyRelease) {
       // We catch all keypresses (even from surrounding widgets).
       QKeyEvent* key_event = dynamic_cast<QKeyEvent*>(event);
-      char txt = (char)key_event->key();
-      char str[2];
+      QString keys =
+        QKeySequence(key_event->key() | key_event->modifiers()).toString(QKeySequence::SequenceFormat::PortableText);
+      QByteArray byte_named_key = keys.toLocal8Bit();
 
-      str[0] = txt;
-      str[1] = '\0';
-
-      const char* args[] = {"keypress", str, nullptr};
+      const char* args[] = {"keypress", byte_named_key.constData(), nullptr};
 
       mpv_command_async(m_mpvHandle, 0, args);
       event->accept();
@@ -561,6 +578,22 @@ int LibMpvBackend::duration() const {
   mpv_get_property(m_mpvHandle, "duration", MPV_FORMAT_INT64, &out);
 
   return out;
+}
+
+void LibMpvBackend::installCustomConfig(const QString& directory) {
+  QDir().mkpath(directory);
+  QDir config_dir(directory);
+
+  for (const QString& cfg_file : QStringList{QSL(CONFIG_MAIN_NAME), QSL(CONFIG_INPUT_NAME)}) {
+    if (!config_dir.exists(cfg_file)) {
+      qDebugNN << LOGSEC_MPV << "Copying sample" << QUOTE_W_SPACE(cfg_file) << "to"
+               << QUOTE_W_SPACE_DOT(config_dir.absolutePath());
+      IOFactory::copyFile(QSL(":/scripts/mpv/%1").arg(cfg_file), config_dir.absoluteFilePath(cfg_file));
+    }
+    else {
+      qDebugNN << LOGSEC_MPV << "Configuration file" << QUOTE_W_SPACE(cfg_file) << "already exists.";
+    }
+  }
 }
 
 void LibMpvBackend::setMuted(bool muted) {

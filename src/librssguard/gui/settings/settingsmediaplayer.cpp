@@ -65,7 +65,9 @@ void SettingsMediaPlayer::saveSettings() {
                        m_ui.m_gbMpvCustomConfigFolder->isChecked());
   settings()->setValue(GROUP(VideoPlayer), VideoPlayer::MpvCustomConfigFolder, m_ui.m_txtMpvConfigFolder->text());
 
-  // LibMpvBackend::installCustomConfig()
+  if (m_ui.m_gbMpvCustomConfigFolder->isChecked()) {
+    LibMpvBackend::installCustomConfig(m_ui.m_txtMpvConfigFolder->text());
+  }
 #elif defined(ENABLE_MEDIAPLAYER_QTMULTIMEDIA)
 
 #else

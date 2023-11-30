@@ -53,7 +53,7 @@ QString NodeJs::packageFolder() const {
 }
 
 QString NodeJs::processedPackageFolder() const {
-  QString path = qApp->replaceDataUserDataFolderPlaceholder(packageFolder());
+  QString path = qApp->replaceUserDataFolderPlaceholder(packageFolder());
 
   if (!QDir().mkpath(path)) {
     qCriticalNN << LOGSEC_NODEJS << "Failed to create package folder structure" << QUOTE_W_SPACE_DOT(path);
