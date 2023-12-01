@@ -193,6 +193,7 @@ void TextBrowserViewer::loadMessages(const QList<Message>& messages, RootItem* r
   // html_messages.m_html = html_messages.m_html.replace(exp_replace_wide_stuff, QSL("width=\"%1\"").arg(width() *
   // 0.9));
 
+  // Replace too wide pictures.
   QRegularExpressionMatch exp_match;
   qsizetype match_offset = 0;
   int acceptable_width = int(width() * 0.9);
@@ -208,6 +209,17 @@ void TextBrowserViewer::loadMessages(const QList<Message>& messages, RootItem* r
 
     match_offset = exp_match.capturedEnd();
   }
+
+  // Remove other characters which cannot be displayed properly.
+  static QRegularExpression exp_symbols("&#x1F[0-9A-F]{3};");
+
+  html_messages.m_html = html_messages.m_html.replace(exp_symbols, QString());
+
+  /*
+#if !defined(NDEBUG)
+  IOFactory::writeFile("aaa.html", html_messages.m_html.toUtf8());
+#endif
+  */
 
   setHtml(html_messages.m_html, html_messages.m_baseUrl);
 
