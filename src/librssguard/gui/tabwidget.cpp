@@ -130,6 +130,9 @@ void TabWidget::createConnections() {
           &MessagesView::openSingleMessageInNewTab,
           this,
           &TabWidget::addSingleMessageView);
+  connect(feedMessageViewer()->messagesView(), &MessagesView::playLinkInMediaPlayer, this, [this](const QString& url) {
+    addMediaPlayer(url, true);
+  });
 }
 
 void TabWidget::initializeTabs() {

@@ -16,6 +16,7 @@ User data folder can store your custom icon themes in `icons` subfolder, and cus
 ## `%data%` placeholder
 RSS Guard stores its data and settings in a single folder. How to find out the exact path, see here. RSS Guard allows using the folder programmatically in some special contexts via `%data%` placeholder. You can use this placeholder in following contexts:
 * Contents of your [article filters](filters) - you can, therefore, place some scripts under your user data folder and include them via JavaScript into your article filter.
+* Path to your custom configuration directory for `libmpv`-based [media player](mediaplayer).
 * Contents of each file included in your custom [skins](skins). Note that in this case, the semantics of `%data%` are little changed and `%data%` points directly to base folder of your skin.
 * `source` and `post-process script` attributes for feed [scraping](scraping) - you can use the placeholder to load scripts to generate/process the feed from user's data folder.
 * [Notifications](notifications) also support the placeholder in path to audio files which are to be played when some event happens. For example, you could place audio files in your data folder and then use them in a notification with `%data%\audio\new-messages.wav`. See more about notifications.

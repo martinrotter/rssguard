@@ -466,6 +466,7 @@ void MessagesView::initializeContextMenu() {
                                               << qApp->mainForm()->m_ui->m_actionOpenSelectedSourceArticlesExternally
                                               << qApp->mainForm()->m_ui->m_actionOpenSelectedMessagesInternally
                                               << qApp->mainForm()->m_ui->m_actionOpenSelectedMessagesInternallyNoTab
+                                              << qApp->mainForm()->m_ui->m_actionPlaySelectedArticlesInMediaPlayer
                                               << qApp->mainForm()->m_ui->m_actionCopyUrlSelectedArticles
                                               << qApp->mainForm()->m_ui->m_actionMarkSelectedMessagesAsRead
                                               << qApp->mainForm()->m_ui->m_actionMarkSelectedMessagesAsUnread
@@ -632,6 +633,27 @@ void MessagesView::openSelectedSourceMessagesExternally() {
     });
   }
 }
+
+#if defined(ENABLE_MEDIAPLAYER)
+void MessagesView::playSelectedArticleInMediaPlayer() {
+  auto rws = selectionModel()->selectedRows();
+
+  if (!rws.isEmpty()) {
+    auto msg = m_sourceModel->messageAt(m_proxyModel->mapToSource(rws.first()).row());
+
+    if (msg.m_url.isEmpty()) {
+      qApp->showGuiMessage(Notification::Event::GeneralEvent,
+                           GuiMessage(tr("No URL"),
+                                      tr("Article cannot be played in media player as it has no URL"),
+                                      QSystemTrayIcon::MessageIcon::Warning),
+                           GuiMessageDestination(true, true));
+    }
+    else {
+      emit playLinkInMediaPlayer(msg.m_url);
+    }
+  }
+}
+#endif
 
 void MessagesView::openSelectedMessagesInternally() {
   auto rws = selectionModel()->selectedRows();

@@ -8,6 +8,7 @@ RSS Guards Documentation!
    donations
    downloads
    supported-os
+   variants
    supported-readers
 
 .. toctree::

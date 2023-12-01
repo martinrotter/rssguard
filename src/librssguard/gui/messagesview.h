@@ -41,7 +41,11 @@ class MessagesView : public BaseTreeView {
     // Loads un-deleted messages from selected feeds.
     void loadItem(RootItem* item);
 
-    // Message manipulators.
+// Message manipulators.
+#if defined(ENABLE_MEDIAPLAYER)
+    void playSelectedArticleInMediaPlayer();
+#endif
+
     void openSelectedSourceMessagesExternally();
     void openSelectedMessagesInternally();
     void openSelectedMessageUrl();
@@ -83,6 +87,10 @@ class MessagesView : public BaseTreeView {
     void onSortIndicatorChanged(int column, Qt::SortOrder order);
 
   signals:
+#if defined(ENABLE_MEDIAPLAYER)
+    void playLinkInMediaPlayer(const QString& link);
+#endif
+
     void openLinkNewTab(const QString& link);
     void openLinkMiniBrowser(const QString& link);
     void openSingleMessageInNewTab(RootItem* root, const Message& message);
