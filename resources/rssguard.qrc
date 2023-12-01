@@ -91,6 +91,7 @@
     <file>skins/nudus-dark/html_style.css</file>
     <file>skins/nudus-dark/metadata.xml</file>
     <file>skins/nudus-dark/qt_style.qss</file>
+    <file>skins/nudus-dark/lite_html_style.css</file>
 
     <file>skins/nudus-light/html_style.css</file>
     <file>skins/nudus-light/metadata.xml</file>
