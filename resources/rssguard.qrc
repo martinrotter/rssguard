@@ -84,6 +84,7 @@
     <file>skins/nudus-base/html_single_message.html</file>
     <file>skins/nudus-base/html_wrapper.html</file>
     <file>skins/nudus-base/lite_html_enclosure_every.html</file>
+    <file>skins/nudus-base/lite_html_enclosure_image.html</file>
     <file>skins/nudus-base/lite_html_single_message.html</file>
 
     <file>skins/nudus-dark/html_wrapper.html</file>

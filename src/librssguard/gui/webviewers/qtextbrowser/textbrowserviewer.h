@@ -94,12 +94,10 @@ class TextBrowserViewer : public QTextBrowser, public WebViewer {
 
   private:
     void setHtmlPrivate(const QString& html, const QUrl& base_url);
-
     BlockingResult blockedWithAdblock(const QUrl& url);
-    QScopedPointer<Downloader> m_downloader;
-    PreparedHtml prepareHtmlForMessage(const QList<Message>& messages, RootItem* selected_item) const;
 
   private:
+    QScopedPointer<Downloader> m_downloader;
     bool m_resourcesEnabled;
     QList<QUrl> m_neededResources; // All URLs here must be resolved.
     QScopedPointer<Downloader> m_resourceDownloader;

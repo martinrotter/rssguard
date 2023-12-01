@@ -161,9 +161,6 @@ namespace Messages {
   KEY Zoom;
   VALUE(qreal) ZoomDef;
 
-  KEY SimpleArticleLayout;
-  VALUE(bool) SimpleArticleLayoutDef;
-
   KEY FixupFutureArticleDateTimes;
   VALUE(bool) FixupFutureArticleDateTimesDef;
 

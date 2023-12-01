@@ -37,23 +37,6 @@ TextBrowserViewer::TextBrowserViewer(QWidget* parent)
   setResourcesEnabled(qApp->settings()->value(GROUP(Messages), SETTING(Messages::ShowResourcesInArticles)).toBool());
   setDocument(m_document.data());
 
-  // Apply master CSS.
-  /*
-  QColor a_color = qApp->skins()->colorForModel(SkinEnums::PaletteColors::FgInteresting).value<QColor>();
-
-  if (!a_color.isValid()) {
-    a_color = qApp->palette().color(QPalette::ColorRole::Highlight);
-  }
-
-  m_document.data()->setDefaultStyleSheet(QSL("a { color: %1; }").arg(a_color.name()));
-  */
-
-  /*
-  m_document->setDefaultStyleSheet("p {"
-                                   "background-color: yellow;"
-                                   "border: 1px solid black;"
-                                   "}");
-*/
   connect(this, &TextBrowserViewer::reloadDocument, this, [this]() {
     const auto scr = verticalScrollBarPosition();
     setHtmlPrivate(html(), m_currentUrl);
@@ -93,103 +76,6 @@ QVariant TextBrowserViewer::loadOneResource(int type, const QUrl& name) {
   else {
     return QImage::fromData(m_loadedResources.value(resolved_name));
   }
-}
-
-PreparedHtml TextBrowserViewer::prepareHtmlForMessage(const QList<Message>& messages, RootItem* selected_item) const {
-  PreparedHtml html;
-  bool acc_displays_enclosures =
-    selected_item == nullptr || selected_item->getParentServiceRoot()->displaysEnclosures();
-
-  for (const Message& message : messages) {
-    bool is_plain = !TextFactory::couldBeHtml(message.m_contents);
-
-    // Add title.
-    if (!message.m_url.isEmpty()) {
-      html.m_html += QSL("<h2 align=\"center\"><a href=\"%2\">%1</a></h2>").arg(message.m_title, message.m_url);
-    }
-    else {
-      html.m_html += QSL("<h2 align=\"center\">%1</h2>").arg(message.m_title);
-    }
-
-    // Start contents.
-    html.m_html += QSL("<div>");
-
-    // Add links to enclosures.
-    if (acc_displays_enclosures) {
-      for (const Enclosure& enc : message.m_enclosures) {
-        html.m_html += QSL("[<a href=\"%1\">%2</a>]").arg(enc.m_url, enc.m_mimeType);
-      }
-    }
-
-    // Display enclosures which are pictures if user has it enabled.
-    auto first_enc_break_added = false;
-
-    if (acc_displays_enclosures &&
-        qApp->settings()->value(GROUP(Messages), SETTING(Messages::DisplayEnclosuresInMessage)).toBool()) {
-      for (const Enclosure& enc : message.m_enclosures) {
-        if (enc.m_mimeType.startsWith(QSL("image/"))) {
-          if (!first_enc_break_added) {
-            html.m_html += QSL("<br/>");
-            first_enc_break_added = true;
-          }
-
-          html.m_html += QSL("<img src=\"%1\" /><br/>").arg(enc.m_url);
-        }
-      }
-    }
-
-    // Append actual contents of article and convert to HTML if needed.
-    html.m_html += is_plain ? Qt::convertFromPlainText(message.m_contents, Qt::WhiteSpaceMode::WhiteSpaceNormal)
-                            : message.m_contents;
-
-    static QRegularExpression img_tag_rgx(QSL("\\<img[^\\>]*src\\s*=\\s*[\"\']([^\"\']*)[\"\'][^\\>]*\\>"),
-                                          QRegularExpression::PatternOption::CaseInsensitiveOption |
-                                            QRegularExpression::PatternOption::InvertedGreedinessOption);
-
-    // Extract all images links from article to be appended to end of article.
-    QRegularExpressionMatchIterator i = img_tag_rgx.globalMatch(html.m_html);
-    QString pictures_html;
-
-    while (i.hasNext()) {
-      QRegularExpressionMatch match = i.next();
-      auto captured_url = match.captured(1);
-
-      pictures_html += QSL("<br/>[%1] <a href=\"%2\">%2</a>").arg(tr("image"), captured_url);
-    }
-
-    // Make alla images clickable as links and also resize them if user has it setup.
-    auto forced_img_size = qApp->settings()->value(GROUP(Messages), SETTING(Messages::MessageHeadImageHeight)).toInt();
-
-    // Fixup all "img" tags.
-    html.m_html = html.m_html.replace(img_tag_rgx,
-                                      QSL("<a href=\"\\1\"><img height=\"%1\" src=\"\\1\" /></a>")
-                                        .arg(forced_img_size <= 0 ? QString() : QString::number(forced_img_size)));
-
-    // Append generated list of images.
-    html.m_html += pictures_html;
-  }
-
-  // Close contents.
-  html.m_html += QSL("</div>");
-
-  QString base_url;
-  auto* feed = selected_item->getParentServiceRoot()
-                 ->getItemFromSubTree([messages](const RootItem* it) {
-                   return it->kind() == RootItem::Kind::Feed && it->customId() == messages.at(0).m_feedId;
-                 })
-                 ->toFeed();
-
-  if (feed != nullptr) {
-    QUrl url(NetworkFactory::sanitizeUrl(feed->source()));
-
-    if (url.isValid()) {
-      base_url = url.scheme() + QSL("://") + url.host();
-    }
-  }
-
-  html.m_baseUrl = base_url;
-
-  return html;
 }
 
 void TextBrowserViewer::bindToBrowser(WebBrowser* browser) {
@@ -302,8 +188,25 @@ void TextBrowserViewer::loadMessages(const QList<Message>& messages, RootItem* r
 
   auto html_messages = qApp->skins()->generateHtmlOfArticles(messages, root);
 
-  if (html_messages.m_html.isEmpty()) {
-    html_messages = prepareHtmlForMessage(messages, root);
+  static QRegularExpression exp_replace_wide_stuff(QSL("width=\"([^\"]+)\""));
+
+  // html_messages.m_html = html_messages.m_html.replace(exp_replace_wide_stuff, QSL("width=\"%1\"").arg(width() *
+  // 0.9));
+
+  QRegularExpressionMatch exp_match;
+  qsizetype match_offset = 0;
+  int acceptable_width = int(width() * 0.9);
+
+  while ((exp_match = exp_replace_wide_stuff.match(html_messages.m_html, match_offset)).hasMatch()) {
+    int found_width = exp_match.captured(1).toInt();
+
+    if (found_width > acceptable_width) {
+      html_messages.m_html = html_messages.m_html.replace(exp_match.capturedStart(1),
+                                                          exp_match.capturedLength(1),
+                                                          QString::number(acceptable_width));
+    }
+
+    match_offset = exp_match.capturedEnd();
   }
 
   setHtml(html_messages.m_html, html_messages.m_baseUrl);
