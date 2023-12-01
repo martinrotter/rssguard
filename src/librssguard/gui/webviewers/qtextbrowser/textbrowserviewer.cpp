@@ -38,6 +38,7 @@ TextBrowserViewer::TextBrowserViewer(QWidget* parent)
   setDocument(m_document.data());
 
   // Apply master CSS.
+  /*
   QColor a_color = qApp->skins()->colorForModel(SkinEnums::PaletteColors::FgInteresting).value<QColor>();
 
   if (!a_color.isValid()) {
@@ -45,6 +46,7 @@ TextBrowserViewer::TextBrowserViewer(QWidget* parent)
   }
 
   m_document.data()->setDefaultStyleSheet(QSL("a { color: %1; }").arg(a_color.name()));
+  */
 
   /*
   m_document->setDefaultStyleSheet("p {"
