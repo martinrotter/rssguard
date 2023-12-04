@@ -85,11 +85,14 @@ LibMpvBackend::LibMpvBackend(Application* app, QWidget* parent)
   mpv_set_option_string(m_mpvHandle, "save-position-on-quit", "no");
   mpv_set_option_string(m_mpvHandle, "no-resume-playback", "yes");
 
+#if !defined(NDEBUG)
+  mpv_set_option_string(m_mpvHandle, "terminal", "yes");
+#endif
+
   //
   // NOTE: Just random options for testing here.
   //
   // mpv_set_option_string(m_mpvHandle, "keep-open", "no");
-  // mpv_set_option_string(m_mpvHandle, "terminal", "yes");
   // mpv_set_option_string(m_mpvHandle, "osd-italic", "yes");
   // mpv_set_option_string(m_mpvHandle, "osd-color", "1.0/0.0/0.0");
   // mpv_set_option_string(m_mpvHandle, "watch-later-dir", "mpv");

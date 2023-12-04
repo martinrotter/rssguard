@@ -35,8 +35,10 @@ void SettingsMediaPlayer::loadSettings() {
 
   m_ui.m_gbMpvCustomConfigFolder
     ->setChecked(settings()->value(GROUP(VideoPlayer), SETTING(VideoPlayer::MpvUseCustomConfigFolder)).toBool());
-  m_ui.m_txtMpvConfigFolder
-    ->setText(settings()->value(GROUP(VideoPlayer), SETTING(VideoPlayer::MpvCustomConfigFolder)).toString());
+  m_ui.m_txtMpvConfigFolder->setText(QDir::toNativeSeparators(settings()
+                                                                ->value(GROUP(VideoPlayer),
+                                                                        SETTING(VideoPlayer::MpvCustomConfigFolder))
+                                                                .toString()));
 #elif defined(ENABLE_MEDIAPLAYER_QTMULTIMEDIA)
   m_ui.m_txtBackend->setText(QSL("QtMultimedia"));
   m_ui.m_helpInfo->setHelpText(tr("You use lightweight QtMultimedia-based media player backend. If some videos do not "

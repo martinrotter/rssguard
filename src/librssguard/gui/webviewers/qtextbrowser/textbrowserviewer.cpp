@@ -69,13 +69,25 @@ QVariant TextBrowserViewer::loadOneResource(int type, const QUrl& name) {
 
   // Resources are enabled and we already have the resource.
   QByteArray resource_data = m_loadedResources.value(resolved_name);
+  QImage img;
 
   if (resource_data.isEmpty()) {
-    return m_placeholderImageError;
+    img = m_placeholderImageError.toImage();
   }
   else {
-    return QImage::fromData(m_loadedResources.value(resolved_name));
+    img = QImage::fromData(m_loadedResources.value(resolved_name));
   }
+
+  int acceptable_width = int(width() * 0.9);
+
+  if (img.width() > acceptable_width) {
+    qWarningNN << LOGSEC_GUI << "Picture" << QUOTE_W_SPACE(name)
+               << "is too wide, down-scaling to prevent horizontal scrollbars.";
+
+    img = img.scaledToWidth(acceptable_width);
+  }
+
+  return img;
 }
 
 void TextBrowserViewer::bindToBrowser(WebBrowser* browser) {
@@ -202,6 +214,9 @@ void TextBrowserViewer::loadMessages(const QList<Message>& messages, RootItem* r
     int found_width = exp_match.captured(1).toInt();
 
     if (found_width > acceptable_width) {
+      qWarningNN << LOGSEC_GUI << "Element" << QUOTE_W_SPACE(exp_match.captured())
+                 << "is too wide, setting smaller value to prevent horizontal scrollbars.";
+
       html_messages.m_html = html_messages.m_html.replace(exp_match.capturedStart(1),
                                                           exp_match.capturedLength(1),
                                                           QString::number(acceptable_width));
@@ -215,11 +230,9 @@ void TextBrowserViewer::loadMessages(const QList<Message>& messages, RootItem* r
 
   html_messages.m_html = html_messages.m_html.replace(exp_symbols, QString());
 
-  /*
 #if !defined(NDEBUG)
-  IOFactory::writeFile("aaa.html", html_messages.m_html.toUtf8());
+  // IOFactory::writeFile("aaa.html", html_messages.m_html.toUtf8());
 #endif
-  */
 
   setHtml(html_messages.m_html, html_messages.m_baseUrl);
 
