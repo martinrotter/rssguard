@@ -67,7 +67,7 @@ class WebFactory : public QObject {
     void cleanupCache();
 #endif
 
-    bool openUrlInExternalBrowser(const QString& url) const;
+    bool openUrlInExternalBrowser(const QUrl& url) const;
 
 #if defined(NO_LITE)
   private slots:

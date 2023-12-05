@@ -119,8 +119,8 @@ void WebFactory::loadCustomCss(const QString user_styles_path) {
 }
 #endif
 
-bool WebFactory::openUrlInExternalBrowser(const QString& url) const {
-  QString my_url = QUrl::toPercentEncoding(url);
+bool WebFactory::openUrlInExternalBrowser(const QUrl& url) const {
+  QString my_url = url.toString(QUrl::ComponentFormattingOption::FullyEncoded);
 
   qDebugNN << LOGSEC_NETWORK << "We are trying to open URL" << QUOTE_W_SPACE_DOT(my_url);
 
