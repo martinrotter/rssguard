@@ -50,7 +50,8 @@ WebEnginePage* WebEngineViewer::page() const {
 }
 
 void WebEngineViewer::loadMessages(const QList<Message>& messages, RootItem* root) {
-  auto html_messages = qApp->skins()->generateHtmlOfArticles(messages, root);
+  auto html_messages =
+    qApp->skins()->generateHtmlOfArticles(messages, root, width() * ACCEPTABLE_IMAGE_PERCENTUAL_WIDTH);
 
   m_root = root;
   m_messageContents = html_messages.m_html;

@@ -18,6 +18,8 @@ function filterMessage() { }
 
 The function should be fast and must return values which belong to enumeration [`FilteringAction`](#filteringaction-enum).
 
+Supported set of built-in "standard library" adheres to [ECMA-262](https://ecma-international.org/publications-and-standards/standards/ecma-262).
+
 Each article is accessible in your script via global variable named `msg` of type `MessageObject`, see [this file](https://github.com/martinrotter/rssguard/blob/master/src/librssguard/core/messageobject.h) for the declaration. Some properties are writeable, allowing you to change contents of the article before it is written to RSS Guard DB. You can mark article important, change its description, perhaps change author name or even assign some [label](labels) to it!!!
 
 ```{note}

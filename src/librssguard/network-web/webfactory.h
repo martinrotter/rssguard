@@ -38,6 +38,7 @@ class WebFactory : public QObject {
     //   ∀ = &forall; (entity name), &#8704; (base-10 entity), &#x2200; (base-16 entity)
     QString unescapeHtml(const QString& html);
 
+    QString limitSizeOfHtmlImages(const QString& html, int desired_width, int images_max_height) const;
     QString processFeedUriScheme(const QString& url);
 
     AdBlockManager* adBlock() const;

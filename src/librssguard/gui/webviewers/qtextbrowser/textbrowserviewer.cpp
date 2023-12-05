@@ -78,13 +78,17 @@ QVariant TextBrowserViewer::loadOneResource(int type, const QUrl& name) {
     img = QImage::fromData(m_loadedResources.value(resolved_name));
   }
 
-  int acceptable_width = int(width() * 0.9);
+  int acceptable_width = int(width() * ACCEPTABLE_IMAGE_PERCENTUAL_WIDTH);
 
   if (img.width() > acceptable_width) {
-    qWarningNN << LOGSEC_GUI << "Picture" << QUOTE_W_SPACE(name)
-               << "is too wide, down-scaling to prevent horizontal scrollbars.";
+    QElapsedTimer tmr;
 
-    img = img.scaledToWidth(acceptable_width);
+    tmr.start();
+    img = img.scaledToWidth(acceptable_width, Qt::TransformationMode::SmoothTransformation);
+
+    qWarningNN << LOGSEC_GUI << "Picture" << QUOTE_W_SPACE(name)
+               << "is too wide, down-scaling to prevent horizontal scrollbars. Scaling took"
+               << NONQUOTE_W_SPACE(tmr.elapsed()) << "miliseconds.";
   }
 
   return img;
@@ -198,32 +202,8 @@ void TextBrowserViewer::loadMessages(const QList<Message>& messages, RootItem* r
   emit loadingStarted();
   m_root = root;
 
-  auto html_messages = qApp->skins()->generateHtmlOfArticles(messages, root);
-
-  static QRegularExpression exp_replace_wide_stuff(QSL("width=\"([^\"]+)\""));
-
-  // html_messages.m_html = html_messages.m_html.replace(exp_replace_wide_stuff, QSL("width=\"%1\"").arg(width() *
-  // 0.9));
-
-  // Replace too wide pictures.
-  QRegularExpressionMatch exp_match;
-  qsizetype match_offset = 0;
-  int acceptable_width = int(width() * 0.9);
-
-  while ((exp_match = exp_replace_wide_stuff.match(html_messages.m_html, match_offset)).hasMatch()) {
-    int found_width = exp_match.captured(1).toInt();
-
-    if (found_width > acceptable_width) {
-      qWarningNN << LOGSEC_GUI << "Element" << QUOTE_W_SPACE(exp_match.captured())
-                 << "is too wide, setting smaller value to prevent horizontal scrollbars.";
-
-      html_messages.m_html = html_messages.m_html.replace(exp_match.capturedStart(1),
-                                                          exp_match.capturedLength(1),
-                                                          QString::number(acceptable_width));
-    }
-
-    match_offset = exp_match.capturedEnd();
-  }
+  auto html_messages =
+    qApp->skins()->generateHtmlOfArticles(messages, root, width() * ACCEPTABLE_IMAGE_PERCENTUAL_WIDTH);
 
   // Remove other characters which cannot be displayed properly.
   static QRegularExpression exp_symbols("&#x1F[0-9A-F]{3};");

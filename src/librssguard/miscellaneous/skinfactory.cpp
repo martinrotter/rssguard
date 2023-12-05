@@ -5,6 +5,7 @@
 #include "miscellaneous/application.h"
 #include "miscellaneous/settings.h"
 #include "network-web/networkfactory.h"
+#include "network-web/webfactory.h"
 #include "services/abstract/rootitem.h"
 
 #include <QDir>
@@ -228,11 +229,13 @@ PreparedHtml SkinFactory::prepareHtml(const QString& inner_html, const QUrl& bas
   return {currentSkin().m_layoutMarkupWrapper.arg(QString(), inner_html), base_url};
 }
 
-PreparedHtml SkinFactory::generateHtmlOfArticles(const QList<Message>& messages, RootItem* root) const {
+PreparedHtml SkinFactory::generateHtmlOfArticles(const QList<Message>& messages,
+                                                 RootItem* root,
+                                                 int desired_width) const {
   Skin skin = currentSkin();
   QString messages_layout;
   QString single_message_layout = skin.m_layoutMarkup;
-  const auto forced_img_size =
+  const int forced_img_height =
     qApp->settings()->value(GROUP(Messages), SETTING(Messages::MessageHeadImageHeight)).toInt();
 
   auto* feed = root != nullptr
@@ -261,7 +264,7 @@ PreparedHtml SkinFactory::generateHtmlOfArticles(const QList<Message>& messages,
             enclosure_images +=
               skin.m_enclosureImageMarkup.arg(enclosure.m_url,
                                               enclosure.m_mimeType,
-                                              forced_img_size <= 0 ? QString() : QString::number(forced_img_size));
+                                              forced_img_height <= 0 ? QString() : QString::number(forced_img_height));
           }
         }
       }
@@ -274,15 +277,19 @@ PreparedHtml SkinFactory::generateHtmlOfArticles(const QList<Message>& messages,
         : qApp->localization()->loadedLocale().toString(message.m_created.toLocalTime(),
                                                         QLocale::FormatType::ShortFormat);
 
+    QString msg_contents = is_plain ? Qt::convertFromPlainText(message.m_contents, Qt::WhiteSpaceMode::WhiteSpaceNormal)
+                                    : message.m_contents;
+
+    if (!is_plain) {
+      msg_contents = qApp->web()->limitSizeOfHtmlImages(msg_contents, desired_width, forced_img_height);
+    }
+
     messages_layout.append(single_message_layout.arg(message.m_title,
                                                      tr("Written by ") + (message.m_author.isEmpty()
                                                                             ? tr("unknown author")
                                                                             : message.m_author),
                                                      message.m_url,
-                                                     is_plain
-                                                       ? Qt::convertFromPlainText(message.m_contents,
-                                                                                  Qt::WhiteSpaceMode::WhiteSpaceNormal)
-                                                       : message.m_contents,
+                                                     msg_contents,
                                                      msg_date,
                                                      enclosures,
                                                      enclosure_images,

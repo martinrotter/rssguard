@@ -26,6 +26,8 @@ struct ContextMenuData {
     QUrl m_mediaUrl;
 };
 
+#define ACCEPTABLE_IMAGE_PERCENTUAL_WIDTH 0.97
+
 // Interface for web/article viewers.
 class WebViewer {
   public:
