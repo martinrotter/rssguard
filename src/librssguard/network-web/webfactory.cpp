@@ -120,7 +120,9 @@ void WebFactory::loadCustomCss(const QString user_styles_path) {
 #endif
 
 bool WebFactory::openUrlInExternalBrowser(const QString& url) const {
-  qDebugNN << LOGSEC_NETWORK << "We are trying to open URL" << QUOTE_W_SPACE_DOT(url);
+  QString my_url = QUrl::toPercentEncoding(url);
+
+  qDebugNN << LOGSEC_NETWORK << "We are trying to open URL" << QUOTE_W_SPACE_DOT(my_url);
 
   bool result = false;
 
@@ -129,7 +131,7 @@ bool WebFactory::openUrlInExternalBrowser(const QString& url) const {
       qApp->settings()->value(GROUP(Browser), SETTING(Browser::CustomExternalBrowserExecutable)).toString();
     const QString arguments =
       qApp->settings()->value(GROUP(Browser), SETTING(Browser::CustomExternalBrowserArguments)).toString();
-    const auto nice_args = arguments.arg(url);
+    const auto nice_args = arguments.arg(my_url);
 
     qDebugNN << LOGSEC_NETWORK << "Arguments for external browser:" << QUOTE_W_SPACE_DOT(nice_args);
 
@@ -140,7 +142,7 @@ bool WebFactory::openUrlInExternalBrowser(const QString& url) const {
     }
   }
   else {
-    result = QDesktopServices::openUrl(url);
+    result = QDesktopServices::openUrl(my_url);
   }
 
   if (!result) {
@@ -152,7 +154,7 @@ bool WebFactory::openUrlInExternalBrowser(const QString& url) const {
                     "below website URL in your web browser manually.")
                    .arg(QSL(APP_NAME)),
                  {},
-                 url,
+                 my_url,
                  QMessageBox::StandardButton::Ok);
   }
 

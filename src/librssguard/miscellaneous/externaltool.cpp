@@ -82,7 +82,7 @@ bool ExternalTool::run(const QString& target) {
       pars = pars.replace(QSL("%1"), target);
     }
     else {
-      pars += QSL(" \"%1\"").arg(target);
+      pars += QSL(" '%1'").arg(target);
     }
 
     auto params = TextFactory::tokenizeProcessArguments(pars);
