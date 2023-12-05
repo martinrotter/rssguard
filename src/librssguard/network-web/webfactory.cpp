@@ -328,7 +328,7 @@ QString WebFactory::limitSizeOfHtmlImages(const QString& html, int desired_width
       else {
         // We do not know image dimensions and size limitting is not there.
         attrs.insert("width", QString::number(desired_width / 2));
-      }
+      }cd
       */
     }
 
