@@ -1028,8 +1028,11 @@ bool ServiceRoot::onAfterSetMessagesRead(RootItem* selected_item,
 
       for (const QString& lbl : lbls) {
         Label* l = labelsNode()->labelById(lbl);
-        l->updateCounts(false);
-        to_update << l;
+
+        if (l != nullptr) {
+          l->updateCounts(false);
+          to_update << l;
+        }
       }
     }
 
