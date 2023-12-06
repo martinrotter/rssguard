@@ -199,9 +199,6 @@ ol {
   ol li ol {
     list-style-type: lower-roman; }
 
-img {
-  height: auto; }
-
 details {
   border: 1px solid #F1F1F1;
   border-radius: 0.1em;
@@ -255,12 +252,9 @@ summary:focus {
     display: inline-flex; }
     .rssguard-mwrapper .rssguard-mhead .mlinks .mwrapurl a[href=""], .rssguard-mwrapper .rssguard-mhead .mlinks .mwrapurl a[href=""] + span {
       display: none; }
-  .rssguard-mwrapper .rssguard-mbody img {
-    max-width: 450px !important;
-    max-height: unset !important; }
-    @media only screen and (max-width: 800px) {
-      .rssguard-mwrapper .rssguard-mbody img {
-        max-width: 100% !important; } }
+  @media only screen and (max-width: 800px) {
+    .rssguard-mwrapper .rssguard-mbody img {
+      max-width: 100% !important; } }
 
 .rssguard-mbody {
   word-break: break-word; }
