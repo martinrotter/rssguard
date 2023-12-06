@@ -43,8 +43,26 @@ FeedParser::~FeedParser() {}
 
 QList<StandardFeed*> FeedParser::discoverFeeds(ServiceRoot* root, const QUrl& url, bool greedy) const {
   Q_UNUSED(root)
-  Q_UNUSED(url)
   Q_UNUSED(greedy)
+
+  if (url.isLocalFile()) {
+    QString file_path = url.toLocalFile();
+
+    if (QFile::exists(file_path)) {
+      try {
+        // 1.
+        auto guessed_feed = guessFeed(IOFactory::readFile(file_path), {});
+
+        guessed_feed.first->setSourceType(StandardFeed::SourceType::LocalFile);
+        guessed_feed.first->setSource(file_path);
+
+        return {guessed_feed.first};
+      }
+      catch (...) {
+        qDebugNN << LOGSEC_CORE << QUOTE_W_SPACE(file_path) << "is not a local feed file.";
+      }
+    }
+  }
 
   return {};
 }

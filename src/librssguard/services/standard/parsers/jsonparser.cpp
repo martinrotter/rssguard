@@ -20,7 +20,11 @@ JsonParser::JsonParser(const QString& data) : FeedParser(data, false) {}
 JsonParser::~JsonParser() {}
 
 QList<StandardFeed*> JsonParser::discoverFeeds(ServiceRoot* root, const QUrl& url, bool greedy) const {
-  Q_UNUSED(greedy)
+  auto base_result = FeedParser::discoverFeeds(root, url, greedy);
+
+  if (!base_result.isEmpty()) {
+    return base_result;
+  }
 
   QString my_url = url.toString();
   QList<StandardFeed*> feeds;

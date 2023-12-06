@@ -144,7 +144,7 @@ FormDiscoverFeeds::~FormDiscoverFeeds() {
 QList<StandardFeed*> FormDiscoverFeeds::discoverFeedsWithParser(const FeedParser* parser,
                                                                 const QString& url,
                                                                 bool greedy) {
-  auto feeds = parser->discoverFeeds(m_serviceRoot, url, greedy);
+  auto feeds = parser->discoverFeeds(m_serviceRoot, QUrl::fromUserInput(url), greedy);
   QPixmap icon;
   int timeout = qApp->settings()->value(GROUP(Feeds), SETTING(Feeds::UpdateTimeout)).toInt();
 

@@ -22,7 +22,20 @@ SitemapParser::SitemapParser(const QString& data) : FeedParser(data) {}
 SitemapParser::~SitemapParser() {}
 
 QList<StandardFeed*> SitemapParser::discoverFeeds(ServiceRoot* root, const QUrl& url, bool greedy) const {
+  auto base_result = FeedParser::discoverFeeds(root, url, greedy);
   QHash<QString, StandardFeed*> feeds;
+
+  if (!base_result.isEmpty()) {
+    if (greedy) {
+      for (StandardFeed* base_fd : base_result) {
+        feeds.insert(base_fd->source(), base_fd);
+      }
+    }
+    else {
+      return base_result;
+    }
+  }
+
   QStringList to_process_sitemaps;
   int sitemap_index_limit = 2;
   int timeout = qApp->settings()->value(GROUP(Feeds), SETTING(Feeds::UpdateTimeout)).toInt();

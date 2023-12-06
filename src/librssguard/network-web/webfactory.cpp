@@ -275,7 +275,7 @@ QString WebFactory::limitSizeOfHtmlImages(const QString& html, int desired_width
   QString my_html = html;
   QElapsedTimer tmr;
 
-  IOFactory::writeFile("a.html", html.toUtf8());
+  // IOFactory::writeFile("a.html", html.toUtf8());
 
   tmr.start();
 
@@ -359,7 +359,7 @@ QString WebFactory::limitSizeOfHtmlImages(const QString& html, int desired_width
     match_offset = exp_match.capturedStart() + img_reconstructed.size();
   }
 
-  IOFactory::writeFile("b.html", my_html.toUtf8());
+  // IOFactory::writeFile("b.html", my_html.toUtf8());
 
   qDebugNN << LOGSEC_GUI << "HTML image resizing took" << NONQUOTE_W_SPACE(tmr.elapsed()) << "miliseconds.";
   return my_html;

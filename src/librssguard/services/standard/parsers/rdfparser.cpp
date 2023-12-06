@@ -19,7 +19,11 @@ RdfParser::RdfParser(const QString& data)
 RdfParser::~RdfParser() {}
 
 QList<StandardFeed*> RdfParser::discoverFeeds(ServiceRoot* root, const QUrl& url, bool greedy) const {
-  Q_UNUSED(greedy)
+  auto base_result = FeedParser::discoverFeeds(root, url, greedy);
+
+  if (!base_result.isEmpty()) {
+    return base_result;
+  }
 
   QString my_url = url.toString();
   QList<StandardFeed*> feeds;
