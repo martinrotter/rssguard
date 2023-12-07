@@ -1,3 +1,31 @@
+4.6.0
+-----
+
+This feature brings one major feature - podcast/media player. This media player is available when you open context menu for any hyperlink in article which you think leads to audio/video file. Simply right-mouse-click your link and select "Play in media player", then media player will open in next tab and start playing.
+
+Full versions of RSS Guard (with QtWebEngine) include libmpv-based media player which can play basically every thinkable audio/video content. Windows build of RSS Guard even bundles yt-dlp binary to allow out-of-box support for Youtube playback.
+
+Lite variants of RSS Guard include slightly lighter QtMultimedia/ffmpeg-based media player, which also can play many audio/video formats.
+
+Qt5-based lite variants of RSS Guard will likely require you to install some system-wide codec pack.
+
+https://github.com/martinrotter/rssguard/issues/1226
+
+Added:
+* Media/podcast player capabilities. See above for more information.
+* Indication of which feed is actually fetching at the moment can be enabled in settings. (#1203)
+* Newspaper view was removed as it was slow and very buggy. It might be replaced by something better in the future.
+* Sections of settings now have icons.
+* Docs updated.
+* Layout of articles in default nudus-* skins was unified for full/lite versions. Formatting is now very similar.
+* Image size/wrapping behavior was greatly improved in article viewer, particularly in lite version.
+
+Fixed:
+* Context menus in both full/lite article viewer are now more similar.
+* Fixed crashing when editing e-mail via Gmail plugin. (76c7dd170)
+* No more warning journal messages generated on Linux. (#1207)
+* Updated and fixed some languages. (#1205)
+
 4.5.5
 -----
 
