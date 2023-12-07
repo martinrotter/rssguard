@@ -263,6 +263,7 @@ QString WebFactory::unescapeHtml(const QString& html) {
 QString WebFactory::limitSizeOfHtmlImages(const QString& html, int desired_width, int desired_max_height) const {
   static QRegularExpression exp_image_tag(QSL("<img ([^>]+)>"));
   static QRegularExpression exp_image_attrs(QSL("(\\w+)=\"([^\"]+)\""));
+  static bool is_lite = qApp->usingLite();
 
   // Replace too big pictures. What it exactly does:
   //  - find all <img> tags and check for existence of height/width attributes:
@@ -275,7 +276,9 @@ QString WebFactory::limitSizeOfHtmlImages(const QString& html, int desired_width
   QString my_html = html;
   QElapsedTimer tmr;
 
+#if !defined(NDEBUG)
   // IOFactory::writeFile("a.html", html.toUtf8());
+#endif
 
   tmr.start();
 
@@ -300,38 +303,43 @@ QString WebFactory::limitSizeOfHtmlImages(const QString& html, int desired_width
       attrs.insert(attr_name, attr_value);
     }
 
-    if (attrs.contains("height") && attrs.contains("width")) {
-      double ratio = attrs.value("width").toDouble() / attrs.value("height").toDouble();
+    // Now, we edit height/width differently, depending whether this is
+    // simpler HTML (lite) viewer, or WebEngine full-blown viewer.
+    if (is_lite) {
+      if (attrs.contains("height") && attrs.contains("width")) {
+        double ratio = attrs.value("width").toDouble() / attrs.value("height").toDouble();
 
-      if (desired_max_height > 0) {
-        // We limit height.
-        attrs.insert("height", QString::number(desired_max_height));
-        attrs.insert("width", QString::number(int(ratio * desired_max_height)));
-      }
+        if (desired_max_height > 0) {
+          // We limit height.
+          attrs.insert("height", QString::number(desired_max_height));
+          attrs.insert("width", QString::number(int(ratio * desired_max_height)));
+        }
 
-      // We fit width.
-      if (attrs.value("width").toInt() > desired_width) {
-        attrs.insert("width", QString::number(desired_width));
-        attrs.insert("height", QString::number(int(desired_width / ratio)));
+        // We fit width.
+        if (attrs.value("width").toInt() > desired_width) {
+          attrs.insert("width", QString::number(desired_width));
+          attrs.insert("height", QString::number(int(desired_width / ratio)));
+        }
       }
-    }
-    else if (attrs.contains("width")) {
-      // Only width.
-      if (attrs.value("width").toInt() > desired_width) {
-        attrs.insert("width", QString::number(desired_width));
+      else if (attrs.contains("width")) {
+        // Only width.
+        if (attrs.value("width").toInt() > desired_width) {
+          attrs.insert("width", QString::number(desired_width));
+        }
+      }
+      else {
+        // No dimensions given or just height.
+        if (desired_max_height > 0) {
+          attrs.insert("height", QString::number(desired_max_height));
+        }
       }
     }
     else {
-      // No dimensions given or just height.
+      attrs.remove("width");
+      attrs.remove("height");
       if (desired_max_height > 0) {
-        attrs.insert("height", QString::number(desired_max_height));
+        attrs.insert("style", QSL("max-height: %1px !important;").arg(desired_max_height));
       }
-      /*
-      else {
-        // We do not know image dimensions and size limitting is not there.
-        attrs.insert("width", QString::number(desired_width / 2));
-      }cd
-      */
     }
 
     // Re-insert all attributes.
@@ -359,7 +367,9 @@ QString WebFactory::limitSizeOfHtmlImages(const QString& html, int desired_width
     match_offset = exp_match.capturedStart() + img_reconstructed.size();
   }
 
+#if !defined(NDEBUG)
   // IOFactory::writeFile("b.html", my_html.toUtf8());
+#endif
 
   qDebugNN << LOGSEC_GUI << "HTML image resizing took" << NONQUOTE_W_SPACE(tmr.elapsed()) << "miliseconds.";
   return my_html;

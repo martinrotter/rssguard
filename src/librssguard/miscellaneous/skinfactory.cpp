@@ -264,7 +264,8 @@ PreparedHtml SkinFactory::generateHtmlOfArticles(const QList<Message>& messages,
             enclosure_images +=
               skin.m_enclosureImageMarkup.arg(enclosure.m_url,
                                               enclosure.m_mimeType,
-                                              forced_img_height <= 0 ? QString() : QString::number(forced_img_height));
+                                              forced_img_height <= 0 ? QString::number(-1)
+                                                                     : QString::number(forced_img_height));
           }
         }
       }
@@ -314,6 +315,10 @@ PreparedHtml SkinFactory::generateHtmlOfArticles(const QList<Message>& messages,
       }
     }
   }
+
+#if !defined(NDEBUG)
+  IOFactory::writeFile("c.html", msg_contents.toUtf8());
+#endif
 
   return {msg_contents, base_url};
 }
