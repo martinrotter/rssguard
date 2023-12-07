@@ -126,10 +126,6 @@ option(ENABLE_COMPRESSED_SITEMAP "Enable support for gzip-compressed sitemap fee
 option(ENABLE_MEDIAPLAYER_QTMULTIMEDIA "Enable built-in media player. Requires QtMultimedia FFMPEG plugin." OFF)
 option(ENABLE_MEDIAPLAYER_LIBMPV "Enable built-in media player. Requires libmpv library." ON)
 
-if(USE_WEBENGINE)
-  set(NO_LITE ON)
-endif()
-
 # Import Qt libraries.
 set(QT6_MIN_VERSION 6.3.0)
 set(QT5_MIN_VERSION 5.12.0)
