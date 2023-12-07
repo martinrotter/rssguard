@@ -154,6 +154,10 @@ if(NOT OS2)
   list(APPEND QT_COMPONENTS Multimedia)
 endif()
 
+if(ENABLE_MEDIAPLAYER_QTMULTIMEDIA AND ENABLE_MEDIAPLAYER_LIBMPV)
+  message(FATAL_ERROR "You can only enable 1 media player backend.")
+endif()
+
 if(ENABLE_MEDIAPLAYER_QTMULTIMEDIA)
   message(STATUS "Enabling QtMultimedia media player backend.")
 

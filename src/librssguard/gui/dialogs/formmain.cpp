@@ -868,10 +868,14 @@ void FormMain::createConnections() {
           &QAction::triggered,
           tabWidget()->feedMessageViewer()->messagesView(),
           &MessagesView::openSelectedSourceMessagesExternally);
-  connect(m_ui->m_actionOpenSelectedSourceArticlesExternally,
+
+#if defined(ENABLE_MEDIAPLAYER)
+  connect(m_ui->m_actionPlaySelectedArticlesInMediaPlayer,
           &QAction::triggered,
           tabWidget()->feedMessageViewer()->messagesView(),
           &MessagesView::playSelectedArticleInMediaPlayer);
+#endif
+
   connect(m_ui->m_actionOpenSelectedMessagesInternally,
           &QAction::triggered,
           tabWidget()->feedMessageViewer()->messagesView(),
