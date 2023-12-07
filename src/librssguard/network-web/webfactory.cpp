@@ -328,7 +328,10 @@ QString WebFactory::limitSizeOfHtmlImages(const QString& html, int desired_width
         }
       }
       else {
-        // No dimensions given or just height.
+        // No dimensions given.
+        // In this case we simply rely on original image dimensions
+        // if no specific limit is set.
+        // Too wide images will get downscaled.
         if (desired_max_height > 0) {
           attrs.insert("height", QString::number(desired_max_height));
         }
@@ -337,6 +340,7 @@ QString WebFactory::limitSizeOfHtmlImages(const QString& html, int desired_width
     else {
       attrs.remove("width");
       attrs.remove("height");
+
       if (desired_max_height > 0) {
         attrs.insert("style", QSL("max-height: %1px !important;").arg(desired_max_height));
       }
