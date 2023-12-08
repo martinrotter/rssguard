@@ -8,6 +8,10 @@
 #include "miscellaneous/application.h"
 #include "services/abstract/label.h"
 
+#if defined(ENABLE_MEDIAPLAYER_LIBMPV)
+#include <clocale>
+#endif
+
 #if defined(Q_OS_WIN)
 #if QT_VERSION_MAJOR == 5
 #include <QtPlatformHeaders/QWindowsWindowFunctions>
