@@ -48,7 +48,8 @@ $zlib_version = "1.3"
 $zlib_link = "https://github.com/madler/zlib/archive/refs/tags/v$zlib_version.zip"
 $zlib_output = "zlib.zip"
 
-$libmpv_link = "https://deac-fra.dl.sourceforge.net/project/mpv-player-windows/libmpv/mpv-dev-x86_64-v3-20231112-git-7cab30c.7z"
+$libmpv_version = "v3-20231203-git-f551a9d"
+$libmpv_link = "https://downloads.sourceforge.net/project/mpv-player-windows/libmpv/mpv-dev-x86_64-$libmpv_version.7z"
 $libmpv_output = "mpv.zip"
 
 $ytdlp_version = "2023.11.16"
@@ -64,7 +65,8 @@ Invoke-WebRequest -Uri "$cmake_link" -OutFile "$cmake_output"
 Invoke-WebRequest -Uri "$zlib_link" -OutFile "$zlib_output"
 & ".\resources\scripts\7za\7za.exe" x "$zlib_output"
 
-Invoke-WebRequest -Uri "$libmpv_link" -OutFile "$libmpv_output"
+# User custom UA because SourceForge is very picky.
+Invoke-WebRequest -UserAgent "Wget" -Uri "$libmpv_link" -OutFile "$libmpv_output"
 & ".\resources\scripts\7za\7za.exe" x "$libmpv_output" -ompv
 
 Invoke-WebRequest -Uri "$ytdlp_link" -OutFile "$libmpv_output"
