@@ -2099,12 +2099,12 @@ QtWebEngine 快取資料夾 -&gt; &quot;%7&quot;</translation>
   <context>
     <name>FormMain</name>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.cpp" line="412"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.cpp" line="413"/>
       <source>No possible actions</source>
       <translation>無可能的動作</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.cpp" line="371"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.cpp" line="372"/>
       <source>No recycle bin</source>
       <translation>無資源回收筒</translation>
     </message>
@@ -2169,574 +2169,579 @@ QtWebEngine 快取資料夾 -&gt; &quot;%7&quot;</translation>
       <translation>文章(&amp;I)</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="184"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="185"/>
       <source>&amp;Recycle bin(s)</source>
       <translation>資源回收筒(&amp;R)</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="191"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="192"/>
       <source>&amp;Accounts</source>
       <translation>帳號(&amp;A)</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="199"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="200"/>
       <source>&amp;Web browser &amp;&amp; tabs</source>
       <translation>網路瀏覽器&amp;&amp;分頁(&amp;W)</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="226"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="227"/>
       <source>&amp;Quit</source>
       <translation>結束(&amp;Q)</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="229"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="230"/>
       <source>Quit the application.</source>
       <translation>結束應用程式。</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="240"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="241"/>
       <source>&amp;Settings</source>
       <translation>設定(&amp;S)</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="243"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="244"/>
       <source>Display settings of the application.</source>
       <translation>顯示應用程式設定。</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="251"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="252"/>
       <source>&amp;About application</source>
       <translation>關於應用程式(&amp;A)</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="254"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="255"/>
       <source>Displays extra info about this application.</source>
       <translation>顯示此應用程式的額外資訊。</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="268"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="269"/>
       <source>&amp;Fullscreen</source>
       <translation>全螢幕(&amp;F)</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="271"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="272"/>
       <source>Switch fullscreen mode.</source>
       <translation>切換全螢幕模式。</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="279"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="280"/>
       <source>&amp;Fetch all</source>
       <translation>全都下載(&amp;F)</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="282"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="283"/>
       <source>Fetch all feeds</source>
       <translation>從全部文源下載</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="290"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="291"/>
       <source>Fetch &amp;selected</source>
       <translation>下載所選(&amp;S)</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="293"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="294"/>
       <source>Fetch selected feeds</source>
       <translation>從所選文源下載</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="314"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="315"/>
       <source>Mark articles &amp;read</source>
       <translation>標示文章成已讀(&amp;R)</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="317"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="318"/>
       <source>Mark selected articles read</source>
       <translation>標示所選文章成已讀</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="325"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="326"/>
       <source>Mark articles &amp;unread</source>
       <translation>標示文章成未讀(&amp;U)</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="328"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="329"/>
       <source>Mark selected articles unread</source>
       <translation>標示所選文章成未讀</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="336"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="337"/>
       <source>Switch &amp;importance</source>
       <translation>切換重要性(&amp;I)</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="339"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="340"/>
       <source>Switch importance of selected articles</source>
       <translation>切換所選文章的重要性</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="350"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="351"/>
       <source>Mark all messages (without message filters) from selected items as read.</source>
       <translation>將所選項目中的全部文訊 (忽略消息過濾器) 標成已讀。</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="361"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="362"/>
       <source>Mark all messages (without message filters) from selected items as unread.</source>
       <translation>將所選項目中的全部文訊 (忽略文訊過濾規則) 標成未讀。</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="369"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="370"/>
       <source>&amp;Delete articles</source>
       <translation>刪除文章(&amp;D)</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="301"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="302"/>
       <source>&amp;Edit selected items</source>
       <translation>編輯所選項目(&amp;E)</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="306"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="307"/>
       <source>&amp;Delete selected items</source>
       <translation>刪除所選項目(&amp;D)</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="347"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="348"/>
       <source>Mark selected items &amp;read</source>
       <translation>標示所選項目成已讀(&amp;R)</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="358"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="359"/>
       <source>Mark selected items &amp;unread</source>
       <translation>標示所選項目成未讀(&amp;U)</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="377"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="378"/>
       <source>&amp;Clean selected items</source>
       <translation>清除所選項目(&amp;C)</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="380"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="381"/>
       <source>Deletes all messages from selected items.</source>
       <translation>刪除所選項目中所有文訊。</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="388"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="389"/>
       <source>Open in &amp;external browser</source>
       <translation>於外部瀏覽器開啟(&amp;E)</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="391"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="392"/>
       <source>Open selected articles in external browser</source>
       <translation>於外部瀏覽器開啟所選文章</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="399"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="400"/>
       <source>Open in &amp;internal browser</source>
       <translation>於內部瀏覽器開啟(&amp;I)</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="402"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="403"/>
       <source>Open selected articles in internal browser</source>
       <translation>於內部瀏覽器開啟所選文章</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="413"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="414"/>
       <source>No actions available</source>
       <translation>無動作可用</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="416"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="417"/>
       <source>No actions are available right now.</source>
       <translation>現在無動作可用。</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="424"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="425"/>
       <source>&amp;Mark all read</source>
       <translation>全部標示成已讀(&amp;M)</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="427"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="428"/>
       <source>Marks all messages in all items read. This does not take message filters into account.</source>
       <translation>將所有文訊標成已讀。不考慮文訊過濾規則。</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="438"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="439"/>
       <source>Switch main window visibility</source>
       <translation>切換主視窗的便視性</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="441"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="442"/>
       <source>Hides main window if it is visible and shows it if it is hidden.</source>
       <translation>主窗顯示時隱藏它；主窗隱藏時顯示它。</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="455"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="456"/>
       <source>&amp;Feed list</source>
       <translation>文源清單(&amp;F)</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="458"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="459"/>
       <source>Hides or shows the list of feeds/categories.</source>
       <translation>隱藏或顯示文源/分類清單。</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="466"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="467"/>
       <source>&amp;Clean all</source>
       <translation>清除全部(&amp;C)</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="469"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="470"/>
       <source>Deletes all messages from all items.</source>
       <translation>刪除每一項目的全部文訊。</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="477"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="478"/>
       <source>&amp;Next item</source>
       <translation>下一項(&amp;N)</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="485"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="486"/>
       <source>&amp;Previous item</source>
       <translation>上一項(&amp;P)</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="493"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="494"/>
       <source>&amp;Next article</source>
       <translation>下一文章(&amp;N)</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="501"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="502"/>
       <source>&amp;Previous article</source>
       <translation>上一文章(&amp;P)</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="509"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="510"/>
       <source>Check for &amp;updates</source>
       <translation>檢查更新(&amp;U)</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="512"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="513"/>
       <source>Check if new update for the application is available for download.</source>
       <translation>檢查是否有應用程式更新可下載。</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="526"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="527"/>
       <source>&amp;Main menu</source>
       <translation>主功能表(&amp;M)</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="529"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="530"/>
       <source>Hides or displays the main menu.</source>
       <translation>隱藏/顯示主功能表。</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="537"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="538"/>
       <source>Report a &amp;bug...</source>
       <translation>提報錯誤(&amp;B)...</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="548"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="549"/>
       <source>&amp;Toolbars</source>
       <translation>工具列(&amp;T)</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="551"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="552"/>
       <source>Switch visibility of main toolbars.</source>
       <translation>切換主工具列的可見性。</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="565"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="566"/>
       <source>&amp;List headers</source>
       <translation>清單欄首(&amp;L)</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="573"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="574"/>
       <source>&amp;Donate...</source>
       <translation>贊助(&amp;D)...</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="581"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="582"/>
       <source>Display &amp;documentation</source>
       <translation>顯示說明文件(&amp;D)</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="589"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="590"/>
       <source>&amp;Restart</source>
       <translation>重新啟動(&amp;R)</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="597"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="598"/>
       <source>&amp;Restore settings</source>
       <translation>復原設定(&amp;R)</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="605"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="606"/>
       <source>&amp;Backup settings</source>
       <translation>備份設定(&amp;B)</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="613"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="614"/>
       <source>Switch layout</source>
       <translation>切換版面配置</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="621"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="622"/>
       <source>&amp;Downloads</source>
       <translation>下載(&amp;D)</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="629"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="630"/>
       <source>Send via e-mail</source>
       <translation>以電子郵件寄出</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="632"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="633"/>
       <source>Send selected articles via e-mail</source>
       <translation>以電子郵件寄出所選文章</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="640"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="641"/>
       <source>&amp;Cleanup database</source>
       <translation>清理資料庫(&amp;C)</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="651"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="652"/>
       <source>Show unread items only</source>
       <translation>僅顯示未讀項目</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="659"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="660"/>
       <source>&amp;Expand/collapse selected item</source>
       <translation>展開/收合所選項(&amp;E)</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="667"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="668"/>
       <source>&amp;Add account</source>
       <translation>新增帳號(&amp;A)</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="675"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="676"/>
       <source>&amp;Restore articles</source>
       <translation>復原文章(&amp;R)</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="683"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="684"/>
       <source>&amp;Restore all recycle bins</source>
       <translation>復原全部資源回收筒(&amp;R)</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="691"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="692"/>
       <source>&amp;Empty all recycle bins</source>
       <translation>清空全部資源回收筒(&amp;E)</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="699"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="700"/>
       <source>Next &amp;unread article</source>
       <translation>下一未讀文章(&amp;U)</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="713"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="714"/>
       <source>Status bar</source>
       <translation>狀態列</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="721"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="722"/>
       <source>&amp;Edit selected account</source>
       <translation>編輯所選帳號(&amp;E)</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="729"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="730"/>
       <source>&amp;Delete selected account</source>
       <translation>刪除所選帳號(&amp;D)</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="742"/>
-      <location filename="../src/librssguard/gui/dialogs/formmain.cpp" line="317"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="743"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.cpp" line="318"/>
       <source>Add new category</source>
       <translation>新增分類</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="747"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="748"/>
       <source>Stop ongoing fetching</source>
       <translation>中斷下載</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="755"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="756"/>
       <source>New browser tab</source>
       <translation>新瀏覽器分頁</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="763"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="764"/>
       <source>Close all tabs</source>
       <translation>關閉全部分頁</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="768"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="769"/>
       <source>Close all tabs except current</source>
       <translation>除此外，關閉其他分頁</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="773"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="774"/>
       <source>Go to &amp;next tab</source>
       <translation>到下一分頁(&amp;N)</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="778"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="779"/>
       <source>Go to &amp;previous tab</source>
       <translation>到上一分頁(&amp;P)</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="786"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="787"/>
       <source>&amp;Enable article preview</source>
       <translation>啟用文章預覽(&amp;E)</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="791"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="792"/>
       <source>&amp;Copy URL of selected item</source>
       <translation>複製所選項目的 URL(&amp;C)</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="796"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="797"/>
       <source>Article &amp;filters</source>
       <translation>文章篩選規則(&amp;F)</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="804"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="805"/>
       <source>&amp;Show tree expanders</source>
       <translation>顯示樹狀展開號(&amp;S)</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="809"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="810"/>
       <source>Fetch feeds with &amp;custom auto-download policy</source>
       <translation>以自訂的自動下載規則下載文源(&amp;C)</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="817"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="818"/>
       <source>Alternate row colors in lists</source>
       <translation>清單行交替上色</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="825"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="826"/>
       <source>Automatically &amp;expand item when selected</source>
       <translation>選擇時自動展開項目(&amp;E)</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="836"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="837"/>
       <source>Message viewer toolbars</source>
       <translation>文訊檢視工具列</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="841"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="842"/>
       <source>Expand/collapse selected item &amp;recursively</source>
       <translation>遞迴展開/收合所選項(&amp;R)</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="846"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="847"/>
       <source>Close &amp;current tab</source>
       <translation>關閉目前分頁(&amp;C)</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="851"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="852"/>
       <source>&amp;Copy URLs of selected articles</source>
       <translation>複製所選文章的URL(&amp;C)</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="856"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="857"/>
       <source>Open in internal browser (no new tab)</source>
       <translation>於內部瀏覽器開啟(不開新分頁)</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="864"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="865"/>
       <source>&amp;Sort alphabetically</source>
       <translation>依字母排序(&amp;S)</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="869"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="870"/>
       <source>Move &amp;up</source>
       <translation>移上(&amp;U)</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="874"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="875"/>
       <source>Move to &amp;top</source>
       <translation>移至首(&amp;T)</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="879"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="880"/>
       <source>Move &amp;down</source>
       <translation>移下(&amp;B)</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="884"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="885"/>
       <source>Move to &amp;bottom</source>
       <translation>移至尾(&amp;B)</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="889"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="890"/>
       <source>Display application &amp;log</source>
       <translation>顯示應用程式的記錄(&amp;L)</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="894"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="895"/>
       <source>Focus feeds search box</source>
       <translation>焦點到文源搜尋框</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="899"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="900"/>
       <source>Focus articles search box</source>
       <translation>焦點到文章搜尋框</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="904"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="905"/>
       <source>Scroll &amp;up browser</source>
       <translation>向上捲動瀏覽器頁面(&amp;U)</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="909"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="910"/>
       <source>Scroll &amp;down browser</source>
       <translation>向下捲動瀏覽器頁面(&amp;D)</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="914"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="915"/>
       <source>Rearrange &amp;subcategories alphabetically</source>
       <translation>依字母順序重整子分類(&amp;S)</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="919"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="920"/>
       <source>Rearrange &amp;feeds alphabetically</source>
       <translation>依字母順序重整文源(&amp;F)</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="924"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="925"/>
       <source>Cleanup web cac&amp;he</source>
       <translation>清除網頁快取(&amp;H)</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="932"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="933"/>
       <source>You must add new account first</source>
       <translation>一定得先新增帳號</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="935"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="936"/>
       <source>You must add new account first.</source>
       <translation>一定得先新增帳號。</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="940"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="941"/>
       <source>Edit &amp;child feeds</source>
       <translation>編輯下層文源(&amp;C)</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="945"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="946"/>
       <source>Edit child feeds (&amp;recursive)</source>
       <translation>(遞迴)編輯下層文源(&amp;R)</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="737"/>
-      <location filename="../src/librssguard/gui/dialogs/formmain.cpp" line="327"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="951"/>
+      <source>Play in &amp;media player</source>
+      <translation type="unfinished">Play in &amp;media player</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="738"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.cpp" line="328"/>
       <source>Add new feed</source>
       <translation>新增文源</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.cpp" line="378"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.cpp" line="379"/>
       <source>No actions possible</source>
       <translation>不可能做動作</translation>
     </message>
@@ -2751,17 +2756,27 @@ QtWebEngine 快取資料夾 -&gt; &quot;%7&quot;</translation>
       <translation>無法清理資料庫，因為另一重要動作執行中。</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.cpp" line="527"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.cpp" line="471"/>
+      <source>Play in media player</source>
+      <translation>於影音播放器播放</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard/gui/dialogs/formmain.cpp" line="472"/>
+      <source>(not supported)</source>
+      <translation>(不支援)</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard/gui/dialogs/formmain.cpp" line="537"/>
       <source>Close opened modal dialogs first.</source>
       <translation>請先關閉開啟的對話框。</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.cpp" line="447"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.cpp" line="448"/>
       <source>Fetching common data</source>
       <translation>下載一般資料</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.cpp" line="526"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.cpp" line="536"/>
       <source>Close dialogs</source>
       <translation>關閉對話框</translation>
     </message>
@@ -3772,19 +3787,19 @@ You can install it now.</source>
       <translation>回覆此電郵訊息</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/services/gmail/gmailserviceroot.cpp" line="219"/>
+      <location filename="../src/librssguard/services/gmail/gmailserviceroot.cpp" line="222"/>
       <source>Authentication status: %1
 Login tokens expiration: %2</source>
       <translation>認證狀態: %1
 登入用的存取權碼過期: %2</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/services/gmail/gmailserviceroot.cpp" line="221"/>
+      <location filename="../src/librssguard/services/gmail/gmailserviceroot.cpp" line="224"/>
       <source>logged-in</source>
       <translation>已登入</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/services/gmail/gmailserviceroot.cpp" line="221"/>
+      <location filename="../src/librssguard/services/gmail/gmailserviceroot.cpp" line="224"/>
       <source>NOT logged-in</source>
       <translation>未登入</translation>
     </message>
@@ -4273,107 +4288,112 @@ Login tokens expiration: %2</source>
   <context>
     <name>LibMpvBackend</name>
     <message>
-      <location filename="../src/librssguard/gui/mediaplayer/libmpv/libmpvbackend.cpp" line="152"/>
+      <location filename="../src/librssguard/gui/mediaplayer/libmpv/libmpvbackend.cpp" line="170"/>
       <source>File loaded</source>
       <translation>載入的檔</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/mediaplayer/libmpv/libmpvbackend.cpp" line="203"/>
+      <location filename="../src/librssguard/gui/mediaplayer/libmpv/libmpvbackend.cpp" line="226"/>
       <source>App restart required</source>
       <translation>App 得重新啟動</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/mediaplayer/libmpv/libmpvbackend.cpp" line="206"/>
+      <location filename="../src/librssguard/gui/mediaplayer/libmpv/libmpvbackend.cpp" line="229"/>
       <source>Out of memory</source>
       <translation>記憶體耗盡</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/mediaplayer/libmpv/libmpvbackend.cpp" line="209"/>
+      <location filename="../src/librssguard/gui/mediaplayer/libmpv/libmpvbackend.cpp" line="232"/>
       <source>Not initialized yet</source>
       <translation>尚未初始化</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/mediaplayer/libmpv/libmpvbackend.cpp" line="212"/>
+      <location filename="../src/librssguard/gui/mediaplayer/libmpv/libmpvbackend.cpp" line="235"/>
       <source>Invalid parameter</source>
       <translation>無效的參元</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/mediaplayer/libmpv/libmpvbackend.cpp" line="215"/>
+      <location filename="../src/librssguard/gui/mediaplayer/libmpv/libmpvbackend.cpp" line="238"/>
       <source>Option not found</source>
       <translation>未找到選項</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/mediaplayer/libmpv/libmpvbackend.cpp" line="218"/>
+      <location filename="../src/librssguard/gui/mediaplayer/libmpv/libmpvbackend.cpp" line="241"/>
       <source>Option badly formatted</source>
       <translation>選項格式壞</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/mediaplayer/libmpv/libmpvbackend.cpp" line="221"/>
+      <location filename="../src/librssguard/gui/mediaplayer/libmpv/libmpvbackend.cpp" line="244"/>
       <source>Cannot set option</source>
       <translation>無法設定選項</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/mediaplayer/libmpv/libmpvbackend.cpp" line="224"/>
+      <location filename="../src/librssguard/gui/mediaplayer/libmpv/libmpvbackend.cpp" line="247"/>
       <source>Property does not existing</source>
       <translation>屬性不存在</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/mediaplayer/libmpv/libmpvbackend.cpp" line="227"/>
+      <location filename="../src/librssguard/gui/mediaplayer/libmpv/libmpvbackend.cpp" line="250"/>
       <source>Property badly formatted</source>
       <translation>選項格式壞</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/mediaplayer/libmpv/libmpvbackend.cpp" line="230"/>
+      <location filename="../src/librssguard/gui/mediaplayer/libmpv/libmpvbackend.cpp" line="253"/>
       <source>Property N/A</source>
       <translation>屬性無法得到</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/mediaplayer/libmpv/libmpvbackend.cpp" line="233"/>
+      <location filename="../src/librssguard/gui/mediaplayer/libmpv/libmpvbackend.cpp" line="256"/>
       <source>Cannot set property</source>
       <translation>無法設定屬性</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/mediaplayer/libmpv/libmpvbackend.cpp" line="236"/>
+      <location filename="../src/librssguard/gui/mediaplayer/libmpv/libmpvbackend.cpp" line="259"/>
       <source>Cannot run command</source>
       <translation>無法執行命令</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/mediaplayer/libmpv/libmpvbackend.cpp" line="239"/>
+      <location filename="../src/librssguard/gui/mediaplayer/libmpv/libmpvbackend.cpp" line="262"/>
       <source>Loading failed</source>
       <translation>載入失敗</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/mediaplayer/libmpv/libmpvbackend.cpp" line="242"/>
+      <location filename="../src/librssguard/gui/mediaplayer/libmpv/libmpvbackend.cpp" line="265"/>
       <source>Cannot initialize audio</source>
       <translation>無法初始化音效</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/mediaplayer/libmpv/libmpvbackend.cpp" line="245"/>
+      <location filename="../src/librssguard/gui/mediaplayer/libmpv/libmpvbackend.cpp" line="268"/>
       <source>Cannot initialize video</source>
       <translation>無法初始化視訊</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/mediaplayer/libmpv/libmpvbackend.cpp" line="248"/>
+      <location filename="../src/librssguard/gui/mediaplayer/libmpv/libmpvbackend.cpp" line="271"/>
       <source>Not a media file</source>
       <translation>非影音檔</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/mediaplayer/libmpv/libmpvbackend.cpp" line="251"/>
+      <location filename="../src/librssguard/gui/mediaplayer/libmpv/libmpvbackend.cpp" line="274"/>
       <source>Unknown file format</source>
       <translation>未知的檔案格式</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/mediaplayer/libmpv/libmpvbackend.cpp" line="254"/>
+      <location filename="../src/librssguard/gui/mediaplayer/libmpv/libmpvbackend.cpp" line="277"/>
       <source>Unsupported file format</source>
       <translation>不支援的檔案格式</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/mediaplayer/libmpv/libmpvbackend.cpp" line="258"/>
+      <location filename="../src/librssguard/gui/mediaplayer/libmpv/libmpvbackend.cpp" line="281"/>
       <source>Unknown error (%1)</source>
       <translation>未知的錯誤 (%1)</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/mediaplayer/libmpv/libmpvbackend.cpp" line="279"/>
+      <location filename="../src/librssguard/gui/mediaplayer/libmpv/libmpvbackend.cpp" line="300"/>
+      <source>Stopped</source>
+      <translation type="unfinished">Stopped</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard/gui/mediaplayer/libmpv/libmpvbackend.cpp" line="306"/>
       <source>File ended</source>
       <translation>檔案結束</translation>
     </message>
@@ -4666,9 +4686,13 @@ Login tokens expiration: %2</source>
     </message>
     <message>
       <location filename="../src/librssguard/gui/mediaplayer/mediaplayer.ui" line="155"/>
-      <location filename="../src/librssguard/gui/mediaplayer/mediaplayer.ui" line="162"/>
       <source>Download</source>
       <translation>下載</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard/gui/mediaplayer/mediaplayer.ui" line="162"/>
+      <source>Switch fullscreen mode</source>
+      <translation type="unfinished">Switch fullscreen mode</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/mediaplayer/mediaplayer.cpp" line="43"/>
@@ -5231,12 +5255,12 @@ Login tokens expiration: %2</source>
   <context>
     <name>MessagesView</name>
     <message>
-      <location filename="../src/librssguard/gui/messagesview.cpp" line="666"/>
+      <location filename="../src/librssguard/gui/messagesview.cpp" line="688"/>
       <source>Problem with starting external e-mail client</source>
       <translation>啟動外部電子郵件客戶端時出狀況</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/messagesview.cpp" line="667"/>
+      <location filename="../src/librssguard/gui/messagesview.cpp" line="689"/>
       <source>External e-mail client could not be started.</source>
       <translation>外部電子郵件客戶端無法啟動。</translation>
     </message>
@@ -5246,12 +5270,22 @@ Login tokens expiration: %2</source>
       <translation>使用外部工具開啟</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/messagesview.cpp" line="878"/>
+      <location filename="../src/librssguard/gui/messagesview.cpp" line="646"/>
+      <source>No URL</source>
+      <translation type="unfinished">No URL</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard/gui/messagesview.cpp" line="647"/>
+      <source>Article cannot be played in media player as it has no URL</source>
+      <translation type="unfinished">Article cannot be played in media player as it has no URL</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard/gui/messagesview.cpp" line="900"/>
       <source>Cannot run external tool</source>
       <translation>無法執行外部工具</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/messagesview.cpp" line="879"/>
+      <location filename="../src/librssguard/gui/messagesview.cpp" line="901"/>
       <source>External tool &apos;%1&apos; could not be started.</source>
       <translation>外部工具 &apos;%1&apos; 無法啟動。</translation>
     </message>
@@ -5441,26 +5475,6 @@ Login tokens expiration: %2</source>
       <source>Type</source>
       <extracomment>Proxy server type.</extracomment>
       <translation>類型</translation>
-    </message>
-  </context>
-  <context>
-    <name>NewspaperPreviewer</name>
-    <message numerus="yes">
-      <location filename="../src/librssguard/gui/newspaperpreviewer.cpp" line="45"/>
-      <source>Show more articles (%n remaining)</source>
-      <translation>
-        <numerusform>顯示更多文章 (剩餘 %n)</numerusform>
-      </translation>
-    </message>
-    <message>
-      <location filename="../src/librssguard/gui/newspaperpreviewer.cpp" line="51"/>
-      <source>Cannot show more articles</source>
-      <translation>無法顯示更多文章</translation>
-    </message>
-    <message>
-      <location filename="../src/librssguard/gui/newspaperpreviewer.cpp" line="52"/>
-      <source>Cannot show more articles because parent feed was removed.</source>
-      <translation>無法顯示更多文章，因為上層文源已移除。</translation>
     </message>
   </context>
   <context>
@@ -5734,7 +5748,7 @@ Feedly is a secure space where you can privately organize and research the topic
 Feedly 是個能私密組織、研究與您關切的議題與趨勢的所在。</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/database/databasequeries.cpp" line="2657"/>
+      <location filename="../src/librssguard/database/databasequeries.cpp" line="2660"/>
       <source>Cannot insert article filter, because current database cannot return last inserted row ID.</source>
       <translation>無法插入文章篩選規則，因為目前的資料庫無法傳回最後插入行的 ID。</translation>
     </message>
@@ -5818,37 +5832,37 @@ List of supported readers:</source>
       <translation>簡化的 Reddit 客戶。</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/miscellaneous/skinfactory.cpp" line="608"/>
+      <location filename="../src/librssguard/miscellaneous/skinfactory.cpp" line="620"/>
       <source>interesting stuff</source>
       <translation>有興趣的項目</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/miscellaneous/skinfactory.cpp" line="611"/>
+      <location filename="../src/librssguard/miscellaneous/skinfactory.cpp" line="623"/>
       <source>interesting stuff (highlighted)</source>
       <translation>有興趣的項目(標示)</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/miscellaneous/skinfactory.cpp" line="614"/>
+      <location filename="../src/librssguard/miscellaneous/skinfactory.cpp" line="626"/>
       <source>errored items</source>
       <translation>出錯的項目</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/miscellaneous/skinfactory.cpp" line="617"/>
+      <location filename="../src/librssguard/miscellaneous/skinfactory.cpp" line="629"/>
       <source>errored items (highlighted)</source>
       <translation>出錯的項目(標示)</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/miscellaneous/skinfactory.cpp" line="620"/>
+      <location filename="../src/librssguard/miscellaneous/skinfactory.cpp" line="632"/>
       <source>items with new articles</source>
       <translation>有新文章的項目</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/miscellaneous/skinfactory.cpp" line="623"/>
+      <location filename="../src/librssguard/miscellaneous/skinfactory.cpp" line="635"/>
       <source>items with new articles (highlighted)</source>
       <translation>有新文章的項目(標示)</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/miscellaneous/skinfactory.cpp" line="626"/>
+      <location filename="../src/librssguard/miscellaneous/skinfactory.cpp" line="638"/>
       <source>OK-ish color</source>
       <translation>像無問題(OK)的顏色</translation>
     </message>
@@ -5898,50 +5912,50 @@ List of supported readers:</source>
       <translation>缺少尾端 &apos;</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/services/standard/parsers/atomparser.cpp" line="242"/>
-      <location filename="../src/librssguard/services/standard/parsers/rdfparser.cpp" line="192"/>
-      <location filename="../src/librssguard/services/standard/parsers/rssparser.cpp" line="192"/>
-      <location filename="../src/librssguard/services/standard/parsers/sitemapparser.cpp" line="180"/>
+      <location filename="../src/librssguard/services/standard/parsers/atomparser.cpp" line="246"/>
+      <location filename="../src/librssguard/services/standard/parsers/rdfparser.cpp" line="196"/>
+      <location filename="../src/librssguard/services/standard/parsers/rssparser.cpp" line="196"/>
+      <location filename="../src/librssguard/services/standard/parsers/sitemapparser.cpp" line="193"/>
       <source>XML is not well-formed, %1</source>
       <translation>XML 語法錯誤，%1</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/services/standard/parsers/atomparser.cpp" line="248"/>
+      <location filename="../src/librssguard/services/standard/parsers/atomparser.cpp" line="252"/>
       <source>not an ATOM feed</source>
       <translation>非 ATOM 文源</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/services/standard/parsers/jsonparser.cpp" line="119"/>
+      <location filename="../src/librssguard/services/standard/parsers/jsonparser.cpp" line="123"/>
       <source>JSON error &apos;%1&apos;</source>
       <translation>JSON 錯誤 &apos;%1&apos;</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/services/standard/parsers/jsonparser.cpp" line="150"/>
+      <location filename="../src/librssguard/services/standard/parsers/jsonparser.cpp" line="154"/>
       <source>not a JSON feed</source>
       <translation>非 JSON 文源</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/services/standard/parsers/rdfparser.cpp" line="198"/>
+      <location filename="../src/librssguard/services/standard/parsers/rdfparser.cpp" line="202"/>
       <source>not an RDF feed</source>
       <translation>非 RDF 文源</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/services/standard/parsers/rssparser.cpp" line="198"/>
+      <location filename="../src/librssguard/services/standard/parsers/rssparser.cpp" line="202"/>
       <source>not a RSS feed</source>
       <translation>非 RSS 文源</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/services/standard/parsers/sitemapparser.cpp" line="145"/>
+      <location filename="../src/librssguard/services/standard/parsers/sitemapparser.cpp" line="158"/>
       <source>support for gzipped sitemaps is not enabled</source>
       <translation>未啟用支援 Gzip 壓縮網站地圖</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/services/standard/parsers/sitemapparser.cpp" line="193"/>
+      <location filename="../src/librssguard/services/standard/parsers/sitemapparser.cpp" line="206"/>
       <source>sitemap indices are not supported</source>
       <translation>未支援網站地圖索引</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/services/standard/parsers/sitemapparser.cpp" line="197"/>
+      <location filename="../src/librssguard/services/standard/parsers/sitemapparser.cpp" line="210"/>
       <source>not a Sitemap</source>
       <translation>非網站地圖</translation>
     </message>
@@ -6461,14 +6475,14 @@ Number of categories: %2</source>
   <context>
     <name>SettingsBrowserMail</name>
     <message>
-      <location filename="../src/librssguard/gui/settings/settingsbrowsermail.cpp" line="106"/>
+      <location filename="../src/librssguard/gui/settings/settingsbrowsermail.cpp" line="111"/>
       <source>Select web browser executable</source>
       <translation>選擇網路瀏覽器的可執行檔</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/settings/settingsbrowsermail.cpp" line="111"/>
-      <location filename="../src/librssguard/gui/settings/settingsbrowsermail.cpp" line="156"/>
-      <location filename="../src/librssguard/gui/settings/settingsbrowsermail.cpp" line="293"/>
+      <location filename="../src/librssguard/gui/settings/settingsbrowsermail.cpp" line="116"/>
+      <location filename="../src/librssguard/gui/settings/settingsbrowsermail.cpp" line="161"/>
+      <location filename="../src/librssguard/gui/settings/settingsbrowsermail.cpp" line="306"/>
       <source>Executables (*)</source>
       <extracomment>File filter for external browser selection dialog.
 ----------
@@ -6476,24 +6490,24 @@ File filter for external e-mail selection dialog.</extracomment>
       <translation>可執行檔 (*)</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/settings/settingsbrowsermail.cpp" line="113"/>
-      <location filename="../src/librssguard/gui/settings/settingsbrowsermail.cpp" line="158"/>
-      <location filename="../src/librssguard/gui/settings/settingsbrowsermail.cpp" line="291"/>
+      <location filename="../src/librssguard/gui/settings/settingsbrowsermail.cpp" line="118"/>
+      <location filename="../src/librssguard/gui/settings/settingsbrowsermail.cpp" line="163"/>
+      <location filename="../src/librssguard/gui/settings/settingsbrowsermail.cpp" line="304"/>
       <source>Executables (*.*)</source>
       <translation>可執行檔 (*.*)</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/settings/settingsbrowsermail.cpp" line="151"/>
+      <location filename="../src/librssguard/gui/settings/settingsbrowsermail.cpp" line="156"/>
       <source>Select e-mail executable</source>
       <translation>選擇郵件客戶端的可執行檔</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/settings/settingsbrowsermail.cpp" line="177"/>
+      <location filename="../src/librssguard/gui/settings/settingsbrowsermail.cpp" line="183"/>
       <source>Opera 12 or older</source>
       <translation>Opera 12 或更早版本</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/settings/settingsbrowsermail.cpp" line="301"/>
+      <location filename="../src/librssguard/gui/settings/settingsbrowsermail.cpp" line="314"/>
       <source>Enter (optional) parameters:</source>
       <translation>輸入(可選用)參元:</translation>
     </message>
@@ -6518,73 +6532,78 @@ File filter for external e-mail selection dialog.</extracomment>
       <translation>啟用 HTTP/2</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/settings/settingsbrowsermail.ui" line="48"/>
+      <location filename="../src/librssguard/gui/settings/settingsbrowsermail.ui" line="41"/>
+      <source>Enable API server</source>
+      <translation type="unfinished">Enable API server</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard/gui/settings/settingsbrowsermail.ui" line="55"/>
       <source>Custom &quot;QTWEBENGINE_CHROMIUM_FLAGS&quot; flags</source>
       <translation>自訂 &quot;QTWEBENGINE_CHROMIUM_FLAGS&quot; 旗標</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/settings/settingsbrowsermail.ui" line="58"/>
+      <location filename="../src/librssguard/gui/settings/settingsbrowsermail.ui" line="65"/>
       <source>Disable cache</source>
       <translation>停用快取</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/settings/settingsbrowsermail.ui" line="66"/>
+      <location filename="../src/librssguard/gui/settings/settingsbrowsermail.ui" line="73"/>
       <source>External web browser</source>
       <translation>外部瀏覽器</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/settings/settingsbrowsermail.ui" line="72"/>
+      <location filename="../src/librssguard/gui/settings/settingsbrowsermail.ui" line="79"/>
       <source>Always open hyperlinks in external web browser</source>
       <translation>總是用外部瀏覽器開啟超連結</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/settings/settingsbrowsermail.ui" line="92"/>
-      <location filename="../src/librssguard/gui/settings/settingsbrowsermail.ui" line="206"/>
+      <location filename="../src/librssguard/gui/settings/settingsbrowsermail.ui" line="99"/>
+      <location filename="../src/librssguard/gui/settings/settingsbrowsermail.ui" line="213"/>
       <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;If unchecked, then default system-wide web browser is used.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
       <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;如果消勾，就會使用系統預設的瀏覽器。&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/settings/settingsbrowsermail.ui" line="95"/>
+      <location filename="../src/librssguard/gui/settings/settingsbrowsermail.ui" line="102"/>
       <source>Use custom external web browser</source>
       <translation>使用自訂的外部瀏覽器</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/settings/settingsbrowsermail.ui" line="107"/>
+      <location filename="../src/librssguard/gui/settings/settingsbrowsermail.ui" line="114"/>
       <source>Web browser executable</source>
       <translation>網路瀏覽器可執行的檔案</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/settings/settingsbrowsermail.ui" line="119"/>
+      <location filename="../src/librssguard/gui/settings/settingsbrowsermail.ui" line="126"/>
       <source>Executable file of web browser</source>
       <translation>網路瀏覽器可執行的檔案</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/settings/settingsbrowsermail.ui" line="132"/>
-      <location filename="../src/librssguard/gui/settings/settingsbrowsermail.ui" line="249"/>
+      <location filename="../src/librssguard/gui/settings/settingsbrowsermail.ui" line="139"/>
+      <location filename="../src/librssguard/gui/settings/settingsbrowsermail.ui" line="256"/>
       <source>&amp;Browse</source>
       <translation>瀏覽(&amp;B)</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/settings/settingsbrowsermail.ui" line="141"/>
-      <location filename="../src/librssguard/gui/settings/settingsbrowsermail.ui" line="258"/>
+      <location filename="../src/librssguard/gui/settings/settingsbrowsermail.ui" line="148"/>
+      <location filename="../src/librssguard/gui/settings/settingsbrowsermail.ui" line="265"/>
       <location filename="../src/librssguard/gui/settings/settingsbrowsermail.cpp" line="40"/>
       <source>Parameters</source>
       <translation>參元</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/settings/settingsbrowsermail.ui" line="151"/>
-      <location filename="../src/librssguard/gui/settings/settingsbrowsermail.ui" line="268"/>
+      <location filename="../src/librssguard/gui/settings/settingsbrowsermail.ui" line="158"/>
+      <location filename="../src/librssguard/gui/settings/settingsbrowsermail.ui" line="275"/>
       <source>Parameters passed to executable</source>
       <translation>傳給可執行檔的參元</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/settings/settingsbrowsermail.ui" line="158"/>
-      <location filename="../src/librssguard/gui/settings/settingsbrowsermail.ui" line="275"/>
+      <location filename="../src/librssguard/gui/settings/settingsbrowsermail.ui" line="165"/>
+      <location filename="../src/librssguard/gui/settings/settingsbrowsermail.ui" line="282"/>
       <source>Use sample arguments for</source>
       <translation>使用樣本參元</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/settings/settingsbrowsermail.ui" line="172"/>
+      <location filename="../src/librssguard/gui/settings/settingsbrowsermail.ui" line="179"/>
       <source>Select browser</source>
       <translation>選擇瀏覽器</translation>
     </message>
@@ -6594,27 +6613,27 @@ File filter for external e-mail selection dialog.</extracomment>
       <translation>注意，&quot;%1&quot; (不包括雙引號) 存放所選文訊的 URL 的變元欄位。</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/settings/settingsbrowsermail.ui" line="187"/>
+      <location filename="../src/librssguard/gui/settings/settingsbrowsermail.ui" line="194"/>
       <source>External e-mail client</source>
       <translation>外部電子郵件客戶端</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/settings/settingsbrowsermail.ui" line="209"/>
+      <location filename="../src/librssguard/gui/settings/settingsbrowsermail.ui" line="216"/>
       <source>Use custom external e-mail client</source>
       <translation>使用自訂的外部郵件客戶端</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/settings/settingsbrowsermail.ui" line="221"/>
+      <location filename="../src/librssguard/gui/settings/settingsbrowsermail.ui" line="228"/>
       <source>E-mail client executable</source>
       <translation>電子郵件客戶端可執行檔</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/settings/settingsbrowsermail.ui" line="236"/>
+      <location filename="../src/librssguard/gui/settings/settingsbrowsermail.ui" line="243"/>
       <source>Executable file of e-mail client</source>
       <translation>電子郵件客戶端之可執行檔</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/settings/settingsbrowsermail.ui" line="289"/>
+      <location filename="../src/librssguard/gui/settings/settingsbrowsermail.ui" line="296"/>
       <source>Select client</source>
       <translation>選擇客戶端</translation>
     </message>
@@ -6628,22 +6647,22 @@ File filter for external e-mail selection dialog.</extracomment>
  • %2 - 所選文訊的正文。</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/settings/settingsbrowsermail.ui" line="304"/>
+      <location filename="../src/librssguard/gui/settings/settingsbrowsermail.ui" line="311"/>
       <source>External tools</source>
       <translation>外部工具</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/settings/settingsbrowsermail.ui" line="339"/>
+      <location filename="../src/librssguard/gui/settings/settingsbrowsermail.ui" line="346"/>
       <source>&amp;Add tool</source>
       <translation>新增工具(&amp;A)</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/settings/settingsbrowsermail.ui" line="349"/>
+      <location filename="../src/librssguard/gui/settings/settingsbrowsermail.ui" line="356"/>
       <source>&amp;Edit selected tool</source>
       <translation>編輯所選工具(&amp;E)</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/settings/settingsbrowsermail.ui" line="359"/>
+      <location filename="../src/librssguard/gui/settings/settingsbrowsermail.ui" line="366"/>
       <source>&amp;Delete selected tool</source>
       <translation>刪除所選工具(&amp;D)</translation>
     </message>
@@ -6653,12 +6672,12 @@ File filter for external e-mail selection dialog.</extracomment>
       <translation>於此頁， 可設定用於開啟 URL 的一些外部工具。</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/settings/settingsbrowsermail.cpp" line="288"/>
+      <location filename="../src/librssguard/gui/settings/settingsbrowsermail.cpp" line="301"/>
       <source>Select external tool</source>
       <translation>選擇外部工具</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/settings/settingsbrowsermail.cpp" line="300"/>
+      <location filename="../src/librssguard/gui/settings/settingsbrowsermail.cpp" line="313"/>
       <source>Enter parameters</source>
       <translation>輸入參元</translation>
     </message>
@@ -6668,7 +6687,7 @@ File filter for external e-mail selection dialog.</extracomment>
       <translation>網路代理伺服器</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/settings/settingsbrowsermail.h" line="46"/>
+      <location filename="../src/librssguard/gui/settings/settingsbrowsermail.h" line="47"/>
       <source>Network &amp; web &amp; tools</source>
       <translation>網路 &amp; 網站 &amp; 工具</translation>
     </message>
@@ -6676,82 +6695,82 @@ File filter for external e-mail selection dialog.</extracomment>
   <context>
     <name>SettingsDatabase</name>
     <message>
-      <location filename="../src/librssguard/gui/settings/settingsdatabase.cpp" line="15"/>
+      <location filename="../src/librssguard/gui/settings/settingsdatabase.cpp" line="16"/>
       <source>Note that speed of used MySQL server and latency of used connection medium HEAVILY influences the final performance of this application. Using slow database connections leads to bad performance when browsing feeds or messages.</source>
       <translation>注意，所用的 MySQL 伺服器的速度和所用的連線媒介的延遲，會大大影響此應用程式的最終效能。慢的資料庫連線會降低瀏覽文源或消息時的速度。</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/settings/settingsdatabase.cpp" line="114"/>
+      <location filename="../src/librssguard/gui/settings/settingsdatabase.cpp" line="119"/>
       <source>Hostname is empty.</source>
       <translation>缺主機名稱。</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/settings/settingsdatabase.cpp" line="117"/>
+      <location filename="../src/librssguard/gui/settings/settingsdatabase.cpp" line="122"/>
       <source>Hostname looks ok.</source>
       <translation>主機名稱看來無問題。</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/settings/settingsdatabase.cpp" line="123"/>
+      <location filename="../src/librssguard/gui/settings/settingsdatabase.cpp" line="128"/>
       <source>Username is empty.</source>
       <translation>缺使用者名稱。</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/settings/settingsdatabase.cpp" line="126"/>
+      <location filename="../src/librssguard/gui/settings/settingsdatabase.cpp" line="131"/>
       <source>Username looks ok.</source>
       <translation>使用者名稱看來無問題。</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/settings/settingsdatabase.cpp" line="132"/>
+      <location filename="../src/librssguard/gui/settings/settingsdatabase.cpp" line="137"/>
       <source>Password is empty.</source>
       <translation>缺密碼。</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/settings/settingsdatabase.cpp" line="135"/>
+      <location filename="../src/librssguard/gui/settings/settingsdatabase.cpp" line="140"/>
       <source>Password looks ok.</source>
       <translation>密碼看來無問題。</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/settings/settingsdatabase.cpp" line="141"/>
+      <location filename="../src/librssguard/gui/settings/settingsdatabase.cpp" line="146"/>
       <source>Working database is empty.</source>
       <translation>缺工作資料庫。</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/settings/settingsdatabase.cpp" line="144"/>
+      <location filename="../src/librssguard/gui/settings/settingsdatabase.cpp" line="149"/>
       <source>Working database is ok.</source>
       <translation>工作資料庫看來無問題。</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/settings/settingsdatabase.cpp" line="165"/>
+      <location filename="../src/librssguard/gui/settings/settingsdatabase.cpp" line="170"/>
       <source>No connection test triggered so far.</source>
       <translation>尚未進行連線測試。</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/settings/settingsdatabase.cpp" line="166"/>
+      <location filename="../src/librssguard/gui/settings/settingsdatabase.cpp" line="171"/>
       <source>You did not executed any connection test yet.</source>
       <translation>您尚未進行連線測試。</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/settings/settingsdatabase.cpp" line="189"/>
+      <location filename="../src/librssguard/gui/settings/settingsdatabase.cpp" line="194"/>
       <source>Hostname of your MySQL server</source>
       <translation>您的 MySQL 伺服器的主機名稱</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/settings/settingsdatabase.cpp" line="190"/>
+      <location filename="../src/librssguard/gui/settings/settingsdatabase.cpp" line="195"/>
       <source>Username to login with</source>
       <translation>使用者名稱</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/settings/settingsdatabase.cpp" line="191"/>
+      <location filename="../src/librssguard/gui/settings/settingsdatabase.cpp" line="196"/>
       <source>Password for your username</source>
       <translation>密碼</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/settings/settingsdatabase.cpp" line="192"/>
+      <location filename="../src/librssguard/gui/settings/settingsdatabase.cpp" line="197"/>
       <source>Working database which you have full access to.</source>
       <translation>您擁有完全存取權限的工作資料庫。</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/settings/settingsdatabase.cpp" line="22"/>
+      <location filename="../src/librssguard/gui/settings/settingsdatabase.cpp" line="23"/>
       <source>Usage of in-memory working database has several advantages and pitfalls. Make sure that you are familiar with these before you turn this feature on.
 
 Advantages:
@@ -6817,7 +6836,7 @@ Authors of this application are NOT responsible for lost data.</source>
       <translation>測試設定</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/settings/settingsdatabase.h" line="33"/>
+      <location filename="../src/librssguard/gui/settings/settingsdatabase.h" line="34"/>
       <source>Data storage</source>
       <translation>資料存儲</translation>
     </message>
@@ -6825,7 +6844,7 @@ Authors of this application are NOT responsible for lost data.</source>
   <context>
     <name>SettingsDownloads</name>
     <message>
-      <location filename="../src/librssguard/gui/settings/settingsdownloads.cpp" line="26"/>
+      <location filename="../src/librssguard/gui/settings/settingsdownloads.cpp" line="34"/>
       <source>Select downloads target directory</source>
       <translation>選擇下載目錄</translation>
     </message>
@@ -6860,7 +6879,7 @@ Authors of this application are NOT responsible for lost data.</source>
       <translation>每次下載都詢問</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/settings/settingsdownloads.h" line="29"/>
+      <location filename="../src/librssguard/gui/settings/settingsdownloads.h" line="30"/>
       <source>Downloads</source>
       <translation>下載</translation>
     </message>
@@ -6868,7 +6887,7 @@ Authors of this application are NOT responsible for lost data.</source>
   <context>
     <name>SettingsFeedsMessages</name>
     <message>
-      <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.cpp" line="233"/>
+      <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.cpp" line="237"/>
       <source>Select new font</source>
       <translation>選擇新字型</translation>
     </message>
@@ -6900,12 +6919,12 @@ Authors of this application are NOT responsible for lost data.</source>
       <translation> = 未變更的大小</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.cpp" line="368"/>
+      <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.cpp" line="372"/>
       <source>PC restart needed</source>
       <translation>須重啟 PC</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.cpp" line="369"/>
+      <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.cpp" line="373"/>
       <source>Your PC needs to be restarted to make some of enabled features fully working.</source>
       <translation>PC 必須重新啟動以使某些啟用的功能完整運作起來。</translation>
     </message>
@@ -7031,6 +7050,11 @@ Authors of this application are NOT responsible for lost data.</source>
       <translation>內建的文章檢視器</translation>
     </message>
     <message>
+      <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="361"/>
+      <source>Limit height of all pictures</source>
+      <translation type="unfinished">Limit height of all pictures</translation>
+    </message>
+    <message>
       <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="645"/>
       <source>Unread article icon type</source>
       <translation>未讀文章的圖示類型</translation>
@@ -7054,11 +7078,6 @@ Authors of this application are NOT responsible for lost data.</source>
       <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="352"/>
       <source>Display attachments directly in article</source>
       <translation>直接於文章中顯示附件</translation>
-    </message>
-    <message>
-      <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="361"/>
-      <source>Limit height of pictures</source>
-      <translation>圖片高度上限</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="445"/>
@@ -7106,7 +7125,7 @@ Authors of this application are NOT responsible for lost data.</source>
       <translation>顯示文章的日期不超過</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.h" line="34"/>
+      <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.h" line="35"/>
       <source>Feeds &amp; articles</source>
       <translation>文源與文章</translation>
     </message>
@@ -7114,7 +7133,7 @@ Authors of this application are NOT responsible for lost data.</source>
   <context>
     <name>SettingsGeneral</name>
     <message>
-      <location filename="../src/librssguard/gui/settings/settingsgeneral.cpp" line="46"/>
+      <location filename="../src/librssguard/gui/settings/settingsgeneral.cpp" line="51"/>
       <source> (not supported on this platform)</source>
       <translation> (於此平台不支援)</translation>
     </message>
@@ -7129,7 +7148,7 @@ Authors of this application are NOT responsible for lost data.</source>
       <translation>於應用程式啟動時檢查 %1  的更新</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/settings/settingsgeneral.h" line="26"/>
+      <location filename="../src/librssguard/gui/settings/settingsgeneral.h" line="27"/>
       <source>General</source>
       <translation>一般</translation>
     </message>
@@ -7152,43 +7171,43 @@ Authors of this application are NOT responsible for lost data.</source>
       <translation>強制使用外觀顏色</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/settings/settingsgui.cpp" line="275"/>
+      <location filename="../src/librssguard/gui/settings/settingsgui.cpp" line="279"/>
       <source>Icon only</source>
       <translation>僅圖示</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/settings/settingsgui.cpp" line="276"/>
+      <location filename="../src/librssguard/gui/settings/settingsgui.cpp" line="280"/>
       <source>Text only</source>
       <translation>僅文字</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/settings/settingsgui.cpp" line="277"/>
+      <location filename="../src/librssguard/gui/settings/settingsgui.cpp" line="281"/>
       <source>Text beside icon</source>
       <translation>文字在圖示旁</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/settings/settingsgui.cpp" line="278"/>
+      <location filename="../src/librssguard/gui/settings/settingsgui.cpp" line="282"/>
       <source>Text under icon</source>
       <translation>文字在圖示下</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/settings/settingsgui.cpp" line="279"/>
+      <location filename="../src/librssguard/gui/settings/settingsgui.cpp" line="283"/>
       <source>Follow OS style</source>
       <translation>使用作業系統風格</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/settings/settingsgui.cpp" line="173"/>
+      <location filename="../src/librssguard/gui/settings/settingsgui.cpp" line="177"/>
       <source>system icon theme</source>
       <extracomment>Label for disabling icon theme.</extracomment>
       <translation>系統圖示主題</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/settings/settingsgui.cpp" line="175"/>
+      <location filename="../src/librssguard/gui/settings/settingsgui.cpp" line="179"/>
       <source>no icon theme</source>
       <translation>無圖示主題</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/settings/settingsgui.cpp" line="156"/>
+      <location filename="../src/librssguard/gui/settings/settingsgui.cpp" line="160"/>
       <source>(Your OS does not support tray icons at the moment.)</source>
       <translation>(此作業系統目前未支援系統祥圖示。)</translation>
     </message>
@@ -7203,7 +7222,7 @@ Authors of this application are NOT responsible for lost data.</source>
       <translation>可於此自訂外觀以蓋掉一些顏色。這些顏色可動態使用於本應用程式。</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/settings/settingsgui.cpp" line="229"/>
+      <location filename="../src/librssguard/gui/settings/settingsgui.cpp" line="233"/>
       <source>%1
 
 Version: %2
@@ -7214,7 +7233,7 @@ Description: %3</source>
 描述: %3</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/settings/settingsgui.cpp" line="302"/>
+      <location filename="../src/librssguard/gui/settings/settingsgui.cpp" line="306"/>
       <source>Fetch color from activated skin</source>
       <translation>從使用中的外觀抓取顏色</translation>
     </message>
@@ -7388,34 +7407,34 @@ Description: %3</source>
       <translation>幫我們改善 %1 &lt;a href=&quot;%2&quot;&gt;譯文&lt;/a&gt;。</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/settings/settingslocalization.cpp" line="111"/>
-      <location filename="../src/librssguard/gui/settings/settingslocalization.cpp" line="112"/>
-      <location filename="../src/librssguard/gui/settings/settingslocalization.cpp" line="117"/>
+      <location filename="../src/librssguard/gui/settings/settingslocalization.cpp" line="115"/>
+      <location filename="../src/librssguard/gui/settings/settingslocalization.cpp" line="116"/>
+      <location filename="../src/librssguard/gui/settings/settingslocalization.cpp" line="121"/>
       <source>Big thanks to all translators!</source>
       <translation>萬分感謝所有的翻譯者！</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/settings/settingslocalization.cpp" line="116"/>
+      <location filename="../src/librssguard/gui/settings/settingslocalization.cpp" line="120"/>
       <source>Translations provided by: %1</source>
       <translation>提供翻譯者: %1</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/settings/settingslocalization.cpp" line="165"/>
+      <location filename="../src/librssguard/gui/settings/settingslocalization.cpp" line="169"/>
       <source>Translators needed!</source>
       <translation>需要翻譯者！</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/settings/settingslocalization.cpp" line="166"/>
+      <location filename="../src/librssguard/gui/settings/settingslocalization.cpp" line="170"/>
       <source>The translation &apos;%1&apos; is incomplete and anyone able to help with translating %2 is greatly welcomed.</source>
       <translation>譯文 &apos;%1&apos; 不完整，竭誠歡迎能幫忙翻譯 %2 的人。</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/settings/settingslocalization.cpp" line="168"/>
+      <location filename="../src/librssguard/gui/settings/settingslocalization.cpp" line="172"/>
       <source>Do you want to help with the translation now?</source>
       <translation>想要立即幫忙翻譯嗎？</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/settings/settingslocalization.h" line="26"/>
+      <location filename="../src/librssguard/gui/settings/settingslocalization.h" line="27"/>
       <source>Localization</source>
       <translation>本地化</translation>
     </message>
@@ -7428,27 +7447,42 @@ Description: %3</source>
       <translation>後端</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/settings/settingsmediaplayer.cpp" line="21"/>
+      <location filename="../src/librssguard/gui/settings/settingsmediaplayer.ui" line="36"/>
+      <source>Use custom MPV configuration folder</source>
+      <translation type="unfinished">Use custom MPV configuration folder</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard/gui/settings/settingsmediaplayer.ui" line="48"/>
+      <source>Browse</source>
+      <translation type="unfinished">Browse</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard/gui/settings/settingsmediaplayer.cpp" line="33"/>
       <source>You use modern libmpv-based media player backend with API version %1.</source>
       <translation>所用的是基於 libmpv 的影音播放器後端，API 版本 %1。</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/settings/settingsmediaplayer.cpp" line="26"/>
+      <location filename="../src/librssguard/gui/settings/settingsmediaplayer.cpp" line="48"/>
       <source>You use lightweight QtMultimedia-based media player backend. If some videos do not play, then you likely need to install some codecs.</source>
       <translation>所用的是基於 QtMultimedia 的輕量影音播放器後端。若未播放某些影音檔，就可能得安裝某些編碼解碼器。</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/settings/settingsmediaplayer.cpp" line="30"/>
+      <location filename="../src/librssguard/gui/settings/settingsmediaplayer.cpp" line="53"/>
       <source>no backend installed</source>
       <translation>未安裝後端</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/settings/settingsmediaplayer.cpp" line="31"/>
+      <location filename="../src/librssguard/gui/settings/settingsmediaplayer.cpp" line="54"/>
       <source>You do not have any media player available. Media player is only supported on modern platforms where needed libraries are available. You must manually recompile %1 to be able to use media player.</source>
       <translation>無可用的影音播放器。 於有可用的程式庫的現代平台才能支援影音播放器。需手工再次編譯 %1 才能使用影音播放器。</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/settings/settingsmediaplayer.h" line="25"/>
+      <location filename="../src/librssguard/gui/settings/settingsmediaplayer.cpp" line="68"/>
+      <source>Select folder for your MPV configuration</source>
+      <translation type="unfinished">Select folder for your MPV configuration</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard/gui/settings/settingsmediaplayer.h" line="31"/>
       <source>Media player</source>
       <translation>媒體播放器</translation>
     </message>
@@ -7456,12 +7490,12 @@ Description: %3</source>
   <context>
     <name>SettingsNodejs</name>
     <message>
-      <location filename="../src/librssguard/gui/settings/settingsnodejs.cpp" line="17"/>
+      <location filename="../src/librssguard/gui/settings/settingsnodejs.cpp" line="18"/>
       <source>What is Node.js?</source>
       <translation>Node.js 是什麼？</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/settings/settingsnodejs.cpp" line="18"/>
+      <location filename="../src/librssguard/gui/settings/settingsnodejs.cpp" line="19"/>
       <source>Node.js is asynchronous event-driven JavaScript runtime, designed to build scalable network applications.
 
 %1 integrates Node.js to bring some modern features like Adblock.
@@ -7478,32 +7512,32 @@ Also, relaunch &quot;Settings&quot; dialog after you install Node.js.</source>
 安裝 Node.js 後，也請重新啟動 &quot;設定&quot; 對話框。</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/settings/settingsnodejs.cpp" line="107"/>
+      <location filename="../src/librssguard/gui/settings/settingsnodejs.cpp" line="112"/>
       <source>Node.js has version %1.</source>
       <translation>Node.js 有版本 %1。</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/settings/settingsnodejs.cpp" line="118"/>
+      <location filename="../src/librssguard/gui/settings/settingsnodejs.cpp" line="123"/>
       <source>NPM has version %1.</source>
       <translation>NPM 有版本 %1。</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/settings/settingsnodejs.cpp" line="135"/>
+      <location filename="../src/librssguard/gui/settings/settingsnodejs.cpp" line="140"/>
       <source>You cannot choose file, you have to choose FOLDER.</source>
       <translation>不可選擇檔案，須選擇資料夾。</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/settings/settingsnodejs.cpp" line="139"/>
+      <location filename="../src/librssguard/gui/settings/settingsnodejs.cpp" line="144"/>
       <source>Package folder is OK.</source>
       <translation>套件資料夾無問題。</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/settings/settingsnodejs.cpp" line="143"/>
+      <location filename="../src/librssguard/gui/settings/settingsnodejs.cpp" line="148"/>
       <source>Package folder will be created!</source>
       <translation>將建立套件資料夾！</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/settings/settingsnodejs.cpp" line="28"/>
+      <location filename="../src/librssguard/gui/settings/settingsnodejs.cpp" line="29"/>
       <source>%1 automatically installs some Node.js packages so that you do not have to. %1 does not use global package folder because that requires administrator rights, therefore by default it uses subfolder placed in your &quot;user data&quot; folder.</source>
       <translation>%1 自動安裝一些 Node.js 套件，所以不必手工做。%1 不使用全局套件資料夾，因為這樣需要管理員權限。所以，預設使用位於 &quot;使用者資料&quot; 夾的子資料夾。</translation>
     </message>
@@ -7588,22 +7622,22 @@ Also, relaunch &quot;Settings&quot; dialog after you install Node.js.</source>
       <translation>不透明度</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/settings/settingsnotifications.h" line="30"/>
+      <location filename="../src/librssguard/gui/settings/settingsnotifications.h" line="31"/>
       <source>Notifications</source>
       <translation>通知</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/settings/settingsnotifications.cpp" line="18"/>
+      <location filename="../src/librssguard/gui/settings/settingsnotifications.cpp" line="19"/>
       <source>There are some built-in notification sounds. Just start typing &quot;:&quot; and they will show up.</source>
       <translation>有一些內建的通知音效。只要鍵入 &quot;:&quot; 就會示範播放。</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/settings/settingsnotifications.cpp" line="99"/>
+      <location filename="../src/librssguard/gui/settings/settingsnotifications.cpp" line="104"/>
       <source>How do I look?</source>
       <translation>看來如何？</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/settings/settingsnotifications.cpp" line="100"/>
+      <location filename="../src/librssguard/gui/settings/settingsnotifications.cpp" line="105"/>
       <source>Just testing new notifications settings. That&apos;s all.</source>
       <translation>只是測試新的通知設定而已。</translation>
     </message>
@@ -7611,7 +7645,7 @@ Also, relaunch &quot;Settings&quot; dialog after you install Node.js.</source>
   <context>
     <name>SettingsShortcuts</name>
     <message>
-      <location filename="../src/librssguard/gui/settings/settingsshortcuts.h" line="26"/>
+      <location filename="../src/librssguard/gui/settings/settingsshortcuts.h" line="27"/>
       <source>Keyboard shortcuts</source>
       <translation>鍵盤快鍵</translation>
     </message>
@@ -7680,33 +7714,33 @@ Also, relaunch &quot;Settings&quot; dialog after you install Node.js.</source>
   <context>
     <name>SkinFactory</name>
     <message>
-      <location filename="../src/librssguard/miscellaneous/skinfactory.cpp" line="221"/>
-      <location filename="../src/librssguard/miscellaneous/skinfactory.cpp" line="224"/>
+      <location filename="../src/librssguard/miscellaneous/skinfactory.cpp" line="222"/>
+      <location filename="../src/librssguard/miscellaneous/skinfactory.cpp" line="225"/>
       <source>This page was blocked by AdBlock</source>
       <translation>AdBlock 封鎖了此頁</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/miscellaneous/skinfactory.cpp" line="222"/>
+      <location filename="../src/librssguard/miscellaneous/skinfactory.cpp" line="223"/>
       <source>Blocked URL: &quot;%1&quot;&lt;br/&gt;Used filter: &quot;%2&quot;</source>
       <translation>封鎖網址: &quot;%1&quot; &lt;br/&gt;使用的篩選規則: &quot;%2&quot;</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/miscellaneous/skinfactory.cpp" line="278"/>
+      <location filename="../src/librssguard/miscellaneous/skinfactory.cpp" line="289"/>
       <source>Written by </source>
       <translation>作者: </translation>
     </message>
     <message>
-      <location filename="../src/librssguard/miscellaneous/skinfactory.cpp" line="279"/>
+      <location filename="../src/librssguard/miscellaneous/skinfactory.cpp" line="290"/>
       <source>unknown author</source>
       <translation>未知的作者</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/miscellaneous/skinfactory.cpp" line="294"/>
+      <location filename="../src/librssguard/miscellaneous/skinfactory.cpp" line="302"/>
       <source>Newspaper view</source>
       <translation>報紙檢視</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/miscellaneous/skinfactory.cpp" line="526"/>
+      <location filename="../src/librssguard/miscellaneous/skinfactory.cpp" line="538"/>
       <source>file %1 not found</source>
       <translation>未找到檔案 %1</translation>
     </message>
@@ -8240,7 +8274,7 @@ Unread news: %2</source>
   <context>
     <name>TabWidget</name>
     <message>
-      <location filename="../src/librssguard/gui/tabwidget.cpp" line="138"/>
+      <location filename="../src/librssguard/gui/tabwidget.cpp" line="144"/>
       <source>Feeds</source>
       <translation>文源</translation>
     </message>
@@ -8260,17 +8294,17 @@ Unread news: %2</source>
       <translation>下載</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/tabwidget.cpp" line="247"/>
+      <location filename="../src/librssguard/gui/tabwidget.cpp" line="253"/>
       <source>Media player</source>
       <translation>媒體播放器</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/tabwidget.cpp" line="273"/>
+      <location filename="../src/librssguard/gui/tabwidget.cpp" line="279"/>
       <source>Web browser</source>
       <translation>網路瀏覽器</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/tabwidget.cpp" line="140"/>
+      <location filename="../src/librssguard/gui/tabwidget.cpp" line="146"/>
       <source>Browse your feeds and articles</source>
       <translation>瀏覽文源與文章</translation>
     </message>
@@ -8278,17 +8312,12 @@ Unread news: %2</source>
   <context>
     <name>TextBrowserViewer</name>
     <message>
-      <location filename="../src/librssguard/gui/webviewers/qtextbrowser/textbrowserviewer.cpp" line="155"/>
-      <source>image</source>
-      <translation>圖像</translation>
-    </message>
-    <message>
-      <location filename="../src/librssguard/gui/webviewers/qtextbrowser/textbrowserviewer.cpp" line="360"/>
+      <location filename="../src/librssguard/gui/webviewers/qtextbrowser/textbrowserviewer.cpp" line="270"/>
       <source>Enable external resources</source>
       <translation>啟用外部資源</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/webviewers/qtextbrowser/textbrowserviewer.cpp" line="362"/>
+      <location filename="../src/librssguard/gui/webviewers/qtextbrowser/textbrowserviewer.cpp" line="272"/>
       <source>Download</source>
       <translation>下載</translation>
     </message>
@@ -8779,167 +8808,167 @@ Last login on: %4</source>
   <context>
     <name>WebFactory</name>
     <message>
-      <location filename="../src/librssguard/network-web/webfactory.cpp" line="322"/>
+      <location filename="../src/librssguard/network-web/webfactory.cpp" line="450"/>
       <source>Web engine settings</source>
       <translation>網路引擎設定</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/network-web/webfactory.cpp" line="345"/>
+      <location filename="../src/librssguard/network-web/webfactory.cpp" line="473"/>
       <source>Auto-load images</source>
       <translation>自動載入圖片</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/network-web/webfactory.cpp" line="346"/>
+      <location filename="../src/librssguard/network-web/webfactory.cpp" line="474"/>
       <source>JS enabled</source>
       <translation>啟用 JS</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/network-web/webfactory.cpp" line="347"/>
+      <location filename="../src/librssguard/network-web/webfactory.cpp" line="475"/>
       <source>JS can open popup windows</source>
       <translation>JS 能開啟彈出窗</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/network-web/webfactory.cpp" line="349"/>
+      <location filename="../src/librssguard/network-web/webfactory.cpp" line="477"/>
       <source>JS can access clipboard</source>
       <translation>JS 能存取剪貼簿</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/network-web/webfactory.cpp" line="351"/>
+      <location filename="../src/librssguard/network-web/webfactory.cpp" line="479"/>
       <source>Hyperlinks can get focus</source>
       <translation>超連結能取得焦點</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/network-web/webfactory.cpp" line="353"/>
+      <location filename="../src/librssguard/network-web/webfactory.cpp" line="481"/>
       <source>Local storage enabled</source>
       <translation>啟用本機儲存庫</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/network-web/webfactory.cpp" line="355"/>
+      <location filename="../src/librssguard/network-web/webfactory.cpp" line="483"/>
       <source>Local content can access remote URLs</source>
       <translation>本機內容能存取遠端 URL</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/network-web/webfactory.cpp" line="357"/>
+      <location filename="../src/librssguard/network-web/webfactory.cpp" line="485"/>
       <source>XSS auditing enabled</source>
       <translation>啟用 XSS (跨網站指令碼) 審查</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/network-web/webfactory.cpp" line="359"/>
+      <location filename="../src/librssguard/network-web/webfactory.cpp" line="487"/>
       <source>Spatial navigation enabled</source>
       <translation>啟用空間導覽</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/network-web/webfactory.cpp" line="361"/>
+      <location filename="../src/librssguard/network-web/webfactory.cpp" line="489"/>
       <source>Local content can access local files</source>
       <translation>本機內容能存取本機檔案</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/network-web/webfactory.cpp" line="363"/>
+      <location filename="../src/librssguard/network-web/webfactory.cpp" line="491"/>
       <source>Hyperlink auditing enabled</source>
       <translation>啟用超連結審查</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/network-web/webfactory.cpp" line="365"/>
+      <location filename="../src/librssguard/network-web/webfactory.cpp" line="493"/>
       <source>Animate scrolling</source>
       <translation>啟用動畫式捲動</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/network-web/webfactory.cpp" line="367"/>
+      <location filename="../src/librssguard/network-web/webfactory.cpp" line="495"/>
       <source>Error pages enabled</source>
       <translation>啟用錯誤訊息頁面</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/network-web/webfactory.cpp" line="368"/>
+      <location filename="../src/librssguard/network-web/webfactory.cpp" line="496"/>
       <source>Plugins enabled</source>
       <translation>啟用外掛</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/network-web/webfactory.cpp" line="369"/>
+      <location filename="../src/librssguard/network-web/webfactory.cpp" line="497"/>
       <source>Fullscreen enabled</source>
       <translation>啟用全螢幕</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/network-web/webfactory.cpp" line="373"/>
+      <location filename="../src/librssguard/network-web/webfactory.cpp" line="501"/>
       <source>Screen capture enabled</source>
       <translation>啟用螢幕截圖</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/network-web/webfactory.cpp" line="375"/>
+      <location filename="../src/librssguard/network-web/webfactory.cpp" line="503"/>
       <source>WebGL enabled</source>
       <translation>啟用 WebGL</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/network-web/webfactory.cpp" line="376"/>
+      <location filename="../src/librssguard/network-web/webfactory.cpp" line="504"/>
       <source>Accelerate 2D canvas</source>
       <translation>加速 2D 畫布</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/network-web/webfactory.cpp" line="378"/>
+      <location filename="../src/librssguard/network-web/webfactory.cpp" line="506"/>
       <source>Print element backgrounds</source>
       <translation>列印元素背景</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/network-web/webfactory.cpp" line="380"/>
+      <location filename="../src/librssguard/network-web/webfactory.cpp" line="508"/>
       <source>Allow running insecure content</source>
       <translation>允許執行不安全的內容</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/network-web/webfactory.cpp" line="382"/>
+      <location filename="../src/librssguard/network-web/webfactory.cpp" line="510"/>
       <source>Allow geolocation on insecure origins</source>
       <translation>允許不安全來源的網站的地理定位</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/network-web/webfactory.cpp" line="713"/>
+      <location filename="../src/librssguard/network-web/webfactory.cpp" line="857"/>
       <source>Web cache is going to be cleared</source>
       <translation>網頁快取將被清除</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/network-web/webfactory.cpp" line="714"/>
+      <location filename="../src/librssguard/network-web/webfactory.cpp" line="858"/>
       <source>Do you really want to clear web cache?</source>
       <translation>真要清除網頁快取嗎？</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/network-web/webfactory.cpp" line="150"/>
+      <location filename="../src/librssguard/network-web/webfactory.cpp" line="159"/>
       <source>Navigate to website manually</source>
       <translation>動手至網站</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/network-web/webfactory.cpp" line="151"/>
+      <location filename="../src/librssguard/network-web/webfactory.cpp" line="160"/>
       <source>%1 was unable to launch your web browser with the given URL, you need to open the below website URL in your web browser manually.</source>
       <translation>%1 無法啟動瀏覽器到指定網址，必須自己到瀏覽器中開啟下面網址。</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/network-web/webfactory.cpp" line="386"/>
+      <location filename="../src/librssguard/network-web/webfactory.cpp" line="514"/>
       <source>JS can activate windows</source>
       <translation>JS 能使用視窗</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/network-web/webfactory.cpp" line="388"/>
+      <location filename="../src/librssguard/network-web/webfactory.cpp" line="516"/>
       <source>Show scrollbars</source>
       <translation>顯示捲軸</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/network-web/webfactory.cpp" line="389"/>
+      <location filename="../src/librssguard/network-web/webfactory.cpp" line="517"/>
       <source>Media playback with gestures</source>
       <translation>用手勢播放多媒體</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/network-web/webfactory.cpp" line="391"/>
+      <location filename="../src/librssguard/network-web/webfactory.cpp" line="519"/>
       <source>WebRTC uses only public interfaces</source>
       <translation>WebRTC 只使用公開的介面</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/network-web/webfactory.cpp" line="393"/>
+      <location filename="../src/librssguard/network-web/webfactory.cpp" line="521"/>
       <source>JS can paste from clipboard</source>
       <translation>JS 能取剪貼簿內容來貼上</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/network-web/webfactory.cpp" line="395"/>
+      <location filename="../src/librssguard/network-web/webfactory.cpp" line="523"/>
       <source>DNS prefetch enabled</source>
       <translation>啟用 DNS 預取</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/network-web/webfactory.cpp" line="399"/>
+      <location filename="../src/librssguard/network-web/webfactory.cpp" line="527"/>
       <source>PDF viewer enabled</source>
       <translation>啟用 PDF 檢視器</translation>
     </message>
