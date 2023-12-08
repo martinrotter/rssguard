@@ -462,7 +462,6 @@ set(UI_FILES
   gui/dialogs/formsettings.ui
   gui/dialogs/formupdate.ui
   gui/itemdetails.ui
-  gui/newspaperpreviewer.ui
   gui/notifications/articlelistnotification.ui
   gui/notifications/notificationseditor.ui
   gui/notifications/singlenotificationeditor.ui
