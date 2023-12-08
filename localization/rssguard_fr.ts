@@ -2113,12 +2113,12 @@ Dossier du cache Moteur Web QT -&gt; &quot;%7&quot;</translation>
   <context>
     <name>FormMain</name>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.cpp" line="412"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.cpp" line="413"/>
       <source>No possible actions</source>
       <translation>Pas d&apos;actions possibles</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.cpp" line="371"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.cpp" line="372"/>
       <source>No recycle bin</source>
       <translation>Pas de corbeille</translation>
     </message>
@@ -2183,594 +2183,599 @@ Dossier du cache Moteur Web QT -&gt; &quot;%7&quot;</translation>
       <translation>Art&amp;icles</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="184"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="185"/>
       <source>&amp;Recycle bin(s)</source>
       <translation>&amp;Corbeille(s)</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="191"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="192"/>
       <source>&amp;Accounts</source>
       <translation>Comptes</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="199"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="200"/>
       <source>&amp;Web browser &amp;&amp; tabs</source>
       <translation>&amp;Navigateur web &amp;&amp; onglets</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="226"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="227"/>
       <source>&amp;Quit</source>
       <translation>&amp;Quitter</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="229"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="230"/>
       <source>Quit the application.</source>
       <translation>Quitter RSS Guard</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="240"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="241"/>
       <source>&amp;Settings</source>
       <translation>&amp;Paramètres</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="243"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="244"/>
       <source>Display settings of the application.</source>
       <translation>Afficher les paramètres de l'appli</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="251"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="252"/>
       <source>&amp;About application</source>
       <translation>&amp;À propos d&apos;RSS Guard</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="254"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="255"/>
       <source>Displays extra info about this application.</source>
       <translation>Afficher des informations supplémentaires à propos d'RSS Guard</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="268"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="269"/>
       <source>&amp;Fullscreen</source>
       <translation>&amp;Plein écran</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="271"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="272"/>
       <source>Switch fullscreen mode.</source>
       <translation>Alterner le mode plein écran</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="279"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="280"/>
       <source>&amp;Fetch all</source>
       <translation>&amp;Obtenir des articles
 de tous les flux</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="282"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="283"/>
       <source>Fetch all feeds</source>
       <translation>Obtenir des articles de tous les flux</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="290"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="291"/>
       <source>Fetch &amp;selected</source>
       <translation>Obtenir des &amp;articles de l&apos;élément séléctionné</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="293"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="294"/>
       <source>Fetch selected feeds</source>
       <translation>Obtenir des articles des flux séléctionnés.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="314"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="315"/>
       <source>Mark articles &amp;read</source>
       <translation>Marquer les articles
 comme &amp;lus</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="317"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="318"/>
       <source>Mark selected articles read</source>
       <translation>Marquer les articles sélectionnés comme lus</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="325"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="326"/>
       <source>Mark articles &amp;unread</source>
       <translation>Marquer les articles
 comme &amp;non-lus</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="328"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="329"/>
       <source>Mark selected articles unread</source>
       <translation>Marquer les articles sélectionnés comme non-lus</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="336"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="337"/>
       <source>Switch &amp;importance</source>
       <translation>Changer l&apos;&amp;importance</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="339"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="340"/>
       <source>Switch importance of selected articles</source>
       <translation>Changer l&apos;importance des articles sélectionnés</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="350"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="351"/>
       <source>Mark all messages (without message filters) from selected items as read.</source>
       <translation>Marquer tous les messages (sans filtres de messages) des éléments sélectionnés comme lus</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="361"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="362"/>
       <source>Mark all messages (without message filters) from selected items as unread.</source>
       <translation>Marquer tous les messages (sans filtres de messages) des éléments sélectionnés comme non-lus</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="369"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="370"/>
       <source>&amp;Delete articles</source>
       <translation>&amp;Supprimer les articles sélectionnés</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="301"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="302"/>
       <source>&amp;Edit selected items</source>
       <translation>&amp;Modifier les éléments sélectionnés</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="306"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="307"/>
       <source>&amp;Delete selected items</source>
       <translation>&amp;Supprimer les éléments sélectionnés</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="347"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="348"/>
       <source>Mark selected items &amp;read</source>
       <translation>Marquer les éléments
 sélectionnés comme &amp;lus</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="358"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="359"/>
       <source>Mark selected items &amp;unread</source>
       <translation>Marquer les éléments
 sélectionnés comme &amp;non-lus</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="377"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="378"/>
       <source>&amp;Clean selected items</source>
       <translation>&amp;Nettoyer les éléments sélectionnés</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="380"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="381"/>
       <source>Deletes all messages from selected items.</source>
       <translation>Supprimer tous les messages des éléments sélectionnés</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="388"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="389"/>
       <source>Open in &amp;external browser</source>
       <translation>Ouvrir dans le navigateur &amp;externe</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="391"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="392"/>
       <source>Open selected articles in external browser</source>
       <translation>Ouvrir les articles sélectionnés dans le navigateur externe</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="399"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="400"/>
       <source>Open in &amp;internal browser</source>
       <translation>Ouvrir dans le navigateur &amp;interne</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="402"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="403"/>
       <source>Open selected articles in internal browser</source>
       <translation>Ouvrir les articles sélectionnés dans le navigateur interne</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="413"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="414"/>
       <source>No actions available</source>
       <translation>Aucune actions disponibles</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="416"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="417"/>
       <source>No actions are available right now.</source>
       <translation>Aucune actions disponibles pour le moment.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="424"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="425"/>
       <source>&amp;Mark all read</source>
       <translation>&amp;Tout marquer
 comme lu</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="427"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="428"/>
       <source>Marks all messages in all items read. This does not take message filters into account.</source>
       <translation>Marquer tous les messages de tous les éléments comme lus. Cela ne prend pas les filtres de message en compte</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="438"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="439"/>
       <source>Switch main window visibility</source>
       <translation>Changer la visibilité
 de la fenêtre principale</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="441"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="442"/>
       <source>Hides main window if it is visible and shows it if it is hidden.</source>
       <translation>Minimiser la fenêtre principale si elle est au premier plan et la montrer si elle est minimisée</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="455"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="456"/>
       <source>&amp;Feed list</source>
       <translation>La liste des &amp;flux</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="458"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="459"/>
       <source>Hides or shows the list of feeds/categories.</source>
       <translation>Cacher ou montrer la liste des flux/catégories</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="466"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="467"/>
       <source>&amp;Clean all</source>
       <translation>&amp;Tout nettoyer</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="469"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="470"/>
       <source>Deletes all messages from all items.</source>
       <translation>Supprimer tous les messages de tous les éléments</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="477"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="478"/>
       <source>&amp;Next item</source>
       <translation>Élément &amp;suivant</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="485"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="486"/>
       <source>&amp;Previous item</source>
       <translation>Élément &amp;précédent</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="493"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="494"/>
       <source>&amp;Next article</source>
       <translation>Article &amp;suivant</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="501"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="502"/>
       <source>&amp;Previous article</source>
       <translation>&amp;Article précédent</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="509"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="510"/>
       <source>Check for &amp;updates</source>
       <translation>Vérifier si une &amp;mise à jour est dispo</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="512"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="513"/>
       <source>Check if new update for the application is available for download.</source>
       <translation>Vérifier si une nouvelle mise à jour pour l&apos;application est disponible au téléchargement.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="526"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="527"/>
       <source>&amp;Main menu</source>
       <translation>Menu &amp;principal</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="529"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="530"/>
       <source>Hides or displays the main menu.</source>
       <translation>Cacher ou montrer le menu principal</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="537"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="538"/>
       <source>Report a &amp;bug...</source>
       <translation>Signaler un &amp;bug (⧉)</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="548"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="549"/>
       <source>&amp;Toolbars</source>
       <translation>&amp;Les barres d&apos;outils</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="551"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="552"/>
       <source>Switch visibility of main toolbars.</source>
       <translation>Changer la visibilité des barres d&apos;outils principales</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="565"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="566"/>
       <source>&amp;List headers</source>
       <translation>Les types de liste</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="573"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="574"/>
       <source>&amp;Donate...</source>
       <translation>&amp;Faire un don ♥ (⧉)</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="581"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="582"/>
       <source>Display &amp;documentation</source>
       <translation>Afficher &amp;la documentation (⧉)</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="589"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="590"/>
       <source>&amp;Restart</source>
       <translation>&amp;Redémarrer RSS Guard</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="597"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="598"/>
       <source>&amp;Restore settings</source>
       <translation>&amp;Restaurer les paramètres</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="605"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="606"/>
       <source>&amp;Backup settings</source>
       <translation>&amp;Faire une sauvegarde des paramètres</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="613"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="614"/>
       <source>Switch layout</source>
       <translation>Changer de disposition</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="621"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="622"/>
       <source>&amp;Downloads</source>
       <translation>&amp;Téléchargements</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="629"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="630"/>
       <source>Send via e-mail</source>
       <translation>Envoyer par e-mail</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="632"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="633"/>
       <source>Send selected articles via e-mail</source>
       <translation>Envoyer les articles sélectionnés par e-mail</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="640"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="641"/>
       <source>&amp;Cleanup database</source>
       <translation>&amp;Nettoyer la base de données</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="651"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="652"/>
       <source>Show unread items only</source>
       <translation>Montrer uniquement les éléments non-lus</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="659"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="660"/>
       <source>&amp;Expand/collapse selected item</source>
       <translation>&amp;Étendre/rétracter
 l&apos;élément selectionné</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="667"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="668"/>
       <source>&amp;Add account</source>
       <translation>&amp;Ajouter un compte</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="675"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="676"/>
       <source>&amp;Restore articles</source>
       <translation>&amp;Restaurer les articles</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="683"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="684"/>
       <source>&amp;Restore all recycle bins</source>
       <translation>&amp;Restaurer toutes les corbeilles</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="691"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="692"/>
       <source>&amp;Empty all recycle bins</source>
       <translation>&amp;Vider toutes les corbeilles</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="699"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="700"/>
       <source>Next &amp;unread article</source>
       <translation>Article &amp;non-lu suivant</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="713"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="714"/>
       <source>Status bar</source>
       <translation>La barre de statut</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="721"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="722"/>
       <source>&amp;Edit selected account</source>
       <translation>&amp;Modifier le compte sélectionné</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="729"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="730"/>
       <source>&amp;Delete selected account</source>
       <translation>&amp;Supprimer le compte
 sélectionné</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="742"/>
-      <location filename="../src/librssguard/gui/dialogs/formmain.cpp" line="317"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="743"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.cpp" line="318"/>
       <source>Add new category</source>
       <translation>Ajouter une 
 nouvelle catégorie</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="747"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="748"/>
       <source>Stop ongoing fetching</source>
       <translation>Arrêter l&apos;obtention 
 en cours</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="755"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="756"/>
       <source>New browser tab</source>
       <translation>Ouvrir un nouvel onglet navigateur</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="763"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="764"/>
       <source>Close all tabs</source>
       <translation>Fermer tous les onglets</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="768"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="769"/>
       <source>Close all tabs except current</source>
       <translation>Fermer les autres onglets</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="773"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="774"/>
       <source>Go to &amp;next tab</source>
       <translation>Aller à l&apos;onglet &amp;suivant</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="778"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="779"/>
       <source>Go to &amp;previous tab</source>
       <translation>Aller à l&apos;onglet &amp;précédent</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="786"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="787"/>
       <source>&amp;Enable article preview</source>
       <translation>&amp;Activer l&apos;aperçu d&apos;articles</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="791"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="792"/>
       <source>&amp;Copy URL of selected item</source>
       <translation>&amp;Copier le lien de l&apos;élément sélectionné</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="796"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="797"/>
       <source>Article &amp;filters</source>
       <translation>Filtres &amp;d&apos;articles</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="804"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="805"/>
       <source>&amp;Show tree expanders</source>
       <translation>&amp;Montrer les agrandisseurs de catégories</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="809"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="810"/>
       <source>Fetch feeds with &amp;custom auto-download policy</source>
       <translation>Obtenir les flux avec une politique de
 téléchargement automatique &amp;personnalisée</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="817"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="818"/>
       <source>Alternate row colors in lists</source>
       <translation>Alterner les couleurs
 de rangs dans les listes</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="825"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="826"/>
       <source>Automatically &amp;expand item when selected</source>
       <translation>Élargir l&apos;élément automatiquement
 lorsqu&apos;il est selectionné</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="836"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="837"/>
       <source>Message viewer toolbars</source>
       <translation>Barres d&apos;outils du
 lecteur de messages</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="841"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="842"/>
       <source>Expand/collapse selected item &amp;recursively</source>
       <translation>&amp;Étendre/rétracter l&apos;élément
 selectionné d&apos;une manière &amp;récursive</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="846"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="847"/>
       <source>Close &amp;current tab</source>
       <translation>Fermer &amp;l&apos;onglet actif</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="851"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="852"/>
       <source>&amp;Copy URLs of selected articles</source>
       <translation>&amp;Copier le lien des articles sélectionnés</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="856"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="857"/>
       <source>Open in internal browser (no new tab)</source>
       <translation>Ouvrir dans le navigateur interne
 (pas de nouvel onglet)</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="864"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="865"/>
       <source>&amp;Sort alphabetically</source>
       <translation>&amp;Trier alphabétiquement</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="869"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="870"/>
       <source>Move &amp;up</source>
       <translation>Déplacer &amp;vers le haut</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="874"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="875"/>
       <source>Move to &amp;top</source>
       <translation>Déplacer &amp;tout en haut</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="879"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="880"/>
       <source>Move &amp;down</source>
       <translation>Déplacer &amp;vers le bas</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="884"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="885"/>
       <source>Move to &amp;bottom</source>
       <translation>Déplacer &amp;tout en bas</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="889"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="890"/>
       <source>Display application &amp;log</source>
       <translation>Afficher le &amp;journal de bord de l&apos;appli</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="894"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="895"/>
       <source>Focus feeds search box</source>
       <translation>Focaliser la boîte
 de recherche de flux</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="899"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="900"/>
       <source>Focus articles search box</source>
       <translation>Focaliser la boîte de 
 recherche d&apos;articles</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="904"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="905"/>
       <source>Scroll &amp;up browser</source>
       <translation>Défiler le navigateur &amp;vers le haut</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="909"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="910"/>
       <source>Scroll &amp;down browser</source>
       <translation>Défiler le navigateur &amp;vers le bas</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="914"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="915"/>
       <source>Rearrange &amp;subcategories alphabetically</source>
       <translation>Réarranger les &amp;sous-catégories alphabétiquement</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="919"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="920"/>
       <source>Rearrange &amp;feeds alphabetically</source>
       <translation>Réarranger &amp;les flux alphabétiquement</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="924"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="925"/>
       <source>Cleanup web cac&amp;he</source>
       <translation>Nettoyer le &amp;cache web</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="932"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="933"/>
       <source>You must add new account first</source>
       <translation>Vous devez d'abord ajouter un nouveau compte</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="935"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="936"/>
       <source>You must add new account first.</source>
       <translation>Vous devez d'abord ajouter un nouveau compte.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="940"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="941"/>
       <source>Edit &amp;child feeds</source>
       <translation>Modifier les &amp;flux enfants</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="945"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="946"/>
       <source>Edit child feeds (&amp;recursive)</source>
       <translation>Modifier les flux enfants (&amp;récursifs)</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="737"/>
-      <location filename="../src/librssguard/gui/dialogs/formmain.cpp" line="327"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="951"/>
+      <source>Play in &amp;media player</source>
+      <translation>Lire dans le lecteur &amp;multimédia</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="738"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.cpp" line="328"/>
       <source>Add new feed</source>
       <translation>Ajouter un
 nouveau flux</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.cpp" line="378"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.cpp" line="379"/>
       <source>No actions possible</source>
       <translation>Aucunes actions possibles</translation>
     </message>
@@ -2785,17 +2790,27 @@ nouveau flux</translation>
       <translation>Impossible de nettoyer la base de données car une autre opération critique est en cours.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.cpp" line="527"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.cpp" line="471"/>
+      <source>Play in media player</source>
+      <translation>Lire dans le lecteur multimédia</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard/gui/dialogs/formmain.cpp" line="472"/>
+      <source>(not supported)</source>
+      <translation>(non supporté)</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard/gui/dialogs/formmain.cpp" line="537"/>
       <source>Close opened modal dialogs first.</source>
       <translation>Fermer en premier les fenêtres modales ouvertes.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.cpp" line="447"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.cpp" line="448"/>
       <source>Fetching common data</source>
       <translation>Obtention de données communes en cours</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.cpp" line="526"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.cpp" line="536"/>
       <source>Close dialogs</source>
       <translation>Fermer les boîtes de dialogue</translation>
     </message>
@@ -3805,19 +3820,19 @@ Vous pouvez désormais l&apos;installer.</translation>
       <translation>Répondre à cet e-mail</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/services/gmail/gmailserviceroot.cpp" line="219"/>
+      <location filename="../src/librssguard/services/gmail/gmailserviceroot.cpp" line="222"/>
       <source>Authentication status: %1
 Login tokens expiration: %2</source>
       <translation>Statut d&apos;authentification: %1
 Expiration de jetons d&apos;authentification: %2</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/services/gmail/gmailserviceroot.cpp" line="221"/>
+      <location filename="../src/librssguard/services/gmail/gmailserviceroot.cpp" line="224"/>
       <source>logged-in</source>
       <translation>connecté</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/services/gmail/gmailserviceroot.cpp" line="221"/>
+      <location filename="../src/librssguard/services/gmail/gmailserviceroot.cpp" line="224"/>
       <source>NOT logged-in</source>
       <translation>NON connecté</translation>
     </message>
@@ -4306,107 +4321,112 @@ Expiration de jetons d&apos;authentification: %2</translation>
   <context>
     <name>LibMpvBackend</name>
     <message>
-      <location filename="../src/librssguard/gui/mediaplayer/libmpv/libmpvbackend.cpp" line="152"/>
+      <location filename="../src/librssguard/gui/mediaplayer/libmpv/libmpvbackend.cpp" line="170"/>
       <source>File loaded</source>
       <translation>Fichier chargé</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/mediaplayer/libmpv/libmpvbackend.cpp" line="203"/>
+      <location filename="../src/librssguard/gui/mediaplayer/libmpv/libmpvbackend.cpp" line="226"/>
       <source>App restart required</source>
       <translation>Redémarrage de l'appli nécessaire</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/mediaplayer/libmpv/libmpvbackend.cpp" line="206"/>
+      <location filename="../src/librssguard/gui/mediaplayer/libmpv/libmpvbackend.cpp" line="229"/>
       <source>Out of memory</source>
       <translation>Mémoire insuffisante</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/mediaplayer/libmpv/libmpvbackend.cpp" line="209"/>
+      <location filename="../src/librssguard/gui/mediaplayer/libmpv/libmpvbackend.cpp" line="232"/>
       <source>Not initialized yet</source>
       <translation>Pas encore initialisé</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/mediaplayer/libmpv/libmpvbackend.cpp" line="212"/>
+      <location filename="../src/librssguard/gui/mediaplayer/libmpv/libmpvbackend.cpp" line="235"/>
       <source>Invalid parameter</source>
       <translation>Paramètre invalide</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/mediaplayer/libmpv/libmpvbackend.cpp" line="215"/>
+      <location filename="../src/librssguard/gui/mediaplayer/libmpv/libmpvbackend.cpp" line="238"/>
       <source>Option not found</source>
       <translation>Option non trouvée</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/mediaplayer/libmpv/libmpvbackend.cpp" line="218"/>
+      <location filename="../src/librssguard/gui/mediaplayer/libmpv/libmpvbackend.cpp" line="241"/>
       <source>Option badly formatted</source>
       <translation>Option mal formatée</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/mediaplayer/libmpv/libmpvbackend.cpp" line="221"/>
+      <location filename="../src/librssguard/gui/mediaplayer/libmpv/libmpvbackend.cpp" line="244"/>
       <source>Cannot set option</source>
       <translation>Impossible de définir l'option</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/mediaplayer/libmpv/libmpvbackend.cpp" line="224"/>
+      <location filename="../src/librssguard/gui/mediaplayer/libmpv/libmpvbackend.cpp" line="247"/>
       <source>Property does not existing</source>
       <translation>Propriété inexistante</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/mediaplayer/libmpv/libmpvbackend.cpp" line="227"/>
+      <location filename="../src/librssguard/gui/mediaplayer/libmpv/libmpvbackend.cpp" line="250"/>
       <source>Property badly formatted</source>
       <translation>Propriété mal formatée</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/mediaplayer/libmpv/libmpvbackend.cpp" line="230"/>
+      <location filename="../src/librssguard/gui/mediaplayer/libmpv/libmpvbackend.cpp" line="253"/>
       <source>Property N/A</source>
       <translation>Propriété N/A</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/mediaplayer/libmpv/libmpvbackend.cpp" line="233"/>
+      <location filename="../src/librssguard/gui/mediaplayer/libmpv/libmpvbackend.cpp" line="256"/>
       <source>Cannot set property</source>
       <translation>Impossible de définir la propriété</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/mediaplayer/libmpv/libmpvbackend.cpp" line="236"/>
+      <location filename="../src/librssguard/gui/mediaplayer/libmpv/libmpvbackend.cpp" line="259"/>
       <source>Cannot run command</source>
       <translation>Impossible d'exécuter la commande</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/mediaplayer/libmpv/libmpvbackend.cpp" line="239"/>
+      <location filename="../src/librssguard/gui/mediaplayer/libmpv/libmpvbackend.cpp" line="262"/>
       <source>Loading failed</source>
       <translation>Le chargement a échoué</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/mediaplayer/libmpv/libmpvbackend.cpp" line="242"/>
+      <location filename="../src/librssguard/gui/mediaplayer/libmpv/libmpvbackend.cpp" line="265"/>
       <source>Cannot initialize audio</source>
       <translation>Impossible d'initialiser l'audio</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/mediaplayer/libmpv/libmpvbackend.cpp" line="245"/>
+      <location filename="../src/librssguard/gui/mediaplayer/libmpv/libmpvbackend.cpp" line="268"/>
       <source>Cannot initialize video</source>
       <translation>Impossible d'initialiser la vidéo</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/mediaplayer/libmpv/libmpvbackend.cpp" line="248"/>
+      <location filename="../src/librssguard/gui/mediaplayer/libmpv/libmpvbackend.cpp" line="271"/>
       <source>Not a media file</source>
       <translation>N'est pas un fichier média</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/mediaplayer/libmpv/libmpvbackend.cpp" line="251"/>
+      <location filename="../src/librssguard/gui/mediaplayer/libmpv/libmpvbackend.cpp" line="274"/>
       <source>Unknown file format</source>
       <translation>Format fichier inconnu</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/mediaplayer/libmpv/libmpvbackend.cpp" line="254"/>
+      <location filename="../src/librssguard/gui/mediaplayer/libmpv/libmpvbackend.cpp" line="277"/>
       <source>Unsupported file format</source>
       <translation>Format fichier non supporté</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/mediaplayer/libmpv/libmpvbackend.cpp" line="258"/>
+      <location filename="../src/librssguard/gui/mediaplayer/libmpv/libmpvbackend.cpp" line="281"/>
       <source>Unknown error (%1)</source>
       <translation>Erreur inconnue (%1)</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/mediaplayer/libmpv/libmpvbackend.cpp" line="279"/>
+      <location filename="../src/librssguard/gui/mediaplayer/libmpv/libmpvbackend.cpp" line="300"/>
+      <source>Stopped</source>
+      <translation>Arrêté</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard/gui/mediaplayer/libmpv/libmpvbackend.cpp" line="306"/>
       <source>File ended</source>
       <translation>Fichier terminé</translation>
     </message>
@@ -4699,9 +4719,13 @@ Expiration de jetons d&apos;authentification: %2</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/mediaplayer/mediaplayer.ui" line="155"/>
-      <location filename="../src/librssguard/gui/mediaplayer/mediaplayer.ui" line="162"/>
       <source>Download</source>
       <translation>Téléchargement</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard/gui/mediaplayer/mediaplayer.ui" line="162"/>
+      <source>Switch fullscreen mode</source>
+      <translation>Alterner le mode plein écran</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/mediaplayer/mediaplayer.cpp" line="43"/>
@@ -5271,12 +5295,12 @@ supplémentaire</translation>
   <context>
     <name>MessagesView</name>
     <message>
-      <location filename="../src/librssguard/gui/messagesview.cpp" line="666"/>
+      <location filename="../src/librssguard/gui/messagesview.cpp" line="688"/>
       <source>Problem with starting external e-mail client</source>
       <translation>Problème avec le démarrage du client e-mail externe</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/messagesview.cpp" line="667"/>
+      <location filename="../src/librssguard/gui/messagesview.cpp" line="689"/>
       <source>External e-mail client could not be started.</source>
       <translation>Le client e-mail externe n&apos;a pas pu démarrer.</translation>
     </message>
@@ -5286,12 +5310,22 @@ supplémentaire</translation>
       <translation>Ouvrir avec l&apos;outil externe</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/messagesview.cpp" line="878"/>
+      <location filename="../src/librssguard/gui/messagesview.cpp" line="646"/>
+      <source>No URL</source>
+      <translation>Aucun URL</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard/gui/messagesview.cpp" line="647"/>
+      <source>Article cannot be played in media player as it has no URL</source>
+      <translation>L'article ne peut pas être lu dans le lecteur multimédia car il n'a pas d'URL</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard/gui/messagesview.cpp" line="900"/>
       <source>Cannot run external tool</source>
       <translation>Impossible de lancer l&apos;outil externe</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/messagesview.cpp" line="879"/>
+      <location filename="../src/librssguard/gui/messagesview.cpp" line="901"/>
       <source>External tool &apos;%1&apos; could not be started.</source>
       <translation>L&apos;outil externe &apos;%1&apos; n&apos;a pas pu démarrer.</translation>
     </message>
@@ -5481,27 +5515,6 @@ supplémentaire</translation>
       <source>Type</source>
       <extracomment>Proxy server type.</extracomment>
       <translation>Type</translation>
-    </message>
-  </context>
-  <context>
-    <name>NewspaperPreviewer</name>
-    <message numerus="yes">
-      <location filename="../src/librssguard/gui/newspaperpreviewer.cpp" line="45"/>
-      <source>Show more articles (%n remaining)</source>
-      <translation>
-        <numerusform>Montrer plus d&apos;articles (%n restant)</numerusform>
-        <numerusform>Montrer plus d&apos;articles (%n restants)</numerusform>
-      </translation>
-    </message>
-    <message>
-      <location filename="../src/librssguard/gui/newspaperpreviewer.cpp" line="51"/>
-      <source>Cannot show more articles</source>
-      <translation>Impossible de montrer plus d&apos;articles</translation>
-    </message>
-    <message>
-      <location filename="../src/librssguard/gui/newspaperpreviewer.cpp" line="52"/>
-      <source>Cannot show more articles because parent feed was removed.</source>
-      <translation>Impossible de montrer plus d&apos;articles parce que le flux parent a été retiré.</translation>
     </message>
   </context>
   <context>
@@ -5778,7 +5791,7 @@ Feedly is a secure space where you can privately organize and research the topic
 Feedly est un éspace sécurisé où vous pouvez organiser et rechercher les sujets et tendances qui vous intéressent en privé.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/database/databasequeries.cpp" line="2657"/>
+      <location filename="../src/librssguard/database/databasequeries.cpp" line="2660"/>
       <source>Cannot insert article filter, because current database cannot return last inserted row ID.</source>
       <translation>Impossible d&apos;insérer le filtre d&apos;article, parce que la base de données actuelle ne peut pas retourner l&apos;identifiant du rang qui a été inséré en dernier.</translation>
     </message>
@@ -5862,37 +5875,37 @@ Liste d&apos;agrégateurs compatibles:</translation>
       <translation>Client Reddit simpliste.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/miscellaneous/skinfactory.cpp" line="608"/>
+      <location filename="../src/librssguard/miscellaneous/skinfactory.cpp" line="620"/>
       <source>interesting stuff</source>
       <translation>trucs intéressants</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/miscellaneous/skinfactory.cpp" line="611"/>
+      <location filename="../src/librssguard/miscellaneous/skinfactory.cpp" line="623"/>
       <source>interesting stuff (highlighted)</source>
       <translation>trucs intéressants (surlignés)</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/miscellaneous/skinfactory.cpp" line="614"/>
+      <location filename="../src/librssguard/miscellaneous/skinfactory.cpp" line="626"/>
       <source>errored items</source>
       <translation>éléments érronés</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/miscellaneous/skinfactory.cpp" line="617"/>
+      <location filename="../src/librssguard/miscellaneous/skinfactory.cpp" line="629"/>
       <source>errored items (highlighted)</source>
       <translation>éléments erronnés (surlignés)</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/miscellaneous/skinfactory.cpp" line="620"/>
+      <location filename="../src/librssguard/miscellaneous/skinfactory.cpp" line="632"/>
       <source>items with new articles</source>
       <translation>éléments avec des nouveaux articles</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/miscellaneous/skinfactory.cpp" line="623"/>
+      <location filename="../src/librssguard/miscellaneous/skinfactory.cpp" line="635"/>
       <source>items with new articles (highlighted)</source>
       <translation>éléments avec des nouveaux articles (surlignés)</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/miscellaneous/skinfactory.cpp" line="626"/>
+      <location filename="../src/librssguard/miscellaneous/skinfactory.cpp" line="638"/>
       <source>OK-ish color</source>
       <translation>Couleur m&apos;ouais</translation>
     </message>
@@ -5942,50 +5955,50 @@ Liste d&apos;agrégateurs compatibles:</translation>
       <translation>apostrophe fermante manquante</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/services/standard/parsers/atomparser.cpp" line="242"/>
-      <location filename="../src/librssguard/services/standard/parsers/rdfparser.cpp" line="192"/>
-      <location filename="../src/librssguard/services/standard/parsers/rssparser.cpp" line="192"/>
-      <location filename="../src/librssguard/services/standard/parsers/sitemapparser.cpp" line="180"/>
+      <location filename="../src/librssguard/services/standard/parsers/atomparser.cpp" line="246"/>
+      <location filename="../src/librssguard/services/standard/parsers/rdfparser.cpp" line="196"/>
+      <location filename="../src/librssguard/services/standard/parsers/rssparser.cpp" line="196"/>
+      <location filename="../src/librssguard/services/standard/parsers/sitemapparser.cpp" line="193"/>
       <source>XML is not well-formed, %1</source>
       <translation>L'XML n'est pas formatté correctement, %1</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/services/standard/parsers/atomparser.cpp" line="248"/>
+      <location filename="../src/librssguard/services/standard/parsers/atomparser.cpp" line="252"/>
       <source>not an ATOM feed</source>
       <translation>n'est pas un flux ATOM</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/services/standard/parsers/jsonparser.cpp" line="119"/>
+      <location filename="../src/librssguard/services/standard/parsers/jsonparser.cpp" line="123"/>
       <source>JSON error &apos;%1&apos;</source>
       <translation>Erreur JSON &apos;%1&apos;</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/services/standard/parsers/jsonparser.cpp" line="150"/>
+      <location filename="../src/librssguard/services/standard/parsers/jsonparser.cpp" line="154"/>
       <source>not a JSON feed</source>
       <translation>n'est pas un flux JSON</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/services/standard/parsers/rdfparser.cpp" line="198"/>
+      <location filename="../src/librssguard/services/standard/parsers/rdfparser.cpp" line="202"/>
       <source>not an RDF feed</source>
       <translation>n'est pas un flux RDF</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/services/standard/parsers/rssparser.cpp" line="198"/>
+      <location filename="../src/librssguard/services/standard/parsers/rssparser.cpp" line="202"/>
       <source>not a RSS feed</source>
       <translation>n'est pas un flux RSS</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/services/standard/parsers/sitemapparser.cpp" line="145"/>
+      <location filename="../src/librssguard/services/standard/parsers/sitemapparser.cpp" line="158"/>
       <source>support for gzipped sitemaps is not enabled</source>
       <translation>le support pour les cartes-site gzippés n'est pas activé</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/services/standard/parsers/sitemapparser.cpp" line="193"/>
+      <location filename="../src/librssguard/services/standard/parsers/sitemapparser.cpp" line="206"/>
       <source>sitemap indices are not supported</source>
       <translation>les indices de type carte-site ne sont pas supportés</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/services/standard/parsers/sitemapparser.cpp" line="197"/>
+      <location filename="../src/librssguard/services/standard/parsers/sitemapparser.cpp" line="210"/>
       <source>not a Sitemap</source>
       <translation>n'est pas une carte-site</translation>
     </message>
@@ -6507,14 +6520,14 @@ Nombre de catégories: %2</translation>
   <context>
     <name>SettingsBrowserMail</name>
     <message>
-      <location filename="../src/librssguard/gui/settings/settingsbrowsermail.cpp" line="106"/>
+      <location filename="../src/librssguard/gui/settings/settingsbrowsermail.cpp" line="111"/>
       <source>Select web browser executable</source>
       <translation>Sélectionner l&apos;exécutable du navigateur web</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/settings/settingsbrowsermail.cpp" line="111"/>
-      <location filename="../src/librssguard/gui/settings/settingsbrowsermail.cpp" line="156"/>
-      <location filename="../src/librssguard/gui/settings/settingsbrowsermail.cpp" line="293"/>
+      <location filename="../src/librssguard/gui/settings/settingsbrowsermail.cpp" line="116"/>
+      <location filename="../src/librssguard/gui/settings/settingsbrowsermail.cpp" line="161"/>
+      <location filename="../src/librssguard/gui/settings/settingsbrowsermail.cpp" line="306"/>
       <source>Executables (*)</source>
       <extracomment>File filter for external browser selection dialog.
 ----------
@@ -6522,24 +6535,24 @@ File filter for external e-mail selection dialog.</extracomment>
       <translation>Exécutables (*)</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/settings/settingsbrowsermail.cpp" line="113"/>
-      <location filename="../src/librssguard/gui/settings/settingsbrowsermail.cpp" line="158"/>
-      <location filename="../src/librssguard/gui/settings/settingsbrowsermail.cpp" line="291"/>
+      <location filename="../src/librssguard/gui/settings/settingsbrowsermail.cpp" line="118"/>
+      <location filename="../src/librssguard/gui/settings/settingsbrowsermail.cpp" line="163"/>
+      <location filename="../src/librssguard/gui/settings/settingsbrowsermail.cpp" line="304"/>
       <source>Executables (*.*)</source>
       <translation>Exécutables (*.*)</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/settings/settingsbrowsermail.cpp" line="151"/>
+      <location filename="../src/librssguard/gui/settings/settingsbrowsermail.cpp" line="156"/>
       <source>Select e-mail executable</source>
       <translation>Sélectionner l&apos;exécutable e-mail</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/settings/settingsbrowsermail.cpp" line="177"/>
+      <location filename="../src/librssguard/gui/settings/settingsbrowsermail.cpp" line="183"/>
       <source>Opera 12 or older</source>
       <translation>Opera 12 ou plus récent</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/settings/settingsbrowsermail.cpp" line="301"/>
+      <location filename="../src/librssguard/gui/settings/settingsbrowsermail.cpp" line="314"/>
       <source>Enter (optional) parameters:</source>
       <translation>Entrez des paramètres (optionnel):</translation>
     </message>
@@ -6564,73 +6577,78 @@ File filter for external e-mail selection dialog.</extracomment>
       <translation>Activer HTTP/2</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/settings/settingsbrowsermail.ui" line="48"/>
+      <location filename="../src/librssguard/gui/settings/settingsbrowsermail.ui" line="41"/>
+      <source>Enable API server</source>
+      <translation>Activer le serveur API</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard/gui/settings/settingsbrowsermail.ui" line="55"/>
       <source>Custom &quot;QTWEBENGINE_CHROMIUM_FLAGS&quot; flags</source>
       <translation>Drapeaux &quot;QTWEBENGINE_CHROMIUM_FLAGS&quot; personnalisés</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/settings/settingsbrowsermail.ui" line="58"/>
+      <location filename="../src/librssguard/gui/settings/settingsbrowsermail.ui" line="65"/>
       <source>Disable cache</source>
       <translation>Désactiver le cache</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/settings/settingsbrowsermail.ui" line="66"/>
+      <location filename="../src/librssguard/gui/settings/settingsbrowsermail.ui" line="73"/>
       <source>External web browser</source>
       <translation>Navigateur web externe</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/settings/settingsbrowsermail.ui" line="72"/>
+      <location filename="../src/librssguard/gui/settings/settingsbrowsermail.ui" line="79"/>
       <source>Always open hyperlinks in external web browser</source>
       <translation>Toujours ouvrir les liens dans le navigateur web externe</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/settings/settingsbrowsermail.ui" line="92"/>
-      <location filename="../src/librssguard/gui/settings/settingsbrowsermail.ui" line="206"/>
+      <location filename="../src/librssguard/gui/settings/settingsbrowsermail.ui" line="99"/>
+      <location filename="../src/librssguard/gui/settings/settingsbrowsermail.ui" line="213"/>
       <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;If unchecked, then default system-wide web browser is used.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
       <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Si décoché, alors le navigateur internet du système par défaut est utilisé.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/settings/settingsbrowsermail.ui" line="95"/>
+      <location filename="../src/librssguard/gui/settings/settingsbrowsermail.ui" line="102"/>
       <source>Use custom external web browser</source>
       <translation>Utiliser le navigateur web externe</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/settings/settingsbrowsermail.ui" line="107"/>
+      <location filename="../src/librssguard/gui/settings/settingsbrowsermail.ui" line="114"/>
       <source>Web browser executable</source>
       <translation>Exécutable du navigateur web</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/settings/settingsbrowsermail.ui" line="119"/>
+      <location filename="../src/librssguard/gui/settings/settingsbrowsermail.ui" line="126"/>
       <source>Executable file of web browser</source>
       <translation>Fichier d&apos;exécution du navigateur web</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/settings/settingsbrowsermail.ui" line="132"/>
-      <location filename="../src/librssguard/gui/settings/settingsbrowsermail.ui" line="249"/>
+      <location filename="../src/librssguard/gui/settings/settingsbrowsermail.ui" line="139"/>
+      <location filename="../src/librssguard/gui/settings/settingsbrowsermail.ui" line="256"/>
       <source>&amp;Browse</source>
       <translation>&amp;Parcourir</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/settings/settingsbrowsermail.ui" line="141"/>
-      <location filename="../src/librssguard/gui/settings/settingsbrowsermail.ui" line="258"/>
+      <location filename="../src/librssguard/gui/settings/settingsbrowsermail.ui" line="148"/>
+      <location filename="../src/librssguard/gui/settings/settingsbrowsermail.ui" line="265"/>
       <location filename="../src/librssguard/gui/settings/settingsbrowsermail.cpp" line="40"/>
       <source>Parameters</source>
       <translation>Paramètres</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/settings/settingsbrowsermail.ui" line="151"/>
-      <location filename="../src/librssguard/gui/settings/settingsbrowsermail.ui" line="268"/>
+      <location filename="../src/librssguard/gui/settings/settingsbrowsermail.ui" line="158"/>
+      <location filename="../src/librssguard/gui/settings/settingsbrowsermail.ui" line="275"/>
       <source>Parameters passed to executable</source>
       <translation>Paramètres relayés à l&apos;éxécutable</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/settings/settingsbrowsermail.ui" line="158"/>
-      <location filename="../src/librssguard/gui/settings/settingsbrowsermail.ui" line="275"/>
+      <location filename="../src/librssguard/gui/settings/settingsbrowsermail.ui" line="165"/>
+      <location filename="../src/librssguard/gui/settings/settingsbrowsermail.ui" line="282"/>
       <source>Use sample arguments for</source>
       <translation>Utiliser des arguments de l&apos;échantillon pour</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/settings/settingsbrowsermail.ui" line="172"/>
+      <location filename="../src/librssguard/gui/settings/settingsbrowsermail.ui" line="179"/>
       <source>Select browser</source>
       <translation>Sélectionner le navigateur</translation>
     </message>
@@ -6640,27 +6658,27 @@ File filter for external e-mail selection dialog.</extracomment>
       <translation>Notez que &quot;%1&quot; (sans les guillemets) est l&apos;espace réservé pour l&apos;URL d&apos;un message sélectionné.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/settings/settingsbrowsermail.ui" line="187"/>
+      <location filename="../src/librssguard/gui/settings/settingsbrowsermail.ui" line="194"/>
       <source>External e-mail client</source>
       <translation>Client e-mail externe</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/settings/settingsbrowsermail.ui" line="209"/>
+      <location filename="../src/librssguard/gui/settings/settingsbrowsermail.ui" line="216"/>
       <source>Use custom external e-mail client</source>
       <translation>Utiliser un client e-mail externe personnalisé</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/settings/settingsbrowsermail.ui" line="221"/>
+      <location filename="../src/librssguard/gui/settings/settingsbrowsermail.ui" line="228"/>
       <source>E-mail client executable</source>
       <translation>Exécutable du client e-mail</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/settings/settingsbrowsermail.ui" line="236"/>
+      <location filename="../src/librssguard/gui/settings/settingsbrowsermail.ui" line="243"/>
       <source>Executable file of e-mail client</source>
       <translation>Fichier exécutable du client e-mail</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/settings/settingsbrowsermail.ui" line="289"/>
+      <location filename="../src/librssguard/gui/settings/settingsbrowsermail.ui" line="296"/>
       <source>Select client</source>
       <translation>Sélectionner un client</translation>
     </message>
@@ -6674,22 +6692,22 @@ File filter for external e-mail selection dialog.</extracomment>
 • %2 - corps du message sélectionné.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/settings/settingsbrowsermail.ui" line="304"/>
+      <location filename="../src/librssguard/gui/settings/settingsbrowsermail.ui" line="311"/>
       <source>External tools</source>
       <translation>Outils éxternes</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/settings/settingsbrowsermail.ui" line="339"/>
+      <location filename="../src/librssguard/gui/settings/settingsbrowsermail.ui" line="346"/>
       <source>&amp;Add tool</source>
       <translation>&amp;Ajouter un outil</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/settings/settingsbrowsermail.ui" line="349"/>
+      <location filename="../src/librssguard/gui/settings/settingsbrowsermail.ui" line="356"/>
       <source>&amp;Edit selected tool</source>
       <translation>&amp;Modifier l&apos;outil sélectionné</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/settings/settingsbrowsermail.ui" line="359"/>
+      <location filename="../src/librssguard/gui/settings/settingsbrowsermail.ui" line="366"/>
       <source>&amp;Delete selected tool</source>
       <translation>&amp;Supprimer l&apos;outil sélectionné</translation>
     </message>
@@ -6699,12 +6717,12 @@ File filter for external e-mail selection dialog.</extracomment>
       <translation>Sur cette page, vous pouvez configurer une liste d&apos;outils externes qui peuvent ouvrir des URLs.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/settings/settingsbrowsermail.cpp" line="288"/>
+      <location filename="../src/librssguard/gui/settings/settingsbrowsermail.cpp" line="301"/>
       <source>Select external tool</source>
       <translation>Sélectionner un outil externe</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/settings/settingsbrowsermail.cpp" line="300"/>
+      <location filename="../src/librssguard/gui/settings/settingsbrowsermail.cpp" line="313"/>
       <source>Enter parameters</source>
       <translation>Entrez des paramètres</translation>
     </message>
@@ -6714,7 +6732,7 @@ File filter for external e-mail selection dialog.</extracomment>
       <translation>Proxy réseau</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/settings/settingsbrowsermail.h" line="46"/>
+      <location filename="../src/librssguard/gui/settings/settingsbrowsermail.h" line="47"/>
       <source>Network &amp; web &amp; tools</source>
       <translation>Réseau, web &amp; outils</translation>
     </message>
@@ -6722,82 +6740,82 @@ File filter for external e-mail selection dialog.</extracomment>
   <context>
     <name>SettingsDatabase</name>
     <message>
-      <location filename="../src/librssguard/gui/settings/settingsdatabase.cpp" line="15"/>
+      <location filename="../src/librssguard/gui/settings/settingsdatabase.cpp" line="16"/>
       <source>Note that speed of used MySQL server and latency of used connection medium HEAVILY influences the final performance of this application. Using slow database connections leads to bad performance when browsing feeds or messages.</source>
       <translation>Notez que la vitesse du serveur MySQL et la latence du medium de connection influence LOURDEMENT la performance définitive de l&apos;appli. Avoir des connections de base de données lentes a comme conséquence une mauvaise performance lors de la navigation de flux ou messages.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/settings/settingsdatabase.cpp" line="114"/>
+      <location filename="../src/librssguard/gui/settings/settingsdatabase.cpp" line="119"/>
       <source>Hostname is empty.</source>
       <translation>Le nom de l&apos;hôte est vide.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/settings/settingsdatabase.cpp" line="117"/>
+      <location filename="../src/librssguard/gui/settings/settingsdatabase.cpp" line="122"/>
       <source>Hostname looks ok.</source>
       <translation>Le nom de l&apos;hôte semble valide.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/settings/settingsdatabase.cpp" line="123"/>
+      <location filename="../src/librssguard/gui/settings/settingsdatabase.cpp" line="128"/>
       <source>Username is empty.</source>
       <translation>Le nom d&apos;utilisateur est vide.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/settings/settingsdatabase.cpp" line="126"/>
+      <location filename="../src/librssguard/gui/settings/settingsdatabase.cpp" line="131"/>
       <source>Username looks ok.</source>
       <translation>Le nom d&apos;utilisateur semble valide.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/settings/settingsdatabase.cpp" line="132"/>
+      <location filename="../src/librssguard/gui/settings/settingsdatabase.cpp" line="137"/>
       <source>Password is empty.</source>
       <translation>Le mot de passe est vide.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/settings/settingsdatabase.cpp" line="135"/>
+      <location filename="../src/librssguard/gui/settings/settingsdatabase.cpp" line="140"/>
       <source>Password looks ok.</source>
       <translation>Le mot de passe semble valide.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/settings/settingsdatabase.cpp" line="141"/>
+      <location filename="../src/librssguard/gui/settings/settingsdatabase.cpp" line="146"/>
       <source>Working database is empty.</source>
       <translation>La base de données fonctionnelle est vide.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/settings/settingsdatabase.cpp" line="144"/>
+      <location filename="../src/librssguard/gui/settings/settingsdatabase.cpp" line="149"/>
       <source>Working database is ok.</source>
       <translation>La base de données fonctionnelle est valide.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/settings/settingsdatabase.cpp" line="165"/>
+      <location filename="../src/librssguard/gui/settings/settingsdatabase.cpp" line="170"/>
       <source>No connection test triggered so far.</source>
       <translation>Pas de test de connexion déclenché jusqu&apos;ici.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/settings/settingsdatabase.cpp" line="166"/>
+      <location filename="../src/librssguard/gui/settings/settingsdatabase.cpp" line="171"/>
       <source>You did not executed any connection test yet.</source>
       <translation>Vous ne pouvez pas encore exécuter de tests de connexion.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/settings/settingsdatabase.cpp" line="189"/>
+      <location filename="../src/librssguard/gui/settings/settingsdatabase.cpp" line="194"/>
       <source>Hostname of your MySQL server</source>
       <translation>Nom de l&apos;hôte de votre serveur MySQL</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/settings/settingsdatabase.cpp" line="190"/>
+      <location filename="../src/librssguard/gui/settings/settingsdatabase.cpp" line="195"/>
       <source>Username to login with</source>
       <translation>Nom d&apos;utilisateur pour se connecter avec</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/settings/settingsdatabase.cpp" line="191"/>
+      <location filename="../src/librssguard/gui/settings/settingsdatabase.cpp" line="196"/>
       <source>Password for your username</source>
       <translation>Mot de passe de votre nom d&apos;utilisateur</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/settings/settingsdatabase.cpp" line="192"/>
+      <location filename="../src/librssguard/gui/settings/settingsdatabase.cpp" line="197"/>
       <source>Working database which you have full access to.</source>
       <translation>Base de données fonctionnelle dont vous avez l&apos;accès total.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/settings/settingsdatabase.cpp" line="22"/>
+      <location filename="../src/librssguard/gui/settings/settingsdatabase.cpp" line="23"/>
       <source>Usage of in-memory working database has several advantages and pitfalls. Make sure that you are familiar with these before you turn this feature on.
 
 Advantages:
@@ -6862,7 +6880,7 @@ Les auteurs de cette appli NE SONT PAS responsables d'éventuelles pertes de don
       <translation>Configuration de test</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/settings/settingsdatabase.h" line="33"/>
+      <location filename="../src/librssguard/gui/settings/settingsdatabase.h" line="34"/>
       <source>Data storage</source>
       <translation>Stockage des données</translation>
     </message>
@@ -6870,7 +6888,7 @@ Les auteurs de cette appli NE SONT PAS responsables d'éventuelles pertes de don
   <context>
     <name>SettingsDownloads</name>
     <message>
-      <location filename="../src/librssguard/gui/settings/settingsdownloads.cpp" line="26"/>
+      <location filename="../src/librssguard/gui/settings/settingsdownloads.cpp" line="34"/>
       <source>Select downloads target directory</source>
       <translation>Sélectionner le répertoire de téléchargements</translation>
     </message>
@@ -6905,7 +6923,7 @@ Les auteurs de cette appli NE SONT PAS responsables d'éventuelles pertes de don
       <translation>Demander pour chaque fichier téléchargé</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/settings/settingsdownloads.h" line="29"/>
+      <location filename="../src/librssguard/gui/settings/settingsdownloads.h" line="30"/>
       <source>Downloads</source>
       <translation>Téléchargements</translation>
     </message>
@@ -6913,7 +6931,7 @@ Les auteurs de cette appli NE SONT PAS responsables d'éventuelles pertes de don
   <context>
     <name>SettingsFeedsMessages</name>
     <message>
-      <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.cpp" line="233"/>
+      <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.cpp" line="237"/>
       <source>Select new font</source>
       <translation>Sélectionner une nouvelle police</translation>
     </message>
@@ -6946,12 +6964,12 @@ Les auteurs de cette appli NE SONT PAS responsables d'éventuelles pertes de don
       <translation>= taille non-modifiée</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.cpp" line="368"/>
+      <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.cpp" line="372"/>
       <source>PC restart needed</source>
       <translation>Un redémarrage du PC est nécessaire</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.cpp" line="369"/>
+      <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.cpp" line="373"/>
       <source>Your PC needs to be restarted to make some of enabled features fully working.</source>
       <translation>Votre PC doit être redémarré pour que certaines fonctionnalités activées fonctionnent correctement.</translation>
     </message>
@@ -7076,6 +7094,11 @@ Les auteurs de cette appli NE SONT PAS responsables d'éventuelles pertes de don
       <translation>Visionneur d&apos;articles interne</translation>
     </message>
     <message>
+      <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="361"/>
+      <source>Limit height of all pictures</source>
+      <translation>Limite de la hauteur des images</translation>
+    </message>
+    <message>
       <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="645"/>
       <source>Unread article icon type</source>
       <translation>Type d&apos;icône d&apos;article non-lu</translation>
@@ -7099,11 +7122,6 @@ Les auteurs de cette appli NE SONT PAS responsables d'éventuelles pertes de don
       <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="352"/>
       <source>Display attachments directly in article</source>
       <translation>Afficher les pièces jointes directement dans les articles</translation>
-    </message>
-    <message>
-      <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="361"/>
-      <source>Limit height of pictures</source>
-      <translation>Limite de la hauteur des images</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="445"/>
@@ -7151,7 +7169,7 @@ Les auteurs de cette appli NE SONT PAS responsables d'éventuelles pertes de don
       <translation>Montrer l&apos;heure relative pour les articles pas plus vieux que</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.h" line="34"/>
+      <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.h" line="35"/>
       <source>Feeds &amp; articles</source>
       <translation>Flux &amp; articles</translation>
     </message>
@@ -7159,7 +7177,7 @@ Les auteurs de cette appli NE SONT PAS responsables d'éventuelles pertes de don
   <context>
     <name>SettingsGeneral</name>
     <message>
-      <location filename="../src/librssguard/gui/settings/settingsgeneral.cpp" line="46"/>
+      <location filename="../src/librssguard/gui/settings/settingsgeneral.cpp" line="51"/>
       <source> (not supported on this platform)</source>
       <translation>(non supporté sur cette plate-forme)</translation>
     </message>
@@ -7174,7 +7192,7 @@ Les auteurs de cette appli NE SONT PAS responsables d'éventuelles pertes de don
       <translation>Vérifier si une mise à jour %1 est disponible au démarrage de l&apos;application</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/settings/settingsgeneral.h" line="26"/>
+      <location filename="../src/librssguard/gui/settings/settingsgeneral.h" line="27"/>
       <source>General</source>
       <translation>Général</translation>
     </message>
@@ -7197,43 +7215,43 @@ Les auteurs de cette appli NE SONT PAS responsables d'éventuelles pertes de don
       <translation>Couleurs de thème forcées</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/settings/settingsgui.cpp" line="275"/>
+      <location filename="../src/librssguard/gui/settings/settingsgui.cpp" line="279"/>
       <source>Icon only</source>
       <translation>Icône seulement</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/settings/settingsgui.cpp" line="276"/>
+      <location filename="../src/librssguard/gui/settings/settingsgui.cpp" line="280"/>
       <source>Text only</source>
       <translation>Texte seulement</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/settings/settingsgui.cpp" line="277"/>
+      <location filename="../src/librssguard/gui/settings/settingsgui.cpp" line="281"/>
       <source>Text beside icon</source>
       <translation>Texte à côté des icônes</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/settings/settingsgui.cpp" line="278"/>
+      <location filename="../src/librssguard/gui/settings/settingsgui.cpp" line="282"/>
       <source>Text under icon</source>
       <translation>Texte sous les icônes</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/settings/settingsgui.cpp" line="279"/>
+      <location filename="../src/librssguard/gui/settings/settingsgui.cpp" line="283"/>
       <source>Follow OS style</source>
       <translation>Suivre le style du système d'exploitation</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/settings/settingsgui.cpp" line="173"/>
+      <location filename="../src/librssguard/gui/settings/settingsgui.cpp" line="177"/>
       <source>system icon theme</source>
       <extracomment>Label for disabling icon theme.</extracomment>
       <translation>icône du thème système</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/settings/settingsgui.cpp" line="175"/>
+      <location filename="../src/librssguard/gui/settings/settingsgui.cpp" line="179"/>
       <source>no icon theme</source>
       <translation>Aucun thême d&apos;icône</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/settings/settingsgui.cpp" line="156"/>
+      <location filename="../src/librssguard/gui/settings/settingsgui.cpp" line="160"/>
       <source>(Your OS does not support tray icons at the moment.)</source>
       <translation>(Votre systeme d&apos;opération ne soutient pas les icônes dans la barre d&apos;icônes à l&apos;heure actuelle.)</translation>
     </message>
@@ -7248,7 +7266,7 @@ Les auteurs de cette appli NE SONT PAS responsables d'éventuelles pertes de don
       <translation>Vous pouvez outrepasser certaines couleurs définies par votre thême ici. Certaines couleurs sont utilisées dynamiquement à travers l&apos;appli.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/settings/settingsgui.cpp" line="229"/>
+      <location filename="../src/librssguard/gui/settings/settingsgui.cpp" line="233"/>
       <source>%1
 
 Version: %2
@@ -7259,7 +7277,7 @@ Version: %2
 Déscription: %3</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/settings/settingsgui.cpp" line="302"/>
+      <location filename="../src/librssguard/gui/settings/settingsgui.cpp" line="306"/>
       <source>Fetch color from activated skin</source>
       <translation>Obtenir la couleur du thême activé</translation>
     </message>
@@ -7433,34 +7451,34 @@ Déscription: %3</translation>
       <translation>Aidez-nous à d'avantage &lt;a href=&quot;%2&quot;&gt;traduire&lt;/a&gt; %1.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/settings/settingslocalization.cpp" line="111"/>
-      <location filename="../src/librssguard/gui/settings/settingslocalization.cpp" line="112"/>
-      <location filename="../src/librssguard/gui/settings/settingslocalization.cpp" line="117"/>
+      <location filename="../src/librssguard/gui/settings/settingslocalization.cpp" line="115"/>
+      <location filename="../src/librssguard/gui/settings/settingslocalization.cpp" line="116"/>
+      <location filename="../src/librssguard/gui/settings/settingslocalization.cpp" line="121"/>
       <source>Big thanks to all translators!</source>
       <translation>Un gros merci à tous les traducteurs/traductrices!</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/settings/settingslocalization.cpp" line="116"/>
+      <location filename="../src/librssguard/gui/settings/settingslocalization.cpp" line="120"/>
       <source>Translations provided by: %1</source>
       <translation>Traductions fournies par : %1</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/settings/settingslocalization.cpp" line="165"/>
+      <location filename="../src/librssguard/gui/settings/settingslocalization.cpp" line="169"/>
       <source>Translators needed!</source>
       <translation>On a besoin de traducteurs/traductrices!</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/settings/settingslocalization.cpp" line="166"/>
+      <location filename="../src/librssguard/gui/settings/settingslocalization.cpp" line="170"/>
       <source>The translation &apos;%1&apos; is incomplete and anyone able to help with translating %2 is greatly welcomed.</source>
       <translation>La traduction &apos;%1&apos; est incomplète et toutes personnes capables d'aider avec la traduction %2 sont la bienvenue.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/settings/settingslocalization.cpp" line="168"/>
+      <location filename="../src/librssguard/gui/settings/settingslocalization.cpp" line="172"/>
       <source>Do you want to help with the translation now?</source>
       <translation>Voulez-vous aider à traduire maintenant?</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/settings/settingslocalization.h" line="26"/>
+      <location filename="../src/librssguard/gui/settings/settingslocalization.h" line="27"/>
       <source>Localization</source>
       <translation>Localisation</translation>
     </message>
@@ -7473,27 +7491,42 @@ Déscription: %3</translation>
       <translation>Backend</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/settings/settingsmediaplayer.cpp" line="21"/>
+      <location filename="../src/librssguard/gui/settings/settingsmediaplayer.ui" line="36"/>
+      <source>Use custom MPV configuration folder</source>
+      <translation>Utiliser un dossier de configuration MPV personnalisé</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard/gui/settings/settingsmediaplayer.ui" line="48"/>
+      <source>Browse</source>
+      <translation>Parcourir</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard/gui/settings/settingsmediaplayer.cpp" line="33"/>
       <source>You use modern libmpv-based media player backend with API version %1.</source>
       <translation>Vous utilisez le lecteur multimédia moderne basé sur libmpv avec la version %1 de l'API.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/settings/settingsmediaplayer.cpp" line="26"/>
+      <location filename="../src/librssguard/gui/settings/settingsmediaplayer.cpp" line="48"/>
       <source>You use lightweight QtMultimedia-based media player backend. If some videos do not play, then you likely need to install some codecs.</source>
       <translation>Vous utilisez le lecteur multimédia léger basé sur QtMultimedia. Si certaines vidéos ne peuvent pas êtres lues, vous manquez probablement certains codecs et vous devrez les installer.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/settings/settingsmediaplayer.cpp" line="30"/>
+      <location filename="../src/librssguard/gui/settings/settingsmediaplayer.cpp" line="53"/>
       <source>no backend installed</source>
       <translation>aucun backend installé</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/settings/settingsmediaplayer.cpp" line="31"/>
+      <location filename="../src/librssguard/gui/settings/settingsmediaplayer.cpp" line="54"/>
       <source>You do not have any media player available. Media player is only supported on modern platforms where needed libraries are available. You must manually recompile %1 to be able to use media player.</source>
       <translation>Vous n'avez pas de lecteur multimédia disponible. Le lecteur multimédia n'est pris en charge que sur les plates-formes modernes là où les bibliothèques nécessaires sont disponibles. Vous devez recompiler manuellement %1 pour pouvoir en utiliser un.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/settings/settingsmediaplayer.h" line="25"/>
+      <location filename="../src/librssguard/gui/settings/settingsmediaplayer.cpp" line="68"/>
+      <source>Select folder for your MPV configuration</source>
+      <translation>Sélectionnez un dossier pour votre configuration MPV</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard/gui/settings/settingsmediaplayer.h" line="31"/>
       <source>Media player</source>
       <translation>Lecteur multimédia</translation>
     </message>
@@ -7501,12 +7534,12 @@ Déscription: %3</translation>
   <context>
     <name>SettingsNodejs</name>
     <message>
-      <location filename="../src/librssguard/gui/settings/settingsnodejs.cpp" line="17"/>
+      <location filename="../src/librssguard/gui/settings/settingsnodejs.cpp" line="18"/>
       <source>What is Node.js?</source>
       <translation>Qu&apos;est-ce que Node.js?</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/settings/settingsnodejs.cpp" line="18"/>
+      <location filename="../src/librssguard/gui/settings/settingsnodejs.cpp" line="19"/>
       <source>Node.js is asynchronous event-driven JavaScript runtime, designed to build scalable network applications.
 
 %1 integrates Node.js to bring some modern features like Adblock.
@@ -7523,32 +7556,32 @@ Notez qu&apos;en général c&apos;est mieux que tous les outils Node.js requis s
 Et aussi, redémarrez la fenêtre &quot;Paramètres&quot; après avoir installé Node.js.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/settings/settingsnodejs.cpp" line="107"/>
+      <location filename="../src/librssguard/gui/settings/settingsnodejs.cpp" line="112"/>
       <source>Node.js has version %1.</source>
       <translation>Node.js est sur la version %1.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/settings/settingsnodejs.cpp" line="118"/>
+      <location filename="../src/librssguard/gui/settings/settingsnodejs.cpp" line="123"/>
       <source>NPM has version %1.</source>
       <translation>NPM a la version %1.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/settings/settingsnodejs.cpp" line="135"/>
+      <location filename="../src/librssguard/gui/settings/settingsnodejs.cpp" line="140"/>
       <source>You cannot choose file, you have to choose FOLDER.</source>
       <translation>Vous ne pouvez pas sélectionner un fichier, vous devez sélectionner un dossier.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/settings/settingsnodejs.cpp" line="139"/>
+      <location filename="../src/librssguard/gui/settings/settingsnodejs.cpp" line="144"/>
       <source>Package folder is OK.</source>
       <translation>Le dossier paquets est bon.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/settings/settingsnodejs.cpp" line="143"/>
+      <location filename="../src/librssguard/gui/settings/settingsnodejs.cpp" line="148"/>
       <source>Package folder will be created!</source>
       <translation>Le dossier du paquet va être crée!</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/settings/settingsnodejs.cpp" line="28"/>
+      <location filename="../src/librssguard/gui/settings/settingsnodejs.cpp" line="29"/>
       <source>%1 automatically installs some Node.js packages so that you do not have to. %1 does not use global package folder because that requires administrator rights, therefore by default it uses subfolder placed in your &quot;user data&quot; folder.</source>
       <translation>%1 installe quelques paquets Node.js automatiquement pour que vous n&apos;ayez pas à le faire. %1 n&apos;utilise pas le dossier paquets globale parce que ça requiert les droits d&apos;administrateur, donc par défault ça utilise le sous-fichier placé dans votre dossier &quot;données utilisateur&quot;.</translation>
     </message>
@@ -7633,22 +7666,22 @@ Et aussi, redémarrez la fenêtre &quot;Paramètres&quot; après avoir installé
       <translation>Opacité</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/settings/settingsnotifications.h" line="30"/>
+      <location filename="../src/librssguard/gui/settings/settingsnotifications.h" line="31"/>
       <source>Notifications</source>
       <translation>Notifications</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/settings/settingsnotifications.cpp" line="18"/>
+      <location filename="../src/librssguard/gui/settings/settingsnotifications.cpp" line="19"/>
       <source>There are some built-in notification sounds. Just start typing &quot;:&quot; and they will show up.</source>
       <translation>Il y a des sons de notification intégrés. Il suffit de commencer à taper &quot;:&quot; et ils apparaîtront.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/settings/settingsnotifications.cpp" line="99"/>
+      <location filename="../src/librssguard/gui/settings/settingsnotifications.cpp" line="104"/>
       <source>How do I look?</source>
       <translation>À quoi je ressemble?</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/settings/settingsnotifications.cpp" line="100"/>
+      <location filename="../src/librssguard/gui/settings/settingsnotifications.cpp" line="105"/>
       <source>Just testing new notifications settings. That&apos;s all.</source>
       <translation>Je teste juste les nouveaux paramètres de notification. C'est tout.</translation>
     </message>
@@ -7656,7 +7689,7 @@ Et aussi, redémarrez la fenêtre &quot;Paramètres&quot; après avoir installé
   <context>
     <name>SettingsShortcuts</name>
     <message>
-      <location filename="../src/librssguard/gui/settings/settingsshortcuts.h" line="26"/>
+      <location filename="../src/librssguard/gui/settings/settingsshortcuts.h" line="27"/>
       <source>Keyboard shortcuts</source>
       <translation>Raccourcis clavier</translation>
     </message>
@@ -7725,33 +7758,33 @@ Et aussi, redémarrez la fenêtre &quot;Paramètres&quot; après avoir installé
   <context>
     <name>SkinFactory</name>
     <message>
-      <location filename="../src/librssguard/miscellaneous/skinfactory.cpp" line="221"/>
-      <location filename="../src/librssguard/miscellaneous/skinfactory.cpp" line="224"/>
+      <location filename="../src/librssguard/miscellaneous/skinfactory.cpp" line="222"/>
+      <location filename="../src/librssguard/miscellaneous/skinfactory.cpp" line="225"/>
       <source>This page was blocked by AdBlock</source>
       <translation>Cette page a été bloquée par AdBlock</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/miscellaneous/skinfactory.cpp" line="222"/>
+      <location filename="../src/librssguard/miscellaneous/skinfactory.cpp" line="223"/>
       <source>Blocked URL: &quot;%1&quot;&lt;br/&gt;Used filter: &quot;%2&quot;</source>
       <translation>Lien bloqué: &quot;%1&quot;&lt;br/&gt;Filtre utilisé: &quot;%2&quot;</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/miscellaneous/skinfactory.cpp" line="278"/>
+      <location filename="../src/librssguard/miscellaneous/skinfactory.cpp" line="289"/>
       <source>Written by </source>
       <translation>Écrit par </translation>
     </message>
     <message>
-      <location filename="../src/librssguard/miscellaneous/skinfactory.cpp" line="279"/>
+      <location filename="../src/librssguard/miscellaneous/skinfactory.cpp" line="290"/>
       <source>unknown author</source>
       <translation>auteur inconnu</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/miscellaneous/skinfactory.cpp" line="294"/>
+      <location filename="../src/librssguard/miscellaneous/skinfactory.cpp" line="302"/>
       <source>Newspaper view</source>
       <translation>Vue journal</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/miscellaneous/skinfactory.cpp" line="526"/>
+      <location filename="../src/librssguard/miscellaneous/skinfactory.cpp" line="538"/>
       <source>file %1 not found</source>
       <translation>fichier %1 non trouvé</translation>
     </message>
@@ -8287,7 +8320,7 @@ Actualités non-lus: %2</translation>
   <context>
     <name>TabWidget</name>
     <message>
-      <location filename="../src/librssguard/gui/tabwidget.cpp" line="138"/>
+      <location filename="../src/librssguard/gui/tabwidget.cpp" line="144"/>
       <source>Feeds</source>
       <translation>Flux</translation>
     </message>
@@ -8307,17 +8340,17 @@ Actualités non-lus: %2</translation>
       <translation>Téléchargements</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/tabwidget.cpp" line="247"/>
+      <location filename="../src/librssguard/gui/tabwidget.cpp" line="253"/>
       <source>Media player</source>
       <translation>Lecteur multimédia</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/tabwidget.cpp" line="273"/>
+      <location filename="../src/librssguard/gui/tabwidget.cpp" line="279"/>
       <source>Web browser</source>
       <translation>Navigateur web</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/tabwidget.cpp" line="140"/>
+      <location filename="../src/librssguard/gui/tabwidget.cpp" line="146"/>
       <source>Browse your feeds and articles</source>
       <translation>Naviguez vos flux et articles</translation>
     </message>
@@ -8325,17 +8358,12 @@ Actualités non-lus: %2</translation>
   <context>
     <name>TextBrowserViewer</name>
     <message>
-      <location filename="../src/librssguard/gui/webviewers/qtextbrowser/textbrowserviewer.cpp" line="155"/>
-      <source>image</source>
-      <translation>Image</translation>
-    </message>
-    <message>
-      <location filename="../src/librssguard/gui/webviewers/qtextbrowser/textbrowserviewer.cpp" line="360"/>
+      <location filename="../src/librssguard/gui/webviewers/qtextbrowser/textbrowserviewer.cpp" line="270"/>
       <source>Enable external resources</source>
       <translation>Activer les ressources éxterieurs</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/webviewers/qtextbrowser/textbrowserviewer.cpp" line="362"/>
+      <location filename="../src/librssguard/gui/webviewers/qtextbrowser/textbrowserviewer.cpp" line="272"/>
       <source>Download</source>
       <translation>Téléchargement</translation>
     </message>
@@ -8829,167 +8857,167 @@ Dernière connection le: %4</translation>
   <context>
     <name>WebFactory</name>
     <message>
-      <location filename="../src/librssguard/network-web/webfactory.cpp" line="322"/>
+      <location filename="../src/librssguard/network-web/webfactory.cpp" line="450"/>
       <source>Web engine settings</source>
       <translation>Paramètres du moteur de rendu web</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/network-web/webfactory.cpp" line="345"/>
+      <location filename="../src/librssguard/network-web/webfactory.cpp" line="473"/>
       <source>Auto-load images</source>
       <translation>Activer le chargement automatique des images</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/network-web/webfactory.cpp" line="346"/>
+      <location filename="../src/librssguard/network-web/webfactory.cpp" line="474"/>
       <source>JS enabled</source>
       <translation>Activer JavaScript</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/network-web/webfactory.cpp" line="347"/>
+      <location filename="../src/librssguard/network-web/webfactory.cpp" line="475"/>
       <source>JS can open popup windows</source>
       <translation>JS peut ouvrir des fenêtres pop-up</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/network-web/webfactory.cpp" line="349"/>
+      <location filename="../src/librssguard/network-web/webfactory.cpp" line="477"/>
       <source>JS can access clipboard</source>
       <translation>JS peut accèder au presse-papier</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/network-web/webfactory.cpp" line="351"/>
+      <location filename="../src/librssguard/network-web/webfactory.cpp" line="479"/>
       <source>Hyperlinks can get focus</source>
       <translation>Les hyperliens peuvent être focalisés</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/network-web/webfactory.cpp" line="353"/>
+      <location filename="../src/librssguard/network-web/webfactory.cpp" line="481"/>
       <source>Local storage enabled</source>
       <translation>Stockage local activé</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/network-web/webfactory.cpp" line="355"/>
+      <location filename="../src/librssguard/network-web/webfactory.cpp" line="483"/>
       <source>Local content can access remote URLs</source>
       <translation>Le contenu local peut accéder aux liens à distance</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/network-web/webfactory.cpp" line="357"/>
+      <location filename="../src/librssguard/network-web/webfactory.cpp" line="485"/>
       <source>XSS auditing enabled</source>
       <translation>L&apos;audit XSS est activé</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/network-web/webfactory.cpp" line="359"/>
+      <location filename="../src/librssguard/network-web/webfactory.cpp" line="487"/>
       <source>Spatial navigation enabled</source>
       <translation>Navigation spatiale activée</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/network-web/webfactory.cpp" line="361"/>
+      <location filename="../src/librssguard/network-web/webfactory.cpp" line="489"/>
       <source>Local content can access local files</source>
       <translation>Le contenu local peut accéder les fichiers locaux</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/network-web/webfactory.cpp" line="363"/>
+      <location filename="../src/librssguard/network-web/webfactory.cpp" line="491"/>
       <source>Hyperlink auditing enabled</source>
       <translation>L&apos;audit des hyperliens est activé</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/network-web/webfactory.cpp" line="365"/>
+      <location filename="../src/librssguard/network-web/webfactory.cpp" line="493"/>
       <source>Animate scrolling</source>
       <translation>Animer les défilements</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/network-web/webfactory.cpp" line="367"/>
+      <location filename="../src/librssguard/network-web/webfactory.cpp" line="495"/>
       <source>Error pages enabled</source>
       <translation>Activer les pages d&apos;erreurs</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/network-web/webfactory.cpp" line="368"/>
+      <location filename="../src/librssguard/network-web/webfactory.cpp" line="496"/>
       <source>Plugins enabled</source>
       <translation>Activer les plugins</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/network-web/webfactory.cpp" line="369"/>
+      <location filename="../src/librssguard/network-web/webfactory.cpp" line="497"/>
       <source>Fullscreen enabled</source>
       <translation>Acitver le plein-écran</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/network-web/webfactory.cpp" line="373"/>
+      <location filename="../src/librssguard/network-web/webfactory.cpp" line="501"/>
       <source>Screen capture enabled</source>
       <translation>Activer la capture d&apos;écran</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/network-web/webfactory.cpp" line="375"/>
+      <location filename="../src/librssguard/network-web/webfactory.cpp" line="503"/>
       <source>WebGL enabled</source>
       <translation>Activer WebGL</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/network-web/webfactory.cpp" line="376"/>
+      <location filename="../src/librssguard/network-web/webfactory.cpp" line="504"/>
       <source>Accelerate 2D canvas</source>
       <translation>Accélerer les canevas 2D</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/network-web/webfactory.cpp" line="378"/>
+      <location filename="../src/librssguard/network-web/webfactory.cpp" line="506"/>
       <source>Print element backgrounds</source>
       <translation>Imprimer les fonds d&apos;éléments</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/network-web/webfactory.cpp" line="380"/>
+      <location filename="../src/librssguard/network-web/webfactory.cpp" line="508"/>
       <source>Allow running insecure content</source>
       <translation>Autoriser l&apos;éxécution de contenu insécurisé</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/network-web/webfactory.cpp" line="382"/>
+      <location filename="../src/librssguard/network-web/webfactory.cpp" line="510"/>
       <source>Allow geolocation on insecure origins</source>
       <translation>Autoriser la géo-localisation sur des origines non securisées</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/network-web/webfactory.cpp" line="713"/>
+      <location filename="../src/librssguard/network-web/webfactory.cpp" line="857"/>
       <source>Web cache is going to be cleared</source>
       <translation>Le cache web va être vidé</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/network-web/webfactory.cpp" line="714"/>
+      <location filename="../src/librssguard/network-web/webfactory.cpp" line="858"/>
       <source>Do you really want to clear web cache?</source>
       <translation>Voulez-vous vraiment vider le cache web?</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/network-web/webfactory.cpp" line="150"/>
+      <location filename="../src/librssguard/network-web/webfactory.cpp" line="159"/>
       <source>Navigate to website manually</source>
       <translation>Naviguer au site directement</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/network-web/webfactory.cpp" line="151"/>
+      <location filename="../src/librssguard/network-web/webfactory.cpp" line="160"/>
       <source>%1 was unable to launch your web browser with the given URL, you need to open the below website URL in your web browser manually.</source>
       <translation>%1 n&apos;a pas pu lancer votre navigateur web avec le lien fourni, vous devez ouvrir le lien ci-dessous dans votre navigateur manuellement.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/network-web/webfactory.cpp" line="386"/>
+      <location filename="../src/librssguard/network-web/webfactory.cpp" line="514"/>
       <source>JS can activate windows</source>
       <translation>JS peut activer des fenêtres</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/network-web/webfactory.cpp" line="388"/>
+      <location filename="../src/librssguard/network-web/webfactory.cpp" line="516"/>
       <source>Show scrollbars</source>
       <translation>Montrer les barres de défilement</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/network-web/webfactory.cpp" line="389"/>
+      <location filename="../src/librssguard/network-web/webfactory.cpp" line="517"/>
       <source>Media playback with gestures</source>
       <translation>Lecture media avec gestes</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/network-web/webfactory.cpp" line="391"/>
+      <location filename="../src/librssguard/network-web/webfactory.cpp" line="519"/>
       <source>WebRTC uses only public interfaces</source>
       <translation>WebRTC utilise que des interfaces publiques</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/network-web/webfactory.cpp" line="393"/>
+      <location filename="../src/librssguard/network-web/webfactory.cpp" line="521"/>
       <source>JS can paste from clipboard</source>
       <translation>JS peut coller depuis le presse-papier</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/network-web/webfactory.cpp" line="395"/>
+      <location filename="../src/librssguard/network-web/webfactory.cpp" line="523"/>
       <source>DNS prefetch enabled</source>
       <translation>Pre-obtention DNS activée</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/network-web/webfactory.cpp" line="399"/>
+      <location filename="../src/librssguard/network-web/webfactory.cpp" line="527"/>
       <source>PDF viewer enabled</source>
       <translation>Lecteur PDF activé</translation>
     </message>
