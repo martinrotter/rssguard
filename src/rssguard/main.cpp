@@ -77,6 +77,11 @@ int main(int argc, char* argv[]) {
   // Instantiate base application object.
   Application application(QSL(APP_LOW_NAME), argc, argv, raw_cli_args);
 
+#if defined(ENABLE_MEDIAPLAYER_LIBMPV)
+  qDebugNN << LOGSEC_CORE << "Setting locale for LC_NUMERIC to C as libmpv requires it.";
+  std::setlocale(LC_NUMERIC, "C");
+#endif
+
   qDebugNN << LOGSEC_CORE << "Instantiated class " << QUOTE_W_SPACE_DOT(application.metaObject()->className());
 
   // Check if another instance is running.
