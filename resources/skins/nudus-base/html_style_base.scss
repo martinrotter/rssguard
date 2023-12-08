@@ -391,7 +391,7 @@ summary {
         }
     }
 
-    img {
+    img, video {
         // Needs to be `!important` when max-width is defined by image style
         // <img src="https://....png" alt="alt" style="max-width: 100%;">
         //max-width: 450px !important;

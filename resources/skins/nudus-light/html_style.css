@@ -253,7 +253,7 @@ summary:focus {
     .rssguard-mwrapper .rssguard-mhead .mlinks .mwrapurl a[href=""], .rssguard-mwrapper .rssguard-mhead .mlinks .mwrapurl a[href=""] + span {
       display: none; }
   @media only screen and (max-width: 800px) {
-    .rssguard-mwrapper img {
+    .rssguard-mwrapper img, .rssguard-mwrapper video {
       max-width: 100% !important; } }
 
 .rssguard-mbody {
