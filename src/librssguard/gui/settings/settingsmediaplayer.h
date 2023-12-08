@@ -18,6 +18,11 @@ class SettingsMediaPlayer : public SettingsPanel {
     virtual void loadSettings();
     virtual void saveSettings();
 
+#if defined(ENABLE_MEDIAPLAYER_LIBMPV)
+  private slots:
+    void selectMpvConfigFolder();
+#endif
+
   private:
     Ui::SettingsMediaPlayer m_ui;
 };
