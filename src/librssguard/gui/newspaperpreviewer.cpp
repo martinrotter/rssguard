@@ -16,7 +16,7 @@ NewspaperPreviewer::NewspaperPreviewer(int msg_height, RootItem* root, QList<Mes
   showMoreMessages();
 }
 
-#if defined(USE_WEBENGINE)
+#if defined(NO_LITE)
 
 WebBrowser* NewspaperPreviewer::webBrowser() const {
   return nullptr;
