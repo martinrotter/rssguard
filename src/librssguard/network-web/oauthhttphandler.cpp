@@ -62,11 +62,13 @@ void OAuthHttpHandler::answerClient(QTcpSocket* socket, const QHttpRequest& requ
     const QString html = QSL("<html><head><title>") + qApp->applicationName() + QSL("</title></head><body>") +
                          m_successText + QSL("</body></html>");
     const QByteArray html_utf = html.toUtf8();
-    const QByteArray html_size = QString::number(html_utf.size()).toLocal8Bit();
-    const QByteArray reply_message = QByteArrayLiteral("HTTP/1.0 200 OK \r\n"
-                                                       "Content-Type: text/html; charset=\"utf-8\"\r\n"
-                                                       "Content-Length: ") +
-                                     html_size + QByteArrayLiteral("\r\n\r\n") + html_utf;
+    const QByteArray reply_message = QSL("HTTP/1.0 200 OK \r\n"
+                                         "Content-Type: text/html; charset=\"utf-8\"\r\n"
+                                         "Content-Length: %1"
+                                         "\r\n\r\n"
+                                         "%2")
+                                       .arg(QString::number(html_utf.size()), html_utf)
+                                       .toLocal8Bit();
 
     socket->write(reply_message);
   }

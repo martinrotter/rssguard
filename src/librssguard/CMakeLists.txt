@@ -261,6 +261,8 @@ set(SOURCES
   network-web/downloadmanager.h
   network-web/googlesuggest.cpp
   network-web/googlesuggest.h
+  network-web/apiserver.cpp
+  network-web/apiserver.h
   network-web/httpresponse.cpp
   network-web/httpresponse.h
   network-web/httpserver.cpp

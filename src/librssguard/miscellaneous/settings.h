@@ -372,6 +372,9 @@ namespace Network {
   KEY SendDNT;
   VALUE(bool) SendDNTDef;
 
+  KEY EnableApiServer;
+  VALUE(bool) EnableApiServerDef;
+
   KEY EnableHttp2;
   VALUE(bool) EnableHttp2Def;
 

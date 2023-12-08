@@ -41,6 +41,7 @@ SettingsBrowserMail::SettingsBrowserMail(Settings* settings, QWidget* parent)
   m_ui->m_listTools->header()->setSectionResizeMode(0, QHeaderView::ResizeMode::ResizeToContents);
 
   connect(m_ui->m_cbEnableHttp2, &QCheckBox::stateChanged, this, &SettingsBrowserMail::dirtifySettings);
+  connect(m_ui->m_cbEnableApiServer, &QCheckBox::stateChanged, this, &SettingsBrowserMail::dirtifySettings);
   connect(m_ui->m_cbIgnoreAllCookies, &QCheckBox::stateChanged, this, &SettingsBrowserMail::dirtifySettings);
   connect(m_ui->m_checkOpenLinksInExternal, &QCheckBox::stateChanged, this, &SettingsBrowserMail::dirtifySettings);
   connect(m_proxyDetails, &NetworkProxyDetails::changed, this, &SettingsBrowserMail::dirtifySettings);
@@ -172,6 +173,7 @@ void SettingsBrowserMail::loadSettings() {
 
   m_ui->m_cbDisableCache->setChecked(settings()->value(GROUP(Browser), SETTING(Browser::DisableCache)).toBool());
   m_ui->m_cbEnableHttp2->setChecked(settings()->value(GROUP(Network), SETTING(Network::EnableHttp2)).toBool());
+  m_ui->m_cbEnableApiServer->setChecked(settings()->value(GROUP(Network), SETTING(Network::EnableApiServer)).toBool());
   m_ui->m_cbIgnoreAllCookies
     ->setChecked(settings()->value(GROUP(Network), SETTING(Network::IgnoreAllCookies)).toBool());
   m_ui->m_checkOpenLinksInExternal
@@ -218,7 +220,14 @@ void SettingsBrowserMail::saveSettings() {
 
   settings()->setValue(GROUP(Browser), Browser::DisableCache, m_ui->m_cbDisableCache->isChecked());
   settings()->setValue(GROUP(Network), Network::EnableHttp2, m_ui->m_cbEnableHttp2->isChecked());
+  settings()->setValue(GROUP(Network), Network::EnableApiServer, m_ui->m_cbEnableApiServer->isChecked());
   settings()->setValue(GROUP(Network), Network::IgnoreAllCookies, m_ui->m_cbIgnoreAllCookies->isChecked());
+
+  qApp->web()->stopApiServer();
+
+  if (m_ui->m_cbEnableApiServer->isChecked()) {
+    qApp->web()->startApiServer();
+  }
 
   settings()->setValue(GROUP(Browser),
                        Browser::OpenLinksInExternalBrowserRightAway,

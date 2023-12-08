@@ -20,6 +20,7 @@ class NetworkUrlInterceptor;
 class QMenu;
 class AdBlockManager;
 class CookieJar;
+class ApiServer;
 class Readability;
 
 class WebFactory : public QObject {
@@ -51,6 +52,9 @@ class WebFactory : public QObject {
 
     CookieJar* cookieJar() const;
     Readability* readability() const;
+
+    void startApiServer();
+    void stopApiServer();
 
     void updateProxy();
     bool sendMessageViaEmail(const Message& message);
@@ -90,6 +94,7 @@ class WebFactory : public QObject {
     QAction* m_engineSettings;
 #endif
 
+    ApiServer* m_apiServer;
     CookieJar* m_cookieJar;
     Readability* m_readability;
     QMap<QString, char16_t> m_htmlNamedEntities;

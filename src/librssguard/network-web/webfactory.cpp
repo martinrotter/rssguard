@@ -7,6 +7,7 @@
 #include "miscellaneous/iconfactory.h"
 #include "miscellaneous/settings.h"
 #include "network-web/adblock/adblockmanager.h"
+#include "network-web/apiserver.h"
 #include "network-web/cookiejar.h"
 #include "network-web/readability.h"
 
@@ -28,8 +29,12 @@
 #include <QWebEngineUrlScheme>
 #endif
 
-WebFactory::WebFactory(QObject* parent) : QObject(parent), m_customUserAgent(QString()) {
+WebFactory::WebFactory(QObject* parent) : QObject(parent), m_apiServer(nullptr), m_customUserAgent(QString()) {
   m_adBlock = new AdBlockManager(this);
+
+  if (qApp->settings()->value(GROUP(Network), SETTING(Network::EnableApiServer)).toBool()) {
+    startApiServer();
+  }
 
 #if defined(NO_LITE)
   if (qApp->settings()->value(GROUP(Browser), SETTING(Browser::DisableCache)).toBool()) {
@@ -58,6 +63,8 @@ WebFactory::WebFactory(QObject* parent) : QObject(parent), m_customUserAgent(QSt
 }
 
 WebFactory::~WebFactory() {
+  stopApiServer();
+
 #if defined(NO_LITE)
   if (m_engineSettings != nullptr && m_engineSettings->menu() != nullptr) {
     m_engineSettings->menu()->deleteLater();
@@ -556,6 +563,22 @@ CookieJar* WebFactory::cookieJar() const {
 
 Readability* WebFactory::readability() const {
   return m_readability;
+}
+
+void WebFactory::startApiServer() {
+  m_apiServer = new ApiServer(this);
+  m_apiServer->setListenAddressPort(QSL("http://localhost:54123"), true);
+
+  qDebugNN << LOGSEC_NETWORK << "Started API server:" << QUOTE_W_SPACE_DOT(m_apiServer->listenAddressPort());
+}
+
+void WebFactory::stopApiServer() {
+  if (m_apiServer != nullptr) {
+    delete m_apiServer;
+    m_apiServer = nullptr;
+
+    qDebugNN << LOGSEC_NETWORK << "Stopped API server:" << QUOTE_W_SPACE_DOT(m_apiServer->listenAddressPort());
+  }
 }
 
 void WebFactory::generateUnescapes() {
