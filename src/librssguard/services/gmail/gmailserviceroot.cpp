@@ -196,18 +196,21 @@ void GmailServiceRoot::start(bool freshly_activated) {
   updateTitle();
 
   if (getSubTreeFeeds().isEmpty()) {
-    syncIn();
+    m_network->oauth()->login([this]() {
+      syncIn();
+    });
   }
+  else {
+    auto chi = childItems();
 
-  auto chi = childItems();
-
-  for (RootItem* feed : std::as_const(chi)) {
-    if (feed->customId() == QL1S(GMAIL_SYSTEM_LABEL_INBOX)) {
-      feed->setKeepOnTop(true);
+    for (RootItem* feed : std::as_const(chi)) {
+      if (feed->customId() == QL1S(GMAIL_SYSTEM_LABEL_INBOX)) {
+        feed->setKeepOnTop(true);
+      }
     }
-  }
 
-  m_network->oauth()->login();
+    m_network->oauth()->login();
+  }
 }
 
 QString GmailServiceRoot::code() const {

@@ -41,9 +41,7 @@ void OAuthHttpHandler::setListenAddressPort(const QString& full_uri, bool start_
     listen_address = QHostAddress(url.host());
   }
 
-  if (listen_address == m_listenAddress &&
-      listen_port == m_listenPort &&
-      start_handler == m_httpServer.isListening()) {
+  if (listen_address == m_listenAddress && listen_port == m_listenPort && start_handler == m_httpServer.isListening()) {
     // NOTE: We do not need to change listener's settings or re-start it.
     return;
   }
@@ -58,26 +56,18 @@ void OAuthHttpHandler::setListenAddressPort(const QString& full_uri, bool start_
   m_listenAddressPort = full_uri;
 
   if (!start_handler) {
-    qDebugNN << LOGSEC_OAUTH
-             << "User does not want handler to be running.";
+    qDebugNN << LOGSEC_OAUTH << "User does not want handler to be running.";
     return;
   }
 
   if (!m_httpServer.listen(listen_address, listen_port)) {
-    qCriticalNN << LOGSEC_OAUTH
-                << "OAuth redirect handler FAILED TO START TO LISTEN on address"
-                << QUOTE_W_SPACE(listen_address.toString())
-                << "and port"
-                << QUOTE_W_SPACE(listen_port)
-                << "with error"
+    qCriticalNN << LOGSEC_OAUTH << "OAuth redirect handler FAILED TO START TO LISTEN on address"
+                << QUOTE_W_SPACE(listen_address.toString()) << "and port" << QUOTE_W_SPACE(listen_port) << "with error"
                 << QUOTE_W_SPACE_DOT(m_httpServer.errorString());
   }
   else {
-    qDebugNN << LOGSEC_OAUTH
-             << "OAuth redirect handler IS LISTENING on address"
-             << QUOTE_W_SPACE(m_listenAddress.toString())
-             << "and port"
-             << QUOTE_W_SPACE_DOT(m_listenPort);
+    qDebugNN << LOGSEC_OAUTH << "OAuth redirect handler IS LISTENING on address"
+             << QUOTE_W_SPACE(m_listenAddress.toString()) << "and port" << QUOTE_W_SPACE_DOT(m_listenPort);
   }
 }
 
@@ -103,18 +93,15 @@ void OAuthHttpHandler::handleRedirection(const QVariantMap& data) {
     const QString uri = data.value(QSL("error_uri")).toString();
     const QString description = data.value(QSL("error_description")).toString();
 
-    qCriticalNN << LOGSEC_OAUTH
-                << "AuthenticationError: " << error << "(" << uri << "): " << description;
+    qCriticalNN << LOGSEC_OAUTH << "AuthenticationError: " << error << "(" << uri << "): " << description;
     emit authRejected(description, received_state);
   }
   else if (code.isEmpty()) {
-    qCriticalNN << LOGSEC_OAUTH
-                << "We did not receive authentication code.";
+    qCriticalNN << LOGSEC_OAUTH << "We did not receive authentication code.";
     emit authRejected(QSL("Code not received"), received_state);
   }
   else if (received_state.isEmpty()) {
-    qCriticalNN << LOGSEC_OAUTH
-                << "State not received.";
+    qCriticalNN << LOGSEC_OAUTH << "State not received.";
     emit authRejected(QSL("State not received"), received_state);
   }
   else {
@@ -135,19 +122,19 @@ void OAuthHttpHandler::answerClient(QTcpSocket* socket, const QUrl& url) {
       received_data.insert(item.first, item.second);
     }
 
+    QByteArray res = socket->readAll();
+    QString res_utf = QString::fromUtf8(res);
+
     handleRedirection(received_data);
 
-    const QString html = QSL("<html><head><title>") +
-                         qApp->applicationName() +
-                         QSL("</title></head><body>") +
-                         m_successText +
-                         QSL("</body></html>");
+    const QString html = QSL("<html><head><title>") + qApp->applicationName() + QSL("</title></head><body>") +
+                         m_successText + QSL("</body></html>");
     const QByteArray html_utf = html.toUtf8();
     const QByteArray html_size = QString::number(html_utf.size()).toLocal8Bit();
     const QByteArray reply_message = QByteArrayLiteral("HTTP/1.0 200 OK \r\n"
                                                        "Content-Type: text/html; charset=\"utf-8\"\r\n"
-                                                       "Content-Length: ") + html_size +
-                                     QByteArrayLiteral("\r\n\r\n") + html_utf;
+                                                       "Content-Length: ") +
+                                     html_size + QByteArrayLiteral("\r\n\r\n") + html_utf;
 
     socket->write(reply_message);
   }
@@ -303,7 +290,8 @@ bool OAuthHttpHandler::QHttpRequest::readStatus(QTcpSocket* socket) {
   }
 
   if (finished) {
-    if ((std::isdigit(m_fragment.at(m_fragment.size() - 3)) == 0) || (std::isdigit(m_fragment.at(m_fragment.size() - 1)) == 0)) {
+    if ((std::isdigit(m_fragment.at(m_fragment.size() - 3)) == 0) ||
+        (std::isdigit(m_fragment.at(m_fragment.size() - 1)) == 0)) {
       qWarningNN << LOGSEC_OAUTH << "Invalid version";
       return false;
     }
