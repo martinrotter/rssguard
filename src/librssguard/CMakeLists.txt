@@ -263,6 +263,8 @@ set(SOURCES
   network-web/googlesuggest.h
   network-web/httpresponse.cpp
   network-web/httpresponse.h
+  network-web/httpserver.cpp
+  network-web/httpserver.h
   network-web/networkfactory.cpp
   network-web/networkfactory.h
   network-web/oauth2service.cpp
