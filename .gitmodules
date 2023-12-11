@@ -4,3 +4,7 @@
 [submodule "resources/scripts/nsis"]
 	path = resources/scripts/nsis
 	url = https://github.com/martinrotter/nsis.git
+[submodule "resources/scripts/libmpv"]
+	path = resources/scripts/libmpv
+	url = https://github.com/martinrotter/libmpv.git
+
