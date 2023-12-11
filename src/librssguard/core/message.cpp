@@ -69,7 +69,7 @@ QList<Enclosure> Enclosures::decodeEnclosuresFromString(const QString& enclosure
   return enclosures;
 }
 
-QString Enclosures::encodeEnclosuresToString(const QList<Enclosure>& enclosures) {
+QJsonArray Enclosures::encodeEnclosuresToJson(const QList<Enclosure>& enclosures) {
   QJsonArray enc_arr;
 
   for (const Enclosure& enc : enclosures) {
@@ -81,7 +81,11 @@ QString Enclosures::encodeEnclosuresToString(const QList<Enclosure>& enclosures)
     enc_arr.append(enc_obj);
   }
 
-  return QJsonDocument(enc_arr).toJson(QJsonDocument::JsonFormat::Compact);
+  return enc_arr;
+}
+
+QString Enclosures::encodeEnclosuresToString(const QList<Enclosure>& enclosures) {
+  return QJsonDocument(encodeEnclosuresToJson(enclosures)).toJson(QJsonDocument::JsonFormat::Compact);
 
   /*
   QStringList enclosures_str;
@@ -177,6 +181,7 @@ QJsonObject Message::toJson() const {
   obj.insert(QSL("id"), m_id);
   obj.insert(QSL("custom_id"), m_customId);
   obj.insert(QSL("custom_hash"), m_customHash);
+  obj.insert(QSL("enclosures"), Enclosures::encodeEnclosuresToJson(m_enclosures));
 
   return obj;
 }

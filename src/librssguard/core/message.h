@@ -26,6 +26,7 @@ struct RSSGUARD_DLLSPEC Enclosure {
 class RSSGUARD_DLLSPEC Enclosures {
   public:
     static QList<Enclosure> decodeEnclosuresFromString(const QString& enclosures_data);
+    static QJsonArray encodeEnclosuresToJson(const QList<Enclosure>& enclosures);
     static QString encodeEnclosuresToString(const QList<Enclosure>& enclosures);
 };
 
