@@ -45,7 +45,7 @@ class ApiServer : public HttpServer {
     explicit ApiServer(QObject* parent = nullptr);
 
   protected:
-    virtual void answerClient(QTcpSocket* socket, const QHttpRequest& request);
+    virtual void answerClient(QTcpSocket* socket, const HttpRequest& request);
 
   private:
     ApiResponse processRequest(const ApiRequest& req) const;

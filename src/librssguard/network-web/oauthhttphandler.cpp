@@ -44,7 +44,7 @@ void OAuthHttpHandler::handleRedirection(const QVariantMap& data) {
   }
 }
 
-void OAuthHttpHandler::answerClient(QTcpSocket* socket, const QHttpRequest& request) {
+void OAuthHttpHandler::answerClient(QTcpSocket* socket, const HttpRequest& request) {
   if (!request.m_url.path().remove(QL1C('/')).isEmpty()) {
     qCriticalNN << LOGSEC_OAUTH << "Invalid request:" << QUOTE_W_SPACE_DOT(request.m_url.toString());
   }

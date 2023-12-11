@@ -54,11 +54,6 @@ class RSSGUARD_DLLSPEC FeedsModel : public QAbstractItemModel {
     // This method might change some properties of some feeds.
     QList<Feed*> feedsForScheduledUpdate(bool auto_update_now);
 
-    // Returns (undeleted) messages for given feeds.
-    // This is usually used for displaying whole feeds
-    // in "newspaper" mode.
-    QList<Message> messagesForItem(RootItem* item) const;
-
     // Returns ALL RECURSIVE CHILD feeds contained within single index.
     QList<Feed*> feedsForIndex(const QModelIndex& index = QModelIndex()) const;
 

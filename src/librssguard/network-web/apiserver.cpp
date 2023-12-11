@@ -11,7 +11,7 @@
 
 ApiServer::ApiServer(QObject* parent) : HttpServer(parent) {}
 
-void ApiServer::answerClient(QTcpSocket* socket, const QHttpRequest& request) {
+void ApiServer::answerClient(QTcpSocket* socket, const HttpRequest& request) {
   QByteArray incoming_data = socket->readAll();
   QByteArray output_data;
 
@@ -26,9 +26,17 @@ void ApiServer::answerClient(QTcpSocket* socket, const QHttpRequest& request) {
   }
   else {
     ApiRequest req(incoming_doc);
-    ApiResponse resp(processRequest(req));
 
-    output_data = resp.toJson().toJson();
+    try {
+      ApiResponse resp(processRequest(req));
+
+      output_data = resp.toJson().toJson();
+    }
+    catch (const ApplicationException& ex) {
+      ApiResponse err_resp(ApiResponse::Result::Error, req.m_method, ex.message());
+
+      output_data = err_resp.toJson().toJson();
+    }
   }
 
   const QByteArray reply_message = QSL("HTTP/1.0 200 OK \r\n"
@@ -63,17 +71,23 @@ ApiResponse ApiServer::processAppVersion() const {
 
 ApiResponse ApiServer::processArticlesFromFeed(const QJsonValue& req) const {
   QJsonObject data = req.toObject();
+
   QString feed_id = data.value(QSL("feed")).toString();
   int account_id = data.value(QSL("account")).toInt();
+  bool newest_first = data.value(QSL("newest_first")).toBool();
+  bool unread_only = data.value(QSL("unread_only")).toBool();
+  int row_offset = data.value(QSL("row_offset")).toInt();
+  int row_limit = data.value(QSL("row_limit")).toInt();
 
   QSqlDatabase database = qApp->database()->driver()->connection(metaObject()->className());
-  QList<Message> msgs = DatabaseQueries::getUndeletedMessagesForFeed(database, feed_id, account_id);
+  QList<Message> msgs =
+    DatabaseQueries::getFeedsSlice(database, feed_id, account_id, newest_first, unread_only, row_offset, row_limit);
   QJsonArray msgs_json_array;
 
   for (const Message& msg : msgs) {
     QJsonObject msg_obj;
 
-    msg_obj.insert(QSL("contents"), msg.m_contents);
+    msg_obj.insert(QSL("contents"), msg.toJson());
     msgs_json_array.append(msg_obj);
   }
 

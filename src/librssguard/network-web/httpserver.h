@@ -35,7 +35,7 @@ class HttpServer : public QObject {
     void setListenAddressPort(const QString& full_uri, bool start_handler);
 
   protected:
-    struct QHttpRequest {
+    struct HttpRequest {
         bool readMethod(QTcpSocket* socket);
         bool readUrl(QTcpSocket* socket);
         bool readStatus(QTcpSocket* socket);
@@ -67,7 +67,7 @@ class HttpServer : public QObject {
         QMap<QByteArray, QByteArray> m_headers;
     };
 
-    virtual void answerClient(QTcpSocket* socket, const QHttpRequest& request) = 0;
+    virtual void answerClient(QTcpSocket* socket, const HttpRequest& request) = 0;
 
   private slots:
     void clientConnected();
@@ -76,7 +76,7 @@ class HttpServer : public QObject {
     void readReceivedData(QTcpSocket* socket);
 
   private:
-    QMap<QTcpSocket*, QHttpRequest> m_connectedClients;
+    QMap<QTcpSocket*, HttpRequest> m_connectedClients;
     QTcpServer m_httpServer;
     QHostAddress m_listenAddress;
     quint16 m_listenPort;

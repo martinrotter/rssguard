@@ -118,6 +118,14 @@ class DatabaseQueries {
     static QList<Message> getUndeletedMessagesForBin(const QSqlDatabase& db, int account_id, bool* ok = nullptr);
     static QList<Message> getUndeletedMessagesForAccount(const QSqlDatabase& db, int account_id, bool* ok = nullptr);
 
+    static QList<Message> getFeedsSlice(const QSqlDatabase& db,
+                                        const QString& feed_custom_id,
+                                        int account_id,
+                                        bool newest_first,
+                                        bool unread_only,
+                                        int row_offset,
+                                        int row_limit);
+
     // Custom ID accumulators.
     static QStringList bagOfMessages(const QSqlDatabase& db, ServiceRoot::BagOfMessages bag, const Feed* feed);
     static QHash<QString, QStringList> bagsOfMessages(const QSqlDatabase& db, const QList<Label*>& labels);

@@ -17,7 +17,7 @@ class OAuthHttpHandler : public HttpServer {
     void authGranted(const QString& auth_code, const QString& state);
 
   protected:
-    virtual void answerClient(QTcpSocket* socket, const QHttpRequest& request);
+    virtual void answerClient(QTcpSocket* socket, const HttpRequest& request);
 
   private:
     void handleRedirection(const QVariantMap& data);

@@ -79,28 +79,28 @@ void HttpServer::readReceivedData(QTcpSocket* socket) {
     m_connectedClients[socket].m_port = m_httpServer.serverPort();
   }
 
-  QHttpRequest* request = &m_connectedClients[socket];
+  HttpRequest* request = &m_connectedClients[socket];
   bool error = false;
 
-  if (Q_LIKELY(request->m_state == QHttpRequest::State::ReadingMethod)) {
+  if (Q_LIKELY(request->m_state == HttpRequest::State::ReadingMethod)) {
     if (Q_UNLIKELY(error = !request->readMethod(socket))) {
       qWarningNN << LOGSEC_NETWORK << "Invalid method.";
     }
   }
 
-  if (Q_LIKELY(!error && request->m_state == QHttpRequest::State::ReadingUrl)) {
+  if (Q_LIKELY(!error && request->m_state == HttpRequest::State::ReadingUrl)) {
     if (Q_UNLIKELY(error = !request->readUrl(socket))) {
       qWarningNN << LOGSEC_NETWORK << "Invalid URL.";
     }
   }
 
-  if (Q_LIKELY(!error && request->m_state == QHttpRequest::State::ReadingStatus)) {
+  if (Q_LIKELY(!error && request->m_state == HttpRequest::State::ReadingStatus)) {
     if (Q_UNLIKELY(error = !request->readStatus(socket))) {
       qWarningNN << LOGSEC_NETWORK << "Invalid status.";
     }
   }
 
-  if (Q_LIKELY(!error && request->m_state == QHttpRequest::State::ReadingHeader)) {
+  if (Q_LIKELY(!error && request->m_state == HttpRequest::State::ReadingHeader)) {
     if (Q_UNLIKELY(error = !request->readHeader(socket))) {
       qWarningNN << LOGSEC_NETWORK << "Invalid header.";
     }
@@ -111,7 +111,7 @@ void HttpServer::readReceivedData(QTcpSocket* socket) {
     m_connectedClients.remove(socket);
   }
   else if (!request->m_url.isEmpty()) {
-    Q_ASSERT(request->m_state != QHttpRequest::State::ReadingUrl);
+    Q_ASSERT(request->m_state != HttpRequest::State::ReadingUrl);
 
     answerClient(socket, *request);
     m_connectedClients.remove(socket);
@@ -130,7 +130,7 @@ quint16 HttpServer::listenPort() const {
   return m_listenPort;
 }
 
-bool HttpServer::QHttpRequest::readMethod(QTcpSocket* socket) {
+bool HttpServer::HttpRequest::readMethod(QTcpSocket* socket) {
   bool finished = false;
 
   while ((socket->bytesAvailable() != 0) && !finished) {
@@ -173,7 +173,7 @@ bool HttpServer::QHttpRequest::readMethod(QTcpSocket* socket) {
   return true;
 }
 
-bool HttpServer::QHttpRequest::readUrl(QTcpSocket* socket) {
+bool HttpServer::HttpRequest::readUrl(QTcpSocket* socket) {
   bool finished = false;
 
   while ((socket->bytesAvailable() != 0) && !finished) {
@@ -208,7 +208,7 @@ bool HttpServer::QHttpRequest::readUrl(QTcpSocket* socket) {
   return true;
 }
 
-bool HttpServer::QHttpRequest::readStatus(QTcpSocket* socket) {
+bool HttpServer::HttpRequest::readStatus(QTcpSocket* socket) {
   bool finished = false;
 
   while ((socket->bytesAvailable() != 0) && !finished) {
@@ -235,7 +235,7 @@ bool HttpServer::QHttpRequest::readStatus(QTcpSocket* socket) {
   return true;
 }
 
-bool HttpServer::QHttpRequest::readHeader(QTcpSocket* socket) {
+bool HttpServer::HttpRequest::readHeader(QTcpSocket* socket) {
   while (socket->bytesAvailable() != 0) {
     m_fragment += socket->read(1);
 

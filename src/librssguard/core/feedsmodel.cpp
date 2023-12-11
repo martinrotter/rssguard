@@ -275,10 +275,6 @@ QList<Feed*> FeedsModel::feedsForScheduledUpdate(bool auto_update_now) {
   return feeds_for_update;
 }
 
-QList<Message> FeedsModel::messagesForItem(RootItem* item) const {
-  return item->undeletedMessages();
-}
-
 int FeedsModel::columnCount(const QModelIndex& parent) const {
   Q_UNUSED(parent)
   return FEEDS_VIEW_COLUMN_COUNT;

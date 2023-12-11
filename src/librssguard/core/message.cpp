@@ -164,6 +164,14 @@ void Message::sanitize(const Feed* feed, bool fix_future_datetimes) {
   }
 }
 
+QJsonObject Message::toJson() const {
+  QJsonObject obj;
+
+  obj.insert(QSL("contents"), m_contents);
+
+  return obj;
+}
+
 Message Message::fromSqlRecord(const QSqlRecord& record, bool* result) {
   if (record.count() != MSG_DB_LABELS_IDS + 1) {
     if (result != nullptr) {

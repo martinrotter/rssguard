@@ -3,7 +3,7 @@
 #ifndef MESSAGE_H
 #define MESSAGE_H
 
-//#include "definitions/definitions.h"
+// #include "definitions/definitions.h"
 
 #include <QDataStream>
 #include <QDateTime>
@@ -55,6 +55,8 @@ class RSSGUARD_DLLSPEC Message {
     explicit Message();
 
     void sanitize(const Feed* feed, bool fix_future_datetimes);
+
+    QJsonObject toJson() const;
 
     // Creates Message from given record, which contains
     // row from query SELECT * FROM Messages WHERE ....;
