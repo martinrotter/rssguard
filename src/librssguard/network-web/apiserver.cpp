@@ -39,13 +39,16 @@ void ApiServer::answerClient(QTcpSocket* socket, const HttpRequest& request) {
     }
   }
 
-  const QByteArray reply_message = QSL("HTTP/1.0 200 OK \r\n"
-                                       "Content-Type: application/json; charset=\"utf-8\"\r\n"
-                                       "Content-Length: %1"
-                                       "\r\n\r\n"
-                                       "%2")
-                                     .arg(QString::number(output_data.size()), output_data)
-                                     .toLocal8Bit();
+  QByteArray reply_message = QSL("HTTP/1.0 200 OK \r\n"
+                                 "Content-Type: application/json; charset=\"utf-8\"\r\n"
+                                 "Content-Length: %1"
+                                 "\r\n\r\n")
+                               .arg(QString::number(output_data.size()))
+                               .toLocal8Bit();
+
+  reply_message += output_data;
+
+  IOFactory::writeFile("a.out", output_data);
 
   socket->write(reply_message);
   socket->disconnectFromHost();
