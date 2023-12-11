@@ -574,10 +574,10 @@ void WebFactory::startApiServer() {
 
 void WebFactory::stopApiServer() {
   if (m_apiServer != nullptr) {
+    qDebugNN << LOGSEC_NETWORK << "Stopped API server:" << QUOTE_W_SPACE_DOT(m_apiServer->listenAddressPort());
+
     delete m_apiServer;
     m_apiServer = nullptr;
-
-    qDebugNN << LOGSEC_NETWORK << "Stopped API server:" << QUOTE_W_SPACE_DOT(m_apiServer->listenAddressPort());
   }
 }
 
