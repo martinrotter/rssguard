@@ -10,6 +10,8 @@
 
 #include <QDebug>
 #include <QFlags>
+#include <QJsonArray>
+#include <QJsonObject>
 #include <QRegularExpression>
 #include <QUrl>
 #include <QVariant>
@@ -18,36 +20,70 @@
 Enclosure::Enclosure(QString url, QString mime) : m_url(std::move(url)), m_mimeType(std::move(mime)) {}
 
 QList<Enclosure> Enclosures::decodeEnclosuresFromString(const QString& enclosures_data) {
-  auto enc = enclosures_data.split(ENCLOSURES_OUTER_SEPARATOR,
+  QJsonParseError enc_err;
+  QJsonDocument enc_doc = QJsonDocument::fromJson(enclosures_data.toUtf8(), &enc_err);
+  QList<Enclosure> enclosures;
+
+  if (enc_err.error != QJsonParseError::ParseError::NoError) {
+    // Provide backwards compatibility.
+    auto enc = enclosures_data.split(ENCLOSURES_OUTER_SEPARATOR,
 #if QT_VERSION >= 0x050F00 // Qt >= 5.15.0
-                                   Qt::SplitBehaviorFlags::SkipEmptyParts);
+                                     Qt::SplitBehaviorFlags::SkipEmptyParts);
 #else
-                                   QString::SplitBehavior::SkipEmptyParts);
+                                     QString::SplitBehavior::SkipEmptyParts);
 #endif
 
-  QList<Enclosure> enclosures;
-  enclosures.reserve(enc.size());
+    enclosures.reserve(enc.size());
 
-  for (const QString& single_enclosure : std::as_const(enc)) {
-    Enclosure enclosure;
+    for (const QString& single_enclosure : std::as_const(enc)) {
+      Enclosure enclosure;
 
-    if (single_enclosure.contains(ECNLOSURES_INNER_SEPARATOR)) {
-      QStringList mime_url = single_enclosure.split(ECNLOSURES_INNER_SEPARATOR);
+      if (single_enclosure.contains(ECNLOSURES_INNER_SEPARATOR)) {
+        QStringList mime_url = single_enclosure.split(ECNLOSURES_INNER_SEPARATOR);
 
-      enclosure.m_mimeType = QString::fromUtf8(QByteArray::fromBase64(mime_url.at(0).toLocal8Bit()));
-      enclosure.m_url = QString::fromUtf8(QByteArray::fromBase64(mime_url.at(1).toLocal8Bit()));
+        enclosure.m_mimeType = QString::fromUtf8(QByteArray::fromBase64(mime_url.at(0).toLocal8Bit()));
+        enclosure.m_url = QString::fromUtf8(QByteArray::fromBase64(mime_url.at(1).toLocal8Bit()));
+      }
+      else {
+        enclosure.m_url = QString::fromUtf8(QByteArray::fromBase64(single_enclosure.toLocal8Bit()));
+      }
+
+      enclosures.append(enclosure);
     }
-    else {
-      enclosure.m_url = QString::fromUtf8(QByteArray::fromBase64(single_enclosure.toLocal8Bit()));
-    }
+  }
+  else {
+    QJsonArray enc_arr = enc_doc.array();
 
-    enclosures.append(enclosure);
+    for (const QJsonValue& enc_val : enc_arr) {
+      const QJsonObject& enc_obj = enc_val.toObject();
+
+      Enclosure enclosure;
+
+      enclosure.m_mimeType = enc_obj.value(QSL("mime")).toString();
+      enclosure.m_url = enc_obj.value(QSL("url")).toString();
+
+      enclosures.append(enclosure);
+    }
   }
 
   return enclosures;
 }
 
 QString Enclosures::encodeEnclosuresToString(const QList<Enclosure>& enclosures) {
+  QJsonArray enc_arr;
+
+  for (const Enclosure& enc : enclosures) {
+    QJsonObject enc_obj;
+
+    enc_obj.insert(QSL("mime"), enc.m_mimeType);
+    enc_obj.insert(QSL("url"), enc.m_url);
+
+    enc_arr.append(enc_obj);
+  }
+
+  return QJsonDocument(enc_arr).toJson(QJsonDocument::JsonFormat::Compact);
+
+  /*
   QStringList enclosures_str;
 
   for (const Enclosure& enclosure : enclosures) {
@@ -61,6 +97,7 @@ QString Enclosures::encodeEnclosuresToString(const QList<Enclosure>& enclosures)
   }
 
   return enclosures_str.join(QString(ENCLOSURES_OUTER_SEPARATOR));
+  */
 }
 
 Message::Message() {
