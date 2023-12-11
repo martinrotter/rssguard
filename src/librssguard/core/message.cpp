@@ -168,6 +168,15 @@ QJsonObject Message::toJson() const {
   QJsonObject obj;
 
   obj.insert(QSL("contents"), m_contents);
+  obj.insert(QSL("is_read"), m_isRead);
+  obj.insert(QSL("is_important"), m_isImportant);
+  obj.insert(QSL("title"), m_title);
+  obj.insert(QSL("date_created"), m_created.toMSecsSinceEpoch());
+  obj.insert(QSL("author"), m_author);
+  obj.insert(QSL("url"), m_url);
+  obj.insert(QSL("id"), m_id);
+  obj.insert(QSL("custom_id"), m_customId);
+  obj.insert(QSL("custom_hash"), m_customHash);
 
   return obj;
 }

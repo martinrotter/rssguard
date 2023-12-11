@@ -85,10 +85,7 @@ ApiResponse ApiServer::processArticlesFromFeed(const QJsonValue& req) const {
   QJsonArray msgs_json_array;
 
   for (const Message& msg : msgs) {
-    QJsonObject msg_obj;
-
-    msg_obj.insert(QSL("contents"), msg.toJson());
-    msgs_json_array.append(msg_obj);
+    msgs_json_array.append(msg.toJson());
   }
 
   ApiResponse resp(ApiResponse::Result::Success, ApiRequest::Method::ArticlesFromFeed, msgs_json_array);

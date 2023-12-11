@@ -1187,9 +1187,11 @@ QList<Message> DatabaseQueries::getFeedsSlice(const QSqlDatabase& db,
   q.setForwardOnly(true);
   q.prepare(QSL("SELECT %1 "
                 "FROM Messages "
-                "WHERE is_deleted = 0 AND is_pdeleted = 0 AND "
-                "      is_read = :is_read "
-                "      feed = :feed AND account_id = :account_id "
+                "WHERE is_deleted = 0 AND "
+                "      is_pdeleted = 0 AND "
+                "      is_read = :is_read AND "
+                "      feed = :feed AND "
+                "      account_id = :account_id "
                 "ORDER BY Messages.date_created %2 "
                 "LIMIT :row_limit OFFSET :row_offset;")
               .arg(messageTableAttributes(true, db.driverName() == QSL(APP_DB_SQLITE_DRIVER)).values().join(QSL(", ")),
@@ -1217,7 +1219,7 @@ QList<Message> DatabaseQueries::getFeedsSlice(const QSqlDatabase& db,
     }
   }
   else {
-    throw ApplicationException(q.lastError().driverText());
+    throw ApplicationException(q.lastError().driverText() + QSL(" ") + q.lastError().databaseText());
   }
 
   return messages;
