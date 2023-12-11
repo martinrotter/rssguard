@@ -1174,15 +1174,17 @@ QList<Message> DatabaseQueries::getUndeletedUnreadMessages(const QSqlDatabase& d
   return messages;
 }
 
-QList<Message> DatabaseQueries::getFeedsSlice(const QSqlDatabase& db,
-                                              const QString& feed_custom_id,
-                                              int account_id,
-                                              bool newest_first,
-                                              bool unread_only,
-                                              int row_offset,
-                                              int row_limit) {
+QList<Message> DatabaseQueries::getArticlesSlice(const QSqlDatabase& db,
+                                                 const QString& feed_custom_id,
+                                                 int account_id,
+                                                 bool newest_first,
+                                                 bool unread_only,
+                                                 int row_offset,
+                                                 int row_limit) {
   QList<Message> messages;
   QSqlQuery q(db);
+
+  QString feed_clause = !feed_custom_id.isEmpty() ? QSL("feed = :feed AND") : QString();
 
   q.setForwardOnly(true);
   q.prepare(QSL("SELECT %1 "
@@ -1190,16 +1192,17 @@ QList<Message> DatabaseQueries::getFeedsSlice(const QSqlDatabase& db,
                 "WHERE is_deleted = 0 AND "
                 "      is_pdeleted = 0 AND "
                 "      is_read = :is_read AND "
-                "      feed = :feed AND "
+                "      %3 "
                 "      account_id = :account_id "
                 "ORDER BY Messages.date_created %2 "
                 "LIMIT :row_limit OFFSET :row_offset;")
               .arg(messageTableAttributes(true, db.driverName() == QSL(APP_DB_SQLITE_DRIVER)).values().join(QSL(", ")),
-                   newest_first ? QSL("DESC") : QSL("ASC")));
-  q.bindValue(QSL(":feed"), feed_custom_id);
+                   newest_first ? QSL("DESC") : QSL("ASC"),
+                   feed_clause));
   q.bindValue(QSL(":account_id"), account_id);
   q.bindValue(QSL(":row_limit"), row_limit);
   q.bindValue(QSL(":row_offset"), row_offset);
+  q.bindValue(QSL(":feed"), QSL("feed"));
 
   if (unread_only) {
     q.bindValue(QSL(":is_read"), 0);

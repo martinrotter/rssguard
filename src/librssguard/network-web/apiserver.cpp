@@ -81,7 +81,7 @@ ApiResponse ApiServer::processArticlesFromFeed(const QJsonValue& req) const {
 
   QSqlDatabase database = qApp->database()->driver()->connection(metaObject()->className());
   QList<Message> msgs =
-    DatabaseQueries::getFeedsSlice(database, feed_id, account_id, newest_first, unread_only, row_offset, row_limit);
+    DatabaseQueries::getArticlesSlice(database, feed_id, account_id, newest_first, unread_only, row_offset, row_limit);
   QJsonArray msgs_json_array;
 
   for (const Message& msg : msgs) {

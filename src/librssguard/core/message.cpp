@@ -181,6 +181,7 @@ QJsonObject Message::toJson() const {
   obj.insert(QSL("id"), m_id);
   obj.insert(QSL("custom_id"), m_customId);
   obj.insert(QSL("custom_hash"), m_customHash);
+  obj.insert(QSL("feed_custom_id"), m_feedId);
   obj.insert(QSL("enclosures"), Enclosures::encodeEnclosuresToJson(m_enclosures));
 
   return obj;
