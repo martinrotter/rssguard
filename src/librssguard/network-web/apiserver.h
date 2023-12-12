@@ -48,6 +48,7 @@ class ApiServer : public HttpServer {
     virtual void answerClient(QTcpSocket* socket, const HttpRequest& request);
 
   private:
+    QByteArray processCorsPreflight() const;
     ApiResponse processRequest(const ApiRequest& req) const;
     ApiResponse processAppVersion() const;
     ApiResponse processArticlesFromFeed(const QJsonValue& req) const;

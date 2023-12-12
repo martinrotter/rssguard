@@ -57,6 +57,7 @@ class HttpServer : public QObject {
           Put,
           Post,
           Delete,
+          Options
         } m_method = Method::Unknown;
 
         QString m_address;

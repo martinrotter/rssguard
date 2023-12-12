@@ -136,7 +136,7 @@ bool HttpServer::HttpRequest::readMethod(QTcpSocket* socket) {
   while ((socket->bytesAvailable() != 0) && !finished) {
     const auto c = socket->read(1).at(0);
 
-    if ((std::isupper(c) != 0) && m_fragment.size() < 6) {
+    if ((std::isupper(c) != 0) && m_fragment.size() < 7) {
       m_fragment += c;
     }
     else {
@@ -159,6 +159,9 @@ bool HttpServer::HttpRequest::readMethod(QTcpSocket* socket) {
     }
     else if (m_fragment == "DELETE") {
       m_method = Method::Delete;
+    }
+    else if (m_fragment == "OPTIONS") {
+      m_method = Method::Options;
     }
     else {
       qWarningNN << LOGSEC_NETWORK << "Invalid operation:" << QUOTE_W_SPACE_DOT(m_fragment.data());

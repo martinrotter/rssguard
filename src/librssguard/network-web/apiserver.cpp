@@ -13,45 +13,60 @@ ApiServer::ApiServer(QObject* parent) : HttpServer(parent) {}
 
 void ApiServer::answerClient(QTcpSocket* socket, const HttpRequest& request) {
   QByteArray incoming_data = socket->readAll();
-  QByteArray output_data;
+  QByteArray reply_message;
 
-  QJsonParseError json_err;
-  QJsonDocument incoming_doc = QJsonDocument::fromJson(incoming_data, &json_err);
-
-  if (json_err.error != QJsonParseError::ParseError::NoError) {
-    output_data =
-      ApiResponse(ApiResponse::Result::Error, ApiRequest::Method::Unknown, QJsonValue(json_err.errorString()))
-        .toJson()
-        .toJson();
+  if (request.m_method == HttpRequest::Method::Options) {
+    reply_message = processCorsPreflight();
   }
   else {
-    ApiRequest req(incoming_doc);
+    QJsonParseError json_err;
+    QByteArray json_data;
+    QJsonDocument incoming_doc = QJsonDocument::fromJson(incoming_data, &json_err);
 
-    try {
-      ApiResponse resp(processRequest(req));
-
-      output_data = resp.toJson().toJson();
+    if (json_err.error != QJsonParseError::ParseError::NoError) {
+      json_data =
+        ApiResponse(ApiResponse::Result::Error, ApiRequest::Method::Unknown, QJsonValue(json_err.errorString()))
+          .toJson()
+          .toJson();
     }
-    catch (const ApplicationException& ex) {
-      ApiResponse err_resp(ApiResponse::Result::Error, req.m_method, ex.message());
+    else {
+      ApiRequest req(incoming_doc);
 
-      output_data = err_resp.toJson().toJson();
+      try {
+        ApiResponse resp(processRequest(req));
+
+        json_data = resp.toJson().toJson();
+      }
+      catch (const ApplicationException& ex) {
+        ApiResponse err_resp(ApiResponse::Result::Error, req.m_method, ex.message());
+
+        json_data = err_resp.toJson().toJson();
+      }
     }
+
+    reply_message = QSL("HTTP/1.0 200 OK \r\n"
+                        "Content-Type: application/json; charset=\"utf-8\"\r\n"
+                        "Content-Length: %1"
+                        "\r\n\r\n")
+                      .arg(QString::number(json_data.size()))
+                      .toLocal8Bit();
+
+    reply_message += json_data;
+
+    IOFactory::writeFile("a.out", json_data);
   }
-
-  QByteArray reply_message = QSL("HTTP/1.0 200 OK \r\n"
-                                 "Content-Type: application/json; charset=\"utf-8\"\r\n"
-                                 "Content-Length: %1"
-                                 "\r\n\r\n")
-                               .arg(QString::number(output_data.size()))
-                               .toLocal8Bit();
-
-  reply_message += output_data;
-
-  IOFactory::writeFile("a.out", output_data);
 
   socket->write(reply_message);
   socket->disconnectFromHost();
+}
+
+QByteArray ApiServer::processCorsPreflight() const {
+  QString answer = QSL("HTTP/1.0 204 No Content\r\n"
+                       "Access-Control-Allow-Origin: *\r\n"
+                       "Access-Control-Allow-Methods: POST, GET, OPTIONS, DELETE\r\n"
+                       "Access-Control-Max-Age: 86400");
+
+  return answer.toLocal8Bit();
 }
 
 ApiResponse ApiServer::processRequest(const ApiRequest& req) const {
