@@ -9,6 +9,8 @@
 #include <QJsonObject>
 
 struct ApiRequest {
+    Q_GADGET
+
   public:
     enum class Method {
       Unknown = 0,
@@ -16,22 +18,26 @@ struct ApiRequest {
       ArticlesFromFeed = 2
     };
 
-    explicit ApiRequest(const QJsonDocument& data)
-      : m_method(Method(data.object().value("method").toInt())), m_parameters(data.object().value("data")) {}
+    Q_ENUM(Method)
+
+    explicit ApiRequest(const QJsonDocument& data);
 
     Method m_method;
     QJsonValue m_parameters;
 };
 
 struct ApiResponse {
+    Q_GADGET
+
   public:
     enum class Result {
       Success = 1,
       Error = 2
     };
 
-    explicit ApiResponse(Result result, ApiRequest::Method method, const QJsonValue& response)
-      : m_result(result), m_method(method), m_response(response) {}
+    Q_ENUM(Result)
+
+    explicit ApiResponse(Result result, ApiRequest::Method method, const QJsonValue& response);
 
     Result m_result;
     ApiRequest::Method m_method;

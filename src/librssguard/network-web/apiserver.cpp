@@ -8,6 +8,7 @@
 #include "miscellaneous/application.h"
 
 #include <QJsonArray>
+#include <QMetaEnum>
 
 ApiServer::ApiServer(QObject* parent) : HttpServer(parent) {}
 
@@ -53,7 +54,9 @@ void ApiServer::answerClient(QTcpSocket* socket, const HttpRequest& request) {
 
     reply_message += json_data;
 
+#if !defined(NDEBUG)
     IOFactory::writeFile("a.out", json_data);
+#endif
   }
 
   socket->write(reply_message);
@@ -115,12 +118,26 @@ ApiResponse ApiServer::processUnknown() const {
   return ApiResponse(ApiResponse::Result::Error, ApiRequest::Method::Unknown, QSL("unknown method"));
 }
 
+ApiResponse::ApiResponse(Result result, ApiRequest::Method method, const QJsonValue& response)
+  : m_result(result), m_method(method), m_response(response) {}
+
 QJsonDocument ApiResponse::toJson() const {
   QJsonObject obj;
 
-  obj.insert("method", int(m_method));
-  obj.insert("result", int(m_result));
-  obj.insert("data", m_response);
+  static QMetaEnum enumer_method = QMetaEnum::fromType<ApiRequest::Method>();
+  static QMetaEnum enumer_result = QMetaEnum::fromType<ApiResponse::Result>();
+
+  obj.insert(QSL("method"), enumer_method.valueToKey(int(m_method)));
+  obj.insert(QSL("result"), enumer_result.valueToKey(int(m_result)));
+  obj.insert(QSL("data"), m_response);
 
   return QJsonDocument(obj);
+}
+
+ApiRequest::ApiRequest(const QJsonDocument& data) : m_method(), m_parameters(data.object().value(QSL("data"))) {
+  static QMetaEnum enumer = QMetaEnum::fromType<ApiRequest::Method>();
+
+  QByteArray method_name = data.object().value(QSL("method")).toString().toLocal8Bit();
+
+  m_method = Method(enumer.keysToValue(method_name.constData()));
 }
