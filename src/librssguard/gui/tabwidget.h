@@ -61,7 +61,8 @@ class TabWidget : public QTabWidget {
     void scrollDownCurrentBrowser();
 
     // Called when number of tab pages changes.
-    void checkTabBarVisibility();
+    void checkCornerButtonVisibility();
+    void updateAppearance();
 
     // Tab closing.
     bool closeTab(int index);

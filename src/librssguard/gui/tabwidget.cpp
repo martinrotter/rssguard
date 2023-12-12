@@ -29,6 +29,7 @@ TabWidget::TabWidget(QWidget* parent) : QTabWidget(parent), m_menuMain(nullptr) 
   setupMainMenuButton();
   initializeTabs();
   createConnections();
+  updateAppearance();
 }
 
 TabWidget::~TabWidget() {
@@ -42,6 +43,8 @@ void TabWidget::setupMainMenuButton() {
   m_btnMainMenu->setToolTip(tr("Displays main menu."));
   m_btnMainMenu->setIcon(qApp->icons()->fromTheme(QSL("go-home")));
   m_btnMainMenu->setPopupMode(QToolButton::ToolButtonPopupMode::InstantPopup);
+
+  setCornerWidget(m_btnMainMenu, Qt::Corner::TopLeftCorner);
 
   connect(m_btnMainMenu, &PlainToolButton::clicked, this, &TabWidget::openMainMenu);
 }
@@ -84,10 +87,10 @@ void TabWidget::showDownloadManager() {
   setCurrentIndex(count() - 1);
 }
 
-void TabWidget::checkTabBarVisibility() {
-  const bool should_be_visible =
-    count() > 1 || !qApp->settings()->value(GROUP(GUI), SETTING(GUI::HideTabBarIfOnlyOneTab)).toBool();
+void TabWidget::checkCornerButtonVisibility() {
+  const bool should_be_visible = count() > 1 || !tabBarAutoHide();
 
+  /*
   if (should_be_visible) {
     setCornerWidget(m_btnMainMenu, Qt::Corner::TopLeftCorner);
   }
@@ -95,14 +98,19 @@ void TabWidget::checkTabBarVisibility() {
     setCornerWidget(nullptr, Qt::Corner::TopLeftCorner);
     setCornerWidget(nullptr, Qt::Corner::TopRightCorner);
   }
+  */
 
   m_btnMainMenu->setVisible(should_be_visible);
-  tabBar()->setVisible(should_be_visible);
+  // tabBar()->setVisible(should_be_visible);
+}
+
+void TabWidget::updateAppearance() {
+  setTabBarAutoHide(qApp->settings()->value(GROUP(GUI), SETTING(GUI::HideTabBarIfOnlyOneTab)).toBool());
 }
 
 void TabWidget::tabInserted(int index) {
   QTabWidget::tabInserted(index);
-  checkTabBarVisibility();
+  checkCornerButtonVisibility();
   const int count_of_tabs = count();
 
   if (index < count_of_tabs - 1 && count_of_tabs > 1) {
@@ -113,7 +121,7 @@ void TabWidget::tabInserted(int index) {
 
 void TabWidget::tabRemoved(int index) {
   QTabWidget::tabRemoved(index);
-  checkTabBarVisibility();
+  checkCornerButtonVisibility();
   const int count_of_tabs = count();
 
   if (index < count_of_tabs && count_of_tabs > 1) {
