@@ -48,8 +48,8 @@ $zlib_version = "1.3"
 $zlib_link = "https://github.com/madler/zlib/archive/refs/tags/v$zlib_version.zip"
 $zlib_output = "zlib.zip"
 
-$libmpv_version = "v3-20231203-git-f551a9d"
-$libmpv_link = "https://downloads.sourceforge.net/project/mpv-player-windows/libmpv/mpv-dev-x86_64-$libmpv_version.7z"
+$libmpv_version = "20231211-git-566a96f"
+$libmpv_link = "https://github.com/zhongfly/mpv-winbuild/releases/download/2023-12-11-566a96f/mpv-dev-x86_64-$libmpv_version.7z"
 $libmpv_output = "mpv.zip"
 
 $ytdlp_version = "2023.11.16"
