@@ -46,6 +46,8 @@ void ApiServer::answerClient(QTcpSocket* socket, const HttpRequest& request) {
     }
 
     reply_message = QSL("HTTP/1.0 200 OK \r\n"
+                        "Access-Control-Allow-Origin: *\r\n"
+                        "Access-Control-Allow-Headers: *\r\n"
                         "Content-Type: application/json; charset=\"utf-8\"\r\n"
                         "Content-Length: %1"
                         "\r\n\r\n")
