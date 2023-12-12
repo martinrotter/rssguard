@@ -356,6 +356,9 @@
 #define APP_SQL_PATH   QSL(":/sql")
 #define APP_INFO_PATH  QSL(":/text")
 
+#define WEB_UI_FOLDER QSL(":/scripts/web_ui")
+#define WEB_UI_FILE   QSL("rssguard.html")
+
 #define APP_ICON_PATH       QSL(":/graphics/rssguard.png")
 #define APP_ICON_PLAIN_PATH QSL(":/graphics/rssguard_plain.png")
 

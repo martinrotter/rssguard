@@ -9,6 +9,8 @@
     <file>text/COPYING_GNU_LGPL_21</file>
     <file>text/COPYING_QT</file>
 
+    <file>scripts/web_ui/rssguard.html</file>
+    
     <file>sounds/boing.wav</file>
     <file>sounds/rooster.wav</file>
     <file>sounds/sheep.wav</file>

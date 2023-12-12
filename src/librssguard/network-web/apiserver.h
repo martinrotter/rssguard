@@ -55,6 +55,8 @@ class ApiServer : public HttpServer {
 
   private:
     QByteArray processCorsPreflight() const;
+    QByteArray processHtmlPage() const;
+
     ApiResponse processRequest(const ApiRequest& req) const;
     ApiResponse processAppVersion() const;
     ApiResponse processArticlesFromFeed(const QJsonValue& req) const;

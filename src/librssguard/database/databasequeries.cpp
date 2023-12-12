@@ -1202,7 +1202,7 @@ QList<Message> DatabaseQueries::getArticlesSlice(const QSqlDatabase& db,
   q.bindValue(QSL(":account_id"), account_id);
   q.bindValue(QSL(":row_limit"), row_limit);
   q.bindValue(QSL(":row_offset"), row_offset);
-  q.bindValue(QSL(":feed"), QSL("feed"));
+  q.bindValue(QSL(":feed"), feed_custom_id);
 
   if (unread_only) {
     q.bindValue(QSL(":is_read"), 0);

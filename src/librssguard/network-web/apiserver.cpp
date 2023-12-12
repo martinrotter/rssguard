@@ -19,6 +19,9 @@ void ApiServer::answerClient(QTcpSocket* socket, const HttpRequest& request) {
   if (request.m_method == HttpRequest::Method::Options) {
     reply_message = processCorsPreflight();
   }
+  else if (request.m_url.path().contains("rssguard")) {
+    reply_message = processHtmlPage();
+  }
   else {
     QJsonParseError json_err;
     QByteArray json_data;
@@ -74,6 +77,31 @@ QByteArray ApiServer::processCorsPreflight() const {
   return answer.toLocal8Bit();
 }
 
+QByteArray ApiServer::processHtmlPage() const {
+  QByteArray page;
+  QString runtime_page_path = QCoreApplication::applicationDirPath() + QDir::separator() + WEB_UI_FILE;
+
+  if (QFile::exists(runtime_page_path)) {
+    page = IOFactory::readFile(runtime_page_path);
+  }
+  else {
+    page = IOFactory::readFile(WEB_UI_FOLDER + QL1C('/') + WEB_UI_FILE);
+  }
+
+  QString answer = QSL("HTTP/1.0 200 OK\r\n"
+                       "Access-Control-Allow-Origin: *\r\n"
+                       "Access-Control-Allow-Headers: *\r\n"
+                       "Access-Control-Allow-Methods: POST, GET, OPTIONS, DELETE\r\n"
+                       "Content-Type: text/html; charset=\"utf-8\"\r\n"
+                       "Content-Length: %1\r\n"
+                       "\r\n")
+                     .arg(QString::number(page.size()));
+
+  QByteArray data = answer.toLocal8Bit();
+
+  return data + page;
+}
+
 ApiResponse ApiServer::processRequest(const ApiRequest& req) const {
   switch (req.m_method) {
     case ApiRequest::Method::AppVersion:
@@ -101,6 +129,11 @@ ApiResponse ApiServer::processArticlesFromFeed(const QJsonValue& req) const {
   bool unread_only = data.value(QSL("unread_only")).toBool();
   int row_offset = data.value(QSL("row_offset")).toInt();
   int row_limit = data.value(QSL("row_limit")).toInt();
+
+  // NOTE: Fixup arguments.
+  if (feed_id == QSL("0")) {
+    feed_id = QString();
+  }
 
   QSqlDatabase database = qApp->database()->driver()->connection(metaObject()->className());
   QList<Message> msgs =
