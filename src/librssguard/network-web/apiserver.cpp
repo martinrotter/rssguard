@@ -48,16 +48,11 @@ void ApiServer::answerClient(QTcpSocket* socket, const HttpRequest& request) {
       }
     }
 
-    reply_message = QSL("HTTP/1.0 200 OK \r\n"
-                        "Access-Control-Allow-Origin: *\r\n"
-                        "Access-Control-Allow-Headers: *\r\n"
-                        "Content-Type: application/json; charset=\"utf-8\"\r\n"
-                        "Content-Length: %1"
-                        "\r\n\r\n")
-                      .arg(QString::number(json_data.size()))
-                      .toLocal8Bit();
-
-    reply_message += json_data;
+    reply_message = generateHttpAnswer(200,
+                                       {{QSL("Access-Control-Allow-Origin"), QSL("*")},
+                                        {QSL("Access-Control-Allow-Headers"), QSL("*")},
+                                        {QSL("Content-Type"), QSL("application/json; charset=\"utf-8\"")}},
+                                       json_data);
 
 #if !defined(NDEBUG)
     IOFactory::writeFile("a.out", json_data);
@@ -69,12 +64,10 @@ void ApiServer::answerClient(QTcpSocket* socket, const HttpRequest& request) {
 }
 
 QByteArray ApiServer::processCorsPreflight() const {
-  QString answer = QSL("HTTP/1.0 204 No Content\r\n"
-                       "Access-Control-Allow-Origin: *\r\n"
-                       "Access-Control-Allow-Headers: *\r\n"
-                       "Access-Control-Allow-Methods: POST, GET, OPTIONS, DELETE\r\n\r\n");
-
-  return answer.toLocal8Bit();
+  return generateHttpAnswer(204,
+                            {{QSL("Access-Control-Allow-Origin"), QSL("*")},
+                             {QSL("Access-Control-Allow-Headers"), QSL("*")},
+                             {QSL("Access-Control-Allow-Methods"), QSL("POST, GET, OPTIONS, DELETE")}});
 }
 
 QByteArray ApiServer::processHtmlPage() const {
@@ -88,18 +81,14 @@ QByteArray ApiServer::processHtmlPage() const {
     page = IOFactory::readFile(WEB_UI_FOLDER + QL1C('/') + WEB_UI_FILE);
   }
 
-  QString answer = QSL("HTTP/1.0 200 OK\r\n"
-                       "Access-Control-Allow-Origin: *\r\n"
-                       "Access-Control-Allow-Headers: *\r\n"
-                       "Access-Control-Allow-Methods: POST, GET, OPTIONS, DELETE\r\n"
-                       "Content-Type: text/html; charset=\"utf-8\"\r\n"
-                       "Content-Length: %1\r\n"
-                       "\r\n")
-                     .arg(QString::number(page.size()));
+  QByteArray data = generateHttpAnswer(200,
+                                       {{QSL("Access-Control-Allow-Origin"), QSL("*")},
+                                        {QSL("Access-Control-Allow-Headers"), QSL("*")},
+                                        {QSL("Access-Control-Allow-Methods"), QSL("POST, GET, OPTIONS, DELETE")},
+                                        {QSL("Content-Type"), QSL("text/html; charset=\"utf-8\"")}},
+                                       page);
 
-  QByteArray data = answer.toLocal8Bit();
-
-  return data + page;
+  return data;
 }
 
 ApiResponse ApiServer::processRequest(const ApiRequest& req) const {
