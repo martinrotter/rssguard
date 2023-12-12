@@ -66,8 +66,7 @@ void ApiServer::answerClient(QTcpSocket* socket, const HttpRequest& request) {
 QByteArray ApiServer::processCorsPreflight() const {
   QString answer = QSL("HTTP/1.0 204 No Content\r\n"
                        "Access-Control-Allow-Origin: *\r\n"
-                       "Access-Control-Allow-Methods: POST, GET, OPTIONS, DELETE\r\n"
-                       "Access-Control-Max-Age: 86400");
+                       "Access-Control-Allow-Methods: POST, GET, OPTIONS, DELETE\r\n\r\n");
 
   return answer.toLocal8Bit();
 }
