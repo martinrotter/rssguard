@@ -1184,31 +1184,32 @@ QList<Message> DatabaseQueries::getArticlesSlice(const QSqlDatabase& db,
                                                  int row_limit) {
   QList<Message> messages;
   QSqlQuery q(db);
-  QString feed_clause = !feed_custom_id.isEmpty() ? QSL("feed = :feed AND") : QString();
+  QString feed_clause = !feed_custom_id.isEmpty() ? QSL("Messages.feed = :feed AND") : QString();
   QString date_created_clause;
 
   if (start_after_article_date > 0) {
     if (newest_first) {
-      date_created_clause = QSL("date_created < :date_created AND ");
+      date_created_clause = QSL("Messages.date_created < :date_created AND ");
     }
     else {
-      date_created_clause = QSL("date_created > :date_created AND ");
+      date_created_clause = QSL("Messages.date_created > :date_created AND ");
     }
   }
 
   q.setForwardOnly(true);
   q.prepare(QSL("SELECT %1 "
-                "FROM Messages "
-                "WHERE is_deleted = 0 AND "
-                "      is_pdeleted = 0 AND "
-                "      is_read = :is_read AND "
+                "FROM Messages LEFT JOIN Feeds ON Messages.feed = Feeds.custom_id AND "
+                "                                 Messages.account_id = Feeds.account_id "
+                "WHERE Messages.is_deleted = 0 AND "
+                "      Messages.is_pdeleted = 0 AND "
+                "      Messages.is_read = :is_read AND "
                 //"      date_created > :date_created AND "
                 "      %3 "
                 "      %4 "
-                "      account_id = :account_id "
+                "      Messages.account_id = :account_id "
                 "ORDER BY Messages.date_created %2 "
                 "LIMIT :row_limit OFFSET :row_offset;")
-              .arg(messageTableAttributes(true, db.driverName() == QSL(APP_DB_SQLITE_DRIVER)).values().join(QSL(", ")),
+              .arg(messageTableAttributes(false, db.driverName() == QSL(APP_DB_SQLITE_DRIVER)).values().join(QSL(", ")),
                    newest_first ? QSL("DESC") : QSL("ASC"),
                    feed_clause,
                    date_created_clause));

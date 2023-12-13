@@ -105,7 +105,8 @@ QString Enclosures::encodeEnclosuresToString(const QList<Enclosure>& enclosures)
 }
 
 Message::Message() {
-  m_title = m_url = m_author = m_contents = m_rawContents = m_feedId = m_customId = m_customHash = QL1S("");
+  m_title = m_url = m_author = m_contents = m_rawContents = m_feedId = m_feedTitle = m_customId = m_customHash =
+    QL1S("");
   m_enclosures = QList<Enclosure>();
   m_categories = QList<MessageCategory>();
   m_accountId = m_id = 0;
@@ -182,6 +183,8 @@ QJsonObject Message::toJson() const {
   obj.insert(QSL("custom_id"), m_customId);
   obj.insert(QSL("custom_hash"), m_customHash);
   obj.insert(QSL("feed_custom_id"), m_feedId);
+  obj.insert(QSL("feed_title"), m_feedTitle);
+  obj.insert(QSL("is_rtl"), m_isRtl);
   obj.insert(QSL("enclosures"), Enclosures::encodeEnclosuresToJson(m_enclosures));
 
   return obj;
@@ -203,6 +206,7 @@ Message Message::fromSqlRecord(const QSqlRecord& record, bool* result) {
   message.m_isImportant = record.value(MSG_DB_IMPORTANT_INDEX).toBool();
   message.m_isDeleted = record.value(MSG_DB_DELETED_INDEX).toBool();
   message.m_feedId = record.value(MSG_DB_FEED_CUSTOM_ID_INDEX).toString();
+  message.m_feedTitle = record.value(MSG_DB_FEED_TITLE_INDEX).toString();
   message.m_title = record.value(MSG_DB_TITLE_INDEX).toString();
   message.m_url = record.value(MSG_DB_URL_INDEX).toString();
   message.m_author = record.value(MSG_DB_AUTHOR_INDEX).toString();

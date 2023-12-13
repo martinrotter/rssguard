@@ -75,6 +75,7 @@ class RSSGUARD_DLLSPEC Message {
     // to localtime when needed.
     QDateTime m_created;
     QString m_feedId;
+    QString m_feedTitle;
     int m_accountId;
     int m_id;
     QString m_customId;
