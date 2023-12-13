@@ -19,10 +19,13 @@
 #include <QContextMenuEvent>
 #include <QFileIconProvider>
 #include <QScrollBar>
+#include <QTextCodec>
 #include <QTimer>
+#include <QtConcurrent>
 
 TextBrowserViewer::TextBrowserViewer(QWidget* parent)
-  : QTextBrowser(parent), m_resourcesEnabled(false), m_resourceDownloader(new Downloader(this)), m_loadedResources({}),
+  : QTextBrowser(parent), m_resourcesEnabled(false), m_resourceDownloader(new Downloader()),
+    m_resourceDownloaderThread(new QThread(this)), m_loadedResources({}),
     m_placeholderImage(qApp->icons()->miscPixmap(QSL("image-placeholder"))),
     m_placeholderImageError(qApp->icons()->miscPixmap(QSL("image-placeholder-error"))),
     m_downloader(new Downloader(this)), m_document(new TextBrowserDocument(this)) {
@@ -38,15 +41,26 @@ TextBrowserViewer::TextBrowserViewer(QWidget* parent)
   setResourcesEnabled(qApp->settings()->value(GROUP(Messages), SETTING(Messages::ShowResourcesInArticles)).toBool());
   setDocument(m_document.data());
 
+  m_resourceDownloader->moveToThread(m_resourceDownloaderThread);
+  m_resourceDownloaderThread->start();
+
   connect(this, &TextBrowserViewer::reloadDocument, this, [this]() {
     const auto scr = verticalScrollBarPosition();
     setHtmlPrivate(html(), m_currentUrl);
     setVerticalScrollBarPosition(scr);
   });
 
-  connect(m_resourceDownloader.data(), &Downloader::completed, this, &TextBrowserViewer::resourceDownloaded);
+  connect(m_resourceDownloader, &Downloader::completed, this, &TextBrowserViewer::resourceDownloaded);
   connect(this, &QTextBrowser::anchorClicked, this, &TextBrowserViewer::onAnchorClicked);
   connect(this, QOverload<const QUrl&>::of(&QTextBrowser::highlighted), this, &TextBrowserViewer::linkMouseHighlighted);
+}
+
+TextBrowserViewer::~TextBrowserViewer() {
+  if (m_resourceDownloaderThread->isRunning()) {
+    m_resourceDownloaderThread->quit();
+  }
+
+  m_resourceDownloader->deleteLater();
 }
 
 QSize TextBrowserViewer::sizeHint() const {
@@ -172,13 +186,17 @@ void TextBrowserViewer::setUrl(const QUrl& url) {
   else {
     QEventLoop loop;
 
-    connect(m_downloader.data(), &Downloader::completed, &loop, &QEventLoop::quit);
+    connect(m_downloader.data(),
+            &Downloader::completed,
+            &loop,
+            &QEventLoop::quit,
+            Qt::ConnectionType(Qt::ConnectionType::UniqueConnection | Qt::ConnectionType::AutoConnection));
     m_downloader->manipulateData(url.toString(), QNetworkAccessManager::Operation::GetOperation, {}, 5000);
 
     loop.exec();
 
     const auto net_error = m_downloader->lastOutputError();
-    const QString content_type = m_downloader->lastContentType().toString();
+    const QString content_type = m_downloader->lastContentType();
 
     if (net_error != QNetworkReply::NetworkError::NoError) {
       is_error = true;
@@ -189,7 +207,7 @@ void TextBrowserViewer::setUrl(const QUrl& url) {
         html_str = QSL("<img src=\"%1\">").arg(nonconst_url.toString());
       }
       else {
-        html_str = QString::fromUtf8(m_downloader->lastOutputData());
+        html_str = decodeHtmlData(m_downloader->lastOutputData(), content_type);
       }
     }
   }
@@ -197,6 +215,22 @@ void TextBrowserViewer::setUrl(const QUrl& url) {
   setHtml(html_str, nonconst_url);
 
   emit loadingFinished(!is_error);
+}
+
+QString TextBrowserViewer::decodeHtmlData(const QByteArray& data, const QString& content_type) const {
+  QString found_charset = QRegularExpression("charset=([0-9a-zA-Z-_]+)").match(content_type).captured(1);
+  QTextCodec* codec = QTextCodec::codecForName(found_charset.toLocal8Bit());
+
+  if (codec == nullptr) {
+    // No suitable codec for this encoding was found.
+    // Use UTF-8.
+    qWarningNN << LOGSEC_GUI << "Did not find charset for content-type" << QUOTE_W_SPACE_DOT(content_type);
+    return QString::fromUtf8(data);
+  }
+  else {
+    qDebugNN << LOGSEC_GUI << "Found charset for content-type" << QUOTE_W_SPACE_DOT(content_type);
+    return codec->toUnicode(data);
+  }
 }
 
 QString TextBrowserViewer::html() const {
@@ -468,10 +502,20 @@ void TextBrowserViewer::downloadNextNeededResource() {
   else {
     QUrl res = m_neededResources.takeFirst();
 
-    m_resourceDownloader.data()->manipulateData(qApp->web()->unescapeHtml(res.toString()),
-                                                QNetworkAccessManager::Operation::GetOperation,
-                                                {},
-                                                5000);
+    QMetaObject::invokeMethod(m_resourceDownloader,
+                              "manipulateData",
+                              Qt::ConnectionType::QueuedConnection,
+                              qApp->web()->unescapeHtml(res.toString()),
+                              QNetworkAccessManager::Operation::GetOperation,
+                              QByteArray(),
+                              5000);
+
+    /*
+m_resourceDownloader.data()->manipulateData(qApp->web()->unescapeHtml(res.toString()),
+                                            QNetworkAccessManager::Operation::GetOperation,
+                                            {},
+                                            5000);
+                                                */
   }
 }
 

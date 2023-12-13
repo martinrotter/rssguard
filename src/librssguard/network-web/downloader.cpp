@@ -233,7 +233,7 @@ void Downloader::finished() {
       m_lastCookies = {};
     }
 
-    m_lastContentType = reply->header(QNetworkRequest::KnownHeaders::ContentTypeHeader);
+    m_lastContentType = reply->header(QNetworkRequest::KnownHeaders::ContentTypeHeader).toString();
     m_lastOutputError = reply->error();
     m_lastHttpStatusCode = reply->attribute(QNetworkRequest::Attribute::HttpStatusCodeAttribute).toInt();
     m_lastHeaders.clear();
@@ -382,7 +382,7 @@ QList<QNetworkCookie> Downloader::lastCookies() const {
   return m_lastCookies;
 }
 
-QVariant Downloader::lastContentType() const {
+QString Downloader::lastContentType() const {
   return m_lastContentType;
 }
 

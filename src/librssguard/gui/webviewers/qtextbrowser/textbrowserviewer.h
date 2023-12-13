@@ -40,6 +40,7 @@ class TextBrowserViewer : public QTextBrowser, public WebViewer {
 
   public:
     explicit TextBrowserViewer(QWidget* parent = nullptr);
+    virtual ~TextBrowserViewer();
 
     QVariant loadOneResource(int type, const QUrl& name);
 
@@ -78,7 +79,7 @@ class TextBrowserViewer : public QTextBrowser, public WebViewer {
     void resourceDownloaded(const QUrl& url,
                             QNetworkReply::NetworkError status,
                             int http_code,
-                            const QByteArray &contents = QByteArray());
+                            const QByteArray& contents = QByteArray());
 
   signals:
     void reloadDocument();
@@ -96,11 +97,14 @@ class TextBrowserViewer : public QTextBrowser, public WebViewer {
     void setHtmlPrivate(const QString& html, const QUrl& base_url);
     BlockingResult blockedWithAdblock(const QUrl& url);
 
+    QString decodeHtmlData(const QByteArray& data, const QString& content_type) const;
+
   private:
     QScopedPointer<Downloader> m_downloader;
     bool m_resourcesEnabled;
     QList<QUrl> m_neededResources; // All URLs here must be resolved.
-    QScopedPointer<Downloader> m_resourceDownloader;
+    Downloader* m_resourceDownloader;
+    QThread* m_resourceDownloaderThread;
     QMap<QUrl, QByteArray> m_loadedResources; // All URLs here must be resolved.
     QPixmap m_placeholderImage;
     QPixmap m_placeholderImageError;

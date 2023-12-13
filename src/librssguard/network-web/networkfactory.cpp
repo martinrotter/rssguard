@@ -294,7 +294,7 @@ NetworkResult NetworkFactory::performNetworkOperation(const QString& url,
   output = downloader.lastOutputData();
 
   result.m_networkError = downloader.lastOutputError();
-  result.m_contentType = downloader.lastContentType().toString();
+  result.m_contentType = downloader.lastContentType();
   result.m_cookies = downloader.lastCookies();
   result.m_httpCode = downloader.lastHttpStatusCode();
   result.m_headers = downloader.lastHeaders();
@@ -335,7 +335,7 @@ NetworkResult NetworkFactory::performNetworkOperation(const QString& url,
   output = downloader.lastOutputMultipartData();
 
   result.m_networkError = downloader.lastOutputError();
-  result.m_contentType = downloader.lastContentType().toString();
+  result.m_contentType = downloader.lastContentType();
   result.m_cookies = downloader.lastCookies();
   result.m_httpCode = downloader.lastHttpStatusCode();
   result.m_headers = downloader.lastHeaders();

@@ -27,7 +27,7 @@ class Downloader : public QObject {
     QByteArray lastOutputData() const;
     QNetworkReply::NetworkError lastOutputError() const;
     QList<HttpResponse> lastOutputMultipartData() const;
-    QVariant lastContentType() const;
+    QString lastContentType() const;
     QList<QNetworkCookie> lastCookies() const;
     int lastHttpStatusCode() const;
     QMap<QString, QString> lastHeaders() const;
@@ -114,7 +114,7 @@ class Downloader : public QObject {
     QList<HttpResponse> m_lastOutputMultipartData;
     QNetworkReply::NetworkError m_lastOutputError;
     int m_lastHttpStatusCode;
-    QVariant m_lastContentType;
+    QString m_lastContentType;
     QList<QNetworkCookie> m_lastCookies;
     QMap<QString, QString> m_lastHeaders;
 };
