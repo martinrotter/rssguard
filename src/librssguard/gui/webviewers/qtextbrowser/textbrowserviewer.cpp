@@ -15,6 +15,7 @@
 #include "network-web/networkfactory.h"
 #include "network-web/webfactory.h"
 
+#include <QBuffer>
 #include <QContextMenuEvent>
 #include <QFileIconProvider>
 #include <QScrollBar>
@@ -79,16 +80,28 @@ QVariant TextBrowserViewer::loadOneResource(int type, const QUrl& name) {
   }
 
   int acceptable_width = int(width() * ACCEPTABLE_IMAGE_PERCENTUAL_WIDTH);
+  int img_width = img.width();
 
-  if (img.width() > acceptable_width) {
+  if (img_width > acceptable_width) {
     QElapsedTimer tmr;
 
     tmr.start();
     img = img.scaledToWidth(acceptable_width, Qt::TransformationMode::SmoothTransformation);
 
-    qWarningNN << LOGSEC_GUI << "Picture" << QUOTE_W_SPACE(name)
+    qWarningNN << LOGSEC_GUI << "Picture" << QUOTE_W_SPACE(name) << "with width" << QUOTE_W_SPACE(img_width)
                << "is too wide, down-scaling to prevent horizontal scrollbars. Scaling took"
                << NONQUOTE_W_SPACE(tmr.elapsed()) << "miliseconds.";
+
+    QByteArray save_arr;
+    QBuffer save_buf(&save_arr, this);
+
+    if (img.save(&save_buf, "PNG", 100)) {
+      save_buf.close();
+      m_loadedResources.insert(resolved_name, save_arr);
+    }
+    else {
+      qWarningNN << LOGSEC_GUI << "Failed to save modified image" << QUOTE_W_SPACE(name) << "to cache.";
+    }
   }
 
   return img;
@@ -465,7 +478,7 @@ void TextBrowserViewer::downloadNextNeededResource() {
 void TextBrowserViewer::resourceDownloaded(const QUrl& url,
                                            QNetworkReply::NetworkError status,
                                            int http_code,
-                                           QByteArray contents) {
+                                           const QByteArray& contents) {
   Q_UNUSED(http_code)
 
   if (status == QNetworkReply::NetworkError::NoError) {

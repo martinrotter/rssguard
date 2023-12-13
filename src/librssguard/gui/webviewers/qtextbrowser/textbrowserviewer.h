@@ -78,7 +78,7 @@ class TextBrowserViewer : public QTextBrowser, public WebViewer {
     void resourceDownloaded(const QUrl& url,
                             QNetworkReply::NetworkError status,
                             int http_code,
-                            QByteArray contents = QByteArray());
+                            const QByteArray &contents = QByteArray());
 
   signals:
     void reloadDocument();
