@@ -296,7 +296,7 @@ void SettingsFeedsMessages::loadSettings() {
   m_ui->m_cbArticleViewerAlwaysVisible
     ->setChecked(settings()->value(GROUP(Messages), SETTING(Messages::AlwaysDisplayItemPreview)).toBool());
   m_ui->m_spinHeightImageAttachments
-    ->setValue(settings()->value(GROUP(Messages), SETTING(Messages::MessageHeadImageHeight)).toInt());
+    ->setValue(settings()->value(GROUP(Messages), SETTING(Messages::LimitArticleImagesHeight)).toInt());
   m_ui->m_cbShowEnclosuresDirectly
     ->setChecked(settings()->value(GROUP(Messages), SETTING(Messages::DisplayEnclosuresInMessage)).toBool());
 
@@ -395,7 +395,7 @@ void SettingsFeedsMessages::saveSettings() {
   settings()->setValue(GROUP(Feeds), Feeds::EnableTooltipsFeedsMessages, m_ui->m_checkShowTooltips->isChecked());
   settings()->setValue(GROUP(Messages), Messages::IgnoreContentsChanges, m_ui->m_cmbIgnoreContentsChanges->isChecked());
   settings()->setValue(GROUP(Messages), Messages::MultilineArticleList, m_ui->m_checkMultilineArticleList->isChecked());
-  settings()->setValue(GROUP(Messages), Messages::MessageHeadImageHeight, m_ui->m_spinHeightImageAttachments->value());
+  settings()->setValue(GROUP(Messages), Messages::LimitArticleImagesHeight, m_ui->m_spinHeightImageAttachments->value());
   settings()->setValue(GROUP(Messages),
                        Messages::DisplayEnclosuresInMessage,
                        m_ui->m_cbShowEnclosuresDirectly->isChecked());

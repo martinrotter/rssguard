@@ -113,6 +113,7 @@ ApiResponse ApiServer::processArticlesFromFeed(const QJsonValue& req) const {
   QJsonObject data = req.toObject();
 
   QString feed_id = data.value(QSL("feed")).toString();
+  qint64 start_after_article_date = qint64(data.value(QSL("start_after_article_date")).toDouble());
   int account_id = data.value(QSL("account")).toInt();
   bool newest_first = data.value(QSL("newest_first")).toBool();
   bool unread_only = data.value(QSL("unread_only")).toBool();
@@ -125,8 +126,14 @@ ApiResponse ApiServer::processArticlesFromFeed(const QJsonValue& req) const {
   }
 
   QSqlDatabase database = qApp->database()->driver()->connection(metaObject()->className());
-  QList<Message> msgs =
-    DatabaseQueries::getArticlesSlice(database, feed_id, account_id, newest_first, unread_only, row_offset, row_limit);
+  QList<Message> msgs = DatabaseQueries::getArticlesSlice(database,
+                                                          feed_id,
+                                                          account_id,
+                                                          newest_first,
+                                                          unread_only,
+                                                          start_after_article_date,
+                                                          row_offset,
+                                                          row_limit);
   QJsonArray msgs_json_array;
 
   for (const Message& msg : msgs) {

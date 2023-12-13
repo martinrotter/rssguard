@@ -137,8 +137,8 @@ namespace Feeds {
 namespace Messages {
   KEY ID;
 
-  KEY MessageHeadImageHeight;
-  VALUE(int) MessageHeadImageHeightDef;
+  KEY LimitArticleImagesHeight;
+  VALUE(int) LimitArticleImagesHeightDef;
 
   KEY DisplayEnclosuresInMessage;
   VALUE(bool) DisplayEnclosuresInMessageDef;

@@ -1179,12 +1179,22 @@ QList<Message> DatabaseQueries::getArticlesSlice(const QSqlDatabase& db,
                                                  int account_id,
                                                  bool newest_first,
                                                  bool unread_only,
+                                                 qint64 start_after_article_date,
                                                  int row_offset,
                                                  int row_limit) {
   QList<Message> messages;
   QSqlQuery q(db);
-
   QString feed_clause = !feed_custom_id.isEmpty() ? QSL("feed = :feed AND") : QString();
+  QString date_created_clause;
+
+  if (start_after_article_date > 0) {
+    if (newest_first) {
+      date_created_clause = QSL("date_created < :date_created AND ");
+    }
+    else {
+      date_created_clause = QSL("date_created > :date_created AND ");
+    }
+  }
 
   q.setForwardOnly(true);
   q.prepare(QSL("SELECT %1 "
@@ -1192,17 +1202,21 @@ QList<Message> DatabaseQueries::getArticlesSlice(const QSqlDatabase& db,
                 "WHERE is_deleted = 0 AND "
                 "      is_pdeleted = 0 AND "
                 "      is_read = :is_read AND "
+                //"      date_created > :date_created AND "
                 "      %3 "
+                "      %4 "
                 "      account_id = :account_id "
                 "ORDER BY Messages.date_created %2 "
                 "LIMIT :row_limit OFFSET :row_offset;")
               .arg(messageTableAttributes(true, db.driverName() == QSL(APP_DB_SQLITE_DRIVER)).values().join(QSL(", ")),
                    newest_first ? QSL("DESC") : QSL("ASC"),
-                   feed_clause));
+                   feed_clause,
+                   date_created_clause));
   q.bindValue(QSL(":account_id"), account_id);
   q.bindValue(QSL(":row_limit"), row_limit);
   q.bindValue(QSL(":row_offset"), row_offset);
   q.bindValue(QSL(":feed"), feed_custom_id);
+  q.bindValue(QSL(":date_created"), start_after_article_date);
 
   if (unread_only) {
     q.bindValue(QSL(":is_read"), 0);

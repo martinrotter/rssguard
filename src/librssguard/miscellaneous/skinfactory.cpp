@@ -236,7 +236,7 @@ PreparedHtml SkinFactory::generateHtmlOfArticles(const QList<Message>& messages,
   QString messages_layout;
   QString single_message_layout = skin.m_layoutMarkup;
   const int forced_img_height =
-    qApp->settings()->value(GROUP(Messages), SETTING(Messages::MessageHeadImageHeight)).toInt();
+    qApp->settings()->value(GROUP(Messages), SETTING(Messages::LimitArticleImagesHeight)).toInt();
 
   auto* feed = root != nullptr
                  ? root->getParentServiceRoot()
