@@ -255,7 +255,7 @@ PreparedHtml SkinFactory::generateHtmlOfArticles(const QList<Message>& messages,
       for (const Enclosure& enclosure : message.m_enclosures) {
         QString enc_url = QUrl::fromPercentEncoding(enclosure.m_url.toUtf8());
 
-        enclosures += skin.m_enclosureMarkup.arg(enc_url, QSL("&#129527;"), enclosure.m_mimeType);
+        enclosures += skin.m_enclosureMarkup.arg(enc_url, enclosure.m_mimeType);
 
         if (qApp->settings()->value(GROUP(Messages), SETTING(Messages::DisplayEnclosuresInMessage)).toBool()) {
           if (enclosure.m_mimeType.startsWith(QSL("image/")) &&
