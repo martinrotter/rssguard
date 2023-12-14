@@ -1836,7 +1836,7 @@ QtWebEngine 快取資料夾 -&gt; &quot;%7&quot;</translation>
     <message>
       <location filename="../src/librssguard/services/standard/gui/formdiscoverfeeds.ui" line="42"/>
       <source>Discover!</source>
-      <translation>找到！</translation>
+      <translation>找出文源！</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/standard/gui/formdiscoverfeeds.ui" line="51"/>
