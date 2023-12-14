@@ -1185,6 +1185,8 @@ QList<Message> DatabaseQueries::getArticlesSlice(const QSqlDatabase& db,
   QList<Message> messages;
   QSqlQuery q(db);
   QString feed_clause = !feed_custom_id.isEmpty() ? QSL("Messages.feed = :feed AND") : QString();
+  QString is_read_clause = unread_only ? QSL("Messages.is_read = :is_read AND ") : QString();
+  QString account_id_clause = account_id > 0 ? QSL("Messages.account_id = :account_id AND ") : QString();
   QString date_created_clause;
 
   if (start_after_article_date > 0) {
@@ -1200,31 +1202,26 @@ QList<Message> DatabaseQueries::getArticlesSlice(const QSqlDatabase& db,
   q.prepare(QSL("SELECT %1 "
                 "FROM Messages LEFT JOIN Feeds ON Messages.feed = Feeds.custom_id AND "
                 "                                 Messages.account_id = Feeds.account_id "
-                "WHERE Messages.is_deleted = 0 AND "
-                "      Messages.is_pdeleted = 0 AND "
-                "      Messages.is_read = :is_read AND "
-                //"      date_created > :date_created AND "
-                "      %3 "
+                "WHERE %3 "
                 "      %4 "
-                "      Messages.account_id = :account_id "
+                "      %5 "
+                "      %6 "
+                "      Messages.is_deleted = 0 AND "
+                "      Messages.is_pdeleted = 0 "
                 "ORDER BY Messages.date_created %2 "
                 "LIMIT :row_limit OFFSET :row_offset;")
               .arg(messageTableAttributes(false, db.driverName() == QSL(APP_DB_SQLITE_DRIVER)).values().join(QSL(", ")),
                    newest_first ? QSL("DESC") : QSL("ASC"),
                    feed_clause,
-                   date_created_clause));
+                   date_created_clause,
+                   account_id_clause,
+                   is_read_clause));
   q.bindValue(QSL(":account_id"), account_id);
   q.bindValue(QSL(":row_limit"), row_limit);
   q.bindValue(QSL(":row_offset"), row_offset);
   q.bindValue(QSL(":feed"), feed_custom_id);
+  q.bindValue(QSL(":is_read"), 0);
   q.bindValue(QSL(":date_created"), start_after_article_date);
-
-  if (unread_only) {
-    q.bindValue(QSL(":is_read"), 0);
-  }
-  else {
-    q.bindValue(QSL(":is_read"), QSL("is_read"));
-  }
 
   if (q.exec()) {
     while (q.next()) {

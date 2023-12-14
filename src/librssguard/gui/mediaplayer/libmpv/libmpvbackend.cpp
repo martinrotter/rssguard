@@ -464,6 +464,16 @@ bool LibMpvBackend::eventFilter(QObject* watched, QEvent* event) {
       return true;
     }
 
+    if (event->type() == QEvent::Type::MouseButtonDblClick && watched == this) {
+      qDebugNN << LOGSEC_MPV << "Mouse double-click.";
+
+      const char* args[] = {"keypress", "MOUSE_BTN0_DBL", nullptr};
+
+      mpv_command_async(m_mpvHandle, 0, args);
+      event->accept();
+      return true;
+    }
+
     if (event->type() == QEvent::Type::MouseMove && watched == this) {
       auto* mouse_event = dynamic_cast<QMouseEvent*>(event);
       auto position = mouse_event->pos();
