@@ -1179,6 +1179,7 @@ QList<Message> DatabaseQueries::getArticlesSlice(const QSqlDatabase& db,
                                                  int account_id,
                                                  bool newest_first,
                                                  bool unread_only,
+                                                 bool starred_only,
                                                  qint64 start_after_article_date,
                                                  int row_offset,
                                                  int row_limit) {
@@ -1186,6 +1187,7 @@ QList<Message> DatabaseQueries::getArticlesSlice(const QSqlDatabase& db,
   QSqlQuery q(db);
   QString feed_clause = !feed_custom_id.isEmpty() ? QSL("Messages.feed = :feed AND") : QString();
   QString is_read_clause = unread_only ? QSL("Messages.is_read = :is_read AND ") : QString();
+  QString is_starred_clause = starred_only ? QSL("Messages.is_important = :is_important AND ") : QString();
   QString account_id_clause = account_id > 0 ? QSL("Messages.account_id = :account_id AND ") : QString();
   QString date_created_clause;
 
@@ -1206,6 +1208,7 @@ QList<Message> DatabaseQueries::getArticlesSlice(const QSqlDatabase& db,
                 "      %4 "
                 "      %5 "
                 "      %6 "
+                "      %7 "
                 "      Messages.is_deleted = 0 AND "
                 "      Messages.is_pdeleted = 0 "
                 "ORDER BY Messages.date_created %2 "
@@ -1215,12 +1218,14 @@ QList<Message> DatabaseQueries::getArticlesSlice(const QSqlDatabase& db,
                    feed_clause,
                    date_created_clause,
                    account_id_clause,
-                   is_read_clause));
+                   is_read_clause,
+                   is_starred_clause));
   q.bindValue(QSL(":account_id"), account_id);
   q.bindValue(QSL(":row_limit"), row_limit);
   q.bindValue(QSL(":row_offset"), row_offset);
   q.bindValue(QSL(":feed"), feed_custom_id);
   q.bindValue(QSL(":is_read"), 0);
+  q.bindValue(QSL(":is_important"), 1);
   q.bindValue(QSL(":date_created"), start_after_article_date);
 
   if (q.exec()) {

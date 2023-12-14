@@ -117,8 +117,9 @@ ApiResponse ApiServer::processArticlesFromFeed(const QJsonValue& req) const {
   int account_id = data.value(QSL("account")).toInt();
   bool newest_first = data.value(QSL("newest_first")).toBool();
   bool unread_only = data.value(QSL("unread_only")).toBool();
+  bool starred_only = data.value(QSL("starred_only")).toBool();
   int row_offset = data.value(QSL("row_offset")).toInt();
-  int row_limit = data.value(QSL("row_limit")).toInt();
+  int row_limit = data.value(QSL("row_limit")).toInt(100000);
 
   // NOTE: Fixup arguments.
   if (feed_id == QSL("0")) {
@@ -131,6 +132,7 @@ ApiResponse ApiServer::processArticlesFromFeed(const QJsonValue& req) const {
                                                           account_id,
                                                           newest_first,
                                                           unread_only,
+                                                          starred_only,
                                                           start_after_article_date,
                                                           row_offset,
                                                           row_limit);

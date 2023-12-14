@@ -123,6 +123,7 @@ class DatabaseQueries {
                                            int account_id,
                                            bool newest_first,
                                            bool unread_only,
+                                           bool starred_only,
                                            qint64 start_after_article_date,
                                            int row_offset,
                                            int row_limit);
