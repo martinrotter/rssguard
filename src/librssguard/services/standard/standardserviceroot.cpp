@@ -355,6 +355,7 @@ QVariantHash StandardServiceRoot::customDatabaseData() const {
   QVariantHash data = ServiceRoot::customDatabaseData();
 
   data[QSL("title")] = title();
+  data[QSL("icon")] = IconFactory::toByteArray(icon());
 
   return data;
 }
@@ -363,6 +364,12 @@ void StandardServiceRoot::setCustomDatabaseData(const QVariantHash& data) {
   ServiceRoot::setCustomDatabaseData(data);
 
   setTitle(data.value(QSL("title"), defaultTitle()).toString());
+
+  QByteArray icon_data = data.value(QSL("icon")).toByteArray();
+
+  if (!icon_data.isEmpty()) {
+    setIcon(IconFactory::fromByteArray(icon_data));
+  }
 }
 
 QString StandardServiceRoot::defaultTitle() {

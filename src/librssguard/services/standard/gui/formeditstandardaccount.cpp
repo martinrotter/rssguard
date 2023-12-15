@@ -23,11 +23,14 @@ void FormEditStandardAccount::loadAccountData() {
   else {
     m_standardDetails->m_ui.m_txtTitle->setText(m_account->title());
   }
+
+  m_standardDetails->m_ui.m_btnIcon->setIcon(m_account->fullIcon());
 }
 
 void FormEditStandardAccount::apply() {
   FormAccountDetails::apply();
 
+  m_account->setIcon(m_standardDetails->m_ui.m_btnIcon->icon());
   m_account->setTitle(m_standardDetails->m_ui.m_txtTitle->text());
 
   m_account->saveAccountDataToDatabase();

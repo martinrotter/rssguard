@@ -19,6 +19,10 @@ class StandardAccountDetails : public QWidget {
   public:
     explicit StandardAccountDetails(QWidget* parent = nullptr);
 
+  private slots:
+    void onLoadIconFromFile();
+    void onUseDefaultIcon();
+
   private:
     Ui::StandardAccountDetails m_ui;
 };

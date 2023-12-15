@@ -47,6 +47,10 @@ QIcon IconFactory::fromByteArray(QByteArray array) {
 }
 
 QByteArray IconFactory::toByteArray(const QIcon& icon) {
+  if (icon.isNull()) {
+    return {};
+  }
+
   QByteArray array;
   QBuffer buffer(&array);
 

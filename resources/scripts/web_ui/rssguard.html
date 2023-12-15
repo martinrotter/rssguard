@@ -1,6 +1,25 @@
 <html>
     <head>
-        <!-- sqlite3 -json "C:\Users\J\AppData\Local\RSS Guard 4\database\database.temp.delete.db" "SELECT * FROM Messages WHERE account_id = 2 ORDER BY date_created DESC LIMIT 10;" > render.json -->
+        <!--
+            features todo:
+             - optional queries ✔
+               - accountId ✔, feedId ✔
+               - pageSize ✔
+               - read ✔, starred ✔, ascending ✔
+             - request next page ✔
+             - sanity check url params ✔
+             - mark read - page
+             - mark read/unread - individual
+             - mark star/unstar - individual
+             - render read/unread/starred
+             - missing thumbnail
+             - search/filter?
+             - UI to select unead only/starred only/all?
+             - Loading spinners
+             - feed selector
+             - error management
+             - cleaner code
+        -->
         <style type="text/css">
             body {
                 font-family: Roboto, sans-serif;
@@ -13,7 +32,8 @@
             }
 
             .entry {
-                max-width: 90%;
+                max-width: 720px;
+                smax-width: 100%;
                 xborder: 1px solid red;
                 padding: 20px;
                 margin: 3px auto;
@@ -92,6 +112,22 @@
             .entry .date {
                 color: #888888;
             }
+
+            .articles_post {
+                max-width: 720px;
+                padding: 20px;
+                margin: 3px auto;
+                text-align: center;
+                font-size: 13px;
+                box-sizing: border-box;
+                background-color: #262626;
+            }
+
+            button.next_page {
+                font-size: 18px;
+                font-weight: bold;
+            }
+
         </style>
     </head>
     <body>
@@ -114,22 +150,102 @@
 
         </article>
 
-        <section class="articles">
+        <div>
+            <section class="articles">
 
-        </section>
+            </section>
+            <section class="articles_post">
+                <button class="next_page">Next Page</button>
+            </section>
+        </div>
+
         <script type="text/javascript">
-            function fetchMessages(feedId, accountId) {
+            function attachHandlers() {
+                document.querySelector("button.next_page").addEventListener("click", onNextPageClicked);
+            }
+
+            function processParams() {
+                let params = new URLSearchParams(window.location.search);
+                let elemArticles = document.querySelector("section.articles");
+
+                if (params.has("feed"))
+                    elemArticles.setAttribute("data-rssg-feed", params.get("feed"));
+
+                if (params.has("account")) {
+                    let accountId = helpers.checkIntOrThrow(
+                        params.get("account"), "account"
+                    );
+                    elemArticles.setAttribute("data-rssg-account", accountId);
+                }
+
+                if (params.has("row_limit")) {
+                    let row_limit = helpers.checkIntOrThrow(
+                        params.get("row_limit"), "row_limit"
+                    );
+                    elemArticles.setAttribute("data-rssg-row-limit", row_limit);
+                }
+
+                {
+                    let newest_first = params.get("newest_first") || "true";
+                    newest_first = helpers.checkBoolOrThrow(newest_first, "newest_first");
+                    elemArticles.setAttribute("data-rssg-newest-first", newest_first);
+                }
+                
+                {
+                    let unread_only = params.get("unread_only") || "true";
+                    unread_only = helpers.checkBoolOrThrow(unread_only, "unread_only");
+                    elemArticles.setAttribute("data-rssg-unread-only", unread_only);
+                }
+                
+                {
+                    let starred_only = params.get("starred_only") || "false";
+                    starred_only = helpers.checkBoolOrThrow(starred_only, "starred_only");
+                    elemArticles.setAttribute("data-rssg-starred-only", starred_only);
+                }
+
+            }
+
+            function assembleRpcCall() {
                 let jsonRpcCall = {
                     method: "ArticlesFromFeed",
                     data: {
-                        feed:           feedId.toString(),
-                        account:        accountId,
                         newest_first:   true,
                         unread_only:    true,
                         row_offset:     0,
-                        row_limit:      10000
+                        row_limit:      10
                     }
                 }
+
+                let elemArticles = document.querySelector("section.articles");
+
+                if (elemArticles.hasAttribute("data-rssg-row-offset"))
+                    jsonRpcCall.data.row_offset = +elemArticles.getAttribute("data-rssg-row-offset");
+
+                if (elemArticles.hasAttribute("data-rssg-after-date")) {
+                    delete jsonRpcCall.data.row_offset;
+                    jsonRpcCall.data.start_after_article_date = +elemArticles.getAttribute("data-rssg-after-date");
+                }
+
+                if (elemArticles.hasAttribute("data-rssg-feed"))
+                    jsonRpcCall.data.feed = elemArticles.getAttribute("data-rssg-feed");
+
+                if (elemArticles.hasAttribute("data-rssg-account"))
+                    jsonRpcCall.data.account = +elemArticles.getAttribute("data-rssg-account");
+
+                if (elemArticles.hasAttribute("data-rssg-row-limit"))
+                    jsonRpcCall.data.row_limit = +elemArticles.getAttribute("data-rssg-row-limit");
+
+                jsonRpcCall.data.newest_first = elemArticles.getAttribute("data-rssg-newest-first") == "true";
+
+                jsonRpcCall.data.unread_only = elemArticles.getAttribute("data-rssg-unread-only") == "true";
+
+                jsonRpcCall.data.starred_only = elemArticles.getAttribute("data-rssg-starred-only") == "true";
+
+                return jsonRpcCall;
+            }
+
+            function fetchMessages() {
+                let jsonRpcCall = assembleRpcCall();
 
                 let urlApi = "http://localhost:54123";
                 let jsonPayload = {
@@ -150,17 +266,21 @@
             }
 
             function renderMessages(jsonMessages) {
+                let elemArticles = document.querySelector("section.articles");
+                elemArticles.innerHTML = "";
+                window.scrollTo(0,0);
+
                 jsonMessages.forEach(function(jsonMessage) {
                     transformMessage(jsonMessage);
 
                     let article = fillTemplate(jsonMessage);
-                    document.querySelector("section.articles").appendChild(article);
+                    elemArticles.appendChild(article);
                 });
             }
 
             function transformMessage(jsonMessage) {
-                jsonMessage.date_created = new Date(jsonMessage.date_created);
-                jsonMessage.dateHuman = helpers.getHumanDate(jsonMessage.date_created);
+                jsonMessage.date = new Date(jsonMessage.date_created);
+                jsonMessage.dateHuman = helpers.getHumanDate(jsonMessage.date);
                 jsonMessage.enclosedUrlA = helpers.getEnclosedImageUrl(jsonMessage.enclosures);
 
                 let elemContent = document.createElement("div");
@@ -175,10 +295,19 @@
                 let article = template.cloneNode(true);
                 article.classList.remove("template");
 
+                article.setAttribute("data-rssg-id", jsonMessage.id);
+                article.setAttribute("data-rssg-customid", jsonMessage.custom_id);
+                article.setAttribute("data-rssg-date", jsonMessage.date_created);
+                article.setAttribute("data-rssg-feed", jsonMessage.feed_custom_id);
+                article.setAttribute("data-rssg-account", jsonMessage.account_id);
+                article.setAttribute("data-rssg-read", jsonMessage.is_read);
+                article.setAttribute("data-rssg-important", jsonMessage.is_important);
+                article.setAttribute("data-rssg-rtl", jsonMessage.is_rtl);
+
                 article.querySelectorAll(".title").forEach(e => e.textContent = jsonMessage.title);
                 article.querySelectorAll(".author").forEach(e => e.textContent = jsonMessage.author);
                 article.querySelectorAll(".content").forEach(e => e.textContent = jsonMessage.contentShort);
-                article.querySelectorAll(".feed").forEach(e => e.textContent = jsonMessage.feed_custom_id);
+                article.querySelectorAll(".feed").forEach(e => e.textContent = jsonMessage.feed_title);
                 article.querySelectorAll(".author").forEach(e => e.textContent = jsonMessage.author);
                 article.querySelectorAll(".date").forEach(e => e.textContent = jsonMessage.dateHuman);
 
@@ -190,7 +319,39 @@
                 return article;
             }
 
+            function onNextPageClicked() {
+                let elemArticles = document.querySelector("section.articles");
+
+                let articleEntryLast = elemArticles.querySelector("article.entry:last-child");
+
+                if (!articleEntryLast) return;
+                if (!articleEntryLast.hasAttribute("data-rssg-date")) return;
+
+                let dateAfter = +articleEntryLast.getAttribute("data-rssg-date");
+
+                elemArticles.removeAttribute("data-rssg-row-offset");
+                elemArticles.setAttribute("data-rssg-after-date", dateAfter);
+
+                fetchMessages();
+            }
+
             let helpers = {
+                checkIntOrThrow: function(value, name) {
+                    value = +value;
+                    if (Number.isInteger(value)) return value;
+                    let message = "Invalid parameter, must be an integer: " + name;
+                    alert(message);
+                    throw message;
+                },
+
+                checkBoolOrThrow: function(value, name) {
+                    value = value.toLowerCase();
+                    if (value == "true" || value == "false") return value == "true";
+                    let message = "Invalid parameter, must be boolean: " + name;
+                    alert(message);
+                    throw message;
+                },
+
                 getHumanDate: function(date) {
                     let dateHuman = date.toDateString();
                     dateHuman += " " + date.getHours();
@@ -206,11 +367,10 @@
                 }
             };
             
-            let params = new URLSearchParams(window.location.search);
-            let feedId = +params.get("feedId");
-            let accountId = +params.get("accountId");
+            processParams();
+            attachHandlers();
+            fetchMessages();
 
-            fetchMessages(feedId, accountId);
         </script>
     </body>
 </html>
