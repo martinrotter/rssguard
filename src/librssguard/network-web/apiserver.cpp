@@ -145,7 +145,8 @@ ApiResponse ApiServer::processMarkArticles(const QJsonValue& req) const {
   for (const QJsonValue& article_val : data.value(QSL("articles")).toArray()) {
     QJsonObject article_obj = article_val.toObject();
 
-    articles_per_accounts[article_obj.value(QSL("accountId")).toInt()].append(article_obj.value(QSL("article_custom_id")).toString();
+    articles_per_accounts[article_obj.value(QSL("accountId")).toInt()]
+      .append(article_obj.value(QSL("article_custom_id")).toString());
   }
 
   ApiResponse resp(ApiResponse::Result::Success, ApiRequest::Method::MarkArticles);
