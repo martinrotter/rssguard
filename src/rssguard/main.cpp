@@ -26,6 +26,10 @@
 int main(int argc, char* argv[]) {
   qSetMessagePattern(QSL("time=\"%{time process}\" type=\"%{type}\" -> %{message}"));
 
+  // NOTE: https://github.com/martinrotter/rssguard/issues/1118
+  // NOTE: https://bugreports.qt.io/browse/QTBUG-117612
+  qputenv("QT_DISABLE_AUDIO_PREPARE", "1");
+
   // High DPI stuff.
 #if QT_VERSION >= 0x050E00 // Qt >= 5.14.0
   qputenv("QT_ENABLE_HIGHDPI_SCALING", "1");
