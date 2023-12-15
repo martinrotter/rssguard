@@ -1,4 +1,5 @@
-// For license of this file, see <project-root-folder>/LICENSE.md.
+// For license of this file, see
+// <project-root-folder>/LICENSE.md.
 
 #include "network-web/apiserver.h"
 
@@ -49,9 +50,15 @@ void ApiServer::answerClient(QTcpSocket* socket, const HttpRequest& request) {
     }
 
     reply_message = generateHttpAnswer(200,
-                                       {{QSL("Access-Control-Allow-Origin"), QSL("*")},
-                                        {QSL("Access-Control-Allow-Headers"), QSL("*")},
-                                        {QSL("Content-Type"), QSL("application/json; charset=\"utf-8\"")}},
+                                       {{QSL("Access-Control-Allow-"
+                                             "Origin"),
+                                         QSL("*")},
+                                        {QSL("Access-Control-Allow-"
+                                             "Headers"),
+                                         QSL("*")},
+                                        {QSL("Content-Type"),
+                                         QSL("application/json; "
+                                             "charset=\"utf-8\"")}},
                                        json_data);
 
 #if !defined(NDEBUG)
@@ -65,9 +72,16 @@ void ApiServer::answerClient(QTcpSocket* socket, const HttpRequest& request) {
 
 QByteArray ApiServer::processCorsPreflight() const {
   return generateHttpAnswer(204,
-                            {{QSL("Access-Control-Allow-Origin"), QSL("*")},
-                             {QSL("Access-Control-Allow-Headers"), QSL("*")},
-                             {QSL("Access-Control-Allow-Methods"), QSL("POST, GET, OPTIONS, DELETE")}});
+                            {{QSL("Access-Control-Allow-"
+                                  "Origin"),
+                              QSL("*")},
+                             {QSL("Access-Control-Allow-"
+                                  "Headers"),
+                              QSL("*")},
+                             {QSL("Access-Control-Allow-"
+                                  "Methods"),
+                              QSL("POST, GET, OPTIONS, "
+                                  "DELETE")}});
 }
 
 QByteArray ApiServer::processHtmlPage() const {
@@ -82,10 +96,19 @@ QByteArray ApiServer::processHtmlPage() const {
   }
 
   QByteArray data = generateHttpAnswer(200,
-                                       {{QSL("Access-Control-Allow-Origin"), QSL("*")},
-                                        {QSL("Access-Control-Allow-Headers"), QSL("*")},
-                                        {QSL("Access-Control-Allow-Methods"), QSL("POST, GET, OPTIONS, DELETE")},
-                                        {QSL("Content-Type"), QSL("text/html; charset=\"utf-8\"")}},
+                                       {{QSL("Access-Control-Allow-"
+                                             "Origin"),
+                                         QSL("*")},
+                                        {QSL("Access-Control-Allow-"
+                                             "Headers"),
+                                         QSL("*")},
+                                        {QSL("Access-Control-Allow-"
+                                             "Methods"),
+                                         QSL("POST, GET, OPTIONS, "
+                                             "DELETE")},
+                                        {QSL("Content-Type"),
+                                         QSL("text/html; "
+                                             "charset=\"utf-8\"")}},
                                        page);
 
   return data;
@@ -109,11 +132,35 @@ ApiResponse ApiServer::processAppVersion() const {
   return ApiResponse(ApiResponse::Result::Success, ApiRequest::Method::AppVersion, QSL(APP_VERSION));
 }
 
+ApiResponse ApiServer::processMarkArticles(const QJsonValue& req) const {
+  QJsonObject data = req.toObject();
+
+  bool mark_read = data.value(QSL("mark_read")).toBool();
+  bool mark_unread = data.value(QSL("mark_unread")).toBool();
+  bool mark_starred = data.value(QSL("mark_starred")).toBool();
+  bool mark_unstarred = data.value(QSL("mark_unstarred")).toBool();
+
+  QMap<int, QStringList> articles_per_accounts;
+
+  for (const QJsonValue& article_val : data.value(QSL("articles")).toArray()) {
+    QJsonObject article_obj = article_val.toObject();
+
+    articles_per_accounts[article_obj.value(QSL("accountId")).toInt()].append(article_obj.value(QSL("article_custom_id")).toString();
+  }
+
+  ApiResponse resp(ApiResponse::Result::Success, ApiRequest::Method::MarkArticles);
+
+  return resp;
+}
+
 ApiResponse ApiServer::processArticlesFromFeed(const QJsonValue& req) const {
   QJsonObject data = req.toObject();
 
   QString feed_id = data.value(QSL("feed")).toString();
-  qint64 start_after_article_date = qint64(data.value(QSL("start_after_article_date")).toDouble());
+  qint64 start_after_article_date = qint64(data
+                                             .value(QSL("start_after_"
+                                                        "article_date"))
+                                             .toDouble());
   int account_id = data.value(QSL("account")).toInt();
   bool newest_first = data.value(QSL("newest_first")).toBool();
   bool unread_only = data.value(QSL("unread_only")).toBool();
@@ -148,7 +195,10 @@ ApiResponse ApiServer::processArticlesFromFeed(const QJsonValue& req) const {
 }
 
 ApiResponse ApiServer::processUnknown() const {
-  return ApiResponse(ApiResponse::Result::Error, ApiRequest::Method::Unknown, QSL("unknown method"));
+  return ApiResponse(ApiResponse::Result::Error,
+                     ApiRequest::Method::Unknown,
+                     QSL("unknown "
+                         "method"));
 }
 
 ApiResponse::ApiResponse(Result result, ApiRequest::Method method, const QJsonValue& response)
@@ -162,12 +212,17 @@ QJsonDocument ApiResponse::toJson() const {
 
   obj.insert(QSL("method"), enumer_method.valueToKey(int(m_method)));
   obj.insert(QSL("result"), enumer_result.valueToKey(int(m_result)));
-  obj.insert(QSL("data"), m_response);
+
+  if (!m_response.isNull() && !m_response.isUndefined()) {
+    obj.insert(QSL("data"), m_response);
+  }
 
   return QJsonDocument(obj);
 }
 
-ApiRequest::ApiRequest(const QJsonDocument& data) : m_method(), m_parameters(data.object().value(QSL("data"))) {
+ApiRequest::ApiRequest(const QJsonDocument& data)
+  : m_method(), m_parameters(data.object().value(QSL("dat"
+                                                     "a"))) {
   static QMetaEnum enumer = QMetaEnum::fromType<ApiRequest::Method>();
 
   QByteArray method_name = data.object().value(QSL("method")).toString().toLocal8Bit();

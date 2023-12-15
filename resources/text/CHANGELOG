@@ -1,3 +1,24 @@
+4.6.3
+-----
+
+Dear users, there are new features which will be introduced in one of coming releases.
+
+First of them is built-in HTTP API server which will provide basic REST-like interface for working with RSS Guard - getting list of articles, marking articles read or unread, etc. This will allow to use RSS Guard as a article server in local network.
+
+In cooperation with the above feature, new "magazine view" will be implemented. This magazine view will be launchable even completely separately from RSS Guard in web browser and will be able to act as very simple web-based feed/article reader. It will fetch data directly from RSS Guard via its new web API and will display articles including their thumbnails in cool way. This feature will be also expanded in the future, based on user feedback.
+
+Added:
+* Lite internal web browser now properly decodes all HTML pages according to their declared encoding. (9c7f55094)
+* Image downscaling in lite browser is faster. (8b91d4709)
+* Icon for classic RSS/ATOM accounts is now changeable. (#695)
+* If main window is active then "fetching started" notifications are not delivered. (#597)
+* Number of child feed/categories is now shown for each category. (#1183)
+
+Fixed:
+* MPV libs were moved to separate Git submodule. (#1250)
+* Applied workaround to fix PC not sleeping after sound is played. (#1118)
+* Fixed problem with disappearing tabs.
+
 4.6.2
 -----
 

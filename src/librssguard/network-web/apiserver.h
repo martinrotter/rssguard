@@ -15,7 +15,8 @@ struct ApiRequest {
     enum class Method {
       Unknown = 0,
       AppVersion = 1,
-      ArticlesFromFeed = 2
+      ArticlesFromFeed = 2,
+      MarkArticles = 3
     };
 
     Q_ENUM(Method)
@@ -37,7 +38,7 @@ struct ApiResponse {
 
     Q_ENUM(Result)
 
-    explicit ApiResponse(Result result, ApiRequest::Method method, const QJsonValue& response);
+    explicit ApiResponse(Result result, ApiRequest::Method method, const QJsonValue& response = {});
 
     Result m_result;
     ApiRequest::Method m_method;
@@ -61,6 +62,7 @@ class ApiServer : public HttpServer {
     ApiResponse processAppVersion() const;
     ApiResponse processArticlesFromFeed(const QJsonValue& req) const;
     ApiResponse processUnknown() const;
+    ApiResponse processMarkArticles(const QJsonValue& req) const;
 };
 
 #endif // APISERVER_H
