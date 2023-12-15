@@ -68,3 +68,9 @@ bool Category::markAsReadUnread(RootItem::ReadStatus status) {
 
   return service->markFeedsReadUnread(getSubTreeFeeds(), status);
 }
+
+QString Category::additionalTooltip() const {
+  return tr("Number of feeds: %1\n"
+            "Number of categories: %2")
+    .arg(QString::number(getSubTreeFeeds().size()), QString::number(getSubTreeCategories().size() - 1));
+}
