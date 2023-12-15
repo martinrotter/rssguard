@@ -715,6 +715,14 @@ void Application::showGuiMessageCore(Notification::Event event,
     notification.playSound(this);
 
     if (notification.balloonEnabled() && dest.m_tray) {
+      if (notification.event() == Notification::Event::ArticlesFetchingStarted && m_mainForm != nullptr &&
+          m_mainForm->isActiveWindow() && m_mainForm->isVisible()) {
+        // We do not need to display the notification because
+        // user will see that fetching is running because
+        // he will see progress bar.
+        return;
+      }
+
       if (m_toastNotifications != nullptr) {
         // Toasts are enabled.
         m_toastNotifications->showNotification(event, msg, action);
