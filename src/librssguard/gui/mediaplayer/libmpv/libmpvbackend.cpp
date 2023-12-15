@@ -77,6 +77,7 @@ LibMpvBackend::LibMpvBackend(Application* app, QWidget* parent)
 
   mpv_set_option_string(m_mpvHandle, "msg-level", "all=v");
   mpv_set_option_string(m_mpvHandle, "config", "yes");
+  mpv_set_option_string(m_mpvHandle, "force-window", "yes");
   mpv_set_option_string(m_mpvHandle, "hwdec", "auto");
   mpv_set_option_string(m_mpvHandle, "osd-playing-msg", "${media-title}");
   mpv_set_option_string(m_mpvHandle, "osc", "yes");
