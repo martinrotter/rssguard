@@ -2191,7 +2191,7 @@ QtWebEngine 快取資料夾 -&gt; &quot;%7&quot;</translation>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="230"/>
       <source>Quit the application.</source>
-      <translation>結束應用程式。</translation>
+      <translation>結束應用程式</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="241"/>
@@ -2201,7 +2201,7 @@ QtWebEngine 快取資料夾 -&gt; &quot;%7&quot;</translation>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="244"/>
       <source>Display settings of the application.</source>
-      <translation>顯示應用程式設定。</translation>
+      <translation>顯示應用程式設定</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="252"/>
@@ -2211,7 +2211,7 @@ QtWebEngine 快取資料夾 -&gt; &quot;%7&quot;</translation>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="255"/>
       <source>Displays extra info about this application.</source>
-      <translation>顯示此應用程式的額外資訊。</translation>
+      <translation>顯示此應用程式的額外資訊</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="269"/>
@@ -2276,12 +2276,12 @@ QtWebEngine 快取資料夾 -&gt; &quot;%7&quot;</translation>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="351"/>
       <source>Mark all messages (without message filters) from selected items as read.</source>
-      <translation>將所選項目中的全部文訊 (忽略消息過濾器) 標成已讀。</translation>
+      <translation>將所選項目中的全部文訊 (忽略文訊過濾規則) 標成已讀</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="362"/>
       <source>Mark all messages (without message filters) from selected items as unread.</source>
-      <translation>將所選項目中的全部文訊 (忽略文訊過濾規則) 標成未讀。</translation>
+      <translation>將所選項目中的全部文訊 (忽略文訊過濾規則) 標成未讀</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="370"/>
@@ -2316,7 +2316,7 @@ QtWebEngine 快取資料夾 -&gt; &quot;%7&quot;</translation>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="381"/>
       <source>Deletes all messages from selected items.</source>
-      <translation>刪除所選項目中所有文訊。</translation>
+      <translation>刪除所選項目中所有文訊</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="389"/>
@@ -2356,7 +2356,7 @@ QtWebEngine 快取資料夾 -&gt; &quot;%7&quot;</translation>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="428"/>
       <source>Marks all messages in all items read. This does not take message filters into account.</source>
-      <translation>將所有文訊標成已讀。不考慮文訊過濾規則。</translation>
+      <translation>將所有文訊標成已讀。不考慮文訊過濾規則</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="439"/>
@@ -2386,7 +2386,7 @@ QtWebEngine 快取資料夾 -&gt; &quot;%7&quot;</translation>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="470"/>
       <source>Deletes all messages from all items.</source>
-      <translation>刪除每一項目的全部文訊。</translation>
+      <translation>刪除每一項目的全部文訊</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="478"/>
