@@ -16,6 +16,7 @@ class LibMpvWidget : public QWidget {
     void bind();
 
   signals:
+    void launchMpvEvents();
 
   private:
     mpv_handle* m_mpvHandle;

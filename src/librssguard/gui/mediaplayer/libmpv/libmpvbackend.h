@@ -39,9 +39,6 @@ class LibMpvBackend : public PlayerBackend {
   private slots:
     void onMpvEvents();
 
-  signals:
-    void launchMpvEvents();
-
   private:
     void processEndFile(mpv_event_end_file* end_file);
     void processTracks(const QJsonDocument& json);

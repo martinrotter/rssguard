@@ -34,15 +34,6 @@
 #define CONFIG_MAIN_NAME  "mpv.conf"
 #define CONFIG_INPUT_NAME "input.conf"
 
-static void wakeup(void* ctx) {
-  // This callback is invoked from any mpv thread (but possibly also
-  // recursively from a thread that is calling the mpv API). Just notify
-  // the Qt GUI thread to wake up (so that it can process events with
-  // mpv_wait_event()), and return as quickly as possible.
-  LibMpvBackend* backend = (LibMpvBackend*)ctx;
-  emit backend->launchMpvEvents();
-}
-
 LibMpvBackend::LibMpvBackend(Application* app, QWidget* parent)
   : PlayerBackend(app, parent), m_mpvContainer(nullptr), m_mpvHandle(nullptr) {
   installEventFilter(this);
@@ -100,13 +91,11 @@ LibMpvBackend::LibMpvBackend(Application* app, QWidget* parent)
   // From this point on, the wakeup function will be called. The callback
   // can come from any thread, so we use the QueuedConnection mechanism to
   // relay the wakeup in a thread-safe way.
-  connect(this,
-          &LibMpvBackend::launchMpvEvents,
+  connect(m_mpvContainer,
+          &LibMpvWidget::launchMpvEvents,
           this,
           &LibMpvBackend::onMpvEvents,
           Qt::ConnectionType::QueuedConnection);
-
-  mpv_set_wakeup_callback(m_mpvHandle, wakeup, this);
 
   if (mpv_initialize(m_mpvHandle) < 0) {
     qFatal("cannot create mpv instance");
