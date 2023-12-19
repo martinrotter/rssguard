@@ -4,6 +4,7 @@
 
 #include "3rd-party/boolinq/boolinq.h"
 #include "definitions/definitions.h"
+#include "gui/mediaplayer/libmpv/libmpvwidget.h"
 #include "gui/mediaplayer/libmpv/qthelper.h"
 #include "miscellaneous/settings.h"
 #include "miscellaneous/textfactory.h"
@@ -43,37 +44,21 @@ static void wakeup(void* ctx) {
 }
 
 LibMpvBackend::LibMpvBackend(Application* app, QWidget* parent)
-  : PlayerBackend(app, parent), m_mpvContainer(new QWidget(this)), m_mpvHandle(nullptr) {
+  : PlayerBackend(app, parent), m_mpvContainer(nullptr), m_mpvHandle(nullptr) {
   installEventFilter(this);
   loadSettings();
 
   m_mpvHandle = mpv_create();
+  m_mpvContainer = new LibMpvWidget(m_mpvHandle, this);
 
   if (m_mpvHandle == nullptr) {
     qFatal("cannot create mpv instance");
   }
 
-  // Create a video child window. Force Qt to create a native window, and
-  // pass the window ID to the mpv wid option. Works on: X11, win32, Cocoa.
-  m_mpvContainer->setAttribute(Qt::WidgetAttribute::WA_DontCreateNativeAncestors);
-  m_mpvContainer->setAttribute(Qt::WidgetAttribute::WA_NativeWindow);
-
-  m_mpvContainer->setMouseTracking(true);
   setMouseTracking(true);
-
   layout()->addWidget(m_mpvContainer);
 
-  auto raw_wid = m_mpvContainer->winId();
-
-#if defined(Q_OS_WIN)
-  // Truncate to 32-bit, as all Windows handles are. This also ensures
-  // it doesn't go negative.
-  int64_t wid = static_cast<uint32_t>(raw_wid);
-#else
-  int64_t wid = raw_wid;
-#endif
-
-  mpv_set_option(m_mpvHandle, "wid", MPV_FORMAT_INT64, &wid);
+  m_mpvContainer->bind();
 
   mpv_set_option_string(m_mpvHandle, "msg-level", "all=v");
   mpv_set_option_string(m_mpvHandle, "config", "yes");
@@ -90,16 +75,6 @@ LibMpvBackend::LibMpvBackend(Application* app, QWidget* parent)
 #if !defined(NDEBUG)
   mpv_set_option_string(m_mpvHandle, "terminal", "yes");
 #endif
-
-  //
-  // NOTE: Just random options for testing here.
-  //
-  // mpv_set_option_string(m_mpvHandle, "keep-open", "no");
-  // mpv_set_option_string(m_mpvHandle, "osd-italic", "yes");
-  // mpv_set_option_string(m_mpvHandle, "osd-color", "1.0/0.0/0.0");
-  // mpv_set_option_string(m_mpvHandle, "watch-later-dir", "mpv");
-  // mpv_set_option_string(m_mpvHandle, "input-builtin-bindings", "no");
-  // mpv_set_option_string(m_mpvHandle, "input-test", "yes");
 
   if (!m_customConfigFolder.isEmpty()) {
     QByteArray cfg_folder = QDir::toNativeSeparators(m_customConfigFolder).toLocal8Bit();

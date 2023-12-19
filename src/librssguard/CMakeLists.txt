@@ -534,6 +534,8 @@ elseif(ENABLE_MEDIAPLAYER_LIBMPV)
   list(APPEND SOURCES
     gui/mediaplayer/libmpv/libmpvbackend.cpp
     gui/mediaplayer/libmpv/libmpvbackend.h
+    gui/mediaplayer/libmpv/libmpvwidget.cpp
+    gui/mediaplayer/libmpv/libmpvwidget.h
     gui/mediaplayer/libmpv/qthelper.h
   )
 

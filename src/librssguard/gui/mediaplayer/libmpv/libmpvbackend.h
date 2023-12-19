@@ -7,6 +7,8 @@
 
 #include <mpv/client.h>
 
+class LibMpvWidget;
+
 class LibMpvBackend : public PlayerBackend {
     Q_OBJECT
 
@@ -61,7 +63,7 @@ class LibMpvBackend : public PlayerBackend {
 
   private:
     QString m_customConfigFolder;
-    QWidget* m_mpvContainer;
+    LibMpvWidget* m_mpvContainer;
     mpv_handle* m_mpvHandle;
     QUrl m_url;
 };
