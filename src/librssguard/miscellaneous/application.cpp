@@ -44,6 +44,10 @@
 #include <QThreadPool>
 #include <QTimer>
 
+#if defined(MEDIAPLAYER_LIBMPV_OPENGL)
+#include <QQuickWindow>
+#endif
+
 #if defined(Q_OS_UNIX) && !defined(Q_OS_MACOS)
 #include <QDBusConnection>
 #include <QDBusMessage>
@@ -79,6 +83,16 @@
 
 Application::Application(const QString& id, int& argc, char** argv, const QStringList& raw_cli_args)
   : SingleApplication(id, argc, argv), m_rawCliArgs(raw_cli_args), m_updateFeedsLock(new Mutex()) {
+
+#if defined(MEDIAPLAYER_LIBMPV_OPENGL)
+  // HACK: Force rendering system to use OpenGL backend.
+#if QT_VERSION_MAJOR < 6
+  QQuickWindow::setSceneGraphBackend(QSGRendererInterface::GraphicsApi::OpenGL);
+#else
+  QQuickWindow::setGraphicsApi(QSGRendererInterface::GraphicsApi::OpenGL);
+#endif
+#endif
+
   QString custom_ua;
 
   parseCmdArgumentsFromMyInstance(raw_cli_args, custom_ua);

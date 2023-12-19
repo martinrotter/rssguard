@@ -832,13 +832,27 @@ endif()
 
 if(ENABLE_MEDIAPLAYER_QTMULTIMEDIA)
   target_link_libraries(rssguard PUBLIC
+    Qt${QT_VERSION_MAJOR}::OpenGL
     Qt${QT_VERSION_MAJOR}::MultimediaWidgets
   )
 elseif(ENABLE_MEDIAPLAYER_LIBMPV)
+  if(MEDIAPLAYER_FORCE_OPENGL)
+    target_link_libraries(rssguard PUBLIC
+      Qt${QT_VERSION_MAJOR}::OpenGL
+    )
+
+    if(BUILD_WITH_QT6)
+      target_link_libraries(rssguard PUBLIC
+        Qt${QT_VERSION_MAJOR}::OpenGLWidgets
+      )
+    endif()
+  endif()
+
   target_include_directories(rssguard AFTER
     PRIVATE
     ${LibMPV_INCLUDE_DIRS}
   )
+
   target_link_libraries(rssguard PUBLIC
     ${LibMPV_LIBRARIES}
   )

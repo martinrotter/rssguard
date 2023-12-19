@@ -48,12 +48,10 @@ LibMpvBackend::LibMpvBackend(Application* app, QWidget* parent)
 
   setMouseTracking(true);
   layout()->addWidget(m_mpvContainer);
-
   m_mpvContainer->bind();
 
   mpv_set_option_string(m_mpvHandle, "msg-level", "all=v");
   mpv_set_option_string(m_mpvHandle, "config", "yes");
-  mpv_set_option_string(m_mpvHandle, "force-window", "yes");
   mpv_set_option_string(m_mpvHandle, "script-opts", "osc-idlescreen=no");
   mpv_set_option_string(m_mpvHandle, "hwdec", "auto");
   mpv_set_option_string(m_mpvHandle, "osd-playing-msg", "${media-title}");
@@ -121,6 +119,7 @@ void LibMpvBackend::loadSettings() {
 }
 
 LibMpvBackend::~LibMpvBackend() {
+  m_mpvContainer->destroyHandle();
   destroyHandle();
 }
 
@@ -155,7 +154,7 @@ void LibMpvBackend::handleMpvEvent(mpv_event* event) {
     }
 
     case MPV_EVENT_SHUTDOWN: {
-      destroyHandle();
+      // destroyHandle();
       emit closed();
       break;
     }

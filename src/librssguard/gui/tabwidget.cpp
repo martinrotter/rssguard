@@ -266,7 +266,7 @@ int TabWidget::addMediaPlayer(const QString& url, bool make_active) {
     player->setFocus(Qt::FocusReason::OtherFocusReason);
   }
 
-  QTimer::singleShot(500, player, [player, url]() {
+  QTimer::singleShot(3000, player, [player, url]() {
     player->playUrl(url);
   });
 

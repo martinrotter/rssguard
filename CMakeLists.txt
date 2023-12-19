@@ -125,6 +125,7 @@ option(FORCE_BUNDLE_ICONS "Forcibly bundle icon themes into RSS Guard." OFF)
 option(ENABLE_COMPRESSED_SITEMAP "Enable support for gzip-compressed sitemap feeds. Requires zlib." OFF)
 option(ENABLE_MEDIAPLAYER_QTMULTIMEDIA "Enable built-in media player. Requires QtMultimedia FFMPEG plugin." OFF)
 option(ENABLE_MEDIAPLAYER_LIBMPV "Enable built-in media player. Requires libmpv library." ON)
+option(MEDIAPLAYER_FORCE_OPENGL "Use opengl-based render API with libmpv." ON)
 
 # Import Qt libraries.
 set(QT6_MIN_VERSION 6.3.0)
@@ -166,6 +167,16 @@ if(ENABLE_MEDIAPLAYER_LIBMPV)
 
   if(WIN32 AND NOT LibMPV_ROOT)
     set(LibMPV_ROOT "${CMAKE_SOURCE_DIR}/resources/scripts/libmpv")
+  endif()
+
+  if(MEDIAPLAYER_FORCE_OPENGL)
+    list(APPEND QT_COMPONENTS OpenGL)
+
+    if(BUILD_WITH_QT6)
+      list(APPEND QT_COMPONENTS OpenGLWidgets)
+    endif()
+
+    add_compile_definitions(MEDIAPLAYER_LIBMPV_OPENGL)
   endif()
 
   add_compile_definitions(ENABLE_MEDIAPLAYER_LIBMPV)
