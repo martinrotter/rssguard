@@ -53,10 +53,8 @@ int main(int argc, char* argv[]) {
   Q_INIT_RESOURCE(rssguard);
 #endif
 
-  // Ensure that ini format is used as application settings storage on macOS.
-  QSettings::setDefaultFormat(QSettings::IniFormat);
-
-  QApplication::setAttribute(Qt::AA_UseDesktopOpenGL, true);
+  QSettings::setDefaultFormat(QSettings::Format::IniFormat);
+  QApplication::setAttribute(Qt::ApplicationAttribute::AA_UseDesktopOpenGL, true);
 
   // We create our own "arguments" list as Qt strips something
   // sometimes out.

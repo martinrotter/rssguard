@@ -22,7 +22,6 @@
 #if QT_VERSION_MAJOR == 6
 #include <QWebEngineContextMenuRequest>
 #else
-#include <QOpenGLWidget>
 #include <QWebEngineContextMenuData>
 #endif
 

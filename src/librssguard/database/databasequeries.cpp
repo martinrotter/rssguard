@@ -424,7 +424,7 @@ void DatabaseQueries::markMessagesReadUnreadImportant(const QSqlDatabase& db,
                                                       const QStringList& custom_ids,
                                                       RootItem::ReadStatus read,
                                                       RootItem::Importance important) {
-  auto stringed_ids = boolinq::from(custom_ids)
+  auto stringed_ids = boolinq::from(custom_ids.begin(), custom_ids.end())
                         .select([](const QString& id) {
                           return QSL("'%1'").arg(id);
                         })
