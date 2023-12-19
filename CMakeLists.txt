@@ -170,6 +170,8 @@ if(ENABLE_MEDIAPLAYER_LIBMPV)
   endif()
 
   if(MEDIAPLAYER_FORCE_OPENGL)
+    message(STATUS "Forcing OpenGL-based rendering for libmpv.")
+
     list(APPEND QT_COMPONENTS OpenGL)
 
     if(BUILD_WITH_QT6)
