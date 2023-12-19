@@ -419,6 +419,47 @@ bool DatabaseQueries::markMessagesReadUnread(const QSqlDatabase& db,
                   .arg(ids.join(QSL(", ")), read == RootItem::ReadStatus::Read ? QSL("1") : QSL("0")));
 }
 
+void DatabaseQueries::markMessagesReadUnreadImportant(const QSqlDatabase& db,
+                                                      int account_id,
+                                                      const QStringList& custom_ids,
+                                                      RootItem::ReadStatus read,
+                                                      RootItem::Importance important) {
+  auto stringed_ids = boolinq::from(custom_ids)
+                        .select([](const QString& id) {
+                          return QSL("'%1'").arg(id);
+                        })
+                        .toStdList();
+
+  QStringList textual_ids = FROM_STD_LIST(QStringList, stringed_ids);
+  QSqlQuery q(db);
+  QStringList setters;
+
+  if (read != RootItem::ReadStatus::Unknown) {
+    setters.append(QSL("is_read = :read"));
+  }
+
+  if (important != RootItem::Importance::Unknown) {
+    setters.append(QSL("is_important = :important"));
+  }
+
+  q.setForwardOnly(true);
+
+  if (!q.prepare(QSL("UPDATE Messages SET %2 "
+                     "    WHERE account_id = :account_id AND "
+                     "    custom_id in (%1);")
+                   .arg(textual_ids.join(", "), setters.join(" AND ")))) {
+    throw ApplicationException(q.lastError().text());
+  }
+
+  q.bindValue(QSL(":read"), int(read));
+  q.bindValue(QSL(":important"), int(important));
+  q.bindValue(QSL(":account_id"), account_id);
+
+  if (!q.exec()) {
+    throw ApplicationException(q.lastError().text());
+  }
+}
+
 bool DatabaseQueries::markMessageImportant(const QSqlDatabase& db, int id, RootItem::Importance importance) {
   QSqlQuery q(db);
 

@@ -3,9 +3,14 @@
 
 #include "network-web/apiserver.h"
 
+#include "3rd-party/boolinq/boolinq.h"
+#include "core/feedsmodel.h"
 #include "database/databasefactory.h"
 #include "database/databasequeries.h"
 #include "definitions/definitions.h"
+#include "gui/dialogs/formmain.h"
+#include "gui/feedmessageviewer.h"
+#include "gui/messagesview.h"
 #include "miscellaneous/application.h"
 
 #include <QJsonArray>
@@ -145,9 +150,101 @@ ApiResponse ApiServer::processMarkArticles(const QJsonValue& req) const {
   for (const QJsonValue& article_val : data.value(QSL("articles")).toArray()) {
     QJsonObject article_obj = article_val.toObject();
 
-    articles_per_accounts[article_obj.value(QSL("accountId")).toInt()]
+    articles_per_accounts[article_obj.value(QSL("account")).toInt()]
       .append(article_obj.value(QSL("article_custom_id")).toString());
   }
+
+  QMapIterator<int, QStringList> articles_per_accounts_iter(articles_per_accounts);
+  QSqlDatabase database = qApp->database()->driver()->connection(metaObject()->className());
+
+  RootItem::ReadStatus target_read = mark_read ? RootItem::ReadStatus::Read : RootItem::ReadStatus::Unread;
+
+  if (!mark_read && !mark_unread) {
+    target_read = RootItem::ReadStatus::Unknown;
+  }
+
+  RootItem::Importance target_important =
+    mark_starred ? RootItem::Importance::Important : RootItem::Importance::NotImportant;
+
+  if (!mark_starred && !mark_unstarred) {
+    target_important = RootItem::Importance::Unknown;
+  }
+
+  QList<ServiceRoot*> accts = qApp->feedReader()->feedsModel()->serviceRoots();
+  auto linq_accts = boolinq::from(accts);
+
+  while (articles_per_accounts_iter.hasNext()) {
+    auto nxt = articles_per_accounts_iter.next();
+    int account_id = nxt.key();
+    QStringList custom_ids = nxt.value();
+    ServiceRoot* acc = linq_accts.firstOrDefault([=](ServiceRoot* acc) {
+      return acc->id() == account_id;
+    });
+
+    if (acc == nullptr) {
+      return ApiResponse(ApiResponse::Result::Error,
+                         ApiRequest::Method::MarkArticles,
+                         tr("account with ID %1 not found").arg(account_id));
+    }
+
+    /*
+    QList<Message> read_msgs;
+    QList<ImportanceChange> imp_msgs;
+
+    if (target_read != RootItem::ReadStatus::Unknown) {
+      read_msgs.reserve(custom_ids.size());
+
+      auto std_msgs = boolinq::from(custom_ids)
+                        .select([](const QString& custom_id) {
+                          Message msg;
+                          msg.m_customId = custom_id;
+                          return msg;
+                        })
+                        .toStdList();
+      read_msgs = FROM_STD_LIST(QList<Message>, std_msgs);
+
+      acc->onBeforeSetMessagesRead(acc, read_msgs, target_read);
+    }
+
+
+    if (target_important != RootItem::Importance::Unknown) {
+      imp_msgs.reserve(custom_ids.size());
+
+      auto std_msgs = boolinq::from(custom_ids)
+                        .select([=](const QString& custom_id) {
+                          ImportanceChange ch;
+
+                          Message msg;
+                          msg.m_customId = custom_id;
+
+                          ch.first = msg;
+                          ch.second = target_important;
+
+                          return ch;
+                        })
+                        .toStdList();
+      imp_msgs = FROM_STD_LIST(QList<ImportanceChange>, std_msgs);
+
+      acc->onBeforeSwitchMessageImportance(acc, imp_msgs);
+    }
+    */
+
+    DatabaseQueries::markMessagesReadUnreadImportant(database, account_id, custom_ids, target_read, target_important);
+
+    /*
+    if (target_read != RootItem::ReadStatus::Unknown) {
+      acc->onAfterSetMessagesRead(acc, read_msgs, target_read);
+    }
+
+    if (target_important != RootItem::Importance::Unknown) {
+      acc->onAfterSwitchMessageImportance(acc, imp_msgs);
+    }
+    */
+  }
+
+  // All updates are done, recalculate.
+  qApp->feedReader()->feedsModel()->reloadCountsOfWholeModel();
+  qApp->mainForm()->tabWidget()->feedMessageViewer()->messagesView()->reloadSelections();
 
   ApiResponse resp(ApiResponse::Result::Success, ApiRequest::Method::MarkArticles);
 
@@ -158,10 +255,7 @@ ApiResponse ApiServer::processArticlesFromFeed(const QJsonValue& req) const {
   QJsonObject data = req.toObject();
 
   QString feed_id = data.value(QSL("feed")).toString();
-  qint64 start_after_article_date = qint64(data
-                                             .value(QSL("start_after_"
-                                                        "article_date"))
-                                             .toDouble());
+  qint64 start_after_article_date = qint64(data.value(QSL("start_after_article_date")).toDouble());
   int account_id = data.value(QSL("account")).toInt();
   bool newest_first = data.value(QSL("newest_first")).toBool();
   bool unread_only = data.value(QSL("unread_only")).toBool();

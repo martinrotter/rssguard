@@ -1015,7 +1015,7 @@ bool ServiceRoot::onAfterSetMessagesRead(RootItem* selected_item,
 
     // 4. Labels assigned.
     if (labelsNode() != nullptr) {
-      auto db = qApp->database()->driver()->connection(metaObject()->className());
+      // auto db = qApp->database()->driver()->connection(metaObject()->className());
       QStringList lbls; // = DatabaseQueries::getCountOfAssignedLabelsToMessages(db, messages, accountId());
 
       for (const Message& msg : messages) {
