@@ -444,10 +444,11 @@ void DatabaseQueries::markMessagesReadUnreadImportant(const QSqlDatabase& db,
 
   q.setForwardOnly(true);
 
-  if (!q.prepare(QSL("UPDATE Messages SET %2 "
-                     "    WHERE account_id = :account_id AND "
-                     "    custom_id in (%1);")
-                   .arg(textual_ids.join(", "), setters.join(" AND ")))) {
+  QString statement = QSL("UPDATE Messages SET %1 "
+                          "  WHERE account_id = :account_id AND custom_id in (%2);")
+                        .arg(setters.join(", "), textual_ids.join(", "));
+
+  if (!q.prepare(statement)) {
     throw ApplicationException(q.lastError().text());
   }
 

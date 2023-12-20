@@ -127,6 +127,9 @@ ApiResponse ApiServer::processRequest(const ApiRequest& req) const {
     case ApiRequest::Method::ArticlesFromFeed:
       return processArticlesFromFeed(req.m_parameters);
 
+    case ApiRequest::Method::MarkArticles:
+      return processMarkArticles(req.m_parameters);
+
     case ApiRequest::Method::Unknown:
     default:
       return processUnknown();
@@ -178,68 +181,14 @@ ApiResponse ApiServer::processMarkArticles(const QJsonValue& req) const {
     int account_id = nxt.key();
     QStringList custom_ids = nxt.value();
     ServiceRoot* acc = linq_accts.firstOrDefault([=](ServiceRoot* acc) {
-      return acc->id() == account_id;
+      return acc->accountId() == account_id;
     });
 
     if (acc == nullptr) {
-      return ApiResponse(ApiResponse::Result::Error,
-                         ApiRequest::Method::MarkArticles,
-                         tr("account with ID %1 not found").arg(account_id));
+      throw ApplicationException(tr("account with ID %1 not found").arg(account_id));
     }
-
-    /*
-    QList<Message> read_msgs;
-    QList<ImportanceChange> imp_msgs;
-
-    if (target_read != RootItem::ReadStatus::Unknown) {
-      read_msgs.reserve(custom_ids.size());
-
-      auto std_msgs = boolinq::from(custom_ids)
-                        .select([](const QString& custom_id) {
-                          Message msg;
-                          msg.m_customId = custom_id;
-                          return msg;
-                        })
-                        .toStdList();
-      read_msgs = FROM_STD_LIST(QList<Message>, std_msgs);
-
-      acc->onBeforeSetMessagesRead(acc, read_msgs, target_read);
-    }
-
-
-    if (target_important != RootItem::Importance::Unknown) {
-      imp_msgs.reserve(custom_ids.size());
-
-      auto std_msgs = boolinq::from(custom_ids)
-                        .select([=](const QString& custom_id) {
-                          ImportanceChange ch;
-
-                          Message msg;
-                          msg.m_customId = custom_id;
-
-                          ch.first = msg;
-                          ch.second = target_important;
-
-                          return ch;
-                        })
-                        .toStdList();
-      imp_msgs = FROM_STD_LIST(QList<ImportanceChange>, std_msgs);
-
-      acc->onBeforeSwitchMessageImportance(acc, imp_msgs);
-    }
-    */
 
     DatabaseQueries::markMessagesReadUnreadImportant(database, account_id, custom_ids, target_read, target_important);
-
-    /*
-    if (target_read != RootItem::ReadStatus::Unknown) {
-      acc->onAfterSetMessagesRead(acc, read_msgs, target_read);
-    }
-
-    if (target_important != RootItem::Importance::Unknown) {
-      acc->onAfterSwitchMessageImportance(acc, imp_msgs);
-    }
-    */
   }
 
   // All updates are done, recalculate.
@@ -247,7 +196,6 @@ ApiResponse ApiServer::processMarkArticles(const QJsonValue& req) const {
   qApp->mainForm()->tabWidget()->feedMessageViewer()->messagesView()->reloadSelections();
 
   ApiResponse resp(ApiResponse::Result::Success, ApiRequest::Method::MarkArticles);
-
   return resp;
 }
 
