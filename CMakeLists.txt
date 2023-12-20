@@ -27,6 +27,10 @@
 #   ENABLE_MEDIAPLAYER_QTMULTIMEDIA - Enable media player (QtMultimedia/ffmpeg implementation).
 #   ENABLE_MEDIAPLAYER_LIBMPV - Enable media player (libmpv implementation). Use "LibMPV_ROOT" variable to specify
 #                               base libmpv directory.
+#   MEDIAPLAYER_FORCE_OPENGL - When libmpv media player is enabled, then this forces it to use
+#                              its OpenGL renderer. This renderer is potentially faster, more modern
+#                              and supports wider range of platforms. Legacy "window-based" renderer
+#                              should be likely avoided in new codebases.
 #   ENABLE_COMPRESSED_SITEMAP - Set to "ON" if you want to enable support for "sitemap.xml.gz" format.
 #                               This requires "zlib" library and if you want to use specific
 #                               zlib location, then use "ZLIB_ROOT" variable, for example

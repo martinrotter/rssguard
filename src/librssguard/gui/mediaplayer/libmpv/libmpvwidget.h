@@ -35,13 +35,13 @@ class LibMpvWidget : public BASE_WIDGET {
 
     mpv_handle* m_mpvHandle;
 
+  private slots:
 #if defined(MEDIAPLAYER_LIBMPV_OPENGL)
+    void maybeUpdate();
+
   protected:
     virtual void initializeGL();
     virtual void paintGL();
-
-  private slots:
-    void maybeUpdate();
 
   private:
     static void on_update(void* ctx);
