@@ -99,21 +99,36 @@ void LibMpvWidget::maybeUpdate() {
   }
 }
 
-void LibMpvWidget::on_update(void* ctx) {
-  QMetaObject::invokeMethod((LibMpvWidget*)ctx, "maybeUpdate");
+void LibMpvWidget::onMpvRedraw(void* ctx) {
+  QMetaObject::invokeMethod((LibMpvWidget*)ctx, &LibMpvWidget::maybeUpdate, Qt::ConnectionType::QueuedConnection);
 }
 
 void LibMpvWidget::initializeGL() {
   mpv_opengl_init_params gl_init_params[1] = {get_proc_address, nullptr};
+  mpv_render_param display{MPV_RENDER_PARAM_INVALID, nullptr};
+
+#if defined(Q_OS_UNIX) && !defined(Q_OS_DARWIN) && !defined(Q_OS_ANDROID)
+  if (QGuiApplication::platformName() == QStringLiteral("xcb")) {
+    display.type = MPV_RENDER_PARAM_X11_DISPLAY;
+    display.data = qApp->nativeInterface<QNativeInterface::QX11Application>()->display();
+  }
+
+  if (QGuiApplication::platformName() == QStringLiteral("wayland")) {
+    display.type = MPV_RENDER_PARAM_WL_DISPLAY;
+    display.data = qApp->nativeInterface<QNativeInterface::QWaylandApplication>()->display();
+  }
+#endif
+
   mpv_render_param params[]{{MPV_RENDER_PARAM_API_TYPE, const_cast<char*>(MPV_RENDER_API_TYPE_OPENGL)},
                             {MPV_RENDER_PARAM_OPENGL_INIT_PARAMS, &gl_init_params},
+                            display,
                             {MPV_RENDER_PARAM_INVALID, nullptr}};
 
   if (mpv_render_context_create(&m_mpvGl, m_mpvHandle, params) < 0) {
     qFatal("failed to initialize mpv GL context");
   }
 
-  mpv_render_context_set_update_callback(m_mpvGl, LibMpvWidget::on_update, reinterpret_cast<void*>(this));
+  mpv_render_context_set_update_callback(m_mpvGl, LibMpvWidget::onMpvRedraw, reinterpret_cast<void*>(this));
 }
 
 void LibMpvWidget::paintGL() {

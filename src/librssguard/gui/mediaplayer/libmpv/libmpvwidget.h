@@ -44,7 +44,7 @@ class LibMpvWidget : public BASE_WIDGET {
     virtual void paintGL();
 
   private:
-    static void on_update(void* ctx);
+    static void onMpvRedraw(void* ctx);
 
     mpv_render_context* m_mpvGl;
 #endif
