@@ -2,6 +2,8 @@
 
 #include "gui/mediaplayer/libmpv/libmpvwidget.h"
 
+#include <QGuiApplication>
+
 #include <mpv/client.h>
 
 #if defined(MEDIAPLAYER_LIBMPV_OPENGL)
