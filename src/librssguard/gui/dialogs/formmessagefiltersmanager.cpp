@@ -590,8 +590,7 @@ void FormMessageFiltersManager::beautifyScript() {
   proc_clang_format.setArguments({"--assume-filename=script.js", "--style=Chromium"});
 
 #if defined(Q_OS_WIN)
-  proc_clang_format.setProgram(qApp->applicationDirPath() + QDir::separator() + QSL("clang-format") +
-                               QDir::separator() + QSL("clang-format.exe"));
+  proc_clang_format.setProgram(qApp->applicationDirPath() + QDir::separator() + QSL("clang-format.exe"));
 #else
   proc_clang_format.setProgram(QSL("clang-format"));
 #endif

@@ -50,9 +50,8 @@ if(WIN32)
     DESTINATION .
     FILES_MATCHING PATTERN "*.dll"
   )
-  install(DIRECTORY ${CMAKE_SOURCE_DIR}/resources/scripts/clang-format
+  install(FILES ${CMAKE_SOURCE_DIR}/resources/scripts/clang-format/clang-format.exe
     DESTINATION .
-    FILES_MATCHING PATTERN "*.exe"
   )
 elseif(OS2)
   install(TARGETS app DESTINATION .)

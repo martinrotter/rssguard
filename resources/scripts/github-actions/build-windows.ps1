@@ -40,7 +40,7 @@ $maria_version = "11.2.2"
 $maria_link = "https://archive.mariadb.org/mariadb-$maria_version/winx64-packages/mariadb-$maria_version-winx64.zip"
 $maria_output = "maria.zip"
 
-$cmake_version = "3.27.9"
+$cmake_version = "3.28.1"
 $cmake_link = "https://github.com/Kitware/CMake/releases/download/v$cmake_version/cmake-$cmake_version-windows-x86_64.zip"
 $cmake_output = "cmake.zip"
 
@@ -48,7 +48,7 @@ $zlib_version = "1.3"
 $zlib_link = "https://github.com/madler/zlib/archive/refs/tags/v$zlib_version.zip"
 $zlib_output = "zlib.zip"
 
-$libmpv_version = "20231211-git-566a96f"
+$libmpv_version = "20231220-git-17be6e1"
 $libmpv_link = "https://github.com/zhongfly/mpv-winbuild/releases/download/2023-12-11-566a96f/mpv-dev-x86_64-$libmpv_version.7z"
 $libmpv_output = "mpv.zip"
 

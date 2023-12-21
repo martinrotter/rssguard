@@ -46,7 +46,7 @@ class LibMpvWidget : public BASE_WIDGET {
   private:
     static void onMpvRedraw(void* ctx);
 
-    mpv_render_context* m_mpvGl;
+    mpv_render_context* m_mpvGL;
 #endif
 };
 

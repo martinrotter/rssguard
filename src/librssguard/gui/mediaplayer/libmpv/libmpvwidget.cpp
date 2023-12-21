@@ -23,7 +23,7 @@ LibMpvWidget::LibMpvWidget(mpv_handle* mpv_handle, QWidget* parent)
   : BASE_WIDGET(parent), m_mpvHandle(mpv_handle)
 #if defined(MEDIAPLAYER_LIBMPV_OPENGL)
     ,
-    m_mpvGl(nullptr)
+    m_mpvGL(nullptr)
 #endif
 {
 #if !defined(MEDIAPLAYER_LIBMPV_OPENGL)
@@ -60,9 +60,9 @@ void LibMpvWidget::destroyHandle() {
 #if defined(MEDIAPLAYER_LIBMPV_OPENGL)
   makeCurrent();
 
-  if (m_mpvGl != nullptr) {
-    mpv_render_context_free(m_mpvGl);
-    m_mpvGl = nullptr;
+  if (m_mpvGL != nullptr) {
+    mpv_render_context_free(m_mpvGL);
+    m_mpvGL = nullptr;
   }
 
   doneCurrent();
@@ -126,11 +126,11 @@ void LibMpvWidget::initializeGL() {
                             display,
                             {MPV_RENDER_PARAM_INVALID, nullptr}};
 
-  if (mpv_render_context_create(&m_mpvGl, m_mpvHandle, params) < 0) {
+  if (mpv_render_context_create(&m_mpvGL, m_mpvHandle, params) < 0) {
     qFatal("failed to initialize mpv GL context");
   }
 
-  mpv_render_context_set_update_callback(m_mpvGl, LibMpvWidget::onMpvRedraw, reinterpret_cast<void*>(this));
+  mpv_render_context_set_update_callback(m_mpvGL, LibMpvWidget::onMpvRedraw, reinterpret_cast<void*>(this));
 }
 
 void LibMpvWidget::paintGL() {
@@ -140,8 +140,7 @@ void LibMpvWidget::paintGL() {
   mpv_render_param params[] = {{MPV_RENDER_PARAM_OPENGL_FBO, &mpfbo},
                                {MPV_RENDER_PARAM_FLIP_Y, &flip_y},
                                {MPV_RENDER_PARAM_INVALID, nullptr}};
-  // See render_gl.h on what OpenGL environment mpv expects, and
-  // other API details.
-  mpv_render_context_render(m_mpvGl, params);
+
+  mpv_render_context_render(m_mpvGL, params);
 }
 #endif
