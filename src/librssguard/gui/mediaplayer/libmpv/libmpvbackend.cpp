@@ -441,7 +441,8 @@ bool LibMpvBackend::eventFilter(QObject* watched, QEvent* event) {
 
     if (event->type() == QEvent::Type::MouseMove && watched == this) {
       auto* mouse_event = dynamic_cast<QMouseEvent*>(event);
-      auto position = mouse_event->pos();
+      auto scaling_ratio = window()->devicePixelRatio();
+      auto position = mouse_event->pos() * scaling_ratio;
       auto x_str = QString::number(position.x()).toLocal8Bit();
       auto y_str = QString::number(position.y()).toLocal8Bit();
       const char* x = x_str.constData();

@@ -2,7 +2,7 @@
 
 #include "gui/mediaplayer/libmpv/libmpvwidget.h"
 
-#include <QGuiApplication>
+#include "miscellaneous/application.h"
 
 #include <mpv/client.h>
 
@@ -134,7 +134,11 @@ void LibMpvWidget::initializeGL() {
 }
 
 void LibMpvWidget::paintGL() {
-  mpv_opengl_fbo mpfbo{static_cast<int>(defaultFramebufferObject()), width(), height(), 0};
+  auto scaling_ratio = window()->devicePixelRatio();
+  mpv_opengl_fbo mpfbo{static_cast<int>(defaultFramebufferObject()),
+                       width() * scaling_ratio,
+                       height() * scaling_ratio,
+                       0};
   int flip_y{1};
 
   mpv_render_param params[] = {{MPV_RENDER_PARAM_OPENGL_FBO, &mpfbo},

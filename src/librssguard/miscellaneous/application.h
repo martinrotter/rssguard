@@ -54,7 +54,9 @@ struct ITaskbarList4;
 struct GuiMessage {
   public:
     GuiMessage() {}
-    GuiMessage(QString title, QString message, QSystemTrayIcon::MessageIcon type)
+    GuiMessage(QString title,
+               QString message,
+               QSystemTrayIcon::MessageIcon type = QSystemTrayIcon::MessageIcon::Information)
       : m_title(std::move(title)), m_message(std::move(message)), m_type(type) {}
 
     QString m_title;
