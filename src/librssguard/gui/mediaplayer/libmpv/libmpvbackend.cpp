@@ -472,13 +472,9 @@ bool LibMpvBackend::eventFilter(QObject* watched, QEvent* event) {
 }
 
 void LibMpvBackend::playUrl(const QUrl& url) {
-  char* str;
-
-  mpv_get_property(m_mpvHandle, "ytdl_path", MPV_FORMAT_STRING, &str);
-
-  m_url = url;
-
   if (m_mpvHandle != nullptr) {
+    m_url = url;
+
     auto eb = url.toString().toLocal8Bit();
     const char* css = eb.data();
     const char* args[] = {"loadfile", css, nullptr};
