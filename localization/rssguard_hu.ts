@@ -239,7 +239,7 @@ való kattintással.</translation>
     <message>
       <location filename="../src/librssguard/miscellaneous/application.cpp" line="1154"/>
       <source>Already running</source>
-      <translation type="unfinished">Already running</translation>
+      <translation>Már fut</translation>
     </message>
     <message>
       <location filename="../src/librssguard/miscellaneous/application.cpp" line="1323"/>
@@ -3891,17 +3891,17 @@ Login tokens expiration: %2</translation>
     <message>
       <location filename="../src/librssguard/services/greader/gui/greaderaccountdetails.cpp" line="236"/>
       <source>URL cannot be empty.</source>
-      <translation type="unfinished">URL cannot be empty.</translation>
+      <translation>Az URL nem lehet üres.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/greader/gui/greaderaccountdetails.cpp" line="239"/>
       <source>URL is okay.</source>
-      <translation type="unfinished">URL is okay.</translation>
+      <translation>URL rendben.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/greader/gui/greaderaccountdetails.cpp" line="45"/>
       <source>Some feeds might contain tens of thousands of articles and downloading all of them could take great amount of time, so sometimes it is good to download only certain amount of newest messages.</source>
-      <translation type="unfinished">Some feeds might contain tens of thousands of articles and downloading all of them could take great amount of time, so sometimes it is good to download only certain amount of newest messages.</translation>
+      <translation>Néhány hírforrás akár több tízezer cikket is tartalmazhat és az összes letöltése jelentős időt vehet igénybe. Így néha jobb, ha csak bizonyos számú új üzenet kerül letöltésre.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/greader/gui/greaderaccountdetails.cpp" line="51"/>
@@ -3911,7 +3911,7 @@ Login tokens expiration: %2</translation>
     <message>
       <location filename="../src/librssguard/services/greader/gui/greaderaccountdetails.cpp" line="60"/>
       <source>There are some preconfigured OAuth tokens so you do not have to fill in your client ID/secret, but it is strongly recommended to obtain your own as preconfigured tokens have limited global usage quota. If you wish to use preconfigured tokens, simply leave all above fields to their default values even if they are empty.</source>
-      <translation type="unfinished">There are some preconfigured OAuth tokens so you do not have to fill in your client ID/secret, but it is strongly recommended to obtain your own as preconfigured tokens have limited global usage quota. If you wish to use preconfigured tokens, simply leave all above fields to their default values even if they are empty.</translation>
+      <translation>Léteznek előre konfigurált OAuth tokenek így nem kell kitölteni a saját kliens azonosítót/titkos kulcsot, de nagyon ajánlott saját kulcs beszerzése, mivel az előre konfigurált tokeneknek limitált a felhasználási kvótájuk. Ha mindenképpen előre konfigurált tokent kíván használni csak hagyja az összes fenti mező értékét az alapértelmezetten, még akkor is ha üresek.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/greader/gui/greaderaccountdetails.cpp" line="67"/>
@@ -3947,12 +3947,12 @@ Login tokens expiration: %2</translation>
     <message>
       <location filename="../src/librssguard/services/greader/gui/greaderaccountdetails.cpp" line="157"/>
       <source>Preconfigured client ID/secret will be used.</source>
-      <translation type="unfinished">Preconfigured client ID/secret will be used.</translation>
+      <translation>Az előre konfigurált kliens azonosító/titkos kulcs kerül használatra.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/greader/gui/greaderaccountdetails.cpp" line="159"/>
       <source>Empty value is entered.</source>
-      <translation type="unfinished">Empty value is entered.</translation>
+      <translation>Üres érték került megadásra.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/greader/gui/greaderaccountdetails.cpp" line="163"/>
@@ -4219,7 +4219,7 @@ Login tokens expiration: %2</translation>
     <message>
       <location filename="../src/librssguard/gui/reusable/helpspoiler.cpp" line="25"/>
       <source>View more information on this</source>
-      <translation type="unfinished">View more information on this</translation>
+      <translation>További információ megjelenítése</translation>
     </message>
   </context>
   <context>
@@ -4382,27 +4382,27 @@ Login tokens expiration: %2</translation>
     <message>
       <location filename="../src/librssguard/gui/mediaplayer/libmpv/libmpvbackend.cpp" line="271"/>
       <source>Not a media file</source>
-      <translation type="unfinished">Not a media file</translation>
+      <translation>Nem médiafájl</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/mediaplayer/libmpv/libmpvbackend.cpp" line="274"/>
       <source>Unknown file format</source>
-      <translation type="unfinished">Unknown file format</translation>
+      <translation>Ismeretlen fájlformátum</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/mediaplayer/libmpv/libmpvbackend.cpp" line="277"/>
       <source>Unsupported file format</source>
-      <translation type="unfinished">Unsupported file format</translation>
+      <translation>Nem támogatott fájlformátum</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/mediaplayer/libmpv/libmpvbackend.cpp" line="281"/>
       <source>Unknown error (%1)</source>
-      <translation type="unfinished">Unknown error (%1)</translation>
+      <translation>Ismeretlen hiba (%1)</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/mediaplayer/libmpv/libmpvbackend.cpp" line="300"/>
       <source>Stopped</source>
-      <translation type="unfinished">Stopped</translation>
+      <translation>Leállítva</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/mediaplayer/libmpv/libmpvbackend.cpp" line="306"/>
@@ -4423,72 +4423,72 @@ Login tokens expiration: %2</translation>
     <message>
       <location filename="../src/librssguard/gui/richtexteditor/mrichtextedit.ui" line="56"/>
       <source>Paragraph formatting</source>
-      <translation type="unfinished">Paragraph formatting</translation>
+      <translation>Bekezdés formázása</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/richtexteditor/mrichtextedit.ui" line="79"/>
       <source>Undo</source>
-      <translation type="unfinished">Undo</translation>
+      <translation>Újra</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/richtexteditor/mrichtextedit.ui" line="98"/>
       <source>Redo</source>
-      <translation type="unfinished">Redo</translation>
+      <translation>Visszavonás</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/richtexteditor/mrichtextedit.ui" line="114"/>
       <source>Cut</source>
-      <translation type="unfinished">Cut</translation>
+      <translation>Kivágás</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/richtexteditor/mrichtextedit.ui" line="130"/>
       <source>Copy</source>
-      <translation type="unfinished">Copy</translation>
+      <translation>Másolás</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/richtexteditor/mrichtextedit.ui" line="146"/>
       <source>Paste (CTRL+V)</source>
-      <translation type="unfinished">Paste (CTRL+V)</translation>
+      <translation>Beillesztés (CTRL+V)</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/richtexteditor/mrichtextedit.ui" line="149"/>
       <source>Paste</source>
-      <translation type="unfinished">Paste</translation>
+      <translation>Beillesztés</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/richtexteditor/mrichtextedit.ui" line="172"/>
       <source>Link (CTRL+L)</source>
-      <translation type="unfinished">Link (CTRL+L)</translation>
+      <translation>Link (CTRL+L)</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/richtexteditor/mrichtextedit.ui" line="175"/>
       <source>Link</source>
-      <translation type="unfinished">Link</translation>
+      <translation>Link</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/richtexteditor/mrichtextedit.ui" line="204"/>
       <source>Bold</source>
-      <translation type="unfinished">Bold</translation>
+      <translation>Félkövér</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/richtexteditor/mrichtextedit.ui" line="223"/>
       <source>Italic (CTRL+I)</source>
-      <translation type="unfinished">Italic (CTRL+I)</translation>
+      <translation>Dőlt (CTRL+I)</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/richtexteditor/mrichtextedit.ui" line="226"/>
       <source>Italic</source>
-      <translation type="unfinished">Italic</translation>
+      <translation>Dőlt</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/richtexteditor/mrichtextedit.ui" line="245"/>
       <source>Underline (CTRL+U)</source>
-      <translation type="unfinished">Underline (CTRL+U)</translation>
+      <translation>Aláhúzott (CTRL+U)</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/richtexteditor/mrichtextedit.ui" line="248"/>
       <source>Underline</source>
-      <translation type="unfinished">Underline</translation>
+      <translation>Aláhúzott</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/richtexteditor/mrichtextedit.ui" line="264"/>
@@ -4498,47 +4498,47 @@ Login tokens expiration: %2</translation>
     <message>
       <location filename="../src/librssguard/gui/richtexteditor/mrichtextedit.ui" line="284"/>
       <source>Bullet list (CTRL+-)</source>
-      <translation type="unfinished">Bullet list (CTRL+-)</translation>
+      <translation>Felsorolás (CTRL+-)</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/richtexteditor/mrichtextedit.ui" line="287"/>
       <source>Bullet list</source>
-      <translation type="unfinished">Bullet list</translation>
+      <translation>Felsorolás</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/richtexteditor/mrichtextedit.ui" line="306"/>
       <source>Ordered list (CTRL+=)</source>
-      <translation type="unfinished">Ordered list (CTRL+=)</translation>
+      <translation>Számozott lista (CTRL+=)</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/richtexteditor/mrichtextedit.ui" line="309"/>
       <source>Ordered list</source>
-      <translation type="unfinished">Ordered list</translation>
+      <translation>Számozott lista</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/richtexteditor/mrichtextedit.ui" line="328"/>
       <source>Decrease indentation (CTRL+,)</source>
-      <translation type="unfinished">Decrease indentation (CTRL+,)</translation>
+      <translation>Behúzás csökkentése (CTRL+,)</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/richtexteditor/mrichtextedit.ui" line="331"/>
       <source>Decrease indentation</source>
-      <translation type="unfinished">Decrease indentation</translation>
+      <translation>Behúzás csökkentése</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/richtexteditor/mrichtextedit.ui" line="347"/>
       <source>Increase indentation (CTRL+.)</source>
-      <translation type="unfinished">Increase indentation (CTRL+.)</translation>
+      <translation>Behúzás növelése (CTRL+.)</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/richtexteditor/mrichtextedit.ui" line="350"/>
       <source>Increase indentation</source>
-      <translation type="unfinished">Increase indentation</translation>
+      <translation>Behúzás növelése</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/richtexteditor/mrichtextedit.ui" line="385"/>
       <source>Text foreground color</source>
-      <translation type="unfinished">Text foreground color</translation>
+      <translation>Szöveg előtér szín</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/richtexteditor/mrichtextedit.ui" line="413"/>
@@ -4699,7 +4699,7 @@ Login tokens expiration: %2</translation>
     <message>
       <location filename="../src/librssguard/gui/mediaplayer/mediaplayer.ui" line="155"/>
       <source>Download</source>
-      <translation type="unfinished">Download</translation>
+      <translation>Letöltés</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/mediaplayer/mediaplayer.ui" line="162"/>
@@ -4709,7 +4709,7 @@ Login tokens expiration: %2</translation>
     <message>
       <location filename="../src/librssguard/gui/mediaplayer/mediaplayer.cpp" line="43"/>
       <source>Starting</source>
-      <translation type="unfinished">Starting</translation>
+      <translation>Indítás</translation>
     </message>
   </context>
   <context>
@@ -4727,22 +4727,22 @@ Login tokens expiration: %2</translation>
     <message>
       <location filename="../src/librssguard/gui/messagebrowser.cpp" line="173"/>
       <source>Open in external browser</source>
-      <translation type="unfinished">Open in external browser</translation>
+      <translation>Megnyitás külső böngészőben</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/messagebrowser.cpp" line="174"/>
       <source>Download</source>
-      <translation type="unfinished">Download</translation>
+      <translation>Letöltés</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/messagebrowser.cpp" line="178"/>
       <source>Always open links in external browser.</source>
-      <translation type="unfinished">Always open links in external browser.</translation>
+      <translation>A hivatkozások mindig külső böngészőben nyíljanak meg.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/messagebrowser.cpp" line="201"/>
       <source>Incorrect link</source>
-      <translation type="unfinished">Incorrect link</translation>
+      <translation>Érvénytelen hivatkozás</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/messagebrowser.cpp" line="201"/>
@@ -4752,12 +4752,12 @@ Login tokens expiration: %2</translation>
     <message>
       <location filename="../src/librssguard/gui/messagebrowser.cpp" line="48"/>
       <source>Click this link to download it or open it with external browser.</source>
-      <translation type="unfinished">Click this link to download it or open it with external browser.</translation>
+      <translation>Kattintson erre a hivatkozásra a letöltéshez vagy a külső böngészőben történő megnyitáshoz.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/messagebrowser.cpp" line="97"/>
       <source>image</source>
-      <translation type="unfinished">image</translation>
+      <translation>kép</translation>
     </message>
   </context>
   <context>
@@ -4765,17 +4765,17 @@ Login tokens expiration: %2</translation>
     <message>
       <location filename="../src/librssguard/gui/reusable/messagecountspinbox.cpp" line="12"/>
       <source>= unlimited</source>
-      <translation type="unfinished">= unlimited</translation>
+      <translation>= korlátlan</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/reusable/messagecountspinbox.cpp" line="15"/>
       <source>article</source>
-      <translation type="unfinished">article</translation>
+      <translation>cikk</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/reusable/messagecountspinbox.cpp" line="18"/>
       <source>articles</source>
-      <translation type="unfinished">articles</translation>
+      <translation>cikkek</translation>
     </message>
   </context>
   <context>
@@ -4783,17 +4783,17 @@ Login tokens expiration: %2</translation>
     <message>
       <location filename="../src/librssguard/gui/messagepreviewer.cpp" line="28"/>
       <source>Mark article read</source>
-      <translation type="unfinished">Mark article read</translation>
+      <translation>Cikk megjelölése olvasottként</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/messagepreviewer.cpp" line="33"/>
       <source>Mark article unread</source>
-      <translation type="unfinished">Mark article unread</translation>
+      <translation>Cikk megjelölése olvasatlannak</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/messagepreviewer.cpp" line="38"/>
       <source>Switch article importance</source>
-      <translation type="unfinished">Switch article importance</translation>
+      <translation>Cikk fontosságának változtatása</translation>
     </message>
   </context>
   <context>
@@ -4801,7 +4801,7 @@ Login tokens expiration: %2</translation>
     <message>
       <location filename="../src/librssguard/gui/messagetextbrowser.cpp" line="65"/>
       <source>Open with external tool</source>
-      <translation type="unfinished">Open with external tool</translation>
+      <translation>Megnyitás külső eszközzel</translation>
     </message>
   </context>
   <context>
@@ -4809,7 +4809,7 @@ Login tokens expiration: %2</translation>
     <message>
       <location filename="../src/librssguard/core/messagesforfiltersmodel.cpp" line="12"/>
       <source>Read</source>
-      <translation type="unfinished">Read</translation>
+      <translation>Olvasott</translation>
     </message>
     <message>
       <location filename="../src/librssguard/core/messagesforfiltersmodel.cpp" line="12"/>
@@ -4819,7 +4819,7 @@ Login tokens expiration: %2</translation>
     <message>
       <location filename="../src/librssguard/core/messagesforfiltersmodel.cpp" line="12"/>
       <source>In recycle bin</source>
-      <translation type="unfinished">In recycle bin</translation>
+      <translation>Lomtárban</translation>
     </message>
     <message>
       <location filename="../src/librssguard/core/messagesforfiltersmodel.cpp" line="12"/>
@@ -4844,17 +4844,17 @@ Login tokens expiration: %2</translation>
     <message>
       <location filename="../src/librssguard/core/messagesforfiltersmodel.cpp" line="13"/>
       <source>Date</source>
-      <translation type="unfinished">Date</translation>
+      <translation>Dátum</translation>
     </message>
     <message>
       <location filename="../src/librssguard/core/messagesforfiltersmodel.cpp" line="36"/>
       <source>true</source>
-      <translation type="unfinished">true</translation>
+      <translation>igaz</translation>
     </message>
     <message>
       <location filename="../src/librssguard/core/messagesforfiltersmodel.cpp" line="37"/>
       <source>false</source>
-      <translation type="unfinished">false</translation>
+      <translation>hamis</translation>
     </message>
   </context>
   <context>
@@ -4862,17 +4862,17 @@ Login tokens expiration: %2</translation>
     <message>
       <location filename="../src/librssguard/core/messagesmodel.cpp" line="281"/>
       <source>Id</source>
-      <translation type="unfinished">Id</translation>
+      <translation>Azonosító</translation>
     </message>
     <message>
       <location filename="../src/librssguard/core/messagesmodel.cpp" line="282"/>
       <source>Read</source>
-      <translation type="unfinished">Read</translation>
+      <translation>Olvasott</translation>
     </message>
     <message>
       <location filename="../src/librssguard/core/messagesmodel.cpp" line="284"/>
       <source>Deleted</source>
-      <translation type="unfinished">Deleted</translation>
+      <translation>Törölt</translation>
     </message>
     <message>
       <location filename="../src/librssguard/core/messagesmodel.cpp" line="283"/>
@@ -4882,7 +4882,7 @@ Login tokens expiration: %2</translation>
     <message>
       <location filename="../src/librssguard/core/messagesmodel.cpp" line="297"/>
       <source>Feed</source>
-      <translation type="unfinished">Feed</translation>
+      <translation>Hírforrás</translation>
     </message>
     <message>
       <location filename="../src/librssguard/core/messagesmodel.cpp" line="287"/>
@@ -4902,17 +4902,17 @@ Login tokens expiration: %2</translation>
     <message>
       <location filename="../src/librssguard/core/messagesmodel.cpp" line="285"/>
       <source>Permanently deleted</source>
-      <translation type="unfinished">Permanently deleted</translation>
+      <translation>Véglegesen törölt</translation>
     </message>
     <message>
       <location filename="../src/librssguard/core/messagesmodel.cpp" line="292"/>
       <source>Attachments</source>
-      <translation type="unfinished">Attachments</translation>
+      <translation>Mellékletek</translation>
     </message>
     <message>
       <location filename="../src/librssguard/core/messagesmodel.cpp" line="307"/>
       <source>List of attachments.</source>
-      <translation type="unfinished">List of attachments.</translation>
+      <translation>Mellékletek listája.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/core/messagesmodel.cpp" line="294"/>
@@ -4947,7 +4947,7 @@ Login tokens expiration: %2</translation>
     <message>
       <location filename="../src/librssguard/core/messagesmodel.cpp" line="290"/>
       <source>Date</source>
-      <translation type="unfinished">Date</translation>
+      <translation>Dátum</translation>
     </message>
     <message>
       <location filename="../src/librssguard/core/messagesmodel.cpp" line="201"/>
@@ -4957,17 +4957,17 @@ Login tokens expiration: %2</translation>
     <message>
       <location filename="../src/librssguard/core/messagesmodel.cpp" line="120"/>
       <source>dot</source>
-      <translation type="unfinished">dot</translation>
+      <translation>pont</translation>
     </message>
     <message>
       <location filename="../src/librssguard/core/messagesmodel.cpp" line="123"/>
       <source>envelope</source>
-      <translation type="unfinished">envelope</translation>
+      <translation>boríték</translation>
     </message>
     <message>
       <location filename="../src/librssguard/core/messagesmodel.cpp" line="126"/>
       <source>feed icon</source>
-      <translation type="unfinished">feed icon</translation>
+      <translation>hírforrás ikon</translation>
     </message>
     <message>
       <location filename="../src/librssguard/core/messagesmodel.cpp" line="288"/>
@@ -4977,7 +4977,7 @@ Login tokens expiration: %2</translation>
     <message>
       <location filename="../src/librssguard/core/messagesmodel.cpp" line="298"/>
       <source>RTL</source>
-      <translation type="unfinished">RTL</translation>
+      <translation>RTL</translation>
     </message>
     <message>
       <location filename="../src/librssguard/core/messagesmodel.cpp" line="300"/>
@@ -4997,22 +4997,22 @@ Login tokens expiration: %2</translation>
     <message>
       <location filename="../src/librssguard/core/messagesmodel.cpp" line="303"/>
       <source>Is article read?</source>
-      <translation type="unfinished">Is article read?</translation>
+      <translation>Olvasott cikk?</translation>
     </message>
     <message>
       <location filename="../src/librssguard/core/messagesmodel.cpp" line="303"/>
       <source>Is article important?</source>
-      <translation type="unfinished">Is article important?</translation>
+      <translation>Fontos cikk?</translation>
     </message>
     <message>
       <location filename="../src/librssguard/core/messagesmodel.cpp" line="304"/>
       <source>Is article deleted?</source>
-      <translation type="unfinished">Is article deleted?</translation>
+      <translation>Törölt cikk?</translation>
     </message>
     <message>
       <location filename="../src/librssguard/core/messagesmodel.cpp" line="304"/>
       <source>Is article permanently deleted from recycle bin?</source>
-      <translation type="unfinished">Is article permanently deleted from recycle bin?</translation>
+      <translation>A cikk véglegesen törlésre került a lomtárból?</translation>
     </message>
     <message>
       <location filename="../src/librssguard/core/messagesmodel.cpp" line="305"/>
@@ -5022,17 +5022,17 @@ Login tokens expiration: %2</translation>
     <message>
       <location filename="../src/librssguard/core/messagesmodel.cpp" line="305"/>
       <source>Title of the article.</source>
-      <translation type="unfinished">Title of the article.</translation>
+      <translation>A cikk címe.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/core/messagesmodel.cpp" line="306"/>
       <source>Url of the article.</source>
-      <translation type="unfinished">Url of the article.</translation>
+      <translation>A cikk URL-je.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/core/messagesmodel.cpp" line="306"/>
       <source>Author of the article.</source>
-      <translation type="unfinished">Author of the article.</translation>
+      <translation>A cikk szerzője.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/core/messagesmodel.cpp" line="306"/>
@@ -5067,7 +5067,7 @@ Login tokens expiration: %2</translation>
     <message>
       <location filename="../src/librssguard/core/messagesmodel.cpp" line="309"/>
       <source>Name of feed of the article.</source>
-      <translation type="unfinished">Name of feed of the article.</translation>
+      <translation>A cikket tartalmazó hírforrás neve.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/core/messagesmodel.cpp" line="310"/>
@@ -5284,7 +5284,7 @@ Login tokens expiration: %2</translation>
     <message>
       <location filename="../src/librssguard/gui/messagesview.cpp" line="421"/>
       <source>Open with external tool</source>
-      <translation type="unfinished">Open with external tool</translation>
+      <translation>Megnyitás külső eszközzel</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/messagesview.cpp" line="646"/>
@@ -5330,7 +5330,7 @@ Login tokens expiration: %2</translation>
     <message>
       <location filename="../src/librssguard/services/abstract/gui/multifeededitcheckbox.cpp" line="6"/>
       <source>Apply this to all edited feeds.</source>
-      <translation type="unfinished">Apply this to all edited feeds.</translation>
+      <translation>Alkalmazás minden szerkesztett hírforrásra.</translation>
     </message>
   </context>
   <context>
@@ -5351,61 +5351,61 @@ Login tokens expiration: %2</translation>
       <location filename="../src/librssguard/network-web/networkfactory.cpp" line="97"/>
       <source>connection refused</source>
       <extracomment>Network status.</extracomment>
-      <translation type="unfinished">connection refused</translation>
+      <translation>kapcsolat visszautasítva</translation>
     </message>
     <message>
       <location filename="../src/librssguard/network-web/networkfactory.cpp" line="102"/>
       <source>connection timed out</source>
       <extracomment>Network status.</extracomment>
-      <translation type="unfinished">connection timed out</translation>
+      <translation>kapcsolat időtúllépés</translation>
     </message>
     <message>
       <location filename="../src/librssguard/network-web/networkfactory.cpp" line="107"/>
       <source>SSL handshake failed</source>
       <extracomment>Network status.</extracomment>
-      <translation type="unfinished">SSL handshake failed</translation>
+      <translation>SSL ellenőrzés sikertelen</translation>
     </message>
     <message>
       <location filename="../src/librssguard/network-web/networkfactory.cpp" line="113"/>
       <source>proxy server connection refused</source>
       <extracomment>Network status.</extracomment>
-      <translation type="unfinished">proxy server connection refused</translation>
+      <translation>proxy szerver visszautasított kapcsolódás</translation>
     </message>
     <message>
       <location filename="../src/librssguard/network-web/networkfactory.cpp" line="118"/>
       <source>temporary failure</source>
       <extracomment>Network status.</extracomment>
-      <translation type="unfinished">temporary failure</translation>
+      <translation>átmeneti hiba</translation>
     </message>
     <message>
       <location filename="../src/librssguard/network-web/networkfactory.cpp" line="123"/>
       <source>authentication failed</source>
       <extracomment>Network status.</extracomment>
-      <translation type="unfinished">authentication failed</translation>
+      <translation>hitelesítés sikertelen</translation>
     </message>
     <message>
       <location filename="../src/librssguard/network-web/networkfactory.cpp" line="128"/>
       <source>proxy authentication required</source>
       <extracomment>Network status.</extracomment>
-      <translation type="unfinished">proxy authentication required</translation>
+      <translation>proxy hitelesítés szükséges</translation>
     </message>
     <message>
       <location filename="../src/librssguard/network-web/networkfactory.cpp" line="133"/>
       <source>proxy server not found</source>
       <extracomment>Network status.</extracomment>
-      <translation type="unfinished">proxy server not found</translation>
+      <translation>proxy szerver nem található</translation>
     </message>
     <message>
       <location filename="../src/librssguard/network-web/networkfactory.cpp" line="148"/>
       <source>content not found</source>
       <extracomment>Network status.</extracomment>
-      <translation type="unfinished">content not found</translation>
+      <translation>tartalom nem található</translation>
     </message>
     <message>
       <location filename="../src/librssguard/network-web/networkfactory.cpp" line="154"/>
       <source>unknown error (%1)</source>
       <extracomment>Network status.</extracomment>
-      <translation type="unfinished">unknown error (%1)</translation>
+      <translation>ismeretlen hiba (%1)</translation>
     </message>
     <message>
       <location filename="../src/librssguard/network-web/networkfactory.cpp" line="138"/>
@@ -5416,18 +5416,18 @@ Login tokens expiration: %2</translation>
     <message>
       <location filename="../src/librssguard/network-web/networkfactory.cpp" line="82"/>
       <source>access to content was denied</source>
-      <translation type="unfinished">access to content was denied</translation>
+      <translation>hozzáférés a tartalomhoz megtagadva</translation>
     </message>
     <message>
       <location filename="../src/librssguard/network-web/networkfactory.cpp" line="91"/>
       <source>connection timed out or was cancelled</source>
-      <translation type="unfinished">connection timed out or was cancelled</translation>
+      <translation>a kapcsolat időtúllépés miatt megszakadt vagy bontották</translation>
     </message>
     <message>
       <location filename="../src/librssguard/network-web/networkfactory.cpp" line="143"/>
       <source>unknown content</source>
       <extracomment>Network status.</extracomment>
-      <translation type="unfinished">unknown content</translation>
+      <translation>ismertelen tartalom</translation>
     </message>
   </context>
   <context>
@@ -5435,12 +5435,12 @@ Login tokens expiration: %2</translation>
     <message>
       <location filename="../src/librssguard/gui/reusable/networkproxydetails.cpp" line="21"/>
       <source>No proxy</source>
-      <translation type="unfinished">No proxy</translation>
+      <translation>Nincs proxy</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/reusable/networkproxydetails.cpp" line="22"/>
       <source>System proxy</source>
-      <translation type="unfinished">System proxy</translation>
+      <translation>Rendszer proxy</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/reusable/networkproxydetails.ui" line="14"/>
@@ -5455,12 +5455,12 @@ Login tokens expiration: %2</translation>
     <message>
       <location filename="../src/librssguard/gui/reusable/networkproxydetails.ui" line="41"/>
       <source>Hostname or IP of your proxy server</source>
-      <translation type="unfinished">Hostname or IP of your proxy server</translation>
+      <translation>A proxy szerver neve vagy ip címe</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/reusable/networkproxydetails.ui" line="48"/>
       <source>Port</source>
-      <translation type="unfinished">Port</translation>
+      <translation>Port</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/reusable/networkproxydetails.ui" line="76"/>
@@ -5470,7 +5470,7 @@ Login tokens expiration: %2</translation>
     <message>
       <location filename="../src/librssguard/gui/reusable/networkproxydetails.ui" line="92"/>
       <source>Your username for proxy server authentication</source>
-      <translation type="unfinished">Your username for proxy server authentication</translation>
+      <translation>Felhasználónév proxy szerver hitelesítéshez</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/reusable/networkproxydetails.ui" line="99"/>
@@ -5480,18 +5480,18 @@ Login tokens expiration: %2</translation>
     <message>
       <location filename="../src/librssguard/gui/reusable/networkproxydetails.ui" line="118"/>
       <source>Your password for proxy server authentication</source>
-      <translation type="unfinished">Your password for proxy server authentication</translation>
+      <translation>Jelszó prox szerver hitelesítéshez</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/reusable/networkproxydetails.cpp" line="12"/>
       <source>Note that these settings are applied only on newly established connections.</source>
-      <translation type="unfinished">Note that these settings are applied only on newly established connections.</translation>
+      <translation>Vegye figyelembe, hogy ezek a beállítások csak az újonnan létesített kapcsolatokra kerülnek alkalmazásra.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/reusable/networkproxydetails.ui" line="146"/>
       <source>Type</source>
       <extracomment>Proxy server type.</extracomment>
-      <translation type="unfinished">Type</translation>
+      <translation>Típus</translation>
     </message>
   </context>
   <context>
@@ -5500,7 +5500,7 @@ Login tokens expiration: %2</translation>
       <location filename="../src/librssguard/miscellaneous/nodejs.cpp" line="76"/>
       <location filename="../src/librssguard/miscellaneous/nodejs.cpp" line="84"/>
       <source>file not found</source>
-      <translation type="unfinished">file not found</translation>
+      <translation>fájl nem található</translation>
     </message>
   </context>
   <context>
@@ -5508,7 +5508,7 @@ Login tokens expiration: %2</translation>
     <message>
       <location filename="../src/librssguard/network-web/oauth2service.cpp" line="91"/>
       <source>Click here to login.</source>
-      <translation type="unfinished">Click here to login.</translation>
+      <translation>Kattintson ide a belépéshez.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/network-web/oauth2service.cpp" line="221"/>
@@ -5576,12 +5576,12 @@ Login tokens expiration: %2</translation>
     <message>
       <location filename="../src/librssguard/services/owncloud/gui/owncloudaccountdetails.cpp" line="31"/>
       <source>= unlimited</source>
-      <translation type="unfinished">= unlimited</translation>
+      <translation>= korlátlan</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/owncloud/gui/owncloudaccountdetails.cpp" line="67"/>
       <source>Network error: &apos;%1&apos;.</source>
-      <translation type="unfinished">Network error: &apos;%1&apos;.</translation>
+      <translation>Hálózati hiba: &apos;%1&apos;.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/owncloud/gui/owncloudaccountdetails.cpp" line="68"/>
@@ -5633,17 +5633,17 @@ Login tokens expiration: %2</translation>
     <message>
       <location filename="../src/librssguard/services/owncloud/gui/owncloudaccountdetails.cpp" line="117"/>
       <source>URL cannot be empty.</source>
-      <translation type="unfinished">URL cannot be empty.</translation>
+      <translation>Az URL nem lehet üres.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/owncloud/gui/owncloudaccountdetails.cpp" line="120"/>
       <source>URL is okay.</source>
-      <translation type="unfinished">URL is okay.</translation>
+      <translation>URL rendben.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/owncloud/gui/owncloudaccountdetails.cpp" line="34"/>
       <source>articles</source>
-      <translation type="unfinished">articles</translation>
+      <translation>cikkek</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/owncloud/gui/owncloudaccountdetails.ui" line="19"/>
@@ -5668,7 +5668,7 @@ Login tokens expiration: %2</translation>
     <message>
       <location filename="../src/librssguard/services/owncloud/gui/owncloudaccountdetails.ui" line="84"/>
       <source>Authentication</source>
-      <translation type="unfinished">Authentication</translation>
+      <translation>Hitelesítés</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/owncloud/gui/owncloudaccountdetails.ui" line="96"/>
@@ -5683,7 +5683,7 @@ Login tokens expiration: %2</translation>
     <message>
       <location filename="../src/librssguard/services/owncloud/gui/owncloudaccountdetails.ui" line="127"/>
       <source>&amp;Test setup</source>
-      <translation type="unfinished">&amp;Test setup</translation>
+      <translation>Beállítások &amp;tesztelése</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/owncloud/gui/owncloudaccountdetails.ui" line="162"/>
@@ -5937,32 +5937,32 @@ List of supported readers:</translation>
       <location filename="../src/librssguard/services/standard/parsers/rssparser.cpp" line="196"/>
       <location filename="../src/librssguard/services/standard/parsers/sitemapparser.cpp" line="193"/>
       <source>XML is not well-formed, %1</source>
-      <translation type="unfinished">XML is not well-formed, %1</translation>
+      <translation>Az XML formázása nem megfelelő, %1</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/standard/parsers/atomparser.cpp" line="252"/>
       <source>not an ATOM feed</source>
-      <translation type="unfinished">not an ATOM feed</translation>
+      <translation>nem ATOM hírforrás</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/standard/parsers/jsonparser.cpp" line="123"/>
       <source>JSON error &apos;%1&apos;</source>
-      <translation type="unfinished">JSON error &apos;%1&apos;</translation>
+      <translation>JSON hiba &apos;%1&apos;</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/standard/parsers/jsonparser.cpp" line="154"/>
       <source>not a JSON feed</source>
-      <translation type="unfinished">not a JSON feed</translation>
+      <translation>nem JSON hírforrás</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/standard/parsers/rdfparser.cpp" line="202"/>
       <source>not an RDF feed</source>
-      <translation type="unfinished">not an RDF feed</translation>
+      <translation>nem RDF hírforrás</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/standard/parsers/rssparser.cpp" line="202"/>
       <source>not a RSS feed</source>
-      <translation type="unfinished">not a RSS feed</translation>
+      <translation>nem RSS hírforrás</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/standard/parsers/sitemapparser.cpp" line="158"/>
@@ -5982,22 +5982,22 @@ List of supported readers:</translation>
     <message>
       <location filename="../src/librssguard/gui/webviewers/webviewer.cpp" line="37"/>
       <source>Open with external tool</source>
-      <translation type="unfinished">Open with external tool</translation>
+      <translation>Megnyitás külső eszközzel</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/webviewers/webviewer.cpp" line="100"/>
       <source>Open in external browser</source>
-      <translation type="unfinished">Open in external browser</translation>
+      <translation>Megnyitás külső böngészőben</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/webviewers/webviewer.cpp" line="103"/>
       <source>Play in media player</source>
-      <translation type="unfinished">Play in media player</translation>
+      <translation>Lejátszás a médialejátszóban</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/webviewers/webviewer.cpp" line="106"/>
       <source>(not supported)</source>
-      <translation type="unfinished">(not supported)</translation>
+      <translation>(nem támogatott)</translation>
     </message>
   </context>
   <context>
@@ -6010,7 +6010,7 @@ List of supported readers:</translation>
     <message>
       <location filename="../src/librssguard/gui/mediaplayer/qtmultimedia/qtmultimediabackend.cpp" line="85"/>
       <source>Loading...</source>
-      <translation type="unfinished">Loading...</translation>
+      <translation>Betöltés...</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/mediaplayer/qtmultimedia/qtmultimediabackend.cpp" line="88"/>
@@ -6045,32 +6045,32 @@ List of supported readers:</translation>
     <message>
       <location filename="../src/librssguard/gui/mediaplayer/qtmultimedia/qtmultimediabackend.cpp" line="106"/>
       <source>Unknown</source>
-      <translation type="unfinished">Unknown</translation>
+      <translation>Ismeretlen</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/mediaplayer/qtmultimedia/qtmultimediabackend.cpp" line="113"/>
       <source>Cannot load media (missing codecs)</source>
-      <translation type="unfinished">Cannot load media (missing codecs)</translation>
+      <translation>Média betöltése sikertelen (hiányzó kodekek)</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/mediaplayer/qtmultimedia/qtmultimediabackend.cpp" line="116"/>
       <source>Unrecognized format</source>
-      <translation type="unfinished">Unrecognized format</translation>
+      <translation>Ismeretlen formátum</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/mediaplayer/qtmultimedia/qtmultimediabackend.cpp" line="119"/>
       <source>Network problem</source>
-      <translation type="unfinished">Network problem</translation>
+      <translation>Hálózati hiba</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/mediaplayer/qtmultimedia/qtmultimediabackend.cpp" line="122"/>
       <source>Access denied</source>
-      <translation type="unfinished">Access denied</translation>
+      <translation>Hozzáférés megtagadva</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/mediaplayer/qtmultimedia/qtmultimediabackend.cpp" line="126"/>
       <source>Service is missing</source>
-      <translation type="unfinished">Service is missing</translation>
+      <translation>Hiányzó szolgáltatás</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/mediaplayer/qtmultimedia/qtmultimediabackend.cpp" line="129"/>
@@ -6080,12 +6080,12 @@ List of supported readers:</translation>
     <message>
       <location filename="../src/librssguard/gui/mediaplayer/qtmultimedia/qtmultimediabackend.cpp" line="133"/>
       <source>No errors</source>
-      <translation type="unfinished">No errors</translation>
+      <translation>Nincsenek hibák</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/mediaplayer/qtmultimedia/qtmultimediabackend.cpp" line="136"/>
       <source>Unknown error</source>
-      <translation type="unfinished">Unknown error</translation>
+      <translation>Ismeretlen hiba</translation>
     </message>
   </context>
   <context>
@@ -6098,7 +6098,7 @@ List of supported readers:</translation>
     <message>
       <location filename="../src/librssguard/network-web/readability.cpp" line="38"/>
       <source>You can now use reader mode!</source>
-      <translation type="unfinished">You can now use reader mode!</translation>
+      <translation>Most már használhatja az olvasó módot!</translation>
     </message>
     <message>
       <location filename="../src/librssguard/network-web/readability.cpp" line="58"/>
@@ -6114,7 +6114,7 @@ List of supported readers:</translation>
       <location filename="../src/librssguard/network-web/readability.cpp" line="80"/>
       <location filename="../src/librssguard/network-web/readability.cpp" line="98"/>
       <source>Node.js libraries not installed</source>
-      <translation type="unfinished">Node.js libraries not installed</translation>
+      <translation>A Node.js könyvtárak nincsenek telepítve</translation>
     </message>
     <message>
       <location filename="../src/librssguard/network-web/readability.cpp" line="81"/>
@@ -6124,7 +6124,7 @@ List of supported readers:</translation>
     <message>
       <location filename="../src/librssguard/network-web/readability.cpp" line="99"/>
       <source>Node.js is not configured properly. Go to &quot;Settings&quot; -&gt; &quot;Node.js&quot; and check if your Node.js is properly configured.</source>
-      <translation type="unfinished">Node.js is not configured properly. Go to &quot;Settings&quot; -&gt; &quot;Node.js&quot; and check if your Node.js is properly configured.</translation>
+      <translation>A Node.js nincs megfelelően konfigurálva. Menjen a &quot;Beálíltások&quot; -&gt; &quot;Node.js&quot; menüponthoz és ellenőrizze a beállításokat.</translation>
     </message>
   </context>
   <context>
@@ -6132,17 +6132,17 @@ List of supported readers:</translation>
     <message>
       <location filename="../src/librssguard/services/abstract/recyclebin.cpp" line="16"/>
       <source>Recycle bin</source>
-      <translation type="unfinished">Recycle bin</translation>
+      <translation>Lomtár</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/abstract/recyclebin.cpp" line="46"/>
       <source>Restore recycle bin</source>
-      <translation type="unfinished">Restore recycle bin</translation>
+      <translation>Lomtár visszaállítása</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/abstract/recyclebin.cpp" line="47"/>
       <source>Empty recycle bin</source>
-      <translation type="unfinished">Empty recycle bin</translation>
+      <translation>Lomtár kiürítése</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/abstract/recyclebin.cpp" line="104"/>
@@ -6152,18 +6152,18 @@ List of supported readers:</translation>
     <message>
       <location filename="../src/librssguard/services/abstract/recyclebin.cpp" line="105"/>
       <source>Do you really want to empty your recycle bin?</source>
-      <translation type="unfinished">Do you really want to empty your recycle bin?</translation>
+      <translation>Biztos, hogy ki szeretné üríteni a lomtárat?</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/abstract/recyclebin.cpp" line="17"/>
       <source>Recycle bin contains all deleted articles from all feeds.</source>
-      <translation type="unfinished">Recycle bin contains all deleted articles from all feeds.</translation>
+      <translation>A lomtár tartalmazza az összes hírforrás minden törölt cikkét.</translation>
     </message>
     <message numerus="yes">
       <location filename="../src/librssguard/services/abstract/recyclebin.cpp" line="21"/>
       <source>%n deleted article(s).</source>
       <translation type="unfinished">
-        <numerusform>%n deleted article(s).</numerusform>
+        <numerusform>%n törölt cikk.</numerusform>
         <numerusform>%n deleted article(s).</numerusform>
       </translation>
     </message>
@@ -6173,13 +6173,13 @@ List of supported readers:</translation>
     <message>
       <location filename="../src/librssguard/services/reddit/gui/redditaccountdetails.cpp" line="15"/>
       <source>You have to fill in your client ID/secret and also fill in correct redirect URL.</source>
-      <translation type="unfinished">You have to fill in your client ID/secret and also fill in correct redirect URL.</translation>
+      <translation>Szükséges a kliens azonosító/titkos kulcs megadása valamint a helyes átirányítási URL kitöltése.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/reddit/gui/redditaccountdetails.cpp" line="18"/>
       <location filename="../src/librssguard/services/reddit/gui/redditaccountdetails.cpp" line="19"/>
       <source>Not tested yet.</source>
-      <translation type="unfinished">Not tested yet.</translation>
+      <translation>Még nem került tesztelésre.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/reddit/gui/redditaccountdetails.cpp" line="21"/>
@@ -6225,7 +6225,7 @@ List of supported readers:</translation>
     <message>
       <location filename="../src/librssguard/services/reddit/gui/redditaccountdetails.cpp" line="111"/>
       <source>Preconfigured client ID/secret will be used.</source>
-      <translation type="unfinished">Preconfigured client ID/secret will be used.</translation>
+      <translation>Az előre konfigurált kliens azonosító/titkos kulcs kerül használatra.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/reddit/gui/redditaccountdetails.cpp" line="113"/>
@@ -6486,12 +6486,12 @@ Number of categories: %2</translation>
     <message>
       <location filename="../src/librssguard/services/abstract/serviceroot.cpp" line="697"/>
       <source>Error when fetching list of feeds</source>
-      <translation type="unfinished">Error when fetching list of feeds</translation>
+      <translation>Hiba lépett fel a hírforrások listájának frissítése közben</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/abstract/serviceroot.cpp" line="698"/>
       <source>Feeds &amp; categories for account &apos;%1&apos; were not fetched, error: %2</source>
-      <translation type="unfinished">Feeds &amp; categories for account &apos;%1&apos; were not fetched, error: %2</translation>
+      <translation>A &apos;%1&apos; fiók hírforrásai és kategóriái nem kerültek frissítésre, hiba: %2</translation>
     </message>
   </context>
   <context>
@@ -6526,7 +6526,7 @@ File filter for external e-mail selection dialog.</extracomment>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsbrowsermail.cpp" line="183"/>
       <source>Opera 12 or older</source>
-      <translation type="unfinished">Opera 12 or older</translation>
+      <translation>Opera 12 vagy újabb</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsbrowsermail.cpp" line="314"/>
@@ -6551,12 +6551,12 @@ File filter for external e-mail selection dialog.</extracomment>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsbrowsermail.ui" line="34"/>
       <source>Enable HTTP/2</source>
-      <translation type="unfinished">Enable HTTP/2</translation>
+      <translation>HTTP/2 engedélyezése</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsbrowsermail.ui" line="41"/>
       <source>Enable API server</source>
-      <translation type="unfinished">Enable API server</translation>
+      <translation>API szerver engedélyezése</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsbrowsermail.ui" line="55"/>
@@ -6566,17 +6566,17 @@ File filter for external e-mail selection dialog.</extracomment>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsbrowsermail.ui" line="65"/>
       <source>Disable cache</source>
-      <translation type="unfinished">Disable cache</translation>
+      <translation>Gyorsítótár kikapcsolása</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsbrowsermail.ui" line="73"/>
       <source>External web browser</source>
-      <translation type="unfinished">External web browser</translation>
+      <translation>Külső web böngésző</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsbrowsermail.ui" line="79"/>
       <source>Always open hyperlinks in external web browser</source>
-      <translation type="unfinished">Always open hyperlinks in external web browser</translation>
+      <translation>A hivatkozások mindig külső böngészőben kerüljenek megnyitásra</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsbrowsermail.ui" line="99"/>
@@ -6603,14 +6603,14 @@ File filter for external e-mail selection dialog.</extracomment>
       <location filename="../src/librssguard/gui/settings/settingsbrowsermail.ui" line="139"/>
       <location filename="../src/librssguard/gui/settings/settingsbrowsermail.ui" line="256"/>
       <source>&amp;Browse</source>
-      <translation type="unfinished">&amp;Browse</translation>
+      <translation>&amp;Böngészés</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsbrowsermail.ui" line="148"/>
       <location filename="../src/librssguard/gui/settings/settingsbrowsermail.ui" line="265"/>
       <location filename="../src/librssguard/gui/settings/settingsbrowsermail.cpp" line="40"/>
       <source>Parameters</source>
-      <translation type="unfinished">Parameters</translation>
+      <translation>Paraméterek</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsbrowsermail.ui" line="158"/>
@@ -6637,12 +6637,12 @@ File filter for external e-mail selection dialog.</extracomment>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsbrowsermail.ui" line="194"/>
       <source>External e-mail client</source>
-      <translation type="unfinished">External e-mail client</translation>
+      <translation>Külső e-mail kliens</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsbrowsermail.ui" line="216"/>
       <source>Use custom external e-mail client</source>
-      <translation type="unfinished">Use custom external e-mail client</translation>
+      <translation>Külső e-mail kliens használata</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsbrowsermail.ui" line="228"/>
@@ -6657,7 +6657,7 @@ File filter for external e-mail selection dialog.</extracomment>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsbrowsermail.ui" line="296"/>
       <source>Select client</source>
-      <translation type="unfinished">Select client</translation>
+      <translation>Kliens kiválasztása</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsbrowsermail.cpp" line="29"/>
@@ -6671,37 +6671,37 @@ File filter for external e-mail selection dialog.</extracomment>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsbrowsermail.ui" line="311"/>
       <source>External tools</source>
-      <translation type="unfinished">External tools</translation>
+      <translation>Külső eszközök</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsbrowsermail.ui" line="346"/>
       <source>&amp;Add tool</source>
-      <translation type="unfinished">&amp;Add tool</translation>
+      <translation>Eszköz &amp;hozzáadása</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsbrowsermail.ui" line="356"/>
       <source>&amp;Edit selected tool</source>
-      <translation type="unfinished">&amp;Edit selected tool</translation>
+      <translation>Kiválasztott eszköz &amp;szerkesztése</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsbrowsermail.ui" line="366"/>
       <source>&amp;Delete selected tool</source>
-      <translation type="unfinished">&amp;Delete selected tool</translation>
+      <translation>Kiválasztott eszköz &amp;törlése</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsbrowsermail.cpp" line="34"/>
       <source>On this page, you can setup a list of external tools which can open URLs.</source>
-      <translation type="unfinished">On this page, you can setup a list of external tools which can open URLs.</translation>
+      <translation>Ezen az oldalon olyan külső eszközök listája állítható be, amelyek képesek URL-ek megnyitására.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsbrowsermail.cpp" line="301"/>
       <source>Select external tool</source>
-      <translation type="unfinished">Select external tool</translation>
+      <translation>Külső eszköz kiválasztása</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsbrowsermail.cpp" line="313"/>
       <source>Enter parameters</source>
-      <translation type="unfinished">Enter parameters</translation>
+      <translation>Paraméterek megadása</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsbrowsermail.cpp" line="23"/>
@@ -6711,7 +6711,7 @@ File filter for external e-mail selection dialog.</extracomment>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsbrowsermail.h" line="47"/>
       <source>Network &amp; web &amp; tools</source>
-      <translation type="unfinished">Network &amp; web &amp; tools</translation>
+      <translation>Hálózat &amp; web &amp; eszközök</translation>
     </message>
   </context>
   <context>
@@ -6719,27 +6719,27 @@ File filter for external e-mail selection dialog.</extracomment>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsdatabase.cpp" line="16"/>
       <source>Note that speed of used MySQL server and latency of used connection medium HEAVILY influences the final performance of this application. Using slow database connections leads to bad performance when browsing feeds or messages.</source>
-      <translation type="unfinished">Note that speed of used MySQL server and latency of used connection medium HEAVILY influences the final performance of this application. Using slow database connections leads to bad performance when browsing feeds or messages.</translation>
+      <translation>Vegye figyelembe hogy a használt MySQL szerver valamint az internetkapcsolat késleletetése nagy mértékben befolyásolja ezen alkalmazás teljesítményét. Lassú adatbázis kapcsolat használata rossz teljesítményhez vezet, amikor a hírforrásokat vagy az üzeneteket böngészi.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsdatabase.cpp" line="119"/>
       <source>Hostname is empty.</source>
-      <translation type="unfinished">Hostname is empty.</translation>
+      <translation>A cím (hostname) üres.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsdatabase.cpp" line="122"/>
       <source>Hostname looks ok.</source>
-      <translation type="unfinished">Hostname looks ok.</translation>
+      <translation>A cím (hostname) megfelelőnek tűnik.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsdatabase.cpp" line="128"/>
       <source>Username is empty.</source>
-      <translation type="unfinished">Username is empty.</translation>
+      <translation>Üres felhasználónév.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsdatabase.cpp" line="131"/>
       <source>Username looks ok.</source>
-      <translation type="unfinished">Username looks ok.</translation>
+      <translation>A felhasználónév megfelelőnek tűnik.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsdatabase.cpp" line="137"/>
@@ -6749,7 +6749,7 @@ File filter for external e-mail selection dialog.</extracomment>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsdatabase.cpp" line="140"/>
       <source>Password looks ok.</source>
-      <translation type="unfinished">Password looks ok.</translation>
+      <translation>A jelszó megfelelőnek tűnik.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsdatabase.cpp" line="146"/>
@@ -6774,7 +6774,7 @@ File filter for external e-mail selection dialog.</extracomment>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsdatabase.cpp" line="194"/>
       <source>Hostname of your MySQL server</source>
-      <translation type="unfinished">Hostname of your MySQL server</translation>
+      <translation>A MySQL szerver címe</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsdatabase.cpp" line="195"/>
@@ -6834,7 +6834,7 @@ Authors of this application are NOT responsible for lost data.</translation>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsdatabase.ui" line="96"/>
       <source>Port</source>
-      <translation type="unfinished">Port</translation>
+      <translation>Port</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsdatabase.ui" line="127"/>
@@ -6892,7 +6892,7 @@ Authors of this application are NOT responsible for lost data.</translation>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsdownloads.ui" line="52"/>
       <source>&amp;Browse</source>
-      <translation type="unfinished">&amp;Browse</translation>
+      <translation>&amp;Böngészés</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsdownloads.ui" line="74"/>
@@ -6968,22 +6968,22 @@ Authors of this application are NOT responsible for lost data.</translation>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="79"/>
       <source>Only auto-fetch articles if application is unfocused</source>
-      <translation type="unfinished">Only auto-fetch articles if application is unfocused</translation>
+      <translation>Csak akkor frissítse automatikusan a cikkeket ha az applikáció nincs fókuszban</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="93"/>
       <source>Feed connection timeout</source>
-      <translation type="unfinished">Feed connection timeout</translation>
+      <translation>Hírforrás kapcsolat időtúllépés</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="109"/>
       <source>Connection timeout is time interval which is reserved for downloading new messages for the feed. If this time interval elapses, then download process is aborted.</source>
-      <translation type="unfinished">Connection timeout is time interval which is reserved for downloading new messages for the feed. If this time interval elapses, then download process is aborted.</translation>
+      <translation>A kapcsolat időtúllépése egy olyan időintervallum, ami a hírforrás új tartalmainak letöltésére van fenntartva. Ha ez az időtartam eltelik, a letöltési folyamat megszakításra kerül.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="112"/>
       <source> ms</source>
-      <translation type="unfinished"> ms</translation>
+      <translation> ms</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="86"/>
@@ -7156,7 +7156,7 @@ Authors of this application are NOT responsible for lost data.</translation>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsgeneral.cpp" line="51"/>
       <source> (not supported on this platform)</source>
-      <translation type="unfinished"> (not supported on this platform)</translation>
+      <translation> (ezen a platformon nem támogatott)</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsgeneral.ui" line="17"/>
@@ -7179,7 +7179,7 @@ Authors of this application are NOT responsible for lost data.</translation>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsgui.cpp" line="33"/>
       <source>Name</source>
-      <translation type="unfinished">Name</translation>
+      <translation>Név</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsgui.cpp" line="33"/>
@@ -7194,22 +7194,22 @@ Authors of this application are NOT responsible for lost data.</translation>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsgui.cpp" line="279"/>
       <source>Icon only</source>
-      <translation type="unfinished">Icon only</translation>
+      <translation>Csak ikon</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsgui.cpp" line="280"/>
       <source>Text only</source>
-      <translation type="unfinished">Text only</translation>
+      <translation>Csak szöveg</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsgui.cpp" line="281"/>
       <source>Text beside icon</source>
-      <translation type="unfinished">Text beside icon</translation>
+      <translation>Szöveg az ikon mellett</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsgui.cpp" line="282"/>
       <source>Text under icon</source>
-      <translation type="unfinished">Text under icon</translation>
+      <translation>Szöveg az ikon alatt</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsgui.cpp" line="283"/>
@@ -7225,12 +7225,12 @@ Authors of this application are NOT responsible for lost data.</translation>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsgui.cpp" line="179"/>
       <source>no icon theme</source>
-      <translation type="unfinished">no icon theme</translation>
+      <translation>nincs ikon téma</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsgui.cpp" line="160"/>
       <source>(Your OS does not support tray icons at the moment.)</source>
-      <translation type="unfinished">(Your OS does not support tray icons at the moment.)</translation>
+      <translation>(Az Ön operációs rendszere jelenleg nem támogatja a tálca ikonok megjelenítését.)</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsgui.cpp" line="33"/>
@@ -7248,10 +7248,10 @@ Authors of this application are NOT responsible for lost data.</translation>
 
 Version: %2
 Description: %3</source>
-      <translation type="unfinished">%1
+      <translation>%1
 
-Version: %2
-Description: %3</translation>
+Verzió: %2
+Leírás: %3</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsgui.cpp" line="306"/>
@@ -7337,32 +7337,32 @@ Description: %3</translation>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsgui.ui" line="224"/>
       <source>Tabs</source>
-      <translation type="unfinished">Tabs</translation>
+      <translation>Fülek</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsgui.ui" line="236"/>
       <source>Close tabs with</source>
-      <translation type="unfinished">Close tabs with</translation>
+      <translation>Fülek bezárása a következővel</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsgui.ui" line="242"/>
       <source>Middle mouse button single-click</source>
-      <translation type="unfinished">Middle mouse button single-click</translation>
+      <translation>Középső egérgomb egyszeres kattintás</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsgui.ui" line="249"/>
       <source>Left mouse button double-click</source>
-      <translation type="unfinished">Left mouse button double-click</translation>
+      <translation>Bal egérgomb dupla kattintás</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsgui.ui" line="259"/>
       <source>Open new tabs with left mouse button double-click on tab bar</source>
-      <translation type="unfinished">Open new tabs with left mouse button double-click on tab bar</translation>
+      <translation>Új fülek megnyitása a bal egérgomb dupla kattintásával a fülsávon</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsgui.ui" line="266"/>
       <source>Hide tab bar if just one tab is visible</source>
-      <translation type="unfinished">Hide tab bar if just one tab is visible</translation>
+      <translation>Fülsáv elrejtése ha csak egy látható fül van</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsgui.ui" line="287"/>
@@ -7387,17 +7387,17 @@ Description: %3</translation>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsgui.ui" line="388"/>
       <source>Button style</source>
-      <translation type="unfinished">Button style</translation>
+      <translation>Gomb stílus</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsgui.ui" line="398"/>
       <source>Toolbar editor</source>
-      <translation type="unfinished">Toolbar editor</translation>
+      <translation>Eszköztár szerkesztő</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsgui.ui" line="424"/>
       <source>Icon size</source>
-      <translation type="unfinished">Icon size</translation>
+      <translation>Ikon méret</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsgui.h" line="35"/>
@@ -7410,17 +7410,17 @@ Description: %3</translation>
     <message>
       <location filename="../src/librssguard/gui/settings/settingslocalization.cpp" line="23"/>
       <source>Language</source>
-      <translation type="unfinished">Language</translation>
+      <translation>Nyelv</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingslocalization.cpp" line="23"/>
       <source>Code</source>
-      <translation type="unfinished">Code</translation>
+      <translation>Országkód</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingslocalization.cpp" line="23"/>
       <source>Translation progress</source>
-      <translation type="unfinished">Translation progress</translation>
+      <translation>Fordítás előrehaladása</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingslocalization.cpp" line="25"/>
@@ -7432,7 +7432,7 @@ Description: %3</translation>
       <location filename="../src/librssguard/gui/settings/settingslocalization.cpp" line="116"/>
       <location filename="../src/librssguard/gui/settings/settingslocalization.cpp" line="121"/>
       <source>Big thanks to all translators!</source>
-      <translation type="unfinished">Big thanks to all translators!</translation>
+      <translation>Nagy köszönet minden fordítónak!</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingslocalization.cpp" line="120"/>
@@ -7442,17 +7442,17 @@ Description: %3</translation>
     <message>
       <location filename="../src/librssguard/gui/settings/settingslocalization.cpp" line="169"/>
       <source>Translators needed!</source>
-      <translation type="unfinished">Translators needed!</translation>
+      <translation>Fordítók kerestetnek!</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingslocalization.cpp" line="170"/>
       <source>The translation &apos;%1&apos; is incomplete and anyone able to help with translating %2 is greatly welcomed.</source>
-      <translation type="unfinished">The translation &apos;%1&apos; is incomplete and anyone able to help with translating %2 is greatly welcomed.</translation>
+      <translation>A &apos;%1&apos; fordítás még nincs kész és bárki segíthet a %2 fordításában, amit nagyon szívesen fogadunk.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingslocalization.cpp" line="172"/>
       <source>Do you want to help with the translation now?</source>
-      <translation type="unfinished">Do you want to help with the translation now?</translation>
+      <translation>Szeretne most segíteni a fordítással?</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingslocalization.h" line="27"/>
@@ -7577,7 +7577,7 @@ Also, relaunch &quot;Settings&quot; dialog after you install Node.js.</translati
       <location filename="../src/librssguard/gui/settings/settingsnodejs.ui" line="74"/>
       <location filename="../src/librssguard/gui/settings/settingsnodejs.ui" line="104"/>
       <source>&amp;Browse</source>
-      <translation type="unfinished">&amp;Browse</translation>
+      <translation>&amp;Böngészés</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsnodejs.ui" line="53"/>
@@ -7719,7 +7719,7 @@ Also, relaunch &quot;Settings&quot; dialog after you install Node.js.</translati
     <message>
       <location filename="../src/librssguard/gui/notifications/singlenotificationeditor.ui" line="70"/>
       <source>&amp;Browse</source>
-      <translation type="unfinished">&amp;Browse</translation>
+      <translation>&amp;Böngészés</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/notifications/singlenotificationeditor.ui" line="77"/>
@@ -8114,7 +8114,7 @@ Also, you can post-process generated feed data with yet another script if you wi
     <message>
       <location filename="../src/librssguard/services/standard/gui/standardfeeddetails.ui" line="58"/>
       <source>Type</source>
-      <translation type="unfinished">Type</translation>
+      <translation>Típus</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/standard/gui/standardfeeddetails.ui" line="72"/>
@@ -8342,7 +8342,7 @@ Unread news: %2</translation>
     <message>
       <location filename="../src/librssguard/gui/webviewers/qtextbrowser/textbrowserviewer.cpp" line="272"/>
       <source>Download</source>
-      <translation type="unfinished">Download</translation>
+      <translation>Letöltés</translation>
     </message>
   </context>
   <context>
@@ -8593,7 +8593,7 @@ Unread news: %2</translation>
     <message>
       <location filename="../src/librssguard/services/tt-rss/gui/ttrssaccountdetails.cpp" line="163"/>
       <source>Username is empty.</source>
-      <translation type="unfinished">Username is empty.</translation>
+      <translation>Üres felhasználónév.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/tt-rss/gui/ttrssaccountdetails.cpp" line="172"/>
@@ -8608,7 +8608,7 @@ Unread news: %2</translation>
     <message>
       <location filename="../src/librssguard/services/tt-rss/gui/ttrssaccountdetails.cpp" line="180"/>
       <source>URL cannot be empty.</source>
-      <translation type="unfinished">URL cannot be empty.</translation>
+      <translation>Az URL nem lehet üres.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/tt-rss/gui/ttrssaccountdetails.cpp" line="183"/>
@@ -8618,7 +8618,7 @@ Unread news: %2</translation>
     <message>
       <location filename="../src/librssguard/services/tt-rss/gui/ttrssaccountdetails.cpp" line="186"/>
       <source>URL is okay.</source>
-      <translation type="unfinished">URL is okay.</translation>
+      <translation>URL rendben.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/tt-rss/gui/ttrssaccountdetails.ui" line="32"/>
