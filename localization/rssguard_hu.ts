@@ -764,7 +764,7 @@ Kattintson ide a könyvtár megnyitásához.</translation>
     <message>
       <location filename="../src/librssguard/services/abstract/feed.cpp" line="299"/>
       <source>has new articles</source>
-      <translation type="unfinished">has new articles</translation>
+      <translation>új cikkek elérhetőek</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/abstract/feed.cpp" line="308"/>
