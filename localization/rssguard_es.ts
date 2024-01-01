@@ -62,7 +62,7 @@
     <message>
       <location filename="../src/librssguard/network-web/adblock/adblockdialog.cpp" line="65"/>
       <source>There is some error in AdBlock component and it cannot be enabled. Check error message below (or application debug log) for more information.</source>
-      <translation>Hay algún error en el componente AdBlock y es imposible habilitar. Consulte el mensaje de error a continuación (o el registro de depuración de la aplicación) para obtener más información.</translation>
+      <translation>Hay un error en el componente AdBlock y no se puede habilitar. Consulte el siguiente mensaje de error (o el registro de depuración de la aplicación) para obtener más información.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/network-web/adblock/adblockdialog.cpp" line="99"/>
@@ -169,12 +169,12 @@ Error: %1</translation>
     <message>
       <location filename="../src/librssguard/miscellaneous/application.cpp" line="588"/>
       <source>Output directory is not writable.</source>
-      <translation>La carpeta de salida carece de permisos de escritura.</translation>
+      <translation>El directorio de salida no tiene permisos de escritura.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/miscellaneous/application.cpp" line="596"/>
       <source>Settings file not copied to output directory successfully.</source>
-      <translation>El archivo de configuración no se copió satisfactoriamente a la carpeta de salida.</translation>
+      <translation>El archivo de configuración no se ha copiado correctamente en el directorio de salida.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/miscellaneous/application.cpp" line="611"/>
@@ -189,17 +189,17 @@ Error: %1</translation>
     <message>
       <location filename="../src/librssguard/miscellaneous/application.cpp" line="1173"/>
       <source>Cannot add feed</source>
-      <translation>Imposible añadir la fuente</translation>
+      <translation>No se puede añadir la fuente</translation>
     </message>
     <message>
       <location filename="../src/librssguard/miscellaneous/application.cpp" line="1174"/>
       <source>Feed cannot be added because there is no active account which can add feeds.</source>
-      <translation>Imposible agregar la fuente porque se carece de una cuenta activa que pueda agregar fuentes.</translation>
+      <translation>No se pueden añadir fuentes porque no hay ninguna cuenta activa que pueda añadir fuentes.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/miscellaneous/application.cpp" line="1332"/>
       <source>Packages %1 were updated.</source>
-      <translation>Se actualizaron %1 paquetes.</translation>
+      <translation>Se actualizaron los paquetes %1.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/miscellaneous/application.cpp" line="1039"/>
@@ -214,7 +214,7 @@ Error: %1</translation>
     <message>
       <location filename="../src/librssguard/miscellaneous/application.cpp" line="1104"/>
       <source>AdBlock needs to be configured</source>
-      <translation>AdBlock necesita ser configurado</translation>
+      <translation>Es necesario configurar AdBlock</translation>
     </message>
     <message>
       <location filename="../src/librssguard/miscellaneous/application.cpp" line="339"/>
@@ -235,17 +235,17 @@ versión pulsando en esta notificación emergente.</translation>
     <message>
       <location filename="../src/librssguard/miscellaneous/application.cpp" line="1105"/>
       <source>AdBlock is not configured properly. Go to &quot;Settings&quot; -&gt; &quot;Node.js&quot; and check if your Node.js is properly configured.</source>
-      <translation>AdBlock está configurado incorrectamente. Vaya a &quot;Configuración&quot; -&gt; &quot;Node.js&quot; y verifique si Node.js esté configurado correctamente.</translation>
+      <translation>AdBlock no está configurado correctamente. Vaya a &quot;Configuración&quot; -&gt; &quot;Node.js&quot; y verifique si Node.js está bien configurado.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/miscellaneous/application.cpp" line="1154"/>
       <source>Already running</source>
-      <translation>Ya está ejecutándose</translation>
+      <translation>Ya se está ejecutando</translation>
     </message>
     <message>
       <location filename="../src/librssguard/miscellaneous/application.cpp" line="1323"/>
       <source>Packages %1 were NOT updated because of error: %2.</source>
-      <translation>Imposible actualizar %1 paquetes debido al error: %2.</translation>
+      <translation>No se actualizaron los paquetes %1 debido al error: %2.</translation>
     </message>
   </context>
   <context>
