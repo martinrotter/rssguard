@@ -115,12 +115,12 @@ Error: %1</translation>
     <message>
       <location filename="../src/librssguard/network-web/adblock/adblockdialog.ui" line="58"/>
       <source>Filter lists</source>
-      <translation>Listas de Filtros</translation>
+      <translation>Listas de filtros</translation>
     </message>
     <message>
       <location filename="../src/librssguard/network-web/adblock/adblockdialog.ui" line="64"/>
       <source>Add your direct links to filter lists here (one URL per line)</source>
-      <translation>Agregue sus enlaces directos a las listas de filtros aquí (una URL por línea)</translation>
+      <translation>Agregue aquí sus enlaces directos a las listas de filtros (una URL por línea)</translation>
     </message>
     <message>
       <location filename="../src/librssguard/network-web/adblock/adblockdialog.ui" line="78"/>
@@ -299,7 +299,7 @@ versión pulsando en esta notificación emergente.</translation>
     <message>
       <location filename="../src/librssguard/services/abstract/gui/authenticationdetails.ui" line="45"/>
       <source>Some feeds require authentication, including GMail feeds. BASIC, NTLM-2 and DIGEST-MD5 authentication schemes are supported.</source>
-      <translation>Algunas fuentes necesitan autenticación, incluidas las fuentes GMail. Se admiten los sistemas de autenticación BASIC, NTLM-2 y DIGEST-MD5.</translation>
+      <translation>Algunas fuentes necesitan autenticación, incluidas las fuentes de GMail. Se admiten los sistemas de autenticación BASIC, NTLM-2 y DIGEST-MD5.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/abstract/gui/authenticationdetails.ui" line="48"/>
@@ -309,7 +309,7 @@ versión pulsando en esta notificación emergente.</translation>
     <message>
       <location filename="../src/librssguard/services/abstract/gui/authenticationdetails.ui" line="25"/>
       <source>Authentication type</source>
-      <translation>Tipo de Autenticación</translation>
+      <translation>Tipo de autenticación</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/abstract/gui/authenticationdetails.ui" line="60"/>
@@ -327,12 +327,12 @@ versión pulsando en esta notificación emergente.</translation>
     <message>
       <location filename="../src/librssguard/services/abstract/gui/authenticationdetails.cpp" line="13"/>
       <source>Set username to access the feed.</source>
-      <translation>Asignar nombre de usuario para acceder a la fuente.</translation>
+      <translation>Establecer nombre de usuario para acceder a la fuente.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/abstract/gui/authenticationdetails.cpp" line="15"/>
       <source>Set password to access the feed.</source>
-      <translation>Asignar contraseña para acceder a la fuente.</translation>
+      <translation>Establecer contraseña para acceder a la fuente.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/abstract/gui/authenticationdetails.cpp" line="17"/>
@@ -342,7 +342,7 @@ versión pulsando en esta notificación emergente.</translation>
     <message>
       <location filename="../src/librssguard/services/abstract/gui/authenticationdetails.cpp" line="19"/>
       <source>HTTP Basic</source>
-      <translation>HTTP básico</translation>
+      <translation>HTTP Básico</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/abstract/gui/authenticationdetails.cpp" line="22"/>
@@ -352,27 +352,27 @@ versión pulsando en esta notificación emergente.</translation>
     <message>
       <location filename="../src/librssguard/services/abstract/gui/authenticationdetails.cpp" line="53"/>
       <source>Username/token is ok or it is not needed.</source>
-      <translation>Nombre de usuario/Identificador está bien o es innecesario.</translation>
+      <translation>El nombre de usuario/identificador está bien o no es necesario.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/abstract/gui/authenticationdetails.cpp" line="54"/>
       <source>Username/token is empty.</source>
-      <translation>Nombre de usuario/Identificador vacío</translation>
+      <translation>Nombre de usuario/identificador vacío.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/abstract/gui/authenticationdetails.cpp" line="76"/>
       <source>Access token</source>
-      <translation>Identificador de Acceso</translation>
+      <translation>Identificador de acceso</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/abstract/gui/authenticationdetails.cpp" line="63"/>
       <source>Password is ok or it is not needed.</source>
-      <translation>La contraseña es válida o innecesaria.</translation>
+      <translation>La contraseña es válida o no es necesaria.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/abstract/gui/authenticationdetails.cpp" line="63"/>
       <source>Password is empty.</source>
-      <translation>El campo de la contraseña está vacío.</translation>
+      <translation>El campo de contraseña está vacío.</translation>
     </message>
   </context>
   <context>
@@ -396,7 +396,7 @@ versión pulsando en esta notificación emergente.</translation>
     <message>
       <location filename="../src/librssguard/gui/reusable/colortoolbutton.cpp" line="14"/>
       <source>Click me to change color!</source>
-      <translation>¡Pulsa sobre mí para cambiar color!</translation>
+      <translation>¡Hazme clic para cambiar de color!</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/reusable/colortoolbutton.cpp" line="19"/>
