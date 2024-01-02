@@ -138,7 +138,7 @@ Error: %1</translation>
     <message>
       <location filename="../src/librssguard/network-web/adblock/adblockicon.cpp" line="12"/>
       <source>AdBlock lets you block unwanted content on web pages</source>
-      <translation>AdBlock te permite bloquear contenido no deseado de páginas web</translation>
+      <translation>AdBlock le permite bloquear contenido no deseado en páginas web</translation>
     </message>
     <message>
       <location filename="../src/librssguard/network-web/adblock/adblockicon.cpp" line="45"/>
@@ -156,7 +156,7 @@ Error: %1</translation>
     <message>
       <location filename="../src/librssguard/network-web/adblock/adblockmanager.cpp" line="375"/>
       <source>failed to download filter list &apos;%1&apos;</source>
-      <translation>Falló al descargar la lista de filtros &apos;%1&apos;</translation>
+      <translation>fallo al descargar la lista de filtros &apos;%1&apos;</translation>
     </message>
   </context>
   <context>
@@ -179,12 +179,12 @@ Error: %1</translation>
     <message>
       <location filename="../src/librssguard/miscellaneous/application.cpp" line="611"/>
       <source>Database restoration was not initiated. Make sure that output directory is writable.</source>
-      <translation>La restauración de la base de datos no fue iniciada. Verifique que la carpeta de salida tiene permisos de escritura.</translation>
+      <translation>No se ha iniciado la restauración de la base de datos. Asegúrese de que el directorio de salida tiene permisos de escritura.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/miscellaneous/application.cpp" line="618"/>
       <source>Settings restoration was not initiated. Make sure that output directory is writable.</source>
-      <translation>Fue imposible iniciar la restauración de la configuración. Verifique que la carpeta de salida tiene permisos de escritura.</translation>
+      <translation>No se ha iniciado la restauración de configuración. Asegúrese de que el directorio de salida tiene permisos de escritura.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/miscellaneous/application.cpp" line="1173"/>
