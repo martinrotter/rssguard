@@ -419,7 +419,7 @@ versión pulsando en esta notificación emergente.</translation>
     <message>
       <location filename="../src/librssguard/database/databasecleaner.cpp" line="40"/>
       <source>Recycle bin purged...</source>
-      <translation>Papelera de reciclaje purgada...</translation>
+      <translation>Papelera de reciclaje depurada...</translation>
     </message>
     <message>
       <location filename="../src/librssguard/database/databasecleaner.cpp" line="35"/>
@@ -434,7 +434,7 @@ versión pulsando en esta notificación emergente.</translation>
     <message>
       <location filename="../src/librssguard/database/databasecleaner.cpp" line="30"/>
       <source>Read articles purged...</source>
-      <translation>Leer artículos purgados...</translation>
+      <translation>Leer artículos depurados...</translation>
     </message>
     <message>
       <location filename="../src/librssguard/database/databasecleaner.cpp" line="45"/>
@@ -444,7 +444,7 @@ versión pulsando en esta notificación emergente.</translation>
     <message>
       <location filename="../src/librssguard/database/databasecleaner.cpp" line="50"/>
       <source>Old articles purged...</source>
-      <translation>Artículos antiguos purgados...</translation>
+      <translation>Artículos antiguos depurados...</translation>
     </message>
     <message>
       <location filename="../src/librssguard/database/databasecleaner.cpp" line="55"/>
@@ -462,12 +462,12 @@ versión pulsando en esta notificación emergente.</translation>
     <message>
       <location filename="../src/librssguard/database/databasefactory.cpp" line="58"/>
       <source>Cannot connect to database</source>
-      <translation>Imposible conectar a la base de datos</translation>
+      <translation>No se puede conectar a la base de datos</translation>
     </message>
     <message>
       <location filename="../src/librssguard/database/databasefactory.cpp" line="59"/>
       <source>Connection to your database was not established with error: &apos;%1&apos;. Falling back to SQLite.</source>
-      <translation>Impsoible establecer la conexión a su base de datos con el error: &apos;%1&apos;. Volviendo a SQLite.</translation>
+      <translation>La conexión a su base de datos no se ha establecido con error: &apos;%1&apos;. Volviendo a SQLite.</translation>
     </message>
   </context>
   <context>
@@ -503,7 +503,7 @@ versión pulsando en esta notificación emergente.</translation>
     <message>
       <location filename="../src/librssguard/network-web/downloadmanager.cpp" line="137"/>
       <source>Download directory couldn&apos;t be created</source>
-      <translation>Imposible crear la carpeta de descarga</translation>
+      <translation>No se ha podido crear el directorio de descarga</translation>
     </message>
     <message>
       <location filename="../src/librssguard/network-web/downloadmanager.cpp" line="283"/>
