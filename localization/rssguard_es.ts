@@ -533,12 +533,12 @@ versión pulsando en esta notificación emergente.</translation>
     <message>
       <location filename="../src/librssguard/network-web/downloadmanager.cpp" line="228"/>
       <source>Cannot open directory</source>
-      <translation>Imposible abrir la carpeta</translation>
+      <translation>No se puede abrir la carpeta</translation>
     </message>
     <message>
       <location filename="../src/librssguard/network-web/downloadmanager.cpp" line="229"/>
       <source>Cannot open output directory. Open it manually.</source>
-      <translation>Imposible abrir la carpeta de salida. Ábrala de forma manual.</translation>
+      <translation>No se puede abrir la carpeta de salida. Ábrala de forma manual.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/network-web/downloadmanager.cpp" line="442"/>
@@ -549,7 +549,7 @@ versión pulsando en esta notificación emergente.</translation>
       <location filename="../src/librssguard/network-web/downloadmanager.cpp" line="443"/>
       <source>File &apos;%1&apos; is downloaded.
 Click here to open parent directory.</source>
-      <translation>Archivo &apos;%1&apos; ha sido descargado.
+      <translation>El archivo &apos;%1&apos; ha sido descargado.
 Haga clic aquí para abrir el directorio principal.</translation>
     </message>
     <message>
@@ -604,7 +604,7 @@ Haga clic aquí para abrir el directorio principal.</translation>
       <location filename="../src/librssguard/network-web/downloadmanager.cpp" line="742"/>
       <source>%n minutes remaining</source>
       <translation>
-        <numerusform>%n minuto restante</numerusform>
+        <numerusform>%n minutos restantes</numerusform>
         <numerusform>%n minutos restantes</numerusform>
       </translation>
     </message>
@@ -612,7 +612,7 @@ Haga clic aquí para abrir el directorio principal.</translation>
       <location filename="../src/librssguard/network-web/downloadmanager.cpp" line="746"/>
       <source>%n seconds remaining</source>
       <translation>
-        <numerusform>%n segundo restante</numerusform>
+        <numerusform>%n segundos restantes</numerusform>
         <numerusform>%n segundos restantes</numerusform>
       </translation>
     </message>
@@ -676,12 +676,12 @@ Haga clic aquí para abrir el directorio principal.</translation>
       <location filename="../src/librssguard/services/gmail/gui/emailpreviewer.cpp" line="113"/>
       <location filename="../src/librssguard/services/gmail/gui/emailpreviewer.cpp" line="119"/>
       <source>Cannot download attachment</source>
-      <translation>Imposible descargar adjunto</translation>
+      <translation>No se puede descargar el adjunto</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/gmail/gui/emailpreviewer.cpp" line="114"/>
       <source>Attachment cannot be downloaded because you are not logged-in.</source>
-      <translation>Imposible descargar el archivo adjunto porque no ha iniciado sesión.</translation>
+      <translation>No se puede descargar el archivo adjunto porque no ha iniciado sesión.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/gmail/gui/emailpreviewer.cpp" line="120"/>
