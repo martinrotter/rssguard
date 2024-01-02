@@ -686,7 +686,7 @@ Haga clic aquí para abrir el directorio principal.</translation>
     <message>
       <location filename="../src/librssguard/services/gmail/gui/emailpreviewer.cpp" line="120"/>
       <source>Attachment cannot be downloaded because some general error happened.</source>
-      <translation>Imposible descargar el archivo adjunto porque ocurrión un error general.</translation>
+      <translation>No se puede descargar el archivo adjunto porque se ha producido un error general.</translation>
     </message>
   </context>
   <context>
@@ -704,7 +704,7 @@ Haga clic aquí para abrir el directorio principal.</translation>
     <message>
       <location filename="../src/librssguard/services/gmail/gui/emailrecipientcontrol.cpp" line="39"/>
       <source>Bcc</source>
-      <translation>Copia ciega</translation>
+      <translation>Copia carbón</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/gmail/gui/emailrecipientcontrol.cpp" line="40"/>
