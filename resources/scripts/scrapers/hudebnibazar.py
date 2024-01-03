@@ -14,6 +14,7 @@ import http.cookies
 import dateparser
 import bs4
 import datetime
+import pytz
 
 # ssl._DEFAULT_CIPHERS = "TLS_RSA_WITH_AES_256_GCM_SHA384"
 category = sys.argv[1]
@@ -49,8 +50,10 @@ def processListingDate(string_date: str):
     #         hour=int(yday.group(1)), minute=int(yday.group(2))
     #     )
 
-    dy = dateparser.parse(string_date, languages=["cs"])
-    return dy
+    dy = dateparser.parse(string_date, languages=["cs"]).replace(second=0, microsecond=0)
+    local = pytz.timezone("Europe/Prague")
+    return local.localize(dy).astimezone(pytz.utc)
+
 
 
 def processListingImgs(listing: bs4.Tag):
@@ -66,7 +69,7 @@ def processListingImgs(listing: bs4.Tag):
     return pics
 
 
-def generateListingJson(listing):
+def generateListingJson(listing: bs4.Tag):
     article_price = listing.find(class_="InzeratCena").contents[0].get_text(strip=True)
     article_title = listing.find(class_="InzeratNadpis").b.get_text(strip=True)
     article_date = listing.find(class_="InzeratZarazeno").get_text(strip=True)
@@ -81,7 +84,7 @@ def generateListingJson(listing):
             ['{{"url": {}, "mime_type": "image/jpeg"}}'.format(json.dumps(i)) for i in article_imgs]
         )
 
-    article_url = json.dumps(url_base + listing.a["href"])
+    article_url = json.dumps(url_base + listing.find("a", recursive=False)["href"])
     article_fulltitle = json.dumps("[{}] {}".format(article_price, article_title))
     article_html = json.dumps(listing.find(class_="InzeratText").get_text(strip=True))
     article_author = json.dumps(
@@ -91,7 +94,7 @@ def generateListingJson(listing):
     )
     article_fulldate = json.dumps(article_parsed_date.isoformat())
 
-    return '{{"title": {title}, "attachments": [{att}], "authors": [{{"name": {author}}}], "date_published": {publ}, "content_html": {html}, "url": {url}}}'.format(
+    return '{{"title": {title}, "id": {url}, "attachments": [{att}], "authors": [{{"name": {author}}}], "date_published": {publ}, "content_html": {html}, "url": {url}}}'.format(
         title=article_fulltitle,
         html=article_html,
         url=article_url,
