@@ -1685,7 +1685,8 @@ UpdatedArticles DatabaseQueries::updateMessages(const QSqlDatabase& db,
       //
       //   3) FOR ALL SERVICES:
       //        Message has its date fetched from feed AND its date is different
-      //        from date in DB or content is changed.
+      //        from date in DB or content is changed. Date/time is considered different
+      //        when the difference is larger than MSG_DATETIME_DIFF_THRESSHOLD
       //
       //   4) FOR ALL SERVICES:
       //        Message update is forced, we want to overwrite message as some arbitrary atribute was changed,
@@ -1702,7 +1703,8 @@ UpdatedArticles DatabaseQueries::updateMessages(const QSqlDatabase& db,
       bool cond_2 = !message.m_customId.isEmpty() && !feed->getParentServiceRoot()->isSyncable() &&
                     (message.m_title != title_existing_message || message.m_author != author_existing_message ||
                      (!ignore_contents_changes && message.m_contents != contents_existing_message));
-      bool cond_3 = (message.m_createdFromFeed && message.m_created.toMSecsSinceEpoch() != date_existing_message) ||
+      bool cond_3 = (message.m_createdFromFeed && std::abs(message.m_created.toMSecsSinceEpoch() -
+                                                           date_existing_message) > MSG_DATETIME_DIFF_THRESSHOLD) ||
                     (!ignore_contents_changes && message.m_contents != contents_existing_message);
 
       if (cond_1 || cond_2 || cond_3 || force_update) {
