@@ -233,6 +233,12 @@ void MediaPlayer::switchFullScreen(bool send_event_to_backend) {
   }
 }
 
+void MediaPlayer::hideControls() {
+  // m_ui.m_
+}
+
+void MediaPlayer::showControls() {}
+
 void MediaPlayer::onFullscreenChanged(bool fullscreen) {
   if (isFullScreen() != fullscreen) {
     // Fullscreen was changed via OSC directly from backend.

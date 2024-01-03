@@ -54,8 +54,13 @@ def processListingDate(string_date: str):
 
 
 def processListingImgs(listing: bs4.Tag):
+    pics_elems = listing.find("div", class_="InzeratObr")
     pics = list()
-    for pic in listing.find("div", class_="InzeratObr").find_all("a"):
+    
+    if pics_elems is None:
+        return pics
+    
+    for pic in pics_elems.find_all("a"):
         pics.append(url_base + pic.get("href"))
 
     return pics
