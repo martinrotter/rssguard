@@ -1840,25 +1840,32 @@ UpdatedArticles DatabaseQueries::updateMessages(const QSqlDatabase& db,
   for (Message& message : messages) {
     if (!message.m_customId.isEmpty() || message.m_id > 0) {
       QMutexLocker lck(db_mutex);
-      bool lbls_changed = false;
+      // bool lbls_changed = false;
 
       if (uses_online_labels) {
         // Store all labels obtained from server.
         setLabelsForMessage(db, message.m_assignedLabels, message);
-        lbls_changed = true;
+        // lbls_changed = true;
       }
 
       // Adjust labels tweaked by filters.
       for (Label* assigned_by_filter : message.m_assignedLabelsByFilter) {
         assigned_by_filter->assignToMessage(message, false);
-        lbls_changed = true;
+        // lbls_changed = true;
       }
 
       for (Label* removed_by_filter : message.m_deassignedLabelsByFilter) {
         removed_by_filter->deassignFromMessage(message, false);
-        lbls_changed = true;
+        // lbls_changed = true;
       }
 
+      // NOTE: This is likely not needed at all
+      // as this feature was semi-broken anyway, it was trigerred
+      // even when labels were added (via article filtering or on service server)
+      // and the same labels were already assigned in local DB.
+      // In other words, label assignment differences were not correctly
+      // taken into account.
+      /*
       if (lbls_changed && !message.m_insertedUpdated) {
         // This article was not inserted/updated in DB because its contents did not change
         // but its assigned labels were changed. Therefore we must count article
@@ -1869,6 +1876,7 @@ UpdatedArticles DatabaseQueries::updateMessages(const QSqlDatabase& db,
 
         updated_messages.m_all.append(message);
       }
+      */
     }
     else {
       qCriticalNN << LOGSEC_DB << "Cannot set labels for message" << QUOTE_W_SPACE(message.m_title)
