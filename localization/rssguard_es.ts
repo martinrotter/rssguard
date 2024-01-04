@@ -62,7 +62,7 @@
     <message>
       <location filename="../src/librssguard/network-web/adblock/adblockdialog.cpp" line="65"/>
       <source>There is some error in AdBlock component and it cannot be enabled. Check error message below (or application debug log) for more information.</source>
-      <translation>Hay algún error en el componente AdBlock y es imposible habilitar. Consulte el mensaje de error a continuación (o el registro de depuración de la aplicación) para obtener más información.</translation>
+      <translation>Hay un error en el componente AdBlock y no se puede habilitar. Consulte el siguiente mensaje de error (o el registro de depuración de la aplicación) para obtener más información.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/network-web/adblock/adblockdialog.cpp" line="99"/>
@@ -115,12 +115,12 @@ Error: %1</translation>
     <message>
       <location filename="../src/librssguard/network-web/adblock/adblockdialog.ui" line="58"/>
       <source>Filter lists</source>
-      <translation>Listas de Filtros</translation>
+      <translation>Listas de filtros</translation>
     </message>
     <message>
       <location filename="../src/librssguard/network-web/adblock/adblockdialog.ui" line="64"/>
       <source>Add your direct links to filter lists here (one URL per line)</source>
-      <translation>Agregue sus enlaces directos a las listas de filtros aquí (una URL por línea)</translation>
+      <translation>Agregue aquí sus enlaces directos a las listas de filtros (una URL por línea)</translation>
     </message>
     <message>
       <location filename="../src/librssguard/network-web/adblock/adblockdialog.ui" line="78"/>
@@ -138,7 +138,7 @@ Error: %1</translation>
     <message>
       <location filename="../src/librssguard/network-web/adblock/adblockicon.cpp" line="12"/>
       <source>AdBlock lets you block unwanted content on web pages</source>
-      <translation>AdBlock te permite bloquear contenido no deseado de páginas web</translation>
+      <translation>AdBlock le permite bloquear contenido no deseado en páginas web</translation>
     </message>
     <message>
       <location filename="../src/librssguard/network-web/adblock/adblockicon.cpp" line="45"/>
@@ -156,7 +156,7 @@ Error: %1</translation>
     <message>
       <location filename="../src/librssguard/network-web/adblock/adblockmanager.cpp" line="375"/>
       <source>failed to download filter list &apos;%1&apos;</source>
-      <translation>Falló al descargar la lista de filtros &apos;%1&apos;</translation>
+      <translation>fallo al descargar la lista de filtros &apos;%1&apos;</translation>
     </message>
   </context>
   <context>
@@ -169,37 +169,37 @@ Error: %1</translation>
     <message>
       <location filename="../src/librssguard/miscellaneous/application.cpp" line="588"/>
       <source>Output directory is not writable.</source>
-      <translation>La carpeta de salida carece de permisos de escritura.</translation>
+      <translation>El directorio de salida no tiene permisos de escritura.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/miscellaneous/application.cpp" line="596"/>
       <source>Settings file not copied to output directory successfully.</source>
-      <translation>El archivo de configuración no se copió satisfactoriamente a la carpeta de salida.</translation>
+      <translation>El archivo de configuración no se ha copiado correctamente en el directorio de salida.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/miscellaneous/application.cpp" line="611"/>
       <source>Database restoration was not initiated. Make sure that output directory is writable.</source>
-      <translation>La restauración de la base de datos no fue iniciada. Verifique que la carpeta de salida tiene permisos de escritura.</translation>
+      <translation>No se ha iniciado la restauración de la base de datos. Asegúrese de que el directorio de salida tiene permisos de escritura.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/miscellaneous/application.cpp" line="618"/>
       <source>Settings restoration was not initiated. Make sure that output directory is writable.</source>
-      <translation>Fue imposible iniciar la restauración de la configuración. Verifique que la carpeta de salida tiene permisos de escritura.</translation>
+      <translation>No se ha iniciado la restauración de configuración. Asegúrese de que el directorio de salida tiene permisos de escritura.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/miscellaneous/application.cpp" line="1173"/>
       <source>Cannot add feed</source>
-      <translation>Imposible añadir la fuente</translation>
+      <translation>No se puede añadir la fuente</translation>
     </message>
     <message>
       <location filename="../src/librssguard/miscellaneous/application.cpp" line="1174"/>
       <source>Feed cannot be added because there is no active account which can add feeds.</source>
-      <translation>Imposible agregar la fuente porque se carece de una cuenta activa que pueda agregar fuentes.</translation>
+      <translation>No se pueden añadir fuentes porque no hay ninguna cuenta activa que pueda añadir fuentes.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/miscellaneous/application.cpp" line="1332"/>
       <source>Packages %1 were updated.</source>
-      <translation>Se actualizaron %1 paquetes.</translation>
+      <translation>Se actualizaron los paquetes %1.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/miscellaneous/application.cpp" line="1039"/>
@@ -214,7 +214,7 @@ Error: %1</translation>
     <message>
       <location filename="../src/librssguard/miscellaneous/application.cpp" line="1104"/>
       <source>AdBlock needs to be configured</source>
-      <translation>AdBlock necesita ser configurado</translation>
+      <translation>Es necesario configurar AdBlock</translation>
     </message>
     <message>
       <location filename="../src/librssguard/miscellaneous/application.cpp" line="339"/>
@@ -235,17 +235,17 @@ versión pulsando en esta notificación emergente.</translation>
     <message>
       <location filename="../src/librssguard/miscellaneous/application.cpp" line="1105"/>
       <source>AdBlock is not configured properly. Go to &quot;Settings&quot; -&gt; &quot;Node.js&quot; and check if your Node.js is properly configured.</source>
-      <translation>AdBlock está configurado incorrectamente. Vaya a &quot;Configuración&quot; -&gt; &quot;Node.js&quot; y verifique si Node.js esté configurado correctamente.</translation>
+      <translation>AdBlock no está configurado correctamente. Vaya a &quot;Configuración&quot; -&gt; &quot;Node.js&quot; y verifique si Node.js está bien configurado.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/miscellaneous/application.cpp" line="1154"/>
       <source>Already running</source>
-      <translation>Ya está ejecutándose</translation>
+      <translation>Ya se está ejecutando</translation>
     </message>
     <message>
       <location filename="../src/librssguard/miscellaneous/application.cpp" line="1323"/>
       <source>Packages %1 were NOT updated because of error: %2.</source>
-      <translation>Imposible actualizar %1 paquetes debido al error: %2.</translation>
+      <translation>No se actualizaron los paquetes %1 debido al error: %2.</translation>
     </message>
   </context>
   <context>
@@ -299,7 +299,7 @@ versión pulsando en esta notificación emergente.</translation>
     <message>
       <location filename="../src/librssguard/services/abstract/gui/authenticationdetails.ui" line="45"/>
       <source>Some feeds require authentication, including GMail feeds. BASIC, NTLM-2 and DIGEST-MD5 authentication schemes are supported.</source>
-      <translation>Algunas fuentes necesitan autenticación, incluidas las fuentes GMail. Se admiten los sistemas de autenticación BASIC, NTLM-2 y DIGEST-MD5.</translation>
+      <translation>Algunas fuentes necesitan autenticación, incluidas las fuentes de GMail. Se admiten los sistemas de autenticación BASIC, NTLM-2 y DIGEST-MD5.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/abstract/gui/authenticationdetails.ui" line="48"/>
@@ -309,7 +309,7 @@ versión pulsando en esta notificación emergente.</translation>
     <message>
       <location filename="../src/librssguard/services/abstract/gui/authenticationdetails.ui" line="25"/>
       <source>Authentication type</source>
-      <translation>Tipo de Autenticación</translation>
+      <translation>Tipo de autenticación</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/abstract/gui/authenticationdetails.ui" line="60"/>
@@ -327,12 +327,12 @@ versión pulsando en esta notificación emergente.</translation>
     <message>
       <location filename="../src/librssguard/services/abstract/gui/authenticationdetails.cpp" line="13"/>
       <source>Set username to access the feed.</source>
-      <translation>Asignar nombre de usuario para acceder a la fuente.</translation>
+      <translation>Establecer nombre de usuario para acceder a la fuente.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/abstract/gui/authenticationdetails.cpp" line="15"/>
       <source>Set password to access the feed.</source>
-      <translation>Asignar contraseña para acceder a la fuente.</translation>
+      <translation>Establecer contraseña para acceder a la fuente.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/abstract/gui/authenticationdetails.cpp" line="17"/>
@@ -342,7 +342,7 @@ versión pulsando en esta notificación emergente.</translation>
     <message>
       <location filename="../src/librssguard/services/abstract/gui/authenticationdetails.cpp" line="19"/>
       <source>HTTP Basic</source>
-      <translation>HTTP básico</translation>
+      <translation>HTTP Básico</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/abstract/gui/authenticationdetails.cpp" line="22"/>
@@ -352,27 +352,27 @@ versión pulsando en esta notificación emergente.</translation>
     <message>
       <location filename="../src/librssguard/services/abstract/gui/authenticationdetails.cpp" line="53"/>
       <source>Username/token is ok or it is not needed.</source>
-      <translation>Nombre de usuario/Identificador está bien o es innecesario.</translation>
+      <translation>El nombre de usuario/identificador está bien o no es necesario.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/abstract/gui/authenticationdetails.cpp" line="54"/>
       <source>Username/token is empty.</source>
-      <translation>Nombre de usuario/Identificador vacío</translation>
+      <translation>Nombre de usuario/identificador vacío.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/abstract/gui/authenticationdetails.cpp" line="76"/>
       <source>Access token</source>
-      <translation>Identificador de Acceso</translation>
+      <translation>Identificador de acceso</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/abstract/gui/authenticationdetails.cpp" line="63"/>
       <source>Password is ok or it is not needed.</source>
-      <translation>La contraseña es válida o innecesaria.</translation>
+      <translation>La contraseña es válida o no es necesaria.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/abstract/gui/authenticationdetails.cpp" line="63"/>
       <source>Password is empty.</source>
-      <translation>El campo de la contraseña está vacío.</translation>
+      <translation>El campo de contraseña está vacío.</translation>
     </message>
   </context>
   <context>
@@ -396,7 +396,7 @@ versión pulsando en esta notificación emergente.</translation>
     <message>
       <location filename="../src/librssguard/gui/reusable/colortoolbutton.cpp" line="14"/>
       <source>Click me to change color!</source>
-      <translation>¡Pulsa sobre mí para cambiar color!</translation>
+      <translation>¡Hazme clic para cambiar de color!</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/reusable/colortoolbutton.cpp" line="19"/>
@@ -419,7 +419,7 @@ versión pulsando en esta notificación emergente.</translation>
     <message>
       <location filename="../src/librssguard/database/databasecleaner.cpp" line="40"/>
       <source>Recycle bin purged...</source>
-      <translation>Papelera de reciclaje purgada...</translation>
+      <translation>Papelera de reciclaje depurada...</translation>
     </message>
     <message>
       <location filename="../src/librssguard/database/databasecleaner.cpp" line="35"/>
@@ -434,7 +434,7 @@ versión pulsando en esta notificación emergente.</translation>
     <message>
       <location filename="../src/librssguard/database/databasecleaner.cpp" line="30"/>
       <source>Read articles purged...</source>
-      <translation>Leer artículos purgados...</translation>
+      <translation>Leer artículos depurados...</translation>
     </message>
     <message>
       <location filename="../src/librssguard/database/databasecleaner.cpp" line="45"/>
@@ -444,7 +444,7 @@ versión pulsando en esta notificación emergente.</translation>
     <message>
       <location filename="../src/librssguard/database/databasecleaner.cpp" line="50"/>
       <source>Old articles purged...</source>
-      <translation>Artículos antiguos purgados...</translation>
+      <translation>Artículos antiguos depurados...</translation>
     </message>
     <message>
       <location filename="../src/librssguard/database/databasecleaner.cpp" line="55"/>
@@ -462,12 +462,12 @@ versión pulsando en esta notificación emergente.</translation>
     <message>
       <location filename="../src/librssguard/database/databasefactory.cpp" line="58"/>
       <source>Cannot connect to database</source>
-      <translation>Imposible conectar a la base de datos</translation>
+      <translation>No se puede conectar a la base de datos</translation>
     </message>
     <message>
       <location filename="../src/librssguard/database/databasefactory.cpp" line="59"/>
       <source>Connection to your database was not established with error: &apos;%1&apos;. Falling back to SQLite.</source>
-      <translation>Impsoible establecer la conexión a su base de datos con el error: &apos;%1&apos;. Volviendo a SQLite.</translation>
+      <translation>La conexión a su base de datos no se ha establecido con error: &apos;%1&apos;. Volviendo a SQLite.</translation>
     </message>
   </context>
   <context>
@@ -503,7 +503,7 @@ versión pulsando en esta notificación emergente.</translation>
     <message>
       <location filename="../src/librssguard/network-web/downloadmanager.cpp" line="137"/>
       <source>Download directory couldn&apos;t be created</source>
-      <translation>Imposible crear la carpeta de descarga</translation>
+      <translation>No se ha podido crear el directorio de descarga</translation>
     </message>
     <message>
       <location filename="../src/librssguard/network-web/downloadmanager.cpp" line="283"/>
@@ -533,12 +533,12 @@ versión pulsando en esta notificación emergente.</translation>
     <message>
       <location filename="../src/librssguard/network-web/downloadmanager.cpp" line="228"/>
       <source>Cannot open directory</source>
-      <translation>Imposible abrir la carpeta</translation>
+      <translation>No se puede abrir la carpeta</translation>
     </message>
     <message>
       <location filename="../src/librssguard/network-web/downloadmanager.cpp" line="229"/>
       <source>Cannot open output directory. Open it manually.</source>
-      <translation>Imposible abrir la carpeta de salida. Ábrala de forma manual.</translation>
+      <translation>No se puede abrir la carpeta de salida. Ábrala de forma manual.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/network-web/downloadmanager.cpp" line="442"/>
@@ -549,7 +549,7 @@ versión pulsando en esta notificación emergente.</translation>
       <location filename="../src/librssguard/network-web/downloadmanager.cpp" line="443"/>
       <source>File &apos;%1&apos; is downloaded.
 Click here to open parent directory.</source>
-      <translation>Archivo &apos;%1&apos; ha sido descargado.
+      <translation>El archivo &apos;%1&apos; ha sido descargado.
 Haga clic aquí para abrir el directorio principal.</translation>
     </message>
     <message>
@@ -604,7 +604,7 @@ Haga clic aquí para abrir el directorio principal.</translation>
       <location filename="../src/librssguard/network-web/downloadmanager.cpp" line="742"/>
       <source>%n minutes remaining</source>
       <translation>
-        <numerusform>%n minuto restante</numerusform>
+        <numerusform>%n minutos restantes</numerusform>
         <numerusform>%n minutos restantes</numerusform>
       </translation>
     </message>
@@ -612,7 +612,7 @@ Haga clic aquí para abrir el directorio principal.</translation>
       <location filename="../src/librssguard/network-web/downloadmanager.cpp" line="746"/>
       <source>%n seconds remaining</source>
       <translation>
-        <numerusform>%n segundo restante</numerusform>
+        <numerusform>%n segundos restantes</numerusform>
         <numerusform>%n segundos restantes</numerusform>
       </translation>
     </message>
@@ -676,17 +676,17 @@ Haga clic aquí para abrir el directorio principal.</translation>
       <location filename="../src/librssguard/services/gmail/gui/emailpreviewer.cpp" line="113"/>
       <location filename="../src/librssguard/services/gmail/gui/emailpreviewer.cpp" line="119"/>
       <source>Cannot download attachment</source>
-      <translation>Imposible descargar adjunto</translation>
+      <translation>No se puede descargar el adjunto</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/gmail/gui/emailpreviewer.cpp" line="114"/>
       <source>Attachment cannot be downloaded because you are not logged-in.</source>
-      <translation>Imposible descargar el archivo adjunto porque no ha iniciado sesión.</translation>
+      <translation>No se puede descargar el archivo adjunto porque no ha iniciado sesión.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/gmail/gui/emailpreviewer.cpp" line="120"/>
       <source>Attachment cannot be downloaded because some general error happened.</source>
-      <translation>Imposible descargar el archivo adjunto porque ocurrión un error general.</translation>
+      <translation>No se puede descargar el archivo adjunto porque se ha producido un error general.</translation>
     </message>
   </context>
   <context>
@@ -704,7 +704,7 @@ Haga clic aquí para abrir el directorio principal.</translation>
     <message>
       <location filename="../src/librssguard/services/gmail/gui/emailrecipientcontrol.cpp" line="39"/>
       <source>Bcc</source>
-      <translation>Copia ciega</translation>
+      <translation>Copia carbón</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/gmail/gui/emailrecipientcontrol.cpp" line="40"/>
