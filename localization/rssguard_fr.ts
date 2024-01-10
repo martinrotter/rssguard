@@ -164,7 +164,7 @@ Erreur : %1</translation>
     <message>
       <location filename="../src/librssguard/network-web/apiserver.cpp" line="188"/>
       <source>account with ID %1 not found</source>
-      <translation type="unfinished">account with ID %1 not found</translation>
+      <translation>compte avec l'ID %1 introuvable</translation>
     </message>
   </context>
   <context>
@@ -2069,17 +2069,17 @@ Dossier du cache Moteur Web QT -&gt; &quot;%7&quot;</translation>
     <message>
       <location filename="../src/librssguard/services/abstract/gui/formfeeddetails.ui" line="128"/>
       <source>Avoid adding articles before this date/time into the database</source>
-      <translation type="unfinished">Avoid adding articles before this date/time into the database</translation>
+      <translation>Éviter d&apos;ajouter des articles qui datent d&apos;avant la date spécifiée à la base de données</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/abstract/gui/formfeeddetails.ui" line="157"/>
       <source>Absolute date/time</source>
-      <translation type="unfinished">Absolute date/time</translation>
+      <translation>Date/heure absolue</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/abstract/gui/formfeeddetails.ui" line="177"/>
       <source>Relative time</source>
-      <translation type="unfinished">Relative time</translation>
+      <translation>Temps relatif</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/abstract/gui/formfeeddetails.ui" line="216"/>
@@ -7049,12 +7049,12 @@ Les auteurs de cette appli NE SONT PAS responsables d'éventuelles pertes de don
     <message>
       <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="173"/>
       <source>Absolute date/time</source>
-      <translation type="unfinished">Absolute date/time</translation>
+      <translation>Date/heure absolue</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="180"/>
       <source>Relative time</source>
-      <translation type="unfinished">Relative time</translation>
+      <translation>Temps relatif</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="217"/>
@@ -7139,7 +7139,7 @@ Les auteurs de cette appli NE SONT PAS responsables d'éventuelles pertes de don
     <message>
       <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="505"/>
       <source>Use legacy article formatting</source>
-      <translation type="unfinished">Use legacy article formatting</translation>
+      <translation>Utiliser le formatage des articles "legacy"</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="705"/>
@@ -7870,7 +7870,7 @@ Et aussi, redémarrez la fenêtre &quot;Paramètres&quot; après avoir installé
     <message>
       <location filename="../src/librssguard/services/standard/gui/standardaccountdetails.ui" line="43"/>
       <source>Select icon for your account.</source>
-      <translation type="unfinished">Select icon for your account.</translation>
+      <translation>Sélectionnez une icône pour votre compte.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/standard/gui/standardaccountdetails.cpp" line="15"/>
@@ -7890,7 +7890,7 @@ Et aussi, redémarrez la fenêtre &quot;Paramètres&quot; après avoir installé
     <message>
       <location filename="../src/librssguard/services/standard/gui/standardaccountdetails.cpp" line="41"/>
       <source>Select icon file for the account</source>
-      <translation type="unfinished">Select icon file for the account</translation>
+      <translation>Sélectionnez un fichier icône pour le compte</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/standard/gui/standardaccountdetails.cpp" line="43"/>
@@ -8507,9 +8507,9 @@ Actualités non-lus: %2</translation>
     <message numerus="yes">
       <location filename="../src/librssguard/gui/reusable/timespinbox.cpp" line="68"/>
       <source>%n day(s)</source>
-      <translation type="unfinished">
-        <numerusform>%n day(s)</numerusform>
-        <numerusform>%n day(s)</numerusform>
+      <translation>
+        <numerusform>%n jour(s)</numerusform>
+        <numerusform>%n jour(s)</numerusform>
       </translation>
     </message>
     <message numerus="yes">
