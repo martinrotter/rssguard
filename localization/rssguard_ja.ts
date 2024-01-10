@@ -6562,7 +6562,7 @@ File filter for external e-mail selection dialog.</extracomment>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsbrowsermail.ui" line="41"/>
       <source>Enable API server</source>
-      <translation>APIサーバーを有効にする</translation>
+      <translation>API サーバーを有効にする</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsbrowsermail.ui" line="55"/>
@@ -6953,7 +6953,7 @@ Authors of this application are NOT responsible for lost data.</source>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.cpp" line="407"/>
       <source>Your PC needs to be restarted to make some of enabled features fully working.</source>
-      <translation type="unfinished">Your PC needs to be restarted to make some of enabled features fully working.</translation>
+      <translation>機能を有効にするには、PCを再起動する必要があります</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="21"/>
@@ -6998,7 +6998,7 @@ Authors of this application are NOT responsible for lost data.</source>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="128"/>
       <source>Avoid adding articles before this date into the database</source>
-      <translation>この日付以前の記事をデータベースに追加しないようにする</translation>
+      <translation>この日付より前の記事をデータベースに追加しないようにする</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="173"/>
@@ -7094,7 +7094,7 @@ Authors of this application are NOT responsible for lost data.</source>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="505"/>
       <source>Use legacy article formatting</source>
-      <translation type="unfinished">Use legacy article formatting</translation>
+      <translation>従来の記事書式を使用する</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="705"/>
@@ -7825,7 +7825,7 @@ Also, relaunch &quot;Settings&quot; dialog after you install Node.js.</source>
     <message>
       <location filename="../src/librssguard/services/standard/gui/standardaccountdetails.ui" line="43"/>
       <source>Select icon for your account.</source>
-      <translation type="unfinished">Select icon for your account.</translation>
+      <translation>アカウントのアイコンを選択する</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/standard/gui/standardaccountdetails.cpp" line="15"/>
@@ -7845,7 +7845,7 @@ Also, relaunch &quot;Settings&quot; dialog after you install Node.js.</source>
     <message>
       <location filename="../src/librssguard/services/standard/gui/standardaccountdetails.cpp" line="41"/>
       <source>Select icon file for the account</source>
-      <translation type="unfinished">Select icon file for the account</translation>
+      <translation>アカウントのアイコンファイルを選択</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/standard/gui/standardaccountdetails.cpp" line="43"/>
@@ -8460,8 +8460,8 @@ Unread news: %2</source>
     <message numerus="yes">
       <location filename="../src/librssguard/gui/reusable/timespinbox.cpp" line="68"/>
       <source>%n day(s)</source>
-      <translation type="unfinished">
-        <numerusform>%n day(s)</numerusform>
+      <translation>
+        <numerusform>%n 日</numerusform>
       </translation>
     </message>
     <message numerus="yes">
