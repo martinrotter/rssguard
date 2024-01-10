@@ -104,6 +104,7 @@ SettingsFeedsMessages::SettingsFeedsMessages(Settings* settings, QWidget* parent
           this,
           &SettingsFeedsMessages::dirtifySettings);
   connect(m_ui->m_checkUpdateAllFeedsOnStartup, &QCheckBox::toggled, this, &SettingsFeedsMessages::dirtifySettings);
+  connect(m_ui->m_cbLegacyArticleFormatting, &QCheckBox::toggled, this, &SettingsFeedsMessages::dirtifySettings);
   connect(m_ui->m_spinAutoUpdateInterval,
           static_cast<void (QDoubleSpinBox::*)(double)>(&QDoubleSpinBox::valueChanged),
           this,
@@ -252,6 +253,10 @@ void SettingsFeedsMessages::changeFont(QLabel& lbl) {
 void SettingsFeedsMessages::loadSettings() {
   onBeginLoadSettings();
 
+  if (!qApp->usingLite()) {
+    m_ui->m_cbLegacyArticleFormatting->setVisible(false);
+  }
+
   m_ui->m_spinRelativeArticleTime
     ->setValue(settings()->value(GROUP(Messages), SETTING(Messages::RelativeTimeForNewerArticles)).toInt());
   m_ui->m_spinPaddingRowsMessages
@@ -281,6 +286,11 @@ void SettingsFeedsMessages::loadSettings() {
     ->setChecked(settings()->value(GROUP(Feeds), SETTING(Feeds::AutoUpdateOnlyUnfocused)).toBool());
   m_ui->m_spinAutoUpdateInterval->setValue(settings()->value(GROUP(Feeds), SETTING(Feeds::AutoUpdateInterval)).toInt());
   m_ui->m_spinFeedUpdateTimeout->setValue(settings()->value(GROUP(Feeds), SETTING(Feeds::UpdateTimeout)).toInt());
+
+  if (qApp->usingLite()) {
+    m_ui->m_cbLegacyArticleFormatting
+      ->setChecked(settings()->value(GROUP(Messages), SETTING(Messages::UseLegacyArticleFormat)).toBool());
+  }
 
   m_ui->m_dtDateTimeToAvoid->setEnabled(false);
   m_ui->m_spinHoursAvoid->setEnabled(false);
@@ -412,6 +422,12 @@ void SettingsFeedsMessages::saveSettings() {
   settings()->setValue(GROUP(Feeds), Feeds::UpdateTimeout, m_ui->m_spinFeedUpdateTimeout->value());
 
   settings()->setValue(GROUP(Messages), Messages::AvoidOldArticles, m_ui->m_gbAvoidOldArticles->isChecked());
+
+  if (qApp->usingLite()) {
+    settings()->setValue(GROUP(Messages),
+                         Messages::UseLegacyArticleFormat,
+                         m_ui->m_cbLegacyArticleFormatting->isChecked());
+  }
 
   if (m_ui->m_rbAvoidAbsolute->isChecked()) {
     settings()->setValue(GROUP(Messages), Messages::DateTimeToAvoidArticle, m_ui->m_dtDateTimeToAvoid->dateTime());

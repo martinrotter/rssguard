@@ -386,14 +386,14 @@
          </property>
         </widget>
        </item>
-       <item row="4" column="0">
+       <item row="5" column="0">
         <widget class="QCheckBox" name="m_checkBringToForegroundAfterMsgOpened">
          <property name="text">
           <string>Bring application window to front once article is opened in external web browser</string>
          </property>
         </widget>
        </item>
-       <item row="5" column="0" colspan="2">
+       <item row="6" column="0" colspan="2">
         <widget class="QGroupBox" name="groupBox">
          <property name="title">
           <string>Internal article viewer</string>
@@ -496,6 +496,13 @@
         <widget class="QCheckBox" name="m_cbArticleViewerAlwaysVisible">
          <property name="text">
           <string>Keep article viewer always visible</string>
+         </property>
+        </widget>
+       </item>
+       <item row="4" column="0" colspan="2">
+        <widget class="QCheckBox" name="m_cbLegacyArticleFormatting">
+         <property name="text">
+          <string>Use legacy article formatting</string>
          </property>
         </widget>
        </item>

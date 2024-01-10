@@ -94,6 +94,8 @@ class TextBrowserViewer : public QTextBrowser, public WebViewer {
     void closeWindowRequested();
 
   private:
+    PreparedHtml prepareLegacyHtmlForMessage(const QList<Message>& messages, RootItem* selected_item) const;
+
     void setHtmlPrivate(const QString& html, const QUrl& base_url);
     BlockingResult blockedWithAdblock(const QUrl& url);
 

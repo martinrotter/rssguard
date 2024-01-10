@@ -140,6 +140,9 @@ namespace Messages {
   KEY LimitArticleImagesHeight;
   VALUE(int) LimitArticleImagesHeightDef;
 
+  KEY UseLegacyArticleFormat;
+  VALUE(bool) UseLegacyArticleFormatDef;
+
   KEY DisplayEnclosuresInMessage;
   VALUE(bool) DisplayEnclosuresInMessageDef;
 

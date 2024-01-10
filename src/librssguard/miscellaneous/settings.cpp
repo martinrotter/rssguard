@@ -143,6 +143,9 @@ DKEY Messages::ID = "messages";
 DKEY Messages::LimitArticleImagesHeight = "message_head_image_height";
 DVALUE(int) Messages::LimitArticleImagesHeightDef = 72;
 
+DKEY Messages::UseLegacyArticleFormat = "legacy_article_format";
+DVALUE(bool) Messages::UseLegacyArticleFormatDef = false;
+
 DKEY Messages::DisplayEnclosuresInMessage = "show_enclosures_in_message";
 DVALUE(bool) Messages::DisplayEnclosuresInMessageDef = false;
 
