@@ -493,7 +493,10 @@ QMap<QString, QVariantMap> ServiceRoot::storeCustomFeedsData() {
     feed_custom_data.insert(QSL("open_articles_directly"), feed->openArticlesDirectly());
     feed_custom_data.insert(QSL("is_rtl"), feed->isRtl());
     feed_custom_data.insert(QSL("add_any_datetime_articles"), feed->addAnyDatetimeArticles());
-    feed_custom_data.insert(QSL("datetime_to_avoid"), feed->datetimeToAvoid().toMSecsSinceEpoch());
+    feed_custom_data.insert(QSL("datetime_to_avoid"),
+                            (feed->datetimeToAvoid().isValid() && feed->datetimeToAvoid().toMSecsSinceEpoch() > 0)
+                              ? feed->datetimeToAvoid().toMSecsSinceEpoch()
+                              : feed->hoursToAvoid());
 
     // NOTE: This is here specifically to be able to restore custom sort order.
     // Otherwise the information is lost when list of feeds/folders is refreshed from remote
@@ -545,10 +548,15 @@ void ServiceRoot::restoreCustomFeedsData(const QMap<QString, QVariantMap>& data,
       feed->setOpenArticlesDirectly(feed_custom_data.value(QSL("open_articles_directly")).toBool());
       feed->setIsRtl(feed_custom_data.value(QSL("is_rtl")).toBool());
       feed->setAddAnyDatetimeArticles(feed_custom_data.value(QSL("add_any_datetime_articles")).toBool());
-      feed->setDatetimeToAvoid(TextFactory::parseDateTime(feed_custom_data.value(QSL("datetime_to_avoid"))
-                                                            .value<qint64>()));
 
-      // qDebugNN << feed->datetimeToAvoid().toString();
+      qint64 time_to_avoid = feed_custom_data.value(QSL("datetime_to_avoid")).value<qint64>();
+
+      if (time_to_avoid > 10000) {
+        feed->setDatetimeToAvoid(TextFactory::parseDateTime(time_to_avoid));
+      }
+      else {
+        feed->setHoursToAvoid(time_to_avoid);
+      }
     }
   }
 }

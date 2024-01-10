@@ -22,6 +22,7 @@ SettingsFeedsMessages::SettingsFeedsMessages(Settings* settings, QWidget* parent
   : SettingsPanel(settings, parent), m_ui(new Ui::SettingsFeedsMessages) {
   m_ui->setupUi(this);
 
+  m_ui->m_spinHoursAvoid->setMode(TimeSpinBox::Mode::DaysHours);
   m_ui->m_spinAutoUpdateInterval->setMode(TimeSpinBox::Mode::MinutesSeconds);
   m_ui->m_spinStartupUpdateDelay->setMode(TimeSpinBox::Mode::MinutesSeconds);
 
@@ -204,6 +205,9 @@ SettingsFeedsMessages::SettingsFeedsMessages(Settings* settings, QWidget* parent
 
   connect(m_ui->m_gbAvoidOldArticles, &QGroupBox::toggled, this, &SettingsFeedsMessages::dirtifySettings);
   connect(m_ui->m_dtDateTimeToAvoid, &QDateTimeEdit::dateTimeChanged, this, &SettingsFeedsMessages::dirtifySettings);
+  connect(m_ui->m_spinHoursAvoid, &TimeSpinBox::valueChanged, this, &SettingsFeedsMessages::dirtifySettings);
+  connect(m_ui->m_rbAvoidAbsolute, &QRadioButton::toggled, this, &SettingsFeedsMessages::dirtifySettings);
+  connect(m_ui->m_rbAvoidAbsolute, &QRadioButton::toggled, this, &SettingsFeedsMessages::dirtifySettings);
 
   m_ui->m_spinRelativeArticleTime->setValue(-1);
 }
@@ -274,10 +278,27 @@ void SettingsFeedsMessages::loadSettings() {
     ->setChecked(settings()->value(GROUP(Feeds), SETTING(Feeds::AutoUpdateOnlyUnfocused)).toBool());
   m_ui->m_spinAutoUpdateInterval->setValue(settings()->value(GROUP(Feeds), SETTING(Feeds::AutoUpdateInterval)).toInt());
   m_ui->m_spinFeedUpdateTimeout->setValue(settings()->value(GROUP(Feeds), SETTING(Feeds::UpdateTimeout)).toInt());
+
+  m_ui->m_dtDateTimeToAvoid->setEnabled(false);
+  m_ui->m_spinHoursAvoid->setEnabled(false);
+
+  QDateTime avoid_dt_barrier =
+    settings()->value(GROUP(Messages), SETTING(Messages::DateTimeToAvoidArticle)).toDateTime();
+  int avoid_hour_barrier = settings()->value(GROUP(Messages), SETTING(Messages::HoursToAvoidArticle)).toInt();
+
+  if (avoid_dt_barrier.isValid() && avoid_dt_barrier.toMSecsSinceEpoch() > 0) {
+    m_ui->m_rbAvoidAbsolute->setChecked(true);
+    m_ui->m_dtDateTimeToAvoid
+      ->setDateTime(settings()->value(GROUP(Messages), SETTING(Messages::DateTimeToAvoidArticle)).toDateTime());
+  }
+  else {
+    m_ui->m_rbAvoidRelative->setChecked(true);
+    m_ui->m_spinHoursAvoid->setValue(avoid_hour_barrier);
+  }
+
   m_ui->m_gbAvoidOldArticles
     ->setChecked(settings()->value(GROUP(Messages), SETTING(Messages::AvoidOldArticles)).toBool());
-  m_ui->m_dtDateTimeToAvoid
-    ->setDateTime(settings()->value(GROUP(Messages), SETTING(Messages::DateTimeToAvoidArticle)).toDateTime());
+
   m_ui->m_cmbFastAutoUpdate->setChecked(settings()->value(GROUP(Feeds), SETTING(Feeds::FastAutoUpdate)).toBool());
   m_ui->m_checkUpdateAllFeedsOnStartup
     ->setChecked(settings()->value(GROUP(Feeds), SETTING(Feeds::FeedsUpdateOnStartup)).toBool());
@@ -386,8 +407,18 @@ void SettingsFeedsMessages::saveSettings() {
   settings()->setValue(GROUP(Feeds), Feeds::AutoUpdateOnlyUnfocused, m_ui->m_checkAutoUpdateOnlyUnfocused->isChecked());
   settings()->setValue(GROUP(Feeds), Feeds::AutoUpdateInterval, m_ui->m_spinAutoUpdateInterval->value());
   settings()->setValue(GROUP(Feeds), Feeds::UpdateTimeout, m_ui->m_spinFeedUpdateTimeout->value());
+
   settings()->setValue(GROUP(Messages), Messages::AvoidOldArticles, m_ui->m_gbAvoidOldArticles->isChecked());
-  settings()->setValue(GROUP(Messages), Messages::DateTimeToAvoidArticle, m_ui->m_dtDateTimeToAvoid->dateTime());
+
+  if (m_ui->m_rbAvoidAbsolute->isChecked()) {
+    settings()->setValue(GROUP(Messages), Messages::DateTimeToAvoidArticle, m_ui->m_dtDateTimeToAvoid->dateTime());
+    settings()->setValue(GROUP(Messages), Messages::HoursToAvoidArticle, 0);
+  }
+  else if (m_ui->m_rbAvoidRelative->isChecked()) {
+    settings()->setValue(GROUP(Messages), Messages::DateTimeToAvoidArticle, QDateTime());
+    settings()->setValue(GROUP(Messages), Messages::HoursToAvoidArticle, m_ui->m_spinHoursAvoid->value());
+  }
+
   settings()->setValue(GROUP(Feeds), Feeds::FastAutoUpdate, m_ui->m_cmbFastAutoUpdate->isChecked());
   settings()->setValue(GROUP(Feeds), Feeds::FeedsUpdateOnStartup, m_ui->m_checkUpdateAllFeedsOnStartup->isChecked());
   settings()->setValue(GROUP(Feeds), Feeds::FeedsUpdateStartupDelay, m_ui->m_spinStartupUpdateDelay->value());
@@ -395,7 +426,9 @@ void SettingsFeedsMessages::saveSettings() {
   settings()->setValue(GROUP(Feeds), Feeds::EnableTooltipsFeedsMessages, m_ui->m_checkShowTooltips->isChecked());
   settings()->setValue(GROUP(Messages), Messages::IgnoreContentsChanges, m_ui->m_cmbIgnoreContentsChanges->isChecked());
   settings()->setValue(GROUP(Messages), Messages::MultilineArticleList, m_ui->m_checkMultilineArticleList->isChecked());
-  settings()->setValue(GROUP(Messages), Messages::LimitArticleImagesHeight, m_ui->m_spinHeightImageAttachments->value());
+  settings()->setValue(GROUP(Messages),
+                       Messages::LimitArticleImagesHeight,
+                       m_ui->m_spinHeightImageAttachments->value());
   settings()->setValue(GROUP(Messages),
                        Messages::DisplayEnclosuresInMessage,
                        m_ui->m_cbShowEnclosuresDirectly->isChecked());

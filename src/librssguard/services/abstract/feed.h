@@ -97,6 +97,9 @@ class Feed : public RootItem {
     QDateTime datetimeToAvoid() const;
     void setDatetimeToAvoid(const QDateTime& dt);
 
+    int hoursToAvoid() const;
+    void setHoursToAvoid(int hours_to_avoid);
+
   public slots:
     virtual void updateCounts(bool including_total_count);
 
@@ -115,9 +118,14 @@ class Feed : public RootItem {
     bool m_isQuiet;
     bool m_openArticlesDirectly;
     bool m_isRtl;
-    bool m_addAnyDatetimeArticles;
 
+    // NOTE: These are used to filter out older articles
+    // than needed. Either absolute value is given (date/time)
+    // or relative value given in minutes.
+    bool m_addAnyDatetimeArticles;
     QDateTime m_datetimeToAvoid;
+    int m_hoursToAvoid;
+
     int m_totalCount{};
     int m_unreadCount{};
     QList<QPointer<MessageFilter>> m_messageFilters;

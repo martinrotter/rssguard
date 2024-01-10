@@ -382,7 +382,16 @@ Assignment DatabaseQueries::getFeeds(const QSqlDatabase& db,
     feed->setIsQuiet(query.value(FDS_DB_IS_QUIET_INDEX).toBool());
     feed->setIsRtl(query.value(FDS_DB_IS_RTL_INDEX).toBool());
     feed->setAddAnyDatetimeArticles(query.value(FDS_DB_ADD_ANY_DATETIME_ARTICLES_INDEX).toBool());
-    feed->setDatetimeToAvoid(TextFactory::parseDateTime(query.value(FDS_DB_DATETIME_TO_AVOID_INDEX).value<qint64>()));
+
+    qint64 time_to_avoid = query.value(FDS_DB_DATETIME_TO_AVOID_INDEX).value<qint64>();
+
+    if (time_to_avoid > 10000) {
+      feed->setDatetimeToAvoid(TextFactory::parseDateTime(time_to_avoid));
+    }
+    else {
+      feed->setHoursToAvoid(time_to_avoid);
+    }
+
     feed->setOpenArticlesDirectly(query.value(FDS_DB_OPEN_ARTICLES_INDEX).toBool());
 
     qDebugNN << LOGSEC_CORE << "Custom ID of feed when loading from DB is" << QUOTE_W_SPACE_DOT(feed->customId());

@@ -149,6 +149,9 @@ namespace Messages {
   KEY DateTimeToAvoidArticle;
   VALUE(QDateTime) DateTimeToAvoidArticleDef;
 
+  KEY HoursToAvoidArticle;
+  VALUE(int) HoursToAvoidArticleDef;
+
   KEY AlwaysDisplayItemPreview;
   VALUE(bool) AlwaysDisplayItemPreviewDef;
 

@@ -247,28 +247,6 @@ void FeedDownloader::updateOneFeed(ServiceRoot* acc,
       msg.sanitize(feed, fix_future_datetimes);
     }
 
-    if (!feed->addAnyDatetimeArticles()) {
-      QDateTime dt_to_avoid;
-
-      if (feed->datetimeToAvoid().toMSecsSinceEpoch() > 0) {
-        dt_to_avoid = feed->datetimeToAvoid();
-      }
-      else if (qApp->settings()->value(GROUP(Messages), SETTING(Messages::AvoidOldArticles)).toBool()) {
-        dt_to_avoid = qApp->settings()->value(GROUP(Messages), SETTING(Messages::DateTimeToAvoidArticle)).toDateTime();
-      }
-
-      if (dt_to_avoid.isValid()) {
-        for (int i = 0; i < msgs.size(); i++) {
-          const auto& mss = msgs.at(i);
-
-          if (mss.m_createdFromFeed && mss.m_created < dt_to_avoid) {
-            qDebugNN << LOGSEC_CORE << "Removing message" << QUOTE_W_SPACE(mss.m_title) << "for being too old.";
-            msgs.removeAt(i--);
-          }
-        }
-      }
-    }
-
     QMutexLocker lck(&m_mutexDb);
 
     if (!feed->messageFilters().isEmpty()) {
@@ -414,6 +392,7 @@ void FeedDownloader::updateOneFeed(ServiceRoot* acc,
     }
 
     removeDuplicateMessages(msgs);
+    removeTooOldMessages(feed, msgs);
 
     tmr.restart();
     auto updated_messages = acc->updateMessages(msgs, feed, false, nullptr);
@@ -535,6 +514,43 @@ void FeedDownloader::removeDuplicateMessages(QList<Message>& messages) {
     }
 
     idx = next_idx;
+  }
+}
+
+void FeedDownloader::removeTooOldMessages(Feed* feed, QList<Message>& msgs) {
+  if (!feed->addAnyDatetimeArticles()) {
+    QDateTime dt_to_avoid;
+
+    if (feed->datetimeToAvoid().isValid() && feed->datetimeToAvoid().toMSecsSinceEpoch() > 0) {
+      dt_to_avoid = feed->datetimeToAvoid();
+    }
+    else if (feed->hoursToAvoid() > 0) {
+      dt_to_avoid = QDateTime::currentDateTimeUtc().addSecs((feed->hoursToAvoid() * -3600));
+    }
+    else if (qApp->settings()->value(GROUP(Messages), SETTING(Messages::AvoidOldArticles)).toBool()) {
+      QDateTime global_dt_to_avoid =
+        qApp->settings()->value(GROUP(Messages), SETTING(Messages::DateTimeToAvoidArticle)).toDateTime();
+      int global_hours_to_avoid =
+        qApp->settings()->value(GROUP(Messages), SETTING(Messages::HoursToAvoidArticle)).toInt();
+
+      if (global_dt_to_avoid.isValid() && global_dt_to_avoid.toMSecsSinceEpoch() > 0) {
+        dt_to_avoid = global_dt_to_avoid;
+      }
+      else if (global_hours_to_avoid > 0) {
+        dt_to_avoid = QDateTime::currentDateTimeUtc().addSecs(global_hours_to_avoid * -3600);
+      }
+    }
+
+    if (dt_to_avoid.isValid()) {
+      for (int i = 0; i < msgs.size(); i++) {
+        const auto& mss = msgs.at(i);
+
+        if (mss.m_createdFromFeed && mss.m_created < dt_to_avoid) {
+          qDebugNN << LOGSEC_CORE << "Removing message" << QUOTE_W_SPACE(mss.m_title) << "for being too old.";
+          msgs.removeAt(i--);
+        }
+      }
+    }
   }
 }
 

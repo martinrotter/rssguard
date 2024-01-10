@@ -77,5 +77,15 @@ QNetworkReply* BaseNetworkAccessManager::createRequest(QNetworkAccessManager::Op
   }
 
   auto reply = QNetworkAccessManager::createRequest(op, new_request, outgoingData);
+
+  auto ssl_conf = reply->sslConfiguration();
+
+  auto aa = ssl_conf.backendConfiguration();
+
+  ssl_conf.setPeerVerifyMode(QSslSocket::PeerVerifyMode::VerifyNone);
+  ssl_conf.setSslOption(QSsl::SslOption::SslOptionDisableLegacyRenegotiation, false);
+
+  reply->setSslConfiguration(ssl_conf);
+
   return reply;
 }

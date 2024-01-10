@@ -152,6 +152,9 @@ DVALUE(bool) Messages::AvoidOldArticlesDef = false;
 DKEY Messages::DateTimeToAvoidArticle = "datetime_to_avoid_article";
 DVALUE(QDateTime) Messages::DateTimeToAvoidArticleDef = QDateTime::currentDateTime();
 
+DKEY Messages::HoursToAvoidArticle = "hours_to_avoid_article";
+DVALUE(int) Messages::HoursToAvoidArticleDef = 0;
+
 DKEY Messages::AlwaysDisplayItemPreview = "always_display_preview";
 DVALUE(bool) Messages::AlwaysDisplayItemPreviewDef = true;
 

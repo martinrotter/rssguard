@@ -60,8 +60,20 @@ void FormFeedDetails::apply() {
     }
 
     if (isChangeAllowed(m_ui.m_mcbAvoidOldArticles)) {
-      fd->setDatetimeToAvoid(m_ui.m_gbAvoidOldArticles->isChecked() ? m_ui.m_dtDateTimeToAvoid->dateTime()
-                                                                    : TextFactory::parseDateTime(0));
+      if (m_ui.m_gbAvoidOldArticles->isChecked()) {
+        if (m_ui.m_rbAvoidAbsolute->isChecked()) {
+          fd->setDatetimeToAvoid(m_ui.m_dtDateTimeToAvoid->dateTime());
+          fd->setHoursToAvoid(0);
+        }
+        else {
+          fd->setDatetimeToAvoid({});
+          fd->setHoursToAvoid(m_ui.m_spinHoursAvoid->value());
+        }
+      }
+      else {
+        fd->setDatetimeToAvoid({});
+        fd->setHoursToAvoid(0);
+      }
     }
 
     if (isChangeAllowed(m_ui.m_mcbDisableFeed)) {
@@ -158,10 +170,20 @@ void FormFeedDetails::loadFeedData() {
   m_ui.m_cbOpenArticlesAutomatically->setChecked(fd->openArticlesDirectly());
   m_ui.m_cbFeedRTL->setChecked(fd->isRtl());
   m_ui.m_cbAddAnyDateArticles->setChecked(fd->addAnyDatetimeArticles());
-  m_ui.m_gbAvoidOldArticles->setChecked(fd->datetimeToAvoid().toMSecsSinceEpoch() > 0);
+  m_ui.m_gbAvoidOldArticles->setChecked((fd->datetimeToAvoid().isValid() &&
+                                         fd->datetimeToAvoid().toMSecsSinceEpoch() > 0) ||
+                                        fd->hoursToAvoid() > 0);
   m_ui.m_dtDateTimeToAvoid->setDateTime(fd->datetimeToAvoid());
+  m_ui.m_spinHoursAvoid->setValue(fd->hoursToAvoid());
   m_ui.m_cbDisableFeed->setChecked(fd->isSwitchedOff());
   m_ui.m_cbSuppressFeed->setChecked(fd->isQuiet());
+
+  if (fd->datetimeToAvoid().isValid() && fd->datetimeToAvoid().toMSecsSinceEpoch() > 0) {
+    m_ui.m_rbAvoidAbsolute->setChecked(true);
+  }
+  else {
+    m_ui.m_rbAvoidRelative->setChecked(true);
+  }
 }
 
 void FormFeedDetails::acceptIfPossible() {
@@ -183,6 +205,9 @@ void FormFeedDetails::acceptIfPossible() {
 void FormFeedDetails::initialize() {
   m_ui.setupUi(this);
 
+  m_ui.m_dtDateTimeToAvoid->setEnabled(false);
+  m_ui.m_spinHoursAvoid->setEnabled(false);
+  m_ui.m_spinHoursAvoid->setMode(TimeSpinBox::Mode::DaysHours);
   m_ui.m_dtDateTimeToAvoid
     ->setDisplayFormat(qApp->localization()->loadedLocale().dateTimeFormat(QLocale::FormatType::ShortFormat));
 

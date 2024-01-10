@@ -16,8 +16,8 @@ Feed::Feed(RootItem* parent)
   : RootItem(parent), m_source(QString()), m_status(Status::Normal), m_statusString(QString()),
     m_autoUpdateType(AutoUpdateType::DefaultAutoUpdate), m_autoUpdateInterval(DEFAULT_AUTO_UPDATE_INTERVAL),
     m_lastUpdated(QDateTime::currentDateTimeUtc()), m_isSwitchedOff(false), m_isQuiet(false),
-    m_openArticlesDirectly(false), m_isRtl(false), m_addAnyDatetimeArticles(false),
-    m_datetimeToAvoid(TextFactory::parseDateTime(0)), m_messageFilters(QList<QPointer<MessageFilter>>()) {
+    m_openArticlesDirectly(false), m_isRtl(false), m_addAnyDatetimeArticles(false), m_datetimeToAvoid(QDateTime()),
+    m_hoursToAvoid(0), m_messageFilters(QList<QPointer<MessageFilter>>()) {
   setKind(RootItem::Kind::Feed);
 }
 
@@ -41,6 +41,7 @@ Feed::Feed(const Feed& other) : RootItem(other) {
   setOpenArticlesDirectly(other.openArticlesDirectly());
   setAddAnyDatetimeArticles(other.addAnyDatetimeArticles());
   setDatetimeToAvoid(other.datetimeToAvoid());
+  setHoursToAvoid(other.hoursToAvoid());
   setIsRtl(other.isRtl());
   setIsSwitchedOff(other.isSwitchedOff());
   setIsQuiet(other.isQuiet());
@@ -310,6 +311,14 @@ QString Feed::getStatusDescription() const {
     default:
       return tr("error");
   }
+}
+
+int Feed::hoursToAvoid() const {
+  return m_hoursToAvoid;
+}
+
+void Feed::setHoursToAvoid(int hours_to_avoid) {
+  m_hoursToAvoid = hours_to_avoid;
 }
 
 bool Feed::isQuiet() const {

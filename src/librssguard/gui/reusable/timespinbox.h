@@ -6,12 +6,13 @@
 #include <QDoubleSpinBox>
 
 class TimeSpinBox : public QDoubleSpinBox {
-  Q_OBJECT
+    Q_OBJECT
 
   public:
     enum class Mode {
       HoursMinutes,
-      MinutesSeconds
+      MinutesSeconds,
+      DaysHours
     };
 
     explicit TimeSpinBox(QWidget* parent = nullptr);

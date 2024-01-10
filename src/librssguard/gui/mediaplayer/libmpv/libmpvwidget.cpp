@@ -134,10 +134,10 @@ void LibMpvWidget::initializeGL() {
 }
 
 void LibMpvWidget::paintGL() {
-  auto scaling_ratio = window()->devicePixelRatio();
+  qreal scaling_ratio = window()->devicePixelRatio();
   mpv_opengl_fbo mpfbo{static_cast<int>(defaultFramebufferObject()),
-                       width() * scaling_ratio,
-                       height() * scaling_ratio,
+                       int(width() * scaling_ratio),
+                       int(height() * scaling_ratio),
                        0};
   int flip_y{1};
 

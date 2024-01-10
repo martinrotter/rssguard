@@ -71,6 +71,7 @@ class FeedDownloader : public QObject {
                        const QHash<QString, QStringList>& tagged_messages);
     void finalizeUpdate();
     void removeDuplicateMessages(QList<Message>& messages);
+    void removeTooOldMessages(Feed* feed, QList<Message>& msgs);
 
     FeedUpdateResult updateThreadedFeed(const FeedUpdateRequest& fd);
 
