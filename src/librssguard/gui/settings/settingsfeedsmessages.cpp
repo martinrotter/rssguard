@@ -205,7 +205,10 @@ SettingsFeedsMessages::SettingsFeedsMessages(Settings* settings, QWidget* parent
 
   connect(m_ui->m_gbAvoidOldArticles, &QGroupBox::toggled, this, &SettingsFeedsMessages::dirtifySettings);
   connect(m_ui->m_dtDateTimeToAvoid, &QDateTimeEdit::dateTimeChanged, this, &SettingsFeedsMessages::dirtifySettings);
-  connect(m_ui->m_spinHoursAvoid, &TimeSpinBox::valueChanged, this, &SettingsFeedsMessages::dirtifySettings);
+  connect(m_ui->m_spinHoursAvoid,
+          QOverload<double>::of(&TimeSpinBox::valueChanged),
+          this,
+          &SettingsFeedsMessages::dirtifySettings);
   connect(m_ui->m_rbAvoidAbsolute, &QRadioButton::toggled, this, &SettingsFeedsMessages::dirtifySettings);
   connect(m_ui->m_rbAvoidAbsolute, &QRadioButton::toggled, this, &SettingsFeedsMessages::dirtifySettings);
 
