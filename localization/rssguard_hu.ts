@@ -158,69 +158,77 @@ Error: %1</source>
     </message>
   </context>
   <context>
+    <name>ApiServer</name>
+    <message>
+      <location filename="../src/librssguard/network-web/apiserver.cpp" line="188"/>
+      <source>account with ID %1 not found</source>
+      <translation type="unfinished">account with ID %1 not found</translation>
+    </message>
+  </context>
+  <context>
     <name>Application</name>
     <message>
-      <location filename="../src/librssguard/miscellaneous/application.cpp" line="1155"/>
+      <location filename="../src/librssguard/miscellaneous/application.cpp" line="1177"/>
       <source>Application is already running.</source>
       <translation>Az alkalmazás már fut.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/miscellaneous/application.cpp" line="588"/>
+      <location filename="../src/librssguard/miscellaneous/application.cpp" line="602"/>
       <source>Output directory is not writable.</source>
       <translation>A kimeneti könyvtár nem írható.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/miscellaneous/application.cpp" line="596"/>
+      <location filename="../src/librssguard/miscellaneous/application.cpp" line="610"/>
       <source>Settings file not copied to output directory successfully.</source>
       <translation>A beállításokat tartalmazó fájl kimeneti könyvtárba történő másolása sikertelen.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/miscellaneous/application.cpp" line="611"/>
+      <location filename="../src/librssguard/miscellaneous/application.cpp" line="625"/>
       <source>Database restoration was not initiated. Make sure that output directory is writable.</source>
       <translation>Az adatbázis helyreállítása nem indult el. Győződjön meg arról, hogy a kimeneti könyvtár írható.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/miscellaneous/application.cpp" line="618"/>
+      <location filename="../src/librssguard/miscellaneous/application.cpp" line="632"/>
       <source>Settings restoration was not initiated. Make sure that output directory is writable.</source>
       <translation>A beállítások helyreállítása nem indult el. Győződjön meg arról, hogy a kimeneti könyvtár írható.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/miscellaneous/application.cpp" line="1173"/>
+      <location filename="../src/librssguard/miscellaneous/application.cpp" line="1195"/>
       <source>Cannot add feed</source>
       <translation>Hírforrás hozzáadása sikertelen</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/miscellaneous/application.cpp" line="1174"/>
+      <location filename="../src/librssguard/miscellaneous/application.cpp" line="1196"/>
       <source>Feed cannot be added because there is no active account which can add feeds.</source>
       <translation>A hírforrás nem adható hozzá, mivel nincs aktív felhasználói fiók aminek engedélyezett a hírforrások felvétele.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/miscellaneous/application.cpp" line="1332"/>
+      <location filename="../src/librssguard/miscellaneous/application.cpp" line="1354"/>
       <source>Packages %1 were updated.</source>
       <translation>A %1 csomagok frissítésre kerültek.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/miscellaneous/application.cpp" line="1039"/>
+      <location filename="../src/librssguard/miscellaneous/application.cpp" line="1061"/>
       <source>Unread articles fetched</source>
       <translation>Az olvasatlan cikkek sikeresen lekérve</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/miscellaneous/application.cpp" line="345"/>
+      <location filename="../src/librssguard/miscellaneous/application.cpp" line="359"/>
       <source>Go to changelog</source>
       <translation>Változási napló megtekintése</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/miscellaneous/application.cpp" line="1104"/>
+      <location filename="../src/librssguard/miscellaneous/application.cpp" line="1126"/>
       <source>AdBlock needs to be configured</source>
       <translation>Az AdBlock konfigurációja szükséges</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/miscellaneous/application.cpp" line="339"/>
+      <location filename="../src/librssguard/miscellaneous/application.cpp" line="353"/>
       <source>Welcome</source>
       <translation>Üdvözöljük</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/miscellaneous/application.cpp" line="340"/>
+      <location filename="../src/librssguard/miscellaneous/application.cpp" line="354"/>
       <source>Welcome to %1.
 
 Please, check NEW stuff included in this
@@ -232,17 +240,17 @@ található új funkciókat erre a popup ablakra
 való kattintással.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/miscellaneous/application.cpp" line="1105"/>
+      <location filename="../src/librssguard/miscellaneous/application.cpp" line="1127"/>
       <source>AdBlock is not configured properly. Go to &quot;Settings&quot; -&gt; &quot;Node.js&quot; and check if your Node.js is properly configured.</source>
       <translation>Az AdBlock nem megfelelően van konfigurálva. Menj a &quot;Beállítások&quot;-&quot;Node.js&quot; menüpontba, és ellenőrizd, hogy a Node.js megfelelően van konfigurálva.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/miscellaneous/application.cpp" line="1154"/>
+      <location filename="../src/librssguard/miscellaneous/application.cpp" line="1176"/>
       <source>Already running</source>
       <translation>Már fut</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/miscellaneous/application.cpp" line="1323"/>
+      <location filename="../src/librssguard/miscellaneous/application.cpp" line="1345"/>
       <source>Packages %1 were NOT updated because of error: %2.</source>
       <translation>A csomagok (%1) frissítése sikertelen a következő hiba miatt: %2.</translation>
     </message>
@@ -388,6 +396,16 @@ való kattintással.</translation>
       <location filename="../src/librssguard/gui/notifications/basetoastnotification.cpp" line="44"/>
       <source>Close this notification</source>
       <translation>Értesítés bezárása</translation>
+    </message>
+  </context>
+  <context>
+    <name>Category</name>
+    <message>
+      <location filename="../src/librssguard/services/abstract/category.cpp" line="73"/>
+      <source>Number of feeds: %1
+Number of categories: %2</source>
+      <translation>Hírforrások száma: %1
+Kategóriák száma: %2</translation>
     </message>
   </context>
   <context>
@@ -719,33 +737,33 @@ Kattintson ide a könyvtár megnyitásához.</translation>
   <context>
     <name>Feed</name>
     <message>
-      <location filename="../src/librssguard/services/abstract/feed.cpp" line="272"/>
+      <location filename="../src/librssguard/services/abstract/feed.cpp" line="273"/>
       <source>uses global settings, but global auto-fetching of articles is disabled</source>
       <translation>globális beállítások használata, de a cikkek globális automatikus letöltése kikapcsolva</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/services/abstract/feed.cpp" line="296"/>
+      <location filename="../src/librssguard/services/abstract/feed.cpp" line="297"/>
       <source>no errors</source>
       <translation>nincsenek hibák</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/services/abstract/feed.cpp" line="302"/>
+      <location filename="../src/librssguard/services/abstract/feed.cpp" line="303"/>
       <source>authentication error</source>
       <translation>hitelesítési hiba</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/services/abstract/feed.cpp" line="305"/>
+      <location filename="../src/librssguard/services/abstract/feed.cpp" line="306"/>
       <source>network error</source>
       <translation>hálózati hiba</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/services/abstract/feed.cpp" line="258"/>
+      <location filename="../src/librssguard/services/abstract/feed.cpp" line="259"/>
       <source>does not use auto-fetching of articles</source>
       <extracomment>Describes feed auto-update status.</extracomment>
       <translation>ne használja a cikkek automatikus frissítését</translation>
     </message>
     <message numerus="yes">
-      <location filename="../src/librssguard/services/abstract/feed.cpp" line="269"/>
+      <location filename="../src/librssguard/services/abstract/feed.cpp" line="270"/>
       <source>uses global settings (%n minute(s) to next auto-fetch of articles)</source>
       <translation type="unfinished">
         <numerusform>globális beállítások használata (%n perc a hírforrások következő automatikus frissítéséig)</numerusform>
@@ -753,7 +771,7 @@ Kattintson ide a könyvtár megnyitásához.</translation>
       </translation>
     </message>
     <message numerus="yes">
-      <location filename="../src/librssguard/services/abstract/feed.cpp" line="283"/>
+      <location filename="../src/librssguard/services/abstract/feed.cpp" line="284"/>
       <source>uses specific settings (%n minute(s) to next auto-fetching of new articles)</source>
       <extracomment>Describes feed auto-update status.</extracomment>
       <translation type="unfinished">
@@ -762,22 +780,22 @@ Kattintson ide a könyvtár megnyitásához.</translation>
       </translation>
     </message>
     <message>
-      <location filename="../src/librssguard/services/abstract/feed.cpp" line="299"/>
+      <location filename="../src/librssguard/services/abstract/feed.cpp" line="300"/>
       <source>has new articles</source>
       <translation>új cikkek elérhetőek</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/services/abstract/feed.cpp" line="308"/>
+      <location filename="../src/librssguard/services/abstract/feed.cpp" line="309"/>
       <source>parsing error</source>
       <translation>elemzési hiba</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/services/abstract/feed.cpp" line="311"/>
+      <location filename="../src/librssguard/services/abstract/feed.cpp" line="312"/>
       <source>error</source>
       <translation>hiba</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/services/abstract/feed.cpp" line="373"/>
+      <location filename="../src/librssguard/services/abstract/feed.cpp" line="382"/>
       <source>Auto-update status: %1
 Active message filters: %2
 Status: %3
@@ -1980,22 +1998,22 @@ QtWebEngine gyorsítótár mappája -&gt; &quot;%7&quot;</translation>
   <context>
     <name>FormFeedDetails</name>
     <message>
-      <location filename="../src/librssguard/services/abstract/gui/formfeeddetails.cpp" line="142"/>
+      <location filename="../src/librssguard/services/abstract/gui/formfeeddetails.cpp" line="154"/>
       <source>Add new feed</source>
       <translation>Új hírforrás hozzáadása</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/services/abstract/gui/formfeeddetails.cpp" line="175"/>
+      <location filename="../src/librssguard/services/abstract/gui/formfeeddetails.cpp" line="197"/>
       <source>Cannot save changes: %1</source>
       <translation>Változások mentése sikertelen: %1</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/services/abstract/gui/formfeeddetails.cpp" line="146"/>
+      <location filename="../src/librssguard/services/abstract/gui/formfeeddetails.cpp" line="158"/>
       <source>Edit &quot;%1&quot;</source>
       <translation>&quot;%1&quot; szerkesztése</translation>
     </message>
     <message numerus="yes">
-      <location filename="../src/librssguard/services/abstract/gui/formfeeddetails.cpp" line="151"/>
+      <location filename="../src/librssguard/services/abstract/gui/formfeeddetails.cpp" line="163"/>
       <source>Edit %n feeds</source>
       <translation type="unfinished">
         <numerusform>%n hírforrás szerkesztése</numerusform>
@@ -2003,22 +2021,22 @@ QtWebEngine gyorsítótár mappája -&gt; &quot;%7&quot;</translation>
       </translation>
     </message>
     <message>
-      <location filename="../src/librssguard/services/abstract/gui/formfeeddetails.cpp" line="192"/>
+      <location filename="../src/librssguard/services/abstract/gui/formfeeddetails.cpp" line="217"/>
       <source>Fetch articles using global interval</source>
       <translation>Cikkek frissítése a globális intervallum használatával</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/services/abstract/gui/formfeeddetails.cpp" line="194"/>
+      <location filename="../src/librssguard/services/abstract/gui/formfeeddetails.cpp" line="219"/>
       <source>Fetch articles every</source>
       <translation>Cikkek frissítése minden</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/services/abstract/gui/formfeeddetails.cpp" line="196"/>
+      <location filename="../src/librssguard/services/abstract/gui/formfeeddetails.cpp" line="221"/>
       <source>Disable auto-fetching of articles</source>
       <translation>Cikkek automatikus lekérésének kikapcsolása</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/services/abstract/gui/formfeeddetails.cpp" line="174"/>
+      <location filename="../src/librssguard/services/abstract/gui/formfeeddetails.cpp" line="196"/>
       <source>Cannot save feed properties</source>
       <translation>Hírforrás tulajdonságok mentése sikertelen</translation>
     </message>
@@ -2049,26 +2067,36 @@ QtWebEngine gyorsítótár mappája -&gt; &quot;%7&quot;</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/abstract/gui/formfeeddetails.ui" line="128"/>
-      <source>Avoid adding articles before this date into the database</source>
-      <translation>Kerülje el a ezen dátum előtt keletkezett cikkek hozzáadását az adatbázishoz</translation>
+      <source>Avoid adding articles before this date/time into the database</source>
+      <translation type="unfinished">Avoid adding articles before this date/time into the database</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/services/abstract/gui/formfeeddetails.ui" line="166"/>
+      <location filename="../src/librssguard/services/abstract/gui/formfeeddetails.ui" line="157"/>
+      <source>Absolute date/time</source>
+      <translation type="unfinished">Absolute date/time</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard/services/abstract/gui/formfeeddetails.ui" line="177"/>
+      <source>Relative time</source>
+      <translation type="unfinished">Relative time</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard/services/abstract/gui/formfeeddetails.ui" line="216"/>
       <source>Miscellaneous</source>
       <translation>Vegyes</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/services/abstract/gui/formfeeddetails.ui" line="191"/>
+      <location filename="../src/librssguard/services/abstract/gui/formfeeddetails.ui" line="241"/>
       <source>Disable this feed</source>
       <translation>Hírforrás kikapcsolása</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/services/abstract/gui/formfeeddetails.ui" line="205"/>
+      <location filename="../src/librssguard/services/abstract/gui/formfeeddetails.ui" line="255"/>
       <source>Right-to-left layout</source>
       <translation>Jobbról balra elrendezés</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/services/abstract/gui/formfeeddetails.ui" line="177"/>
+      <location filename="../src/librssguard/services/abstract/gui/formfeeddetails.ui" line="227"/>
       <source>Ignore notifications for this feed</source>
       <translation>Hírforrás értesítéseinek figyelmen kívül hagyása</translation>
     </message>
@@ -2819,33 +2847,33 @@ QtWebEngine gyorsítótár mappája -&gt; &quot;%7&quot;</translation>
       <translation>nem</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.cpp" line="602"/>
+      <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.cpp" line="601"/>
       <source>Cannot find &apos;clang-format&apos;</source>
       <translation type="unfinished">Cannot find &apos;clang-format&apos;</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.cpp" line="603"/>
+      <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.cpp" line="602"/>
       <source>Script was not beautified, because &apos;clang-format&apos; tool was not found.</source>
       <translation type="unfinished">Script was not beautified, because &apos;clang-format&apos; tool was not found.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.cpp" line="246"/>
-      <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.cpp" line="621"/>
+      <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.cpp" line="620"/>
       <source>Error</source>
       <translation>Hiba</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.cpp" line="622"/>
+      <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.cpp" line="621"/>
       <source>Script was not beautified, because &apos;clang-format&apos; tool thrown error.</source>
       <translation type="unfinished">Script was not beautified, because &apos;clang-format&apos; tool thrown error.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.cpp" line="631"/>
+      <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.cpp" line="630"/>
       <source>Beautifier was running for too long time</source>
       <translation type="unfinished">Beautifier was running for too long time</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.cpp" line="632"/>
+      <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.cpp" line="631"/>
       <source>Script was not beautified, is &apos;clang-format&apos; installed?</source>
       <translation type="unfinished">Script was not beautified, is &apos;clang-format&apos; installed?</translation>
     </message>
@@ -4298,112 +4326,112 @@ Belépési token lejárata: %2</translation>
   <context>
     <name>LibMpvBackend</name>
     <message>
-      <location filename="../src/librssguard/gui/mediaplayer/libmpv/libmpvbackend.cpp" line="170"/>
+      <location filename="../src/librssguard/gui/mediaplayer/libmpv/libmpvbackend.cpp" line="135"/>
       <source>File loaded</source>
       <translation>Fájl betöltve</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/mediaplayer/libmpv/libmpvbackend.cpp" line="226"/>
+      <location filename="../src/librssguard/gui/mediaplayer/libmpv/libmpvbackend.cpp" line="191"/>
       <source>App restart required</source>
       <translation>Az applikáció újraindítása szükséges</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/mediaplayer/libmpv/libmpvbackend.cpp" line="229"/>
+      <location filename="../src/librssguard/gui/mediaplayer/libmpv/libmpvbackend.cpp" line="194"/>
       <source>Out of memory</source>
       <translation>Elfogyott a memória</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/mediaplayer/libmpv/libmpvbackend.cpp" line="232"/>
+      <location filename="../src/librssguard/gui/mediaplayer/libmpv/libmpvbackend.cpp" line="197"/>
       <source>Not initialized yet</source>
       <translation type="unfinished">Not initialized yet</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/mediaplayer/libmpv/libmpvbackend.cpp" line="235"/>
+      <location filename="../src/librssguard/gui/mediaplayer/libmpv/libmpvbackend.cpp" line="200"/>
       <source>Invalid parameter</source>
       <translation>Érvénytelen paraméter</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/mediaplayer/libmpv/libmpvbackend.cpp" line="238"/>
+      <location filename="../src/librssguard/gui/mediaplayer/libmpv/libmpvbackend.cpp" line="203"/>
       <source>Option not found</source>
       <translation type="unfinished">Option not found</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/mediaplayer/libmpv/libmpvbackend.cpp" line="241"/>
+      <location filename="../src/librssguard/gui/mediaplayer/libmpv/libmpvbackend.cpp" line="206"/>
       <source>Option badly formatted</source>
       <translation type="unfinished">Option badly formatted</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/mediaplayer/libmpv/libmpvbackend.cpp" line="244"/>
+      <location filename="../src/librssguard/gui/mediaplayer/libmpv/libmpvbackend.cpp" line="209"/>
       <source>Cannot set option</source>
       <translation>Beállítás sikertelen</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/mediaplayer/libmpv/libmpvbackend.cpp" line="247"/>
+      <location filename="../src/librssguard/gui/mediaplayer/libmpv/libmpvbackend.cpp" line="212"/>
       <source>Property does not existing</source>
       <translation>Nem létező tulajdonság</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/mediaplayer/libmpv/libmpvbackend.cpp" line="250"/>
+      <location filename="../src/librssguard/gui/mediaplayer/libmpv/libmpvbackend.cpp" line="215"/>
       <source>Property badly formatted</source>
       <translation>Rosszul formázott tulajdonság</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/mediaplayer/libmpv/libmpvbackend.cpp" line="253"/>
+      <location filename="../src/librssguard/gui/mediaplayer/libmpv/libmpvbackend.cpp" line="218"/>
       <source>Property N/A</source>
       <translation>Tulajdonság N/A</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/mediaplayer/libmpv/libmpvbackend.cpp" line="256"/>
+      <location filename="../src/librssguard/gui/mediaplayer/libmpv/libmpvbackend.cpp" line="221"/>
       <source>Cannot set property</source>
       <translation>Tulajdonság beállítása sikertelen</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/mediaplayer/libmpv/libmpvbackend.cpp" line="259"/>
+      <location filename="../src/librssguard/gui/mediaplayer/libmpv/libmpvbackend.cpp" line="224"/>
       <source>Cannot run command</source>
       <translation>Parancs nem futtatható</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/mediaplayer/libmpv/libmpvbackend.cpp" line="262"/>
+      <location filename="../src/librssguard/gui/mediaplayer/libmpv/libmpvbackend.cpp" line="227"/>
       <source>Loading failed</source>
       <translation>Sikertelen betöltés</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/mediaplayer/libmpv/libmpvbackend.cpp" line="265"/>
+      <location filename="../src/librssguard/gui/mediaplayer/libmpv/libmpvbackend.cpp" line="230"/>
       <source>Cannot initialize audio</source>
       <translation type="unfinished">Cannot initialize audio</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/mediaplayer/libmpv/libmpvbackend.cpp" line="268"/>
+      <location filename="../src/librssguard/gui/mediaplayer/libmpv/libmpvbackend.cpp" line="233"/>
       <source>Cannot initialize video</source>
       <translation>Video betöltése sikertelen</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/mediaplayer/libmpv/libmpvbackend.cpp" line="271"/>
+      <location filename="../src/librssguard/gui/mediaplayer/libmpv/libmpvbackend.cpp" line="236"/>
       <source>Not a media file</source>
       <translation>Nem médiafájl</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/mediaplayer/libmpv/libmpvbackend.cpp" line="274"/>
+      <location filename="../src/librssguard/gui/mediaplayer/libmpv/libmpvbackend.cpp" line="239"/>
       <source>Unknown file format</source>
       <translation>Ismeretlen fájlformátum</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/mediaplayer/libmpv/libmpvbackend.cpp" line="277"/>
+      <location filename="../src/librssguard/gui/mediaplayer/libmpv/libmpvbackend.cpp" line="242"/>
       <source>Unsupported file format</source>
       <translation>Nem támogatott fájlformátum</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/mediaplayer/libmpv/libmpvbackend.cpp" line="281"/>
+      <location filename="../src/librssguard/gui/mediaplayer/libmpv/libmpvbackend.cpp" line="246"/>
       <source>Unknown error (%1)</source>
       <translation>Ismeretlen hiba (%1)</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/mediaplayer/libmpv/libmpvbackend.cpp" line="300"/>
+      <location filename="../src/librssguard/gui/mediaplayer/libmpv/libmpvbackend.cpp" line="265"/>
       <source>Stopped</source>
       <translation>Leállítva</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/mediaplayer/libmpv/libmpvbackend.cpp" line="306"/>
+      <location filename="../src/librssguard/gui/mediaplayer/libmpv/libmpvbackend.cpp" line="271"/>
       <source>File ended</source>
       <translation type="unfinished">File ended</translation>
     </message>
@@ -4660,47 +4688,47 @@ Belépési token lejárata: %2</translation>
       <translation>Űrlap</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/mediaplayer/mediaplayer.ui" line="64"/>
+      <location filename="../src/librssguard/gui/mediaplayer/mediaplayer.ui" line="65"/>
       <source>Play/pause</source>
       <translation type="unfinished">Play/pause</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/mediaplayer/mediaplayer.ui" line="71"/>
+      <location filename="../src/librssguard/gui/mediaplayer/mediaplayer.ui" line="72"/>
       <source>Stop</source>
       <translation type="unfinished">Stop</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/mediaplayer/mediaplayer.ui" line="78"/>
+      <location filename="../src/librssguard/gui/mediaplayer/mediaplayer.ui" line="79"/>
       <source>Speed</source>
       <translation type="unfinished">Speed</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/mediaplayer/mediaplayer.ui" line="106"/>
+      <location filename="../src/librssguard/gui/mediaplayer/mediaplayer.ui" line="107"/>
       <source>Progress</source>
       <translation>Előrehaladás</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/mediaplayer/mediaplayer.ui" line="116"/>
+      <location filename="../src/librssguard/gui/mediaplayer/mediaplayer.ui" line="117"/>
       <source>Duration</source>
       <translation type="unfinished">Duration</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/mediaplayer/mediaplayer.ui" line="123"/>
+      <location filename="../src/librssguard/gui/mediaplayer/mediaplayer.ui" line="124"/>
       <source>Mute/unmute</source>
       <translation type="unfinished">Mute/unmute</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/mediaplayer/mediaplayer.ui" line="136"/>
+      <location filename="../src/librssguard/gui/mediaplayer/mediaplayer.ui" line="137"/>
       <source>Volume</source>
       <translation>Hangerő</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/mediaplayer/mediaplayer.ui" line="155"/>
+      <location filename="../src/librssguard/gui/mediaplayer/mediaplayer.ui" line="156"/>
       <source>Download</source>
       <translation>Letöltés</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/mediaplayer/mediaplayer.ui" line="162"/>
+      <location filename="../src/librssguard/gui/mediaplayer/mediaplayer.ui" line="163"/>
       <source>Switch fullscreen mode</source>
       <translation type="unfinished">Switch fullscreen mode</translation>
     </message>
@@ -5700,7 +5728,7 @@ Belépési token lejárata: %2</translation>
   <context>
     <name>QObject</name>
     <message numerus="yes">
-      <location filename="../src/librssguard/core/feeddownloader.cpp" line="558"/>
+      <location filename="../src/librssguard/core/feeddownloader.cpp" line="574"/>
       <source>
 
 + %n other feeds.</source>
@@ -5766,7 +5794,7 @@ Feedly is a secure space where you can privately organize and research the topic
 Feedly is a secure space where you can privately organize and research the topics and trends that matter to you.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/database/databasequeries.cpp" line="2660"/>
+      <location filename="../src/librssguard/database/databasequeries.cpp" line="2785"/>
       <source>Cannot insert article filter, because current database cannot return last inserted row ID.</source>
       <translation type="unfinished">Cannot insert article filter, because current database cannot return last inserted row ID.</translation>
     </message>
@@ -6482,12 +6510,12 @@ Number of categories: %2</source>
 Kategóriák száma: %2</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/services/abstract/serviceroot.cpp" line="697"/>
+      <location filename="../src/librssguard/services/abstract/serviceroot.cpp" line="705"/>
       <source>Error when fetching list of feeds</source>
       <translation>Hiba lépett fel a hírforrások listájának frissítése közben</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/services/abstract/serviceroot.cpp" line="698"/>
+      <location filename="../src/librssguard/services/abstract/serviceroot.cpp" line="706"/>
       <source>Feeds &amp; categories for account &apos;%1&apos; were not fetched, error: %2</source>
       <translation>A &apos;%1&apos; fiók hírforrásai és kategóriái nem kerültek frissítésre, hiba: %2</translation>
     </message>
@@ -6906,27 +6934,27 @@ Authors of this application are NOT responsible for lost data.</translation>
   <context>
     <name>SettingsFeedsMessages</name>
     <message>
-      <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.cpp" line="237"/>
+      <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.cpp" line="245"/>
       <source>Select new font</source>
       <translation>Válasszon betűtípust</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.cpp" line="31"/>
+      <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.cpp" line="32"/>
       <source>Enter format for count of articles displayed next to each feed/category in feed list. Use &quot;%all&quot; and &quot;%unread&quot; strings which are placeholders for the actual count of all (or unread) articles.</source>
       <translation type="unfinished">Enter format for count of articles displayed next to each feed/category in feed list. Use &quot;%all&quot; and &quot;%unread&quot; strings which are placeholders for the actual count of all (or unread) articles.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.cpp" line="35"/>
+      <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.cpp" line="36"/>
       <source>Note that enabling this might have drastic consequences on performance of article list with big number of articles.</source>
       <translation type="unfinished">Note that enabling this might have drastic consequences on performance of article list with big number of articles.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.cpp" line="55"/>
+      <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.cpp" line="56"/>
       <source>days (turned off)</source>
       <translation type="unfinished">days (turned off)</translation>
     </message>
     <message numerus="yes">
-      <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.cpp" line="58"/>
+      <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.cpp" line="59"/>
       <source>day(s)</source>
       <translation type="unfinished">
         <numerusform>day(s)</numerusform>
@@ -6934,17 +6962,17 @@ Authors of this application are NOT responsible for lost data.</translation>
       </translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.cpp" line="64"/>
+      <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.cpp" line="65"/>
       <source> = unchanged size</source>
       <translation type="unfinished"> = unchanged size</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.cpp" line="372"/>
+      <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.cpp" line="406"/>
       <source>PC restart needed</source>
       <translation type="unfinished">PC restart needed</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.cpp" line="373"/>
+      <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.cpp" line="407"/>
       <source>Your PC needs to be restarted to make some of enabled features fully working.</source>
       <translation type="unfinished">Your PC needs to be restarted to make some of enabled features fully working.</translation>
     </message>
@@ -6994,152 +7022,167 @@ Authors of this application are NOT responsible for lost data.</translation>
       <translation>Kerülje el a ezen dátum előtt keletkezett cikkek hozzáadását az adatbázishoz</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="164"/>
+      <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="173"/>
+      <source>Absolute date/time</source>
+      <translation type="unfinished">Absolute date/time</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="180"/>
+      <source>Relative time</source>
+      <translation type="unfinished">Relative time</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="217"/>
       <source>Feeds list</source>
       <translation type="unfinished">Feeds list</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="170"/>
-      <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="483"/>
+      <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="223"/>
+      <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="543"/>
       <source>Row height</source>
       <translation type="unfinished">Row height</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="207"/>
+      <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="260"/>
       <source>Feed list font</source>
       <translation type="unfinished">Feed list font</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="219"/>
-      <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="407"/>
-      <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="622"/>
+      <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="272"/>
+      <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="460"/>
+      <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="682"/>
       <source>Font preview</source>
       <translation type="unfinished">Font preview</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="229"/>
-      <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="417"/>
-      <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="632"/>
+      <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="282"/>
+      <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="470"/>
+      <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="692"/>
       <source>&amp;Change font</source>
       <translation type="unfinished">&amp;Change font</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="254"/>
+      <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="307"/>
       <source>Article count format</source>
       <translation type="unfinished">Article count format</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="283"/>
+      <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="336"/>
       <source>Hide article counts if there are no unread articles</source>
       <translation type="unfinished">Hide article counts if there are no unread articles</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="290"/>
+      <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="343"/>
       <source>Allow only basic keyboard shortcuts for feed/article list</source>
       <translation type="unfinished">Allow only basic keyboard shortcuts for feed/article list</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="297"/>
+      <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="350"/>
       <source>Display tooltips for feeds and articles</source>
       <translation type="unfinished">Display tooltips for feeds and articles</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="304"/>
+      <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="357"/>
       <source>Update feed list during feed fetching</source>
       <translation type="unfinished">Update feed list during feed fetching</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="312"/>
+      <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="365"/>
       <source>Articles</source>
       <translation>Cikkek</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="318"/>
+      <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="371"/>
       <source>Remove all read articles from all feeds on application exit</source>
       <translation type="unfinished">Remove all read articles from all feeds on application exit</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="325"/>
+      <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="378"/>
       <source>Ignore changes in article body when new articles are being fetched</source>
       <translation type="unfinished">Ignore changes in article body when new articles are being fetched</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="346"/>
+      <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="399"/>
       <source>Internal article viewer</source>
       <translation type="unfinished">Internal article viewer</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="361"/>
+      <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="414"/>
       <source>Limit height of all pictures</source>
       <translation>Minden kép magasságának korlátozása</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="645"/>
+      <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="505"/>
+      <source>Use legacy article formatting</source>
+      <translation type="unfinished">Use legacy article formatting</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="705"/>
       <source>Unread article icon type</source>
       <translation type="unfinished">Unread article icon type</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="339"/>
+      <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="392"/>
       <source>Bring application window to front once article is opened in external web browser</source>
       <translation type="unfinished">Bring application window to front once article is opened in external web browser</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="401"/>
+      <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="454"/>
       <source>Article browser font</source>
       <translation type="unfinished">Article browser font</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="332"/>
+      <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="385"/>
       <source>Fixup date/time of articles which are in the future</source>
       <translation type="unfinished">Fixup date/time of articles which are in the future</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="352"/>
+      <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="405"/>
       <source>Display attachments directly in article</source>
       <translation>Mellékletek megjelenítése közvetlenül a cikkben</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="445"/>
+      <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="498"/>
       <source>Keep article viewer always visible</source>
       <translation type="unfinished">Keep article viewer always visible</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="453"/>
+      <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="513"/>
       <source>Articles list</source>
       <translation>Cikkek listája</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="459"/>
+      <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="519"/>
       <source>Keep article selection in the middle of the article list viewport</source>
       <translation type="unfinished">Keep article selection in the middle of the article list viewport</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="466"/>
+      <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="526"/>
       <source>Enable multiline items</source>
       <translation>Többsoros elemek engedélyezése</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="512"/>
+      <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="572"/>
       <source>Top/bottom row padding</source>
       <translation type="unfinished">Top/bottom row padding</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="541"/>
+      <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="601"/>
       <source>Use custom date/time format</source>
       <translation>Egyedi dátum/idő formátum alkalmazása</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="567"/>
+      <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="627"/>
       <source>Custom date/time format for today&apos;s articles</source>
       <translation type="unfinished">Custom date/time format for today&apos;s articles</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="610"/>
+      <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="670"/>
       <source>Article list font</source>
       <translation type="unfinished">Article list font</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="593"/>
+      <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="653"/>
       <source>Show relative time for articles not older than</source>
       <translation>Relatív idő mutatása a cikkeknél, amelyek nem régebbiek mint</translation>
     </message>
@@ -7794,6 +7837,67 @@ Also, relaunch &quot;Settings&quot; dialog after you install Node.js.</translati
       <source>Title</source>
       <translation>Cím</translation>
     </message>
+    <message>
+      <location filename="../src/librssguard/services/standard/gui/standardaccountdetails.ui" line="30"/>
+      <source>Icon</source>
+      <translation>Ikon</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard/services/standard/gui/standardaccountdetails.ui" line="43"/>
+      <source>Select icon for your account.</source>
+      <translation type="unfinished">Select icon for your account.</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard/services/standard/gui/standardaccountdetails.cpp" line="15"/>
+      <source>Icon selection</source>
+      <translation>Ikon kiválasztása</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard/services/standard/gui/standardaccountdetails.cpp" line="17"/>
+      <source>Load icon from file...</source>
+      <translation>Ikon betöltése fájlból...</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard/services/standard/gui/standardaccountdetails.cpp" line="19"/>
+      <source>Use default icon from icon theme</source>
+      <translation>Az alapértelmezett ikon használata az ikon témából</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard/services/standard/gui/standardaccountdetails.cpp" line="41"/>
+      <source>Select icon file for the account</source>
+      <translation type="unfinished">Select icon file for the account</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard/services/standard/gui/standardaccountdetails.cpp" line="43"/>
+      <source>Images (%1)</source>
+      <translation>Képek (%1)</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard/services/standard/gui/standardaccountdetails.cpp" line="49"/>
+      <source>Select icon</source>
+      <translation>Icon kiválasztása</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard/services/standard/gui/standardaccountdetails.cpp" line="50"/>
+      <source>Cancel</source>
+      <translation>Mégsem</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard/services/standard/gui/standardaccountdetails.cpp" line="53"/>
+      <source>Look in:</source>
+      <extracomment>Label for field with icon file name textbox for selection dialog.</extracomment>
+      <translation>Keresés itt:</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard/services/standard/gui/standardaccountdetails.cpp" line="54"/>
+      <source>Icon name:</source>
+      <translation>Ikon neve:</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard/services/standard/gui/standardaccountdetails.cpp" line="55"/>
+      <source>Icon type:</source>
+      <translation>Ikon típusa:</translation>
+    </message>
   </context>
   <context>
     <name>StandardCategory</name>
@@ -8183,12 +8287,12 @@ Also, you can post-process generated feed data with yet another script if you wi
       <translation type="unfinished">Fetch metadata</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/services/standard/standardserviceroot.cpp" line="518"/>
+      <location filename="../src/librssguard/services/standard/standardserviceroot.cpp" line="525"/>
       <source>Export feeds</source>
       <translation>Hírforrások exportálása</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/services/standard/standardserviceroot.cpp" line="519"/>
+      <location filename="../src/librssguard/services/standard/standardserviceroot.cpp" line="526"/>
       <source>Import feeds</source>
       <translation>Hírforrások importálása</translation>
     </message>
@@ -8213,22 +8317,22 @@ Also, you can post-process generated feed data with yet another script if you wi
       <translation type="unfinished">Cannot add feed because another critical operation is ongoing.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/services/standard/standardserviceroot.cpp" line="484"/>
+      <location filename="../src/librssguard/services/standard/standardserviceroot.cpp" line="491"/>
       <source>Cannot add category</source>
       <translation type="unfinished">Cannot add category</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/services/standard/standardserviceroot.cpp" line="485"/>
+      <location filename="../src/librssguard/services/standard/standardserviceroot.cpp" line="492"/>
       <source>Cannot add category because another critical operation is ongoing.</source>
       <translation type="unfinished">Cannot add category because another critical operation is ongoing.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/services/standard/standardserviceroot.cpp" line="472"/>
+      <location filename="../src/librssguard/services/standard/standardserviceroot.cpp" line="479"/>
       <source>Import was completely successful.</source>
       <translation type="unfinished">Import was completely successful.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/services/standard/standardserviceroot.cpp" line="469"/>
+      <location filename="../src/librssguard/services/standard/standardserviceroot.cpp" line="476"/>
       <source>Some feeds/categories were not imported due to error, check debug log for more details.</source>
       <translation type="unfinished">Some feeds/categories were not imported due to error, check debug log for more details.</translation>
     </message>
@@ -8295,37 +8399,37 @@ Unread news: %2</translation>
   <context>
     <name>TabWidget</name>
     <message>
-      <location filename="../src/librssguard/gui/tabwidget.cpp" line="144"/>
+      <location filename="../src/librssguard/gui/tabwidget.cpp" line="152"/>
       <source>Feeds</source>
       <translation>Hírforrások</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/tabwidget.cpp" line="42"/>
+      <location filename="../src/librssguard/gui/tabwidget.cpp" line="43"/>
       <source>Displays main menu.</source>
       <translation>Főmenü megjelenítése.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/tabwidget.cpp" line="51"/>
+      <location filename="../src/librssguard/gui/tabwidget.cpp" line="54"/>
       <source>Main menu</source>
       <translation>Főmenü</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/tabwidget.cpp" line="82"/>
+      <location filename="../src/librssguard/gui/tabwidget.cpp" line="85"/>
       <source>Downloads</source>
       <translation>Letöltések</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/tabwidget.cpp" line="253"/>
+      <location filename="../src/librssguard/gui/tabwidget.cpp" line="261"/>
       <source>Media player</source>
       <translation>Médialejátszó</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/tabwidget.cpp" line="279"/>
+      <location filename="../src/librssguard/gui/tabwidget.cpp" line="287"/>
       <source>Web browser</source>
       <translation>Web böngésző</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/tabwidget.cpp" line="146"/>
+      <location filename="../src/librssguard/gui/tabwidget.cpp" line="154"/>
       <source>Browse your feeds and articles</source>
       <translation>Hírforrások és cikkek böngészése</translation>
     </message>
@@ -8333,20 +8437,26 @@ Unread news: %2</translation>
   <context>
     <name>TextBrowserViewer</name>
     <message>
-      <location filename="../src/librssguard/gui/webviewers/qtextbrowser/textbrowserviewer.cpp" line="270"/>
+      <location filename="../src/librssguard/gui/webviewers/qtextbrowser/textbrowserviewer.cpp" line="319"/>
       <source>Enable external resources</source>
       <translation type="unfinished">Enable external resources</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/webviewers/qtextbrowser/textbrowserviewer.cpp" line="272"/>
+      <location filename="../src/librssguard/gui/webviewers/qtextbrowser/textbrowserviewer.cpp" line="321"/>
       <source>Download</source>
       <translation>Letöltés</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard/gui/webviewers/qtextbrowser/textbrowserviewer.cpp" line="599"/>
+      <source>image</source>
+      <translation>kép</translation>
     </message>
   </context>
   <context>
     <name>TimeSpinBox</name>
     <message numerus="yes">
-      <location filename="../src/librssguard/gui/reusable/timespinbox.cpp" line="54"/>
+      <location filename="../src/librssguard/gui/reusable/timespinbox.cpp" line="67"/>
+      <location filename="../src/librssguard/gui/reusable/timespinbox.cpp" line="79"/>
       <source>%n hour(s)</source>
       <translation type="unfinished">
         <numerusform>%n hour(s)</numerusform>
@@ -8354,8 +8464,8 @@ Unread news: %2</translation>
       </translation>
     </message>
     <message numerus="yes">
-      <location filename="../src/librssguard/gui/reusable/timespinbox.cpp" line="55"/>
-      <location filename="../src/librssguard/gui/reusable/timespinbox.cpp" line="65"/>
+      <location filename="../src/librssguard/gui/reusable/timespinbox.cpp" line="57"/>
+      <location filename="../src/librssguard/gui/reusable/timespinbox.cpp" line="80"/>
       <source>%n minute(s)</source>
       <translation type="unfinished">
         <numerusform>%n minute(s)</numerusform>
@@ -8363,13 +8473,22 @@ Unread news: %2</translation>
       </translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/reusable/timespinbox.cpp" line="57"/>
-      <location filename="../src/librssguard/gui/reusable/timespinbox.cpp" line="67"/>
+      <location filename="../src/librssguard/gui/reusable/timespinbox.cpp" line="59"/>
+      <location filename="../src/librssguard/gui/reusable/timespinbox.cpp" line="70"/>
+      <location filename="../src/librssguard/gui/reusable/timespinbox.cpp" line="82"/>
       <source> and </source>
       <translation type="unfinished"> and </translation>
     </message>
     <message numerus="yes">
-      <location filename="../src/librssguard/gui/reusable/timespinbox.cpp" line="64"/>
+      <location filename="../src/librssguard/gui/reusable/timespinbox.cpp" line="68"/>
+      <source>%n day(s)</source>
+      <translation type="unfinished">
+        <numerusform>%n day(s)</numerusform>
+        <numerusform>%n day(s)</numerusform>
+      </translation>
+    </message>
+    <message numerus="yes">
+      <location filename="../src/librssguard/gui/reusable/timespinbox.cpp" line="56"/>
       <source>%n second(s)</source>
       <translation type="unfinished">
         <numerusform>%n second(s)</numerusform>
