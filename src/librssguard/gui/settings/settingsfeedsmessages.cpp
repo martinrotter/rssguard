@@ -22,9 +22,10 @@ SettingsFeedsMessages::SettingsFeedsMessages(Settings* settings, QWidget* parent
   : SettingsPanel(settings, parent), m_ui(new Ui::SettingsFeedsMessages) {
   m_ui->setupUi(this);
 
-  m_ui->m_spinHoursAvoid->setMode(TimeSpinBox::Mode::DaysHours);
   m_ui->m_spinAutoUpdateInterval->setMode(TimeSpinBox::Mode::MinutesSeconds);
   m_ui->m_spinStartupUpdateDelay->setMode(TimeSpinBox::Mode::MinutesSeconds);
+
+  m_ui->m_wdgArticleLimiting->setForAppWideFeatures(true, false);
 
   initializeMessageDateFormats();
 
@@ -201,17 +202,7 @@ SettingsFeedsMessages::SettingsFeedsMessages(Settings* settings, QWidget* parent
     m_ui->m_spinFeedUpdateTimeout->setSuffix(QSL(" ") + m_ui->m_spinFeedUpdateTimeout->suffix());
   }
 
-  m_ui->m_dtDateTimeToAvoid
-    ->setDisplayFormat(qApp->localization()->loadedLocale().dateTimeFormat(QLocale::FormatType::ShortFormat));
-
-  connect(m_ui->m_gbAvoidOldArticles, &QGroupBox::toggled, this, &SettingsFeedsMessages::dirtifySettings);
-  connect(m_ui->m_dtDateTimeToAvoid, &QDateTimeEdit::dateTimeChanged, this, &SettingsFeedsMessages::dirtifySettings);
-  connect(m_ui->m_spinHoursAvoid,
-          QOverload<double>::of(&TimeSpinBox::valueChanged),
-          this,
-          &SettingsFeedsMessages::dirtifySettings);
-  connect(m_ui->m_rbAvoidAbsolute, &QRadioButton::toggled, this, &SettingsFeedsMessages::dirtifySettings);
-  connect(m_ui->m_rbAvoidAbsolute, &QRadioButton::toggled, this, &SettingsFeedsMessages::dirtifySettings);
+  connect(m_ui->m_wdgArticleLimiting, &ArticleAmountControl::changed, this, &SettingsFeedsMessages::dirtifySettings);
 
   m_ui->m_spinRelativeArticleTime->setValue(-1);
 }
@@ -292,25 +283,20 @@ void SettingsFeedsMessages::loadSettings() {
       ->setChecked(settings()->value(GROUP(Messages), SETTING(Messages::UseLegacyArticleFormat)).toBool());
   }
 
-  m_ui->m_dtDateTimeToAvoid->setEnabled(false);
-  m_ui->m_spinHoursAvoid->setEnabled(false);
+  ArticleAmountControl::Setup art_limit;
+  art_limit.m_avoidOldArticles = settings()->value(GROUP(Messages), SETTING(Messages::AvoidOldArticles)).toBool();
+  art_limit.m_dtToAvoid = settings()->value(GROUP(Messages), SETTING(Messages::DateTimeToAvoidArticle)).toDateTime();
+  art_limit.m_hoursToAvoid = settings()->value(GROUP(Messages), SETTING(Messages::HoursToAvoidArticle)).toInt();
 
-  QDateTime avoid_dt_barrier =
-    settings()->value(GROUP(Messages), SETTING(Messages::DateTimeToAvoidArticle)).toDateTime();
-  int avoid_hour_barrier = settings()->value(GROUP(Messages), SETTING(Messages::HoursToAvoidArticle)).toInt();
+  art_limit.m_doNotRemoveStarred =
+    settings()->value(GROUP(Messages), SETTING(Messages::LimitDoNotRemoveStarred)).toBool();
+  art_limit.m_doNotRemoveUnread =
+    settings()->value(GROUP(Messages), SETTING(Messages::LimitDoNotRemoveUnread)).toBool();
+  art_limit.m_keepCountOfArticles = settings()->value(GROUP(Messages), SETTING(Messages::LimitCountOfArticles)).toInt();
+  art_limit.m_moveToBinDontPurge =
+    settings()->value(GROUP(Messages), SETTING(Messages::LimitRecycleInsteadOfPurging)).toBool();
 
-  if (avoid_dt_barrier.isValid() && avoid_dt_barrier.toMSecsSinceEpoch() > 0) {
-    m_ui->m_rbAvoidAbsolute->setChecked(true);
-    m_ui->m_dtDateTimeToAvoid
-      ->setDateTime(settings()->value(GROUP(Messages), SETTING(Messages::DateTimeToAvoidArticle)).toDateTime());
-  }
-  else {
-    m_ui->m_rbAvoidRelative->setChecked(true);
-    m_ui->m_spinHoursAvoid->setValue(avoid_hour_barrier);
-  }
-
-  m_ui->m_gbAvoidOldArticles
-    ->setChecked(settings()->value(GROUP(Messages), SETTING(Messages::AvoidOldArticles)).toBool());
+  m_ui->m_wdgArticleLimiting->load(art_limit);
 
   m_ui->m_cmbFastAutoUpdate->setChecked(settings()->value(GROUP(Feeds), SETTING(Feeds::FastAutoUpdate)).toBool());
   m_ui->m_checkUpdateAllFeedsOnStartup
@@ -421,22 +407,22 @@ void SettingsFeedsMessages::saveSettings() {
   settings()->setValue(GROUP(Feeds), Feeds::AutoUpdateInterval, m_ui->m_spinAutoUpdateInterval->value());
   settings()->setValue(GROUP(Feeds), Feeds::UpdateTimeout, m_ui->m_spinFeedUpdateTimeout->value());
 
-  settings()->setValue(GROUP(Messages), Messages::AvoidOldArticles, m_ui->m_gbAvoidOldArticles->isChecked());
-
   if (qApp->usingLite()) {
     settings()->setValue(GROUP(Messages),
                          Messages::UseLegacyArticleFormat,
                          m_ui->m_cbLegacyArticleFormatting->isChecked());
   }
 
-  if (m_ui->m_rbAvoidAbsolute->isChecked()) {
-    settings()->setValue(GROUP(Messages), Messages::DateTimeToAvoidArticle, m_ui->m_dtDateTimeToAvoid->dateTime());
-    settings()->setValue(GROUP(Messages), Messages::HoursToAvoidArticle, 0);
-  }
-  else if (m_ui->m_rbAvoidRelative->isChecked()) {
-    settings()->setValue(GROUP(Messages), Messages::DateTimeToAvoidArticle, QDateTime());
-    settings()->setValue(GROUP(Messages), Messages::HoursToAvoidArticle, m_ui->m_spinHoursAvoid->value());
-  }
+  ArticleAmountControl::Setup art_limit = m_ui->m_wdgArticleLimiting->save();
+
+  settings()->setValue(GROUP(Messages), Messages::AvoidOldArticles, art_limit.m_avoidOldArticles);
+  settings()->setValue(GROUP(Messages), Messages::DateTimeToAvoidArticle, art_limit.m_dtToAvoid);
+  settings()->setValue(GROUP(Messages), Messages::HoursToAvoidArticle, art_limit.m_hoursToAvoid);
+
+  settings()->setValue(GROUP(Messages), Messages::LimitDoNotRemoveStarred, art_limit.m_doNotRemoveStarred);
+  settings()->setValue(GROUP(Messages), Messages::LimitDoNotRemoveUnread, art_limit.m_doNotRemoveUnread);
+  settings()->setValue(GROUP(Messages), Messages::LimitCountOfArticles, art_limit.m_keepCountOfArticles);
+  settings()->setValue(GROUP(Messages), Messages::LimitRecycleInsteadOfPurging, art_limit.m_moveToBinDontPurge);
 
   settings()->setValue(GROUP(Feeds), Feeds::FastAutoUpdate, m_ui->m_cmbFastAutoUpdate->isChecked());
   settings()->setValue(GROUP(Feeds), Feeds::FeedsUpdateOnStartup, m_ui->m_checkUpdateAllFeedsOnStartup->isChecked());

@@ -158,6 +158,18 @@ DVALUE(QDateTime) Messages::DateTimeToAvoidArticleDef = QDateTime::currentDateTi
 DKEY Messages::HoursToAvoidArticle = "hours_to_avoid_article";
 DVALUE(int) Messages::HoursToAvoidArticleDef = 0;
 
+DKEY Messages::LimitDoNotRemoveUnread = "limit_dont_remove_unread";
+DVALUE(bool) Messages::LimitDoNotRemoveUnreadDef = true;
+
+DKEY Messages::LimitDoNotRemoveStarred = "limit_dont_remove_starred";
+DVALUE(bool) Messages::LimitDoNotRemoveStarredDef = true;
+
+DKEY Messages::LimitRecycleInsteadOfPurging = "limit_recycle_dont_purge";
+DVALUE(bool) Messages::LimitRecycleInsteadOfPurgingDef = false;
+
+DKEY Messages::LimitCountOfArticles = "limit_count_of_articles";
+DVALUE(int) Messages::LimitCountOfArticlesDef = 0;
+
 DKEY Messages::AlwaysDisplayItemPreview = "always_display_preview";
 DVALUE(bool) Messages::AlwaysDisplayItemPreviewDef = true;
 

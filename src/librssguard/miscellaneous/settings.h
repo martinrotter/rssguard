@@ -155,6 +155,18 @@ namespace Messages {
   KEY HoursToAvoidArticle;
   VALUE(int) HoursToAvoidArticleDef;
 
+  KEY LimitDoNotRemoveUnread;
+  VALUE(bool) LimitDoNotRemoveUnreadDef;
+
+  KEY LimitDoNotRemoveStarred;
+  VALUE(bool) LimitDoNotRemoveStarredDef;
+
+  KEY LimitRecycleInsteadOfPurging;
+  VALUE(bool) LimitRecycleInsteadOfPurgingDef;
+
+  KEY LimitCountOfArticles;
+  VALUE(int) LimitCountOfArticlesDef;
+
   KEY AlwaysDisplayItemPreview;
   VALUE(bool) AlwaysDisplayItemPreviewDef;
 

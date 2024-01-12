@@ -123,92 +123,7 @@
         </widget>
        </item>
        <item row="5" column="0" colspan="2">
-        <widget class="QGroupBox" name="m_gbAvoidOldArticles">
-         <property name="title">
-          <string>Avoid adding articles before this date into the database</string>
-         </property>
-         <property name="checkable">
-          <bool>true</bool>
-         </property>
-         <property name="checked">
-          <bool>true</bool>
-         </property>
-         <layout class="QGridLayout" name="gridLayout">
-          <item row="0" column="1">
-           <widget class="QDateTimeEdit" name="m_dtDateTimeToAvoid">
-            <property name="sizePolicy">
-             <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
-              <horstretch>1</horstretch>
-              <verstretch>0</verstretch>
-             </sizepolicy>
-            </property>
-            <property name="minimumDate">
-             <date>
-              <year>1971</year>
-              <month>1</month>
-              <day>1</day>
-             </date>
-            </property>
-            <property name="calendarPopup">
-             <bool>true</bool>
-            </property>
-           </widget>
-          </item>
-          <item row="1" column="1">
-           <widget class="TimeSpinBox" name="m_spinHoursAvoid">
-            <property name="sizePolicy">
-             <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
-              <horstretch>1</horstretch>
-              <verstretch>0</verstretch>
-             </sizepolicy>
-            </property>
-            <property name="maximum">
-             <double>10000.000000000000000</double>
-            </property>
-           </widget>
-          </item>
-          <item row="0" column="0">
-           <widget class="QRadioButton" name="m_rbAvoidAbsolute">
-            <property name="text">
-             <string>Absolute date/time</string>
-            </property>
-           </widget>
-          </item>
-          <item row="1" column="0">
-           <widget class="QRadioButton" name="m_rbAvoidRelative">
-            <property name="text">
-             <string>Relative time</string>
-            </property>
-           </widget>
-          </item>
-          <item row="1" column="2">
-           <spacer name="horizontalSpacer_4">
-            <property name="orientation">
-             <enum>Qt::Horizontal</enum>
-            </property>
-            <property name="sizeHint" stdset="0">
-             <size>
-              <width>40</width>
-              <height>20</height>
-             </size>
-            </property>
-           </spacer>
-          </item>
-          <item row="0" column="2">
-           <spacer name="horizontalSpacer_5">
-            <property name="orientation">
-             <enum>Qt::Horizontal</enum>
-            </property>
-            <property name="sizeHint" stdset="0">
-             <size>
-              <width>40</width>
-              <height>20</height>
-             </size>
-            </property>
-           </spacer>
-          </item>
-         </layout>
-        </widget>
+        <widget class="ArticleAmountControl" name="m_wdgArticleLimiting" native="true"/>
        </item>
       </layout>
      </widget>
@@ -727,6 +642,12 @@
    <header>helpspoiler.h</header>
    <container>1</container>
   </customwidget>
+  <customwidget>
+   <class>ArticleAmountControl</class>
+   <extends>QWidget</extends>
+   <header>articleamountcontrol.h</header>
+   <container>1</container>
+  </customwidget>
  </customwidgets>
  <tabstops>
   <tabstop>m_checkUpdateAllFeedsOnStartup</tabstop>
@@ -765,41 +686,7 @@
   <tabstop>m_tabFeedsMessages</tabstop>
   <tabstop>m_gbFeedListFont</tabstop>
   <tabstop>m_gbArticleListFont</tabstop>
-  <tabstop>m_gbAvoidOldArticles</tabstop>
  </tabstops>
  <resources/>
- <connections>
-  <connection>
-   <sender>m_rbAvoidAbsolute</sender>
-   <signal>toggled(bool)</signal>
-   <receiver>m_dtDateTimeToAvoid</receiver>
-   <slot>setEnabled(bool)</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>92</x>
-     <y>215</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>326</x>
-     <y>215</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>m_rbAvoidRelative</sender>
-   <signal>toggled(bool)</signal>
-   <receiver>m_spinHoursAvoid</receiver>
-   <slot>setEnabled(bool)</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>92</x>
-     <y>243</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>326</x>
-     <y>243</y>
-    </hint>
-   </hints>
-  </connection>
- </connections>
+ <connections/>
 </ui>

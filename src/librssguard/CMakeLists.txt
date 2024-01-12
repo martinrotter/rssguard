@@ -109,6 +109,8 @@ set(SOURCES
   gui/notifications/toastnotification.h
   gui/notifications/toastnotificationsmanager.cpp
   gui/notifications/toastnotificationsmanager.h
+  gui/reusable/articleamountcontrol.cpp
+  gui/reusable/articleamountcontrol.h
   gui/reusable/baselineedit.cpp
   gui/reusable/baselineedit.h
   gui/reusable/basetreeview.cpp
@@ -171,12 +173,12 @@ set(SOURCES
   gui/settings/settingsfeedsmessages.h
   gui/settings/settingsgeneral.cpp
   gui/settings/settingsgeneral.h
-  gui/settings/settingsmediaplayer.cpp
-  gui/settings/settingsmediaplayer.h
   gui/settings/settingsgui.cpp
   gui/settings/settingsgui.h
   gui/settings/settingslocalization.cpp
   gui/settings/settingslocalization.h
+  gui/settings/settingsmediaplayer.cpp
+  gui/settings/settingsmediaplayer.h
   gui/settings/settingsnodejs.cpp
   gui/settings/settingsnodejs.h
   gui/settings/settingsnotifications.cpp
@@ -251,6 +253,8 @@ set(SOURCES
   network-web/adblock/adblockmanager.h
   network-web/adblock/adblockrequestinfo.cpp
   network-web/adblock/adblockrequestinfo.h
+  network-web/apiserver.cpp
+  network-web/apiserver.h
   network-web/basenetworkaccessmanager.cpp
   network-web/basenetworkaccessmanager.h
   network-web/cookiejar.cpp
@@ -261,8 +265,6 @@ set(SOURCES
   network-web/downloadmanager.h
   network-web/googlesuggest.cpp
   network-web/googlesuggest.h
-  network-web/apiserver.cpp
-  network-web/apiserver.h
   network-web/httpresponse.cpp
   network-web/httpresponse.h
   network-web/httpserver.cpp
@@ -355,18 +357,18 @@ set(SOURCES
   services/greader/definitions.h
   services/greader/greaderentrypoint.cpp
   services/greader/greaderentrypoint.h
+  services/greader/greaderfeed.cpp
+  services/greader/greaderfeed.h
   services/greader/greadernetwork.cpp
   services/greader/greadernetwork.h
   services/greader/greaderserviceroot.cpp
   services/greader/greaderserviceroot.h
-  services/greader/greaderfeed.cpp
-  services/greader/greaderfeed.h
   services/greader/gui/formeditgreaderaccount.cpp
   services/greader/gui/formeditgreaderaccount.h
-  services/greader/gui/greaderaccountdetails.cpp
-  services/greader/gui/greaderaccountdetails.h
   services/greader/gui/formgreaderfeeddetails.cpp
   services/greader/gui/formgreaderfeeddetails.h
+  services/greader/gui/greaderaccountdetails.cpp
+  services/greader/gui/greaderaccountdetails.h
   services/greader/gui/greaderfeeddetails.cpp
   services/greader/gui/greaderfeeddetails.h
   services/owncloud/definitions.h
@@ -406,10 +408,10 @@ set(SOURCES
   services/standard/gui/formstandardfeeddetails.h
   services/standard/gui/formstandardimportexport.cpp
   services/standard/gui/formstandardimportexport.h
-  services/standard/gui/standardfeeddetails.cpp
-  services/standard/gui/standardfeeddetails.h
   services/standard/gui/standardaccountdetails.cpp
   services/standard/gui/standardaccountdetails.h
+  services/standard/gui/standardfeeddetails.cpp
+  services/standard/gui/standardfeeddetails.h
   services/standard/parsers/atomparser.cpp
   services/standard/parsers/atomparser.h
   services/standard/parsers/feedparser.cpp
@@ -470,6 +472,7 @@ set(UI_FILES
   gui/notifications/notificationseditor.ui
   gui/notifications/singlenotificationeditor.ui
   gui/notifications/toastnotification.ui
+  gui/reusable/articleamountcontrol.ui
   gui/reusable/networkproxydetails.ui
   gui/reusable/searchtextwidget.ui
   gui/richtexteditor/mrichtextedit.ui
@@ -480,10 +483,10 @@ set(UI_FILES
   gui/settings/settingsgeneral.ui
   gui/settings/settingsgui.ui
   gui/settings/settingslocalization.ui
+  gui/settings/settingsmediaplayer.ui
   gui/settings/settingsnodejs.ui
   gui/settings/settingsnotifications.ui
   gui/settings/settingsshortcuts.ui
-  gui/settings/settingsmediaplayer.ui
   gui/toolbars/toolbareditor.ui
   network-web/adblock/adblockdialog.ui
   network-web/downloaditem.ui
@@ -505,8 +508,8 @@ set(UI_FILES
   services/reddit/gui/redditaccountdetails.ui
   services/standard/gui/formdiscoverfeeds.ui
   services/standard/gui/formstandardimportexport.ui
-  services/standard/gui/standardfeeddetails.ui
   services/standard/gui/standardaccountdetails.ui
+  services/standard/gui/standardfeeddetails.ui
   services/tt-rss/gui/formttrssnote.ui
   services/tt-rss/gui/ttrssaccountdetails.ui
   services/tt-rss/gui/ttrssfeeddetails.ui

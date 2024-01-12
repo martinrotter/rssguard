@@ -39,6 +39,7 @@ FormSettings::FormSettings(QWidget& parent) : QDialog(&parent), m_settings(*qApp
   // Establish needed connections.
   connect(m_ui.m_buttonBox, &QDialogButtonBox::accepted, this, &FormSettings::saveSettings);
   connect(m_ui.m_buttonBox, &QDialogButtonBox::rejected, this, &FormSettings::cancelSettings);
+
   connect(m_btnApply, &QPushButton::clicked, this, &FormSettings::applySettings);
   connect(m_ui.m_listSettings, &QListWidget::currentRowChanged, this, &FormSettings::openSettingsCategory);
 
@@ -63,6 +64,10 @@ FormSettings::FormSettings(QWidget& parent) : QDialog(&parent), m_settings(*qApp
 
 FormSettings::~FormSettings() {
   qDebugNN << LOGSEC_GUI << "Destroying FormSettings distance.";
+}
+
+void FormSettings::reject() {
+  m_ui.m_buttonBox->button(QDialogButtonBox::StandardButton::Cancel)->click();
 }
 
 void FormSettings::openSettingsCategory(int category) {
@@ -130,7 +135,7 @@ void FormSettings::cancelSettings() {
   }
 
   if (changed_panels.isEmpty()) {
-    reject();
+    done(QDialog::DialogCode::Rejected);
   }
   else {
     const QStringList changed_settings_description =
@@ -144,7 +149,7 @@ void FormSettings::cancelSettings() {
                      tr("Changed categories of settings:\n%1.").arg(changed_settings_description.join(QSL(",\n"))),
                      QMessageBox::StandardButton::Yes | QMessageBox::StandardButton::No,
                      QMessageBox::StandardButton::Yes) == QMessageBox::StandardButton::Yes) {
-      reject();
+      done(QDialog::DialogCode::Rejected);
     }
   }
 }
