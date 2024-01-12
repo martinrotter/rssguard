@@ -29,7 +29,7 @@
    <item>
     <widget class="QTabWidget" name="tabWidget">
      <property name="currentIndex">
-      <number>0</number>
+      <number>1</number>
      </property>
      <widget class="QWidget" name="m_tabIgnore">
       <attribute name="title">
@@ -39,7 +39,7 @@
        <item row="0" column="0" colspan="2">
         <layout class="QHBoxLayout" name="horizontalLayout_3">
          <item>
-          <widget class="MultiFeedEditCheckBox" name="m_mcbAvoidOldArticles_2"/>
+          <widget class="MultiFeedEditCheckBox" name="m_mcbAddAnyDateArticles"/>
          </item>
          <item>
           <widget class="QCheckBox" name="m_cbAddAnyDateArticles">
@@ -176,7 +176,7 @@
        <item row="0" column="0" colspan="2">
         <layout class="QHBoxLayout" name="horizontalLayout_4">
          <item>
-          <widget class="MultiFeedEditCheckBox" name="m_mcbAvoidOldArticles_3"/>
+          <widget class="MultiFeedEditCheckBox" name="m_mcbArticleCount"/>
          </item>
          <item>
           <widget class="QLabel" name="label">
@@ -210,7 +210,7 @@
        <item row="1" column="0" colspan="2">
         <layout class="QHBoxLayout" name="horizontalLayout_5">
          <item>
-          <widget class="MultiFeedEditCheckBox" name="m_mcbAvoidOldArticles_4"/>
+          <widget class="MultiFeedEditCheckBox" name="m_mcbNoRemoveImportant"/>
          </item>
          <item>
           <widget class="QCheckBox" name="m_cbNoRemoveImportant">
@@ -224,7 +224,7 @@
        <item row="2" column="0" colspan="2">
         <layout class="QHBoxLayout" name="horizontalLayout_6">
          <item>
-          <widget class="MultiFeedEditCheckBox" name="m_mcbAvoidOldArticles_5"/>
+          <widget class="MultiFeedEditCheckBox" name="m_mcbNoRemoveUnread"/>
          </item>
          <item>
           <widget class="QCheckBox" name="m_cbNoRemoveUnread">
@@ -238,7 +238,7 @@
        <item row="3" column="0" colspan="2">
         <layout class="QHBoxLayout" name="horizontalLayout_7">
          <item>
-          <widget class="MultiFeedEditCheckBox" name="m_mcbAvoidOldArticles_6"/>
+          <widget class="MultiFeedEditCheckBox" name="m_mcbMoveToBinNoPurge"/>
          </item>
          <item>
           <widget class="QCheckBox" name="m_cbMoveToBinNoPurge">

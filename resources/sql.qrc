@@ -7,6 +7,7 @@
     <file>sql/db_update_mysql_4_5.sql</file>
     <file>sql/db_update_mysql_5_6.sql</file>
     <file>sql/db_update_mysql_6_7.sql</file>
+    <file>sql/db_update_mysql_7_8.sql</file>
 
     <file>sql/db_init_sqlite.sql</file>
     <file>sql/db_update_sqlite_1_2.sql</file>
@@ -15,5 +16,6 @@
     <file>sql/db_update_sqlite_4_5.sql</file>
     <file>sql/db_update_sqlite_5_6.sql</file>
     <file>sql/db_update_sqlite_6_7.sql</file>
+    <file>sql/db_update_sqlite_7_8.sql</file>
   </qresource>
 </RCC>

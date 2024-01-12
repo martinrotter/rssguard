@@ -88,126 +88,7 @@
         </layout>
        </item>
        <item row="2" column="0" colspan="2">
-        <widget class="Line" name="line">
-         <property name="minimumSize">
-          <size>
-           <width>150</width>
-           <height>0</height>
-          </size>
-         </property>
-         <property name="orientation">
-          <enum>Qt::Horizontal</enum>
-         </property>
-        </widget>
-       </item>
-       <item row="3" column="0" colspan="2">
-        <layout class="QHBoxLayout" name="horizontalLayout_3">
-         <item>
-          <widget class="MultiFeedEditCheckBox" name="m_mcbAddAnyDateArticles"/>
-         </item>
-         <item>
-          <widget class="QCheckBox" name="m_cbAddAnyDateArticles">
-           <property name="text">
-            <string>Add articles with any date into the database</string>
-           </property>
-          </widget>
-         </item>
-        </layout>
-       </item>
-       <item row="4" column="0" colspan="2">
-        <layout class="QHBoxLayout" name="horizontalLayout_2">
-         <item>
-          <widget class="MultiFeedEditCheckBox" name="m_mcbAvoidOldArticles"/>
-         </item>
-         <item>
-          <widget class="QGroupBox" name="m_gbAvoidOldArticles">
-           <property name="enabled">
-            <bool>true</bool>
-           </property>
-           <property name="title">
-            <string>Avoid adding articles before this date/time into the database</string>
-           </property>
-           <property name="checkable">
-            <bool>true</bool>
-           </property>
-           <layout class="QGridLayout" name="gridLayout">
-            <item row="1" column="1">
-             <widget class="QDateTimeEdit" name="m_dtDateTimeToAvoid">
-              <property name="sizePolicy">
-               <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
-                <horstretch>1</horstretch>
-                <verstretch>0</verstretch>
-               </sizepolicy>
-              </property>
-              <property name="minimumDate">
-               <date>
-                <year>1971</year>
-                <month>1</month>
-                <day>1</day>
-               </date>
-              </property>
-              <property name="calendarPopup">
-               <bool>true</bool>
-              </property>
-             </widget>
-            </item>
-            <item row="1" column="0">
-             <widget class="QRadioButton" name="m_rbAvoidAbsolute">
-              <property name="text">
-               <string>Absolute date/time</string>
-              </property>
-             </widget>
-            </item>
-            <item row="2" column="1">
-             <widget class="TimeSpinBox" name="m_spinHoursAvoid">
-              <property name="sizePolicy">
-               <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
-                <horstretch>1</horstretch>
-                <verstretch>0</verstretch>
-               </sizepolicy>
-              </property>
-              <property name="maximum">
-               <double>10000.000000000000000</double>
-              </property>
-             </widget>
-            </item>
-            <item row="2" column="0">
-             <widget class="QRadioButton" name="m_rbAvoidRelative">
-              <property name="text">
-               <string>Relative time</string>
-              </property>
-             </widget>
-            </item>
-            <item row="1" column="2">
-             <spacer name="horizontalSpacer">
-              <property name="orientation">
-               <enum>Qt::Horizontal</enum>
-              </property>
-              <property name="sizeHint" stdset="0">
-               <size>
-                <width>40</width>
-                <height>20</height>
-               </size>
-              </property>
-             </spacer>
-            </item>
-            <item row="2" column="2">
-             <spacer name="horizontalSpacer_2">
-              <property name="orientation">
-               <enum>Qt::Horizontal</enum>
-              </property>
-              <property name="sizeHint" stdset="0">
-               <size>
-                <width>40</width>
-                <height>20</height>
-               </size>
-              </property>
-             </spacer>
-            </item>
-           </layout>
-          </widget>
-         </item>
-        </layout>
+        <widget class="ArticleAmountControl" name="m_wdgArticleLimiting" native="true"/>
        </item>
       </layout>
      </widget>
@@ -288,12 +169,15 @@
    <extends>QCheckBox</extends>
    <header>multifeededitcheckbox.h</header>
   </customwidget>
+  <customwidget>
+   <class>ArticleAmountControl</class>
+   <extends>QWidget</extends>
+   <header>articleamountcontrol.h</header>
+   <container>1</container>
+  </customwidget>
  </customwidgets>
  <tabstops>
   <tabstop>m_cbOpenArticlesAutomatically</tabstop>
-  <tabstop>m_cbAddAnyDateArticles</tabstop>
-  <tabstop>m_gbAvoidOldArticles</tabstop>
-  <tabstop>m_dtDateTimeToAvoid</tabstop>
   <tabstop>m_cbSuppressFeed</tabstop>
   <tabstop>m_cbDisableFeed</tabstop>
   <tabstop>m_cbFeedRTL</tabstop>
@@ -313,38 +197,6 @@
     <hint type="destinationlabel">
      <x>286</x>
      <y>274</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>m_rbAvoidAbsolute</sender>
-   <signal>toggled(bool)</signal>
-   <receiver>m_dtDateTimeToAvoid</receiver>
-   <slot>setEnabled(bool)</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>112</x>
-     <y>487</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>233</x>
-     <y>487</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>m_rbAvoidRelative</sender>
-   <signal>toggled(bool)</signal>
-   <receiver>m_spinHoursAvoid</receiver>
-   <slot>setEnabled(bool)</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>112</x>
-     <y>515</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>233</x>
-     <y>515</y>
     </hint>
    </hints>
   </connection>

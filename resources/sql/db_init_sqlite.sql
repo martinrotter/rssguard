@@ -44,8 +44,15 @@ CREATE TABLE Feeds (
   is_off                    INTEGER     NOT NULL DEFAULT 0 CHECK (is_off >= 0 AND is_off <= 1),
   is_quiet                  INTEGER     NOT NULL DEFAULT 0 CHECK (is_quiet >= 0 AND is_quiet <= 1),
   is_rtl                    INTEGER     NOT NULL DEFAULT 0 CHECK (is_rtl >= 0 AND is_rtl <= 1),
+
   add_any_datetime_articles	INTEGER     NOT NULL DEFAULT 0 CHECK (add_any_datetime_articles >= 0 AND add_any_datetime_articles <= 1),
   datetime_to_avoid	        BIGINT      NOT NULL DEFAULT 0 CHECK (datetime_to_avoid >= 0),
+  
+  keep_article_count        INTEGER     NOT NULL DEFAULT 0 CHECK (keep_article_count >= 0),
+  keep_unread_articles      INTEGER     NOT NULL DEFAULT 1 CHECK (keep_unread_articles >= 0 AND keep_unread_articles <= 1),
+  keep_starred_articles     INTEGER     NOT NULL DEFAULT 1 CHECK (keep_starred_articles >= 0 AND keep_starred_articles <= 1),
+  recycle_articles          INTEGER     NOT NULL DEFAULT 0 CHECK (recycle_articles >= 0 AND recycle_articles <= 1),
+  
   open_articles             INTEGER     NOT NULL DEFAULT 0 CHECK (open_articles >= 0 AND open_articles <= 1),
   account_id                INTEGER     NOT NULL,
   custom_id                 TEXT        NOT NULL CHECK (custom_id != ''), /* Custom ID cannot be empty, it must contain either service-specific ID, or Feeds/id. */

@@ -7,8 +7,12 @@
 
 #include "ui_articleamountcontrol.h"
 
+class Feed;
+
 class ArticleAmountControl : public QWidget {
     Q_OBJECT
+
+    friend class FormFeedDetails;
 
   public:
     struct Setup {
@@ -31,6 +35,8 @@ class ArticleAmountControl : public QWidget {
 
     void load(const Setup& setup);
     Setup save() const;
+
+    void saveFeed(Feed* fd) const;
 
   private slots:
     void updateArticleCountSuffix(int count);

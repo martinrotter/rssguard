@@ -55,26 +55,7 @@ void FormFeedDetails::apply() {
       fd->setIsRtl(m_ui.m_cbFeedRTL->isChecked());
     }
 
-    if (isChangeAllowed(m_ui.m_mcbAddAnyDateArticles)) {
-      fd->setAddAnyDatetimeArticles(m_ui.m_cbAddAnyDateArticles->isChecked());
-    }
-
-    if (isChangeAllowed(m_ui.m_mcbAvoidOldArticles)) {
-      if (m_ui.m_gbAvoidOldArticles->isChecked()) {
-        if (m_ui.m_rbAvoidAbsolute->isChecked()) {
-          fd->setDatetimeToAvoid(m_ui.m_dtDateTimeToAvoid->dateTime());
-          fd->setHoursToAvoid(0);
-        }
-        else {
-          fd->setDatetimeToAvoid({});
-          fd->setHoursToAvoid(m_ui.m_spinHoursAvoid->value());
-        }
-      }
-      else {
-        fd->setDatetimeToAvoid({});
-        fd->setHoursToAvoid(0);
-      }
-    }
+    m_ui.m_wdgArticleLimiting->saveFeed(fd);
 
     if (isChangeAllowed(m_ui.m_mcbDisableFeed)) {
       fd->setIsSwitchedOff(m_ui.m_cbDisableFeed->isChecked());
@@ -122,10 +103,6 @@ void FormFeedDetails::createConnections() {
           static_cast<void (QComboBox::*)(int)>(&QComboBox::currentIndexChanged),
           this,
           &FormFeedDetails::onAutoUpdateTypeChanged);
-
-  connect(m_ui.m_cbAddAnyDateArticles, &QCheckBox::toggled, this, [this](bool checked) {
-    m_ui.m_gbAvoidOldArticles->setEnabled(!checked);
-  });
 }
 
 void FormFeedDetails::loadFeedData() {
@@ -134,9 +111,7 @@ void FormFeedDetails::loadFeedData() {
   if (m_isBatchEdit) {
     // We hook batch selectors.
     m_ui.m_mcbAutoDownloading->addActionWidget(m_ui.m_wdgAutoUpdate);
-    m_ui.m_mcbAddAnyDateArticles->addActionWidget(m_ui.m_cbAddAnyDateArticles);
     m_ui.m_mcbOpenArticlesAutomatically->addActionWidget(m_ui.m_cbOpenArticlesAutomatically);
-    m_ui.m_mcbAvoidOldArticles->addActionWidget(m_ui.m_gbAvoidOldArticles);
     m_ui.m_mcbDisableFeed->addActionWidget(m_ui.m_cbDisableFeed);
     m_ui.m_mcbSuppressFeed->addActionWidget(m_ui.m_cbSuppressFeed);
     m_ui.m_mcbFeedRtl->addActionWidget(m_ui.m_cbFeedRTL);
@@ -147,6 +122,8 @@ void FormFeedDetails::loadFeedData() {
       cb->hide();
     }
   }
+
+  m_ui.m_wdgArticleLimiting->setForAppWideFeatures(false, m_isBatchEdit);
 
   if (m_creatingNew) {
     GuiUtilities::applyDialogProperties(*this,
@@ -169,21 +146,23 @@ void FormFeedDetails::loadFeedData() {
   m_ui.m_spinAutoUpdateInterval->setValue(fd->autoUpdateInterval());
   m_ui.m_cbOpenArticlesAutomatically->setChecked(fd->openArticlesDirectly());
   m_ui.m_cbFeedRTL->setChecked(fd->isRtl());
-  m_ui.m_cbAddAnyDateArticles->setChecked(fd->addAnyDatetimeArticles());
-  m_ui.m_gbAvoidOldArticles->setChecked((fd->datetimeToAvoid().isValid() &&
-                                         fd->datetimeToAvoid().toMSecsSinceEpoch() > 0) ||
-                                        fd->hoursToAvoid() > 0);
-  m_ui.m_dtDateTimeToAvoid->setDateTime(fd->datetimeToAvoid());
-  m_ui.m_spinHoursAvoid->setValue(fd->hoursToAvoid());
   m_ui.m_cbDisableFeed->setChecked(fd->isSwitchedOff());
   m_ui.m_cbSuppressFeed->setChecked(fd->isQuiet());
 
-  if (fd->datetimeToAvoid().isValid() && fd->datetimeToAvoid().toMSecsSinceEpoch() > 0) {
-    m_ui.m_rbAvoidAbsolute->setChecked(true);
-  }
-  else {
-    m_ui.m_rbAvoidRelative->setChecked(true);
-  }
+  ArticleAmountControl::Setup art_limit;
+
+  art_limit.m_addAnyArticlesToDb = fd->addAnyDatetimeArticles();
+  art_limit.m_avoidOldArticles =
+    (fd->datetimeToAvoid().isValid() && fd->datetimeToAvoid().toMSecsSinceEpoch() > 0) || fd->hoursToAvoid() > 0;
+  art_limit.m_dtToAvoid = fd->datetimeToAvoid();
+  art_limit.m_hoursToAvoid = fd->hoursToAvoid();
+
+  art_limit.m_doNotRemoveStarred = false;
+  art_limit.m_doNotRemoveUnread = false;
+  art_limit.m_keepCountOfArticles = 4;
+  art_limit.m_moveToBinDontPurge = false;
+
+  m_ui.m_wdgArticleLimiting->load(art_limit);
 }
 
 void FormFeedDetails::acceptIfPossible() {
@@ -204,12 +183,6 @@ void FormFeedDetails::acceptIfPossible() {
 
 void FormFeedDetails::initialize() {
   m_ui.setupUi(this);
-
-  m_ui.m_dtDateTimeToAvoid->setEnabled(false);
-  m_ui.m_spinHoursAvoid->setEnabled(false);
-  m_ui.m_spinHoursAvoid->setMode(TimeSpinBox::Mode::DaysHours);
-  m_ui.m_dtDateTimeToAvoid
-    ->setDisplayFormat(qApp->localization()->loadedLocale().dateTimeFormat(QLocale::FormatType::ShortFormat));
 
   // Setup auto-update options.
   m_ui.m_spinAutoUpdateInterval->setMode(TimeSpinBox::Mode::MinutesSeconds);
