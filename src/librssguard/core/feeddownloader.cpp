@@ -518,14 +518,16 @@ void FeedDownloader::removeDuplicateMessages(QList<Message>& messages) {
 }
 
 void FeedDownloader::removeTooOldMessages(Feed* feed, QList<Message>& msgs) {
-  if (!feed->addAnyDatetimeArticles()) {
+  const Feed::ArticleIgnoreLimit art = feed->articleIgnoreLimit();
+
+  if (!art.m_addAnyArticlesToDb) {
     QDateTime dt_to_avoid;
 
-    if (feed->datetimeToAvoid().isValid() && feed->datetimeToAvoid().toMSecsSinceEpoch() > 0) {
-      dt_to_avoid = feed->datetimeToAvoid();
+    if (art.m_dtToAvoid.isValid() && art.m_dtToAvoid.toMSecsSinceEpoch() > 0) {
+      dt_to_avoid = art.m_dtToAvoid;
     }
-    else if (feed->hoursToAvoid() > 0) {
-      dt_to_avoid = QDateTime::currentDateTimeUtc().addSecs((feed->hoursToAvoid() * -3600));
+    else if (art.m_hoursToAvoid > 0) {
+      dt_to_avoid = QDateTime::currentDateTimeUtc().addSecs((art.m_hoursToAvoid * -3600));
     }
     else if (qApp->settings()->value(GROUP(Messages), SETTING(Messages::AvoidOldArticles)).toBool()) {
       QDateTime global_dt_to_avoid =

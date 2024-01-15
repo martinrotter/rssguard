@@ -492,11 +492,15 @@ QMap<QString, QVariantMap> ServiceRoot::storeCustomFeedsData() {
     feed_custom_data.insert(QSL("is_quiet"), feed->isQuiet());
     feed_custom_data.insert(QSL("open_articles_directly"), feed->openArticlesDirectly());
     feed_custom_data.insert(QSL("is_rtl"), feed->isRtl());
-    feed_custom_data.insert(QSL("add_any_datetime_articles"), feed->addAnyDatetimeArticles());
+
+    feed_custom_data.insert(QSL("article_limit_ignore"), QVariant::fromValue(feed->articleIgnoreLimit()));
+
+    /*
     feed_custom_data.insert(QSL("datetime_to_avoid"),
                             (feed->datetimeToAvoid().isValid() && feed->datetimeToAvoid().toMSecsSinceEpoch() > 0)
                               ? feed->datetimeToAvoid().toMSecsSinceEpoch()
                               : feed->hoursToAvoid());
+                              */
 
     // NOTE: This is here specifically to be able to restore custom sort order.
     // Otherwise the information is lost when list of feeds/folders is refreshed from remote
@@ -547,6 +551,11 @@ void ServiceRoot::restoreCustomFeedsData(const QMap<QString, QVariantMap>& data,
       feed->setIsQuiet(feed_custom_data.value(QSL("is_quiet")).toBool());
       feed->setOpenArticlesDirectly(feed_custom_data.value(QSL("open_articles_directly")).toBool());
       feed->setIsRtl(feed_custom_data.value(QSL("is_rtl")).toBool());
+
+      feed
+        ->setArticleIgnoreLimit(feed_custom_data.value(QSL("article_limit_ignore")).value<Feed::ArticleIgnoreLimit>());
+
+      /*
       feed->setAddAnyDatetimeArticles(feed_custom_data.value(QSL("add_any_datetime_articles")).toBool());
 
       qint64 time_to_avoid = feed_custom_data.value(QSL("datetime_to_avoid")).value<qint64>();
@@ -557,6 +566,7 @@ void ServiceRoot::restoreCustomFeedsData(const QMap<QString, QVariantMap>& data,
       else {
         feed->setHoursToAvoid(time_to_avoid);
       }
+      */
     }
   }
 }

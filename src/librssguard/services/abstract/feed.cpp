@@ -16,8 +16,7 @@ Feed::Feed(RootItem* parent)
   : RootItem(parent), m_source(QString()), m_status(Status::Normal), m_statusString(QString()),
     m_autoUpdateType(AutoUpdateType::DefaultAutoUpdate), m_autoUpdateInterval(DEFAULT_AUTO_UPDATE_INTERVAL),
     m_lastUpdated(QDateTime::currentDateTimeUtc()), m_isSwitchedOff(false), m_isQuiet(false),
-    m_openArticlesDirectly(false), m_isRtl(false), m_addAnyDatetimeArticles(false), m_datetimeToAvoid(QDateTime()),
-    m_hoursToAvoid(0), m_messageFilters(QList<QPointer<MessageFilter>>()) {
+    m_openArticlesDirectly(false), m_isRtl(false), m_messageFilters(QList<QPointer<MessageFilter>>()) {
   setKind(RootItem::Kind::Feed);
 }
 
@@ -39,9 +38,7 @@ Feed::Feed(const Feed& other) : RootItem(other) {
   setLastUpdated(other.lastUpdated());
   setMessageFilters(other.messageFilters());
   setOpenArticlesDirectly(other.openArticlesDirectly());
-  setAddAnyDatetimeArticles(other.addAnyDatetimeArticles());
-  setDatetimeToAvoid(other.datetimeToAvoid());
-  setHoursToAvoid(other.hoursToAvoid());
+  setArticleIgnoreLimit(Feed::ArticleIgnoreLimit(other.articleIgnoreLimit()));
   setIsRtl(other.isRtl());
   setIsSwitchedOff(other.isSwitchedOff());
   setIsQuiet(other.isQuiet());
@@ -203,22 +200,6 @@ void Feed::setIsRtl(bool rtl) {
   m_isRtl = rtl;
 }
 
-bool Feed::addAnyDatetimeArticles() const {
-  return m_addAnyDatetimeArticles;
-}
-
-void Feed::setAddAnyDatetimeArticles(bool add_any_articles) {
-  m_addAnyDatetimeArticles = add_any_articles;
-}
-
-QDateTime Feed::datetimeToAvoid() const {
-  return m_datetimeToAvoid;
-}
-
-void Feed::setDatetimeToAvoid(const QDateTime& dt) {
-  m_datetimeToAvoid = dt;
-}
-
 void Feed::appendMessageFilter(MessageFilter* filter) {
   m_messageFilters.append(QPointer<MessageFilter>(filter));
 }
@@ -313,12 +294,16 @@ QString Feed::getStatusDescription() const {
   }
 }
 
-int Feed::hoursToAvoid() const {
-  return m_hoursToAvoid;
+Feed::ArticleIgnoreLimit& Feed::articleIgnoreLimit() {
+  return m_articleIgnoreLimit;
 }
 
-void Feed::setHoursToAvoid(int hours_to_avoid) {
-  m_hoursToAvoid = hours_to_avoid;
+const Feed::ArticleIgnoreLimit& Feed::articleIgnoreLimit() const {
+  return m_articleIgnoreLimit;
+}
+
+void Feed::setArticleIgnoreLimit(const ArticleIgnoreLimit& ignore_limit) {
+  m_articleIgnoreLimit = ignore_limit;
 }
 
 bool Feed::isQuiet() const {

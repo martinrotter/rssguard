@@ -16,6 +16,20 @@ class Feed : public RootItem {
     Q_OBJECT
 
   public:
+    struct ArticleIgnoreLimit {
+        // Ignoring articles.
+        bool m_avoidOldArticles = false;
+        bool m_addAnyArticlesToDb = false;
+        QDateTime m_dtToAvoid = QDateTime();
+        int m_hoursToAvoid = 0;
+
+        // Limitting articles.
+        int m_keepCountOfArticles = 0;
+        bool m_doNotRemoveStarred = true;
+        bool m_doNotRemoveUnread = true;
+        bool m_moveToBinDontPurge = false;
+    };
+
     // Specifies the auto-download strategy for the feed.
     enum class AutoUpdateType {
       DontAutoUpdate = 0,
@@ -91,14 +105,9 @@ class Feed : public RootItem {
     bool isRtl() const;
     void setIsRtl(bool rtl);
 
-    bool addAnyDatetimeArticles() const;
-    void setAddAnyDatetimeArticles(bool add_any_articles);
-
-    QDateTime datetimeToAvoid() const;
-    void setDatetimeToAvoid(const QDateTime& dt);
-
-    int hoursToAvoid() const;
-    void setHoursToAvoid(int hours_to_avoid);
+    ArticleIgnoreLimit& articleIgnoreLimit();
+    const ArticleIgnoreLimit& articleIgnoreLimit() const;
+    void setArticleIgnoreLimit(const ArticleIgnoreLimit& ignore_limit);
 
   public slots:
     virtual void updateCounts(bool including_total_count);
@@ -122,9 +131,8 @@ class Feed : public RootItem {
     // NOTE: These are used to filter out older articles
     // than needed. Either absolute value is given (date/time)
     // or relative value given in minutes.
-    bool m_addAnyDatetimeArticles;
-    QDateTime m_datetimeToAvoid;
-    int m_hoursToAvoid;
+    // Amount
+    ArticleIgnoreLimit m_articleIgnoreLimit;
 
     int m_totalCount{};
     int m_unreadCount{};
@@ -133,5 +141,6 @@ class Feed : public RootItem {
 
 Q_DECLARE_METATYPE(Feed::AutoUpdateType)
 Q_DECLARE_METATYPE(Feed::Status)
+Q_DECLARE_METATYPE(Feed::ArticleIgnoreLimit)
 
 #endif // FEED_H

@@ -2554,11 +2554,14 @@ void DatabaseQueries::createOverwriteFeed(const QSqlDatabase& db, Feed* feed, in
   q.bindValue(QSL(":is_quiet"), feed->isQuiet());
   q.bindValue(QSL(":open_articles"), feed->openArticlesDirectly());
   q.bindValue(QSL(":is_rtl"), feed->isRtl());
-  q.bindValue(QSL(":add_any_datetime_articles"), feed->addAnyDatetimeArticles());
+
+  const Feed::ArticleIgnoreLimit art = feed->articleIgnoreLimit();
+
+  q.bindValue(QSL(":add_any_datetime_articles"), art.m_addAnyArticlesToDb);
   q.bindValue(QSL(":datetime_to_avoid"),
-              (feed->datetimeToAvoid().isValid() && feed->datetimeToAvoid().toMSecsSinceEpoch() > 0)
-                ? feed->datetimeToAvoid().toMSecsSinceEpoch()
-                : feed->hoursToAvoid());
+              (art.m_dtToAvoid.isValid() && art.m_dtToAvoid.toMSecsSinceEpoch() > 0)
+                ? art.m_dtToAvoid.toMSecsSinceEpoch()
+                : art.m_hoursToAvoid);
 
   auto custom_data = feed->customDatabaseData();
   QString serialized_custom_data = serializeCustomData(custom_data);

@@ -55,7 +55,7 @@ void FormFeedDetails::apply() {
       fd->setIsRtl(m_ui.m_cbFeedRTL->isChecked());
     }
 
-    m_ui.m_wdgArticleLimiting->saveFeed(fd);
+    m_ui.m_wdgArticleLimiting->saveFeed(fd, m_isBatchEdit);
 
     if (isChangeAllowed(m_ui.m_mcbDisableFeed)) {
       fd->setIsSwitchedOff(m_ui.m_cbDisableFeed->isChecked());
@@ -149,8 +149,9 @@ void FormFeedDetails::loadFeedData() {
   m_ui.m_cbDisableFeed->setChecked(fd->isSwitchedOff());
   m_ui.m_cbSuppressFeed->setChecked(fd->isQuiet());
 
-  ArticleAmountControl::Setup art_limit;
+  Feed::ArticleIgnoreLimit art_limit = Feed::ArticleIgnoreLimit(fd->articleIgnoreLimit());
 
+  /*
   art_limit.m_addAnyArticlesToDb = fd->addAnyDatetimeArticles();
   art_limit.m_avoidOldArticles =
     (fd->datetimeToAvoid().isValid() && fd->datetimeToAvoid().toMSecsSinceEpoch() > 0) || fd->hoursToAvoid() > 0;
@@ -161,6 +162,7 @@ void FormFeedDetails::loadFeedData() {
   art_limit.m_doNotRemoveUnread = false;
   art_limit.m_keepCountOfArticles = 4;
   art_limit.m_moveToBinDontPurge = false;
+*/
 
   m_ui.m_wdgArticleLimiting->load(art_limit);
 }

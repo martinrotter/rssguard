@@ -29,7 +29,7 @@
    <item>
     <widget class="QTabWidget" name="tabWidget">
      <property name="currentIndex">
-      <number>1</number>
+      <number>0</number>
      </property>
      <widget class="QWidget" name="m_tabIgnore">
       <attribute name="title">
@@ -72,9 +72,6 @@
             </property>
             <item>
              <widget class="QGroupBox" name="m_gbAvoidOldArticles">
-              <property name="enabled">
-               <bool>true</bool>
-              </property>
               <property name="title">
                <string>Avoid adding articles before this date/time into the database</string>
               </property>

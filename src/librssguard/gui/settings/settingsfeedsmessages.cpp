@@ -283,7 +283,7 @@ void SettingsFeedsMessages::loadSettings() {
       ->setChecked(settings()->value(GROUP(Messages), SETTING(Messages::UseLegacyArticleFormat)).toBool());
   }
 
-  ArticleAmountControl::Setup art_limit;
+  Feed::ArticleIgnoreLimit art_limit;
   art_limit.m_avoidOldArticles = settings()->value(GROUP(Messages), SETTING(Messages::AvoidOldArticles)).toBool();
   art_limit.m_dtToAvoid = settings()->value(GROUP(Messages), SETTING(Messages::DateTimeToAvoidArticle)).toDateTime();
   art_limit.m_hoursToAvoid = settings()->value(GROUP(Messages), SETTING(Messages::HoursToAvoidArticle)).toInt();
@@ -413,7 +413,7 @@ void SettingsFeedsMessages::saveSettings() {
                          m_ui->m_cbLegacyArticleFormatting->isChecked());
   }
 
-  ArticleAmountControl::Setup art_limit = m_ui->m_wdgArticleLimiting->save();
+  Feed::ArticleIgnoreLimit art_limit = m_ui->m_wdgArticleLimiting->save();
 
   settings()->setValue(GROUP(Messages), Messages::AvoidOldArticles, art_limit.m_avoidOldArticles);
   settings()->setValue(GROUP(Messages), Messages::DateTimeToAvoidArticle, art_limit.m_dtToAvoid);

@@ -19,7 +19,7 @@ ArticleAmountControl::ArticleAmountControl(QWidget* parent) : QWidget(parent) {
                                 false);
 
   m_ui.m_spinArticleCount->setSpecialValueText(tr("all articles"));
-  m_ui.m_cbAddAnyDateArticles->setChecked(true);
+  // m_ui.m_cbAddAnyDateArticles->setChecked(true);
   m_ui.m_dtDateTimeToAvoid->setEnabled(false);
   m_ui.m_spinHoursAvoid->setEnabled(false);
   m_ui.m_spinHoursAvoid->setMode(TimeSpinBox::Mode::DaysHours);
@@ -57,7 +57,7 @@ void ArticleAmountControl::setForAppWideFeatures(bool app_wide, bool batch_edit)
     m_ui.m_cbAddAnyDateArticles->setVisible(false);
   }
   else {
-    connect(m_ui.m_cbAddAnyDateArticles, &QCheckBox::toggled, m_ui.m_gbAvoidOldArticles, &QGroupBox::setEnabled);
+    connect(m_ui.m_cbAddAnyDateArticles, &QCheckBox::toggled, m_ui.m_wdgAvoidOldArticles, &QGroupBox::setDisabled);
   }
 
   if (batch_edit) {
@@ -78,7 +78,7 @@ void ArticleAmountControl::setForAppWideFeatures(bool app_wide, bool batch_edit)
   }
 }
 
-void ArticleAmountControl::load(const Setup& setup) {
+void ArticleAmountControl::load(const Feed::ArticleIgnoreLimit& setup) {
   // Ignoring articles.
   if (setup.m_dtToAvoid.isValid() && setup.m_dtToAvoid.toMSecsSinceEpoch() > 0) {
     m_ui.m_rbAvoidAbsolute->setChecked(true);
@@ -90,6 +90,7 @@ void ArticleAmountControl::load(const Setup& setup) {
   }
 
   m_ui.m_gbAvoidOldArticles->setChecked(setup.m_avoidOldArticles);
+  m_ui.m_cbAddAnyDateArticles->setChecked(setup.m_addAnyArticlesToDb);
 
   // Limitting articles.
   m_ui.m_spinArticleCount->setValue(setup.m_keepCountOfArticles);
@@ -98,8 +99,8 @@ void ArticleAmountControl::load(const Setup& setup) {
   m_ui.m_cbNoRemoveUnread->setChecked(setup.m_doNotRemoveUnread);
 }
 
-ArticleAmountControl::Setup ArticleAmountControl::save() const {
-  Setup setup;
+Feed::ArticleIgnoreLimit ArticleAmountControl::save() const {
+  Feed::ArticleIgnoreLimit setup;
 
   // Ignoring articles.
   setup.m_addAnyArticlesToDb = m_ui.m_cbAddAnyDateArticles->isChecked();
@@ -121,29 +122,31 @@ ArticleAmountControl::Setup ArticleAmountControl::save() const {
   return setup;
 }
 
-bool isChangeAllowed(MultiFeedEditCheckBox* mcb) {
-  return mcb->isChecked();
+bool isChangeAllowed(MultiFeedEditCheckBox* mcb, bool batch_edit) {
+  return !batch_edit || mcb->isChecked();
 }
 
-void ArticleAmountControl::saveFeed(Feed* fd) const {
-  if (isChangeAllowed(m_ui.m_mcbAddAnyDateArticles)) {
-    fd->setAddAnyDatetimeArticles(m_ui.m_cbAddAnyDateArticles->isChecked());
+void ArticleAmountControl::saveFeed(Feed* fd, bool batch_edit) const {
+  Feed::ArticleIgnoreLimit& art = fd->articleIgnoreLimit();
+
+  if (isChangeAllowed(m_ui.m_mcbAddAnyDateArticles, batch_edit)) {
+    art.m_addAnyArticlesToDb = m_ui.m_cbAddAnyDateArticles->isChecked();
   }
 
-  if (isChangeAllowed(m_ui.m_mcbAvoidOldArticles)) {
+  if (isChangeAllowed(m_ui.m_mcbAvoidOldArticles, batch_edit)) {
     if (m_ui.m_gbAvoidOldArticles->isChecked()) {
       if (m_ui.m_rbAvoidAbsolute->isChecked()) {
-        fd->setDatetimeToAvoid(m_ui.m_dtDateTimeToAvoid->dateTime());
-        fd->setHoursToAvoid(0);
+        art.m_dtToAvoid = m_ui.m_dtDateTimeToAvoid->dateTime();
+        art.m_hoursToAvoid = 0;
       }
       else {
-        fd->setDatetimeToAvoid({});
-        fd->setHoursToAvoid(m_ui.m_spinHoursAvoid->value());
+        art.m_dtToAvoid = {};
+        art.m_hoursToAvoid = m_ui.m_spinHoursAvoid->value();
       }
     }
     else {
-      fd->setDatetimeToAvoid({});
-      fd->setHoursToAvoid(0);
+      art.m_dtToAvoid = {};
+      art.m_hoursToAvoid = 0;
     }
   }
 }
