@@ -46,7 +46,7 @@ ArticleAmountControl::ArticleAmountControl(QWidget* parent) : QWidget(parent) {
           QOverload<int>::of(&QSpinBox::valueChanged),
           this,
           &ArticleAmountControl::updateArticleCountSuffix);
-  connect(m_ui.m_spinArticleCount, &QSpinBox::valueChanged, this, &ArticleAmountControl::changed);
+  connect(m_ui.m_spinArticleCount, QOverload<int>::of(&QSpinBox::valueChanged), this, &ArticleAmountControl::changed);
   connect(m_ui.m_cbMoveToBinNoPurge, &QCheckBox::toggled, this, &ArticleAmountControl::changed);
   connect(m_ui.m_cbNoRemoveImportant, &QCheckBox::toggled, this, &ArticleAmountControl::changed);
   connect(m_ui.m_cbNoRemoveUnread, &QCheckBox::toggled, this, &ArticleAmountControl::changed);
