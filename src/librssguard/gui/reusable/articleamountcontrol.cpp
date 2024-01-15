@@ -149,6 +149,22 @@ void ArticleAmountControl::saveFeed(Feed* fd, bool batch_edit) const {
       art.m_hoursToAvoid = 0;
     }
   }
+
+  if (isChangeAllowed(m_ui.m_mcbArticleCount, batch_edit)) {
+    art.m_keepCountOfArticles = m_ui.m_spinArticleCount->value();
+  }
+
+  if (isChangeAllowed(m_ui.m_mcbNoRemoveImportant, batch_edit)) {
+    art.m_doNotRemoveStarred = m_ui.m_cbNoRemoveImportant->isChecked();
+  }
+
+  if (isChangeAllowed(m_ui.m_mcbNoRemoveUnread, batch_edit)) {
+    art.m_doNotRemoveUnread = m_ui.m_cbNoRemoveUnread->isChecked();
+  }
+
+  if (isChangeAllowed(m_ui.m_mcbMoveToBinNoPurge, batch_edit)) {
+    art.m_moveToBinDontPurge = m_ui.m_cbMoveToBinNoPurge->isChecked();
+  }
 }
 
 void ArticleAmountControl::updateArticleCountSuffix(int count) {

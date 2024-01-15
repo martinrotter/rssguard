@@ -2532,12 +2532,30 @@ void DatabaseQueries::createOverwriteFeed(const QSqlDatabase& db, Feed* feed, in
   feed->setSortOrder(next_sort_order);
 
   q.prepare("UPDATE Feeds "
-            "SET title = :title, ordr = :ordr, description = :description, date_created = :date_created, "
-            " icon = :icon, category = :category, source = :source, update_type = :update_type,"
-            " update_interval = :update_interval, is_off = :is_off, is_quiet = :is_quiet, open_articles ="
-            " :open_articles, is_rtl = :is_rtl, add_any_datetime_articles = :add_any_datetime_articles,"
-            " datetime_to_avoid = :datetime_to_avoid, account_id"
-            " = :account_id, custom_id = :custom_id, custom_data = :custom_data WHERE id = :id;");
+            "SET "
+            "title = :title, "
+            "ordr = :ordr, "
+            "description = :description, "
+            "date_created = :date_created, "
+            "icon = :icon, "
+            "category = :category, "
+            "source = :source, "
+            "update_type = :update_type, "
+            "update_interval = :update_interval, "
+            "is_off = :is_off, "
+            "is_quiet = :is_quiet, "
+            "open_articles = :open_articles, "
+            "is_rtl = :is_rtl, "
+            "add_any_datetime_articles = :add_any_datetime_articles, "
+            "datetime_to_avoid = :datetime_to_avoid, "
+            "keep_article_count = :keep_article_count, "
+            "keep_unread_articles = :keep_unread_articles, "
+            "keep_starred_articles = :keep_starred_articles, "
+            "recycle_articles = :recycle_articles, "
+            "account_id = :account_id, "
+            "custom_id = :custom_id, "
+            "custom_data = :custom_data "
+            "WHERE id = :id;");
   q.bindValue(QSL(":title"), feed->title());
   q.bindValue(QSL(":description"), feed->description());
   q.bindValue(QSL(":date_created"), feed->creationDate().toMSecsSinceEpoch());
@@ -2562,6 +2580,11 @@ void DatabaseQueries::createOverwriteFeed(const QSqlDatabase& db, Feed* feed, in
               (art.m_dtToAvoid.isValid() && art.m_dtToAvoid.toMSecsSinceEpoch() > 0)
                 ? art.m_dtToAvoid.toMSecsSinceEpoch()
                 : art.m_hoursToAvoid);
+
+  q.bindValue(QSL(":keep_article_count"), art.m_keepCountOfArticles);
+  q.bindValue(QSL(":keep_unread_articles"), art.m_doNotRemoveUnread);
+  q.bindValue(QSL(":keep_starred_articles"), art.m_doNotRemoveStarred);
+  q.bindValue(QSL(":recycle_articles"), art.m_moveToBinDontPurge);
 
   auto custom_data = feed->customDatabaseData();
   QString serialized_custom_data = serializeCustomData(custom_data);

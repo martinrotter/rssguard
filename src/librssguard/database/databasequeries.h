@@ -395,6 +395,11 @@ Assignment DatabaseQueries::getFeeds(const QSqlDatabase& db,
       art.m_hoursToAvoid = time_to_avoid;
     }
 
+    art.m_keepCountOfArticles = query.value(FDS_DB_KEEP_ARTICLES_COUNT).toInt();
+    art.m_doNotRemoveUnread = query.value(FDS_DB_KEEP_UNREAD_ARTICLES).toBool();
+    art.m_doNotRemoveStarred = query.value(FDS_DB_KEEP_STARRED_ARTICLES).toBool();
+    art.m_moveToBinDontPurge = query.value(RECYCLE_ARTICLE_DONT_PURGE).toBool();
+
     feed->setArticleIgnoreLimit(art);
     feed->setOpenArticlesDirectly(query.value(FDS_DB_OPEN_ARTICLES_INDEX).toBool());
 
