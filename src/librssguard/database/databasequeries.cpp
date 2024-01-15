@@ -546,6 +546,15 @@ bool DatabaseQueries::restoreBin(const QSqlDatabase& db, int account_id) {
   return q.exec();
 }
 
+void DatabaseQueries::removeUnwantedArticlesFromFeed(const QSqlDatabase& db,
+                                                     const Feed::ArticleIgnoreLimit& feed_setup,
+                                                     const Feed::ArticleIgnoreLimit& app_setup) {
+  // Feed setup has higher preference.
+  int amount_to_remove =
+    feed_setup.m_keepCountOfArticles > 0 ? feed_setup.m_keepCountOfArticles : app_setup.m_keepCountOfArticles;
+  // bool dont_remove_unread = feed_setup.m_doNotRemoveUnread
+}
+
 bool DatabaseQueries::purgeMessage(const QSqlDatabase& db, int message_id) {
   QSqlQuery q(db);
 
@@ -2548,6 +2557,7 @@ void DatabaseQueries::createOverwriteFeed(const QSqlDatabase& db, Feed* feed, in
             "is_rtl = :is_rtl, "
             "add_any_datetime_articles = :add_any_datetime_articles, "
             "datetime_to_avoid = :datetime_to_avoid, "
+            "keep_article_customize = :keep_article_customize, "
             "keep_article_count = :keep_article_count, "
             "keep_unread_articles = :keep_unread_articles, "
             "keep_starred_articles = :keep_starred_articles, "
@@ -2581,6 +2591,7 @@ void DatabaseQueries::createOverwriteFeed(const QSqlDatabase& db, Feed* feed, in
                 ? art.m_dtToAvoid.toMSecsSinceEpoch()
                 : art.m_hoursToAvoid);
 
+  q.bindValue(QSL(":keep_article_customize"), art.m_customizeLimitting);
   q.bindValue(QSL(":keep_article_count"), art.m_keepCountOfArticles);
   q.bindValue(QSL(":keep_unread_articles"), art.m_doNotRemoveUnread);
   q.bindValue(QSL(":keep_starred_articles"), art.m_doNotRemoveStarred);

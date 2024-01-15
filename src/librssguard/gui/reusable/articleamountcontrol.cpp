@@ -19,7 +19,7 @@ ArticleAmountControl::ArticleAmountControl(QWidget* parent) : QWidget(parent) {
                                 false);
 
   m_ui.m_spinArticleCount->setSpecialValueText(tr("all articles"));
-  // m_ui.m_cbAddAnyDateArticles->setChecked(true);
+  m_ui.m_cbArticleLimittingCustomize->setChecked(true);
   m_ui.m_dtDateTimeToAvoid->setEnabled(false);
   m_ui.m_spinHoursAvoid->setEnabled(false);
   m_ui.m_spinHoursAvoid->setMode(TimeSpinBox::Mode::DaysHours);
@@ -46,6 +46,7 @@ ArticleAmountControl::ArticleAmountControl(QWidget* parent) : QWidget(parent) {
           QOverload<int>::of(&QSpinBox::valueChanged),
           this,
           &ArticleAmountControl::updateArticleCountSuffix);
+  connect(m_ui.m_cbArticleLimittingCustomize, &QCheckBox::toggled, this, &ArticleAmountControl::changed);
   connect(m_ui.m_spinArticleCount, QOverload<int>::of(&QSpinBox::valueChanged), this, &ArticleAmountControl::changed);
   connect(m_ui.m_cbMoveToBinNoPurge, &QCheckBox::toggled, this, &ArticleAmountControl::changed);
   connect(m_ui.m_cbNoRemoveImportant, &QCheckBox::toggled, this, &ArticleAmountControl::changed);
@@ -55,9 +56,14 @@ ArticleAmountControl::ArticleAmountControl(QWidget* parent) : QWidget(parent) {
 void ArticleAmountControl::setForAppWideFeatures(bool app_wide, bool batch_edit) {
   if (app_wide) {
     m_ui.m_cbAddAnyDateArticles->setVisible(false);
+    m_ui.m_cbArticleLimittingCustomize->setVisible(false);
   }
   else {
     connect(m_ui.m_cbAddAnyDateArticles, &QCheckBox::toggled, m_ui.m_wdgAvoidOldArticles, &QGroupBox::setDisabled);
+    connect(m_ui.m_cbArticleLimittingCustomize,
+            &QCheckBox::toggled,
+            m_ui.m_wdgArticleLimittingCustomize,
+            &QGroupBox::setEnabled);
   }
 
   if (batch_edit) {
@@ -65,10 +71,8 @@ void ArticleAmountControl::setForAppWideFeatures(bool app_wide, bool batch_edit)
     m_ui.m_mcbAddAnyDateArticles->addActionWidget(m_ui.m_cbAddAnyDateArticles);
     m_ui.m_mcbAvoidOldArticles->addActionWidget(m_ui.m_wdgAvoidOldArticles);
 
-    m_ui.m_mcbArticleCount->addActionWidget(m_ui.m_spinArticleCount);
-    m_ui.m_mcbMoveToBinNoPurge->addActionWidget(m_ui.m_cbMoveToBinNoPurge);
-    m_ui.m_mcbNoRemoveImportant->addActionWidget(m_ui.m_cbNoRemoveImportant);
-    m_ui.m_mcbNoRemoveUnread->addActionWidget(m_ui.m_cbNoRemoveUnread);
+    m_ui.m_mcbArticleLimittingCustomize->addActionWidget(m_ui.m_cbArticleLimittingCustomize);
+    m_ui.m_mcbArticleLimittingSetup->addActionWidget(m_ui.m_wdgArticleLimittingCustomize);
   }
   else {
     // We hide batch selectors.
@@ -93,6 +97,7 @@ void ArticleAmountControl::load(const Feed::ArticleIgnoreLimit& setup) {
   m_ui.m_cbAddAnyDateArticles->setChecked(setup.m_addAnyArticlesToDb);
 
   // Limitting articles.
+  m_ui.m_cbArticleLimittingCustomize->setChecked(setup.m_customizeLimitting);
   m_ui.m_spinArticleCount->setValue(setup.m_keepCountOfArticles);
   m_ui.m_cbMoveToBinNoPurge->setChecked(setup.m_moveToBinDontPurge);
   m_ui.m_cbNoRemoveImportant->setChecked(setup.m_doNotRemoveStarred);
@@ -114,6 +119,7 @@ Feed::ArticleIgnoreLimit ArticleAmountControl::save() const {
   }
 
   // Limitting articles.
+  setup.m_customizeLimitting = m_ui.m_cbArticleLimittingCustomize->isChecked();
   setup.m_keepCountOfArticles = m_ui.m_spinArticleCount->value();
   setup.m_moveToBinDontPurge = m_ui.m_cbMoveToBinNoPurge->isChecked();
   setup.m_doNotRemoveStarred = m_ui.m_cbNoRemoveImportant->isChecked();
@@ -150,19 +156,14 @@ void ArticleAmountControl::saveFeed(Feed* fd, bool batch_edit) const {
     }
   }
 
-  if (isChangeAllowed(m_ui.m_mcbArticleCount, batch_edit)) {
+  if (isChangeAllowed(m_ui.m_mcbArticleLimittingCustomize, batch_edit)) {
+    art.m_customizeLimitting = m_ui.m_cbArticleLimittingCustomize->isChecked();
+  }
+
+  if (isChangeAllowed(m_ui.m_mcbArticleLimittingSetup, batch_edit)) {
     art.m_keepCountOfArticles = m_ui.m_spinArticleCount->value();
-  }
-
-  if (isChangeAllowed(m_ui.m_mcbNoRemoveImportant, batch_edit)) {
     art.m_doNotRemoveStarred = m_ui.m_cbNoRemoveImportant->isChecked();
-  }
-
-  if (isChangeAllowed(m_ui.m_mcbNoRemoveUnread, batch_edit)) {
     art.m_doNotRemoveUnread = m_ui.m_cbNoRemoveUnread->isChecked();
-  }
-
-  if (isChangeAllowed(m_ui.m_mcbMoveToBinNoPurge, batch_edit)) {
     art.m_moveToBinDontPurge = m_ui.m_cbMoveToBinNoPurge->isChecked();
   }
 }

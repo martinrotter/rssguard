@@ -283,18 +283,7 @@ void SettingsFeedsMessages::loadSettings() {
       ->setChecked(settings()->value(GROUP(Messages), SETTING(Messages::UseLegacyArticleFormat)).toBool());
   }
 
-  Feed::ArticleIgnoreLimit art_limit;
-  art_limit.m_avoidOldArticles = settings()->value(GROUP(Messages), SETTING(Messages::AvoidOldArticles)).toBool();
-  art_limit.m_dtToAvoid = settings()->value(GROUP(Messages), SETTING(Messages::DateTimeToAvoidArticle)).toDateTime();
-  art_limit.m_hoursToAvoid = settings()->value(GROUP(Messages), SETTING(Messages::HoursToAvoidArticle)).toInt();
-
-  art_limit.m_doNotRemoveStarred =
-    settings()->value(GROUP(Messages), SETTING(Messages::LimitDoNotRemoveStarred)).toBool();
-  art_limit.m_doNotRemoveUnread =
-    settings()->value(GROUP(Messages), SETTING(Messages::LimitDoNotRemoveUnread)).toBool();
-  art_limit.m_keepCountOfArticles = settings()->value(GROUP(Messages), SETTING(Messages::LimitCountOfArticles)).toInt();
-  art_limit.m_moveToBinDontPurge =
-    settings()->value(GROUP(Messages), SETTING(Messages::LimitRecycleInsteadOfPurging)).toBool();
+  Feed::ArticleIgnoreLimit art_limit = Feed::ArticleIgnoreLimit::fromSettings();
 
   m_ui->m_wdgArticleLimiting->load(art_limit);
 

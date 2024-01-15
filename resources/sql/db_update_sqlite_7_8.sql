@@ -18,6 +18,7 @@ CREATE TABLE Feeds (
   add_any_datetime_articles	INTEGER     NOT NULL DEFAULT 0 CHECK (add_any_datetime_articles >= 0 AND add_any_datetime_articles <= 1),
   datetime_to_avoid	        BIGINT      NOT NULL DEFAULT 0 CHECK (datetime_to_avoid >= 0),
   
+  keep_article_customize    INTEGER     NOT NULL DEFAULT 0 CHECK (keep_article_customize >= 0 AND keep_article_customize <= 1),
   keep_article_count        INTEGER     NOT NULL DEFAULT 0 CHECK (keep_article_count >= 0),
   keep_unread_articles      INTEGER     NOT NULL DEFAULT 1 CHECK (keep_unread_articles >= 0 AND keep_unread_articles <= 1),
   keep_starred_articles     INTEGER     NOT NULL DEFAULT 1 CHECK (keep_starred_articles >= 0 AND keep_starred_articles <= 1),

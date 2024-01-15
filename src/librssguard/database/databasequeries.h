@@ -72,6 +72,10 @@ class DatabaseQueries {
     static bool restoreBin(const QSqlDatabase& db, int account_id);
 
     // Purge database.
+    static void removeUnwantedArticlesFromFeed(const QSqlDatabase& db,
+                                               const Feed::ArticleIgnoreLimit& feed_setup,
+                                               const Feed::ArticleIgnoreLimit& app_setup);
+
     static bool purgeMessage(const QSqlDatabase& db, int message_id);
     static bool purgeImportantMessages(const QSqlDatabase& db);
     static bool purgeReadMessages(const QSqlDatabase& db);
@@ -395,6 +399,7 @@ Assignment DatabaseQueries::getFeeds(const QSqlDatabase& db,
       art.m_hoursToAvoid = time_to_avoid;
     }
 
+    art.m_customizeLimitting = query.value(FDS_DB_KEEP_CUSTOMIZE).toBool();
     art.m_keepCountOfArticles = query.value(FDS_DB_KEEP_ARTICLES_COUNT).toInt();
     art.m_doNotRemoveUnread = query.value(FDS_DB_KEEP_UNREAD_ARTICLES).toBool();
     art.m_doNotRemoveStarred = query.value(FDS_DB_KEEP_STARRED_ARTICLES).toBool();

@@ -311,14 +311,15 @@
 #define FDS_DB_IS_RTL_INDEX                    12
 #define FDS_DB_ADD_ANY_DATETIME_ARTICLES_INDEX 13
 #define FDS_DB_DATETIME_TO_AVOID_INDEX         14
-#define FDS_DB_KEEP_ARTICLES_COUNT             15
-#define FDS_DB_KEEP_UNREAD_ARTICLES            16
-#define FDS_DB_KEEP_STARRED_ARTICLES           17
-#define RECYCLE_ARTICLE_DONT_PURGE             18
-#define FDS_DB_OPEN_ARTICLES_INDEX             19
-#define FDS_DB_ACCOUNT_ID_INDEX                20
-#define FDS_DB_CUSTOM_ID_INDEX                 21
-#define FDS_DB_CUSTOM_DATA_INDEX               22
+#define FDS_DB_KEEP_CUSTOMIZE                  15
+#define FDS_DB_KEEP_ARTICLES_COUNT             16
+#define FDS_DB_KEEP_UNREAD_ARTICLES            17
+#define FDS_DB_KEEP_STARRED_ARTICLES           18
+#define RECYCLE_ARTICLE_DONT_PURGE             19
+#define FDS_DB_OPEN_ARTICLES_INDEX             20
+#define FDS_DB_ACCOUNT_ID_INDEX                21
+#define FDS_DB_CUSTOM_ID_INDEX                 22
+#define FDS_DB_CUSTOM_DATA_INDEX               23
 
 // Indexes of columns for feed models.
 #define FDS_MODEL_TITLE_INDEX  0

@@ -7,6 +7,7 @@
 #include "definitions/definitions.h"
 #include "miscellaneous/application.h"
 #include "miscellaneous/feedreader.h"
+#include "miscellaneous/settings.h"
 #include "miscellaneous/textfactory.h"
 #include "services/abstract/cacheforserviceroot.h"
 #include "services/abstract/gui/formfeeddetails.h"
@@ -200,6 +201,13 @@ void Feed::setIsRtl(bool rtl) {
   m_isRtl = rtl;
 }
 
+void Feed::removeUnwantedArticles(QSqlDatabase& db) {
+  Feed::ArticleIgnoreLimit feed_setup = articleIgnoreLimit();
+  Feed::ArticleIgnoreLimit app_setup = Feed::ArticleIgnoreLimit::fromSettings();
+
+  DatabaseQueries::removeUnwantedArticlesFromFeed(db, feed_setup, app_setup);
+}
+
 void Feed::appendMessageFilter(MessageFilter* filter) {
   m_messageFilters.append(QPointer<MessageFilter>(filter));
 }
@@ -380,4 +388,24 @@ QString Feed::additionalTooltip() const {
 
 Qt::ItemFlags Feed::additionalFlags() const {
   return Qt::ItemFlag::ItemNeverHasChildren;
+}
+
+Feed::ArticleIgnoreLimit Feed::ArticleIgnoreLimit::fromSettings() {
+  Feed::ArticleIgnoreLimit art_limit;
+
+  art_limit.m_avoidOldArticles = qApp->settings()->value(GROUP(Messages), SETTING(Messages::AvoidOldArticles)).toBool();
+  art_limit.m_dtToAvoid =
+    qApp->settings()->value(GROUP(Messages), SETTING(Messages::DateTimeToAvoidArticle)).toDateTime();
+  art_limit.m_hoursToAvoid = qApp->settings()->value(GROUP(Messages), SETTING(Messages::HoursToAvoidArticle)).toInt();
+
+  art_limit.m_doNotRemoveStarred =
+    qApp->settings()->value(GROUP(Messages), SETTING(Messages::LimitDoNotRemoveStarred)).toBool();
+  art_limit.m_doNotRemoveUnread =
+    qApp->settings()->value(GROUP(Messages), SETTING(Messages::LimitDoNotRemoveUnread)).toBool();
+  art_limit.m_keepCountOfArticles =
+    qApp->settings()->value(GROUP(Messages), SETTING(Messages::LimitCountOfArticles)).toInt();
+  art_limit.m_moveToBinDontPurge =
+    qApp->settings()->value(GROUP(Messages), SETTING(Messages::LimitRecycleInsteadOfPurging)).toBool();
+
+  return art_limit;
 }

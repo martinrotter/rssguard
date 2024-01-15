@@ -24,10 +24,13 @@ class Feed : public RootItem {
         int m_hoursToAvoid = 0;
 
         // Limitting articles.
+        bool m_customizeLimitting = false;
         int m_keepCountOfArticles = 0;
         bool m_doNotRemoveStarred = true;
         bool m_doNotRemoveUnread = true;
         bool m_moveToBinDontPurge = false;
+
+        static ArticleIgnoreLimit fromSettings();
     };
 
     // Specifies the auto-download strategy for the feed.
@@ -104,6 +107,8 @@ class Feed : public RootItem {
 
     bool isRtl() const;
     void setIsRtl(bool rtl);
+
+    void removeUnwantedArticles(QSqlDatabase& db);
 
     ArticleIgnoreLimit& articleIgnoreLimit();
     const ArticleIgnoreLimit& articleIgnoreLimit() const;

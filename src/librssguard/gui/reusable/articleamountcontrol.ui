@@ -169,84 +169,82 @@
       <attribute name="title">
        <string>Limiting amount of article in feeds</string>
       </attribute>
-      <layout class="QFormLayout" name="formLayout">
+      <layout class="QFormLayout" name="formLayout_3">
        <item row="0" column="0" colspan="2">
-        <layout class="QHBoxLayout" name="horizontalLayout_4">
+        <layout class="QHBoxLayout" name="horizontalLayout_9">
          <item>
-          <widget class="MultiFeedEditCheckBox" name="m_mcbArticleCount"/>
+          <widget class="MultiFeedEditCheckBox" name="m_mcbArticleLimittingCustomize"/>
          </item>
          <item>
-          <widget class="QLabel" name="label">
+          <widget class="QCheckBox" name="m_cbArticleLimittingCustomize">
            <property name="text">
-            <string>In database, keep</string>
+            <string>Customize article limits</string>
            </property>
           </widget>
-         </item>
-         <item>
-          <widget class="QSpinBox" name="m_spinArticleCount">
-           <property name="maximum">
-            <number>100000</number>
-           </property>
-          </widget>
-         </item>
-         <item>
-          <spacer name="horizontalSpacer_3">
-           <property name="orientation">
-            <enum>Qt::Horizontal</enum>
-           </property>
-           <property name="sizeHint" stdset="0">
-            <size>
-             <width>40</width>
-             <height>20</height>
-            </size>
-           </property>
-          </spacer>
          </item>
         </layout>
        </item>
        <item row="1" column="0" colspan="2">
-        <layout class="QHBoxLayout" name="horizontalLayout_5">
+        <layout class="QHBoxLayout" name="horizontalLayout_4">
          <item>
-          <widget class="MultiFeedEditCheckBox" name="m_mcbNoRemoveImportant"/>
+          <widget class="MultiFeedEditCheckBox" name="m_mcbArticleLimittingSetup"/>
          </item>
          <item>
-          <widget class="QCheckBox" name="m_cbNoRemoveImportant">
-           <property name="text">
-            <string>Do not remove important articles</string>
-           </property>
+          <widget class="QWidget" name="m_wdgArticleLimittingCustomize" native="true">
+           <layout class="QFormLayout" name="formLayout">
+            <property name="leftMargin">
+             <number>0</number>
+            </property>
+            <property name="topMargin">
+             <number>0</number>
+            </property>
+            <property name="rightMargin">
+             <number>0</number>
+            </property>
+            <property name="bottomMargin">
+             <number>0</number>
+            </property>
+            <item row="0" column="0">
+             <widget class="QLabel" name="label">
+              <property name="text">
+               <string>In database, keep</string>
+              </property>
+             </widget>
+            </item>
+            <item row="0" column="1">
+             <widget class="QSpinBox" name="m_spinArticleCount">
+              <property name="maximum">
+               <number>100000</number>
+              </property>
+             </widget>
+            </item>
+            <item row="1" column="0" colspan="2">
+             <widget class="QCheckBox" name="m_cbNoRemoveImportant">
+              <property name="text">
+               <string>Do not remove important articles</string>
+              </property>
+             </widget>
+            </item>
+            <item row="2" column="0" colspan="2">
+             <widget class="QCheckBox" name="m_cbNoRemoveUnread">
+              <property name="text">
+               <string>Do not remove unread articles</string>
+              </property>
+             </widget>
+            </item>
+            <item row="3" column="0" colspan="2">
+             <widget class="QCheckBox" name="m_cbMoveToBinNoPurge">
+              <property name="text">
+               <string>Just move articles to recycle bin, do not purge them</string>
+              </property>
+             </widget>
+            </item>
+           </layout>
           </widget>
          </item>
         </layout>
        </item>
        <item row="2" column="0" colspan="2">
-        <layout class="QHBoxLayout" name="horizontalLayout_6">
-         <item>
-          <widget class="MultiFeedEditCheckBox" name="m_mcbNoRemoveUnread"/>
-         </item>
-         <item>
-          <widget class="QCheckBox" name="m_cbNoRemoveUnread">
-           <property name="text">
-            <string>Do not remove unread articles</string>
-           </property>
-          </widget>
-         </item>
-        </layout>
-       </item>
-       <item row="3" column="0" colspan="2">
-        <layout class="QHBoxLayout" name="horizontalLayout_7">
-         <item>
-          <widget class="MultiFeedEditCheckBox" name="m_mcbMoveToBinNoPurge"/>
-         </item>
-         <item>
-          <widget class="QCheckBox" name="m_cbMoveToBinNoPurge">
-           <property name="text">
-            <string>Just move articles to recycle bin, do not purge them</string>
-           </property>
-          </widget>
-         </item>
-        </layout>
-       </item>
-       <item row="4" column="0" colspan="2">
         <widget class="HelpSpoiler" name="m_helpLimit" native="true"/>
        </item>
       </layout>

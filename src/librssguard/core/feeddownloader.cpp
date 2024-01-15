@@ -232,6 +232,9 @@ void FeedDownloader::updateOneFeed(ServiceRoot* acc,
 
   try {
     QSqlDatabase database = qApp->database()->driver()->threadSafeConnection(metaObject()->className());
+
+    feed->removeUnwantedArticles(database);
+
     QList<Message> msgs = feed->getParentServiceRoot()->obtainNewMessages(feed, stated_messages, tagged_messages);
 
     qDebugNN << LOGSEC_FEEDDOWNLOADER << "Downloaded" << NONQUOTE_W_SPACE(msgs.size()) << "messages for feed ID"
