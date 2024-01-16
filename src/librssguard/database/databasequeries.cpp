@@ -546,13 +546,86 @@ bool DatabaseQueries::restoreBin(const QSqlDatabase& db, int account_id) {
   return q.exec();
 }
 
-void DatabaseQueries::removeUnwantedArticlesFromFeed(const QSqlDatabase& db,
+bool DatabaseQueries::removeUnwantedArticlesFromFeed(const QSqlDatabase& db,
+                                                     const Feed* feed,
                                                      const Feed::ArticleIgnoreLimit& feed_setup,
                                                      const Feed::ArticleIgnoreLimit& app_setup) {
   // Feed setup has higher preference.
-  int amount_to_remove =
+  int amount_to_keep =
     feed_setup.m_keepCountOfArticles > 0 ? feed_setup.m_keepCountOfArticles : app_setup.m_keepCountOfArticles;
-  // bool dont_remove_unread = feed_setup.m_doNotRemoveUnread
+  bool dont_remove_unread =
+    feed_setup.m_customizeLimitting ? feed_setup.m_doNotRemoveUnread : app_setup.m_doNotRemoveUnread;
+  bool dont_remove_starred =
+    feed_setup.m_customizeLimitting ? feed_setup.m_doNotRemoveStarred : app_setup.m_doNotRemoveStarred;
+  bool recycle_dont_purge =
+    feed_setup.m_customizeLimitting ? feed_setup.m_moveToBinDontPurge : app_setup.m_moveToBinDontPurge;
+
+  if (amount_to_keep <= 0) {
+    // No articles will be removed, quitting.
+    return false;
+  }
+  // We find datetime stamp of oldest article which will be NOT moved/removed.
+  QSqlQuery q(db);
+
+  q.setForwardOnly(true);
+  q.prepare(QSL("SELECT Messages.date_created "
+                "FROM Messages "
+                "WHERE "
+                "  Messages.feed = :feed AND "
+                "  Messages.is_deleted = 0 AND "
+                "  Messages.is_pdeleted = 0 "
+                "ORDER BY Messages.date_created DESC "
+                "LIMIT 1 OFFSET :offset;"));
+  q.bindValue(QSL(":offset"), amount_to_keep - 1);
+  q.bindValue(QSL(":feed"), feed->customId());
+
+  if (!q.exec()) {
+    throw ApplicationException(q.lastError().text());
+  }
+
+  if (!q.next()) {
+    return false;
+  }
+
+  qlonglong last_kept_stamp = q.value(0).toLongLong();
+
+  if (recycle_dont_purge) {
+    // We mark all older articles as deleted.
+    q.prepare(QSL("UPDATE Messages "
+                  "SET is_deleted = 1 "
+                  "WHERE "
+                  "  Messages.feed = :feed AND "
+                  "  Messages.is_deleted = 0 AND "
+                  "  Messages.is_pdeleted = 0 AND "
+                  "  Messages.is_important != :is_important AND "
+                  "  Messages.is_read != :is_read AND "
+                  "  Messages.date_created < :stamp"));
+  }
+  else {
+    // We purge all older articles.
+    q.prepare(QSL("DELETE FROM Messages "
+                  "WHERE "
+                  "  Messages.feed = :feed AND "
+                  "  (Messages.is_deleted = 1 OR Messages.is_important != :is_important) AND "
+                  "  (Messages.is_deleted = 1 OR Messages.is_read != :is_read) AND "
+                  "  Messages.date_created < :stamp"));
+  }
+
+  q.bindValue(QSL(":is_important"), dont_remove_starred ? 1 : 2);
+  q.bindValue(QSL(":is_read"), dont_remove_unread ? 0 : 2);
+  q.bindValue(QSL(":feed"), feed->customId());
+  q.bindValue(QSL(":stamp"), last_kept_stamp);
+
+  if (!q.exec()) {
+    throw ApplicationException(q.lastError().text());
+  }
+
+  int rows_deleted = q.numRowsAffected();
+
+  qDebugNN << LOGSEC_DB << "Feed cleanup has recycled/purged" << NONQUOTE_W_SPACE(rows_deleted)
+           << "old articles from feed" << QUOTE_W_SPACE_DOT(feed->customId());
+
+  return rows_deleted > 0;
 }
 
 bool DatabaseQueries::purgeMessage(const QSqlDatabase& db, int message_id) {

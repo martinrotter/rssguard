@@ -1277,20 +1277,22 @@ ServiceRoot::LabelOperation operator&(ServiceRoot::LabelOperation lhs, ServiceRo
 
 UpdatedArticles ServiceRoot::updateMessages(QList<Message>& messages, Feed* feed, bool force_update, QMutex* db_mutex) {
   UpdatedArticles updated_messages;
-
-  if (messages.isEmpty()) {
-    qDebugNN << "No messages to be updated/added in DB for feed" << QUOTE_W_SPACE_DOT(feed->customId());
-    return updated_messages;
-  }
-
-  bool ok = false;
   QSqlDatabase database = qApp->database()->driver()->threadSafeConnection(metaObject()->className());
 
-  qDebugNN << LOGSEC_CORE << "Updating messages in DB.";
+  if (!messages.isEmpty()) {
+    bool ok = false;
 
-  updated_messages = DatabaseQueries::updateMessages(database, messages, feed, force_update, db_mutex, &ok);
+    qDebugNN << LOGSEC_CORE << "Updating messages in DB.";
 
-  if (!updated_messages.m_unread.isEmpty() || !updated_messages.m_all.isEmpty()) {
+    updated_messages = DatabaseQueries::updateMessages(database, messages, feed, force_update, db_mutex, &ok);
+  }
+  else {
+    qDebugNN << "No messages to be updated/added in DB for feed" << QUOTE_W_SPACE_DOT(feed->customId());
+  }
+
+  bool anything_removed = feed->removeUnwantedArticles(database);
+
+  if (anything_removed || !updated_messages.m_unread.isEmpty() || !updated_messages.m_all.isEmpty()) {
     QMutexLocker lck(db_mutex);
 
     // Something was added or updated in the DB, update numbers.

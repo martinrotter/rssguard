@@ -72,7 +72,8 @@ class DatabaseQueries {
     static bool restoreBin(const QSqlDatabase& db, int account_id);
 
     // Purge database.
-    static void removeUnwantedArticlesFromFeed(const QSqlDatabase& db,
+    static bool removeUnwantedArticlesFromFeed(const QSqlDatabase& db,
+                                               const Feed* feed,
                                                const Feed::ArticleIgnoreLimit& feed_setup,
                                                const Feed::ArticleIgnoreLimit& app_setup);
 

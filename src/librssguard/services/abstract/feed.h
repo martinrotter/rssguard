@@ -108,7 +108,7 @@ class Feed : public RootItem {
     bool isRtl() const;
     void setIsRtl(bool rtl);
 
-    void removeUnwantedArticles(QSqlDatabase& db);
+    bool removeUnwantedArticles(QSqlDatabase& db);
 
     ArticleIgnoreLimit& articleIgnoreLimit();
     const ArticleIgnoreLimit& articleIgnoreLimit() const;

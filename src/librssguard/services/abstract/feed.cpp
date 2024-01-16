@@ -201,11 +201,11 @@ void Feed::setIsRtl(bool rtl) {
   m_isRtl = rtl;
 }
 
-void Feed::removeUnwantedArticles(QSqlDatabase& db) {
+bool Feed::removeUnwantedArticles(QSqlDatabase& db) {
   Feed::ArticleIgnoreLimit feed_setup = articleIgnoreLimit();
   Feed::ArticleIgnoreLimit app_setup = Feed::ArticleIgnoreLimit::fromSettings();
 
-  DatabaseQueries::removeUnwantedArticlesFromFeed(db, feed_setup, app_setup);
+  return DatabaseQueries::removeUnwantedArticlesFromFeed(db, this, feed_setup, app_setup);
 }
 
 void Feed::appendMessageFilter(MessageFilter* filter) {

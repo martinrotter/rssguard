@@ -13,8 +13,9 @@ ArticleAmountControl::ArticleAmountControl(QWidget* parent) : QWidget(parent) {
                      "accepts particular article, it can still subsequently ignored and not added to database.")
                     .arg(QSL(APP_NAME)),
                   false);
-  m_ui.m_helpLimit->setHelpText(tr("All excessive articles are removed automatically by the application, usually when "
-                                   "particular feed is fetched. Articles are either completely purged from internal "
+  m_ui.m_helpLimit->setHelpText(tr("All excessive articles are removed automatically by the application, usually after "
+                                   "particular feed is fetched. Articles are either completely purged (including "
+                                   "articles from recycle bin) from internal "
                                    "database or are just moved to recycle bin."),
                                 false);
 
