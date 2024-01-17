@@ -552,7 +552,7 @@ bool DatabaseQueries::removeUnwantedArticlesFromFeed(const QSqlDatabase& db,
                                                      const Feed::ArticleIgnoreLimit& app_setup) {
   // Feed setup has higher preference.
   int amount_to_keep =
-    feed_setup.m_keepCountOfArticles > 0 ? feed_setup.m_keepCountOfArticles : app_setup.m_keepCountOfArticles;
+    feed_setup.m_customizeLimitting ? feed_setup.m_keepCountOfArticles : app_setup.m_keepCountOfArticles;
   bool dont_remove_unread =
     feed_setup.m_customizeLimitting ? feed_setup.m_doNotRemoveUnread : app_setup.m_doNotRemoveUnread;
   bool dont_remove_starred =
