@@ -252,7 +252,8 @@ void FeedMessageViewer::loadMessageToFeedAndArticleList(Feed* feed, const Messag
   if (!idx_map_msg.isValid() || !msg_is_visible) {
     qApp->showGuiMessage(Notification::Event::GeneralEvent,
                          GuiMessage(tr("Filtered article list"),
-                                    tr("Cannot select article as it seems your article list is filtered."),
+                                    tr("Cannot select article as it seems your article list is filtered or the article "
+                                       "was deleted."),
                                     QSystemTrayIcon::MessageIcon::Warning),
                          GuiMessageDestination(true, true));
     return;
