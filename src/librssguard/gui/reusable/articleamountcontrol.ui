@@ -167,7 +167,7 @@
      </widget>
      <widget class="QWidget" name="m_tabLimit">
       <attribute name="title">
-       <string>Limiting amount of article in feeds</string>
+       <string>Limiting amount of articles in feeds</string>
       </attribute>
       <layout class="QFormLayout" name="formLayout_3">
        <item row="0" column="0" colspan="2">
