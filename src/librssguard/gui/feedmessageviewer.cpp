@@ -125,11 +125,20 @@ void FeedMessageViewer::onFeedSplitterResized() {
 void FeedMessageViewer::onMessageSplitterResized() {
   qDebugNN << LOGSEC_GUI << "Message splitter moved.";
 
+  QList<int> sizes = m_messageSplitter->sizes();
+
+  if (sizes.size() == 2 && (sizes[0] == 0 || sizes[1] == 0)) {
+    qWarningNN << LOGSEC_GUI << "Some of splitter position is 0.";
+    return;
+  }
+
+  QVariant siz = toVariant(sizes);
+
   if (m_messageSplitter->orientation() == Qt::Orientation::Vertical) {
-    qApp->settings()->setValue(GROUP(GUI), GUI::SplitterMessagesVertical, toVariant(m_messageSplitter->sizes()));
+    qApp->settings()->setValue(GROUP(GUI), GUI::SplitterMessagesVertical, siz);
   }
   else {
-    qApp->settings()->setValue(GROUP(GUI), GUI::SplitterMessagesHorizontal, toVariant(m_messageSplitter->sizes()));
+    qApp->settings()->setValue(GROUP(GUI), GUI::SplitterMessagesHorizontal, siz);
   }
 }
 
