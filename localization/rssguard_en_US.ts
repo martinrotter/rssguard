@@ -291,8 +291,8 @@ version by clicking this popup notification.</translation>
     <message numerus="yes">
       <location filename="../src/librssguard/gui/notifications/articlelistnotification.cpp" line="73"/>
       <source>%n feeds fetched</source>
-      <translation type="unfinished">
-        <numerusform>%n feeds fetched</numerusform>
+      <translation>
+        <numerusform>%n feed fetched</numerusform>
         <numerusform>%n feeds fetched</numerusform>
       </translation>
     </message>
