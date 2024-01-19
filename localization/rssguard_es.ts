@@ -164,7 +164,7 @@ Error: %1</translation>
     <message>
       <location filename="../src/librssguard/network-web/apiserver.cpp" line="188"/>
       <source>account with ID %1 not found</source>
-      <translation type="unfinished">account with ID %1 not found</translation>
+      <translation>cuenta con ID %1 desconocida</translation>
     </message>
   </context>
   <context>
@@ -2069,17 +2069,17 @@ Archivo de QtWebEngine memoria -&gt; &quot;%7&quot;</translation>
     <message>
       <location filename="../src/librssguard/services/abstract/gui/formfeeddetails.ui" line="128"/>
       <source>Avoid adding articles before this date/time into the database</source>
-      <translation type="unfinished">Avoid adding articles before this date/time into the database</translation>
+      <translation>Evite agregar artículos en la base de datos antes de esta fecha/hora</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/abstract/gui/formfeeddetails.ui" line="157"/>
       <source>Absolute date/time</source>
-      <translation type="unfinished">Absolute date/time</translation>
+      <translation>Fecha/hora absoluta</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/abstract/gui/formfeeddetails.ui" line="177"/>
       <source>Relative time</source>
-      <translation type="unfinished">Relative time</translation>
+      <translation>Tiempo relativo</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/abstract/gui/formfeeddetails.ui" line="216"/>
@@ -7026,12 +7026,12 @@ Los autores de esta aplicación se deslindan de toda responsabilidad derivado de
     <message>
       <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="173"/>
       <source>Absolute date/time</source>
-      <translation type="unfinished">Absolute date/time</translation>
+      <translation>Fecha/hora absoluta</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="180"/>
       <source>Relative time</source>
-      <translation type="unfinished">Relative time</translation>
+      <translation>Tiempo relativo</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="217"/>
@@ -7116,7 +7116,7 @@ Los autores de esta aplicación se deslindan de toda responsabilidad derivado de
     <message>
       <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="505"/>
       <source>Use legacy article formatting</source>
-      <translation type="unfinished">Use legacy article formatting</translation>
+      <translation>Utilice formato de artículo heredado</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="705"/>
@@ -7847,7 +7847,7 @@ Además, reinicie el cuadro de diálogo &quot;Configuración&quot; después de i
     <message>
       <location filename="../src/librssguard/services/standard/gui/standardaccountdetails.ui" line="43"/>
       <source>Select icon for your account.</source>
-      <translation type="unfinished">Select icon for your account.</translation>
+      <translation>Seleccione el ícono para su cuenta.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/standard/gui/standardaccountdetails.cpp" line="15"/>
@@ -7867,7 +7867,7 @@ Además, reinicie el cuadro de diálogo &quot;Configuración&quot; después de i
     <message>
       <location filename="../src/librssguard/services/standard/gui/standardaccountdetails.cpp" line="41"/>
       <source>Select icon file for the account</source>
-      <translation type="unfinished">Select icon file for the account</translation>
+      <translation>Seleccione el archivo de icono para la cuenta</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/standard/gui/standardaccountdetails.cpp" line="43"/>
@@ -8486,9 +8486,9 @@ Noticias sin leer: %2</translation>
     <message numerus="yes">
       <location filename="../src/librssguard/gui/reusable/timespinbox.cpp" line="68"/>
       <source>%n day(s)</source>
-      <translation type="unfinished">
-        <numerusform>%n day(s)</numerusform>
-        <numerusform>%n day(s)</numerusform>
+      <translation>
+        <numerusform>%n día(s)</numerusform>
+        <numerusform>%n día(s)</numerusform>
       </translation>
     </message>
     <message numerus="yes">
