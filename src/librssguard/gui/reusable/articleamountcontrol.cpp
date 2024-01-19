@@ -83,18 +83,24 @@ void ArticleAmountControl::setForAppWideFeatures(bool app_wide, bool batch_edit)
   }
 }
 
-void ArticleAmountControl::load(const Feed::ArticleIgnoreLimit& setup) {
+void ArticleAmountControl::load(const Feed::ArticleIgnoreLimit& setup, bool always_avoid) {
   // Ignoring articles.
   if (setup.m_dtToAvoid.isValid() && setup.m_dtToAvoid.toMSecsSinceEpoch() > 0) {
     m_ui.m_rbAvoidAbsolute->setChecked(true);
     m_ui.m_dtDateTimeToAvoid->setDateTime(setup.m_dtToAvoid);
   }
-  else {
+  else if (setup.m_hoursToAvoid > 0) {
     m_ui.m_rbAvoidRelative->setChecked(true);
     m_ui.m_spinHoursAvoid->setValue(setup.m_hoursToAvoid);
   }
 
-  m_ui.m_gbAvoidOldArticles->setChecked(setup.m_avoidOldArticles);
+  if (always_avoid) {
+    m_ui.m_gbAvoidOldArticles->setChecked(m_ui.m_rbAvoidAbsolute->isChecked() || m_ui.m_rbAvoidRelative->isChecked());
+  }
+  else {
+    m_ui.m_gbAvoidOldArticles->setChecked(setup.m_avoidOldArticles);
+  }
+
   m_ui.m_cbAddAnyDateArticles->setChecked(setup.m_addAnyArticlesToDb);
 
   // Limitting articles.

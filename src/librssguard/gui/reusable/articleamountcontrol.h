@@ -19,7 +19,7 @@ class ArticleAmountControl : public QWidget {
 
     void setForAppWideFeatures(bool app_wide, bool batch_edit);
 
-    void load(const Feed::ArticleIgnoreLimit& setup);
+    void load(const Feed::ArticleIgnoreLimit& setup, bool always_avoid = false);
     Feed::ArticleIgnoreLimit save() const;
 
     void saveFeed(Feed* fd, bool batch_edit) const;

@@ -164,7 +164,7 @@ void FormFeedDetails::loadFeedData() {
   art_limit.m_moveToBinDontPurge = false;
 */
 
-  m_ui.m_wdgArticleLimiting->load(art_limit);
+  m_ui.m_wdgArticleLimiting->load(art_limit, true);
 }
 
 void FormFeedDetails::acceptIfPossible() {
