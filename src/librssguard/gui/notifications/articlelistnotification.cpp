@@ -87,7 +87,9 @@ void ArticleListNotification::loadResults(const QHash<Feed*, QList<Message>>& ne
       continue;
     }
 
-    m_ui.m_cmbFeeds->addItem(fd->sanitizedTitle(), QVariant::fromValue(fd));
+    if (m_newMessages[fd].size() > 0) {
+      m_ui.m_cmbFeeds->addItem(fd->sanitizedTitle(), QVariant::fromValue(fd));
+    }
   }
 }
 
