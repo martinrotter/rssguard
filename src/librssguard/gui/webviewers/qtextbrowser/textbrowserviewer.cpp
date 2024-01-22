@@ -259,6 +259,17 @@ void TextBrowserViewer::loadMessages(const QList<Message>& messages, RootItem* r
 
   html_messages.m_html = html_messages.m_html.replace(exp_symbols, QString());
 
+  /*
+  // Replace base64 images.
+  QRegularExpression exp_base64("src=\"data: ?image\\/[^;]+;base64,([^\"]+)\"");
+  QRegularExpressionMatch exp_base64_match;
+
+  while ((exp_base64_match = exp_base64.match(html_messages.m_html)).hasMatch()) {
+    QString base64_img = exp_base64_match.captured(1);
+    QByteArray data_img = QByteArray::fromBase64Encoding(base64_img);
+  }
+  */
+
 #if !defined(NDEBUG)
   // IOFactory::writeFile("aaa.html", html_messages.m_html.toUtf8());
 #endif
@@ -537,7 +548,8 @@ void TextBrowserViewer::resourceDownloaded(const QUrl& url,
   downloadNextNeededResource();
 }
 
-PreparedHtml TextBrowserViewer::prepareLegacyHtmlForMessage(const QList<Message>& messages, RootItem* selected_item) const {
+PreparedHtml TextBrowserViewer::prepareLegacyHtmlForMessage(const QList<Message>& messages,
+                                                            RootItem* selected_item) const {
   PreparedHtml html;
   bool acc_displays_enclosures =
     selected_item == nullptr || selected_item->getParentServiceRoot()->displaysEnclosures();

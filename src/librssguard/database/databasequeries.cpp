@@ -1863,7 +1863,8 @@ UpdatedArticles DatabaseQueries::updateMessages(const QSqlDatabase& db,
                       .replace(QSL(":author"), DatabaseFactory::escapeQuery(unnulifyString(msg->m_author)))
                       .replace(QSL(":date_created"), QString::number(msg->m_created.toMSecsSinceEpoch()))
                       .replace(QSL(":contents"), DatabaseFactory::escapeQuery(unnulifyString(msg->m_contents)))
-                      .replace(QSL(":enclosures"), Enclosures::encodeEnclosuresToString(msg->m_enclosures))
+                      .replace(QSL(":enclosures"),
+                               DatabaseFactory::escapeQuery(Enclosures::encodeEnclosuresToString(msg->m_enclosures)))
                       .replace(QSL(":custom_id"), DatabaseFactory::escapeQuery(unnulifyString(msg->m_customId)))
                       .replace(QSL(":custom_hash"), unnulifyString(msg->m_customHash))
                       .replace(QSL(":score"), QString::number(msg->m_score))

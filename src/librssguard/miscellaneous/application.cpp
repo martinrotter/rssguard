@@ -44,7 +44,7 @@
 #include <QThreadPool>
 #include <QTimer>
 
-#if defined(MEDIAPLAYER_LIBMPV_OPENGL)
+#if defined(NO_LITE) && defined(MEDIAPLAYER_LIBMPV_OPENGL)
 #include <QQuickWindow>
 #endif
 
@@ -84,7 +84,7 @@
 Application::Application(const QString& id, int& argc, char** argv, const QStringList& raw_cli_args)
   : SingleApplication(id, argc, argv), m_rawCliArgs(raw_cli_args), m_updateFeedsLock(new Mutex()) {
 
-#if defined(MEDIAPLAYER_LIBMPV_OPENGL)
+#if defined(NO_LITE) && defined(MEDIAPLAYER_LIBMPV_OPENGL)
   // HACK: Force rendering system to use OpenGL backend.
 #if QT_VERSION_MAJOR < 6
   QQuickWindow::setSceneGraphBackend(QSGRendererInterface::GraphicsApi::OpenGL);
