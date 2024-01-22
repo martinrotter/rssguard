@@ -1790,6 +1790,13 @@ UpdatedArticles DatabaseQueries::updateMessages(const QSqlDatabase& db,
                     (!ignore_contents_changes && message.m_contents != contents_existing_message);
 
       if (cond_1 || cond_2 || cond_3 || force_update) {
+        if (!feed->getParentServiceRoot()->isSyncable()) {
+          // Feed is not syncable, thus we got RSS/JSON/whatever.
+          // Article is only updated, so we now prefer to keep original read state
+          // pretty much the same way starred state is kept.
+          message.m_isRead = is_read_existing_message;
+        }
+
         // Message exists and is changed, update it.
         query_update.bindValue(QSL(":title"), unnulifyString(message.m_title));
         query_update.bindValue(QSL(":is_read"), int(message.m_isRead));
