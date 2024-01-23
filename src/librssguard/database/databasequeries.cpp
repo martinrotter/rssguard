@@ -564,6 +564,7 @@ bool DatabaseQueries::removeUnwantedArticlesFromFeed(const QSqlDatabase& db,
     // No articles will be removed, quitting.
     return false;
   }
+
   // We find datetime stamp of oldest article which will be NOT moved/removed.
   QSqlQuery q(db);
 
@@ -576,6 +577,7 @@ bool DatabaseQueries::removeUnwantedArticlesFromFeed(const QSqlDatabase& db,
                 "  Messages.is_pdeleted = 0 "
                 "ORDER BY Messages.date_created DESC "
                 "LIMIT 1 OFFSET :offset;"));
+
   q.bindValue(QSL(":offset"), amount_to_keep - 1);
   q.bindValue(QSL(":feed"), feed->customId());
 

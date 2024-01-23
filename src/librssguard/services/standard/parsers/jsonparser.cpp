@@ -123,6 +123,10 @@ QPair<StandardFeed*, QList<IconLocation>> JsonParser::guessFeed(const QByteArray
       throw FeedRecognizedButFailedException(QObject::tr("JSON error '%1'").arg(json_err.errorString()));
     }
 
+    if (!json.object().contains(QSL("version"))) {
+      throw ApplicationException(QObject::tr("not a JSON feed"));
+    }
+
     auto* feed = new StandardFeed();
     QList<IconLocation> icon_possible_locations;
 
