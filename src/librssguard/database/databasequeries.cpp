@@ -572,6 +572,7 @@ bool DatabaseQueries::removeUnwantedArticlesFromFeed(const QSqlDatabase& db,
   q.prepare(QSL("SELECT Messages.date_created "
                 "FROM Messages "
                 "WHERE "
+                "  Messages.account_id = :account_id AND "
                 "  Messages.feed = :feed AND "
                 "  Messages.is_deleted = 0 AND "
                 "  Messages.is_pdeleted = 0 "
@@ -580,6 +581,7 @@ bool DatabaseQueries::removeUnwantedArticlesFromFeed(const QSqlDatabase& db,
 
   q.bindValue(QSL(":offset"), amount_to_keep - 1);
   q.bindValue(QSL(":feed"), feed->customId());
+  q.bindValue(QSL(":account_id"), feed->getParentServiceRoot()->accountId());
 
   if (!q.exec()) {
     throw ApplicationException(q.lastError().text());
@@ -596,6 +598,7 @@ bool DatabaseQueries::removeUnwantedArticlesFromFeed(const QSqlDatabase& db,
     q.prepare(QSL("UPDATE Messages "
                   "SET is_deleted = 1 "
                   "WHERE "
+                  "  Messages.account_id = :account_id AND "
                   "  Messages.feed = :feed AND "
                   "  Messages.is_deleted = 0 AND "
                   "  Messages.is_pdeleted = 0 AND "
@@ -607,6 +610,7 @@ bool DatabaseQueries::removeUnwantedArticlesFromFeed(const QSqlDatabase& db,
     // We purge all older articles.
     q.prepare(QSL("DELETE FROM Messages "
                   "WHERE "
+                  "  Messages.account_id = :account_id AND "
                   "  Messages.feed = :feed AND "
                   "  (Messages.is_deleted = 1 OR Messages.is_important != :is_important) AND "
                   "  (Messages.is_deleted = 1 OR Messages.is_read != :is_read) AND "
@@ -617,6 +621,7 @@ bool DatabaseQueries::removeUnwantedArticlesFromFeed(const QSqlDatabase& db,
   q.bindValue(QSL(":is_read"), dont_remove_unread ? 0 : 2);
   q.bindValue(QSL(":feed"), feed->customId());
   q.bindValue(QSL(":stamp"), last_kept_stamp);
+  q.bindValue(QSL(":account_id"), feed->getParentServiceRoot()->accountId());
 
   if (!q.exec()) {
     throw ApplicationException(q.lastError().text());
