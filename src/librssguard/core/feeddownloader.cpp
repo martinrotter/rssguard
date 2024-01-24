@@ -410,9 +410,7 @@ void FeedDownloader::updateOneFeed(ServiceRoot* acc,
              << NONQUOTE_W_SPACE(updated_messages.m_all.size()) "total messages for feed"
              << QUOTE_W_SPACE(feed->customId()) << "stored in DB.";
 
-    if (!updated_messages.m_unread.isEmpty()) {
-      m_results.appendUpdatedFeed(feed, updated_messages.m_unread);
-    }
+    m_results.appendUpdatedFeed(feed, updated_messages.m_unread);
   }
   catch (const FeedFetchException& feed_ex) {
     qCriticalNN << LOGSEC_NETWORK << "Error when fetching feed:" << QUOTE_W_SPACE(feed_ex.feedStatus())
@@ -580,7 +578,9 @@ QString FeedDownloadResults::overview(int how_many_feeds) const {
 }
 
 void FeedDownloadResults::appendUpdatedFeed(Feed* feed, const QList<Message>& updated_unread_msgs) {
-  m_updatedFeeds.insert(feed, updated_unread_msgs);
+  if (!updated_unread_msgs.isEmpty()) {
+    m_updatedFeeds.insert(feed, updated_unread_msgs);
+  }
 }
 
 void FeedDownloadResults::clear() {
