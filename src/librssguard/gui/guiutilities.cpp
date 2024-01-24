@@ -39,9 +39,9 @@ void GuiUtilities::applyDialogProperties(QWidget& widget, const QIcon& icon, con
   fixTooBigDialog(widget);
 }
 
-void GuiUtilities::fixTooBigDialog(QWidget& widget) {
+void GuiUtilities::fixTooBigDialog(QWidget& widget, bool move_to_center) {
   // We fix too big dialog size or out-of-bounds position.
-  auto size_widget = widget.size();
+  auto size_widget = widget.frameGeometry().size();
   auto size_screen = widget.screen()->availableSize();
 
   if (size_widget.width() > size_screen.width()) {
@@ -53,7 +53,33 @@ void GuiUtilities::fixTooBigDialog(QWidget& widget) {
   }
 
   if (size_widget != widget.size()) {
+    qWarningNN << LOGSEC_GUI << "Dialog" << QUOTE_W_SPACE(widget.metaObject()->className()) << "was down-sized from"
+               << QUOTE_W_SPACE(widget.size()) << "to" << QUOTE_W_SPACE_DOT(size_widget);
+
     widget.resize(size_widget);
+  }
+
+  auto pos_widget = widget.pos();
+
+  if (move_to_center || pos_widget.x() < 0 || pos_widget.y()) {
+    //  Calculate ideal position for centering the widget.
+    auto size_parent = widget.parentWidget() != nullptr ? widget.parentWidget()->size() : QSize(0, 0);
+
+    // If dialog is bigger than its parent, center it to screen.
+    // If dialog is smaller than its parent, center to parent.
+    auto size_to_center = (size_widget.width() > size_parent.width() || size_widget.height() > size_parent.height())
+                            ? size_screen
+                            : size_parent;
+
+    auto origin_x = (size_to_center.width() - size_widget.width()) / 2.0;
+    auto origin_y = (size_to_center.height() - size_widget.height()) / 2.0;
+    auto origin_pos = QPoint(origin_x, origin_y);
+
+    if (origin_pos != pos_widget) {
+      qWarningNN << LOGSEC_GUI << "Dialog" << QUOTE_W_SPACE(widget.metaObject()->className()) << "was moved from"
+                 << QUOTE_W_SPACE(pos_widget) << "to" << QUOTE_W_SPACE_DOT(origin_pos);
+      widget.move(origin_pos);
+    }
   }
 }
 

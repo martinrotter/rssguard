@@ -682,7 +682,7 @@ void FormMain::loadSize() {
   resize(settings->value(GROUP(GUI), GUI::MainWindowInitialSize, size()).toSize());
   move(settings->value(GROUP(GUI), GUI::MainWindowInitialPosition, screen.center() - rect().center()).toPoint());
 
-  GuiUtilities::fixTooBigDialog(*this);
+  GuiUtilities::fixTooBigDialog(*this, false);
 
   if (settings->value(GROUP(GUI), SETTING(GUI::MainWindowStartsMaximized)).toBool()) {
     setWindowState(windowState() | Qt::WindowState::WindowMaximized);

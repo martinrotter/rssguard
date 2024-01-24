@@ -11,7 +11,7 @@ class GuiUtilities {
   public:
     static void setLabelAsNotice(QLabel& label, bool is_warning, bool set_margins = true);
     static void applyDialogProperties(QWidget& widget, const QIcon& icon = QIcon(), const QString& title = QString());
-    static void fixTooBigDialog(QWidget& widget);
+    static void fixTooBigDialog(QWidget& widget, bool move_to_center = true);
     static void restoreState(QWidget* wdg, QByteArray state);
     static QByteArray saveState(QWidget* wdg);
 
