@@ -278,7 +278,6 @@ DVALUE(char*)
 GUI::StatusbarActionsDef = "m_barProgressDownloadAction,m_barProgressFeedsAction,m_actionUpdateAllItems,m_"
                            "actionUpdateSelectedItems,m_actionStopRunningItemsUpdate,m_actionFullscreen,m_actionQuit";
 
-DKEY GUI::SettingsWindowInitialSize = "settings_window_size";
 DKEY GUI::MainWindowInitialSize = "window_size";
 DKEY GUI::MainWindowInitialPosition = "window_position";
 

@@ -333,6 +333,12 @@ void FeedReader::executeNextAutoUpdate() {
     synchronizeMessageData(caches);
   }
 
+  if (disable_update_with_window) {
+    qDebugNN << LOGSEC_CORE << "Delaying scheduled feed auto-download for some time since window "
+             << "is focused. Article cache was synchronised nonetheless.";
+    return;
+  }
+
   // Pass needed interval data and lets the model decide which feeds
   // should be updated in this pass.
   QDateTime current_time = QDateTime::currentDateTimeUtc();

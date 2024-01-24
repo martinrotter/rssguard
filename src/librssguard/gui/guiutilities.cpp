@@ -4,6 +4,7 @@
 
 #include "definitions/definitions.h"
 
+#include <QScreen>
 #include <QSettings>
 
 #if defined(Q_OS_ANDROID)
@@ -33,6 +34,22 @@ void GuiUtilities::applyDialogProperties(QWidget& widget, const QIcon& icon, con
 
   if (!title.isEmpty()) {
     widget.setWindowTitle(title);
+  }
+
+  // We fix too big dialog size or out-of-bounds position.
+  auto size_widget = widget.size();
+  auto size_screen = widget.screen()->availableSize();
+
+  if (size_widget.width() > size_screen.width()) {
+    size_widget.setWidth(size_screen.width() * 0.9);
+  }
+
+  if (size_widget.height() > size_screen.height()) {
+    size_widget.setHeight(size_screen.height() * 0.9);
+  }
+
+  if (size_widget != widget.size()) {
+    widget.resize(size_widget);
   }
 }
 
