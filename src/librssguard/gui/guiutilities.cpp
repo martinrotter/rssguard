@@ -36,6 +36,10 @@ void GuiUtilities::applyDialogProperties(QWidget& widget, const QIcon& icon, con
     widget.setWindowTitle(title);
   }
 
+  fixTooBigDialog(widget);
+}
+
+void GuiUtilities::fixTooBigDialog(QWidget& widget) {
   // We fix too big dialog size or out-of-bounds position.
   auto size_widget = widget.size();
   auto size_screen = widget.screen()->availableSize();

@@ -13,6 +13,7 @@
 #include "gui/dialogs/formupdate.h"
 #include "gui/feedmessageviewer.h"
 #include "gui/feedsview.h"
+#include "gui/guiutilities.h"
 #include "gui/messagepreviewer.h"
 #include "gui/messagesview.h"
 #include "gui/reusable/searchlineedit.h"
@@ -680,6 +681,8 @@ void FormMain::loadSize() {
   // Reload main window size & position.
   resize(settings->value(GROUP(GUI), GUI::MainWindowInitialSize, size()).toSize());
   move(settings->value(GROUP(GUI), GUI::MainWindowInitialPosition, screen.center() - rect().center()).toPoint());
+
+  GuiUtilities::fixTooBigDialog(*this);
 
   if (settings->value(GROUP(GUI), SETTING(GUI::MainWindowStartsMaximized)).toBool()) {
     setWindowState(windowState() | Qt::WindowState::WindowMaximized);
