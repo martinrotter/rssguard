@@ -257,6 +257,92 @@ versión pulsando en esta notificación emergente.</translation>
     </message>
   </context>
   <context>
+    <name>ArticleAmountControl</name>
+    <message>
+      <location filename="../src/librssguard/gui/reusable/articleamountcontrol.ui" line="14"/>
+      <source>Form</source>
+      <translation>Formulario</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard/gui/reusable/articleamountcontrol.ui" line="36"/>
+      <source>Ignoring old articles</source>
+      <translation type="unfinished">Ignoring old articles</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard/gui/reusable/articleamountcontrol.ui" line="47"/>
+      <source>Add articles with any date into the database</source>
+      <translation type="unfinished">Add articles with any date into the database</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard/gui/reusable/articleamountcontrol.ui" line="76"/>
+      <source>Avoid adding articles before this date/time into the database</source>
+      <translation type="unfinished">Avoid adding articles before this date/time into the database</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard/gui/reusable/articleamountcontrol.ui" line="85"/>
+      <source>Absolute date/time</source>
+      <translation type="unfinished">Absolute date/time</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard/gui/reusable/articleamountcontrol.ui" line="92"/>
+      <source>Relative time</source>
+      <translation type="unfinished">Relative time</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard/gui/reusable/articleamountcontrol.ui" line="170"/>
+      <source>Limiting amount of articles in feeds</source>
+      <translation type="unfinished">Limiting amount of articles in feeds</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard/gui/reusable/articleamountcontrol.ui" line="181"/>
+      <source>Customize article limits</source>
+      <translation type="unfinished">Customize article limits</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard/gui/reusable/articleamountcontrol.ui" line="210"/>
+      <source>In database, keep</source>
+      <translation type="unfinished">In database, keep</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard/gui/reusable/articleamountcontrol.ui" line="224"/>
+      <source>Do not remove important articles</source>
+      <translation type="unfinished">Do not remove important articles</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard/gui/reusable/articleamountcontrol.ui" line="231"/>
+      <source>Do not remove unread articles</source>
+      <translation type="unfinished">Do not remove unread articles</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard/gui/reusable/articleamountcontrol.ui" line="238"/>
+      <source>Just move articles to recycle bin, do not purge them</source>
+      <translation type="unfinished">Just move articles to recycle bin, do not purge them</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard/gui/reusable/articleamountcontrol.cpp" line="11"/>
+      <source>Setting any limitations here will instruct %1 to ignore some incoming articles. The logic runs AFTER any article filters so even if your article filter accepts particular article, it can still subsequently ignored and not added to database.</source>
+      <translation type="unfinished">Setting any limitations here will instruct %1 to ignore some incoming articles. The logic runs AFTER any article filters so even if your article filter accepts particular article, it can still subsequently ignored and not added to database.</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard/gui/reusable/articleamountcontrol.cpp" line="16"/>
+      <source>All excessive articles are removed automatically by the application, usually after particular feed is fetched. Articles are either completely purged (including articles from recycle bin) from internal database or are just moved to recycle bin.</source>
+      <translation type="unfinished">All excessive articles are removed automatically by the application, usually after particular feed is fetched. Articles are either completely purged (including articles from recycle bin) from internal database or are just moved to recycle bin.</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard/gui/reusable/articleamountcontrol.cpp" line="22"/>
+      <source>all articles</source>
+      <translation type="unfinished">all articles</translation>
+    </message>
+    <message numerus="yes">
+      <location filename="../src/librssguard/gui/reusable/articleamountcontrol.cpp" line="179"/>
+      <source>newest article(s)</source>
+      <translation type="unfinished">
+        <numerusform>newest article(s)</numerusform>
+        <numerusform>newest article(s)</numerusform>
+      </translation>
+    </message>
+  </context>
+  <context>
     <name>ArticleListNotification</name>
     <message>
       <location filename="../src/librssguard/gui/notifications/articlelistnotification.ui" line="66"/>
@@ -738,33 +824,33 @@ Haga clic aquí para abrir el directorio principal.</translation>
   <context>
     <name>Feed</name>
     <message>
-      <location filename="../src/librssguard/services/abstract/feed.cpp" line="273"/>
+      <location filename="../src/librssguard/services/abstract/feed.cpp" line="262"/>
       <source>uses global settings, but global auto-fetching of articles is disabled</source>
       <translation>utiliza la configuración global, pero la recuperación automática global de artículos está deshabilitada</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/services/abstract/feed.cpp" line="297"/>
+      <location filename="../src/librssguard/services/abstract/feed.cpp" line="286"/>
       <source>no errors</source>
       <translation>sin errores</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/services/abstract/feed.cpp" line="303"/>
+      <location filename="../src/librssguard/services/abstract/feed.cpp" line="292"/>
       <source>authentication error</source>
       <translation>error de autenticación</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/services/abstract/feed.cpp" line="306"/>
+      <location filename="../src/librssguard/services/abstract/feed.cpp" line="295"/>
       <source>network error</source>
       <translation>error de la red</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/services/abstract/feed.cpp" line="259"/>
+      <location filename="../src/librssguard/services/abstract/feed.cpp" line="248"/>
       <source>does not use auto-fetching of articles</source>
       <extracomment>Describes feed auto-update status.</extracomment>
       <translation>no utiliza la recuperación automática de artículos</translation>
     </message>
     <message numerus="yes">
-      <location filename="../src/librssguard/services/abstract/feed.cpp" line="270"/>
+      <location filename="../src/librssguard/services/abstract/feed.cpp" line="259"/>
       <source>uses global settings (%n minute(s) to next auto-fetch of articles)</source>
       <translation>
         <numerusform>utiliza la configuración global (%n minuto(s) para la próxima obtención automática de artículos)</numerusform>
@@ -772,7 +858,7 @@ Haga clic aquí para abrir el directorio principal.</translation>
       </translation>
     </message>
     <message numerus="yes">
-      <location filename="../src/librssguard/services/abstract/feed.cpp" line="284"/>
+      <location filename="../src/librssguard/services/abstract/feed.cpp" line="273"/>
       <source>uses specific settings (%n minute(s) to next auto-fetching of new articles)</source>
       <extracomment>Describes feed auto-update status.</extracomment>
       <translation>
@@ -781,22 +867,22 @@ Haga clic aquí para abrir el directorio principal.</translation>
       </translation>
     </message>
     <message>
-      <location filename="../src/librssguard/services/abstract/feed.cpp" line="300"/>
+      <location filename="../src/librssguard/services/abstract/feed.cpp" line="289"/>
       <source>has new articles</source>
       <translation>tiene nuevos artículos</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/services/abstract/feed.cpp" line="309"/>
+      <location filename="../src/librssguard/services/abstract/feed.cpp" line="298"/>
       <source>parsing error</source>
       <translation>error de sintaxis</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/services/abstract/feed.cpp" line="312"/>
+      <location filename="../src/librssguard/services/abstract/feed.cpp" line="301"/>
       <source>error</source>
       <translation>error</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/services/abstract/feed.cpp" line="382"/>
+      <location filename="../src/librssguard/services/abstract/feed.cpp" line="375"/>
       <source>Auto-update status: %1
 Active message filters: %2
 Status: %3
@@ -822,24 +908,24 @@ ID artículo: %5</translation>
       <translation>Barra de herramientas para los artículos</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/feedmessageviewer.cpp" line="236"/>
+      <location filename="../src/librssguard/gui/feedmessageviewer.cpp" line="245"/>
       <source>Filtered feed list</source>
       <translation>Lista de fuentes filtrada</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/feedmessageviewer.cpp" line="237"/>
+      <location filename="../src/librssguard/gui/feedmessageviewer.cpp" line="246"/>
       <source>Cannot select article in article list as your feed is filtered out from feed list.</source>
       <translation>Imposible seleccionar artículo en la lista de artículos porque su fuente está filtrada en la lista de fuentes.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/feedmessageviewer.cpp" line="254"/>
+      <location filename="../src/librssguard/gui/feedmessageviewer.cpp" line="263"/>
       <source>Filtered article list</source>
       <translation>Lista de artículos filtrada</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/feedmessageviewer.cpp" line="255"/>
-      <source>Cannot select article as it seems your article list is filtered.</source>
-      <translation>Imposible seleccionar el artículo porque parece que su lista de artículos está filtrada.</translation>
+      <location filename="../src/librssguard/gui/feedmessageviewer.cpp" line="264"/>
+      <source>Cannot select article as it seems your article list is filtered or the article was deleted.</source>
+      <translation type="unfinished">Cannot select article as it seems your article list is filtered or the article was deleted.</translation>
     </message>
   </context>
   <context>
@@ -1999,22 +2085,22 @@ Archivo de QtWebEngine memoria -&gt; &quot;%7&quot;</translation>
   <context>
     <name>FormFeedDetails</name>
     <message>
-      <location filename="../src/librssguard/services/abstract/gui/formfeeddetails.cpp" line="154"/>
+      <location filename="../src/librssguard/services/abstract/gui/formfeeddetails.cpp" line="131"/>
       <source>Add new feed</source>
       <translation>Añadir nueva fuente</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/services/abstract/gui/formfeeddetails.cpp" line="197"/>
+      <location filename="../src/librssguard/services/abstract/gui/formfeeddetails.cpp" line="178"/>
       <source>Cannot save changes: %1</source>
       <translation>Imposible guardar cambios: %1</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/services/abstract/gui/formfeeddetails.cpp" line="158"/>
+      <location filename="../src/librssguard/services/abstract/gui/formfeeddetails.cpp" line="135"/>
       <source>Edit &quot;%1&quot;</source>
       <translation>Editar &quot;%1&quot;</translation>
     </message>
     <message numerus="yes">
-      <location filename="../src/librssguard/services/abstract/gui/formfeeddetails.cpp" line="163"/>
+      <location filename="../src/librssguard/services/abstract/gui/formfeeddetails.cpp" line="140"/>
       <source>Edit %n feeds</source>
       <translation>
         <numerusform>Editar %n fuentes</numerusform>
@@ -2022,22 +2108,22 @@ Archivo de QtWebEngine memoria -&gt; &quot;%7&quot;</translation>
       </translation>
     </message>
     <message>
-      <location filename="../src/librssguard/services/abstract/gui/formfeeddetails.cpp" line="217"/>
+      <location filename="../src/librssguard/services/abstract/gui/formfeeddetails.cpp" line="192"/>
       <source>Fetch articles using global interval</source>
       <translation>Obtener artículos utilizando el intervalo global</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/services/abstract/gui/formfeeddetails.cpp" line="219"/>
+      <location filename="../src/librssguard/services/abstract/gui/formfeeddetails.cpp" line="194"/>
       <source>Fetch articles every</source>
       <translation>Obtener artículos cada</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/services/abstract/gui/formfeeddetails.cpp" line="221"/>
+      <location filename="../src/librssguard/services/abstract/gui/formfeeddetails.cpp" line="196"/>
       <source>Disable auto-fetching of articles</source>
       <translation>Deshabilitar la obtención automática de artículos</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/services/abstract/gui/formfeeddetails.cpp" line="196"/>
+      <location filename="../src/librssguard/services/abstract/gui/formfeeddetails.cpp" line="177"/>
       <source>Cannot save feed properties</source>
       <translation>Imposible guardar propiedades de fuente</translation>
     </message>
@@ -2062,42 +2148,22 @@ Archivo de QtWebEngine memoria -&gt; &quot;%7&quot;</translation>
       <translation>Abrir artículos a través de su URL automáticamente</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/services/abstract/gui/formfeeddetails.ui" line="111"/>
-      <source>Add articles with any date into the database</source>
-      <translation>Añadir artículos con cualquier fecha dentro de la base de datos</translation>
-    </message>
-    <message>
-      <location filename="../src/librssguard/services/abstract/gui/formfeeddetails.ui" line="128"/>
-      <source>Avoid adding articles before this date/time into the database</source>
-      <translation>Evite agregar artículos en la base de datos antes de esta fecha/hora</translation>
-    </message>
-    <message>
-      <location filename="../src/librssguard/services/abstract/gui/formfeeddetails.ui" line="157"/>
-      <source>Absolute date/time</source>
-      <translation>Fecha/hora absoluta</translation>
-    </message>
-    <message>
-      <location filename="../src/librssguard/services/abstract/gui/formfeeddetails.ui" line="177"/>
-      <source>Relative time</source>
-      <translation>Tiempo relativo</translation>
-    </message>
-    <message>
-      <location filename="../src/librssguard/services/abstract/gui/formfeeddetails.ui" line="216"/>
+      <location filename="../src/librssguard/services/abstract/gui/formfeeddetails.ui" line="97"/>
       <source>Miscellaneous</source>
       <translation>Varios </translation>
     </message>
     <message>
-      <location filename="../src/librssguard/services/abstract/gui/formfeeddetails.ui" line="241"/>
+      <location filename="../src/librssguard/services/abstract/gui/formfeeddetails.ui" line="122"/>
       <source>Disable this feed</source>
       <translation>Deshabilitar esta fuente</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/services/abstract/gui/formfeeddetails.ui" line="255"/>
+      <location filename="../src/librssguard/services/abstract/gui/formfeeddetails.ui" line="136"/>
       <source>Right-to-left layout</source>
       <translation>Disposición de derecha a izquierda</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/services/abstract/gui/formfeeddetails.ui" line="227"/>
+      <location filename="../src/librssguard/services/abstract/gui/formfeeddetails.ui" line="108"/>
       <source>Ignore notifications for this feed</source>
       <translation>Ignorar notificaciones para esta fuente</translation>
     </message>
@@ -3144,35 +3210,35 @@ Archivo de QtWebEngine memoria -&gt; &quot;%7&quot;</translation>
   <context>
     <name>FormSettings</name>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formsettings.cpp" line="105"/>
+      <location filename="../src/librssguard/gui/dialogs/formsettings.cpp" line="110"/>
       <source>Critical settings were changed</source>
       <translation>Se cambió una configuración crítica</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formsettings.cpp" line="109"/>
-      <location filename="../src/librssguard/gui/dialogs/formsettings.cpp" line="144"/>
+      <location filename="../src/librssguard/gui/dialogs/formsettings.cpp" line="114"/>
+      <location filename="../src/librssguard/gui/dialogs/formsettings.cpp" line="149"/>
       <source>Changed categories of settings:
 %1.</source>
       <translation>Se cambiaron las categorías de la configuración:
 %1.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formsettings.cpp" line="141"/>
+      <location filename="../src/librssguard/gui/dialogs/formsettings.cpp" line="146"/>
       <source>Some settings are changed and will be lost</source>
       <translation>Se cambió la configuración y estos cambios se perderán</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formsettings.cpp" line="142"/>
+      <location filename="../src/librssguard/gui/dialogs/formsettings.cpp" line="147"/>
       <source>Some settings were changed and by cancelling this dialog, you would lose these changes.</source>
       <translation>Se cambió la configuración y al cancelar este diálogo usted perdería todos los cambios.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formsettings.cpp" line="143"/>
+      <location filename="../src/librssguard/gui/dialogs/formsettings.cpp" line="148"/>
       <source>Do you really want to close this dialog without saving any settings?</source>
       <translation>¿Realmente quiere cerrar este dialogo sin guardar la configuración?</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formsettings.cpp" line="106"/>
+      <location filename="../src/librssguard/gui/dialogs/formsettings.cpp" line="111"/>
       <source>Some critical settings were changed and will be applied after the application gets restarted. 
 
 You have to restart manually.</source>
@@ -3180,7 +3246,7 @@ You have to restart manually.</source>
 La aplicación tiene que reiniciarla manualmente.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formsettings.cpp" line="108"/>
+      <location filename="../src/librssguard/gui/dialogs/formsettings.cpp" line="113"/>
       <source>Do you want to restart now?</source>
       <translation>¿Desea reiniciar la aplicación ahora?</translation>
     </message>
@@ -5796,7 +5862,7 @@ Feedly is a secure space where you can privately organize and research the topic
 Feedly es un espacio seguro donde puede organizar e investigar de forma privada los temas y tendencias que le interesan.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/database/databasequeries.cpp" line="2785"/>
+      <location filename="../src/librssguard/database/databasequeries.cpp" line="2910"/>
       <source>Cannot insert article filter, because current database cannot return last inserted row ID.</source>
       <translation>Imposible insertar el filtro de artículo porque la base de datos actual no puede devolver el ID de la última fila insertada.</translation>
     </message>
@@ -5978,7 +6044,8 @@ Lista de lectores compatibles:</translation>
       <translation>Error JSON &apos;%1&apos;</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/services/standard/parsers/jsonparser.cpp" line="154"/>
+      <location filename="../src/librssguard/services/standard/parsers/jsonparser.cpp" line="127"/>
+      <location filename="../src/librssguard/services/standard/parsers/jsonparser.cpp" line="158"/>
       <source>not a JSON feed</source>
       <translation>no es un canal RSS</translation>
     </message>
@@ -6512,12 +6579,12 @@ Number of categories: %2</source>
 Número de categorías: %2</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/services/abstract/serviceroot.cpp" line="705"/>
+      <location filename="../src/librssguard/services/abstract/serviceroot.cpp" line="715"/>
       <source>Error when fetching list of feeds</source>
       <translation>Error mientras se obtenía la lista de fuentes</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/services/abstract/serviceroot.cpp" line="706"/>
+      <location filename="../src/librssguard/services/abstract/serviceroot.cpp" line="716"/>
       <source>Feeds &amp; categories for account &apos;%1&apos; were not fetched, error: %2</source>
       <translation>Fue imposible obtener las fuentes y categorías para la cuenta &apos;%1&apos;, error %2</translation>
     </message>
@@ -6936,27 +7003,27 @@ Los autores de esta aplicación se deslindan de toda responsabilidad derivado de
   <context>
     <name>SettingsFeedsMessages</name>
     <message>
-      <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.cpp" line="245"/>
+      <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.cpp" line="236"/>
       <source>Select new font</source>
       <translation>Seleccionar nuevo tipo de letra</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.cpp" line="32"/>
+      <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.cpp" line="33"/>
       <source>Enter format for count of articles displayed next to each feed/category in feed list. Use &quot;%all&quot; and &quot;%unread&quot; strings which are placeholders for the actual count of all (or unread) articles.</source>
       <translation>Ingrese el formato para el recuento de artículos que se muestran junto a cada fuente/categoría en la lista de fuentes. Utilice las cadenas &quot;%all&quot; y &quot;%unread&quot; que son marcadores de posición para el recuento real de todos los artículos (o sin leer).</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.cpp" line="36"/>
+      <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.cpp" line="37"/>
       <source>Note that enabling this might have drastic consequences on performance of article list with big number of articles.</source>
       <translation>Tenga en cuenta que habilitar esto podría tener consecuencias drásticas en el rendimiento de la lista de artículos con una gran cantidad de artículos.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.cpp" line="56"/>
+      <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.cpp" line="57"/>
       <source>days (turned off)</source>
       <translation>días (apagado)</translation>
     </message>
     <message numerus="yes">
-      <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.cpp" line="59"/>
+      <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.cpp" line="60"/>
       <source>day(s)</source>
       <translation>
         <numerusform>día</numerusform>
@@ -6964,17 +7031,17 @@ Los autores de esta aplicación se deslindan de toda responsabilidad derivado de
       </translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.cpp" line="65"/>
+      <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.cpp" line="66"/>
       <source> = unchanged size</source>
       <translation>= tamaño sin cambios</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.cpp" line="406"/>
+      <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.cpp" line="381"/>
       <source>PC restart needed</source>
       <translation>Es necesario reiniciar el sistema</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.cpp" line="407"/>
+      <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.cpp" line="382"/>
       <source>Your PC needs to be restarted to make some of enabled features fully working.</source>
       <translation>Es necesario reiniciar el sistema para que algunas de las funciones habilitadas funcionen completamente.</translation>
     </message>
@@ -7019,172 +7086,157 @@ Los autores de esta aplicación se deslindan de toda responsabilidad derivado de
       <translation>Admite intervalos de búsqueda automática muy rápidos (menos de 10 segundos)</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="128"/>
-      <source>Avoid adding articles before this date into the database</source>
-      <translation>Evitar añadir artículos antes de esta fecha dentro de la base de datos</translation>
-    </message>
-    <message>
-      <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="173"/>
-      <source>Absolute date/time</source>
-      <translation>Fecha/hora absoluta</translation>
-    </message>
-    <message>
-      <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="180"/>
-      <source>Relative time</source>
-      <translation>Tiempo relativo</translation>
-    </message>
-    <message>
-      <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="217"/>
+      <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="132"/>
       <source>Feeds list</source>
       <translation>Lista de fuentes</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="223"/>
-      <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="543"/>
+      <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="138"/>
+      <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="458"/>
       <source>Row height</source>
       <translation>Altura de la fila</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="260"/>
+      <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="175"/>
       <source>Feed list font</source>
       <translation>Tipo de letra de la lista de fuentes</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="272"/>
-      <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="460"/>
-      <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="682"/>
+      <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="187"/>
+      <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="375"/>
+      <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="597"/>
       <source>Font preview</source>
       <translation>Vista previa del tipo de letra</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="282"/>
-      <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="470"/>
-      <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="692"/>
+      <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="197"/>
+      <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="385"/>
+      <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="607"/>
       <source>&amp;Change font</source>
       <translation>&amp;Cambiar tipo de letra</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="307"/>
+      <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="222"/>
       <source>Article count format</source>
       <translation>Formato de recuento de artículos</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="336"/>
+      <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="251"/>
       <source>Hide article counts if there are no unread articles</source>
       <translation>Ocultar recuentos de artículos si no hay artículos sin leer</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="343"/>
+      <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="258"/>
       <source>Allow only basic keyboard shortcuts for feed/article list</source>
       <translation>Permitir sólo métodos abreviados de teclado básicos para la lista de noticias/artículos</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="350"/>
+      <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="265"/>
       <source>Display tooltips for feeds and articles</source>
       <translation>Mostrar información sobre herramientas para fuentes y artículos</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="357"/>
+      <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="272"/>
       <source>Update feed list during feed fetching</source>
       <translation>Actualizar lista de fuentes mientras se obtienen fuentes</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="365"/>
+      <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="280"/>
       <source>Articles</source>
       <translation>Artículos</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="371"/>
+      <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="286"/>
       <source>Remove all read articles from all feeds on application exit</source>
       <translation>Eliminar todos los artículos leídos de todas las fuentes al salir de la aplicación</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="378"/>
+      <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="293"/>
       <source>Ignore changes in article body when new articles are being fetched</source>
       <translation>Ignorar los cambios en el cuerpo del artículo cuando se obtienen nuevos artículos</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="399"/>
+      <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="314"/>
       <source>Internal article viewer</source>
       <translation>Visor de artículo interno</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="414"/>
+      <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="329"/>
       <source>Limit height of all pictures</source>
       <translation>Limitar la altura de las imágenes</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="505"/>
+      <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="420"/>
       <source>Use legacy article formatting</source>
       <translation>Utilice formato de artículo heredado</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="705"/>
+      <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="620"/>
       <source>Unread article icon type</source>
       <translation>Tipo de icono de artículo sin leer</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="392"/>
+      <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="307"/>
       <source>Bring application window to front once article is opened in external web browser</source>
       <translation>Llevar la ventana de la aplicación al frente una vez que se abre el artículo en un navegador web externo</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="454"/>
+      <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="369"/>
       <source>Article browser font</source>
       <translation>Tipografía del navegador de artículos</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="385"/>
+      <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="300"/>
       <source>Fixup date/time of articles which are in the future</source>
       <translation>Fecha/hora de corrección de artículos que están en el futuro</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="405"/>
+      <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="320"/>
       <source>Display attachments directly in article</source>
       <translation>Mostrar archivos adjuntos directamente en el artículo</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="498"/>
+      <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="413"/>
       <source>Keep article viewer always visible</source>
       <translation>Mantenga el visor de artículos siempre visible</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="513"/>
+      <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="428"/>
       <source>Articles list</source>
       <translation>Lista de artículos</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="519"/>
+      <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="434"/>
       <source>Keep article selection in the middle of the article list viewport</source>
       <translation>Mantener la selección de artículos en el medio de la ventana gráfica de la lista de artículos</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="526"/>
+      <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="441"/>
       <source>Enable multiline items</source>
       <translation>Habilitar elementos de varias líneas</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="572"/>
+      <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="487"/>
       <source>Top/bottom row padding</source>
       <translation>Acolchado de fila superior/inferior</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="601"/>
+      <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="516"/>
       <source>Use custom date/time format</source>
       <translation>Usar formato de fecha/hora personalizado</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="627"/>
+      <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="542"/>
       <source>Custom date/time format for today&apos;s articles</source>
       <translation>Formato de fecha/hora personalizado para los artículos de hoy</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="670"/>
+      <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="585"/>
       <source>Article list font</source>
       <translation>Tipografía de la lista de artículos</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="653"/>
+      <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="568"/>
       <source>Show relative time for articles not older than</source>
       <translation>Mostrar tiempo relativo para artículos que no tengan más de</translation>
     </message>
@@ -8441,17 +8493,17 @@ Noticias sin leer: %2</translation>
   <context>
     <name>TextBrowserViewer</name>
     <message>
-      <location filename="../src/librssguard/gui/webviewers/qtextbrowser/textbrowserviewer.cpp" line="319"/>
+      <location filename="../src/librssguard/gui/webviewers/qtextbrowser/textbrowserviewer.cpp" line="330"/>
       <source>Enable external resources</source>
       <translation>Habilitar recursos externos</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/webviewers/qtextbrowser/textbrowserviewer.cpp" line="321"/>
+      <location filename="../src/librssguard/gui/webviewers/qtextbrowser/textbrowserviewer.cpp" line="332"/>
       <source>Download</source>
       <translation>Descargar</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/webviewers/qtextbrowser/textbrowserviewer.cpp" line="599"/>
+      <location filename="../src/librssguard/gui/webviewers/qtextbrowser/textbrowserviewer.cpp" line="611"/>
       <source>image</source>
       <translation>imagen</translation>
     </message>
