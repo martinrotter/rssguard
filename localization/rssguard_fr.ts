@@ -296,7 +296,7 @@ version en cliquant sur cette notification.</translation>
     <message>
       <location filename="../src/librssguard/gui/reusable/articleamountcontrol.ui" line="181"/>
       <source>Customize article limits</source>
-      <translation>Personnaliser les limites d'articles</translation>
+      <translation>Personnaliser la limite d'articles</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/reusable/articleamountcontrol.ui" line="210"/>
@@ -708,7 +708,7 @@ Cliquez-ici pour ouvrir le répertoire parent.</translation>
       <location filename="../src/librssguard/network-web/downloadmanager.cpp" line="742"/>
       <source>%n minutes remaining</source>
       <translation>
-        <numerusform>%n minute(s) restante(s)</numerusform>
+        <numerusform>%n minute restante</numerusform>
         <numerusform>%n minutes restantes</numerusform>
       </translation>
     </message>
@@ -5245,7 +5245,7 @@ Expiration de jetons d&apos;authentification: %2</translation>
       <location filename="../src/librssguard/core/messagesmodel.cpp" line="374"/>
       <source>%n minutes ago</source>
       <translation>
-        <numerusform>il y a %n minute(s)</numerusform>
+        <numerusform>il y a %n minute</numerusform>
         <numerusform>il y a %n minutes</numerusform>
       </translation>
     </message>
@@ -8545,7 +8545,7 @@ Actualités non-lus: %2</translation>
       <location filename="../src/librssguard/gui/reusable/timespinbox.cpp" line="80"/>
       <source>%n minute(s)</source>
       <translation>
-        <numerusform>%n minute(s)</numerusform>
+        <numerusform>%n minute</numerusform>
         <numerusform>%n minutes</numerusform>
       </translation>
     </message>
@@ -8568,7 +8568,7 @@ Actualités non-lus: %2</translation>
       <location filename="../src/librssguard/gui/reusable/timespinbox.cpp" line="56"/>
       <source>%n second(s)</source>
       <translation>
-        <numerusform>%n seconde(s)</numerusform>
+        <numerusform>%n seconde</numerusform>
         <numerusform>%n secondes</numerusform>
       </translation>
     </message>
