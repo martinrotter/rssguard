@@ -190,10 +190,6 @@ void FormAddEditEmail::onOkClicked() {
 }
 
 EmailRecipientControl* FormAddEditEmail::addRecipientRow(const QString& recipient) {
-  if (recipient.isEmpty()) {
-    return nullptr;
-  }
-
   auto* mail_rec = new EmailRecipientControl(recipient, this);
 
   connect(mail_rec, &EmailRecipientControl::removalRequested, this, &FormAddEditEmail::removeRecipientRow);
