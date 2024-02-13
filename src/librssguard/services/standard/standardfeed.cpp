@@ -62,12 +62,41 @@ QList<QAction*> StandardFeed::contextMenuFeedsList() {
 }
 
 QString StandardFeed::additionalTooltip() const {
-  return Feed::additionalTooltip() + tr("\nEncoding: %1\n"
-                                        "Type: %2\n"
-                                        "Post-processing script: %3")
-                                       .arg(encoding(),
-                                            StandardFeed::typeToString(type()),
-                                            m_postProcessScript.isEmpty() ? QSL("-") : m_postProcessScript);
+  QString stat = getStatusDescription();
+  QString stat_string = statusString();
+
+  if (!stat_string.simplified().isEmpty()) {
+    stat += QSL(" (%1)").arg(stat_string);
+  }
+
+  auto filters = messageFilters();
+  auto std_fltrs = boolinq::from(filters)
+                     .select([](const QPointer<MessageFilter>& pn) {
+                       return pn->name();
+                     })
+                     .toStdList();
+  QStringList fltrs = FROM_STD_LIST(QStringList, std_fltrs);
+
+  QString base_tooltip =
+    tr("Auto-update status: %1\n"
+       "Active message filters: %2\n"
+       "Status: %3\n"
+       "Source: %4\n"
+       "Item ID: %5\n")
+      .arg(getAutoUpdateStatusDescription(),
+           filters.size() > 0 ? QSL("%1 (%2)").arg(QString::number(filters.size()), fltrs.join(QSL(", ")))
+                              : QString::number(filters.size()),
+           stat,
+           m_sourceType == SourceType::Url ? QString("<a href=\"%1\">%1</a>").arg(source().left(100))
+                                           : source().left(100),
+           customId());
+
+  return base_tooltip + tr("Encoding: %1\n"
+                           "Type: %2\n"
+                           "Post-processing script: %3")
+                          .arg(encoding(),
+                               StandardFeed::typeToString(type()),
+                               m_postProcessScript.isEmpty() ? QSL("-") : m_postProcessScript);
 }
 
 bool StandardFeed::canBeDeleted() const {

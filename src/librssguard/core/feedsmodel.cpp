@@ -93,7 +93,7 @@ QVariant FeedsModel::headerData(int section, Qt::Orientation orientation, int ro
   }
 
   switch (role) {
-    case Qt::DisplayRole:
+    case Qt::ItemDataRole::DisplayRole:
       if (section == FDS_MODEL_TITLE_INDEX) {
         return m_headerData.at(FDS_MODEL_TITLE_INDEX);
       }
@@ -101,10 +101,10 @@ QVariant FeedsModel::headerData(int section, Qt::Orientation orientation, int ro
         return QVariant();
       }
 
-    case Qt::ToolTipRole:
+    case Qt::ItemDataRole::ToolTipRole:
       return m_tooltipData.at(section);
 
-    case Qt::DecorationRole:
+    case Qt::ItemDataRole::DecorationRole:
       if (section == FDS_MODEL_COUNTS_INDEX) {
         return m_countsIcon;
       }
