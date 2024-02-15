@@ -266,79 +266,79 @@ versión pulsando en esta notificación emergente.</translation>
     <message>
       <location filename="../src/librssguard/gui/reusable/articleamountcontrol.ui" line="36"/>
       <source>Ignoring old articles</source>
-      <translation type="unfinished">Ignoring old articles</translation>
+      <translation>Ignorando artículos antiguos</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/reusable/articleamountcontrol.ui" line="47"/>
       <source>Add articles with any date into the database</source>
-      <translation type="unfinished">Add articles with any date into the database</translation>
+      <translation>Añadir artículos con cualquier fecha dentro de la base de datos</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/reusable/articleamountcontrol.ui" line="76"/>
       <source>Avoid adding articles before this date/time into the database</source>
-      <translation type="unfinished">Avoid adding articles before this date/time into the database</translation>
+      <translation>Evite agregar artículos en la base de datos antes de esta fecha/hora</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/reusable/articleamountcontrol.ui" line="85"/>
       <source>Absolute date/time</source>
-      <translation type="unfinished">Absolute date/time</translation>
+      <translation>Fecha/hora absolutas</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/reusable/articleamountcontrol.ui" line="92"/>
       <source>Relative time</source>
-      <translation type="unfinished">Relative time</translation>
+      <translation>Tiempo relativo</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/reusable/articleamountcontrol.ui" line="170"/>
       <source>Limiting amount of articles in feeds</source>
-      <translation type="unfinished">Limiting amount of articles in feeds</translation>
+      <translation>Limitando la cantidad de artículos en las fuentes</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/reusable/articleamountcontrol.ui" line="181"/>
       <source>Customize article limits</source>
-      <translation type="unfinished">Customize article limits</translation>
+      <translation>Personalizar los límites del artículo</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/reusable/articleamountcontrol.ui" line="210"/>
       <source>In database, keep</source>
-      <translation type="unfinished">In database, keep</translation>
+      <translation>En la base de datos, mantener</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/reusable/articleamountcontrol.ui" line="224"/>
       <source>Do not remove important articles</source>
-      <translation type="unfinished">Do not remove important articles</translation>
+      <translation>Mantener artículos importantes</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/reusable/articleamountcontrol.ui" line="231"/>
       <source>Do not remove unread articles</source>
-      <translation type="unfinished">Do not remove unread articles</translation>
+      <translation>Mantener artículos sin leer</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/reusable/articleamountcontrol.ui" line="238"/>
       <source>Just move articles to recycle bin, do not purge them</source>
-      <translation type="unfinished">Just move articles to recycle bin, do not purge them</translation>
+      <translation>Simplemente mueve artículos a la papelera, sin purgarlos</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/reusable/articleamountcontrol.cpp" line="11"/>
       <source>Setting any limitations here will instruct %1 to ignore some incoming articles. The logic runs AFTER any article filters so even if your article filter accepts particular article, it can still subsequently ignored and not added to database.</source>
-      <translation type="unfinished">Setting any limitations here will instruct %1 to ignore some incoming articles. The logic runs AFTER any article filters so even if your article filter accepts particular article, it can still subsequently ignored and not added to database.</translation>
+      <translation>Establecer cualquier limitación aquí indicará a %1 que ignore algunos artículos entrantes. La lógica ejecuta DESPUÉS de cualquier filtro de artículo, así que incluso si su filtro de artículo acepta un artículo particular, aún se puede ignorar posteriormente y sin añadirlo a la base de datos.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/reusable/articleamountcontrol.cpp" line="16"/>
       <source>All excessive articles are removed automatically by the application, usually after particular feed is fetched. Articles are either completely purged (including articles from recycle bin) from internal database or are just moved to recycle bin.</source>
-      <translation type="unfinished">All excessive articles are removed automatically by the application, usually after particular feed is fetched. Articles are either completely purged (including articles from recycle bin) from internal database or are just moved to recycle bin.</translation>
+      <translation>Todos los artículos excesivos son eliminados automáticamente por la aplicación, por lo general después de que se obtenga una fuente particular. Los artículos son purgados completamente (incluyendo artículos de la papelera de reciclaje) de la base de datos interna o simplemente se mueven a la papelera de reciclaje.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/reusable/articleamountcontrol.cpp" line="22"/>
       <source>all articles</source>
-      <translation type="unfinished">all articles</translation>
+      <translation>todos los artículos</translation>
     </message>
     <message numerus="yes">
       <location filename="../src/librssguard/gui/reusable/articleamountcontrol.cpp" line="179"/>
       <source>newest article(s)</source>
-      <translation type="unfinished">
-        <numerusform>newest article(s)</numerusform>
-        <numerusform>newest article(s)</numerusform>
+      <translation>
+        <numerusform>artículo(s) más recientes</numerusform>
+        <numerusform>artículo(s) más recientes</numerusform>
       </translation>
     </message>
   </context>
@@ -925,18 +925,18 @@ ID artículo: %5</translation>
     <message>
       <location filename="../src/librssguard/gui/feedmessageviewer.cpp" line="264"/>
       <source>Cannot select article as it seems your article list is filtered or the article was deleted.</source>
-      <translation type="unfinished">Cannot select article as it seems your article list is filtered or the article was deleted.</translation>
+      <translation>Imposible seleccionar el artículo porque parece que su lista de artículos está filtrada o el artículo fue eliminado.</translation>
     </message>
   </context>
   <context>
     <name>FeedReader</name>
     <message>
-      <location filename="../src/librssguard/miscellaneous/feedreader.cpp" line="361"/>
+      <location filename="../src/librssguard/miscellaneous/feedreader.cpp" line="367"/>
       <source>Starting auto-download of some feeds&apos; articles</source>
       <translation>Inicio de la descarga automática de artículos de algunas fuentes</translation>
     </message>
     <message numerus="yes">
-      <location filename="../src/librssguard/miscellaneous/feedreader.cpp" line="362"/>
+      <location filename="../src/librssguard/miscellaneous/feedreader.cpp" line="368"/>
       <source>I will auto-download new articles for %n feed(s).</source>
       <translation>
         <numerusform>Se descargarán automáticamente nuevos artículos para %n fuente(s).</numerusform>
