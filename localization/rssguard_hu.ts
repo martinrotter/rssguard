@@ -162,7 +162,7 @@ Error: %1</source>
     <message>
       <location filename="../src/librssguard/network-web/apiserver.cpp" line="188"/>
       <source>account with ID %1 not found</source>
-      <translation type="unfinished">account with ID %1 not found</translation>
+      <translation>a(z) %1 ID-jű fiók nem található</translation>
     </message>
   </context>
   <context>
@@ -265,27 +265,27 @@ való kattintással.</translation>
     <message>
       <location filename="../src/librssguard/gui/reusable/articleamountcontrol.ui" line="36"/>
       <source>Ignoring old articles</source>
-      <translation type="unfinished">Ignoring old articles</translation>
+      <translation>Régi cikkek figyelmen kívül hagyása</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/reusable/articleamountcontrol.ui" line="47"/>
       <source>Add articles with any date into the database</source>
-      <translation type="unfinished">Add articles with any date into the database</translation>
+      <translation>Bármely dátumú cikkek hozzáadása az adatbázishoz</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/reusable/articleamountcontrol.ui" line="76"/>
       <source>Avoid adding articles before this date/time into the database</source>
-      <translation type="unfinished">Avoid adding articles before this date/time into the database</translation>
+      <translation>Az ezen dátum/időpont előtti cikkek nem kerülnek hozzáadásra az adatbázishoz</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/reusable/articleamountcontrol.ui" line="85"/>
       <source>Absolute date/time</source>
-      <translation type="unfinished">Absolute date/time</translation>
+      <translation>Abszolút dátum/idő</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/reusable/articleamountcontrol.ui" line="92"/>
       <source>Relative time</source>
-      <translation type="unfinished">Relative time</translation>
+      <translation>Relatív idő</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/reusable/articleamountcontrol.ui" line="170"/>
@@ -930,12 +930,12 @@ Elem ID: %5</translation>
   <context>
     <name>FeedReader</name>
     <message>
-      <location filename="../src/librssguard/miscellaneous/feedreader.cpp" line="361"/>
+      <location filename="../src/librssguard/miscellaneous/feedreader.cpp" line="367"/>
       <source>Starting auto-download of some feeds&apos; articles</source>
       <translation>Néhány hírforrás cikkeinek automatikus letöltése</translation>
     </message>
     <message numerus="yes">
-      <location filename="../src/librssguard/miscellaneous/feedreader.cpp" line="362"/>
+      <location filename="../src/librssguard/miscellaneous/feedreader.cpp" line="368"/>
       <source>I will auto-download new articles for %n feed(s).</source>
       <translation type="unfinished">
         <numerusform>%n hírforráshoz fogok automatikusan új cikkeket letölteni.</numerusform>
