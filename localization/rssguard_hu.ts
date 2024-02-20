@@ -290,12 +290,12 @@ való kattintással.</translation>
     <message>
       <location filename="../src/librssguard/gui/reusable/articleamountcontrol.ui" line="170"/>
       <source>Limiting amount of articles in feeds</source>
-      <translation type="unfinished">Limiting amount of articles in feeds</translation>
+      <translation>A hírforrásokban található cikkek számának korlátozása</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/reusable/articleamountcontrol.ui" line="181"/>
       <source>Customize article limits</source>
-      <translation type="unfinished">Customize article limits</translation>
+      <translation>Cikk limitek személyre szabása</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/reusable/articleamountcontrol.ui" line="210"/>
@@ -305,17 +305,17 @@ való kattintással.</translation>
     <message>
       <location filename="../src/librssguard/gui/reusable/articleamountcontrol.ui" line="224"/>
       <source>Do not remove important articles</source>
-      <translation type="unfinished">Do not remove important articles</translation>
+      <translation>Ne távolítsa el a fontos cikkeket</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/reusable/articleamountcontrol.ui" line="231"/>
       <source>Do not remove unread articles</source>
-      <translation type="unfinished">Do not remove unread articles</translation>
+      <translation>Ne távolítsa el az olvasatlan cikkeket</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/reusable/articleamountcontrol.ui" line="238"/>
       <source>Just move articles to recycle bin, do not purge them</source>
-      <translation type="unfinished">Just move articles to recycle bin, do not purge them</translation>
+      <translation>A cikkek végleges törlése helyett lomtárba mozgatása</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/reusable/articleamountcontrol.cpp" line="11"/>
@@ -330,13 +330,13 @@ való kattintással.</translation>
     <message>
       <location filename="../src/librssguard/gui/reusable/articleamountcontrol.cpp" line="22"/>
       <source>all articles</source>
-      <translation type="unfinished">all articles</translation>
+      <translation>minden cikk</translation>
     </message>
     <message numerus="yes">
       <location filename="../src/librssguard/gui/reusable/articleamountcontrol.cpp" line="179"/>
       <source>newest article(s)</source>
       <translation type="unfinished">
-        <numerusform>newest article(s)</numerusform>
+        <numerusform>legújabb cikk(ek)</numerusform>
         <numerusform>newest article(s)</numerusform>
       </translation>
     </message>
@@ -2956,7 +2956,7 @@ QtWebEngine gyorsítótár mappája -&gt; &quot;%7&quot;</translation>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.cpp" line="194"/>
       <source>Filter articles like this</source>
-      <translation type="unfinished">Filter articles like this</translation>
+      <translation>Ehhez hasonló cikkek szűrése</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.cpp" line="233"/>
