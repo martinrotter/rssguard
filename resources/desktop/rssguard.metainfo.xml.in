@@ -5,7 +5,9 @@
   <metadata_license>CC0-1.0</metadata_license>
   <project_license>GPL-3.0</project_license>
   <name>@APPDATA_NAME@</name>
-  <developer_name>Martin Rotter</developer_name>
+  <developer id="martinrotter.github.io">
+    <name>Martin Rotter</name>
+  </developer>
   <update_contact>rotter.martinos_AT_gmail.com</update_contact>
   <summary>@APPDATA_SUMMARY@</summary>
   <description>
@@ -65,7 +67,6 @@
     <keyword translate="no">The Old Reader</keyword>
     <keyword translate="no">Tiny Tiny RSS</keyword>
   </keywords>
-  <content_rating type="oars-1.0" />
   <content_rating type="oars-1.1" />
   <releases>
     <release version="@APP_VERSION@" date="@DATE@">
