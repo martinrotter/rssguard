@@ -162,7 +162,7 @@ Error: %1</source>
     <message>
       <location filename="../src/librssguard/network-web/apiserver.cpp" line="188"/>
       <source>account with ID %1 not found</source>
-      <translation type="unfinished">account with ID %1 not found</translation>
+      <translation>a(z) %1 ID-jű fiók nem található</translation>
     </message>
   </context>
   <context>
@@ -265,37 +265,37 @@ való kattintással.</translation>
     <message>
       <location filename="../src/librssguard/gui/reusable/articleamountcontrol.ui" line="36"/>
       <source>Ignoring old articles</source>
-      <translation type="unfinished">Ignoring old articles</translation>
+      <translation>Régi cikkek figyelmen kívül hagyása</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/reusable/articleamountcontrol.ui" line="47"/>
       <source>Add articles with any date into the database</source>
-      <translation type="unfinished">Add articles with any date into the database</translation>
+      <translation>Bármely dátumú cikkek hozzáadása az adatbázishoz</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/reusable/articleamountcontrol.ui" line="76"/>
       <source>Avoid adding articles before this date/time into the database</source>
-      <translation type="unfinished">Avoid adding articles before this date/time into the database</translation>
+      <translation>Az ezen dátum/időpont előtti cikkek nem kerülnek hozzáadásra az adatbázishoz</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/reusable/articleamountcontrol.ui" line="85"/>
       <source>Absolute date/time</source>
-      <translation type="unfinished">Absolute date/time</translation>
+      <translation>Abszolút dátum/idő</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/reusable/articleamountcontrol.ui" line="92"/>
       <source>Relative time</source>
-      <translation type="unfinished">Relative time</translation>
+      <translation>Relatív idő</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/reusable/articleamountcontrol.ui" line="170"/>
       <source>Limiting amount of articles in feeds</source>
-      <translation type="unfinished">Limiting amount of articles in feeds</translation>
+      <translation>A hírforrásokban található cikkek számának korlátozása</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/reusable/articleamountcontrol.ui" line="181"/>
       <source>Customize article limits</source>
-      <translation type="unfinished">Customize article limits</translation>
+      <translation>Cikk limitek személyre szabása</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/reusable/articleamountcontrol.ui" line="210"/>
@@ -305,17 +305,17 @@ való kattintással.</translation>
     <message>
       <location filename="../src/librssguard/gui/reusable/articleamountcontrol.ui" line="224"/>
       <source>Do not remove important articles</source>
-      <translation type="unfinished">Do not remove important articles</translation>
+      <translation>Ne távolítsa el a fontos cikkeket</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/reusable/articleamountcontrol.ui" line="231"/>
       <source>Do not remove unread articles</source>
-      <translation type="unfinished">Do not remove unread articles</translation>
+      <translation>Ne távolítsa el az olvasatlan cikkeket</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/reusable/articleamountcontrol.ui" line="238"/>
       <source>Just move articles to recycle bin, do not purge them</source>
-      <translation type="unfinished">Just move articles to recycle bin, do not purge them</translation>
+      <translation>A cikkek végleges törlése helyett lomtárba mozgatása</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/reusable/articleamountcontrol.cpp" line="11"/>
@@ -330,13 +330,13 @@ való kattintással.</translation>
     <message>
       <location filename="../src/librssguard/gui/reusable/articleamountcontrol.cpp" line="22"/>
       <source>all articles</source>
-      <translation type="unfinished">all articles</translation>
+      <translation>minden cikk</translation>
     </message>
     <message numerus="yes">
       <location filename="../src/librssguard/gui/reusable/articleamountcontrol.cpp" line="179"/>
       <source>newest article(s)</source>
       <translation type="unfinished">
-        <numerusform>newest article(s)</numerusform>
+        <numerusform>legújabb cikk(ek)</numerusform>
         <numerusform>newest article(s)</numerusform>
       </translation>
     </message>
@@ -930,12 +930,12 @@ Elem ID: %5</translation>
   <context>
     <name>FeedReader</name>
     <message>
-      <location filename="../src/librssguard/miscellaneous/feedreader.cpp" line="361"/>
+      <location filename="../src/librssguard/miscellaneous/feedreader.cpp" line="367"/>
       <source>Starting auto-download of some feeds&apos; articles</source>
       <translation>Néhány hírforrás cikkeinek automatikus letöltése</translation>
     </message>
     <message numerus="yes">
-      <location filename="../src/librssguard/miscellaneous/feedreader.cpp" line="362"/>
+      <location filename="../src/librssguard/miscellaneous/feedreader.cpp" line="368"/>
       <source>I will auto-download new articles for %n feed(s).</source>
       <translation type="unfinished">
         <numerusform>%n hírforráshoz fogok automatikusan új cikkeket letölteni.</numerusform>
@@ -2956,7 +2956,7 @@ QtWebEngine gyorsítótár mappája -&gt; &quot;%7&quot;</translation>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.cpp" line="194"/>
       <source>Filter articles like this</source>
-      <translation type="unfinished">Filter articles like this</translation>
+      <translation>Ehhez hasonló cikkek szűrése</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.cpp" line="233"/>
