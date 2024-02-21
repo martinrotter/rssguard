@@ -65,7 +65,6 @@
     <keyword translate="no">The Old Reader</keyword>
     <keyword translate="no">Tiny Tiny RSS</keyword>
   </keywords>
-  <content_rating type="oars-1.0" />
   <content_rating type="oars-1.1" />
   <releases>
     <release version="@APP_VERSION@" date="@DATE@">
