@@ -70,8 +70,8 @@ class WebBrowser : public TabContent {
     void newWindowRequested(WebViewer* viewer);
 
     void readabilePage();
-    void setReadabledHtml(const QString& better_html);
-    void readabilityFailed(const QString& error);
+    void setReadabledHtml(QObject *sndr, const QString& better_html);
+    void readabilityFailed(QObject *sndr, const QString& error);
 
   signals:
     void windowCloseRequested();

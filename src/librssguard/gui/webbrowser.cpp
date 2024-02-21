@@ -163,7 +163,7 @@ void WebBrowser::loadMessages(const QList<Message>& messages, RootItem* root) {
 
 void WebBrowser::readabilePage() {
   m_actionReadabilePage->setEnabled(false);
-  qApp->web()->readability()->makeHtmlReadable(m_webView->html(), m_webView->url().toString());
+  qApp->web()->readability()->makeHtmlReadable(this, m_webView->html(), m_webView->url().toString());
 }
 
 bool WebBrowser::eventFilter(QObject* watched, QEvent* event) {
@@ -264,19 +264,16 @@ void WebBrowser::newWindowRequested(WebViewer* viewer) {
   qApp->mainForm()->tabWidget()->addBrowser(false, false, browser);
 }
 
-void WebBrowser::setReadabledHtml(const QString& better_html) {
-  if (!better_html.isEmpty()) {
+void WebBrowser::setReadabledHtml(QObject* sndr, const QString& better_html) {
+  if (sndr == this && !better_html.isEmpty()) {
     m_webView->setReadabledHtml(better_html, m_webView->url());
   }
 }
 
-void WebBrowser::readabilityFailed(const QString& error) {
-  MsgBox::show({},
-               QMessageBox::Icon::Critical,
-               tr("Reader mode failed for this website"),
-               tr("Reader mode cannot be applied to current page."),
-               {},
-               error);
+void WebBrowser::readabilityFailed(QObject* sndr, const QString& error) {
+  if (sndr == this && !error.isEmpty()) {
+    m_webView->setReadabledHtml(error, m_webView->url());
+  }
 }
 
 void WebBrowser::initializeLayout() {

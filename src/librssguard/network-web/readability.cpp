@@ -35,12 +35,12 @@ void Readability::onPackageReady(const QList<NodeJs::PackageMetadata>& pkgs, boo
 
   qApp->showGuiMessage(Notification::Event::NodePackageUpdated,
                        {tr("Packages for reader mode are installed"),
-                        tr("You can now use reader mode!"),
+                        tr("Reload your webpage and then you can use reader mode!"),
                         QSystemTrayIcon::MessageIcon::Information},
                        {true, true, false});
 
   // Emit this just to allow readability again for user.
-  emit htmlReadabled({});
+  emit htmlReadabled(nullptr, tr("Packages for reader mode are installed. You can now use reader mode!"));
 }
 
 void Readability::onPackageError(const QList<NodeJs::PackageMetadata>& pkgs, const QString& error) {
@@ -61,10 +61,10 @@ void Readability::onPackageError(const QList<NodeJs::PackageMetadata>& pkgs, con
                        {true, true, false});
 
   // Emit this just to allow readability again for user.
-  emit htmlReadabled({});
+  emit htmlReadabled(nullptr, tr("Packages for reader mode are NOT installed. There is error: %1").arg(error));
 }
 
-void Readability::makeHtmlReadable(const QString& html, const QString& base_url) {
+void Readability::makeHtmlReadable(QObject* sndr, const QString& html, const QString& base_url) {
   if (!m_modulesInstalled) {
     try {
       NodeJs::PackageStatus stReadability =
@@ -104,7 +104,9 @@ void Readability::makeHtmlReadable(const QString& html, const QString& base_url)
       qCriticalNN << LOGSEC_CORE << "Failed to check for Node.js package status:" << QUOTE_W_SPACE_DOT(ex.message());
 
       // Emit this just to allow readability again for user.
-      emit htmlReadabled({});
+      emit htmlReadabled(sndr,
+                         tr("Node.js is not configured properly. Go to \"Settings\" -> \"Node.js\" and check "
+                            "if your Node.js is properly configured."));
     }
   }
 
@@ -121,7 +123,9 @@ void Readability::makeHtmlReadable(const QString& html, const QString& base_url)
   connect(proc,
           QOverload<int, QProcess::ExitStatus>::of(&QProcess::finished),
           this,
-          &Readability::onReadabilityFinished);
+          [=](int exit_code, QProcess::ExitStatus exit_status) {
+            onReadabilityFinished(sndr, exit_code, exit_status);
+          });
 
   qApp->nodejs()->runScript(proc, temp_script, {base_url});
 
@@ -129,15 +133,15 @@ void Readability::makeHtmlReadable(const QString& html, const QString& base_url)
   proc->closeWriteChannel();
 }
 
-void Readability::onReadabilityFinished(int exit_code, QProcess::ExitStatus exit_status) {
+void Readability::onReadabilityFinished(QObject* sndr, int exit_code, QProcess::ExitStatus exit_status) {
   QProcess* proc = qobject_cast<QProcess*>(sender());
 
   if (exit_status == QProcess::ExitStatus::NormalExit && exit_code == EXIT_SUCCESS) {
-    emit htmlReadabled(QString::fromUtf8(proc->readAllStandardOutput()));
+    emit htmlReadabled(sndr, QString::fromUtf8(proc->readAllStandardOutput()));
   }
   else {
     QString err = QString::fromUtf8(proc->readAllStandardError());
-    emit errorOnHtmlReadabiliting(err);
+    emit errorOnHtmlReadabiliting(sndr, err);
   }
 
   proc->deleteLater();
