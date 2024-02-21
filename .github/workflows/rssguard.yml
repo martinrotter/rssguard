@@ -12,7 +12,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout source code
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
 
       - name: Check script syntax
         run: bash -n ./resources/scripts/github-actions/build-linux-mac.sh
@@ -46,7 +46,7 @@ jobs:
             use_qt5: "ON"
     steps:         
       - name: Checkout source code
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
         with:
           fetch-depth: 0
           submodules: true
@@ -60,7 +60,7 @@ jobs:
           FEEDLY_CLIENT_SECRET: ${{ secrets.FEEDLY_CLIENT_SECRET }}
 
       - name: Upload binaries
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           if-no-files-found: error
           name: RSS_Guard-${{ runner.os }}${{ matrix.no_lite == 'ON' && '-' || '-nowebengine-' }}Qt${{ matrix.use_qt5 == 'ON' && '5' || '6' }}
@@ -80,7 +80,7 @@ jobs:
 
     steps:
       - name: Download binaries from previous jobs
-        uses: actions/download-artifact@v3
+        uses: actions/download-artifact@v4
         with:
           path: artifacts
 
