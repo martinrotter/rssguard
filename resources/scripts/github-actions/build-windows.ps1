@@ -36,25 +36,25 @@ else {
 
 $is_qt_6 = $qt_version.StartsWith("6")
 
-$maria_version = "11.2.2"
+$maria_version = "11.3.2"
 $maria_link = "https://archive.mariadb.org/mariadb-$maria_version/winx64-packages/mariadb-$maria_version-winx64.zip"
 $maria_output = "maria.zip"
 
-$cmake_version = "3.28.1"
+$cmake_version = "3.28.3"
 $cmake_link = "https://github.com/Kitware/CMake/releases/download/v$cmake_version/cmake-$cmake_version-windows-x86_64.zip"
 $cmake_output = "cmake.zip"
 
-$zlib_version = "1.3"
+$zlib_version = "1.3.1"
 $zlib_link = "https://github.com/madler/zlib/archive/refs/tags/v$zlib_version.zip"
 $zlib_output = "zlib.zip"
 
-$libmpv_date = "2024-01-21"
-$libmpv_commit = "b0e6ac3"
+$libmpv_date = "2024-02-20"
+$libmpv_commit = "f9197e0"
 $libmpv_version = "{0}-git-{1}"-f $libmpv_date.Replace("-", ""), $libmpv_commit
 $libmpv_link = "https://github.com/zhongfly/mpv-winbuild/releases/download/$libmpv_date-$libmpv_commit/mpv-dev-x86_64-$libmpv_version.7z"
 $libmpv_output = "mpv.zip"
 
-$ytdlp_version = "2023.11.16"
+$ytdlp_version = "2023.12.30"
 $ytdlp_link = "https://github.com/yt-dlp/yt-dlp/releases/download/$ytdlp_version/yt-dlp.exe"
 $libmpv_output = "yt-dlp.exe"
 
