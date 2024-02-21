@@ -231,7 +231,7 @@ QList<Message> StandardServiceRoot::obtainNewMessages(Feed* feed,
                                NetworkFactory::networkErrorText(network_result.m_networkError));
     }
     else {
-      f->setLastEtag(network_result.m_headers.value(QSL("ETag")));
+      f->setLastEtag(network_result.m_headers.value(QSL("etag")));
     }
   }
   else if (f->sourceType() == StandardFeed::SourceType::LocalFile) {

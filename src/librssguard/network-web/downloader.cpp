@@ -239,7 +239,7 @@ void Downloader::finished() {
     m_lastHeaders.clear();
 
     for (const QNetworkReply::RawHeaderPair& head : reply->rawHeaderPairs()) {
-      m_lastHeaders.insert(head.first, head.second);
+      m_lastHeaders.insert(QString::fromLocal8Bit(head.first).toLower(), head.second);
     }
 
     // original_url = m_activeReply->property("original_url").toUrl();
