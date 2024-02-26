@@ -5,7 +5,7 @@ Sometimes you need to automatically tweak the incoming article - mark it starred
 ## `Article filters` dialog
 The dialog seen below offers you a way of managing your article filters. You can assign single filter to multiple feeds.
 
-`Test` button tests selected filter against existing messages. `Process checked feeds` runs the filter against messages from checked feeds.
+`Test` button tests selected filter against existing messages. `Process checked feeds` runs the filter against existing messages from checked feeds - in this mode all modifications made by the filter are saved to existing messages.
 
 <img alt="alt-img" src="images/filters-dialog.png" width="600px">
 
