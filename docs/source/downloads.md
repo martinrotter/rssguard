@@ -24,3 +24,14 @@ Note that some MSVC runtime libraries are bundled with RSS Guard but sometimes y
 
 Simply download and launch newest available file `VisualCppRedist_AIO_x86_x64.exe`. It will install all up-to-date Microsoft libraries. It works great.
 ```
+
+### Linux
+On Linux, you can download `AppImage` files which are self-contained and you simply can launch them as regular binaries. They should work just fine.
+
+Likely even better way is to use official distribution packages if your distribution offers those.
+
+### Mac OS X
+`DMG` packages are provided for Mac users.
+
+### KOBO Book Reader
+Yes, RSS Guard was [ported](https://github.com/Szybet/rssguard-inkbox) to KOBO. Feel free to try it and report any bugs upstream or to port author.
