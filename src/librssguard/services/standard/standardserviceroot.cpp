@@ -13,6 +13,7 @@
 #include "miscellaneous/mutex.h"
 #include "miscellaneous/settings.h"
 #include "network-web/networkfactory.h"
+
 #include "services/abstract/gui/formcategorydetails.h"
 #include "services/standard/definitions.h"
 #include "services/standard/gui/formdiscoverfeeds.h"
@@ -28,6 +29,10 @@
 #include "services/standard/standardfeed.h"
 #include "services/standard/standardfeedsimportexportmodel.h"
 #include "services/standard/standardserviceentrypoint.h"
+
+#if defined(NO_LITE)
+#include "network-web/webengine/webenginepage.h"
+#endif
 
 #if defined(ENABLE_COMPRESSED_SITEMAP)
 #include "3rd-party/qcompressor/qcompressor.h"
@@ -233,6 +238,26 @@ QList<Message> StandardServiceRoot::obtainNewMessages(Feed* feed,
     else {
       f->setLastEtag(network_result.m_headers.value(QSL("etag")));
     }
+  }
+  else if (f->sourceType() == StandardFeed::SourceType::EmbeddedBrowser) {
+#if defined(NO_LITE)
+    WebEnginePage* page = new WebEnginePage();
+
+    page->moveToThread(qApp->thread());
+
+    QString html;
+    QMetaObject::invokeMethod(page,
+                              "pageHtml",
+                              Qt::ConnectionType::BlockingQueuedConnection,
+                              Q_RETURN_ARG(QString, html),
+                              Q_ARG(QString, f->source()));
+
+    feed_contents = html.toUtf8();
+
+    page->deleteLater();
+#else
+    throw ApplicationException(tr("this source type cannot be used on 'lite' %1 build").arg(QSL(APP_NAME)));
+#endif
   }
   else if (f->sourceType() == StandardFeed::SourceType::LocalFile) {
     feed_contents = IOFactory::readFile(feed->source());

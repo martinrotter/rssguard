@@ -13,6 +13,10 @@
 #include "services/standard/gui/formstandardfeeddetails.h"
 #include "services/standard/standardserviceroot.h"
 
+#if defined(NO_LITE)
+#include "network-web/webengine/webenginepage.h"
+#endif
+
 #include "services/standard/parsers/atomparser.h"
 #include "services/standard/parsers/jsonparser.h"
 #include "services/standard/parsers/rdfparser.h"
@@ -199,6 +203,9 @@ QString StandardFeed::sourceTypeToString(StandardFeed::SourceType type) {
     case StandardFeed::SourceType::LocalFile:
       return tr("Local file");
 
+    case StandardFeed::SourceType::EmbeddedBrowser:
+      return tr("Built-in web browser");
+
     default:
       return tr("Unknown");
   }
@@ -286,6 +293,15 @@ StandardFeed* StandardFeed::guessFeed(StandardFeed::SourceType source_type,
     if (network_result.m_networkError != QNetworkReply::NetworkError::NoError) {
       throw NetworkException(network_result.m_networkError);
     }
+  }
+  else if (source_type == StandardFeed::SourceType::EmbeddedBrowser) {
+#if defined(NO_LITE)
+    WebEnginePage page;
+
+    feed_contents = page.pageHtml(source).toUtf8();
+#else
+    throw ApplicationException(tr("this source type cannot be used on 'lite' %1 build").arg(QSL(APP_NAME)));
+#endif
   }
   else if (source_type == StandardFeed::SourceType::LocalFile) {
     feed_contents = IOFactory::readFile(source);

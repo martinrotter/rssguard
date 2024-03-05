@@ -30,6 +30,24 @@ WebEngineViewer* WebEnginePage::view() const {
 #endif
 }
 
+QString WebEnginePage::pageHtml(const QString& url) {
+  QEventLoop loop;
+  QString html;
+
+  connect(this, &WebEnginePage::loadFinished, &loop, &QEventLoop::quit);
+
+  load(url);
+  loop.exec();
+
+  toHtml([&](const QString& htm) {
+    html = htm;
+    loop.exit();
+  });
+  loop.exec();
+
+  return html;
+}
+
 void WebEnginePage::hideUnwantedElements() {
   if (!qApp->web()->adBlock()->isEnabled()) {
     return;

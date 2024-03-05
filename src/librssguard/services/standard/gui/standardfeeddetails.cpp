@@ -41,6 +41,8 @@ StandardFeedDetails::StandardFeedDetails(QWidget* parent) : QWidget(parent) {
                                 QVariant::fromValue(StandardFeed::SourceType::Script));
   m_ui.m_cmbSourceType->addItem(StandardFeed::sourceTypeToString(StandardFeed::SourceType::LocalFile),
                                 QVariant::fromValue(StandardFeed::SourceType::LocalFile));
+  m_ui.m_cmbSourceType->addItem(StandardFeed::sourceTypeToString(StandardFeed::SourceType::EmbeddedBrowser),
+                                QVariant::fromValue(StandardFeed::SourceType::EmbeddedBrowser));
 
   // Add standard feed types.
   m_ui.m_cmbType->addItem(StandardFeed::typeToString(StandardFeed::Type::Atom10),
@@ -251,6 +253,7 @@ void StandardFeedDetails::onDescriptionChanged(const QString& new_description) {
 
 void StandardFeedDetails::onUrlChanged(const QString& new_url) {
   switch (sourceType()) {
+    case StandardFeed::SourceType::EmbeddedBrowser:
     case StandardFeed::SourceType::Url: {
       if (QUrl(new_url).isValid()) {
         m_ui.m_txtSource->setStatus(LineEditWithStatus::StatusType::Ok, tr("The URL is ok."));
