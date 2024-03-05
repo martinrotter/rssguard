@@ -924,12 +924,12 @@ Item ID: %5</source>
   <context>
     <name>FeedReader</name>
     <message>
-      <location filename="../src/librssguard/miscellaneous/feedreader.cpp" line="361"/>
+      <location filename="../src/librssguard/miscellaneous/feedreader.cpp" line="367"/>
       <source>Starting auto-download of some feeds&apos; articles</source>
       <translation>いくつかのフィードの記事の自動ダウンロードを開始</translation>
     </message>
     <message numerus="yes">
-      <location filename="../src/librssguard/miscellaneous/feedreader.cpp" line="362"/>
+      <location filename="../src/librssguard/miscellaneous/feedreader.cpp" line="368"/>
       <source>I will auto-download new articles for %n feed(s).</source>
       <translation>
         <numerusform>%n 個のフィードの新しい記事を自動ダウンロードします</numerusform>
