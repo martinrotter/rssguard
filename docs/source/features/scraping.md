@@ -9,9 +9,14 @@ RSS Guard offers additional advanced feature inspired by [Liferea](https://lzone
 Goal of this feature is to allow advanced users to use RSS Guard with data sources which do not provide regular feed. So you can use the feature to generate one.
 
 ----
-You can select source type of each feed. If you select URL, then RSS Guard simply downloads feed file from given location and behaves like everyone would expect.
+You can select type of source of each feed. Currently these sources are supported:
+* URL - RSS Guard simply downloads feed file from given location and behaves like everyone would expect.
+* Local file - RSS Guard uses file in local filesystem as feed source.
+* Script - see below.
+* Built-in web browser - see below.
 
-However, if you choose `Script` option, then you cannot provide URL of your feed, and you rely on custom script to generate feed file and provide its contents to [**standard output** (stdout)](https://en.wikipedia.org/wiki/Standard_streams#Standard_output_(stdout)). Data written to standard output should be valid feed data.
+## 'Script' option
+If you choose `Script` option, then you cannot provide URL of your feed, and you rely on custom script to generate feed file and provide its contents to [**standard output** (stdout)](https://en.wikipedia.org/wiki/Standard_streams#Standard_output_(stdout)). Data written to standard output should be valid feed data.
 
 `Fetch it now` button also works with `Script` option. Therefore, if your source script and (optional) post-process script in cooperation deliver a valid feed data to the output, then all important metadata, like title or icon of the feed, can be discovered :sparkles: automagically :sparkles:.
 
@@ -46,6 +51,13 @@ Format of post-process script execution line can be seen on picture below.
 If everything goes well, script must return `0` as the process exit code, or a non-zero exit code if some error happened.
 
 Executable file must be always be specified, while arguments do not. Be very careful when quoting arguments. Tested examples of valid execution lines are:
+
+## 'Built-in web browser' option
+This option uses network stack from built-in web browser (based on Chromium) to download the provided file. There are some benefits to this approach:
+* all cookies and other cache/storage data from internal web browser are active,
+* JavaScript-enabled websites can be loaded.
+
+So, if you for example login to some of your websites, then you can use this option to fetch webpages which are accessible only to logged-in users.
 
 ## Dataflow
 After your source feed data is downloaded either via URL or custom script, you can optionally post-process it with one more custom script, which will take **raw source data as input**. It must produce valid feed data to standard output while printing all error messages to error output.
