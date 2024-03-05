@@ -200,11 +200,24 @@ Application::Application(const QString& id, int& argc, char** argv, const QStrin
 #if defined(NO_LITE)
   m_webFactory->urlIinterceptor()->load();
 
-  m_webFactory->engineProfile()->setCachePath(cacheFolder() + QDir::separator() + QSL("web") + QDir::separator() +
+  QString engine_cache_folder;
+  QString engine_storage_folder;
+
+#if defined(NDEBUG)
+  engine_cache_folder = cacheFolder();
+  engine_storage_folder = userDataFolder();
+#else
+  engine_cache_folder = QStandardPaths::writableLocation(QStandardPaths::StandardLocation::TempLocation) +
+                        QDir::separator() + QSL(APP_NAME) + QDir::separator() + QSL("cache");
+  engine_storage_folder = QStandardPaths::writableLocation(QStandardPaths::StandardLocation::TempLocation) +
+                          QDir::separator() + QSL(APP_NAME) + QDir::separator() + QSL("storage");
+#endif
+
+  m_webFactory->engineProfile()->setCachePath(engine_cache_folder + QDir::separator() + QSL("web") + QDir::separator() +
                                               QSL("cache"));
-  m_webFactory->engineProfile()->setHttpCacheType(QWebEngineProfile::HttpCacheType::DiskHttpCache);
-  m_webFactory->engineProfile()->setPersistentStoragePath(userDataFolder() + QDir::separator() + QSL("web") +
+  m_webFactory->engineProfile()->setPersistentStoragePath(engine_storage_folder + QDir::separator() + QSL("web") +
                                                           QDir::separator() + QSL("storage"));
+  m_webFactory->engineProfile()->setHttpCacheType(QWebEngineProfile::HttpCacheType::DiskHttpCache);
 
   m_webFactory->loadCustomCss(userDataFolder() + QDir::separator() + QSL("web") + QDir::separator() +
                               QSL("user-styles.css"));
