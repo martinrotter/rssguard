@@ -202,34 +202,38 @@ QUrl WebEngineViewer::url() const {
   return QWebEngineView::url();
 }
 
-QByteArray WebEngineViewer::getJsEnabledHtml(QObject* parent, const QString& url) {
-  QByteArray res;
+QByteArray WebEngineViewer::getJsEnabledHtml(const QString& url) {
+  WebEnginePage* page = new WebEnginePage();
+  WebEngineViewer* viewer = nullptr;
 
   QMetaObject::invokeMethod(
     qApp,
     [&] {
-      QGraphicsScene* scene = new QGraphicsScene(parent);
-      QGraphicsView* view = new QGraphicsView(scene, qApp->mainFormWidget());
-
-      WebEngineViewer* viewer = new WebEngineViewer(qApp->mainFormWidget());
-      WebEnginePage* page = new WebEnginePage(viewer);
-
-      scene->addWidget(viewer);
-
-      viewer->resize(3800, 2100);
-      view->show();
-      viewer->setPage(page);
-
-      res = page->pageHtml(url).toUtf8();
-
-      delete scene;
-      // delete view;
-      // delete viewer;
-      //  delete viewer;
+      // NOTE: Must be create on main thread.
+      viewer = new WebEngineViewer();
     },
     Qt::ConnectionType::BlockingQueuedConnection);
 
-  return res;
+  viewer->moveToThread(qApp->thread());
+  page->moveToThread(qApp->thread());
+
+  viewer->setPage(page);
+  viewer->setAttribute(Qt::WidgetAttribute::WA_DontShowOnScreen, true);
+  viewer->setAttribute(Qt::WidgetAttribute::WA_DeleteOnClose, true);
+
+  QMetaObject::invokeMethod(viewer, "show", Qt::ConnectionType::BlockingQueuedConnection);
+
+  QString html;
+  QMetaObject::invokeMethod(page,
+                            "pageHtml",
+                            Qt::ConnectionType::BlockingQueuedConnection,
+                            Q_RETURN_ARG(QString, html),
+                            Q_ARG(QString, url));
+
+  page->deleteLater();
+  viewer->close();
+
+  return html.toUtf8();
 }
 
 ContextMenuData WebEngineViewer::provideContextMenuData(QContextMenuEvent* event) const {

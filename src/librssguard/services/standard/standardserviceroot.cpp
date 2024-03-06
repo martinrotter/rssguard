@@ -242,48 +242,7 @@ QList<Message> StandardServiceRoot::obtainNewMessages(Feed* feed,
   }
   else if (f->sourceType() == StandardFeed::SourceType::EmbeddedBrowser) {
 #if defined(NO_LITE)
-    WebEnginePage* page = new WebEnginePage();
-    WebEngineViewer* viewer = nullptr;
-
-    QMetaObject::invokeMethod(
-      qApp,
-      [&] {
-        // NOTE: Must be create on main thread.
-        viewer = new WebEngineViewer();
-      },
-      Qt::ConnectionType::BlockingQueuedConnection);
-
-    viewer->moveToThread(qApp->thread());
-    page->moveToThread(qApp->thread());
-
-    viewer->setPage(page);
-    viewer->setAttribute(Qt::WidgetAttribute::WA_DontShowOnScreen, true);
-    viewer->setAttribute(Qt::WidgetAttribute::WA_DontShowOnScreen, true);
-    viewer->setAttribute(Qt::WidgetAttribute::WA_DeleteOnClose, true);
-
-    // QMetaObject::invokeMethod(viewer, "show", Qt::ConnectionType::BlockingQueuedConnection);
-
-    QMetaObject::invokeMethod(
-      viewer,
-      [&] {
-        viewer->show();
-        viewer->resize(3800, 2100);
-        // viewer->hide();
-      },
-      Qt::ConnectionType::BlockingQueuedConnection);
-
-    QString html;
-    QMetaObject::invokeMethod(page,
-                              "pageHtml",
-                              Qt::ConnectionType::BlockingQueuedConnection,
-                              Q_RETURN_ARG(QString, html),
-                              Q_ARG(QString, f->source()));
-
-    feed_contents = html.toUtf8();
-
-    page->deleteLater();
-    viewer->close();
-    // viewer->deleteLater();
+    feed_contents = WebEngineViewer::getJsEnabledHtml(f->source());
 #else
     throw ApplicationException(tr("this source type cannot be used on 'lite' %1 build").arg(QSL(APP_NAME)));
 #endif

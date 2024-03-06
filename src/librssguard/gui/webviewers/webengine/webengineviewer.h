@@ -37,7 +37,7 @@ class WebEngineViewer : public QWebEngineView, public WebViewer {
     virtual QString html() const;
     virtual QUrl url() const;
 
-    static QByteArray getJsEnabledHtml(QObject* parent, const QString& url);
+    static QByteArray getJsEnabledHtml(const QString& url);
 
   signals:
     void pageTitleChanged(const QString& new_title);

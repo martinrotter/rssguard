@@ -43,8 +43,7 @@ QString WebEnginePage::pageHtml(const QString& url) {
   loop.exec();
 
   // Page is loaded. Send artificial scroll-to-bottom and wait for changes to end.
-
-  runJavaScript("window.resizeTo(3800, 2100);");
+  // runJavaScript("window.resizeTo(3800, 2100);");
   runJavaScript(IOFactory::readFile(BUILTIN_JS_FOLDER + QL1C('/') + OBSERVER_JS_FILE));
   loop.exec();
 
