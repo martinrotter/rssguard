@@ -209,7 +209,7 @@ QByteArray WebEngineViewer::getJsEnabledHtml(const QString& url) {
   QMetaObject::invokeMethod(
     qApp,
     [&] {
-      // NOTE: Must be create on main thread.
+      // NOTE: Must be created on main thread.
       viewer = new WebEngineViewer();
     },
     Qt::ConnectionType::BlockingQueuedConnection);
