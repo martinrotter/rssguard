@@ -3,7 +3,7 @@ const targetNode = document;
 const waitTimeMs = 5000;
 const idleIdString = "iiddllee";
 
-var scrollings = 3;
+var scrollings = 0; // Change to higher number to force some scrollings.
 var lastResourceTime = new Date();
 
 // Setup DOM observer and observe for changes in elements only.
