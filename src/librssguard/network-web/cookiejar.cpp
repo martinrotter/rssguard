@@ -108,9 +108,9 @@ void CookieJar::saveCookies() {
   sett->endGroup();
 
   for (const QNetworkCookie& cookie : cookies) {
-    if (cookie.isSessionCookie()) {
+    /*if (cookie.isSessionCookie()) {
       continue;
-    }
+    }*/
     sett->setPassword(GROUP(Cookies),
                       QSL("%1-%2").arg(QString::number(i++), QString::fromUtf8(cookie.name())),
                       cookie.toRawForm(QNetworkCookie::RawForm::Full));

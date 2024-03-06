@@ -12,6 +12,7 @@
 
 #include <QString>
 #include <QStringList>
+#include <QTimer>
 #include <QUrl>
 #include <QUrlQuery>
 #include <QWebEngineScript>
@@ -33,8 +34,12 @@ WebEngineViewer* WebEnginePage::view() const {
 QString WebEnginePage::pageHtml(const QString& url) {
   QEventLoop loop;
   QString html;
+  QTimer tmr;
 
-  connect(this, &WebEnginePage::loadFinished, &loop, &QEventLoop::quit);
+  tmr.setInterval(15000);
+
+  connect(&tmr, &QTimer::timeout, &loop, &QEventLoop::quit);
+  connect(this, &WebEnginePage::loadFinished, &tmr, QOverload<>::of(&QTimer::start));
 
   load(url);
   loop.exec();

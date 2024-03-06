@@ -31,6 +31,7 @@
 #include "services/standard/standardserviceentrypoint.h"
 
 #if defined(NO_LITE)
+#include "gui/webviewers/webengine/webengineviewer.h"
 #include "network-web/webengine/webenginepage.h"
 #endif
 
@@ -242,8 +243,23 @@ QList<Message> StandardServiceRoot::obtainNewMessages(Feed* feed,
   else if (f->sourceType() == StandardFeed::SourceType::EmbeddedBrowser) {
 #if defined(NO_LITE)
     WebEnginePage* page = new WebEnginePage();
+    WebEngineViewer* viewer = nullptr;
 
+    QMetaObject::invokeMethod(
+      qApp,
+      [&] {
+        // NOTE: Must be create on main thread.
+        viewer = new WebEngineViewer();
+      },
+      Qt::ConnectionType::BlockingQueuedConnection);
+
+    viewer->moveToThread(qApp->thread());
     page->moveToThread(qApp->thread());
+
+    viewer->setPage(page);
+    viewer->setAttribute(Qt::WA_DontShowOnScreen);
+
+    QMetaObject::invokeMethod(viewer, "show", Qt::ConnectionType::BlockingQueuedConnection);
 
     QString html;
     QMetaObject::invokeMethod(page,
@@ -255,6 +271,7 @@ QList<Message> StandardServiceRoot::obtainNewMessages(Feed* feed,
     feed_contents = html.toUtf8();
 
     page->deleteLater();
+    viewer->deleteLater();
 #else
     throw ApplicationException(tr("this source type cannot be used on 'lite' %1 build").arg(QSL(APP_NAME)));
 #endif
