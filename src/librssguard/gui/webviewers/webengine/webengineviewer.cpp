@@ -15,6 +15,7 @@
 #include "network-web/webfactory.h"
 
 #include <QFileIconProvider>
+#include <QGraphicsView>
 #include <QTimer>
 #include <QToolTip>
 #include <QWheelEvent>
@@ -199,6 +200,36 @@ QString WebEngineViewer::html() const {
 
 QUrl WebEngineViewer::url() const {
   return QWebEngineView::url();
+}
+
+QByteArray WebEngineViewer::getJsEnabledHtml(QObject* parent, const QString& url) {
+  QByteArray res;
+
+  QMetaObject::invokeMethod(
+    qApp,
+    [&] {
+      QGraphicsScene* scene = new QGraphicsScene(parent);
+      QGraphicsView* view = new QGraphicsView(scene, qApp->mainFormWidget());
+
+      WebEngineViewer* viewer = new WebEngineViewer(qApp->mainFormWidget());
+      WebEnginePage* page = new WebEnginePage(viewer);
+
+      scene->addWidget(viewer);
+
+      viewer->resize(3800, 2100);
+      view->show();
+      viewer->setPage(page);
+
+      res = page->pageHtml(url).toUtf8();
+
+      delete scene;
+      // delete view;
+      // delete viewer;
+      //  delete viewer;
+    },
+    Qt::ConnectionType::BlockingQueuedConnection);
+
+  return res;
 }
 
 ContextMenuData WebEngineViewer::provideContextMenuData(QContextMenuEvent* event) const {

@@ -15,6 +15,9 @@ class WebEnginePage : public QWebEnginePage {
 
     WebEngineViewer* view() const;
 
+  signals:
+    void domIsIdle();
+
   public slots:
     QString pageHtml(const QString& url);
 

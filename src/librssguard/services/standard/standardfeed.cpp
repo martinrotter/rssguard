@@ -205,7 +205,7 @@ QString StandardFeed::sourceTypeToString(StandardFeed::SourceType type) {
       return tr("Local file");
 
     case StandardFeed::SourceType::EmbeddedBrowser:
-      return tr("Built-in web browser");
+      return tr("Built-in web browser with JavaScript support");
 
     default:
       return tr("Unknown");
@@ -297,17 +297,7 @@ StandardFeed* StandardFeed::guessFeed(StandardFeed::SourceType source_type,
   }
   else if (source_type == StandardFeed::SourceType::EmbeddedBrowser) {
 #if defined(NO_LITE)
-    WebEnginePage page;
-    WebEngineViewer viewer;
-
-    // NOTE: Viewer must be present or JavaScript just does not run.
-    viewer.setPage(&page);
-    viewer.setAttribute(Qt::WA_DontShowOnScreen);
-    viewer.show();
-
-    feed_contents = page.pageHtml(source).toUtf8();
-
-    // IOFactory::writeFile("a.html", feed_contents);
+    feed_contents = WebEngineViewer::getJsEnabledHtml(qApp, source);
 #else
     throw ApplicationException(tr("this source type cannot be used on 'lite' %1 build").arg(QSL(APP_NAME)));
 #endif

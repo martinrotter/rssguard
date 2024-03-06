@@ -9,6 +9,7 @@
     <file>text/COPYING_GNU_LGPL_21</file>
     <file>text/COPYING_QT</file>
 
+    <file>scripts/builtin_js/observer.js</file>
     <file>scripts/web_ui/rssguard.html</file>
     
     <file>sounds/boing.wav</file>

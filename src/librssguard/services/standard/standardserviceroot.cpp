@@ -257,9 +257,20 @@ QList<Message> StandardServiceRoot::obtainNewMessages(Feed* feed,
     page->moveToThread(qApp->thread());
 
     viewer->setPage(page);
-    viewer->setAttribute(Qt::WA_DontShowOnScreen);
+    viewer->setAttribute(Qt::WidgetAttribute::WA_DontShowOnScreen, true);
+    viewer->setAttribute(Qt::WidgetAttribute::WA_DontShowOnScreen, true);
+    viewer->setAttribute(Qt::WidgetAttribute::WA_DeleteOnClose, true);
 
-    QMetaObject::invokeMethod(viewer, "show", Qt::ConnectionType::BlockingQueuedConnection);
+    // QMetaObject::invokeMethod(viewer, "show", Qt::ConnectionType::BlockingQueuedConnection);
+
+    QMetaObject::invokeMethod(
+      viewer,
+      [&] {
+        viewer->show();
+        viewer->resize(3800, 2100);
+        // viewer->hide();
+      },
+      Qt::ConnectionType::BlockingQueuedConnection);
 
     QString html;
     QMetaObject::invokeMethod(page,
@@ -271,7 +282,8 @@ QList<Message> StandardServiceRoot::obtainNewMessages(Feed* feed,
     feed_contents = html.toUtf8();
 
     page->deleteLater();
-    viewer->deleteLater();
+    viewer->close();
+    // viewer->deleteLater();
 #else
     throw ApplicationException(tr("this source type cannot be used on 'lite' %1 build").arg(QSL(APP_NAME)));
 #endif

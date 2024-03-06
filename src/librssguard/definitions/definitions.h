@@ -362,6 +362,9 @@
 #define APP_SQL_PATH   QSL(":/sql")
 #define APP_INFO_PATH  QSL(":/text")
 
+#define BUILTIN_JS_FOLDER QSL(":/scripts/builtin_js")
+#define OBSERVER_JS_FILE  QSL("observer.js")
+
 #define WEB_UI_FOLDER QSL(":/scripts/web_ui")
 #define WEB_UI_FILE   QSL("rssguard.html")
 
