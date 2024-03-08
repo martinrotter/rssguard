@@ -202,36 +202,49 @@ QUrl WebEngineViewer::url() const {
   return QWebEngineView::url();
 }
 
-QByteArray WebEngineViewer::getJsEnabledHtml(const QString& url) {
+QByteArray WebEngineViewer::getJsEnabledHtml(const QString& url, bool worker_thread) {
   WebEnginePage* page = new WebEnginePage();
   WebEngineViewer* viewer = nullptr;
 
-  QMetaObject::invokeMethod(
-    qApp,
-    [&] {
-      // NOTE: Must be created on main thread.
-      viewer = new WebEngineViewer();
-    },
-    Qt::ConnectionType::BlockingQueuedConnection);
+  if (worker_thread) {
+    QMetaObject::invokeMethod(
+      qApp,
+      [&] {
+        // NOTE: Must be created on main thread.
+        viewer = new WebEngineViewer();
+      },
+      Qt::ConnectionType::BlockingQueuedConnection);
 
-  viewer->moveToThread(qApp->thread());
-  page->moveToThread(qApp->thread());
+    viewer->moveToThread(qApp->thread());
+    page->moveToThread(qApp->thread());
+  }
+  else {
+    viewer = new WebEngineViewer();
+  }
 
   viewer->setPage(page);
   viewer->setAttribute(Qt::WidgetAttribute::WA_DontShowOnScreen, true);
   viewer->setAttribute(Qt::WidgetAttribute::WA_DeleteOnClose, true);
 
-  QMetaObject::invokeMethod(viewer, "show", Qt::ConnectionType::BlockingQueuedConnection);
-
   QString html;
-  QMetaObject::invokeMethod(page,
-                            "pageHtml",
-                            Qt::ConnectionType::BlockingQueuedConnection,
-                            Q_RETURN_ARG(QString, html),
-                            Q_ARG(QString, url));
+
+  if (worker_thread) {
+    QMetaObject::invokeMethod(viewer, "show", Qt::ConnectionType::BlockingQueuedConnection);
+    QMetaObject::invokeMethod(page,
+                              "pageHtml",
+                              Qt::ConnectionType::BlockingQueuedConnection,
+                              Q_RETURN_ARG(QString, html),
+                              Q_ARG(QString, url));
+  }
+  else {
+    viewer->show();
+    html = page->pageHtml(url);
+  }
 
   page->deleteLater();
   viewer->close();
+
+  IOFactory::writeFile("a.html", html.toUtf8());
 
   return html.toUtf8();
 }

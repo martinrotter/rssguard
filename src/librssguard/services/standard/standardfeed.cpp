@@ -297,7 +297,7 @@ StandardFeed* StandardFeed::guessFeed(StandardFeed::SourceType source_type,
   }
   else if (source_type == StandardFeed::SourceType::EmbeddedBrowser) {
 #if defined(NO_LITE)
-    feed_contents = WebEngineViewer::getJsEnabledHtml(source);
+    feed_contents = WebEngineViewer::getJsEnabledHtml(source, false);
 #else
     throw ApplicationException(tr("this source type cannot be used on 'lite' %1 build").arg(QSL(APP_NAME)));
 #endif

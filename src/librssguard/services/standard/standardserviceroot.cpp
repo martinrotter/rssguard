@@ -242,7 +242,7 @@ QList<Message> StandardServiceRoot::obtainNewMessages(Feed* feed,
   }
   else if (f->sourceType() == StandardFeed::SourceType::EmbeddedBrowser) {
 #if defined(NO_LITE)
-    feed_contents = WebEngineViewer::getJsEnabledHtml(f->source());
+    feed_contents = WebEngineViewer::getJsEnabledHtml(f->source(), true);
 #else
     throw ApplicationException(tr("this source type cannot be used on 'lite' %1 build").arg(QSL(APP_NAME)));
 #endif
