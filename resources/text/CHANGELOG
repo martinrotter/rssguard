@@ -1,3 +1,26 @@
+4.6.4
+-----
+
+Added:
+* Existing read/unread state is respected when some article gets "updated" (infamously happens for YouTube feeds). (#1279)
+* NSIS installer was bit tweaked to warn about MSVC runtime. (#1306)
+* Added more ways of limitting amount of articles in each feed. (#1270, #1267)
+* Added way to use old legacy article formatting in "lite" version. (#1286)
+* New way of fetching articles - new "Source" -> "Built-in web browser with JavaScript support" which allows user to use built-in Chromium-based network stack to fetch feeds and other data. It allows even fetching of majority of JavaScript-powered websites. (#1313)
+* More date/time strings for parsing some dates and times in articles.
+
+Fixed:
+* Fix freezing when feed uses crazy crazy loooong URL.
+* Fix crash when forwarding e-mail via Gmail plugin.
+* Add forgotten restriction when cleaning data. (a975714f6)
+* ETag conditional loading of feeds was semi-broken. (#1314, #1296)
+* All Unicode characters in feed URLs are now supported. (#1310)
+* Reader mode was changing content for all opened browser tabs. (#1300)
+* Some articles were displayed with broken HTML. (#1293)
+* Size/position of all windows (including modal dialogs) is now guarded to not be out-of-screen-bounds. (#1281)
+* No more crashes when adding some discovered feeds. (#1280)
+* Main window pesky splitters saved with 0 position. (#1271)
+
 4.6.3
 -----
 
