@@ -157,7 +157,8 @@ QString NetworkFactory::networkErrorText(QNetworkReply::NetworkError error_code)
 }
 
 QString NetworkFactory::sanitizeUrl(const QString& url) {
-  static QRegularExpression reg_non_url(QSL("[^\\w\\-.~:\\/?#\\[\\]@!$&'()*+,;=% \\|]"));
+  static QRegularExpression reg_non_url(QSL("[^\\w\\-.~:\\/?#\\[\\]@!$&'()*+,;=% \\|]"),
+                                        QRegularExpression::PatternOption::UseUnicodePropertiesOption);
 
   return QString(url).replace(reg_non_url, {});
 }
