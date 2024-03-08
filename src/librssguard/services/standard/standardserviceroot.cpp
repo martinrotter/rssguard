@@ -238,6 +238,14 @@ QList<Message> StandardServiceRoot::obtainNewMessages(Feed* feed,
     }
     else {
       f->setLastEtag(network_result.m_headers.value(QSL("etag")));
+
+      if (network_result.m_httpCode == HTTP_CODE_NOT_MODIFIED && feed_contents.trimmed().isEmpty()) {
+        // We very likely used "eTag" before and server reports that
+        // content was not modified since.
+        qWarningNN << LOGSEC_CORE << QUOTE_W_SPACE(feed->source())
+                   << "reported HTTP/304, meaning that the remote file did not change since last time we checked it.";
+        return {};
+      }
     }
   }
   else if (f->sourceType() == StandardFeed::SourceType::EmbeddedBrowser) {
