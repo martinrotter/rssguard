@@ -13,7 +13,7 @@ You can select type of source of each feed. Currently these sources are supporte
 * URL - RSS Guard simply downloads feed file from given location and behaves like everyone would expect.
 * Local file - RSS Guard uses file in local filesystem as feed source.
 * Script - see below.
-* Built-in web browser - see below.
+* Built-in web browser with JavaScript support - see below.
 
 ## 'Script' option
 If you choose `Script` option, then you cannot provide URL of your feed, and you rely on custom script to generate feed file and provide its contents to [**standard output** (stdout)](https://en.wikipedia.org/wiki/Standard_streams#Standard_output_(stdout)). Data written to standard output should be valid feed data.
@@ -52,12 +52,16 @@ If everything goes well, script must return `0` as the process exit code, or a n
 
 Executable file must be always be specified, while arguments do not. Be very careful when quoting arguments. Tested examples of valid execution lines are:
 
-## 'Built-in web browser' option
+## 'Built-in web browser with JavaScript support' option
 This option uses network stack from built-in web browser (based on Chromium) to download the provided file. There are some benefits to this approach:
-* all cookies and other cache/storage data from internal web browser are active,
+* all cookies and other cache/storage data from internal web browser persist,
 * JavaScript-enabled websites can be loaded.
 
-So, if you for example login to some of your websites, then you can use this option to fetch webpages which are accessible only to logged-in users.
+So, if you for example login to some of your websites, then you can use this option to fetch webpages which are accessible only to logged-in users or JavaScript-powered websites.
+
+```{attention}
+Note that some JavaScript-powered websites actively delay loading of some content until the website is physically displayed on the screen. These stubborn websites will likely not work with this feature as this feature uses special "hidden" web browser to load the content.
+```
 
 ## Dataflow
 After your source feed data is downloaded either via URL or custom script, you can optionally post-process it with one more custom script, which will take **raw source data as input**. It must produce valid feed data to standard output while printing all error messages to error output.
