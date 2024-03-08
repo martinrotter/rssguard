@@ -15,7 +15,7 @@
 #include <QJsonDocument>
 #include <QJsonObject>
 
-JsonParser::JsonParser(const QString& data) : FeedParser(data, false) {}
+JsonParser::JsonParser(const QString& data) : FeedParser(data, DataType::Json) {}
 
 JsonParser::~JsonParser() {}
 

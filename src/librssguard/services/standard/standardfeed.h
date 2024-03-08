@@ -37,7 +37,8 @@ class StandardFeed : public Feed {
       Rdf = 2, // Sometimes denoted as RSS 1.0.
       Atom10 = 3,
       Json = 4,
-      Sitemap = 5
+      Sitemap = 5,
+      iCalendar = 6
     };
 
     explicit StandardFeed(RootItem* parent_item = nullptr);

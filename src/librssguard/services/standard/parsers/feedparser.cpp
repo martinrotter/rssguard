@@ -13,13 +13,13 @@
 
 #include <utility>
 
-FeedParser::FeedParser(QString data, bool is_xml)
-  : m_isXml(is_xml), m_data(std::move(data)), m_mrssNamespace(QSL("http://search.yahoo.com/mrss/")) {
+FeedParser::FeedParser(QString data, DataType is_xml)
+  : m_dataType(is_xml), m_data(std::move(data)), m_mrssNamespace(QSL("http://search.yahoo.com/mrss/")) {
   if (m_data.isEmpty()) {
     return;
   }
 
-  if (m_isXml) {
+  if (m_dataType == DataType::Xml) {
     // XML.
     QString error;
 
@@ -27,7 +27,7 @@ FeedParser::FeedParser(QString data, bool is_xml)
       throw FeedFetchException(Feed::Status::ParsingError, QObject::tr("XML problem: %1").arg(error));
     }
   }
-  else {
+  else if (m_dataType == DataType::Json) {
     // JSON.
     QJsonParseError err;
 
@@ -50,7 +50,6 @@ QList<StandardFeed*> FeedParser::discoverFeeds(ServiceRoot* root, const QUrl& ur
 
     if (QFile::exists(file_path)) {
       try {
-        // 1.
         auto guessed_feed = guessFeed(IOFactory::readFile(file_path), {});
 
         guessed_feed.first->setSourceType(StandardFeed::SourceType::LocalFile);
@@ -126,7 +125,7 @@ QList<Message> FeedParser::messages() {
   QDateTime current_time = QDateTime::currentDateTimeUtc();
 
   // Pull out all messages.
-  if (m_isXml) {
+  if (m_dataType == DataType::Xml) {
     QDomNodeList messages_in_xml = xmlMessageElements();
 
     for (int i = 0; i < messages_in_xml.size(); i++) {
@@ -154,7 +153,7 @@ QList<Message> FeedParser::messages() {
       }
     }
   }
-  else {
+  else if (m_dataType == DataType::Json) {
     QJsonArray messages_in_json = jsonMessageElements();
 
     for (int i = 0; i < messages_in_json.size(); i++) {

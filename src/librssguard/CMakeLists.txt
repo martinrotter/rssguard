@@ -416,6 +416,8 @@ set(SOURCES
   services/standard/parsers/atomparser.h
   services/standard/parsers/feedparser.cpp
   services/standard/parsers/feedparser.h
+  services/standard/parsers/icalparser.cpp
+  services/standard/parsers/icalparser.h
   services/standard/parsers/jsonparser.cpp
   services/standard/parsers/jsonparser.h
   services/standard/parsers/rdfparser.cpp

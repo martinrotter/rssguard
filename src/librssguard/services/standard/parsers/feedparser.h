@@ -16,7 +16,14 @@
 // Base class for all XML-based feed parsers.
 class FeedParser {
   public:
-    explicit FeedParser(QString data, bool is_xml = true);
+    enum class DataType {
+      Xml,
+      Json,
+      Ical,
+      Other
+    };
+
+    explicit FeedParser(QString data, DataType is_xml = DataType::Xml);
     virtual ~FeedParser();
 
     // Returns list of absolute URLs of discovered feeds from provided base URL.
@@ -66,7 +73,7 @@ class FeedParser {
                                  bool only_first) const;
 
   protected:
-    bool m_isXml;
+    DataType m_dataType;
     QString m_data;
     QDomDocument m_xml;
     QJsonDocument m_json;
