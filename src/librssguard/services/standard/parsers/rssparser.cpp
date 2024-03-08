@@ -283,6 +283,10 @@ QDateTime RssParser::xmlMessageDateCreated(const QDomElement& msg_element) const
     date_created = TextFactory::parseDateTime(msg_element.namedItem(QSL("date")).toElement().text());
   }
 
+  if (date_created.isNull()) {
+    date_created = TextFactory::parseDateTime(msg_element.namedItem(QSL("dc:modified")).toElement().text());
+  }
+
   return date_created;
 }
 
