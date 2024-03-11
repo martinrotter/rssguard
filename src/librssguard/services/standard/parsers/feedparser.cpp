@@ -119,6 +119,46 @@ QString FeedParser::jsonMessageRawContents(const QJsonObject& msg_element) const
   return {};
 }
 
+QVariantList FeedParser::objMessageElements() {
+  return {};
+}
+
+QString FeedParser::objMessageTitle(const QVariant& msg_element) const {
+  return {};
+}
+
+QString FeedParser::objMessageUrl(const QVariant& msg_element) const {
+  return {};
+}
+
+QString FeedParser::objMessageDescription(const QVariant& msg_element) const {
+  return {};
+}
+
+QString FeedParser::objMessageAuthor(const QVariant& msg_element) const {
+  return {};
+}
+
+QDateTime FeedParser::objMessageDateCreated(const QVariant& msg_element) const {
+  return {};
+}
+
+QString FeedParser::objMessageId(const QVariant& msg_element) const {
+  return {};
+}
+
+QList<Enclosure> FeedParser::objMessageEnclosures(const QVariant& msg_element) const {
+  return {};
+}
+
+QList<MessageCategory> FeedParser::objMessageCategories(const QVariant& msg_element) const {
+  return {};
+}
+
+QString FeedParser::objMessageRawContents(const QVariant& msg_element) const {
+  return {};
+}
+
 QList<Message> FeedParser::messages() {
   QString feed_author = feedAuthor();
   QList<Message> messages;
@@ -176,6 +216,30 @@ QList<Message> FeedParser::messages() {
       }
       catch (const ApplicationException& ex) {
         qDebugNN << LOGSEC_CORE << "Problem when extracting JSON message: " << ex.message();
+      }
+    }
+  }
+  else if (m_dataType == DataType::Other) {
+    auto messages_in_obj = objMessageElements();
+
+    for (const QVariant& message_item : messages_in_obj) {
+      try {
+        Message new_message;
+
+        // Fill available data.
+        new_message.m_title = objMessageTitle(message_item);
+        new_message.m_contents = objMessageDescription(message_item);
+        new_message.m_author = objMessageAuthor(message_item);
+        new_message.m_url = objMessageUrl(message_item);
+        new_message.m_created = objMessageDateCreated(message_item);
+        new_message.m_customId = objMessageId(message_item);
+        new_message.m_rawContents = objMessageRawContents(message_item);
+        new_message.m_enclosures = objMessageEnclosures(message_item);
+
+        messages.append(new_message);
+      }
+      catch (const ApplicationException& ex) {
+        qDebugNN << LOGSEC_CORE << "Problem when extracting OBJ message: " << ex.message();
       }
     }
   }

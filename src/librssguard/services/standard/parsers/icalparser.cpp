@@ -10,7 +10,8 @@
 #include "miscellaneous/textfactory.h"
 #include "services/standard/definitions.h"
 
-IcalParser::IcalParser(const QString& data) : FeedParser(data, DataType::Other) {}
+IcalParser::IcalParser(const QString& data)
+  : FeedParser(data, DataType::Other), m_iCalendar(Icalendar(m_data.toUtf8())) {}
 
 IcalParser::~IcalParser() {}
 
@@ -80,7 +81,68 @@ QPair<StandardFeed*, QList<IconLocation>> IcalParser::guessFeed(const QByteArray
   }
 }
 
-Icalendar::Icalendar(const QByteArray& data) : FeedParser(QString::fromUtf8(data), FeedParser::DataType::Ical) {
+QVariantList IcalParser::objMessageElements() {
+  QVariantList lst;
+
+  for (const auto& comp : m_iCalendar.m_components) {
+    lst.append(QVariant::fromValue(comp));
+  }
+
+  return lst;
+}
+
+QString IcalParser::objMessageTitle(const QVariant& msg_element) const {
+  EventComponent& comp = static_cast<EventComponent&>(msg_element.value<IcalendarComponent>());
+
+  return comp.title();
+}
+
+QString IcalParser::objMessageUrl(const QVariant& msg_element) const {
+  EventComponent& comp = static_cast<EventComponent&>(msg_element.value<IcalendarComponent>());
+
+  return comp.url();
+}
+
+QString IcalParser::objMessageDescription(const QVariant& msg_element) const {
+  EventComponent& comp = static_cast<EventComponent&>(msg_element.value<IcalendarComponent>());
+
+  return comp.description();
+}
+
+QString IcalParser::objMessageAuthor(const QVariant& msg_element) const {
+  EventComponent& comp = static_cast<EventComponent&>(msg_element.value<IcalendarComponent>());
+
+  return comp.organizer();
+}
+
+QDateTime IcalParser::objMessageDateCreated(const QVariant& msg_element) const {
+  EventComponent& comp = static_cast<EventComponent&>(msg_element.value<IcalendarComponent>());
+
+  return comp.created();
+}
+
+QString IcalParser::objMessageId(const QVariant& msg_element) const {
+  EventComponent& comp = static_cast<EventComponent&>(msg_element.value<IcalendarComponent>());
+
+  return comp.uid();
+}
+
+QList<Enclosure> IcalParser::objMessageEnclosures(const QVariant& msg_element) const {
+  return {};
+}
+
+QList<MessageCategory> IcalParser::objMessageCategories(const QVariant& msg_element) const {
+  return {};
+}
+
+QString IcalParser::objMessageRawContents(const QVariant& msg_element) const {
+  EventComponent& comp = static_cast<EventComponent&>(msg_element.value<IcalendarComponent>());
+
+  return QString::fromUtf8(QJsonDocument(QJsonObject::fromVariantMap(comp.properties()))
+                             .toJson(QJsonDocument::JsonFormat::Indented));
+}
+
+Icalendar::Icalendar(const QByteArray& data) : FeedParser(QString::fromUtf8(data), FeedParser::DataType::Other) {
   processLines(m_data);
 }
 
@@ -117,7 +179,7 @@ void Icalendar::processLines(const QString& data) {
 void Icalendar::processComponentCalendar(const QString& body) {
   auto tokenized = tokenizeBody(body);
 
-  setTitle(tokenized.value(QSL("X-WR-CALNAME")));
+  setTitle(tokenized.value(QSL("X-WR-CALNAME")).toString());
 }
 
 void Icalendar::processComponentEvent(const QString& body) {
@@ -125,18 +187,15 @@ void Icalendar::processComponentEvent(const QString& body) {
 
   EventComponent event;
 
-  event.setUid(tokenized.value(QSL("UID")));
-  event.setTitle(tokenized.value(QSL("SUMMARY")));
-  event.setDescription(tokenized.value(QSL("DESCRIPTION")));
-  event.setCreated(TextFactory::parseDateTime(tokenized.value(QSL("CREATED"))));
+  event.setProperties(tokenized);
 
   m_components.append(event);
 }
 
-QMap<QString, QString> Icalendar::tokenizeBody(const QString& body) const {
+QVariantMap Icalendar::tokenizeBody(const QString& body) const {
   QRegularExpression regex("^(?=[A-Z-]+:)", QRegularExpression::PatternOption::MultilineOption);
   auto all_matches = body.split(regex);
-  QMap<QString, QString> res;
+  QVariantMap res;
 
   for (const QString& match : all_matches) {
     int sep = match.indexOf(':');
@@ -149,7 +208,7 @@ QMap<QString, QString> Icalendar::tokenizeBody(const QString& body) const {
     QString value = match.mid(sep + 1);
 
     value = value.replace(QRegularExpression("\\r\\n\\s?"), QString());
-    value = value.replace(QRegularExpression("\\r?\\n"), QSL("<br/>"));
+    value = value.replace(QRegularExpression("\\\\n"), QSL("<br/>"));
 
     res.insert(property, value);
   }
@@ -158,33 +217,33 @@ QMap<QString, QString> Icalendar::tokenizeBody(const QString& body) const {
 }
 
 QString IcalendarComponent::uid() const {
-  return m_uid;
+  return m_properties.value(QSL("UID")).toString();
 }
 
-void IcalendarComponent::setUid(const QString& uid) {
-  m_uid = uid;
+QVariantMap IcalendarComponent::properties() const {
+  return m_properties;
+}
+
+void IcalendarComponent::setProperties(const QVariantMap& properties) {
+  m_properties = properties;
 }
 
 QString EventComponent::title() const {
-  return m_title;
+  return m_properties.value(QSL("SUMMARY")).toString();
 }
 
-void EventComponent::setTitle(const QString& title) {
-  m_title = title;
+QString EventComponent::url() const {
+  return m_properties.value(QSL("URL")).toString();
+}
+
+QString EventComponent::organizer() const {
+  return m_properties.value(QSL("ORGANIZER")).toString();
 }
 
 QString EventComponent::description() const {
-  return m_description;
-}
-
-void EventComponent::setDescription(const QString& description) {
-  m_description = description;
+  return m_properties.value(QSL("DESCRIPTION")).toString();
 }
 
 QDateTime EventComponent::created() const {
-  return m_created;
-}
-
-void EventComponent::setCreated(const QDateTime& created) {
-  m_created = created;
+  return TextFactory::parseDateTime(m_properties.value(QSL("CREATED")).toString());
 }

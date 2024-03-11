@@ -8,30 +8,30 @@
 class IcalendarComponent {
   public:
     QString uid() const;
-    void setUid(const QString& uid);
 
-  private:
-    QString m_uid;
+    QVariantMap properties() const;
+    void setProperties(const QVariantMap& properties);
+
+  protected:
+    QVariantMap m_properties;
 };
+
+Q_DECLARE_METATYPE(IcalendarComponent)
 
 class EventComponent : public IcalendarComponent {
   public:
     QString title() const;
-    void setTitle(const QString& title);
-
+    QString url() const;
+    QString organizer() const;
     QString description() const;
-    void setDescription(const QString& description);
-
     QDateTime created() const;
-    void setCreated(const QDateTime& created);
-
-  private:
-    QString m_title;
-    QString m_description;
-    QDateTime m_created;
 };
 
+Q_DECLARE_METATYPE(EventComponent)
+
 class Icalendar : public FeedParser {
+    friend class IcalParser;
+
   public:
     explicit Icalendar(const QByteArray& data = {});
 
@@ -44,7 +44,7 @@ class Icalendar : public FeedParser {
     void processComponentEvent(const QString& body);
 
     QDateTime parseDateTime(const QString& date_time) const;
-    QMap<QString, QString> tokenizeBody(const QString& body) const;
+    QVariantMap tokenizeBody(const QString& body) const;
 
   private:
     QString m_title;
@@ -60,6 +60,20 @@ class IcalParser : public FeedParser {
 
     virtual QPair<StandardFeed*, QList<IconLocation>> guessFeed(const QByteArray& content,
                                                                 const QString& content_type) const;
+
+    virtual QVariantList objMessageElements();
+    virtual QString objMessageTitle(const QVariant& msg_element) const;
+    virtual QString objMessageUrl(const QVariant& msg_element) const;
+    virtual QString objMessageDescription(const QVariant& msg_element) const;
+    virtual QString objMessageAuthor(const QVariant& msg_element) const;
+    virtual QDateTime objMessageDateCreated(const QVariant& msg_element) const;
+    virtual QString objMessageId(const QVariant& msg_element) const;
+    virtual QList<Enclosure> objMessageEnclosures(const QVariant& msg_element) const;
+    virtual QList<MessageCategory> objMessageCategories(const QVariant& msg_element) const;
+    virtual QString objMessageRawContents(const QVariant& msg_element) const;
+
+  private:
+    Icalendar m_iCalendar;
 };
 
 #endif // ICALPARSER_H

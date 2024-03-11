@@ -143,10 +143,10 @@ QStringList TextFactory::dateTimePatterns() {
   return QStringList() << QSL("yyyy-MM-ddTHH:mm:ss") << QSL("MMM dd yyyy hh:mm:ss") << QSL("MMM d yyyy hh:mm:ss")
                        << QSL("ddd, dd MMM yyyy HH:mm:ss") << QSL("ddd, dd MMM yyyy HH:mm")
                        << QSL("ddd, d MMM yyyy HH:mm:ss") << QSL("dd MMM yyyy hh:mm:ss") << QSL("dd MMM yyyy")
-                       << QSL("yyyy-MM-dd HH:mm:ss.z") << QSL("yyyy-MM-dd") << QSL("yyyy") << QSL("yyyy-MM")
-                       << QSL("yyyy-MM-dd") << QSL("yyyy-MM-ddThh:mm") << QSL("yyyy-MM-ddThh:mm:ss")
-                       << QSL("d MMM yyyy HH:mm:ss") << QSL("yyyyMMddThhmmss") << QSL("yyyyMMdd") << QSL("hh:mm:ss")
-                       << QSL("h:m:s AP") << QSL("h:mm") << QSL("H:mm") << QSL("h:m") << QSL("h.m");
+                       << QSL("yyyy-MM-dd HH:mm:ss.z") << QSL("yyyy-MM-ddThh:mm:ss") << QSL("yyyy-MM-ddThh:mm")
+                       << QSL("yyyy-MM-dd") << QSL("yyyy-MM-dd") << QSL("yyyy-MM") << QSL("d MMM yyyy HH:mm:ss")
+                       << QSL("yyyyMMddThhmmss") << QSL("yyyyMMdd") << QSL("yyyy") << QSL("hh:mm:ss") << QSL("h:m:s AP")
+                       << QSL("h:mm") << QSL("H:mm") << QSL("h:m") << QSL("h.m");
 }
 
 QString TextFactory::encrypt(const QString& text, quint64 key) {
