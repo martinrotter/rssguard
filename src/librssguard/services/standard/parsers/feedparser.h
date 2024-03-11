@@ -63,6 +63,19 @@ class FeedParser {
     virtual QList<MessageCategory> jsonMessageCategories(const QJsonObject& msg_element) const;
     virtual QString jsonMessageRawContents(const QJsonObject& msg_element) const;
 
+    /*
+    // Objects.
+    virtual QVariantList objMessageElements();
+    virtual QString objMessageTitle(const QVariantMap& msg_element) const;
+    virtual QString objMessageUrl(const QVariantMap& msg_element) const;
+    virtual QString objMessageDescription(const QVariantMap& msg_element) const;
+    virtual QString objMessageAuthor(const QVariantMap& msg_element) const;
+    virtual QDateTime objMessageDateCreated(const QVariantMap& msg_element) const;
+    virtual QString objMessageId(const QVariantMap& msg_element) const;
+    virtual QList<Enclosure> objMessageEnclosures(const QVariantMap& msg_element) const;
+    virtual QList<MessageCategory> objMessageCategories(const QVariantMap& msg_element) const;
+    virtual QString objMessageRawContents(const QVariantMap& msg_element) const;
+*/
   protected:
     QList<Enclosure> xmlMrssGetEnclosures(const QDomElement& msg_element) const;
     QString xmlMrssTextFromPath(const QDomElement& msg_element, const QString& xml_path) const;

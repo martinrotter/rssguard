@@ -21,6 +21,7 @@
 #include "services/standard/gui/formstandardfeeddetails.h"
 #include "services/standard/gui/formstandardimportexport.h"
 #include "services/standard/parsers/atomparser.h"
+#include "services/standard/parsers/icalparser.h"
 #include "services/standard/parsers/jsonparser.h"
 #include "services/standard/parsers/rdfparser.h"
 #include "services/standard/parsers/rssparser.h"
@@ -338,6 +339,10 @@ QList<Message> StandardServiceRoot::obtainNewMessages(Feed* feed,
 
     case StandardFeed::Type::Json:
       messages = JsonParser(formatted_feed_contents).messages();
+      break;
+
+    case StandardFeed::Type::iCalendar:
+      messages = IcalParser(formatted_feed_contents).messages();
       break;
 
     case StandardFeed::Type::Sitemap:

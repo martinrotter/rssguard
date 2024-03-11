@@ -15,6 +15,7 @@
 #include "services/standard/standardfeed.h"
 
 #include "services/standard/parsers/atomparser.h"
+#include "services/standard/parsers/icalparser.h"
 #include "services/standard/parsers/jsonparser.h"
 #include "services/standard/parsers/rdfparser.h"
 #include "services/standard/parsers/rssparser.h"
@@ -31,7 +32,12 @@ FormDiscoverFeeds::FormDiscoverFeeds(ServiceRoot* service_root,
 
   GuiUtilities::applyDialogProperties(*this, qApp->icons()->fromTheme(QSL("application-rss+xml")));
 
-  m_parsers = {new AtomParser({}), new RssParser({}), new RdfParser({}), new JsonParser({}), new SitemapParser({})};
+  m_parsers = {new AtomParser({}),
+               new RssParser({}),
+               new RdfParser({}),
+               new IcalParser({}),
+               new JsonParser({}),
+               new SitemapParser({})};
 
   m_btnGoAdvanced = m_ui.m_buttonBox->addButton(tr("Switch to &advanced mode"), QDialogButtonBox::ButtonRole::NoRole);
   m_btnGoAdvanced

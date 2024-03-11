@@ -145,8 +145,8 @@ QStringList TextFactory::dateTimePatterns() {
                        << QSL("ddd, d MMM yyyy HH:mm:ss") << QSL("dd MMM yyyy hh:mm:ss") << QSL("dd MMM yyyy")
                        << QSL("yyyy-MM-dd HH:mm:ss.z") << QSL("yyyy-MM-dd") << QSL("yyyy") << QSL("yyyy-MM")
                        << QSL("yyyy-MM-dd") << QSL("yyyy-MM-ddThh:mm") << QSL("yyyy-MM-ddThh:mm:ss")
-                       << QSL("d MMM yyyy HH:mm:ss") << QSL("hh:mm:ss") << QSL("h:m:s AP") << QSL("h:mm") << QSL("H:mm")
-                       << QSL("h:m") << QSL("h.m");
+                       << QSL("d MMM yyyy HH:mm:ss") << QSL("yyyyMMddThhmmss") << QSL("yyyyMMdd") << QSL("hh:mm:ss")
+                       << QSL("h:m:s AP") << QSL("h:mm") << QSL("H:mm") << QSL("h:m") << QSL("h.m");
 }
 
 QString TextFactory::encrypt(const QString& text, quint64 key) {

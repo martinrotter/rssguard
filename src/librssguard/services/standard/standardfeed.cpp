@@ -19,6 +19,7 @@
 #endif
 
 #include "services/standard/parsers/atomparser.h"
+#include "services/standard/parsers/icalparser.h"
 #include "services/standard/parsers/jsonparser.h"
 #include "services/standard/parsers/rdfparser.h"
 #include "services/standard/parsers/rssparser.h"
@@ -347,6 +348,7 @@ StandardFeed* StandardFeed::guessFeed(StandardFeed::SourceType source_type,
   parsers.append(QSharedPointer<FeedParser>(new AtomParser({})));
   parsers.append(QSharedPointer<FeedParser>(new RssParser({})));
   parsers.append(QSharedPointer<FeedParser>(new RdfParser({})));
+  parsers.append(QSharedPointer<FeedParser>(new IcalParser({})));
   parsers.append(QSharedPointer<FeedParser>(new JsonParser({})));
   parsers.append(QSharedPointer<FeedParser>(new SitemapParser({})));
 

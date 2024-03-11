@@ -20,6 +20,7 @@ class JsonParser : public FeedParser {
   protected:
     virtual QString feedAuthor() const;
     virtual QJsonArray jsonMessageElements();
+
     virtual QString jsonMessageTitle(const QJsonObject& msg_element) const;
     virtual QString jsonMessageUrl(const QJsonObject& msg_element) const;
     virtual QString jsonMessageDescription(const QJsonObject& msg_element) const;
