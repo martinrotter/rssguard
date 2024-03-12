@@ -241,7 +241,7 @@ QVariant IcalendarComponent::getPropertyValue(const QString& property_name) cons
   }
 
   QStringList keys = m_properties.keys();
-  auto linq = boolinq::from(keys);
+  auto linq = boolinq::from(keys.begin(), keys.end());
   QString found_key = linq.firstOrDefault([&](const QString& ky) {
     int index_sep = ky.indexOf(';');
 
