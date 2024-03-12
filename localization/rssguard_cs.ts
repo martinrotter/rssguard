@@ -945,12 +945,12 @@ ID položky: %5</translation>
   <context>
     <name>FeedReader</name>
     <message>
-      <location filename="../src/librssguard/miscellaneous/feedreader.cpp" line="361"/>
+      <location filename="../src/librssguard/miscellaneous/feedreader.cpp" line="367"/>
       <source>Starting auto-download of some feeds&apos; articles</source>
       <translation>Zahajuji automatické stažení zpráv pro některé kanály</translation>
     </message>
     <message numerus="yes">
-      <location filename="../src/librssguard/miscellaneous/feedreader.cpp" line="362"/>
+      <location filename="../src/librssguard/miscellaneous/feedreader.cpp" line="368"/>
       <source>I will auto-download new articles for %n feed(s).</source>
       <translation>
         <numerusform>Budou se stahovat zprávy pro %n kanál</numerusform>
@@ -6965,7 +6965,7 @@ Autoři této aplikace nenesou žádnou odpovědnost za ztrátu Vašich dat.</tr
     <message>
       <location filename="../src/librssguard/gui/settings/settingsdatabase.ui" line="52"/>
       <source>Use in-memory database as the working database</source>
-      <translation>Použít paměťovou datábázi jako pracovní datové uložiště</translation>
+      <translation>Použít paměťovou databázi jako pracovní datové úložiště</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsdatabase.ui" line="81"/>
@@ -7000,7 +7000,7 @@ Autoři této aplikace nenesou žádnou odpovědnost za ztrátu Vašich dat.</tr
     <message>
       <location filename="../src/librssguard/gui/settings/settingsdatabase.h" line="34"/>
       <source>Data storage</source>
-      <translation>Uložiště dat</translation>
+      <translation>Úložiště dat</translation>
     </message>
   </context>
   <context>
@@ -7667,9 +7667,9 @@ Popis: %3</translation>
 Note that usually all required Node.js tools should be available via your &quot;PATH&quot; environment variable, so you do not have to specify full paths.
 
 Also, relaunch &quot;Settings&quot; dialog after you install Node.js.</source>
-      <translation>Node.js je asynchronní běh JavaScriptu řízený událostí, navržený pro vytváření škálovatelných síťových aplikací.
+      <translation>Node.js je asynchronní běhové prostředí JavaScriptu řízené událostmi, navržené pro vytváření škálovatelných síťových aplikací.
 
-%1 integruje Node.js a přináší několik moderních funkcí jako je Adblock.
+%1 integruje Node.js a přináší několik moderních funkcí, jako je Adblock.
 
 Všimněte si, že obvykle všechny potřebné Node.js nástroje by měly být k dispozici prostřednictvím proměnné prostředí &quot;PATH&quot;, abyste nemuseli specifikovat plné cesty.
 
@@ -9093,7 +9093,7 @@ Poslední čas přihlášení: %4</translation>
     <message>
       <location filename="../src/librssguard/network-web/webfactory.cpp" line="481"/>
       <source>Local storage enabled</source>
-      <translation>Lokální uložiště povoleno</translation>
+      <translation>Lokální úložiště povoleno</translation>
     </message>
     <message>
       <location filename="../src/librssguard/network-web/webfactory.cpp" line="483"/>
