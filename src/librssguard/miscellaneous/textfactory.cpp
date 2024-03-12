@@ -81,6 +81,11 @@ bool TextFactory::couldBeHtml(const QString& string) {
 
 QDateTime TextFactory::parseDateTime(const QString& date_time) {
   const QString input_date = date_time.simplified();
+
+  if (input_date.isEmpty()) {
+    return QDateTime();
+  }
+
   QDateTime dt;
   QTime time_zone_offset;
   const QLocale locale(QLocale::Language::C);

@@ -13,6 +13,8 @@ class IcalendarComponent {
     void setProperties(const QVariantMap& properties);
 
   protected:
+    QVariant getPropertyValue(const QString& property_name) const;
+
     QVariantMap m_properties;
 };
 
@@ -20,11 +22,15 @@ Q_DECLARE_METATYPE(IcalendarComponent)
 
 class EventComponent : public IcalendarComponent {
   public:
+    QDateTime startsOn() const;
+    QDateTime endsOn() const;
     QString title() const;
     QString url() const;
     QString organizer() const;
+    QString location() const;
     QString description() const;
     QDateTime created() const;
+    QDateTime lastModified() const;
 };
 
 Q_DECLARE_METATYPE(EventComponent)

@@ -2,6 +2,7 @@
 
 #include "services/standard/parsers/icalparser.h"
 
+#include "3rd-party/boolinq/boolinq.h"
 #include "definitions/definitions.h"
 #include "exceptions/applicationexception.h"
 #include "exceptions/feedrecognizedbutfailedexception.h"
@@ -122,7 +123,7 @@ QDateTime IcalParser::objMessageDateCreated(const QVariant& msg_element) const {
   const IcalendarComponent& comp_base = msg_element.value<IcalendarComponent>();
   const EventComponent& comp = static_cast<const EventComponent&>(comp_base);
 
-  return comp.created();
+  return comp.startsOn();
 }
 
 QString IcalParser::objMessageId(const QVariant& msg_element) const {
@@ -161,7 +162,7 @@ void Icalendar::setTitle(const QString& title) {
 }
 
 void Icalendar::processLines(const QString& data) {
-  QRegularExpression regex("^BEGIN:(\\w+)\\r$(.+?)^(BEGIN|END):\\w+",
+  QRegularExpression regex("^BEGIN:(\\w+)\\r$(.+?)(?=^BEGIN|^END)",
                            QRegularExpression::PatternOption::MultilineOption |
                              QRegularExpression::PatternOption::DotMatchesEverythingOption);
 
@@ -199,7 +200,7 @@ void Icalendar::processComponentEvent(const QString& body) {
 }
 
 QVariantMap Icalendar::tokenizeBody(const QString& body) const {
-  QRegularExpression regex("^(?=[A-Z-]+:)", QRegularExpression::PatternOption::MultilineOption);
+  QRegularExpression regex("^(?=[A-Z-]+(?:;[A-Z]+=[A-Z]+)?:)", QRegularExpression::PatternOption::MultilineOption);
   auto all_matches = body.split(regex);
   QVariantMap res;
 
@@ -234,6 +235,30 @@ void IcalendarComponent::setProperties(const QVariantMap& properties) {
   m_properties = properties;
 }
 
+QVariant IcalendarComponent::getPropertyValue(const QString& property_name) const {
+  if (m_properties.contains(property_name)) {
+    return m_properties.value(property_name);
+  }
+
+  QStringList keys = m_properties.keys();
+  auto linq = boolinq::from(keys);
+  QString found_key = linq.firstOrDefault([&](const QString& ky) {
+    int index_sep = ky.indexOf(';');
+
+    return ky.startsWith(property_name) && index_sep == property_name.size();
+  });
+
+  return m_properties.value(found_key);
+}
+
+QDateTime EventComponent::startsOn() const {
+  return TextFactory::parseDateTime(getPropertyValue(QSL("DTSTART")).toString());
+}
+
+QDateTime EventComponent::endsOn() const {
+  return TextFactory::parseDateTime(m_properties.value(QSL("DTEND")).toString());
+}
+
 QString EventComponent::title() const {
   return m_properties.value(QSL("SUMMARY")).toString();
 }
@@ -246,10 +271,18 @@ QString EventComponent::organizer() const {
   return m_properties.value(QSL("ORGANIZER")).toString();
 }
 
+QString EventComponent::location() const {
+  return m_properties.value(QSL("LOCATION")).toString();
+}
+
 QString EventComponent::description() const {
   return m_properties.value(QSL("DESCRIPTION")).toString();
 }
 
 QDateTime EventComponent::created() const {
   return TextFactory::parseDateTime(m_properties.value(QSL("CREATED")).toString());
+}
+
+QDateTime EventComponent::lastModified() const {
+  return TextFactory::parseDateTime(m_properties.value(QSL("LAST-MODIFIED")).toString());
 }

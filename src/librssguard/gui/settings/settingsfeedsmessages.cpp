@@ -95,9 +95,19 @@ SettingsFeedsMessages::SettingsFeedsMessages(Settings* settings, QWidget* parent
           m_ui->m_cmbMessagesDateTimeFormat,
           &QComboBox::setEnabled);
 
-  connect(m_ui->m_checkMessagesTimeFormat, &QCheckBox::toggled, this, &SettingsFeedsMessages::dirtifySettings);
   connect(m_ui->m_cmbFastAutoUpdate, &QCheckBox::toggled, this, &SettingsFeedsMessages::dirtifySettings);
+
+  connect(m_ui->m_checkMessagesTimeFormat, &QCheckBox::toggled, this, &SettingsFeedsMessages::dirtifySettings);
   connect(m_ui->m_checkMessagesTimeFormat, &QCheckBox::toggled, m_ui->m_cmbMessagesTimeFormat, &QComboBox::setEnabled);
+
+  connect(m_ui->m_checkMessagesDateTimeFormatForDatesOnly,
+          &QCheckBox::toggled,
+          this,
+          &SettingsFeedsMessages::dirtifySettings);
+  connect(m_ui->m_checkMessagesDateTimeFormatForDatesOnly,
+          &QCheckBox::toggled,
+          m_ui->m_cmbMessagesDateTimeFormatForDatesOnly,
+          &QComboBox::setEnabled);
 
   connect(m_ui->m_checkRemoveReadMessagesOnExit, &QCheckBox::toggled, this, &SettingsFeedsMessages::dirtifySettings);
   connect(m_ui->m_checkBringToForegroundAfterMsgOpened,
@@ -161,7 +171,12 @@ SettingsFeedsMessages::SettingsFeedsMessages(Settings* settings, QWidget* parent
           &QComboBox::currentTextChanged,
           this,
           &SettingsFeedsMessages::dirtifySettings);
+
   connect(m_ui->m_cmbMessagesTimeFormat, &QComboBox::currentTextChanged, this, &SettingsFeedsMessages::dirtifySettings);
+  connect(m_ui->m_cmbMessagesDateTimeFormatForDatesOnly,
+          &QComboBox::currentTextChanged,
+          this,
+          &SettingsFeedsMessages::dirtifySettings);
 
   connect(m_ui->m_cbFixupArticleDatetime, &QCheckBox::toggled, this, &SettingsFeedsMessages::dirtifySettings);
 
@@ -185,6 +200,7 @@ SettingsFeedsMessages::SettingsFeedsMessages(Settings* settings, QWidget* parent
 
   emit m_ui->m_cmbMessagesDateTimeFormat->currentTextChanged({});
   emit m_ui->m_cmbMessagesTimeFormat->currentTextChanged({});
+  emit m_ui->m_cmbMessagesDateTimeFormatForDatesOnly->currentTextChanged({});
 
   connect(m_ui->m_btnChangeMessagesFont, &QPushButton::clicked, this, [&]() {
     changeFont(*m_ui->m_lblMessagesFont);
@@ -220,6 +236,7 @@ void SettingsFeedsMessages::initializeMessageDateFormats() {
 
   m_ui->m_cmbMessagesDateTimeFormat->addItems(patterns);
   m_ui->m_cmbMessagesTimeFormat->addItems(patterns);
+  m_ui->m_cmbMessagesDateTimeFormatForDatesOnly->addItems(patterns);
 
   for (int i = 0; i < patterns.size(); i++) {
     m_ui->m_cmbMessagesDateTimeFormat->setItemData(i,
@@ -228,6 +245,9 @@ void SettingsFeedsMessages::initializeMessageDateFormats() {
     m_ui->m_cmbMessagesTimeFormat->setItemData(i,
                                                QDateTime::currentDateTime().toString(patterns.at(i)),
                                                Qt::ItemDataRole::ToolTipRole);
+    m_ui->m_cmbMessagesDateTimeFormatForDatesOnly->setItemData(i,
+                                                               QDateTime::currentDateTime().toString(patterns.at(i)),
+                                                               Qt::ItemDataRole::ToolTipRole);
   }
 }
 
@@ -321,6 +341,11 @@ void SettingsFeedsMessages::loadSettings() {
     ->setChecked(settings()->value(GROUP(Messages), SETTING(Messages::UseCustomTime)).toBool());
   m_ui->m_cmbMessagesTimeFormat
     ->setCurrentText(settings()->value(GROUP(Messages), SETTING(Messages::CustomTimeFormat)).toString());
+
+  m_ui->m_checkMessagesDateTimeFormatForDatesOnly
+    ->setChecked(settings()->value(GROUP(Messages), SETTING(Messages::UseCustomFormatForDatesOnly)).toBool());
+  m_ui->m_cmbMessagesDateTimeFormatForDatesOnly
+    ->setCurrentText(settings()->value(GROUP(Messages), SETTING(Messages::CustomFormatForDatesOnly)).toString());
 
   QFont fon;
 
@@ -434,11 +459,19 @@ void SettingsFeedsMessages::saveSettings() {
   settings()->setValue(GROUP(Messages),
                        Messages::AlwaysDisplayItemPreview,
                        m_ui->m_cbArticleViewerAlwaysVisible->isChecked());
+
   settings()->setValue(GROUP(Messages), Messages::UseCustomDate, m_ui->m_checkMessagesDateTimeFormat->isChecked());
   settings()->setValue(GROUP(Messages), Messages::UseCustomTime, m_ui->m_checkMessagesTimeFormat->isChecked());
 
   settings()->setValue(GROUP(Messages), Messages::CustomDateFormat, m_ui->m_cmbMessagesDateTimeFormat->currentText());
   settings()->setValue(GROUP(Messages), Messages::CustomTimeFormat, m_ui->m_cmbMessagesTimeFormat->currentText());
+
+  settings()->setValue(GROUP(Messages),
+                       Messages::UseCustomFormatForDatesOnly,
+                       m_ui->m_checkMessagesDateTimeFormatForDatesOnly->isChecked());
+  settings()->setValue(GROUP(Messages),
+                       Messages::CustomFormatForDatesOnly,
+                       m_ui->m_cmbMessagesDateTimeFormatForDatesOnly->currentText());
 
   // Save fonts.
   settings()->setValue(GROUP(Messages), Messages::PreviewerFontStandard, m_ui->m_lblMessagesFont->font().toString());

@@ -14,7 +14,7 @@
    <item>
     <widget class="QTabWidget" name="m_tabFeedsMessages">
      <property name="currentIndex">
-      <number>0</number>
+      <number>3</number>
      </property>
      <widget class="QWidget" name="m_tabFeeds">
       <attribute name="title">
@@ -428,6 +428,19 @@
        <string>Articles list</string>
       </attribute>
       <layout class="QFormLayout" name="formLayout_5">
+       <item row="0" column="0">
+        <widget class="QLabel" name="label_5">
+         <property name="text">
+          <string>Unread article icon type</string>
+         </property>
+         <property name="buddy">
+          <cstring>m_cmbUnreadIconType</cstring>
+         </property>
+        </widget>
+       </item>
+       <item row="0" column="1">
+        <widget class="QComboBox" name="m_cmbUnreadIconType"/>
+       </item>
        <item row="1" column="0" colspan="2">
         <widget class="QCheckBox" name="m_checkKeppMessagesInTheMiddle">
          <property name="text">
@@ -536,7 +549,7 @@
          </property>
         </widget>
        </item>
-       <item row="7" column="0">
+       <item row="8" column="0">
         <widget class="QCheckBox" name="m_checkMessagesTimeFormat">
          <property name="text">
           <string>Custom date/time format for today's articles</string>
@@ -549,7 +562,7 @@
          </property>
         </widget>
        </item>
-       <item row="7" column="1">
+       <item row="8" column="1">
         <widget class="QComboBox" name="m_cmbMessagesTimeFormat">
          <property name="minimumSize">
           <size>
@@ -562,14 +575,14 @@
          </property>
         </widget>
        </item>
-       <item row="8" column="0">
+       <item row="9" column="0">
         <widget class="QLabel" name="label">
          <property name="text">
           <string>Show relative time for articles not older than</string>
          </property>
         </widget>
        </item>
-       <item row="8" column="1">
+       <item row="9" column="1">
         <widget class="QSpinBox" name="m_spinRelativeArticleTime">
          <property name="minimum">
           <number>-1</number>
@@ -579,7 +592,7 @@
          </property>
         </widget>
        </item>
-       <item row="9" column="0">
+       <item row="10" column="0">
         <widget class="QGroupBox" name="m_gbArticleListFont">
          <property name="title">
           <string>Article list font</string>
@@ -611,16 +624,29 @@
          </layout>
         </widget>
        </item>
-       <item row="0" column="1">
-        <widget class="QComboBox" name="m_cmbUnreadIconType"/>
-       </item>
-       <item row="0" column="0">
-        <widget class="QLabel" name="label_5">
-         <property name="text">
-          <string>Unread article icon type</string>
+       <item row="7" column="1">
+        <widget class="QComboBox" name="m_cmbMessagesDateTimeFormatForDatesOnly">
+         <property name="minimumSize">
+          <size>
+           <width>150</width>
+           <height>0</height>
+          </size>
          </property>
-         <property name="buddy">
-          <cstring>m_cmbUnreadIconType</cstring>
+         <property name="editable">
+          <bool>true</bool>
+         </property>
+        </widget>
+       </item>
+       <item row="7" column="0">
+        <widget class="QCheckBox" name="m_checkMessagesDateTimeFormatForDatesOnly">
+         <property name="text">
+          <string>Use custom date/time format for dates-only</string>
+         </property>
+         <property name="checkable">
+          <bool>true</bool>
+         </property>
+         <property name="checked">
+          <bool>true</bool>
          </property>
         </widget>
        </item>

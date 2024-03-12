@@ -27,8 +27,8 @@
 MessagesModel::MessagesModel(QObject* parent)
   : QSqlQueryModel(parent), m_view(nullptr), m_cache(new MessagesModelCache(this)),
     m_messageHighlighter(MessageHighlighter::NoHighlighting), m_customDateFormat(QString()),
-    m_customTimeFormat(QString()), m_newerArticlesRelativeTime(-1), m_selectedItem(nullptr),
-    m_unreadIconType(MessageUnreadIcon::Dot),
+    m_customTimeFormat(QString()), m_customFormatForDatesOnly(QString()), m_newerArticlesRelativeTime(-1),
+    m_selectedItem(nullptr), m_unreadIconType(MessageUnreadIcon::Dot),
     m_multilineListItems(qApp->settings()->value(GROUP(Messages), SETTING(Messages::MultilineArticleList)).toBool()) {
   updateFeedIconsDisplay();
   updateDateFormat();
@@ -257,6 +257,14 @@ void MessagesModel::updateDateFormat() {
     m_customTimeFormat = QString();
   }
 
+  if (qApp->settings()->value(GROUP(Messages), SETTING(Messages::UseCustomFormatForDatesOnly)).toBool()) {
+    m_customFormatForDatesOnly =
+      qApp->settings()->value(GROUP(Messages), SETTING(Messages::CustomFormatForDatesOnly)).toString();
+  }
+  else {
+    m_customFormatForDatesOnly = QString();
+  }
+
   m_newerArticlesRelativeTime =
     qApp->settings()->value(GROUP(Messages), SETTING(Messages::RelativeTimeForNewerArticles)).toInt();
 }
@@ -339,11 +347,16 @@ QVariant MessagesModel::data(const QModelIndex& idx, int role) const {
       int index_column = idx.column();
 
       if (index_column == MSG_DB_DCREATED_INDEX) {
-        QDateTime dt = TextFactory::parseDateTime(QSqlQueryModel::data(idx, Qt::ItemDataRole::EditRole).value<qint64>())
-                         .toLocalTime();
+        QDateTime utc_dt =
+          TextFactory::parseDateTime(QSqlQueryModel::data(idx, Qt::ItemDataRole::EditRole).value<qint64>());
+        QDateTime dt = utc_dt.toLocalTime();
 
         if (dt.date() == QDate::currentDate() && !m_customTimeFormat.isEmpty()) {
           return dt.toString(m_customTimeFormat);
+        }
+        else if (!m_customFormatForDatesOnly.isEmpty() && utc_dt.time().hour() == 0 && utc_dt.time().minute() == 0 &&
+                 utc_dt.time().second() == 0) {
+          return dt.toString(m_customFormatForDatesOnly);
         }
         else if (m_newerArticlesRelativeTime > 0 &&
                  dt.daysTo(QDateTime::currentDateTime()) <= m_newerArticlesRelativeTime) {

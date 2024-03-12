@@ -191,6 +191,12 @@ DVALUE(bool) Messages::UseCustomDateDef = false;
 DKEY Messages::CustomDateFormat = "custom_date_format";
 DVALUE(char*) Messages::CustomDateFormatDef = "";
 
+DKEY Messages::CustomFormatForDatesOnly = "custom_date_format_for_dates_only";
+DVALUE(char*) Messages::CustomFormatForDatesOnlyDef = "";
+
+DKEY Messages::UseCustomFormatForDatesOnly = "use_custom_date_for_dates_only";
+DVALUE(bool) Messages::UseCustomFormatForDatesOnlyDef = false;
+
 DKEY Messages::RelativeTimeForNewerArticles = "relative_time_for_new_articles";
 DVALUE(int) Messages::RelativeTimeForNewerArticlesDef = -1;
 

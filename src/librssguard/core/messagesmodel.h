@@ -105,6 +105,7 @@ class MessagesModel : public QSqlQueryModel, public MessagesModelSqlLayer {
     MessageHighlighter m_messageHighlighter;
     QString m_customDateFormat;
     QString m_customTimeFormat;
+    QString m_customFormatForDatesOnly;
     int m_newerArticlesRelativeTime;
     RootItem* m_selectedItem;
     QList<QString> m_headerData;

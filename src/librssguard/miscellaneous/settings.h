@@ -191,6 +191,12 @@ namespace Messages {
   KEY UseCustomTime;
   VALUE(bool) UseCustomTimeDef;
 
+  KEY CustomFormatForDatesOnly;
+  VALUE(char*) CustomFormatForDatesOnlyDef;
+
+  KEY UseCustomFormatForDatesOnly;
+  VALUE(bool) UseCustomFormatForDatesOnlyDef;
+
   KEY RelativeTimeForNewerArticles;
   VALUE(int) RelativeTimeForNewerArticlesDef;
 
