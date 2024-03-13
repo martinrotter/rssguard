@@ -21,7 +21,8 @@ class IcalendarComponent {
     QDateTime fixupDate(QDateTime dat,
                         const QString& dt_format,
                         const QMap<QString, QTimeZone>& time_zones,
-                        const QString& modifiers) const;
+                        const QString& modifiers,
+                        bool* has_dt = nullptr) const;
 
     QVariantMap m_properties;
 };
@@ -30,8 +31,8 @@ Q_DECLARE_METATYPE(IcalendarComponent)
 
 class EventComponent : public IcalendarComponent {
   public:
-    QDateTime startsOn(const QMap<QString, QTimeZone>& time_zones = {}) const;
-    QDateTime endsOn(const QMap<QString, QTimeZone>& time_zones = {}) const;
+    QDateTime startsOn(const QMap<QString, QTimeZone>& time_zones = {}, bool* had_dt = nullptr) const;
+    QDateTime endsOn(const QMap<QString, QTimeZone>& time_zones = {}, bool* had_dt = nullptr) const;
     QString title() const;
     QString url() const;
     QString organizer() const;

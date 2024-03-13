@@ -109,15 +109,15 @@ QString IcalParser::objMessageDescription(const QVariant& msg_element) const {
   const IcalendarComponent& comp_base = msg_element.value<IcalendarComponent>();
   const EventComponent& comp = static_cast<const EventComponent&>(comp_base);
 
-  auto son = comp.startsOn(m_iCalendar.m_tzs);
-  auto soff = comp.endsOn(m_iCalendar.m_tzs);
+  bool has_dt;
+  auto son = comp.startsOn(m_iCalendar.m_tzs, &has_dt).toLocalTime();
 
-  QString formaton = son.time().hour() > 0 || son.time().minute() > 0 || son.time().second() > 0
-                       ? QLocale().dateTimeFormat(QLocale::FormatType::LongFormat)
-                       : QLocale().dateFormat(QLocale::FormatType::LongFormat);
-  QString formatoff = soff.time().hour() > 0 || soff.time().minute() > 0 || soff.time().second() > 0
-                        ? QLocale().dateTimeFormat(QLocale::FormatType::LongFormat)
-                        : QLocale().dateFormat(QLocale::FormatType::LongFormat);
+  QString formaton = has_dt ? QLocale().dateTimeFormat(QLocale::FormatType::LongFormat)
+                            : QLocale().dateFormat(QLocale::FormatType::LongFormat);
+
+  auto soff = comp.endsOn(m_iCalendar.m_tzs, &has_dt).toLocalTime();
+  QString formatoff = has_dt ? QLocale().dateTimeFormat(QLocale::FormatType::LongFormat)
+                             : QLocale().dateFormat(QLocale::FormatType::LongFormat);
 
   QString body = QSL("Start date/time: %2<br/>"
                      "End date/time: %3<br/>"
@@ -309,7 +309,8 @@ QVariant IcalendarComponent::getPropertyValue(const QString& property_name, QStr
 QDateTime IcalendarComponent::fixupDate(QDateTime dat,
                                         const QString& dt_format,
                                         const QMap<QString, QTimeZone>& time_zones,
-                                        const QString& modifiers) const {
+                                        const QString& modifiers,
+                                        bool* has_dt) const {
   // dat.setTimeSpec(Qt::TimeSpec::LocalTime);
 
   // auto xx = dat.toUTC().toString();
@@ -317,7 +318,11 @@ QDateTime IcalendarComponent::fixupDate(QDateTime dat,
   bool time_initialized = dt_format.contains('T');
   QStringList spl = modifiers.split('=');
 
-  if (time_initialized && time_zones.contains(spl.at(1))) {
+  if (has_dt != nullptr) {
+    *has_dt = time_initialized;
+  }
+
+  if (time_initialized && spl.size() == 2 && time_zones.contains(spl.at(1))) {
     QTimeZone tz = time_zones.value(spl.at(1));
 
     dat.setTimeSpec(Qt::TimeSpec::TimeZone);
@@ -335,20 +340,34 @@ QDateTime IcalendarComponent::fixupDate(QDateTime dat,
   }
 }
 
-QDateTime EventComponent::startsOn(const QMap<QString, QTimeZone>& time_zones) const {
+QDateTime EventComponent::startsOn(const QMap<QString, QTimeZone>& time_zones, bool* had_dt) const {
   QString modifiers;
   QString dt_format;
+  bool has_dt;
   QDateTime dat = TextFactory::parseDateTime(getPropertyValue(QSL("DTSTART"), modifiers).toString(), &dt_format);
 
-  return fixupDate(dat, dt_format, time_zones, modifiers);
+  dat = fixupDate(dat, dt_format, time_zones, modifiers, &has_dt);
+
+  if (had_dt != nullptr) {
+    *had_dt = has_dt;
+  }
+
+  return dat;
 }
 
-QDateTime EventComponent::endsOn(const QMap<QString, QTimeZone>& time_zones) const {
+QDateTime EventComponent::endsOn(const QMap<QString, QTimeZone>& time_zones, bool *had_dt) const {
   QString modifiers;
   QString dt_format;
+  bool has_dt;
   QDateTime dat = TextFactory::parseDateTime(getPropertyValue(QSL("DTEND"), modifiers).toString(), &dt_format);
 
-  return fixupDate(dat, dt_format, time_zones, modifiers);
+  dat = fixupDate(dat, dt_format, time_zones, modifiers, &has_dt);
+
+  if (had_dt != nullptr) {
+    *had_dt = has_dt;
+  }
+
+  return dat;
 }
 
 QString EventComponent::title() const {
