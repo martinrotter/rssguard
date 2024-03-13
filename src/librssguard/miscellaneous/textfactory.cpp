@@ -79,7 +79,7 @@ bool TextFactory::couldBeHtml(const QString& string) {
          sstring.startsWith(QL1S("<article")) || sstring.startsWith(QL1S("<details")) || Qt::mightBeRichText(sstring);
 }
 
-QDateTime TextFactory::parseDateTime(const QString& date_time) {
+QDateTime TextFactory::parseDateTime(const QString& date_time, QString* used_dt_format) {
   const QString input_date = date_time.simplified();
 
   if (input_date.isEmpty()) {
@@ -103,6 +103,10 @@ QDateTime TextFactory::parseDateTime(const QString& date_time) {
     if (dt.isValid()) {
       // Make sure that this date/time is considered UTC.
       dt.setTimeSpec(Qt::TimeSpec::UTC);
+
+      if (used_dt_format != nullptr) {
+        used_dt_format->append(pattern);
+      }
 
       // We find offset from UTC.
       if (input_date.size() >= TIMEZONE_OFFSET_LIMIT) {

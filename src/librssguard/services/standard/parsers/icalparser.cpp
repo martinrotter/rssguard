@@ -109,6 +109,16 @@ QString IcalParser::objMessageDescription(const QVariant& msg_element) const {
   const IcalendarComponent& comp_base = msg_element.value<IcalendarComponent>();
   const EventComponent& comp = static_cast<const EventComponent&>(comp_base);
 
+  auto son = comp.startsOn(m_iCalendar.m_tzs);
+  auto soff = comp.endsOn(m_iCalendar.m_tzs);
+
+  QString formaton = son.time().hour() > 0 || son.time().minute() > 0 || son.time().second() > 0
+                       ? QLocale().dateTimeFormat(QLocale::FormatType::LongFormat)
+                       : QLocale().dateFormat(QLocale::FormatType::LongFormat);
+  QString formatoff = soff.time().hour() > 0 || soff.time().minute() > 0 || soff.time().second() > 0
+                        ? QLocale().dateTimeFormat(QLocale::FormatType::LongFormat)
+                        : QLocale().dateFormat(QLocale::FormatType::LongFormat);
+
   QString body = QSL("Start date/time: %2<br/>"
                      "End date/time: %3<br/>"
                      "Location: %4<br/>"
@@ -116,8 +126,8 @@ QString IcalParser::objMessageDescription(const QVariant& msg_element) const {
                      "<br/>"
                      "%1")
                    .arg(comp.description(),
-                        QLocale().toString(comp.startsOn(m_iCalendar.m_tzs)),
-                        QLocale().toString(comp.endsOn(m_iCalendar.m_tzs)),
+                        QLocale().toString(son, formaton),
+                        QLocale().toString(soff, formatoff),
                         comp.location(),
                         comp.uid());
 
@@ -297,16 +307,17 @@ QVariant IcalendarComponent::getPropertyValue(const QString& property_name, QStr
 }
 
 QDateTime IcalendarComponent::fixupDate(QDateTime dat,
+                                        const QString& dt_format,
                                         const QMap<QString, QTimeZone>& time_zones,
                                         const QString& modifiers) const {
   // dat.setTimeSpec(Qt::TimeSpec::LocalTime);
 
   // auto xx = dat.toUTC().toString();
 
+  bool time_initialized = dt_format.contains('T');
   QStringList spl = modifiers.split('=');
 
-  if ((dat.time().hour() > 0 || dat.time().minute() > 0 || dat.time().second() > 0) && spl.size() == 2 &&
-      time_zones.contains(spl.at(1))) {
+  if (time_initialized && time_zones.contains(spl.at(1))) {
     QTimeZone tz = time_zones.value(spl.at(1));
 
     dat.setTimeSpec(Qt::TimeSpec::TimeZone);
@@ -326,16 +337,18 @@ QDateTime IcalendarComponent::fixupDate(QDateTime dat,
 
 QDateTime EventComponent::startsOn(const QMap<QString, QTimeZone>& time_zones) const {
   QString modifiers;
-  QDateTime dat = TextFactory::parseDateTime(getPropertyValue(QSL("DTSTART"), modifiers).toString());
+  QString dt_format;
+  QDateTime dat = TextFactory::parseDateTime(getPropertyValue(QSL("DTSTART"), modifiers).toString(), &dt_format);
 
-  return fixupDate(dat, time_zones, modifiers);
+  return fixupDate(dat, dt_format, time_zones, modifiers);
 }
 
 QDateTime EventComponent::endsOn(const QMap<QString, QTimeZone>& time_zones) const {
   QString modifiers;
-  QDateTime dat = TextFactory::parseDateTime(getPropertyValue(QSL("DTEND"), modifiers).toString());
+  QString dt_format;
+  QDateTime dat = TextFactory::parseDateTime(getPropertyValue(QSL("DTEND"), modifiers).toString(), &dt_format);
 
-  return fixupDate(dat, time_zones, modifiers);
+  return fixupDate(dat, dt_format, time_zones, modifiers);
 }
 
 QString EventComponent::title() const {
@@ -362,12 +375,12 @@ QDateTime EventComponent::created(const QMap<QString, QTimeZone>& time_zones) co
   QString modifiers;
   QDateTime dat = TextFactory::parseDateTime(getPropertyValue(QSL("CREATED"), modifiers).toString());
 
-  return fixupDate(dat, time_zones, modifiers);
+  return fixupDate(dat, {}, time_zones, modifiers);
 }
 
 QDateTime EventComponent::lastModified(const QMap<QString, QTimeZone>& time_zones) const {
   QString modifiers;
   QDateTime dat = TextFactory::parseDateTime(getPropertyValue(QSL("LAST-MODIFIED"), modifiers).toString());
 
-  return fixupDate(dat, time_zones, modifiers);
+  return fixupDate(dat, {}, time_zones, modifiers);
 }

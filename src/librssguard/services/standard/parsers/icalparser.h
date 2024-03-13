@@ -18,7 +18,10 @@ class IcalendarComponent {
     QVariant getPropertyValue(const QString& property_name) const;
     QVariant getPropertyValue(const QString& property_name, QString& property_modifier) const;
 
-    QDateTime fixupDate(QDateTime dat, const QMap<QString, QTimeZone>& time_zones, const QString& modifiers) const;
+    QDateTime fixupDate(QDateTime dat,
+                        const QString& dt_format,
+                        const QMap<QString, QTimeZone>& time_zones,
+                        const QString& modifiers) const;
 
     QVariantMap m_properties;
 };
