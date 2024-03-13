@@ -1,9 +1,10 @@
 Supported Feed Readers
 ======================
 RSS Guard is multi-account application and supports many web-based feed readers via built-in plugins. Its `standard` plugin provides support for these feed formats:
-* RSS (2.0, 2.0.1)
+* RSS
 * ATOM
 * RDF
+* [iCalendar](https://en.wikipedia.org/wiki/ICalendar)
 * [JSON](https://www.jsonfeed.org)
 * [Sitemap](https://en.wikipedia.org/wiki/Sitemaps) (including Sitemap index discovery and compressed sitemaps)
 
