@@ -109,7 +109,19 @@ QString IcalParser::objMessageDescription(const QVariant& msg_element) const {
   const IcalendarComponent& comp_base = msg_element.value<IcalendarComponent>();
   const EventComponent& comp = static_cast<const EventComponent&>(comp_base);
 
-  return comp.description();
+  QString body = QSL("Start date/time: %2<br/>"
+                     "End date/time: %3<br/>"
+                     "Location: %4<br/>"
+                     "UID: %5<br/>"
+                     "<br/>"
+                     "%1")
+                   .arg(comp.description(),
+                        QLocale().toString(comp.startsOn(m_iCalendar.m_tzs)),
+                        QLocale().toString(comp.endsOn(m_iCalendar.m_tzs)),
+                        comp.location(),
+                        comp.uid());
+
+  return body;
 }
 
 QString IcalParser::objMessageAuthor(const QVariant& msg_element) const {
@@ -123,7 +135,9 @@ QDateTime IcalParser::objMessageDateCreated(const QVariant& msg_element) const {
   const IcalendarComponent& comp_base = msg_element.value<IcalendarComponent>();
   const EventComponent& comp = static_cast<const EventComponent&>(comp_base);
 
-  return comp.startsOn();
+  QDateTime dat = comp.startsOn(m_iCalendar.m_tzs);
+
+  return dat;
 }
 
 QString IcalParser::objMessageId(const QVariant& msg_element) const {
@@ -162,9 +176,9 @@ void Icalendar::setTitle(const QString& title) {
 }
 
 void Icalendar::processLines(const QString& data) {
-  QRegularExpression regex("^BEGIN:(\\w+)\\r$(.+?)(?=^BEGIN|^END)",
-                           QRegularExpression::PatternOption::MultilineOption |
-                             QRegularExpression::PatternOption::DotMatchesEverythingOption);
+  static QRegularExpression regex("^BEGIN:(\\w+)\\r$(.+?)(?=^BEGIN|^END)",
+                                  QRegularExpression::PatternOption::MultilineOption |
+                                    QRegularExpression::PatternOption::DotMatchesEverythingOption);
 
   auto all_matches = regex.globalMatch(data);
 
@@ -173,10 +187,16 @@ void Icalendar::processLines(const QString& data) {
     QString component = match.captured(1);
     QString body = match.captured(2);
 
+    // Root calendar component.
     if (component == QSL("VCALENDAR")) {
       processComponentCalendar(body);
     }
 
+    if (component == QSL("VTIMEZONE")) {
+      processComponentTimezone(body);
+    }
+
+    // Event component.
     if (component == QSL("VEVENT")) {
       processComponentEvent(body);
     }
@@ -199,8 +219,20 @@ void Icalendar::processComponentEvent(const QString& body) {
   m_components.append(event);
 }
 
+void Icalendar::processComponentTimezone(const QString& body) {
+  auto tokenized = tokenizeBody(body);
+
+  QString tz_id = tokenized.value(QSL("TZID")).toString();
+
+  if (!tz_id.isEmpty()) {
+    m_tzs.insert(tz_id, QTimeZone(tz_id.toLocal8Bit()));
+  }
+}
+
 QVariantMap Icalendar::tokenizeBody(const QString& body) const {
-  QRegularExpression regex("^(?=[A-Z-]+(?:;[A-Z]+=[A-Z]+)?:)", QRegularExpression::PatternOption::MultilineOption);
+  static QRegularExpression regex("^(?=[A-Z-]+(?:;[A-Z-]+=[A-Z-\\/]+)?:)",
+                                  QRegularExpression::PatternOption::MultilineOption |
+                                    QRegularExpression::PatternOption::CaseInsensitiveOption);
   auto all_matches = body.split(regex);
   QVariantMap res;
 
@@ -215,7 +247,9 @@ QVariantMap Icalendar::tokenizeBody(const QString& body) const {
     QString value = match.mid(sep + 1);
 
     value = value.replace(QRegularExpression("\\r\\n\\s?"), QString());
-    value = value.replace(QRegularExpression("\\\\n"), QSL("<br/>"));
+    value = value.replace(QSL("\\n"), QSL("<br/>"));
+    value = value.replace(QSL("\\,"), QSL(","));
+    value = value.replace(QSL("\\;"), QSL(";"));
 
     res.insert(property, value);
   }
@@ -236,6 +270,12 @@ void IcalendarComponent::setProperties(const QVariantMap& properties) {
 }
 
 QVariant IcalendarComponent::getPropertyValue(const QString& property_name) const {
+  QString modifier;
+
+  return getPropertyValue(property_name, modifier);
+}
+
+QVariant IcalendarComponent::getPropertyValue(const QString& property_name, QString& property_modifier) const {
   if (m_properties.contains(property_name)) {
     return m_properties.value(property_name);
   }
@@ -244,45 +284,90 @@ QVariant IcalendarComponent::getPropertyValue(const QString& property_name) cons
   auto linq = boolinq::from(keys.begin(), keys.end());
   QString found_key = linq.firstOrDefault([&](const QString& ky) {
     int index_sep = ky.indexOf(';');
+    bool res = ky.startsWith(property_name) && index_sep == property_name.size();
 
-    return ky.startsWith(property_name) && index_sep == property_name.size();
+    if (res) {
+      property_modifier = ky.mid(index_sep + 1);
+    }
+
+    return res;
   });
 
   return m_properties.value(found_key);
 }
 
-QDateTime EventComponent::startsOn() const {
-  return TextFactory::parseDateTime(getPropertyValue(QSL("DTSTART")).toString());
+QDateTime IcalendarComponent::fixupDate(QDateTime dat,
+                                        const QMap<QString, QTimeZone>& time_zones,
+                                        const QString& modifiers) const {
+  // dat.setTimeSpec(Qt::TimeSpec::LocalTime);
+
+  // auto xx = dat.toUTC().toString();
+
+  QStringList spl = modifiers.split('=');
+
+  if ((dat.time().hour() > 0 || dat.time().minute() > 0 || dat.time().second() > 0) && spl.size() == 2 &&
+      time_zones.contains(spl.at(1))) {
+    QTimeZone tz = time_zones.value(spl.at(1));
+
+    dat.setTimeSpec(Qt::TimeSpec::TimeZone);
+    dat.setTimeZone(tz);
+
+    /*
+    auto yy = dat.toString();
+    auto aa = dat.timeZone().id();
+    auto zz = dat.toUTC().toString();
+*/
+    return dat.toUTC();
+  }
+  else {
+    return dat;
+  }
 }
 
-QDateTime EventComponent::endsOn() const {
-  return TextFactory::parseDateTime(m_properties.value(QSL("DTEND")).toString());
+QDateTime EventComponent::startsOn(const QMap<QString, QTimeZone>& time_zones) const {
+  QString modifiers;
+  QDateTime dat = TextFactory::parseDateTime(getPropertyValue(QSL("DTSTART"), modifiers).toString());
+
+  return fixupDate(dat, time_zones, modifiers);
+}
+
+QDateTime EventComponent::endsOn(const QMap<QString, QTimeZone>& time_zones) const {
+  QString modifiers;
+  QDateTime dat = TextFactory::parseDateTime(getPropertyValue(QSL("DTEND"), modifiers).toString());
+
+  return fixupDate(dat, time_zones, modifiers);
 }
 
 QString EventComponent::title() const {
-  return m_properties.value(QSL("SUMMARY")).toString();
+  return getPropertyValue(QSL("SUMMARY")).toString();
 }
 
 QString EventComponent::url() const {
-  return m_properties.value(QSL("URL")).toString();
+  return getPropertyValue(QSL("URL")).toString();
 }
 
 QString EventComponent::organizer() const {
-  return m_properties.value(QSL("ORGANIZER")).toString();
+  return getPropertyValue(QSL("ORGANIZER")).toString();
 }
 
 QString EventComponent::location() const {
-  return m_properties.value(QSL("LOCATION")).toString();
+  return getPropertyValue(QSL("LOCATION")).toString();
 }
 
 QString EventComponent::description() const {
-  return m_properties.value(QSL("DESCRIPTION")).toString();
+  return getPropertyValue(QSL("DESCRIPTION")).toString();
 }
 
-QDateTime EventComponent::created() const {
-  return TextFactory::parseDateTime(m_properties.value(QSL("CREATED")).toString());
+QDateTime EventComponent::created(const QMap<QString, QTimeZone>& time_zones) const {
+  QString modifiers;
+  QDateTime dat = TextFactory::parseDateTime(getPropertyValue(QSL("CREATED"), modifiers).toString());
+
+  return fixupDate(dat, time_zones, modifiers);
 }
 
-QDateTime EventComponent::lastModified() const {
-  return TextFactory::parseDateTime(m_properties.value(QSL("LAST-MODIFIED")).toString());
+QDateTime EventComponent::lastModified(const QMap<QString, QTimeZone>& time_zones) const {
+  QString modifiers;
+  QDateTime dat = TextFactory::parseDateTime(getPropertyValue(QSL("LAST-MODIFIED"), modifiers).toString());
+
+  return fixupDate(dat, time_zones, modifiers);
 }

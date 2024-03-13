@@ -5,6 +5,8 @@
 
 #include "services/standard/parsers/feedparser.h"
 
+#include <QTimeZone>
+
 class IcalendarComponent {
   public:
     QString uid() const;
@@ -14,6 +16,9 @@ class IcalendarComponent {
 
   protected:
     QVariant getPropertyValue(const QString& property_name) const;
+    QVariant getPropertyValue(const QString& property_name, QString& property_modifier) const;
+
+    QDateTime fixupDate(QDateTime dat, const QMap<QString, QTimeZone>& time_zones, const QString& modifiers) const;
 
     QVariantMap m_properties;
 };
@@ -22,15 +27,15 @@ Q_DECLARE_METATYPE(IcalendarComponent)
 
 class EventComponent : public IcalendarComponent {
   public:
-    QDateTime startsOn() const;
-    QDateTime endsOn() const;
+    QDateTime startsOn(const QMap<QString, QTimeZone>& time_zones = {}) const;
+    QDateTime endsOn(const QMap<QString, QTimeZone>& time_zones = {}) const;
     QString title() const;
     QString url() const;
     QString organizer() const;
     QString location() const;
     QString description() const;
-    QDateTime created() const;
-    QDateTime lastModified() const;
+    QDateTime created(const QMap<QString, QTimeZone>& time_zones = {}) const;
+    QDateTime lastModified(const QMap<QString, QTimeZone>& time_zones = {}) const;
 };
 
 Q_DECLARE_METATYPE(EventComponent)
@@ -48,12 +53,14 @@ class Icalendar : public FeedParser {
     void processLines(const QString& data);
     void processComponentCalendar(const QString& body);
     void processComponentEvent(const QString& body);
+    void processComponentTimezone(const QString& body);
 
     QDateTime parseDateTime(const QString& date_time) const;
     QVariantMap tokenizeBody(const QString& body) const;
 
   private:
     QString m_title;
+    QMap<QString, QTimeZone> m_tzs;
     QList<IcalendarComponent> m_components;
 };
 

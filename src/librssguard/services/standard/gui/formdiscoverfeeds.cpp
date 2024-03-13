@@ -265,13 +265,15 @@ void FormDiscoverFeeds::loadDiscoveredFeeds(const QList<StandardFeed*>& feeds) {
   RootItem* root = new RootItem();
 
   for (Feed* feed : feeds) {
+    if (feed->title().isEmpty()) {
+      feed->setTitle(tr("No title"));
+    }
+
     root->appendChild(feed);
   }
 
   m_ui.m_pbDiscovery->setVisible(false);
   m_discoveredModel->setRootItem(root);
-
-  qDebugNN << "finish";
 }
 
 DiscoveredFeedsModel::DiscoveredFeedsModel(QObject* parent) : AccountCheckModel(parent) {}
