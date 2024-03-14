@@ -10,7 +10,7 @@ RSS Guard
 
 ### [Discord server](https://discord.gg/7xbVMPPNqH) | [Downloads](https://github.com/martinrotter/rssguard/releases) | [Development builds](https://github.com/martinrotter/rssguard/releases/tag/devbuild) | [Documentation](https://rssguard.readthedocs.io) | [Translations](https://rssguard.readthedocs.io/en/stable/contrib/localization.html)
 
-RSS Guard is a simple RSS/ATOM feed reader for Windows, Linux, BSD, OS/2 or macOS which can work with RSS/ATOM/JSON/Sitemap feeds as well as many online feed services:
+RSS Guard is a simple RSS/ATOM feed reader for Windows, Linux, BSD, OS/2 or macOS which can work with RSS/ATOM/JSON/iCalendar/Sitemap feeds as well as many online feed services:
 * [Feedly](https://feedly.com)
 * [Gmail](https://developers.google.com/gmail/api)
 * Google Reader API ([Bazqux](https://bazqux.com), [FreshRSS](https://freshrss.org), [Inoreader](https://www.inoreader.com), [Miniflux](https://miniflux.app), [Reedah](http://reedah.com), [The Old Reader](https://theoldreader.com) and more)
