@@ -58,7 +58,7 @@ QList<StandardFeed*> IcalParser::discoverFeeds(ServiceRoot* root, const QUrl& ur
 
 QPair<StandardFeed*, QList<IconLocation>> IcalParser::guessFeed(const QByteArray& content,
                                                                 const QString& content_type) const {
-  if (content_type.contains(QSL("text/calendar")) || content.contains("\r\n")) {
+  if (content_type.contains(QSL("text/calendar")) || content.startsWith(QSL("BEGIN").toLocal8Bit())) {
     Icalendar calendar;
 
     try {
@@ -174,7 +174,9 @@ QString IcalParser::objMessageRawContents(const QVariant& msg_element) const {
 }
 
 Icalendar::Icalendar(const QByteArray& data) : FeedParser(QString::fromUtf8(data), FeedParser::DataType::Other) {
-  processLines(m_data);
+  if (!data.isEmpty()) {
+    processLines(m_data);
+  }
 }
 
 QString Icalendar::title() const {
@@ -191,6 +193,10 @@ void Icalendar::processLines(const QString& data) {
                                     QRegularExpression::PatternOption::DotMatchesEverythingOption);
 
   auto all_matches = regex.globalMatch(data);
+
+  if (!all_matches.hasNext()) {
+    throw ApplicationException(QObject::tr("required iCal data are missing"));
+  }
 
   while (all_matches.hasNext()) {
     auto match = all_matches.next();
@@ -355,7 +361,7 @@ QDateTime EventComponent::startsOn(const QMap<QString, QTimeZone>& time_zones, b
   return dat;
 }
 
-QDateTime EventComponent::endsOn(const QMap<QString, QTimeZone>& time_zones, bool *had_dt) const {
+QDateTime EventComponent::endsOn(const QMap<QString, QTimeZone>& time_zones, bool* had_dt) const {
   QString modifiers;
   QString dt_format;
   bool has_dt;
