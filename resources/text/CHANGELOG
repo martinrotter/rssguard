@@ -9,6 +9,7 @@ Added:
 * Added way to use old legacy article formatting in "lite" version. (#1286)
 * New way of fetching articles - new "Source" -> "Built-in web browser with JavaScript support" which allows user to use built-in Chromium-based network stack to fetch feeds and other data. It allows even fetching of majority of JavaScript-powered websites. (#1313)
 * More date/time strings for parsing some dates and times in articles.
+* "Title" column in article list is not directly resizable too. Last visible column auto-stretches to fit remaining space. (#1319)
 
 Fixed:
 * Fix freezing when feed uses crazy crazy loooong URL.
