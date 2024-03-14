@@ -59,6 +59,11 @@ class WebBrowser : public TabContent {
 
   private slots:
     void onZoomFactorChanged();
+
+#if defined(ENABLE_MEDIAPLAYER)
+    void playCurrentSiteInMediaPlayer();
+#endif
+
     void openCurrentSiteInSystemBrowser();
     void updateUrl(const QUrl& url);
     void onLoadingStarted();
@@ -70,8 +75,8 @@ class WebBrowser : public TabContent {
     void newWindowRequested(WebViewer* viewer);
 
     void readabilePage();
-    void setReadabledHtml(QObject *sndr, const QString& better_html);
-    void readabilityFailed(QObject *sndr, const QString& error);
+    void setReadabledHtml(QObject* sndr, const QString& better_html);
+    void readabilityFailed(QObject* sndr, const QString& error);
 
   signals:
     void windowCloseRequested();
@@ -97,6 +102,11 @@ class WebBrowser : public TabContent {
     QAction* m_actionStop;
     QAction* m_actionOpenInSystemBrowser;
     QAction* m_actionReadabilePage;
+
+#if defined(ENABLE_MEDIAPLAYER)
+    QAction* m_actionPlayPageInMediaPlayer;
+#endif
+
     QList<Message> m_messages;
     QPointer<RootItem> m_root;
 };

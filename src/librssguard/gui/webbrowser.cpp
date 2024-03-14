@@ -31,7 +31,10 @@ WebBrowser::WebBrowser(WebViewer* viewer, QWidget* parent)
                                             this)),
     m_actionReadabilePage(new QAction(qApp->icons()->fromTheme(QSL("text-html")),
                                       tr("View website in reader mode"),
-                                      this)) {
+                                      this)),
+    m_actionPlayPageInMediaPlayer(new QAction(qApp->icons()->fromTheme(QSL("player_play"), QSL("media-playback-start")),
+                                              tr("Play in media player"),
+                                              this)) {
   if (m_webView == nullptr) {
     m_webView = qApp->createWebView();
     dynamic_cast<QWidget*>(m_webView)->setParent(this);
@@ -82,6 +85,10 @@ void WebBrowser::createConnections() {
   connect(m_actionOpenInSystemBrowser, &QAction::triggered, this, &WebBrowser::openCurrentSiteInSystemBrowser);
   connect(m_actionReadabilePage, &QAction::triggered, this, &WebBrowser::readabilePage);
 
+#if defined(ENABLE_MEDIAPLAYER)
+  connect(m_actionPlayPageInMediaPlayer, &QAction::triggered, this, &WebBrowser::playCurrentSiteInMediaPlayer);
+#endif
+
   connect(m_txtLocation,
           &LocationLineEdit::submitted,
           this,
@@ -131,6 +138,12 @@ void WebBrowser::onZoomFactorChanged() {
   auto fact = m_webView->zoomFactor();
   qApp->settings()->setValue(GROUP(Messages), Messages::Zoom, fact);
 }
+
+#if defined(ENABLE_MEDIAPLAYER)
+void WebBrowser::playCurrentSiteInMediaPlayer() {
+  qApp->mainForm()->tabWidget()->addMediaPlayer(m_webView->url().toString(), true);
+}
+#endif
 
 void WebBrowser::clear(bool also_hide) {
   m_webView->clear();
@@ -313,6 +326,11 @@ void WebBrowser::initializeLayout() {
   m_toolBar->addAction(m_actionOpenInSystemBrowser);
   m_toolBar->addAction(m_actionReadabilePage);
 
+#if defined(ENABLE_MEDIAPLAYER)
+  m_actionPlayPageInMediaPlayer->setEnabled(false);
+  m_toolBar->addAction(m_actionPlayPageInMediaPlayer);
+#endif
+
   m_txtLocationAction = m_toolBar->addWidget(m_txtLocation);
 
   m_loadingProgress = new QProgressBar(this);
@@ -337,6 +355,10 @@ void WebBrowser::onLoadingStarted() {
   m_loadingProgress->show();
   m_actionOpenInSystemBrowser->setEnabled(false);
   m_actionReadabilePage->setEnabled(false);
+
+#if defined(ENABLE_MEDIAPLAYER)
+  m_actionPlayPageInMediaPlayer->setEnabled(false);
+#endif
 }
 
 void WebBrowser::onLoadingProgress(int progress) {
@@ -351,10 +373,18 @@ void WebBrowser::onLoadingFinished(bool success) {
     if (url.isValid() && !url.host().isEmpty()) {
       m_actionOpenInSystemBrowser->setEnabled(true);
       m_actionReadabilePage->setEnabled(true);
+
+#if defined(ENABLE_MEDIAPLAYER)
+      m_actionPlayPageInMediaPlayer->setEnabled(true);
+#endif
     }
     else {
       m_actionOpenInSystemBrowser->setEnabled(false);
       m_actionReadabilePage->setEnabled(false);
+
+#if defined(ENABLE_MEDIAPLAYER)
+      m_actionPlayPageInMediaPlayer->setEnabled(false);
+#endif
     }
   }
 

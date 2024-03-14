@@ -4,7 +4,7 @@
 Added:
 * Existing read/unread state is respected when some article gets "updated" (infamously happens for YouTube feeds). (#1279)
 * NSIS installer was bit tweaked to warn about MSVC runtime. (#1306)
-* iCalendar files (*.ics, *.ical) are now supported.
+* iCalendar files (*.ics, *.ical) are now supported. Note that the support is rather basic.
 * Added more ways of limitting amount of articles in each feed. (#1270, #1267)
 * Added way to use old legacy article formatting in "lite" version. (#1286)
 * New way of fetching articles - new "Source" -> "Built-in web browser with JavaScript support" which allows user to use built-in Chromium-based network stack to fetch feeds and other data. It allows even fetching of majority of JavaScript-powered websites. (#1313)
