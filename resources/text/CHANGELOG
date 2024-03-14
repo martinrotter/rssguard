@@ -1,6 +1,10 @@
 4.6.4
 -----
 
+One bigger new thing, dear users: I decided to start implementing brand new purely command line only version of RSS Guard to allow running RSS Guard in headless/CLI environments like servers. It will likely work like this:
+1. You run regular variant of RSS Guard and setup your feeds, how often they fetch like you normally do when running classic GUI RSS Guard.
+2. You then can launch new CLI-only RSS Guard executable perhaps on your server (or elsewhere) and it will load your settings/database and will perform article fetching regularly.
+
 Added:
 * Existing read/unread state is respected when some article gets "updated" (infamously happens for YouTube feeds). (#1279)
 * NSIS installer was bit tweaked to warn about MSVC runtime. (#1306)
