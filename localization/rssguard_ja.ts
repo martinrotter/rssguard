@@ -6082,12 +6082,12 @@ List of supported readers:</source>
     <message>
       <location filename="../src/librssguard/services/standard/parsers/icalparser.cpp" line="68"/>
       <source>iCalendar error &apos;%1&apos;</source>
-      <translation type="unfinished">iCalendar error &apos;%1&apos;</translation>
+      <translation>iCalendar エラー &apos;%1&apos;</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/standard/parsers/icalparser.cpp" line="81"/>
       <source>not an iCalendar</source>
-      <translation type="unfinished">not an iCalendar</translation>
+      <translation>iCalendar ではありません</translation>
     </message>
   </context>
   <context>
@@ -6183,22 +6183,22 @@ List of supported readers:</source>
     <message>
       <location filename="../src/librssguard/network-web/readability.cpp" line="37"/>
       <source>Packages for reader mode are installed</source>
-      <translation type="unfinished">Packages for reader mode are installed</translation>
+      <translation>リーダーモード用のパッケージがインストールされています</translation>
     </message>
     <message>
       <location filename="../src/librssguard/network-web/readability.cpp" line="38"/>
       <source>Reload your webpage and then you can use reader mode!</source>
-      <translation type="unfinished">Reload your webpage and then you can use reader mode!</translation>
+      <translation>ウェブページを再読み込みすると、リーダモードを使用できます！</translation>
     </message>
     <message>
       <location filename="../src/librssguard/network-web/readability.cpp" line="43"/>
       <source>Packages for reader mode are installed. You can now use reader mode!</source>
-      <translation type="unfinished">Packages for reader mode are installed. You can now use reader mode!</translation>
+      <translation>リーダーモード用のパッケージがインストールされました。リーダーモードが使用できるようになりました！</translation>
     </message>
     <message>
       <location filename="../src/librssguard/network-web/readability.cpp" line="58"/>
       <source>Packages for reader mode are NOT installed</source>
-      <translation type="unfinished">Packages for reader mode are NOT installed</translation>
+      <translation>リーダーモード用のパッケージがインストールされていません</translation>
     </message>
     <message>
       <location filename="../src/librssguard/network-web/readability.cpp" line="59"/>
@@ -6208,7 +6208,7 @@ List of supported readers:</source>
     <message>
       <location filename="../src/librssguard/network-web/readability.cpp" line="64"/>
       <source>Packages for reader mode are NOT installed. There is error: %1</source>
-      <translation type="unfinished">Packages for reader mode are NOT installed. There is error: %1</translation>
+      <translation>リーダーモード用のパッケージがインストールされていません。エラー: %1</translation>
     </message>
     <message>
       <location filename="../src/librssguard/network-web/readability.cpp" line="80"/>
@@ -7181,7 +7181,7 @@ Authors of this application are NOT responsible for lost data.</source>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="643"/>
       <source>Use custom date/time format for dates-only</source>
-      <translation type="unfinished">Use custom date/time format for dates-only</translation>
+      <translation>日付のみにカスタムの日付/時刻形式を使用する</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="307"/>
@@ -7989,7 +7989,7 @@ Also, relaunch &quot;Settings&quot; dialog after you install Node.js.</source>
     <message>
       <location filename="../src/librssguard/services/standard/standardfeed.cpp" line="212"/>
       <source>Built-in web browser with JavaScript support</source>
-      <translation type="unfinished">Built-in web browser with JavaScript support</translation>
+      <translation>JavaScriptをサポートする組み込みのウェブブラウザ</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/standard/standardfeed.cpp" line="215"/>
@@ -8004,7 +8004,7 @@ Also, relaunch &quot;Settings&quot; dialog after you install Node.js.</source>
     <message>
       <location filename="../src/librssguard/services/standard/standardfeed.cpp" line="306"/>
       <source>this source type cannot be used on &apos;lite&apos; %1 build</source>
-      <translation type="unfinished">this source type cannot be used on &apos;lite&apos; %1 build</translation>
+      <translation>このソースタイプは &apos;lite&apos; %1 ビルドでは使用できません</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/standard/standardfeed.cpp" line="414"/>
@@ -8024,11 +8024,11 @@ Status: %3
 Source: %4
 Item ID: %5
 </source>
-      <translation type="unfinished">Auto-update status: %1
-Active message filters: %2
-Status: %3
-Source: %4
-Item ID: %5
+      <translation>自動更新ステータス: %1
+アクティブなメッセージフィルタ: %2
+ステータス: %3
+ソース: %4
+アイテムID: %5
 </translation>
     </message>
     <message>
@@ -8036,9 +8036,9 @@ Item ID: %5
       <source>Encoding: %1
 Type: %2
 Post-processing script: %3</source>
-      <translation type="unfinished">Encoding: %1
-Type: %2
-Post-processing script: %3</translation>
+      <translation>エンコーディング: %1
+タイプ: %2
+後処理スクリプト: %3</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/standard/standardfeed.cpp" line="375"/>
@@ -8404,7 +8404,7 @@ Also, you can post-process generated feed data with yet another script if you wi
     <message>
       <location filename="../src/librssguard/services/standard/standardserviceroot.cpp" line="256"/>
       <source>this source type cannot be used on &apos;lite&apos; %1 build</source>
-      <translation type="unfinished">this source type cannot be used on &apos;lite&apos; %1 build</translation>
+      <translation>このソースタイプは &apos;lite&apos; %1 ビルドでは使用できません</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/standard/standardserviceroot.cpp" line="517"/>
