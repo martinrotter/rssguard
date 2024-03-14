@@ -6082,12 +6082,12 @@ List of supported readers:</source>
     <message>
       <location filename="../src/librssguard/services/standard/parsers/icalparser.cpp" line="68"/>
       <source>iCalendar error &apos;%1&apos;</source>
-      <translation type="unfinished">iCalendar error &apos;%1&apos;</translation>
+      <translation>iCalendar エラー &apos;%1&apos;</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/standard/parsers/icalparser.cpp" line="81"/>
       <source>not an iCalendar</source>
-      <translation type="unfinished">not an iCalendar</translation>
+      <translation>iCalendar ではありません</translation>
     </message>
   </context>
   <context>
@@ -6183,12 +6183,12 @@ List of supported readers:</source>
     <message>
       <location filename="../src/librssguard/network-web/readability.cpp" line="37"/>
       <source>Packages for reader mode are installed</source>
-      <translation type="unfinished">Packages for reader mode are installed</translation>
+      <translation>リーダーモード用のパッケージがインストールされています</translation>
     </message>
     <message>
       <location filename="../src/librssguard/network-web/readability.cpp" line="38"/>
       <source>Reload your webpage and then you can use reader mode!</source>
-      <translation type="unfinished">Reload your webpage and then you can use reader mode!</translation>
+      <translation>ウェブページを再読み込みすると、リーダモードを使用できます！</translation>
     </message>
     <message>
       <location filename="../src/librssguard/network-web/readability.cpp" line="43"/>
