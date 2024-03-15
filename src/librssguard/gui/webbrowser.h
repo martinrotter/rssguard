@@ -101,11 +101,12 @@ class WebBrowser : public TabContent {
     QAction* m_actionReload;
     QAction* m_actionStop;
     QAction* m_actionOpenInSystemBrowser;
-    QAction* m_actionReadabilePage;
 
 #if defined(ENABLE_MEDIAPLAYER)
     QAction* m_actionPlayPageInMediaPlayer;
 #endif
+
+    QAction* m_actionReadabilePage;
 
     QList<Message> m_messages;
     QPointer<RootItem> m_root;

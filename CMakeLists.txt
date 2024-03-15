@@ -191,6 +191,8 @@ endif()
 if(ENABLE_MEDIAPLAYER_QTMULTIMEDIA OR ENABLE_MEDIAPLAYER_LIBMPV)    
   set(ENABLE_MEDIAPLAYER TRUE)
   add_compile_definitions(ENABLE_MEDIAPLAYER)
+else()
+  message(STATUS "Media player feature is disabled.")
 endif()
 
 if(NO_LITE)

@@ -29,12 +29,14 @@ WebBrowser::WebBrowser(WebViewer* viewer, QWidget* parent)
     m_actionOpenInSystemBrowser(new QAction(qApp->icons()->fromTheme(QSL("document-open")),
                                             tr("Open this website in system web browser"),
                                             this)),
-    m_actionReadabilePage(new QAction(qApp->icons()->fromTheme(QSL("text-html")),
-                                      tr("View website in reader mode"),
-                                      this)),
+#if defined(ENABLE_MEDIAPLAYER)
     m_actionPlayPageInMediaPlayer(new QAction(qApp->icons()->fromTheme(QSL("player_play"), QSL("media-playback-start")),
                                               tr("Play in media player"),
-                                              this)) {
+                                              this)),
+#endif
+    m_actionReadabilePage(new QAction(qApp->icons()->fromTheme(QSL("text-html")),
+                                      tr("View website in reader mode"),
+                                      this)) {
   if (m_webView == nullptr) {
     m_webView = qApp->createWebView();
     dynamic_cast<QWidget*>(m_webView)->setParent(this);
