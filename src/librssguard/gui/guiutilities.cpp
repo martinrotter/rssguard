@@ -61,7 +61,7 @@ void GuiUtilities::fixTooBigDialog(QWidget& widget, bool move_to_center) {
 
   auto pos_widget = widget.pos();
 
-  if (move_to_center || pos_widget.x() < 0 || pos_widget.y()) {
+  if (move_to_center || pos_widget.x() < 0 || pos_widget.y() < 0) {
     //  Calculate ideal position for centering the widget.
     auto size_parent = widget.parentWidget() != nullptr ? widget.parentWidget()->size() : QSize(0, 0);
 
