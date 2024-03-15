@@ -15,7 +15,7 @@ PluginFactory::PluginFactory() {}
 QList<ServiceEntryPoint*> PluginFactory::loadPlugins() const {
   QList<ServiceEntryPoint*> plugins;
 
-  const QString plugin_name_wildcard = pluginNameWildCard() + pluginSuffix();
+  const QString plugin_name_wildcard = pluginNameWildCard() + pluginNameSuffix();
   const auto plugins_paths = pluginPaths();
   const auto backup_current_dir = QDir::currentPath();
 
@@ -59,9 +59,10 @@ QStringList PluginFactory::pluginPaths() const {
   QStringList paths;
 #if defined(Q_OS_LINUX)
   paths << QCoreApplication::applicationDirPath() + QDir::separator() + QL1S("..") + QDir::separator() + QL1S("lib") +
-             QDir::separator() + QL1S(APP_LOW_NAME) + QDir::separator() + QL1S("plugins");
+             QDir::separator() + QL1S(APP_LOW_NAME);
 #else
   paths << QCoreApplication::applicationDirPath() + QDir::separator() + QL1S("plugins");
+  paths << QCoreApplication::applicationDirPath();
 #endif
 
 #if !defined(NDEBUG)
@@ -71,7 +72,7 @@ QStringList PluginFactory::pluginPaths() const {
   return paths;
 }
 
-QString PluginFactory::pluginSuffix() const {
+QString PluginFactory::pluginNameSuffix() const {
 #if defined(Q_OS_LINUX)
   return QSL(".so");
 #elif defined(Q_OS_WIN)

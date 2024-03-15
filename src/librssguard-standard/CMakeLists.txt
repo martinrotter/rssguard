@@ -1,4 +1,5 @@
-set(LIBRSSGUARD_PATH "${CMAKE_CURRENT_SOURCE_DIR}/../librssguard")
+set(LIBRSSGUARD_SOURCE_PATH "${CMAKE_CURRENT_SOURCE_DIR}/../librssguard")
+set(LIBRSSGUARD_BINARY_PATH "${CMAKE_BINARY_DIR}/src/librssguard")
 
 set(SOURCES
   src/definitions.h
@@ -49,13 +50,13 @@ set(UI_FILES
 
 # Add mimesis.
 list(APPEND SOURCES
-  ${LIBRSSGUARD_PATH}/3rd-party/mimesis/mimesis.hpp
-  ${LIBRSSGUARD_PATH}/3rd-party/mimesis/quoted-printable.hpp
+  ${LIBRSSGUARD_SOURCE_PATH}/3rd-party/mimesis/mimesis.hpp
+  ${LIBRSSGUARD_SOURCE_PATH}/3rd-party/mimesis/quoted-printable.hpp
 )
 
 # Add boolinq.
 list(APPEND SOURCES
-  ${LIBRSSGUARD_PATH}/3rd-party/boolinq/boolinq.h
+  ${LIBRSSGUARD_SOURCE_PATH}/3rd-party/boolinq/boolinq.h
 )
 
 # Deal with .ui files.
@@ -74,33 +75,13 @@ target_compile_definitions(rssguard-standard
   PRIVATE
   RSSGUARD_DLLSPEC=Q_DECL_IMPORT
   RSSGUARD_DLLSPEC_EXPORT=Q_DECL_EXPORT
-
-  APP_AUTHOR="${APP_AUTHOR}"
-  APP_DONATE_URL="${APP_DONATE_URL}"
-  APP_EMAIL="${APP_EMAIL}"
-  APP_LOW_H_NAME=".${CMAKE_PROJECT_NAME}"
-  APP_REVISION="${APP_REVISION}"
-  APP_SYSTEM_NAME="${CMAKE_SYSTEM_NAME}"
-  APP_SYSTEM_VERSION="${CMAKE_SYSTEM_PROCESSOR}"
-
-  APP_URL_DOCUMENTATION="${APP_URL_DOCUMENTATION}"
-  APP_URL_ISSUES_NEW="${APP_URL_ISSUES_NEW}"
-  APP_USERAGENT="${APP_NAME}/${CMAKE_PROJECT_VERSION}")
+)
 
 target_include_directories(rssguard-standard
   PUBLIC
   ${CMAKE_CURRENT_SOURCE_DIR}
-  ${CMAKE_BINARY_DIR}/src/librssguard
-  ${LIBRSSGUARD_PATH}
-  ${LIBRSSGUARD_PATH}/gui/dialogs
-  ${LIBRSSGUARD_PATH}/gui/reusable
-  ${LIBRSSGUARD_PATH}/services/abstract/gui
-  ${LIBRSSGUARD_PATH}/dynamic-shortcuts
-
-  PRIVATE
-  ${LIBRSSGUARD_PATH}/gui/notifications
-  ${LIBRSSGUARD_PATH}/gui/toolbars
-  ${LIBRSSGUARD_PATH}/gui/richtexteditor
+  ${LIBRSSGUARD_SOURCE_PATH}
+  ${LIBRSSGUARD_BINARY_PATH}
 )
 
 # Qt.
@@ -128,18 +109,18 @@ if(WIN32)
   )
 endif()
 
-if(NO_LITE)
-  target_link_libraries(rssguard-standard PUBLIC
-    Qt${QT_VERSION_MAJOR}::WebEngineWidgets
-  )
-endif()
+#if(NO_LITE)
+#  target_link_libraries(rssguard-standard PUBLIC
+#    Qt${QT_VERSION_MAJOR}::WebEngineWidgets
+#  )
+#endif()
 
 if(WIN32 OR OS2)
-  install(TARGETS rssguard-standard DESTINATION .)
+  install(TARGETS rssguard-standard DESTINATION plugins)
 elseif(UNIX AND NOT APPLE AND NOT ANDROID)
   include (GNUInstallDirs)
   install(TARGETS rssguard-standard
-    DESTINATION ${CMAKE_INSTALL_LIBDIR}
+    DESTINATION ${CMAKE_INSTALL_LIBDIR}/rssguard
   )
 elseif(APPLE)
   install(TARGETS rssguard-standard
