@@ -15,6 +15,7 @@
 #include <QMetaEnum>
 #include <QMetaObject>
 #include <QProcessEnvironment>
+#include <QStyle>
 #include <QStyleFactory>
 #include <QStyleHints>
 #include <QTextDocument>

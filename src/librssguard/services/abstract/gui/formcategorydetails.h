@@ -22,7 +22,7 @@ class QMenu;
 class QAction;
 class MultiFeedEditCheckBox;
 
-class FormCategoryDetails : public QDialog {
+class RSSGUARD_DLLSPEC FormCategoryDetails : public QDialog {
     Q_OBJECT
 
   public:

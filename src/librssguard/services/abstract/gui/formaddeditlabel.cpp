@@ -7,6 +7,8 @@
 #include "miscellaneous/iconfactory.h"
 #include "services/abstract/label.h"
 
+#include <QPushButton>
+
 FormAddEditLabel::FormAddEditLabel(QWidget* parent) : QDialog(parent), m_editableLabel(nullptr) {
   m_ui.setupUi(this);
   m_ui.m_txtName->lineEdit()->setPlaceholderText(tr("Name for your label"));

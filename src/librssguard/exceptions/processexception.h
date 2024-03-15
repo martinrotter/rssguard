@@ -7,10 +7,12 @@
 
 #include <QProcess>
 
-class ProcessException : public ApplicationException {
+class RSSGUARD_DLLSPEC ProcessException : public ApplicationException {
   public:
-    ProcessException(int exit_code, QProcess::ExitStatus exit_status,
-                     QProcess::ProcessError error, const QString& message = QString());
+    ProcessException(int exit_code,
+                     QProcess::ExitStatus exit_status,
+                     QProcess::ProcessError error,
+                     const QString& message = QString());
 
     QProcess::ExitStatus exitStatus() const;
     int exitCode() const;

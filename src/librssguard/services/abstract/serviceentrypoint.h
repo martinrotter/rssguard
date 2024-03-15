@@ -11,7 +11,7 @@ class ServiceRoot;
 class FeedsModel;
 
 // TOP LEVEL class which provides basic information about the "service"
-class ServiceEntryPoint {
+class RSSGUARD_DLLSPEC ServiceEntryPoint {
   public:
     virtual ~ServiceEntryPoint() = default;
 
@@ -44,5 +44,7 @@ class ServiceEntryPoint {
     // Icon of the service.
     virtual QIcon icon() const = 0;
 };
+
+Q_DECLARE_INTERFACE(ServiceEntryPoint, "io.github.martinrotter.rssguard.serviceentrypoint")
 
 #endif // SERVICE_H

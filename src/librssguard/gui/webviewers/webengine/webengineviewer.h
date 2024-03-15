@@ -14,7 +14,7 @@
 class RootItem;
 class WebBrowser;
 
-class WebEngineViewer : public QWebEngineView, public WebViewer {
+class RSSGUARD_DLLSPEC WebEngineViewer : public QWebEngineView, public WebViewer {
     Q_OBJECT
     Q_INTERFACES(WebViewer)
 

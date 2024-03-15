@@ -17,6 +17,7 @@
 #include "network-web/webfactory.h"
 
 #include <QKeyEvent>
+#include <QProgressBar>
 #include <QScrollBar>
 #include <QTimer>
 #include <QToolBar>

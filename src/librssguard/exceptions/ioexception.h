@@ -5,7 +5,7 @@
 
 #include "exceptions/applicationexception.h"
 
-class IOException : public ApplicationException {
+class RSSGUARD_DLLSPEC IOException : public ApplicationException {
   public:
     explicit IOException(const QString& message = QString());
 };

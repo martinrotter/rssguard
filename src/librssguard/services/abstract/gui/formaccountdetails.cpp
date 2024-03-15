@@ -2,6 +2,8 @@
 
 #include "services/abstract/gui/formaccountdetails.h"
 
+#include "ui_formaccountdetails.h"
+
 #include "gui/guiutilities.h"
 #include "miscellaneous/application.h"
 #include "miscellaneous/iconfactory.h"

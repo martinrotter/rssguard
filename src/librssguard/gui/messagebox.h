@@ -8,11 +8,10 @@
 
 #include <functional>
 
-class MsgBox : public QMessageBox {
-  Q_OBJECT
+class RSSGUARD_DLLSPEC MsgBox : public QMessageBox {
+    Q_OBJECT
 
   public:
-
     // Constructors and destructors.
     explicit MsgBox(QWidget* parent = nullptr);
 

@@ -19,7 +19,7 @@ class Feed;
 class Category;
 class RootItem;
 
-class FormFeedDetails : public QDialog {
+class RSSGUARD_DLLSPEC FormFeedDetails : public QDialog {
     Q_OBJECT
 
   public:

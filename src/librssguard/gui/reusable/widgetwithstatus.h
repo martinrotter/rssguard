@@ -9,8 +9,8 @@
 class PlainToolButton;
 class QHBoxLayout;
 
-class WidgetWithStatus : public QWidget {
-  Q_OBJECT
+class RSSGUARD_DLLSPEC WidgetWithStatus : public QWidget {
+    Q_OBJECT
 
   public:
     enum class StatusType {

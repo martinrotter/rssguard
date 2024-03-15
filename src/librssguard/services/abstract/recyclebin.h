@@ -5,8 +5,8 @@
 
 #include "services/abstract/rootitem.h"
 
-class RecycleBin : public RootItem {
-  Q_OBJECT
+class RSSGUARD_DLLSPEC RecycleBin : public RootItem {
+    Q_OBJECT
 
   public:
     explicit RecycleBin(RootItem* parent_item = nullptr);

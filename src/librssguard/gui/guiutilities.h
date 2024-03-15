@@ -7,7 +7,7 @@
 #include <QLabel>
 #include <QWidget>
 
-class GuiUtilities {
+class RSSGUARD_DLLSPEC GuiUtilities {
   public:
     static void setLabelAsNotice(QLabel& label, bool is_warning, bool set_margins = true);
     static void applyDialogProperties(QWidget& widget, const QIcon& icon = QIcon(), const QString& title = QString());

@@ -10,14 +10,14 @@
 #include <QPair>
 #include <QStringList>
 
-struct CacheSnapshot {
-  QMap<QString, QStringList> m_cachedLabelAssignments;
-  QMap<QString, QStringList> m_cachedLabelDeassignments;
-  QMap<RootItem::ReadStatus, QStringList> m_cachedStatesRead;
-  QMap<RootItem::Importance, QList<Message>> m_cachedStatesImportant;
+struct RSSGUARD_DLLSPEC CacheSnapshot {
+    QMap<QString, QStringList> m_cachedLabelAssignments;
+    QMap<QString, QStringList> m_cachedLabelDeassignments;
+    QMap<RootItem::ReadStatus, QStringList> m_cachedStatesRead;
+    QMap<RootItem::Importance, QList<Message>> m_cachedStatesImportant;
 };
 
-class CacheForServiceRoot {
+class RSSGUARD_DLLSPEC CacheForServiceRoot {
   public:
     explicit CacheForServiceRoot();
     virtual ~CacheForServiceRoot();
@@ -34,7 +34,6 @@ class CacheForServiceRoot {
     bool isEmpty() const;
 
   protected:
-
     // Returns all cached data and clears the cache.
     // NOTE: If returned data are not successfuly passed back to
     // server then caller needs to re-add the data back to cache.

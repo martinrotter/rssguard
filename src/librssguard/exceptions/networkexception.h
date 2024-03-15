@@ -7,7 +7,7 @@
 
 #include <QNetworkReply>
 
-class NetworkException : public ApplicationException {
+class RSSGUARD_DLLSPEC NetworkException : public ApplicationException {
   public:
     explicit NetworkException(QNetworkReply::NetworkError error, const QString& message = QString());
 

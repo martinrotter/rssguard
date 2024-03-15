@@ -10,7 +10,7 @@
 #include "network-web/networkfactory.h"
 #include "services/abstract/feed.h"
 
-class AuthenticationDetails : public QWidget, public Ui::AuthenticationDetails {
+class RSSGUARD_DLLSPEC AuthenticationDetails : public QWidget, public Ui::AuthenticationDetails {
     Q_OBJECT
 
   public:

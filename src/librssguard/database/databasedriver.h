@@ -8,15 +8,22 @@
 #include <QSqlDatabase>
 #include <QSqlQuery>
 
-class DatabaseDriver : public QObject {
+class RSSGUARD_DLLSPEC DatabaseDriver : public QObject {
     Q_OBJECT
 
   public:
     // Describes available types of database backend.
-    enum class DriverType { SQLite, MySQL };
+    enum class DriverType {
+      SQLite,
+      MySQL
+    };
 
     // Describes what type of database user wants.
-    enum class DesiredStorageType { StrictlyFileBased, StrictlyInMemory, FromSettings };
+    enum class DesiredStorageType {
+      StrictlyFileBased,
+      StrictlyInMemory,
+      FromSettings
+    };
 
     explicit DatabaseDriver(QObject* parent = nullptr);
 

@@ -5,7 +5,7 @@
 
 #include <QString>
 
-class ApplicationException {
+class RSSGUARD_DLLSPEC ApplicationException {
   public:
     explicit ApplicationException(QString message = {});
     virtual ~ApplicationException();

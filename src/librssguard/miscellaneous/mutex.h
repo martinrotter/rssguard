@@ -6,8 +6,8 @@
 #include <QMutex>
 #include <QObject>
 
-class Mutex : public QObject {
-  Q_OBJECT
+class RSSGUARD_DLLSPEC Mutex : public QObject {
+    Q_OBJECT
 
   public:
     explicit Mutex(QObject* parent = nullptr);
@@ -20,14 +20,13 @@ class Mutex : public QObject {
     // Identifies if mutes is locked or not.
     bool isLocked() const;
 
-    operator QMutex* () const;
+    operator QMutex*() const;
 
   public slots:
     void lock();
     void unlock();
 
   protected:
-
     // These methods set proper value for m_isLocked and emit signals.
     void setLocked();
     void setUnlocked();

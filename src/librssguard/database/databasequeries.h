@@ -21,7 +21,7 @@
 #include <QSqlError>
 #include <QSqlQuery>
 
-class DatabaseQueries {
+class RSSGUARD_DLLSPEC DatabaseQueries {
   public:
     static QMap<int, QString> messageTableAttributes(bool only_msg_table, bool is_sqlite);
 

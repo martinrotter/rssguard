@@ -7,7 +7,7 @@
 
 #include <QCoreApplication>
 
-class ScriptException : public ApplicationException {
+class RSSGUARD_DLLSPEC ScriptException : public ApplicationException {
     Q_DECLARE_TR_FUNCTIONS(ScriptException)
 
   public:

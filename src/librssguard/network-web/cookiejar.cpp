@@ -14,6 +14,7 @@
 
 #if defined(NO_LITE)
 #include <QWebEngineCookieStore>
+#include <QWebEngineProfile>
 #endif
 
 CookieJar::CookieJar(QObject* parent)

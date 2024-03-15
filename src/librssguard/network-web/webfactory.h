@@ -10,9 +10,8 @@
 #include <QMap>
 
 #if defined(NO_LITE)
-#include <QWebEngineProfile>
-#include <QWebEngineSettings>
-
+class QWebEngineProfile;
+class QWebEngineSettings;
 class QAction;
 class NetworkUrlInterceptor;
 #endif
@@ -23,7 +22,7 @@ class CookieJar;
 class ApiServer;
 class Readability;
 
-class WebFactory : public QObject {
+class RSSGUARD_DLLSPEC WebFactory : public QObject {
     Q_OBJECT
 
   public:
@@ -37,7 +36,7 @@ class WebFactory : public QObject {
     // converts both HTML entity names and numbers to UTF-8 string.
     // Example of entities are:
     //   ∀ = &forall; (entity name), &#8704; (base-10 entity), &#x2200; (base-16 entity)
-    QString unescapeHtml(const QString& html);
+    static QString unescapeHtml(const QString& html);
 
     QString limitSizeOfHtmlImages(const QString& html, int desired_width, int images_max_height) const;
     QString processFeedUriScheme(const QString& url);
@@ -79,11 +78,11 @@ class WebFactory : public QObject {
     void webEngineSettingChanged(bool enabled);
 
   private:
-    QAction* createEngineSettingsAction(const QString& title, QWebEngineSettings::WebAttribute attribute);
+    QAction* createEngineSettingsAction(const QString& title, int web_attribute);
 #endif
 
   private:
-    void generateUnescapes();
+    static QMap<QString, char16_t> generateUnescapes();
 
   private:
     AdBlockManager* m_adBlock;
@@ -97,7 +96,6 @@ class WebFactory : public QObject {
     ApiServer* m_apiServer;
     CookieJar* m_cookieJar;
     Readability* m_readability;
-    QMap<QString, char16_t> m_htmlNamedEntities;
     QString m_customUserAgent;
 };
 

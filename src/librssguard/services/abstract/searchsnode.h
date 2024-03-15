@@ -7,7 +7,7 @@
 
 #include "services/abstract/search.h"
 
-class SearchsNode : public RootItem {
+class RSSGUARD_DLLSPEC SearchsNode : public RootItem {
     Q_OBJECT
 
   public:

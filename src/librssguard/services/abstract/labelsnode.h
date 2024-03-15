@@ -7,7 +7,7 @@
 
 #include "services/abstract/label.h"
 
-class LabelsNode : public RootItem {
+class RSSGUARD_DLLSPEC LabelsNode : public RootItem {
     Q_OBJECT
 
   public:

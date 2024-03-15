@@ -12,7 +12,7 @@ class QParallelAnimationGroup;
 class QScrollArea;
 class PlainToolButton;
 
-class HelpSpoiler : public QWidget {
+class RSSGUARD_DLLSPEC HelpSpoiler : public QWidget {
     Q_OBJECT
 
   public:

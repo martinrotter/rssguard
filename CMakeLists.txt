@@ -308,7 +308,12 @@ elseif(UNIX AND NOT ANDROID)
   )
 endif()
 
-# Generate localizations, build library and application.
+# Common libraries.
 add_subdirectory(src/librssguard)
 add_subdirectory(localization)
+
+# Plugins.
+add_subdirectory(src/librssguard-standard)
+
+# GUI executable.
 add_subdirectory(src/rssguard)

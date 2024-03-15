@@ -13,7 +13,7 @@ namespace Ui {
 
 class Search;
 
-class FormAddEditProbe : public QDialog {
+class RSSGUARD_DLLSPEC FormAddEditProbe : public QDialog {
     Q_OBJECT
 
   public:

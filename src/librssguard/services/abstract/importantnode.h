@@ -5,8 +5,8 @@
 
 #include "services/abstract/rootitem.h"
 
-class ImportantNode : public RootItem {
-  Q_OBJECT
+class RSSGUARD_DLLSPEC ImportantNode : public RootItem {
+    Q_OBJECT
 
   public:
     explicit ImportantNode(RootItem* parent_item = nullptr);

@@ -62,6 +62,9 @@
 #else
 #include <QWebEngineDownloadItem>
 #endif
+
+#include <QWebEngineProfile>
+#include <QWebEngineSettings>
 #endif
 
 #if defined(Q_OS_WIN)

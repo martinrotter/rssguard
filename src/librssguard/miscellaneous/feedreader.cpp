@@ -12,6 +12,7 @@
 #include "gui/dialogs/formmessagefiltersmanager.h"
 #include "miscellaneous/application.h"
 #include "miscellaneous/mutex.h"
+#include "miscellaneous/pluginfactory.h"
 #include "miscellaneous/settings.h"
 #include "services/abstract/cacheforserviceroot.h"
 #include "services/abstract/serviceroot.h"
@@ -20,7 +21,6 @@
 #include "services/greader/greaderentrypoint.h"
 #include "services/owncloud/owncloudserviceentrypoint.h"
 #include "services/reddit/redditentrypoint.h"
-#include "services/standard/standardserviceentrypoint.h"
 #include "services/tt-rss/ttrssserviceentrypoint.h"
 
 #include <QThread>
@@ -68,8 +68,12 @@ QList<ServiceEntryPoint*> FeedReader::feedServices() {
     m_feedServices.append(new RedditEntryPoint());
 #endif
 
-    m_feedServices.append(new StandardServiceEntryPoint());
     m_feedServices.append(new TtRssServiceEntryPoint());
+
+    PluginFactory plugin_loader;
+
+    // Add dynamically loaded plugins.
+    m_feedServices.append(plugin_loader.loadPlugins());
   }
 
   return m_feedServices;

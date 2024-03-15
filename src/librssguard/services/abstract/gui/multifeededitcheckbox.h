@@ -5,7 +5,7 @@
 
 #include <QCheckBox>
 
-class MultiFeedEditCheckBox : public QCheckBox {
+class RSSGUARD_DLLSPEC MultiFeedEditCheckBox : public QCheckBox {
     Q_OBJECT
 
   public:

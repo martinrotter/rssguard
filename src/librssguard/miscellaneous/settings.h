@@ -19,15 +19,18 @@
 #include <QStringList>
 #include <QWriteLocker>
 
-#define KEY                 extern const QString
-#define DKEY                const QString
-#define VALUE(x)            extern const x
-#define NON_CONST_VALUE(x)  extern x
+#define KEY  RSSGUARD_DLLSPEC extern const QString
+#define DKEY const QString
+
+#define VALUE(x)           RSSGUARD_DLLSPEC extern const x
+#define NON_CONST_VALUE(x) extern x
+
 #define DVALUE(x)           const x
 #define NON_CONST_DVALUE(x) x
-#define SETTING(x)          x, x##Def
-#define DEFAULT_VALUE(x)    x##Def
-#define GROUP(x)            x::ID
+
+#define SETTING(x)       x, x##Def
+#define DEFAULT_VALUE(x) x##Def
+#define GROUP(x)         x::ID
 
 #if defined(NO_LITE)
 namespace WebEngineAttributes {
