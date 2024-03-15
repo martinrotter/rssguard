@@ -99,12 +99,16 @@ void SettingsNotifications::saveSettings() {
                        m_ui.m_cbCustomNotificationsPosition->currentData()
                          .value<ToastNotificationsManager::NotificationPosition>());
 
-  qApp->toastNotifications()->resetNotifications(true);
-  qApp->toastNotifications()->showNotification(Notification::Event::GeneralEvent,
-                                               GuiMessage(tr("How do I look?"),
-                                                          tr("Just testing new notifications settings. "
-                                                             "That's all."),
-                                                          QSystemTrayIcon::MessageIcon::Warning));
+  auto* toasts = qApp->toastNotifications();
+
+  if (toasts != nullptr) {
+    toasts->resetNotifications(true);
+    toasts->showNotification(Notification::Event::GeneralEvent,
+                             GuiMessage(tr("How do I look?"),
+                                        tr("Just testing new notifications settings. "
+                                           "That's all."),
+                                        QSystemTrayIcon::MessageIcon::Warning));
+  }
 
   onEndSaveSettings();
 }
