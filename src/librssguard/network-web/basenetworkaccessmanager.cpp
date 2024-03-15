@@ -10,6 +10,11 @@
 #include <QNetworkReply>
 #include <QNetworkRequest>
 
+#if defined(NO_LITE)
+#include <QWebEngineProfile>
+#include <QWebEngineSettings>
+#endif
+
 BaseNetworkAccessManager::BaseNetworkAccessManager(QObject* parent)
   : QNetworkAccessManager(parent), m_enableHttp2(false) {
   connect(this, &BaseNetworkAccessManager::sslErrors, this, &BaseNetworkAccessManager::onSslErrors);

@@ -7,7 +7,7 @@
 
 #include <QVariant>
 
-class FeedRecognizedButFailedException : public ApplicationException {
+class RSSGUARD_DLLSPEC FeedRecognizedButFailedException : public ApplicationException {
   public:
     explicit FeedRecognizedButFailedException(const QString& message = {}, const QVariant& arbitrary_data = {});
 

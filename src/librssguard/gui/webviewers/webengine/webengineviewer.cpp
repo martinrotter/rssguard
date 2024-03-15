@@ -26,6 +26,9 @@
 #include <QWebEngineContextMenuData>
 #endif
 
+#include <QWebEngineProfile>
+#include <QWebEngineSettings>
+
 WebEngineViewer::WebEngineViewer(QWidget* parent) : QWebEngineView(parent), m_browser(nullptr), m_root(nullptr) {
   WebEnginePage* page = new WebEnginePage(this);
 

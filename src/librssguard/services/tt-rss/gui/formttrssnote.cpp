@@ -11,8 +11,10 @@
 #include "services/tt-rss/ttrssnotetopublish.h"
 #include "services/tt-rss/ttrssserviceroot.h"
 
-FormTtRssNote::FormTtRssNote(TtRssServiceRoot* root) : QDialog(qApp->mainFormWidget()), m_root(root), m_titleOk(false),
-  m_urlOk(false) {
+#include <QPushButton>
+
+FormTtRssNote::FormTtRssNote(TtRssServiceRoot* root)
+  : QDialog(qApp->mainFormWidget()), m_root(root), m_titleOk(false), m_urlOk(false) {
   m_ui.setupUi(this);
 
   GuiUtilities::applyDialogProperties(*this,
@@ -44,20 +46,19 @@ void FormTtRssNote::sendNote() {
     accept();
   }
   else {
-    MsgBox::show({}, QMessageBox::Icon::Critical,
-                     tr("Cannot share note"),
-                     tr("There was an error, when trying to send your custom note."),
-                     {},
-                     res.error());
+    MsgBox::show({},
+                 QMessageBox::Icon::Critical,
+                 tr("Cannot share note"),
+                 tr("There was an error, when trying to send your custom note."),
+                 {},
+                 res.error());
   }
 }
 
 void FormTtRssNote::onTitleChanged(const QString& text) {
   m_titleOk = !text.simplified().isEmpty();
 
-  m_ui.m_txtTitle->setStatus(m_titleOk
-                             ? WidgetWithStatus::StatusType::Ok
-                             : WidgetWithStatus::StatusType::Error,
+  m_ui.m_txtTitle->setStatus(m_titleOk ? WidgetWithStatus::StatusType::Ok : WidgetWithStatus::StatusType::Error,
                              tr("Enter non-empty title."));
 
   updateOkButton();
@@ -66,9 +67,7 @@ void FormTtRssNote::onTitleChanged(const QString& text) {
 void FormTtRssNote::onUrlChanged(const QString& text) {
   m_urlOk = text.startsWith(URI_SCHEME_HTTPS) || text.startsWith(URI_SCHEME_HTTP);
 
-  m_ui.m_txtUrl->setStatus(m_urlOk
-                           ? WidgetWithStatus::StatusType::Ok
-                           : WidgetWithStatus::StatusType::Error,
+  m_ui.m_txtUrl->setStatus(m_urlOk ? WidgetWithStatus::StatusType::Ok : WidgetWithStatus::StatusType::Error,
                            tr("Enter valid URL."));
 
   updateOkButton();

@@ -8,7 +8,7 @@
 #include <QDateTime>
 #include <QFontMetrics>
 
-class TextFactory {
+class RSSGUARD_DLLSPEC TextFactory {
   private:
     // Constructors and destructors.
     TextFactory();

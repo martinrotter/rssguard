@@ -7,7 +7,7 @@
 
 #include <QJSValue>
 
-class FilteringException : public ApplicationException {
+class RSSGUARD_DLLSPEC FilteringException : public ApplicationException {
   public:
     explicit FilteringException(QJSValue::ErrorType js_error, QString message = QString());
 

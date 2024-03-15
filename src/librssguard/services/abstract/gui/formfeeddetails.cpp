@@ -2,6 +2,8 @@
 
 #include "services/abstract/gui/formfeeddetails.h"
 
+#include "ui_formfeeddetails.h"
+
 #include "database/databasequeries.h"
 #include "definitions/definitions.h"
 #include "exceptions/applicationexception.h"

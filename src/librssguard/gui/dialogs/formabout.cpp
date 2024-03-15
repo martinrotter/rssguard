@@ -17,6 +17,10 @@
 #include <QPlainTextEdit>
 #include <QTextStream>
 
+#if defined(NO_LITE)
+#include <QWebEngineProfile>
+#endif
+
 FormAbout::FormAbout(bool go_to_changelog, QWidget* parent) : QDialog(parent) {
   m_ui.setupUi(this);
   m_ui.m_lblIcon->setPixmap(QPixmap(APP_ICON_PATH));

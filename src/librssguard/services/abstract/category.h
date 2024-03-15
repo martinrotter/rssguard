@@ -5,7 +5,7 @@
 
 #include "services/abstract/rootitem.h"
 
-class Category : public RootItem {
+class RSSGUARD_DLLSPEC Category : public RootItem {
     Q_OBJECT
 
   public:

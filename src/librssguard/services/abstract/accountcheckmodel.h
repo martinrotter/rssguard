@@ -10,8 +10,8 @@
 
 // This is common model which displays only categories/feeds
 // and allows user to place checkmarks.
-class AccountCheckModel : public QAbstractItemModel {
-  Q_OBJECT
+class RSSGUARD_DLLSPEC AccountCheckModel : public QAbstractItemModel {
+    Q_OBJECT
 
   public:
     explicit AccountCheckModel(QObject* parent = nullptr);
@@ -56,8 +56,8 @@ class AccountCheckModel : public QAbstractItemModel {
     bool m_recursiveChange;
 };
 
-class AccountCheckSortedModel : public QSortFilterProxyModel {
-  Q_OBJECT
+class RSSGUARD_DLLSPEC AccountCheckSortedModel : public QSortFilterProxyModel {
+    Q_OBJECT
 
   public:
     explicit AccountCheckSortedModel(QObject* parent = nullptr);

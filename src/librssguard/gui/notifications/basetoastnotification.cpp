@@ -5,7 +5,9 @@
 #include "miscellaneous/iconfactory.h"
 #include "miscellaneous/settings.h"
 
+#include <QAbstractButton>
 #include <QCloseEvent>
+#include <QLabel>
 #include <QTimerEvent>
 
 #include <chrono>

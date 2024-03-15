@@ -231,6 +231,8 @@ set(SOURCES
   miscellaneous/notification.h
   miscellaneous/notificationfactory.cpp
   miscellaneous/notificationfactory.h
+  miscellaneous/pluginfactory.cpp
+  miscellaneous/pluginfactory.h
   miscellaneous/regexfactory.cpp
   miscellaneous/regexfactory.h
   miscellaneous/settings.cpp
@@ -399,43 +401,6 @@ set(SOURCES
   services/reddit/redditserviceroot.h
   services/reddit/redditsubscription.cpp
   services/reddit/redditsubscription.h
-  services/standard/definitions.h
-  services/standard/gui/formdiscoverfeeds.cpp
-  services/standard/gui/formdiscoverfeeds.h
-  services/standard/gui/formeditstandardaccount.cpp
-  services/standard/gui/formeditstandardaccount.h
-  services/standard/gui/formstandardfeeddetails.cpp
-  services/standard/gui/formstandardfeeddetails.h
-  services/standard/gui/formstandardimportexport.cpp
-  services/standard/gui/formstandardimportexport.h
-  services/standard/gui/standardaccountdetails.cpp
-  services/standard/gui/standardaccountdetails.h
-  services/standard/gui/standardfeeddetails.cpp
-  services/standard/gui/standardfeeddetails.h
-  services/standard/parsers/atomparser.cpp
-  services/standard/parsers/atomparser.h
-  services/standard/parsers/feedparser.cpp
-  services/standard/parsers/feedparser.h
-  services/standard/parsers/icalparser.cpp
-  services/standard/parsers/icalparser.h
-  services/standard/parsers/jsonparser.cpp
-  services/standard/parsers/jsonparser.h
-  services/standard/parsers/rdfparser.cpp
-  services/standard/parsers/rdfparser.h
-  services/standard/parsers/rssparser.cpp
-  services/standard/parsers/rssparser.h
-  services/standard/parsers/sitemapparser.cpp
-  services/standard/parsers/sitemapparser.h
-  services/standard/standardcategory.cpp
-  services/standard/standardcategory.h
-  services/standard/standardfeed.cpp
-  services/standard/standardfeed.h
-  services/standard/standardfeedsimportexportmodel.cpp
-  services/standard/standardfeedsimportexportmodel.h
-  services/standard/standardserviceentrypoint.cpp
-  services/standard/standardserviceentrypoint.h
-  services/standard/standardserviceroot.cpp
-  services/standard/standardserviceroot.h
   services/tt-rss/definitions.h
   services/tt-rss/gui/formeditttrssaccount.cpp
   services/tt-rss/gui/formeditttrssaccount.h
@@ -508,10 +473,6 @@ set(UI_FILES
   services/greader/gui/greaderfeeddetails.ui
   services/owncloud/gui/owncloudaccountdetails.ui
   services/reddit/gui/redditaccountdetails.ui
-  services/standard/gui/formdiscoverfeeds.ui
-  services/standard/gui/formstandardimportexport.ui
-  services/standard/gui/standardaccountdetails.ui
-  services/standard/gui/standardfeeddetails.ui
   services/tt-rss/gui/formttrssnote.ui
   services/tt-rss/gui/ttrssaccountdetails.ui
   services/tt-rss/gui/ttrssfeeddetails.ui

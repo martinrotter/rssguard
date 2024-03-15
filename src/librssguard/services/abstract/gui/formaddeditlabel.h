@@ -13,8 +13,8 @@ namespace Ui {
 
 class Label;
 
-class FormAddEditLabel : public QDialog {
-  Q_OBJECT
+class RSSGUARD_DLLSPEC FormAddEditLabel : public QDialog {
+    Q_OBJECT
 
   public:
     explicit FormAddEditLabel(QWidget* parent = nullptr);

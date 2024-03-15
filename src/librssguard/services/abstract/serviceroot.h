@@ -29,7 +29,7 @@ class FormAccountDetails;
 // THIS IS the root node of the service.
 // NOTE: The root usually contains some core functionality of the
 // service like service account username/password etc.
-class ServiceRoot : public RootItem {
+class RSSGUARD_DLLSPEC ServiceRoot : public RootItem {
     Q_OBJECT
 
   public:

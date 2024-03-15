@@ -7,8 +7,8 @@
 
 #include <QLabel>
 
-class LabelWithStatus : public WidgetWithStatus {
-  Q_OBJECT
+class RSSGUARD_DLLSPEC LabelWithStatus : public WidgetWithStatus {
+    Q_OBJECT
 
   public:
     explicit LabelWithStatus(QWidget* parent = nullptr);

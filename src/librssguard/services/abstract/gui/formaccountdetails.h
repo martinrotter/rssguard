@@ -15,7 +15,7 @@
 
 class ServiceRoot;
 
-class FormAccountDetails : public QDialog {
+class RSSGUARD_DLLSPEC FormAccountDetails : public QDialog {
     Q_OBJECT
 
   public:

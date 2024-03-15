@@ -12,7 +12,7 @@
 #include <QVariant>
 
 // Base class for "feed" nodes.
-class Feed : public RootItem {
+class RSSGUARD_DLLSPEC Feed : public RootItem {
     Q_OBJECT
 
   public:

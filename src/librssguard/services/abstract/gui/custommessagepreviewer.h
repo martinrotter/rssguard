@@ -9,7 +9,7 @@
 
 class RootItem;
 
-class CustomMessagePreviewer : public QWidget {
+class RSSGUARD_DLLSPEC CustomMessagePreviewer : public QWidget {
     Q_OBJECT
 
   public:

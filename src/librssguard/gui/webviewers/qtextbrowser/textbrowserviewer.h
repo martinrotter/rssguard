@@ -21,7 +21,7 @@ class Downloader;
 
 class TextBrowserViewer;
 
-class TextBrowserDocument : public QTextDocument {
+class RSSGUARD_DLLSPEC TextBrowserDocument : public QTextDocument {
     Q_OBJECT
 
   public:
@@ -34,7 +34,7 @@ class TextBrowserDocument : public QTextDocument {
     QPointer<TextBrowserViewer> m_viewer;
 };
 
-class TextBrowserViewer : public QTextBrowser, public WebViewer {
+class RSSGUARD_DLLSPEC TextBrowserViewer : public QTextBrowser, public WebViewer {
     Q_OBJECT
     Q_INTERFACES(WebViewer)
 

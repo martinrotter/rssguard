@@ -16,7 +16,7 @@
 #include <QPair>
 #include <QVariant>
 
-struct NetworkResult {
+struct RSSGUARD_DLLSPEC NetworkResult {
     QNetworkReply::NetworkError m_networkError;
     int m_httpCode;
     QString m_contentType;
@@ -32,7 +32,7 @@ struct NetworkResult {
 
 class Downloader;
 
-class NetworkFactory {
+class RSSGUARD_DLLSPEC NetworkFactory {
     Q_DECLARE_TR_FUNCTIONS(NetworkFactory)
 
   private:

@@ -3,11 +3,9 @@
 #ifndef DOWNLOADMANAGER_H
 #define DOWNLOADMANAGER_H
 
-#include "ui_downloaditem.h"
-#include "ui_downloadmanager.h"
-
 #include "gui/tabcontent.h"
 
+#include <QAbstractListModel>
 #include <QDateTime>
 #include <QElapsedTimer>
 #include <QFile>
@@ -18,16 +16,24 @@ class DownloadModel;
 class QFileIconProvider;
 class QMimeData;
 
-class DownloadItem : public QWidget {
-  Q_OBJECT
+namespace Ui {
+  class DownloadItem;
+}
 
-  friend class DownloadManager;
-  friend class DownloadModel;
+namespace Ui {
+  class DownloadManager;
+}
+
+class DownloadItem : public QWidget {
+    Q_OBJECT
+
+    friend class DownloadManager;
+    friend class DownloadModel;
 
   public:
     explicit DownloadItem(QNetworkReply* reply = nullptr,
                           const QString& preferred_file_name = {},
-                          const std::function<void (DownloadItem*)>& run_on_finish = {},
+                          const std::function<void(DownloadItem*)>& run_on_finish = {},
                           QWidget* parent = nullptr);
     virtual ~DownloadItem();
 
@@ -69,7 +75,7 @@ class DownloadItem : public QWidget {
     QFile m_output;
     QNetworkReply* m_reply;
     QString m_preferredFileName;
-    std::function<void (DownloadItem*)> m_runOnFinish;
+    std::function<void(DownloadItem*)> m_runOnFinish;
     qint64 m_bytesReceived;
     QElapsedTimer m_downloadTime;
     QTime m_lastProgressTime;
@@ -84,10 +90,10 @@ class WebBrowser;
 class SilentNetworkAccessManager;
 
 class DownloadManager : public TabContent {
-  Q_OBJECT
-  Q_PROPERTY(RemovePolicy removePolicy READ removePolicy WRITE setRemovePolicy NOTIFY removePolicyChanged)
+    Q_OBJECT
+    Q_PROPERTY(RemovePolicy removePolicy READ removePolicy WRITE setRemovePolicy NOTIFY removePolicyChanged)
 
-  friend class DownloadModel;
+    friend class DownloadModel;
 
   public:
     enum class RemovePolicy {
@@ -142,7 +148,7 @@ class DownloadManager : public TabContent {
   private:
     void handleUnsupportedContent(QNetworkReply* reply,
                                   const QString& preferred_file_name,
-                                  const std::function<void (DownloadItem*)>& run_on_finish);
+                                  const std::function<void(DownloadItem*)>& run_on_finish);
     void addItem(DownloadItem* item);
 
     QScopedPointer<Ui::DownloadManager> m_ui;
@@ -160,9 +166,9 @@ inline WebBrowser* DownloadManager::webBrowser() const {
 }
 
 class DownloadModel : public QAbstractListModel {
-  Q_OBJECT
+    Q_OBJECT
 
-  friend class DownloadManager;
+    friend class DownloadManager;
 
   public:
     explicit DownloadModel(DownloadManager* download_manager, QObject* parent = nullptr);

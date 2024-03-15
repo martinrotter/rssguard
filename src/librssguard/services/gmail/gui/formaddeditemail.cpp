@@ -14,6 +14,7 @@
 #include "services/gmail/gui/emailrecipientcontrol.h"
 
 #include <QCloseEvent>
+#include <QPushButton>
 #include <QTextDocumentFragment>
 
 FormAddEditEmail::FormAddEditEmail(GmailServiceRoot* root, QWidget* parent)

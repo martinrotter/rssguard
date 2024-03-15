@@ -11,7 +11,7 @@ namespace Ui {
   class AccountDetails;
 }
 
-class AccountDetails : public QWidget {
+class RSSGUARD_DLLSPEC AccountDetails : public QWidget {
     Q_OBJECT
 
     friend class FormAccountDetails;
