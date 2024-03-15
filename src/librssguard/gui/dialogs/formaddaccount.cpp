@@ -52,7 +52,9 @@ void FormAddAccount::showAccountDetails() {
 }
 
 ServiceEntryPoint* FormAddAccount::selectedEntryPoint() const {
-  return m_entryPoints.at(m_ui->m_listEntryPoints->currentRow());
+  return reinterpret_cast<ServiceEntryPoint*>(m_ui->m_listEntryPoints->currentItem()
+                                                ->data(Qt::ItemDataRole::UserRole)
+                                                .value<intptr_t>());
 }
 
 void FormAddAccount::loadEntryPoints() {
@@ -66,8 +68,10 @@ void FormAddAccount::loadEntryPoints() {
     QListWidgetItem* item = new QListWidgetItem(entry_point->icon(), entry_point->name(), m_ui->m_listEntryPoints);
 
     item->setToolTip(entry_point->description());
+    item->setData(Qt::ItemDataRole::UserRole, QVariant::fromValue<intptr_t>(reinterpret_cast<intptr_t>(entry_point)));
     i++;
   }
 
   m_ui->m_listEntryPoints->setCurrentRow(classic_row);
+  m_ui->m_listEntryPoints->sortItems(Qt::SortOrder::AscendingOrder);
 }

@@ -15,7 +15,7 @@ class PluginFactory {
 
   private:
     QStringList pluginPaths() const;
-    QString pluginSuffix() const;
+    QString pluginNameSuffix() const;
     QString pluginNameWildCard() const;
 };
 
