@@ -6102,12 +6102,12 @@ Lijst met ondersteunde lezers:</translation>
     <message>
       <location filename="../src/librssguard/services/standard/parsers/icalparser.cpp" line="68"/>
       <source>iCalendar error &apos;%1&apos;</source>
-      <translation type="unfinished">iCalendar error &apos;%1&apos;</translation>
+      <translation>iCalender-fout &apos;%1&apos;</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/standard/parsers/icalparser.cpp" line="81"/>
       <source>not an iCalendar</source>
-      <translation type="unfinished">not an iCalendar</translation>
+      <translation>geen geldige iCalender</translation>
     </message>
   </context>
   <context>
@@ -6208,12 +6208,12 @@ Lijst met ondersteunde lezers:</translation>
     <message>
       <location filename="../src/librssguard/network-web/readability.cpp" line="38"/>
       <source>Reload your webpage and then you can use reader mode!</source>
-      <translation type="unfinished">Reload your webpage and then you can use reader mode!</translation>
+      <translation>Herlaad je webpagina en dan kan je de lezenmodus gebruiken!</translation>
     </message>
     <message>
       <location filename="../src/librssguard/network-web/readability.cpp" line="43"/>
       <source>Packages for reader mode are installed. You can now use reader mode!</source>
-      <translation type="unfinished">Packages for reader mode are installed. You can now use reader mode!</translation>
+      <translation>Pakketten voor lezermodus zijn geïnstalleerd. Je kunt nu de lezenmodus gebruiken!</translation>
     </message>
     <message>
       <location filename="../src/librssguard/network-web/readability.cpp" line="58"/>
@@ -6228,7 +6228,7 @@ Lijst met ondersteunde lezers:</translation>
     <message>
       <location filename="../src/librssguard/network-web/readability.cpp" line="64"/>
       <source>Packages for reader mode are NOT installed. There is error: %1</source>
-      <translation type="unfinished">Packages for reader mode are NOT installed. There is error: %1</translation>
+      <translation>Pakketten voor de lezermodus zijn NIET geïnstalleerd. Er is een fout: %1</translation>
     </message>
     <message>
       <location filename="../src/librssguard/network-web/readability.cpp" line="80"/>
@@ -7204,7 +7204,7 @@ Makers van de applicatie zijn niet verantwoordelijk voor dataverlies.</translati
     <message>
       <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="643"/>
       <source>Use custom date/time format for dates-only</source>
-      <translation type="unfinished">Use custom date/time format for dates-only</translation>
+      <translation>Gebruik aangepaste datum/tijdnotatie alleen voor datums</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="307"/>
@@ -8012,7 +8012,7 @@ Start ook het dialoogvenster &quot;Instellingen&quot; opnieuw nadat je Node.js h
     <message>
       <location filename="../src/librssguard/services/standard/standardfeed.cpp" line="212"/>
       <source>Built-in web browser with JavaScript support</source>
-      <translation type="unfinished">Built-in web browser with JavaScript support</translation>
+      <translation>Ingebouwde webbrowser met JavaScript ondersteuning</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/standard/standardfeed.cpp" line="215"/>
@@ -8027,7 +8027,7 @@ Start ook het dialoogvenster &quot;Instellingen&quot; opnieuw nadat je Node.js h
     <message>
       <location filename="../src/librssguard/services/standard/standardfeed.cpp" line="306"/>
       <source>this source type cannot be used on &apos;lite&apos; %1 build</source>
-      <translation type="unfinished">this source type cannot be used on &apos;lite&apos; %1 build</translation>
+      <translation>dit brontype kan niet worden gebruikt op &apos;Lite&apos; %1 build</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/standard/standardfeed.cpp" line="414"/>
@@ -8047,10 +8047,10 @@ Status: %3
 Source: %4
 Item ID: %5
 </source>
-      <translation type="unfinished">Auto-update status: %1
-Active message filters: %2
+      <translation>Auto-update status: %1
+Actieve berichtenfilters: %2
 Status: %3
-Source: %4
+Bron: %4
 Item ID: %5
 </translation>
     </message>
@@ -8059,9 +8059,9 @@ Item ID: %5
       <source>Encoding: %1
 Type: %2
 Post-processing script: %3</source>
-      <translation type="unfinished">Encoding: %1
+      <translation>Codering: %1
 Type: %2
-Post-processing script: %3</translation>
+Achteraftoepassen script: %3</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/standard/standardfeed.cpp" line="375"/>
@@ -8427,7 +8427,7 @@ Je kunt ook gegenereerde feedgegevens nabewerken met nog een ander script als je
     <message>
       <location filename="../src/librssguard/services/standard/standardserviceroot.cpp" line="256"/>
       <source>this source type cannot be used on &apos;lite&apos; %1 build</source>
-      <translation type="unfinished">this source type cannot be used on &apos;lite&apos; %1 build</translation>
+      <translation>dit brontype kan niet worden gebruikt op &apos;Lite&apos; %1 build</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/standard/standardserviceroot.cpp" line="517"/>

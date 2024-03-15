@@ -62,7 +62,7 @@
     <message>
       <location filename="../src/librssguard/network-web/adblock/adblockdialog.cpp" line="65"/>
       <source>There is some error in AdBlock component and it cannot be enabled. Check error message below (or application debug log) for more information.</source>
-      <translation>Hay un error en el componente AdBlock y no se puede habilitar. Consulte el siguiente mensaje de error (o el registro de depuración de la aplicación) para obtener más información.</translation>
+      <translation>Hay un error en el componente AdBlock y es imposible habilitarlo. Consulte el siguiente mensaje de error (o el registro de depuración de la aplicación) para obtener más información.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/network-web/adblock/adblockdialog.cpp" line="99"/>
@@ -177,7 +177,7 @@ Error: %1</translation>
     <message>
       <location filename="../src/librssguard/miscellaneous/application.cpp" line="615"/>
       <source>Output directory is not writable.</source>
-      <translation>El directorio de salida no tiene permisos de escritura.</translation>
+      <translation>La carpeta de salida carece de permisos de escritura.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/miscellaneous/application.cpp" line="623"/>
@@ -187,22 +187,22 @@ Error: %1</translation>
     <message>
       <location filename="../src/librssguard/miscellaneous/application.cpp" line="638"/>
       <source>Database restoration was not initiated. Make sure that output directory is writable.</source>
-      <translation>No se ha iniciado la restauración de la base de datos. Asegúrese de que el directorio de salida tiene permisos de escritura.</translation>
+      <translation>Restauración de la base de datos sin iniciar. Asegúrese de que el directorio de salida tiene permisos de escritura.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/miscellaneous/application.cpp" line="645"/>
       <source>Settings restoration was not initiated. Make sure that output directory is writable.</source>
-      <translation>No se ha iniciado la restauración de configuración. Asegúrese de que el directorio de salida tiene permisos de escritura.</translation>
+      <translation>Fue imposible iniciar la restauración de la configuración. Verifique que la carpeta de salida tiene permisos de escritura.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/miscellaneous/application.cpp" line="1208"/>
       <source>Cannot add feed</source>
-      <translation>No se puede añadir la fuente</translation>
+      <translation>Imposible añadir la fuente</translation>
     </message>
     <message>
       <location filename="../src/librssguard/miscellaneous/application.cpp" line="1209"/>
       <source>Feed cannot be added because there is no active account which can add feeds.</source>
-      <translation>No se pueden añadir fuentes porque no hay ninguna cuenta activa que pueda añadir fuentes.</translation>
+      <translation>Imposible agregar la fuente porque se carece de una cuenta activa que pueda agregar fuentes.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/miscellaneous/application.cpp" line="1367"/>
@@ -243,17 +243,17 @@ versión pulsando en esta notificación emergente.</translation>
     <message>
       <location filename="../src/librssguard/miscellaneous/application.cpp" line="1140"/>
       <source>AdBlock is not configured properly. Go to &quot;Settings&quot; -&gt; &quot;Node.js&quot; and check if your Node.js is properly configured.</source>
-      <translation>AdBlock no está configurado correctamente. Vaya a &quot;Configuración&quot; -&gt; &quot;Node.js&quot; y verifique si Node.js está bien configurado.</translation>
+      <translation>AdBlock está configurado incorrectamente. Vaya a &quot;Configuración&quot; -&gt; &quot;Node.js&quot; y verifique si Node.js esté configurado correctamente.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/miscellaneous/application.cpp" line="1189"/>
       <source>Already running</source>
-      <translation>Ya se está ejecutando</translation>
+      <translation>Ya está ejecutándose</translation>
     </message>
     <message>
       <location filename="../src/librssguard/miscellaneous/application.cpp" line="1358"/>
       <source>Packages %1 were NOT updated because of error: %2.</source>
-      <translation>No se actualizaron los paquetes %1 debido al error: %2.</translation>
+      <translation>Imposible actualizar %1 paquetes debido al error: %2.</translation>
     </message>
   </context>
   <context>
@@ -446,7 +446,7 @@ versión pulsando en esta notificación emergente.</translation>
     <message>
       <location filename="../src/librssguard/services/abstract/gui/authenticationdetails.cpp" line="53"/>
       <source>Username/token is ok or it is not needed.</source>
-      <translation>El nombre de usuario/identificador está bien o no es necesario.</translation>
+      <translation>Nombre de usuario/Identificador está bien o es innecesario.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/abstract/gui/authenticationdetails.cpp" line="54"/>
@@ -461,7 +461,7 @@ versión pulsando en esta notificación emergente.</translation>
     <message>
       <location filename="../src/librssguard/services/abstract/gui/authenticationdetails.cpp" line="63"/>
       <source>Password is ok or it is not needed.</source>
-      <translation>La contraseña es válida o no es necesaria.</translation>
+      <translation>La contraseña es válida o innecesaria.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/abstract/gui/authenticationdetails.cpp" line="63"/>
@@ -566,12 +566,12 @@ Número de categorías: %2</translation>
     <message>
       <location filename="../src/librssguard/database/databasefactory.cpp" line="58"/>
       <source>Cannot connect to database</source>
-      <translation>No se puede conectar a la base de datos</translation>
+      <translation>Imposible conectar a la base de datos</translation>
     </message>
     <message>
       <location filename="../src/librssguard/database/databasefactory.cpp" line="59"/>
       <source>Connection to your database was not established with error: &apos;%1&apos;. Falling back to SQLite.</source>
-      <translation>La conexión a su base de datos no se ha establecido con error: &apos;%1&apos;. Volviendo a SQLite.</translation>
+      <translation>Impsoible establecer la conexión a su base de datos con el error: &apos;%1&apos;. Volviendo a SQLite.</translation>
     </message>
   </context>
   <context>
@@ -607,7 +607,7 @@ Número de categorías: %2</translation>
     <message>
       <location filename="../src/librssguard/network-web/downloadmanager.cpp" line="137"/>
       <source>Download directory couldn&apos;t be created</source>
-      <translation>No se ha podido crear el directorio de descarga</translation>
+      <translation>Imposible crear la carpeta de descarga</translation>
     </message>
     <message>
       <location filename="../src/librssguard/network-web/downloadmanager.cpp" line="283"/>
@@ -637,12 +637,12 @@ Número de categorías: %2</translation>
     <message>
       <location filename="../src/librssguard/network-web/downloadmanager.cpp" line="228"/>
       <source>Cannot open directory</source>
-      <translation>No se puede abrir la carpeta</translation>
+      <translation>Imposible abrir la carpeta</translation>
     </message>
     <message>
       <location filename="../src/librssguard/network-web/downloadmanager.cpp" line="229"/>
       <source>Cannot open output directory. Open it manually.</source>
-      <translation>No se puede abrir la carpeta de salida. Ábrala de forma manual.</translation>
+      <translation>Imposible abrir la carpeta de salida. Ábrala de forma manual.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/network-web/downloadmanager.cpp" line="442"/>
@@ -780,17 +780,17 @@ Haga clic aquí para abrir el directorio principal.</translation>
       <location filename="../src/librssguard/services/gmail/gui/emailpreviewer.cpp" line="113"/>
       <location filename="../src/librssguard/services/gmail/gui/emailpreviewer.cpp" line="119"/>
       <source>Cannot download attachment</source>
-      <translation>No se puede descargar el adjunto</translation>
+      <translation>Imposible descargar adjunto</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/gmail/gui/emailpreviewer.cpp" line="114"/>
       <source>Attachment cannot be downloaded because you are not logged-in.</source>
-      <translation>No se puede descargar el archivo adjunto porque no ha iniciado sesión.</translation>
+      <translation>Imposible descargar el archivo adjunto porque no ha iniciado sesión.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/gmail/gui/emailpreviewer.cpp" line="120"/>
       <source>Attachment cannot be downloaded because some general error happened.</source>
-      <translation>No se puede descargar el archivo adjunto porque se ha producido un error general.</translation>
+      <translation>Imposible descargar el archivo adjunto porque ocurrión un error general.</translation>
     </message>
   </context>
   <context>
@@ -847,7 +847,7 @@ Haga clic aquí para abrir el directorio principal.</translation>
       <location filename="../src/librssguard/services/abstract/feed.cpp" line="248"/>
       <source>does not use auto-fetching of articles</source>
       <extracomment>Describes feed auto-update status.</extracomment>
-      <translation>no utiliza la recuperación automática de artículos</translation>
+      <translation>omite utilizar la recuperación automática de artículos</translation>
     </message>
     <message numerus="yes">
       <location filename="../src/librssguard/services/abstract/feed.cpp" line="259"/>
@@ -1010,7 +1010,7 @@ ID artículo: %5</translation>
     <message>
       <location filename="../src/librssguard/services/feedly/gui/feedlyaccountdetails.cpp" line="38"/>
       <source>Your %1 does not offer official Feedly support, thus you must authorize via special authorization code called &quot;developer access token&quot;. These tokens are usually valid only for 1 month and allow only 250 API calls each day.</source>
-      <translation>Su %1 no ofrece soporte oficial de Feedly, por lo que debe autorizarlo a través de un código de autorización especial llamado &quot;identificador de acceso de desarrollador&quot;. Estos identificadores suelen ser válidos sólo por 1 mes y permiten sólo 250 llamadas a la API por día.</translation>
+      <translation>Su %1 carece de soporte oficial de Feedly, por lo que debe autorizarlo a través de un código de autorización especial llamado &quot;identificador de acceso de desarrollador&quot;. Estos identificadores suelen ser válidos sólo por 1 mes y permiten sólo 250 llamadas a la API por día.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/feedly/gui/feedlyaccountdetails.cpp" line="51"/>
@@ -1056,7 +1056,7 @@ ID artículo: %5</translation>
     <message>
       <location filename="../src/librssguard/services/feedly/gui/feedlyaccountdetails.cpp" line="33"/>
       <source>Your %1 build has official Feedly support. You do not have to use &quot;developer access token&quot;. You can therefore leave corresponding field empty.</source>
-      <translation>Tu compilación %1 tiene soporte oficial de Feedly. No tiene que usar &quot;identificador de acceso de desarrollador&quot;. Por lo tanto, puede dejar el campo correspondiente vacío.</translation>
+      <translation>Tu compilación %1 tiene soporte oficial de Feedly. Es innecesario usar &quot;identificador de acceso de desarrollador&quot;. Por lo tanto, puede dejar el campo correspondiente vacío.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/feedly/gui/feedlyaccountdetails.cpp" line="153"/>
@@ -1066,7 +1066,7 @@ ID artículo: %5</translation>
     <message>
       <location filename="../src/librssguard/services/feedly/gui/feedlyaccountdetails.cpp" line="161"/>
       <source>Username cannot be empty.</source>
-      <translation>El campo del nombre de usuario no puede estar vacío.</translation>
+      <translation>El campo del nombre de usuario jamás puede estar vacío.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/feedly/gui/feedlyaccountdetails.cpp" line="164"/>
@@ -1133,7 +1133,7 @@ ID artículo: %5</translation>
     <message>
       <location filename="../src/librssguard/services/standard/standardfeedsimportexportmodel.cpp" line="315"/>
       <source>this is likely not OPML document</source>
-      <translation>ésto aparentemente no es un documento OPML</translation>
+      <translation>ésto aparentemente difiere de ser un documento OPML</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/standard/standardfeedsimportexportmodel.cpp" line="394"/>
@@ -1174,7 +1174,7 @@ ID artículo: %5</translation>
     <message>
       <location filename="../src/librssguard/core/feedsproxymodel.cpp" line="231"/>
       <source>You can&apos;t transfer dragged item into different account, this is not supported.</source>
-      <translation>Imposible soltar el elemento arrastrado en otra cuenta distinta, ésto no está implementado.</translation>
+      <translation>Imposible soltar el elemento arrastrado en otra cuenta distinta, ésto está sin implementar.</translation>
     </message>
   </context>
   <context>
@@ -1600,7 +1600,7 @@ Archivo de QtWebEngine memoria -&gt; &quot;%7&quot;</translation>
     <message>
       <location filename="../src/librssguard/services/abstract/gui/formaddeditprobe.cpp" line="37"/>
       <source>Regular expression is not well-formed.</source>
-      <translation>La expresión regular no está bien formada.</translation>
+      <translation>La expresión regular está mal formada.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/abstract/gui/formaddeditprobe.cpp" line="52"/>
@@ -3149,7 +3149,7 @@ Archivo de QtWebEngine memoria -&gt; &quot;%7&quot;</translation>
       <location filename="../src/librssguard/gui/dialogs/formrestoredatabasesettings.cpp" line="15"/>
       <location filename="../src/librssguard/gui/dialogs/formrestoredatabasesettings.cpp" line="16"/>
       <source>No operation executed yet.</source>
-      <translation>Hasta el momento no se ha ejecutado ninguna operación.</translation>
+      <translation>Hasta el momento ninguna operación se ha ejecutado.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formrestoredatabasesettings.cpp" line="54"/>
@@ -3164,7 +3164,7 @@ Archivo de QtWebEngine memoria -&gt; &quot;%7&quot;</translation>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formrestoredatabasesettings.cpp" line="60"/>
       <source>Database and/or settings were not copied to restoration directory successully.</source>
-      <translation>No se copió satisfactoriamente la base de datos o la configuración a la carpeta de restauración.</translation>
+      <translation>Imposible copiar satisfactoriamente la base de datos o la configuración a la carpeta de restauración.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formrestoredatabasesettings.cpp" line="79"/>
@@ -3368,7 +3368,7 @@ La aplicación tiene que reiniciarla manualmente.</translation>
       <location filename="../src/librssguard/services/standard/gui/formstandardimportexport.cpp" line="131"/>
       <location filename="../src/librssguard/services/standard/gui/formstandardimportexport.cpp" line="132"/>
       <source>Some feeds were not loaded properly. Check log for more information.</source>
-      <translation>Algunas fuentes no cargaron apropiadamente. Revise registro para más información.</translation>
+      <translation>Algunas fuentes cargaron inapropiadamente. Revise registro para más información.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/standard/gui/formstandardimportexport.cpp" line="273"/>
@@ -3432,7 +3432,7 @@ La aplicación tiene que reiniciarla manualmente.</translation>
     <message>
       <location filename="../src/librssguard/services/standard/gui/formstandardimportexport.ui" line="64"/>
       <source>Do not fetch titles</source>
-      <translation>No buscar títulos</translation>
+      <translation>Omitir recuperar títulos</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/standard/gui/formstandardimportexport.ui" line="71"/>
@@ -3970,7 +3970,7 @@ Expiración de identificadores de acceso: %2</translation>
     <message>
       <location filename="../src/librssguard/services/greader/gui/greaderaccountdetails.cpp" line="214"/>
       <source>Username cannot be empty.</source>
-      <translation>El campo del nombre de usuario no puede estar vacío.</translation>
+      <translation>El campo del nombre de usuario jamás puede estar vacío.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/greader/gui/greaderaccountdetails.cpp" line="217"/>
@@ -4005,7 +4005,7 @@ Expiración de identificadores de acceso: %2</translation>
     <message>
       <location filename="../src/librssguard/services/greader/gui/greaderaccountdetails.cpp" line="51"/>
       <source>If you select intelligent synchronization, then only not-yet-fetched or updated articles are downloaded. Network usage is greatly reduced and overall synchronization speed is greatly improved, but first feed fetching could be slow anyway if your feed contains huge number of articles.</source>
-      <translation>Si selecciona la sincronización inteligente, sólo se descargarán los artículos actualizados o que aún no se hayan obtenido. El uso de la red se reduce considerablemente y la velocidad de sincronización general mejora considerablemente, pero la obtención de la primera fuente podría ser lenta de todos modos si la fuente contiene una gran cantidad de artículos.</translation>
+      <translation>Si selecciona la sincronización inteligente, sólo se descargarán los artículos actualizados o que aún estén sin obtener. El uso de la red se reduce considerablemente y la velocidad de sincronización general mejora considerablemente, pero la obtención de la primera fuente podría ser lenta de todos modos si la fuente contiene una gran cantidad de artículos.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/greader/gui/greaderaccountdetails.cpp" line="60"/>
@@ -4365,7 +4365,7 @@ Expiración de identificadores de acceso: %2</translation>
     <message>
       <location filename="../src/librssguard/gui/reusable/labelsmenu.cpp" line="19"/>
       <source>No labels found</source>
-      <translation>No se encontraron etiquetas</translation>
+      <translation>Sin etiquetas encontradas</translation>
     </message>
   </context>
   <context>
@@ -4735,7 +4735,7 @@ Expiración de identificadores de acceso: %2</translation>
     <message>
       <location filename="../src/librssguard/database/mariadbdriver.cpp" line="78"/>
       <source>Selected database does not exist (yet). It will be created. It&apos;s okay.</source>
-      <translation>La base de datos seleccionada no existe (aún). Ésta será creada. No hay problema.</translation>
+      <translation>La base de datos seleccionada inexistente (aún). Ésta será creada. No hay problema.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/database/mariadbdriver.cpp" line="83"/>
@@ -4745,7 +4745,7 @@ Expiración de identificadores de acceso: %2</translation>
     <message>
       <location filename="../src/librssguard/database/mariadbdriver.cpp" line="86"/>
       <source>Access denied. Invalid username or password used.</source>
-      <translation>Acceso denegado. El nombre de usuario o la contraseña que ha introducido no son válidos.</translation>
+      <translation>Acceso denegado. El nombre de usuario o la contraseña que ha introducido son inválidos.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/database/mariadbdriver.cpp" line="89"/>
@@ -4846,7 +4846,7 @@ Expiración de identificadores de acceso: %2</translation>
     <message>
       <location filename="../src/librssguard/gui/messagebrowser.cpp" line="201"/>
       <source>Selected hyperlink is invalid.</source>
-      <translation>El hiperenlace seleccionado no es válido.</translation>
+      <translation>El hiperenlace seleccionado es inválido.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/messagebrowser.cpp" line="48"/>
@@ -5051,7 +5051,7 @@ Expiración de identificadores de acceso: %2</translation>
     <message>
       <location filename="../src/librssguard/core/messagesmodel.cpp" line="201"/>
       <source>Loading of articles failed, maybe messages could not be downloaded.</source>
-      <translation>La carga de artículos falló, tal vez los mensajes no se pudieron descargar.</translation>
+      <translation>La carga de artículos falló, tal vez fue imposible descargar los mensajes.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/core/messagesmodel.cpp" line="120"/>
@@ -5722,7 +5722,7 @@ Expiración de identificadores de acceso: %2</translation>
     <message>
       <location filename="../src/librssguard/services/owncloud/gui/owncloudaccountdetails.cpp" line="106"/>
       <source>Password cannot be empty.</source>
-      <translation>El campo de la contraseña no puede estar vacío.</translation>
+      <translation>El campo de la contraseña jamás puede estar vacío.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/owncloud/gui/owncloudaccountdetails.cpp" line="109"/>
@@ -5732,7 +5732,7 @@ Expiración de identificadores de acceso: %2</translation>
     <message>
       <location filename="../src/librssguard/services/owncloud/gui/owncloudaccountdetails.cpp" line="117"/>
       <source>URL cannot be empty.</source>
-      <translation>El campo de la dirección URL no puede estar vacío.</translation>
+      <translation>El campo de la dirección URL jamás puede estar vacío.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/owncloud/gui/owncloudaccountdetails.cpp" line="120"/>
@@ -6102,12 +6102,12 @@ Lista de lectores compatibles:</translation>
     <message>
       <location filename="../src/librssguard/services/standard/parsers/icalparser.cpp" line="68"/>
       <source>iCalendar error &apos;%1&apos;</source>
-      <translation type="unfinished">iCalendar error &apos;%1&apos;</translation>
+      <translation>Error &apos;%1&apos; de iCalendar</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/standard/parsers/icalparser.cpp" line="81"/>
       <source>not an iCalendar</source>
-      <translation type="unfinished">not an iCalendar</translation>
+      <translation>inexistente en iCalendar</translation>
     </message>
   </context>
   <context>
@@ -6208,12 +6208,12 @@ Lista de lectores compatibles:</translation>
     <message>
       <location filename="../src/librssguard/network-web/readability.cpp" line="38"/>
       <source>Reload your webpage and then you can use reader mode!</source>
-      <translation type="unfinished">Reload your webpage and then you can use reader mode!</translation>
+      <translation>¡Recargue la página Web y entonces podrá utilizar el modo de lectura!</translation>
     </message>
     <message>
       <location filename="../src/librssguard/network-web/readability.cpp" line="43"/>
       <source>Packages for reader mode are installed. You can now use reader mode!</source>
-      <translation type="unfinished">Packages for reader mode are installed. You can now use reader mode!</translation>
+      <translation>Los paquetes necesarios para el modo lectura están instalados. ¡Ahora puede utilizar el modo lectura!</translation>
     </message>
     <message>
       <location filename="../src/librssguard/network-web/readability.cpp" line="58"/>
@@ -6228,7 +6228,7 @@ Lista de lectores compatibles:</translation>
     <message>
       <location filename="../src/librssguard/network-web/readability.cpp" line="64"/>
       <source>Packages for reader mode are NOT installed. There is error: %1</source>
-      <translation type="unfinished">Packages for reader mode are NOT installed. There is error: %1</translation>
+      <translation>Los paquetes necesarios para el modo lectura SIN INSTALAR. Hay un error: %1</translation>
     </message>
     <message>
       <location filename="../src/librssguard/network-web/readability.cpp" line="80"/>
@@ -7041,7 +7041,7 @@ Los autores de esta aplicación se deslindan de toda responsabilidad derivado de
     <message>
       <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.cpp" line="37"/>
       <source>Note that enabling this might have drastic consequences on performance of article list with big number of articles.</source>
-      <translation>Tenga en cuenta que habilitar esto podría tener consecuencias drásticas en el rendimiento de la lista de artículos con una gran cantidad de artículos.</translation>
+      <translation>Tenga en cuenta que habilitar ésto podría tener consecuencias drásticas en el rendimiento de la lista de artículos con una gran cantidad de artículos.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.cpp" line="57"/>
@@ -7149,7 +7149,7 @@ Los autores de esta aplicación se deslindan de toda responsabilidad derivado de
     <message>
       <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="251"/>
       <source>Hide article counts if there are no unread articles</source>
-      <translation>Ocultar recuentos de artículos si no hay artículos sin leer</translation>
+      <translation>Ocultar recuentos de artículos en ausencia de artículos sin leer</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="258"/>
@@ -7204,7 +7204,7 @@ Los autores de esta aplicación se deslindan de toda responsabilidad derivado de
     <message>
       <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="643"/>
       <source>Use custom date/time format for dates-only</source>
-      <translation type="unfinished">Use custom date/time format for dates-only</translation>
+      <translation>Usar formato personalizado de fecha/hora para sólo-fechas</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="307"/>
@@ -8012,7 +8012,7 @@ Además, reinicie el cuadro de diálogo &quot;Configuración&quot; después de i
     <message>
       <location filename="../src/librssguard/services/standard/standardfeed.cpp" line="212"/>
       <source>Built-in web browser with JavaScript support</source>
-      <translation type="unfinished">Built-in web browser with JavaScript support</translation>
+      <translation>Navegador integrado con soporte JavaScript</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/standard/standardfeed.cpp" line="215"/>
@@ -8027,7 +8027,7 @@ Además, reinicie el cuadro de diálogo &quot;Configuración&quot; después de i
     <message>
       <location filename="../src/librssguard/services/standard/standardfeed.cpp" line="306"/>
       <source>this source type cannot be used on &apos;lite&apos; %1 build</source>
-      <translation type="unfinished">this source type cannot be used on &apos;lite&apos; %1 build</translation>
+      <translation>es imposible usar este tipo de fuente en compilación la &apos;ligera&apos; %1</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/standard/standardfeed.cpp" line="414"/>
@@ -8047,11 +8047,11 @@ Status: %3
 Source: %4
 Item ID: %5
 </source>
-      <translation type="unfinished">Auto-update status: %1
-Active message filters: %2
-Status: %3
-Source: %4
-Item ID: %5
+      <translation>Estado de actualización automática: %1
+Filtros de mensajes activos: %2
+Estado: %3
+Origen: %4
+ID artículo: %5
 </translation>
     </message>
     <message>
@@ -8059,9 +8059,9 @@ Item ID: %5
       <source>Encoding: %1
 Type: %2
 Post-processing script: %3</source>
-      <translation type="unfinished">Encoding: %1
-Type: %2
-Post-processing script: %3</translation>
+      <translation>Codificación: %1
+Tipo: %2
+Código posprocesado: %3</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/standard/standardfeed.cpp" line="375"/>
@@ -8306,7 +8306,7 @@ Identificador completo del origen de la fuente que puede ser una dirección de U
 Also, you can post-process generated feed data with yet another script if you wish. These are advanced features and make sure to read the documentation before your use them.</source>
       <translation>Puede usar la URL como fuente de su fuente o puede producir su fuente con un guión personalizado.
 
-Además, puede posprocesar los datos de alimentación generados con otro guión si lo desea. Estas son funciones avanzadas y asegúrese de leer la documentación antes de usarlas.</translation>
+Además, puede post-procesar los datos de alimentación generados con otro guión si lo desea. Estas son funciones avanzadas y asegúrese de leer la documentación antes de usarlas.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/standard/gui/standardfeeddetails.ui" line="14"/>
@@ -8409,7 +8409,7 @@ Además, puede posprocesar los datos de alimentación generados con otro guión 
     <message>
       <location filename="../src/librssguard/services/standard/standardserviceroot.cpp" line="71"/>
       <source>This new account does not include any feeds. You can now add default set of feeds.</source>
-      <translation>Esta nueva cuenta no contiene fuentes. Puede añadirle ahora el conjunto predeterminado de fuentes.</translation>
+      <translation>Esta nueva cuenta carece de fuentes. Puede añadirle ahora el conjunto predeterminado de fuentes.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/standard/standardserviceroot.cpp" line="50"/>
@@ -8429,7 +8429,7 @@ Además, puede posprocesar los datos de alimentación generados con otro guión 
     <message>
       <location filename="../src/librssguard/services/standard/standardserviceroot.cpp" line="256"/>
       <source>this source type cannot be used on &apos;lite&apos; %1 build</source>
-      <translation type="unfinished">this source type cannot be used on &apos;lite&apos; %1 build</translation>
+      <translation>es imposible usar este tipo de fuente en compilación la &apos;ligera&apos; %1</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/standard/standardserviceroot.cpp" line="517"/>
@@ -8449,7 +8449,7 @@ Además, puede posprocesar los datos de alimentación generados con otro guión 
     <message>
       <location filename="../src/librssguard/services/standard/standardserviceroot.cpp" line="502"/>
       <source>Some feeds/categories were not imported due to error, check debug log for more details.</source>
-      <translation>Algunas fuentes/categorías no se importaron debido a un error; consulte el registro de depuración para obtener más detalles.</translation>
+      <translation>Algunas fuentes/categorías no se importaron debido a un error; por favor consulte el registro de depuración para obtener más detalles.</translation>
     </message>
   </context>
   <context>
@@ -8751,7 +8751,7 @@ Noticias sin leer: %2</translation>
       <location filename="../src/librssguard/services/tt-rss/gui/ttrssaccountdetails.cpp" line="92"/>
       <location filename="../src/librssguard/services/tt-rss/gui/ttrssaccountdetails.cpp" line="93"/>
       <source>API access on selected server is not enabled.</source>
-      <translation>El acceso a la API en el servidor seleccionado no está habilitado.</translation>
+      <translation>El acceso a la API en el servidor seleccionado está inhabilitado.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/tt-rss/gui/ttrssaccountdetails.cpp" line="97"/>
@@ -8800,7 +8800,7 @@ Noticias sin leer: %2</translation>
     <message>
       <location filename="../src/librssguard/services/tt-rss/gui/ttrssaccountdetails.cpp" line="138"/>
       <source>Username cannot be empty.</source>
-      <translation>El campo del nombre de usuario no puede estar vacío.</translation>
+      <translation>El campo del nombre de usuario jamás puede estar vacío.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/tt-rss/gui/ttrssaccountdetails.cpp" line="141"/>
@@ -8810,7 +8810,7 @@ Noticias sin leer: %2</translation>
     <message>
       <location filename="../src/librssguard/services/tt-rss/gui/ttrssaccountdetails.cpp" line="149"/>
       <source>Password cannot be empty.</source>
-      <translation>El campo de la contraseña no puede estar vacío.</translation>
+      <translation>El campo de la contraseña jamás puede estar vacío.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/tt-rss/gui/ttrssaccountdetails.cpp" line="152"/>
@@ -8830,7 +8830,7 @@ Noticias sin leer: %2</translation>
     <message>
       <location filename="../src/librssguard/services/tt-rss/gui/ttrssaccountdetails.cpp" line="172"/>
       <source>Password is ok or it is not needed.</source>
-      <translation>La contraseña es válida o no se necesita.</translation>
+      <translation>La contraseña es válida o innecesaria.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/tt-rss/gui/ttrssaccountdetails.cpp" line="173"/>
@@ -8840,7 +8840,7 @@ Noticias sin leer: %2</translation>
     <message>
       <location filename="../src/librssguard/services/tt-rss/gui/ttrssaccountdetails.cpp" line="180"/>
       <source>URL cannot be empty.</source>
-      <translation>El campo de la dirección URL no puede estar vacío.</translation>
+      <translation>El campo de la dirección URL jamás puede estar vacío.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/tt-rss/gui/ttrssaccountdetails.cpp" line="183"/>
@@ -8939,7 +8939,7 @@ Noticias sin leer: %2</translation>
     <message>
       <location filename="../src/librssguard/services/tt-rss/gui/ttrssfeeddetails.cpp" line="27"/>
       <source>The URL does not meet standard pattern. Does your URL start with &quot;http://&quot; or &quot;https://&quot; prefix.</source>
-      <translation>La dirección URL no cumple con el patrón estándar. Verifique que la dirección URL comienza con el prefijo &quot;http://&quot; o &quot;https://&quot;.</translation>
+      <translation>La dirección URL incumple con el patrón estándar. Verifique que la dirección URL comienza con el prefijo &quot;http://&quot; o &quot;https://&quot;.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/tt-rss/gui/ttrssfeeddetails.cpp" line="31"/>
