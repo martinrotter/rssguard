@@ -289,7 +289,7 @@ version by clicking this popup notification.</source>
     <message>
       <location filename="../src/librssguard/gui/reusable/articleamountcontrol.ui" line="170"/>
       <source>Limiting amount of articles in feeds</source>
-      <translation type="unfinished">Limiting amount of articles in feeds</translation>
+      <translation>限制文源的文章數量</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/reusable/articleamountcontrol.ui" line="181"/>
