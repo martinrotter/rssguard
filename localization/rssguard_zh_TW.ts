@@ -8569,8 +8569,8 @@ Unread news: %2</source>
     <message numerus="yes">
       <location filename="../src/librssguard/gui/reusable/timespinbox.cpp" line="68"/>
       <source>%n day(s)</source>
-      <translation type="unfinished">
-        <numerusform>%n day(s)</numerusform>
+      <translation>
+        <numerusform>%n 天</numerusform>
       </translation>
     </message>
     <message numerus="yes">
