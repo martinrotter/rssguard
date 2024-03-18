@@ -8005,7 +8005,7 @@ Also, relaunch &quot;Settings&quot; dialog after you install Node.js.</source>
     <message>
       <location filename="../src/librssguard/services/standard/standardfeed.cpp" line="306"/>
       <source>this source type cannot be used on &apos;lite&apos; %1 build</source>
-      <translation type="unfinished">this source type cannot be used on &apos;lite&apos; %1 build</translation>
+      <translation>無法使用此來源類型於 &apos;lite&apos; %1 組譯版</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/standard/standardfeed.cpp" line="414"/>
@@ -8025,11 +8025,11 @@ Status: %3
 Source: %4
 Item ID: %5
 </source>
-      <translation type="unfinished">Auto-update status: %1
-Active message filters: %2
-Status: %3
-Source: %4
-Item ID: %5
+      <translation>自動更新之狀態: %1
+使用的訊息篩選規則: %2
+狀態: %3
+來源: %4
+項目 ID: %5
 </translation>
     </message>
     <message>
@@ -8037,9 +8037,9 @@ Item ID: %5
       <source>Encoding: %1
 Type: %2
 Post-processing script: %3</source>
-      <translation type="unfinished">Encoding: %1
-Type: %2
-Post-processing script: %3</translation>
+      <translation>編碼方式: %1
+類型: %2
+後續處理的隨譯即行碼: %3</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/standard/standardfeed.cpp" line="375"/>
@@ -8403,7 +8403,7 @@ Also, you can post-process generated feed data with yet another script if you wi
     <message>
       <location filename="../src/librssguard/services/standard/standardserviceroot.cpp" line="256"/>
       <source>this source type cannot be used on &apos;lite&apos; %1 build</source>
-      <translation type="unfinished">this source type cannot be used on &apos;lite&apos; %1 build</translation>
+      <translation>無法使用此來源類型於 &apos;lite&apos; %1 組譯版</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/standard/standardserviceroot.cpp" line="517"/>
