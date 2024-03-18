@@ -9,8 +9,8 @@
 #include <QJsonObject>
 #include <QString>
 
-#include "librssguard/core/message.h"
-#include "librssguard/definitions/typedefs.h"
+#include <librssguard/core/message.h>
+#include <librssguard/definitions/typedefs.h>
 #include "src/standardfeed.h"
 
 // Base class for all XML-based feed parsers.

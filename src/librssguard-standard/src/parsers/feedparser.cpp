@@ -4,11 +4,11 @@
 
 #include "src/definitions.h"
 
-#include "librssguard/definitions/definitions.h"
-#include "librssguard/exceptions/applicationexception.h"
-#include "librssguard/exceptions/feedfetchexception.h"
-#include "librssguard/miscellaneous/iofactory.h"
-#include "librssguard/network-web/webfactory.h"
+#include <librssguard/definitions/definitions.h>
+#include <librssguard/exceptions/applicationexception.h>
+#include <librssguard/exceptions/feedfetchexception.h>
+#include <librssguard/miscellaneous/iofactory.h>
+#include <librssguard/network-web/webfactory.h>
 
 #include <QDebug>
 #include <QFile>

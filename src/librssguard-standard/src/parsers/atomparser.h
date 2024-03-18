@@ -5,7 +5,7 @@
 
 #include "src/parsers/feedparser.h"
 
-#include "librssguard/core/message.h"
+#include <librssguard/core/message.h>
 
 #include <QDomDocument>
 #include <QList>

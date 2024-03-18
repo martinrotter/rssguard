@@ -2,14 +2,14 @@
 
 #include "src/gui/formdiscoverfeeds.h"
 
-#include "librssguard/3rd-party/boolinq/boolinq.h"
-#include "librssguard/database/databasequeries.h"
-#include "librssguard/gui/guiutilities.h"
-#include "librssguard/miscellaneous/application.h"
-#include "librssguard/miscellaneous/iconfactory.h"
-#include "librssguard/miscellaneous/settings.h"
-#include "librssguard/services/abstract/category.h"
-#include "librssguard/services/abstract/serviceroot.h"
+#include <librssguard/3rd-party/boolinq/boolinq.h>
+#include <librssguard/database/databasequeries.h>
+#include <librssguard/gui/guiutilities.h>
+#include <librssguard/miscellaneous/application.h>
+#include <librssguard/miscellaneous/iconfactory.h>
+#include <librssguard/miscellaneous/settings.h>
+#include <librssguard/services/abstract/category.h>
+#include <librssguard/services/abstract/serviceroot.h>
 #include "src/definitions.h"
 #include "src/gui/formstandardfeeddetails.h"
 #include "src/standardfeed.h"

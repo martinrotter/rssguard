@@ -3,7 +3,7 @@
 #ifndef STANDARDSERVICEENTRYPOINT_H
 #define STANDARDSERVICEENTRYPOINT_H
 
-#include "librssguard/services/abstract/serviceentrypoint.h"
+#include <librssguard/services/abstract/serviceentrypoint.h>
 
 class RSSGUARD_DLLSPEC_EXPORT StandardServiceEntryPoint : public QObject, public ServiceEntryPoint {
     Q_OBJECT

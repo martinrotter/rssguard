@@ -2,11 +2,11 @@
 
 #include "src/parsers/rssparser.h"
 
-#include "librssguard/exceptions/applicationexception.h"
-#include "librssguard/miscellaneous/application.h"
-#include "librssguard/miscellaneous/settings.h"
-#include "librssguard/miscellaneous/textfactory.h"
-#include "librssguard/network-web/networkfactory.h"
+#include <librssguard/exceptions/applicationexception.h>
+#include <librssguard/miscellaneous/application.h>
+#include <librssguard/miscellaneous/settings.h>
+#include <librssguard/miscellaneous/textfactory.h>
+#include <librssguard/network-web/networkfactory.h>
 #include "src/definitions.h"
 #include "src/standardfeed.h"
 

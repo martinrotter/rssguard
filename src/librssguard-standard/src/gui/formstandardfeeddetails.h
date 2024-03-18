@@ -3,7 +3,7 @@
 #ifndef FORMSSFEEDDETAILS_H
 #define FORMSSFEEDDETAILS_H
 
-#include "librssguard/services/abstract/gui/formfeeddetails.h"
+#include <librssguard/services/abstract/gui/formfeeddetails.h>
 
 class StandardFeedDetails;
 class StandardServiceRoot;
