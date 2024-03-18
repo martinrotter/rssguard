@@ -14,6 +14,8 @@ FormEditStandardAccount::FormEditStandardAccount(QWidget* parent)
   activateTab(0);
 }
 
+FormEditStandardAccount::~FormEditStandardAccount() = default;
+
 void FormEditStandardAccount::loadAccountData() {
   FormAccountDetails::loadAccountData();
 

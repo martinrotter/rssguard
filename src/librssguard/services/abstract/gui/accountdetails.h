@@ -5,8 +5,6 @@
 
 #include <QWidget>
 
-#include "ui_accountdetails.h"
-
 namespace Ui {
   class AccountDetails;
 }
@@ -18,9 +16,10 @@ class RSSGUARD_DLLSPEC AccountDetails : public QWidget {
 
   public:
     explicit AccountDetails(QWidget* parent = nullptr);
+    virtual ~AccountDetails();
 
   private:
-    Ui::AccountDetails m_ui;
+    QScopedPointer<Ui::AccountDetails> m_ui;
 };
 
 #endif // ACCOUNTDETAILS_H

@@ -36,8 +36,8 @@ void FormTtRssFeedDetails::apply() {
                                        m_serviceRoot->networkProxy(),
                                        m_authDetails->authenticationType() ==
                                          NetworkFactory::NetworkAuthentication::Basic,
-                                       m_authDetails->m_txtUsername->lineEdit()->text(),
-                                       m_authDetails->m_txtPassword->lineEdit()->text());
+                                       m_authDetails->username(),
+                                       m_authDetails->password());
 
     if (response.code() == STF_INSERTED) {
       // Feed was added online.

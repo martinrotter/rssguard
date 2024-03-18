@@ -12,6 +12,7 @@ class FormEditStandardAccount : public FormAccountDetails {
 
   public:
     explicit FormEditStandardAccount(QWidget* parent = nullptr);
+    virtual ~FormEditStandardAccount();
 
   protected:
     virtual void loadAccountData();

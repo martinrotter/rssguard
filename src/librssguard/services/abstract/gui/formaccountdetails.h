@@ -5,13 +5,15 @@
 
 #include <QDialog>
 
-#include "ui_formaccountdetails.h"
-
 #include "database/databasefactory.h"
 #include "database/databasequeries.h"
 #include "gui/reusable/networkproxydetails.h"
 #include "miscellaneous/application.h"
 #include "services/abstract/gui/accountdetails.h"
+
+namespace Ui {
+  class FormAccountDetails;
+}
 
 class ServiceRoot;
 
@@ -20,6 +22,7 @@ class RSSGUARD_DLLSPEC FormAccountDetails : public QDialog {
 
   public:
     explicit FormAccountDetails(const QIcon& icon, QWidget* parent = nullptr);
+    virtual ~FormAccountDetails();
 
     template <class T>
     T* addEditAccount(T* account_to_edit = nullptr);
@@ -48,7 +51,7 @@ class RSSGUARD_DLLSPEC FormAccountDetails : public QDialog {
     void createConnections();
 
   protected:
-    Ui::FormAccountDetails m_ui;
+    QScopedPointer<Ui::FormAccountDetails> m_ui;
     NetworkProxyDetails* m_proxyDetails;
     AccountDetails* m_accountDetails;
     ServiceRoot* m_account;

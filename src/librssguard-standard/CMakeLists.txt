@@ -1,5 +1,8 @@
-set(LIBRSSGUARD_SOURCE_PATH "${CMAKE_CURRENT_SOURCE_DIR}/../librssguard")
-set(LIBRSSGUARD_BINARY_PATH "${CMAKE_BINARY_DIR}/src/librssguard")
+if(NOT DEFINED LIBRSSGUARD_BINARY_PATH)
+  set(LIBRSSGUARD_SOURCE_PATH "${CMAKE_CURRENT_SOURCE_DIR}/../librssguard")
+endif()
+
+#set(LIBRSSGUARD_BINARY_PATH "${CMAKE_BINARY_DIR}/src/librssguard")
 
 set(SOURCES
   src/definitions.h
@@ -48,17 +51,6 @@ set(UI_FILES
   src/gui/standardfeeddetails.ui
 )
 
-# Add mimesis.
-list(APPEND SOURCES
-  ${LIBRSSGUARD_SOURCE_PATH}/3rd-party/mimesis/mimesis.hpp
-  ${LIBRSSGUARD_SOURCE_PATH}/3rd-party/mimesis/quoted-printable.hpp
-)
-
-# Add boolinq.
-list(APPEND SOURCES
-  ${LIBRSSGUARD_SOURCE_PATH}/3rd-party/boolinq/boolinq.h
-)
-
 # Deal with .ui files.
 qt_wrap_ui(SOURCES ${UI_FILES})
 
@@ -81,7 +73,6 @@ target_include_directories(rssguard-standard
   PUBLIC
   ${CMAKE_CURRENT_SOURCE_DIR}
   ${LIBRSSGUARD_SOURCE_PATH}
-  ${LIBRSSGUARD_BINARY_PATH}
 )
 
 # Qt.
@@ -102,18 +93,6 @@ if(QT_VERSION_MAJOR EQUAL 6)
     Qt${QT_VERSION_MAJOR}::Core5Compat
   )
 endif()
-
-if(WIN32)
-  target_link_libraries(rssguard-standard PUBLIC
-    Qt${QT_VERSION_MAJOR}::GuiPrivate
-  )
-endif()
-
-#if(NO_LITE)
-#  target_link_libraries(rssguard-standard PUBLIC
-#    Qt${QT_VERSION_MAJOR}::WebEngineWidgets
-#  )
-#endif()
 
 if(WIN32 OR OS2)
   install(TARGETS rssguard-standard DESTINATION plugins)

@@ -2,6 +2,10 @@
 
 #include "services/abstract/gui/accountdetails.h"
 
-AccountDetails::AccountDetails(QWidget* parent) : QWidget(parent) {
-  m_ui.setupUi(this);
+#include "ui_accountdetails.h"
+
+AccountDetails::AccountDetails(QWidget* parent) : QWidget(parent), m_ui(new Ui::AccountDetails()) {
+  m_ui->setupUi(this);
 }
+
+AccountDetails::~AccountDetails() = default;
