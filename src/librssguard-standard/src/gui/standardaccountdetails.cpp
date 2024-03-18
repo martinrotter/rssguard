@@ -2,8 +2,8 @@
 
 #include "src/gui/standardaccountdetails.h"
 
-#include "3rd-party/boolinq/boolinq.h"
-#include "miscellaneous/iconfactory.h"
+#include "librssguard/3rd-party/boolinq/boolinq.h"
+#include "librssguard/miscellaneous/iconfactory.h"
 #include "src/standardserviceentrypoint.h"
 
 #include <QFileDialog>

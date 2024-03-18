@@ -584,21 +584,6 @@ else()
   set(CMAKE_C_FLAGS  "${CMAKE_C_FLAGS} -DSQLITE_THREADSAFE=1 -DSQLITE_ENABLE_COLUMN_METADATA=1")
 endif()
 
-# Add ZLIB.
-if(ENABLE_COMPRESSED_SITEMAP)
-  find_package(ZLIB REQUIRED)
-
-  # Add qcompressor.
-  list(APPEND SOURCES
-    3rd-party/qcompressor/qcompressor.cpp
-    3rd-party/qcompressor/qcompressor.h
-  )
-endif(ENABLE_COMPRESSED_SITEMAP)
-
-if(ZLIB_FOUND)
-  message(STATUS "Using system zlib ${ZLIB_VERSION_STRING}.")
-endif(ZLIB_FOUND)
-
 # Add SimpleCrypt.
 list(APPEND SOURCES
   3rd-party/sc/simplecrypt.cpp

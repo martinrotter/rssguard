@@ -2,12 +2,12 @@
 
 #include "src/parsers/jsonparser.h"
 
-#include "definitions/definitions.h"
-#include "definitions/typedefs.h"
-#include "exceptions/applicationexception.h"
-#include "exceptions/feedrecognizedbutfailedexception.h"
-#include "miscellaneous/settings.h"
-#include "miscellaneous/textfactory.h"
+#include "librssguard/definitions/definitions.h"
+#include "librssguard/definitions/typedefs.h"
+#include "librssguard/exceptions/applicationexception.h"
+#include "librssguard/exceptions/feedrecognizedbutfailedexception.h"
+#include "librssguard/miscellaneous/settings.h"
+#include "librssguard/miscellaneous/textfactory.h"
 #include "src/definitions.h"
 #include "src/standardfeed.h"
 

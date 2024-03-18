@@ -3,7 +3,7 @@
 #ifndef FORMSSFEEDDETAILS_H
 #define FORMSSFEEDDETAILS_H
 
-#include "services/abstract/gui/formfeeddetails.h"
+#include "librssguard/services/abstract/gui/formfeeddetails.h"
 
 class StandardFeedDetails;
 class StandardServiceRoot;
@@ -11,11 +11,13 @@ class AuthenticationDetails;
 class StandardFeed;
 
 class FormStandardFeedDetails : public FormFeedDetails {
-  Q_OBJECT
+    Q_OBJECT
 
   public:
-    explicit FormStandardFeedDetails(ServiceRoot* service_root, RootItem* parent_to_select = nullptr,
-                                     const QString& url = QString(), QWidget* parent = nullptr);
+    explicit FormStandardFeedDetails(ServiceRoot* service_root,
+                                     RootItem* parent_to_select = nullptr,
+                                     const QString& url = QString(),
+                                     QWidget* parent = nullptr);
 
   private slots:
     void guessFeed();

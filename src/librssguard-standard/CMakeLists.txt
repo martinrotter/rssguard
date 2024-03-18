@@ -1,8 +1,6 @@
 if(NOT DEFINED LIBRSSGUARD_BINARY_PATH)
-  set(LIBRSSGUARD_SOURCE_PATH "${CMAKE_CURRENT_SOURCE_DIR}/../librssguard")
+  set(LIBRSSGUARD_SOURCE_PATH "${CMAKE_CURRENT_SOURCE_DIR}/..")
 endif()
-
-#set(LIBRSSGUARD_BINARY_PATH "${CMAKE_BINARY_DIR}/src/librssguard")
 
 set(SOURCES
   src/definitions.h
@@ -51,6 +49,21 @@ set(UI_FILES
   src/gui/standardfeeddetails.ui
 )
 
+# Add ZLIB.
+if(ENABLE_COMPRESSED_SITEMAP)
+  find_package(ZLIB REQUIRED)
+
+  # Add qcompressor.
+  list(APPEND SOURCES
+    src/3rd-party/qcompressor/qcompressor.cpp
+    src/3rd-party/qcompressor/qcompressor.h
+  )
+endif(ENABLE_COMPRESSED_SITEMAP)
+
+if(ZLIB_FOUND)
+  message(STATUS "Using system zlib ${ZLIB_VERSION_STRING}.")
+endif(ZLIB_FOUND)
+
 # Deal with .ui files.
 qt_wrap_ui(SOURCES ${UI_FILES})
 
@@ -71,7 +84,6 @@ target_compile_definitions(rssguard-standard
 
 target_include_directories(rssguard-standard
   PUBLIC
-  ${CMAKE_CURRENT_SOURCE_DIR}
   ${LIBRSSGUARD_SOURCE_PATH}
 )
 

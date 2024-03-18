@@ -3,7 +3,7 @@
 #ifndef FORMEDITSTANDARDACCOUNT_H
 #define FORMEDITSTANDARDACCOUNT_H
 
-#include "services/abstract/gui/formaccountdetails.h"
+#include <librssguard/services/abstract/gui/formaccountdetails.h>
 
 class StandardAccountDetails;
 

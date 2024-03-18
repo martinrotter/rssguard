@@ -2,10 +2,10 @@
 
 #include "src/standardcategory.h"
 
-#include "database/databasequeries.h"
-#include "definitions/definitions.h"
-#include "exceptions/applicationexception.h"
-#include "services/abstract/gui/formcategorydetails.h"
+#include "librssguard/database/databasequeries.h"
+#include "librssguard/definitions/definitions.h"
+#include "librssguard/exceptions/applicationexception.h"
+#include "librssguard/services/abstract/gui/formcategorydetails.h"
 #include "src/standardfeed.h"
 #include "src/standardserviceroot.h"
 

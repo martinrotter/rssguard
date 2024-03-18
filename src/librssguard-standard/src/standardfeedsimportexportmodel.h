@@ -3,7 +3,7 @@
 #ifndef STANDARDFEEDSIMPORTEXPORTMODEL_H
 #define STANDARDFEEDSIMPORTEXPORTMODEL_H
 
-#include "services/abstract/accountcheckmodel.h"
+#include "librssguard/services/abstract/accountcheckmodel.h"
 
 #include <QDomElement>
 #include <QFutureWatcher>
@@ -27,7 +27,10 @@ class FeedsImportExportModel : public AccountCheckSortedModel {
     Q_OBJECT
 
   public:
-    enum class Mode { Import, Export };
+    enum class Mode {
+      Import,
+      Export
+    };
 
     explicit FeedsImportExportModel(StandardServiceRoot* account, QObject* parent = nullptr);
     virtual ~FeedsImportExportModel();

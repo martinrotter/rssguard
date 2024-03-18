@@ -2,20 +2,20 @@
 
 #include "src/standardfeed.h"
 
-#include "database/databasequeries.h"
-#include "definitions/definitions.h"
-#include "exceptions/applicationexception.h"
-#include "exceptions/feedrecognizedbutfailedexception.h"
-#include "exceptions/networkexception.h"
-#include "exceptions/scriptexception.h"
-#include "miscellaneous/settings.h"
-#include "miscellaneous/textfactory.h"
+#include "librssguard/database/databasequeries.h"
+#include "librssguard/definitions/definitions.h"
+#include "librssguard/exceptions/applicationexception.h"
+#include "librssguard/exceptions/feedrecognizedbutfailedexception.h"
+#include "librssguard/exceptions/networkexception.h"
+#include "librssguard/exceptions/scriptexception.h"
+#include "librssguard/miscellaneous/settings.h"
+#include "librssguard/miscellaneous/textfactory.h"
 #include "src/gui/formstandardfeeddetails.h"
 #include "src/standardserviceroot.h"
 
 #if defined(NO_LITE)
-#include "gui/webviewers/webengine/webengineviewer.h"
-#include "network-web/webengine/webenginepage.h"
+#include "librssguard/gui/webviewers/webengine/webengineviewer.h"
+#include "librssguard/network-web/webengine/webenginepage.h"
 #endif
 
 #include "src/parsers/atomparser.h"
@@ -26,7 +26,7 @@
 #include "src/parsers/sitemapparser.h"
 
 #if defined(ENABLE_COMPRESSED_SITEMAP)
-#include "3rd-party/qcompressor/qcompressor.h"
+#include "librssguard/3rd-party/qcompressor/qcompressor.h"
 #endif
 
 #include <QCommandLineParser>
