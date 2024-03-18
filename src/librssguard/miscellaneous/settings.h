@@ -39,6 +39,10 @@ namespace Cookies {
   KEY ID;
 }
 
+namespace DialogGeometries {
+  KEY ID;
+}
+
 namespace Node {
   KEY ID;
 

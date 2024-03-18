@@ -4,6 +4,11 @@
 
 #include "definitions/definitions.h"
 
+#include "miscellaneous/application.h"
+#include "miscellaneous/settings.h"
+
+#include <QDialog>
+#include <QMainWindow>
 #include <QScreen>
 #include <QSettings>
 
@@ -36,40 +41,53 @@ void GuiUtilities::applyDialogProperties(QWidget& widget, const QIcon& icon, con
     widget.setWindowTitle(title);
   }
 
+  loadDialogSize(widget);
   fixTooBigDialog(widget);
+  saveSizeOnWidgetClosed(widget);
 }
 
 void GuiUtilities::fixTooBigDialog(QWidget& widget, bool move_to_center) {
   // We fix too big dialog size or out-of-bounds position.
   auto size_widget = widget.frameGeometry().size();
+  auto size_widget_original = size_widget;
   auto size_screen = widget.screen()->availableSize();
 
   if (size_widget.width() > size_screen.width()) {
-    size_widget.setWidth(size_screen.width() * 0.9);
+    size_widget.setWidth(size_screen.width() * 0.95);
   }
 
   if (size_widget.height() > size_screen.height()) {
-    size_widget.setHeight(size_screen.height() * 0.9);
+    size_widget.setHeight(size_screen.height() * 0.95);
   }
 
-  if (size_widget != widget.size()) {
+  bool resized = false;
+
+  if (size_widget != size_widget_original) {
     qWarningNN << LOGSEC_GUI << "Dialog" << QUOTE_W_SPACE(widget.metaObject()->className()) << "was down-sized from"
                << QUOTE_W_SPACE(widget.size()) << "to" << QUOTE_W_SPACE_DOT(size_widget);
-
+    resized = true;
     widget.resize(size_widget);
   }
 
   auto pos_widget = widget.pos();
 
-  if (move_to_center || pos_widget.x() < 0 || pos_widget.y() < 0) {
+  if ((resized && move_to_center) || pos_widget.x() < 0 || pos_widget.y() < 0) {
     //  Calculate ideal position for centering the widget.
-    auto size_parent = widget.parentWidget() != nullptr ? widget.parentWidget()->size() : QSize(0, 0);
+    auto size_parent = widget.parentWidget() != nullptr ? widget.frameGeometry().size() : QSize(0, 0);
 
     // If dialog is bigger than its parent, center it to screen.
     // If dialog is smaller than its parent, center to parent.
-    auto size_to_center = (size_widget.width() > size_parent.width() || size_widget.height() > size_parent.height())
-                            ? size_screen
-                            : size_parent;
+    bool screen_as_parent;
+    QSize size_to_center;
+
+    if (size_widget.width() > size_parent.width() || size_widget.height() > size_parent.height()) {
+      screen_as_parent = true;
+      size_to_center = size_screen;
+    }
+    else {
+      screen_as_parent = false;
+      size_to_center = size_parent;
+    }
 
     auto origin_x = (size_to_center.width() - size_widget.width()) / 2.0;
     auto origin_y = (size_to_center.height() - size_widget.height()) / 2.0;
@@ -78,8 +96,43 @@ void GuiUtilities::fixTooBigDialog(QWidget& widget, bool move_to_center) {
     if (origin_pos != pos_widget) {
       qWarningNN << LOGSEC_GUI << "Dialog" << QUOTE_W_SPACE(widget.metaObject()->className()) << "was moved from"
                  << QUOTE_W_SPACE(pos_widget) << "to" << QUOTE_W_SPACE_DOT(origin_pos);
-      widget.move(origin_pos);
+      widget.move(screen_as_parent ? origin_pos : origin_pos + widget.parentWidget()->pos());
     }
+  }
+}
+
+void GuiUtilities::loadDialogSize(QWidget& wdg) {
+  const QString on = wdg.objectName();
+
+  if (on.isEmpty()) {
+    qWarningNN << LOGSEC_GUI << "Object of class" << QUOTE_W_SPACE(wdg.metaObject()->className())
+               << "has no name, cannot load its size.";
+    return;
+  }
+
+  const QString key = QSL("%1_size").arg(on);
+
+  wdg.resize(qApp->settings()->value(GROUP(DialogGeometries), key, wdg.size()).toSize());
+}
+
+void GuiUtilities::saveSizeOnWidgetClosed(QWidget& wdg) {
+  const QString on = wdg.objectName();
+
+  if (on.isEmpty()) {
+    qWarningNN << LOGSEC_GUI << "Object of class" << QUOTE_W_SPACE(wdg.metaObject()->className())
+               << "has no name, cannot save its size when it closes.";
+    return;
+  }
+
+  QDialog* wdg_dialog = qobject_cast<QDialog*>(&wdg);
+
+  if (wdg_dialog != nullptr) {
+    QObject::connect(wdg_dialog, &QDialog::finished, [=]() {
+      const QString key = QSL("%1_size").arg(on);
+
+      qDebugNN << LOGSEC_GUI << "Saving size for dialog" << QUOTE_W_SPACE_DOT(on);
+      qApp->settings()->setValue(GROUP(DialogGeometries), key, wdg_dialog->size());
+    });
   }
 }
 

@@ -17,9 +17,6 @@
 FormBackupDatabaseSettings::FormBackupDatabaseSettings(QWidget* parent)
   : QDialog(parent), m_ui(new Ui::FormBackupDatabaseSettings) {
   m_ui->setupUi(this);
-
-  setObjectName(QSL("form_backup_db_set"));
-
   m_ui->m_txtBackupName->lineEdit()->setPlaceholderText(tr("Common name for backup files"));
 
   GuiUtilities::applyDialogProperties(*this, qApp->icons()->fromTheme(QSL("document-export")));

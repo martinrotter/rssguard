@@ -15,6 +15,9 @@ class GuiUtilities {
     static void restoreState(QWidget* wdg, QByteArray state);
     static QByteArray saveState(QWidget* wdg);
 
+    static void loadDialogSize(QWidget& wdg);
+    static void saveSizeOnWidgetClosed(QWidget& wdg);
+
   private:
     explicit GuiUtilities();
 };

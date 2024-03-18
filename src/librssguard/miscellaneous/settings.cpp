@@ -15,6 +15,8 @@
 DKEY WebEngineAttributes::ID = "web_engine_attributes";
 #endif
 
+DKEY DialogGeometries::ID = "dialog_geometries";
+
 // Media player.
 KEY VideoPlayer::ID = "media_player";
 
