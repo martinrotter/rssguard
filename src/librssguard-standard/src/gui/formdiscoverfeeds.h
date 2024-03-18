@@ -7,8 +7,9 @@
 
 #include "ui_formdiscoverfeeds.h"
 
-#include "services/abstract/accountcheckmodel.h"
 #include "src/parsers/feedparser.h"
+
+#include <librssguard/services/abstract/accountcheckmodel.h>
 
 #include <QFutureWatcher>
 

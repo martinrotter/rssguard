@@ -2,14 +2,14 @@
 
 #include "src/gui/standardfeeddetails.h"
 
-#include "3rd-party/boolinq/boolinq.h"
-#include "exceptions/applicationexception.h"
-#include "exceptions/networkexception.h"
-#include "exceptions/scriptexception.h"
-#include "miscellaneous/iconfactory.h"
-#include "miscellaneous/textfactory.h"
-#include "network-web/networkfactory.h"
-#include "services/abstract/category.h"
+#include "librssguard/3rd-party/boolinq/boolinq.h"
+#include "librssguard/exceptions/applicationexception.h"
+#include "librssguard/exceptions/networkexception.h"
+#include "librssguard/exceptions/scriptexception.h"
+#include "librssguard/miscellaneous/iconfactory.h"
+#include "librssguard/miscellaneous/textfactory.h"
+#include "librssguard/network-web/networkfactory.h"
+#include "librssguard/services/abstract/category.h"
 #include "src/definitions.h"
 
 #include <QFileDialog>

@@ -2,14 +2,14 @@
 
 #include "src/gui/formstandardfeeddetails.h"
 
-#include "database/databasequeries.h"
-#include "exceptions/applicationexception.h"
-#include "miscellaneous/application.h"
-#include "network-web/networkfactory.h"
-#include "network-web/webfactory.h"
-#include "services/abstract/category.h"
-#include "services/abstract/gui/authenticationdetails.h"
-#include "services/abstract/serviceroot.h"
+#include "librssguard/database/databasequeries.h"
+#include "librssguard/exceptions/applicationexception.h"
+#include "librssguard/miscellaneous/application.h"
+#include "librssguard/network-web/networkfactory.h"
+#include "librssguard/network-web/webfactory.h"
+#include "librssguard/services/abstract/category.h"
+#include "librssguard/services/abstract/gui/authenticationdetails.h"
+#include "librssguard/services/abstract/serviceroot.h"
 #include "src/gui/standardfeeddetails.h"
 #include "src/standardfeed.h"
 

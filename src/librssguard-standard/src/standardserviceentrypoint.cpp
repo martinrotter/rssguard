@@ -2,9 +2,9 @@
 
 #include "src/standardserviceentrypoint.h"
 
-#include "database/databasequeries.h"
-#include "definitions/definitions.h"
-#include "miscellaneous/application.h"
+#include "librssguard/database/databasequeries.h"
+#include "librssguard/definitions/definitions.h"
+#include "librssguard/miscellaneous/application.h"
 #include "src/gui/formeditstandardaccount.h"
 #include "src/standardserviceroot.h"
 

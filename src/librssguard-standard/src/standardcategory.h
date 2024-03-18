@@ -3,7 +3,7 @@
 #ifndef FEEDSMODELCATEGORY_H
 #define FEEDSMODELCATEGORY_H
 
-#include "services/abstract/category.h"
+#include "librssguard/services/abstract/category.h"
 
 #include <QSqlRecord>
 

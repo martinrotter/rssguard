@@ -3,14 +3,14 @@
 #include "src/parsers/sitemapparser.h"
 
 #if defined(ENABLE_COMPRESSED_SITEMAP)
-#include "3rd-party/qcompressor/qcompressor.h"
+#include "librssguard/3rd-party/qcompressor/qcompressor.h"
 #endif
 
-#include "definitions/definitions.h"
-#include "exceptions/applicationexception.h"
-#include "exceptions/feedrecognizedbutfailedexception.h"
-#include "miscellaneous/settings.h"
-#include "miscellaneous/textfactory.h"
+#include "librssguard/definitions/definitions.h"
+#include "librssguard/exceptions/applicationexception.h"
+#include "librssguard/exceptions/feedrecognizedbutfailedexception.h"
+#include "librssguard/miscellaneous/settings.h"
+#include "librssguard/miscellaneous/textfactory.h"
 #include "src/definitions.h"
 
 #include <QDomDocument>

@@ -3,9 +3,9 @@
 #ifndef FEEDSMODELFEED_H
 #define FEEDSMODELFEED_H
 
-#include "services/abstract/feed.h"
+#include "librssguard/services/abstract/feed.h"
 
-#include "network-web/networkfactory.h"
+#include "librssguard/network-web/networkfactory.h"
 
 #include <QCoreApplication>
 #include <QDateTime>
