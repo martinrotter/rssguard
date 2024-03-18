@@ -3,8 +3,6 @@
 #ifndef FORMCATEGORYDETAILS_H
 #define FORMCATEGORYDETAILS_H
 
-#include "ui_formcategorydetails.h"
-
 #include <QDialog>
 
 #include "3rd-party/boolinq/boolinq.h"

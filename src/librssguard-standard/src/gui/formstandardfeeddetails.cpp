@@ -13,7 +13,10 @@
 #include "src/gui/standardfeeddetails.h"
 #include "src/standardfeed.h"
 
+#include <QComboBox>
+#include <QDialogButtonBox>
 #include <QFileDialog>
+#include <QGroupBox>
 #include <QNetworkCookie>
 
 FormStandardFeedDetails::FormStandardFeedDetails(ServiceRoot* service_root,
@@ -44,8 +47,8 @@ void FormStandardFeedDetails::guessFeed() {
                                    m_standardFeedDetails->m_ui.m_txtSource->textEdit()->toPlainText(),
                                    m_standardFeedDetails->m_ui.m_txtPostProcessScript->textEdit()->toPlainText(),
                                    m_authDetails->authenticationType(),
-                                   m_authDetails->m_txtUsername->lineEdit()->text(),
-                                   m_authDetails->m_txtPassword->lineEdit()->text(),
+                                   m_authDetails->username(),
+                                   m_authDetails->password(),
                                    m_serviceRoot->networkProxy());
 }
 
@@ -54,13 +57,13 @@ void FormStandardFeedDetails::guessIconOnly() {
                                        m_standardFeedDetails->m_ui.m_txtSource->textEdit()->toPlainText(),
                                        m_standardFeedDetails->m_ui.m_txtPostProcessScript->textEdit()->toPlainText(),
                                        m_authDetails->authenticationType(),
-                                       m_authDetails->m_txtUsername->lineEdit()->text(),
-                                       m_authDetails->m_txtPassword->lineEdit()->text(),
+                                       m_authDetails->username(),
+                                       m_authDetails->password(),
                                        m_serviceRoot->networkProxy());
 }
 
 void FormStandardFeedDetails::onTitleChanged(const QString& title) {
-  m_ui.m_buttonBox->button(QDialogButtonBox::StandardButton::Ok)->setEnabled(!title.simplified().isEmpty());
+  buttonBox()->button(QDialogButtonBox::StandardButton::Ok)->setEnabled(!title.simplified().isEmpty());
 }
 
 void FormStandardFeedDetails::apply() {
@@ -109,13 +112,13 @@ void FormStandardFeedDetails::apply() {
       std_feed->setPostProcessScript(m_standardFeedDetails->m_ui.m_txtPostProcessScript->textEdit()->toPlainText());
     }
 
-    if (isChangeAllowed(m_authDetails->m_mcbAuthType)) {
+    if (isChangeAllowed(m_authDetails->findChild<MultiFeedEditCheckBox*>(QSL("m_mcbAuthType")))) {
       std_feed->setProtection(m_authDetails->authenticationType());
     }
 
-    if (isChangeAllowed(m_authDetails->m_mcbAuthentication)) {
-      std_feed->setUsername(m_authDetails->m_txtUsername->lineEdit()->text());
-      std_feed->setPassword(m_authDetails->m_txtPassword->lineEdit()->text());
+    if (isChangeAllowed(m_authDetails->findChild<MultiFeedEditCheckBox*>(QSL("m_mcbAuthentication")))) {
+      std_feed->setUsername(m_authDetails->username());
+      std_feed->setPassword(m_authDetails->password());
     }
 
     std_feed->setCreationDate(QDateTime::currentDateTime());
@@ -161,8 +164,10 @@ void FormStandardFeedDetails::loadFeedData() {
     m_standardFeedDetails->m_ui.m_mcbType->addActionWidget(m_standardFeedDetails->m_ui.m_cmbType);
     m_standardFeedDetails->m_ui.m_mcbEncoding->addActionWidget(m_standardFeedDetails->m_ui.m_cmbEncoding);
 
-    m_authDetails->m_mcbAuthType->addActionWidget(m_authDetails->m_cbAuthType);
-    m_authDetails->m_mcbAuthentication->addActionWidget(m_authDetails->m_gbAuthentication);
+    m_authDetails->findChild<MultiFeedEditCheckBox*>(QSL("m_mcbAuthType"))
+      ->addActionWidget(m_authDetails->findChild<QComboBox*>(QSL("m_cbAuthType")));
+    m_authDetails->findChild<MultiFeedEditCheckBox*>(QSL("m_mcbAuthentication"))
+      ->addActionWidget(m_authDetails->findChild<QGroupBox*>(QSL("m_gbAuthentication")));
 
     m_standardFeedDetails->m_ui.m_btnFetchMetadata->setEnabled(false);
   }
@@ -179,8 +184,8 @@ void FormStandardFeedDetails::loadFeedData() {
   m_standardFeedDetails->loadCategories(m_serviceRoot->getSubTreeCategories(), m_serviceRoot);
 
   m_authDetails->setAuthenticationType(std_feed->protection());
-  m_authDetails->m_txtUsername->lineEdit()->setText(std_feed->username());
-  m_authDetails->m_txtPassword->lineEdit()->setText(std_feed->password());
+  m_authDetails->setUsername(std_feed->username());
+  m_authDetails->setPassword(std_feed->password());
 
   if (m_creatingNew) {
     // auto processed_url = qApp->web()->processFeedUriScheme(m_urlToProcess);

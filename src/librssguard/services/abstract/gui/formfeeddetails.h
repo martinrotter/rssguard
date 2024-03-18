@@ -5,8 +5,6 @@
 
 #include <QDialog>
 
-#include "ui_formfeeddetails.h"
-
 #include "3rd-party/boolinq/boolinq.h"
 #include "definitions/definitions.h"
 
@@ -18,13 +16,15 @@ class ServiceRoot;
 class Feed;
 class Category;
 class RootItem;
+class QDialogButtonBox;
+class MultiFeedEditCheckBox;
 
 class RSSGUARD_DLLSPEC FormFeedDetails : public QDialog {
     Q_OBJECT
 
   public:
     explicit FormFeedDetails(ServiceRoot* service_root, QWidget* parent = nullptr);
-    virtual ~FormFeedDetails() = default;
+    virtual ~FormFeedDetails();
 
     template <class T>
     QList<T*> addEditFeed(const QList<Feed*>& feeds_to_edit = {});
@@ -47,6 +47,8 @@ class RSSGUARD_DLLSPEC FormFeedDetails : public QDialog {
     virtual void apply();
 
   protected:
+    QDialogButtonBox* buttonBox() const;
+
     bool isChangeAllowed(MultiFeedEditCheckBox* mcb) const;
     void insertCustomTab(QWidget* custom_tab, const QString& title, int index);
 
@@ -64,7 +66,7 @@ class RSSGUARD_DLLSPEC FormFeedDetails : public QDialog {
     void initialize();
 
   protected:
-    Ui::FormFeedDetails m_ui;
+    QScopedPointer<Ui::FormFeedDetails> m_ui;
     QList<Feed*> m_feeds;
     ServiceRoot* m_serviceRoot;
     bool m_creatingNew;

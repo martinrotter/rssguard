@@ -20,21 +20,23 @@
 #include <QTextCodec>
 
 FormFeedDetails::FormFeedDetails(ServiceRoot* service_root, QWidget* parent)
-  : QDialog(parent), m_serviceRoot(service_root) {
+  : QDialog(parent), m_ui(new Ui::FormFeedDetails()), m_serviceRoot(service_root) {
   initialize();
   createConnections();
 }
 
+FormFeedDetails::~FormFeedDetails() = default;
+
 void FormFeedDetails::activateTab(int index) {
-  m_ui.m_tabWidget->setCurrentIndex(index);
+  m_ui->m_tabWidget->setCurrentIndex(index);
 }
 
 void FormFeedDetails::clearTabs() {
-  m_ui.m_tabWidget->clear();
+  m_ui->m_tabWidget->clear();
 }
 
 void FormFeedDetails::insertCustomTab(QWidget* custom_tab, const QString& title, int index) {
-  m_ui.m_tabWidget->insertTab(index, custom_tab, title);
+  m_ui->m_tabWidget->insertTab(index, custom_tab, title);
 }
 
 void FormFeedDetails::apply() {
@@ -42,29 +44,29 @@ void FormFeedDetails::apply() {
 
   for (Feed* fd : fds) {
     // Setup common data for the feed.
-    if (isChangeAllowed(m_ui.m_mcbAutoDownloading)) {
-      fd->setAutoUpdateType(static_cast<Feed::AutoUpdateType>(m_ui.m_cmbAutoUpdateType
-                                                                ->itemData(m_ui.m_cmbAutoUpdateType->currentIndex())
+    if (isChangeAllowed(m_ui->m_mcbAutoDownloading)) {
+      fd->setAutoUpdateType(static_cast<Feed::AutoUpdateType>(m_ui->m_cmbAutoUpdateType
+                                                                ->itemData(m_ui->m_cmbAutoUpdateType->currentIndex())
                                                                 .toInt()));
-      fd->setAutoUpdateInterval(int(m_ui.m_spinAutoUpdateInterval->value()));
+      fd->setAutoUpdateInterval(int(m_ui->m_spinAutoUpdateInterval->value()));
     }
 
-    if (isChangeAllowed(m_ui.m_mcbOpenArticlesAutomatically)) {
-      fd->setOpenArticlesDirectly(m_ui.m_cbOpenArticlesAutomatically->isChecked());
+    if (isChangeAllowed(m_ui->m_mcbOpenArticlesAutomatically)) {
+      fd->setOpenArticlesDirectly(m_ui->m_cbOpenArticlesAutomatically->isChecked());
     }
 
-    if (isChangeAllowed(m_ui.m_mcbFeedRtl)) {
-      fd->setIsRtl(m_ui.m_cbFeedRTL->isChecked());
+    if (isChangeAllowed(m_ui->m_mcbFeedRtl)) {
+      fd->setIsRtl(m_ui->m_cbFeedRTL->isChecked());
     }
 
-    m_ui.m_wdgArticleLimiting->saveFeed(fd, m_isBatchEdit);
+    m_ui->m_wdgArticleLimiting->saveFeed(fd, m_isBatchEdit);
 
-    if (isChangeAllowed(m_ui.m_mcbDisableFeed)) {
-      fd->setIsSwitchedOff(m_ui.m_cbDisableFeed->isChecked());
+    if (isChangeAllowed(m_ui->m_mcbDisableFeed)) {
+      fd->setIsSwitchedOff(m_ui->m_cbDisableFeed->isChecked());
     }
 
-    if (isChangeAllowed(m_ui.m_mcbSuppressFeed)) {
-      fd->setIsQuiet(m_ui.m_cbSuppressFeed->isChecked());
+    if (isChangeAllowed(m_ui->m_mcbSuppressFeed)) {
+      fd->setIsQuiet(m_ui->m_cbSuppressFeed->isChecked());
     }
 
     if (!m_creatingNew) {
@@ -80,28 +82,32 @@ void FormFeedDetails::apply() {
   }
 }
 
+QDialogButtonBox* FormFeedDetails::buttonBox() const {
+  return m_ui->m_buttonBox;
+}
+
 bool FormFeedDetails::isChangeAllowed(MultiFeedEditCheckBox* mcb) const {
   return !m_isBatchEdit || mcb->isChecked();
 }
 
 void FormFeedDetails::onAutoUpdateTypeChanged(int new_index) {
   Feed::AutoUpdateType auto_update_type =
-    static_cast<Feed::AutoUpdateType>(m_ui.m_cmbAutoUpdateType->itemData(new_index).toInt());
+    static_cast<Feed::AutoUpdateType>(m_ui->m_cmbAutoUpdateType->itemData(new_index).toInt());
 
   switch (auto_update_type) {
     case Feed::AutoUpdateType::DontAutoUpdate:
     case Feed::AutoUpdateType::DefaultAutoUpdate:
-      m_ui.m_spinAutoUpdateInterval->setEnabled(false);
+      m_ui->m_spinAutoUpdateInterval->setEnabled(false);
       break;
 
     default:
-      m_ui.m_spinAutoUpdateInterval->setEnabled(true);
+      m_ui->m_spinAutoUpdateInterval->setEnabled(true);
   }
 }
 
 void FormFeedDetails::createConnections() {
-  connect(m_ui.m_buttonBox, &QDialogButtonBox::accepted, this, &FormFeedDetails::acceptIfPossible);
-  connect(m_ui.m_cmbAutoUpdateType,
+  connect(m_ui->m_buttonBox, &QDialogButtonBox::accepted, this, &FormFeedDetails::acceptIfPossible);
+  connect(m_ui->m_cmbAutoUpdateType,
           static_cast<void (QComboBox::*)(int)>(&QComboBox::currentIndexChanged),
           this,
           &FormFeedDetails::onAutoUpdateTypeChanged);
@@ -112,11 +118,11 @@ void FormFeedDetails::loadFeedData() {
 
   if (m_isBatchEdit) {
     // We hook batch selectors.
-    m_ui.m_mcbAutoDownloading->addActionWidget(m_ui.m_wdgAutoUpdate);
-    m_ui.m_mcbOpenArticlesAutomatically->addActionWidget(m_ui.m_cbOpenArticlesAutomatically);
-    m_ui.m_mcbDisableFeed->addActionWidget(m_ui.m_cbDisableFeed);
-    m_ui.m_mcbSuppressFeed->addActionWidget(m_ui.m_cbSuppressFeed);
-    m_ui.m_mcbFeedRtl->addActionWidget(m_ui.m_cbFeedRTL);
+    m_ui->m_mcbAutoDownloading->addActionWidget(m_ui->m_wdgAutoUpdate);
+    m_ui->m_mcbOpenArticlesAutomatically->addActionWidget(m_ui->m_cbOpenArticlesAutomatically);
+    m_ui->m_mcbDisableFeed->addActionWidget(m_ui->m_cbDisableFeed);
+    m_ui->m_mcbSuppressFeed->addActionWidget(m_ui->m_cbSuppressFeed);
+    m_ui->m_mcbFeedRtl->addActionWidget(m_ui->m_cbFeedRTL);
   }
   else {
     // We hide batch selectors.
@@ -125,7 +131,7 @@ void FormFeedDetails::loadFeedData() {
     }
   }
 
-  m_ui.m_wdgArticleLimiting->setForAppWideFeatures(false, m_isBatchEdit);
+  m_ui->m_wdgArticleLimiting->setForAppWideFeatures(false, m_isBatchEdit);
 
   if (m_creatingNew) {
     GuiUtilities::applyDialogProperties(*this,
@@ -143,13 +149,13 @@ void FormFeedDetails::loadFeedData() {
     }
   }
 
-  m_ui.m_cmbAutoUpdateType
-    ->setCurrentIndex(m_ui.m_cmbAutoUpdateType->findData(QVariant::fromValue(int(fd->autoUpdateType()))));
-  m_ui.m_spinAutoUpdateInterval->setValue(fd->autoUpdateInterval());
-  m_ui.m_cbOpenArticlesAutomatically->setChecked(fd->openArticlesDirectly());
-  m_ui.m_cbFeedRTL->setChecked(fd->isRtl());
-  m_ui.m_cbDisableFeed->setChecked(fd->isSwitchedOff());
-  m_ui.m_cbSuppressFeed->setChecked(fd->isQuiet());
+  m_ui->m_cmbAutoUpdateType
+    ->setCurrentIndex(m_ui->m_cmbAutoUpdateType->findData(QVariant::fromValue(int(fd->autoUpdateType()))));
+  m_ui->m_spinAutoUpdateInterval->setValue(fd->autoUpdateInterval());
+  m_ui->m_cbOpenArticlesAutomatically->setChecked(fd->openArticlesDirectly());
+  m_ui->m_cbFeedRTL->setChecked(fd->isRtl());
+  m_ui->m_cbDisableFeed->setChecked(fd->isSwitchedOff());
+  m_ui->m_cbSuppressFeed->setChecked(fd->isQuiet());
 
   Feed::ArticleIgnoreLimit art_limit = Feed::ArticleIgnoreLimit(fd->articleIgnoreLimit());
 
@@ -166,7 +172,7 @@ void FormFeedDetails::loadFeedData() {
   art_limit.m_moveToBinDontPurge = false;
 */
 
-  m_ui.m_wdgArticleLimiting->load(art_limit, true);
+  m_ui->m_wdgArticleLimiting->load(art_limit, true);
 }
 
 void FormFeedDetails::acceptIfPossible() {
@@ -186,15 +192,15 @@ void FormFeedDetails::acceptIfPossible() {
 }
 
 void FormFeedDetails::initialize() {
-  m_ui.setupUi(this);
+  m_ui->setupUi(this);
 
   // Setup auto-update options.
-  m_ui.m_spinAutoUpdateInterval->setMode(TimeSpinBox::Mode::MinutesSeconds);
-  m_ui.m_spinAutoUpdateInterval->setValue(DEFAULT_AUTO_UPDATE_INTERVAL);
-  m_ui.m_cmbAutoUpdateType->addItem(tr("Fetch articles using global interval"),
-                                    QVariant::fromValue(int(Feed::AutoUpdateType::DefaultAutoUpdate)));
-  m_ui.m_cmbAutoUpdateType->addItem(tr("Fetch articles every"),
-                                    QVariant::fromValue(int(Feed::AutoUpdateType::SpecificAutoUpdate)));
-  m_ui.m_cmbAutoUpdateType->addItem(tr("Disable auto-fetching of articles"),
-                                    QVariant::fromValue(int(Feed::AutoUpdateType::DontAutoUpdate)));
+  m_ui->m_spinAutoUpdateInterval->setMode(TimeSpinBox::Mode::MinutesSeconds);
+  m_ui->m_spinAutoUpdateInterval->setValue(DEFAULT_AUTO_UPDATE_INTERVAL);
+  m_ui->m_cmbAutoUpdateType->addItem(tr("Fetch articles using global interval"),
+                                     QVariant::fromValue(int(Feed::AutoUpdateType::DefaultAutoUpdate)));
+  m_ui->m_cmbAutoUpdateType->addItem(tr("Fetch articles every"),
+                                     QVariant::fromValue(int(Feed::AutoUpdateType::SpecificAutoUpdate)));
+  m_ui->m_cmbAutoUpdateType->addItem(tr("Disable auto-fetching of articles"),
+                                     QVariant::fromValue(int(Feed::AutoUpdateType::DontAutoUpdate)));
 }
