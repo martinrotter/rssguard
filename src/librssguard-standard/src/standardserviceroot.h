@@ -3,7 +3,7 @@
 #ifndef STANDARDSERVICEROOT_H
 #define STANDARDSERVICEROOT_H
 
-#include "librssguard/services/abstract/serviceroot.h"
+#include <librssguard/services/abstract/serviceroot.h>
 
 #include "src/standardfeed.h"
 

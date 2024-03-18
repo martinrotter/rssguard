@@ -2,12 +2,13 @@
 
 #include "src/standardcategory.h"
 
-#include "librssguard/database/databasequeries.h"
-#include "librssguard/definitions/definitions.h"
-#include "librssguard/exceptions/applicationexception.h"
-#include "librssguard/services/abstract/gui/formcategorydetails.h"
 #include "src/standardfeed.h"
 #include "src/standardserviceroot.h"
+
+#include <librssguard/database/databasequeries.h>
+#include <librssguard/definitions/definitions.h>
+#include <librssguard/exceptions/applicationexception.h>
+#include <librssguard/services/abstract/gui/formcategorydetails.h>
 
 #include <QPointer>
 

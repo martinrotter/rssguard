@@ -2,11 +2,11 @@
 
 #include "src/standardfeedsimportexportmodel.h"
 
-#include "librssguard/3rd-party/boolinq/boolinq.h"
-#include "librssguard/definitions/definitions.h"
-#include "librssguard/exceptions/applicationexception.h"
-#include "librssguard/miscellaneous/application.h"
-#include "librssguard/miscellaneous/iconfactory.h"
+#include <librssguard/3rd-party/boolinq/boolinq.h>
+#include <librssguard/definitions/definitions.h>
+#include <librssguard/exceptions/applicationexception.h>
+#include <librssguard/miscellaneous/application.h>
+#include <librssguard/miscellaneous/iconfactory.h>
 #include "src/definitions.h"
 #include "src/standardcategory.h"
 #include "src/standardfeed.h"

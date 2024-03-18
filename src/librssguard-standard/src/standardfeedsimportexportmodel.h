@@ -3,7 +3,7 @@
 #ifndef STANDARDFEEDSIMPORTEXPORTMODEL_H
 #define STANDARDFEEDSIMPORTEXPORTMODEL_H
 
-#include "librssguard/services/abstract/accountcheckmodel.h"
+#include <librssguard/services/abstract/accountcheckmodel.h>
 
 #include <QDomElement>
 #include <QFutureWatcher>

@@ -2,18 +2,18 @@
 
 #include "src/standardserviceroot.h"
 
-#include "librssguard/database/databasequeries.h"
-#include "librssguard/definitions/definitions.h"
-#include "librssguard/exceptions/applicationexception.h"
-#include "librssguard/exceptions/feedfetchexception.h"
-#include "librssguard/exceptions/scriptexception.h"
-#include "librssguard/gui/messagebox.h"
-#include "librssguard/miscellaneous/application.h"
-#include "librssguard/miscellaneous/iconfactory.h"
-#include "librssguard/miscellaneous/mutex.h"
-#include "librssguard/miscellaneous/settings.h"
-#include "librssguard/network-web/networkfactory.h"
-#include "librssguard/services/abstract/gui/formcategorydetails.h"
+#include <librssguard/database/databasequeries.h>
+#include <librssguard/definitions/definitions.h>
+#include <librssguard/exceptions/applicationexception.h>
+#include <librssguard/exceptions/feedfetchexception.h>
+#include <librssguard/exceptions/scriptexception.h>
+#include <librssguard/gui/messagebox.h>
+#include <librssguard/miscellaneous/application.h>
+#include <librssguard/miscellaneous/iconfactory.h>
+#include <librssguard/miscellaneous/mutex.h>
+#include <librssguard/miscellaneous/settings.h>
+#include <librssguard/network-web/networkfactory.h>
+#include <librssguard/services/abstract/gui/formcategorydetails.h>
 
 #include "src/definitions.h"
 #include "src/gui/formdiscoverfeeds.h"
@@ -32,12 +32,12 @@
 #include "src/standardserviceentrypoint.h"
 
 #if defined(NO_LITE)
-#include "librssguard/gui/webviewers/webengine/webengineviewer.h"
-#include "librssguard/network-web/webengine/webenginepage.h"
+#include <librssguard/gui/webviewers/webengine/webengineviewer.h>
+#include <librssguard/network-web/webengine/webenginepage.h>
 #endif
 
 #if defined(ENABLE_COMPRESSED_SITEMAP)
-#include "librssguard/3rd-party/qcompressor/qcompressor.h"
+#include <librssguard/3rd-party/qcompressor/qcompressor.h>
 #endif
 
 #include <QAction>
