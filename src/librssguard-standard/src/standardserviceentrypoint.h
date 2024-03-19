@@ -12,6 +12,7 @@ class RSSGUARD_DLLSPEC_EXPORT StandardServiceEntryPoint : public QObject, public
 
   public:
     explicit StandardServiceEntryPoint(QObject* parent = nullptr);
+    virtual ~StandardServiceEntryPoint();
 
     virtual QString name() const;
     virtual QString description() const;
@@ -20,6 +21,7 @@ class RSSGUARD_DLLSPEC_EXPORT StandardServiceEntryPoint : public QObject, public
     virtual QString code() const;
     virtual ServiceRoot* createNewRoot() const;
     virtual QList<ServiceRoot*> initializeSubtree() const;
+    virtual bool isDynamicallyLoaded() const;
 };
 
 #endif // STANDARDSERVICEENTRYPOINT_H

@@ -27,23 +27,23 @@ QList<ServiceEntryPoint*> PluginFactory::loadPlugins() const {
 
     while (dir_iter.hasNext()) {
       dir_iter.next();
+
       const QFileInfo& plugin_file = dir_iter.fileInfo();
 
       qApp->addLibraryPath(plugin_file.absolutePath());
       QDir::setCurrent(plugin_file.absolutePath());
 
-      qDebugNN << LOGSEC_CORE << "Loading plugin"
-               << QUOTE_W_SPACE_DOT(QDir::toNativeSeparators(plugin_file.absoluteFilePath()));
-
       QPluginLoader loader(plugin_file.absoluteFilePath());
       ServiceEntryPoint* plugin_instance = qobject_cast<ServiceEntryPoint*>(loader.instance());
 
+      QDir::setCurrent(backup_current_dir);
+
       if (plugin_instance == nullptr) {
-        qCriticalNN << LOGSEC_CORE
-                    << "The plugin was not loaded successfully:" << QUOTE_W_SPACE_DOT(loader.errorString());
+        qCriticalNN << LOGSEC_CORE << "The plugin" << QUOTE_W_SPACE(plugin_file.absoluteFilePath())
+                    << "was not loaded successfully:" << QUOTE_W_SPACE_DOT(loader.errorString());
       }
       else {
-        qDebugNN << LOGSEC_CORE << "Plugin" << QUOTE_W_SPACE(plugin_instance->code()) << "loaded.";
+        qDebugNN << LOGSEC_CORE << "Plugin" << QUOTE_W_SPACE(plugin_file.absoluteFilePath()) << "loaded.";
 
         plugins.append(plugin_instance);
       }
