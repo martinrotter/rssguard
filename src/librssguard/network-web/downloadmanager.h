@@ -24,7 +24,7 @@ namespace Ui {
   class DownloadManager;
 }
 
-class DownloadItem : public QWidget {
+class RSSGUARD_DLLSPEC DownloadItem : public QWidget {
     Q_OBJECT
 
     friend class DownloadManager;
@@ -89,7 +89,7 @@ class DownloadItem : public QWidget {
 class WebBrowser;
 class SilentNetworkAccessManager;
 
-class DownloadManager : public TabContent {
+class RSSGUARD_DLLSPEC DownloadManager : public TabContent {
     Q_OBJECT
     Q_PROPERTY(RemovePolicy removePolicy READ removePolicy WRITE setRemovePolicy NOTIFY removePolicyChanged)
 

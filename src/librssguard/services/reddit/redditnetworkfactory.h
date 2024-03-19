@@ -3,7 +3,6 @@
 #ifndef REDDITNETWORKFACTORY_H
 #define REDDITNETWORKFACTORY_H
 
-#include "3rd-party/mimesis/mimesis.hpp"
 #include "core/message.h"
 #include "services/abstract/feed.h"
 #include "services/abstract/rootitem.h"

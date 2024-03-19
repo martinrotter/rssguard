@@ -23,7 +23,7 @@ class WebViewer;
 class LocationLineEdit;
 class SearchTextWidget;
 
-class WebBrowser : public TabContent {
+class RSSGUARD_DLLSPEC WebBrowser : public TabContent {
     Q_OBJECT
 
     friend class WebEngineViewer;

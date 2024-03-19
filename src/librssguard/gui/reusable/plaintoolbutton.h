@@ -5,7 +5,7 @@
 
 #include <QToolButton>
 
-class PlainToolButton : public QToolButton {
+class RSSGUARD_DLLSPEC PlainToolButton : public QToolButton {
     Q_OBJECT
 
   public:

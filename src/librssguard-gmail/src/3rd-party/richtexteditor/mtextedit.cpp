@@ -2,10 +2,9 @@
 //
 // For license of this file, see <project-root-folder>/resources/text/COPYING_GNU_LGPL_21.
 
-#include "gui/richtexteditor/mtextedit.h"
+#include "src/3rd-party/richtexteditor/mtextedit.h"
 
-#include "definitions/definitions.h"
-
+#include <librssguard/definitions/definitions.h>
 #include <stdlib.h>
 
 #include <QBuffer>

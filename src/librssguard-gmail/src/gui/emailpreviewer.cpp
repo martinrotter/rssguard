@@ -1,15 +1,16 @@
 // For license of this file, see <project-root-folder>/LICENSE.md.
 
-#include "services/gmail/gui/emailpreviewer.h"
+#include "src/gui/emailpreviewer.h"
 
-#include "exceptions/networkexception.h"
-#include "gui/messagebox.h"
-#include "miscellaneous/application.h"
-#include "miscellaneous/iconfactory.h"
-#include "services/gmail/definitions.h"
-#include "services/gmail/gmailnetworkfactory.h"
-#include "services/gmail/gmailserviceroot.h"
-#include "services/gmail/gui/formaddeditemail.h"
+#include "src/definitions.h"
+#include "src/gmailnetworkfactory.h"
+#include "src/gmailserviceroot.h"
+#include "src/gui/formaddeditemail.h"
+
+#include <librssguard/exceptions/networkexception.h>
+#include <librssguard/gui/messagebox.h>
+#include <librssguard/miscellaneous/application.h>
+#include <librssguard/miscellaneous/iconfactory.h>
 
 #include <QJsonObject>
 

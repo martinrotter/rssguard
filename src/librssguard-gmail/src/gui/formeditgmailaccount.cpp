@@ -1,12 +1,13 @@
 // For license of this file, see <project-root-folder>/LICENSE.md.
 
-#include "services/gmail/gui/formeditgmailaccount.h"
+#include "src/gui/formeditgmailaccount.h"
 
-#include "miscellaneous/application.h"
-#include "miscellaneous/iconfactory.h"
-#include "network-web/oauth2service.h"
-#include "services/gmail/gmailserviceroot.h"
-#include "services/gmail/gui/gmailaccountdetails.h"
+#include "src/gmailserviceroot.h"
+#include "src/gui/gmailaccountdetails.h"
+
+#include <librssguard/miscellaneous/application.h>
+#include <librssguard/miscellaneous/iconfactory.h>
+#include <librssguard/network-web/oauth2service.h>
 
 FormEditGmailAccount::FormEditGmailAccount(QWidget* parent)
   : FormAccountDetails(qApp->icons()->miscIcon(QSL("gmail")), parent), m_details(new GmailAccountDetails(this)) {

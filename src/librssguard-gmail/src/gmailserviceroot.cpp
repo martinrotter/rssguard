@@ -1,19 +1,20 @@
 // For license of this file, see <project-root-folder>/LICENSE.md.
 
-#include "services/gmail/gmailserviceroot.h"
+#include "src/gmailserviceroot.h"
 
-#include "database/databasequeries.h"
-#include "exceptions/feedfetchexception.h"
-#include "miscellaneous/application.h"
-#include "miscellaneous/iconfactory.h"
-#include "network-web/oauth2service.h"
-#include "services/abstract/labelsnode.h"
-#include "services/gmail/definitions.h"
-#include "services/gmail/gmailentrypoint.h"
-#include "services/gmail/gmailnetworkfactory.h"
-#include "services/gmail/gui/emailpreviewer.h"
-#include "services/gmail/gui/formaddeditemail.h"
-#include "services/gmail/gui/formeditgmailaccount.h"
+#include "src/definitions.h"
+#include "src/gmailentrypoint.h"
+#include "src/gmailnetworkfactory.h"
+#include "src/gui/emailpreviewer.h"
+#include "src/gui/formaddeditemail.h"
+#include "src/gui/formeditgmailaccount.h"
+
+#include <librssguard/database/databasequeries.h>
+#include <librssguard/exceptions/feedfetchexception.h>
+#include <librssguard/miscellaneous/application.h>
+#include <librssguard/miscellaneous/iconfactory.h>
+#include <librssguard/network-web/oauth2service.h>
+#include <librssguard/services/abstract/labelsnode.h>
 
 #include <QFileDialog>
 

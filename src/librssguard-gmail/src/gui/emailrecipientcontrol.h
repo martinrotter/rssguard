@@ -3,7 +3,7 @@
 #ifndef EMAILRECIPIENTCONTROL_H
 #define EMAILRECIPIENTCONTROL_H
 
-#include "services/gmail/definitions.h"
+#include "src/definitions.h"
 
 #include <QWidget>
 

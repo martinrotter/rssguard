@@ -8,7 +8,7 @@
 
 typedef QPair<QString, QString> HttpHeader;
 
-class HttpResponse {
+class RSSGUARD_DLLSPEC HttpResponse {
   public:
     explicit HttpResponse();
 

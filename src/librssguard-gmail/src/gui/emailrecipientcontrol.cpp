@@ -1,11 +1,12 @@
 // For license of this file, see <project-root-folder>/LICENSE.md.
 
-#include "services/gmail/gui/emailrecipientcontrol.h"
+#include "src/gui/emailrecipientcontrol.h"
 
-#include "gui/reusable/plaintoolbutton.h"
-#include "miscellaneous/application.h"
-#include "miscellaneous/iconfactory.h"
-#include "services/gmail/definitions.h"
+#include "src/definitions.h"
+
+#include <librssguard/gui/reusable/plaintoolbutton.h>
+#include <librssguard/miscellaneous/application.h>
+#include <librssguard/miscellaneous/iconfactory.h>
 
 #include <QComboBox>
 #include <QCompleter>

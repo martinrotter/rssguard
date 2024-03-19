@@ -5,7 +5,7 @@
 
 #include <QToolButton>
 
-class ColorToolButton : public QToolButton {
+class RSSGUARD_DLLSPEC ColorToolButton : public QToolButton {
     Q_OBJECT
 
   public:
