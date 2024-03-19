@@ -3,14 +3,13 @@
 #ifndef DOWNLOADER_H
 #define DOWNLOADER_H
 
-#include <QObject>
-
 #include "definitions/definitions.h"
 #include "network-web/httpresponse.h"
 
 #include <QHttpMultiPart>
 #include <QNetworkProxy>
 #include <QNetworkReply>
+#include <QObject>
 #include <QSslError>
 
 class SilentNetworkAccessManager;

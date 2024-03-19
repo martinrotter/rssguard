@@ -17,7 +17,8 @@
 NodeJs::NodeJs(Settings* settings, QObject* parent) : QObject(parent), m_settings(settings) {}
 
 void NodeJs::runScript(QProcess* proc, const QString& script, const QStringList& arguments) const {
-  QStringList arg = { script }; arg.append(arguments);
+  QStringList arg = {script};
+  arg.append(arguments);
   QProcessEnvironment env;
   QString node_modules = processedPackageFolder() + QDir::separator() + QSL("node_modules");
 
@@ -76,7 +77,7 @@ QString NodeJs::nodeJsVersion(const QString& nodejs_exe) const {
     throw ApplicationException(tr("file not found"));
   }
 
-  return IOFactory::startProcessGetOutput(nodejs_exe, { QSL("--version") }).simplified();
+  return IOFactory::startProcessGetOutput(nodejs_exe, {QSL("--version")}).simplified();
 }
 
 QString NodeJs::npmVersion(const QString& npm_exe) const {
@@ -84,13 +85,16 @@ QString NodeJs::npmVersion(const QString& npm_exe) const {
     throw ApplicationException(tr("file not found"));
   }
 
-  return IOFactory::startProcessGetOutput(npm_exe, { QSL("--version") }).simplified();
+  return IOFactory::startProcessGetOutput(npm_exe, {QSL("--version")}).simplified();
 }
 
 NodeJs::PackageStatus NodeJs::packageStatus(const PackageMetadata& pkg) const {
   QString npm_ls = IOFactory::startProcessGetOutput(npmExecutable(),
-                                                    { QSL("ls"), QSL("--unicode"), QSL("--json"), QSL("--prefix"),
-                                                      processedPackageFolder() },
+                                                    {QSL("ls"),
+                                                     QSL("--unicode"),
+                                                     QSL("--json"),
+                                                     QSL("--prefix"),
+                                                     processedPackageFolder()},
                                                     {},
                                                     processedPackageFolder());
   QJsonDocument json = QJsonDocument::fromJson(npm_ls.toUtf8());
@@ -162,23 +166,25 @@ void NodeJs::installPackages(const QList<PackageMetadata>& pkgs) {
 
     QProcess* proc = new QProcess();
 
-    connect(proc, QOverload<int, QProcess::ExitStatus>::of(&QProcess::finished),
-            this, [pkgs, this](int exit_code,
-                               QProcess::ExitStatus status) {
-      QProcess* sndr = qobject_cast<QProcess*>(sender());
+    connect(proc,
+            QOverload<int, QProcess::ExitStatus>::of(&QProcess::finished),
+            this,
+            [pkgs, this](int exit_code, QProcess::ExitStatus status) {
+              QProcess* sndr = qobject_cast<QProcess*>(sender());
 
-      if (exit_code != EXIT_SUCCESS || status == QProcess::ExitStatus::CrashExit) {
-        qCriticalNN << LOGSEC_NODEJS << "Error when installing packages" << QUOTE_W_SPACE_DOT(packagesToString(pkgs))
-                    << " Exit code:" << QUOTE_W_SPACE_DOT(exit_code)
-                    << " Message:" << QUOTE_W_SPACE_DOT(sndr->readAllStandardError());
+              if (exit_code != EXIT_SUCCESS || status == QProcess::ExitStatus::CrashExit) {
+                qCriticalNN << LOGSEC_NODEJS << "Error when installing packages"
+                            << QUOTE_W_SPACE_DOT(packagesToString(pkgs))
+                            << " Exit code:" << QUOTE_W_SPACE_DOT(exit_code)
+                            << " Message:" << QUOTE_W_SPACE_DOT(sndr->readAllStandardError());
 
-        emit packageError(pkgs, sndr->errorString());
-      }
-      else {
-        qDebugNN << LOGSEC_NODEJS << "Installed/updated packages" << QUOTE_W_SPACE(packagesToString(pkgs));
-        emit packageInstalledUpdated(pkgs, false);
-      }
-    });
+                emit packageError(pkgs, sndr->errorString());
+              }
+              else {
+                qDebugNN << LOGSEC_NODEJS << "Installed/updated packages" << QUOTE_W_SPACE(packagesToString(pkgs));
+                emit packageInstalledUpdated(pkgs, false);
+              }
+            });
     connect(proc, &QProcess::errorOccurred, this, [pkgs, this](QProcess::ProcessError error) {
       QProcess* sndr = qobject_cast<QProcess*>(sender());
 
@@ -193,8 +199,8 @@ void NodeJs::installPackages(const QList<PackageMetadata>& pkgs) {
     to_install.prepend(QSL("--production"));
     to_install.prepend(QSL("install"));
 
-    //to_install.append(QSL("--prefix"));
-    //to_install.append(processedPackageFolder());
+    // to_install.append(QSL("--prefix"));
+    // to_install.append(processedPackageFolder());
 
     IOFactory::startProcess(proc, npmExecutable(), to_install, {}, processedPackageFolder());
   }

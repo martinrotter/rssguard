@@ -3,16 +3,16 @@
 #ifndef STATUSBAR_H
 #define STATUSBAR_H
 
-#include <QStatusBar>
-
 #include "gui/toolbars/basetoolbar.h"
+
+#include <QStatusBar>
 
 class ProgressBarWithText;
 class QLabel;
 class PlainToolButton;
 
 class StatusBar : public QStatusBar, public BaseBar {
-  Q_OBJECT
+    Q_OBJECT
 
   public:
     explicit StatusBar(QWidget* parent = nullptr);

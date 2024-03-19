@@ -3,12 +3,12 @@
 #ifndef MESSAGETEXTBROWSER_H
 #define MESSAGETEXTBROWSER_H
 
-#include <QTextBrowser>
-
 #include "core/message.h"
 
+#include <QTextBrowser>
+
 class MessageTextBrowser : public QTextBrowser {
-  Q_OBJECT
+    Q_OBJECT
 
   public:
     explicit MessageTextBrowser(QWidget* parent = nullptr);
@@ -20,7 +20,7 @@ class MessageTextBrowser : public QTextBrowser {
   protected:
     virtual void contextMenuEvent(QContextMenuEvent* event);
     virtual void wheelEvent(QWheelEvent* event);
-    virtual void resizeEvent (QResizeEvent* event);
+    virtual void resizeEvent(QResizeEvent* event);
 
   private:
     QPixmap m_imagePlaceholder;

@@ -4,7 +4,6 @@
 #define SEARCHSNODE_H
 
 #include "services/abstract/rootitem.h"
-
 #include "services/abstract/search.h"
 
 class RSSGUARD_DLLSPEC SearchsNode : public RootItem {

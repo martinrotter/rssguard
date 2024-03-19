@@ -6,8 +6,7 @@
 
 #include <QHBoxLayout>
 
-LabelWithStatus::LabelWithStatus(QWidget* parent)
-  : WidgetWithStatus(parent) {
+LabelWithStatus::LabelWithStatus(QWidget* parent) : WidgetWithStatus(parent) {
   m_wdgInput = new QLabel(this);
 
   // Set correct size for the tool button.

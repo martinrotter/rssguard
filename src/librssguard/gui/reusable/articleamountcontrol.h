@@ -3,11 +3,11 @@
 #ifndef ARTICLEAMOUNTCONTROL_H
 #define ARTICLEAMOUNTCONTROL_H
 
-#include <QWidget>
+#include "services/abstract/feed.h"
 
 #include "ui_articleamountcontrol.h"
 
-#include "services/abstract/feed.h"
+#include <QWidget>
 
 class ArticleAmountControl : public QWidget {
     Q_OBJECT

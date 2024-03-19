@@ -3,10 +3,9 @@
 #ifndef IOFACTORY_H
 #define IOFACTORY_H
 
-#include <QCoreApplication>
-
 #include "definitions/definitions.h"
 
+#include <QCoreApplication>
 #include <QProcessEnvironment>
 #include <QStandardPaths>
 

@@ -3,12 +3,12 @@
 #ifndef FORMBACKUPDATABASECONFIG_H
 #define FORMBACKUPDATABASECONFIG_H
 
-#include <QDialog>
-
 #include "ui_formbackupdatabasesettings.h"
 
+#include <QDialog>
+
 class FormBackupDatabaseSettings : public QDialog {
-  Q_OBJECT
+    Q_OBJECT
 
   public:
     explicit FormBackupDatabaseSettings(QWidget* parent = nullptr);

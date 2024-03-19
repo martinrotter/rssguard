@@ -3,9 +3,8 @@
 #ifndef MESSAGEPREVIEWER_H
 #define MESSAGEPREVIEWER_H
 
-#include "gui/tabcontent.h"
-
 #include "core/message.h"
+#include "gui/tabcontent.h"
 #include "services/abstract/label.h"
 #include "services/abstract/rootitem.h"
 

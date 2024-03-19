@@ -3,7 +3,8 @@
 /****************************************************************************
 **
 ** Copyright (C) 2016 Giuseppe D'Angelo <dangelog@gmail.com>.
-** Copyright (C) 2016 Klarälvdalens Datakonsult AB, a KDAB Group company, info@kdab.com, author Giuseppe D'Angelo <giuseppe.dangelo@kdab.com>
+** Copyright (C) 2016 Klarälvdalens Datakonsult AB, a KDAB Group company, info@kdab.com, author Giuseppe D'Angelo
+*<giuseppe.dangelo@kdab.com>
 ** Copyright (C) 2016 The Qt Company Ltd.
 ** Contact: https://www.qt.io/licensing/
 **

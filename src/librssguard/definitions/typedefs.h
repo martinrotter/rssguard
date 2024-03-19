@@ -3,11 +3,11 @@
 #ifndef TYPEDEFS_H
 #define TYPEDEFS_H
 
-#include <QList>
-#include <QPair>
-
 #include "core/message.h"
 #include "services/abstract/rootitem.h"
+
+#include <QList>
+#include <QPair>
 
 // First item here represents ID (int, primary key) of the item.
 typedef QList<QPair<int, RootItem*>> Assignment;

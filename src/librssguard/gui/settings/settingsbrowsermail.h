@@ -4,7 +4,6 @@
 #define SETTINGSBROWSERMAIL_H
 
 #include "gui/settings/settingspanel.h"
-
 #include "miscellaneous/externaltool.h"
 
 #include "ui_settingsbrowsermail.h"

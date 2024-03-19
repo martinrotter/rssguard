@@ -92,11 +92,11 @@ IncludeCategories:
     SortPriority:    0
     CaseSensitive:   false
   - Regex:           '^<[A-Z]'
-    Priority:        3
+    Priority:        4
     SortPriority:    0
     CaseSensitive:   true
   - Regex:           '^<[a-z0-9]'
-    Priority:        4
+    Priority:        3
     SortPriority:    0
     CaseSensitive:   true
 IncludeIsMainRegex: '(Test)?$'

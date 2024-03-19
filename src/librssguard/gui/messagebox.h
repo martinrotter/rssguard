@@ -3,10 +3,10 @@
 #ifndef MESSAGEBOX_H
 #define MESSAGEBOX_H
 
+#include <functional>
+
 #include <QDialogButtonBox>
 #include <QMessageBox>
-
-#include <functional>
 
 class RSSGUARD_DLLSPEC MsgBox : public QMessageBox {
     Q_OBJECT

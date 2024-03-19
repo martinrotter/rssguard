@@ -3,9 +3,9 @@
 #ifndef FEEDSMODEL_H
 #define FEEDSMODEL_H
 
-#include <QAbstractItemModel>
-
 #include "services/abstract/rootitem.h"
+
+#include <QAbstractItemModel>
 
 class Category;
 class Feed;

@@ -9,7 +9,7 @@ class GreaderAccountDetails;
 class GreaderServiceRoot;
 
 class FormEditGreaderAccount : public FormAccountDetails {
-  Q_OBJECT
+    Q_OBJECT
 
   public:
     explicit FormEditGreaderAccount(QWidget* parent = nullptr);

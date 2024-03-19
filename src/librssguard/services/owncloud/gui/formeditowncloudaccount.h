@@ -9,7 +9,7 @@ class OwnCloudAccountDetails;
 class OwnCloudServiceRoot;
 
 class FormEditOwnCloudAccount : public FormAccountDetails {
-  Q_OBJECT
+    Q_OBJECT
 
   public:
     explicit FormEditOwnCloudAccount(QWidget* parent = nullptr);

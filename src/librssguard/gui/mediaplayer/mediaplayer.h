@@ -3,9 +3,8 @@
 #ifndef MEDIAPLAYER_H
 #define MEDIAPLAYER_H
 
-#include "gui/tabcontent.h"
-
 #include "gui/mediaplayer/playerbackend.h"
+#include "gui/tabcontent.h"
 
 #include "ui_mediaplayer.h"
 

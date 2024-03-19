@@ -3,9 +3,9 @@
 #ifndef ARTICLELISTNOTIFICATIONMODEL_H
 #define ARTICLELISTNOTIFICATIONMODEL_H
 
-#include <QAbstractListModel>
-
 #include "core/message.h"
+
+#include <QAbstractListModel>
 
 class ArticleListNotificationModel : public QAbstractListModel {
     Q_OBJECT

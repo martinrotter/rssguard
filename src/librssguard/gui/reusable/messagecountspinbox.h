@@ -6,7 +6,7 @@
 #include <QSpinBox>
 
 class MessageCountSpinBox : public QSpinBox {
-  Q_OBJECT
+    Q_OBJECT
 
   public:
     explicit MessageCountSpinBox(QWidget* parent = nullptr);

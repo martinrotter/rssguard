@@ -17,12 +17,12 @@
 #include "services/abstract/recyclebin.h"
 #include "services/abstract/serviceroot.h"
 
+#include <cmath>
+
 #include <QPainter>
 #include <QPainterPath>
 #include <QSqlError>
 #include <QSqlField>
-
-#include <cmath>
 
 MessagesModel::MessagesModel(QObject* parent)
   : QSqlQueryModel(parent), m_view(nullptr), m_cache(new MessagesModelCache(this)),

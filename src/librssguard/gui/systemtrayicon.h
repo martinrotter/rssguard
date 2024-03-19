@@ -3,14 +3,13 @@
 #ifndef SYSTEMTRAYICON_H
 #define SYSTEMTRAYICON_H
 
-#include <QSystemTrayIcon>
-
 #include "definitions/definitions.h"
+
+#include <functional>
 
 #include <QMenu>
 #include <QPixmap>
-
-#include <functional>
+#include <QSystemTrayIcon>
 
 class FormMain;
 class QEvent;

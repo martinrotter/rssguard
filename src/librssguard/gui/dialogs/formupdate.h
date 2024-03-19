@@ -3,13 +3,12 @@
 #ifndef FORMUPDATE_H
 #define FORMUPDATE_H
 
-#include <QDialog>
-
-#include "ui_formupdate.h"
-
 #include "miscellaneous/systemfactory.h"
 #include "network-web/downloader.h"
 
+#include "ui_formupdate.h"
+
+#include <QDialog>
 #include <QNetworkReply>
 #include <QPushButton>
 

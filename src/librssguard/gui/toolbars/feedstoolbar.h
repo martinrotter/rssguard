@@ -3,9 +3,8 @@
 #ifndef FEEDSTOOLBAR_H
 #define FEEDSTOOLBAR_H
 
-#include "gui/toolbars/basetoolbar.h"
-
 #include "gui/reusable/searchlineedit.h"
+#include "gui/toolbars/basetoolbar.h"
 
 class QWidgetAction;
 
@@ -13,7 +12,10 @@ class FeedsToolBar : public BaseToolBar {
     Q_OBJECT
 
   public:
-    enum class SearchFields { SearchTitleOnly = 1, SearchAll = 2 };
+    enum class SearchFields {
+      SearchTitleOnly = 1,
+      SearchAll = 2
+    };
 
     explicit FeedsToolBar(const QString& title, QWidget* parent = nullptr);
 

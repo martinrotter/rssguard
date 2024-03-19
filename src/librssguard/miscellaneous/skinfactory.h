@@ -3,16 +3,14 @@
 #ifndef SKINFACTORY_H
 #define SKINFACTORY_H
 
-#include <QObject>
-
 #include "core/message.h"
-
 #include "gui/webviewers/webviewer.h"
 
 #include <QColor>
 #include <QFont>
 #include <QHash>
 #include <QMetaType>
+#include <QObject>
 #include <QPalette>
 #include <QStringList>
 #include <QVariant>

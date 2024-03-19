@@ -2,6 +2,9 @@
 
 #include "src/gui/formstandardfeeddetails.h"
 
+#include "src/gui/standardfeeddetails.h"
+#include "src/standardfeed.h"
+
 #include <librssguard/database/databasequeries.h>
 #include <librssguard/exceptions/applicationexception.h>
 #include <librssguard/miscellaneous/application.h>
@@ -10,8 +13,6 @@
 #include <librssguard/services/abstract/category.h>
 #include <librssguard/services/abstract/gui/authenticationdetails.h>
 #include <librssguard/services/abstract/serviceroot.h>
-#include "src/gui/standardfeeddetails.h"
-#include "src/standardfeed.h"
 
 #include <QComboBox>
 #include <QDialogButtonBox>

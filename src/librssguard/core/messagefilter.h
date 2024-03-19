@@ -3,12 +3,11 @@
 #ifndef MESSAGEFILTER_H
 #define MESSAGEFILTER_H
 
-#include <QObject>
-
 #include "core/message.h"
 #include "core/messageobject.h"
 
 #include <QJSEngine>
+#include <QObject>
 
 // Class which represents one message filter.
 class RSSGUARD_DLLSPEC MessageFilter : public QObject {

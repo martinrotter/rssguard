@@ -3,9 +3,8 @@
 #ifndef ARTICLELISTNOTIFICATION_H
 #define ARTICLELISTNOTIFICATION_H
 
-#include "gui/notifications/basetoastnotification.h"
-
 #include "core/message.h"
+#include "gui/notifications/basetoastnotification.h"
 
 #include "ui_articlelistnotification.h"
 

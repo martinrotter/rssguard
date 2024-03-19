@@ -3,9 +3,9 @@
 #ifndef NOTIFICATIONFACTORY_H
 #define NOTIFICATIONFACTORY_H
 
-#include <QObject>
-
 #include "miscellaneous/notification.h"
+
+#include <QObject>
 
 class Settings;
 

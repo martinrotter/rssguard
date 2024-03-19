@@ -3,11 +3,10 @@
 #ifndef WEBFACTORY_H
 #define WEBFACTORY_H
 
-#include <QObject>
-
 #include "core/message.h"
 
 #include <QMap>
+#include <QObject>
 
 #if defined(NO_LITE)
 class QWebEngineProfile;

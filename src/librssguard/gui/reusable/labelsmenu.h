@@ -4,11 +4,10 @@
 #define LABELSMENU_H
 
 #include "gui/reusable/nonclosablemenu.h"
-
 #include "services/abstract/label.h"
 
 class LabelsMenu : public NonClosableMenu {
-  Q_OBJECT
+    Q_OBJECT
 
   public:
     explicit LabelsMenu(const QList<Message>& messages, const QList<Label*>& labels, QWidget* parent = nullptr);
@@ -31,7 +30,7 @@ class LabelsMenu : public NonClosableMenu {
 };
 
 class LabelAction : public QAction {
-  Q_OBJECT
+    Q_OBJECT
 
   public:
     explicit LabelAction(Label* label, QWidget* parent_widget, QObject* parent);

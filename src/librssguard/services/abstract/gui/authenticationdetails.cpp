@@ -2,9 +2,9 @@
 
 #include "services/abstract/gui/authenticationdetails.h"
 
-#include "ui_authenticationdetails.h"
-
 #include "definitions/definitions.h"
+
+#include "ui_authenticationdetails.h"
 
 AuthenticationDetails::AuthenticationDetails(bool only_basic, QWidget* parent)
   : QWidget(parent), m_ui(new Ui::AuthenticationDetails()) {

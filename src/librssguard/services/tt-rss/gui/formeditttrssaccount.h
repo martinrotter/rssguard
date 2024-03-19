@@ -10,7 +10,7 @@ class TtRssServiceRoot;
 class TtRssAccountDetails;
 
 class FormEditTtRssAccount : public FormAccountDetails {
-  Q_OBJECT
+    Q_OBJECT
 
   public:
     explicit FormEditTtRssAccount(QWidget* parent = nullptr);

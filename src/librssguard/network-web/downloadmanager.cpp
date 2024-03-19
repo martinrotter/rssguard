@@ -2,9 +2,6 @@
 
 #include "network-web/downloadmanager.h"
 
-#include "ui_downloaditem.h"
-#include "ui_downloadmanager.h"
-
 #include "gui/dialogs/formmain.h"
 #include "gui/messagebox.h"
 #include "gui/tabwidget.h"
@@ -12,6 +9,9 @@
 #include "miscellaneous/autosaver.h"
 #include "miscellaneous/settings.h"
 #include "network-web/silentnetworkaccessmanager.h"
+
+#include "ui_downloaditem.h"
+#include "ui_downloadmanager.h"
 
 #include <cmath>
 

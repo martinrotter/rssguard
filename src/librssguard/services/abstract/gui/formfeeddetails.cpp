@@ -2,8 +2,6 @@
 
 #include "services/abstract/gui/formfeeddetails.h"
 
-#include "ui_formfeeddetails.h"
-
 #include "database/databasequeries.h"
 #include "definitions/definitions.h"
 #include "exceptions/applicationexception.h"
@@ -12,6 +10,8 @@
 #include "miscellaneous/textfactory.h"
 #include "services/abstract/gui/multifeededitcheckbox.h"
 #include "services/abstract/rootitem.h"
+
+#include "ui_formfeeddetails.h"
 
 #include <QMenu>
 #include <QNetworkReply>

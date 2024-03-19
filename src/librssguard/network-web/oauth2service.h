@@ -25,22 +25,24 @@
 #ifndef OAUTH2SERVICE_H
 #define OAUTH2SERVICE_H
 
-#include <QObject>
-
 #include "network-web/oauthhttphandler.h"
 #include "network-web/silentnetworkaccessmanager.h"
 
 #include <functional>
 
+#include <QObject>
 #include <QUrl>
 
 class OAuth2Service : public QObject {
-  Q_OBJECT
+    Q_OBJECT
 
   public:
-    explicit OAuth2Service(const QString& auth_url, const QString& token_url,
-                           const QString& client_id, const QString& client_secret,
-                           const QString& scope, QObject* parent = nullptr);
+    explicit OAuth2Service(const QString& auth_url,
+                           const QString& token_url,
+                           const QString& client_id,
+                           const QString& client_secret,
+                           const QString& scope,
+                           QObject* parent = nullptr);
     virtual ~OAuth2Service();
 
     // Returns bearer HTTP header value.

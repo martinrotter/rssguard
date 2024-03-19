@@ -8,7 +8,7 @@
 class OwnCloudServiceRoot;
 
 class OwnCloudFeed : public Feed {
-  Q_OBJECT
+    Q_OBJECT
 
   public:
     explicit OwnCloudFeed(RootItem* parent = nullptr);

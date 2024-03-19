@@ -3,14 +3,13 @@
 #ifndef ICONFACTORY_H
 #define ICONFACTORY_H
 
-#include <QObject>
-
 #include "definitions/definitions.h"
 #include "miscellaneous/application.h"
 
 #include <QDir>
 #include <QHash>
 #include <QIcon>
+#include <QObject>
 #include <QString>
 
 class RSSGUARD_DLLSPEC IconFactory : public QObject {

@@ -6,7 +6,7 @@
 #include <QLabel>
 
 class SqueezeLabel : public QLabel {
-  Q_OBJECT
+    Q_OBJECT
 
   public:
     explicit SqueezeLabel(QWidget* parent = nullptr);

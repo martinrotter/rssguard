@@ -3,9 +3,9 @@
 #ifndef FEEDSPROXYMODEL_H
 #define FEEDSPROXYMODEL_H
 
-#include <QSortFilterProxyModel>
-
 #include "services/abstract/rootitem.h"
+
+#include <QSortFilterProxyModel>
 
 class FeedsModel;
 class FeedsView;

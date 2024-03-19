@@ -3,10 +3,10 @@
 #ifndef FORMCATEGORYDETAILS_H
 #define FORMCATEGORYDETAILS_H
 
-#include <QDialog>
-
 #include "3rd-party/boolinq/boolinq.h"
 #include "definitions/definitions.h"
+
+#include <QDialog>
 
 namespace Ui {
   class FormCategoryDetails;

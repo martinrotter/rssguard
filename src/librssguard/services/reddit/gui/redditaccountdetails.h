@@ -3,18 +3,17 @@
 #ifndef REDDITACCOUNTDETAILS_H
 #define REDDITACCOUNTDETAILS_H
 
-#include <QWidget>
-
 #include "ui_redditaccountdetails.h"
 
 #include <QNetworkProxy>
+#include <QWidget>
 
 class OAuth2Service;
 
 class RedditAccountDetails : public QWidget {
-  Q_OBJECT
+    Q_OBJECT
 
-  friend class FormEditRedditAccount;
+    friend class FormEditRedditAccount;
 
   public:
     explicit RedditAccountDetails(QWidget* parent = nullptr);

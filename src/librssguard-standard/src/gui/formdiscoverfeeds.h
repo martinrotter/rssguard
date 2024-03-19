@@ -7,10 +7,10 @@
 
 #include "ui_formdiscoverfeeds.h"
 
+#include <librssguard/services/abstract/accountcheckmodel.h>
+
 #include <QDialog>
 #include <QFutureWatcher>
-
-#include <librssguard/services/abstract/accountcheckmodel.h>
 
 class ServiceRoot;
 class RootItem;

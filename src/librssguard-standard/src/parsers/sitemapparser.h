@@ -4,7 +4,6 @@
 #define SITEMAPPARSER_H
 
 #include "src/parsers/feedparser.h"
-
 #include "src/standardfeed.h"
 
 class SitemapParser : public FeedParser {

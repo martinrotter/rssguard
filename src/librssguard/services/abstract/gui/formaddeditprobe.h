@@ -3,9 +3,9 @@
 #ifndef FORMADDEDITPROBE_H
 #define FORMADDEDITPROBE_H
 
-#include <QDialog>
-
 #include "ui_formaddeditprobe.h"
+
+#include <QDialog>
 
 namespace Ui {
   class FormAddEditProbe;

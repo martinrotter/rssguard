@@ -2,6 +2,7 @@
 
 #include "services/abstract/searchsnode.h"
 
+#include "3rd-party/boolinq/boolinq.h"
 #include "database/databasefactory.h"
 #include "database/databasequeries.h"
 #include "exceptions/applicationexception.h"
@@ -9,8 +10,6 @@
 #include "miscellaneous/iconfactory.h"
 #include "services/abstract/gui/formaddeditprobe.h"
 #include "services/abstract/serviceroot.h"
-
-#include "3rd-party/boolinq/boolinq.h"
 
 SearchsNode::SearchsNode(RootItem* parent_item) : RootItem(parent_item), m_actProbeNew(nullptr) {
   setKind(RootItem::Kind::Probes);

@@ -3,14 +3,14 @@
 #ifndef FORMDATABASECLEANUP_H
 #define FORMDATABASECLEANUP_H
 
-#include <QDialog>
+#include "database/databasecleaner.h"
 
 #include "ui_formdatabasecleanup.h"
 
-#include "database/databasecleaner.h"
+#include <QDialog>
 
 class FormDatabaseCleanup : public QDialog {
-  Q_OBJECT
+    Q_OBJECT
 
   public:
     explicit FormDatabaseCleanup(QWidget* parent = nullptr);

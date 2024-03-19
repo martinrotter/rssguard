@@ -3,9 +3,8 @@
 #ifndef FEEDSVIEW_H
 #define FEEDSVIEW_H
 
-#include "gui/reusable/basetreeview.h"
-
 #include "core/feedsmodel.h"
+#include "gui/reusable/basetreeview.h"
 #include "gui/toolbars/feedstoolbar.h"
 
 #include <QStyledItemDelegate>

@@ -3,10 +3,9 @@
 #ifndef DATABASEFACTORY_H
 #define DATABASEFACTORY_H
 
-#include <QObject>
-
 #include "database/databasedriver.h"
 
+#include <QObject>
 #include <QSqlDatabase>
 
 class RSSGUARD_DLLSPEC DatabaseFactory : public QObject {

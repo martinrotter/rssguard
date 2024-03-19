@@ -3,9 +3,8 @@
 #ifndef JSSYNTAXHIGHLIGHTER_H
 #define JSSYNTAXHIGHLIGHTER_H
 
-#include <QSyntaxHighlighter>
-
 #include <QRegularExpression>
+#include <QSyntaxHighlighter>
 
 class JsSyntaxHighlighter : public QSyntaxHighlighter {
     Q_OBJECT

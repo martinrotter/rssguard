@@ -2,8 +2,6 @@
 
 #include "network-web/adblock/adblockdialog.h"
 
-#include "network-web/adblock/adblockmanager.h"
-
 #include "definitions/definitions.h"
 #include "exceptions/applicationexception.h"
 #include "gui/guiutilities.h"
@@ -11,6 +9,7 @@
 #include "miscellaneous/application.h"
 #include "miscellaneous/iconfactory.h"
 #include "miscellaneous/settings.h"
+#include "network-web/adblock/adblockmanager.h"
 #include "network-web/webfactory.h"
 
 #include <QInputDialog>

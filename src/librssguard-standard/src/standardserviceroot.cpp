@@ -2,19 +2,6 @@
 
 #include "src/standardserviceroot.h"
 
-#include <librssguard/database/databasequeries.h>
-#include <librssguard/definitions/definitions.h>
-#include <librssguard/exceptions/applicationexception.h>
-#include <librssguard/exceptions/feedfetchexception.h>
-#include <librssguard/exceptions/scriptexception.h>
-#include <librssguard/gui/messagebox.h>
-#include <librssguard/miscellaneous/application.h>
-#include <librssguard/miscellaneous/iconfactory.h>
-#include <librssguard/miscellaneous/mutex.h>
-#include <librssguard/miscellaneous/settings.h>
-#include <librssguard/network-web/networkfactory.h>
-#include <librssguard/services/abstract/gui/formcategorydetails.h>
-
 #include "src/definitions.h"
 #include "src/gui/formdiscoverfeeds.h"
 #include "src/gui/formeditstandardaccount.h"
@@ -30,6 +17,19 @@
 #include "src/standardfeed.h"
 #include "src/standardfeedsimportexportmodel.h"
 #include "src/standardserviceentrypoint.h"
+
+#include <librssguard/database/databasequeries.h>
+#include <librssguard/definitions/definitions.h>
+#include <librssguard/exceptions/applicationexception.h>
+#include <librssguard/exceptions/feedfetchexception.h>
+#include <librssguard/exceptions/scriptexception.h>
+#include <librssguard/gui/messagebox.h>
+#include <librssguard/miscellaneous/application.h>
+#include <librssguard/miscellaneous/iconfactory.h>
+#include <librssguard/miscellaneous/mutex.h>
+#include <librssguard/miscellaneous/settings.h>
+#include <librssguard/network-web/networkfactory.h>
+#include <librssguard/services/abstract/gui/formcategorydetails.h>
 
 #if defined(NO_LITE)
 #include <librssguard/gui/webviewers/webengine/webengineviewer.h>

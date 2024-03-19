@@ -3,15 +3,14 @@
 #ifndef FORMRESTOREDATABASESETTINGS_H
 #define FORMRESTOREDATABASESETTINGS_H
 
-#include <QDialog>
-
 #include "ui_formrestoredatabasesettings.h"
 
+#include <QDialog>
+
 class FormRestoreDatabaseSettings : public QDialog {
-  Q_OBJECT
+    Q_OBJECT
 
   public:
-
     // Constructors and destructors.
     explicit FormRestoreDatabaseSettings(QWidget& parent);
     virtual ~FormRestoreDatabaseSettings();

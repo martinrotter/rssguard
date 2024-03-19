@@ -2,9 +2,6 @@
 
 #include "services/abstract/gui/formaccountdetails.h"
 
-#include "ui_accountdetails.h"
-#include "ui_formaccountdetails.h"
-
 #include "gui/guiutilities.h"
 #include "miscellaneous/application.h"
 #include "miscellaneous/iconfactory.h"
@@ -13,6 +10,9 @@
 #include "services/abstract/searchsnode.h"
 #include "services/abstract/serviceroot.h"
 #include "services/abstract/unreadnode.h"
+
+#include "ui_accountdetails.h"
+#include "ui_formaccountdetails.h"
 
 FormAccountDetails::FormAccountDetails(const QIcon& icon, QWidget* parent)
   : QDialog(parent), m_proxyDetails(new NetworkProxyDetails(this)), m_accountDetails(new AccountDetails(this)),

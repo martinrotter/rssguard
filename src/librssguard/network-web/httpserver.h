@@ -3,9 +3,8 @@
 #ifndef HTTPSERVER_H
 #define HTTPSERVER_H
 
-#include <QObject>
-
 #include <QHostAddress>
+#include <QObject>
 #include <QTcpServer>
 #include <QTcpSocket>
 #include <QUrl>

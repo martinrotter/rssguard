@@ -11,7 +11,7 @@ class ShortcutCatcher;
 typedef QPair<QAction*, ShortcutCatcher*> ActionBinding;
 
 class DynamicShortcutsWidget : public QWidget {
-  Q_OBJECT
+    Q_OBJECT
 
   public:
     explicit DynamicShortcutsWidget(QWidget* parent = nullptr);

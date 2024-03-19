@@ -3,9 +3,9 @@
 #ifndef FORMMAIN_H
 #define FORMMAIN_H
 
-#include <QMainWindow>
-
 #include "ui_formmain.h"
+
+#include <QMainWindow>
 
 class StatusBar;
 class QWidgetAction;

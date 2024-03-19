@@ -3,9 +3,8 @@
 #ifndef LIBMPV_QTHELPER_H_
 #define LIBMPV_QTHELPER_H_
 
-#include <mpv/client.h>
-
 #include <cstring>
+#include <mpv/client.h>
 
 #include <QHash>
 #include <QList>

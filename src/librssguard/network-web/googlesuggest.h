@@ -31,12 +31,11 @@
 #ifndef GOOGLESUGGEST_H
 #define GOOGLESUGGEST_H
 
-#include <QObject>
+#include "network-web/downloader.h"
 
 #include <QListWidget>
 #include <QNetworkReply>
-
-#include "network-web/downloader.h"
+#include <QObject>
 
 class LocationLineEdit;
 class QTimer;

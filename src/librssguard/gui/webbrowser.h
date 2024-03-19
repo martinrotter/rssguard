@@ -3,9 +3,8 @@
 #ifndef WEBBROWSER_H
 #define WEBBROWSER_H
 
-#include "gui/tabcontent.h"
-
 #include "core/message.h"
+#include "gui/tabcontent.h"
 #include "services/abstract/rootitem.h"
 
 #include <QPointer>

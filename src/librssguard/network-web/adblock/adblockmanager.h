@@ -3,11 +3,10 @@
 #ifndef ADBLOCKMANAGER_H
 #define ADBLOCKMANAGER_H
 
-#include <QObject>
-
 #include "miscellaneous/nodejs.h"
 
 #include <QHash>
+#include <QObject>
 #include <QProcess>
 
 #define CLIQZ_ADBLOCKED_PACKAGE "@cliqz/adblocker"

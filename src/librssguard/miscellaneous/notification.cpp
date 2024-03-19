@@ -53,9 +53,8 @@ void Notification::playSound(Application* app) const {
       }
       else {
         play
-          ->setSource(QUrl::
-                        fromLocalFile(QDir::toNativeSeparators(app
-                                                                 ->replaceUserDataFolderPlaceholder(m_soundPath))));
+          ->setSource(QUrl::fromLocalFile(QDir::toNativeSeparators(app
+                                                                     ->replaceUserDataFolderPlaceholder(m_soundPath))));
       }
 
       play->setVolume(fractionalVolume());
@@ -83,9 +82,8 @@ void Notification::playSound(Application* app) const {
       }
       else {
         play
-          ->setSource(QUrl::
-                        fromLocalFile(QDir::toNativeSeparators(app
-                                                                 ->replaceUserDataFolderPlaceholder(m_soundPath))));
+          ->setSource(QUrl::fromLocalFile(QDir::toNativeSeparators(app
+                                                                     ->replaceUserDataFolderPlaceholder(m_soundPath))));
       }
 
       play->audioOutput()->setVolume(fractionalVolume());

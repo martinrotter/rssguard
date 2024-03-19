@@ -3,9 +3,9 @@
 #ifndef GREADERFEEDDETAILS_H
 #define GREADERFEEDDETAILS_H
 
-#include <QWidget>
-
 #include "ui_greaderfeeddetails.h"
+
+#include <QWidget>
 
 class Category;
 class RootItem;

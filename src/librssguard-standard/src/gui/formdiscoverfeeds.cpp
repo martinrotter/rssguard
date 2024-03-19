@@ -2,6 +2,16 @@
 
 #include "src/gui/formdiscoverfeeds.h"
 
+#include "src/definitions.h"
+#include "src/gui/formstandardfeeddetails.h"
+#include "src/parsers/atomparser.h"
+#include "src/parsers/icalparser.h"
+#include "src/parsers/jsonparser.h"
+#include "src/parsers/rdfparser.h"
+#include "src/parsers/rssparser.h"
+#include "src/parsers/sitemapparser.h"
+#include "src/standardfeed.h"
+
 #include <librssguard/3rd-party/boolinq/boolinq.h>
 #include <librssguard/database/databasequeries.h>
 #include <librssguard/gui/guiutilities.h>
@@ -10,16 +20,6 @@
 #include <librssguard/miscellaneous/settings.h>
 #include <librssguard/services/abstract/category.h>
 #include <librssguard/services/abstract/serviceroot.h>
-#include "src/definitions.h"
-#include "src/gui/formstandardfeeddetails.h"
-#include "src/standardfeed.h"
-
-#include "src/parsers/atomparser.h"
-#include "src/parsers/icalparser.h"
-#include "src/parsers/jsonparser.h"
-#include "src/parsers/rdfparser.h"
-#include "src/parsers/rssparser.h"
-#include "src/parsers/sitemapparser.h"
 
 #include <QtConcurrentMap>
 

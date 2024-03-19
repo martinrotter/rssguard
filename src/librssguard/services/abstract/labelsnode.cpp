@@ -2,6 +2,7 @@
 
 #include "services/abstract/labelsnode.h"
 
+#include "3rd-party/boolinq/boolinq.h"
 #include "database/databasefactory.h"
 #include "database/databasequeries.h"
 #include "definitions/globals.h"
@@ -10,8 +11,6 @@
 #include "miscellaneous/iconfactory.h"
 #include "services/abstract/gui/formaddeditlabel.h"
 #include "services/abstract/serviceroot.h"
-
-#include "3rd-party/boolinq/boolinq.h"
 
 LabelsNode::LabelsNode(RootItem* parent_item) : RootItem(parent_item), m_actLabelNew(nullptr) {
   setKind(RootItem::Kind::Labels);

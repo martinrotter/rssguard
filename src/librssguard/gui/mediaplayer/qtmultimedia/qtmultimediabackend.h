@@ -5,9 +5,8 @@
 
 #include "gui/mediaplayer/playerbackend.h"
 
-#include <QObject>
-
 #include <QMediaPlayer>
+#include <QObject>
 
 #if QT_VERSION_MAJOR == 6
 #define PLAYBACK_STATE        PlaybackState

@@ -3,11 +3,11 @@
 #ifndef GREADERNETWORK_H
 #define GREADERNETWORK_H
 
-#include <QObject>
-
 #include "network-web/networkfactory.h"
 #include "services/abstract/feed.h"
 #include "services/greader/greaderserviceroot.h"
+
+#include <QObject>
 
 class OAuth2Service;
 

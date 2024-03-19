@@ -10,7 +10,7 @@
 // Network manager used for more communication for feeds.
 // This network manager does not provide any GUI interaction options.
 class SilentNetworkAccessManager : public BaseNetworkAccessManager {
-  Q_OBJECT
+    Q_OBJECT
 
   public:
     explicit SilentNetworkAccessManager(QObject* parent = nullptr);

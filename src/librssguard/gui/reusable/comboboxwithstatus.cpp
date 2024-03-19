@@ -6,8 +6,7 @@
 
 #include <QHBoxLayout>
 
-ComboBoxWithStatus::ComboBoxWithStatus(QWidget* parent)
-  : WidgetWithStatus(parent) {
+ComboBoxWithStatus::ComboBoxWithStatus(QWidget* parent) : WidgetWithStatus(parent) {
   m_wdgInput = new QComboBox(this);
 
   // Set correct size for the tool button.

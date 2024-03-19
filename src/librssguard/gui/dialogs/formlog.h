@@ -3,9 +3,9 @@
 #ifndef FORMLOG_H
 #define FORMLOG_H
 
-#include <QDialog>
-
 #include "ui_formlog.h"
+
+#include <QDialog>
 
 class FormLog : public QDialog {
     Q_OBJECT

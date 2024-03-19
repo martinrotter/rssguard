@@ -4,14 +4,13 @@
 #define FORMEDITINOREADERACCOUNT_H
 
 #include "services/abstract/gui/formaccountdetails.h"
-
 #include "services/gmail/gmailnetworkfactory.h"
 
 class GmailServiceRoot;
 class GmailAccountDetails;
 
 class FormEditGmailAccount : public FormAccountDetails {
-  Q_OBJECT
+    Q_OBJECT
 
   public:
     explicit FormEditGmailAccount(QWidget* parent = nullptr);

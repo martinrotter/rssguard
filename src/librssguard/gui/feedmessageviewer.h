@@ -3,10 +3,9 @@
 #ifndef FEEDMESSAGEVIEWER_H
 #define FEEDMESSAGEVIEWER_H
 
-#include "gui/tabcontent.h"
-
 #include "core/messagesmodel.h"
 #include "core/messagesproxymodel.h"
+#include "gui/tabcontent.h"
 
 class WebBrowser;
 class MessagePreviewer;

@@ -3,9 +3,9 @@
 #ifndef FORMSETTINGS_H
 #define FORMSETTINGS_H
 
-#include <QDialog>
-
 #include "ui_formsettings.h"
+
+#include <QDialog>
 
 class Settings;
 class SettingsPanel;

@@ -5,14 +5,14 @@
 
 #include "src/standardfeed.h"
 
+#include <librssguard/core/message.h>
+#include <librssguard/definitions/typedefs.h>
+
 #include <QDomDocument>
 #include <QJsonArray>
 #include <QJsonDocument>
 #include <QJsonObject>
 #include <QString>
-
-#include <librssguard/core/message.h>
-#include <librssguard/definitions/typedefs.h>
 
 // Base class for all XML-based feed parsers.
 class FeedParser {

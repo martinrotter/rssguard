@@ -18,7 +18,7 @@
 
 MessageBrowser::MessageBrowser(bool should_resize_to_fit, QWidget* parent)
   : QWidget(parent), m_txtBrowser(new MessageTextBrowser(this)), m_searchWidget(new SearchTextWidget(this)),
-  m_layout(new QVBoxLayout(this)) {
+    m_layout(new QVBoxLayout(this)) {
   m_layout->setContentsMargins(3, 3, 3, 3);
   m_layout->addWidget(m_txtBrowser, 1);
   m_layout->addWidget(m_searchWidget);
@@ -41,9 +41,7 @@ MessageBrowser::MessageBrowser(bool should_resize_to_fit, QWidget* parent)
   });
 
   connect(m_txtBrowser, &QTextBrowser::anchorClicked, this, &MessageBrowser::onAnchorClicked);
-  connect(m_txtBrowser,
-          QOverload<const QUrl&>::of(&QTextBrowser::highlighted),
-          [=](const QUrl& url) {
+  connect(m_txtBrowser, QOverload<const QUrl&>::of(&QTextBrowser::highlighted), [=](const QUrl& url) {
     Q_UNUSED(url)
     QToolTip::showText(QCursor::pos(), tr("Click this link to download it or open it with external browser."), this);
   });
@@ -86,7 +84,7 @@ QString MessageBrowser::prepareHtmlForMessage(const Message& message) {
 
   QRegularExpression imgTagRegex("\\<img[^\\>]*src\\s*=\\s*[\"\']([^\"\']*)[\"\'][^\\>]*\\>",
                                  QRegularExpression::PatternOption::CaseInsensitiveOption |
-                                 QRegularExpression::PatternOption::InvertedGreedinessOption);
+                                   QRegularExpression::PatternOption::InvertedGreedinessOption);
   QRegularExpressionMatchIterator i = imgTagRegex.globalMatch(message.m_contents);
   QString pictures_html;
 
@@ -120,10 +118,9 @@ QString MessageBrowser::prepareHtmlForMessage(const Message& message) {
              "a { color: %2; }"
              "</style></head>"
              "<body>%1</body>"
-             "</html>").arg(html,
-                            qApp->skins()->currentSkin()
-                            .colorForModel(SkinEnums::PaletteColors::FgInteresting)
-                            .value<QColor>().name());
+             "</html>")
+    .arg(html,
+         qApp->skins()->currentSkin().colorForModel(SkinEnums::PaletteColors::FgInteresting).value<QColor>().name());
 }
 
 bool MessageBrowser::eventFilter(QObject* watched, QEvent* event) {
@@ -149,15 +146,14 @@ bool MessageBrowser::eventFilter(QObject* watched, QEvent* event) {
 }
 
 void MessageBrowser::onAnchorClicked(const QUrl& url) {
-  if (url.toString().startsWith(INTERNAL_URL_PASSATTACHMENT) &&
-      m_root != nullptr &&
+  if (url.toString().startsWith(INTERNAL_URL_PASSATTACHMENT) && m_root != nullptr &&
       m_root->getParentServiceRoot()->downloadAttachmentOnMyOwn(url)) {
     return;
   }
 
   if (!url.isEmpty()) {
-    bool open_externally_now = qApp->settings()->value(GROUP(Browser),
-                                                       SETTING(Browser::OpenLinksInExternalBrowserRightAway)).toBool();
+    bool open_externally_now =
+      qApp->settings()->value(GROUP(Browser), SETTING(Browser::OpenLinksInExternalBrowserRightAway)).toBool();
 
     if (open_externally_now) {
       qApp->web()->openUrlInExternalBrowser(url.toString());
@@ -198,7 +194,10 @@ void MessageBrowser::onAnchorClicked(const QUrl& url) {
     }
   }
   else {
-    MsgBox::show(qApp->mainFormWidget(), QMessageBox::Warning, tr("Incorrect link"), tr("Selected hyperlink is invalid."));
+    MsgBox::show(qApp->mainFormWidget(),
+                 QMessageBox::Warning,
+                 tr("Incorrect link"),
+                 tr("Selected hyperlink is invalid."));
   }
 }
 

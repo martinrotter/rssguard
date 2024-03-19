@@ -3,9 +3,8 @@
 #ifndef LINEEDITWITHSTATUS_H
 #define LINEEDITWITHSTATUS_H
 
-#include "gui/reusable/widgetwithstatus.h"
-
 #include "gui/reusable/baselineedit.h"
+#include "gui/reusable/widgetwithstatus.h"
 
 #include <QPlainTextEdit>
 

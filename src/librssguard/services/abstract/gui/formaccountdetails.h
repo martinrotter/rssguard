@@ -3,13 +3,13 @@
 #ifndef FORMACCOUNTDETAILS_H
 #define FORMACCOUNTDETAILS_H
 
-#include <QDialog>
-
 #include "database/databasefactory.h"
 #include "database/databasequeries.h"
 #include "gui/reusable/networkproxydetails.h"
 #include "miscellaneous/application.h"
 #include "services/abstract/gui/accountdetails.h"
+
+#include <QDialog>
 
 namespace Ui {
   class FormAccountDetails;

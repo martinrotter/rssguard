@@ -2,9 +2,9 @@
 
 #include "gui/reusable/networkproxydetails.h"
 
-#include "ui_networkproxydetails.h"
-
 #include "definitions/definitions.h"
+
+#include "ui_networkproxydetails.h"
 
 #include <QNetworkProxy>
 

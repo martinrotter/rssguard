@@ -3,9 +3,9 @@
 #ifndef FORMADDEDITEMAIL_H
 #define FORMADDEDITEMAIL_H
 
-#include <QDialog>
-
 #include "ui_formaddeditemail.h"
+
+#include <QDialog>
 
 namespace Ui {
   class FormAddEditEmail;
@@ -16,7 +16,7 @@ class Message;
 class EmailRecipientControl;
 
 class FormAddEditEmail : public QDialog {
-  Q_OBJECT
+    Q_OBJECT
 
   public:
     explicit FormAddEditEmail(GmailServiceRoot* root, QWidget* parent = nullptr);

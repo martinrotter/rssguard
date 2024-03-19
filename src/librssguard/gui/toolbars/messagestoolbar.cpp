@@ -8,12 +8,13 @@
 #include "miscellaneous/iconfactory.h"
 #include "miscellaneous/settings.h"
 
+#include <chrono>
+
 #include <QMenu>
 #include <QPainter>
 #include <QTimer>
 #include <QToolButton>
 #include <QWidgetAction>
-#include <chrono>
 
 using namespace std::chrono_literals;
 

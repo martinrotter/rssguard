@@ -3,9 +3,9 @@
 #ifndef ITEMDETAILS_H
 #define ITEMDETAILS_H
 
-#include <QWidget>
-
 #include "ui_itemdetails.h"
+
+#include <QWidget>
 
 class RootItem;
 

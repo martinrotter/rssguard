@@ -2,8 +2,6 @@
 
 #include "services/abstract/gui/formcategorydetails.h"
 
-#include "ui_formcategorydetails.h"
-
 #include "3rd-party/boolinq/boolinq.h"
 #include "database/databasequeries.h"
 #include "definitions/definitions.h"
@@ -14,6 +12,8 @@
 #include "services/abstract/category.h"
 #include "services/abstract/gui/multifeededitcheckbox.h"
 #include "services/abstract/rootitem.h"
+
+#include "ui_formcategorydetails.h"
 
 #include <QAction>
 #include <QDialogButtonBox>

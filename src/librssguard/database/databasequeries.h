@@ -3,8 +3,6 @@
 #ifndef DATABASEQUERIES_H
 #define DATABASEQUERIES_H
 
-#include "services/abstract/rootitem.h"
-
 #include "core/messagefilter.h"
 #include "definitions/typedefs.h"
 #include "miscellaneous/application.h"
@@ -12,6 +10,7 @@
 #include "miscellaneous/textfactory.h"
 #include "services/abstract/category.h"
 #include "services/abstract/label.h"
+#include "services/abstract/rootitem.h"
 #include "services/abstract/search.h"
 #include "services/abstract/serviceroot.h"
 
