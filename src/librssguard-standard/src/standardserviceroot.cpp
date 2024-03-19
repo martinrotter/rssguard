@@ -37,7 +37,7 @@
 #endif
 
 #if defined(ENABLE_COMPRESSED_SITEMAP)
-#include <librssguard/3rd-party/qcompressor/qcompressor.h>
+#include "src/3rd-party/qcompressor/qcompressor.h"
 #endif
 
 #include <QAction>

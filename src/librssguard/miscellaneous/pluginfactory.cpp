@@ -60,8 +60,9 @@ QStringList PluginFactory::pluginPaths() const {
 #if defined(Q_OS_LINUX)
   paths << QCoreApplication::applicationDirPath() + QDir::separator() + QL1S("..") + QDir::separator() + QL1S("lib") +
              QDir::separator() + QL1S(APP_LOW_NAME);
-#else
+#elif defined(Q_OS_WIN)
   paths << QCoreApplication::applicationDirPath() + QDir::separator() + QL1S("plugins");
+#else
   paths << QCoreApplication::applicationDirPath();
 #endif
 
