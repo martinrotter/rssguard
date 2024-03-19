@@ -5,7 +5,7 @@
 
 #include <QSpinBox>
 
-class MessageCountSpinBox : public QSpinBox {
+class RSSGUARD_DLLSPEC MessageCountSpinBox : public QSpinBox {
     Q_OBJECT
 
   public:

@@ -10,7 +10,7 @@ namespace Ui {
   class NetworkProxyDetails;
 }
 
-class NetworkProxyDetails : public QWidget {
+class RSSGUARD_DLLSPEC NetworkProxyDetails : public QWidget {
     Q_OBJECT
 
   public:
