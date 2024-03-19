@@ -56,6 +56,7 @@ FeedReader::~FeedReader() {
   for (ServiceEntryPoint* service : m_feedServices) {
     if (!service->isDynamicallyLoaded()) {
       qDebugNN << LOGSEC_CORE << "Deleting service" << QUOTE_W_SPACE_DOT(service->code());
+      delete service;
     }
     else {
       qDebugNN << LOGSEC_CORE << "Service" << QUOTE_W_SPACE(service->code()) << "will be deleted by runtime.";

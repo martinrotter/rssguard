@@ -300,8 +300,6 @@ void Application::performLogging(QtMsgType type, const QMessageLogContext& conte
 
   if (!s_disableDebug) {
     std::cerr << console_message.toStdString() << std::endl;
-
-    std::cerr << QDir::currentPath().toStdString() << std::endl;
   }
 
   if (!s_customLogFile.isEmpty()) {
