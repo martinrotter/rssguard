@@ -3,13 +3,12 @@
 #ifndef STANDARDFEEDDETAILS_H
 #define STANDARDFEEDDETAILS_H
 
-#include <QWidget>
+#include "src/standardfeed.h"
 
 #include "ui_standardfeeddetails.h"
 
-#include "src/standardfeed.h"
-
 #include <QNetworkProxy>
+#include <QWidget>
 
 class Category;
 class RootItem;

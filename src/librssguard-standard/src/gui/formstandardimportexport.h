@@ -3,10 +3,11 @@
 #ifndef FORMEXPORT_H
 #define FORMEXPORT_H
 
-#include <QDialog>
-
 #include "src/standardfeedsimportexportmodel.h"
+
 #include "ui_formstandardimportexport.h"
+
+#include <QDialog>
 
 namespace Ui {
   class FormStandardImportExport;
@@ -19,7 +20,10 @@ class FormStandardImportExport : public QDialog {
     Q_OBJECT
 
   public:
-    enum class ConversionType { OPML20 = 0, TxtUrlPerLine = 1 };
+    enum class ConversionType {
+      OPML20 = 0,
+      TxtUrlPerLine = 1
+    };
 
     explicit FormStandardImportExport(StandardServiceRoot* service_root, QWidget* parent = nullptr);
     virtual ~FormStandardImportExport();

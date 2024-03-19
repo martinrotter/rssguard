@@ -3,15 +3,14 @@
 #ifndef FORMDISCOVERFEEDS_H
 #define FORMDISCOVERFEEDS_H
 
-#include <QDialog>
+#include "src/parsers/feedparser.h"
 
 #include "ui_formdiscoverfeeds.h"
 
-#include "src/parsers/feedparser.h"
+#include <QDialog>
+#include <QFutureWatcher>
 
 #include <librssguard/services/abstract/accountcheckmodel.h>
-
-#include <QFutureWatcher>
 
 class ServiceRoot;
 class RootItem;
