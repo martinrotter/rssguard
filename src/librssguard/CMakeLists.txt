@@ -711,23 +711,6 @@ if(SQLite3_FOUND)
   )
 endif()
 
-if(ZLIB_FOUND)
-  target_include_directories(rssguard AFTER
-    PRIVATE
-    ${ZLIB_INCLUDE_DIRS}
-  )
-
-  target_compile_definitions(rssguard
-    PRIVATE
-
-    ENABLE_COMPRESSED_SITEMAP
-  )
-
-  target_link_libraries(rssguard PRIVATE
-    ${ZLIB_LIBRARIES}
-  )
-endif(ZLIB_FOUND)
-
 # Qt.
 target_link_libraries(rssguard PUBLIC
   Qt${QT_VERSION_MAJOR}::Core

@@ -10,9 +10,7 @@
 
 StandardServiceEntryPoint::StandardServiceEntryPoint(QObject* parent) : QObject(parent) {}
 
-StandardServiceEntryPoint::~StandardServiceEntryPoint() {
-  qDebugNN << LOGSEC_CORE << "Destructing plugin.";
-}
+StandardServiceEntryPoint::~StandardServiceEntryPoint() {}
 
 QString StandardServiceEntryPoint::name() const {
   return QSL("RSS/RDF/ATOM/JSON");

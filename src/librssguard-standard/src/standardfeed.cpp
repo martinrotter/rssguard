@@ -2,6 +2,8 @@
 
 #include "src/standardfeed.h"
 
+#include "src/gui/formstandardfeeddetails.h"
+#include "src/standardserviceroot.h"
 #include <librssguard/database/databasequeries.h>
 #include <librssguard/definitions/definitions.h>
 #include <librssguard/exceptions/applicationexception.h>
@@ -10,8 +12,6 @@
 #include <librssguard/exceptions/scriptexception.h>
 #include <librssguard/miscellaneous/settings.h>
 #include <librssguard/miscellaneous/textfactory.h>
-#include "src/gui/formstandardfeeddetails.h"
-#include "src/standardserviceroot.h"
 
 #if defined(NO_LITE)
 #include <librssguard/gui/webviewers/webengine/webengineviewer.h>
@@ -26,7 +26,7 @@
 #include "src/parsers/sitemapparser.h"
 
 #if defined(ENABLE_COMPRESSED_SITEMAP)
-#include <librssguard/3rd-party/qcompressor/qcompressor.h>
+#include "src/3rd-party/qcompressor/qcompressor.h"
 #endif
 
 #include <QCommandLineParser>

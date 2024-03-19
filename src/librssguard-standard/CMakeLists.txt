@@ -106,6 +106,22 @@ if(QT_VERSION_MAJOR EQUAL 6)
   )
 endif()
 
+if(ZLIB_FOUND)
+  target_include_directories(rssguard-standard AFTER
+    PRIVATE
+    ${ZLIB_INCLUDE_DIRS}
+  )
+
+  target_compile_definitions(rssguard-standard
+    PRIVATE
+    ENABLE_COMPRESSED_SITEMAP
+  )
+
+  target_link_libraries(rssguard-standard PRIVATE
+    ${ZLIB_LIBRARIES}
+  )
+endif(ZLIB_FOUND)
+
 if(WIN32 OR OS2)
   install(TARGETS rssguard-standard DESTINATION plugins)
 elseif(UNIX AND NOT APPLE AND NOT ANDROID)
