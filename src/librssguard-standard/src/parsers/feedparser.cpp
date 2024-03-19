@@ -9,12 +9,11 @@
 #include <librssguard/exceptions/feedfetchexception.h>
 #include <librssguard/miscellaneous/iofactory.h>
 #include <librssguard/network-web/webfactory.h>
+#include <utility>
 
 #include <QDebug>
 #include <QFile>
 #include <QRegularExpression>
-
-#include <utility>
 
 FeedParser::FeedParser(QString data, DataType is_xml)
   : m_dataType(is_xml), m_data(std::move(data)), m_mrssNamespace(QSL("http://search.yahoo.com/mrss/")) {

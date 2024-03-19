@@ -3,11 +3,11 @@
 #ifndef FEEDLYNETWORK_H
 #define FEEDLYNETWORK_H
 
-#include <QObject>
-
 #include "network-web/networkfactory.h"
 #include "services/abstract/feed.h"
 #include "services/abstract/serviceroot.h"
+
+#include <QObject>
 
 #if defined(FEEDLY_OFFICIAL_SUPPORT)
 class OAuth2Service;
@@ -16,7 +16,7 @@ class OAuth2Service;
 class FeedlyServiceRoot;
 
 class FeedlyNetwork : public QObject {
-  Q_OBJECT
+    Q_OBJECT
 
   public:
     explicit FeedlyNetwork(QObject* parent = nullptr);
@@ -78,8 +78,13 @@ class FeedlyNetwork : public QObject {
     QString fullUrl(Service service) const;
     QString bearer() const;
     QStringList decodeStreamIds(const QByteArray& stream_ids, QString& continuation) const;
-    QList<Message> decodeStreamContents(const QByteArray& stream_contents, bool nested_items, QString& continuation) const;
-    RootItem* decodeCollections(const QByteArray& json, bool obtain_icons, const QNetworkProxy& proxy, int timeout = 0) const;
+    QList<Message> decodeStreamContents(const QByteArray& stream_contents,
+                                        bool nested_items,
+                                        QString& continuation) const;
+    RootItem* decodeCollections(const QByteArray& json,
+                                bool obtain_icons,
+                                const QNetworkProxy& proxy,
+                                int timeout = 0) const;
     QPair<QByteArray, QByteArray> bearerHeader(const QString& bearer) const;
 
   private:

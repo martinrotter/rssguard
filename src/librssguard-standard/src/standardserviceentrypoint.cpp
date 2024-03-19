@@ -4,6 +4,7 @@
 
 #include "src/gui/formeditstandardaccount.h"
 #include "src/standardserviceroot.h"
+
 #include <librssguard/database/databasequeries.h>
 #include <librssguard/definitions/definitions.h>
 #include <librssguard/miscellaneous/application.h>

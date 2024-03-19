@@ -3,13 +3,11 @@
 #ifndef MESSAGEBROWSER_H
 #define MESSAGEBROWSER_H
 
-#include <QWidget>
-
 #include "core/message.h"
-
 #include "services/abstract/rootitem.h"
 
 #include <QPointer>
+#include <QWidget>
 
 class RootItem;
 class QVBoxLayout;
@@ -17,7 +15,7 @@ class MessageTextBrowser;
 class SearchTextWidget;
 
 class MessageBrowser : public QWidget {
-  Q_OBJECT
+    Q_OBJECT
 
   public:
     explicit MessageBrowser(bool should_resize_to_fit, QWidget* parent = nullptr);

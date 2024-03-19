@@ -19,7 +19,11 @@ class SearchLineEdit : public BaseLineEdit {
         int m_data;
     };
 
-    enum class SearchMode { FixedString = 1, Wildcard = 2, RegularExpression = 4 };
+    enum class SearchMode {
+      FixedString = 1,
+      Wildcard = 2,
+      RegularExpression = 4
+    };
 
     explicit SearchLineEdit(const QList<CustomSearchChoice>& choices, QWidget* parent = nullptr);
 

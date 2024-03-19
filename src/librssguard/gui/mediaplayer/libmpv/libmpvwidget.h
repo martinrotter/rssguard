@@ -4,9 +4,9 @@
 #define LIBMPVWIDGET_H
 
 #if defined(MEDIAPLAYER_LIBMPV_OPENGL)
-#include <QOpenGLWidget>
-
 #include <mpv/render_gl.h>
+
+#include <QOpenGLWidget>
 
 #define BASE_WIDGET QOpenGLWidget
 #else

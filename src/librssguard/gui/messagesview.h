@@ -3,10 +3,9 @@
 #ifndef MESSAGESVIEW_H
 #define MESSAGESVIEW_H
 
-#include "gui/reusable/basetreeview.h"
-
 #include "core/messagesmodel.h"
 #include "core/messagesproxymodel.h"
+#include "gui/reusable/basetreeview.h"
 #include "gui/reusable/searchlineedit.h"
 #include "services/abstract/rootitem.h"
 

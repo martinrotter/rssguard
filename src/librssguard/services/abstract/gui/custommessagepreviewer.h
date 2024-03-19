@@ -3,9 +3,9 @@
 #ifndef CUSTOMMESSAGEPREVIEWER_H
 #define CUSTOMMESSAGEPREVIEWER_H
 
-#include <QWidget>
-
 #include "core/message.h"
+
+#include <QWidget>
 
 class RootItem;
 

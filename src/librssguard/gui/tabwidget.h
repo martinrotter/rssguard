@@ -3,12 +3,11 @@
 #ifndef TABWIDGET_H
 #define TABWIDGET_H
 
-#include <QTabWidget>
-
 #include "core/message.h"
 #include "gui/tabbar.h"
 #include "gui/tabcontent.h"
 
+#include <QTabWidget>
 #include <QUrl>
 
 class QMenu;

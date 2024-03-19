@@ -3,16 +3,14 @@
 #ifndef GMAILNETWORKFACTORY_H
 #define GMAILNETWORKFACTORY_H
 
-#include <QObject>
-
-#include "core/message.h"
-
 #include "3rd-party/mimesis/mimesis.hpp"
+#include "core/message.h"
 #include "services/abstract/feed.h"
 #include "services/abstract/rootitem.h"
 #include "services/abstract/serviceroot.h"
 
 #include <QNetworkReply>
+#include <QObject>
 
 class RootItem;
 class GmailServiceRoot;
@@ -51,9 +49,9 @@ class GmailNetworkFactory : public QObject {
                             Feed::Status& error,
                             const QNetworkProxy& custom_proxy);
     QNetworkReply::NetworkError batchModify(const QString& label,
-                                             const QStringList& custom_ids,
-                                             bool assign,
-                                             const QNetworkProxy& custom_proxy);
+                                            const QStringList& custom_ids,
+                                            bool assign,
+                                            const QNetworkProxy& custom_proxy);
     QStringList list(const QString& stream_id,
                      const QStringList& label_ids,
                      int max_results,

@@ -2,6 +2,8 @@
 
 #include "src/parsers/icalparser.h"
 
+#include "src/definitions.h"
+
 #include <librssguard/3rd-party/boolinq/boolinq.h>
 #include <librssguard/definitions/definitions.h>
 #include <librssguard/exceptions/applicationexception.h>
@@ -9,7 +11,6 @@
 #include <librssguard/miscellaneous/application.h>
 #include <librssguard/miscellaneous/settings.h>
 #include <librssguard/miscellaneous/textfactory.h>
-#include "src/definitions.h"
 
 IcalParser::IcalParser(const QString& data)
   : FeedParser(data, DataType::Other), m_iCalendar(Icalendar(m_data.toUtf8())) {}

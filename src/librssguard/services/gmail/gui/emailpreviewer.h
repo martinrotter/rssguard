@@ -3,9 +3,8 @@
 #ifndef EMAILPREVIEWER_H
 #define EMAILPREVIEWER_H
 
-#include "services/abstract/gui/custommessagepreviewer.h"
-
 #include "gui/webbrowser.h"
+#include "services/abstract/gui/custommessagepreviewer.h"
 
 #include "ui_emailpreviewer.h"
 

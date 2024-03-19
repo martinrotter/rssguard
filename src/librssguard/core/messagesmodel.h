@@ -3,15 +3,14 @@
 #ifndef MESSAGESMODEL_H
 #define MESSAGESMODEL_H
 
-#include "core/messagesmodelsqllayer.h"
-#include <QSqlQueryModel>
-
 #include "core/message.h"
+#include "core/messagesmodelsqllayer.h"
 #include "definitions/definitions.h"
 #include "services/abstract/rootitem.h"
 
 #include <QFont>
 #include <QIcon>
+#include <QSqlQueryModel>
 
 class MessagesView;
 class MessagesModelCache;

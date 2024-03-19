@@ -5,7 +5,6 @@
 
 #include "services/abstract/cacheforserviceroot.h"
 #include "services/abstract/serviceroot.h"
-
 #include "services/gmail/gui/emailpreviewer.h"
 
 class GmailNetworkFactory;

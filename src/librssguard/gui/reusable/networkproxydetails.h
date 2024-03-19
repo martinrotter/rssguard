@@ -3,9 +3,8 @@
 #ifndef NETWORKPROXYDETAILS_H
 #define NETWORKPROXYDETAILS_H
 
-#include <QWidget>
-
 #include <QNetworkProxy>
+#include <QWidget>
 
 namespace Ui {
   class NetworkProxyDetails;

@@ -11,11 +11,12 @@
 #include "services/owncloud/definitions.h"
 #include "services/owncloud/owncloudfeed.h"
 
+#include <utility>
+
 #include <QJsonArray>
 #include <QJsonDocument>
 #include <QJsonObject>
 #include <QPixmap>
-#include <utility>
 
 OwnCloudNetworkFactory::OwnCloudNetworkFactory()
   : m_url(QString()), m_fixedUrl(QString()), m_downloadOnlyUnreadMessages(false), m_forceServerSideUpdate(false),
@@ -79,7 +80,9 @@ OwnCloudStatusResponse OwnCloudNetworkFactory::status(const QNetworkProxy& custo
   QList<QPair<QByteArray, QByteArray>> headers;
 
   headers << QPair<QByteArray, QByteArray>(HTTP_HEADERS_CONTENT_TYPE, OWNCLOUD_CONTENT_TYPE_JSON);
-  headers << NetworkFactory::generateBasicAuthHeader(NetworkFactory::NetworkAuthentication::Basic, m_authUsername, m_authPassword);
+  headers << NetworkFactory::generateBasicAuthHeader(NetworkFactory::NetworkAuthentication::Basic,
+                                                     m_authUsername,
+                                                     m_authPassword);
 
   NetworkResult network_reply =
     NetworkFactory::performNetworkOperation(m_urlStatus,
@@ -111,7 +114,9 @@ OwnCloudGetFeedsCategoriesResponse OwnCloudNetworkFactory::feedsCategories(const
   QList<QPair<QByteArray, QByteArray>> headers;
 
   headers << QPair<QByteArray, QByteArray>(HTTP_HEADERS_CONTENT_TYPE, OWNCLOUD_CONTENT_TYPE_JSON);
-  headers << NetworkFactory::generateBasicAuthHeader(NetworkFactory::NetworkAuthentication::Basic, m_authUsername, m_authPassword);
+  headers << NetworkFactory::generateBasicAuthHeader(NetworkFactory::NetworkAuthentication::Basic,
+                                                     m_authUsername,
+                                                     m_authPassword);
 
   NetworkResult network_reply =
     NetworkFactory::performNetworkOperation(m_urlFolders,
@@ -166,7 +171,9 @@ bool OwnCloudNetworkFactory::deleteFeed(const QString& feed_id, const QNetworkPr
   QList<QPair<QByteArray, QByteArray>> headers;
 
   headers << QPair<QByteArray, QByteArray>(HTTP_HEADERS_CONTENT_TYPE, OWNCLOUD_CONTENT_TYPE_JSON);
-  headers << NetworkFactory::generateBasicAuthHeader(NetworkFactory::NetworkAuthentication::Basic, m_authUsername, m_authPassword);
+  headers << NetworkFactory::generateBasicAuthHeader(NetworkFactory::NetworkAuthentication::Basic,
+                                                     m_authUsername,
+                                                     m_authPassword);
 
   NetworkResult network_reply =
     NetworkFactory::performNetworkOperation(final_url,
@@ -210,7 +217,9 @@ bool OwnCloudNetworkFactory::createFeed(const QString& url, int parent_id, const
   QList<QPair<QByteArray, QByteArray>> headers;
 
   headers << QPair<QByteArray, QByteArray>(HTTP_HEADERS_CONTENT_TYPE, OWNCLOUD_CONTENT_TYPE_JSON);
-  headers << NetworkFactory::generateBasicAuthHeader(NetworkFactory::NetworkAuthentication::Basic, m_authUsername, m_authPassword);
+  headers << NetworkFactory::generateBasicAuthHeader(NetworkFactory::NetworkAuthentication::Basic,
+                                                     m_authUsername,
+                                                     m_authPassword);
 
   NetworkResult network_reply =
     NetworkFactory::performNetworkOperation(m_urlFeeds,
@@ -248,7 +257,9 @@ bool OwnCloudNetworkFactory::renameFeed(const QString& new_name,
   QList<QPair<QByteArray, QByteArray>> headers;
 
   headers << QPair<QByteArray, QByteArray>(HTTP_HEADERS_CONTENT_TYPE, OWNCLOUD_CONTENT_TYPE_JSON);
-  headers << NetworkFactory::generateBasicAuthHeader(NetworkFactory::NetworkAuthentication::Basic, m_authUsername, m_authPassword);
+  headers << NetworkFactory::generateBasicAuthHeader(NetworkFactory::NetworkAuthentication::Basic,
+                                                     m_authUsername,
+                                                     m_authPassword);
 
   NetworkResult network_reply =
     NetworkFactory::performNetworkOperation(final_url,
@@ -287,7 +298,9 @@ OwnCloudGetMessagesResponse OwnCloudNetworkFactory::getMessages(int feed_id, con
   QList<QPair<QByteArray, QByteArray>> headers;
 
   headers << QPair<QByteArray, QByteArray>(HTTP_HEADERS_CONTENT_TYPE, OWNCLOUD_CONTENT_TYPE_JSON);
-  headers << NetworkFactory::generateBasicAuthHeader(NetworkFactory::NetworkAuthentication::Basic, m_authUsername, m_authPassword);
+  headers << NetworkFactory::generateBasicAuthHeader(NetworkFactory::NetworkAuthentication::Basic,
+                                                     m_authUsername,
+                                                     m_authPassword);
 
   NetworkResult network_reply =
     NetworkFactory::performNetworkOperation(final_url,
@@ -318,7 +331,9 @@ QNetworkReply::NetworkError OwnCloudNetworkFactory::triggerFeedUpdate(int feed_i
   QList<QPair<QByteArray, QByteArray>> headers;
 
   headers << QPair<QByteArray, QByteArray>(HTTP_HEADERS_CONTENT_TYPE, OWNCLOUD_CONTENT_TYPE_JSON);
-  headers << NetworkFactory::generateBasicAuthHeader(NetworkFactory::NetworkAuthentication::Basic, m_authUsername, m_authPassword);
+  headers << NetworkFactory::generateBasicAuthHeader(NetworkFactory::NetworkAuthentication::Basic,
+                                                     m_authUsername,
+                                                     m_authPassword);
 
   NetworkResult network_reply =
     NetworkFactory::performNetworkOperation(m_urlFeedsUpdate.arg(authUsername(), QString::number(feed_id)),
@@ -365,7 +380,9 @@ NetworkResult OwnCloudNetworkFactory::markMessagesRead(RootItem::ReadStatus stat
   QList<QPair<QByteArray, QByteArray>> headers;
 
   headers << QPair<QByteArray, QByteArray>(HTTP_HEADERS_CONTENT_TYPE, OWNCLOUD_CONTENT_TYPE_JSON);
-  headers << NetworkFactory::generateBasicAuthHeader(NetworkFactory::NetworkAuthentication::Basic, m_authUsername, m_authPassword);
+  headers << NetworkFactory::generateBasicAuthHeader(NetworkFactory::NetworkAuthentication::Basic,
+                                                     m_authUsername,
+                                                     m_authPassword);
 
   QByteArray output;
 
@@ -411,7 +428,9 @@ NetworkResult OwnCloudNetworkFactory::markMessagesStarred(RootItem::Importance i
   QList<QPair<QByteArray, QByteArray>> headers;
 
   headers << QPair<QByteArray, QByteArray>(HTTP_HEADERS_CONTENT_TYPE, OWNCLOUD_CONTENT_TYPE_JSON);
-  headers << NetworkFactory::generateBasicAuthHeader(NetworkFactory::NetworkAuthentication::Basic, m_authUsername, m_authPassword);
+  headers << NetworkFactory::generateBasicAuthHeader(NetworkFactory::NetworkAuthentication::Basic,
+                                                     m_authUsername,
+                                                     m_authPassword);
 
   QByteArray output;
 

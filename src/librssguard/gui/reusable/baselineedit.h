@@ -6,7 +6,7 @@
 #include <QLineEdit>
 
 class BaseLineEdit : public QLineEdit {
-  Q_OBJECT
+    Q_OBJECT
 
   public:
     explicit BaseLineEdit(QWidget* parent = nullptr);

@@ -3,15 +3,14 @@
 #ifndef MESSAGESMODELCACHE_H
 #define MESSAGESMODELCACHE_H
 
-#include <QObject>
-
 #include "core/message.h"
 
 #include <QModelIndex>
+#include <QObject>
 #include <QVariant>
 
 class MessagesModelCache : public QObject {
-  Q_OBJECT
+    Q_OBJECT
 
   public:
     explicit MessagesModelCache(QObject* parent = nullptr);

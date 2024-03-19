@@ -5,12 +5,12 @@
 #include "miscellaneous/iconfactory.h"
 #include "miscellaneous/settings.h"
 
+#include <chrono>
+
 #include <QAbstractButton>
 #include <QCloseEvent>
 #include <QLabel>
 #include <QTimerEvent>
-
-#include <chrono>
 
 using namespace std::chrono_literals;
 

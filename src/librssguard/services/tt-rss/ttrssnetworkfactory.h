@@ -4,7 +4,6 @@
 #define TTRSSNETWORKFACTORY_H
 
 #include "core/message.h"
-
 #include "services/tt-rss/ttrssnotetopublish.h"
 
 #include <QJsonObject>
@@ -119,9 +118,17 @@ class TtRssUnsubscribeFeedResponse : public TtRssResponse {
 };
 
 namespace UpdateArticle {
-  enum class Mode { SetToFalse = 0, SetToTrue = 1, Togggle = 2 };
+  enum class Mode {
+    SetToFalse = 0,
+    SetToTrue = 1,
+    Togggle = 2
+  };
 
-  enum class OperatingField { Starred = 0, Published = 1, Unread = 2 };
+  enum class OperatingField {
+    Starred = 0,
+    Published = 1,
+    Unread = 2
+  };
 
 } // namespace UpdateArticle
 

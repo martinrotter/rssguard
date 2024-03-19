@@ -3,15 +3,14 @@
 #ifndef AUTOSAVER_H
 #define AUTOSAVER_H
 
-#include <QObject>
-
 #include "definitions/definitions.h"
 
 #include <QElapsedTimer>
+#include <QObject>
 #include <QTimer>
 
-#define AUTOSAVE_IN (1000 * 3) // In seconds.
-#define MAX_WAIT (1000 * 15)   // In seconds.
+#define AUTOSAVE_IN (1000 * 3)  // In seconds.
+#define MAX_WAIT    (1000 * 15) // In seconds.
 
 class AutoSaver : public QObject {
     Q_OBJECT

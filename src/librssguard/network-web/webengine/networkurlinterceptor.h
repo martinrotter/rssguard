@@ -25,7 +25,7 @@
 class UrlInterceptor;
 
 class NetworkUrlInterceptor : public QWebEngineUrlRequestInterceptor {
-  Q_OBJECT
+    Q_OBJECT
 
   public:
     explicit NetworkUrlInterceptor(QObject* parent = nullptr);

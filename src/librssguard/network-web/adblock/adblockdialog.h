@@ -3,14 +3,14 @@
 #ifndef ADBLOCKDIALOG_H
 #define ADBLOCKDIALOG_H
 
-#include <QDialog>
-
 #include "ui_adblockdialog.h"
+
+#include <QDialog>
 
 class AdBlockManager;
 
 class AdBlockDialog : public QDialog {
-  Q_OBJECT
+    Q_OBJECT
 
   public:
     explicit AdBlockDialog(QWidget* parent = nullptr);
@@ -21,7 +21,7 @@ class AdBlockDialog : public QDialog {
   private slots:
     void saveOnClose();
     void enableAdBlock(bool enable);
-    void onAdBlockEnabledChanged(bool enabled, const QString &message);
+    void onAdBlockEnabledChanged(bool enabled, const QString& message);
     void onAdBlockProcessTerminated();
 
   private:

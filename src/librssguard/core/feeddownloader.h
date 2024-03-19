@@ -3,8 +3,6 @@
 #ifndef FEEDDOWNLOADER_H
 #define FEEDDOWNLOADER_H
 
-#include <QObject>
-
 #include "core/message.h"
 #include "exceptions/applicationexception.h"
 #include "services/abstract/cacheforserviceroot.h"
@@ -12,6 +10,7 @@
 
 #include <QFutureWatcher>
 #include <QHash>
+#include <QObject>
 #include <QPair>
 
 class MessageFilter;

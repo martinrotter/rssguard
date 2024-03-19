@@ -3,16 +3,16 @@
 #ifndef EMAILRECIPIENTCONTROL_H
 #define EMAILRECIPIENTCONTROL_H
 
-#include <QWidget>
-
 #include "services/gmail/definitions.h"
+
+#include <QWidget>
 
 class QComboBox;
 class QLineEdit;
 class PlainToolButton;
 
 class EmailRecipientControl : public QWidget {
-  Q_OBJECT
+    Q_OBJECT
 
   public:
     explicit EmailRecipientControl(const QString& recipient, QWidget* parent = nullptr);

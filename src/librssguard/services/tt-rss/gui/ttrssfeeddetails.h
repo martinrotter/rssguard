@@ -3,17 +3,17 @@
 #ifndef TTRSSFEEDDETAILS_H
 #define TTRSSFEEDDETAILS_H
 
-#include <QWidget>
-
 #include "ui_ttrssfeeddetails.h"
+
+#include <QWidget>
 
 class Category;
 class RootItem;
 
 class TtRssFeedDetails : public QWidget {
-  Q_OBJECT
+    Q_OBJECT
 
-  friend class FormTtRssFeedDetails;
+    friend class FormTtRssFeedDetails;
 
   public:
     explicit TtRssFeedDetails(QWidget* parent = nullptr);

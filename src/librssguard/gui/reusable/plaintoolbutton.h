@@ -6,7 +6,7 @@
 #include <QToolButton>
 
 class PlainToolButton : public QToolButton {
-  Q_OBJECT
+    Q_OBJECT
 
   public:
     explicit PlainToolButton(QWidget* parent = nullptr);

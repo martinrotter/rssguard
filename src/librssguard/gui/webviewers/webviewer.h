@@ -4,7 +4,6 @@
 #define WEBVIEWER_H
 
 #include "core/message.h"
-
 #include "definitions/definitions.h"
 
 #include <QAction>

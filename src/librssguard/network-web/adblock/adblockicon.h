@@ -9,7 +9,7 @@ class QMenu;
 class AdBlockManager;
 
 class AdBlockIcon : public QAction {
-  Q_OBJECT
+    Q_OBJECT
 
   public:
     explicit AdBlockIcon(AdBlockManager* parent = nullptr);

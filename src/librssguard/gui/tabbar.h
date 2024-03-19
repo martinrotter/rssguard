@@ -9,7 +9,7 @@
 #include <QVariant>
 
 class TabBar : public QTabBar {
-  Q_OBJECT
+    Q_OBJECT
 
   public:
     enum class TabType {
@@ -33,7 +33,6 @@ class TabBar : public QTabBar {
     void closeTabViaButton();
 
   private:
-
     // Reimplementations.
     void mouseDoubleClickEvent(QMouseEvent* event);
     void mousePressEvent(QMouseEvent* event);
@@ -49,9 +48,9 @@ inline TabBar::TabType TabBar::tabType(int index) const {
   return static_cast<TabBar::TabType>(tabData(index).toInt());
 }
 
-TabBar::TabType operator| (TabBar::TabType a, TabBar::TabType b);
-TabBar::TabType operator& (TabBar::TabType a, TabBar::TabType b);
-TabBar::TabType& operator|= (TabBar::TabType& a, TabBar::TabType b);
-TabBar::TabType& operator&= (TabBar::TabType& a, TabBar::TabType b);
+TabBar::TabType operator|(TabBar::TabType a, TabBar::TabType b);
+TabBar::TabType operator&(TabBar::TabType a, TabBar::TabType b);
+TabBar::TabType& operator|=(TabBar::TabType& a, TabBar::TabType b);
+TabBar::TabType& operator&=(TabBar::TabType& a, TabBar::TabType b);
 
 #endif // TABBAR_H

@@ -8,7 +8,7 @@
 class AdBlockManager;
 
 class AdBlockUrlInterceptor : public UrlInterceptor {
-  Q_OBJECT
+    Q_OBJECT
 
   public:
     explicit AdBlockUrlInterceptor(AdBlockManager* manager);

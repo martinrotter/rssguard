@@ -9,7 +9,7 @@ class WebBrowser;
 class GoogleSuggest;
 
 class LocationLineEdit : public BaseLineEdit {
-  Q_OBJECT
+    Q_OBJECT
 
   public:
     explicit LocationLineEdit(QWidget* parent = nullptr);

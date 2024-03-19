@@ -3,16 +3,15 @@
 #ifndef MESSAGESFORFILTERSMODEL_H
 #define MESSAGESFORFILTERSMODEL_H
 
-#include <QAbstractTableModel>
-
 #include "core/messageobject.h"
 
+#include <QAbstractTableModel>
 #include <QJSEngine>
 
 class MessageFilter;
 
 class MessagesForFiltersModel : public QAbstractTableModel {
-  Q_OBJECT
+    Q_OBJECT
 
   public:
     explicit MessagesForFiltersModel(QObject* parent = nullptr);

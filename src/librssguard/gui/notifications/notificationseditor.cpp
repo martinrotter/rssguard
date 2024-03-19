@@ -19,20 +19,27 @@ void NotificationsEditor::loadNotifications(const QList<Notification>& notificat
 
   for (auto ev : all_events) {
     if (notif.any([ev](auto n) {
-      return n.event() == ev;
-    })) {
+          return n.event() == ev;
+        })) {
       auto* notif_editor = new SingleNotificationEditor(notif.first([ev](auto n) {
         return n.event() == ev;
-      }), this);
+      }),
+                                                        this);
 
-      connect(notif_editor, &SingleNotificationEditor::notificationChanged, this, &NotificationsEditor::someNotificationChanged);
+      connect(notif_editor,
+              &SingleNotificationEditor::notificationChanged,
+              this,
+              &NotificationsEditor::someNotificationChanged);
 
       m_layout->addWidget(notif_editor);
     }
     else {
       auto* notif_editor = new SingleNotificationEditor(Notification(ev), this);
 
-      connect(notif_editor, &SingleNotificationEditor::notificationChanged, this, &NotificationsEditor::someNotificationChanged);
+      connect(notif_editor,
+              &SingleNotificationEditor::notificationChanged,
+              this,
+              &NotificationsEditor::someNotificationChanged);
 
       m_layout->addWidget(notif_editor);
     }
@@ -42,9 +49,11 @@ void NotificationsEditor::loadNotifications(const QList<Notification>& notificat
 }
 
 QList<Notification> NotificationsEditor::allNotifications() const {
-  auto lst = boolinq::from(findChildren<SingleNotificationEditor*>()).select([](const SingleNotificationEditor* ed) {
-    return ed->notification();
-  }).toStdList();
+  auto lst = boolinq::from(findChildren<SingleNotificationEditor*>())
+               .select([](const SingleNotificationEditor* ed) {
+                 return ed->notification();
+               })
+               .toStdList();
 
   return FROM_STD_LIST(QList<Notification>, lst);
 }

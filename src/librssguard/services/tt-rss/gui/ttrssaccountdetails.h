@@ -3,18 +3,17 @@
 #ifndef TTRSSACCOUNTDETAILS_H
 #define TTRSSACCOUNTDETAILS_H
 
-#include <QWidget>
-
 #include "ui_ttrssaccountdetails.h"
 
 #include <QNetworkProxy>
+#include <QWidget>
 
 class TtRssServiceRoot;
 
 class TtRssAccountDetails : public QWidget {
-  Q_OBJECT
+    Q_OBJECT
 
-  friend class FormEditTtRssAccount;
+    friend class FormEditTtRssAccount;
 
   public:
     explicit TtRssAccountDetails(QWidget* parent = nullptr);

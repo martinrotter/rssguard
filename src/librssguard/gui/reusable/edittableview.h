@@ -6,7 +6,7 @@
 #include <QTableView>
 
 class EditTableView : public QTableView {
-  Q_OBJECT
+    Q_OBJECT
 
   public:
     explicit EditTableView(QWidget* parent = nullptr);

@@ -3,10 +3,7 @@
 #ifndef SETTINGS_H
 #define SETTINGS_H
 
-#include <QSettings>
-
 #include "definitions/definitions.h"
-
 #include "gui/notifications/toastnotificationsmanager.h"
 #include "miscellaneous/settingsproperties.h"
 #include "miscellaneous/textfactory.h"
@@ -16,6 +13,7 @@
 #include <QDateTime>
 #include <QNetworkProxy>
 #include <QReadWriteLock>
+#include <QSettings>
 #include <QStringList>
 #include <QWriteLocker>
 

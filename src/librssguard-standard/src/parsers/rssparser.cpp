@@ -2,13 +2,14 @@
 
 #include "src/parsers/rssparser.h"
 
+#include "src/definitions.h"
+#include "src/standardfeed.h"
+
 #include <librssguard/exceptions/applicationexception.h>
 #include <librssguard/miscellaneous/application.h>
 #include <librssguard/miscellaneous/settings.h>
 #include <librssguard/miscellaneous/textfactory.h>
 #include <librssguard/network-web/networkfactory.h>
-#include "src/definitions.h"
-#include "src/standardfeed.h"
 
 #include <QDomDocument>
 #include <QTextCodec>

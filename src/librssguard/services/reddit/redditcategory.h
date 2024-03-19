@@ -6,7 +6,7 @@
 #include "services/abstract/category.h"
 
 class RedditCategory : public Category {
-  Q_OBJECT
+    Q_OBJECT
 
   public:
     enum class Type {

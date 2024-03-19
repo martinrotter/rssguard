@@ -8,7 +8,7 @@
 class QLocalServer;
 
 class SingleApplication : public QApplication {
-  Q_OBJECT
+    Q_OBJECT
 
   public:
     explicit SingleApplication(const QString& id, int& argc, char** argv);

@@ -6,13 +6,13 @@
 
 #include "definitions/definitions.h"
 
+#include <stdlib.h>
+
 #include <QBuffer>
 #include <QByteArray>
 #include <QImage>
 #include <QTextCursor>
 #include <QTextDocument>
-
-#include <stdlib.h>
 
 MTextEdit::MTextEdit(QWidget* parent) : QTextEdit(parent) {}
 

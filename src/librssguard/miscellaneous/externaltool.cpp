@@ -7,9 +7,10 @@
 #include "miscellaneous/application.h"
 #include "miscellaneous/settings.h"
 
+#include <utility>
+
 #include <QDir>
 #include <QObject>
-#include <utility>
 
 void ExternalTool::sanitizeParameters() {
   m_executable = QDir::toNativeSeparators(m_executable);

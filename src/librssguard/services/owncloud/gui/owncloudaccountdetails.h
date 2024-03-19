@@ -3,16 +3,15 @@
 #ifndef OWNCLOUDACCOUNTDETAILS_H
 #define OWNCLOUDACCOUNTDETAILS_H
 
-#include <QWidget>
-
 #include "ui_owncloudaccountdetails.h"
 
 #include <QNetworkProxy>
+#include <QWidget>
 
 class OwnCloudAccountDetails : public QWidget {
-  Q_OBJECT
+    Q_OBJECT
 
-  friend class FormEditOwnCloudAccount;
+    friend class FormEditOwnCloudAccount;
 
   public:
     explicit OwnCloudAccountDetails(QWidget* parent = nullptr);

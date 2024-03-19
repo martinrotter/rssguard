@@ -9,7 +9,7 @@ class WebBrowser;
 
 // Base class for all widgets which are placed inside tabs of TabWidget
 class TabContent : public QWidget {
-  Q_OBJECT
+    Q_OBJECT
 
   public:
     explicit TabContent(QWidget* parent = nullptr);

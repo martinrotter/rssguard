@@ -10,7 +10,7 @@ class QHBoxLayout;
 class QKeySequenceEdit;
 
 class ShortcutCatcher : public QWidget {
-  Q_OBJECT
+    Q_OBJECT
 
   public:
     explicit ShortcutCatcher(QWidget* parent = nullptr);

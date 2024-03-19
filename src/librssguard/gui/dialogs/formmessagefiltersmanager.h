@@ -3,11 +3,11 @@
 #ifndef FORMMESSAGEFILTERSMANAGER_H
 #define FORMMESSAGEFILTERSMANAGER_H
 
-#include <QDialog>
-
 #include "services/abstract/serviceroot.h"
 
 #include "ui_formmessagefiltersmanager.h"
+
+#include <QDialog>
 
 class AccountCheckSortedModel;
 class MessageFilter;

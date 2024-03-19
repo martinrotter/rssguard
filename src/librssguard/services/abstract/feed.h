@@ -3,10 +3,9 @@
 #ifndef FEED_H
 #define FEED_H
 
-#include "services/abstract/rootitem.h"
-
 #include "core/message.h"
 #include "core/messagefilter.h"
+#include "services/abstract/rootitem.h"
 
 #include <QPointer>
 #include <QVariant>

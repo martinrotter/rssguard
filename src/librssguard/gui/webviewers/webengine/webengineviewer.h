@@ -3,13 +3,12 @@
 #ifndef WEBENGINEVIEWER_H
 #define WEBENGINEVIEWER_H
 
-#include <QWebEngineView>
-
-#include "gui/webviewers/webviewer.h"
-
 #include "core/message.h"
+#include "gui/webviewers/webviewer.h"
 #include "miscellaneous/externaltool.h"
 #include "network-web/webengine/webenginepage.h"
+
+#include <QWebEngineView>
 
 class RootItem;
 class WebBrowser;

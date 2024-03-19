@@ -3,9 +3,8 @@
 #ifndef NETWORKFACTORY_H
 #define NETWORKFACTORY_H
 
-#include "network-web/httpresponse.h"
-
 #include "definitions/typedefs.h"
+#include "network-web/httpresponse.h"
 #include "services/abstract/feed.h"
 
 #include <QCoreApplication>

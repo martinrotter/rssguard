@@ -3,10 +3,9 @@
 #ifndef COOKIEJAR_H
 #define COOKIEJAR_H
 
-#include <QNetworkCookieJar>
-
 #include "miscellaneous/autosaver.h"
 
+#include <QNetworkCookieJar>
 #include <QReadWriteLock>
 
 #if defined(NO_LITE)

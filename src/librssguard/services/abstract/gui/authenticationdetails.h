@@ -3,10 +3,10 @@
 #ifndef AUTHENTICATIONDETAILS_H
 #define AUTHENTICATIONDETAILS_H
 
-#include <QWidget>
-
 #include "network-web/networkfactory.h"
 #include "services/abstract/feed.h"
+
+#include <QWidget>
 
 namespace Ui {
   class AuthenticationDetails;

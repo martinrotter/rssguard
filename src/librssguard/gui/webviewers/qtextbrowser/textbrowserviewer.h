@@ -4,14 +4,12 @@
 #define TEXTBROWSERVIEWER_H
 
 #include "gui/webviewers/webviewer.h"
-
-#include <QTextBrowser>
-
 #include "network-web/adblock/adblockmanager.h"
 
 #include <QNetworkReply>
 #include <QPixmap>
 #include <QPointer>
+#include <QTextBrowser>
 #include <QTimer>
 
 class QContextMenuEvent;

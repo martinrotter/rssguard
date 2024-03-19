@@ -4,7 +4,6 @@
 #define BASETOASTNOTIFICATION_H
 
 #include <QDialog>
-
 #include <QTimer>
 
 class QAbstractButton;

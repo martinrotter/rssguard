@@ -7,6 +7,7 @@
 #endif
 
 #include "src/definitions.h"
+
 #include <librssguard/definitions/definitions.h>
 #include <librssguard/exceptions/applicationexception.h>
 #include <librssguard/exceptions/feedrecognizedbutfailedexception.h>

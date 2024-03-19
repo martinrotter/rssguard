@@ -3,9 +3,9 @@
 #ifndef FORMADDEDITLABEL_H
 #define FORMADDEDITLABEL_H
 
-#include <QDialog>
-
 #include "ui_formaddeditlabel.h"
+
+#include <QDialog>
 
 namespace Ui {
   class FormAddEditLabel;

@@ -4,7 +4,6 @@
 #define TOASTNOTIFICATION_H
 
 #include "gui/notifications/basetoastnotification.h"
-
 #include "miscellaneous/application.h"
 
 #include "ui_toastnotification.h"

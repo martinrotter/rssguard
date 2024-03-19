@@ -3,22 +3,21 @@
 #ifndef FEEDLYACCOUNTDETAILS_H
 #define FEEDLYACCOUNTDETAILS_H
 
-#include <QWidget>
+#include "services/feedly/feedlyserviceroot.h"
 
 #include "ui_feedlyaccountdetails.h"
 
-#include "services/feedly/feedlyserviceroot.h"
-
 #include <QNetworkProxy>
+#include <QWidget>
 
 #if defined(FEEDLY_OFFICIAL_SUPPORT)
 class OAuth2Service;
 #endif
 
 class FeedlyAccountDetails : public QWidget {
-  Q_OBJECT
+    Q_OBJECT
 
-  friend class FormEditFeedlyAccount;
+    friend class FormEditFeedlyAccount;
 
   public:
     explicit FeedlyAccountDetails(QWidget* parent = nullptr);

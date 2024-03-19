@@ -3,12 +3,8 @@
 #include "gui/dialogs/formsettings.h"
 
 #include "definitions/definitions.h"
-#include "gui/messagebox.h"
-#include "miscellaneous/application.h"
-#include "miscellaneous/iconfactory.h"
-#include "miscellaneous/settings.h"
-
 #include "gui/guiutilities.h"
+#include "gui/messagebox.h"
 #include "gui/settings/settingsbrowsermail.h"
 #include "gui/settings/settingsdatabase.h"
 #include "gui/settings/settingsdownloads.h"
@@ -20,6 +16,9 @@
 #include "gui/settings/settingsnodejs.h"
 #include "gui/settings/settingsnotifications.h"
 #include "gui/settings/settingsshortcuts.h"
+#include "miscellaneous/application.h"
+#include "miscellaneous/iconfactory.h"
+#include "miscellaneous/settings.h"
 
 #include <QPainter>
 #include <QScrollArea>

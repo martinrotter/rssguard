@@ -4,20 +4,19 @@
 #define DATABASECLEANER_H
 
 #include <QObject>
-
 #include <QSqlDatabase>
 
 struct CleanerOrders {
-  bool m_removeReadMessages;
-  bool m_shrinkDatabase;
-  bool m_removeOldMessages;
-  bool m_removeRecycleBin;
-  bool m_removeStarredMessages;
-  int m_barrierForRemovingOldMessagesInDays;
+    bool m_removeReadMessages;
+    bool m_shrinkDatabase;
+    bool m_removeOldMessages;
+    bool m_removeRecycleBin;
+    bool m_removeStarredMessages;
+    int m_barrierForRemovingOldMessagesInDays;
 };
 
 class DatabaseCleaner : public QObject {
-  Q_OBJECT
+    Q_OBJECT
 
   public:
     explicit DatabaseCleaner(QObject* parent = nullptr);

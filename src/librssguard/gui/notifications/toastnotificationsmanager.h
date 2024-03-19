@@ -3,9 +3,9 @@
 #ifndef TOASTNOTIFICATIONSMANAGER_H
 #define TOASTNOTIFICATIONSMANAGER_H
 
-#include <QObject>
-
 #include "miscellaneous/application.h"
+
+#include <QObject>
 
 class BaseToastNotification;
 class ToastNotification;

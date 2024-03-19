@@ -17,7 +17,8 @@ QString TtRssServiceEntryPoint::description() const {
   return QObject::tr("This service offers integration with Tiny Tiny RSS.\n\n"
                      "Tiny Tiny RSS is an open source web-based news feed (RSS/Atom) reader and aggregator, "
                      "designed to allow you to read news from any location, while feeling as close to a real "
-                     "desktop application as possible.\n\nAt least API level %1 is required.").arg(TTRSS_MINIMAL_API_LEVEL);
+                     "desktop application as possible.\n\nAt least API level %1 is required.")
+    .arg(TTRSS_MINIMAL_API_LEVEL);
 }
 
 QString TtRssServiceEntryPoint::author() const {

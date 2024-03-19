@@ -3,16 +3,16 @@
 #ifndef NOTIFICATIONSEDITOR_H
 #define NOTIFICATIONSEDITOR_H
 
-#include <QWidget>
+#include "miscellaneous/notification.h"
 
 #include "ui_notificationseditor.h"
 
-#include "miscellaneous/notification.h"
+#include <QWidget>
 
 class QVBoxLayout;
 
 class NotificationsEditor : public QWidget {
-  Q_OBJECT
+    Q_OBJECT
 
   public:
     explicit NotificationsEditor(QWidget* parent = nullptr);

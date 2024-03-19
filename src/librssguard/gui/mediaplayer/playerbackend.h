@@ -3,9 +3,8 @@
 #ifndef PLAYERBACKEND_H
 #define PLAYERBACKEND_H
 
-#include <QWidget>
-
 #include <QUrl>
+#include <QWidget>
 
 class QVBoxLayout;
 class Application;

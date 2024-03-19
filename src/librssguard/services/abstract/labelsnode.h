@@ -3,9 +3,8 @@
 #ifndef LABELSNODE_H
 #define LABELSNODE_H
 
-#include "services/abstract/rootitem.h"
-
 #include "services/abstract/label.h"
+#include "services/abstract/rootitem.h"
 
 class RSSGUARD_DLLSPEC LabelsNode : public RootItem {
     Q_OBJECT

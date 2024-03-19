@@ -48,7 +48,9 @@ class RootItem;
 
 class OwnCloudGetFeedsCategoriesResponse : public OwnCloudResponse {
   public:
-    explicit OwnCloudGetFeedsCategoriesResponse(QNetworkReply::NetworkError response, QString raw_categories = QString(), QString raw_feeds = QString());
+    explicit OwnCloudGetFeedsCategoriesResponse(QNetworkReply::NetworkError response,
+                                                QString raw_categories = QString(),
+                                                QString raw_feeds = QString());
     virtual ~OwnCloudGetFeedsCategoriesResponse();
 
     // Returns tree of feeds/categories.

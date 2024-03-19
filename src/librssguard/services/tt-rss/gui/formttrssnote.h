@@ -3,14 +3,14 @@
 #ifndef FORMTTRSSNOTE_H
 #define FORMTTRSSNOTE_H
 
-#include <QDialog>
-
 #include "ui_formttrssnote.h"
+
+#include <QDialog>
 
 class TtRssServiceRoot;
 
 class FormTtRssNote : public QDialog {
-  Q_OBJECT
+    Q_OBJECT
 
   public:
     explicit FormTtRssNote(TtRssServiceRoot* root);

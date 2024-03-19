@@ -3,10 +3,9 @@
 #ifndef READABILITY_H
 #define READABILITY_H
 
-#include <QObject>
-
 #include "miscellaneous/nodejs.h"
 
+#include <QObject>
 #include <QProcess>
 
 class Readability : public QObject {

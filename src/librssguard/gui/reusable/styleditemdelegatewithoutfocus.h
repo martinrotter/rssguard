@@ -12,7 +12,7 @@
 #endif
 
 class StyledItemDelegateWithoutFocus : public QStyledItemDelegate {
-  Q_OBJECT
+    Q_OBJECT
 
   public:
     explicit StyledItemDelegateWithoutFocus(int height_row, int padding_row, QObject* parent = nullptr);

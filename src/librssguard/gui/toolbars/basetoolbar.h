@@ -7,7 +7,6 @@
 
 class BaseBar {
   public:
-
     // Returns all actions which can be added to the toolbar.
     virtual QList<QAction*> availableActions() const = 0;
 
@@ -39,7 +38,7 @@ class BaseBar {
 };
 
 class BaseToolBar : public QToolBar, public BaseBar {
-  Q_OBJECT
+    Q_OBJECT
 
   public:
     explicit BaseToolBar(const QString& title, QWidget* parent = nullptr);

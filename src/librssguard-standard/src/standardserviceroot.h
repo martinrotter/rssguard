@@ -3,9 +3,9 @@
 #ifndef STANDARDSERVICEROOT_H
 #define STANDARDSERVICEROOT_H
 
-#include <librssguard/services/abstract/serviceroot.h>
-
 #include "src/standardfeed.h"
+
+#include <librssguard/services/abstract/serviceroot.h>
 
 #include <QCoreApplication>
 #include <QPair>

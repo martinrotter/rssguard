@@ -3,9 +3,9 @@
 #ifndef TOOLBAREDITOR_H
 #define TOOLBAREDITOR_H
 
-#include <QWidget>
-
 #include "ui_toolbareditor.h"
+
+#include <QWidget>
 
 namespace Ui {
   class ToolBarEditor;
@@ -14,7 +14,7 @@ namespace Ui {
 class BaseBar;
 
 class ToolBarEditor : public QWidget {
-  Q_OBJECT
+    Q_OBJECT
 
   public:
     explicit ToolBarEditor(QWidget* parent = nullptr);

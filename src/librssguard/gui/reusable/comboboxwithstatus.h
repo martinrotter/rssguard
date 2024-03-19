@@ -8,10 +8,9 @@
 #include <QComboBox>
 
 class ComboBoxWithStatus : public WidgetWithStatus {
-  Q_OBJECT
+    Q_OBJECT
 
   public:
-
     // Constructors and destructors.
     explicit ComboBoxWithStatus(QWidget* parent = nullptr);
     virtual ~ComboBoxWithStatus() = default;
@@ -19,7 +18,6 @@ class ComboBoxWithStatus : public WidgetWithStatus {
     inline QComboBox* comboBox() const {
       return static_cast<QComboBox*>(m_wdgInput);
     }
-
 };
 
 #endif // COMBOBOXWITHSTATUS_H

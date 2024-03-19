@@ -3,16 +3,16 @@
 #ifndef SEARCHTEXTWIDGET_H
 #define SEARCHTEXTWIDGET_H
 
-#include <QWidget>
-
 #include "ui_searchtextwidget.h"
+
+#include <QWidget>
 
 namespace Ui {
   class SearchTextWidget;
 }
 
 class SearchTextWidget : public QWidget {
-  Q_OBJECT
+    Q_OBJECT
 
   public:
     explicit SearchTextWidget(QWidget* parent = nullptr);

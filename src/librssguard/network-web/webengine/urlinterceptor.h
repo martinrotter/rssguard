@@ -7,10 +7,10 @@
 #include <QWebEngineUrlRequestInfo>
 
 class UrlInterceptor : public QObject {
-  Q_OBJECT
+    Q_OBJECT
 
   public:
-    explicit UrlInterceptor(QObject* parent = nullptr) : QObject(parent) { }
+    explicit UrlInterceptor(QObject* parent = nullptr) : QObject(parent) {}
 
     virtual void interceptRequest(QWebEngineUrlRequestInfo& info) = 0;
 };

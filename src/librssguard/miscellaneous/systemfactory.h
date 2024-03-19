@@ -3,13 +3,12 @@
 #ifndef SYSTEMFACTORY_H
 #define SYSTEMFACTORY_H
 
-#include <QObject>
-
 #include "network-web/downloader.h"
 
 #include <QHash>
 #include <QMetaType>
 #include <QNetworkReply>
+#include <QObject>
 #include <QPair>
 #include <QRegularExpression>
 

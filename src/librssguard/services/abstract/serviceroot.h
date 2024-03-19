@@ -3,10 +3,9 @@
 #ifndef SERVICEROOT_H
 #define SERVICEROOT_H
 
-#include "services/abstract/rootitem.h"
-
 #include "core/message.h"
 #include "definitions/typedefs.h"
+#include "services/abstract/rootitem.h"
 
 #include <QJsonDocument>
 #include <QNetworkProxy>

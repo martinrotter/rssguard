@@ -3,9 +3,8 @@
 #ifndef LOCALIZATION_H
 #define LOCALIZATION_H
 
-#include <QObject>
-
 #include <QLocale>
+#include <QObject>
 #include <QString>
 
 struct Language {

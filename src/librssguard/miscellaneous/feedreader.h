@@ -3,12 +3,12 @@
 #ifndef FEEDREADER_H
 #define FEEDREADER_H
 
-#include <QObject>
-
 #include "core/feeddownloader.h"
 #include "core/messagefilter.h"
 #include "services/abstract/cacheforserviceroot.h"
 #include "services/abstract/feed.h"
+
+#include <QObject>
 
 class FeedsModel;
 class MessagesModel;

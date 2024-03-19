@@ -3,9 +3,9 @@
 #ifndef MESSAGEOBJECT_H
 #define MESSAGEOBJECT_H
 
-#include <QObject>
-
 #include "services/abstract/label.h"
+
+#include <QObject>
 
 class MessageObject : public QObject {
     Q_OBJECT

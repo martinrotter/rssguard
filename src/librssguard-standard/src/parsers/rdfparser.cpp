@@ -2,11 +2,12 @@
 
 #include "src/parsers/rdfparser.h"
 
+#include "src/definitions.h"
+#include "src/standardfeed.h"
+
 #include <librssguard/exceptions/applicationexception.h>
 #include <librssguard/miscellaneous/settings.h>
 #include <librssguard/miscellaneous/textfactory.h>
-#include "src/definitions.h"
-#include "src/standardfeed.h"
 
 #include <QDomDocument>
 #include <QTextCodec>

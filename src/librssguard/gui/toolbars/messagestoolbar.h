@@ -3,11 +3,10 @@
 #ifndef NEWSTOOLBAR_H
 #define NEWSTOOLBAR_H
 
-#include "gui/toolbars/basetoolbar.h"
-
 #include "core/messagesmodel.h"
 #include "core/messagesproxymodel.h"
 #include "gui/reusable/searchlineedit.h"
+#include "gui/toolbars/basetoolbar.h"
 
 class QWidgetAction;
 class QToolButton;
@@ -18,7 +17,10 @@ class MessagesToolBar : public BaseToolBar {
     Q_OBJECT
 
   public:
-    enum class SearchFields { SearchTitleOnly = 1, SearchAll = 2 };
+    enum class SearchFields {
+      SearchTitleOnly = 1,
+      SearchAll = 2
+    };
 
     explicit MessagesToolBar(const QString& title, QWidget* parent = nullptr);
 

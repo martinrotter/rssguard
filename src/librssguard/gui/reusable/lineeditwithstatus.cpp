@@ -7,8 +7,7 @@
 
 #include <QHBoxLayout>
 
-LineEditWithStatus::LineEditWithStatus(QWidget* parent)
-  : WidgetWithStatus(parent) {
+LineEditWithStatus::LineEditWithStatus(QWidget* parent) : WidgetWithStatus(parent) {
   m_wdgInput = new BaseLineEdit(this);
   setFocusProxy(m_wdgInput);
 
@@ -22,8 +21,7 @@ LineEditWithStatus::LineEditWithStatus(QWidget* parent)
   m_layout->addWidget(m_btnStatus);
 }
 
-TextEditWithStatus::TextEditWithStatus(QWidget* parent)
-  : WidgetWithStatus(parent) {
+TextEditWithStatus::TextEditWithStatus(QWidget* parent) : WidgetWithStatus(parent) {
   m_wdgInput = new QPlainTextEdit(this);
   setFocusProxy(m_wdgInput);
 

@@ -3,18 +3,17 @@
 #ifndef GMAILACCOUNTDETAILS_H
 #define GMAILACCOUNTDETAILS_H
 
-#include <QWidget>
-
 #include "ui_gmailaccountdetails.h"
 
 #include <QNetworkProxy>
+#include <QWidget>
 
 class OAuth2Service;
 
 class GmailAccountDetails : public QWidget {
-  Q_OBJECT
+    Q_OBJECT
 
-  friend class FormEditGmailAccount;
+    friend class FormEditGmailAccount;
 
   public:
     explicit GmailAccountDetails(QWidget* parent = nullptr);

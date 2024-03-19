@@ -3,9 +3,9 @@
 #ifndef NOTIFICATION_H
 #define NOTIFICATION_H
 
-#include <QString>
-
 #include "definitions/definitions.h"
+
+#include <QString>
 
 class Application;
 

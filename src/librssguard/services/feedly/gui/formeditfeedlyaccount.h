@@ -9,7 +9,7 @@ class FeedlyAccountDetails;
 class FeedlyServiceRoot;
 
 class FormEditFeedlyAccount : public FormAccountDetails {
-  Q_OBJECT
+    Q_OBJECT
 
   public:
     explicit FormEditFeedlyAccount(QWidget* parent = nullptr);

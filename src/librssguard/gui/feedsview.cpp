@@ -18,6 +18,8 @@
 #include "services/abstract/rootitem.h"
 #include "services/abstract/serviceroot.h"
 
+#include <algorithm>
+
 #include <QClipboard>
 #include <QContextMenuEvent>
 #include <QHeaderView>
@@ -25,8 +27,6 @@
 #include <QPainter>
 #include <QPointer>
 #include <QTimer>
-
-#include <algorithm>
 
 FeedsView::FeedsView(QWidget* parent)
   : BaseTreeView(parent), m_contextMenuService(nullptr), m_contextMenuBin(nullptr), m_contextMenuCategories(nullptr),

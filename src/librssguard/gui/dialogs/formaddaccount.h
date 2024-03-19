@@ -3,18 +3,20 @@
 #ifndef FORMADDACCOUNT_H
 #define FORMADDACCOUNT_H
 
-#include <QDialog>
-
 #include "ui_formaddaccount.h"
+
+#include <QDialog>
 
 class ServiceEntryPoint;
 class FeedsModel;
 
 class FormAddAccount : public QDialog {
-  Q_OBJECT
+    Q_OBJECT
 
   public:
-    explicit FormAddAccount(const QList<ServiceEntryPoint*>& entry_points, FeedsModel* model, QWidget* parent = nullptr);
+    explicit FormAddAccount(const QList<ServiceEntryPoint*>& entry_points,
+                            FeedsModel* model,
+                            QWidget* parent = nullptr);
     virtual ~FormAddAccount();
 
   private slots:

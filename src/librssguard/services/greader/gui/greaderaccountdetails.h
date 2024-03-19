@@ -3,20 +3,19 @@
 #ifndef GREADERACCOUNTDETAILS_H
 #define GREADERACCOUNTDETAILS_H
 
-#include <QWidget>
+#include "services/greader/greaderserviceroot.h"
 
 #include "ui_greaderaccountdetails.h"
 
-#include "services/greader/greaderserviceroot.h"
-
 #include <QNetworkProxy>
+#include <QWidget>
 
 class OAuth2Service;
 
 class GreaderAccountDetails : public QWidget {
-  Q_OBJECT
+    Q_OBJECT
 
-  friend class FormEditGreaderAccount;
+    friend class FormEditGreaderAccount;
 
   public:
     explicit GreaderAccountDetails(QWidget* parent = nullptr);

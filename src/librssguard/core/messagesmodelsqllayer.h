@@ -3,11 +3,10 @@
 #ifndef MESSAGESMODELSQLLAYER_H
 #define MESSAGESMODELSQLLAYER_H
 
-#include <QSqlDatabase>
-
 #include <QList>
 #include <QMap>
 #include <QPair>
+#include <QSqlDatabase>
 
 struct SortColumnsAndOrders {
     QList<int> m_columns;

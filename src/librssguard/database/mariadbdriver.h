@@ -6,7 +6,7 @@
 #include "database/databasedriver.h"
 
 class MariaDbDriver : public DatabaseDriver {
-  Q_OBJECT
+    Q_OBJECT
 
   public:
     enum class MariaDbError {
@@ -21,8 +21,11 @@ class MariaDbDriver : public DatabaseDriver {
 
     explicit MariaDbDriver(QObject* parent = nullptr);
 
-    MariaDbError testConnection(const QString& hostname, int port, const QString& w_database,
-                                const QString& username, const QString& password);
+    MariaDbError testConnection(const QString& hostname,
+                                int port,
+                                const QString& w_database,
+                                const QString& username,
+                                const QString& password);
 
     virtual QString location() const;
     virtual QString humanDriverType() const;
@@ -36,7 +39,8 @@ class MariaDbDriver : public DatabaseDriver {
     virtual bool finishRestoration();
     virtual qint64 databaseDataSize();
     virtual QSqlDatabase connection(const QString& connection_name,
-                                    DatabaseDriver::DesiredStorageType desired_type = DatabaseDriver::DesiredStorageType::FromSettings);
+                                    DatabaseDriver::DesiredStorageType desired_type =
+                                      DatabaseDriver::DesiredStorageType::FromSettings);
     virtual QString autoIncrementPrimaryKey() const;
     virtual QString blob() const;
 

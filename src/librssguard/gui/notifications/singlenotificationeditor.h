@@ -3,14 +3,14 @@
 #ifndef SINGLENOTIFICATIONEDITOR_H
 #define SINGLENOTIFICATIONEDITOR_H
 
-#include <QGroupBox>
+#include "miscellaneous/notification.h"
 
 #include "ui_singlenotificationeditor.h"
 
-#include "miscellaneous/notification.h"
+#include <QGroupBox>
 
 class SingleNotificationEditor : public QGroupBox {
-  Q_OBJECT
+    Q_OBJECT
 
   public:
     explicit SingleNotificationEditor(const Notification& notification, QWidget* parent = nullptr);

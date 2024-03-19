@@ -8,7 +8,7 @@
 class TtRssServiceRoot;
 
 class TtRssFeed : public Feed {
-  Q_OBJECT
+    Q_OBJECT
 
   public:
     explicit TtRssFeed(RootItem* parent = nullptr);

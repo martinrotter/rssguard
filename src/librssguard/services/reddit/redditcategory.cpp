@@ -2,8 +2,7 @@
 
 #include "services/reddit/redditcategory.h"
 
-RedditCategory::RedditCategory(Type type, RootItem* parent_item)
-  : Category(parent_item), m_type(type) {
+RedditCategory::RedditCategory(Type type, RootItem* parent_item) : Category(parent_item), m_type(type) {
   updateTitle();
 }
 

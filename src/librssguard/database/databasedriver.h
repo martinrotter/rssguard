@@ -4,7 +4,6 @@
 #define DATABASEDRIVER_H
 
 #include <QObject>
-
 #include <QSqlDatabase>
 #include <QSqlQuery>
 
