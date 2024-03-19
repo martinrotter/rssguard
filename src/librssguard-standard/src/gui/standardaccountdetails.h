@@ -3,9 +3,9 @@
 #ifndef STANDARDACCOUNTDETAILS_H
 #define STANDARDACCOUNTDETAILS_H
 
-#include <QWidget>
-
 #include "ui_standardaccountdetails.h"
+
+#include <QWidget>
 
 namespace Ui {
   class StandardAccountDetails;

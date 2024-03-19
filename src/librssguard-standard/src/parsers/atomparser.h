@@ -5,10 +5,10 @@
 
 #include "src/parsers/feedparser.h"
 
-#include <librssguard/core/message.h>
-
 #include <QDomDocument>
 #include <QList>
+
+#include <librssguard/core/message.h>
 
 class AtomParser : public FeedParser {
   public:

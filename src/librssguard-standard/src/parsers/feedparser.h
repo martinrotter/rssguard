@@ -3,6 +3,8 @@
 #ifndef FEEDPARSER_H
 #define FEEDPARSER_H
 
+#include "src/standardfeed.h"
+
 #include <QDomDocument>
 #include <QJsonArray>
 #include <QJsonDocument>
@@ -11,7 +13,6 @@
 
 #include <librssguard/core/message.h>
 #include <librssguard/definitions/typedefs.h>
-#include "src/standardfeed.h"
 
 // Base class for all XML-based feed parsers.
 class FeedParser {

@@ -10,7 +10,9 @@
 
 StandardServiceEntryPoint::StandardServiceEntryPoint(QObject* parent) : QObject(parent) {}
 
-StandardServiceEntryPoint::~StandardServiceEntryPoint() {}
+StandardServiceEntryPoint::~StandardServiceEntryPoint() {
+  qDebugNN << LOGSEC_CORE << "Destructing" << QUOTE_W_SPACE(QSL(SERVICE_CODE_STD_RSS)) << "plugin.";
+}
 
 QString StandardServiceEntryPoint::name() const {
   return QSL("RSS/RDF/ATOM/JSON");
