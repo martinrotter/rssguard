@@ -52,7 +52,17 @@ FeedReader::FeedReader(QObject* parent)
 
 FeedReader::~FeedReader() {
   qDebugNN << LOGSEC_CORE << "Destroying FeedReader instance.";
-  qDeleteAll(m_feedServices);
+
+  for (ServiceEntryPoint* service : m_feedServices) {
+    if (!service->isDynamicallyLoaded()) {
+      qDebugNN << LOGSEC_CORE << "Deleting service" << QUOTE_W_SPACE_DOT(service->code());
+    }
+    else {
+      qDebugNN << LOGSEC_CORE << "Service" << QUOTE_W_SPACE(service->code()) << "will be deleted by runtime.";
+    }
+  }
+  // qDeleteAll(m_feedServices);
+
   qDeleteAll(m_messageFilters);
 }
 

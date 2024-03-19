@@ -2,20 +2,25 @@
 
 #include "src/standardserviceentrypoint.h"
 
+#include "src/gui/formeditstandardaccount.h"
+#include "src/standardserviceroot.h"
 #include <librssguard/database/databasequeries.h>
 #include <librssguard/definitions/definitions.h>
 #include <librssguard/miscellaneous/application.h>
-#include "src/gui/formeditstandardaccount.h"
-#include "src/standardserviceroot.h"
 
 StandardServiceEntryPoint::StandardServiceEntryPoint(QObject* parent) : QObject(parent) {}
+
+StandardServiceEntryPoint::~StandardServiceEntryPoint() {
+  qDebugNN << LOGSEC_CORE << "Destructing plugin.";
+}
 
 QString StandardServiceEntryPoint::name() const {
   return QSL("RSS/RDF/ATOM/JSON");
 }
 
 QString StandardServiceEntryPoint::description() const {
-  return QObject::tr("This service offers integration with standard online RSS/RDF/ATOM/JSON feeds and podcasts.");
+  return QObject::
+    tr("This service offers integration with standard online RSS/RDF/ATOM/JSON/Sitemap/iCalendar feeds and podcasts.");
 }
 
 QString StandardServiceEntryPoint::author() const {
@@ -41,4 +46,8 @@ QList<ServiceRoot*> StandardServiceEntryPoint::initializeSubtree() const {
   QSqlDatabase database = qApp->database()->driver()->connection(QSL("StandardServiceEntryPoint"));
 
   return DatabaseQueries::getAccounts<StandardServiceRoot>(database, code());
+}
+
+bool StandardServiceEntryPoint::isDynamicallyLoaded() const {
+  return true;
 }
