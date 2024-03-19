@@ -3,11 +3,12 @@
 #ifndef GMAILNETWORKFACTORY_H
 #define GMAILNETWORKFACTORY_H
 
-#include "3rd-party/mimesis/mimesis.hpp"
-#include "core/message.h"
-#include "services/abstract/feed.h"
-#include "services/abstract/rootitem.h"
-#include "services/abstract/serviceroot.h"
+#include "src/3rd-party/mimesis/mimesis.hpp"
+
+#include <librssguard/core/message.h>
+#include <librssguard/services/abstract/feed.h>
+#include <librssguard/services/abstract/rootitem.h>
+#include <librssguard/services/abstract/serviceroot.h>
 
 #include <QNetworkReply>
 #include <QObject>

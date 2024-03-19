@@ -159,10 +159,6 @@ set(SOURCES
   gui/reusable/treeviewcolumnsmenu.h
   gui/reusable/widgetwithstatus.cpp
   gui/reusable/widgetwithstatus.h
-  gui/richtexteditor/mrichtextedit.cpp
-  gui/richtexteditor/mrichtextedit.h
-  gui/richtexteditor/mtextedit.cpp
-  gui/richtexteditor/mtextedit.h
   gui/settings/settingsbrowsermail.cpp
   gui/settings/settingsbrowsermail.h
   gui/settings/settingsdatabase.cpp
@@ -328,23 +324,6 @@ set(SOURCES
   services/abstract/serviceroot.h
   services/abstract/unreadnode.cpp
   services/abstract/unreadnode.h
-  services/gmail/definitions.h
-  services/gmail/gmailentrypoint.cpp
-  services/gmail/gmailentrypoint.h
-  services/gmail/gmailnetworkfactory.cpp
-  services/gmail/gmailnetworkfactory.h
-  services/gmail/gmailserviceroot.cpp
-  services/gmail/gmailserviceroot.h
-  services/gmail/gui/emailpreviewer.cpp
-  services/gmail/gui/emailpreviewer.h
-  services/gmail/gui/emailrecipientcontrol.cpp
-  services/gmail/gui/emailrecipientcontrol.h
-  services/gmail/gui/formaddeditemail.cpp
-  services/gmail/gui/formaddeditemail.h
-  services/gmail/gui/formeditgmailaccount.cpp
-  services/gmail/gui/formeditgmailaccount.h
-  services/gmail/gui/gmailaccountdetails.cpp
-  services/gmail/gui/gmailaccountdetails.h
   services/greader/definitions.h
   services/greader/greaderentrypoint.cpp
   services/greader/greaderentrypoint.h
@@ -431,7 +410,6 @@ set(UI_FILES
   gui/reusable/articleamountcontrol.ui
   gui/reusable/networkproxydetails.ui
   gui/reusable/searchtextwidget.ui
-  gui/richtexteditor/mrichtextedit.ui
   gui/settings/settingsbrowsermail.ui
   gui/settings/settingsdatabase.ui
   gui/settings/settingsdownloads.ui
@@ -454,9 +432,6 @@ set(UI_FILES
   services/abstract/gui/formaddeditprobe.ui
   services/abstract/gui/formcategorydetails.ui
   services/abstract/gui/formfeeddetails.ui
-  services/gmail/gui/emailpreviewer.ui
-  services/gmail/gui/formaddeditemail.ui
-  services/gmail/gui/gmailaccountdetails.ui
   services/greader/gui/greaderaccountdetails.ui
   services/greader/gui/greaderfeeddetails.ui
   services/owncloud/gui/owncloudaccountdetails.ui
@@ -536,14 +511,6 @@ list(APPEND SOURCES
   # QTextBrowser.
   gui/webviewers/qtextbrowser/textbrowserviewer.h
   gui/webviewers/qtextbrowser/textbrowserviewer.cpp
-)
-
-# Add mimesis.
-list(APPEND SOURCES
-  3rd-party/mimesis/mimesis.cpp
-  3rd-party/mimesis/mimesis.hpp
-  3rd-party/mimesis/quoted-printable.cpp
-  3rd-party/mimesis/quoted-printable.hpp
 )
 
 # Add boolinq.

@@ -7,10 +7,6 @@
 
 #include <QDialog>
 
-namespace Ui {
-  class FormAddEditEmail;
-}
-
 class GmailServiceRoot;
 class Message;
 class EmailRecipientControl;

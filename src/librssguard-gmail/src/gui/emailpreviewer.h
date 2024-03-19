@@ -3,10 +3,10 @@
 #ifndef EMAILPREVIEWER_H
 #define EMAILPREVIEWER_H
 
-#include "gui/webbrowser.h"
-#include "services/abstract/gui/custommessagepreviewer.h"
-
 #include "ui_emailpreviewer.h"
+
+#include <librssguard/gui/webbrowser.h>
+#include <librssguard/services/abstract/gui/custommessagepreviewer.h>
 
 #include <QTimer>
 

@@ -3,8 +3,9 @@
 #ifndef FORMEDITINOREADERACCOUNT_H
 #define FORMEDITINOREADERACCOUNT_H
 
-#include "services/abstract/gui/formaccountdetails.h"
-#include "services/gmail/gmailnetworkfactory.h"
+#include "src/gmailnetworkfactory.h"
+
+#include <librssguard/services/abstract/gui/formaccountdetails.h>
 
 class GmailServiceRoot;
 class GmailAccountDetails;

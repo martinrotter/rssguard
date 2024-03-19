@@ -25,11 +25,11 @@
 ** $QT_END_LICENSE$
 */
 
-#include "gui/richtexteditor/mrichtextedit.h"
+#include "src/3rd-party/richtexteditor/mrichtextedit.h"
 
-#include "definitions/definitions.h"
-#include "miscellaneous/application.h"
-#include "miscellaneous/iconfactory.h"
+#include <librssguard/definitions/definitions.h>
+#include <librssguard/miscellaneous/application.h>
+#include <librssguard/miscellaneous/iconfactory.h>
 
 #include <QApplication>
 #include <QBuffer>

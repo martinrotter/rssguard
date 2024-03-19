@@ -1,17 +1,18 @@
 // For license of this file, see <project-root-folder>/LICENSE.md.
 
-#include "services/gmail/gui/formaddeditemail.h"
+#include "src/gui/formaddeditemail.h"
 
-#include "3rd-party/mimesis/mimesis.hpp"
-#include "database/databasequeries.h"
-#include "exceptions/applicationexception.h"
-#include "gui/guiutilities.h"
-#include "gui/messagebox.h"
-#include "miscellaneous/application.h"
-#include "miscellaneous/iconfactory.h"
-#include "services/gmail/gmailnetworkfactory.h"
-#include "services/gmail/gmailserviceroot.h"
-#include "services/gmail/gui/emailrecipientcontrol.h"
+#include "src/3rd-party/mimesis/mimesis.hpp"
+#include "src/gmailnetworkfactory.h"
+#include "src/gmailserviceroot.h"
+#include "src/gui/emailrecipientcontrol.h"
+
+#include <librssguard/database/databasequeries.h>
+#include <librssguard/exceptions/applicationexception.h>
+#include <librssguard/gui/guiutilities.h>
+#include <librssguard/gui/messagebox.h>
+#include <librssguard/miscellaneous/application.h>
+#include <librssguard/miscellaneous/iconfactory.h>
 
 #include <QCloseEvent>
 #include <QPushButton>

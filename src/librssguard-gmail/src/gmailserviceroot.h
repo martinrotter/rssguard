@@ -3,9 +3,10 @@
 #ifndef GMAILSERVICEROOT_H
 #define GMAILSERVICEROOT_H
 
-#include "services/abstract/cacheforserviceroot.h"
-#include "services/abstract/serviceroot.h"
-#include "services/gmail/gui/emailpreviewer.h"
+#include "src/gui/emailpreviewer.h"
+
+#include <librssguard/services/abstract/cacheforserviceroot.h>
+#include <librssguard/services/abstract/serviceroot.h>
 
 class GmailNetworkFactory;
 

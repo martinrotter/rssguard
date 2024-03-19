@@ -33,7 +33,7 @@
 #include <QObject>
 #include <QUrl>
 
-class OAuth2Service : public QObject {
+class RSSGUARD_DLLSPEC OAuth2Service : public QObject {
     Q_OBJECT
 
   public:

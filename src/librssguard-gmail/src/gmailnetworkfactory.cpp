@@ -1,20 +1,21 @@
 // For license of this file, see <project-root-folder>/LICENSE.md.
 
-#include "services/gmail/gmailnetworkfactory.h"
+#include "src/gmailnetworkfactory.h"
 
-#include "3rd-party/boolinq/boolinq.h"
-#include "database/databasequeries.h"
-#include "definitions/definitions.h"
-#include "exceptions/applicationexception.h"
-#include "exceptions/networkexception.h"
-#include "miscellaneous/application.h"
-#include "miscellaneous/settings.h"
-#include "miscellaneous/textfactory.h"
-#include "network-web/networkfactory.h"
-#include "network-web/oauth2service.h"
-#include "services/abstract/labelsnode.h"
-#include "services/gmail/definitions.h"
-#include "services/gmail/gmailserviceroot.h"
+#include "src/definitions.h"
+#include "src/gmailserviceroot.h"
+
+#include <librssguard/3rd-party/boolinq/boolinq.h>
+#include <librssguard/database/databasequeries.h>
+#include <librssguard/definitions/definitions.h>
+#include <librssguard/exceptions/applicationexception.h>
+#include <librssguard/exceptions/networkexception.h>
+#include <librssguard/miscellaneous/application.h>
+#include <librssguard/miscellaneous/settings.h>
+#include <librssguard/miscellaneous/textfactory.h>
+#include <librssguard/network-web/networkfactory.h>
+#include <librssguard/network-web/oauth2service.h>
+#include <librssguard/services/abstract/labelsnode.h>
 
 #include <QHttpMultiPart>
 #include <QJsonArray>

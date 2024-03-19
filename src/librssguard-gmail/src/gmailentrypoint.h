@@ -3,10 +3,17 @@
 #ifndef GMAILENTRYPOINT_H
 #define GMAILENTRYPOINT_H
 
-#include "services/abstract/serviceentrypoint.h"
+#include <librssguard/services/abstract/serviceentrypoint.h>
 
-class GmailEntryPoint : public ServiceEntryPoint {
+class GmailEntryPoint : public QObject, public ServiceEntryPoint {
+    Q_OBJECT
+    Q_PLUGIN_METADATA(IID "io.github.martinrotter.rssguard.gmail" FILE "plugin.json")
+    Q_INTERFACES(ServiceEntryPoint)
+
   public:
+    explicit GmailEntryPoint(QObject* parent = nullptr);
+    virtual ~GmailEntryPoint();
+
     virtual ServiceRoot* createNewRoot() const;
     virtual QList<ServiceRoot*> initializeSubtree() const;
     virtual QString name() const;
@@ -14,6 +21,7 @@ class GmailEntryPoint : public ServiceEntryPoint {
     virtual QString description() const;
     virtual QString author() const;
     virtual QIcon icon() const;
+    virtual bool isDynamicallyLoaded() const;
 };
 
 #endif // GMAILENTRYPOINT_H

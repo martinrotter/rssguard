@@ -1,15 +1,22 @@
 // For license of this file, see <project-root-folder>/LICENSE.md.
 
-#include "services/gmail/gmailentrypoint.h"
+#include "src/gmailentrypoint.h"
 
-#include "database/databasequeries.h"
-#include "definitions/definitions.h"
-#include "miscellaneous/application.h"
-#include "miscellaneous/iconfactory.h"
-#include "services/gmail/gmailserviceroot.h"
-#include "services/gmail/gui/formeditgmailaccount.h"
+#include "src/gmailserviceroot.h"
+#include "src/gui/formeditgmailaccount.h"
+
+#include <librssguard/database/databasequeries.h>
+#include <librssguard/definitions/definitions.h>
+#include <librssguard/miscellaneous/application.h>
+#include <librssguard/miscellaneous/iconfactory.h>
 
 #include <QMessageBox>
+
+GmailEntryPoint::GmailEntryPoint(QObject* parent) : QObject(parent) {}
+
+GmailEntryPoint::~GmailEntryPoint() {
+  qDebugNN << LOGSEC_GMAIL << "Destructing" << QUOTE_W_SPACE(QSL(SERVICE_CODE_GMAIL)) << "plugin.";
+}
 
 ServiceRoot* GmailEntryPoint::createNewRoot() const {
   FormEditGmailAccount form_acc(qApp->mainFormWidget());
@@ -41,4 +48,8 @@ QString GmailEntryPoint::author() const {
 
 QIcon GmailEntryPoint::icon() const {
   return qApp->icons()->miscIcon(QSL("gmail"));
+}
+
+bool GmailEntryPoint::isDynamicallyLoaded() const {
+  return true;
 }

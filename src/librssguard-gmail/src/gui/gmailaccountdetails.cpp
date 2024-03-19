@@ -1,13 +1,14 @@
 // For license of this file, see <project-root-folder>/LICENSE.md.
 
-#include "services/gmail/gui/gmailaccountdetails.h"
+#include "src/gui/gmailaccountdetails.h"
 
-#include "exceptions/applicationexception.h"
-#include "miscellaneous/application.h"
-#include "network-web/oauth2service.h"
-#include "network-web/webfactory.h"
-#include "services/gmail/definitions.h"
-#include "services/gmail/gmailnetworkfactory.h"
+#include "src/definitions.h"
+#include "src/gmailnetworkfactory.h"
+
+#include <librssguard/exceptions/applicationexception.h>
+#include <librssguard/miscellaneous/application.h>
+#include <librssguard/network-web/oauth2service.h>
+#include <librssguard/network-web/webfactory.h>
 
 GmailAccountDetails::GmailAccountDetails(QWidget* parent) : QWidget(parent), m_oauth(nullptr), m_lastProxy({}) {
   m_ui.setupUi(this);
