@@ -324,6 +324,7 @@ add_subdirectory(localization)
 
 # Plugins.
 add_subdirectory(src/librssguard-standard)
+add_subdirectory(src/librssguard-feedly)
 
 # GUI executable.
 add_subdirectory(src/rssguard)

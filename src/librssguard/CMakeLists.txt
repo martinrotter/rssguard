@@ -328,17 +328,6 @@ set(SOURCES
   services/abstract/serviceroot.h
   services/abstract/unreadnode.cpp
   services/abstract/unreadnode.h
-  services/feedly/definitions.h
-  services/feedly/feedlyentrypoint.cpp
-  services/feedly/feedlyentrypoint.h
-  services/feedly/feedlynetwork.cpp
-  services/feedly/feedlynetwork.h
-  services/feedly/feedlyserviceroot.cpp
-  services/feedly/feedlyserviceroot.h
-  services/feedly/gui/feedlyaccountdetails.cpp
-  services/feedly/gui/feedlyaccountdetails.h
-  services/feedly/gui/formeditfeedlyaccount.cpp
-  services/feedly/gui/formeditfeedlyaccount.h
   services/gmail/definitions.h
   services/gmail/gmailentrypoint.cpp
   services/gmail/gmailentrypoint.h
@@ -465,7 +454,6 @@ set(UI_FILES
   services/abstract/gui/formaddeditprobe.ui
   services/abstract/gui/formcategorydetails.ui
   services/abstract/gui/formfeeddetails.ui
-  services/feedly/gui/feedlyaccountdetails.ui
   services/gmail/gui/emailpreviewer.ui
   services/gmail/gui/formaddeditemail.ui
   services/gmail/gui/gmailaccountdetails.ui
