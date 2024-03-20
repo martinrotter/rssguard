@@ -49,7 +49,3 @@ QString FeedlyEntryPoint::author() const {
 QIcon FeedlyEntryPoint::icon() const {
   return qApp->icons()->miscIcon(QSL("feedly"));
 }
-
-bool FeedlyEntryPoint::isDynamicallyLoaded() const {
-  return true;
-}

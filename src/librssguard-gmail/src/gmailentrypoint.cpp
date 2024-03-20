@@ -49,7 +49,3 @@ QString GmailEntryPoint::author() const {
 QIcon GmailEntryPoint::icon() const {
   return qApp->icons()->miscIcon(QSL("gmail"));
 }
-
-bool GmailEntryPoint::isDynamicallyLoaded() const {
-  return true;
-}

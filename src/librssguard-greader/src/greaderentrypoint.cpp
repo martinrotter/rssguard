@@ -1,13 +1,20 @@
 // For license of this file, see <project-root-folder>/LICENSE.md.
 
-#include "services/greader/greaderentrypoint.h"
+#include "src/greaderentrypoint.h"
 
-#include "database/databasequeries.h"
-#include "definitions/definitions.h"
-#include "miscellaneous/application.h"
-#include "miscellaneous/iconfactory.h"
-#include "services/greader/greaderserviceroot.h"
-#include "services/greader/gui/formeditgreaderaccount.h"
+#include "src/greaderserviceroot.h"
+#include "src/gui/formeditgreaderaccount.h"
+
+#include <librssguard/database/databasequeries.h>
+#include <librssguard/definitions/definitions.h>
+#include <librssguard/miscellaneous/application.h>
+#include <librssguard/miscellaneous/iconfactory.h>
+
+GreaderEntryPoint::GreaderEntryPoint(QObject* parent) : QObject(parent) {}
+
+GreaderEntryPoint::~GreaderEntryPoint() {
+  qDebugNN << LOGSEC_CORE << "Destructing" << QUOTE_W_SPACE(QSL(SERVICE_CODE_GREADER)) << "plugin.";
+}
 
 ServiceRoot* GreaderEntryPoint::createNewRoot() const {
   FormEditGreaderAccount form_acc(qApp->mainFormWidget());

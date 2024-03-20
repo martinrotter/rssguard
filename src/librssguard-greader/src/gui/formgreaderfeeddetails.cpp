@@ -1,15 +1,16 @@
 // For license of this file, see <project-root-folder>/LICENSE.md.
 
-#include "services/greader/gui/formgreaderfeeddetails.h"
+#include "src/gui/formgreaderfeeddetails.h"
 
-#include "database/databasequeries.h"
-#include "exceptions/applicationexception.h"
-#include "miscellaneous/application.h"
-#include "services/greader/definitions.h"
-#include "services/greader/greaderfeed.h"
-#include "services/greader/greadernetwork.h"
-#include "services/greader/greaderserviceroot.h"
-#include "services/greader/gui/greaderfeeddetails.h"
+#include "src/definitions.h"
+#include "src/greaderfeed.h"
+#include "src/greadernetwork.h"
+#include "src/greaderserviceroot.h"
+#include "src/gui/greaderfeeddetails.h"
+
+#include <librssguard/database/databasequeries.h>
+#include <librssguard/exceptions/applicationexception.h>
+#include <librssguard/miscellaneous/application.h>
 
 #include <QMimeData>
 #include <QTimer>

@@ -3,8 +3,8 @@
 #ifndef GREADERSERVICEROOT_H
 #define GREADERSERVICEROOT_H
 
-#include "services/abstract/cacheforserviceroot.h"
-#include "services/abstract/serviceroot.h"
+#include <librssguard/services/abstract/cacheforserviceroot.h>
+#include <librssguard/services/abstract/serviceroot.h>
 
 class GreaderNetwork;
 

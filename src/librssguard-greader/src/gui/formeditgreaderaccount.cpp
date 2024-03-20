@@ -1,12 +1,13 @@
 // For license of this file, see <project-root-folder>/LICENSE.md.
 
-#include "services/greader/gui/formeditgreaderaccount.h"
+#include "src/gui/formeditgreaderaccount.h"
 
-#include "miscellaneous/iconfactory.h"
-#include "network-web/oauth2service.h"
-#include "services/greader/greadernetwork.h"
-#include "services/greader/greaderserviceroot.h"
-#include "services/greader/gui/greaderaccountdetails.h"
+#include "src/greadernetwork.h"
+#include "src/greaderserviceroot.h"
+#include "src/gui/greaderaccountdetails.h"
+
+#include <librssguard/miscellaneous/iconfactory.h>
+#include <librssguard/network-web/oauth2service.h>
 
 FormEditGreaderAccount::FormEditGreaderAccount(QWidget* parent)
   : FormAccountDetails(qApp->icons()->miscIcon(QSL("google")), parent), m_details(new GreaderAccountDetails(this)) {

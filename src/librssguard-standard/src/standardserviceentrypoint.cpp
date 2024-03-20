@@ -48,7 +48,3 @@ QList<ServiceRoot*> StandardServiceEntryPoint::initializeSubtree() const {
 
   return DatabaseQueries::getAccounts<StandardServiceRoot>(database, code());
 }
-
-bool StandardServiceEntryPoint::isDynamicallyLoaded() const {
-  return true;
-}

@@ -3,10 +3,17 @@
 #ifndef GREADERENTRYPOINT_H
 #define GREADERENTRYPOINT_H
 
-#include "services/abstract/serviceentrypoint.h"
+#include <librssguard/services/abstract/serviceentrypoint.h>
 
-class GreaderEntryPoint : public ServiceEntryPoint {
+class GreaderEntryPoint : public QObject, public ServiceEntryPoint {
+    Q_OBJECT
+    Q_PLUGIN_METADATA(IID "io.github.martinrotter.rssguard.greader" FILE "plugin.json")
+    Q_INTERFACES(ServiceEntryPoint)
+
   public:
+    explicit GreaderEntryPoint(QObject* parent = nullptr);
+    virtual ~GreaderEntryPoint();
+
     virtual ServiceRoot* createNewRoot() const;
     virtual QList<ServiceRoot*> initializeSubtree() const;
     virtual QString name() const;

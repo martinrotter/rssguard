@@ -324,23 +324,6 @@ set(SOURCES
   services/abstract/serviceroot.h
   services/abstract/unreadnode.cpp
   services/abstract/unreadnode.h
-  services/greader/definitions.h
-  services/greader/greaderentrypoint.cpp
-  services/greader/greaderentrypoint.h
-  services/greader/greaderfeed.cpp
-  services/greader/greaderfeed.h
-  services/greader/greadernetwork.cpp
-  services/greader/greadernetwork.h
-  services/greader/greaderserviceroot.cpp
-  services/greader/greaderserviceroot.h
-  services/greader/gui/formeditgreaderaccount.cpp
-  services/greader/gui/formeditgreaderaccount.h
-  services/greader/gui/formgreaderfeeddetails.cpp
-  services/greader/gui/formgreaderfeeddetails.h
-  services/greader/gui/greaderaccountdetails.cpp
-  services/greader/gui/greaderaccountdetails.h
-  services/greader/gui/greaderfeeddetails.cpp
-  services/greader/gui/greaderfeeddetails.h
   services/owncloud/definitions.h
   services/owncloud/gui/formeditowncloudaccount.cpp
   services/owncloud/gui/formeditowncloudaccount.h
@@ -432,8 +415,6 @@ set(UI_FILES
   services/abstract/gui/formaddeditprobe.ui
   services/abstract/gui/formcategorydetails.ui
   services/abstract/gui/formfeeddetails.ui
-  services/greader/gui/greaderaccountdetails.ui
-  services/greader/gui/greaderfeeddetails.ui
   services/owncloud/gui/owncloudaccountdetails.ui
   services/reddit/gui/redditaccountdetails.ui
   services/tt-rss/gui/formttrssnote.ui

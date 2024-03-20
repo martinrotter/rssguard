@@ -1,22 +1,21 @@
 // For license of this file, see <project-root-folder>/LICENSE.md.
 
-#include "services/greader/greadernetwork.h"
+#include "src/greadernetwork.h"
 
-#include "3rd-party/boolinq/boolinq.h"
-#include "database/databasequeries.h"
-#include "exceptions/applicationexception.h"
-#include "exceptions/feedfetchexception.h"
-#include "exceptions/networkexception.h"
-#include "miscellaneous/application.h"
-#include "miscellaneous/settings.h"
-#include "network-web/networkfactory.h"
-#include "network-web/oauth2service.h"
-#include "network-web/webfactory.h"
-#include "services/abstract/category.h"
-#include "services/abstract/label.h"
-#include "services/abstract/labelsnode.h"
-#include "services/greader/definitions.h"
-#include "services/greader/greaderfeed.h"
+#include "src/definitions.h"
+#include "src/greaderfeed.h"
+
+#include <librssguard/3rd-party/boolinq/boolinq.h>
+#include <librssguard/database/databasequeries.h>
+#include <librssguard/exceptions/applicationexception.h>
+#include <librssguard/exceptions/feedfetchexception.h>
+#include <librssguard/exceptions/networkexception.h>
+#include <librssguard/miscellaneous/application.h>
+#include <librssguard/miscellaneous/settings.h>
+#include <librssguard/network-web/networkfactory.h>
+#include <librssguard/network-web/oauth2service.h>
+#include <librssguard/network-web/webfactory.h>
+#include <librssguard/services/abstract/labelsnode.h>
 
 #include <QJsonArray>
 #include <QJsonDocument>

@@ -45,6 +45,7 @@ QList<ServiceEntryPoint*> PluginFactory::loadPlugins() const {
       else {
         qDebugNN << LOGSEC_CORE << "Plugin" << QUOTE_W_SPACE(plugin_file.absoluteFilePath()) << "loaded.";
 
+        plugin_instance->setIsDynamicallyLoaded(true);
         plugins.append(plugin_instance);
       }
     }

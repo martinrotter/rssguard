@@ -1,14 +1,15 @@
 // For license of this file, see <project-root-folder>/LICENSE.md.
 
-#include "services/greader/greaderfeed.h"
+#include "src/greaderfeed.h"
 
-#include "database/databasequeries.h"
-#include "definitions/definitions.h"
-#include "miscellaneous/application.h"
-#include "miscellaneous/iconfactory.h"
-#include "services/greader/definitions.h"
-#include "services/greader/greadernetwork.h"
-#include "services/greader/greaderserviceroot.h"
+#include "src/definitions.h"
+#include "src/greadernetwork.h"
+#include "src/greaderserviceroot.h"
+
+#include <librssguard/database/databasequeries.h>
+#include <librssguard/definitions/definitions.h>
+#include <librssguard/miscellaneous/application.h>
+#include <librssguard/miscellaneous/iconfactory.h>
 
 #include <QPointer>
 

@@ -5,7 +5,7 @@
 
 #include <QTreeView>
 
-class BaseTreeView : public QTreeView {
+class RSSGUARD_DLLSPEC BaseTreeView : public QTreeView {
     Q_OBJECT
 
   public:
