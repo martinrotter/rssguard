@@ -324,54 +324,6 @@ set(SOURCES
   services/abstract/serviceroot.h
   services/abstract/unreadnode.cpp
   services/abstract/unreadnode.h
-  services/owncloud/definitions.h
-  services/owncloud/gui/formeditowncloudaccount.cpp
-  services/owncloud/gui/formeditowncloudaccount.h
-  services/owncloud/gui/owncloudaccountdetails.cpp
-  services/owncloud/gui/owncloudaccountdetails.h
-  services/owncloud/owncloudfeed.cpp
-  services/owncloud/owncloudfeed.h
-  services/owncloud/owncloudnetworkfactory.cpp
-  services/owncloud/owncloudnetworkfactory.h
-  services/owncloud/owncloudserviceentrypoint.cpp
-  services/owncloud/owncloudserviceentrypoint.h
-  services/owncloud/owncloudserviceroot.cpp
-  services/owncloud/owncloudserviceroot.h
-  services/reddit/definitions.h
-  services/reddit/gui/formeditredditaccount.cpp
-  services/reddit/gui/formeditredditaccount.h
-  services/reddit/gui/redditaccountdetails.cpp
-  services/reddit/gui/redditaccountdetails.h
-  services/reddit/redditcategory.cpp
-  services/reddit/redditcategory.h
-  services/reddit/redditentrypoint.cpp
-  services/reddit/redditentrypoint.h
-  services/reddit/redditnetworkfactory.cpp
-  services/reddit/redditnetworkfactory.h
-  services/reddit/redditserviceroot.cpp
-  services/reddit/redditserviceroot.h
-  services/reddit/redditsubscription.cpp
-  services/reddit/redditsubscription.h
-  services/tt-rss/definitions.h
-  services/tt-rss/gui/formeditttrssaccount.cpp
-  services/tt-rss/gui/formeditttrssaccount.h
-  services/tt-rss/gui/formttrssfeeddetails.cpp
-  services/tt-rss/gui/formttrssfeeddetails.h
-  services/tt-rss/gui/formttrssnote.cpp
-  services/tt-rss/gui/formttrssnote.h
-  services/tt-rss/gui/ttrssaccountdetails.cpp
-  services/tt-rss/gui/ttrssaccountdetails.h
-  services/tt-rss/gui/ttrssfeeddetails.cpp
-  services/tt-rss/gui/ttrssfeeddetails.h
-  services/tt-rss/ttrssfeed.cpp
-  services/tt-rss/ttrssfeed.h
-  services/tt-rss/ttrssnetworkfactory.cpp
-  services/tt-rss/ttrssnetworkfactory.h
-  services/tt-rss/ttrssnotetopublish.h
-  services/tt-rss/ttrssserviceentrypoint.cpp
-  services/tt-rss/ttrssserviceentrypoint.h
-  services/tt-rss/ttrssserviceroot.cpp
-  services/tt-rss/ttrssserviceroot.h
 )
 
 set(UI_FILES
@@ -415,11 +367,6 @@ set(UI_FILES
   services/abstract/gui/formaddeditprobe.ui
   services/abstract/gui/formcategorydetails.ui
   services/abstract/gui/formfeeddetails.ui
-  services/owncloud/gui/owncloudaccountdetails.ui
-  services/reddit/gui/redditaccountdetails.ui
-  services/tt-rss/gui/formttrssnote.ui
-  services/tt-rss/gui/ttrssaccountdetails.ui
-  services/tt-rss/gui/ttrssfeeddetails.ui
 )
 
 if(ENABLE_MEDIAPLAYER) 
