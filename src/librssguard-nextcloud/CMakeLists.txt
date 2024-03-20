@@ -37,7 +37,6 @@ add_library(rssguard-nextcloud SHARED ${SOURCES} ${QM_FILES})
 target_compile_definitions(rssguard-nextcloud
   PRIVATE
   RSSGUARD_DLLSPEC=Q_DECL_IMPORT
-  RSSGUARD_DLLSPEC_EXPORT=Q_DECL_EXPORT
 )
 
 target_include_directories(rssguard-nextcloud
