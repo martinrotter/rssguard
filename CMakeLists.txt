@@ -327,6 +327,8 @@ add_subdirectory(src/librssguard-standard)
 add_subdirectory(src/librssguard-feedly)
 add_subdirectory(src/librssguard-gmail)
 add_subdirectory(src/librssguard-greader)
+add_subdirectory(src/librssguard-ttrss)
+add_subdirectory(src/librssguard-nextcloud)
 
 # GUI executable.
 add_subdirectory(src/rssguard)

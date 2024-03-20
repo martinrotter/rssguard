@@ -15,10 +15,8 @@
 #include "miscellaneous/pluginfactory.h"
 #include "miscellaneous/settings.h"
 #include "services/abstract/cacheforserviceroot.h"
+#include "services/abstract/serviceentrypoint.h"
 #include "services/abstract/serviceroot.h"
-#include "services/owncloud/owncloudserviceentrypoint.h"
-#include "services/reddit/redditentrypoint.h"
-#include "services/tt-rss/ttrssserviceentrypoint.h"
 
 #include <QThread>
 #include <QTimer>
@@ -66,14 +64,6 @@ FeedReader::~FeedReader() {
 
 QList<ServiceEntryPoint*> FeedReader::feedServices() {
   if (m_feedServices.isEmpty()) {
-    m_feedServices.append(new OwnCloudServiceEntryPoint());
-
-#if !defined(NDEBUG)
-    m_feedServices.append(new RedditEntryPoint());
-#endif
-
-    m_feedServices.append(new TtRssServiceEntryPoint());
-
     PluginFactory plugin_loader;
 
     // Add dynamically loaded plugins.
