@@ -23,6 +23,9 @@ set(UI_FILES
 # Deal with .ui files.
 qt_wrap_ui(SOURCES ${UI_FILES})
 
+set(FEEDLY_CLIENT_ID "" CACHE STRING "Feedly client ID")
+set(FEEDLY_CLIENT_SECRET "" CACHE STRING "Feedly client secret")
+
 # Bundle version info.
 if(WIN32)
   enable_language("RC")
@@ -37,6 +40,20 @@ target_compile_definitions(rssguard-feedly
   RSSGUARD_DLLSPEC=Q_DECL_IMPORT
   RSSGUARD_DLLSPEC_EXPORT=Q_DECL_EXPORT
 )
+
+if(NOT FEEDLY_CLIENT_ID STREQUAL "" AND NOT FEEDLY_CLIENT_SECRET STREQUAL "")
+  target_compile_definitions(rssguard-feedly
+    PRIVATE
+
+    FEEDLY_OFFICIAL_SUPPORT
+    FEEDLY_CLIENT_ID="${FEEDLY_CLIENT_ID}"
+    FEEDLY_CLIENT_SECRET="${FEEDLY_CLIENT_SECRET}"
+  )
+
+  message(STATUS "Enabling official Feedly support.")
+else()
+  message(STATUS "Feedly client ID/secret variables are not set. Disabling official support.")
+endif()
 
 target_include_directories(rssguard-feedly
   PUBLIC

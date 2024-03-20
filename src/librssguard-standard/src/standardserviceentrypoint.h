@@ -5,7 +5,7 @@
 
 #include <librssguard/services/abstract/serviceentrypoint.h>
 
-class RSSGUARD_DLLSPEC_EXPORT StandardServiceEntryPoint : public QObject, public ServiceEntryPoint {
+class StandardServiceEntryPoint : public QObject, public ServiceEntryPoint {
     Q_OBJECT
     Q_PLUGIN_METADATA(IID "io.github.martinrotter.rssguard.standard" FILE "plugin.json")
     Q_INTERFACES(ServiceEntryPoint)
