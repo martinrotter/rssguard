@@ -1,6 +1,5 @@
-if(NOT DEFINED LIBRSSGUARD_BINARY_PATH)
-  set(LIBRSSGUARD_SOURCE_PATH "${CMAKE_CURRENT_SOURCE_DIR}/..")
-endif()
+include(../cmake_plugins.cmake)
+set(PLUGIN_TARGET "rssguard-standard")
 
 set(SOURCES
   src/definitions.h
@@ -73,63 +72,33 @@ if(WIN32)
   list(APPEND SOURCES "${CMAKE_BINARY_DIR}/rssguard.rc")
 endif()
 
-add_library(rssguard-standard SHARED ${SOURCES} ${QM_FILES})
-
-# Add specific definitions.
-target_compile_definitions(rssguard-standard
-  PRIVATE
-  RSSGUARD_DLLSPEC=Q_DECL_IMPORT
-)
-
-target_include_directories(rssguard-standard
-  PUBLIC
-  ${LIBRSSGUARD_SOURCE_PATH}
-)
+add_library(${PLUGIN_TARGET} SHARED ${SOURCES} ${QM_FILES})
 
 # Qt.
-target_link_libraries(rssguard-standard PUBLIC
+target_link_libraries(${PLUGIN_TARGET} PUBLIC
   rssguard
-  Qt${QT_VERSION_MAJOR}::Core
-  Qt${QT_VERSION_MAJOR}::Gui
-  Qt${QT_VERSION_MAJOR}::Network
-  Qt${QT_VERSION_MAJOR}::Qml
-  Qt${QT_VERSION_MAJOR}::Sql
-  Qt${QT_VERSION_MAJOR}::Widgets
-  Qt${QT_VERSION_MAJOR}::Xml
-  Qt${QT_VERSION_MAJOR}::Concurrent
 )
 
 if(QT_VERSION_MAJOR EQUAL 6)
-  target_link_libraries(rssguard-standard PUBLIC
+  target_link_libraries(${PLUGIN_TARGET} PUBLIC
     Qt${QT_VERSION_MAJOR}::Core5Compat
   )
 endif()
 
 if(ZLIB_FOUND)
-  target_include_directories(rssguard-standard AFTER
+  target_include_directories(${PLUGIN_TARGET} AFTER
     PRIVATE
     ${ZLIB_INCLUDE_DIRS}
   )
 
-  target_compile_definitions(rssguard-standard
+  target_compile_definitions(${PLUGIN_TARGET}
     PRIVATE
     ENABLE_COMPRESSED_SITEMAP
   )
 
-  target_link_libraries(rssguard-standard PRIVATE
+  target_link_libraries(${PLUGIN_TARGET} PRIVATE
     ${ZLIB_LIBRARIES}
   )
 endif(ZLIB_FOUND)
 
-if(WIN32 OR OS2)
-  install(TARGETS rssguard-standard DESTINATION plugins)
-elseif(UNIX AND NOT APPLE AND NOT ANDROID)
-  include (GNUInstallDirs)
-  install(TARGETS rssguard-standard
-    DESTINATION ${CMAKE_INSTALL_LIBDIR}/rssguard
-  )
-elseif(APPLE)
-  install(TARGETS rssguard-standard
-    DESTINATION Contents/MacOS
-  )
-endif()
+prepare_rssguard_plugin(${PLUGIN_TARGET})
