@@ -42,6 +42,9 @@ set(UI_FILES
 # Deal with .ui files.
 qt_wrap_ui(SOURCES ${UI_FILES})
 
+set(GMAIL_CLIENT_ID "" CACHE STRING "GMail client ID")
+set(GMAIL_CLIENT_SECRET "" CACHE STRING "GMail client secret")
+
 # Bundle version info.
 if(WIN32)
   enable_language("RC")
@@ -56,6 +59,20 @@ target_compile_definitions(rssguard-gmail
   RSSGUARD_DLLSPEC=Q_DECL_IMPORT
   RSSGUARD_DLLSPEC_EXPORT=Q_DECL_EXPORT
 )
+
+if(NOT GMAIL_CLIENT_ID STREQUAL "" AND NOT GMAIL_CLIENT_SECRET STREQUAL "")
+  target_compile_definitions(rssguard-gmail
+    PRIVATE
+
+    GMAIL_OFFICIAL_SUPPORT
+    GMAIL_CLIENT_ID="${GMAIL_CLIENT_ID}"
+    GMAIL_CLIENT_SECRET="${GMAIL_CLIENT_SECRET}"
+  )
+
+  message(STATUS "Enabling official Gmail support.")
+else()
+  message(STATUS "Gmail client ID/secret variables are not set. Disabling official support.")
+endif()
 
 target_include_directories(rssguard-gmail
   PUBLIC

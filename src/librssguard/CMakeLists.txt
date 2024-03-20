@@ -480,16 +480,6 @@ qt_wrap_ui(SOURCES ${UI_FILES})
 qt_add_resources(SOURCES ${CMAKE_SOURCE_DIR}/resources/sql.qrc)
 qt_add_resources(SOURCES ${CMAKE_SOURCE_DIR}/resources/rssguard.qrc)
 
-# Process OAuth service secrets.
-set(FEEDLY_CLIENT_ID "" CACHE STRING "Feedly client ID")
-set(FEEDLY_CLIENT_SECRET "" CACHE STRING "Feedly client secret")
-
-set(GMAIL_CLIENT_ID "" CACHE STRING "GMail client ID")
-set(GMAIL_CLIENT_SECRET "" CACHE STRING "GMail client secret")
-
-set(INOREADER_CLIENT_ID "" CACHE STRING "Inoreader client ID")
-set(INOREADER_CLIENT_SECRET "" CACHE STRING "Inoreader client secret")
-
 if(APPLE OR WIN32 OR OS2 OR FORCE_BUNDLE_ICONS)
   qt_add_resources(SOURCES ${CMAKE_SOURCE_DIR}/resources/icons.qrc)
 endif()
@@ -511,49 +501,6 @@ if(FORCE_BUNDLE_ICONS)
   )
 
   message(STATUS "Forcibly bundling icon themes.")
-endif()
-
-# Add OAuth services definitions.
-if(NOT FEEDLY_CLIENT_ID STREQUAL "" AND NOT FEEDLY_CLIENT_SECRET STREQUAL "")
-  target_compile_definitions(rssguard
-    PRIVATE
-
-    FEEDLY_OFFICIAL_SUPPORT
-    FEEDLY_CLIENT_ID="${FEEDLY_CLIENT_ID}"
-    FEEDLY_CLIENT_SECRET="${FEEDLY_CLIENT_SECRET}"
-  )
-
-  message(STATUS "Enabling official Feedly support.")
-else()
-  message(STATUS "Feedly client ID/secret variables are not set. Disabling official support.")
-endif()
-
-if(NOT GMAIL_CLIENT_ID STREQUAL "" AND NOT GMAIL_CLIENT_SECRET STREQUAL "")
-  target_compile_definitions(rssguard
-    PRIVATE
-
-    GMAIL_OFFICIAL_SUPPORT
-    GMAIL_CLIENT_ID="${GMAIL_CLIENT_ID}"
-    GMAIL_CLIENT_SECRET="${GMAIL_CLIENT_SECRET}"
-  )
-
-  message(STATUS "Enabling official Gmail support.")
-else()
-  message(STATUS "Gmail client ID/secret variables are not set. Disabling official support.")
-endif()
-
-if(NOT INOREADER_CLIENT_ID STREQUAL "" AND NOT INOREADER_CLIENT_SECRET STREQUAL "")
-  target_compile_definitions(rssguard
-    PRIVATE
-
-    INOREADER_OFFICIAL_SUPPORT
-    INOREADER_CLIENT_ID="${INOREADER_CLIENT_ID}"
-    INOREADER_CLIENT_SECRET="${INOREADER_CLIENT_SECRET}"
-  )
-
-  message(STATUS "Enabling official Inoreader support.")
-else()
-  message(STATUS "Inoreader client ID/secret variables are not set. Disabling official support.")
 endif()
 
 # Add specific definitions.
