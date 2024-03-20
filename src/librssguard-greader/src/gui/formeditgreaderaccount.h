@@ -3,7 +3,7 @@
 #ifndef FORMEDITGREADERACCOUNT_H
 #define FORMEDITGREADERACCOUNT_H
 
-#include "services/abstract/gui/formaccountdetails.h"
+#include <librssguard/services/abstract/gui/formaccountdetails.h>
 
 class GreaderAccountDetails;
 class GreaderServiceRoot;

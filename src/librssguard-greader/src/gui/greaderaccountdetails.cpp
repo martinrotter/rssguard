@@ -1,15 +1,16 @@
 // For license of this file, see <project-root-folder>/LICENSE.md.
 
-#include "services/greader/gui/greaderaccountdetails.h"
+#include "src/gui/greaderaccountdetails.h"
 
-#include "definitions/definitions.h"
-#include "exceptions/applicationexception.h"
-#include "miscellaneous/application.h"
-#include "miscellaneous/iconfactory.h"
-#include "network-web/oauth2service.h"
-#include "network-web/webfactory.h"
-#include "services/greader/definitions.h"
-#include "services/greader/greadernetwork.h"
+#include "src/definitions.h"
+#include "src/greadernetwork.h"
+
+#include <librssguard/definitions/definitions.h>
+#include <librssguard/exceptions/applicationexception.h>
+#include <librssguard/miscellaneous/application.h>
+#include <librssguard/miscellaneous/iconfactory.h>
+#include <librssguard/network-web/oauth2service.h>
+#include <librssguard/network-web/webfactory.h>
 
 #include <QMetaEnum>
 #include <QVariantHash>

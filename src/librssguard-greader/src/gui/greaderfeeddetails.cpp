@@ -1,9 +1,11 @@
 // For license of this file, see <project-root-folder>/LICENSE.md.
 
-#include "services/greader/gui/greaderfeeddetails.h"
+#include "src/gui/greaderfeeddetails.h"
 
-#include "definitions/definitions.h"
-#include "services/abstract/category.h"
+#include <librssguard/definitions/definitions.h>
+#include <librssguard/services/abstract/category.h>
+#include <librssguard/services/abstract/labelsnode.h>
+#include <librssguard/services/abstract/rootitem.h>
 
 GreaderFeedDetails::GreaderFeedDetails(QWidget* parent) : QWidget(parent) {
   ui.setupUi(this);

@@ -3,7 +3,7 @@
 #ifndef GREADERFEED_H
 #define GREADERFEED_H
 
-#include "services/abstract/feed.h"
+#include <librssguard/services/abstract/feed.h>
 
 class GreaderServiceRoot;
 

@@ -5,7 +5,7 @@
 
 #include <QLineEdit>
 
-class BaseLineEdit : public QLineEdit {
+class RSSGUARD_DLLSPEC BaseLineEdit : public QLineEdit {
     Q_OBJECT
 
   public:

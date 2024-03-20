@@ -3,7 +3,7 @@
 #ifndef GREADERACCOUNTDETAILS_H
 #define GREADERACCOUNTDETAILS_H
 
-#include "services/greader/greaderserviceroot.h"
+#include "src/greaderserviceroot.h"
 
 #include "ui_greaderaccountdetails.h"
 

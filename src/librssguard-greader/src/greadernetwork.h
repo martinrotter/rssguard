@@ -3,9 +3,9 @@
 #ifndef GREADERNETWORK_H
 #define GREADERNETWORK_H
 
-#include "network-web/networkfactory.h"
-#include "services/abstract/feed.h"
-#include "services/greader/greaderserviceroot.h"
+#include "src/greaderserviceroot.h"
+
+#include <librssguard/network-web/networkfactory.h>
 
 #include <QObject>
 

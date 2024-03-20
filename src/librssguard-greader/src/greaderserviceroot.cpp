@@ -1,21 +1,22 @@
 // For license of this file, see <project-root-folder>/LICENSE.md.
 
-#include "services/greader/greaderserviceroot.h"
+#include "src/greaderserviceroot.h"
 
-#include "database/databasequeries.h"
-#include "definitions/definitions.h"
-#include "gui/messagebox.h"
-#include "miscellaneous/application.h"
-#include "miscellaneous/iconfactory.h"
-#include "miscellaneous/mutex.h"
-#include "miscellaneous/textfactory.h"
-#include "network-web/oauth2service.h"
-#include "services/greader/definitions.h"
-#include "services/greader/greaderentrypoint.h"
-#include "services/greader/greaderfeed.h"
-#include "services/greader/greadernetwork.h"
-#include "services/greader/gui/formeditgreaderaccount.h"
-#include "services/greader/gui/formgreaderfeeddetails.h"
+#include "src/definitions.h"
+#include "src/greaderentrypoint.h"
+#include "src/greaderfeed.h"
+#include "src/greadernetwork.h"
+#include "src/gui/formeditgreaderaccount.h"
+#include "src/gui/formgreaderfeeddetails.h"
+
+#include <librssguard/database/databasequeries.h>
+#include <librssguard/definitions/definitions.h>
+#include <librssguard/gui/messagebox.h>
+#include <librssguard/miscellaneous/application.h>
+#include <librssguard/miscellaneous/iconfactory.h>
+#include <librssguard/miscellaneous/mutex.h>
+#include <librssguard/miscellaneous/textfactory.h>
+#include <librssguard/network-web/oauth2service.h>
 
 #include <QFileDialog>
 

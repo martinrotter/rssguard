@@ -44,11 +44,19 @@ class RSSGUARD_DLLSPEC ServiceEntryPoint {
     // Icon of the service.
     virtual QIcon icon() const = 0;
 
-    virtual bool isDynamicallyLoaded() const;
+    bool isDynamicallyLoaded() const;
+    void setIsDynamicallyLoaded(bool dynamic);
+
+  private:
+    bool m_isDynamicallyLoaded = false;
 };
 
 inline bool ServiceEntryPoint::isDynamicallyLoaded() const {
-  return false;
+  return m_isDynamicallyLoaded;
+}
+
+inline void ServiceEntryPoint::setIsDynamicallyLoaded(bool dynamic) {
+  m_isDynamicallyLoaded = dynamic;
 }
 
 Q_DECLARE_INTERFACE(ServiceEntryPoint, "io.github.martinrotter.rssguard.serviceentrypoint")

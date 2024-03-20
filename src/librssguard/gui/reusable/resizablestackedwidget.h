@@ -5,7 +5,7 @@
 
 #include <QStackedWidget>
 
-class ResizableStackedWidget : public QStackedWidget {
+class RSSGUARD_DLLSPEC ResizableStackedWidget : public QStackedWidget {
   public:
     explicit ResizableStackedWidget(QWidget* parent = nullptr);
 

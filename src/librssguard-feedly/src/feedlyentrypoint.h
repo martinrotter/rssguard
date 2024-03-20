@@ -21,7 +21,6 @@ class FeedlyEntryPoint : public QObject, public ServiceEntryPoint {
     virtual QString description() const;
     virtual QString author() const;
     virtual QIcon icon() const;
-    virtual bool isDynamicallyLoaded() const;
 };
 
 #endif // FEEDLYENTRYPOINT_H

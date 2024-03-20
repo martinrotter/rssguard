@@ -3,7 +3,7 @@
 #ifndef FORMGREADERFEEDDETAILS_H
 #define FORMGREADERFEEDDETAILS_H
 
-#include "services/abstract/gui/formfeeddetails.h"
+#include <librssguard/services/abstract/gui/formfeeddetails.h>
 
 class GreaderFeed;
 class GreaderFeedDetails;
