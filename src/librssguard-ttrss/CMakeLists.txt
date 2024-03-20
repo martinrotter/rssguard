@@ -46,7 +46,6 @@ add_library(rssguard-ttrss SHARED ${SOURCES} ${QM_FILES})
 target_compile_definitions(rssguard-ttrss
   PRIVATE
   RSSGUARD_DLLSPEC=Q_DECL_IMPORT
-  RSSGUARD_DLLSPEC_EXPORT=Q_DECL_EXPORT
 )
 
 target_include_directories(rssguard-ttrss
