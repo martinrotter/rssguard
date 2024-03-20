@@ -67,7 +67,7 @@ QStringList PluginFactory::pluginPaths() const {
   paths << QCoreApplication::applicationDirPath();
 #endif
 
-#if defined(NDEBUG)
+#if !defined(NDEBUG)
   paths << QCoreApplication::applicationDirPath() + QDir::separator() + QL1S("..") + QDir::separator();
 #endif
 
