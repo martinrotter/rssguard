@@ -26,19 +26,10 @@ set(UI_FILES
   src/gui/greaderfeeddetails.ui
 )
 
-# Deal with .ui files.
-qt_wrap_ui(SOURCES ${UI_FILES})
-
 set(INOREADER_CLIENT_ID "" CACHE STRING "Inoreader client ID")
 set(INOREADER_CLIENT_SECRET "" CACHE STRING "Inoreader client secret")
 
-# Bundle version info.
-if(WIN32)
-  enable_language("RC")
-  list(APPEND SOURCES "${CMAKE_BINARY_DIR}/rssguard.rc")
-endif()
-
-add_library(${PLUGIN_TARGET} SHARED ${SOURCES} ${QM_FILES})
+prepare_rssguard_plugin(${PLUGIN_TARGET})
 
 if(NOT INOREADER_CLIENT_ID STREQUAL "" AND NOT INOREADER_CLIENT_SECRET STREQUAL "")
   target_compile_definitions(rssguard
@@ -53,9 +44,3 @@ if(NOT INOREADER_CLIENT_ID STREQUAL "" AND NOT INOREADER_CLIENT_SECRET STREQUAL 
 else()
   message(STATUS "Inoreader client ID/secret variables are not set. Disabling official support.")
 endif()
-
-target_link_libraries(rssguard-greader PUBLIC
-  rssguard
-)
-
-prepare_rssguard_plugin(${PLUGIN_TARGET})
