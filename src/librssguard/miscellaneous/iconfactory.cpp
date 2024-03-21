@@ -91,6 +91,10 @@ void IconFactory::setCurrentIconTheme(const QString& theme_name) {
   qApp->settings()->setValue(GROUP(GUI), GUI::IconTheme, theme_name);
 }
 
+QString IconFactory::currentIconTheme() const {
+  return qApp->settings()->value(GROUP(GUI), SETTING(GUI::IconTheme)).toString();
+}
+
 void IconFactory::loadCurrentIconTheme() {
   const QStringList installed_themes = installedIconThemes();
   const QString theme_name_from_settings = qApp->settings()->value(GROUP(GUI), SETTING(GUI::IconTheme)).toString();

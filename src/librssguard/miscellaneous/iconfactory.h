@@ -52,8 +52,4 @@ class RSSGUARD_DLLSPEC IconFactory : public QObject {
     void setCurrentIconTheme(const QString& theme_name);
 };
 
-inline QString IconFactory::currentIconTheme() const {
-  return QIcon::themeName();
-}
-
 #endif // ICONFACTORY_H
