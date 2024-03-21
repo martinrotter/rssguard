@@ -141,7 +141,7 @@ void SkinFactory::loadSkinFromData(const Skin& skin) {
   }
 
   if (skin.m_defaultFont != QApplication::font()) {
-    QApplication::setFont(skin.m_defaultFont);
+    QGuiApplication::setFont(skin.m_defaultFont);
     qDebugNN << "Activating custom application default font" << QUOTE_W_SPACE_DOT(skin.m_defaultFont.toString());
   }
 
@@ -176,8 +176,8 @@ void SkinFactory::loadSkinFromData(const Skin& skin) {
   m_useSkinColors =
     skin.m_forcedSkinColors || qApp->settings()->value(GROUP(GUI), SETTING(GUI::ForcedSkinColors)).toBool();
 
-  if (isStyleGoodForAlternativeStylePalette(m_currentStyle)) {
-    if (!skin.m_stylePalette.isEmpty() && m_useSkinColors) {
+  if (m_useSkinColors && isStyleGoodForAlternativeStylePalette(m_currentStyle)) {
+    if (!skin.m_stylePalette.isEmpty()) {
       qDebugNN << LOGSEC_GUI << "Activating alternative palette.";
 
       QPalette pal = skin.extractPalette();
@@ -195,8 +195,8 @@ void SkinFactory::loadSkinFromData(const Skin& skin) {
 #endif
   }
 
-  if (!skin.m_rawData.isEmpty()) {
-    if (qApp->styleSheet().simplified().isEmpty() && m_useSkinColors) {
+  if (m_useSkinColors && !skin.m_rawData.isEmpty()) {
+    if (qApp->styleSheet().simplified().isEmpty()) {
       qApp->setStyleSheet(skin.m_rawData);
     }
     else {
