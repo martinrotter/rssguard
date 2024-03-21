@@ -21,19 +21,4 @@ set(UI_FILES
   src/gui/nextcloudaccountdetails.ui
 )
 
-# Deal with .ui files.
-qt_wrap_ui(SOURCES ${UI_FILES})
-
-# Bundle version info.
-if(WIN32)
-  enable_language("RC")
-  list(APPEND SOURCES "${CMAKE_BINARY_DIR}/rssguard.rc")
-endif()
-
-add_library(${PLUGIN_TARGET} SHARED ${SOURCES} ${QM_FILES})
-
-target_link_libraries(${PLUGIN_TARGET} PUBLIC
-  rssguard
-)
-
 prepare_rssguard_plugin(${PLUGIN_TARGET})

@@ -19,17 +19,10 @@ set(UI_FILES
   src/gui/feedlyaccountdetails.ui
 )
 
-qt_wrap_ui(SOURCES ${UI_FILES})
-
 set(FEEDLY_CLIENT_ID "" CACHE STRING "Feedly client ID")
 set(FEEDLY_CLIENT_SECRET "" CACHE STRING "Feedly client secret")
 
-if(WIN32)
-  enable_language("RC")
-  list(APPEND SOURCES "${CMAKE_BINARY_DIR}/rssguard.rc")
-endif()
-
-add_library(${PLUGIN_TARGET} SHARED ${SOURCES} ${QM_FILES})
+prepare_rssguard_plugin(${PLUGIN_TARGET})
 
 if(NOT FEEDLY_CLIENT_ID STREQUAL "" AND NOT FEEDLY_CLIENT_SECRET STREQUAL "")
   target_compile_definitions(${PLUGIN_TARGET}
@@ -44,10 +37,3 @@ if(NOT FEEDLY_CLIENT_ID STREQUAL "" AND NOT FEEDLY_CLIENT_SECRET STREQUAL "")
 else()
   message(STATUS "Feedly client ID/secret variables are not set. Disabling official support.")
 endif()
-
-# Qt.
-target_link_libraries(${PLUGIN_TARGET} PUBLIC
-  rssguard
-)
-
-prepare_rssguard_plugin(${PLUGIN_TARGET})

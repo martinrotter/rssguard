@@ -63,21 +63,7 @@ if(ZLIB_FOUND)
   message(STATUS "Using system zlib ${ZLIB_VERSION_STRING}.")
 endif(ZLIB_FOUND)
 
-# Deal with .ui files.
-qt_wrap_ui(SOURCES ${UI_FILES})
-
-# Bundle version info.
-if(WIN32)
-  enable_language("RC")
-  list(APPEND SOURCES "${CMAKE_BINARY_DIR}/rssguard.rc")
-endif()
-
-add_library(${PLUGIN_TARGET} SHARED ${SOURCES} ${QM_FILES})
-
-# Qt.
-target_link_libraries(${PLUGIN_TARGET} PUBLIC
-  rssguard
-)
+prepare_rssguard_plugin(${PLUGIN_TARGET})
 
 if(QT_VERSION_MAJOR EQUAL 6)
   target_link_libraries(${PLUGIN_TARGET} PUBLIC
@@ -100,5 +86,3 @@ if(ZLIB_FOUND)
     ${ZLIB_LIBRARIES}
   )
 endif(ZLIB_FOUND)
-
-prepare_rssguard_plugin(${PLUGIN_TARGET})

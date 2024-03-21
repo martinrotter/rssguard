@@ -1,7 +1,22 @@
 function(prepare_rssguard_plugin plugin_target_name)
+  message(STATUS "Preparing plugin ${plugin_target_name}.")
+
   if(NOT DEFINED LIBRSSGUARD_SOURCE_PATH)
     set(LIBRSSGUARD_SOURCE_PATH "${CMAKE_CURRENT_SOURCE_DIR}/..")
   endif()
+
+  qt_wrap_ui(SOURCES ${UI_FILES})
+
+  if(WIN32)
+    enable_language("RC")
+    list(APPEND SOURCES "${CMAKE_BINARY_DIR}/rssguard.rc")
+  endif()
+
+  add_library(${PLUGIN_TARGET} SHARED ${SOURCES} ${QM_FILES})
+
+  target_link_libraries(${plugin_target_name} PUBLIC
+    rssguard
+  )
 
   target_compile_definitions(${plugin_target_name}
     PRIVATE
@@ -25,4 +40,6 @@ function(prepare_rssguard_plugin plugin_target_name)
       DESTINATION Contents/MacOS
     )
   endif()
+
+  message(STATUS "Plugin ${plugin_target_name} is prepared.")
 endfunction()

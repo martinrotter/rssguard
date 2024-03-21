@@ -38,19 +38,10 @@ set(UI_FILES
   src/3rd-party/richtexteditor/mrichtextedit.ui
 )
 
-# Deal with .ui files.
-qt_wrap_ui(SOURCES ${UI_FILES})
-
 set(GMAIL_CLIENT_ID "" CACHE STRING "GMail client ID")
 set(GMAIL_CLIENT_SECRET "" CACHE STRING "GMail client secret")
 
-# Bundle version info.
-if(WIN32)
-  enable_language("RC")
-  list(APPEND SOURCES "${CMAKE_BINARY_DIR}/rssguard.rc")
-endif()
-
-add_library(${PLUGIN_TARGET} SHARED ${SOURCES} ${QM_FILES})
+prepare_rssguard_plugin(${PLUGIN_TARGET})
 
 if(NOT GMAIL_CLIENT_ID STREQUAL "" AND NOT GMAIL_CLIENT_SECRET STREQUAL "")
   target_compile_definitions(rssguard-gmail
@@ -70,9 +61,3 @@ target_include_directories(rssguard-gmail
   PUBLIC
   src/3rd-party/richtexteditor
 )
-
-target_link_libraries(rssguard-gmail PUBLIC
-  rssguard
-)
-
-prepare_rssguard_plugin(${PLUGIN_TARGET})
