@@ -42,7 +42,7 @@
 #
 # Other information:
 #   - supports Windows, Linux, *BSD, macOS, OS/2, Android,
-#   - Qt 5.12.0 or newer is required,
+#   - Qt 5.14.0 or newer is required,
 #   - Qt 6.3.0 or newer is required,
 #   - cmake 3.14.0 or newer is required,
 #   - if you wish to make packages for Windows, then you must initialize all submodules
@@ -133,7 +133,7 @@ option(MEDIAPLAYER_FORCE_OPENGL "Use opengl-based render API with libmpv." ON)
 
 # Import Qt libraries.
 set(QT6_MIN_VERSION 6.3.0)
-set(QT5_MIN_VERSION 5.12.0)
+set(QT5_MIN_VERSION 5.14.0)
 
 set(QT_COMPONENTS
   Core

@@ -11,6 +11,7 @@
 #include "miscellaneous/textfactory.h"
 #include "network-web/webfactory.h"
 
+#include <QClipboard>
 #include <QFile>
 #include <QJsonArray>
 #include <QJsonObject>
@@ -24,9 +25,13 @@
 FormAbout::FormAbout(bool go_to_changelog, QWidget* parent) : QDialog(parent) {
   m_ui.setupUi(this);
   m_ui.m_lblIcon->setPixmap(QPixmap(APP_ICON_PATH));
+  m_ui.m_btnCopyInfo->setIcon(qApp->icons()->fromTheme(QSL("edit-copy")));
   GuiUtilities::applyDialogProperties(*this,
                                       qApp->icons()->fromTheme(QSL("help-about")),
                                       tr("About %1").arg(QSL(APP_NAME)));
+
+  connect(m_ui.m_btnCopyInfo, &QPushButton::clicked, this, &FormAbout::copyInfoToClipboard);
+
   loadLicenseAndInformation();
   loadSettingsAndPaths();
 
@@ -36,6 +41,21 @@ FormAbout::FormAbout(bool go_to_changelog, QWidget* parent) : QDialog(parent) {
 }
 
 FormAbout::~FormAbout() {}
+
+void FormAbout::copyInfoToClipboard() {
+  auto* clip = QGuiApplication::clipboard();
+
+  if (clip != nullptr) {
+    clip->setText(m_ui.m_lblDesc->text().replace(QSL("<br/>"), QSL("\n")));
+  }
+  else {
+    qApp->showGuiMessage(Notification::Event::GeneralEvent,
+                         GuiMessage(tr("Cannot copy"),
+                                    tr("Cannot copy info to clipboard."),
+                                    QSystemTrayIcon::MessageIcon::Critical),
+                         GuiMessageDestination(true, true));
+  }
+}
 
 void FormAbout::displayLicense() {
   m_ui.m_tbLicenses->setPlainText(m_ui.m_cbLicenses->currentData().toString());
@@ -110,11 +130,13 @@ void FormAbout::loadLicenseAndInformation() {
   }
 
   // Set other informative texts.
-  m_ui.m_lblDesc->setText(tr("<b>%8</b><br>"
-                             "<b>Version:</b> %1 (built on %2/%3)<br>"
-                             "<b>Revision:</b> %4<br>"
-                             "<b>Build date:</b> %5<br>"
-                             "<b>Qt:</b> %6 (compiled against %7)<br>")
+  m_ui.m_lblDesc->setTextFormat(Qt::TextFormat::MarkdownText);
+  m_ui.m_lblDesc->setText(tr("### %8<br/>"
+                             "**Version:** %1 (built on %2/%3)<br/>"
+                             "**Revision:** %4<br/>"
+                             "**Build date:** %5<br/>"
+                             "**OS:** %9<br/>"
+                             "**Qt:** %6 (compiled against %7)")
                             .arg(qApp->applicationVersion(),
                                  QSL(APP_SYSTEM_NAME),
                                  QSL(APP_SYSTEM_VERSION),
@@ -125,7 +147,8 @@ void FormAbout::loadLicenseAndInformation() {
                                              QLocale::FormatType::ShortFormat),
                                  qVersion(),
                                  QSL(QT_VERSION_STR),
-                                 QSL(APP_NAME)));
+                                 QSL(APP_NAME),
+                                 QSysInfo::prettyProductName()));
   m_ui.m_txtInfo->setText(tr("<body>%5 is a (very) tiny feed reader."
                              "<br><br>This software is distributed under the terms of GNU General "
                              "Public License, version 3."

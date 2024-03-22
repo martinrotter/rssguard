@@ -15,6 +15,7 @@ class RSSGUARD_DLLSPEC FormAbout : public QDialog {
     virtual ~FormAbout();
 
   private slots:
+    void copyInfoToClipboard();
     void displayLicense();
 
   private:

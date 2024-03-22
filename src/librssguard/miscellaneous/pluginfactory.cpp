@@ -15,7 +15,7 @@ PluginFactory::PluginFactory() {}
 QList<ServiceEntryPoint*> PluginFactory::loadPlugins() const {
   QList<ServiceEntryPoint*> plugins;
 
-  const QString plugin_name_wildcard = pluginNameWildCard() + pluginNameSuffix();
+  const QString plugin_name_wildcard = pluginNameWildCard();
   const auto plugins_paths = pluginPaths();
   const auto backup_current_dir = QDir::currentPath();
 
@@ -23,7 +23,11 @@ QList<ServiceEntryPoint*> PluginFactory::loadPlugins() const {
     QDirIterator dir_iter(plugin_folder,
                           {plugin_name_wildcard},
                           QDir::Filter::Files,
+#if !defined(NDEBUG)
                           QDirIterator::IteratorFlag::Subdirectories);
+#else
+                          QDirIterator::IteratorFlag::NoIteratorFlags);
+#endif
 
     while (dir_iter.hasNext()) {
       dir_iter.next();
@@ -74,18 +78,6 @@ QStringList PluginFactory::pluginPaths() const {
   return paths;
 }
 
-QString PluginFactory::pluginNameSuffix() const {
-#if defined(Q_OS_LINUX)
-  return QSL(".so");
-#elif defined(Q_OS_WIN)
-  return QSL(".dll");
-#elif defined(Q_OS_MACOS)
-  return QSL(".dylib");
-#else
-  return QSL("");
-#endif
-}
-
 QString PluginFactory::pluginNameWildCard() const {
-  return QSL("*rssguard-*");
+  return QSL("*rssguard-*.*");
 }
