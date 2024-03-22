@@ -1377,12 +1377,12 @@ Identifiant d&apos;élément: %5</translation>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formabout.cpp" line="53"/>
       <source>Cannot copy</source>
-      <translation type="unfinished">Cannot copy</translation>
+      <translation>Impossible de copier</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formabout.cpp" line="54"/>
       <source>Cannot copy info to clipboard.</source>
-      <translation type="unfinished">Cannot copy info to clipboard.</translation>
+      <translation>Impossible de copier les informations dans le presse-papiers.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formabout.cpp" line="68"/>
@@ -1409,7 +1409,7 @@ Dossier du cache Moteur Web QT -&gt; &quot;%7&quot;</translation>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formabout.cpp" line="134"/>
       <source>### %8&lt;br/&gt;**Version:** %1 (built on %2/%3)&lt;br/&gt;**Revision:** %4&lt;br/&gt;**Build date:** %5&lt;br/&gt;**OS:** %9&lt;br/&gt;**Qt:** %6 (compiled against %7)</source>
-      <translation type="unfinished">### %8&lt;br/&gt;**Version:** %1 (built on %2/%3)&lt;br/&gt;**Revision:** %4&lt;br/&gt;**Build date:** %5&lt;br/&gt;**OS:** %9&lt;br/&gt;**Qt:** %6 (compiled against %7)</translation>
+      <translation>### %8&lt;br/&gt;**Version:** %1 (built on %2/%3)&lt;br/&gt;**Revision:** %4&lt;br/&gt;**Build date:** %5&lt;br/&gt;**OS:** %9&lt;br/&gt;**Qt:** %6 (compiled against %7)</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formabout.cpp" line="152"/>
@@ -1429,7 +1429,7 @@ Dossier du cache Moteur Web QT -&gt; &quot;%7&quot;</translation>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formabout.ui" line="93"/>
       <source>&amp;Copy info to clipboard</source>
-      <translation type="unfinished">&amp;Copy info to clipboard</translation>
+      <translation>&amp;Copier les informations dans le presse-papier</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formabout.ui" line="112"/>
@@ -5668,27 +5668,27 @@ supplémentaire</translation>
     <message>
       <location filename="../src/librssguard-nextcloud/src/gui/nextcloudaccountdetails.ui" line="162"/>
       <source>Force execution of server-side feeds update</source>
-      <translation type="unfinished">Force execution of server-side feeds update</translation>
+      <translation>Exécution forcée des mises à jour de flux du côté serveur</translation>
     </message>
     <message>
       <location filename="../src/librssguard-nextcloud/src/gui/nextcloudaccountdetails.cpp" line="16"/>
       <source>Leaving this option on causes that updates of feeds will be probably much slower and may time-out often.</source>
-      <translation type="unfinished">Leaving this option on causes that updates of feeds will be probably much slower and may time-out often.</translation>
+      <translation>Laisser cette option activée fera que les mises à jour des flux seront probablement bien plus lentes et pourraient souvent entrer en temps mort.</translation>
     </message>
     <message>
       <location filename="../src/librssguard-nextcloud/src/gui/nextcloudaccountdetails.cpp" line="19"/>
       <source>Password for your Nextcloud account</source>
-      <translation type="unfinished">Password for your Nextcloud account</translation>
+      <translation>Mot de passe pour votre compte Nextcloud</translation>
     </message>
     <message>
       <location filename="../src/librssguard-nextcloud/src/gui/nextcloudaccountdetails.cpp" line="21"/>
       <source>Username for your Nextcloud account</source>
-      <translation type="unfinished">Username for your Nextcloud account</translation>
+      <translation>Nom d&apos;utilisateur pour votre compte Nextcloud</translation>
     </message>
     <message>
       <location filename="../src/librssguard-nextcloud/src/gui/nextcloudaccountdetails.cpp" line="22"/>
       <source>URL of your Nextcloud server, without any API path</source>
-      <translation type="unfinished">URL of your Nextcloud server, without any API path</translation>
+      <translation>L'URL de votre serveur Nextcloud, sans chemin API</translation>
     </message>
     <message>
       <location filename="../src/librssguard-nextcloud/src/gui/nextcloudaccountdetails.cpp" line="24"/>
@@ -5724,23 +5724,23 @@ supplémentaire</translation>
       <location filename="../src/librssguard-nextcloud/src/gui/nextcloudaccountdetails.cpp" line="80"/>
       <location filename="../src/librssguard-nextcloud/src/gui/nextcloudaccountdetails.cpp" line="86"/>
       <source>Installed version: %1, required at least: %2.</source>
-      <translation type="unfinished">Installed version: %1, required at least: %2.</translation>
+      <translation>Version installée: %1, version requise minimum: %2.</translation>
     </message>
     <message>
       <location filename="../src/librssguard-nextcloud/src/gui/nextcloudaccountdetails.cpp" line="82"/>
       <source>Selected Nextcloud News server is running unsupported version.</source>
-      <translation type="unfinished">Selected Nextcloud News server is running unsupported version.</translation>
+      <translation>Le serveur Nextcloud News sélectionné utilise une version non prise en charge.</translation>
     </message>
     <message>
       <location filename="../src/librssguard-nextcloud/src/gui/nextcloudaccountdetails.cpp" line="88"/>
       <source>Nextcloud News server is okay.</source>
-      <translation type="unfinished">Nextcloud News server is okay.</translation>
+      <translation>Le serveur Nextcloud News est valide.</translation>
     </message>
     <message>
       <location filename="../src/librssguard-nextcloud/src/gui/nextcloudaccountdetails.cpp" line="93"/>
       <location filename="../src/librssguard-nextcloud/src/gui/nextcloudaccountdetails.cpp" line="94"/>
       <source>Unspecified error, did you enter correct URL?</source>
-      <translation type="unfinished">Unspecified error, did you enter correct URL?</translation>
+      <translation>Erreur non specifiée, avez-vous entré le bon lien?</translation>
     </message>
     <message>
       <location filename="../src/librssguard-nextcloud/src/gui/nextcloudaccountdetails.cpp" line="102"/>
@@ -5778,7 +5778,7 @@ supplémentaire</translation>
     <message>
       <location filename="../src/librssguard-nextcloud/src/nextcloudserviceroot.cpp" line="134"/>
       <source>cannot get list of feeds, network error &apos;%1&apos;</source>
-      <translation type="unfinished">cannot get list of feeds, network error &apos;%1&apos;</translation>
+      <translation>impossible d&apos;obtenir la liste de flux, erreur réseau &apos;%1&apos;</translation>
     </message>
   </context>
   <context>
@@ -6132,12 +6132,12 @@ Liste d&apos;agrégateurs compatibles:</translation>
     <message>
       <location filename="../src/librssguard-standard/src/parsers/icalparser.cpp" line="199"/>
       <source>required iCal data are missing</source>
-      <translation type="unfinished">required iCal data are missing</translation>
+      <translation>les données iCal requises sont manquantes</translation>
     </message>
     <message>
       <location filename="../src/librssguard-standard/src/standardserviceentrypoint.cpp" line="24"/>
       <source>This service offers integration with standard online RSS/RDF/ATOM/JSON/Sitemap/iCalendar feeds and podcasts.</source>
-      <translation type="unfinished">This service offers integration with standard online RSS/RDF/ATOM/JSON/Sitemap/iCalendar feeds and podcasts.</translation>
+      <translation>Ce service offre une integration de flux &amp; podcasts RSS/RDF/ATOM/JSON/Sitemap/iCalendrier standards.</translation>
     </message>
   </context>
   <context>
