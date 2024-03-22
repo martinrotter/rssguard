@@ -630,33 +630,29 @@ endif()
 
 if(WIN32 OR OS2)
   install(TARGETS rssguard DESTINATION .)
-  install(DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}
-    DESTINATION include
-    FILES_MATCHING PATTERN "services/abstract/*.h"
-  )
-  install(DIRECTORY services/abstract
-    DESTINATION include/librssguard/services
-    FILES_MATCHING PATTERN "*.h"
-  )
+  set(HEADERS_FOLDER "include/librssguard")
 elseif(UNIX AND NOT APPLE AND NOT ANDROID)
   include (GNUInstallDirs)
-  install(TARGETS rssguard
-    DESTINATION ${CMAKE_INSTALL_LIBDIR}
-  )
-  install(DIRECTORY services/abstract
-    DESTINATION ${CMAKE_INSTALL_INCLUDEDIR}/librssguard/services
-    FILES_MATCHING PATTERN "*.h"
-  )
+  install(TARGETS rssguard DESTINATION ${CMAKE_INSTALL_LIBDIR})
+  set(HEADERS_FOLDER "${CMAKE_INSTALL_INCLUDEDIR}/librssguard")
 elseif(APPLE)
-  install(TARGETS rssguard
-    DESTINATION Contents/MacOS
-  )
-  install(DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}
-    DESTINATION Contents/Resources/Include
-    FILES_MATCHING PATTERN "services/abstract/*.h"
-  )
-  install(DIRECTORY services/abstract
-    DESTINATION Contents/Resources/Include/librssguard/services
-    FILES_MATCHING PATTERN "*.h"
-  )
+  install(TARGETS rssguard DESTINATION Contents/MacOS)
+  set(HEADERS_FOLDER "Contents/Resources/Include")
 endif()
+
+# Install public headers.
+set(HEADERS_ROOT "${PROJECT_SOURCE_DIR}/src/librssguard")
+file(GLOB_RECURSE HEADER_FILES RELATIVE ${HEADERS_ROOT} "*.h")
+
+foreach(HEADER_FILE ${HEADER_FILES})
+  message(${HEADER_FILE})
+  get_filename_component(HEADER_PATH ${HEADER_FILE} DIRECTORY)
+  message(${HEADER_PATH})
+
+  file(READ ${HEADER_FILE} HEADER_CONTENT)
+  string(FIND "${HEADER_CONTENT}" "RSSGUARD_DLLSPEC" HEADER_EXPORT_IDX)
+
+  if(${HEADER_EXPORT_IDX} GREATER -1)
+    install(FILES ${HEADER_FILE} DESTINATION "${HEADERS_FOLDER}/${HEADER_PATH}")
+  endif()
+endforeach()
