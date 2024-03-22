@@ -4,9 +4,9 @@ if(UPDATE_TRANSLATIONS AND BUILD_WITH_QT6)
   # "en" .ts file is only used as "source" language
   # and it is not offered in RSS Guard as localization.
   file(GLOB_RECURSE ALL_SOURCES
-    "${CMAKE_SOURCE_DIR}/src/librssguard/*.cpp"
-    "${CMAKE_SOURCE_DIR}/src/librssguard/*.h"
-    "${CMAKE_SOURCE_DIR}/src/librssguard/*.ui")
+    "${CMAKE_SOURCE_DIR}/src/librssguard*/*.cpp"
+    "${CMAKE_SOURCE_DIR}/src/librssguard*/*.h"
+    "${CMAKE_SOURCE_DIR}/src/librssguard*/*.ui")
 
   qt_add_lupdate(rssguard
     TS_FILES "${CMAKE_CURRENT_SOURCE_DIR}/rssguard_en.ts"
