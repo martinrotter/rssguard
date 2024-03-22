@@ -699,9 +699,12 @@ void DownloadManager::load() {
     if (!url.isEmpty() && !file_name.isEmpty()) {
       auto* item = new DownloadItem(nullptr, {}, {}, this);
 
+      item->m_finishedDownloading = done;
       item->m_output.setFileName(file_name);
       item->m_url = url;
+
       item->updateInfoAndUrlLabel();
+
       item->m_ui->m_btnStopDownload->setVisible(false);
       item->m_ui->m_btnStopDownload->setEnabled(false);
       item->m_ui->m_btnTryAgain->setVisible(!done);
