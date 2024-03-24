@@ -138,7 +138,7 @@ Error: %1</translation>
     <message>
       <location filename="../src/librssguard/network-web/adblock/adblockicon.cpp" line="12"/>
       <source>AdBlock lets you block unwanted content on web pages</source>
-      <translation>AdBlock を使用すると、Web ページ上の不要なコンテンツをブロックできます</translation>
+      <translation>AdBlock を使用すると、ウェブページ上の不要なコンテンツをブロックできます</translation>
     </message>
     <message>
       <location filename="../src/librssguard/network-web/adblock/adblockicon.cpp" line="45"/>
@@ -366,7 +366,7 @@ version by clicking this popup notification.</source>
     <message>
       <location filename="../src/librssguard/gui/notifications/articlelistnotification.ui" line="108"/>
       <source>Open article in web browser</source>
-      <translation>Webブラウザで記事を開く</translation>
+      <translation>ウェブブラウザで記事を開く</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/notifications/articlelistnotification.ui" line="122"/>
@@ -2288,7 +2288,7 @@ QtWebEngineキャッシュフォルダ -&gt; &quot;%7&quot;</translation>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="200"/>
       <source>&amp;Web browser &amp;&amp; tabs</source>
-      <translation>Webブラウザ＆タブ</translation>
+      <translation>ウェブブラウザ ＆ タブ</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="227"/>
@@ -2814,7 +2814,7 @@ QtWebEngineキャッシュフォルダ -&gt; &quot;%7&quot;</translation>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="925"/>
       <source>Cleanup web cac&amp;he</source>
-      <translation>Webキャッシュのクリーンアップ</translation>
+      <translation>ウェブキャッシュのクリーンアップ</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="933"/>
@@ -3644,7 +3644,7 @@ downloaded.</source>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formupdate.cpp" line="37"/>
       <source>Go to application website to get update packages manually.</source>
-      <translation>アプリケーションの Web サイトにアクセスして、更新パッケージを手動で入手する</translation>
+      <translation>アプリケーションのウェブサイトにアクセスして、更新パッケージを手動で入手する</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formupdate.cpp" line="155"/>
@@ -4810,7 +4810,7 @@ Login tokens expiration: %2</source>
     <message>
       <location filename="../src/librssguard/gui/messagebrowser.cpp" line="165"/>
       <source>You clicked some link. You can download the link contents or open it in external web browser.</source>
-      <translation>いくつかのリンクをクリックしました。リンクの内容をダウンロードするか、外部 Web ブラウザで開くことができます</translation>
+      <translation>いくつかのリンクをクリックしました。リンクの内容をダウンロードするか、外部ウェブブラウザで開くことができます</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/messagebrowser.cpp" line="166"/>
@@ -5814,7 +5814,7 @@ Tiny Tiny RSS is an open source web-based news feed (RSS/Atom) reader and aggreg
 At least API level %1 is required.</source>
       <translation>このサービスは、Tiny Tiny RSS との統合を提供します。
 
-Tiny Tiny RSSは、オープンソースのWebベースのニュースフィード(RSS/Atom) リーダーおよびアグリゲータで、実際のデスクトップアプリケーションにできるだけ近い感覚で、どこからでもニュースを読むことができるように設計されています。
+Tiny Tiny RSSは、オープンソースのウェブベースのニュースフィード(RSS/Atom) リーダーおよびアグリゲータで、実際のデスクトップアプリケーションにできるだけ近い感覚で、どこからでもニュースを読むことができるように設計されています。
 
 少なくとも API レベル %1 が必要です。</translation>
     </message>
@@ -6502,13 +6502,13 @@ File filter for external e-mail selection dialog.</extracomment>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsbrowsermail.ui" line="79"/>
       <source>Always open hyperlinks in external web browser</source>
-      <translation>外部Webブラウザで常にハイパーリンクを開く</translation>
+      <translation>外部ウェブブラウザで常にハイパーリンクを開く</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsbrowsermail.ui" line="99"/>
       <location filename="../src/librssguard/gui/settings/settingsbrowsermail.ui" line="213"/>
       <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;If unchecked, then default system-wide web browser is used.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-      <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;チェックされていない場合は、システム全体のWebブラウザが使用されます。&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
+      <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;チェックされていない場合は、システム全体のウェブブラウザが使用されます。&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsbrowsermail.ui" line="102"/>
@@ -6637,7 +6637,7 @@ File filter for external e-mail selection dialog.</extracomment>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsbrowsermail.h" line="46"/>
       <source>Network &amp; web &amp; tools</source>
-      <translation>ネットワーク＆Web＆ツール</translation>
+      <translation>ネットワーク ＆ ウェブ ＆ ツール</translation>
     </message>
   </context>
   <context>
@@ -8976,7 +8976,7 @@ Last login on: %4</translation>
     <message>
       <location filename="../src/librssguard/network-web/webfactory.cpp" line="864"/>
       <source>Do you really want to clear web cache?</source>
-      <translation>本当にWebキャッシュを消去しますか？</translation>
+      <translation>本当にウェブキャッシュを消去しますか？</translation>
     </message>
     <message>
       <location filename="../src/librssguard/network-web/webfactory.cpp" line="161"/>
