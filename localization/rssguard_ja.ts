@@ -1404,7 +1404,7 @@ QtWebEngineキャッシュフォルダ -&gt; &quot;%7&quot;</translation>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formabout.cpp" line="152"/>
       <source>&lt;body&gt;%5 is a (very) tiny feed reader.&lt;br&gt;&lt;br&gt;This software is distributed under the terms of GNU General Public License, version 3.&lt;br&gt;&lt;br&gt;Contacts:&lt;ul&gt;&lt;li&gt;&lt;a href=&quot;mailto://%1&quot;&gt;%1&lt;/a&gt; ~e-mail&lt;/li&gt;&lt;li&gt;&lt;a href=&quot;%2&quot;&gt;%2&lt;/a&gt; ~website&lt;/li&gt;&lt;/ul&gt;You can obtain source code for %5 from its website.&lt;br&gt;&lt;br&gt;&lt;br&gt;Copyright (C) 2011-%3 %4&lt;/body&gt;</source>
-      <translation>&lt;body&gt;%5 は(とても)小さなフィードリーダーです。&lt;br&gt;&lt;br&gt;本ソフトウェアはGNU General Public License, version 3の下で配布されています。&lt;br&gt;&lt;br&gt;問い合わせ:&lt;ul&gt;&lt;li&gt;&lt;a href=&quot;mailto://%1&quot;&gt;%1&lt;/a&gt; ~e-mail&lt;/li&gt;&lt;li&gt;&lt;a href=&quot;%2&quot;&gt;%2&lt;/a&gt; ~website&lt;/li&gt;&lt;/ul&gt;%5 のソースコードはウェブサイトから入手できます。&lt;br&gt;&lt;br&gt;&lt;br&gt;Copyright (C) 2011-%3 %4&lt;/body&gt;</translation>
+      <translation>&lt;body&gt;%5 は(とても)小さなフィードリーダーです。&lt;br&gt;&lt;br&gt;本ソフトウェアはGNU General Public License, version 3の下で配布されています。&lt;br&gt;&lt;br&gt;問い合わせ:&lt;ul&gt;&lt;li&gt;&lt;a href=&quot;mailto://%1&quot;&gt;%1&lt;/a&gt; ~Eメール&lt;/li&gt;&lt;li&gt;&lt;a href=&quot;%2&quot;&gt;%2&lt;/a&gt; ~website&lt;/li&gt;&lt;/ul&gt;%5 のソースコードはウェブサイトから入手できます。&lt;br&gt;&lt;br&gt;&lt;br&gt;Copyright (C) 2011-%3 %4&lt;/body&gt;</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formabout.cpp" line="74"/>
@@ -2593,12 +2593,12 @@ QtWebEngineキャッシュフォルダ -&gt; &quot;%7&quot;</translation>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="630"/>
       <source>Send via e-mail</source>
-      <translation>E-mailで送信</translation>
+      <translation>Eメールで送信</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="633"/>
       <source>Send selected articles via e-mail</source>
-      <translation>選択した記事を電子メールで送信</translation>
+      <translation>選択した記事をEメールで送信</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="641"/>
@@ -5842,7 +5842,7 @@ Tiny Tiny RSSは、オープンソースのWebベースのニュースフィー�
     <message>
       <location filename="../src/librssguard-gmail/src/gmailentrypoint.cpp" line="42"/>
       <source>Simple Gmail integration via JSON API. Allows sending e-mails too.</source>
-      <translation>JSON APIでGmailと簡単に連携。メールの送信も可能です。</translation>
+      <translation>JSON APIでGmailと簡単に連携。Eメールの送信も可能です</translation>
     </message>
     <message>
       <location filename="../src/librssguard-feedly/src/feedlyentrypoint.cpp" line="40"/>
@@ -6448,7 +6448,7 @@ File filter for external e-mail selection dialog.</extracomment>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsbrowsermail.cpp" line="156"/>
       <source>Select e-mail executable</source>
-      <translation>電子メール実行可能ファイルを選択</translation>
+      <translation>Eメールの実行可能ファイルを選択</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsbrowsermail.cpp" line="183"/>
@@ -6574,7 +6574,7 @@ File filter for external e-mail selection dialog.</extracomment>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsbrowsermail.ui" line="228"/>
       <source>E-mail client executable</source>
-      <translation>電子メール クライアント実行可能ファイル</translation>
+      <translation>Eメール クライアントの実行可能ファイル</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsbrowsermail.ui" line="243"/>
