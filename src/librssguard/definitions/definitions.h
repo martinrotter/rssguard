@@ -242,7 +242,6 @@
 #define APP_SKIN_USER_FOLDER   "skins"
 #define APP_SKIN_DEFAULT       "nudus-light"
 #define APP_SKIN_METADATA_FILE "metadata.xml"
-#define APP_STYLE_DEFAULT      "Fusion"
 
 // #if defined(Q_OS_UNIX) && !defined(Q_OS_MACOS) && !defined(FORCE_BUNDLE_ICONS)
 // #define APP_ICON_THEME_DEFAULT ""
@@ -250,11 +249,20 @@
 // #define APP_ICON_THEME_DEFAULT "Breeze"
 // #endif
 
+#if defined(Q_OS_WIN)
+#define APP_STYLE_DEFAULT "windowsvista"
+#elif defined(Q_OS_UNIX) && !defined(Q_OS_MACOS)
+// Do not force default style on Linux.
+#define APP_STYLE_DEFAULT ""
+#else
+#define APP_STYLE_DEFAULT "Fusion"
+#endif
+
 #if defined(FORCE_BUNDLE_ICONS)
 // Forcibly bundle icons.
 #define APP_ICON_THEME_DEFAULT "Breeze"
 #elif defined(Q_OS_UNIX) && !defined(Q_OS_MACOS)
-// Do not force default theme on Linux.
+// Do not force default icon theme on Linux.
 #define APP_ICON_THEME_DEFAULT ""
 #else
 // Use some default theme otherwise.
