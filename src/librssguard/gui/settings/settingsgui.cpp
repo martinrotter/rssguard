@@ -49,7 +49,10 @@ SettingsGui::SettingsGui(Settings* settings, QWidget* parent)
   m_ui->m_treeSkins->header()->setSectionResizeMode(2, QHeaderView::ResizeMode::ResizeToContents);
   m_ui->m_treeSkins->header()->setSectionResizeMode(3, QHeaderView::ResizeMode::ResizeToContents);
 
-  connect(m_ui->m_cmbStyles, &QComboBox::currentIndexChanged, this, &SettingsGui::updateSkinOptions);
+  connect(m_ui->m_cmbStyles,
+          static_cast<void (QComboBox::*)(int)>(&QComboBox::currentIndexChanged),
+          this,
+          &SettingsGui::updateSkinOptions);
 
   connect(m_ui->m_cmbIconTheme,
           static_cast<void (QComboBox::*)(int)>(&QComboBox::currentIndexChanged),
