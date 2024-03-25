@@ -93,9 +93,6 @@ namespace Feeds {
   KEY EnableTooltipsFeedsMessages;
   VALUE(bool) EnableTooltipsFeedsMessagesDef;
 
-  KEY ApplyRtlToFeedsTitles;
-  VALUE(bool) ApplyRtlToFeedsTitlesDef;
-
   KEY AutoUpdateInterval;
   VALUE(int) AutoUpdateIntervalDef;
 
@@ -376,6 +373,9 @@ namespace GUI {
 
   KEY DefaultSortColumnFeeds;
   VALUE(int) DefaultSortColumnFeedsDef;
+
+  KEY SwitchRtlEntireTableview;
+  VALUE(bool) SwitchRtlEntireTableviewDef;
 
   KEY HeightRowMessages;
   VALUE(int) HeightRowMessagesDef;

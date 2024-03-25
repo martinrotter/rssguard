@@ -586,23 +586,50 @@ void MessagesView::loadItem(RootItem* item) {
   sort(col, ord, false, true, false, true);
   m_sourceModel->loadMessages(item);
 
-  /*
-  if (item->kind() == RootItem::Kind::Feed) {
-    if (item->toFeed()->isRtl()) {
-      setLayoutDirection(Qt::LayoutDirection::RightToLeft);
+  if (item != nullptr) {
+    // Check if the current item is a category and if all child items and grandchildren are RTL feeds.
+    const QList<RootItem*> childItemsList = collectChildAndGrandchildFeeds(item);
+    bool areAllChildrenRtl = true;
+
+    if (item->kind() == RootItem::Kind::Category) {
+      areAllChildrenRtl = std::all_of(childItemsList.begin(), childItemsList.end(), [](RootItem* childItem) {
+        return childItem->kind() == RootItem::Kind::Feed && childItem->toFeed()->isRtl();
+      });
+
+    } else if (item->kind() == RootItem::Kind::Feed) {
+      areAllChildrenRtl = item->toFeed()->isRtl();
     }
-    else {
+
+   // Set layout direction based on RTL status of child items and current item.
+    if (areAllChildrenRtl) {
+      if (item->kind() == RootItem::Kind::Feed && qApp->settings()->value(GROUP(GUI), SETTING(GUI::SwitchRtlEntireTableview)).toBool())
+        setLayoutDirection(Qt::LayoutDirection::RightToLeft);
+      else
+        setLayoutDirection(Qt::LayoutDirection::LayoutDirectionAuto);
+
+    } else {
       setLayoutDirection(Qt::LayoutDirection::LeftToRight);
     }
   }
-  else {
-    setLayoutDirection(Qt::LayoutDirection::LeftToRight);
-  }
-  */
 
   // Messages are loaded, make sure that previously
   // active message is not shown in browser.
   emit currentMessageRemoved(m_sourceModel->loadedItem());
+}
+
+QList<RootItem*> MessagesView::collectChildAndGrandchildFeeds(RootItem* item) {
+  QList<RootItem*> childItemsList;
+
+  for (RootItem *childItem : item->childItems()) {
+    if (childItem->kind() == RootItem::Kind::Category) {
+      QList<RootItem*> recursiveList = collectChildAndGrandchildFeeds(childItem);
+      childItemsList.append(recursiveList);
+    } else {
+      childItemsList.append(childItem);
+    }
+  }
+
+  return childItemsList;
 }
 
 void MessagesView::changeFilter(MessagesProxyModel::MessageListFilter filter) {
