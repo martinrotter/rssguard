@@ -398,7 +398,7 @@ DVALUE(char*) GUI::StyleDef = APP_STYLE_DEFAULT;
 DKEY General::ID = "main";
 
 DKEY General::UpdateOnStartup = "update_on_start";
-DVALUE(bool) General::UpdateOnStartupDef = true;
+DVALUE(bool) General::UpdateOnStartupDef = false;
 
 DKEY General::FirstRun = "first_run";
 DVALUE(bool) General::FirstRunDef = true;

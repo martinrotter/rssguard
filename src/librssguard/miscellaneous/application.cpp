@@ -267,7 +267,7 @@ Application::Application(const QString& id, int& argc, char** argv, const QStrin
     m_notifications->load(settings());
   }
 
-  QTimer::singleShot(1000, system(), &SystemFactory::checkForUpdatesOnStartup);
+  QTimer::singleShot(15000, system(), &SystemFactory::checkForUpdatesOnStartup);
 
   setupWorkHorsePool();
 
