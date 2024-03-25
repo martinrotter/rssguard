@@ -49,7 +49,7 @@ SettingsGui::SettingsGui(Settings* settings, QWidget* parent)
   m_ui->m_treeSkins->header()->setSectionResizeMode(2, QHeaderView::ResizeMode::ResizeToContents);
   m_ui->m_treeSkins->header()->setSectionResizeMode(3, QHeaderView::ResizeMode::ResizeToContents);
 
-  connect(m_ui->m_cmbStyles, &QComboBox::currentTextChanged, this, &SettingsGui::updateSkinOptions);
+  connect(m_ui->m_cmbStyles, &QComboBox::currentIndexChanged, this, &SettingsGui::updateSkinOptions);
 
   connect(m_ui->m_cmbIconTheme,
           static_cast<void (QComboBox::*)(int)>(&QComboBox::currentIndexChanged),
@@ -205,11 +205,19 @@ void SettingsGui::loadSettings() {
   // Load styles.
   auto styles = QStyleFactory::keys();
 
+  m_ui->m_cmbStyles->addItem(
+#if defined(Q_OS_UNIX) && !defined(Q_OS_MACOS)
+    tr("system style"),
+#else
+    tr("default style"),
+#endif
+    APP_NO_THEME);
+
   for (const QString& style_name : std::as_const(styles)) {
-    m_ui->m_cmbStyles->addItem(style_name);
+    m_ui->m_cmbStyles->addItem(style_name, style_name);
   }
 
-  int item_style = m_ui->m_cmbStyles->findText(qApp->skins()->currentStyle(), Qt::MatchFlag::MatchFixedString);
+  int item_style = m_ui->m_cmbStyles->findData(qApp->skins()->currentStyle());
 
   if (item_style >= 0) {
     m_ui->m_cmbStyles->setCurrentIndex(item_style);
@@ -420,7 +428,7 @@ void SettingsGui::saveSettings() {
 
   // Set new style.
   if (m_ui->m_cmbStyles->currentIndex() >= 0 && m_ui->m_cmbStyles->isEnabled()) {
-    const QString new_style = m_ui->m_cmbStyles->currentText();
+    const QString new_style = m_ui->m_cmbStyles->currentData().toString();
     const QString old_style = qApp->settings()->value(GROUP(GUI), SETTING(GUI::Style)).toString();
 
     if (old_style != new_style) {
