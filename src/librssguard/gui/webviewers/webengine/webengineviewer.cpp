@@ -247,7 +247,7 @@ QByteArray WebEngineViewer::getJsEnabledHtml(const QString& url, bool worker_thr
   page->deleteLater();
   viewer->close();
 
-  IOFactory::writeFile("a.html", html.toUtf8());
+  // IOFactory::writeFile("a.html", html.toUtf8());
 
   return html.toUtf8();
 }
