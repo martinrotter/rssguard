@@ -93,6 +93,9 @@ namespace Feeds {
   KEY EnableTooltipsFeedsMessages;
   VALUE(bool) EnableTooltipsFeedsMessagesDef;
 
+  KEY ApplyRtlToFeedsTitles;
+  VALUE(bool) ApplyRtlToFeedsTitlesDef;
+
   KEY AutoUpdateInterval;
   VALUE(int) AutoUpdateIntervalDef;
 
