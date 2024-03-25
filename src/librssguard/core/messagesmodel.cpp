@@ -431,20 +431,14 @@ QVariant MessagesModel::data(const QModelIndex& idx, int role) const {
           index_column != MSG_DB_AUTHOR_INDEX) {
         return Qt::LayoutDirection::LayoutDirectionAuto;
       }
-
-      int isFeedRtl = (m_cache->containsData(idx.row())
-                         ? m_cache->data(index(idx.row(), MSG_DB_FEED_IS_RTL_INDEX))
-                         : QSqlQueryModel::data(index(idx.row(), MSG_DB_FEED_IS_RTL_INDEX), Qt::ItemDataRole::EditRole)).toInt();
-
-      bool m_isSwitchEntireTableview = qApp->settings()->value(GROUP(GUI), SETTING(GUI::SwitchRtlEntireTableview)).toBool();
-
-      if (isFeedRtl == 0 && m_isSwitchEntireTableview)
-        return Qt::LayoutDirection::LayoutDirectionAuto;
-      else if (isFeedRtl == 0)
-        return Qt::LayoutDirection::LayoutDirectionAuto;
-      else
-        return Qt::LayoutDirection::RightToLeft;
-
+      else {
+        return (m_cache->containsData(idx.row())
+                  ? m_cache->data(index(idx.row(), MSG_DB_FEED_IS_RTL_INDEX))
+                  : QSqlQueryModel::data(index(idx.row(), MSG_DB_FEED_IS_RTL_INDEX), Qt::ItemDataRole::EditRole))
+                     .toInt() == 0
+                 ? Qt::LayoutDirection::LayoutDirectionAuto
+                 : Qt::LayoutDirection::RightToLeft;
+      }
     }
 
     case LOWER_TITLE_ROLE:
