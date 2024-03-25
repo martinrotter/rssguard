@@ -386,7 +386,7 @@ DKEY GUI::DefaultSortOrderFeeds = "default_sort_order_feeds";
 DVALUE(Qt::SortOrder) GUI::DefaultSortOrderFeedsDef = Qt::AscendingOrder;
 
 DKEY GUI::IconTheme = "icon_theme_name";
-DVALUE(char*) GUI::IconThemeDef = APP_THEME_DEFAULT;
+DVALUE(char*) GUI::IconThemeDef = APP_ICON_THEME_DEFAULT;
 
 DKEY GUI::Skin = "skin";
 DVALUE(char*) GUI::SkinDef = APP_SKIN_DEFAULT;
