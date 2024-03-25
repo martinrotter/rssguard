@@ -14,7 +14,7 @@
    <item>
     <widget class="QTabWidget" name="m_tabFeedsMessages">
      <property name="currentIndex">
-      <number>1</number>
+      <number>3</number>
      </property>
      <widget class="QWidget" name="m_tabFeeds">
       <attribute name="title">
@@ -252,13 +252,6 @@
          </property>
         </widget>
        </item>
-       <item row="5" column="0" colspan="2">
-        <widget class="QCheckBox" name="m_cbUpdateFeedListDuringFetching">
-         <property name="text">
-          <string>Update feed list during feed fetching</string>
-         </property>
-        </widget>
-       </item>
        <item row="6" column="0" colspan="2">
         <widget class="QCheckBox" name="m_cbListsRestrictedShortcuts">
          <property name="text">
@@ -273,23 +266,10 @@
          </property>
         </widget>
        </item>
-       <item row="9" column="0">
-        <spacer name="verticalSpacer">
-         <property name="orientation">
-          <enum>Qt::Vertical</enum>
-         </property>
-         <property name="sizeHint" stdset="0">
-          <size>
-           <width>20</width>
-           <height>40</height>
-          </size>
-         </property>
-        </spacer>
-       </item>
-       <item row="8" column="0">
-        <widget class="QCheckBox" name="m_checkApplyRtlFeedsTitles">
+       <item row="5" column="0" colspan="2">
+        <widget class="QCheckBox" name="m_cbUpdateFeedListDuringFetching">
          <property name="text">
-          <string>Apply RTL mode to feeds titles</string>
+          <string>Update feed list during feed fetching</string>
          </property>
         </widget>
        </item>
@@ -669,6 +649,35 @@
           <bool>true</bool>
          </property>
         </widget>
+       </item>
+       <item row="11" column="0">
+        <widget class="QGroupBox" name="m_gbRtlBehaviour">
+         <property name="title">
+          <string>RTL behaviour</string>
+         </property>
+         <layout class="QHBoxLayout" name="horizontalLayout_18">
+          <item>
+           <widget class="QCheckBox" name="m_checkSwitchRtlEntireTableview">
+            <property name="text">
+             <string>Switch messages tableview direction</string>
+            </property>
+           </widget>
+          </item>
+         </layout>
+        </widget>
+       </item>
+       <item row="12" column="0">
+        <spacer name="verticalSpacer">
+         <property name="orientation">
+          <enum>Qt::Vertical</enum>
+         </property>
+         <property name="sizeHint" stdset="0">
+          <size>
+           <width>20</width>
+           <height>40</height>
+          </size>
+         </property>
+        </spacer>
        </item>
       </layout>
      </widget>

@@ -95,9 +95,6 @@ DVALUE(char*) Feeds::CountFormatDef = "(%unread)";
 DKEY Feeds::EnableTooltipsFeedsMessages = "show_tooltips";
 DVALUE(bool) Feeds::EnableTooltipsFeedsMessagesDef = true;
 
-DKEY Feeds::ApplyRtlToFeedsTitles = "apply_rtl_to_feeds_titles";
-DVALUE(bool) Feeds::ApplyRtlToFeedsTitlesDef = false;
-
 DKEY Feeds::AutoUpdateInterval = "auto_update_interval";
 DVALUE(int) Feeds::AutoUpdateIntervalDef = DEFAULT_AUTO_UPDATE_INTERVAL;
 
@@ -272,6 +269,9 @@ DVALUE(int) GUI::ToolbarIconSizeDef = 0;
 
 DKEY GUI::ToolbarStyle = "toolbar_style";
 DVALUE(Qt::ToolButtonStyle) GUI::ToolbarStyleDef = Qt::ToolButtonIconOnly;
+
+DKEY GUI::SwitchRtlEntireTableview = "switch_rtl_entire_tableview";
+DVALUE(bool) GUI::SwitchRtlEntireTableviewDef = true;
 
 DKEY GUI::HeightRowMessages = "height_row_messages";
 DVALUE(int) GUI::HeightRowMessagesDef = -1;
