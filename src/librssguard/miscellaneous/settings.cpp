@@ -389,7 +389,7 @@ DKEY GUI::DefaultSortOrderFeeds = "default_sort_order_feeds";
 DVALUE(Qt::SortOrder) GUI::DefaultSortOrderFeedsDef = Qt::AscendingOrder;
 
 DKEY GUI::IconTheme = "icon_theme_name";
-DVALUE(char*) GUI::IconThemeDef = APP_THEME_DEFAULT;
+DVALUE(char*) GUI::IconThemeDef = APP_ICON_THEME_DEFAULT;
 
 DKEY GUI::Skin = "skin";
 DVALUE(char*) GUI::SkinDef = APP_SKIN_DEFAULT;
@@ -401,7 +401,7 @@ DVALUE(char*) GUI::StyleDef = APP_STYLE_DEFAULT;
 DKEY General::ID = "main";
 
 DKEY General::UpdateOnStartup = "update_on_start";
-DVALUE(bool) General::UpdateOnStartupDef = true;
+DVALUE(bool) General::UpdateOnStartupDef = false;
 
 DKEY General::FirstRun = "first_run";
 DVALUE(bool) General::FirstRunDef = true;

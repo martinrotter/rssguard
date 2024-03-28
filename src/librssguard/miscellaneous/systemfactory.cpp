@@ -272,7 +272,7 @@ void SystemFactory::checkForUpdatesOnStartup() {
                                                }});
                        }
                      });
-    qApp->system()->checkForUpdates();
+    checkForUpdates();
   }
 #endif
 }
