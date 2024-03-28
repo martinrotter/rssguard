@@ -214,6 +214,9 @@ DVALUE(bool) Messages::UseCustomTimeDef = false;
 DKEY Messages::CustomTimeFormat = "custom_time_format";
 DVALUE(QString) Messages::CustomTimeFormatDef = {};
 
+DKEY Messages::MarkMessageReadOnSelectionChange = "mark_message_read_on_selection_change";
+DVALUE(bool) Messages::MarkMessageReadOnSelectionChangeDef = false;
+
 DKEY Messages::ClearReadOnExit = "clear_read_on_exit";
 DVALUE(bool) Messages::ClearReadOnExitDef = false;
 

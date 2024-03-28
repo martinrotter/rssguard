@@ -160,6 +160,9 @@ namespace Messages {
   KEY HoursToAvoidArticle;
   VALUE(int) HoursToAvoidArticleDef;
 
+  KEY MarkMessageReadOnSelectionChange;
+  VALUE(bool) MarkMessageReadOnSelectionChangeDef;
+
   KEY LimitDoNotRemoveUnread;
   VALUE(bool) LimitDoNotRemoveUnreadDef;
 
