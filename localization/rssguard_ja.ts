@@ -8956,7 +8956,7 @@ Last login on: %4</source>
     <message>
       <location filename="../src/librssguard/network-web/webfactory.cpp" line="506"/>
       <source>Print element backgrounds</source>
-      <translation>要素の背景を印刷</translation>
+      <translation>背景の要素を印刷</translation>
     </message>
     <message>
       <location filename="../src/librssguard/network-web/webfactory.cpp" line="508"/>
