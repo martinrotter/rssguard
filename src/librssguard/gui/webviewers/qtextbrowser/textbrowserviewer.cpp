@@ -518,7 +518,7 @@ void TextBrowserViewer::downloadNextNeededResource() {
     QMetaObject::invokeMethod(m_resourceDownloader,
                               "manipulateData",
                               Qt::ConnectionType::QueuedConnection,
-                              Q_ARG(QString, qApp->web()->unescapeHtml(res.toString())),
+                              Q_ARG(QString, WebFactory::unescapeHtml(res.toString())),
                               Q_ARG(QNetworkAccessManager::Operation, QNetworkAccessManager::Operation::GetOperation),
                               Q_ARG(QByteArray, {}),
                               Q_ARG(int, 5000));

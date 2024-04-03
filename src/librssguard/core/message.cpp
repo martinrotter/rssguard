@@ -123,7 +123,7 @@ void Message::sanitize(const Feed* feed, bool fix_future_datetimes) {
   static QRegularExpression reg_news(QSL("([\\n\\r])|(^\\s)"));
 
   // Sanitize title.
-  m_title = qApp->web()->stripTags(qApp->web()->unescapeHtml(m_title));
+  m_title = qApp->web()->stripTags(WebFactory::unescapeHtml(m_title));
 
   m_title = m_title
 
@@ -140,7 +140,10 @@ void Message::sanitize(const Feed* feed, bool fix_future_datetimes) {
               .remove(QChar(65279));
 
   // Sanitize author.
-  m_author = qApp->web()->stripTags(qApp->web()->unescapeHtml(m_author));
+  m_author = qApp->web()->stripTags(WebFactory::unescapeHtml(m_author));
+
+  // Just unescape HTML entities. Other formatting is done by viewers.
+  m_contents = WebFactory::unescapeHtml(m_contents);
 
   // Sanitize URL.
   m_url = m_url.trimmed();

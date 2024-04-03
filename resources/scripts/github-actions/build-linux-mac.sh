@@ -59,7 +59,7 @@ else
   USE_QT6="ON"
 
   QTPATH="$(pwd)/Qt"
-  QTVERSION="6.5.3"
+  QTVERSION="6.7.0"
   QTBIN="$QTPATH/$QTVERSION/$QTOS/bin"
 
   # Install "aqtinstall" from its master branch to have latest code.
