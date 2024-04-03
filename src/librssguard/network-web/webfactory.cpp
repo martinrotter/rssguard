@@ -222,7 +222,7 @@ QString WebFactory::unescapeHtml(const QString& html) {
           }
 
           if (number > 0U) {
-            output.append(QChar(number));
+            output.append(QString::fromUcs4((const char32_t*)&number, 1));
           }
           else {
             // Failed to convert to number, leave intact.
