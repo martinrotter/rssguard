@@ -105,7 +105,12 @@ QDateTime TextFactory::parseDateTime(const QString& date_time, QString* used_dt_
   // Iterate over patterns and check if input date/time matches the pattern.
   for (const QString& pattern : std::as_const(date_patterns)) {
     QString input_date_chopped = input_date.left(pattern.size());
+
+#if QT_VERSION >= 0x060700 // Qt >= 6.7.0
+    dt = locale.toDateTime(input_date_chopped, pattern, 2000);
+#else
     dt = locale.toDateTime(input_date_chopped, pattern);
+#endif
 
     if (dt.isValid()) {
       // Make sure that this date/time is considered UTC.
