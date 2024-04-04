@@ -80,27 +80,6 @@ QByteArray MessagesView::saveHeaderState() const {
   }
 
   return QJsonDocument(obj).toJson(QJsonDocument::JsonFormat::Compact);
-
-  /*
-   *
-   *
-    QByteArray arr;
-  QDataStream outt(&arr, QIODevice::OpenModeFlag::WriteOnly);
-
-  outt.setVersion(QDataStream::Version::Qt_4_7);
-  outt << header()->count();
-  outt << int(header()->sortIndicatorOrder());
-  outt << header()->sortIndicatorSection();
-
-  // Save column data.
-  for (int i = 0; i < header()->count(); i++) {
-    outt << header()->visualIndex(i);
-    outt << header()->sectionSize(i);
-    outt << header()->isSectionHidden(i);
-  }
-
-  return arr;
-  */
 }
 
 void MessagesView::restoreHeaderState(const QByteArray& dta) {
@@ -111,6 +90,8 @@ void MessagesView::restoreHeaderState(const QByteArray& dta) {
     qWarningNN << LOGSEC_GUI << "Detected invalid state for list view.";
     return;
   }
+
+  int last_visible_column = 0;
 
   // Restore column attributes.
   for (int i = 0; i < saved_header_count && i < header()->count(); i++) {
@@ -124,7 +105,16 @@ void MessagesView::restoreHeaderState(const QByteArray& dta) {
 
     header()->resizeSection(i, ss);
     header()->setSectionHidden(i, ish);
+
+    if (!ish && vi > last_visible_column) {
+      last_visible_column = vi;
+    }
   }
+
+  // All columns are resizeable but last one is set to auto-stretch to fill remaining
+  // space. Sometimes this column is saved as too wide and causes
+  // horizontal scrollbar to appear. Therefore downsize it.
+  header()->resizeSection(header()->logicalIndex(last_visible_column), 1);
 
   // Restore sort attributes.
   int saved_sort_count = obj[QSL("sort_count")].toInt();
@@ -147,48 +137,6 @@ void MessagesView::restoreHeaderState(const QByteArray& dta) {
       header()->setSortIndicator(newest_col, newest_ordr);
     }
   }
-
-  /*
-  QByteArray arr = dta;
-  QDataStream inn(&arr, QIODevice::OpenModeFlag::ReadOnly);
-
-  inn.setVersion(QDataStream::Version::Qt_4_7);
-
-  int saved_header_count;
-  inn >> saved_header_count;
-
-  if (std::abs(saved_header_count - header()->count()) > 10) {
-    qWarningNN << LOGSEC_GUI << "Detected invalid state for list view.";
-    return;
-  }
-
-  int saved_sort_order;
-  inn >> saved_sort_order;
-  int saved_sort_column;
-  inn >> saved_sort_column;
-
-  for (int i = 0; i < saved_header_count && i < header()->count(); i++) {
-    int vi, ss;
-    bool ish;
-
-    inn >> vi;
-    inn >> ss;
-    inn >> ish;
-
-    // auto ax = m_sourceModel->headerData(i, Qt::Orientation::Horizontal, Qt::ItemDataRole::DisplayRole).toString();
-
-    if (vi < header()->count()) {
-      header()->swapSections(header()->visualIndex(i), vi);
-    }
-
-    header()->resizeSection(i, ss);
-    header()->setSectionHidden(i, ish);
-  }
-
-  if (saved_sort_column < header()->count()) {
-    header()->setSortIndicator(saved_sort_column, Qt::SortOrder(saved_sort_order));
-  }
-  */
 }
 
 void MessagesView::copyUrlOfSelectedArticles() const {
@@ -909,6 +857,8 @@ void MessagesView::openSelectedMessagesWithExternalTool() {
 }
 
 void MessagesView::adjustColumns() {
+  qDebugNN << LOGSEC_GUI << "Article list header geometries changed.";
+
   if (header()->count() > 0 && !m_columnsAdjusted) {
     m_columnsAdjusted = true;
 
@@ -916,8 +866,6 @@ void MessagesView::adjustColumns() {
     for (int i = 0; i < header()->count(); i++) {
       header()->setSectionResizeMode(i, QHeaderView::ResizeMode::Interactive);
     }
-
-    // header()->setSectionResizeMode(MSG_DB_TITLE_INDEX, QHeaderView::ResizeMode::Stretch);
 
     // Hide columns.
     hideColumn(MSG_DB_ID_INDEX);
