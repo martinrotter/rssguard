@@ -281,34 +281,48 @@
       </attribute>
       <layout class="QFormLayout" name="formLayout">
        <item row="0" column="0" colspan="2">
-        <widget class="QCheckBox" name="m_checkRemoveReadMessagesOnExit">
+        <widget class="QCheckBox" name="m_checkMarkMessageReadOnSelectionChange">
          <property name="text">
-          <string>Remove all read articles from all feeds on application exit</string>
+          <string>Mark article as read on mouse click or on keyboard up/down press</string>
          </property>
         </widget>
        </item>
        <item row="2" column="0" colspan="2">
+        <widget class="QCheckBox" name="m_cbArticleViewerAlwaysVisible">
+         <property name="text">
+          <string>Keep article viewer always visible</string>
+         </property>
+        </widget>
+       </item>
+       <item row="3" column="0" colspan="2">
         <widget class="QCheckBox" name="m_cmbIgnoreContentsChanges">
          <property name="text">
           <string>Ignore changes in article body when new articles are being fetched</string>
          </property>
         </widget>
        </item>
-       <item row="3" column="0" colspan="2">
+       <item row="4" column="0" colspan="2">
         <widget class="QCheckBox" name="m_cbFixupArticleDatetime">
          <property name="text">
           <string>Fixup date/time of articles which are in the future</string>
          </property>
         </widget>
        </item>
-       <item row="5" column="0">
+       <item row="5" column="0" colspan="2">
+        <widget class="QCheckBox" name="m_cbLegacyArticleFormatting">
+         <property name="text">
+          <string>Use legacy article formatting</string>
+         </property>
+        </widget>
+       </item>
+       <item row="6" column="0">
         <widget class="QCheckBox" name="m_checkBringToForegroundAfterMsgOpened">
          <property name="text">
           <string>Bring application window to front once article is opened in external web browser</string>
          </property>
         </widget>
        </item>
-       <item row="6" column="0" colspan="2">
+       <item row="7" column="0" colspan="2">
         <widget class="QGroupBox" name="groupBox">
          <property name="title">
           <string>Internal article viewer</string>
@@ -407,17 +421,10 @@
          </layout>
         </widget>
        </item>
-       <item row="1" column="0" colspan="2">
-        <widget class="QCheckBox" name="m_cbArticleViewerAlwaysVisible">
+       <item row="1" column="0">
+        <widget class="QCheckBox" name="m_checkRemoveReadMessagesOnExit">
          <property name="text">
-          <string>Keep article viewer always visible</string>
-         </property>
-        </widget>
-       </item>
-       <item row="4" column="0" colspan="2">
-        <widget class="QCheckBox" name="m_cbLegacyArticleFormatting">
-         <property name="text">
-          <string>Use legacy article formatting</string>
+          <string>Remove all read articles from all feeds on application exit</string>
          </property>
         </widget>
        </item>
@@ -690,7 +697,7 @@
   <tabstop>m_cbUpdateFeedListDuringFetching</tabstop>
   <tabstop>m_cbListsRestrictedShortcuts</tabstop>
   <tabstop>m_checkShowTooltips</tabstop>
-  <tabstop>m_checkRemoveReadMessagesOnExit</tabstop>
+  <tabstop>m_checkMarkMessageReadOnSelectionChange</tabstop>
   <tabstop>m_cbArticleViewerAlwaysVisible</tabstop>
   <tabstop>m_cmbIgnoreContentsChanges</tabstop>
   <tabstop>m_cbFixupArticleDatetime</tabstop>
