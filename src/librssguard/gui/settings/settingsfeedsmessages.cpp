@@ -78,6 +78,10 @@ SettingsFeedsMessages::SettingsFeedsMessages(Settings* settings, QWidget* parent
   connect(m_ui->m_checkAutoUpdate, &QCheckBox::toggled, this, &SettingsFeedsMessages::dirtifySettings);
   connect(m_ui->m_cbUpdateFeedListDuringFetching, &QCheckBox::toggled, this, &SettingsFeedsMessages::dirtifySettings);
   connect(m_ui->m_checkAutoUpdateOnlyUnfocused, &QCheckBox::toggled, this, &SettingsFeedsMessages::dirtifySettings);
+
+
+  connect(m_ui->m_checkMarkMessageReadOnSelectionChange, &QCheckBox::toggled, this, &SettingsFeedsMessages::dirtifySettings);
+
   connect(m_ui->m_cmbUnreadIconType,
           QOverload<int>::of(&QComboBox::currentIndexChanged),
           this,
@@ -290,6 +294,8 @@ void SettingsFeedsMessages::loadSettings() {
                    .toBool());
   m_ui->m_checkKeppMessagesInTheMiddle
     ->setChecked(settings()->value(GROUP(Messages), SETTING(Messages::KeepCursorInCenter)).toBool());
+  m_ui->m_checkMarkMessageReadOnSelectionChange
+    ->setChecked(settings()->value(GROUP(Messages), SETTING(Messages::MarkMessageReadOnSelectionChange)).toBool());
   m_ui->m_checkRemoveReadMessagesOnExit
     ->setChecked(settings()->value(GROUP(Messages), SETTING(Messages::ClearReadOnExit)).toBool());
   m_ui->m_checkAutoUpdate->setChecked(settings()->value(GROUP(Feeds), SETTING(Feeds::AutoUpdateEnabled)).toBool());
@@ -415,6 +421,7 @@ void SettingsFeedsMessages::saveSettings() {
   settings()->setValue(GROUP(Messages),
                        Messages::KeepCursorInCenter,
                        m_ui->m_checkKeppMessagesInTheMiddle->isChecked());
+  settings()->setValue(GROUP(Messages), Messages::MarkMessageReadOnSelectionChange, m_ui->m_checkMarkMessageReadOnSelectionChange->isChecked());
   settings()->setValue(GROUP(Messages), Messages::ClearReadOnExit, m_ui->m_checkRemoveReadMessagesOnExit->isChecked());
   settings()->setValue(GROUP(Feeds), Feeds::AutoUpdateEnabled, m_ui->m_checkAutoUpdate->isChecked());
   settings()->setValue(GROUP(Feeds), Feeds::AutoUpdateOnlyUnfocused, m_ui->m_checkAutoUpdateOnlyUnfocused->isChecked());
