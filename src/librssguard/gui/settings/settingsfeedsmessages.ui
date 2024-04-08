@@ -14,7 +14,7 @@
    <item>
     <widget class="QTabWidget" name="m_tabFeedsMessages">
      <property name="currentIndex">
-      <number>2</number>
+      <number>1</number>
      </property>
      <widget class="QWidget" name="m_tabFeeds">
       <attribute name="title">
@@ -263,6 +263,13 @@
         <widget class="QCheckBox" name="m_checkShowTooltips">
          <property name="text">
           <string>Display tooltips for feeds and articles</string>
+         </property>
+        </widget>
+       </item>
+       <item row="8" column="0" colspan="2">
+        <widget class="QCheckBox" name="m_checkApplyRtlFeedsTitles">
+         <property name="text">
+          <string>Apply RTL mode to feeds titles</string>
          </property>
         </widget>
        </item>
@@ -697,6 +704,7 @@
   <tabstop>m_cbUpdateFeedListDuringFetching</tabstop>
   <tabstop>m_cbListsRestrictedShortcuts</tabstop>
   <tabstop>m_checkShowTooltips</tabstop>
+  <tabstop>m_checkApplyRtlFeedsTitles</tabstop>
   <tabstop>m_checkMarkMessageReadOnSelectionChange</tabstop>
   <tabstop>m_checkRemoveReadMessagesOnExit</tabstop>
   <tabstop>m_cbArticleViewerAlwaysVisible</tabstop>

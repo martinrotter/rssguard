@@ -79,6 +79,7 @@ SettingsFeedsMessages::SettingsFeedsMessages(Settings* settings, QWidget* parent
   connect(m_ui->m_cbUpdateFeedListDuringFetching, &QCheckBox::toggled, this, &SettingsFeedsMessages::dirtifySettings);
   connect(m_ui->m_checkAutoUpdateOnlyUnfocused, &QCheckBox::toggled, this, &SettingsFeedsMessages::dirtifySettings);
 
+  connect(m_ui->m_checkApplyRtlFeedsTitles, &QCheckBox::toggled, this, &SettingsFeedsMessages::dirtifySettings);
 
   connect(m_ui->m_checkMarkMessageReadOnSelectionChange, &QCheckBox::toggled, this, &SettingsFeedsMessages::dirtifySettings);
 
@@ -323,6 +324,8 @@ void SettingsFeedsMessages::loadSettings() {
   m_ui->m_cmbCountsFeedList->setEditText(settings()->value(GROUP(Feeds), SETTING(Feeds::CountFormat)).toString());
   m_ui->m_checkShowTooltips
     ->setChecked(settings()->value(GROUP(Feeds), SETTING(Feeds::EnableTooltipsFeedsMessages)).toBool());
+  m_ui->m_checkApplyRtlFeedsTitles
+    ->setChecked(settings()->value(GROUP(Feeds), SETTING(Feeds::ApplyRtlToFeedsTitles)).toBool());
   m_ui->m_cmbIgnoreContentsChanges
     ->setChecked(settings()->value(GROUP(Messages), SETTING(Messages::IgnoreContentsChanges)).toBool());
   m_ui->m_checkMultilineArticleList
@@ -450,6 +453,7 @@ void SettingsFeedsMessages::saveSettings() {
   settings()->setValue(GROUP(Feeds), Feeds::FeedsUpdateStartupDelay, m_ui->m_spinStartupUpdateDelay->value());
   settings()->setValue(GROUP(Feeds), Feeds::CountFormat, m_ui->m_cmbCountsFeedList->currentText());
   settings()->setValue(GROUP(Feeds), Feeds::EnableTooltipsFeedsMessages, m_ui->m_checkShowTooltips->isChecked());
+  settings()->setValue(GROUP(Feeds), Feeds::ApplyRtlToFeedsTitles, m_ui->m_checkApplyRtlFeedsTitles->isChecked());
   settings()->setValue(GROUP(Messages), Messages::IgnoreContentsChanges, m_ui->m_cmbIgnoreContentsChanges->isChecked());
   settings()->setValue(GROUP(Messages), Messages::MultilineArticleList, m_ui->m_checkMultilineArticleList->isChecked());
   settings()->setValue(GROUP(Messages),
