@@ -276,6 +276,9 @@ DVALUE(int) GUI::ToolbarIconSizeDef = 0;
 DKEY GUI::ToolbarStyle = "toolbar_style";
 DVALUE(Qt::ToolButtonStyle) GUI::ToolbarStyleDef = Qt::ToolButtonIconOnly;
 
+DKEY GUI::SwitchRtlEntireTableview = "switch_rtl_entire_tableview";
+DVALUE(bool) GUI::SwitchRtlEntireTableviewDef = true;
+
 DKEY GUI::HeightRowMessages = "height_row_messages";
 DVALUE(int) GUI::HeightRowMessagesDef = -1;
 

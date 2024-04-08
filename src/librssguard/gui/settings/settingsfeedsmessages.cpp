@@ -79,6 +79,7 @@ SettingsFeedsMessages::SettingsFeedsMessages(Settings* settings, QWidget* parent
   connect(m_ui->m_cbUpdateFeedListDuringFetching, &QCheckBox::toggled, this, &SettingsFeedsMessages::dirtifySettings);
   connect(m_ui->m_checkAutoUpdateOnlyUnfocused, &QCheckBox::toggled, this, &SettingsFeedsMessages::dirtifySettings);
 
+  connect(m_ui->m_checkSwitchRtlEntireTableview, &QCheckBox::toggled, this, &SettingsFeedsMessages::dirtifySettings);
   connect(m_ui->m_checkApplyRtlFeedsTitles, &QCheckBox::toggled, this, &SettingsFeedsMessages::dirtifySettings);
 
   connect(m_ui->m_checkMarkMessageReadOnSelectionChange, &QCheckBox::toggled, this, &SettingsFeedsMessages::dirtifySettings);
@@ -286,6 +287,8 @@ void SettingsFeedsMessages::loadSettings() {
     ->setChecked(settings()->value(GROUP(Feeds), SETTING(Feeds::OnlyBasicShortcutsInLists)).toBool());
   m_ui->m_cbHideCountsIfNoUnread
     ->setChecked(settings()->value(GROUP(Feeds), SETTING(Feeds::HideCountsIfNoUnread)).toBool());
+  m_ui->m_checkSwitchRtlEntireTableview
+    ->setChecked(settings()->value(GROUP(GUI), SETTING(GUI::SwitchRtlEntireTableview)).toBool());
   m_ui->m_cmbUnreadIconType
     ->setCurrentIndex(m_ui->m_cmbUnreadIconType
                         ->findData(settings()->value(GROUP(Messages), SETTING(Messages::UnreadIconType)).toInt()));
@@ -399,6 +402,8 @@ void SettingsFeedsMessages::saveSettings() {
 
   settings()->setValue(GROUP(Feeds), Feeds::HideCountsIfNoUnread, m_ui->m_cbHideCountsIfNoUnread->isChecked());
   settings()->setValue(GROUP(Messages), Messages::UnreadIconType, m_ui->m_cmbUnreadIconType->currentData().toInt());
+
+  settings()->setValue(GROUP(GUI), GUI::SwitchRtlEntireTableview, m_ui->m_checkSwitchRtlEntireTableview->isChecked());
 
   // Make registry hack to make "show app window after external viewer called" feature
   // work more reliably on Windows 10+.

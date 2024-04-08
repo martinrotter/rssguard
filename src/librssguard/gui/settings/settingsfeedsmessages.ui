@@ -14,7 +14,7 @@
    <item>
     <widget class="QTabWidget" name="m_tabFeedsMessages">
      <property name="currentIndex">
-      <number>1</number>
+      <number>3</number>
      </property>
      <widget class="QWidget" name="m_tabFeeds">
       <attribute name="title">
@@ -664,6 +664,22 @@
          </property>
         </widget>
        </item>
+       <item row="11" column="0">
+        <widget class="QGroupBox" name="m_gbRtlBehaviour">
+         <property name="title">
+          <string>RTL behaviour</string>
+         </property>
+         <layout class="QFormLayout" name="formLayout_21">
+          <item row="0" column="0">
+           <widget class="QCheckBox" name="m_checkSwitchRtlEntireTableview">
+            <property name="text">
+             <string>Switch messages tableview direction</string>
+            </property>
+           </widget>
+          </item>
+         </layout>
+        </widget>
+       </item>
       </layout>
      </widget>
     </widget>
@@ -728,6 +744,7 @@
   <tabstop>m_tabFeedsMessages</tabstop>
   <tabstop>m_gbFeedListFont</tabstop>
   <tabstop>m_gbArticleListFont</tabstop>
+  <tabstop>m_checkSwitchRtlEntireTableview</tabstop>
  </tabstops>
  <resources/>
  <connections/>

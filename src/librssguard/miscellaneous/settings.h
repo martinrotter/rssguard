@@ -380,6 +380,9 @@ namespace GUI {
   KEY DefaultSortColumnFeeds;
   VALUE(int) DefaultSortColumnFeedsDef;
 
+  KEY SwitchRtlEntireTableview;
+  VALUE(bool) SwitchRtlEntireTableviewDef;
+
   KEY HeightRowMessages;
   VALUE(int) HeightRowMessagesDef;
 
