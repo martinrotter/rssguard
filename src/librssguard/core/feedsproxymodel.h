@@ -56,7 +56,7 @@ class FeedsProxyModel : public QSortFilterProxyModel {
     void invalidateReadFeedsFilter(bool set_new_value = false, bool show_unread_only = false);
 
   signals:
-    void expandAfterFilterIn(QModelIndex source_idx) const;
+    void indexNotFilteredOutAnymore(QModelIndex source_idx) const;
 
     // There was some drag/drop operation, notify view about this.
     void requireItemValidationAfterDragDrop(const QModelIndex& source_index);
@@ -79,6 +79,7 @@ class FeedsProxyModel : public QSortFilterProxyModel {
     bool m_showNodeLabels;
     bool m_showNodeImportant;
     QList<RootItem::Kind> m_priorities;
+    QList<QPair<int, QModelIndex>> m_hiddenIndices;
 };
 
 #endif // FEEDSPROXYMODEL_H

@@ -42,6 +42,7 @@ FeedsView::FeedsView(QWidget* parent)
   m_proxyModel->setView(this);
 
   // Connections.
+  connect(&m_expansionDelayer, &QTimer::timeout, this, &FeedsView::reloadDelayedExpansions);
   connect(m_sourceModel, &FeedsModel::itemExpandRequested, this, &FeedsView::onItemExpandRequested);
   connect(m_sourceModel, &FeedsModel::itemExpandStateSaveRequested, this, &FeedsView::onItemExpandStateSaveRequested);
   connect(header(), &QHeaderView::sortIndicatorChanged, this, &FeedsView::saveSortState);
@@ -49,7 +50,7 @@ FeedsView::FeedsView(QWidget* parent)
           &FeedsProxyModel::requireItemValidationAfterDragDrop,
           this,
           &FeedsView::validateItemAfterDragDrop);
-  connect(m_proxyModel, &FeedsProxyModel::expandAfterFilterIn, this, &FeedsView::expandItemDelayed);
+  connect(m_proxyModel, &FeedsProxyModel::indexNotFilteredOutAnymore, this, &FeedsView::reloadItemExpandState);
   connect(this, &FeedsView::expanded, this, &FeedsView::onIndexExpanded);
   connect(this, &FeedsView::collapsed, this, &FeedsView::onIndexCollapsed);
 
@@ -818,6 +819,24 @@ void FeedsView::onIndexCollapsed(const QModelIndex& idx) {
   }
 }
 
+void FeedsView::reloadDelayedExpansions() {
+  qDebugNN << LOGSEC_GUI << "Reloading delayed feed list expansions.";
+
+  m_expansionDelayer.stop();
+  m_dontSaveExpandState = true;
+
+  for (const QPair<QModelIndex, bool>& exp : m_delayedItemExpansions) {
+    auto idx = m_proxyModel->mapFromSource(exp.first);
+
+    if (idx.isValid()) {
+      setExpanded(idx, exp.second);
+    }
+  }
+
+  m_dontSaveExpandState = false;
+  m_delayedItemExpansions.clear();
+}
+
 void FeedsView::onItemExpandStateSaveRequested(RootItem* item) {
   saveExpandStates(item);
 }
@@ -862,25 +881,22 @@ void FeedsView::loadAllExpandStates() {
                                             .toInt()));
 }
 
-void FeedsView::expandItemDelayed(const QModelIndex& source_idx) {
-  // QTimer::singleShot(100, this, [=] {
+void FeedsView::reloadItemExpandState(const QModelIndex& source_idx) {
   //  Model requests to expand some items as they are visible and there is
   //  a filter active, so they maybe were not visible before.
-  QModelIndex pidx = m_proxyModel->mapFromSource(source_idx);
 
-  // NOTE: These changes are caused by filtering mechanisms
-  // and we don't want to store the values.
-  m_dontSaveExpandState = true;
+  RootItem* it = m_sourceModel->itemForIndex(source_idx);
 
-#if QT_VERSION >= 0x050D00 // Qt >= 5.13.0
-  expandRecursively(pidx);
-#else
-  setExpanded(pidx, true);
-#endif
+  if (it == nullptr) {
+    return;
+  }
 
-  m_dontSaveExpandState = false;
+  const QString setting_name = it->hashCode();
+  const bool expand =
+    qApp->settings()->value(GROUP(CategoriesExpandStates), setting_name, it->childCount() > 0).toBool();
 
-  //});
+  m_delayedItemExpansions.append({source_idx, expand});
+  m_expansionDelayer.start(300);
 }
 
 QMenu* FeedsView::initializeContextMenuCategories(RootItem* clicked_item) {

@@ -322,6 +322,25 @@ bool FeedsProxyModel::lessThan(const QModelIndex& left, const QModelIndex& right
 
 bool FeedsProxyModel::filterAcceptsRow(int source_row, const QModelIndex& source_parent) const {
   bool should_show = filterAcceptsRowInternal(source_row, source_parent);
+
+  if (should_show && m_hiddenIndices.contains(QPair<int, QModelIndex>(source_row, source_parent))) {
+    qDebugNN << LOGSEC_CORE << "Item"
+             << QUOTE_W_SPACE(m_sourceModel
+                                ->data(m_sourceModel->index(source_row, 0, source_parent), Qt::ItemDataRole::EditRole)
+                                .toString())
+             << "was previously hidden and now shows up, expand.";
+
+    const_cast<FeedsProxyModel*>(this)->m_hiddenIndices.removeAll(QPair<int, QModelIndex>(source_row, source_parent));
+
+    // Now, item now should be displayed and previously it was not.
+    // Expand!
+    emit indexNotFilteredOutAnymore(m_sourceModel->index(source_row, 0, source_parent));
+  }
+
+  if (!should_show) {
+    const_cast<FeedsProxyModel*>(this)->m_hiddenIndices.append(QPair<int, QModelIndex>(source_row, source_parent));
+  }
+
   return should_show;
 }
 

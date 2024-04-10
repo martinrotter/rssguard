@@ -8,6 +8,7 @@
 #include "gui/toolbars/feedstoolbar.h"
 
 #include <QStyledItemDelegate>
+#include <QTimer>
 
 class FeedsProxyModel;
 class Feed;
@@ -107,7 +108,8 @@ class RSSGUARD_DLLSPEC FeedsView : public BaseTreeView {
     void onIndexExpanded(const QModelIndex& idx);
     void onIndexCollapsed(const QModelIndex& idx);
 
-    void expandItemDelayed(const QModelIndex& source_idx);
+    void reloadDelayedExpansions();
+    void reloadItemExpandState(const QModelIndex& source_idx);
     void markSelectedItemReadStatus(RootItem::ReadStatus read);
     void markAllItemsReadStatus(RootItem::ReadStatus read);
 
@@ -146,6 +148,8 @@ class RSSGUARD_DLLSPEC FeedsView : public BaseTreeView {
     FeedsModel* m_sourceModel;
     FeedsProxyModel* m_proxyModel;
     bool m_dontSaveExpandState;
+    QList<QPair<QModelIndex, bool>> m_delayedItemExpansions;
+    QTimer m_expansionDelayer;
 
     // QTreeView interface
   protected:
