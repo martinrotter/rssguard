@@ -316,17 +316,17 @@ versione facendo clic su questa notifica a scomparsa.</translation>
     <message>
       <location filename="../src/librssguard/gui/reusable/articleamountcontrol.ui" line="238"/>
       <source>Just move articles to recycle bin, do not purge them</source>
-      <translation type="unfinished">Just move articles to recycle bin, do not purge them</translation>
+      <translation>Basta spostare gli articoli per riciclare il cestino, non pulirli</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/reusable/articleamountcontrol.cpp" line="11"/>
       <source>Setting any limitations here will instruct %1 to ignore some incoming articles. The logic runs AFTER any article filters so even if your article filter accepts particular article, it can still subsequently ignored and not added to database.</source>
-      <translation type="unfinished">Setting any limitations here will instruct %1 to ignore some incoming articles. The logic runs AFTER any article filters so even if your article filter accepts particular article, it can still subsequently ignored and not added to database.</translation>
+      <translation>Impostazione di eventuali limitazioni qui insegnerà a %1 di ignorare alcuni articoli in arrivo. La logica esegue DOPO qualsiasi filtro articolo quindi anche se il filtro articolo accetta particolare articolo, può ancora essere successivamente ignorato e non aggiunto al database.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/reusable/articleamountcontrol.cpp" line="16"/>
       <source>All excessive articles are removed automatically by the application, usually after particular feed is fetched. Articles are either completely purged (including articles from recycle bin) from internal database or are just moved to recycle bin.</source>
-      <translation type="unfinished">All excessive articles are removed automatically by the application, usually after particular feed is fetched. Articles are either completely purged (including articles from recycle bin) from internal database or are just moved to recycle bin.</translation>
+      <translation>Tutti gli articoli eccessivi vengono rimossi automaticamente dall'applicazione, di solito dopo che un particolare feed viene recuperato. Gli articoli sono completamente eliminati (inclusi gli articoli dal cestino del cestino) dal database interno o vengono semplicemente spostati nel cestino.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/reusable/articleamountcontrol.cpp" line="22"/>
@@ -491,8 +491,8 @@ versione facendo clic su questa notifica a scomparsa.</translation>
       <location filename="../src/librssguard/services/abstract/category.cpp" line="73"/>
       <source>Number of feeds: %1
 Number of categories: %2</source>
-      <translation type="unfinished">Number of feeds: %1
-Number of categories: %2</translation>
+      <translation>Numero di feed: %1
+Numero di categorie: %2</translation>
     </message>
   </context>
   <context>
@@ -790,7 +790,7 @@ Clicca qui per aprire la cartella genitore.</translation>
     <message>
       <location filename="../src/librssguard-gmail/src/gui/emailpreviewer.cpp" line="121"/>
       <source>Attachment cannot be downloaded because some general error happened.</source>
-      <translation type="unfinished">Attachment cannot be downloaded because some general error happened.</translation>
+      <translation>L'allegato non può essere scaricato perché si è verificato un errore generale.</translation>
     </message>
   </context>
   <context>
@@ -826,7 +826,7 @@ Clicca qui per aprire la cartella genitore.</translation>
     <message>
       <location filename="../src/librssguard/services/abstract/feed.cpp" line="262"/>
       <source>uses global settings, but global auto-fetching of articles is disabled</source>
-      <translation type="unfinished">uses global settings, but global auto-fetching of articles is disabled</translation>
+      <translation>usa le impostazioni globali, ma l'auto-recupero globale degli articoli è disabilitato</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/abstract/feed.cpp" line="286"/>
@@ -847,13 +847,13 @@ Clicca qui per aprire la cartella genitore.</translation>
       <location filename="../src/librssguard/services/abstract/feed.cpp" line="248"/>
       <source>does not use auto-fetching of articles</source>
       <extracomment>Describes feed auto-update status.</extracomment>
-      <translation type="unfinished">does not use auto-fetching of articles</translation>
+      <translation>disabilita il recupero automatico degli articoli</translation>
     </message>
     <message numerus="yes">
       <location filename="../src/librssguard/services/abstract/feed.cpp" line="259"/>
       <source>uses global settings (%n minute(s) to next auto-fetch of articles)</source>
       <translation type="unfinished">
-        <numerusform>uses global settings (%n minute(s) to next auto-fetch of articles)</numerusform>
+        <numerusform>utilizza le impostazioni globali (%n minuto/i al prossimo auto-recupero degli articoli)</numerusform>
         <numerusform>uses global settings (%n minute(s) to next auto-fetch of articles)</numerusform>
       </translation>
     </message>
@@ -861,9 +861,9 @@ Clicca qui per aprire la cartella genitore.</translation>
       <location filename="../src/librssguard/services/abstract/feed.cpp" line="273"/>
       <source>uses specific settings (%n minute(s) to next auto-fetching of new articles)</source>
       <extracomment>Describes feed auto-update status.</extracomment>
-      <translation type="unfinished">
-        <numerusform>uses specific settings (%n minute(s) to next auto-fetching of new articles)</numerusform>
-        <numerusform>uses specific settings (%n minute(s) to next auto-fetching of new articles)</numerusform>
+      <translation>
+        <numerusform>utilizza le impostazioni globali (%n minuto/i al prossimo auto-recupero degli articoli)</numerusform>
+        <numerusform>utilizza le impostazioni globali (%n minuto/i al prossimo auto-recupero degli articoli)</numerusform>
       </translation>
     </message>
     <message>
@@ -946,12 +946,12 @@ Item ID: %5</translation>
     <message>
       <location filename="../src/librssguard/miscellaneous/feedreader.cpp" line="91"/>
       <source>Cannot fetch articles at this point</source>
-      <translation type="unfinished">Cannot fetch articles at this point</translation>
+      <translation>Impossibile recuperare gli articoli in questo punto</translation>
     </message>
     <message>
       <location filename="../src/librssguard/miscellaneous/feedreader.cpp" line="92"/>
       <source>You cannot fetch new articles now because another critical operation is ongoing.</source>
-      <translation type="unfinished">You cannot fetch new articles now because another critical operation is ongoing.</translation>
+      <translation>Non puoi recuperare nuovi articoli ora perché è in corso un'altra operazione critica.</translation>
     </message>
   </context>
   <context>
@@ -1343,7 +1343,7 @@ Item ID: %5</translation>
     <message>
       <location filename="../src/librssguard/gui/feedsview.cpp" line="663"/>
       <source>Context menu for accounts</source>
-      <translation type="unfinished">Context menu for accounts</translation>
+      <translation>Menu contestuale per le categorie</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/feedsview.cpp" line="1042"/>
@@ -1353,13 +1353,13 @@ Item ID: %5</translation>
     <message>
       <location filename="../src/librssguard/gui/feedsview.cpp" line="990"/>
       <source>Context menu for important articles</source>
-      <translation type="unfinished">Context menu for important articles</translation>
+      <translation>Menu contestuale per articoli importanti</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/feedsview.cpp" line="168"/>
       <location filename="../src/librssguard/gui/feedsview.cpp" line="186"/>
       <source>Not supported by account</source>
-      <translation type="unfinished">Not supported by account</translation>
+      <translation>Non supportato dall'account</translation>
     </message>
   </context>
   <context>
@@ -1382,7 +1382,7 @@ Item ID: %5</translation>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formabout.cpp" line="54"/>
       <source>Cannot copy info to clipboard.</source>
-      <translation type="unfinished">Cannot copy info to clipboard.</translation>
+      <translation>Impossibile copiare in Appunti.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formabout.cpp" line="68"/>
@@ -1905,12 +1905,12 @@ QtWebEngine cache folder -&gt; &quot;%7&quot;</translation>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formdatabasecleanup.ui" line="20"/>
       <source>Cleanup settings</source>
-      <translation type="unfinished">Cleanup settings</translation>
+      <translation>Pulizia Impostazioni</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formdatabasecleanup.ui" line="26"/>
       <source>Optimize database file</source>
-      <translation type="unfinished">Optimize database file</translation>
+      <translation>Ottimizza il file del database</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formdatabasecleanup.ui" line="36"/>
@@ -1958,7 +1958,7 @@ QtWebEngine cache folder -&gt; &quot;%7&quot;</translation>
     <message>
       <location filename="../src/librssguard-standard/src/gui/formdiscoverfeeds.ui" line="14"/>
       <source>Discover feeds</source>
-      <translation type="unfinished">Discover feeds</translation>
+      <translation>Scopri i feed</translation>
     </message>
     <message>
       <location filename="../src/librssguard-standard/src/gui/formdiscoverfeeds.ui" line="20"/>
