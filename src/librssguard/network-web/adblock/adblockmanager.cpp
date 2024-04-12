@@ -326,6 +326,8 @@ QProcess* AdBlockManager::startServer(int port) {
 }
 
 void AdBlockManager::killServer() {
+  m_cacheBlocks.clear();
+
   if (m_serverProcess != nullptr) {
     disconnect(m_serverProcess,
                QOverload<int, QProcess::ExitStatus>::of(&QProcess::finished),
@@ -341,10 +343,7 @@ void AdBlockManager::killServer() {
   }
 }
 
-void AdBlockManager::updateUnifiedFiltersFileAndStartServer() {
-  m_cacheBlocks.clear();
-  killServer();
-
+void AdBlockManager::updateUnifiedFilters() {
   if (QFile::exists(m_unifiedFiltersFile)) {
     QFile::remove(m_unifiedFiltersFile);
   }
@@ -383,6 +382,11 @@ void AdBlockManager::updateUnifiedFiltersFileAndStartServer() {
                          QDir::separator() + QSL("adblock.filters");
 
   IOFactory::writeFile(m_unifiedFiltersFile, unified_contents.toUtf8());
+}
+
+void AdBlockManager::updateUnifiedFiltersFileAndStartServer() {
+  killServer();
+  updateUnifiedFilters();
 
   if (m_enabled) {
     auto custom_port = qApp->customAdblockPort();

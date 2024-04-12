@@ -74,7 +74,9 @@ class AdBlockManager : public QObject {
     void onServerProcessFinished(int exit_code, QProcess::ExitStatus exit_status);
 
   private:
+    void updateUnifiedFilters();
     void updateUnifiedFiltersFileAndStartServer();
+
     QProcess* startServer(int port);
     void killServer();
 
