@@ -2,6 +2,8 @@
 
 #include "miscellaneous/textfactory.h"
 
+#include "3rd-party/boolinq/boolinq.h"
+#include "3rd-party/qdatetimeparser/qdatetimeparser.h"
 #include "3rd-party/sc/simplecrypt.h"
 #include "definitions/definitions.h"
 #include "exceptions/applicationexception.h"
@@ -104,6 +106,7 @@ QDateTime TextFactory::parseDateTime(const QString& date_time, QString* used_dt_
 
   // Iterate over patterns and check if input date/time matches the pattern.
   for (const QString& pattern : std::as_const(date_patterns)) {
+    /*
     QString input_date_chopped = input_date.left(pattern.size());
 
 #if QT_VERSION >= 0x060700 // Qt >= 6.7.0
@@ -111,6 +114,11 @@ QDateTime TextFactory::parseDateTime(const QString& date_time, QString* used_dt_
 #else
     dt = locale.toDateTime(input_date_chopped, pattern);
 #endif
+*/
+    QDateTimeParser par(QMetaType::QDateTime, QDateTimeParser::FromString, QCalendar());
+    par.setDefaultLocale(QLocale::c());
+    par.parseFormat(pattern);
+    par.fromString(input_date, &dt);
 
     if (dt.isValid()) {
       // Make sure that this date/time is considered UTC.
@@ -161,14 +169,22 @@ QDateTime TextFactory::parseDateTime(qint64 milis_from_epoch) {
 }
 
 QStringList TextFactory::dateTimePatterns() {
-  return QStringList() << QSL("yyyy-MM-ddTHH:mm:ss") << QSL("MMM dd yyyy hh:mm:ss") << QSL("MMM d yyyy hh:mm:ss")
-                       << QSL("ddd, dd MMM yyyy HH:mm:ss") << QSL("ddd, dd MMM yy HH:mm:ss")
-                       << QSL("ddd, dd MMM yyyy HH:mm") << QSL("ddd, d MMM yyyy HH:mm:ss")
-                       << QSL("dd MMM yyyy hh:mm:ss") << QSL("dd MMM yyyy") << QSL("yyyy-MM-dd HH:mm:ss.z")
-                       << QSL("yyyy-MM-ddThh:mm:ss") << QSL("yyyy-MM-ddThh:mm") << QSL("yyyy-MM-dd")
-                       << QSL("yyyy-MM-dd") << QSL("yyyy-MM") << QSL("d MMM yyyy HH:mm:ss") << QSL("yyyyMMddThhmmss")
-                       << QSL("yyyyMMdd") << QSL("yyyy") << QSL("hh:mm:ss") << QSL("h:m:s AP") << QSL("h:mm")
-                       << QSL("H:mm") << QSL("h:m") << QSL("h.m");
+  QStringList pat;
+
+  pat << QSL("yyyy-MM-ddTHH:mm:ss") << QSL("MMM dd yyyy hh:mm:ss") << QSL("MMM d yyyy hh:mm:ss")
+      << QSL("ddd, dd MMM yyyy HH:mm:ss") << QSL("ddd, dd MMM yy HH:mm:ss") << QSL("ddd, dd MMM yyyy HH:mm")
+      << QSL("ddd, d MMM yyyy HH:mm:ss") << QSL("dd MMM yyyy hh:mm:ss") << QSL("dd MMM yyyy")
+      << QSL("yyyy-MM-dd HH:mm:ss.z") << QSL("yyyy-MM-ddThh:mm:ss") << QSL("yyyy-MM-ddThh:mm") << QSL("yyyy-MM-dd")
+      << QSL("yyyy-MM-dd") << QSL("yyyy-MM") << QSL("d MMM yyyy HH:mm:ss") << QSL("yyyyMMddThhmmss") << QSL("yyyyMMdd")
+      << QSL("yyyy") << QSL("hh:mm:ss") << QSL("h:m:s AP") << QSL("h:mm") << QSL("H:mm") << QSL("h:m") << QSL("h.m");
+
+  auto std_pat = boolinq::from(pat)
+                   .orderBy([](const QString& str) {
+                     return str.size() * -1;
+                   })
+                   .toStdList();
+
+  return FROM_STD_LIST(QStringList, std_pat);
 }
 
 QString TextFactory::encrypt(const QString& text, quint64 key) {

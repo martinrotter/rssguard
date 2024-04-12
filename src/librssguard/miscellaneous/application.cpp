@@ -10,6 +10,7 @@
 #include "3rd-party/sqlite/sqlite3.h"
 #endif
 
+#include "3rd-party/qdatetimeparser/qdatetimeparser.h"
 #include "core/feedsmodel.h"
 #include "dynamic-shortcuts/dynamicshortcuts.h"
 #include "exceptions/applicationexception.h"
@@ -96,6 +97,20 @@ Application::Application(const QString& id, int& argc, char** argv, const QStrin
 #endif
 #endif
 
+  /*
+  QString aa = "Fri, 12 Apr 2024 5:23:57 GMT";
+  QDateTimeParser par(QMetaType::QDateTime, QDateTimeParser::FromString, QCalendar());
+
+  par.setDefaultLocale(QLocale::c());
+
+  QString st = "ddd, dd MMM yyyy H:m:s";
+  bool parsed = par.parseFormat(st);
+  QDateTime dt;
+  par.fromString(aa, &dt);
+
+  // QDateTime tim = QDateTime::fromString(aa, form);
+  QString check = dt.toString();
+*/
   QString custom_ua;
 
   parseCmdArgumentsFromMyInstance(raw_cli_args, custom_ua);
