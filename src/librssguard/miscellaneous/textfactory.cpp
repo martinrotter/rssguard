@@ -178,7 +178,7 @@ QStringList TextFactory::dateTimePatterns() {
       << QSL("yyyy-MM-dd") << QSL("yyyy-MM") << QSL("d MMM yyyy HH:mm:ss") << QSL("yyyyMMddThhmmss") << QSL("yyyyMMdd")
       << QSL("yyyy") << QSL("hh:mm:ss") << QSL("h:m:s AP") << QSL("h:mm") << QSL("H:mm") << QSL("h:m") << QSL("h.m");
 
-  auto std_pat = boolinq::from(pat)
+  auto std_pat = boolinq::from(pat.begin(), pat.end())
                    .orderBy([](const QString& str) {
                      return str.size() * -1;
                    })
