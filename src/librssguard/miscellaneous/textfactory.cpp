@@ -90,7 +90,7 @@ QDateTime TextFactory::parseDateTime(const QString& date_time, QString* used_dt_
 
   QDateTime dt;
   QTime time_zone_offset;
-  const QLocale locale(QLocale::Language::C);
+  // const QLocale locale(QLocale::Language::C);
   bool positive_time_zone_offset = false;
   static QStringList date_patterns = dateTimePatterns();
   QStringList timezone_offset_patterns;
@@ -115,6 +115,10 @@ QDateTime TextFactory::parseDateTime(const QString& date_time, QString* used_dt_
     dt = locale.toDateTime(input_date_chopped, pattern);
 #endif
 */
+    // NOTE: We use QDateTimeParser class extracted/modified from Qt sources to allow
+    // matching only prefixes of input date strings.
+    //
+    // Built-in parser only matches if the WHOLE input strings matches.
     QDateTimeParser par(QMetaType::QDateTime, QDateTimeParser::FromString, QCalendar());
     par.setDefaultLocale(QLocale::c());
     par.parseFormat(pattern);
