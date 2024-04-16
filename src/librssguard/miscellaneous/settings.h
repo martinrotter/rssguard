@@ -93,6 +93,9 @@ namespace Feeds {
   KEY EnableTooltipsFeedsMessages;
   VALUE(bool) EnableTooltipsFeedsMessagesDef;
 
+  KEY ApplyRtlToFeedsTitles;
+  VALUE(bool) ApplyRtlToFeedsTitlesDef;
+
   KEY AutoUpdateInterval;
   VALUE(int) AutoUpdateIntervalDef;
 
@@ -159,6 +162,9 @@ namespace Messages {
 
   KEY HoursToAvoidArticle;
   VALUE(int) HoursToAvoidArticleDef;
+
+  KEY MarkMessageReadOnSelectionChange;
+  VALUE(bool) MarkMessageReadOnSelectionChangeDef;
 
   KEY LimitDoNotRemoveUnread;
   VALUE(bool) LimitDoNotRemoveUnreadDef;
@@ -373,6 +379,9 @@ namespace GUI {
 
   KEY DefaultSortColumnFeeds;
   VALUE(int) DefaultSortColumnFeedsDef;
+
+  KEY SwitchRtlEntireTableview;
+  VALUE(bool) SwitchRtlEntireTableviewDef;
 
   KEY HeightRowMessages;
   VALUE(int) HeightRowMessagesDef;

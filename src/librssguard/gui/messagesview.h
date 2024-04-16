@@ -40,6 +40,9 @@ class MessagesView : public BaseTreeView {
     // Loads un-deleted messages from selected feeds.
     void loadItem(RootItem* item);
 
+    // Allow to recursively collects all child & grandchild feeds of the given RootItem.
+    QList<RootItem*> collectChildAndGrandchildFeeds(RootItem* item);
+
 // Message manipulators.
 #if defined(ENABLE_MEDIAPLAYER)
     void playSelectedArticleInMediaPlayer();
