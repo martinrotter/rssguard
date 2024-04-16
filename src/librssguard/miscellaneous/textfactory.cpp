@@ -81,71 +81,40 @@ bool TextFactory::couldBeHtml(const QString& string) {
 }
 
 QDateTime TextFactory::parseDateTime(const QString& date_time, QString* used_dt_format) {
-  const QString input_date = date_time.simplified();
+  QString input_date = date_time.simplified().replace(QSL("GMT"), QSL("UTC"));
 
   if (input_date.isEmpty()) {
     return QDateTime();
   }
 
   QDateTime dt;
-  QTime time_zone_offset;
   const QLocale locale(QLocale::Language::C);
-  bool positive_time_zone_offset = false;
+  static QStringList date_patterns = dateTimePatterns(true);
 
-  static QStringList date_patterns = dateTimePatterns();
-  static QStringList timezone_offset_patterns = tzOffsetPatterns();
+  // QDateTime dt1 = locale.toDateTime("GMT", "t");
+  // QString dt2 = dt1.toString();
 
-  // Iterate over patterns and check if input date/time matches the pattern.
   for (const QString& pattern : std::as_const(date_patterns)) {
-    QString input_date_chopped = input_date.left(pattern.size());
-
 #if QT_VERSION >= 0x060700 // Qt >= 6.7.0
-    dt = locale.toDateTime(input_date_chopped, pattern, 2000);
+    dt = locale.toDateTime(input_date, pattern, 2000);
 #else
-    dt = locale.toDateTime(input_date_chopped, pattern);
+    dt = locale.toDateTime(input_date, pattern);
 #endif
 
     if (dt.isValid()) {
       // Make sure that this date/time is considered UTC.
-      dt.setTimeSpec(Qt::TimeSpec::UTC);
+      dt = dt.toUTC();
 
       if (used_dt_format != nullptr) {
+        used_dt_format->clear();
         used_dt_format->append(pattern);
       }
 
-      // We find offset from UTC.
-      if (input_date.size() >= TIMEZONE_OFFSET_LIMIT) {
-        QString offset_sanitized = input_date.mid(pattern.size()).replace(QL1S(" "), QString());
-
-        for (const QString& pattern_t : std::as_const(timezone_offset_patterns)) {
-          time_zone_offset = QTime::fromString(offset_sanitized.left(pattern_t.size()), pattern_t);
-
-          if (time_zone_offset.isValid()) {
-            positive_time_zone_offset = pattern_t.at(0) == QL1C('+');
-            break;
-          }
-        }
-      }
-
-      if (time_zone_offset.isValid()) {
-        // Time zone offset was detected.
-        if (positive_time_zone_offset) {
-          // Offset is positive, so we have to subtract it to get
-          // the original UTC.
-          return dt.addSecs(-QTime(0, 0, 0, 0).secsTo(time_zone_offset));
-        }
-        else {
-          // Vice versa.
-          return dt.addSecs(QTime(0, 0, 0, 0).secsTo(time_zone_offset));
-        }
-      }
-      else {
-        return dt;
-      }
+      return dt;
     }
   }
 
-  // Parsing failed, return invalid datetime.
+  qCriticalNN << LOGSEC_CORE << "Date/time string NOT recognized:" << QUOTE_W_SPACE_DOT(input_date);
   return QDateTime();
 }
 
@@ -153,29 +122,49 @@ QDateTime TextFactory::parseDateTime(qint64 milis_from_epoch) {
   return QDateTime::fromMSecsSinceEpoch(milis_from_epoch, Qt::TimeSpec::UTC);
 }
 
-QStringList TextFactory::dateTimePatterns() {
+QStringList TextFactory::dateTimePatterns(bool with_tzs) {
   QStringList pat;
 
-  pat << QSL("yyyy-MM-ddTHH:mm:ss") << QSL("MMM dd yyyy hh:mm:ss") << QSL("MMM d yyyy hh:mm:ss")
-      << QSL("ddd, dd MMM yyyy HH:mm:ss") << QSL("ddd, dd MMM yy HH:mm:ss") << QSL("ddd, dd MMM yyyy HH:mm")
-      << QSL("ddd, d MMM yyyy HH:mm:ss") << QSL("dd MMM yyyy hh:mm:ss") << QSL("dd MMM yyyy")
-      << QSL("yyyy-MM-dd HH:mm:ss.z") << QSL("yyyy-MM-ddThh:mm:ss") << QSL("yyyy-MM-ddThh:mm") << QSL("yyyy-MM-dd")
-      << QSL("yyyy-MM-dd") << QSL("yyyy-MM") << QSL("d MMM yyyy HH:mm:ss") << QSL("yyyyMMddThhmmss") << QSL("yyyyMMdd")
-      << QSL("yyyy") << QSL("hh:mm:ss") << QSL("h:m:s AP") << QSL("h:mm") << QSL("H:mm") << QSL("h:m") << QSL("h.m");
+  pat << QSL("yyyy-MM-ddTHH:mm:ss");
+  pat << QSL("yyyy-MM-ddThh:mm:ss");
+  pat << QSL("yyyy-MM-dd HH:mm:ss.z");
+  pat << QSL("yyyy-MM-ddThh:mm");
+  pat << QSL("yyyyMMddThhmmss");
+  pat << QSL("yyyyMMdd");
+  pat << QSL("yyyy");
+  pat << QSL("yyyy-MM-dd");
+  pat << QSL("yyyy-MM");
 
-  auto std_pat = boolinq::from(pat.begin(), pat.end())
-                   .orderBy([](const QString& str) {
-                     return str.size() * -1;
-                   })
-                   .toStdList();
+  pat << QSL("MMM dd yyyy hh:mm:ss");
+  pat << QSL("MMM d yyyy hh:mm:ss");
 
-  return FROM_STD_LIST(QStringList, std_pat);
-}
+  pat << QSL("ddd, dd MMM yyyy HH:mm:ss");
+  pat << QSL("ddd, dd MMM yyyy HH:mm");
+  pat << QSL("ddd, dd MMM yy HH:mm:ss");
+  pat << QSL("ddd, d MMM yyyy HH:mm:ss");
 
-QStringList TextFactory::tzOffsetPatterns() {
-  QStringList pat;
+  // Thu, 07 Mar 2024 01 : 12 : 13 GMT
 
-  pat << QSL("+hh:mm") << QSL("-hh:mm") << QSL("+hhmm") << QSL("-hhmm") << QSL("+hh") << QSL("-hh");
+  pat << QSL("dd MMM yyyy hh:mm:ss");
+  pat << QSL("dd MMM yyyy");
+
+  pat << QSL("d MMM yyyy HH:mm:ss");
+
+  pat << QSL("hh:mm:ss");
+  pat << QSL("h:m:s");
+  pat << QSL("h:mm");
+  pat << QSL("H:mm");
+  pat << QSL("h:m");
+  pat << QSL("h.m");
+
+  if (with_tzs) {
+    for (int i = 0; i < pat.size(); i += 3) {
+      QString base_pattern = pat.value(i);
+
+      pat.insert(i + 1, base_pattern + QSL("t"));
+      pat.insert(i + 2, base_pattern + QSL(" t"));
+    }
+  }
 
   return pat;
 }

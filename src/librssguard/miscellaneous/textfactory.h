@@ -31,8 +31,7 @@ class RSSGUARD_DLLSPEC TextFactory {
     // Converts 1970-epoch miliseconds to date/time.
     // NOTE: This method tries to always return time in UTC.
     static QDateTime parseDateTime(qint64 milis_from_epoch);
-    static QStringList dateTimePatterns();
-    static QStringList tzOffsetPatterns();
+    static QStringList dateTimePatterns(bool with_tzs);
     static QString encrypt(const QString& text, quint64 key = 0);
     static QString decrypt(const QString& text, quint64 key = 0);
     static QString newline();

@@ -232,7 +232,7 @@ QIcon SettingsFeedsMessages::icon() const {
 }
 
 void SettingsFeedsMessages::initializeMessageDateFormats() {
-  QStringList patterns = TextFactory::dateTimePatterns();
+  QStringList patterns = TextFactory::dateTimePatterns(false);
 
   m_ui->m_cmbMessagesDateTimeFormat->addItems(patterns);
   m_ui->m_cmbMessagesTimeFormat->addItems(patterns);
