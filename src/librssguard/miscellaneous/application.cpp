@@ -10,7 +10,6 @@
 #include "3rd-party/sqlite/sqlite3.h"
 #endif
 
-#include "3rd-party/qdatetimeparser/qdatetimeparser.h"
 #include "core/feedsmodel.h"
 #include "dynamic-shortcuts/dynamicshortcuts.h"
 #include "exceptions/applicationexception.h"

@@ -446,11 +446,6 @@ list(APPEND SOURCES
   3rd-party/boolinq/boolinq.h
 )
 
-list(APPEND SOURCES
-  3rd-party/qdatetimeparser/qdatetimeparser.cpp
-  3rd-party/qdatetimeparser/qdatetimeparser.h
-)
-
 # Add sqlite.
 if(USE_SYSTEM_SQLITE)
   find_package(SQLite3)

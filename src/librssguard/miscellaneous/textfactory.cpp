@@ -3,7 +3,6 @@
 #include "miscellaneous/textfactory.h"
 
 #include "3rd-party/boolinq/boolinq.h"
-#include "3rd-party/qdatetimeparser/qdatetimeparser.h"
 #include "3rd-party/sc/simplecrypt.h"
 #include "definitions/definitions.h"
 #include "exceptions/applicationexception.h"
@@ -90,23 +89,14 @@ QDateTime TextFactory::parseDateTime(const QString& date_time, QString* used_dt_
 
   QDateTime dt;
   QTime time_zone_offset;
-  // const QLocale locale(QLocale::Language::C);
+  const QLocale locale(QLocale::Language::C);
   bool positive_time_zone_offset = false;
+
   static QStringList date_patterns = dateTimePatterns();
-  QStringList timezone_offset_patterns;
-
-  timezone_offset_patterns << QSL("+hh:mm") << QSL("-hh:mm") << QSL("+hhmm") << QSL("-hhmm") << QSL("+hh")
-                           << QSL("-hh");
-
-  /*
-  QString tst = locale.toString(QDateTime(QDate(2024, 3, 20), QTime(16, 17, 0)), "ddd, dd MMM yy HH:mm:ss");
-  QDateTime tst2 = locale.toDateTime(tst, "ddd, dd MMM yy HH:mm:ss");
-  QString tst3 = tst2.toString("ddd, dd MMM yy HH:mm:ss");
-*/
+  static QStringList timezone_offset_patterns = tzOffsetPatterns();
 
   // Iterate over patterns and check if input date/time matches the pattern.
   for (const QString& pattern : std::as_const(date_patterns)) {
-    /*
     QString input_date_chopped = input_date.left(pattern.size());
 
 #if QT_VERSION >= 0x060700 // Qt >= 6.7.0
@@ -114,15 +104,6 @@ QDateTime TextFactory::parseDateTime(const QString& date_time, QString* used_dt_
 #else
     dt = locale.toDateTime(input_date_chopped, pattern);
 #endif
-*/
-    // NOTE: We use QDateTimeParser class extracted/modified from Qt sources to allow
-    // matching only prefixes of input date strings.
-    //
-    // Built-in parser only matches if the WHOLE input strings matches.
-    QDateTimeParser par(QMetaType::QDateTime, QDateTimeParser::FromString, QCalendar());
-    par.setDefaultLocale(QLocale::c());
-    par.parseFormat(pattern);
-    par.fromString(input_date, &dt);
 
     if (dt.isValid()) {
       // Make sure that this date/time is considered UTC.
@@ -189,6 +170,14 @@ QStringList TextFactory::dateTimePatterns() {
                    .toStdList();
 
   return FROM_STD_LIST(QStringList, std_pat);
+}
+
+QStringList TextFactory::tzOffsetPatterns() {
+  QStringList pat;
+
+  pat << QSL("+hh:mm") << QSL("-hh:mm") << QSL("+hhmm") << QSL("-hhmm") << QSL("+hh") << QSL("-hh");
+
+  return pat;
 }
 
 QString TextFactory::encrypt(const QString& text, quint64 key) {

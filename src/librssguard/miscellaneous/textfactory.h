@@ -32,6 +32,7 @@ class RSSGUARD_DLLSPEC TextFactory {
     // NOTE: This method tries to always return time in UTC.
     static QDateTime parseDateTime(qint64 milis_from_epoch);
     static QStringList dateTimePatterns();
+    static QStringList tzOffsetPatterns();
     static QString encrypt(const QString& text, quint64 key = 0);
     static QString decrypt(const QString& text, quint64 key = 0);
     static QString newline();
