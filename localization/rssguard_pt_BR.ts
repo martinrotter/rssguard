@@ -5971,12 +5971,12 @@ Lista de leitores suportados:</translation>
     <message>
       <location filename="../src/librssguard/miscellaneous/skinfactory.cpp" line="633"/>
       <source>items with new articles</source>
-      <translation>itens con novos artigos</translation>
+      <translation>itens com novos artigos</translation>
     </message>
     <message>
       <location filename="../src/librssguard/miscellaneous/skinfactory.cpp" line="636"/>
       <source>items with new articles (highlighted)</source>
-      <translation>itens con novos artigos (destacados)</translation>
+      <translation>itens com novos artigos (destacados)</translation>
     </message>
     <message>
       <location filename="../src/librssguard/miscellaneous/skinfactory.cpp" line="639"/>
