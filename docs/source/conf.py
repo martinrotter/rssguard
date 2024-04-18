@@ -12,6 +12,7 @@ author = 'Martin Rotter'
 
 extensions = [
   'myst_parser',
+  'sphinx_copybutton',
   'sphinxcontrib.mermaid',
   'sphinx.ext.extlinks']
 templates_path = ['_templates']

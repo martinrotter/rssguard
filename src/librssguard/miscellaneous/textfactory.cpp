@@ -88,7 +88,7 @@ QDateTime TextFactory::parseDateTime(const QString& date_time, QString* used_dt_
   }
 
   QDateTime dt;
-  const QLocale locale(QLocale::Language::C);
+  static QLocale locale(QLocale::Language::C);
   static QStringList date_patterns = dateTimePatterns(true);
 
   // QDateTime dt1 = locale.toDateTime("GMT", "t");
