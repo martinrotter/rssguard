@@ -54,7 +54,7 @@ SettingsFeedsMessages::SettingsFeedsMessages(Settings* settings, QWidget* parent
   updateArticleMarkingPolicyDelay();
 
   connect(m_ui->m_cmbArticleMarkingPolicy,
-          &QComboBox::currentIndexChanged,
+          QOverload<int>::of(&QComboBox::currentIndexChanged),
           this,
           &SettingsFeedsMessages::updateArticleMarkingPolicyDelay);
 
@@ -282,7 +282,7 @@ void SettingsFeedsMessages::changeFont(QLabel& lbl) {
 }
 
 MessagesView::ArticleMarkingPolicy SettingsFeedsMessages::selectedArticleMarkingPolicy() const {
-  return m_ui->m_cmbArticleMarkingPolicy->currentData().value<MessagesView::ArticleMarkingPolicy>();
+  return MessagesView::ArticleMarkingPolicy(m_ui->m_cmbArticleMarkingPolicy->currentData().toInt());
 }
 
 void SettingsFeedsMessages::loadSettings() {
