@@ -159,9 +159,11 @@ void MessagesModel::repopulate() {
            << QUOTE_W_SPACE_DOT(selectStatement());
 }
 
-bool MessagesModel::setData(const QModelIndex& index, const QVariant& value, int role) {
+bool MessagesModel::setData(const QModelIndex& idx, const QVariant& value, int role) {
   Q_UNUSED(role)
-  m_cache->setData(index, value);
+  m_cache->setData(idx, value);
+
+  emit dataChanged(index(idx.row(), 0), index(idx.row(), MSG_DB_LABELS_IDS));
   return true;
 }
 

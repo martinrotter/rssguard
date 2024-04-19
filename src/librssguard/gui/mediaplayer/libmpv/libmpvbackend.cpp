@@ -62,7 +62,7 @@ LibMpvBackend::LibMpvBackend(Application* app, QWidget* parent)
   mpv_set_option_string(m_mpvHandle, "no-resume-playback", "yes");
 
 #if !defined(NDEBUG)
-  // mpv_set_option_string(m_mpvHandle, "terminal", "yes");
+  mpv_set_option_string(m_mpvHandle, "terminal", "yes");
 #endif
 
   if (!m_customConfigFolder.isEmpty()) {

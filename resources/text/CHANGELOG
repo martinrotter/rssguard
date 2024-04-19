@@ -6,6 +6,7 @@ OK, dear users. Over recent releases, many features were added and as you can se
 Sole focus will be on fixing bugs and polish existing features and clean codebase.
 
 Added:
+* Article now can be marked (upon selection) as read with delay or only manually. (#1017)
 * All RSS Guard plugins/services are now placed in their own library (DLL/SO/DYLIB) files and are loaded by main RSS Guard library dynamically. This means that unused services can now be removed from RSS Guard installation if not used by the user. Also it allows for a cleaner and slimmer common codebase. Refactoring of main RSS Guard library was also done and it is now more usable as regular dynamic-link library. I expect some regressions as this was HUGE change. Also, this change allows new potential interested people in writing new plugins easier as they now can just copy one of existing plugins and tweak for new service.
 * Application (Qt) style and icon theme now can be properly set to respect system style/icons and this setting is dynamic, meaning if you change system theme and restart RSS Guard, new theme is honored. (#1352)
 * Button to copy system/app information to "About..." dialog. (#1318)

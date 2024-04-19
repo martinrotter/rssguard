@@ -48,8 +48,8 @@ $zlib_version = "1.3.1"
 $zlib_link = "https://github.com/madler/zlib/archive/refs/tags/v$zlib_version.zip"
 $zlib_output = "zlib.zip"
 
-$libmpv_date = "2024-04-14"
-$libmpv_commit = "6a8b130"
+$libmpv_date = "2024-04-19"
+$libmpv_commit = "1a49545"
 $libmpv_version = "{0}-git-{1}"-f $libmpv_date.Replace("-", ""), $libmpv_commit
 $libmpv_link = "https://github.com/zhongfly/mpv-winbuild/releases/download/$libmpv_date-$libmpv_commit/mpv-dev-x86_64-$libmpv_version.7z"
 $libmpv_output = "mpv.zip"
