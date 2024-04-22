@@ -109,7 +109,7 @@ Hata: %1</translation>
     <message>
       <location filename="../src/librssguard/network-web/adblock/adblockdialog.ui" line="32"/>
       <source>&amp;Help</source>
-      <translation>&amp;Help</translation>
+      <translation>&amp;Yardım</translation>
     </message>
     <message>
       <location filename="../src/librssguard/network-web/adblock/adblockdialog.ui" line="58"/>
@@ -142,7 +142,7 @@ Hata: %1</translation>
     <message>
       <location filename="../src/librssguard/network-web/adblock/adblockicon.cpp" line="45"/>
       <source>Show AdBlock &amp;settings</source>
-      <translation>AdBlock'u göster &amp;settings</translation>
+      <translation>AdBlock ayarlarını göster</translation>
     </message>
   </context>
   <context>
@@ -155,7 +155,7 @@ Hata: %1</translation>
     <message>
       <location filename="../src/librssguard/network-web/adblock/adblockmanager.cpp" line="375"/>
       <source>failed to download filter list &apos;%1&apos;</source>
-      <translation>filtre listesinin indirilimi başarısız oldu: &apos;%1&apos;</translation>
+      <translation>filtre listesinin indirilmesi başarısız oldu: &apos;%1&apos;</translation>
     </message>
   </context>
   <context>
@@ -206,12 +206,12 @@ Hata: %1</translation>
     <message>
       <location filename="../src/librssguard/miscellaneous/application.cpp" line="1370"/>
       <source>Packages %1 were updated.</source>
-      <translation>Paketler güncellendi. %1.</translation>
+      <translation>%1 adlı paketler güncellendi.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/miscellaneous/application.cpp" line="1077"/>
       <source>Unread articles fetched</source>
-      <translation>Okunmamış makaleler bulundu</translation>
+      <translation>Okunmamış yazılar bulundu</translation>
     </message>
     <message>
       <location filename="../src/librssguard/miscellaneous/application.cpp" line="375"/>
@@ -270,12 +270,12 @@ Bu pop-upa tıklayarak sürümü indirebilirsiniz.</translation>
     <message>
       <location filename="../src/librssguard/gui/reusable/articleamountcontrol.ui" line="47"/>
       <source>Add articles with any date into the database</source>
-      <translation>Veritabanına her tarihten yazı eklensin</translation>
+      <translation>Veri tabanına her tarihten yazı eklensin</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/reusable/articleamountcontrol.ui" line="76"/>
       <source>Avoid adding articles before this date/time into the database</source>
-      <translation>Bu tarih ve saatten önceki yazılar veritabanına eklenmesin</translation>
+      <translation>Bu tarih ve saatten önceki yazılar veri tabanına eklenmesin</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/reusable/articleamountcontrol.ui" line="85"/>
@@ -2250,7 +2250,7 @@ QtWebEngine cache folder -&gt; &quot;%7&quot;</translation>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="63"/>
       <source>&amp;Help</source>
-      <translation>&amp;Help</translation>
+      <translation>&amp;Yardım</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="74"/>
