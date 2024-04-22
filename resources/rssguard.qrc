@@ -26,6 +26,7 @@
 
     <file>scripts/adblock/adblock-server.js</file>
     <file>scripts/readability/readabilize-article.js</file>
+    <file>scripts/article-extractor/extract-article.mjs</file>
 
     <file>scripts/filters/blacklist.js</file>
     <file>scripts/filters/whitelist.js</file>

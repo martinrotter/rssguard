@@ -20,6 +20,7 @@ class AdBlockManager;
 class CookieJar;
 class ApiServer;
 class Readability;
+class ArticleParse;
 
 class RSSGUARD_DLLSPEC WebFactory : public QObject {
     Q_OBJECT
@@ -50,6 +51,7 @@ class RSSGUARD_DLLSPEC WebFactory : public QObject {
 
     CookieJar* cookieJar() const;
     Readability* readability() const;
+    ArticleParse* articleParse() const;
 
     void startApiServer();
     void stopApiServer();
@@ -95,6 +97,7 @@ class RSSGUARD_DLLSPEC WebFactory : public QObject {
     ApiServer* m_apiServer;
     CookieJar* m_cookieJar;
     Readability* m_readability;
+    ArticleParse* m_articleParse;
     QString m_customUserAgent;
 };
 

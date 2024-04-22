@@ -253,6 +253,8 @@ set(SOURCES
   network-web/adblock/adblockrequestinfo.h
   network-web/apiserver.cpp
   network-web/apiserver.h
+  network-web/articleparse.cpp
+  network-web/articleparse.h
   network-web/basenetworkaccessmanager.cpp
   network-web/basenetworkaccessmanager.h
   network-web/cookiejar.cpp
