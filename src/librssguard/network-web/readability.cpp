@@ -9,10 +9,10 @@
 #include <QDir>
 
 #define READABILITY_PACKAGE "@mozilla/readability"
-#define READABILITY_VERSION "0.4.4"
+#define READABILITY_VERSION "0.5.0"
 
 #define JSDOM_PACKAGE "jsdom"
-#define JSDOM_VERSION "22.1.0"
+#define JSDOM_VERSION "24.0.0"
 
 Readability::Readability(QObject* parent) : QObject{parent}, m_modulesInstalling(false), m_modulesInstalled(false) {
   connect(qApp->nodejs(), &NodeJs::packageInstalledUpdated, this, &Readability::onPackageReady);
