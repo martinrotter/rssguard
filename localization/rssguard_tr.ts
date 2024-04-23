@@ -11,7 +11,7 @@
     <message>
       <location filename="../src/librssguard/services/abstract/accountcheckmodel.cpp" line="190"/>
       <source>(feed)</source>
-      <translation>(feed)</translation>
+      <translation>(akış)</translation>
     </message>
   </context>
   <context>
@@ -176,12 +176,12 @@ Hata: %1</translation>
     <message>
       <location filename="../src/librssguard/miscellaneous/application.cpp" line="618"/>
       <source>Output directory is not writable.</source>
-      <translation>Çıktı dizini yazılamıyor.</translation>
+      <translation>Çıkış dizinine yazılamıyor.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/miscellaneous/application.cpp" line="626"/>
       <source>Settings file not copied to output directory successfully.</source>
-      <translation>Ayarlar dosyasının çıktı dizinine geçirilmesi başarısız oldu.</translation>
+      <translation>Ayarlar dosyasının çıkış dizinine geçirilmesi başarısız oldu.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/miscellaneous/application.cpp" line="641"/>
@@ -191,17 +191,17 @@ Hata: %1</translation>
     <message>
       <location filename="../src/librssguard/miscellaneous/application.cpp" line="648"/>
       <source>Settings restoration was not initiated. Make sure that output directory is writable.</source>
-      <translation>Ayarların geri yüklenimi başlatılmadı. Çıkış dizininin yazılabilir olduğundan emin olun.</translation>
+      <translation>Ayarların geri yüklemesi yapılamadı. Çıkış dizininin yazılabilir olduğundan emin olun.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/miscellaneous/application.cpp" line="1211"/>
       <source>Cannot add feed</source>
-      <translation>Feed eklenemedi</translation>
+      <translation>Akış eklenemedi</translation>
     </message>
     <message>
       <location filename="../src/librssguard/miscellaneous/application.cpp" line="1212"/>
       <source>Feed cannot be added because there is no active account which can add feeds.</source>
-      <translation>Feed eklenemiyor, çünkü feed ekleyebilecek aktif bir hesap bulunamıyor.</translation>
+      <translation>Akış eklenemedi çünkü ekleyebilecek aktif bir hesap bulunmuyor.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/miscellaneous/application.cpp" line="1370"/>
@@ -234,10 +234,9 @@ Hata: %1</translation>
 
 Please, check NEW stuff included in this
 version by clicking this popup notification.</source>
-      <translation>%1'e hoşgeldiniz.
+      <translation>%1'a hoş geldiniz.
 
-Lütfen buna dahil olan yeni̇ eklentileri kontrol edin.
-Bu pop-upa tıklayarak sürümü indirebilirsiniz.</translation>
+Lütfen bu bildirim penceresine tıklayarak bu versiyondaki yenilikleri inceleyin.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/miscellaneous/application.cpp" line="1143"/>
@@ -290,7 +289,7 @@ Bu pop-upa tıklayarak sürümü indirebilirsiniz.</translation>
     <message>
       <location filename="../src/librssguard/gui/reusable/articleamountcontrol.ui" line="170"/>
       <source>Limiting amount of articles in feeds</source>
-      <translation>Beslemelerdeki yazı miktarının sınırlanması</translation>
+      <translation>Akışlardaki yazı adedinin sınırlanması</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/reusable/articleamountcontrol.ui" line="181"/>
@@ -351,33 +350,33 @@ Bu pop-upa tıklayarak sürümü indirebilirsiniz.</translation>
     <message>
       <location filename="../src/librssguard/gui/notifications/articlelistnotification.ui" line="87"/>
       <source>Go to previous page</source>
-      <translation type="unfinished">Go to previous page</translation>
+      <translation>Önceki sayfaya git</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/notifications/articlelistnotification.ui" line="94"/>
       <source>Go to next page</source>
-      <translation type="unfinished">Go to next page</translation>
+      <translation>Sonraki sayfaya git</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/notifications/articlelistnotification.ui" line="101"/>
       <source>Open article in article list</source>
-      <translation type="unfinished">Open article in article list</translation>
+      <translation>Yazıyı yazı listesinde aç</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/notifications/articlelistnotification.ui" line="108"/>
       <source>Open article in web browser</source>
-      <translation type="unfinished">Open article in web browser</translation>
+      <translation>Yazıyı web tarayıcıda aç</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/notifications/articlelistnotification.ui" line="122"/>
       <source>Mark all articles as read</source>
-      <translation type="unfinished">Mark all articles as read</translation>
+      <translation>Tüm yazıları okunmuş olarak işaretle</translation>
     </message>
     <message numerus="yes">
       <location filename="../src/librssguard/gui/notifications/articlelistnotification.cpp" line="73"/>
       <source>%n feeds fetched</source>
       <translation type="unfinished">
-        <numerusform>%n feeds fetched</numerusform>
+        <numerusform>%n akıştan veri alındı</numerusform>
         <numerusform>%n feeds fetched</numerusform>
       </translation>
     </message>
@@ -387,85 +386,85 @@ Bu pop-upa tıklayarak sürümü indirebilirsiniz.</translation>
     <message>
       <location filename="../src/librssguard/services/abstract/gui/authenticationdetails.ui" line="14"/>
       <source>Form</source>
-      <translation type="unfinished">Form</translation>
+      <translation>Form</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/abstract/gui/authenticationdetails.ui" line="45"/>
       <source>Some feeds require authentication, including GMail feeds. BASIC, NTLM-2 and DIGEST-MD5 authentication schemes are supported.</source>
-      <translation type="unfinished">Some feeds require authentication, including GMail feeds. BASIC, NTLM-2 and DIGEST-MD5 authentication schemes are supported.</translation>
+      <translation>Gmail'inkinin de dahil olduğu bazı akışlar kimlik doğrulama gerektiriyor. BASIC, NTLM-2 ve DIGEST-MD5 kimlik doğrulama şemaları destekleniyor.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/abstract/gui/authenticationdetails.ui" line="48"/>
       <source>Credentials</source>
-      <translation type="unfinished">Credentials</translation>
+      <translation>Kimlik bilgileri</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/abstract/gui/authenticationdetails.ui" line="25"/>
       <source>Authentication type</source>
-      <translation type="unfinished">Authentication type</translation>
+      <translation>Kimlik doğrulama yöntemi</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/abstract/gui/authenticationdetails.ui" line="60"/>
       <location filename="../src/librssguard/services/abstract/gui/authenticationdetails.cpp" line="15"/>
       <location filename="../src/librssguard/services/abstract/gui/authenticationdetails.cpp" line="100"/>
       <source>Username</source>
-      <translation type="unfinished">Username</translation>
+      <translation>Kullanıcı adı</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/abstract/gui/authenticationdetails.ui" line="73"/>
       <location filename="../src/librssguard/services/abstract/gui/authenticationdetails.cpp" line="17"/>
       <source>Password</source>
-      <translation type="unfinished">Password</translation>
+      <translation>Şifre</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/abstract/gui/authenticationdetails.cpp" line="16"/>
       <source>Set username to access the feed.</source>
-      <translation type="unfinished">Set username to access the feed.</translation>
+      <translation>Akışa erişmek için kullanıcı adı belirleyin.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/abstract/gui/authenticationdetails.cpp" line="18"/>
       <source>Set password to access the feed.</source>
-      <translation type="unfinished">Set password to access the feed.</translation>
+      <translation>Akışa erişmek için şifre belirleyin.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/abstract/gui/authenticationdetails.cpp" line="20"/>
       <source>No authentication</source>
-      <translation type="unfinished">No authentication</translation>
+      <translation>Kimlik doğrulama yok</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/abstract/gui/authenticationdetails.cpp" line="22"/>
       <source>HTTP Basic</source>
-      <translation type="unfinished">HTTP Basic</translation>
+      <translation>HTTP Basic</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/abstract/gui/authenticationdetails.cpp" line="25"/>
       <source>Token</source>
-      <translation type="unfinished">Token</translation>
+      <translation>Anahtar</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/abstract/gui/authenticationdetails.cpp" line="74"/>
       <source>Username/token is ok or it is not needed.</source>
-      <translation type="unfinished">Username/token is ok or it is not needed.</translation>
+      <translation>Kullanıcı adı/anahtarı doğru ya da gerekli değil.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/abstract/gui/authenticationdetails.cpp" line="75"/>
       <source>Username/token is empty.</source>
-      <translation type="unfinished">Username/token is empty.</translation>
+      <translation>Kullanıcı adı/anahtarı boş.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/abstract/gui/authenticationdetails.cpp" line="97"/>
       <source>Access token</source>
-      <translation type="unfinished">Access token</translation>
+      <translation>Giriş anahtarı</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/abstract/gui/authenticationdetails.cpp" line="84"/>
       <source>Password is ok or it is not needed.</source>
-      <translation type="unfinished">Password is ok or it is not needed.</translation>
+      <translation>Şifre doğru ya da gerekli değil.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/abstract/gui/authenticationdetails.cpp" line="84"/>
       <source>Password is empty.</source>
-      <translation type="unfinished">Password is empty.</translation>
+      <translation>Şifre boş.</translation>
     </message>
   </context>
   <context>
@@ -473,7 +472,7 @@ Bu pop-upa tıklayarak sürümü indirebilirsiniz.</translation>
     <message>
       <location filename="../src/librssguard/gui/reusable/baselineedit.cpp" line="13"/>
       <source>Show/hide the password</source>
-      <translation type="unfinished">Show/hide the password</translation>
+      <translation>Şifreyi göster/gizle</translation>
     </message>
   </context>
   <context>
@@ -481,7 +480,7 @@ Bu pop-upa tıklayarak sürümü indirebilirsiniz.</translation>
     <message>
       <location filename="../src/librssguard/gui/notifications/basetoastnotification.cpp" line="46"/>
       <source>Close this notification</source>
-      <translation type="unfinished">Close this notification</translation>
+      <translation>Bu bildirimi kapat</translation>
     </message>
   </context>
   <context>
@@ -490,8 +489,8 @@ Bu pop-upa tıklayarak sürümü indirebilirsiniz.</translation>
       <location filename="../src/librssguard/services/abstract/category.cpp" line="73"/>
       <source>Number of feeds: %1
 Number of categories: %2</source>
-      <translation type="unfinished">Number of feeds: %1
-Number of categories: %2</translation>
+      <translation>Akış sayısı: %1
+Kategori sayısı: %2</translation>
     </message>
   </context>
   <context>
@@ -499,12 +498,12 @@ Number of categories: %2</translation>
     <message>
       <location filename="../src/librssguard/gui/reusable/colortoolbutton.cpp" line="14"/>
       <source>Click me to change color!</source>
-      <translation type="unfinished">Click me to change color!</translation>
+      <translation>Renk değiştirmek için buraya tıkla!</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/reusable/colortoolbutton.cpp" line="19"/>
       <source>Select new color</source>
-      <translation type="unfinished">Select new color</translation>
+      <translation>Yeni renk seç</translation>
     </message>
   </context>
   <context>
@@ -512,52 +511,52 @@ Number of categories: %2</translation>
     <message>
       <location filename="../src/librssguard/database/databasecleaner.cpp" line="65"/>
       <source>Shrinking database file...</source>
-      <translation type="unfinished">Shrinking database file...</translation>
+      <translation>Veri tabanı dosyası daraltılıyor...</translation>
     </message>
     <message>
       <location filename="../src/librssguard/database/databasecleaner.cpp" line="70"/>
       <source>Database file shrinked...</source>
-      <translation type="unfinished">Database file shrinked...</translation>
+      <translation>Veri tabanı dosyası daraltıldı...</translation>
     </message>
     <message>
       <location filename="../src/librssguard/database/databasecleaner.cpp" line="40"/>
       <source>Recycle bin purged...</source>
-      <translation type="unfinished">Recycle bin purged...</translation>
+      <translation>Geri dönüşüm kutusu temizlendi...</translation>
     </message>
     <message>
       <location filename="../src/librssguard/database/databasecleaner.cpp" line="35"/>
       <source>Purging recycle bin...</source>
-      <translation type="unfinished">Purging recycle bin...</translation>
+      <translation>Geri dönüşüm kutusu temizleniyor...</translation>
     </message>
     <message>
       <location filename="../src/librssguard/database/databasecleaner.cpp" line="25"/>
       <source>Removing read articles...</source>
-      <translation type="unfinished">Removing read articles...</translation>
+      <translation>Okunan yazılar kaldırılıyor...</translation>
     </message>
     <message>
       <location filename="../src/librssguard/database/databasecleaner.cpp" line="30"/>
       <source>Read articles purged...</source>
-      <translation type="unfinished">Read articles purged...</translation>
+      <translation>Okunan yazılar siliniyor...</translation>
     </message>
     <message>
       <location filename="../src/librssguard/database/databasecleaner.cpp" line="45"/>
       <source>Removing old articles...</source>
-      <translation type="unfinished">Removing old articles...</translation>
+      <translation>Eski yazılar kaldırılıyor...</translation>
     </message>
     <message>
       <location filename="../src/librssguard/database/databasecleaner.cpp" line="50"/>
       <source>Old articles purged...</source>
-      <translation type="unfinished">Old articles purged...</translation>
+      <translation>Eski yazılar siliniyor...</translation>
     </message>
     <message>
       <location filename="../src/librssguard/database/databasecleaner.cpp" line="55"/>
       <source>Removing starred articles...</source>
-      <translation type="unfinished">Removing starred articles...</translation>
+      <translation>Yıldızlı yazılar kaldırılıyor...</translation>
     </message>
     <message>
       <location filename="../src/librssguard/database/databasecleaner.cpp" line="60"/>
       <source>Starred articles purged...</source>
-      <translation type="unfinished">Starred articles purged...</translation>
+      <translation>Yıldızlı yazılar silindi...</translation>
     </message>
   </context>
   <context>
@@ -565,12 +564,12 @@ Number of categories: %2</translation>
     <message>
       <location filename="../src/librssguard/database/databasefactory.cpp" line="58"/>
       <source>Cannot connect to database</source>
-      <translation type="unfinished">Cannot connect to database</translation>
+      <translation>Veri tabanına bağlanılamıyor</translation>
     </message>
     <message>
       <location filename="../src/librssguard/database/databasefactory.cpp" line="59"/>
       <source>Connection to your database was not established with error: &apos;%1&apos;. Falling back to SQLite.</source>
-      <translation type="unfinished">Connection to your database was not established with error: &apos;%1&apos;. Falling back to SQLite.</translation>
+      <translation>Veri tabanınıza şu hata nedeniyle bağlantı kurulamadı: &apos;%1&apos;. SQLite'a geri dönülüyor.</translation>
     </message>
   </context>
   <context>
@@ -743,7 +742,7 @@ Click here to open parent directory.</translation>
     <message>
       <location filename="../src/librssguard-gmail/src/gui/emailpreviewer.ui" line="14"/>
       <source>Form</source>
-      <translation type="unfinished">Form</translation>
+      <translation>Form</translation>
     </message>
     <message>
       <location filename="../src/librssguard-gmail/src/gui/emailpreviewer.ui" line="20"/>
@@ -958,7 +957,7 @@ Item ID: %5</translation>
     <message>
       <location filename="../src/librssguard-feedly/src/gui/feedlyaccountdetails.ui" line="17"/>
       <source>Username</source>
-      <translation type="unfinished">Username</translation>
+      <translation>Kullanıcı adı</translation>
     </message>
     <message>
       <location filename="../src/librssguard-feedly/src/gui/feedlyaccountdetails.ui" line="27"/>
@@ -3784,7 +3783,7 @@ You can install it now.</translation>
     <message>
       <location filename="../src/librssguard-gmail/src/gui/gmailaccountdetails.ui" line="17"/>
       <source>Username</source>
-      <translation type="unfinished">Username</translation>
+      <translation>Kullanıcı adı</translation>
     </message>
     <message>
       <location filename="../src/librssguard-gmail/src/gui/gmailaccountdetails.ui" line="33"/>
@@ -4103,12 +4102,12 @@ Login tokens expiration: %2</translation>
     <message>
       <location filename="../src/librssguard-greader/src/gui/greaderaccountdetails.ui" line="101"/>
       <source>Username</source>
-      <translation type="unfinished">Username</translation>
+      <translation>Kullanıcı adı</translation>
     </message>
     <message>
       <location filename="../src/librssguard-greader/src/gui/greaderaccountdetails.ui" line="145"/>
       <source>Password</source>
-      <translation type="unfinished">Password</translation>
+      <translation>Şifre</translation>
     </message>
     <message>
       <location filename="../src/librssguard-greader/src/gui/greaderaccountdetails.ui" line="186"/>
@@ -4146,7 +4145,7 @@ Login tokens expiration: %2</translation>
     <message>
       <location filename="../src/librssguard-greader/src/gui/greaderfeeddetails.ui" line="14"/>
       <source>Form</source>
-      <translation type="unfinished">Form</translation>
+      <translation>Form</translation>
     </message>
     <message>
       <location filename="../src/librssguard-greader/src/gui/greaderfeeddetails.ui" line="20"/>
@@ -4359,7 +4358,7 @@ Login tokens expiration: %2</translation>
     <message>
       <location filename="../src/librssguard/gui/itemdetails.ui" line="20"/>
       <source>Form</source>
-      <translation type="unfinished">Form</translation>
+      <translation>Form</translation>
     </message>
   </context>
   <context>
@@ -4765,7 +4764,7 @@ Login tokens expiration: %2</translation>
     <message>
       <location filename="../src/librssguard/gui/mediaplayer/mediaplayer.ui" line="14"/>
       <source>Form</source>
-      <translation type="unfinished">Form</translation>
+      <translation>Form</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/mediaplayer/mediaplayer.ui" line="65"/>
@@ -5551,7 +5550,7 @@ Login tokens expiration: %2</translation>
     <message>
       <location filename="../src/librssguard/gui/reusable/networkproxydetails.ui" line="14"/>
       <source>Form</source>
-      <translation type="unfinished">Form</translation>
+      <translation>Form</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/reusable/networkproxydetails.ui" line="23"/>
@@ -5571,7 +5570,7 @@ Login tokens expiration: %2</translation>
     <message>
       <location filename="../src/librssguard/gui/reusable/networkproxydetails.ui" line="76"/>
       <source>Username</source>
-      <translation type="unfinished">Username</translation>
+      <translation>Kullanıcı adı</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/reusable/networkproxydetails.ui" line="92"/>
@@ -5581,7 +5580,7 @@ Login tokens expiration: %2</translation>
     <message>
       <location filename="../src/librssguard/gui/reusable/networkproxydetails.ui" line="99"/>
       <source>Password</source>
-      <translation type="unfinished">Password</translation>
+      <translation>Şifre</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/reusable/networkproxydetails.ui" line="118"/>
@@ -5620,7 +5619,7 @@ Login tokens expiration: %2</translation>
     <message>
       <location filename="../src/librssguard-nextcloud/src/gui/nextcloudaccountdetails.ui" line="81"/>
       <source>Some feeds require authentication, including GMail feeds. BASIC, NTLM-2 and DIGEST-MD5 authentication schemes are supported.</source>
-      <translation type="unfinished">Some feeds require authentication, including GMail feeds. BASIC, NTLM-2 and DIGEST-MD5 authentication schemes are supported.</translation>
+      <translation>Gmail'inkinin de dahil olduğu bazı akışlar kimlik doğrulama gerektiriyor. BASIC, NTLM-2 ve DIGEST-MD5 kimlik doğrulama şemaları destekleniyor.</translation>
     </message>
     <message>
       <location filename="../src/librssguard-nextcloud/src/gui/nextcloudaccountdetails.ui" line="84"/>
@@ -5630,12 +5629,12 @@ Login tokens expiration: %2</translation>
     <message>
       <location filename="../src/librssguard-nextcloud/src/gui/nextcloudaccountdetails.ui" line="96"/>
       <source>Username</source>
-      <translation type="unfinished">Username</translation>
+      <translation>Kullanıcı adı</translation>
     </message>
     <message>
       <location filename="../src/librssguard-nextcloud/src/gui/nextcloudaccountdetails.ui" line="109"/>
       <source>Password</source>
-      <translation type="unfinished">Password</translation>
+      <translation>Şifre</translation>
     </message>
     <message>
       <location filename="../src/librssguard-nextcloud/src/gui/nextcloudaccountdetails.ui" line="127"/>
@@ -6693,7 +6692,7 @@ File filter for external e-mail selection dialog.</extracomment>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsdatabase.cpp" line="137"/>
       <source>Password is empty.</source>
-      <translation type="unfinished">Password is empty.</translation>
+      <translation>Şifre boş.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsdatabase.cpp" line="140"/>
@@ -6793,12 +6792,12 @@ Authors of this application are NOT responsible for lost data.</translation>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsdatabase.ui" line="137"/>
       <source>Username</source>
-      <translation type="unfinished">Username</translation>
+      <translation>Kullanıcı adı</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsdatabase.ui" line="150"/>
       <source>Password</source>
-      <translation type="unfinished">Password</translation>
+      <translation>Şifre</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsdatabase.ui" line="165"/>
@@ -7519,7 +7518,7 @@ Also, relaunch &quot;Settings&quot; dialog after you install Node.js.</translati
     <message>
       <location filename="../src/librssguard/gui/settings/settingsnodejs.ui" line="14"/>
       <source>Form</source>
-      <translation type="unfinished">Form</translation>
+      <translation>Form</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsnodejs.ui" line="23"/>
@@ -7743,7 +7742,7 @@ Also, relaunch &quot;Settings&quot; dialog after you install Node.js.</translati
     <message>
       <location filename="../src/librssguard-standard/src/gui/standardaccountdetails.ui" line="14"/>
       <source>Form</source>
-      <translation type="unfinished">Form</translation>
+      <translation>Form</translation>
     </message>
     <message>
       <location filename="../src/librssguard-standard/src/gui/standardaccountdetails.ui" line="20"/>
@@ -8137,7 +8136,7 @@ Also, you can post-process generated feed data with yet another script if you wi
     <message>
       <location filename="../src/librssguard-standard/src/gui/standardfeeddetails.ui" line="14"/>
       <source>Form</source>
-      <translation type="unfinished">Form</translation>
+      <translation>Form</translation>
     </message>
     <message>
       <location filename="../src/librssguard-standard/src/gui/standardfeeddetails.ui" line="25"/>
@@ -8656,12 +8655,12 @@ Unread news: %2</translation>
     <message>
       <location filename="../src/librssguard-ttrss/src/gui/ttrssaccountdetails.cpp" line="173"/>
       <source>Password is ok or it is not needed.</source>
-      <translation type="unfinished">Password is ok or it is not needed.</translation>
+      <translation>Şifre doğru ya da gerekli değil.</translation>
     </message>
     <message>
       <location filename="../src/librssguard-ttrss/src/gui/ttrssaccountdetails.cpp" line="174"/>
       <source>Password is empty.</source>
-      <translation type="unfinished">Password is empty.</translation>
+      <translation>Şifre boş.</translation>
     </message>
     <message>
       <location filename="../src/librssguard-ttrss/src/gui/ttrssaccountdetails.cpp" line="181"/>
@@ -8707,7 +8706,7 @@ Unread news: %2</translation>
       <location filename="../src/librssguard-ttrss/src/gui/ttrssaccountdetails.ui" line="105"/>
       <location filename="../src/librssguard-ttrss/src/gui/ttrssaccountdetails.ui" line="149"/>
       <source>Some feeds require authentication, including GMail feeds. BASIC, NTLM-2 and DIGEST-MD5 authentication schemes are supported.</source>
-      <translation type="unfinished">Some feeds require authentication, including GMail feeds. BASIC, NTLM-2 and DIGEST-MD5 authentication schemes are supported.</translation>
+      <translation>Gmail'inkinin de dahil olduğu bazı akışlar kimlik doğrulama gerektiriyor. BASIC, NTLM-2 ve DIGEST-MD5 kimlik doğrulama şemaları destekleniyor.</translation>
     </message>
     <message>
       <location filename="../src/librssguard-ttrss/src/gui/ttrssaccountdetails.ui" line="108"/>
@@ -8718,13 +8717,13 @@ Unread news: %2</translation>
       <location filename="../src/librssguard-ttrss/src/gui/ttrssaccountdetails.ui" line="120"/>
       <location filename="../src/librssguard-ttrss/src/gui/ttrssaccountdetails.ui" line="167"/>
       <source>Username</source>
-      <translation type="unfinished">Username</translation>
+      <translation>Kullanıcı adı</translation>
     </message>
     <message>
       <location filename="../src/librssguard-ttrss/src/gui/ttrssaccountdetails.ui" line="133"/>
       <location filename="../src/librssguard-ttrss/src/gui/ttrssaccountdetails.ui" line="180"/>
       <source>Password</source>
-      <translation type="unfinished">Password</translation>
+      <translation>Şifre</translation>
     </message>
     <message>
       <location filename="../src/librssguard-ttrss/src/gui/ttrssaccountdetails.ui" line="152"/>
@@ -8775,7 +8774,7 @@ Unread news: %2</translation>
     <message>
       <location filename="../src/librssguard-ttrss/src/gui/ttrssfeeddetails.ui" line="14"/>
       <source>Form</source>
-      <translation type="unfinished">Form</translation>
+      <translation>Form</translation>
     </message>
     <message>
       <location filename="../src/librssguard-ttrss/src/gui/ttrssfeeddetails.ui" line="20"/>
