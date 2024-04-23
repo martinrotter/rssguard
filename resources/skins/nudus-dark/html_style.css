@@ -17,6 +17,7 @@ body {
   -webkit-font-feature-settings: "kern" 1;
   font-feature-settings: "kern" 1;
   font-kerning: normal;
+  padding: 10px !important;
   min-height: 100vh; }
 
 ::selection {
@@ -238,7 +239,7 @@ summary:focus {
   outline: 1px solid #647595; }
 
 .rssguard-mwrapper {
-  padding: 10px !important; }
+  padding: 0px !important; }
   .rssguard-mwrapper .rssguard-mhead .msmall,
   .rssguard-mwrapper .rssguard-mhead .mlinks {
     opacity: .8; }

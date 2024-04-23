@@ -145,6 +145,8 @@ void WebEngineViewer::setUrl(const QUrl& url) {
 
 void WebEngineViewer::setHtml(const QString& html, const QUrl& base_url) {
   QWebEngineView::setHtml(html, base_url);
+
+  // IOFactory::writeFile("a.html", html.toUtf8());
 }
 
 void WebEngineViewer::setReadabledHtml(const QString& html, const QUrl& base_url) {

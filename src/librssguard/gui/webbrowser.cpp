@@ -40,7 +40,7 @@ WebBrowser::WebBrowser(WebViewer* viewer, QWidget* parent)
     m_actionReadabilePage(new QAction(qApp->icons()->fromTheme(QSL("text-html")),
                                       tr("View website in reader mode"),
                                       this)),
-    m_actionGetFullArticle(new QAction(qApp->icons()->fromTheme(QSL("download"), QSL("browser-download")),
+    m_actionGetFullArticle(new QAction(qApp->icons()->fromTheme(QSL("applications-office")),
                                        tr("Load full source article"),
                                        this)) {
   if (m_webView == nullptr) {
@@ -192,8 +192,20 @@ void WebBrowser::readabilePage() {
 }
 
 void WebBrowser::getFullArticle() {
+  QString url;
+
+  if (!m_messages.isEmpty() && !m_messages.first().m_url.isEmpty()) {
+    url = m_messages.first().m_url;
+  }
+  else if (m_webView->url().isValid()) {
+    url = m_webView->url().toString();
+  }
+  else {
+    return;
+  }
+
   m_actionGetFullArticle->setEnabled(false);
-  qApp->web()->articleParse()->parseArticle(this, m_webView->url().toString());
+  qApp->web()->articleParse()->parseArticle(this, url);
 }
 
 bool WebBrowser::eventFilter(QObject* watched, QEvent* event) {
