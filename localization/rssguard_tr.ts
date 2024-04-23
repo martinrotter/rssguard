@@ -577,12 +577,12 @@ Kategori sayısı: %2</translation>
     <message>
       <location filename="../src/librssguard-standard/src/gui/formdiscoverfeeds.cpp" line="302"/>
       <source>Title</source>
-      <translation type="unfinished">Title</translation>
+      <translation>Başlık</translation>
     </message>
     <message>
       <location filename="../src/librssguard-standard/src/gui/formdiscoverfeeds.cpp" line="302"/>
       <source>Type</source>
-      <translation type="unfinished">Type</translation>
+      <translation>Tip</translation>
     </message>
   </context>
   <context>
@@ -590,27 +590,27 @@ Kategori sayısı: %2</translation>
     <message>
       <location filename="../src/librssguard/network-web/downloadmanager.cpp" line="275"/>
       <source>Error opening output file: %1</source>
-      <translation type="unfinished">Error opening output file: %1</translation>
+      <translation>Şu çıktı dosyasının açılmasında hata oldu: %1</translation>
     </message>
     <message>
       <location filename="../src/librssguard/network-web/downloadmanager.cpp" line="113"/>
       <source>Select destination for downloaded file</source>
-      <translation type="unfinished">Select destination for downloaded file</translation>
+      <translation>İndirilen dosya için hedef seçin</translation>
     </message>
     <message>
       <location filename="../src/librssguard/network-web/downloadmanager.cpp" line="301"/>
       <source>Error: %1</source>
-      <translation type="unfinished">Error: %1</translation>
+      <translation>Hata: %1</translation>
     </message>
     <message>
       <location filename="../src/librssguard/network-web/downloadmanager.cpp" line="140"/>
       <source>Download directory couldn&apos;t be created</source>
-      <translation type="unfinished">Download directory couldn&apos;t be created</translation>
+      <translation>İndirme dizini oluşturulamıyor</translation>
     </message>
     <message>
       <location filename="../src/librssguard/network-web/downloadmanager.cpp" line="286"/>
       <source>Error when saving file: %1</source>
-      <translation type="unfinished">Error when saving file: %1</translation>
+      <translation>Şu dosya kaydedilirken hata oldu: %1</translation>
     </message>
     <message>
       <location filename="../src/librssguard/network-web/downloadmanager.cpp" line="393"/>
@@ -625,12 +625,12 @@ Kategori sayısı: %2</translation>
     <message>
       <location filename="../src/librssguard/network-web/downloadmanager.cpp" line="220"/>
       <source>Cannot open file</source>
-      <translation type="unfinished">Cannot open file</translation>
+      <translation>Dosya açılamadı</translation>
     </message>
     <message>
       <location filename="../src/librssguard/network-web/downloadmanager.cpp" line="221"/>
       <source>Cannot open output file. Open it manually.</source>
-      <translation type="unfinished">Cannot open output file. Open it manually.</translation>
+      <translation>Çıktı dosyası açılamadı. Doğrudan açmayı deneyin.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/network-web/downloadmanager.cpp" line="231"/>
@@ -645,7 +645,7 @@ Kategori sayısı: %2</translation>
     <message>
       <location filename="../src/librssguard/network-web/downloadmanager.cpp" line="445"/>
       <source>Download finished</source>
-      <translation type="unfinished">Download finished</translation>
+      <translation>İndirme işlemi bitti</translation>
     </message>
     <message>
       <location filename="../src/librssguard/network-web/downloadmanager.cpp" line="446"/>
@@ -657,12 +657,12 @@ Click here to open parent directory.</translation>
     <message>
       <location filename="../src/librssguard/network-web/downloadmanager.cpp" line="457"/>
       <source>URL: %1</source>
-      <translation type="unfinished">URL: %1</translation>
+      <translation>URL: %1</translation>
     </message>
     <message>
       <location filename="../src/librssguard/network-web/downloadmanager.cpp" line="458"/>
       <source>Local file: %1</source>
-      <translation type="unfinished">Local file: %1</translation>
+      <translation>Yerel dosya: %1</translation>
     </message>
     <message>
       <location filename="../src/librssguard/network-web/downloadmanager.cpp" line="119"/>
@@ -2026,7 +2026,7 @@ QtWebEngine cache folder -&gt; &quot;%7&quot;</translation>
     <message>
       <location filename="../src/librssguard-standard/src/gui/formdiscoverfeeds.cpp" line="127"/>
       <source>Error: %1</source>
-      <translation type="unfinished">Error: %1</translation>
+      <translation>Hata: %1</translation>
     </message>
     <message>
       <location filename="../src/librssguard-standard/src/gui/formdiscoverfeeds.cpp" line="198"/>
@@ -2198,7 +2198,7 @@ QtWebEngine cache folder -&gt; &quot;%7&quot;</translation>
     <message>
       <location filename="../src/librssguard-greader/src/gui/formgreaderfeeddetails.cpp" line="65"/>
       <source>Error: %1</source>
-      <translation type="unfinished">Error: %1</translation>
+      <translation>Hata: %1</translation>
     </message>
     <message>
       <location filename="../src/librssguard-greader/src/gui/formgreaderfeeddetails.cpp" line="94"/>
@@ -4281,7 +4281,7 @@ Login tokens expiration: %2</translation>
       <location filename="../src/librssguard-greader/src/greaderserviceroot.cpp" line="185"/>
       <location filename="../src/librssguard-greader/src/greaderserviceroot.cpp" line="210"/>
       <source>Error: %1</source>
-      <translation type="unfinished">Error: %1</translation>
+      <translation>Hata: %1</translation>
     </message>
     <message>
       <location filename="../src/librssguard-greader/src/greaderserviceroot.cpp" line="194"/>
@@ -8117,7 +8117,7 @@ Post-processing script: %3</translation>
       <location filename="../src/librssguard-standard/src/gui/standardfeeddetails.cpp" line="282"/>
       <location filename="../src/librssguard-standard/src/gui/standardfeeddetails.cpp" line="309"/>
       <source>Error: %1</source>
-      <translation type="unfinished">Error: %1</translation>
+      <translation>Hata: %1</translation>
     </message>
     <message>
       <location filename="../src/librssguard-standard/src/gui/standardfeeddetails.cpp" line="126"/>
