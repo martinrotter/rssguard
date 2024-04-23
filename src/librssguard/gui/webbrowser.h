@@ -79,7 +79,7 @@ class RSSGUARD_DLLSPEC WebBrowser : public TabContent {
     void setReadabledHtml(QObject* sndr, const QString& better_html);
     void readabilityFailed(QObject* sndr, const QString& error);
 
-    void setFullArticleHtml(QObject* sndr, const QString& json_answer);
+    void setFullArticleHtml(QObject* sndr, const QString &url, const QString& json_answer);
     void fullArticleFailed(QObject* sndr, const QString& error);
 
   signals:
@@ -91,6 +91,8 @@ class RSSGUARD_DLLSPEC WebBrowser : public TabContent {
     void initializeLayout();
     void bindWebView();
     void createConnections();
+
+    Message messageFromExtractor(const QJsonDocument& extracted_data) const;
 
   private:
     QVBoxLayout* m_layout;

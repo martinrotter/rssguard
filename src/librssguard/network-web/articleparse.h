@@ -17,12 +17,12 @@ class ArticleParse : public QObject {
     void parseArticle(QObject* sndr, const QString& url);
 
   private slots:
-    void onParsingFinished(QObject* sndr, int exit_code, QProcess::ExitStatus exit_status);
+    void onParsingFinished(QObject* sndr, const QString& url, int exit_code, QProcess::ExitStatus exit_status);
     void onPackageReady(const QList<NodeJs::PackageMetadata>& pkgs, bool already_up_to_date);
     void onPackageError(const QList<NodeJs::PackageMetadata>& pkgs, const QString& error);
 
   signals:
-    void articleParsed(QObject* sndr, const QString& better_html);
+    void articleParsed(QObject* sndr, const QString& url, const QString& better_html);
     void errorOnArticlePArsing(QObject* sndr, const QString& error);
 
   private:

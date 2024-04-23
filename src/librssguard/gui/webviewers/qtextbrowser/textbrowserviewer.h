@@ -52,6 +52,7 @@ class RSSGUARD_DLLSPEC TextBrowserViewer : public QTextBrowser, public WebViewer
     virtual QUrl url() const;
     virtual void clear();
     virtual void loadMessages(const QList<Message>& messages, RootItem* root);
+    virtual PreparedHtml htmlForMessages(const QList<Message>& messages, RootItem* root) const;
     virtual double verticalScrollBarPosition() const;
     virtual void setVerticalScrollBarPosition(double pos);
     virtual void applyFont(const QFont& fon);

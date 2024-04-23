@@ -40,7 +40,7 @@ void ArticleParse::onPackageReady(const QList<NodeJs::PackageMetadata>& pkgs, bo
                        {true, true, false});
 
   // Emit this just to allow the action again for user.
-  emit articleParsed(nullptr, tr("Packages for article-extractor are installed. You can now use this feature!"));
+  emit articleParsed(nullptr, {}, tr("Packages for article-extractor are installed. You can now use this feature!"));
 }
 
 void ArticleParse::onPackageError(const QList<NodeJs::PackageMetadata>& pkgs, const QString& error) {
@@ -61,7 +61,9 @@ void ArticleParse::onPackageError(const QList<NodeJs::PackageMetadata>& pkgs, co
                        {true, true, false});
 
   // Emit this just to allow readability again for user.
-  emit articleParsed(nullptr, tr("Packages for article-extractor are NOT installed. There is error: %1").arg(error));
+  emit articleParsed(nullptr,
+                     {},
+                     tr("Packages for article-extractor are NOT installed. There is error: %1").arg(error));
 }
 
 void ArticleParse::parseArticle(QObject* sndr, const QString& url) {
@@ -113,8 +115,10 @@ void ArticleParse::parseArticle(QObject* sndr, const QString& url) {
 
       // Emit this just to allow readability again for user.
       emit articleParsed(sndr,
+                         url,
                          tr("Node.js is not configured properly. Go to \"Settings\" -> \"Node.js\" and check "
                             "if your Node.js is properly configured."));
+      return;
     }
   }
 
@@ -124,17 +128,20 @@ void ArticleParse::parseArticle(QObject* sndr, const QString& url) {
           QOverload<int, QProcess::ExitStatus>::of(&QProcess::finished),
           this,
           [=](int exit_code, QProcess::ExitStatus exit_status) {
-            onParsingFinished(sndr, exit_code, exit_status);
+            onParsingFinished(sndr, url, exit_code, exit_status);
           });
 
   qApp->nodejs()->runScript(proc, m_scriptFilename, {url});
 }
 
-void ArticleParse::onParsingFinished(QObject* sndr, int exit_code, QProcess::ExitStatus exit_status) {
+void ArticleParse::onParsingFinished(QObject* sndr,
+                                     const QString& url,
+                                     int exit_code,
+                                     QProcess::ExitStatus exit_status) {
   QProcess* proc = qobject_cast<QProcess*>(sender());
 
   if (exit_status == QProcess::ExitStatus::NormalExit && exit_code == EXIT_SUCCESS) {
-    emit articleParsed(sndr, QString::fromUtf8(proc->readAllStandardOutput()));
+    emit articleParsed(sndr, url, QString::fromUtf8(proc->readAllStandardOutput()));
   }
   else {
     QString err = QString::fromUtf8(proc->readAllStandardError());

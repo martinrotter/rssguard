@@ -53,8 +53,7 @@ WebEnginePage* WebEngineViewer::page() const {
 }
 
 void WebEngineViewer::loadMessages(const QList<Message>& messages, RootItem* root) {
-  auto html_messages =
-    qApp->skins()->generateHtmlOfArticles(messages, root, width() * ACCEPTABLE_IMAGE_PERCENTUAL_WIDTH);
+  auto html_messages = htmlForMessages(messages, root);
 
   m_root = root;
   m_messageContents = html_messages.m_html;
@@ -67,6 +66,10 @@ void WebEngineViewer::loadMessages(const QList<Message>& messages, RootItem* roo
   setEnabled(previously_enabled);
 
   page()->runJavaScript(QSL("window.scrollTo(0, 0);"));
+}
+
+PreparedHtml WebEngineViewer::htmlForMessages(const QList<Message>& messages, RootItem* root) const {
+  return qApp->skins()->generateHtmlOfArticles(messages, root, width() * ACCEPTABLE_IMAGE_PERCENTUAL_WIDTH);
 }
 
 void WebEngineViewer::clear() {

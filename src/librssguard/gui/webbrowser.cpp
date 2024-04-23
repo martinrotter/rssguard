@@ -318,12 +318,70 @@ void WebBrowser::readabilityFailed(QObject* sndr, const QString& error) {
   }
 }
 
-void WebBrowser::setFullArticleHtml(QObject* sndr, const QString& json_answer) {
+Message WebBrowser::messageFromExtractor(const QJsonDocument& extracted_data) const {
+  QJsonObject extracted_obj = extracted_data.object();
+  Message msg;
+
+  msg.m_title = extracted_obj["title"].toString();
+  msg.m_author = extracted_obj["author"].toString();
+  msg.m_created = TextFactory::parseDateTime(extracted_obj["published"].toString());
+  msg.m_createdFromFeed = true;
+  msg.m_url = extracted_obj["url"].toString();
+  msg.m_contents = extracted_obj["content"].toString();
+
+  QString image = extracted_obj["image"].toString();
+
+  if (!image.isEmpty()) {
+    // NOTE: Prepend image to content.
+    msg.m_contents = msg.m_contents.prepend(QSL("<div>"
+                                                "<a href=\"%1\">"
+                                                "<img src=\"%1\" />"
+                                                "</a>"
+                                                "</div>")
+                                              .arg(image));
+  }
+
+  return msg;
+}
+
+void WebBrowser::setFullArticleHtml(QObject* sndr, const QString& url, const QString& json_answer) {
   if (sndr == this && !json_answer.isEmpty()) {
     QJsonDocument json_doc = QJsonDocument::fromJson(json_answer.toUtf8());
-    QString better_html = json_doc["content"].toString();
 
-    m_webView->setReadabledHtml(better_html, m_webView->url());
+    Message full_article = messageFromExtractor(json_doc);
+
+    if (!m_messages.isEmpty() && m_messages.first().m_url == url) {
+      const Message displayed_article = m_messages.first();
+
+      // Copy rest of original attributes which might influence the "full" article.
+      full_article.m_feedId = displayed_article.m_feedId;
+      full_article.m_feedTitle = displayed_article.m_feedTitle;
+      full_article.m_customId = displayed_article.m_customId;
+      full_article.m_customHash = displayed_article.m_customHash;
+      full_article.m_id = displayed_article.m_id;
+      full_article.m_accountId = displayed_article.m_accountId;
+      full_article.m_assignedLabels = displayed_article.m_assignedLabels;
+      full_article.m_assignedLabelsIds = displayed_article.m_assignedLabelsIds;
+      full_article.m_categories = displayed_article.m_categories;
+      full_article.m_rawContents = displayed_article.m_rawContents;
+
+      full_article.m_isRead = displayed_article.m_isRead;
+      full_article.m_isImportant = displayed_article.m_isImportant;
+      full_article.m_isDeleted = displayed_article.m_isDeleted;
+      full_article.m_score = displayed_article.m_score;
+      full_article.m_isRtl = displayed_article.m_isRtl;
+      full_article.m_enclosures = displayed_article.m_enclosures;
+
+      loadMessages({full_article}, m_root);
+    }
+    else {
+      auto html_message = m_webView->htmlForMessages({full_article}, nullptr);
+
+      setHtml(html_message.m_html, url);
+    }
+
+    //
+    //  m_webView->setReadabledHtml(full_article.m_contents, m_webView->url());
   }
 }
 

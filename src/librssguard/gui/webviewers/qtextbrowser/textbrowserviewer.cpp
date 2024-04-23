@@ -249,15 +249,7 @@ void TextBrowserViewer::loadMessages(const QList<Message>& messages, RootItem* r
   emit loadingStarted();
   m_root = root;
 
-  auto html_messages =
-    qApp->settings()->value(GROUP(Messages), SETTING(Messages::UseLegacyArticleFormat)).toBool()
-      ? prepareLegacyHtmlForMessage(messages, root)
-      : qApp->skins()->generateHtmlOfArticles(messages, root, width() * ACCEPTABLE_IMAGE_PERCENTUAL_WIDTH);
-
-  // Remove other characters which cannot be displayed properly.
-  static QRegularExpression exp_symbols("&#x1F[0-9A-F]{3};");
-
-  html_messages.m_html = html_messages.m_html.replace(exp_symbols, QString());
+  auto html_messages = htmlForMessages(messages, root);
 
   /*
   // Replace base64 images.
@@ -281,6 +273,20 @@ void TextBrowserViewer::loadMessages(const QList<Message>& messages, RootItem* r
   document()->setDefaultTextOption(op);
 
   emit loadingFinished(true);
+}
+
+PreparedHtml TextBrowserViewer::htmlForMessages(const QList<Message>& messages, RootItem* root) const {
+  auto html_messages =
+    qApp->settings()->value(GROUP(Messages), SETTING(Messages::UseLegacyArticleFormat)).toBool()
+      ? prepareLegacyHtmlForMessage(messages, root)
+      : qApp->skins()->generateHtmlOfArticles(messages, root, width() * ACCEPTABLE_IMAGE_PERCENTUAL_WIDTH);
+
+  // Remove other characters which cannot be displayed properly.
+  static QRegularExpression exp_symbols("&#x1F[0-9A-F]{3};");
+
+  html_messages.m_html = html_messages.m_html.replace(exp_symbols, QString());
+
+  return html_messages;
 }
 
 double TextBrowserViewer::verticalScrollBarPosition() const {
