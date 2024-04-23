@@ -11,6 +11,9 @@
 #define EXTRACTOR_PACKAGE "@extractus/article-extractor"
 #define EXTRACTOR_VERSION "8.0.7"
 
+#define FETCH_PACKAGE "fetch-charset-detection"
+#define FETCH_VERSION "1.0.1"
+
 ArticleParse::ArticleParse(QObject* parent) : QObject{parent}, m_modulesInstalling(false), m_modulesInstalled(false) {
   connect(qApp->nodejs(), &NodeJs::packageInstalledUpdated, this, &ArticleParse::onPackageReady);
   connect(qApp->nodejs(), &NodeJs::packageError, this, &ArticleParse::onPackageError);
@@ -32,11 +35,11 @@ void ArticleParse::onPackageReady(const QList<NodeJs::PackageMetadata>& pkgs, bo
 
   qApp->showGuiMessage(Notification::Event::NodePackageUpdated,
                        {tr("Packages for article-extractor are installed"),
-                        tr("Press the button once more!"),
+                        tr("Reload your website or article and you can test it then!"),
                         QSystemTrayIcon::MessageIcon::Information},
                        {true, true, false});
 
-  // Emit this just to allow readability again for user.
+  // Emit this just to allow the action again for user.
   emit articleParsed(nullptr, tr("Packages for article-extractor are installed. You can now use this feature!"));
 }
 
@@ -74,8 +77,9 @@ void ArticleParse::parseArticle(QObject* sndr, const QString& url) {
     try {
       NodeJs::PackageStatus st_extractor =
         qApp->nodejs()->packageStatus({QSL(EXTRACTOR_PACKAGE), QSL(EXTRACTOR_VERSION)});
+      NodeJs::PackageStatus st_fetch = qApp->nodejs()->packageStatus({QSL(FETCH_PACKAGE), QSL(FETCH_VERSION)});
 
-      if (st_extractor != NodeJs::PackageStatus::UpToDate) {
+      if (st_extractor != NodeJs::PackageStatus::UpToDate || st_fetch != NodeJs::PackageStatus::UpToDate) {
         if (!m_modulesInstalling) {
           // We make sure to update modules.
           m_modulesInstalling = true;
@@ -87,7 +91,8 @@ void ArticleParse::parseArticle(QObject* sndr, const QString& url) {
                                   .arg(QSL(APP_NAME)),
                                 QSystemTrayIcon::MessageIcon::Warning},
                                {true, true, false});
-          qApp->nodejs()->installUpdatePackages({{QSL(EXTRACTOR_PACKAGE), QSL(EXTRACTOR_VERSION)}});
+          qApp->nodejs()->installUpdatePackages({{QSL(EXTRACTOR_PACKAGE), QSL(EXTRACTOR_VERSION)},
+                                                 {QSL(FETCH_PACKAGE), QSL(FETCH_VERSION)}});
         }
 
         return;
