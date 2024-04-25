@@ -1369,19 +1369,25 @@ void Application::fillCmdArgumentsParser(QCommandLineParser& parser) {
                                QSL("[url-1 ... url-n]"));
 }
 
-void Application::onNodeJsPackageUpdateError(const QList<NodeJs::PackageMetadata>& pkgs, const QString& error) {
+void Application::onNodeJsPackageUpdateError(const QObject* sndr,
+                                             const QList<NodeJs::PackageMetadata>& pkgs,
+                                             const QString& error) {
+  Q_UNUSED(sndr)
   qApp->showGuiMessage(Notification::Event::NodePackageFailedToUpdate,
-                       {{},
-                        tr("Packages %1 were NOT updated because of error: %2.")
+                       {tr("Node.js"),
+                        tr("Packages were NOT updated because of error: %2. Affected packages:\n%1")
                           .arg(NodeJs::packagesToString(pkgs), error),
                         QSystemTrayIcon::MessageIcon::Critical});
 }
 
-void Application::onNodeJsPackageInstalled(const QList<NodeJs::PackageMetadata>& pkgs, bool already_up_to_date) {
+void Application::onNodeJsPackageInstalled(const QObject* sndr,
+                                           const QList<NodeJs::PackageMetadata>& pkgs,
+                                           bool already_up_to_date) {
+  Q_UNUSED(sndr)
   if (!already_up_to_date) {
     qApp->showGuiMessage(Notification::Event::NodePackageUpdated,
-                         {{},
-                          tr("Packages %1 were updated.").arg(NodeJs::packagesToString(pkgs)),
+                         {tr("Node.js"),
+                          tr("These packages were installed/updated:\n%1").arg(NodeJs::packagesToString(pkgs)),
                           QSystemTrayIcon::MessageIcon::Information});
   }
 }

@@ -218,8 +218,12 @@ class RSSGUARD_DLLSPEC Application : public SingleApplication {
     void loadMessageToFeedAndArticleList(Feed* feed, const Message& message);
     void fillCmdArgumentsParser(QCommandLineParser& parser);
 
-    void onNodeJsPackageUpdateError(const QList<NodeJs::PackageMetadata>& pkgs, const QString& error);
-    void onNodeJsPackageInstalled(const QList<NodeJs::PackageMetadata>& pkgs, bool already_up_to_date);
+    void onNodeJsPackageUpdateError(const QObject* sndr,
+                                    const QList<NodeJs::PackageMetadata>& pkgs,
+                                    const QString& error);
+    void onNodeJsPackageInstalled(const QObject* sndr,
+                                  const QList<NodeJs::PackageMetadata>& pkgs,
+                                  bool already_up_to_date);
     void onCommitData(QSessionManager& manager);
     void onSaveState(QSessionManager& manager);
     void onAboutToQuit();

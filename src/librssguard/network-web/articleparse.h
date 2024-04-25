@@ -17,13 +17,13 @@ class ArticleParse : public QObject {
     void parseArticle(QObject* sndr, const QString& url);
 
   private slots:
-    void onParsingFinished(QObject* sndr, const QString& url, int exit_code, QProcess::ExitStatus exit_status);
-    void onPackageReady(const QList<NodeJs::PackageMetadata>& pkgs, bool already_up_to_date);
-    void onPackageError(const QList<NodeJs::PackageMetadata>& pkgs, const QString& error);
+    void onParsingFinished(const QObject* sndr, const QString& url, int exit_code, QProcess::ExitStatus exit_status);
+    void onPackageReady(const QObject* sndr, const QList<NodeJs::PackageMetadata>& pkgs, bool already_up_to_date);
+    void onPackageError(const QObject* sndr, const QList<NodeJs::PackageMetadata>& pkgs, const QString& error);
 
   signals:
-    void articleParsed(QObject* sndr, const QString& url, const QString& better_html);
-    void errorOnArticlePArsing(QObject* sndr, const QString& error);
+    void articleParsed(const QObject* sndr, const QString& url, const QString& better_html);
+    void errorOnArticleParsing(const QObject* sndr, const QString& error);
 
   private:
     bool m_modulesInstalling;

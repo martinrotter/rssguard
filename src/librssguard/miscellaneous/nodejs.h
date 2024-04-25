@@ -61,15 +61,15 @@ class NodeJs : public QObject {
     // If package IS installed but out-of-date, it is updated to desired versions.
     //
     // NOTE: https://docs.npmjs.com/cli/v8/commands/npm-install
-    void installUpdatePackages(const QList<PackageMetadata>& pkgs);
+    void installUpdatePackages(const QObject* sndr, const QList<PackageMetadata>& pkgs);
 
-    void installPackages(const QList<PackageMetadata>& pkgs);
+    void installPackages(const QObject* sndr, const QList<PackageMetadata>& pkgs);
 
     static QString packagesToString(const QList<PackageMetadata>& pkgs);
 
   signals:
-    void packageError(const QList<PackageMetadata>& pkgs, const QString& error);
-    void packageInstalledUpdated(const QList<PackageMetadata>& pkgs, bool already_up_to_date);
+    void packageError(const QObject* sndr, const QList<PackageMetadata>& pkgs, const QString& error);
+    void packageInstalledUpdated(const QObject* sndr, const QList<PackageMetadata>& pkgs, bool already_up_to_date);
 
   private:
     Settings* m_settings;

@@ -107,7 +107,7 @@ void WebBrowser::createConnections() {
   connect(qApp->web()->readability(), &Readability::errorOnHtmlReadabiliting, this, &WebBrowser::readabilityFailed);
 
   connect(qApp->web()->articleParse(), &ArticleParse::articleParsed, this, &WebBrowser::setFullArticleHtml);
-  connect(qApp->web()->articleParse(), &ArticleParse::errorOnArticlePArsing, this, &WebBrowser::fullArticleFailed);
+  connect(qApp->web()->articleParse(), &ArticleParse::errorOnArticleParsing, this, &WebBrowser::fullArticleFailed);
 }
 
 void WebBrowser::updateUrl(const QUrl& url) {
@@ -306,13 +306,13 @@ void WebBrowser::newWindowRequested(WebViewer* viewer) {
   qApp->mainForm()->tabWidget()->addBrowser(false, false, browser);
 }
 
-void WebBrowser::setReadabledHtml(QObject* sndr, const QString& better_html) {
+void WebBrowser::setReadabledHtml(const QObject* sndr, const QString& better_html) {
   if (sndr == this && !better_html.isEmpty()) {
     m_webView->setReadabledHtml(better_html, m_webView->url());
   }
 }
 
-void WebBrowser::readabilityFailed(QObject* sndr, const QString& error) {
+void WebBrowser::readabilityFailed(const QObject* sndr, const QString& error) {
   if (sndr == this && !error.isEmpty()) {
     m_webView->setReadabledHtml(error, m_webView->url());
   }
@@ -344,7 +344,7 @@ Message WebBrowser::messageFromExtractor(const QJsonDocument& extracted_data) co
   return msg;
 }
 
-void WebBrowser::setFullArticleHtml(QObject* sndr, const QString& url, const QString& json_answer) {
+void WebBrowser::setFullArticleHtml(const QObject* sndr, const QString& url, const QString& json_answer) {
   if (sndr == this && !json_answer.isEmpty()) {
     QJsonDocument json_doc = QJsonDocument::fromJson(json_answer.toUtf8());
 
@@ -385,7 +385,7 @@ void WebBrowser::setFullArticleHtml(QObject* sndr, const QString& url, const QSt
   }
 }
 
-void WebBrowser::fullArticleFailed(QObject* sndr, const QString& error) {
+void WebBrowser::fullArticleFailed(const QObject* sndr, const QString& error) {
   if (sndr == this && !error.isEmpty()) {
     m_webView->setReadabledHtml(error, m_webView->url());
   }

@@ -19,7 +19,9 @@ ArticleParse::ArticleParse(QObject* parent) : QObject{parent}, m_modulesInstalli
   connect(qApp->nodejs(), &NodeJs::packageError, this, &ArticleParse::onPackageError);
 }
 
-void ArticleParse::onPackageReady(const QList<NodeJs::PackageMetadata>& pkgs, bool already_up_to_date) {
+void ArticleParse::onPackageReady(const QObject* sndr,
+                                  const QList<NodeJs::PackageMetadata>& pkgs,
+                                  bool already_up_to_date) {
   Q_UNUSED(already_up_to_date)
 
   bool concerns_extractor = boolinq::from(pkgs).any([](const NodeJs::PackageMetadata& pkg) {
@@ -40,10 +42,12 @@ void ArticleParse::onPackageReady(const QList<NodeJs::PackageMetadata>& pkgs, bo
                        {true, true, false});
 
   // Emit this just to allow the action again for user.
-  emit articleParsed(nullptr, {}, tr("Packages for article-extractor are installed. You can now use this feature!"));
+  emit errorOnArticleParsing(sndr, tr("Packages for article-extractor are installed. You can now use this feature!"));
 }
 
-void ArticleParse::onPackageError(const QList<NodeJs::PackageMetadata>& pkgs, const QString& error) {
+void ArticleParse::onPackageError(const QObject* sndr,
+                                  const QList<NodeJs::PackageMetadata>& pkgs,
+                                  const QString& error) {
   bool concerns_extractor = boolinq::from(pkgs).any([](const NodeJs::PackageMetadata& pkg) {
     return pkg.m_name == QSL(EXTRACTOR_PACKAGE);
   });
@@ -61,9 +65,8 @@ void ArticleParse::onPackageError(const QList<NodeJs::PackageMetadata>& pkgs, co
                        {true, true, false});
 
   // Emit this just to allow readability again for user.
-  emit articleParsed(nullptr,
-                     {},
-                     tr("Packages for article-extractor are NOT installed. There is error: %1").arg(error));
+  emit errorOnArticleParsing(sndr,
+                             tr("Packages for article-extractor are NOT installed. There is error: %1").arg(error));
 }
 
 void ArticleParse::parseArticle(QObject* sndr, const QString& url) {
@@ -85,15 +88,8 @@ void ArticleParse::parseArticle(QObject* sndr, const QString& url) {
         if (!m_modulesInstalling) {
           // We make sure to update modules.
           m_modulesInstalling = true;
-
-          qApp->showGuiMessage(Notification::Event::NodePackageUpdated,
-                               {tr("Node.js libraries not installed"),
-                                tr("%1 will now install some needed libraries, this will take only a few seconds. "
-                                   "You will be notified when installation is complete.")
-                                  .arg(QSL(APP_NAME)),
-                                QSystemTrayIcon::MessageIcon::Warning},
-                               {true, true, false});
-          qApp->nodejs()->installUpdatePackages({{QSL(EXTRACTOR_PACKAGE), QSL(EXTRACTOR_VERSION)},
+          qApp->nodejs()->installUpdatePackages(sndr,
+                                                {{QSL(EXTRACTOR_PACKAGE), QSL(EXTRACTOR_VERSION)},
                                                  {QSL(FETCH_PACKAGE), QSL(FETCH_VERSION)}});
         }
 
@@ -134,7 +130,7 @@ void ArticleParse::parseArticle(QObject* sndr, const QString& url) {
   qApp->nodejs()->runScript(proc, m_scriptFilename, {url});
 }
 
-void ArticleParse::onParsingFinished(QObject* sndr,
+void ArticleParse::onParsingFinished(const QObject *sndr,
                                      const QString& url,
                                      int exit_code,
                                      QProcess::ExitStatus exit_status) {
@@ -145,7 +141,7 @@ void ArticleParse::onParsingFinished(QObject* sndr,
   }
   else {
     QString err = QString::fromUtf8(proc->readAllStandardError());
-    emit errorOnArticlePArsing(sndr, err);
+    emit errorOnArticleParsing(sndr, err);
   }
 
   proc->deleteLater();

@@ -76,11 +76,11 @@ class RSSGUARD_DLLSPEC WebBrowser : public TabContent {
     void readabilePage();
     void getFullArticle();
 
-    void setReadabledHtml(QObject* sndr, const QString& better_html);
-    void readabilityFailed(QObject* sndr, const QString& error);
+    void setReadabledHtml(const QObject* sndr, const QString& better_html);
+    void readabilityFailed(const QObject* sndr, const QString& error);
 
-    void setFullArticleHtml(QObject* sndr, const QString &url, const QString& json_answer);
-    void fullArticleFailed(QObject* sndr, const QString& error);
+    void setFullArticleHtml(const QObject* sndr, const QString& url, const QString& json_answer);
+    void fullArticleFailed(const QObject* sndr, const QString& error);
 
   signals:
     void windowCloseRequested();

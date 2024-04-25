@@ -18,12 +18,12 @@ class Readability : public QObject {
 
   private slots:
     void onReadabilityFinished(QObject* sndr, int exit_code, QProcess::ExitStatus exit_status);
-    void onPackageReady(const QList<NodeJs::PackageMetadata>& pkgs, bool already_up_to_date);
-    void onPackageError(const QList<NodeJs::PackageMetadata>& pkgs, const QString& error);
+    void onPackageReady(const QObject* sndr, const QList<NodeJs::PackageMetadata>& pkgs, bool already_up_to_date);
+    void onPackageError(const QObject* sndr, const QList<NodeJs::PackageMetadata>& pkgs, const QString& error);
 
   signals:
-    void htmlReadabled(QObject* sndr, const QString& better_html);
-    void errorOnHtmlReadabiliting(QObject* sndr, const QString& error);
+    void htmlReadabled(const QObject* sndr, const QString& better_html);
+    void errorOnHtmlReadabiliting(const QObject* sndr, const QString& error);
 
   private:
     bool m_modulesInstalling;
