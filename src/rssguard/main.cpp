@@ -99,6 +99,7 @@ int main(int argc, char* argv[]) {
   qApp->setFeedReader(new FeedReader(&application));
 
   // Register needed metatypes.
+  qRegisterMetaType<QNetworkAccessManager::Operation>("QNetworkAccessManager::Operation");
   qRegisterMetaType<QList<Message>>("QList<Message>");
   qRegisterMetaType<QList<RootItem*>>("QList<RootItem*>");
   qRegisterMetaType<QList<Label*>>("QList<Label*>");
