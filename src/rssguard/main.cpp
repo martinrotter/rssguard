@@ -32,7 +32,11 @@ int main(int argc, char* argv[]) {
 
   // High DPI stuff.
 #if QT_VERSION >= 0x050E00 // Qt >= 5.14.0
-  qputenv("QT_ENABLE_HIGHDPI_SCALING", "1");
+  auto high_dpi_existing_env = qgetenv("QT_ENABLE_HIGHDPI_SCALING");
+
+  if (high_dpi_existing_env.isEmpty()) {
+    qputenv("QT_ENABLE_HIGHDPI_SCALING", "1");
+  }
 #else
   qputenv("QT_AUTO_SCREEN_SCALE_FACTOR", "1");
 #endif
