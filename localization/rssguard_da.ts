@@ -277,7 +277,7 @@ påmindelse.</translation>
     <message>
       <location filename="../src/librssguard/gui/reusable/articleamountcontrol.ui" line="76"/>
       <source>Avoid adding articles before this date/time into the database</source>
-      <translation type="unfinished">Avoid adding articles before this date/time into the database</translation>
+      <translation>Undgå at tilføje artikler før denne dato/tid til databasen</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/reusable/articleamountcontrol.ui" line="85"/>
@@ -317,7 +317,7 @@ påmindelse.</translation>
     <message>
       <location filename="../src/librssguard/gui/reusable/articleamountcontrol.ui" line="238"/>
       <source>Just move articles to recycle bin, do not purge them</source>
-      <translation type="unfinished">Just move articles to recycle bin, do not purge them</translation>
+      <translation>Flyt artiklerne til papirkurven, uden at tømme den</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/reusable/articleamountcontrol.cpp" line="11"/>
@@ -492,8 +492,8 @@ påmindelse.</translation>
       <location filename="../src/librssguard/services/abstract/category.cpp" line="73"/>
       <source>Number of feeds: %1
 Number of categories: %2</source>
-      <translation type="unfinished">Number of feeds: %1
-Number of categories: %2</translation>
+      <translation>Antal nyhedskilder: %1
+Antal kategorier: %2</translation>
     </message>
   </context>
   <context>
@@ -2014,7 +2014,7 @@ QtWebEngine cache folder -&gt; &quot;%7&quot;</translation>
     <message>
       <location filename="../src/librssguard-standard/src/gui/formdiscoverfeeds.cpp" line="42"/>
       <source>Switch to &amp;advanced mode</source>
-      <translation type="unfinished">Switch to &amp;advanced mode</translation>
+      <translation>Skift til &amp;avanceret tilstand</translation>
     </message>
     <message>
       <location filename="../src/librssguard-standard/src/gui/formdiscoverfeeds.cpp" line="44"/>
@@ -2117,7 +2117,7 @@ QtWebEngine cache folder -&gt; &quot;%7&quot;</translation>
       <source>Edit %n feeds</source>
       <translation type="unfinished">
         <numerusform>Edit %n feeds</numerusform>
-        <numerusform>Edit %n feeds</numerusform>
+        <numerusform>Rediger %n nyhedskilder</numerusform>
       </translation>
     </message>
     <message>
@@ -2173,7 +2173,7 @@ QtWebEngine cache folder -&gt; &quot;%7&quot;</translation>
     <message>
       <location filename="../src/librssguard/services/abstract/gui/formfeeddetails.ui" line="136"/>
       <source>Right-to-left layout</source>
-      <translation type="unfinished">Right-to-left layout</translation>
+      <translation>Højre-til-venstre layout</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/abstract/gui/formfeeddetails.ui" line="108"/>
