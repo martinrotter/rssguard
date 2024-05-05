@@ -1288,17 +1288,17 @@ Item ID: %5</translation>
     <message>
       <location filename="../src/librssguard/gui/feedsview.cpp" line="306"/>
       <source>%1 does not support batch editing of multiple accounts.</source>
-      <translation type="unfinished">%1 does not support batch editing of multiple accounts.</translation>
+      <translation>%1 understøtter ikke batchredigering af flere konti.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/feedsview.cpp" line="324"/>
       <source>%1 does not support batch editing of items from multiple accounts.</source>
-      <translation type="unfinished">%1 does not support batch editing of items from multiple accounts.</translation>
+      <translation>%1 understøtter ikke batchredigering af elementer fra flere konti.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/feedsview.cpp" line="341"/>
       <source>%1 does not support batch editing of items of varying types.</source>
-      <translation type="unfinished">%1 does not support batch editing of items of varying types.</translation>
+      <translation>%1 understøtter ikke batchredigering af elementer af varierende typer.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/feedsview.cpp" line="351"/>
@@ -1728,9 +1728,9 @@ QtWebEngine cache folder -&gt; &quot;%7&quot;</translation>
     <message numerus="yes">
       <location filename="../src/librssguard/services/abstract/gui/formcategorydetails.cpp" line="108"/>
       <source>Edit %n categories</source>
-      <translation type="unfinished">
+      <translation>
         <numerusform>Redigér %n kategori</numerusform>
-        <numerusform>Edit %n categories</numerusform>
+        <numerusform>Redigér %n kategorier</numerusform>
       </translation>
     </message>
     <message>
@@ -2158,7 +2158,7 @@ QtWebEngine cache folder -&gt; &quot;%7&quot;</translation>
     <message>
       <location filename="../src/librssguard/services/abstract/gui/formfeeddetails.ui" line="84"/>
       <source>Open articles via their URL automatically</source>
-      <translation type="unfinished">Open articles via their URL automatically</translation>
+      <translation>Åbn artikler via deres URL automatisk</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/abstract/gui/formfeeddetails.ui" line="97"/>
@@ -2196,7 +2196,7 @@ QtWebEngine cache folder -&gt; &quot;%7&quot;</translation>
     <message>
       <location filename="../src/librssguard-greader/src/gui/formgreaderfeeddetails.cpp" line="64"/>
       <source>Feed NOT updated or added</source>
-      <translation type="unfinished">Feed NOT updated or added</translation>
+      <translation>Nyhedskilde er ikke ajourført eller tilføjet</translation>
     </message>
     <message>
       <location filename="../src/librssguard-greader/src/gui/formgreaderfeeddetails.cpp" line="65"/>
@@ -2597,7 +2597,7 @@ QtWebEngine cache folder -&gt; &quot;%7&quot;</translation>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="614"/>
       <source>Switch layout</source>
-      <translation type="unfinished">Switch layout</translation>
+      <translation>Skift layout</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="622"/>
@@ -2622,7 +2622,7 @@ QtWebEngine cache folder -&gt; &quot;%7&quot;</translation>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="652"/>
       <source>Show unread items only</source>
-      <translation type="unfinished">Show unread items only</translation>
+      <translation>Vis kun ulæste elementer</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="660"/>
@@ -2828,17 +2828,17 @@ QtWebEngine cache folder -&gt; &quot;%7&quot;</translation>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="925"/>
       <source>Cleanup web cac&amp;he</source>
-      <translation type="unfinished">Cleanup web cac&amp;he</translation>
+      <translation>Tøm webcac&amp;he</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="933"/>
       <source>You must add new account first</source>
-      <translation type="unfinished">You must add new account first</translation>
+      <translation>Du skal først tilføje en ny konto</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="936"/>
       <source>You must add new account first.</source>
-      <translation type="unfinished">You must add new account first.</translation>
+      <translation>Du skal først tilføje en ny konto.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="941"/>
@@ -2879,12 +2879,12 @@ QtWebEngine cache folder -&gt; &quot;%7&quot;</translation>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.cpp" line="472"/>
       <source>Play in media player</source>
-      <translation type="unfinished">Play in media player</translation>
+      <translation>Afspil i medieafspiller</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.cpp" line="473"/>
       <source>(not supported)</source>
-      <translation type="unfinished">(not supported)</translation>
+      <translation>(ikke understøttet)</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.cpp" line="538"/>
@@ -3330,12 +3330,12 @@ Du skal genstarte programmet manuelt.</translation>
     <message>
       <location filename="../src/librssguard-standard/src/gui/formstandardimportexport.cpp" line="155"/>
       <source>Command is ok.</source>
-      <translation type="unfinished">Command is ok.</translation>
+      <translation>Kommando er okay.</translation>
     </message>
     <message>
       <location filename="../src/librssguard-standard/src/gui/formstandardimportexport.cpp" line="158"/>
       <source>Command is empty.</source>
-      <translation type="unfinished">Command is empty.</translation>
+      <translation>Kommando er tom.</translation>
     </message>
     <message>
       <location filename="../src/librssguard-standard/src/gui/formstandardimportexport.cpp" line="178"/>
@@ -8098,7 +8098,7 @@ Post-processing script: %3</translation>
     <message>
       <location filename="../src/librssguard-standard/src/gui/standardfeeddetails.cpp" line="306"/>
       <source>Command is ok.</source>
-      <translation type="unfinished">Command is ok.</translation>
+      <translation>Kommando er okay.</translation>
     </message>
     <message>
       <location filename="../src/librssguard-standard/src/gui/standardfeeddetails.cpp" line="168"/>
