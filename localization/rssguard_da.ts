@@ -4998,7 +4998,7 @@ Login tokens expiration: %2</translation>
     <message>
       <location filename="../src/librssguard/core/messagesmodel.cpp" line="297"/>
       <source>Author</source>
-      <translation>Udvikler</translation>
+      <translation>Forfatter</translation>
     </message>
     <message>
       <location filename="../src/librssguard/core/messagesmodel.cpp" line="299"/>
