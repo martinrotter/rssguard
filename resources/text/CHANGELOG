@@ -3,7 +3,7 @@
 
 OK, dear users. Over recent releases, many features were added and as you can see RSS Guard bug tracker is full of (semi) bug reports which need to be addressed. Therefore I must declare feature-freeze for at least three upcoming releases. No new features will be added in forthcoming future, because RSS Guard codebase must be de-bugged and stabilized first. I will keep my word this time and no feature requests will be implemented.
 
-Sole focus will be on fixing bugs and polish existing features and clean codebase.
+Sole focus will be on fixing bugs and polish existing features and clean codebase. The other reason for this is also that lately my free time had become much much more limited for many reasons - family, other hobbies, work around house etc.
 
 Added:
 * Full article content can now be fetched with a single button. Button is placed in article viewer toolbar right next to "Reader mode" button. This feature (just as "reader mode" feature) requires Node.js installation. The feature works both for articles and for regular websites opened in embedded web browser.
