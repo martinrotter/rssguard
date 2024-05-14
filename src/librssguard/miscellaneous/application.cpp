@@ -43,6 +43,7 @@
 #include <QSslSocket>
 #include <QThreadPool>
 #include <QTimer>
+#include <QVersionNumber>
 
 #if defined(NO_LITE) && defined(MEDIAPLAYER_LIBMPV_OPENGL)
 #include <QQuickWindow>
@@ -558,9 +559,11 @@ QString Application::configFolder() const {
 }
 
 QString Application::userDataAppFolder() const {
+  static int major_version = QVersionNumber::fromString(QSL(APP_VERSION)).majorVersion();
+
   // In "app" folder, we would like to separate all user data into own subfolder,
   // therefore stick to "data" folder in this mode.
-  return QDir::toNativeSeparators(applicationDirPath() + QDir::separator() + QSL("data4"));
+  return QDir::toNativeSeparators(applicationDirPath() + QDir::separator() + QSL("data%1").arg(major_version));
 }
 
 QString Application::userDataFolder() {
@@ -597,12 +600,13 @@ QStringList Application::replaceUserDataFolderPlaceholder(QStringList texts) con
 
 QString Application::userDataHomeFolder() const {
   QString pth;
+  static int major_version = QVersionNumber::fromString(QSL(APP_VERSION)).majorVersion();
 
 #if defined(Q_OS_ANDROID)
   return pth = IOFactory::getSystemFolder(QStandardPaths::GenericDataLocation) + QDir::separator() + QSL(APP_NAME) +
-               QSL(" 4");
+               QSL(" %1").arg(major_version);
 #else
-  return pth = configFolder() + QDir::separator() + QSL(APP_NAME) + QSL(" 4");
+  return pth = configFolder() + QDir::separator() + QSL(APP_NAME) + QSL(" %1").arg(major_version);
 #endif
 
   return QDir::toNativeSeparators(pth);

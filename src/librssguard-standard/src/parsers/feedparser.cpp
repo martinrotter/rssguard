@@ -22,6 +22,9 @@ FeedParser::FeedParser(QString data, DataType is_xml)
   }
 
   if (m_dataType == DataType::Xml) {
+    // NOTE: Some XMLs have whitespace before XML declaration, erase it.
+    m_data = m_data.trimmed();
+
     // XML.
     QString error;
 
