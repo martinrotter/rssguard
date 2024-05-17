@@ -87,9 +87,15 @@ QDateTime TextFactory::parseDateTime(const QString& date_time, QString* used_dt_
     return QDateTime();
   }
 
+  QLocale locale(QLocale::Language::C);
+  QStringList built_in_patterns = dateTimePatterns(true);
+
   QDateTime dt;
-  static QLocale locale(QLocale::Language::C);
-  static QStringList date_patterns = dateTimePatterns(true);
+  QStringList date_patterns = built_in_patterns;
+
+  if (used_dt_format != nullptr && !used_dt_format->isEmpty()) {
+    built_in_patterns.prepend(*used_dt_format);
+  }
 
   // QDateTime dt1 = locale.toDateTime("GMT", "t");
   // QString dt2 = dt1.toString();
@@ -126,12 +132,16 @@ QStringList TextFactory::dateTimePatterns(bool with_tzs) {
   QStringList pat;
 
   pat << QSL("yyyy-MM-ddTHH:mm:ss");
+  pat << QSL("yyyy-MM-ddTHH:mm:ss.zzz");
   pat << QSL("yyyy-MM-ddThh:mm:ss");
   pat << QSL("yyyy-MM-dd HH:mm:ss.z");
+
   pat << QSL("yyyy-MM-ddThh:mm");
+
   pat << QSL("yyyyMMddThhmmss");
   pat << QSL("yyyyMMdd");
   pat << QSL("yyyy");
+
   pat << QSL("yyyy-MM-dd");
   pat << QSL("yyyy-MM");
 
@@ -143,7 +153,7 @@ QStringList TextFactory::dateTimePatterns(bool with_tzs) {
   pat << QSL("ddd, dd MMM yy HH:mm:ss");
   pat << QSL("ddd, d MMM yyyy HH:mm:ss");
 
-  // Thu, 07 Mar 2024 01 : 12 : 13 GMT
+  pat << QSL("ddd, MM/dd/yyyy - HH:mm");
 
   pat << QSL("dd MMM yyyy hh:mm:ss");
   pat << QSL("dd MMM yyyy");

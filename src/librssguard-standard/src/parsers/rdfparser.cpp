@@ -257,11 +257,12 @@ QString RdfParser::xmlMessageAuthor(const QDomElement& msg_element) const {
   return msg_element.elementsByTagNameNS(m_dcElNamespace, QSL("creator")).at(0).toElement().text();
 }
 
-QDateTime RdfParser::xmlMessageDateCreated(const QDomElement& msg_element) const {
+QDateTime RdfParser::xmlMessageDateCreated(const QDomElement& msg_element) {
   return TextFactory::parseDateTime(msg_element.elementsByTagNameNS(m_dcElNamespace, QSL("date"))
                                       .at(0)
                                       .toElement()
-                                      .text());
+                                      .text(),
+                                    &m_dateTimeFormat);
 }
 
 QString RdfParser::xmlMessageId(const QDomElement& msg_element) const {

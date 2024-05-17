@@ -23,7 +23,7 @@ class SitemapParser : public FeedParser {
     virtual QString xmlMessageTitle(const QDomElement& msg_element) const;
     virtual QString xmlMessageUrl(const QDomElement& msg_element) const;
     virtual QString xmlMessageDescription(const QDomElement& msg_element) const;
-    virtual QDateTime xmlMessageDateCreated(const QDomElement& msg_element) const;
+    virtual QDateTime xmlMessageDateCreated(const QDomElement& msg_element);
     virtual QString xmlMessageId(const QDomElement& msg_element) const;
     virtual QList<Enclosure> xmlMessageEnclosures(const QDomElement& msg_element) const;
 

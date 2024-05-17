@@ -15,6 +15,8 @@
 #include <QFile>
 #include <QRegularExpression>
 
+FeedParser::FeedParser() {}
+
 FeedParser::FeedParser(QString data, DataType is_xml)
   : m_dataType(is_xml), m_data(std::move(data)), m_mrssNamespace(QSL("http://search.yahoo.com/mrss/")) {
   if (m_data.isEmpty()) {
@@ -104,7 +106,7 @@ QString FeedParser::jsonMessageAuthor(const QJsonObject& msg_element) const {
   return {};
 }
 
-QDateTime FeedParser::jsonMessageDateCreated(const QJsonObject& msg_element) const {
+QDateTime FeedParser::jsonMessageDateCreated(const QJsonObject& msg_element)  {
   return {};
 }
 
@@ -136,7 +138,7 @@ QString FeedParser::objMessageUrl(const QVariant& msg_element) const {
   return {};
 }
 
-QString FeedParser::objMessageDescription(const QVariant& msg_element) const {
+QString FeedParser::objMessageDescription(const QVariant& msg_element)  {
   return {};
 }
 
@@ -144,7 +146,7 @@ QString FeedParser::objMessageAuthor(const QVariant& msg_element) const {
   return {};
 }
 
-QDateTime FeedParser::objMessageDateCreated(const QVariant& msg_element) const {
+QDateTime FeedParser::objMessageDateCreated(const QVariant& msg_element)  {
   return {};
 }
 
@@ -398,6 +400,14 @@ QStringList FeedParser::xmlTextsFromPath(const QDomElement& element,
   return result;
 }
 
+QString FeedParser::dateTimeFormat() const {
+  return m_dateTimeFormat;
+}
+
+void FeedParser::setDateTimeFormat(const QString& dt_format) {
+  m_dateTimeFormat = dt_format;
+}
+
 QString FeedParser::feedAuthor() const {
   return QL1S("");
 }
@@ -422,7 +432,7 @@ QString FeedParser::xmlMessageAuthor(const QDomElement& msg_element) const {
   return {};
 }
 
-QDateTime FeedParser::xmlMessageDateCreated(const QDomElement& msg_element) const {
+QDateTime FeedParser::xmlMessageDateCreated(const QDomElement& msg_element) {
   return {};
 }
 

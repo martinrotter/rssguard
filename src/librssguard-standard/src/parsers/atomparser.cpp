@@ -334,14 +334,14 @@ QString AtomParser::xmlMessageDescription(const QDomElement& msg_element) const 
   return summary;
 }
 
-QDateTime AtomParser::xmlMessageDateCreated(const QDomElement& msg_element) const {
+QDateTime AtomParser::xmlMessageDateCreated(const QDomElement& msg_element) {
   QString updated = xmlTextsFromPath(msg_element, m_atomNamespace, QSL("updated"), true).join(QSL(", "));
 
   if (updated.simplified().isEmpty()) {
     updated = xmlTextsFromPath(msg_element, m_atomNamespace, QSL("modified"), true).join(QSL(", "));
   }
 
-  return TextFactory::parseDateTime(updated);
+  return TextFactory::parseDateTime(updated, &m_dateTimeFormat);
 }
 
 QString AtomParser::xmlMessageId(const QDomElement& msg_element) const {

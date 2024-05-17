@@ -107,6 +107,9 @@ class StandardFeed : public Feed {
     QString lastEtag() const;
     void setLastEtag(const QString& etag);
 
+    QString dateTimeFormat() const;
+    void setDateTimeFormat(const QString& dt_format);
+
   public slots:
     void fetchMetadataForItself();
 
@@ -119,6 +122,7 @@ class StandardFeed : public Feed {
     Type m_type;
     QString m_postProcessScript;
     QString m_encoding;
+    QString m_dateTimeFormat;
     NetworkFactory::NetworkAuthentication m_protection = NetworkFactory::NetworkAuthentication::NoAuthentication;
     QString m_username;
     QString m_password;

@@ -263,7 +263,7 @@ QString SitemapParser::xmlMessageDescription(const QDomElement& msg_element) con
   return xmlRawChild(msg_element.elementsByTagNameNS(sitemapVideoNamespace(), QSL("description")).at(0).toElement());
 }
 
-QDateTime SitemapParser::xmlMessageDateCreated(const QDomElement& msg_element) const {
+QDateTime SitemapParser::xmlMessageDateCreated(const QDomElement& msg_element) {
   QString str_date = msg_element.elementsByTagNameNS(sitemapNamespace(), QSL("lastmod")).at(0).toElement().text();
 
   if (str_date.isEmpty()) {
@@ -271,7 +271,7 @@ QDateTime SitemapParser::xmlMessageDateCreated(const QDomElement& msg_element) c
       msg_element.elementsByTagNameNS(sitemapNewsNamespace(), QSL("publication_date")).at(0).toElement().text();
   }
 
-  return TextFactory::parseDateTime(str_date);
+  return TextFactory::parseDateTime(str_date, &m_dateTimeFormat);
 }
 
 QString SitemapParser::xmlMessageId(const QDomElement& msg_element) const {

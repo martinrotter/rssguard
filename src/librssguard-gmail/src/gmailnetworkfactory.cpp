@@ -511,7 +511,7 @@ void GmailNetworkFactory::onAuthFailed() {
                         }});
 }
 
-bool GmailNetworkFactory::fillFullMessage(Message& msg, const QJsonObject& json, const QString& feed_id) const {
+bool GmailNetworkFactory::fillFullMessage(Message& msg, const QJsonObject& json, const QString& feed_id) {
   // Assign correct main labels/states.
   auto labelids = json[QSL("labelIds")].toArray().toVariantList();
 
@@ -569,10 +569,10 @@ bool GmailNetworkFactory::fillFullMessage(Message& msg, const QJsonObject& json,
   msg.m_url = QSL("https://mail.google.com/mail/u/0/#all/%1").arg(msg.m_customId);
 
   msg.m_createdFromFeed = true;
-  msg.m_created = TextFactory::parseDateTime(headers[QSL("Date")]);
+  msg.m_created = TextFactory::parseDateTime(headers[QSL("Date")], &m_dateTimeFormat);
 
   if (!msg.m_created.isValid()) {
-    msg.m_created = TextFactory::parseDateTime(headers[QSL("date")]);
+    msg.m_created = TextFactory::parseDateTime(headers[QSL("date")], &m_dateTimeFormat);
   }
 
   if (msg.m_title.isEmpty()) {
@@ -695,7 +695,7 @@ QMap<QString, QString> GmailNetworkFactory::getMessageMetadata(const QString& ms
 
 QList<Message> GmailNetworkFactory::obtainAndDecodeFullMessages(const QStringList& message_ids,
                                                                 const QString& feed_id,
-                                                                const QNetworkProxy& custom_proxy) const {
+                                                                const QNetworkProxy& custom_proxy) {
   QHash<QString, Message> msgs;
   int next_message = 0;
   QString bearer = m_oauth2->bearer();

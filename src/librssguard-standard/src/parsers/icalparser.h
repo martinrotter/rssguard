@@ -31,15 +31,17 @@ Q_DECLARE_METATYPE(IcalendarComponent)
 
 class EventComponent : public IcalendarComponent {
   public:
-    QDateTime startsOn(const QMap<QString, QTimeZone>& time_zones = {}, bool* had_dt = nullptr) const;
-    QDateTime endsOn(const QMap<QString, QTimeZone>& time_zones = {}, bool* had_dt = nullptr) const;
+    QDateTime startsOn(const QMap<QString, QTimeZone>& time_zones = {},
+                       bool* had_dt = nullptr,
+                       QString* dt_format = nullptr) const;
+    QDateTime endsOn(const QMap<QString, QTimeZone>& time_zones = {},
+                     bool* had_dt = nullptr,
+                     QString* dt_format = nullptr) const;
     QString title() const;
     QString url() const;
     QString organizer() const;
     QString location() const;
     QString description() const;
-    QDateTime created(const QMap<QString, QTimeZone>& time_zones = {}) const;
-    QDateTime lastModified(const QMap<QString, QTimeZone>& time_zones = {}) const;
 };
 
 Q_DECLARE_METATYPE(EventComponent)
@@ -81,9 +83,9 @@ class IcalParser : public FeedParser {
     virtual QVariantList objMessageElements();
     virtual QString objMessageTitle(const QVariant& msg_element) const;
     virtual QString objMessageUrl(const QVariant& msg_element) const;
-    virtual QString objMessageDescription(const QVariant& msg_element) const;
+    virtual QString objMessageDescription(const QVariant& msg_element);
     virtual QString objMessageAuthor(const QVariant& msg_element) const;
-    virtual QDateTime objMessageDateCreated(const QVariant& msg_element) const;
+    virtual QDateTime objMessageDateCreated(const QVariant& msg_element);
     virtual QString objMessageId(const QVariant& msg_element) const;
     virtual QList<Enclosure> objMessageEnclosures(const QVariant& msg_element) const;
     virtual QList<MessageCategory> objMessageCategories(const QVariant& msg_element) const;

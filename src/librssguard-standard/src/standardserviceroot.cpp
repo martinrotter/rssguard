@@ -322,35 +322,49 @@ QList<Message> StandardServiceRoot::obtainNewMessages(Feed* feed,
   // Feed data are downloaded and encoded.
   // Parse data and obtain messages.
   QList<Message> messages;
+  FeedParser* parser;
 
   switch (f->type()) {
     case StandardFeed::Type::Rss0X:
     case StandardFeed::Type::Rss2X:
-      messages = RssParser(formatted_feed_contents).messages();
+      parser = new RssParser(formatted_feed_contents);
       break;
 
     case StandardFeed::Type::Rdf:
-      messages = RdfParser(formatted_feed_contents).messages();
+      parser = new RdfParser(formatted_feed_contents);
       break;
 
     case StandardFeed::Type::Atom10:
-      messages = AtomParser(formatted_feed_contents).messages();
+      parser = new AtomParser(formatted_feed_contents);
       break;
 
     case StandardFeed::Type::Json:
-      messages = JsonParser(formatted_feed_contents).messages();
+      parser = new JsonParser(formatted_feed_contents);
       break;
 
     case StandardFeed::Type::iCalendar:
-      messages = IcalParser(formatted_feed_contents).messages();
+      parser = new IcalParser(formatted_feed_contents);
       break;
 
     case StandardFeed::Type::Sitemap:
-      messages = SitemapParser(formatted_feed_contents).messages();
+      parser = new SitemapParser(formatted_feed_contents);
+      break;
 
     default:
       break;
   }
+
+  if (!f->dateTimeFormat().isEmpty()) {
+    parser->setDateTimeFormat(f->dateTimeFormat());
+  }
+
+  messages = parser->messages();
+
+  if (!parser->dateTimeFormat().isEmpty()) {
+    f->setDateTimeFormat(parser->dateTimeFormat());
+  }
+
+  delete parser;
 
   for (Message& mess : messages) {
     mess.m_feedId = feed->customId();

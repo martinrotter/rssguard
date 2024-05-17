@@ -280,15 +280,17 @@ QString RssParser::xmlMessageAuthor(const QDomElement& msg_element) const {
   return author;
 }
 
-QDateTime RssParser::xmlMessageDateCreated(const QDomElement& msg_element) const {
-  QDateTime date_created = TextFactory::parseDateTime(msg_element.namedItem(QSL("pubDate")).toElement().text());
+QDateTime RssParser::xmlMessageDateCreated(const QDomElement& msg_element) {
+  QDateTime date_created =
+    TextFactory::parseDateTime(msg_element.namedItem(QSL("pubDate")).toElement().text(), &m_dateTimeFormat);
 
   if (date_created.isNull()) {
-    date_created = TextFactory::parseDateTime(msg_element.namedItem(QSL("date")).toElement().text());
+    date_created = TextFactory::parseDateTime(msg_element.namedItem(QSL("date")).toElement().text(), &m_dateTimeFormat);
   }
 
   if (date_created.isNull()) {
-    date_created = TextFactory::parseDateTime(msg_element.namedItem(QSL("dc:modified")).toElement().text());
+    date_created =
+      TextFactory::parseDateTime(msg_element.namedItem(QSL("dc:modified")).toElement().text(), &m_dateTimeFormat);
   }
 
   return date_created;

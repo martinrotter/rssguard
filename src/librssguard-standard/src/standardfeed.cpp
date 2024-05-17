@@ -426,6 +426,14 @@ bool StandardFeed::removeItself() {
   return DatabaseQueries::deleteFeed(database, this, getParentServiceRoot()->accountId());
 }
 
+QString StandardFeed::dateTimeFormat() const {
+  return m_dateTimeFormat;
+}
+
+void StandardFeed::setDateTimeFormat(const QString& dt_format) {
+  m_dateTimeFormat = dt_format;
+}
+
 QString StandardFeed::lastEtag() const {
   return m_lastEtag;
 }
