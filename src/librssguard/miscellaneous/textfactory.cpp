@@ -81,7 +81,13 @@ bool TextFactory::couldBeHtml(const QString& string) {
 }
 
 QDateTime TextFactory::parseDateTime(const QString& date_time, QString* used_dt_format) {
-  QString input_date = date_time.simplified().replace(QSL("GMT"), QSL("UTC"));
+  QString input_date = date_time.simplified()
+                         .replace(QSL("GMT"), QSL("+0000"))
+                         .replace(QSL("UTC"), QSL("+0000"))
+                         .replace(QSL("EDT"), QSL("-0400"))
+                         .replace(QSL("EST"), QSL("-0500"))
+                         .replace(QSL("PDT"), QSL("-0700"))
+                         .replace(QSL("PST"), QSL("-0800"));
 
   if (input_date.isEmpty()) {
     return QDateTime();
@@ -130,6 +136,7 @@ QStringList TextFactory::dateTimePatterns(bool with_tzs) {
   QStringList pat;
 
   pat << QSL("yyyy-MM-ddTHH:mm:ss");
+  pat << QSL("yyyy-MM-ddTHH:mm:ss.z");
   pat << QSL("yyyy-MM-ddTHH:mm:ss.zzz");
   pat << QSL("yyyy-MM-ddThh:mm:ss");
   pat << QSL("yyyy-MM-dd HH:mm:ss.z");
