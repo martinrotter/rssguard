@@ -29,9 +29,21 @@ $ProgressPreference = 'SilentlyContinue'
 # Get and prepare needed dependencies.
 if ($use_qt5 -eq "ON") {
   $qt_version = "5.15.2"
+
+  $use_libmpv = "OFF"
+  $use_qtmultimedia = "ON"
 }
 else {
   $qt_version = "6.6.3"
+
+  if ($use_webengine -eq "ON") {
+    $use_libmpv = "ON"
+    $use_qtmultimedia = "OFF"
+  }
+  else {
+    $use_libmpv = "OFF"
+    $use_qtmultimedia = "ON"
+  }
 }
 
 $is_qt_6 = $qt_version.StartsWith("6")
@@ -142,7 +154,7 @@ cd "$old_pwd"
 mkdir "rssguard-build"
 cd "rssguard-build"
 
-& "$cmake_path" ".." -G Ninja -DCMAKE_BUILD_TYPE="RelWithDebInfo" -DCMAKE_VERBOSE_MAKEFILE="ON" -DBUILD_WITH_QT6="$with_qt6" -DREVISION_FROM_GIT="ON" -DUSE_SYSTEM_SQLITE="OFF" -DZLIB_ROOT="$zlib_path" -DENABLE_COMPRESSED_SITEMAP="ON" -DENABLE_MEDIAPLAYER_LIBMPV="$use_webengine" -DENABLE_MEDIAPLAYER_QTMULTIMEDIA="$not_use_webengine" -DLibMPV_ROOT="$libmpv_path" -DNO_LITE="$use_webengine" -DFEEDLY_CLIENT_ID="$env:FEEDLY_CLIENT_ID" -DFEEDLY_CLIENT_SECRET="$env:FEEDLY_CLIENT_SECRET" -DGMAIL_CLIENT_ID="$env:GMAIL_CLIENT_ID" -DGMAIL_CLIENT_SECRET="$env:GMAIL_CLIENT_SECRET"
+& "$cmake_path" ".." -G Ninja -DCMAKE_BUILD_TYPE="RelWithDebInfo" -DCMAKE_VERBOSE_MAKEFILE="ON" -DBUILD_WITH_QT6="$with_qt6" -DREVISION_FROM_GIT="ON" -DUSE_SYSTEM_SQLITE="OFF" -DZLIB_ROOT="$zlib_path" -DENABLE_COMPRESSED_SITEMAP="ON" -DENABLE_MEDIAPLAYER_LIBMPV="$use_libmpv" -DENABLE_MEDIAPLAYER_QTMULTIMEDIA="$use_qtmultimedia" -DLibMPV_ROOT="$libmpv_path" -DNO_LITE="$use_webengine" -DFEEDLY_CLIENT_ID="$env:FEEDLY_CLIENT_ID" -DFEEDLY_CLIENT_SECRET="$env:FEEDLY_CLIENT_SECRET" -DGMAIL_CLIENT_ID="$env:GMAIL_CLIENT_ID" -DGMAIL_CLIENT_SECRET="$env:GMAIL_CLIENT_SECRET"
 & "$cmake_path" --build .
 & "$cmake_path" --install . --prefix app
 
