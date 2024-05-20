@@ -176,7 +176,7 @@ Copy-Item -Path "$zlib_path\zlib1.dll" -Destination ".\app\"
 # Copy debug symbols.
 Copy-Item -Path ".\src\librssguard\rssguard.pdb" -Destination ".\app\"
 
-if ($use_webengine -eq "ON") {
+if ($use_libmpv -eq "ON") {
   # Copy libmpv and yt-dlp.
   Copy-Item -Path "$libmpv_path\libmpv*.dll" -Destination ".\app\"
   Copy-Item -Path "$ytdlp_path" -Destination ".\app\"
