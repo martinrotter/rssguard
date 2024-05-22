@@ -29,6 +29,7 @@ QList<ServiceEntryPoint*> PluginFactory::loadPlugins() const {
                           QDirIterator::IteratorFlag::NoIteratorFlags);
 #endif
 
+    qDebugNN << LOGSEC_CORE << "Checking for plugins in " << plugin_folder;
     while (dir_iter.hasNext()) {
       dir_iter.next();
 
@@ -63,8 +64,8 @@ QList<ServiceEntryPoint*> PluginFactory::loadPlugins() const {
 QStringList PluginFactory::pluginPaths() const {
   QStringList paths;
 #if defined(Q_OS_LINUX)
-  paths << QCoreApplication::applicationDirPath() + QDir::separator() + QL1S("..") + QDir::separator() + QL1S("lib") +
-             QDir::separator() + QL1S(APP_LOW_NAME);
+  paths << QCoreApplication::applicationDirPath() + QDir::separator() + QL1S("..") + QDir::separator() +
+             QL1S(RSSGUARD_LIBDIR) + QDir::separator() + QL1S(APP_LOW_NAME);
 #elif defined(Q_OS_WIN)
   paths << QCoreApplication::applicationDirPath() + QDir::separator() + QL1S("plugins");
 #else
