@@ -153,6 +153,7 @@ void SkinFactory::loadSkinFromData(const Skin& skin) {
 
       for (const QString& skin_forced_style : skin.m_forcedStyles) {
         if (qApp->setStyle(skin_forced_style) != nullptr) {
+          m_currentStyle = skin_forced_style;
           break;
         }
       }
@@ -160,19 +161,18 @@ void SkinFactory::loadSkinFromData(const Skin& skin) {
     else {
       qDebugNN << LOGSEC_GUI << "Setting style:" << QUOTE_W_SPACE_DOT(style_name);
       qApp->setStyle(style_name);
+      m_currentStyle = style_name;
     }
   }
   else {
     m_styleIsFrozen = true;
+    m_currentStyle = qApp->style()->objectName();
 
     qWarningNN << LOGSEC_GUI << "Respecting forced style(s):\n"
                << "  QT_STYLE_OVERRIDE: " QUOTE_NO_SPACE(env_forced_style) << "\n"
                << "  CLI (-style): " QUOTE_NO_SPACE(cli_forced_style);
   }
 
-  // NOTE: We can do this because in Qt source code
-  // they specifically set object name to style name.
-  m_currentStyle = qApp->style()->objectName();
   m_useSkinColors =
     skin.m_forcedSkinColors || qApp->settings()->value(GROUP(GUI), SETTING(GUI::ForcedSkinColors)).toBool();
 
