@@ -96,12 +96,21 @@ bool MessagesModelSqlLayer::isColumnNumeric(int column_id) const {
   return m_numericColumns.contains(column_id);
 }
 
-QString MessagesModelSqlLayer::selectStatement() const {
+QString MessagesModelSqlLayer::selectStatement(int additional_article_id) const {
+  QString fltr;
+
+  if (additional_article_id <= 0) {
+    fltr = m_filter;
+  }
+  else {
+    fltr = QSL("(%1) OR Messages.id = %2").arg(m_filter, QString::number(additional_article_id));
+  }
+
   return QL1S("SELECT ") + formatFields() + QL1C(' ') +
          QL1S("FROM Messages LEFT JOIN Feeds ON Messages.feed = Feeds.custom_id AND Messages.account_id = "
               "Feeds.account_id "
               "WHERE ") +
-         m_filter + orderByClause() + QL1C(';');
+         fltr + orderByClause() + QL1C(';');
 }
 
 QString MessagesModelSqlLayer::orderByClause() const {

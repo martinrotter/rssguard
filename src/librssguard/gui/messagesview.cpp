@@ -175,15 +175,17 @@ void MessagesView::sort(int column,
                         bool repopulate_data,
                         bool change_header,
                         bool emit_changed_from_header,
-                        bool ignore_multicolumn_sorting) {
+                        bool ignore_multicolumn_sorting,
+                        int additional_article_id) {
   if (change_header && !emit_changed_from_header) {
     header()->blockSignals(true);
   }
 
   m_sourceModel->addSortState(column, order, ignore_multicolumn_sorting);
+  m_proxyModel->setAdditionalArticleId(additional_article_id);
 
   if (repopulate_data) {
-    m_sourceModel->repopulate();
+    m_sourceModel->repopulate(additional_article_id);
   }
 
   if (change_header) {
@@ -209,6 +211,8 @@ void MessagesView::keyboardSearch(const QString& search) {
 }
 
 void MessagesView::reloadSelections() {
+  bool force_load_currently_selected_article = true;
+
   const QDateTime dt1 = QDateTime::currentDateTime();
   QModelIndex current_index = selectionModel()->currentIndex();
   const bool is_current_selected =
@@ -221,7 +225,7 @@ void MessagesView::reloadSelections() {
   bool do_not_mark_read_on_select = false;
 
   // Reload the model now.
-  sort(col, ord, true, false, false, true);
+  sort(col, ord, true, false, false, true, force_load_currently_selected_article ? selected_message_id : 0);
 
   // Now, we must find the same previously focused message.
   if (selected_message_id > 0) {

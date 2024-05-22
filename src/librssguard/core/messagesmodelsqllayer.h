@@ -27,7 +27,7 @@ class MessagesModelSqlLayer {
 
   protected:
     QString orderByClause() const;
-    QString selectStatement() const;
+    QString selectStatement(int additional_article_id = -1) const;
     QString formatFields() const;
 
     bool isColumnNumeric(int column_id) const;

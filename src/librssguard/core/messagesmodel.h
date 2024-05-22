@@ -41,7 +41,7 @@ class MessagesModel : public QSqlQueryModel, public MessagesModelSqlLayer {
 
     // Fetches ALL available data to the model.
     // NOTE: This activates the SQL query and populates the model with new data.
-    void repopulate();
+    void repopulate(int additional_article_id = 0);
 
     // Model implementation.
     bool setData(const QModelIndex& idx, const QVariant& value, int role = Qt::EditRole);

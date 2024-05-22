@@ -120,7 +120,8 @@ class MessagesView : public BaseTreeView {
               bool repopulate_data,
               bool change_header,
               bool emit_changed_from_header,
-              bool ignore_multicolumn_sorting);
+              bool ignore_multicolumn_sorting,
+              int additional_article_id = 0);
 
     // Creates needed connections.
     void createConnections();

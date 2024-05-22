@@ -142,21 +142,24 @@ MessagesModelCache* MessagesModel::cache() const {
   return m_cache;
 }
 
-void MessagesModel::repopulate() {
+void MessagesModel::repopulate(int additional_article_id) {
   m_cache->clear();
-  setQuery(selectStatement(), m_db);
+
+  QString statemnt = selectStatement(additional_article_id);
+
+  setQuery(statemnt, m_db);
 
   if (lastError().isValid()) {
-    qCriticalNN << LOGSEC_MESSAGEMODEL << "Error when setting new msg view query: '" << lastError().text() << "'.";
-    qCriticalNN << LOGSEC_MESSAGEMODEL << "Used SQL select statement: '" << selectStatement() << "'.";
+    qCriticalNN << LOGSEC_MESSAGEMODEL
+                << "Error when setting new msg view query:" << QUOTE_W_SPACE_DOT(lastError().text());
+    qCriticalNN << LOGSEC_MESSAGEMODEL << "Used SQL select statement:" << QUOTE_W_SPACE_DOT(statemnt);
   }
 
   while (canFetchMore()) {
     fetchMore();
   }
 
-  qDebugNN << LOGSEC_MESSAGEMODEL << "Repopulated model, SQL statement is now:\n"
-           << QUOTE_W_SPACE_DOT(selectStatement());
+  qDebugNN << LOGSEC_MESSAGEMODEL << "Repopulated model, SQL statement is now:\n" << QUOTE_W_SPACE_DOT(statemnt);
 }
 
 bool MessagesModel::setData(const QModelIndex& idx, const QVariant& value, int role) {
