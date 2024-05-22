@@ -509,6 +509,7 @@ endif()
 target_compile_definitions(rssguard
   PRIVATE
   RSSGUARD_DLLSPEC=Q_DECL_EXPORT
+  RSSGUARD_LIBDIR="${CMAKE_INSTALL_LIBDIR}"
 )
 
 target_include_directories(rssguard
@@ -636,10 +637,6 @@ if(WIN32 OR OS2)
 elseif(UNIX AND NOT APPLE AND NOT ANDROID)
   include (GNUInstallDirs)
   install(TARGETS rssguard DESTINATION ${CMAKE_INSTALL_LIBDIR})
-  target_compile_definitions(rssguard
-    PRIVATE
-    RSSGUARD_LIBDIR="${CMAKE_INSTALL_LIBDIR}"
-  )
   set(HEADERS_FOLDER "${CMAKE_INSTALL_INCLUDEDIR}/librssguard")
 elseif(APPLE)
   install(TARGETS rssguard DESTINATION Contents/MacOS)
