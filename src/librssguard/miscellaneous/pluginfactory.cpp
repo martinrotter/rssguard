@@ -29,7 +29,8 @@ QList<ServiceEntryPoint*> PluginFactory::loadPlugins() const {
                           QDirIterator::IteratorFlag::NoIteratorFlags);
 #endif
 
-    qDebugNN << LOGSEC_CORE << "Checking for plugins in " << plugin_folder;
+    qDebugNN << LOGSEC_CORE << "Checking for plugins in" << QUOTE_W_SPACE_DOT(plugin_folder);
+
     while (dir_iter.hasNext()) {
       dir_iter.next();
 
