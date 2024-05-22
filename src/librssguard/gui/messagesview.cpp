@@ -531,9 +531,9 @@ void MessagesView::selectionChanged(const QItemSelection& selected, const QItemS
           // NOTE: Article can only be marked as read manually, so just change.
         }
       }
-
-      emit currentMessageChanged(message, m_sourceModel->loadedItem());
     }
+
+    emit currentMessageChanged(message, m_sourceModel->loadedItem());
   }
   else {
     emit currentMessageRemoved(m_sourceModel->loadedItem());
@@ -553,6 +553,7 @@ void MessagesView::selectionChanged(const QItemSelection& selected, const QItemS
 
 void MessagesView::markSelectedMessagesReadDelayed() {
   qDebugNN << LOGSEC_GUI << "Delay has passed! Marking article as read NOW.";
+
   const QModelIndexList selected_rows = selectionModel()->selectedRows();
   const QModelIndex current_index = m_delayedArticleIndex;
 
