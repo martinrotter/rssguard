@@ -89,7 +89,7 @@ jobs:
         uses: ncipollo/release-action@v1
         with:
           allowUpdates: true
-          artifactErrorsFailBuild: true
+          artifactErrorsFailBuild: false
           artifacts: artifacts/*/*
           name: Development builds
           omitBodyDuringUpdate: true
@@ -109,6 +109,6 @@ jobs:
         if: startsWith(github.ref, 'refs/tags/')
         uses: ncipollo/release-action@v1
         with:
-          artifactErrorsFailBuild: true
+          artifactErrorsFailBuild: false
           artifacts: artifacts/*/*
           draft: true
