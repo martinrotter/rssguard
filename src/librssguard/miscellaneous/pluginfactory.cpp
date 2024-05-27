@@ -64,7 +64,7 @@ QList<ServiceEntryPoint*> PluginFactory::loadPlugins() const {
 
 QStringList PluginFactory::pluginPaths() const {
   QStringList paths;
-#if defined(Q_OS_LINUX)
+#if defined(Q_OS_LINUX) || defined(Q_OS_FREEBSD)
   paths << QCoreApplication::applicationDirPath() + QDir::separator() + QL1S("..") + QDir::separator() +
              QL1S(RSSGUARD_LIBDIR) + QDir::separator() + QL1S(APP_LOW_NAME);
 #elif defined(Q_OS_WIN)
