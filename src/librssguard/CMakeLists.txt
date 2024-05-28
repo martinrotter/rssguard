@@ -371,7 +371,7 @@ set(UI_FILES
   services/abstract/gui/formfeeddetails.ui
 )
 
-if(ENABLE_MEDIAPLAYER) 
+if(ENABLE_MEDIAPLAYER)
   list(APPEND SOURCES
     gui/mediaplayer/playerbackend.cpp
     gui/mediaplayer/playerbackend.h
@@ -498,19 +498,11 @@ add_library(rssguard SHARED ${SOURCES} ${QM_FILES})
 if(FORCE_BUNDLE_ICONS)
   target_compile_definitions(rssguard
     PRIVATE
-
     FORCE_BUNDLE_ICONS
   )
 
   message(STATUS "Forcibly bundling icon themes.")
 endif()
-
-# Add specific definitions.
-target_compile_definitions(rssguard
-  PRIVATE
-  RSSGUARD_DLLSPEC=Q_DECL_EXPORT
-  RSSGUARD_LIBDIR="${CMAKE_INSTALL_LIBDIR}"
-)
 
 target_include_directories(rssguard
   PUBLIC
@@ -642,6 +634,13 @@ elseif(APPLE)
   install(TARGETS rssguard DESTINATION Contents/MacOS)
   set(HEADERS_FOLDER "Contents/Resources/Include")
 endif()
+
+# Add specific definitions.
+target_compile_definitions(rssguard
+  PRIVATE
+  RSSGUARD_DLLSPEC=Q_DECL_EXPORT
+  RSSGUARD_LIBDIR="${CMAKE_INSTALL_LIBDIR}"
+)
 
 # Install public headers.
 set(HEADERS_ROOT "${PROJECT_SOURCE_DIR}/src/librssguard")
