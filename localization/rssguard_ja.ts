@@ -208,20 +208,20 @@ Error: %1</translation>
       <location filename="../src/librssguard/miscellaneous/application.cpp" line="1381"/>
       <location filename="../src/librssguard/miscellaneous/application.cpp" line="1393"/>
       <source>Node.js</source>
-      <translation type="unfinished">Node.js</translation>
+      <translation>Node.js</translation>
     </message>
     <message>
       <location filename="../src/librssguard/miscellaneous/application.cpp" line="1382"/>
       <source>Packages were NOT updated because of error: %2. Affected packages:
 %1</source>
-      <translation type="unfinished">Packages were NOT updated because of error: %2. Affected packages:
+      <translation>エラー: %2 が発生したため、パッケージは更新されませんでした。影響を受けるパッケージ
 %1</translation>
     </message>
     <message>
       <location filename="../src/librssguard/miscellaneous/application.cpp" line="1394"/>
       <source>These packages were installed/updated:
 %1</source>
-      <translation type="unfinished">These packages were installed/updated:
+      <translation>これらのパッケージがインストール/更新されました:
 %1</translation>
     </message>
     <message>
@@ -396,22 +396,22 @@ version by clicking this popup notification.</source>
     <message>
       <location filename="../src/librssguard/network-web/articleparse.cpp" line="39"/>
       <source>Packages for article-extractor are installed</source>
-      <translation type="unfinished">Packages for article-extractor are installed</translation>
+      <translation>記事抽出用のパッケージがインストールされています</translation>
     </message>
     <message>
       <location filename="../src/librssguard/network-web/articleparse.cpp" line="40"/>
       <source>Reload your website or article and you can test it then!</source>
-      <translation type="unfinished">Reload your website or article and you can test it then!</translation>
+      <translation>ウェブサイトや記事を再読み込みすると、テストできるようになります！</translation>
     </message>
     <message>
       <location filename="../src/librssguard/network-web/articleparse.cpp" line="45"/>
       <source>Packages for article-extractor are installed. You can now use this feature!</source>
-      <translation type="unfinished">Packages for article-extractor are installed. You can now use this feature!</translation>
+      <translation>記事抽出用のパッケージがインストールされました。これでこの機能を使用できるようになりました！</translation>
     </message>
     <message>
       <location filename="../src/librssguard/network-web/articleparse.cpp" line="62"/>
       <source>Packages for article-extractor are NOT installed</source>
-      <translation type="unfinished">Packages for article-extractor are NOT installed</translation>
+      <translation>記事抽出用のパッケージがインストールされていません</translation>
     </message>
     <message>
       <location filename="../src/librssguard/network-web/articleparse.cpp" line="63"/>
@@ -421,7 +421,7 @@ version by clicking this popup notification.</source>
     <message>
       <location filename="../src/librssguard/network-web/articleparse.cpp" line="69"/>
       <source>Packages for article-extractor are NOT installed. There is error: %1</source>
-      <translation type="unfinished">Packages for article-extractor are NOT installed. There is error: %1</translation>
+      <translation>記事抽出用のパッケージがインストールされていません。エラー: %1</translation>
     </message>
     <message>
       <location filename="../src/librssguard/network-web/articleparse.cpp" line="104"/>
@@ -1453,7 +1453,7 @@ QtWebEngineキャッシュフォルダ -&gt; &quot;%7&quot;</translation>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formabout.cpp" line="134"/>
       <source>&lt;h4&gt;%8&lt;/h4&gt;&lt;b&gt;Version:&lt;/b&gt; %1 (built on %2/%3)&lt;br/&gt;&lt;b&gt;Revision:&lt;/b&gt; %4&lt;br/&gt;&lt;b&gt;Build date:&lt;/b&gt; %5&lt;br/&gt;&lt;b&gt;OS:&lt;/b&gt; %9&lt;br/&gt;&lt;b&gt;Qt:&lt;/b&gt; %6 (compiled against %7)</source>
-      <translation type="unfinished">&lt;h4&gt;%8&lt;/h4&gt;&lt;b&gt;Version:&lt;/b&gt; %1 (built on %2/%3)&lt;br/&gt;&lt;b&gt;Revision:&lt;/b&gt; %4&lt;br/&gt;&lt;b&gt;Build date:&lt;/b&gt; %5&lt;br/&gt;&lt;b&gt;OS:&lt;/b&gt; %9&lt;br/&gt;&lt;b&gt;Qt:&lt;/b&gt; %6 (compiled against %7)</translation>
+      <translation>&lt;h4&gt;%8&lt;/h4&gt;&lt;b&gt;Version:&lt;/b&gt; %1 (built on %2/%3)&lt;br/&gt;&lt;b&gt;Revision:&lt;/b&gt; %4&lt;br/&gt;&lt;b&gt;Build date:&lt;/b&gt; %5&lt;br/&gt;&lt;b&gt;OS:&lt;/b&gt; %9&lt;br/&gt;&lt;b&gt;Qt:&lt;/b&gt; %6 (compiled against %7)</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formabout.cpp" line="152"/>
@@ -5805,13 +5805,13 @@ Login tokens expiration: %2</source>
     <message>
       <location filename="../src/librssguard/miscellaneous/nodejs.cpp" line="161"/>
       <source>Node.js</source>
-      <translation type="unfinished">Node.js</translation>
+      <translation>Node.js</translation>
     </message>
     <message>
       <location filename="../src/librssguard/miscellaneous/nodejs.cpp" line="162"/>
       <source>Some packages are missing and will be installed or updated:
 %1</source>
-      <translation type="unfinished">Some packages are missing and will be installed or updated:
+      <translation>いくつかのパッケージが不足しているため、インストールまたは更新されます:
 %1</translation>
     </message>
   </context>
@@ -6911,17 +6911,17 @@ Authors of this application are NOT responsible for lost data.</source>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.cpp" line="49"/>
       <source>immediately</source>
-      <translation type="unfinished">immediately</translation>
+      <translation>すぐに</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.cpp" line="50"/>
       <source>only manually</source>
-      <translation type="unfinished">only manually</translation>
+      <translation>手動でのみ</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.cpp" line="52"/>
       <source>with delay</source>
-      <translation type="unfinished">with delay</translation>
+      <translation>遅延あり</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.cpp" line="69"/>
@@ -7088,7 +7088,7 @@ Authors of this application are NOT responsible for lost data.</source>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="679"/>
       <source>Upon article selection, mark as read</source>
-      <translation type="unfinished">Upon article selection, mark as read</translation>
+      <translation>記事を選択した時に既読にする方法</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="307"/>
@@ -7204,12 +7204,12 @@ Authors of this application are NOT responsible for lost data.</source>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsgui.cpp" line="213"/>
       <source>system style</source>
-      <translation type="unfinished">system style</translation>
+      <translation>システムのスタイル</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsgui.cpp" line="215"/>
       <source>default style</source>
-      <translation type="unfinished">default style</translation>
+      <translation>デフォルトのスタイル</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsgui.cpp" line="292"/>
@@ -7306,7 +7306,7 @@ Description: %3</source>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsgui.ui" line="112"/>
       <source>Use skin colors (skin colors for dialogs/controls only take effect with Fusion style)</source>
-      <translation type="unfinished">Use skin colors (skin colors for dialogs/controls only take effect with Fusion style)</translation>
+      <translation>スキンカラーを使用 (ダイアログ/コントロールのスキンカラーはFusionスタイルでのみ有効)</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsgui.ui" line="120"/>
@@ -8917,7 +8917,7 @@ Last login on: %4</source>
     <message>
       <location filename="../src/librssguard/gui/webbrowser.cpp" line="44"/>
       <source>Load full source article</source>
-      <translation type="unfinished">Load full source article</translation>
+      <translation>ソース記事を全て読み込む</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/webbrowser.cpp" line="284"/>
