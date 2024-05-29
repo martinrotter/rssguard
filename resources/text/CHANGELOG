@@ -1,3 +1,21 @@
+4.7.1
+-----
+
+OK, this is mainly bug-fix release. In the close future (months), expect only bug-fixing releases. Again, we need to make RSS Guard rock stable.
+
+Added:
+* Nothing really.
+
+Fixed:
+* Fixed detection of plugins which was broken due to wrong plugin search path. (#1416, #1420)
+* If "Show unread only" article list filter is active and you select article (which then gets marked read) and then feed is fetched, currently selected article does not suddenly disappear from the list. (#1415)
+* Selected "style" was disappearing from settings dialog even thought it was correctly saved into settings. (#1408)
+* Right-clicking article selects it (and displays its contents) but does not modify read/unread state. This behavior was corrupted in previous release, therefore we just return to old good behavior. (#1410)
+* XML parser now allows leading and trailing blank lines when loading XML of feeds. (#1403)
+* Date/time parsing was further enhanced, although there are some connected issues which will be hunted in the future.
+* Qt5/Windows builds will use only qtmultimedia media player backend because libmpv dropped Windows 7 support.
+* Fixed "About" dialog RSS Guard information formatting.
+
 4.7.0
 -----
 
