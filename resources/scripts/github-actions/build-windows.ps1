@@ -2,13 +2,6 @@ $os = $args[0]
 $use_webengine = $args[1]
 $use_qt5 = $args[2]
 
-if ($use_webengine -eq "ON") {
-  $not_use_webengine = "OFF"
-}
-else {
-  $not_use_webengine = "ON"
-}
-
 echo "We are building for MS Windows."
 echo "OS: $os; Not lite: $use_webengine; Qt5: $use_qt5"
 
@@ -180,7 +173,9 @@ if ($use_libmpv -eq "ON") {
   # Copy libmpv and yt-dlp.
   Copy-Item -Path "$libmpv_path\libmpv*.dll" -Destination ".\app\"
   Copy-Item -Path "$ytdlp_path" -Destination ".\app\"
+}
 
+if ($use_webengine -eq "ON") {
   $packagebase = "rssguard-${git_tag}-${git_revision}-win"
 }
 else {
