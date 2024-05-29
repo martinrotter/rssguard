@@ -6,6 +6,10 @@ on:
     branches: ["*"]
     tags: ["*"]
 
+env:
+  ACTIONS_RUNNER_DEBUG: true
+  ACTIONS_STEP_DEBUG: true
+
 jobs:
   check-build-script:
     name: check-build-script
