@@ -5615,7 +5615,7 @@ Expiración de identificadores de acceso: %2</translation>
     <message>
       <location filename="../src/librssguard/gui/reusable/networkproxydetails.ui" line="41"/>
       <source>Hostname or IP of your proxy server</source>
-      <translation>Nombre del servidor o dirección IP del servidor proxy</translation>
+      <translation>Nombre de anfitrión o dirección IP del servidor proxy</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/reusable/networkproxydetails.ui" line="48"/>
@@ -6733,12 +6733,12 @@ File filter for external e-mail selection dialog.</extracomment>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsdatabase.cpp" line="119"/>
       <source>Hostname is empty.</source>
-      <translation>El campo del nombre del servidor está vacío.</translation>
+      <translation>El campo del nombre de anfitrión está vacío.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsdatabase.cpp" line="122"/>
       <source>Hostname looks ok.</source>
-      <translation>El nombre del servidor parece válido.</translation>
+      <translation>El nombre de anfitrión parece válido.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsdatabase.cpp" line="128"/>
@@ -6838,7 +6838,7 @@ Los autores de esta aplicación se deslindan de toda responsabilidad derivado de
     <message>
       <location filename="../src/librssguard/gui/settings/settingsdatabase.ui" line="81"/>
       <source>Hostname</source>
-      <translation>Nombre del servidor</translation>
+      <translation>Nombre de anfitrión del servidor</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsdatabase.ui" line="96"/>
