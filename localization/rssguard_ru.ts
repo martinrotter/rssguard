@@ -371,45 +371,31 @@ version by clicking this popup notification.</source>
     <message>
       <location filename="../src/librssguard/gui/notifications/articlelistnotification.ui" line="94"/>
       <source>Go to next page</source>
-      <translation/>
+      <translation>Перейти на следующую страницу</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/notifications/articlelistnotification.ui" line="101"/>
       <source>Open article in article list</source>
-      <translation>Ключ: Уведомление о списке статей ['Открыть статью в списке статей']
-
-Уведомление о списке статей../src/librssguard/gui/notifications/articlelistnotification. ui: 104</translation>
+      <translation>Открыть статью в списке материалов</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/notifications/articlelistnotification.ui" line="108"/>
       <source>Open article in web browser</source>
-      <translation>Ключ: Уведомление о списке статей ['Открыть статью в веб-браузере']
-
-Уведомление о списке статей../src/librssguard/gui/notifications/articlelistnotification. ui: 111</translation>
+      <translation>Открыть статью в веб-браузере</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/notifications/articlelistnotification.ui" line="122"/>
       <source>Mark all articles as read</source>
-      <translation>Ключ: Уведомление о списке статей ["Пометить все статьи как прочитанные"]
-
-Уведомление о списке статей../src/librssguard/gui/notifications/articlelistnotification. ui: 125</translation>
+      <translation>Отметить все статьи прочитанными</translation>
     </message>
     <message numerus="yes">
       <location filename="../src/librssguard/gui/notifications/articlelistnotification.cpp" line="73"/>
       <source>%n feeds fetched</source>
       <translation>
-        <numerusform>Ключ: Уведомление о списке статей ['%n feeds fetched']
-
-Уведомление о списке статей../src/librssguard/gui/notifications/articlelistnotification. cpp: 73</numerusform>
-        <numerusform>Ключ: Уведомление о списке статей ['%n feeds fetched']
-
-Уведомление о списке статей../src/librssguard/gui/notifications/articlelistnotification. cpp: 73</numerusform>
-        <numerusform>Ключ: Уведомление о списке статей ['%n feeds fetched']
-
-Уведомление о списке статей../src/librssguard/gui/notifications/articlelistnotification. cpp: 73</numerusform>
-        <numerusform>Ключ: Уведомление о списке статей ['%n feeds fetched']
-
-Уведомление о списке статей../src/librssguard/gui/notifications/articlelistnotification. cpp: 73</numerusform>
+        <numerusform>Получено %n каналов</numerusform>
+        <numerusform>Получено %n каналов</numerusform>
+        <numerusform>Получено %n каналов</numerusform>
+        <numerusform>Получено %n каналов</numerusform>
       </translation>
     </message>
   </context>
@@ -472,16 +458,12 @@ version by clicking this popup notification.</source>
     <message>
       <location filename="../src/librssguard/services/abstract/gui/authenticationdetails.ui" line="48"/>
       <source>Credentials</source>
-      <translation>Ключ: Authentication Details [' Учетные данные ']
-
-Детали аутентификации../src/librssguard/services/abstract/gui/authenticationdetails. ui: 48</translation>
+      <translation>Данные получателя</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/abstract/gui/authenticationdetails.ui" line="25"/>
       <source>Authentication type</source>
-      <translation>Ключ: Подробности аутентификации [' Тип аутентификации ']
-
-Детали аутентификации../src/librssguard/services/abstract/gui/authenticationdetails. ui: 25</translation>
+      <translation>Тип аутентификации</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/abstract/gui/authenticationdetails.ui" line="60"/>
@@ -509,42 +491,32 @@ version by clicking this popup notification.</source>
     <message>
       <location filename="../src/librssguard/services/abstract/gui/authenticationdetails.cpp" line="20"/>
       <source>No authentication</source>
-      <translation>Ключ: Подробности аутентификации ['Без аутентификации']
-
-Детали аутентификации../src/librssguard/services/abstract/gui/authenticationdetails. cpp: 17</translation>
+      <translation>Без авторизации</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/abstract/gui/authenticationdetails.cpp" line="22"/>
       <source>HTTP Basic</source>
-      <translation>Ключ: Детали аутентификации ['HTTP Basic']
-
-Детали аутентификации../src/librssguard/services/abstract/gui/authenticationdetails. cpp: 19</translation>
+      <translation>Базовый HTTP</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/abstract/gui/authenticationdetails.cpp" line="25"/>
       <source>Token</source>
-      <translation>Ключ: Authentication Details [Токен]
-
-Детали аутентификации../src/librssguard/services/abstract/gui/authenticationdetails. cpp: 22</translation>
+      <translation>Токен</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/abstract/gui/authenticationdetails.cpp" line="74"/>
       <source>Username/token is ok or it is not needed.</source>
-      <translation>Ключ: Детали аутентификации [' Имя пользователя / токен в порядке или он не нужен'].
-
-Детали аутентификации../src/librssguard/services/abstract/gui/authenticationdetails. cpp: 53.</translation>
+      <translation>Имя пользователя/токен нормально или он не требуется.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/abstract/gui/authenticationdetails.cpp" line="75"/>
       <source>Username/token is empty.</source>
-      <translation>Ключ: Детали аутентификации ['Имя пользователя / токен пусты'].
-
-Детали аутентификации../src/librssguard/services/abstract/gui/authenticationdetails. cpp: 54.</translation>
+      <translation>Имя пользователя/токен пусто.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/abstract/gui/authenticationdetails.cpp" line="97"/>
       <source>Access token</source>
-      <translation>Токен доступа</translation>
+      <translation>Токен для доступа</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/abstract/gui/authenticationdetails.cpp" line="84"/>
@@ -570,7 +542,7 @@ version by clicking this popup notification.</source>
     <message>
       <location filename="../src/librssguard/gui/notifications/basetoastnotification.cpp" line="46"/>
       <source>Close this notification</source>
-      <translation>Закрыть данное уведомление</translation>
+      <translation>Закрыть это уведомление</translation>
     </message>
   </context>
   <context>
