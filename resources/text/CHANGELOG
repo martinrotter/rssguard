@@ -1,3 +1,10 @@
+4.7.2
+-----
+
+Fixed:
+* Some non-lite installation packages were wrongly named. (#1426)
+* Plugins were loaded multiple times. (#1427)
+
 4.7.1
 -----
 
