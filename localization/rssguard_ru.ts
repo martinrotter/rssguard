@@ -151,9 +151,7 @@ Error: %1</source>
     <message>
       <location filename="../src/librssguard/network-web/adblock/adblockmanager.cpp" line="200"/>
       <source>Failed to setup filters and start server: %1.</source>
-      <translation>Ключ: AdBlock Manager ['Не удалось настроить фильтры и запустить сервер: %1.'].
-
-AdBlock Manager../src/librssguard/network-web/adblock/adblockmanager. cpp: 198.</translation>
+      <translation>Ключ: AdBlockManager['Не удалось настроить фильтры и запустить сервер: %1.'].</translation>
     </message>
     <message>
       <location filename="../src/librssguard/network-web/adblock/adblockmanager.cpp" line="378"/>
@@ -368,16 +366,12 @@ version by clicking this popup notification.</source>
     <message>
       <location filename="../src/librssguard/gui/notifications/articlelistnotification.ui" line="87"/>
       <source>Go to previous page</source>
-      <translation>Ключ: Уведомление о перечне статей ['Перейти на предыдущую страницу']
-
-Уведомление о списке статей../src/librssguard/gui/notifications/articlelistnotification. ui: 90</translation>
+      <translation>Вернуться на предыдущую страницу</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/notifications/articlelistnotification.ui" line="94"/>
       <source>Go to next page</source>
-      <translation>Ключ: Уведомление о перечне статей ['Перейти на следующую страницу']
-
-Уведомление о списке статей../src/librssguard/gui/notifications/articlelistnotification. ui: 97</translation>
+      <translation/>
     </message>
     <message>
       <location filename="../src/librssguard/gui/notifications/articlelistnotification.ui" line="101"/>
