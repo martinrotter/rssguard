@@ -403,7 +403,7 @@ elseif(ENABLE_MEDIAPLAYER_LIBMPV)
     list(APPEND CMAKE_FIND_LIBRARY_SUFFIXES ".dll.a")
   endif()
 
-  # Search libmvp.
+  # Search libmpv.
   find_library(LibMPV_LIBRARIES
     NAMES "mpv" "libmpv" "libmpv-v2"
     HINTS "${LibMPV_ROOT}"
