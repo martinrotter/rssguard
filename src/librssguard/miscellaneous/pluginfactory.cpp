@@ -90,5 +90,13 @@ QStringList PluginFactory::pluginPaths() const {
 }
 
 QString PluginFactory::pluginNameWildCard() const {
+#if defined(Q_OS_WIN)
+  return QSL("*rssguard-*.dll");
+#elif defined(Q_OS_LINUX)
+  return QSL("*rssguard-*.so");
+#elif defined(Q_OS_MACOS)
+  return QSL("*rssguard-*.dylib");
+#else
   return QSL("*rssguard-*.*");
+#endif
 }
