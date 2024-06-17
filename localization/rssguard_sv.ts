@@ -3056,20 +3056,19 @@ QtWebEngine cache-mapp -&gt; &quot;%7&quot;</translation>
   Created on = &apos;%6&apos;
   Contents = &apos;%7&apos;
   RAW contents = &apos;%8&apos;</source>
-      <translation type="unfinished">Output (modified) article is:
-  Title = &apos;%1&apos;
-  URL = &apos;%2&apos;
-  Author = &apos;%3&apos;
-  Is read/important = &apos;%4/%5&apos;
-  Created on = &apos;%6&apos;
-  Contents = &apos;%7&apos;
-  RAW contents = &apos;%8&apos;</translation>
+      <translation>Artikeln efter filtrering:
+Rubrik = &apos;%1&apos;
+URL = &apos;%2&apos;
+Skribent = &apos;%3&apos;
+Är läst/viktig = &apos;%4/%5&apos;
+Skapad > Innehåll = &apos;%7&apos;
+Rådata = &apos;%8&apos;</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.cpp" line="340"/>
       <source>SAMPLE article filtering error: &apos;%1&apos;.
 </source>
-      <translation type="unfinished">SAMPLE article filtering error: &apos;%1&apos;.
+      <translation>EXEMPEL på felaktigt artikelfilter: &apos;%1&apos;.
 </translation>
     </message>
     <message>
@@ -3080,12 +3079,12 @@ QtWebEngine cache-mapp -&gt; &quot;%7&quot;</translation>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.cpp" line="211"/>
       <source>Do you really want to remove selected filter?</source>
-      <translation type="unfinished">Do you really want to remove selected filter?</translation>
+      <translation>Är du säker på att du vill ta bort valt filter?</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.ui" line="14"/>
       <source>Article filters</source>
-      <translation type="unfinished">Article filters</translation>
+      <translation>Artikelfilter</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.ui" line="35"/>
@@ -3110,7 +3109,7 @@ QtWebEngine cache-mapp -&gt; &quot;%7&quot;</translation>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.ui" line="115"/>
       <source>Article filter details</source>
-      <translation type="unfinished">Article filter details</translation>
+      <translation>Artikelfilterdetaljer</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.ui" line="121"/>
@@ -3121,12 +3120,12 @@ QtWebEngine cache-mapp -&gt; &quot;%7&quot;</translation>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.ui" line="145"/>
       <source>Title of article filter</source>
-      <translation type="unfinished">Title of article filter</translation>
+      <translation>Namn på artikelfilter</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.ui" line="152"/>
       <source>Pre-made filters</source>
-      <translation type="unfinished">Pre-made filters</translation>
+      <translation>Färdiga filter</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.ui" line="174"/>
@@ -3136,7 +3135,7 @@ QtWebEngine cache-mapp -&gt; &quot;%7&quot;</translation>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.ui" line="192"/>
       <source>Your JavaScript-based article filtering logic</source>
-      <translation type="unfinished">Your JavaScript-based article filtering logic</translation>
+      <translation>Din javascript-baserade artikelfiltreringslogik</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.ui" line="206"/>
@@ -3430,12 +3429,12 @@ Du måste starta om manuellt.</translation>
       <location filename="../src/librssguard-standard/src/gui/formstandardimportexport.cpp" line="132"/>
       <location filename="../src/librssguard-standard/src/gui/formstandardimportexport.cpp" line="133"/>
       <source>Some feeds were not loaded properly. Check log for more information.</source>
-      <translation type="unfinished">Some feeds were not loaded properly. Check log for more information.</translation>
+      <translation>Några flöden laddades inte korrekt. Kontrollera loggfilen för mer information.</translation>
     </message>
     <message>
       <location filename="../src/librssguard-standard/src/gui/formstandardimportexport.cpp" line="274"/>
       <source>cannot open file</source>
-      <translation type="unfinished">cannot open file</translation>
+      <translation>kan inte öppna filen</translation>
     </message>
     <message>
       <location filename="../src/librssguard-standard/src/gui/formstandardimportexport.cpp" line="333"/>
@@ -3458,7 +3457,7 @@ Du måste starta om manuellt.</translation>
       <location filename="../src/librssguard-standard/src/gui/formstandardimportexport.cpp" line="167"/>
       <location filename="../src/librssguard-standard/src/gui/formstandardimportexport.cpp" line="212"/>
       <source>OPML 2.0 files (*.opml *.xml)</source>
-      <translation type="unfinished">OPML 2.0 files (*.opml *.xml)</translation>
+      <translation>OPML 2.0-filer (*.opml *.xml)</translation>
     </message>
     <message>
       <location filename="../src/librssguard-standard/src/gui/formstandardimportexport.cpp" line="338"/>
@@ -3489,22 +3488,22 @@ Du måste starta om manuellt.</translation>
     <message>
       <location filename="../src/librssguard-standard/src/gui/formstandardimportexport.ui" line="55"/>
       <source>Fetch online metadata</source>
-      <translation type="unfinished">Fetch online metadata</translation>
+      <translation>Hämta metadata online</translation>
     </message>
     <message>
       <location filename="../src/librssguard-standard/src/gui/formstandardimportexport.ui" line="64"/>
       <source>Do not fetch titles</source>
-      <translation type="unfinished">Do not fetch titles</translation>
+      <translation>Hämta inte rubriker</translation>
     </message>
     <message>
       <location filename="../src/librssguard-standard/src/gui/formstandardimportexport.ui" line="71"/>
       <source>Do not fetch icons</source>
-      <translation type="unfinished">Do not fetch icons</translation>
+      <translation>Hämta inte ikoner</translation>
     </message>
     <message>
       <location filename="../src/librssguard-standard/src/gui/formstandardimportexport.ui" line="78"/>
       <source>Optional post-processing script</source>
-      <translation type="unfinished">Optional post-processing script</translation>
+      <translation>Valfritt, skript för efterbearbetning</translation>
     </message>
     <message>
       <location filename="../src/librssguard-standard/src/gui/formstandardimportexport.ui" line="109"/>
@@ -3519,7 +3518,7 @@ Du måste starta om manuellt.</translation>
     <message>
       <location filename="../src/librssguard-standard/src/gui/formstandardimportexport.ui" line="137"/>
       <source>Export icons</source>
-      <translation type="unfinished">Export icons</translation>
+      <translation>Exportera ikoner</translation>
     </message>
     <message>
       <location filename="../src/librssguard-standard/src/gui/formstandardimportexport.ui" line="209"/>
@@ -3570,27 +3569,27 @@ Du måste starta om manuellt.</translation>
     <message>
       <location filename="../src/librssguard-ttrss/src/gui/formttrssnote.cpp" line="23"/>
       <source>Share note to &quot;Published&quot; feed</source>
-      <translation type="unfinished">Share note to &quot;Published&quot; feed</translation>
+      <translation>Dela anteckning med &quot;publicerat&quot; flöde</translation>
     </message>
     <message>
       <location filename="../src/librssguard-ttrss/src/gui/formttrssnote.cpp" line="52"/>
       <source>Cannot share note</source>
-      <translation type="unfinished">Cannot share note</translation>
+      <translation>Kan inte dela anteckningen</translation>
     </message>
     <message>
       <location filename="../src/librssguard-ttrss/src/gui/formttrssnote.cpp" line="53"/>
       <source>There was an error, when trying to send your custom note.</source>
-      <translation type="unfinished">There was an error, when trying to send your custom note.</translation>
+      <translation>Ett fel uppstod när försök att dela din anteckning utfördes.</translation>
     </message>
     <message>
       <location filename="../src/librssguard-ttrss/src/gui/formttrssnote.cpp" line="63"/>
       <source>Enter non-empty title.</source>
-      <translation type="unfinished">Enter non-empty title.</translation>
+      <translation>Ange en rubrik.</translation>
     </message>
     <message>
       <location filename="../src/librssguard-ttrss/src/gui/formttrssnote.cpp" line="72"/>
       <source>Enter valid URL.</source>
-      <translation type="unfinished">Enter valid URL.</translation>
+      <translation>Ange en giltig URL.</translation>
     </message>
     <message>
       <location filename="../src/librssguard-ttrss/src/gui/formttrssnote.ui" line="17"/>
@@ -3605,7 +3604,7 @@ Du måste starta om manuellt.</translation>
     <message>
       <location filename="../src/librssguard-ttrss/src/gui/formttrssnote.ui" line="66"/>
       <source>Content</source>
-      <translation type="unfinished">Content</translation>
+      <translation>Innehåll</translation>
     </message>
   </context>
   <context>
@@ -4309,7 +4308,7 @@ Inloggningstoken upphör: %2</translation>
       <location filename="../src/librssguard-greader/src/greaderserviceroot.cpp" line="162"/>
       <location filename="../src/librssguard-greader/src/greaderserviceroot.cpp" line="192"/>
       <source>OPML 2.0 files (*.opml *.xml)</source>
-      <translation type="unfinished">OPML 2.0 files (*.opml *.xml)</translation>
+      <translation>OPML 2.0-filer (*.opml *.xml)</translation>
     </message>
     <message>
       <location filename="../src/librssguard-greader/src/greaderserviceroot.cpp" line="164"/>
