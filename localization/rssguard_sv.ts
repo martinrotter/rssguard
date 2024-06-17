@@ -24,7 +24,7 @@
     <message>
       <location filename="../src/librssguard/services/abstract/gui/accountdetails.ui" line="20"/>
       <source>Display additional nodes</source>
-      <translation type="unfinished">Display additional nodes</translation>
+      <translation>Visa ytterligare noder</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/abstract/gui/accountdetails.ui" line="26"/>
@@ -34,7 +34,7 @@
     <message>
       <location filename="../src/librssguard/services/abstract/gui/accountdetails.ui" line="33"/>
       <source>Unread</source>
-      <translation type="unfinished">Unread</translation>
+      <translation>Oläst</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/abstract/gui/accountdetails.ui" line="40"/>
@@ -44,7 +44,7 @@
     <message>
       <location filename="../src/librssguard/services/abstract/gui/accountdetails.ui" line="47"/>
       <source>Probes</source>
-      <translation type="unfinished">Probes</translation>
+      <translation>Kontroll</translation>
     </message>
   </context>
   <context>
@@ -72,7 +72,7 @@
     <message>
       <location filename="../src/librssguard/network-web/adblock/adblockdialog.cpp" line="113"/>
       <source>There is error, check application log for more details and head to online documentation.</source>
-      <translation type="unfinished">There is error, check application log for more details and head to online documentation.</translation>
+      <translation>Det har uppstått ett fel. Kontrollera programloggen för mer information och gå till online-dokumentationen.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/network-web/adblock/adblockdialog.cpp" line="84"/>
@@ -95,12 +95,12 @@ Fel: %1</translation>
       <location filename="../src/librssguard/network-web/adblock/adblockdialog.cpp" line="105"/>
       <location filename="../src/librssguard/network-web/adblock/adblockdialog.cpp" line="106"/>
       <source>No additional info.</source>
-      <translation type="unfinished">No additional info.</translation>
+      <translation>Ingen ytterligare information.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/network-web/adblock/adblockdialog.cpp" line="97"/>
       <source>It seems your AdBlock runs fine, but wait few seconds to be sure.</source>
-      <translation type="unfinished">It seems your AdBlock runs fine, but wait few seconds to be sure.</translation>
+      <translation>Det verkar som att AdBlock fungerar bra, men vänta ett par sekunder för säkerhets skull.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/network-web/adblock/adblockdialog.ui" line="20"/>
@@ -151,7 +151,7 @@ Fel: %1</translation>
     <message>
       <location filename="../src/librssguard/network-web/adblock/adblockmanager.cpp" line="200"/>
       <source>Failed to setup filters and start server: %1.</source>
-      <translation type="unfinished">Failed to setup filters and start server: %1.</translation>
+      <translation>Det gick inte att ställa in filter och starta server: %1.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/network-web/adblock/adblockmanager.cpp" line="378"/>
@@ -164,7 +164,7 @@ Fel: %1</translation>
     <message>
       <location filename="../src/librssguard/network-web/apiserver.cpp" line="188"/>
       <source>account with ID %1 not found</source>
-      <translation type="unfinished">account with ID %1 not found</translation>
+      <translation>kontot med ID %1 hittades inte</translation>
     </message>
   </context>
   <context>
@@ -208,31 +208,31 @@ Fel: %1</translation>
       <location filename="../src/librssguard/miscellaneous/application.cpp" line="1381"/>
       <location filename="../src/librssguard/miscellaneous/application.cpp" line="1393"/>
       <source>Node.js</source>
-      <translation type="unfinished">Node.js</translation>
+      <translation>Node.js</translation>
     </message>
     <message>
       <location filename="../src/librssguard/miscellaneous/application.cpp" line="1382"/>
       <source>Packages were NOT updated because of error: %2. Affected packages:
 %1</source>
-      <translation type="unfinished">Packages were NOT updated because of error: %2. Affected packages:
+      <translation>Paketen uppdaterades INTE på grund av fel: %2. Berörda paket:
 %1</translation>
     </message>
     <message>
       <location filename="../src/librssguard/miscellaneous/application.cpp" line="1394"/>
       <source>These packages were installed/updated:
 %1</source>
-      <translation type="unfinished">These packages were installed/updated:
+      <translation>Dessa paket installerades/uppdaterades:
 %1</translation>
     </message>
     <message>
       <location filename="../src/librssguard/miscellaneous/application.cpp" line="1095"/>
       <source>Unread articles fetched</source>
-      <translation type="unfinished">Unread articles fetched</translation>
+      <translation>Olästa artiklar hämtades</translation>
     </message>
     <message>
       <location filename="../src/librssguard/miscellaneous/application.cpp" line="390"/>
       <source>Go to changelog</source>
-      <translation type="unfinished">Go to changelog</translation>
+      <translation>Gå till ändringsloggen</translation>
     </message>
     <message>
       <location filename="../src/librssguard/miscellaneous/application.cpp" line="1160"/>
@@ -242,7 +242,7 @@ Fel: %1</translation>
     <message>
       <location filename="../src/librssguard/miscellaneous/application.cpp" line="384"/>
       <source>Welcome</source>
-      <translation type="unfinished">Welcome</translation>
+      <translation>Välkommen</translation>
     </message>
     <message>
       <location filename="../src/librssguard/miscellaneous/application.cpp" line="385"/>
@@ -5823,7 +5823,7 @@ Inloggningstoken upphör: %2</translation>
     <message>
       <location filename="../src/librssguard/miscellaneous/nodejs.cpp" line="161"/>
       <source>Node.js</source>
-      <translation type="unfinished">Node.js</translation>
+      <translation>Node.js</translation>
     </message>
     <message>
       <location filename="../src/librssguard/miscellaneous/nodejs.cpp" line="162"/>
