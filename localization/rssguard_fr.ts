@@ -39,7 +39,7 @@
     <message>
       <location filename="../src/librssguard/services/abstract/gui/accountdetails.ui" line="40"/>
       <source>Labels</source>
-      <translation>Étiquettes</translation>
+      <translation>Catégorie</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/abstract/gui/accountdetails.ui" line="47"/>
