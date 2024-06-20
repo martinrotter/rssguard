@@ -33,20 +33,20 @@ jobs:
     runs-on: "${{ matrix.os }}"
     strategy:
       matrix:
-        os: [windows-2019, ubuntu-20.04, macos-11]
+        os: [windows-2022, ubuntu-20.04, macos-14-large]
         no_lite: ["ON", "OFF"]
         use_qt5: ["ON", "OFF"]
         include:
-          - os: windows-2019
+          - os: windows-2022
             script_name: .\resources\scripts\github-actions\build-windows.ps1
           - os: ubuntu-20.04
             script_name: ./resources/scripts/github-actions/build-linux-mac.sh
-          - os: macos-11
+          - os: macos-14-large
             script_name: ./resources/scripts/github-actions/build-linux-mac.sh
         exclude:
           - os: ubuntu-20.04
             use_qt5: "OFF"
-          - os: macos-11
+          - os: macos-14-large
             use_qt5: "ON"
     steps:         
       - name: Checkout source code
