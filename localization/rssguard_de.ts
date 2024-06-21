@@ -5713,7 +5713,7 @@ Ablauf des Login tokens: %2</translation>
     <message>
       <location filename="../src/librssguard-nextcloud/src/gui/nextcloudaccountdetails.cpp" line="21"/>
       <source>Username for your Nextcloud account</source>
-      <translation type="unfinished">Username for your Nextcloud account</translation>
+      <translation>Benutzername für Ihren Nextcloud-Account</translation>
     </message>
     <message>
       <location filename="../src/librssguard-nextcloud/src/gui/nextcloudaccountdetails.cpp" line="22"/>
@@ -6930,17 +6930,17 @@ Die Autoren dieser Anwendung sind NICHT für Datenverlust verantwortlich.</trans
     <message>
       <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.cpp" line="49"/>
       <source>immediately</source>
-      <translation type="unfinished">immediately</translation>
+      <translation>Sofort</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.cpp" line="50"/>
       <source>only manually</source>
-      <translation type="unfinished">only manually</translation>
+      <translation>nur manuell</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.cpp" line="52"/>
       <source>with delay</source>
-      <translation type="unfinished">with delay</translation>
+      <translation>mit Verzögerung</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.cpp" line="69"/>
@@ -7093,7 +7093,7 @@ Die Autoren dieser Anwendung sind NICHT für Datenverlust verantwortlich.</trans
     <message>
       <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="420"/>
       <source>Use legacy article formatting</source>
-      <translation type="unfinished">Use legacy article formatting</translation>
+      <translation>Alte Artikelformatierung verwenden</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="434"/>
@@ -7108,7 +7108,7 @@ Die Autoren dieser Anwendung sind NICHT für Datenverlust verantwortlich.</trans
     <message>
       <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="679"/>
       <source>Upon article selection, mark as read</source>
-      <translation type="unfinished">Upon article selection, mark as read</translation>
+      <translation>Nach Auswahl des Artikels als gelesen markieren</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="307"/>
