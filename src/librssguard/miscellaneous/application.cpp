@@ -126,8 +126,17 @@ Application::Application(const QString& id, int& argc, char** argv, const QStrin
 
 #if defined(NO_LITE)
   if (!m_forcedLite && qEnvironmentVariableIsEmpty("QTWEBENGINE_CHROMIUM_FLAGS")) {
-    qputenv("QTWEBENGINE_CHROMIUM_FLAGS",
-            settings()->value(GROUP(Browser), SETTING(Browser::WebEngineChromiumFlags)).toString().toLocal8Bit());
+    QString flags = settings()->value(GROUP(Browser), SETTING(Browser::WebEngineChromiumFlags)).toString();
+
+    // NOTE: We do not want sandbox on Linux builds.
+#if defined(Q_OS_LINUX) && !defined(IS_FLATPAK_BUILD)
+    if (!flags.contains(QSL("--no-sandbox"))) {
+      qDebugNN << LOGSEC_CORE << "Appending --no-sandbox to QTWEBENGINE_CHROMIUM_FLAGS.";
+      flags.append(QSL(" --no-sandbox"));
+    }
+#endif
+
+    qputenv("QTWEBENGINE_CHROMIUM_FLAGS", flags.toLocal8Bit());
   }
 #endif
 
