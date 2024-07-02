@@ -5708,7 +5708,7 @@ Ablauf des Login tokens: %2</translation>
     <message>
       <location filename="../src/librssguard-nextcloud/src/gui/nextcloudaccountdetails.cpp" line="19"/>
       <source>Password for your Nextcloud account</source>
-      <translation type="unfinished">Password for your Nextcloud account</translation>
+      <translation>Passwort für Ihren Nextcloud-Account</translation>
     </message>
     <message>
       <location filename="../src/librssguard-nextcloud/src/gui/nextcloudaccountdetails.cpp" line="21"/>
@@ -5764,13 +5764,13 @@ Ablauf des Login tokens: %2</translation>
     <message>
       <location filename="../src/librssguard-nextcloud/src/gui/nextcloudaccountdetails.cpp" line="88"/>
       <source>Nextcloud News server is okay.</source>
-      <translation type="unfinished">Nextcloud News server is okay.</translation>
+      <translation>Nextcloud News Server ist ok.</translation>
     </message>
     <message>
       <location filename="../src/librssguard-nextcloud/src/gui/nextcloudaccountdetails.cpp" line="93"/>
       <location filename="../src/librssguard-nextcloud/src/gui/nextcloudaccountdetails.cpp" line="94"/>
       <source>Unspecified error, did you enter correct URL?</source>
-      <translation type="unfinished">Unspecified error, did you enter correct URL?</translation>
+      <translation>Nicht spezifizierter Fehler. Haben Sie die korrekte URL eingetragen?</translation>
     </message>
     <message>
       <location filename="../src/librssguard-nextcloud/src/gui/nextcloudaccountdetails.cpp" line="102"/>
@@ -5808,7 +5808,7 @@ Ablauf des Login tokens: %2</translation>
     <message>
       <location filename="../src/librssguard-nextcloud/src/nextcloudserviceroot.cpp" line="134"/>
       <source>cannot get list of feeds, network error &apos;%1&apos;</source>
-      <translation type="unfinished">cannot get list of feeds, network error &apos;%1&apos;</translation>
+      <translation>Kann die Liste der Feeds nicht laden, Netzwerkfehler &apos;%1&apos;</translation>
     </message>
   </context>
   <context>
@@ -5828,7 +5828,7 @@ Ablauf des Login tokens: %2</translation>
       <location filename="../src/librssguard/miscellaneous/nodejs.cpp" line="162"/>
       <source>Some packages are missing and will be installed or updated:
 %1</source>
-      <translation type="unfinished">Some packages are missing and will be installed or updated:
+      <translation>Einige Pakete fehlen und werden installiert oder aktualisiert:
 %1</translation>
     </message>
   </context>
@@ -7088,7 +7088,7 @@ Die Autoren dieser Anwendung sind NICHT für Datenverlust verantwortlich.</trans
     <message>
       <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="329"/>
       <source>Limit height of all pictures</source>
-      <translation type="unfinished">Limit height of all pictures</translation>
+      <translation>Limitiere die Höhe aller Bilder</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="420"/>
@@ -7224,12 +7224,12 @@ Die Autoren dieser Anwendung sind NICHT für Datenverlust verantwortlich.</trans
     <message>
       <location filename="../src/librssguard/gui/settings/settingsgui.cpp" line="213"/>
       <source>system style</source>
-      <translation type="unfinished">system style</translation>
+      <translation>System Stil</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsgui.cpp" line="215"/>
       <source>default style</source>
-      <translation type="unfinished">default style</translation>
+      <translation>Standard-Formatierung</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsgui.cpp" line="292"/>
@@ -7460,12 +7460,12 @@ Beschreibung: %3</translation>
     <message>
       <location filename="../src/librssguard/gui/settings/settingslocalization.cpp" line="23"/>
       <source>Translation progress</source>
-      <translation type="unfinished">Translation progress</translation>
+      <translation>Übersetzungsfortschritt</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingslocalization.cpp" line="25"/>
       <source>Help us to improve %1 &lt;a href=&quot;%2&quot;&gt;translations&lt;/a&gt;.</source>
-      <translation type="unfinished">Help us to improve %1 &lt;a href=&quot;%2&quot;&gt;translations&lt;/a&gt;.</translation>
+      <translation>Helfen Sie uns %1 &lt;a href=&quot;%2&quot;&gt;Übersetzungen&lt;/a&gt; bei der Verbesserung.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingslocalization.cpp" line="115"/>
@@ -7482,7 +7482,7 @@ Beschreibung: %3</translation>
     <message>
       <location filename="../src/librssguard/gui/settings/settingslocalization.cpp" line="169"/>
       <source>Translators needed!</source>
-      <translation type="unfinished">Translators needed!</translation>
+      <translation>Übersetzer gesucht!</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingslocalization.cpp" line="170"/>
@@ -7515,7 +7515,7 @@ Beschreibung: %3</translation>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsmediaplayer.ui" line="48"/>
       <source>Browse</source>
-      <translation type="unfinished">Browse</translation>
+      <translation>Durchsuchen</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsmediaplayer.cpp" line="33"/>
@@ -7530,7 +7530,7 @@ Beschreibung: %3</translation>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsmediaplayer.cpp" line="53"/>
       <source>no backend installed</source>
-      <translation type="unfinished">no backend installed</translation>
+      <translation>kein Backend installiert</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsmediaplayer.cpp" line="54"/>
@@ -7545,7 +7545,7 @@ Beschreibung: %3</translation>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsmediaplayer.h" line="31"/>
       <source>Media player</source>
-      <translation type="unfinished">Media player</translation>
+      <translation>Medien-Player</translation>
     </message>
   </context>
   <context>
@@ -7844,7 +7844,7 @@ Schließe und Öffne den Einstellungsdiealog erneut, nachdem du Node.js installi
     <message>
       <location filename="../src/librssguard-standard/src/gui/standardaccountdetails.ui" line="43"/>
       <source>Select icon for your account.</source>
-      <translation type="unfinished">Select icon for your account.</translation>
+      <translation>Symbol für den Account auswählen.</translation>
     </message>
     <message>
       <location filename="../src/librssguard-standard/src/gui/standardaccountdetails.cpp" line="16"/>
@@ -7864,7 +7864,7 @@ Schließe und Öffne den Einstellungsdiealog erneut, nachdem du Node.js installi
     <message>
       <location filename="../src/librssguard-standard/src/gui/standardaccountdetails.cpp" line="42"/>
       <source>Select icon file for the account</source>
-      <translation type="unfinished">Select icon file for the account</translation>
+      <translation>Symboldatei für den Account auswählen</translation>
     </message>
     <message>
       <location filename="../src/librssguard-standard/src/gui/standardaccountdetails.cpp" line="44"/>
@@ -7980,7 +7980,7 @@ Post-processing script: %3</translation>
     <message>
       <location filename="../src/librssguard-standard/src/standardfeed.cpp" line="376"/>
       <source>feed format not recognized</source>
-      <translation type="unfinished">feed format not recognized</translation>
+      <translation>Feed-Format nicht erkannt</translation>
     </message>
     <message>
       <location filename="../src/librssguard-standard/src/standardfeed.cpp" line="414"/>
@@ -8108,17 +8108,18 @@ Post-processing script: %3</translation>
     <message>
       <location filename="../src/librssguard-standard/src/gui/standardfeeddetails.cpp" line="279"/>
       <source>Source is ok.</source>
-      <translation type="unfinished">Source is ok.</translation>
+      <translation>Quelle ist ok.</translation>
     </message>
     <message>
       <location filename="../src/librssguard-standard/src/gui/standardfeeddetails.cpp" line="289"/>
       <source>File exists.</source>
-      <translation type="unfinished">File exists.</translation>
+      <translation>Datei vorhanden.
+</translation>
     </message>
     <message>
       <location filename="../src/librssguard-standard/src/gui/standardfeeddetails.cpp" line="292"/>
       <source>File does not exist.</source>
-      <translation type="unfinished">File does not exist.</translation>
+      <translation>Datei ist nicht vorhanden.</translation>
     </message>
     <message>
       <location filename="../src/librssguard-standard/src/gui/standardfeeddetails.cpp" line="324"/>
@@ -8448,7 +8449,7 @@ Ungelesene Nachrichten: %2</translation>
     <message>
       <location filename="../src/librssguard/gui/tabwidget.cpp" line="261"/>
       <source>Media player</source>
-      <translation type="unfinished">Media player</translation>
+      <translation>Medien-Player</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/tabwidget.cpp" line="287"/>
@@ -8510,7 +8511,7 @@ Ungelesene Nachrichten: %2</translation>
       <location filename="../src/librssguard/gui/reusable/timespinbox.cpp" line="68"/>
       <source>%n day(s)</source>
       <translation type="unfinished">
-        <numerusform>%n day(s)</numerusform>
+        <numerusform>%n Tag(e)</numerusform>
         <numerusform>%n day(s)</numerusform>
       </translation>
     </message>
@@ -8528,7 +8529,7 @@ Ungelesene Nachrichten: %2</translation>
     <message>
       <location filename="../src/librssguard/gui/notifications/toastnotification.cpp" line="38"/>
       <source>Do it!</source>
-      <translation type="unfinished">Do it!</translation>
+      <translation>Los!</translation>
     </message>
   </context>
   <context>
@@ -8936,12 +8937,12 @@ Letzte Anmeldung am: %4</translation>
     <message>
       <location filename="../src/librssguard/gui/webbrowser.cpp" line="37"/>
       <source>Play in media player</source>
-      <translation type="unfinished">Play in media player</translation>
+      <translation>Mit Medien-Player abspielen</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/webbrowser.cpp" line="44"/>
       <source>Load full source article</source>
-      <translation type="unfinished">Load full source article</translation>
+      <translation>Vollständigen Quell-Artikel laden</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/webbrowser.cpp" line="284"/>
