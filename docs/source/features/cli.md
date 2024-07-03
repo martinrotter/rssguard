@@ -17,12 +17,15 @@ Options:
                                  instances.
   -g, --no-debug-output          Disable just "debug" output.
   -n, --no-standard-output       Completely disable stdout/stderr outputs.
-  -w, --no-web-engine            Force usage of simpler text-based embedded web
-                                 browser.
+  -w, --lite                     Force lite variant of application.
   -t, --style <style-name>       Force some application style.
   -p, --adblock-port <port>      Use custom port for AdBlock server. It is
                                  highly recommended to use values higher than
                                  1024.
+  -u, --user-agent <user-agent>  User custom User-Agent HTTP header for all
+                                 network requests.
+  --threads <count>              Specify number of threads. Use --help to see
+                                 the maximum allowed number of threads.
 
 Arguments:
   urls                           List of URL addresses pointing to individual
