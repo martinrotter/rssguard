@@ -77,7 +77,8 @@ bool TextFactory::couldBeHtml(const QString& string) {
   const QString sstring = string.simplified();
 
   return sstring.startsWith(QL1S("<!")) || sstring.startsWith(QL1S("<html")) || sstring.startsWith(QL1S("<figure")) ||
-         sstring.startsWith(QL1S("<article")) || sstring.startsWith(QL1S("<details")) || Qt::mightBeRichText(sstring);
+         sstring.startsWith(QL1S("<article")) || sstring.startsWith(QL1S("<details")) ||
+         sstring.startsWith(QL1S("<aside")) || Qt::mightBeRichText(sstring);
 }
 
 QDateTime TextFactory::parseDateTime(const QString& date_time, QString* used_dt_format) {
