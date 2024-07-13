@@ -2373,7 +2373,7 @@ QtWebEngine cache folder -&gt; &quot;%7&quot;</translation>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="230"/>
       <source>Quit the application.</source>
-      <translation>Quit RSS Guard.</translation>
+      <translation>Quit RSS Guard</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="241"/>
@@ -2383,7 +2383,7 @@ QtWebEngine cache folder -&gt; &quot;%7&quot;</translation>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="244"/>
       <source>Display settings of the application.</source>
-      <translation>Display the application&apos;s settings.</translation>
+      <translation>Display the application&apos;s settings</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="252"/>
@@ -2393,7 +2393,7 @@ QtWebEngine cache folder -&gt; &quot;%7&quot;</translation>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="255"/>
       <source>Displays extra info about this application.</source>
-      <translation>Displays additional information about the application.</translation>
+      <translation>Displays additional information about the application</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="269"/>
@@ -2403,7 +2403,7 @@ QtWebEngine cache folder -&gt; &quot;%7&quot;</translation>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="272"/>
       <source>Switch fullscreen mode.</source>
-      <translation>Switch fullscreen mode.</translation>
+      <translation>Switch fullscreen mode</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="280"/>
@@ -2413,7 +2413,7 @@ QtWebEngine cache folder -&gt; &quot;%7&quot;</translation>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="283"/>
       <source>Fetch all feeds</source>
-      <translation>Fetch articles for all feeds.</translation>
+      <translation>Fetch articles for all feeds</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="291"/>
@@ -2423,7 +2423,7 @@ QtWebEngine cache folder -&gt; &quot;%7&quot;</translation>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="294"/>
       <source>Fetch selected feeds</source>
-      <translation>Fetch selected feeds.</translation>
+      <translation>Fetch selected feeds</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="315"/>
@@ -2458,12 +2458,12 @@ QtWebEngine cache folder -&gt; &quot;%7&quot;</translation>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="351"/>
       <source>Mark all messages (without message filters) from selected items as read.</source>
-      <translation>Mark all messages (without message filters) from selected items as read.</translation>
+      <translation>Mark all messages (without message filters) from selected items as read</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="362"/>
       <source>Mark all messages (without message filters) from selected items as unread.</source>
-      <translation>Mark all messages (without message filters) from selected items as unread.</translation>
+      <translation>Mark all messages (without message filters) from selected items as unread</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="370"/>
@@ -2498,7 +2498,7 @@ QtWebEngine cache folder -&gt; &quot;%7&quot;</translation>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="381"/>
       <source>Deletes all messages from selected items.</source>
-      <translation>Deletes all messages from selected items.</translation>
+      <translation>Deletes all messages from selected items</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="389"/>
@@ -2538,7 +2538,7 @@ QtWebEngine cache folder -&gt; &quot;%7&quot;</translation>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="428"/>
       <source>Marks all messages in all items read. This does not take message filters into account.</source>
-      <translation>Mark all messages in all items as read. This does not take message filters into account.</translation>
+      <translation>Mark all messages in all items as read. This does not take message filters into account</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="439"/>
@@ -2548,7 +2548,7 @@ QtWebEngine cache folder -&gt; &quot;%7&quot;</translation>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="442"/>
       <source>Hides main window if it is visible and shows it if it is hidden.</source>
-      <translation>Hides main window if it&apos;s on top and shows it if it&apos;s minimised.</translation>
+      <translation>Hides main window if it&apos;s on top and shows it if it&apos;s minimised</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="456"/>
@@ -2558,7 +2558,7 @@ QtWebEngine cache folder -&gt; &quot;%7&quot;</translation>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="459"/>
       <source>Hides or shows the list of feeds/categories.</source>
-      <translation>Hides or shows the list of feeds/categories.</translation>
+      <translation>Hide or show the list of feeds/categories</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="467"/>
@@ -2568,7 +2568,7 @@ QtWebEngine cache folder -&gt; &quot;%7&quot;</translation>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="470"/>
       <source>Deletes all messages from all items.</source>
-      <translation>Deletes all messages from all items.</translation>
+      <translation>Deletes all messages from all items</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="478"/>
@@ -2608,7 +2608,7 @@ QtWebEngine cache folder -&gt; &quot;%7&quot;</translation>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="530"/>
       <source>Hides or displays the main menu.</source>
-      <translation>Toggle main menu caption bar.</translation>
+      <translation>Toggle main menu caption bar</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="538"/>
@@ -2673,7 +2673,7 @@ QtWebEngine cache folder -&gt; &quot;%7&quot;</translation>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="633"/>
       <source>Send selected articles via e-mail</source>
-      <translation>Send selected articles via e-mail.</translation>
+      <translation>Send selected articles via e-mail</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="641"/>
@@ -2824,7 +2824,7 @@ QtWebEngine cache folder -&gt; &quot;%7&quot;</translation>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="857"/>
       <source>Open in internal browser (no new tab)</source>
-      <translation>Open in internal browser (no new tab)</translation>
+      <translation>Open in internal browser (No new tab)</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="865"/>
