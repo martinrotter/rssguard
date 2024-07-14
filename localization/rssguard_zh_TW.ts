@@ -206,7 +206,7 @@ Error: %1</source>
       <location filename="../src/librssguard/miscellaneous/application.cpp" line="1390"/>
       <location filename="../src/librssguard/miscellaneous/application.cpp" line="1402"/>
       <source>Node.js</source>
-      <translation type="unfinished">Node.js</translation>
+      <translation>Node.js</translation>
     </message>
     <message>
       <location filename="../src/librssguard/miscellaneous/application.cpp" line="1391"/>
@@ -5813,7 +5813,7 @@ Login tokens expiration: %2</source>
     <message>
       <location filename="../src/librssguard/miscellaneous/nodejs.cpp" line="161"/>
       <source>Node.js</source>
-      <translation type="unfinished">Node.js</translation>
+      <translation>Node.js</translation>
     </message>
     <message>
       <location filename="../src/librssguard/miscellaneous/nodejs.cpp" line="162"/>
@@ -7403,12 +7403,12 @@ Authors of this application are NOT responsible for lost data.</source>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsgui.cpp" line="213"/>
       <source>system style</source>
-      <translation type="unfinished">system style</translation>
+      <translation>系統樣式</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsgui.cpp" line="215"/>
       <source>default style</source>
-      <translation type="unfinished">default style</translation>
+      <translation>預設樣式</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsgui.cpp" line="292"/>
