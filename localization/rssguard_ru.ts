@@ -359,9 +359,7 @@ version by clicking this popup notification.</source>
     <message>
       <location filename="../src/librssguard/gui/notifications/articlelistnotification.ui" line="66"/>
       <source>...</source>
-      <translation>Ключ: Уведомление о перечне статей ['...']
-
-Уведомление о списке статей...</translation>
+      <translation>...</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/notifications/articlelistnotification.ui" line="87"/>
