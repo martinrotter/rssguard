@@ -7576,7 +7576,7 @@ Opis: %3</translation>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsgui.ui" line="112"/>
       <source>Use skin colors (skin colors for dialogs/controls only take effect with Fusion style)</source>
-      <translation type="unfinished">Use skin colors (skin colors for dialogs/controls only take effect with Fusion style)</translation>
+      <translation>Użyj kolorów skóry (kolory skóry dla okien dialogowych/sterujących obowiązują tylko w stylu Fusion)</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsgui.ui" line="120"/>
@@ -7586,7 +7586,7 @@ Opis: %3</translation>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsgui.ui" line="129"/>
       <source>Customize predefined colors</source>
-      <translation type="unfinished">Customize predefined colors</translation>
+      <translation>Dostosuj wstępnie zdefiniowane kolory</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsgui.ui" line="141"/>
@@ -7722,12 +7722,12 @@ Opis: %3</translation>
       <location filename="../src/librssguard/gui/settings/settingslocalization.cpp" line="116"/>
       <location filename="../src/librssguard/gui/settings/settingslocalization.cpp" line="121"/>
       <source>Big thanks to all translators!</source>
-      <translation type="unfinished">Big thanks to all translators!</translation>
+      <translation>Podziękowania dla wszystkich tłumaczy!</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingslocalization.cpp" line="120"/>
       <source>Translations provided by: %1</source>
-      <translation type="unfinished">Translations provided by: %1</translation>
+      <translation>Tłumaczenia dostarczone przez: %1</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingslocalization.cpp" line="169"/>
@@ -7755,17 +7755,17 @@ Opis: %3</translation>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsmediaplayer.ui" line="17"/>
       <source>Backend</source>
-      <translation type="unfinished">Backend</translation>
+      <translation>Zaplecze</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsmediaplayer.ui" line="36"/>
       <source>Use custom MPV configuration folder</source>
-      <translation type="unfinished">Use custom MPV configuration folder</translation>
+      <translation>Użyj niestandardowego folderu konfiguracyjnego MPV</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsmediaplayer.ui" line="48"/>
       <source>Browse</source>
-      <translation type="unfinished">Browse</translation>
+      <translation>Przeglądaj</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsmediaplayer.cpp" line="33"/>
@@ -7790,12 +7790,12 @@ Opis: %3</translation>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsmediaplayer.cpp" line="68"/>
       <source>Select folder for your MPV configuration</source>
-      <translation type="unfinished">Select folder for your MPV configuration</translation>
+      <translation>Wybierz folder dla swojej konfiguracji MPV</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsmediaplayer.h" line="31"/>
       <source>Media player</source>
-      <translation type="unfinished">Media player</translation>
+      <translation>Odtwarzacz multimedialny</translation>
     </message>
   </context>
   <context>
@@ -7895,7 +7895,7 @@ Ponadto po zainstalowaniu Node.js należy ponownie uruchomić okno dialogowe &qu
     <message>
       <location filename="../src/librssguard/gui/settings/settingsnotifications.ui" line="40"/>
       <source>Balloon notifications type</source>
-      <translation type="unfinished">Balloon notifications type</translation>
+      <translation>Typ powiadomień w dymkach</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsnotifications.ui" line="46"/>
@@ -7915,12 +7915,12 @@ Ponadto po zainstalowaniu Node.js należy ponownie uruchomić okno dialogowe &qu
     <message>
       <location filename="../src/librssguard/gui/settings/settingsnotifications.ui" line="82"/>
       <source>Width</source>
-      <translation type="unfinished">Width</translation>
+      <translation>Szerokość</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsnotifications.ui" line="105"/>
       <source>Margins</source>
-      <translation type="unfinished">Margins</translation>
+      <translation>Marginesy</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsnotifications.ui" line="125"/>
@@ -7930,7 +7930,7 @@ Ponadto po zainstalowaniu Node.js należy ponownie uruchomić okno dialogowe &qu
     <message>
       <location filename="../src/librssguard/gui/settings/settingsnotifications.ui" line="159"/>
       <source>Opacity</source>
-      <translation type="unfinished">Opacity</translation>
+      <translation>Przezroczystość</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsnotifications.h" line="31"/>
@@ -7945,7 +7945,7 @@ Ponadto po zainstalowaniu Node.js należy ponownie uruchomić okno dialogowe &qu
     <message>
       <location filename="../src/librssguard/gui/settings/settingsnotifications.cpp" line="107"/>
       <source>How do I look?</source>
-      <translation type="unfinished">How do I look?</translation>
+      <translation>Jak wyglądam?</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsnotifications.cpp" line="108"/>
@@ -8053,7 +8053,7 @@ Ponadto po zainstalowaniu Node.js należy ponownie uruchomić okno dialogowe &qu
     <message>
       <location filename="../src/librssguard/miscellaneous/skinfactory.cpp" line="539"/>
       <source>file %1 not found</source>
-      <translation type="unfinished">file %1 not found</translation>
+      <translation>plik %1 nie został znaleziony</translation>
     </message>
   </context>
   <context>
@@ -8114,7 +8114,7 @@ Ponadto po zainstalowaniu Node.js należy ponownie uruchomić okno dialogowe &qu
     <message>
       <location filename="../src/librssguard-standard/src/gui/standardaccountdetails.cpp" line="42"/>
       <source>Select icon file for the account</source>
-      <translation type="unfinished">Select icon file for the account</translation>
+      <translation>Wybierz plik ikony dla konta</translation>
     </message>
     <message>
       <location filename="../src/librssguard-standard/src/gui/standardaccountdetails.cpp" line="44"/>
@@ -8176,7 +8176,7 @@ Ponadto po zainstalowaniu Node.js należy ponownie uruchomić okno dialogowe &qu
     <message>
       <location filename="../src/librssguard-standard/src/standardfeed.cpp" line="213"/>
       <source>Built-in web browser with JavaScript support</source>
-      <translation type="unfinished">Built-in web browser with JavaScript support</translation>
+      <translation>Wbudowana przeglądarka internetowa z obsługą JavaScript</translation>
     </message>
     <message>
       <location filename="../src/librssguard-standard/src/standardfeed.cpp" line="216"/>
@@ -8358,17 +8358,17 @@ Post-processing script: %3</translation>
     <message>
       <location filename="../src/librssguard-standard/src/gui/standardfeeddetails.cpp" line="279"/>
       <source>Source is ok.</source>
-      <translation type="unfinished">Source is ok.</translation>
+      <translation>Źródło jest w porządku.</translation>
     </message>
     <message>
       <location filename="../src/librssguard-standard/src/gui/standardfeeddetails.cpp" line="289"/>
       <source>File exists.</source>
-      <translation type="unfinished">File exists.</translation>
+      <translation>Plik istnieje.</translation>
     </message>
     <message>
       <location filename="../src/librssguard-standard/src/gui/standardfeeddetails.cpp" line="292"/>
       <source>File does not exist.</source>
-      <translation type="unfinished">File does not exist.</translation>
+      <translation>Plik nie istnieje.</translation>
     </message>
     <message>
       <location filename="../src/librssguard-standard/src/gui/standardfeeddetails.cpp" line="324"/>
@@ -9045,7 +9045,7 @@ Nieprzeczytanych wiadomości: %2</translation>
     <message>
       <location filename="../src/librssguard-ttrss/src/gui/ttrssaccountdetails.ui" line="98"/>
       <source>Force execution of server-side feeds update</source>
-      <translation type="unfinished">Force execution of server-side feeds update</translation>
+      <translation>Wymuś wykonanie aktualizacji kanałów po stronie serwera</translation>
     </message>
     <message>
       <location filename="../src/librssguard-ttrss/src/gui/ttrssaccountdetails.ui" line="105"/>
@@ -9199,7 +9199,7 @@ Ostatnie logowanie: %4</translation>
     <message>
       <location filename="../src/librssguard/gui/webbrowser.cpp" line="44"/>
       <source>Load full source article</source>
-      <translation type="unfinished">Load full source article</translation>
+      <translation>Wczytaj cały artykuł źródłowy</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/webbrowser.cpp" line="284"/>
