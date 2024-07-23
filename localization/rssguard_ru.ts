@@ -164,7 +164,7 @@ Error: %1</source>
     <message>
       <location filename="../src/librssguard/network-web/apiserver.cpp" line="188"/>
       <source>account with ID %1 not found</source>
-      <translation type="unfinished">account with ID %1 not found</translation>
+      <translation>аккаунт с ID %1 не найден</translation>
     </message>
   </context>
   <context>
@@ -214,14 +214,14 @@ Error: %1</source>
       <location filename="../src/librssguard/miscellaneous/application.cpp" line="1391"/>
       <source>Packages were NOT updated because of error: %2. Affected packages:
 %1</source>
-      <translation type="unfinished">Packages were NOT updated because of error: %2. Affected packages:
+      <translation>Пакеты не были обновлены из-за ошибки: %2. Затронутые пакеты:
 %1</translation>
     </message>
     <message>
       <location filename="../src/librssguard/miscellaneous/application.cpp" line="1403"/>
       <source>These packages were installed/updated:
 %1</source>
-      <translation type="unfinished">These packages were installed/updated:
+      <translation>Эти пакеты были установлены/обновлены:
 %1</translation>
     </message>
     <message>
@@ -549,8 +549,8 @@ version by clicking this popup notification.</source>
       <location filename="../src/librssguard/services/abstract/category.cpp" line="73"/>
       <source>Number of feeds: %1
 Number of categories: %2</source>
-      <translation type="unfinished">Number of feeds: %1
-Number of categories: %2</translation>
+      <translation>Количество каналов: %1
+Количество категорий: %2</translation>
     </message>
   </context>
   <context>
@@ -1493,7 +1493,7 @@ QtWebEngine cache folder -&gt; &quot;%7&quot;</source>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formabout.cpp" line="134"/>
       <source>&lt;h4&gt;%8&lt;/h4&gt;&lt;b&gt;Version:&lt;/b&gt; %1 (built on %2/%3)&lt;br/&gt;&lt;b&gt;Revision:&lt;/b&gt; %4&lt;br/&gt;&lt;b&gt;Build date:&lt;/b&gt; %5&lt;br/&gt;&lt;b&gt;OS:&lt;/b&gt; %9&lt;br/&gt;&lt;b&gt;Qt:&lt;/b&gt; %6 (compiled against %7)</source>
-      <translation type="unfinished">&lt;h4&gt;%8&lt;/h4&gt;&lt;b&gt;Version:&lt;/b&gt; %1 (built on %2/%3)&lt;br/&gt;&lt;b&gt;Revision:&lt;/b&gt; %4&lt;br/&gt;&lt;b&gt;Build date:&lt;/b&gt; %5&lt;br/&gt;&lt;b&gt;OS:&lt;/b&gt; %9&lt;br/&gt;&lt;b&gt;Qt:&lt;/b&gt; %6 (compiled against %7)</translation>
+      <translation>&lt;h4&gt;%8&lt;/h4&gt;&lt;b&gt;Версия:&lt;/b&gt; %1 (сборка для %2/%3)&lt;br/&gt;&lt;b&gt;Ревизия:&lt;/b&gt; %4&lt;br/&gt;&lt;b&gt;Дата сборки:&lt;/b&gt; %5&lt;br/&gt;&lt;b&gt;ОС:&lt;/b&gt; %9&lt;br/&gt;&lt;b&gt;Qt:&lt;/b&gt; %6 (скомпилировано под %7)</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formabout.cpp" line="152"/>
@@ -2952,7 +2952,7 @@ QtWebEngine cache folder -&gt; &quot;%7&quot;</source>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="951"/>
       <source>Play in &amp;media player</source>
-      <translation type="unfinished">Play in &amp;media player</translation>
+      <translation>Воспроизвести в медиаплеере (&amp;M)</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="738"/>
@@ -2978,7 +2978,7 @@ QtWebEngine cache folder -&gt; &quot;%7&quot;</source>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.cpp" line="472"/>
       <source>Play in media player</source>
-      <translation type="unfinished">Play in media player</translation>
+      <translation>Воспроизвести в медиаплеере</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.cpp" line="473"/>
@@ -4611,7 +4611,7 @@ Login tokens expiration: %2</source>
     <message>
       <location filename="../src/librssguard/gui/mediaplayer/libmpv/libmpvbackend.cpp" line="251"/>
       <source>Unknown error (%1)</source>
-      <translation type="unfinished">Unknown error (%1)</translation>
+      <translation>Неизвестная ошибка (%1)</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/mediaplayer/libmpv/libmpvbackend.cpp" line="270"/>
@@ -5820,7 +5820,7 @@ Login tokens expiration: %2</source>
       <location filename="../src/librssguard-nextcloud/src/gui/nextcloudaccountdetails.cpp" line="80"/>
       <location filename="../src/librssguard-nextcloud/src/gui/nextcloudaccountdetails.cpp" line="86"/>
       <source>Installed version: %1, required at least: %2.</source>
-      <translation type="unfinished">Installed version: %1, required at least: %2.</translation>
+      <translation>Установленная версия: %1, требуется как минимум: %2.</translation>
     </message>
     <message>
       <location filename="../src/librssguard-nextcloud/src/gui/nextcloudaccountdetails.cpp" line="82"/>
@@ -6170,7 +6170,7 @@ List of supported readers:</source>
       <location filename="../src/librssguard-standard/src/parsers/rssparser.cpp" line="200"/>
       <location filename="../src/librssguard-standard/src/parsers/sitemapparser.cpp" line="194"/>
       <source>XML is not well-formed, %1</source>
-      <translation type="unfinished">XML is not well-formed, %1</translation>
+      <translation>XML имеет неправильный формат, %1</translation>
     </message>
     <message>
       <location filename="../src/librssguard-standard/src/parsers/atomparser.cpp" line="293"/>
@@ -6180,7 +6180,7 @@ List of supported readers:</source>
     <message>
       <location filename="../src/librssguard-standard/src/parsers/jsonparser.cpp" line="124"/>
       <source>JSON error &apos;%1&apos;</source>
-      <translation type="unfinished">JSON error &apos;%1&apos;</translation>
+      <translation>Ошибка JSON &apos;%1&apos;</translation>
     </message>
     <message>
       <location filename="../src/librssguard-standard/src/parsers/jsonparser.cpp" line="128"/>
@@ -6236,7 +6236,7 @@ List of supported readers:</source>
     <message>
       <location filename="../src/librssguard-standard/src/parsers/icalparser.cpp" line="69"/>
       <source>iCalendar error &apos;%1&apos;</source>
-      <translation type="unfinished">iCalendar error &apos;%1&apos;</translation>
+      <translation>Ошибка iCalendar &apos;%1&apos;</translation>
     </message>
     <message>
       <location filename="../src/librssguard-standard/src/parsers/icalparser.cpp" line="82"/>
@@ -6665,7 +6665,7 @@ Login tokens expiration: %2</source>
     <message>
       <location filename="../src/librssguard/services/abstract/search.cpp" line="111"/>
       <source>Regular expression: %1</source>
-      <translation type="unfinished">Regular expression: %1</translation>
+      <translation>Регулярное выражение: %1</translation>
     </message>
   </context>
   <context>
@@ -7735,7 +7735,7 @@ Description: %3</source>
     <message>
       <location filename="../src/librssguard/gui/settings/settingslocalization.cpp" line="25"/>
       <source>Help us to improve %1 &lt;a href=&quot;%2&quot;&gt;translations&lt;/a&gt;.</source>
-      <translation type="unfinished">Help us to improve %1 &lt;a href=&quot;%2&quot;&gt;translations&lt;/a&gt;.</translation>
+      <translation>Помогите нам улучшить %1 &lt;a href=&quot;%2&quot;&gt;переводы&lt;/a&gt;.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingslocalization.cpp" line="115"/>
@@ -7747,7 +7747,7 @@ Description: %3</source>
     <message>
       <location filename="../src/librssguard/gui/settings/settingslocalization.cpp" line="120"/>
       <source>Translations provided by: %1</source>
-      <translation type="unfinished">Translations provided by: %1</translation>
+      <translation>Переводы предоставлены: %1</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingslocalization.cpp" line="169"/>
