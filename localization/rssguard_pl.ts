@@ -346,11 +346,11 @@ tej wersji, klikając na to powiadomienie.</translation>
     <message numerus="yes">
       <location filename="../src/librssguard/gui/reusable/articleamountcontrol.cpp" line="179"/>
       <source>newest article(s)</source>
-      <translation type="unfinished">
-        <numerusform>najnowsze artykuły</numerusform>
-        <numerusform>newest article(s)</numerusform>
-        <numerusform>newest article(s)</numerusform>
-        <numerusform>newest article(s)</numerusform>
+      <translation>
+        <numerusform>Najnowszy artykuł</numerusform>
+        <numerusform>Najnowsze artykuły</numerusform>
+        <numerusform>Najnowsze artykuły</numerusform>
+        <numerusform>Najnowsze artykuły</numerusform>
       </translation>
     </message>
   </context>
@@ -1402,11 +1402,11 @@ ID pozycji: %5</translation>
     <message numerus="yes">
       <location filename="../src/librssguard/gui/feedsview.cpp" line="439"/>
       <source>You are about to completely delete %n items.</source>
-      <translation type="unfinished">
-        <numerusform>You are about to completely delete %n items.</numerusform>
-        <numerusform>You are about to completely delete %n items.</numerusform>
-        <numerusform>You are about to completely delete %n items.</numerusform>
-        <numerusform>You are about to completely delete %n items.</numerusform>
+      <translation>
+        <numerusform>Zamierzasz całkowicie usunąć %n element</numerusform>
+        <numerusform>Zamierzasz całkowicie usunąć %n elementy</numerusform>
+        <numerusform>Zamierzasz całkowicie usunąć %n elementy</numerusform>
+        <numerusform>Zamierzasz całkowicie usunąć %n elementów</numerusform>
       </translation>
     </message>
     <message>
@@ -1801,11 +1801,11 @@ Katalog cache QtWebEngine -&gt; &quot;%7&quot;</translation>
     <message numerus="yes">
       <location filename="../src/librssguard/services/abstract/gui/formcategorydetails.cpp" line="108"/>
       <source>Edit %n categories</source>
-      <translation type="unfinished">
+      <translation>
+        <numerusform>Edytuj %n kategorię</numerusform>
         <numerusform>Edytuj %n kategorie</numerusform>
-        <numerusform>Edit %n categories</numerusform>
-        <numerusform>Edit %n categories</numerusform>
-        <numerusform>Edit %n categories</numerusform>
+        <numerusform>Edytuj %n kategorie</numerusform>
+        <numerusform>Edytuj %n kategorii</numerusform>
       </translation>
     </message>
     <message>
@@ -2200,11 +2200,11 @@ Katalog cache QtWebEngine -&gt; &quot;%7&quot;</translation>
     <message numerus="yes">
       <location filename="../src/librssguard/services/abstract/gui/formfeeddetails.cpp" line="148"/>
       <source>Edit %n feeds</source>
-      <translation type="unfinished">
+      <translation>
         <numerusform>Edytuj %n kanały</numerusform>
-        <numerusform>Edit %n feeds</numerusform>
-        <numerusform>Edit %n feeds</numerusform>
-        <numerusform>Edit %n feeds</numerusform>
+        <numerusform>Edytuj %n kanały</numerusform>
+        <numerusform>Edytuj %n kanały</numerusform>
+        <numerusform>Edytuj %n kanałów</numerusform>
       </translation>
     </message>
     <message>
@@ -2935,7 +2935,7 @@ Katalog cache QtWebEngine -&gt; &quot;%7&quot;</translation>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="946"/>
       <source>Edit child feeds (&amp;recursive)</source>
-      <translation type="unfinished">Edit child feeds (&amp;recursive)</translation>
+      <translation>Edytuj kanały podrzędne (&amp;rekursywne)</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="951"/>
@@ -4285,12 +4285,12 @@ Tokeny logowania wygasają: %2</translation>
     <message>
       <location filename="../src/librssguard-greader/src/gui/greaderfeeddetails.cpp" line="42"/>
       <source>Title is entered.</source>
-      <translation type="unfinished">Title is entered.</translation>
+      <translation>Wpisano tytuł.</translation>
     </message>
     <message>
       <location filename="../src/librssguard-greader/src/gui/greaderfeeddetails.cpp" line="46"/>
       <source>No title is entered. If you are creating new feed, title will be automatically extracted from it.</source>
-      <translation type="unfinished">No title is entered. If you are creating new feed, title will be automatically extracted from it.</translation>
+      <translation>Nie wprowadzono tytułu. Jeśli tworzysz nowy kanał, tytuł zostanie automatycznie pobrany z niego.</translation>
     </message>
   </context>
   <context>
@@ -4360,12 +4360,12 @@ Tokeny logowania wygasają: %2</translation>
     <message>
       <location filename="../src/librssguard-greader/src/greaderserviceroot.cpp" line="177"/>
       <source>Data imported successfully. Reloading feed tree.</source>
-      <translation type="unfinished">Data imported successfully. Reloading feed tree.</translation>
+      <translation>Dane zaimportowane pomyślnie. Ponowne ładowanie drzewa kanałów.</translation>
     </message>
     <message>
       <location filename="../src/librssguard-greader/src/greaderserviceroot.cpp" line="184"/>
       <source>Cannot import feeds</source>
-      <translation type="unfinished">Cannot import feeds</translation>
+      <translation>Nie można zaimportować kanałów</translation>
     </message>
     <message>
       <location filename="../src/librssguard-greader/src/greaderserviceroot.cpp" line="185"/>
@@ -4381,7 +4381,7 @@ Tokeny logowania wygasają: %2</translation>
     <message>
       <location filename="../src/librssguard-greader/src/greaderserviceroot.cpp" line="204"/>
       <source>Data exported successfully.</source>
-      <translation type="unfinished">Data exported successfully.</translation>
+      <translation>Dane wyeksportowane pomyślnie.</translation>
     </message>
     <message>
       <location filename="../src/librssguard-greader/src/greaderserviceroot.cpp" line="209"/>
@@ -4507,12 +4507,12 @@ Tokeny logowania wygasają: %2</translation>
     <message>
       <location filename="../src/librssguard/gui/mediaplayer/libmpv/libmpvbackend.cpp" line="199"/>
       <source>Out of memory</source>
-      <translation type="unfinished">Out of memory</translation>
+      <translation>Brak pamięci</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/mediaplayer/libmpv/libmpvbackend.cpp" line="202"/>
       <source>Not initialized yet</source>
-      <translation type="unfinished">Not initialized yet</translation>
+      <translation>Nie zainicjowano jeszcze</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/mediaplayer/libmpv/libmpvbackend.cpp" line="205"/>
@@ -4537,7 +4537,7 @@ Tokeny logowania wygasają: %2</translation>
     <message>
       <location filename="../src/librssguard/gui/mediaplayer/libmpv/libmpvbackend.cpp" line="217"/>
       <source>Property does not existing</source>
-      <translation type="unfinished">Property does not existing</translation>
+      <translation>Własność nie istnieje</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/mediaplayer/libmpv/libmpvbackend.cpp" line="220"/>
@@ -4547,7 +4547,7 @@ Tokeny logowania wygasają: %2</translation>
     <message>
       <location filename="../src/librssguard/gui/mediaplayer/libmpv/libmpvbackend.cpp" line="223"/>
       <source>Property N/A</source>
-      <translation type="unfinished">Property N/A</translation>
+      <translation>Własność nie dotyczy</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/mediaplayer/libmpv/libmpvbackend.cpp" line="226"/>
@@ -4557,7 +4557,7 @@ Tokeny logowania wygasają: %2</translation>
     <message>
       <location filename="../src/librssguard/gui/mediaplayer/libmpv/libmpvbackend.cpp" line="229"/>
       <source>Cannot run command</source>
-      <translation type="unfinished">Cannot run command</translation>
+      <translation>Nie można uruchomić polecenia</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/mediaplayer/libmpv/libmpvbackend.cpp" line="232"/>
@@ -4567,17 +4567,17 @@ Tokeny logowania wygasają: %2</translation>
     <message>
       <location filename="../src/librssguard/gui/mediaplayer/libmpv/libmpvbackend.cpp" line="235"/>
       <source>Cannot initialize audio</source>
-      <translation type="unfinished">Cannot initialize audio</translation>
+      <translation>Nie można zainicjować dźwięku</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/mediaplayer/libmpv/libmpvbackend.cpp" line="238"/>
       <source>Cannot initialize video</source>
-      <translation type="unfinished">Cannot initialize video</translation>
+      <translation>Nie można zainicjować wideo</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/mediaplayer/libmpv/libmpvbackend.cpp" line="241"/>
       <source>Not a media file</source>
-      <translation type="unfinished">Not a media file</translation>
+      <translation>To nie jest plik multimedialny</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/mediaplayer/libmpv/libmpvbackend.cpp" line="244"/>
@@ -5499,7 +5499,7 @@ Tokeny logowania wygasają: %2</translation>
     <message>
       <location filename="../src/librssguard/gui/messagesview.cpp" line="643"/>
       <source>Article cannot be played in media player as it has no URL</source>
-      <translation type="unfinished">Article cannot be played in media player as it has no URL</translation>
+      <translation>Artykuł nie może być odtworzony w odtwarzaczu mediów, ponieważ nie ma adresu URL</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/messagesview.cpp" line="896"/>
@@ -7183,12 +7183,12 @@ Autorzy tej aplikacji NIE ponoszą odpowiedzialności za utracone dane.</transla
     <message>
       <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.cpp" line="50"/>
       <source>only manually</source>
-      <translation type="unfinished">only manually</translation>
+      <translation>tylko ręcznie</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.cpp" line="52"/>
       <source>with delay</source>
-      <translation type="unfinished">with delay</translation>
+      <translation>z opóźnieniem</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.cpp" line="69"/>
@@ -7474,12 +7474,12 @@ Autorzy tej aplikacji NIE ponoszą odpowiedzialności za utracone dane.</transla
     <message>
       <location filename="../src/librssguard/gui/settings/settingsgui.cpp" line="213"/>
       <source>system style</source>
-      <translation type="unfinished">system style</translation>
+      <translation>styl systemowy</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsgui.cpp" line="215"/>
       <source>default style</source>
-      <translation type="unfinished">default style</translation>
+      <translation>styl domyślny</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsgui.cpp" line="292"/>
