@@ -500,17 +500,17 @@ genom att klicka på denna popup-avisering.</translation>
     <message>
       <location filename="../src/librssguard/services/abstract/gui/authenticationdetails.cpp" line="74"/>
       <source>Username/token is ok or it is not needed.</source>
-      <translation type="unfinished">Username/token is ok or it is not needed.</translation>
+      <translation>Användarnamn/token är ok eller behövs inte.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/abstract/gui/authenticationdetails.cpp" line="75"/>
       <source>Username/token is empty.</source>
-      <translation type="unfinished">Username/token is empty.</translation>
+      <translation>Användarnamn/token saknas.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/abstract/gui/authenticationdetails.cpp" line="97"/>
       <source>Access token</source>
-      <translation type="unfinished">Access token</translation>
+      <translation>Access-token</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/abstract/gui/authenticationdetails.cpp" line="84"/>
@@ -528,7 +528,7 @@ genom att klicka på denna popup-avisering.</translation>
     <message>
       <location filename="../src/librssguard/gui/reusable/baselineedit.cpp" line="13"/>
       <source>Show/hide the password</source>
-      <translation type="unfinished">Show/hide the password</translation>
+      <translation>Visa/dölj lösenordet</translation>
     </message>
   </context>
   <context>
@@ -536,7 +536,7 @@ genom att klicka på denna popup-avisering.</translation>
     <message>
       <location filename="../src/librssguard/gui/notifications/basetoastnotification.cpp" line="46"/>
       <source>Close this notification</source>
-      <translation type="unfinished">Close this notification</translation>
+      <translation>Stäng denna notifiering</translation>
     </message>
   </context>
   <context>
@@ -545,8 +545,8 @@ genom att klicka på denna popup-avisering.</translation>
       <location filename="../src/librssguard/services/abstract/category.cpp" line="73"/>
       <source>Number of feeds: %1
 Number of categories: %2</source>
-      <translation type="unfinished">Number of feeds: %1
-Number of categories: %2</translation>
+      <translation>Antal flöden:%1
+Antal kategorier: %2</translation>
     </message>
   </context>
   <context>
@@ -592,27 +592,27 @@ Number of categories: %2</translation>
     <message>
       <location filename="../src/librssguard/database/databasecleaner.cpp" line="30"/>
       <source>Read articles purged...</source>
-      <translation type="unfinished">Read articles purged...</translation>
+      <translation>Lästa artiklar rensade...</translation>
     </message>
     <message>
       <location filename="../src/librssguard/database/databasecleaner.cpp" line="45"/>
       <source>Removing old articles...</source>
-      <translation type="unfinished">Removing old articles...</translation>
+      <translation>Tar bort äldre artiklar...</translation>
     </message>
     <message>
       <location filename="../src/librssguard/database/databasecleaner.cpp" line="50"/>
       <source>Old articles purged...</source>
-      <translation type="unfinished">Old articles purged...</translation>
+      <translation>Äldre artiklar rensade...</translation>
     </message>
     <message>
       <location filename="../src/librssguard/database/databasecleaner.cpp" line="55"/>
       <source>Removing starred articles...</source>
-      <translation type="unfinished">Removing starred articles...</translation>
+      <translation>Tar bort stjärnmärkta artiklar...</translation>
     </message>
     <message>
       <location filename="../src/librssguard/database/databasecleaner.cpp" line="60"/>
       <source>Starred articles purged...</source>
-      <translation type="unfinished">Starred articles purged...</translation>
+      <translation>Stjärnmärkta artiklar rensade...</translation>
     </message>
   </context>
   <context>
@@ -707,8 +707,8 @@ Number of categories: %2</translation>
       <location filename="../src/librssguard/network-web/downloadmanager.cpp" line="446"/>
       <source>File &apos;%1&apos; is downloaded.
 Click here to open parent directory.</source>
-      <translation type="unfinished">File &apos;%1&apos; is downloaded.
-Click here to open parent directory.</translation>
+      <translation>Filen &apos;%1&apos; är nedtankad.
+Klicka här för att öppna mappen.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/network-web/downloadmanager.cpp" line="457"/>
@@ -728,7 +728,7 @@ Click here to open parent directory.</translation>
     <message>
       <location filename="../src/librssguard/network-web/downloadmanager.cpp" line="450"/>
       <source>Open folder</source>
-      <translation type="unfinished">Open folder</translation>
+      <translation>Öppna mapp</translation>
     </message>
     <message>
       <location filename="../src/librssguard/network-web/downloaditem.ui" line="54"/>
@@ -808,17 +808,17 @@ Click here to open parent directory.</translation>
     <message>
       <location filename="../src/librssguard-gmail/src/gui/emailpreviewer.ui" line="52"/>
       <source>&amp;Attachments</source>
-      <translation type="unfinished">&amp;Attachments</translation>
+      <translation>&amp;Bilagor</translation>
     </message>
     <message>
       <location filename="../src/librssguard-gmail/src/gui/emailpreviewer.ui" line="65"/>
       <source>&amp;Reply</source>
-      <translation type="unfinished">&amp;Reply</translation>
+      <translation>&amp;Svara</translation>
     </message>
     <message>
       <location filename="../src/librssguard-gmail/src/gui/emailpreviewer.ui" line="75"/>
       <source>&amp;Forward</source>
-      <translation type="unfinished">&amp;Forward</translation>
+      <translation>&amp;Vidarebefordra</translation>
     </message>
     <message>
       <location filename="../src/librssguard-gmail/src/gui/emailpreviewer.ui" line="87"/>
@@ -834,17 +834,17 @@ Click here to open parent directory.</translation>
       <location filename="../src/librssguard-gmail/src/gui/emailpreviewer.cpp" line="114"/>
       <location filename="../src/librssguard-gmail/src/gui/emailpreviewer.cpp" line="120"/>
       <source>Cannot download attachment</source>
-      <translation type="unfinished">Cannot download attachment</translation>
+      <translation>Kan inte tanka ner bilagan</translation>
     </message>
     <message>
       <location filename="../src/librssguard-gmail/src/gui/emailpreviewer.cpp" line="115"/>
       <source>Attachment cannot be downloaded because you are not logged-in.</source>
-      <translation type="unfinished">Attachment cannot be downloaded because you are not logged-in.</translation>
+      <translation>Bilagan kan inte tankas ned då du inte är inloggad.</translation>
     </message>
     <message>
       <location filename="../src/librssguard-gmail/src/gui/emailpreviewer.cpp" line="121"/>
       <source>Attachment cannot be downloaded because some general error happened.</source>
-      <translation type="unfinished">Attachment cannot be downloaded because some general error happened.</translation>
+      <translation>Bilagan kan inte tankas ner på grund av att något generellt fel inträffat.</translation>
     </message>
   </context>
   <context>
@@ -880,7 +880,7 @@ Click here to open parent directory.</translation>
     <message>
       <location filename="../src/librssguard/services/abstract/feed.cpp" line="262"/>
       <source>uses global settings, but global auto-fetching of articles is disabled</source>
-      <translation type="unfinished">uses global settings, but global auto-fetching of articles is disabled</translation>
+      <translation>använder globala inställningar men global auto-hämtning av artiklar är avstängd</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/abstract/feed.cpp" line="286"/>
@@ -901,39 +901,39 @@ Click here to open parent directory.</translation>
       <location filename="../src/librssguard/services/abstract/feed.cpp" line="248"/>
       <source>does not use auto-fetching of articles</source>
       <extracomment>Describes feed auto-update status.</extracomment>
-      <translation type="unfinished">does not use auto-fetching of articles</translation>
+      <translation>använder inte auto-hämtning av artiklar</translation>
     </message>
     <message numerus="yes">
       <location filename="../src/librssguard/services/abstract/feed.cpp" line="259"/>
       <source>uses global settings (%n minute(s) to next auto-fetch of articles)</source>
-      <translation type="unfinished">
-        <numerusform>uses global settings (%n minute(s) to next auto-fetch of articles)</numerusform>
-        <numerusform>uses global settings (%n minute(s) to next auto-fetch of articles)</numerusform>
+      <translation>
+        <numerusform>använder global inställning (%n minut(er) tills nästa auto-hämtning av artiklar)</numerusform>
+        <numerusform>använder global inställning (%n minut(er) tills nästa auto-hämtning av artiklar)</numerusform>
       </translation>
     </message>
     <message numerus="yes">
       <location filename="../src/librssguard/services/abstract/feed.cpp" line="273"/>
       <source>uses specific settings (%n minute(s) to next auto-fetching of new articles)</source>
       <extracomment>Describes feed auto-update status.</extracomment>
-      <translation type="unfinished">
-        <numerusform>uses specific settings (%n minute(s) to next auto-fetching of new articles)</numerusform>
-        <numerusform>uses specific settings (%n minute(s) to next auto-fetching of new articles)</numerusform>
+      <translation>
+        <numerusform>använder specifik inställning (%n minut(er) tills nästa auto-hämtning av artiklar)</numerusform>
+        <numerusform>använder specifik inställning (%n minut(er) tills nästa auto-hämtning av artiklar)</numerusform>
       </translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/abstract/feed.cpp" line="289"/>
       <source>has new articles</source>
-      <translation type="unfinished">has new articles</translation>
+      <translation>har nya artiklar</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/abstract/feed.cpp" line="298"/>
       <source>parsing error</source>
-      <translation type="unfinished">parsing error</translation>
+      <translation>tolkningsfel</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/abstract/feed.cpp" line="301"/>
       <source>error</source>
-      <translation type="unfinished">error</translation>
+      <translation>fel</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/abstract/feed.cpp" line="375"/>
@@ -942,11 +942,11 @@ Active message filters: %2
 Status: %3
 Source: &lt;a href=&quot;%4&quot;&gt;%4&lt;/a&gt;
 Item ID: %5</source>
-      <translation type="unfinished">Auto-update status: %1
-Active message filters: %2
+      <translation>Status autouppdatering: %1
+Aktiva artikelfilter: %2
 Status: %3
-Source: &lt;a href=&quot;%4&quot;&gt;%4&lt;/a&gt;
-Item ID: %5</translation>
+Källa: &lt;a href=&quot;%4&quot;&gt;%4&lt;/a&gt;
+Artikel-ID: %5</translation>
     </message>
   </context>
   <context>
@@ -959,27 +959,27 @@ Item ID: %5</translation>
     <message>
       <location filename="../src/librssguard/gui/feedmessageviewer.cpp" line="33"/>
       <source>Toolbar for articles</source>
-      <translation type="unfinished">Toolbar for articles</translation>
+      <translation>Verktygsfält för artiklar</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/feedmessageviewer.cpp" line="245"/>
       <source>Filtered feed list</source>
-      <translation type="unfinished">Filtered feed list</translation>
+      <translation>Filtrerad flödeslista</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/feedmessageviewer.cpp" line="246"/>
       <source>Cannot select article in article list as your feed is filtered out from feed list.</source>
-      <translation type="unfinished">Cannot select article in article list as your feed is filtered out from feed list.</translation>
+      <translation>Kan inte välja artikel i artikellistan eftersom ditt flöde filtreras bort från flödeslistan.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/feedmessageviewer.cpp" line="263"/>
       <source>Filtered article list</source>
-      <translation type="unfinished">Filtered article list</translation>
+      <translation>Filtrerad artikellista</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/feedmessageviewer.cpp" line="264"/>
       <source>Cannot select article as it seems your article list is filtered or the article was deleted.</source>
-      <translation type="unfinished">Cannot select article as it seems your article list is filtered or the article was deleted.</translation>
+      <translation>Kan inte välja artikel som det verkar som din artikellista filtreras eller artikeln togs bort.</translation>
     </message>
   </context>
   <context>
@@ -987,25 +987,26 @@ Item ID: %5</translation>
     <message>
       <location filename="../src/librssguard/miscellaneous/feedreader.cpp" line="365"/>
       <source>Starting auto-download of some feeds&apos; articles</source>
-      <translation type="unfinished">Starting auto-download of some feeds&apos; articles</translation>
+      <translation>Startar automatisk nedladdning av vissa flöden&apos;
+artiklar</translation>
     </message>
     <message numerus="yes">
       <location filename="../src/librssguard/miscellaneous/feedreader.cpp" line="366"/>
       <source>I will auto-download new articles for %n feed(s).</source>
-      <translation type="unfinished">
-        <numerusform>I will auto-download new articles for %n feed(s).</numerusform>
-        <numerusform>I will auto-download new articles for %n feed(s).</numerusform>
+      <translation>
+        <numerusform>Jag kommer automatiskt ladda ner nya artiklar för %n flöde(n).</numerusform>
+        <numerusform>Jag kommer automatiskt ladda ner nya artiklar för %n flöde(n).</numerusform>
       </translation>
     </message>
     <message>
       <location filename="../src/librssguard/miscellaneous/feedreader.cpp" line="91"/>
       <source>Cannot fetch articles at this point</source>
-      <translation type="unfinished">Cannot fetch articles at this point</translation>
+      <translation>Kan inte hämta artiklar just nu</translation>
     </message>
     <message>
       <location filename="../src/librssguard/miscellaneous/feedreader.cpp" line="92"/>
       <source>You cannot fetch new articles now because another critical operation is ongoing.</source>
-      <translation type="unfinished">You cannot fetch new articles now because another critical operation is ongoing.</translation>
+      <translation>Kan inte lägga till kategori just nu eftersom en annan åtgärd pågår.</translation>
     </message>
   </context>
   <context>
@@ -1029,7 +1030,7 @@ Item ID: %5</translation>
     <message>
       <location filename="../src/librssguard-feedly/src/gui/feedlyaccountdetails.ui" line="58"/>
       <source>Intelligent synchronization algorithm</source>
-      <translation type="unfinished">Intelligent synchronization algorithm</translation>
+      <translation>Intelligent synkroniseringsalgoritm</translation>
     </message>
     <message>
       <location filename="../src/librssguard-feedly/src/gui/feedlyaccountdetails.ui" line="70"/>
@@ -1069,7 +1070,7 @@ Item ID: %5</translation>
     <message>
       <location filename="../src/librssguard-feedly/src/gui/feedlyaccountdetails.cpp" line="52"/>
       <source>If you select intelligent synchronization, then only not-yet-fetched or updated articles are downloaded. Network usage is greatly reduced and overall synchronization speed is greatly improved, but first feed fetching could be slow anyway if your feed contains huge number of articles.</source>
-      <translation type="unfinished">If you select intelligent synchronization, then only not-yet-fetched or updated articles are downloaded. Network usage is greatly reduced and overall synchronization speed is greatly improved, but first feed fetching could be slow anyway if your feed contains huge number of articles.</translation>
+      <translation>Om du väljer intelligent synkronisering laddas bara ännu inte hämtade eller uppdaterade artiklar ner. Nätverksanvändningen är kraftigt reducerad och den totala synkroniseringshastigheten förbättras avsevärt, men den första hämtningen av flöden kan dock vara långsam om ditt flöde innehåller ett stort antal artiklar.</translation>
     </message>
     <message>
       <location filename="../src/librssguard-feedly/src/gui/feedlyaccountdetails.cpp" line="95"/>
@@ -1110,7 +1111,7 @@ Item ID: %5</translation>
     <message>
       <location filename="../src/librssguard-feedly/src/gui/feedlyaccountdetails.cpp" line="34"/>
       <source>Your %1 build has official Feedly support. You do not have to use &quot;developer access token&quot;. You can therefore leave corresponding field empty.</source>
-      <translation type="unfinished">Your %1 build has official Feedly support. You do not have to use &quot;developer access token&quot;. You can therefore leave corresponding field empty.</translation>
+      <translation>Din %1 konfiguration har officiellt Feedly-stöd. Du behöver inte använda &quot;utvecklartoken&quot; och kan lämna motsvarande fält tomt.</translation>
     </message>
     <message>
       <location filename="../src/librssguard-feedly/src/gui/feedlyaccountdetails.cpp" line="154"/>
@@ -4073,7 +4074,7 @@ Inloggningstoken upphör: %2</translation>
     <message>
       <location filename="../src/librssguard-greader/src/gui/greaderaccountdetails.cpp" line="52"/>
       <source>If you select intelligent synchronization, then only not-yet-fetched or updated articles are downloaded. Network usage is greatly reduced and overall synchronization speed is greatly improved, but first feed fetching could be slow anyway if your feed contains huge number of articles.</source>
-      <translation type="unfinished">If you select intelligent synchronization, then only not-yet-fetched or updated articles are downloaded. Network usage is greatly reduced and overall synchronization speed is greatly improved, but first feed fetching could be slow anyway if your feed contains huge number of articles.</translation>
+      <translation>Om du väljer intelligent synkronisering laddas bara ännu inte hämtade eller uppdaterade artiklar ner. Nätverksanvändningen är kraftigt reducerad och den totala synkroniseringshastigheten förbättras avsevärt, men den första hämtningen av flöden kan dock vara långsam om ditt flöde innehåller ett stort antal artiklar.</translation>
     </message>
     <message>
       <location filename="../src/librssguard-greader/src/gui/greaderaccountdetails.cpp" line="61"/>
@@ -4144,7 +4145,7 @@ Inloggningstoken upphör: %2</translation>
     <message>
       <location filename="../src/librssguard-greader/src/gui/greaderaccountdetails.ui" line="47"/>
       <source>Intelligent synchronization algorithm</source>
-      <translation type="unfinished">Intelligent synchronization algorithm</translation>
+      <translation>Intelligent synkroniseringsalgoritm</translation>
     </message>
     <message>
       <location filename="../src/librssguard-greader/src/gui/greaderaccountdetails.ui" line="56"/>
@@ -8982,7 +8983,7 @@ Olästa nyheter: %2</translation>
     <message>
       <location filename="../src/librssguard-ttrss/src/gui/ttrssaccountdetails.ui" line="91"/>
       <source>Intelligent synchronization algorithm</source>
-      <translation type="unfinished">Intelligent synchronization algorithm</translation>
+      <translation>Intelligent synkroniseringsalgoritm</translation>
     </message>
     <message>
       <location filename="../src/librssguard-ttrss/src/gui/ttrssaccountdetails.ui" line="98"/>
