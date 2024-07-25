@@ -168,6 +168,10 @@ bool FeedsProxyModel::canDropMimeData(const QMimeData* data,
                                       int row,
                                       int column,
                                       const QModelIndex& parent) const {
+  if (action != Qt::DropAction::MoveAction) {
+    return false;
+  }
+
   QByteArray dragged_items_data = data->data(QSL(MIME_TYPE_ITEM_POINTER));
   QDataStream stream(&dragged_items_data, QIODevice::OpenModeFlag::ReadOnly);
   const bool order_change = row >= 0 && !m_sortAlphabetically;
@@ -184,7 +188,8 @@ bool FeedsProxyModel::canDropMimeData(const QMimeData* data,
 
   // Dragged item must service root, feed or category.
   //
-  // If row is less then zero, it means we are moving dragged item into new parent.
+  // If row is less than zero, it means we are moving dragged item into new parent. If row is at least
+  // zero, then we are sorting the dragged item.
   //
   // Otherwise the target row identifies the item just below the drop target placement insertion line.
   QModelIndex target_idx = order_change ? mapToSource(index(row, 0, parent)) : target_parent;
@@ -198,13 +203,11 @@ bool FeedsProxyModel::canDropMimeData(const QMimeData* data,
 
     switch (dragged_item->kind()) {
       case RootItem::Kind::Feed:
+      case RootItem::Kind::Category:
         // Feeds can be reordered or inserted under service root or category.
+        // Categories can be reordered or inserted under service root or another category.
         return target_parent_item->kind() == RootItem::Kind::Category ||
                target_parent_item->kind() == RootItem::Kind::ServiceRoot;
-
-      case RootItem::Kind::Category:
-        // Categories can be reordered or inserted under service root or another category.
-        break;
 
       case RootItem::Kind::ServiceRoot:
         // Service root cannot be inserted under different parent, can only be reordered.
@@ -216,20 +219,11 @@ bool FeedsProxyModel::canDropMimeData(const QMimeData* data,
         }
 
       default:
-        return false;
+        break;
     }
-
-    return false;
-    /*
-    auto can_drop = target_item->kind() == RootItem::Kind::ServiceRoot ||
-                    target_item->kind() == RootItem::Kind::Category || target_item->kind() == RootItem::Kind::Feed;
-
-    return QSortFilterProxyModel::canDropMimeData(data, action, row, column, parent) && can_drop;
-    */
   }
-  else {
-    return false;
-  }
+
+  return false;
 }
 
 bool FeedsProxyModel::dropMimeData(const QMimeData* data,
