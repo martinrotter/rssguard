@@ -192,7 +192,7 @@ void StandardServiceRoot::addNewFeed(RootItem* selected_item, const QString& url
 }
 
 Qt::ItemFlags StandardServiceRoot::additionalFlags() const {
-  return Qt::ItemFlag::ItemIsDropEnabled;
+  return ServiceRoot::additionalFlags() | Qt::ItemFlag::ItemIsDragEnabled | Qt::ItemFlag::ItemIsDropEnabled;
 }
 
 QList<Message> StandardServiceRoot::obtainNewMessages(Feed* feed,
