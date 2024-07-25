@@ -11,10 +11,11 @@ $git_revision = git rev-parse --short HEAD
 $old_pwd = $pwd.Path
 
 # Functions.
-function Fetch-Latest-Release([string]$ReleasesUrl, [string]$TargetNamePrefix) {
-  $releases_req = Invoke-WebRequest -Uri "$ReleasesUrl"
+function Fetch-Latest-Release([string]$OrgRepo, [string]$NameRegex) {
+  $releases_url = "https://api.github.com/repos/" + $OrgRepo +"/releases"
+  $releases_req = Invoke-WebRequest -Uri "$releases_url"
   $releases_json = $releases_req.Content | ConvertFrom-Json
-  $asset = $releases_json[0].assets | Where-Object {$_.name.StartsWith($TargetNamePrefix)} | Select-Object;
+  $asset = $releases_json[0].assets | Where-Object {$_.name -match $NameRegex} | Select-Object;
 
   return $asset
 }
@@ -54,22 +55,16 @@ $maria_version = "11.4.2"
 $maria_link = "https://archive.mariadb.org/mariadb-$maria_version/winx64-packages/mariadb-$maria_version-winx64.zip"
 $maria_output = "maria.zip"
 
-$cmake_version = "3.30.1"
-$cmake_link = "https://github.com/Kitware/CMake/releases/download/v$cmake_version/cmake-$cmake_version-windows-x86_64.zip"
+$cmake_link = Fetch-Latest-Release -OrgRepo "Kitware/CMake" -NameRegex "cmake-.+-windows-x86_64\.zip" | Select-Object -ExpandProperty browser_download_url
 $cmake_output = "cmake.zip"
 
-$zlib_version = "1.3.1"
-$zlib_link = "https://github.com/madler/zlib/archive/refs/tags/v$zlib_version.zip"
+$zlib_link = Fetch-Latest-Release -OrgRepo "madler/zlib" -NameRegex "zlib.+\.zip$" | Select-Object -ExpandProperty browser_download_url
 $zlib_output = "zlib.zip"
 
-$asset_mpv = Fetch-Latest-Release -ReleasesUrl "https://api.github.com/repos/zhongfly/mpv-winbuild/releases" -TargetNamePrefix "mpv-dev-x86_64-2"
-
-$libmpv_link = $asset_mpv.browser_download_url
+$libmpv_link = Fetch-Latest-Release -OrgRepo "zhongfly/mpv-winbuild" -NameRegex "mpv-dev-x86_64-2.+7z" | Select-Object -ExpandProperty browser_download_url
 $libmpv_output = "mpv.zip"
 
-$asset_ytdlp = Fetch-Latest-Release -ReleasesUrl "https://api.github.com/repos/yt-dlp/yt-dlp/releases" -TargetNamePrefix "yt-dlp.exe"
-
-$ytdlp_link = $asset_ytdlp.browser_download_url
+$ytdlp_link = Fetch-Latest-Release -OrgRepo "yt-dlp/yt-dlp" -NameRegex "yt-dlp.exe" | Select-Object -ExpandProperty browser_download_url
 $ytdlp_output = "yt-dlp.exe"
 
 Invoke-WebRequest -Uri "$maria_link" -OutFile "$maria_output"
