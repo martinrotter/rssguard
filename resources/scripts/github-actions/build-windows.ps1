@@ -15,7 +15,10 @@ function Fetch-Latest-Release([string]$OrgRepo, [string]$NameRegex) {
   $releases_url = "https://api.github.com/repos/" + $OrgRepo +"/releases"
   $releases_req = Invoke-WebRequest -Uri "$releases_url"
   $releases_json = $releases_req.Content | ConvertFrom-Json
-  $asset = $releases_json[0].assets | Where-Object {$_.name -match $NameRegex} | Select-Object;
+  $releases_release = $releases_json[0]
+  $asset = $releases_release.assets | Where-Object {$_.name -match $NameRegex} | Select-Object;
+
+  Add-Member -InputObject $asset -NotePropertyName "tag_name" -NotePropertyValue $releases_release.tag_name.Substring(1)
 
   return $asset
 }
@@ -55,10 +58,14 @@ $maria_version = "11.4.2"
 $maria_link = "https://archive.mariadb.org/mariadb-$maria_version/winx64-packages/mariadb-$maria_version-winx64.zip"
 $maria_output = "maria.zip"
 
-$cmake_link = Fetch-Latest-Release -OrgRepo "Kitware/CMake" -NameRegex "cmake-.+-windows-x86_64\.zip" | Select-Object -ExpandProperty browser_download_url
+$cmake_asset = Fetch-Latest-Release -OrgRepo "Kitware/CMake" -NameRegex "cmake-.+-windows-x86_64\.zip"
+$cmake_version = $cmake_asset.tag_name
+$cmake_link = $cmake_asset.browser_download_url
 $cmake_output = "cmake.zip"
 
-$zlib_link = Fetch-Latest-Release -OrgRepo "madler/zlib" -NameRegex "zlib.+\.zip$" | Select-Object -ExpandProperty browser_download_url
+$zlib_asset = Fetch-Latest-Release -OrgRepo "madler/zlib" -NameRegex "zlib.+\.zip$"
+$zlib_version = $zlib_asset.tag_name
+$zlib_link = $zlib_asset.browser_download_url
 $zlib_output = "zlib.zip"
 
 $libmpv_link = Fetch-Latest-Release -OrgRepo "zhongfly/mpv-winbuild" -NameRegex "mpv-dev-x86_64-2.+7z" | Select-Object -ExpandProperty browser_download_url
