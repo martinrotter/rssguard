@@ -44,7 +44,7 @@ QList<StandardFeed*> AtomParser::discoverFeeds(ServiceRoot* root, const QUrl& ur
   //    https://github.com/:owner/:repo/releases.atom
   //    https://github.com/:owner/:repo/commits.atom
   //    https://github.com/:user/:repo/tags.atom
-  // 6. If URL if Youtube, find channel ID.
+  // 6. If URL is Youtube, find channel ID.
 
   // Download URL.
   int timeout = qApp->settings()->value(GROUP(Feeds), SETTING(Feeds::UpdateTimeout)).toInt();
