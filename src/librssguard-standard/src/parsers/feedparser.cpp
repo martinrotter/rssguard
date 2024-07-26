@@ -84,6 +84,12 @@ QString FeedParser::xmlMessageRawContents(const QDomElement& msg_element) const 
 
   msg_element.save(str, 0, QDomNode::EncodingPolicy::EncodingFromTextStream);
   return raw_contents;
+
+  /*
+  qDebugNN << msg_element.text();
+
+  return msg_element.text();
+*/
 }
 
 QJsonArray FeedParser::jsonMessageElements() {
@@ -106,7 +112,7 @@ QString FeedParser::jsonMessageAuthor(const QJsonObject& msg_element) const {
   return {};
 }
 
-QDateTime FeedParser::jsonMessageDateCreated(const QJsonObject& msg_element)  {
+QDateTime FeedParser::jsonMessageDateCreated(const QJsonObject& msg_element) {
   return {};
 }
 
@@ -138,7 +144,7 @@ QString FeedParser::objMessageUrl(const QVariant& msg_element) const {
   return {};
 }
 
-QString FeedParser::objMessageDescription(const QVariant& msg_element)  {
+QString FeedParser::objMessageDescription(const QVariant& msg_element) {
   return {};
 }
 
@@ -146,7 +152,7 @@ QString FeedParser::objMessageAuthor(const QVariant& msg_element) const {
   return {};
 }
 
-QDateTime FeedParser::objMessageDateCreated(const QVariant& msg_element)  {
+QDateTime FeedParser::objMessageDateCreated(const QVariant& msg_element) {
   return {};
 }
 
@@ -343,14 +349,16 @@ QString FeedParser::xmlRawChild(const QDomElement& container) const {
   auto children = container.childNodes();
 
   for (int i = 0; i < children.size(); i++) {
-    if (children.at(i).isCDATASection()) {
-      raw += children.at(i).toCDATASection().data();
+    auto child = children.at(i);
+
+    if (child.isCDATASection()) {
+      raw += child.toCDATASection().data();
     }
     else {
       QString raw_ch;
       QTextStream str(&raw_ch);
 
-      children.at(i).save(str, 0);
+      child.save(str, 0);
       raw += WebFactory::unescapeHtml(raw_ch);
     }
   }
