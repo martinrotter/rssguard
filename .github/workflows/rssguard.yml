@@ -62,6 +62,7 @@ jobs:
           GMAIL_CLIENT_SECRET: ${{ secrets.GMAIL_CLIENT_SECRET }}
           FEEDLY_CLIENT_ID: ${{ secrets.FEEDLY_CLIENT_ID }}
           FEEDLY_CLIENT_SECRET: ${{ secrets.FEEDLY_CLIENT_SECRET }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Upload binaries
         uses: actions/upload-artifact@v4
