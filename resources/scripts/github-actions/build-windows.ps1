@@ -20,8 +20,8 @@ function Fetch-Latest-Release([string]$OrgRepo, [string]$NameRegex) {
 
   Add-Member -InputObject $asset -NotePropertyName "tag_name" -NotePropertyValue $releases_release.tag_name.Substring(1)
 
-  Write-Host $releases_req.Headers | Format-Table
-  Write-Host $asset
+  $releases_req.Headers | Format-Table
+  $asset
 
   return $asset
 }
