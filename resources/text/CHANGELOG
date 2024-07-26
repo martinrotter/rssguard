@@ -1,3 +1,19 @@
+4.7.3
+-----
+
+Added:
+* Localizations updated.
+* Mac OS 13 is now used to build Mac RSS Guard version.
+* Added Reddit plugin. At this point, this is WIP (!). The plugin will be eventually greatly enhanced in the future, but no ETA. Currently the plugin can do:
+    * OAuth authentication.
+    * Loads list of subscribed subreddits.
+    * Loads list of newest topics from each subreddit.
+
+Fixed:
+* Plugin libraries are now loaded more properly, specifically they should not be loaded more than once.
+* Time.com feeds were not properly rendered. (#1450)
+* Drag and drop operations were fixed, although there are some cases where you have to adjust the process, for example when dragging an item "after" the last item in top level.
+
 4.7.2
 -----
 
