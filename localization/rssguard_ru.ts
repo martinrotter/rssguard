@@ -276,7 +276,7 @@ version by clicking this popup notification.</source>
     <message>
       <location filename="../src/librssguard/gui/reusable/articleamountcontrol.ui" line="36"/>
       <source>Ignoring old articles</source>
-      <translation type="unfinished">Ignoring old articles</translation>
+      <translation>Игнорирование старых статей</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/reusable/articleamountcontrol.ui" line="47"/>
@@ -286,22 +286,22 @@ version by clicking this popup notification.</source>
     <message>
       <location filename="../src/librssguard/gui/reusable/articleamountcontrol.ui" line="76"/>
       <source>Avoid adding articles before this date/time into the database</source>
-      <translation type="unfinished">Avoid adding articles before this date/time into the database</translation>
+      <translation>Не добавлять в базу данных статьи до указанной даты/времени</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/reusable/articleamountcontrol.ui" line="85"/>
       <source>Absolute date/time</source>
-      <translation type="unfinished">Absolute date/time</translation>
+      <translation>Полная дата и время</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/reusable/articleamountcontrol.ui" line="92"/>
       <source>Relative time</source>
-      <translation type="unfinished">Relative time</translation>
+      <translation>Относительное время</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/reusable/articleamountcontrol.ui" line="170"/>
       <source>Limiting amount of articles in feeds</source>
-      <translation type="unfinished">Limiting amount of articles in feeds</translation>
+      <translation>Ограничение количества статей в каналах</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/reusable/articleamountcontrol.ui" line="181"/>
@@ -311,43 +311,43 @@ version by clicking this popup notification.</source>
     <message>
       <location filename="../src/librssguard/gui/reusable/articleamountcontrol.ui" line="210"/>
       <source>In database, keep</source>
-      <translation type="unfinished">In database, keep</translation>
+      <translation>Сохранять в базу данных</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/reusable/articleamountcontrol.ui" line="224"/>
       <source>Do not remove important articles</source>
-      <translation type="unfinished">Do not remove important articles</translation>
+      <translation>Не удалять важные статьи</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/reusable/articleamountcontrol.ui" line="231"/>
       <source>Do not remove unread articles</source>
-      <translation type="unfinished">Do not remove unread articles</translation>
+      <translation>Не удалять непрочитанные статьи</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/reusable/articleamountcontrol.ui" line="238"/>
       <source>Just move articles to recycle bin, do not purge them</source>
-      <translation type="unfinished">Just move articles to recycle bin, do not purge them</translation>
+      <translation>Просто перемещать статьи в корзину, не удалять их</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/reusable/articleamountcontrol.cpp" line="11"/>
       <source>Setting any limitations here will instruct %1 to ignore some incoming articles. The logic runs AFTER any article filters so even if your article filter accepts particular article, it can still subsequently ignored and not added to database.</source>
-      <translation type="unfinished">Setting any limitations here will instruct %1 to ignore some incoming articles. The logic runs AFTER any article filters so even if your article filter accepts particular article, it can still subsequently ignored and not added to database.</translation>
+      <translation>Установка любых ограничений здесь предписывает %1 игнорировать некоторые входящие статьи. Логика запускается ПОСЛЕ фильтров статей, чтобы даже если фильтр принимал определенную статью, она все еще может игнорироваться и не добавлена в базу данных.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/reusable/articleamountcontrol.cpp" line="16"/>
       <source>All excessive articles are removed automatically by the application, usually after particular feed is fetched. Articles are either completely purged (including articles from recycle bin) from internal database or are just moved to recycle bin.</source>
-      <translation type="unfinished">All excessive articles are removed automatically by the application, usually after particular feed is fetched. Articles are either completely purged (including articles from recycle bin) from internal database or are just moved to recycle bin.</translation>
+      <translation>Приложение автоматически удаляет все лишние статьи, как правило, после получения определенного канала. Статьи полностью очищаются (включая статьи из Корзины) из внутренней базы данных или просто перемещаются в Корзину.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/reusable/articleamountcontrol.cpp" line="22"/>
       <source>all articles</source>
-      <translation type="unfinished">all articles</translation>
+      <translation>все статьи</translation>
     </message>
     <message numerus="yes">
       <location filename="../src/librssguard/gui/reusable/articleamountcontrol.cpp" line="179"/>
       <source>newest article(s)</source>
       <translation type="unfinished">
-        <numerusform>newest article(s)</numerusform>
+        <numerusform>новые статьи</numerusform>
         <numerusform>newest article(s)</numerusform>
         <numerusform>newest article(s)</numerusform>
         <numerusform>newest article(s)</numerusform>
@@ -407,7 +407,7 @@ version by clicking this popup notification.</source>
     <message>
       <location filename="../src/librssguard/network-web/articleparse.cpp" line="40"/>
       <source>Reload your website or article and you can test it then!</source>
-      <translation type="unfinished">Reload your website or article and you can test it then!</translation>
+      <translation>Перезагрузите ваш сайт или статью и вы сможете протестировать ее!</translation>
     </message>
     <message>
       <location filename="../src/librssguard/network-web/articleparse.cpp" line="45"/>
@@ -1513,7 +1513,7 @@ QtWebEngine cache folder -&gt; &quot;%7&quot;</source>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formabout.ui" line="93"/>
       <source>&amp;Copy info to clipboard</source>
-      <translation type="unfinished">&amp;Copy info to clipboard</translation>
+      <translation>Копировать информацию в буфер обмена</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formabout.ui" line="112"/>
@@ -2181,7 +2181,7 @@ QtWebEngine cache folder -&gt; &quot;%7&quot;</source>
     <message>
       <location filename="../src/librssguard-standard/src/gui/formeditstandardaccount.cpp" line="13"/>
       <source>Account setup</source>
-      <translation type="unfinished">Account setup</translation>
+      <translation>Настройка аккаунта</translation>
     </message>
   </context>
   <context>
@@ -2983,7 +2983,7 @@ QtWebEngine cache folder -&gt; &quot;%7&quot;</source>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.cpp" line="473"/>
       <source>(not supported)</source>
-      <translation type="unfinished">(not supported)</translation>
+      <translation>(не поддерживается)</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.cpp" line="538"/>
@@ -4304,7 +4304,7 @@ Login tokens expiration: %2</source>
     <message>
       <location filename="../src/librssguard-greader/src/gui/greaderfeeddetails.cpp" line="42"/>
       <source>Title is entered.</source>
-      <translation type="unfinished">Title is entered.</translation>
+      <translation>Заголовок введен.</translation>
     </message>
     <message>
       <location filename="../src/librssguard-greader/src/gui/greaderfeeddetails.cpp" line="46"/>
@@ -4516,17 +4516,17 @@ Login tokens expiration: %2</source>
     <message>
       <location filename="../src/librssguard/gui/mediaplayer/libmpv/libmpvbackend.cpp" line="140"/>
       <source>File loaded</source>
-      <translation type="unfinished">File loaded</translation>
+      <translation>Файл загружен</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/mediaplayer/libmpv/libmpvbackend.cpp" line="196"/>
       <source>App restart required</source>
-      <translation type="unfinished">App restart required</translation>
+      <translation>Требуется перезапуск приложения</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/mediaplayer/libmpv/libmpvbackend.cpp" line="199"/>
       <source>Out of memory</source>
-      <translation type="unfinished">Out of memory</translation>
+      <translation>Недостаточно памяти</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/mediaplayer/libmpv/libmpvbackend.cpp" line="202"/>
@@ -4596,12 +4596,12 @@ Login tokens expiration: %2</source>
     <message>
       <location filename="../src/librssguard/gui/mediaplayer/libmpv/libmpvbackend.cpp" line="241"/>
       <source>Not a media file</source>
-      <translation type="unfinished">Not a media file</translation>
+      <translation>Не медиа-файл</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/mediaplayer/libmpv/libmpvbackend.cpp" line="244"/>
       <source>Unknown file format</source>
-      <translation type="unfinished">Unknown file format</translation>
+      <translation>Неизвестный формат файла</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/mediaplayer/libmpv/libmpvbackend.cpp" line="247"/>
@@ -4616,12 +4616,12 @@ Login tokens expiration: %2</source>
     <message>
       <location filename="../src/librssguard/gui/mediaplayer/libmpv/libmpvbackend.cpp" line="270"/>
       <source>Stopped</source>
-      <translation type="unfinished">Stopped</translation>
+      <translation>Остановлено</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/mediaplayer/libmpv/libmpvbackend.cpp" line="276"/>
       <source>File ended</source>
-      <translation type="unfinished">File ended</translation>
+      <translation>Файл закончился</translation>
     </message>
   </context>
   <context>
@@ -4878,7 +4878,7 @@ Login tokens expiration: %2</source>
     <message>
       <location filename="../src/librssguard/gui/mediaplayer/mediaplayer.ui" line="65"/>
       <source>Play/pause</source>
-      <translation type="unfinished">Play/pause</translation>
+      <translation>Воспроизведение/пауза</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/mediaplayer/mediaplayer.ui" line="72"/>
@@ -4888,7 +4888,7 @@ Login tokens expiration: %2</source>
     <message>
       <location filename="../src/librssguard/gui/mediaplayer/mediaplayer.ui" line="79"/>
       <source>Speed</source>
-      <translation type="unfinished">Speed</translation>
+      <translation>Скорость</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/mediaplayer/mediaplayer.ui" line="107"/>
@@ -4898,12 +4898,12 @@ Login tokens expiration: %2</source>
     <message>
       <location filename="../src/librssguard/gui/mediaplayer/mediaplayer.ui" line="117"/>
       <source>Duration</source>
-      <translation type="unfinished">Duration</translation>
+      <translation>Продолжительность</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/mediaplayer/mediaplayer.ui" line="124"/>
       <source>Mute/unmute</source>
-      <translation type="unfinished">Mute/unmute</translation>
+      <translation>Отключить/включить звук</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/mediaplayer/mediaplayer.ui" line="137"/>
@@ -4923,7 +4923,7 @@ Login tokens expiration: %2</source>
     <message>
       <location filename="../src/librssguard/gui/mediaplayer/mediaplayer.cpp" line="43"/>
       <source>Starting</source>
-      <translation type="unfinished">Starting</translation>
+      <translation>Запуск</translation>
     </message>
   </context>
   <context>
@@ -6132,22 +6132,22 @@ List of supported readers:</source>
     <message>
       <location filename="../src/librssguard/gui/notifications/toastnotificationsmanager.cpp" line="18"/>
       <source>top-left</source>
-      <translation>верхний левый</translation>
+      <translation>вверху слева</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/notifications/toastnotificationsmanager.cpp" line="21"/>
       <source>top-right</source>
-      <translation type="unfinished">top-right</translation>
+      <translation>вверху справа</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/notifications/toastnotificationsmanager.cpp" line="24"/>
       <source>bottom-left</source>
-      <translation type="unfinished">bottom-left</translation>
+      <translation>внизу слева</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/notifications/toastnotificationsmanager.cpp" line="28"/>
       <source>bottom-right</source>
-      <translation type="unfinished">bottom-right</translation>
+      <translation>внизу справа</translation>
     </message>
     <message>
       <location filename="../src/librssguard/miscellaneous/textfactory.cpp" line="369"/>
@@ -6226,7 +6226,7 @@ List of supported readers:</source>
     <message>
       <location filename="../src/librssguard/gui/webviewers/webviewer.cpp" line="103"/>
       <source>Play in media player</source>
-      <translation type="unfinished">Play in media player</translation>
+      <translation>Воспроизвести в медиаплеере</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/webviewers/webviewer.cpp" line="106"/>
@@ -6251,7 +6251,7 @@ List of supported readers:</source>
     <message>
       <location filename="../src/librssguard-standard/src/standardserviceentrypoint.cpp" line="24"/>
       <source>This service offers integration with standard online RSS/RDF/ATOM/JSON/Sitemap/iCalendar feeds and podcasts.</source>
-      <translation type="unfinished">This service offers integration with standard online RSS/RDF/ATOM/JSON/Sitemap/iCalendar feeds and podcasts.</translation>
+      <translation>Этот сервис предлагает интеграцию со стандартными онлайн RSS/RDF/ATOM/JSON/Sitemap/iCalendar каналами и подкастами.</translation>
     </message>
     <message>
       <location filename="../src/librssguard-reddit/src/redditentrypoint.cpp" line="33"/>
@@ -6261,7 +6261,7 @@ List of supported readers:</source>
     <message>
       <location filename="../src/librssguard-reddit/src/redditentrypoint.cpp" line="41"/>
       <source>Simplistic Reddit client.</source>
-      <translation type="unfinished">Simplistic Reddit client.</translation>
+      <translation>Упрощенный клиент Reddit.</translation>
     </message>
   </context>
   <context>
@@ -6324,7 +6324,7 @@ List of supported readers:</source>
     <message>
       <location filename="../src/librssguard/gui/mediaplayer/qtmultimedia/qtmultimediabackend.cpp" line="119"/>
       <source>Network problem</source>
-      <translation type="unfinished">Network problem</translation>
+      <translation>Проблема с сетью</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/mediaplayer/qtmultimedia/qtmultimediabackend.cpp" line="122"/>
@@ -6344,12 +6344,12 @@ List of supported readers:</source>
     <message>
       <location filename="../src/librssguard/gui/mediaplayer/qtmultimedia/qtmultimediabackend.cpp" line="133"/>
       <source>No errors</source>
-      <translation type="unfinished">No errors</translation>
+      <translation>Нет ошибок</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/mediaplayer/qtmultimedia/qtmultimediabackend.cpp" line="136"/>
       <source>Unknown error</source>
-      <translation type="unfinished">Unknown error</translation>
+      <translation>Неизвестная ошибка</translation>
     </message>
   </context>
   <context>
@@ -6673,17 +6673,17 @@ Login tokens expiration: %2</source>
     <message>
       <location filename="../src/librssguard/gui/reusable/searchlineedit.cpp" line="30"/>
       <source>Case-sensitive</source>
-      <translation type="unfinished">Case-sensitive</translation>
+      <translation>С учётом регистра</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/reusable/searchlineedit.cpp" line="101"/>
       <source>Fixed text</source>
-      <translation type="unfinished">Fixed text</translation>
+      <translation>Фиксированный текст</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/reusable/searchlineedit.cpp" line="104"/>
       <source>Wildcard</source>
-      <translation type="unfinished">Wildcard</translation>
+      <translation>Спецсимволы подстановки</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/reusable/searchlineedit.cpp" line="107"/>
@@ -6824,12 +6824,12 @@ File filter for external e-mail selection dialog.</extracomment>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsbrowsermail.ui" line="34"/>
       <source>Enable HTTP/2</source>
-      <translation type="unfinished">Enable HTTP/2</translation>
+      <translation>Включить HTTP/2</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsbrowsermail.ui" line="41"/>
       <source>Enable API server</source>
-      <translation type="unfinished">Enable API server</translation>
+      <translation>Включить API-сервер</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsbrowsermail.ui" line="55"/>
@@ -7198,17 +7198,17 @@ Authors of this application are NOT responsible for lost data.</source>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.cpp" line="49"/>
       <source>immediately</source>
-      <translation type="unfinished">immediately</translation>
+      <translation>немедленно</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.cpp" line="50"/>
       <source>only manually</source>
-      <translation type="unfinished">only manually</translation>
+      <translation>только вручную</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.cpp" line="52"/>
       <source>with delay</source>
-      <translation type="unfinished">with delay</translation>
+      <translation>с задержкой</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.cpp" line="69"/>
@@ -7233,12 +7233,12 @@ Authors of this application are NOT responsible for lost data.</source>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.cpp" line="448"/>
       <source>PC restart needed</source>
-      <translation type="unfinished">PC restart needed</translation>
+      <translation>Требуется перезагрузка ПК</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.cpp" line="449"/>
       <source>Your PC needs to be restarted to make some of enabled features fully working.</source>
-      <translation type="unfinished">Your PC needs to be restarted to make some of enabled features fully working.</translation>
+      <translation>Ваш ПК должен быть перезагружен, чтобы сделать некоторые из включенных функций полностью работающими.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="21"/>
@@ -7273,12 +7273,12 @@ Authors of this application are NOT responsible for lost data.</source>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="112"/>
       <source> ms</source>
-      <translation>мс</translation>
+      <translation> мс</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="86"/>
       <source>Support very fast auto-fetching intervals (under 10 seconds)</source>
-      <translation type="unfinished">Support very fast auto-fetching intervals (under 10 seconds)</translation>
+      <translation>Поддержка очень быстрой автозагрузки (менее 10 секунд)</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="132"/>
@@ -7333,7 +7333,7 @@ Authors of this application are NOT responsible for lost data.</source>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="272"/>
       <source>Update feed list during feed fetching</source>
-      <translation type="unfinished">Update feed list during feed fetching</translation>
+      <translation>Обновить список каналов во время получения</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="280"/>
@@ -7358,27 +7358,27 @@ Authors of this application are NOT responsible for lost data.</source>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="329"/>
       <source>Limit height of all pictures</source>
-      <translation type="unfinished">Limit height of all pictures</translation>
+      <translation>Ограничить высоту изображений</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="420"/>
       <source>Use legacy article formatting</source>
-      <translation type="unfinished">Use legacy article formatting</translation>
+      <translation>Использовать устаревшие форматирование статей</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="434"/>
       <source>Unread article icon type</source>
-      <translation type="unfinished">Unread article icon type</translation>
+      <translation>Тип иконки непрочитанной статьи</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="555"/>
       <source>Use custom date/time format for dates-only</source>
-      <translation type="unfinished">Use custom date/time format for dates-only</translation>
+      <translation>Использовать собственный формат даты/времени только для дат</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="679"/>
       <source>Upon article selection, mark as read</source>
-      <translation type="unfinished">Upon article selection, mark as read</translation>
+      <translation>После выбора статьи отметить как прочитанное</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="307"/>
@@ -7398,12 +7398,12 @@ Authors of this application are NOT responsible for lost data.</source>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="320"/>
       <source>Display attachments directly in article</source>
-      <translation type="unfinished">Display attachments directly in article</translation>
+      <translation>Показывать вложения прямо в статье</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="413"/>
       <source>Keep article viewer always visible</source>
-      <translation type="unfinished">Keep article viewer always visible</translation>
+      <translation>Постоянно отображать просмотрщик статей</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="428"/>
@@ -7433,7 +7433,7 @@ Authors of this application are NOT responsible for lost data.</source>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="581"/>
       <source>Custom date/time format for today&apos;s articles</source>
-      <translation>Пользовательский формат даты/времени для сегодняшних статей</translation>
+      <translation>Собственный формат даты/времени для сегодняшних статей</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="624"/>
@@ -7494,12 +7494,12 @@ Authors of this application are NOT responsible for lost data.</source>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsgui.cpp" line="213"/>
       <source>system style</source>
-      <translation type="unfinished">system style</translation>
+      <translation>системный стиль</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsgui.cpp" line="215"/>
       <source>default style</source>
-      <translation type="unfinished">default style</translation>
+      <translation>стиль по умолчанию</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsgui.cpp" line="292"/>
@@ -7596,7 +7596,7 @@ Description: %3</source>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsgui.ui" line="112"/>
       <source>Use skin colors (skin colors for dialogs/controls only take effect with Fusion style)</source>
-      <translation type="unfinished">Use skin colors (skin colors for dialogs/controls only take effect with Fusion style)</translation>
+      <translation>Использовать цвета скина (цвета скина для диалогов/элементов управления действуют только со стилем Fusion)</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsgui.ui" line="120"/>
@@ -7606,7 +7606,7 @@ Description: %3</source>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsgui.ui" line="129"/>
       <source>Customize predefined colors</source>
-      <translation type="unfinished">Customize predefined colors</translation>
+      <translation>Настроить предопределенные цвета</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsgui.ui" line="141"/>
@@ -7730,19 +7730,19 @@ Description: %3</source>
     <message>
       <location filename="../src/librssguard/gui/settings/settingslocalization.cpp" line="23"/>
       <source>Translation progress</source>
-      <translation type="unfinished">Translation progress</translation>
+      <translation>Состояние перевода</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingslocalization.cpp" line="25"/>
       <source>Help us to improve %1 &lt;a href=&quot;%2&quot;&gt;translations&lt;/a&gt;.</source>
-      <translation>Помогите нам улучшить %1 &lt;a href=&quot;%2&quot;&gt;переводы&lt;/a&gt;.</translation>
+      <translation>Помогите нам улучшить &lt;a href=&quot;%2&quot;&gt;переводы&lt;/a&gt; %1.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingslocalization.cpp" line="115"/>
       <location filename="../src/librssguard/gui/settings/settingslocalization.cpp" line="116"/>
       <location filename="../src/librssguard/gui/settings/settingslocalization.cpp" line="121"/>
       <source>Big thanks to all translators!</source>
-      <translation type="unfinished">Big thanks to all translators!</translation>
+      <translation>Большое спасибо всем переводчикам!</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingslocalization.cpp" line="120"/>
@@ -7752,7 +7752,7 @@ Description: %3</source>
     <message>
       <location filename="../src/librssguard/gui/settings/settingslocalization.cpp" line="169"/>
       <source>Translators needed!</source>
-      <translation type="unfinished">Translators needed!</translation>
+      <translation>Необходимы переводчики!</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingslocalization.cpp" line="170"/>
@@ -7762,7 +7762,7 @@ Description: %3</source>
     <message>
       <location filename="../src/librssguard/gui/settings/settingslocalization.cpp" line="172"/>
       <source>Do you want to help with the translation now?</source>
-      <translation type="unfinished">Do you want to help with the translation now?</translation>
+      <translation>Хотите помочь с переводом прямо сейчас?</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingslocalization.h" line="27"/>
@@ -7775,12 +7775,12 @@ Description: %3</source>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsmediaplayer.ui" line="17"/>
       <source>Backend</source>
-      <translation type="unfinished">Backend</translation>
+      <translation>Бэкенд</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsmediaplayer.ui" line="36"/>
       <source>Use custom MPV configuration folder</source>
-      <translation type="unfinished">Use custom MPV configuration folder</translation>
+      <translation>Использовать собственную папку c конфигурацией для MPV</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsmediaplayer.ui" line="48"/>
@@ -7790,7 +7790,7 @@ Description: %3</source>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsmediaplayer.cpp" line="33"/>
       <source>You use modern libmpv-based media player backend with API version %1.</source>
-      <translation type="unfinished">You use modern libmpv-based media player backend with API version %1.</translation>
+      <translation>Вы используете современный бэкенд медиаплеера на основе libmpv с API версии %1.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsmediaplayer.cpp" line="48"/>
@@ -7800,7 +7800,7 @@ Description: %3</source>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsmediaplayer.cpp" line="53"/>
       <source>no backend installed</source>
-      <translation type="unfinished">no backend installed</translation>
+      <translation>бэкенд не установлен</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsmediaplayer.cpp" line="54"/>
@@ -7810,7 +7810,7 @@ Description: %3</source>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsmediaplayer.cpp" line="68"/>
       <source>Select folder for your MPV configuration</source>
-      <translation type="unfinished">Select folder for your MPV configuration</translation>
+      <translation>Выберите папку для вашей конфигурации MPV</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsmediaplayer.h" line="31"/>
@@ -7915,42 +7915,42 @@ Also, relaunch &quot;Settings&quot; dialog after you install Node.js.</source>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsnotifications.ui" line="40"/>
       <source>Balloon notifications type</source>
-      <translation type="unfinished">Balloon notifications type</translation>
+      <translation>Тип всплывающих уведомлений</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsnotifications.ui" line="46"/>
       <source>Native notifications (tray icon must be enabled)</source>
-      <translation type="unfinished">Native notifications (tray icon must be enabled)</translation>
+      <translation>Нативные уведомления (иконка в трее должна быть включена)</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsnotifications.ui" line="53"/>
       <source>Custom notifications</source>
-      <translation type="unfinished">Custom notifications</translation>
+      <translation>Настраиваемые уведомления</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsnotifications.ui" line="69"/>
       <source>Position</source>
-      <translation type="unfinished">Position</translation>
+      <translation>Позиция</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsnotifications.ui" line="82"/>
       <source>Width</source>
-      <translation type="unfinished">Width</translation>
+      <translation>Ширина</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsnotifications.ui" line="105"/>
       <source>Margins</source>
-      <translation type="unfinished">Margins</translation>
+      <translation>Отступы</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsnotifications.ui" line="125"/>
       <source>Screen</source>
-      <translation type="unfinished">Screen</translation>
+      <translation>Экран</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsnotifications.ui" line="159"/>
       <source>Opacity</source>
-      <translation type="unfinished">Opacity</translation>
+      <translation>Видимость</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsnotifications.h" line="31"/>
@@ -7960,17 +7960,17 @@ Also, relaunch &quot;Settings&quot; dialog after you install Node.js.</source>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsnotifications.cpp" line="19"/>
       <source>There are some built-in notification sounds. Just start typing &quot;:&quot; and they will show up.</source>
-      <translation type="unfinished">There are some built-in notification sounds. Just start typing &quot;:&quot; and they will show up.</translation>
+      <translation>Есть встроенные звуки уведомлений. Просто начните вводить &quot;:&quot; и они появятся.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsnotifications.cpp" line="107"/>
       <source>How do I look?</source>
-      <translation type="unfinished">How do I look?</translation>
+      <translation>Как я выгляжу?</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsnotifications.cpp" line="108"/>
       <source>Just testing new notifications settings. That&apos;s all.</source>
-      <translation type="unfinished">Just testing new notifications settings. That&apos;s all.</translation>
+      <translation>Это всего лишь тестирование новых настроек уведомлений.</translation>
     </message>
   </context>
   <context>
@@ -8073,7 +8073,7 @@ Also, relaunch &quot;Settings&quot; dialog after you install Node.js.</source>
     <message>
       <location filename="../src/librssguard/miscellaneous/skinfactory.cpp" line="539"/>
       <source>file %1 not found</source>
-      <translation type="unfinished">file %1 not found</translation>
+      <translation>файл %1 не найден</translation>
     </message>
   </context>
   <context>
@@ -8114,7 +8114,7 @@ Also, relaunch &quot;Settings&quot; dialog after you install Node.js.</source>
     <message>
       <location filename="../src/librssguard-standard/src/gui/standardaccountdetails.ui" line="43"/>
       <source>Select icon for your account.</source>
-      <translation type="unfinished">Select icon for your account.</translation>
+      <translation>Выберите иконку для вашего аккаунта.</translation>
     </message>
     <message>
       <location filename="../src/librssguard-standard/src/gui/standardaccountdetails.cpp" line="16"/>
@@ -8134,7 +8134,7 @@ Also, relaunch &quot;Settings&quot; dialog after you install Node.js.</source>
     <message>
       <location filename="../src/librssguard-standard/src/gui/standardaccountdetails.cpp" line="42"/>
       <source>Select icon file for the account</source>
-      <translation type="unfinished">Select icon file for the account</translation>
+      <translation>Выберите файл иконки для аккаунта</translation>
     </message>
     <message>
       <location filename="../src/librssguard-standard/src/gui/standardaccountdetails.cpp" line="44"/>
@@ -8784,7 +8784,7 @@ Unread news: %2</source>
       <location filename="../src/librssguard/gui/reusable/timespinbox.cpp" line="68"/>
       <source>%n day(s)</source>
       <translation type="unfinished">
-        <numerusform>%n day(s)</numerusform>
+        <numerusform>%n день</numerusform>
         <numerusform>%n day(s)</numerusform>
         <numerusform>%n day(s)</numerusform>
         <numerusform>%n day(s)</numerusform>
@@ -9214,7 +9214,7 @@ Last login on: %4</source>
     <message>
       <location filename="../src/librssguard/gui/webbrowser.cpp" line="37"/>
       <source>Play in media player</source>
-      <translation type="unfinished">Play in media player</translation>
+      <translation>Воспроизвести в медиаплеере</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/webbrowser.cpp" line="44"/>
