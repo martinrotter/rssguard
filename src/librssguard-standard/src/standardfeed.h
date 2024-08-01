@@ -110,6 +110,9 @@ class StandardFeed : public Feed {
     QString dateTimeFormat() const;
     void setDateTimeFormat(const QString& dt_format);
 
+    bool dontUseRawXmlSaving() const;
+    void setDontUseRawXmlSaving(bool no_raw_xml_saving);
+
   public slots:
     void fetchMetadataForItself();
 
@@ -127,6 +130,7 @@ class StandardFeed : public Feed {
     QString m_username;
     QString m_password;
     QString m_lastEtag;
+    bool m_dontUseRawXmlSaving;
 };
 
 Q_DECLARE_METATYPE(StandardFeed::SourceType)

@@ -358,6 +358,7 @@ QList<Message> StandardServiceRoot::obtainNewMessages(Feed* feed,
     parser->setDateTimeFormat(f->dateTimeFormat());
   }
 
+  parser->setDontUseRawXmlSaving(f->dontUseRawXmlSaving());
   messages = parser->messages();
 
   if (!parser->dateTimeFormat().isEmpty()) {

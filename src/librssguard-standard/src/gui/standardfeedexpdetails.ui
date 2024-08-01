@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>StandardFeedExpDetails</class>
+ <widget class="QWidget" name="StandardFeedExpDetails">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>360</width>
+    <height>197</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Form</string>
+  </property>
+  <layout class="QFormLayout" name="formLayout">
+   <item row="0" column="1">
+    <widget class="QCheckBox" name="m_cbDontUseRawXml">
+     <property name="text">
+      <string>Use older mechanism for extracting raw XML data</string>
+     </property>
+    </widget>
+   </item>
+   <item row="0" column="0">
+    <widget class="MultiFeedEditCheckBox" name="m_mcbDontUseRawXml"/>
+   </item>
+  </layout>
+ </widget>
+ <customwidgets>
+  <customwidget>
+   <class>MultiFeedEditCheckBox</class>
+   <extends>QCheckBox</extends>
+   <header>multifeededitcheckbox.h</header>
+  </customwidget>
+ </customwidgets>
+ <resources/>
+ <connections/>
+</ui>

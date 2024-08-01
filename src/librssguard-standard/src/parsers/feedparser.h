@@ -40,6 +40,9 @@ class FeedParser {
     QString dateTimeFormat() const;
     void setDateTimeFormat(const QString& dt_format);
 
+    bool dontUseRawXmlSaving() const;
+    void setDontUseRawXmlSaving(bool no_raw_xml_saving);
+
   protected:
     virtual QString feedAuthor() const;
 
@@ -61,7 +64,7 @@ class FeedParser {
     virtual QString jsonMessageUrl(const QJsonObject& msg_element) const;
     virtual QString jsonMessageDescription(const QJsonObject& msg_element) const;
     virtual QString jsonMessageAuthor(const QJsonObject& msg_element) const;
-    virtual QDateTime jsonMessageDateCreated(const QJsonObject& msg_element) ;
+    virtual QDateTime jsonMessageDateCreated(const QJsonObject& msg_element);
     virtual QString jsonMessageId(const QJsonObject& msg_element) const;
     virtual QList<Enclosure> jsonMessageEnclosures(const QJsonObject& msg_element) const;
     virtual QList<MessageCategory> jsonMessageCategories(const QJsonObject& msg_element) const;
@@ -71,9 +74,9 @@ class FeedParser {
     virtual QVariantList objMessageElements();
     virtual QString objMessageTitle(const QVariant& msg_element) const;
     virtual QString objMessageUrl(const QVariant& msg_element) const;
-    virtual QString objMessageDescription(const QVariant& msg_element) ;
+    virtual QString objMessageDescription(const QVariant& msg_element);
     virtual QString objMessageAuthor(const QVariant& msg_element) const;
-    virtual QDateTime objMessageDateCreated(const QVariant& msg_element) ;
+    virtual QDateTime objMessageDateCreated(const QVariant& msg_element);
     virtual QString objMessageId(const QVariant& msg_element) const;
     virtual QList<Enclosure> objMessageEnclosures(const QVariant& msg_element) const;
     virtual QList<MessageCategory> objMessageCategories(const QVariant& msg_element) const;
@@ -95,6 +98,7 @@ class FeedParser {
     QDomDocument m_xml;
     QJsonDocument m_json;
     QString m_mrssNamespace;
+    bool m_dontUseRawXmlSaving;
 };
 
 #endif // FEEDPARSER_H

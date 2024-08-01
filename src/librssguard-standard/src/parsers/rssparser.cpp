@@ -268,16 +268,6 @@ QString RssParser::xmlMessageDescription(const QDomElement& msg_element) const {
   }
 
   return description;
-
-  /*
-  QString description = msg_element.elementsByTagName(QSL("encoded")).at(0).toElement().text();
-
-  if (description.isEmpty()) {
-    description = msg_element.elementsByTagName(QSL("description")).at(0).toElement().text();
-  }
-
-  return description;
-  */
 }
 
 QString RssParser::xmlMessageAuthor(const QDomElement& msg_element) const {

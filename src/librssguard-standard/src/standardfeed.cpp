@@ -52,6 +52,7 @@ StandardFeed::StandardFeed(RootItem* parent_item) : Feed(parent_item) {
   m_protection = NetworkFactory::NetworkAuthentication::NoAuthentication;
   m_username = QString();
   m_password = QString();
+  m_dontUseRawXmlSaving = false;
 }
 
 StandardFeed::StandardFeed(const StandardFeed& other) : Feed(other) {
@@ -62,6 +63,7 @@ StandardFeed::StandardFeed(const StandardFeed& other) : Feed(other) {
   m_protection = other.protection();
   m_username = other.username();
   m_password = other.password();
+  m_dontUseRawXmlSaving = other.dontUseRawXmlSaving();
 }
 
 QList<QAction*> StandardFeed::contextMenuFeedsList() {
@@ -84,6 +86,7 @@ QString StandardFeed::additionalTooltip() const {
                      .toStdList();
   QStringList fltrs = FROM_STD_LIST(QStringList, std_fltrs);
 
+  // TODO: toto je v podstatě zkopirovane z Feed...
   QString base_tooltip =
     tr("Auto-update status: %1\n"
        "Active message filters: %2\n"
@@ -100,10 +103,12 @@ QString StandardFeed::additionalTooltip() const {
 
   return base_tooltip + tr("Encoding: %1\n"
                            "Type: %2\n"
-                           "Post-processing script: %3")
+                           "Post-processing script: %3\n"
+                           "Do not use raw XML saving: %4")
                           .arg(encoding(),
                                StandardFeed::typeToString(type()),
-                               m_postProcessScript.isEmpty() ? QSL("-") : m_postProcessScript);
+                               m_postProcessScript.isEmpty() ? QSL("-") : m_postProcessScript,
+                               dontUseRawXmlSaving() ? tr("yes") : tr("no"));
 }
 
 bool StandardFeed::canBeDeleted() const {
@@ -158,6 +163,7 @@ QVariantHash StandardFeed::customDatabaseData() const {
   data[QSL("protected")] = int(protection());
   data[QSL("username")] = username();
   data[QSL("password")] = TextFactory::encrypt(password());
+  data[QSL("dont_use_raw_xml_saving")] = dontUseRawXmlSaving();
 
   return data;
 }
@@ -170,6 +176,7 @@ void StandardFeed::setCustomDatabaseData(const QVariantHash& data) {
   setProtection(NetworkFactory::NetworkAuthentication(data[QSL("protected")].toInt()));
   setUsername(data[QSL("username")].toString());
   setPassword(TextFactory::decrypt(data[QSL("password")].toString()));
+  setDontUseRawXmlSaving(data[QSL("dont_use_raw_xml_saving")].toBool());
 }
 
 QString StandardFeed::typeToString(StandardFeed::Type type) {
@@ -424,6 +431,14 @@ bool StandardFeed::removeItself() {
   QSqlDatabase database = qApp->database()->driver()->connection(metaObject()->className());
 
   return DatabaseQueries::deleteFeed(database, this, getParentServiceRoot()->accountId());
+}
+
+bool StandardFeed::dontUseRawXmlSaving() const {
+  return m_dontUseRawXmlSaving;
+}
+
+void StandardFeed::setDontUseRawXmlSaving(bool no_raw_xml_saving) {
+  m_dontUseRawXmlSaving = no_raw_xml_saving;
 }
 
 QString StandardFeed::dateTimeFormat() const {
