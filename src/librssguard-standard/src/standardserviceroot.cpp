@@ -323,6 +323,9 @@ QList<Message> StandardServiceRoot::obtainNewMessages(Feed* feed,
   // Parse data and obtain messages.
   QList<Message> messages;
   FeedParser* parser;
+  QElapsedTimer tmr;
+
+  tmr.start();
 
   switch (f->type()) {
     case StandardFeed::Type::Rss0X:
@@ -360,6 +363,9 @@ QList<Message> StandardServiceRoot::obtainNewMessages(Feed* feed,
 
   parser->setDontUseRawXmlSaving(f->dontUseRawXmlSaving());
   messages = parser->messages();
+
+  qDebugNN << LOGSEC_CORE << "XML parsing for feed" << QUOTE_W_SPACE(f->title()) << "took"
+           << NONQUOTE_W_SPACE(tmr.elapsed()) << "ms.";
 
   if (!parser->dateTimeFormat().isEmpty()) {
     f->setDateTimeFormat(parser->dateTimeFormat());
