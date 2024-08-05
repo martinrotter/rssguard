@@ -22,4 +22,10 @@
 
 StandardFeedExpDetails::StandardFeedExpDetails(QWidget* parent) : QWidget(parent) {
   m_ui.setupUi(this);
+
+  m_ui.m_helpDontUseRawXml->setHelpText(tr("Turning this setting ON might bring considerable performance boost when "
+                                           "fetching this feed, but only in some very specific conditions.\n\n"
+                                           "This setting is useful when raw XML parsing of the feed is very slow, this "
+                                           "happens for feed which do have very long contents."),
+                                        false);
 }

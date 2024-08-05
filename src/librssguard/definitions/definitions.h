@@ -195,9 +195,8 @@
   (qApp->web()->engineProfile()->httpUserAgent().toLocal8Bit() + QByteArrayLiteral(" ") + \
    QByteArrayLiteral(APP_USERAGENT))
 #else
-#define HTTP_COMPLETE_USERAGENT                                                                          \
-  (QByteArrayLiteral("Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) " \
-                     "Chrome/122.0.0.0 Safari/537.36 ") +                                                \
+#define HTTP_COMPLETE_USERAGENT                                                                             \
+  (QByteArrayLiteral("Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:128.0) Gecko/20100101 Firefox/128.0 ") + \
    QByteArrayLiteral(APP_USERAGENT))
 #endif
 
