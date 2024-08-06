@@ -25,6 +25,7 @@ class WebEnginePage : public QWebEnginePage {
     void hideUnwantedElements();
 
   protected:
+    virtual void javaScriptAlert(const QUrl& security_origin, const QString& msg);
     virtual bool acceptNavigationRequest(const QUrl& url, NavigationType type, bool is_main_frame);
     virtual void javaScriptConsoleMessage(JavaScriptConsoleMessageLevel level,
                                           const QString& message,

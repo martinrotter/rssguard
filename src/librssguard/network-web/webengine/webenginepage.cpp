@@ -71,6 +71,13 @@ void WebEnginePage::hideUnwantedElements() {
   }
 }
 
+void WebEnginePage::javaScriptAlert(const QUrl& security_origin, const QString& msg) {
+  qApp
+    ->showGuiMessage(Notification::Event::GeneralEvent,
+                     GuiMessage(tr("Website alert"),
+                                tr("URL %1 reports this important message: %2").arg(security_origin.toString(), msg)));
+}
+
 bool WebEnginePage::acceptNavigationRequest(const QUrl& url, NavigationType type, bool is_main_frame) {
   if (type == NavigationType::NavigationTypeLinkClicked) {
     bool open_externally_now =
