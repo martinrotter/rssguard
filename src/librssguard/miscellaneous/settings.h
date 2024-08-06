@@ -413,6 +413,9 @@ namespace Network {
   KEY EnableHttp2;
   VALUE(bool) EnableHttp2Def;
 
+  KEY CustomUserAgent;
+  VALUE(QString) CustomUserAgentDef;
+
   KEY IgnoreAllCookies;
   VALUE(bool) IgnoreAllCookiesDef;
 } // namespace Network

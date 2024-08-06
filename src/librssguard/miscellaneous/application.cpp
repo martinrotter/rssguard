@@ -222,7 +222,13 @@ Application::Application(const QString& id, int& argc, char** argv, const QStrin
   }
 #endif
 
-  m_webFactory->setCustomUserAgent(custom_ua);
+  if (!custom_ua.isEmpty()) {
+    m_webFactory->setCustomUserAgent(custom_ua);
+  }
+  else {
+    custom_ua = qApp->settings()->value(GROUP(Network), SETTING(Network::CustomUserAgent)).toString();
+    m_webFactory->setCustomUserAgent(custom_ua);
+  }
 
 #if defined(NO_LITE)
   m_webFactory->urlIinterceptor()->load();
@@ -1358,7 +1364,8 @@ void Application::fillCmdArgumentsParser(QCommandLineParser& parser) {
                                   QSL("style-name"));
 
   QCommandLineOption custom_ua({QSL(CLI_USERAGENT_SHORT), QSL(CLI_USERAGENT_LONG)},
-                               QSL("User custom User-Agent HTTP header for all network requests."),
+                               QSL("User custom User-Agent HTTP header for all network requests. This option "
+                                   "takes precedence over User-Agent set via application settings."),
                                QSL("user-agent"));
   QCommandLineOption
     adblock_port({QSL(CLI_ADBLOCKPORT_SHORT), QSL(CLI_ADBLOCKPORT_LONG)},

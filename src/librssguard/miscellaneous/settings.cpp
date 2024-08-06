@@ -65,6 +65,9 @@ VALUE(bool) Network::EnableApiServerDef = false;
 DKEY Network::EnableHttp2 = "http2_enabled";
 DVALUE(bool) Network::EnableHttp2Def = false;
 
+DKEY Network::CustomUserAgent = "user_agent";
+DVALUE(QString) Network::CustomUserAgentDef = QString();
+
 DKEY Network::IgnoreAllCookies = "ignore_all_cookies";
 DVALUE(bool) Network::IgnoreAllCookiesDef = false;
 

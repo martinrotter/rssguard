@@ -51,6 +51,10 @@ SettingsBrowserMail::SettingsBrowserMail(Settings* settings, QWidget* parent)
   connect(m_ui->m_txtExternalBrowserExecutable, &QLineEdit::textChanged, this, &SettingsBrowserMail::dirtifySettings);
   connect(m_ui->m_txtExternalEmailArguments, &QLineEdit::textChanged, this, &SettingsBrowserMail::dirtifySettings);
   connect(m_ui->m_txtExternalEmailExecutable, &QLineEdit::textChanged, this, &SettingsBrowserMail::dirtifySettings);
+
+  connect(m_ui->m_txtUserAgent, &QLineEdit::textChanged, this, &SettingsBrowserMail::dirtifySettings);
+  connect(m_ui->m_txtUserAgent, &QLineEdit::textChanged, this, &SettingsBrowserMail::requireRestart);
+
   connect(m_ui->m_cmbExternalBrowserPreset,
           static_cast<void (QComboBox::*)(int)>(&QComboBox::currentIndexChanged),
           this,
@@ -178,6 +182,7 @@ void SettingsBrowserMail::loadSettings() {
     ->setChecked(settings()->value(GROUP(Network), SETTING(Network::IgnoreAllCookies)).toBool());
   m_ui->m_checkOpenLinksInExternal
     ->setChecked(settings()->value(GROUP(Browser), SETTING(Browser::OpenLinksInExternalBrowserRightAway)).toBool());
+  m_ui->m_txtUserAgent->setText(settings()->value(GROUP(Network), SETTING(Network::CustomUserAgent)).toString());
 
   // Load settings of web browser GUI.
   m_ui->m_cmbExternalBrowserPreset->addItem(tr("Opera 12 or older"), QSL("-nosession %1"));
@@ -222,6 +227,7 @@ void SettingsBrowserMail::saveSettings() {
   settings()->setValue(GROUP(Network), Network::EnableHttp2, m_ui->m_cbEnableHttp2->isChecked());
   settings()->setValue(GROUP(Network), Network::EnableApiServer, m_ui->m_cbEnableApiServer->isChecked());
   settings()->setValue(GROUP(Network), Network::IgnoreAllCookies, m_ui->m_cbIgnoreAllCookies->isChecked());
+  settings()->setValue(GROUP(Network), Network::CustomUserAgent, m_ui->m_txtUserAgent->text());
 
   qApp->web()->stopApiServer();
 
