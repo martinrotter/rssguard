@@ -85,6 +85,7 @@ QDateTime TextFactory::parseDateTime(const QString& date_time, QString* used_dt_
   QString input_date = date_time.simplified()
                          .replace(QSL("GMT"), QSL("+0000"))
                          .replace(QSL("UTC"), QSL("+0000"))
+                         .replace(QSL("UT"), QSL("+0000"))
                          .replace(QSL("EDT"), QSL("-0400"))
                          .replace(QSL("EST"), QSL("-0500"))
                          .replace(QSL("PDT"), QSL("-0700"))
@@ -168,6 +169,7 @@ QStringList TextFactory::dateTimePatterns(bool with_tzs) {
   pat << QSL("dd MMM yyyy");
 
   pat << QSL("d MMM yyyy HH:mm:ss");
+  pat << QSL("d MMM yyyy HH:mm");
 
   pat << QSL("dd-MM-yyyy - HH:mm");
 
