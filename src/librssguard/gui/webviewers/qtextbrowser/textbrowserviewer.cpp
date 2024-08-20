@@ -604,8 +604,7 @@ PreparedHtml TextBrowserViewer::prepareLegacyHtmlForMessage(const QList<Message>
                             : message.m_contents;
 
     static QRegularExpression img_tag_rgx(QSL("\\<img[^\\>]*src\\s*=\\s*[\"\']([^\"\']*)[\"\'][^\\>]*\\>"),
-                                          QRegularExpression::PatternOption::CaseInsensitiveOption |
-                                            QRegularExpression::PatternOption::InvertedGreedinessOption);
+                                          QRegularExpression::PatternOption::CaseInsensitiveOption);
 
     // Extract all images links from article to be appended to end of article.
     QRegularExpressionMatchIterator i = img_tag_rgx.globalMatch(html.m_html);
