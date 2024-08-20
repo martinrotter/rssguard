@@ -418,9 +418,10 @@ void TextBrowserViewer::onAnchorClicked(const QUrl& url) {
 
 void TextBrowserViewer::setHtml(const QString& html, const QUrl& base_url) {
   if (m_resourcesEnabled) {
+    // NOTE: This regex is problematic as it does not work for ALL
+    // HTMLs, maybe use XML parsing to extract what we need?
     static QRegularExpression img_tag_rgx("\\<img[^\\>]*src\\s*=\\s*[\"\']([^\"\']*)[\"\'][^\\>]*\\>",
-                                          QRegularExpression::PatternOption::CaseInsensitiveOption |
-                                            QRegularExpression::PatternOption::InvertedGreedinessOption);
+                                          QRegularExpression::PatternOption::CaseInsensitiveOption);
     QRegularExpressionMatchIterator i = img_tag_rgx.globalMatch(html);
     QList<QUrl> found_resources;
 
