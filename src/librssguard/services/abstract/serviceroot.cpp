@@ -918,7 +918,7 @@ bool ServiceRoot::loadMessagesForItem(RootItem* item, MessagesModel* model) {
   else if (item->kind() == RootItem::Kind::Label) {
     // Show messages with particular label.
     model->setFilter(QSL("Messages.is_deleted = 0 AND Messages.is_pdeleted = 0 AND "
-                         "Messages.labels LIKE \"%.%2.%\" AND Messages.account_id = %1")
+                         "Messages.labels LIKE '%.%2.%' AND Messages.account_id = %1")
                        .arg(QString::number(accountId()), item->customId()));
   }
   else if (item->kind() == RootItem::Kind::Labels) {

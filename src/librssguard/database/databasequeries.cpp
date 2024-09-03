@@ -42,13 +42,13 @@ QMap<int, QString> DatabaseQueries::messageTableAttributes(bool only_msg_table, 
 
   if (is_sqlite) {
     field_names[MSG_DB_LABELS] =
-      QSL("(SELECT GROUP_CONCAT(Labels.name) FROM Labels WHERE Messages.labels LIKE \"%.\" || "
-          "Labels.custom_id || \".%\") as msg_labels");
+      QSL("(SELECT GROUP_CONCAT(Labels.name) FROM Labels WHERE Messages.labels LIKE '%.' || "
+          "Labels.custom_id || '.%') as msg_labels");
   }
   else {
     field_names[MSG_DB_LABELS] =
-      QSL("(SELECT GROUP_CONCAT(Labels.name) FROM Labels WHERE Messages.labels LIKE CONCAT(\"%.\", "
-          "Labels.custom_id, \".%\")) as msg_labels");
+      QSL("(SELECT GROUP_CONCAT(Labels.name) FROM Labels WHERE Messages.labels LIKE CONCAT('%.', "
+          "Labels.custom_id, '.%')) as msg_labels");
   }
 
   field_names[MSG_DB_LABELS_IDS] = QSL("Messages.labels");
