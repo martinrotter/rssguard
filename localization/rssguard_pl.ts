@@ -1007,7 +1007,7 @@ ID pozycji: %5</translation>
       <location filename="../src/librssguard/miscellaneous/feedreader.cpp" line="366"/>
       <source>I will auto-download new articles for %n feed(s).</source>
       <translation type="unfinished">
-        <numerusform>Automatycznie pobieram nowe artykuły dla %n kanału(ów).</numerusform>
+        <numerusform>Automatycznie pobiorę nowe artykuły dla %n kanału(ów).</numerusform>
         <numerusform>I will auto-download new articles for %n feed(s).</numerusform>
         <numerusform>I will auto-download new articles for %n feed(s).</numerusform>
         <numerusform>I will auto-download new articles for %n feed(s).</numerusform>
@@ -7715,7 +7715,7 @@ Opis: %3</translation>
     <message>
       <location filename="../src/librssguard/gui/settings/settingslocalization.cpp" line="25"/>
       <source>Help us to improve %1 &lt;a href=&quot;%2&quot;&gt;translations&lt;/a&gt;.</source>
-      <translation>Pomóż nam ulepszyć %1 &lt;a href=&quot;%2&quot;&gt;tłumaczenia&lt;/a&gt;.</translation>
+      <translation>Pomóż nam ulepszyć &lt;a href=&quot;%2&quot;&gt;tłumaczenia&lt;/a&gt; %1.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingslocalization.cpp" line="115"/>
@@ -8763,7 +8763,7 @@ Nieprzeczytanych wiadomości: %2</translation>
       <location filename="../src/librssguard/gui/reusable/timespinbox.cpp" line="68"/>
       <source>%n day(s)</source>
       <translation type="unfinished">
-        <numerusform>%n dni</numerusform>
+        <numerusform>%n dzień/dni</numerusform>
         <numerusform>%n day(s)</numerusform>
         <numerusform>%n day(s)</numerusform>
         <numerusform>%n day(s)</numerusform>
