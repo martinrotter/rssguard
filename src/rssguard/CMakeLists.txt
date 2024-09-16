@@ -36,12 +36,12 @@ if(APPLE)
   )
 elseif(WIN32)
   target_link_libraries(app PUBLIC
-    Shell32.lib
-    odbc32.lib
+    shell32
+    odbc32
   )
 endif()
 
-if(WIN32)
+if(MSVC)
   install(TARGETS app DESTINATION .)
   install(FILES ${CMAKE_SOURCE_DIR}/resources/graphics/${CMAKE_PROJECT_NAME}.ico
     DESTINATION .
@@ -55,6 +55,8 @@ if(WIN32)
   )
 elseif(OS2)
   install(TARGETS app DESTINATION .)
+elseif(MINGW)
+  install(TARGETS app DESTINATION ${CMAKE_INSTALL_BINDIR})
 elseif(UNIX AND NOT APPLE AND NOT ANDROID)
   include (GNUInstallDirs)
   install(TARGETS app

@@ -623,14 +623,20 @@ if(APPLE)
   )
 elseif(WIN32)
   target_link_libraries(rssguard PUBLIC
-    Shell32.lib
+    shell32
     odbc32
   )
 endif()
 
-if(WIN32 OR OS2)
+if(MSVC OR OS2)
   install(TARGETS rssguard DESTINATION .)
   set(HEADERS_FOLDER "include/librssguard")
+elseif(MINGW)
+  include (GNUInstallDirs)
+  install(TARGETS rssguard
+    LIBRARY DESTINATION ${CMAKE_INSTALL_LIBDIR}
+    RUNTIME DESTINATION ${CMAKE_INSTALL_BINDIR})
+  set(HEADERS_FOLDER "${CMAKE_INSTALL_INCLUDEDIR}/librssguard")
 elseif(UNIX AND NOT APPLE AND NOT ANDROID)
   include (GNUInstallDirs)
   install(TARGETS rssguard DESTINATION ${CMAKE_INSTALL_LIBDIR})
