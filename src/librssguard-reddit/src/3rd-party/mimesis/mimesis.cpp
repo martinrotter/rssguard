@@ -865,16 +865,16 @@ namespace Mimesis {
 
       Part part;
 
-      part.preamble = move(preamble);
-      part.epilogue = move(epilogue);
-      part.parts = move(parts);
-      part.boundary = move(boundary);
+      part.preamble = std::move(preamble);
+      part.epilogue = std::move(epilogue);
+      part.parts = std::move(parts);
+      part.boundary = std::move(boundary);
       part.multipart = true;
       part.set_header("Content-Type", get_header("Content-Type"));
       part.set_header("Content-Disposition", get_header("Content-Disposition"));
       erase_header("Content-Disposition");
       part.crlf = crlf;
-      parts.emplace_back(move(part));
+      parts.emplace_back(std::move(part));
     }
     else {
       multipart = true;
@@ -888,7 +888,7 @@ namespace Mimesis {
         part.set_header("Content-Type", get_header("Content-Type"));
         part.set_header("Content-Disposition", get_header("Content-Disposition"));
         erase_header("Content-Disposition");
-        part.body = move(body);
+        part.body = std::move(body);
       }
     }
 
@@ -919,7 +919,7 @@ namespace Mimesis {
     set_header("Content-Disposition", part.get_header("Content-Disposition"));
 
     if (part.multipart) {
-      parts = move(part.parts);
+      parts = std::move(part.parts);
     }
     else {
       multipart = false;
