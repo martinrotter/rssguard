@@ -416,7 +416,7 @@ Lütfen bu bildirim penceresine tıklayarak bu versiyondaki yenilikleri inceleyi
     <message>
       <location filename="../src/librssguard/network-web/articleparse.cpp" line="63"/>
       <source>There is error: %1</source>
-      <translation type="unfinished">There is error: %1</translation>
+      <translation>Hata var: %1</translation>
     </message>
     <message>
       <location filename="../src/librssguard/network-web/articleparse.cpp" line="69"/>
