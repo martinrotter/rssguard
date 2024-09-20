@@ -1157,6 +1157,12 @@ void Application::setupWorkHorsePool() {
     m_workHorsePool->setMaxThreadCount((std::min)(MAX_THREADPOOL_THREADS, 2 * ideal_th_count));
   }
 
+#if QT_VERSION_MAJOR == 6
+  // Avoid competing with interactive processes/threads by running the
+  // worker pool at a very low priority
+  m_workHorsePool->setThreadPriority(QThread::LowestPriority);
+#endif
+
   // NOTE: Do not expire threads so that their IDs are not reused.
   // This fixes cross-thread QSqlDatabase access.
   m_workHorsePool->setExpiryTimeout(-1);
