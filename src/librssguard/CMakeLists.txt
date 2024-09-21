@@ -243,6 +243,8 @@ set(SOURCES
   miscellaneous/templates.h
   miscellaneous/textfactory.cpp
   miscellaneous/textfactory.h
+  miscellaneous/thread.cpp
+  miscellaneous/thread.h
   network-web/adblock/adblockdialog.cpp
   network-web/adblock/adblockdialog.h
   network-web/adblock/adblockicon.cpp

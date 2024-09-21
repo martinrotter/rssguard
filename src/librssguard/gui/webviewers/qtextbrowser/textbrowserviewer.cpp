@@ -42,7 +42,7 @@ TextBrowserViewer::TextBrowserViewer(QWidget* parent)
   setDocument(m_document.data());
 
   m_resourceDownloader->moveToThread(m_resourceDownloaderThread);
-  m_resourceDownloaderThread->start();
+  m_resourceDownloaderThread->start(QThread::LowPriority);
 
   connect(this, &TextBrowserViewer::reloadDocument, this, [this]() {
     const auto scr = verticalScrollBarPosition();

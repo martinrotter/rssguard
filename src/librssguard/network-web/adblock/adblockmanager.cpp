@@ -23,7 +23,6 @@
 #include <QJsonDocument>
 #include <QJsonObject>
 #include <QMessageBox>
-#include <QThread>
 #include <QTimer>
 #include <QUrlQuery>
 

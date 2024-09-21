@@ -5,6 +5,7 @@
 #include "definitions/definitions.h"
 #include "exceptions/applicationexception.h"
 #include "miscellaneous/iofactory.h"
+#include "miscellaneous/thread.h"
 
 #include <QDir>
 #include <QSqlError>
@@ -14,7 +15,7 @@
 DatabaseDriver::DatabaseDriver(QObject* parent) : QObject(parent) {}
 
 QSqlDatabase DatabaseDriver::threadSafeConnection(const QString& connection_name, DesiredStorageType desired_type) {
-  qlonglong thread_id = qlonglong(QThread::currentThreadId());
+  qlonglong thread_id = getThreadID();
   bool is_main_thread = QThread::currentThread() == qApp->thread();
 
   QSqlDatabase database =
