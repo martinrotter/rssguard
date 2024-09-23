@@ -1400,7 +1400,7 @@ void Application::onNodeJsPackageUpdateError(const QObject* sndr,
                                              const QString& error) {
   Q_UNUSED(sndr)
   qApp->showGuiMessage(Notification::Event::NodePackageFailedToUpdate,
-                       {tr("Node.js"),
+                       {QSL("Node.js"),
                         tr("Packages were NOT updated because of error: %2. Affected packages:\n%1")
                           .arg(NodeJs::packagesToString(pkgs), error),
                         QSystemTrayIcon::MessageIcon::Critical});
