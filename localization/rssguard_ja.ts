@@ -3572,7 +3572,7 @@ You have to restart manually.</source>
     <message>
       <location filename="../src/librssguard-standard/src/gui/formstandardfeeddetails.cpp" line="33"/>
       <source>Experimental</source>
-      <translation type="unfinished">Experimental</translation>
+      <translation>実験的</translation>
     </message>
   </context>
   <context>
@@ -7022,7 +7022,7 @@ File filter for external e-mail selection dialog.</extracomment>
       <location filename="../src/librssguard/gui/settings/settingsbrowsermail.ui" line="51"/>
       <location filename="../../build-rssguard-Desktop_Qt_6_7_0_MSVC2017_64bit-Debug/src/librssguard/ui_settingsbrowsermail.h" line="386"/>
       <source>Custom User-Agent</source>
-      <translation type="unfinished">Custom User-Agent</translation>
+      <translation>ユーザーエージェントをカスタム</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsbrowsermail.ui" line="65"/>
@@ -8073,7 +8073,7 @@ Description: %3</source>
     <message>
       <location filename="../src/librssguard/gui/settings/settingslocalization.h" line="27"/>
       <source>Localization</source>
-      <translation>ローカライゼーション</translation>
+      <translation>言語</translation>
     </message>
   </context>
   <context>
@@ -8521,10 +8521,10 @@ Also, relaunch &quot;Settings&quot; dialog after you install Node.js.</source>
 Type: %2
 Post-processing script: %3
 Do not use raw XML saving: %4</source>
-      <translation type="unfinished">Encoding: %1
-Type: %2
-Post-processing script: %3
-Do not use raw XML saving: %4</translation>
+      <translation>エンコーディング: %1
+タイプ: %2
+後処理スクリプト: %3
+生のXML保存を使用しない: %4</translation>
     </message>
     <message>
       <location filename="../src/librssguard-standard/src/standardfeed.cpp" line="111"/>
@@ -8915,16 +8915,16 @@ Also, you can post-process generated feed data with yet another script if you wi
     <message>
       <location filename="../src/librssguard-standard/src/gui/standardfeedexpdetails.ui" line="23"/>
       <source>Use older mechanism for extracting raw XML data</source>
-      <translation type="unfinished">Use older mechanism for extracting raw XML data</translation>
+      <translation>生のXMLデータを抽出するために古いメカニズムを使用する</translation>
     </message>
     <message>
       <location filename="../src/librssguard-standard/src/gui/standardfeedexpdetails.cpp" line="26"/>
       <source>Turning this setting ON might bring considerable performance boost when fetching this feed, but only in some very specific conditions.
 
 This setting is useful when raw XML parsing of the feed is very slow, this happens for feed which do have very long contents.</source>
-      <translation type="unfinished">Turning this setting ON might bring considerable performance boost when fetching this feed, but only in some very specific conditions.
+      <translation>この設定をオンにすると、このフィードを取得するときにパフォーマンスが大幅に向上する可能性がありますが、これは非常に特殊な条件の場合に限られます
 
-This setting is useful when raw XML parsing of the feed is very slow, this happens for feed which do have very long contents.</translation>
+この設定は、フィードの生の XML 解析が非常に遅い場合に役立ちます。これは、非常に長いコンテンツを持つフィードで発生します</translation>
     </message>
   </context>
   <context>
@@ -9622,12 +9622,12 @@ Last login on: %4</source>
     <message>
       <location filename="../src/librssguard/network-web/webengine/webenginepage.cpp" line="77"/>
       <source>Website alert</source>
-      <translation type="unfinished">Website alert</translation>
+      <translation>ウェブサイトアラート</translation>
     </message>
     <message>
       <location filename="../src/librssguard/network-web/webengine/webenginepage.cpp" line="78"/>
       <source>URL %1 reports this important message: %2</source>
-      <translation type="unfinished">URL %1 reports this important message: %2</translation>
+      <translation>URL %1 がこの重要なメッセージを報告しています: %2</translation>
     </message>
   </context>
   <context>
