@@ -155,9 +155,9 @@ void FeedDownloader::updateFeeds(const QList<Feed*>& feeds) {
 
     std::function<FeedUpdateResult(const FeedUpdateRequest&)> func =
       [=](const FeedUpdateRequest& fd) -> FeedUpdateResult {
-      #if defined(Q_OS_LINUX)
-      setThreadPriority(Priority::LOWEST);
-      #endif
+#if defined(Q_OS_LINUX)
+      setThreadPriority(Priority::Lowest);
+#endif
       return updateThreadedFeed(fd);
     };
 
@@ -437,8 +437,7 @@ void FeedDownloader::updateOneFeed(ServiceRoot* acc,
 }
 
 void FeedDownloader::finalizeUpdate() {
-  qDebugNN << LOGSEC_FEEDDOWNLOADER << "Finished feed updates in thread"
-           << QUOTE_W_SPACE_DOT(getThreadID());
+  qDebugNN << LOGSEC_FEEDDOWNLOADER << "Finished feed updates in thread" << QUOTE_W_SPACE_DOT(getThreadID());
 
   m_feeds.clear();
 

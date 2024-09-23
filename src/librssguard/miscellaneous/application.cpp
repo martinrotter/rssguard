@@ -1157,10 +1157,10 @@ void Application::setupWorkHorsePool() {
     m_workHorsePool->setMaxThreadCount((std::min)(MAX_THREADPOOL_THREADS, 2 * ideal_th_count));
   }
 
-#if QT_VERSION_MAJOR == 6
+#if QT_VERSION >= 0x060200 // Qt >= 6.2.0
   // Avoid competing with interactive processes/threads by running the
   // worker pool at a very low priority
-  m_workHorsePool->setThreadPriority(QThread::LowestPriority);
+  m_workHorsePool->setThreadPriority(QThread::Priority::LowestPriority);
 #endif
 
   // NOTE: Do not expire threads so that their IDs are not reused.

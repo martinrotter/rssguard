@@ -3,14 +3,16 @@
 #ifndef THREAD_H
 #define THREAD_H
 
+#include <QtGlobal>
+
 qlonglong getThreadID();
 
 #if defined(Q_OS_LINUX)
-// Values corresponding to nice values
+// Values corresponding to nice values.
 enum Priority {
-  LOWEST = 19,
-  LOW    = 10,
-  NORMAL = 0
+  Lowest = 19,
+  Low = 10,
+  Normal = 0
 };
 
 void setThreadPriority(Priority);
