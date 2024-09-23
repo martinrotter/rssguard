@@ -26,7 +26,7 @@
       <location filename="../src/librssguard/services/abstract/gui/accountdetails.ui" line="20"/>
       <location filename="../../build-rssguard-Desktop_Qt_6_7_0_MSVC2017_64bit-Debug/src/librssguard/ui_accountdetails.h" line="79"/>
       <source>Display additional nodes</source>
-      <translation type="unfinished">Display additional nodes</translation>
+      <translation>Zobrazit dodatečné položky</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/abstract/gui/accountdetails.ui" line="26"/>
@@ -176,7 +176,7 @@ Chyba: %1</translation>
     <message>
       <location filename="../src/librssguard/network-web/apiserver.cpp" line="188"/>
       <source>account with ID %1 not found</source>
-      <translation type="unfinished">account with ID %1 not found</translation>
+      <translation>účet s ID %1 nebyl nalezen</translation>
     </message>
   </context>
   <context>
@@ -226,14 +226,14 @@ Chyba: %1</translation>
       <location filename="../src/librssguard/miscellaneous/application.cpp" line="1404"/>
       <source>Packages were NOT updated because of error: %2. Affected packages:
 %1</source>
-      <translation type="unfinished">Packages were NOT updated because of error: %2. Affected packages:
+      <translation>Balíčky NEBYLY aktualizovány z důvodu chyby: %2. Postižené balíčky:
 %1</translation>
     </message>
     <message>
       <location filename="../src/librssguard/miscellaneous/application.cpp" line="1416"/>
       <source>These packages were installed/updated:
 %1</source>
-      <translation type="unfinished">These packages were installed/updated:
+      <translation>Tyto balíčky byly nainstalovány/aktualizovány:
 %1</translation>
     </message>
     <message>
@@ -290,89 +290,89 @@ na tuto bublinu.</translation>
       <location filename="../src/librssguard/gui/reusable/articleamountcontrol.ui" line="36"/>
       <location filename="../../build-rssguard-Desktop_Qt_6_7_0_MSVC2017_64bit-Debug/src/librssguard/ui_articleamountcontrol.h" line="261"/>
       <source>Ignoring old articles</source>
-      <translation type="unfinished">Ignoring old articles</translation>
+      <translation>Ignorování starých zpráv</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/reusable/articleamountcontrol.ui" line="47"/>
       <location filename="../../build-rssguard-Desktop_Qt_6_7_0_MSVC2017_64bit-Debug/src/librssguard/ui_articleamountcontrol.h" line="257"/>
       <source>Add articles with any date into the database</source>
-      <translation type="unfinished">Add articles with any date into the database</translation>
+      <translation>Přidávat do databáze všechny články, nehledě na datum vytvoření</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/reusable/articleamountcontrol.ui" line="76"/>
       <location filename="../../build-rssguard-Desktop_Qt_6_7_0_MSVC2017_64bit-Debug/src/librssguard/ui_articleamountcontrol.h" line="258"/>
       <source>Avoid adding articles before this date/time into the database</source>
-      <translation type="unfinished">Avoid adding articles before this date/time into the database</translation>
+      <translation>Nepřidávat starší články než nastavené datum do databáze</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/reusable/articleamountcontrol.ui" line="85"/>
       <location filename="../../build-rssguard-Desktop_Qt_6_7_0_MSVC2017_64bit-Debug/src/librssguard/ui_articleamountcontrol.h" line="259"/>
       <source>Absolute date/time</source>
-      <translation type="unfinished">Absolute date/time</translation>
+      <translation>Absolutní datum/čas</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/reusable/articleamountcontrol.ui" line="92"/>
       <location filename="../../build-rssguard-Desktop_Qt_6_7_0_MSVC2017_64bit-Debug/src/librssguard/ui_articleamountcontrol.h" line="260"/>
       <source>Relative time</source>
-      <translation type="unfinished">Relative time</translation>
+      <translation>Relativní čas</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/reusable/articleamountcontrol.ui" line="170"/>
       <location filename="../../build-rssguard-Desktop_Qt_6_7_0_MSVC2017_64bit-Debug/src/librssguard/ui_articleamountcontrol.h" line="267"/>
       <source>Limiting amount of articles in feeds</source>
-      <translation type="unfinished">Limiting amount of articles in feeds</translation>
+      <translation>Omezení počtu článků v kanálech</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/reusable/articleamountcontrol.ui" line="181"/>
       <location filename="../../build-rssguard-Desktop_Qt_6_7_0_MSVC2017_64bit-Debug/src/librssguard/ui_articleamountcontrol.h" line="262"/>
       <source>Customize article limits</source>
-      <translation type="unfinished">Customize article limits</translation>
+      <translation>Přizpůsobit limity článků</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/reusable/articleamountcontrol.ui" line="210"/>
       <location filename="../../build-rssguard-Desktop_Qt_6_7_0_MSVC2017_64bit-Debug/src/librssguard/ui_articleamountcontrol.h" line="263"/>
       <source>In database, keep</source>
-      <translation type="unfinished">In database, keep</translation>
+      <translation>Uchovávat v databázi</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/reusable/articleamountcontrol.ui" line="224"/>
       <location filename="../../build-rssguard-Desktop_Qt_6_7_0_MSVC2017_64bit-Debug/src/librssguard/ui_articleamountcontrol.h" line="264"/>
       <source>Do not remove important articles</source>
-      <translation type="unfinished">Do not remove important articles</translation>
+      <translation>Neodstraňovat důležité články</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/reusable/articleamountcontrol.ui" line="231"/>
       <location filename="../../build-rssguard-Desktop_Qt_6_7_0_MSVC2017_64bit-Debug/src/librssguard/ui_articleamountcontrol.h" line="265"/>
       <source>Do not remove unread articles</source>
-      <translation type="unfinished">Do not remove unread articles</translation>
+      <translation>Neodstraňovat nepřečtené články</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/reusable/articleamountcontrol.ui" line="238"/>
       <location filename="../../build-rssguard-Desktop_Qt_6_7_0_MSVC2017_64bit-Debug/src/librssguard/ui_articleamountcontrol.h" line="266"/>
       <source>Just move articles to recycle bin, do not purge them</source>
-      <translation type="unfinished">Just move articles to recycle bin, do not purge them</translation>
+      <translation>Stačí přesunout články do koše, nemazat je fyzicky</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/reusable/articleamountcontrol.cpp" line="11"/>
       <source>Setting any limitations here will instruct %1 to ignore some incoming articles. The logic runs AFTER any article filters so even if your article filter accepts particular article, it can still subsequently ignored and not added to database.</source>
-      <translation type="unfinished">Setting any limitations here will instruct %1 to ignore some incoming articles. The logic runs AFTER any article filters so even if your article filter accepts particular article, it can still subsequently ignored and not added to database.</translation>
+      <translation>Nastavení omezení zde umožní aplikaci %1 ignorovat některé příchozí články. Logika běží PO proběhnutí všech filtrů zpráv, takže i když filtr zpráv přijímá konkrétní článek, může být následně ignorován a není přidán do databáze.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/reusable/articleamountcontrol.cpp" line="16"/>
       <source>All excessive articles are removed automatically by the application, usually after particular feed is fetched. Articles are either completely purged (including articles from recycle bin) from internal database or are just moved to recycle bin.</source>
-      <translation type="unfinished">All excessive articles are removed automatically by the application, usually after particular feed is fetched. Articles are either completely purged (including articles from recycle bin) from internal database or are just moved to recycle bin.</translation>
+      <translation>Všechny nadbytečné zprávy jsou automaticky odstraněny aplikací, obvykle po načtení konkrétního kanálu. Články jsou buď zcela vyprázdněny (včetně článků z koše) z interní databáze, nebo jsou přesunuty do koše.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/reusable/articleamountcontrol.cpp" line="22"/>
       <source>all articles</source>
-      <translation type="unfinished">all articles</translation>
+      <translation>všechny články</translation>
     </message>
     <message numerus="yes">
       <location filename="../src/librssguard/gui/reusable/articleamountcontrol.cpp" line="179"/>
       <source>newest article(s)</source>
       <translation type="unfinished">
-        <numerusform>newest article(s)</numerusform>
-        <numerusform>newest article(s)</numerusform>
+        <numerusform>nejnovější články</numerusform>
+        <numerusform>nejnovější články</numerusform>
         <numerusform>newest article(s)</numerusform>
         <numerusform>newest article(s)</numerusform>
       </translation>
@@ -432,22 +432,22 @@ na tuto bublinu.</translation>
     <message>
       <location filename="../src/librssguard/network-web/articleparse.cpp" line="39"/>
       <source>Packages for article-extractor are installed</source>
-      <translation type="unfinished">Packages for article-extractor are installed</translation>
+      <translation>Balíčky pro article-extractor jsou nainstalovány</translation>
     </message>
     <message>
       <location filename="../src/librssguard/network-web/articleparse.cpp" line="40"/>
       <source>Reload your website or article and you can test it then!</source>
-      <translation type="unfinished">Reload your website or article and you can test it then!</translation>
+      <translation>Znovu načtěte svou webovou stránku nebo článek a poté to můžete vyzkoušet!</translation>
     </message>
     <message>
       <location filename="../src/librssguard/network-web/articleparse.cpp" line="45"/>
       <source>Packages for article-extractor are installed. You can now use this feature!</source>
-      <translation type="unfinished">Packages for article-extractor are installed. You can now use this feature!</translation>
+      <translation>Balíčky pro article-extractor jsou nainstalovány. Nyní můžete použít tuto funkci!</translation>
     </message>
     <message>
       <location filename="../src/librssguard/network-web/articleparse.cpp" line="62"/>
       <source>Packages for article-extractor are NOT installed</source>
-      <translation type="unfinished">Packages for article-extractor are NOT installed</translation>
+      <translation>Balíčky pro article-extractor NEJSOU nainstalovány</translation>
     </message>
     <message>
       <location filename="../src/librssguard/network-web/articleparse.cpp" line="63"/>
@@ -457,7 +457,7 @@ na tuto bublinu.</translation>
     <message>
       <location filename="../src/librssguard/network-web/articleparse.cpp" line="69"/>
       <source>Packages for article-extractor are NOT installed. There is error: %1</source>
-      <translation type="unfinished">Packages for article-extractor are NOT installed. There is error: %1</translation>
+      <translation>Balíčky pro article-extractor nejsou nainstalovány. Došlo k chybě: %1</translation>
     </message>
     <message>
       <location filename="../src/librssguard/network-web/articleparse.cpp" line="104"/>
@@ -1035,7 +1035,7 @@ ID položky: %5</translation>
     <message>
       <location filename="../src/librssguard/gui/feedmessageviewer.cpp" line="264"/>
       <source>Cannot select article as it seems your article list is filtered or the article was deleted.</source>
-      <translation type="unfinished">Cannot select article as it seems your article list is filtered or the article was deleted.</translation>
+      <translation>Nelze vybrat článek, protože se zdá, že je váš seznam článků filtrován nebo byl článek smazán.</translation>
     </message>
   </context>
   <context>
@@ -1494,12 +1494,12 @@ ID položky: %5</translation>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formabout.cpp" line="53"/>
       <source>Cannot copy</source>
-      <translation type="unfinished">Cannot copy</translation>
+      <translation>Nelze kopírovat</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formabout.cpp" line="54"/>
       <source>Cannot copy info to clipboard.</source>
-      <translation type="unfinished">Cannot copy info to clipboard.</translation>
+      <translation>Nelze zkopírovat informace do schránky.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formabout.cpp" line="68"/>
@@ -1526,7 +1526,7 @@ Složka cache pro QtWebEngine -&gt; &quot;%7&quot;</translation>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formabout.cpp" line="134"/>
       <source>&lt;h4&gt;%8&lt;/h4&gt;&lt;b&gt;Version:&lt;/b&gt; %1 (built on %2/%3)&lt;br/&gt;&lt;b&gt;Revision:&lt;/b&gt; %4&lt;br/&gt;&lt;b&gt;Build date:&lt;/b&gt; %5&lt;br/&gt;&lt;b&gt;OS:&lt;/b&gt; %9&lt;br/&gt;&lt;b&gt;Qt:&lt;/b&gt; %6 (compiled against %7)</source>
-      <translation type="unfinished">&lt;h4&gt;%8&lt;/h4&gt;&lt;b&gt;Version:&lt;/b&gt; %1 (built on %2/%3)&lt;br/&gt;&lt;b&gt;Revision:&lt;/b&gt; %4&lt;br/&gt;&lt;b&gt;Build date:&lt;/b&gt; %5&lt;br/&gt;&lt;b&gt;OS:&lt;/b&gt; %9&lt;br/&gt;&lt;b&gt;Qt:&lt;/b&gt; %6 (compiled against %7)</translation>
+      <translation>&lt;h4&gt;%8&lt;/h4&gt;&lt;b&gt;Verze:&lt;/b&gt; %1 (sestaveno na %2/%3)&lt;br/&gt;&lt;b&gt;Revize:&lt;/b&gt; %4&lt;br/&gt;&lt;b&gt;Datum sestavení:&lt;/b&gt; %5&lt;br/&gt;&lt;b&gt;OS:&lt;/b&gt; %9&lt;br/&gt;&lt;b&gt;Qt:&lt;/b&gt; %6 (při kompilaci %7)</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formabout.cpp" line="152"/>
@@ -1547,7 +1547,7 @@ Složka cache pro QtWebEngine -&gt; &quot;%7&quot;</translation>
       <location filename="../src/librssguard/gui/dialogs/formabout.ui" line="93"/>
       <location filename="../../build-rssguard-Desktop_Qt_6_7_0_MSVC2017_64bit-Debug/src/librssguard/ui_formabout.h" line="224"/>
       <source>&amp;Copy info to clipboard</source>
-      <translation type="unfinished">&amp;Copy info to clipboard</translation>
+      <translation>&amp;Kopírovat informace do schránky</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formabout.ui" line="112"/>
@@ -2128,7 +2128,7 @@ Složka cache pro QtWebEngine -&gt; &quot;%7&quot;</translation>
     <message>
       <location filename="../src/librssguard-standard/src/gui/formdiscoverfeeds.ui" line="51"/>
       <source>Recursive discovery (can take some time for bigger websites)</source>
-      <translation type="unfinished">Recursive discovery (can take some time for bigger websites)</translation>
+      <translation>Rekurzivní prohledávání (může trvat nějaký čas u větších webových stránek)</translation>
     </message>
     <message>
       <location filename="../src/librssguard-standard/src/gui/formdiscoverfeeds.ui" line="77"/>
@@ -2246,7 +2246,7 @@ Složka cache pro QtWebEngine -&gt; &quot;%7&quot;</translation>
     <message>
       <location filename="../src/librssguard-standard/src/gui/formeditstandardaccount.cpp" line="13"/>
       <source>Account setup</source>
-      <translation type="unfinished">Account setup</translation>
+      <translation>Nastavení účtu</translation>
     </message>
   </context>
   <context>
@@ -2363,12 +2363,12 @@ Složka cache pro QtWebEngine -&gt; &quot;%7&quot;</translation>
     <message>
       <location filename="../src/librssguard-greader/src/gui/formgreaderfeeddetails.cpp" line="50"/>
       <source>Feed was added, refreshing feed tree...</source>
-      <translation type="unfinished">Feed was added, refreshing feed tree...</translation>
+      <translation>Kanál byl přidán, obnovuji seznam kanálů...</translation>
     </message>
     <message>
       <location filename="../src/librssguard-greader/src/gui/formgreaderfeeddetails.cpp" line="64"/>
       <source>Feed NOT updated or added</source>
-      <translation type="unfinished">Feed NOT updated or added</translation>
+      <translation>Kanál NENÍ aktualizován či přidán</translation>
     </message>
     <message>
       <location filename="../src/librssguard-greader/src/gui/formgreaderfeeddetails.cpp" line="65"/>
@@ -3147,7 +3147,7 @@ Složka cache pro QtWebEngine -&gt; &quot;%7&quot;</translation>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="951"/>
       <location filename="../../build-rssguard-Desktop_Qt_6_7_0_MSVC2017_64bit-Debug/src/librssguard/ui_formmain.h" line="809"/>
       <source>Play in &amp;media player</source>
-      <translation type="unfinished">Play in &amp;media player</translation>
+      <translation>Přehrát v &amp;přehrávači médií</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="738"/>
@@ -3174,12 +3174,12 @@ Složka cache pro QtWebEngine -&gt; &quot;%7&quot;</translation>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.cpp" line="472"/>
       <source>Play in media player</source>
-      <translation type="unfinished">Play in media player</translation>
+      <translation>Přehrát v přehrávači médií</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.cpp" line="473"/>
       <source>(not supported)</source>
-      <translation type="unfinished">(not supported)</translation>
+      <translation>(nepodporováno)</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.cpp" line="538"/>
@@ -3612,7 +3612,7 @@ Musíte restartovat manuálně.</translation>
     <message>
       <location filename="../src/librssguard-standard/src/gui/formstandardfeeddetails.cpp" line="33"/>
       <source>Experimental</source>
-      <translation type="unfinished">Experimental</translation>
+      <translation>Experimentální</translation>
     </message>
   </context>
   <context>
@@ -4534,12 +4534,12 @@ Tokeny vyprší: %2</translation>
     <message>
       <location filename="../src/librssguard-greader/src/gui/greaderfeeddetails.cpp" line="42"/>
       <source>Title is entered.</source>
-      <translation type="unfinished">Title is entered.</translation>
+      <translation>Název je zadán.</translation>
     </message>
     <message>
       <location filename="../src/librssguard-greader/src/gui/greaderfeeddetails.cpp" line="46"/>
       <source>No title is entered. If you are creating new feed, title will be automatically extracted from it.</source>
-      <translation type="unfinished">No title is entered. If you are creating new feed, title will be automatically extracted from it.</translation>
+      <translation>Není zadán žádný název. Pokud vytváříte nový kanál, bude z něj automaticky získán název.</translation>
     </message>
   </context>
   <context>
@@ -4604,17 +4604,17 @@ Tokeny vyprší: %2</translation>
       <location filename="../src/librssguard-greader/src/greaderserviceroot.cpp" line="176"/>
       <location filename="../src/librssguard-greader/src/greaderserviceroot.cpp" line="204"/>
       <source>Done</source>
-      <translation type="unfinished">Done</translation>
+      <translation>Hotovo</translation>
     </message>
     <message>
       <location filename="../src/librssguard-greader/src/greaderserviceroot.cpp" line="177"/>
       <source>Data imported successfully. Reloading feed tree.</source>
-      <translation type="unfinished">Data imported successfully. Reloading feed tree.</translation>
+      <translation>Data byla úspěšně importována. Obnovuji stromu kanálů.</translation>
     </message>
     <message>
       <location filename="../src/librssguard-greader/src/greaderserviceroot.cpp" line="184"/>
       <source>Cannot import feeds</source>
-      <translation type="unfinished">Cannot import feeds</translation>
+      <translation>Nelze importovat kanály</translation>
     </message>
     <message>
       <location filename="../src/librssguard-greader/src/greaderserviceroot.cpp" line="185"/>
@@ -4630,12 +4630,12 @@ Tokeny vyprší: %2</translation>
     <message>
       <location filename="../src/librssguard-greader/src/greaderserviceroot.cpp" line="204"/>
       <source>Data exported successfully.</source>
-      <translation type="unfinished">Data exported successfully.</translation>
+      <translation>Data úspěšně exportována.</translation>
     </message>
     <message>
       <location filename="../src/librssguard-greader/src/greaderserviceroot.cpp" line="209"/>
       <source>Cannot export feeds</source>
-      <translation type="unfinished">Cannot export feeds</translation>
+      <translation>Nelze exportovat kanály</translation>
     </message>
     <message>
       <location filename="../src/librssguard-greader/src/greaderserviceroot.cpp" line="266"/>
@@ -4747,27 +4747,27 @@ Tokeny vyprší: %2</translation>
     <message>
       <location filename="../src/librssguard/gui/mediaplayer/libmpv/libmpvbackend.cpp" line="140"/>
       <source>File loaded</source>
-      <translation type="unfinished">File loaded</translation>
+      <translation>Soubor načten</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/mediaplayer/libmpv/libmpvbackend.cpp" line="196"/>
       <source>App restart required</source>
-      <translation type="unfinished">App restart required</translation>
+      <translation>Vyžadován restart aplikace</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/mediaplayer/libmpv/libmpvbackend.cpp" line="199"/>
       <source>Out of memory</source>
-      <translation type="unfinished">Out of memory</translation>
+      <translation>Nedostatek paměti</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/mediaplayer/libmpv/libmpvbackend.cpp" line="202"/>
       <source>Not initialized yet</source>
-      <translation type="unfinished">Not initialized yet</translation>
+      <translation>Zatím neinicializováno</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/mediaplayer/libmpv/libmpvbackend.cpp" line="205"/>
       <source>Invalid parameter</source>
-      <translation type="unfinished">Invalid parameter</translation>
+      <translation>Neplatný parametr</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/mediaplayer/libmpv/libmpvbackend.cpp" line="208"/>
