@@ -3584,7 +3584,7 @@ Je moet handmatig herstarten.</translation>
     <message>
       <location filename="../src/librssguard-standard/src/gui/formstandardfeeddetails.cpp" line="33"/>
       <source>Experimental</source>
-      <translation type="unfinished">Experimental</translation>
+      <translation>Experimenteel</translation>
     </message>
   </context>
   <context>
@@ -7045,7 +7045,7 @@ File filter for external e-mail selection dialog.</extracomment>
       <location filename="../src/librssguard/gui/settings/settingsbrowsermail.ui" line="51"/>
       <location filename="../../build-rssguard-Desktop_Qt_6_7_0_MSVC2017_64bit-Debug/src/librssguard/ui_settingsbrowsermail.h" line="386"/>
       <source>Custom User-Agent</source>
-      <translation type="unfinished">Custom User-Agent</translation>
+      <translation>Aangepaste User-Agent</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsbrowsermail.ui" line="65"/>
@@ -8545,10 +8545,10 @@ Start ook het dialoogvenster &quot;Instellingen&quot; opnieuw nadat je Node.js h
 Type: %2
 Post-processing script: %3
 Do not use raw XML saving: %4</source>
-      <translation type="unfinished">Encoding: %1
+      <translation>Codering: %1
 Type: %2
-Post-processing script: %3
-Do not use raw XML saving: %4</translation>
+Nabewerkingsscript: %3
+Geen ruwe XML opslaan: %4</translation>
     </message>
     <message>
       <location filename="../src/librssguard-standard/src/standardfeed.cpp" line="111"/>
@@ -8939,16 +8939,16 @@ Je kunt ook gegenereerde feedgegevens nabewerken met nog een ander script als je
     <message>
       <location filename="../src/librssguard-standard/src/gui/standardfeedexpdetails.ui" line="23"/>
       <source>Use older mechanism for extracting raw XML data</source>
-      <translation type="unfinished">Use older mechanism for extracting raw XML data</translation>
+      <translation>Gebruik ouder mechanisme voor het uitlezen van ruwe XML-gegevens</translation>
     </message>
     <message>
       <location filename="../src/librssguard-standard/src/gui/standardfeedexpdetails.cpp" line="26"/>
       <source>Turning this setting ON might bring considerable performance boost when fetching this feed, but only in some very specific conditions.
 
 This setting is useful when raw XML parsing of the feed is very slow, this happens for feed which do have very long contents.</source>
-      <translation type="unfinished">Turning this setting ON might bring considerable performance boost when fetching this feed, but only in some very specific conditions.
+      <translation>Het inschakelen van deze instelling kan een aanzienlijke prestatieverhoging betekenen bij het ophalen van deze feed, maar alleen in een aantal zeer specifieke omstandigheden.
 
-This setting is useful when raw XML parsing of the feed is very slow, this happens for feed which do have very long contents.</translation>
+Deze instelling is handig wanneer onbewerkte XML-parsing van de feed erg traag is, dit gebeurt voor feeds met zeer veel inhoud.</translation>
     </message>
   </context>
   <context>
@@ -9651,12 +9651,12 @@ Laatste login: %4</translation>
     <message>
       <location filename="../src/librssguard/network-web/webengine/webenginepage.cpp" line="77"/>
       <source>Website alert</source>
-      <translation type="unfinished">Website alert</translation>
+      <translation>Website alarm</translation>
     </message>
     <message>
       <location filename="../src/librssguard/network-web/webengine/webenginepage.cpp" line="78"/>
       <source>URL %1 reports this important message: %2</source>
-      <translation type="unfinished">URL %1 reports this important message: %2</translation>
+      <translation>URL %1 meldt dit belangrijke bericht: %2</translation>
     </message>
   </context>
   <context>

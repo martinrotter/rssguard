@@ -3605,7 +3605,7 @@ Vous devez redémarrer manuellement.</translation>
     <message>
       <location filename="../src/librssguard-standard/src/gui/formstandardfeeddetails.cpp" line="33"/>
       <source>Experimental</source>
-      <translation type="unfinished">Experimental</translation>
+      <translation>Expérimental</translation>
     </message>
   </context>
   <context>
@@ -7068,7 +7068,7 @@ File filter for external e-mail selection dialog.</extracomment>
       <location filename="../src/librssguard/gui/settings/settingsbrowsermail.ui" line="51"/>
       <location filename="../../build-rssguard-Desktop_Qt_6_7_0_MSVC2017_64bit-Debug/src/librssguard/ui_settingsbrowsermail.h" line="386"/>
       <source>Custom User-Agent</source>
-      <translation type="unfinished">Custom User-Agent</translation>
+      <translation>Agent utilisateur personnalisé</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsbrowsermail.ui" line="65"/>
@@ -8568,10 +8568,10 @@ Et aussi, redémarrez la fenêtre &quot;Paramètres&quot; après avoir installé
 Type: %2
 Post-processing script: %3
 Do not use raw XML saving: %4</source>
-      <translation type="unfinished">Encoding: %1
+      <translation>Encodage: %1
 Type: %2
-Post-processing script: %3
-Do not use raw XML saving: %4</translation>
+Script de post-traitement: %3
+Ne pas utiliser la sauvegarde XML brute: %4</translation>
     </message>
     <message>
       <location filename="../src/librssguard-standard/src/standardfeed.cpp" line="111"/>
@@ -8961,16 +8961,16 @@ Vous pouvez aussi post-traiter la data de flux avec encore un autre script si vo
     <message>
       <location filename="../src/librssguard-standard/src/gui/standardfeedexpdetails.ui" line="23"/>
       <source>Use older mechanism for extracting raw XML data</source>
-      <translation type="unfinished">Use older mechanism for extracting raw XML data</translation>
+      <translation>Utiliser l'ancien mécanisme pour extraire les données XML brutes</translation>
     </message>
     <message>
       <location filename="../src/librssguard-standard/src/gui/standardfeedexpdetails.cpp" line="26"/>
       <source>Turning this setting ON might bring considerable performance boost when fetching this feed, but only in some very specific conditions.
 
 This setting is useful when raw XML parsing of the feed is very slow, this happens for feed which do have very long contents.</source>
-      <translation type="unfinished">Turning this setting ON might bring considerable performance boost when fetching this feed, but only in some very specific conditions.
+      <translation>Activer ce paramètre peut considérablement améliorer la performance quand ce flux est cherché, mais uniquement dans des conditions très spécifiques.
 
-This setting is useful when raw XML parsing of the feed is very slow, this happens for feed which do have very long contents.</translation>
+Ce paramètre est utile quand l'extraction des données XML brutes du flux est très lente, en général ça concerne des flux aux contenus très longs.</translation>
     </message>
   </context>
   <context>
@@ -9148,7 +9148,7 @@ Actualités non-lus: %2</translation>
     <message>
       <location filename="../src/librssguard/gui/webviewers/qtextbrowser/textbrowserviewer.cpp" line="336"/>
       <source>Enable external resources</source>
-      <translation>Activer les ressources éxterieurs</translation>
+      <translation>Activer les ressources extérieures</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/webviewers/qtextbrowser/textbrowserviewer.cpp" line="338"/>
@@ -9672,12 +9672,12 @@ Dernière connection le: %4</translation>
     <message>
       <location filename="../src/librssguard/network-web/webengine/webenginepage.cpp" line="77"/>
       <source>Website alert</source>
-      <translation type="unfinished">Website alert</translation>
+      <translation>Alerte site web</translation>
     </message>
     <message>
       <location filename="../src/librssguard/network-web/webengine/webenginepage.cpp" line="78"/>
       <source>URL %1 reports this important message: %2</source>
-      <translation type="unfinished">URL %1 reports this important message: %2</translation>
+      <translation>L'URL %1 signale ce message important: %2</translation>
     </message>
   </context>
   <context>
