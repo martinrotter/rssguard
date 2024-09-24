@@ -153,9 +153,8 @@ Application::Application(const QString& id, int& argc, char** argv, const QStrin
   m_database = new DatabaseFactory(this);
   m_downloadManager = nullptr;
   m_notifications = new NotificationFactory(this);
-  m_toastNotifications = settings()->value(GROUP(GUI), SETTING(GUI::UseToastNotifications)).toBool()
-                           ? new ToastNotificationsManager(this)
-                           : nullptr;
+  m_toastNotifications =
+    (!isWayland() && m_notifications->useToastNotifications()) ? new ToastNotificationsManager(this) : nullptr;
   m_shouldRestart = false;
 
 #if defined(Q_OS_WIN)
@@ -301,6 +300,7 @@ Application::Application(const QString& id, int& argc, char** argv, const QStrin
 
   setupWorkHorsePool();
 
+  qDebugNN << LOGSEC_CORE << "Platform:" << QUOTE_W_SPACE_DOT(QGuiApplication::platformName());
   qDebugNN << LOGSEC_CORE << "SQLite version:" << QUOTE_W_SPACE_DOT(SQLITE_VERSION);
   qDebugNN << LOGSEC_CORE << "OpenSSL version:" << QUOTE_W_SPACE_DOT(QSslSocket::sslLibraryVersionString());
   qDebugNN << LOGSEC_CORE << "OpenSSL supported:" << QUOTE_W_SPACE_DOT(QSslSocket::supportsSsl());
@@ -865,6 +865,10 @@ bool Application::usingLite() const {
 #else
   return forcedLite();
 #endif
+}
+
+bool Application::isWayland() const {
+  return QGuiApplication::platformName() == QSL("wayland");
 }
 
 void Application::onCommitData(QSessionManager& manager) {

@@ -118,7 +118,7 @@ void LibMpvWidget::initializeGL() {
 #endif
 
 #if defined(QT_FEATURE_wayland)
-  if (QGuiApplication::platformName() == QStringLiteral("wayland")) {
+  if (qApp->isWayland()) {
     display.type = MPV_RENDER_PARAM_WL_DISPLAY;
     display.data = qApp->nativeInterface<QNativeInterface::QWaylandApplication>()->display();
   }

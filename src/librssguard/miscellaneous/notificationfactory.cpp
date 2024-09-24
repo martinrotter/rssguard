@@ -20,7 +20,7 @@ bool NotificationFactory::areNotificationsEnabled() const {
 }
 
 bool NotificationFactory::useToastNotifications() const {
-  return qApp->settings()->value(GROUP(GUI), SETTING(GUI::EnableNotifications)).toBool();
+  return qApp->settings()->value(GROUP(GUI), SETTING(GUI::UseToastNotifications)).toBool();
 }
 
 Notification NotificationFactory::notificationForEvent(Notification::Event event) const {

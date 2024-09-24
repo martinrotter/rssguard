@@ -187,6 +187,7 @@ class RSSGUARD_DLLSPEC Application : public SingleApplication {
     WebViewer* createWebView();
 
     bool usingLite() const;
+    bool isWayland() const;
 
 #if defined(NO_LITE)
     bool forcedLite() const;

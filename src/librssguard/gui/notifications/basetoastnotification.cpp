@@ -20,7 +20,7 @@ BaseToastNotification::BaseToastNotification(QWidget* parent) : QDialog(parent),
   setAttribute(Qt::WidgetAttribute::WA_DeleteOnClose, false);
 
   setWindowFlags(
-#ifdef Q_OS_MAC
+#if defined(Q_OS_MAC)
     Qt::WindowType::SubWindow |
 #else
     Qt::WindowType::Tool |
