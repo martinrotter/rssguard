@@ -41,9 +41,8 @@ QMap<int, QString> DatabaseQueries::messageTableAttributes(bool only_msg_table, 
                                            "END AS has_enclosures");
 
   if (is_sqlite) {
-    field_names[MSG_DB_LABELS] =
-      QSL("(SELECT GROUP_CONCAT(Labels.name) FROM Labels WHERE Messages.labels LIKE '%.' || "
-          "Labels.custom_id || '.%') as msg_labels");
+    field_names[MSG_DB_LABELS] = QSL("(SELECT GROUP_CONCAT(Labels.name) FROM Labels WHERE Messages.labels LIKE '%.' || "
+                                     "Labels.custom_id || '.%') as msg_labels");
   }
   else {
     field_names[MSG_DB_LABELS] =
@@ -3036,13 +3035,30 @@ void DatabaseQueries::assignMessageFilterToFeed(const QSqlDatabase& db,
                                                 bool* ok) {
   QSqlQuery q(db);
 
-  q.prepare(QSL("INSERT INTO MessageFiltersInFeeds (filter, feed_custom_id, account_id) "
-                "VALUES(:filter, :feed_custom_id, :account_id);"));
-
+  q.prepare(QSL("SELECT COUNT(*) FROM MessageFiltersInFeeds "
+                "WHERE filter = :filter AND feed_custom_id = :feed_custom_id AND account_id = :account_id;"));
+  q.setForwardOnly(true);
   q.bindValue(QSL(":filter"), filter_id);
   q.bindValue(QSL(":feed_custom_id"), feed_custom_id);
   q.bindValue(QSL(":account_id"), account_id);
-  q.setForwardOnly(true);
+
+  if (q.exec() && q.next()) {
+    auto already_included_count = q.value(0).toInt();
+
+    if (already_included_count > 0) {
+      if (ok != nullptr) {
+        *ok = true;
+      }
+
+      return;
+    }
+  }
+
+  q.prepare(QSL("INSERT INTO MessageFiltersInFeeds (filter, feed_custom_id, account_id) "
+                "VALUES(:filter, :feed_custom_id, :account_id);"));
+  q.bindValue(QSL(":filter"), filter_id);
+  q.bindValue(QSL(":feed_custom_id"), feed_custom_id);
+  q.bindValue(QSL(":account_id"), account_id);
 
   if (q.exec()) {
     if (ok != nullptr) {

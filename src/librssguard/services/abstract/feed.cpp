@@ -209,6 +209,7 @@ bool Feed::removeUnwantedArticles(QSqlDatabase& db) {
 }
 
 void Feed::appendMessageFilter(MessageFilter* filter) {
+  removeMessageFilter(filter);
   m_messageFilters.append(QPointer<MessageFilter>(filter));
 }
 
@@ -351,11 +352,7 @@ void Feed::setMessageFilters(const QList<QPointer<MessageFilter>>& filters) {
 }
 
 void Feed::removeMessageFilter(MessageFilter* filter) {
-  int idx = m_messageFilters.indexOf(filter);
-
-  if (idx >= 0) {
-    m_messageFilters.removeAll(filter);
-  }
+  m_messageFilters.removeAll(filter);
 }
 
 QString Feed::additionalTooltip() const {
