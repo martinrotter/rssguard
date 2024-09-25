@@ -104,11 +104,11 @@ QString StandardFeed::additionalTooltip() const {
   return base_tooltip + tr("Encoding: %1\n"
                            "Type: %2\n"
                            "Post-processing script: %3\n"
-                           "Do not use raw XML saving: %4")
+                           "Use raw XML saving: %4")
                           .arg(encoding(),
                                StandardFeed::typeToString(type()),
                                m_postProcessScript.isEmpty() ? QSL("-") : m_postProcessScript,
-                               dontUseRawXmlSaving() ? tr("yes") : tr("no"));
+                               !dontUseRawXmlSaving() ? tr("yes") : tr("no"));
 }
 
 bool StandardFeed::canBeDeleted() const {
