@@ -48,10 +48,10 @@ SettingsNodejs::SettingsNodejs(Settings* settings, QWidget* parent) : SettingsPa
     changeFileFolder(m_ui.m_tbPackageFolder, true);
   });
   connect(m_ui.m_btnNodeExecutable, &QPushButton::clicked, this, [this]() {
-    changeFileFolder(m_ui.m_tbPackageFolder, false, QSL("Node.js (node*)"));
+    changeFileFolder(m_ui.m_tbNodeExecutable, false, QSL("Node.js (node*)"));
   });
   connect(m_ui.m_btnNpmExecutable, &QPushButton::clicked, this, [this]() {
-    changeFileFolder(m_ui.m_tbPackageFolder, false, QSL("NPM (npm*)"));
+    changeFileFolder(m_ui.m_tbNpmExecutable, false, QSL("NPM (npm*)"));
   });
 }
 
