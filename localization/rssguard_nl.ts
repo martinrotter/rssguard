@@ -8314,7 +8314,7 @@ Start ook het dialoogvenster &quot;Instellingen&quot; opnieuw nadat je Node.js h
     <message>
       <location filename="../src/librssguard/gui/settings/settingsnotifications.cpp" line="73"/>
       <source>%1 (not supported on Wayland)</source>
-      <translation type="unfinished">%1 (not supported on Wayland)</translation>
+      <translation>%1 (niet ondersteund op Wayland)</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsnotifications.cpp" line="117"/>
@@ -8614,10 +8614,10 @@ Item ID: %5
 Type: %2
 Post-processing script: %3
 Use raw XML saving: %4</source>
-      <translation type="unfinished">Encoding: %1
+      <translation>Codering: %1
 Type: %2
-Post-processing script: %3
-Use raw XML saving: %4</translation>
+Achteraf-toepassen script: %3
+Ruwe XML opslaan: %4</translation>
     </message>
     <message>
       <location filename="../src/librssguard-standard/src/standardfeed.cpp" line="383"/>
