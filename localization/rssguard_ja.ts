@@ -8290,7 +8290,7 @@ Also, relaunch &quot;Settings&quot; dialog after you install Node.js.</source>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsnotifications.cpp" line="73"/>
       <source>%1 (not supported on Wayland)</source>
-      <translation type="unfinished">%1 (not supported on Wayland)</translation>
+      <translation>%1 (Waylandではサポートされていません)</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsnotifications.cpp" line="117"/>
@@ -8590,10 +8590,10 @@ Item ID: %5
 Type: %2
 Post-processing script: %3
 Use raw XML saving: %4</source>
-      <translation type="unfinished">Encoding: %1
-Type: %2
-Post-processing script: %3
-Use raw XML saving: %4</translation>
+      <translation>エンコーディング: %1
+タイプ: %2
+後処理スクリプト: %3
+生の XML 保存を使用する: %4</translation>
     </message>
     <message>
       <location filename="../src/librssguard-standard/src/standardfeed.cpp" line="383"/>
@@ -9497,7 +9497,7 @@ Unread news: %2</source>
     <message>
       <location filename="../src/librssguard-ttrss/src/gui/ttrssfeeddetails.cpp" line="27"/>
       <source>The URL does not meet standard pattern. Does your URL start with &quot;http://&quot; or &quot;https://&quot; prefix.</source>
-      <translation>URL は標準パターンに適合していません。URL は &quot;http://&quot; または &quot;https://&quot; の接頭辞で始まります</translation>
+      <translation>URL が標準パターンに適合していません。URL は &quot;http://&quot; または &quot;https://&quot; の接頭辞で始まります</translation>
     </message>
     <message>
       <location filename="../src/librssguard-ttrss/src/gui/ttrssfeeddetails.cpp" line="31"/>
