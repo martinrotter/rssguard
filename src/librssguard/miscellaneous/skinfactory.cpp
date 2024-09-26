@@ -317,10 +317,6 @@ PreparedHtml SkinFactory::generateHtmlOfArticles(const QList<Message>& messages,
     }
   }
 
-#if !defined(NDEBUG)
-  IOFactory::writeFile("c.html", msg_contents.toUtf8());
-#endif
-
   return {msg_contents, base_url};
 }
 
