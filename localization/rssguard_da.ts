@@ -182,7 +182,7 @@ Fejl: %1</translation>
   <context>
     <name>Application</name>
     <message>
-      <location filename="../src/librssguard/miscellaneous/application.cpp" line="1232"/>
+      <location filename="../src/librssguard/miscellaneous/application.cpp" line="1236"/>
       <source>Application is already running.</source>
       <translation>Programmet kører allerede</translation>
     </message>
@@ -207,37 +207,36 @@ Fejl: %1</translation>
       <translation>Gendannelse af indstillinger ikke påbegyndt. Sørg for at målbiblioteket er skrivbart.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/miscellaneous/application.cpp" line="1250"/>
+      <location filename="../src/librssguard/miscellaneous/application.cpp" line="1254"/>
       <source>Cannot add feed</source>
       <translation>Kan ikke tilføje nyhedskilde</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/miscellaneous/application.cpp" line="1251"/>
+      <location filename="../src/librssguard/miscellaneous/application.cpp" line="1255"/>
       <source>Feed cannot be added because there is no active account which can add feeds.</source>
       <translation>Nyhedskilde kan ikke tilføjes, da der ikke er nogen aktiv konto at tilføje den til.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/miscellaneous/application.cpp" line="1403"/>
-      <location filename="../src/librssguard/miscellaneous/application.cpp" line="1415"/>
+      <location filename="../src/librssguard/miscellaneous/application.cpp" line="1419"/>
       <source>Node.js</source>
       <translation type="unfinished">Node.js</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/miscellaneous/application.cpp" line="1404"/>
+      <location filename="../src/librssguard/miscellaneous/application.cpp" line="1408"/>
       <source>Packages were NOT updated because of error: %2. Affected packages:
 %1</source>
       <translation type="unfinished">Packages were NOT updated because of error: %2. Affected packages:
 %1</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/miscellaneous/application.cpp" line="1416"/>
+      <location filename="../src/librssguard/miscellaneous/application.cpp" line="1420"/>
       <source>These packages were installed/updated:
 %1</source>
       <translation type="unfinished">These packages were installed/updated:
 %1</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/miscellaneous/application.cpp" line="1110"/>
+      <location filename="../src/librssguard/miscellaneous/application.cpp" line="1114"/>
       <source>Unread articles fetched</source>
       <translation>Ulæste artikler hentet</translation>
     </message>
@@ -247,7 +246,7 @@ Fejl: %1</translation>
       <translation>Gå til ændringslog</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/miscellaneous/application.cpp" line="1181"/>
+      <location filename="../src/librssguard/miscellaneous/application.cpp" line="1185"/>
       <source>AdBlock needs to be configured</source>
       <translation>AdBlock skal indstilles</translation>
     </message>
@@ -269,12 +268,12 @@ version ved at klikke på denne pop up
 påmindelse.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/miscellaneous/application.cpp" line="1182"/>
+      <location filename="../src/librssguard/miscellaneous/application.cpp" line="1186"/>
       <source>AdBlock is not configured properly. Go to &quot;Settings&quot; -&gt; &quot;Node.js&quot; and check if your Node.js is properly configured.</source>
       <translation>AdBlock er ikke indstillet rigtigt. Gå til &quot;Indstillinger&quot; -&gt; &quot;Node.js&quot; og tjek om node.js er indstillet rigtigt.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/miscellaneous/application.cpp" line="1231"/>
+      <location filename="../src/librssguard/miscellaneous/application.cpp" line="1235"/>
       <source>Already running</source>
       <translation>Kører allerede</translation>
     </message>
@@ -921,33 +920,33 @@ Klik her for at åbne den overordnede mappe.</translation>
   <context>
     <name>Feed</name>
     <message>
-      <location filename="../src/librssguard/services/abstract/feed.cpp" line="262"/>
+      <location filename="../src/librssguard/services/abstract/feed.cpp" line="263"/>
       <source>uses global settings, but global auto-fetching of articles is disabled</source>
       <translation type="unfinished">uses global settings, but global auto-fetching of articles is disabled</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/services/abstract/feed.cpp" line="286"/>
+      <location filename="../src/librssguard/services/abstract/feed.cpp" line="287"/>
       <source>no errors</source>
       <translation>ingen fejl</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/services/abstract/feed.cpp" line="292"/>
+      <location filename="../src/librssguard/services/abstract/feed.cpp" line="293"/>
       <source>authentication error</source>
       <translation>godkendelsesfejl</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/services/abstract/feed.cpp" line="295"/>
+      <location filename="../src/librssguard/services/abstract/feed.cpp" line="296"/>
       <source>network error</source>
       <translation>netværksfejl</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/services/abstract/feed.cpp" line="248"/>
+      <location filename="../src/librssguard/services/abstract/feed.cpp" line="249"/>
       <source>does not use auto-fetching of articles</source>
       <extracomment>Describes feed auto-update status.</extracomment>
       <translation>bruger ikke automatisk hentning af artikler</translation>
     </message>
     <message numerus="yes">
-      <location filename="../src/librssguard/services/abstract/feed.cpp" line="259"/>
+      <location filename="../src/librssguard/services/abstract/feed.cpp" line="260"/>
       <source>uses global settings (%n minute(s) to next auto-fetch of articles)</source>
       <translation type="unfinished">
         <numerusform>uses global settings (%n minute(s) to next auto-fetch of articles)</numerusform>
@@ -955,7 +954,7 @@ Klik her for at åbne den overordnede mappe.</translation>
       </translation>
     </message>
     <message numerus="yes">
-      <location filename="../src/librssguard/services/abstract/feed.cpp" line="273"/>
+      <location filename="../src/librssguard/services/abstract/feed.cpp" line="274"/>
       <source>uses specific settings (%n minute(s) to next auto-fetching of new articles)</source>
       <extracomment>Describes feed auto-update status.</extracomment>
       <translation type="unfinished">
@@ -964,22 +963,22 @@ Klik her for at åbne den overordnede mappe.</translation>
       </translation>
     </message>
     <message>
-      <location filename="../src/librssguard/services/abstract/feed.cpp" line="289"/>
+      <location filename="../src/librssguard/services/abstract/feed.cpp" line="290"/>
       <source>has new articles</source>
       <translation>har nye artikler</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/services/abstract/feed.cpp" line="298"/>
+      <location filename="../src/librssguard/services/abstract/feed.cpp" line="299"/>
       <source>parsing error</source>
       <translation>fortolkningsfejl</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/services/abstract/feed.cpp" line="301"/>
+      <location filename="../src/librssguard/services/abstract/feed.cpp" line="302"/>
       <source>error</source>
       <translation>fejl</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/services/abstract/feed.cpp" line="375"/>
+      <location filename="../src/librssguard/services/abstract/feed.cpp" line="372"/>
       <source>Auto-update status: %1
 Active message filters: %2
 Status: %3
@@ -6218,7 +6217,7 @@ Feedly is a secure space where you can privately organize and research the topic
 Feedly is a secure space where you can privately organize and research the topics and trends that matter to you.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/database/databasequeries.cpp" line="2910"/>
+      <location filename="../src/librssguard/database/databasequeries.cpp" line="2909"/>
       <source>Cannot insert article filter, because current database cannot return last inserted row ID.</source>
       <translation type="unfinished">Cannot insert article filter, because current database cannot return last inserted row ID.</translation>
     </message>
@@ -6292,37 +6291,37 @@ List of supported readers:</translation>
       <translation>Kan ikke logge på</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/miscellaneous/skinfactory.cpp" line="621"/>
+      <location filename="../src/librssguard/miscellaneous/skinfactory.cpp" line="617"/>
       <source>interesting stuff</source>
       <translation type="unfinished">interesting stuff</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/miscellaneous/skinfactory.cpp" line="624"/>
+      <location filename="../src/librssguard/miscellaneous/skinfactory.cpp" line="620"/>
       <source>interesting stuff (highlighted)</source>
       <translation type="unfinished">interesting stuff (highlighted)</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/miscellaneous/skinfactory.cpp" line="627"/>
+      <location filename="../src/librssguard/miscellaneous/skinfactory.cpp" line="623"/>
       <source>errored items</source>
       <translation type="unfinished">errored items</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/miscellaneous/skinfactory.cpp" line="630"/>
+      <location filename="../src/librssguard/miscellaneous/skinfactory.cpp" line="626"/>
       <source>errored items (highlighted)</source>
       <translation type="unfinished">errored items (highlighted)</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/miscellaneous/skinfactory.cpp" line="633"/>
+      <location filename="../src/librssguard/miscellaneous/skinfactory.cpp" line="629"/>
       <source>items with new articles</source>
       <translation type="unfinished">items with new articles</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/miscellaneous/skinfactory.cpp" line="636"/>
+      <location filename="../src/librssguard/miscellaneous/skinfactory.cpp" line="632"/>
       <source>items with new articles (highlighted)</source>
       <translation type="unfinished">items with new articles (highlighted)</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/miscellaneous/skinfactory.cpp" line="639"/>
+      <location filename="../src/librssguard/miscellaneous/skinfactory.cpp" line="635"/>
       <source>OK-ish color</source>
       <translation type="unfinished">OK-ish color</translation>
     </message>
@@ -8313,12 +8312,17 @@ Also, relaunch &quot;Settings&quot; dialog after you install Node.js.</translati
       <translation type="unfinished">There are some built-in notification sounds. Just start typing &quot;:&quot; and they will show up.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/settings/settingsnotifications.cpp" line="107"/>
+      <location filename="../src/librssguard/gui/settings/settingsnotifications.cpp" line="73"/>
+      <source>%1 (not supported on Wayland)</source>
+      <translation type="unfinished">%1 (not supported on Wayland)</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard/gui/settings/settingsnotifications.cpp" line="117"/>
       <source>How do I look?</source>
       <translation type="unfinished">How do I look?</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/settings/settingsnotifications.cpp" line="108"/>
+      <location filename="../src/librssguard/gui/settings/settingsnotifications.cpp" line="118"/>
       <source>Just testing new notifications settings. That&apos;s all.</source>
       <translation type="unfinished">Just testing new notifications settings. That&apos;s all.</translation>
     </message>
@@ -8427,7 +8431,7 @@ Also, relaunch &quot;Settings&quot; dialog after you install Node.js.</translati
       <translation>Avisfremvisning</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/miscellaneous/skinfactory.cpp" line="539"/>
+      <location filename="../src/librssguard/miscellaneous/skinfactory.cpp" line="535"/>
       <source>file %1 not found</source>
       <translation type="unfinished">file %1 not found</translation>
     </message>
@@ -8540,17 +8544,6 @@ Also, relaunch &quot;Settings&quot; dialog after you install Node.js.</translati
   <context>
     <name>StandardFeed</name>
     <message>
-      <location filename="../src/librssguard-standard/src/standardfeed.cpp" line="104"/>
-      <source>Encoding: %1
-Type: %2
-Post-processing script: %3
-Do not use raw XML saving: %4</source>
-      <translation type="unfinished">Encoding: %1
-Type: %2
-Post-processing script: %3
-Do not use raw XML saving: %4</translation>
-    </message>
-    <message>
       <location filename="../src/librssguard-standard/src/standardfeed.cpp" line="111"/>
       <source>yes</source>
       <translation>ja</translation>
@@ -8614,6 +8607,17 @@ Status: %3
 Source: %4
 Item ID: %5
 </translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard-standard/src/standardfeed.cpp" line="104"/>
+      <source>Encoding: %1
+Type: %2
+Post-processing script: %3
+Use raw XML saving: %4</source>
+      <translation type="unfinished">Encoding: %1
+Type: %2
+Post-processing script: %3
+Use raw XML saving: %4</translation>
     </message>
     <message>
       <location filename="../src/librssguard-standard/src/standardfeed.cpp" line="383"/>
