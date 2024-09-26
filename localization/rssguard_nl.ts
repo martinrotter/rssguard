@@ -8547,8 +8547,8 @@ Post-processing script: %3
 Do not use raw XML saving: %4</source>
       <translation>Codering: %1
 Type: %2
-Nabewerkingsscript: %3
-Geen ruwe XML opslaan: %4</translation>
+Achteraf-toepassen script: %3
+Ruwe XML opslaan: %4</translation>
     </message>
     <message>
       <location filename="../src/librssguard-standard/src/standardfeed.cpp" line="111"/>
