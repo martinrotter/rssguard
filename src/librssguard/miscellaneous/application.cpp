@@ -285,6 +285,7 @@ Application::Application(const QString& id, int& argc, char** argv, const QStrin
     m_notifications->save({Notification(Notification::Event::GeneralEvent, true),
                            Notification(Notification::Event::NewUnreadArticlesFetched,
                                         true,
+                                        true,
                                         QSL("%1/notify.wav").arg(SOUNDS_BUILTIN_DIRECTORY)),
                            Notification(Notification::Event::NewAppVersionAvailable, true),
                            Notification(Notification::Event::LoginFailure, true),
@@ -775,7 +776,9 @@ void Application::showGuiMessageCore(Notification::Event event,
   if (m_notifications->areNotificationsEnabled()) {
     auto notification = m_notifications->notificationForEvent(event);
 
-    notification.playSound(this);
+    if (notification.soundEnabled()) {
+      notification.playSound(this);
+    }
 
     if (notification.balloonEnabled() && dest.m_tray) {
       if (notification.event() == Notification::Event::ArticlesFetchingStarted && m_mainForm != nullptr &&

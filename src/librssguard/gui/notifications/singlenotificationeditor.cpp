@@ -26,6 +26,7 @@ SingleNotificationEditor::SingleNotificationEditor(const Notification& notificat
   connect(m_ui.m_btnBrowseSound, &QPushButton::clicked, this, &SingleNotificationEditor::selectSoundFile);
   connect(m_ui.m_txtSound, &QLineEdit::textChanged, this, &SingleNotificationEditor::notificationChanged);
   connect(m_ui.m_cbBalloon, &QCheckBox::toggled, this, &SingleNotificationEditor::notificationChanged);
+  connect(m_ui.m_cbPlaySound, &QCheckBox::toggled, this, &SingleNotificationEditor::notificationChanged);
   connect(m_ui.m_slidVolume, &QSlider::valueChanged, this, &SingleNotificationEditor::notificationChanged);
 
   QCompleter* completer = new QCompleter(qApp->builtinSounds(), this);
@@ -37,6 +38,7 @@ SingleNotificationEditor::SingleNotificationEditor(const Notification& notificat
 Notification SingleNotificationEditor::notification() const {
   return Notification(m_notificationEvent,
                       m_ui.m_cbBalloon->isChecked(),
+                      m_ui.m_cbPlaySound->isChecked(),
                       m_ui.m_txtSound->text(),
                       m_ui.m_slidVolume->value());
 }
@@ -60,6 +62,7 @@ void SingleNotificationEditor::loadNotification(const Notification& notification
   m_ui.m_txtSound->setText(notification.soundPath());
   m_ui.m_slidVolume->setValue(notification.volume());
   m_ui.m_cbBalloon->setChecked(notification.balloonEnabled());
+  m_ui.m_cbPlaySound->setChecked(notification.soundEnabled());
   m_notificationEvent = notification.event();
 
   setTitle(Notification::nameForEvent(notification.event()));

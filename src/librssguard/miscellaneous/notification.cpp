@@ -15,8 +15,12 @@
 #endif
 #endif
 
-Notification::Notification(Notification::Event event, bool balloon, const QString& sound_path, int volume)
-  : m_event(event), m_balloonEnabled(balloon), m_soundPath(sound_path), m_volume(volume) {}
+Notification::Notification(Notification::Event event,
+                           bool balloon,
+                           bool play_sound,
+                           const QString& sound_path,
+                           int volume)
+  : m_event(event), m_balloonEnabled(balloon), m_soundEnabled(play_sound), m_soundPath(sound_path), m_volume(volume) {}
 
 Notification::Event Notification::event() const {
   return m_event;
@@ -153,6 +157,10 @@ QString Notification::nameForEvent(Notification::Event event) {
   }
 }
 
+void Notification::setSoundEnabled(bool play_sound) {
+  m_soundEnabled = play_sound;
+}
+
 int Notification::volume() const {
   return m_volume;
 }
@@ -163,6 +171,10 @@ qreal Notification::fractionalVolume() const {
 
 void Notification::setVolume(int volume) {
   m_volume = volume;
+}
+
+bool Notification::soundEnabled() const {
+  return m_soundEnabled;
 }
 
 bool Notification::balloonEnabled() const {

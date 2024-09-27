@@ -51,10 +51,11 @@ void NotificationFactory::load(Settings* settings) {
     auto event = Notification::Event(key.toInt());
     auto data = settings->value(GROUP(Notifications), key).toStringList();
     auto enabled = data.at(0).toInt() != 0;
-    auto sound = data.at(1);
+    auto sound_path = data.at(1);
     auto volume = data.size() > 2 ? data.at(2).toInt() : DEFAULT_NOTIFICATION_VOLUME;
+    auto play_sound = data.size() > 3 ? data.at(3).toInt() != 0 : true;
 
-    m_notifications.append(Notification(event, enabled, sound, volume));
+    m_notifications.append(Notification(event, enabled, play_sound, sound_path, volume));
   }
 }
 
@@ -67,6 +68,7 @@ void NotificationFactory::save(const QList<Notification>& new_notifications, Set
                        QString::number(int(n.event())),
                        QStringList{n.balloonEnabled() ? QSL("1") : QSL("0"),
                                    n.soundPath(),
-                                   QString::number(n.volume())});
+                                   QString::number(n.volume()),
+                                   n.soundEnabled() ? QSL("1") : QSL("0")});
   }
 }
