@@ -42,7 +42,7 @@ if ($use_qt5 -eq "ON") {
   $use_qtmultimedia = "ON"
 }
 else {
-  $qt_version = "6.7.2"
+  $qt_version = "6.7.3"
 
   if ($use_webengine -eq "ON") {
     $use_libmpv = "ON"
@@ -56,7 +56,7 @@ else {
 
 $is_qt_6 = $qt_version.StartsWith("6")
 
-$maria_version = "11.4.2"
+$maria_version = "11.4.3"
 $maria_link = "https://archive.mariadb.org/mariadb-$maria_version/winx64-packages/mariadb-$maria_version-winx64.zip"
 $maria_output = "maria.zip"
 
