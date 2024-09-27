@@ -182,7 +182,7 @@ Error: %1</translation>
   <context>
     <name>Application</name>
     <message>
-      <location filename="../src/librssguard/miscellaneous/application.cpp" line="1232"/>
+      <location filename="../src/librssguard/miscellaneous/application.cpp" line="1236"/>
       <source>Application is already running.</source>
       <translation>La aplicación ya está en ejecución.</translation>
     </message>
@@ -207,37 +207,36 @@ Error: %1</translation>
       <translation>Fue imposible iniciar la restauración de la configuración. Verifique que la carpeta de salida tiene permisos de escritura.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/miscellaneous/application.cpp" line="1250"/>
+      <location filename="../src/librssguard/miscellaneous/application.cpp" line="1254"/>
       <source>Cannot add feed</source>
       <translation>Imposible añadir la fuente</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/miscellaneous/application.cpp" line="1251"/>
+      <location filename="../src/librssguard/miscellaneous/application.cpp" line="1255"/>
       <source>Feed cannot be added because there is no active account which can add feeds.</source>
       <translation>Imposible agregar la fuente porque se carece de una cuenta activa que pueda agregar fuentes.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/miscellaneous/application.cpp" line="1403"/>
-      <location filename="../src/librssguard/miscellaneous/application.cpp" line="1415"/>
+      <location filename="../src/librssguard/miscellaneous/application.cpp" line="1419"/>
       <source>Node.js</source>
       <translation>Node.js</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/miscellaneous/application.cpp" line="1404"/>
+      <location filename="../src/librssguard/miscellaneous/application.cpp" line="1408"/>
       <source>Packages were NOT updated because of error: %2. Affected packages:
 %1</source>
       <translation>Los paquetes SIN actualizar debido al error: %2. Paquetes afectados:
 %1</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/miscellaneous/application.cpp" line="1416"/>
+      <location filename="../src/librssguard/miscellaneous/application.cpp" line="1420"/>
       <source>These packages were installed/updated:
 %1</source>
       <translation>Éstos paquetes fueron instalados/actualizados:
 %1</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/miscellaneous/application.cpp" line="1110"/>
+      <location filename="../src/librssguard/miscellaneous/application.cpp" line="1114"/>
       <source>Unread articles fetched</source>
       <translation>Artículos sin leer obtenidos</translation>
     </message>
@@ -247,7 +246,7 @@ Error: %1</translation>
       <translation>Ir al registro de cambios</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/miscellaneous/application.cpp" line="1181"/>
+      <location filename="../src/librssguard/miscellaneous/application.cpp" line="1185"/>
       <source>AdBlock needs to be configured</source>
       <translation>Es necesario configurar AdBlock</translation>
     </message>
@@ -268,12 +267,12 @@ Por favor, consulte las NUEVAS funciones incluidas en esta
 versión pulsando en esta notificación emergente.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/miscellaneous/application.cpp" line="1182"/>
+      <location filename="../src/librssguard/miscellaneous/application.cpp" line="1186"/>
       <source>AdBlock is not configured properly. Go to &quot;Settings&quot; -&gt; &quot;Node.js&quot; and check if your Node.js is properly configured.</source>
       <translation>AdBlock está configurado incorrectamente. Vaya a &quot;Configuración&quot; -&gt; &quot;Node.js&quot; y verifique si Node.js esté configurado correctamente.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/miscellaneous/application.cpp" line="1231"/>
+      <location filename="../src/librssguard/miscellaneous/application.cpp" line="1235"/>
       <source>Already running</source>
       <translation>Ya está ejecutándose</translation>
     </message>
@@ -920,33 +919,33 @@ Haga clic aquí para abrir el directorio principal.</translation>
   <context>
     <name>Feed</name>
     <message>
-      <location filename="../src/librssguard/services/abstract/feed.cpp" line="262"/>
+      <location filename="../src/librssguard/services/abstract/feed.cpp" line="263"/>
       <source>uses global settings, but global auto-fetching of articles is disabled</source>
       <translation>utiliza la configuración global, pero la recuperación automática global de artículos está deshabilitada</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/services/abstract/feed.cpp" line="286"/>
+      <location filename="../src/librssguard/services/abstract/feed.cpp" line="287"/>
       <source>no errors</source>
       <translation>sin errores</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/services/abstract/feed.cpp" line="292"/>
+      <location filename="../src/librssguard/services/abstract/feed.cpp" line="293"/>
       <source>authentication error</source>
       <translation>error de autenticación</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/services/abstract/feed.cpp" line="295"/>
+      <location filename="../src/librssguard/services/abstract/feed.cpp" line="296"/>
       <source>network error</source>
       <translation>error de la red</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/services/abstract/feed.cpp" line="248"/>
+      <location filename="../src/librssguard/services/abstract/feed.cpp" line="249"/>
       <source>does not use auto-fetching of articles</source>
       <extracomment>Describes feed auto-update status.</extracomment>
       <translation>omite utilizar la recuperación automática de artículos</translation>
     </message>
     <message numerus="yes">
-      <location filename="../src/librssguard/services/abstract/feed.cpp" line="259"/>
+      <location filename="../src/librssguard/services/abstract/feed.cpp" line="260"/>
       <source>uses global settings (%n minute(s) to next auto-fetch of articles)</source>
       <translation>
         <numerusform>utiliza la configuración global (%n minuto(s) para la próxima obtención automática de artículos)</numerusform>
@@ -954,7 +953,7 @@ Haga clic aquí para abrir el directorio principal.</translation>
       </translation>
     </message>
     <message numerus="yes">
-      <location filename="../src/librssguard/services/abstract/feed.cpp" line="273"/>
+      <location filename="../src/librssguard/services/abstract/feed.cpp" line="274"/>
       <source>uses specific settings (%n minute(s) to next auto-fetching of new articles)</source>
       <extracomment>Describes feed auto-update status.</extracomment>
       <translation>
@@ -963,22 +962,22 @@ Haga clic aquí para abrir el directorio principal.</translation>
       </translation>
     </message>
     <message>
-      <location filename="../src/librssguard/services/abstract/feed.cpp" line="289"/>
+      <location filename="../src/librssguard/services/abstract/feed.cpp" line="290"/>
       <source>has new articles</source>
       <translation>tiene nuevos artículos</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/services/abstract/feed.cpp" line="298"/>
+      <location filename="../src/librssguard/services/abstract/feed.cpp" line="299"/>
       <source>parsing error</source>
       <translation>error de sintaxis</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/services/abstract/feed.cpp" line="301"/>
+      <location filename="../src/librssguard/services/abstract/feed.cpp" line="302"/>
       <source>error</source>
       <translation>error</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/services/abstract/feed.cpp" line="375"/>
+      <location filename="../src/librssguard/services/abstract/feed.cpp" line="372"/>
       <source>Auto-update status: %1
 Active message filters: %2
 Status: %3
@@ -6218,7 +6217,7 @@ Feedly is a secure space where you can privately organize and research the topic
 Feedly es un espacio seguro donde puede organizar e investigar de forma privada los temas y tendencias que le interesan.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/database/databasequeries.cpp" line="2910"/>
+      <location filename="../src/librssguard/database/databasequeries.cpp" line="2909"/>
       <source>Cannot insert article filter, because current database cannot return last inserted row ID.</source>
       <translation>Imposible insertar el filtro de artículo porque la base de datos actual no puede devolver el ID de la última fila insertada.</translation>
     </message>
@@ -6292,37 +6291,37 @@ Lista de lectores compatibles:</translation>
       <translation>Error de inicio de sesion</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/miscellaneous/skinfactory.cpp" line="621"/>
+      <location filename="../src/librssguard/miscellaneous/skinfactory.cpp" line="617"/>
       <source>interesting stuff</source>
       <translation>cosas interesantes</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/miscellaneous/skinfactory.cpp" line="624"/>
+      <location filename="../src/librssguard/miscellaneous/skinfactory.cpp" line="620"/>
       <source>interesting stuff (highlighted)</source>
       <translation>cosas interesantes (resaltadas)</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/miscellaneous/skinfactory.cpp" line="627"/>
+      <location filename="../src/librssguard/miscellaneous/skinfactory.cpp" line="623"/>
       <source>errored items</source>
       <translation>elementos erróneos</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/miscellaneous/skinfactory.cpp" line="630"/>
+      <location filename="../src/librssguard/miscellaneous/skinfactory.cpp" line="626"/>
       <source>errored items (highlighted)</source>
       <translation>elementos erróneos (resaltados)</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/miscellaneous/skinfactory.cpp" line="633"/>
+      <location filename="../src/librssguard/miscellaneous/skinfactory.cpp" line="629"/>
       <source>items with new articles</source>
       <translation>Elementos con artículos nuevos</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/miscellaneous/skinfactory.cpp" line="636"/>
+      <location filename="../src/librssguard/miscellaneous/skinfactory.cpp" line="632"/>
       <source>items with new articles (highlighted)</source>
       <translation>Elementos con artículos nuevos (resaltados)</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/miscellaneous/skinfactory.cpp" line="639"/>
+      <location filename="../src/librssguard/miscellaneous/skinfactory.cpp" line="635"/>
       <source>OK-ish color</source>
       <translation>Color aceptable</translation>
     </message>
@@ -8313,12 +8312,17 @@ Además, reinicie el cuadro de diálogo &quot;Configuración&quot; después de i
       <translation>Hay algunos sonidos de notificación integrados. Sólo empieza a escribir &quot;:&quot; y se mostrarán.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/settings/settingsnotifications.cpp" line="107"/>
+      <location filename="../src/librssguard/gui/settings/settingsnotifications.cpp" line="73"/>
+      <source>%1 (not supported on Wayland)</source>
+      <translation type="unfinished">%1 (not supported on Wayland)</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard/gui/settings/settingsnotifications.cpp" line="117"/>
       <source>How do I look?</source>
       <translation>¿Cómo se ve?</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/settings/settingsnotifications.cpp" line="108"/>
+      <location filename="../src/librssguard/gui/settings/settingsnotifications.cpp" line="118"/>
       <source>Just testing new notifications settings. That&apos;s all.</source>
       <translation>Sólo probando ajustes de notificaciones. Éso es todo.</translation>
     </message>
@@ -8427,7 +8431,7 @@ Además, reinicie el cuadro de diálogo &quot;Configuración&quot; después de i
       <translation>Vista en modo diario</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/miscellaneous/skinfactory.cpp" line="539"/>
+      <location filename="../src/librssguard/miscellaneous/skinfactory.cpp" line="535"/>
       <source>file %1 not found</source>
       <translation>imposible encontrar archivo %1</translation>
     </message>
@@ -8540,17 +8544,6 @@ Además, reinicie el cuadro de diálogo &quot;Configuración&quot; después de i
   <context>
     <name>StandardFeed</name>
     <message>
-      <location filename="../src/librssguard-standard/src/standardfeed.cpp" line="104"/>
-      <source>Encoding: %1
-Type: %2
-Post-processing script: %3
-Do not use raw XML saving: %4</source>
-      <translation type="unfinished">Encoding: %1
-Type: %2
-Post-processing script: %3
-Do not use raw XML saving: %4</translation>
-    </message>
-    <message>
       <location filename="../src/librssguard-standard/src/standardfeed.cpp" line="111"/>
       <source>yes</source>
       <translation>si</translation>
@@ -8614,6 +8607,17 @@ Estado: %3
 Origen: %4
 ID artículo: %5
 </translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard-standard/src/standardfeed.cpp" line="104"/>
+      <source>Encoding: %1
+Type: %2
+Post-processing script: %3
+Use raw XML saving: %4</source>
+      <translation type="unfinished">Encoding: %1
+Type: %2
+Post-processing script: %3
+Use raw XML saving: %4</translation>
     </message>
     <message>
       <location filename="../src/librssguard-standard/src/standardfeed.cpp" line="383"/>

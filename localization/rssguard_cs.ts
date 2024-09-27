@@ -182,7 +182,7 @@ Chyba: %1</translation>
   <context>
     <name>Application</name>
     <message>
-      <location filename="../src/librssguard/miscellaneous/application.cpp" line="1232"/>
+      <location filename="../src/librssguard/miscellaneous/application.cpp" line="1236"/>
       <source>Application is already running.</source>
       <translation>Aplikace již běží</translation>
     </message>
@@ -207,37 +207,36 @@ Chyba: %1</translation>
       <translation>Obnovení nastavení nebylo spuštěno. Ujistěte se, že cílový adresář je zapisovatelný.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/miscellaneous/application.cpp" line="1250"/>
+      <location filename="../src/librssguard/miscellaneous/application.cpp" line="1254"/>
       <source>Cannot add feed</source>
       <translation>Nelze přidat kanál</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/miscellaneous/application.cpp" line="1251"/>
+      <location filename="../src/librssguard/miscellaneous/application.cpp" line="1255"/>
       <source>Feed cannot be added because there is no active account which can add feeds.</source>
       <translation>Kanál nemůže být přidán, protože nemáte aktivovaný žádný účet který umí přidávat kanály.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/miscellaneous/application.cpp" line="1403"/>
-      <location filename="../src/librssguard/miscellaneous/application.cpp" line="1415"/>
+      <location filename="../src/librssguard/miscellaneous/application.cpp" line="1419"/>
       <source>Node.js</source>
       <translation type="unfinished">Node.js</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/miscellaneous/application.cpp" line="1404"/>
+      <location filename="../src/librssguard/miscellaneous/application.cpp" line="1408"/>
       <source>Packages were NOT updated because of error: %2. Affected packages:
 %1</source>
       <translation>Balíčky NEBYLY aktualizovány z důvodu chyby: %2. Postižené balíčky:
 %1</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/miscellaneous/application.cpp" line="1416"/>
+      <location filename="../src/librssguard/miscellaneous/application.cpp" line="1420"/>
       <source>These packages were installed/updated:
 %1</source>
       <translation>Tyto balíčky byly nainstalovány/aktualizovány:
 %1</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/miscellaneous/application.cpp" line="1110"/>
+      <location filename="../src/librssguard/miscellaneous/application.cpp" line="1114"/>
       <source>Unread articles fetched</source>
       <translation>Staženy nepřečtené zprávy</translation>
     </message>
@@ -247,7 +246,7 @@ Chyba: %1</translation>
       <translation>Zobrazit seznam změn</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/miscellaneous/application.cpp" line="1181"/>
+      <location filename="../src/librssguard/miscellaneous/application.cpp" line="1185"/>
       <source>AdBlock needs to be configured</source>
       <translation>Je třeba nastavit AdBlock</translation>
     </message>
@@ -268,12 +267,12 @@ Prosím, zkontrolujte novinky kliknutím
 na tuto bublinu.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/miscellaneous/application.cpp" line="1182"/>
+      <location filename="../src/librssguard/miscellaneous/application.cpp" line="1186"/>
       <source>AdBlock is not configured properly. Go to &quot;Settings&quot; -&gt; &quot;Node.js&quot; and check if your Node.js is properly configured.</source>
       <translation>AdBlock není korektně nakonfigurován. Běžte do &quot;Nastavení&quot; -&gt; &quot;Node.js&quot; a zkontrolujte nastavení.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/miscellaneous/application.cpp" line="1231"/>
+      <location filename="../src/librssguard/miscellaneous/application.cpp" line="1235"/>
       <source>Already running</source>
       <translation>Již běží</translation>
     </message>
@@ -930,33 +929,33 @@ Klikněte zde pro otevření nadřazeného adresáře.</translation>
   <context>
     <name>Feed</name>
     <message>
-      <location filename="../src/librssguard/services/abstract/feed.cpp" line="262"/>
+      <location filename="../src/librssguard/services/abstract/feed.cpp" line="263"/>
       <source>uses global settings, but global auto-fetching of articles is disabled</source>
       <translation>používá globální nastavení, ale globální stahování zpráv je zakázáno</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/services/abstract/feed.cpp" line="286"/>
+      <location filename="../src/librssguard/services/abstract/feed.cpp" line="287"/>
       <source>no errors</source>
       <translation>žádné chyby</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/services/abstract/feed.cpp" line="292"/>
+      <location filename="../src/librssguard/services/abstract/feed.cpp" line="293"/>
       <source>authentication error</source>
       <translation>chyba autentifikace</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/services/abstract/feed.cpp" line="295"/>
+      <location filename="../src/librssguard/services/abstract/feed.cpp" line="296"/>
       <source>network error</source>
       <translation>chyba sítě</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/services/abstract/feed.cpp" line="248"/>
+      <location filename="../src/librssguard/services/abstract/feed.cpp" line="249"/>
       <source>does not use auto-fetching of articles</source>
       <extracomment>Describes feed auto-update status.</extracomment>
       <translation>nestahuje zprávy automaticky</translation>
     </message>
     <message numerus="yes">
-      <location filename="../src/librssguard/services/abstract/feed.cpp" line="259"/>
+      <location filename="../src/librssguard/services/abstract/feed.cpp" line="260"/>
       <source>uses global settings (%n minute(s) to next auto-fetch of articles)</source>
       <translation>
         <numerusform>používá globální nastavení (%n minuta do dalšího stahování zpráv)</numerusform>
@@ -966,7 +965,7 @@ Klikněte zde pro otevření nadřazeného adresáře.</translation>
       </translation>
     </message>
     <message numerus="yes">
-      <location filename="../src/librssguard/services/abstract/feed.cpp" line="273"/>
+      <location filename="../src/librssguard/services/abstract/feed.cpp" line="274"/>
       <source>uses specific settings (%n minute(s) to next auto-fetching of new articles)</source>
       <extracomment>Describes feed auto-update status.</extracomment>
       <translation>
@@ -977,22 +976,22 @@ Klikněte zde pro otevření nadřazeného adresáře.</translation>
       </translation>
     </message>
     <message>
-      <location filename="../src/librssguard/services/abstract/feed.cpp" line="289"/>
+      <location filename="../src/librssguard/services/abstract/feed.cpp" line="290"/>
       <source>has new articles</source>
       <translation>má nové zprávy</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/services/abstract/feed.cpp" line="298"/>
+      <location filename="../src/librssguard/services/abstract/feed.cpp" line="299"/>
       <source>parsing error</source>
       <translation>špatný formát kanálu</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/services/abstract/feed.cpp" line="301"/>
+      <location filename="../src/librssguard/services/abstract/feed.cpp" line="302"/>
       <source>error</source>
       <translation>chyba</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/services/abstract/feed.cpp" line="375"/>
+      <location filename="../src/librssguard/services/abstract/feed.cpp" line="372"/>
       <source>Auto-update status: %1
 Active message filters: %2
 Status: %3
@@ -6260,7 +6259,7 @@ Feedly is a secure space where you can privately organize and research the topic
 Feedly je bezpečný prostor, kde můžete soukromě organizovat a prohledávat témata a trendy, které jsou pro vás důležité.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/database/databasequeries.cpp" line="2910"/>
+      <location filename="../src/librssguard/database/databasequeries.cpp" line="2909"/>
       <source>Cannot insert article filter, because current database cannot return last inserted row ID.</source>
       <translation>Nelze vložit filtr zpráv, protože databáze neumí vrátit ID.</translation>
     </message>
@@ -6334,37 +6333,37 @@ Podporované čtečky:</translation>
       <translation>Přihlášení selhalo</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/miscellaneous/skinfactory.cpp" line="621"/>
+      <location filename="../src/librssguard/miscellaneous/skinfactory.cpp" line="617"/>
       <source>interesting stuff</source>
       <translation>zajímavá věc</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/miscellaneous/skinfactory.cpp" line="624"/>
+      <location filename="../src/librssguard/miscellaneous/skinfactory.cpp" line="620"/>
       <source>interesting stuff (highlighted)</source>
       <translation>zajímavá věc (zvýrazněno)</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/miscellaneous/skinfactory.cpp" line="627"/>
+      <location filename="../src/librssguard/miscellaneous/skinfactory.cpp" line="623"/>
       <source>errored items</source>
       <translation>chybové položky</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/miscellaneous/skinfactory.cpp" line="630"/>
+      <location filename="../src/librssguard/miscellaneous/skinfactory.cpp" line="626"/>
       <source>errored items (highlighted)</source>
       <translation>chybové položky (zvýrazněno)</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/miscellaneous/skinfactory.cpp" line="633"/>
+      <location filename="../src/librssguard/miscellaneous/skinfactory.cpp" line="629"/>
       <source>items with new articles</source>
       <translation>položky s novými zprávami</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/miscellaneous/skinfactory.cpp" line="636"/>
+      <location filename="../src/librssguard/miscellaneous/skinfactory.cpp" line="632"/>
       <source>items with new articles (highlighted)</source>
       <translation>položky s novými zprávami (vybráno)</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/miscellaneous/skinfactory.cpp" line="639"/>
+      <location filename="../src/librssguard/miscellaneous/skinfactory.cpp" line="635"/>
       <source>OK-ish color</source>
       <translation>vše v pořádku</translation>
     </message>
@@ -8361,12 +8360,17 @@ Po instalaci Node.js také restartujte dialog &quot;Nastavení&quot;.</translati
       <translation>Existují některé vestavěné zvuky notifikací. Stačí začít psát &quot;:&quot; a zobrazí se.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/settings/settingsnotifications.cpp" line="107"/>
+      <location filename="../src/librssguard/gui/settings/settingsnotifications.cpp" line="73"/>
+      <source>%1 (not supported on Wayland)</source>
+      <translation type="unfinished">%1 (not supported on Wayland)</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard/gui/settings/settingsnotifications.cpp" line="117"/>
       <source>How do I look?</source>
       <translation type="unfinished">How do I look?</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/settings/settingsnotifications.cpp" line="108"/>
+      <location filename="../src/librssguard/gui/settings/settingsnotifications.cpp" line="118"/>
       <source>Just testing new notifications settings. That&apos;s all.</source>
       <translation type="unfinished">Just testing new notifications settings. That&apos;s all.</translation>
     </message>
@@ -8475,7 +8479,7 @@ Po instalaci Node.js také restartujte dialog &quot;Nastavení&quot;.</translati
       <translation>Novinový náhled</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/miscellaneous/skinfactory.cpp" line="539"/>
+      <location filename="../src/librssguard/miscellaneous/skinfactory.cpp" line="535"/>
       <source>file %1 not found</source>
       <translation type="unfinished">file %1 not found</translation>
     </message>
@@ -8588,17 +8592,6 @@ Po instalaci Node.js také restartujte dialog &quot;Nastavení&quot;.</translati
   <context>
     <name>StandardFeed</name>
     <message>
-      <location filename="../src/librssguard-standard/src/standardfeed.cpp" line="104"/>
-      <source>Encoding: %1
-Type: %2
-Post-processing script: %3
-Do not use raw XML saving: %4</source>
-      <translation type="unfinished">Encoding: %1
-Type: %2
-Post-processing script: %3
-Do not use raw XML saving: %4</translation>
-    </message>
-    <message>
       <location filename="../src/librssguard-standard/src/standardfeed.cpp" line="111"/>
       <source>yes</source>
       <translation>ano</translation>
@@ -8662,6 +8655,17 @@ Status: %3
 Source: %4
 Item ID: %5
 </translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard-standard/src/standardfeed.cpp" line="104"/>
+      <source>Encoding: %1
+Type: %2
+Post-processing script: %3
+Use raw XML saving: %4</source>
+      <translation type="unfinished">Encoding: %1
+Type: %2
+Post-processing script: %3
+Use raw XML saving: %4</translation>
     </message>
     <message>
       <location filename="../src/librssguard-standard/src/standardfeed.cpp" line="383"/>

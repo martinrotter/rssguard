@@ -180,7 +180,7 @@ Error: %1</source>
   <context>
     <name>Application</name>
     <message>
-      <location filename="../src/librssguard/miscellaneous/application.cpp" line="1232"/>
+      <location filename="../src/librssguard/miscellaneous/application.cpp" line="1236"/>
       <source>Application is already running.</source>
       <translation>應用程式已在執行。</translation>
     </message>
@@ -205,37 +205,36 @@ Error: %1</source>
       <translation>未復原設定。請確認輸出目錄可寫入。</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/miscellaneous/application.cpp" line="1250"/>
+      <location filename="../src/librssguard/miscellaneous/application.cpp" line="1254"/>
       <source>Cannot add feed</source>
       <translation>無法新增文源</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/miscellaneous/application.cpp" line="1251"/>
+      <location filename="../src/librssguard/miscellaneous/application.cpp" line="1255"/>
       <source>Feed cannot be added because there is no active account which can add feeds.</source>
       <translation>無法加入文源，因為無使用的、可加入文源的帳號。</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/miscellaneous/application.cpp" line="1403"/>
-      <location filename="../src/librssguard/miscellaneous/application.cpp" line="1415"/>
+      <location filename="../src/librssguard/miscellaneous/application.cpp" line="1419"/>
       <source>Node.js</source>
       <translation>Node.js</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/miscellaneous/application.cpp" line="1404"/>
+      <location filename="../src/librssguard/miscellaneous/application.cpp" line="1408"/>
       <source>Packages were NOT updated because of error: %2. Affected packages:
 %1</source>
       <translation>之前未更新套件，因為有後面錯誤: %2。受影響的套件有:
 %1</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/miscellaneous/application.cpp" line="1416"/>
+      <location filename="../src/librssguard/miscellaneous/application.cpp" line="1420"/>
       <source>These packages were installed/updated:
 %1</source>
       <translation>安裝過/更新過這些套件:
 %1</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/miscellaneous/application.cpp" line="1110"/>
+      <location filename="../src/librssguard/miscellaneous/application.cpp" line="1114"/>
       <source>Unread articles fetched</source>
       <translation>下載了未讀的文章</translation>
     </message>
@@ -245,7 +244,7 @@ Error: %1</source>
       <translation>前往檢視變更紀錄</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/miscellaneous/application.cpp" line="1181"/>
+      <location filename="../src/librssguard/miscellaneous/application.cpp" line="1185"/>
       <source>AdBlock needs to be configured</source>
       <translation>須設定 AdBlock</translation>
     </message>
@@ -266,12 +265,12 @@ version by clicking this popup notification.</source>
 查閱此版的新鮮事。</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/miscellaneous/application.cpp" line="1182"/>
+      <location filename="../src/librssguard/miscellaneous/application.cpp" line="1186"/>
       <source>AdBlock is not configured properly. Go to &quot;Settings&quot; -&gt; &quot;Node.js&quot; and check if your Node.js is properly configured.</source>
       <translation>AdBlock 未恰當設定。請於 &quot;設定&quot; -&gt; &quot;Node.js&quot;，檢查 Node.js 是否恰當設定。</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/miscellaneous/application.cpp" line="1231"/>
+      <location filename="../src/librssguard/miscellaneous/application.cpp" line="1235"/>
       <source>Already running</source>
       <translation>已在執行</translation>
     </message>
@@ -913,40 +912,40 @@ Click here to open parent directory.</source>
   <context>
     <name>Feed</name>
     <message>
-      <location filename="../src/librssguard/services/abstract/feed.cpp" line="262"/>
+      <location filename="../src/librssguard/services/abstract/feed.cpp" line="263"/>
       <source>uses global settings, but global auto-fetching of articles is disabled</source>
       <translation>使用全局設定，但停用全局自動下載文章</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/services/abstract/feed.cpp" line="286"/>
+      <location filename="../src/librssguard/services/abstract/feed.cpp" line="287"/>
       <source>no errors</source>
       <translation>無錯誤</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/services/abstract/feed.cpp" line="292"/>
+      <location filename="../src/librssguard/services/abstract/feed.cpp" line="293"/>
       <source>authentication error</source>
       <translation>認證錯誤</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/services/abstract/feed.cpp" line="295"/>
+      <location filename="../src/librssguard/services/abstract/feed.cpp" line="296"/>
       <source>network error</source>
       <translation>網路錯誤</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/services/abstract/feed.cpp" line="248"/>
+      <location filename="../src/librssguard/services/abstract/feed.cpp" line="249"/>
       <source>does not use auto-fetching of articles</source>
       <extracomment>Describes feed auto-update status.</extracomment>
       <translation>不啟用自動下載文章</translation>
     </message>
     <message numerus="yes">
-      <location filename="../src/librssguard/services/abstract/feed.cpp" line="259"/>
+      <location filename="../src/librssguard/services/abstract/feed.cpp" line="260"/>
       <source>uses global settings (%n minute(s) to next auto-fetch of articles)</source>
       <translation>
         <numerusform>下次自動下載文章時，使用全局設定 (%n 分鐘)</numerusform>
       </translation>
     </message>
     <message numerus="yes">
-      <location filename="../src/librssguard/services/abstract/feed.cpp" line="273"/>
+      <location filename="../src/librssguard/services/abstract/feed.cpp" line="274"/>
       <source>uses specific settings (%n minute(s) to next auto-fetching of new articles)</source>
       <extracomment>Describes feed auto-update status.</extracomment>
       <translation>
@@ -954,22 +953,22 @@ Click here to open parent directory.</source>
       </translation>
     </message>
     <message>
-      <location filename="../src/librssguard/services/abstract/feed.cpp" line="289"/>
+      <location filename="../src/librssguard/services/abstract/feed.cpp" line="290"/>
       <source>has new articles</source>
       <translation>有新文章</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/services/abstract/feed.cpp" line="298"/>
+      <location filename="../src/librssguard/services/abstract/feed.cpp" line="299"/>
       <source>parsing error</source>
       <translation>解析錯誤中</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/services/abstract/feed.cpp" line="301"/>
+      <location filename="../src/librssguard/services/abstract/feed.cpp" line="302"/>
       <source>error</source>
       <translation>錯誤</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/services/abstract/feed.cpp" line="375"/>
+      <location filename="../src/librssguard/services/abstract/feed.cpp" line="372"/>
       <source>Auto-update status: %1
 Active message filters: %2
 Status: %3
@@ -6197,7 +6196,7 @@ Feedly is a secure space where you can privately organize and research the topic
 Feedly 是個能私密組織、研究與您關切的議題與趨勢的所在。</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/database/databasequeries.cpp" line="2910"/>
+      <location filename="../src/librssguard/database/databasequeries.cpp" line="2909"/>
       <source>Cannot insert article filter, because current database cannot return last inserted row ID.</source>
       <translation>無法插入文章篩選規則，因為目前的資料庫無法傳回最後插入行的 ID。</translation>
     </message>
@@ -6271,37 +6270,37 @@ List of supported readers:</source>
       <translation>無法登入</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/miscellaneous/skinfactory.cpp" line="621"/>
+      <location filename="../src/librssguard/miscellaneous/skinfactory.cpp" line="617"/>
       <source>interesting stuff</source>
       <translation>有興趣的項目</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/miscellaneous/skinfactory.cpp" line="624"/>
+      <location filename="../src/librssguard/miscellaneous/skinfactory.cpp" line="620"/>
       <source>interesting stuff (highlighted)</source>
       <translation>有興趣的項目(標示)</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/miscellaneous/skinfactory.cpp" line="627"/>
+      <location filename="../src/librssguard/miscellaneous/skinfactory.cpp" line="623"/>
       <source>errored items</source>
       <translation>出錯的項目</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/miscellaneous/skinfactory.cpp" line="630"/>
+      <location filename="../src/librssguard/miscellaneous/skinfactory.cpp" line="626"/>
       <source>errored items (highlighted)</source>
       <translation>出錯的項目(標示)</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/miscellaneous/skinfactory.cpp" line="633"/>
+      <location filename="../src/librssguard/miscellaneous/skinfactory.cpp" line="629"/>
       <source>items with new articles</source>
       <translation>有新文章的項目</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/miscellaneous/skinfactory.cpp" line="636"/>
+      <location filename="../src/librssguard/miscellaneous/skinfactory.cpp" line="632"/>
       <source>items with new articles (highlighted)</source>
       <translation>有新文章的項目(標示)</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/miscellaneous/skinfactory.cpp" line="639"/>
+      <location filename="../src/librssguard/miscellaneous/skinfactory.cpp" line="635"/>
       <source>OK-ish color</source>
       <translation>像無問題(OK)的顏色</translation>
     </message>
@@ -8291,12 +8290,17 @@ Also, relaunch &quot;Settings&quot; dialog after you install Node.js.</source>
       <translation>有一些內建的通知音效。只要鍵入 &quot;:&quot; 就會示範播放。</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/settings/settingsnotifications.cpp" line="107"/>
+      <location filename="../src/librssguard/gui/settings/settingsnotifications.cpp" line="73"/>
+      <source>%1 (not supported on Wayland)</source>
+      <translation type="unfinished">%1 (not supported on Wayland)</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard/gui/settings/settingsnotifications.cpp" line="117"/>
       <source>How do I look?</source>
       <translation>看來如何？</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/settings/settingsnotifications.cpp" line="108"/>
+      <location filename="../src/librssguard/gui/settings/settingsnotifications.cpp" line="118"/>
       <source>Just testing new notifications settings. That&apos;s all.</source>
       <translation>只是測試新的通知設定而已。</translation>
     </message>
@@ -8405,7 +8409,7 @@ Also, relaunch &quot;Settings&quot; dialog after you install Node.js.</source>
       <translation>報紙檢視</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/miscellaneous/skinfactory.cpp" line="539"/>
+      <location filename="../src/librssguard/miscellaneous/skinfactory.cpp" line="535"/>
       <source>file %1 not found</source>
       <translation>未找到檔案 %1</translation>
     </message>
@@ -8518,17 +8522,6 @@ Also, relaunch &quot;Settings&quot; dialog after you install Node.js.</source>
   <context>
     <name>StandardFeed</name>
     <message>
-      <location filename="../src/librssguard-standard/src/standardfeed.cpp" line="104"/>
-      <source>Encoding: %1
-Type: %2
-Post-processing script: %3
-Do not use raw XML saving: %4</source>
-      <translation type="unfinished">Encoding: %1
-Type: %2
-Post-processing script: %3
-Do not use raw XML saving: %4</translation>
-    </message>
-    <message>
       <location filename="../src/librssguard-standard/src/standardfeed.cpp" line="111"/>
       <source>yes</source>
       <translation>是</translation>
@@ -8592,6 +8585,17 @@ Item ID: %5
 來源: %4
 項目 ID: %5
 </translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard-standard/src/standardfeed.cpp" line="104"/>
+      <source>Encoding: %1
+Type: %2
+Post-processing script: %3
+Use raw XML saving: %4</source>
+      <translation type="unfinished">Encoding: %1
+Type: %2
+Post-processing script: %3
+Use raw XML saving: %4</translation>
     </message>
     <message>
       <location filename="../src/librssguard-standard/src/standardfeed.cpp" line="383"/>
