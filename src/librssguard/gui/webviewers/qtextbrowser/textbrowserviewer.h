@@ -106,7 +106,9 @@ class RSSGUARD_DLLSPEC TextBrowserViewer : public QTextBrowser, public WebViewer
     QList<QUrl> m_neededResources; // All URLs here must be resolved.
     Downloader* m_resourceDownloader;
     QThread* m_resourceDownloaderThread;
-    QMap<QUrl, QByteArray> m_loadedResources; // All URLs here must be resolved.
+
+    // Contains list of precisely sized images per each url.
+    QMap<QUrl, QMap<int, QByteArray>> m_loadedResources; // All URLs here must be resolved.
     QPixmap m_placeholderImage;
     QPixmap m_placeholderImageError;
     QUrl m_currentUrl;

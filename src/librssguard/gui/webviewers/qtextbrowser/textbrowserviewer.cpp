@@ -83,17 +83,34 @@ QVariant TextBrowserViewer::loadOneResource(int type, const QUrl& name) {
   }
 
   // Resources are enabled and we already have the resource.
-  QByteArray resource_data = m_loadedResources.value(resolved_name);
+  int acceptable_width = int(width() * ACCEPTABLE_IMAGE_PERCENTUAL_WIDTH);
+
+  QMap<int, QByteArray>& resource_data_all_sizes = m_loadedResources[resolved_name];
   QImage img;
 
-  if (resource_data.isEmpty()) {
+  qDebugNN << LOGSEC_GUI << "Picture" << QUOTE_W_SPACE(name)
+           << "has these sizes cached:" << NONQUOTE_W_SPACE_DOT(resource_data_all_sizes.keys());
+
+  if (resource_data_all_sizes.isEmpty()) {
     img = m_placeholderImageError.toImage();
   }
   else {
-    img = QImage::fromData(m_loadedResources.value(resolved_name));
+    // Now, we either select specifically sized picture, or default one.
+    QByteArray resource_data;
+
+    if (resource_data_all_sizes.contains(acceptable_width)) {
+      // We have picture with this exact size. The picture was likely downsized
+      // to this size before.
+      resource_data = resource_data_all_sizes.value(acceptable_width);
+    }
+    else {
+      // We only have default size or not desired size. Return initial picture.
+      resource_data = resource_data_all_sizes.value(0);
+    }
+
+    img = QImage::fromData(resource_data);
   }
 
-  int acceptable_width = int(width() * ACCEPTABLE_IMAGE_PERCENTUAL_WIDTH);
   int img_width = img.width();
 
   if (img_width > acceptable_width) {
@@ -111,7 +128,7 @@ QVariant TextBrowserViewer::loadOneResource(int type, const QUrl& name) {
 
     if (img.save(&save_buf, "PNG", 100)) {
       save_buf.close();
-      m_loadedResources.insert(resolved_name, save_arr);
+      resource_data_all_sizes.insert(acceptable_width, save_arr);
     }
     else {
       qWarningNN << LOGSEC_GUI << "Failed to save modified image" << QUOTE_W_SPACE(name) << "to cache.";
@@ -544,12 +561,19 @@ void TextBrowserViewer::resourceDownloaded(const QUrl& url,
                                            int http_code,
                                            const QByteArray& contents) {
   Q_UNUSED(http_code)
+  if (!m_loadedResources.contains(url)) {
+    m_loadedResources.insert(url, QMap<int, QByteArray>());
+  }
+
+  QMap<int, QByteArray>& resource_data_all_sizes = m_loadedResources[url];
+
+  resource_data_all_sizes.clear();
 
   if (status == QNetworkReply::NetworkError::NoError) {
-    m_loadedResources.insert(url, contents);
+    resource_data_all_sizes.insert(0, contents);
   }
   else {
-    m_loadedResources.insert(url, {});
+    resource_data_all_sizes.insert(0, {});
   }
 
   downloadNextNeededResource();
