@@ -90,11 +90,7 @@ QModelIndexList FeedsProxyModel::match(const QModelIndex& start,
         QString item_text = item_value.toString();
 
         switch (match_type) {
-#if QT_VERSION >= 0x050F00 // Qt >= 5.15.0
           case Qt::MatchFlag::MatchRegularExpression:
-#else
-          case Qt::MatchFlag::MatchRegExp:
-#endif
             if (QRegularExpression(entered_text,
                                    QRegularExpression::PatternOption::CaseInsensitiveOption |
                                      QRegularExpression::PatternOption::UseUnicodePropertiesOption)

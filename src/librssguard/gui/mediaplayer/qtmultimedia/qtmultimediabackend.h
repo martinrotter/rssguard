@@ -8,17 +8,7 @@
 #include <QMediaPlayer>
 #include <QObject>
 
-#if QT_VERSION_MAJOR == 6
-#define PLAYBACK_STATE        PlaybackState
-#define PLAYBACK_STATE_METHOD playbackState
-#else
-#define PLAYBACK_STATE        State
-#define PLAYBACK_STATE_METHOD state
-#endif
-
-#if QT_VERSION_MAJOR == 6
 class QAudioOutput;
-#endif
 
 class QVideoWidget;
 
@@ -51,7 +41,7 @@ class QtMultimediaBackend : public PlayerBackend {
     void onAudioAvailable(bool available);
     void onVideoAvailable(bool available);
     void onMediaStatusChanged(QMediaPlayer::MediaStatus status);
-    void onPlaybackStateChanged(QMediaPlayer::PLAYBACK_STATE state);
+    void onPlaybackStateChanged(QMediaPlayer::PlaybackState state);
     void onPositionChanged(qint64 position);
     void onSeekableChanged(bool seekable);
 
@@ -68,9 +58,7 @@ class QtMultimediaBackend : public PlayerBackend {
     QString mediaStatusToString(QMediaPlayer::MediaStatus status) const;
 
   private:
-#if QT_VERSION_MAJOR == 6
     QAudioOutput* m_audio;
-#endif
 
     QMediaPlayer* m_player;
     QVideoWidget* m_video;

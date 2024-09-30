@@ -7,12 +7,9 @@
 #include <QDir>
 
 #if !defined(Q_OS_OS2)
+#include <QAudioOutput>
 #include <QMediaPlayer>
 #include <QSoundEffect>
-
-#if QT_VERSION_MAJOR == 6
-#include <QAudioOutput>
-#endif
 #endif
 
 Notification::Notification(Notification::Event event,
@@ -69,7 +66,6 @@ void Notification::playSound(Application* app) const {
 
       QMediaPlayer* play = new QMediaPlayer(app);
 
-#if QT_VERSION_MAJOR == 6
       QAudioOutput* out = new QAudioOutput(app);
 
       play->setAudioOutput(out);
@@ -92,24 +88,6 @@ void Notification::playSound(Application* app) const {
 
       play->audioOutput()->setVolume(fractionalVolume());
       play->play();
-#else
-      QObject::connect(play, &QMediaPlayer::stateChanged, play, [play](QMediaPlayer::State state) {
-        if (state == QMediaPlayer::State::StoppedState) {
-          play->deleteLater();
-        }
-      });
-
-      if (m_soundPath.startsWith(QSL(":"))) {
-        play->setMedia(QMediaContent(QUrl(QSL("qrc") + m_soundPath)));
-      }
-      else {
-        play->setMedia(QMediaContent(
-          QUrl::fromLocalFile(QDir::toNativeSeparators(app->replaceUserDataFolderPlaceholder(m_soundPath)))));
-      }
-
-      play->setVolume(m_volume);
-      play->play();
-#endif
     }
 #endif
   }

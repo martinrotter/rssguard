@@ -8,8 +8,8 @@ Here's a quick example of how to build it on Linux:
 # Create a build directory
 mkdir build-dir
 
-# Configure the project to build using Qt 6, and disable built-in web browser support
-cmake -B build-dir -S . -DCMAKE_INSTALL_PREFIX=/usr -DBUILD_WITH_QT6=ON -DNO_LITE=OFF
+# Configure the project to disable built-in web browser support
+cmake -B build-dir -S . -DCMAKE_INSTALL_PREFIX=/usr -DNO_LITE=OFF
 
 # Compile it (in parallel mode)
 cmake --build build-dir -j$(nproc)

@@ -162,9 +162,7 @@ void FeedDownloader::updateFeeds(const QList<Feed*>& feeds) {
     };
 
     m_watcherLookup.setFuture(QtConcurrent::mapped(
-#if QT_VERSION_MAJOR > 5
       qApp->workHorsePool(),
-#endif
       m_feeds,
       func));
   }

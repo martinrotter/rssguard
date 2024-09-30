@@ -64,9 +64,7 @@ QNetworkReply* BaseNetworkAccessManager::createRequest(QNetworkAccessManager::Op
   new_request.setAttribute(QNetworkRequest::Attribute::HttpPipeliningAllowedAttribute, true);
 #endif
 
-#if QT_VERSION >= 0x050F00 // Qt >= 5.15.0
   new_request.setAttribute(QNetworkRequest::Attribute::Http2AllowedAttribute, m_enableHttp2);
-#endif
 
   // new_request.setMaximumRedirectsAllowed(0);
 

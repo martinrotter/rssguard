@@ -332,17 +332,9 @@ class RSSGUARD_DLLSPEC ServiceRoot : public RootItem {
     bool m_nodeShowProbes;
 };
 
-#if QT_VERSION_MAJOR == 6
 inline size_t qHash(ServiceRoot::BagOfMessages key, size_t seed) {
   return ::qHash(static_cast<uint>(key), seed);
 }
-
-#else
-inline uint qHash(ServiceRoot::BagOfMessages key, uint seed) {
-  return ::qHash(static_cast<uint>(key), seed);
-}
-
-#endif
 
 ServiceRoot::LabelOperation operator|(ServiceRoot::LabelOperation lhs, ServiceRoot::LabelOperation rhs);
 ServiceRoot::LabelOperation operator&(ServiceRoot::LabelOperation lhs, ServiceRoot::LabelOperation rhs);

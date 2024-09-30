@@ -13,15 +13,10 @@
 #endif
 
 #if defined(Q_OS_WIN)
-#if QT_VERSION_MAJOR == 5
-#include <QtPlatformHeaders/QWindowsWindowFunctions>
-#else
 #include <QWindow>
-#endif
 #endif
 
 #include <QSettings>
-#include <QTextCodec>
 
 int main(int argc, char* argv[]) {
   qSetMessagePattern(QSL("time=\"%{time process}\" type=\"%{type}\" -> %{message}"));
@@ -31,20 +26,11 @@ int main(int argc, char* argv[]) {
   qputenv("QT_DISABLE_AUDIO_PREPARE", "1");
 
   // High DPI stuff.
-#if QT_VERSION >= 0x050E00 // Qt >= 5.14.0
   auto high_dpi_existing_env = qgetenv("QT_ENABLE_HIGHDPI_SCALING");
 
   if (high_dpi_existing_env.isEmpty()) {
     qputenv("QT_ENABLE_HIGHDPI_SCALING", "1");
   }
-#else
-  qputenv("QT_AUTO_SCREEN_SCALE_FACTOR", "1");
-#endif
-
-#if QT_VERSION_MAJOR <= 5
-  QApplication::setAttribute(Qt::ApplicationAttribute::AA_UseHighDpiPixmaps);
-  QApplication::setAttribute(Qt::ApplicationAttribute::AA_EnableHighDpiScaling);
-#endif
 
 #if defined(Q_OS_UNIX) && !defined(Q_OS_MACOS)
   QGuiApplication::setDesktopFileName(APP_REVERSE_NAME);
@@ -70,10 +56,6 @@ int main(int argc, char* argv[]) {
   for (int a = 0; a < argc; a++) {
     raw_cli_args << QString::fromLocal8Bit(av[a]);
   }
-
-#if QT_VERSION_MAJOR == 5
-  QTextCodec::setCodecForLocale(QTextCodec::codecForName("UTF-8"));
-#endif
 
   // Set some names.
   QCoreApplication::setApplicationName(QSL(APP_NAME));
@@ -113,15 +95,6 @@ int main(int argc, char* argv[]) {
   QGuiApplication::setWindowIcon(qApp->desktopAwareIcon());
 
   qApp->reactOnForeignNotifications();
-
-#if defined(Q_OS_WIN)
-#if QT_VERSION_MAJOR == 5
-  QWindowsWindowFunctions::setHasBorderInFullScreenDefault(true);
-
-  // NOTE: https://github.com/martinrotter/rssguard/issues/953 for Qt 5.
-  QWindowsWindowFunctions::setWindowActivationBehavior(QWindowsWindowFunctions::AlwaysActivateWindow);
-#endif
-#endif
 
   FormMain main_window;
 

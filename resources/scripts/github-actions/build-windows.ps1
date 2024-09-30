@@ -1,9 +1,9 @@
 $os = $args[0]
 $use_webengine = $args[1]
-$use_qt5 = $args[2]
+$qt_major = $args[2]
 
 echo "We are building for MS Windows."
-echo "OS: $os; Not lite: $use_webengine; Qt5: $use_qt5"
+echo "OS: $os; Not lite: $use_webengine"
 
 $git_revlist = git rev-list --tags --max-count=1
 $git_tag = git describe --tags $git_revlist
@@ -35,26 +35,21 @@ $AllProtocols = [System.Net.SecurityProtocolType]'Tls11,Tls12'
 $ProgressPreference = 'SilentlyContinue'
 
 # Get and prepare needed dependencies.
-if ($use_qt5 -eq "ON") {
-  $qt_version = "5.15.2"
-
-  $use_libmpv = "OFF"
-  $use_qtmultimedia = "ON"
+if ($qt_major -eq "6.3") {
+  $qt_version = "6.3.2"
 }
 else {
   $qt_version = "6.7.3"
-
-  if ($use_webengine -eq "ON") {
-    $use_libmpv = "ON"
-    $use_qtmultimedia = "OFF"
-  }
-  else {
-    $use_libmpv = "OFF"
-    $use_qtmultimedia = "ON"
-  }
 }
 
-$is_qt_6 = $qt_version.StartsWith("6")
+if ($use_webengine -eq "ON") {
+  $use_libmpv = "ON"
+  $use_qtmultimedia = "OFF"
+}
+else {
+  $use_libmpv = "OFF"
+  $use_qtmultimedia = "ON"
+}
 
 $maria_version = "11.4.3"
 $maria_link = "https://archive.mariadb.org/mariadb-$maria_version/winx64-packages/mariadb-$maria_version-winx64.zip"
@@ -102,31 +97,16 @@ $qt_path = "$old_pwd\qt"
 pip3 install -U pip
 pip3 install -I aqtinstall
 
-if ($is_qt_6) {
-  aqt -c 'aqt\settings.ini' install-qt -O "$qt_path" windows desktop $qt_version win64_msvc2019_64 -m qtwebengine qtimageformats qtmultimedia qt5compat qtwebchannel qtpositioning
-}
-else {
-  aqt -c 'aqt\settings.ini' install-qt -O "$qt_path" windows desktop $qt_version win64_msvc2019_64 -m qtwebengine
-}
+aqt -c 'aqt\settings.ini' install-qt -O "$qt_path" windows desktop $qt_version win64_msvc2019_64 -m qtwebengine qtimageformats qtmultimedia qt5compat qtwebchannel qtpositioning
 
 aqt -c 'aqt\settings.ini' install-src -O "$qt_path" windows desktop $qt_version --archives qtbase
 
 $qt_qmake = "$qt_path\$qt_version\msvc2019_64\bin\qmake.exe"
 $env:PATH = "$qt_path\$qt_version\msvc2019_64\bin\;" + $env:PATH
 
-if ($is_qt_6) {
-  # Download openssl 3.x.
-  aqt -c 'aqt\settings.ini' install-tool -O "$qt_path" windows desktop tools_opensslv3_x64 qt.tools.opensslv3.win_x64
-  $openssl_base_path = "$qt_path\Tools\OpenSSLv3\Win_x64"
-}
-else {
-  # Download openssl 1.x from external source.
-  $openssl_link = "https://download.firedaemon.com/FireDaemon-OpenSSL/openssl-1.1.1w.zip";
-  $openssl_output = "openssl.zip"
-  Invoke-WebRequest -Uri "$openssl_link" -OutFile "$openssl_output"
-  & ".\resources\scripts\7za\7za.exe" x $openssl_output
-  $openssl_base_path = "$pwd\openssl-1.1\x64"
-}
+# Download openssl 3.x.
+aqt -c 'aqt\settings.ini' install-tool -O "$qt_path" windows desktop tools_opensslv3_x64 qt.tools.opensslv3.win_x64
+$openssl_base_path = "$qt_path\Tools\OpenSSLv3\Win_x64"
 
 # Build dependencies.
 
@@ -136,18 +116,8 @@ $qt_sqldrivers_path = "$qt_path\$qt_version\Src\qtbase\src\plugins\sqldrivers"
 
 cd "$qt_sqldrivers_path"
 
-if ($is_qt_6) {
-  & $cmake_path -G Ninja -DCMAKE_BUILD_TYPE="Release" -DMySQL_INCLUDE_DIR="$maria_path\include\mysql" -DMySQL_LIBRARY="$maria_path\lib\libmariadb.lib"
-  & $cmake_path --build .
-
-  $with_qt6 = "ON"
-}
-else {
-  & $qt_qmake -- MYSQL_INCDIR="$maria_path\include\mysql" MYSQL_LIBDIR="$maria_path\lib"
-  nmake.exe sub-mysql
-
-  $with_qt6 = "OFF"
-}
+& $cmake_path -G Ninja -DCMAKE_BUILD_TYPE="Release" -DMySQL_INCLUDE_DIR="$maria_path\include\mysql" -DMySQL_LIBRARY="$maria_path\lib\libmariadb.lib"
+& $cmake_path --build .
 
 # zlib
 cd "$zlib_path"
@@ -159,7 +129,7 @@ cd "$old_pwd"
 mkdir "rssguard-build"
 cd "rssguard-build"
 
-& "$cmake_path" ".." -G Ninja -DCMAKE_BUILD_TYPE="RelWithDebInfo" -DCMAKE_VERBOSE_MAKEFILE="ON" -DBUILD_WITH_QT6="$with_qt6" -DREVISION_FROM_GIT="ON" -DUSE_SYSTEM_SQLITE="OFF" -DZLIB_ROOT="$zlib_path" -DENABLE_COMPRESSED_SITEMAP="ON" -DENABLE_MEDIAPLAYER_LIBMPV="$use_libmpv" -DENABLE_MEDIAPLAYER_QTMULTIMEDIA="$use_qtmultimedia" -DLibMPV_ROOT="$libmpv_path" -DNO_LITE="$use_webengine" -DFEEDLY_CLIENT_ID="$env:FEEDLY_CLIENT_ID" -DFEEDLY_CLIENT_SECRET="$env:FEEDLY_CLIENT_SECRET" -DGMAIL_CLIENT_ID="$env:GMAIL_CLIENT_ID" -DGMAIL_CLIENT_SECRET="$env:GMAIL_CLIENT_SECRET"
+& "$cmake_path" ".." -G Ninja -DCMAKE_BUILD_TYPE="RelWithDebInfo" -DCMAKE_VERBOSE_MAKEFILE="ON" -DREVISION_FROM_GIT="ON" -DUSE_SYSTEM_SQLITE="OFF" -DZLIB_ROOT="$zlib_path" -DENABLE_COMPRESSED_SITEMAP="ON" -DENABLE_MEDIAPLAYER_LIBMPV="$use_libmpv" -DENABLE_MEDIAPLAYER_QTMULTIMEDIA="$use_qtmultimedia" -DLibMPV_ROOT="$libmpv_path" -DNO_LITE="$use_webengine" -DFEEDLY_CLIENT_ID="$env:FEEDLY_CLIENT_ID" -DFEEDLY_CLIENT_SECRET="$env:FEEDLY_CLIENT_SECRET" -DGMAIL_CLIENT_ID="$env:GMAIL_CLIENT_ID" -DGMAIL_CLIENT_SECRET="$env:GMAIL_CLIENT_SECRET"
 & "$cmake_path" --build .
 & "$cmake_path" --install . --prefix app
 
@@ -194,12 +164,7 @@ else {
   $packagebase = "rssguard-${git_tag}-${git_revision}-lite-win"
 }
 
-if ($use_qt5 -eq "ON") {
-  $packagebase += "7"
-}
-else {
-  $packagebase += "10"
-}
+$packagebase += "10"
 
 # Create 7zip package.
 & "$old_pwd\resources\scripts\7za\7za.exe" a -t7z -mmt -mx9 "$packagebase.7z" ".\app\*"

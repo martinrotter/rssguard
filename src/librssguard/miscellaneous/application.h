@@ -34,13 +34,7 @@ class FormLog;
 class IconFactory;
 class QAction;
 class Mutex;
-
-#if QT_VERSION_MAJOR == 6
 class QWebEngineDownloadRequest;
-#else
-class QWebEngineDownloadItem;
-#endif
-
 class WebFactory;
 class NotificationFactory;
 class ToastNotificationsManager;
@@ -232,11 +226,7 @@ class RSSGUARD_DLLSPEC Application : public SingleApplication {
     void onAdBlockFailure();
 
 #if defined(NO_LITE)
-#if QT_VERSION_MAJOR == 6
     void downloadRequested(QWebEngineDownloadRequest* download_item);
-#else
-    void downloadRequested(QWebEngineDownloadItem* download_item);
-#endif
 #endif
 
     void onFeedUpdatesStarted();

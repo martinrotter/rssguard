@@ -477,12 +477,8 @@ QStringList GreaderNetwork::itemIds(const QString& stream_id,
 
     if (newer_than.isValid()) {
       full_url += QSL("&ot=%1").arg(
-#if QT_VERSION < 0x050E00 // Qt < 5.14.0
-        QDateTime(newer_than)
-#else
         newer_than
           .startOfDay()
-#endif
           .toSecsSinceEpoch());
     }
 
@@ -615,12 +611,8 @@ QList<Message> GreaderNetwork::streamContents(ServiceRoot* root, const QString& 
 
     if (m_newerThanFilter.isValid()) {
       full_url += QSL("&ot=%1").arg(
-#if QT_VERSION < 0x050E00 // Qt < 5.14.0
-        QDateTime(m_newerThanFilter)
-#else
         m_newerThanFilter
           .startOfDay()
-#endif
           .toSecsSinceEpoch());
     }
 

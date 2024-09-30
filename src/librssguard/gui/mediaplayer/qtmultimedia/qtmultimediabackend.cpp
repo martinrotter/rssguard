@@ -2,19 +2,14 @@
 
 #include "gui/mediaplayer/qtmultimedia/qtmultimediabackend.h"
 
-#if QT_VERSION_MAJOR == 6
 #include <QAudioOutput>
-#include <QWindow>
-#endif
-
 #include <QLayout>
 #include <QVideoWidget>
+#include <QWindow>
 
 QtMultimediaBackend::QtMultimediaBackend(Application* app, QWidget* parent)
   : PlayerBackend(app, parent),
-#if QT_VERSION_MAJOR == 6
     m_audio(new QAudioOutput(this)),
-#endif
     m_player(new QMediaPlayer(this)),
 
     m_video(new QVideoWidget(this)) {
@@ -22,30 +17,13 @@ QtMultimediaBackend::QtMultimediaBackend(Application* app, QWidget* parent)
 
   m_player->setVideoOutput(m_video);
 
-#if QT_VERSION_MAJOR == 6
   m_player->setAudioOutput(m_audio);
-#endif
 
   connect(m_player, &QMediaPlayer::durationChanged, this, &QtMultimediaBackend::onDurationChanged);
-
-#if QT_VERSION_MAJOR == 6
   connect(m_player, &QMediaPlayer::errorOccurred, this, &QtMultimediaBackend::onErrorOccurred);
-#else
-  connect(m_player, QOverload<QMediaPlayer::Error>::of(&QMediaPlayer::error), this, [this](QMediaPlayer::Error error) {
-    onErrorOccurred(error);
-  });
-#endif
-
-#if QT_VERSION_MAJOR == 6
   connect(m_player, &QMediaPlayer::hasAudioChanged, this, &QtMultimediaBackend::onAudioAvailable);
   connect(m_player, &QMediaPlayer::hasVideoChanged, this, &QtMultimediaBackend::onVideoAvailable);
   connect(m_player, &QMediaPlayer::playbackStateChanged, this, &QtMultimediaBackend::onPlaybackStateChanged);
-#else
-  connect(m_player, &QMediaPlayer::audioAvailableChanged, this, &QtMultimediaBackend::onAudioAvailable);
-  connect(m_player, &QMediaPlayer::videoAvailableChanged, this, &QtMultimediaBackend::onVideoAvailable);
-  connect(m_player, &QMediaPlayer::stateChanged, this, &QtMultimediaBackend::onPlaybackStateChanged);
-#endif
-
   connect(m_player, &QMediaPlayer::mediaStatusChanged, this, &QtMultimediaBackend::onMediaStatusChanged);
   connect(m_player, &QMediaPlayer::positionChanged, this, &QtMultimediaBackend::onPositionChanged);
   connect(m_player, &QMediaPlayer::seekableChanged, this, &QtMultimediaBackend::onSeekableChanged);
@@ -121,14 +99,6 @@ QString QtMultimediaBackend::errorToString(QMediaPlayer::Error error) const {
     case QMediaPlayer::AccessDeniedError:
       return tr("Access denied");
 
-#if QT_VERSION_MAJOR == 5
-    case QMediaPlayer::ServiceMissingError:
-      return tr("Service is missing");
-
-    case QMediaPlayer::MediaIsPlaylist:
-      return tr("This is playlist");
-#endif
-
     case QMediaPlayer::NoError:
       return tr("No errors");
 
@@ -138,17 +108,13 @@ QString QtMultimediaBackend::errorToString(QMediaPlayer::Error error) const {
 }
 
 void QtMultimediaBackend::playUrl(const QUrl& url) {
-#if QT_VERSION_MAJOR == 6
   m_player->setSource(url);
-#else
-  m_player->setMedia(QUrl(url));
-#endif
 
   m_player->play();
 }
 
 void QtMultimediaBackend::playPause() {
-  if (m_player->PLAYBACK_STATE_METHOD() != QMediaPlayer::PLAYBACK_STATE::PlayingState) {
+  if (m_player->playbackState() != QMediaPlayer::PlaybackState::PlayingState) {
     m_player->play();
   }
   else {
@@ -169,11 +135,7 @@ void QtMultimediaBackend::setPlaybackSpeed(int speed) {
 }
 
 void QtMultimediaBackend::setVolume(int volume) {
-#if QT_VERSION_MAJOR == 6
   m_player->audioOutput()->setVolume(convertSliderVolume(volume));
-#else
-  m_player->setVolume(volume);
-#endif
 
   emit volumeChanged(volume);
 }
@@ -188,41 +150,22 @@ void QtMultimediaBackend::setFullscreen(bool fullscreen) {
 }
 
 void QtMultimediaBackend::setMuted(bool muted) {
-  // This backend audio class does not support muting on Qt 5, so we emulate
-  // muting by seting volume to 0;
   if (muted) {
     // Remember volume and mute.
-#if QT_VERSION_MAJOR == 6
     m_volume = convertToSliderVolume(m_player->audioOutput()->volume());
-#else
-    m_volume = m_player->volume();
-#endif
 
-#if QT_VERSION_MAJOR == 6
     m_player->audioOutput()->setVolume(convertSliderVolume(0));
-#else
-    m_player->setVolume(0);
-#endif
   }
   else {
     // Unmute.
-#if QT_VERSION_MAJOR == 6
     m_player->audioOutput()->setVolume(convertSliderVolume(m_volume));
-#else
-    m_player->setVolume(m_volume);
-#endif
   }
 
   emit mutedChanged(muted);
 }
 
 QUrl QtMultimediaBackend::url() const {
-  return
-#if QT_VERSION_MAJOR == 6
-    m_player->source();
-#else
-    m_player->media().request().url();
-#endif
+  return m_player->source();
 }
 
 int QtMultimediaBackend::position() const {
@@ -263,17 +206,17 @@ void QtMultimediaBackend::onMediaStatusChanged(QMediaPlayer::MediaStatus status)
   emit statusChanged(st);
 }
 
-void QtMultimediaBackend::onPlaybackStateChanged(QMediaPlayer::PLAYBACK_STATE state) {
+void QtMultimediaBackend::onPlaybackStateChanged(QMediaPlayer::PlaybackState state) {
   switch (state) {
-    case QMediaPlayer::PLAYBACK_STATE::StoppedState:
+    case QMediaPlayer::PlaybackState::StoppedState:
       emit playbackStateChanged(PlayerBackend::PlaybackState::StoppedState);
       break;
 
-    case QMediaPlayer::PLAYBACK_STATE::PlayingState:
+    case QMediaPlayer::PlaybackState::PlayingState:
       emit playbackStateChanged(PlayerBackend::PlaybackState::PlayingState);
       break;
 
-    case QMediaPlayer::PLAYBACK_STATE::PausedState:
+    case QMediaPlayer::PlaybackState::PausedState:
       emit playbackStateChanged(PlayerBackend::PlaybackState::PausedState);
       break;
   }

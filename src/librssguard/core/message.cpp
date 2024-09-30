@@ -27,11 +27,7 @@ QList<Enclosure> Enclosures::decodeEnclosuresFromString(const QString& enclosure
   if (enc_err.error != QJsonParseError::ParseError::NoError) {
     // Provide backwards compatibility.
     auto enc = enclosures_data.split(ENCLOSURES_OUTER_SEPARATOR,
-#if QT_VERSION >= 0x050F00 // Qt >= 5.15.0
                                      Qt::SplitBehaviorFlags::SkipEmptyParts);
-#else
-                                     QString::SplitBehavior::SkipEmptyParts);
-#endif
 
     enclosures.reserve(enc.size());
 
@@ -224,12 +220,7 @@ Message Message::fromSqlRecord(const QSqlRecord& record, bool* result) {
   message.m_customHash = record.value(MSG_DB_CUSTOM_HASH_INDEX).toString();
   message.m_assignedLabelsIds = record.value(MSG_DB_LABELS_IDS)
                                   .toString()
-                                  .split('.',
-#if QT_VERSION >= 0x050F00 // Qt >= 5.15.0
-                                         Qt::SplitBehaviorFlags::SkipEmptyParts);
-#else
-                                         QString::SplitBehavior::SkipEmptyParts);
-#endif
+                                  .split('.', Qt::SplitBehaviorFlags::SkipEmptyParts);
 
   if (result != nullptr) {
     *result = true;

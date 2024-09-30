@@ -18,16 +18,10 @@
 #include <QGraphicsView>
 #include <QTimer>
 #include <QToolTip>
-#include <QWheelEvent>
-
-#if QT_VERSION_MAJOR == 6
 #include <QWebEngineContextMenuRequest>
-#else
-#include <QWebEngineContextMenuData>
-#endif
-
 #include <QWebEngineProfile>
 #include <QWebEngineSettings>
+#include <QWheelEvent>
 
 WebEngineViewer::WebEngineViewer(QWidget* parent) : QWebEngineView(parent), m_browser(nullptr), m_root(nullptr) {
   WebEnginePage* page = new WebEnginePage(this);
@@ -83,11 +77,7 @@ void WebEngineViewer::clear() {
 void WebEngineViewer::contextMenuEvent(QContextMenuEvent* event) {
   event->accept();
 
-#if QT_VERSION_MAJOR == 6
   QMenu* menu = createStandardContextMenu();
-#else
-  QMenu* menu = page()->createStandardContextMenu();
-#endif
 
   menu->removeAction(page()->action(QWebEnginePage::WebAction::OpenLinkInNewWindow));
 
@@ -258,12 +248,8 @@ QByteArray WebEngineViewer::getJsEnabledHtml(const QString& url, bool worker_thr
 }
 
 ContextMenuData WebEngineViewer::provideContextMenuData(QContextMenuEvent* event) const {
-#if QT_VERSION_MAJOR == 6
   auto* menu_pointer = lastContextMenuRequest();
   QWebEngineContextMenuRequest& menu_data = *menu_pointer;
-#else
-  QWebEngineContextMenuData menu_data = page()->contextMenuData();
-#endif
 
   ContextMenuData c;
 
