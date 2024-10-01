@@ -65,6 +65,9 @@ VALUE(bool) Network::EnableApiServerDef = false;
 DKEY Network::EnableHttp2 = "http2_enabled";
 DVALUE(bool) Network::EnableHttp2Def = false;
 
+DKEY Network::CustomUserAgent = "user_agent";
+DVALUE(QString) Network::CustomUserAgentDef = QString();
+
 DKEY Network::IgnoreAllCookies = "ignore_all_cookies";
 DVALUE(bool) Network::IgnoreAllCookiesDef = false;
 
@@ -204,6 +207,12 @@ DVALUE(bool) Messages::UseCustomFormatForDatesOnlyDef = false;
 
 DKEY Messages::RelativeTimeForNewerArticles = "relative_time_for_new_articles";
 DVALUE(int) Messages::RelativeTimeForNewerArticlesDef = -1;
+
+DKEY Messages::ArticleMarkOnSelection = "mark_message_on_selected";
+DVALUE(int) Messages::ArticleMarkOnSelectionDef = int(MessagesView::ArticleMarkingPolicy::MarkImmediately);
+
+DKEY Messages::ArticleMarkOnSelectionDelay = "mark_message_on_selected_delay";
+DVALUE(int) Messages::ArticleMarkOnSelectionDelayDef = 3000;
 
 DKEY Messages::ArticleListPadding = "article_list_padding";
 DVALUE(int) Messages::ArticleListPaddingDef = -1;

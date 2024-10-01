@@ -3,6 +3,7 @@
 #ifndef SETTINGSFEEDSMESSAGES_H
 #define SETTINGSFEEDSMESSAGES_H
 
+#include "gui/messagesview.h"
 #include "gui/settings/settingspanel.h"
 
 #include "ui_settingsfeedsmessages.h"
@@ -21,9 +22,11 @@ class SettingsFeedsMessages : public SettingsPanel {
 
   private slots:
     void updateDateTimeTooltip();
+    void updateArticleMarkingPolicyDelay();
 
   private:
     void changeFont(QLabel& lbl);
+    MessagesView::ArticleMarkingPolicy selectedArticleMarkingPolicy() const;
 
   private:
     void initializeMessageDateFormats();

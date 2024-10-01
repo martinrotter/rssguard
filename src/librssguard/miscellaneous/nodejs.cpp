@@ -110,7 +110,7 @@ NodeJs::PackageStatus NodeJs::packageStatus(const PackageMetadata& pkg) const {
   }
 }
 
-void NodeJs::installUpdatePackages(const QList<PackageMetadata>& pkgs) {
+void NodeJs::installUpdatePackages(const QObject* sndr, const QList<PackageMetadata>& pkgs) {
   QList<PackageMetadata> to_install;
   QStringList desc;
 
@@ -130,19 +130,17 @@ void NodeJs::installUpdatePackages(const QList<PackageMetadata>& pkgs) {
       }
     }
     catch (const ApplicationException& ex) {
-      emit packageError(pkgs, ex.message());
-
+      emit packageError(sndr, pkgs, ex.message());
       return;
     }
   }
 
   if (to_install.isEmpty()) {
     qDebugNN << LOGSEC_NODEJS << "Packages" << QUOTE_W_SPACE(desc.join(QL1S(", "))) << "are up-to-date.";
-
-    emit packageInstalledUpdated(pkgs, true);
+    emit packageInstalledUpdated(sndr, pkgs, true);
   }
   else {
-    installPackages(pkgs);
+    installPackages(sndr, pkgs);
   }
 }
 
@@ -150,14 +148,19 @@ QString NodeJs::packagesToString(const QList<PackageMetadata>& pkgs) {
   QStringList desc;
 
   for (const PackageMetadata& mt : pkgs) {
-    desc << QSL("%1@%2").arg(mt.m_name, mt.m_version);
+    desc << QSL("\u2022 %1@%2").arg(mt.m_name, mt.m_version);
   }
 
-  return desc.join(QL1S(", "));
+  return desc.join(QL1S("\n"));
 }
 
-void NodeJs::installPackages(const QList<PackageMetadata>& pkgs) {
+void NodeJs::installPackages(const QObject* sndr, const QList<PackageMetadata>& pkgs) {
   QStringList to_install;
+
+  qApp->showGuiMessage(Notification::Event::NodePackageUpdated,
+                       GuiMessage(tr("Node.js"),
+                                  tr("Some packages are missing and will be installed or updated:\n%1")
+                                    .arg(packagesToString(pkgs))));
 
   try {
     for (const PackageMetadata& mt : pkgs) {
@@ -169,32 +172,31 @@ void NodeJs::installPackages(const QList<PackageMetadata>& pkgs) {
     connect(proc,
             QOverload<int, QProcess::ExitStatus>::of(&QProcess::finished),
             this,
-            [pkgs, this](int exit_code, QProcess::ExitStatus status) {
-              QProcess* sndr = qobject_cast<QProcess*>(sender());
+            [=](int exit_code, QProcess::ExitStatus status) {
+              QProcess* proc_sndr = qobject_cast<QProcess*>(sender());
 
               if (exit_code != EXIT_SUCCESS || status == QProcess::ExitStatus::CrashExit) {
-                qCriticalNN << LOGSEC_NODEJS << "Error when installing packages"
-                            << QUOTE_W_SPACE_DOT(packagesToString(pkgs))
-                            << " Exit code:" << QUOTE_W_SPACE_DOT(exit_code)
-                            << " Message:" << QUOTE_W_SPACE_DOT(sndr->readAllStandardError());
+                qCriticalNN << LOGSEC_NODEJS << "Error when installing packages\n"
+                            << packagesToString(pkgs) << "\nExit code:" << QUOTE_W_SPACE_DOT(exit_code)
+                            << " Message:" << QUOTE_W_SPACE_DOT(proc_sndr->readAllStandardError());
 
-                emit packageError(pkgs, sndr->errorString());
+                emit packageError(sndr, pkgs, proc_sndr->errorString());
               }
               else {
                 qDebugNN << LOGSEC_NODEJS << "Installed/updated packages" << QUOTE_W_SPACE(packagesToString(pkgs));
-                emit packageInstalledUpdated(pkgs, false);
+                emit packageInstalledUpdated(sndr, pkgs, false);
               }
             });
     connect(proc, &QProcess::errorOccurred, this, [pkgs, this](QProcess::ProcessError error) {
       QProcess* sndr = qobject_cast<QProcess*>(sender());
 
-      qCriticalNN << LOGSEC_NODEJS << "Error when installing packages" << QUOTE_W_SPACE_DOT(packagesToString(pkgs))
-                  << " Message:" << QUOTE_W_SPACE_DOT(error);
+      qCriticalNN << LOGSEC_NODEJS << "Error when installing packages\n"
+                  << packagesToString(pkgs) << "\nMessage:" << QUOTE_W_SPACE_DOT(error);
 
-      emit packageError(pkgs, sndr->errorString());
+      emit packageError(sndr, pkgs, sndr->errorString());
     });
 
-    qDebugNN << LOGSEC_NODEJS << "Installing packages" << QUOTE_W_SPACE_DOT(packagesToString(pkgs));
+    qDebugNN << LOGSEC_NODEJS << "Installing packages\n" << packagesToString(pkgs);
 
     to_install.prepend(QSL("--production"));
     to_install.prepend(QSL("install"));
@@ -208,6 +210,6 @@ void NodeJs::installPackages(const QList<PackageMetadata>& pkgs) {
     qCriticalNN << LOGSEC_NODEJS << "Packages" << QUOTE_W_SPACE(to_install)
                 << "were not installed, error:" << QUOTE_W_SPACE_DOT(ex.message());
 
-    emit packageError(pkgs, ex.message());
+    emit packageError(sndr, pkgs, ex.message());
   }
 }

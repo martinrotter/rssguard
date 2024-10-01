@@ -4,6 +4,7 @@
 #define SETTINGS_H
 
 #include "definitions/definitions.h"
+#include "gui/messagesview.h"
 #include "gui/notifications/toastnotificationsmanager.h"
 #include "miscellaneous/settingsproperties.h"
 #include "miscellaneous/textfactory.h"
@@ -156,6 +157,12 @@ namespace Messages {
 
   KEY AvoidOldArticles;
   VALUE(bool) AvoidOldArticlesDef;
+
+  KEY ArticleMarkOnSelection;
+  VALUE(int) ArticleMarkOnSelectionDef;
+
+  KEY ArticleMarkOnSelectionDelay;
+  VALUE(int) ArticleMarkOnSelectionDelayDef;
 
   KEY DateTimeToAvoidArticle;
   VALUE(QDateTime) DateTimeToAvoidArticleDef;
@@ -414,6 +421,9 @@ namespace Network {
 
   KEY EnableHttp2;
   VALUE(bool) EnableHttp2Def;
+
+  KEY CustomUserAgent;
+  VALUE(QString) CustomUserAgentDef;
 
   KEY IgnoreAllCookies;
   VALUE(bool) IgnoreAllCookiesDef;

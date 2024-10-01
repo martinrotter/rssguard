@@ -41,10 +41,10 @@ class MessagesModel : public QSqlQueryModel, public MessagesModelSqlLayer {
 
     // Fetches ALL available data to the model.
     // NOTE: This activates the SQL query and populates the model with new data.
-    void repopulate();
+    void repopulate(int additional_article_id = 0);
 
     // Model implementation.
-    bool setData(const QModelIndex& index, const QVariant& value, int role = Qt::EditRole);
+    bool setData(const QModelIndex& idx, const QVariant& value, int role = Qt::EditRole);
     QVariant data(const QModelIndex& idx, int role = Qt::DisplayRole) const;
     QVariant data(int row, int column, int role = Qt::DisplayRole) const;
     QVariant headerData(int section, Qt::Orientation orientation, int role) const;

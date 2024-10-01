@@ -45,6 +45,7 @@ class Notification {
 
     explicit Notification(Event event = Event::NoEvent,
                           bool balloon = {},
+                          bool play_sound = true,
                           const QString& sound_path = {},
                           int volume = DEFAULT_NOTIFICATION_VOLUME);
 
@@ -56,6 +57,9 @@ class Notification {
     int volume() const;
     qreal fractionalVolume() const;
     void setVolume(int volume);
+
+    bool soundEnabled() const;
+    void setSoundEnabled(bool play_sound);
 
     // Returns full path to audio file which should be played when notification
     // is launched.
@@ -71,6 +75,7 @@ class Notification {
   private:
     Event m_event;
     bool m_balloonEnabled;
+    bool m_soundEnabled;
     QString m_soundPath;
     qreal m_volume;
 };

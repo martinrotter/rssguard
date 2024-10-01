@@ -102,10 +102,11 @@
 #define WEB_BROWSER_SCROLL_STEP      50.0
 #define MAX_NUMBER_OF_REDIRECTIONS   4
 
-#define NOTIFICATIONS_MARGIN    16
-#define NOTIFICATIONS_WIDTH     300
-#define NOTIFICATIONS_TIMEOUT   15s
-#define NOTIFICATIONS_PAGE_SIZE 10
+#define NOTIFICATIONS_MARGIN       16
+#define NOTIFICATIONS_WIDTH        300
+#define NOTIFICATIONS_TIMEOUT      10s
+#define NOTIFICATION_SHORT_TIMEOUT 3s
+#define NOTIFICATIONS_PAGE_SIZE    10
 
 #define GOOGLE_SEARCH_URL  "https://www.google.com/search?q=%1&ie=utf-8&oe=utf-8"
 #define GOOGLE_SUGGEST_URL "http://suggestqueries.google.com/complete/search?output=toolbar&hl=en&q=%1"
@@ -194,9 +195,8 @@
   (qApp->web()->engineProfile()->httpUserAgent().toLocal8Bit() + QByteArrayLiteral(" ") + \
    QByteArrayLiteral(APP_USERAGENT))
 #else
-#define HTTP_COMPLETE_USERAGENT                                                                          \
-  (QByteArrayLiteral("Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) " \
-                     "Chrome/122.0.0.0 Safari/537.36 ") +                                                \
+#define HTTP_COMPLETE_USERAGENT                                                                             \
+  (QByteArrayLiteral("Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:128.0) Gecko/20100101 Firefox/128.0 ") + \
    QByteArrayLiteral(APP_USERAGENT))
 #endif
 

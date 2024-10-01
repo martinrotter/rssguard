@@ -25,7 +25,7 @@ class BaseToastNotification : public QDialog {
     virtual void closeEvent(QCloseEvent* event);
 
     void setupHeading(QLabel* lbl);
-    void setupTimedClosing();
+    void setupTimedClosing(bool want_shorter_timeout);
     void setupCloseButton(QAbstractButton* btn);
     void stopTimedClosing();
 

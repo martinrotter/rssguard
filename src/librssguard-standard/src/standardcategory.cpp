@@ -19,7 +19,7 @@ StandardServiceRoot* StandardCategory::serviceRoot() const {
 }
 
 Qt::ItemFlags StandardCategory::additionalFlags() const {
-  return Qt::ItemIsDragEnabled | Qt::ItemIsDropEnabled;
+  return Category::additionalFlags() | Qt::ItemFlag::ItemIsDragEnabled | Qt::ItemFlag::ItemIsDropEnabled;
 }
 
 bool StandardCategory::performDragDropChange(RootItem* target_item) {

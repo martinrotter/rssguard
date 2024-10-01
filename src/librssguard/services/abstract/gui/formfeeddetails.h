@@ -50,7 +50,10 @@ class RSSGUARD_DLLSPEC FormFeedDetails : public QDialog {
     QDialogButtonBox* buttonBox() const;
 
     bool isChangeAllowed(MultiFeedEditCheckBox* mcb) const;
-    void insertCustomTab(QWidget* custom_tab, const QString& title, int index);
+
+    // Inserts custom tab made by plugin into its editing form. When index is less
+    // than zero, tab is inserted to the last position.
+    void insertCustomTab(QWidget* custom_tab, const QString& title, int index = -1);
 
     // Sets the feed which will be edited.
     // NOTE: This must be reimplemented in subclasses. Also this

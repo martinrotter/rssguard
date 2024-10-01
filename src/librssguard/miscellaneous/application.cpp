@@ -43,6 +43,7 @@
 #include <QSslSocket>
 #include <QThreadPool>
 #include <QTimer>
+#include <QVersionNumber>
 
 #if defined(NO_LITE) && defined(MEDIAPLAYER_LIBMPV_OPENGL)
 #include <QQuickWindow>
@@ -96,6 +97,20 @@ Application::Application(const QString& id, int& argc, char** argv, const QStrin
 #endif
 #endif
 
+  /*
+  QString aa = "Fri, 12 Apr 2024 5:23:57 GMT";
+  QDateTimeParser par(QMetaType::QDateTime, QDateTimeParser::FromString, QCalendar());
+
+  par.setDefaultLocale(QLocale::c());
+
+  QString st = "ddd, dd MMM yyyy H:m:s";
+  bool parsed = par.parseFormat(st);
+  QDateTime dt;
+  par.fromString(aa, &dt);
+
+  // QDateTime tim = QDateTime::fromString(aa, form);
+  QString check = dt.toString();
+*/
   QString custom_ua;
 
   parseCmdArgumentsFromMyInstance(raw_cli_args, custom_ua);
@@ -111,8 +126,17 @@ Application::Application(const QString& id, int& argc, char** argv, const QStrin
 
 #if defined(NO_LITE)
   if (!m_forcedLite && qEnvironmentVariableIsEmpty("QTWEBENGINE_CHROMIUM_FLAGS")) {
-    qputenv("QTWEBENGINE_CHROMIUM_FLAGS",
-            settings()->value(GROUP(Browser), SETTING(Browser::WebEngineChromiumFlags)).toString().toLocal8Bit());
+    QString flags = settings()->value(GROUP(Browser), SETTING(Browser::WebEngineChromiumFlags)).toString();
+
+    // NOTE: We do not want sandbox on Linux builds.
+#if defined(Q_OS_LINUX) && !defined(IS_FLATPAK_BUILD)
+    if (!flags.contains(QSL("--no-sandbox"))) {
+      qDebugNN << LOGSEC_CORE << "Appending --no-sandbox to QTWEBENGINE_CHROMIUM_FLAGS.";
+      flags.append(QSL(" --no-sandbox"));
+    }
+#endif
+
+    qputenv("QTWEBENGINE_CHROMIUM_FLAGS", flags.toLocal8Bit());
   }
 #endif
 
@@ -129,9 +153,8 @@ Application::Application(const QString& id, int& argc, char** argv, const QStrin
   m_database = new DatabaseFactory(this);
   m_downloadManager = nullptr;
   m_notifications = new NotificationFactory(this);
-  m_toastNotifications = settings()->value(GROUP(GUI), SETTING(GUI::UseToastNotifications)).toBool()
-                           ? new ToastNotificationsManager(this)
-                           : nullptr;
+  m_toastNotifications =
+    (!isWayland() && m_notifications->useToastNotifications()) ? new ToastNotificationsManager(this) : nullptr;
   m_shouldRestart = false;
 
 #if defined(Q_OS_WIN)
@@ -198,7 +221,13 @@ Application::Application(const QString& id, int& argc, char** argv, const QStrin
   }
 #endif
 
-  m_webFactory->setCustomUserAgent(custom_ua);
+  if (!custom_ua.isEmpty()) {
+    m_webFactory->setCustomUserAgent(custom_ua);
+  }
+  else {
+    custom_ua = qApp->settings()->value(GROUP(Network), SETTING(Network::CustomUserAgent)).toString();
+    m_webFactory->setCustomUserAgent(custom_ua);
+  }
 
 #if defined(NO_LITE)
   m_webFactory->urlIinterceptor()->load();
@@ -256,6 +285,7 @@ Application::Application(const QString& id, int& argc, char** argv, const QStrin
     m_notifications->save({Notification(Notification::Event::GeneralEvent, true),
                            Notification(Notification::Event::NewUnreadArticlesFetched,
                                         true,
+                                        true,
                                         QSL("%1/notify.wav").arg(SOUNDS_BUILTIN_DIRECTORY)),
                            Notification(Notification::Event::NewAppVersionAvailable, true),
                            Notification(Notification::Event::LoginFailure, true),
@@ -271,6 +301,7 @@ Application::Application(const QString& id, int& argc, char** argv, const QStrin
 
   setupWorkHorsePool();
 
+  qDebugNN << LOGSEC_CORE << "Platform:" << QUOTE_W_SPACE_DOT(QGuiApplication::platformName());
   qDebugNN << LOGSEC_CORE << "SQLite version:" << QUOTE_W_SPACE_DOT(SQLITE_VERSION);
   qDebugNN << LOGSEC_CORE << "OpenSSL version:" << QUOTE_W_SPACE_DOT(QSslSocket::sslLibraryVersionString());
   qDebugNN << LOGSEC_CORE << "OpenSSL supported:" << QUOTE_W_SPACE_DOT(QSslSocket::supportsSsl());
@@ -544,9 +575,11 @@ QString Application::configFolder() const {
 }
 
 QString Application::userDataAppFolder() const {
+  static int major_version = QVersionNumber::fromString(QSL(APP_VERSION)).majorVersion();
+
   // In "app" folder, we would like to separate all user data into own subfolder,
   // therefore stick to "data" folder in this mode.
-  return QDir::toNativeSeparators(applicationDirPath() + QDir::separator() + QSL("data4"));
+  return QDir::toNativeSeparators(applicationDirPath() + QDir::separator() + QSL("data%1").arg(major_version));
 }
 
 QString Application::userDataFolder() {
@@ -583,12 +616,13 @@ QStringList Application::replaceUserDataFolderPlaceholder(QStringList texts) con
 
 QString Application::userDataHomeFolder() const {
   QString pth;
+  static int major_version = QVersionNumber::fromString(QSL(APP_VERSION)).majorVersion();
 
 #if defined(Q_OS_ANDROID)
   return pth = IOFactory::getSystemFolder(QStandardPaths::GenericDataLocation) + QDir::separator() + QSL(APP_NAME) +
-               QSL(" 4");
+               QSL(" %1").arg(major_version);
 #else
-  return pth = configFolder() + QDir::separator() + QSL(APP_NAME) + QSL(" 4");
+  return pth = configFolder() + QDir::separator() + QSL(APP_NAME) + QSL(" %1").arg(major_version);
 #endif
 
   return QDir::toNativeSeparators(pth);
@@ -742,7 +776,9 @@ void Application::showGuiMessageCore(Notification::Event event,
   if (m_notifications->areNotificationsEnabled()) {
     auto notification = m_notifications->notificationForEvent(event);
 
-    notification.playSound(this);
+    if (notification.soundEnabled()) {
+      notification.playSound(this);
+    }
 
     if (notification.balloonEnabled() && dest.m_tray) {
       if (notification.event() == Notification::Event::ArticlesFetchingStarted && m_mainForm != nullptr &&
@@ -832,6 +868,10 @@ bool Application::usingLite() const {
 #else
   return forcedLite();
 #endif
+}
+
+bool Application::isWayland() const {
+  return QGuiApplication::platformName() == QSL("wayland");
 }
 
 void Application::onCommitData(QSessionManager& manager) {
@@ -1124,6 +1164,12 @@ void Application::setupWorkHorsePool() {
     m_workHorsePool->setMaxThreadCount((std::min)(MAX_THREADPOOL_THREADS, 2 * ideal_th_count));
   }
 
+#if QT_VERSION >= 0x060200 // Qt >= 6.2.0
+  // Avoid competing with interactive processes/threads by running the
+  // worker pool at a very low priority
+  m_workHorsePool->setThreadPriority(QThread::Priority::LowestPriority);
+#endif
+
   // NOTE: Do not expire threads so that their IDs are not reused.
   // This fixes cross-thread QSqlDatabase access.
   m_workHorsePool->setExpiryTimeout(-1);
@@ -1331,7 +1377,8 @@ void Application::fillCmdArgumentsParser(QCommandLineParser& parser) {
                                   QSL("style-name"));
 
   QCommandLineOption custom_ua({QSL(CLI_USERAGENT_SHORT), QSL(CLI_USERAGENT_LONG)},
-                               QSL("User custom User-Agent HTTP header for all network requests."),
+                               QSL("User custom User-Agent HTTP header for all network requests. This option "
+                                   "takes precedence over User-Agent set via application settings."),
                                QSL("user-agent"));
   QCommandLineOption
     adblock_port({QSL(CLI_ADBLOCKPORT_SHORT), QSL(CLI_ADBLOCKPORT_LONG)},
@@ -1355,19 +1402,25 @@ void Application::fillCmdArgumentsParser(QCommandLineParser& parser) {
                                QSL("[url-1 ... url-n]"));
 }
 
-void Application::onNodeJsPackageUpdateError(const QList<NodeJs::PackageMetadata>& pkgs, const QString& error) {
+void Application::onNodeJsPackageUpdateError(const QObject* sndr,
+                                             const QList<NodeJs::PackageMetadata>& pkgs,
+                                             const QString& error) {
+  Q_UNUSED(sndr)
   qApp->showGuiMessage(Notification::Event::NodePackageFailedToUpdate,
-                       {{},
-                        tr("Packages %1 were NOT updated because of error: %2.")
+                       {QSL("Node.js"),
+                        tr("Packages were NOT updated because of error: %2. Affected packages:\n%1")
                           .arg(NodeJs::packagesToString(pkgs), error),
                         QSystemTrayIcon::MessageIcon::Critical});
 }
 
-void Application::onNodeJsPackageInstalled(const QList<NodeJs::PackageMetadata>& pkgs, bool already_up_to_date) {
+void Application::onNodeJsPackageInstalled(const QObject* sndr,
+                                           const QList<NodeJs::PackageMetadata>& pkgs,
+                                           bool already_up_to_date) {
+  Q_UNUSED(sndr)
   if (!already_up_to_date) {
     qApp->showGuiMessage(Notification::Event::NodePackageUpdated,
-                         {{},
-                          tr("Packages %1 were updated.").arg(NodeJs::packagesToString(pkgs)),
+                         {tr("Node.js"),
+                          tr("These packages were installed/updated:\n%1").arg(NodeJs::packagesToString(pkgs)),
                           QSystemTrayIcon::MessageIcon::Information});
   }
 }

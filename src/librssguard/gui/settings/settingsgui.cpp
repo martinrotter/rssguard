@@ -220,7 +220,9 @@ void SettingsGui::loadSettings() {
     m_ui->m_cmbStyles->addItem(style_name, style_name);
   }
 
-  int item_style = m_ui->m_cmbStyles->findData(qApp->skins()->currentStyle());
+  int item_style = m_ui->m_cmbStyles->findData(qApp->skins()->currentStyle(),
+                                               Qt::ItemDataRole::UserRole,
+                                               Qt::MatchFlag::MatchFixedString);
 
   if (item_style >= 0) {
     m_ui->m_cmbStyles->setCurrentIndex(item_style);

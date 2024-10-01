@@ -27,6 +27,7 @@
 #include "miscellaneous/iconfactory.h"
 #include "miscellaneous/mutex.h"
 #include "miscellaneous/settings.h"
+#include "miscellaneous/thread.h"
 #include "network-web/adblock/adblockicon.h"
 #include "network-web/adblock/adblockmanager.h"
 #include "network-web/webfactory.h"
@@ -38,7 +39,6 @@
 #include <QFileDialog>
 #include <QRect>
 #include <QScopedPointer>
-#include <QThread>
 #include <QTimer>
 #include <QToolButton>
 #include <QWidgetAction>
@@ -54,7 +54,7 @@
 FormMain::FormMain(QWidget* parent, Qt::WindowFlags f)
   : QMainWindow(parent, f), m_ui(new Ui::FormMain), m_trayMenu(nullptr), m_statusBar(nullptr) {
   qDebugNN << LOGSEC_GUI
-           << "Creating main application form in thread:" << QUOTE_W_SPACE_DOT(QThread::currentThreadId());
+           << "Creating main application form in thread:" << QUOTE_W_SPACE_DOT(getThreadID());
   // setAttribute(Qt::WA_WindowPropagation, true);
   m_ui->setupUi(this);
   qApp->setMainForm(this);

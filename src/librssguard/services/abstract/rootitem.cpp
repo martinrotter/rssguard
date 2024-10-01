@@ -207,7 +207,12 @@ QVariant RootItem::data(int column, int role) const {
 }
 
 Qt::ItemFlags RootItem::additionalFlags() const {
-  return Qt::ItemFlag::NoItemFlags;
+  if (m_kind == RootItem::Kind::Root) {
+    return Qt::ItemFlag::ItemIsDropEnabled;
+  }
+  else {
+    return Qt::ItemFlag::NoItemFlags;
+  }
 }
 
 bool RootItem::performDragDropChange(RootItem* target_item) {

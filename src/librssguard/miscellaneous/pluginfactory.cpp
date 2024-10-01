@@ -14,6 +14,7 @@ PluginFactory::PluginFactory() {}
 
 QList<ServiceEntryPoint*> PluginFactory::loadPlugins() const {
   QList<ServiceEntryPoint*> plugins;
+  QStringList plugin_ids;
 
   const QString plugin_name_wildcard = pluginNameWildCard();
   const auto plugins_paths = pluginPaths();
@@ -28,6 +29,8 @@ QList<ServiceEntryPoint*> PluginFactory::loadPlugins() const {
 #else
                           QDirIterator::IteratorFlag::NoIteratorFlags);
 #endif
+
+    qDebugNN << LOGSEC_CORE << "Checking for plugins in" << QUOTE_W_SPACE_DOT(plugin_folder);
 
     while (dir_iter.hasNext()) {
       dir_iter.next();
@@ -47,10 +50,17 @@ QList<ServiceEntryPoint*> PluginFactory::loadPlugins() const {
                     << "was not loaded successfully:" << QUOTE_W_SPACE_DOT(loader.errorString());
       }
       else {
-        qDebugNN << LOGSEC_CORE << "Plugin" << QUOTE_W_SPACE(plugin_file.absoluteFilePath()) << "loaded.";
+        if (plugin_ids.contains(plugin_instance->code())) {
+          qCriticalNN << LOGSEC_CORE << "Plugin" << QUOTE_W_SPACE(plugin_instance->code())
+                      << "was already loaded before. Skipping now.";
+        }
+        else {
+          qDebugNN << LOGSEC_CORE << "Plugin" << QUOTE_W_SPACE(plugin_file.absoluteFilePath()) << "loaded.";
 
-        plugin_instance->setIsDynamicallyLoaded(true);
-        plugins.append(plugin_instance);
+          plugin_instance->setIsDynamicallyLoaded(true);
+          plugin_ids.append(plugin_instance->code());
+          plugins.append(plugin_instance);
+        }
       }
     }
   }
@@ -62,9 +72,10 @@ QList<ServiceEntryPoint*> PluginFactory::loadPlugins() const {
 
 QStringList PluginFactory::pluginPaths() const {
   QStringList paths;
-#if defined(Q_OS_LINUX)
-  paths << QCoreApplication::applicationDirPath() + QDir::separator() + QL1S("..") + QDir::separator() + QL1S("lib") +
-             QDir::separator() + QL1S(APP_LOW_NAME);
+
+#if defined(Q_OS_LINUX) || defined(Q_OS_FREEBSD)
+  paths << QCoreApplication::applicationDirPath() + QDir::separator() + QL1S("..") + QDir::separator() +
+             QL1S(RSSGUARD_LIBDIR) + QDir::separator() + QL1S(APP_LOW_NAME);
 #elif defined(Q_OS_WIN)
   paths << QCoreApplication::applicationDirPath() + QDir::separator() + QL1S("plugins");
 #else
@@ -79,5 +90,13 @@ QStringList PluginFactory::pluginPaths() const {
 }
 
 QString PluginFactory::pluginNameWildCard() const {
+#if defined(Q_OS_WIN)
+  return QSL("*rssguard-*.dll");
+#elif defined(Q_OS_LINUX)
+  return QSL("*rssguard-*.so");
+#elif defined(Q_OS_MACOS)
+  return QSL("*rssguard-*.dylib");
+#else
   return QSL("*rssguard-*.*");
+#endif
 }

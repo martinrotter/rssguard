@@ -126,7 +126,7 @@ NotInstalled:
   SetOutPath "$INSTDIR"
   
   ; Install core application files.
-  File /r "${BINARY_TREE}\"
+  File /r /x "rssguard-*.*" "${BINARY_TREE}\"
 
   ; Create uninstaller.
   WriteUninstaller "$INSTDIR\Uninstall.exe"
@@ -142,6 +142,39 @@ NotInstalled:
   ; Open documentation.
   ExecShell "open" "https://rssguard.readthedocs.io/en/stable/downloads.html#windows"
 SectionEnd
+
+SectionGroup /e "Plugins"
+  Section "Feedly" PluginFeedly
+    SetOutPath "$INSTDIR\plugins"
+    File "${PLUGIN_FEEDLY}"
+  SectionEnd
+
+  Section "Gmail" PluginGmail
+    SetOutPath "$INSTDIR\plugins"
+    File "${PLUGIN_GMAIL}"
+  SectionEnd
+
+  Section "Google Reader API" PluginGreader
+    SetOutPath "$INSTDIR\plugins"
+    File "${PLUGIN_GREADER}"
+  SectionEnd
+
+  Section "Nextcloud News" PluginNextcloud
+    SetOutPath "$INSTDIR\plugins"
+    File "${PLUGIN_NEXTCLOUD}"
+  SectionEnd
+
+  Section "RSS/ATOM/JSON" PluginStandard
+    SectionIn RO
+    SetOutPath "$INSTDIR\plugins"
+    File "${PLUGIN_STANDARD}"
+  SectionEnd
+
+  Section "Tiny Tiny RSS" PluginTtrss
+    SetOutPath "$INSTDIR\plugins"
+    File "${PLUGIN_TTRSS}"
+  SectionEnd
+SectionGroupEnd
 
 Section "Desktop Icon" DesktopIcon
   CreateShortCut "$DESKTOP\${APP_NAME}.lnk" "$INSTDIR\${EXE_NAME}"

@@ -36,7 +36,12 @@ void FormFeedDetails::clearTabs() {
 }
 
 void FormFeedDetails::insertCustomTab(QWidget* custom_tab, const QString& title, int index) {
-  m_ui->m_tabWidget->insertTab(index, custom_tab, title);
+  if (index < 0) {
+    m_ui->m_tabWidget->addTab(custom_tab, title);
+  }
+  else {
+    m_ui->m_tabWidget->insertTab(index, custom_tab, title);
+  }
 }
 
 void FormFeedDetails::apply() {

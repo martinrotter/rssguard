@@ -20,7 +20,7 @@ BaseToastNotification::BaseToastNotification(QWidget* parent) : QDialog(parent),
   setAttribute(Qt::WidgetAttribute::WA_DeleteOnClose, false);
 
   setWindowFlags(
-#ifdef Q_OS_MAC
+#if defined(Q_OS_MAC)
     Qt::WindowType::SubWindow |
 #else
     Qt::WindowType::Tool |
@@ -67,9 +67,9 @@ void BaseToastNotification::stopTimedClosing() {
   }
 }
 
-void BaseToastNotification::setupTimedClosing() {
+void BaseToastNotification::setupTimedClosing(bool want_shorter_timeout) {
   if (m_timerId < 0) {
-    m_timerId = startTimer(NOTIFICATIONS_TIMEOUT);
+    m_timerId = startTimer(want_shorter_timeout ? NOTIFICATION_SHORT_TIMEOUT : NOTIFICATIONS_TIMEOUT);
 
     qDebugNN << LOGSEC_NOTIFICATIONS << "Starting timed closing for notification.";
   }
@@ -81,7 +81,7 @@ bool BaseToastNotification::eventFilter(QObject* watched, QEvent* event) {
   }
 
   if (watched == this && event->type() == QEvent::Type::Leave) {
-    setupTimedClosing();
+    setupTimedClosing(true);
   }
 
   if (event->type() == QEvent::Type::MouseButtonPress || event->type() == QEvent::Type::MouseButtonRelease) {

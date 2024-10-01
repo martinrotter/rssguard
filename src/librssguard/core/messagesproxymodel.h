@@ -52,6 +52,9 @@ class MessagesProxyModel : public QSortFilterProxyModel {
     // Performs sort of items.
     virtual void sort(int column, Qt::SortOrder order = Qt::AscendingOrder);
 
+    int additionalArticleId() const;
+    void setAdditionalArticleId(int newAdditionalArticleId);
+
   private:
     void initializeFilters();
 
@@ -68,6 +71,7 @@ class MessagesProxyModel : public QSortFilterProxyModel {
     MessageListFilter m_filter;
     QMap<MessageListFilter, std::function<bool(int)>> m_filters;
     QList<MessageListFilter> m_filterKeys;
+    int m_additionalArticleId;
 };
 
 Q_DECLARE_METATYPE(MessagesProxyModel::MessageListFilter)

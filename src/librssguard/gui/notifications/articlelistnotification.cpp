@@ -66,7 +66,7 @@ ArticleListNotification::ArticleListNotification(QWidget* parent)
 }
 
 void ArticleListNotification::loadResults(const QHash<Feed*, QList<Message>>& new_messages) {
-  setupTimedClosing();
+  setupTimedClosing(false);
 
   m_newMessages = new_messages;
 

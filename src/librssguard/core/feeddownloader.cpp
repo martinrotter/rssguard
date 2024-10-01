@@ -10,6 +10,7 @@
 #include "exceptions/filteringexception.h"
 #include "miscellaneous/application.h"
 #include "miscellaneous/settings.h"
+#include "miscellaneous/thread.h"
 #include "services/abstract/cacheforserviceroot.h"
 #include "services/abstract/feed.h"
 #include "services/abstract/labelsnode.h"
@@ -17,7 +18,6 @@
 #include <QDebug>
 #include <QJSEngine>
 #include <QString>
-#include <QThread>
 #include <QtConcurrentMap>
 
 FeedDownloader::FeedDownloader()
@@ -47,7 +47,7 @@ void FeedDownloader::synchronizeAccountCaches(const QList<CacheForServiceRoot*>&
 
   for (CacheForServiceRoot* cache : caches) {
     qDebugNN << LOGSEC_FEEDDOWNLOADER << "Synchronizing cache back to server on thread"
-             << QUOTE_W_SPACE_DOT(QThread::currentThreadId());
+             << QUOTE_W_SPACE_DOT(getThreadID());
     cache->saveAllCachedData(false);
 
     if (m_stopCacheSynchronization) {
@@ -77,7 +77,7 @@ void FeedDownloader::updateFeeds(const QList<Feed*>& feeds) {
   }
   else {
     qDebugNN << LOGSEC_FEEDDOWNLOADER << "Starting feed updates from worker in thread"
-             << QUOTE_W_SPACE_DOT(QThread::currentThreadId());
+             << QUOTE_W_SPACE_DOT(getThreadID());
 
     // Job starts now.
     emit updateStarted();
@@ -155,6 +155,9 @@ void FeedDownloader::updateFeeds(const QList<Feed*>& feeds) {
 
     std::function<FeedUpdateResult(const FeedUpdateRequest&)> func =
       [=](const FeedUpdateRequest& fd) -> FeedUpdateResult {
+#if defined(Q_OS_LINUX)
+      setThreadPriority(Priority::Lowest);
+#endif
       return updateThreadedFeed(fd);
     };
 
@@ -220,7 +223,7 @@ void FeedDownloader::updateOneFeed(ServiceRoot* acc,
     acc->itemChanged({feed});
   }
 
-  qlonglong thread_id = qlonglong(QThread::currentThreadId());
+  qlonglong thread_id = getThreadID();
 
   qDebugNN << LOGSEC_FEEDDOWNLOADER << "Downloading new messages for feed ID" << QUOTE_W_SPACE(feed->customId())
            << "URL:" << QUOTE_W_SPACE(feed->source()) << "title:" << QUOTE_W_SPACE(feed->title()) << "in thread "
@@ -434,8 +437,7 @@ void FeedDownloader::updateOneFeed(ServiceRoot* acc,
 }
 
 void FeedDownloader::finalizeUpdate() {
-  qDebugNN << LOGSEC_FEEDDOWNLOADER << "Finished feed updates in thread"
-           << QUOTE_W_SPACE_DOT(QThread::currentThreadId());
+  qDebugNN << LOGSEC_FEEDDOWNLOADER << "Finished feed updates in thread" << QUOTE_W_SPACE_DOT(getThreadID());
 
   m_feeds.clear();
 

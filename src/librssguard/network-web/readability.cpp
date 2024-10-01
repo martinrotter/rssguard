@@ -9,17 +9,19 @@
 #include <QDir>
 
 #define READABILITY_PACKAGE "@mozilla/readability"
-#define READABILITY_VERSION "0.4.4"
+#define READABILITY_VERSION "0.5.0"
 
 #define JSDOM_PACKAGE "jsdom"
-#define JSDOM_VERSION "22.1.0"
+#define JSDOM_VERSION "24.0.0"
 
 Readability::Readability(QObject* parent) : QObject{parent}, m_modulesInstalling(false), m_modulesInstalled(false) {
   connect(qApp->nodejs(), &NodeJs::packageInstalledUpdated, this, &Readability::onPackageReady);
   connect(qApp->nodejs(), &NodeJs::packageError, this, &Readability::onPackageError);
 }
 
-void Readability::onPackageReady(const QList<NodeJs::PackageMetadata>& pkgs, bool already_up_to_date) {
+void Readability::onPackageReady(const QObject* sndr,
+                                 const QList<NodeJs::PackageMetadata>& pkgs,
+                                 bool already_up_to_date) {
   Q_UNUSED(already_up_to_date)
 
   bool concerns_readability = boolinq::from(pkgs).any([](const NodeJs::PackageMetadata& pkg) {
@@ -40,10 +42,12 @@ void Readability::onPackageReady(const QList<NodeJs::PackageMetadata>& pkgs, boo
                        {true, true, false});
 
   // Emit this just to allow readability again for user.
-  emit htmlReadabled(nullptr, tr("Packages for reader mode are installed. You can now use reader mode!"));
+  emit errorOnHtmlReadabiliting(sndr, tr("Packages for reader mode are installed. You can now use reader mode!"));
 }
 
-void Readability::onPackageError(const QList<NodeJs::PackageMetadata>& pkgs, const QString& error) {
+void Readability::onPackageError(const QObject* sndr,
+                                 const QList<NodeJs::PackageMetadata>& pkgs,
+                                 const QString& error) {
   bool concerns_readability = boolinq::from(pkgs).any([](const NodeJs::PackageMetadata& pkg) {
     return pkg.m_name == QSL(READABILITY_PACKAGE);
   });
@@ -61,29 +65,22 @@ void Readability::onPackageError(const QList<NodeJs::PackageMetadata>& pkgs, con
                        {true, true, false});
 
   // Emit this just to allow readability again for user.
-  emit htmlReadabled(nullptr, tr("Packages for reader mode are NOT installed. There is error: %1").arg(error));
+  emit errorOnHtmlReadabiliting(sndr, tr("Packages for reader mode are NOT installed. There is error: %1").arg(error));
 }
 
 void Readability::makeHtmlReadable(QObject* sndr, const QString& html, const QString& base_url) {
   if (!m_modulesInstalled) {
     try {
-      NodeJs::PackageStatus stReadability =
+      NodeJs::PackageStatus st_readability =
         qApp->nodejs()->packageStatus({QSL(READABILITY_PACKAGE), QSL(READABILITY_VERSION)});
-      NodeJs::PackageStatus stJsdom = qApp->nodejs()->packageStatus({QSL(JSDOM_PACKAGE), QSL(JSDOM_VERSION)});
+      NodeJs::PackageStatus st_jsdom = qApp->nodejs()->packageStatus({QSL(JSDOM_PACKAGE), QSL(JSDOM_VERSION)});
 
-      if (stReadability != NodeJs::PackageStatus::UpToDate || stJsdom != NodeJs::PackageStatus::UpToDate) {
+      if (st_readability != NodeJs::PackageStatus::UpToDate || st_jsdom != NodeJs::PackageStatus::UpToDate) {
         if (!m_modulesInstalling) {
           // We make sure to update modules.
           m_modulesInstalling = true;
-
-          qApp->showGuiMessage(Notification::Event::NodePackageUpdated,
-                               {tr("Node.js libraries not installed"),
-                                tr("%1 will now install some needed libraries, this will take only a few seconds. "
-                                   "You will be notified when installation is complete.")
-                                  .arg(QSL(APP_NAME)),
-                                QSystemTrayIcon::MessageIcon::Warning},
-                               {true, true, false});
-          qApp->nodejs()->installUpdatePackages({{QSL(READABILITY_PACKAGE), QSL(READABILITY_VERSION)},
+          qApp->nodejs()->installUpdatePackages(sndr,
+                                                {{QSL(READABILITY_PACKAGE), QSL(READABILITY_VERSION)},
                                                  {QSL(JSDOM_PACKAGE), QSL(JSDOM_VERSION)}});
         }
 
@@ -104,9 +101,10 @@ void Readability::makeHtmlReadable(QObject* sndr, const QString& html, const QSt
       qCriticalNN << LOGSEC_CORE << "Failed to check for Node.js package status:" << QUOTE_W_SPACE_DOT(ex.message());
 
       // Emit this just to allow readability again for user.
-      emit htmlReadabled(sndr,
-                         tr("Node.js is not configured properly. Go to \"Settings\" -> \"Node.js\" and check "
-                            "if your Node.js is properly configured."));
+      emit
+        errorOnHtmlReadabiliting(sndr,
+                                 tr("Node.js is not configured properly. Go to \"Settings\" -> \"Node.js\" and check "
+                                    "if your Node.js is properly configured."));
     }
   }
 

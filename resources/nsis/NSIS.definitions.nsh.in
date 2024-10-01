@@ -9,3 +9,10 @@
 !define MUI_UNICON "@CMAKE_SOURCE_DIR@\resources\graphics\@CMAKE_PROJECT_NAME@.ico"
 !define PATCH  "0"
 !define BINARY_TREE "@CMAKE_BINARY_DIR@\app"
+
+!define PLUGIN_FEEDLY "@CMAKE_BINARY_DIR@\app\plugins\rssguard-feedly.*"
+!define PLUGIN_GMAIL "@CMAKE_BINARY_DIR@\app\plugins\rssguard-gmail.*"
+!define PLUGIN_GREADER "@CMAKE_BINARY_DIR@\app\plugins\rssguard-greader.*"
+!define PLUGIN_NEXTCLOUD "@CMAKE_BINARY_DIR@\app\plugins\rssguard-nextcloud.*"
+!define PLUGIN_STANDARD "@CMAKE_BINARY_DIR@\app\plugins\rssguard-standard.*"
+!define PLUGIN_TTRSS "@CMAKE_BINARY_DIR@\app\plugins\rssguard-ttrss.*"

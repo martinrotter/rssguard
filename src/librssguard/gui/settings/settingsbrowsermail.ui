@@ -42,6 +42,16 @@
          </property>
         </widget>
        </item>
+       <item row="3" column="1">
+        <widget class="QLineEdit" name="m_txtUserAgent"/>
+       </item>
+       <item row="3" column="0">
+        <widget class="QLabel" name="label_2">
+         <property name="text">
+          <string>Custom User-Agent</string>
+         </property>
+        </widget>
+       </item>
       </layout>
      </widget>
      <widget class="QWidget" name="m_tabWebEngine">
@@ -83,7 +93,7 @@
        <item row="2" column="0" colspan="2">
         <spacer name="verticalSpacer_3">
          <property name="orientation">
-          <enum>Qt::Vertical</enum>
+          <enum>Qt::Orientation::Vertical</enum>
          </property>
          <property name="sizeHint" stdset="0">
           <size>
@@ -172,7 +182,7 @@
           <item row="2" column="1">
            <widget class="QComboBox" name="m_cmbExternalBrowserPreset">
             <property name="sizeAdjustPolicy">
-             <enum>QComboBox::AdjustToContents</enum>
+             <enum>QComboBox::SizeAdjustPolicy::AdjustToContents</enum>
             </property>
             <item>
              <property name="text">
@@ -197,7 +207,7 @@
        <item row="1" column="0" colspan="2">
         <spacer name="verticalSpacer_2">
          <property name="orientation">
-          <enum>Qt::Vertical</enum>
+          <enum>Qt::Orientation::Vertical</enum>
          </property>
          <property name="sizeHint" stdset="0">
           <size>
@@ -289,7 +299,7 @@
           <item row="2" column="1">
            <widget class="QComboBox" name="m_cmbExternalEmailPreset">
             <property name="sizeAdjustPolicy">
-             <enum>QComboBox::AdjustToContents</enum>
+             <enum>QComboBox::SizeAdjustPolicy::AdjustToContents</enum>
             </property>
             <item>
              <property name="text">
@@ -372,7 +382,7 @@
        <item row="3" column="0" colspan="2">
         <spacer name="verticalSpacer">
          <property name="orientation">
-          <enum>Qt::Vertical</enum>
+          <enum>Qt::Orientation::Vertical</enum>
          </property>
          <property name="sizeHint" stdset="0">
           <size>

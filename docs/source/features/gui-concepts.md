@@ -24,3 +24,14 @@ You can also switch to more advanced dialog for adding individual feeds.
 <img alt="alt-img" src="images/feed-details.png">
 
 In 99% of cases, you only need to insert feed URL into `Source` field and then hit `Fetch it now` button which will download feed metadata and fill all other boxes.
+
+```{note}
+Some feeds are only accessible when user is logged-in the website which provides the feed.
+
+RSS Guard has two features to aid with login-protected feeds:
+1. Network-based authentication (rarely used) -> user can setup credentials on `Network` tab in feed details dialog.
+2. Website-based authentication (often used) -> user has to login to the website via RSS Guard's embedded [web browser](browseradblock):
+    1. In RSS Guard, open new web browser tab.
+    2. Navigate to feed's website and login.
+    3. RSS Guard will now remember login cookies and will automatically use them to authenticate when feed is fetching.
+```

@@ -195,87 +195,53 @@ bool FeedsImportExportModel::produceFeed(const FeedLookup& feed_lookup) {
                             ? feed_lookup.custom_data[QSL("postProcessScript")].toString()
                             : feed_lookup.post_process_script;
 
-      new_feed = StandardFeed::guessFeed(source_type,
-                                         feed_lookup.url,
-                                         pp_script,
-                                         NetworkFactory::NetworkAuthentication::NoAuthentication,
-                                         !feed_lookup.do_not_fetch_icons,
-                                         {},
-                                         {},
-                                         feed_lookup.custom_proxy);
+      try {
+        new_feed = StandardFeed::guessFeed(source_type,
+                                           feed_lookup.url,
+                                           pp_script,
+                                           NetworkFactory::NetworkAuthentication::NoAuthentication,
+                                           !feed_lookup.do_not_fetch_icons,
+                                           {},
+                                           {},
+                                           feed_lookup.custom_proxy);
 
-      new_feed->setSourceType(source_type);
-      new_feed->setSource(feed_lookup.url);
-      new_feed->setPostProcessScript(pp_script);
+        new_feed->setSourceType(source_type);
+        new_feed->setSource(feed_lookup.url);
+        new_feed->setPostProcessScript(pp_script);
 
-      if (feed_lookup.do_not_fetch_titles) {
-        QString old_title = feed_lookup.custom_data[QSL("title")].toString();
+        if (feed_lookup.do_not_fetch_titles) {
+          QString old_title = feed_lookup.custom_data[QSL("title")].toString();
 
-        if (!old_title.simplified().isEmpty()) {
-          new_feed->setTitle(old_title);
+          if (!old_title.simplified().isEmpty()) {
+            new_feed->setTitle(old_title);
+          }
+        }
+
+        if (feed_lookup.do_not_fetch_icons) {
+          QIcon old_icon = feed_lookup.custom_data[QSL("icon")].value<QIcon>();
+
+          if (old_icon.isNull()) {
+            new_feed->setIcon(qApp->icons()->fromTheme(QSL("application-rss+xml")));
+          }
+          else {
+            new_feed->setIcon(old_icon);
+          }
         }
       }
-
-      if (feed_lookup.do_not_fetch_icons) {
-        QIcon old_icon = feed_lookup.custom_data[QSL("icon")].value<QIcon>();
-
-        if (old_icon.isNull()) {
-          new_feed->setIcon(qApp->icons()->fromTheme(QSL("application-rss+xml")));
+      catch (...) {
+        if (feed_lookup.add_errored_feeds) {
+          // Feed guessing failed, add like regular feed anyway.
+          new_feed = new StandardFeed();
+          fillFeedFromFeedLookupData(new_feed, feed_lookup);
         }
         else {
-          new_feed->setIcon(old_icon);
+          throw;
         }
       }
     }
     else {
       new_feed = new StandardFeed();
-
-      if (feed_lookup.custom_data.isEmpty()) {
-        // We assume these are "best-guess" defaults.
-        new_feed->setSourceType(StandardFeed::SourceType::Url);
-        new_feed->setType(StandardFeed::Type::Rss2X);
-
-        new_feed->setSource(feed_lookup.url);
-        new_feed->setTitle(feed_lookup.url);
-        new_feed->setIcon(qApp->icons()->fromTheme(QSL("application-rss+xml")));
-        new_feed->setEncoding(QSL(DEFAULT_FEED_ENCODING));
-        new_feed->setPostProcessScript(feed_lookup.post_process_script);
-      }
-      else {
-        QString feed_title = feed_lookup.custom_data[QSL("title")].toString();
-        QString feed_encoding = feed_lookup.custom_data.value(QSL("encoding"), QSL(DEFAULT_FEED_ENCODING)).toString();
-        QString feed_type = feed_lookup.custom_data.value(QSL("type"), QSL(DEFAULT_FEED_TYPE)).toString().toUpper();
-        QString feed_description = feed_lookup.custom_data[QSL("description")].toString();
-        QIcon feed_icon = feed_lookup.custom_data[QSL("icon")].value<QIcon>();
-        StandardFeed::SourceType source_type =
-          feed_lookup.custom_data[QSL("sourceType")].value<StandardFeed::SourceType>();
-        QString post_process = feed_lookup.custom_data[QSL("postProcessScript")].toString();
-
-        new_feed->setTitle(feed_title);
-        new_feed->setDescription(feed_description);
-        new_feed->setEncoding(feed_encoding);
-        new_feed->setSource(feed_lookup.url);
-        new_feed->setSourceType(source_type);
-        new_feed->setPostProcessScript(feed_lookup.post_process_script.isEmpty() ? post_process
-                                                                                 : feed_lookup.post_process_script);
-
-        if (!feed_icon.isNull()) {
-          new_feed->setIcon(feed_icon);
-        }
-
-        if (feed_type == QL1S("RSS1")) {
-          new_feed->setType(StandardFeed::Type::Rdf);
-        }
-        else if (feed_type == QL1S("JSON")) {
-          new_feed->setType(StandardFeed::Type::Json);
-        }
-        else if (feed_type == QL1S("ATOM")) {
-          new_feed->setType(StandardFeed::Type::Atom10);
-        }
-        else {
-          new_feed->setType(StandardFeed::Type::Rss2X);
-        }
-      }
+      fillFeedFromFeedLookupData(new_feed, feed_lookup);
     }
 
     QMutexLocker mtx(&m_mtxLookup);
@@ -292,6 +258,53 @@ bool FeedsImportExportModel::produceFeed(const FeedLookup& feed_lookup) {
     }
 
     return false;
+  }
+}
+
+void FeedsImportExportModel::fillFeedFromFeedLookupData(StandardFeed* feed, const FeedLookup& feed_lookup) {
+  if (feed_lookup.custom_data.isEmpty()) {
+    // We assume these are "best-guess" defaults.
+    feed->setSourceType(StandardFeed::SourceType::Url);
+    feed->setType(StandardFeed::Type::Rss2X);
+    feed->setSource(feed_lookup.url);
+    feed->setTitle(feed_lookup.url);
+    feed->setIcon(qApp->icons()->fromTheme(QSL("application-rss+xml")));
+    feed->setEncoding(QSL(DEFAULT_FEED_ENCODING));
+    feed->setPostProcessScript(feed_lookup.post_process_script);
+  }
+  else {
+    QString feed_title = feed_lookup.custom_data[QSL("title")].toString();
+    QString feed_encoding = feed_lookup.custom_data.value(QSL("encoding"), QSL(DEFAULT_FEED_ENCODING)).toString();
+    QString feed_type = feed_lookup.custom_data.value(QSL("type"), QSL(DEFAULT_FEED_TYPE)).toString().toUpper();
+    QString feed_description = feed_lookup.custom_data[QSL("description")].toString();
+    QIcon feed_icon = feed_lookup.custom_data[QSL("icon")].value<QIcon>();
+    StandardFeed::SourceType source_type = feed_lookup.custom_data[QSL("sourceType")].value<StandardFeed::SourceType>();
+    QString post_process = feed_lookup.custom_data[QSL("postProcessScript")].toString();
+
+    feed->setTitle(feed_title);
+    feed->setDescription(feed_description);
+    feed->setEncoding(feed_encoding);
+    feed->setSource(feed_lookup.url);
+    feed->setSourceType(source_type);
+    feed->setPostProcessScript(feed_lookup.post_process_script.isEmpty() ? post_process
+                                                                         : feed_lookup.post_process_script);
+
+    if (!feed_icon.isNull()) {
+      feed->setIcon(feed_icon);
+    }
+
+    if (feed_type == QL1S("RSS1")) {
+      feed->setType(StandardFeed::Type::Rdf);
+    }
+    else if (feed_type == QL1S("JSON")) {
+      feed->setType(StandardFeed::Type::Json);
+    }
+    else if (feed_type == QL1S("ATOM")) {
+      feed->setType(StandardFeed::Type::Atom10);
+    }
+    else {
+      feed->setType(StandardFeed::Type::Rss2X);
+    }
   }
 }
 

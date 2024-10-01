@@ -40,12 +40,13 @@ MessagesView::MessagesView(QWidget* parent)
   createConnections();
   setModel(m_proxyModel);
   setupAppearance();
+  setupArticleMarkingPolicy();
   header()->setContextMenuPolicy(Qt::ContextMenuPolicy::CustomContextMenu);
   connect(header(), &QHeaderView::customContextMenuRequested, this, [=](QPoint point) {
     TreeViewColumnsMenu mm(header());
     mm.exec(header()->mapToGlobal(point));
   });
-
+  connect(&m_delayedArticleMarker, &QTimer::timeout, this, &MessagesView::markSelectedMessagesReadDelayed);
   reloadFontSettings();
 }
 
@@ -55,6 +56,16 @@ MessagesView::~MessagesView() {
 
 void MessagesView::reloadFontSettings() {
   m_sourceModel->setupFonts();
+}
+
+void MessagesView::setupArticleMarkingPolicy() {
+  m_articleMarkingPolicy =
+    ArticleMarkingPolicy(qApp->settings()->value(GROUP(Messages), SETTING(Messages::ArticleMarkOnSelection)).toInt());
+  m_articleMarkingDelay =
+    qApp->settings()->value(GROUP(Messages), SETTING(Messages::ArticleMarkOnSelectionDelay)).toInt();
+
+  m_delayedArticleMarker.setSingleShot(true);
+  m_delayedArticleMarker.setInterval(m_articleMarkingDelay);
 }
 
 QByteArray MessagesView::saveHeaderState() const {
@@ -164,15 +175,17 @@ void MessagesView::sort(int column,
                         bool repopulate_data,
                         bool change_header,
                         bool emit_changed_from_header,
-                        bool ignore_multicolumn_sorting) {
+                        bool ignore_multicolumn_sorting,
+                        int additional_article_id) {
   if (change_header && !emit_changed_from_header) {
     header()->blockSignals(true);
   }
 
   m_sourceModel->addSortState(column, order, ignore_multicolumn_sorting);
+  m_proxyModel->setAdditionalArticleId(additional_article_id);
 
   if (repopulate_data) {
-    m_sourceModel->repopulate();
+    m_sourceModel->repopulate(additional_article_id);
   }
 
   if (change_header) {
@@ -198,6 +211,8 @@ void MessagesView::keyboardSearch(const QString& search) {
 }
 
 void MessagesView::reloadSelections() {
+  bool force_load_currently_selected_article = true;
+
   const QDateTime dt1 = QDateTime::currentDateTime();
   QModelIndex current_index = selectionModel()->currentIndex();
   const bool is_current_selected =
@@ -210,7 +225,7 @@ void MessagesView::reloadSelections() {
   bool do_not_mark_read_on_select = false;
 
   // Reload the model now.
-  sort(col, ord, true, false, false, true);
+  sort(col, ord, true, false, false, true, force_load_currently_selected_article ? selected_message_id : 0);
 
   // Now, we must find the same previously focused message.
   if (selected_message_id > 0) {
@@ -505,9 +520,25 @@ void MessagesView::selectionChanged(const QItemSelection& selected, const QItemS
     // Set this message as read only if current item
     // wasn't changed by "mark selected messages unread" action.
     if (!m_processingRightMouseButton) {
-      if (qApp->settings()->value(GROUP(Messages), SETTING(Messages::MarkMessageReadOnSelectionChange)).toBool()) {
-        m_sourceModel->setMessageRead(mapped_current_index.row(), RootItem::ReadStatus::Read);
-        message.m_isRead = true;
+      // if (qApp->settings()->value(GROUP(Messages), SETTING(Messages::MarkMessageReadOnSelectionChange)).toBool()) {
+        // m_sourceModel->setMessageRead(mapped_current_index.row(), RootItem::ReadStatus::Read);
+        // message.m_isRead = true;
+
+      if (!message.m_isRead) {
+        if (m_articleMarkingPolicy == ArticleMarkingPolicy::MarkImmediately) {
+          qDebugNN << LOGSEC_GUI << "Marking article as read immediately.";
+
+          m_sourceModel->setMessageRead(mapped_current_index.row(), RootItem::ReadStatus::Read);
+          message.m_isRead = true;
+        }
+        else if (m_articleMarkingPolicy == ArticleMarkingPolicy::MarkWithDelay) {
+          qDebugNN << LOGSEC_GUI << "(Re)Starting timer to mark article as read with a delay.";
+          m_delayedArticleIndex = current_index;
+          m_delayedArticleMarker.start();
+        }
+        else {
+          // NOTE: Article can only be marked as read manually, so just change.
+        }
       }
     }
 
@@ -529,7 +560,26 @@ void MessagesView::selectionChanged(const QItemSelection& selected, const QItemS
   QTreeView::selectionChanged(selected, deselected);
 }
 
+void MessagesView::markSelectedMessagesReadDelayed() {
+  qDebugNN << LOGSEC_GUI << "Delay has passed! Marking article as read NOW.";
+
+  const QModelIndexList selected_rows = selectionModel()->selectedRows();
+  const QModelIndex current_index = m_delayedArticleIndex;
+
+  if (selected_rows.size() == 1 && current_index.isValid() && !m_processingRightMouseButton &&
+      m_articleMarkingPolicy == ArticleMarkingPolicy::MarkWithDelay) {
+    const QModelIndex mapped_current_index = m_proxyModel->mapToSource(current_index);
+    Message message = m_sourceModel->messageAt(m_proxyModel->mapToSource(current_index).row());
+
+    m_sourceModel->setMessageRead(mapped_current_index.row(), RootItem::ReadStatus::Read);
+    message.m_isRead = true;
+    emit currentMessageChanged(message, m_sourceModel->loadedItem());
+  }
+}
+
 void MessagesView::loadItem(RootItem* item) {
+  m_delayedArticleMarker.stop();
+
   const int col = header()->sortIndicatorSection();
   const Qt::SortOrder ord = header()->sortIndicatorOrder();
 

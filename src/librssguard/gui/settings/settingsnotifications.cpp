@@ -65,8 +65,18 @@ void SettingsNotifications::loadSettings() {
     ->setChecked(settings()->value(GROUP(GUI), SETTING(GUI::EnableNotifications)).toBool());
   m_ui.m_editor->loadNotifications(qApp->notifications()->allNotifications());
 
-  m_ui.m_rbNativeNotifications
-    ->setChecked(!settings()->value(GROUP(GUI), SETTING(GUI::UseToastNotifications)).toBool());
+  if (qApp->isWayland()) {
+    // Wayland does not support fancy notifications, only system ones.
+    m_ui.m_rbNativeNotifications->setChecked(true);
+    m_ui.m_rbCustomNotifications->setEnabled(false);
+    m_ui.m_rbCustomNotifications
+      ->setText(tr("%1 (not supported on Wayland)").arg(m_ui.m_rbCustomNotifications->text()));
+  }
+  else {
+    m_ui.m_rbNativeNotifications
+      ->setChecked(!settings()->value(GROUP(GUI), SETTING(GUI::UseToastNotifications)).toBool());
+  }
+
   m_ui.m_sbScreen->setValue(settings()->value(GROUP(GUI), SETTING(GUI::ToastNotificationsScreen)).toInt());
   m_ui.m_sbWidth->setValue(settings()->value(GROUP(GUI), SETTING(GUI::ToastNotificationsWidth)).toInt());
   m_ui.m_sbMargin->setValue(settings()->value(GROUP(GUI), SETTING(GUI::ToastNotificationsMargin)).toInt());

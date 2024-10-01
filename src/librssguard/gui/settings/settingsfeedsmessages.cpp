@@ -46,6 +46,18 @@ SettingsFeedsMessages::SettingsFeedsMessages(Settings* settings, QWidget* parent
     m_ui->m_cmbUnreadIconType->addItem(MessagesModel::descriptionOfUnreadIcon(en), int(en));
   }
 
+  m_ui->m_cmbArticleMarkingPolicy->addItem(tr("immediately"), int(MessagesView::ArticleMarkingPolicy::MarkImmediately));
+  m_ui->m_cmbArticleMarkingPolicy->addItem(tr("only manually"),
+                                           int(MessagesView::ArticleMarkingPolicy::MarkOnlyManually));
+  m_ui->m_cmbArticleMarkingPolicy->addItem(tr("with delay"), int(MessagesView::ArticleMarkingPolicy::MarkWithDelay));
+
+  updateArticleMarkingPolicyDelay();
+
+  connect(m_ui->m_cmbArticleMarkingPolicy,
+          QOverload<int>::of(&QComboBox::currentIndexChanged),
+          this,
+          &SettingsFeedsMessages::updateArticleMarkingPolicyDelay);
+
   connect(m_ui->m_cbShowEnclosuresDirectly, &QCheckBox::toggled, this, &SettingsFeedsMessages::dirtifySettings);
   connect(m_ui->m_spinHeightImageAttachments,
           static_cast<void (QSpinBox::*)(int)>(&QSpinBox::valueChanged),
@@ -70,6 +82,14 @@ SettingsFeedsMessages::SettingsFeedsMessages(Settings* settings, QWidget* parent
     }
   });
 
+  connect(m_ui->m_cmbArticleMarkingPolicy,
+          QOverload<int>::of(&QComboBox::currentIndexChanged),
+          this,
+          &SettingsFeedsMessages::dirtifySettings);
+  connect(m_ui->m_spinArticleMarkingPolicy,
+          static_cast<void (QSpinBox::*)(int)>(&QSpinBox::valueChanged),
+          this,
+          &SettingsFeedsMessages::dirtifySettings);
   connect(m_ui->m_gbFeedListFont, &QGroupBox::toggled, this, &SettingsFeedsMessages::dirtifySettings);
   connect(m_ui->m_gbArticleListFont, &QGroupBox::toggled, this, &SettingsFeedsMessages::dirtifySettings);
   connect(m_ui->m_cbListsRestrictedShortcuts, &QCheckBox::toggled, this, &SettingsFeedsMessages::dirtifySettings);
@@ -238,7 +258,7 @@ QIcon SettingsFeedsMessages::icon() const {
 }
 
 void SettingsFeedsMessages::initializeMessageDateFormats() {
-  QStringList patterns = TextFactory::dateTimePatterns();
+  QStringList patterns = TextFactory::dateTimePatterns(false);
 
   m_ui->m_cmbMessagesDateTimeFormat->addItems(patterns);
   m_ui->m_cmbMessagesTimeFormat->addItems(patterns);
@@ -267,12 +287,24 @@ void SettingsFeedsMessages::changeFont(QLabel& lbl) {
   }
 }
 
+MessagesView::ArticleMarkingPolicy SettingsFeedsMessages::selectedArticleMarkingPolicy() const {
+  return MessagesView::ArticleMarkingPolicy(m_ui->m_cmbArticleMarkingPolicy->currentData().toInt());
+}
+
 void SettingsFeedsMessages::loadSettings() {
   onBeginLoadSettings();
 
   if (!qApp->usingLite()) {
     m_ui->m_cbLegacyArticleFormatting->setVisible(false);
   }
+
+  m_ui->m_cmbArticleMarkingPolicy
+    ->setCurrentIndex(m_ui->m_cmbArticleMarkingPolicy->findData(settings()
+                                                                  ->value(GROUP(Messages),
+                                                                          SETTING(Messages::ArticleMarkOnSelection))
+                                                                  .toInt()));
+  m_ui->m_spinArticleMarkingPolicy
+    ->setValue(settings()->value(GROUP(Messages), SETTING(Messages::ArticleMarkOnSelectionDelay)).toInt());
 
   m_ui->m_spinRelativeArticleTime
     ->setValue(settings()->value(GROUP(Messages), SETTING(Messages::RelativeTimeForNewerArticles)).toInt());
@@ -387,6 +419,16 @@ void SettingsFeedsMessages::loadSettings() {
 
 void SettingsFeedsMessages::saveSettings() {
   onBeginSaveSettings();
+
+  settings()->setValue(GROUP(Messages),
+                       Messages::ArticleMarkOnSelection,
+                       m_ui->m_cmbArticleMarkingPolicy->currentData().toInt());
+
+  settings()->setValue(GROUP(Messages),
+                       Messages::ArticleMarkOnSelectionDelay,
+                       m_ui->m_spinArticleMarkingPolicy->value());
+
+  qApp->mainForm()->tabWidget()->feedMessageViewer()->messagesView()->setupArticleMarkingPolicy();
 
   settings()->setValue(GROUP(Messages),
                        Messages::RelativeTimeForNewerArticles,
@@ -521,4 +563,9 @@ void SettingsFeedsMessages::updateDateTimeTooltip() {
       sndr->setToolTip(QDateTime::currentDateTime().toString(sndr->currentText()));
     }
   }
+}
+
+void SettingsFeedsMessages::updateArticleMarkingPolicyDelay() {
+  m_ui->m_spinArticleMarkingPolicy->setEnabled(selectedArticleMarkingPolicy() ==
+                                               MessagesView::ArticleMarkingPolicy::MarkWithDelay);
 }

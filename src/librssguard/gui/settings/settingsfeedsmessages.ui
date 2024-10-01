@@ -455,21 +455,21 @@
        <item row="0" column="1">
         <widget class="QComboBox" name="m_cmbUnreadIconType"/>
        </item>
-       <item row="1" column="0" colspan="2">
+       <item row="2" column="0" colspan="2">
         <widget class="QCheckBox" name="m_checkKeppMessagesInTheMiddle">
          <property name="text">
           <string>Keep article selection in the middle of the article list viewport</string>
          </property>
         </widget>
        </item>
-       <item row="2" column="0" colspan="2">
+       <item row="3" column="0">
         <widget class="QCheckBox" name="m_checkMultilineArticleList">
          <property name="text">
           <string>Enable multiline items</string>
          </property>
         </widget>
        </item>
-       <item row="3" column="0" colspan="2">
+       <item row="4" column="0" colspan="2">
         <widget class="HelpSpoiler" name="m_helpMultilineArticleList" native="true">
          <property name="minimumSize">
           <size>
@@ -479,7 +479,7 @@
          </property>
         </widget>
        </item>
-       <item row="4" column="0">
+       <item row="5" column="0">
         <widget class="QLabel" name="label_2">
          <property name="text">
           <string>Row height</string>
@@ -489,7 +489,7 @@
          </property>
         </widget>
        </item>
-       <item row="4" column="1">
+       <item row="5" column="1">
         <widget class="QSpinBox" name="m_spinHeightRowsMessages">
          <property name="minimumSize">
           <size>
@@ -508,7 +508,7 @@
          </property>
         </widget>
        </item>
-       <item row="5" column="0">
+       <item row="6" column="0">
         <widget class="QLabel" name="label_4">
          <property name="text">
           <string>Top/bottom row padding</string>
@@ -518,7 +518,7 @@
          </property>
         </widget>
        </item>
-       <item row="5" column="1">
+       <item row="6" column="1">
         <widget class="QSpinBox" name="m_spinPaddingRowsMessages">
          <property name="minimumSize">
           <size>
@@ -537,7 +537,7 @@
          </property>
         </widget>
        </item>
-       <item row="6" column="0">
+       <item row="7" column="0">
         <widget class="QCheckBox" name="m_checkMessagesDateTimeFormat">
          <property name="text">
           <string>Use custom date/time format</string>
@@ -550,7 +550,7 @@
          </property>
         </widget>
        </item>
-       <item row="6" column="1">
+       <item row="7" column="1">
         <widget class="QComboBox" name="m_cmbMessagesDateTimeFormat">
          <property name="minimumSize">
           <size>
@@ -564,9 +564,9 @@
         </widget>
        </item>
        <item row="8" column="0">
-        <widget class="QCheckBox" name="m_checkMessagesTimeFormat">
+        <widget class="QCheckBox" name="m_checkMessagesDateTimeFormatForDatesOnly">
          <property name="text">
-          <string>Custom date/time format for today's articles</string>
+          <string>Use custom date/time format for dates-only</string>
          </property>
          <property name="checkable">
           <bool>true</bool>
@@ -577,7 +577,7 @@
         </widget>
        </item>
        <item row="8" column="1">
-        <widget class="QComboBox" name="m_cmbMessagesTimeFormat">
+        <widget class="QComboBox" name="m_cmbMessagesDateTimeFormatForDatesOnly">
          <property name="minimumSize">
           <size>
            <width>150</width>
@@ -590,13 +590,39 @@
         </widget>
        </item>
        <item row="9" column="0">
+        <widget class="QCheckBox" name="m_checkMessagesTimeFormat">
+         <property name="text">
+          <string>Custom date/time format for today's articles</string>
+         </property>
+         <property name="checkable">
+          <bool>true</bool>
+         </property>
+         <property name="checked">
+          <bool>true</bool>
+         </property>
+        </widget>
+       </item>
+       <item row="9" column="1">
+        <widget class="QComboBox" name="m_cmbMessagesTimeFormat">
+         <property name="minimumSize">
+          <size>
+           <width>150</width>
+           <height>0</height>
+          </size>
+         </property>
+         <property name="editable">
+          <bool>true</bool>
+         </property>
+        </widget>
+       </item>
+       <item row="10" column="0">
         <widget class="QLabel" name="label">
          <property name="text">
           <string>Show relative time for articles not older than</string>
          </property>
         </widget>
        </item>
-       <item row="9" column="1">
+       <item row="10" column="1">
         <widget class="QSpinBox" name="m_spinRelativeArticleTime">
          <property name="minimum">
           <number>-1</number>
@@ -606,7 +632,7 @@
          </property>
         </widget>
        </item>
-       <item row="10" column="0">
+       <item row="11" column="0">
         <widget class="QGroupBox" name="m_gbArticleListFont">
          <property name="title">
           <string>Article list font</string>
@@ -638,29 +664,33 @@
          </layout>
         </widget>
        </item>
-       <item row="7" column="1">
-        <widget class="QComboBox" name="m_cmbMessagesDateTimeFormatForDatesOnly">
-         <property name="minimumSize">
-          <size>
-           <width>150</width>
-           <height>0</height>
-          </size>
-         </property>
-         <property name="editable">
-          <bool>true</bool>
-         </property>
-        </widget>
+       <item row="1" column="1">
+        <layout class="QHBoxLayout" name="horizontalLayout_6">
+         <item>
+          <widget class="QComboBox" name="m_cmbArticleMarkingPolicy"/>
+         </item>
+         <item>
+          <widget class="QSpinBox" name="m_spinArticleMarkingPolicy">
+           <property name="suffix">
+            <string notr="true"> ms</string>
+           </property>
+           <property name="minimum">
+            <number>100</number>
+           </property>
+           <property name="maximum">
+            <number>15000</number>
+           </property>
+           <property name="singleStep">
+            <number>100</number>
+           </property>
+          </widget>
+         </item>
+        </layout>
        </item>
-       <item row="7" column="0">
-        <widget class="QCheckBox" name="m_checkMessagesDateTimeFormatForDatesOnly">
+       <item row="1" column="0">
+        <widget class="QLabel" name="label_7">
          <property name="text">
-          <string>Use custom date/time format for dates-only</string>
-         </property>
-         <property name="checkable">
-          <bool>true</bool>
-         </property>
-         <property name="checked">
-          <bool>true</bool>
+          <string>Upon article selection, mark as read</string>
          </property>
         </widget>
        </item>
@@ -741,7 +771,6 @@
   <tabstop>m_cmbMessagesTimeFormat</tabstop>
   <tabstop>m_spinRelativeArticleTime</tabstop>
   <tabstop>m_btnChangeMessageListFont</tabstop>
-  <tabstop>m_tabFeedsMessages</tabstop>
   <tabstop>m_gbFeedListFont</tabstop>
   <tabstop>m_gbArticleListFont</tabstop>
   <tabstop>m_checkSwitchRtlEntireTableview</tabstop>

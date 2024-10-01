@@ -12,12 +12,12 @@ ToastNotification::ToastNotification(Notification::Event event,
                                      const GuiMessage& msg,
                                      const GuiAction& action,
                                      QWidget* parent)
-  : BaseToastNotification() {
+  : BaseToastNotification(parent) {
   m_ui.setupUi(this);
 
   setupHeading(m_ui.m_lblTitle);
   setupCloseButton(m_ui.m_btnClose);
-  setupTimedClosing();
+  setupTimedClosing(false);
 
   loadNotification(event, msg, action);
 }

@@ -19,6 +19,7 @@ struct FeedLookup {
     bool fetch_metadata_online;
     bool do_not_fetch_titles;
     bool do_not_fetch_icons;
+    bool add_errored_feeds;
     QNetworkProxy custom_proxy;
     QString post_process_script;
 };
@@ -61,6 +62,8 @@ class FeedsImportExportModel : public AccountCheckSortedModel {
 
   private:
     bool produceFeed(const FeedLookup& feed_lookup);
+
+    void fillFeedFromFeedLookupData(StandardFeed* feed, const FeedLookup& feed_lookup);
 
   private:
     StandardServiceRoot* m_account;

@@ -106,17 +106,17 @@ QString IcalParser::objMessageUrl(const QVariant& msg_element) const {
   return comp.url();
 }
 
-QString IcalParser::objMessageDescription(const QVariant& msg_element) const {
+QString IcalParser::objMessageDescription(const QVariant& msg_element) {
   const IcalendarComponent& comp_base = msg_element.value<IcalendarComponent>();
   const EventComponent& comp = static_cast<const EventComponent&>(comp_base);
 
   bool has_dt;
-  auto son = comp.startsOn(m_iCalendar.m_tzs, &has_dt).toLocalTime();
+  auto son = comp.startsOn(m_iCalendar.m_tzs, &has_dt, &m_dateTimeFormat).toLocalTime();
 
   QString formaton = has_dt ? QLocale().dateTimeFormat(QLocale::FormatType::LongFormat)
                             : QLocale().dateFormat(QLocale::FormatType::LongFormat);
 
-  auto soff = comp.endsOn(m_iCalendar.m_tzs, &has_dt).toLocalTime();
+  auto soff = comp.endsOn(m_iCalendar.m_tzs, &has_dt, &m_dateTimeFormat).toLocalTime();
   QString formatoff = has_dt ? QLocale().dateTimeFormat(QLocale::FormatType::LongFormat)
                              : QLocale().dateFormat(QLocale::FormatType::LongFormat);
 
@@ -142,11 +142,11 @@ QString IcalParser::objMessageAuthor(const QVariant& msg_element) const {
   return comp.organizer();
 }
 
-QDateTime IcalParser::objMessageDateCreated(const QVariant& msg_element) const {
+QDateTime IcalParser::objMessageDateCreated(const QVariant& msg_element) {
   const IcalendarComponent& comp_base = msg_element.value<IcalendarComponent>();
   const EventComponent& comp = static_cast<const EventComponent&>(comp_base);
 
-  QDateTime dat = comp.startsOn(m_iCalendar.m_tzs);
+  QDateTime dat = comp.startsOn(m_iCalendar.m_tzs, nullptr, &m_dateTimeFormat);
 
   return dat;
 }
@@ -347,13 +347,12 @@ QDateTime IcalendarComponent::fixupDate(QDateTime dat,
   }
 }
 
-QDateTime EventComponent::startsOn(const QMap<QString, QTimeZone>& time_zones, bool* had_dt) const {
+QDateTime EventComponent::startsOn(const QMap<QString, QTimeZone>& time_zones, bool* had_dt, QString* dt_format) const {
   QString modifiers;
-  QString dt_format;
   bool has_dt;
-  QDateTime dat = TextFactory::parseDateTime(getPropertyValue(QSL("DTSTART"), modifiers).toString(), &dt_format);
+  QDateTime dat = TextFactory::parseDateTime(getPropertyValue(QSL("DTSTART"), modifiers).toString(), dt_format);
 
-  dat = fixupDate(dat, dt_format, time_zones, modifiers, &has_dt);
+  dat = fixupDate(dat, *dt_format, time_zones, modifiers, &has_dt);
 
   if (had_dt != nullptr) {
     *had_dt = has_dt;
@@ -362,13 +361,12 @@ QDateTime EventComponent::startsOn(const QMap<QString, QTimeZone>& time_zones, b
   return dat;
 }
 
-QDateTime EventComponent::endsOn(const QMap<QString, QTimeZone>& time_zones, bool* had_dt) const {
+QDateTime EventComponent::endsOn(const QMap<QString, QTimeZone>& time_zones, bool* had_dt, QString* dt_format) const {
   QString modifiers;
-  QString dt_format;
   bool has_dt;
-  QDateTime dat = TextFactory::parseDateTime(getPropertyValue(QSL("DTEND"), modifiers).toString(), &dt_format);
+  QDateTime dat = TextFactory::parseDateTime(getPropertyValue(QSL("DTEND"), modifiers).toString(), dt_format);
 
-  dat = fixupDate(dat, dt_format, time_zones, modifiers, &has_dt);
+  dat = fixupDate(dat, *dt_format, time_zones, modifiers, &has_dt);
 
   if (had_dt != nullptr) {
     *had_dt = has_dt;
@@ -395,18 +393,4 @@ QString EventComponent::location() const {
 
 QString EventComponent::description() const {
   return getPropertyValue(QSL("DESCRIPTION")).toString();
-}
-
-QDateTime EventComponent::created(const QMap<QString, QTimeZone>& time_zones) const {
-  QString modifiers;
-  QDateTime dat = TextFactory::parseDateTime(getPropertyValue(QSL("CREATED"), modifiers).toString());
-
-  return fixupDate(dat, {}, time_zones, modifiers);
-}
-
-QDateTime EventComponent::lastModified(const QMap<QString, QTimeZone>& time_zones) const {
-  QString modifiers;
-  QDateTime dat = TextFactory::parseDateTime(getPropertyValue(QSL("LAST-MODIFIED"), modifiers).toString());
-
-  return fixupDate(dat, {}, time_zones, modifiers);
 }

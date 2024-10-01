@@ -243,6 +243,8 @@ set(SOURCES
   miscellaneous/templates.h
   miscellaneous/textfactory.cpp
   miscellaneous/textfactory.h
+  miscellaneous/thread.cpp
+  miscellaneous/thread.h
   network-web/adblock/adblockdialog.cpp
   network-web/adblock/adblockdialog.h
   network-web/adblock/adblockicon.cpp
@@ -253,6 +255,8 @@ set(SOURCES
   network-web/adblock/adblockrequestinfo.h
   network-web/apiserver.cpp
   network-web/apiserver.h
+  network-web/articleparse.cpp
+  network-web/articleparse.h
   network-web/basenetworkaccessmanager.cpp
   network-web/basenetworkaccessmanager.h
   network-web/cookiejar.cpp
@@ -369,7 +373,7 @@ set(UI_FILES
   services/abstract/gui/formfeeddetails.ui
 )
 
-if(ENABLE_MEDIAPLAYER) 
+if(ENABLE_MEDIAPLAYER)
   list(APPEND SOURCES
     gui/mediaplayer/playerbackend.cpp
     gui/mediaplayer/playerbackend.h
@@ -401,7 +405,7 @@ elseif(ENABLE_MEDIAPLAYER_LIBMPV)
     list(APPEND CMAKE_FIND_LIBRARY_SUFFIXES ".dll.a")
   endif()
 
-  # Search libmvp.
+  # Search libmpv.
   find_library(LibMPV_LIBRARIES
     NAMES "mpv" "libmpv" "libmpv-v2"
     HINTS "${LibMPV_ROOT}"
@@ -496,18 +500,11 @@ add_library(rssguard SHARED ${SOURCES} ${QM_FILES})
 if(FORCE_BUNDLE_ICONS)
   target_compile_definitions(rssguard
     PRIVATE
-
     FORCE_BUNDLE_ICONS
   )
 
   message(STATUS "Forcibly bundling icon themes.")
 endif()
-
-# Add specific definitions.
-target_compile_definitions(rssguard
-  PRIVATE
-  RSSGUARD_DLLSPEC=Q_DECL_EXPORT
-)
 
 target_include_directories(rssguard
   PUBLIC
@@ -639,6 +636,13 @@ elseif(APPLE)
   install(TARGETS rssguard DESTINATION Contents/MacOS)
   set(HEADERS_FOLDER "Contents/Resources/Include")
 endif()
+
+# Add specific definitions.
+target_compile_definitions(rssguard
+  PRIVATE
+  RSSGUARD_DLLSPEC=Q_DECL_EXPORT
+  RSSGUARD_LIBDIR="${CMAKE_INSTALL_LIBDIR}"
+)
 
 # Install public headers.
 set(HEADERS_ROOT "${PROJECT_SOURCE_DIR}/src/librssguard")

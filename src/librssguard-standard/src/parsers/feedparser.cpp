@@ -15,6 +15,8 @@
 #include <QFile>
 #include <QRegularExpression>
 
+FeedParser::FeedParser() {}
+
 FeedParser::FeedParser(QString data, DataType is_xml)
   : m_dataType(is_xml), m_data(std::move(data)), m_mrssNamespace(QSL("http://search.yahoo.com/mrss/")) {
   if (m_data.isEmpty()) {
@@ -22,6 +24,9 @@ FeedParser::FeedParser(QString data, DataType is_xml)
   }
 
   if (m_dataType == DataType::Xml) {
+    // NOTE: Some XMLs have whitespace before XML declaration, erase it.
+    m_data = m_data.trimmed();
+
     // XML.
     QString error;
 
@@ -74,11 +79,16 @@ QPair<StandardFeed*, QList<IconLocation>> FeedParser::guessFeed(const QByteArray
 }
 
 QString FeedParser::xmlMessageRawContents(const QDomElement& msg_element) const {
-  QString raw_contents;
-  QTextStream str(&raw_contents);
+  if (dontUseRawXmlSaving()) {
+    return msg_element.text();
+  }
+  else {
+    QString raw_contents;
+    QTextStream str(&raw_contents);
 
-  msg_element.save(str, 0, QDomNode::EncodingPolicy::EncodingFromTextStream);
-  return raw_contents;
+    msg_element.save(str, 0, QDomNode::EncodingPolicy::EncodingFromTextStream);
+    return raw_contents;
+  }
 }
 
 QJsonArray FeedParser::jsonMessageElements() {
@@ -101,7 +111,7 @@ QString FeedParser::jsonMessageAuthor(const QJsonObject& msg_element) const {
   return {};
 }
 
-QDateTime FeedParser::jsonMessageDateCreated(const QJsonObject& msg_element) const {
+QDateTime FeedParser::jsonMessageDateCreated(const QJsonObject& msg_element) {
   return {};
 }
 
@@ -133,7 +143,7 @@ QString FeedParser::objMessageUrl(const QVariant& msg_element) const {
   return {};
 }
 
-QString FeedParser::objMessageDescription(const QVariant& msg_element) const {
+QString FeedParser::objMessageDescription(const QVariant& msg_element) {
   return {};
 }
 
@@ -141,7 +151,7 @@ QString FeedParser::objMessageAuthor(const QVariant& msg_element) const {
   return {};
 }
 
-QDateTime FeedParser::objMessageDateCreated(const QVariant& msg_element) const {
+QDateTime FeedParser::objMessageDateCreated(const QVariant& msg_element) {
   return {};
 }
 
@@ -334,23 +344,30 @@ QString FeedParser::xmlMrssTextFromPath(const QDomElement& msg_element, const QS
 }
 
 QString FeedParser::xmlRawChild(const QDomElement& container) const {
-  QString raw;
-  auto children = container.childNodes();
-
-  for (int i = 0; i < children.size(); i++) {
-    if (children.at(i).isCDATASection()) {
-      raw += children.at(i).toCDATASection().data();
-    }
-    else {
-      QString raw_ch;
-      QTextStream str(&raw_ch);
-
-      children.at(i).save(str, 0);
-      raw += WebFactory::unescapeHtml(raw_ch);
-    }
+  if (dontUseRawXmlSaving()) {
+    return container.text();
   }
+  else {
+    QString raw;
+    auto children = container.childNodes();
 
-  return raw;
+    for (int i = 0; i < children.size(); i++) {
+      auto child = children.at(i);
+
+      if (child.isCDATASection()) {
+        raw += child.toCDATASection().data();
+      }
+      else {
+        QString raw_ch;
+        QTextStream str(&raw_ch);
+
+        child.save(str, 0);
+        raw += WebFactory::unescapeHtml(raw_ch);
+      }
+    }
+
+    return raw;
+  }
 }
 
 QStringList FeedParser::xmlTextsFromPath(const QDomElement& element,
@@ -395,6 +412,22 @@ QStringList FeedParser::xmlTextsFromPath(const QDomElement& element,
   return result;
 }
 
+bool FeedParser::dontUseRawXmlSaving() const {
+  return m_dontUseRawXmlSaving;
+}
+
+void FeedParser::setDontUseRawXmlSaving(bool no_raw_xml_saving) {
+  m_dontUseRawXmlSaving = no_raw_xml_saving;
+}
+
+QString FeedParser::dateTimeFormat() const {
+  return m_dateTimeFormat;
+}
+
+void FeedParser::setDateTimeFormat(const QString& dt_format) {
+  m_dateTimeFormat = dt_format;
+}
+
 QString FeedParser::feedAuthor() const {
   return QL1S("");
 }
@@ -419,7 +452,7 @@ QString FeedParser::xmlMessageAuthor(const QDomElement& msg_element) const {
   return {};
 }
 
-QDateTime FeedParser::xmlMessageDateCreated(const QDomElement& msg_element) const {
+QDateTime FeedParser::xmlMessageDateCreated(const QDomElement& msg_element) {
   return {};
 }
 

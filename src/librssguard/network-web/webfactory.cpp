@@ -8,6 +8,7 @@
 #include "miscellaneous/settings.h"
 #include "network-web/adblock/adblockmanager.h"
 #include "network-web/apiserver.h"
+#include "network-web/articleparse.h"
 #include "network-web/cookiejar.h"
 #include "network-web/readability.h"
 
@@ -54,6 +55,7 @@ WebFactory::WebFactory(QObject* parent) : QObject(parent), m_apiServer(nullptr),
 
   m_cookieJar = new CookieJar(this);
   m_readability = new Readability(this);
+  m_articleParse = new ArticleParse(this);
 
 #if defined(NO_LITE)
 #if QT_VERSION >= 0x050D00 // Qt >= 5.13.0
@@ -566,6 +568,10 @@ CookieJar* WebFactory::cookieJar() const {
 
 Readability* WebFactory::readability() const {
   return m_readability;
+}
+
+ArticleParse* WebFactory::articleParse() const {
+  return m_articleParse;
 }
 
 void WebFactory::startApiServer() {

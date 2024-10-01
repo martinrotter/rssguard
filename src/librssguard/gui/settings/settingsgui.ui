@@ -109,7 +109,7 @@
        <item row="2" column="1">
         <widget class="QCheckBox" name="m_checkForceAlternativePalette">
          <property name="text">
-          <string>Use skin colors</string>
+          <string>Use skin colors (skin colors for dialogs/controls only take effect with Fusion style)</string>
          </property>
         </widget>
        </item>

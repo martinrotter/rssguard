@@ -15,6 +15,8 @@ set(SOURCES
   src/gui/standardaccountdetails.h
   src/gui/standardfeeddetails.cpp
   src/gui/standardfeeddetails.h
+  src/gui/standardfeedexpdetails.cpp
+  src/gui/standardfeedexpdetails.h
   src/parsers/atomparser.cpp
   src/parsers/atomparser.h
   src/parsers/feedparser.cpp
@@ -46,6 +48,7 @@ set(UI_FILES
   src/gui/formstandardimportexport.ui
   src/gui/standardaccountdetails.ui
   src/gui/standardfeeddetails.ui
+  src/gui/standardfeedexpdetails.ui
 )
 
 # Add ZLIB.

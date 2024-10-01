@@ -188,6 +188,9 @@ QPair<StandardFeed*, QList<IconLocation>> RdfParser::guessFeed(const QByteArray&
     xml_contents_encoded = QString::fromUtf8(content);
   }
 
+  // NOTE: Some XMLs have whitespace before XML declaration, erase it.
+  xml_contents_encoded = xml_contents_encoded.trimmed();
+
   // Feed XML was obtained, guess it now.
   QDomDocument xml_document;
   QString error_msg;
@@ -254,11 +257,12 @@ QString RdfParser::xmlMessageAuthor(const QDomElement& msg_element) const {
   return msg_element.elementsByTagNameNS(m_dcElNamespace, QSL("creator")).at(0).toElement().text();
 }
 
-QDateTime RdfParser::xmlMessageDateCreated(const QDomElement& msg_element) const {
+QDateTime RdfParser::xmlMessageDateCreated(const QDomElement& msg_element) {
   return TextFactory::parseDateTime(msg_element.elementsByTagNameNS(m_dcElNamespace, QSL("date"))
                                       .at(0)
                                       .toElement()
-                                      .text());
+                                      .text(),
+                                    &m_dateTimeFormat);
 }
 
 QString RdfParser::xmlMessageId(const QDomElement& msg_element) const {

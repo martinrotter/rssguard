@@ -192,7 +192,7 @@ void StandardServiceRoot::addNewFeed(RootItem* selected_item, const QString& url
 }
 
 Qt::ItemFlags StandardServiceRoot::additionalFlags() const {
-  return Qt::ItemFlag::ItemIsDropEnabled;
+  return ServiceRoot::additionalFlags() | Qt::ItemFlag::ItemIsDragEnabled | Qt::ItemFlag::ItemIsDropEnabled;
 }
 
 QList<Message> StandardServiceRoot::obtainNewMessages(Feed* feed,
@@ -322,35 +322,56 @@ QList<Message> StandardServiceRoot::obtainNewMessages(Feed* feed,
   // Feed data are downloaded and encoded.
   // Parse data and obtain messages.
   QList<Message> messages;
+  FeedParser* parser;
+  QElapsedTimer tmr;
+
+  tmr.start();
 
   switch (f->type()) {
     case StandardFeed::Type::Rss0X:
     case StandardFeed::Type::Rss2X:
-      messages = RssParser(formatted_feed_contents).messages();
+      parser = new RssParser(formatted_feed_contents);
       break;
 
     case StandardFeed::Type::Rdf:
-      messages = RdfParser(formatted_feed_contents).messages();
+      parser = new RdfParser(formatted_feed_contents);
       break;
 
     case StandardFeed::Type::Atom10:
-      messages = AtomParser(formatted_feed_contents).messages();
+      parser = new AtomParser(formatted_feed_contents);
       break;
 
     case StandardFeed::Type::Json:
-      messages = JsonParser(formatted_feed_contents).messages();
+      parser = new JsonParser(formatted_feed_contents);
       break;
 
     case StandardFeed::Type::iCalendar:
-      messages = IcalParser(formatted_feed_contents).messages();
+      parser = new IcalParser(formatted_feed_contents);
       break;
 
     case StandardFeed::Type::Sitemap:
-      messages = SitemapParser(formatted_feed_contents).messages();
+      parser = new SitemapParser(formatted_feed_contents);
+      break;
 
     default:
       break;
   }
+
+  if (!f->dateTimeFormat().isEmpty()) {
+    parser->setDateTimeFormat(f->dateTimeFormat());
+  }
+
+  parser->setDontUseRawXmlSaving(f->dontUseRawXmlSaving());
+  messages = parser->messages();
+
+  qDebugNN << LOGSEC_CORE << "XML parsing for feed" << QUOTE_W_SPACE(f->title()) << "took"
+           << NONQUOTE_W_SPACE(tmr.elapsed()) << "ms.";
+
+  if (!parser->dateTimeFormat().isEmpty()) {
+    f->setDateTimeFormat(parser->dateTimeFormat());
+  }
+
+  delete parser;
 
   for (Message& mess : messages) {
     mess.m_feedId = feed->customId();

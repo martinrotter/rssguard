@@ -42,7 +42,7 @@ TextBrowserViewer::TextBrowserViewer(QWidget* parent)
   setDocument(m_document.data());
 
   m_resourceDownloader->moveToThread(m_resourceDownloaderThread);
-  m_resourceDownloaderThread->start();
+  m_resourceDownloaderThread->start(QThread::Priority::LowPriority);
 
   connect(this, &TextBrowserViewer::reloadDocument, this, [this]() {
     const auto scr = verticalScrollBarPosition();
@@ -83,17 +83,34 @@ QVariant TextBrowserViewer::loadOneResource(int type, const QUrl& name) {
   }
 
   // Resources are enabled and we already have the resource.
-  QByteArray resource_data = m_loadedResources.value(resolved_name);
+  int acceptable_width = int(width() * ACCEPTABLE_IMAGE_PERCENTUAL_WIDTH);
+
+  QMap<int, QByteArray>& resource_data_all_sizes = m_loadedResources[resolved_name];
   QImage img;
 
-  if (resource_data.isEmpty()) {
+  qDebugNN << LOGSEC_GUI << "Picture" << QUOTE_W_SPACE(name)
+           << "has these sizes cached:" << NONQUOTE_W_SPACE_DOT(resource_data_all_sizes.keys());
+
+  if (resource_data_all_sizes.isEmpty()) {
     img = m_placeholderImageError.toImage();
   }
   else {
-    img = QImage::fromData(m_loadedResources.value(resolved_name));
+    // Now, we either select specifically sized picture, or default one.
+    QByteArray resource_data;
+
+    if (resource_data_all_sizes.contains(acceptable_width)) {
+      // We have picture with this exact size. The picture was likely downsized
+      // to this size before.
+      resource_data = resource_data_all_sizes.value(acceptable_width);
+    }
+    else {
+      // We only have default size or not desired size. Return initial picture.
+      resource_data = resource_data_all_sizes.value(0);
+    }
+
+    img = QImage::fromData(resource_data);
   }
 
-  int acceptable_width = int(width() * ACCEPTABLE_IMAGE_PERCENTUAL_WIDTH);
   int img_width = img.width();
 
   if (img_width > acceptable_width) {
@@ -111,7 +128,7 @@ QVariant TextBrowserViewer::loadOneResource(int type, const QUrl& name) {
 
     if (img.save(&save_buf, "PNG", 100)) {
       save_buf.close();
-      m_loadedResources.insert(resolved_name, save_arr);
+      resource_data_all_sizes.insert(acceptable_width, save_arr);
     }
     else {
       qWarningNN << LOGSEC_GUI << "Failed to save modified image" << QUOTE_W_SPACE(name) << "to cache.";
@@ -249,15 +266,7 @@ void TextBrowserViewer::loadMessages(const QList<Message>& messages, RootItem* r
   emit loadingStarted();
   m_root = root;
 
-  auto html_messages =
-    qApp->settings()->value(GROUP(Messages), SETTING(Messages::UseLegacyArticleFormat)).toBool()
-      ? prepareLegacyHtmlForMessage(messages, root)
-      : qApp->skins()->generateHtmlOfArticles(messages, root, width() * ACCEPTABLE_IMAGE_PERCENTUAL_WIDTH);
-
-  // Remove other characters which cannot be displayed properly.
-  static QRegularExpression exp_symbols("&#x1F[0-9A-F]{3};");
-
-  html_messages.m_html = html_messages.m_html.replace(exp_symbols, QString());
+  auto html_messages = htmlForMessages(messages, root);
 
   /*
   // Replace base64 images.
@@ -281,6 +290,20 @@ void TextBrowserViewer::loadMessages(const QList<Message>& messages, RootItem* r
   document()->setDefaultTextOption(op);
 
   emit loadingFinished(true);
+}
+
+PreparedHtml TextBrowserViewer::htmlForMessages(const QList<Message>& messages, RootItem* root) const {
+  auto html_messages =
+    qApp->settings()->value(GROUP(Messages), SETTING(Messages::UseLegacyArticleFormat)).toBool()
+      ? prepareLegacyHtmlForMessage(messages, root)
+      : qApp->skins()->generateHtmlOfArticles(messages, root, width() * ACCEPTABLE_IMAGE_PERCENTUAL_WIDTH);
+
+  // Remove other characters which cannot be displayed properly.
+  static QRegularExpression exp_symbols("&#x1F[0-9A-F]{3};");
+
+  html_messages.m_html = html_messages.m_html.replace(exp_symbols, QString());
+
+  return html_messages;
 }
 
 double TextBrowserViewer::verticalScrollBarPosition() const {
@@ -412,9 +435,10 @@ void TextBrowserViewer::onAnchorClicked(const QUrl& url) {
 
 void TextBrowserViewer::setHtml(const QString& html, const QUrl& base_url) {
   if (m_resourcesEnabled) {
+    // NOTE: This regex is problematic as it does not work for ALL
+    // HTMLs, maybe use XML parsing to extract what we need?
     static QRegularExpression img_tag_rgx("\\<img[^\\>]*src\\s*=\\s*[\"\']([^\"\']*)[\"\'][^\\>]*\\>",
-                                          QRegularExpression::PatternOption::CaseInsensitiveOption |
-                                            QRegularExpression::PatternOption::InvertedGreedinessOption);
+                                          QRegularExpression::PatternOption::CaseInsensitiveOption);
     QRegularExpressionMatchIterator i = img_tag_rgx.globalMatch(html);
     QList<QUrl> found_resources;
 
@@ -537,12 +561,19 @@ void TextBrowserViewer::resourceDownloaded(const QUrl& url,
                                            int http_code,
                                            const QByteArray& contents) {
   Q_UNUSED(http_code)
+  if (!m_loadedResources.contains(url)) {
+    m_loadedResources.insert(url, QMap<int, QByteArray>());
+  }
+
+  QMap<int, QByteArray>& resource_data_all_sizes = m_loadedResources[url];
+
+  resource_data_all_sizes.clear();
 
   if (status == QNetworkReply::NetworkError::NoError) {
-    m_loadedResources.insert(url, contents);
+    resource_data_all_sizes.insert(0, contents);
   }
   else {
-    m_loadedResources.insert(url, {});
+    resource_data_all_sizes.insert(0, {});
   }
 
   downloadNextNeededResource();
@@ -597,8 +628,7 @@ PreparedHtml TextBrowserViewer::prepareLegacyHtmlForMessage(const QList<Message>
                             : message.m_contents;
 
     static QRegularExpression img_tag_rgx(QSL("\\<img[^\\>]*src\\s*=\\s*[\"\']([^\"\']*)[\"\'][^\\>]*\\>"),
-                                          QRegularExpression::PatternOption::CaseInsensitiveOption |
-                                            QRegularExpression::PatternOption::InvertedGreedinessOption);
+                                          QRegularExpression::PatternOption::CaseInsensitiveOption);
 
     // Extract all images links from article to be appended to end of article.
     QRegularExpressionMatchIterator i = img_tag_rgx.globalMatch(html.m_html);

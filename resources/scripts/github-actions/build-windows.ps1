@@ -2,13 +2,6 @@ $os = $args[0]
 $use_webengine = $args[1]
 $use_qt5 = $args[2]
 
-if ($use_webengine -eq "ON") {
-  $not_use_webengine = "OFF"
-}
-else {
-  $not_use_webengine = "ON"
-}
-
 echo "We are building for MS Windows."
 echo "OS: $os; Not lite: $use_webengine; Qt5: $use_qt5"
 
@@ -16,6 +9,21 @@ $git_revlist = git rev-list --tags --max-count=1
 $git_tag = git describe --tags $git_revlist
 $git_revision = git rev-parse --short HEAD
 $old_pwd = $pwd.Path
+
+# Functions.
+function Fetch-Latest-Release([string]$OrgRepo, [string]$NameRegex) {
+  $releases_url = "https://api.github.com/repos/" + $OrgRepo +"/releases"
+  $releases_req = Invoke-WebRequest -Uri "$releases_url" -Headers @{ "Authorization" = "Bearer $env:GITHUB_TOKEN" }
+  $releases_json = $releases_req.Content | ConvertFrom-Json
+  $releases_release = $releases_json[0]
+  $asset = $releases_release.assets | Where-Object {$_.name -match $NameRegex} | Select-Object
+
+  Add-Member -InputObject $asset -NotePropertyName "tag_name" -NotePropertyValue $releases_release.tag_name.Substring(1)
+
+  Write-Host $asset
+
+  return $asset
+}
 
 # Prepare environment.
 Install-Module Pscx -Scope CurrentUser -AllowClobber -Force
@@ -29,34 +37,44 @@ $ProgressPreference = 'SilentlyContinue'
 # Get and prepare needed dependencies.
 if ($use_qt5 -eq "ON") {
   $qt_version = "5.15.2"
+
+  $use_libmpv = "OFF"
+  $use_qtmultimedia = "ON"
 }
 else {
-  $qt_version = "6.6.3"
+  $qt_version = "6.7.3"
+
+  if ($use_webengine -eq "ON") {
+    $use_libmpv = "ON"
+    $use_qtmultimedia = "OFF"
+  }
+  else {
+    $use_libmpv = "OFF"
+    $use_qtmultimedia = "ON"
+  }
 }
 
 $is_qt_6 = $qt_version.StartsWith("6")
 
-$maria_version = "11.3.2"
+$maria_version = "11.4.3"
 $maria_link = "https://archive.mariadb.org/mariadb-$maria_version/winx64-packages/mariadb-$maria_version-winx64.zip"
 $maria_output = "maria.zip"
 
-$cmake_version = "3.28.3"
-$cmake_link = "https://github.com/Kitware/CMake/releases/download/v$cmake_version/cmake-$cmake_version-windows-x86_64.zip"
+$cmake_asset = Fetch-Latest-Release -OrgRepo "Kitware/CMake" -NameRegex "cmake-.+-windows-x86_64\.zip"
+$cmake_version = $cmake_asset.tag_name
+$cmake_link = $cmake_asset.browser_download_url
 $cmake_output = "cmake.zip"
 
-$zlib_version = "1.3.1"
-$zlib_link = "https://github.com/madler/zlib/archive/refs/tags/v$zlib_version.zip"
+$zlib_asset = Fetch-Latest-Release -OrgRepo "madler/zlib" -NameRegex "zlib.+\.zip$"
+$zlib_version = $zlib_asset.tag_name
+$zlib_link = $zlib_asset.browser_download_url
 $zlib_output = "zlib.zip"
 
-$libmpv_date = "2024-03-14"
-$libmpv_commit = "5dd2d19"
-$libmpv_version = "{0}-git-{1}"-f $libmpv_date.Replace("-", ""), $libmpv_commit
-$libmpv_link = "https://github.com/zhongfly/mpv-winbuild/releases/download/$libmpv_date-$libmpv_commit/mpv-dev-x86_64-$libmpv_version.7z"
+$libmpv_link = Fetch-Latest-Release -OrgRepo "zhongfly/mpv-winbuild" -NameRegex "mpv-dev-x86_64-2.+7z" | Select-Object -ExpandProperty browser_download_url
 $libmpv_output = "mpv.zip"
 
-$ytdlp_version = "2024.03.10"
-$ytdlp_link = "https://github.com/yt-dlp/yt-dlp/releases/download/$ytdlp_version/yt-dlp.exe"
-$libmpv_output = "yt-dlp.exe"
+$ytdlp_link = Fetch-Latest-Release -OrgRepo "yt-dlp/yt-dlp" -NameRegex "yt-dlp.exe" | Select-Object -ExpandProperty browser_download_url
+$ytdlp_output = "yt-dlp.exe"
 
 Invoke-WebRequest -Uri "$maria_link" -OutFile "$maria_output"
 & ".\resources\scripts\7za\7za.exe" x "$maria_output"
@@ -67,23 +85,22 @@ Invoke-WebRequest -Uri "$cmake_link" -OutFile "$cmake_output"
 Invoke-WebRequest -Uri "$zlib_link" -OutFile "$zlib_output"
 & ".\resources\scripts\7za\7za.exe" x "$zlib_output"
 
-# User custom UA because SourceForge is very picky.
-Invoke-WebRequest -UserAgent "Wget" -Uri "$libmpv_link" -OutFile "$libmpv_output"
+Invoke-WebRequest -Uri "$libmpv_link" -OutFile "$libmpv_output"
 & ".\resources\scripts\7za\7za.exe" x "$libmpv_output" -ompv
 
-Invoke-WebRequest -Uri "$ytdlp_link" -OutFile "$libmpv_output"
+Invoke-WebRequest -Uri "$ytdlp_link" -OutFile "$ytdlp_output"
 
 $cmake_path = "$old_pwd\cmake-$cmake_version-windows-x86_64\bin\cmake.exe"
 $zlib_path = "$old_pwd\zlib-$zlib_version"
 $libmpv_path = "$old_pwd\mpv"
-$ytdlp_path = "$old_pwd\$libmpv_output"
+$ytdlp_path = "$old_pwd\$ytdlp_output"
 
 # Download Qt itself.
 $qt_path = "$old_pwd\qt"
 
 # Install "aqtinstall" from its master branch to have latest code.
 pip3 install -U pip
-pip3 install -I git+https://github.com/miurahr/aqtinstall
+pip3 install -I aqtinstall
 
 if ($is_qt_6) {
   aqt -c 'aqt\settings.ini' install-qt -O "$qt_path" windows desktop $qt_version win64_msvc2019_64 -m qtwebengine qtimageformats qtmultimedia qt5compat qtwebchannel qtpositioning
@@ -142,7 +159,7 @@ cd "$old_pwd"
 mkdir "rssguard-build"
 cd "rssguard-build"
 
-& "$cmake_path" ".." -G Ninja -DCMAKE_BUILD_TYPE="RelWithDebInfo" -DCMAKE_VERBOSE_MAKEFILE="ON" -DBUILD_WITH_QT6="$with_qt6" -DREVISION_FROM_GIT="ON" -DUSE_SYSTEM_SQLITE="OFF" -DZLIB_ROOT="$zlib_path" -DENABLE_COMPRESSED_SITEMAP="ON" -DENABLE_MEDIAPLAYER_LIBMPV="$use_webengine" -DENABLE_MEDIAPLAYER_QTMULTIMEDIA="$not_use_webengine" -DLibMPV_ROOT="$libmpv_path" -DNO_LITE="$use_webengine" -DFEEDLY_CLIENT_ID="$env:FEEDLY_CLIENT_ID" -DFEEDLY_CLIENT_SECRET="$env:FEEDLY_CLIENT_SECRET" -DGMAIL_CLIENT_ID="$env:GMAIL_CLIENT_ID" -DGMAIL_CLIENT_SECRET="$env:GMAIL_CLIENT_SECRET"
+& "$cmake_path" ".." -G Ninja -DCMAKE_BUILD_TYPE="RelWithDebInfo" -DCMAKE_VERBOSE_MAKEFILE="ON" -DBUILD_WITH_QT6="$with_qt6" -DREVISION_FROM_GIT="ON" -DUSE_SYSTEM_SQLITE="OFF" -DZLIB_ROOT="$zlib_path" -DENABLE_COMPRESSED_SITEMAP="ON" -DENABLE_MEDIAPLAYER_LIBMPV="$use_libmpv" -DENABLE_MEDIAPLAYER_QTMULTIMEDIA="$use_qtmultimedia" -DLibMPV_ROOT="$libmpv_path" -DNO_LITE="$use_webengine" -DFEEDLY_CLIENT_ID="$env:FEEDLY_CLIENT_ID" -DFEEDLY_CLIENT_SECRET="$env:FEEDLY_CLIENT_SECRET" -DGMAIL_CLIENT_ID="$env:GMAIL_CLIENT_ID" -DGMAIL_CLIENT_SECRET="$env:GMAIL_CLIENT_SECRET"
 & "$cmake_path" --build .
 & "$cmake_path" --install . --prefix app
 
@@ -164,11 +181,13 @@ Copy-Item -Path "$zlib_path\zlib1.dll" -Destination ".\app\"
 # Copy debug symbols.
 Copy-Item -Path ".\src\librssguard\rssguard.pdb" -Destination ".\app\"
 
-if ($use_webengine -eq "ON") {
+if ($use_libmpv -eq "ON") {
   # Copy libmpv and yt-dlp.
   Copy-Item -Path "$libmpv_path\libmpv*.dll" -Destination ".\app\"
   Copy-Item -Path "$ytdlp_path" -Destination ".\app\"
+}
 
+if ($use_webengine -eq "ON") {
   $packagebase = "rssguard-${git_tag}-${git_revision}-win"
 }
 else {

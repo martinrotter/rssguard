@@ -54,6 +54,11 @@ LibMpvBackend::LibMpvBackend(Application* app, QWidget* parent)
   mpv_set_option_string(m_mpvHandle, "config", "yes");
   mpv_set_option_string(m_mpvHandle, "script-opts", "osc-idlescreen=no");
   mpv_set_option_string(m_mpvHandle, "hwdec", "auto");
+
+#if defined(MEDIAPLAYER_LIBMPV_OPENGL)
+  mpv_set_option_string(m_mpvHandle, "vo", "libmpv");
+#endif
+    
   mpv_set_option_string(m_mpvHandle, "osd-playing-msg", "${media-title}");
   mpv_set_option_string(m_mpvHandle, "osc", "yes");
   mpv_set_option_string(m_mpvHandle, "input-cursor", "yes");
@@ -62,7 +67,7 @@ LibMpvBackend::LibMpvBackend(Application* app, QWidget* parent)
   mpv_set_option_string(m_mpvHandle, "no-resume-playback", "yes");
 
 #if !defined(NDEBUG)
-  // mpv_set_option_string(m_mpvHandle, "terminal", "yes");
+  mpv_set_option_string(m_mpvHandle, "terminal", "yes");
 #endif
 
   if (!m_customConfigFolder.isEmpty()) {

@@ -244,8 +244,10 @@ void Downloader::finished() {
 
     // original_url = m_activeReply->property("original_url").toUrl();
 
-    m_activeReply->deleteLater();
-    m_activeReply = nullptr;
+    if (m_activeReply != nullptr) {
+      m_activeReply->deleteLater();
+      m_activeReply = nullptr;
+    }
 
     if (m_inputMultipartData != nullptr) {
       m_inputMultipartData->deleteLater();

@@ -46,7 +46,7 @@ void FormAbout::copyInfoToClipboard() {
   auto* clip = QGuiApplication::clipboard();
 
   if (clip != nullptr) {
-    clip->setText(m_ui.m_lblDesc->text().replace(QSL("<br/>"), QSL("\n")));
+    clip->setText(m_ui.m_lblDesc->text());
   }
   else {
     qApp->showGuiMessage(Notification::Event::GeneralEvent,
@@ -130,13 +130,13 @@ void FormAbout::loadLicenseAndInformation() {
   }
 
   // Set other informative texts.
-  m_ui.m_lblDesc->setTextFormat(Qt::TextFormat::MarkdownText);
-  m_ui.m_lblDesc->setText(tr("### %8<br/>"
-                             "**Version:** %1 (built on %2/%3)<br/>"
-                             "**Revision:** %4<br/>"
-                             "**Build date:** %5<br/>"
-                             "**OS:** %9<br/>"
-                             "**Qt:** %6 (compiled against %7)")
+  m_ui.m_lblDesc->setTextFormat(Qt::TextFormat::RichText);
+  m_ui.m_lblDesc->setText(tr("<h4>%8</h4>"
+                             "<b>Version:</b> %1 (built on %2/%3)<br/>"
+                             "<b>Revision:</b> %4<br/>"
+                             "<b>Build date:</b> %5<br/>"
+                             "<b>OS:</b> %9<br/>"
+                             "<b>Qt:</b> %6 (compiled against %7)")
                             .arg(qApp->applicationVersion(),
                                  QSL(APP_SYSTEM_NAME),
                                  QSL(APP_SYSTEM_VERSION),

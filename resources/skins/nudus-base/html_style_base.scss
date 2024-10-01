@@ -48,6 +48,7 @@ body {
     -webkit-font-feature-settings: "kern" 1;
     font-feature-settings: "kern" 1;
     font-kerning: normal;
+    padding: 10px !important;
     min-height: 100vh;
 }
 
@@ -354,7 +355,7 @@ summary {
 
 // m* == message*
 .rssguard-mwrapper {
-    padding: $base-unit !important;
+    padding: 0px !important;
 
     .rssguard-mhead {
 

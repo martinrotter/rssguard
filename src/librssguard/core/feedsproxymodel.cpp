@@ -47,26 +47,6 @@ FeedsProxyModel::~FeedsProxyModel() {
   qDebugNN << LOGSEC_FEEDMODEL << "Destroying FeedsProxyModel instance";
 }
 
-bool FeedsProxyModel::canDropMimeData(const QMimeData* data,
-                                      Qt::DropAction action,
-                                      int row,
-                                      int column,
-                                      const QModelIndex& parent) const {
-
-  auto src_idx = row < 0 ? mapToSource(parent) : mapToSource(index(row, column, parent));
-  auto* src_item = m_sourceModel->itemForIndex(src_idx);
-
-  if (src_item != nullptr) {
-    auto can_drop = src_item->kind() == RootItem::Kind::ServiceRoot || src_item->kind() == RootItem::Kind::Category ||
-                    src_item->kind() == RootItem::Kind::Feed;
-
-    return QSortFilterProxyModel::canDropMimeData(data, action, row, column, parent) && can_drop;
-  }
-  else {
-    return false;
-  }
-}
-
 QModelIndexList FeedsProxyModel::match(const QModelIndex& start,
                                        int role,
                                        const QVariant& value,
@@ -183,6 +163,69 @@ QModelIndexList FeedsProxyModel::match(const QModelIndex& start,
   return result;
 }
 
+bool FeedsProxyModel::canDropMimeData(const QMimeData* data,
+                                      Qt::DropAction action,
+                                      int row,
+                                      int column,
+                                      const QModelIndex& parent) const {
+  if (action != Qt::DropAction::MoveAction) {
+    return false;
+  }
+
+  QByteArray dragged_items_data = data->data(QSL(MIME_TYPE_ITEM_POINTER));
+  QDataStream stream(&dragged_items_data, QIODevice::OpenModeFlag::ReadOnly);
+  const bool order_change = row >= 0 && !m_sortAlphabetically;
+  const QModelIndex target_parent = mapToSource(parent);
+
+  if (stream.atEnd()) {
+    return false;
+  }
+
+  quintptr pointer_to_item;
+  stream >> pointer_to_item;
+
+  RootItem* dragged_item = RootItemPtr(pointer_to_item);
+
+  // Dragged item must service root, feed or category.
+  //
+  // If row is less than zero, it means we are moving dragged item into new parent. If row is at least
+  // zero, then we are sorting the dragged item.
+  //
+  // Otherwise the target row identifies the item just below the drop target placement insertion line.
+  QModelIndex target_idx = order_change ? mapToSource(index(row, 0, parent)) : target_parent;
+  RootItem* target_item = m_sourceModel->itemForIndex(target_idx);
+  RootItem* target_parent_item = m_sourceModel->itemForIndex(target_parent);
+
+  if (target_item != nullptr) {
+    qDebugNN << LOGSEC_FEEDMODEL << "Considering target for drop operation:" << QUOTE_W_SPACE(target_item->title())
+             << "with index" << QUOTE_W_SPACE(target_idx)
+             << "and target parent:" << QUOTE_W_SPACE_DOT(target_parent_item->title());
+
+    switch (dragged_item->kind()) {
+      case RootItem::Kind::Feed:
+      case RootItem::Kind::Category:
+        // Feeds can be reordered or inserted under service root or category.
+        // Categories can be reordered or inserted under service root or another category.
+        return target_parent_item->kind() == RootItem::Kind::Category ||
+               target_parent_item->kind() == RootItem::Kind::ServiceRoot;
+
+      case RootItem::Kind::ServiceRoot:
+        // Service root cannot be inserted under different parent, can only be reordered.
+        if (!order_change) {
+          return false;
+        }
+        else {
+          return target_parent_item->kind() == RootItem::Kind::Root;
+        }
+
+      default:
+        break;
+    }
+  }
+
+  return false;
+}
+
 bool FeedsProxyModel::dropMimeData(const QMimeData* data,
                                    Qt::DropAction action,
                                    int row,
@@ -212,7 +255,7 @@ bool FeedsProxyModel::dropMimeData(const QMimeData* data,
       stream >> pointer_to_item;
 
       // We have item we want to drag, we also determine the target item.
-      auto* dragged_item = RootItemPtr(pointer_to_item);
+      RootItemPtr dragged_item = RootItemPtr(pointer_to_item);
       RootItem* target_item = m_sourceModel->itemForIndex(source_parent);
       ServiceRoot* dragged_item_root = dragged_item->getParentServiceRoot();
       ServiceRoot* target_item_root = target_item->getParentServiceRoot();
@@ -240,16 +283,26 @@ bool FeedsProxyModel::dropMimeData(const QMimeData* data,
         // Drag & drop is supported by the dragged item and was
         // completed on data level and in item hierarchy.
         emit requireItemValidationAfterDragDrop(m_sourceModel->indexForItem(dragged_item));
+
+        qDebugNN << LOGSEC_FEEDMODEL << "Dropping item" << QUOTE_W_SPACE(dragged_item->title()) << "under new parent"
+                 << QUOTE_W_SPACE_DOT(target_item->title());
       }
 
       if (order_change) {
         auto db = qApp->database()->driver()->connection(metaObject()->className());
+        RootItem* place_above_item = m_sourceModel->itemForIndex(mapToSource(index(row, 0, parent)));
+        int target_sort_order = place_above_item->sortOrder();
 
-        if (row > dragged_item->sortOrder()) {
-          row--;
+        qDebugNN << LOGSEC_FEEDMODEL << "Resorting/placing item" << QUOTE_W_SPACE(dragged_item->title())
+                 << "with sord order" << QUOTE_W_SPACE(dragged_item->sortOrder()) << "above item"
+                 << QUOTE_W_SPACE(place_above_item->title()) << "with new sort order"
+                 << QUOTE_W_SPACE_DOT(target_sort_order);
+
+        if (target_sort_order > dragged_item->sortOrder()) {
+          target_sort_order--;
         }
 
-        DatabaseQueries::moveItem(dragged_item, false, false, row, db);
+        DatabaseQueries::moveItem(dragged_item, false, false, target_sort_order, db);
       }
 
       invalidate();

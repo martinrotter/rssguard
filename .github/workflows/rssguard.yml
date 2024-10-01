@@ -6,6 +6,10 @@ on:
     branches: ["*"]
     tags: ["*"]
 
+env:
+  ACTIONS_RUNNER_DEBUG: true
+  ACTIONS_STEP_DEBUG: true
+
 jobs:
   check-build-script:
     name: check-build-script
@@ -29,20 +33,20 @@ jobs:
     runs-on: "${{ matrix.os }}"
     strategy:
       matrix:
-        os: [windows-2019, ubuntu-20.04, macos-11]
+        os: [windows-2022, ubuntu-20.04, macos-13]
         no_lite: ["ON", "OFF"]
         use_qt5: ["ON", "OFF"]
         include:
-          - os: windows-2019
+          - os: windows-2022
             script_name: .\resources\scripts\github-actions\build-windows.ps1
           - os: ubuntu-20.04
             script_name: ./resources/scripts/github-actions/build-linux-mac.sh
-          - os: macos-11
+          - os: macos-13
             script_name: ./resources/scripts/github-actions/build-linux-mac.sh
         exclude:
           - os: ubuntu-20.04
             use_qt5: "OFF"
-          - os: macos-11
+          - os: macos-13
             use_qt5: "ON"
     steps:         
       - name: Checkout source code
@@ -58,6 +62,7 @@ jobs:
           GMAIL_CLIENT_SECRET: ${{ secrets.GMAIL_CLIENT_SECRET }}
           FEEDLY_CLIENT_ID: ${{ secrets.FEEDLY_CLIENT_ID }}
           FEEDLY_CLIENT_SECRET: ${{ secrets.FEEDLY_CLIENT_SECRET }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Upload binaries
         uses: actions/upload-artifact@v4

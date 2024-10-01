@@ -128,7 +128,7 @@ void FeedReader::initializeFeedDownloader() {
     connect(m_feedDownloader, &FeedDownloader::updateStarted, this, &FeedReader::feedUpdatesStarted);
     connect(m_feedDownloader, &FeedDownloader::updateFinished, qApp->feedUpdateLock(), &Mutex::unlock);
 
-    m_feedDownloaderThread->start();
+    m_feedDownloaderThread->start(QThread::Priority::LowPriority);
   }
 }
 

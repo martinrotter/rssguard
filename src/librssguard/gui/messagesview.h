@@ -10,6 +10,7 @@
 #include "services/abstract/rootitem.h"
 
 #include <QHeaderView>
+#include <QTimer>
 
 class MessagesProxyModel;
 
@@ -17,6 +18,17 @@ class MessagesView : public BaseTreeView {
     Q_OBJECT
 
   public:
+    enum class ArticleMarkingPolicy {
+      // Article is marked as read right when selected.
+      MarkImmediately = 0,
+
+      // Article is marked as read with some configured delay.
+      MarkWithDelay = 1,
+
+      // Article is never marked as read on selection.
+      MarkOnlyManually = 2
+    };
+
     explicit MessagesView(QWidget* parent = nullptr);
     virtual ~MessagesView();
 
@@ -24,6 +36,7 @@ class MessagesView : public BaseTreeView {
     MessagesModel* sourceModel() const;
 
     void reloadFontSettings();
+    void setupArticleMarkingPolicy();
 
     QByteArray saveHeaderState() const;
     void restoreHeaderState(const QByteArray& dta);
@@ -85,6 +98,8 @@ class MessagesView : public BaseTreeView {
     // Changes resize mode for all columns.
     void adjustColumns();
 
+    void markSelectedMessagesReadDelayed();
+
     // Saves current sort state.
     void onSortIndicatorChanged(int column, Qt::SortOrder order);
 
@@ -108,7 +123,8 @@ class MessagesView : public BaseTreeView {
               bool repopulate_data,
               bool change_header,
               bool emit_changed_from_header,
-              bool ignore_multicolumn_sorting);
+              bool ignore_multicolumn_sorting,
+              int additional_article_id = 0);
 
     // Creates needed connections.
     void createConnections();
@@ -133,6 +149,10 @@ class MessagesView : public BaseTreeView {
     bool m_columnsAdjusted;
     bool m_processingAnyMouseButton;
     bool m_processingRightMouseButton;
+    ArticleMarkingPolicy m_articleMarkingPolicy;
+    int m_articleMarkingDelay;
+    QTimer m_delayedArticleMarker;
+    QModelIndex m_delayedArticleIndex;
 };
 
 inline MessagesProxyModel* MessagesView::model() const {

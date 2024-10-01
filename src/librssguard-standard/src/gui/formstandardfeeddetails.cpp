@@ -3,6 +3,7 @@
 #include "src/gui/formstandardfeeddetails.h"
 
 #include "src/gui/standardfeeddetails.h"
+#include "src/gui/standardfeedexpdetails.h"
 #include "src/standardfeed.h"
 
 #include <librssguard/database/databasequeries.h>
@@ -25,9 +26,11 @@ FormStandardFeedDetails::FormStandardFeedDetails(ServiceRoot* service_root,
                                                  const QString& url,
                                                  QWidget* parent)
   : FormFeedDetails(service_root, parent), m_standardFeedDetails(new StandardFeedDetails(this)),
-    m_authDetails(new AuthenticationDetails(false, this)), m_parentToSelect(parent_to_select), m_urlToProcess(url) {
+    m_standardFeedExpDetails(new StandardFeedExpDetails(this)), m_authDetails(new AuthenticationDetails(false, this)),
+    m_parentToSelect(parent_to_select), m_urlToProcess(url) {
   insertCustomTab(m_standardFeedDetails, tr("General"), 0);
   insertCustomTab(m_authDetails, tr("Network"), 2);
+  insertCustomTab(m_standardFeedExpDetails, tr("Experimental"));
   activateTab(0);
 
   connect(m_standardFeedDetails->m_ui.m_btnFetchMetadata,
@@ -117,6 +120,10 @@ void FormStandardFeedDetails::apply() {
       std_feed->setProtection(m_authDetails->authenticationType());
     }
 
+    if (isChangeAllowed(m_standardFeedExpDetails->m_ui.m_mcbDontUseRawXml)) {
+      std_feed->setDontUseRawXmlSaving(m_standardFeedExpDetails->m_ui.m_cbDontUseRawXml->isChecked());
+    }
+
     if (isChangeAllowed(m_authDetails->findChild<MultiFeedEditCheckBox*>(QSL("m_mcbAuthentication")))) {
       std_feed->setUsername(m_authDetails->username());
       std_feed->setPassword(m_authDetails->password());
@@ -171,6 +178,9 @@ void FormStandardFeedDetails::loadFeedData() {
       ->addActionWidget(m_authDetails->findChild<QGroupBox*>(QSL("m_gbAuthentication")));
 
     m_standardFeedDetails->m_ui.m_btnFetchMetadata->setEnabled(false);
+
+    m_standardFeedExpDetails->m_ui.m_mcbDontUseRawXml
+      ->addActionWidget(m_standardFeedExpDetails->m_ui.m_cbDontUseRawXml);
   }
   else {
     // We hide batch selectors.
@@ -195,5 +205,7 @@ void FormStandardFeedDetails::loadFeedData() {
   }
   else {
     m_standardFeedDetails->setExistingFeed(std_feed);
+
+    m_standardFeedExpDetails->m_ui.m_cbDontUseRawXml->setChecked(std_feed->dontUseRawXmlSaving());
   }
 }

@@ -1,12 +1,75 @@
+4.7.4
+-----
+
+Added:
+* Working threads for fetching feeds now have their priority lowered to "low". This will likely lead to better GUI responsiveness during feed fetching with minimal to no performance loss. (#1497)
+* User-agent now can be set from settings. (#1471)
+
+Fixed:
+* JavaScript alerts are now shown in a better way.
+* Removed some debugging code. (#1506)
+* Node.js settings section "Browse" buttons now work correctly. (#1483)
+* Article filters now should not be assigned twice (or more) via GUI. (#1503)
+* Crash in built-in file downloader should be fixed. (#1495, potentially #1485 and #1487)
+* Fix wrong SQL code. (#1489)
+* Toast notifications are now disabled on Linux/Wayland because Wayland does not support these. (#1494)
+* Fix some monitor-related bugs by updating Qt to newer version. (#1479)
+* Tweaked `<img>` extraction. (#1477)
+* Added more supported date/time formats. (#1478)
+* Langs updated.
+
+4.7.3
+-----
+
+Added:
+* Localizations updated.
+* Mac OS 13 is now used to build Mac RSS Guard version.
+* Added Reddit plugin. At this point, this is WIP (!). The plugin will be eventually greatly enhanced in the future, but no ETA. Currently the plugin can do:
+    * OAuth authentication.
+    * Loads list of subscribed subreddits.
+    * Loads list of newest topics from each subreddit.
+
+Fixed:
+* Plugin libraries are now loaded more properly, specifically they should not be loaded more than once.
+* Time.com feeds were not properly rendered. (#1450)
+* Drag and drop operations were fixed, although there are some cases where you have to adjust the process, for example when dragging an item "after" the last item in top level.
+
+4.7.2
+-----
+
+Fixed:
+* Some non-lite installation packages were wrongly named. (#1426)
+* Plugins were loaded multiple times. (#1427)
+
+4.7.1
+-----
+
+OK, this is mainly bug-fix release. In the close future (months), expect only bug-fixing releases. Again, we need to make RSS Guard rock stable.
+
+Added:
+* Nothing really.
+
+Fixed:
+* Fixed detection of plugins which was broken due to wrong plugin search path. (#1416, #1420)
+* If "Show unread only" article list filter is active and you select article (which then gets marked read) and then feed is fetched, currently selected article does not suddenly disappear from the list. (#1415)
+* Selected "style" was disappearing from settings dialog even thought it was correctly saved into settings. (#1408)
+* Right-clicking article selects it (and displays its contents) but does not modify read/unread state. This behavior was corrupted in previous release, therefore we just return to old good behavior. (#1410)
+* XML parser now allows leading and trailing blank lines when loading XML of feeds. (#1403)
+* Date/time parsing was further enhanced, although there are some connected issues which will be hunted in the future.
+* Qt5/Windows builds will use only qtmultimedia media player backend because libmpv dropped Windows 7 support.
+* Fixed "About" dialog RSS Guard information formatting.
+
 4.7.0
 -----
 
 OK, dear users. Over recent releases, many features were added and as you can see RSS Guard bug tracker is full of (semi) bug reports which need to be addressed. Therefore I must declare feature-freeze for at least three upcoming releases. No new features will be added in forthcoming future, because RSS Guard codebase must be de-bugged and stabilized first. I will keep my word this time and no feature requests will be implemented.
 
-Sole focus will be on fixing bugs and polish existing features and clean codebase.
+Sole focus will be on fixing bugs and polish existing features and clean codebase. The other reason for this is also that lately my free time had become much much more limited for many reasons - family, other hobbies, work around house etc.
 
 Added:
-* All RSS Guard plugins/services are now placed in their own library (DLL/SO/DYLIB) files and are loaded by main RSS Guard library dynamically. This means that unused services can now be removed from RSS Guard installation if not used by the user. Also it allows for a cleaner and slimmer common codebase. Refactoring of main RSS Guard library was also done and it is now more usable as regular dynamic-link library. I expect some regressions as this was HUGE change. Also, this change allows new potential interested people in writing new plugins easier as they now can just copy one of existing plugins and tweak for new service.
+* Full article content can now be fetched with a single button. Button is placed in article viewer toolbar right next to "Reader mode" button. This feature (just as "reader mode" feature) requires Node.js installation. The feature works both for articles and for regular websites opened in embedded web browser.
+* Article now can be marked (upon selection) as read with delay or only manually. (#1017)
+* All RSS Guard plugins/services are now placed in their own library (DLL/SO/DYLIB) files and are loaded by main RSS Guard library dynamically. This means that unused services can now be removed from RSS Guard installation if not used by the user. Also it allows for a cleaner and slimmer common codebase. Refactoring of main RSS Guard library was also done and it is now more usable as regular dynamic-link library. I expect some regressions as this was HUGE change. Also, this change allows new potential interested people in writing new plugins easier as they now can just copy one of existing plugins and tweak for new service. Also this change now propagates to RSS Guard installer which allows you to only install plugins/services you want.
 * Application (Qt) style and icon theme now can be properly set to respect system style/icons and this setting is dynamic, meaning if you change system theme and restart RSS Guard, new theme is honored. (#1352)
 * Button to copy system/app information to "About..." dialog. (#1318)
 * All modal dialogs now remember their sizes forever. (#1336)

@@ -44,6 +44,7 @@ QList<StandardFeed*> AtomParser::discoverFeeds(ServiceRoot* root, const QUrl& ur
   //    https://github.com/:owner/:repo/releases.atom
   //    https://github.com/:owner/:repo/commits.atom
   //    https://github.com/:user/:repo/tags.atom
+  // 6. If URL is Youtube, find channel ID.
 
   // Download URL.
   int timeout = qApp->settings()->value(GROUP(Feeds), SETTING(Feeds::UpdateTimeout)).toInt();
@@ -58,6 +59,7 @@ QList<StandardFeed*> AtomParser::discoverFeeds(ServiceRoot* root, const QUrl& ur
                                                      {},
                                                      {},
                                                      root->networkProxy());
+  QString direct_html_data = QString::fromUtf8(data);
 
   if (res.m_networkError == QNetworkReply::NetworkError::NoError) {
     try {
@@ -77,9 +79,10 @@ QList<StandardFeed*> AtomParser::discoverFeeds(ServiceRoot* root, const QUrl& ur
     static QRegularExpression rx_href(QSL(ATOM_HREF_REGEX_MATCHER),
                                       QRegularExpression::PatternOption::CaseInsensitiveOption);
 
+    rx.optimize();
     rx_href.optimize();
 
-    QRegularExpressionMatchIterator it_rx = rx.globalMatch(QString::fromUtf8(data));
+    QRegularExpressionMatchIterator it_rx = rx.globalMatch(direct_html_data);
 
     while (it_rx.hasNext()) {
       QRegularExpressionMatch mat_tx = it_rx.next();
@@ -175,15 +178,49 @@ QList<StandardFeed*> AtomParser::discoverFeeds(ServiceRoot* root, const QUrl& ur
   // 5.
   my_url = url.toString(QUrl::UrlFormattingOption::StripTrailingSlash);
 
-  auto mtch = QRegularExpression(QSL(GITHUB_URL_REGEX)).match(my_url);
+  auto mtch_github = QRegularExpression(QSL(GITHUB_URL_REGEX)).match(my_url);
 
-  if (mtch.isValid() && mtch.hasMatch()) {
+  if (mtch_github.isValid() && mtch_github.hasMatch()) {
     QStringList github_feeds = {QSL("releases.atom"), QSL("commits.atom"), QSL("tags.atom")};
-    QString gh_username = mtch.captured(1);
-    QString gh_repo = mtch.captured(2);
+    QString gh_username = mtch_github.captured(1);
+    QString gh_repo = mtch_github.captured(2);
 
     for (const QString& github_feed : github_feeds) {
       my_url = QSL("https://github.com/%1/%2/%3").arg(gh_username, gh_repo, github_feed);
+      res = NetworkFactory::performNetworkOperation(my_url,
+                                                    timeout,
+                                                    {},
+                                                    data,
+                                                    QNetworkAccessManager::Operation::GetOperation,
+                                                    {},
+                                                    {},
+                                                    {},
+                                                    {},
+                                                    root->networkProxy());
+
+      if (res.m_networkError == QNetworkReply::NetworkError::NoError) {
+        try {
+          auto guessed_feed = guessFeed(data, res.m_contentType);
+
+          guessed_feed.first->setSource(my_url);
+          feeds.append(guessed_feed.first);
+        }
+        catch (...) {
+          qDebugNN << LOGSEC_CORE << QUOTE_W_SPACE(my_url) << "is not a direct feed file.";
+        }
+      }
+    }
+  }
+
+  // 6.
+  my_url = url.toString(QUrl::UrlFormattingOption::StripTrailingSlash);
+
+  if (!direct_html_data.isEmpty() && my_url.contains(QSL("youtube"))) {
+    QString youtube_channel_id =
+      QRegularExpression(QSL("\"externalChannelId\": ?\"([^\"]+)\"")).match(direct_html_data).captured(1);
+
+    if (!youtube_channel_id.isEmpty()) {
+      my_url = QSL("https://www.youtube.com/feeds/videos.xml?channel_id=%1").arg(youtube_channel_id);
       res = NetworkFactory::performNetworkOperation(my_url,
                                                     timeout,
                                                     {},
@@ -237,6 +274,9 @@ QPair<StandardFeed*, QList<IconLocation>> AtomParser::guessFeed(const QByteArray
   else {
     xml_contents_encoded = QString::fromUtf8(content);
   }
+
+  // NOTE: Some XMLs have whitespace before XML declaration, erase it.
+  xml_contents_encoded = xml_contents_encoded.trimmed();
 
   // Feed XML was obtained, guess it now.
   QDomDocument xml_document;
@@ -331,14 +371,14 @@ QString AtomParser::xmlMessageDescription(const QDomElement& msg_element) const 
   return summary;
 }
 
-QDateTime AtomParser::xmlMessageDateCreated(const QDomElement& msg_element) const {
+QDateTime AtomParser::xmlMessageDateCreated(const QDomElement& msg_element) {
   QString updated = xmlTextsFromPath(msg_element, m_atomNamespace, QSL("updated"), true).join(QSL(", "));
 
   if (updated.simplified().isEmpty()) {
     updated = xmlTextsFromPath(msg_element, m_atomNamespace, QSL("modified"), true).join(QSL(", "));
   }
 
-  return TextFactory::parseDateTime(updated);
+  return TextFactory::parseDateTime(updated, &m_dateTimeFormat);
 }
 
 QString AtomParser::xmlMessageId(const QDomElement& msg_element) const {

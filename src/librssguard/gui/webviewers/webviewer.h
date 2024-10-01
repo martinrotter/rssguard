@@ -66,6 +66,9 @@ class WebViewer {
     // Displays all messages and ensures that vertical scrollbar is set to 0 (scrolled to top).
     virtual void loadMessages(const QList<Message>& messages, RootItem* root) = 0;
 
+    // Returns final HTML generated for the articles.
+    virtual PreparedHtml htmlForMessages(const QList<Message>& messages, RootItem* root) const = 0;
+
     // Vertical scrollbar changer.
     virtual double verticalScrollBarPosition() const = 0;
     virtual void setVerticalScrollBarPosition(double pos) = 0;

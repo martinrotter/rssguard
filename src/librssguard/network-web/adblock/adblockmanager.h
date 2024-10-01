@@ -10,7 +10,7 @@
 #include <QProcess>
 
 #define CLIQZ_ADBLOCKED_PACKAGE "@cliqz/adblocker"
-#define CLIQZ_ADBLOCKED_VERSION "1.26.7"
+#define CLIQZ_ADBLOCKED_VERSION "1.27.1"
 
 class QUrl;
 class AdblockRequestInfo;
@@ -69,12 +69,14 @@ class AdBlockManager : public QObject {
     void processTerminated();
 
   private slots:
-    void onPackageReady(const QList<NodeJs::PackageMetadata>& pkgs, bool already_up_to_date);
-    void onPackageError(const QList<NodeJs::PackageMetadata>& pkgs, const QString& error);
+    void onPackageReady(const QObject* sndr, const QList<NodeJs::PackageMetadata>& pkgs, bool already_up_to_date);
+    void onPackageError(const QObject* sndr, const QList<NodeJs::PackageMetadata>& pkgs, const QString& error);
     void onServerProcessFinished(int exit_code, QProcess::ExitStatus exit_status);
 
   private:
+    void updateUnifiedFilters();
     void updateUnifiedFiltersFileAndStartServer();
+
     QProcess* startServer(int port);
     void killServer();
 

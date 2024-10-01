@@ -74,8 +74,13 @@ class RSSGUARD_DLLSPEC WebBrowser : public TabContent {
     void newWindowRequested(WebViewer* viewer);
 
     void readabilePage();
-    void setReadabledHtml(QObject* sndr, const QString& better_html);
-    void readabilityFailed(QObject* sndr, const QString& error);
+    void getFullArticle();
+
+    void setReadabledHtml(const QObject* sndr, const QString& better_html);
+    void readabilityFailed(const QObject* sndr, const QString& error);
+
+    void setFullArticleHtml(const QObject* sndr, const QString& url, const QString& json_answer);
+    void fullArticleFailed(const QObject* sndr, const QString& error);
 
   signals:
     void windowCloseRequested();
@@ -86,6 +91,8 @@ class RSSGUARD_DLLSPEC WebBrowser : public TabContent {
     void initializeLayout();
     void bindWebView();
     void createConnections();
+
+    Message messageFromExtractor(const QJsonDocument& extracted_data) const;
 
   private:
     QVBoxLayout* m_layout;
@@ -106,6 +113,7 @@ class RSSGUARD_DLLSPEC WebBrowser : public TabContent {
 #endif
 
     QAction* m_actionReadabilePage;
+    QAction* m_actionGetFullArticle;
 
     QList<Message> m_messages;
     QPointer<RootItem> m_root;

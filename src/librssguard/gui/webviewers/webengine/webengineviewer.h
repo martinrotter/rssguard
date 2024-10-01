@@ -22,6 +22,7 @@ class RSSGUARD_DLLSPEC WebEngineViewer : public QWebEngineView, public WebViewer
 
   public:
     virtual void loadMessages(const QList<Message>& messages, RootItem* root);
+    virtual PreparedHtml htmlForMessages(const QList<Message>& messages, RootItem* root) const;
     virtual void bindToBrowser(WebBrowser* browser);
     virtual void findText(const QString& text, bool backwards);
     virtual void setUrl(const QUrl& url);
@@ -51,7 +52,6 @@ class RSSGUARD_DLLSPEC WebEngineViewer : public QWebEngineView, public WebViewer
 
   protected:
     virtual ContextMenuData provideContextMenuData(QContextMenuEvent* event) const;
-
     virtual QWebEngineView* createWindow(QWebEnginePage::WebWindowType type);
     virtual void contextMenuEvent(QContextMenuEvent* event);
     virtual bool event(QEvent* event);

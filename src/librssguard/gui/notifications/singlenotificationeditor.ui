@@ -25,6 +25,13 @@
     </widget>
    </item>
    <item>
+    <widget class="QCheckBox" name="m_cbPlaySound">
+     <property name="text">
+      <string>Play sound</string>
+     </property>
+    </widget>
+   </item>
+   <item>
     <widget class="QWidget" name="m_wdgSound" native="true">
      <property name="sizePolicy">
       <sizepolicy hsizetype="Preferred" vsizetype="Maximum">
@@ -86,7 +93,7 @@
          <number>100</number>
         </property>
         <property name="orientation">
-         <enum>Qt::Horizontal</enum>
+         <enum>Qt::Orientation::Horizontal</enum>
         </property>
        </widget>
       </item>
@@ -114,9 +121,11 @@
  </customwidgets>
  <tabstops>
   <tabstop>m_cbBalloon</tabstop>
+  <tabstop>m_cbPlaySound</tabstop>
   <tabstop>m_txtSound</tabstop>
   <tabstop>m_btnBrowseSound</tabstop>
   <tabstop>m_btnPlaySound</tabstop>
+  <tabstop>m_slidVolume</tabstop>
  </tabstops>
  <resources/>
  <connections/>

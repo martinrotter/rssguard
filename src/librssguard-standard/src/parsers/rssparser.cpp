@@ -188,6 +188,9 @@ QPair<StandardFeed*, QList<IconLocation>> RssParser::guessFeed(const QByteArray&
     xml_contents_encoded = QString::fromUtf8(content);
   }
 
+  // NOTE: Some XMLs have whitespace before XML declaration, erase it.
+  xml_contents_encoded = xml_contents_encoded.trimmed();
+
   // Feed XML was obtained, guess it now.
   QDomDocument xml_document;
   QString error_msg;
@@ -277,15 +280,17 @@ QString RssParser::xmlMessageAuthor(const QDomElement& msg_element) const {
   return author;
 }
 
-QDateTime RssParser::xmlMessageDateCreated(const QDomElement& msg_element) const {
-  QDateTime date_created = TextFactory::parseDateTime(msg_element.namedItem(QSL("pubDate")).toElement().text());
+QDateTime RssParser::xmlMessageDateCreated(const QDomElement& msg_element) {
+  QDateTime date_created =
+    TextFactory::parseDateTime(msg_element.namedItem(QSL("pubDate")).toElement().text(), &m_dateTimeFormat);
 
   if (date_created.isNull()) {
-    date_created = TextFactory::parseDateTime(msg_element.namedItem(QSL("date")).toElement().text());
+    date_created = TextFactory::parseDateTime(msg_element.namedItem(QSL("date")).toElement().text(), &m_dateTimeFormat);
   }
 
   if (date_created.isNull()) {
-    date_created = TextFactory::parseDateTime(msg_element.namedItem(QSL("dc:modified")).toElement().text());
+    date_created =
+      TextFactory::parseDateTime(msg_element.namedItem(QSL("dc:modified")).toElement().text(), &m_dateTimeFormat);
   }
 
   return date_created;
