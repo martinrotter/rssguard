@@ -129,11 +129,13 @@ QVariant TextBrowserViewer::loadOneResource(int type, const QUrl& name) {
     if (img.save(&save_buf, "JPG", 100)) {
       save_buf.close();
 
+      /*
       IOFactory::writeFile(QSL("%1%2.jpg")
                              .arg(name.toString(QUrl::ComponentFormattingOption::FullyEncoded),
                                   QString::number(acceptable_width))
                              .remove(QRegularExpression(":|\\/")),
                            save_arr);
+*/
 
       resource_data_all_sizes.insert(acceptable_width, save_arr);
     }
