@@ -204,7 +204,7 @@
          <item>
           <spacer name="horizontalSpacer_2">
            <property name="orientation">
-            <enum>Qt::Horizontal</enum>
+            <enum>Qt::Orientation::Horizontal</enum>
            </property>
            <property name="sizeHint" stdset="0">
             <size>
@@ -349,7 +349,7 @@
             <item>
              <spacer name="horizontalSpacer_3">
               <property name="orientation">
-               <enum>Qt::Horizontal</enum>
+               <enum>Qt::Orientation::Horizontal</enum>
               </property>
               <property name="sizeHint" stdset="0">
                <size>
@@ -392,7 +392,7 @@
             <item>
              <spacer name="horizontalSpacer">
               <property name="orientation">
-               <enum>Qt::Horizontal</enum>
+               <enum>Qt::Orientation::Horizontal</enum>
               </property>
               <property name="sizeHint" stdset="0">
                <size>
@@ -448,14 +448,14 @@
          </property>
         </widget>
        </item>
-       <item row="3" column="0">
+       <item row="4" column="0">
         <widget class="QCheckBox" name="m_checkMultilineArticleList">
          <property name="text">
           <string>Enable multiline items</string>
          </property>
         </widget>
        </item>
-       <item row="4" column="0" colspan="2">
+       <item row="5" column="0" colspan="2">
         <widget class="HelpSpoiler" name="m_helpMultilineArticleList" native="true">
          <property name="minimumSize">
           <size>
@@ -465,7 +465,7 @@
          </property>
         </widget>
        </item>
-       <item row="5" column="0">
+       <item row="6" column="0">
         <widget class="QLabel" name="label_2">
          <property name="text">
           <string>Row height</string>
@@ -475,7 +475,7 @@
          </property>
         </widget>
        </item>
-       <item row="5" column="1">
+       <item row="6" column="1">
         <widget class="QSpinBox" name="m_spinHeightRowsMessages">
          <property name="minimumSize">
           <size>
@@ -494,7 +494,7 @@
          </property>
         </widget>
        </item>
-       <item row="6" column="0">
+       <item row="7" column="0">
         <widget class="QLabel" name="label_4">
          <property name="text">
           <string>Top/bottom row padding</string>
@@ -504,7 +504,7 @@
          </property>
         </widget>
        </item>
-       <item row="6" column="1">
+       <item row="7" column="1">
         <widget class="QSpinBox" name="m_spinPaddingRowsMessages">
          <property name="minimumSize">
           <size>
@@ -523,7 +523,7 @@
          </property>
         </widget>
        </item>
-       <item row="7" column="0">
+       <item row="8" column="0">
         <widget class="QCheckBox" name="m_checkMessagesDateTimeFormat">
          <property name="text">
           <string>Use custom date/time format</string>
@@ -536,7 +536,7 @@
          </property>
         </widget>
        </item>
-       <item row="7" column="1">
+       <item row="8" column="1">
         <widget class="QComboBox" name="m_cmbMessagesDateTimeFormat">
          <property name="minimumSize">
           <size>
@@ -549,7 +549,7 @@
          </property>
         </widget>
        </item>
-       <item row="8" column="0">
+       <item row="9" column="0">
         <widget class="QCheckBox" name="m_checkMessagesDateTimeFormatForDatesOnly">
          <property name="text">
           <string>Use custom date/time format for dates-only</string>
@@ -562,7 +562,7 @@
          </property>
         </widget>
        </item>
-       <item row="8" column="1">
+       <item row="9" column="1">
         <widget class="QComboBox" name="m_cmbMessagesDateTimeFormatForDatesOnly">
          <property name="minimumSize">
           <size>
@@ -575,7 +575,7 @@
          </property>
         </widget>
        </item>
-       <item row="9" column="0">
+       <item row="10" column="0">
         <widget class="QCheckBox" name="m_checkMessagesTimeFormat">
          <property name="text">
           <string>Custom date/time format for today's articles</string>
@@ -588,7 +588,7 @@
          </property>
         </widget>
        </item>
-       <item row="9" column="1">
+       <item row="10" column="1">
         <widget class="QComboBox" name="m_cmbMessagesTimeFormat">
          <property name="minimumSize">
           <size>
@@ -601,14 +601,14 @@
          </property>
         </widget>
        </item>
-       <item row="10" column="0">
+       <item row="11" column="0">
         <widget class="QLabel" name="label">
          <property name="text">
           <string>Show relative time for articles not older than</string>
          </property>
         </widget>
        </item>
-       <item row="10" column="1">
+       <item row="11" column="1">
         <widget class="QSpinBox" name="m_spinRelativeArticleTime">
          <property name="minimum">
           <number>-1</number>
@@ -618,7 +618,7 @@
          </property>
         </widget>
        </item>
-       <item row="11" column="0">
+       <item row="12" column="0">
         <widget class="QGroupBox" name="m_gbArticleListFont">
          <property name="title">
           <string>Article list font</string>
@@ -680,6 +680,13 @@
          </property>
         </widget>
        </item>
+       <item row="3" column="0" colspan="2">
+        <widget class="QCheckBox" name="m_checkSwitchArticleListRtl">
+         <property name="text">
+          <string>Switch article list to RTL layout if all selected feeds are RTL</string>
+         </property>
+        </widget>
+       </item>
       </layout>
      </widget>
     </widget>
@@ -730,6 +737,7 @@
   <tabstop>m_btnChangeMessagesFont</tabstop>
   <tabstop>m_cmbUnreadIconType</tabstop>
   <tabstop>m_checkKeppMessagesInTheMiddle</tabstop>
+  <tabstop>m_checkSwitchArticleListRtl</tabstop>
   <tabstop>m_checkMultilineArticleList</tabstop>
   <tabstop>m_spinHeightRowsMessages</tabstop>
   <tabstop>m_spinPaddingRowsMessages</tabstop>
@@ -741,6 +749,12 @@
   <tabstop>m_btnChangeMessageListFont</tabstop>
   <tabstop>m_gbFeedListFont</tabstop>
   <tabstop>m_gbArticleListFont</tabstop>
+  <tabstop>m_tabFeedsMessages</tabstop>
+  <tabstop>m_cbLegacyArticleFormatting</tabstop>
+  <tabstop>m_checkMessagesDateTimeFormatForDatesOnly</tabstop>
+  <tabstop>m_cmbMessagesDateTimeFormatForDatesOnly</tabstop>
+  <tabstop>m_cmbArticleMarkingPolicy</tabstop>
+  <tabstop>m_spinArticleMarkingPolicy</tabstop>
  </tabstops>
  <resources/>
  <connections/>

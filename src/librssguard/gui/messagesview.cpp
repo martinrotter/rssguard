@@ -582,19 +582,25 @@ void MessagesView::loadItem(RootItem* item) {
   sort(col, ord, false, true, false, true);
   m_sourceModel->loadMessages(item);
 
-  /*
-  if (item->kind() == RootItem::Kind::Feed) {
-    if (item->toFeed()->isRtl()) {
-      setLayoutDirection(Qt::LayoutDirection::RightToLeft);
+  bool switch_entire_rtl_list =
+    qApp->settings()->value(GROUP(Messages), SETTING(Messages::SwitchArticleListRtl)).toBool();
+
+  if (switch_entire_rtl_list && item != nullptr) {
+    if (item->kind() == RootItem::Kind::Feed) {
+      setLayoutDirection(item->toFeed()->isRtl() ? Qt::LayoutDirection::RightToLeft : Qt::LayoutDirection::LeftToRight);
     }
     else {
-      setLayoutDirection(Qt::LayoutDirection::LeftToRight);
+      auto fds = item->getSubTreeFeeds();
+      bool all_feeds_rtl = !fds.isEmpty() && std::all_of(fds.begin(), fds.end(), [](Feed* fd) {
+        return fd->isRtl();
+      });
+
+      setLayoutDirection(all_feeds_rtl ? Qt::LayoutDirection::RightToLeft : Qt::LayoutDirection::LeftToRight);
     }
   }
   else {
     setLayoutDirection(Qt::LayoutDirection::LeftToRight);
   }
-  */
 
   // Messages are loaded, make sure that previously
   // active message is not shown in browser.

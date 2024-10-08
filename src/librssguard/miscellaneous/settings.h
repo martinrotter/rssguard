@@ -218,6 +218,9 @@ namespace Messages {
   KEY MultilineArticleList;
   VALUE(bool) MultilineArticleListDef;
 
+  KEY SwitchArticleListRtl;
+  VALUE(bool) SwitchArticleListRtlDef;
+
   KEY CustomTimeFormat;
   VALUE(QString) CustomTimeFormatDef;
 

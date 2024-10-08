@@ -217,6 +217,9 @@ DVALUE(int) Messages::ArticleListPaddingDef = -1;
 DKEY Messages::MultilineArticleList = "multiline_article_list";
 DVALUE(bool) Messages::MultilineArticleListDef = false;
 
+DKEY Messages::SwitchArticleListRtl = "switch_article_list_rtl";
+DVALUE(bool) Messages::SwitchArticleListRtlDef = true;
+
 DKEY Messages::UseCustomTime = "use_custom_time";
 DVALUE(bool) Messages::UseCustomTimeDef = false;
 

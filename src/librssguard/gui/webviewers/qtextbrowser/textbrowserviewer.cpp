@@ -126,8 +126,15 @@ QVariant TextBrowserViewer::loadOneResource(int type, const QUrl& name) {
     QByteArray save_arr;
     QBuffer save_buf(&save_arr, this);
 
-    if (img.save(&save_buf, "PNG", 100)) {
+    if (img.save(&save_buf, "JPG", 100)) {
       save_buf.close();
+
+      IOFactory::writeFile(QSL("%1%2.jpg")
+                             .arg(name.toString(QUrl::ComponentFormattingOption::FullyEncoded),
+                                  QString::number(acceptable_width))
+                             .remove(QRegularExpression(":|\\/")),
+                           save_arr);
+
       resource_data_all_sizes.insert(acceptable_width, save_arr);
     }
     else {
