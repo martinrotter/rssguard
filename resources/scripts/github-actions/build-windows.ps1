@@ -42,7 +42,7 @@ if ($use_qt5 -eq "ON") {
   $use_qtmultimedia = "ON"
 }
 else {
-  $qt_version = "6.7.3"
+  $qt_version = "6.8.0"
 
   if ($use_webengine -eq "ON") {
     $use_libmpv = "ON"
