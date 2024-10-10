@@ -474,6 +474,11 @@ void MessagesView::mousePressEvent(QMouseEvent* event) {
             emit currentMessageChanged(m_sourceModel->messageAt(mapped_index.row()), m_sourceModel->loadedItem());
           }
         }
+        else if (mapped_index.column() == MSG_DB_READ_INDEX) {
+          if (m_sourceModel->switchMessageReadUnread(mapped_index.row())) {
+            emit currentMessageChanged(m_sourceModel->messageAt(mapped_index.row()), m_sourceModel->loadedItem());
+          }
+        }
       }
 
       break;

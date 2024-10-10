@@ -65,6 +65,7 @@ class MessagesModel : public QSqlQueryModel, public MessagesModelSqlLayer {
 
     // SINGLE message manipulators.
     bool switchMessageImportance(int row_index);
+    bool switchMessageReadUnread(int row_index);
     bool setMessageRead(int row_index, RootItem::ReadStatus read);
 
     // BATCH messages manipulators.

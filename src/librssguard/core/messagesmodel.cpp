@@ -619,6 +619,15 @@ QVariant MessagesModel::data(const QModelIndex& idx, int role) const {
   }
 }
 
+bool MessagesModel::switchMessageReadUnread(int row_index) {
+  RootItem::ReadStatus current_read =
+    RootItem::ReadStatus(data(row_index, MSG_DB_READ_INDEX, Qt::ItemDataRole::EditRole).toInt());
+
+  return setMessageRead(row_index,
+                        current_read == RootItem::ReadStatus::Read ? RootItem::ReadStatus::Unread
+                                                                   : RootItem::ReadStatus::Read);
+}
+
 bool MessagesModel::setMessageRead(int row_index, RootItem::ReadStatus read) {
   if (data(row_index, MSG_DB_READ_INDEX, Qt::ItemDataRole::EditRole).toInt() == int(read)) {
     // Read status is the same is the one currently set.
