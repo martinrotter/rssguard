@@ -7,7 +7,7 @@ QSplitter::handle {
 }
 
 /*
- * For `qt5-styleplugins`: motif, cde, gtk2, etc.
+ * For `qt6-styleplugins`: motif, cde, gtk2, etc.
  */
 QStatusBar::item {
     border: none;

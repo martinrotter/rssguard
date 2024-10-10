@@ -19,12 +19,7 @@
 #if defined(NO_LITE)
 #include "network-web/webengine/networkurlinterceptor.h"
 
-#if QT_VERSION_MAJOR == 6
 #include <QWebEngineDownloadRequest>
-#else
-#include <QWebEngineDownloadItem>
-#endif
-
 #include <QWebEngineProfile>
 #include <QWebEngineScript>
 #include <QWebEngineScriptCollection>
@@ -58,11 +53,7 @@ WebFactory::WebFactory(QObject* parent) : QObject(parent), m_apiServer(nullptr),
   m_articleParse = new ArticleParse(this);
 
 #if defined(NO_LITE)
-#if QT_VERSION >= 0x050D00 // Qt >= 5.13.0
   m_engineProfile->setUrlRequestInterceptor(m_urlInterceptor);
-#else
-  m_engineProfile->setRequestInterceptor(m_urlInterceptor);
-#endif
 #endif
 }
 
@@ -524,10 +515,7 @@ void WebFactory::createMenu(QMenu* menu) {
                                         QWebEngineSettings::WebAttribute::JavascriptCanPaste);
   actions << createEngineSettingsAction(tr("DNS prefetch enabled"),
                                         QWebEngineSettings::WebAttribute::DnsPrefetchEnabled);
-
-#if QT_VERSION >= 0x050D00 // Qt >= 5.13.0
   actions << createEngineSettingsAction(tr("PDF viewer enabled"), QWebEngineSettings::WebAttribute::PdfViewerEnabled);
-#endif
 
   menu->addActions(actions);
 }

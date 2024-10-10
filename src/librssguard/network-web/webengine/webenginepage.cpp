@@ -24,11 +24,7 @@ WebEnginePage::WebEnginePage(QObject* parent) : QWebEnginePage(qApp->web()->engi
 }
 
 WebEngineViewer* WebEnginePage::view() const {
-#if QT_VERSION_MAJOR == 6
   return qobject_cast<WebEngineViewer*>(QWebEngineView::forPage(this));
-#else
-  return qobject_cast<WebEngineViewer*>(QWebEnginePage::view());
-#endif
 }
 
 QString WebEnginePage::pageHtml(const QString& url) {

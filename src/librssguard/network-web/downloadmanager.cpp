@@ -67,16 +67,7 @@ void DownloadItem::init() {
   m_reply->setParent(this);
 
   connect(m_reply, &QNetworkReply::readyRead, this, &DownloadItem::downloadReadyRead);
-
-#if QT_VERSION >= 0x050F00 // Qt >= 5.15.0
   connect(m_reply, &QNetworkReply::errorOccurred, this, &DownloadItem::error);
-#else
-  connect(m_reply,
-          static_cast<void (QNetworkReply::*)(QNetworkReply::NetworkError)>(&QNetworkReply::error),
-          this,
-          &DownloadItem::error);
-#endif
-
   connect(m_reply, &QNetworkReply::downloadProgress, this, &DownloadItem::downloadProgress);
   connect(m_reply, &QNetworkReply::metaDataChanged, this, &DownloadItem::metaDataChanged);
   connect(m_reply, &QNetworkReply::finished, this, &DownloadItem::finished);

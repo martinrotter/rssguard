@@ -68,11 +68,9 @@ endif(ZLIB_FOUND)
 
 prepare_rssguard_plugin(${PLUGIN_TARGET})
 
-if(QT_VERSION_MAJOR EQUAL 6)
-  target_link_libraries(${PLUGIN_TARGET} PUBLIC
-    Qt${QT_VERSION_MAJOR}::Core5Compat
-  )
-endif()
+target_link_libraries(${PLUGIN_TARGET} PUBLIC
+  Qt${QT_VERSION_MAJOR}::Core5Compat
+)
 
 if(ZLIB_FOUND)
   target_include_directories(${PLUGIN_TARGET} AFTER

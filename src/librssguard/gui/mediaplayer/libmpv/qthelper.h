@@ -149,11 +149,7 @@ namespace mpv {
           // "QVariant::Type(obsolete), the return value should be interpreted
           // as QMetaType::Type."
           // So a cast really seems to be needed to avoid warnings (urgh).
-#if QT_VERSION_MAJOR == 5
-          return v.type() == static_cast<int>(t);
-#else
           return v.typeId() == static_cast<int>(t);
-#endif
         }
         void set(mpv_node* dst, const QVariant& src) {
           if (test_type(src, QMetaType::QString)) {

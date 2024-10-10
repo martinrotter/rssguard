@@ -541,6 +541,7 @@ endif()
 # Qt.
 target_link_libraries(rssguard PUBLIC
   Qt${QT_VERSION_MAJOR}::Core
+  Qt${QT_VERSION_MAJOR}::Core5Compat
   Qt${QT_VERSION_MAJOR}::Gui
   Qt${QT_VERSION_MAJOR}::Network
   Qt${QT_VERSION_MAJOR}::Qml
@@ -549,12 +550,6 @@ target_link_libraries(rssguard PUBLIC
   Qt${QT_VERSION_MAJOR}::Xml
   Qt${QT_VERSION_MAJOR}::Concurrent
 )
-
-if(QT_VERSION_MAJOR EQUAL 6)
-  target_link_libraries(rssguard PUBLIC
-    Qt${QT_VERSION_MAJOR}::Core5Compat
-  )
-endif()
 
 if(WIN32)
   target_link_libraries(rssguard PUBLIC
@@ -565,12 +560,6 @@ endif()
 if(NO_LITE)
   target_link_libraries(rssguard PUBLIC
     Qt${QT_VERSION_MAJOR}::WebEngineWidgets
-  )
-endif()
-
-if(WIN32 AND NOT BUILD_WITH_QT6)
-  target_link_libraries(rssguard PUBLIC
-    Qt${QT_VERSION_MAJOR}::WinExtras
   )
 endif()
 
@@ -589,13 +578,8 @@ elseif(ENABLE_MEDIAPLAYER_LIBMPV)
   if(MEDIAPLAYER_FORCE_OPENGL)
     target_link_libraries(rssguard PUBLIC
       Qt${QT_VERSION_MAJOR}::OpenGL
-    )
-
-    if(BUILD_WITH_QT6)
-      target_link_libraries(rssguard PUBLIC
-        Qt${QT_VERSION_MAJOR}::OpenGLWidgets
+      Qt${QT_VERSION_MAJOR}::OpenGLWidgets
       )
-    endif()
   endif()
 
   target_include_directories(rssguard AFTER

@@ -19,16 +19,11 @@ target_include_directories(app PUBLIC
 
 target_link_libraries(app PUBLIC
   Qt${QT_VERSION_MAJOR}::Core
+  Qt${QT_VERSION_MAJOR}::Core5Compat
   Qt${QT_VERSION_MAJOR}::Gui
   Qt${QT_VERSION_MAJOR}::Widgets
   rssguard
 )
-
-if(QT_VERSION_MAJOR EQUAL 6)
-  target_link_libraries(app PUBLIC
-    Qt${QT_VERSION_MAJOR}::Core5Compat
-  )
-endif()
 
 if(APPLE)
   set_target_properties(app PROPERTIES
