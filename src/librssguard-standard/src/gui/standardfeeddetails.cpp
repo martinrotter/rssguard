@@ -143,6 +143,7 @@ void StandardFeedDetails::guessIconOnly(StandardFeed::SourceType source_type,
                                         NetworkFactory::NetworkAuthentication protection,
                                         const QString& username,
                                         const QString& password,
+                                        const QList<QPair<QByteArray, QByteArray>>& headers,
                                         const QNetworkProxy& custom_proxy) {
   try {
     StandardFeed* metadata = StandardFeed::guessFeed(source_type,
@@ -152,6 +153,7 @@ void StandardFeedDetails::guessIconOnly(StandardFeed::SourceType source_type,
                                                      true,
                                                      username,
                                                      password,
+                                                     {},
                                                      custom_proxy);
 
     // Icon or whole feed was guessed.
@@ -186,6 +188,7 @@ void StandardFeedDetails::guessFeed(StandardFeed::SourceType source_type,
                                     NetworkFactory::NetworkAuthentication protection,
                                     const QString& username,
                                     const QString& password,
+                                    const QList<QPair<QByteArray, QByteArray>>& headers,
                                     const QNetworkProxy& custom_proxy) {
   try {
     StandardFeed* metadata = StandardFeed::guessFeed(source_type,
@@ -195,6 +198,7 @@ void StandardFeedDetails::guessFeed(StandardFeed::SourceType source_type,
                                                      true,
                                                      username,
                                                      password,
+                                                     headers,
                                                      custom_proxy);
 
     // Icon or whole feed was guessed.

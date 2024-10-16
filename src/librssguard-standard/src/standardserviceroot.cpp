@@ -210,7 +210,7 @@ QList<Message> StandardServiceRoot::obtainNewMessages(Feed* feed,
   if (f->sourceType() == StandardFeed::SourceType::Url) {
     qDebugNN << LOGSEC_CORE << "Downloading URL" << QUOTE_W_SPACE(feed->source()) << "to obtain feed data.";
 
-    QList<QPair<QByteArray, QByteArray>> headers;
+    QList<QPair<QByteArray, QByteArray>> headers = StandardFeed::httpHeadersToList(f->httpHeaders());
 
     headers << NetworkFactory::generateBasicAuthHeader(f->protection(), f->username(), f->password());
 

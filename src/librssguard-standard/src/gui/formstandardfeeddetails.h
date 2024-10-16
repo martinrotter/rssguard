@@ -7,6 +7,7 @@
 
 class StandardFeedDetails;
 class StandardFeedExpDetails;
+class HttpHeadersDetails;
 class StandardServiceRoot;
 class AuthenticationDetails;
 class StandardFeed;
@@ -34,6 +35,7 @@ class FormStandardFeedDetails : public FormFeedDetails {
     StandardFeedDetails* m_standardFeedDetails;
     StandardFeedExpDetails* m_standardFeedExpDetails;
     AuthenticationDetails* m_authDetails;
+    HttpHeadersDetails* m_headersDetails;
     RootItem* m_parentToSelect;
     QString m_urlToProcess;
 };

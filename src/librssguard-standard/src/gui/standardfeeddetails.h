@@ -30,13 +30,16 @@ class StandardFeedDetails : public QWidget {
                        NetworkFactory::NetworkAuthentication protection,
                        const QString& username,
                        const QString& password,
+                       const QList<QPair<QByteArray, QByteArray>>& headers = {},
                        const QNetworkProxy& custom_proxy = QNetworkProxy::ProxyType::DefaultProxy);
+
     void guessFeed(StandardFeed::SourceType source_type,
                    const QString& source,
                    const QString& post_process_script,
                    NetworkFactory::NetworkAuthentication protection,
                    const QString& username,
                    const QString& password,
+                   const QList<QPair<QByteArray, QByteArray>>& headers = {},
                    const QNetworkProxy& custom_proxy = QNetworkProxy::ProxyType::DefaultProxy);
 
     void onTitleChanged(const QString& new_title);

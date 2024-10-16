@@ -86,6 +86,7 @@ class StandardFeed : public Feed {
                                    bool fetch_icons = true,
                                    const QString& username = {},
                                    const QString& password = {},
+                                   const QList<QPair<QByteArray, QByteArray>>& http_headers = {},
                                    const QNetworkProxy& custom_proxy = QNetworkProxy::ProxyType::DefaultProxy);
 
     // Converts particular feed type to string.
@@ -104,6 +105,8 @@ class StandardFeed : public Feed {
                                        bool provide_input,
                                        const QString& input = {});
 
+    static QList<QPair<QByteArray, QByteArray>> httpHeadersToList(const QVariantHash& headers);
+
     QString lastEtag() const;
     void setLastEtag(const QString& etag);
 
@@ -112,6 +115,10 @@ class StandardFeed : public Feed {
 
     bool dontUseRawXmlSaving() const;
     void setDontUseRawXmlSaving(bool no_raw_xml_saving);
+
+    // NOTE: Contains hash table where key is name of HTTP header.
+    QVariantHash httpHeaders() const;
+    void setHttpHeaders(const QVariantHash& http_headers);
 
   public slots:
     void fetchMetadataForItself();
@@ -131,6 +138,7 @@ class StandardFeed : public Feed {
     QString m_password;
     QString m_lastEtag;
     bool m_dontUseRawXmlSaving;
+    QVariantHash m_httpHeaders;
 };
 
 Q_DECLARE_METATYPE(StandardFeed::SourceType)

@@ -52,6 +52,7 @@ StandardFeed::StandardFeed(RootItem* parent_item) : Feed(parent_item) {
   m_protection = NetworkFactory::NetworkAuthentication::NoAuthentication;
   m_username = QString();
   m_password = QString();
+  m_httpHeaders = {};
   m_dontUseRawXmlSaving = false;
 }
 
@@ -64,6 +65,7 @@ StandardFeed::StandardFeed(const StandardFeed& other) : Feed(other) {
   m_username = other.username();
   m_password = other.password();
   m_dontUseRawXmlSaving = other.dontUseRawXmlSaving();
+  m_httpHeaders = other.httpHeaders();
 }
 
 QList<QAction*> StandardFeed::contextMenuFeedsList() {
@@ -164,6 +166,7 @@ QVariantHash StandardFeed::customDatabaseData() const {
   data[QSL("username")] = username();
   data[QSL("password")] = TextFactory::encrypt(password());
   data[QSL("dont_use_raw_xml_saving")] = dontUseRawXmlSaving();
+  data[QSL("http_headers")] = httpHeaders();
 
   return data;
 }
@@ -177,6 +180,7 @@ void StandardFeed::setCustomDatabaseData(const QVariantHash& data) {
   setUsername(data[QSL("username")].toString());
   setPassword(TextFactory::decrypt(data[QSL("password")].toString()));
   setDontUseRawXmlSaving(data[QSL("dont_use_raw_xml_saving")].toBool());
+  setHttpHeaders(data[QSL("http_headers")].toHash());
 }
 
 QString StandardFeed::typeToString(StandardFeed::Type type) {
@@ -233,6 +237,7 @@ void StandardFeed::fetchMetadataForItself() {
                                        true,
                                        username(),
                                        password(),
+                                       {},
                                        getParentServiceRoot()->networkProxy());
 
     // Copy metadata to our object.
@@ -281,14 +286,16 @@ StandardFeed* StandardFeed::guessFeed(StandardFeed::SourceType source_type,
                                       bool fetch_icons,
                                       const QString& username,
                                       const QString& password,
+                                      const QList<QPair<QByteArray, QByteArray>>& http_headers,
                                       const QNetworkProxy& custom_proxy) {
   auto timeout = qApp->settings()->value(GROUP(Feeds), SETTING(Feeds::UpdateTimeout)).toInt();
   QByteArray feed_contents;
   QString content_type;
 
   if (source_type == StandardFeed::SourceType::Url) {
-    QList<QPair<QByteArray, QByteArray>> headers = {
-      NetworkFactory::generateBasicAuthHeader(protection, username, password)};
+    QList<QPair<QByteArray, QByteArray>> headers = http_headers;
+    headers << NetworkFactory::generateBasicAuthHeader(protection, username, password);
+
     NetworkResult network_result =
       NetworkFactory::performNetworkOperation(source,
                                               timeout,
@@ -392,8 +399,11 @@ StandardFeed* StandardFeed::guessFeed(StandardFeed::SourceType source_type,
     // Try to obtain icon.
     QPixmap icon_data;
 
-    if (NetworkFactory::downloadIcon(icon_possible_locations, DOWNLOAD_TIMEOUT, icon_data, {}, custom_proxy) ==
-        QNetworkReply::NetworkError::NoError) {
+    if (NetworkFactory::downloadIcon(icon_possible_locations,
+                                     DOWNLOAD_TIMEOUT,
+                                     icon_data,
+                                     http_headers,
+                                     custom_proxy) == QNetworkReply::NetworkError::NoError) {
       // Icon for feed was downloaded and is stored now in icon_data.
       feed->setIcon(icon_data);
     }
@@ -431,6 +441,14 @@ bool StandardFeed::removeItself() {
   QSqlDatabase database = qApp->database()->driver()->connection(metaObject()->className());
 
   return DatabaseQueries::deleteFeed(database, this, getParentServiceRoot()->accountId());
+}
+
+QVariantHash StandardFeed::httpHeaders() const {
+  return m_httpHeaders;
+}
+
+void StandardFeed::setHttpHeaders(const QVariantHash& http_headers) {
+  m_httpHeaders = http_headers;
 }
 
 bool StandardFeed::dontUseRawXmlSaving() const {
@@ -545,6 +563,16 @@ QByteArray StandardFeed::runScriptProcess(const QStringList& cmd_args,
         throw ScriptException(ScriptException::Reason::InterpreterError, raw_error);
     }
   }
+}
+
+QList<QPair<QByteArray, QByteArray>> StandardFeed::httpHeadersToList(const QVariantHash& headers) {
+  QList<QPair<QByteArray, QByteArray>> hdrs_list;
+
+  for (auto i = headers.cbegin(), end = headers.cend(); i != end; i++) {
+    hdrs_list.append({i.key().toLocal8Bit(), i.value().toString().toLocal8Bit()});
+  }
+
+  return hdrs_list;
 }
 
 QByteArray StandardFeed::generateFeedFileWithScript(const QString& execution_line, int run_timeout) {

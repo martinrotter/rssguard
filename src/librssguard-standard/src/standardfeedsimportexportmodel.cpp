@@ -203,6 +203,7 @@ bool FeedsImportExportModel::produceFeed(const FeedLookup& feed_lookup) {
                                            !feed_lookup.do_not_fetch_icons,
                                            {},
                                            {},
+                                           {},
                                            feed_lookup.custom_proxy);
 
         new_feed->setSourceType(source_type);

@@ -307,6 +307,8 @@ set(SOURCES
   services/abstract/gui/formcategorydetails.h
   services/abstract/gui/formfeeddetails.cpp
   services/abstract/gui/formfeeddetails.h
+  services/abstract/gui/httpheadersdetails.cpp
+  services/abstract/gui/httpheadersdetails.h
   services/abstract/gui/multifeededitcheckbox.cpp
   services/abstract/gui/multifeededitcheckbox.h
   services/abstract/importantnode.cpp
@@ -371,6 +373,7 @@ set(UI_FILES
   services/abstract/gui/formaddeditprobe.ui
   services/abstract/gui/formcategorydetails.ui
   services/abstract/gui/formfeeddetails.ui
+  services/abstract/gui/httpheadersdetails.ui
 )
 
 if(ENABLE_MEDIAPLAYER)

@@ -13,6 +13,7 @@
 #include <librssguard/network-web/webfactory.h>
 #include <librssguard/services/abstract/category.h>
 #include <librssguard/services/abstract/gui/authenticationdetails.h>
+#include <librssguard/services/abstract/gui/httpheadersdetails.h>
 #include <librssguard/services/abstract/serviceroot.h>
 
 #include <QComboBox>
@@ -27,9 +28,10 @@ FormStandardFeedDetails::FormStandardFeedDetails(ServiceRoot* service_root,
                                                  QWidget* parent)
   : FormFeedDetails(service_root, parent), m_standardFeedDetails(new StandardFeedDetails(this)),
     m_standardFeedExpDetails(new StandardFeedExpDetails(this)), m_authDetails(new AuthenticationDetails(false, this)),
-    m_parentToSelect(parent_to_select), m_urlToProcess(url) {
+    m_headersDetails(new HttpHeadersDetails(this)), m_parentToSelect(parent_to_select), m_urlToProcess(url) {
   insertCustomTab(m_standardFeedDetails, tr("General"), 0);
-  insertCustomTab(m_authDetails, tr("Network"), 2);
+  insertCustomTab(m_headersDetails, tr("HTTP headers"), 2);
+  insertCustomTab(m_authDetails, tr("Auth"), 2);
   insertCustomTab(m_standardFeedExpDetails, tr("Experimental"));
   activateTab(0);
 
@@ -53,6 +55,7 @@ void FormStandardFeedDetails::guessFeed() {
                                    m_authDetails->authenticationType(),
                                    m_authDetails->username(),
                                    m_authDetails->password(),
+                                   StandardFeed::httpHeadersToList(m_headersDetails->httpHeaders()),
                                    m_serviceRoot->networkProxy());
 }
 
@@ -63,6 +66,7 @@ void FormStandardFeedDetails::guessIconOnly() {
                                        m_authDetails->authenticationType(),
                                        m_authDetails->username(),
                                        m_authDetails->password(),
+                                       StandardFeed::httpHeadersToList(m_headersDetails->httpHeaders()),
                                        m_serviceRoot->networkProxy());
 }
 
@@ -120,13 +124,17 @@ void FormStandardFeedDetails::apply() {
       std_feed->setProtection(m_authDetails->authenticationType());
     }
 
-    if (isChangeAllowed(m_standardFeedExpDetails->m_ui.m_mcbDontUseRawXml)) {
-      std_feed->setDontUseRawXmlSaving(m_standardFeedExpDetails->m_ui.m_cbDontUseRawXml->isChecked());
-    }
-
     if (isChangeAllowed(m_authDetails->findChild<MultiFeedEditCheckBox*>(QSL("m_mcbAuthentication")))) {
       std_feed->setUsername(m_authDetails->username());
       std_feed->setPassword(m_authDetails->password());
+    }
+
+    if (isChangeAllowed(m_headersDetails->findChild<MultiFeedEditCheckBox*>(QSL("m_mcbHttpHeaders")))) {
+      std_feed->setHttpHeaders(m_headersDetails->httpHeaders());
+    }
+
+    if (isChangeAllowed(m_standardFeedExpDetails->m_ui.m_mcbDontUseRawXml)) {
+      std_feed->setDontUseRawXmlSaving(m_standardFeedExpDetails->m_ui.m_cbDontUseRawXml->isChecked());
     }
 
     std_feed->setCreationDate(QDateTime::currentDateTime());
@@ -177,6 +185,9 @@ void FormStandardFeedDetails::loadFeedData() {
     m_authDetails->findChild<MultiFeedEditCheckBox*>(QSL("m_mcbAuthentication"))
       ->addActionWidget(m_authDetails->findChild<QGroupBox*>(QSL("m_gbAuthentication")));
 
+    m_headersDetails->findChild<MultiFeedEditCheckBox*>(QSL("m_mcbHttpHeaders"))
+      ->addActionWidget(m_headersDetails->findChild<QPlainTextEdit*>(QSL("m_txtHttpHeaders")));
+
     m_standardFeedDetails->m_ui.m_btnFetchMetadata->setEnabled(false);
 
     m_standardFeedExpDetails->m_ui.m_mcbDontUseRawXml
@@ -197,6 +208,8 @@ void FormStandardFeedDetails::loadFeedData() {
   m_authDetails->setAuthenticationType(std_feed->protection());
   m_authDetails->setUsername(std_feed->username());
   m_authDetails->setPassword(std_feed->password());
+
+  m_headersDetails->loadHttpHeaders(std_feed->httpHeaders());
 
   if (m_creatingNew) {
     // auto processed_url = qApp->web()->processFeedUriScheme(m_urlToProcess);

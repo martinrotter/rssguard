@@ -59,7 +59,7 @@ void FormTtRssFeedDetails::loadFeedData() {
 
   if (m_creatingNew) {
     insertCustomTab(m_feedDetails, tr("General"), 0);
-    insertCustomTab(m_authDetails, tr("Network"), 1);
+    insertCustomTab(m_authDetails, tr("Auth"), 1);
     activateTab(0);
 
     m_feedDetails->loadCategories(m_serviceRoot->getSubTreeCategories(), m_serviceRoot, m_parentToSelect);
