@@ -199,11 +199,7 @@ QList<Label*> DatabaseQueries::getLabelsForMessage(const QSqlDatabase& db,
 
   if (q.exec() && q.next()) {
     auto label_ids = q.value(0).toString().split('.',
-#if QT_VERSION >= 0x050F00 // Qt >= 5.15.0
                                                  Qt::SplitBehaviorFlags::SkipEmptyParts);
-#else
-                                                 QString::SplitBehavior::SkipEmptyParts);
-#endif
 
     auto iter = boolinq::from(installed_labels);
 

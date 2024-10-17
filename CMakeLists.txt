@@ -19,7 +19,6 @@
 #     cmake --install .
 #
 # Variables:
-#   BUILD_WITH_QT6 - Build either with Qt 6 or Qt 5.
 #   USE_SYSTEM_SQLITE - Use system-wide SQLite3 library and header file. Defaults to "ON".
 #   NO_UPDATE_CHECK - Disable automatic checking for new application updates.
 #   IS_FLATPAK_BUILD - Set to "ON" when building RSS Guard with Flatpak.
@@ -42,7 +41,6 @@
 #
 # Other information:
 #   - supports Windows, Linux, *BSD, macOS, OS/2, Android,
-#   - Qt 5.14.0 or newer is required,
 #   - Qt 6.3.0 or newer is required,
 #   - cmake 3.14.0 or newer is required,
 #   - if you wish to make packages for Windows, then you must initialize all submodules
@@ -52,7 +50,7 @@
 # Building on OS/2:
 #   RSS Guard can run on OS/2 and if you want to compile it by yourself, you need to make sure that
 #   your OS/2 distro is up-to-date and you have all dependencies installed: os2-base, all gcc-* packages,
-#   libc and libcx up-to-date, kbuild-make, ash, binutils, all relevant qt5-* packages.
+#   libc and libcx up-to-date, kbuild-make, ash, binutils, all relevant qt6-* packages.
 #
 #   After your dependecies are installed, then you can compile via standard `cmake -> make -> make install` steps
 #   and package with: 7z.exe a -t7z -mmt -mx9 "rssguard.7z" "<build-folder\src\rssguard\app\*" command.
@@ -117,7 +115,6 @@ if(FORCE_COLORED_OUTPUT)
 endif()
 
 # Global compilation switches.
-option(BUILD_WITH_QT6 "Build application with Qt 6." ON)
 option(USE_SYSTEM_SQLITE "Use system-wide SQLite3 library." ON)
 option(NO_LITE "Enable QtWebEngine and other more demanding components." ON)
 option(UPDATE_TRANSLATIONS "Call lupdate to update translation files from source (Qt 6 only)." OFF)
@@ -133,10 +130,10 @@ option(MEDIAPLAYER_FORCE_OPENGL "Use opengl-based render API with libmpv." ON)
 
 # Import Qt libraries.
 set(QT6_MIN_VERSION 6.3.0)
-set(QT5_MIN_VERSION 5.14.0)
 
 set(QT_COMPONENTS
   Core
+  Core5Compat
   Gui
   LinguistTools
   Network
@@ -146,10 +143,6 @@ set(QT_COMPONENTS
   Xml
   Concurrent
 )
-
-if(WIN32 AND NOT BUILD_WITH_QT6)
-  list(APPEND QT_COMPONENTS WinExtras)
-endif()
 
 if(NOT OS2)
   list(APPEND QT_COMPONENTS Multimedia)
@@ -176,11 +169,7 @@ if(ENABLE_MEDIAPLAYER_LIBMPV)
   if(MEDIAPLAYER_FORCE_OPENGL)
     message(STATUS "Forcing OpenGL-based rendering for libmpv.")
 
-    list(APPEND QT_COMPONENTS OpenGL)
-
-    if(BUILD_WITH_QT6)
-      list(APPEND QT_COMPONENTS OpenGLWidgets)
-    endif()
+    list(APPEND QT_COMPONENTS OpenGL OpenGLWidgets)
 
     add_compile_definitions(MEDIAPLAYER_LIBMPV_OPENGL)
   endif()
@@ -204,36 +193,8 @@ if(UNIX AND NOT APPLE AND NOT ANDROID)
   list(APPEND QT_COMPONENTS DBus)
 endif()
 
-if(BUILD_WITH_QT6)
-  find_package(QT NAMES Qt6)
-  find_package(Qt6 ${QT6_MIN_VERSION} COMPONENTS ${QT_COMPONENTS} Core5Compat REQUIRED)
-else()
-  find_package(QT NAMES Qt5)
-  find_package(Qt5 ${QT5_MIN_VERSION} COMPONENTS ${QT_COMPONENTS} REQUIRED)
-
-  if(Qt5Core_VERSION VERSION_LESS 5.15.0)
-    # Compatibility macros.
-    macro(qt_wrap_ui)
-      qt5_wrap_ui(${ARGN})
-    endmacro()
-
-    macro(qt_add_resources)
-      qt5_add_resources(${ARGN})
-    endmacro()
-
-    macro(qt_add_big_resources)
-      qt5_add_big_resources(${ARGN})
-    endmacro()
-
-    macro(qt_create_translation)
-      qt5_create_translation(${ARGN})
-    endmacro()
-
-    macro(qt_add_translation)
-      qt5_add_translation(${ARGN})
-    endmacro()
-  endif()
-endif()
+find_package(QT NAMES Qt6)
+find_package(Qt6 ${QT6_MIN_VERSION} COMPONENTS ${QT_COMPONENTS} REQUIRED)
 
 # Load git commit hash.
 if(REVISION_FROM_GIT AND EXISTS "${CMAKE_SOURCE_DIR}/.git")

@@ -178,12 +178,8 @@ void FormDiscoverFeeds::discoverFeeds() {
     return res;
   };
 
-#if QT_VERSION_MAJOR == 5
-  QFuture<QList<StandardFeed*>> fut = QtConcurrent::mappedReduced<QList<StandardFeed*>>(m_parsers, func, reducer);
-#else
   QFuture<QList<StandardFeed*>> fut =
     QtConcurrent::mappedReduced<QList<StandardFeed*>>(qApp->workHorsePool(), m_parsers, func, reducer);
-#endif
 
   m_watcherLookup.setFuture(fut);
 

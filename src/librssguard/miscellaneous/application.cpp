@@ -58,31 +58,19 @@
 #include "gui/webviewers/webengine/webengineviewer.h" // WebEngine-based web browsing.
 #include "network-web/webengine/networkurlinterceptor.h"
 
-#if QT_VERSION_MAJOR == 6
 #include <QWebEngineDownloadRequest>
-#else
-#include <QWebEngineDownloadItem>
-#endif
 
 #include <QWebEngineProfile>
 #include <QWebEngineSettings>
 #endif
 
 #if defined(Q_OS_WIN)
-#if QT_VERSION_MAJOR == 5
-#include <QtPlatformHeaders/QWindowsWindowFunctions>
-#else
 #include <QWindow>
 #include <QtGui/qpa/qplatformwindow_p.h>
-#endif
 #endif
 
 #if defined(Q_OS_WIN)
 #include <ShObjIdl.h>
-
-#if QT_VERSION_MAJOR == 5
-#include <QtWinExtras/QtWin>
-#endif
 #endif
 
 Application::Application(const QString& id, int& argc, char** argv, const QStringList& raw_cli_args)
@@ -90,11 +78,7 @@ Application::Application(const QString& id, int& argc, char** argv, const QStrin
 
 #if defined(NO_LITE) && defined(MEDIAPLAYER_LIBMPV_OPENGL)
   // HACK: Force rendering system to use OpenGL backend.
-#if QT_VERSION_MAJOR < 6
-  QQuickWindow::setSceneGraphBackend(QSGRendererInterface::GraphicsApi::OpenGL);
-#else
   QQuickWindow::setGraphicsApi(QSGRendererInterface::GraphicsApi::OpenGL);
-#endif
 #endif
 
   /*
@@ -741,13 +725,11 @@ void Application::showTrayIcon() {
         offerPolls();
 
 #if defined(Q_OS_WIN)
-#if QT_VERSION_MAJOR == 6
-        // NOTE: Fixes https://github.com/martinrotter/rssguard/issues/953 for Qt 6.
+        // NOTE: Fixes https://github.com/martinrotter/rssguard/issues/953
         using QWindowsWindow = QNativeInterface::Private::QWindowsWindow;
         if (auto w_w = qApp->mainForm()->windowHandle()->nativeInterface<QWindowsWindow>()) {
           w_w->setHasBorderInFullScreen(true);
         }
-#endif
 #endif
       });
   }
@@ -981,11 +963,7 @@ void Application::showMessagesNumber(int unread_messages, bool any_feed_has_new_
     if (any_count) {
       QImage overlay_icon = generateOverlayIcon(unread_messages);
 
-#if QT_VERSION_MAJOR == 5
-      HICON overlay_hicon = QtWin::toHICON(QPixmap::fromImage(overlay_icon));
-#else
       HICON overlay_hicon = overlay_icon.toHICON();
-#endif
 
       overlay_result =
         m_windowsTaskBar->SetOverlayIcon(reinterpret_cast<HWND>(m_mainForm->winId()), overlay_hicon, nullptr);
@@ -1073,11 +1051,7 @@ void Application::restart() {
 
 #if defined(NO_LITE)
 
-#if QT_VERSION_MAJOR == 6
 void Application::downloadRequested(QWebEngineDownloadRequest* download_item) {
-#else
-void Application::downloadRequested(QWebEngineDownloadItem* download_item) {
-#endif
   downloadManager()->download(download_item->url());
   download_item->cancel();
   download_item->deleteLater();
@@ -1164,23 +1138,13 @@ void Application::setupWorkHorsePool() {
     m_workHorsePool->setMaxThreadCount((std::min)(MAX_THREADPOOL_THREADS, 2 * ideal_th_count));
   }
 
-#if QT_VERSION >= 0x060200 // Qt >= 6.2.0
   // Avoid competing with interactive processes/threads by running the
   // worker pool at a very low priority
   m_workHorsePool->setThreadPriority(QThread::Priority::LowestPriority);
-#endif
 
   // NOTE: Do not expire threads so that their IDs are not reused.
   // This fixes cross-thread QSqlDatabase access.
   m_workHorsePool->setExpiryTimeout(-1);
-
-#if QT_VERSION_MAJOR == 5
-  // NOTE: Qt 5 sadly does not allow to specify custom thread pool for
-  // QtConcurrent::mapped() method, so we have to use global thread pool
-  // there.
-  QThreadPool::globalInstance()->setMaxThreadCount(m_workHorsePool->maxThreadCount());
-  QThreadPool::globalInstance()->setExpiryTimeout(m_workHorsePool->expiryTimeout());
-#endif
 }
 
 void Application::onAdBlockFailure() {
@@ -1210,11 +1174,7 @@ void Application::parseCmdArgumentsFromOtherInstance(const QString& message) {
 
   qDebugNN << LOGSEC_CORE << "Received" << QUOTE_W_SPACE(message) << "execution message.";
 
-#if QT_VERSION >= 0x050F00 // Qt >= 5.15.0
   QStringList messages = message.split(QSL(ARGUMENTS_LIST_SEPARATOR), Qt::SplitBehaviorFlags::SkipEmptyParts);
-#else
-  QStringList messages = message.split(QSL(ARGUMENTS_LIST_SEPARATOR), QString::SplitBehavior::SkipEmptyParts);
-#endif
 
   QCommandLineParser cmd_parser;
 

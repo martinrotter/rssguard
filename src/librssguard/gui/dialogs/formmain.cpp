@@ -39,16 +39,10 @@
 #include <QFileDialog>
 #include <QRect>
 #include <QScopedPointer>
+#include <QScreen>
 #include <QTimer>
 #include <QToolButton>
 #include <QWidgetAction>
-
-#if QT_VERSION >= 0x050E00 // Qt >= 5.14.0
-#include <QScreen>
-#else
-#include <QDesktopWidget>
-#endif
-
 #include <QWindow>
 
 FormMain::FormMain(QWidget* parent, Qt::WindowFlags f)
@@ -663,7 +657,6 @@ void FormMain::setupIcons() {
 }
 
 void FormMain::loadSize() {
-#if QT_VERSION >= 0x050E00 // Qt >= 5.14.0
   QScreen* scr = screen();
 
   if (scr == nullptr) {
@@ -672,9 +665,6 @@ void FormMain::loadSize() {
   }
 
   const QRect screen = scr->geometry();
-#else
-  const QRect screen = qApp->desktop()->screenGeometry();
-#endif
 
   const Settings* settings = qApp->settings();
 

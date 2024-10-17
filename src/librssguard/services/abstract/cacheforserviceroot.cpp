@@ -68,13 +68,8 @@ void CacheForServiceRoot::addMessageStatesToCache(const QList<Message>& ids_of_m
   // Store changes, they will be sent to server later.
   list_act.append(ids_of_messages);
 
-#if QT_VERSION >= 0x050E00 // Qt >= 5.14.0
   QSet<Message> set_act(list_act.begin(), list_act.end());
   QSet<Message> set_other(list_other.begin(), list_other.end());
-#else
-  QSet<Message> set_act = list_act.toSet();
-  QSet<Message> set_other = list_other.toSet();
-#endif
 
   // Now, we want to remove all IDS from list_other, which are contained in list.
   set_other -= set_act;
@@ -99,13 +94,8 @@ void CacheForServiceRoot::addMessageStatesToCache(const QStringList& ids_of_mess
   // Store changes, they will be sent to server later.
   list_act.append(ids_of_messages);
 
-#if QT_VERSION >= 0x050E00 // Qt >= 5.14.0
   QSet<QString> set_act(list_act.begin(), list_act.end());
   QSet<QString> set_other(list_other.begin(), list_other.end());
-#else
-  QSet<QString> set_act = list_act.toSet();
-  QSet<QString> set_other = list_other.toSet();
-#endif
 
   // Now, we want to remove all IDS from list_other, which are contained in list.
   set_other -= set_act;

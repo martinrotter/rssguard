@@ -1,4 +1,4 @@
-if(UPDATE_TRANSLATIONS AND BUILD_WITH_QT6)
+if(UPDATE_TRANSLATIONS)
   # Regenerate "en" .ts file.
   #
   # "en" .ts file is only used as "source" language
@@ -20,18 +20,8 @@ FILE(GLOB TS_FILES  ${CMAKE_CURRENT_SOURCE_DIR}/*.ts)
 
 set_source_files_properties(${TS_FILES} PROPERTIES OUTPUT_LOCATION "${CMAKE_CURRENT_SOURCE_DIR}")
 
-if(BUILD_WITH_QT6)
-  qt_add_lrelease(rssguard
-    TS_FILES ${TS_FILES}
-    QM_FILES_OUTPUT_VARIABLE QM_FILES
-    OPTIONS "-compress"
-  )
-else()
-  qt_add_translation(QM_FILES
-    ${TS_FILES}
-    OPTIONS "-compress"
-  )
-
-  add_custom_target(rssguard_lrelease DEPENDS ${QM_FILES})
-  add_dependencies(rssguard rssguard_lrelease)
-endif()
+qt_add_lrelease(rssguard
+  TS_FILES ${TS_FILES}
+  QM_FILES_OUTPUT_VARIABLE QM_FILES
+  OPTIONS "-compress"
+)

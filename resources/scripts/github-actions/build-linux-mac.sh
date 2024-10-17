@@ -4,6 +4,7 @@ set -e
 
 os="$1"
 webengine="$2"
+qt_major="$3"
 
 # Determine OS.
 if [[ "$os" == *"ubuntu"* ]]; then
@@ -31,35 +32,48 @@ fi
 
 echo "OS: $os; Not lite: $webengine"
 
+if [[ "$qt_major" == "6.3" ]]; then
+  QTVERSION="6.3.2"
+else
+  QTVERSION="6.7.3"
+fi
+
 # Install needed dependencies.
 if [ $is_linux = true ]; then
-  # Qt 5.
   QTTARGET="linux"
   QTOS="gcc_64"
-  QTARCH="gcc_64"
-  USE_QT6="OFF"
 
-  sudo add-apt-repository ppa:beineri/opt-qt-5.15.4-focal -y
+  if [[ "$qt_major" == "6.3" ]]; then
+    QTARCH="gcc_64"
+  else
+    QTARCH="linux_gcc_64"
+  fi
+
+  QTPATH="$(pwd)/Qt"
+  QTBIN="$QTPATH/$QTVERSION/$QTOS/bin"
+
   sudo apt-get update
+  sudo apt-get -qy install openssl libssl-dev libgl1-mesa-dev gstreamer1.0-alsa gstreamer1.0-nice gstreamer1.0-plugins-good gstreamer1.0-plugins-base gstreamer1.0-plugins-bad gstreamer1.0-plugins-ugly gstreamer1.0-qt6 gstreamer1.0-pulseaudio libmpv-dev libsqlite3-dev libcups2-dev appstream libfuse2
 
-  sudo apt-get -qy install qt515tools qt515base qt515webengine qt515svg qt515multimedia qt515imageformats appstream
-  sudo apt-get -qy install cmake ninja-build openssl libssl-dev libgl1-mesa-dev gstreamer1.0-alsa gstreamer1.0-nice gstreamer1.0-plugins-good gstreamer1.0-plugins-base gstreamer1.0-plugins-bad gstreamer1.0-plugins-ugly gstreamer1.0-qt5 gstreamer1.0-pulseaudio libmpv-dev
+  # Install "aqtinstall" from its master branch to have latest code.
+  sudo pip3 install --break-system-packages aqtinstall
 
-  # The script below performs some broken testing, which ends up tripping 'set -e'.
-  # So we temporarily ignore errors when sourcing the script, and re-enable them afterward.
-  set +e
-  # shellcheck source=/dev/null
-  source /opt/qt515/bin/qt515-env.sh
-  set -e
+  echo "Qt bin directory is: $QTBIN"
+  echo "Qt will be installed to: $QTPATH"
+
+  # Install Qt.
+  aqt -c 'aqt/settings.ini' install-qt -O "$QTPATH" "$QTTARGET" "desktop" "$QTVERSION" "$QTARCH" -m "qtwebengine" "qtimageformats" "qtwebchannel" "qtmultimedia" "qt5compat" "qtpositioning" "qtserialport"
+  aqt -c 'aqt/settings.ini' install-tool -O "$QTPATH" "$QTTARGET" "desktop" "tools_cmake"
+  aqt -c 'aqt/settings.ini' install-tool -O "$QTPATH" "$QTTARGET" "desktop" "tools_ninja"
+
+  export QT_PLUGIN_PATH="$QTPATH/$QTVERSION/$QTOS/plugins"
+  export PATH="$QTBIN:$QTPATH/Tools/CMake/CMake/bin:$QTPATH/Tools/Ninja:$PATH"
 else
-  # Qt 6.
   QTTARGET="mac"
   QTOS="macos"
   QTARCH="clang_64"
-  USE_QT6="ON"
 
   QTPATH="$(pwd)/Qt"
-  QTVERSION="6.7.3"
   QTBIN="$QTPATH/$QTVERSION/$QTOS/bin"
 
   # Install "aqtinstall" from its master branch to have latest code.
@@ -86,7 +100,7 @@ git_revision=$(git rev-parse --short HEAD)
 mkdir rssguard-build
 cd rssguard-build
 
-cmake .. --warn-uninitialized -G Ninja -DCMAKE_OSX_ARCHITECTURES="x86_64;arm64" -DCMAKE_OSX_DEPLOYMENT_TARGET="10.15" -DFORCE_BUNDLE_ICONS="ON" -DCMAKE_BUILD_TYPE="MinSizeRel" -DCMAKE_VERBOSE_MAKEFILE="ON" -DCMAKE_INSTALL_PREFIX="$prefix" -DREVISION_FROM_GIT="ON" -DBUILD_WITH_QT6="$USE_QT6" -DENABLE_COMPRESSED_SITEMAP="ON" -DENABLE_MEDIAPLAYER_LIBMPV="$libmpv" -DENABLE_MEDIAPLAYER_QTMULTIMEDIA="$qtmultimedia" -DNO_LITE="$webengine" -DFEEDLY_CLIENT_ID="$FEEDLY_CLIENT_ID" -DFEEDLY_CLIENT_SECRET="$FEEDLY_CLIENT_SECRET" -DGMAIL_CLIENT_ID="$GMAIL_CLIENT_ID" -DGMAIL_CLIENT_SECRET="$GMAIL_CLIENT_SECRET"
+cmake .. --warn-uninitialized -G Ninja -DCMAKE_OSX_ARCHITECTURES="x86_64;arm64" -DCMAKE_OSX_DEPLOYMENT_TARGET="10.15" -DFORCE_BUNDLE_ICONS="ON" -DCMAKE_BUILD_TYPE="MinSizeRel" -DCMAKE_VERBOSE_MAKEFILE="ON" -DCMAKE_INSTALL_PREFIX="$prefix" -DREVISION_FROM_GIT="ON" -DENABLE_COMPRESSED_SITEMAP="ON" -DENABLE_MEDIAPLAYER_LIBMPV="$libmpv" -DENABLE_MEDIAPLAYER_QTMULTIMEDIA="$qtmultimedia" -DNO_LITE="$webengine" -DFEEDLY_CLIENT_ID="$FEEDLY_CLIENT_ID" -DFEEDLY_CLIENT_SECRET="$FEEDLY_CLIENT_SECRET" -DGMAIL_CLIENT_ID="$GMAIL_CLIENT_ID" -DGMAIL_CLIENT_SECRET="$GMAIL_CLIENT_SECRET"
 cmake --build .
 cmake --install . --prefix "$prefix"
 

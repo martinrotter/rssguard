@@ -400,22 +400,12 @@ void MessagesToolBar::activateAction(const QString& action_name, QWidgetAction* 
 
 QStringList MessagesToolBar::defaultActions() const {
   return QString(GUI::MessagesToolbarDefaultButtonsDef)
-    .split(QL1C(','),
-#if QT_VERSION >= 0x050F00 // Qt >= 5.15.0
-           Qt::SplitBehaviorFlags::SkipEmptyParts);
-#else
-           QString::SplitBehavior::SkipEmptyParts);
-#endif
+    .split(QL1C(','), Qt::SplitBehaviorFlags::SkipEmptyParts);
 }
 
 QStringList MessagesToolBar::savedActions() const {
   return qApp->settings()
     ->value(GROUP(GUI), SETTING(GUI::MessagesToolbarDefaultButtons))
     .toString()
-    .split(QL1C(','),
-#if QT_VERSION >= 0x050F00 // Qt >= 5.15.0
-           Qt::SplitBehaviorFlags::SkipEmptyParts);
-#else
-           QString::SplitBehavior::SkipEmptyParts);
-#endif
+    .split(QL1C(','), Qt::SplitBehaviorFlags::SkipEmptyParts);
 }
