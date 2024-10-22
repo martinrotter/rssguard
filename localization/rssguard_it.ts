@@ -2122,12 +2122,12 @@ QtWebEngine cache folder -&gt; &quot;%7&quot;</translation>
     <message>
       <location filename="../src/librssguard-standard/src/gui/formdiscoverfeeds.ui" line="128"/>
       <source>Select &amp;all</source>
-      <translation type="unfinished">Select &amp;all</translation>
+      <translation>Selezion&amp;a tutti</translation>
     </message>
     <message>
       <location filename="../src/librssguard-standard/src/gui/formdiscoverfeeds.ui" line="135"/>
       <source>&amp;Unselect all</source>
-      <translation type="unfinished">&amp;Unselect all</translation>
+      <translation>Deseleziona tutti</translation>
     </message>
     <message>
       <location filename="../src/librssguard-standard/src/gui/formdiscoverfeeds.ui" line="190"/>
@@ -2316,7 +2316,7 @@ QtWebEngine cache folder -&gt; &quot;%7&quot;</translation>
       <location filename="../src/librssguard/services/abstract/gui/formfeeddetails.ui" line="136"/>
       <location filename="../../build-rssguard-Desktop_Qt_6_7_0_MSVC2017_64bit-Debug/src/librssguard/ui_formfeeddetails.h" line="218"/>
       <source>Right-to-left layout</source>
-      <translation type="unfinished">Right-to-left layout</translation>
+      <translation>Layout da destra a sinistra</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/abstract/gui/formfeeddetails.ui" line="108"/>
@@ -2358,7 +2358,7 @@ QtWebEngine cache folder -&gt; &quot;%7&quot;</translation>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formlog.cpp" line="16"/>
       <source>Application log</source>
-      <translation type="unfinished">Application log</translation>
+      <translation>Log applicazione</translation>
     </message>
   </context>
   <context>
@@ -2386,7 +2386,7 @@ QtWebEngine cache folder -&gt; &quot;%7&quot;</translation>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.cpp" line="86"/>
       <source>Open &amp;main menu</source>
-      <translation type="unfinished">Open &amp;main menu</translation>
+      <translation>Apri &amp;menu principale</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="53"/>
@@ -2428,7 +2428,7 @@ QtWebEngine cache folder -&gt; &quot;%7&quot;</translation>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="109"/>
       <location filename="../../build-rssguard-Desktop_Qt_6_7_0_MSVC2017_64bit-Debug/src/librssguard/ui_formmain.h" line="816"/>
       <source>&amp;Add item</source>
-      <translation type="unfinished">&amp;Add item</translation>
+      <translation>&amp;Aggiungi elemento</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="114"/>
@@ -2440,7 +2440,7 @@ QtWebEngine cache folder -&gt; &quot;%7&quot;</translation>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="159"/>
       <location filename="../../build-rssguard-Desktop_Qt_6_7_0_MSVC2017_64bit-Debug/src/librssguard/ui_formmain.h" line="818"/>
       <source>Art&amp;icles</source>
-      <translation type="unfinished">Art&amp;icles</translation>
+      <translation>Art&amp;icoli</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="185"/>
@@ -2536,25 +2536,25 @@ QtWebEngine cache folder -&gt; &quot;%7&quot;</translation>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="315"/>
       <location filename="../../build-rssguard-Desktop_Qt_6_7_0_MSVC2017_64bit-Debug/src/librssguard/ui_formmain.h" line="677"/>
       <source>Mark articles &amp;read</source>
-      <translation type="unfinished">Mark articles &amp;read</translation>
+      <translation>Segna a&amp;rticoli come letti</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="318"/>
       <location filename="../../build-rssguard-Desktop_Qt_6_7_0_MSVC2017_64bit-Debug/src/librssguard/ui_formmain.h" line="679"/>
       <source>Mark selected articles read</source>
-      <translation type="unfinished">Mark selected articles read</translation>
+      <translation>Segna gli articoli selezionati come letti</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="326"/>
       <location filename="../../build-rssguard-Desktop_Qt_6_7_0_MSVC2017_64bit-Debug/src/librssguard/ui_formmain.h" line="681"/>
       <source>Mark articles &amp;unread</source>
-      <translation type="unfinished">Mark articles &amp;unread</translation>
+      <translation>Segna articoli come non letti</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="329"/>
       <location filename="../../build-rssguard-Desktop_Qt_6_7_0_MSVC2017_64bit-Debug/src/librssguard/ui_formmain.h" line="683"/>
       <source>Mark selected articles unread</source>
-      <translation type="unfinished">Mark selected articles unread</translation>
+      <translation>Segna gli articoli selezionati come non letti</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="337"/>
@@ -2782,7 +2782,7 @@ QtWebEngine cache folder -&gt; &quot;%7&quot;</translation>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="574"/>
       <location filename="../../build-rssguard-Desktop_Qt_6_7_0_MSVC2017_64bit-Debug/src/librssguard/ui_formmain.h" line="748"/>
       <source>&amp;Donate...</source>
-      <translation type="unfinished">&amp;Donate...</translation>
+      <translation>&amp;Dona...</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="582"/>
@@ -2915,7 +2915,7 @@ QtWebEngine cache folder -&gt; &quot;%7&quot;</translation>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="756"/>
       <location filename="../../build-rssguard-Desktop_Qt_6_7_0_MSVC2017_64bit-Debug/src/librssguard/ui_formmain.h" line="773"/>
       <source>New browser tab</source>
-      <translation type="unfinished">New browser tab</translation>
+      <translation>Nuova scheda del browser</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="764"/>
