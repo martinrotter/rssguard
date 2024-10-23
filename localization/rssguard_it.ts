@@ -2122,12 +2122,12 @@ QtWebEngine cache folder -&gt; &quot;%7&quot;</translation>
     <message>
       <location filename="../src/librssguard-standard/src/gui/formdiscoverfeeds.ui" line="128"/>
       <source>Select &amp;all</source>
-      <translation type="unfinished">Select &amp;all</translation>
+      <translation>Selezion&amp;a tutti</translation>
     </message>
     <message>
       <location filename="../src/librssguard-standard/src/gui/formdiscoverfeeds.ui" line="135"/>
       <source>&amp;Unselect all</source>
-      <translation type="unfinished">&amp;Unselect all</translation>
+      <translation>Deseleziona tutti</translation>
     </message>
     <message>
       <location filename="../src/librssguard-standard/src/gui/formdiscoverfeeds.ui" line="190"/>
@@ -2316,7 +2316,7 @@ QtWebEngine cache folder -&gt; &quot;%7&quot;</translation>
       <location filename="../src/librssguard/services/abstract/gui/formfeeddetails.ui" line="136"/>
       <location filename="../../build-rssguard-Desktop_Qt_6_7_0_MSVC2017_64bit-Debug/src/librssguard/ui_formfeeddetails.h" line="218"/>
       <source>Right-to-left layout</source>
-      <translation type="unfinished">Right-to-left layout</translation>
+      <translation>Layout da destra a sinistra</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/abstract/gui/formfeeddetails.ui" line="108"/>
@@ -2358,7 +2358,7 @@ QtWebEngine cache folder -&gt; &quot;%7&quot;</translation>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formlog.cpp" line="16"/>
       <source>Application log</source>
-      <translation type="unfinished">Application log</translation>
+      <translation>Log applicazione</translation>
     </message>
   </context>
   <context>
@@ -2386,7 +2386,7 @@ QtWebEngine cache folder -&gt; &quot;%7&quot;</translation>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.cpp" line="86"/>
       <source>Open &amp;main menu</source>
-      <translation type="unfinished">Open &amp;main menu</translation>
+      <translation>Apri &amp;menu principale</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="53"/>
@@ -2428,7 +2428,7 @@ QtWebEngine cache folder -&gt; &quot;%7&quot;</translation>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="109"/>
       <location filename="../../build-rssguard-Desktop_Qt_6_7_0_MSVC2017_64bit-Debug/src/librssguard/ui_formmain.h" line="816"/>
       <source>&amp;Add item</source>
-      <translation type="unfinished">&amp;Add item</translation>
+      <translation>&amp;Aggiungi elemento</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="114"/>
@@ -2440,7 +2440,7 @@ QtWebEngine cache folder -&gt; &quot;%7&quot;</translation>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="159"/>
       <location filename="../../build-rssguard-Desktop_Qt_6_7_0_MSVC2017_64bit-Debug/src/librssguard/ui_formmain.h" line="818"/>
       <source>Art&amp;icles</source>
-      <translation type="unfinished">Art&amp;icles</translation>
+      <translation>Art&amp;icoli</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="185"/>
@@ -2536,25 +2536,25 @@ QtWebEngine cache folder -&gt; &quot;%7&quot;</translation>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="315"/>
       <location filename="../../build-rssguard-Desktop_Qt_6_7_0_MSVC2017_64bit-Debug/src/librssguard/ui_formmain.h" line="677"/>
       <source>Mark articles &amp;read</source>
-      <translation type="unfinished">Mark articles &amp;read</translation>
+      <translation>Segna a&amp;rticoli come letti</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="318"/>
       <location filename="../../build-rssguard-Desktop_Qt_6_7_0_MSVC2017_64bit-Debug/src/librssguard/ui_formmain.h" line="679"/>
       <source>Mark selected articles read</source>
-      <translation type="unfinished">Mark selected articles read</translation>
+      <translation>Segna gli articoli selezionati come letti</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="326"/>
       <location filename="../../build-rssguard-Desktop_Qt_6_7_0_MSVC2017_64bit-Debug/src/librssguard/ui_formmain.h" line="681"/>
       <source>Mark articles &amp;unread</source>
-      <translation type="unfinished">Mark articles &amp;unread</translation>
+      <translation>Segna articoli come non letti</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="329"/>
       <location filename="../../build-rssguard-Desktop_Qt_6_7_0_MSVC2017_64bit-Debug/src/librssguard/ui_formmain.h" line="683"/>
       <source>Mark selected articles unread</source>
-      <translation type="unfinished">Mark selected articles unread</translation>
+      <translation>Segna gli articoli selezionati come non letti</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="337"/>
@@ -2782,7 +2782,7 @@ QtWebEngine cache folder -&gt; &quot;%7&quot;</translation>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="574"/>
       <location filename="../../build-rssguard-Desktop_Qt_6_7_0_MSVC2017_64bit-Debug/src/librssguard/ui_formmain.h" line="748"/>
       <source>&amp;Donate...</source>
-      <translation type="unfinished">&amp;Donate...</translation>
+      <translation>&amp;Dona...</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="582"/>
@@ -2915,7 +2915,7 @@ QtWebEngine cache folder -&gt; &quot;%7&quot;</translation>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="756"/>
       <location filename="../../build-rssguard-Desktop_Qt_6_7_0_MSVC2017_64bit-Debug/src/librssguard/ui_formmain.h" line="773"/>
       <source>New browser tab</source>
-      <translation type="unfinished">New browser tab</translation>
+      <translation>Nuova scheda del browser</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="764"/>
@@ -2957,7 +2957,7 @@ QtWebEngine cache folder -&gt; &quot;%7&quot;</translation>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="797"/>
       <location filename="../../build-rssguard-Desktop_Qt_6_7_0_MSVC2017_64bit-Debug/src/librssguard/ui_formmain.h" line="780"/>
       <source>Article &amp;filters</source>
-      <translation type="unfinished">Article &amp;filters</translation>
+      <translation>&amp;Filtri Articolo</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="805"/>
@@ -2999,7 +2999,7 @@ QtWebEngine cache folder -&gt; &quot;%7&quot;</translation>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="847"/>
       <location filename="../../build-rssguard-Desktop_Qt_6_7_0_MSVC2017_64bit-Debug/src/librssguard/ui_formmain.h" line="787"/>
       <source>Close &amp;current tab</source>
-      <translation type="unfinished">Close &amp;current tab</translation>
+      <translation>Chiudi scheda &amp;corrente</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="852"/>
@@ -3017,7 +3017,7 @@ QtWebEngine cache folder -&gt; &quot;%7&quot;</translation>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="865"/>
       <location filename="../../build-rssguard-Desktop_Qt_6_7_0_MSVC2017_64bit-Debug/src/librssguard/ui_formmain.h" line="790"/>
       <source>&amp;Sort alphabetically</source>
-      <translation type="unfinished">&amp;Sort alphabetically</translation>
+      <translation>Ordina alfabeticamente</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="870"/>
@@ -3584,7 +3584,7 @@ Dovrai riavviare manualmente.</translation>
     <message>
       <location filename="../src/librssguard-standard/src/gui/formstandardfeeddetails.cpp" line="33"/>
       <source>Experimental</source>
-      <translation type="unfinished">Experimental</translation>
+      <translation>Sperimentale</translation>
     </message>
   </context>
   <context>
@@ -3730,7 +3730,7 @@ Dovrai riavviare manualmente.</translation>
     <message>
       <location filename="../src/librssguard-standard/src/gui/formstandardimportexport.cpp" line="84"/>
       <source>&amp;Import from file</source>
-      <translation type="unfinished">&amp;Import from file</translation>
+      <translation>&amp;Importa da file</translation>
     </message>
     <message>
       <location filename="../src/librssguard-standard/src/gui/formstandardimportexport.ui" line="38"/>
@@ -4106,7 +4106,7 @@ Ora lo puoi installare.</translation>
     <message>
       <location filename="../src/librssguard-gmail/src/gui/gmailaccountdetails.ui" line="39"/>
       <source>Client ID</source>
-      <translation type="unfinished">Client ID</translation>
+      <translation>ID Client</translation>
     </message>
     <message>
       <location filename="../src/librssguard-gmail/src/gui/gmailaccountdetails.ui" line="52"/>
@@ -4204,12 +4204,12 @@ Ora lo puoi installare.</translation>
     <message>
       <location filename="../src/librssguard-gmail/src/gmailserviceroot.cpp" line="53"/>
       <source>Drafts</source>
-      <translation type="unfinished">Drafts</translation>
+      <translation>Bozze</translation>
     </message>
     <message>
       <location filename="../src/librssguard-gmail/src/gmailserviceroot.cpp" line="57"/>
       <source>Spam</source>
-      <translation type="unfinished">Spam</translation>
+      <translation>Spam</translation>
     </message>
     <message>
       <location filename="../src/librssguard-gmail/src/gmailserviceroot.cpp" line="135"/>
@@ -5121,7 +5121,7 @@ Login tokens expiration: %2</translation>
       <location filename="../src/librssguard/gui/mediaplayer/mediaplayer.ui" line="137"/>
       <location filename="../../build-rssguard-Desktop_Qt_6_7_0_MSVC2017_64bit-Debug/src/librssguard/ui_mediaplayer.h" line="163"/>
       <source>Volume</source>
-      <translation type="unfinished">Volume</translation>
+      <translation>Volume</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/mediaplayer/mediaplayer.ui" line="156"/>
@@ -6512,7 +6512,7 @@ List of supported readers:</translation>
     <message>
       <location filename="../src/librssguard/gui/mediaplayer/qtmultimedia/qtmultimediabackend.cpp" line="106"/>
       <source>Unknown</source>
-      <translation type="unfinished">Unknown</translation>
+      <translation>Sconosciuto</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/mediaplayer/qtmultimedia/qtmultimediabackend.cpp" line="113"/>
@@ -6655,7 +6655,7 @@ List of supported readers:</translation>
     <message>
       <location filename="../src/librssguard-reddit/src/gui/redditaccountdetails.ui" line="39"/>
       <source>Client ID</source>
-      <translation type="unfinished">Client ID</translation>
+      <translation>ID Client</translation>
     </message>
     <message>
       <location filename="../src/librssguard-reddit/src/gui/redditaccountdetails.ui" line="52"/>
@@ -8266,42 +8266,42 @@ Also, relaunch &quot;Settings&quot; dialog after you install Node.js.</translati
       <location filename="../src/librssguard/gui/settings/settingsnotifications.ui" line="53"/>
       <location filename="../../build-rssguard-Desktop_Qt_6_7_0_MSVC2017_64bit-Debug/src/librssguard/ui_settingsnotifications.h" line="196"/>
       <source>Custom notifications</source>
-      <translation type="unfinished">Custom notifications</translation>
+      <translation>Notifiche personalizzate</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsnotifications.ui" line="69"/>
       <location filename="../../build-rssguard-Desktop_Qt_6_7_0_MSVC2017_64bit-Debug/src/librssguard/ui_settingsnotifications.h" line="197"/>
       <source>Position</source>
-      <translation type="unfinished">Position</translation>
+      <translation>Posizione</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsnotifications.ui" line="82"/>
       <location filename="../../build-rssguard-Desktop_Qt_6_7_0_MSVC2017_64bit-Debug/src/librssguard/ui_settingsnotifications.h" line="198"/>
       <source>Width</source>
-      <translation type="unfinished">Width</translation>
+      <translation>Larghezza</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsnotifications.ui" line="105"/>
       <location filename="../../build-rssguard-Desktop_Qt_6_7_0_MSVC2017_64bit-Debug/src/librssguard/ui_settingsnotifications.h" line="199"/>
       <source>Margins</source>
-      <translation type="unfinished">Margins</translation>
+      <translation>Margini</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsnotifications.ui" line="125"/>
       <location filename="../../build-rssguard-Desktop_Qt_6_7_0_MSVC2017_64bit-Debug/src/librssguard/ui_settingsnotifications.h" line="200"/>
       <source>Screen</source>
-      <translation type="unfinished">Screen</translation>
+      <translation>Schermo</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsnotifications.ui" line="159"/>
       <location filename="../../build-rssguard-Desktop_Qt_6_7_0_MSVC2017_64bit-Debug/src/librssguard/ui_settingsnotifications.h" line="202"/>
       <source>Opacity</source>
-      <translation type="unfinished">Opacity</translation>
+      <translation>Opacità</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsnotifications.h" line="31"/>
       <source>Notifications</source>
-      <translation type="unfinished">Notifications</translation>
+      <translation>Notifiche</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsnotifications.cpp" line="19"/>
@@ -8372,7 +8372,7 @@ Also, relaunch &quot;Settings&quot; dialog after you install Node.js.</translati
       <location filename="../src/librssguard/gui/notifications/singlenotificationeditor.ui" line="51"/>
       <location filename="../../build-rssguard-Desktop_Qt_6_7_0_MSVC2017_64bit-Debug/src/librssguard/ui_singlenotificationeditor.h" line="122"/>
       <source>Sound</source>
-      <translation type="unfinished">Sound</translation>
+      <translation>Suono</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/notifications/singlenotificationeditor.ui" line="63"/>
@@ -8396,7 +8396,7 @@ Also, relaunch &quot;Settings&quot; dialog after you install Node.js.</translati
       <location filename="../src/librssguard/gui/notifications/singlenotificationeditor.ui" line="96"/>
       <location filename="../../build-rssguard-Desktop_Qt_6_7_0_MSVC2017_64bit-Debug/src/librssguard/ui_singlenotificationeditor.h" line="126"/>
       <source>Volume</source>
-      <translation type="unfinished">Volume</translation>
+      <translation>Volume</translation>
     </message>
   </context>
   <context>
@@ -8568,7 +8568,7 @@ Also, relaunch &quot;Settings&quot; dialog after you install Node.js.</translati
     <message>
       <location filename="../src/librssguard-standard/src/standardfeed.cpp" line="223"/>
       <source>Unknown</source>
-      <translation type="unfinished">Unknown</translation>
+      <translation>Sconosciuto</translation>
     </message>
     <message>
       <location filename="../src/librssguard-standard/src/standardfeed.cpp" line="256"/>
