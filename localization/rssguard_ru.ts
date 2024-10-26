@@ -768,7 +768,7 @@ Click here to open parent directory.</source>
     <message>
       <location filename="../src/librssguard/network-web/downloadmanager.cpp" line="450"/>
       <source>Open folder</source>
-      <translation>Развернуть категорию</translation>
+      <translation>Развернуть папку</translation>
     </message>
     <message>
       <location filename="../src/librssguard/network-web/downloaditem.ui" line="54"/>
@@ -932,7 +932,7 @@ Click here to open parent directory.</source>
     <message>
       <location filename="../src/librssguard/services/abstract/feed.cpp" line="263"/>
       <source>uses global settings, but global auto-fetching of articles is disabled</source>
-      <translation>использует глобальные настройки, но глобальная автоподборка статей отключена</translation>
+      <translation>использует глобальные настройки, но глобальная автоизвлечение статей отключено</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/abstract/feed.cpp" line="287"/>
@@ -1458,22 +1458,22 @@ ID элемента: %5</translation>
     <message>
       <location filename="../src/librssguard/gui/feedsview.cpp" line="643"/>
       <source>Context menu for recycle bins</source>
-      <translation>Контекстное меню для корзин</translation>
+      <translation>Контекстное меню корзин</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/feedsview.cpp" line="664"/>
       <source>Context menu for accounts</source>
-      <translation>Контекстное меню для аккаунтов</translation>
+      <translation>Контекстное меню аккаунтов</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/feedsview.cpp" line="1058"/>
       <source>Context menu for label</source>
-      <translation>Контекстное меню для меток</translation>
+      <translation>Контекстное меню меток</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/feedsview.cpp" line="1006"/>
       <source>Context menu for important articles</source>
-      <translation>Контекстное меню для важных статей</translation>
+      <translation>Контекстное меню важных статей</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/feedsview.cpp" line="169"/>
