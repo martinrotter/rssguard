@@ -4,6 +4,7 @@
 
 #include "3rd-party/boolinq/boolinq.h"
 #include "definitions/definitions.h"
+#include "services/abstract/feed.h"
 
 AccountCheckModel::AccountCheckModel(QObject* parent)
   : QAbstractItemModel(parent), m_rootItem(nullptr), m_recursiveChange(false) {}
@@ -172,7 +173,7 @@ QVariant AccountCheckModel::data(const QModelIndex& index, int role) const {
       return m_checkStates.value(item);
     }
     else {
-      return static_cast<int>(Qt::Unchecked);
+      return static_cast<int>(Qt::CheckState::Unchecked);
     }
   }
   else if (role == Qt::ItemDataRole::DecorationRole) {
@@ -193,9 +194,22 @@ QVariant AccountCheckModel::data(const QModelIndex& index, int role) const {
         return item->title();
     }
   }
-  else {
-    return QVariant();
+  else if (role == Qt::ItemDataRole::ToolTipRole) {
+    if (item->kind() == RootItem::Kind::Feed) {
+      auto desc = item->description();
+      auto url = item->toFeed()->source();
+
+      QString txt = url;
+
+      if (!desc.isEmpty()) {
+        txt += QSL("\n\n%1").arg(desc);
+      }
+
+      return txt;
+    }
   }
+
+  return QVariant();
 }
 
 bool AccountCheckModel::setData(const QModelIndex& index, const QVariant& value, int role) {
