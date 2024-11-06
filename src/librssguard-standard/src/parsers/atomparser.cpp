@@ -219,6 +219,12 @@ QList<StandardFeed*> AtomParser::discoverFeeds(ServiceRoot* root, const QUrl& ur
     QString youtube_channel_id =
       QRegularExpression(QSL("\"externalChannelId\": ?\"([^\"]+)\"")).match(direct_html_data).captured(1);
 
+    if (youtube_channel_id.isEmpty()) {
+      // Try to get channel ID differently.
+      youtube_channel_id =
+        QRegularExpression(QSL("{\"key\":\"browse_id\",\"value\":\"([^\"]+)\"}")).match(direct_html_data).captured(1);
+    }
+
     if (!youtube_channel_id.isEmpty()) {
       my_url = QSL("https://www.youtube.com/feeds/videos.xml?channel_id=%1").arg(youtube_channel_id);
       res = NetworkFactory::performNetworkOperation(my_url,
