@@ -45,6 +45,7 @@ QList<StandardFeed*> AtomParser::discoverFeeds(ServiceRoot* root, const QUrl& ur
   //    https://github.com/:owner/:repo/commits.atom
   //    https://github.com/:user/:repo/tags.atom
   // 6. If URL is Youtube, find channel ID.
+  // 7. If URL is reddit, append ".rss".
 
   // Download URL.
   int timeout = qApp->settings()->value(GROUP(Feeds), SETTING(Feeds::UpdateTimeout)).toInt();
@@ -248,6 +249,35 @@ QList<StandardFeed*> AtomParser::discoverFeeds(ServiceRoot* root, const QUrl& ur
         catch (...) {
           qDebugNN << LOGSEC_CORE << QUOTE_W_SPACE(my_url) << "is not a direct feed file.";
         }
+      }
+    }
+  }
+
+  // 7.
+  my_url = url.toString(QUrl::UrlFormattingOption::StripTrailingSlash);
+
+  if (my_url.contains(QSL("reddit.com")) && !my_url.endsWith(QSL(".rss"))) {
+    my_url += QSL(".rss");
+    res = NetworkFactory::performNetworkOperation(my_url,
+                                                  timeout,
+                                                  {},
+                                                  data,
+                                                  QNetworkAccessManager::Operation::GetOperation,
+                                                  {},
+                                                  {},
+                                                  {},
+                                                  {},
+                                                  root->networkProxy());
+
+    if (res.m_networkError == QNetworkReply::NetworkError::NoError) {
+      try {
+        auto guessed_feed = guessFeed(data, res.m_contentType);
+
+        guessed_feed.first->setSource(my_url);
+        feeds.append(guessed_feed.first);
+      }
+      catch (...) {
+        qDebugNN << LOGSEC_CORE << QUOTE_W_SPACE(my_url) << "is not a direct feed file.";
       }
     }
   }
