@@ -123,6 +123,7 @@
     <addaction name="m_actionUpdateSelectedItems"/>
     <addaction name="m_actionUpdateSelectedItemsWithCustomTimers"/>
     <addaction name="m_actionStopRunningItemsUpdate"/>
+    <addaction name="m_actionPauseFeedFetching"/>
     <addaction name="separator"/>
     <addaction name="m_menuAddItem"/>
     <addaction name="m_actionEditSelectedItem"/>
@@ -233,7 +234,7 @@
     <string notr="true">Ctrl+Q</string>
    </property>
    <property name="menuRole">
-    <enum>QAction::QuitRole</enum>
+    <enum>QAction::MenuRole::QuitRole</enum>
    </property>
   </action>
   <action name="m_actionSettings">
@@ -258,7 +259,7 @@
     <string notr="true"/>
    </property>
    <property name="menuRole">
-    <enum>QAction::AboutRole</enum>
+    <enum>QAction::MenuRole::AboutRole</enum>
    </property>
   </action>
   <action name="m_actionFullscreen">
@@ -949,6 +950,14 @@
   <action name="m_actionPlaySelectedArticlesInMediaPlayer">
    <property name="text">
     <string>Play in &amp;media player</string>
+   </property>
+  </action>
+  <action name="m_actionPauseFeedFetching">
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
+   <property name="text">
+    <string>&amp;Pause automatic feed fetching</string>
    </property>
   </action>
  </widget>

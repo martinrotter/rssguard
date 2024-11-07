@@ -98,6 +98,9 @@ DVALUE(char*) Feeds::CountFormatDef = "(%unread)";
 DKEY Feeds::EnableTooltipsFeedsMessages = "show_tooltips";
 DVALUE(bool) Feeds::EnableTooltipsFeedsMessagesDef = true;
 
+DKEY Feeds::PauseFeedFetching = "pause_feed_fetching";
+DVALUE(bool) Feeds::PauseFeedFetchingDef = false;
+
 DKEY Feeds::AutoUpdateInterval = "auto_update_interval";
 DVALUE(int) Feeds::AutoUpdateIntervalDef = DEFAULT_AUTO_UPDATE_INTERVAL;
 
@@ -290,8 +293,8 @@ DVALUE(int) GUI::HeightRowFeedsDef = -1;
 
 DKEY GUI::FeedsToolbarActions = "feeds_toolbar";
 DVALUE(char*)
-GUI::FeedsToolbarActionsDef =
-  "m_actionUpdateAllItems,m_actionStopRunningItemsUpdate,m_actionMarkAllItemsRead,spacer,search";
+GUI::FeedsToolbarActionsDef = "m_actionUpdateAllItems,m_actionStopRunningItemsUpdate,m_actionPauseFeedFetching,m_"
+                              "actionMarkAllItemsRead,spacer,search";
 
 DKEY GUI::StatusbarActions = "status_bar";
 DVALUE(char*)

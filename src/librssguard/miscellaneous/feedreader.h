@@ -35,6 +35,8 @@ class RSSGUARD_DLLSPEC FeedReader : public QObject {
     FeedsProxyModel* feedsProxyModel() const;
     MessagesProxyModel* messagesProxyModel() const;
 
+    void warnAboutPausedFetching() const;
+
     // Update feeds in extra thread.
     void updateFeeds(const QList<Feed*>& feeds, bool update_switched_off_too = false);
 
@@ -66,6 +68,7 @@ class RSSGUARD_DLLSPEC FeedReader : public QObject {
     void updateAllFeeds();
     void updateManuallyIntervaledFeeds();
     void stopRunningFeedUpdate();
+    void pauseUnpaseFeedFetching(bool pause);
     void quit();
 
   private slots:
@@ -97,6 +100,7 @@ class RSSGUARD_DLLSPEC FeedReader : public QObject {
     QDateTime m_lastAutoUpdate;
     QThread* m_feedDownloaderThread;
     FeedDownloader* m_feedDownloader;
+    bool m_feedFetchingPaused;
 };
 
 #endif // FEEDREADER_H

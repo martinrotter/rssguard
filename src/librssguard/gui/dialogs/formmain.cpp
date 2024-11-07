@@ -53,8 +53,7 @@
 
 FormMain::FormMain(QWidget* parent, Qt::WindowFlags f)
   : QMainWindow(parent, f), m_ui(new Ui::FormMain), m_trayMenu(nullptr), m_statusBar(nullptr) {
-  qDebugNN << LOGSEC_GUI
-           << "Creating main application form in thread:" << QUOTE_W_SPACE_DOT(getThreadID());
+  qDebugNN << LOGSEC_GUI << "Creating main application form in thread:" << QUOTE_W_SPACE_DOT(getThreadID());
   // setAttribute(Qt::WA_WindowPropagation, true);
   m_ui->setupUi(this);
   qApp->setMainForm(this);
@@ -190,6 +189,7 @@ QList<QAction*> FormMain::allActions() const {
   actions << m_ui->m_actionPlaySelectedArticlesInMediaPlayer;
   actions << m_ui->m_actionOpenSelectedMessagesInternallyNoTab;
   actions << m_ui->m_actionAlternateColorsInLists;
+  actions << m_ui->m_actionPauseFeedFetching;
   actions << m_ui->m_actionMessagePreviewEnabled;
   actions << m_ui->m_actionMarkAllItemsRead;
   actions << m_ui->m_actionMarkSelectedItemsAsRead;
@@ -598,6 +598,8 @@ void FormMain::setupIcons() {
   // Feeds/messages.
   m_ui->m_menuAddItem->setIcon(icon_theme_factory->fromTheme(QSL("list-add")));
   m_ui->m_actionStopRunningItemsUpdate->setIcon(icon_theme_factory->fromTheme(QSL("process-stop")));
+  m_ui->m_actionPauseFeedFetching->setIcon(icon_theme_factory->fromTheme(QSL("media-playback-pause"),
+                                                                         QSL("player_pause")));
   m_ui->m_actionUpdateAllItems->setIcon(icon_theme_factory->fromTheme(QSL("download"), QSL("browser-download")));
   m_ui->m_actionUpdateSelectedItems->setIcon(icon_theme_factory->fromTheme(QSL("download"), QSL("browser-download")));
   m_ui->m_actionUpdateSelectedItemsWithCustomTimers->setIcon(icon_theme_factory->fromTheme(QSL("download"),
@@ -711,7 +713,7 @@ void FormMain::loadSize() {
     ->setChecked(settings->value(GROUP(GUI), SETTING(GUI::MessageViewerToolbarsVisible)).toBool());
   m_ui->m_actionSwitchStatusBar->setChecked(settings->value(GROUP(GUI), SETTING(GUI::StatusBarVisible)).toBool());
 
-  // Other startup GUI-related settings.
+  // Other startup GUI-related or misc settings.
   m_ui->m_actionSortFeedsAlphabetically
     ->setChecked(settings->value(GROUP(Feeds), SETTING(Feeds::SortAlphabetically)).toBool());
   m_ui->m_actionShowOnlyUnreadItems
@@ -721,6 +723,8 @@ void FormMain::loadSize() {
     ->setChecked(settings->value(GROUP(Feeds), SETTING(Feeds::AutoExpandOnSelection)).toBool());
   m_ui->m_actionAlternateColorsInLists
     ->setChecked(settings->value(GROUP(GUI), SETTING(GUI::AlternateRowColorsInLists)).toBool());
+  m_ui->m_actionPauseFeedFetching
+    ->setChecked(settings->value(GROUP(Feeds), SETTING(Feeds::PauseFeedFetching)).toBool());
 }
 
 void FormMain::saveSize() {
@@ -1027,6 +1031,7 @@ void FormMain::createConnections() {
           &QAction::toggled,
           tabWidget()->feedMessageViewer(),
           &FeedMessageViewer::alternateRowColorsInLists);
+  connect(m_ui->m_actionPauseFeedFetching, &QAction::toggled, qApp->feedReader(), &FeedReader::pauseUnpaseFeedFetching);
   connect(m_ui->m_actionRestoreSelectedMessages,
           &QAction::triggered,
           tabWidget()->feedMessageViewer()->messagesView(),

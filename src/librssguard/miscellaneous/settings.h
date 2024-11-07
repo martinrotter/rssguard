@@ -94,6 +94,9 @@ namespace Feeds {
   KEY EnableTooltipsFeedsMessages;
   VALUE(bool) EnableTooltipsFeedsMessagesDef;
 
+  KEY PauseFeedFetching;
+  VALUE(bool) PauseFeedFetchingDef;
+
   KEY AutoUpdateInterval;
   VALUE(int) AutoUpdateIntervalDef;
 

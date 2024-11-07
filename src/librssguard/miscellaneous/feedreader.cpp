@@ -22,7 +22,7 @@
 #include <QTimer>
 
 FeedReader::FeedReader(QObject* parent)
-  : QObject(parent), m_autoUpdateTimer(new QTimer(this)), m_feedDownloader(nullptr) {
+  : QObject(parent), m_autoUpdateTimer(new QTimer(this)), m_feedDownloader(nullptr), m_feedFetchingPaused(false) {
   m_feedsModel = new FeedsModel(this);
   m_feedsProxyModel = new FeedsProxyModel(m_feedsModel, this);
   m_messagesModel = new MessagesModel(this);
@@ -268,6 +268,20 @@ void FeedReader::stopRunningFeedUpdate() {
   }
 }
 
+void FeedReader::pauseUnpaseFeedFetching(bool pause) {
+  m_feedFetchingPaused = pause;
+  qApp->settings()->setValue(GROUP(Feeds), Feeds::PauseFeedFetching, pause);
+}
+
+void FeedReader::warnAboutPausedFetching() const {
+  if (m_feedFetchingPaused) {
+    qApp->showGuiMessage(Notification::Event::GeneralEvent,
+                         GuiMessage(tr("Feed fetching is paused"),
+                                    tr("Automatic feed fetching based on time interval is currently paused."),
+                                    QSystemTrayIcon::MessageIcon::Warning));
+  }
+}
+
 bool FeedReader::isFeedUpdateRunning() const {
   return m_feedDownloader != nullptr && m_feedDownloader->isUpdateRunning();
 }
@@ -307,10 +321,10 @@ void FeedReader::executeNextAutoUpdate() {
 
   // Skip this round of auto-updating, but only if user disabled it when main window is active
   // and there are no caches to synchronize.
-  if (disable_update_with_window && full_caches.empty()) {
+  if ((m_feedFetchingPaused || disable_update_with_window) && full_caches.empty()) {
     qDebugNN << LOGSEC_CORE << "Delaying scheduled feed auto-download for some time since window "
              << "is focused and updates while focused are disabled by the "
-             << "user and all account caches are empty.";
+             << "user (or paused) and all account caches are empty.";
 
     // Cannot update, quit.
     return;
@@ -319,7 +333,6 @@ void FeedReader::executeNextAutoUpdate() {
   if (!qApp->feedUpdateLock()->tryLock()) {
     qDebugNN << LOGSEC_CORE << "Delaying scheduled feed auto-downloads and message state synchronization for "
              << "some time due to another running update.";
-
     // Cannot update, quit.
     return;
   }
@@ -333,9 +346,9 @@ void FeedReader::executeNextAutoUpdate() {
     synchronizeMessageData(caches);
   }
 
-  if (disable_update_with_window) {
+  if (m_feedFetchingPaused || disable_update_with_window) {
     qDebugNN << LOGSEC_CORE << "Delaying scheduled feed auto-download for some time since window "
-             << "is focused. Article cache was synchronised nonetheless.";
+             << "is focused or feed fetching is paused. Article cache was synchronised nonetheless.";
     return;
   }
 
