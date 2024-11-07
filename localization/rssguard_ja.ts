@@ -1021,12 +1021,12 @@ Item ID: %5</source>
     <message>
       <location filename="../src/librssguard/miscellaneous/feedreader.cpp" line="279"/>
       <source>Feed fetching is paused</source>
-      <translation type="unfinished">Feed fetching is paused</translation>
+      <translation>フィードの取得が一時停止されました</translation>
     </message>
     <message>
       <location filename="../src/librssguard/miscellaneous/feedreader.cpp" line="280"/>
       <source>Automatic feed fetching based on time interval is currently paused.</source>
-      <translation type="unfinished">Automatic feed fetching based on time interval is currently paused.</translation>
+      <translation>時間間隔に基づく自動フィード取得は現在一時停止されています</translation>
     </message>
     <message>
       <location filename="../src/librssguard/miscellaneous/feedreader.cpp" line="380"/>
@@ -1943,7 +1943,7 @@ QtWebEngineキャッシュフォルダ -&gt; &quot;%7&quot;</translation>
       <location filename="../src/librssguard/services/abstract/gui/formcategorydetails.ui" line="31"/>
       <location filename="../../build-rssguard-Desktop_Qt_6_7_0_MSVC2017_64bit-Debug/src/librssguard/ui_formcategorydetails.h" line="180"/>
       <source>Parent category</source>
-      <translation type="unfinished">Parent category</translation>
+      <translation>親カテゴリー</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/abstract/gui/formcategorydetails.ui" line="43"/>
@@ -2110,7 +2110,7 @@ QtWebEngineキャッシュフォルダ -&gt; &quot;%7&quot;</translation>
     <message>
       <location filename="../src/librssguard-standard/src/gui/formdiscoverfeeds.ui" line="83"/>
       <source>Target parent category</source>
-      <translation type="unfinished">Target parent category</translation>
+      <translation>対象となる親カテゴリー</translation>
     </message>
     <message>
       <location filename="../src/librssguard-standard/src/gui/formdiscoverfeeds.ui" line="95"/>
@@ -3122,7 +3122,7 @@ QtWebEngineキャッシュフォルダ -&gt; &quot;%7&quot;</translation>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="960"/>
       <location filename="../../build-rssguard-Desktop_Qt_6_7_0_MSVC2017_64bit-Debug/src/librssguard/ui_formmain.h" line="815"/>
       <source>&amp;Pause automatic feed fetching</source>
-      <translation type="unfinished">&amp;Pause automatic feed fetching</translation>
+      <translation>フィードの自動取得を一時停止する</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="739"/>
@@ -3582,12 +3582,12 @@ You have to restart manually.</source>
     <message>
       <location filename="../src/librssguard-standard/src/gui/formstandardfeeddetails.cpp" line="33"/>
       <source>HTTP headers</source>
-      <translation type="unfinished">HTTP headers</translation>
+      <translation>HTTP ヘッダー</translation>
     </message>
     <message>
       <location filename="../src/librssguard-standard/src/gui/formstandardfeeddetails.cpp" line="34"/>
       <source>Auth</source>
-      <translation type="unfinished">Auth</translation>
+      <translation>認証</translation>
     </message>
     <message>
       <location filename="../src/librssguard-standard/src/gui/formstandardfeeddetails.cpp" line="35"/>
@@ -3811,7 +3811,7 @@ You have to restart manually.</source>
     <message>
       <location filename="../src/librssguard-ttrss/src/gui/formttrssfeeddetails.cpp" line="62"/>
       <source>Auth</source>
-      <translation type="unfinished">Auth</translation>
+      <translation>認証</translation>
     </message>
     <message>
       <location filename="../src/librssguard-ttrss/src/gui/formttrssfeeddetails.cpp" line="47"/>
@@ -4470,7 +4470,7 @@ Login tokens expiration: %2</source>
     <message>
       <location filename="../src/librssguard-greader/src/gui/greaderfeeddetails.ui" line="20"/>
       <source>Parent category</source>
-      <translation type="unfinished">Parent category</translation>
+      <translation>親カテゴリー</translation>
     </message>
     <message>
       <location filename="../src/librssguard-greader/src/gui/greaderfeeddetails.ui" line="30"/>
@@ -4658,7 +4658,7 @@ Login tokens expiration: %2</source>
     <message>
       <location filename="../src/librssguard/services/abstract/gui/httpheadersdetails.cpp" line="14"/>
       <source>Enter each key/value HTTP header pair on separate line. Note that all spaces are significant and that header names are case-sensitive. Also, make sure to separate key from value with &apos;=&apos;, like the example below:</source>
-      <translation type="unfinished">Enter each key/value HTTP header pair on separate line. Note that all spaces are significant and that header names are case-sensitive. Also, make sure to separate key from value with &apos;=&apos;, like the example below:</translation>
+      <translation>各キー/値の HTTP ヘッダー ペアを別々の行に入力します。すべてのスペースが意味を持ち、ヘッダー名は大文字と小文字が区別されることに注意してください。また、次の例のように、キーと値を必ず &apos;=&apos; で区切ってください</translation>
     </message>
   </context>
   <context>
@@ -7681,7 +7681,7 @@ Authors of this application are NOT responsible for lost data.</source>
       <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="686"/>
       <location filename="../../build-rssguard-Desktop_Qt_6_7_0_MSVC2017_64bit-Debug/src/librssguard/ui_settingsfeedsmessages.h" line="646"/>
       <source>Switch article list to RTL layout if all selected feeds are RTL</source>
-      <translation type="unfinished">Switch article list to RTL layout if all selected feeds are RTL</translation>
+      <translation>選択したフィードがすべて RTL の場合、記事リストを RTL レイアウトに切り替える</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="307"/>
@@ -8392,7 +8392,7 @@ Also, relaunch &quot;Settings&quot; dialog after you install Node.js.</source>
       <location filename="../src/librssguard/gui/notifications/singlenotificationeditor.ui" line="30"/>
       <location filename="../../build-rssguard-Desktop_Qt_6_7_0_MSVC2017_64bit-Debug/src/librssguard/ui_singlenotificationeditor.h" line="130"/>
       <source>Play sound</source>
-      <translation type="unfinished">Play sound</translation>
+      <translation>サウンドを再生</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/notifications/singlenotificationeditor.ui" line="58"/>
@@ -8893,7 +8893,7 @@ Also, you can post-process generated feed data with yet another script if you wi
     <message>
       <location filename="../src/librssguard-standard/src/gui/standardfeeddetails.ui" line="25"/>
       <source>Parent category</source>
-      <translation type="unfinished">Parent category</translation>
+      <translation>親カテゴリー</translation>
     </message>
     <message>
       <location filename="../src/librssguard-standard/src/gui/standardfeeddetails.ui" line="37"/>
@@ -9559,7 +9559,7 @@ Unread news: %2</source>
     <message>
       <location filename="../src/librssguard-ttrss/src/gui/ttrssfeeddetails.ui" line="20"/>
       <source>Parent category</source>
-      <translation type="unfinished">Parent category</translation>
+      <translation>親カテゴリー</translation>
     </message>
     <message>
       <location filename="../src/librssguard-ttrss/src/gui/ttrssfeeddetails.ui" line="30"/>
