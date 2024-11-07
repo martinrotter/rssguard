@@ -4671,7 +4671,7 @@ Logintoken verloopt: %2</translation>
     <message>
       <location filename="../src/librssguard/services/abstract/gui/httpheadersdetails.cpp" line="14"/>
       <source>Enter each key/value HTTP header pair on separate line. Note that all spaces are significant and that header names are case-sensitive. Also, make sure to separate key from value with &apos;=&apos;, like the example below:</source>
-      <translation type="unfinished">Enter each key/value HTTP header pair on separate line. Note that all spaces are significant and that header names are case-sensitive. Also, make sure to separate key from value with &apos;=&apos;, like the example below:</translation>
+      <translation>Voer elk sleutel/waarde HTTP-header paar op een aparte regel in. Let op dat alle spaties belangrijk zijn en dat headers hoofdlettergevoelig zijn. Zorg er ook voor dat de waarde gescheiden wordt van de waarde met &apos;=&apos;, zoals het voorbeeld hieronder:</translation>
     </message>
   </context>
   <context>
@@ -7705,7 +7705,7 @@ Makers van de applicatie zijn niet verantwoordelijk voor dataverlies.</translati
       <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="686"/>
       <location filename="../../build-rssguard-Desktop_Qt_6_7_0_MSVC2017_64bit-Debug/src/librssguard/ui_settingsfeedsmessages.h" line="646"/>
       <source>Switch article list to RTL layout if all selected feeds are RTL</source>
-      <translation type="unfinished">Switch article list to RTL layout if all selected feeds are RTL</translation>
+      <translation>Wissel artikellijst naar RTL lay-out als alle geselecteerde feeds RTL zijn</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="307"/>
@@ -8416,7 +8416,7 @@ Start ook het dialoogvenster &quot;Instellingen&quot; opnieuw nadat je Node.js h
       <location filename="../src/librssguard/gui/notifications/singlenotificationeditor.ui" line="30"/>
       <location filename="../../build-rssguard-Desktop_Qt_6_7_0_MSVC2017_64bit-Debug/src/librssguard/ui_singlenotificationeditor.h" line="130"/>
       <source>Play sound</source>
-      <translation type="unfinished">Play sound</translation>
+      <translation>Geluid afspelen</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/notifications/singlenotificationeditor.ui" line="58"/>
