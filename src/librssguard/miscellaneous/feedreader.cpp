@@ -73,12 +73,14 @@ QList<ServiceEntryPoint*> FeedReader::feedServices() {
   return m_feedServices;
 }
 
-void FeedReader::updateFeeds(const QList<Feed*>& feeds) {
+void FeedReader::updateFeeds(const QList<Feed*>& feeds, bool update_switched_off_too) {
   auto my_feeds = feeds;
 
-  for (int i = 0; i < my_feeds.size(); i++) {
-    if (my_feeds.at(i)->isSwitchedOff()) {
-      my_feeds.removeAt(i--);
+  if (!update_switched_off_too) {
+    for (int i = 0; i < my_feeds.size(); i++) {
+      if (my_feeds.at(i)->isSwitchedOff()) {
+        my_feeds.removeAt(i--);
+      }
     }
   }
 

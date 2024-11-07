@@ -230,7 +230,11 @@ void FeedsView::expandCollapseCurrentItem(bool recursive) {
 }
 
 void FeedsView::updateSelectedItems() {
-  qApp->feedReader()->updateFeeds(selectedFeeds(true));
+  auto sel_feeds = selectedFeeds(true);
+  auto sel_items = selectedItems();
+  bool one_specific_feed_selected = sel_items.size() == 1 && sel_items.constFirst()->kind() == RootItem::Kind::Feed;
+
+  qApp->feedReader()->updateFeeds(sel_feeds, one_specific_feed_selected);
 }
 
 void FeedsView::clearSelectedItems() {

@@ -36,7 +36,7 @@ class RSSGUARD_DLLSPEC FeedReader : public QObject {
     MessagesProxyModel* messagesProxyModel() const;
 
     // Update feeds in extra thread.
-    void updateFeeds(const QList<Feed*>& feeds);
+    void updateFeeds(const QList<Feed*>& feeds, bool update_switched_off_too = false);
 
     // Push back cached message states back to servers in extra thread.
     void synchronizeMessageData(const QList<CacheForServiceRoot*>& caches);
