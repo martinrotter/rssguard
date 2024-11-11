@@ -35,8 +35,6 @@ class RSSGUARD_DLLSPEC FeedReader : public QObject {
     FeedsProxyModel* feedsProxyModel() const;
     MessagesProxyModel* messagesProxyModel() const;
 
-    void warnAboutPausedFetching() const;
-
     // Update feeds in extra thread.
     void updateFeeds(const QList<Feed*>& feeds, bool update_switched_off_too = false);
 

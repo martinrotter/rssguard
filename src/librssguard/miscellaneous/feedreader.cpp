@@ -273,15 +273,6 @@ void FeedReader::pauseUnpaseFeedFetching(bool pause) {
   qApp->settings()->setValue(GROUP(Feeds), Feeds::PauseFeedFetching, pause);
 }
 
-void FeedReader::warnAboutPausedFetching() const {
-  if (m_feedFetchingPaused) {
-    qApp->showGuiMessage(Notification::Event::GeneralEvent,
-                         GuiMessage(tr("Feed fetching is paused"),
-                                    tr("Automatic feed fetching based on time interval is currently paused."),
-                                    QSystemTrayIcon::MessageIcon::Warning));
-  }
-}
-
 bool FeedReader::isFeedUpdateRunning() const {
   return m_feedDownloader != nullptr && m_feedDownloader->isUpdateRunning();
 }

@@ -22,7 +22,7 @@ number_of_pages = int(sys.argv[2])
 
 url_base = "https://hudebnibazar.cz"
 url = "{}/{}/?is=1&f=&n=vse&r=&i=50&o=datum&ign=on".format(url_base, category)
-json_feed = '{{"title": "HudebniBazar - {cat}", "items": [{items}]}}'
+json_feed = '{{"title": "HudebniBazar - {cat}", "version": "https://jsonfeed.org/version/1.1", "items": [{items}]}}'
 items = list()
 
 # To avoid TLSv1.2 errors.
@@ -50,7 +50,7 @@ def processListingDate(string_date: str):
     #         hour=int(yday.group(1)), minute=int(yday.group(2))
     #     )
 
-    dy = dateparser.parse(string_date, languages=["cs"]).replace(second=0, microsecond=0)
+    dy = dateparser.parse(string_date, languages=["cs"]).replace(microsecond=0)
     local = pytz.timezone("Europe/Prague")
     return local.localize(dy).astimezone(pytz.utc)
 
@@ -70,7 +70,11 @@ def processListingImgs(listing: bs4.Tag):
 
 
 def generateListingJson(listing: bs4.Tag):
-    article_price = listing.find(class_="InzeratCena").contents[0].get_text(strip=True)
+    try:
+        article_price = listing.find(class_="InzeratCena").contents[0].get_text(strip=True)
+    except:
+        article_price = "dohoda"
+    
     article_title = listing.find(class_="InzeratNadpis").b.get_text(strip=True)
     article_date = listing.find(class_="InzeratZarazeno").get_text(strip=True)
 
