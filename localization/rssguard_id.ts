@@ -274,7 +274,7 @@ di versi ini dengan meng-klik popup notifikasi ini.</translation>
     <message>
       <location filename="../src/librssguard/miscellaneous/application.cpp" line="1238"/>
       <source>Already running</source>
-      <translation type="unfinished">Already running</translation>
+      <translation>Sedang berjalan</translation>
     </message>
   </context>
   <context>
@@ -2851,7 +2851,7 @@ QtWebEngine cache folder -&gt; &quot;%7&quot;</translation>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="669"/>
       <location filename="../../build-rssguard-Desktop_Qt_6_7_0_MSVC2017_64bit-Debug/src/librssguard/ui_formmain.h" line="767"/>
       <source>&amp;Add account</source>
-      <translation type="unfinished">&amp;Add account</translation>
+      <translation>&amp;Tambah akun</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="677"/>
@@ -4644,7 +4644,7 @@ Waktu berakhir log masuk: %2</translation>
     <message>
       <location filename="../src/librssguard/gui/reusable/helpspoiler.cpp" line="25"/>
       <source>View more information on this</source>
-      <translation type="unfinished">View more information on this</translation>
+      <translation>Lihat selengkapnya</translation>
     </message>
   </context>
   <context>
