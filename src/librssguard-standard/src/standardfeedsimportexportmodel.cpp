@@ -196,19 +196,20 @@ bool FeedsImportExportModel::produceFeed(const FeedLookup& feed_lookup) {
                             : feed_lookup.post_process_script;
 
       try {
-        new_feed = StandardFeed::guessFeed(source_type,
-                                           feed_lookup.url,
-                                           pp_script,
-                                           NetworkFactory::NetworkAuthentication::NoAuthentication,
-                                           !feed_lookup.do_not_fetch_icons,
-                                           {},
-                                           {},
-                                           {},
-                                           feed_lookup.custom_proxy);
+        auto new_feed_data = StandardFeed::guessFeed(source_type,
+                                                     feed_lookup.url,
+                                                     pp_script,
+                                                     NetworkFactory::NetworkAuthentication::NoAuthentication,
+                                                     !feed_lookup.do_not_fetch_icons,
+                                                     {},
+                                                     {},
+                                                     {},
+                                                     feed_lookup.custom_proxy);
 
-        new_feed->setSourceType(source_type);
-        new_feed->setSource(feed_lookup.url);
-        new_feed->setPostProcessScript(pp_script);
+        new_feed_data.first->setSourceType(source_type);
+        new_feed_data.first->setPostProcessScript(pp_script);
+
+        new_feed = new_feed_data.first;
 
         if (feed_lookup.do_not_fetch_titles) {
           QString old_title = feed_lookup.custom_data[QSL("title")].toString();

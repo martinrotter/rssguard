@@ -146,24 +146,24 @@ void StandardFeedDetails::guessIconOnly(StandardFeed::SourceType source_type,
                                         const QList<QPair<QByteArray, QByteArray>>& headers,
                                         const QNetworkProxy& custom_proxy) {
   try {
-    StandardFeed* metadata = StandardFeed::guessFeed(source_type,
-                                                     source,
-                                                     post_process_script,
-                                                     protection,
-                                                     true,
-                                                     username,
-                                                     password,
-                                                     {},
-                                                     custom_proxy);
+    auto metadata = StandardFeed::guessFeed(source_type,
+                                            source,
+                                            post_process_script,
+                                            protection,
+                                            true,
+                                            username,
+                                            password,
+                                            {},
+                                            custom_proxy);
 
     // Icon or whole feed was guessed.
-    m_ui.m_btnIcon->setIcon(metadata->icon());
+    m_ui.m_btnIcon->setIcon(metadata.first->icon());
     m_ui.m_lblFetchMetadata->setStatus(WidgetWithStatus::StatusType::Ok,
                                        tr("Icon fetched successfully."),
                                        tr("Icon metadata fetched."));
 
     // Remove temporary feed object.
-    metadata->deleteLater();
+    metadata.first->deleteLater();
   }
   catch (const ScriptException& ex) {
     m_ui.m_lblFetchMetadata->setStatus(WidgetWithStatus::StatusType::Error,
@@ -191,22 +191,27 @@ void StandardFeedDetails::guessFeed(StandardFeed::SourceType source_type,
                                     const QList<QPair<QByteArray, QByteArray>>& headers,
                                     const QNetworkProxy& custom_proxy) {
   try {
-    StandardFeed* metadata = StandardFeed::guessFeed(source_type,
-                                                     source,
-                                                     post_process_script,
-                                                     protection,
-                                                     true,
-                                                     username,
-                                                     password,
-                                                     headers,
-                                                     custom_proxy);
+    auto metadata = StandardFeed::guessFeed(source_type,
+                                            source,
+                                            post_process_script,
+                                            protection,
+                                            true,
+                                            username,
+                                            password,
+                                            headers,
+                                            custom_proxy);
 
     // Icon or whole feed was guessed.
-    m_ui.m_btnIcon->setIcon(metadata->icon());
-    m_ui.m_txtTitle->lineEdit()->setText(metadata->sanitizedTitle());
-    m_ui.m_txtDescription->lineEdit()->setText(metadata->description());
-    m_ui.m_cmbType->setCurrentIndex(m_ui.m_cmbType->findData(QVariant::fromValue((int)metadata->type())));
-    int encoding_index = m_ui.m_cmbEncoding->findText(metadata->encoding(), Qt::MatchFlag::MatchFixedString);
+    m_ui.m_btnIcon->setIcon(metadata.first->icon());
+    m_ui.m_txtTitle->lineEdit()->setText(metadata.first->sanitizedTitle());
+    m_ui.m_txtDescription->lineEdit()->setText(metadata.first->description());
+    m_ui.m_cmbType->setCurrentIndex(m_ui.m_cmbType->findData(QVariant::fromValue((int)metadata.first->type())));
+
+    if (metadata.second.m_url.isValid()) {
+      m_ui.m_txtSource->textEdit()->setPlainText(metadata.second.m_url.toString());
+    }
+
+    int encoding_index = m_ui.m_cmbEncoding->findText(metadata.first->encoding(), Qt::MatchFlag::MatchFixedString);
 
     if (encoding_index >= 0) {
       m_ui.m_cmbEncoding->setCurrentIndex(encoding_index);
@@ -221,7 +226,7 @@ void StandardFeedDetails::guessFeed(StandardFeed::SourceType source_type,
                                        tr("Feed and icon metadata fetched."));
 
     // Remove temporary feed object.
-    metadata->deleteLater();
+    metadata.first->deleteLater();
   }
   catch (const ScriptException& ex) {
     m_ui.m_lblFetchMetadata->setStatus(WidgetWithStatus::StatusType::Error,

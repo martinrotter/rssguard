@@ -79,15 +79,16 @@ class StandardFeed : public Feed {
     // Returns pointer to guessed feed (if at least partially
     // guessed) and retrieved error/status code from network layer
     // or nullptr feed.
-    static StandardFeed* guessFeed(SourceType source_type,
-                                   const QString& url,
-                                   const QString& post_process_script,
-                                   NetworkFactory::NetworkAuthentication protection,
-                                   bool fetch_icons = true,
-                                   const QString& username = {},
-                                   const QString& password = {},
-                                   const QList<QPair<QByteArray, QByteArray>>& http_headers = {},
-                                   const QNetworkProxy& custom_proxy = QNetworkProxy::ProxyType::DefaultProxy);
+    static QPair<StandardFeed*, NetworkResult> guessFeed(SourceType source_type,
+                                                         const QString& url,
+                                                         const QString& post_process_script,
+                                                         NetworkFactory::NetworkAuthentication protection,
+                                                         bool fetch_icons = true,
+                                                         const QString& username = {},
+                                                         const QString& password = {},
+                                                         const QList<QPair<QByteArray, QByteArray>>& http_headers = {},
+                                                         const QNetworkProxy& custom_proxy =
+                                                           QNetworkProxy::ProxyType::DefaultProxy);
 
     // Converts particular feed type to string.
     static QString typeToString(Type type);

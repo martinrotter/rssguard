@@ -230,24 +230,28 @@ QString StandardFeed::sourceTypeToString(StandardFeed::SourceType type) {
 
 void StandardFeed::fetchMetadataForItself() {
   try {
-    StandardFeed* metadata = guessFeed(sourceType(),
-                                       source(),
-                                       postProcessScript(),
-                                       protection(),
-                                       true,
-                                       username(),
-                                       password(),
-                                       {},
-                                       getParentServiceRoot()->networkProxy());
+    auto metadata = guessFeed(sourceType(),
+                              source(),
+                              postProcessScript(),
+                              protection(),
+                              true,
+                              username(),
+                              password(),
+                              {},
+                              getParentServiceRoot()->networkProxy());
 
     // Copy metadata to our object.
-    setTitle(metadata->title());
-    setDescription(metadata->description());
-    setType(metadata->type());
-    setEncoding(metadata->encoding());
-    setIcon(metadata->icon());
+    setTitle(metadata.first->title());
+    setDescription(metadata.first->description());
+    setType(metadata.first->type());
+    setEncoding(metadata.first->encoding());
+    setIcon(metadata.first->icon());
 
-    metadata->deleteLater();
+    if (metadata.second.m_url.isValid()) {
+      setSource(metadata.second.m_url.toString());
+    }
+
+    metadata.first->deleteLater();
 
     QSqlDatabase database = qApp->database()->driver()->connection(metaObject()->className());
 
@@ -279,15 +283,16 @@ void StandardFeed::setSourceType(SourceType source_type) {
   m_sourceType = source_type;
 }
 
-StandardFeed* StandardFeed::guessFeed(StandardFeed::SourceType source_type,
-                                      const QString& source,
-                                      const QString& post_process_script,
-                                      NetworkFactory::NetworkFactory::NetworkAuthentication protection,
-                                      bool fetch_icons,
-                                      const QString& username,
-                                      const QString& password,
-                                      const QList<QPair<QByteArray, QByteArray>>& http_headers,
-                                      const QNetworkProxy& custom_proxy) {
+QPair<StandardFeed*, NetworkResult> StandardFeed::guessFeed(StandardFeed::SourceType source_type,
+                                                            const QString& source,
+                                                            const QString& post_process_script,
+                                                            NetworkFactory::NetworkFactory::NetworkAuthentication
+                                                              protection,
+                                                            bool fetch_icons,
+                                                            const QString& username,
+                                                            const QString& password,
+                                                            const QList<QPair<QByteArray, QByteArray>>& http_headers,
+                                                            const QNetworkProxy& custom_proxy) {
   auto timeout = qApp->settings()->value(GROUP(Feeds), SETTING(Feeds::UpdateTimeout)).toInt();
   QByteArray feed_contents;
   NetworkResult network_result;
@@ -406,7 +411,7 @@ StandardFeed* StandardFeed::guessFeed(StandardFeed::SourceType source_type,
     }
   }
 
-  return feed;
+  return {feed, network_result};
 }
 
 Qt::ItemFlags StandardFeed::additionalFlags() const {
