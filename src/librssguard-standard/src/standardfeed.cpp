@@ -290,25 +290,22 @@ StandardFeed* StandardFeed::guessFeed(StandardFeed::SourceType source_type,
                                       const QNetworkProxy& custom_proxy) {
   auto timeout = qApp->settings()->value(GROUP(Feeds), SETTING(Feeds::UpdateTimeout)).toInt();
   QByteArray feed_contents;
-  QString content_type;
+  NetworkResult network_result;
 
   if (source_type == StandardFeed::SourceType::Url) {
     QList<QPair<QByteArray, QByteArray>> headers = http_headers;
     headers << NetworkFactory::generateBasicAuthHeader(protection, username, password);
 
-    NetworkResult network_result =
-      NetworkFactory::performNetworkOperation(source,
-                                              timeout,
-                                              QByteArray(),
-                                              feed_contents,
-                                              QNetworkAccessManager::Operation::GetOperation,
-                                              headers,
-                                              false,
-                                              {},
-                                              {},
-                                              custom_proxy);
-
-    content_type = network_result.m_contentType;
+    network_result = NetworkFactory::performNetworkOperation(source,
+                                                             timeout,
+                                                             QByteArray(),
+                                                             feed_contents,
+                                                             QNetworkAccessManager::Operation::GetOperation,
+                                                             headers,
+                                                             false,
+                                                             {},
+                                                             {},
+                                                             custom_proxy);
 
     if (network_result.m_networkError != QNetworkReply::NetworkError::NoError) {
       throw NetworkException(network_result.m_networkError);
@@ -369,7 +366,7 @@ StandardFeed* StandardFeed::guessFeed(StandardFeed::SourceType source_type,
 
   for (const QSharedPointer<FeedParser>& parser : parsers) {
     try {
-      QPair<StandardFeed*, QList<IconLocation>> res = parser->guessFeed(feed_contents, content_type);
+      QPair<StandardFeed*, QList<IconLocation>> res = parser->guessFeed(feed_contents, network_result);
 
       feed = res.first;
       icon_possible_locations = res.second;

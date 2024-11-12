@@ -57,7 +57,7 @@ QList<StandardFeed*> FeedParser::discoverFeeds(ServiceRoot* root, const QUrl& ur
 
     if (QFile::exists(file_path)) {
       try {
-        auto guessed_feed = guessFeed(IOFactory::readFile(file_path), {});
+        auto guessed_feed = guessFeed(IOFactory::readFile(file_path));
 
         guessed_feed.first->setSourceType(StandardFeed::SourceType::LocalFile);
         guessed_feed.first->setSource(file_path);
@@ -74,7 +74,7 @@ QList<StandardFeed*> FeedParser::discoverFeeds(ServiceRoot* root, const QUrl& ur
 }
 
 QPair<StandardFeed*, QList<IconLocation>> FeedParser::guessFeed(const QByteArray& content,
-                                                                const QString& content_type) const {
+                                                                const NetworkResult& network_res) const {
   return {};
 }
 

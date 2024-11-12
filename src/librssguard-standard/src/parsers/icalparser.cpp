@@ -43,9 +43,7 @@ QList<StandardFeed*> IcalParser::discoverFeeds(ServiceRoot* root, const QUrl& ur
   if (res.m_networkError == QNetworkReply::NetworkError::NoError) {
     try {
       // 1.
-      auto guessed_feed = guessFeed(data, res.m_contentType);
-
-      guessed_feed.first->setSource(my_url);
+      auto guessed_feed = guessFeed(data, res);
 
       return {guessed_feed.first};
     }
@@ -58,8 +56,8 @@ QList<StandardFeed*> IcalParser::discoverFeeds(ServiceRoot* root, const QUrl& ur
 }
 
 QPair<StandardFeed*, QList<IconLocation>> IcalParser::guessFeed(const QByteArray& content,
-                                                                const QString& content_type) const {
-  if (content_type.contains(QSL("text/calendar")) || content.startsWith(QSL("BEGIN").toLocal8Bit())) {
+                                                                const NetworkResult& network_res) const {
+  if (network_res.m_contentType.contains(QSL("text/calendar")) || content.startsWith(QSL("BEGIN").toLocal8Bit())) {
     Icalendar calendar;
 
     try {
@@ -75,6 +73,7 @@ QPair<StandardFeed*, QList<IconLocation>> IcalParser::guessFeed(const QByteArray
     feed->setEncoding(QSL(DEFAULT_FEED_ENCODING));
     feed->setType(StandardFeed::Type::iCalendar);
     feed->setTitle(calendar.title());
+    feed->setSource(network_res.m_url.toString());
 
     return QPair<StandardFeed*, QList<IconLocation>>(feed, icon_possible_locations);
   }

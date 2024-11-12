@@ -50,9 +50,7 @@ QList<StandardFeed*> JsonParser::discoverFeeds(ServiceRoot* root, const QUrl& ur
   if (res.m_networkError == QNetworkReply::NetworkError::NoError) {
     try {
       // 1.
-      auto guessed_feed = guessFeed(data, res.m_contentType);
-
-      guessed_feed.first->setSource(my_url);
+      auto guessed_feed = guessFeed(data, res);
 
       return {guessed_feed.first};
     }
@@ -97,9 +95,8 @@ QList<StandardFeed*> JsonParser::discoverFeeds(ServiceRoot* root, const QUrl& ur
 
       if (res.m_networkError == QNetworkReply::NetworkError::NoError) {
         try {
-          auto guessed_feed = guessFeed(data, res.m_contentType);
+          auto guessed_feed = guessFeed(data, res);
 
-          guessed_feed.first->setSource(feed_link);
           feeds.append(guessed_feed.first);
         }
         catch (const ApplicationException& ex) {
@@ -114,8 +111,8 @@ QList<StandardFeed*> JsonParser::discoverFeeds(ServiceRoot* root, const QUrl& ur
 }
 
 QPair<StandardFeed*, QList<IconLocation>> JsonParser::guessFeed(const QByteArray& content,
-                                                                const QString& content_type) const {
-  if (content_type.contains(QSL("json"), Qt::CaseSensitivity::CaseInsensitive) ||
+                                                                const NetworkResult& network_res) const {
+  if (network_res.m_contentType.contains(QSL("json"), Qt::CaseSensitivity::CaseInsensitive) ||
       content.simplified().startsWith('{')) {
     QJsonParseError json_err;
     QJsonDocument json = QJsonDocument::fromJson(content, &json_err);
@@ -135,6 +132,7 @@ QPair<StandardFeed*, QList<IconLocation>> JsonParser::guessFeed(const QByteArray
     feed->setType(StandardFeed::Type::Json);
     feed->setTitle(json.object()[QSL("title")].toString());
     feed->setDescription(json.object()[QSL("description")].toString());
+    feed->setSource(network_res.m_url.toString());
 
     auto home_page = json.object()[QSL("home_page_url")].toString();
 

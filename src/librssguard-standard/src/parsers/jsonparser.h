@@ -15,7 +15,7 @@ class JsonParser : public FeedParser {
     virtual QList<StandardFeed*> discoverFeeds(ServiceRoot* root, const QUrl& url, bool greedy) const;
 
     virtual QPair<StandardFeed*, QList<IconLocation>> guessFeed(const QByteArray& content,
-                                                                const QString& content_type) const;
+                                                                const NetworkResult& network_res) const;
 
   protected:
     virtual QString feedAuthor() const;
@@ -25,7 +25,7 @@ class JsonParser : public FeedParser {
     virtual QString jsonMessageUrl(const QJsonObject& msg_element) const;
     virtual QString jsonMessageDescription(const QJsonObject& msg_element) const;
     virtual QString jsonMessageAuthor(const QJsonObject& msg_element) const;
-    virtual QDateTime jsonMessageDateCreated(const QJsonObject& msg_element) ;
+    virtual QDateTime jsonMessageDateCreated(const QJsonObject& msg_element);
     virtual QString jsonMessageId(const QJsonObject& msg_element) const;
     virtual QList<Enclosure> jsonMessageEnclosures(const QJsonObject& msg_element) const;
     virtual QString jsonMessageRawContents(const QJsonObject& msg_element) const;

@@ -30,6 +30,7 @@ class Downloader : public QObject {
     QList<QNetworkCookie> lastCookies() const;
     int lastHttpStatusCode() const;
     QMap<QString, QString> lastHeaders() const;
+    QUrl lastUrl() const;
 
     void setProxy(const QNetworkProxy& proxy);
 
@@ -114,6 +115,7 @@ class Downloader : public QObject {
     QNetworkReply::NetworkError m_lastOutputError;
     int m_lastHttpStatusCode;
     QString m_lastContentType;
+    QUrl m_lastUrl;
     QList<QNetworkCookie> m_lastCookies;
     QMap<QString, QString> m_lastHeaders;
 };

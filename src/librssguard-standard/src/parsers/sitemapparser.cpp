@@ -122,10 +122,7 @@ QList<StandardFeed*> SitemapParser::discoverFeeds(ServiceRoot* root, const QUrl&
 
     if (res.m_networkError == QNetworkReply::NetworkError::NoError) {
       try {
-        auto guessed_feed = guessFeed(data, res.m_contentType);
-
-        guessed_feed.first->setSource(my_url);
-        guessed_feed.first->setTitle(my_url);
+        auto guessed_feed = guessFeed(data, res);
 
         feeds.insert(my_url, guessed_feed.first);
 
@@ -149,7 +146,7 @@ QList<StandardFeed*> SitemapParser::discoverFeeds(ServiceRoot* root, const QUrl&
 }
 
 QPair<StandardFeed*, QList<IconLocation>> SitemapParser::guessFeed(const QByteArray& content,
-                                                                   const QString& content_type) const {
+                                                                   const NetworkResult& network_res) const {
   QByteArray uncompressed_content;
 
   if (isGzip(content)) {
@@ -216,7 +213,8 @@ QPair<StandardFeed*, QList<IconLocation>> SitemapParser::guessFeed(const QByteAr
 
   feed->setEncoding(xml_schema_encoding);
   feed->setType(StandardFeed::Type::Sitemap);
-  feed->setTitle(StandardFeed::typeToString(StandardFeed::Type::Sitemap));
+  feed->setTitle(network_res.m_url.toString());
+  feed->setSource(network_res.m_url.toString());
 
   return {feed, icon_possible_locations};
 }

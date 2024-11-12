@@ -21,6 +21,7 @@ struct RSSGUARD_DLLSPEC NetworkResult {
     QString m_contentType;
     QList<QNetworkCookie> m_cookies;
     QMap<QString, QString> m_headers;
+    QUrl m_url;
 
     explicit NetworkResult();
     explicit NetworkResult(QNetworkReply::NetworkError err,

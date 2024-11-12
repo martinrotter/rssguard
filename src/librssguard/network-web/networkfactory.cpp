@@ -299,6 +299,9 @@ NetworkResult NetworkFactory::performNetworkOperation(const QString& url,
   result.m_cookies = downloader.lastCookies();
   result.m_httpCode = downloader.lastHttpStatusCode();
   result.m_headers = downloader.lastHeaders();
+  result.m_url = downloader.lastUrl();
+
+  qDebugNN << LOGSEC_NETWORK << "URLS\n" << url << "\n" << result.m_url.toString();
 
   return result;
 }
@@ -340,16 +343,19 @@ NetworkResult NetworkFactory::performNetworkOperation(const QString& url,
   result.m_cookies = downloader.lastCookies();
   result.m_httpCode = downloader.lastHttpStatusCode();
   result.m_headers = downloader.lastHeaders();
+  result.m_url = downloader.lastUrl();
+
+  qDebugNN << LOGSEC_NETWORK << "URLS\n" << url << "\n" << result.m_url.toString();
 
   return result;
 }
 
 NetworkResult::NetworkResult()
   : m_networkError(QNetworkReply::NetworkError::NoError), m_httpCode(0), m_contentType(QString()), m_cookies({}),
-    m_headers({}) {}
+    m_headers({}), m_url({}) {}
 
 NetworkResult::NetworkResult(QNetworkReply::NetworkError err,
                              int http_code,
                              const QString& ct,
                              const QList<QNetworkCookie>& cook)
-  : m_networkError(err), m_httpCode(http_code), m_contentType(ct), m_cookies(cook) {}
+  : m_networkError(err), m_httpCode(http_code), m_contentType(ct), m_cookies(cook), m_url({}) {}

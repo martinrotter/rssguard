@@ -65,9 +65,7 @@ QList<StandardFeed*> AtomParser::discoverFeeds(ServiceRoot* root, const QUrl& ur
   if (res.m_networkError == QNetworkReply::NetworkError::NoError) {
     try {
       // 1.
-      auto guessed_feed = guessFeed(data, res.m_contentType);
-
-      guessed_feed.first->setSource(my_url);
+      auto guessed_feed = guessFeed(data, res);
 
       return {guessed_feed.first};
     }
@@ -113,9 +111,8 @@ QList<StandardFeed*> AtomParser::discoverFeeds(ServiceRoot* root, const QUrl& ur
 
       if (res.m_networkError == QNetworkReply::NetworkError::NoError) {
         try {
-          auto guessed_feed = guessFeed(data, res.m_contentType);
+          auto guessed_feed = guessFeed(data, res);
 
-          guessed_feed.first->setSource(feed_link);
           feeds.append(guessed_feed.first);
         }
         catch (const ApplicationException& ex) {
@@ -141,9 +138,8 @@ QList<StandardFeed*> AtomParser::discoverFeeds(ServiceRoot* root, const QUrl& ur
 
   if (res.m_networkError == QNetworkReply::NetworkError::NoError) {
     try {
-      auto guessed_feed = guessFeed(data, res.m_contentType);
+      auto guessed_feed = guessFeed(data, res);
 
-      guessed_feed.first->setSource(my_url);
       feeds.append(guessed_feed.first);
     }
     catch (...) {
@@ -166,9 +162,8 @@ QList<StandardFeed*> AtomParser::discoverFeeds(ServiceRoot* root, const QUrl& ur
 
   if (res.m_networkError == QNetworkReply::NetworkError::NoError) {
     try {
-      auto guessed_feed = guessFeed(data, res.m_contentType);
+      auto guessed_feed = guessFeed(data, res);
 
-      guessed_feed.first->setSource(my_url);
       feeds.append(guessed_feed.first);
     }
     catch (...) {
@@ -201,9 +196,8 @@ QList<StandardFeed*> AtomParser::discoverFeeds(ServiceRoot* root, const QUrl& ur
 
       if (res.m_networkError == QNetworkReply::NetworkError::NoError) {
         try {
-          auto guessed_feed = guessFeed(data, res.m_contentType);
+          auto guessed_feed = guessFeed(data, res);
 
-          guessed_feed.first->setSource(my_url);
           feeds.append(guessed_feed.first);
         }
         catch (...) {
@@ -241,9 +235,8 @@ QList<StandardFeed*> AtomParser::discoverFeeds(ServiceRoot* root, const QUrl& ur
 
       if (res.m_networkError == QNetworkReply::NetworkError::NoError) {
         try {
-          auto guessed_feed = guessFeed(data, res.m_contentType);
+          auto guessed_feed = guessFeed(data, res);
 
-          guessed_feed.first->setSource(my_url);
           feeds.append(guessed_feed.first);
         }
         catch (...) {
@@ -271,9 +264,8 @@ QList<StandardFeed*> AtomParser::discoverFeeds(ServiceRoot* root, const QUrl& ur
 
     if (res.m_networkError == QNetworkReply::NetworkError::NoError) {
       try {
-        auto guessed_feed = guessFeed(data, res.m_contentType);
+        auto guessed_feed = guessFeed(data, res);
 
-        guessed_feed.first->setSource(my_url);
         feeds.append(guessed_feed.first);
       }
       catch (...) {
@@ -286,9 +278,7 @@ QList<StandardFeed*> AtomParser::discoverFeeds(ServiceRoot* root, const QUrl& ur
 }
 
 QPair<StandardFeed*, QList<IconLocation>> AtomParser::guessFeed(const QByteArray& content,
-                                                                const QString& content_type) const {
-  Q_UNUSED(content_type)
-
+                                                                const NetworkResult& network_res) const {
   QString xml_schema_encoding = QSL(DEFAULT_FEED_ENCODING);
   QString xml_contents_encoded;
   QString enc =
@@ -336,6 +326,7 @@ QPair<StandardFeed*, QList<IconLocation>> AtomParser::guessFeed(const QByteArray
   feed->setType(StandardFeed::Type::Atom10);
   feed->setTitle(root_element.namedItem(QSL("title")).toElement().text());
   feed->setDescription(root_element.namedItem(QSL("subtitle")).toElement().text());
+  feed->setSource(network_res.m_url.toString());
 
   QString icon_link = root_element.namedItem(QSL("icon")).toElement().text();
 

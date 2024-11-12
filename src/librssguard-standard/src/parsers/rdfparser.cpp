@@ -51,9 +51,7 @@ QList<StandardFeed*> RdfParser::discoverFeeds(ServiceRoot* root, const QUrl& url
   if (res.m_networkError == QNetworkReply::NetworkError::NoError) {
     try {
       // 1.
-      auto guessed_feed = guessFeed(data, res.m_contentType);
-
-      guessed_feed.first->setSource(my_url);
+      auto guessed_feed = guessFeed(data, res);
 
       return {guessed_feed.first};
     }
@@ -98,9 +96,8 @@ QList<StandardFeed*> RdfParser::discoverFeeds(ServiceRoot* root, const QUrl& url
 
       if (res.m_networkError == QNetworkReply::NetworkError::NoError) {
         try {
-          auto guessed_feed = guessFeed(data, res.m_contentType);
+          auto guessed_feed = guessFeed(data, res);
 
-          guessed_feed.first->setSource(feed_link);
           feeds.append(guessed_feed.first);
         }
         catch (const ApplicationException& ex) {
@@ -126,9 +123,8 @@ QList<StandardFeed*> RdfParser::discoverFeeds(ServiceRoot* root, const QUrl& url
 
   if (res.m_networkError == QNetworkReply::NetworkError::NoError) {
     try {
-      auto guessed_feed = guessFeed(data, res.m_contentType);
+      auto guessed_feed = guessFeed(data, res);
 
-      guessed_feed.first->setSource(my_url);
       feeds.append(guessed_feed.first);
     }
     catch (...) {
@@ -151,9 +147,8 @@ QList<StandardFeed*> RdfParser::discoverFeeds(ServiceRoot* root, const QUrl& url
 
   if (res.m_networkError == QNetworkReply::NetworkError::NoError) {
     try {
-      auto guessed_feed = guessFeed(data, res.m_contentType);
+      auto guessed_feed = guessFeed(data, res);
 
-      guessed_feed.first->setSource(my_url);
       feeds.append(guessed_feed.first);
     }
     catch (...) {
@@ -165,7 +160,7 @@ QList<StandardFeed*> RdfParser::discoverFeeds(ServiceRoot* root, const QUrl& url
 }
 
 QPair<StandardFeed*, QList<IconLocation>> RdfParser::guessFeed(const QByteArray& content,
-                                                               const QString& content_type) const {
+                                                               const NetworkResult& network_res) const {
   QString xml_schema_encoding = QSL(DEFAULT_FEED_ENCODING);
   QString xml_contents_encoded;
   QString enc =
@@ -211,6 +206,7 @@ QPair<StandardFeed*, QList<IconLocation>> RdfParser::guessFeed(const QByteArray&
 
   feed->setEncoding(xml_schema_encoding);
   feed->setType(StandardFeed::Type::Rdf);
+  feed->setSource(network_res.m_url.toString());
 
   QDomElement channel_element = root_element.elementsByTagNameNS(rssNamespace(), QSL("channel")).at(0).toElement();
 

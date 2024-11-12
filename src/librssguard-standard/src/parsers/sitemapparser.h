@@ -14,7 +14,7 @@ class SitemapParser : public FeedParser {
     virtual QList<StandardFeed*> discoverFeeds(ServiceRoot* root, const QUrl& url, bool greedy) const;
 
     virtual QPair<StandardFeed*, QList<IconLocation>> guessFeed(const QByteArray& content,
-                                                                const QString& content_type) const;
+                                                                const NetworkResult& network_res) const;
 
     static bool isGzip(const QByteArray& content);
 

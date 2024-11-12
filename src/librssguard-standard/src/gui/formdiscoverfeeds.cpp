@@ -174,7 +174,14 @@ void FormDiscoverFeeds::discoverFeeds() {
 
   std::function<QList<StandardFeed*>(QList<StandardFeed*>&, const QList<StandardFeed*>&)> reducer =
     [=](QList<StandardFeed*>& res, const QList<StandardFeed*>& interm) -> QList<StandardFeed*> {
-    res.append(interm);
+    for (StandardFeed* new_fd : interm) {
+      if (!std::any_of(res.cbegin(), res.cend(), [=](const StandardFeed* fd) {
+            return fd->source() == new_fd->source();
+          })) {
+        res.append(new_fd);
+      }
+    }
+
     return res;
   };
 

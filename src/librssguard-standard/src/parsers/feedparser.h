@@ -32,7 +32,8 @@ class FeedParser {
 
     // Guesses feed.
     virtual QPair<StandardFeed*, QList<IconLocation>> guessFeed(const QByteArray& content,
-                                                                const QString& content_type) const;
+                                                                const NetworkResult& network_res =
+                                                                  NetworkResult()) const;
 
     // Returns list of all messages from the feed.
     virtual QList<Message> messages();
