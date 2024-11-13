@@ -358,4 +358,4 @@ NetworkResult::NetworkResult(QNetworkReply::NetworkError err,
                              int http_code,
                              const QString& ct,
                              const QList<QNetworkCookie>& cook)
-  : m_networkError(err), m_httpCode(http_code), m_contentType(ct), m_cookies(cook), m_url({}) {}
+  : m_networkError(err), m_httpCode(http_code), m_contentType(ct), m_cookies(cook), m_url(QUrl()) {}
