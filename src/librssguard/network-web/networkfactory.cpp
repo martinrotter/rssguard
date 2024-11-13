@@ -352,7 +352,7 @@ NetworkResult NetworkFactory::performNetworkOperation(const QString& url,
 
 NetworkResult::NetworkResult()
   : m_networkError(QNetworkReply::NetworkError::NoError), m_httpCode(0), m_contentType(QString()), m_cookies({}),
-    m_headers({}), m_url({}) {}
+    m_headers({}), m_url(QUrl()) {}
 
 NetworkResult::NetworkResult(QNetworkReply::NetworkError err,
                              int http_code,
