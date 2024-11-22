@@ -28,8 +28,12 @@ function(prepare_rssguard_plugin plugin_target_name)
     ${LIBRSSGUARD_SOURCE_PATH}
   )
 
-  if(WIN32 OR OS2)
+  if(MSVC OR OS2)
     install(TARGETS ${plugin_target_name} DESTINATION plugins)
+  elseif(MINGW)
+    include (GNUInstallDirs)
+    install(TARGETS ${plugin_target_name}
+      DESTINATION ${CMAKE_INSTALL_DATADIR}/rssguard/plugins)
   elseif(UNIX AND NOT APPLE AND NOT ANDROID)
     include (GNUInstallDirs)
     install(TARGETS ${plugin_target_name}

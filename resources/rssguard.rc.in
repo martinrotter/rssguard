@@ -1,9 +1,11 @@
 #include <windows.h>
 
+#ifdef _MSC_VER
 #define VS_FF_DEBUG             0x00000001L
 #define VOS__WINDOWS32          0x00000004L
 #define VFT_UNKNOWN             0x00000000L
 #define VFT2_UNKNOWN            0x00000000L
+#endif
 
 IDI_ICON1 ICON  "@CMAKE_PROJECT_NAME@.ico"
 

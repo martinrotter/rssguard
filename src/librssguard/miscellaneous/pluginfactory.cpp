@@ -77,7 +77,12 @@ QStringList PluginFactory::pluginPaths() const {
   paths << QCoreApplication::applicationDirPath() + QDir::separator() + QL1S("..") + QDir::separator() +
              QL1S(RSSGUARD_LIBDIR) + QDir::separator() + QL1S(APP_LOW_NAME);
 #elif defined(Q_OS_WIN)
+#ifdef _MSC_VER
   paths << QCoreApplication::applicationDirPath() + QDir::separator() + QL1S("plugins");
+#else
+  paths << QCoreApplication::applicationDirPath() + QDir::separator() + QL1S("..") + QDir::separator() +
+             QL1S("share") + QDir::separator() + QL1S(APP_LOW_NAME) + QDir::separator() + QL1S("plugins");
+#endif
 #else
   paths << QCoreApplication::applicationDirPath();
 #endif

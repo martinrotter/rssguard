@@ -579,7 +579,12 @@ QString Application::userDataAppFolder() const {
 
   // In "app" folder, we would like to separate all user data into own subfolder,
   // therefore stick to "data" folder in this mode.
+#ifdef _MSC_VER
   return QDir::toNativeSeparators(applicationDirPath() + QDir::separator() + QSL("data%1").arg(major_version));
+#else
+  return QDir::toNativeSeparators(applicationDirPath() + QDir::separator() + QSL("..") + QDir::separator() +
+    QSL("share") + QDir::separator() + QSL(APP_LOW_NAME) + QDir::separator() + QSL("data%1").arg(major_version));
+#endif
 }
 
 QString Application::userDataFolder() {
