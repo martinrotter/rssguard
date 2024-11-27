@@ -31,7 +31,7 @@ DKEY Node::ID = "nodejs";
 
 DKEY Node::NodeJsExecutable = QSL("nodejs_executable_") + OS_ID;
 
-#if (defined(Q_OS_WIN) && defined(_MSC_VER)) || defined(Q_OS_OS2)
+#if (defined(Q_OS_WIN) && !defined(BUILD_MSYS2)) || defined(Q_OS_OS2)
 DVALUE(QString) Node::NodeJsExecutableDef = "node.exe";
 #else
 DVALUE(QString) Node::NodeJsExecutableDef = "node";
@@ -39,7 +39,7 @@ DVALUE(QString) Node::NodeJsExecutableDef = "node";
 
 DKEY Node::NpmExecutable = QSL("npm_executable_") + OS_ID;
 
-#if defined(Q_OS_WIN) && defined(_MSC_VER)
+#if defined(Q_OS_WIN) && !defined(BUILD_MSYS2)
 DVALUE(QString) Node::NpmExecutableDef = "npm.cmd";
 #elif defined(Q_OS_OS2)
 DVALUE(QString) Node::NpmExecutableDef = "npm.exe";
@@ -620,6 +620,7 @@ SettingsProperties Settings::determineProperties() {
   SettingsProperties properties;
 
   properties.m_settingsSuffix = QDir::separator() + QSL(APP_CFG_PATH) + QDir::separator() + QSL(APP_CFG_FILE);
+
   const QString app_path = qApp->userDataAppFolder();
   const QString home_path = qApp->userDataHomeFolder();
   const QString custom_path = qApp->customDataFolder();
@@ -630,10 +631,10 @@ SettingsProperties Settings::determineProperties() {
     properties.m_baseDirectory = custom_path;
   }
   else {
-    // We will use PORTABLE settings only and only if it is available and NON-PORTABLE
+    // We will use PORTABLE settings only if it is available and NON-PORTABLE
     // settings was not initialized before.
-#if defined(Q_OS_UNIX)
-    // DO NOT use portable settings for *nix, it is really not used on that platform.
+#if defined(Q_OS_UNIX) || defined(BUILD_MSYS2)
+    // DO NOT use portable settings for *nix or MSYS2, it is really not used on those platforms.
     const bool will_we_use_portable_settings = false;
 #else
     const QString exe_path = qApp->applicationDirPath();

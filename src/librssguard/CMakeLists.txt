@@ -628,10 +628,10 @@ elseif(WIN32)
   )
 endif()
 
-if(MSVC OR OS2)
+if((WIN32 AND NOT BUILD_MSYS2) OR OS2)
   install(TARGETS rssguard DESTINATION .)
   set(HEADERS_FOLDER "include/librssguard")
-elseif(MINGW)
+elseif(MINGW AND BUILD_MSYS2)
   include (GNUInstallDirs)
   install(TARGETS rssguard
     LIBRARY DESTINATION ${CMAKE_INSTALL_LIBDIR}

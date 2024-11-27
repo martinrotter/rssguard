@@ -20,6 +20,8 @@
 #
 # Variables:
 #   BUILD_WITH_QT6 - Build either with Qt 6 or Qt 5.
+#   BUILD_MSYS2 - Build RSS Guard for MSYS2 distribution, this particularly
+#                 enables relevant MSYS2 FHS tweaks.
 #   USE_SYSTEM_SQLITE - Use system-wide SQLite3 library and header file. Defaults to "ON".
 #   NO_UPDATE_CHECK - Disable automatic checking for new application updates.
 #   IS_FLATPAK_BUILD - Set to "ON" when building RSS Guard with Flatpak.
@@ -118,6 +120,7 @@ endif()
 
 # Global compilation switches.
 option(BUILD_WITH_QT6 "Build application with Qt 6." ON)
+option(BUILD_MSYS2 "Build application for MSYS2 ecosystem." OFF)
 option(USE_SYSTEM_SQLITE "Use system-wide SQLite3 library." ON)
 option(NO_LITE "Enable QtWebEngine and other more demanding components." ON)
 option(UPDATE_TRANSLATIONS "Call lupdate to update translation files from source (Qt 6 only)." OFF)
@@ -286,6 +289,10 @@ endif()
 
 if(IS_FLATPAK_BUILD)
   add_compile_definitions(IS_FLATPAK_BUILD)
+endif()
+
+if(BUILD_MSYS2)
+  add_compile_definitions(BUILD_MSYS2)
 endif()
 
 # Configure and copy some needed files.

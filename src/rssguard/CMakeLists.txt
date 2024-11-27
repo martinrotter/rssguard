@@ -41,7 +41,7 @@ elseif(WIN32)
   )
 endif()
 
-if(MSVC)
+if(WIN32 AND NOT BUILD_MSYS2)
   install(TARGETS app DESTINATION .)
   install(FILES ${CMAKE_SOURCE_DIR}/resources/graphics/${CMAKE_PROJECT_NAME}.ico
     DESTINATION .
@@ -55,9 +55,7 @@ if(MSVC)
   )
 elseif(OS2)
   install(TARGETS app DESTINATION .)
-elseif(MINGW)
-  install(TARGETS app DESTINATION ${CMAKE_INSTALL_BINDIR})
-elseif(UNIX AND NOT APPLE AND NOT ANDROID)
+elseif((MINGW AND BUILD_MSYS2) OR (UNIX AND NOT APPLE AND NOT ANDROID))
   include (GNUInstallDirs)
   install(TARGETS app
     DESTINATION ${CMAKE_INSTALL_BINDIR}
