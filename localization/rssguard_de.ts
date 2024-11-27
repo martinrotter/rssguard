@@ -50,7 +50,7 @@
       <location filename="../src/librssguard/services/abstract/gui/accountdetails.ui" line="47"/>
       <location filename="../../build-rssguard-Desktop_Qt_6_7_0_MSVC2017_64bit-Debug/src/librssguard/ui_accountdetails.h" line="83"/>
       <source>Probes</source>
-      <translation type="unfinished">Probes</translation>
+      <translation>Erweiterte Suchanfragen</translation>
     </message>
   </context>
   <context>
@@ -354,7 +354,7 @@ durch Klicken auf diese Benachrichtigung.</translation>
     <message>
       <location filename="../src/librssguard/gui/reusable/articleamountcontrol.cpp" line="11"/>
       <source>Setting any limitations here will instruct %1 to ignore some incoming articles. The logic runs AFTER any article filters so even if your article filter accepts particular article, it can still subsequently ignored and not added to database.</source>
-      <translation type="unfinished">Setting any limitations here will instruct %1 to ignore some incoming articles. The logic runs AFTER any article filters so even if your article filter accepts particular article, it can still subsequently ignored and not added to database.</translation>
+      <translation>Das hier festgelegte Limit teilt der Funktion %1 mit, einige der neu abgerufenen Artikel zu ignorieren. Diese Befehlslogik wird erst NACH den Artikelfiltern ausgeführt, d. h. selbst wenn ein bestimmter Artikel durch Ihre Artikelfilter akzeptiert wurde, kann er durch diese Funktion anschließend ignoriert und nicht zur Datenbank hinzugefügt werden.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/reusable/articleamountcontrol.cpp" line="16"/>
@@ -427,22 +427,22 @@ durch Klicken auf diese Benachrichtigung.</translation>
     <message>
       <location filename="../src/librssguard/network-web/articleparse.cpp" line="39"/>
       <source>Packages for article-extractor are installed</source>
-      <translation type="unfinished">Packages for article-extractor are installed</translation>
+      <translation>Die Pakete für den "article-extractor" wurden erfolgreich installiert</translation>
     </message>
     <message>
       <location filename="../src/librssguard/network-web/articleparse.cpp" line="40"/>
       <source>Reload your website or article and you can test it then!</source>
-      <translation type="unfinished">Reload your website or article and you can test it then!</translation>
+      <translation>Aktualisieren Sie die Website/den Artikel, um ihn auszuprobieren.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/network-web/articleparse.cpp" line="45"/>
       <source>Packages for article-extractor are installed. You can now use this feature!</source>
-      <translation type="unfinished">Packages for article-extractor are installed. You can now use this feature!</translation>
+      <translation>Die Pakete für den "article-extractor" wurden erfolgreich installiert. Sie können diese Funktion nun verwenden!</translation>
     </message>
     <message>
       <location filename="../src/librssguard/network-web/articleparse.cpp" line="62"/>
       <source>Packages for article-extractor are NOT installed</source>
-      <translation type="unfinished">Packages for article-extractor are NOT installed</translation>
+      <translation>Die Pakete für den "article-extractor" konnten NICHT installiert werden</translation>
     </message>
     <message>
       <location filename="../src/librssguard/network-web/articleparse.cpp" line="63"/>
@@ -452,7 +452,7 @@ durch Klicken auf diese Benachrichtigung.</translation>
     <message>
       <location filename="../src/librssguard/network-web/articleparse.cpp" line="69"/>
       <source>Packages for article-extractor are NOT installed. There is error: %1</source>
-      <translation type="unfinished">Packages for article-extractor are NOT installed. There is error: %1</translation>
+      <translation>Die Pakete für den "article-extractor" konnten NICHT installiert werden. Es gab folgende Fehlermeldung: %1</translation>
     </message>
     <message>
       <location filename="../src/librssguard/network-web/articleparse.cpp" line="104"/>
@@ -1028,12 +1028,12 @@ Item ID: %5</translation>
     <message>
       <location filename="../src/librssguard/miscellaneous/feedreader.cpp" line="279"/>
       <source>Feed fetching is paused</source>
-      <translation type="unfinished">Feed fetching is paused</translation>
+      <translation>Abruf von Feeds pausiert</translation>
     </message>
     <message>
       <location filename="../src/librssguard/miscellaneous/feedreader.cpp" line="280"/>
       <source>Automatic feed fetching based on time interval is currently paused.</source>
-      <translation type="unfinished">Automatic feed fetching based on time interval is currently paused.</translation>
+      <translation>Automatischer Abruf von Feeds ist derzeit pausiert.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/miscellaneous/feedreader.cpp" line="380"/>
@@ -1412,7 +1412,7 @@ Item ID: %5</translation>
     <message>
       <location filename="../src/librssguard/gui/feedsview.cpp" line="357"/>
       <source>Some of selected items cannot be edited. Proceeding to edit the rest.</source>
-      <translation type="unfinished">Some of selected items cannot be edited. Proceeding to edit the rest.</translation>
+      <translation>Einige der ausgewählten Elemente können nicht bearbeitet werden. Bearbeitung der übrigen Elemente wird fortgesetzt.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/feedsview.cpp" line="434"/>
@@ -1513,7 +1513,7 @@ QtWebEngine Zwischenspeicher -&gt; &quot;%7&quot;</translation>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formabout.cpp" line="134"/>
       <source>&lt;h4&gt;%8&lt;/h4&gt;&lt;b&gt;Version:&lt;/b&gt; %1 (built on %2/%3)&lt;br/&gt;&lt;b&gt;Revision:&lt;/b&gt; %4&lt;br/&gt;&lt;b&gt;Build date:&lt;/b&gt; %5&lt;br/&gt;&lt;b&gt;OS:&lt;/b&gt; %9&lt;br/&gt;&lt;b&gt;Qt:&lt;/b&gt; %6 (compiled against %7)</source>
-      <translation type="unfinished">&lt;h4&gt;%8&lt;/h4&gt;&lt;b&gt;Version:&lt;/b&gt; %1 (built on %2/%3)&lt;br/&gt;&lt;b&gt;Revision:&lt;/b&gt; %4&lt;br/&gt;&lt;b&gt;Build date:&lt;/b&gt; %5&lt;br/&gt;&lt;b&gt;OS:&lt;/b&gt; %9&lt;br/&gt;&lt;b&gt;Qt:&lt;/b&gt; %6 (compiled against %7)</translation>
+      <translation>&lt;h4&gt;%8&lt;/h4&gt;&lt;b&gt;Version:&lt;/b&gt; %1 (kompiliert am %2/%3)&lt;br/&gt;&lt;b&gt;Revision:&lt;/b&gt; %4&lt;br/&gt;&lt;b&gt;Erstellungsdatum:&lt;/b&gt; %5&lt;br/&gt;&lt;b&gt;OS:&lt;/b&gt; %9&lt;br/&gt;&lt;b&gt;Qt:&lt;/b&gt; %6 (kompiliert mit %7)</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formabout.cpp" line="152"/>
@@ -1701,7 +1701,7 @@ QtWebEngine Zwischenspeicher -&gt; &quot;%7&quot;</translation>
     <message>
       <location filename="../src/librssguard/services/abstract/gui/formaddeditprobe.cpp" line="25"/>
       <source>Regex query name cannot be empty.</source>
-      <translation type="unfinished">Regex query name cannot be empty.</translation>
+      <translation>Titel der Regex-Suchanfrage darf nicht leer sein.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/abstract/gui/formaddeditprobe.cpp" line="28"/>
@@ -1712,12 +1712,12 @@ QtWebEngine Zwischenspeicher -&gt; &quot;%7&quot;</translation>
     <message>
       <location filename="../src/librssguard/services/abstract/gui/formaddeditprobe.cpp" line="34"/>
       <source>Regular expression cannot be empty.</source>
-      <translation type="unfinished">Regular expression cannot be empty.</translation>
+      <translation>Regulärer Ausdruck darf nicht leer sein.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/abstract/gui/formaddeditprobe.cpp" line="49"/>
       <source>Create new regex query</source>
-      <translation type="unfinished">Create new regex query</translation>
+      <translation>Neue Regex-Suchanfrage erstellen</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/abstract/gui/formaddeditprobe.cpp" line="70"/>
@@ -1849,7 +1849,7 @@ QtWebEngine Zwischenspeicher -&gt; &quot;%7&quot;</translation>
       <location filename="../src/librssguard/services/abstract/gui/formcategorydetails.cpp" line="108"/>
       <source>Edit %n categories</source>
       <translation type="unfinished">
-        <numerusform>Edit %n categories</numerusform>
+        <numerusform>%n Kategorien bearbeiten</numerusform>
         <numerusform>Edit %n categories</numerusform>
       </translation>
     </message>
@@ -1953,7 +1953,7 @@ QtWebEngine Zwischenspeicher -&gt; &quot;%7&quot;</translation>
       <location filename="../src/librssguard/services/abstract/gui/formcategorydetails.ui" line="31"/>
       <location filename="../../build-rssguard-Desktop_Qt_6_7_0_MSVC2017_64bit-Debug/src/librssguard/ui_formcategorydetails.h" line="180"/>
       <source>Parent category</source>
-      <translation type="unfinished">Parent category</translation>
+      <translation>Übergeordnete Kategorie</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/abstract/gui/formcategorydetails.ui" line="43"/>
@@ -2111,7 +2111,7 @@ QtWebEngine Zwischenspeicher -&gt; &quot;%7&quot;</translation>
     <message>
       <location filename="../src/librssguard-standard/src/gui/formdiscoverfeeds.ui" line="51"/>
       <source>Recursive discovery (can take some time for bigger websites)</source>
-      <translation type="unfinished">Recursive discovery (can take some time for bigger websites)</translation>
+      <translation>Rekursive Suche (kann für größere Webseiten einige Zeit in Anspruch nehmen)</translation>
     </message>
     <message>
       <location filename="../src/librssguard-standard/src/gui/formdiscoverfeeds.ui" line="77"/>
@@ -2121,7 +2121,7 @@ QtWebEngine Zwischenspeicher -&gt; &quot;%7&quot;</translation>
     <message>
       <location filename="../src/librssguard-standard/src/gui/formdiscoverfeeds.ui" line="83"/>
       <source>Target parent category</source>
-      <translation type="unfinished">Target parent category</translation>
+      <translation>Übergeordnete Zielkategorie</translation>
     </message>
     <message>
       <location filename="../src/librssguard-standard/src/gui/formdiscoverfeeds.ui" line="95"/>
@@ -2151,12 +2151,12 @@ QtWebEngine Zwischenspeicher -&gt; &quot;%7&quot;</translation>
     <message>
       <location filename="../src/librssguard-standard/src/gui/formdiscoverfeeds.cpp" line="42"/>
       <source>Switch to &amp;advanced mode</source>
-      <translation type="unfinished">Switch to &amp;advanced mode</translation>
+      <translation>In den fortgeschrittenen Modus wechseln</translation>
     </message>
     <message>
       <location filename="../src/librssguard-standard/src/gui/formdiscoverfeeds.cpp" line="44"/>
       <source>Close this dialog and display dialog for adding individual feeds with advanced options.</source>
-      <translation type="unfinished">Close this dialog and display dialog for adding individual feeds with advanced options.</translation>
+      <translation>Dieses Fenster schließen und Dialog öffnen zum Hinzufügen von einzelnen Feeds mit erweiterten Optionen.</translation>
     </message>
     <message>
       <location filename="../src/librssguard-standard/src/gui/formdiscoverfeeds.cpp" line="126"/>
@@ -3116,25 +3116,25 @@ QtWebEngine Zwischenspeicher -&gt; &quot;%7&quot;</translation>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="942"/>
       <location filename="../../build-rssguard-Desktop_Qt_6_7_0_MSVC2017_64bit-Debug/src/librssguard/ui_formmain.h" line="812"/>
       <source>Edit &amp;child feeds</source>
-      <translation type="unfinished">Edit &amp;child feeds</translation>
+      <translation>Zugehörige Feeds bearbeiten</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="947"/>
       <location filename="../../build-rssguard-Desktop_Qt_6_7_0_MSVC2017_64bit-Debug/src/librssguard/ui_formmain.h" line="813"/>
       <source>Edit child feeds (&amp;recursive)</source>
-      <translation type="unfinished">Edit child feeds (&amp;recursive)</translation>
+      <translation>Zugehörige Feeds bearbeiten (&amp;rekursiv)</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="952"/>
       <location filename="../../build-rssguard-Desktop_Qt_6_7_0_MSVC2017_64bit-Debug/src/librssguard/ui_formmain.h" line="814"/>
       <source>Play in &amp;media player</source>
-      <translation type="unfinished">Play in &amp;media player</translation>
+      <translation>Im &amp;Medienplayer wiedergeben</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="960"/>
       <location filename="../../build-rssguard-Desktop_Qt_6_7_0_MSVC2017_64bit-Debug/src/librssguard/ui_formmain.h" line="815"/>
       <source>&amp;Pause automatic feed fetching</source>
-      <translation type="unfinished">&amp;Pause automatic feed fetching</translation>
+      <translation>Automatisches Abrufen von Feeds &amp;pausieren</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="739"/>
@@ -3161,7 +3161,7 @@ QtWebEngine Zwischenspeicher -&gt; &quot;%7&quot;</translation>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.cpp" line="472"/>
       <source>Play in media player</source>
-      <translation type="unfinished">Play in media player</translation>
+      <translation>Im Medienplayer wiedergeben</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.cpp" line="473"/>
@@ -3263,7 +3263,7 @@ QtWebEngine Zwischenspeicher -&gt; &quot;%7&quot;</translation>
       <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.cpp" line="299"/>
       <source>EXISTING articles filtering error: &apos;%1&apos;.
 </source>
-      <translation type="unfinished">EXISTING articles filtering error: &apos;%1&apos;.
+      <translation>Fehlerhafter Filter für Artikel im BESTAND: &apos;%1&apos;.
 </translation>
     </message>
     <message>
@@ -3285,20 +3285,20 @@ QtWebEngine Zwischenspeicher -&gt; &quot;%7&quot;</translation>
   Created on = &apos;%6&apos;
   Contents = &apos;%7&apos;
   RAW contents = &apos;%8&apos;</source>
-      <translation type="unfinished">Output (modified) article is:
-  Title = &apos;%1&apos;
+      <translation>Ausgegebener Artikel (verändert):
+  Titel = &apos;%1&apos;
   URL = &apos;%2&apos;
-  Author = &apos;%3&apos;
-  Is read/important = &apos;%4/%5&apos;
-  Created on = &apos;%6&apos;
-  Contents = &apos;%7&apos;
-  RAW contents = &apos;%8&apos;</translation>
+  Autor = &apos;%3&apos;
+  Als gelesen/wichtig markiert = &apos;%4/%5&apos;
+  Erstellt am = &apos;%6&apos;
+  Inhalt = &apos;%7&apos;
+  ROH-Inhalt = &apos;%8&apos;</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.cpp" line="340"/>
       <source>SAMPLE article filtering error: &apos;%1&apos;.
 </source>
-      <translation type="unfinished">SAMPLE article filtering error: &apos;%1&apos;.
+      <translation>Fehlerhafter Filter für BEISPIEL-Artikel: &apos;%1&apos;.
 </translation>
     </message>
     <message>
@@ -3594,17 +3594,17 @@ Dieser Neustart muss manuell ausgeführt werden.</translation>
     <message>
       <location filename="../src/librssguard-standard/src/gui/formstandardfeeddetails.cpp" line="33"/>
       <source>HTTP headers</source>
-      <translation type="unfinished">HTTP headers</translation>
+      <translation>HTTP-Header</translation>
     </message>
     <message>
       <location filename="../src/librssguard-standard/src/gui/formstandardfeeddetails.cpp" line="34"/>
       <source>Auth</source>
-      <translation type="unfinished">Auth</translation>
+      <translation>Auth</translation>
     </message>
     <message>
       <location filename="../src/librssguard-standard/src/gui/formstandardfeeddetails.cpp" line="35"/>
       <source>Experimental</source>
-      <translation type="unfinished">Experimental</translation>
+      <translation>Experimentell</translation>
     </message>
   </context>
   <context>
@@ -3823,7 +3823,7 @@ Dieser Neustart muss manuell ausgeführt werden.</translation>
     <message>
       <location filename="../src/librssguard-ttrss/src/gui/formttrssfeeddetails.cpp" line="62"/>
       <source>Auth</source>
-      <translation type="unfinished">Auth</translation>
+      <translation>Auth</translation>
     </message>
     <message>
       <location filename="../src/librssguard-ttrss/src/gui/formttrssfeeddetails.cpp" line="47"/>
@@ -4482,7 +4482,7 @@ Ablauf des Login tokens: %2</translation>
     <message>
       <location filename="../src/librssguard-greader/src/gui/greaderfeeddetails.ui" line="20"/>
       <source>Parent category</source>
-      <translation type="unfinished">Parent category</translation>
+      <translation>Übergeordnete Kategorie</translation>
     </message>
     <message>
       <location filename="../src/librssguard-greader/src/gui/greaderfeeddetails.ui" line="30"/>
@@ -6071,7 +6071,7 @@ Ablauf des Login tokens: %2</translation>
     <message>
       <location filename="../src/librssguard-nextcloud/src/gui/nextcloudaccountdetails.cpp" line="82"/>
       <source>Selected Nextcloud News server is running unsupported version.</source>
-      <translation type="unfinished">Selected Nextcloud News server is running unsupported version.</translation>
+      <translation>Die Version des ausgewählten Nextcloud News Servers wird nicht unterstützt.</translation>
     </message>
     <message>
       <location filename="../src/librssguard-nextcloud/src/gui/nextcloudaccountdetails.cpp" line="88"/>
@@ -6389,17 +6389,17 @@ Liste aller unterstützten Leser:</translation>
     <message>
       <location filename="../src/librssguard/miscellaneous/textfactory.cpp" line="372"/>
       <source>escape sequence not completed</source>
-      <translation type="unfinished">escape sequence not completed</translation>
+      <translation>Escape-Sequenz nicht abgeschlossen</translation>
     </message>
     <message>
       <location filename="../src/librssguard/miscellaneous/textfactory.cpp" line="376"/>
       <source>closing &quot; is missing</source>
-      <translation type="unfinished">closing &quot; is missing</translation>
+      <translation>Schließendes Anführungszeichen (&quot;) fehlt</translation>
     </message>
     <message>
       <location filename="../src/librssguard/miscellaneous/textfactory.cpp" line="380"/>
       <source>closing &apos; is missing</source>
-      <translation type="unfinished">closing &apos; is missing</translation>
+      <translation>Schließendes Apostroph (&apos;) fehlt</translation>
     </message>
     <message>
       <location filename="../src/librssguard-standard/src/parsers/atomparser.cpp" line="323"/>
@@ -6407,7 +6407,7 @@ Liste aller unterstützten Leser:</translation>
       <location filename="../src/librssguard-standard/src/parsers/rssparser.cpp" line="200"/>
       <location filename="../src/librssguard-standard/src/parsers/sitemapparser.cpp" line="194"/>
       <source>XML is not well-formed, %1</source>
-      <translation type="unfinished">XML is not well-formed, %1</translation>
+      <translation>XML ist nicht wohlgeformt: %1</translation>
     </message>
     <message>
       <location filename="../src/librssguard-standard/src/parsers/atomparser.cpp" line="329"/>
@@ -6417,38 +6417,38 @@ Liste aller unterstützten Leser:</translation>
     <message>
       <location filename="../src/librssguard-standard/src/parsers/jsonparser.cpp" line="124"/>
       <source>JSON error &apos;%1&apos;</source>
-      <translation type="unfinished">JSON error &apos;%1&apos;</translation>
+      <translation>JSON-Fehler &apos;%1&apos;</translation>
     </message>
     <message>
       <location filename="../src/librssguard-standard/src/parsers/jsonparser.cpp" line="128"/>
       <location filename="../src/librssguard-standard/src/parsers/jsonparser.cpp" line="159"/>
       <source>not a JSON feed</source>
-      <translation type="unfinished">not a JSON feed</translation>
+      <translation>Kein JSON-Feed</translation>
     </message>
     <message>
       <location filename="../src/librssguard-standard/src/parsers/rdfparser.cpp" line="206"/>
       <source>not an RDF feed</source>
-      <translation type="unfinished">not an RDF feed</translation>
+      <translation>Kein RDF-Feed</translation>
     </message>
     <message>
       <location filename="../src/librssguard-standard/src/parsers/rssparser.cpp" line="206"/>
       <source>not a RSS feed</source>
-      <translation type="unfinished">not a RSS feed</translation>
+      <translation>Kein RSS-Feed</translation>
     </message>
     <message>
       <location filename="../src/librssguard-standard/src/parsers/sitemapparser.cpp" line="159"/>
       <source>support for gzipped sitemaps is not enabled</source>
-      <translation type="unfinished">support for gzipped sitemaps is not enabled</translation>
+      <translation>Unterstützung für gzip-Sitemaps ist nicht aktiviert</translation>
     </message>
     <message>
       <location filename="../src/librssguard-standard/src/parsers/sitemapparser.cpp" line="207"/>
       <source>sitemap indices are not supported</source>
-      <translation type="unfinished">sitemap indices are not supported</translation>
+      <translation>Sitemap-Indizes werden nicht unterstützt</translation>
     </message>
     <message>
       <location filename="../src/librssguard-standard/src/parsers/sitemapparser.cpp" line="211"/>
       <source>not a Sitemap</source>
-      <translation type="unfinished">not a Sitemap</translation>
+      <translation>Keine Sitemap</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/webviewers/webviewer.cpp" line="37"/>
@@ -6463,27 +6463,27 @@ Liste aller unterstützten Leser:</translation>
     <message>
       <location filename="../src/librssguard/gui/webviewers/webviewer.cpp" line="103"/>
       <source>Play in media player</source>
-      <translation type="unfinished">Play in media player</translation>
+      <translation>Im Medienplayer wiedergeben</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/webviewers/webviewer.cpp" line="106"/>
       <source>(not supported)</source>
-      <translation type="unfinished">(not supported)</translation>
+      <translation>(nicht unterstützt)</translation>
     </message>
     <message>
       <location filename="../src/librssguard-standard/src/parsers/icalparser.cpp" line="69"/>
       <source>iCalendar error &apos;%1&apos;</source>
-      <translation type="unfinished">iCalendar error &apos;%1&apos;</translation>
+      <translation>iCalendar-Fehler &apos;%1&apos;</translation>
     </message>
     <message>
       <location filename="../src/librssguard-standard/src/parsers/icalparser.cpp" line="82"/>
       <source>not an iCalendar</source>
-      <translation type="unfinished">not an iCalendar</translation>
+      <translation>Kein gültiger iCalendar</translation>
     </message>
     <message>
       <location filename="../src/librssguard-standard/src/parsers/icalparser.cpp" line="199"/>
       <source>required iCal data are missing</source>
-      <translation type="unfinished">required iCal data are missing</translation>
+      <translation>erforderliche iCal-Daten fehlen</translation>
     </message>
     <message>
       <location filename="../src/librssguard-standard/src/standardserviceentrypoint.cpp" line="24"/>
@@ -8914,7 +8914,7 @@ Du kannst die generierten Feed Daten auch mit einem extra Nachbearbeituns-Skript
     <message>
       <location filename="../src/librssguard-standard/src/gui/standardfeeddetails.ui" line="25"/>
       <source>Parent category</source>
-      <translation type="unfinished">Parent category</translation>
+      <translation>Übergeordnete Kategorie</translation>
     </message>
     <message>
       <location filename="../src/librssguard-standard/src/gui/standardfeeddetails.ui" line="37"/>
@@ -9584,7 +9584,7 @@ Ungelesene Nachrichten: %2</translation>
     <message>
       <location filename="../src/librssguard-ttrss/src/gui/ttrssfeeddetails.ui" line="20"/>
       <source>Parent category</source>
-      <translation type="unfinished">Parent category</translation>
+      <translation>Übergeordnete Kategorie</translation>
     </message>
     <message>
       <location filename="../src/librssguard-ttrss/src/gui/ttrssfeeddetails.ui" line="30"/>
