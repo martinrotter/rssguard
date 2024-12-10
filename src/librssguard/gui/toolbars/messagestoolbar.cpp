@@ -278,6 +278,11 @@ void MessagesToolBar::initializeHighlighter() {
                   QVariant::fromValue(MessagesProxyModel::MessageListFilter::ShowUnread),
                   QSL("show_unread"));
   addActionToMenu(m_menuMessageFilter,
+                  qApp->icons()->fromTheme(QSL("mail-mark-read")),
+                  tr("Show read articles"),
+                  QVariant::fromValue(MessagesProxyModel::MessageListFilter::ShowRead),
+                  QSL("show_read"));
+  addActionToMenu(m_menuMessageFilter,
                   qApp->icons()->fromTheme(QSL("mail-mark-important")),
                   tr("Show important articles"),
                   QVariant::fromValue(MessagesProxyModel::MessageListFilter::ShowImportant),

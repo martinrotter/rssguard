@@ -36,6 +36,10 @@ void MessagesProxyModel::initializeFilters() {
     return !m_sourceModel->data(msg_row_index, MSG_DB_READ_INDEX, Qt::ItemDataRole::EditRole).toBool();
   };
 
+  m_filters[MessageListFilter::ShowRead] = [this](int msg_row_index) {
+    return m_sourceModel->data(msg_row_index, MSG_DB_READ_INDEX, Qt::ItemDataRole::EditRole).toBool();
+  };
+
   m_filters[MessageListFilter::ShowImportant] = [this](int msg_row_index) {
     return m_sourceModel->data(msg_row_index, MSG_DB_IMPORTANT_INDEX, Qt::ItemDataRole::EditRole).toBool();
   };
@@ -235,8 +239,8 @@ int MessagesProxyModel::additionalArticleId() const {
   return m_additionalArticleId;
 }
 
-void MessagesProxyModel::setAdditionalArticleId(int newAdditionalArticleId) {
-  m_additionalArticleId = newAdditionalArticleId;
+void MessagesProxyModel::setAdditionalArticleId(int additional_article_id) {
+  m_additionalArticleId = additional_article_id;
 }
 
 void MessagesProxyModel::setMessageListFilter(MessageListFilter filter) {

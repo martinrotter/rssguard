@@ -25,7 +25,8 @@ class MessagesProxyModel : public QSortFilterProxyModel {
       ShowThisWeek = 128,
       ShowLastWeek = 256,
       ShowOnlyWithAttachments = 512,
-      ShowOnlyWithScore = 1024
+      ShowOnlyWithScore = 1024,
+      ShowRead = 2048
     };
 
     explicit MessagesProxyModel(MessagesModel* source_model, QObject* parent = nullptr);
@@ -53,7 +54,7 @@ class MessagesProxyModel : public QSortFilterProxyModel {
     virtual void sort(int column, Qt::SortOrder order = Qt::AscendingOrder);
 
     int additionalArticleId() const;
-    void setAdditionalArticleId(int newAdditionalArticleId);
+    void setAdditionalArticleId(int additional_article_id);
 
   private:
     void initializeFilters();

@@ -158,6 +158,12 @@ if(NOT OS2)
   list(APPEND QT_COMPONENTS Multimedia)
 endif()
 
+if(MINGW AND NO_LITE)
+  message(WARNING "MinGW can only compile lite version of RSS Guard. Switching to it.")
+  set(NO_LITE OFF)
+endif()
+
+
 if(ENABLE_MEDIAPLAYER_QTMULTIMEDIA AND ENABLE_MEDIAPLAYER_LIBMPV)
   message(FATAL_ERROR "You can only enable 1 media player backend.")
 endif()
