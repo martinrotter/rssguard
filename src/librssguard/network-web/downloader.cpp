@@ -63,12 +63,12 @@ void Downloader::geminiError(GeminiClient::NetworkError error, const QString& re
   m_timer->stop();
   m_activeReply = nullptr;
 
-  m_lastContentType = {};
+  m_lastContentType = QString();
   m_lastUrl = m_geminiClient->targetUrl();
   m_lastCookies = {};
   m_lastHeaders = {};
   m_lastHttpStatusCode = 404;
-  m_lastOutputData = {};
+  m_lastOutputData = QByteArray();
   m_lastOutputError = QNetworkReply::NetworkError::UnknownNetworkError;
   m_lastOutputMultipartData = {};
 
