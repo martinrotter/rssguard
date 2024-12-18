@@ -12,7 +12,7 @@ class GeminiParser {
 
   private:
     QString parseLink(const QRegularExpressionMatch& mtch) const;
-    QString parseHeading(const QRegularExpressionMatch& mtch) const;
+    QString parseHeading(const QRegularExpressionMatch& mtch, QString *clean_header = nullptr) const;
     QString parseQuote(const QRegularExpressionMatch& mtch) const;
     QString parseList(const QRegularExpressionMatch& mtch) const;
     QString parseTextInNormalMode(const QString& line) const;

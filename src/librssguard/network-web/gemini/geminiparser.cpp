@@ -20,6 +20,7 @@ QString GeminiParser::geminiToHtml(const QByteArray& gemini_data) {
   static QRegularExpression exp_text(R"()");
 
   QRegularExpressionMatch mtch;
+  QString title;
 
   for (const QString& line : lines) {
     if ((mtch = exp_pre.match(line)).hasMatch()) {
@@ -32,7 +33,7 @@ QString GeminiParser::geminiToHtml(const QByteArray& gemini_data) {
         html += parseLink(mtch);
       }
       else if ((mtch = exp_heading.match(line)).hasMatch()) {
-        html += parseHeading(mtch);
+        html += parseHeading(mtch, title.isEmpty() ? &title : nullptr);
       }
       else if ((mtch = exp_list.match(line)).hasMatch()) {
         html += parseList(mtch);
@@ -49,7 +50,10 @@ QString GeminiParser::geminiToHtml(const QByteArray& gemini_data) {
     }
   }
 
-  return html;
+  return QSL("<html>"
+             "<head><title>%1</title></head>"
+             "<body>%2</body>"
+             "</html>").arg(title, html);
 }
 
 QString GeminiParser::parseLink(const QRegularExpressionMatch& mtch) const {
@@ -59,9 +63,14 @@ QString GeminiParser::parseLink(const QRegularExpressionMatch& mtch) const {
   return QSL("<p>🔗 <a href=\"%1\">%2</a></p>\n").arg(link, name.isEmpty() ? link : name);
 }
 
-QString GeminiParser::parseHeading(const QRegularExpressionMatch& mtch) const {
+QString GeminiParser::parseHeading(const QRegularExpressionMatch& mtch, QString* clean_header) const {
   int level = mtch.captured(1).size();
   QString header = mtch.captured(2);
+
+  if (!header.isEmpty() && clean_header != nullptr) {
+    clean_header->clear();
+    clean_header->append(header);
+  }
 
   return QSL("<h%1>%2</h%1>\n").arg(QString::number(level), header);
 }
