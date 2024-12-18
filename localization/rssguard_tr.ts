@@ -218,7 +218,7 @@ Hata: %1</translation>
     <message>
       <location filename="../src/librssguard/miscellaneous/application.cpp" line="1422"/>
       <source>Node.js</source>
-      <translation type="unfinished">Node.js</translation>
+      <translation>Node.js</translation>
     </message>
     <message>
       <location filename="../src/librssguard/miscellaneous/application.cpp" line="1411"/>
@@ -357,7 +357,7 @@ Lütfen bu bildirim penceresine tıklayarak bu versiyondaki yenilikleri inceleyi
     <message>
       <location filename="../src/librssguard/gui/reusable/articleamountcontrol.cpp" line="16"/>
       <source>All excessive articles are removed automatically by the application, usually after particular feed is fetched. Articles are either completely purged (including articles from recycle bin) from internal database or are just moved to recycle bin.</source>
-      <translation type="unfinished">All excessive articles are removed automatically by the application, usually after particular feed is fetched. Articles are either completely purged (including articles from recycle bin) from internal database or are just moved to recycle bin.</translation>
+      <translation>Tüm istenmeyen makaleler, genellikle belirli bir akış alındıktan sonra uygulama tarafından otomatik olarak kaldırılır. Makaleler ya dahili veri tabanından tamamen temizlenir (geri dönüşüm kutusundaki makaleler dahil) ya da sadece geri dönüşüm kutusuna taşınır.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/reusable/articleamountcontrol.cpp" line="22"/>
@@ -425,7 +425,7 @@ Lütfen bu bildirim penceresine tıklayarak bu versiyondaki yenilikleri inceleyi
     <message>
       <location filename="../src/librssguard/network-web/articleparse.cpp" line="39"/>
       <source>Packages for article-extractor are installed</source>
-      <translation type="unfinished">Packages for article-extractor are installed</translation>
+      <translation>Makale ayıklayıcı için paketler yüklendi</translation>
     </message>
     <message>
       <location filename="../src/librssguard/network-web/articleparse.cpp" line="40"/>
@@ -435,12 +435,12 @@ Lütfen bu bildirim penceresine tıklayarak bu versiyondaki yenilikleri inceleyi
     <message>
       <location filename="../src/librssguard/network-web/articleparse.cpp" line="45"/>
       <source>Packages for article-extractor are installed. You can now use this feature!</source>
-      <translation type="unfinished">Packages for article-extractor are installed. You can now use this feature!</translation>
+      <translation>Makale ayıklayıcı için paketler yüklendi. Artık bu özelliği kullanabilirsiniz!</translation>
     </message>
     <message>
       <location filename="../src/librssguard/network-web/articleparse.cpp" line="62"/>
       <source>Packages for article-extractor are NOT installed</source>
-      <translation type="unfinished">Packages for article-extractor are NOT installed</translation>
+      <translation>Makale ayıklayıcı için paketler yüklü DEĞİL</translation>
     </message>
     <message>
       <location filename="../src/librssguard/network-web/articleparse.cpp" line="63"/>
@@ -450,7 +450,7 @@ Lütfen bu bildirim penceresine tıklayarak bu versiyondaki yenilikleri inceleyi
     <message>
       <location filename="../src/librssguard/network-web/articleparse.cpp" line="69"/>
       <source>Packages for article-extractor are NOT installed. There is error: %1</source>
-      <translation type="unfinished">Packages for article-extractor are NOT installed. There is error: %1</translation>
+      <translation>Makale ayıklayıcı için paketler yüklü DEĞİL. Hata bulunmaktadır: %1</translation>
     </message>
     <message>
       <location filename="../src/librssguard/network-web/articleparse.cpp" line="104"/>
@@ -821,7 +821,7 @@ Ana dizini açmak için buraya tıklayın.</translation>
       <location filename="../src/librssguard/network-web/downloadmanager.cpp" line="602"/>
       <source>Downloading %n file(s)...</source>
       <translation type="unfinished">
-        <numerusform>%n dosya indiriliyor...</numerusform>
+        <numerusform>%n dosya(lar) indiriliyor...</numerusform>
         <numerusform>Downloading %n file(s)...</numerusform>
       </translation>
     </message>
@@ -878,12 +878,12 @@ Ana dizini açmak için buraya tıklayın.</translation>
     <message>
       <location filename="../src/librssguard-gmail/src/gui/emailpreviewer.cpp" line="115"/>
       <source>Attachment cannot be downloaded because you are not logged-in.</source>
-      <translation type="unfinished">Attachment cannot be downloaded because you are not logged-in.</translation>
+      <translation>Giriş yapmadığınız için ek indirilemiyor.</translation>
     </message>
     <message>
       <location filename="../src/librssguard-gmail/src/gui/emailpreviewer.cpp" line="121"/>
       <source>Attachment cannot be downloaded because some general error happened.</source>
-      <translation type="unfinished">Attachment cannot be downloaded because some general error happened.</translation>
+      <translation>Genel bir hata oluştuğundan ek indirilemiyor.</translation>
     </message>
   </context>
   <context>
@@ -919,7 +919,7 @@ Ana dizini açmak için buraya tıklayın.</translation>
     <message>
       <location filename="../src/librssguard/services/abstract/feed.cpp" line="263"/>
       <source>uses global settings, but global auto-fetching of articles is disabled</source>
-      <translation type="unfinished">uses global settings, but global auto-fetching of articles is disabled</translation>
+      <translation>global ayarları kullanır, ancak makalelerin global olarak otomatik içe aktarılması devre dışı bırakılır</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/abstract/feed.cpp" line="287"/>
@@ -940,13 +940,13 @@ Ana dizini açmak için buraya tıklayın.</translation>
       <location filename="../src/librssguard/services/abstract/feed.cpp" line="249"/>
       <source>does not use auto-fetching of articles</source>
       <extracomment>Describes feed auto-update status.</extracomment>
-      <translation type="unfinished">does not use auto-fetching of articles</translation>
+      <translation>makalelerin otomatik içe aktarılmasını kullanmaz</translation>
     </message>
     <message numerus="yes">
       <location filename="../src/librssguard/services/abstract/feed.cpp" line="260"/>
       <source>uses global settings (%n minute(s) to next auto-fetch of articles)</source>
       <translation type="unfinished">
-        <numerusform>uses global settings (%n minute(s) to next auto-fetch of articles)</numerusform>
+        <numerusform>global ayarları kullanır (makalelerin bir sonraki otomatik içe aktarımı için %n dakika(lar))</numerusform>
         <numerusform>uses global settings (%n minute(s) to next auto-fetch of articles)</numerusform>
       </translation>
     </message>
@@ -955,7 +955,7 @@ Ana dizini açmak için buraya tıklayın.</translation>
       <source>uses specific settings (%n minute(s) to next auto-fetching of new articles)</source>
       <extracomment>Describes feed auto-update status.</extracomment>
       <translation type="unfinished">
-        <numerusform>uses specific settings (%n minute(s) to next auto-fetching of new articles)</numerusform>
+        <numerusform>özel ayarlar kullanır (yeni makalelerin bir sonraki otomatik alınmasına kadar %n dakika(lar))</numerusform>
         <numerusform>uses specific settings (%n minute(s) to next auto-fetching of new articles)</numerusform>
       </translation>
     </message>
@@ -967,7 +967,7 @@ Ana dizini açmak için buraya tıklayın.</translation>
     <message>
       <location filename="../src/librssguard/services/abstract/feed.cpp" line="299"/>
       <source>parsing error</source>
-      <translation type="unfinished">parsing error</translation>
+      <translation>çözümleme hatası</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/abstract/feed.cpp" line="302"/>
@@ -1026,7 +1026,7 @@ Item ID: %5</translation>
     <message>
       <location filename="../src/librssguard/miscellaneous/feedreader.cpp" line="279"/>
       <source>Feed fetching is paused</source>
-      <translation type="unfinished">Feed fetching is paused</translation>
+      <translation>Akış çekme işlemi duraklatıldı</translation>
     </message>
     <message>
       <location filename="../src/librssguard/miscellaneous/feedreader.cpp" line="280"/>
@@ -1049,7 +1049,7 @@ Item ID: %5</translation>
     <message>
       <location filename="../src/librssguard/miscellaneous/feedreader.cpp" line="93"/>
       <source>Cannot fetch articles at this point</source>
-      <translation type="unfinished">Cannot fetch articles at this point</translation>
+      <translation>Şu anda makaleler çekilemiyor</translation>
     </message>
     <message>
       <location filename="../src/librssguard/miscellaneous/feedreader.cpp" line="94"/>
@@ -1068,7 +1068,7 @@ Item ID: %5</translation>
       <location filename="../src/librssguard-feedly/src/gui/feedlyaccountdetails.ui" line="27"/>
       <location filename="../src/librssguard-feedly/src/gui/feedlyaccountdetails.cpp" line="28"/>
       <source>Developer access token</source>
-      <translation type="unfinished">Developer access token</translation>
+      <translation>Geliştirici erişim jetonu</translation>
     </message>
     <message>
       <location filename="../src/librssguard-feedly/src/gui/feedlyaccountdetails.ui" line="36"/>
@@ -1078,22 +1078,22 @@ Item ID: %5</translation>
     <message>
       <location filename="../src/librssguard-feedly/src/gui/feedlyaccountdetails.ui" line="58"/>
       <source>Intelligent synchronization algorithm</source>
-      <translation type="unfinished">Intelligent synchronization algorithm</translation>
+      <translation>Akıllı senkronizasyon algoritması</translation>
     </message>
     <message>
       <location filename="../src/librssguard-feedly/src/gui/feedlyaccountdetails.ui" line="70"/>
       <source>Only download newest X articles per feed</source>
-      <translation type="unfinished">Only download newest X articles per feed</translation>
+      <translation>Akış başına yalnızca en yeni X makaleyi indirin</translation>
     </message>
     <message>
       <location filename="../src/librssguard-feedly/src/gui/feedlyaccountdetails.ui" line="110"/>
       <source>&amp;Login</source>
-      <translation type="unfinished">&amp;Login</translation>
+      <translation>&amp;Giriş</translation>
     </message>
     <message>
       <location filename="../src/librssguard-feedly/src/gui/feedlyaccountdetails.ui" line="51"/>
       <source>Download unread articles only</source>
-      <translation type="unfinished">Download unread articles only</translation>
+      <translation>Yalnızca okunmamış makaleleri indirin</translation>
     </message>
     <message>
       <location filename="../src/librssguard-feedly/src/gui/feedlyaccountdetails.cpp" line="27"/>
@@ -1231,12 +1231,12 @@ Item ID: %5</translation>
     <message>
       <location filename="../src/librssguard-standard/src/standardfeedsimportexportmodel.cpp" line="325"/>
       <source>OPML document contains errors</source>
-      <translation type="unfinished">OPML document contains errors</translation>
+      <translation>OPML belgesinde hatalar var</translation>
     </message>
     <message>
       <location filename="../src/librssguard-standard/src/standardfeedsimportexportmodel.cpp" line="330"/>
       <source>this is likely not OPML document</source>
-      <translation type="unfinished">this is likely not OPML document</translation>
+      <translation>bu muhtemelen OPML belgesi değil</translation>
     </message>
     <message>
       <location filename="../src/librssguard-standard/src/standardfeedsimportexportmodel.cpp" line="409"/>
@@ -1259,7 +1259,7 @@ Item ID: %5</translation>
     <message>
       <location filename="../src/librssguard/core/feedsmodel.cpp" line="31"/>
       <source>Root</source>
-      <translation type="unfinished">Root</translation>
+      <translation>Kök</translation>
     </message>
     <message>
       <location filename="../src/librssguard/core/feedsmodel.cpp" line="40"/>
@@ -4145,17 +4145,17 @@ You can install it now.</translation>
     <message>
       <location filename="../src/librssguard-gmail/src/gui/gmailaccountdetails.ui" line="110"/>
       <source>Only download newest X articles per feed</source>
-      <translation type="unfinished">Only download newest X articles per feed</translation>
+      <translation>Akış başına yalnızca en yeni X makaleyi indirin</translation>
     </message>
     <message>
       <location filename="../src/librssguard-gmail/src/gui/gmailaccountdetails.ui" line="134"/>
       <source>&amp;Login</source>
-      <translation type="unfinished">&amp;Login</translation>
+      <translation>&amp;Giriş</translation>
     </message>
     <message>
       <location filename="../src/librssguard-gmail/src/gui/gmailaccountdetails.ui" line="163"/>
       <source>Download unread articles only</source>
-      <translation type="unfinished">Download unread articles only</translation>
+      <translation>Yalnızca okunmamış makaleleri indirin</translation>
     </message>
   </context>
   <context>
@@ -4409,12 +4409,12 @@ Login tokens expiration: %2</translation>
     <message>
       <location filename="../src/librssguard-greader/src/gui/greaderaccountdetails.ui" line="40"/>
       <source>Download unread articles only</source>
-      <translation type="unfinished">Download unread articles only</translation>
+      <translation>Yalnızca okunmamış makaleleri indirin</translation>
     </message>
     <message>
       <location filename="../src/librssguard-greader/src/gui/greaderaccountdetails.ui" line="47"/>
       <source>Intelligent synchronization algorithm</source>
-      <translation type="unfinished">Intelligent synchronization algorithm</translation>
+      <translation>Akıllı senkronizasyon algoritması</translation>
     </message>
     <message>
       <location filename="../src/librssguard-greader/src/gui/greaderaccountdetails.ui" line="56"/>
@@ -4424,7 +4424,7 @@ Login tokens expiration: %2</translation>
     <message>
       <location filename="../src/librssguard-greader/src/gui/greaderaccountdetails.ui" line="74"/>
       <source>Only download newest X articles per feed</source>
-      <translation type="unfinished">Only download newest X articles per feed</translation>
+      <translation>Akış başına yalnızca en yeni X makaleyi indirin</translation>
     </message>
     <message>
       <location filename="../src/librssguard-greader/src/gui/greaderaccountdetails.ui" line="95"/>
@@ -5975,12 +5975,12 @@ Login tokens expiration: %2</translation>
     <message>
       <location filename="../src/librssguard-nextcloud/src/gui/nextcloudaccountdetails.ui" line="34"/>
       <source>Download unread articles only</source>
-      <translation type="unfinished">Download unread articles only</translation>
+      <translation>Yalnızca okunmamış makaleleri indirin</translation>
     </message>
     <message>
       <location filename="../src/librssguard-nextcloud/src/gui/nextcloudaccountdetails.ui" line="43"/>
       <source>Only download newest X articles per feed</source>
-      <translation type="unfinished">Only download newest X articles per feed</translation>
+      <translation>Akış başına yalnızca en yeni X makaleyi indirin</translation>
     </message>
     <message>
       <location filename="../src/librssguard-nextcloud/src/gui/nextcloudaccountdetails.ui" line="81"/>
@@ -6134,7 +6134,7 @@ Login tokens expiration: %2</translation>
     <message>
       <location filename="../src/librssguard/miscellaneous/nodejs.cpp" line="161"/>
       <source>Node.js</source>
-      <translation type="unfinished">Node.js</translation>
+      <translation>Node.js</translation>
     </message>
     <message>
       <location filename="../src/librssguard/miscellaneous/nodejs.cpp" line="162"/>
@@ -6712,17 +6712,17 @@ List of supported readers:</translation>
     <message>
       <location filename="../src/librssguard-reddit/src/gui/redditaccountdetails.ui" line="110"/>
       <source>Only download newest X articles per feed</source>
-      <translation type="unfinished">Only download newest X articles per feed</translation>
+      <translation>Akış başına yalnızca en yeni X makaleyi indirin</translation>
     </message>
     <message>
       <location filename="../src/librssguard-reddit/src/gui/redditaccountdetails.ui" line="134"/>
       <source>&amp;Login</source>
-      <translation type="unfinished">&amp;Login</translation>
+      <translation>&amp;Giriş</translation>
     </message>
     <message>
       <location filename="../src/librssguard-reddit/src/gui/redditaccountdetails.ui" line="163"/>
       <source>Download unread articles only</source>
-      <translation type="unfinished">Download unread articles only</translation>
+      <translation>Yalnızca okunmamış makaleleri indirin</translation>
     </message>
     <message>
       <location filename="../src/librssguard-reddit/src/gui/redditaccountdetails.cpp" line="15"/>
@@ -9492,17 +9492,17 @@ Unread news: %2</translation>
     <message>
       <location filename="../src/librssguard-ttrss/src/gui/ttrssaccountdetails.ui" line="84"/>
       <source>Download unread articles only</source>
-      <translation type="unfinished">Download unread articles only</translation>
+      <translation>Yalnızca okunmamış makaleleri indirin</translation>
     </message>
     <message>
       <location filename="../src/librssguard-ttrss/src/gui/ttrssaccountdetails.ui" line="49"/>
       <source>Only download newest X articles per feed</source>
-      <translation type="unfinished">Only download newest X articles per feed</translation>
+      <translation>Akış başına yalnızca en yeni X makaleyi indirin</translation>
     </message>
     <message>
       <location filename="../src/librssguard-ttrss/src/gui/ttrssaccountdetails.ui" line="91"/>
       <source>Intelligent synchronization algorithm</source>
-      <translation type="unfinished">Intelligent synchronization algorithm</translation>
+      <translation>Akıllı senkronizasyon algoritması</translation>
     </message>
     <message>
       <location filename="../src/librssguard-ttrss/src/gui/ttrssaccountdetails.ui" line="98"/>
