@@ -20,4 +20,5 @@ resources/skins/*/*.map
 aqtinstall.log
 .sass-cache
 build-dir/
+build/
 docs/build

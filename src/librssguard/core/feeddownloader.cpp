@@ -267,6 +267,7 @@ void FeedDownloader::updateOneFeed(ServiceRoot* acc,
                << " microseconds.";
 
       QList<Message> read_msgs, important_msgs;
+      QHash<int, bool> loaded_filters;
 
       for (int i = 0; i < msgs.size(); i++) {
         Message msg_original(msgs[i]);
@@ -295,7 +296,10 @@ void FeedDownloader::updateOneFeed(ServiceRoot* acc,
           tmr.restart();
 
           try {
-            MessageObject::FilteringAction decision = msg_filter->filterMessage(&filter_engine);
+            MessageObject::FilteringAction decision =
+              msg_filter->filterMessage(&filter_engine, !loaded_filters.contains(msg_filter->id()));
+
+            loaded_filters.insert(msg_filter->id(), true);
 
             qDebugNN << LOGSEC_FEEDDOWNLOADER << "Running filter script, it took " << tmr.nsecsElapsed() / 1000
                      << " microseconds.";

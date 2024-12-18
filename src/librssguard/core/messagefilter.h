@@ -16,7 +16,7 @@ class RSSGUARD_DLLSPEC MessageFilter : public QObject {
   public:
     explicit MessageFilter(int id = -1, QObject* parent = nullptr);
 
-    MessageObject::FilteringAction filterMessage(QJSEngine* engine);
+    MessageObject::FilteringAction filterMessage(QJSEngine* engine, bool evaluate_filter = true);
 
     int id() const;
     void setId(int id);

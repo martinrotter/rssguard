@@ -2,7 +2,7 @@
   {
     "title": "GNU GPL v3.0",
     "file": "COPYING_GNU_GPL",
-    "components": "RSS Guard, mimesis, Numix"
+    "components": "RSS Guard, mimesis, Numix, Kristall/geminiclient"
   },
   {
     "title": "GNU LGPL v3.0",

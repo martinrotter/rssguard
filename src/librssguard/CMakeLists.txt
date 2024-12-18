@@ -253,6 +253,8 @@ set(SOURCES
   network-web/adblock/adblockmanager.h
   network-web/adblock/adblockrequestinfo.cpp
   network-web/adblock/adblockrequestinfo.h
+  network-web/gemini/geminiclient.cpp
+  network-web/gemini/geminiclient.h
   network-web/apiserver.cpp
   network-web/apiserver.h
   network-web/articleparse.cpp

@@ -30,6 +30,7 @@
 #include "miscellaneous/settings.h"
 #include "network-web/adblock/adblockicon.h"
 #include "network-web/adblock/adblockmanager.h"
+#include "network-web/gemini/geminiclient.h"
 #include "network-web/webfactory.h"
 #include "services/abstract/serviceroot.h"
 
@@ -97,20 +98,6 @@ Application::Application(const QString& id, int& argc, char** argv, const QStrin
 #endif
 #endif
 
-  /*
-  QString aa = "Fri, 12 Apr 2024 5:23:57 GMT";
-  QDateTimeParser par(QMetaType::QDateTime, QDateTimeParser::FromString, QCalendar());
-
-  par.setDefaultLocale(QLocale::c());
-
-  QString st = "ddd, dd MMM yyyy H:m:s";
-  bool parsed = par.parseFormat(st);
-  QDateTime dt;
-  par.fromString(aa, &dt);
-
-  // QDateTime tim = QDateTime::fromString(aa, form);
-  QString check = dt.toString();
-*/
   QString custom_ua;
 
   parseCmdArgumentsFromMyInstance(raw_cli_args, custom_ua);
@@ -1390,13 +1377,20 @@ void Application::fillCmdArgumentsParser(QCommandLineParser& parser) {
                                       .arg(MAX_THREADPOOL_THREADS),
                                     QSL("count"));
 
-  parser.addOptions({
-    help, version, log_file, custom_data_folder, disable_singleinstance, disable_only_debug, disable_debug,
+  parser.addOptions({help,
+                     version,
+                     log_file,
+                     custom_data_folder,
+                     disable_singleinstance,
+                     disable_only_debug,
+                     disable_debug,
 #if defined(NO_LITE)
-      force_lite,
+                     force_lite,
 #endif
-      forced_style, adblock_port, custom_ua, custom_threads
-  });
+                     forced_style,
+                     adblock_port,
+                     custom_ua,
+                     custom_threads});
   parser.addPositionalArgument(QSL("urls"),
                                QSL("List of URL addresses pointing to individual online feeds which should be added."),
                                QSL("[url-1 ... url-n]"));
