@@ -49,8 +49,6 @@ QString GeminiParser::geminiToHtml(const QByteArray& gemini_data) {
     }
   }
 
-  IOFactory::writeFile("a.gmi", html.toUtf8());
-
   return html;
 }
 
