@@ -30,7 +30,6 @@
 #include "miscellaneous/settings.h"
 #include "network-web/adblock/adblockicon.h"
 #include "network-web/adblock/adblockmanager.h"
-#include "network-web/gemini/geminiclient.h"
 #include "network-web/webfactory.h"
 #include "services/abstract/serviceroot.h"
 

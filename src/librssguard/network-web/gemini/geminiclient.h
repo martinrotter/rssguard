@@ -1,5 +1,9 @@
-#ifndef GEMINICLIENT_HPP
-#define GEMINICLIENT_HPP
+// For license of this file, see <project-root-folder>/LICENSE.md.
+//
+// This file is heavily inspired by https://github.com/ikskuh/kristall.
+
+#ifndef GEMINICLIENT_H
+#define GEMINICLIENT_H
 
 #include <QMimeType>
 #include <QObject>
@@ -33,9 +37,7 @@ struct CryptoIdentity {
     //! the certificate will be automatically enabled for hosts matching the filter.
     bool auto_enable = false;
 
-    bool isValid() const {
-      return (not this->certificate.isNull()) and (not this->private_key.isNull());
-    }
+    bool isValid() const;
 
     //! returns true if a host does not match the filter criterion
     bool isHostFiltered(const QUrl& url) const;
@@ -82,14 +84,17 @@ class GeminiClient : public QObject {
     explicit GeminiClient(QObject* parent = nullptr);
     virtual ~GeminiClient();
 
-    bool supportsScheme(const QString& scheme) const;
+    bool supportsUrl(const QString& url) const;
+    bool supportsUrl(const QUrl& url) const;
 
     bool startRequest(const QUrl& url, RequestOptions options);
-    bool isInProgress() const;
+    bool inProgress() const;
     bool cancelRequest();
 
     bool enableClientCertificate(const CryptoIdentity& ident);
     void disableClientCertificate();
+
+    QUrl targetUrl() const;
 
   signals:
     //! We successfully transferred some bytes from the server
@@ -127,16 +132,16 @@ class GeminiClient : public QObject {
     void socketError(QAbstractSocket::SocketError socketError);
 
   private:
-    bool is_receiving_body;
-    bool suppress_socket_tls_error;
-    bool is_error_state;
+    bool m_isReceivingBody;
+    bool m_suppressSocketTlsErrors;
+    bool m_inErrorState;
 
-    QUrl target_url;
-    QSslSocket socket;
-    QByteArray buffer;
-    QByteArray body;
-    QString mime_type;
-    RequestOptions options;
+    QUrl m_targetUrl;
+    QSslSocket m_socket;
+    QByteArray m_buffer;
+    QByteArray m_body;
+    QString m_mimeType;
+    RequestOptions m_options;
 };
 
-#endif // GEMINICLIENT_HPP
+#endif // GEMINICLIENT_H

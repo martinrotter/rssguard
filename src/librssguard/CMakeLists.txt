@@ -255,6 +255,8 @@ set(SOURCES
   network-web/adblock/adblockrequestinfo.h
   network-web/gemini/geminiclient.cpp
   network-web/gemini/geminiclient.h
+  network-web/gemini/geminiparser.cpp
+  network-web/gemini/geminiparser.h
   network-web/apiserver.cpp
   network-web/apiserver.h
   network-web/articleparse.cpp

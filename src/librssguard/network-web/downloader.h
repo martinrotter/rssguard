@@ -4,6 +4,7 @@
 #define DOWNLOADER_H
 
 #include "definitions/definitions.h"
+#include "network-web/gemini/geminiclient.h"
 #include "network-web/httpresponse.h"
 
 #include <QHttpMultiPart>
@@ -74,6 +75,9 @@ class Downloader : public QObject {
     void completed(const QUrl& url, QNetworkReply::NetworkError status, int http_code, QByteArray contents = {});
 
   private slots:
+    void geminiRedirect(const QUrl& uri, bool is_permanent);
+    void geminiFinished(const QByteArray& data, const QString& mime);
+    void geminiError(GeminiClient::NetworkError error, const QString& reason);
 
     // Called when current reply is processed.
     void finished();
@@ -97,8 +101,10 @@ class Downloader : public QObject {
     void runPostRequest(const QNetworkRequest& request, QHttpMultiPart* multipart_data);
     void runPostRequest(const QNetworkRequest& request, const QByteArray& data);
     void runGetRequest(const QNetworkRequest& request);
+    void runGeminiRequest(const QUrl& url);
 
   private:
+    GeminiClient* m_geminiClient;
     QNetworkReply* m_activeReply;
     QScopedPointer<SilentNetworkAccessManager> m_downloadManager;
     QTimer* m_timer;

@@ -4,6 +4,7 @@
 
 #include "miscellaneous/application.h"
 #include "network-web/cookiejar.h"
+#include "network-web/gemini/geminiparser.h"
 #include "network-web/networkfactory.h"
 #include "network-web/silentnetworkaccessmanager.h"
 #include "network-web/webfactory.h"
@@ -14,14 +15,19 @@
 #include <QTimer>
 
 Downloader::Downloader(QObject* parent)
-  : QObject(parent), m_activeReply(nullptr), m_downloadManager(new SilentNetworkAccessManager(this)),
-    m_timer(new QTimer(this)), m_inputData(QByteArray()), m_inputMultipartData(nullptr), m_targetProtected(false),
-    m_targetUsername(QString()), m_targetPassword(QString()), m_lastOutputData({}),
-    m_lastOutputError(QNetworkReply::NetworkError::NoError), m_lastHttpStatusCode(0), m_lastHeaders({}) {
+  : QObject(parent), m_geminiClient(new GeminiClient(this)), m_activeReply(nullptr),
+    m_downloadManager(new SilentNetworkAccessManager(this)), m_timer(new QTimer(this)), m_inputData(QByteArray()),
+    m_inputMultipartData(nullptr), m_targetProtected(false), m_targetUsername(QString()), m_targetPassword(QString()),
+    m_lastOutputData({}), m_lastOutputError(QNetworkReply::NetworkError::NoError), m_lastHttpStatusCode(0),
+    m_lastHeaders({}) {
   m_timer->setInterval(DOWNLOAD_TIMEOUT);
   m_timer->setSingleShot(true);
 
   connect(m_timer, &QTimer::timeout, this, &Downloader::cancel);
+
+  connect(m_geminiClient, &GeminiClient::redirected, this, &Downloader::geminiRedirect);
+  connect(m_geminiClient, &GeminiClient::requestComplete, this, &Downloader::geminiFinished);
+  connect(m_geminiClient, &GeminiClient::networkError, this, &Downloader::geminiError);
 
   m_downloadManager->setCookieJar(qApp->web()->cookieJar());
   qApp->web()->cookieJar()->setParent(nullptr);
@@ -29,6 +35,44 @@ Downloader::Downloader(QObject* parent)
 
 Downloader::~Downloader() {
   qDebugNN << LOGSEC_NETWORK << "Destroying Downloader instance.";
+}
+
+void Downloader::geminiFinished(const QByteArray& data, const QString& mime) {
+  m_timer->stop();
+  m_activeReply = nullptr;
+
+  m_lastContentType = mime;
+  m_lastUrl = m_geminiClient->targetUrl();
+  m_lastCookies = {};
+  m_lastHeaders = {};
+  m_lastHttpStatusCode = 0;
+  m_lastOutputError = QNetworkReply::NetworkError::NoError;
+  m_lastOutputMultipartData = {};
+
+  if (mime.startsWith(QSL("text/gemini"))) {
+    m_lastOutputData = GeminiParser().geminiToHtml(data).toUtf8();
+  }
+  else {
+    m_lastOutputData = data;
+  }
+
+  emit completed(m_lastUrl, m_lastOutputError, m_lastHttpStatusCode, m_lastOutputData);
+}
+
+void Downloader::geminiError(GeminiClient::NetworkError error, const QString& reason) {
+  m_timer->stop();
+  m_activeReply = nullptr;
+
+  m_lastContentType = {};
+  m_lastUrl = m_geminiClient->targetUrl();
+  m_lastCookies = {};
+  m_lastHeaders = {};
+  m_lastHttpStatusCode = 404;
+  m_lastOutputData = {};
+  m_lastOutputError = QNetworkReply::NetworkError::UnknownNetworkError;
+  m_lastOutputMultipartData = {};
+
+  emit completed(m_lastUrl, m_lastOutputError, m_lastHttpStatusCode);
 }
 
 void Downloader::downloadFile(const QString& url,
@@ -80,6 +124,19 @@ void Downloader::manipulateData(const QString& url,
   manipulateData(url, operation, data, nullptr, timeout, protected_contents, username, password);
 }
 
+void Downloader::geminiRedirect(const QUrl& uri, bool is_permanent) {
+  m_timer->stop();
+
+  QUrl new_url = m_geminiClient->targetUrl().resolved(uri);
+
+  runGeminiRequest(new_url);
+}
+
+void Downloader::runGeminiRequest(const QUrl& url) {
+  m_timer->start();
+  m_geminiClient->startRequest(url, GeminiClient::RequestOptions::IgnoreTlsErrors);
+}
+
 void Downloader::manipulateData(const QString& url,
                                 QNetworkAccessManager::Operation operation,
                                 const QByteArray& data,
@@ -89,48 +146,57 @@ void Downloader::manipulateData(const QString& url,
                                 const QString& username,
                                 const QString& password) {
   QString sanitized_url = NetworkFactory::sanitizeUrl(url);
-  auto cookies = CookieJar::extractCookiesFromUrl(sanitized_url);
 
-  if (!cookies.isEmpty()) {
-    qApp->web()->cookieJar()->setCookiesFromUrl(cookies, sanitized_url);
+  if (m_geminiClient->supportsUrl(sanitized_url)) {
+    QUrl gemini_url = QUrl::fromUserInput(sanitized_url);
+
+    runGeminiRequest(gemini_url);
   }
+  else {
 
-  QNetworkRequest request;
-  QHashIterator<QByteArray, QByteArray> i(m_customHeaders);
+    auto cookies = CookieJar::extractCookiesFromUrl(sanitized_url);
 
-  while (i.hasNext()) {
-    i.next();
-    request.setRawHeader(i.key(), i.value());
-  }
-
-  m_inputData = data;
-  m_inputMultipartData = multipart_data;
-
-  // Set url for this request and fire it up.
-  m_timer->setInterval(timeout);
-
-  request.setUrl(qApp->web()->processFeedUriScheme(sanitized_url));
-
-  m_targetProtected = protected_contents;
-  m_targetUsername = username;
-  m_targetPassword = password;
-
-  if (operation == QNetworkAccessManager::Operation::PostOperation) {
-    if (m_inputMultipartData == nullptr) {
-      runPostRequest(request, m_inputData);
+    if (!cookies.isEmpty()) {
+      qApp->web()->cookieJar()->setCookiesFromUrl(cookies, sanitized_url);
     }
-    else {
-      runPostRequest(request, m_inputMultipartData);
+
+    QNetworkRequest request;
+    QHashIterator<QByteArray, QByteArray> i(m_customHeaders);
+
+    while (i.hasNext()) {
+      i.next();
+      request.setRawHeader(i.key(), i.value());
     }
-  }
-  else if (operation == QNetworkAccessManager::GetOperation) {
-    runGetRequest(request);
-  }
-  else if (operation == QNetworkAccessManager::PutOperation) {
-    runPutRequest(request, m_inputData);
-  }
-  else if (operation == QNetworkAccessManager::DeleteOperation) {
-    runDeleteRequest(request);
+
+    m_inputData = data;
+    m_inputMultipartData = multipart_data;
+
+    // Set url for this request and fire it up.
+    m_timer->setInterval(timeout);
+
+    request.setUrl(qApp->web()->processFeedUriScheme(sanitized_url));
+
+    m_targetProtected = protected_contents;
+    m_targetUsername = username;
+    m_targetPassword = password;
+
+    if (operation == QNetworkAccessManager::Operation::PostOperation) {
+      if (m_inputMultipartData == nullptr) {
+        runPostRequest(request, m_inputData);
+      }
+      else {
+        runPostRequest(request, m_inputMultipartData);
+      }
+    }
+    else if (operation == QNetworkAccessManager::GetOperation) {
+      runGetRequest(request);
+    }
+    else if (operation == QNetworkAccessManager::PutOperation) {
+      runPutRequest(request, m_inputData);
+    }
+    else if (operation == QNetworkAccessManager::DeleteOperation) {
+      runDeleteRequest(request);
+    }
   }
 }
 
@@ -404,6 +470,9 @@ void Downloader::cancel() {
   if (m_activeReply != nullptr) {
     // Download action timed-out, too slow connection or target is not reachable.
     m_activeReply->abort();
+  }
+  else {
+    m_geminiClient->cancelRequest();
   }
 }
 
