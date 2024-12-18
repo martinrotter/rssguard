@@ -283,7 +283,7 @@ void GeminiClient::socketReadyRead() {
 
           return;
         }
-        if (!isdigit(m_buffer[0])) {
+        if (!std::isdigit(m_buffer[0])) {
           m_socket.close();
 
           qDebug() << m_buffer;
@@ -292,7 +292,7 @@ void GeminiClient::socketReadyRead() {
 
           return;
         }
-        if (not isdigit(m_buffer[1])) {
+        if (!std::isdigit(m_buffer[1])) {
           m_socket.close();
 
           qDebug() << m_buffer;
@@ -304,7 +304,7 @@ void GeminiClient::socketReadyRead() {
 
         // TODO: Implement stricter version
         // if(buffer[2] != ' ') {
-        if (!isspace(m_buffer[2])) {
+        if (!std::isspace(m_buffer[2])) {
           m_socket.close();
 
           qDebug() << m_buffer;
