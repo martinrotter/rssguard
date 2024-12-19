@@ -19,6 +19,8 @@ RSS Guard is a simple RSS/ATOM feed reader for Windows, Linux, BSD, OS/2 or macO
 
 RSS Guard is also podcast player as it can play everything via its built-in `mpv`-based (or `ffmpeg`-based) media player.
 
+Also, RSS Guard has built-in support for [Gemini](https://geminiprotocol.net) protocol and hypertext format, so it can very well act as reliable cross-platform Gemini client!
+
 ![RSS Guard](resources/graphics/official_pictures/main-window-linux.png)
 
 ## Contributing to RSS Guard

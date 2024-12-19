@@ -40,7 +40,7 @@ Passed article also offers a special function:
 Boolean MessageObject.isAlreadyInDatabase(DuplicateCheck)
 ```
 
-which allows you to perform runtime check for existence of the article in RSS Guards database. Parameter is the value from enumeration `DuplicateCheck`. It specifies how exactly the article should match.
+which allows you to perform runtime check for existence of the article in RSS Guard database. Parameter is the value from enumeration `DuplicateCheck`. It specifies how exactly the article should match.
 
 For example, if you want to check if there is already another article by the same author in a database, you should call `msg.isAlreadyInDatabase(MessageObject.SameAuthor)`.  
 The values of enumeration can be combined in a single call with the [bitwise OR](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Bitwise_OR) (`|`) operator, like this:

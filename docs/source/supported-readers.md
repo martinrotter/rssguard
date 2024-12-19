@@ -8,6 +8,8 @@ RSS Guard is multi-account application and supports many web-based feed readers 
 * [JSON](https://www.jsonfeed.org)
 * [Sitemap](https://en.wikipedia.org/wiki/Sitemaps) (including Sitemap index discovery and compressed sitemaps)
 
+RSS Guard has also built-in support for [Gemini](https://geminiprotocol.net) protocol and hypertext format, so it can very well act as reliable cross-platform Gemini client! All you need to do is to make sure that proper `gemini://` scheme is used in your URLs. Gemini protocol is also used by internal feed fetching network stack, so you can even fetch feeds via the protocol.
+
 When it comes to online web-based feed readers, these are supported:
 
 | Service | Two-way Synchronization | Intelligent Synchronization Algorithm (ISA) [^1] | Synchronized Labels [^2] | OAuth [^3] |

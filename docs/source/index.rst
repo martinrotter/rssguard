@@ -1,4 +1,4 @@
-RSS Guards Documentation!
+RSS Guard Documentation!
 =========================
 
 .. toctree::
