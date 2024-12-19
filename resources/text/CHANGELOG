@@ -1,3 +1,24 @@
+4.8.0
+-----
+
+RSS Guard is feed reader and podcast player and now also becomes [Gemini](https://geminiprotocol.net) client! Spread the word!
+
+Added:
+* Support for Gemini protocol and gemtext markup files. (#1550)
+* It is now possible to pause feed fetching. (#970)
+* Reddit URLs are now parsed during feed discovery and found feed links are processed. (#1530)
+* YouTube URLs are now parsed during feed discovery and found feed links are processed. (#1532)
+* Click article icon in article list now switches read/unread state, the same way as clicking "starred" icon works. (#1521)
+* Some RTL-related things were added. (#1371)
+* User can now manually specify custom HTTP headers to be sent when fetching individual feeds. (f1d5c7d)
+* Sounds of notifications can now be individually switched off. (6fa233f1e)
+* Image caching in built-in LITE web viewer now takes image size into account, thus providing better scaling and visual UX. (4e698c983)
+* In "Discover feeds" dialog, when mouse hovering above found feeds, more info is shown in tooltips. (5664b39e6)
+
+Fixed:
+* Compilation with MinGW compiler is now working without problems. Also MSYS2-FHS-related changes were applied. (#1540)
+* Reduce number of duplicate feeds found in "Discover feeds" feature. (793cbcbf5, 78dc97f23)
+
 4.7.4
 -----
 
