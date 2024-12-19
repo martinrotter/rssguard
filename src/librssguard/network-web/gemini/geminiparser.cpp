@@ -129,7 +129,7 @@ QString GeminiParser::parseLink(const QRegularExpressionMatch& mtch) const {
   QString link = mtch.captured(1);
   QString name = mtch.captured(2);
 
-  return QSL("<p>🔗 <a href=\"%1\">%2</a></p>\n").arg(link, name.isEmpty() ? link : name);
+  return QSL("<p>&#128279; <a href=\"%1\">%2</a></p>\n").arg(link, name.isEmpty() ? link : name);
 }
 
 QString GeminiParser::parseHeading(const QRegularExpressionMatch& mtch, QString* clean_header) const {
@@ -147,7 +147,7 @@ QString GeminiParser::parseHeading(const QRegularExpressionMatch& mtch, QString*
 QString GeminiParser::parseQuote(const QRegularExpressionMatch& mtch) const {
   QString text = mtch.captured(1);
 
-  return QSL("<div>%1</div>\n").arg(text.isEmpty() ? QString() : QSL("“%1”").arg(text));
+  return QSL("<div>%1</div>\n").arg(text.isEmpty() ? QString() : QSL("&#8220;%1&#8221;").arg(text));
 }
 
 QString GeminiParser::parseList(const QRegularExpressionMatch& mtch) const {

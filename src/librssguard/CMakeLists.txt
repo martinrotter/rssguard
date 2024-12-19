@@ -443,6 +443,8 @@ if(NO_LITE)
     network-web/webengine/urlinterceptor.h
     network-web/webengine/webenginepage.cpp
     network-web/webengine/webenginepage.h
+    network-web/gemini/geminischemehandler.cpp
+    network-web/gemini/geminischemehandler.h
   )
 endif()
 

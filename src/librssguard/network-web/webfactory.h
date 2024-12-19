@@ -13,6 +13,7 @@ class QWebEngineProfile;
 class QWebEngineSettings;
 class QAction;
 class NetworkUrlInterceptor;
+class GeminiSchemeHandler;
 #endif
 
 class QMenu;
@@ -92,6 +93,7 @@ class RSSGUARD_DLLSPEC WebFactory : public QObject {
     QWebEngineProfile* m_engineProfile;
     NetworkUrlInterceptor* m_urlInterceptor;
     QAction* m_engineSettings;
+    GeminiSchemeHandler* m_geminiHandler;
 #endif
 
     ApiServer* m_apiServer;

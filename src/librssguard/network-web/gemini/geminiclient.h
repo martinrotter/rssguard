@@ -12,6 +12,8 @@
 #include <QSslSocket>
 #include <QUrl>
 
+#define GEMINI_MIME_TYPE "text/gemini"
+
 //! Cryptographic user identitiy consisting
 //! of a key-certificate pair and some user information.
 struct CryptoIdentity {

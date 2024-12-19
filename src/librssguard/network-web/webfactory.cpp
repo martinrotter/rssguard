@@ -17,6 +17,7 @@
 #include <QUrl>
 
 #if defined(NO_LITE)
+#include "network-web/gemini/geminischemehandler.h"
 #include "network-web/webengine/networkurlinterceptor.h"
 
 #if QT_VERSION_MAJOR == 6
@@ -40,6 +41,16 @@ WebFactory::WebFactory(QObject* parent) : QObject(parent), m_apiServer(nullptr),
   }
 
 #if defined(NO_LITE)
+
+  QWebEngineUrlScheme gemini_scheme("gemini");
+
+  gemini_scheme.setSyntax(QWebEngineUrlScheme::Syntax::Host);
+  // gemini_scheme.setFlags(QWebEngineUrlScheme::Flag::SecureScheme);
+
+  QWebEngineUrlScheme::registerScheme(gemini_scheme);
+
+  m_geminiHandler = new GeminiSchemeHandler(this);
+
   if (qApp->settings()->value(GROUP(Browser), SETTING(Browser::DisableCache)).toBool()) {
     qWarningNN << LOGSEC_NETWORK << "Using off-the-record WebEngine profile.";
 
@@ -48,6 +59,8 @@ WebFactory::WebFactory(QObject* parent) : QObject(parent), m_apiServer(nullptr),
   else {
     m_engineProfile = new QWebEngineProfile(QSL(APP_LOW_NAME), this);
   }
+
+  m_engineProfile->installUrlSchemeHandler("gemini", m_geminiHandler);
 
   m_engineSettings = nullptr;
   m_urlInterceptor = new NetworkUrlInterceptor(this);

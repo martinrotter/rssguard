@@ -49,7 +49,7 @@ void Downloader::geminiFinished(const QByteArray& data, const QString& mime) {
   m_lastOutputError = QNetworkReply::NetworkError::NoError;
   m_lastOutputMultipartData = {};
 
-  if (mime.startsWith(QSL("text/gemini"))) {
+  if (mime.startsWith(QSL(GEMINI_MIME_TYPE))) {
     m_lastOutputData = GeminiParser().geminiToHtml(data).toUtf8();
   }
   else {
