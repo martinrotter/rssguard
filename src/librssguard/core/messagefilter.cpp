@@ -8,21 +8,17 @@
 
 MessageFilter::MessageFilter(int id, QObject* parent) : QObject(parent), m_id(id) {}
 
-MessageObject::FilteringAction MessageFilter::filterMessage(QJSEngine* engine, bool evaluate_filter) {
-  if (evaluate_filter) {
-    QJSValue filter_func =
-      engine->evaluate(qApp->replaceUserDataFolderPlaceholder(m_script).replace(QSL("filterMessage()"),
-                                                                                QSL("filterMessage%1()").arg(m_id)));
+MessageObject::FilteringAction MessageFilter::filterMessage(QJSEngine* engine) {
+  QJSValue filter_func = engine->evaluate(qApp->replaceUserDataFolderPlaceholder(m_script));
 
-    if (filter_func.isError()) {
-      QJSValue::ErrorType error = filter_func.errorType();
-      QString message = filter_func.toString();
+  if (filter_func.isError()) {
+    QJSValue::ErrorType error = filter_func.errorType();
+    QString message = filter_func.toString();
 
-      throw FilteringException(error, message);
-    }
+    throw FilteringException(error, message);
   }
 
-  auto filter_output = engine->evaluate(QSL("filterMessage%1()").arg(m_id));
+  auto filter_output = engine->evaluate(QSL("filterMessage()"));
 
   if (filter_output.isError()) {
     QJSValue::ErrorType error = filter_output.errorType();
