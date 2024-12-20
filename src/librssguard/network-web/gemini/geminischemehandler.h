@@ -4,6 +4,7 @@
 #define GEMINISCHEMEHANDLER_H
 
 #include "network-web/gemini/geminiclient.h"
+#include "network-web/gemini/geminiparser.h"
 
 #include <QWebEngineUrlRequestJob>
 #include <QWebEngineUrlSchemeHandler>
@@ -23,6 +24,7 @@ class GeminiSchemeHandler : public QWebEngineUrlSchemeHandler {
 
   private:
     QHash<QWebEngineUrlRequestJob*, GeminiClient*> m_jobs;
+    GeminiParser m_geminiParser;
 };
 
 #endif // GEMINISCHEMEHANDLER_H

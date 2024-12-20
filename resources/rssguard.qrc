@@ -11,6 +11,7 @@
 
     <file>scripts/builtin_js/observer.js</file>
     <file>scripts/web_ui/rssguard.html</file>
+    <file>scripts/gemini/style.css</file>
     
     <file>sounds/boing.wav</file>
     <file>sounds/rooster.wav</file>

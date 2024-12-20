@@ -12,11 +12,13 @@ QString GeminiParser::geminiToHtml(const QByteArray& gemini_data) {
   QStringList lines = gemini_hypertext.split(QL1C('\n'));
   mode = State::Normal;
 
-  static QRegularExpression exp_link(R"(^=>\s+([^\s]+)(?:\s+(\w.+))?$)");
+  static QRegularExpression exp_link(R"(^=>\s+([^\s]+)(?:\s+(\S.+))?$)");
   static QRegularExpression exp_heading(R"(^(#{1,6})\s+(.+)$)");
   static QRegularExpression exp_list(R"(^\*\s(.+)$)");
   static QRegularExpression exp_quote(R"((?:^>$|^>\s?(.+)$))");
   static QRegularExpression exp_pre(R"(^```.*$)");
+
+  static QString rich_style = QString::fromUtf8(IOFactory::readFile(QSL(":/scripts/gemini/style.css")));
 
   QRegularExpressionMatch mtch;
   QString title;
@@ -69,13 +71,17 @@ QString GeminiParser::geminiToHtml(const QByteArray& gemini_data) {
 
   html += endBlock(State::Normal);
 
-  // IOFactory::writeFile("aa", html.toUtf8());
-
-  return QSL("<html>"
-             "<head><title>%1</title></head>"
+  return QSL("<!DOCTYPE html>"
+             "<html>"
+             "<head>"
+             "<meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">"
+             "<meta charset=utf-8>"
+             "<title>%1</title>"
+             "<style>%3</style>"
+             "</head>"
              "<body>%2</body>"
              "</html>")
-    .arg(title, html);
+    .arg(title, html, m_richHtml ? rich_style : QString());
 }
 
 QString GeminiParser::beginBlock(State new_mode) {
@@ -87,11 +93,12 @@ QString GeminiParser::beginBlock(State new_mode) {
         return "<ul>\n";
 
       case State::Quote:
-        return "<div align=\"center\" style=\""
-               "background-color: #E1E5EE;"
-               "font-style: italic;"
-               "margin-left: 20px;"
-               "margin-right: 20px;\">\n";
+        return QSL("<%1 style=\""
+                   "background-color: #E1E5EE;"
+                   "font-style: italic;"
+                   "margin-left: 20px;"
+                   "margin-right: 20px;\">\n")
+          .arg(m_richHtml ? QSL("blockquote") : QSL("div"));
 
       case State::Pre:
         return "<pre style=\"background-color: #E1E5EE;\">\n";
@@ -111,7 +118,7 @@ QString GeminiParser::endBlock(State new_mode) {
         break;
 
       case State::Quote:
-        to_return = "</div>\n";
+        to_return = QSL("</%1>\n").arg(m_richHtml ? QSL("blockquote") : QSL("div"));
         break;
 
       case State::Pre:
@@ -124,6 +131,8 @@ QString GeminiParser::endBlock(State new_mode) {
 
   return to_return;
 }
+
+GeminiParser::GeminiParser(bool rich_html) : m_richHtml(rich_html) {}
 
 QString GeminiParser::parseLink(const QRegularExpressionMatch& mtch) const {
   QString link = mtch.captured(1);
@@ -146,8 +155,10 @@ QString GeminiParser::parseHeading(const QRegularExpressionMatch& mtch, QString*
 
 QString GeminiParser::parseQuote(const QRegularExpressionMatch& mtch) const {
   QString text = mtch.captured(1);
+  QString element = m_richHtml ? QSL("p") : QSL("div");
 
-  return QSL("<div>%1</div>\n").arg(text.isEmpty() ? QString() : QSL("&#8220;%1&#8221;").arg(text));
+  return QSL("<%2>%1</%2>\n")
+    .arg(text.simplified().isEmpty() ? QString() : (m_richHtml ? text : QSL("&#8220;%1&#8221;").arg(text)), element);
 }
 
 QString GeminiParser::parseList(const QRegularExpressionMatch& mtch) const {

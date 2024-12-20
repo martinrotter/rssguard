@@ -1,0 +1,60 @@
+p {
+  min-height: 0.1em;
+  margin: 6px 0px;
+}
+
+h1, h2, h3, h4, h5, h6, ul, ol, pre {
+  margin: 9px 0px;
+}
+
+pre {
+  font-family: "Consolas", "Andale Mono WT", "Andale Mono", "Lucida Console", "Lucida Sans Typewriter", "DejaVu Sans Mono", "Bitstream Vera Sans Mono", "Liberation Mono", "Nimbus Mono L", Monaco, "Courier New", Courier, monospace;
+  white-space: pre-wrap;
+  overflow-x: auto;
+  padding: 8px;
+  border-radius: 2px;
+}
+
+a:link {
+  text-decoration-line: none;
+}
+
+a:hover {
+  text-decoration-line: underline;
+}
+
+blockquote {
+  font-size: 1.2em;
+  width: 80%;
+  margin: 14px auto;
+  font-family: "Open Sans";
+  font-style: italic;
+  color: #555555;
+  padding: 1em 16px 1em 30px;
+  border-left: 4px solid #75bff7;
+  line-height: 1.1;
+  position: relative;
+  background: #EDEDED;
+}
+
+blockquote::before {
+  font-family: Arial;
+  content: "\201C";
+  color: #7598f7;
+  font-size: 3em;
+  position: absolute;
+  left: 10px;
+  top: 0px;
+}
+
+blockquote::after {
+  content: '';
+}
+
+blockquote span {
+  display: block;
+  color: #333333;
+  font-style: normal;
+  font-weight: bold;
+  margin-top: 1em;
+}

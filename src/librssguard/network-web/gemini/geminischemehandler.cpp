@@ -8,7 +8,8 @@
 
 #include <QBuffer>
 
-GeminiSchemeHandler::GeminiSchemeHandler(QObject* parent) : QWebEngineUrlSchemeHandler(parent) {}
+GeminiSchemeHandler::GeminiSchemeHandler(QObject* parent)
+  : QWebEngineUrlSchemeHandler(parent), m_geminiParser(GeminiParser(true)) {}
 
 void GeminiSchemeHandler::requestStarted(QWebEngineUrlRequestJob* request) {
   GeminiClient* gemini_client = new GeminiClient(this);
@@ -45,9 +46,13 @@ void GeminiSchemeHandler::onCompleted(const QByteArray& data, const QString& mim
     buf->open(QBuffer::ReadWrite);
 
     if (mime.startsWith(QSL(GEMINI_MIME_TYPE))) {
-      // IOFactory::writeFile("a", data);
+      QString htmlized_gemini = m_geminiParser.geminiToHtml(data);
+      buf->write(htmlized_gemini.toUtf8());
 
-      buf->write(GeminiParser().geminiToHtml(data).toUtf8());
+#if !defined(NDEBUG)
+      IOFactory::writeFile("aa.html", htmlized_gemini.toUtf8());
+#endif
+
       target_mime = QSL("text/html");
     }
     else {

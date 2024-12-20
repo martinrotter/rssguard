@@ -5,6 +5,7 @@
 
 #include "definitions/definitions.h"
 #include "network-web/gemini/geminiclient.h"
+#include "network-web/gemini/geminiparser.h"
 #include "network-web/httpresponse.h"
 
 #include <QHttpMultiPart>
@@ -105,6 +106,7 @@ class Downloader : public QObject {
 
   private:
     GeminiClient* m_geminiClient;
+    GeminiParser m_geminiParser;
     QNetworkReply* m_activeReply;
     QScopedPointer<SilentNetworkAccessManager> m_downloadManager;
     QTimer* m_timer;
