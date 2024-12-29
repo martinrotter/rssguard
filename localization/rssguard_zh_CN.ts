@@ -6472,7 +6472,7 @@ List of supported readers:</source>
     <message>
       <location filename="../src/librssguard-reddit/src/redditentrypoint.cpp" line="33"/>
       <source>Reddit (WIP, no real functionality yet)</source>
-      <translation type="unfinished">Reddit (WIP, no real functionality yet)</translation>
+      <translation/>
     </message>
     <message>
       <location filename="../src/librssguard-reddit/src/redditentrypoint.cpp" line="41"/>
