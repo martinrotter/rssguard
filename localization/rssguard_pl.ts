@@ -1042,12 +1042,12 @@ ID pozycji: %5</translation>
     <message>
       <location filename="../src/librssguard/miscellaneous/feedreader.cpp" line="279"/>
       <source>Feed fetching is paused</source>
-      <translation type="unfinished">Feed fetching is paused</translation>
+      <translation>Pobieranie kanału jest wstrzymane</translation>
     </message>
     <message>
       <location filename="../src/librssguard/miscellaneous/feedreader.cpp" line="280"/>
       <source>Automatic feed fetching based on time interval is currently paused.</source>
-      <translation type="unfinished">Automatic feed fetching based on time interval is currently paused.</translation>
+      <translation>Automatyczne pobieranie kanału w oparciu o przedział czasu jest obecnie wstrzymane.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/miscellaneous/feedreader.cpp" line="380"/>
@@ -1976,7 +1976,7 @@ Katalog cache QtWebEngine -&gt; &quot;%7&quot;</translation>
       <location filename="../src/librssguard/services/abstract/gui/formcategorydetails.ui" line="31"/>
       <location filename="../../build-rssguard-Desktop_Qt_6_7_0_MSVC2017_64bit-Debug/src/librssguard/ui_formcategorydetails.h" line="180"/>
       <source>Parent category</source>
-      <translation type="unfinished">Parent category</translation>
+      <translation>Nadrzędna kategoria</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/abstract/gui/formcategorydetails.ui" line="43"/>
@@ -2146,7 +2146,7 @@ Katalog cache QtWebEngine -&gt; &quot;%7&quot;</translation>
     <message>
       <location filename="../src/librssguard-standard/src/gui/formdiscoverfeeds.ui" line="83"/>
       <source>Target parent category</source>
-      <translation type="unfinished">Target parent category</translation>
+      <translation>Docelowa kategoria nadrzędna</translation>
     </message>
     <message>
       <location filename="../src/librssguard-standard/src/gui/formdiscoverfeeds.ui" line="95"/>
@@ -3161,7 +3161,7 @@ Katalog cache QtWebEngine -&gt; &quot;%7&quot;</translation>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="960"/>
       <location filename="../../build-rssguard-Desktop_Qt_6_7_0_MSVC2017_64bit-Debug/src/librssguard/ui_formmain.h" line="815"/>
       <source>&amp;Pause automatic feed fetching</source>
-      <translation type="unfinished">&amp;Pause automatic feed fetching</translation>
+      <translation>Wstrzymaj automatyczne pobieranie kanału</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="739"/>
@@ -3621,17 +3621,17 @@ Musisz zrestartować aplikację ręcznie.</translation>
     <message>
       <location filename="../src/librssguard-standard/src/gui/formstandardfeeddetails.cpp" line="33"/>
       <source>HTTP headers</source>
-      <translation type="unfinished">HTTP headers</translation>
+      <translation>Nagłówki HTTP</translation>
     </message>
     <message>
       <location filename="../src/librssguard-standard/src/gui/formstandardfeeddetails.cpp" line="34"/>
       <source>Auth</source>
-      <translation type="unfinished">Auth</translation>
+      <translation>Autoryzacja</translation>
     </message>
     <message>
       <location filename="../src/librssguard-standard/src/gui/formstandardfeeddetails.cpp" line="35"/>
       <source>Experimental</source>
-      <translation type="unfinished">Experimental</translation>
+      <translation>Eksperymentalne</translation>
     </message>
   </context>
   <context>
@@ -3850,7 +3850,7 @@ Musisz zrestartować aplikację ręcznie.</translation>
     <message>
       <location filename="../src/librssguard-ttrss/src/gui/formttrssfeeddetails.cpp" line="62"/>
       <source>Auth</source>
-      <translation type="unfinished">Auth</translation>
+      <translation>Autoryzacja</translation>
     </message>
     <message>
       <location filename="../src/librssguard-ttrss/src/gui/formttrssfeeddetails.cpp" line="47"/>
@@ -4510,7 +4510,7 @@ Tokeny logowania wygasają: %2</translation>
     <message>
       <location filename="../src/librssguard-greader/src/gui/greaderfeeddetails.ui" line="20"/>
       <source>Parent category</source>
-      <translation type="unfinished">Parent category</translation>
+      <translation>Nadrzędna kategoria</translation>
     </message>
     <message>
       <location filename="../src/librssguard-greader/src/gui/greaderfeeddetails.ui" line="30"/>
@@ -7126,7 +7126,7 @@ File filter for external e-mail selection dialog.</extracomment>
       <location filename="../src/librssguard/gui/settings/settingsbrowsermail.ui" line="51"/>
       <location filename="../../build-rssguard-Desktop_Qt_6_7_0_MSVC2017_64bit-Debug/src/librssguard/ui_settingsbrowsermail.h" line="386"/>
       <source>Custom User-Agent</source>
-      <translation type="unfinished">Custom User-Agent</translation>
+      <translation>Niestandardowy User-Agent</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsbrowsermail.ui" line="65"/>
@@ -7754,7 +7754,7 @@ Autorzy tej aplikacji NIE ponoszą odpowiedzialności za utracone dane.</transla
       <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="686"/>
       <location filename="../../build-rssguard-Desktop_Qt_6_7_0_MSVC2017_64bit-Debug/src/librssguard/ui_settingsfeedsmessages.h" line="646"/>
       <source>Switch article list to RTL layout if all selected feeds are RTL</source>
-      <translation type="unfinished">Switch article list to RTL layout if all selected feeds are RTL</translation>
+      <translation>Przełącz listę artykułów na układ RTL, jeśli wszystkie wybrane kanały są RTL</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="307"/>
@@ -8404,7 +8404,7 @@ Ponadto po zainstalowaniu Node.js należy ponownie uruchomić okno dialogowe &qu
     <message>
       <location filename="../src/librssguard/gui/settings/settingsnotifications.cpp" line="73"/>
       <source>%1 (not supported on Wayland)</source>
-      <translation type="unfinished">%1 (not supported on Wayland)</translation>
+      <translation>%1 (nieobsługiwane na Wayland)</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsnotifications.cpp" line="117"/>
@@ -8465,7 +8465,7 @@ Ponadto po zainstalowaniu Node.js należy ponownie uruchomić okno dialogowe &qu
       <location filename="../src/librssguard/gui/notifications/singlenotificationeditor.ui" line="30"/>
       <location filename="../../build-rssguard-Desktop_Qt_6_7_0_MSVC2017_64bit-Debug/src/librssguard/ui_singlenotificationeditor.h" line="130"/>
       <source>Play sound</source>
-      <translation type="unfinished">Play sound</translation>
+      <translation>Odtwórz dźwięk</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/notifications/singlenotificationeditor.ui" line="58"/>
@@ -8709,10 +8709,10 @@ ID pozycji: %5</translation>
 Type: %2
 Post-processing script: %3
 Use raw XML saving: %4</source>
-      <translation type="unfinished">Encoding: %1
-Type: %2
-Post-processing script: %3
-Use raw XML saving: %4</translation>
+      <translation>Kodowanie: %1
+Typ: %2
+Skrypt po przetwarzaniu: %3
+Użyj nieprzetworzonego zapisu XML: %4</translation>
     </message>
     <message>
       <location filename="../src/librssguard-standard/src/standardfeed.cpp" line="390"/>
@@ -8965,7 +8965,7 @@ Ponadto, jeśli chcesz, możesz przetworzyć wygenerowane dane za pomocą kolejn
     <message>
       <location filename="../src/librssguard-standard/src/gui/standardfeeddetails.ui" line="25"/>
       <source>Parent category</source>
-      <translation type="unfinished">Parent category</translation>
+      <translation>Nadrzędna kategoria</translation>
     </message>
     <message>
       <location filename="../src/librssguard-standard/src/gui/standardfeeddetails.ui" line="37"/>
@@ -9038,16 +9038,14 @@ Ponadto, jeśli chcesz, możesz przetworzyć wygenerowane dane za pomocą kolejn
     <message>
       <location filename="../src/librssguard-standard/src/gui/standardfeedexpdetails.ui" line="23"/>
       <source>Use older mechanism for extracting raw XML data</source>
-      <translation type="unfinished">Use older mechanism for extracting raw XML data</translation>
+      <translation>Użyj starszego mechanizmu do rozpakowywania surowych danych XML</translation>
     </message>
     <message>
       <location filename="../src/librssguard-standard/src/gui/standardfeedexpdetails.cpp" line="26"/>
       <source>Turning this setting ON might bring considerable performance boost when fetching this feed, but only in some very specific conditions.
 
 This setting is useful when raw XML parsing of the feed is very slow, this happens for feed which do have very long contents.</source>
-      <translation type="unfinished">Turning this setting ON might bring considerable performance boost when fetching this feed, but only in some very specific conditions.
-
-This setting is useful when raw XML parsing of the feed is very slow, this happens for feed which do have very long contents.</translation>
+      <translation>Włączenie tego ustawienia może przynieść znaczny wzrost wydajności przy pobieraniu tego kanału, ale jedynie w bardzo szczególnych warunkach.</translation>
     </message>
   </context>
   <context>
@@ -9643,7 +9641,7 @@ Nieprzeczytanych wiadomości: %2</translation>
     <message>
       <location filename="../src/librssguard-ttrss/src/gui/ttrssfeeddetails.ui" line="20"/>
       <source>Parent category</source>
-      <translation type="unfinished">Parent category</translation>
+      <translation>Nadrzędna kategoria</translation>
     </message>
     <message>
       <location filename="../src/librssguard-ttrss/src/gui/ttrssfeeddetails.ui" line="30"/>
@@ -9757,12 +9755,12 @@ Ostatnie logowanie: %4</translation>
     <message>
       <location filename="../src/librssguard/network-web/webengine/webenginepage.cpp" line="77"/>
       <source>Website alert</source>
-      <translation type="unfinished">Website alert</translation>
+      <translation>Ostrzeżenie witryny</translation>
     </message>
     <message>
       <location filename="../src/librssguard/network-web/webengine/webenginepage.cpp" line="78"/>
       <source>URL %1 reports this important message: %2</source>
-      <translation type="unfinished">URL %1 reports this important message: %2</translation>
+      <translation>Adres URL %1 zgłasza tę ważną wiadomość: %2</translation>
     </message>
   </context>
   <context>
