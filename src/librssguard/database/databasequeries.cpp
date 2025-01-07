@@ -634,6 +634,27 @@ bool DatabaseQueries::removeUnwantedArticlesFromFeed(const QSqlDatabase& db,
   return rows_deleted > 0;
 }
 
+bool DatabaseQueries::purgeFeedMessages(const QSqlDatabase& database, const Feed* feed) {
+  QSqlQuery q(database);
+
+  q.setForwardOnly(true);
+  q.prepare(QSL("DELETE FROM Messages "
+                "WHERE "
+                "  Messages.account_id = :account_id AND "
+                "  Messages.feed = :feed AND "
+                "  Messages.is_important = 0"));
+
+  q.bindValue(QSL(":feed"), feed->customId());
+  q.bindValue(QSL(":account_id"), feed->getParentServiceRoot()->accountId());
+
+  if (!q.exec()) {
+    throw ApplicationException(q.lastError().text());
+  }
+  else {
+    return q.numRowsAffected() > 0;
+  }
+}
+
 bool DatabaseQueries::purgeMessage(const QSqlDatabase& db, int message_id) {
   QSqlQuery q(db);
 

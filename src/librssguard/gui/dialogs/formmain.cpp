@@ -195,6 +195,7 @@ QList<QAction*> FormMain::allActions() const {
   actions << m_ui->m_actionMarkSelectedItemsAsRead;
   actions << m_ui->m_actionMarkSelectedItemsAsUnread;
   actions << m_ui->m_actionClearSelectedItems;
+  actions << m_ui->m_actionPurgeSelectedItems;
   actions << m_ui->m_actionClearAllItems;
   actions << m_ui->m_actionShowOnlyUnreadItems;
   actions << m_ui->m_actionSortFeedsAlphabetically;
@@ -499,6 +500,7 @@ void FormMain::updateFeedButtonsAvailability() {
   m_ui->m_actionBackupDatabaseSettings->setEnabled(!critical_action_running);
   m_ui->m_actionCleanupDatabase->setEnabled(!critical_action_running);
   m_ui->m_actionClearSelectedItems->setEnabled(anything_selected);
+  m_ui->m_actionPurgeSelectedItems->setEnabled(feed_selected);
   m_ui->m_actionDeleteSelectedItem->setEnabled(!critical_action_running && anything_selected);
   m_ui->m_actionEditSelectedItem->setEnabled(!critical_action_running && anything_selected);
   m_ui->m_actionEditChildFeeds->setEnabled(!critical_action_running && (service_selected || category_selected));
@@ -605,6 +607,7 @@ void FormMain::setupIcons() {
   m_ui->m_actionUpdateSelectedItemsWithCustomTimers->setIcon(icon_theme_factory->fromTheme(QSL("download"),
                                                                                            QSL("browser-download")));
   m_ui->m_actionClearSelectedItems->setIcon(icon_theme_factory->fromTheme(QSL("mail-mark-junk")));
+  m_ui->m_actionPurgeSelectedItems->setIcon(icon_theme_factory->fromTheme(QSL("edit-clear")));
   m_ui->m_actionClearAllItems->setIcon(icon_theme_factory->fromTheme(QSL("mail-mark-junk")));
   m_ui->m_actionDeleteSelectedItem->setIcon(icon_theme_factory->fromTheme(QSL("list-remove")));
   m_ui->m_actionDeleteSelectedMessages->setIcon(icon_theme_factory->fromTheme(QSL("mail-mark-junk")));
@@ -925,6 +928,10 @@ void FormMain::createConnections() {
           &QAction::triggered,
           tabWidget()->feedMessageViewer()->feedsView(),
           &FeedsView::clearSelectedItems);
+  connect(m_ui->m_actionPurgeSelectedItems,
+          &QAction::triggered,
+          tabWidget()->feedMessageViewer()->feedsView(),
+          &FeedsView::purgeSelectedFeeds);
   connect(m_ui->m_actionClearAllItems,
           &QAction::triggered,
           tabWidget()->feedMessageViewer()->feedsView(),

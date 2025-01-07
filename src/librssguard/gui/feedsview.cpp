@@ -254,6 +254,23 @@ void FeedsView::clearSelectedItems() {
   }
 }
 
+void FeedsView::purgeSelectedFeeds() {
+  if (MsgBox::show(nullptr,
+                   QMessageBox::Icon::Question,
+                   tr("Are you sure?"),
+                   tr("Do you really want to purge all non-starred articles from selected feeds?"),
+                   {},
+                   {},
+                   QMessageBox::StandardButton::Yes | QMessageBox::StandardButton::No,
+                   QMessageBox::StandardButton::No) != QMessageBox::StandardButton::Yes) {
+    return;
+  }
+
+  for (auto* it : selectedFeeds(true)) {
+    it->purgeArticles();
+  }
+}
+
 void FeedsView::clearAllItems() {
   if (MsgBox::show(nullptr,
                    QMessageBox::Icon::Question,

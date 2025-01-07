@@ -151,6 +151,7 @@
     <addaction name="m_actionCopyUrlSelectedFeed"/>
     <addaction name="m_actionMarkSelectedItemsAsRead"/>
     <addaction name="m_actionMarkSelectedItemsAsUnread"/>
+    <addaction name="m_actionPurgeSelectedItems"/>
     <addaction name="m_actionClearSelectedItems"/>
     <addaction name="separator"/>
     <addaction name="m_actionFocusSearchFeeds"/>
@@ -958,6 +959,11 @@
    </property>
    <property name="text">
     <string>&amp;Pause automatic feed fetching</string>
+   </property>
+  </action>
+  <action name="m_actionPurgeSelectedItems">
+   <property name="text">
+    <string>&amp;Purge selected feeds</string>
    </property>
   </action>
  </widget>

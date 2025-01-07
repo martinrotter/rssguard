@@ -15,6 +15,7 @@ void DatabaseCleaner::purgeDatabaseData(CleanerOrders which_data) {
 
   // Inform everyone about the start of the process.
   emit purgeStarted();
+
   bool result = true;
   const int difference = 99 / 12;
   int progress = 0;
@@ -22,51 +23,61 @@ void DatabaseCleaner::purgeDatabaseData(CleanerOrders which_data) {
 
   if (which_data.m_removeReadMessages) {
     progress += difference;
+
     emit purgeProgress(progress, tr("Removing read articles..."));
 
     // Remove read messages.
     result &= purgeReadMessages(database);
     progress += difference;
+
     emit purgeProgress(progress, tr("Read articles purged..."));
   }
 
   if (which_data.m_removeRecycleBin) {
     progress += difference;
+
     emit purgeProgress(progress, tr("Purging recycle bin..."));
 
     // Remove read messages.
     result &= purgeRecycleBin(database);
     progress += difference;
+
     emit purgeProgress(progress, tr("Recycle bin purged..."));
   }
 
   if (which_data.m_removeOldMessages) {
     progress += difference;
+
     emit purgeProgress(progress, tr("Removing old articles..."));
 
     // Remove old messages.
     result &= purgeOldMessages(database, which_data.m_barrierForRemovingOldMessagesInDays);
     progress += difference;
+
     emit purgeProgress(progress, tr("Old articles purged..."));
   }
 
   if (which_data.m_removeStarredMessages) {
     progress += difference;
+
     emit purgeProgress(progress, tr("Removing starred articles..."));
 
     // Remove old messages.
     result &= purgeStarredMessages(database);
     progress += difference;
+
     emit purgeProgress(progress, tr("Starred articles purged..."));
   }
 
   if (which_data.m_shrinkDatabase) {
     progress += difference;
+
     emit purgeProgress(progress, tr("Shrinking database file..."));
 
     // Call driver-specific vacuuming function.
     result &= qApp->database()->driver()->vacuumDatabase();
     progress += difference;
+
     emit purgeProgress(progress, tr("Database file shrinked..."));
   }
 
