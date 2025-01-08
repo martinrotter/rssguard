@@ -634,18 +634,27 @@ bool DatabaseQueries::removeUnwantedArticlesFromFeed(const QSqlDatabase& db,
   return rows_deleted > 0;
 }
 
-bool DatabaseQueries::purgeFeedMessages(const QSqlDatabase& database, const Feed* feed) {
+bool DatabaseQueries::purgeFeedArticles(const QSqlDatabase& database, const QList<Feed*>& feeds) {
   QSqlQuery q(database);
 
-  q.setForwardOnly(true);
-  q.prepare(QSL("DELETE FROM Messages "
-                "WHERE "
-                "  Messages.account_id = :account_id AND "
-                "  Messages.feed = :feed AND "
-                "  Messages.is_important = 0"));
+  auto feed_clauses = boolinq::from(feeds)
+                        .select([](Feed* feed) {
+                          return QSL("("
+                                     "Messages.feed = '%1' AND "
+                                     "Messages.account_id = %2 AND "
+                                     "Messages.is_important = 0"
+                                     ")")
+                            .arg(feed->customId(), QString::number(feed->getParentServiceRoot()->accountId()));
+                        })
+                        .toStdList();
 
-  q.bindValue(QSL(":feed"), feed->customId());
-  q.bindValue(QSL(":account_id"), feed->getParentServiceRoot()->accountId());
+  qDebugNN << feed_clauses;
+
+  QStringList feed_str_clauses = FROM_STD_LIST(QStringList, feed_clauses);
+  QString feed_clause = feed_str_clauses.join(QSL(" OR "));
+
+  q.setForwardOnly(true);
+  q.prepare(QSL("DELETE FROM Messages WHERE %1;").arg(feed_clause));
 
   if (!q.exec()) {
     throw ApplicationException(q.lastError().text());

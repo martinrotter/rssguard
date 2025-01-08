@@ -113,24 +113,6 @@ QVariant Feed::data(int column, int role) const {
   }
 }
 
-void Feed::purgeArticles() {
-  auto database = qApp->database()->driver()->connection(metaObject()->className());
-
-  try {
-    bool anything_purged = DatabaseQueries::purgeFeedMessages(database, this);
-
-    if (anything_purged) {
-      getParentServiceRoot()->updateCounts(true);
-      getParentServiceRoot()->itemChanged(getParentServiceRoot()->getSubTree());
-      getParentServiceRoot()->requestReloadMessageList(false);
-    }
-  }
-  catch (const ApplicationException& ex) {
-    qCriticalNN << LOGSEC_CORE << "Purging of articles from feed" << QUOTE_W_SPACE(customId())
-                << "failed with error:" << QUOTE_W_SPACE_DOT(ex.message());
-  }
-}
-
 int Feed::autoUpdateInterval() const {
   return m_autoUpdateInterval;
 }

@@ -266,9 +266,7 @@ void FeedsView::purgeSelectedFeeds() {
     return;
   }
 
-  for (auto* it : selectedFeeds(true)) {
-    it->purgeArticles();
-  }
+  m_sourceModel->purgeArticles(selectedFeeds(true));
 }
 
 void FeedsView::clearAllItems() {
@@ -989,6 +987,7 @@ QMenu* FeedsView::initializeContextMenuFeeds(RootItem* clicked_item) {
                                                    << qApp->mainForm()->m_ui->m_actionCopyUrlSelectedFeed
                                                    << qApp->mainForm()->m_ui->m_actionMarkSelectedItemsAsRead
                                                    << qApp->mainForm()->m_ui->m_actionMarkSelectedItemsAsUnread
+                                                   << qApp->mainForm()->m_ui->m_actionPurgeSelectedItems
                                                    << qApp->mainForm()->m_ui->m_actionDeleteSelectedItem);
 
   auto cat_add = clicked_item->getParentServiceRoot()->supportsCategoryAdding();

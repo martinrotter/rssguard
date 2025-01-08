@@ -529,6 +529,26 @@ bool FeedsModel::markItemCleared(RootItem* item, bool clean_read_only) {
   return true;
 }
 
+bool FeedsModel::purgeArticles(const QList<Feed*>& feeds) {
+  auto database = qApp->database()->driver()->connection(metaObject()->className());
+
+  try {
+    bool anything_purged = DatabaseQueries::purgeFeedArticles(database, feeds);
+
+    if (anything_purged) {
+      reloadCountsOfWholeModel();
+      emit reloadMessageListRequested(false);
+      return true;
+    }
+  }
+  catch (const ApplicationException& ex) {
+    qCriticalNN << LOGSEC_CORE
+                << "Purging of articles from feeds failed with error:" << QUOTE_W_SPACE_DOT(ex.message());
+  }
+
+  return false;
+}
+
 QVariant FeedsModel::data(const QModelIndex& index, int role) const {
   switch (role) {
     case Qt::ItemDataRole::FontRole: {

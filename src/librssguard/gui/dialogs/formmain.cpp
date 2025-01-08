@@ -500,7 +500,7 @@ void FormMain::updateFeedButtonsAvailability() {
   m_ui->m_actionBackupDatabaseSettings->setEnabled(!critical_action_running);
   m_ui->m_actionCleanupDatabase->setEnabled(!critical_action_running);
   m_ui->m_actionClearSelectedItems->setEnabled(anything_selected);
-  m_ui->m_actionPurgeSelectedItems->setEnabled(feed_selected);
+  m_ui->m_actionPurgeSelectedItems->setEnabled(feed_selected || category_selected || service_selected);
   m_ui->m_actionDeleteSelectedItem->setEnabled(!critical_action_running && anything_selected);
   m_ui->m_actionEditSelectedItem->setEnabled(!critical_action_running && anything_selected);
   m_ui->m_actionEditChildFeeds->setEnabled(!critical_action_running && (service_selected || category_selected));
