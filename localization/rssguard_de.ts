@@ -6,12 +6,12 @@
     <message>
       <location filename="../src/librssguard/services/abstract/accountcheckmodel.cpp" line="188"/>
       <source>(category)</source>
-      <translation> (Kategorie)</translation>
+      <translation>(Kategorie)</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/abstract/accountcheckmodel.cpp" line="191"/>
       <source>(feed)</source>
-      <translation> (Feed)</translation>
+      <translation>(Feed)</translation>
     </message>
   </context>
   <context>
@@ -4670,7 +4670,7 @@ Ablauf des Login tokens: %2</translation>
     <message>
       <location filename="../src/librssguard/services/abstract/gui/httpheadersdetails.cpp" line="14"/>
       <source>Enter each key/value HTTP header pair on separate line. Note that all spaces are significant and that header names are case-sensitive. Also, make sure to separate key from value with &apos;=&apos;, like the example below:</source>
-      <translation type="unfinished">Enter each key/value HTTP header pair on separate line. Note that all spaces are significant and that header names are case-sensitive. Also, make sure to separate key from value with &apos;=&apos;, like the example below:</translation>
+      <translation>Geben Sie jedes Schlüssel/Wert HTTP-Headerpaar in einer eigenen Zeile ein. Beachten Sie, dass Leerzeichen signifikant sind und dass die Namen der Header Groß-/Kleinschreibung beachten. Trennen Sie außerdem Schlüssel und Wert mit &apos;=&apos; wie im untenstehenden Beispiel:</translation>
     </message>
   </context>
   <context>
@@ -8987,16 +8987,16 @@ Du kannst die generierten Feed Daten auch mit einem extra Nachbearbeituns-Skript
     <message>
       <location filename="../src/librssguard-standard/src/gui/standardfeedexpdetails.ui" line="23"/>
       <source>Use older mechanism for extracting raw XML data</source>
-      <translation type="unfinished">Use older mechanism for extracting raw XML data</translation>
+      <translation>Älteren Mechanismus zum Extrahieren von XML-Rohdaten verwenden</translation>
     </message>
     <message>
       <location filename="../src/librssguard-standard/src/gui/standardfeedexpdetails.cpp" line="26"/>
       <source>Turning this setting ON might bring considerable performance boost when fetching this feed, but only in some very specific conditions.
 
 This setting is useful when raw XML parsing of the feed is very slow, this happens for feed which do have very long contents.</source>
-      <translation type="unfinished">Turning this setting ON might bring considerable performance boost when fetching this feed, but only in some very specific conditions.
+      <translation>Aktivieren dieser Einstellung könnte zu einer erheblichen Leistungsverbesserung beim Abruf dieses Feeds führen, aber nur unter sehr spezifischen Bedingungen.
 
-This setting is useful when raw XML parsing of the feed is very slow, this happens for feed which do have very long contents.</translation>
+Diese Einstellung ist hilfreich, wenn das Parsen der XML Rohdaten sehr langsam ist, was bei Feeds mit sehr langen Inhalten auftritt.</translation>
     </message>
   </context>
   <context>
@@ -9034,7 +9034,7 @@ This setting is useful when raw XML parsing of the feed is very slow, this happe
     <message>
       <location filename="../src/librssguard-standard/src/standardserviceroot.cpp" line="50"/>
       <source>This is the obligatory service account for standard RSS/RDF/ATOM feeds.</source>
-      <translation type="unfinished">This is the obligatory service account for standard RSS/RDF/ATOM feeds.</translation>
+      <translation>Dies ist der obligatorische Service Account für Standard RSS/RDF/ATOM Feeds.</translation>
     </message>
     <message>
       <location filename="../src/librssguard-standard/src/standardserviceroot.cpp" line="170"/>
@@ -9698,12 +9698,12 @@ Letzte Anmeldung am: %4</translation>
     <message>
       <location filename="../src/librssguard/network-web/webengine/webenginepage.cpp" line="77"/>
       <source>Website alert</source>
-      <translation type="unfinished">Website alert</translation>
+      <translation>Webseiten-Alarm</translation>
     </message>
     <message>
       <location filename="../src/librssguard/network-web/webengine/webenginepage.cpp" line="78"/>
       <source>URL %1 reports this important message: %2</source>
-      <translation type="unfinished">URL %1 reports this important message: %2</translation>
+      <translation>URL %1 gab diese wichtige Nachricht zurück: %2</translation>
     </message>
   </context>
   <context>
