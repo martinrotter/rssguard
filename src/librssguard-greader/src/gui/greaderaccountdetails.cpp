@@ -262,6 +262,9 @@ void GreaderAccountDetails::selectedServiceChanged() {
     case GreaderServiceRoot::Service::Miniflux:
       m_ui.m_cbNewAlgorithm->setChecked(true);
       break;
+
+    default:
+      break;
   }
 
   // Miniflux only works with "intelligent algorithm" because it does not
