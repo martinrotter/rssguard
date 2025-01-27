@@ -476,6 +476,12 @@ void Downloader::cancel() {
   }
 }
 
+void Downloader::appendRawHeaders(const QList<QPair<QByteArray, QByteArray>>& headers) {
+  for (const QPair<QByteArray, QByteArray>& header : headers) {
+    appendRawHeader(header.first, header.second);
+  }
+}
+
 void Downloader::appendRawHeader(const QByteArray& name, const QByteArray& value) {
   if (!value.isEmpty()) {
     m_customHeaders.insert(name, value);

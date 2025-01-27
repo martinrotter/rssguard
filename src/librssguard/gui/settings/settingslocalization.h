@@ -7,6 +7,8 @@
 
 #include "ui_settingslocalization.h"
 
+#include <QNetworkReply>
+
 class SettingsLocalization : public SettingsPanel {
     Q_OBJECT
 
@@ -19,8 +21,18 @@ class SettingsLocalization : public SettingsPanel {
     virtual void loadSettings();
     virtual void saveSettings();
 
+  private slots:
+    void langMetadataDownloaded(const QUrl& url,
+                                QNetworkReply::NetworkError status,
+                                int http_code,
+                                QByteArray contents);
+
   private:
     Ui::SettingsLocalization* m_ui;
+    QUrl m_urlPercentages;
+    QUrl m_urlPeople;
+    QByteArray m_dataPercentages;
+    QByteArray m_dataPeople;
 };
 
 inline QString SettingsLocalization::title() const {

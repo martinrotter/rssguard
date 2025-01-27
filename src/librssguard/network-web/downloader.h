@@ -39,6 +39,7 @@ class Downloader : public QObject {
   public slots:
     void cancel();
 
+    void appendRawHeaders(const QList<QPair<QByteArray, QByteArray>>& headers);
     void appendRawHeader(const QByteArray& name, const QByteArray& value);
 
     // Performs asynchronous download of given file. Redirections are handled.
