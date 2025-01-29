@@ -14,7 +14,6 @@
 class RootItem;
 class RedditServiceRoot;
 class OAuth2Service;
-class Downloader;
 
 struct Subreddit {};
 

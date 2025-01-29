@@ -21,6 +21,22 @@ BaseNetworkAccessManager::BaseNetworkAccessManager(QObject* parent)
   loadSettings();
 }
 
+void BaseNetworkAccessManager::setSpecificHtpp2Status(NetworkFactory::Http2Status status) {
+  switch (status) {
+    case NetworkFactory::Http2Status::DontSet:
+      m_enableHttp2 = qApp->settings()->value(GROUP(Network), SETTING(Network::EnableHttp2)).toBool();
+      break;
+
+    case NetworkFactory::Http2Status::Enabled:
+      m_enableHttp2 = true;
+      break;
+
+    case NetworkFactory::Http2Status::Disabled:
+      m_enableHttp2 = false;
+      break;
+  }
+}
+
 void BaseNetworkAccessManager::loadSettings() {
   const QNetworkProxy::ProxyType selected_proxy_type =
     static_cast<QNetworkProxy::ProxyType>(qApp->settings()->value(GROUP(Proxy), SETTING(Proxy::Type)).toInt());
@@ -66,6 +82,14 @@ QNetworkReply* BaseNetworkAccessManager::createRequest(QNetworkAccessManager::Op
 
 #if QT_VERSION >= 0x050F00 // Qt >= 5.15.0
   new_request.setAttribute(QNetworkRequest::Attribute::Http2AllowedAttribute, m_enableHttp2);
+
+  if (m_enableHttp2) {
+    qDebugNN << LOGSEC_NETWORK << "Enabling HTTP/2 for this network request.";
+  }
+#endif
+
+#if QT_VERSION >= 0x060300 // Qt >= 6.3.0
+  new_request.setAttribute(QNetworkRequest::Attribute::Http2CleartextAllowedAttribute, m_enableHttp2);
 #endif
 
   // new_request.setMaximumRedirectsAllowed(0);

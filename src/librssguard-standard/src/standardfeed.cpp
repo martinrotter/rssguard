@@ -54,6 +54,7 @@ StandardFeed::StandardFeed(RootItem* parent_item) : Feed(parent_item) {
   m_password = QString();
   m_httpHeaders = {};
   m_dontUseRawXmlSaving = false;
+  m_http2Status = NetworkFactory::Http2Status::DontSet;
 }
 
 StandardFeed::StandardFeed(const StandardFeed& other) : Feed(other) {
@@ -66,6 +67,7 @@ StandardFeed::StandardFeed(const StandardFeed& other) : Feed(other) {
   m_password = other.password();
   m_dontUseRawXmlSaving = other.dontUseRawXmlSaving();
   m_httpHeaders = other.httpHeaders();
+  m_http2Status = other.http2Status();
 }
 
 QList<QAction*> StandardFeed::contextMenuFeedsList() {
@@ -88,7 +90,7 @@ QString StandardFeed::additionalTooltip() const {
                      .toStdList();
   QStringList fltrs = FROM_STD_LIST(QStringList, std_fltrs);
 
-  // TODO: toto je v podstatě zkopirovane z Feed...
+  // TODO: Basically copied from base implementation.
   QString base_tooltip =
     tr("Auto-update status: %1\n"
        "Active message filters: %2\n"
@@ -111,6 +113,14 @@ QString StandardFeed::additionalTooltip() const {
                                StandardFeed::typeToString(type()),
                                m_postProcessScript.isEmpty() ? QSL("-") : m_postProcessScript,
                                !dontUseRawXmlSaving() ? tr("yes") : tr("no"));
+}
+
+NetworkFactory::Http2Status StandardFeed::http2Status() const {
+  return m_http2Status;
+}
+
+void StandardFeed::setHttp2Status(NetworkFactory::Http2Status status) {
+  m_http2Status = status;
 }
 
 bool StandardFeed::canBeDeleted() const {
@@ -167,6 +177,7 @@ QVariantHash StandardFeed::customDatabaseData() const {
   data[QSL("password")] = TextFactory::encrypt(password());
   data[QSL("dont_use_raw_xml_saving")] = dontUseRawXmlSaving();
   data[QSL("http_headers")] = httpHeaders();
+  data[QSL("http2_status")] = int(http2Status());
 
   return data;
 }
@@ -181,6 +192,7 @@ void StandardFeed::setCustomDatabaseData(const QVariantHash& data) {
   setPassword(TextFactory::decrypt(data[QSL("password")].toString()));
   setDontUseRawXmlSaving(data[QSL("dont_use_raw_xml_saving")].toBool());
   setHttpHeaders(data[QSL("http_headers")].toHash());
+  setHttp2Status(NetworkFactory::Http2Status(data[QSL("http2_status")].toInt()));
 }
 
 QString StandardFeed::typeToString(StandardFeed::Type type) {

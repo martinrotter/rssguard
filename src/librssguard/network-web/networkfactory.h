@@ -5,7 +5,6 @@
 
 #include "definitions/typedefs.h"
 #include "network-web/httpresponse.h"
-#include "services/abstract/feed.h"
 
 #include <QCoreApplication>
 #include <QHttpPart>
@@ -30,8 +29,6 @@ struct RSSGUARD_DLLSPEC NetworkResult {
                            const QList<QNetworkCookie>& cook);
 };
 
-class Downloader;
-
 class RSSGUARD_DLLSPEC NetworkFactory {
     Q_DECLARE_TR_FUNCTIONS(NetworkFactory)
 
@@ -43,6 +40,12 @@ class RSSGUARD_DLLSPEC NetworkFactory {
       NoAuthentication = 0,
       Basic = 1,
       Token = 2
+    };
+
+    enum class Http2Status {
+      DontSet = 0, // Use application-wide setting.
+      Enabled = 1,
+      Disabled = 2
     };
 
     static QStringList extractFeedLinksFromHtmlPage(const QUrl& url, const QString& html);
@@ -61,7 +64,8 @@ class RSSGUARD_DLLSPEC NetworkFactory {
                                                     QPixmap& output,
                                                     const QList<QPair<QByteArray, QByteArray>>& additional_headers,
                                                     const QNetworkProxy& custom_proxy =
-                                                      QNetworkProxy::ProxyType::DefaultProxy);
+                                                      QNetworkProxy::ProxyType::DefaultProxy,
+                                                    Http2Status http2_status = Http2Status::DontSet);
     static NetworkResult performNetworkOperation(const QString& url,
                                                  int timeout,
                                                  const QByteArray& input_data,
@@ -73,7 +77,8 @@ class RSSGUARD_DLLSPEC NetworkFactory {
                                                  const QString& username = QString(),
                                                  const QString& password = QString(),
                                                  const QNetworkProxy& custom_proxy =
-                                                   QNetworkProxy::ProxyType::DefaultProxy);
+                                                   QNetworkProxy::ProxyType::DefaultProxy,
+                                                 Http2Status http2_status = Http2Status::DontSet);
     static NetworkResult performNetworkOperation(const QString& url,
                                                  int timeout,
                                                  QHttpMultiPart* input_data,
@@ -85,7 +90,8 @@ class RSSGUARD_DLLSPEC NetworkFactory {
                                                  const QString& username = QString(),
                                                  const QString& password = QString(),
                                                  const QNetworkProxy& custom_proxy =
-                                                   QNetworkProxy::ProxyType::DefaultProxy);
+                                                   QNetworkProxy::ProxyType::DefaultProxy,
+                                                 Http2Status http2_status = Http2Status::DontSet);
 };
 
 Q_DECLARE_METATYPE(NetworkFactory::NetworkAuthentication)

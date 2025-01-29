@@ -137,6 +137,12 @@ void FormStandardFeedDetails::apply() {
       std_feed->setDontUseRawXmlSaving(m_standardFeedExpDetails->m_ui.m_cbDontUseRawXml->isChecked());
     }
 
+    if (isChangeAllowed(m_standardFeedExpDetails->m_ui.m_mcbEnableHttp2)) {
+      std_feed->setHttp2Status(static_cast<NetworkFactory::Http2Status>(m_standardFeedExpDetails->m_ui.m_cmbEnableHttp2
+                                                                          ->currentData()
+                                                                          .toInt()));
+    }
+
     std_feed->setCreationDate(QDateTime::currentDateTime());
     std_feed->setLastEtag({});
 
@@ -192,6 +198,8 @@ void FormStandardFeedDetails::loadFeedData() {
 
     m_standardFeedExpDetails->m_ui.m_mcbDontUseRawXml
       ->addActionWidget(m_standardFeedExpDetails->m_ui.m_cbDontUseRawXml);
+    m_standardFeedExpDetails->m_ui.m_mcbEnableHttp2->addActionWidget(m_standardFeedExpDetails->m_ui.m_lblEnableHttp2);
+    m_standardFeedExpDetails->m_ui.m_mcbEnableHttp2->addActionWidget(m_standardFeedExpDetails->m_ui.m_cmbEnableHttp2);
   }
   else {
     // We hide batch selectors.
@@ -220,5 +228,7 @@ void FormStandardFeedDetails::loadFeedData() {
     m_standardFeedDetails->setExistingFeed(std_feed);
 
     m_standardFeedExpDetails->m_ui.m_cbDontUseRawXml->setChecked(std_feed->dontUseRawXmlSaving());
+    m_standardFeedExpDetails->m_ui.m_cmbEnableHttp2
+      ->setCurrentIndex(m_standardFeedExpDetails->m_ui.m_cmbEnableHttp2->findData(int(std_feed->http2Status())));
   }
 }

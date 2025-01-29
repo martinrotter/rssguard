@@ -74,6 +74,9 @@ class StandardFeed : public Feed {
     QString password() const;
     void setPassword(const QString& password);
 
+    NetworkFactory::Http2Status http2Status() const;
+    void setHttp2Status(NetworkFactory::Http2Status status);
+
     // Tries to guess feed hidden under given URL
     // and uses given credentials.
     // Returns pointer to guessed feed (if at least partially
@@ -140,6 +143,7 @@ class StandardFeed : public Feed {
     QString m_lastEtag;
     bool m_dontUseRawXmlSaving;
     QVariantHash m_httpHeaders;
+    NetworkFactory::Http2Status m_http2Status;
 };
 
 Q_DECLARE_METATYPE(StandardFeed::SourceType)

@@ -220,7 +220,7 @@ QList<Message> StandardServiceRoot::obtainNewMessages(Feed* feed,
       qDebugNN << "Using ETag value:" << QUOTE_W_SPACE_DOT(f->lastEtag());
     }
 
-    auto network_result = NetworkFactory::performNetworkOperation(feed->source(),
+    auto network_result = NetworkFactory::performNetworkOperation(f->source(),
                                                                   download_timeout,
                                                                   {},
                                                                   feed_contents,
@@ -229,7 +229,8 @@ QList<Message> StandardServiceRoot::obtainNewMessages(Feed* feed,
                                                                   false,
                                                                   {},
                                                                   {},
-                                                                  networkProxy());
+                                                                  networkProxy(),
+                                                                  f->http2Status());
 
     if (network_result.m_networkError != QNetworkReply::NetworkError::NoError) {
       qWarningNN << LOGSEC_CORE << "Error" << QUOTE_W_SPACE(network_result.m_networkError)

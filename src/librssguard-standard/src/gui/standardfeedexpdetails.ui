@@ -14,18 +14,53 @@
    <string>Form</string>
   </property>
   <layout class="QFormLayout" name="formLayout">
-   <item row="0" column="0">
-    <widget class="MultiFeedEditCheckBox" name="m_mcbDontUseRawXml"/>
-   </item>
-   <item row="0" column="1">
-    <widget class="QCheckBox" name="m_cbDontUseRawXml">
-     <property name="text">
-      <string>Use older mechanism for extracting raw XML data</string>
-     </property>
-    </widget>
+   <item row="2" column="0" colspan="2">
+    <widget class="HelpSpoiler" name="m_helpDontUseRawXml" native="true"/>
    </item>
    <item row="1" column="0" colspan="2">
-    <widget class="HelpSpoiler" name="m_helpDontUseRawXml" native="true"/>
+    <layout class="QHBoxLayout" name="horizontalLayout">
+     <item>
+      <widget class="MultiFeedEditCheckBox" name="m_mcbDontUseRawXml"/>
+     </item>
+     <item>
+      <widget class="QCheckBox" name="m_cbDontUseRawXml">
+       <property name="text">
+        <string>Use older mechanism for extracting raw XML data</string>
+       </property>
+      </widget>
+     </item>
+    </layout>
+   </item>
+   <item row="0" column="0" colspan="2">
+    <layout class="QHBoxLayout" name="horizontalLayout_8">
+     <item>
+      <widget class="MultiFeedEditCheckBox" name="m_mcbEnableHttp2"/>
+     </item>
+     <item>
+      <layout class="QGridLayout" name="gridLayout_2">
+       <item row="0" column="1">
+        <widget class="QComboBox" name="m_cmbEnableHttp2">
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
+           <horstretch>0</horstretch>
+           <verstretch>0</verstretch>
+          </sizepolicy>
+         </property>
+        </widget>
+       </item>
+       <item row="0" column="0">
+        <widget class="QLabel" name="m_lblEnableHttp2">
+         <property name="text">
+          <string>Enable HTTP/2</string>
+         </property>
+         <property name="buddy">
+          <cstring>m_cmbEnableHttp2</cstring>
+         </property>
+        </widget>
+       </item>
+      </layout>
+     </item>
+    </layout>
    </item>
   </layout>
  </widget>
@@ -42,6 +77,12 @@
    <container>1</container>
   </customwidget>
  </customwidgets>
+ <tabstops>
+  <tabstop>m_mcbEnableHttp2</tabstop>
+  <tabstop>m_cmbEnableHttp2</tabstop>
+  <tabstop>m_mcbDontUseRawXml</tabstop>
+  <tabstop>m_cbDontUseRawXml</tabstop>
+ </tabstops>
  <resources/>
  <connections/>
 </ui>

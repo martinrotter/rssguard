@@ -443,6 +443,10 @@ QUrl Downloader::lastUrl() const {
   return m_lastUrl;
 }
 
+void Downloader::setHttp2Status(NetworkFactory::Http2Status status) {
+  m_downloadManager->setSpecificHtpp2Status(status);
+}
+
 QMap<QString, QString> Downloader::lastHeaders() const {
   return m_lastHeaders;
 }

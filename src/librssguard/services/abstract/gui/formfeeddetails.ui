@@ -131,7 +131,7 @@
           <widget class="MultiFeedEditCheckBox" name="m_mcbFeedRtl"/>
          </item>
          <item>
-          <widget class="QCheckBox" name="m_cbFeedRTL">
+          <widget class="QCheckBox" name="m_cbFeedRtl">
            <property name="text">
             <string>Right-to-left layout</string>
            </property>
@@ -146,10 +146,10 @@
    <item>
     <widget class="QDialogButtonBox" name="m_buttonBox">
      <property name="orientation">
-      <enum>Qt::Horizontal</enum>
+      <enum>Qt::Orientation::Horizontal</enum>
      </property>
      <property name="standardButtons">
-      <set>QDialogButtonBox::Cancel|QDialogButtonBox::Ok</set>
+      <set>QDialogButtonBox::StandardButton::Cancel|QDialogButtonBox::StandardButton::Ok</set>
      </property>
      <property name="centerButtons">
       <bool>false</bool>
@@ -177,10 +177,18 @@
   </customwidget>
  </customwidgets>
  <tabstops>
+  <tabstop>m_tabWidget</tabstop>
+  <tabstop>m_mcbAutoDownloading</tabstop>
+  <tabstop>m_cmbAutoUpdateType</tabstop>
+  <tabstop>m_spinAutoUpdateInterval</tabstop>
+  <tabstop>m_mcbOpenArticlesAutomatically</tabstop>
   <tabstop>m_cbOpenArticlesAutomatically</tabstop>
+  <tabstop>m_mcbSuppressFeed</tabstop>
   <tabstop>m_cbSuppressFeed</tabstop>
+  <tabstop>m_mcbDisableFeed</tabstop>
   <tabstop>m_cbDisableFeed</tabstop>
-  <tabstop>m_cbFeedRTL</tabstop>
+  <tabstop>m_mcbFeedRtl</tabstop>
+  <tabstop>m_cbFeedRtl</tabstop>
  </tabstops>
  <resources/>
  <connections>

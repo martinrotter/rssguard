@@ -28,4 +28,9 @@ StandardFeedExpDetails::StandardFeedExpDetails(QWidget* parent) : QWidget(parent
                                            "This setting is useful when raw XML parsing of the feed is very slow, this "
                                            "happens for feed which do have very long contents."),
                                         false);
+
+  m_ui.m_cmbEnableHttp2->addItem(tr("Use application settings"),
+                                 QVariant::fromValue(int(NetworkFactory::Http2Status::DontSet)));
+  m_ui.m_cmbEnableHttp2->addItem(tr("Enabled"), QVariant::fromValue(int(NetworkFactory::Http2Status::Enabled)));
+  m_ui.m_cmbEnableHttp2->addItem(tr("Disabled"), QVariant::fromValue(int(NetworkFactory::Http2Status::Disabled)));
 }

@@ -167,7 +167,8 @@ QNetworkReply::NetworkError NetworkFactory::downloadIcon(const QList<IconLocatio
                                                          int timeout,
                                                          QPixmap& output,
                                                          const QList<QPair<QByteArray, QByteArray>>& additional_headers,
-                                                         const QNetworkProxy& custom_proxy) {
+                                                         const QNetworkProxy& custom_proxy,
+                                                         Http2Status http2_status) {
   QNetworkReply::NetworkError network_result = QNetworkReply::NetworkError::UnknownNetworkError;
 
   for (const auto& url : urls) {
@@ -271,7 +272,8 @@ NetworkResult NetworkFactory::performNetworkOperation(const QString& url,
                                                       bool protected_contents,
                                                       const QString& username,
                                                       const QString& password,
-                                                      const QNetworkProxy& custom_proxy) {
+                                                      const QNetworkProxy& custom_proxy,
+                                                      Http2Status http2_status) {
   Downloader downloader;
   QEventLoop loop;
   NetworkResult result;
@@ -289,6 +291,7 @@ NetworkResult NetworkFactory::performNetworkOperation(const QString& url,
     downloader.setProxy(custom_proxy);
   }
 
+  downloader.setHttp2Status(http2_status);
   downloader.manipulateData(url, operation, input_data, timeout, protected_contents, username, password);
   loop.exec();
 
@@ -301,7 +304,7 @@ NetworkResult NetworkFactory::performNetworkOperation(const QString& url,
   result.m_headers = downloader.lastHeaders();
   result.m_url = downloader.lastUrl();
 
-  qDebugNN << LOGSEC_NETWORK << "URLS\n" << url << "\n" << result.m_url.toString();
+  qDebugNN << LOGSEC_NETWORK << "URLS\nRequest: " << url << "\nResponse: " << result.m_url.toString();
 
   return result;
 }
@@ -315,7 +318,8 @@ NetworkResult NetworkFactory::performNetworkOperation(const QString& url,
                                                       bool protected_contents,
                                                       const QString& username,
                                                       const QString& password,
-                                                      const QNetworkProxy& custom_proxy) {
+                                                      const QNetworkProxy& custom_proxy,
+                                                      Http2Status http2_status) {
   Downloader downloader;
   QEventLoop loop;
   NetworkResult result;
@@ -333,6 +337,7 @@ NetworkResult NetworkFactory::performNetworkOperation(const QString& url,
     downloader.setProxy(custom_proxy);
   }
 
+  downloader.setHttp2Status(http2_status);
   downloader.manipulateData(url, operation, input_data, timeout, protected_contents, username, password);
   loop.exec();
 
@@ -345,7 +350,7 @@ NetworkResult NetworkFactory::performNetworkOperation(const QString& url,
   result.m_headers = downloader.lastHeaders();
   result.m_url = downloader.lastUrl();
 
-  qDebugNN << LOGSEC_NETWORK << "URLS\n" << url << "\n" << result.m_url.toString();
+  qDebugNN << LOGSEC_NETWORK << "URLS\nRequest: " << url << "\nResponse: " << result.m_url.toString();
 
   return result;
 }

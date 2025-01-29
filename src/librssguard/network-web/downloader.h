@@ -7,6 +7,7 @@
 #include "network-web/gemini/geminiclient.h"
 #include "network-web/gemini/geminiparser.h"
 #include "network-web/httpresponse.h"
+#include "network-web/networkfactory.h"
 
 #include <QHttpMultiPart>
 #include <QNetworkProxy>
@@ -34,6 +35,7 @@ class Downloader : public QObject {
     QMap<QString, QString> lastHeaders() const;
     QUrl lastUrl() const;
 
+    void setHttp2Status(NetworkFactory::Http2Status status);
     void setProxy(const QNetworkProxy& proxy);
 
   public slots:

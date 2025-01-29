@@ -3,6 +3,8 @@
 #ifndef BASENETWORKACCESSMANAGER_H
 #define BASENETWORKACCESSMANAGER_H
 
+#include "network-web/networkfactory.h"
+
 #include <QNetworkAccessManager>
 
 // This is base class for all network access managers.
@@ -11,6 +13,8 @@ class BaseNetworkAccessManager : public QNetworkAccessManager {
 
   public:
     explicit BaseNetworkAccessManager(QObject* parent = nullptr);
+
+    void setSpecificHtpp2Status(NetworkFactory::Http2Status status);
 
   public slots:
     void loadSettings();

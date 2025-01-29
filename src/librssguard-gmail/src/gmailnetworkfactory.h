@@ -16,7 +16,6 @@
 class RootItem;
 class GmailServiceRoot;
 class OAuth2Service;
-class Downloader;
 
 class GmailNetworkFactory : public QObject {
     Q_OBJECT
