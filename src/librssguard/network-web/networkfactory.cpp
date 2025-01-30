@@ -13,6 +13,10 @@
 #include <QTextDocument>
 #include <QTimer>
 
+QDateTime NetworkFactory::extractRetryAfter(const QString& retry_after_value) {
+  return {};
+}
+
 QStringList NetworkFactory::extractFeedLinksFromHtmlPage(const QUrl& url, const QString& html) {
   QStringList feeds;
   QRegularExpression rx(QSL(FEED_REGEX_MATCHER), QRegularExpression::PatternOption::CaseInsensitiveOption);

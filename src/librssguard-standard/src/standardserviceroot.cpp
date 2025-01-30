@@ -195,6 +195,10 @@ Qt::ItemFlags StandardServiceRoot::additionalFlags() const {
   return ServiceRoot::additionalFlags() | Qt::ItemFlag::ItemIsDragEnabled | Qt::ItemFlag::ItemIsDropEnabled;
 }
 
+void StandardServiceRoot::clearFeedOverload(StandardFeed* feed) {
+  m_overloadedHosts.remove(QUrl(feed->source()).host());
+}
+
 QList<Message> StandardServiceRoot::obtainNewMessages(Feed* feed,
                                                       const QHash<ServiceRoot::BagOfMessages, QStringList>&
                                                         stated_messages,
@@ -203,6 +207,13 @@ QList<Message> StandardServiceRoot::obtainNewMessages(Feed* feed,
   Q_UNUSED(tagged_messages)
 
   StandardFeed* f = static_cast<StandardFeed*>(feed);
+
+  if (checkIfFeedOverloaded(f)) {
+    qWarningNN << LOGSEC_CORE << "Feed with source" << QUOTE_W_SPACE(f->source())
+               << "was signalled temporarily being down. Returning no articles for now.";
+    return {};
+  }
+
   QByteArray feed_contents;
   QString formatted_feed_contents;
   int download_timeout = qApp->settings()->value(GROUP(Feeds), SETTING(Feeds::UpdateTimeout)).toInt();
@@ -233,12 +244,27 @@ QList<Message> StandardServiceRoot::obtainNewMessages(Feed* feed,
                                                                   f->http2Status());
 
     if (network_result.m_networkError != QNetworkReply::NetworkError::NoError) {
-      qWarningNN << LOGSEC_CORE << "Error" << QUOTE_W_SPACE(network_result.m_networkError)
-                 << "during fetching of new messages for feed" << QUOTE_W_SPACE_DOT(feed->source());
-      throw FeedFetchException(Feed::Status::NetworkError,
-                               NetworkFactory::networkErrorText(network_result.m_networkError));
+      if (network_result.m_httpCode == HTTP_CODE_TOO_MANY_REQUESTS ||
+          network_result.m_httpCode == HTTP_CODE_UNAVAILABLE) {
+
+        QDateTime safe_dt = NetworkFactory::extractRetryAfter(network_result.m_headers.value(QSL("retry-after")));
+
+        m_overloadedHosts.insert(QUrl(f->source()).host(), safe_dt);
+
+        qWarningNN << LOGSEC_CORE << "Feed" << QUOTE_W_SPACE_DOT(feed->source())
+                   << "indicates that there is too many requests right now on the same host.";
+        return {};
+      }
+      else {
+        qWarningNN << LOGSEC_CORE << "Error" << QUOTE_W_SPACE(network_result.m_networkError)
+                   << "during fetching of new messages for feed" << QUOTE_W_SPACE_DOT(feed->source());
+        throw FeedFetchException(Feed::Status::NetworkError,
+                                 NetworkFactory::networkErrorText(network_result.m_networkError));
+      }
     }
     else {
+      clearFeedOverload(f);
+
       f->setLastEtag(network_result.m_headers.value(QSL("etag")));
 
       if (network_result.m_httpCode == HTTP_CODE_NOT_MODIFIED && feed_contents.trimmed().isEmpty()) {
@@ -564,6 +590,19 @@ void StandardServiceRoot::exportFeeds() {
 
   form.data()->setMode(FeedsImportExportModel::Mode::Export);
   form.data()->exec();
+}
+
+bool StandardServiceRoot::checkIfFeedOverloaded(StandardFeed* feed) const {
+  if (feed->sourceType() == StandardFeed::SourceType::Url ||
+      feed->sourceType() == StandardFeed::SourceType::EmbeddedBrowser) {
+    QString hostname = QUrl(feed->source()).host();
+    QDateTime retry_after = m_overloadedHosts.value(hostname);
+
+    return retry_after.isValid() && retry_after > QDateTime::currentDateTimeUtc();
+  }
+  else {
+    return false;
+  }
 }
 
 QList<QAction*> StandardServiceRoot::serviceMenu() {

@@ -54,6 +54,9 @@ class StandardServiceRoot : public ServiceRoot {
     void exportFeeds();
 
   private:
+    void clearFeedOverload(StandardFeed* feed);
+    bool checkIfFeedOverloaded(StandardFeed* feed) const;
+
     // Takes structure residing under given root item and adds feeds/categories from
     // it to active structure.
     // NOTE: This is used for import/export of the model.
@@ -61,6 +64,8 @@ class StandardServiceRoot : public ServiceRoot {
 
     QPointer<StandardFeed> m_feedForMetadata = {};
     QList<QAction*> m_feedContextMenu = {};
+
+    QHash<QString, QDateTime> m_overloadedHosts;
 };
 
 #endif // STANDARDSERVICEROOT_H

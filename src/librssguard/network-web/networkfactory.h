@@ -48,6 +48,8 @@ class RSSGUARD_DLLSPEC NetworkFactory {
       Disabled = 2
     };
 
+    static QDateTime extractRetryAfter(const QString& retry_after_value);
+
     static QStringList extractFeedLinksFromHtmlPage(const QUrl& url, const QString& html);
     static QPair<QByteArray, QByteArray> generateBasicAuthHeader(NetworkAuthentication protection,
                                                                  const QString& username,
