@@ -1369,7 +1369,7 @@ Onderdeel ID: %5</translation>
     <message>
       <location filename="../src/librssguard/gui/feedsview.cpp" line="261"/>
       <source>Do you really want to purge all non-starred articles from selected feeds?</source>
-      <translation type="unfinished">Do you really want to purge all non-starred articles from selected feeds?</translation>
+      <translation>Weet u zeker dat u alle niet-ster gemarkeerde artikelen uit geselecteerde feeds wilt verwijderen?</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/feedsview.cpp" line="315"/>
@@ -3136,7 +3136,7 @@ QtWebEngine cache map -&gt; &quot;%7&quot;</translation>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="966"/>
       <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="820"/>
       <source>&amp;Purge selected feeds</source>
-      <translation type="unfinished">&amp;Purge selected feeds</translation>
+      <translation>&amp;Geselecteerde feeds opruimen</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="740"/>
@@ -4046,47 +4046,47 @@ Installeer het nu.</translation>
     <message>
       <location filename="../src/librssguard/network-web/gemini/geminiclient.cpp" line="268"/>
       <source>Line is too short for valid protocol</source>
-      <translation type="unfinished">Line is too short for valid protocol</translation>
+      <translation>Regel is te kort voor een geldig protocol</translation>
     </message>
     <message>
       <location filename="../src/librssguard/network-web/gemini/geminiclient.cpp" line="273"/>
       <source>response too large!</source>
-      <translation type="unfinished">response too large!</translation>
+      <translation>antwoord te groot!</translation>
     </message>
     <message>
       <location filename="../src/librssguard/network-web/gemini/geminiclient.cpp" line="282"/>
       <source>Line does not end with &lt;CR&gt; &lt;LF&gt;</source>
-      <translation type="unfinished">Line does not end with &lt;CR&gt; &lt;LF&gt;</translation>
+      <translation>Regel eindigt niet met &lt;CR&gt; &lt;LF&gt;</translation>
     </message>
     <message>
       <location filename="../src/librssguard/network-web/gemini/geminiclient.cpp" line="291"/>
       <source>First character is not a digit.</source>
-      <translation type="unfinished">First character is not a digit.</translation>
+      <translation>Eerste teken is geen cijfer.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/network-web/gemini/geminiclient.cpp" line="300"/>
       <source>Second character is not a digit.</source>
-      <translation type="unfinished">Second character is not a digit.</translation>
+      <translation>Tweede teken is geen cijfer.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/network-web/gemini/geminiclient.cpp" line="312"/>
       <source>Third character is not a space.</source>
-      <translation type="unfinished">Third character is not a space.</translation>
+      <translation>Derde karakter is geen spatie.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/network-web/gemini/geminiclient.cpp" line="361"/>
       <source>Invalid URL for redirection!</source>
-      <translation type="unfinished">Invalid URL for redirection!</translation>
+      <translation>Ongeldige URL voor omleiding!</translation>
     </message>
     <message>
       <location filename="../src/librssguard/network-web/gemini/geminiclient.cpp" line="438"/>
       <source>Unspecified status code used!</source>
-      <translation type="unfinished">Unspecified status code used!</translation>
+      <translation>Niet-gespecificeerde statuscode gebruikt!</translation>
     </message>
     <message>
       <location filename="../src/librssguard/network-web/gemini/geminiclient.cpp" line="447"/>
       <source>META too large!</source>
-      <translation type="unfinished">META too large!</translation>
+      <translation>META te groot!</translation>
     </message>
   </context>
   <context>
@@ -5723,7 +5723,7 @@ Logintoken verloopt: %2</translation>
     <message>
       <location filename="../src/librssguard/gui/toolbars/messagestoolbar.cpp" line="282"/>
       <source>Show read articles</source>
-      <translation type="unfinished">Show read articles</translation>
+      <translation>Gelezen artikelen tonen</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/toolbars/messagestoolbar.cpp" line="287"/>
@@ -9064,17 +9064,17 @@ Deze instelling is handig wanneer onbewerkte XML-parsing van de feed erg traag i
     <message>
       <location filename="../src/librssguard-standard/src/gui/standardfeedexpdetails.cpp" line="32"/>
       <source>Use application settings</source>
-      <translation type="unfinished">Use application settings</translation>
+      <translation>Gebruik applicatie instellingen</translation>
     </message>
     <message>
       <location filename="../src/librssguard-standard/src/gui/standardfeedexpdetails.cpp" line="34"/>
       <source>Enabled</source>
-      <translation type="unfinished">Enabled</translation>
+      <translation>Ingeschakeld</translation>
     </message>
     <message>
       <location filename="../src/librssguard-standard/src/gui/standardfeedexpdetails.cpp" line="35"/>
       <source>Disabled</source>
-      <translation type="unfinished">Disabled</translation>
+      <translation>Uitgeschakeld</translation>
     </message>
   </context>
   <context>
