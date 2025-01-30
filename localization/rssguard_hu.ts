@@ -18,37 +18,37 @@
     <name>AccountDetails</name>
     <message>
       <location filename="../src/librssguard/services/abstract/gui/accountdetails.ui" line="14"/>
-      <location filename="../../build-rssguard-Desktop_Qt_6_7_0_MSVC2017_64bit-Debug/src/librssguard/ui_accountdetails.h" line="78"/>
+      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_accountdetails.h" line="78"/>
       <source>Form</source>
       <translation>Űrlap</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/abstract/gui/accountdetails.ui" line="20"/>
-      <location filename="../../build-rssguard-Desktop_Qt_6_7_0_MSVC2017_64bit-Debug/src/librssguard/ui_accountdetails.h" line="79"/>
+      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_accountdetails.h" line="79"/>
       <source>Display additional nodes</source>
       <translation>További csomópontok megjelenítése</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/abstract/gui/accountdetails.ui" line="26"/>
-      <location filename="../../build-rssguard-Desktop_Qt_6_7_0_MSVC2017_64bit-Debug/src/librssguard/ui_accountdetails.h" line="80"/>
+      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_accountdetails.h" line="80"/>
       <source>Important</source>
       <translation>Fontos</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/abstract/gui/accountdetails.ui" line="33"/>
-      <location filename="../../build-rssguard-Desktop_Qt_6_7_0_MSVC2017_64bit-Debug/src/librssguard/ui_accountdetails.h" line="81"/>
+      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_accountdetails.h" line="81"/>
       <source>Unread</source>
       <translation>Olvasatlan</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/abstract/gui/accountdetails.ui" line="40"/>
-      <location filename="../../build-rssguard-Desktop_Qt_6_7_0_MSVC2017_64bit-Debug/src/librssguard/ui_accountdetails.h" line="82"/>
+      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_accountdetails.h" line="82"/>
       <source>Labels</source>
       <translation>Címkék</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/abstract/gui/accountdetails.ui" line="47"/>
-      <location filename="../../build-rssguard-Desktop_Qt_6_7_0_MSVC2017_64bit-Debug/src/librssguard/ui_accountdetails.h" line="83"/>
+      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_accountdetails.h" line="83"/>
       <source>Probes</source>
       <translation>Szondák</translation>
     </message>
@@ -108,37 +108,37 @@ Error: %1</source>
     </message>
     <message>
       <location filename="../src/librssguard/network-web/adblock/adblockdialog.ui" line="20"/>
-      <location filename="../../build-rssguard-Desktop_Qt_6_7_0_MSVC2017_64bit-Debug/src/librssguard/ui_adblockdialog.h" line="148"/>
+      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_adblockdialog.h" line="148"/>
       <source>Enable AdBlock</source>
       <translation>AdBlock engedélyezése</translation>
     </message>
     <message>
       <location filename="../src/librssguard/network-web/adblock/adblockdialog.ui" line="32"/>
-      <location filename="../../build-rssguard-Desktop_Qt_6_7_0_MSVC2017_64bit-Debug/src/librssguard/ui_adblockdialog.h" line="149"/>
+      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_adblockdialog.h" line="149"/>
       <source>&amp;Help</source>
       <translation>&amp;Segítség</translation>
     </message>
     <message>
       <location filename="../src/librssguard/network-web/adblock/adblockdialog.ui" line="58"/>
-      <location filename="../../build-rssguard-Desktop_Qt_6_7_0_MSVC2017_64bit-Debug/src/librssguard/ui_adblockdialog.h" line="151"/>
+      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_adblockdialog.h" line="151"/>
       <source>Filter lists</source>
       <translation>Szűrők listája</translation>
     </message>
     <message>
       <location filename="../src/librssguard/network-web/adblock/adblockdialog.ui" line="64"/>
-      <location filename="../../build-rssguard-Desktop_Qt_6_7_0_MSVC2017_64bit-Debug/src/librssguard/ui_adblockdialog.h" line="150"/>
+      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_adblockdialog.h" line="150"/>
       <source>Add your direct links to filter lists here (one URL per line)</source>
       <translation>Adja hozzá a szűrő listákra mutató közvetlen hivatkozásokat (egy URL soronként)</translation>
     </message>
     <message>
       <location filename="../src/librssguard/network-web/adblock/adblockdialog.ui" line="78"/>
-      <location filename="../../build-rssguard-Desktop_Qt_6_7_0_MSVC2017_64bit-Debug/src/librssguard/ui_adblockdialog.h" line="153"/>
+      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_adblockdialog.h" line="153"/>
       <source>Custom filters</source>
       <translation>Egyedi szűrők</translation>
     </message>
     <message>
       <location filename="../src/librssguard/network-web/adblock/adblockdialog.ui" line="84"/>
-      <location filename="../../build-rssguard-Desktop_Qt_6_7_0_MSVC2017_64bit-Debug/src/librssguard/ui_adblockdialog.h" line="152"/>
+      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_adblockdialog.h" line="152"/>
       <source>Add your custom filters here (one filter per line)</source>
       <translation>Itt adja hozzá az egyedi szűrőket (egy szűrőfeltétel soronként)</translation>
     </message>
@@ -180,81 +180,81 @@ Error: %1</source>
   <context>
     <name>Application</name>
     <message>
-      <location filename="../src/librssguard/miscellaneous/application.cpp" line="1239"/>
+      <location filename="../src/librssguard/miscellaneous/application.cpp" line="1225"/>
       <source>Application is already running.</source>
       <translation>Az alkalmazás már fut.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/miscellaneous/application.cpp" line="652"/>
+      <location filename="../src/librssguard/miscellaneous/application.cpp" line="638"/>
       <source>Output directory is not writable.</source>
       <translation>A kimeneti könyvtár nem írható.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/miscellaneous/application.cpp" line="660"/>
+      <location filename="../src/librssguard/miscellaneous/application.cpp" line="646"/>
       <source>Settings file not copied to output directory successfully.</source>
       <translation>A beállításokat tartalmazó fájl kimeneti könyvtárba történő másolása sikertelen.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/miscellaneous/application.cpp" line="675"/>
+      <location filename="../src/librssguard/miscellaneous/application.cpp" line="661"/>
       <source>Database restoration was not initiated. Make sure that output directory is writable.</source>
       <translation>Az adatbázis helyreállítása nem indult el. Győződjön meg arról, hogy a kimeneti könyvtár írható.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/miscellaneous/application.cpp" line="682"/>
+      <location filename="../src/librssguard/miscellaneous/application.cpp" line="668"/>
       <source>Settings restoration was not initiated. Make sure that output directory is writable.</source>
       <translation>A beállítások helyreállítása nem indult el. Győződjön meg arról, hogy a kimeneti könyvtár írható.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/miscellaneous/application.cpp" line="1257"/>
+      <location filename="../src/librssguard/miscellaneous/application.cpp" line="1243"/>
       <source>Cannot add feed</source>
       <translation>Hírforrás hozzáadása sikertelen</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/miscellaneous/application.cpp" line="1258"/>
+      <location filename="../src/librssguard/miscellaneous/application.cpp" line="1244"/>
       <source>Feed cannot be added because there is no active account which can add feeds.</source>
       <translation>A hírforrás nem adható hozzá, mivel nincs aktív felhasználói fiók aminek engedélyezett a hírforrások felvétele.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/miscellaneous/application.cpp" line="1422"/>
+      <location filename="../src/librssguard/miscellaneous/application.cpp" line="1415"/>
       <source>Node.js</source>
       <translation type="unfinished">Node.js</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/miscellaneous/application.cpp" line="1411"/>
+      <location filename="../src/librssguard/miscellaneous/application.cpp" line="1404"/>
       <source>Packages were NOT updated because of error: %2. Affected packages:
 %1</source>
       <translation type="unfinished">Packages were NOT updated because of error: %2. Affected packages:
 %1</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/miscellaneous/application.cpp" line="1423"/>
+      <location filename="../src/librssguard/miscellaneous/application.cpp" line="1416"/>
       <source>These packages were installed/updated:
 %1</source>
       <translation type="unfinished">These packages were installed/updated:
 %1</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/miscellaneous/application.cpp" line="1117"/>
+      <location filename="../src/librssguard/miscellaneous/application.cpp" line="1103"/>
       <source>Unread articles fetched</source>
       <translation>Az olvasatlan cikkek sikeresen lekérve</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/miscellaneous/application.cpp" line="406"/>
+      <location filename="../src/librssguard/miscellaneous/application.cpp" line="392"/>
       <source>Go to changelog</source>
       <translation>Változási napló megtekintése</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/miscellaneous/application.cpp" line="1188"/>
+      <location filename="../src/librssguard/miscellaneous/application.cpp" line="1174"/>
       <source>AdBlock needs to be configured</source>
       <translation>Az AdBlock konfigurációja szükséges</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/miscellaneous/application.cpp" line="400"/>
+      <location filename="../src/librssguard/miscellaneous/application.cpp" line="386"/>
       <source>Welcome</source>
       <translation>Üdvözöljük</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/miscellaneous/application.cpp" line="401"/>
+      <location filename="../src/librssguard/miscellaneous/application.cpp" line="387"/>
       <source>Welcome to %1.
 
 Please, check NEW stuff included in this
@@ -266,12 +266,12 @@ található új funkciókat erre a popup ablakra
 való kattintással.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/miscellaneous/application.cpp" line="1189"/>
+      <location filename="../src/librssguard/miscellaneous/application.cpp" line="1175"/>
       <source>AdBlock is not configured properly. Go to &quot;Settings&quot; -&gt; &quot;Node.js&quot; and check if your Node.js is properly configured.</source>
       <translation>Az AdBlock nem megfelelően van konfigurálva. Menj a &quot;Beállítások&quot;-&quot;Node.js&quot; menüpontba, és ellenőrizd, hogy a Node.js megfelelően van konfigurálva.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/miscellaneous/application.cpp" line="1238"/>
+      <location filename="../src/librssguard/miscellaneous/application.cpp" line="1224"/>
       <source>Already running</source>
       <translation>Már fut</translation>
     </message>
@@ -280,73 +280,73 @@ való kattintással.</translation>
     <name>ArticleAmountControl</name>
     <message>
       <location filename="../src/librssguard/gui/reusable/articleamountcontrol.ui" line="14"/>
-      <location filename="../../build-rssguard-Desktop_Qt_6_7_0_MSVC2017_64bit-Debug/src/librssguard/ui_articleamountcontrol.h" line="256"/>
+      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_articleamountcontrol.h" line="256"/>
       <source>Form</source>
       <translation>Űrlap</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/reusable/articleamountcontrol.ui" line="36"/>
-      <location filename="../../build-rssguard-Desktop_Qt_6_7_0_MSVC2017_64bit-Debug/src/librssguard/ui_articleamountcontrol.h" line="261"/>
+      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_articleamountcontrol.h" line="261"/>
       <source>Ignoring old articles</source>
       <translation>Régi cikkek figyelmen kívül hagyása</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/reusable/articleamountcontrol.ui" line="47"/>
-      <location filename="../../build-rssguard-Desktop_Qt_6_7_0_MSVC2017_64bit-Debug/src/librssguard/ui_articleamountcontrol.h" line="257"/>
+      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_articleamountcontrol.h" line="257"/>
       <source>Add articles with any date into the database</source>
       <translation>Bármely dátumú cikkek hozzáadása az adatbázishoz</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/reusable/articleamountcontrol.ui" line="76"/>
-      <location filename="../../build-rssguard-Desktop_Qt_6_7_0_MSVC2017_64bit-Debug/src/librssguard/ui_articleamountcontrol.h" line="258"/>
+      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_articleamountcontrol.h" line="258"/>
       <source>Avoid adding articles before this date/time into the database</source>
       <translation>Az ezen dátum/időpont előtti cikkek nem kerülnek hozzáadásra az adatbázishoz</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/reusable/articleamountcontrol.ui" line="85"/>
-      <location filename="../../build-rssguard-Desktop_Qt_6_7_0_MSVC2017_64bit-Debug/src/librssguard/ui_articleamountcontrol.h" line="259"/>
+      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_articleamountcontrol.h" line="259"/>
       <source>Absolute date/time</source>
       <translation>Abszolút dátum/idő</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/reusable/articleamountcontrol.ui" line="92"/>
-      <location filename="../../build-rssguard-Desktop_Qt_6_7_0_MSVC2017_64bit-Debug/src/librssguard/ui_articleamountcontrol.h" line="260"/>
+      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_articleamountcontrol.h" line="260"/>
       <source>Relative time</source>
       <translation>Relatív idő</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/reusable/articleamountcontrol.ui" line="170"/>
-      <location filename="../../build-rssguard-Desktop_Qt_6_7_0_MSVC2017_64bit-Debug/src/librssguard/ui_articleamountcontrol.h" line="267"/>
+      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_articleamountcontrol.h" line="267"/>
       <source>Limiting amount of articles in feeds</source>
       <translation>A hírforrásokban található cikkek számának korlátozása</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/reusable/articleamountcontrol.ui" line="181"/>
-      <location filename="../../build-rssguard-Desktop_Qt_6_7_0_MSVC2017_64bit-Debug/src/librssguard/ui_articleamountcontrol.h" line="262"/>
+      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_articleamountcontrol.h" line="262"/>
       <source>Customize article limits</source>
       <translation>Cikk limitek személyre szabása</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/reusable/articleamountcontrol.ui" line="210"/>
-      <location filename="../../build-rssguard-Desktop_Qt_6_7_0_MSVC2017_64bit-Debug/src/librssguard/ui_articleamountcontrol.h" line="263"/>
+      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_articleamountcontrol.h" line="263"/>
       <source>In database, keep</source>
       <translation type="unfinished">In database, keep</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/reusable/articleamountcontrol.ui" line="224"/>
-      <location filename="../../build-rssguard-Desktop_Qt_6_7_0_MSVC2017_64bit-Debug/src/librssguard/ui_articleamountcontrol.h" line="264"/>
+      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_articleamountcontrol.h" line="264"/>
       <source>Do not remove important articles</source>
       <translation>Ne távolítsa el a fontos cikkeket</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/reusable/articleamountcontrol.ui" line="231"/>
-      <location filename="../../build-rssguard-Desktop_Qt_6_7_0_MSVC2017_64bit-Debug/src/librssguard/ui_articleamountcontrol.h" line="265"/>
+      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_articleamountcontrol.h" line="265"/>
       <source>Do not remove unread articles</source>
       <translation>Ne távolítsa el az olvasatlan cikkeket</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/reusable/articleamountcontrol.ui" line="238"/>
-      <location filename="../../build-rssguard-Desktop_Qt_6_7_0_MSVC2017_64bit-Debug/src/librssguard/ui_articleamountcontrol.h" line="266"/>
+      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_articleamountcontrol.h" line="266"/>
       <source>Just move articles to recycle bin, do not purge them</source>
       <translation>A cikkek végleges törlése helyett lomtárba mozgatása</translation>
     </message>
@@ -378,37 +378,37 @@ való kattintással.</translation>
     <name>ArticleListNotification</name>
     <message>
       <location filename="../src/librssguard/gui/notifications/articlelistnotification.ui" line="66"/>
-      <location filename="../../build-rssguard-Desktop_Qt_6_7_0_MSVC2017_64bit-Debug/src/librssguard/ui_articlelistnotification.h" line="142"/>
+      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_articlelistnotification.h" line="142"/>
       <source>...</source>
       <translation>...</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/notifications/articlelistnotification.ui" line="87"/>
-      <location filename="../../build-rssguard-Desktop_Qt_6_7_0_MSVC2017_64bit-Debug/src/librssguard/ui_articlelistnotification.h" line="144"/>
+      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_articlelistnotification.h" line="144"/>
       <source>Go to previous page</source>
       <translation>Ugrás az előző oldalra</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/notifications/articlelistnotification.ui" line="94"/>
-      <location filename="../../build-rssguard-Desktop_Qt_6_7_0_MSVC2017_64bit-Debug/src/librssguard/ui_articlelistnotification.h" line="147"/>
+      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_articlelistnotification.h" line="147"/>
       <source>Go to next page</source>
       <translation>Ugrás a következő oldalra</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/notifications/articlelistnotification.ui" line="101"/>
-      <location filename="../../build-rssguard-Desktop_Qt_6_7_0_MSVC2017_64bit-Debug/src/librssguard/ui_articlelistnotification.h" line="150"/>
+      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_articlelistnotification.h" line="150"/>
       <source>Open article in article list</source>
       <translation>Cikk megnyitása a cikklistában</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/notifications/articlelistnotification.ui" line="108"/>
-      <location filename="../../build-rssguard-Desktop_Qt_6_7_0_MSVC2017_64bit-Debug/src/librssguard/ui_articlelistnotification.h" line="153"/>
+      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_articlelistnotification.h" line="153"/>
       <source>Open article in web browser</source>
       <translation>Cikk megnyitása böngészőben</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/notifications/articlelistnotification.ui" line="122"/>
-      <location filename="../../build-rssguard-Desktop_Qt_6_7_0_MSVC2017_64bit-Debug/src/librssguard/ui_articlelistnotification.h" line="156"/>
+      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_articlelistnotification.h" line="156"/>
       <source>Mark all articles as read</source>
       <translation>Az összes cikk megjelölése olvasottként</translation>
     </message>
@@ -469,25 +469,25 @@ való kattintással.</translation>
     <name>AuthenticationDetails</name>
     <message>
       <location filename="../src/librssguard/services/abstract/gui/authenticationdetails.ui" line="14"/>
-      <location filename="../../build-rssguard-Desktop_Qt_6_7_0_MSVC2017_64bit-Debug/src/librssguard/ui_authenticationdetails.h" line="122"/>
+      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_authenticationdetails.h" line="122"/>
       <source>Form</source>
       <translation>Űrlap</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/abstract/gui/authenticationdetails.ui" line="45"/>
-      <location filename="../../build-rssguard-Desktop_Qt_6_7_0_MSVC2017_64bit-Debug/src/librssguard/ui_authenticationdetails.h" line="125"/>
+      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_authenticationdetails.h" line="125"/>
       <source>Some feeds require authentication, including GMail feeds. BASIC, NTLM-2 and DIGEST-MD5 authentication schemes are supported.</source>
       <translation>Néhány hírforrás hitelesítést igényel, ideértve a GMail hírforrásokat is. A támogatott hitelesítési sémák: BASIC, NTLM-2 és DIGEST-MD5.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/abstract/gui/authenticationdetails.ui" line="48"/>
-      <location filename="../../build-rssguard-Desktop_Qt_6_7_0_MSVC2017_64bit-Debug/src/librssguard/ui_authenticationdetails.h" line="127"/>
+      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_authenticationdetails.h" line="127"/>
       <source>Credentials</source>
       <translation>Hitelesítő adatok</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/abstract/gui/authenticationdetails.ui" line="25"/>
-      <location filename="../../build-rssguard-Desktop_Qt_6_7_0_MSVC2017_64bit-Debug/src/librssguard/ui_authenticationdetails.h" line="123"/>
+      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_authenticationdetails.h" line="123"/>
       <source>Authentication type</source>
       <translation>Hitelesítés típusa</translation>
     </message>
@@ -495,14 +495,14 @@ való kattintással.</translation>
       <location filename="../src/librssguard/services/abstract/gui/authenticationdetails.ui" line="60"/>
       <location filename="../src/librssguard/services/abstract/gui/authenticationdetails.cpp" line="15"/>
       <location filename="../src/librssguard/services/abstract/gui/authenticationdetails.cpp" line="100"/>
-      <location filename="../../build-rssguard-Desktop_Qt_6_7_0_MSVC2017_64bit-Debug/src/librssguard/ui_authenticationdetails.h" line="128"/>
+      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_authenticationdetails.h" line="128"/>
       <source>Username</source>
       <translation>Felhasználónév</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/abstract/gui/authenticationdetails.ui" line="73"/>
       <location filename="../src/librssguard/services/abstract/gui/authenticationdetails.cpp" line="17"/>
-      <location filename="../../build-rssguard-Desktop_Qt_6_7_0_MSVC2017_64bit-Debug/src/librssguard/ui_authenticationdetails.h" line="129"/>
+      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_authenticationdetails.h" line="129"/>
       <source>Password</source>
       <translation>Jelszó</translation>
     </message>
@@ -599,52 +599,52 @@ Kategóriák száma: %2</translation>
   <context>
     <name>DatabaseCleaner</name>
     <message>
-      <location filename="../src/librssguard/database/databasecleaner.cpp" line="65"/>
+      <location filename="../src/librssguard/database/databasecleaner.cpp" line="75"/>
       <source>Shrinking database file...</source>
       <translation>Adatbázis fájl zsugorítása...</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/database/databasecleaner.cpp" line="70"/>
+      <location filename="../src/librssguard/database/databasecleaner.cpp" line="81"/>
       <source>Database file shrinked...</source>
       <translation>Adatbázis fájl zsugorítása elkészült...</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/database/databasecleaner.cpp" line="40"/>
+      <location filename="../src/librssguard/database/databasecleaner.cpp" line="45"/>
       <source>Recycle bin purged...</source>
       <translation>A lomtár ürítése sikeres...</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/database/databasecleaner.cpp" line="35"/>
+      <location filename="../src/librssguard/database/databasecleaner.cpp" line="39"/>
       <source>Purging recycle bin...</source>
       <translation>Lomtár ürítése folyamatban...</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/database/databasecleaner.cpp" line="25"/>
+      <location filename="../src/librssguard/database/databasecleaner.cpp" line="27"/>
       <source>Removing read articles...</source>
       <translation>Elolvasott cikkek eltávolítása...</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/database/databasecleaner.cpp" line="30"/>
+      <location filename="../src/librssguard/database/databasecleaner.cpp" line="33"/>
       <source>Read articles purged...</source>
       <translation>Olvasott cikkek eltávolítva...</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/database/databasecleaner.cpp" line="45"/>
+      <location filename="../src/librssguard/database/databasecleaner.cpp" line="51"/>
       <source>Removing old articles...</source>
       <translation>Régi cikkek eltávolítása...</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/database/databasecleaner.cpp" line="50"/>
+      <location filename="../src/librssguard/database/databasecleaner.cpp" line="57"/>
       <source>Old articles purged...</source>
       <translation>Régi cikkek eltávolítva...</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/database/databasecleaner.cpp" line="55"/>
+      <location filename="../src/librssguard/database/databasecleaner.cpp" line="63"/>
       <source>Removing starred articles...</source>
       <translation>Csillagozott cikkek eltávolítása folyamatban...</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/database/databasecleaner.cpp" line="60"/>
+      <location filename="../src/librssguard/database/databasecleaner.cpp" line="69"/>
       <source>Starred articles purged...</source>
       <translation>Csillagozott cikkek eltávolítva...</translation>
     </message>
@@ -665,12 +665,12 @@ Kategóriák száma: %2</translation>
   <context>
     <name>DiscoveredFeedsModel</name>
     <message>
-      <location filename="../src/librssguard-standard/src/gui/formdiscoverfeeds.cpp" line="302"/>
+      <location filename="../src/librssguard-standard/src/gui/formdiscoverfeeds.cpp" line="309"/>
       <source>Title</source>
       <translation>Cím</translation>
     </message>
     <message>
-      <location filename="../src/librssguard-standard/src/gui/formdiscoverfeeds.cpp" line="302"/>
+      <location filename="../src/librssguard-standard/src/gui/formdiscoverfeeds.cpp" line="309"/>
       <source>Type</source>
       <translation>Típus</translation>
     </message>
@@ -766,31 +766,31 @@ Kattintson ide a könyvtár megnyitásához.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/network-web/downloaditem.ui" line="54"/>
-      <location filename="../../build-rssguard-Desktop_Qt_6_7_0_MSVC2017_64bit-Debug/src/librssguard/ui_downloaditem.h" line="128"/>
+      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_downloaditem.h" line="128"/>
       <source>Filename</source>
       <translation>Fájlnév</translation>
     </message>
     <message>
       <location filename="../src/librssguard/network-web/downloaditem.ui" line="86"/>
-      <location filename="../../build-rssguard-Desktop_Qt_6_7_0_MSVC2017_64bit-Debug/src/librssguard/ui_downloaditem.h" line="131"/>
+      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_downloaditem.h" line="131"/>
       <source>&amp;Try again</source>
       <translation>&amp;Próbáld újra</translation>
     </message>
     <message>
       <location filename="../src/librssguard/network-web/downloaditem.ui" line="93"/>
-      <location filename="../../build-rssguard-Desktop_Qt_6_7_0_MSVC2017_64bit-Debug/src/librssguard/ui_downloaditem.h" line="132"/>
+      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_downloaditem.h" line="132"/>
       <source>&amp;Stop</source>
       <translation>&amp;Állj</translation>
     </message>
     <message>
       <location filename="../src/librssguard/network-web/downloaditem.ui" line="100"/>
-      <location filename="../../build-rssguard-Desktop_Qt_6_7_0_MSVC2017_64bit-Debug/src/librssguard/ui_downloaditem.h" line="133"/>
+      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_downloaditem.h" line="133"/>
       <source>&amp;Open file</source>
       <translation>&amp;Fájl megnyitása</translation>
     </message>
     <message>
       <location filename="../src/librssguard/network-web/downloaditem.ui" line="107"/>
-      <location filename="../../build-rssguard-Desktop_Qt_6_7_0_MSVC2017_64bit-Debug/src/librssguard/ui_downloaditem.h" line="134"/>
+      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_downloaditem.h" line="134"/>
       <source>Open &amp;directory</source>
       <translation>&amp;Mappa megnyitása</translation>
     </message>
@@ -828,7 +828,7 @@ Kattintson ide a könyvtár megnyitásához.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/network-web/downloadmanager.ui" line="38"/>
-      <location filename="../../build-rssguard-Desktop_Qt_6_7_0_MSVC2017_64bit-Debug/src/librssguard/ui_downloadmanager.h" line="72"/>
+      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_downloadmanager.h" line="72"/>
       <source>Clean up</source>
       <translation>Tisztítás</translation>
     </message>
@@ -1025,22 +1025,12 @@ Elem ID: %5</translation>
   <context>
     <name>FeedReader</name>
     <message>
-      <location filename="../src/librssguard/miscellaneous/feedreader.cpp" line="279"/>
-      <source>Feed fetching is paused</source>
-      <translation type="unfinished">Feed fetching is paused</translation>
-    </message>
-    <message>
-      <location filename="../src/librssguard/miscellaneous/feedreader.cpp" line="280"/>
-      <source>Automatic feed fetching based on time interval is currently paused.</source>
-      <translation type="unfinished">Automatic feed fetching based on time interval is currently paused.</translation>
-    </message>
-    <message>
-      <location filename="../src/librssguard/miscellaneous/feedreader.cpp" line="380"/>
+      <location filename="../src/librssguard/miscellaneous/feedreader.cpp" line="371"/>
       <source>Starting auto-download of some feeds&apos; articles</source>
       <translation>Néhány hírforrás cikkeinek automatikus letöltése</translation>
     </message>
     <message numerus="yes">
-      <location filename="../src/librssguard/miscellaneous/feedreader.cpp" line="381"/>
+      <location filename="../src/librssguard/miscellaneous/feedreader.cpp" line="372"/>
       <source>I will auto-download new articles for %n feed(s).</source>
       <translation type="unfinished">
         <numerusform>%n hírforráshoz fogok automatikusan új cikkeket letölteni.</numerusform>
@@ -1230,17 +1220,17 @@ Elem ID: %5</translation>
   <context>
     <name>FeedsImportExportModel</name>
     <message>
-      <location filename="../src/librssguard-standard/src/standardfeedsimportexportmodel.cpp" line="325"/>
+      <location filename="../src/librssguard-standard/src/standardfeedsimportexportmodel.cpp" line="326"/>
       <source>OPML document contains errors</source>
       <translation>Az OPML dokumentum hibákat tartalmaz</translation>
     </message>
     <message>
-      <location filename="../src/librssguard-standard/src/standardfeedsimportexportmodel.cpp" line="330"/>
+      <location filename="../src/librssguard-standard/src/standardfeedsimportexportmodel.cpp" line="331"/>
       <source>this is likely not OPML document</source>
       <translation>ez valószínűleg nem egy OPML dokumentum</translation>
     </message>
     <message>
-      <location filename="../src/librssguard-standard/src/standardfeedsimportexportmodel.cpp" line="409"/>
+      <location filename="../src/librssguard-standard/src/standardfeedsimportexportmodel.cpp" line="410"/>
       <source>Category </source>
       <translation>Kategória </translation>
     </message>
@@ -1312,50 +1302,51 @@ Elem ID: %5</translation>
   <context>
     <name>FeedsView</name>
     <message>
-      <location filename="../src/librssguard/gui/feedsview.cpp" line="278"/>
+      <location filename="../src/librssguard/gui/feedsview.cpp" line="293"/>
       <source>Cannot edit item</source>
       <translation>Az elem nem szerkeszthető</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/feedsview.cpp" line="405"/>
+      <location filename="../src/librssguard/gui/feedsview.cpp" line="420"/>
       <source>Cannot delete item</source>
       <translation>Az elem nem törölhető</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/feedsview.cpp" line="1031"/>
+      <location filename="../src/librssguard/gui/feedsview.cpp" line="1047"/>
       <source>Context menu for empty space</source>
       <translation>Az üres terület helyi menüje</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/feedsview.cpp" line="279"/>
+      <location filename="../src/librssguard/gui/feedsview.cpp" line="294"/>
       <source>Selected item cannot be edited because another critical operation is ongoing.</source>
       <translation>A kiválasztott elem szerkesztése nem lehetséges, mivel más kritikus művelet van folyamatban.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/feedsview.cpp" line="406"/>
+      <location filename="../src/librssguard/gui/feedsview.cpp" line="421"/>
       <source>Selected item cannot be deleted because another critical operation is ongoing.</source>
       <translation>A kiválasztott elem nem törölhető, mivel más kritikus művelet van folyamatban.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/feedsview.cpp" line="908"/>
-      <location filename="../src/librssguard/gui/feedsview.cpp" line="962"/>
+      <location filename="../src/librssguard/gui/feedsview.cpp" line="923"/>
+      <location filename="../src/librssguard/gui/feedsview.cpp" line="977"/>
       <source>Context menu for categories</source>
       <translation>Kategóriák helyi menüje</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/feedsview.cpp" line="243"/>
       <location filename="../src/librssguard/gui/feedsview.cpp" line="260"/>
-      <location filename="../src/librssguard/gui/feedsview.cpp" line="444"/>
+      <location filename="../src/librssguard/gui/feedsview.cpp" line="275"/>
+      <location filename="../src/librssguard/gui/feedsview.cpp" line="459"/>
       <source>Are you sure?</source>
       <translation>Biztos benne?</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/feedsview.cpp" line="1041"/>
+      <location filename="../src/librssguard/gui/feedsview.cpp" line="1057"/>
       <source>Context menu for other items</source>
       <translation>Egyéb elemek helyi menüje</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/feedsview.cpp" line="1085"/>
+      <location filename="../src/librssguard/gui/feedsview.cpp" line="1101"/>
       <source>Context menu for regex query</source>
       <translation>RegEx lekérdezések helyi menüje</translation>
     </message>
@@ -1371,60 +1362,65 @@ Elem ID: %5</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/feedsview.cpp" line="244"/>
-      <location filename="../src/librssguard/gui/feedsview.cpp" line="261"/>
+      <location filename="../src/librssguard/gui/feedsview.cpp" line="276"/>
       <source>Do you really want to clean all articles from selected items?</source>
       <translation>Biztos, hogy minden cikket törölni kíván a kiválaszott elemekből?</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/feedsview.cpp" line="300"/>
-      <location filename="../src/librssguard/gui/feedsview.cpp" line="310"/>
-      <location filename="../src/librssguard/gui/feedsview.cpp" line="328"/>
-      <location filename="../src/librssguard/gui/feedsview.cpp" line="345"/>
+      <location filename="../src/librssguard/gui/feedsview.cpp" line="261"/>
+      <source>Do you really want to purge all non-starred articles from selected feeds?</source>
+      <translation type="unfinished">Do you really want to purge all non-starred articles from selected feeds?</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard/gui/feedsview.cpp" line="315"/>
+      <location filename="../src/librssguard/gui/feedsview.cpp" line="325"/>
+      <location filename="../src/librssguard/gui/feedsview.cpp" line="343"/>
+      <location filename="../src/librssguard/gui/feedsview.cpp" line="360"/>
       <source>Cannot edit items</source>
       <translation>Az elemek nem szerkeszthetőek</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/feedsview.cpp" line="301"/>
+      <location filename="../src/librssguard/gui/feedsview.cpp" line="316"/>
       <source>Selected items cannot be edited. This is not supported (yet).</source>
       <translation>A kiválasztott elemek nem szerkeszthetőek. Ez (még) nem támogatott funkció.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/feedsview.cpp" line="311"/>
+      <location filename="../src/librssguard/gui/feedsview.cpp" line="326"/>
       <source>%1 does not support batch editing of multiple accounts.</source>
       <translation>A %1 nem támogatja a több fiók kötegelt szerkesztését.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/feedsview.cpp" line="329"/>
+      <location filename="../src/librssguard/gui/feedsview.cpp" line="344"/>
       <source>%1 does not support batch editing of items from multiple accounts.</source>
       <translation>A %1 nem támogatja a több fiókból származó elemek kötegelt szerkesztését.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/feedsview.cpp" line="346"/>
+      <location filename="../src/librssguard/gui/feedsview.cpp" line="361"/>
       <source>%1 does not support batch editing of items of varying types.</source>
       <translation>A %1 nem támogatja a különböző típusú elemek kötegelt szerkesztését.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/feedsview.cpp" line="356"/>
+      <location filename="../src/librssguard/gui/feedsview.cpp" line="371"/>
       <source>Cannot edit some items</source>
       <translation>Néhány elem nem szerkeszthető</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/feedsview.cpp" line="357"/>
+      <location filename="../src/librssguard/gui/feedsview.cpp" line="372"/>
       <source>Some of selected items cannot be edited. Proceeding to edit the rest.</source>
       <translation>A kiválasztott elemek némelyike nem szerkeszthető. A többi szerkesztése fog megtörténni.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/feedsview.cpp" line="434"/>
+      <location filename="../src/librssguard/gui/feedsview.cpp" line="449"/>
       <source>Some items won&apos;t be deleted</source>
       <translation>Néhány elem nem kerül törlésre</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/feedsview.cpp" line="435"/>
+      <location filename="../src/librssguard/gui/feedsview.cpp" line="450"/>
       <source>Some selected items will not be deleted, because they cannot be deleted.</source>
       <translation>Néhány elem nem kerül törlésre, mert nem törölhetőek.</translation>
     </message>
     <message numerus="yes">
-      <location filename="../src/librssguard/gui/feedsview.cpp" line="442"/>
+      <location filename="../src/librssguard/gui/feedsview.cpp" line="457"/>
       <source>Deleting %n items</source>
       <translation type="unfinished">
         <numerusform>%n számú elem törlése</numerusform>
@@ -1432,7 +1428,7 @@ Elem ID: %5</translation>
       </translation>
     </message>
     <message numerus="yes">
-      <location filename="../src/librssguard/gui/feedsview.cpp" line="443"/>
+      <location filename="../src/librssguard/gui/feedsview.cpp" line="458"/>
       <source>You are about to completely delete %n items.</source>
       <translation>
         <numerusform>Arra készült hogy teljesen töröljön %n elemet.</numerusform>
@@ -1440,22 +1436,22 @@ Elem ID: %5</translation>
       </translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/feedsview.cpp" line="647"/>
+      <location filename="../src/librssguard/gui/feedsview.cpp" line="662"/>
       <source>Context menu for recycle bins</source>
       <translation>Lomtárak helyi menüje</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/feedsview.cpp" line="668"/>
+      <location filename="../src/librssguard/gui/feedsview.cpp" line="683"/>
       <source>Context menu for accounts</source>
       <translation>Fiókok helyi menüje</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/feedsview.cpp" line="1062"/>
+      <location filename="../src/librssguard/gui/feedsview.cpp" line="1078"/>
       <source>Context menu for label</source>
       <translation>Címkék helyi menü</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/feedsview.cpp" line="1010"/>
+      <location filename="../src/librssguard/gui/feedsview.cpp" line="1026"/>
       <source>Context menu for important articles</source>
       <translation>Fontos cikkek helyi menüje</translation>
     </message>
@@ -1532,43 +1528,43 @@ QtWebEngine gyorsítótár mappája -&gt; &quot;%7&quot;</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formabout.ui" line="93"/>
-      <location filename="../../build-rssguard-Desktop_Qt_6_7_0_MSVC2017_64bit-Debug/src/librssguard/ui_formabout.h" line="224"/>
+      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_formabout.h" line="224"/>
       <source>&amp;Copy info to clipboard</source>
       <translation type="unfinished">&amp;Copy info to clipboard</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formabout.ui" line="112"/>
-      <location filename="../../build-rssguard-Desktop_Qt_6_7_0_MSVC2017_64bit-Debug/src/librssguard/ui_formabout.h" line="226"/>
+      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_formabout.h" line="226"/>
       <source>Information</source>
       <translation>Információ</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formabout.ui" line="160"/>
-      <location filename="../../build-rssguard-Desktop_Qt_6_7_0_MSVC2017_64bit-Debug/src/librssguard/ui_formabout.h" line="228"/>
+      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_formabout.h" line="228"/>
       <source>Licenses</source>
       <translation>Licenszek</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formabout.ui" line="172"/>
-      <location filename="../../build-rssguard-Desktop_Qt_6_7_0_MSVC2017_64bit-Debug/src/librssguard/ui_formabout.h" line="227"/>
+      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_formabout.h" line="227"/>
       <source>Licenses page is available only in English language.</source>
       <translation>A licensz oldal csak angol nyelven elérhető.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formabout.ui" line="180"/>
-      <location filename="../../build-rssguard-Desktop_Qt_6_7_0_MSVC2017_64bit-Debug/src/librssguard/ui_formabout.h" line="230"/>
+      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_formabout.h" line="230"/>
       <source>Changelog</source>
       <translation>Változási napló</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formabout.ui" line="215"/>
-      <location filename="../../build-rssguard-Desktop_Qt_6_7_0_MSVC2017_64bit-Debug/src/librssguard/ui_formabout.h" line="229"/>
+      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_formabout.h" line="229"/>
       <source>Changelog page is available only in English language.</source>
       <translation>A változásnapló oldal csak angol nyelven elérhető.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formabout.ui" line="223"/>
-      <location filename="../../build-rssguard-Desktop_Qt_6_7_0_MSVC2017_64bit-Debug/src/librssguard/ui_formabout.h" line="231"/>
+      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_formabout.h" line="231"/>
       <source>Resources</source>
       <translation>Erőforrások</translation>
     </message>
@@ -1600,7 +1596,7 @@ QtWebEngine gyorsítótár mappája -&gt; &quot;%7&quot;</translation>
     <name>FormAddAccount</name>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formaddaccount.ui" line="14"/>
-      <location filename="../../build-rssguard-Desktop_Qt_6_7_0_MSVC2017_64bit-Debug/src/librssguard/ui_formaddaccount.h" line="73"/>
+      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_formaddaccount.h" line="73"/>
       <source>Add new account</source>
       <translation>Új fiók hozzáadása</translation>
     </message>
@@ -1785,55 +1781,55 @@ QtWebEngine gyorsítótár mappája -&gt; &quot;%7&quot;</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formbackupdatabasesettings.ui" line="14"/>
-      <location filename="../../build-rssguard-Desktop_Qt_6_7_0_MSVC2017_64bit-Debug/src/librssguard/ui_formbackupdatabasesettings.h" line="142"/>
+      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_formbackupdatabasesettings.h" line="142"/>
       <source>Backup database/settings</source>
       <translation>Adatbázis/beállítások biztonsági mentése</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formbackupdatabasesettings.ui" line="20"/>
-      <location filename="../../build-rssguard-Desktop_Qt_6_7_0_MSVC2017_64bit-Debug/src/librssguard/ui_formbackupdatabasesettings.h" line="143"/>
+      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_formbackupdatabasesettings.h" line="143"/>
       <source>Output directory</source>
       <translation>Kimeneti mappa</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formbackupdatabasesettings.ui" line="26"/>
-      <location filename="../../build-rssguard-Desktop_Qt_6_7_0_MSVC2017_64bit-Debug/src/librssguard/ui_formbackupdatabasesettings.h" line="144"/>
+      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_formbackupdatabasesettings.h" line="144"/>
       <source>&amp;Select directory</source>
       <translation>&amp;Mappa kiválasztása</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formbackupdatabasesettings.ui" line="43"/>
-      <location filename="../../build-rssguard-Desktop_Qt_6_7_0_MSVC2017_64bit-Debug/src/librssguard/ui_formbackupdatabasesettings.h" line="145"/>
+      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_formbackupdatabasesettings.h" line="145"/>
       <source>Backup properties</source>
       <translation>Biztonsági mentés tulajdonságai</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formbackupdatabasesettings.ui" line="49"/>
-      <location filename="../../build-rssguard-Desktop_Qt_6_7_0_MSVC2017_64bit-Debug/src/librssguard/ui_formbackupdatabasesettings.h" line="146"/>
+      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_formbackupdatabasesettings.h" line="146"/>
       <source>Items to backup</source>
       <translation>Biztonsági mentésre kiválasztott elemek</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formbackupdatabasesettings.ui" line="56"/>
-      <location filename="../../build-rssguard-Desktop_Qt_6_7_0_MSVC2017_64bit-Debug/src/librssguard/ui_formbackupdatabasesettings.h" line="147"/>
+      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_formbackupdatabasesettings.h" line="147"/>
       <source>Database</source>
       <translation>Adatbázis</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formbackupdatabasesettings.ui" line="66"/>
-      <location filename="../../build-rssguard-Desktop_Qt_6_7_0_MSVC2017_64bit-Debug/src/librssguard/ui_formbackupdatabasesettings.h" line="148"/>
+      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_formbackupdatabasesettings.h" line="148"/>
       <source>Settings</source>
       <translation>Beállítások</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formbackupdatabasesettings.ui" line="76"/>
-      <location filename="../../build-rssguard-Desktop_Qt_6_7_0_MSVC2017_64bit-Debug/src/librssguard/ui_formbackupdatabasesettings.h" line="149"/>
+      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_formbackupdatabasesettings.h" line="149"/>
       <source>Backup name</source>
       <translation>Biztonsági mentés neve</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formbackupdatabasesettings.ui" line="89"/>
-      <location filename="../../build-rssguard-Desktop_Qt_6_7_0_MSVC2017_64bit-Debug/src/librssguard/ui_formbackupdatabasesettings.h" line="150"/>
+      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_formbackupdatabasesettings.h" line="150"/>
       <source>Operation results</source>
       <translation>A művelet eredményei</translation>
     </message>
@@ -1951,37 +1947,37 @@ QtWebEngine gyorsítótár mappája -&gt; &quot;%7&quot;</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/abstract/gui/formcategorydetails.ui" line="31"/>
-      <location filename="../../build-rssguard-Desktop_Qt_6_7_0_MSVC2017_64bit-Debug/src/librssguard/ui_formcategorydetails.h" line="180"/>
+      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_formcategorydetails.h" line="180"/>
       <source>Parent category</source>
       <translation type="unfinished">Parent category</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/abstract/gui/formcategorydetails.ui" line="43"/>
-      <location filename="../../build-rssguard-Desktop_Qt_6_7_0_MSVC2017_64bit-Debug/src/librssguard/ui_formcategorydetails.h" line="182"/>
+      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_formcategorydetails.h" line="182"/>
       <source>Select parent item for your category.</source>
       <translation type="unfinished">Select parent item for your category.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/abstract/gui/formcategorydetails.ui" line="61"/>
-      <location filename="../../build-rssguard-Desktop_Qt_6_7_0_MSVC2017_64bit-Debug/src/librssguard/ui_formcategorydetails.h" line="184"/>
+      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_formcategorydetails.h" line="184"/>
       <source>Title</source>
       <translation>Cím</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/abstract/gui/formcategorydetails.ui" line="81"/>
-      <location filename="../../build-rssguard-Desktop_Qt_6_7_0_MSVC2017_64bit-Debug/src/librssguard/ui_formcategorydetails.h" line="185"/>
+      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_formcategorydetails.h" line="185"/>
       <source>Description</source>
       <translation>Leírás</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/abstract/gui/formcategorydetails.ui" line="101"/>
-      <location filename="../../build-rssguard-Desktop_Qt_6_7_0_MSVC2017_64bit-Debug/src/librssguard/ui_formcategorydetails.h" line="186"/>
+      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_formcategorydetails.h" line="186"/>
       <source>Icon</source>
       <translation>Ikon</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/abstract/gui/formcategorydetails.ui" line="125"/>
-      <location filename="../../build-rssguard-Desktop_Qt_6_7_0_MSVC2017_64bit-Debug/src/librssguard/ui_formcategorydetails.h" line="188"/>
+      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_formcategorydetails.h" line="188"/>
       <source>Select icon for your category.</source>
       <translation>Válasszon ikont a kategóriának.</translation>
     </message>
@@ -2026,67 +2022,67 @@ QtWebEngine gyorsítótár mappája -&gt; &quot;%7&quot;</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formdatabasecleanup.ui" line="14"/>
-      <location filename="../../build-rssguard-Desktop_Qt_6_7_0_MSVC2017_64bit-Debug/src/librssguard/ui_formdatabasecleanup.h" line="188"/>
+      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_formdatabasecleanup.h" line="188"/>
       <source>Cleanup database</source>
       <translation>Adatbázis tisztítása</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formdatabasecleanup.ui" line="20"/>
-      <location filename="../../build-rssguard-Desktop_Qt_6_7_0_MSVC2017_64bit-Debug/src/librssguard/ui_formdatabasecleanup.h" line="189"/>
+      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_formdatabasecleanup.h" line="189"/>
       <source>Cleanup settings</source>
       <translation>Tisztítás beállításai</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formdatabasecleanup.ui" line="26"/>
-      <location filename="../../build-rssguard-Desktop_Qt_6_7_0_MSVC2017_64bit-Debug/src/librssguard/ui_formdatabasecleanup.h" line="190"/>
+      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_formdatabasecleanup.h" line="190"/>
       <source>Optimize database file</source>
       <translation>Adatbázis fájl optimalizálása</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formdatabasecleanup.ui" line="36"/>
-      <location filename="../../build-rssguard-Desktop_Qt_6_7_0_MSVC2017_64bit-Debug/src/librssguard/ui_formdatabasecleanup.h" line="191"/>
+      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_formdatabasecleanup.h" line="191"/>
       <source>Remove all read articles</source>
       <translation>Minden olvasott cikk eltávolítása</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formdatabasecleanup.ui" line="53"/>
-      <location filename="../../build-rssguard-Desktop_Qt_6_7_0_MSVC2017_64bit-Debug/src/librssguard/ui_formdatabasecleanup.h" line="192"/>
+      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_formdatabasecleanup.h" line="192"/>
       <source>Remove all articles from recycle bin</source>
       <translation>Minden cikk eltávolítása a lomtárból</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formdatabasecleanup.ui" line="63"/>
-      <location filename="../../build-rssguard-Desktop_Qt_6_7_0_MSVC2017_64bit-Debug/src/librssguard/ui_formdatabasecleanup.h" line="193"/>
+      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_formdatabasecleanup.h" line="193"/>
       <source>Remove all articles older than</source>
       <translation>Minden cikk eltávolítása, ami régebbi mint</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formdatabasecleanup.ui" line="86"/>
-      <location filename="../../build-rssguard-Desktop_Qt_6_7_0_MSVC2017_64bit-Debug/src/librssguard/ui_formdatabasecleanup.h" line="194"/>
+      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_formdatabasecleanup.h" line="194"/>
       <source>Remove all starred articles</source>
       <translation>Minden csillagozott cikk eltávolítása</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formdatabasecleanup.ui" line="96"/>
-      <location filename="../../build-rssguard-Desktop_Qt_6_7_0_MSVC2017_64bit-Debug/src/librssguard/ui_formdatabasecleanup.h" line="195"/>
+      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_formdatabasecleanup.h" line="195"/>
       <source>Database information</source>
       <translation>Adatbázis információ</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formdatabasecleanup.ui" line="102"/>
-      <location filename="../../build-rssguard-Desktop_Qt_6_7_0_MSVC2017_64bit-Debug/src/librssguard/ui_formdatabasecleanup.h" line="196"/>
+      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_formdatabasecleanup.h" line="196"/>
       <source>Total data size</source>
       <translation>Teljes felhasznált terület</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formdatabasecleanup.ui" line="119"/>
-      <location filename="../../build-rssguard-Desktop_Qt_6_7_0_MSVC2017_64bit-Debug/src/librssguard/ui_formdatabasecleanup.h" line="197"/>
+      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_formdatabasecleanup.h" line="197"/>
       <source>Database type</source>
       <translation>Adatbázis típusa</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formdatabasecleanup.ui" line="139"/>
-      <location filename="../../build-rssguard-Desktop_Qt_6_7_0_MSVC2017_64bit-Debug/src/librssguard/ui_formdatabasecleanup.h" line="198"/>
+      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_formdatabasecleanup.h" line="198"/>
       <source>Progress</source>
       <translation>Előrehaladás</translation>
     </message>
@@ -2169,17 +2165,17 @@ QtWebEngine gyorsítótár mappája -&gt; &quot;%7&quot;</translation>
       <translation>Hiba: %1</translation>
     </message>
     <message>
-      <location filename="../src/librssguard-standard/src/gui/formdiscoverfeeds.cpp" line="198"/>
+      <location filename="../src/librssguard-standard/src/gui/formdiscoverfeeds.cpp" line="205"/>
       <source>URL is valid.</source>
       <translation>Érvényes URL.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard-standard/src/gui/formdiscoverfeeds.cpp" line="201"/>
+      <location filename="../src/librssguard-standard/src/gui/formdiscoverfeeds.cpp" line="208"/>
       <source>URL is NOT valid.</source>
       <translation>Érvénytelen URL.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard-standard/src/gui/formdiscoverfeeds.cpp" line="269"/>
+      <location filename="../src/librssguard-standard/src/gui/formdiscoverfeeds.cpp" line="276"/>
       <source>No title</source>
       <translation>Nincs cím</translation>
     </message>
@@ -2287,49 +2283,49 @@ QtWebEngine gyorsítótár mappája -&gt; &quot;%7&quot;</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/abstract/gui/formfeeddetails.ui" line="24"/>
-      <location filename="../../build-rssguard-Desktop_Qt_6_7_0_MSVC2017_64bit-Debug/src/librssguard/ui_formfeeddetails.h" line="215"/>
+      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_formfeeddetails.h" line="223"/>
       <source>Articles</source>
       <translation>Cikkek</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/abstract/gui/formfeeddetails.ui" line="50"/>
-      <location filename="../../build-rssguard-Desktop_Qt_6_7_0_MSVC2017_64bit-Debug/src/librssguard/ui_formfeeddetails.h" line="210"/>
+      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_formfeeddetails.h" line="218"/>
       <source>Auto-downloading of articles</source>
       <translation>Cikkek automatikus letöltése</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/abstract/gui/formfeeddetails.ui" line="60"/>
-      <location filename="../../build-rssguard-Desktop_Qt_6_7_0_MSVC2017_64bit-Debug/src/librssguard/ui_formfeeddetails.h" line="212"/>
+      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_formfeeddetails.h" line="220"/>
       <source>Select the auto-download strategy for messages of this feed. Default auto-download strategy means that new messges of this feed will be downloaded in time intervals set in application settings.</source>
       <translation>Állítsa be ezen hírforrás üzeneteire vonatkozó automatikus letöltési szabályokat. Az alapértelmezett automatikus letöltési szabályok lefogadása azt jelenti, hogy ezen hírforrás üzenetei olyan időközönként kerülnek letöltésre, ami az applikáció általános beállításaiban rögzítve van.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/abstract/gui/formfeeddetails.ui" line="84"/>
-      <location filename="../../build-rssguard-Desktop_Qt_6_7_0_MSVC2017_64bit-Debug/src/librssguard/ui_formfeeddetails.h" line="214"/>
+      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_formfeeddetails.h" line="222"/>
       <source>Open articles via their URL automatically</source>
       <translation type="unfinished">Open articles via their URL automatically</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/abstract/gui/formfeeddetails.ui" line="97"/>
-      <location filename="../../build-rssguard-Desktop_Qt_6_7_0_MSVC2017_64bit-Debug/src/librssguard/ui_formfeeddetails.h" line="219"/>
+      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_formfeeddetails.h" line="227"/>
       <source>Miscellaneous</source>
       <translation>Vegyes</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/abstract/gui/formfeeddetails.ui" line="122"/>
-      <location filename="../../build-rssguard-Desktop_Qt_6_7_0_MSVC2017_64bit-Debug/src/librssguard/ui_formfeeddetails.h" line="217"/>
+      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_formfeeddetails.h" line="225"/>
       <source>Disable this feed</source>
       <translation>Hírforrás kikapcsolása</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/abstract/gui/formfeeddetails.ui" line="136"/>
-      <location filename="../../build-rssguard-Desktop_Qt_6_7_0_MSVC2017_64bit-Debug/src/librssguard/ui_formfeeddetails.h" line="218"/>
+      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_formfeeddetails.h" line="226"/>
       <source>Right-to-left layout</source>
       <translation>Jobbról balra elrendezés</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/abstract/gui/formfeeddetails.ui" line="108"/>
-      <location filename="../../build-rssguard-Desktop_Qt_6_7_0_MSVC2017_64bit-Debug/src/librssguard/ui_formfeeddetails.h" line="216"/>
+      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_formfeeddetails.h" line="224"/>
       <source>Ignore notifications for this feed</source>
       <translation>Hírforrás értesítéseinek figyelmen kívül hagyása</translation>
     </message>
@@ -2373,12 +2369,12 @@ QtWebEngine gyorsítótár mappája -&gt; &quot;%7&quot;</translation>
   <context>
     <name>FormMain</name>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.cpp" line="414"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.cpp" line="417"/>
       <source>No possible actions</source>
       <translation>Nincs lehetséges művelet</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.cpp" line="373"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.cpp" line="376"/>
       <source>No recycle bin</source>
       <translation>Nincs lomtár</translation>
     </message>
@@ -2399,752 +2395,758 @@ QtWebEngine gyorsítótár mappája -&gt; &quot;%7&quot;</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="53"/>
-      <location filename="../../build-rssguard-Desktop_Qt_6_7_0_MSVC2017_64bit-Debug/src/librssguard/ui_formmain.h" line="816"/>
+      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="821"/>
       <source>&amp;File</source>
       <translation>&amp;Fájl</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="63"/>
-      <location filename="../../build-rssguard-Desktop_Qt_6_7_0_MSVC2017_64bit-Debug/src/librssguard/ui_formmain.h" line="817"/>
+      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="822"/>
       <source>&amp;Help</source>
       <translation>&amp;Segítség</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="74"/>
-      <location filename="../../build-rssguard-Desktop_Qt_6_7_0_MSVC2017_64bit-Debug/src/librssguard/ui_formmain.h" line="818"/>
+      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="823"/>
       <source>&amp;View</source>
       <translation>&amp;Nézet</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="78"/>
-      <location filename="../../build-rssguard-Desktop_Qt_6_7_0_MSVC2017_64bit-Debug/src/librssguard/ui_formmain.h" line="819"/>
+      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="824"/>
       <source>Show/hide</source>
       <translation>Megjelenítés/elrejtés</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="95"/>
-      <location filename="../../build-rssguard-Desktop_Qt_6_7_0_MSVC2017_64bit-Debug/src/librssguard/ui_formmain.h" line="820"/>
+      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="825"/>
       <source>&amp;Tools</source>
       <translation>&amp;Eszközök</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="105"/>
-      <location filename="../../build-rssguard-Desktop_Qt_6_7_0_MSVC2017_64bit-Debug/src/librssguard/ui_formmain.h" line="821"/>
+      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="826"/>
       <source>F&amp;eeds</source>
       <translation>&amp;Hírforrások</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="109"/>
-      <location filename="../../build-rssguard-Desktop_Qt_6_7_0_MSVC2017_64bit-Debug/src/librssguard/ui_formmain.h" line="822"/>
+      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="827"/>
       <source>&amp;Add item</source>
       <translation>&amp;Elem hozzáadása</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="114"/>
-      <location filename="../../build-rssguard-Desktop_Qt_6_7_0_MSVC2017_64bit-Debug/src/librssguard/ui_formmain.h" line="823"/>
+      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="828"/>
       <source>&amp;Move</source>
       <translation>&amp;Áthelyezés</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="160"/>
-      <location filename="../../build-rssguard-Desktop_Qt_6_7_0_MSVC2017_64bit-Debug/src/librssguard/ui_formmain.h" line="824"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="161"/>
+      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="829"/>
       <source>Art&amp;icles</source>
       <translation>&amp;Cikkek</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="186"/>
-      <location filename="../../build-rssguard-Desktop_Qt_6_7_0_MSVC2017_64bit-Debug/src/librssguard/ui_formmain.h" line="825"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="187"/>
+      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="830"/>
       <source>&amp;Recycle bin(s)</source>
       <translation>&amp;Lomtárak</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="193"/>
-      <location filename="../../build-rssguard-Desktop_Qt_6_7_0_MSVC2017_64bit-Debug/src/librssguard/ui_formmain.h" line="826"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="194"/>
+      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="831"/>
       <source>&amp;Accounts</source>
       <translation>&amp;Fiókok</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="201"/>
-      <location filename="../../build-rssguard-Desktop_Qt_6_7_0_MSVC2017_64bit-Debug/src/librssguard/ui_formmain.h" line="827"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="202"/>
+      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="832"/>
       <source>&amp;Web browser &amp;&amp; tabs</source>
       <translation>&amp;Böngésző &amp;&amp; fülek</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="228"/>
-      <location filename="../../build-rssguard-Desktop_Qt_6_7_0_MSVC2017_64bit-Debug/src/librssguard/ui_formmain.h" line="656"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="229"/>
+      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="660"/>
       <source>&amp;Quit</source>
       <translation>&amp;Kilépés</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="231"/>
-      <location filename="../../build-rssguard-Desktop_Qt_6_7_0_MSVC2017_64bit-Debug/src/librssguard/ui_formmain.h" line="658"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="232"/>
+      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="662"/>
       <source>Quit the application.</source>
       <translation>Kilépés az applikációból.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="242"/>
-      <location filename="../../build-rssguard-Desktop_Qt_6_7_0_MSVC2017_64bit-Debug/src/librssguard/ui_formmain.h" line="660"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="243"/>
+      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="664"/>
       <source>&amp;Settings</source>
       <translation>&amp;Beállítások</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="245"/>
-      <location filename="../../build-rssguard-Desktop_Qt_6_7_0_MSVC2017_64bit-Debug/src/librssguard/ui_formmain.h" line="662"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="246"/>
+      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="666"/>
       <source>Display settings of the application.</source>
       <translation>Az applikáció beállításainak megjelenítése.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="253"/>
-      <location filename="../../build-rssguard-Desktop_Qt_6_7_0_MSVC2017_64bit-Debug/src/librssguard/ui_formmain.h" line="664"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="254"/>
+      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="668"/>
       <source>&amp;About application</source>
       <translation>&amp;Az applikációról</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="256"/>
-      <location filename="../../build-rssguard-Desktop_Qt_6_7_0_MSVC2017_64bit-Debug/src/librssguard/ui_formmain.h" line="666"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="257"/>
+      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="670"/>
       <source>Displays extra info about this application.</source>
       <translation>Kiegészítő információk megjelenítése az applikációról.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="270"/>
-      <location filename="../../build-rssguard-Desktop_Qt_6_7_0_MSVC2017_64bit-Debug/src/librssguard/ui_formmain.h" line="668"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="271"/>
+      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="672"/>
       <source>&amp;Fullscreen</source>
       <translation>&amp;Teljes képernyő</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="273"/>
-      <location filename="../../build-rssguard-Desktop_Qt_6_7_0_MSVC2017_64bit-Debug/src/librssguard/ui_formmain.h" line="670"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="274"/>
+      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="674"/>
       <source>Switch fullscreen mode.</source>
       <translation>Váltás teljes képernyős módra.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="281"/>
-      <location filename="../../build-rssguard-Desktop_Qt_6_7_0_MSVC2017_64bit-Debug/src/librssguard/ui_formmain.h" line="672"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="282"/>
+      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="676"/>
       <source>&amp;Fetch all</source>
       <translation>&amp;Összes frissítése</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="284"/>
-      <location filename="../../build-rssguard-Desktop_Qt_6_7_0_MSVC2017_64bit-Debug/src/librssguard/ui_formmain.h" line="674"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="285"/>
+      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="678"/>
       <source>Fetch all feeds</source>
       <translation>Összes hírforrás frissítése</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="292"/>
-      <location filename="../../build-rssguard-Desktop_Qt_6_7_0_MSVC2017_64bit-Debug/src/librssguard/ui_formmain.h" line="676"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="293"/>
+      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="680"/>
       <source>Fetch &amp;selected</source>
       <translation>&amp;Kiválasztott frissítésse</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="295"/>
-      <location filename="../../build-rssguard-Desktop_Qt_6_7_0_MSVC2017_64bit-Debug/src/librssguard/ui_formmain.h" line="678"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="296"/>
+      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="682"/>
       <source>Fetch selected feeds</source>
       <translation>Kiválasztott hírforrások frissítése</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="316"/>
-      <location filename="../../build-rssguard-Desktop_Qt_6_7_0_MSVC2017_64bit-Debug/src/librssguard/ui_formmain.h" line="682"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="317"/>
+      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="686"/>
       <source>Mark articles &amp;read</source>
       <translation>Cikkeket &amp;olvasottnak jelöl</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="319"/>
-      <location filename="../../build-rssguard-Desktop_Qt_6_7_0_MSVC2017_64bit-Debug/src/librssguard/ui_formmain.h" line="684"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="320"/>
+      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="688"/>
       <source>Mark selected articles read</source>
       <translation>A kiválasztott cikkeket olvasottnak jelöli</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="327"/>
-      <location filename="../../build-rssguard-Desktop_Qt_6_7_0_MSVC2017_64bit-Debug/src/librssguard/ui_formmain.h" line="686"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="328"/>
+      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="690"/>
       <source>Mark articles &amp;unread</source>
       <translation>Cikkeket &amp;olvasatlannak jelöl</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="330"/>
-      <location filename="../../build-rssguard-Desktop_Qt_6_7_0_MSVC2017_64bit-Debug/src/librssguard/ui_formmain.h" line="688"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="331"/>
+      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="692"/>
       <source>Mark selected articles unread</source>
       <translation>A kiválasztott cikkeket olvasatlannak jelöli</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="338"/>
-      <location filename="../../build-rssguard-Desktop_Qt_6_7_0_MSVC2017_64bit-Debug/src/librssguard/ui_formmain.h" line="690"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="339"/>
+      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="694"/>
       <source>Switch &amp;importance</source>
       <translation>&amp;Fontosság beállítása</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="341"/>
-      <location filename="../../build-rssguard-Desktop_Qt_6_7_0_MSVC2017_64bit-Debug/src/librssguard/ui_formmain.h" line="692"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="342"/>
+      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="696"/>
       <source>Switch importance of selected articles</source>
       <translation>A kiválasztott cikkek fontosságának megváltoztatása</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="352"/>
-      <location filename="../../build-rssguard-Desktop_Qt_6_7_0_MSVC2017_64bit-Debug/src/librssguard/ui_formmain.h" line="696"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="353"/>
+      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="700"/>
       <source>Mark all messages (without message filters) from selected items as read.</source>
       <translation>A kiválasztott elemek minden üzenetének (szűrők nélkül) olvasottá állítása.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="363"/>
-      <location filename="../../build-rssguard-Desktop_Qt_6_7_0_MSVC2017_64bit-Debug/src/librssguard/ui_formmain.h" line="700"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="364"/>
+      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="704"/>
       <source>Mark all messages (without message filters) from selected items as unread.</source>
       <translation>A kiválasztott elemek minden üzenetének (szűrők nélkül) olvasatlanná állítása.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="371"/>
-      <location filename="../../build-rssguard-Desktop_Qt_6_7_0_MSVC2017_64bit-Debug/src/librssguard/ui_formmain.h" line="702"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="372"/>
+      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="706"/>
       <source>&amp;Delete articles</source>
       <translation>Cikekk &amp;törlése</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="303"/>
-      <location filename="../../build-rssguard-Desktop_Qt_6_7_0_MSVC2017_64bit-Debug/src/librssguard/ui_formmain.h" line="680"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="304"/>
+      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="684"/>
       <source>&amp;Edit selected items</source>
       <translation>Kiválasztott elemek &amp;szerkesztése</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="308"/>
-      <location filename="../../build-rssguard-Desktop_Qt_6_7_0_MSVC2017_64bit-Debug/src/librssguard/ui_formmain.h" line="681"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="309"/>
+      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="685"/>
       <source>&amp;Delete selected items</source>
       <translation>Kiválasztott elemek &amp;törlése</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="349"/>
-      <location filename="../../build-rssguard-Desktop_Qt_6_7_0_MSVC2017_64bit-Debug/src/librssguard/ui_formmain.h" line="694"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="350"/>
+      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="698"/>
       <source>Mark selected items &amp;read</source>
       <translation>A kiválasztott elemek &amp;olvasottnak jelölése</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="360"/>
-      <location filename="../../build-rssguard-Desktop_Qt_6_7_0_MSVC2017_64bit-Debug/src/librssguard/ui_formmain.h" line="698"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="361"/>
+      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="702"/>
       <source>Mark selected items &amp;unread</source>
       <translation>A kiválasztott elemek &amp;olvasatlannak jelölése</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="379"/>
-      <location filename="../../build-rssguard-Desktop_Qt_6_7_0_MSVC2017_64bit-Debug/src/librssguard/ui_formmain.h" line="703"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="380"/>
+      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="707"/>
       <source>&amp;Clean selected items</source>
       <translation>A kiválasztott elemek &amp;megtisztítása</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="382"/>
-      <location filename="../../build-rssguard-Desktop_Qt_6_7_0_MSVC2017_64bit-Debug/src/librssguard/ui_formmain.h" line="705"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="383"/>
+      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="709"/>
       <source>Deletes all messages from selected items.</source>
       <translation>Minden üzenetet töröl a kiválasztott elemekből.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="390"/>
-      <location filename="../../build-rssguard-Desktop_Qt_6_7_0_MSVC2017_64bit-Debug/src/librssguard/ui_formmain.h" line="707"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="391"/>
+      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="711"/>
       <source>Open in &amp;external browser</source>
       <translation>Megnyitás &amp;külső böngészőben</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="393"/>
-      <location filename="../../build-rssguard-Desktop_Qt_6_7_0_MSVC2017_64bit-Debug/src/librssguard/ui_formmain.h" line="709"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="394"/>
+      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="713"/>
       <source>Open selected articles in external browser</source>
       <translation>A kiválasztott cikkek mengnyitása külső böngészőben</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="401"/>
-      <location filename="../../build-rssguard-Desktop_Qt_6_7_0_MSVC2017_64bit-Debug/src/librssguard/ui_formmain.h" line="711"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="402"/>
+      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="715"/>
       <source>Open in &amp;internal browser</source>
       <translation>Megnyitás a &amp;beépített böntészőben</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="404"/>
-      <location filename="../../build-rssguard-Desktop_Qt_6_7_0_MSVC2017_64bit-Debug/src/librssguard/ui_formmain.h" line="713"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="405"/>
+      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="717"/>
       <source>Open selected articles in internal browser</source>
       <translation>A kiválasztott cikkek megnyitása a beépített böngészőben</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="415"/>
-      <location filename="../../build-rssguard-Desktop_Qt_6_7_0_MSVC2017_64bit-Debug/src/librssguard/ui_formmain.h" line="715"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="416"/>
+      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="719"/>
       <source>No actions available</source>
       <translation>Nincs elérhető művelet</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="418"/>
-      <location filename="../../build-rssguard-Desktop_Qt_6_7_0_MSVC2017_64bit-Debug/src/librssguard/ui_formmain.h" line="717"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="419"/>
+      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="721"/>
       <source>No actions are available right now.</source>
       <translation>Jelenleg nincs elérhető művelet.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="426"/>
-      <location filename="../../build-rssguard-Desktop_Qt_6_7_0_MSVC2017_64bit-Debug/src/librssguard/ui_formmain.h" line="719"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="427"/>
+      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="723"/>
       <source>&amp;Mark all read</source>
       <translation>Mindent olvasottnak &amp;jelöl</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="429"/>
-      <location filename="../../build-rssguard-Desktop_Qt_6_7_0_MSVC2017_64bit-Debug/src/librssguard/ui_formmain.h" line="721"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="430"/>
+      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="725"/>
       <source>Marks all messages in all items read. This does not take message filters into account.</source>
       <translation>Minden elem minden üzenetét olvasottnak jelöl. Ez a funkció nem veszi figyelembe a fiók üzenet szűrőinek beálíltásait.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="440"/>
-      <location filename="../../build-rssguard-Desktop_Qt_6_7_0_MSVC2017_64bit-Debug/src/librssguard/ui_formmain.h" line="723"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="441"/>
+      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="727"/>
       <source>Switch main window visibility</source>
       <translation>A főablak láthatóságának megváltoztatása</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="443"/>
-      <location filename="../../build-rssguard-Desktop_Qt_6_7_0_MSVC2017_64bit-Debug/src/librssguard/ui_formmain.h" line="725"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="444"/>
+      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="729"/>
       <source>Hides main window if it is visible and shows it if it is hidden.</source>
       <translation>Elrejti a főblakot ha látható, vagy megjeleníti ha rejtett.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="457"/>
-      <location filename="../../build-rssguard-Desktop_Qt_6_7_0_MSVC2017_64bit-Debug/src/librssguard/ui_formmain.h" line="727"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="458"/>
+      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="731"/>
       <source>&amp;Feed list</source>
       <translation>&amp;Hírforrás lista</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="460"/>
-      <location filename="../../build-rssguard-Desktop_Qt_6_7_0_MSVC2017_64bit-Debug/src/librssguard/ui_formmain.h" line="729"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="461"/>
+      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="733"/>
       <source>Hides or shows the list of feeds/categories.</source>
       <translation>A hírforrások/kategóriák listájának elrejtése vagy megjelenítése.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="468"/>
-      <location filename="../../build-rssguard-Desktop_Qt_6_7_0_MSVC2017_64bit-Debug/src/librssguard/ui_formmain.h" line="731"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="469"/>
+      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="735"/>
       <source>&amp;Clean all</source>
       <translation>Összes &amp;tisztítása</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="471"/>
-      <location filename="../../build-rssguard-Desktop_Qt_6_7_0_MSVC2017_64bit-Debug/src/librssguard/ui_formmain.h" line="733"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="472"/>
+      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="737"/>
       <source>Deletes all messages from all items.</source>
       <translation>Minden elem minden üzenetét törli.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="479"/>
-      <location filename="../../build-rssguard-Desktop_Qt_6_7_0_MSVC2017_64bit-Debug/src/librssguard/ui_formmain.h" line="735"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="480"/>
+      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="739"/>
       <source>&amp;Next item</source>
       <translation>&amp;Következő elem</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="487"/>
-      <location filename="../../build-rssguard-Desktop_Qt_6_7_0_MSVC2017_64bit-Debug/src/librssguard/ui_formmain.h" line="736"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="488"/>
+      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="740"/>
       <source>&amp;Previous item</source>
       <translation>&amp;Előző elem</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="495"/>
-      <location filename="../../build-rssguard-Desktop_Qt_6_7_0_MSVC2017_64bit-Debug/src/librssguard/ui_formmain.h" line="737"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="496"/>
+      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="741"/>
       <source>&amp;Next article</source>
       <translation>&amp;Következő cikk</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="503"/>
-      <location filename="../../build-rssguard-Desktop_Qt_6_7_0_MSVC2017_64bit-Debug/src/librssguard/ui_formmain.h" line="738"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="504"/>
+      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="742"/>
       <source>&amp;Previous article</source>
       <translation>&amp;Előző cikk</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="511"/>
-      <location filename="../../build-rssguard-Desktop_Qt_6_7_0_MSVC2017_64bit-Debug/src/librssguard/ui_formmain.h" line="739"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="512"/>
+      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="743"/>
       <source>Check for &amp;updates</source>
       <translation>&amp;Frissítések keresése</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="514"/>
-      <location filename="../../build-rssguard-Desktop_Qt_6_7_0_MSVC2017_64bit-Debug/src/librssguard/ui_formmain.h" line="741"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="515"/>
+      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="745"/>
       <source>Check if new update for the application is available for download.</source>
       <translation>Ellenőrizze, hogy rendelkezésre áll-e letölthető új frissítés.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="528"/>
-      <location filename="../../build-rssguard-Desktop_Qt_6_7_0_MSVC2017_64bit-Debug/src/librssguard/ui_formmain.h" line="743"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="529"/>
+      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="747"/>
       <source>&amp;Main menu</source>
       <translation>&amp;Főmenü</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="531"/>
-      <location filename="../../build-rssguard-Desktop_Qt_6_7_0_MSVC2017_64bit-Debug/src/librssguard/ui_formmain.h" line="745"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="532"/>
+      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="749"/>
       <source>Hides or displays the main menu.</source>
       <translation>A főmenü megjelenítése vagy elrejtése.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="539"/>
-      <location filename="../../build-rssguard-Desktop_Qt_6_7_0_MSVC2017_64bit-Debug/src/librssguard/ui_formmain.h" line="747"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="540"/>
+      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="751"/>
       <source>Report a &amp;bug...</source>
       <translation>&amp;Hiba jelentése...</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="550"/>
-      <location filename="../../build-rssguard-Desktop_Qt_6_7_0_MSVC2017_64bit-Debug/src/librssguard/ui_formmain.h" line="748"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="551"/>
+      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="752"/>
       <source>&amp;Toolbars</source>
       <translation>&amp;Eszköztárak</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="553"/>
-      <location filename="../../build-rssguard-Desktop_Qt_6_7_0_MSVC2017_64bit-Debug/src/librssguard/ui_formmain.h" line="750"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="554"/>
+      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="754"/>
       <source>Switch visibility of main toolbars.</source>
       <translation>Fő eszköztárak láthatóságának beállítása.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="567"/>
-      <location filename="../../build-rssguard-Desktop_Qt_6_7_0_MSVC2017_64bit-Debug/src/librssguard/ui_formmain.h" line="752"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="568"/>
+      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="756"/>
       <source>&amp;List headers</source>
       <translation>&amp;Lista fejlécek</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="575"/>
-      <location filename="../../build-rssguard-Desktop_Qt_6_7_0_MSVC2017_64bit-Debug/src/librssguard/ui_formmain.h" line="753"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="576"/>
+      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="757"/>
       <source>&amp;Donate...</source>
       <translation>&amp;Támogatás...</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="583"/>
-      <location filename="../../build-rssguard-Desktop_Qt_6_7_0_MSVC2017_64bit-Debug/src/librssguard/ui_formmain.h" line="754"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="584"/>
+      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="758"/>
       <source>Display &amp;documentation</source>
       <translation>&amp;Dokumentáció megjelenítése</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="591"/>
-      <location filename="../../build-rssguard-Desktop_Qt_6_7_0_MSVC2017_64bit-Debug/src/librssguard/ui_formmain.h" line="755"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="592"/>
+      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="759"/>
       <source>&amp;Restart</source>
       <translation>&amp;Újraindítás</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="599"/>
-      <location filename="../../build-rssguard-Desktop_Qt_6_7_0_MSVC2017_64bit-Debug/src/librssguard/ui_formmain.h" line="756"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="600"/>
+      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="760"/>
       <source>&amp;Restore settings</source>
       <translation>&amp;Beállítások visszaállítása</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="607"/>
-      <location filename="../../build-rssguard-Desktop_Qt_6_7_0_MSVC2017_64bit-Debug/src/librssguard/ui_formmain.h" line="757"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="608"/>
+      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="761"/>
       <source>&amp;Backup settings</source>
       <translation>&amp;Biztonsági mentés beállításai</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="615"/>
-      <location filename="../../build-rssguard-Desktop_Qt_6_7_0_MSVC2017_64bit-Debug/src/librssguard/ui_formmain.h" line="758"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="616"/>
+      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="762"/>
       <source>Switch layout</source>
       <translation>Megjelenítés váltása</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="623"/>
-      <location filename="../../build-rssguard-Desktop_Qt_6_7_0_MSVC2017_64bit-Debug/src/librssguard/ui_formmain.h" line="759"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="624"/>
+      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="763"/>
       <source>&amp;Downloads</source>
       <translation>&amp;Letöltések</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="631"/>
-      <location filename="../../build-rssguard-Desktop_Qt_6_7_0_MSVC2017_64bit-Debug/src/librssguard/ui_formmain.h" line="760"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="632"/>
+      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="764"/>
       <source>Send via e-mail</source>
       <translation>Küldés e-mailben</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="634"/>
-      <location filename="../../build-rssguard-Desktop_Qt_6_7_0_MSVC2017_64bit-Debug/src/librssguard/ui_formmain.h" line="762"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="635"/>
+      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="766"/>
       <source>Send selected articles via e-mail</source>
       <translation>A kiválasztott cikkek küldése e-mailben</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="642"/>
-      <location filename="../../build-rssguard-Desktop_Qt_6_7_0_MSVC2017_64bit-Debug/src/librssguard/ui_formmain.h" line="764"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="643"/>
+      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="768"/>
       <source>&amp;Cleanup database</source>
       <translation>Adatbázis &amp;tisztítása</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="653"/>
-      <location filename="../../build-rssguard-Desktop_Qt_6_7_0_MSVC2017_64bit-Debug/src/librssguard/ui_formmain.h" line="765"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="654"/>
+      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="769"/>
       <source>Show unread items only</source>
       <translation>Csak az olvasatlan elemek megjelenítése</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="661"/>
-      <location filename="../../build-rssguard-Desktop_Qt_6_7_0_MSVC2017_64bit-Debug/src/librssguard/ui_formmain.h" line="766"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="662"/>
+      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="770"/>
       <source>&amp;Expand/collapse selected item</source>
       <translation>Kiválasztott elemek &amp;összecsukása/kinyitása</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="669"/>
-      <location filename="../../build-rssguard-Desktop_Qt_6_7_0_MSVC2017_64bit-Debug/src/librssguard/ui_formmain.h" line="767"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="670"/>
+      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="771"/>
       <source>&amp;Add account</source>
       <translation>Fiók &amp;hozzáadása</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="677"/>
-      <location filename="../../build-rssguard-Desktop_Qt_6_7_0_MSVC2017_64bit-Debug/src/librssguard/ui_formmain.h" line="768"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="678"/>
+      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="772"/>
       <source>&amp;Restore articles</source>
       <translation>Cikkek &amp;visszaállítása</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="685"/>
-      <location filename="../../build-rssguard-Desktop_Qt_6_7_0_MSVC2017_64bit-Debug/src/librssguard/ui_formmain.h" line="769"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="686"/>
+      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="773"/>
       <source>&amp;Restore all recycle bins</source>
       <translation>Összes lomtár &amp;visszaállítása</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="693"/>
-      <location filename="../../build-rssguard-Desktop_Qt_6_7_0_MSVC2017_64bit-Debug/src/librssguard/ui_formmain.h" line="770"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="694"/>
+      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="774"/>
       <source>&amp;Empty all recycle bins</source>
       <translation>Összes lomtár &amp;ürítése</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="701"/>
-      <location filename="../../build-rssguard-Desktop_Qt_6_7_0_MSVC2017_64bit-Debug/src/librssguard/ui_formmain.h" line="771"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="702"/>
+      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="775"/>
       <source>Next &amp;unread article</source>
       <translation>Következő &amp;olvasatlan cikk</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="715"/>
-      <location filename="../../build-rssguard-Desktop_Qt_6_7_0_MSVC2017_64bit-Debug/src/librssguard/ui_formmain.h" line="772"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="716"/>
+      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="776"/>
       <source>Status bar</source>
       <translation>Állapotsor</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="723"/>
-      <location filename="../../build-rssguard-Desktop_Qt_6_7_0_MSVC2017_64bit-Debug/src/librssguard/ui_formmain.h" line="773"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="724"/>
+      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="777"/>
       <source>&amp;Edit selected account</source>
       <translation>Kiválasztott fiók &amp;szerkesztése</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="731"/>
-      <location filename="../../build-rssguard-Desktop_Qt_6_7_0_MSVC2017_64bit-Debug/src/librssguard/ui_formmain.h" line="774"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="732"/>
+      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="778"/>
       <source>&amp;Delete selected account</source>
       <translation>Kiválasztott fiók &amp;törlése</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="744"/>
-      <location filename="../src/librssguard/gui/dialogs/formmain.cpp" line="319"/>
-      <location filename="../../build-rssguard-Desktop_Qt_6_7_0_MSVC2017_64bit-Debug/src/librssguard/ui_formmain.h" line="776"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="745"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.cpp" line="322"/>
+      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="780"/>
       <source>Add new category</source>
       <translation>Új kategória hozzáadása</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="749"/>
-      <location filename="../../build-rssguard-Desktop_Qt_6_7_0_MSVC2017_64bit-Debug/src/librssguard/ui_formmain.h" line="777"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="750"/>
+      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="781"/>
       <source>Stop ongoing fetching</source>
       <translation>Folyamatban lévő frissítés leállítása</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="757"/>
-      <location filename="../../build-rssguard-Desktop_Qt_6_7_0_MSVC2017_64bit-Debug/src/librssguard/ui_formmain.h" line="778"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="758"/>
+      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="782"/>
       <source>New browser tab</source>
       <translation>Új böngésző fül</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="765"/>
-      <location filename="../../build-rssguard-Desktop_Qt_6_7_0_MSVC2017_64bit-Debug/src/librssguard/ui_formmain.h" line="779"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="766"/>
+      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="783"/>
       <source>Close all tabs</source>
       <translation>Összes fül bezárása</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="770"/>
-      <location filename="../../build-rssguard-Desktop_Qt_6_7_0_MSVC2017_64bit-Debug/src/librssguard/ui_formmain.h" line="780"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="771"/>
+      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="784"/>
       <source>Close all tabs except current</source>
       <translation>Összes fül bezárása a jelenlegin kívül</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="775"/>
-      <location filename="../../build-rssguard-Desktop_Qt_6_7_0_MSVC2017_64bit-Debug/src/librssguard/ui_formmain.h" line="781"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="776"/>
+      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="785"/>
       <source>Go to &amp;next tab</source>
       <translation>Átlépés a &amp;következő fülre</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="780"/>
-      <location filename="../../build-rssguard-Desktop_Qt_6_7_0_MSVC2017_64bit-Debug/src/librssguard/ui_formmain.h" line="782"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="781"/>
+      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="786"/>
       <source>Go to &amp;previous tab</source>
       <translation>&amp;Előző fülre lépés</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="788"/>
-      <location filename="../../build-rssguard-Desktop_Qt_6_7_0_MSVC2017_64bit-Debug/src/librssguard/ui_formmain.h" line="783"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="789"/>
+      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="787"/>
       <source>&amp;Enable article preview</source>
       <translation>Cikk előnézet &amp;engedélyezése</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="793"/>
-      <location filename="../../build-rssguard-Desktop_Qt_6_7_0_MSVC2017_64bit-Debug/src/librssguard/ui_formmain.h" line="784"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="794"/>
+      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="788"/>
       <source>&amp;Copy URL of selected item</source>
       <translation>A kiválasztott elem URL-jének &amp;másolása</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="798"/>
-      <location filename="../../build-rssguard-Desktop_Qt_6_7_0_MSVC2017_64bit-Debug/src/librssguard/ui_formmain.h" line="785"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="799"/>
+      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="789"/>
       <source>Article &amp;filters</source>
       <translation>Cikk &amp;szűrők</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="806"/>
-      <location filename="../../build-rssguard-Desktop_Qt_6_7_0_MSVC2017_64bit-Debug/src/librssguard/ui_formmain.h" line="786"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="807"/>
+      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="790"/>
       <source>&amp;Show tree expanders</source>
       <translation type="unfinished">&amp;Show tree expanders</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="811"/>
-      <location filename="../../build-rssguard-Desktop_Qt_6_7_0_MSVC2017_64bit-Debug/src/librssguard/ui_formmain.h" line="787"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="812"/>
+      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="791"/>
       <source>Fetch feeds with &amp;custom auto-download policy</source>
       <translation type="unfinished">Fetch feeds with &amp;custom auto-download policy</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="819"/>
-      <location filename="../../build-rssguard-Desktop_Qt_6_7_0_MSVC2017_64bit-Debug/src/librssguard/ui_formmain.h" line="788"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="820"/>
+      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="792"/>
       <source>Alternate row colors in lists</source>
       <translation>Sorok váltakozó színezése listákban</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="827"/>
-      <location filename="../../build-rssguard-Desktop_Qt_6_7_0_MSVC2017_64bit-Debug/src/librssguard/ui_formmain.h" line="789"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="828"/>
+      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="793"/>
       <source>Automatically &amp;expand item when selected</source>
       <translation>Az elem automatikus &amp;kinyitása amikor kiválasztásra kerül</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="838"/>
-      <location filename="../../build-rssguard-Desktop_Qt_6_7_0_MSVC2017_64bit-Debug/src/librssguard/ui_formmain.h" line="790"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="839"/>
+      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="794"/>
       <source>Message viewer toolbars</source>
       <translation>Üzenet megtekintő eszköztárak</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="843"/>
-      <location filename="../../build-rssguard-Desktop_Qt_6_7_0_MSVC2017_64bit-Debug/src/librssguard/ui_formmain.h" line="791"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="844"/>
+      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="795"/>
       <source>Expand/collapse selected item &amp;recursively</source>
       <translation type="unfinished">Expand/collapse selected item &amp;recursively</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="848"/>
-      <location filename="../../build-rssguard-Desktop_Qt_6_7_0_MSVC2017_64bit-Debug/src/librssguard/ui_formmain.h" line="792"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="849"/>
+      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="796"/>
       <source>Close &amp;current tab</source>
       <translation>&amp;Aktuális fül bezárása</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="853"/>
-      <location filename="../../build-rssguard-Desktop_Qt_6_7_0_MSVC2017_64bit-Debug/src/librssguard/ui_formmain.h" line="793"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="854"/>
+      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="797"/>
       <source>&amp;Copy URLs of selected articles</source>
       <translation>A kiválasztott cikkek URL-jeinek &amp;másolása</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="858"/>
-      <location filename="../../build-rssguard-Desktop_Qt_6_7_0_MSVC2017_64bit-Debug/src/librssguard/ui_formmain.h" line="794"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="859"/>
+      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="798"/>
       <source>Open in internal browser (no new tab)</source>
       <translation>Megnyitás a belső böngészőn (nem új fülön)</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="866"/>
-      <location filename="../../build-rssguard-Desktop_Qt_6_7_0_MSVC2017_64bit-Debug/src/librssguard/ui_formmain.h" line="795"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="867"/>
+      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="799"/>
       <source>&amp;Sort alphabetically</source>
       <translation>&amp;Rendezés ABC sorrendbe</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="871"/>
-      <location filename="../../build-rssguard-Desktop_Qt_6_7_0_MSVC2017_64bit-Debug/src/librssguard/ui_formmain.h" line="796"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="872"/>
+      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="800"/>
       <source>Move &amp;up</source>
       <translation>Mozgatás &amp;felfelé</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="876"/>
-      <location filename="../../build-rssguard-Desktop_Qt_6_7_0_MSVC2017_64bit-Debug/src/librssguard/ui_formmain.h" line="797"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="877"/>
+      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="801"/>
       <source>Move to &amp;top</source>
       <translation>Mozgatás a &amp;tetejére</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="881"/>
-      <location filename="../../build-rssguard-Desktop_Qt_6_7_0_MSVC2017_64bit-Debug/src/librssguard/ui_formmain.h" line="798"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="882"/>
+      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="802"/>
       <source>Move &amp;down</source>
       <translation>Mozgatás &amp;lefelé</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="886"/>
-      <location filename="../../build-rssguard-Desktop_Qt_6_7_0_MSVC2017_64bit-Debug/src/librssguard/ui_formmain.h" line="799"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="887"/>
+      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="803"/>
       <source>Move to &amp;bottom</source>
       <translation>Mozgatás az &amp;aljára</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="891"/>
-      <location filename="../../build-rssguard-Desktop_Qt_6_7_0_MSVC2017_64bit-Debug/src/librssguard/ui_formmain.h" line="800"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="892"/>
+      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="804"/>
       <source>Display application &amp;log</source>
       <translation>Applikáció &amp;naplójának megjelenítése</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="896"/>
-      <location filename="../../build-rssguard-Desktop_Qt_6_7_0_MSVC2017_64bit-Debug/src/librssguard/ui_formmain.h" line="801"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="897"/>
+      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="805"/>
       <source>Focus feeds search box</source>
       <translation type="unfinished">Focus feeds search box</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="901"/>
-      <location filename="../../build-rssguard-Desktop_Qt_6_7_0_MSVC2017_64bit-Debug/src/librssguard/ui_formmain.h" line="802"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="902"/>
+      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="806"/>
       <source>Focus articles search box</source>
       <translation type="unfinished">Focus articles search box</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="906"/>
-      <location filename="../../build-rssguard-Desktop_Qt_6_7_0_MSVC2017_64bit-Debug/src/librssguard/ui_formmain.h" line="803"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="907"/>
+      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="807"/>
       <source>Scroll &amp;up browser</source>
       <translation>Böngésző &amp;felfelé görgetése</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="911"/>
-      <location filename="../../build-rssguard-Desktop_Qt_6_7_0_MSVC2017_64bit-Debug/src/librssguard/ui_formmain.h" line="804"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="912"/>
+      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="808"/>
       <source>Scroll &amp;down browser</source>
       <translation>Böngésző &amp;lefelé görgetése</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="916"/>
-      <location filename="../../build-rssguard-Desktop_Qt_6_7_0_MSVC2017_64bit-Debug/src/librssguard/ui_formmain.h" line="805"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="917"/>
+      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="809"/>
       <source>Rearrange &amp;subcategories alphabetically</source>
       <translation>Az &amp;alkategóriák ABC sorrendbe rendezése</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="921"/>
-      <location filename="../../build-rssguard-Desktop_Qt_6_7_0_MSVC2017_64bit-Debug/src/librssguard/ui_formmain.h" line="806"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="922"/>
+      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="810"/>
       <source>Rearrange &amp;feeds alphabetically</source>
       <translation>&amp;Hírforrások ABC sorrendbe rendezése</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="926"/>
-      <location filename="../../build-rssguard-Desktop_Qt_6_7_0_MSVC2017_64bit-Debug/src/librssguard/ui_formmain.h" line="807"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="927"/>
+      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="811"/>
       <source>Cleanup web cac&amp;he</source>
       <translation>Web &amp;gyorsítótár ürítése</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="934"/>
-      <location filename="../../build-rssguard-Desktop_Qt_6_7_0_MSVC2017_64bit-Debug/src/librssguard/ui_formmain.h" line="808"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="935"/>
+      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="812"/>
       <source>You must add new account first</source>
       <translation>Előbb hozzá kell adni egy új fiókot</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="937"/>
-      <location filename="../../build-rssguard-Desktop_Qt_6_7_0_MSVC2017_64bit-Debug/src/librssguard/ui_formmain.h" line="810"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="938"/>
+      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="814"/>
       <source>You must add new account first.</source>
       <translation>Előbb hozzá kell adni egy új fiókot.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="942"/>
-      <location filename="../../build-rssguard-Desktop_Qt_6_7_0_MSVC2017_64bit-Debug/src/librssguard/ui_formmain.h" line="812"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="943"/>
+      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="816"/>
       <source>Edit &amp;child feeds</source>
       <translation type="unfinished">Edit &amp;child feeds</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="947"/>
-      <location filename="../../build-rssguard-Desktop_Qt_6_7_0_MSVC2017_64bit-Debug/src/librssguard/ui_formmain.h" line="813"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="948"/>
+      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="817"/>
       <source>Edit child feeds (&amp;recursive)</source>
       <translation type="unfinished">Edit child feeds (&amp;recursive)</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="952"/>
-      <location filename="../../build-rssguard-Desktop_Qt_6_7_0_MSVC2017_64bit-Debug/src/librssguard/ui_formmain.h" line="814"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="953"/>
+      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="818"/>
       <source>Play in &amp;media player</source>
       <translation>Lejátszás a &amp;médialejátszóban</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="960"/>
-      <location filename="../../build-rssguard-Desktop_Qt_6_7_0_MSVC2017_64bit-Debug/src/librssguard/ui_formmain.h" line="815"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="961"/>
+      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="819"/>
       <source>&amp;Pause automatic feed fetching</source>
       <translation type="unfinished">&amp;Pause automatic feed fetching</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="739"/>
-      <location filename="../src/librssguard/gui/dialogs/formmain.cpp" line="329"/>
-      <location filename="../../build-rssguard-Desktop_Qt_6_7_0_MSVC2017_64bit-Debug/src/librssguard/ui_formmain.h" line="775"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="966"/>
+      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="820"/>
+      <source>&amp;Purge selected feeds</source>
+      <translation type="unfinished">&amp;Purge selected feeds</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="740"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.cpp" line="332"/>
+      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="779"/>
       <source>Add new feed</source>
       <translation>Új hírforrás hozzáadása</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.cpp" line="380"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.cpp" line="383"/>
       <source>No actions possible</source>
       <translation>Nincs elérhető művelet</translation>
     </message>
@@ -3159,27 +3161,27 @@ QtWebEngine gyorsítótár mappája -&gt; &quot;%7&quot;</translation>
       <translation>Adatbázis tisztítása sikertelen mivel egy másik kritikus folyamat fut.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.cpp" line="472"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.cpp" line="475"/>
       <source>Play in media player</source>
       <translation>Lejátszás a médialejátszóban</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.cpp" line="473"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.cpp" line="476"/>
       <source>(not supported)</source>
       <translation>(nem támogatott)</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.cpp" line="538"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.cpp" line="542"/>
       <source>Close opened modal dialogs first.</source>
       <translation>Előbb zárja be a megnyitott párbeszédpaneleket.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.cpp" line="449"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.cpp" line="452"/>
       <source>Fetching common data</source>
       <translation>Gyakori adatok lekérése</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.cpp" line="537"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.cpp" line="541"/>
       <source>Close dialogs</source>
       <translation>Párbeszédpanelek bezárása</translation>
     </message>
@@ -3313,147 +3315,147 @@ QtWebEngine gyorsítótár mappája -&gt; &quot;%7&quot;</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.ui" line="14"/>
-      <location filename="../../build-rssguard-Desktop_Qt_6_7_0_MSVC2017_64bit-Debug/src/librssguard/ui_formmessagefiltersmanager.h" line="435"/>
+      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmessagefiltersmanager.h" line="435"/>
       <source>Article filters</source>
       <translation>Cikk szűrők</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.ui" line="35"/>
-      <location filename="../../build-rssguard-Desktop_Qt_6_7_0_MSVC2017_64bit-Debug/src/librssguard/ui_formmessagefiltersmanager.h" line="436"/>
+      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmessagefiltersmanager.h" line="436"/>
       <source>&amp;Check all</source>
       <translation>Összes &amp;kijelölése</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.ui" line="65"/>
-      <location filename="../../build-rssguard-Desktop_Qt_6_7_0_MSVC2017_64bit-Debug/src/librssguard/ui_formmessagefiltersmanager.h" line="437"/>
+      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmessagefiltersmanager.h" line="437"/>
       <source>&amp;Uncheck all</source>
       <translation>Összes kijelölés &amp;törlése</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.ui" line="79"/>
-      <location filename="../../build-rssguard-Desktop_Qt_6_7_0_MSVC2017_64bit-Debug/src/librssguard/ui_formmessagefiltersmanager.h" line="438"/>
+      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmessagefiltersmanager.h" line="438"/>
       <source>Remove selected</source>
       <translation>Kiválasztottak eltávolítása</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.ui" line="86"/>
-      <location filename="../../build-rssguard-Desktop_Qt_6_7_0_MSVC2017_64bit-Debug/src/librssguard/ui_formmessagefiltersmanager.h" line="439"/>
+      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmessagefiltersmanager.h" line="439"/>
       <source>&amp;New filter</source>
       <translation>&amp;Új szűrő</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.ui" line="115"/>
-      <location filename="../../build-rssguard-Desktop_Qt_6_7_0_MSVC2017_64bit-Debug/src/librssguard/ui_formmessagefiltersmanager.h" line="440"/>
+      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmessagefiltersmanager.h" line="440"/>
       <source>Article filter details</source>
       <translation>Cikk szűrő részletei</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.ui" line="121"/>
       <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.ui" line="313"/>
-      <location filename="../../build-rssguard-Desktop_Qt_6_7_0_MSVC2017_64bit-Debug/src/librssguard/ui_formmessagefiltersmanager.h" line="441"/>
-      <location filename="../../build-rssguard-Desktop_Qt_6_7_0_MSVC2017_64bit-Debug/src/librssguard/ui_formmessagefiltersmanager.h" line="451"/>
+      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmessagefiltersmanager.h" line="441"/>
+      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmessagefiltersmanager.h" line="451"/>
       <source>Title</source>
       <translation>Cím</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.ui" line="145"/>
-      <location filename="../../build-rssguard-Desktop_Qt_6_7_0_MSVC2017_64bit-Debug/src/librssguard/ui_formmessagefiltersmanager.h" line="442"/>
+      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmessagefiltersmanager.h" line="442"/>
       <source>Title of article filter</source>
       <translation>Cikk szűrő címe</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.ui" line="152"/>
-      <location filename="../../build-rssguard-Desktop_Qt_6_7_0_MSVC2017_64bit-Debug/src/librssguard/ui_formmessagefiltersmanager.h" line="443"/>
+      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmessagefiltersmanager.h" line="443"/>
       <source>Pre-made filters</source>
       <translation>Előre elkészített szűrők</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.ui" line="174"/>
-      <location filename="../../build-rssguard-Desktop_Qt_6_7_0_MSVC2017_64bit-Debug/src/librssguard/ui_formmessagefiltersmanager.h" line="444"/>
+      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmessagefiltersmanager.h" line="444"/>
       <source>JavaScript code</source>
       <translation>JavaScript kód</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.ui" line="192"/>
-      <location filename="../../build-rssguard-Desktop_Qt_6_7_0_MSVC2017_64bit-Debug/src/librssguard/ui_formmessagefiltersmanager.h" line="445"/>
+      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmessagefiltersmanager.h" line="445"/>
       <source>Your JavaScript-based article filtering logic</source>
       <translation type="unfinished">Your JavaScript-based article filtering logic</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.ui" line="206"/>
-      <location filename="../../build-rssguard-Desktop_Qt_6_7_0_MSVC2017_64bit-Debug/src/librssguard/ui_formmessagefiltersmanager.h" line="446"/>
+      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmessagefiltersmanager.h" line="446"/>
       <source>&amp;Test</source>
       <translation>&amp;Teszt</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.ui" line="213"/>
-      <location filename="../../build-rssguard-Desktop_Qt_6_7_0_MSVC2017_64bit-Debug/src/librssguard/ui_formmessagefiltersmanager.h" line="447"/>
+      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmessagefiltersmanager.h" line="447"/>
       <source>Process checked feeds</source>
       <translation type="unfinished">Process checked feeds</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.ui" line="220"/>
-      <location filename="../../build-rssguard-Desktop_Qt_6_7_0_MSVC2017_64bit-Debug/src/librssguard/ui_formmessagefiltersmanager.h" line="448"/>
+      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmessagefiltersmanager.h" line="448"/>
       <source>&amp;Beautify</source>
       <translation type="unfinished">&amp;Beautify</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.ui" line="227"/>
-      <location filename="../../build-rssguard-Desktop_Qt_6_7_0_MSVC2017_64bit-Debug/src/librssguard/ui_formmessagefiltersmanager.h" line="449"/>
+      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmessagefiltersmanager.h" line="449"/>
       <source>Detailed &amp;help</source>
       <translation>Részletes &amp;segítség</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.ui" line="263"/>
-      <location filename="../../build-rssguard-Desktop_Qt_6_7_0_MSVC2017_64bit-Debug/src/librssguard/ui_formmessagefiltersmanager.h" line="450"/>
+      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmessagefiltersmanager.h" line="450"/>
       <source>Existing articles</source>
       <translation type="unfinished">Existing articles</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.ui" line="295"/>
-      <location filename="../../build-rssguard-Desktop_Qt_6_7_0_MSVC2017_64bit-Debug/src/librssguard/ui_formmessagefiltersmanager.h" line="458"/>
+      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmessagefiltersmanager.h" line="458"/>
       <source>Sample article</source>
       <translation>Minta cikk</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.ui" line="326"/>
-      <location filename="../../build-rssguard-Desktop_Qt_6_7_0_MSVC2017_64bit-Debug/src/librssguard/ui_formmessagefiltersmanager.h" line="452"/>
+      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmessagefiltersmanager.h" line="452"/>
       <source>URL</source>
       <translation>URL</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.ui" line="339"/>
-      <location filename="../../build-rssguard-Desktop_Qt_6_7_0_MSVC2017_64bit-Debug/src/librssguard/ui_formmessagefiltersmanager.h" line="453"/>
+      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmessagefiltersmanager.h" line="453"/>
       <source>Author</source>
       <translation>Szerző</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.ui" line="352"/>
-      <location filename="../../build-rssguard-Desktop_Qt_6_7_0_MSVC2017_64bit-Debug/src/librssguard/ui_formmessagefiltersmanager.h" line="454"/>
+      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmessagefiltersmanager.h" line="454"/>
       <source>Created on</source>
       <translation>Létrehozva</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.ui" line="365"/>
-      <location filename="../../build-rssguard-Desktop_Qt_6_7_0_MSVC2017_64bit-Debug/src/librssguard/ui_formmessagefiltersmanager.h" line="455"/>
+      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmessagefiltersmanager.h" line="455"/>
       <source>Contents</source>
       <translation>Tartalom</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.ui" line="380"/>
-      <location filename="../../build-rssguard-Desktop_Qt_6_7_0_MSVC2017_64bit-Debug/src/librssguard/ui_formmessagefiltersmanager.h" line="456"/>
+      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmessagefiltersmanager.h" line="456"/>
       <source>Read</source>
       <translation>Olvasott</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.ui" line="387"/>
-      <location filename="../../build-rssguard-Desktop_Qt_6_7_0_MSVC2017_64bit-Debug/src/librssguard/ui_formmessagefiltersmanager.h" line="457"/>
+      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmessagefiltersmanager.h" line="457"/>
       <source>Important</source>
       <translation>Fontos</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.ui" line="410"/>
-      <location filename="../../build-rssguard-Desktop_Qt_6_7_0_MSVC2017_64bit-Debug/src/librssguard/ui_formmessagefiltersmanager.h" line="459"/>
+      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmessagefiltersmanager.h" line="459"/>
       <source>Script output</source>
       <translation>Script kimenet</translation>
     </message>
@@ -3498,37 +3500,37 @@ QtWebEngine gyorsítótár mappája -&gt; &quot;%7&quot;</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formrestoredatabasesettings.ui" line="14"/>
-      <location filename="../../build-rssguard-Desktop_Qt_6_7_0_MSVC2017_64bit-Debug/src/librssguard/ui_formrestoredatabasesettings.h" line="134"/>
+      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_formrestoredatabasesettings.h" line="134"/>
       <source>Restore database/settings</source>
       <translation>Adatbázis/beálíltások visszaállítása</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formrestoredatabasesettings.ui" line="33"/>
-      <location filename="../../build-rssguard-Desktop_Qt_6_7_0_MSVC2017_64bit-Debug/src/librssguard/ui_formrestoredatabasesettings.h" line="135"/>
+      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_formrestoredatabasesettings.h" line="135"/>
       <source>Operation results</source>
       <translation>A művelet eredményei</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formrestoredatabasesettings.ui" line="59"/>
-      <location filename="../../build-rssguard-Desktop_Qt_6_7_0_MSVC2017_64bit-Debug/src/librssguard/ui_formrestoredatabasesettings.h" line="136"/>
+      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_formrestoredatabasesettings.h" line="136"/>
       <source>Source directory</source>
       <translation>Forrásmappa</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formrestoredatabasesettings.ui" line="65"/>
-      <location filename="../../build-rssguard-Desktop_Qt_6_7_0_MSVC2017_64bit-Debug/src/librssguard/ui_formrestoredatabasesettings.h" line="137"/>
+      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_formrestoredatabasesettings.h" line="137"/>
       <source>&amp;Select directory</source>
       <translation>&amp;Mappa kiválasztása</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formrestoredatabasesettings.ui" line="82"/>
-      <location filename="../../build-rssguard-Desktop_Qt_6_7_0_MSVC2017_64bit-Debug/src/librssguard/ui_formrestoredatabasesettings.h" line="138"/>
+      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_formrestoredatabasesettings.h" line="138"/>
       <source>Restore database</source>
       <translation>Adatbázis visszaállítása</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formrestoredatabasesettings.ui" line="100"/>
-      <location filename="../../build-rssguard-Desktop_Qt_6_7_0_MSVC2017_64bit-Debug/src/librssguard/ui_formrestoredatabasesettings.h" line="139"/>
+      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_formrestoredatabasesettings.h" line="139"/>
       <source>Restore settings</source>
       <translation>Beálíltások visszaállítása</translation>
     </message>
@@ -3579,7 +3581,7 @@ Az alkalmazást manuálisan kell újraindítani.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formsettings.ui" line="14"/>
-      <location filename="../../build-rssguard-Desktop_Qt_6_7_0_MSVC2017_64bit-Debug/src/librssguard/ui_formsettings.h" line="76"/>
+      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_formsettings.h" line="76"/>
       <source>Settings</source>
       <translation>Beállítások</translation>
     </message>
@@ -4002,39 +4004,87 @@ Most már telepítheti.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formupdate.ui" line="14"/>
-      <location filename="../../build-rssguard-Desktop_Qt_6_7_0_MSVC2017_64bit-Debug/src/librssguard/ui_formupdate.h" line="154"/>
+      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_formupdate.h" line="154"/>
       <source>Check for updates</source>
       <translation>Frissítések ellenőrzése</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formupdate.ui" line="20"/>
-      <location filename="../../build-rssguard-Desktop_Qt_6_7_0_MSVC2017_64bit-Debug/src/librssguard/ui_formupdate.h" line="155"/>
+      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_formupdate.h" line="155"/>
       <source>Current release</source>
       <translation>Aktuális verzió</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formupdate.ui" line="34"/>
-      <location filename="../../build-rssguard-Desktop_Qt_6_7_0_MSVC2017_64bit-Debug/src/librssguard/ui_formupdate.h" line="157"/>
+      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_formupdate.h" line="157"/>
       <source>Available release</source>
       <translation>Elérhető verzió</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formupdate.ui" line="48"/>
-      <location filename="../../build-rssguard-Desktop_Qt_6_7_0_MSVC2017_64bit-Debug/src/librssguard/ui_formupdate.h" line="159"/>
+      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_formupdate.h" line="159"/>
       <source>Status</source>
       <translation>Státusz</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formupdate.ui" line="69"/>
-      <location filename="../../build-rssguard-Desktop_Qt_6_7_0_MSVC2017_64bit-Debug/src/librssguard/ui_formupdate.h" line="160"/>
+      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_formupdate.h" line="160"/>
       <source>Changelog</source>
       <translation>Változási napló</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formupdate.ui" line="125"/>
-      <location filename="../../build-rssguard-Desktop_Qt_6_7_0_MSVC2017_64bit-Debug/src/librssguard/ui_formupdate.h" line="161"/>
+      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_formupdate.h" line="161"/>
       <source>Available files</source>
       <translation>Elérhető fájlok</translation>
+    </message>
+  </context>
+  <context>
+    <name>GeminiClient</name>
+    <message>
+      <location filename="../src/librssguard/network-web/gemini/geminiclient.cpp" line="268"/>
+      <source>Line is too short for valid protocol</source>
+      <translation type="unfinished">Line is too short for valid protocol</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard/network-web/gemini/geminiclient.cpp" line="273"/>
+      <source>response too large!</source>
+      <translation type="unfinished">response too large!</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard/network-web/gemini/geminiclient.cpp" line="282"/>
+      <source>Line does not end with &lt;CR&gt; &lt;LF&gt;</source>
+      <translation type="unfinished">Line does not end with &lt;CR&gt; &lt;LF&gt;</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard/network-web/gemini/geminiclient.cpp" line="291"/>
+      <source>First character is not a digit.</source>
+      <translation type="unfinished">First character is not a digit.</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard/network-web/gemini/geminiclient.cpp" line="300"/>
+      <source>Second character is not a digit.</source>
+      <translation type="unfinished">Second character is not a digit.</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard/network-web/gemini/geminiclient.cpp" line="312"/>
+      <source>Third character is not a space.</source>
+      <translation type="unfinished">Third character is not a space.</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard/network-web/gemini/geminiclient.cpp" line="361"/>
+      <source>Invalid URL for redirection!</source>
+      <translation type="unfinished">Invalid URL for redirection!</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard/network-web/gemini/geminiclient.cpp" line="438"/>
+      <source>Unspecified status code used!</source>
+      <translation type="unfinished">Unspecified status code used!</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard/network-web/gemini/geminiclient.cpp" line="447"/>
+      <source>META too large!</source>
+      <translation type="unfinished">META too large!</translation>
     </message>
   </context>
   <context>
@@ -4662,7 +4712,7 @@ Belépési token lejárata: %2</translation>
     <name>HttpHeadersDetails</name>
     <message>
       <location filename="../src/librssguard/services/abstract/gui/httpheadersdetails.ui" line="14"/>
-      <location filename="../../build-rssguard-Desktop_Qt_6_7_0_MSVC2017_64bit-Debug/src/librssguard/ui_httpheadersdetails.h" line="66"/>
+      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_httpheadersdetails.h" line="66"/>
       <source>Form</source>
       <translation>Űrlap</translation>
     </message>
@@ -4702,7 +4752,7 @@ Belépési token lejárata: %2</translation>
     <name>ItemDetails</name>
     <message>
       <location filename="../src/librssguard/gui/itemdetails.ui" line="20"/>
-      <location filename="../../build-rssguard-Desktop_Qt_6_7_0_MSVC2017_64bit-Debug/src/librssguard/ui_itemdetails.h" line="66"/>
+      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_itemdetails.h" line="66"/>
       <source>Form</source>
       <translation>Űrlap</translation>
     </message>
@@ -5109,61 +5159,61 @@ Belépési token lejárata: %2</translation>
     <name>MediaPlayer</name>
     <message>
       <location filename="../src/librssguard/gui/mediaplayer/mediaplayer.ui" line="14"/>
-      <location filename="../../build-rssguard-Desktop_Qt_6_7_0_MSVC2017_64bit-Debug/src/librssguard/ui_mediaplayer.h" line="143"/>
+      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_mediaplayer.h" line="143"/>
       <source>Form</source>
       <translation>Űrlap</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/mediaplayer/mediaplayer.ui" line="65"/>
-      <location filename="../../build-rssguard-Desktop_Qt_6_7_0_MSVC2017_64bit-Debug/src/librssguard/ui_mediaplayer.h" line="145"/>
+      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_mediaplayer.h" line="145"/>
       <source>Play/pause</source>
       <translation type="unfinished">Play/pause</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/mediaplayer/mediaplayer.ui" line="72"/>
-      <location filename="../../build-rssguard-Desktop_Qt_6_7_0_MSVC2017_64bit-Debug/src/librssguard/ui_mediaplayer.h" line="148"/>
+      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_mediaplayer.h" line="148"/>
       <source>Stop</source>
       <translation type="unfinished">Stop</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/mediaplayer/mediaplayer.ui" line="79"/>
-      <location filename="../../build-rssguard-Desktop_Qt_6_7_0_MSVC2017_64bit-Debug/src/librssguard/ui_mediaplayer.h" line="151"/>
+      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_mediaplayer.h" line="151"/>
       <source>Speed</source>
       <translation type="unfinished">Speed</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/mediaplayer/mediaplayer.ui" line="107"/>
-      <location filename="../../build-rssguard-Desktop_Qt_6_7_0_MSVC2017_64bit-Debug/src/librssguard/ui_mediaplayer.h" line="154"/>
+      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_mediaplayer.h" line="154"/>
       <source>Progress</source>
       <translation>Előrehaladás</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/mediaplayer/mediaplayer.ui" line="117"/>
-      <location filename="../../build-rssguard-Desktop_Qt_6_7_0_MSVC2017_64bit-Debug/src/librssguard/ui_mediaplayer.h" line="157"/>
+      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_mediaplayer.h" line="157"/>
       <source>Duration</source>
       <translation type="unfinished">Duration</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/mediaplayer/mediaplayer.ui" line="124"/>
-      <location filename="../../build-rssguard-Desktop_Qt_6_7_0_MSVC2017_64bit-Debug/src/librssguard/ui_mediaplayer.h" line="160"/>
+      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_mediaplayer.h" line="160"/>
       <source>Mute/unmute</source>
       <translation type="unfinished">Mute/unmute</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/mediaplayer/mediaplayer.ui" line="137"/>
-      <location filename="../../build-rssguard-Desktop_Qt_6_7_0_MSVC2017_64bit-Debug/src/librssguard/ui_mediaplayer.h" line="163"/>
+      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_mediaplayer.h" line="163"/>
       <source>Volume</source>
       <translation>Hangerő</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/mediaplayer/mediaplayer.ui" line="156"/>
-      <location filename="../../build-rssguard-Desktop_Qt_6_7_0_MSVC2017_64bit-Debug/src/librssguard/ui_mediaplayer.h" line="166"/>
+      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_mediaplayer.h" line="166"/>
       <source>Download</source>
       <translation>Letöltés</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/mediaplayer/mediaplayer.ui" line="163"/>
-      <location filename="../../build-rssguard-Desktop_Qt_6_7_0_MSVC2017_64bit-Debug/src/librssguard/ui_mediaplayer.h" line="169"/>
+      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_mediaplayer.h" line="169"/>
       <source>Switch fullscreen mode</source>
       <translation type="unfinished">Switch fullscreen mode</translation>
     </message>
@@ -5670,62 +5720,67 @@ Belépési token lejárata: %2</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/toolbars/messagestoolbar.cpp" line="282"/>
+      <source>Show read articles</source>
+      <translation type="unfinished">Show read articles</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard/gui/toolbars/messagestoolbar.cpp" line="287"/>
       <source>Show important articles</source>
       <translation>Fontos cikkek megjelenítése</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/toolbars/messagestoolbar.cpp" line="287"/>
+      <location filename="../src/librssguard/gui/toolbars/messagestoolbar.cpp" line="292"/>
       <source>Show today&apos;s articles</source>
       <translation>Mai cikkek megjelenítése</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/toolbars/messagestoolbar.cpp" line="292"/>
+      <location filename="../src/librssguard/gui/toolbars/messagestoolbar.cpp" line="297"/>
       <source>Show yesterday&apos;s articles</source>
       <translation>Tegnapi cikkek megjelenítése</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/toolbars/messagestoolbar.cpp" line="297"/>
+      <location filename="../src/librssguard/gui/toolbars/messagestoolbar.cpp" line="302"/>
       <source>Show articles in last 24 hours</source>
       <translation>Cikkek az elmúlt 24 órából</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/toolbars/messagestoolbar.cpp" line="302"/>
+      <location filename="../src/librssguard/gui/toolbars/messagestoolbar.cpp" line="307"/>
       <source>Show articles in last 48 hours</source>
       <translation>Cikkek az elmúlt 48 órából</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/toolbars/messagestoolbar.cpp" line="307"/>
+      <location filename="../src/librssguard/gui/toolbars/messagestoolbar.cpp" line="312"/>
       <source>Show this week&apos;s articles</source>
       <translation>Eheti cikkek megjelenítése</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/toolbars/messagestoolbar.cpp" line="312"/>
+      <location filename="../src/librssguard/gui/toolbars/messagestoolbar.cpp" line="317"/>
       <source>Show last week&apos;s articles</source>
       <translation>Múlt heti cikkek megjelenítése</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/toolbars/messagestoolbar.cpp" line="317"/>
+      <location filename="../src/librssguard/gui/toolbars/messagestoolbar.cpp" line="322"/>
       <source>Show articles with attachments</source>
       <translation>Melléklettel rendelkező cikkek megjelenítése</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/toolbars/messagestoolbar.cpp" line="322"/>
+      <location filename="../src/librssguard/gui/toolbars/messagestoolbar.cpp" line="327"/>
       <source>Show articles with some score</source>
       <translation type="unfinished">Show articles with some score</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/toolbars/messagestoolbar.cpp" line="327"/>
-      <location filename="../src/librssguard/gui/toolbars/messagestoolbar.cpp" line="334"/>
+      <location filename="../src/librssguard/gui/toolbars/messagestoolbar.cpp" line="332"/>
+      <location filename="../src/librssguard/gui/toolbars/messagestoolbar.cpp" line="339"/>
       <source>Display all articles</source>
       <translation>Minden cikk megjelenítése</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/toolbars/messagestoolbar.cpp" line="344"/>
+      <location filename="../src/librssguard/gui/toolbars/messagestoolbar.cpp" line="349"/>
       <source>Article highlighter</source>
       <translation type="unfinished">Article highlighter</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/toolbars/messagestoolbar.cpp" line="350"/>
+      <location filename="../src/librssguard/gui/toolbars/messagestoolbar.cpp" line="355"/>
       <source>Article list filter</source>
       <translation type="unfinished">Article list filter</translation>
     </message>
@@ -5905,49 +5960,49 @@ Belépési token lejárata: %2</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/reusable/networkproxydetails.ui" line="14"/>
-      <location filename="../../build-rssguard-Desktop_Qt_6_7_0_MSVC2017_64bit-Debug/src/librssguard/ui_networkproxydetails.h" line="162"/>
+      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_networkproxydetails.h" line="162"/>
       <source>Form</source>
       <translation>Űrlap</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/reusable/networkproxydetails.ui" line="23"/>
-      <location filename="../../build-rssguard-Desktop_Qt_6_7_0_MSVC2017_64bit-Debug/src/librssguard/ui_networkproxydetails.h" line="163"/>
+      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_networkproxydetails.h" line="163"/>
       <source>Host</source>
       <translation type="unfinished">Host</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/reusable/networkproxydetails.ui" line="41"/>
-      <location filename="../../build-rssguard-Desktop_Qt_6_7_0_MSVC2017_64bit-Debug/src/librssguard/ui_networkproxydetails.h" line="164"/>
+      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_networkproxydetails.h" line="164"/>
       <source>Hostname or IP of your proxy server</source>
       <translation>A proxy szerver neve vagy ip címe</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/reusable/networkproxydetails.ui" line="48"/>
-      <location filename="../../build-rssguard-Desktop_Qt_6_7_0_MSVC2017_64bit-Debug/src/librssguard/ui_networkproxydetails.h" line="165"/>
+      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_networkproxydetails.h" line="165"/>
       <source>Port</source>
       <translation>Port</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/reusable/networkproxydetails.ui" line="76"/>
-      <location filename="../../build-rssguard-Desktop_Qt_6_7_0_MSVC2017_64bit-Debug/src/librssguard/ui_networkproxydetails.h" line="166"/>
+      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_networkproxydetails.h" line="166"/>
       <source>Username</source>
       <translation>Felhasználónév</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/reusable/networkproxydetails.ui" line="92"/>
-      <location filename="../../build-rssguard-Desktop_Qt_6_7_0_MSVC2017_64bit-Debug/src/librssguard/ui_networkproxydetails.h" line="167"/>
+      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_networkproxydetails.h" line="167"/>
       <source>Your username for proxy server authentication</source>
       <translation>Felhasználónév proxy szerver hitelesítéshez</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/reusable/networkproxydetails.ui" line="99"/>
-      <location filename="../../build-rssguard-Desktop_Qt_6_7_0_MSVC2017_64bit-Debug/src/librssguard/ui_networkproxydetails.h" line="168"/>
+      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_networkproxydetails.h" line="168"/>
       <source>Password</source>
       <translation>Jelszó</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/reusable/networkproxydetails.ui" line="118"/>
-      <location filename="../../build-rssguard-Desktop_Qt_6_7_0_MSVC2017_64bit-Debug/src/librssguard/ui_networkproxydetails.h" line="169"/>
+      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_networkproxydetails.h" line="169"/>
       <source>Your password for proxy server authentication</source>
       <translation>Jelszó prox szerver hitelesítéshez</translation>
     </message>
@@ -5958,7 +6013,7 @@ Belépési token lejárata: %2</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/reusable/networkproxydetails.ui" line="146"/>
-      <location filename="../../build-rssguard-Desktop_Qt_6_7_0_MSVC2017_64bit-Debug/src/librssguard/ui_networkproxydetails.h" line="170"/>
+      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_networkproxydetails.h" line="170"/>
       <source>Type</source>
       <extracomment>Proxy server type.</extracomment>
       <translation>Típus</translation>
@@ -6250,7 +6305,7 @@ Feedly is a secure space where you can privately organize and research the topic
 Feedly is a secure space where you can privately organize and research the topics and trends that matter to you.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/database/databasequeries.cpp" line="2909"/>
+      <location filename="../src/librssguard/database/databasequeries.cpp" line="2939"/>
       <source>Cannot insert article filter, because current database cannot return last inserted row ID.</source>
       <translation type="unfinished">Cannot insert article filter, because current database cannot return last inserted row ID.</translation>
     </message>
@@ -6404,51 +6459,51 @@ A támogatott olvasók listája:</translation>
       <translation type="unfinished">closing &apos; is missing</translation>
     </message>
     <message>
-      <location filename="../src/librssguard-standard/src/parsers/atomparser.cpp" line="323"/>
-      <location filename="../src/librssguard-standard/src/parsers/rdfparser.cpp" line="200"/>
-      <location filename="../src/librssguard-standard/src/parsers/rssparser.cpp" line="200"/>
-      <location filename="../src/librssguard-standard/src/parsers/sitemapparser.cpp" line="194"/>
+      <location filename="../src/librssguard-standard/src/parsers/atomparser.cpp" line="313"/>
+      <location filename="../src/librssguard-standard/src/parsers/rdfparser.cpp" line="195"/>
+      <location filename="../src/librssguard-standard/src/parsers/rssparser.cpp" line="195"/>
+      <location filename="../src/librssguard-standard/src/parsers/sitemapparser.cpp" line="191"/>
       <source>XML is not well-formed, %1</source>
       <translation>Az XML formázása nem megfelelő, %1</translation>
     </message>
     <message>
-      <location filename="../src/librssguard-standard/src/parsers/atomparser.cpp" line="329"/>
+      <location filename="../src/librssguard-standard/src/parsers/atomparser.cpp" line="319"/>
       <source>not an ATOM feed</source>
       <translation>nem ATOM hírforrás</translation>
     </message>
     <message>
-      <location filename="../src/librssguard-standard/src/parsers/jsonparser.cpp" line="124"/>
+      <location filename="../src/librssguard-standard/src/parsers/jsonparser.cpp" line="121"/>
       <source>JSON error &apos;%1&apos;</source>
       <translation>JSON hiba &apos;%1&apos;</translation>
     </message>
     <message>
-      <location filename="../src/librssguard-standard/src/parsers/jsonparser.cpp" line="128"/>
-      <location filename="../src/librssguard-standard/src/parsers/jsonparser.cpp" line="159"/>
+      <location filename="../src/librssguard-standard/src/parsers/jsonparser.cpp" line="125"/>
+      <location filename="../src/librssguard-standard/src/parsers/jsonparser.cpp" line="157"/>
       <source>not a JSON feed</source>
       <translation>nem JSON hírforrás</translation>
     </message>
     <message>
-      <location filename="../src/librssguard-standard/src/parsers/rdfparser.cpp" line="206"/>
+      <location filename="../src/librssguard-standard/src/parsers/rdfparser.cpp" line="201"/>
       <source>not an RDF feed</source>
       <translation>nem RDF hírforrás</translation>
     </message>
     <message>
-      <location filename="../src/librssguard-standard/src/parsers/rssparser.cpp" line="206"/>
+      <location filename="../src/librssguard-standard/src/parsers/rssparser.cpp" line="201"/>
       <source>not a RSS feed</source>
       <translation>nem RSS hírforrás</translation>
     </message>
     <message>
-      <location filename="../src/librssguard-standard/src/parsers/sitemapparser.cpp" line="159"/>
+      <location filename="../src/librssguard-standard/src/parsers/sitemapparser.cpp" line="156"/>
       <source>support for gzipped sitemaps is not enabled</source>
       <translation type="unfinished">support for gzipped sitemaps is not enabled</translation>
     </message>
     <message>
-      <location filename="../src/librssguard-standard/src/parsers/sitemapparser.cpp" line="207"/>
+      <location filename="../src/librssguard-standard/src/parsers/sitemapparser.cpp" line="204"/>
       <source>sitemap indices are not supported</source>
       <translation type="unfinished">sitemap indices are not supported</translation>
     </message>
     <message>
-      <location filename="../src/librssguard-standard/src/parsers/sitemapparser.cpp" line="211"/>
+      <location filename="../src/librssguard-standard/src/parsers/sitemapparser.cpp" line="208"/>
       <source>not a Sitemap</source>
       <translation type="unfinished">not a Sitemap</translation>
     </message>
@@ -6473,17 +6528,17 @@ A támogatott olvasók listája:</translation>
       <translation>(nem támogatott)</translation>
     </message>
     <message>
-      <location filename="../src/librssguard-standard/src/parsers/icalparser.cpp" line="69"/>
+      <location filename="../src/librssguard-standard/src/parsers/icalparser.cpp" line="67"/>
       <source>iCalendar error &apos;%1&apos;</source>
       <translation type="unfinished">iCalendar error &apos;%1&apos;</translation>
     </message>
     <message>
-      <location filename="../src/librssguard-standard/src/parsers/icalparser.cpp" line="82"/>
+      <location filename="../src/librssguard-standard/src/parsers/icalparser.cpp" line="81"/>
       <source>not an iCalendar</source>
       <translation type="unfinished">not an iCalendar</translation>
     </message>
     <message>
-      <location filename="../src/librssguard-standard/src/parsers/icalparser.cpp" line="199"/>
+      <location filename="../src/librssguard-standard/src/parsers/icalparser.cpp" line="198"/>
       <source>required iCal data are missing</source>
       <translation type="unfinished">required iCal data are missing</translation>
     </message>
@@ -6930,19 +6985,19 @@ Belépési token lejárata: %2</translation>
     <name>SearchTextWidget</name>
     <message>
       <location filename="../src/librssguard/gui/reusable/searchtextwidget.ui" line="32"/>
-      <location filename="../../build-rssguard-Desktop_Qt_6_7_0_MSVC2017_64bit-Debug/src/librssguard/ui_searchtextwidget.h" line="69"/>
+      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_searchtextwidget.h" line="69"/>
       <source>Search text</source>
       <translation>Szöveg keresése</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/reusable/searchtextwidget.ui" line="39"/>
-      <location filename="../../build-rssguard-Desktop_Qt_6_7_0_MSVC2017_64bit-Debug/src/librssguard/ui_searchtextwidget.h" line="71"/>
+      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_searchtextwidget.h" line="71"/>
       <source>Find previous occurence</source>
       <translation>Korábbi előfordulás</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/reusable/searchtextwidget.ui" line="49"/>
-      <location filename="../../build-rssguard-Desktop_Qt_6_7_0_MSVC2017_64bit-Debug/src/librssguard/ui_searchtextwidget.h" line="75"/>
+      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_searchtextwidget.h" line="75"/>
       <source>Find next occurence</source>
       <translation>Következő előfordulás</translation>
     </message>
@@ -7051,89 +7106,89 @@ File filter for external e-mail selection dialog.</extracomment>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsbrowsermail.ui" line="21"/>
-      <location filename="../../build-rssguard-Desktop_Qt_6_7_0_MSVC2017_64bit-Debug/src/librssguard/ui_settingsbrowsermail.h" line="387"/>
+      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsbrowsermail.h" line="387"/>
       <source>Network</source>
       <translation>Hálózat</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsbrowsermail.ui" line="27"/>
-      <location filename="../../build-rssguard-Desktop_Qt_6_7_0_MSVC2017_64bit-Debug/src/librssguard/ui_settingsbrowsermail.h" line="383"/>
+      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsbrowsermail.h" line="383"/>
       <source>Do not accept any incoming cookies</source>
       <translation type="unfinished">Do not accept any incoming cookies</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsbrowsermail.ui" line="34"/>
-      <location filename="../../build-rssguard-Desktop_Qt_6_7_0_MSVC2017_64bit-Debug/src/librssguard/ui_settingsbrowsermail.h" line="384"/>
+      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsbrowsermail.h" line="384"/>
       <source>Enable HTTP/2</source>
       <translation>HTTP/2 engedélyezése</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsbrowsermail.ui" line="41"/>
-      <location filename="../../build-rssguard-Desktop_Qt_6_7_0_MSVC2017_64bit-Debug/src/librssguard/ui_settingsbrowsermail.h" line="385"/>
+      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsbrowsermail.h" line="385"/>
       <source>Enable API server</source>
       <translation>API szerver engedélyezése</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsbrowsermail.ui" line="51"/>
-      <location filename="../../build-rssguard-Desktop_Qt_6_7_0_MSVC2017_64bit-Debug/src/librssguard/ui_settingsbrowsermail.h" line="386"/>
+      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsbrowsermail.h" line="386"/>
       <source>Custom User-Agent</source>
       <translation type="unfinished">Custom User-Agent</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsbrowsermail.ui" line="65"/>
-      <location filename="../../build-rssguard-Desktop_Qt_6_7_0_MSVC2017_64bit-Debug/src/librssguard/ui_settingsbrowsermail.h" line="388"/>
+      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsbrowsermail.h" line="388"/>
       <source>Custom &quot;QTWEBENGINE_CHROMIUM_FLAGS&quot; flags</source>
       <translation type="unfinished">Custom &quot;QTWEBENGINE_CHROMIUM_FLAGS&quot; flags</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsbrowsermail.ui" line="75"/>
-      <location filename="../../build-rssguard-Desktop_Qt_6_7_0_MSVC2017_64bit-Debug/src/librssguard/ui_settingsbrowsermail.h" line="389"/>
+      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsbrowsermail.h" line="389"/>
       <source>Disable cache</source>
       <translation>Gyorsítótár kikapcsolása</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsbrowsermail.ui" line="83"/>
-      <location filename="../../build-rssguard-Desktop_Qt_6_7_0_MSVC2017_64bit-Debug/src/librssguard/ui_settingsbrowsermail.h" line="403"/>
+      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsbrowsermail.h" line="403"/>
       <source>External web browser</source>
       <translation>Külső web böngésző</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsbrowsermail.ui" line="89"/>
-      <location filename="../../build-rssguard-Desktop_Qt_6_7_0_MSVC2017_64bit-Debug/src/librssguard/ui_settingsbrowsermail.h" line="390"/>
+      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsbrowsermail.h" line="390"/>
       <source>Always open hyperlinks in external web browser</source>
       <translation>A hivatkozások mindig külső böngészőben kerüljenek megnyitásra</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsbrowsermail.ui" line="109"/>
       <location filename="../src/librssguard/gui/settings/settingsbrowsermail.ui" line="223"/>
-      <location filename="../../build-rssguard-Desktop_Qt_6_7_0_MSVC2017_64bit-Debug/src/librssguard/ui_settingsbrowsermail.h" line="392"/>
-      <location filename="../../build-rssguard-Desktop_Qt_6_7_0_MSVC2017_64bit-Debug/src/librssguard/ui_settingsbrowsermail.h" line="405"/>
+      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsbrowsermail.h" line="392"/>
+      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsbrowsermail.h" line="405"/>
       <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;If unchecked, then default system-wide web browser is used.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
       <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Ha nincs kiválasztva akkor a rendszer alapértelmezett böngészője kerül használatra.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsbrowsermail.ui" line="112"/>
-      <location filename="../../build-rssguard-Desktop_Qt_6_7_0_MSVC2017_64bit-Debug/src/librssguard/ui_settingsbrowsermail.h" line="394"/>
+      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsbrowsermail.h" line="394"/>
       <source>Use custom external web browser</source>
       <translation>Egyedi külső webböngésző használata</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsbrowsermail.ui" line="124"/>
-      <location filename="../../build-rssguard-Desktop_Qt_6_7_0_MSVC2017_64bit-Debug/src/librssguard/ui_settingsbrowsermail.h" line="395"/>
+      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsbrowsermail.h" line="395"/>
       <source>Web browser executable</source>
       <translation type="unfinished">Web browser executable</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsbrowsermail.ui" line="136"/>
-      <location filename="../../build-rssguard-Desktop_Qt_6_7_0_MSVC2017_64bit-Debug/src/librssguard/ui_settingsbrowsermail.h" line="396"/>
+      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsbrowsermail.h" line="396"/>
       <source>Executable file of web browser</source>
       <translation type="unfinished">Executable file of web browser</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsbrowsermail.ui" line="149"/>
       <location filename="../src/librssguard/gui/settings/settingsbrowsermail.ui" line="266"/>
-      <location filename="../../build-rssguard-Desktop_Qt_6_7_0_MSVC2017_64bit-Debug/src/librssguard/ui_settingsbrowsermail.h" line="397"/>
-      <location filename="../../build-rssguard-Desktop_Qt_6_7_0_MSVC2017_64bit-Debug/src/librssguard/ui_settingsbrowsermail.h" line="410"/>
+      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsbrowsermail.h" line="397"/>
+      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsbrowsermail.h" line="410"/>
       <source>&amp;Browse</source>
       <translation>&amp;Böngészés</translation>
     </message>
@@ -7141,30 +7196,30 @@ File filter for external e-mail selection dialog.</extracomment>
       <location filename="../src/librssguard/gui/settings/settingsbrowsermail.ui" line="158"/>
       <location filename="../src/librssguard/gui/settings/settingsbrowsermail.ui" line="275"/>
       <location filename="../src/librssguard/gui/settings/settingsbrowsermail.cpp" line="40"/>
-      <location filename="../../build-rssguard-Desktop_Qt_6_7_0_MSVC2017_64bit-Debug/src/librssguard/ui_settingsbrowsermail.h" line="398"/>
-      <location filename="../../build-rssguard-Desktop_Qt_6_7_0_MSVC2017_64bit-Debug/src/librssguard/ui_settingsbrowsermail.h" line="411"/>
+      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsbrowsermail.h" line="398"/>
+      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsbrowsermail.h" line="411"/>
       <source>Parameters</source>
       <translation>Paraméterek</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsbrowsermail.ui" line="168"/>
       <location filename="../src/librssguard/gui/settings/settingsbrowsermail.ui" line="285"/>
-      <location filename="../../build-rssguard-Desktop_Qt_6_7_0_MSVC2017_64bit-Debug/src/librssguard/ui_settingsbrowsermail.h" line="399"/>
-      <location filename="../../build-rssguard-Desktop_Qt_6_7_0_MSVC2017_64bit-Debug/src/librssguard/ui_settingsbrowsermail.h" line="412"/>
+      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsbrowsermail.h" line="399"/>
+      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsbrowsermail.h" line="412"/>
       <source>Parameters passed to executable</source>
       <translation type="unfinished">Parameters passed to executable</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsbrowsermail.ui" line="175"/>
       <location filename="../src/librssguard/gui/settings/settingsbrowsermail.ui" line="292"/>
-      <location filename="../../build-rssguard-Desktop_Qt_6_7_0_MSVC2017_64bit-Debug/src/librssguard/ui_settingsbrowsermail.h" line="400"/>
-      <location filename="../../build-rssguard-Desktop_Qt_6_7_0_MSVC2017_64bit-Debug/src/librssguard/ui_settingsbrowsermail.h" line="413"/>
+      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsbrowsermail.h" line="400"/>
+      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsbrowsermail.h" line="413"/>
       <source>Use sample arguments for</source>
       <translation type="unfinished">Use sample arguments for</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsbrowsermail.ui" line="189"/>
-      <location filename="../../build-rssguard-Desktop_Qt_6_7_0_MSVC2017_64bit-Debug/src/librssguard/ui_settingsbrowsermail.h" line="401"/>
+      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsbrowsermail.h" line="401"/>
       <source>Select browser</source>
       <translation>Böngésző kiválasztása</translation>
     </message>
@@ -7175,31 +7230,31 @@ File filter for external e-mail selection dialog.</extracomment>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsbrowsermail.ui" line="204"/>
-      <location filename="../../build-rssguard-Desktop_Qt_6_7_0_MSVC2017_64bit-Debug/src/librssguard/ui_settingsbrowsermail.h" line="416"/>
+      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsbrowsermail.h" line="416"/>
       <source>External e-mail client</source>
       <translation>Külső e-mail kliens</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsbrowsermail.ui" line="226"/>
-      <location filename="../../build-rssguard-Desktop_Qt_6_7_0_MSVC2017_64bit-Debug/src/librssguard/ui_settingsbrowsermail.h" line="407"/>
+      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsbrowsermail.h" line="407"/>
       <source>Use custom external e-mail client</source>
       <translation>Külső e-mail kliens használata</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsbrowsermail.ui" line="238"/>
-      <location filename="../../build-rssguard-Desktop_Qt_6_7_0_MSVC2017_64bit-Debug/src/librssguard/ui_settingsbrowsermail.h" line="408"/>
+      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsbrowsermail.h" line="408"/>
       <source>E-mail client executable</source>
       <translation type="unfinished">E-mail client executable</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsbrowsermail.ui" line="253"/>
-      <location filename="../../build-rssguard-Desktop_Qt_6_7_0_MSVC2017_64bit-Debug/src/librssguard/ui_settingsbrowsermail.h" line="409"/>
+      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsbrowsermail.h" line="409"/>
       <source>Executable file of e-mail client</source>
       <translation type="unfinished">Executable file of e-mail client</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsbrowsermail.ui" line="306"/>
-      <location filename="../../build-rssguard-Desktop_Qt_6_7_0_MSVC2017_64bit-Debug/src/librssguard/ui_settingsbrowsermail.h" line="414"/>
+      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsbrowsermail.h" line="414"/>
       <source>Select client</source>
       <translation>Kliens kiválasztása</translation>
     </message>
@@ -7214,25 +7269,25 @@ File filter for external e-mail selection dialog.</extracomment>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsbrowsermail.ui" line="321"/>
-      <location filename="../../build-rssguard-Desktop_Qt_6_7_0_MSVC2017_64bit-Debug/src/librssguard/ui_settingsbrowsermail.h" line="420"/>
+      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsbrowsermail.h" line="420"/>
       <source>External tools</source>
       <translation>Külső eszközök</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsbrowsermail.ui" line="356"/>
-      <location filename="../../build-rssguard-Desktop_Qt_6_7_0_MSVC2017_64bit-Debug/src/librssguard/ui_settingsbrowsermail.h" line="417"/>
+      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsbrowsermail.h" line="417"/>
       <source>&amp;Add tool</source>
       <translation>Eszköz &amp;hozzáadása</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsbrowsermail.ui" line="366"/>
-      <location filename="../../build-rssguard-Desktop_Qt_6_7_0_MSVC2017_64bit-Debug/src/librssguard/ui_settingsbrowsermail.h" line="418"/>
+      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsbrowsermail.h" line="418"/>
       <source>&amp;Edit selected tool</source>
       <translation>Kiválasztott eszköz &amp;szerkesztése</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsbrowsermail.ui" line="376"/>
-      <location filename="../../build-rssguard-Desktop_Qt_6_7_0_MSVC2017_64bit-Debug/src/librssguard/ui_settingsbrowsermail.h" line="419"/>
+      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsbrowsermail.h" line="419"/>
       <source>&amp;Delete selected tool</source>
       <translation>Kiválasztott eszköz &amp;törlése</translation>
     </message>
@@ -7366,49 +7421,49 @@ Authors of this application are NOT responsible for lost data.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsdatabase.ui" line="17"/>
-      <location filename="../../build-rssguard-Desktop_Qt_6_7_0_MSVC2017_64bit-Debug/src/librssguard/ui_settingsdatabase.h" line="214"/>
+      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsdatabase.h" line="214"/>
       <source>Database driver</source>
       <translation type="unfinished">Database driver</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsdatabase.ui" line="52"/>
-      <location filename="../../build-rssguard-Desktop_Qt_6_7_0_MSVC2017_64bit-Debug/src/librssguard/ui_settingsdatabase.h" line="215"/>
+      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsdatabase.h" line="215"/>
       <source>Use in-memory database as the working database</source>
       <translation type="unfinished">Use in-memory database as the working database</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsdatabase.ui" line="81"/>
-      <location filename="../../build-rssguard-Desktop_Qt_6_7_0_MSVC2017_64bit-Debug/src/librssguard/ui_settingsdatabase.h" line="216"/>
+      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsdatabase.h" line="216"/>
       <source>Hostname</source>
       <translation type="unfinished">Hostname</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsdatabase.ui" line="96"/>
-      <location filename="../../build-rssguard-Desktop_Qt_6_7_0_MSVC2017_64bit-Debug/src/librssguard/ui_settingsdatabase.h" line="217"/>
+      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsdatabase.h" line="217"/>
       <source>Port</source>
       <translation>Port</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsdatabase.ui" line="127"/>
-      <location filename="../../build-rssguard-Desktop_Qt_6_7_0_MSVC2017_64bit-Debug/src/librssguard/ui_settingsdatabase.h" line="218"/>
+      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsdatabase.h" line="218"/>
       <source>Working database</source>
       <translation type="unfinished">Working database</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsdatabase.ui" line="137"/>
-      <location filename="../../build-rssguard-Desktop_Qt_6_7_0_MSVC2017_64bit-Debug/src/librssguard/ui_settingsdatabase.h" line="219"/>
+      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsdatabase.h" line="219"/>
       <source>Username</source>
       <translation>Felhasználónév</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsdatabase.ui" line="150"/>
-      <location filename="../../build-rssguard-Desktop_Qt_6_7_0_MSVC2017_64bit-Debug/src/librssguard/ui_settingsdatabase.h" line="220"/>
+      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsdatabase.h" line="220"/>
       <source>Password</source>
       <translation>Jelszó</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsdatabase.ui" line="165"/>
-      <location filename="../../build-rssguard-Desktop_Qt_6_7_0_MSVC2017_64bit-Debug/src/librssguard/ui_settingsdatabase.h" line="221"/>
+      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsdatabase.h" line="221"/>
       <source>Test setup</source>
       <translation type="unfinished">Test setup</translation>
     </message>
@@ -7427,37 +7482,37 @@ Authors of this application are NOT responsible for lost data.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsdownloads.ui" line="17"/>
-      <location filename="../../build-rssguard-Desktop_Qt_6_7_0_MSVC2017_64bit-Debug/src/librssguard/ui_settingsdownloads.h" line="98"/>
+      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsdownloads.h" line="98"/>
       <source>Open download manager when new download is started</source>
       <translation>Letöltéskezelő megnyitása új letöltés elindításakor</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsdownloads.ui" line="24"/>
-      <location filename="../../build-rssguard-Desktop_Qt_6_7_0_MSVC2017_64bit-Debug/src/librssguard/ui_settingsdownloads.h" line="99"/>
+      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsdownloads.h" line="99"/>
       <source>Target directory for downloaded files</source>
       <translation>Letöltött fájlok célmappája</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsdownloads.ui" line="32"/>
-      <location filename="../../build-rssguard-Desktop_Qt_6_7_0_MSVC2017_64bit-Debug/src/librssguard/ui_settingsdownloads.h" line="100"/>
+      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsdownloads.h" line="100"/>
       <source>Save all downloaded files to</source>
       <translation>Az összes letöltött fájl mentése ide</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsdownloads.ui" line="45"/>
-      <location filename="../../build-rssguard-Desktop_Qt_6_7_0_MSVC2017_64bit-Debug/src/librssguard/ui_settingsdownloads.h" line="101"/>
+      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsdownloads.h" line="101"/>
       <source>Target directory where all downloaded files are saved</source>
       <translation>Az összes letöltött fájl mentésének helye</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsdownloads.ui" line="52"/>
-      <location filename="../../build-rssguard-Desktop_Qt_6_7_0_MSVC2017_64bit-Debug/src/librssguard/ui_settingsdownloads.h" line="102"/>
+      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsdownloads.h" line="102"/>
       <source>&amp;Browse</source>
       <translation>&amp;Böngészés</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsdownloads.ui" line="74"/>
-      <location filename="../../build-rssguard-Desktop_Qt_6_7_0_MSVC2017_64bit-Debug/src/librssguard/ui_settingsdownloads.h" line="103"/>
+      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsdownloads.h" line="103"/>
       <source>Ask for each individual downloaded file</source>
       <translation>Kérdezzen rá minden letöltésnél</translation>
     </message>
@@ -7529,69 +7584,69 @@ Authors of this application are NOT responsible for lost data.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="21"/>
-      <location filename="../../build-rssguard-Desktop_Qt_6_7_0_MSVC2017_64bit-Debug/src/librssguard/ui_settingsfeedsmessages.h" line="609"/>
+      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsfeedsmessages.h" line="609"/>
       <source>Feed fetching</source>
       <translation type="unfinished">Feed fetching</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="27"/>
-      <location filename="../../build-rssguard-Desktop_Qt_6_7_0_MSVC2017_64bit-Debug/src/librssguard/ui_settingsfeedsmessages.h" line="600"/>
+      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsfeedsmessages.h" line="600"/>
       <source>Fetch all articles on startup with initial delay of</source>
       <translation type="unfinished">Fetch all articles on startup with initial delay of</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="53"/>
-      <location filename="../../build-rssguard-Desktop_Qt_6_7_0_MSVC2017_64bit-Debug/src/librssguard/ui_settingsfeedsmessages.h" line="601"/>
+      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsfeedsmessages.h" line="601"/>
       <source>Auto-fetch articles for all feeds every</source>
       <translation type="unfinished">Auto-fetch articles for all feeds every</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="79"/>
-      <location filename="../../build-rssguard-Desktop_Qt_6_7_0_MSVC2017_64bit-Debug/src/librssguard/ui_settingsfeedsmessages.h" line="602"/>
+      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsfeedsmessages.h" line="602"/>
       <source>Only auto-fetch articles if application is unfocused</source>
       <translation>Csak akkor frissítse automatikusan a cikkeket ha az applikáció nincs fókuszban</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="93"/>
-      <location filename="../../build-rssguard-Desktop_Qt_6_7_0_MSVC2017_64bit-Debug/src/librssguard/ui_settingsfeedsmessages.h" line="604"/>
+      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsfeedsmessages.h" line="604"/>
       <source>Feed connection timeout</source>
       <translation>Hírforrás kapcsolat időtúllépés</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="109"/>
-      <location filename="../../build-rssguard-Desktop_Qt_6_7_0_MSVC2017_64bit-Debug/src/librssguard/ui_settingsfeedsmessages.h" line="606"/>
+      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsfeedsmessages.h" line="606"/>
       <source>Connection timeout is time interval which is reserved for downloading new messages for the feed. If this time interval elapses, then download process is aborted.</source>
       <translation>A kapcsolat időtúllépése egy olyan időintervallum, ami a hírforrás új tartalmainak letöltésére van fenntartva. Ha ez az időtartam eltelik, a letöltési folyamat megszakításra kerül.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="112"/>
-      <location filename="../../build-rssguard-Desktop_Qt_6_7_0_MSVC2017_64bit-Debug/src/librssguard/ui_settingsfeedsmessages.h" line="608"/>
+      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsfeedsmessages.h" line="608"/>
       <source> ms</source>
       <translation> ms</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="86"/>
-      <location filename="../../build-rssguard-Desktop_Qt_6_7_0_MSVC2017_64bit-Debug/src/librssguard/ui_settingsfeedsmessages.h" line="603"/>
+      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsfeedsmessages.h" line="603"/>
       <source>Support very fast auto-fetching intervals (under 10 seconds)</source>
       <translation type="unfinished">Support very fast auto-fetching intervals (under 10 seconds)</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="132"/>
-      <location filename="../../build-rssguard-Desktop_Qt_6_7_0_MSVC2017_64bit-Debug/src/librssguard/ui_settingsfeedsmessages.h" line="619"/>
+      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsfeedsmessages.h" line="619"/>
       <source>Feeds list</source>
       <translation type="unfinished">Feeds list</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="138"/>
       <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="471"/>
-      <location filename="../../build-rssguard-Desktop_Qt_6_7_0_MSVC2017_64bit-Debug/src/librssguard/ui_settingsfeedsmessages.h" line="610"/>
-      <location filename="../../build-rssguard-Desktop_Qt_6_7_0_MSVC2017_64bit-Debug/src/librssguard/ui_settingsfeedsmessages.h" line="636"/>
+      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsfeedsmessages.h" line="610"/>
+      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsfeedsmessages.h" line="636"/>
       <source>Row height</source>
       <translation type="unfinished">Row height</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="175"/>
-      <location filename="../../build-rssguard-Desktop_Qt_6_7_0_MSVC2017_64bit-Debug/src/librssguard/ui_settingsfeedsmessages.h" line="611"/>
+      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsfeedsmessages.h" line="611"/>
       <source>Feed list font</source>
       <translation type="unfinished">Feed list font</translation>
     </message>
@@ -7599,9 +7654,9 @@ Authors of this application are NOT responsible for lost data.</translation>
       <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="187"/>
       <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="375"/>
       <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="636"/>
-      <location filename="../../build-rssguard-Desktop_Qt_6_7_0_MSVC2017_64bit-Debug/src/librssguard/ui_settingsfeedsmessages.h" line="612"/>
-      <location filename="../../build-rssguard-Desktop_Qt_6_7_0_MSVC2017_64bit-Debug/src/librssguard/ui_settingsfeedsmessages.h" line="628"/>
-      <location filename="../../build-rssguard-Desktop_Qt_6_7_0_MSVC2017_64bit-Debug/src/librssguard/ui_settingsfeedsmessages.h" line="643"/>
+      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsfeedsmessages.h" line="612"/>
+      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsfeedsmessages.h" line="628"/>
+      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsfeedsmessages.h" line="643"/>
       <source>Font preview</source>
       <translation type="unfinished">Font preview</translation>
     </message>
@@ -7609,177 +7664,177 @@ Authors of this application are NOT responsible for lost data.</translation>
       <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="197"/>
       <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="385"/>
       <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="646"/>
-      <location filename="../../build-rssguard-Desktop_Qt_6_7_0_MSVC2017_64bit-Debug/src/librssguard/ui_settingsfeedsmessages.h" line="613"/>
-      <location filename="../../build-rssguard-Desktop_Qt_6_7_0_MSVC2017_64bit-Debug/src/librssguard/ui_settingsfeedsmessages.h" line="629"/>
-      <location filename="../../build-rssguard-Desktop_Qt_6_7_0_MSVC2017_64bit-Debug/src/librssguard/ui_settingsfeedsmessages.h" line="644"/>
+      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsfeedsmessages.h" line="613"/>
+      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsfeedsmessages.h" line="629"/>
+      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsfeedsmessages.h" line="644"/>
       <source>&amp;Change font</source>
       <translation type="unfinished">&amp;Change font</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="222"/>
-      <location filename="../../build-rssguard-Desktop_Qt_6_7_0_MSVC2017_64bit-Debug/src/librssguard/ui_settingsfeedsmessages.h" line="614"/>
+      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsfeedsmessages.h" line="614"/>
       <source>Article count format</source>
       <translation type="unfinished">Article count format</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="251"/>
-      <location filename="../../build-rssguard-Desktop_Qt_6_7_0_MSVC2017_64bit-Debug/src/librssguard/ui_settingsfeedsmessages.h" line="615"/>
+      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsfeedsmessages.h" line="615"/>
       <source>Hide article counts if there are no unread articles</source>
       <translation type="unfinished">Hide article counts if there are no unread articles</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="258"/>
-      <location filename="../../build-rssguard-Desktop_Qt_6_7_0_MSVC2017_64bit-Debug/src/librssguard/ui_settingsfeedsmessages.h" line="616"/>
+      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsfeedsmessages.h" line="616"/>
       <source>Allow only basic keyboard shortcuts for feed/article list</source>
       <translation type="unfinished">Allow only basic keyboard shortcuts for feed/article list</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="265"/>
-      <location filename="../../build-rssguard-Desktop_Qt_6_7_0_MSVC2017_64bit-Debug/src/librssguard/ui_settingsfeedsmessages.h" line="617"/>
+      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsfeedsmessages.h" line="617"/>
       <source>Display tooltips for feeds and articles</source>
       <translation type="unfinished">Display tooltips for feeds and articles</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="272"/>
-      <location filename="../../build-rssguard-Desktop_Qt_6_7_0_MSVC2017_64bit-Debug/src/librssguard/ui_settingsfeedsmessages.h" line="618"/>
+      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsfeedsmessages.h" line="618"/>
       <source>Update feed list during feed fetching</source>
       <translation type="unfinished">Update feed list during feed fetching</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="280"/>
-      <location filename="../../build-rssguard-Desktop_Qt_6_7_0_MSVC2017_64bit-Debug/src/librssguard/ui_settingsfeedsmessages.h" line="632"/>
+      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsfeedsmessages.h" line="632"/>
       <source>Articles</source>
       <translation>Cikkek</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="286"/>
-      <location filename="../../build-rssguard-Desktop_Qt_6_7_0_MSVC2017_64bit-Debug/src/librssguard/ui_settingsfeedsmessages.h" line="620"/>
+      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsfeedsmessages.h" line="620"/>
       <source>Remove all read articles from all feeds on application exit</source>
       <translation type="unfinished">Remove all read articles from all feeds on application exit</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="293"/>
-      <location filename="../../build-rssguard-Desktop_Qt_6_7_0_MSVC2017_64bit-Debug/src/librssguard/ui_settingsfeedsmessages.h" line="621"/>
+      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsfeedsmessages.h" line="621"/>
       <source>Ignore changes in article body when new articles are being fetched</source>
       <translation type="unfinished">Ignore changes in article body when new articles are being fetched</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="314"/>
-      <location filename="../../build-rssguard-Desktop_Qt_6_7_0_MSVC2017_64bit-Debug/src/librssguard/ui_settingsfeedsmessages.h" line="624"/>
+      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsfeedsmessages.h" line="624"/>
       <source>Internal article viewer</source>
       <translation type="unfinished">Internal article viewer</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="329"/>
-      <location filename="../../build-rssguard-Desktop_Qt_6_7_0_MSVC2017_64bit-Debug/src/librssguard/ui_settingsfeedsmessages.h" line="626"/>
+      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsfeedsmessages.h" line="626"/>
       <source>Limit height of all pictures</source>
       <translation>Minden kép magasságának korlátozása</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="420"/>
-      <location filename="../../build-rssguard-Desktop_Qt_6_7_0_MSVC2017_64bit-Debug/src/librssguard/ui_settingsfeedsmessages.h" line="631"/>
+      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsfeedsmessages.h" line="631"/>
       <source>Use legacy article formatting</source>
       <translation type="unfinished">Use legacy article formatting</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="434"/>
-      <location filename="../../build-rssguard-Desktop_Qt_6_7_0_MSVC2017_64bit-Debug/src/librssguard/ui_settingsfeedsmessages.h" line="633"/>
+      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsfeedsmessages.h" line="633"/>
       <source>Unread article icon type</source>
       <translation type="unfinished">Unread article icon type</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="555"/>
-      <location filename="../../build-rssguard-Desktop_Qt_6_7_0_MSVC2017_64bit-Debug/src/librssguard/ui_settingsfeedsmessages.h" line="639"/>
+      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsfeedsmessages.h" line="639"/>
       <source>Use custom date/time format for dates-only</source>
       <translation type="unfinished">Use custom date/time format for dates-only</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="679"/>
-      <location filename="../../build-rssguard-Desktop_Qt_6_7_0_MSVC2017_64bit-Debug/src/librssguard/ui_settingsfeedsmessages.h" line="645"/>
+      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsfeedsmessages.h" line="645"/>
       <source>Upon article selection, mark as read</source>
       <translation type="unfinished">Upon article selection, mark as read</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="686"/>
-      <location filename="../../build-rssguard-Desktop_Qt_6_7_0_MSVC2017_64bit-Debug/src/librssguard/ui_settingsfeedsmessages.h" line="646"/>
+      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsfeedsmessages.h" line="646"/>
       <source>Switch article list to RTL layout if all selected feeds are RTL</source>
       <translation type="unfinished">Switch article list to RTL layout if all selected feeds are RTL</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="307"/>
-      <location filename="../../build-rssguard-Desktop_Qt_6_7_0_MSVC2017_64bit-Debug/src/librssguard/ui_settingsfeedsmessages.h" line="623"/>
+      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsfeedsmessages.h" line="623"/>
       <source>Bring application window to front once article is opened in external web browser</source>
       <translation type="unfinished">Bring application window to front once article is opened in external web browser</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="369"/>
-      <location filename="../../build-rssguard-Desktop_Qt_6_7_0_MSVC2017_64bit-Debug/src/librssguard/ui_settingsfeedsmessages.h" line="627"/>
+      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsfeedsmessages.h" line="627"/>
       <source>Article browser font</source>
       <translation type="unfinished">Article browser font</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="300"/>
-      <location filename="../../build-rssguard-Desktop_Qt_6_7_0_MSVC2017_64bit-Debug/src/librssguard/ui_settingsfeedsmessages.h" line="622"/>
+      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsfeedsmessages.h" line="622"/>
       <source>Fixup date/time of articles which are in the future</source>
       <translation type="unfinished">Fixup date/time of articles which are in the future</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="320"/>
-      <location filename="../../build-rssguard-Desktop_Qt_6_7_0_MSVC2017_64bit-Debug/src/librssguard/ui_settingsfeedsmessages.h" line="625"/>
+      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsfeedsmessages.h" line="625"/>
       <source>Display attachments directly in article</source>
       <translation>Mellékletek megjelenítése közvetlenül a cikkben</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="413"/>
-      <location filename="../../build-rssguard-Desktop_Qt_6_7_0_MSVC2017_64bit-Debug/src/librssguard/ui_settingsfeedsmessages.h" line="630"/>
+      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsfeedsmessages.h" line="630"/>
       <source>Keep article viewer always visible</source>
       <translation type="unfinished">Keep article viewer always visible</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="428"/>
-      <location filename="../../build-rssguard-Desktop_Qt_6_7_0_MSVC2017_64bit-Debug/src/librssguard/ui_settingsfeedsmessages.h" line="647"/>
+      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsfeedsmessages.h" line="647"/>
       <source>Articles list</source>
       <translation>Cikkek listája</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="447"/>
-      <location filename="../../build-rssguard-Desktop_Qt_6_7_0_MSVC2017_64bit-Debug/src/librssguard/ui_settingsfeedsmessages.h" line="634"/>
+      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsfeedsmessages.h" line="634"/>
       <source>Keep article selection in the middle of the article list viewport</source>
       <translation type="unfinished">Keep article selection in the middle of the article list viewport</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="454"/>
-      <location filename="../../build-rssguard-Desktop_Qt_6_7_0_MSVC2017_64bit-Debug/src/librssguard/ui_settingsfeedsmessages.h" line="635"/>
+      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsfeedsmessages.h" line="635"/>
       <source>Enable multiline items</source>
       <translation>Többsoros elemek engedélyezése</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="500"/>
-      <location filename="../../build-rssguard-Desktop_Qt_6_7_0_MSVC2017_64bit-Debug/src/librssguard/ui_settingsfeedsmessages.h" line="637"/>
+      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsfeedsmessages.h" line="637"/>
       <source>Top/bottom row padding</source>
       <translation type="unfinished">Top/bottom row padding</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="529"/>
-      <location filename="../../build-rssguard-Desktop_Qt_6_7_0_MSVC2017_64bit-Debug/src/librssguard/ui_settingsfeedsmessages.h" line="638"/>
+      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsfeedsmessages.h" line="638"/>
       <source>Use custom date/time format</source>
       <translation>Egyedi dátum/idő formátum alkalmazása</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="581"/>
-      <location filename="../../build-rssguard-Desktop_Qt_6_7_0_MSVC2017_64bit-Debug/src/librssguard/ui_settingsfeedsmessages.h" line="640"/>
+      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsfeedsmessages.h" line="640"/>
       <source>Custom date/time format for today&apos;s articles</source>
       <translation type="unfinished">Custom date/time format for today&apos;s articles</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="624"/>
-      <location filename="../../build-rssguard-Desktop_Qt_6_7_0_MSVC2017_64bit-Debug/src/librssguard/ui_settingsfeedsmessages.h" line="642"/>
+      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsfeedsmessages.h" line="642"/>
       <source>Article list font</source>
       <translation type="unfinished">Article list font</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="607"/>
-      <location filename="../../build-rssguard-Desktop_Qt_6_7_0_MSVC2017_64bit-Debug/src/librssguard/ui_settingsfeedsmessages.h" line="641"/>
+      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsfeedsmessages.h" line="641"/>
       <source>Show relative time for articles not older than</source>
       <translation>Relatív idő mutatása a cikkeknél, amelyek nem régebbiek mint</translation>
     </message>
@@ -7798,13 +7853,13 @@ Authors of this application are NOT responsible for lost data.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsgeneral.ui" line="17"/>
-      <location filename="../../build-rssguard-Desktop_Qt_6_7_0_MSVC2017_64bit-Debug/src/librssguard/ui_settingsgeneral.h" line="58"/>
+      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsgeneral.h" line="58"/>
       <source>Launch %1 on operating system startup</source>
       <translation>%1 indítása az operációs rendszer indításakor</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsgeneral.ui" line="24"/>
-      <location filename="../../build-rssguard-Desktop_Qt_6_7_0_MSVC2017_64bit-Debug/src/librssguard/ui_settingsgeneral.h" line="59"/>
+      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsgeneral.h" line="59"/>
       <source>Check for %1 updates on application startup</source>
       <translation>%1 frissítések keresése az applikáció indításakor</translation>
     </message>
@@ -7915,165 +7970,165 @@ Leírás: %3</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsgui.ui" line="27"/>
-      <location filename="../../build-rssguard-Desktop_Qt_6_7_0_MSVC2017_64bit-Debug/src/librssguard/ui_settingsgui.h" line="399"/>
+      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsgui.h" line="399"/>
       <source>Icons &amp;&amp; skins</source>
       <translation>Ikonok &amp;&amp; megjelenés</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsgui.ui" line="33"/>
-      <location filename="../../build-rssguard-Desktop_Qt_6_7_0_MSVC2017_64bit-Debug/src/librssguard/ui_settingsgui.h" line="395"/>
+      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsgui.h" line="395"/>
       <source>Icon theme</source>
       <translation>Ikon téma</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsgui.ui" line="46"/>
-      <location filename="../../build-rssguard-Desktop_Qt_6_7_0_MSVC2017_64bit-Debug/src/librssguard/ui_settingsgui.h" line="396"/>
+      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsgui.h" line="396"/>
       <source>Style</source>
       <translation>Stílus</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsgui.ui" line="59"/>
-      <location filename="../../build-rssguard-Desktop_Qt_6_7_0_MSVC2017_64bit-Debug/src/librssguard/ui_settingsgui.h" line="397"/>
+      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsgui.h" line="397"/>
       <source>Skin</source>
       <translation>Megjelenés</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsgui.ui" line="112"/>
-      <location filename="../../build-rssguard-Desktop_Qt_6_7_0_MSVC2017_64bit-Debug/src/librssguard/ui_settingsgui.h" line="398"/>
+      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsgui.h" line="398"/>
       <source>Use skin colors (skin colors for dialogs/controls only take effect with Fusion style)</source>
       <translation type="unfinished">Use skin colors (skin colors for dialogs/controls only take effect with Fusion style)</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsgui.ui" line="120"/>
-      <location filename="../../build-rssguard-Desktop_Qt_6_7_0_MSVC2017_64bit-Debug/src/librssguard/ui_settingsgui.h" line="401"/>
+      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsgui.h" line="401"/>
       <source>Custom skin colors</source>
       <translation>Egyedi megjelenési színek</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsgui.ui" line="129"/>
-      <location filename="../../build-rssguard-Desktop_Qt_6_7_0_MSVC2017_64bit-Debug/src/librssguard/ui_settingsgui.h" line="400"/>
+      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsgui.h" line="400"/>
       <source>Customize predefined colors</source>
       <translation>Az előre meghatározott színek testreszabása</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsgui.ui" line="141"/>
-      <location filename="../../build-rssguard-Desktop_Qt_6_7_0_MSVC2017_64bit-Debug/src/librssguard/ui_settingsgui.h" line="407"/>
+      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsgui.h" line="407"/>
       <source>Tray area</source>
       <translation>Tálca területe</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsgui.ui" line="153"/>
-      <location filename="../../build-rssguard-Desktop_Qt_6_7_0_MSVC2017_64bit-Debug/src/librssguard/ui_settingsgui.h" line="402"/>
+      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsgui.h" line="402"/>
       <source>Tray icon</source>
       <translation>Tálca ikon</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsgui.ui" line="165"/>
-      <location filename="../../build-rssguard-Desktop_Qt_6_7_0_MSVC2017_64bit-Debug/src/librssguard/ui_settingsgui.h" line="403"/>
+      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsgui.h" line="403"/>
       <source>Use monochrome icon</source>
       <translation>Fekete-fehér ikonok használata</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsgui.ui" line="172"/>
       <location filename="../src/librssguard/gui/settings/settingsgui.ui" line="216"/>
-      <location filename="../../build-rssguard-Desktop_Qt_6_7_0_MSVC2017_64bit-Debug/src/librssguard/ui_settingsgui.h" line="404"/>
-      <location filename="../../build-rssguard-Desktop_Qt_6_7_0_MSVC2017_64bit-Debug/src/librssguard/ui_settingsgui.h" line="408"/>
+      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsgui.h" line="404"/>
+      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsgui.h" line="408"/>
       <source>Display count of unread messages</source>
       <translation>Olvasatlan üzenetek számának megjelenítése</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsgui.ui" line="179"/>
-      <location filename="../../build-rssguard-Desktop_Qt_6_7_0_MSVC2017_64bit-Debug/src/librssguard/ui_settingsgui.h" line="405"/>
+      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsgui.h" line="405"/>
       <source>Hide main window when it is minimized</source>
       <translation>Főablak elrejtése amikor minimalizált</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsgui.ui" line="186"/>
-      <location filename="../../build-rssguard-Desktop_Qt_6_7_0_MSVC2017_64bit-Debug/src/librssguard/ui_settingsgui.h" line="406"/>
+      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsgui.h" line="406"/>
       <source>Start application hidden</source>
       <translation>Az applikáció indítása rejtett módban</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsgui.ui" line="210"/>
-      <location filename="../../build-rssguard-Desktop_Qt_6_7_0_MSVC2017_64bit-Debug/src/librssguard/ui_settingsgui.h" line="409"/>
+      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsgui.h" line="409"/>
       <source>Task bar</source>
       <translation>Tálca</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsgui.ui" line="224"/>
-      <location filename="../../build-rssguard-Desktop_Qt_6_7_0_MSVC2017_64bit-Debug/src/librssguard/ui_settingsgui.h" line="415"/>
+      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsgui.h" line="415"/>
       <source>Tabs</source>
       <translation>Fülek</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsgui.ui" line="236"/>
-      <location filename="../../build-rssguard-Desktop_Qt_6_7_0_MSVC2017_64bit-Debug/src/librssguard/ui_settingsgui.h" line="410"/>
+      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsgui.h" line="410"/>
       <source>Close tabs with</source>
       <translation>Fülek bezárása a következővel</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsgui.ui" line="242"/>
-      <location filename="../../build-rssguard-Desktop_Qt_6_7_0_MSVC2017_64bit-Debug/src/librssguard/ui_settingsgui.h" line="411"/>
+      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsgui.h" line="411"/>
       <source>Middle mouse button single-click</source>
       <translation>Középső egérgomb egyszeres kattintás</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsgui.ui" line="249"/>
-      <location filename="../../build-rssguard-Desktop_Qt_6_7_0_MSVC2017_64bit-Debug/src/librssguard/ui_settingsgui.h" line="412"/>
+      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsgui.h" line="412"/>
       <source>Left mouse button double-click</source>
       <translation>Bal egérgomb dupla kattintás</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsgui.ui" line="259"/>
-      <location filename="../../build-rssguard-Desktop_Qt_6_7_0_MSVC2017_64bit-Debug/src/librssguard/ui_settingsgui.h" line="413"/>
+      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsgui.h" line="413"/>
       <source>Open new tabs with left mouse button double-click on tab bar</source>
       <translation>Új fülek megnyitása a bal egérgomb dupla kattintásával a fülsávon</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsgui.ui" line="266"/>
-      <location filename="../../build-rssguard-Desktop_Qt_6_7_0_MSVC2017_64bit-Debug/src/librssguard/ui_settingsgui.h" line="414"/>
+      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsgui.h" line="414"/>
       <source>Hide tab bar if just one tab is visible</source>
       <translation>Fülsáv elrejtése ha csak egy látható fül van</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsgui.ui" line="287"/>
-      <location filename="../../build-rssguard-Desktop_Qt_6_7_0_MSVC2017_64bit-Debug/src/librssguard/ui_settingsgui.h" line="423"/>
+      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsgui.h" line="423"/>
       <source>Toolbars</source>
       <translation>Eszköztárak</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsgui.ui" line="300"/>
-      <location filename="../../build-rssguard-Desktop_Qt_6_7_0_MSVC2017_64bit-Debug/src/librssguard/ui_settingsgui.h" line="416"/>
+      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsgui.h" line="416"/>
       <source>Toolbar for feeds list</source>
       <translation>Hírforrás lista eszköztára</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsgui.ui" line="305"/>
-      <location filename="../../build-rssguard-Desktop_Qt_6_7_0_MSVC2017_64bit-Debug/src/librssguard/ui_settingsgui.h" line="417"/>
+      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsgui.h" line="417"/>
       <source>Toolbar for articles list</source>
       <translation>Cikklista eszköztára</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsgui.ui" line="310"/>
-      <location filename="../../build-rssguard-Desktop_Qt_6_7_0_MSVC2017_64bit-Debug/src/librssguard/ui_settingsgui.h" line="418"/>
+      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsgui.h" line="418"/>
       <source>Statusbar</source>
       <translation>Állapotsor</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsgui.ui" line="388"/>
-      <location filename="../../build-rssguard-Desktop_Qt_6_7_0_MSVC2017_64bit-Debug/src/librssguard/ui_settingsgui.h" line="420"/>
+      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsgui.h" line="420"/>
       <source>Button style</source>
       <translation>Gomb stílus</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsgui.ui" line="398"/>
-      <location filename="../../build-rssguard-Desktop_Qt_6_7_0_MSVC2017_64bit-Debug/src/librssguard/ui_settingsgui.h" line="421"/>
+      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsgui.h" line="421"/>
       <source>Toolbar editor</source>
       <translation>Eszköztár szerkesztő</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsgui.ui" line="424"/>
-      <location filename="../../build-rssguard-Desktop_Qt_6_7_0_MSVC2017_64bit-Debug/src/librssguard/ui_settingsgui.h" line="422"/>
+      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsgui.h" line="422"/>
       <source>Icon size</source>
       <translation>Ikon méret</translation>
     </message>
@@ -8086,54 +8141,54 @@ Leírás: %3</translation>
   <context>
     <name>SettingsLocalization</name>
     <message>
-      <location filename="../src/librssguard/gui/settings/settingslocalization.cpp" line="23"/>
+      <location filename="../src/librssguard/gui/settings/settingslocalization.cpp" line="25"/>
       <source>Language</source>
       <translation>Nyelv</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/settings/settingslocalization.cpp" line="23"/>
+      <location filename="../src/librssguard/gui/settings/settingslocalization.cpp" line="25"/>
       <source>Code</source>
       <translation>Országkód</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/settings/settingslocalization.cpp" line="23"/>
+      <location filename="../src/librssguard/gui/settings/settingslocalization.cpp" line="25"/>
       <source>Translation progress</source>
       <translation>Fordítás előrehaladása</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/settings/settingslocalization.cpp" line="25"/>
+      <location filename="../src/librssguard/gui/settings/settingslocalization.cpp" line="27"/>
       <source>Help us to improve %1 &lt;a href=&quot;%2&quot;&gt;translations&lt;/a&gt;.</source>
       <translation type="unfinished">Help us to improve %1 &lt;a href=&quot;%2&quot;&gt;translations&lt;/a&gt;.</translation>
     </message>
     <message>
+      <location filename="../src/librssguard/gui/settings/settingslocalization.cpp" line="109"/>
+      <location filename="../src/librssguard/gui/settings/settingslocalization.cpp" line="110"/>
       <location filename="../src/librssguard/gui/settings/settingslocalization.cpp" line="115"/>
-      <location filename="../src/librssguard/gui/settings/settingslocalization.cpp" line="116"/>
-      <location filename="../src/librssguard/gui/settings/settingslocalization.cpp" line="121"/>
       <source>Big thanks to all translators!</source>
       <translation>Nagy köszönet minden fordítónak!</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/settings/settingslocalization.cpp" line="120"/>
+      <location filename="../src/librssguard/gui/settings/settingslocalization.cpp" line="114"/>
       <source>Translations provided by: %1</source>
       <translation>A fordításokban közreműködtek:</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/settings/settingslocalization.cpp" line="169"/>
+      <location filename="../src/librssguard/gui/settings/settingslocalization.cpp" line="200"/>
       <source>Translators needed!</source>
       <translation>Fordítók kerestetnek!</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/settings/settingslocalization.cpp" line="170"/>
+      <location filename="../src/librssguard/gui/settings/settingslocalization.cpp" line="201"/>
       <source>The translation &apos;%1&apos; is incomplete and anyone able to help with translating %2 is greatly welcomed.</source>
       <translation>A &apos;%1&apos; fordítás még nincs kész és bárki segíthet a %2 fordításában, amit nagyon szívesen fogadunk.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/settings/settingslocalization.cpp" line="172"/>
+      <location filename="../src/librssguard/gui/settings/settingslocalization.cpp" line="203"/>
       <source>Do you want to help with the translation now?</source>
       <translation>Szeretne most segíteni a fordítással?</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/settings/settingslocalization.h" line="27"/>
+      <location filename="../src/librssguard/gui/settings/settingslocalization.h" line="39"/>
       <source>Localization</source>
       <translation>Területi beállítás</translation>
     </message>
@@ -8142,19 +8197,19 @@ Leírás: %3</translation>
     <name>SettingsMediaPlayer</name>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsmediaplayer.ui" line="17"/>
-      <location filename="../../build-rssguard-Desktop_Qt_6_7_0_MSVC2017_64bit-Debug/src/librssguard/ui_settingsmediaplayer.h" line="114"/>
+      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsmediaplayer.h" line="114"/>
       <source>Backend</source>
       <translation type="unfinished">Backend</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsmediaplayer.ui" line="36"/>
-      <location filename="../../build-rssguard-Desktop_Qt_6_7_0_MSVC2017_64bit-Debug/src/librssguard/ui_settingsmediaplayer.h" line="115"/>
+      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsmediaplayer.h" line="115"/>
       <source>Use custom MPV configuration folder</source>
       <translation type="unfinished">Use custom MPV configuration folder</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsmediaplayer.ui" line="48"/>
-      <location filename="../../build-rssguard-Desktop_Qt_6_7_0_MSVC2017_64bit-Debug/src/librssguard/ui_settingsmediaplayer.h" line="116"/>
+      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsmediaplayer.h" line="116"/>
       <source>Browse</source>
       <translation type="unfinished">Browse</translation>
     </message>
@@ -8245,13 +8300,13 @@ Also, relaunch &quot;Settings&quot; dialog after you install Node.js.</translati
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsnodejs.ui" line="14"/>
-      <location filename="../../build-rssguard-Desktop_Qt_6_7_0_MSVC2017_64bit-Debug/src/librssguard/ui_settingsnodejs.h" line="148"/>
+      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsnodejs.h" line="148"/>
       <source>Form</source>
       <translation>Űrlap</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsnodejs.ui" line="23"/>
-      <location filename="../../build-rssguard-Desktop_Qt_6_7_0_MSVC2017_64bit-Debug/src/librssguard/ui_settingsnodejs.h" line="149"/>
+      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsnodejs.h" line="149"/>
       <source>Node.js executable</source>
       <translation type="unfinished">Node.js executable</translation>
     </message>
@@ -8259,27 +8314,27 @@ Also, relaunch &quot;Settings&quot; dialog after you install Node.js.</translati
       <location filename="../src/librssguard/gui/settings/settingsnodejs.ui" line="44"/>
       <location filename="../src/librssguard/gui/settings/settingsnodejs.ui" line="74"/>
       <location filename="../src/librssguard/gui/settings/settingsnodejs.ui" line="104"/>
-      <location filename="../../build-rssguard-Desktop_Qt_6_7_0_MSVC2017_64bit-Debug/src/librssguard/ui_settingsnodejs.h" line="150"/>
-      <location filename="../../build-rssguard-Desktop_Qt_6_7_0_MSVC2017_64bit-Debug/src/librssguard/ui_settingsnodejs.h" line="152"/>
-      <location filename="../../build-rssguard-Desktop_Qt_6_7_0_MSVC2017_64bit-Debug/src/librssguard/ui_settingsnodejs.h" line="154"/>
+      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsnodejs.h" line="150"/>
+      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsnodejs.h" line="152"/>
+      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsnodejs.h" line="154"/>
       <source>&amp;Browse</source>
       <translation>&amp;Böngészés</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsnodejs.ui" line="53"/>
-      <location filename="../../build-rssguard-Desktop_Qt_6_7_0_MSVC2017_64bit-Debug/src/librssguard/ui_settingsnodejs.h" line="151"/>
+      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsnodejs.h" line="151"/>
       <source>NPM executable</source>
       <translation type="unfinished">NPM executable</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsnodejs.ui" line="83"/>
-      <location filename="../../build-rssguard-Desktop_Qt_6_7_0_MSVC2017_64bit-Debug/src/librssguard/ui_settingsnodejs.h" line="153"/>
+      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsnodejs.h" line="153"/>
       <source>Package folder </source>
       <translation>Csomagokat tartalmazó mappa </translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsnodejs.ui" line="116"/>
-      <location filename="../../build-rssguard-Desktop_Qt_6_7_0_MSVC2017_64bit-Debug/src/librssguard/ui_settingsnodejs.h" line="155"/>
+      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsnodejs.h" line="155"/>
       <source>&amp;Download Node.js</source>
       <translation type="unfinished">&amp;Download Node.js</translation>
     </message>
@@ -8288,55 +8343,55 @@ Also, relaunch &quot;Settings&quot; dialog after you install Node.js.</translati
     <name>SettingsNotifications</name>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsnotifications.ui" line="17"/>
-      <location filename="../../build-rssguard-Desktop_Qt_6_7_0_MSVC2017_64bit-Debug/src/librssguard/ui_settingsnotifications.h" line="193"/>
+      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsnotifications.h" line="193"/>
       <source>Enable notifications</source>
       <translation type="unfinished">Enable notifications</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsnotifications.ui" line="40"/>
-      <location filename="../../build-rssguard-Desktop_Qt_6_7_0_MSVC2017_64bit-Debug/src/librssguard/ui_settingsnotifications.h" line="194"/>
+      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsnotifications.h" line="194"/>
       <source>Balloon notifications type</source>
       <translation type="unfinished">Balloon notifications type</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsnotifications.ui" line="46"/>
-      <location filename="../../build-rssguard-Desktop_Qt_6_7_0_MSVC2017_64bit-Debug/src/librssguard/ui_settingsnotifications.h" line="195"/>
+      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsnotifications.h" line="195"/>
       <source>Native notifications (tray icon must be enabled)</source>
       <translation type="unfinished">Native notifications (tray icon must be enabled)</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsnotifications.ui" line="53"/>
-      <location filename="../../build-rssguard-Desktop_Qt_6_7_0_MSVC2017_64bit-Debug/src/librssguard/ui_settingsnotifications.h" line="196"/>
+      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsnotifications.h" line="196"/>
       <source>Custom notifications</source>
       <translation type="unfinished">Custom notifications</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsnotifications.ui" line="69"/>
-      <location filename="../../build-rssguard-Desktop_Qt_6_7_0_MSVC2017_64bit-Debug/src/librssguard/ui_settingsnotifications.h" line="197"/>
+      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsnotifications.h" line="197"/>
       <source>Position</source>
       <translation type="unfinished">Position</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsnotifications.ui" line="82"/>
-      <location filename="../../build-rssguard-Desktop_Qt_6_7_0_MSVC2017_64bit-Debug/src/librssguard/ui_settingsnotifications.h" line="198"/>
+      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsnotifications.h" line="198"/>
       <source>Width</source>
       <translation>Szélesség</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsnotifications.ui" line="105"/>
-      <location filename="../../build-rssguard-Desktop_Qt_6_7_0_MSVC2017_64bit-Debug/src/librssguard/ui_settingsnotifications.h" line="199"/>
+      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsnotifications.h" line="199"/>
       <source>Margins</source>
       <translation type="unfinished">Margins</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsnotifications.ui" line="125"/>
-      <location filename="../../build-rssguard-Desktop_Qt_6_7_0_MSVC2017_64bit-Debug/src/librssguard/ui_settingsnotifications.h" line="200"/>
+      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsnotifications.h" line="200"/>
       <source>Screen</source>
       <translation type="unfinished">Screen</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsnotifications.ui" line="159"/>
-      <location filename="../../build-rssguard-Desktop_Qt_6_7_0_MSVC2017_64bit-Debug/src/librssguard/ui_settingsnotifications.h" line="202"/>
+      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsnotifications.h" line="202"/>
       <source>Opacity</source>
       <translation type="unfinished">Opacity</translation>
     </message>
@@ -8406,43 +8461,43 @@ Also, relaunch &quot;Settings&quot; dialog after you install Node.js.</translati
     </message>
     <message>
       <location filename="../src/librssguard/gui/notifications/singlenotificationeditor.ui" line="23"/>
-      <location filename="../../build-rssguard-Desktop_Qt_6_7_0_MSVC2017_64bit-Debug/src/librssguard/ui_singlenotificationeditor.h" line="129"/>
+      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_singlenotificationeditor.h" line="129"/>
       <source>Balloon notification</source>
       <translation type="unfinished">Balloon notification</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/notifications/singlenotificationeditor.ui" line="30"/>
-      <location filename="../../build-rssguard-Desktop_Qt_6_7_0_MSVC2017_64bit-Debug/src/librssguard/ui_singlenotificationeditor.h" line="130"/>
+      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_singlenotificationeditor.h" line="130"/>
       <source>Play sound</source>
       <translation type="unfinished">Play sound</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/notifications/singlenotificationeditor.ui" line="58"/>
-      <location filename="../../build-rssguard-Desktop_Qt_6_7_0_MSVC2017_64bit-Debug/src/librssguard/ui_singlenotificationeditor.h" line="131"/>
+      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_singlenotificationeditor.h" line="131"/>
       <source>Sound</source>
       <translation>Hang</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/notifications/singlenotificationeditor.ui" line="70"/>
-      <location filename="../../build-rssguard-Desktop_Qt_6_7_0_MSVC2017_64bit-Debug/src/librssguard/ui_singlenotificationeditor.h" line="132"/>
+      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_singlenotificationeditor.h" line="132"/>
       <source>Full path to your WAV sound file</source>
       <translation>A WAV hangfájl teljes elérési útja</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/notifications/singlenotificationeditor.ui" line="77"/>
-      <location filename="../../build-rssguard-Desktop_Qt_6_7_0_MSVC2017_64bit-Debug/src/librssguard/ui_singlenotificationeditor.h" line="133"/>
+      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_singlenotificationeditor.h" line="133"/>
       <source>&amp;Browse</source>
       <translation>&amp;Böngészés</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/notifications/singlenotificationeditor.ui" line="84"/>
-      <location filename="../../build-rssguard-Desktop_Qt_6_7_0_MSVC2017_64bit-Debug/src/librssguard/ui_singlenotificationeditor.h" line="134"/>
+      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_singlenotificationeditor.h" line="134"/>
       <source>&amp;Play</source>
       <translation>&amp;Lejátszás</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/notifications/singlenotificationeditor.ui" line="103"/>
-      <location filename="../../build-rssguard-Desktop_Qt_6_7_0_MSVC2017_64bit-Debug/src/librssguard/ui_singlenotificationeditor.h" line="135"/>
+      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_singlenotificationeditor.h" line="135"/>
       <source>Volume</source>
       <translation>Hangerő</translation>
     </message>
@@ -8589,57 +8644,57 @@ Also, relaunch &quot;Settings&quot; dialog after you install Node.js.</translati
   <context>
     <name>StandardFeed</name>
     <message>
-      <location filename="../src/librssguard-standard/src/standardfeed.cpp" line="113"/>
+      <location filename="../src/librssguard-standard/src/standardfeed.cpp" line="115"/>
       <source>yes</source>
       <translation>igen</translation>
     </message>
     <message>
-      <location filename="../src/librssguard-standard/src/standardfeed.cpp" line="113"/>
+      <location filename="../src/librssguard-standard/src/standardfeed.cpp" line="115"/>
       <source>no</source>
       <translation>nem</translation>
     </message>
     <message>
-      <location filename="../src/librssguard-standard/src/standardfeed.cpp" line="218"/>
+      <location filename="../src/librssguard-standard/src/standardfeed.cpp" line="230"/>
       <source>Script</source>
       <translation type="unfinished">Script</translation>
     </message>
     <message>
-      <location filename="../src/librssguard-standard/src/standardfeed.cpp" line="221"/>
+      <location filename="../src/librssguard-standard/src/standardfeed.cpp" line="233"/>
       <source>Local file</source>
       <translation>Helyi fájl</translation>
     </message>
     <message>
-      <location filename="../src/librssguard-standard/src/standardfeed.cpp" line="224"/>
+      <location filename="../src/librssguard-standard/src/standardfeed.cpp" line="236"/>
       <source>Built-in web browser with JavaScript support</source>
       <translation type="unfinished">Built-in web browser with JavaScript support</translation>
     </message>
     <message>
-      <location filename="../src/librssguard-standard/src/standardfeed.cpp" line="227"/>
+      <location filename="../src/librssguard-standard/src/standardfeed.cpp" line="239"/>
       <source>Unknown</source>
       <translation>Ismeretlen</translation>
     </message>
     <message>
-      <location filename="../src/librssguard-standard/src/standardfeed.cpp" line="261"/>
+      <location filename="../src/librssguard-standard/src/standardfeed.cpp" line="277"/>
       <source>Cannot save data for feed: %1</source>
       <translation type="unfinished">Cannot save data for feed: %1</translation>
     </message>
     <message>
-      <location filename="../src/librssguard-standard/src/standardfeed.cpp" line="321"/>
+      <location filename="../src/librssguard-standard/src/standardfeed.cpp" line="335"/>
       <source>this source type cannot be used on &apos;lite&apos; %1 build</source>
       <translation type="unfinished">this source type cannot be used on &apos;lite&apos; %1 build</translation>
     </message>
     <message>
-      <location filename="../src/librssguard-standard/src/standardfeed.cpp" line="432"/>
+      <location filename="../src/librssguard-standard/src/standardfeed.cpp" line="446"/>
       <source>Cannot move feed, detailed information was logged via debug log.</source>
       <translation type="unfinished">Cannot move feed, detailed information was logged via debug log.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard-standard/src/standardfeed.cpp" line="260"/>
+      <location filename="../src/librssguard-standard/src/standardfeed.cpp" line="276"/>
       <source>Cannot save feed data</source>
       <translation type="unfinished">Cannot save feed data</translation>
     </message>
     <message>
-      <location filename="../src/librssguard-standard/src/standardfeed.cpp" line="93"/>
+      <location filename="../src/librssguard-standard/src/standardfeed.cpp" line="95"/>
       <source>Auto-update status: %1
 Active message filters: %2
 Status: %3
@@ -8654,7 +8709,7 @@ Item ID: %5
 </translation>
     </message>
     <message>
-      <location filename="../src/librssguard-standard/src/standardfeed.cpp" line="106"/>
+      <location filename="../src/librssguard-standard/src/standardfeed.cpp" line="108"/>
       <source>Encoding: %1
 Type: %2
 Post-processing script: %3
@@ -8665,12 +8720,12 @@ Post-processing script: %3
 Use raw XML saving: %4</translation>
     </message>
     <message>
-      <location filename="../src/librssguard-standard/src/standardfeed.cpp" line="390"/>
+      <location filename="../src/librssguard-standard/src/standardfeed.cpp" line="404"/>
       <source>feed format not recognized</source>
       <translation type="unfinished">feed format not recognized</translation>
     </message>
     <message>
-      <location filename="../src/librssguard-standard/src/standardfeed.cpp" line="431"/>
+      <location filename="../src/librssguard-standard/src/standardfeed.cpp" line="445"/>
       <source>Cannot move feed</source>
       <translation>Hírforrás áthelyezése sikertelen</translation>
     </message>
@@ -8741,105 +8796,105 @@ Use raw XML saving: %4</translation>
       <translation>Nem került ikon lekérésre.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard-standard/src/gui/standardfeeddetails.cpp" line="220"/>
+      <location filename="../src/librssguard-standard/src/gui/standardfeeddetails.cpp" line="225"/>
       <source>All metadata fetched successfully.</source>
       <translation>Minden metaadat lekérése sikeres.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard-standard/src/gui/standardfeeddetails.cpp" line="221"/>
+      <location filename="../src/librssguard-standard/src/gui/standardfeeddetails.cpp" line="226"/>
       <source>Feed and icon metadata fetched.</source>
       <translation>Hírforrás és ikon metaadatok lekérve.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard-standard/src/gui/standardfeeddetails.cpp" line="229"/>
       <location filename="../src/librssguard-standard/src/gui/standardfeeddetails.cpp" line="234"/>
       <location filename="../src/librssguard-standard/src/gui/standardfeeddetails.cpp" line="239"/>
+      <location filename="../src/librssguard-standard/src/gui/standardfeeddetails.cpp" line="244"/>
       <source>No metadata fetched.</source>
       <translation>Nem került metaadat lekérésre.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard-standard/src/gui/standardfeeddetails.cpp" line="245"/>
+      <location filename="../src/librssguard-standard/src/gui/standardfeeddetails.cpp" line="250"/>
       <source>Feed name is ok.</source>
       <translation>Hírforrás neve megfelelő.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard-standard/src/gui/standardfeeddetails.cpp" line="248"/>
+      <location filename="../src/librssguard-standard/src/gui/standardfeeddetails.cpp" line="253"/>
       <source>Feed name is too short.</source>
       <translation>Hírforrás neve túl rövid.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard-standard/src/gui/standardfeeddetails.cpp" line="254"/>
+      <location filename="../src/librssguard-standard/src/gui/standardfeeddetails.cpp" line="259"/>
       <source>Description is empty.</source>
       <translation>A leírás üres.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard-standard/src/gui/standardfeeddetails.cpp" line="257"/>
+      <location filename="../src/librssguard-standard/src/gui/standardfeeddetails.cpp" line="262"/>
       <source>The description is ok.</source>
       <translation>A leírás rendben van.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard-standard/src/gui/standardfeeddetails.cpp" line="266"/>
+      <location filename="../src/librssguard-standard/src/gui/standardfeeddetails.cpp" line="271"/>
       <source>The URL is ok.</source>
       <translation>Az URL megfelelő.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard-standard/src/gui/standardfeeddetails.cpp" line="270"/>
+      <location filename="../src/librssguard-standard/src/gui/standardfeeddetails.cpp" line="275"/>
       <source>The URL does not meet standard pattern. Does your URL start with &quot;http://&quot; or &quot;https://&quot; prefix.</source>
       <translation>Az URL nem felel meg a sztendert mintázatnak. A megadott URL &quot;http://&quot; or &quot;https://&quot; előtaggal kezdődik?</translation>
     </message>
     <message>
-      <location filename="../src/librssguard-standard/src/gui/standardfeeddetails.cpp" line="274"/>
+      <location filename="../src/librssguard-standard/src/gui/standardfeeddetails.cpp" line="279"/>
       <source>The URL is empty.</source>
       <translation>Az URL üres.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard-standard/src/gui/standardfeeddetails.cpp" line="283"/>
+      <location filename="../src/librssguard-standard/src/gui/standardfeeddetails.cpp" line="288"/>
       <source>Source is ok.</source>
       <translation>Forrás rendben.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard-standard/src/gui/standardfeeddetails.cpp" line="293"/>
+      <location filename="../src/librssguard-standard/src/gui/standardfeeddetails.cpp" line="298"/>
       <source>File exists.</source>
       <translation>Létező fájl.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard-standard/src/gui/standardfeeddetails.cpp" line="296"/>
+      <location filename="../src/librssguard-standard/src/gui/standardfeeddetails.cpp" line="301"/>
       <source>File does not exist.</source>
       <translation type="unfinished">File does not exist.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard-standard/src/gui/standardfeeddetails.cpp" line="328"/>
+      <location filename="../src/librssguard-standard/src/gui/standardfeeddetails.cpp" line="333"/>
       <source>Select icon file for the feed</source>
       <translation type="unfinished">Select icon file for the feed</translation>
     </message>
     <message>
-      <location filename="../src/librssguard-standard/src/gui/standardfeeddetails.cpp" line="330"/>
+      <location filename="../src/librssguard-standard/src/gui/standardfeeddetails.cpp" line="335"/>
       <source>Images (%1)</source>
       <translation>Képek (%1)</translation>
     </message>
     <message>
-      <location filename="../src/librssguard-standard/src/gui/standardfeeddetails.cpp" line="336"/>
+      <location filename="../src/librssguard-standard/src/gui/standardfeeddetails.cpp" line="341"/>
       <source>Select icon</source>
       <translation>Icon kiválasztása</translation>
     </message>
     <message>
-      <location filename="../src/librssguard-standard/src/gui/standardfeeddetails.cpp" line="337"/>
+      <location filename="../src/librssguard-standard/src/gui/standardfeeddetails.cpp" line="342"/>
       <source>Cancel</source>
       <translation>Mégsem</translation>
     </message>
     <message>
-      <location filename="../src/librssguard-standard/src/gui/standardfeeddetails.cpp" line="340"/>
+      <location filename="../src/librssguard-standard/src/gui/standardfeeddetails.cpp" line="345"/>
       <source>Look in:</source>
       <extracomment>Label for field with icon file name textbox for selection dialog.</extracomment>
       <translation>Keresés itt:</translation>
     </message>
     <message>
-      <location filename="../src/librssguard-standard/src/gui/standardfeeddetails.cpp" line="341"/>
+      <location filename="../src/librssguard-standard/src/gui/standardfeeddetails.cpp" line="346"/>
       <source>Icon name:</source>
       <translation>Ikon neve:</translation>
     </message>
     <message>
-      <location filename="../src/librssguard-standard/src/gui/standardfeeddetails.cpp" line="342"/>
+      <location filename="../src/librssguard-standard/src/gui/standardfeeddetails.cpp" line="347"/>
       <source>Icon type:</source>
       <translation>Ikon típusa:</translation>
     </message>
@@ -8864,32 +8919,32 @@ Use raw XML saving: %4</translation>
       <translation>Ide írhatja be a teljes parancsot azt interpreter-t is beleértve.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard-standard/src/gui/standardfeeddetails.cpp" line="303"/>
+      <location filename="../src/librssguard-standard/src/gui/standardfeeddetails.cpp" line="308"/>
       <source>The source is ok.</source>
       <translation type="unfinished">The source is ok.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard-standard/src/gui/standardfeeddetails.cpp" line="310"/>
+      <location filename="../src/librssguard-standard/src/gui/standardfeeddetails.cpp" line="315"/>
       <source>Command is ok.</source>
       <translation>A parancs rendben van.</translation>
     </message>
     <message>
       <location filename="../src/librssguard-standard/src/gui/standardfeeddetails.cpp" line="170"/>
-      <location filename="../src/librssguard-standard/src/gui/standardfeeddetails.cpp" line="228"/>
+      <location filename="../src/librssguard-standard/src/gui/standardfeeddetails.cpp" line="233"/>
       <source>Script failed: %1</source>
       <translation type="unfinished">Script failed: %1</translation>
     </message>
     <message>
       <location filename="../src/librssguard-standard/src/gui/standardfeeddetails.cpp" line="175"/>
-      <location filename="../src/librssguard-standard/src/gui/standardfeeddetails.cpp" line="233"/>
+      <location filename="../src/librssguard-standard/src/gui/standardfeeddetails.cpp" line="238"/>
       <source>Network error: %1</source>
       <translation type="unfinished">Network error: %1</translation>
     </message>
     <message>
       <location filename="../src/librssguard-standard/src/gui/standardfeeddetails.cpp" line="180"/>
-      <location filename="../src/librssguard-standard/src/gui/standardfeeddetails.cpp" line="238"/>
-      <location filename="../src/librssguard-standard/src/gui/standardfeeddetails.cpp" line="286"/>
-      <location filename="../src/librssguard-standard/src/gui/standardfeeddetails.cpp" line="313"/>
+      <location filename="../src/librssguard-standard/src/gui/standardfeeddetails.cpp" line="243"/>
+      <location filename="../src/librssguard-standard/src/gui/standardfeeddetails.cpp" line="291"/>
+      <location filename="../src/librssguard-standard/src/gui/standardfeeddetails.cpp" line="318"/>
       <source>Error: %1</source>
       <translation>Hiba: %1</translation>
     </message>
@@ -8986,9 +9041,14 @@ Also, you can post-process generated feed data with yet another script if you wi
       <translation>Űrlap</translation>
     </message>
     <message>
-      <location filename="../src/librssguard-standard/src/gui/standardfeedexpdetails.ui" line="23"/>
+      <location filename="../src/librssguard-standard/src/gui/standardfeedexpdetails.ui" line="28"/>
       <source>Use older mechanism for extracting raw XML data</source>
       <translation type="unfinished">Use older mechanism for extracting raw XML data</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard-standard/src/gui/standardfeedexpdetails.ui" line="54"/>
+      <source>Enable HTTP/2</source>
+      <translation>HTTP/2 engedélyezése</translation>
     </message>
     <message>
       <location filename="../src/librssguard-standard/src/gui/standardfeedexpdetails.cpp" line="26"/>
@@ -8998,6 +9058,21 @@ This setting is useful when raw XML parsing of the feed is very slow, this happe
       <translation type="unfinished">Turning this setting ON might bring considerable performance boost when fetching this feed, but only in some very specific conditions.
 
 This setting is useful when raw XML parsing of the feed is very slow, this happens for feed which do have very long contents.</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard-standard/src/gui/standardfeedexpdetails.cpp" line="32"/>
+      <source>Use application settings</source>
+      <translation type="unfinished">Use application settings</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard-standard/src/gui/standardfeedexpdetails.cpp" line="34"/>
+      <source>Enabled</source>
+      <translation type="unfinished">Enabled</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard-standard/src/gui/standardfeedexpdetails.cpp" line="35"/>
+      <source>Disabled</source>
+      <translation type="unfinished">Disabled</translation>
     </message>
   </context>
   <context>
@@ -9013,17 +9088,17 @@ This setting is useful when raw XML parsing of the feed is very slow, this happe
       <translation type="unfinished">Error when loading initial feeds</translation>
     </message>
     <message>
-      <location filename="../src/librssguard-standard/src/standardserviceroot.cpp" line="387"/>
+      <location filename="../src/librssguard-standard/src/standardserviceroot.cpp" line="388"/>
       <source>Fetch metadata</source>
       <translation type="unfinished">Fetch metadata</translation>
     </message>
     <message>
-      <location filename="../src/librssguard-standard/src/standardserviceroot.cpp" line="572"/>
+      <location filename="../src/librssguard-standard/src/standardserviceroot.cpp" line="573"/>
       <source>Export feeds</source>
       <translation>Hírforrások exportálása</translation>
     </message>
     <message>
-      <location filename="../src/librssguard-standard/src/standardserviceroot.cpp" line="573"/>
+      <location filename="../src/librssguard-standard/src/standardserviceroot.cpp" line="574"/>
       <source>Import feeds</source>
       <translation>Hírforrások importálása</translation>
     </message>
@@ -9048,27 +9123,27 @@ This setting is useful when raw XML parsing of the feed is very slow, this happe
       <translation type="unfinished">Cannot add feed because another critical operation is ongoing.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard-standard/src/standardserviceroot.cpp" line="256"/>
+      <location filename="../src/librssguard-standard/src/standardserviceroot.cpp" line="257"/>
       <source>this source type cannot be used on &apos;lite&apos; %1 build</source>
       <translation type="unfinished">this source type cannot be used on &apos;lite&apos; %1 build</translation>
     </message>
     <message>
-      <location filename="../src/librssguard-standard/src/standardserviceroot.cpp" line="538"/>
+      <location filename="../src/librssguard-standard/src/standardserviceroot.cpp" line="539"/>
       <source>Cannot add category</source>
       <translation type="unfinished">Cannot add category</translation>
     </message>
     <message>
-      <location filename="../src/librssguard-standard/src/standardserviceroot.cpp" line="539"/>
+      <location filename="../src/librssguard-standard/src/standardserviceroot.cpp" line="540"/>
       <source>Cannot add category because another critical operation is ongoing.</source>
       <translation type="unfinished">Cannot add category because another critical operation is ongoing.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard-standard/src/standardserviceroot.cpp" line="526"/>
+      <location filename="../src/librssguard-standard/src/standardserviceroot.cpp" line="527"/>
       <source>Import was completely successful.</source>
       <translation type="unfinished">Import was completely successful.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard-standard/src/standardserviceroot.cpp" line="523"/>
+      <location filename="../src/librssguard-standard/src/standardserviceroot.cpp" line="524"/>
       <source>Some feeds/categories were not imported due to error, check debug log for more details.</source>
       <translation type="unfinished">Some feeds/categories were not imported due to error, check debug log for more details.</translation>
     </message>
@@ -9259,61 +9334,61 @@ Unread news: %2</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/toolbars/toolbareditor.ui" line="32"/>
-      <location filename="../../build-rssguard-Desktop_Qt_6_7_0_MSVC2017_64bit-Debug/src/librssguard/ui_toolbareditor.h" line="185"/>
+      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_toolbareditor.h" line="185"/>
       <source>Activated actions</source>
       <translation type="unfinished">Activated actions</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/toolbars/toolbareditor.ui" line="39"/>
-      <location filename="../../build-rssguard-Desktop_Qt_6_7_0_MSVC2017_64bit-Debug/src/librssguard/ui_toolbareditor.h" line="186"/>
+      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_toolbareditor.h" line="186"/>
       <source>Available actions</source>
       <translation type="unfinished">Available actions</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/toolbars/toolbareditor.ui" line="76"/>
-      <location filename="../../build-rssguard-Desktop_Qt_6_7_0_MSVC2017_64bit-Debug/src/librssguard/ui_toolbareditor.h" line="188"/>
+      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_toolbareditor.h" line="188"/>
       <source>Move action up</source>
       <translation type="unfinished">Move action up</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/toolbars/toolbareditor.ui" line="89"/>
-      <location filename="../../build-rssguard-Desktop_Qt_6_7_0_MSVC2017_64bit-Debug/src/librssguard/ui_toolbareditor.h" line="191"/>
+      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_toolbareditor.h" line="191"/>
       <source>Move action down</source>
       <translation type="unfinished">Move action down</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/toolbars/toolbareditor.ui" line="109"/>
-      <location filename="../../build-rssguard-Desktop_Qt_6_7_0_MSVC2017_64bit-Debug/src/librssguard/ui_toolbareditor.h" line="194"/>
+      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_toolbareditor.h" line="194"/>
       <source>Insert separator</source>
       <translation>Elválasztó beszúrása</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/toolbars/toolbareditor.ui" line="122"/>
-      <location filename="../../build-rssguard-Desktop_Qt_6_7_0_MSVC2017_64bit-Debug/src/librssguard/ui_toolbareditor.h" line="197"/>
+      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_toolbareditor.h" line="197"/>
       <source>Insert spacer</source>
       <translation type="unfinished">Insert spacer</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/toolbars/toolbareditor.ui" line="142"/>
-      <location filename="../../build-rssguard-Desktop_Qt_6_7_0_MSVC2017_64bit-Debug/src/librssguard/ui_toolbareditor.h" line="200"/>
+      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_toolbareditor.h" line="200"/>
       <source>Add selected action</source>
       <translation type="unfinished">Add selected action</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/toolbars/toolbareditor.ui" line="155"/>
-      <location filename="../../build-rssguard-Desktop_Qt_6_7_0_MSVC2017_64bit-Debug/src/librssguard/ui_toolbareditor.h" line="203"/>
+      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_toolbareditor.h" line="203"/>
       <source>Delete selected action</source>
       <translation type="unfinished">Delete selected action</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/toolbars/toolbareditor.ui" line="168"/>
-      <location filename="../../build-rssguard-Desktop_Qt_6_7_0_MSVC2017_64bit-Debug/src/librssguard/ui_toolbareditor.h" line="206"/>
+      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_toolbareditor.h" line="206"/>
       <source>Delete all actions</source>
       <translation type="unfinished">Delete all actions</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/toolbars/toolbareditor.ui" line="181"/>
-      <location filename="../../build-rssguard-Desktop_Qt_6_7_0_MSVC2017_64bit-Debug/src/librssguard/ui_toolbareditor.h" line="209"/>
+      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_toolbareditor.h" line="209"/>
       <source>Reset toolbar</source>
       <translation type="unfinished">Reset toolbar</translation>
     </message>
@@ -9710,167 +9785,167 @@ Legutóbbi belépés: %4</translation>
   <context>
     <name>WebFactory</name>
     <message>
-      <location filename="../src/librssguard/network-web/webfactory.cpp" line="452"/>
+      <location filename="../src/librssguard/network-web/webfactory.cpp" line="465"/>
       <source>Web engine settings</source>
       <translation type="unfinished">Web engine settings</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/network-web/webfactory.cpp" line="475"/>
+      <location filename="../src/librssguard/network-web/webfactory.cpp" line="488"/>
       <source>Auto-load images</source>
       <translation type="unfinished">Auto-load images</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/network-web/webfactory.cpp" line="476"/>
+      <location filename="../src/librssguard/network-web/webfactory.cpp" line="489"/>
       <source>JS enabled</source>
       <translation type="unfinished">JS enabled</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/network-web/webfactory.cpp" line="477"/>
+      <location filename="../src/librssguard/network-web/webfactory.cpp" line="490"/>
       <source>JS can open popup windows</source>
       <translation type="unfinished">JS can open popup windows</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/network-web/webfactory.cpp" line="479"/>
+      <location filename="../src/librssguard/network-web/webfactory.cpp" line="492"/>
       <source>JS can access clipboard</source>
       <translation type="unfinished">JS can access clipboard</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/network-web/webfactory.cpp" line="481"/>
+      <location filename="../src/librssguard/network-web/webfactory.cpp" line="494"/>
       <source>Hyperlinks can get focus</source>
       <translation type="unfinished">Hyperlinks can get focus</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/network-web/webfactory.cpp" line="483"/>
+      <location filename="../src/librssguard/network-web/webfactory.cpp" line="496"/>
       <source>Local storage enabled</source>
       <translation type="unfinished">Local storage enabled</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/network-web/webfactory.cpp" line="485"/>
+      <location filename="../src/librssguard/network-web/webfactory.cpp" line="498"/>
       <source>Local content can access remote URLs</source>
       <translation type="unfinished">Local content can access remote URLs</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/network-web/webfactory.cpp" line="487"/>
+      <location filename="../src/librssguard/network-web/webfactory.cpp" line="500"/>
       <source>XSS auditing enabled</source>
       <translation type="unfinished">XSS auditing enabled</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/network-web/webfactory.cpp" line="489"/>
+      <location filename="../src/librssguard/network-web/webfactory.cpp" line="502"/>
       <source>Spatial navigation enabled</source>
       <translation type="unfinished">Spatial navigation enabled</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/network-web/webfactory.cpp" line="491"/>
+      <location filename="../src/librssguard/network-web/webfactory.cpp" line="504"/>
       <source>Local content can access local files</source>
       <translation type="unfinished">Local content can access local files</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/network-web/webfactory.cpp" line="493"/>
+      <location filename="../src/librssguard/network-web/webfactory.cpp" line="506"/>
       <source>Hyperlink auditing enabled</source>
       <translation type="unfinished">Hyperlink auditing enabled</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/network-web/webfactory.cpp" line="495"/>
+      <location filename="../src/librssguard/network-web/webfactory.cpp" line="508"/>
       <source>Animate scrolling</source>
       <translation type="unfinished">Animate scrolling</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/network-web/webfactory.cpp" line="497"/>
+      <location filename="../src/librssguard/network-web/webfactory.cpp" line="510"/>
       <source>Error pages enabled</source>
       <translation type="unfinished">Error pages enabled</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/network-web/webfactory.cpp" line="498"/>
+      <location filename="../src/librssguard/network-web/webfactory.cpp" line="511"/>
       <source>Plugins enabled</source>
       <translation type="unfinished">Plugins enabled</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/network-web/webfactory.cpp" line="499"/>
+      <location filename="../src/librssguard/network-web/webfactory.cpp" line="512"/>
       <source>Fullscreen enabled</source>
       <translation type="unfinished">Fullscreen enabled</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/network-web/webfactory.cpp" line="503"/>
+      <location filename="../src/librssguard/network-web/webfactory.cpp" line="516"/>
       <source>Screen capture enabled</source>
       <translation type="unfinished">Screen capture enabled</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/network-web/webfactory.cpp" line="505"/>
+      <location filename="../src/librssguard/network-web/webfactory.cpp" line="518"/>
       <source>WebGL enabled</source>
       <translation>WebGL engedélyezve</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/network-web/webfactory.cpp" line="506"/>
+      <location filename="../src/librssguard/network-web/webfactory.cpp" line="519"/>
       <source>Accelerate 2D canvas</source>
       <translation type="unfinished">Accelerate 2D canvas</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/network-web/webfactory.cpp" line="508"/>
+      <location filename="../src/librssguard/network-web/webfactory.cpp" line="521"/>
       <source>Print element backgrounds</source>
       <translation type="unfinished">Print element backgrounds</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/network-web/webfactory.cpp" line="510"/>
+      <location filename="../src/librssguard/network-web/webfactory.cpp" line="523"/>
       <source>Allow running insecure content</source>
       <translation type="unfinished">Allow running insecure content</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/network-web/webfactory.cpp" line="512"/>
+      <location filename="../src/librssguard/network-web/webfactory.cpp" line="525"/>
       <source>Allow geolocation on insecure origins</source>
       <translation type="unfinished">Allow geolocation on insecure origins</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/network-web/webfactory.cpp" line="869"/>
+      <location filename="../src/librssguard/network-web/webfactory.cpp" line="882"/>
       <source>Web cache is going to be cleared</source>
       <translation>A web gyorsítótár törlésre kerül</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/network-web/webfactory.cpp" line="870"/>
+      <location filename="../src/librssguard/network-web/webfactory.cpp" line="883"/>
       <source>Do you really want to clear web cache?</source>
       <translation>Tényleg törölni szeretnéd a web gyorsítótárat?</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/network-web/webfactory.cpp" line="163"/>
+      <location filename="../src/librssguard/network-web/webfactory.cpp" line="176"/>
       <source>Navigate to website manually</source>
       <translation type="unfinished">Navigate to website manually</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/network-web/webfactory.cpp" line="164"/>
+      <location filename="../src/librssguard/network-web/webfactory.cpp" line="177"/>
       <source>%1 was unable to launch your web browser with the given URL, you need to open the below website URL in your web browser manually.</source>
       <translation type="unfinished">%1 was unable to launch your web browser with the given URL, you need to open the below website URL in your web browser manually.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/network-web/webfactory.cpp" line="516"/>
+      <location filename="../src/librssguard/network-web/webfactory.cpp" line="529"/>
       <source>JS can activate windows</source>
       <translation type="unfinished">JS can activate windows</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/network-web/webfactory.cpp" line="518"/>
+      <location filename="../src/librssguard/network-web/webfactory.cpp" line="531"/>
       <source>Show scrollbars</source>
       <translation type="unfinished">Show scrollbars</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/network-web/webfactory.cpp" line="519"/>
+      <location filename="../src/librssguard/network-web/webfactory.cpp" line="532"/>
       <source>Media playback with gestures</source>
       <translation type="unfinished">Media playback with gestures</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/network-web/webfactory.cpp" line="521"/>
+      <location filename="../src/librssguard/network-web/webfactory.cpp" line="534"/>
       <source>WebRTC uses only public interfaces</source>
       <translation type="unfinished">WebRTC uses only public interfaces</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/network-web/webfactory.cpp" line="523"/>
+      <location filename="../src/librssguard/network-web/webfactory.cpp" line="536"/>
       <source>JS can paste from clipboard</source>
       <translation type="unfinished">JS can paste from clipboard</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/network-web/webfactory.cpp" line="525"/>
+      <location filename="../src/librssguard/network-web/webfactory.cpp" line="538"/>
       <source>DNS prefetch enabled</source>
       <translation type="unfinished">DNS prefetch enabled</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/network-web/webfactory.cpp" line="529"/>
+      <location filename="../src/librssguard/network-web/webfactory.cpp" line="542"/>
       <source>PDF viewer enabled</source>
       <translation type="unfinished">PDF viewer enabled</translation>
     </message>
