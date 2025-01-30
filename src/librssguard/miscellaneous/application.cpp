@@ -674,7 +674,12 @@ void Application::restoreDatabaseSettings(bool restore_database,
 SystemTrayIcon* Application::trayIcon() {
   if (m_trayIcon == nullptr) {
     if (qApp->settings()->value(GROUP(GUI), SETTING(GUI::MonochromeTrayIcon)).toBool()) {
-      m_trayIcon = new SystemTrayIcon(APP_ICON_MONO_PATH, APP_ICON_MONO_PLAIN_PATH, m_mainForm);
+      if (qApp->settings()->value(GROUP(GUI), SETTING(GUI::ColoredBusyTrayIcon)).toBool()) {
+        m_trayIcon = new SystemTrayIcon(APP_ICON_MONO_PATH, APP_ICON_PLAIN_PATH, m_mainForm);
+      }
+      else {
+        m_trayIcon = new SystemTrayIcon(APP_ICON_MONO_PATH, APP_ICON_MONO_PLAIN_PATH, m_mainForm);
+      }
     }
     else {
       m_trayIcon = new SystemTrayIcon(APP_ICON_PATH, APP_ICON_PLAIN_PATH, m_mainForm);

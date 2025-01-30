@@ -362,6 +362,9 @@ DVALUE(bool) GUI::HideMainWindowWhenMinimizedDef = false;
 DKEY GUI::MonochromeTrayIcon = "monochrome_tray_icon";
 DVALUE(bool) GUI::MonochromeTrayIconDef = false;
 
+DKEY GUI::ColoredBusyTrayIcon = "colored_busy_tray_icon";
+DVALUE(bool) GUI::ColoredBusyTrayIconDef = false;
+
 DKEY GUI::ForcedSkinColors = "forced_skin_colors";
 DVALUE(bool) GUI::ForcedSkinColorsDef = true;
 

@@ -100,7 +100,8 @@ void SystemTrayIcon::setNumber(int number, bool any_feed_has_new_unread_messages
 
     tray_painter.begin(&background);
 
-    if (qApp->settings()->value(GROUP(GUI), SETTING(GUI::MonochromeTrayIcon)).toBool()) {
+    if (qApp->settings()->value(GROUP(GUI), SETTING(GUI::MonochromeTrayIcon)).toBool() &&
+        !qApp->settings()->value(GROUP(GUI), SETTING(GUI::ColoredBusyTrayIcon)).toBool()) {
       tray_painter.setPen(Qt::GlobalColor::white);
     }
     else {

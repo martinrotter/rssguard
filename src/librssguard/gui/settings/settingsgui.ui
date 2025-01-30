@@ -96,7 +96,7 @@
        <item row="4" column="0" colspan="2">
         <spacer name="verticalSpacer">
          <property name="orientation">
-          <enum>Qt::Vertical</enum>
+          <enum>Qt::Orientation::Vertical</enum>
          </property>
          <property name="sizeHint" stdset="0">
           <size>
@@ -157,7 +157,7 @@
          </property>
          <layout class="QFormLayout" name="formLayout_2">
           <property name="fieldGrowthPolicy">
-           <enum>QFormLayout::ExpandingFieldsGrow</enum>
+           <enum>QFormLayout::FieldGrowthPolicy::ExpandingFieldsGrow</enum>
           </property>
           <item row="0" column="0">
            <widget class="QCheckBox" name="m_checkMonochromeIcons">
@@ -166,24 +166,34 @@
             </property>
            </widget>
           </item>
-          <item row="1" column="0">
+          <item row="2" column="0">
            <widget class="QCheckBox" name="m_checkCountUnreadMessages">
             <property name="text">
              <string>Display count of unread messages</string>
             </property>
            </widget>
           </item>
-          <item row="2" column="0">
+          <item row="3" column="0">
            <widget class="QCheckBox" name="m_checkHideWhenMinimized">
             <property name="text">
              <string>Hide main window when it is minimized</string>
             </property>
            </widget>
           </item>
-          <item row="3" column="0" colspan="2">
+          <item row="4" column="0" colspan="2">
            <widget class="QCheckBox" name="m_checkHidden">
             <property name="text">
              <string>Start application hidden</string>
+            </property>
+           </widget>
+          </item>
+          <item row="1" column="0" colspan="2">
+           <widget class="QCheckBox" name="m_checkColoredIconsWhenArticles">
+            <property name="enabled">
+             <bool>false</bool>
+            </property>
+            <property name="text">
+             <string>Use colored icon when there are unread articles</string>
             </property>
            </widget>
           </item>
@@ -193,7 +203,7 @@
        <item row="1" column="0" colspan="2">
         <spacer name="verticalSpacer_2">
          <property name="orientation">
-          <enum>Qt::Vertical</enum>
+          <enum>Qt::Orientation::Vertical</enum>
          </property>
          <property name="sizeHint" stdset="0">
           <size>
@@ -270,7 +280,7 @@
        <item row="3" column="0" colspan="2">
         <spacer name="verticalSpacer_3">
          <property name="orientation">
-          <enum>Qt::Vertical</enum>
+          <enum>Qt::Orientation::Vertical</enum>
          </property>
          <property name="sizeHint" stdset="0">
           <size>
@@ -452,6 +462,7 @@
   <tabstop>m_tabUi</tabstop>
   <tabstop>m_grpTray</tabstop>
   <tabstop>m_checkMonochromeIcons</tabstop>
+  <tabstop>m_checkColoredIconsWhenArticles</tabstop>
   <tabstop>m_checkCountUnreadMessages</tabstop>
   <tabstop>m_checkHideWhenMinimized</tabstop>
   <tabstop>m_checkHidden</tabstop>
@@ -467,6 +478,7 @@
   <tabstop>m_checkForceAlternativePalette</tabstop>
   <tabstop>m_treeSkins</tabstop>
   <tabstop>m_gbCustomSkinColors</tabstop>
+  <tabstop>m_displayUnreadMessageCountOnTaskBar</tabstop>
  </tabstops>
  <resources/>
  <connections/>

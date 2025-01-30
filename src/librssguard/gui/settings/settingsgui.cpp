@@ -54,6 +54,10 @@ SettingsGui::SettingsGui(Settings* settings, QWidget* parent)
           this,
           &SettingsGui::updateSkinOptions);
 
+  connect(m_ui->m_checkMonochromeIcons,
+          &QCheckBox::toggled,
+          m_ui->m_checkColoredIconsWhenArticles,
+          &QCheckBox::setEnabled);
   connect(m_ui->m_cmbIconTheme,
           static_cast<void (QComboBox::*)(int)>(&QComboBox::currentIndexChanged),
           this,
@@ -69,6 +73,9 @@ SettingsGui::SettingsGui(Settings* settings, QWidget* parent)
   connect(m_ui->m_checkForceAlternativePalette, &QCheckBox::toggled, this, &SettingsGui::dirtifySettings);
   connect(m_ui->m_checkForceAlternativePalette, &QCheckBox::toggled, this, &SettingsGui::requireRestart);
   connect(m_ui->m_checkMonochromeIcons, &QCheckBox::toggled, this, &SettingsGui::dirtifySettings);
+  connect(m_ui->m_checkMonochromeIcons, &QCheckBox::toggled, this, &SettingsGui::requireRestart);
+  connect(m_ui->m_checkColoredIconsWhenArticles, &QCheckBox::toggled, this, &SettingsGui::dirtifySettings);
+  connect(m_ui->m_checkColoredIconsWhenArticles, &QCheckBox::toggled, this, &SettingsGui::requireRestart);
   connect(m_ui->m_checkCountUnreadMessages, &QCheckBox::toggled, this, &SettingsGui::dirtifySettings);
   connect(m_ui->m_checkHideWhenMinimized, &QCheckBox::toggled, this, &SettingsGui::dirtifySettings);
   connect(m_ui->m_checkHideTabBarIfOneTabVisible, &QCheckBox::toggled, this, &SettingsGui::dirtifySettings);
@@ -188,6 +195,8 @@ void SettingsGui::loadSettings() {
   }
 
   m_ui->m_checkMonochromeIcons->setChecked(settings()->value(GROUP(GUI), SETTING(GUI::MonochromeTrayIcon)).toBool());
+  m_ui->m_checkColoredIconsWhenArticles
+    ->setChecked(settings()->value(GROUP(GUI), SETTING(GUI::ColoredBusyTrayIcon)).toBool());
   m_ui->m_checkCountUnreadMessages
     ->setChecked(settings()->value(GROUP(GUI), SETTING(GUI::UnreadNumbersInTrayIcon)).toBool());
 
@@ -389,14 +398,8 @@ void SettingsGui::saveSettings() {
       qApp->deleteTrayIcon();
     }
   }
-
-  auto old_monochrome = settings()->value(GROUP(GUI), SETTING(GUI::MonochromeTrayIcon)).toBool();
-
-  if (old_monochrome != m_ui->m_checkMonochromeIcons->isChecked()) {
-    requireRestart();
-    settings()->setValue(GROUP(GUI), GUI::MonochromeTrayIcon, m_ui->m_checkMonochromeIcons->isChecked());
-  }
-
+  settings()->setValue(GROUP(GUI), GUI::MonochromeTrayIcon, m_ui->m_checkMonochromeIcons->isChecked());
+  settings()->setValue(GROUP(GUI), GUI::ColoredBusyTrayIcon, m_ui->m_checkColoredIconsWhenArticles->isChecked());
   settings()->setValue(GROUP(GUI), GUI::UnreadNumbersInTrayIcon, m_ui->m_checkCountUnreadMessages->isChecked());
   settings()->setValue(GROUP(GUI), GUI::MainWindowStartsHidden, m_ui->m_checkHidden->isChecked());
   settings()->setValue(GROUP(GUI), GUI::HideMainWindowWhenMinimized, m_ui->m_checkHideWhenMinimized->isChecked());

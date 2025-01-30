@@ -361,6 +361,9 @@ namespace GUI {
   KEY MonochromeTrayIcon;
   VALUE(bool) MonochromeTrayIconDef;
 
+  KEY ColoredBusyTrayIcon;
+  VALUE(bool) ColoredBusyTrayIconDef;
+
   KEY UnreadNumbersInTrayIcon;
   VALUE(bool) UnreadNumbersInTrayIconDef;
 
