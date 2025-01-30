@@ -6,12 +6,25 @@
 #include "gui/reusable/plaintoolbutton.h"
 #include "miscellaneous/application.h"
 #include "miscellaneous/iconfactory.h"
+#include "miscellaneous/settings.h"
 
 #include <QActionGroup>
 #include <QTimer>
 #include <QWidgetAction>
 
-SearchLineEdit::SearchLineEdit(const QList<CustomSearchChoice>& choices, QWidget* parent) : BaseLineEdit(parent) {
+SearchLineEdit::SearchLineEdit(const QString& save_identification,
+                               const QList<CustomSearchChoice>& choices,
+                               QWidget* parent)
+  : BaseLineEdit(parent), m_saveIdentification(save_identification) {
+  Qt::CaseSensitivity save_sens = Qt::CaseSensitivity(qApp->settings()
+                                                        ->value(m_saveIdentification,
+                                                                QSL("case_sensitivity"),
+                                                                int(Qt::CaseSensitivity::CaseInsensitive))
+                                                        .toInt());
+  SearchMode save_mode =
+    SearchMode(qApp->settings()->value(m_saveIdentification, QSL("search_mode"), int(SearchMode::FixedString)).toInt());
+  int save_custom_choice = qApp->settings()->value(m_saveIdentification, QSL("criteria"), choices.at(0).m_data).toInt();
+
   QWidgetAction* act = new QWidgetAction(this);
   PlainToolButton* btn = new PlainToolButton(this);
 
@@ -29,6 +42,7 @@ SearchLineEdit::SearchLineEdit(const QList<CustomSearchChoice>& choices, QWidget
 
   m_actCaseSensitivity = m_menu->addAction(tr("Case-sensitive"));
   m_actCaseSensitivity->setCheckable(true);
+  m_actCaseSensitivity->setChecked(save_sens == Qt::CaseSensitivity::CaseSensitive);
 
   m_menu->addSeparator();
 
@@ -47,9 +61,10 @@ SearchLineEdit::SearchLineEdit(const QList<CustomSearchChoice>& choices, QWidget
 
     ac->setCheckable(true);
     ac->setData(int(mode));
+    ac->setChecked(mode == save_mode);
   }
 
-  m_actionGroupModes->actions().first()->setChecked(true);
+  // m_actionGroupModes->actions().first()->setChecked(true);
 
   if (!choices.isEmpty()) {
     m_menu->addSeparator();
@@ -60,9 +75,10 @@ SearchLineEdit::SearchLineEdit(const QList<CustomSearchChoice>& choices, QWidget
 
       ac->setCheckable(true);
       ac->setData(choice.m_data);
+      ac->setChecked(choice.m_data == save_custom_choice);
     }
 
-    m_actionGroupChoices->actions().first()->setChecked(true);
+    // m_actionGroupChoices->actions().first()->setChecked(true);
   }
 
   // NOTE: When any change is made, (re)start the timer which fires
@@ -70,6 +86,7 @@ SearchLineEdit::SearchLineEdit(const QList<CustomSearchChoice>& choices, QWidget
   connect(this, &SearchLineEdit::textChanged, m_tmrSearchPattern, QOverload<>::of(&QTimer::start));
   connect(m_menu, &QMenu::triggered, m_tmrSearchPattern, QOverload<>::of(&QTimer::start));
   connect(m_tmrSearchPattern, &QTimer::timeout, this, &SearchLineEdit::startSearch);
+  connect(this, &SearchLineEdit::searchCriteriaChanged, this, &SearchLineEdit::saveSearchConfig);
 }
 
 void SearchLineEdit::startSearch() {
@@ -93,6 +110,17 @@ void SearchLineEdit::startSearch() {
                              case_sensitive ? Qt::CaseSensitivity::CaseSensitive : Qt::CaseSensitivity::CaseInsensitive,
                              custom_criteria,
                              text());
+}
+
+void SearchLineEdit::saveSearchConfig(SearchMode mode,
+                                      Qt::CaseSensitivity sensitivity,
+                                      int custom_criteria,
+                                      const QString& phrase) {
+  Q_UNUSED(phrase)
+
+  qApp->settings()->setValue(m_saveIdentification, QSL("case_sensitivity"), int(sensitivity));
+  qApp->settings()->setValue(m_saveIdentification, QSL("search_mode"), int(mode));
+  qApp->settings()->setValue(m_saveIdentification, QSL("criteria"), custom_criteria);
 }
 
 QString SearchLineEdit::titleForMode(SearchMode mode) {

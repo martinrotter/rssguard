@@ -25,10 +25,13 @@ class SearchLineEdit : public BaseLineEdit {
       RegularExpression = 4
     };
 
-    explicit SearchLineEdit(const QList<CustomSearchChoice>& choices, QWidget* parent = nullptr);
+    explicit SearchLineEdit(const QString& save_identification,
+                            const QList<CustomSearchChoice>& choices,
+                            QWidget* parent = nullptr);
 
   private slots:
     void startSearch();
+    void saveSearchConfig(SearchMode mode, Qt::CaseSensitivity sensitivity, int custom_criteria, const QString& phrase);
 
   signals:
     void searchCriteriaChanged(SearchMode mode,
@@ -40,6 +43,7 @@ class SearchLineEdit : public BaseLineEdit {
     QString titleForMode(SearchMode mode);
 
   private:
+    QString m_saveIdentification;
     QTimer* m_tmrSearchPattern;
     QMenu* m_menu;
     QAction* m_actCaseSensitivity;

@@ -117,7 +117,8 @@ QStringList FeedsToolBar::savedActions() const {
 
 void FeedsToolBar::initializeSearchBox() {
   m_txtSearchMessages =
-    new SearchLineEdit({SearchLineEdit::CustomSearchChoice(tr("Everywhere"), int(SearchFields::SearchAll)),
+    new SearchLineEdit(QSL("feed_list_searcher"),
+                       {SearchLineEdit::CustomSearchChoice(tr("Everywhere"), int(SearchFields::SearchAll)),
                         SearchLineEdit::CustomSearchChoice(tr("Titles only"), int(SearchFields::SearchTitleOnly))},
                        this);
   m_txtSearchMessages->setSizePolicy(QSizePolicy::Policy::Expanding,
