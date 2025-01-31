@@ -19,6 +19,9 @@ class ShortcutCatcher : public QWidget {
     void setDefaultShortcut(const QKeySequence& key);
     void setShortcut(const QKeySequence& key);
 
+    QAction* action() const;
+    void setAction(QAction* act);
+
   public slots:
     void resetShortcut();
     void clearShortcut();
@@ -27,6 +30,7 @@ class ShortcutCatcher : public QWidget {
     void shortcutChanged(const QKeySequence& seguence);
 
   private:
+    QAction* m_action;
     PlainToolButton* m_btnReset;
     PlainToolButton* m_btnClear;
     QKeySequenceEdit* m_shortcutBox;

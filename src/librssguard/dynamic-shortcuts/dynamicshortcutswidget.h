@@ -8,8 +8,6 @@
 class QGridLayout;
 class ShortcutCatcher;
 
-typedef QPair<QAction*, ShortcutCatcher*> ActionBinding;
-
 class DynamicShortcutsWidget : public QWidget {
     Q_OBJECT
 
@@ -33,12 +31,16 @@ class DynamicShortcutsWidget : public QWidget {
     // assigned to actions before calling this method.
     void populate(QList<QAction*> actions);
 
+  private slots:
+    void onShortcutChanged(const QKeySequence& sequence);
+
   signals:
     void setupChanged();
 
   private:
     QGridLayout* m_layout;
-    QList<ActionBinding> m_actionBindings;
+    QList<ShortcutCatcher*> m_actionBindings;
+    QHash<QKeySequence, ShortcutCatcher*> m_assignedShortcuts;
 };
 
 #endif // DYNAMICSHORTCUTSOVERVIEW_H

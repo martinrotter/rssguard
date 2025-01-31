@@ -65,3 +65,11 @@ void ShortcutCatcher::resetShortcut() {
 void ShortcutCatcher::clearShortcut() {
   setShortcut(QKeySequence());
 }
+
+QAction* ShortcutCatcher::action() const {
+  return m_action;
+}
+
+void ShortcutCatcher::setAction(QAction* act) {
+  m_action = act;
+}
