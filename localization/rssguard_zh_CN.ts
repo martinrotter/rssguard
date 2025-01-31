@@ -182,7 +182,7 @@ Error: %1</source>
   <context>
     <name>Application</name>
     <message>
-      <location filename="../src/librssguard/miscellaneous/application.cpp" line="1225"/>
+      <location filename="../src/librssguard/miscellaneous/application.cpp" line="1230"/>
       <source>Application is already running.</source>
       <translation>应用程序已经在运行。</translation>
     </message>
@@ -207,36 +207,36 @@ Error: %1</source>
       <translation>未启动设置恢复。请确保输出目录可写。</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/miscellaneous/application.cpp" line="1243"/>
+      <location filename="../src/librssguard/miscellaneous/application.cpp" line="1248"/>
       <source>Cannot add feed</source>
       <translation>无法添加订阅源</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/miscellaneous/application.cpp" line="1244"/>
+      <location filename="../src/librssguard/miscellaneous/application.cpp" line="1249"/>
       <source>Feed cannot be added because there is no active account which can add feeds.</source>
       <translation>由于没有活跃的账户可以添加订阅源，因此无法添加订阅源。</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/miscellaneous/application.cpp" line="1415"/>
+      <location filename="../src/librssguard/miscellaneous/application.cpp" line="1420"/>
       <source>Node.js</source>
       <translation type="unfinished">Node.js</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/miscellaneous/application.cpp" line="1404"/>
+      <location filename="../src/librssguard/miscellaneous/application.cpp" line="1409"/>
       <source>Packages were NOT updated because of error: %2. Affected packages:
 %1</source>
       <translation type="unfinished">Packages were NOT updated because of error: %2. Affected packages:
 %1</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/miscellaneous/application.cpp" line="1416"/>
+      <location filename="../src/librssguard/miscellaneous/application.cpp" line="1421"/>
       <source>These packages were installed/updated:
 %1</source>
       <translation type="unfinished">These packages were installed/updated:
 %1</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/miscellaneous/application.cpp" line="1103"/>
+      <location filename="../src/librssguard/miscellaneous/application.cpp" line="1108"/>
       <source>Unread articles fetched</source>
       <translation>已获取未读文章</translation>
     </message>
@@ -246,7 +246,7 @@ Error: %1</source>
       <translation>前往更新日志</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/miscellaneous/application.cpp" line="1174"/>
+      <location filename="../src/librssguard/miscellaneous/application.cpp" line="1179"/>
       <source>AdBlock needs to be configured</source>
       <translation>需要配置 AdBlock</translation>
     </message>
@@ -266,12 +266,12 @@ version by clicking this popup notification.</source>
 请点击此弹出通知，查看此版本所包含的新功能。</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/miscellaneous/application.cpp" line="1175"/>
+      <location filename="../src/librssguard/miscellaneous/application.cpp" line="1180"/>
       <source>AdBlock is not configured properly. Go to &quot;Settings&quot; -&gt; &quot;Node.js&quot; and check if your Node.js is properly configured.</source>
       <translation>AdBlock 没有配置正确。请前往 &quot;设置&quot; -&gt; &quot;Node.js&quot; 并检查您的 Node.js 是否配置正确。</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/miscellaneous/application.cpp" line="1224"/>
+      <location filename="../src/librssguard/miscellaneous/application.cpp" line="1229"/>
       <source>Already running</source>
       <translation>已在运行</translation>
     </message>
@@ -829,6 +829,24 @@ Click here to open parent directory.</source>
     </message>
   </context>
   <context>
+    <name>DynamicShortcutsWidget</name>
+    <message>
+      <location filename="../src/librssguard/dynamic-shortcuts/dynamicshortcutswidget.cpp" line="126"/>
+      <source>Duplicate shortcut</source>
+      <translation type="unfinished">Duplicate shortcut</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard/dynamic-shortcuts/dynamicshortcutswidget.cpp" line="127"/>
+      <source>There is another action which has the same shortcut assigned.</source>
+      <translation type="unfinished">There is another action which has the same shortcut assigned.</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard/dynamic-shortcuts/dynamicshortcutswidget.cpp" line="128"/>
+      <source>Do you want to keep the new shortcut assignment and clear the previous shortcut?</source>
+      <translation type="unfinished">Do you want to keep the new shortcut assignment and clear the previous shortcut?</translation>
+    </message>
+  </context>
+  <context>
     <name>EmailPreviewer</name>
     <message>
       <location filename="../src/librssguard-gmail/src/gui/emailpreviewer.ui" line="14"/>
@@ -1271,22 +1289,22 @@ Item ID: %5</source>
       <translation>工具栏空白</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/toolbars/feedstoolbar.cpp" line="120"/>
+      <location filename="../src/librssguard/gui/toolbars/feedstoolbar.cpp" line="121"/>
       <source>Everywhere</source>
       <translation>全局</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/toolbars/feedstoolbar.cpp" line="121"/>
+      <location filename="../src/librssguard/gui/toolbars/feedstoolbar.cpp" line="122"/>
       <source>Titles only</source>
       <translation>仅标题</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/toolbars/feedstoolbar.cpp" line="125"/>
+      <location filename="../src/librssguard/gui/toolbars/feedstoolbar.cpp" line="126"/>
       <source>Search feeds</source>
       <translation>搜索订阅</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/toolbars/feedstoolbar.cpp" line="133"/>
+      <location filename="../src/librssguard/gui/toolbars/feedstoolbar.cpp" line="134"/>
       <source>Feeds search box</source>
       <translation>Feed 搜索框</translation>
     </message>
@@ -5639,7 +5657,7 @@ Token 过期时间：%2</translation>
   <context>
     <name>MessagesToolBar</name>
     <message>
-      <location filename="../src/librssguard/gui/toolbars/messagestoolbar.cpp" line="254"/>
+      <location filename="../src/librssguard/gui/toolbars/messagestoolbar.cpp" line="255"/>
       <source>No extra highlighting</source>
       <translation>无额外高亮</translation>
     </message>
@@ -5649,118 +5667,118 @@ Token 过期时间：%2</translation>
       <translation>工具栏空白</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/toolbars/messagestoolbar.cpp" line="220"/>
+      <location filename="../src/librssguard/gui/toolbars/messagestoolbar.cpp" line="221"/>
       <source>Everywhere</source>
       <translation>全局</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/toolbars/messagestoolbar.cpp" line="221"/>
+      <location filename="../src/librssguard/gui/toolbars/messagestoolbar.cpp" line="222"/>
       <source>Titles only</source>
       <translation>仅标题</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/toolbars/messagestoolbar.cpp" line="225"/>
+      <location filename="../src/librssguard/gui/toolbars/messagestoolbar.cpp" line="226"/>
       <source>Search articles</source>
       <translation>搜索文章</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/toolbars/messagestoolbar.cpp" line="232"/>
+      <location filename="../src/librssguard/gui/toolbars/messagestoolbar.cpp" line="233"/>
       <source>Article search box</source>
       <translation>文章搜索栏</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/toolbars/messagestoolbar.cpp" line="250"/>
+      <location filename="../src/librssguard/gui/toolbars/messagestoolbar.cpp" line="251"/>
       <source>Menu for highlighting articles</source>
       <translation>突出显示文章的菜单</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/toolbars/messagestoolbar.cpp" line="259"/>
+      <location filename="../src/librssguard/gui/toolbars/messagestoolbar.cpp" line="260"/>
       <source>Highlight unread articles</source>
       <translation>突出显示未读文章</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/toolbars/messagestoolbar.cpp" line="264"/>
+      <location filename="../src/librssguard/gui/toolbars/messagestoolbar.cpp" line="265"/>
       <source>Highlight important articles</source>
       <translation>突出显示重要文章</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/toolbars/messagestoolbar.cpp" line="268"/>
+      <location filename="../src/librssguard/gui/toolbars/messagestoolbar.cpp" line="269"/>
       <source>Menu for filtering articles</source>
       <translation>用于过滤文章的菜单</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/toolbars/messagestoolbar.cpp" line="272"/>
+      <location filename="../src/librssguard/gui/toolbars/messagestoolbar.cpp" line="273"/>
       <source>No extra filtering</source>
       <translation>无额外的过滤措施</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/toolbars/messagestoolbar.cpp" line="277"/>
+      <location filename="../src/librssguard/gui/toolbars/messagestoolbar.cpp" line="278"/>
       <source>Show unread articles</source>
       <translation>显示未读的文章</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/toolbars/messagestoolbar.cpp" line="282"/>
+      <location filename="../src/librssguard/gui/toolbars/messagestoolbar.cpp" line="283"/>
       <source>Show read articles</source>
       <translation type="unfinished">Show read articles</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/toolbars/messagestoolbar.cpp" line="287"/>
+      <location filename="../src/librssguard/gui/toolbars/messagestoolbar.cpp" line="288"/>
       <source>Show important articles</source>
       <translation>显示重要文章</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/toolbars/messagestoolbar.cpp" line="292"/>
+      <location filename="../src/librssguard/gui/toolbars/messagestoolbar.cpp" line="293"/>
       <source>Show today&apos;s articles</source>
       <translation>显示今天的文章</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/toolbars/messagestoolbar.cpp" line="297"/>
+      <location filename="../src/librssguard/gui/toolbars/messagestoolbar.cpp" line="298"/>
       <source>Show yesterday&apos;s articles</source>
       <translation>显示昨天的文章</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/toolbars/messagestoolbar.cpp" line="302"/>
+      <location filename="../src/librssguard/gui/toolbars/messagestoolbar.cpp" line="303"/>
       <source>Show articles in last 24 hours</source>
       <translation>显示最近24小时内的文章</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/toolbars/messagestoolbar.cpp" line="307"/>
+      <location filename="../src/librssguard/gui/toolbars/messagestoolbar.cpp" line="308"/>
       <source>Show articles in last 48 hours</source>
       <translation>显示最近48小时内的文章</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/toolbars/messagestoolbar.cpp" line="312"/>
+      <location filename="../src/librssguard/gui/toolbars/messagestoolbar.cpp" line="313"/>
       <source>Show this week&apos;s articles</source>
       <translation>显示本周的文章</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/toolbars/messagestoolbar.cpp" line="317"/>
+      <location filename="../src/librssguard/gui/toolbars/messagestoolbar.cpp" line="318"/>
       <source>Show last week&apos;s articles</source>
       <translation>显示上周的文章</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/toolbars/messagestoolbar.cpp" line="322"/>
+      <location filename="../src/librssguard/gui/toolbars/messagestoolbar.cpp" line="323"/>
       <source>Show articles with attachments</source>
       <translation>显示带有附件的文章</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/toolbars/messagestoolbar.cpp" line="327"/>
+      <location filename="../src/librssguard/gui/toolbars/messagestoolbar.cpp" line="328"/>
       <source>Show articles with some score</source>
       <translation>显示有一定分数的文章</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/toolbars/messagestoolbar.cpp" line="332"/>
-      <location filename="../src/librssguard/gui/toolbars/messagestoolbar.cpp" line="339"/>
+      <location filename="../src/librssguard/gui/toolbars/messagestoolbar.cpp" line="333"/>
+      <location filename="../src/librssguard/gui/toolbars/messagestoolbar.cpp" line="340"/>
       <source>Display all articles</source>
       <translation>显示所有文章</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/toolbars/messagestoolbar.cpp" line="349"/>
+      <location filename="../src/librssguard/gui/toolbars/messagestoolbar.cpp" line="350"/>
       <source>Article highlighter</source>
       <translation>文章高亮显示</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/toolbars/messagestoolbar.cpp" line="355"/>
+      <location filename="../src/librssguard/gui/toolbars/messagestoolbar.cpp" line="356"/>
       <source>Article list filter</source>
       <translation>文章列表过滤器</translation>
     </message>
@@ -5832,95 +5850,95 @@ Token 过期时间：%2</translation>
   <context>
     <name>NetworkFactory</name>
     <message>
-      <location filename="../src/librssguard/network-web/networkfactory.cpp" line="79"/>
+      <location filename="../src/librssguard/network-web/networkfactory.cpp" line="83"/>
       <source>protocol error</source>
       <extracomment>Network status.</extracomment>
       <translation>协议错误</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/network-web/networkfactory.cpp" line="87"/>
+      <location filename="../src/librssguard/network-web/networkfactory.cpp" line="91"/>
       <source>host not found</source>
       <extracomment>Network status.</extracomment>
       <translation>主机未找到</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/network-web/networkfactory.cpp" line="97"/>
+      <location filename="../src/librssguard/network-web/networkfactory.cpp" line="101"/>
       <source>connection refused</source>
       <extracomment>Network status.</extracomment>
       <translation>连接被拒绝</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/network-web/networkfactory.cpp" line="102"/>
+      <location filename="../src/librssguard/network-web/networkfactory.cpp" line="106"/>
       <source>connection timed out</source>
       <extracomment>Network status.</extracomment>
       <translation>连接超时</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/network-web/networkfactory.cpp" line="107"/>
+      <location filename="../src/librssguard/network-web/networkfactory.cpp" line="111"/>
       <source>SSL handshake failed</source>
       <extracomment>Network status.</extracomment>
       <translation>SSL 握手失败</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/network-web/networkfactory.cpp" line="113"/>
+      <location filename="../src/librssguard/network-web/networkfactory.cpp" line="117"/>
       <source>proxy server connection refused</source>
       <extracomment>Network status.</extracomment>
       <translation>代理服务器拒绝连接</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/network-web/networkfactory.cpp" line="118"/>
+      <location filename="../src/librssguard/network-web/networkfactory.cpp" line="122"/>
       <source>temporary failure</source>
       <extracomment>Network status.</extracomment>
       <translation>网络临时故障</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/network-web/networkfactory.cpp" line="123"/>
+      <location filename="../src/librssguard/network-web/networkfactory.cpp" line="127"/>
       <source>authentication failed</source>
       <extracomment>Network status.</extracomment>
       <translation>身份认证失败</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/network-web/networkfactory.cpp" line="128"/>
+      <location filename="../src/librssguard/network-web/networkfactory.cpp" line="132"/>
       <source>proxy authentication required</source>
       <extracomment>Network status.</extracomment>
       <translation>代理服务器需要身份认证</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/network-web/networkfactory.cpp" line="133"/>
+      <location filename="../src/librssguard/network-web/networkfactory.cpp" line="137"/>
       <source>proxy server not found</source>
       <extracomment>Network status.</extracomment>
       <translation>未找到代理服务器</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/network-web/networkfactory.cpp" line="148"/>
+      <location filename="../src/librssguard/network-web/networkfactory.cpp" line="152"/>
       <source>content not found</source>
       <extracomment>Network status.</extracomment>
       <translation>URL 资源未找到</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/network-web/networkfactory.cpp" line="154"/>
+      <location filename="../src/librssguard/network-web/networkfactory.cpp" line="158"/>
       <source>unknown error (%1)</source>
       <extracomment>Network status.</extracomment>
       <translation>未知错误 (%1)</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/network-web/networkfactory.cpp" line="138"/>
+      <location filename="../src/librssguard/network-web/networkfactory.cpp" line="142"/>
       <source>no errors</source>
       <extracomment>Network status.</extracomment>
       <translation>正常</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/network-web/networkfactory.cpp" line="82"/>
+      <location filename="../src/librssguard/network-web/networkfactory.cpp" line="86"/>
       <source>access to content was denied</source>
       <translation>访问被拒绝</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/network-web/networkfactory.cpp" line="91"/>
+      <location filename="../src/librssguard/network-web/networkfactory.cpp" line="95"/>
       <source>connection timed out or was cancelled</source>
       <translation>连接超时或被取消</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/network-web/networkfactory.cpp" line="143"/>
+      <location filename="../src/librssguard/network-web/networkfactory.cpp" line="147"/>
       <source>unknown content</source>
       <extracomment>Network status.</extracomment>
       <translation>未知的响应</translation>
@@ -6936,22 +6954,22 @@ Token 过期时间：%2</translation>
   <context>
     <name>SearchLineEdit</name>
     <message>
-      <location filename="../src/librssguard/gui/reusable/searchlineedit.cpp" line="30"/>
+      <location filename="../src/librssguard/gui/reusable/searchlineedit.cpp" line="43"/>
       <source>Case-sensitive</source>
       <translation>区分大小写</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/reusable/searchlineedit.cpp" line="101"/>
+      <location filename="../src/librssguard/gui/reusable/searchlineedit.cpp" line="129"/>
       <source>Fixed text</source>
       <translation>固定文本</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/reusable/searchlineedit.cpp" line="104"/>
+      <location filename="../src/librssguard/gui/reusable/searchlineedit.cpp" line="132"/>
       <source>Wildcard</source>
       <translation>通配符</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/reusable/searchlineedit.cpp" line="107"/>
+      <location filename="../src/librssguard/gui/reusable/searchlineedit.cpp" line="135"/>
       <source>Regular expression</source>
       <translation>正则表达式（Regex）</translation>
     </message>
@@ -7861,53 +7879,53 @@ Authors of this application are NOT responsible for lost data.</source>
       <translation>强制皮肤颜色</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/settings/settingsgui.cpp" line="213"/>
+      <location filename="../src/librssguard/gui/settings/settingsgui.cpp" line="222"/>
       <source>system style</source>
       <translation type="unfinished">system style</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/settings/settingsgui.cpp" line="215"/>
+      <location filename="../src/librssguard/gui/settings/settingsgui.cpp" line="224"/>
       <source>default style</source>
       <translation type="unfinished">default style</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/settings/settingsgui.cpp" line="292"/>
+      <location filename="../src/librssguard/gui/settings/settingsgui.cpp" line="301"/>
       <source>Icon only</source>
       <translation>仅图标</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/settings/settingsgui.cpp" line="293"/>
+      <location filename="../src/librssguard/gui/settings/settingsgui.cpp" line="302"/>
       <source>Text only</source>
       <translation>仅文本</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/settings/settingsgui.cpp" line="294"/>
+      <location filename="../src/librssguard/gui/settings/settingsgui.cpp" line="303"/>
       <source>Text beside icon</source>
       <translation>文本位于图标右侧</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/settings/settingsgui.cpp" line="295"/>
+      <location filename="../src/librssguard/gui/settings/settingsgui.cpp" line="304"/>
       <source>Text under icon</source>
       <translation>文本位于图标下方</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/settings/settingsgui.cpp" line="296"/>
+      <location filename="../src/librssguard/gui/settings/settingsgui.cpp" line="305"/>
       <source>Follow OS style</source>
       <translation>使用系统风格</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/settings/settingsgui.cpp" line="180"/>
+      <location filename="../src/librssguard/gui/settings/settingsgui.cpp" line="187"/>
       <source>system icon theme</source>
       <extracomment>Label for disabling icon theme.</extracomment>
       <translation>系统图标主题</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/settings/settingsgui.cpp" line="182"/>
+      <location filename="../src/librssguard/gui/settings/settingsgui.cpp" line="189"/>
       <source>no icon theme</source>
       <translation>没有图标主题</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/settings/settingsgui.cpp" line="163"/>
+      <location filename="../src/librssguard/gui/settings/settingsgui.cpp" line="170"/>
       <source>(Your OS does not support tray icons at the moment.)</source>
       <translation>(你的操作系统目前不支持托盘图标)。</translation>
     </message>
@@ -7922,7 +7940,7 @@ Authors of this application are NOT responsible for lost data.</source>
       <translation>你可以在这里覆盖一些由你的皮肤定义的颜色。有些颜色在整个应用程序中是动态使用的。</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/settings/settingsgui.cpp" line="246"/>
+      <location filename="../src/librssguard/gui/settings/settingsgui.cpp" line="255"/>
       <source>%1
 
 Version: %2
@@ -7933,176 +7951,182 @@ Description: %3</source>
 描述：%3</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/settings/settingsgui.cpp" line="319"/>
+      <location filename="../src/librssguard/gui/settings/settingsgui.cpp" line="328"/>
       <source>Fetch color from activated skin</source>
       <translation>从激活的皮肤中获取颜色</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/settings/settingsgui.cpp" line="104"/>
+      <location filename="../src/librssguard/gui/settings/settingsgui.cpp" line="111"/>
       <source> = default icon size</source>
       <translation> = 默认图标大小</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsgui.ui" line="27"/>
-      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsgui.h" line="399"/>
+      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsgui.h" line="408"/>
       <source>Icons &amp;&amp; skins</source>
       <translation>图标 &amp;&amp; 皮肤</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsgui.ui" line="33"/>
-      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsgui.h" line="395"/>
+      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsgui.h" line="404"/>
       <source>Icon theme</source>
       <translation>图标主题</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsgui.ui" line="46"/>
-      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsgui.h" line="396"/>
+      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsgui.h" line="405"/>
       <source>Style</source>
       <translation>风格</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsgui.ui" line="59"/>
-      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsgui.h" line="397"/>
+      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsgui.h" line="406"/>
       <source>Skin</source>
       <translation>皮肤</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsgui.ui" line="112"/>
-      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsgui.h" line="398"/>
+      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsgui.h" line="407"/>
       <source>Use skin colors (skin colors for dialogs/controls only take effect with Fusion style)</source>
       <translation type="unfinished">Use skin colors (skin colors for dialogs/controls only take effect with Fusion style)</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsgui.ui" line="120"/>
-      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsgui.h" line="401"/>
+      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsgui.h" line="410"/>
       <source>Custom skin colors</source>
       <translation>自定义皮肤颜色</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsgui.ui" line="129"/>
-      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsgui.h" line="400"/>
+      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsgui.h" line="409"/>
       <source>Customize predefined colors</source>
       <translation>自定义预设颜色</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsgui.ui" line="141"/>
-      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsgui.h" line="407"/>
+      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsgui.h" line="417"/>
       <source>Tray area</source>
       <translation>托盘区域</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsgui.ui" line="153"/>
-      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsgui.h" line="402"/>
+      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsgui.h" line="411"/>
       <source>Tray icon</source>
       <translation>通知区域图标</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsgui.ui" line="165"/>
-      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsgui.h" line="403"/>
+      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsgui.h" line="412"/>
       <source>Use monochrome icon</source>
       <translation>使用灰色图标</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsgui.ui" line="172"/>
-      <location filename="../src/librssguard/gui/settings/settingsgui.ui" line="216"/>
-      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsgui.h" line="404"/>
-      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsgui.h" line="408"/>
+      <location filename="../src/librssguard/gui/settings/settingsgui.ui" line="226"/>
+      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsgui.h" line="413"/>
+      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsgui.h" line="418"/>
       <source>Display count of unread messages</source>
       <translation>显示未读邮件的数量</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsgui.ui" line="179"/>
-      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsgui.h" line="405"/>
+      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsgui.h" line="414"/>
       <source>Hide main window when it is minimized</source>
       <translation>最小化时隐藏主窗口</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsgui.ui" line="186"/>
-      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsgui.h" line="406"/>
+      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsgui.h" line="415"/>
       <source>Start application hidden</source>
       <translation>应用启动时隐藏主窗口</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/settings/settingsgui.ui" line="210"/>
-      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsgui.h" line="409"/>
+      <location filename="../src/librssguard/gui/settings/settingsgui.ui" line="196"/>
+      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsgui.h" line="416"/>
+      <source>Use colored icon when there are unread articles</source>
+      <translation type="unfinished">Use colored icon when there are unread articles</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard/gui/settings/settingsgui.ui" line="220"/>
+      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsgui.h" line="419"/>
       <source>Task bar</source>
       <translation>任务栏</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/settings/settingsgui.ui" line="224"/>
-      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsgui.h" line="415"/>
+      <location filename="../src/librssguard/gui/settings/settingsgui.ui" line="234"/>
+      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsgui.h" line="425"/>
       <source>Tabs</source>
       <translation>标签页</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/settings/settingsgui.ui" line="236"/>
-      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsgui.h" line="410"/>
+      <location filename="../src/librssguard/gui/settings/settingsgui.ui" line="246"/>
+      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsgui.h" line="420"/>
       <source>Close tabs with</source>
       <translation>关闭标签页</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/settings/settingsgui.ui" line="242"/>
-      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsgui.h" line="411"/>
+      <location filename="../src/librssguard/gui/settings/settingsgui.ui" line="252"/>
+      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsgui.h" line="421"/>
       <source>Middle mouse button single-click</source>
       <translation>单击中键</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/settings/settingsgui.ui" line="249"/>
-      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsgui.h" line="412"/>
+      <location filename="../src/librssguard/gui/settings/settingsgui.ui" line="259"/>
+      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsgui.h" line="422"/>
       <source>Left mouse button double-click</source>
       <translation>双击左键</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/settings/settingsgui.ui" line="259"/>
-      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsgui.h" line="413"/>
+      <location filename="../src/librssguard/gui/settings/settingsgui.ui" line="269"/>
+      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsgui.h" line="423"/>
       <source>Open new tabs with left mouse button double-click on tab bar</source>
       <translation>左键双击标签页栏以新建标签页</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/settings/settingsgui.ui" line="266"/>
-      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsgui.h" line="414"/>
+      <location filename="../src/librssguard/gui/settings/settingsgui.ui" line="276"/>
+      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsgui.h" line="424"/>
       <source>Hide tab bar if just one tab is visible</source>
       <translation>只有一个标签页时隐藏标签页栏</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/settings/settingsgui.ui" line="287"/>
-      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsgui.h" line="423"/>
+      <location filename="../src/librssguard/gui/settings/settingsgui.ui" line="297"/>
+      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsgui.h" line="433"/>
       <source>Toolbars</source>
       <translation>工具栏</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/settings/settingsgui.ui" line="300"/>
-      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsgui.h" line="416"/>
+      <location filename="../src/librssguard/gui/settings/settingsgui.ui" line="310"/>
+      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsgui.h" line="426"/>
       <source>Toolbar for feeds list</source>
       <translation>用于 Feeds 列表的工具栏</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/settings/settingsgui.ui" line="305"/>
-      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsgui.h" line="417"/>
+      <location filename="../src/librssguard/gui/settings/settingsgui.ui" line="315"/>
+      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsgui.h" line="427"/>
       <source>Toolbar for articles list</source>
       <translation>文章列表的工具栏</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/settings/settingsgui.ui" line="310"/>
-      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsgui.h" line="418"/>
+      <location filename="../src/librssguard/gui/settings/settingsgui.ui" line="320"/>
+      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsgui.h" line="428"/>
       <source>Statusbar</source>
       <translation>状态栏</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/settings/settingsgui.ui" line="388"/>
-      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsgui.h" line="420"/>
+      <location filename="../src/librssguard/gui/settings/settingsgui.ui" line="398"/>
+      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsgui.h" line="430"/>
       <source>Button style</source>
       <translation>按钮样式</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/settings/settingsgui.ui" line="398"/>
-      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsgui.h" line="421"/>
+      <location filename="../src/librssguard/gui/settings/settingsgui.ui" line="408"/>
+      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsgui.h" line="431"/>
       <source>Toolbar editor</source>
       <translation>工具栏编辑器</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/settings/settingsgui.ui" line="424"/>
-      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsgui.h" line="422"/>
+      <location filename="../src/librssguard/gui/settings/settingsgui.ui" line="434"/>
+      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsgui.h" line="432"/>
       <source>Icon size</source>
       <translation>图标大小</translation>
     </message>
@@ -9062,17 +9086,17 @@ This setting is useful when raw XML parsing of the feed is very slow, this happe
       <translation>载入预设 Feeds 时出错</translation>
     </message>
     <message>
-      <location filename="../src/librssguard-standard/src/standardserviceroot.cpp" line="388"/>
+      <location filename="../src/librssguard-standard/src/standardserviceroot.cpp" line="414"/>
       <source>Fetch metadata</source>
       <translation>获取元数据</translation>
     </message>
     <message>
-      <location filename="../src/librssguard-standard/src/standardserviceroot.cpp" line="573"/>
+      <location filename="../src/librssguard-standard/src/standardserviceroot.cpp" line="612"/>
       <source>Export feeds</source>
       <translation>导出 Feeds</translation>
     </message>
     <message>
-      <location filename="../src/librssguard-standard/src/standardserviceroot.cpp" line="574"/>
+      <location filename="../src/librssguard-standard/src/standardserviceroot.cpp" line="613"/>
       <source>Import feeds</source>
       <translation>导入 Feeds</translation>
     </message>
@@ -9097,27 +9121,27 @@ This setting is useful when raw XML parsing of the feed is very slow, this happe
       <translation>另一项关键操作正在执行，无法添加 Feed。</translation>
     </message>
     <message>
-      <location filename="../src/librssguard-standard/src/standardserviceroot.cpp" line="257"/>
+      <location filename="../src/librssguard-standard/src/standardserviceroot.cpp" line="283"/>
       <source>this source type cannot be used on &apos;lite&apos; %1 build</source>
       <translation>此类型源在 &apos;lite&apos; %1 版本上不可用</translation>
     </message>
     <message>
-      <location filename="../src/librssguard-standard/src/standardserviceroot.cpp" line="539"/>
+      <location filename="../src/librssguard-standard/src/standardserviceroot.cpp" line="565"/>
       <source>Cannot add category</source>
       <translation>无法添加分类</translation>
     </message>
     <message>
-      <location filename="../src/librssguard-standard/src/standardserviceroot.cpp" line="540"/>
+      <location filename="../src/librssguard-standard/src/standardserviceroot.cpp" line="566"/>
       <source>Cannot add category because another critical operation is ongoing.</source>
       <translation>另一项关键操作正在执行，无法添加分类。</translation>
     </message>
     <message>
-      <location filename="../src/librssguard-standard/src/standardserviceroot.cpp" line="527"/>
+      <location filename="../src/librssguard-standard/src/standardserviceroot.cpp" line="553"/>
       <source>Import was completely successful.</source>
       <translation>导入成功。</translation>
     </message>
     <message>
-      <location filename="../src/librssguard-standard/src/standardserviceroot.cpp" line="524"/>
+      <location filename="../src/librssguard-standard/src/standardserviceroot.cpp" line="550"/>
       <source>Some feeds/categories were not imported due to error, check debug log for more details.</source>
       <translation>由于错误，一些Feeds/类别没有被导入，查看调试日志了解更多细节。</translation>
     </message>
