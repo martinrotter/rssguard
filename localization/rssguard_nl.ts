@@ -838,17 +838,17 @@ Klik hier op de huidige map to openen.</translation>
     <message>
       <location filename="../src/librssguard/dynamic-shortcuts/dynamicshortcutswidget.cpp" line="126"/>
       <source>Duplicate shortcut</source>
-      <translation type="unfinished">Duplicate shortcut</translation>
+      <translation>Dubbele snelkoppeling</translation>
     </message>
     <message>
       <location filename="../src/librssguard/dynamic-shortcuts/dynamicshortcutswidget.cpp" line="127"/>
       <source>There is another action which has the same shortcut assigned.</source>
-      <translation type="unfinished">There is another action which has the same shortcut assigned.</translation>
+      <translation>Er is al een actie die dezelfde snelkoppeling heeft toegewezen.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/dynamic-shortcuts/dynamicshortcutswidget.cpp" line="128"/>
       <source>Do you want to keep the new shortcut assignment and clear the previous shortcut?</source>
-      <translation type="unfinished">Do you want to keep the new shortcut assignment and clear the previous shortcut?</translation>
+      <translation>Wilt u de nieuwe snelkoppeling behouden en de vorige snelkoppeling wissen?</translation>
     </message>
   </context>
   <context>
@@ -8072,7 +8072,7 @@ Omschrijving: %3</translation>
       <location filename="../src/librssguard/gui/settings/settingsgui.ui" line="196"/>
       <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsgui.h" line="416"/>
       <source>Use colored icon when there are unread articles</source>
-      <translation type="unfinished">Use colored icon when there are unread articles</translation>
+      <translation>Gebruik gekleurde iconen als er ongelezen artikelen zijn</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsgui.ui" line="220"/>
