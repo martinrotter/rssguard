@@ -8,11 +8,16 @@
 
 class RSSGUARD_DLLSPEC FeedFetchException : public ApplicationException {
   public:
-    explicit FeedFetchException(Feed::Status feed_status, const QString& message = {});
+    // "data" parameter should contain this, depending on "feed_status":
+    //   - Feed::Status::NetworkError -> NetworkResult instance
+    //   - other feed status values -> arbitrary data
+    explicit FeedFetchException(Feed::Status feed_status, const QString& message = {}, const QVariant& data = {});
 
     Feed::Status feedStatus() const;
+    QVariant data() const;
 
   private:
+    QVariant m_data;
     Feed::Status m_feedStatus;
 };
 

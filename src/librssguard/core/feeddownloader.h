@@ -63,6 +63,9 @@ class FeedDownloader : public QObject {
     void updateProgress(const Feed* feed, int current, int total);
 
   private:
+    void clearFeedOverload(Feed* feed);
+    bool checkIfFeedOverloaded(Feed* feed) const;
+
     void skipFeedUpdateWithError(ServiceRoot* acc, Feed* feed, const ApplicationException& ex);
     void updateOneFeed(ServiceRoot* acc,
                        Feed* feed,
@@ -82,6 +85,7 @@ class FeedDownloader : public QObject {
     QList<FeedUpdateRequest> m_feeds = {};
     QFutureWatcher<FeedUpdateResult> m_watcherLookup;
     FeedDownloadResults m_results;
+    QHash<QString, QDateTime> m_overloadedHosts;
 };
 
 #endif // FEEDDOWNLOADER_H

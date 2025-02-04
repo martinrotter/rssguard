@@ -8,10 +8,6 @@
 
 #define ADVANCED_FEED_ADD_DIALOG_CODE 64
 
-#define HTTP_CODE_NOT_MODIFIED      304
-#define HTTP_CODE_TOO_MANY_REQUESTS 429
-#define HTTP_CODE_UNAVAILABLE       503
-
 #define RSS_REGEX_MATCHER      "<link[^>]+type=\"application\\/(?:rss\\+xml)\"[^>]*>"
 #define RSS_HREF_REGEX_MATCHER "href=\"([^\"]+)\""
 

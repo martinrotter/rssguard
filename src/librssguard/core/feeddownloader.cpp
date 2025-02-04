@@ -170,6 +170,17 @@ void FeedDownloader::updateFeeds(const QList<Feed*>& feeds) {
   }
 }
 
+void FeedDownloader::clearFeedOverload(Feed* feed) {
+  m_overloadedHosts.remove(QUrl(feed->source()).host());
+}
+
+bool FeedDownloader::checkIfFeedOverloaded(Feed* feed) const {
+  QString hostname = QUrl(feed->source()).host();
+  QDateTime retry_after = m_overloadedHosts.value(hostname);
+
+  return retry_after.isValid() && retry_after > QDateTime::currentDateTimeUtc();
+}
+
 FeedUpdateResult FeedDownloader::updateThreadedFeed(const FeedUpdateRequest& fd) {
   if (m_erroredAccounts.contains(fd.account)) {
     // This feed is errored because its account errored when preparing feed update.
@@ -214,10 +225,23 @@ void FeedDownloader::updateOneFeed(ServiceRoot* acc,
                                    Feed* feed,
                                    const QHash<ServiceRoot::BagOfMessages, QStringList>& stated_messages,
                                    const QHash<QString, QStringList>& tagged_messages) {
-  feed->setStatus(Feed::Status::Fetching);
-
   const bool update_feed_list =
     qApp->settings()->value(GROUP(Feeds), SETTING(Feeds::UpdateFeedListDuringFetching)).toBool();
+
+  if (checkIfFeedOverloaded(feed)) {
+    qWarningNN << LOGSEC_CORE << "Feed with source" << QUOTE_W_SPACE(feed->source())
+               << "was signalled temporarily being down. Returning no articles for now.";
+
+    feed->setStatus(Feed::Status::NetworkError, tr("feed is in network cooldown mode"));
+
+    if (update_feed_list) {
+      acc->itemChanged({feed});
+    }
+
+    return;
+  }
+
+  feed->setStatus(Feed::Status::Fetching);
 
   if (update_feed_list) {
     acc->itemChanged({feed});
@@ -240,6 +264,8 @@ void FeedDownloader::updateOneFeed(ServiceRoot* acc,
     qDebugNN << LOGSEC_FEEDDOWNLOADER << "Downloaded" << NONQUOTE_W_SPACE(msgs.size()) << "messages for feed ID"
              << QUOTE_W_SPACE_COMMA(feed->customId()) << "operation took" << NONQUOTE_W_SPACE(tmr.nsecsElapsed() / 1000)
              << "microseconds.";
+
+    clearFeedOverload(feed);
 
     bool fix_future_datetimes =
       qApp->settings()->value(GROUP(Messages), SETTING(Messages::FixupFutureArticleDateTimes)).toBool();
@@ -420,6 +446,19 @@ void FeedDownloader::updateOneFeed(ServiceRoot* acc,
                 << "message:" << QUOTE_W_SPACE_DOT(feed_ex.message());
 
     feed->setStatus(feed_ex.feedStatus(), feed_ex.message());
+
+    if (feed_ex.feedStatus() == Feed::Status::NetworkError && !feed_ex.data().isNull()) {
+      NetworkResult network_result = feed_ex.data().value<NetworkResult>();
+
+      if (network_result.m_httpCode == HTTP_CODE_TOO_MANY_REQUESTS ||
+          network_result.m_httpCode == HTTP_CODE_UNAVAILABLE) {
+        QDateTime safe_dt = NetworkFactory::extractRetryAfter(network_result.m_headers.value(QSL("retry-after")));
+        m_overloadedHosts.insert(QUrl(feed->source()).host(), safe_dt);
+
+        qWarningNN << LOGSEC_CORE << "Feed" << QUOTE_W_SPACE_DOT(feed->source())
+                   << "indicates that there is too many requests right now on the same host.";
+      }
+    }
   }
   catch (const ApplicationException& app_ex) {
     qCriticalNN << LOGSEC_NETWORK << "Unknown error when fetching feed:"

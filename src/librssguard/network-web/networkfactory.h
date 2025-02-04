@@ -96,6 +96,7 @@ class RSSGUARD_DLLSPEC NetworkFactory {
                                                  Http2Status http2_status = Http2Status::DontSet);
 };
 
+Q_DECLARE_METATYPE(NetworkResult)
 Q_DECLARE_METATYPE(NetworkFactory::NetworkAuthentication)
 
 #endif // NETWORKFACTORY_H

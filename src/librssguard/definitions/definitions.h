@@ -154,6 +154,10 @@
 
 #define CLI_THREADS "threads"
 
+#define HTTP_CODE_NOT_MODIFIED      304
+#define HTTP_CODE_TOO_MANY_REQUESTS 429
+#define HTTP_CODE_UNAVAILABLE       503
+
 #define HTTP_HEADERS_ACCEPT         "Accept"
 #define HTTP_HEADERS_CONTENT_TYPE   "Content-Type"
 #define HTTP_HEADERS_CONTENT_LENGTH "Content-Length"
