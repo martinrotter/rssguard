@@ -466,7 +466,7 @@ void FormMain::updateMessageButtonsAvailability() {
     tabWidget()->feedMessageViewer()->messagesView()->sourceModel()->loadedItem()->kind() == RootItem::Kind::Bin;
 
   m_ui->m_actionDeleteSelectedMessages->setEnabled(atleast_one_message_selected);
-  m_ui->m_actionRestoreSelectedMessages->setEnabled(atleast_one_message_selected && bin_loaded);
+  m_ui->m_actionRestoreSelectedMessages->setEnabled(atleast_one_message_selected);
   m_ui->m_actionMarkSelectedMessagesAsRead->setEnabled(atleast_one_message_selected);
   m_ui->m_actionMarkSelectedMessagesAsUnread->setEnabled(atleast_one_message_selected);
   m_ui->m_actionOpenSelectedMessagesInternallyNoTab->setEnabled(one_message_selected);
