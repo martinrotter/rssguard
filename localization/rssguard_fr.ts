@@ -839,17 +839,17 @@ Cliquez-ici pour ouvrir le répertoire parent.</translation>
     <message>
       <location filename="../src/librssguard/dynamic-shortcuts/dynamicshortcutswidget.cpp" line="126"/>
       <source>Duplicate shortcut</source>
-      <translation type="unfinished">Duplicate shortcut</translation>
+      <translation>Dupliquer le raccourci</translation>
     </message>
     <message>
       <location filename="../src/librssguard/dynamic-shortcuts/dynamicshortcutswidget.cpp" line="127"/>
       <source>There is another action which has the same shortcut assigned.</source>
-      <translation type="unfinished">There is another action which has the same shortcut assigned.</translation>
+      <translation>Il y a une autre action qui a le même raccourci assigné.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/dynamic-shortcuts/dynamicshortcutswidget.cpp" line="128"/>
       <source>Do you want to keep the new shortcut assignment and clear the previous shortcut?</source>
-      <translation type="unfinished">Do you want to keep the new shortcut assignment and clear the previous shortcut?</translation>
+      <translation>Voulez-vous conserver le nouveau raccourci et effacer le précédent ?</translation>
     </message>
   </context>
   <context>
@@ -1388,7 +1388,7 @@ Identifiant d&apos;élément: %5</translation>
     <message>
       <location filename="../src/librssguard/gui/feedsview.cpp" line="261"/>
       <source>Do you really want to purge all non-starred articles from selected feeds?</source>
-      <translation type="unfinished">Do you really want to purge all non-starred articles from selected feeds?</translation>
+      <translation>Voulez-vous vraiment supprimer tous les articles non favoris des flux sélectionnés ?</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/feedsview.cpp" line="315"/>
@@ -3174,7 +3174,7 @@ recherche d&apos;articles</translation>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="966"/>
       <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="820"/>
       <source>&amp;Purge selected feeds</source>
-      <translation type="unfinished">&amp;Purge selected feeds</translation>
+      <translation>&amp;Purger les flux sélectionnés</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="740"/>
@@ -4085,47 +4085,47 @@ Vous pouvez désormais l&apos;installer.</translation>
     <message>
       <location filename="../src/librssguard/network-web/gemini/geminiclient.cpp" line="268"/>
       <source>Line is too short for valid protocol</source>
-      <translation type="unfinished">Line is too short for valid protocol</translation>
+      <translation>La ligne est trop courte pour un protocole valide</translation>
     </message>
     <message>
       <location filename="../src/librssguard/network-web/gemini/geminiclient.cpp" line="273"/>
       <source>response too large!</source>
-      <translation type="unfinished">response too large!</translation>
+      <translation>réponse trop grande!</translation>
     </message>
     <message>
       <location filename="../src/librssguard/network-web/gemini/geminiclient.cpp" line="282"/>
       <source>Line does not end with &lt;CR&gt; &lt;LF&gt;</source>
-      <translation type="unfinished">Line does not end with &lt;CR&gt; &lt;LF&gt;</translation>
+      <translation>La ligne ne se termine pas par &lt;CR&gt; &lt;LF&gt;</translation>
     </message>
     <message>
       <location filename="../src/librssguard/network-web/gemini/geminiclient.cpp" line="291"/>
       <source>First character is not a digit.</source>
-      <translation type="unfinished">First character is not a digit.</translation>
+      <translation>Le premier caractère n'est pas un chiffre.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/network-web/gemini/geminiclient.cpp" line="300"/>
       <source>Second character is not a digit.</source>
-      <translation type="unfinished">Second character is not a digit.</translation>
+      <translation>Le deuxième caractère n'est pas un chiffre.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/network-web/gemini/geminiclient.cpp" line="312"/>
       <source>Third character is not a space.</source>
-      <translation type="unfinished">Third character is not a space.</translation>
+      <translation>Le troisième caractère n'est pas un espace.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/network-web/gemini/geminiclient.cpp" line="361"/>
       <source>Invalid URL for redirection!</source>
-      <translation type="unfinished">Invalid URL for redirection!</translation>
+      <translation>URL invalide pour la redirection!</translation>
     </message>
     <message>
       <location filename="../src/librssguard/network-web/gemini/geminiclient.cpp" line="438"/>
       <source>Unspecified status code used!</source>
-      <translation type="unfinished">Unspecified status code used!</translation>
+      <translation>Code de statut non spécifié utilisé!</translation>
     </message>
     <message>
       <location filename="../src/librssguard/network-web/gemini/geminiclient.cpp" line="447"/>
       <source>META too large!</source>
-      <translation type="unfinished">META too large!</translation>
+      <translation>META trop grande!</translation>
     </message>
   </context>
   <context>
@@ -5764,7 +5764,7 @@ supplémentaire</translation>
     <message>
       <location filename="../src/librssguard/gui/toolbars/messagestoolbar.cpp" line="283"/>
       <source>Show read articles</source>
-      <translation type="unfinished">Show read articles</translation>
+      <translation>Montrer les articles lus</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/toolbars/messagestoolbar.cpp" line="288"/>
@@ -8095,7 +8095,7 @@ Déscription: %3</translation>
       <location filename="../src/librssguard/gui/settings/settingsgui.ui" line="196"/>
       <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsgui.h" line="416"/>
       <source>Use colored icon when there are unread articles</source>
-      <translation type="unfinished">Use colored icon when there are unread articles</translation>
+      <translation>Utiliser l'icône colorée lorsqu'il y a des articles non lus</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsgui.ui" line="220"/>
@@ -9110,17 +9110,17 @@ Ce paramètre est utile quand l'extraction des données XML brutes du flux est t
     <message>
       <location filename="../src/librssguard-standard/src/gui/standardfeedexpdetails.cpp" line="32"/>
       <source>Use application settings</source>
-      <translation type="unfinished">Use application settings</translation>
+      <translation>Utiliser les paramètres de l'application</translation>
     </message>
     <message>
       <location filename="../src/librssguard-standard/src/gui/standardfeedexpdetails.cpp" line="34"/>
       <source>Enabled</source>
-      <translation type="unfinished">Enabled</translation>
+      <translation>Activé</translation>
     </message>
     <message>
       <location filename="../src/librssguard-standard/src/gui/standardfeedexpdetails.cpp" line="35"/>
       <source>Disabled</source>
-      <translation type="unfinished">Disabled</translation>
+      <translation>Désactivé</translation>
     </message>
   </context>
   <context>
