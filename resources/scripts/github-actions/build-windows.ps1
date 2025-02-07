@@ -106,7 +106,7 @@ if ($is_qt_6) {
   aqt -c 'aqt\settings.ini' install-qt -O "$qt_path" windows desktop $qt_version win64_msvc2022_64 -m qtwebengine qtimageformats qtmultimedia qt5compat qtwebchannel qtpositioning
 }
 else {
-  aqt -c 'aqt\settings.ini' install-qt -O "$qt_path" windows desktop $qt_version win64_msvc2022_64 -m qtwebengine
+  aqt -c 'aqt\settings.ini' install-qt -O "$qt_path" windows desktop $qt_version win64_msvc2019_64 -m qtwebengine
 }
 
 aqt -c 'aqt\settings.ini' install-src -O "$qt_path" windows desktop $qt_version --archives qtbase
