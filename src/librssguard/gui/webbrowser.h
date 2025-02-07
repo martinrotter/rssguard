@@ -84,6 +84,7 @@ class RSSGUARD_DLLSPEC WebBrowser : public TabContent {
 
   signals:
     void windowCloseRequested();
+
     void iconChanged(int index, const QIcon& icon);
     void titleChanged(int index, const QString& title);
 

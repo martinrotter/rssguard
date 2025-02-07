@@ -8,6 +8,7 @@
 #include "miscellaneous/externaltool.h"
 #include "network-web/webengine/webenginepage.h"
 
+#include <QWebEngineFullScreenRequest>
 #include <QWebEngineView>
 
 class RootItem;
@@ -57,6 +58,7 @@ class RSSGUARD_DLLSPEC WebEngineViewer : public QWebEngineView, public WebViewer
     virtual bool event(QEvent* event);
 
   private slots:
+    void onFullScreenRequested(QWebEngineFullScreenRequest request);
     void openUrlWithExternalTool(ExternalTool tool, const QString& target_url);
 
   private:

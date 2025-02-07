@@ -33,6 +33,8 @@ WebEngineViewer::WebEngineViewer(QWidget* parent) : QWebEngineView(parent), m_br
   WebEnginePage* page = new WebEnginePage(this);
 
   setPage(page);
+
+  connect(page, &WebEnginePage::fullScreenRequested, this, &WebEngineViewer::onFullScreenRequested);
 }
 
 bool WebEngineViewer::event(QEvent* event) {
@@ -46,6 +48,10 @@ bool WebEngineViewer::event(QEvent* event) {
   }
 
   return QWebEngineView::event(event);
+}
+
+void WebEngineViewer::onFullScreenRequested(QWebEngineFullScreenRequest request) {
+  request.accept();
 }
 
 WebEnginePage* WebEngineViewer::page() const {
@@ -178,10 +184,10 @@ void WebEngineViewer::setVerticalScrollBarPosition(double pos) {
 void WebEngineViewer::applyFont(const QFont& fon) {
   auto pixel_size = QFontMetrics(fon).ascent();
 
-  qApp->web()->engineProfile()->settings()->setFontFamily(QWebEngineSettings::FontFamily::StandardFont, fon.family());
-  qApp->web()->engineProfile()->settings()->setFontFamily(QWebEngineSettings::FontFamily::SerifFont, fon.family());
-  qApp->web()->engineProfile()->settings()->setFontFamily(QWebEngineSettings::FontFamily::SansSerifFont, fon.family());
-  qApp->web()->engineProfile()->settings()->setFontSize(QWebEngineSettings::DefaultFontSize, pixel_size);
+  page()->profile()->settings()->setFontFamily(QWebEngineSettings::FontFamily::StandardFont, fon.family());
+  page()->profile()->settings()->setFontFamily(QWebEngineSettings::FontFamily::SerifFont, fon.family());
+  page()->profile()->settings()->setFontFamily(QWebEngineSettings::FontFamily::SansSerifFont, fon.family());
+  page()->profile()->settings()->setFontSize(QWebEngineSettings::DefaultFontSize, pixel_size);
 }
 
 qreal WebEngineViewer::zoomFactor() const {
