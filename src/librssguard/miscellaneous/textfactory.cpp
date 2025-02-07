@@ -76,9 +76,33 @@ int TextFactory::stringWidth(const QString& string, const QFontMetrics& metrics)
 bool TextFactory::couldBeHtml(const QString& string) {
   const QString sstring = string.simplified();
 
-  return sstring.startsWith(QL1S("<!")) || sstring.startsWith(QL1S("<html")) || sstring.startsWith(QL1S("<figure")) ||
-         sstring.startsWith(QL1S("<article")) || sstring.startsWith(QL1S("<details")) ||
-         sstring.startsWith(QL1S("<section")) || sstring.startsWith(QL1S("<aside")) || Qt::mightBeRichText(sstring);
+  static QRegularExpression
+    tag_exp(QSL("^<("
+                "a|abbr|address|area|article|aside|audio|"
+                "b|base|bdi|bdo|blockquote|body|br|button|"
+                "canvas|caption|cite|code|col|colgroup|"
+                "data|datalist|dd|del|details|dfn|dialog|div|dl|dt|"
+                "em|embed|"
+                "fieldset|figcaption|figure|footer|form|"
+                "h1|h2|h3|h4|h5|h6|head|header|hgroup|hr|html|"
+                "i|iframe|img|input|ins|"
+                "kbd|"
+                "label|legend|li|link|"
+                "main|map|mark|menu|meta|meter|"
+                "nav|noscript|"
+                "object|ol|optgroup|option|output|"
+                "p|picture|pre|progress|"
+                "q|"
+                "rp|rt|ruby|"
+                "s|samp|script|search|section|select|slot|small|source|span|strong|style|sub|summary|sup|"
+                "table|tbody|td|template|textarea|tfoot|th|thead|time|title|tr|track|"
+                "u|ul|"
+                "var|video|"
+                "wbr|"
+                "!"
+                ")\\s"));
+
+  return tag_exp.match(sstring).hasMatch() || Qt::mightBeRichText(sstring);
 }
 
 QDateTime TextFactory::parseDateTime(const QString& date_time, QString* used_dt_format) {
