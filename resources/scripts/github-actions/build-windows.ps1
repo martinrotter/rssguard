@@ -37,12 +37,14 @@ $ProgressPreference = 'SilentlyContinue'
 # Get and prepare needed dependencies.
 if ($use_qt5 -eq "ON") {
   $qt_version = "5.15.2"
+  $qt_arch_base = "msvc2019_64"
 
   $use_libmpv = "OFF"
   $use_qtmultimedia = "ON"
 }
 else {
   $qt_version = "6.8.2"
+  $qt_arch_base = "msvc2022_64"
 
   if ($use_webengine -eq "ON") {
     $use_libmpv = "ON"
@@ -55,6 +57,7 @@ else {
 }
 
 $is_qt_6 = $qt_version.StartsWith("6")
+$qt_arch = "win64_" + $qt_arch_base
 
 $maria_version = "11.4.5"
 $maria_link = "https://archive.mariadb.org/mariadb-$maria_version/winx64-packages/mariadb-$maria_version-winx64.zip"
@@ -103,16 +106,16 @@ pip3 install -U pip
 pip3 install -I aqtinstall
 
 if ($is_qt_6) {
-  aqt -c 'aqt\settings.ini' install-qt -O "$qt_path" windows desktop $qt_version win64_msvc2022_64 -m qtwebengine qtimageformats qtmultimedia qt5compat qtwebchannel qtpositioning
+  aqt -c 'aqt\settings.ini' install-qt -O "$qt_path" windows desktop $qt_version $qt_arch -m qtwebengine qtimageformats qtmultimedia qt5compat qtwebchannel qtpositioning
 }
 else {
-  aqt -c 'aqt\settings.ini' install-qt -O "$qt_path" windows desktop $qt_version win64_msvc2019_64 -m qtwebengine
+  aqt -c 'aqt\settings.ini' install-qt -O "$qt_path" windows desktop $qt_version $qt_arch -m qtwebengine
 }
 
 aqt -c 'aqt\settings.ini' install-src -O "$qt_path" windows desktop $qt_version --archives qtbase
 
-$qt_qmake = "$qt_path\$qt_version\msvc2019_64\bin\qmake.exe"
-$env:PATH = "$qt_path\$qt_version\msvc2019_64\bin\;" + $env:PATH
+$qt_qmake = "$qt_path\$qt_version\$qt_arch_base\bin\qmake.exe"
+$env:PATH = "$qt_path\$qt_version\$qt_arch_base\bin\;" + $env:PATH
 
 if ($is_qt_6) {
   # Download openssl 3.x.
