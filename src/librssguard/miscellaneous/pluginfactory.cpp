@@ -24,7 +24,7 @@ QList<ServiceEntryPoint*> PluginFactory::loadPlugins() const {
     QDirIterator dir_iter(plugin_folder,
                           {plugin_name_wildcard},
                           QDir::Filter::Files,
-#if !defined(NDEBUG)
+#if !defined(NDEBUG) || defined(LOAD_PLUGINS_FROM_PARENT)
                           QDirIterator::IteratorFlag::Subdirectories);
 #else
                           QDirIterator::IteratorFlag::NoIteratorFlags);
@@ -82,7 +82,7 @@ QStringList PluginFactory::pluginPaths() const {
   paths << QCoreApplication::applicationDirPath();
 #endif
 
-#if !defined(NDEBUG)
+#if !defined(NDEBUG) || defined(LOAD_PLUGINS_FROM_PARENT)
   paths << QCoreApplication::applicationDirPath() + QDir::separator() + QL1S("..") + QDir::separator();
 #endif
 

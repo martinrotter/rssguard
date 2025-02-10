@@ -656,6 +656,13 @@ target_compile_definitions(rssguard
   RSSGUARD_LIBDIR="${CMAKE_INSTALL_LIBDIR}"
 )
 
+if(LOAD_PLUGINS_FROM_PARENT)
+  target_compile_definitions(rssguard
+    PRIVATE
+    LOAD_PLUGINS_FROM_PARENT
+  )
+endif()
+
 # Install public headers.
 set(HEADERS_ROOT "${PROJECT_SOURCE_DIR}/src/librssguard")
 file(GLOB_RECURSE HEADER_FILES RELATIVE ${HEADERS_ROOT} "*.h")
