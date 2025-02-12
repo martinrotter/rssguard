@@ -100,7 +100,7 @@ bool TextFactory::couldBeHtml(const QString& string) {
                 "var|video|"
                 "wbr|"
                 "!"
-                ")\\s"));
+                ")"));
 
   return tag_exp.match(sstring).hasMatch() || Qt::mightBeRichText(sstring);
 }
