@@ -26,6 +26,17 @@ StandardAccountDetails::StandardAccountDetails(QWidget* parent) : QWidget(parent
   icon_menu->addAction(action_default_icon);
 
   m_ui.m_btnIcon->setMenu(icon_menu);
+
+  m_ui.m_helpFeedSpacing
+    ->setHelpText(tr("When you fetch many feeds from same website/host, then %1 could be (likely "
+                     "temporarily) banned for making too many network requests at once.\n\n"
+                     "If that is the case, then you need to set some time gaps when fetching those feeds.")
+                    .arg(QSL(APP_NAME)),
+                  false);
+
+  connect(m_ui.m_spinFeedSpacing, &QSpinBox::valueChanged, this, &StandardAccountDetails::onFeedSpacingChanged);
+
+  onFeedSpacingChanged(m_ui.m_spinFeedSpacing->value());
 }
 
 void StandardAccountDetails::onLoadIconFromFile() {
@@ -62,4 +73,13 @@ void StandardAccountDetails::onLoadIconFromFile() {
 
 void StandardAccountDetails::onUseDefaultIcon() {
   m_ui.m_btnIcon->setIcon(StandardServiceEntryPoint().icon());
+}
+
+void StandardAccountDetails::onFeedSpacingChanged(int spacing) {
+  if (spacing <= 0) {
+    m_ui.m_spinFeedSpacing->setSuffix(tr(" = no spacing"));
+  }
+  else {
+    m_ui.m_spinFeedSpacing->setSuffix(tr(" seconds", nullptr, spacing));
+  }
 }

@@ -245,6 +245,7 @@ void StandardFeed::fetchMetadataForItself() {
     auto metadata = guessFeed(sourceType(),
                               source(),
                               postProcessScript(),
+                              serviceRoot(),
                               protection(),
                               true,
                               username(),
@@ -298,6 +299,7 @@ void StandardFeed::setSourceType(SourceType source_type) {
 QPair<StandardFeed*, NetworkResult> StandardFeed::guessFeed(StandardFeed::SourceType source_type,
                                                             const QString& source,
                                                             const QString& post_process_script,
+                                                            StandardServiceRoot* account,
                                                             NetworkFactory::NetworkFactory::NetworkAuthentication
                                                               protection,
                                                             bool fetch_icons,
@@ -310,6 +312,9 @@ QPair<StandardFeed*, NetworkResult> StandardFeed::guessFeed(StandardFeed::Source
   NetworkResult network_result;
 
   if (source_type == StandardFeed::SourceType::Url) {
+    QString host = QUrl(source).host();
+    account->spaceHost(host, source);
+
     QList<QPair<QByteArray, QByteArray>> headers = http_headers;
     headers << NetworkFactory::generateBasicAuthHeader(protection, username, password);
 
@@ -323,6 +328,8 @@ QPair<StandardFeed*, NetworkResult> StandardFeed::guessFeed(StandardFeed::Source
                                                              {},
                                                              {},
                                                              custom_proxy);
+
+    // account->resetHostSpacing(host);
 
     if (network_result.m_networkError != QNetworkReply::NetworkError::NoError) {
       throw NetworkException(network_result.m_networkError);

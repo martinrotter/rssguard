@@ -85,6 +85,7 @@ class StandardFeed : public Feed {
     static QPair<StandardFeed*, NetworkResult> guessFeed(SourceType source_type,
                                                          const QString& url,
                                                          const QString& post_process_script,
+                                                         StandardServiceRoot* account,
                                                          NetworkFactory::NetworkAuthentication protection,
                                                          bool fetch_icons = true,
                                                          const QString& username = {},

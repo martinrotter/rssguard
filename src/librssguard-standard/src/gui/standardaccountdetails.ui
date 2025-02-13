@@ -19,6 +19,9 @@
      <property name="text">
       <string>Title</string>
      </property>
+     <property name="buddy">
+      <cstring>m_txtTitle</cstring>
+     </property>
     </widget>
    </item>
    <item row="0" column="1">
@@ -28,6 +31,9 @@
     <widget class="QLabel" name="label_2">
      <property name="text">
       <string>Icon</string>
+     </property>
+     <property name="buddy">
+      <cstring>m_btnIcon</cstring>
      </property>
     </widget>
    </item>
@@ -43,12 +49,47 @@
       <string>Select icon for your account.</string>
      </property>
      <property name="popupMode">
-      <enum>QToolButton::InstantPopup</enum>
+      <enum>QToolButton::ToolButtonPopupMode::InstantPopup</enum>
+     </property>
+    </widget>
+   </item>
+   <item row="2" column="0">
+    <widget class="QLabel" name="label_3">
+     <property name="text">
+      <string>Feed fetch spacing</string>
+     </property>
+     <property name="buddy">
+      <cstring>m_spinFeedSpacing</cstring>
+     </property>
+    </widget>
+   </item>
+   <item row="2" column="1">
+    <widget class="QSpinBox" name="m_spinFeedSpacing">
+     <property name="maximum">
+      <number>120</number>
+     </property>
+    </widget>
+   </item>
+   <item row="3" column="0" colspan="2">
+    <widget class="HelpSpoiler" name="m_helpFeedSpacing" native="true">
+     <property name="minimumSize">
+      <size>
+       <width>50</width>
+       <height>0</height>
+      </size>
      </property>
     </widget>
    </item>
   </layout>
  </widget>
+ <customwidgets>
+  <customwidget>
+   <class>HelpSpoiler</class>
+   <extends>QWidget</extends>
+   <header>helpspoiler.h</header>
+   <container>1</container>
+  </customwidget>
+ </customwidgets>
  <resources/>
  <connections/>
 </ui>

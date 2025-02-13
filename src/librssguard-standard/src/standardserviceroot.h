@@ -8,6 +8,7 @@
 #include <librssguard/services/abstract/serviceroot.h>
 
 #include <QCoreApplication>
+#include <QMutex>
 #include <QPair>
 
 class StandardCategory;
@@ -43,6 +44,17 @@ class StandardServiceRoot : public ServiceRoot {
     QList<QAction*> serviceMenu();
     QList<QAction*> getContextMenuForFeed(StandardFeed* feed);
 
+    void spaceHost(const QString& host, const QString& url);
+    void resetHostSpacing(const QString& host, const QDateTime &next_dt);
+
+    // If set to number > 0, then requests to fetch feeds
+    // will be spaced by the given number (in seconds).
+    // This is used to avoid too many concurrent network
+    // requests from to the same server and getting HTTP/429
+    // errors or other DDoS-attack-related bans.
+    int spacingSameHostsRequests() const;
+    void setSpacingSameHostsRequests(int spacing);
+
     static QString defaultTitle();
 
   public slots:
@@ -61,6 +73,10 @@ class StandardServiceRoot : public ServiceRoot {
 
     QPointer<StandardFeed> m_feedForMetadata = {};
     QList<QAction*> m_feedContextMenu = {};
+
+    int m_spacingSameHostsRequests;
+    QHash<QString, QDateTime> m_spacingHosts;
+    QMutex m_spacingMutex;
 };
 
 #endif // STANDARDSERVICEROOT_H

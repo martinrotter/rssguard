@@ -3,12 +3,13 @@
 #ifndef FORMSSFEEDDETAILS_H
 #define FORMSSFEEDDETAILS_H
 
+#include "src/standardserviceroot.h"
+
 #include <librssguard/services/abstract/gui/formfeeddetails.h>
 
 class StandardFeedDetails;
 class StandardFeedExpDetails;
 class HttpHeadersDetails;
-class StandardServiceRoot;
 class AuthenticationDetails;
 class StandardFeed;
 

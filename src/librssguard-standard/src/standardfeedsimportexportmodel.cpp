@@ -199,6 +199,7 @@ bool FeedsImportExportModel::produceFeed(const FeedLookup& feed_lookup) {
         auto new_feed_data = StandardFeed::guessFeed(source_type,
                                                      feed_lookup.url,
                                                      pp_script,
+                                                     m_account,
                                                      NetworkFactory::NetworkAuthentication::NoAuthentication,
                                                      !feed_lookup.do_not_fetch_icons,
                                                      {},

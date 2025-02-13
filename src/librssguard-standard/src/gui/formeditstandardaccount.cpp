@@ -19,21 +19,27 @@ FormEditStandardAccount::~FormEditStandardAccount() = default;
 void FormEditStandardAccount::loadAccountData() {
   FormAccountDetails::loadAccountData();
 
+  StandardServiceRoot* acc = account<StandardServiceRoot>();
+
   if (m_creatingNew) {
     m_standardDetails->m_ui.m_txtTitle->setText(StandardServiceRoot::defaultTitle());
   }
   else {
-    m_standardDetails->m_ui.m_txtTitle->setText(m_account->title());
+    m_standardDetails->m_ui.m_txtTitle->setText(acc->title());
   }
 
-  m_standardDetails->m_ui.m_btnIcon->setIcon(m_account->fullIcon());
+  m_standardDetails->m_ui.m_btnIcon->setIcon(acc->fullIcon());
+  m_standardDetails->m_ui.m_spinFeedSpacing->setValue(acc->spacingSameHostsRequests());
 }
 
 void FormEditStandardAccount::apply() {
   FormAccountDetails::apply();
 
-  m_account->setIcon(m_standardDetails->m_ui.m_btnIcon->icon());
-  m_account->setTitle(m_standardDetails->m_ui.m_txtTitle->text());
+  StandardServiceRoot* acc = account<StandardServiceRoot>();
+
+  acc->setIcon(m_standardDetails->m_ui.m_btnIcon->icon());
+  acc->setTitle(m_standardDetails->m_ui.m_txtTitle->text());
+  acc->setSpacingSameHostsRequests(m_standardDetails->m_ui.m_spinFeedSpacing->value());
 
   m_account->saveAccountDataToDatabase();
   m_account->itemChanged({m_account});

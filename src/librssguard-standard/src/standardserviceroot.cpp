@@ -45,7 +45,7 @@
 #include <QStack>
 #include <QTextCodec>
 
-StandardServiceRoot::StandardServiceRoot(RootItem* parent) : ServiceRoot(parent) {
+StandardServiceRoot::StandardServiceRoot(RootItem* parent) : ServiceRoot(parent), m_spacingSameHostsRequests(0) {
   setIcon(StandardServiceEntryPoint().icon());
   setDescription(tr("This is the obligatory service account for standard RSS/RDF/ATOM feeds."));
 }
@@ -195,6 +195,49 @@ Qt::ItemFlags StandardServiceRoot::additionalFlags() const {
   return ServiceRoot::additionalFlags() | Qt::ItemFlag::ItemIsDragEnabled | Qt::ItemFlag::ItemIsDropEnabled;
 }
 
+void StandardServiceRoot::spaceHost(const QString& host, const QString& url) {
+  if (m_spacingSameHostsRequests <= 0 || host.simplified().isEmpty()) {
+    // Spacing not enabled or host information unavailable.
+    return;
+  }
+
+  m_spacingMutex.lock();
+
+  QDateTime host_last_fetched = m_spacingHosts.value(host);
+  QDateTime now = QDateTime::currentDateTimeUtc();
+  int secs_to_wait = 0;
+
+  if (host_last_fetched.isValid()) {
+    // No last fetch time saved yet.
+    QDateTime last = host_last_fetched.addSecs(m_spacingSameHostsRequests);
+
+    if (last < now) {
+      // This host was last fetched sometimes in the past and not within the critical spacing window.
+      // We can therefore fetch now.
+      secs_to_wait = 0;
+    }
+    else {
+      secs_to_wait = now.secsTo(last);
+    }
+  }
+
+  resetHostSpacing(host, now.addSecs(secs_to_wait));
+
+  m_spacingMutex.unlock();
+
+  if (secs_to_wait > 0) {
+    qDebugNN << LOGSEC_CORE << "Freezing feed with URL" << QUOTE_W_SPACE(url) << "for" << NONQUOTE_W_SPACE(secs_to_wait)
+             << "seconds, because its host was used for fetching another feed during the spacing period.";
+    QThread::sleep(ulong(secs_to_wait));
+    qDebugNN << LOGSEC_CORE << "Freezing feed with URL" << QUOTE_W_SPACE(url) << "is done.";
+  }
+}
+
+void StandardServiceRoot::resetHostSpacing(const QString& host, const QDateTime& next_dt) {
+  m_spacingHosts.insert(host, next_dt);
+  qDebugNN << LOGSEC_CORE << "Setting spacing for" << QUOTE_W_SPACE(host) << "to" << QUOTE_W_SPACE_DOT(next_dt);
+}
+
 QList<Message> StandardServiceRoot::obtainNewMessages(Feed* feed,
                                                       const QHash<ServiceRoot::BagOfMessages, QStringList>&
                                                         stated_messages,
@@ -203,11 +246,14 @@ QList<Message> StandardServiceRoot::obtainNewMessages(Feed* feed,
   Q_UNUSED(tagged_messages)
 
   StandardFeed* f = static_cast<StandardFeed*>(feed);
+  QString host = QUrl(f->source()).host();
   QByteArray feed_contents;
   QString formatted_feed_contents;
   int download_timeout = qApp->settings()->value(GROUP(Feeds), SETTING(Feeds::UpdateTimeout)).toInt();
 
   if (f->sourceType() == StandardFeed::SourceType::Url) {
+    spaceHost(host, f->source());
+
     qDebugNN << LOGSEC_CORE << "Downloading URL" << QUOTE_W_SPACE(feed->source()) << "to obtain feed data.";
 
     QList<QPair<QByteArray, QByteArray>> headers = StandardFeed::httpHeadersToList(f->httpHeaders());
@@ -232,11 +278,15 @@ QList<Message> StandardServiceRoot::obtainNewMessages(Feed* feed,
                                                                   networkProxy(),
                                                                   f->http2Status());
 
+    // Update last datetime this host was used.
+    // resetHostSpacing(host);
+
     if (network_result.m_networkError != QNetworkReply::NetworkError::NoError) {
       qWarningNN << LOGSEC_CORE << "Error" << QUOTE_W_SPACE(network_result.m_networkError)
                  << "during fetching of new messages for feed" << QUOTE_W_SPACE_DOT(feed->source());
       throw FeedFetchException(Feed::Status::NetworkError,
-                               NetworkFactory::networkErrorText(network_result.m_networkError));
+                               NetworkFactory::networkErrorText(network_result.m_networkError),
+                               QVariant::fromValue(network_result));
     }
     else {
       f->setLastEtag(network_result.m_headers.value(QSL("etag")));
@@ -404,6 +454,7 @@ QVariantHash StandardServiceRoot::customDatabaseData() const {
 
   data[QSL("title")] = title();
   data[QSL("icon")] = IconFactory::toByteArray(icon());
+  data[QSL("requests_spacing")] = spacingSameHostsRequests();
 
   return data;
 }
@@ -418,6 +469,8 @@ void StandardServiceRoot::setCustomDatabaseData(const QVariantHash& data) {
   if (!icon_data.isEmpty()) {
     setIcon(IconFactory::fromByteArray(icon_data));
   }
+
+  setSpacingSameHostsRequests(data.value(QSL("requests_spacing")).toInt());
 }
 
 QString StandardServiceRoot::defaultTitle() {
@@ -528,6 +581,14 @@ bool StandardServiceRoot::mergeImportExportModel(FeedsImportExportModel* model,
   }
 
   return !some_feed_category_error;
+}
+
+int StandardServiceRoot::spacingSameHostsRequests() const {
+  return m_spacingSameHostsRequests;
+}
+
+void StandardServiceRoot::setSpacingSameHostsRequests(int spacing) {
+  m_spacingSameHostsRequests = spacing;
 }
 
 void StandardServiceRoot::addNewCategory(RootItem* selected_item) {

@@ -22,6 +22,7 @@ class StandardAccountDetails : public QWidget {
   private slots:
     void onLoadIconFromFile();
     void onUseDefaultIcon();
+    void onFeedSpacingChanged(int spacing);
 
   private:
     Ui::StandardAccountDetails m_ui;
