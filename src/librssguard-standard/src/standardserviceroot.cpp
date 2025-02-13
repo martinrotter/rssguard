@@ -44,6 +44,7 @@
 #include <QSqlTableModel>
 #include <QStack>
 #include <QTextCodec>
+#include <QThread>
 
 StandardServiceRoot::StandardServiceRoot(RootItem* parent) : ServiceRoot(parent), m_spacingSameHostsRequests(0) {
   setIcon(StandardServiceEntryPoint().icon());
