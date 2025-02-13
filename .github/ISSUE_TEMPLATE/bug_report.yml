@@ -10,6 +10,8 @@ body:
         Dear RSS Guard contributor, ALWAYS, ALWAYS, ALWAYS attach DEBUG LOG to your bug report!!!
         How to generate it see [here](https://rssguard.readthedocs.io/en/stable/contrib/bugs.html).
 
+        Also, only report bugs after testing RSS Guard behavior in LATEST version you can get your hands on. I can understand that maybe your Linux distribution ships RSS Guard which is one or two versions behind upstream but I will NOT fix bugs reported against years old codebase.
+
         Please, RESPECT this template. You might be interested in reading [www.chiark.greenend.org.uk](http://www.chiark.greenend.org.uk/~sgtatham/bugs.html).
   - type: textarea
     attributes:
