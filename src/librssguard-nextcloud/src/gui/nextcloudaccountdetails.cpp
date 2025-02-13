@@ -25,7 +25,7 @@ NextcloudAccountDetails::NextcloudAccountDetails(QWidget* parent) : QWidget(pare
                                   tr("Here, results of connection test are shown."));
 
   connect(m_ui.m_spinLimitMessages,
-          static_cast<void (QSpinBox::*)(int)>(&QSpinBox::valueChanged),
+          QOverload<int>::of(&QSpinBox::valueChanged),
           this,
           [=](int value) {
             if (value <= 0) {

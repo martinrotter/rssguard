@@ -22,7 +22,7 @@ FormDatabaseCleanup::FormDatabaseCleanup(QWidget* parent)
   GuiUtilities::applyDialogProperties(*this, qApp->icons()->fromTheme(QSL("edit-clear")));
 
   connect(m_ui->m_spinDays,
-          static_cast<void (QSpinBox::*)(int)>(&QSpinBox::valueChanged),
+          QOverload<int>::of(&QSpinBox::valueChanged),
           this,
           &FormDatabaseCleanup::updateDaysSuffix);
   connect(m_ui->m_btnBox->button(QDialogButtonBox::StandardButton::Ok),

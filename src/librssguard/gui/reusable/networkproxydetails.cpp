@@ -33,7 +33,7 @@ NetworkProxyDetails::NetworkProxyDetails(QWidget* parent) : QWidget(parent), m_u
   connect(m_ui->m_txtProxyPassword, &QLineEdit::textChanged, this, &NetworkProxyDetails::changed);
   connect(m_ui->m_txtProxyUsername, &QLineEdit::textChanged, this, &NetworkProxyDetails::changed);
   connect(m_ui->m_spinProxyPort,
-          static_cast<void (QSpinBox::*)(int)>(&QSpinBox::valueChanged),
+          QOverload<int>::of(&QSpinBox::valueChanged),
           this,
           &NetworkProxyDetails::changed);
 }

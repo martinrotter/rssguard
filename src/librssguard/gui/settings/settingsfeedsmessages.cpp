@@ -60,7 +60,7 @@ SettingsFeedsMessages::SettingsFeedsMessages(Settings* settings, QWidget* parent
 
   connect(m_ui->m_cbShowEnclosuresDirectly, &QCheckBox::toggled, this, &SettingsFeedsMessages::dirtifySettings);
   connect(m_ui->m_spinHeightImageAttachments,
-          static_cast<void (QSpinBox::*)(int)>(&QSpinBox::valueChanged),
+          QOverload<int>::of(&QSpinBox::valueChanged),
           this,
           &SettingsFeedsMessages::dirtifySettings);
 
@@ -87,7 +87,7 @@ SettingsFeedsMessages::SettingsFeedsMessages(Settings* settings, QWidget* parent
           this,
           &SettingsFeedsMessages::dirtifySettings);
   connect(m_ui->m_spinArticleMarkingPolicy,
-          static_cast<void (QSpinBox::*)(int)>(&QSpinBox::valueChanged),
+          QOverload<int>::of(&QSpinBox::valueChanged),
           this,
           &SettingsFeedsMessages::dirtifySettings);
   connect(m_ui->m_gbFeedListFont, &QGroupBox::toggled, this, &SettingsFeedsMessages::dirtifySettings);
@@ -147,34 +147,34 @@ SettingsFeedsMessages::SettingsFeedsMessages(Settings* settings, QWidget* parent
           &SettingsFeedsMessages::dirtifySettings);
 
   connect(m_ui->m_spinHeightRowsMessages,
-          static_cast<void (QSpinBox::*)(int)>(&QSpinBox::valueChanged),
+          QOverload<int>::of(&QSpinBox::valueChanged),
           this,
           &SettingsFeedsMessages::dirtifySettings);
   connect(m_ui->m_spinHeightRowsMessages,
-          static_cast<void (QSpinBox::*)(int)>(&QSpinBox::valueChanged),
+          QOverload<int>::of(&QSpinBox::valueChanged),
           this,
           &SettingsFeedsMessages::requireRestart);
 
   connect(m_ui->m_spinHeightRowsFeeds,
-          static_cast<void (QSpinBox::*)(int)>(&QSpinBox::valueChanged),
+          QOverload<int>::of(&QSpinBox::valueChanged),
           this,
           &SettingsFeedsMessages::dirtifySettings);
   connect(m_ui->m_spinHeightRowsFeeds,
-          static_cast<void (QSpinBox::*)(int)>(&QSpinBox::valueChanged),
+          QOverload<int>::of(&QSpinBox::valueChanged),
           this,
           &SettingsFeedsMessages::requireRestart);
 
   connect(m_ui->m_spinPaddingRowsMessages,
-          static_cast<void (QSpinBox::*)(int)>(&QSpinBox::valueChanged),
+          QOverload<int>::of(&QSpinBox::valueChanged),
           this,
           &SettingsFeedsMessages::dirtifySettings);
   connect(m_ui->m_spinPaddingRowsMessages,
-          static_cast<void (QSpinBox::*)(int)>(&QSpinBox::valueChanged),
+          QOverload<int>::of(&QSpinBox::valueChanged),
           this,
           &SettingsFeedsMessages::requireRestart);
 
   connect(m_ui->m_spinRelativeArticleTime,
-          static_cast<void (QSpinBox::*)(int)>(&QSpinBox::valueChanged),
+          QOverload<int>::of(&QSpinBox::valueChanged),
           this,
           &SettingsFeedsMessages::dirtifySettings);
 
@@ -184,7 +184,7 @@ SettingsFeedsMessages::SettingsFeedsMessages(Settings* settings, QWidget* parent
           m_ui->m_spinStartupUpdateDelay,
           &TimeSpinBox::setEnabled);
   connect(m_ui->m_spinFeedUpdateTimeout,
-          static_cast<void (QSpinBox::*)(int)>(&QSpinBox::valueChanged),
+          QOverload<int>::of(&QSpinBox::valueChanged),
           this,
           &SettingsFeedsMessages::dirtifySettings);
 

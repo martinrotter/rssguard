@@ -50,7 +50,7 @@ SettingsDatabase::SettingsDatabase(Settings* settings, QWidget* parent)
   connect(m_ui->m_txtMysqlPassword->lineEdit(), &QLineEdit::textChanged, this, &SettingsDatabase::dirtifySettings);
   connect(m_ui->m_txtMysqlUsername->lineEdit(), &QLineEdit::textChanged, this, &SettingsDatabase::dirtifySettings);
   connect(m_ui->m_spinMysqlPort,
-          static_cast<void (QSpinBox::*)(int)>(&QSpinBox::valueChanged),
+          QOverload<int>::of(&QSpinBox::valueChanged),
           this,
           &SettingsDatabase::dirtifySettings);
   connect(m_ui->m_cmbDatabaseDriver,

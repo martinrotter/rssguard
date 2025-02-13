@@ -34,7 +34,10 @@ StandardAccountDetails::StandardAccountDetails(QWidget* parent) : QWidget(parent
                     .arg(QSL(APP_NAME)),
                   false);
 
-  connect(m_ui.m_spinFeedSpacing, &QSpinBox::valueChanged, this, &StandardAccountDetails::onFeedSpacingChanged);
+  connect(m_ui.m_spinFeedSpacing,
+          QOverload<int>::of(&QSpinBox::valueChanged),
+          this,
+          &StandardAccountDetails::onFeedSpacingChanged);
 
   onFeedSpacingChanged(m_ui.m_spinFeedSpacing->value());
 }
