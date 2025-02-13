@@ -584,8 +584,8 @@ version by clicking this popup notification.</translation>
       <location filename="../src/librssguard/services/abstract/category.cpp" line="73"/>
       <source>Number of feeds: %1
 Number of categories: %2</source>
-      <translation type="unfinished">Number of feeds: %1
-Number of categories: %2</translation>
+      <translation>Кількість каналів: %1
+Кількість категорій: %2</translation>
     </message>
   </context>
   <context>
@@ -593,12 +593,12 @@ Number of categories: %2</translation>
     <message>
       <location filename="../src/librssguard/gui/reusable/colortoolbutton.cpp" line="14"/>
       <source>Click me to change color!</source>
-      <translation type="unfinished">Click me to change color!</translation>
+      <translation>Натисніть для зміни кольору!</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/reusable/colortoolbutton.cpp" line="19"/>
       <source>Select new color</source>
-      <translation type="unfinished">Select new color</translation>
+      <translation>Оберіть новий колір</translation>
     </message>
   </context>
   <context>
@@ -626,32 +626,32 @@ Number of categories: %2</translation>
     <message>
       <location filename="../src/librssguard/database/databasecleaner.cpp" line="27"/>
       <source>Removing read articles...</source>
-      <translation type="unfinished">Removing read articles...</translation>
+      <translation>Видалення прочитаних статей...</translation>
     </message>
     <message>
       <location filename="../src/librssguard/database/databasecleaner.cpp" line="33"/>
       <source>Read articles purged...</source>
-      <translation type="unfinished">Read articles purged...</translation>
+      <translation>Прочитані статті видалено...</translation>
     </message>
     <message>
       <location filename="../src/librssguard/database/databasecleaner.cpp" line="51"/>
       <source>Removing old articles...</source>
-      <translation type="unfinished">Removing old articles...</translation>
+      <translation>Видалення старих статей...</translation>
     </message>
     <message>
       <location filename="../src/librssguard/database/databasecleaner.cpp" line="57"/>
       <source>Old articles purged...</source>
-      <translation type="unfinished">Old articles purged...</translation>
+      <translation>Прочитані статті видалено...</translation>
     </message>
     <message>
       <location filename="../src/librssguard/database/databasecleaner.cpp" line="63"/>
       <source>Removing starred articles...</source>
-      <translation type="unfinished">Removing starred articles...</translation>
+      <translation>Видалення обраних статей...</translation>
     </message>
     <message>
       <location filename="../src/librssguard/database/databasecleaner.cpp" line="69"/>
       <source>Starred articles purged...</source>
-      <translation type="unfinished">Starred articles purged...</translation>
+      <translation>Зазначені статті видалено...</translation>
     </message>
   </context>
   <context>
@@ -659,12 +659,12 @@ Number of categories: %2</translation>
     <message>
       <location filename="../src/librssguard/database/databasefactory.cpp" line="58"/>
       <source>Cannot connect to database</source>
-      <translation type="unfinished">Cannot connect to database</translation>
+      <translation>Не вдалося з'єднатись з базою даних</translation>
     </message>
     <message>
       <location filename="../src/librssguard/database/databasefactory.cpp" line="59"/>
       <source>Connection to your database was not established with error: &apos;%1&apos;. Falling back to SQLite.</source>
-      <translation type="unfinished">Connection to your database was not established with error: &apos;%1&apos;. Falling back to SQLite.</translation>
+      <translation>З'єднання з вашою базою даних не встановлено та викликало помилку: &apos;%1&apos;. Повернення до SQLite.</translation>
     </message>
   </context>
   <context>
@@ -746,8 +746,8 @@ Number of categories: %2</translation>
       <location filename="../src/librssguard/network-web/downloadmanager.cpp" line="446"/>
       <source>File &apos;%1&apos; is downloaded.
 Click here to open parent directory.</source>
-      <translation type="unfinished">File &apos;%1&apos; is downloaded.
-Click here to open parent directory.</translation>
+      <translation>Файл &apos;%1&apos; завантажено.
+Натисніть тут, щоб відкрити батьківську теку.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/network-web/downloadmanager.cpp" line="457"/>
@@ -767,7 +767,7 @@ Click here to open parent directory.</translation>
     <message>
       <location filename="../src/librssguard/network-web/downloadmanager.cpp" line="450"/>
       <source>Open folder</source>
-      <translation type="unfinished">Open folder</translation>
+      <translation>Відкрити теку</translation>
     </message>
     <message>
       <location filename="../src/librssguard/network-web/downloaditem.ui" line="54"/>
@@ -805,21 +805,21 @@ Click here to open parent directory.</translation>
     <message numerus="yes">
       <location filename="../src/librssguard/network-web/downloadmanager.cpp" line="748"/>
       <source>%n minutes remaining</source>
-      <translation type="unfinished">
-        <numerusform>%n minutes remaining</numerusform>
-        <numerusform>%n minutes remaining</numerusform>
-        <numerusform>%n minutes remaining</numerusform>
-        <numerusform>%n minutes remaining</numerusform>
+      <translation>
+        <numerusform>Залишилась %n хвилина</numerusform>
+        <numerusform>Залишилось %n хвилини</numerusform>
+        <numerusform>Залишилась %n хвилин</numerusform>
+        <numerusform>Залишилось %n хвилини</numerusform>
       </translation>
     </message>
     <message numerus="yes">
       <location filename="../src/librssguard/network-web/downloadmanager.cpp" line="752"/>
       <source>%n seconds remaining</source>
-      <translation type="unfinished">
-        <numerusform>%n seconds remaining</numerusform>
-        <numerusform>%n seconds remaining</numerusform>
-        <numerusform>%n seconds remaining</numerusform>
-        <numerusform>%n seconds remaining</numerusform>
+      <translation>
+        <numerusform>Залишилась %n секунда</numerusform>
+        <numerusform>Залишилось %n секунди</numerusform>
+        <numerusform>Залишилось %n секунд</numerusform>
+        <numerusform>Залишилось %n секунди</numerusform>
       </translation>
     </message>
     <message>
@@ -830,11 +830,11 @@ Click here to open parent directory.</translation>
     <message numerus="yes">
       <location filename="../src/librssguard/network-web/downloadmanager.cpp" line="602"/>
       <source>Downloading %n file(s)...</source>
-      <translation type="unfinished">
-        <numerusform>Downloading %n file(s)...</numerusform>
-        <numerusform>Downloading %n file(s)...</numerusform>
-        <numerusform>Downloading %n file(s)...</numerusform>
-        <numerusform>Downloading %n file(s)...</numerusform>
+      <translation>
+        <numerusform>Завантаження %n файлу...</numerusform>
+        <numerusform>Завантаження %n файлів...</numerusform>
+        <numerusform>Завантаження %n файлів...</numerusform>
+        <numerusform>Завантаження %n файлів...</numerusform>
       </translation>
     </message>
     <message>
@@ -849,7 +849,7 @@ Click here to open parent directory.</translation>
     <message>
       <location filename="../src/librssguard/dynamic-shortcuts/dynamicshortcutswidget.cpp" line="126"/>
       <source>Duplicate shortcut</source>
-      <translation type="unfinished">Duplicate shortcut</translation>
+      <translation>Дублювати комбінацію клавіш</translation>
     </message>
     <message>
       <location filename="../src/librssguard/dynamic-shortcuts/dynamicshortcutswidget.cpp" line="127"/>
@@ -867,53 +867,53 @@ Click here to open parent directory.</translation>
     <message>
       <location filename="../src/librssguard-gmail/src/gui/emailpreviewer.ui" line="14"/>
       <source>Form</source>
-      <translation type="unfinished">Form</translation>
+      <translation>Форма</translation>
     </message>
     <message>
       <location filename="../src/librssguard-gmail/src/gui/emailpreviewer.ui" line="20"/>
       <source>From</source>
-      <translation type="unfinished">From</translation>
+      <translation>Від</translation>
     </message>
     <message>
       <location filename="../src/librssguard-gmail/src/gui/emailpreviewer.ui" line="52"/>
       <source>&amp;Attachments</source>
-      <translation type="unfinished">&amp;Attachments</translation>
+      <translation>Вкладення (&amp;)</translation>
     </message>
     <message>
       <location filename="../src/librssguard-gmail/src/gui/emailpreviewer.ui" line="65"/>
       <source>&amp;Reply</source>
-      <translation type="unfinished">&amp;Reply</translation>
+      <translation>Відповідь (&amp;R)</translation>
     </message>
     <message>
       <location filename="../src/librssguard-gmail/src/gui/emailpreviewer.ui" line="75"/>
       <source>&amp;Forward</source>
-      <translation type="unfinished">&amp;Forward</translation>
+      <translation>Вперед (&amp;F)</translation>
     </message>
     <message>
       <location filename="../src/librssguard-gmail/src/gui/emailpreviewer.ui" line="87"/>
       <source>Subject</source>
-      <translation type="unfinished">Subject</translation>
+      <translation>Тема</translation>
     </message>
     <message>
       <location filename="../src/librssguard-gmail/src/gui/emailpreviewer.ui" line="104"/>
       <source>To</source>
-      <translation type="unfinished">To</translation>
+      <translation>До</translation>
     </message>
     <message>
       <location filename="../src/librssguard-gmail/src/gui/emailpreviewer.cpp" line="114"/>
       <location filename="../src/librssguard-gmail/src/gui/emailpreviewer.cpp" line="120"/>
       <source>Cannot download attachment</source>
-      <translation type="unfinished">Cannot download attachment</translation>
+      <translation>Не вдається завантажити вкладення</translation>
     </message>
     <message>
       <location filename="../src/librssguard-gmail/src/gui/emailpreviewer.cpp" line="115"/>
       <source>Attachment cannot be downloaded because you are not logged-in.</source>
-      <translation type="unfinished">Attachment cannot be downloaded because you are not logged-in.</translation>
+      <translation>Вкладення неможливо завантажити, оскільки ви не увійшли до системи.</translation>
     </message>
     <message>
       <location filename="../src/librssguard-gmail/src/gui/emailpreviewer.cpp" line="121"/>
       <source>Attachment cannot be downloaded because some general error happened.</source>
-      <translation type="unfinished">Attachment cannot be downloaded because some general error happened.</translation>
+      <translation>Вкладення не вдається завантажити, оскільки сталася якась помилка.</translation>
     </message>
   </context>
   <context>
@@ -921,27 +921,27 @@ Click here to open parent directory.</translation>
     <message>
       <location filename="../src/librssguard-gmail/src/gui/emailrecipientcontrol.cpp" line="38"/>
       <source>To</source>
-      <translation type="unfinished">To</translation>
+      <translation>До</translation>
     </message>
     <message>
       <location filename="../src/librssguard-gmail/src/gui/emailrecipientcontrol.cpp" line="39"/>
       <source>Cc</source>
-      <translation type="unfinished">Cc</translation>
+      <translation>Копія</translation>
     </message>
     <message>
       <location filename="../src/librssguard-gmail/src/gui/emailrecipientcontrol.cpp" line="40"/>
       <source>Bcc</source>
-      <translation type="unfinished">Bcc</translation>
+      <translation>Прихована копія</translation>
     </message>
     <message>
       <location filename="../src/librssguard-gmail/src/gui/emailrecipientcontrol.cpp" line="41"/>
       <source>Reply-to</source>
-      <translation type="unfinished">Reply-to</translation>
+      <translation>Відповісти на</translation>
     </message>
     <message>
       <location filename="../src/librssguard-gmail/src/gui/emailrecipientcontrol.cpp" line="28"/>
       <source>E-mail address</source>
-      <translation type="unfinished">E-mail address</translation>
+      <translation>Адреса електронної пошти</translation>
     </message>
   </context>
   <context>
@@ -949,7 +949,7 @@ Click here to open parent directory.</translation>
     <message>
       <location filename="../src/librssguard/services/abstract/feed.cpp" line="263"/>
       <source>uses global settings, but global auto-fetching of articles is disabled</source>
-      <translation type="unfinished">uses global settings, but global auto-fetching of articles is disabled</translation>
+      <translation>використовує глобальні налаштування, але глобальне автозавантаження статей вимкнено</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/abstract/feed.cpp" line="287"/>
@@ -970,16 +970,16 @@ Click here to open parent directory.</translation>
       <location filename="../src/librssguard/services/abstract/feed.cpp" line="249"/>
       <source>does not use auto-fetching of articles</source>
       <extracomment>Describes feed auto-update status.</extracomment>
-      <translation type="unfinished">does not use auto-fetching of articles</translation>
+      <translation>не використовує автозавантаження статей</translation>
     </message>
     <message numerus="yes">
       <location filename="../src/librssguard/services/abstract/feed.cpp" line="260"/>
       <source>uses global settings (%n minute(s) to next auto-fetch of articles)</source>
-      <translation type="unfinished">
-        <numerusform>uses global settings (%n minute(s) to next auto-fetch of articles)</numerusform>
-        <numerusform>uses global settings (%n minute(s) to next auto-fetch of articles)</numerusform>
-        <numerusform>uses global settings (%n minute(s) to next auto-fetch of articles)</numerusform>
-        <numerusform>uses global settings (%n minute(s) to next auto-fetch of articles)</numerusform>
+      <translation>
+        <numerusform>використовує глобальні налаштування (%n хвилин(а) до наступного автоматичного отримання статей)</numerusform>
+        <numerusform>використовує глобальні налаштування (%n хвилин(а) до наступного автоматичного отримання статей)</numerusform>
+        <numerusform>використовує глобальні налаштування (%n хвилин(а) до наступного автоматичного отримання статей)</numerusform>
+        <numerusform>використовує глобальні налаштування (%n хвилин(а) до наступного автоматичного отримання статей)</numerusform>
       </translation>
     </message>
     <message numerus="yes">
@@ -1670,7 +1670,7 @@ QtWebEngine cache folder -&gt; &quot;%7&quot;</translation>
     <message>
       <location filename="../src/librssguard-gmail/src/gui/formaddeditemail.ui" line="63"/>
       <source>Subject</source>
-      <translation type="unfinished">Subject</translation>
+      <translation>Тема</translation>
     </message>
     <message>
       <location filename="../src/librssguard-gmail/src/gui/formaddeditemail.ui" line="73"/>
