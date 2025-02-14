@@ -214,7 +214,7 @@ Error: %1</translation>
     <message>
       <location filename="../src/librssguard/miscellaneous/application.cpp" line="1249"/>
       <source>Feed cannot be added because there is no active account which can add feeds.</source>
-      <translation type="unfinished">Feed cannot be added because there is no active account which can add feeds.</translation>
+      <translation>Стрічка не може бути додана, тому що немає активного облікового запису, який може додавати стрічки.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/miscellaneous/application.cpp" line="1420"/>
@@ -319,7 +319,7 @@ version by clicking this popup notification.</translation>
       <location filename="../src/librssguard/gui/reusable/articleamountcontrol.ui" line="170"/>
       <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_articleamountcontrol.h" line="267"/>
       <source>Limiting amount of articles in feeds</source>
-      <translation type="unfinished">Limiting amount of articles in feeds</translation>
+      <translation>Обмеження кількості статей у стрічках</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/reusable/articleamountcontrol.ui" line="181"/>
@@ -418,11 +418,11 @@ version by clicking this popup notification.</translation>
     <message numerus="yes">
       <location filename="../src/librssguard/gui/notifications/articlelistnotification.cpp" line="73"/>
       <source>%n feeds fetched</source>
-      <translation type="unfinished">
-        <numerusform>%n feeds fetched</numerusform>
-        <numerusform>%n feeds fetched</numerusform>
-        <numerusform>%n feeds fetched</numerusform>
-        <numerusform>%n feeds fetched</numerusform>
+      <translation>
+        <numerusform>Отримано %n стрічок</numerusform>
+        <numerusform>Отримано %n стрічок</numerusform>
+        <numerusform>Отримано %n стрічок</numerusform>
+        <numerusform>Отримано %n стрічок</numerusform>
       </translation>
     </message>
   </context>
