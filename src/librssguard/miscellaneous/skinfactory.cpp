@@ -195,15 +195,21 @@ void SkinFactory::loadSkinFromData(const Skin& skin) {
 #endif
   }
 
+  QString qss_to_set = skin.m_rawForcedData;
+
   if (m_useSkinColors && !skin.m_rawData.isEmpty()) {
     if (qApp->styleSheet().simplified().isEmpty()) {
-      qApp->setStyleSheet(skin.m_rawData);
+      qss_to_set += QSL("\r\n") + skin.m_rawData;
     }
     else {
       qCriticalNN << LOGSEC_GUI
                   << "Skipped setting of application style and skin because there is already some style set.";
     }
   }
+
+  qss_to_set = qApp->styleSheet() + QSL("\r\n") + qss_to_set;
+
+  qApp->setStyleSheet(qss_to_set);
 }
 
 void SkinFactory::setCurrentSkinName(const QString& skin_name) {
@@ -486,6 +492,15 @@ Skin SkinFactory::skinInfo(const QString& skin_name, bool lite, bool* ok) const 
       skin.m_enclosureMarkup =
         loadSkinFile(skin_folder_no_sep, lite, QSL("html_enclosure_every.html"), real_base_skin_folder);
       skin.m_rawData = loadSkinFile(skin_folder_no_sep, lite, QSL("qt_style.qss"), real_base_skin_folder);
+
+      try {
+        skin.m_rawForcedData =
+          loadSkinFile(skin_folder_no_sep, lite, QSL("qt_style_forced.qss"), real_base_skin_folder);
+      }
+      catch (...) {
+        qWarningNN << "Skin" << QUOTE_W_SPACE(skin_name) << "does not support forced QSS.";
+      }
+
       skin.m_adblocked = loadSkinFile(skin_folder_no_sep, lite, QSL("html_adblocked.html"), real_base_skin_folder);
       skin.m_skinFolder = skin_folder_no_sep;
 
