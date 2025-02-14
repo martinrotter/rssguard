@@ -986,27 +986,27 @@ Click here to open parent directory.</source>
       <location filename="../src/librssguard/services/abstract/feed.cpp" line="274"/>
       <source>uses specific settings (%n minute(s) to next auto-fetching of new articles)</source>
       <extracomment>Describes feed auto-update status.</extracomment>
-      <translation type="unfinished">
-        <numerusform>uses specific settings (%n minute(s) to next auto-fetching of new articles)</numerusform>
-        <numerusform>uses specific settings (%n minute(s) to next auto-fetching of new articles)</numerusform>
-        <numerusform>uses specific settings (%n minute(s) to next auto-fetching of new articles)</numerusform>
-        <numerusform>uses specific settings (%n minute(s) to next auto-fetching of new articles)</numerusform>
+      <translation>
+        <numerusform>використовує певні налаштування (%n хвилин(а) до наступного автоматичного оновлення нових статей)</numerusform>
+        <numerusform>використовує певні налаштування (%n хвилин(а) до наступного автоматичного оновлення нових статей)</numerusform>
+        <numerusform>використовує певні налаштування (%n хвилин(а) до наступного автоматичного оновлення нових статей)</numerusform>
+        <numerusform>використовує певні налаштування (%n хвилин(а) до наступного автоматичного оновлення нових статей)</numerusform>
       </translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/abstract/feed.cpp" line="290"/>
       <source>has new articles</source>
-      <translation type="unfinished">has new articles</translation>
+      <translation>містить нові статті</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/abstract/feed.cpp" line="299"/>
       <source>parsing error</source>
-      <translation type="unfinished">parsing error</translation>
+      <translation>помилка парсингу</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/abstract/feed.cpp" line="302"/>
       <source>error</source>
-      <translation type="unfinished">error</translation>
+      <translation>помилка</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/abstract/feed.cpp" line="372"/>
@@ -1015,11 +1015,15 @@ Active message filters: %2
 Status: %3
 Source: &lt;a href=&quot;%4&quot;&gt;%4&lt;/a&gt;
 Item ID: %5</source>
-      <translation type="unfinished">Auto-update status: %1
-Active message filters: %2
-Status: %3
-Source: &lt;a href=&quot;%4&quot;&gt;%4&lt;/a&gt;
-Item ID: %5</translation>
+      <translation>Статус автооновлення: %1
+
+Активні фільтри повідомлень: %2
+
+Статус: %3
+
+Джерело: &lt;a href=&quot;%4&quot;&gt;%4&lt;/a&gt;
+
+Ідентифікатор елементу: %5</translation>
     </message>
   </context>
   <context>
@@ -1032,27 +1036,27 @@ Item ID: %5</translation>
     <message>
       <location filename="../src/librssguard/gui/feedmessageviewer.cpp" line="33"/>
       <source>Toolbar for articles</source>
-      <translation type="unfinished">Toolbar for articles</translation>
+      <translation>Панель інструментів для статей</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/feedmessageviewer.cpp" line="245"/>
       <source>Filtered feed list</source>
-      <translation type="unfinished">Filtered feed list</translation>
+      <translation>Відфільтрований список стрічок</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/feedmessageviewer.cpp" line="246"/>
       <source>Cannot select article in article list as your feed is filtered out from feed list.</source>
-      <translation type="unfinished">Cannot select article in article list as your feed is filtered out from feed list.</translation>
+      <translation>Неможливо вибрати статтю зі списку статей, оскільки ваша стрічка відфільтрована зі списку стрічок.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/feedmessageviewer.cpp" line="263"/>
       <source>Filtered article list</source>
-      <translation type="unfinished">Filtered article list</translation>
+      <translation>Список відфільтрованих статей</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/feedmessageviewer.cpp" line="264"/>
       <source>Cannot select article as it seems your article list is filtered or the article was deleted.</source>
-      <translation type="unfinished">Cannot select article as it seems your article list is filtered or the article was deleted.</translation>
+      <translation>Не вдається обрати статтю, оскільки здається, що ваш список статей відфільтровано або статтю було видалено.</translation>
     </message>
   </context>
   <context>
@@ -1060,27 +1064,27 @@ Item ID: %5</translation>
     <message>
       <location filename="../src/librssguard/miscellaneous/feedreader.cpp" line="371"/>
       <source>Starting auto-download of some feeds&apos; articles</source>
-      <translation type="unfinished">Starting auto-download of some feeds&apos; articles</translation>
+      <translation>Розпочато автоматичне завантаження статей у деяких стрічках</translation>
     </message>
     <message numerus="yes">
       <location filename="../src/librssguard/miscellaneous/feedreader.cpp" line="372"/>
       <source>I will auto-download new articles for %n feed(s).</source>
-      <translation type="unfinished">
-        <numerusform>I will auto-download new articles for %n feed(s).</numerusform>
-        <numerusform>I will auto-download new articles for %n feed(s).</numerusform>
-        <numerusform>I will auto-download new articles for %n feed(s).</numerusform>
-        <numerusform>I will auto-download new articles for %n feed(s).</numerusform>
+      <translation>
+        <numerusform>Я буду автоматично завантажувати нові статті для %n стрічки).</numerusform>
+        <numerusform>Я буду автоматично завантажувати нові статті для %n стрічок.</numerusform>
+        <numerusform>Я буду автоматично завантажувати нові статті для %n стрічок.</numerusform>
+        <numerusform>Я буду автоматично завантажувати нові статті для %n стрічок.</numerusform>
       </translation>
     </message>
     <message>
       <location filename="../src/librssguard/miscellaneous/feedreader.cpp" line="93"/>
       <source>Cannot fetch articles at this point</source>
-      <translation type="unfinished">Cannot fetch articles at this point</translation>
+      <translation>Наразі не вдалося отримати статті</translation>
     </message>
     <message>
       <location filename="../src/librssguard/miscellaneous/feedreader.cpp" line="94"/>
       <source>You cannot fetch new articles now because another critical operation is ongoing.</source>
-      <translation type="unfinished">You cannot fetch new articles now because another critical operation is ongoing.</translation>
+      <translation>Зараз ви не можете завантажити нові статті, оскільки виконується інша важлива операція.</translation>
     </message>
   </context>
   <context>
@@ -1094,22 +1098,22 @@ Item ID: %5</translation>
       <location filename="../src/librssguard-feedly/src/gui/feedlyaccountdetails.ui" line="27"/>
       <location filename="../src/librssguard-feedly/src/gui/feedlyaccountdetails.cpp" line="28"/>
       <source>Developer access token</source>
-      <translation type="unfinished">Developer access token</translation>
+      <translation>Токен доступу розробника</translation>
     </message>
     <message>
       <location filename="../src/librssguard-feedly/src/gui/feedlyaccountdetails.ui" line="36"/>
       <source>Get token</source>
-      <translation type="unfinished">Get token</translation>
+      <translation>Отримати токен</translation>
     </message>
     <message>
       <location filename="../src/librssguard-feedly/src/gui/feedlyaccountdetails.ui" line="58"/>
       <source>Intelligent synchronization algorithm</source>
-      <translation type="unfinished">Intelligent synchronization algorithm</translation>
+      <translation>Алгоритм розумної синхронізації</translation>
     </message>
     <message>
       <location filename="../src/librssguard-feedly/src/gui/feedlyaccountdetails.ui" line="70"/>
       <source>Only download newest X articles per feed</source>
-      <translation type="unfinished">Only download newest X articles per feed</translation>
+      <translation>Завантажувати лише X найновіших статей з кожної стрічки</translation>
     </message>
     <message>
       <location filename="../src/librssguard-feedly/src/gui/feedlyaccountdetails.ui" line="110"/>
@@ -1119,12 +1123,12 @@ Item ID: %5</translation>
     <message>
       <location filename="../src/librssguard-feedly/src/gui/feedlyaccountdetails.ui" line="51"/>
       <source>Download unread articles only</source>
-      <translation type="unfinished">Download unread articles only</translation>
+      <translation>Завантажувати лише непрочитані статті</translation>
     </message>
     <message>
       <location filename="../src/librssguard-feedly/src/gui/feedlyaccountdetails.cpp" line="27"/>
       <source>Username for your account</source>
-      <translation type="unfinished">Username for your account</translation>
+      <translation>Ім'я користувача вашого облікового запису</translation>
     </message>
     <message>
       <location filename="../src/librssguard-feedly/src/gui/feedlyaccountdetails.cpp" line="30"/>
@@ -1139,12 +1143,12 @@ Item ID: %5</translation>
     <message>
       <location filename="../src/librssguard-feedly/src/gui/feedlyaccountdetails.cpp" line="39"/>
       <source>Your %1 does not offer official Feedly support, thus you must authorize via special authorization code called &quot;developer access token&quot;. These tokens are usually valid only for 1 month and allow only 250 API calls each day.</source>
-      <translation type="unfinished">Your %1 does not offer official Feedly support, thus you must authorize via special authorization code called &quot;developer access token&quot;. These tokens are usually valid only for 1 month and allow only 250 API calls each day.</translation>
+      <translation>Ваш %1 не надає офіційної підтримки Feedly, тому ви повинні авторизуватися за допомогою спеціального коду авторизації, який називається «токен доступу розробника». Ці токени зазвичай дійсні тільки протягом місяця і дозволяють лише 250 викликів API на день.</translation>
     </message>
     <message>
       <location filename="../src/librssguard-feedly/src/gui/feedlyaccountdetails.cpp" line="52"/>
       <source>If you select intelligent synchronization, then only not-yet-fetched or updated articles are downloaded. Network usage is greatly reduced and overall synchronization speed is greatly improved, but first feed fetching could be slow anyway if your feed contains huge number of articles.</source>
-      <translation type="unfinished">If you select intelligent synchronization, then only not-yet-fetched or updated articles are downloaded. Network usage is greatly reduced and overall synchronization speed is greatly improved, but first feed fetching could be slow anyway if your feed contains huge number of articles.</translation>
+      <translation>Якщо ви оберете розумну синхронізацію, то завантажуватимуться лише ті статті, які ще не були завантажені або оновлені. Використання мережі значно зменшується, а загальна швидкість синхронізації значно покращується, але перше завантаження все одно може бути повільним, якщо ваша стрічка містить велику кількість статей</translation>
     </message>
     <message>
       <location filename="../src/librssguard-feedly/src/gui/feedlyaccountdetails.cpp" line="95"/>
@@ -1180,17 +1184,17 @@ Item ID: %5</translation>
     <message>
       <location filename="../src/librssguard-feedly/src/gui/feedlyaccountdetails.cpp" line="148"/>
       <source>Login was successful.</source>
-      <translation type="unfinished">Login was successful.</translation>
+      <translation>Авторизація пройшла успішно.</translation>
     </message>
     <message>
       <location filename="../src/librssguard-feedly/src/gui/feedlyaccountdetails.cpp" line="34"/>
       <source>Your %1 build has official Feedly support. You do not have to use &quot;developer access token&quot;. You can therefore leave corresponding field empty.</source>
-      <translation type="unfinished">Your %1 build has official Feedly support. You do not have to use &quot;developer access token&quot;. You can therefore leave corresponding field empty.</translation>
+      <translation>У вашої збірки %1 є офіційна підтримка Feedly. Вам не обов'язково використовувати &quot;токен доступу розробника&quot;. Тому ви можете залишити відповідне поле порожнім.</translation>
     </message>
     <message>
       <location filename="../src/librssguard-feedly/src/gui/feedlyaccountdetails.cpp" line="154"/>
       <source>Some problems.</source>
-      <translation type="unfinished">Some problems.</translation>
+      <translation>Є деякі проблеми.</translation>
     </message>
     <message>
       <location filename="../src/librssguard-feedly/src/gui/feedlyaccountdetails.cpp" line="162"/>
@@ -1205,22 +1209,22 @@ Item ID: %5</translation>
     <message>
       <location filename="../src/librssguard-feedly/src/gui/feedlyaccountdetails.cpp" line="179"/>
       <source>Access token is empty.</source>
-      <translation type="unfinished">Access token is empty.</translation>
+      <translation>Токен доступу порожній.</translation>
     </message>
     <message>
       <location filename="../src/librssguard-feedly/src/gui/feedlyaccountdetails.cpp" line="182"/>
       <source>Access token is okay.</source>
-      <translation type="unfinished">Access token is okay.</translation>
+      <translation>Токен доступу в порядку.</translation>
     </message>
     <message>
       <location filename="../src/librssguard-feedly/src/gui/feedlyaccountdetails.cpp" line="153"/>
       <source>Error: &apos;%1&apos;</source>
-      <translation type="unfinished">Error: &apos;%1&apos;</translation>
+      <translation>Помилка: &apos;%1&apos;</translation>
     </message>
     <message>
       <location filename="../src/librssguard-feedly/src/gui/feedlyaccountdetails.cpp" line="47"/>
       <source>Beware of downloading too many articles, because Feedly permanently caches ALL articles of the feed, so you might end up with thousands of articles which you will never read anyway.</source>
-      <translation type="unfinished">Beware of downloading too many articles, because Feedly permanently caches ALL articles of the feed, so you might end up with thousands of articles which you will never read anyway.</translation>
+      <translation>Будьте дуже обережні із завантаженням занадто великої кількості статей, тому що Feedly автоматично кешує ВСІ статті каналу, тому у вас можуть з'явитися тисячі статей, які ви все одно ніколи не прочитаєте.</translation>
     </message>
   </context>
   <context>
@@ -1228,7 +1232,7 @@ Item ID: %5</translation>
     <message>
       <location filename="../src/librssguard-feedly/src/feedlynetwork.cpp" line="715"/>
       <source>Feedly: authentication error</source>
-      <translation type="unfinished">Feedly: authentication error</translation>
+      <translation>Feedly: помилка автентифікації</translation>
     </message>
     <message>
       <location filename="../src/librssguard-feedly/src/feedlynetwork.cpp" line="716"/>
@@ -1238,7 +1242,7 @@ Item ID: %5</translation>
     <message>
       <location filename="../src/librssguard-feedly/src/feedlynetwork.cpp" line="730"/>
       <source>Feedly: authorization denied</source>
-      <translation type="unfinished">Feedly: authorization denied</translation>
+      <translation>Feedly: відмовлено в авторизації</translation>
     </message>
     <message>
       <location filename="../src/librssguard-feedly/src/feedlynetwork.cpp" line="731"/>
@@ -1257,12 +1261,12 @@ Item ID: %5</translation>
     <message>
       <location filename="../src/librssguard-standard/src/standardfeedsimportexportmodel.cpp" line="326"/>
       <source>OPML document contains errors</source>
-      <translation type="unfinished">OPML document contains errors</translation>
+      <translation>OPML-документ містить помилки</translation>
     </message>
     <message>
       <location filename="../src/librssguard-standard/src/standardfeedsimportexportmodel.cpp" line="331"/>
       <source>this is likely not OPML document</source>
-      <translation type="unfinished">this is likely not OPML document</translation>
+      <translation>це, швидше за все, не OPML-документ</translation>
     </message>
     <message>
       <location filename="../src/librssguard-standard/src/standardfeedsimportexportmodel.cpp" line="410"/>
@@ -1316,22 +1320,22 @@ Item ID: %5</translation>
     <message>
       <location filename="../src/librssguard/gui/toolbars/feedstoolbar.cpp" line="121"/>
       <source>Everywhere</source>
-      <translation type="unfinished">Everywhere</translation>
+      <translation>Скрізь</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/toolbars/feedstoolbar.cpp" line="122"/>
       <source>Titles only</source>
-      <translation type="unfinished">Titles only</translation>
+      <translation>Лише заголовки</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/toolbars/feedstoolbar.cpp" line="126"/>
       <source>Search feeds</source>
-      <translation type="unfinished">Search feeds</translation>
+      <translation>Пошук стрічок</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/toolbars/feedstoolbar.cpp" line="134"/>
       <source>Feeds search box</source>
-      <translation type="unfinished">Feeds search box</translation>
+      <translation>Вікно пошуку стрічок</translation>
     </message>
   </context>
   <context>
@@ -1383,7 +1387,7 @@ Item ID: %5</translation>
     <message>
       <location filename="../src/librssguard/gui/feedsview.cpp" line="1101"/>
       <source>Context menu for regex query</source>
-      <translation type="unfinished">Context menu for regex query</translation>
+      <translation>Контекстне меню для запиту регулярного виразу</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/feedsview.cpp" line="170"/>
@@ -1399,12 +1403,12 @@ Item ID: %5</translation>
       <location filename="../src/librssguard/gui/feedsview.cpp" line="244"/>
       <location filename="../src/librssguard/gui/feedsview.cpp" line="276"/>
       <source>Do you really want to clean all articles from selected items?</source>
-      <translation type="unfinished">Do you really want to clean all articles from selected items?</translation>
+      <translation>Ви дійсно хочете очистити всі статті від обраних елементів?</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/feedsview.cpp" line="261"/>
       <source>Do you really want to purge all non-starred articles from selected feeds?</source>
-      <translation type="unfinished">Do you really want to purge all non-starred articles from selected feeds?</translation>
+      <translation>Ви впевнені, що хочете видалити всі елементи, не позначені зірочками, з обраних стрічок?</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/feedsview.cpp" line="315"/>
@@ -1412,7 +1416,7 @@ Item ID: %5</translation>
       <location filename="../src/librssguard/gui/feedsview.cpp" line="343"/>
       <location filename="../src/librssguard/gui/feedsview.cpp" line="360"/>
       <source>Cannot edit items</source>
-      <translation type="unfinished">Cannot edit items</translation>
+      <translation>Неможливо редагувати елементи</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/feedsview.cpp" line="316"/>
@@ -1422,22 +1426,22 @@ Item ID: %5</translation>
     <message>
       <location filename="../src/librssguard/gui/feedsview.cpp" line="326"/>
       <source>%1 does not support batch editing of multiple accounts.</source>
-      <translation type="unfinished">%1 does not support batch editing of multiple accounts.</translation>
+      <translation>%1 не підтримує пакетне редагування кількох облікових записів.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/feedsview.cpp" line="344"/>
       <source>%1 does not support batch editing of items from multiple accounts.</source>
-      <translation type="unfinished">%1 does not support batch editing of items from multiple accounts.</translation>
+      <translation>%1 не підтримує пакетне редагування елементів із кількох облікових записів.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/feedsview.cpp" line="361"/>
       <source>%1 does not support batch editing of items of varying types.</source>
-      <translation type="unfinished">%1 does not support batch editing of items of varying types.</translation>
+      <translation>%1 не підтримує пакетне редагування елементів різного типу.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/feedsview.cpp" line="371"/>
       <source>Cannot edit some items</source>
-      <translation type="unfinished">Cannot edit some items</translation>
+      <translation>Неможливість редагування деяких елементів</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/feedsview.cpp" line="372"/>
@@ -1447,7 +1451,7 @@ Item ID: %5</translation>
     <message>
       <location filename="../src/librssguard/gui/feedsview.cpp" line="449"/>
       <source>Some items won&apos;t be deleted</source>
-      <translation type="unfinished">Some items won&apos;t be deleted</translation>
+      <translation>Деякі елементи не будуть видалені</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/feedsview.cpp" line="450"/>
@@ -3870,17 +3874,17 @@ You have to restart manually.</source>
     <message>
       <location filename="../src/librssguard-ttrss/src/gui/formttrssfeeddetails.cpp" line="62"/>
       <source>Auth</source>
-      <translation type="unfinished">Auth</translation>
+      <translation>Увійти</translation>
     </message>
     <message>
       <location filename="../src/librssguard-ttrss/src/gui/formttrssfeeddetails.cpp" line="47"/>
       <source>Feed was added, obtaining new tree of feeds now.</source>
-      <translation type="unfinished">Feed was added, obtaining new tree of feeds now.</translation>
+      <translation>Стрічку було додано, тепер отримано нове дерево стрічок.</translation>
     </message>
     <message>
       <location filename="../src/librssguard-ttrss/src/gui/formttrssfeeddetails.cpp" line="52"/>
       <source>API returned error code %1</source>
-      <translation type="unfinished">API returned error code %1</translation>
+      <translation>API повернуло код помилки %1</translation>
     </message>
   </context>
   <context>
@@ -4240,7 +4244,7 @@ You can install it now.</source>
     <message>
       <location filename="../src/librssguard-gmail/src/gui/gmailaccountdetails.ui" line="110"/>
       <source>Only download newest X articles per feed</source>
-      <translation type="unfinished">Only download newest X articles per feed</translation>
+      <translation>Завантажувати лише X найновіших статей з кожної стрічки</translation>
     </message>
     <message>
       <location filename="../src/librssguard-gmail/src/gui/gmailaccountdetails.ui" line="134"/>
@@ -4250,7 +4254,7 @@ You can install it now.</source>
     <message>
       <location filename="../src/librssguard-gmail/src/gui/gmailaccountdetails.ui" line="163"/>
       <source>Download unread articles only</source>
-      <translation type="unfinished">Download unread articles only</translation>
+      <translation>Завантажувати лише непрочитані статті</translation>
     </message>
   </context>
   <context>
@@ -4363,7 +4367,7 @@ Login tokens expiration: %2</source>
     <message>
       <location filename="../src/librssguard-greader/src/gui/greaderaccountdetails.cpp" line="40"/>
       <source>Username for your account</source>
-      <translation type="unfinished">Username for your account</translation>
+      <translation>Ім'я користувача вашого облікового запису</translation>
     </message>
     <message>
       <location filename="../src/librssguard-greader/src/gui/greaderaccountdetails.cpp" line="41"/>
@@ -4438,7 +4442,7 @@ Login tokens expiration: %2</source>
     <message>
       <location filename="../src/librssguard-greader/src/gui/greaderaccountdetails.cpp" line="52"/>
       <source>If you select intelligent synchronization, then only not-yet-fetched or updated articles are downloaded. Network usage is greatly reduced and overall synchronization speed is greatly improved, but first feed fetching could be slow anyway if your feed contains huge number of articles.</source>
-      <translation type="unfinished">If you select intelligent synchronization, then only not-yet-fetched or updated articles are downloaded. Network usage is greatly reduced and overall synchronization speed is greatly improved, but first feed fetching could be slow anyway if your feed contains huge number of articles.</translation>
+      <translation>Якщо ви оберете розумну синхронізацію, то завантажуватимуться лише ті статті, які ще не були завантажені або оновлені. Використання мережі значно зменшується, а загальна швидкість синхронізації значно покращується, але перше завантаження все одно може бути повільним, якщо ваша стрічка містить велику кількість статей</translation>
     </message>
     <message>
       <location filename="../src/librssguard-greader/src/gui/greaderaccountdetails.cpp" line="61"/>
@@ -4504,12 +4508,12 @@ Login tokens expiration: %2</source>
     <message>
       <location filename="../src/librssguard-greader/src/gui/greaderaccountdetails.ui" line="40"/>
       <source>Download unread articles only</source>
-      <translation type="unfinished">Download unread articles only</translation>
+      <translation>Завантажувати лише непрочитані статті</translation>
     </message>
     <message>
       <location filename="../src/librssguard-greader/src/gui/greaderaccountdetails.ui" line="47"/>
       <source>Intelligent synchronization algorithm</source>
-      <translation type="unfinished">Intelligent synchronization algorithm</translation>
+      <translation>Алгоритм розумної синхронізації</translation>
     </message>
     <message>
       <location filename="../src/librssguard-greader/src/gui/greaderaccountdetails.ui" line="56"/>
@@ -4519,7 +4523,7 @@ Login tokens expiration: %2</source>
     <message>
       <location filename="../src/librssguard-greader/src/gui/greaderaccountdetails.ui" line="74"/>
       <source>Only download newest X articles per feed</source>
-      <translation type="unfinished">Only download newest X articles per feed</translation>
+      <translation>Завантажувати лише X найновіших статей з кожної стрічки</translation>
     </message>
     <message>
       <location filename="../src/librssguard-greader/src/gui/greaderaccountdetails.ui" line="95"/>
@@ -5727,12 +5731,12 @@ Login tokens expiration: %2</source>
     <message>
       <location filename="../src/librssguard/gui/toolbars/messagestoolbar.cpp" line="221"/>
       <source>Everywhere</source>
-      <translation type="unfinished">Everywhere</translation>
+      <translation>Скрізь</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/toolbars/messagestoolbar.cpp" line="222"/>
       <source>Titles only</source>
-      <translation type="unfinished">Titles only</translation>
+      <translation>Лише заголовки</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/toolbars/messagestoolbar.cpp" line="226"/>
@@ -6085,12 +6089,12 @@ Login tokens expiration: %2</source>
     <message>
       <location filename="../src/librssguard-nextcloud/src/gui/nextcloudaccountdetails.ui" line="34"/>
       <source>Download unread articles only</source>
-      <translation type="unfinished">Download unread articles only</translation>
+      <translation>Завантажувати лише непрочитані статті</translation>
     </message>
     <message>
       <location filename="../src/librssguard-nextcloud/src/gui/nextcloudaccountdetails.ui" line="43"/>
       <source>Only download newest X articles per feed</source>
-      <translation type="unfinished">Only download newest X articles per feed</translation>
+      <translation>Завантажувати лише X найновіших статей з кожної стрічки</translation>
     </message>
     <message>
       <location filename="../src/librssguard-nextcloud/src/gui/nextcloudaccountdetails.ui" line="81"/>
@@ -6830,7 +6834,7 @@ List of supported readers:</translation>
     <message>
       <location filename="../src/librssguard-reddit/src/gui/redditaccountdetails.ui" line="110"/>
       <source>Only download newest X articles per feed</source>
-      <translation type="unfinished">Only download newest X articles per feed</translation>
+      <translation>Завантажувати лише X найновіших статей з кожної стрічки</translation>
     </message>
     <message>
       <location filename="../src/librssguard-reddit/src/gui/redditaccountdetails.ui" line="134"/>
@@ -6840,7 +6844,7 @@ List of supported readers:</translation>
     <message>
       <location filename="../src/librssguard-reddit/src/gui/redditaccountdetails.ui" line="163"/>
       <source>Download unread articles only</source>
-      <translation type="unfinished">Download unread articles only</translation>
+      <translation>Завантажувати лише непрочитані статті</translation>
     </message>
     <message>
       <location filename="../src/librssguard-reddit/src/gui/redditaccountdetails.cpp" line="15"/>
@@ -9648,17 +9652,17 @@ Unread news: %2</source>
     <message>
       <location filename="../src/librssguard-ttrss/src/gui/ttrssaccountdetails.ui" line="84"/>
       <source>Download unread articles only</source>
-      <translation type="unfinished">Download unread articles only</translation>
+      <translation>Завантажувати лише непрочитані статті</translation>
     </message>
     <message>
       <location filename="../src/librssguard-ttrss/src/gui/ttrssaccountdetails.ui" line="49"/>
       <source>Only download newest X articles per feed</source>
-      <translation type="unfinished">Only download newest X articles per feed</translation>
+      <translation>Завантажувати лише X найновіших статей з кожної стрічки</translation>
     </message>
     <message>
       <location filename="../src/librssguard-ttrss/src/gui/ttrssaccountdetails.ui" line="91"/>
       <source>Intelligent synchronization algorithm</source>
-      <translation type="unfinished">Intelligent synchronization algorithm</translation>
+      <translation>Алгоритм розумної синхронізації</translation>
     </message>
     <message>
       <location filename="../src/librssguard-ttrss/src/gui/ttrssaccountdetails.ui" line="98"/>
