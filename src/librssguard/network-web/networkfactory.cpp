@@ -14,16 +14,20 @@
 #include <QTextDocument>
 #include <QTimer>
 
+#define SECS_WHEN_RETRYAFTER_MISSING 120
+
 QDateTime NetworkFactory::extractRetryAfter(const QString& retry_after_value) {
   if (retry_after_value.simplified().isEmpty()) {
-    return {};
+    return QDateTime::currentDateTimeUtc().addSecs(SECS_WHEN_RETRYAFTER_MISSING);
   }
 
   bool is_int = false;
   int seconds = retry_after_value.toInt(&is_int, 10);
 
   if (is_int) {
-    return QDateTime::currentDateTimeUtc().addSecs(seconds);
+    // Some websites (Reddit) somehow return "0" Retry-After header value.
+    // In that case make it at least two minutes to wait.
+    return QDateTime::currentDateTimeUtc().addSecs(seconds <= 0 ? SECS_WHEN_RETRYAFTER_MISSING : seconds);
   }
 
   return QDateTime::fromString(retry_after_value.simplified().replace(QSL("GMT"), QSL("+0000")),

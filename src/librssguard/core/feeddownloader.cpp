@@ -232,7 +232,8 @@ void FeedDownloader::updateOneFeed(ServiceRoot* acc,
     qWarningNN << LOGSEC_CORE << "Feed with source" << QUOTE_W_SPACE(feed->source())
                << "was signalled temporarily being down. Returning no articles for now.";
 
-    feed->setStatus(Feed::Status::NetworkError, tr("feed is in network cooldown mode"));
+    feed->setStatus(Feed::Status::NetworkError,
+                    tr("feed is in network cooldown mode due to making too many network requests"));
 
     if (update_feed_list) {
       acc->itemChanged({feed});
