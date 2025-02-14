@@ -831,7 +831,7 @@ Haga clic aquí para abrir el directorio principal.</translation>
       <location filename="../src/librssguard/network-web/downloadmanager.ui" line="38"/>
       <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_downloadmanager.h" line="72"/>
       <source>Clean up</source>
-      <translation>Depurar</translation>
+      <translation>Limpiar</translation>
     </message>
   </context>
   <context>
