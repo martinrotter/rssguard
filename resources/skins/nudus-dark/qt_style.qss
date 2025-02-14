@@ -10,7 +10,7 @@ QPlainTextEdit:focus {
 
 QToolTip {
     background-color: palette(window);
-    border: 1px solid palette(dark);
+    border: 1px solid palette(highlight);
     border-radius: 2px;
 }
 

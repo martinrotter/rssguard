@@ -453,8 +453,10 @@ void FeedDownloader::updateOneFeed(ServiceRoot* acc,
       if (network_result.m_httpCode == HTTP_CODE_TOO_MANY_REQUESTS ||
           network_result.m_httpCode == HTTP_CODE_UNAVAILABLE) {
         QDateTime safe_dt = NetworkFactory::extractRetryAfter(network_result.m_headers.value(QSL("retry-after")));
+
         m_overloadedHosts.insert(QUrl(feed->source()).host(), safe_dt);
 
+        qDebugNN << LOGSEC_CORE << "Extracted Retry-After value is" << QUOTE_W_SPACE_DOT(safe_dt);
         qWarningNN << LOGSEC_CORE << "Feed" << QUOTE_W_SPACE_DOT(feed->source())
                    << "indicates that there is too many requests right now on the same host.";
       }

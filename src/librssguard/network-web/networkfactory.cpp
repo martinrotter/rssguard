@@ -3,6 +3,7 @@
 #include "network-web/networkfactory.h"
 
 #include "definitions/definitions.h"
+#include "miscellaneous/textfactory.h"
 #include "network-web/downloader.h"
 
 #include <QEventLoop>
@@ -14,7 +15,19 @@
 #include <QTimer>
 
 QDateTime NetworkFactory::extractRetryAfter(const QString& retry_after_value) {
-  return {};
+  if (retry_after_value.simplified().isEmpty()) {
+    return {};
+  }
+
+  bool is_int = false;
+  int seconds = retry_after_value.toInt(&is_int, 10);
+
+  if (is_int) {
+    return QDateTime::currentDateTimeUtc().addSecs(seconds);
+  }
+
+  return QDateTime::fromString(retry_after_value.simplified().replace(QSL("GMT"), QSL("+0000")),
+                               QSL("ddd, dd MMM yyyy HH:mm:ss tt"));
 }
 
 QStringList NetworkFactory::extractFeedLinksFromHtmlPage(const QUrl& url, const QString& html) {
