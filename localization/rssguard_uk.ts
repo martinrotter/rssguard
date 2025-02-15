@@ -2313,70 +2313,70 @@ QtWebEngine cache folder -&gt; &quot;%7&quot;</source>
     <message>
       <location filename="../src/librssguard/services/abstract/gui/formfeeddetails.cpp" line="205"/>
       <source>Fetch articles using global interval</source>
-      <translation type="unfinished">Fetch articles using global interval</translation>
+      <translation>Вибірка статей з використанням глобального інтервалу</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/abstract/gui/formfeeddetails.cpp" line="207"/>
       <source>Fetch articles every</source>
-      <translation type="unfinished">Fetch articles every</translation>
+      <translation>Отримуйте статті щоразу</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/abstract/gui/formfeeddetails.cpp" line="209"/>
       <source>Disable auto-fetching of articles</source>
-      <translation type="unfinished">Disable auto-fetching of articles</translation>
+      <translation>Вимкнути автозавантаження статей</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/abstract/gui/formfeeddetails.cpp" line="190"/>
       <source>Cannot save feed properties</source>
-      <translation type="unfinished">Cannot save feed properties</translation>
+      <translation>Неможливо зберегти властивості стрічки</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/abstract/gui/formfeeddetails.ui" line="24"/>
       <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_formfeeddetails.h" line="223"/>
       <source>Articles</source>
-      <translation type="unfinished">Articles</translation>
+      <translation>Статті</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/abstract/gui/formfeeddetails.ui" line="50"/>
       <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_formfeeddetails.h" line="218"/>
       <source>Auto-downloading of articles</source>
-      <translation type="unfinished">Auto-downloading of articles</translation>
+      <translation>Автозавантаження статей</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/abstract/gui/formfeeddetails.ui" line="60"/>
       <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_formfeeddetails.h" line="220"/>
       <source>Select the auto-download strategy for messages of this feed. Default auto-download strategy means that new messges of this feed will be downloaded in time intervals set in application settings.</source>
-      <translation type="unfinished">Select the auto-download strategy for messages of this feed. Default auto-download strategy means that new messges of this feed will be downloaded in time intervals set in application settings.</translation>
+      <translation>Виберіть стратегію автозавантаження повідомлень цієї стрічки. Стратегія автозавантаження за замовчуванням означає, що нові повідомлення цієї стрічки будуть завантажуватися через інтервали часу, встановлені в налаштуваннях програми.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/abstract/gui/formfeeddetails.ui" line="84"/>
       <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_formfeeddetails.h" line="222"/>
       <source>Open articles via their URL automatically</source>
-      <translation type="unfinished">Open articles via their URL automatically</translation>
+      <translation>Автоматично відкривати статті за їх URL-адресою</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/abstract/gui/formfeeddetails.ui" line="97"/>
       <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_formfeeddetails.h" line="227"/>
       <source>Miscellaneous</source>
-      <translation type="unfinished">Miscellaneous</translation>
+      <translation>Інше</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/abstract/gui/formfeeddetails.ui" line="122"/>
       <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_formfeeddetails.h" line="225"/>
       <source>Disable this feed</source>
-      <translation type="unfinished">Disable this feed</translation>
+      <translation>Вимкнути цю стрічку</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/abstract/gui/formfeeddetails.ui" line="136"/>
       <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_formfeeddetails.h" line="226"/>
       <source>Right-to-left layout</source>
-      <translation type="unfinished">Right-to-left layout</translation>
+      <translation>Розкладка справа наліво</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/abstract/gui/formfeeddetails.ui" line="108"/>
       <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_formfeeddetails.h" line="224"/>
       <source>Ignore notifications for this feed</source>
-      <translation type="unfinished">Ignore notifications for this feed</translation>
+      <translation>Ігнорувати сповіщення для цієї стрічки</translation>
     </message>
   </context>
   <context>
@@ -7778,7 +7778,7 @@ Authors of this application are NOT responsible for lost data.</translation>
       <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="280"/>
       <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsfeedsmessages.h" line="632"/>
       <source>Articles</source>
-      <translation type="unfinished">Articles</translation>
+      <translation>Статті</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="286"/>
