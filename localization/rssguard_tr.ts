@@ -73,7 +73,7 @@
     <message>
       <location filename="../src/librssguard/network-web/adblock/adblockdialog.cpp" line="98"/>
       <source>OK!</source>
-      <translation>OK!</translation>
+      <translation>TMM!</translation>
     </message>
     <message>
       <location filename="../src/librssguard/network-web/adblock/adblockdialog.cpp" line="113"/>
@@ -92,7 +92,7 @@ Hata: %1</translation>
       <location filename="../src/librssguard/network-web/adblock/adblockdialog.cpp" line="88"/>
       <location filename="../src/librssguard/network-web/adblock/adblockdialog.cpp" line="115"/>
       <source>ERROR!</source>
-      <translation>Hata!</translation>
+      <translation>HATA!</translation>
     </message>
     <message>
       <location filename="../src/librssguard/network-web/adblock/adblockdialog.cpp" line="38"/>
@@ -3444,7 +3444,7 @@ QtWebEngine cache folder -&gt; &quot;%7&quot;</translation>
       <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.ui" line="339"/>
       <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmessagefiltersmanager.h" line="453"/>
       <source>Author</source>
-      <translation type="unfinished">Author</translation>
+      <translation>Yazar</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.ui" line="352"/>
@@ -5364,7 +5364,7 @@ Login tokens expiration: %2</translation>
     <message>
       <location filename="../src/librssguard/core/messagesforfiltersmodel.cpp" line="12"/>
       <source>Author</source>
-      <translation type="unfinished">Author</translation>
+      <translation>Yazar</translation>
     </message>
     <message>
       <location filename="../src/librssguard/core/messagesforfiltersmodel.cpp" line="13"/>
@@ -5422,7 +5422,7 @@ Login tokens expiration: %2</translation>
     <message>
       <location filename="../src/librssguard/core/messagesmodel.cpp" line="302"/>
       <source>Author</source>
-      <translation type="unfinished">Author</translation>
+      <translation>Yazar</translation>
     </message>
     <message>
       <location filename="../src/librssguard/core/messagesmodel.cpp" line="304"/>
@@ -7898,7 +7898,7 @@ Authors of this application are NOT responsible for lost data.</translation>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsgui.cpp" line="33"/>
       <source>Author</source>
-      <translation type="unfinished">Author</translation>
+      <translation>Yazar</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsgui.cpp" line="33"/>
