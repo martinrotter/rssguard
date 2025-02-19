@@ -1402,57 +1402,57 @@ ID do item: %5</translation>
     <message>
       <location filename="../src/librssguard/gui/feedsview.cpp" line="316"/>
       <source>Selected items cannot be edited. This is not supported (yet).</source>
-      <translation type="unfinished">Selected items cannot be edited. This is not supported (yet).</translation>
+      <translation>O item seleccionado não pode ser editado, isto (ainda) não é suportado.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/feedsview.cpp" line="326"/>
       <source>%1 does not support batch editing of multiple accounts.</source>
-      <translation type="unfinished">%1 does not support batch editing of multiple accounts.</translation>
+      <translation>%1 não suporta a edição em lote de várias contas.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/feedsview.cpp" line="344"/>
       <source>%1 does not support batch editing of items from multiple accounts.</source>
-      <translation type="unfinished">%1 does not support batch editing of items from multiple accounts.</translation>
+      <translation>%1 não suporta edição em lote de itens de várias contas.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/feedsview.cpp" line="361"/>
       <source>%1 does not support batch editing of items of varying types.</source>
-      <translation type="unfinished">%1 does not support batch editing of items of varying types.</translation>
+      <translation>%1 não suporta edição em lote de itens de vários tipos.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/feedsview.cpp" line="371"/>
       <source>Cannot edit some items</source>
-      <translation type="unfinished">Cannot edit some items</translation>
+      <translation>Impossível editar alguns itens</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/feedsview.cpp" line="372"/>
       <source>Some of selected items cannot be edited. Proceeding to edit the rest.</source>
-      <translation type="unfinished">Some of selected items cannot be edited. Proceeding to edit the rest.</translation>
+      <translation>Alguns dos itens seleccionados não podem ser editados. A prosseguir para o restante.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/feedsview.cpp" line="449"/>
       <source>Some items won&apos;t be deleted</source>
-      <translation type="unfinished">Some items won&apos;t be deleted</translation>
+      <translation>Impossível eliminar alguns itens</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/feedsview.cpp" line="450"/>
       <source>Some selected items will not be deleted, because they cannot be deleted.</source>
-      <translation type="unfinished">Some selected items will not be deleted, because they cannot be deleted.</translation>
+      <translation>Impossível eliminar alguns itens seleccionados, não se pode fazer.</translation>
     </message>
     <message numerus="yes">
       <location filename="../src/librssguard/gui/feedsview.cpp" line="457"/>
       <source>Deleting %n items</source>
-      <translation type="unfinished">
-        <numerusform>Deleting %n items</numerusform>
-        <numerusform>Deleting %n items</numerusform>
+      <translation>
+        <numerusform>A eliminar %n item</numerusform>
+        <numerusform>A eliminar %n itens</numerusform>
       </translation>
     </message>
     <message numerus="yes">
       <location filename="../src/librssguard/gui/feedsview.cpp" line="458"/>
       <source>You are about to completely delete %n items.</source>
-      <translation type="unfinished">
-        <numerusform>You are about to completely delete %n items.</numerusform>
-        <numerusform>You are about to completely delete %n items.</numerusform>
+      <translation>
+        <numerusform>Está prestes a eliminar %n item.</numerusform>
+        <numerusform>Está prestes a eliminar %n itens.</numerusform>
       </translation>
     </message>
     <message>
@@ -1473,13 +1473,13 @@ ID do item: %5</translation>
     <message>
       <location filename="../src/librssguard/gui/feedsview.cpp" line="1026"/>
       <source>Context menu for important articles</source>
-      <translation type="unfinished">Context menu for important articles</translation>
+      <translation>Menu contextual para artigos importantes</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/feedsview.cpp" line="169"/>
       <location filename="../src/librssguard/gui/feedsview.cpp" line="187"/>
       <source>Not supported by account</source>
-      <translation type="unfinished">Not supported by account</translation>
+      <translation>Não suportado pela conta</translation>
     </message>
   </context>
   <context>
@@ -1497,12 +1497,12 @@ ID do item: %5</translation>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formabout.cpp" line="53"/>
       <source>Cannot copy</source>
-      <translation type="unfinished">Cannot copy</translation>
+      <translation>Impossível copiar</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formabout.cpp" line="54"/>
       <source>Cannot copy info to clipboard.</source>
-      <translation type="unfinished">Cannot copy info to clipboard.</translation>
+      <translation>Impossível copiar informações para a área de transferência.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formabout.cpp" line="68"/>
