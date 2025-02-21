@@ -49,6 +49,7 @@ class StandardFeedDetails : public QWidget {
     void onUrlChanged(const QString& new_url);
     void onPostProcessScriptChanged(const QString& new_pp);
     void onLoadIconFromFile();
+    void onLoadIconFromUrl();
     void onUseDefaultIcon();
 
   private:
@@ -57,9 +58,11 @@ class StandardFeedDetails : public QWidget {
     void loadCategories(const QList<Category*>& categories, RootItem* root_item);
 
   private:
+    ServiceRoot* m_account;
     Ui::StandardFeedDetails m_ui;
     QMenu* m_iconMenu{};
     QAction* m_actionLoadIconFromFile{};
+    QAction* m_actionLoadIconFromUrl{};
     QAction* m_actionUseDefaultIcon{};
     QAction* m_actionFetchIcon{};
 };

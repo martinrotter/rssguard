@@ -9,12 +9,15 @@
 #include <librssguard/exceptions/networkexception.h>
 #include <librssguard/exceptions/scriptexception.h>
 #include <librssguard/miscellaneous/iconfactory.h>
+#include <librssguard/miscellaneous/settings.h>
 #include <librssguard/miscellaneous/textfactory.h>
 #include <librssguard/network-web/networkfactory.h>
 #include <librssguard/services/abstract/category.h>
 
+#include <QClipboard>
 #include <QFileDialog>
 #include <QImageReader>
+#include <QInputDialog>
 #include <QMenu>
 #include <QMimeData>
 #include <QTextCodec>
@@ -79,12 +82,16 @@ StandardFeedDetails::StandardFeedDetails(QWidget* parent) : QWidget(parent) {
   // Setup menu & actions for icon selection.
   m_iconMenu = new QMenu(tr("Icon selection"), this);
   m_actionLoadIconFromFile =
-    new QAction(qApp->icons()->fromTheme(QSL("image-x-generic")), tr("Load icon from file..."), this);
+    new QAction(qApp->icons()->fromTheme(QSL("image-x-generic")), tr("Select icon from file..."), this);
+  m_actionLoadIconFromUrl = new QAction(qApp->icons()->fromTheme(QSL("emblem-downloads"), QSL("download")),
+                                        tr("Download icon from URL..."),
+                                        this);
   m_actionUseDefaultIcon =
     new QAction(qApp->icons()->fromTheme(QSL("application-rss+xml")), tr("Use default icon from icon theme"), this);
   m_actionFetchIcon =
     new QAction(qApp->icons()->fromTheme(QSL("emblem-downloads"), QSL("download")), tr("Fetch icon from feed"), this);
   m_iconMenu->addAction(m_actionFetchIcon);
+  m_iconMenu->addAction(m_actionLoadIconFromUrl);
   m_iconMenu->addAction(m_actionLoadIconFromFile);
   m_iconMenu->addAction(m_actionUseDefaultIcon);
   m_ui.m_btnIcon->setMenu(m_iconMenu);
@@ -112,6 +119,7 @@ StandardFeedDetails::StandardFeedDetails(QWidget* parent) : QWidget(parent) {
   });
   connect(m_actionLoadIconFromFile, &QAction::triggered, this, &StandardFeedDetails::onLoadIconFromFile);
   connect(m_actionUseDefaultIcon, &QAction::triggered, this, &StandardFeedDetails::onUseDefaultIcon);
+  connect(m_actionLoadIconFromUrl, &QAction::triggered, this, &StandardFeedDetails::onLoadIconFromUrl);
 
   setTabOrder(m_ui.m_cmbParentCategory, m_ui.m_cmbType);
   setTabOrder(m_ui.m_cmbType, m_ui.m_cmbEncoding);
@@ -135,6 +143,43 @@ StandardFeedDetails::StandardFeedDetails(QWidget* parent) : QWidget(parent) {
   onDescriptionChanged({});
   onUrlChanged({});
   onPostProcessScriptChanged({});
+}
+
+void StandardFeedDetails::onLoadIconFromUrl() {
+  bool ok = false;
+  QString src = qApp->clipboard()->text().simplified().replace(QRegularExpression("\\r|\\n"), QString());
+
+  if (src.isEmpty() &&
+      (sourceType() == StandardFeed::SourceType::EmbeddedBrowser || sourceType() == StandardFeed::SourceType::Url)) {
+    src = m_ui.m_txtSource->textEdit()->toPlainText();
+  }
+
+  QString url = QInputDialog::getText(window(),
+                                      tr("Enter URL"),
+                                      tr("Enter direct URL pointing to the image"),
+                                      QLineEdit::EchoMode::Normal,
+                                      src,
+                                      &ok);
+
+  if (!ok || url.isEmpty()) {
+    return;
+  }
+
+  QList<IconLocation> icon_loc = {IconLocation(url, true), IconLocation(url, false)};
+  int timeout = qApp->settings()->value(GROUP(Feeds), SETTING(Feeds::UpdateTimeout)).toInt();
+  QPixmap pixmap;
+
+  if (NetworkFactory::downloadIcon(icon_loc, timeout, pixmap, {}, m_account->networkProxy()) ==
+      QNetworkReply::NetworkError::NoError) {
+    m_ui.m_btnIcon->setIcon(QIcon(pixmap));
+  }
+  else {
+    qApp->showGuiMessage(Notification::Event::GeneralEvent,
+                         GuiMessage(tr("Icon not fetched"),
+                                    tr("Icon was not fetched due to network error."),
+                                    QSystemTrayIcon::MessageIcon::Critical),
+                         GuiMessageDestination(true, true));
+  }
 }
 
 void StandardFeedDetails::guessIconOnly(StandardFeed::SourceType source_type,
@@ -364,6 +409,8 @@ StandardFeed::SourceType StandardFeedDetails::sourceType() const {
 }
 
 void StandardFeedDetails::prepareForNewFeed(RootItem* parent_to_select, const QString& url) {
+  m_account = parent_to_select->getParentServiceRoot();
+
   // Make sure that "default" icon is used as the default option for new
   // feed.
   m_actionUseDefaultIcon->trigger();
@@ -400,6 +447,8 @@ void StandardFeedDetails::prepareForNewFeed(RootItem* parent_to_select, const QS
 }
 
 void StandardFeedDetails::setExistingFeed(StandardFeed* feed) {
+  m_account = feed->getParentServiceRoot();
+
   m_ui.m_cmbSourceType->setCurrentIndex(m_ui.m_cmbSourceType->findData(QVariant::fromValue(feed->sourceType())));
   m_ui.m_cmbParentCategory->setCurrentIndex(m_ui.m_cmbParentCategory->findData(QVariant::fromValue(feed->parent())));
   m_ui.m_txtTitle->lineEdit()->setText(feed->title());

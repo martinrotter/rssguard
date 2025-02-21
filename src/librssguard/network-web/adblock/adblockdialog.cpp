@@ -12,7 +12,6 @@
 #include "network-web/adblock/adblockmanager.h"
 #include "network-web/webfactory.h"
 
-#include <QInputDialog>
 #include <QMenu>
 #include <QMessageBox>
 #include <QTimer>

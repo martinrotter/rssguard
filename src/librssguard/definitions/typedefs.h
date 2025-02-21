@@ -30,6 +30,8 @@ struct IconLocation {
     // The "bool" if true means that the URL is direct and download directly, if false then
     // only use its domain and download via 3rd-party service.
     bool m_isDirect;
+
+    IconLocation(const QString& url, bool is_direct) : m_url(url), m_isDirect(is_direct) {}
 };
 
 #endif // TYPEDEFS_H

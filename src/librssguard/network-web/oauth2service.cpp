@@ -34,7 +34,6 @@
 #include <utility>
 
 #include <QDebug>
-#include <QInputDialog>
 #include <QJsonDocument>
 #include <QJsonObject>
 #include <QNetworkReply>

@@ -210,7 +210,8 @@ QNetworkReply::NetworkError NetworkFactory::downloadIcon(const QList<IconLocatio
                                                false,
                                                {},
                                                {},
-                                               custom_proxy)
+                                               custom_proxy,
+                                               http2_status)
                          .m_networkError;
 
       if (network_result == QNetworkReply::NetworkError::NoError) {
@@ -225,6 +226,7 @@ QNetworkReply::NetworkError NetworkFactory::downloadIcon(const QList<IconLocatio
                                    Qt::AspectRatioMode::KeepAspectRatio,
                                    Qt::TransformationMode::SmoothTransformation);
           }
+
           break;
         }
       }
@@ -258,7 +260,8 @@ QNetworkReply::NetworkError NetworkFactory::downloadIcon(const QList<IconLocatio
                                                  false,
                                                  {},
                                                  {},
-                                                 custom_proxy)
+                                                 custom_proxy,
+                                                 http2_status)
                            .m_networkError;
 
         if (network_result == QNetworkReply::NetworkError::NoError) {
@@ -274,7 +277,7 @@ QNetworkReply::NetworkError NetworkFactory::downloadIcon(const QList<IconLocatio
                                      Qt::TransformationMode::SmoothTransformation);
             }
 
-            return network_result;
+            break;
           }
         }
       }

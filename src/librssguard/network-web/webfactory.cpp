@@ -461,8 +461,9 @@ QWebEngineProfile* WebFactory::engineProfile() const {
 
 QAction* WebFactory::engineSettingsAction() {
   if (m_engineSettings == nullptr) {
-    m_engineSettings =
-      new QAction(qApp->icons()->fromTheme(QSL("applications-internet")), tr("Web engine settings"), this);
+    m_engineSettings = new QAction(qApp->icons()->fromTheme(QSL("applications-internet"), QSL("internet-services")),
+                                   tr("Web engine settings"),
+                                   this);
     m_engineSettings->setMenu(new QMenu());
     createMenu(m_engineSettings->menu());
     connect(m_engineSettings->menu(), &QMenu::aboutToShow, this, [this]() {
