@@ -564,6 +564,16 @@ QVariant FeedsModel::data(const QModelIndex& index, int role) const {
       }
     }
 
+    case Qt::ItemDataRole::ForegroundRole: {
+      RootItem* it = itemForIndex(index);
+
+      if (it->kind() == RootItem::Kind::Feed && qobject_cast<Feed*>(it)->isSwitchedOff()) {
+        return qApp->settings()->value(GROUP(CustomSkinColors), SETTING(CustomSkinColors::Enabled)).toBool()
+        ? qApp->skins()->colorForModel(SkinEnums::PaletteColors::FgDisabledFeed)
+        : QColor("#d1d1d1");
+      }
+    }
+
     case Qt::ItemDataRole::ToolTipRole:
       if (!qApp->settings()->value(GROUP(Feeds), SETTING(Feeds::EnableTooltipsFeedsMessages)).toBool()) {
         return QVariant();
