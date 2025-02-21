@@ -94,6 +94,9 @@ namespace Feeds {
   KEY EnableTooltipsFeedsMessages;
   VALUE(bool) EnableTooltipsFeedsMessagesDef;
 
+  KEY UseRtlForFeedTitles;
+  VALUE(bool) UseRtlForFeedTitlesDef;
+
   KEY PauseFeedFetching;
   VALUE(bool) PauseFeedFetchingDef;
 
