@@ -94,6 +94,9 @@ namespace Feeds {
   KEY EnableTooltipsFeedsMessages;
   VALUE(bool) EnableTooltipsFeedsMessagesDef;
 
+  KEY HideDisabledFeeds;
+  VALUE(bool) HideDisabledFeedsDef;
+
   KEY PauseFeedFetching;
   VALUE(bool) PauseFeedFetchingDef;
 

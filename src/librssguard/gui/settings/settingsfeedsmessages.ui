@@ -266,6 +266,13 @@
          </property>
         </widget>
        </item>
+       <item row="8" column="0" colspan="2">
+        <widget class="QCheckBox" name="m_cbHideDisabledFeeds">
+         <property name="text">
+          <string>Hide disabled feeds</string>
+         </property>
+        </widget>
+       </item>
        <item row="5" column="0" colspan="2">
         <widget class="QCheckBox" name="m_cbUpdateFeedListDuringFetching">
          <property name="text">
@@ -727,6 +734,7 @@
   <tabstop>m_cbUpdateFeedListDuringFetching</tabstop>
   <tabstop>m_cbListsRestrictedShortcuts</tabstop>
   <tabstop>m_checkShowTooltips</tabstop>
+  <tabstop>m_cbHideDisabledFeeds</tabstop>
   <tabstop>m_checkRemoveReadMessagesOnExit</tabstop>
   <tabstop>m_cbArticleViewerAlwaysVisible</tabstop>
   <tabstop>m_cmbIgnoreContentsChanges</tabstop>

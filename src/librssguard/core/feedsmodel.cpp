@@ -123,14 +123,27 @@ QModelIndex FeedsModel::index(int row, int column, const QModelIndex& parent) co
   }
 
   RootItem* parent_item = itemForIndex(parent);
-  RootItem* child_item = parent_item->child(row);
+  int adjusted_row = -1;
 
-  if (child_item != nullptr) {
-    return createIndex(row, column, child_item);
+  // Check if hiding disabled feeds is enabled.
+  bool hide_disabled = qApp->settings()->value(GROUP(Feeds), SETTING(Feeds::HideDisabledFeeds)).toBool();
+
+  // Iterate through children and find the row that corresponds to the adjusted index.
+  for (int i = 0; i < parent_item->childCount(); ++i) {
+    RootItem* child = parent_item->child(i);
+
+    if (hide_disabled && child->kind() == RootItem::Kind::Feed && qobject_cast<Feed*>(child)->isSwitchedOff()) {
+      continue; // Skip disabled feeds if hiding is enabled.
+    }
+
+    adjusted_row++;
+
+    if (adjusted_row == row) {
+      return createIndex(row, column, child);
+    }
   }
-  else {
-    return QModelIndex();
-  }
+
+  return QModelIndex();
 }
 
 QModelIndex FeedsModel::parent(const QModelIndex& child) const {
@@ -153,9 +166,25 @@ int FeedsModel::rowCount(const QModelIndex& parent) const {
   if (parent.column() > 0) {
     return 0;
   }
-  else {
-    return itemForIndex(parent)->childCount();
+
+  RootItem* parent_item = itemForIndex(parent);
+  int count = 0;
+
+  // Check if hiding disabled feeds is enabled.
+  bool hide_disabled = qApp->settings()->value(GROUP(Feeds), SETTING(Feeds::HideDisabledFeeds)).toBool();
+
+  // Iterate through children and count rows based on the setting.
+  for (int i = 0; i < parent_item->childCount(); ++i) {
+    RootItem* child = parent_item->child(i);
+
+    if (hide_disabled && child->kind() == RootItem::Kind::Feed && qobject_cast<Feed*>(child)->isSwitchedOff()) {
+      continue; // Skip disabled feeds if hiding is enabled.
+    }
+
+    count++;
   }
+
+  return count;
 }
 
 int FeedsModel::countOfAllMessages() const {
@@ -550,6 +579,17 @@ bool FeedsModel::purgeArticles(const QList<Feed*>& feeds) {
 }
 
 QVariant FeedsModel::data(const QModelIndex& index, int role) const {
+
+  bool hide_disabled = qApp->settings()->value(GROUP(Feeds), SETTING(Feeds::HideDisabledFeeds)).toBool();
+
+  if (hide_disabled) {
+    RootItem* it = itemForIndex(index);
+
+    if (it->kind() == RootItem::Kind::Feed && qobject_cast<Feed*>(it)->isSwitchedOff()) {
+      return QVariant();
+    }
+  }
+
   switch (role) {
     case Qt::ItemDataRole::FontRole: {
       RootItem* it = itemForIndex(index);
