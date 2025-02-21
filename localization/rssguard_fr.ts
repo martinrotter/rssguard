@@ -1013,7 +1013,7 @@ Identifiant d&apos;élément: %5</translation>
     <message>
       <location filename="../src/librssguard/core/feeddownloader.cpp" line="236"/>
       <source>feed is in network cooldown mode due to making too many network requests</source>
-      <translation type="unfinished">feed is in network cooldown mode due to making too many network requests</translation>
+      <translation>le flux est en mode refroidissement du réseau en raison du trop grand nombre de requêtes réseau</translation>
     </message>
   </context>
   <context>
