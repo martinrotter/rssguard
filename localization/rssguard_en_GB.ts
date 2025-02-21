@@ -1013,7 +1013,7 @@ Item ID: %5</translation>
     <message>
       <location filename="../src/librssguard/core/feeddownloader.cpp" line="236"/>
       <source>feed is in network cooldown mode due to making too many network requests</source>
-      <translation type="unfinished">feed is in network cooldown mode due to making too many network requests</translation>
+      <translation>feed is in network cooldown mode due to making too many network requests</translation>
     </message>
   </context>
   <context>
@@ -8614,7 +8614,7 @@ Also, relaunch &quot;Settings&quot; dialog after you install Node.js.</translati
     <message>
       <location filename="../src/librssguard-standard/src/gui/standardaccountdetails.ui" line="59"/>
       <source>Feed fetch spacing</source>
-      <translation type="unfinished">Feed fetch spacing</translation>
+      <translation>Feed fetch spacing</translation>
     </message>
     <message>
       <location filename="../src/librssguard-standard/src/gui/standardaccountdetails.cpp" line="16"/>
@@ -8636,7 +8636,7 @@ Also, relaunch &quot;Settings&quot; dialog after you install Node.js.</translati
       <source>When you fetch many feeds from same website/host, then %1 could be (likely temporarily) banned for making too many network requests at once.
 
 If that is the case, then you need to set some time gaps when fetching those feeds.</source>
-      <translation type="unfinished">When you fetch many feeds from same website/host, then %1 could be (likely temporarily) banned for making too many network requests at once.
+      <translation>When you fetch many feeds from the same website/host, then %1 could be (likely temporarily) banned for making too many network requests at once.
 
 If that is the case, then you need to set some time gaps when fetching those feeds.</translation>
     </message>
@@ -8679,14 +8679,14 @@ If that is the case, then you need to set some time gaps when fetching those fee
     <message>
       <location filename="../src/librssguard-standard/src/gui/standardaccountdetails.cpp" line="83"/>
       <source> = no spacing</source>
-      <translation type="unfinished"> = no spacing</translation>
+      <translation> = no spacing</translation>
     </message>
     <message numerus="yes">
       <location filename="../src/librssguard-standard/src/gui/standardaccountdetails.cpp" line="86"/>
       <source> seconds</source>
-      <translation type="unfinished">
-        <numerusform> seconds</numerusform>
-        <numerusform> seconds</numerusform>
+      <translation>
+        <numerusform>second</numerusform>
+        <numerusform>seconds</numerusform>
       </translation>
     </message>
   </context>
@@ -8838,22 +8838,22 @@ Use raw XML saving: %4</translation>
     <message>
       <location filename="../src/librssguard-standard/src/gui/standardfeeddetails.cpp" line="158"/>
       <source>Enter URL</source>
-      <translation type="unfinished">Enter URL</translation>
+      <translation>Enter URL</translation>
     </message>
     <message>
       <location filename="../src/librssguard-standard/src/gui/standardfeeddetails.cpp" line="159"/>
       <source>Enter direct URL pointing to the image</source>
-      <translation type="unfinished">Enter direct URL pointing to the image</translation>
+      <translation>Enter direct URL pointing to the image</translation>
     </message>
     <message>
       <location filename="../src/librssguard-standard/src/gui/standardfeeddetails.cpp" line="178"/>
       <source>Icon not fetched</source>
-      <translation type="unfinished">Icon not fetched</translation>
+      <translation>Icon not fetched</translation>
     </message>
     <message>
       <location filename="../src/librssguard-standard/src/gui/standardfeeddetails.cpp" line="179"/>
       <source>Icon was not fetched due to network error.</source>
-      <translation type="unfinished">Icon was not fetched due to network error.</translation>
+      <translation>Icon was not fetched due to network error.</translation>
     </message>
     <message>
       <location filename="../src/librssguard-standard/src/gui/standardfeeddetails.cpp" line="209"/>
@@ -8998,12 +8998,12 @@ Use raw XML saving: %4</translation>
     <message>
       <location filename="../src/librssguard-standard/src/gui/standardfeeddetails.cpp" line="85"/>
       <source>Select icon from file...</source>
-      <translation type="unfinished">Select icon from file...</translation>
+      <translation>Select icon from file...</translation>
     </message>
     <message>
       <location filename="../src/librssguard-standard/src/gui/standardfeeddetails.cpp" line="87"/>
       <source>Download icon from URL...</source>
-      <translation type="unfinished">Download icon from URL...</translation>
+      <translation>Download icon from URL...</translation>
     </message>
     <message>
       <location filename="../src/librssguard-standard/src/gui/standardfeeddetails.cpp" line="357"/>
