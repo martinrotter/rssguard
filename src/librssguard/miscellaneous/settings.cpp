@@ -98,6 +98,9 @@ DVALUE(char*) Feeds::CountFormatDef = "(%unread)";
 DKEY Feeds::EnableTooltipsFeedsMessages = "show_tooltips";
 DVALUE(bool) Feeds::EnableTooltipsFeedsMessagesDef = true;
 
+DKEY Feeds::UseRtlForFeedTitles = "use_rtl_for_feed_titles";
+DVALUE(bool) Feeds::UseRtlForFeedTitlesDef = false;
+
 DKEY Feeds::PauseFeedFetching = "pause_feed_fetching";
 DVALUE(bool) Feeds::PauseFeedFetchingDef = false;
 
