@@ -44,7 +44,7 @@
       <location filename="../src/librssguard/services/abstract/gui/accountdetails.ui" line="40"/>
       <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_accountdetails.h" line="82"/>
       <source>Labels</source>
-      <translation>Rótulos</translation>
+      <translation>Etiquetas</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/abstract/gui/accountdetails.ui" line="47"/>
@@ -4581,27 +4581,27 @@ Expiração: %2</translation>
     <message>
       <location filename="../src/librssguard-greader/src/gui/greaderfeeddetails.cpp" line="13"/>
       <source>Full feed URL including scheme</source>
-      <translation>URL completo do feed incluindo esquema</translation>
+      <translation>URL completo do canal, incluindo esquema</translation>
     </message>
     <message>
       <location filename="../src/librssguard-greader/src/gui/greaderfeeddetails.cpp" line="14"/>
       <source>Provide URL for your feed.</source>
-      <translation>Forneça o URL do seu feed.</translation>
+      <translation>Forneça o URL do seu canal.</translation>
     </message>
     <message>
       <location filename="../src/librssguard-greader/src/gui/greaderfeeddetails.cpp" line="26"/>
       <source>The URL is ok.</source>
-      <translation>A URL está correta.</translation>
+      <translation>O URL está correcto.</translation>
     </message>
     <message>
       <location filename="../src/librssguard-greader/src/gui/greaderfeeddetails.cpp" line="32"/>
       <source>The URL does not meet standard pattern. Does your URL start with &quot;http://&quot; or &quot;https://&quot; prefix.</source>
-      <translation>A URL não atende o padrão normal. Sua URL inicia com &quot;http://&quot; ou &quot;https://&quot;.</translation>
+      <translation>O URL não cumpre o padrão normal. Inicia com "http://" ou "https://".</translation>
     </message>
     <message>
       <location filename="../src/librssguard-greader/src/gui/greaderfeeddetails.cpp" line="36"/>
       <source>The URL is empty.</source>
-      <translation>A URL está vazia.</translation>
+      <translation>O URL está vazio.</translation>
     </message>
     <message>
       <location filename="../src/librssguard-greader/src/gui/greaderfeeddetails.cpp" line="42"/>
@@ -4635,7 +4635,7 @@ Expiração: %2</translation>
     <message>
       <location filename="../src/librssguard-greader/src/greadernetwork.cpp" line="1219"/>
       <source>Click this to login again. Error is: &apos;%1&apos;</source>
-      <translation>Clique aqui para fazer login novamente. O erro é: &apos;%1&apos;</translation>
+      <translation>Clique aqui para reiniciar sessão. O erro é: ";%1"</translation>
     </message>
     <message>
       <location filename="../src/librssguard-greader/src/greadernetwork.cpp" line="1231"/>
@@ -4645,7 +4645,7 @@ Expiração: %2</translation>
     <message>
       <location filename="../src/librssguard-greader/src/greadernetwork.cpp" line="1232"/>
       <source>Click this to login again.</source>
-      <translation>Clique aqui para fazer login novamente.</translation>
+      <translation>Clique aqui para reiniciar sessão.</translation>
     </message>
     <message>
       <location filename="../src/librssguard-greader/src/greadernetwork.cpp" line="1222"/>
@@ -4722,12 +4722,12 @@ Expiração: %2</translation>
     <message>
       <location filename="../src/librssguard-greader/src/greaderserviceroot.cpp" line="367"/>
       <source>Cannot add item</source>
-      <translation>Não é possível adicionar o item</translation>
+      <translation>Impossível adicionar o item</translation>
     </message>
     <message>
       <location filename="../src/librssguard-greader/src/greaderserviceroot.cpp" line="368"/>
       <source>Cannot add feed because another critical operation is ongoing.</source>
-      <translation>Não é possível adicionar feeds porque outra operação crítica está em curso.</translation>
+      <translation>Impossível adicionar canais por estar em curso outra operação crítica.</translation>
     </message>
   </context>
   <context>
@@ -4757,12 +4757,12 @@ Expiração: %2</translation>
     <message>
       <location filename="../src/librssguard/miscellaneous/iofactory.cpp" line="151"/>
       <source>Cannot open file &apos;%1&apos; for reading.</source>
-      <translation>Não foi possível abrir o arquivo &apos;%1&apos; para leitura.</translation>
+      <translation>Impossível abrir o ficheiro "%1" para leitura.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/miscellaneous/iofactory.cpp" line="163"/>
       <source>Cannot open file &apos;%1&apos; for writting.</source>
-      <translation>Não foi possível abrir o arquivo &apos;%1&apos; para escrita.</translation>
+      <translation>Impossível abrir o ficheiro "%1" para escrita.</translation>
     </message>
   </context>
   <context>
@@ -4792,7 +4792,7 @@ Expiração: %2</translation>
     <message>
       <location filename="../src/librssguard/gui/reusable/labelsmenu.cpp" line="15"/>
       <source>Labels</source>
-      <translation>Rótulos</translation>
+      <translation>Etiquetas</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/reusable/labelsmenu.cpp" line="19"/>
@@ -4805,12 +4805,12 @@ Expiração: %2</translation>
     <message>
       <location filename="../src/librssguard/services/abstract/labelsnode.cpp" line="19"/>
       <source>Labels</source>
-      <translation>Rótulos</translation>
+      <translation>Etiquetas</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/abstract/labelsnode.cpp" line="20"/>
       <source>You can see all your labels (tags) here.</source>
-      <translation>Você pode ver todos os seus rótulos (tags) aqui.</translation>
+      <translation>Pode ver aqui todas as suas etiquetas.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/abstract/labelsnode.cpp" line="86"/>
@@ -4820,7 +4820,7 @@ Expiração: %2</translation>
     <message>
       <location filename="../src/librssguard/services/abstract/labelsnode.cpp" line="115"/>
       <source>This account does not allow you to create labels.</source>
-      <translation>Esta conta não permite que você crie rótulos.</translation>
+      <translation>Esta conta não permite a criação de etiquetas.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/abstract/labelsnode.cpp" line="116"/>
