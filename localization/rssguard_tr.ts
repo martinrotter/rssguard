@@ -129,19 +129,19 @@ Hata: %1</translation>
       <location filename="../src/librssguard/network-web/adblock/adblockdialog.ui" line="64"/>
       <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_adblockdialog.h" line="150"/>
       <source>Add your direct links to filter lists here (one URL per line)</source>
-      <translation>Doğrudan bağlantılarınızı bu filtre listesine ekleyin. (Satır başı bir URL)</translation>
+      <translation>Doğrudan bağlantılarınızı bu süzgeç listesine ekleyin (her satır bir URL)</translation>
     </message>
     <message>
       <location filename="../src/librssguard/network-web/adblock/adblockdialog.ui" line="78"/>
       <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_adblockdialog.h" line="153"/>
       <source>Custom filters</source>
-      <translation>Özel filtreler</translation>
+      <translation>Özel süzgeçler</translation>
     </message>
     <message>
       <location filename="../src/librssguard/network-web/adblock/adblockdialog.ui" line="84"/>
       <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_adblockdialog.h" line="152"/>
       <source>Add your custom filters here (one filter per line)</source>
-      <translation>Özel filtrelerinizi buraya ekleyin. (Satır başı bir filtre)</translation>
+      <translation>Özel süzgeçlerinizi buraya ekleyin (her satır bir süzgeç)</translation>
     </message>
   </context>
   <context>
@@ -149,7 +149,7 @@ Hata: %1</translation>
     <message>
       <location filename="../src/librssguard/network-web/adblock/adblockicon.cpp" line="12"/>
       <source>AdBlock lets you block unwanted content on web pages</source>
-      <translation>AdBlock, web'de gezinirken karşınıza çıkan istenmeyen içeriği engellemenizi sağlar</translation>
+      <translation>AdBlock, internet sayfalarında istenmeyen içeriği engellemenizi sağlar</translation>
     </message>
     <message>
       <location filename="../src/librssguard/network-web/adblock/adblockicon.cpp" line="45"/>
@@ -162,12 +162,12 @@ Hata: %1</translation>
     <message>
       <location filename="../src/librssguard/network-web/adblock/adblockmanager.cpp" line="199"/>
       <source>Failed to setup filters and start server: %1.</source>
-      <translation>Filtrelerin kurulumu ve sunucunun başlatılması başarısız oldu: %1.</translation>
+      <translation>Süzgeç kurulumu ve sunucunun başlatılması başarısız oldu: %1.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/network-web/adblock/adblockmanager.cpp" line="377"/>
       <source>failed to download filter list &apos;%1&apos;</source>
-      <translation>filtre listesinin indirilmesi başarısız oldu: &apos;%1&apos;</translation>
+      <translation>&apos;%1&apos; süzgeç listesi indirilemedi</translation>
     </message>
   </context>
   <context>
@@ -352,7 +352,7 @@ Lütfen bu bildirim penceresine tıklayarak bu versiyondaki yenilikleri inceleyi
     <message>
       <location filename="../src/librssguard/gui/reusable/articleamountcontrol.cpp" line="11"/>
       <source>Setting any limitations here will instruct %1 to ignore some incoming articles. The logic runs AFTER any article filters so even if your article filter accepts particular article, it can still subsequently ignored and not added to database.</source>
-      <translation type="unfinished">Setting any limitations here will instruct %1 to ignore some incoming articles. The logic runs AFTER any article filters so even if your article filter accepts particular article, it can still subsequently ignored and not added to database.</translation>
+      <translation>Burada herhangi bir sınırlamayı ayarlamak, %1'e gelen bazı yazıları görmezden gelmesi için talimat verecektir. Mantık, herhangi bir yazı süzgecinden sonra çalışır, böylece yazı süzgeciniz belirli bir yazıyı kabul etse bile, daha sonra göz ardı edilebilir ve veri tabanına eklenemez.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/reusable/articleamountcontrol.cpp" line="16"/>
@@ -999,11 +999,11 @@ Active message filters: %2
 Status: %3
 Source: &lt;a href=&quot;%4&quot;&gt;%4&lt;/a&gt;
 Item ID: %5</source>
-      <translation type="unfinished">Auto-update status: %1
-Active message filters: %2
-Status: %3
-Source: &lt;a href=&quot;%4&quot;&gt;%4&lt;/a&gt;
-Item ID: %5</translation>
+      <translation>Otomatik güncelleme durumu: %1
+Etkin mesaj süzgeçleri: %2
+Durum: %3
+Kaynak: &lt;a href=&quot;%4&quot;&gt;%4&lt;/a&gt;
+Öge kimliği: %5</translation>
     </message>
   </context>
   <context>
@@ -1029,7 +1029,7 @@ Item ID: %5</translation>
     <message>
       <location filename="../src/librssguard/gui/feedmessageviewer.cpp" line="245"/>
       <source>Filtered feed list</source>
-      <translation>Filtrelenmiş akış listesi</translation>
+      <translation>Süzülmüş akış listesi</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/feedmessageviewer.cpp" line="246"/>
@@ -1039,12 +1039,12 @@ Item ID: %5</translation>
     <message>
       <location filename="../src/librssguard/gui/feedmessageviewer.cpp" line="263"/>
       <source>Filtered article list</source>
-      <translation>Filtrelenmiş makale listesi</translation>
+      <translation>Süzülmüş makale listesi</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/feedmessageviewer.cpp" line="264"/>
       <source>Cannot select article as it seems your article list is filtered or the article was deleted.</source>
-      <translation type="unfinished">Cannot select article as it seems your article list is filtered or the article was deleted.</translation>
+      <translation>Makale listeniz süzülmüş veya makale silindiği için seçilemiyor.</translation>
     </message>
   </context>
   <context>
@@ -2987,7 +2987,7 @@ QtWebEngine cache folder -&gt; &quot;%7&quot;</translation>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="799"/>
       <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="789"/>
       <source>Article &amp;filters</source>
-      <translation type="unfinished">Article &amp;filters</translation>
+      <translation>Makale &amp;süzgeçleri</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="807"/>
@@ -3216,24 +3216,24 @@ QtWebEngine cache folder -&gt; &quot;%7&quot;</translation>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.cpp" line="317"/>
       <source>ACCEPTED</source>
-      <translation type="unfinished">ACCEPTED</translation>
+      <translation>ONAYLANDI</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.cpp" line="317"/>
       <source>REJECTED</source>
-      <translation type="unfinished">REJECTED</translation>
+      <translation>REDDEDİLDİ</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.cpp" line="330"/>
       <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.cpp" line="331"/>
       <source>yes</source>
-      <translation type="unfinished">yes</translation>
+      <translation>evet</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.cpp" line="330"/>
       <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.cpp" line="331"/>
       <source>no</source>
-      <translation type="unfinished">no</translation>
+      <translation>hayır</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.cpp" line="601"/>
@@ -3249,7 +3249,7 @@ QtWebEngine cache folder -&gt; &quot;%7&quot;</translation>
       <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.cpp" line="246"/>
       <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.cpp" line="620"/>
       <source>Error</source>
-      <translation type="unfinished">Error</translation>
+      <translation>Hata</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.cpp" line="621"/>
@@ -8706,12 +8706,12 @@ If that is the case, then you need to set some time gaps when fetching those fee
     <message>
       <location filename="../src/librssguard-standard/src/standardfeed.cpp" line="115"/>
       <source>yes</source>
-      <translation type="unfinished">yes</translation>
+      <translation>evet</translation>
     </message>
     <message>
       <location filename="../src/librssguard-standard/src/standardfeed.cpp" line="115"/>
       <source>no</source>
-      <translation type="unfinished">no</translation>
+      <translation>hayır</translation>
     </message>
     <message>
       <location filename="../src/librssguard-standard/src/standardfeed.cpp" line="230"/>
