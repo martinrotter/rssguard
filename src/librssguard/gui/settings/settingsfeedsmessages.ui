@@ -266,6 +266,13 @@
          </property>
         </widget>
        </item>
+       <item row="10" column="0" colspan="2">
+        <widget class="QCheckBox" name="m_checkUseRtlForFeedTitles">
+         <property name="text">
+          <string>Use RTL direction for feed titles</string>
+         </property>
+        </widget>
+       </item>
        <item row="5" column="0" colspan="2">
         <widget class="QCheckBox" name="m_cbUpdateFeedListDuringFetching">
          <property name="text">
@@ -727,6 +734,7 @@
   <tabstop>m_cbUpdateFeedListDuringFetching</tabstop>
   <tabstop>m_cbListsRestrictedShortcuts</tabstop>
   <tabstop>m_checkShowTooltips</tabstop>
+  <tabstop>m_checkUseRtlForFeedTitles</tabstop>
   <tabstop>m_checkRemoveReadMessagesOnExit</tabstop>
   <tabstop>m_cbArticleViewerAlwaysVisible</tabstop>
   <tabstop>m_cmbIgnoreContentsChanges</tabstop>

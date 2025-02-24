@@ -78,7 +78,8 @@ QVariant Feed::data(int column, int role) const {
 
     case TEXT_DIRECTION_ROLE: {
       if (column == FDS_MODEL_TITLE_INDEX) {
-        return isRtl() ? Qt::LayoutDirection::RightToLeft : Qt::LayoutDirection::LayoutDirectionAuto;
+        const bool m_useRtlForFeedTitles = qApp->settings()->value(GROUP(Feeds), SETTING(Feeds::UseRtlForFeedTitles)).toBool();
+        return isRtl() && m_useRtlForFeedTitles ? Qt::LayoutDirection::RightToLeft : Qt::LayoutDirection::LayoutDirectionAuto;
       }
       else {
         return Qt::LayoutDirection::LayoutDirectionAuto;
