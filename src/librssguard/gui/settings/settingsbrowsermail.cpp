@@ -3,6 +3,7 @@
 #include "gui/settings/settingsbrowsermail.h"
 
 #include "exceptions/applicationexception.h"
+#include "gui/dialogs/filedialog.h"
 #include "gui/reusable/networkproxydetails.h"
 #include "miscellaneous/application.h"
 #include "miscellaneous/externaltool.h"
@@ -12,7 +13,6 @@
 #include "network-web/silentnetworkaccessmanager.h"
 #include "network-web/webfactory.h"
 
-#include <QFileDialog>
 #include <QInputDialog>
 #include <QNetworkProxy>
 
@@ -111,15 +111,15 @@ void SettingsBrowserMail::changeDefaultBrowserArguments(int index) {
 }
 
 void SettingsBrowserMail::selectBrowserExecutable() {
-  const QString executable_file = QFileDialog::getOpenFileName(this,
-                                                               tr("Select web browser executable"),
-                                                               qApp->homeFolder(),
+  const QString executable_file = FileDialog::openFileName(this,
+                                                           tr("Select web browser executable"),
+                                                           qApp->homeFolder(),
 
   //: File filter for external browser selection dialog.
 #if defined(Q_OS_UNIX) && !defined(Q_OS_MACOS)
-                                                               tr("Executables (*)"));
+                                                           tr("Executables (*)"));
 #else
-                                                               tr("Executables (*.*)"));
+                                                           tr("Executables (*.*)"));
 #endif
 
   if (!executable_file.isEmpty()) {
@@ -156,15 +156,15 @@ void SettingsBrowserMail::changeDefaultEmailArguments(int index) {
 }
 
 void SettingsBrowserMail::selectEmailExecutable() {
-  QString executable_file = QFileDialog::getOpenFileName(this,
-                                                         tr("Select e-mail executable"),
-                                                         qApp->homeFolder(),
+  QString executable_file = FileDialog::openFileName(this,
+                                                     tr("Select e-mail executable"),
+                                                     qApp->homeFolder(),
 
   //: File filter for external e-mail selection dialog.
 #if defined(Q_OS_UNIX) && !defined(Q_OS_MACOS)
-                                                         tr("Executables (*)"));
+                                                     tr("Executables (*)"));
 #else
-                                                         tr("Executables (*.*)"));
+                                                     tr("Executables (*.*)"));
 #endif
 
   if (!executable_file.isEmpty()) {
@@ -303,14 +303,16 @@ void SettingsBrowserMail::addExternalTool() {
 }
 
 ExternalTool SettingsBrowserMail::tweakExternalTool(const ExternalTool& tool) const {
-  QString executable_file = QFileDialog::getOpenFileName(window(),
-                                                         tr("Select external tool"),
-                                                         tool.executable(),
+  QString executable_file = FileDialog::openFileName(window(),
+                                                     tr("Select external tool"),
+                                                     tool.executable(),
 #if defined(Q_OS_WIN)
-                                                         tr("Executables (*.*)"));
+                                                     tr("Executables (*.*)"),
 #else
-                                                         tr("Executables (*)"));
+                                                     tr("Executables (*)"),
 #endif
+                                                     nullptr,
+                                                     GENERAL_REMEMBERED_PATH);
 
   if (!executable_file.isEmpty()) {
     executable_file = QDir::toNativeSeparators(executable_file);

@@ -2,11 +2,11 @@
 
 #include "gui/notifications/singlenotificationeditor.h"
 
+#include "gui/dialogs/filedialog.h"
 #include "miscellaneous/application.h"
 #include "miscellaneous/iconfactory.h"
 
 #include <QCompleter>
-#include <QFileDialog>
 #include <QFileSystemModel>
 
 SingleNotificationEditor::SingleNotificationEditor(const Notification& notification, QWidget* parent)
@@ -44,10 +44,12 @@ Notification SingleNotificationEditor::notification() const {
 }
 
 void SingleNotificationEditor::selectSoundFile() {
-  auto fil = QFileDialog::getOpenFileName(window(),
-                                          tr("Select sound file"),
-                                          qApp->homeFolder(),
-                                          tr("WAV files (*.wav);;MP3 files (*.mp3)"));
+  auto fil = FileDialog::openFileName(window(),
+                                      tr("Select sound file"),
+                                      qApp->homeFolder(),
+                                      tr("WAV files (*.wav);;MP3 files (*.mp3)"),
+                                      nullptr,
+                                      GENERAL_REMEMBERED_PATH);
 
   if (!fil.isEmpty()) {
     m_ui.m_txtSound->setText(fil);

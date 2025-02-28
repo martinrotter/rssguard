@@ -2,6 +2,7 @@
 
 #include "network-web/downloadmanager.h"
 
+#include "gui/dialogs/filedialog.h"
 #include "gui/dialogs/formmain.h"
 #include "gui/messagebox.h"
 #include "gui/tabwidget.h"
@@ -17,7 +18,6 @@
 
 #include <QDebug>
 #include <QDesktopServices>
-#include <QFileDialog>
 #include <QFileIconProvider>
 #include <QHeaderView>
 #include <QMessageBox>
@@ -109,8 +109,11 @@ void DownloadItem::getFileName() {
   if (m_requestFileName) {
     // User must provide the path where he wants to save downloaded file in.
     m_gettingFileName = true;
-    chosen_filename =
-      QFileDialog::getSaveFileName(this, tr("Select destination for downloaded file"), filename_for_prompt);
+    chosen_filename = FileDialog::saveFileName(this,
+                                               tr("Select destination for downloaded file"),
+                                               filename_for_prompt,
+                                               QString(),
+                                               nullptr);
     m_gettingFileName = false;
 
     if (chosen_filename.isEmpty()) {

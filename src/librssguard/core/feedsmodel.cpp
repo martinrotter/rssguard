@@ -562,11 +562,6 @@ QVariant FeedsModel::data(const QModelIndex& index, int role) const {
                      : (is_striked ? m_normalStrikedFont : m_normalFont);
     }
 
-    case Qt::ItemDataRole::ToolTipRole:
-      if (!qApp->settings()->value(GROUP(Feeds), SETTING(Feeds::EnableTooltipsFeedsMessages)).toBool()) {
-        return QVariant();
-      }
-
     case Qt::ItemDataRole::DecorationRole: {
       if (index.column() == FDS_MODEL_TITLE_INDEX && m_updateDuringFetching) {
         RootItem* it = itemForIndex(index);
@@ -576,6 +571,12 @@ QVariant FeedsModel::data(const QModelIndex& index, int role) const {
         }
       }
     }
+
+    case Qt::ItemDataRole::ToolTipRole:
+      // NOTE: Fall-down to "default" if condition not met.
+      if (!qApp->settings()->value(GROUP(Feeds), SETTING(Feeds::EnableTooltipsFeedsMessages)).toBool()) {
+        return QVariant();
+      }
 
     default:
       return itemForIndex(index)->data(index.column(), role);

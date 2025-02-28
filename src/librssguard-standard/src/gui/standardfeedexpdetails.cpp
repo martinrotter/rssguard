@@ -13,7 +13,6 @@
 #include <librssguard/network-web/networkfactory.h>
 #include <librssguard/services/abstract/category.h>
 
-#include <QFileDialog>
 #include <QImageReader>
 #include <QMenu>
 #include <QMimeData>

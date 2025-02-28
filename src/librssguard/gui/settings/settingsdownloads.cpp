@@ -2,12 +2,11 @@
 
 #include "gui/settings/settingsdownloads.h"
 
+#include "gui/dialogs/filedialog.h"
 #include "miscellaneous/application.h"
 #include "miscellaneous/iconfactory.h"
 #include "miscellaneous/settings.h"
 #include "network-web/downloadmanager.h"
-
-#include <QFileDialog>
 
 SettingsDownloads::SettingsDownloads(Settings* settings, QWidget* parent)
   : SettingsPanel(settings, parent), m_ui(new Ui::SettingsDownloads) {
@@ -30,9 +29,9 @@ QIcon SettingsDownloads::icon() const {
 }
 
 void SettingsDownloads::selectDownloadsDirectory() {
-  const QString target_directory = QFileDialog::getExistingDirectory(this,
-                                                                     tr("Select downloads target directory"),
-                                                                     m_ui->m_txtDownloadsTargetDirectory->text());
+  const QString target_directory = FileDialog::existingDirectory(this,
+                                                                 tr("Select downloads target directory"),
+                                                                 m_ui->m_txtDownloadsTargetDirectory->text());
 
   if (!target_directory.isEmpty()) {
     m_ui->m_txtDownloadsTargetDirectory->setText(QDir::toNativeSeparators(target_directory));

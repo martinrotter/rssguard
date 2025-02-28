@@ -41,7 +41,10 @@ class SkinEnums : public QObject {
       FgNewMessages = 32,
 
       // Foreground color of selected items with new articles.
-      FgSelectedNewMessages = 64
+      FgSelectedNewMessages = 64,
+
+      // Foreground color of disabled items.
+      FgDisabledFeed = 128
     };
 
     static QString palleteColorText(PaletteColors col);

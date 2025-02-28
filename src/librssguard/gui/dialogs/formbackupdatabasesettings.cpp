@@ -3,6 +3,7 @@
 #include "gui/dialogs/formbackupdatabasesettings.h"
 
 #include "exceptions/applicationexception.h"
+#include "gui/dialogs/filedialog.h"
 #include "gui/guiutilities.h"
 #include "miscellaneous/application.h"
 #include "miscellaneous/iconfactory.h"
@@ -11,7 +12,6 @@
 #include <QCheckBox>
 #include <QDateTime>
 #include <QDialogButtonBox>
-#include <QFileDialog>
 #include <QPushButton>
 
 FormBackupDatabaseSettings::FormBackupDatabaseSettings(QWidget* parent)
@@ -75,9 +75,10 @@ void FormBackupDatabaseSettings::selectFolderInitial() {
 
 void FormBackupDatabaseSettings::selectFolder(QString path) {
   if (path.isEmpty()) {
-    path = QFileDialog::getExistingDirectory(this,
-                                             tr("Select destination directory"),
-                                             m_ui->m_lblSelectFolder->label()->text());
+    path = FileDialog::existingDirectory(this,
+                                         tr("Select destination directory"),
+                                         m_ui->m_lblSelectFolder->label()->text(),
+                                         GENERAL_REMEMBERED_PATH);
   }
 
   if (!path.isEmpty()) {

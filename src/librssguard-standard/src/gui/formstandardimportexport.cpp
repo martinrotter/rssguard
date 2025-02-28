@@ -6,12 +6,12 @@
 #include "src/standardserviceroot.h"
 
 #include <librssguard/exceptions/ioexception.h>
+#include <librssguard/gui/dialogs/filedialog.h>
 #include <librssguard/gui/guiutilities.h>
 #include <librssguard/miscellaneous/application.h>
 #include <librssguard/miscellaneous/iconfactory.h>
 #include <librssguard/services/abstract/category.h>
 
-#include <QFileDialog>
 #include <QTextStream>
 
 FormStandardImportExport::FormStandardImportExport(StandardServiceRoot* service_root, QWidget* parent)
@@ -175,7 +175,7 @@ void FormStandardImportExport::selectExportFile(bool without_dialog) {
     filter += QSL(";;");
     filter += filter_txt_url_per_line;
     selected_file =
-      QFileDialog::getSaveFileName(this, tr("Select file for feeds export"), the_file, filter, &selected_filter);
+      FileDialog::saveFileName(this, tr("Select file for feeds export"), the_file, filter, &selected_filter);
   }
   else {
     selected_file = the_file;
@@ -218,11 +218,12 @@ void FormStandardImportExport::selectImportFile() {
   // Add more filters here.
   filter += filter_opml20 + QSL(";;") + filter_txt_url_per_line;
 
-  const QString selected_file = QFileDialog::getOpenFileName(this,
-                                                             tr("Select file for feeds import"),
-                                                             qApp->homeFolder(),
-                                                             filter,
-                                                             &selected_filter);
+  const QString selected_file = FileDialog::openFileName(this,
+                                                         tr("Select file for feeds import"),
+                                                         qApp->homeFolder(),
+                                                         filter,
+                                                         &selected_filter,
+                                                         GENERAL_REMEMBERED_PATH);
 
   if (!selected_file.isEmpty()) {
     if (selected_filter == filter_opml20) {
