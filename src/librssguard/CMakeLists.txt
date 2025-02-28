@@ -63,6 +63,8 @@ set(SOURCES
   exceptions/processexception.h
   exceptions/scriptexception.cpp
   exceptions/scriptexception.h
+  gui/dialogs/filedialog.cpp
+  gui/dialogs/filedialog.h
   gui/dialogs/formabout.cpp
   gui/dialogs/formabout.h
   gui/dialogs/formaddaccount.cpp

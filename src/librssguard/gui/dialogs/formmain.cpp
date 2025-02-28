@@ -36,7 +36,6 @@
 
 #include <QClipboard>
 #include <QCloseEvent>
-#include <QFileDialog>
 #include <QRect>
 #include <QScopedPointer>
 #include <QTimer>

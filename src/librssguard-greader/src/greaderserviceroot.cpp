@@ -11,14 +11,13 @@
 
 #include <librssguard/database/databasequeries.h>
 #include <librssguard/definitions/definitions.h>
+#include <librssguard/gui/dialogs/filedialog.h>
 #include <librssguard/gui/messagebox.h>
 #include <librssguard/miscellaneous/application.h>
 #include <librssguard/miscellaneous/iconfactory.h>
 #include <librssguard/miscellaneous/mutex.h>
 #include <librssguard/miscellaneous/textfactory.h>
 #include <librssguard/network-web/oauth2service.h>
-
-#include <QFileDialog>
 
 GreaderServiceRoot::GreaderServiceRoot(RootItem* parent) : ServiceRoot(parent), m_network(new GreaderNetwork(this)) {
   setIcon(GreaderEntryPoint().icon());
@@ -160,10 +159,12 @@ QString GreaderServiceRoot::serviceToString(Service service) {
 
 void GreaderServiceRoot::importFeeds() {
   const QString filter_opml20 = tr("OPML 2.0 files (*.opml *.xml)");
-  const QString selected_file = QFileDialog::getOpenFileName(qApp->mainFormWidget(),
-                                                             tr("Select file for feeds import"),
-                                                             qApp->homeFolder(),
-                                                             filter_opml20);
+  const QString selected_file = FileDialog::openFileName(qApp->mainFormWidget(),
+                                                         tr("Select file for feeds import"),
+                                                         qApp->homeFolder(),
+                                                         filter_opml20,
+                                                         nullptr,
+                                                         GENERAL_REMEMBERED_PATH);
 
   if (!QFile::exists(selected_file)) {
     return;
@@ -191,7 +192,7 @@ void GreaderServiceRoot::exportFeeds() {
                            QSL("rssguard_feeds_%1.opml").arg(QDate::currentDate().toString(Qt::DateFormat::ISODate));
   const QString filter_opml20 = tr("OPML 2.0 files (*.opml *.xml)");
   const QString selected_file =
-    QFileDialog::getSaveFileName(qApp->mainFormWidget(), tr("Select file for feeds export"), the_file, filter_opml20);
+    FileDialog::saveFileName(qApp->mainFormWidget(), tr("Select file for feeds export"), the_file, filter_opml20);
 
   if (selected_file.isEmpty()) {
     return;

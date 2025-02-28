@@ -3,10 +3,9 @@
 #include "gui/dialogs/formrestoredatabasesettings.h"
 
 #include "exceptions/applicationexception.h"
+#include "gui/dialogs/filedialog.h"
 #include "gui/guiutilities.h"
 #include "miscellaneous/iconfactory.h"
-
-#include <QFileDialog>
 
 FormRestoreDatabaseSettings::FormRestoreDatabaseSettings(QWidget& parent) : QDialog(&parent), m_shouldRestart(false) {
   m_ui.setupUi(this);
@@ -75,8 +74,10 @@ void FormRestoreDatabaseSettings::selectFolderWithGui() {
 
 void FormRestoreDatabaseSettings::selectFolder(QString folder) {
   if (folder.isEmpty()) {
-    folder =
-      QFileDialog::getExistingDirectory(this, tr("Select source directory"), m_ui.m_lblSelectFolder->label()->text());
+    folder = FileDialog::existingDirectory(this,
+                                           tr("Select source directory"),
+                                           m_ui.m_lblSelectFolder->label()->text(),
+                                           GENERAL_REMEMBERED_PATH);
   }
 
   if (!folder.isEmpty()) {

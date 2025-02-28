@@ -270,6 +270,10 @@
         <widget class="QCheckBox" name="m_cbHideDisabledFeeds">
          <property name="text">
           <string>Hide disabled feeds</string>
+       <item row="9" column="0" colspan="2">
+        <widget class="QCheckBox" name="m_cbStrikethroughDisabledFeeds">
+         <property name="text">
+          <string>Strikethrough disabled feed titles</string>
          </property>
         </widget>
        </item>
@@ -735,6 +739,7 @@
   <tabstop>m_cbListsRestrictedShortcuts</tabstop>
   <tabstop>m_checkShowTooltips</tabstop>
   <tabstop>m_cbHideDisabledFeeds</tabstop>
+  <tabstop>m_cbStrikethroughDisabledFeeds</tabstop>
   <tabstop>m_checkRemoveReadMessagesOnExit</tabstop>
   <tabstop>m_cbArticleViewerAlwaysVisible</tabstop>
   <tabstop>m_cmbIgnoreContentsChanges</tabstop>

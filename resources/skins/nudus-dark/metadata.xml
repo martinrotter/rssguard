@@ -11,6 +11,7 @@
     <color key="FgSelectedNewMessages">#D9E3F7</color>
     <color key="FgError">#DF5656</color>
     <color key="FgSelectedError">#910303</color>
+    <color key="FgDisabledFeed">#F3CFC6</color>
     <color key="Allright">#44AA44</color>
   </palette>
   <forced-styles></forced-styles>

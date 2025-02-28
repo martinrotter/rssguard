@@ -649,6 +649,9 @@ QString SkinEnums::palleteColorText(PaletteColors col) {
     case SkinEnums::PaletteColors::Allright:
       return QObject::tr("OK-ish color");
 
+    case SkinEnums::PaletteColors::FgDisabledFeed:
+      return QObject::tr("disabled items");
+
     default:
       return {};
   }

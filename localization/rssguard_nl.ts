@@ -56,32 +56,32 @@
   <context>
     <name>AdBlockDialog</name>
     <message>
-      <location filename="../src/librssguard/network-web/adblock/adblockdialog.cpp" line="26"/>
+      <location filename="../src/librssguard/network-web/adblock/adblockdialog.cpp" line="25"/>
       <source>AdBlock configuration</source>
       <translation>Advertentieblokkeringsinstellingen</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/network-web/adblock/adblockdialog.cpp" line="63"/>
+      <location filename="../src/librssguard/network-web/adblock/adblockdialog.cpp" line="62"/>
       <source>Cannot enable AdBlock</source>
       <translation>Kan AdBlock niet inschakelen</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/network-web/adblock/adblockdialog.cpp" line="64"/>
+      <location filename="../src/librssguard/network-web/adblock/adblockdialog.cpp" line="63"/>
       <source>There is some error in AdBlock component and it cannot be enabled. Check error message below (or application debug log) for more information.</source>
       <translation>Er is een fout in het AdBlock-component en het kan niet worden ingeschakeld. Controleer het onderstaande foutbericht (of het applicatielog van de toepassing) voor meer informatie.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/network-web/adblock/adblockdialog.cpp" line="98"/>
+      <location filename="../src/librssguard/network-web/adblock/adblockdialog.cpp" line="97"/>
       <source>OK!</source>
       <translation>OK!</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/network-web/adblock/adblockdialog.cpp" line="113"/>
+      <location filename="../src/librssguard/network-web/adblock/adblockdialog.cpp" line="112"/>
       <source>There is error, check application log for more details and head to online documentation.</source>
       <translation>Er is een fout. Controleer applicatielog voor meer details en ga naar online documentatie.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/network-web/adblock/adblockdialog.cpp" line="84"/>
+      <location filename="../src/librssguard/network-web/adblock/adblockdialog.cpp" line="83"/>
       <source>There is error, check application log for more details and head to online documentation. Also make sure that Node.js is installed.
 
 Error: %1</source>
@@ -90,21 +90,21 @@ Error: %1</source>
 Fout: %1</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/network-web/adblock/adblockdialog.cpp" line="88"/>
-      <location filename="../src/librssguard/network-web/adblock/adblockdialog.cpp" line="115"/>
+      <location filename="../src/librssguard/network-web/adblock/adblockdialog.cpp" line="87"/>
+      <location filename="../src/librssguard/network-web/adblock/adblockdialog.cpp" line="114"/>
       <source>ERROR!</source>
       <translation>FOUT!</translation>
     </message>
     <message>
+      <location filename="../src/librssguard/network-web/adblock/adblockdialog.cpp" line="37"/>
       <location filename="../src/librssguard/network-web/adblock/adblockdialog.cpp" line="38"/>
-      <location filename="../src/librssguard/network-web/adblock/adblockdialog.cpp" line="39"/>
+      <location filename="../src/librssguard/network-web/adblock/adblockdialog.cpp" line="104"/>
       <location filename="../src/librssguard/network-web/adblock/adblockdialog.cpp" line="105"/>
-      <location filename="../src/librssguard/network-web/adblock/adblockdialog.cpp" line="106"/>
       <source>No additional info.</source>
       <translation>Geen aanvullende informatie.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/network-web/adblock/adblockdialog.cpp" line="97"/>
+      <location filename="../src/librssguard/network-web/adblock/adblockdialog.cpp" line="96"/>
       <source>It seems your AdBlock runs fine, but wait few seconds to be sure.</source>
       <translation>Het lijkt erop dat AdBlock goed werkt, maar wacht een paar seconden om zeker te zijn.</translation>
     </message>
@@ -1008,6 +1008,14 @@ Onderdeel ID: %5</translation>
     </message>
   </context>
   <context>
+    <name>FeedDownloader</name>
+    <message>
+      <location filename="../src/librssguard/core/feeddownloader.cpp" line="236"/>
+      <source>feed is in network cooldown mode due to making too many network requests</source>
+      <translation type="unfinished">feed is in network cooldown mode due to making too many network requests</translation>
+    </message>
+  </context>
+  <context>
     <name>FeedMessageViewer</name>
     <message>
       <location filename="../src/librssguard/gui/feedmessageviewer.cpp" line="32"/>
@@ -1238,17 +1246,17 @@ Onderdeel ID: %5</translation>
   <context>
     <name>FeedsImportExportModel</name>
     <message>
-      <location filename="../src/librssguard-standard/src/standardfeedsimportexportmodel.cpp" line="326"/>
+      <location filename="../src/librssguard-standard/src/standardfeedsimportexportmodel.cpp" line="327"/>
       <source>OPML document contains errors</source>
       <translation>OPML bestand bevat fouten</translation>
     </message>
     <message>
-      <location filename="../src/librssguard-standard/src/standardfeedsimportexportmodel.cpp" line="331"/>
+      <location filename="../src/librssguard-standard/src/standardfeedsimportexportmodel.cpp" line="332"/>
       <source>this is likely not OPML document</source>
       <translation>Dit is waarschijnlijk geen OPML bestand</translation>
     </message>
     <message>
-      <location filename="../src/librssguard-standard/src/standardfeedsimportexportmodel.cpp" line="410"/>
+      <location filename="../src/librssguard-standard/src/standardfeedsimportexportmodel.cpp" line="411"/>
       <source>Category </source>
       <translation>Categorie </translation>
     </message>
@@ -5872,95 +5880,95 @@ Logintoken verloopt: %2</translation>
   <context>
     <name>NetworkFactory</name>
     <message>
-      <location filename="../src/librssguard/network-web/networkfactory.cpp" line="83"/>
+      <location filename="../src/librssguard/network-web/networkfactory.cpp" line="100"/>
       <source>protocol error</source>
       <extracomment>Network status.</extracomment>
       <translation>protocol fout</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/network-web/networkfactory.cpp" line="91"/>
+      <location filename="../src/librssguard/network-web/networkfactory.cpp" line="108"/>
       <source>host not found</source>
       <extracomment>Network status.</extracomment>
       <translation>host niet gevonden</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/network-web/networkfactory.cpp" line="101"/>
+      <location filename="../src/librssguard/network-web/networkfactory.cpp" line="118"/>
       <source>connection refused</source>
       <extracomment>Network status.</extracomment>
       <translation>verbinding geweigerd</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/network-web/networkfactory.cpp" line="106"/>
+      <location filename="../src/librssguard/network-web/networkfactory.cpp" line="123"/>
       <source>connection timed out</source>
       <extracomment>Network status.</extracomment>
       <translation>Verbindingstime-out</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/network-web/networkfactory.cpp" line="111"/>
+      <location filename="../src/librssguard/network-web/networkfactory.cpp" line="128"/>
       <source>SSL handshake failed</source>
       <extracomment>Network status.</extracomment>
       <translation>SSL verbinding is mislukt</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/network-web/networkfactory.cpp" line="117"/>
+      <location filename="../src/librssguard/network-web/networkfactory.cpp" line="134"/>
       <source>proxy server connection refused</source>
       <extracomment>Network status.</extracomment>
       <translation>Verbinding met proxyserver geweigerd</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/network-web/networkfactory.cpp" line="122"/>
+      <location filename="../src/librssguard/network-web/networkfactory.cpp" line="139"/>
       <source>temporary failure</source>
       <extracomment>Network status.</extracomment>
       <translation>tijdelijke storing</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/network-web/networkfactory.cpp" line="127"/>
+      <location filename="../src/librssguard/network-web/networkfactory.cpp" line="144"/>
       <source>authentication failed</source>
       <extracomment>Network status.</extracomment>
       <translation>Authenticatie mislukt</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/network-web/networkfactory.cpp" line="132"/>
+      <location filename="../src/librssguard/network-web/networkfactory.cpp" line="149"/>
       <source>proxy authentication required</source>
       <extracomment>Network status.</extracomment>
       <translation>Authenticatie van proxy vereist</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/network-web/networkfactory.cpp" line="137"/>
+      <location filename="../src/librssguard/network-web/networkfactory.cpp" line="154"/>
       <source>proxy server not found</source>
       <extracomment>Network status.</extracomment>
       <translation>proxyserver niet gevonden</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/network-web/networkfactory.cpp" line="152"/>
+      <location filename="../src/librssguard/network-web/networkfactory.cpp" line="169"/>
       <source>content not found</source>
       <extracomment>Network status.</extracomment>
       <translation>inhoud niet gevonden</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/network-web/networkfactory.cpp" line="158"/>
+      <location filename="../src/librssguard/network-web/networkfactory.cpp" line="175"/>
       <source>unknown error (%1)</source>
       <extracomment>Network status.</extracomment>
       <translation>onbekende fout (%1)</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/network-web/networkfactory.cpp" line="142"/>
+      <location filename="../src/librssguard/network-web/networkfactory.cpp" line="159"/>
       <source>no errors</source>
       <extracomment>Network status.</extracomment>
       <translation>geen fouten</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/network-web/networkfactory.cpp" line="86"/>
+      <location filename="../src/librssguard/network-web/networkfactory.cpp" line="103"/>
       <source>access to content was denied</source>
       <translation>toegang tot inhoud is geweigerd</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/network-web/networkfactory.cpp" line="95"/>
+      <location filename="../src/librssguard/network-web/networkfactory.cpp" line="112"/>
       <source>connection timed out or was cancelled</source>
       <translation>verbinding verlopen of werd geannuleerd</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/network-web/networkfactory.cpp" line="147"/>
+      <location filename="../src/librssguard/network-web/networkfactory.cpp" line="164"/>
       <source>unknown content</source>
       <extracomment>Network status.</extracomment>
       <translation>onbekende inhoud</translation>
@@ -6221,37 +6229,37 @@ Logintoken verloopt: %2</translation>
   <context>
     <name>OAuth2Service</name>
     <message>
-      <location filename="../src/librssguard/network-web/oauth2service.cpp" line="91"/>
+      <location filename="../src/librssguard/network-web/oauth2service.cpp" line="90"/>
       <source>Click here to login.</source>
       <translation>Klik hier om in te loggen.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/network-web/oauth2service.cpp" line="221"/>
+      <location filename="../src/librssguard/network-web/oauth2service.cpp" line="220"/>
       <source>Logging in via OAuth 2.0...</source>
       <translation>Inloggen via OAuth 2.0...</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/network-web/oauth2service.cpp" line="222"/>
+      <location filename="../src/librssguard/network-web/oauth2service.cpp" line="221"/>
       <source>Refreshing login tokens for &apos;%1&apos;...</source>
       <translation>Logintokens voor &apos;%1&apos; worden vernieuwd...</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/network-web/oauth2service.cpp" line="90"/>
+      <location filename="../src/librssguard/network-web/oauth2service.cpp" line="89"/>
       <source>You have to login first</source>
       <translation>Je moet eerst inloggen</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/network-web/oauth2service.cpp" line="51"/>
+      <location filename="../src/librssguard/network-web/oauth2service.cpp" line="50"/>
       <source>You can close this window now. Go back to %1.</source>
       <translation>Dit venster kan nu gesloten worden. Ga terug naar %1.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/network-web/oauth2service.cpp" line="346"/>
+      <location filename="../src/librssguard/network-web/oauth2service.cpp" line="345"/>
       <source>Failed to start OAuth redirection listener. Maybe your rights are not high enough.</source>
       <translation>Omleiding via OAuth-applicatie kan niet gestart worden. Misschien heb je niet genoeg rechten.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/network-web/oauth2service.cpp" line="94"/>
+      <location filename="../src/librssguard/network-web/oauth2service.cpp" line="93"/>
       <source>Login</source>
       <translation>Inloggen</translation>
     </message>
@@ -6259,7 +6267,7 @@ Logintoken verloopt: %2</translation>
   <context>
     <name>QObject</name>
     <message numerus="yes">
-      <location filename="../src/librssguard/core/feeddownloader.cpp" line="576"/>
+      <location filename="../src/librssguard/core/feeddownloader.cpp" line="618"/>
       <source>
 
 + %n other feeds.</source>
@@ -6273,7 +6281,7 @@ Logintoken verloopt: %2</translation>
       </translation>
     </message>
     <message>
-      <location filename="../src/librssguard-standard/src/standardserviceroot.cpp" line="70"/>
+      <location filename="../src/librssguard-standard/src/standardserviceroot.cpp" line="71"/>
       <source>Load initial set of feeds</source>
       <translation>Laad eerste set van de feeds</translation>
     </message>
@@ -6399,37 +6407,37 @@ Lijst met ondersteunde lezers:</translation>
       <translation>Inloggen mislukt</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/miscellaneous/skinfactory.cpp" line="617"/>
+      <location filename="../src/librssguard/miscellaneous/skinfactory.cpp" line="632"/>
       <source>interesting stuff</source>
       <translation>interessante dingen</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/miscellaneous/skinfactory.cpp" line="620"/>
+      <location filename="../src/librssguard/miscellaneous/skinfactory.cpp" line="635"/>
       <source>interesting stuff (highlighted)</source>
       <translation>interessante dingen (geaccentueerd)</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/miscellaneous/skinfactory.cpp" line="623"/>
+      <location filename="../src/librssguard/miscellaneous/skinfactory.cpp" line="638"/>
       <source>errored items</source>
       <translation>items met fouten</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/miscellaneous/skinfactory.cpp" line="626"/>
+      <location filename="../src/librssguard/miscellaneous/skinfactory.cpp" line="641"/>
       <source>errored items (highlighted)</source>
       <translation>items met fouten (geaccentueerd)</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/miscellaneous/skinfactory.cpp" line="629"/>
+      <location filename="../src/librssguard/miscellaneous/skinfactory.cpp" line="644"/>
       <source>items with new articles</source>
       <translation>Onderdelen met nieuwe artikelen</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/miscellaneous/skinfactory.cpp" line="632"/>
+      <location filename="../src/librssguard/miscellaneous/skinfactory.cpp" line="647"/>
       <source>items with new articles (highlighted)</source>
       <translation>Onderdelen met nieuwe artikelen (geaccentueerd)</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/miscellaneous/skinfactory.cpp" line="635"/>
+      <location filename="../src/librssguard/miscellaneous/skinfactory.cpp" line="650"/>
       <source>OK-ish color</source>
       <translation>Acceptabele kleur</translation>
     </message>
@@ -6464,17 +6472,17 @@ Lijst met ondersteunde lezers:</translation>
       <translation>onder-rechts</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/miscellaneous/textfactory.cpp" line="372"/>
+      <location filename="../src/librssguard/miscellaneous/textfactory.cpp" line="396"/>
       <source>escape sequence not completed</source>
       <translation>escape-reeks niet voltooid</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/miscellaneous/textfactory.cpp" line="376"/>
+      <location filename="../src/librssguard/miscellaneous/textfactory.cpp" line="400"/>
       <source>closing &quot; is missing</source>
       <translation>afsluitende &quot; ontbreekt</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/miscellaneous/textfactory.cpp" line="380"/>
+      <location filename="../src/librssguard/miscellaneous/textfactory.cpp" line="404"/>
       <source>closing &apos; is missing</source>
       <translation>afsluitende &apos; ontbreekt</translation>
     </message>
@@ -8531,33 +8539,33 @@ Start ook het dialoogvenster &quot;Instellingen&quot; opnieuw nadat je Node.js h
   <context>
     <name>SkinFactory</name>
     <message>
-      <location filename="../src/librssguard/miscellaneous/skinfactory.cpp" line="223"/>
-      <location filename="../src/librssguard/miscellaneous/skinfactory.cpp" line="226"/>
+      <location filename="../src/librssguard/miscellaneous/skinfactory.cpp" line="229"/>
+      <location filename="../src/librssguard/miscellaneous/skinfactory.cpp" line="232"/>
       <source>This page was blocked by AdBlock</source>
       <translation>Deze pagina is door AdBlock geblokkeerd</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/miscellaneous/skinfactory.cpp" line="224"/>
+      <location filename="../src/librssguard/miscellaneous/skinfactory.cpp" line="230"/>
       <source>Blocked URL: &quot;%1&quot;&lt;br/&gt;Used filter: &quot;%2&quot;</source>
       <translation>Geblokkeerde URL: &quot;%1&quot;&lt;br/&gt;Gebruikte filter: &quot;%2&quot;</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/miscellaneous/skinfactory.cpp" line="290"/>
+      <location filename="../src/librssguard/miscellaneous/skinfactory.cpp" line="296"/>
       <source>Written by </source>
       <translation>Geschreven door </translation>
     </message>
     <message>
-      <location filename="../src/librssguard/miscellaneous/skinfactory.cpp" line="291"/>
+      <location filename="../src/librssguard/miscellaneous/skinfactory.cpp" line="297"/>
       <source>unknown author</source>
       <translation>Onbekende auteur</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/miscellaneous/skinfactory.cpp" line="303"/>
+      <location filename="../src/librssguard/miscellaneous/skinfactory.cpp" line="309"/>
       <source>Newspaper view</source>
       <translation>Krantweergave</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/miscellaneous/skinfactory.cpp" line="535"/>
+      <location filename="../src/librssguard/miscellaneous/skinfactory.cpp" line="550"/>
       <source>file %1 not found</source>
       <translation>bestand %1 niet gevonden</translation>
     </message>
@@ -8593,14 +8601,19 @@ Start ook het dialoogvenster &quot;Instellingen&quot; opnieuw nadat je Node.js h
       <translation>Naam</translation>
     </message>
     <message>
-      <location filename="../src/librssguard-standard/src/gui/standardaccountdetails.ui" line="30"/>
+      <location filename="../src/librssguard-standard/src/gui/standardaccountdetails.ui" line="33"/>
       <source>Icon</source>
       <translation>Icoon</translation>
     </message>
     <message>
-      <location filename="../src/librssguard-standard/src/gui/standardaccountdetails.ui" line="43"/>
+      <location filename="../src/librssguard-standard/src/gui/standardaccountdetails.ui" line="49"/>
       <source>Select icon for your account.</source>
       <translation>Selecteer pictogram voor uw account.</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard-standard/src/gui/standardaccountdetails.ui" line="59"/>
+      <source>Feed fetch spacing</source>
+      <translation type="unfinished">Feed fetch spacing</translation>
     </message>
     <message>
       <location filename="../src/librssguard-standard/src/gui/standardaccountdetails.cpp" line="16"/>
@@ -8618,40 +8631,62 @@ Start ook het dialoogvenster &quot;Instellingen&quot; opnieuw nadat je Node.js h
       <translation>Standaardiconen van systeem gebruiken</translation>
     </message>
     <message>
-      <location filename="../src/librssguard-standard/src/gui/standardaccountdetails.cpp" line="42"/>
+      <location filename="../src/librssguard-standard/src/gui/standardaccountdetails.cpp" line="31"/>
+      <source>When you fetch many feeds from same website/host, then %1 could be (likely temporarily) banned for making too many network requests at once.
+
+If that is the case, then you need to set some time gaps when fetching those feeds.</source>
+      <translation type="unfinished">When you fetch many feeds from same website/host, then %1 could be (likely temporarily) banned for making too many network requests at once.
+
+If that is the case, then you need to set some time gaps when fetching those feeds.</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard-standard/src/gui/standardaccountdetails.cpp" line="56"/>
       <source>Select icon file for the account</source>
       <translation>Selecteer icoon bestand voor het account</translation>
     </message>
     <message>
-      <location filename="../src/librssguard-standard/src/gui/standardaccountdetails.cpp" line="44"/>
+      <location filename="../src/librssguard-standard/src/gui/standardaccountdetails.cpp" line="58"/>
       <source>Images (%1)</source>
       <translation>Plaatjes (%1)</translation>
     </message>
     <message>
-      <location filename="../src/librssguard-standard/src/gui/standardaccountdetails.cpp" line="50"/>
+      <location filename="../src/librssguard-standard/src/gui/standardaccountdetails.cpp" line="64"/>
       <source>Select icon</source>
       <translation>Selecteer icoon</translation>
     </message>
     <message>
-      <location filename="../src/librssguard-standard/src/gui/standardaccountdetails.cpp" line="51"/>
+      <location filename="../src/librssguard-standard/src/gui/standardaccountdetails.cpp" line="65"/>
       <source>Cancel</source>
       <translation>Annuleren</translation>
     </message>
     <message>
-      <location filename="../src/librssguard-standard/src/gui/standardaccountdetails.cpp" line="54"/>
+      <location filename="../src/librssguard-standard/src/gui/standardaccountdetails.cpp" line="68"/>
       <source>Look in:</source>
       <extracomment>Label for field with icon file name textbox for selection dialog.</extracomment>
       <translation>Kijk in:</translation>
     </message>
     <message>
-      <location filename="../src/librssguard-standard/src/gui/standardaccountdetails.cpp" line="55"/>
+      <location filename="../src/librssguard-standard/src/gui/standardaccountdetails.cpp" line="69"/>
       <source>Icon name:</source>
       <translation>Icoonnaam:</translation>
     </message>
     <message>
-      <location filename="../src/librssguard-standard/src/gui/standardaccountdetails.cpp" line="56"/>
+      <location filename="../src/librssguard-standard/src/gui/standardaccountdetails.cpp" line="70"/>
       <source>Icon type:</source>
       <translation>Type icoon:</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard-standard/src/gui/standardaccountdetails.cpp" line="83"/>
+      <source> = no spacing</source>
+      <translation type="unfinished"> = no spacing</translation>
+    </message>
+    <message numerus="yes">
+      <location filename="../src/librssguard-standard/src/gui/standardaccountdetails.cpp" line="86"/>
+      <source> seconds</source>
+      <translation type="unfinished">
+        <numerusform> seconds</numerusform>
+        <numerusform> seconds</numerusform>
+      </translation>
     </message>
   </context>
   <context>
@@ -8700,22 +8735,22 @@ Start ook het dialoogvenster &quot;Instellingen&quot; opnieuw nadat je Node.js h
       <translation>Onbekend</translation>
     </message>
     <message>
-      <location filename="../src/librssguard-standard/src/standardfeed.cpp" line="277"/>
+      <location filename="../src/librssguard-standard/src/standardfeed.cpp" line="278"/>
       <source>Cannot save data for feed: %1</source>
       <translation>Kan gegevens voor feed niet opslaan: %1</translation>
     </message>
     <message>
-      <location filename="../src/librssguard-standard/src/standardfeed.cpp" line="335"/>
+      <location filename="../src/librssguard-standard/src/standardfeed.cpp" line="342"/>
       <source>this source type cannot be used on &apos;lite&apos; %1 build</source>
       <translation>dit brontype kan niet worden gebruikt op &apos;Lite&apos; %1 build</translation>
     </message>
     <message>
-      <location filename="../src/librssguard-standard/src/standardfeed.cpp" line="446"/>
+      <location filename="../src/librssguard-standard/src/standardfeed.cpp" line="453"/>
       <source>Cannot move feed, detailed information was logged via debug log.</source>
       <translation>Kan feed niet verplaatsen, gedetailleerde informatie is vastgelegd via debug-log.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard-standard/src/standardfeed.cpp" line="276"/>
+      <location filename="../src/librssguard-standard/src/standardfeed.cpp" line="277"/>
       <source>Cannot save feed data</source>
       <translation>Kan feed gegevens niet opslaan</translation>
     </message>
@@ -8746,12 +8781,12 @@ Achteraf-toepassen script: %3
 Ruwe XML opslaan: %4</translation>
     </message>
     <message>
-      <location filename="../src/librssguard-standard/src/standardfeed.cpp" line="404"/>
+      <location filename="../src/librssguard-standard/src/standardfeed.cpp" line="411"/>
       <source>feed format not recognized</source>
       <translation>feed indeling niet herkend</translation>
     </message>
     <message>
-      <location filename="../src/librssguard-standard/src/standardfeed.cpp" line="445"/>
+      <location filename="../src/librssguard-standard/src/standardfeed.cpp" line="452"/>
       <source>Cannot move feed</source>
       <translation>Kan feed niet verplaatsen</translation>
     </message>
@@ -8759,228 +8794,253 @@ Ruwe XML opslaan: %4</translation>
   <context>
     <name>StandardFeedDetails</name>
     <message>
-      <location filename="../src/librssguard-standard/src/gui/standardfeeddetails.cpp" line="29"/>
+      <location filename="../src/librssguard-standard/src/gui/standardfeeddetails.cpp" line="32"/>
       <source>Feed title</source>
       <translation>Naam van feed</translation>
     </message>
     <message>
-      <location filename="../src/librssguard-standard/src/gui/standardfeeddetails.cpp" line="30"/>
+      <location filename="../src/librssguard-standard/src/gui/standardfeeddetails.cpp" line="33"/>
       <source>Set title for your feed.</source>
       <translation>Stel titel in voor je feed.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard-standard/src/gui/standardfeeddetails.cpp" line="31"/>
+      <location filename="../src/librssguard-standard/src/gui/standardfeeddetails.cpp" line="34"/>
       <source>Feed description</source>
       <translation>Beschrijving van feed</translation>
     </message>
     <message>
-      <location filename="../src/librssguard-standard/src/gui/standardfeeddetails.cpp" line="32"/>
+      <location filename="../src/librssguard-standard/src/gui/standardfeeddetails.cpp" line="35"/>
       <source>Set description for your feed.</source>
       <translation>Stel beschrijving voor de feed in.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard-standard/src/gui/standardfeeddetails.cpp" line="80"/>
+      <location filename="../src/librssguard-standard/src/gui/standardfeeddetails.cpp" line="83"/>
       <source>Icon selection</source>
       <translation>Icoonselectie</translation>
     </message>
     <message>
-      <location filename="../src/librssguard-standard/src/gui/standardfeeddetails.cpp" line="82"/>
-      <source>Load icon from file...</source>
-      <translation>Laad icoon uit een bestand...</translation>
-    </message>
-    <message>
-      <location filename="../src/librssguard-standard/src/gui/standardfeeddetails.cpp" line="84"/>
+      <location filename="../src/librssguard-standard/src/gui/standardfeeddetails.cpp" line="90"/>
       <source>Use default icon from icon theme</source>
       <translation>Standaardicoon van systeem gebruiken</translation>
     </message>
     <message>
-      <location filename="../src/librssguard-standard/src/gui/standardfeeddetails.cpp" line="86"/>
+      <location filename="../src/librssguard-standard/src/gui/standardfeeddetails.cpp" line="92"/>
       <source>Fetch icon from feed</source>
       <translation>Icoon van feed gebruiken</translation>
     </message>
     <message>
-      <location filename="../src/librssguard-standard/src/gui/standardfeeddetails.cpp" line="96"/>
-      <location filename="../src/librssguard-standard/src/gui/standardfeeddetails.cpp" line="97"/>
+      <location filename="../src/librssguard-standard/src/gui/standardfeeddetails.cpp" line="103"/>
+      <location filename="../src/librssguard-standard/src/gui/standardfeeddetails.cpp" line="104"/>
       <source>No metadata fetched so far.</source>
       <translation>Nog geen metadata opgehaald.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard-standard/src/gui/standardfeeddetails.cpp" line="162"/>
+      <location filename="../src/librssguard-standard/src/gui/standardfeeddetails.cpp" line="158"/>
+      <source>Enter URL</source>
+      <translation type="unfinished">Enter URL</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard-standard/src/gui/standardfeeddetails.cpp" line="159"/>
+      <source>Enter direct URL pointing to the image</source>
+      <translation type="unfinished">Enter direct URL pointing to the image</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard-standard/src/gui/standardfeeddetails.cpp" line="178"/>
+      <source>Icon not fetched</source>
+      <translation type="unfinished">Icon not fetched</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard-standard/src/gui/standardfeeddetails.cpp" line="179"/>
+      <source>Icon was not fetched due to network error.</source>
+      <translation type="unfinished">Icon was not fetched due to network error.</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard-standard/src/gui/standardfeeddetails.cpp" line="209"/>
       <source>Icon fetched successfully.</source>
       <translation>Icoon met succes opgehaald.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard-standard/src/gui/standardfeeddetails.cpp" line="163"/>
+      <location filename="../src/librssguard-standard/src/gui/standardfeeddetails.cpp" line="210"/>
       <source>Icon metadata fetched.</source>
       <translation>Icoon uit metadata opgehaald.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard-standard/src/gui/standardfeeddetails.cpp" line="171"/>
-      <location filename="../src/librssguard-standard/src/gui/standardfeeddetails.cpp" line="176"/>
-      <location filename="../src/librssguard-standard/src/gui/standardfeeddetails.cpp" line="181"/>
+      <location filename="../src/librssguard-standard/src/gui/standardfeeddetails.cpp" line="218"/>
+      <location filename="../src/librssguard-standard/src/gui/standardfeeddetails.cpp" line="223"/>
+      <location filename="../src/librssguard-standard/src/gui/standardfeeddetails.cpp" line="228"/>
       <source>No icon fetched.</source>
       <translation>Geen icoon opgehaald.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard-standard/src/gui/standardfeeddetails.cpp" line="225"/>
+      <location filename="../src/librssguard-standard/src/gui/standardfeeddetails.cpp" line="274"/>
       <source>All metadata fetched successfully.</source>
       <translation>Alle metadata is succesvol opgehaald.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard-standard/src/gui/standardfeeddetails.cpp" line="226"/>
+      <location filename="../src/librssguard-standard/src/gui/standardfeeddetails.cpp" line="275"/>
       <source>Feed and icon metadata fetched.</source>
       <translation>Metadata opgehaald voor feed en icoon.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard-standard/src/gui/standardfeeddetails.cpp" line="234"/>
-      <location filename="../src/librssguard-standard/src/gui/standardfeeddetails.cpp" line="239"/>
-      <location filename="../src/librssguard-standard/src/gui/standardfeeddetails.cpp" line="244"/>
+      <location filename="../src/librssguard-standard/src/gui/standardfeeddetails.cpp" line="283"/>
+      <location filename="../src/librssguard-standard/src/gui/standardfeeddetails.cpp" line="288"/>
+      <location filename="../src/librssguard-standard/src/gui/standardfeeddetails.cpp" line="293"/>
       <source>No metadata fetched.</source>
       <translation>Geen metadata opgehaald.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard-standard/src/gui/standardfeeddetails.cpp" line="250"/>
+      <location filename="../src/librssguard-standard/src/gui/standardfeeddetails.cpp" line="299"/>
       <source>Feed name is ok.</source>
       <translation>Feednaam is ok.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard-standard/src/gui/standardfeeddetails.cpp" line="253"/>
+      <location filename="../src/librssguard-standard/src/gui/standardfeeddetails.cpp" line="302"/>
       <source>Feed name is too short.</source>
       <translation>Feed naam is te kort.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard-standard/src/gui/standardfeeddetails.cpp" line="259"/>
+      <location filename="../src/librssguard-standard/src/gui/standardfeeddetails.cpp" line="308"/>
       <source>Description is empty.</source>
       <translation>Beschrijving is leeg.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard-standard/src/gui/standardfeeddetails.cpp" line="262"/>
+      <location filename="../src/librssguard-standard/src/gui/standardfeeddetails.cpp" line="311"/>
       <source>The description is ok.</source>
       <translation>Beschrijving is ok.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard-standard/src/gui/standardfeeddetails.cpp" line="271"/>
+      <location filename="../src/librssguard-standard/src/gui/standardfeeddetails.cpp" line="320"/>
       <source>The URL is ok.</source>
       <translation>De URL is ok.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard-standard/src/gui/standardfeeddetails.cpp" line="275"/>
+      <location filename="../src/librssguard-standard/src/gui/standardfeeddetails.cpp" line="324"/>
       <source>The URL does not meet standard pattern. Does your URL start with &quot;http://&quot; or &quot;https://&quot; prefix.</source>
       <translation>De URL voldoet niet aan het standaardpatroon. De URL moet beginnen met &quot;http://&quot; of &quot;https://&quot;.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard-standard/src/gui/standardfeeddetails.cpp" line="279"/>
+      <location filename="../src/librssguard-standard/src/gui/standardfeeddetails.cpp" line="328"/>
       <source>The URL is empty.</source>
       <translation>De URL is leeg.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard-standard/src/gui/standardfeeddetails.cpp" line="288"/>
+      <location filename="../src/librssguard-standard/src/gui/standardfeeddetails.cpp" line="337"/>
       <source>Source is ok.</source>
       <translation>Bron is goed.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard-standard/src/gui/standardfeeddetails.cpp" line="298"/>
+      <location filename="../src/librssguard-standard/src/gui/standardfeeddetails.cpp" line="347"/>
       <source>File exists.</source>
       <translation>Bestand bestaat al.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard-standard/src/gui/standardfeeddetails.cpp" line="301"/>
+      <location filename="../src/librssguard-standard/src/gui/standardfeeddetails.cpp" line="350"/>
       <source>File does not exist.</source>
       <translation>Bestand bestaat niet.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard-standard/src/gui/standardfeeddetails.cpp" line="333"/>
+      <location filename="../src/librssguard-standard/src/gui/standardfeeddetails.cpp" line="382"/>
       <source>Select icon file for the feed</source>
       <translation>Selecteer icoonbestand voor de feed</translation>
     </message>
     <message>
-      <location filename="../src/librssguard-standard/src/gui/standardfeeddetails.cpp" line="335"/>
+      <location filename="../src/librssguard-standard/src/gui/standardfeeddetails.cpp" line="384"/>
       <source>Images (%1)</source>
       <translation>Plaatjes (%1)</translation>
     </message>
     <message>
-      <location filename="../src/librssguard-standard/src/gui/standardfeeddetails.cpp" line="341"/>
+      <location filename="../src/librssguard-standard/src/gui/standardfeeddetails.cpp" line="390"/>
       <source>Select icon</source>
       <translation>Selecteer icoon</translation>
     </message>
     <message>
-      <location filename="../src/librssguard-standard/src/gui/standardfeeddetails.cpp" line="342"/>
+      <location filename="../src/librssguard-standard/src/gui/standardfeeddetails.cpp" line="391"/>
       <source>Cancel</source>
       <translation>Annuleren</translation>
     </message>
     <message>
-      <location filename="../src/librssguard-standard/src/gui/standardfeeddetails.cpp" line="345"/>
+      <location filename="../src/librssguard-standard/src/gui/standardfeeddetails.cpp" line="394"/>
       <source>Look in:</source>
       <extracomment>Label for field with icon file name textbox for selection dialog.</extracomment>
       <translation>Kijk in:</translation>
     </message>
     <message>
-      <location filename="../src/librssguard-standard/src/gui/standardfeeddetails.cpp" line="346"/>
+      <location filename="../src/librssguard-standard/src/gui/standardfeeddetails.cpp" line="395"/>
       <source>Icon name:</source>
       <translation>Icoonnaam:</translation>
     </message>
     <message>
-      <location filename="../src/librssguard-standard/src/gui/standardfeeddetails.cpp" line="347"/>
+      <location filename="../src/librssguard-standard/src/gui/standardfeeddetails.cpp" line="396"/>
       <source>Icon type:</source>
       <translation>Type icoon:</translation>
     </message>
     <message>
-      <location filename="../src/librssguard-standard/src/gui/standardfeeddetails.cpp" line="33"/>
+      <location filename="../src/librssguard-standard/src/gui/standardfeeddetails.cpp" line="36"/>
       <source>Full feed source identifier</source>
       <translation>Volledige bron van feed</translation>
     </message>
     <message>
-      <location filename="../src/librssguard-standard/src/gui/standardfeeddetails.cpp" line="34"/>
+      <location filename="../src/librssguard-standard/src/gui/standardfeeddetails.cpp" line="37"/>
       <source>Full feed source identifier which can be URL.</source>
       <translation>Volledige bron van de feed – dit kan een URL zijn.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard-standard/src/gui/standardfeeddetails.cpp" line="35"/>
+      <location filename="../src/librssguard-standard/src/gui/standardfeeddetails.cpp" line="38"/>
       <source>Full command to execute</source>
       <translation>Volledige opdracht om uit te voeren</translation>
     </message>
     <message>
-      <location filename="../src/librssguard-standard/src/gui/standardfeeddetails.cpp" line="36"/>
+      <location filename="../src/librssguard-standard/src/gui/standardfeeddetails.cpp" line="39"/>
       <source>You can enter full command including interpreter here.</source>
       <translation>Hier kun je een volledige opdracht inclusief interpreter opgeven.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard-standard/src/gui/standardfeeddetails.cpp" line="308"/>
+      <location filename="../src/librssguard-standard/src/gui/standardfeeddetails.cpp" line="85"/>
+      <source>Select icon from file...</source>
+      <translation type="unfinished">Select icon from file...</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard-standard/src/gui/standardfeeddetails.cpp" line="87"/>
+      <source>Download icon from URL...</source>
+      <translation type="unfinished">Download icon from URL...</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard-standard/src/gui/standardfeeddetails.cpp" line="357"/>
       <source>The source is ok.</source>
       <translation>De bron is goed.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard-standard/src/gui/standardfeeddetails.cpp" line="315"/>
+      <location filename="../src/librssguard-standard/src/gui/standardfeeddetails.cpp" line="364"/>
       <source>Command is ok.</source>
       <translation>Opdracht is goed.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard-standard/src/gui/standardfeeddetails.cpp" line="170"/>
-      <location filename="../src/librssguard-standard/src/gui/standardfeeddetails.cpp" line="233"/>
+      <location filename="../src/librssguard-standard/src/gui/standardfeeddetails.cpp" line="217"/>
+      <location filename="../src/librssguard-standard/src/gui/standardfeeddetails.cpp" line="282"/>
       <source>Script failed: %1</source>
       <translation>Script mislukt: %1</translation>
     </message>
     <message>
-      <location filename="../src/librssguard-standard/src/gui/standardfeeddetails.cpp" line="175"/>
-      <location filename="../src/librssguard-standard/src/gui/standardfeeddetails.cpp" line="238"/>
+      <location filename="../src/librssguard-standard/src/gui/standardfeeddetails.cpp" line="222"/>
+      <location filename="../src/librssguard-standard/src/gui/standardfeeddetails.cpp" line="287"/>
       <source>Network error: %1</source>
       <translation>Netwerkfout: %1</translation>
     </message>
     <message>
-      <location filename="../src/librssguard-standard/src/gui/standardfeeddetails.cpp" line="180"/>
-      <location filename="../src/librssguard-standard/src/gui/standardfeeddetails.cpp" line="243"/>
-      <location filename="../src/librssguard-standard/src/gui/standardfeeddetails.cpp" line="291"/>
-      <location filename="../src/librssguard-standard/src/gui/standardfeeddetails.cpp" line="318"/>
+      <location filename="../src/librssguard-standard/src/gui/standardfeeddetails.cpp" line="227"/>
+      <location filename="../src/librssguard-standard/src/gui/standardfeeddetails.cpp" line="292"/>
+      <location filename="../src/librssguard-standard/src/gui/standardfeeddetails.cpp" line="340"/>
+      <location filename="../src/librssguard-standard/src/gui/standardfeeddetails.cpp" line="367"/>
       <source>Error: %1</source>
       <translation>Fout: %1</translation>
     </message>
     <message>
-      <location filename="../src/librssguard-standard/src/gui/standardfeeddetails.cpp" line="126"/>
+      <location filename="../src/librssguard-standard/src/gui/standardfeeddetails.cpp" line="134"/>
       <source>What is post-processing script?</source>
       <translation>Wat is achteraf-toepassen scripting?</translation>
     </message>
     <message>
-      <location filename="../src/librssguard-standard/src/gui/standardfeeddetails.cpp" line="127"/>
+      <location filename="../src/librssguard-standard/src/gui/standardfeeddetails.cpp" line="135"/>
       <source>You can use URL as a source of your feed or you can produce your feed with custom script.
 
 Also, you can post-process generated feed data with yet another script if you wish. These are advanced features and make sure to read the documentation before your use them.</source>
@@ -9104,72 +9164,72 @@ Deze instelling is handig wanneer onbewerkte XML-parsing van de feed erg traag i
   <context>
     <name>StandardServiceRoot</name>
     <message>
-      <location filename="../src/librssguard-standard/src/standardserviceroot.cpp" line="72"/>
+      <location filename="../src/librssguard-standard/src/standardserviceroot.cpp" line="73"/>
       <source>Do you want to load initial set of feeds?</source>
       <translation>Wil je de eerste set van feeds laden?</translation>
     </message>
     <message>
-      <location filename="../src/librssguard-standard/src/standardserviceroot.cpp" line="100"/>
+      <location filename="../src/librssguard-standard/src/standardserviceroot.cpp" line="101"/>
       <source>Error when loading initial feeds</source>
       <translation>Fout bij het laden van de eerste feeds</translation>
     </message>
     <message>
-      <location filename="../src/librssguard-standard/src/standardserviceroot.cpp" line="414"/>
+      <location filename="../src/librssguard-standard/src/standardserviceroot.cpp" line="439"/>
       <source>Fetch metadata</source>
       <translation>Metadata ophalen</translation>
     </message>
     <message>
-      <location filename="../src/librssguard-standard/src/standardserviceroot.cpp" line="612"/>
+      <location filename="../src/librssguard-standard/src/standardserviceroot.cpp" line="635"/>
       <source>Export feeds</source>
       <translation>Feeds exporteren</translation>
     </message>
     <message>
-      <location filename="../src/librssguard-standard/src/standardserviceroot.cpp" line="613"/>
+      <location filename="../src/librssguard-standard/src/standardserviceroot.cpp" line="636"/>
       <source>Import feeds</source>
       <translation>Feeds importeren</translation>
     </message>
     <message>
-      <location filename="../src/librssguard-standard/src/standardserviceroot.cpp" line="71"/>
+      <location filename="../src/librssguard-standard/src/standardserviceroot.cpp" line="72"/>
       <source>This new account does not include any feeds. You can now add default set of feeds.</source>
       <translation>Dit nieuwe account bevat geen feeds. De standaard feeds kunnen toegevoegd worden.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard-standard/src/standardserviceroot.cpp" line="50"/>
+      <location filename="../src/librssguard-standard/src/standardserviceroot.cpp" line="51"/>
       <source>This is the obligatory service account for standard RSS/RDF/ATOM feeds.</source>
       <translation>Dit is het verplichte service account voor standaard RSS/RDF/ATOM feeds.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard-standard/src/standardserviceroot.cpp" line="170"/>
+      <location filename="../src/librssguard-standard/src/standardserviceroot.cpp" line="171"/>
       <source>Cannot add item</source>
       <translation>Kan item niet toevoegen</translation>
     </message>
     <message>
-      <location filename="../src/librssguard-standard/src/standardserviceroot.cpp" line="171"/>
+      <location filename="../src/librssguard-standard/src/standardserviceroot.cpp" line="172"/>
       <source>Cannot add feed because another critical operation is ongoing.</source>
       <translation>Kan geen feed toevoegen omdat een andere kritieke operatie aan de gang is.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard-standard/src/standardserviceroot.cpp" line="283"/>
+      <location filename="../src/librssguard-standard/src/standardserviceroot.cpp" line="308"/>
       <source>this source type cannot be used on &apos;lite&apos; %1 build</source>
       <translation>dit brontype kan niet worden gebruikt op &apos;Lite&apos; %1 build</translation>
     </message>
     <message>
-      <location filename="../src/librssguard-standard/src/standardserviceroot.cpp" line="565"/>
+      <location filename="../src/librssguard-standard/src/standardserviceroot.cpp" line="601"/>
       <source>Cannot add category</source>
       <translation>Kan geen categorie toevoegen</translation>
     </message>
     <message>
-      <location filename="../src/librssguard-standard/src/standardserviceroot.cpp" line="566"/>
+      <location filename="../src/librssguard-standard/src/standardserviceroot.cpp" line="602"/>
       <source>Cannot add category because another critical operation is ongoing.</source>
       <translation>Kan geen categorie toevoegen omdat een andere kritieke operatie aan de gang is.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard-standard/src/standardserviceroot.cpp" line="553"/>
+      <location filename="../src/librssguard-standard/src/standardserviceroot.cpp" line="581"/>
       <source>Import was completely successful.</source>
       <translation>Importeren is helemaal geslaagd.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard-standard/src/standardserviceroot.cpp" line="550"/>
+      <location filename="../src/librssguard-standard/src/standardserviceroot.cpp" line="578"/>
       <source>Some feeds/categories were not imported due to error, check debug log for more details.</source>
       <translation>Sommige feed/categorieën zijn niet geïmporteerd vanwege een fout, controleer het applicatielog voor meer details.</translation>
     </message>
@@ -9817,117 +9877,117 @@ Laatste login: %4</translation>
       <translation>Instellingen van web-engine</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/network-web/webfactory.cpp" line="488"/>
+      <location filename="../src/librssguard/network-web/webfactory.cpp" line="489"/>
       <source>Auto-load images</source>
       <translation>Afbeeldingen automatisch laden</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/network-web/webfactory.cpp" line="489"/>
+      <location filename="../src/librssguard/network-web/webfactory.cpp" line="490"/>
       <source>JS enabled</source>
       <translation>JS aan</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/network-web/webfactory.cpp" line="490"/>
+      <location filename="../src/librssguard/network-web/webfactory.cpp" line="491"/>
       <source>JS can open popup windows</source>
       <translation>JS kan pop-ups openen</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/network-web/webfactory.cpp" line="492"/>
+      <location filename="../src/librssguard/network-web/webfactory.cpp" line="493"/>
       <source>JS can access clipboard</source>
       <translation>JS heeft toegang tot klembord</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/network-web/webfactory.cpp" line="494"/>
+      <location filename="../src/librssguard/network-web/webfactory.cpp" line="495"/>
       <source>Hyperlinks can get focus</source>
       <translation>Koppelingen kunnen focus krijgen</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/network-web/webfactory.cpp" line="496"/>
+      <location filename="../src/librssguard/network-web/webfactory.cpp" line="497"/>
       <source>Local storage enabled</source>
       <translation>Lokale opslag aan</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/network-web/webfactory.cpp" line="498"/>
+      <location filename="../src/librssguard/network-web/webfactory.cpp" line="499"/>
       <source>Local content can access remote URLs</source>
       <translation>Lokale inhoud heeft toegang tot externe URL&apos;s</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/network-web/webfactory.cpp" line="500"/>
+      <location filename="../src/librssguard/network-web/webfactory.cpp" line="501"/>
       <source>XSS auditing enabled</source>
       <translation>Plugins ingeschakeld</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/network-web/webfactory.cpp" line="502"/>
+      <location filename="../src/librssguard/network-web/webfactory.cpp" line="503"/>
       <source>Spatial navigation enabled</source>
       <translation>Ruimtelijke navigatie ingeschakeld</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/network-web/webfactory.cpp" line="504"/>
+      <location filename="../src/librssguard/network-web/webfactory.cpp" line="505"/>
       <source>Local content can access local files</source>
       <translation>Lokale inhoud heeft toegang tot lokale bestanden</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/network-web/webfactory.cpp" line="506"/>
+      <location filename="../src/librssguard/network-web/webfactory.cpp" line="507"/>
       <source>Hyperlink auditing enabled</source>
       <translation>Controle van links ingeschakeld</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/network-web/webfactory.cpp" line="508"/>
+      <location filename="../src/librssguard/network-web/webfactory.cpp" line="509"/>
       <source>Animate scrolling</source>
       <translation>Animeer scrollen</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/network-web/webfactory.cpp" line="510"/>
+      <location filename="../src/librssguard/network-web/webfactory.cpp" line="511"/>
       <source>Error pages enabled</source>
       <translation>Fouten op pagina&apos;s aangezet</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/network-web/webfactory.cpp" line="511"/>
+      <location filename="../src/librssguard/network-web/webfactory.cpp" line="512"/>
       <source>Plugins enabled</source>
       <translation>Plugins aan</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/network-web/webfactory.cpp" line="512"/>
+      <location filename="../src/librssguard/network-web/webfactory.cpp" line="513"/>
       <source>Fullscreen enabled</source>
       <translation>Schermvullend aan</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/network-web/webfactory.cpp" line="516"/>
+      <location filename="../src/librssguard/network-web/webfactory.cpp" line="517"/>
       <source>Screen capture enabled</source>
       <translation>Zet schermafbeelding aan</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/network-web/webfactory.cpp" line="518"/>
+      <location filename="../src/librssguard/network-web/webfactory.cpp" line="519"/>
       <source>WebGL enabled</source>
       <translation>WebGL aan</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/network-web/webfactory.cpp" line="519"/>
+      <location filename="../src/librssguard/network-web/webfactory.cpp" line="520"/>
       <source>Accelerate 2D canvas</source>
       <translation>Versnel 2D canvas</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/network-web/webfactory.cpp" line="521"/>
+      <location filename="../src/librssguard/network-web/webfactory.cpp" line="522"/>
       <source>Print element backgrounds</source>
       <translation>Achtergronden van elementen weergeven</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/network-web/webfactory.cpp" line="523"/>
+      <location filename="../src/librssguard/network-web/webfactory.cpp" line="524"/>
       <source>Allow running insecure content</source>
       <translation>Sta onveilige inhoud toe</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/network-web/webfactory.cpp" line="525"/>
+      <location filename="../src/librssguard/network-web/webfactory.cpp" line="526"/>
       <source>Allow geolocation on insecure origins</source>
       <translation>Sta geolocatie op onzekere oorsprong toe</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/network-web/webfactory.cpp" line="882"/>
+      <location filename="../src/librssguard/network-web/webfactory.cpp" line="883"/>
       <source>Web cache is going to be cleared</source>
       <translation>Webcache gaat geleegd worden</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/network-web/webfactory.cpp" line="883"/>
+      <location filename="../src/librssguard/network-web/webfactory.cpp" line="884"/>
       <source>Do you really want to clear web cache?</source>
       <translation>Weet je zeker dat je de cache wil wissen?</translation>
     </message>
@@ -9942,37 +10002,37 @@ Laatste login: %4</translation>
       <translation>%1 kon uw webbrowser niet starten met de opgegeven URL, u moet de onderstaande website-URL handmatig in uw webbrowser openen.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/network-web/webfactory.cpp" line="529"/>
+      <location filename="../src/librssguard/network-web/webfactory.cpp" line="530"/>
       <source>JS can activate windows</source>
       <translation>JS kan scherm activeren</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/network-web/webfactory.cpp" line="531"/>
+      <location filename="../src/librssguard/network-web/webfactory.cpp" line="532"/>
       <source>Show scrollbars</source>
       <translation>Schuifbalk tonen</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/network-web/webfactory.cpp" line="532"/>
+      <location filename="../src/librssguard/network-web/webfactory.cpp" line="533"/>
       <source>Media playback with gestures</source>
       <translation>Media afspelen met gebaren</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/network-web/webfactory.cpp" line="534"/>
+      <location filename="../src/librssguard/network-web/webfactory.cpp" line="535"/>
       <source>WebRTC uses only public interfaces</source>
       <translation>WebRTC gebruikt alleen publieke netwerkinterfaces</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/network-web/webfactory.cpp" line="536"/>
+      <location filename="../src/librssguard/network-web/webfactory.cpp" line="537"/>
       <source>JS can paste from clipboard</source>
       <translation>JS van plakken vanaf klembord</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/network-web/webfactory.cpp" line="538"/>
+      <location filename="../src/librssguard/network-web/webfactory.cpp" line="539"/>
       <source>DNS prefetch enabled</source>
       <translation>DNS voorspelling inschakelen</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/network-web/webfactory.cpp" line="542"/>
+      <location filename="../src/librssguard/network-web/webfactory.cpp" line="543"/>
       <source>PDF viewer enabled</source>
       <translation>PDF lezer ingeschakeld</translation>
     </message>

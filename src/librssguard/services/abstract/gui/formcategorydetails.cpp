@@ -6,6 +6,7 @@
 #include "database/databasequeries.h"
 #include "definitions/definitions.h"
 #include "exceptions/applicationexception.h"
+#include "gui/dialogs/filedialog.h"
 #include "gui/guiutilities.h"
 #include "gui/reusable/baselineedit.h"
 #include "miscellaneous/iconfactory.h"
@@ -17,7 +18,6 @@
 
 #include <QAction>
 #include <QDialogButtonBox>
-#include <QFileDialog>
 #include <QImageReader>
 #include <QLineEdit>
 #include <QMenu>
@@ -194,26 +194,15 @@ void FormCategoryDetails::onLoadIconFromFile() {
                             .toStdList();
 
   QStringList list_formats = FROM_STD_LIST(QStringList, prefixed_formats);
+  QString fil = FileDialog::openFileName(this,
+                                         tr("Select icon file for the category"),
+                                         qApp->homeFolder(),
+                                         tr("Images (%1)").arg(list_formats.join(QL1C(' '))),
+                                         nullptr,
+                                         GENERAL_REMEMBERED_PATH);
 
-  QFileDialog dialog(this,
-                     tr("Select icon file for the category"),
-                     qApp->homeFolder(),
-                     tr("Images (%1)").arg(list_formats.join(QL1C(' '))));
-
-  dialog.setFileMode(QFileDialog::FileMode::ExistingFile);
-  dialog.setWindowIcon(qApp->icons()->fromTheme(QSL("image-x-generic")));
-  dialog.setOptions(QFileDialog::Option::DontUseNativeDialog | QFileDialog::Option::ReadOnly);
-  dialog.setViewMode(QFileDialog::ViewMode::Detail);
-  dialog.setLabelText(QFileDialog::DialogLabel::Accept, tr("Select icon"));
-  dialog.setLabelText(QFileDialog::DialogLabel::Reject, tr("Cancel"));
-
-  //: Label to describe the folder for icon file selection dialog.
-  dialog.setLabelText(QFileDialog::DialogLabel::LookIn, tr("Look in:"));
-  dialog.setLabelText(QFileDialog::DialogLabel::FileName, tr("Icon name:"));
-  dialog.setLabelText(QFileDialog::DialogLabel::FileType, tr("Icon type:"));
-
-  if (dialog.exec() == QDialog::DialogCode::Accepted) {
-    m_ui->m_btnIcon->setIcon(QIcon(dialog.selectedFiles().value(0)));
+  if (!fil.isEmpty()) {
+    m_ui->m_btnIcon->setIcon(QIcon(fil));
   }
 }
 

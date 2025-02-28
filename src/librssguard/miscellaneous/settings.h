@@ -45,6 +45,10 @@ namespace DialogGeometries {
   KEY ID;
 }
 
+namespace FileDialogPaths {
+  KEY ID;
+}
+
 namespace Node {
   KEY ID;
 
@@ -96,6 +100,9 @@ namespace Feeds {
 
   KEY HideDisabledFeeds;
   VALUE(bool) HideDisabledFeedsDef;
+
+  KEY StrikethroughDisabledFeeds;
+  VALUE(bool) StrikethroughDisabledFeedsDef;
 
   KEY PauseFeedFetching;
   VALUE(bool) PauseFeedFetchingDef;
