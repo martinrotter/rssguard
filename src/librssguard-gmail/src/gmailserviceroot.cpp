@@ -16,8 +16,6 @@
 #include <librssguard/network-web/oauth2service.h>
 #include <librssguard/services/abstract/labelsnode.h>
 
-#include <QFileDialog>
-
 GmailServiceRoot::GmailServiceRoot(RootItem* parent)
   : ServiceRoot(parent), m_network(new GmailNetworkFactory(this)), m_actionReply(nullptr) {
   m_network->setService(this);

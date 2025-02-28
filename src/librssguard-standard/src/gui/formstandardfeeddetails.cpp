@@ -18,7 +18,6 @@
 
 #include <QComboBox>
 #include <QDialogButtonBox>
-#include <QFileDialog>
 #include <QGroupBox>
 #include <QNetworkCookie>
 

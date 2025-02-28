@@ -45,6 +45,10 @@ namespace DialogGeometries {
   KEY ID;
 }
 
+namespace FileDialogPaths {
+  KEY ID;
+}
+
 namespace Node {
   KEY ID;
 

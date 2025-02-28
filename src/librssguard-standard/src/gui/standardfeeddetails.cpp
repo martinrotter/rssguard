@@ -8,6 +8,7 @@
 #include <librssguard/exceptions/applicationexception.h>
 #include <librssguard/exceptions/networkexception.h>
 #include <librssguard/exceptions/scriptexception.h>
+#include <librssguard/gui/dialogs/filedialog.h>
 #include <librssguard/miscellaneous/iconfactory.h>
 #include <librssguard/miscellaneous/settings.h>
 #include <librssguard/miscellaneous/textfactory.h>
@@ -15,7 +16,6 @@
 #include <librssguard/services/abstract/category.h>
 
 #include <QClipboard>
-#include <QFileDialog>
 #include <QImageReader>
 #include <QInputDialog>
 #include <QMenu>
@@ -377,26 +377,15 @@ void StandardFeedDetails::onLoadIconFromFile() {
                             .toStdList();
 
   QStringList list_formats = FROM_STD_LIST(QStringList, prefixed_formats);
+  QString fil = FileDialog::openFileName(this,
+                                         tr("Select icon file for the feed"),
+                                         qApp->homeFolder(),
+                                         tr("Images (%1)").arg(list_formats.join(QL1C(' '))),
+                                         nullptr,
+                                         GENERAL_REMEMBERED_PATH);
 
-  QFileDialog dialog(this,
-                     tr("Select icon file for the feed"),
-                     qApp->homeFolder(),
-                     tr("Images (%1)").arg(list_formats.join(QL1C(' '))));
-
-  dialog.setFileMode(QFileDialog::FileMode::ExistingFile);
-  dialog.setWindowIcon(qApp->icons()->fromTheme(QSL("image-x-generic")));
-  dialog.setOptions(QFileDialog::Option::DontUseNativeDialog | QFileDialog::Option::ReadOnly);
-  dialog.setViewMode(QFileDialog::ViewMode::Detail);
-  dialog.setLabelText(QFileDialog::DialogLabel::Accept, tr("Select icon"));
-  dialog.setLabelText(QFileDialog::DialogLabel::Reject, tr("Cancel"));
-
-  //: Label for field with icon file name textbox for selection dialog.
-  dialog.setLabelText(QFileDialog::DialogLabel::LookIn, tr("Look in:"));
-  dialog.setLabelText(QFileDialog::DialogLabel::FileName, tr("Icon name:"));
-  dialog.setLabelText(QFileDialog::DialogLabel::FileType, tr("Icon type:"));
-
-  if (dialog.exec() == QDialog::DialogCode::Accepted) {
-    m_ui.m_btnIcon->setIcon(QIcon(dialog.selectedFiles().value(0)));
+  if (!fil.isEmpty()) {
+    m_ui.m_btnIcon->setIcon(QIcon(fil));
   }
 }
 

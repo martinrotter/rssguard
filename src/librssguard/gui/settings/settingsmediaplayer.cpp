@@ -7,11 +7,10 @@
 #include "miscellaneous/settings.h"
 
 #if defined(ENABLE_MEDIAPLAYER_LIBMPV)
+#include "gui/dialogs/filedialog.h"
 #include "gui/mediaplayer/libmpv/libmpvbackend.h"
 
 #include <mpv/client.h>
-
-#include <QFileDialog>
 #endif
 
 SettingsMediaPlayer::SettingsMediaPlayer(Settings* settings, QWidget* parent) : SettingsPanel(settings, parent) {
@@ -65,16 +64,13 @@ void SettingsMediaPlayer::loadSettings() {
 #if defined(ENABLE_MEDIAPLAYER_LIBMPV)
 void SettingsMediaPlayer::selectMpvConfigFolder() {
   QString real_path = qApp->replaceUserDataFolderPlaceholder(m_ui.m_txtMpvConfigFolder->text());
-  QFileDialog dialog(this, tr("Select folder for your MPV configuration"), real_path);
+  QString directory = FileDialog::existingDirectory(this,
+                                                    tr("Select folder for your MPV configuration"),
+                                                    real_path,
+                                                    GENERAL_REMEMBERED_PATH);
 
-  dialog.setFileMode(QFileDialog::FileMode::Directory);
-  dialog.setWindowIcon(icon());
-  dialog.setOptions(QFileDialog::Option::DontUseNativeDialog | QFileDialog::Option::ShowDirsOnly |
-                    QFileDialog::Option::HideNameFilterDetails);
-  dialog.setViewMode(QFileDialog::ViewMode::Detail);
-
-  if (dialog.exec() == QDialog::DialogCode::Accepted && !dialog.selectedFiles().isEmpty()) {
-    m_ui.m_txtMpvConfigFolder->setText(QDir::toNativeSeparators(dialog.selectedFiles().at(0)));
+  if (!directory.isEmpty()) {
+    m_ui.m_txtMpvConfigFolder->setText(QDir::toNativeSeparators(directory));
   }
 }
 #endif
