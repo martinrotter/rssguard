@@ -15,6 +15,8 @@
 DKEY WebEngineAttributes::ID = "web_engine_attributes";
 #endif
 
+DKEY FileDialogPaths::ID = "file_dialog_paths";
+
 DKEY DialogGeometries::ID = "dialog_geometries";
 
 // Media player.
@@ -100,6 +102,9 @@ DVALUE(bool) Feeds::EnableTooltipsFeedsMessagesDef = true;
 
 DKEY Feeds::UseRtlForFeedTitles = "use_rtl_for_feed_titles";
 DVALUE(bool) Feeds::UseRtlForFeedTitlesDef = false;
+
+DKEY Feeds::StrikethroughDisabledFeeds = "strikethrough_disabled_feeds";
+DVALUE(bool) Feeds::StrikethroughDisabledFeedsDef = true;
 
 DKEY Feeds::PauseFeedFetching = "pause_feed_fetching";
 DVALUE(bool) Feeds::PauseFeedFetchingDef = false;

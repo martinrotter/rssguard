@@ -11,8 +11,6 @@
 #include "src/redditnetworkfactory.h"
 #include "src/redditsubscription.h"
 
-#include <QFileDialog>
-
 RedditServiceRoot::RedditServiceRoot(RootItem* parent)
   : ServiceRoot(parent), m_network(new RedditNetworkFactory(this)) {
   m_network->setService(this);

@@ -28,6 +28,7 @@
 #include "src/3rd-party/richtexteditor/mrichtextedit.h"
 
 #include <librssguard/definitions/definitions.h>
+#include <librssguard/gui/dialogs/filedialog.h>
 #include <librssguard/miscellaneous/application.h>
 #include <librssguard/miscellaneous/iconfactory.h>
 
@@ -36,7 +37,6 @@
 #include <QClipboard>
 #include <QColorDialog>
 #include <QDialog>
-#include <QFileDialog>
 #include <QFontDatabase>
 #include <QImageReader>
 #include <QInputDialog>
@@ -635,10 +635,12 @@ void MRichTextEdit::setText(const QString& text) {
 void MRichTextEdit::insertImage() {
   QSettings s;
   QString attdir = s.value("general/filedialog-path").toString();
-  QString file = QFileDialog::getOpenFileName(this,
-                                              tr("Select an image"),
-                                              attdir,
-                                              tr("JPEG (*.jpg);; GIF (*.gif);; PNG (*.png);; BMP (*.bmp);; All (*)"));
+  QString file = FileDialog::openFileName(this,
+                                          tr("Select an image"),
+                                          attdir,
+                                          tr("JPEG (*.jpg);; GIF (*.gif);; PNG (*.png);; BMP (*.bmp);; All (*)"),
+                                          nullptr,
+                                          GENERAL_REMEMBERED_PATH);
   QImage image = QImageReader(file).read();
 
   m_ui.f_textedit->dropImage(image, QFileInfo(file).suffix().toUpper().toLocal8Bit().data());

@@ -4,13 +4,13 @@
 
 #include "definitions/definitions.h"
 #include "exceptions/applicationexception.h"
+#include "gui/dialogs/filedialog.h"
 #include "miscellaneous/application.h"
 #include "miscellaneous/iconfactory.h"
 #include "miscellaneous/nodejs.h"
 #include "network-web/webfactory.h"
 
 #include <QDir>
-#include <QFileDialog>
 
 SettingsNodejs::SettingsNodejs(Settings* settings, QWidget* parent) : SettingsPanel(settings, parent) {
   m_ui.setupUi(this);
@@ -60,23 +60,18 @@ QIcon SettingsNodejs::icon() const {
 }
 
 void SettingsNodejs::changeFileFolder(LineEditWithStatus* tb, bool directory_select, const QString& file_filter) {
-  QFileDialog d(this);
-
-  d.setFileMode(directory_select ? QFileDialog::FileMode::Directory : QFileDialog::FileMode::ExistingFile);
-
-  if (directory_select) {
-    d.setOption(QFileDialog::Option::ShowDirsOnly);
-  }
-  else {
-    d.setNameFilter(file_filter);
-  }
-
+  QString file_dir;
   QString current = qApp->replaceUserDataFolderPlaceholder(tb->lineEdit()->text());
 
-  d.selectFile(current);
+  if (directory_select) {
+    file_dir = FileDialog::existingDirectory(this, {}, current, GENERAL_REMEMBERED_PATH);
+  }
+  else {
+    file_dir = FileDialog::openFileName(this, {}, current, file_filter, {}, GENERAL_REMEMBERED_PATH);
+  }
 
-  if (d.exec() == QDialog::DialogCode::Accepted && !d.selectedFiles().isEmpty()) {
-    tb->lineEdit()->setText(QDir::toNativeSeparators(d.selectedFiles().at(0)));
+  if (!file_dir.isEmpty()) {
+    tb->lineEdit()->setText(QDir::toNativeSeparators(file_dir));
   }
 }
 
