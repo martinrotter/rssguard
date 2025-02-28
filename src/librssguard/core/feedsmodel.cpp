@@ -554,14 +554,12 @@ QVariant FeedsModel::data(const QModelIndex& index, int role) const {
     case Qt::ItemDataRole::FontRole: {
       RootItem* it = itemForIndex(index);
       bool is_bold = it->countOfUnreadMessages() > 0;
-      bool is_striked = it->kind() == RootItem::Kind::Feed ? it->toFeed()->isSwitchedOff() : false;
+      bool is_striked = it->kind() == RootItem::Kind::Feed &&
+                        qApp->settings()->value(GROUP(Feeds), SETTING(Feeds::StrikethroughDisabledFeeds)).toBool() &&
+                        qobject_cast<Feed*>(it)->isSwitchedOff();
 
-      if (is_bold) {
-        return is_striked ? m_boldStrikedFont : m_boldFont;
-      }
-      else {
-        return is_striked ? m_normalStrikedFont : m_normalFont;
-      }
+      return is_bold ? (is_striked ? m_boldStrikedFont : m_boldFont)
+                     : (is_striked ? m_normalStrikedFont : m_normalFont);
     }
 
     case Qt::ItemDataRole::DecorationRole: {
