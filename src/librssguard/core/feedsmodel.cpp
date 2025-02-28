@@ -554,7 +554,7 @@ QVariant FeedsModel::data(const QModelIndex& index, int role) const {
     case Qt::ItemDataRole::FontRole: {
       RootItem* it = itemForIndex(index);
       bool is_bold = it->countOfUnreadMessages() > 0;
-      bool is_striked = it->kind() == RootItem::Kind::Feed ? qobject_cast<Feed*>(it)->isSwitchedOff() : false;
+      bool is_striked = it->kind() == RootItem::Kind::Feed ? it->toFeed()->isSwitchedOff() : false;
 
       if (is_bold) {
         return is_striked ? m_boldStrikedFont : m_boldFont;
@@ -563,21 +563,6 @@ QVariant FeedsModel::data(const QModelIndex& index, int role) const {
         return is_striked ? m_normalStrikedFont : m_normalFont;
       }
     }
-
-    case Qt::ItemDataRole::ForegroundRole: {
-      RootItem* it = itemForIndex(index);
-
-      if (it->kind() == RootItem::Kind::Feed && qobject_cast<Feed*>(it)->isSwitchedOff()) {
-        return qApp->settings()->value(GROUP(CustomSkinColors), SETTING(CustomSkinColors::Enabled)).toBool()
-        ? qApp->skins()->colorForModel(SkinEnums::PaletteColors::FgDisabledFeed)
-        : QColor("#d1d1d1");
-      }
-    }
-
-    case Qt::ItemDataRole::ToolTipRole:
-      if (!qApp->settings()->value(GROUP(Feeds), SETTING(Feeds::EnableTooltipsFeedsMessages)).toBool()) {
-        return QVariant();
-      }
 
     case Qt::ItemDataRole::DecorationRole: {
       if (index.column() == FDS_MODEL_TITLE_INDEX && m_updateDuringFetching) {
@@ -588,6 +573,12 @@ QVariant FeedsModel::data(const QModelIndex& index, int role) const {
         }
       }
     }
+
+    case Qt::ItemDataRole::ToolTipRole:
+      // NOTE: Fall-down to "default" if condition not met.
+      if (!qApp->settings()->value(GROUP(Feeds), SETTING(Feeds::EnableTooltipsFeedsMessages)).toBool()) {
+        return QVariant();
+      }
 
     default:
       return itemForIndex(index)->data(index.column(), role);

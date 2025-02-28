@@ -85,7 +85,11 @@ QVariant Feed::data(int column, int role) const {
       }
     }
 
-    case Qt::ItemDataRole::ForegroundRole:
+    case Qt::ItemDataRole::ForegroundRole: {
+      if (isSwitchedOff()) {
+        return qApp->skins()->colorForModel(SkinEnums::PaletteColors::FgDisabledFeed);
+      }
+
       switch (status()) {
         case Status::NewMessages:
           return qApp->skins()->colorForModel(SkinEnums::PaletteColors::FgNewMessages);
@@ -107,6 +111,7 @@ QVariant Feed::data(int column, int role) const {
         default:
           return QVariant();
       }
+    }
 
     default:
       return RootItem::data(column, role);
