@@ -58,17 +58,17 @@
     <message>
       <location filename="../src/librssguard/network-web/adblock/adblockdialog.cpp" line="25"/>
       <source>AdBlock configuration</source>
-      <translation>AdBlock Konfiguration</translation>
+      <translation>AdBlocker Konfiguration</translation>
     </message>
     <message>
       <location filename="../src/librssguard/network-web/adblock/adblockdialog.cpp" line="62"/>
       <source>Cannot enable AdBlock</source>
-      <translation>Kann AdBlock nicht aktivieren</translation>
+      <translation>Kann AdBlocker nicht aktivieren</translation>
     </message>
     <message>
       <location filename="../src/librssguard/network-web/adblock/adblockdialog.cpp" line="63"/>
       <source>There is some error in AdBlock component and it cannot be enabled. Check error message below (or application debug log) for more information.</source>
-      <translation>Ein Fehler in der AdBlock Komponente ist aufgetreten und sie kann deshalb nicht aktiviert werden. Kontrolliere die Fehlermeldungen unterhalb (oder das Debug Log) um mehr Informationen zu erhalten.</translation>
+      <translation>Ein Fehler in der AdBlocker Komponente ist aufgetreten und sie kann deshalb nicht aktiviert werden. Kontrolliere die Fehlermeldungen unterhalb (oder das Debug Log) um mehr Informationen zu erhalten.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/network-web/adblock/adblockdialog.cpp" line="97"/>
@@ -106,13 +106,13 @@ Error: %1</translation>
     <message>
       <location filename="../src/librssguard/network-web/adblock/adblockdialog.cpp" line="96"/>
       <source>It seems your AdBlock runs fine, but wait few seconds to be sure.</source>
-      <translation>Wie es scheint, funktioniert AdBlock korrekt. Aber warte ein paar Sekunden, um sicher zu sein.</translation>
+      <translation>Wie es scheint, funktioniert der AdBlocker korrekt. Aber warte ein paar Sekunden, um sicher zu sein.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/network-web/adblock/adblockdialog.ui" line="20"/>
       <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_adblockdialog.h" line="148"/>
       <source>Enable AdBlock</source>
-      <translation>AdBlock aktivieren</translation>
+      <translation>AdBlocker aktivieren</translation>
     </message>
     <message>
       <location filename="../src/librssguard/network-web/adblock/adblockdialog.ui" line="32"/>
@@ -150,12 +150,12 @@ Error: %1</translation>
     <message>
       <location filename="../src/librssguard/network-web/adblock/adblockicon.cpp" line="12"/>
       <source>AdBlock lets you block unwanted content on web pages</source>
-      <translation>AdBlock lässt sie unerwünschten Inhalt auf Webseiten blockieren</translation>
+      <translation>AdBlocker lässt Sie unerwünschten Inhalt auf Webseiten blockieren</translation>
     </message>
     <message>
       <location filename="../src/librssguard/network-web/adblock/adblockicon.cpp" line="45"/>
       <source>Show AdBlock &amp;settings</source>
-      <translation>AdBlock &amp;settings anzeigen</translation>
+      <translation>AdBlocker Ein&amp;stellungen anzeigen</translation>
     </message>
   </context>
   <context>
@@ -163,7 +163,7 @@ Error: %1</translation>
     <message>
       <location filename="../src/librssguard/network-web/adblock/adblockmanager.cpp" line="199"/>
       <source>Failed to setup filters and start server: %1.</source>
-      <translation>Konnte Filter nicht einrichten und Server starten: %1</translation>
+      <translation>Konnte Filter nicht einrichten und Server starten: %1.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/network-web/adblock/adblockmanager.cpp" line="377"/>
@@ -248,7 +248,7 @@ Error: %1</translation>
     <message>
       <location filename="../src/librssguard/miscellaneous/application.cpp" line="1179"/>
       <source>AdBlock needs to be configured</source>
-      <translation>AdBlock muss noch konfiguriert werden</translation>
+      <translation>AdBlocker muss noch konfiguriert werden</translation>
     </message>
     <message>
       <location filename="../src/librssguard/miscellaneous/application.cpp" line="386"/>
@@ -263,13 +263,13 @@ Please, check NEW stuff included in this
 version by clicking this popup notification.</source>
       <translation>Willkommen bei %1.
 
-Bitte überprüfen Sie die in dieser Version enthaltene Neuerungen
-durch Klicken auf diese Benachrichtigung.</translation>
+Bitte überprüfen Sie die Neuerungen dieser Version
+klicken Sie auf diese Benachrichtigung.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/miscellaneous/application.cpp" line="1180"/>
       <source>AdBlock is not configured properly. Go to &quot;Settings&quot; -&gt; &quot;Node.js&quot; and check if your Node.js is properly configured.</source>
-      <translation>AdBlock ist nicht richtig konfiguriert. Gehe zu &quot;Einstellungen&quot; -&gt; &quot;Node.js&quot; und stelle sicher, dass Node.js korrekt eingerichtet ist.</translation>
+      <translation>AdBlocker ist nicht richtig konfiguriert. Gehe zu &quot;Einstellungen&quot; -&gt; &quot;Node.js&quot; und stelle sicher, dass Node.js korrekt eingerichtet ist.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/miscellaneous/application.cpp" line="1229"/>
@@ -432,7 +432,7 @@ durch Klicken auf diese Benachrichtigung.</translation>
     <message>
       <location filename="../src/librssguard/network-web/articleparse.cpp" line="40"/>
       <source>Reload your website or article and you can test it then!</source>
-      <translation>Aktualisieren Sie die Website/den Artikel, um ihn auszuprobieren.</translation>
+      <translation>Aktualisieren Sie die Website/den Artikel, um ihn auszuprobieren!</translation>
     </message>
     <message>
       <location filename="../src/librssguard/network-web/articleparse.cpp" line="45"/>
@@ -447,7 +447,7 @@ durch Klicken auf diese Benachrichtigung.</translation>
     <message>
       <location filename="../src/librssguard/network-web/articleparse.cpp" line="63"/>
       <source>There is error: %1</source>
-      <translation>Fehler:  %1</translation>
+      <translation>Fehler: %1</translation>
     </message>
     <message>
       <location filename="../src/librssguard/network-web/articleparse.cpp" line="69"/>
@@ -607,17 +607,17 @@ Anzahl der Kategorien: %2</translation>
     <message>
       <location filename="../src/librssguard/database/databasecleaner.cpp" line="81"/>
       <source>Database file shrinked...</source>
-      <translation>Datenbank wurde komprimiert</translation>
+      <translation>Datenbank wurde komprimiert...</translation>
     </message>
     <message>
       <location filename="../src/librssguard/database/databasecleaner.cpp" line="45"/>
       <source>Recycle bin purged...</source>
-      <translation>Papierkorb wurde geleert</translation>
+      <translation>Papierkorb wurde geleert...</translation>
     </message>
     <message>
       <location filename="../src/librssguard/database/databasecleaner.cpp" line="39"/>
       <source>Purging recycle bin...</source>
-      <translation>Leere Papierkorb...</translation>
+      <translation>Papierkorb leeren...</translation>
     </message>
     <message>
       <location filename="../src/librssguard/database/databasecleaner.cpp" line="27"/>
@@ -823,8 +823,8 @@ Klicken Sie hier, um das übergeordnete Verzeichnis zu öffnen.</translation>
       <location filename="../src/librssguard/network-web/downloadmanager.cpp" line="602"/>
       <source>Downloading %n file(s)...</source>
       <translation>
-        <numerusform>Lade %n Datei herunter...</numerusform>
-        <numerusform>Lade %n Dateien herunter...</numerusform>
+        <numerusform>Lade %n Datei(en) herunter...</numerusform>
+        <numerusform>Lade %n Datei(en) herunter...</numerusform>
       </translation>
     </message>
     <message>
@@ -844,12 +844,12 @@ Klicken Sie hier, um das übergeordnete Verzeichnis zu öffnen.</translation>
     <message>
       <location filename="../src/librssguard/dynamic-shortcuts/dynamicshortcutswidget.cpp" line="127"/>
       <source>There is another action which has the same shortcut assigned.</source>
-      <translation type="unfinished">There is another action which has the same shortcut assigned.</translation>
+      <translation>Eine andere Aktion hat bereits diese Zuweisung.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/dynamic-shortcuts/dynamicshortcutswidget.cpp" line="128"/>
       <source>Do you want to keep the new shortcut assignment and clear the previous shortcut?</source>
-      <translation type="unfinished">Do you want to keep the new shortcut assignment and clear the previous shortcut?</translation>
+      <translation>Möchten Sie die neue Zuweisung behalten und die vorherige löschen?</translation>
     </message>
   </context>
   <context>
@@ -966,8 +966,8 @@ Klicken Sie hier, um das übergeordnete Verzeichnis zu öffnen.</translation>
       <location filename="../src/librssguard/services/abstract/feed.cpp" line="260"/>
       <source>uses global settings (%n minute(s) to next auto-fetch of articles)</source>
       <translation>
-        <numerusform>verwendet globale Einstellungen (%n Minute bis zur nächsten automatischen Abholung von Artikel)</numerusform>
-        <numerusform>verwendet globale Einstellungen (%n Minuten bis zur nächsten automatischen Abholung von Artikel)</numerusform>
+        <numerusform>verwendet globale Einstellungen (%n Minute(n) bis zur nächsten automatischen Abholung von Artikel)</numerusform>
+        <numerusform>verwendet globale Einstellungen (%n Minute(n) bis zur nächsten automatischen Abholung von Artikel)</numerusform>
       </translation>
     </message>
     <message numerus="yes">
@@ -975,8 +975,8 @@ Klicken Sie hier, um das übergeordnete Verzeichnis zu öffnen.</translation>
       <source>uses specific settings (%n minute(s) to next auto-fetching of new articles)</source>
       <extracomment>Describes feed auto-update status.</extracomment>
       <translation>
-        <numerusform>verwendet spezifische Einstellungen (%n Minute bis zur nächsten automatischen Abholung neuer Artikel)</numerusform>
-        <numerusform>verwendet spezifische Einstellungen (%n Minuten bis zur nächsten automatischen Abholung neuer Artikel)</numerusform>
+        <numerusform>verwendet spezifische Einstellungen (%n Minute(n) bis zur nächsten automatischen Abholung neuer Artikel)</numerusform>
+        <numerusform>verwendet spezifische Einstellungen (%n Minute(n) bis zur nächsten automatischen Abholung neuer Artikel)</numerusform>
       </translation>
     </message>
     <message>
@@ -987,7 +987,7 @@ Klicken Sie hier, um das übergeordnete Verzeichnis zu öffnen.</translation>
     <message>
       <location filename="../src/librssguard/services/abstract/feed.cpp" line="299"/>
       <source>parsing error</source>
-      <translation>Parsing Fehler</translation>
+      <translation>Analyse/Parsing Fehler</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/abstract/feed.cpp" line="302"/>
@@ -1013,7 +1013,7 @@ Item ID: %5</translation>
     <message>
       <location filename="../src/librssguard/core/feeddownloader.cpp" line="236"/>
       <source>feed is in network cooldown mode due to making too many network requests</source>
-      <translation type="unfinished">feed is in network cooldown mode due to making too many network requests</translation>
+      <translation>Feed ist im reduzierten Modus, aufgrund zu vieler/häufiger Netzwerk Zugriffe</translation>
     </message>
   </context>
   <context>
@@ -1396,7 +1396,7 @@ Item ID: %5</translation>
     <message>
       <location filename="../src/librssguard/gui/feedsview.cpp" line="261"/>
       <source>Do you really want to purge all non-starred articles from selected feeds?</source>
-      <translation type="unfinished">Do you really want to purge all non-starred articles from selected feeds?</translation>
+      <translation>Möchten Sie wirklich alle nicht gekennzeichneten Artikel dieses Feeds löschen?</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/feedsview.cpp" line="315"/>
@@ -1827,7 +1827,7 @@ QtWebEngine Zwischenspeicher -&gt; &quot;%7&quot;</translation>
       <location filename="../src/librssguard/gui/dialogs/formbackupdatabasesettings.ui" line="43"/>
       <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_formbackupdatabasesettings.h" line="145"/>
       <source>Backup properties</source>
-      <translation>Backupeinstellungen</translation>
+      <translation>Backup Einstellungen</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formbackupdatabasesettings.ui" line="49"/>
@@ -3162,7 +3162,7 @@ QtWebEngine Zwischenspeicher -&gt; &quot;%7&quot;</translation>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="966"/>
       <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="820"/>
       <source>&amp;Purge selected feeds</source>
-      <translation type="unfinished">&amp;Purge selected feeds</translation>
+      <translation>Ausgewählte Feeds &amp;löschen</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="740"/>
@@ -4071,47 +4071,47 @@ Sie können es jetzt installieren.</translation>
     <message>
       <location filename="../src/librssguard/network-web/gemini/geminiclient.cpp" line="268"/>
       <source>Line is too short for valid protocol</source>
-      <translation type="unfinished">Line is too short for valid protocol</translation>
+      <translation>Zeile ist zu kurz für das ausgewählte Protokoll</translation>
     </message>
     <message>
       <location filename="../src/librssguard/network-web/gemini/geminiclient.cpp" line="273"/>
       <source>response too large!</source>
-      <translation type="unfinished">response too large!</translation>
+      <translation>Antwort zu gross/lang!</translation>
     </message>
     <message>
       <location filename="../src/librssguard/network-web/gemini/geminiclient.cpp" line="282"/>
       <source>Line does not end with &lt;CR&gt; &lt;LF&gt;</source>
-      <translation type="unfinished">Line does not end with &lt;CR&gt; &lt;LF&gt;</translation>
+      <translation>Zeile endet nicht mit &lt;CR&gt; &lt;LF&gt;</translation>
     </message>
     <message>
       <location filename="../src/librssguard/network-web/gemini/geminiclient.cpp" line="291"/>
       <source>First character is not a digit.</source>
-      <translation type="unfinished">First character is not a digit.</translation>
+      <translation>Erstes Zeichen ist keine Zahl.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/network-web/gemini/geminiclient.cpp" line="300"/>
       <source>Second character is not a digit.</source>
-      <translation type="unfinished">Second character is not a digit.</translation>
+      <translation>Zweites Zeichen ist keine Zahl.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/network-web/gemini/geminiclient.cpp" line="312"/>
       <source>Third character is not a space.</source>
-      <translation type="unfinished">Third character is not a space.</translation>
+      <translation>Drittes Zeichen ist kein Leerzeichen.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/network-web/gemini/geminiclient.cpp" line="361"/>
       <source>Invalid URL for redirection!</source>
-      <translation type="unfinished">Invalid URL for redirection!</translation>
+      <translation>Fehlerhafte URL/Webadresse für Umleitung!</translation>
     </message>
     <message>
       <location filename="../src/librssguard/network-web/gemini/geminiclient.cpp" line="438"/>
       <source>Unspecified status code used!</source>
-      <translation type="unfinished">Unspecified status code used!</translation>
+      <translation>Nicht definierter Statuscode verwendet!</translation>
     </message>
     <message>
       <location filename="../src/librssguard/network-web/gemini/geminiclient.cpp" line="447"/>
       <source>META too large!</source>
-      <translation type="unfinished">META too large!</translation>
+      <translation>META zu gross/lang!</translation>
     </message>
   </context>
   <context>
@@ -5748,7 +5748,7 @@ Ablauf des Login tokens: %2</translation>
     <message>
       <location filename="../src/librssguard/gui/toolbars/messagestoolbar.cpp" line="283"/>
       <source>Show read articles</source>
-      <translation type="unfinished">Show read articles</translation>
+      <translation>Gelesene Artikel anzeigen</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/toolbars/messagestoolbar.cpp" line="288"/>
@@ -6657,7 +6657,7 @@ Liste aller unterstützten Leser:</translation>
     <message>
       <location filename="../src/librssguard/gui/mediaplayer/qtmultimedia/qtmultimediabackend.cpp" line="129"/>
       <source>This is playlist</source>
-      <translation type="unfinished">This is playlist</translation>
+      <translation>Das ist Playliste</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/mediaplayer/qtmultimedia/qtmultimediabackend.cpp" line="133"/>
@@ -8076,7 +8076,7 @@ Beschreibung: %3</translation>
       <location filename="../src/librssguard/gui/settings/settingsgui.ui" line="196"/>
       <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsgui.h" line="416"/>
       <source>Use colored icon when there are unread articles</source>
-      <translation type="unfinished">Use colored icon when there are unread articles</translation>
+      <translation>Farbiges Icon für ungelesene Artikel anzeigen</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsgui.ui" line="220"/>
@@ -8609,7 +8609,7 @@ Schließe und Öffne den Einstellungsdiealog erneut, nachdem du Node.js installi
     <message>
       <location filename="../src/librssguard-standard/src/gui/standardaccountdetails.ui" line="59"/>
       <source>Feed fetch spacing</source>
-      <translation type="unfinished">Feed fetch spacing</translation>
+      <translation>Feed Abruf Abstand</translation>
     </message>
     <message>
       <location filename="../src/librssguard-standard/src/gui/standardaccountdetails.cpp" line="16"/>
@@ -8631,9 +8631,7 @@ Schließe und Öffne den Einstellungsdiealog erneut, nachdem du Node.js installi
       <source>When you fetch many feeds from same website/host, then %1 could be (likely temporarily) banned for making too many network requests at once.
 
 If that is the case, then you need to set some time gaps when fetching those feeds.</source>
-      <translation type="unfinished">When you fetch many feeds from same website/host, then %1 could be (likely temporarily) banned for making too many network requests at once.
-
-If that is the case, then you need to set some time gaps when fetching those feeds.</translation>
+      <translation>Wenn Sie viele Feeds von der gleichen Webseite/Host abrufen, dann kann %1 auf grund zu vieler gleichzeitiger Verbindungen (zeitweise) gebannt sein.</translation>
     </message>
     <message>
       <location filename="../src/librssguard-standard/src/gui/standardaccountdetails.cpp" line="56"/>
@@ -8674,13 +8672,13 @@ If that is the case, then you need to set some time gaps when fetching those fee
     <message>
       <location filename="../src/librssguard-standard/src/gui/standardaccountdetails.cpp" line="83"/>
       <source> = no spacing</source>
-      <translation type="unfinished"> = no spacing</translation>
+      <translation> = kein Spacing/Abstand</translation>
     </message>
     <message numerus="yes">
       <location filename="../src/librssguard-standard/src/gui/standardaccountdetails.cpp" line="86"/>
       <source> seconds</source>
       <translation type="unfinished">
-        <numerusform> seconds</numerusform>
+        <numerusform> Sekunden</numerusform>
         <numerusform> seconds</numerusform>
       </translation>
     </message>
@@ -8833,22 +8831,22 @@ Speichern von XML Rohdaten: %4</translation>
     <message>
       <location filename="../src/librssguard-standard/src/gui/standardfeeddetails.cpp" line="158"/>
       <source>Enter URL</source>
-      <translation type="unfinished">Enter URL</translation>
+      <translation>URL eingeben</translation>
     </message>
     <message>
       <location filename="../src/librssguard-standard/src/gui/standardfeeddetails.cpp" line="159"/>
       <source>Enter direct URL pointing to the image</source>
-      <translation type="unfinished">Enter direct URL pointing to the image</translation>
+      <translation>Geben Sie die direkte URL zum Bild ein</translation>
     </message>
     <message>
       <location filename="../src/librssguard-standard/src/gui/standardfeeddetails.cpp" line="178"/>
       <source>Icon not fetched</source>
-      <translation type="unfinished">Icon not fetched</translation>
+      <translation>Icon nicht abgerufen</translation>
     </message>
     <message>
       <location filename="../src/librssguard-standard/src/gui/standardfeeddetails.cpp" line="179"/>
       <source>Icon was not fetched due to network error.</source>
-      <translation type="unfinished">Icon was not fetched due to network error.</translation>
+      <translation>Icon aufgrund eines Netzwerkfehlers nicht abgerufen.</translation>
     </message>
     <message>
       <location filename="../src/librssguard-standard/src/gui/standardfeeddetails.cpp" line="209"/>
@@ -8994,12 +8992,12 @@ Speichern von XML Rohdaten: %4</translation>
     <message>
       <location filename="../src/librssguard-standard/src/gui/standardfeeddetails.cpp" line="85"/>
       <source>Select icon from file...</source>
-      <translation type="unfinished">Select icon from file...</translation>
+      <translation>Icon aus Datei wählen...</translation>
     </message>
     <message>
       <location filename="../src/librssguard-standard/src/gui/standardfeeddetails.cpp" line="87"/>
       <source>Download icon from URL...</source>
-      <translation type="unfinished">Download icon from URL...</translation>
+      <translation>Lade Icon von URL...</translation>
     </message>
     <message>
       <location filename="../src/librssguard-standard/src/gui/standardfeeddetails.cpp" line="357"/>
@@ -9145,17 +9143,17 @@ Diese Einstellung ist hilfreich, wenn das Parsen der XML Rohdaten sehr langsam i
     <message>
       <location filename="../src/librssguard-standard/src/gui/standardfeedexpdetails.cpp" line="31"/>
       <source>Use application settings</source>
-      <translation type="unfinished">Use application settings</translation>
+      <translation>Einstellungen verwenden</translation>
     </message>
     <message>
       <location filename="../src/librssguard-standard/src/gui/standardfeedexpdetails.cpp" line="33"/>
       <source>Enabled</source>
-      <translation type="unfinished">Enabled</translation>
+      <translation>Aktiviert</translation>
     </message>
     <message>
       <location filename="../src/librssguard-standard/src/gui/standardfeedexpdetails.cpp" line="34"/>
       <source>Disabled</source>
-      <translation type="unfinished">Disabled</translation>
+      <translation>Deaktiviert</translation>
     </message>
   </context>
   <context>
