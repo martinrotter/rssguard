@@ -369,9 +369,9 @@ durch Klicken auf diese Benachrichtigung.</translation>
     <message numerus="yes">
       <location filename="../src/librssguard/gui/reusable/articleamountcontrol.cpp" line="179"/>
       <source>newest article(s)</source>
-      <translation type="unfinished">
+      <translation>
         <numerusform>neueste Artikel</numerusform>
-        <numerusform>newest article(s)</numerusform>
+        <numerusform>neueste(r) Artikel</numerusform>
       </translation>
     </message>
   </context>
@@ -839,7 +839,7 @@ Klicken Sie hier, um das übergeordnete Verzeichnis zu öffnen.</translation>
     <message>
       <location filename="../src/librssguard/dynamic-shortcuts/dynamicshortcutswidget.cpp" line="126"/>
       <source>Duplicate shortcut</source>
-      <translation type="unfinished">Duplicate shortcut</translation>
+      <translation>doppelte Verknüpfung</translation>
     </message>
     <message>
       <location filename="../src/librssguard/dynamic-shortcuts/dynamicshortcutswidget.cpp" line="127"/>
@@ -1776,12 +1776,12 @@ QtWebEngine Zwischenspeicher -&gt; &quot;%7&quot;</translation>
       <translation>Sicherungskopie wurde erfolgreich erstellt.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formbackupdatabasesettings.cpp" line="92"/>
+      <location filename="../src/librssguard/gui/dialogs/formbackupdatabasesettings.cpp" line="91"/>
       <source>Backup name cannot be empty.</source>
       <translation>Der Name der Sicherungskopie darf nicht leer sein.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formbackupdatabasesettings.cpp" line="95"/>
+      <location filename="../src/librssguard/gui/dialogs/formbackupdatabasesettings.cpp" line="94"/>
       <source>Backup name looks okay.</source>
       <translation>Der Name der Sicherungskopie scheint geeignet zu sein.</translation>
     </message>
@@ -1801,7 +1801,7 @@ QtWebEngine Zwischenspeicher -&gt; &quot;%7&quot;</translation>
       <translation>Verzeichnis für Sicherungskopie auswählen</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formbackupdatabasesettings.cpp" line="86"/>
+      <location filename="../src/librssguard/gui/dialogs/formbackupdatabasesettings.cpp" line="85"/>
       <source>Good destination directory is specified.</source>
       <translation>Es wurde ein geeignetes Zielverzeichnis ausgewählt.</translation>
     </message>
@@ -2395,27 +2395,27 @@ QtWebEngine Zwischenspeicher -&gt; &quot;%7&quot;</translation>
   <context>
     <name>FormMain</name>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.cpp" line="417"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.cpp" line="416"/>
       <source>No possible actions</source>
       <translation>Keine Aktionen möglich</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.cpp" line="376"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.cpp" line="375"/>
       <source>No recycle bin</source>
       <translation>Kein Papierkorb</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.cpp" line="64"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.cpp" line="63"/>
       <source>Main menu</source>
       <translation>Hauptmenü</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.cpp" line="77"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.cpp" line="76"/>
       <source>Open main menu</source>
       <translation>Öffne Hauptmenü</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.cpp" line="85"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.cpp" line="84"/>
       <source>Open &amp;main menu</source>
       <translation>Öffne &amp;Hauptmenü</translation>
     </message>
@@ -2931,7 +2931,7 @@ QtWebEngine Zwischenspeicher -&gt; &quot;%7&quot;</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="745"/>
-      <location filename="../src/librssguard/gui/dialogs/formmain.cpp" line="322"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.cpp" line="321"/>
       <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="780"/>
       <source>Add new category</source>
       <translation>Neue Kategorie hinzufügen</translation>
@@ -3166,48 +3166,48 @@ QtWebEngine Zwischenspeicher -&gt; &quot;%7&quot;</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="740"/>
-      <location filename="../src/librssguard/gui/dialogs/formmain.cpp" line="332"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.cpp" line="331"/>
       <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="779"/>
       <source>Add new feed</source>
       <translation>Neuen Feed hinzufügen</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.cpp" line="383"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.cpp" line="382"/>
       <source>No actions possible</source>
       <translation>Keine Aktionen möglich</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.cpp" line="153"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.cpp" line="152"/>
       <source>Cannot cleanup database</source>
       <translation>Kann Datenbank nicht bereinigen</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.cpp" line="154"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.cpp" line="153"/>
       <source>Cannot cleanup database, because another critical action is running.</source>
       <translation>Kann die Datenbank aufgrund einer anderen Aktion hieran nicht bereinigen.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.cpp" line="475"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.cpp" line="474"/>
       <source>Play in media player</source>
       <translation>Im Medienplayer wiedergeben</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.cpp" line="476"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.cpp" line="475"/>
       <source>(not supported)</source>
       <translation>(Nicht unterstützt)</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.cpp" line="542"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.cpp" line="541"/>
       <source>Close opened modal dialogs first.</source>
       <translation>Schliessen Sie zuerst alle modalen Fenster.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.cpp" line="452"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.cpp" line="451"/>
       <source>Fetching common data</source>
       <translation>Lade gemeinsame Daten</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.cpp" line="541"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.cpp" line="540"/>
       <source>Close dialogs</source>
       <translation>Meldungen schließen</translation>
     </message>
@@ -3489,38 +3489,38 @@ QtWebEngine Zwischenspeicher -&gt; &quot;%7&quot;</translation>
   <context>
     <name>FormRestoreDatabaseSettings</name>
     <message>
+      <location filename="../src/librssguard/gui/dialogs/formrestoredatabasesettings.cpp" line="14"/>
       <location filename="../src/librssguard/gui/dialogs/formrestoredatabasesettings.cpp" line="15"/>
-      <location filename="../src/librssguard/gui/dialogs/formrestoredatabasesettings.cpp" line="16"/>
       <source>No operation executed yet.</source>
       <translation>Es wurde noch keine Aktion ausgeführt.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formrestoredatabasesettings.cpp" line="54"/>
+      <location filename="../src/librssguard/gui/dialogs/formrestoredatabasesettings.cpp" line="53"/>
       <source>Restoration was initiated. Restart to proceed.</source>
       <translation>Wiederherstellung wurde initiiert. Zum Abschließen neu starten.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formrestoredatabasesettings.cpp" line="55"/>
+      <location filename="../src/librssguard/gui/dialogs/formrestoredatabasesettings.cpp" line="54"/>
       <source>You need to restart application for restoration process to finish.</source>
       <translation>Die Anwendung muss zum Abschluss der Wiederherstellung neu gestartet werden.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formrestoredatabasesettings.cpp" line="60"/>
+      <location filename="../src/librssguard/gui/dialogs/formrestoredatabasesettings.cpp" line="59"/>
       <source>Database and/or settings were not copied to restoration directory successully.</source>
       <translation>Die Datenbank und/oder die Einstellungen konnten nicht in das für die Wiederherstellung vorgesehene Verzeichnis kopiert werden.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formrestoredatabasesettings.cpp" line="79"/>
+      <location filename="../src/librssguard/gui/dialogs/formrestoredatabasesettings.cpp" line="78"/>
       <source>Select source directory</source>
       <translation>Verzeichnis für Sicherungskopie auswählen</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formrestoredatabasesettings.cpp" line="85"/>
+      <location filename="../src/librssguard/gui/dialogs/formrestoredatabasesettings.cpp" line="86"/>
       <source>Good source directory is specified.</source>
       <translation>Es wurde ein geeignetes Verzeichnis ausgewählt.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formrestoredatabasesettings.cpp" line="13"/>
+      <location filename="../src/librssguard/gui/dialogs/formrestoredatabasesettings.cpp" line="12"/>
       <source>Restart</source>
       <translation>Neustart</translation>
     </message>
@@ -3615,22 +3615,22 @@ Dieser Neustart muss manuell ausgeführt werden.</translation>
   <context>
     <name>FormStandardFeedDetails</name>
     <message>
-      <location filename="../src/librssguard-standard/src/gui/formstandardfeeddetails.cpp" line="32"/>
+      <location filename="../src/librssguard-standard/src/gui/formstandardfeeddetails.cpp" line="31"/>
       <source>General</source>
       <translation>Generell</translation>
     </message>
     <message>
-      <location filename="../src/librssguard-standard/src/gui/formstandardfeeddetails.cpp" line="33"/>
+      <location filename="../src/librssguard-standard/src/gui/formstandardfeeddetails.cpp" line="32"/>
       <source>HTTP headers</source>
       <translation>HTTP-Header</translation>
     </message>
     <message>
-      <location filename="../src/librssguard-standard/src/gui/formstandardfeeddetails.cpp" line="34"/>
+      <location filename="../src/librssguard-standard/src/gui/formstandardfeeddetails.cpp" line="33"/>
       <source>Auth</source>
       <translation>Auth</translation>
     </message>
     <message>
-      <location filename="../src/librssguard-standard/src/gui/formstandardfeeddetails.cpp" line="35"/>
+      <location filename="../src/librssguard-standard/src/gui/formstandardfeeddetails.cpp" line="34"/>
       <source>Experimental</source>
       <translation>Experimentell</translation>
     </message>
@@ -3638,145 +3638,145 @@ Dieser Neustart muss manuell ausgeführt werden.</translation>
   <context>
     <name>FormStandardImportExport</name>
     <message>
-      <location filename="../src/librssguard-standard/src/gui/formstandardimportexport.cpp" line="34"/>
       <location filename="../src/librssguard-standard/src/gui/formstandardimportexport.cpp" line="35"/>
+      <location filename="../src/librssguard-standard/src/gui/formstandardimportexport.cpp" line="36"/>
       <source>No file is selected.</source>
       <translation>Keine Datei ausgewählt.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard-standard/src/gui/formstandardimportexport.cpp" line="38"/>
       <location filename="../src/librssguard-standard/src/gui/formstandardimportexport.cpp" line="39"/>
+      <location filename="../src/librssguard-standard/src/gui/formstandardimportexport.cpp" line="40"/>
       <source>No operation executed yet.</source>
       <translation>Es wurde noch keine Aktion durchgeführt.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard-standard/src/gui/formstandardimportexport.cpp" line="70"/>
+      <location filename="../src/librssguard-standard/src/gui/formstandardimportexport.cpp" line="71"/>
       <source>Destination file</source>
       <translation>Datei für Export</translation>
     </message>
     <message>
-      <location filename="../src/librssguard-standard/src/gui/formstandardimportexport.cpp" line="71"/>
+      <location filename="../src/librssguard-standard/src/gui/formstandardimportexport.cpp" line="72"/>
       <source>Source feeds &amp;&amp; categories</source>
       <translation>Zu exportierende Feeds &amp;&amp; Kategorien</translation>
     </message>
     <message>
-      <location filename="../src/librssguard-standard/src/gui/formstandardimportexport.cpp" line="73"/>
+      <location filename="../src/librssguard-standard/src/gui/formstandardimportexport.cpp" line="74"/>
       <source>Export feeds</source>
       <translation>Feeds exportieren</translation>
     </message>
     <message>
-      <location filename="../src/librssguard-standard/src/gui/formstandardimportexport.cpp" line="81"/>
+      <location filename="../src/librssguard-standard/src/gui/formstandardimportexport.cpp" line="82"/>
       <source>Source file</source>
       <translation>Datei mit zu importierenden Feeds und Kategorien</translation>
     </message>
     <message>
-      <location filename="../src/librssguard-standard/src/gui/formstandardimportexport.cpp" line="82"/>
+      <location filename="../src/librssguard-standard/src/gui/formstandardimportexport.cpp" line="83"/>
       <source>Target feeds &amp;&amp; categories</source>
       <translation>Zu importierende Feeds &amp;&amp; Kategorien</translation>
     </message>
     <message>
-      <location filename="../src/librssguard-standard/src/gui/formstandardimportexport.cpp" line="89"/>
+      <location filename="../src/librssguard-standard/src/gui/formstandardimportexport.cpp" line="90"/>
       <source>Import feeds</source>
       <translation>Feeds importieren</translation>
     </message>
     <message>
-      <location filename="../src/librssguard-standard/src/gui/formstandardimportexport.cpp" line="155"/>
+      <location filename="../src/librssguard-standard/src/gui/formstandardimportexport.cpp" line="156"/>
       <source>Command is ok.</source>
       <translation>Befehl OK.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard-standard/src/gui/formstandardimportexport.cpp" line="158"/>
+      <location filename="../src/librssguard-standard/src/gui/formstandardimportexport.cpp" line="159"/>
       <source>Command is empty.</source>
       <translation>Befehl unvollständig.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard-standard/src/gui/formstandardimportexport.cpp" line="178"/>
+      <location filename="../src/librssguard-standard/src/gui/formstandardimportexport.cpp" line="179"/>
       <source>Select file for feeds export</source>
       <translation>Datei zum Exportieren auswählen</translation>
     </message>
     <message>
-      <location filename="../src/librssguard-standard/src/gui/formstandardimportexport.cpp" line="203"/>
-      <location filename="../src/librssguard-standard/src/gui/formstandardimportexport.cpp" line="239"/>
+      <location filename="../src/librssguard-standard/src/gui/formstandardimportexport.cpp" line="204"/>
+      <location filename="../src/librssguard-standard/src/gui/formstandardimportexport.cpp" line="241"/>
       <source>File is selected.</source>
       <translation>Datei wurde ausgewählt.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard-standard/src/gui/formstandardimportexport.cpp" line="222"/>
+      <location filename="../src/librssguard-standard/src/gui/formstandardimportexport.cpp" line="223"/>
       <source>Select file for feeds import</source>
       <translation>Datei zum Importieren auswählen</translation>
     </message>
     <message>
-      <location filename="../src/librssguard-standard/src/gui/formstandardimportexport.cpp" line="136"/>
+      <location filename="../src/librssguard-standard/src/gui/formstandardimportexport.cpp" line="137"/>
       <source>Feeds were loaded.</source>
       <translation>Feeds wurden geladen.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard-standard/src/gui/formstandardimportexport.cpp" line="28"/>
+      <location filename="../src/librssguard-standard/src/gui/formstandardimportexport.cpp" line="29"/>
       <source>Full command to execute</source>
       <translation>Vollständiges Kommando</translation>
     </message>
     <message>
-      <location filename="../src/librssguard-standard/src/gui/formstandardimportexport.cpp" line="29"/>
+      <location filename="../src/librssguard-standard/src/gui/formstandardimportexport.cpp" line="30"/>
       <source>You can enter full command including interpreter here.</source>
       <translation>Du kannst ein vollständiges Kommando inklusive Interpreter hier eingeben.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard-standard/src/gui/formstandardimportexport.cpp" line="31"/>
+      <location filename="../src/librssguard-standard/src/gui/formstandardimportexport.cpp" line="32"/>
       <source>Here you can enter script executaion line, including interpreter.</source>
       <translation>Du kannst eine Kommandozeile inklusive Interpreter hier eingeben.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard-standard/src/gui/formstandardimportexport.cpp" line="132"/>
       <location filename="../src/librssguard-standard/src/gui/formstandardimportexport.cpp" line="133"/>
+      <location filename="../src/librssguard-standard/src/gui/formstandardimportexport.cpp" line="134"/>
       <source>Some feeds were not loaded properly. Check log for more information.</source>
       <translation>Manche Feeds konnten nicht geladen werden. Kontrolliere das Protokoll um mehr Informationen zu erhalten.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard-standard/src/gui/formstandardimportexport.cpp" line="274"/>
+      <location filename="../src/librssguard-standard/src/gui/formstandardimportexport.cpp" line="276"/>
       <source>cannot open file</source>
       <translation>Kann Datei nicht öffnen</translation>
     </message>
     <message>
-      <location filename="../src/librssguard-standard/src/gui/formstandardimportexport.cpp" line="333"/>
-      <location filename="../src/librssguard-standard/src/gui/formstandardimportexport.cpp" line="334"/>
+      <location filename="../src/librssguard-standard/src/gui/formstandardimportexport.cpp" line="335"/>
+      <location filename="../src/librssguard-standard/src/gui/formstandardimportexport.cpp" line="336"/>
       <source>Feeds were exported successfully.</source>
       <translation>Feeds wurden erfolgreich exportiert.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard-standard/src/gui/formstandardimportexport.cpp" line="344"/>
-      <location filename="../src/librssguard-standard/src/gui/formstandardimportexport.cpp" line="345"/>
+      <location filename="../src/librssguard-standard/src/gui/formstandardimportexport.cpp" line="346"/>
+      <location filename="../src/librssguard-standard/src/gui/formstandardimportexport.cpp" line="347"/>
       <source>Critical error occurred.</source>
       <translation>Ein kritischer Fehler ist aufgetreten.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard-standard/src/gui/formstandardimportexport.cpp" line="116"/>
+      <location filename="../src/librssguard-standard/src/gui/formstandardimportexport.cpp" line="117"/>
       <source>Parsing data...</source>
       <translation>Verarbeite Daten...</translation>
     </message>
     <message>
-      <location filename="../src/librssguard-standard/src/gui/formstandardimportexport.cpp" line="167"/>
-      <location filename="../src/librssguard-standard/src/gui/formstandardimportexport.cpp" line="212"/>
+      <location filename="../src/librssguard-standard/src/gui/formstandardimportexport.cpp" line="168"/>
+      <location filename="../src/librssguard-standard/src/gui/formstandardimportexport.cpp" line="213"/>
       <source>OPML 2.0 files (*.opml *.xml)</source>
       <translation>OPML 2.0 Datei (*.opml *.xml)</translation>
     </message>
     <message>
-      <location filename="../src/librssguard-standard/src/gui/formstandardimportexport.cpp" line="338"/>
+      <location filename="../src/librssguard-standard/src/gui/formstandardimportexport.cpp" line="340"/>
       <source>Cannot write into destination file: &apos;%1&apos;.</source>
       <translation>Kann nicht in Zieldatei &apos;%1&apos; schreiben.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard-standard/src/gui/formstandardimportexport.cpp" line="168"/>
-      <location filename="../src/librssguard-standard/src/gui/formstandardimportexport.cpp" line="213"/>
+      <location filename="../src/librssguard-standard/src/gui/formstandardimportexport.cpp" line="169"/>
+      <location filename="../src/librssguard-standard/src/gui/formstandardimportexport.cpp" line="214"/>
       <source>TXT files [one URL per line] (*.txt)</source>
       <translation>Textdateien [eine URL pro Zeile] (*.txt)</translation>
     </message>
     <message>
-      <location filename="../src/librssguard-standard/src/gui/formstandardimportexport.cpp" line="72"/>
+      <location filename="../src/librssguard-standard/src/gui/formstandardimportexport.cpp" line="73"/>
       <source>&amp;Export to file</source>
       <translation>&amp;In Datei exportieren</translation>
     </message>
     <message>
-      <location filename="../src/librssguard-standard/src/gui/formstandardimportexport.cpp" line="84"/>
+      <location filename="../src/librssguard-standard/src/gui/formstandardimportexport.cpp" line="85"/>
       <source>&amp;Import from file</source>
       <translation>&amp;Von Datei importieren</translation>
     </message>
@@ -4287,49 +4287,49 @@ Sie können es jetzt installieren.</translation>
   <context>
     <name>GmailServiceRoot</name>
     <message>
-      <location filename="../src/librssguard-gmail/src/gmailserviceroot.cpp" line="43"/>
+      <location filename="../src/librssguard-gmail/src/gmailserviceroot.cpp" line="41"/>
       <source>Inbox</source>
       <translation>Posteingang</translation>
     </message>
     <message>
-      <location filename="../src/librssguard-gmail/src/gmailserviceroot.cpp" line="52"/>
+      <location filename="../src/librssguard-gmail/src/gmailserviceroot.cpp" line="50"/>
       <source>Sent</source>
       <translation>Gesendet</translation>
     </message>
     <message>
-      <location filename="../src/librssguard-gmail/src/gmailserviceroot.cpp" line="53"/>
+      <location filename="../src/librssguard-gmail/src/gmailserviceroot.cpp" line="51"/>
       <source>Drafts</source>
       <translation>Entwürfe</translation>
     </message>
     <message>
-      <location filename="../src/librssguard-gmail/src/gmailserviceroot.cpp" line="57"/>
+      <location filename="../src/librssguard-gmail/src/gmailserviceroot.cpp" line="55"/>
       <source>Spam</source>
       <translation>Spam</translation>
     </message>
     <message>
-      <location filename="../src/librssguard-gmail/src/gmailserviceroot.cpp" line="135"/>
+      <location filename="../src/librssguard-gmail/src/gmailserviceroot.cpp" line="133"/>
       <source>Reply to this e-mail message</source>
       <translation>Auf diese E-Mail Nachricht antworten</translation>
     </message>
     <message>
-      <location filename="../src/librssguard-gmail/src/gmailserviceroot.cpp" line="223"/>
+      <location filename="../src/librssguard-gmail/src/gmailserviceroot.cpp" line="221"/>
       <source>Authentication status: %1
 Login tokens expiration: %2</source>
       <translation>Authentifikationsstatus: %1
 Ablauf des Login tokens: %2</translation>
     </message>
     <message>
-      <location filename="../src/librssguard-gmail/src/gmailserviceroot.cpp" line="225"/>
+      <location filename="../src/librssguard-gmail/src/gmailserviceroot.cpp" line="223"/>
       <source>logged-in</source>
       <translation>angemeldet</translation>
     </message>
     <message>
-      <location filename="../src/librssguard-gmail/src/gmailserviceroot.cpp" line="225"/>
+      <location filename="../src/librssguard-gmail/src/gmailserviceroot.cpp" line="223"/>
       <source>NOT logged-in</source>
       <translation>NICHT angemeldet</translation>
     </message>
     <message>
-      <location filename="../src/librssguard-gmail/src/gmailserviceroot.cpp" line="151"/>
+      <location filename="../src/librssguard-gmail/src/gmailserviceroot.cpp" line="149"/>
       <source>Write new e-mail message</source>
       <translation>Eine neue E-Mail schreiben</translation>
     </message>
@@ -4654,75 +4654,75 @@ Ablauf des Login tokens: %2</translation>
   <context>
     <name>GreaderServiceRoot</name>
     <message>
-      <location filename="../src/librssguard-greader/src/greaderserviceroot.cpp" line="157"/>
+      <location filename="../src/librssguard-greader/src/greaderserviceroot.cpp" line="158"/>
       <source>Other services</source>
       <translation>Andere Dienste</translation>
     </message>
     <message>
-      <location filename="../src/librssguard-greader/src/greaderserviceroot.cpp" line="162"/>
-      <location filename="../src/librssguard-greader/src/greaderserviceroot.cpp" line="192"/>
+      <location filename="../src/librssguard-greader/src/greaderserviceroot.cpp" line="163"/>
+      <location filename="../src/librssguard-greader/src/greaderserviceroot.cpp" line="195"/>
       <source>OPML 2.0 files (*.opml *.xml)</source>
       <translation>OPML 2.0 Datei (*.opml *.xml)</translation>
     </message>
     <message>
-      <location filename="../src/librssguard-greader/src/greaderserviceroot.cpp" line="164"/>
+      <location filename="../src/librssguard-greader/src/greaderserviceroot.cpp" line="165"/>
       <source>Select file for feeds import</source>
       <translation>Datei zum Importieren auswählen</translation>
     </message>
     <message>
-      <location filename="../src/librssguard-greader/src/greaderserviceroot.cpp" line="176"/>
-      <location filename="../src/librssguard-greader/src/greaderserviceroot.cpp" line="204"/>
+      <location filename="../src/librssguard-greader/src/greaderserviceroot.cpp" line="179"/>
+      <location filename="../src/librssguard-greader/src/greaderserviceroot.cpp" line="207"/>
       <source>Done</source>
       <translation>Erledigt</translation>
     </message>
     <message>
-      <location filename="../src/librssguard-greader/src/greaderserviceroot.cpp" line="177"/>
+      <location filename="../src/librssguard-greader/src/greaderserviceroot.cpp" line="180"/>
       <source>Data imported successfully. Reloading feed tree.</source>
       <translation>Daten erfolgreich importiert. Feed Tree wird neu geladen.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard-greader/src/greaderserviceroot.cpp" line="184"/>
+      <location filename="../src/librssguard-greader/src/greaderserviceroot.cpp" line="187"/>
       <source>Cannot import feeds</source>
       <translation>Feeds können nicht importiert werden</translation>
     </message>
     <message>
-      <location filename="../src/librssguard-greader/src/greaderserviceroot.cpp" line="185"/>
-      <location filename="../src/librssguard-greader/src/greaderserviceroot.cpp" line="210"/>
+      <location filename="../src/librssguard-greader/src/greaderserviceroot.cpp" line="188"/>
+      <location filename="../src/librssguard-greader/src/greaderserviceroot.cpp" line="213"/>
       <source>Error: %1</source>
       <translation>Fehler: %1</translation>
     </message>
     <message>
-      <location filename="../src/librssguard-greader/src/greaderserviceroot.cpp" line="194"/>
+      <location filename="../src/librssguard-greader/src/greaderserviceroot.cpp" line="197"/>
       <source>Select file for feeds export</source>
       <translation>Datei zum Exportieren auswählen</translation>
     </message>
     <message>
-      <location filename="../src/librssguard-greader/src/greaderserviceroot.cpp" line="204"/>
+      <location filename="../src/librssguard-greader/src/greaderserviceroot.cpp" line="207"/>
       <source>Data exported successfully.</source>
       <translation>Daten erfolgreich exportiert.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard-greader/src/greaderserviceroot.cpp" line="209"/>
+      <location filename="../src/librssguard-greader/src/greaderserviceroot.cpp" line="212"/>
       <source>Cannot export feeds</source>
       <translation>Kann Feeds nicht exportieren</translation>
     </message>
     <message>
-      <location filename="../src/librssguard-greader/src/greaderserviceroot.cpp" line="266"/>
+      <location filename="../src/librssguard-greader/src/greaderserviceroot.cpp" line="269"/>
       <source>Export feeds</source>
       <translation>Feeds exportieren</translation>
     </message>
     <message>
-      <location filename="../src/librssguard-greader/src/greaderserviceroot.cpp" line="267"/>
+      <location filename="../src/librssguard-greader/src/greaderserviceroot.cpp" line="270"/>
       <source>Import feeds</source>
       <translation>Feeds importieren</translation>
     </message>
     <message>
-      <location filename="../src/librssguard-greader/src/greaderserviceroot.cpp" line="367"/>
+      <location filename="../src/librssguard-greader/src/greaderserviceroot.cpp" line="370"/>
       <source>Cannot add item</source>
       <translation>Kann Eintrag nicht hinzufügen</translation>
     </message>
     <message>
-      <location filename="../src/librssguard-greader/src/greaderserviceroot.cpp" line="368"/>
+      <location filename="../src/librssguard-greader/src/greaderserviceroot.cpp" line="371"/>
       <source>Cannot add feed because another critical operation is ongoing.</source>
       <translation>Kann Eintrag nicht hinzufügen, da noch eine andere ihn betreffende Aktion läuft.</translation>
     </message>
@@ -6917,19 +6917,19 @@ Liste aller unterstützten Leser:</translation>
   <context>
     <name>RedditServiceRoot</name>
     <message>
-      <location filename="../src/librssguard-reddit/src/redditserviceroot.cpp" line="132"/>
+      <location filename="../src/librssguard-reddit/src/redditserviceroot.cpp" line="130"/>
       <source>Authentication status: %1
 Login tokens expiration: %2</source>
       <translation>Authentifikationsstatus: %1
 Ablauf des Login tokens: %2</translation>
     </message>
     <message>
-      <location filename="../src/librssguard-reddit/src/redditserviceroot.cpp" line="134"/>
+      <location filename="../src/librssguard-reddit/src/redditserviceroot.cpp" line="132"/>
       <source>logged-in</source>
       <translation>angemeldet</translation>
     </message>
     <message>
-      <location filename="../src/librssguard-reddit/src/redditserviceroot.cpp" line="134"/>
+      <location filename="../src/librssguard-reddit/src/redditserviceroot.cpp" line="132"/>
       <source>NOT logged-in</source>
       <translation>NICHT angemeldet</translation>
     </message>
@@ -7119,7 +7119,7 @@ File filter for external e-mail selection dialog.</extracomment>
       <translation>Opera 12 oder älter</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/settings/settingsbrowsermail.cpp" line="320"/>
+      <location filename="../src/librssguard/gui/settings/settingsbrowsermail.cpp" line="322"/>
       <source>Enter (optional) parameters:</source>
       <translation>Gebe (optionale) Parameter ein:</translation>
     </message>
@@ -7326,7 +7326,7 @@ File filter for external e-mail selection dialog.</extracomment>
       <translation>Externes Programm auswählen</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/settings/settingsbrowsermail.cpp" line="319"/>
+      <location filename="../src/librssguard/gui/settings/settingsbrowsermail.cpp" line="321"/>
       <source>Enter parameters</source>
       <translation>Parameter eingeben</translation>
     </message>
@@ -7500,7 +7500,7 @@ Die Autoren dieser Anwendung sind NICHT für Datenverlust verantwortlich.</trans
   <context>
     <name>SettingsDownloads</name>
     <message>
-      <location filename="../src/librssguard/gui/settings/settingsdownloads.cpp" line="34"/>
+      <location filename="../src/librssguard/gui/settings/settingsdownloads.cpp" line="33"/>
       <source>Select downloads target directory</source>
       <translation>Zielverzeichnis zum Herunterladen auswählen</translation>
     </message>
@@ -9134,7 +9134,7 @@ Du kannst die generierten Feed Daten auch mit einem extra Nachbearbeituns-Skript
       <translation>Aktiviere HTTP/2</translation>
     </message>
     <message>
-      <location filename="../src/librssguard-standard/src/gui/standardfeedexpdetails.cpp" line="26"/>
+      <location filename="../src/librssguard-standard/src/gui/standardfeedexpdetails.cpp" line="25"/>
       <source>Turning this setting ON might bring considerable performance boost when fetching this feed, but only in some very specific conditions.
 
 This setting is useful when raw XML parsing of the feed is very slow, this happens for feed which do have very long contents.</source>
@@ -9143,17 +9143,17 @@ This setting is useful when raw XML parsing of the feed is very slow, this happe
 Diese Einstellung ist hilfreich, wenn das Parsen der XML Rohdaten sehr langsam ist, was bei Feeds mit sehr langen Inhalten auftritt.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard-standard/src/gui/standardfeedexpdetails.cpp" line="32"/>
+      <location filename="../src/librssguard-standard/src/gui/standardfeedexpdetails.cpp" line="31"/>
       <source>Use application settings</source>
       <translation type="unfinished">Use application settings</translation>
     </message>
     <message>
-      <location filename="../src/librssguard-standard/src/gui/standardfeedexpdetails.cpp" line="34"/>
+      <location filename="../src/librssguard-standard/src/gui/standardfeedexpdetails.cpp" line="33"/>
       <source>Enabled</source>
       <translation type="unfinished">Enabled</translation>
     </message>
     <message>
-      <location filename="../src/librssguard-standard/src/gui/standardfeedexpdetails.cpp" line="35"/>
+      <location filename="../src/librssguard-standard/src/gui/standardfeedexpdetails.cpp" line="34"/>
       <source>Disabled</source>
       <translation type="unfinished">Disabled</translation>
     </message>
