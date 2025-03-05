@@ -385,7 +385,7 @@ Assignment DatabaseQueries::getFeeds(const QSqlDatabase& db,
     feed->setAutoUpdateInterval(query.value(FDS_DB_UPDATE_INTERVAL_INDEX).toInt());
     feed->setIsSwitchedOff(query.value(FDS_DB_IS_OFF_INDEX).toBool());
     feed->setIsQuiet(query.value(FDS_DB_IS_QUIET_INDEX).toBool());
-    feed->setIsRtl(query.value(FDS_DB_IS_RTL_INDEX).toBool());
+    feed->setRtlBehavior(query.value(FDS_DB_IS_RTL_INDEX).value<RtlBehavior>());
 
     Feed::ArticleIgnoreLimit art;
 

@@ -297,6 +297,7 @@ set(SOURCES
   services/abstract/category.h
   services/abstract/feed.cpp
   services/abstract/feed.h
+  services/abstract/feedrtlbehavior.h
   services/abstract/gui/accountdetails.cpp
   services/abstract/gui/accountdetails.h
   services/abstract/gui/authenticationdetails.cpp

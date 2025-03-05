@@ -592,19 +592,24 @@ void MessagesView::loadItem(RootItem* item) {
 
   if (switch_entire_rtl_list && item != nullptr) {
     if (item->kind() == RootItem::Kind::Feed) {
-      setLayoutDirection(item->toFeed()->isRtl() ? Qt::LayoutDirection::RightToLeft : Qt::LayoutDirection::LeftToRight);
+      auto* fd = item->toFeed();
+      setLayoutDirection((fd->rtlBehavior() == RtlBehavior::Everywhere ||
+                          fd->rtlBehavior() == RtlBehavior::EverywhereExceptFeedList)
+                           ? Qt::LayoutDirection::RightToLeft
+                           : Qt::LayoutDirection::LayoutDirectionAuto);
     }
     else {
       auto fds = item->getSubTreeFeeds();
       bool all_feeds_rtl = !fds.isEmpty() && std::all_of(fds.begin(), fds.end(), [](Feed* fd) {
-        return fd->isRtl();
+        return fd->rtlBehavior() == RtlBehavior::Everywhere ||
+               fd->rtlBehavior() == RtlBehavior::EverywhereExceptFeedList;
       });
 
-      setLayoutDirection(all_feeds_rtl ? Qt::LayoutDirection::RightToLeft : Qt::LayoutDirection::LeftToRight);
+      setLayoutDirection(all_feeds_rtl ? Qt::LayoutDirection::RightToLeft : Qt::LayoutDirection::LayoutDirectionAuto);
     }
   }
   else {
-    setLayoutDirection(Qt::LayoutDirection::LeftToRight);
+    setLayoutDirection(Qt::LayoutDirection::LayoutDirectionAuto);
   }
 
   // Messages are loaded, make sure that previously

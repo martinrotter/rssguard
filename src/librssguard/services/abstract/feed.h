@@ -5,6 +5,7 @@
 
 #include "core/message.h"
 #include "core/messagefilter.h"
+#include "services/abstract/feedrtlbehavior.h"
 #include "services/abstract/rootitem.h"
 
 #include <QPointer>
@@ -104,8 +105,8 @@ class RSSGUARD_DLLSPEC Feed : public RootItem {
     QDateTime lastUpdated() const;
     void setLastUpdated(const QDateTime& last_updated);
 
-    bool isRtl() const;
-    void setIsRtl(bool rtl);
+    RtlBehavior rtlBehavior() const;
+    void setRtlBehavior(RtlBehavior rtl);
 
     bool removeUnwantedArticles(QSqlDatabase& db);
 
@@ -130,7 +131,7 @@ class RSSGUARD_DLLSPEC Feed : public RootItem {
     bool m_isSwitchedOff;
     bool m_isQuiet;
     bool m_openArticlesDirectly;
-    bool m_isRtl;
+    RtlBehavior m_rtlBehavior;
 
     // NOTE: These are used to filter out older articles
     // than needed. Either absolute value is given (date/time)

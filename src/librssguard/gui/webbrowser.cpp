@@ -369,7 +369,7 @@ void WebBrowser::setFullArticleHtml(const QObject* sndr, const QString& url, con
       full_article.m_isImportant = displayed_article.m_isImportant;
       full_article.m_isDeleted = displayed_article.m_isDeleted;
       full_article.m_score = displayed_article.m_score;
-      full_article.m_isRtl = displayed_article.m_isRtl;
+      full_article.m_rtlBehavior = displayed_article.m_rtlBehavior;
       full_article.m_enclosures = displayed_article.m_enclosures;
 
       loadMessages({full_article}, m_root);

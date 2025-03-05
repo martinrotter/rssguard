@@ -5,6 +5,8 @@
 
 // #include "definitions/definitions.h"
 
+#include "services/abstract/feedrtlbehavior.h"
+
 #include <QDataStream>
 #include <QDateTime>
 #include <QSqlRecord>
@@ -84,7 +86,7 @@ class RSSGUARD_DLLSPEC Message {
     bool m_isImportant;
     bool m_isDeleted;
     double m_score;
-    bool m_isRtl;
+    RtlBehavior m_rtlBehavior;
     QList<Enclosure> m_enclosures;
 
     // List of assigned labels.

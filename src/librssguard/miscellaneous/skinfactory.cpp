@@ -292,17 +292,21 @@ PreparedHtml SkinFactory::generateHtmlOfArticles(const QList<Message>& messages,
       msg_contents = qApp->web()->limitSizeOfHtmlImages(msg_contents, desired_width, forced_img_height);
     }
 
-    messages_layout.append(single_message_layout.arg(message.m_title,
-                                                     tr("Written by ") + (message.m_author.isEmpty()
-                                                                            ? tr("unknown author")
-                                                                            : message.m_author),
-                                                     message.m_url,
-                                                     msg_contents,
-                                                     msg_date,
-                                                     enclosures,
-                                                     enclosure_images,
-                                                     QString::number(message.m_id),
-                                                     message.m_isRtl ? QSL("rtl") : QSL("ltr")));
+    messages_layout
+      .append(single_message_layout.arg(message.m_title,
+                                        tr("Written by ") +
+                                          (message.m_author.isEmpty() ? tr("unknown author") : message.m_author),
+                                        message.m_url,
+                                        msg_contents,
+                                        msg_date,
+                                        enclosures,
+                                        enclosure_images,
+                                        QString::number(message.m_id),
+                                        (message.m_rtlBehavior == RtlBehavior::Everywhere ||
+                                         message.m_rtlBehavior == RtlBehavior::EverywhereExceptFeedList ||
+                                         message.m_rtlBehavior == RtlBehavior::OnlyViewer)
+                                          ? QSL("rtl")
+                                          : QSL("ltr")));
   }
 
   QString msg_contents =

@@ -61,7 +61,7 @@ void FormFeedDetails::apply() {
     }
 
     if (isChangeAllowed(m_ui->m_mcbFeedRtl)) {
-      fd->setIsRtl(m_ui->m_cbFeedRtl->isChecked());
+      fd->setRtlBehavior(m_ui->m_cmbRtlBehavior->currentData().value<RtlBehavior>());
     }
 
     m_ui->m_wdgArticleLimiting->saveFeed(fd, m_isBatchEdit);
@@ -127,7 +127,7 @@ void FormFeedDetails::loadFeedData() {
     m_ui->m_mcbOpenArticlesAutomatically->addActionWidget(m_ui->m_cbOpenArticlesAutomatically);
     m_ui->m_mcbDisableFeed->addActionWidget(m_ui->m_cbDisableFeed);
     m_ui->m_mcbSuppressFeed->addActionWidget(m_ui->m_cbSuppressFeed);
-    m_ui->m_mcbFeedRtl->addActionWidget(m_ui->m_cbFeedRtl);
+    m_ui->m_mcbFeedRtl->addActionWidget(m_ui->m_cmbRtlBehavior);
   }
   else {
     // We hide batch selectors.
@@ -158,7 +158,7 @@ void FormFeedDetails::loadFeedData() {
     ->setCurrentIndex(m_ui->m_cmbAutoUpdateType->findData(QVariant::fromValue(int(fd->autoUpdateType()))));
   m_ui->m_spinAutoUpdateInterval->setValue(fd->autoUpdateInterval());
   m_ui->m_cbOpenArticlesAutomatically->setChecked(fd->openArticlesDirectly());
-  m_ui->m_cbFeedRtl->setChecked(fd->isRtl());
+  m_ui->m_cmbRtlBehavior->setCurrentIndex(m_ui->m_cmbRtlBehavior->findData(QVariant::fromValue(fd->rtlBehavior())));
   m_ui->m_cbDisableFeed->setChecked(fd->isSwitchedOff());
   m_ui->m_cbSuppressFeed->setChecked(fd->isQuiet());
 
@@ -202,10 +202,18 @@ void FormFeedDetails::initialize() {
   // Setup auto-update options.
   m_ui->m_spinAutoUpdateInterval->setMode(TimeSpinBox::Mode::MinutesSeconds);
   m_ui->m_spinAutoUpdateInterval->setValue(DEFAULT_AUTO_UPDATE_INTERVAL);
+
   m_ui->m_cmbAutoUpdateType->addItem(tr("Fetch articles using global interval"),
                                      QVariant::fromValue(int(Feed::AutoUpdateType::DefaultAutoUpdate)));
   m_ui->m_cmbAutoUpdateType->addItem(tr("Fetch articles every"),
                                      QVariant::fromValue(int(Feed::AutoUpdateType::SpecificAutoUpdate)));
   m_ui->m_cmbAutoUpdateType->addItem(tr("Disable auto-fetching of articles"),
                                      QVariant::fromValue(int(Feed::AutoUpdateType::DontAutoUpdate)));
+
+  m_ui->m_cmbRtlBehavior->addItem(tr("Left-to-right"), QVariant::fromValue(int(RtlBehavior::NoRtl)));
+  m_ui->m_cmbRtlBehavior->addItem(tr("Right-to-left (everywhere)"), QVariant::fromValue(int(RtlBehavior::Everywhere)));
+  m_ui->m_cmbRtlBehavior->addItem(tr("Right-to-left (everywhere except feed list)"),
+                                  QVariant::fromValue(int(RtlBehavior::EverywhereExceptFeedList)));
+  m_ui->m_cmbRtlBehavior->addItem(tr("Right-to-left (only in article viewer)"),
+                                  QVariant::fromValue(int(RtlBehavior::OnlyViewer)));
 }

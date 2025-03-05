@@ -295,7 +295,11 @@ void TextBrowserViewer::loadMessages(const QList<Message>& messages, RootItem* r
   setHtml(html_messages.m_html, html_messages.m_baseUrl);
 
   QTextOption op;
-  op.setTextDirection(messages.at(0).m_isRtl ? Qt::LayoutDirection::RightToLeft : Qt::LayoutDirection::LeftToRight);
+  op.setTextDirection((messages.at(0).m_rtlBehavior == RtlBehavior::Everywhere ||
+                       messages.at(0).m_rtlBehavior == RtlBehavior::EverywhereExceptFeedList ||
+                       messages.at(0).m_rtlBehavior == RtlBehavior::OnlyViewer)
+                        ? Qt::LayoutDirection::RightToLeft
+                        : Qt::LayoutDirection::LeftToRight);
   document()->setDefaultTextOption(op);
 
   emit loadingFinished(true);

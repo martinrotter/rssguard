@@ -17,7 +17,8 @@ Feed::Feed(RootItem* parent)
   : RootItem(parent), m_source(QString()), m_status(Status::Normal), m_statusString(QString()),
     m_autoUpdateType(AutoUpdateType::DefaultAutoUpdate), m_autoUpdateInterval(DEFAULT_AUTO_UPDATE_INTERVAL),
     m_lastUpdated(QDateTime::currentDateTimeUtc()), m_isSwitchedOff(false), m_isQuiet(false),
-    m_openArticlesDirectly(false), m_isRtl(false), m_messageFilters(QList<QPointer<MessageFilter>>()) {
+    m_openArticlesDirectly(false), m_rtlBehavior(RtlBehavior::NoRtl),
+    m_messageFilters(QList<QPointer<MessageFilter>>()) {
   setKind(RootItem::Kind::Feed);
 }
 
@@ -40,7 +41,7 @@ Feed::Feed(const Feed& other) : RootItem(other) {
   setMessageFilters(other.messageFilters());
   setOpenArticlesDirectly(other.openArticlesDirectly());
   setArticleIgnoreLimit(Feed::ArticleIgnoreLimit(other.articleIgnoreLimit()));
-  setIsRtl(other.isRtl());
+  setRtlBehavior(other.rtlBehavior());
   setIsSwitchedOff(other.isSwitchedOff());
   setIsQuiet(other.isQuiet());
 }
@@ -78,7 +79,8 @@ QVariant Feed::data(int column, int role) const {
 
     case TEXT_DIRECTION_ROLE: {
       if (column == FDS_MODEL_TITLE_INDEX) {
-        return isRtl() ? Qt::LayoutDirection::RightToLeft : Qt::LayoutDirection::LayoutDirectionAuto;
+        return rtlBehavior() == RtlBehavior::Everywhere ? Qt::LayoutDirection::RightToLeft
+                                                        : Qt::LayoutDirection::LayoutDirectionAuto;
       }
       else {
         return Qt::LayoutDirection::LayoutDirectionAuto;
@@ -198,12 +200,12 @@ void Feed::setOpenArticlesDirectly(bool opn) {
   m_openArticlesDirectly = opn;
 }
 
-bool Feed::isRtl() const {
-  return m_isRtl;
+RtlBehavior Feed::rtlBehavior() const {
+  return m_rtlBehavior;
 }
 
-void Feed::setIsRtl(bool rtl) {
-  m_isRtl = rtl;
+void Feed::setRtlBehavior(RtlBehavior rtl) {
+  m_rtlBehavior = rtl;
 }
 
 bool Feed::removeUnwantedArticles(QSqlDatabase& db) {

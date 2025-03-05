@@ -131,11 +131,18 @@
           <widget class="MultiFeedEditCheckBox" name="m_mcbFeedRtl"/>
          </item>
          <item>
-          <widget class="QCheckBox" name="m_cbFeedRtl">
-           <property name="text">
-            <string>Right-to-left layout</string>
-           </property>
-          </widget>
+          <layout class="QHBoxLayout" name="horizontalLayout_2">
+           <item>
+            <widget class="QLabel" name="label">
+             <property name="text">
+              <string>Right-to-left behavior</string>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QComboBox" name="m_cmbRtlBehavior"/>
+           </item>
+          </layout>
          </item>
         </layout>
        </item>
@@ -188,7 +195,6 @@
   <tabstop>m_mcbDisableFeed</tabstop>
   <tabstop>m_cbDisableFeed</tabstop>
   <tabstop>m_mcbFeedRtl</tabstop>
-  <tabstop>m_cbFeedRtl</tabstop>
  </tabstops>
  <resources/>
  <connections>

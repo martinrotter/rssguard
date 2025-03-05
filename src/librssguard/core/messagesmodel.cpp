@@ -437,12 +437,15 @@ QVariant MessagesModel::data(const QModelIndex& idx, int role) const {
         return Qt::LayoutDirection::LayoutDirectionAuto;
       }
       else {
-        return (m_cache->containsData(idx.row())
-                  ? m_cache->data(index(idx.row(), MSG_DB_FEED_IS_RTL_INDEX))
-                  : QSqlQueryModel::data(index(idx.row(), MSG_DB_FEED_IS_RTL_INDEX), Qt::ItemDataRole::EditRole))
-                     .toInt() == 0
-                 ? Qt::LayoutDirection::LayoutDirectionAuto
-                 : Qt::LayoutDirection::RightToLeft;
+        RtlBehavior rtl_mode =
+          (m_cache->containsData(idx.row())
+             ? m_cache->data(index(idx.row(), MSG_DB_FEED_IS_RTL_INDEX))
+             : QSqlQueryModel::data(index(idx.row(), MSG_DB_FEED_IS_RTL_INDEX), Qt::ItemDataRole::EditRole))
+            .value<RtlBehavior>();
+
+        return (rtl_mode == RtlBehavior::Everywhere || rtl_mode == RtlBehavior::EverywhereExceptFeedList)
+                 ? Qt::LayoutDirection::RightToLeft
+                 : Qt::LayoutDirection::LayoutDirectionAuto;
       }
     }
 

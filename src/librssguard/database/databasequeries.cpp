@@ -2698,7 +2698,7 @@ void DatabaseQueries::createOverwriteFeed(const QSqlDatabase& db, Feed* feed, in
   q.bindValue(QSL(":is_off"), feed->isSwitchedOff());
   q.bindValue(QSL(":is_quiet"), feed->isQuiet());
   q.bindValue(QSL(":open_articles"), feed->openArticlesDirectly());
-  q.bindValue(QSL(":is_rtl"), feed->isRtl());
+  q.bindValue(QSL(":is_rtl"), int(feed->rtlBehavior()));
 
   const Feed::ArticleIgnoreLimit art = feed->articleIgnoreLimit();
 
