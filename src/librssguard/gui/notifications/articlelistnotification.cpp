@@ -70,9 +70,6 @@ void ArticleListNotification::loadResults(const QHash<Feed*, QList<Message>>& ne
 
   m_newMessages = new_messages;
 
-  m_ui.m_lblTitle->setText(tr("%n feeds fetched", nullptr, new_messages.size()));
-  m_ui.m_lblTitle->setToolTip(m_ui.m_lblTitle->text());
-
   m_ui.m_cmbFeeds->model()->sort(0, Qt::SortOrder::AscendingOrder);
   m_ui.m_cmbFeeds->clear();
 
@@ -91,6 +88,9 @@ void ArticleListNotification::loadResults(const QHash<Feed*, QList<Message>>& ne
       m_ui.m_cmbFeeds->addItem(fd->sanitizedTitle(), QVariant::fromValue(fd));
     }
   }
+
+  m_ui.m_lblTitle->setText(tr("%n feeds fetched", nullptr, m_ui.m_cmbFeeds->count()));
+  m_ui.m_lblTitle->setToolTip(m_ui.m_lblTitle->text());
 }
 
 void ArticleListNotification::openArticleInArticleList() {
@@ -118,6 +118,7 @@ void ArticleListNotification::onMessageSelected(const QModelIndex& current, cons
 }
 
 void ArticleListNotification::showFeed(int index) {
+  Q_UNUSED(index)
   m_model->setArticles(m_newMessages.value(selectedFeed()));
   onMessageSelected({}, {});
 }
