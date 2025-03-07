@@ -100,7 +100,8 @@ void FeedDownloader::updateFeeds(const QList<Feed*>& feeds) {
     QSqlDatabase database = qApp->database()->driver()->threadSafeConnection(metaObject()->className());
 
     for (auto* rt : roots) {
-      auto fds = feeds_per_root.values(rt);
+      auto fds = scrambleFeedsWithSameHost(feeds_per_root.values(rt));
+
       QHash<QString, QStringList> per_acc_tags;
       QHash<QString, QHash<ServiceRoot::BagOfMessages, QStringList>> per_acc_states;
 
@@ -596,6 +597,10 @@ void FeedDownloader::removeTooOldMessages(Feed* feed, QList<Message>& msgs) {
       }
     }
   }
+}
+
+QList<Feed*> FeedDownloader::scrambleFeedsWithSameHost(const QList<Feed*>& feeds) const {
+  return feeds;
 }
 
 QString FeedDownloadResults::overview(int how_many_feeds) const {

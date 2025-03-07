@@ -75,6 +75,7 @@ class FeedDownloader : public QObject {
     void removeDuplicateMessages(QList<Message>& messages);
     void removeTooOldMessages(Feed* feed, QList<Message>& msgs);
 
+    QList<Feed*> scrambleFeedsWithSameHost(const QList<Feed*>& feeds) const;
     FeedUpdateResult updateThreadedFeed(const FeedUpdateRequest& fd);
 
   private:
