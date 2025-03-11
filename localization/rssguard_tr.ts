@@ -1492,22 +1492,22 @@ Kaynak: &lt;a href=&quot;%4&quot;&gt;%4&lt;/a&gt;
     <message>
       <location filename="../src/librssguard/gui/dialogs/formabout.cpp" line="129"/>
       <source>Changelog not found.</source>
-      <translation type="unfinished">Changelog not found.</translation>
+      <translation>Değişim günlüğü bulunamadı.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formabout.cpp" line="31"/>
       <source>About %1</source>
-      <translation type="unfinished">About %1</translation>
+      <translation>%1 hakkında</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formabout.cpp" line="53"/>
       <source>Cannot copy</source>
-      <translation type="unfinished">Cannot copy</translation>
+      <translation>Kopyalanamıyor</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formabout.cpp" line="54"/>
       <source>Cannot copy info to clipboard.</source>
-      <translation type="unfinished">Cannot copy info to clipboard.</translation>
+      <translation>Bilgiler panoya kopyalanamıyor.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formabout.cpp" line="68"/>
