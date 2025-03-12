@@ -163,10 +163,10 @@ QPair<StandardFeed*, QList<IconLocation>> RssParser::guessFeed(const QByteArray&
                                                                const NetworkResult& network_res) const {
   QString xml_schema_encoding = QSL(DEFAULT_FEED_ENCODING);
   QString xml_contents_encoded;
-  QString enc =
-    QRegularExpression(QSL("encoding=\"([A-Z0-9\\-]+)\""), QRegularExpression::PatternOption::CaseInsensitiveOption)
-      .match(content)
-      .captured(1);
+  QString enc = QRegularExpression(QSL("encoding=[\"']([A-Z0-9\\-]+)[\"']"),
+                                   QRegularExpression::PatternOption::CaseInsensitiveOption)
+                  .match(content)
+                  .captured(1);
 
   if (!enc.isEmpty()) {
     // Some "encoding" attribute was found get the encoding

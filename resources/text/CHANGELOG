@@ -16,6 +16,7 @@ Added:
 
 Fixed:
 * Enhanced QSS for tooltips for better readability. (#1637)
+* RSS feed encoding detection was prone to errors. (#1664)
 * `Localization` page now displays correctly. (#1611)
 
 4.8.0
