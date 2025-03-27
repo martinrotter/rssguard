@@ -406,3 +406,7 @@ QString SqliteDriver::autoIncrementPrimaryKey() const {
 QString SqliteDriver::blob() const {
   return QSL("BLOB");
 }
+
+QString SqliteDriver::text() const {
+  return QSL("TEXT");
+}

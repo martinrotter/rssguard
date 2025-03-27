@@ -237,6 +237,7 @@
 #define APP_DB_NAME_PLACEHOLDER              "##"
 #define APP_DB_AUTO_INC_PRIM_KEY_PLACEHOLDER "$$"
 #define APP_DB_BLOB_PLACEHOLDER              "^^"
+#define APP_DB_TEXT_PLACEHOLDER              "**"
 
 #define APP_CFG_PATH "config"
 #define APP_CFG_FILE "config.ini"

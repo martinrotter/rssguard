@@ -43,6 +43,7 @@ class MariaDbDriver : public DatabaseDriver {
                                       DatabaseDriver::DesiredStorageType::FromSettings);
     virtual QString autoIncrementPrimaryKey() const;
     virtual QString blob() const;
+    virtual QString text() const;
 
     QString interpretErrorCode(MariaDbError error_code) const;
 

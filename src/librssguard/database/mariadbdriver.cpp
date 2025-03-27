@@ -274,3 +274,7 @@ QString MariaDbDriver::autoIncrementPrimaryKey() const {
 QString MariaDbDriver::blob() const {
   return QSL("MEDIUMBLOB");
 }
+
+QString MariaDbDriver::text() const {
+  return QSL("MEDIUMTEXT");
+}

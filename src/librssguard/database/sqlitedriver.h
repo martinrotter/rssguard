@@ -33,6 +33,7 @@ class SqliteDriver : public DatabaseDriver {
     virtual void backupDatabase(const QString& backup_folder, const QString& backup_name);
     virtual QString autoIncrementPrimaryKey() const;
     virtual QString blob() const;
+    virtual QString text() const;
 
   private:
     QSqlDatabase initializeDatabase(const QString& connection_name, bool in_memory);

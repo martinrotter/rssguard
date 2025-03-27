@@ -74,7 +74,7 @@ CREATE TABLE Messages (
   url             TEXT,
   author          TEXT,
   date_created    BIGINT      NOT NULL CHECK (date_created >= 0),
-  contents        TEXT,
+  contents        **,
   enclosures      TEXT,
   score           REAL        NOT NULL DEFAULT 0.0 CHECK (score >= 0.0 AND score <= 100.0),
   account_id      INTEGER     NOT NULL,
