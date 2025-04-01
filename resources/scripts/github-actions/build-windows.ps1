@@ -43,7 +43,7 @@ if ($use_qt5 -eq "ON") {
   $use_qtmultimedia = "ON"
 }
 else {
-  $qt_version = "6.8.2"
+  $qt_version = "6.8.3"
   $qt_arch_base = "msvc2022_64"
 
   if ($use_webengine -eq "ON") {
