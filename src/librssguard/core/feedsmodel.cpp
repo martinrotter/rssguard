@@ -569,6 +569,8 @@ QVariant FeedsModel::data(const QModelIndex& index, int role) const {
           return m_updateItemIcon;
         }
       }
+
+      return itemForIndex(index)->data(index.column(), role);
     }
 
     case Qt::ItemDataRole::ToolTipRole:
