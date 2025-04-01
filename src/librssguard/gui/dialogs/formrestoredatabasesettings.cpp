@@ -29,7 +29,7 @@ FormRestoreDatabaseSettings::FormRestoreDatabaseSettings(QWidget& parent) : QDia
           &QPushButton::clicked,
           this,
           &FormRestoreDatabaseSettings::performRestoration);
-  selectFolder(qApp->documentsFolder());
+  selectFolder(FileDialog::storedFolder(GENERAL_REMEMBERED_PATH, qApp->documentsFolder()));
 }
 
 FormRestoreDatabaseSettings::~FormRestoreDatabaseSettings() {

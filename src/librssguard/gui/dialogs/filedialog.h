@@ -12,6 +12,8 @@ class QWidget;
 
 class RSSGUARD_DLLSPEC FileDialog {
   public:
+    static QString storedFolder(const QString& id, const QString& dir = QString());
+
     static QString saveFileName(QWidget* parent = nullptr,
                                 const QString& caption = QString(),
                                 const QString& dir = QString(),

@@ -63,7 +63,7 @@ else
   QTBIN="$QTPATH/$QTVERSION/$QTOS/bin"
 
   # Install "aqtinstall" from its master branch to have latest code.
-  pip3 install -I aqtinstall
+  pip3 install -I git+https://github.com/miurahr/aqtinstall
 
   echo "Qt bin directory is: $QTBIN"
   echo "Qt will be installed to: $QTPATH"

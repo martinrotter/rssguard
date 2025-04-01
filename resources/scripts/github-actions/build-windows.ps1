@@ -103,7 +103,7 @@ $qt_path = "$old_pwd\qt"
 
 # Install "aqtinstall" from its master branch to have latest code.
 pip3 install -U pip
-pip3 install -I aqtinstall
+pip3 install -I git+https://github.com/miurahr/aqtinstall
 
 if ($is_qt_6) {
   aqt -c 'aqt\settings.ini' install-qt -O "$qt_path" windows desktop $qt_version $qt_arch -m qtwebengine qtimageformats qtmultimedia qt5compat qtwebchannel qtpositioning
