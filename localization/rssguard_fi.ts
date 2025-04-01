@@ -20,25 +20,25 @@
       <location filename="../src/librssguard/services/abstract/gui/accountdetails.ui" line="14"/>
       <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_accountdetails.h" line="78"/>
       <source>Form</source>
-      <translation type="unfinished">Form</translation>
+      <translation>Lomake</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/abstract/gui/accountdetails.ui" line="20"/>
       <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_accountdetails.h" line="79"/>
       <source>Display additional nodes</source>
-      <translation type="unfinished">Display additional nodes</translation>
+      <translation>Näytä muut solmut</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/abstract/gui/accountdetails.ui" line="26"/>
       <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_accountdetails.h" line="80"/>
       <source>Important</source>
-      <translation type="unfinished">Important</translation>
+      <translation>Tärkeä</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/abstract/gui/accountdetails.ui" line="33"/>
       <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_accountdetails.h" line="81"/>
       <source>Unread</source>
-      <translation type="unfinished">Unread</translation>
+      <translation>Lukematon</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/abstract/gui/accountdetails.ui" line="40"/>
@@ -176,7 +176,7 @@ Virhe: %1</translation>
     <message>
       <location filename="../src/librssguard/network-web/apiserver.cpp" line="188"/>
       <source>account with ID %1 not found</source>
-      <translation type="unfinished">account with ID %1 not found</translation>
+      <translation>tunnuksella %1 ei löydy tiliä</translation>
     </message>
   </context>
   <context>
@@ -204,7 +204,7 @@ Virhe: %1</translation>
     <message>
       <location filename="../src/librssguard/miscellaneous/application.cpp" line="668"/>
       <source>Settings restoration was not initiated. Make sure that output directory is writable.</source>
-      <translation type="unfinished">Settings restoration was not initiated. Make sure that output directory is writable.</translation>
+      <translation>Asetusten palauttamista ei aloitettu. Varmista, että kohdehakemistoon voi tallentaa.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/miscellaneous/application.cpp" line="1248"/>
@@ -214,31 +214,31 @@ Virhe: %1</translation>
     <message>
       <location filename="../src/librssguard/miscellaneous/application.cpp" line="1249"/>
       <source>Feed cannot be added because there is no active account which can add feeds.</source>
-      <translation type="unfinished">Feed cannot be added because there is no active account which can add feeds.</translation>
+      <translation>Syötettä ei voi lisätä, sillä sellaista tiliä ei ole, jolle voitaisiin lisätä syötteitä.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/miscellaneous/application.cpp" line="1420"/>
       <source>Node.js</source>
-      <translation type="unfinished">Node.js</translation>
+      <translation>Node.js</translation>
     </message>
     <message>
       <location filename="../src/librssguard/miscellaneous/application.cpp" line="1409"/>
       <source>Packages were NOT updated because of error: %2. Affected packages:
 %1</source>
-      <translation type="unfinished">Packages were NOT updated because of error: %2. Affected packages:
+      <translation>Paketteja EI päivitetty seuraavan virheen vuoksi: %2. Paketit, joihin ongelma vaikuttaa:
 %1</translation>
     </message>
     <message>
       <location filename="../src/librssguard/miscellaneous/application.cpp" line="1421"/>
       <source>These packages were installed/updated:
 %1</source>
-      <translation type="unfinished">These packages were installed/updated:
+      <translation>Seuraavat paketit asennettiin/päivitettiin:
 %1</translation>
     </message>
     <message>
       <location filename="../src/librssguard/miscellaneous/application.cpp" line="1108"/>
       <source>Unread articles fetched</source>
-      <translation type="unfinished">Unread articles fetched</translation>
+      <translation>Lukemattomat artikkelit noudettu</translation>
     </message>
     <message>
       <location filename="../src/librssguard/miscellaneous/application.cpp" line="392"/>
@@ -261,20 +261,20 @@ Virhe: %1</translation>
 
 Please, check NEW stuff included in this
 version by clicking this popup notification.</source>
-      <translation type="unfinished">Welcome to %1.
+      <translation>Tervetuloa käyttämään sovellusta %1.
 
-Please, check NEW stuff included in this
-version by clicking this popup notification.</translation>
+Tutustu tähän versioon sisältyviin UUSIIN ominaisuuksiin
+napsauttamalla tätä ilmoitusta.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/miscellaneous/application.cpp" line="1180"/>
       <source>AdBlock is not configured properly. Go to &quot;Settings&quot; -&gt; &quot;Node.js&quot; and check if your Node.js is properly configured.</source>
-      <translation type="unfinished">AdBlock is not configured properly. Go to &quot;Settings&quot; -&gt; &quot;Node.js&quot; and check if your Node.js is properly configured.</translation>
+      <translation>AdBlockia ei ole asetettu oikein. Siirry valikkoon &quot;Asetukset&quot; -&gt; &quot;Node.js&quot; ja tarkista, onko Node.js asetettu oikein.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/miscellaneous/application.cpp" line="1229"/>
       <source>Already running</source>
-      <translation type="unfinished">Already running</translation>
+      <translation>Jo käynnissä</translation>
     </message>
   </context>
   <context>
@@ -283,88 +283,88 @@ version by clicking this popup notification.</translation>
       <location filename="../src/librssguard/gui/reusable/articleamountcontrol.ui" line="14"/>
       <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_articleamountcontrol.h" line="256"/>
       <source>Form</source>
-      <translation type="unfinished">Form</translation>
+      <translation>Lomake</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/reusable/articleamountcontrol.ui" line="36"/>
       <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_articleamountcontrol.h" line="261"/>
       <source>Ignoring old articles</source>
-      <translation type="unfinished">Ignoring old articles</translation>
+      <translation>Ohitetaan vanhat artikkelit</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/reusable/articleamountcontrol.ui" line="47"/>
       <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_articleamountcontrol.h" line="257"/>
       <source>Add articles with any date into the database</source>
-      <translation type="unfinished">Add articles with any date into the database</translation>
+      <translation>Lisää minkä tahansa päivämäärän artikkelit tietokantaan</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/reusable/articleamountcontrol.ui" line="76"/>
       <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_articleamountcontrol.h" line="258"/>
       <source>Avoid adding articles before this date/time into the database</source>
-      <translation type="unfinished">Avoid adding articles before this date/time into the database</translation>
+      <translation>Älä lisää ennen tätä päivämäärää/aikaa julkaistuja artikkeleja tietokantaan</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/reusable/articleamountcontrol.ui" line="85"/>
       <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_articleamountcontrol.h" line="259"/>
       <source>Absolute date/time</source>
-      <translation type="unfinished">Absolute date/time</translation>
+      <translation>Absoluuttinen päivämäärä/aika</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/reusable/articleamountcontrol.ui" line="92"/>
       <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_articleamountcontrol.h" line="260"/>
       <source>Relative time</source>
-      <translation type="unfinished">Relative time</translation>
+      <translation>Suhteellinen aika</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/reusable/articleamountcontrol.ui" line="170"/>
       <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_articleamountcontrol.h" line="267"/>
       <source>Limiting amount of articles in feeds</source>
-      <translation type="unfinished">Limiting amount of articles in feeds</translation>
+      <translation>Syötteissä olevien artikkelien määrän rajoittaminen</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/reusable/articleamountcontrol.ui" line="181"/>
       <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_articleamountcontrol.h" line="262"/>
       <source>Customize article limits</source>
-      <translation type="unfinished">Customize article limits</translation>
+      <translation>Mukauta artikkelien rajoituksia</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/reusable/articleamountcontrol.ui" line="210"/>
       <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_articleamountcontrol.h" line="263"/>
       <source>In database, keep</source>
-      <translation type="unfinished">In database, keep</translation>
+      <translation>Säilytä tietokannassa</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/reusable/articleamountcontrol.ui" line="224"/>
       <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_articleamountcontrol.h" line="264"/>
       <source>Do not remove important articles</source>
-      <translation type="unfinished">Do not remove important articles</translation>
+      <translation>Älä poista tärkeitä artikkeleja</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/reusable/articleamountcontrol.ui" line="231"/>
       <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_articleamountcontrol.h" line="265"/>
       <source>Do not remove unread articles</source>
-      <translation type="unfinished">Do not remove unread articles</translation>
+      <translation>Älä poista lukemattomia artikkeleja</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/reusable/articleamountcontrol.ui" line="238"/>
       <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_articleamountcontrol.h" line="266"/>
       <source>Just move articles to recycle bin, do not purge them</source>
-      <translation type="unfinished">Just move articles to recycle bin, do not purge them</translation>
+      <translation>Siirrä artikkelit roskakoriin äläkä poista niitä pysyvästi</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/reusable/articleamountcontrol.cpp" line="11"/>
       <source>Setting any limitations here will instruct %1 to ignore some incoming articles. The logic runs AFTER any article filters so even if your article filter accepts particular article, it can still subsequently ignored and not added to database.</source>
-      <translation type="unfinished">Setting any limitations here will instruct %1 to ignore some incoming articles. The logic runs AFTER any article filters so even if your article filter accepts particular article, it can still subsequently ignored and not added to database.</translation>
+      <translation>%1 ohittaa jotkin saapuvista artikkeleista tässä asetettujen rajoitusten perusteella. Tämä tehdään mahdollisten artikkelisuodattimien käytön JÄLKEEN, joten vaikka artikkelisuodatin hyväksyisikin tietyn artikkelin, se saatetaan poistaa eikä sitä lisätä tietokantaan.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/reusable/articleamountcontrol.cpp" line="16"/>
       <source>All excessive articles are removed automatically by the application, usually after particular feed is fetched. Articles are either completely purged (including articles from recycle bin) from internal database or are just moved to recycle bin.</source>
-      <translation type="unfinished">All excessive articles are removed automatically by the application, usually after particular feed is fetched. Articles are either completely purged (including articles from recycle bin) from internal database or are just moved to recycle bin.</translation>
+      <translation>Sovellus poistaa kaikki ylimääräiset artikkelit automaattisesti, yleensä syötteen noutamisen jälkeen. Artikkelit joko poistetaan pysyvästi sisäisestä tietokannasta (myös roskakorista) tai vain siirretään roskakoriin.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/reusable/articleamountcontrol.cpp" line="22"/>
       <source>all articles</source>
-      <translation type="unfinished">all articles</translation>
+      <translation>kaikki artikkelit</translation>
     </message>
     <message numerus="yes">
       <location filename="../src/librssguard/gui/reusable/articleamountcontrol.cpp" line="179"/>
@@ -381,37 +381,37 @@ version by clicking this popup notification.</translation>
       <location filename="../src/librssguard/gui/notifications/articlelistnotification.ui" line="66"/>
       <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_articlelistnotification.h" line="142"/>
       <source>...</source>
-      <translation type="unfinished">...</translation>
+      <translation>...</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/notifications/articlelistnotification.ui" line="87"/>
       <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_articlelistnotification.h" line="144"/>
       <source>Go to previous page</source>
-      <translation type="unfinished">Go to previous page</translation>
+      <translation>Siirry edelliselle sivulle</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/notifications/articlelistnotification.ui" line="94"/>
       <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_articlelistnotification.h" line="147"/>
       <source>Go to next page</source>
-      <translation type="unfinished">Go to next page</translation>
+      <translation>Siirry seuraavalle sivulle</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/notifications/articlelistnotification.ui" line="101"/>
       <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_articlelistnotification.h" line="150"/>
       <source>Open article in article list</source>
-      <translation type="unfinished">Open article in article list</translation>
+      <translation>Avaa artikkeli artikkeliluettelossa</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/notifications/articlelistnotification.ui" line="108"/>
       <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_articlelistnotification.h" line="153"/>
       <source>Open article in web browser</source>
-      <translation type="unfinished">Open article in web browser</translation>
+      <translation>Avaa artikkeli selaimessa</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/notifications/articlelistnotification.ui" line="122"/>
       <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_articlelistnotification.h" line="156"/>
       <source>Mark all articles as read</source>
-      <translation type="unfinished">Mark all articles as read</translation>
+      <translation>Merkitse kaikki artikkelit luetuiksi</translation>
     </message>
     <message numerus="yes">
       <location filename="../src/librssguard/gui/notifications/articlelistnotification.cpp" line="73"/>
@@ -427,22 +427,22 @@ version by clicking this popup notification.</translation>
     <message>
       <location filename="../src/librssguard/network-web/articleparse.cpp" line="39"/>
       <source>Packages for article-extractor are installed</source>
-      <translation type="unfinished">Packages for article-extractor are installed</translation>
+      <translation>Artikkelien noutotoiminnon paketit on asennettu</translation>
     </message>
     <message>
       <location filename="../src/librssguard/network-web/articleparse.cpp" line="40"/>
       <source>Reload your website or article and you can test it then!</source>
-      <translation type="unfinished">Reload your website or article and you can test it then!</translation>
+      <translation>Lataa sivusto tai artikkeli uudelleen ja testaa toimintoa.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/network-web/articleparse.cpp" line="45"/>
       <source>Packages for article-extractor are installed. You can now use this feature!</source>
-      <translation type="unfinished">Packages for article-extractor are installed. You can now use this feature!</translation>
+      <translation>Artikkelien noutotoiminnon paketit on asennettu. Voit nyt käyttää toimintoa.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/network-web/articleparse.cpp" line="62"/>
       <source>Packages for article-extractor are NOT installed</source>
-      <translation type="unfinished">Packages for article-extractor are NOT installed</translation>
+      <translation>Artikkelien noutotoiminnon paketteja EI ole asennettu</translation>
     </message>
     <message>
       <location filename="../src/librssguard/network-web/articleparse.cpp" line="63"/>
@@ -452,18 +452,18 @@ version by clicking this popup notification.</translation>
     <message>
       <location filename="../src/librssguard/network-web/articleparse.cpp" line="69"/>
       <source>Packages for article-extractor are NOT installed. There is error: %1</source>
-      <translation type="unfinished">Packages for article-extractor are NOT installed. There is error: %1</translation>
+      <translation>Artikkelien noutotoiminnon paketteja EI ole asennettu. Virhe: %1</translation>
     </message>
     <message>
       <location filename="../src/librssguard/network-web/articleparse.cpp" line="104"/>
       <source>Node.js libraries not installed</source>
-      <translation type="unfinished">Node.js libraries not installed</translation>
+      <translation>Node.js libraries not installed ei ole asennettu</translation>
     </message>
     <message>
       <location filename="../src/librssguard/network-web/articleparse.cpp" line="105"/>
       <location filename="../src/librssguard/network-web/articleparse.cpp" line="115"/>
       <source>Node.js is not configured properly. Go to &quot;Settings&quot; -&gt; &quot;Node.js&quot; and check if your Node.js is properly configured.</source>
-      <translation type="unfinished">Node.js is not configured properly. Go to &quot;Settings&quot; -&gt; &quot;Node.js&quot; and check if your Node.js is properly configured.</translation>
+      <translation>Node.js-suoritusympäristöä ei ole asetettu oikein. Siirry valikkoon &quot;Asetukset&quot; -&gt; &quot;Node.js&quot; ja tarkista, onko Node.js asetettu oikein.</translation>
     </message>
   </context>
   <context>
@@ -472,25 +472,25 @@ version by clicking this popup notification.</translation>
       <location filename="../src/librssguard/services/abstract/gui/authenticationdetails.ui" line="14"/>
       <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_authenticationdetails.h" line="122"/>
       <source>Form</source>
-      <translation type="unfinished">Form</translation>
+      <translation>Lomake</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/abstract/gui/authenticationdetails.ui" line="45"/>
       <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_authenticationdetails.h" line="125"/>
       <source>Some feeds require authentication, including GMail feeds. BASIC, NTLM-2 and DIGEST-MD5 authentication schemes are supported.</source>
-      <translation type="unfinished">Some feeds require authentication, including GMail feeds. BASIC, NTLM-2 and DIGEST-MD5 authentication schemes are supported.</translation>
+      <translation>Jotkin syötteet, esimerkiksi GMail, edellyttävät todennusta. BASIC-, NTLM-2- ja DIGEST-MD5-todentamisjärjestelmiä tuetaan.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/abstract/gui/authenticationdetails.ui" line="48"/>
       <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_authenticationdetails.h" line="127"/>
       <source>Credentials</source>
-      <translation type="unfinished">Credentials</translation>
+      <translation>Tunnistetiedot</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/abstract/gui/authenticationdetails.ui" line="25"/>
       <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_authenticationdetails.h" line="123"/>
       <source>Authentication type</source>
-      <translation type="unfinished">Authentication type</translation>
+      <translation>Todennustyyppi</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/abstract/gui/authenticationdetails.ui" line="60"/>
@@ -520,37 +520,37 @@ version by clicking this popup notification.</translation>
     <message>
       <location filename="../src/librssguard/services/abstract/gui/authenticationdetails.cpp" line="20"/>
       <source>No authentication</source>
-      <translation type="unfinished">No authentication</translation>
+      <translation>Ei todennusta</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/abstract/gui/authenticationdetails.cpp" line="22"/>
       <source>HTTP Basic</source>
-      <translation type="unfinished">HTTP Basic</translation>
+      <translation>HTTP-perustodennus</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/abstract/gui/authenticationdetails.cpp" line="25"/>
       <source>Token</source>
-      <translation type="unfinished">Token</translation>
+      <translation>Tunnus</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/abstract/gui/authenticationdetails.cpp" line="74"/>
       <source>Username/token is ok or it is not needed.</source>
-      <translation type="unfinished">Username/token is ok or it is not needed.</translation>
+      <translation>Käyttäjätunnus/tunnus on oikein tai sitä ei tarvita.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/abstract/gui/authenticationdetails.cpp" line="75"/>
       <source>Username/token is empty.</source>
-      <translation type="unfinished">Username/token is empty.</translation>
+      <translation>Käyttäjätunnus-/tunnuskenttä on tyhjä.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/abstract/gui/authenticationdetails.cpp" line="97"/>
       <source>Access token</source>
-      <translation type="unfinished">Access token</translation>
+      <translation>Käyttöoikeustunnus</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/abstract/gui/authenticationdetails.cpp" line="84"/>
       <source>Password is ok or it is not needed.</source>
-      <translation type="unfinished">Password is ok or it is not needed.</translation>
+      <translation>Salasana on oikein tai sitä ei tarvita.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/abstract/gui/authenticationdetails.cpp" line="84"/>
@@ -571,7 +571,7 @@ version by clicking this popup notification.</translation>
     <message>
       <location filename="../src/librssguard/gui/notifications/basetoastnotification.cpp" line="46"/>
       <source>Close this notification</source>
-      <translation type="unfinished">Close this notification</translation>
+      <translation>Sulje tämä ilmoitus</translation>
     </message>
   </context>
   <context>
@@ -580,8 +580,8 @@ version by clicking this popup notification.</translation>
       <location filename="../src/librssguard/services/abstract/category.cpp" line="73"/>
       <source>Number of feeds: %1
 Number of categories: %2</source>
-      <translation type="unfinished">Number of feeds: %1
-Number of categories: %2</translation>
+      <translation>Syötteiden määrä: %1
+Luokkien määrä: %2</translation>
     </message>
   </context>
   <context>
@@ -612,12 +612,12 @@ Number of categories: %2</translation>
     <message>
       <location filename="../src/librssguard/database/databasecleaner.cpp" line="45"/>
       <source>Recycle bin purged...</source>
-      <translation type="unfinished">Recycle bin purged...</translation>
+      <translation>Roskakori tyhjennetty...</translation>
     </message>
     <message>
       <location filename="../src/librssguard/database/databasecleaner.cpp" line="39"/>
       <source>Purging recycle bin...</source>
-      <translation type="unfinished">Purging recycle bin...</translation>
+      <translation>Tyhjennetään roskakoria...</translation>
     </message>
     <message>
       <location filename="../src/librssguard/database/databasecleaner.cpp" line="27"/>
@@ -627,7 +627,7 @@ Number of categories: %2</translation>
     <message>
       <location filename="../src/librssguard/database/databasecleaner.cpp" line="33"/>
       <source>Read articles purged...</source>
-      <translation type="unfinished">Read articles purged...</translation>
+      <translation>Luetut artikkelit tyhjennetty...</translation>
     </message>
     <message>
       <location filename="../src/librssguard/database/databasecleaner.cpp" line="51"/>
@@ -637,17 +637,17 @@ Number of categories: %2</translation>
     <message>
       <location filename="../src/librssguard/database/databasecleaner.cpp" line="57"/>
       <source>Old articles purged...</source>
-      <translation type="unfinished">Old articles purged...</translation>
+      <translation>Vanhat artikkelit tyhjennetty...</translation>
     </message>
     <message>
       <location filename="../src/librssguard/database/databasecleaner.cpp" line="63"/>
       <source>Removing starred articles...</source>
-      <translation type="unfinished">Removing starred articles...</translation>
+      <translation>Poistetaan tähdellä merkittyjä artikkeleja...</translation>
     </message>
     <message>
       <location filename="../src/librssguard/database/databasecleaner.cpp" line="69"/>
       <source>Starred articles purged...</source>
-      <translation type="unfinished">Starred articles purged...</translation>
+      <translation>Tähdellä merkityt artikkelit tyhjennetty...</translation>
     </message>
   </context>
   <context>
@@ -660,7 +660,7 @@ Number of categories: %2</translation>
     <message>
       <location filename="../src/librssguard/database/databasefactory.cpp" line="59"/>
       <source>Connection to your database was not established with error: &apos;%1&apos;. Falling back to SQLite.</source>
-      <translation type="unfinished">Connection to your database was not established with error: &apos;%1&apos;. Falling back to SQLite.</translation>
+      <translation>Yhteyttä tietokantaan ei muodostettu. Virhe: &apos;%1&apos;. Palataan SQLite-tietokantaan.</translation>
     </message>
   </context>
   <context>
@@ -681,12 +681,12 @@ Number of categories: %2</translation>
     <message>
       <location filename="../src/librssguard/network-web/downloadmanager.cpp" line="275"/>
       <source>Error opening output file: %1</source>
-      <translation type="unfinished">Error opening output file: %1</translation>
+      <translation>Virhe avattaessa kohdetiedostoa: %1</translation>
     </message>
     <message>
       <location filename="../src/librssguard/network-web/downloadmanager.cpp" line="113"/>
       <source>Select destination for downloaded file</source>
-      <translation type="unfinished">Select destination for downloaded file</translation>
+      <translation>Valitse ladattavan tiedoston tallennushakemisto</translation>
     </message>
     <message>
       <location filename="../src/librssguard/network-web/downloadmanager.cpp" line="301"/>
@@ -721,7 +721,7 @@ Number of categories: %2</translation>
     <message>
       <location filename="../src/librssguard/network-web/downloadmanager.cpp" line="221"/>
       <source>Cannot open output file. Open it manually.</source>
-      <translation type="unfinished">Cannot open output file. Open it manually.</translation>
+      <translation>Kohdetiedostoa ei voi avata. Avaa se manuaalisesti.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/network-web/downloadmanager.cpp" line="231"/>
@@ -731,7 +731,7 @@ Number of categories: %2</translation>
     <message>
       <location filename="../src/librssguard/network-web/downloadmanager.cpp" line="232"/>
       <source>Cannot open output directory. Open it manually.</source>
-      <translation type="unfinished">Cannot open output directory. Open it manually.</translation>
+      <translation>Kohdehakemistoa ei voi avata. Avaa se manuaalisesti.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/network-web/downloadmanager.cpp" line="445"/>
@@ -742,8 +742,8 @@ Number of categories: %2</translation>
       <location filename="../src/librssguard/network-web/downloadmanager.cpp" line="446"/>
       <source>File &apos;%1&apos; is downloaded.
 Click here to open parent directory.</source>
-      <translation type="unfinished">File &apos;%1&apos; is downloaded.
-Click here to open parent directory.</translation>
+      <translation>Tiedosto &apos;%1&apos; on ladattu.
+Avaa ylähakemisto.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/network-web/downloadmanager.cpp" line="457"/>
@@ -839,17 +839,17 @@ Click here to open parent directory.</translation>
     <message>
       <location filename="../src/librssguard/dynamic-shortcuts/dynamicshortcutswidget.cpp" line="126"/>
       <source>Duplicate shortcut</source>
-      <translation type="unfinished">Duplicate shortcut</translation>
+      <translation>Pikakomennon kaksoiskappale</translation>
     </message>
     <message>
       <location filename="../src/librssguard/dynamic-shortcuts/dynamicshortcutswidget.cpp" line="127"/>
       <source>There is another action which has the same shortcut assigned.</source>
-      <translation type="unfinished">There is another action which has the same shortcut assigned.</translation>
+      <translation>Samaa pikakomentoa käytetään jo jollekin muulle toiminnolle.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/dynamic-shortcuts/dynamicshortcutswidget.cpp" line="128"/>
       <source>Do you want to keep the new shortcut assignment and clear the previous shortcut?</source>
-      <translation type="unfinished">Do you want to keep the new shortcut assignment and clear the previous shortcut?</translation>
+      <translation>Haluatko säilyttää nykyisen pikakomennon ja poistaa aiemman?</translation>
     </message>
   </context>
   <context>
@@ -857,27 +857,27 @@ Click here to open parent directory.</translation>
     <message>
       <location filename="../src/librssguard-gmail/src/gui/emailpreviewer.ui" line="14"/>
       <source>Form</source>
-      <translation type="unfinished">Form</translation>
+      <translation>Lomake</translation>
     </message>
     <message>
       <location filename="../src/librssguard-gmail/src/gui/emailpreviewer.ui" line="20"/>
       <source>From</source>
-      <translation type="unfinished">From</translation>
+      <translation>Lähettäjä</translation>
     </message>
     <message>
       <location filename="../src/librssguard-gmail/src/gui/emailpreviewer.ui" line="52"/>
       <source>&amp;Attachments</source>
-      <translation type="unfinished">&amp;Attachments</translation>
+      <translation>&amp;Liitteet</translation>
     </message>
     <message>
       <location filename="../src/librssguard-gmail/src/gui/emailpreviewer.ui" line="65"/>
       <source>&amp;Reply</source>
-      <translation type="unfinished">&amp;Reply</translation>
+      <translation>&amp;Vastaa</translation>
     </message>
     <message>
       <location filename="../src/librssguard-gmail/src/gui/emailpreviewer.ui" line="75"/>
       <source>&amp;Forward</source>
-      <translation type="unfinished">&amp;Forward</translation>
+      <translation>&amp;Välitä</translation>
     </message>
     <message>
       <location filename="../src/librssguard-gmail/src/gui/emailpreviewer.ui" line="87"/>
@@ -887,23 +887,23 @@ Click here to open parent directory.</translation>
     <message>
       <location filename="../src/librssguard-gmail/src/gui/emailpreviewer.ui" line="104"/>
       <source>To</source>
-      <translation type="unfinished">To</translation>
+      <translation>Vastaanottaja</translation>
     </message>
     <message>
       <location filename="../src/librssguard-gmail/src/gui/emailpreviewer.cpp" line="114"/>
       <location filename="../src/librssguard-gmail/src/gui/emailpreviewer.cpp" line="120"/>
       <source>Cannot download attachment</source>
-      <translation type="unfinished">Cannot download attachment</translation>
+      <translation>Liitettä ei voi ladata</translation>
     </message>
     <message>
       <location filename="../src/librssguard-gmail/src/gui/emailpreviewer.cpp" line="115"/>
       <source>Attachment cannot be downloaded because you are not logged-in.</source>
-      <translation type="unfinished">Attachment cannot be downloaded because you are not logged-in.</translation>
+      <translation>Liitettä ei voi ladata, koska et ole kirjautunut sisään</translation>
     </message>
     <message>
       <location filename="../src/librssguard-gmail/src/gui/emailpreviewer.cpp" line="121"/>
       <source>Attachment cannot be downloaded because some general error happened.</source>
-      <translation type="unfinished">Attachment cannot be downloaded because some general error happened.</translation>
+      <translation>Liitettä ei voi ladata jonkin yleisvirheen vuoksi.</translation>
     </message>
   </context>
   <context>
@@ -911,22 +911,22 @@ Click here to open parent directory.</translation>
     <message>
       <location filename="../src/librssguard-gmail/src/gui/emailrecipientcontrol.cpp" line="38"/>
       <source>To</source>
-      <translation type="unfinished">To</translation>
+      <translation>Vastaanottaja</translation>
     </message>
     <message>
       <location filename="../src/librssguard-gmail/src/gui/emailrecipientcontrol.cpp" line="39"/>
       <source>Cc</source>
-      <translation type="unfinished">Cc</translation>
+      <translation>Kopio</translation>
     </message>
     <message>
       <location filename="../src/librssguard-gmail/src/gui/emailrecipientcontrol.cpp" line="40"/>
       <source>Bcc</source>
-      <translation type="unfinished">Bcc</translation>
+      <translation>Piilokopio</translation>
     </message>
     <message>
       <location filename="../src/librssguard-gmail/src/gui/emailrecipientcontrol.cpp" line="41"/>
       <source>Reply-to</source>
-      <translation type="unfinished">Reply-to</translation>
+      <translation>Vastausosoite</translation>
     </message>
     <message>
       <location filename="../src/librssguard-gmail/src/gui/emailrecipientcontrol.cpp" line="28"/>
@@ -939,7 +939,7 @@ Click here to open parent directory.</translation>
     <message>
       <location filename="../src/librssguard/services/abstract/feed.cpp" line="263"/>
       <source>uses global settings, but global auto-fetching of articles is disabled</source>
-      <translation type="unfinished">uses global settings, but global auto-fetching of articles is disabled</translation>
+      <translation>käyttää yleisasetuksia, mutta artikkelien yleinen automaatinen nouto on poistettu käytöstä</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/abstract/feed.cpp" line="287"/>
@@ -960,7 +960,7 @@ Click here to open parent directory.</translation>
       <location filename="../src/librssguard/services/abstract/feed.cpp" line="249"/>
       <source>does not use auto-fetching of articles</source>
       <extracomment>Describes feed auto-update status.</extracomment>
-      <translation type="unfinished">does not use auto-fetching of articles</translation>
+      <translation>ei käytä artikkelien automaattista noutoa</translation>
     </message>
     <message numerus="yes">
       <location filename="../src/librssguard/services/abstract/feed.cpp" line="260"/>
@@ -1021,32 +1021,32 @@ Item ID: %5</translation>
     <message>
       <location filename="../src/librssguard/gui/feedmessageviewer.cpp" line="32"/>
       <source>Toolbar for feeds</source>
-      <translation type="unfinished">Toolbar for feeds</translation>
+      <translation>Syötteiden työkalupalkki</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/feedmessageviewer.cpp" line="33"/>
       <source>Toolbar for articles</source>
-      <translation type="unfinished">Toolbar for articles</translation>
+      <translation>Artikkelien työkalupalkki</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/feedmessageviewer.cpp" line="245"/>
       <source>Filtered feed list</source>
-      <translation type="unfinished">Filtered feed list</translation>
+      <translation>Suodatettu syöteluettelo</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/feedmessageviewer.cpp" line="246"/>
       <source>Cannot select article in article list as your feed is filtered out from feed list.</source>
-      <translation type="unfinished">Cannot select article in article list as your feed is filtered out from feed list.</translation>
+      <translation>Artikkelia ei voi valita artikkeliluettelosta, koska syöte on suodatettu pois syöteluettelosta.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/feedmessageviewer.cpp" line="263"/>
       <source>Filtered article list</source>
-      <translation type="unfinished">Filtered article list</translation>
+      <translation>Suodatettu artikkeliluettelo</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/feedmessageviewer.cpp" line="264"/>
       <source>Cannot select article as it seems your article list is filtered or the article was deleted.</source>
-      <translation type="unfinished">Cannot select article as it seems your article list is filtered or the article was deleted.</translation>
+      <translation>Artikkelia ei voi valita, koska artikkeliluettelosi on ilmeisesti suodatettu tai poistettu.</translation>
     </message>
   </context>
   <context>
@@ -1054,7 +1054,7 @@ Item ID: %5</translation>
     <message>
       <location filename="../src/librssguard/miscellaneous/feedreader.cpp" line="371"/>
       <source>Starting auto-download of some feeds&apos; articles</source>
-      <translation type="unfinished">Starting auto-download of some feeds&apos; articles</translation>
+      <translation>Joidenkin syötteiden artikkelien automaattinen lataus aloitetaan</translation>
     </message>
     <message numerus="yes">
       <location filename="../src/librssguard/miscellaneous/feedreader.cpp" line="372"/>
@@ -1067,12 +1067,12 @@ Item ID: %5</translation>
     <message>
       <location filename="../src/librssguard/miscellaneous/feedreader.cpp" line="93"/>
       <source>Cannot fetch articles at this point</source>
-      <translation type="unfinished">Cannot fetch articles at this point</translation>
+      <translation>Artikkeleja ei voi noutaa tässä vaiheessa</translation>
     </message>
     <message>
       <location filename="../src/librssguard/miscellaneous/feedreader.cpp" line="94"/>
       <source>You cannot fetch new articles now because another critical operation is ongoing.</source>
-      <translation type="unfinished">You cannot fetch new articles now because another critical operation is ongoing.</translation>
+      <translation>Artikkeleja ei voi juuri nyt noutaa, koska toinen tärkeä toiminto on kesken.</translation>
     </message>
   </context>
   <context>
@@ -1096,7 +1096,7 @@ Item ID: %5</translation>
     <message>
       <location filename="../src/librssguard-feedly/src/gui/feedlyaccountdetails.ui" line="58"/>
       <source>Intelligent synchronization algorithm</source>
-      <translation type="unfinished">Intelligent synchronization algorithm</translation>
+      <translation>Älykkään synkronoinnin algoritmi</translation>
     </message>
     <message>
       <location filename="../src/librssguard-feedly/src/gui/feedlyaccountdetails.ui" line="70"/>
@@ -1141,7 +1141,7 @@ Item ID: %5</translation>
     <message>
       <location filename="../src/librssguard-feedly/src/gui/feedlyaccountdetails.cpp" line="95"/>
       <source>You did not grant access.</source>
-      <translation type="unfinished">You did not grant access.</translation>
+      <translation>Et antanut käyttöoikeutta.</translation>
     </message>
     <message>
       <location filename="../src/librssguard-feedly/src/gui/feedlyaccountdetails.cpp" line="96"/>
@@ -1162,12 +1162,12 @@ Item ID: %5</translation>
     <message>
       <location filename="../src/librssguard-feedly/src/gui/feedlyaccountdetails.cpp" line="118"/>
       <source>Your access was approved.</source>
-      <translation type="unfinished">Your access was approved.</translation>
+      <translation>Käyttöoikeus on hyväksytty.</translation>
     </message>
     <message>
       <location filename="../src/librssguard-feedly/src/gui/feedlyaccountdetails.cpp" line="149"/>
       <source>Access granted.</source>
-      <translation type="unfinished">Access granted.</translation>
+      <translation>Käyttöoikeus myönnetty</translation>
     </message>
     <message>
       <location filename="../src/librssguard-feedly/src/gui/feedlyaccountdetails.cpp" line="148"/>
@@ -1241,7 +1241,7 @@ Item ID: %5</translation>
       <location filename="../src/librssguard-feedly/src/feedlynetwork.cpp" line="719"/>
       <location filename="../src/librssguard-feedly/src/feedlynetwork.cpp" line="734"/>
       <source>Login</source>
-      <translation type="unfinished">Login</translation>
+      <translation>Kirjaudu</translation>
     </message>
   </context>
   <context>
@@ -1249,12 +1249,12 @@ Item ID: %5</translation>
     <message>
       <location filename="../src/librssguard-standard/src/standardfeedsimportexportmodel.cpp" line="327"/>
       <source>OPML document contains errors</source>
-      <translation type="unfinished">OPML document contains errors</translation>
+      <translation>OPML-asiakirjassa on virheitä</translation>
     </message>
     <message>
       <location filename="../src/librssguard-standard/src/standardfeedsimportexportmodel.cpp" line="332"/>
       <source>this is likely not OPML document</source>
-      <translation type="unfinished">this is likely not OPML document</translation>
+      <translation>tämä ei todennäköisesti ole OPML-asiakirja</translation>
     </message>
     <message>
       <location filename="../src/librssguard-standard/src/standardfeedsimportexportmodel.cpp" line="411"/>
@@ -1272,17 +1272,17 @@ Item ID: %5</translation>
     <message>
       <location filename="../src/librssguard/core/feedsmodel.cpp" line="39"/>
       <source>Titles of feeds/categories.</source>
-      <translation type="unfinished">Titles of feeds/categories.</translation>
+      <translation>Syötteiden/luokkien nimet</translation>
     </message>
     <message>
       <location filename="../src/librssguard/core/feedsmodel.cpp" line="31"/>
       <source>Root</source>
-      <translation type="unfinished">Root</translation>
+      <translation>Juuri</translation>
     </message>
     <message>
       <location filename="../src/librssguard/core/feedsmodel.cpp" line="40"/>
       <source>Counts of unread/all mesages.</source>
-      <translation type="unfinished">Counts of unread/all mesages.</translation>
+      <translation>Lukemattomien/kaikkien viestien määrä.</translation>
     </message>
   </context>
   <context>
@@ -1295,7 +1295,7 @@ Item ID: %5</translation>
     <message>
       <location filename="../src/librssguard/core/feedsproxymodel.cpp" line="274"/>
       <source>You can&apos;t transfer dragged item into different account, this is not supported.</source>
-      <translation type="unfinished">You can&apos;t transfer dragged item into different account, this is not supported.</translation>
+      <translation>Et voi siirtää vedettyä kohdetta toiselle tilille. Tätä ei tueta.</translation>
     </message>
   </context>
   <context>
@@ -1308,22 +1308,22 @@ Item ID: %5</translation>
     <message>
       <location filename="../src/librssguard/gui/toolbars/feedstoolbar.cpp" line="121"/>
       <source>Everywhere</source>
-      <translation type="unfinished">Everywhere</translation>
+      <translation>Kaikkialla</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/toolbars/feedstoolbar.cpp" line="122"/>
       <source>Titles only</source>
-      <translation type="unfinished">Titles only</translation>
+      <translation>Vain otsikot</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/toolbars/feedstoolbar.cpp" line="126"/>
       <source>Search feeds</source>
-      <translation type="unfinished">Search feeds</translation>
+      <translation>Hae syötteitä</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/toolbars/feedstoolbar.cpp" line="134"/>
       <source>Feeds search box</source>
-      <translation type="unfinished">Feeds search box</translation>
+      <translation>Syötteiden hakukenttä</translation>
     </message>
   </context>
   <context>
@@ -1346,18 +1346,18 @@ Item ID: %5</translation>
     <message>
       <location filename="../src/librssguard/gui/feedsview.cpp" line="294"/>
       <source>Selected item cannot be edited because another critical operation is ongoing.</source>
-      <translation type="unfinished">Selected item cannot be edited because another critical operation is ongoing.</translation>
+      <translation>Valittua kohdetta ei voi muokata, koska toinen tärkeä toiminto on kesken.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/feedsview.cpp" line="421"/>
       <source>Selected item cannot be deleted because another critical operation is ongoing.</source>
-      <translation type="unfinished">Selected item cannot be deleted because another critical operation is ongoing.</translation>
+      <translation>Valittua kohdetta ei voi poistaa, koska toinen tärkeä toiminto on kesken.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/feedsview.cpp" line="923"/>
       <location filename="../src/librssguard/gui/feedsview.cpp" line="977"/>
       <source>Context menu for categories</source>
-      <translation type="unfinished">Context menu for categories</translation>
+      <translation>Luokkien pikavalikko</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/feedsview.cpp" line="243"/>
@@ -1370,7 +1370,7 @@ Item ID: %5</translation>
     <message>
       <location filename="../src/librssguard/gui/feedsview.cpp" line="1057"/>
       <source>Context menu for other items</source>
-      <translation type="unfinished">Context menu for other items</translation>
+      <translation>Muiden kohteiden pikavalikko</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/feedsview.cpp" line="1101"/>
@@ -1391,12 +1391,12 @@ Item ID: %5</translation>
       <location filename="../src/librssguard/gui/feedsview.cpp" line="244"/>
       <location filename="../src/librssguard/gui/feedsview.cpp" line="276"/>
       <source>Do you really want to clean all articles from selected items?</source>
-      <translation type="unfinished">Do you really want to clean all articles from selected items?</translation>
+      <translation>Haluatko varmasti poistaa kaikki artikkelit valituista kohteista?</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/feedsview.cpp" line="261"/>
       <source>Do you really want to purge all non-starred articles from selected feeds?</source>
-      <translation type="unfinished">Do you really want to purge all non-starred articles from selected feeds?</translation>
+      <translation>Haluatko varmasti poistaa pysyvästi kaikki muut kuin tähdellä merkityt artikkelit valituista syötteistä?</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/feedsview.cpp" line="315"/>
@@ -1404,47 +1404,47 @@ Item ID: %5</translation>
       <location filename="../src/librssguard/gui/feedsview.cpp" line="343"/>
       <location filename="../src/librssguard/gui/feedsview.cpp" line="360"/>
       <source>Cannot edit items</source>
-      <translation type="unfinished">Cannot edit items</translation>
+      <translation>Kohteita ei voi muokata</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/feedsview.cpp" line="316"/>
       <source>Selected items cannot be edited. This is not supported (yet).</source>
-      <translation type="unfinished">Selected items cannot be edited. This is not supported (yet).</translation>
+      <translation>Valittuja kohteita ei voi muokata. Tätä ei tueta (vielä).</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/feedsview.cpp" line="326"/>
       <source>%1 does not support batch editing of multiple accounts.</source>
-      <translation type="unfinished">%1 does not support batch editing of multiple accounts.</translation>
+      <translation>%1 ei tue useiden tilien samanaikaista muokkaamista.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/feedsview.cpp" line="344"/>
       <source>%1 does not support batch editing of items from multiple accounts.</source>
-      <translation type="unfinished">%1 does not support batch editing of items from multiple accounts.</translation>
+      <translation>%1 ei tue useilta tileiltä peräisin olevien kohteiden samanaikaista muokkaamista.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/feedsview.cpp" line="361"/>
       <source>%1 does not support batch editing of items of varying types.</source>
-      <translation type="unfinished">%1 does not support batch editing of items of varying types.</translation>
+      <translation>%1 ei tue erityyppisten kohteiden samanaikaista muokkaamista.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/feedsview.cpp" line="371"/>
       <source>Cannot edit some items</source>
-      <translation type="unfinished">Cannot edit some items</translation>
+      <translation>Joitakin kohteita ei voi muokata</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/feedsview.cpp" line="372"/>
       <source>Some of selected items cannot be edited. Proceeding to edit the rest.</source>
-      <translation type="unfinished">Some of selected items cannot be edited. Proceeding to edit the rest.</translation>
+      <translation>Joitakin valituista kohteista ei voi muokata. Vain muita muokataan.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/feedsview.cpp" line="449"/>
       <source>Some items won&apos;t be deleted</source>
-      <translation type="unfinished">Some items won&apos;t be deleted</translation>
+      <translation>Joitakin kohteita ei poisteta</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/feedsview.cpp" line="450"/>
       <source>Some selected items will not be deleted, because they cannot be deleted.</source>
-      <translation type="unfinished">Some selected items will not be deleted, because they cannot be deleted.</translation>
+      <translation>Joitakin kohteita ei poisteta, sillä niitä ei voi poistaa.</translation>
     </message>
     <message numerus="yes">
       <location filename="../src/librssguard/gui/feedsview.cpp" line="457"/>
@@ -1465,28 +1465,28 @@ Item ID: %5</translation>
     <message>
       <location filename="../src/librssguard/gui/feedsview.cpp" line="662"/>
       <source>Context menu for recycle bins</source>
-      <translation type="unfinished">Context menu for recycle bins</translation>
+      <translation>Roskakorien pikavalikko</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/feedsview.cpp" line="683"/>
       <source>Context menu for accounts</source>
-      <translation type="unfinished">Context menu for accounts</translation>
+      <translation>Tilien pikavalikko</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/feedsview.cpp" line="1078"/>
       <source>Context menu for label</source>
-      <translation type="unfinished">Context menu for label</translation>
+      <translation>Tunnisteen pikavalikko</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/feedsview.cpp" line="1026"/>
       <source>Context menu for important articles</source>
-      <translation type="unfinished">Context menu for important articles</translation>
+      <translation>Tärkeiden artikkelien pikavalikko</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/feedsview.cpp" line="169"/>
       <location filename="../src/librssguard/gui/feedsview.cpp" line="187"/>
       <source>Not supported by account</source>
-      <translation type="unfinished">Not supported by account</translation>
+      <translation>Tili ei tue tätä</translation>
     </message>
   </context>
   <context>
@@ -1504,12 +1504,12 @@ Item ID: %5</translation>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formabout.cpp" line="53"/>
       <source>Cannot copy</source>
-      <translation type="unfinished">Cannot copy</translation>
+      <translation>Kopiointi ei onnistu</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formabout.cpp" line="54"/>
       <source>Cannot copy info to clipboard.</source>
-      <translation type="unfinished">Cannot copy info to clipboard.</translation>
+      <translation>Kopiointi leikepöydälle ei onnistu.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formabout.cpp" line="68"/>
@@ -1551,13 +1551,13 @@ QtWebEngine cache folder -&gt; &quot;%7&quot;</translation>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formabout.cpp" line="71"/>
       <source>CUSTOM</source>
-      <translation type="unfinished">CUSTOM</translation>
+      <translation>MUKAUTETTU</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formabout.ui" line="93"/>
       <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_formabout.h" line="224"/>
       <source>&amp;Copy info to clipboard</source>
-      <translation type="unfinished">&amp;Copy info to clipboard</translation>
+      <translation>&amp;Kopioi tiedot leikepöydälle</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formabout.ui" line="112"/>
@@ -1601,7 +1601,7 @@ QtWebEngine cache folder -&gt; &quot;%7&quot;</translation>
     <message>
       <location filename="../src/librssguard/services/abstract/gui/formaccountdetails.cpp" line="22"/>
       <source>Miscellaneous</source>
-      <translation type="unfinished">Miscellaneous</translation>
+      <translation>Sekalaista</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/abstract/gui/formaccountdetails.cpp" line="23"/>
@@ -1681,12 +1681,12 @@ QtWebEngine cache folder -&gt; &quot;%7&quot;</translation>
     <message>
       <location filename="../src/librssguard/services/abstract/gui/formaddeditlabel.cpp" line="23"/>
       <source>Perfect!</source>
-      <translation type="unfinished">Perfect!</translation>
+      <translation>Hienoa!</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/abstract/gui/formaddeditlabel.cpp" line="32"/>
       <source>Hot stuff</source>
-      <translation type="unfinished">Hot stuff</translation>
+      <translation>Kuumaa kamaa</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/abstract/gui/formaddeditlabel.cpp" line="29"/>
@@ -1704,17 +1704,17 @@ QtWebEngine cache folder -&gt; &quot;%7&quot;</translation>
     <message>
       <location filename="../src/librssguard/services/abstract/gui/formaddeditprobe.cpp" line="12"/>
       <source>Name for your query</source>
-      <translation type="unfinished">Name for your query</translation>
+      <translation>Nimeä kysely</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/abstract/gui/formaddeditprobe.cpp" line="13"/>
       <source>Regular expression</source>
-      <translation type="unfinished">Regular expression</translation>
+      <translation>Säännöllinen lauseke</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/abstract/gui/formaddeditprobe.cpp" line="16"/>
       <source>What is regular expression?</source>
-      <translation type="unfinished">What is regular expression?</translation>
+      <translation>Mitä säännöllinen lauseke tarkoittaa?</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/abstract/gui/formaddeditprobe.cpp" line="17"/>
@@ -1730,12 +1730,12 @@ QtWebEngine cache folder -&gt; &quot;%7&quot;</translation>
       <location filename="../src/librssguard/services/abstract/gui/formaddeditprobe.cpp" line="28"/>
       <location filename="../src/librssguard/services/abstract/gui/formaddeditprobe.cpp" line="40"/>
       <source>Perfect!</source>
-      <translation type="unfinished">Perfect!</translation>
+      <translation>Hienoa!</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/abstract/gui/formaddeditprobe.cpp" line="34"/>
       <source>Regular expression cannot be empty.</source>
-      <translation type="unfinished">Regular expression cannot be empty.</translation>
+      <translation>Säännöllinen lauseke ei voi olla tyhjä.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/abstract/gui/formaddeditprobe.cpp" line="49"/>
@@ -1750,12 +1750,12 @@ QtWebEngine cache folder -&gt; &quot;%7&quot;</translation>
     <message>
       <location filename="../src/librssguard/services/abstract/gui/formaddeditprobe.cpp" line="37"/>
       <source>Regular expression is not well-formed.</source>
-      <translation type="unfinished">Regular expression is not well-formed.</translation>
+      <translation>Säännöllistä lauseketta ei ole muotoiltu oikein.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/abstract/gui/formaddeditprobe.cpp" line="52"/>
       <source>Hot stuff</source>
-      <translation type="unfinished">Hot stuff</translation>
+      <translation>Kuumaa kamaa</translation>
     </message>
   </context>
   <context>
@@ -1763,7 +1763,7 @@ QtWebEngine cache folder -&gt; &quot;%7&quot;</translation>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formbackupdatabasesettings.cpp" line="20"/>
       <source>Common name for backup files</source>
-      <translation type="unfinished">Common name for backup files</translation>
+      <translation>Yleinen nimi varmuuskopiotiedostoille</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formbackupdatabasesettings.cpp" line="43"/>
@@ -1777,14 +1777,14 @@ QtWebEngine cache folder -&gt; &quot;%7&quot;</translation>
       <translation>Varmuuskopio luotiin onnistuneesti.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formbackupdatabasesettings.cpp" line="92"/>
+      <location filename="../src/librssguard/gui/dialogs/formbackupdatabasesettings.cpp" line="91"/>
       <source>Backup name cannot be empty.</source>
       <translation>Varmuuskopion nimi ei voi olla tyhjä.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formbackupdatabasesettings.cpp" line="95"/>
+      <location filename="../src/librssguard/gui/dialogs/formbackupdatabasesettings.cpp" line="94"/>
       <source>Backup name looks okay.</source>
-      <translation type="unfinished">Backup name looks okay.</translation>
+      <translation>Varmuuskopion nimi näyttää olevan kunnossa.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formbackupdatabasesettings.cpp" line="68"/>
@@ -1802,7 +1802,7 @@ QtWebEngine cache folder -&gt; &quot;%7&quot;</translation>
       <translation>Valitse kohdekansio</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formbackupdatabasesettings.cpp" line="86"/>
+      <location filename="../src/librssguard/gui/dialogs/formbackupdatabasesettings.cpp" line="85"/>
       <source>Good destination directory is specified.</source>
       <translation type="unfinished">Good destination directory is specified.</translation>
     </message>
@@ -1816,7 +1816,7 @@ QtWebEngine cache folder -&gt; &quot;%7&quot;</translation>
       <location filename="../src/librssguard/gui/dialogs/formbackupdatabasesettings.ui" line="20"/>
       <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_formbackupdatabasesettings.h" line="143"/>
       <source>Output directory</source>
-      <translation type="unfinished">Output directory</translation>
+      <translation>Kohdehakemisto</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formbackupdatabasesettings.ui" line="26"/>
@@ -1904,7 +1904,7 @@ QtWebEngine cache folder -&gt; &quot;%7&quot;</translation>
     <message>
       <location filename="../src/librssguard/services/abstract/gui/formcategorydetails.cpp" line="201"/>
       <source>Images (%1)</source>
-      <translation type="unfinished">Images (%1)</translation>
+      <translation>Kuvat (%1)</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/abstract/gui/formcategorydetails.cpp" line="207"/>
@@ -1920,7 +1920,7 @@ QtWebEngine cache folder -&gt; &quot;%7&quot;</translation>
       <location filename="../src/librssguard/services/abstract/gui/formcategorydetails.cpp" line="211"/>
       <source>Look in:</source>
       <extracomment>Label to describe the folder for icon file selection dialog.</extracomment>
-      <translation type="unfinished">Look in:</translation>
+      <translation>Tarkista täältä:</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/abstract/gui/formcategorydetails.cpp" line="212"/>
@@ -1940,7 +1940,7 @@ QtWebEngine cache folder -&gt; &quot;%7&quot;</translation>
     <message>
       <location filename="../src/librssguard/services/abstract/gui/formcategorydetails.cpp" line="230"/>
       <source>Set title for your category.</source>
-      <translation type="unfinished">Set title for your category.</translation>
+      <translation>Anna luokalle nimi.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/abstract/gui/formcategorydetails.cpp" line="231"/>
@@ -1976,7 +1976,7 @@ QtWebEngine cache folder -&gt; &quot;%7&quot;</translation>
       <location filename="../src/librssguard/services/abstract/gui/formcategorydetails.ui" line="31"/>
       <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_formcategorydetails.h" line="180"/>
       <source>Parent category</source>
-      <translation type="unfinished">Parent category</translation>
+      <translation>Pääluokka</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/abstract/gui/formcategorydetails.ui" line="43"/>
@@ -2075,19 +2075,19 @@ QtWebEngine cache folder -&gt; &quot;%7&quot;</translation>
       <location filename="../src/librssguard/gui/dialogs/formdatabasecleanup.ui" line="53"/>
       <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_formdatabasecleanup.h" line="192"/>
       <source>Remove all articles from recycle bin</source>
-      <translation type="unfinished">Remove all articles from recycle bin</translation>
+      <translation>Poista kaikki artikkelit roskakorista</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formdatabasecleanup.ui" line="63"/>
       <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_formdatabasecleanup.h" line="193"/>
       <source>Remove all articles older than</source>
-      <translation type="unfinished">Remove all articles older than</translation>
+      <translation>Poista kaikki artikkelit, jotka ovat vanhempia kuin</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formdatabasecleanup.ui" line="86"/>
       <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_formdatabasecleanup.h" line="194"/>
       <source>Remove all starred articles</source>
-      <translation type="unfinished">Remove all starred articles</translation>
+      <translation>Poista kaikki tähdellä merkityt artikkelit</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formdatabasecleanup.ui" line="96"/>
@@ -2099,7 +2099,7 @@ QtWebEngine cache folder -&gt; &quot;%7&quot;</translation>
       <location filename="../src/librssguard/gui/dialogs/formdatabasecleanup.ui" line="102"/>
       <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_formdatabasecleanup.h" line="196"/>
       <source>Total data size</source>
-      <translation type="unfinished">Total data size</translation>
+      <translation>Tietojen koko yhteensä</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formdatabasecleanup.ui" line="119"/>
@@ -2119,7 +2119,7 @@ QtWebEngine cache folder -&gt; &quot;%7&quot;</translation>
     <message>
       <location filename="../src/librssguard-standard/src/gui/formdiscoverfeeds.ui" line="14"/>
       <source>Discover feeds</source>
-      <translation type="unfinished">Discover feeds</translation>
+      <translation>Etsi syötteitä</translation>
     </message>
     <message>
       <location filename="../src/librssguard-standard/src/gui/formdiscoverfeeds.ui" line="20"/>
@@ -2129,7 +2129,7 @@ QtWebEngine cache folder -&gt; &quot;%7&quot;</translation>
     <message>
       <location filename="../src/librssguard-standard/src/gui/formdiscoverfeeds.ui" line="42"/>
       <source>Discover!</source>
-      <translation type="unfinished">Discover!</translation>
+      <translation>Etsi!</translation>
     </message>
     <message>
       <location filename="../src/librssguard-standard/src/gui/formdiscoverfeeds.ui" line="51"/>
@@ -2139,7 +2139,7 @@ QtWebEngine cache folder -&gt; &quot;%7&quot;</translation>
     <message>
       <location filename="../src/librssguard-standard/src/gui/formdiscoverfeeds.ui" line="77"/>
       <source>Discovered feeds</source>
-      <translation type="unfinished">Discovered feeds</translation>
+      <translation>Löydetyt syötteet</translation>
     </message>
     <message>
       <location filename="../src/librssguard-standard/src/gui/formdiscoverfeeds.ui" line="83"/>
@@ -2149,7 +2149,7 @@ QtWebEngine cache folder -&gt; &quot;%7&quot;</translation>
     <message>
       <location filename="../src/librssguard-standard/src/gui/formdiscoverfeeds.ui" line="95"/>
       <source>Select parent item for your feed.</source>
-      <translation type="unfinished">Select parent item for your feed.</translation>
+      <translation>Valitse syötteelle ylätason kohde.</translation>
     </message>
     <message>
       <location filename="../src/librssguard-standard/src/gui/formdiscoverfeeds.ui" line="128"/>
@@ -2184,7 +2184,7 @@ QtWebEngine cache folder -&gt; &quot;%7&quot;</translation>
     <message>
       <location filename="../src/librssguard-standard/src/gui/formdiscoverfeeds.cpp" line="126"/>
       <source>Cannot discover feeds</source>
-      <translation type="unfinished">Cannot discover feeds</translation>
+      <translation>Syötteitä ei voi etsiä</translation>
     </message>
     <message>
       <location filename="../src/librssguard-standard/src/gui/formdiscoverfeeds.cpp" line="127"/>
@@ -2194,12 +2194,12 @@ QtWebEngine cache folder -&gt; &quot;%7&quot;</translation>
     <message>
       <location filename="../src/librssguard-standard/src/gui/formdiscoverfeeds.cpp" line="205"/>
       <source>URL is valid.</source>
-      <translation type="unfinished">URL is valid.</translation>
+      <translation>URL kelpaa.</translation>
     </message>
     <message>
       <location filename="../src/librssguard-standard/src/gui/formdiscoverfeeds.cpp" line="208"/>
       <source>URL is NOT valid.</source>
-      <translation type="unfinished">URL is NOT valid.</translation>
+      <translation>URL EI kelpaa.</translation>
     </message>
     <message>
       <location filename="../src/librssguard-standard/src/gui/formdiscoverfeeds.cpp" line="276"/>
@@ -2212,7 +2212,7 @@ QtWebEngine cache folder -&gt; &quot;%7&quot;</translation>
     <message>
       <location filename="../src/librssguard-feedly/src/gui/formeditfeedlyaccount.cpp" line="17"/>
       <source>Service setup</source>
-      <translation type="unfinished">Service setup</translation>
+      <translation>Palvelun asetukset</translation>
     </message>
   </context>
   <context>
@@ -2220,7 +2220,7 @@ QtWebEngine cache folder -&gt; &quot;%7&quot;</translation>
     <message>
       <location filename="../src/librssguard-gmail/src/gui/formeditgmailaccount.cpp" line="14"/>
       <source>Server setup</source>
-      <translation type="unfinished">Server setup</translation>
+      <translation>Palvelimen asetukset</translation>
     </message>
   </context>
   <context>
@@ -2228,7 +2228,7 @@ QtWebEngine cache folder -&gt; &quot;%7&quot;</translation>
     <message>
       <location filename="../src/librssguard-greader/src/gui/formeditgreaderaccount.cpp" line="14"/>
       <source>Server setup</source>
-      <translation type="unfinished">Server setup</translation>
+      <translation>Palvelimen asetukset</translation>
     </message>
   </context>
   <context>
@@ -2236,7 +2236,7 @@ QtWebEngine cache folder -&gt; &quot;%7&quot;</translation>
     <message>
       <location filename="../src/librssguard-nextcloud/src/gui/formeditnextcloudaccount.cpp" line="14"/>
       <source>Server setup</source>
-      <translation type="unfinished">Server setup</translation>
+      <translation>Palvelimen asetukset</translation>
     </message>
   </context>
   <context>
@@ -2244,7 +2244,7 @@ QtWebEngine cache folder -&gt; &quot;%7&quot;</translation>
     <message>
       <location filename="../src/librssguard-reddit/src/gui/formeditredditaccount.cpp" line="13"/>
       <source>Server setup</source>
-      <translation type="unfinished">Server setup</translation>
+      <translation>Palvelimen asetukset</translation>
     </message>
   </context>
   <context>
@@ -2252,7 +2252,7 @@ QtWebEngine cache folder -&gt; &quot;%7&quot;</translation>
     <message>
       <location filename="../src/librssguard-standard/src/gui/formeditstandardaccount.cpp" line="13"/>
       <source>Account setup</source>
-      <translation type="unfinished">Account setup</translation>
+      <translation>Tilin asetukset</translation>
     </message>
   </context>
   <context>
@@ -2260,7 +2260,7 @@ QtWebEngine cache folder -&gt; &quot;%7&quot;</translation>
     <message>
       <location filename="../src/librssguard-ttrss/src/gui/formeditttrssaccount.cpp" line="13"/>
       <source>Server setup</source>
-      <translation type="unfinished">Server setup</translation>
+      <translation>Palvelimen asetukset</translation>
     </message>
   </context>
   <context>
@@ -2296,7 +2296,7 @@ QtWebEngine cache folder -&gt; &quot;%7&quot;</translation>
     <message>
       <location filename="../src/librssguard/services/abstract/gui/formfeeddetails.cpp" line="207"/>
       <source>Fetch articles every</source>
-      <translation type="unfinished">Fetch articles every</translation>
+      <translation>Nouda artikkelit joka</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/abstract/gui/formfeeddetails.cpp" line="209"/>
@@ -2318,7 +2318,7 @@ QtWebEngine cache folder -&gt; &quot;%7&quot;</translation>
       <location filename="../src/librssguard/services/abstract/gui/formfeeddetails.ui" line="50"/>
       <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_formfeeddetails.h" line="218"/>
       <source>Auto-downloading of articles</source>
-      <translation type="unfinished">Auto-downloading of articles</translation>
+      <translation>Artikkelien automaattinen lataaminen</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/abstract/gui/formfeeddetails.ui" line="60"/>
@@ -2330,31 +2330,31 @@ QtWebEngine cache folder -&gt; &quot;%7&quot;</translation>
       <location filename="../src/librssguard/services/abstract/gui/formfeeddetails.ui" line="84"/>
       <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_formfeeddetails.h" line="222"/>
       <source>Open articles via their URL automatically</source>
-      <translation type="unfinished">Open articles via their URL automatically</translation>
+      <translation>Avaa artikkelit automaattisesti niiden URL-osoitteessa</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/abstract/gui/formfeeddetails.ui" line="97"/>
       <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_formfeeddetails.h" line="227"/>
       <source>Miscellaneous</source>
-      <translation type="unfinished">Miscellaneous</translation>
+      <translation>Sekalaista</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/abstract/gui/formfeeddetails.ui" line="122"/>
       <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_formfeeddetails.h" line="225"/>
       <source>Disable this feed</source>
-      <translation type="unfinished">Disable this feed</translation>
+      <translation>Poista tämä syöte käytöstä</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/abstract/gui/formfeeddetails.ui" line="136"/>
       <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_formfeeddetails.h" line="226"/>
       <source>Right-to-left layout</source>
-      <translation type="unfinished">Right-to-left layout</translation>
+      <translation>Oikealta vasemmalle -asettelu</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/abstract/gui/formfeeddetails.ui" line="108"/>
       <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_formfeeddetails.h" line="224"/>
       <source>Ignore notifications for this feed</source>
-      <translation type="unfinished">Ignore notifications for this feed</translation>
+      <translation>Ohita tämän syötteen ilmoitukset</translation>
     </message>
   </context>
   <context>
@@ -2367,12 +2367,12 @@ QtWebEngine cache folder -&gt; &quot;%7&quot;</translation>
     <message>
       <location filename="../src/librssguard-greader/src/gui/formgreaderfeeddetails.cpp" line="50"/>
       <source>Feed was added, refreshing feed tree...</source>
-      <translation type="unfinished">Feed was added, refreshing feed tree...</translation>
+      <translation>Syöte lisättiin. Päivitetään syötteen hakemistorakennetta...</translation>
     </message>
     <message>
       <location filename="../src/librssguard-greader/src/gui/formgreaderfeeddetails.cpp" line="64"/>
       <source>Feed NOT updated or added</source>
-      <translation type="unfinished">Feed NOT updated or added</translation>
+      <translation>Syötettä EI päivitetty tai lisätty</translation>
     </message>
     <message>
       <location filename="../src/librssguard-greader/src/gui/formgreaderfeeddetails.cpp" line="65"/>
@@ -2390,33 +2390,33 @@ QtWebEngine cache folder -&gt; &quot;%7&quot;</translation>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formlog.cpp" line="16"/>
       <source>Application log</source>
-      <translation type="unfinished">Application log</translation>
+      <translation>Sovelluksen loki</translation>
     </message>
   </context>
   <context>
     <name>FormMain</name>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.cpp" line="417"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.cpp" line="416"/>
       <source>No possible actions</source>
       <translation>Ei mahdollisia toimintoja</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.cpp" line="376"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.cpp" line="375"/>
       <source>No recycle bin</source>
       <translation>Ei roskakoria</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.cpp" line="64"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.cpp" line="63"/>
       <source>Main menu</source>
       <translation>Päävalikko</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.cpp" line="77"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.cpp" line="76"/>
       <source>Open main menu</source>
       <translation>Avaa päävalikko</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.cpp" line="85"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.cpp" line="84"/>
       <source>Open &amp;main menu</source>
       <translation>Avaa &amp;päävalikko</translation>
     </message>
@@ -2466,7 +2466,7 @@ QtWebEngine cache folder -&gt; &quot;%7&quot;</translation>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="114"/>
       <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="828"/>
       <source>&amp;Move</source>
-      <translation type="unfinished">&amp;Move</translation>
+      <translation>&amp;Siirrä</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="161"/>
@@ -2586,7 +2586,7 @@ QtWebEngine cache folder -&gt; &quot;%7&quot;</translation>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="331"/>
       <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="692"/>
       <source>Mark selected articles unread</source>
-      <translation type="unfinished">Mark selected articles unread</translation>
+      <translation>Merkitse valitut artikkelit luetuiksi</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="339"/>
@@ -2598,19 +2598,19 @@ QtWebEngine cache folder -&gt; &quot;%7&quot;</translation>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="342"/>
       <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="696"/>
       <source>Switch importance of selected articles</source>
-      <translation type="unfinished">Switch importance of selected articles</translation>
+      <translation>Muuta valittujen artikkelien tärkeysasetusta</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="353"/>
       <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="700"/>
       <source>Mark all messages (without message filters) from selected items as read.</source>
-      <translation type="unfinished">Mark all messages (without message filters) from selected items as read.</translation>
+      <translation>Merkitse kaikki valittujen kohteiden viestit (ilman viestisuodattimia) luetuiksi.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="364"/>
       <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="704"/>
       <source>Mark all messages (without message filters) from selected items as unread.</source>
-      <translation type="unfinished">Mark all messages (without message filters) from selected items as unread.</translation>
+      <translation>Merkitse kaikki valittujen kohteiden viestit (ilman viestisuodattimia) lukemattomiksi.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="372"/>
@@ -2622,37 +2622,37 @@ QtWebEngine cache folder -&gt; &quot;%7&quot;</translation>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="304"/>
       <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="684"/>
       <source>&amp;Edit selected items</source>
-      <translation type="unfinished">&amp;Edit selected items</translation>
+      <translation>&amp;Muokkaa valittuja kohteita</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="309"/>
       <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="685"/>
       <source>&amp;Delete selected items</source>
-      <translation type="unfinished">&amp;Delete selected items</translation>
+      <translation>&amp;Poista valitut kohteet</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="350"/>
       <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="698"/>
       <source>Mark selected items &amp;read</source>
-      <translation type="unfinished">Mark selected items &amp;read</translation>
+      <translation>Merkitse valitut kohteet &amp;luetuiksi</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="361"/>
       <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="702"/>
       <source>Mark selected items &amp;unread</source>
-      <translation type="unfinished">Mark selected items &amp;unread</translation>
+      <translation>Merkitse valitut kohteet l&amp;ukemattomiksi</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="380"/>
       <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="707"/>
       <source>&amp;Clean selected items</source>
-      <translation type="unfinished">&amp;Clean selected items</translation>
+      <translation>&amp;Poista valitut kohteet</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="383"/>
       <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="709"/>
       <source>Deletes all messages from selected items.</source>
-      <translation type="unfinished">Deletes all messages from selected items.</translation>
+      <translation>Poistaa kaikki viestit valituista kohteista.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="391"/>
@@ -2700,13 +2700,13 @@ QtWebEngine cache folder -&gt; &quot;%7&quot;</translation>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="430"/>
       <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="725"/>
       <source>Marks all messages in all items read. This does not take message filters into account.</source>
-      <translation type="unfinished">Marks all messages in all items read. This does not take message filters into account.</translation>
+      <translation>Merkitsee kaikkien kohteiden kaikki viestit luetuiksi. Toiminto ei ota viestisuodattimia huomioon.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="441"/>
       <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="727"/>
       <source>Switch main window visibility</source>
-      <translation type="unfinished">Switch main window visibility</translation>
+      <translation>Vaihda pääikkunan näkyvyyttä</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="444"/>
@@ -2724,31 +2724,31 @@ QtWebEngine cache folder -&gt; &quot;%7&quot;</translation>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="461"/>
       <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="733"/>
       <source>Hides or shows the list of feeds/categories.</source>
-      <translation type="unfinished">Hides or shows the list of feeds/categories.</translation>
+      <translation>Piilottaa tai näyttää syöteluettelon/luokat.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="469"/>
       <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="735"/>
       <source>&amp;Clean all</source>
-      <translation type="unfinished">&amp;Clean all</translation>
+      <translation>&amp;Poista kaikki</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="472"/>
       <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="737"/>
       <source>Deletes all messages from all items.</source>
-      <translation type="unfinished">Deletes all messages from all items.</translation>
+      <translation>Poistaa kaikki viestit kaikista kohteista.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="480"/>
       <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="739"/>
       <source>&amp;Next item</source>
-      <translation type="unfinished">&amp;Next item</translation>
+      <translation>&amp;Seuraava kohde</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="488"/>
       <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="740"/>
       <source>&amp;Previous item</source>
-      <translation type="unfinished">&amp;Previous item</translation>
+      <translation>&amp;Edellinen kohde</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="496"/>
@@ -2802,7 +2802,7 @@ QtWebEngine cache folder -&gt; &quot;%7&quot;</translation>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="554"/>
       <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="754"/>
       <source>Switch visibility of main toolbars.</source>
-      <translation type="unfinished">Switch visibility of main toolbars.</translation>
+      <translation>Vaihda päätyökalupalkkien näkyvyyttä.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="568"/>
@@ -2844,7 +2844,7 @@ QtWebEngine cache folder -&gt; &quot;%7&quot;</translation>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="616"/>
       <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="762"/>
       <source>Switch layout</source>
-      <translation type="unfinished">Switch layout</translation>
+      <translation>Vaihda asettelua</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="624"/>
@@ -2862,7 +2862,7 @@ QtWebEngine cache folder -&gt; &quot;%7&quot;</translation>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="635"/>
       <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="766"/>
       <source>Send selected articles via e-mail</source>
-      <translation type="unfinished">Send selected articles via e-mail</translation>
+      <translation>Lähetä valitut artikkelit sähköpostitse</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="643"/>
@@ -2874,7 +2874,7 @@ QtWebEngine cache folder -&gt; &quot;%7&quot;</translation>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="654"/>
       <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="769"/>
       <source>Show unread items only</source>
-      <translation type="unfinished">Show unread items only</translation>
+      <translation>Näytä vain lukemattomat kohteet</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="662"/>
@@ -2932,7 +2932,7 @@ QtWebEngine cache folder -&gt; &quot;%7&quot;</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="745"/>
-      <location filename="../src/librssguard/gui/dialogs/formmain.cpp" line="322"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.cpp" line="321"/>
       <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="780"/>
       <source>Add new category</source>
       <translation>Lisää uusi luokka</translation>
@@ -2941,13 +2941,13 @@ QtWebEngine cache folder -&gt; &quot;%7&quot;</translation>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="750"/>
       <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="781"/>
       <source>Stop ongoing fetching</source>
-      <translation type="unfinished">Stop ongoing fetching</translation>
+      <translation>Pysäytä jatkuva haku</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="758"/>
       <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="782"/>
       <source>New browser tab</source>
-      <translation type="unfinished">New browser tab</translation>
+      <translation>Uusi selainvälilehti</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="766"/>
@@ -2983,7 +2983,7 @@ QtWebEngine cache folder -&gt; &quot;%7&quot;</translation>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="794"/>
       <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="788"/>
       <source>&amp;Copy URL of selected item</source>
-      <translation type="unfinished">&amp;Copy URL of selected item</translation>
+      <translation>&amp;Kopioi valitun kohteen URL</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="799"/>
@@ -3019,7 +3019,7 @@ QtWebEngine cache folder -&gt; &quot;%7&quot;</translation>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="839"/>
       <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="794"/>
       <source>Message viewer toolbars</source>
-      <translation type="unfinished">Message viewer toolbars</translation>
+      <translation>Viestinäkymän työkalupalkit</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="844"/>
@@ -3037,13 +3037,13 @@ QtWebEngine cache folder -&gt; &quot;%7&quot;</translation>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="854"/>
       <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="797"/>
       <source>&amp;Copy URLs of selected articles</source>
-      <translation type="unfinished">&amp;Copy URLs of selected articles</translation>
+      <translation>&amp;Kopioi valittujen artikkelien URL-osoitteet</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="859"/>
       <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="798"/>
       <source>Open in internal browser (no new tab)</source>
-      <translation type="unfinished">Open in internal browser (no new tab)</translation>
+      <translation>Avaa sis. selaimessa (ei välilehteä)</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="867"/>
@@ -3079,7 +3079,7 @@ QtWebEngine cache folder -&gt; &quot;%7&quot;</translation>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="892"/>
       <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="804"/>
       <source>Display application &amp;log</source>
-      <translation type="unfinished">Display application &amp;log</translation>
+      <translation>Näytä sovelluksen &amp;loki</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="897"/>
@@ -3127,13 +3127,13 @@ QtWebEngine cache folder -&gt; &quot;%7&quot;</translation>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="935"/>
       <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="812"/>
       <source>You must add new account first</source>
-      <translation type="unfinished">You must add new account first</translation>
+      <translation>Sinun on ensin lisättävä uusi tili</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="938"/>
       <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="814"/>
       <source>You must add new account first.</source>
-      <translation type="unfinished">You must add new account first.</translation>
+      <translation>Sinun on ensin lisättävä uusi tili.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="943"/>
@@ -3167,50 +3167,50 @@ QtWebEngine cache folder -&gt; &quot;%7&quot;</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="740"/>
-      <location filename="../src/librssguard/gui/dialogs/formmain.cpp" line="332"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.cpp" line="331"/>
       <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="779"/>
       <source>Add new feed</source>
       <translation>Lisää uusi syöte</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.cpp" line="383"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.cpp" line="382"/>
       <source>No actions possible</source>
       <translation>Toiminnot eivät ole mahdollisia</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.cpp" line="153"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.cpp" line="152"/>
       <source>Cannot cleanup database</source>
       <translation>Tietokantaa ei voi siivota</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.cpp" line="154"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.cpp" line="153"/>
       <source>Cannot cleanup database, because another critical action is running.</source>
       <translation>Tietokantaa ei voi siivota, koska toinen kriittinen toiminto on käynnissä.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.cpp" line="475"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.cpp" line="474"/>
       <source>Play in media player</source>
-      <translation type="unfinished">Play in media player</translation>
+      <translation>Toista mediasoittimessa</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.cpp" line="476"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.cpp" line="475"/>
       <source>(not supported)</source>
-      <translation type="unfinished">(not supported)</translation>
+      <translation>(ei tueta)</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.cpp" line="542"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.cpp" line="541"/>
       <source>Close opened modal dialogs first.</source>
       <translation type="unfinished">Close opened modal dialogs first.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.cpp" line="452"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.cpp" line="451"/>
       <source>Fetching common data</source>
       <translation type="unfinished">Fetching common data</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.cpp" line="541"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.cpp" line="540"/>
       <source>Close dialogs</source>
-      <translation type="unfinished">Close dialogs</translation>
+      <translation>Sulje valintaikkunat</translation>
     </message>
   </context>
   <context>
@@ -3261,7 +3261,7 @@ QtWebEngine cache folder -&gt; &quot;%7&quot;</translation>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.cpp" line="630"/>
       <source>Beautifier was running for too long time</source>
-      <translation type="unfinished">Beautifier was running for too long time</translation>
+      <translation>Kaunistustoiminto oli käynnissä liian kauan</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.cpp" line="631"/>
@@ -3276,17 +3276,17 @@ QtWebEngine cache folder -&gt; &quot;%7&quot;</translation>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.cpp" line="192"/>
       <source>Context menu</source>
-      <translation type="unfinished">Context menu</translation>
+      <translation>Pikavalikko</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.cpp" line="194"/>
       <source>Filter articles like this</source>
-      <translation type="unfinished">Filter articles like this</translation>
+      <translation>Suodata tällaiset artikkelit.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.cpp" line="233"/>
       <source>New article filter</source>
-      <translation type="unfinished">New article filter</translation>
+      <translation>Uusi artikkelisuodatin</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.cpp" line="299"/>
@@ -3300,7 +3300,7 @@ QtWebEngine cache folder -&gt; &quot;%7&quot;</translation>
       <source>Article will be %1.
 
 </source>
-      <translation type="unfinished">Article will be %1.
+      <translation>Artikkeli on %1.
 
 </translation>
     </message>
@@ -3338,13 +3338,13 @@ QtWebEngine cache folder -&gt; &quot;%7&quot;</translation>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.cpp" line="211"/>
       <source>Do you really want to remove selected filter?</source>
-      <translation type="unfinished">Do you really want to remove selected filter?</translation>
+      <translation>Haluatko varmasti poistaa valitun suodattimen?</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.ui" line="14"/>
       <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmessagefiltersmanager.h" line="435"/>
       <source>Article filters</source>
-      <translation type="unfinished">Article filters</translation>
+      <translation>Artikkelisuodattimet</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.ui" line="35"/>
@@ -3374,7 +3374,7 @@ QtWebEngine cache folder -&gt; &quot;%7&quot;</translation>
       <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.ui" line="115"/>
       <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmessagefiltersmanager.h" line="440"/>
       <source>Article filter details</source>
-      <translation type="unfinished">Article filter details</translation>
+      <translation>Artikkelisuodattimen tiedot</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.ui" line="121"/>
@@ -3388,13 +3388,13 @@ QtWebEngine cache folder -&gt; &quot;%7&quot;</translation>
       <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.ui" line="145"/>
       <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmessagefiltersmanager.h" line="442"/>
       <source>Title of article filter</source>
-      <translation type="unfinished">Title of article filter</translation>
+      <translation>Artikkelisuodattimen nimi</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.ui" line="152"/>
       <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmessagefiltersmanager.h" line="443"/>
       <source>Pre-made filters</source>
-      <translation type="unfinished">Pre-made filters</translation>
+      <translation>Valmiit suodattimet</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.ui" line="174"/>
@@ -3406,43 +3406,43 @@ QtWebEngine cache folder -&gt; &quot;%7&quot;</translation>
       <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.ui" line="192"/>
       <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmessagefiltersmanager.h" line="445"/>
       <source>Your JavaScript-based article filtering logic</source>
-      <translation type="unfinished">Your JavaScript-based article filtering logic</translation>
+      <translation>JavaScript-pohjainen artikkelinsuodatuslogiikka</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.ui" line="206"/>
       <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmessagefiltersmanager.h" line="446"/>
       <source>&amp;Test</source>
-      <translation type="unfinished">&amp;Test</translation>
+      <translation>&amp;Testi</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.ui" line="213"/>
       <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmessagefiltersmanager.h" line="447"/>
       <source>Process checked feeds</source>
-      <translation type="unfinished">Process checked feeds</translation>
+      <translation>Käsittele tarkistetut syötteet</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.ui" line="220"/>
       <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmessagefiltersmanager.h" line="448"/>
       <source>&amp;Beautify</source>
-      <translation type="unfinished">&amp;Beautify</translation>
+      <translation>&amp;Kaunista</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.ui" line="227"/>
       <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmessagefiltersmanager.h" line="449"/>
       <source>Detailed &amp;help</source>
-      <translation type="unfinished">Detailed &amp;help</translation>
+      <translation>Tarkka &amp;ohje</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.ui" line="263"/>
       <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmessagefiltersmanager.h" line="450"/>
       <source>Existing articles</source>
-      <translation type="unfinished">Existing articles</translation>
+      <translation>Nykyiset artikkelit</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.ui" line="295"/>
       <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmessagefiltersmanager.h" line="458"/>
       <source>Sample article</source>
-      <translation type="unfinished">Sample article</translation>
+      <translation>Esimerkkiartikkeli</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.ui" line="326"/>
@@ -3472,13 +3472,13 @@ QtWebEngine cache folder -&gt; &quot;%7&quot;</translation>
       <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.ui" line="380"/>
       <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmessagefiltersmanager.h" line="456"/>
       <source>Read</source>
-      <translation type="unfinished">Read</translation>
+      <translation>Lue</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.ui" line="387"/>
       <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmessagefiltersmanager.h" line="457"/>
       <source>Important</source>
-      <translation type="unfinished">Important</translation>
+      <translation>Tärkeä</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.ui" line="410"/>
@@ -3490,38 +3490,38 @@ QtWebEngine cache folder -&gt; &quot;%7&quot;</translation>
   <context>
     <name>FormRestoreDatabaseSettings</name>
     <message>
+      <location filename="../src/librssguard/gui/dialogs/formrestoredatabasesettings.cpp" line="14"/>
       <location filename="../src/librssguard/gui/dialogs/formrestoredatabasesettings.cpp" line="15"/>
-      <location filename="../src/librssguard/gui/dialogs/formrestoredatabasesettings.cpp" line="16"/>
       <source>No operation executed yet.</source>
       <translation>Mitään toimintoa ei ole vielä suoritettu.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formrestoredatabasesettings.cpp" line="54"/>
+      <location filename="../src/librssguard/gui/dialogs/formrestoredatabasesettings.cpp" line="53"/>
       <source>Restoration was initiated. Restart to proceed.</source>
-      <translation type="unfinished">Restoration was initiated. Restart to proceed.</translation>
+      <translation>Palauttaminen alkoi. Jatka käynnistämällä uudelleen.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formrestoredatabasesettings.cpp" line="55"/>
+      <location filename="../src/librssguard/gui/dialogs/formrestoredatabasesettings.cpp" line="54"/>
       <source>You need to restart application for restoration process to finish.</source>
-      <translation type="unfinished">You need to restart application for restoration process to finish.</translation>
+      <translation>Palautusprosessin suorittaminen edellyttää sovelluksen uudelleenkäynnistystä.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formrestoredatabasesettings.cpp" line="60"/>
+      <location filename="../src/librssguard/gui/dialogs/formrestoredatabasesettings.cpp" line="59"/>
       <source>Database and/or settings were not copied to restoration directory successully.</source>
-      <translation type="unfinished">Database and/or settings were not copied to restoration directory successully.</translation>
+      <translation>Tietokannan ja/tai asetusten kopiointi palautushakemistoon ei onnistunut.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formrestoredatabasesettings.cpp" line="79"/>
+      <location filename="../src/librssguard/gui/dialogs/formrestoredatabasesettings.cpp" line="78"/>
       <source>Select source directory</source>
       <translation>Valitse lähdekansio</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formrestoredatabasesettings.cpp" line="85"/>
+      <location filename="../src/librssguard/gui/dialogs/formrestoredatabasesettings.cpp" line="86"/>
       <source>Good source directory is specified.</source>
       <translation type="unfinished">Good source directory is specified.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formrestoredatabasesettings.cpp" line="13"/>
+      <location filename="../src/librssguard/gui/dialogs/formrestoredatabasesettings.cpp" line="12"/>
       <source>Restart</source>
       <translation>Käynnistä uudelleen</translation>
     </message>
@@ -3567,7 +3567,7 @@ QtWebEngine cache folder -&gt; &quot;%7&quot;</translation>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formsettings.cpp" line="107"/>
       <source>Critical settings were changed</source>
-      <translation type="unfinished">Critical settings were changed</translation>
+      <translation>Tärkeitä asetuksia muutettiin</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formsettings.cpp" line="111"/>
@@ -3590,7 +3590,7 @@ QtWebEngine cache folder -&gt; &quot;%7&quot;</translation>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formsettings.cpp" line="143"/>
       <source>Do you really want to close this dialog without saving any settings?</source>
-      <translation type="unfinished">Do you really want to close this dialog without saving any settings?</translation>
+      <translation>Haluatko varmasti sulkea tämän valintaikkunan tallentamatta asetuksia?</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formsettings.cpp" line="108"/>
@@ -3616,168 +3616,168 @@ Sinun tulee käynnistää sovellus uudelleen itse.</translation>
   <context>
     <name>FormStandardFeedDetails</name>
     <message>
-      <location filename="../src/librssguard-standard/src/gui/formstandardfeeddetails.cpp" line="32"/>
+      <location filename="../src/librssguard-standard/src/gui/formstandardfeeddetails.cpp" line="31"/>
       <source>General</source>
       <translation>Yleiset</translation>
     </message>
     <message>
-      <location filename="../src/librssguard-standard/src/gui/formstandardfeeddetails.cpp" line="33"/>
+      <location filename="../src/librssguard-standard/src/gui/formstandardfeeddetails.cpp" line="32"/>
       <source>HTTP headers</source>
-      <translation type="unfinished">HTTP headers</translation>
+      <translation>HTTP-ylätunnisteet</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard-standard/src/gui/formstandardfeeddetails.cpp" line="33"/>
+      <source>Auth</source>
+      <translation>Todennus</translation>
     </message>
     <message>
       <location filename="../src/librssguard-standard/src/gui/formstandardfeeddetails.cpp" line="34"/>
-      <source>Auth</source>
-      <translation type="unfinished">Auth</translation>
-    </message>
-    <message>
-      <location filename="../src/librssguard-standard/src/gui/formstandardfeeddetails.cpp" line="35"/>
       <source>Experimental</source>
-      <translation type="unfinished">Experimental</translation>
+      <translation>Kokeelliset</translation>
     </message>
   </context>
   <context>
     <name>FormStandardImportExport</name>
     <message>
-      <location filename="../src/librssguard-standard/src/gui/formstandardimportexport.cpp" line="34"/>
       <location filename="../src/librssguard-standard/src/gui/formstandardimportexport.cpp" line="35"/>
+      <location filename="../src/librssguard-standard/src/gui/formstandardimportexport.cpp" line="36"/>
       <source>No file is selected.</source>
       <translation>Tiedostoa ei ole valittu</translation>
     </message>
     <message>
-      <location filename="../src/librssguard-standard/src/gui/formstandardimportexport.cpp" line="38"/>
       <location filename="../src/librssguard-standard/src/gui/formstandardimportexport.cpp" line="39"/>
+      <location filename="../src/librssguard-standard/src/gui/formstandardimportexport.cpp" line="40"/>
       <source>No operation executed yet.</source>
       <translation>Mitään toimintoa ei ole vielä suoritettu.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard-standard/src/gui/formstandardimportexport.cpp" line="70"/>
+      <location filename="../src/librssguard-standard/src/gui/formstandardimportexport.cpp" line="71"/>
       <source>Destination file</source>
       <translation>Kohdetiedosto</translation>
     </message>
     <message>
-      <location filename="../src/librssguard-standard/src/gui/formstandardimportexport.cpp" line="71"/>
+      <location filename="../src/librssguard-standard/src/gui/formstandardimportexport.cpp" line="72"/>
       <source>Source feeds &amp;&amp; categories</source>
       <translation>Lähdesyötteet &amp;&amp; luokat</translation>
     </message>
     <message>
-      <location filename="../src/librssguard-standard/src/gui/formstandardimportexport.cpp" line="73"/>
+      <location filename="../src/librssguard-standard/src/gui/formstandardimportexport.cpp" line="74"/>
       <source>Export feeds</source>
       <translation>Vie syötteet</translation>
     </message>
     <message>
-      <location filename="../src/librssguard-standard/src/gui/formstandardimportexport.cpp" line="81"/>
+      <location filename="../src/librssguard-standard/src/gui/formstandardimportexport.cpp" line="82"/>
       <source>Source file</source>
       <translation>Lähdetiedosto</translation>
     </message>
     <message>
-      <location filename="../src/librssguard-standard/src/gui/formstandardimportexport.cpp" line="82"/>
+      <location filename="../src/librssguard-standard/src/gui/formstandardimportexport.cpp" line="83"/>
       <source>Target feeds &amp;&amp; categories</source>
       <translation>Kohdesyötteet &amp;&amp; luokat</translation>
     </message>
     <message>
-      <location filename="../src/librssguard-standard/src/gui/formstandardimportexport.cpp" line="89"/>
+      <location filename="../src/librssguard-standard/src/gui/formstandardimportexport.cpp" line="90"/>
       <source>Import feeds</source>
       <translation>Tuo syötteet</translation>
     </message>
     <message>
-      <location filename="../src/librssguard-standard/src/gui/formstandardimportexport.cpp" line="155"/>
+      <location filename="../src/librssguard-standard/src/gui/formstandardimportexport.cpp" line="156"/>
       <source>Command is ok.</source>
-      <translation type="unfinished">Command is ok.</translation>
+      <translation>Komento on oikein.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard-standard/src/gui/formstandardimportexport.cpp" line="158"/>
+      <location filename="../src/librssguard-standard/src/gui/formstandardimportexport.cpp" line="159"/>
       <source>Command is empty.</source>
       <translation>Komento on tyhjä.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard-standard/src/gui/formstandardimportexport.cpp" line="178"/>
+      <location filename="../src/librssguard-standard/src/gui/formstandardimportexport.cpp" line="179"/>
       <source>Select file for feeds export</source>
-      <translation type="unfinished">Select file for feeds export</translation>
+      <translation>Valitse tiedosto syötteiden vientiin</translation>
     </message>
     <message>
-      <location filename="../src/librssguard-standard/src/gui/formstandardimportexport.cpp" line="203"/>
-      <location filename="../src/librssguard-standard/src/gui/formstandardimportexport.cpp" line="239"/>
+      <location filename="../src/librssguard-standard/src/gui/formstandardimportexport.cpp" line="204"/>
+      <location filename="../src/librssguard-standard/src/gui/formstandardimportexport.cpp" line="241"/>
       <source>File is selected.</source>
       <translation>Tiedosto on valittu.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard-standard/src/gui/formstandardimportexport.cpp" line="222"/>
+      <location filename="../src/librssguard-standard/src/gui/formstandardimportexport.cpp" line="223"/>
       <source>Select file for feeds import</source>
-      <translation type="unfinished">Select file for feeds import</translation>
+      <translation>Valitse tiedosto syötteiden tuontiin</translation>
     </message>
     <message>
-      <location filename="../src/librssguard-standard/src/gui/formstandardimportexport.cpp" line="136"/>
+      <location filename="../src/librssguard-standard/src/gui/formstandardimportexport.cpp" line="137"/>
       <source>Feeds were loaded.</source>
       <translation>Syötteet ladattiin.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard-standard/src/gui/formstandardimportexport.cpp" line="28"/>
-      <source>Full command to execute</source>
-      <translation type="unfinished">Full command to execute</translation>
-    </message>
-    <message>
       <location filename="../src/librssguard-standard/src/gui/formstandardimportexport.cpp" line="29"/>
-      <source>You can enter full command including interpreter here.</source>
-      <translation type="unfinished">You can enter full command including interpreter here.</translation>
+      <source>Full command to execute</source>
+      <translation>Suoritettava komento kokonaisuudessaan</translation>
     </message>
     <message>
-      <location filename="../src/librssguard-standard/src/gui/formstandardimportexport.cpp" line="31"/>
+      <location filename="../src/librssguard-standard/src/gui/formstandardimportexport.cpp" line="30"/>
+      <source>You can enter full command including interpreter here.</source>
+      <translation>Voit syöttää koko komennon komentotulkkeineen tähän.</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard-standard/src/gui/formstandardimportexport.cpp" line="32"/>
       <source>Here you can enter script executaion line, including interpreter.</source>
       <translation type="unfinished">Here you can enter script executaion line, including interpreter.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard-standard/src/gui/formstandardimportexport.cpp" line="132"/>
       <location filename="../src/librssguard-standard/src/gui/formstandardimportexport.cpp" line="133"/>
+      <location filename="../src/librssguard-standard/src/gui/formstandardimportexport.cpp" line="134"/>
       <source>Some feeds were not loaded properly. Check log for more information.</source>
-      <translation type="unfinished">Some feeds were not loaded properly. Check log for more information.</translation>
+      <translation>Joitakin syötteitä ei ladattu kunnolla. Katso lisätietoja lokista.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard-standard/src/gui/formstandardimportexport.cpp" line="274"/>
+      <location filename="../src/librssguard-standard/src/gui/formstandardimportexport.cpp" line="276"/>
       <source>cannot open file</source>
-      <translation type="unfinished">cannot open file</translation>
+      <translation>ei voi avata tiedostoa</translation>
     </message>
     <message>
-      <location filename="../src/librssguard-standard/src/gui/formstandardimportexport.cpp" line="333"/>
-      <location filename="../src/librssguard-standard/src/gui/formstandardimportexport.cpp" line="334"/>
+      <location filename="../src/librssguard-standard/src/gui/formstandardimportexport.cpp" line="335"/>
+      <location filename="../src/librssguard-standard/src/gui/formstandardimportexport.cpp" line="336"/>
       <source>Feeds were exported successfully.</source>
       <translation>Syötteet vietiin onnistuneesti.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard-standard/src/gui/formstandardimportexport.cpp" line="344"/>
-      <location filename="../src/librssguard-standard/src/gui/formstandardimportexport.cpp" line="345"/>
+      <location filename="../src/librssguard-standard/src/gui/formstandardimportexport.cpp" line="346"/>
+      <location filename="../src/librssguard-standard/src/gui/formstandardimportexport.cpp" line="347"/>
       <source>Critical error occurred.</source>
       <translation>Tapahtui kriittinen virhe.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard-standard/src/gui/formstandardimportexport.cpp" line="116"/>
+      <location filename="../src/librssguard-standard/src/gui/formstandardimportexport.cpp" line="117"/>
       <source>Parsing data...</source>
       <translation>Jäsennetään tietoja...</translation>
     </message>
     <message>
-      <location filename="../src/librssguard-standard/src/gui/formstandardimportexport.cpp" line="167"/>
-      <location filename="../src/librssguard-standard/src/gui/formstandardimportexport.cpp" line="212"/>
-      <source>OPML 2.0 files (*.opml *.xml)</source>
-      <translation type="unfinished">OPML 2.0 files (*.opml *.xml)</translation>
-    </message>
-    <message>
-      <location filename="../src/librssguard-standard/src/gui/formstandardimportexport.cpp" line="338"/>
-      <source>Cannot write into destination file: &apos;%1&apos;.</source>
-      <translation type="unfinished">Cannot write into destination file: &apos;%1&apos;.</translation>
-    </message>
-    <message>
       <location filename="../src/librssguard-standard/src/gui/formstandardimportexport.cpp" line="168"/>
       <location filename="../src/librssguard-standard/src/gui/formstandardimportexport.cpp" line="213"/>
-      <source>TXT files [one URL per line] (*.txt)</source>
-      <translation type="unfinished">TXT files [one URL per line] (*.txt)</translation>
+      <source>OPML 2.0 files (*.opml *.xml)</source>
+      <translation>OPML 2.0 -tiedostot (*.opml *.xml)</translation>
     </message>
     <message>
-      <location filename="../src/librssguard-standard/src/gui/formstandardimportexport.cpp" line="72"/>
+      <location filename="../src/librssguard-standard/src/gui/formstandardimportexport.cpp" line="340"/>
+      <source>Cannot write into destination file: &apos;%1&apos;.</source>
+      <translation>Kohdetiedostoon kirjoittaminen ei onnistu: &apos;%1&apos;.</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard-standard/src/gui/formstandardimportexport.cpp" line="169"/>
+      <location filename="../src/librssguard-standard/src/gui/formstandardimportexport.cpp" line="214"/>
+      <source>TXT files [one URL per line] (*.txt)</source>
+      <translation>TXT-tiedostot [yksi URL/rivi] (*.txt)</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard-standard/src/gui/formstandardimportexport.cpp" line="73"/>
       <source>&amp;Export to file</source>
       <translation>&amp;Vie tiedostoon</translation>
     </message>
     <message>
-      <location filename="../src/librssguard-standard/src/gui/formstandardimportexport.cpp" line="84"/>
+      <location filename="../src/librssguard-standard/src/gui/formstandardimportexport.cpp" line="85"/>
       <source>&amp;Import from file</source>
       <translation>&amp;Tuo tiedostosta</translation>
     </message>
@@ -3789,37 +3789,37 @@ Sinun tulee käynnistää sovellus uudelleen itse.</translation>
     <message>
       <location filename="../src/librssguard-standard/src/gui/formstandardimportexport.ui" line="55"/>
       <source>Fetch online metadata</source>
-      <translation type="unfinished">Fetch online metadata</translation>
+      <translation>Nouda verkossa olevat metatiedot</translation>
     </message>
     <message>
       <location filename="../src/librssguard-standard/src/gui/formstandardimportexport.ui" line="64"/>
       <source>Do not fetch titles</source>
-      <translation type="unfinished">Do not fetch titles</translation>
+      <translation>Älä nouda otsikoita</translation>
     </message>
     <message>
       <location filename="../src/librssguard-standard/src/gui/formstandardimportexport.ui" line="71"/>
       <source>Do not fetch icons</source>
-      <translation type="unfinished">Do not fetch icons</translation>
+      <translation>Älä nouda kuvakkeita</translation>
     </message>
     <message>
       <location filename="../src/librssguard-standard/src/gui/formstandardimportexport.ui" line="78"/>
       <source>Optional post-processing script</source>
-      <translation type="unfinished">Optional post-processing script</translation>
+      <translation>Valinnainen jälkikäsittelyskripti</translation>
     </message>
     <message>
       <location filename="../src/librssguard-standard/src/gui/formstandardimportexport.ui" line="109"/>
       <source>Root node</source>
-      <translation type="unfinished">Root node</translation>
+      <translation>Juurisolmu</translation>
     </message>
     <message>
       <location filename="../src/librssguard-standard/src/gui/formstandardimportexport.ui" line="119"/>
       <source>Select parent item for your feed.</source>
-      <translation type="unfinished">Select parent item for your feed.</translation>
+      <translation>Valitse syötteelle ylätason kohde.</translation>
     </message>
     <message>
       <location filename="../src/librssguard-standard/src/gui/formstandardimportexport.ui" line="137"/>
       <source>Export icons</source>
-      <translation type="unfinished">Export icons</translation>
+      <translation>Vie kuvakkeet</translation>
     </message>
     <message>
       <location filename="../src/librssguard-standard/src/gui/formstandardimportexport.ui" line="209"/>
@@ -3834,7 +3834,7 @@ Sinun tulee käynnistää sovellus uudelleen itse.</translation>
     <message>
       <location filename="../src/librssguard-standard/src/gui/formstandardimportexport.ui" line="226"/>
       <source>Operation result</source>
-      <translation type="unfinished">Operation result</translation>
+      <translation>Toiminnon tulos</translation>
     </message>
   </context>
   <context>
@@ -3852,12 +3852,12 @@ Sinun tulee käynnistää sovellus uudelleen itse.</translation>
     <message>
       <location filename="../src/librssguard-ttrss/src/gui/formttrssfeeddetails.cpp" line="62"/>
       <source>Auth</source>
-      <translation type="unfinished">Auth</translation>
+      <translation>Todennus</translation>
     </message>
     <message>
       <location filename="../src/librssguard-ttrss/src/gui/formttrssfeeddetails.cpp" line="47"/>
       <source>Feed was added, obtaining new tree of feeds now.</source>
-      <translation type="unfinished">Feed was added, obtaining new tree of feeds now.</translation>
+      <translation>Syöte lisättiin. Haetaan syötteiden hakemistorakenne.</translation>
     </message>
     <message>
       <location filename="../src/librssguard-ttrss/src/gui/formttrssfeeddetails.cpp" line="52"/>
@@ -3885,12 +3885,12 @@ Sinun tulee käynnistää sovellus uudelleen itse.</translation>
     <message>
       <location filename="../src/librssguard-ttrss/src/gui/formttrssnote.cpp" line="63"/>
       <source>Enter non-empty title.</source>
-      <translation type="unfinished">Enter non-empty title.</translation>
+      <translation>Anna muu kuin tyhjä otsikko.</translation>
     </message>
     <message>
       <location filename="../src/librssguard-ttrss/src/gui/formttrssnote.cpp" line="72"/>
       <source>Enter valid URL.</source>
-      <translation type="unfinished">Enter valid URL.</translation>
+      <translation>Anna kelvollinen URL.</translation>
     </message>
     <message>
       <location filename="../src/librssguard-ttrss/src/gui/formttrssnote.ui" line="17"/>
@@ -3905,7 +3905,7 @@ Sinun tulee käynnistää sovellus uudelleen itse.</translation>
     <message>
       <location filename="../src/librssguard-ttrss/src/gui/formttrssnote.ui" line="66"/>
       <source>Content</source>
-      <translation type="unfinished">Content</translation>
+      <translation>Sisältö</translation>
     </message>
   </context>
   <context>
@@ -4012,17 +4012,17 @@ on mahdollista ladata.</translation>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formupdate.cpp" line="37"/>
       <source>Go to application website to get update packages manually.</source>
-      <translation type="unfinished">Go to application website to get update packages manually.</translation>
+      <translation>Hae päivityspaketit itse sovelluksen sivustolta.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formupdate.cpp" line="155"/>
       <source> (size </source>
-      <translation type="unfinished"> (size </translation>
+      <translation> (koko </translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formupdate.cpp" line="170"/>
       <source>Available update files</source>
-      <translation type="unfinished">Available update files</translation>
+      <translation>Saatavilla olevat päivitystiedostot</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formupdate.cpp" line="188"/>
@@ -4065,7 +4065,7 @@ Voit asentaa sen nyt.</translation>
       <location filename="../src/librssguard/gui/dialogs/formupdate.ui" line="125"/>
       <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_formupdate.h" line="161"/>
       <source>Available files</source>
-      <translation type="unfinished">Available files</translation>
+      <translation>Saatavilla olevat tiedostot</translation>
     </message>
   </context>
   <context>
@@ -4073,7 +4073,7 @@ Voit asentaa sen nyt.</translation>
     <message>
       <location filename="../src/librssguard/network-web/gemini/geminiclient.cpp" line="268"/>
       <source>Line is too short for valid protocol</source>
-      <translation type="unfinished">Line is too short for valid protocol</translation>
+      <translation>Rivi on liian lyhyt kelvolliselle protokollalle</translation>
     </message>
     <message>
       <location filename="../src/librssguard/network-web/gemini/geminiclient.cpp" line="273"/>
@@ -4083,37 +4083,37 @@ Voit asentaa sen nyt.</translation>
     <message>
       <location filename="../src/librssguard/network-web/gemini/geminiclient.cpp" line="282"/>
       <source>Line does not end with &lt;CR&gt; &lt;LF&gt;</source>
-      <translation type="unfinished">Line does not end with &lt;CR&gt; &lt;LF&gt;</translation>
+      <translation>Rivin lopusta puuttuu &lt;CR&gt; &lt;LF&gt;</translation>
     </message>
     <message>
       <location filename="../src/librssguard/network-web/gemini/geminiclient.cpp" line="291"/>
       <source>First character is not a digit.</source>
-      <translation type="unfinished">First character is not a digit.</translation>
+      <translation>Ensimmäinen merkki ei ole numero.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/network-web/gemini/geminiclient.cpp" line="300"/>
       <source>Second character is not a digit.</source>
-      <translation type="unfinished">Second character is not a digit.</translation>
+      <translation>Toinen merkki ei ole numero.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/network-web/gemini/geminiclient.cpp" line="312"/>
       <source>Third character is not a space.</source>
-      <translation type="unfinished">Third character is not a space.</translation>
+      <translation>Kolmas merkki ei ole välilyönti.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/network-web/gemini/geminiclient.cpp" line="361"/>
       <source>Invalid URL for redirection!</source>
-      <translation type="unfinished">Invalid URL for redirection!</translation>
+      <translation>Virheellinen URL uudelleenohjaukseen!</translation>
     </message>
     <message>
       <location filename="../src/librssguard/network-web/gemini/geminiclient.cpp" line="438"/>
       <source>Unspecified status code used!</source>
-      <translation type="unfinished">Unspecified status code used!</translation>
+      <translation>Määrittelemätöntä tilakoodia käytetty!</translation>
     </message>
     <message>
       <location filename="../src/librssguard/network-web/gemini/geminiclient.cpp" line="447"/>
       <source>META too large!</source>
-      <translation type="unfinished">META too large!</translation>
+      <translation>META on liian suuri!</translation>
     </message>
   </context>
   <context>
@@ -4132,17 +4132,17 @@ Voit asentaa sen nyt.</translation>
     <message>
       <location filename="../src/librssguard-gmail/src/gui/gmailaccountdetails.cpp" line="66"/>
       <source>No username entered.</source>
-      <translation type="unfinished">No username entered.</translation>
+      <translation>Käyttäjätunnusta ei annettu.</translation>
     </message>
     <message>
       <location filename="../src/librssguard-gmail/src/gui/gmailaccountdetails.cpp" line="69"/>
       <source>Some username entered.</source>
-      <translation type="unfinished">Some username entered.</translation>
+      <translation>Jokin käyttäjätunnus annettiin.</translation>
     </message>
     <message>
       <location filename="../src/librssguard-gmail/src/gui/gmailaccountdetails.cpp" line="75"/>
       <source>You did not grant access.</source>
-      <translation type="unfinished">You did not grant access.</translation>
+      <translation>Et antanut käyttöoikeutta.</translation>
     </message>
     <message>
       <location filename="../src/librssguard-gmail/src/gui/gmailaccountdetails.cpp" line="76"/>
@@ -4158,7 +4158,7 @@ Voit asentaa sen nyt.</translation>
     <message>
       <location filename="../src/librssguard-gmail/src/gui/gmailaccountdetails.cpp" line="90"/>
       <source>Your access was approved.</source>
-      <translation type="unfinished">Your access was approved.</translation>
+      <translation>Käyttöoikeus on hyväksytty.</translation>
     </message>
     <message>
       <location filename="../src/librssguard-gmail/src/gui/gmailaccountdetails.cpp" line="124"/>
@@ -4208,7 +4208,7 @@ Voit asentaa sen nyt.</translation>
     <message>
       <location filename="../src/librssguard-gmail/src/gui/gmailaccountdetails.ui" line="52"/>
       <source>Client secret</source>
-      <translation type="unfinished">Client secret</translation>
+      <translation>Asiakkaan salasana</translation>
     </message>
     <message>
       <location filename="../src/librssguard-gmail/src/gui/gmailaccountdetails.ui" line="65"/>
@@ -4218,7 +4218,7 @@ Voit asentaa sen nyt.</translation>
     <message>
       <location filename="../src/librssguard-gmail/src/gui/gmailaccountdetails.ui" line="80"/>
       <source>Get my credentials</source>
-      <translation type="unfinished">Get my credentials</translation>
+      <translation>Hae käyttäjätunnukset</translation>
     </message>
     <message>
       <location filename="../src/librssguard-gmail/src/gui/gmailaccountdetails.ui" line="110"/>
@@ -4261,17 +4261,17 @@ Voit asentaa sen nyt.</translation>
     <message>
       <location filename="../src/librssguard-gmail/src/gmailnetworkfactory.cpp" line="180"/>
       <source>failed to download list of labels</source>
-      <translation type="unfinished">failed to download list of labels</translation>
+      <translation>tunnisteluettelon lataus epäonnistui</translation>
     </message>
     <message>
       <location filename="../src/librssguard-gmail/src/gmailnetworkfactory.cpp" line="444"/>
       <source>failed to download IDs of e-mail messages</source>
-      <translation type="unfinished">failed to download IDs of e-mail messages</translation>
+      <translation>sähköpostiviestien tunnisteiden lataus epäonnistui</translation>
     </message>
     <message>
       <location filename="../src/librssguard-gmail/src/gmailnetworkfactory.cpp" line="505"/>
       <source>Gmail: authorization denied</source>
-      <translation type="unfinished">Gmail: authorization denied</translation>
+      <translation>Gmail: valtuutus evätty</translation>
     </message>
     <message>
       <location filename="../src/librssguard-gmail/src/gmailnetworkfactory.cpp" line="456"/>
@@ -4283,57 +4283,57 @@ Voit asentaa sen nyt.</translation>
       <location filename="../src/librssguard-gmail/src/gmailnetworkfactory.cpp" line="496"/>
       <location filename="../src/librssguard-gmail/src/gmailnetworkfactory.cpp" line="509"/>
       <source>Login</source>
-      <translation type="unfinished">Login</translation>
+      <translation>Kirjaudu</translation>
     </message>
   </context>
   <context>
     <name>GmailServiceRoot</name>
     <message>
-      <location filename="../src/librssguard-gmail/src/gmailserviceroot.cpp" line="43"/>
+      <location filename="../src/librssguard-gmail/src/gmailserviceroot.cpp" line="41"/>
       <source>Inbox</source>
       <translation>Saapuneet</translation>
     </message>
     <message>
-      <location filename="../src/librssguard-gmail/src/gmailserviceroot.cpp" line="52"/>
+      <location filename="../src/librssguard-gmail/src/gmailserviceroot.cpp" line="50"/>
       <source>Sent</source>
       <translation>Lähetetty</translation>
     </message>
     <message>
-      <location filename="../src/librssguard-gmail/src/gmailserviceroot.cpp" line="53"/>
+      <location filename="../src/librssguard-gmail/src/gmailserviceroot.cpp" line="51"/>
       <source>Drafts</source>
       <translation>Luonnokset</translation>
     </message>
     <message>
-      <location filename="../src/librssguard-gmail/src/gmailserviceroot.cpp" line="57"/>
+      <location filename="../src/librssguard-gmail/src/gmailserviceroot.cpp" line="55"/>
       <source>Spam</source>
       <translation>Roskaposti</translation>
     </message>
     <message>
-      <location filename="../src/librssguard-gmail/src/gmailserviceroot.cpp" line="135"/>
+      <location filename="../src/librssguard-gmail/src/gmailserviceroot.cpp" line="133"/>
       <source>Reply to this e-mail message</source>
-      <translation type="unfinished">Reply to this e-mail message</translation>
+      <translation>Vastaa tähän sähköpostiviestiin</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard-gmail/src/gmailserviceroot.cpp" line="221"/>
+      <source>Authentication status: %1
+Login tokens expiration: %2</source>
+      <translation>Todennustila: %1
+Kirjautumistunnusten vanhentuminen: %2</translation>
     </message>
     <message>
       <location filename="../src/librssguard-gmail/src/gmailserviceroot.cpp" line="223"/>
-      <source>Authentication status: %1
-Login tokens expiration: %2</source>
-      <translation type="unfinished">Authentication status: %1
-Login tokens expiration: %2</translation>
-    </message>
-    <message>
-      <location filename="../src/librssguard-gmail/src/gmailserviceroot.cpp" line="225"/>
       <source>logged-in</source>
-      <translation type="unfinished">logged-in</translation>
+      <translation>kirjautunut</translation>
     </message>
     <message>
-      <location filename="../src/librssguard-gmail/src/gmailserviceroot.cpp" line="225"/>
+      <location filename="../src/librssguard-gmail/src/gmailserviceroot.cpp" line="223"/>
       <source>NOT logged-in</source>
-      <translation type="unfinished">NOT logged-in</translation>
+      <translation>EI kirjautunut</translation>
     </message>
     <message>
-      <location filename="../src/librssguard-gmail/src/gmailserviceroot.cpp" line="151"/>
+      <location filename="../src/librssguard-gmail/src/gmailserviceroot.cpp" line="149"/>
       <source>Write new e-mail message</source>
-      <translation type="unfinished">Write new e-mail message</translation>
+      <translation>Kirjoita uusi sähköpostiviesti</translation>
     </message>
   </context>
   <context>
@@ -4341,7 +4341,7 @@ Login tokens expiration: %2</translation>
     <message>
       <location filename="../src/librssguard-greader/src/gui/greaderaccountdetails.cpp" line="39"/>
       <source>Password for your account</source>
-      <translation type="unfinished">Password for your account</translation>
+      <translation>Tilisi salasana</translation>
     </message>
     <message>
       <location filename="../src/librssguard-greader/src/gui/greaderaccountdetails.cpp" line="40"/>
@@ -4351,7 +4351,7 @@ Login tokens expiration: %2</translation>
     <message>
       <location filename="../src/librssguard-greader/src/gui/greaderaccountdetails.cpp" line="41"/>
       <source>URL of your server, without any service-specific path</source>
-      <translation type="unfinished">URL of your server, without any service-specific path</translation>
+      <translation>Palvelimen URL-osoite ilman palvelukohtaista polkua</translation>
     </message>
     <message>
       <location filename="../src/librssguard-greader/src/gui/greaderaccountdetails.cpp" line="43"/>
@@ -4371,17 +4371,17 @@ Login tokens expiration: %2</translation>
     <message>
       <location filename="../src/librssguard-greader/src/gui/greaderaccountdetails.cpp" line="203"/>
       <source>Network error, have you entered correct Nextcloud endpoint and password?</source>
-      <translation type="unfinished">Network error, have you entered correct Nextcloud endpoint and password?</translation>
+      <translation>Verkkovirhe. Oletko antanut oikean Nextcloud-päätepisteen?</translation>
     </message>
     <message>
       <location filename="../src/librssguard-greader/src/gui/greaderaccountdetails.cpp" line="206"/>
       <source>You are good to go!</source>
-      <translation type="unfinished">You are good to go!</translation>
+      <translation>Kaikki valmista!</translation>
     </message>
     <message>
       <location filename="../src/librssguard-greader/src/gui/greaderaccountdetails.cpp" line="206"/>
       <source>Yeah.</source>
-      <translation type="unfinished">Yeah.</translation>
+      <translation>Jep.</translation>
     </message>
     <message>
       <location filename="../src/librssguard-greader/src/gui/greaderaccountdetails.cpp" line="215"/>
@@ -4401,7 +4401,7 @@ Login tokens expiration: %2</translation>
     <message>
       <location filename="../src/librssguard-greader/src/gui/greaderaccountdetails.cpp" line="229"/>
       <source>Password is okay.</source>
-      <translation type="unfinished">Password is okay.</translation>
+      <translation>Salasana on oikein.</translation>
     </message>
     <message>
       <location filename="../src/librssguard-greader/src/gui/greaderaccountdetails.cpp" line="237"/>
@@ -4411,7 +4411,7 @@ Login tokens expiration: %2</translation>
     <message>
       <location filename="../src/librssguard-greader/src/gui/greaderaccountdetails.cpp" line="240"/>
       <source>URL is okay.</source>
-      <translation type="unfinished">URL is okay.</translation>
+      <translation>URL on oikein.</translation>
     </message>
     <message>
       <location filename="../src/librssguard-greader/src/gui/greaderaccountdetails.cpp" line="46"/>
@@ -4436,7 +4436,7 @@ Login tokens expiration: %2</translation>
     <message>
       <location filename="../src/librssguard-greader/src/gui/greaderaccountdetails.cpp" line="109"/>
       <source>You did not grant access.</source>
-      <translation type="unfinished">You did not grant access.</translation>
+      <translation>Et antanut käyttöoikeutta.</translation>
     </message>
     <message>
       <location filename="../src/librssguard-greader/src/gui/greaderaccountdetails.cpp" line="110"/>
@@ -4452,17 +4452,17 @@ Login tokens expiration: %2</translation>
     <message>
       <location filename="../src/librssguard-greader/src/gui/greaderaccountdetails.cpp" line="123"/>
       <source>Tested successfully. You may be prompted to login once more.</source>
-      <translation type="unfinished">Tested successfully. You may be prompted to login once more.</translation>
+      <translation>Testi onnistui. Sinua voidaan pyytää kirjautumaan uudelleen.</translation>
     </message>
     <message>
       <location filename="../src/librssguard-greader/src/gui/greaderaccountdetails.cpp" line="124"/>
       <source>Your access was approved.</source>
-      <translation type="unfinished">Your access was approved.</translation>
+      <translation>Käyttöoikeus on hyväksytty.</translation>
     </message>
     <message>
       <location filename="../src/librssguard-greader/src/gui/greaderaccountdetails.cpp" line="158"/>
       <source>Preconfigured client ID/secret will be used.</source>
-      <translation type="unfinished">Preconfigured client ID/secret will be used.</translation>
+      <translation>Käytetään esiasetettua asiakastunnusta/salasanaa.</translation>
     </message>
     <message>
       <location filename="../src/librssguard-greader/src/gui/greaderaccountdetails.cpp" line="160"/>
@@ -4492,12 +4492,12 @@ Login tokens expiration: %2</translation>
     <message>
       <location filename="../src/librssguard-greader/src/gui/greaderaccountdetails.ui" line="47"/>
       <source>Intelligent synchronization algorithm</source>
-      <translation type="unfinished">Intelligent synchronization algorithm</translation>
+      <translation>Älykkään synkronoinnin algoritmi</translation>
     </message>
     <message>
       <location filename="../src/librssguard-greader/src/gui/greaderaccountdetails.ui" line="56"/>
       <source>Fetch articles newer than</source>
-      <translation type="unfinished">Fetch articles newer than</translation>
+      <translation>Nouda artikkelit, jotka ovat uudempia kuin</translation>
     </message>
     <message>
       <location filename="../src/librssguard-greader/src/gui/greaderaccountdetails.ui" line="74"/>
@@ -4527,12 +4527,12 @@ Login tokens expiration: %2</translation>
     <message>
       <location filename="../src/librssguard-greader/src/gui/greaderaccountdetails.ui" line="192"/>
       <source>App ID</source>
-      <translation type="unfinished">App ID</translation>
+      <translation>Sovellustunnus</translation>
     </message>
     <message>
       <location filename="../src/librssguard-greader/src/gui/greaderaccountdetails.ui" line="205"/>
       <source>App key</source>
-      <translation type="unfinished">App key</translation>
+      <translation>Sovellusavain</translation>
     </message>
     <message>
       <location filename="../src/librssguard-greader/src/gui/greaderaccountdetails.ui" line="218"/>
@@ -4555,17 +4555,17 @@ Login tokens expiration: %2</translation>
     <message>
       <location filename="../src/librssguard-greader/src/gui/greaderfeeddetails.ui" line="14"/>
       <source>Form</source>
-      <translation type="unfinished">Form</translation>
+      <translation>Lomake</translation>
     </message>
     <message>
       <location filename="../src/librssguard-greader/src/gui/greaderfeeddetails.ui" line="20"/>
       <source>Parent category</source>
-      <translation type="unfinished">Parent category</translation>
+      <translation>Pääluokka</translation>
     </message>
     <message>
       <location filename="../src/librssguard-greader/src/gui/greaderfeeddetails.ui" line="30"/>
       <source>Select parent item for your feed.</source>
-      <translation type="unfinished">Select parent item for your feed.</translation>
+      <translation>Valitse syötteelle ylätason kohde.</translation>
     </message>
     <message>
       <location filename="../src/librssguard-greader/src/gui/greaderfeeddetails.ui" line="46"/>
@@ -4585,7 +4585,7 @@ Login tokens expiration: %2</translation>
     <message>
       <location filename="../src/librssguard-greader/src/gui/greaderfeeddetails.cpp" line="14"/>
       <source>Provide URL for your feed.</source>
-      <translation type="unfinished">Provide URL for your feed.</translation>
+      <translation>Anna syötteen URL-osoite.</translation>
     </message>
     <message>
       <location filename="../src/librssguard-greader/src/gui/greaderfeeddetails.cpp" line="26"/>
@@ -4624,7 +4624,7 @@ Login tokens expiration: %2</translation>
       <location filename="../src/librssguard-greader/src/greadernetwork.cpp" line="593"/>
       <location filename="../src/librssguard-greader/src/greadernetwork.cpp" line="659"/>
       <source>login failed</source>
-      <translation type="unfinished">login failed</translation>
+      <translation>kirjautuminen epäonnistui</translation>
     </message>
     <message>
       <location filename="../src/librssguard-greader/src/greadernetwork.cpp" line="1218"/>
@@ -4639,7 +4639,7 @@ Login tokens expiration: %2</translation>
     <message>
       <location filename="../src/librssguard-greader/src/greadernetwork.cpp" line="1231"/>
       <source>Inoreader: authorization denied</source>
-      <translation type="unfinished">Inoreader: authorization denied</translation>
+      <translation>Inoreader: valtuutus evätty</translation>
     </message>
     <message>
       <location filename="../src/librssguard-greader/src/greadernetwork.cpp" line="1232"/>
@@ -4650,83 +4650,83 @@ Login tokens expiration: %2</translation>
       <location filename="../src/librssguard-greader/src/greadernetwork.cpp" line="1222"/>
       <location filename="../src/librssguard-greader/src/greadernetwork.cpp" line="1235"/>
       <source>Login</source>
-      <translation type="unfinished">Login</translation>
+      <translation>Kirjaudu</translation>
     </message>
   </context>
   <context>
     <name>GreaderServiceRoot</name>
     <message>
-      <location filename="../src/librssguard-greader/src/greaderserviceroot.cpp" line="157"/>
+      <location filename="../src/librssguard-greader/src/greaderserviceroot.cpp" line="158"/>
       <source>Other services</source>
       <translation>Muut palvelut</translation>
     </message>
     <message>
-      <location filename="../src/librssguard-greader/src/greaderserviceroot.cpp" line="162"/>
-      <location filename="../src/librssguard-greader/src/greaderserviceroot.cpp" line="192"/>
+      <location filename="../src/librssguard-greader/src/greaderserviceroot.cpp" line="163"/>
+      <location filename="../src/librssguard-greader/src/greaderserviceroot.cpp" line="195"/>
       <source>OPML 2.0 files (*.opml *.xml)</source>
-      <translation type="unfinished">OPML 2.0 files (*.opml *.xml)</translation>
+      <translation>OPML 2.0 -tiedostot (*.opml *.xml)</translation>
     </message>
     <message>
-      <location filename="../src/librssguard-greader/src/greaderserviceroot.cpp" line="164"/>
+      <location filename="../src/librssguard-greader/src/greaderserviceroot.cpp" line="165"/>
       <source>Select file for feeds import</source>
-      <translation type="unfinished">Select file for feeds import</translation>
+      <translation>Valitse tiedosto syötteiden tuontiin</translation>
     </message>
     <message>
-      <location filename="../src/librssguard-greader/src/greaderserviceroot.cpp" line="176"/>
-      <location filename="../src/librssguard-greader/src/greaderserviceroot.cpp" line="204"/>
+      <location filename="../src/librssguard-greader/src/greaderserviceroot.cpp" line="179"/>
+      <location filename="../src/librssguard-greader/src/greaderserviceroot.cpp" line="207"/>
       <source>Done</source>
-      <translation type="unfinished">Done</translation>
+      <translation>Valmis</translation>
     </message>
     <message>
-      <location filename="../src/librssguard-greader/src/greaderserviceroot.cpp" line="177"/>
+      <location filename="../src/librssguard-greader/src/greaderserviceroot.cpp" line="180"/>
       <source>Data imported successfully. Reloading feed tree.</source>
-      <translation type="unfinished">Data imported successfully. Reloading feed tree.</translation>
+      <translation>Tietojen tuonti onnistui. Syötteen hakemistorakenne ladataan uudelleen.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard-greader/src/greaderserviceroot.cpp" line="184"/>
+      <location filename="../src/librssguard-greader/src/greaderserviceroot.cpp" line="187"/>
       <source>Cannot import feeds</source>
-      <translation type="unfinished">Cannot import feeds</translation>
+      <translation>Syötteitä ei voi tuoda</translation>
     </message>
     <message>
-      <location filename="../src/librssguard-greader/src/greaderserviceroot.cpp" line="185"/>
-      <location filename="../src/librssguard-greader/src/greaderserviceroot.cpp" line="210"/>
+      <location filename="../src/librssguard-greader/src/greaderserviceroot.cpp" line="188"/>
+      <location filename="../src/librssguard-greader/src/greaderserviceroot.cpp" line="213"/>
       <source>Error: %1</source>
       <translation>Virhe: %1</translation>
     </message>
     <message>
-      <location filename="../src/librssguard-greader/src/greaderserviceroot.cpp" line="194"/>
+      <location filename="../src/librssguard-greader/src/greaderserviceroot.cpp" line="197"/>
       <source>Select file for feeds export</source>
-      <translation type="unfinished">Select file for feeds export</translation>
+      <translation>Valitse tiedosto syötteiden vientiin</translation>
     </message>
     <message>
-      <location filename="../src/librssguard-greader/src/greaderserviceroot.cpp" line="204"/>
+      <location filename="../src/librssguard-greader/src/greaderserviceroot.cpp" line="207"/>
       <source>Data exported successfully.</source>
-      <translation type="unfinished">Data exported successfully.</translation>
+      <translation>Tietojen vienti onnistui.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard-greader/src/greaderserviceroot.cpp" line="209"/>
+      <location filename="../src/librssguard-greader/src/greaderserviceroot.cpp" line="212"/>
       <source>Cannot export feeds</source>
-      <translation type="unfinished">Cannot export feeds</translation>
+      <translation>Syötteitä ei voi viedä</translation>
     </message>
     <message>
-      <location filename="../src/librssguard-greader/src/greaderserviceroot.cpp" line="266"/>
+      <location filename="../src/librssguard-greader/src/greaderserviceroot.cpp" line="269"/>
       <source>Export feeds</source>
       <translation>Vie syötteet</translation>
     </message>
     <message>
-      <location filename="../src/librssguard-greader/src/greaderserviceroot.cpp" line="267"/>
+      <location filename="../src/librssguard-greader/src/greaderserviceroot.cpp" line="270"/>
       <source>Import feeds</source>
       <translation>Tuo syötteet</translation>
     </message>
     <message>
-      <location filename="../src/librssguard-greader/src/greaderserviceroot.cpp" line="367"/>
+      <location filename="../src/librssguard-greader/src/greaderserviceroot.cpp" line="370"/>
       <source>Cannot add item</source>
       <translation>Tietuetta ei voi lisätä</translation>
     </message>
     <message>
-      <location filename="../src/librssguard-greader/src/greaderserviceroot.cpp" line="368"/>
+      <location filename="../src/librssguard-greader/src/greaderserviceroot.cpp" line="371"/>
       <source>Cannot add feed because another critical operation is ongoing.</source>
-      <translation type="unfinished">Cannot add feed because another critical operation is ongoing.</translation>
+      <translation>Syötettä ei voi lisätä, koska toinen tärkeä toiminto on kesken.</translation>
     </message>
   </context>
   <context>
@@ -4734,7 +4734,7 @@ Login tokens expiration: %2</translation>
     <message>
       <location filename="../src/librssguard/gui/reusable/helpspoiler.cpp" line="25"/>
       <source>View more information on this</source>
-      <translation type="unfinished">View more information on this</translation>
+      <translation>Näytä lisätietoja tästä</translation>
     </message>
   </context>
   <context>
@@ -4743,7 +4743,7 @@ Login tokens expiration: %2</translation>
       <location filename="../src/librssguard/services/abstract/gui/httpheadersdetails.ui" line="14"/>
       <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_httpheadersdetails.h" line="66"/>
       <source>Form</source>
-      <translation type="unfinished">Form</translation>
+      <translation>Lomake</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/abstract/gui/httpheadersdetails.cpp" line="14"/>
@@ -4756,12 +4756,12 @@ Login tokens expiration: %2</translation>
     <message>
       <location filename="../src/librssguard/miscellaneous/iofactory.cpp" line="151"/>
       <source>Cannot open file &apos;%1&apos; for reading.</source>
-      <translation type="unfinished">Cannot open file &apos;%1&apos; for reading.</translation>
+      <translation>Tiedostoa &apos;%1&apos; ei voi avata lukemista varten.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/miscellaneous/iofactory.cpp" line="163"/>
       <source>Cannot open file &apos;%1&apos; for writting.</source>
-      <translation type="unfinished">Cannot open file &apos;%1&apos; for writting.</translation>
+      <translation>Tiedostoa &apos;%1&apos; ei voi avata kirjoittamista varten.</translation>
     </message>
   </context>
   <context>
@@ -4769,12 +4769,12 @@ Login tokens expiration: %2</translation>
     <message>
       <location filename="../src/librssguard/services/abstract/importantnode.cpp" line="15"/>
       <source>Important articles</source>
-      <translation type="unfinished">Important articles</translation>
+      <translation>Tärkeät artikkelit</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/abstract/importantnode.cpp" line="16"/>
       <source>You can find all important articles here.</source>
-      <translation type="unfinished">You can find all important articles here.</translation>
+      <translation>Kaikki tärkeät artikkelit ovat täällä.</translation>
     </message>
   </context>
   <context>
@@ -4783,7 +4783,7 @@ Login tokens expiration: %2</translation>
       <location filename="../src/librssguard/gui/itemdetails.ui" line="20"/>
       <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_itemdetails.h" line="66"/>
       <source>Form</source>
-      <translation type="unfinished">Form</translation>
+      <translation>Lomake</translation>
     </message>
   </context>
   <context>
@@ -4796,7 +4796,7 @@ Login tokens expiration: %2</translation>
     <message>
       <location filename="../src/librssguard/gui/reusable/labelsmenu.cpp" line="19"/>
       <source>No labels found</source>
-      <translation type="unfinished">No labels found</translation>
+      <translation>Tunnisteita ei löytynyt</translation>
     </message>
   </context>
   <context>
@@ -4809,7 +4809,7 @@ Login tokens expiration: %2</translation>
     <message>
       <location filename="../src/librssguard/services/abstract/labelsnode.cpp" line="20"/>
       <source>You can see all your labels (tags) here.</source>
-      <translation type="unfinished">You can see all your labels (tags) here.</translation>
+      <translation>Kaikki tunnisteet (tägit) ovat täällä.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/abstract/labelsnode.cpp" line="86"/>
@@ -4819,7 +4819,7 @@ Login tokens expiration: %2</translation>
     <message>
       <location filename="../src/librssguard/services/abstract/labelsnode.cpp" line="115"/>
       <source>This account does not allow you to create labels.</source>
-      <translation type="unfinished">This account does not allow you to create labels.</translation>
+      <translation>Tällä tilillä ei saa luoda tunnisteita.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/abstract/labelsnode.cpp" line="116"/>
@@ -4832,52 +4832,52 @@ Login tokens expiration: %2</translation>
     <message>
       <location filename="../src/librssguard/gui/mediaplayer/libmpv/libmpvbackend.cpp" line="140"/>
       <source>File loaded</source>
-      <translation type="unfinished">File loaded</translation>
+      <translation>Tiedosto ladattu</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/mediaplayer/libmpv/libmpvbackend.cpp" line="196"/>
       <source>App restart required</source>
-      <translation type="unfinished">App restart required</translation>
+      <translation>Sovellus on käynnistettävä uudelleen</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/mediaplayer/libmpv/libmpvbackend.cpp" line="199"/>
       <source>Out of memory</source>
-      <translation type="unfinished">Out of memory</translation>
+      <translation>Muisti ei riitä</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/mediaplayer/libmpv/libmpvbackend.cpp" line="202"/>
       <source>Not initialized yet</source>
-      <translation type="unfinished">Not initialized yet</translation>
+      <translation>Ei vielä alustettu</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/mediaplayer/libmpv/libmpvbackend.cpp" line="205"/>
       <source>Invalid parameter</source>
-      <translation type="unfinished">Invalid parameter</translation>
+      <translation>Virheellinen parametri</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/mediaplayer/libmpv/libmpvbackend.cpp" line="208"/>
       <source>Option not found</source>
-      <translation type="unfinished">Option not found</translation>
+      <translation>Asetusta ei löydy</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/mediaplayer/libmpv/libmpvbackend.cpp" line="211"/>
       <source>Option badly formatted</source>
-      <translation type="unfinished">Option badly formatted</translation>
+      <translation>Asetuksen muoto on väärä</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/mediaplayer/libmpv/libmpvbackend.cpp" line="214"/>
       <source>Cannot set option</source>
-      <translation type="unfinished">Cannot set option</translation>
+      <translation>Asetusta ei voi käyttää</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/mediaplayer/libmpv/libmpvbackend.cpp" line="217"/>
       <source>Property does not existing</source>
-      <translation type="unfinished">Property does not existing</translation>
+      <translation>Ominaisuutta ei ole</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/mediaplayer/libmpv/libmpvbackend.cpp" line="220"/>
       <source>Property badly formatted</source>
-      <translation type="unfinished">Property badly formatted</translation>
+      <translation>Ominaisuuden muoto on väärä</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/mediaplayer/libmpv/libmpvbackend.cpp" line="223"/>
@@ -4887,57 +4887,57 @@ Login tokens expiration: %2</translation>
     <message>
       <location filename="../src/librssguard/gui/mediaplayer/libmpv/libmpvbackend.cpp" line="226"/>
       <source>Cannot set property</source>
-      <translation type="unfinished">Cannot set property</translation>
+      <translation>Ominaisuutta ei voi asettaa</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/mediaplayer/libmpv/libmpvbackend.cpp" line="229"/>
       <source>Cannot run command</source>
-      <translation type="unfinished">Cannot run command</translation>
+      <translation>Komentoa ei voi suorittaa</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/mediaplayer/libmpv/libmpvbackend.cpp" line="232"/>
       <source>Loading failed</source>
-      <translation type="unfinished">Loading failed</translation>
+      <translation>Lataus epäonnistui.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/mediaplayer/libmpv/libmpvbackend.cpp" line="235"/>
       <source>Cannot initialize audio</source>
-      <translation type="unfinished">Cannot initialize audio</translation>
+      <translation>Ääntä ei voi alustaa</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/mediaplayer/libmpv/libmpvbackend.cpp" line="238"/>
       <source>Cannot initialize video</source>
-      <translation type="unfinished">Cannot initialize video</translation>
+      <translation>Videota ei voi alustaa</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/mediaplayer/libmpv/libmpvbackend.cpp" line="241"/>
       <source>Not a media file</source>
-      <translation type="unfinished">Not a media file</translation>
+      <translation>Ei mediatiedosto</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/mediaplayer/libmpv/libmpvbackend.cpp" line="244"/>
       <source>Unknown file format</source>
-      <translation type="unfinished">Unknown file format</translation>
+      <translation>Tuntematon tiedostomuoto</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/mediaplayer/libmpv/libmpvbackend.cpp" line="247"/>
       <source>Unsupported file format</source>
-      <translation type="unfinished">Unsupported file format</translation>
+      <translation>Tiedostotyyppiä ei tueta</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/mediaplayer/libmpv/libmpvbackend.cpp" line="251"/>
       <source>Unknown error (%1)</source>
-      <translation type="unfinished">Unknown error (%1)</translation>
+      <translation>Tuntematon virhe (%1)</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/mediaplayer/libmpv/libmpvbackend.cpp" line="270"/>
       <source>Stopped</source>
-      <translation type="unfinished">Stopped</translation>
+      <translation>Pysäytetty</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/mediaplayer/libmpv/libmpvbackend.cpp" line="276"/>
       <source>File ended</source>
-      <translation type="unfinished">File ended</translation>
+      <translation>Tiedosto päättyi</translation>
     </message>
   </context>
   <context>
@@ -4953,42 +4953,42 @@ Login tokens expiration: %2</translation>
     <message>
       <location filename="../src/librssguard-gmail/src/3rd-party/richtexteditor/mrichtextedit.ui" line="56"/>
       <source>Paragraph formatting</source>
-      <translation type="unfinished">Paragraph formatting</translation>
+      <translation>Kappaleen muotoilu</translation>
     </message>
     <message>
       <location filename="../src/librssguard-gmail/src/3rd-party/richtexteditor/mrichtextedit.ui" line="79"/>
       <source>Undo</source>
-      <translation type="unfinished">Undo</translation>
+      <translation>Kumoa</translation>
     </message>
     <message>
       <location filename="../src/librssguard-gmail/src/3rd-party/richtexteditor/mrichtextedit.ui" line="98"/>
       <source>Redo</source>
-      <translation type="unfinished">Redo</translation>
+      <translation>Tee uudelleen</translation>
     </message>
     <message>
       <location filename="../src/librssguard-gmail/src/3rd-party/richtexteditor/mrichtextedit.ui" line="114"/>
       <source>Cut</source>
-      <translation type="unfinished">Cut</translation>
+      <translation>Leikkaa</translation>
     </message>
     <message>
       <location filename="../src/librssguard-gmail/src/3rd-party/richtexteditor/mrichtextedit.ui" line="130"/>
       <source>Copy</source>
-      <translation type="unfinished">Copy</translation>
+      <translation>Kopioi</translation>
     </message>
     <message>
       <location filename="../src/librssguard-gmail/src/3rd-party/richtexteditor/mrichtextedit.ui" line="146"/>
       <source>Paste (CTRL+V)</source>
-      <translation type="unfinished">Paste (CTRL+V)</translation>
+      <translation>Liitä (CTRL+V)</translation>
     </message>
     <message>
       <location filename="../src/librssguard-gmail/src/3rd-party/richtexteditor/mrichtextedit.ui" line="149"/>
       <source>Paste</source>
-      <translation type="unfinished">Paste</translation>
+      <translation>Liitä</translation>
     </message>
     <message>
       <location filename="../src/librssguard-gmail/src/3rd-party/richtexteditor/mrichtextedit.ui" line="172"/>
       <source>Link (CTRL+L)</source>
-      <translation type="unfinished">Link (CTRL+L)</translation>
+      <translation>Linkitä (CTRL+L)</translation>
     </message>
     <message>
       <location filename="../src/librssguard-gmail/src/3rd-party/richtexteditor/mrichtextedit.ui" line="175"/>
@@ -5013,147 +5013,147 @@ Login tokens expiration: %2</translation>
     <message>
       <location filename="../src/librssguard-gmail/src/3rd-party/richtexteditor/mrichtextedit.ui" line="245"/>
       <source>Underline (CTRL+U)</source>
-      <translation type="unfinished">Underline (CTRL+U)</translation>
+      <translation>Alleviivaa (CTRL+U)</translation>
     </message>
     <message>
       <location filename="../src/librssguard-gmail/src/3rd-party/richtexteditor/mrichtextedit.ui" line="248"/>
       <source>Underline</source>
-      <translation type="unfinished">Underline</translation>
+      <translation>Alleviivaa</translation>
     </message>
     <message>
       <location filename="../src/librssguard-gmail/src/3rd-party/richtexteditor/mrichtextedit.ui" line="264"/>
       <source>Strike Out</source>
-      <translation type="unfinished">Strike Out</translation>
+      <translation>Yliviivaa</translation>
     </message>
     <message>
       <location filename="../src/librssguard-gmail/src/3rd-party/richtexteditor/mrichtextedit.ui" line="284"/>
       <source>Bullet list (CTRL+-)</source>
-      <translation type="unfinished">Bullet list (CTRL+-)</translation>
+      <translation>Luettelo (CTRL+-)</translation>
     </message>
     <message>
       <location filename="../src/librssguard-gmail/src/3rd-party/richtexteditor/mrichtextedit.ui" line="287"/>
       <source>Bullet list</source>
-      <translation type="unfinished">Bullet list</translation>
+      <translation>Luettelo</translation>
     </message>
     <message>
       <location filename="../src/librssguard-gmail/src/3rd-party/richtexteditor/mrichtextedit.ui" line="306"/>
       <source>Ordered list (CTRL+=)</source>
-      <translation type="unfinished">Ordered list (CTRL+=)</translation>
+      <translation>Järjestetty luettelo (CTRL+=)</translation>
     </message>
     <message>
       <location filename="../src/librssguard-gmail/src/3rd-party/richtexteditor/mrichtextedit.ui" line="309"/>
       <source>Ordered list</source>
-      <translation type="unfinished">Ordered list</translation>
+      <translation>Järjestetty luettelo</translation>
     </message>
     <message>
       <location filename="../src/librssguard-gmail/src/3rd-party/richtexteditor/mrichtextedit.ui" line="328"/>
       <source>Decrease indentation (CTRL+,)</source>
-      <translation type="unfinished">Decrease indentation (CTRL+,)</translation>
+      <translation>Pienennä sisennystä (CTRL+,)</translation>
     </message>
     <message>
       <location filename="../src/librssguard-gmail/src/3rd-party/richtexteditor/mrichtextedit.ui" line="331"/>
       <source>Decrease indentation</source>
-      <translation type="unfinished">Decrease indentation</translation>
+      <translation>Pienennä sisennystä</translation>
     </message>
     <message>
       <location filename="../src/librssguard-gmail/src/3rd-party/richtexteditor/mrichtextedit.ui" line="347"/>
       <source>Increase indentation (CTRL+.)</source>
-      <translation type="unfinished">Increase indentation (CTRL+.)</translation>
+      <translation>Lisää sisennystä (CTRL+.)</translation>
     </message>
     <message>
       <location filename="../src/librssguard-gmail/src/3rd-party/richtexteditor/mrichtextedit.ui" line="350"/>
       <source>Increase indentation</source>
-      <translation type="unfinished">Increase indentation</translation>
+      <translation>Lisää sisennystä</translation>
     </message>
     <message>
       <location filename="../src/librssguard-gmail/src/3rd-party/richtexteditor/mrichtextedit.ui" line="385"/>
       <source>Text foreground color</source>
-      <translation type="unfinished">Text foreground color</translation>
+      <translation>Tekstin edustaväri</translation>
     </message>
     <message>
       <location filename="../src/librssguard-gmail/src/3rd-party/richtexteditor/mrichtextedit.ui" line="413"/>
       <source>Text background color</source>
-      <translation type="unfinished">Text background color</translation>
+      <translation>Tekstin taustaväri</translation>
     </message>
     <message>
       <location filename="../src/librssguard-gmail/src/3rd-party/richtexteditor/mrichtextedit.ui" line="429"/>
       <source>Font size</source>
-      <translation type="unfinished">Font size</translation>
+      <translation>Kirjasinkoko</translation>
     </message>
     <message>
       <location filename="../src/librssguard-gmail/src/3rd-party/richtexteditor/mrichtextedit.cpp" line="67"/>
       <source>Standard</source>
-      <translation type="unfinished">Standard</translation>
+      <translation>Vakio</translation>
     </message>
     <message>
       <location filename="../src/librssguard-gmail/src/3rd-party/richtexteditor/mrichtextedit.cpp" line="67"/>
       <source>Heading 1</source>
-      <translation type="unfinished">Heading 1</translation>
+      <translation>Otsikko 1</translation>
     </message>
     <message>
       <location filename="../src/librssguard-gmail/src/3rd-party/richtexteditor/mrichtextedit.cpp" line="67"/>
       <source>Heading 2</source>
-      <translation type="unfinished">Heading 2</translation>
+      <translation>Otsikko 2</translation>
     </message>
     <message>
       <location filename="../src/librssguard-gmail/src/3rd-party/richtexteditor/mrichtextedit.cpp" line="67"/>
       <source>Heading 3</source>
-      <translation type="unfinished">Heading 3</translation>
+      <translation>Otsikko 3</translation>
     </message>
     <message>
       <location filename="../src/librssguard-gmail/src/3rd-party/richtexteditor/mrichtextedit.cpp" line="67"/>
       <source>Heading 4</source>
-      <translation type="unfinished">Heading 4</translation>
+      <translation>Otsikko 4</translation>
     </message>
     <message>
       <location filename="../src/librssguard-gmail/src/3rd-party/richtexteditor/mrichtextedit.cpp" line="67"/>
       <source>Monospace</source>
-      <translation type="unfinished">Monospace</translation>
+      <translation>Tasavälinen</translation>
     </message>
     <message>
       <location filename="../src/librssguard-gmail/src/3rd-party/richtexteditor/mrichtextedit.cpp" line="118"/>
       <source>Remove character formatting</source>
-      <translation type="unfinished">Remove character formatting</translation>
+      <translation>Poista merkkien muotoilu</translation>
     </message>
     <message>
       <location filename="../src/librssguard-gmail/src/3rd-party/richtexteditor/mrichtextedit.cpp" line="123"/>
       <source>Remove all formatting</source>
-      <translation type="unfinished">Remove all formatting</translation>
+      <translation>Poista kaikki muotoilu</translation>
     </message>
     <message>
       <location filename="../src/librssguard-gmail/src/3rd-party/richtexteditor/mrichtextedit.cpp" line="127"/>
       <source>Edit document source</source>
-      <translation type="unfinished">Edit document source</translation>
+      <translation>Muokkaa asiakirjan lähdettä</translation>
     </message>
     <message>
       <location filename="../src/librssguard-gmail/src/3rd-party/richtexteditor/mrichtextedit.cpp" line="132"/>
       <source>Clear all content</source>
-      <translation type="unfinished">Clear all content</translation>
+      <translation>Poista kaikki sisältö</translation>
     </message>
     <message>
       <location filename="../src/librssguard-gmail/src/3rd-party/richtexteditor/mrichtextedit.cpp" line="196"/>
       <source>Document source</source>
-      <translation type="unfinished">Document source</translation>
+      <translation>Asiakirjan lähde</translation>
     </message>
     <message>
       <location filename="../src/librssguard-gmail/src/3rd-party/richtexteditor/mrichtextedit.cpp" line="319"/>
       <source>Create a link</source>
-      <translation type="unfinished">Create a link</translation>
+      <translation>Luo linkki</translation>
     </message>
     <message>
       <location filename="../src/librssguard-gmail/src/3rd-party/richtexteditor/mrichtextedit.cpp" line="319"/>
       <source>Link URL:</source>
-      <translation type="unfinished">Link URL:</translation>
+      <translation>Linkin URL:</translation>
     </message>
     <message>
       <location filename="../src/librssguard-gmail/src/3rd-party/richtexteditor/mrichtextedit.cpp" line="639"/>
       <source>Select an image</source>
-      <translation type="unfinished">Select an image</translation>
+      <translation>Valitse kuva</translation>
     </message>
     <message>
       <location filename="../src/librssguard-gmail/src/3rd-party/richtexteditor/mrichtextedit.cpp" line="641"/>
       <source>JPEG (*.jpg);; GIF (*.gif);; PNG (*.png);; BMP (*.bmp);; All (*)</source>
-      <translation type="unfinished">JPEG (*.jpg);; GIF (*.gif);; PNG (*.png);; BMP (*.bmp);; All (*)</translation>
+      <translation>JPEG (*.jpg);; GIF (*.gif);; PNG (*.png);; BMP (*.bmp);; kaikki (*)</translation>
     </message>
   </context>
   <context>
@@ -5176,7 +5176,7 @@ Login tokens expiration: %2</translation>
     <message>
       <location filename="../src/librssguard/database/mariadbdriver.cpp" line="86"/>
       <source>Access denied. Invalid username or password used.</source>
-      <translation type="unfinished">Access denied. Invalid username or password used.</translation>
+      <translation>Käyttö estetty. Virheellinen käyttäjätunnus tai salasana.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/database/mariadbdriver.cpp" line="89"/>
@@ -5190,7 +5190,7 @@ Login tokens expiration: %2</translation>
       <location filename="../src/librssguard/gui/mediaplayer/mediaplayer.ui" line="14"/>
       <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_mediaplayer.h" line="143"/>
       <source>Form</source>
-      <translation type="unfinished">Form</translation>
+      <translation>Lomake</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/mediaplayer/mediaplayer.ui" line="65"/>
@@ -5208,7 +5208,7 @@ Login tokens expiration: %2</translation>
       <location filename="../src/librssguard/gui/mediaplayer/mediaplayer.ui" line="79"/>
       <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_mediaplayer.h" line="151"/>
       <source>Speed</source>
-      <translation type="unfinished">Speed</translation>
+      <translation>Nopeus</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/mediaplayer/mediaplayer.ui" line="107"/>
@@ -5220,19 +5220,19 @@ Login tokens expiration: %2</translation>
       <location filename="../src/librssguard/gui/mediaplayer/mediaplayer.ui" line="117"/>
       <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_mediaplayer.h" line="157"/>
       <source>Duration</source>
-      <translation type="unfinished">Duration</translation>
+      <translation>Kesto</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/mediaplayer/mediaplayer.ui" line="124"/>
       <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_mediaplayer.h" line="160"/>
       <source>Mute/unmute</source>
-      <translation type="unfinished">Mute/unmute</translation>
+      <translation>Mykistä / poista mykistys</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/mediaplayer/mediaplayer.ui" line="137"/>
       <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_mediaplayer.h" line="163"/>
       <source>Volume</source>
-      <translation type="unfinished">Volume</translation>
+      <translation>Äänenvoimakkuus</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/mediaplayer/mediaplayer.ui" line="156"/>
@@ -5244,12 +5244,12 @@ Login tokens expiration: %2</translation>
       <location filename="../src/librssguard/gui/mediaplayer/mediaplayer.ui" line="163"/>
       <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_mediaplayer.h" line="169"/>
       <source>Switch fullscreen mode</source>
-      <translation type="unfinished">Switch fullscreen mode</translation>
+      <translation>Siirry kokonäyttötilaan</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/mediaplayer/mediaplayer.cpp" line="43"/>
       <source>Starting</source>
-      <translation type="unfinished">Starting</translation>
+      <translation>Käynnistetään</translation>
     </message>
   </context>
   <context>
@@ -5292,12 +5292,12 @@ Login tokens expiration: %2</translation>
     <message>
       <location filename="../src/librssguard/gui/messagebrowser.cpp" line="46"/>
       <source>Click this link to download it or open it with external browser.</source>
-      <translation type="unfinished">Click this link to download it or open it with external browser.</translation>
+      <translation>Lataa se napsauttamalla tätä linkkiä tai avaa se ulkoisessa selaimessa.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/messagebrowser.cpp" line="95"/>
       <source>image</source>
-      <translation type="unfinished">image</translation>
+      <translation>kuva</translation>
     </message>
   </context>
   <context>
@@ -5305,7 +5305,7 @@ Login tokens expiration: %2</translation>
     <message>
       <location filename="../src/librssguard/gui/reusable/messagecountspinbox.cpp" line="12"/>
       <source>= unlimited</source>
-      <translation type="unfinished">= unlimited</translation>
+      <translation>= rajoittamaton</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/reusable/messagecountspinbox.cpp" line="15"/>
@@ -5333,7 +5333,7 @@ Login tokens expiration: %2</translation>
     <message>
       <location filename="../src/librssguard/gui/messagepreviewer.cpp" line="38"/>
       <source>Switch article importance</source>
-      <translation type="unfinished">Switch article importance</translation>
+      <translation>Muuta tärkeysasetusta</translation>
     </message>
   </context>
   <context>
@@ -5349,17 +5349,17 @@ Login tokens expiration: %2</translation>
     <message>
       <location filename="../src/librssguard/core/messagesforfiltersmodel.cpp" line="12"/>
       <source>Read</source>
-      <translation type="unfinished">Read</translation>
+      <translation>Lue</translation>
     </message>
     <message>
       <location filename="../src/librssguard/core/messagesforfiltersmodel.cpp" line="12"/>
       <source>Important</source>
-      <translation type="unfinished">Important</translation>
+      <translation>Tärkeä</translation>
     </message>
     <message>
       <location filename="../src/librssguard/core/messagesforfiltersmodel.cpp" line="12"/>
       <source>In recycle bin</source>
-      <translation type="unfinished">In recycle bin</translation>
+      <translation>Roskakorissa</translation>
     </message>
     <message>
       <location filename="../src/librssguard/core/messagesforfiltersmodel.cpp" line="12"/>
@@ -5379,22 +5379,22 @@ Login tokens expiration: %2</translation>
     <message>
       <location filename="../src/librssguard/core/messagesforfiltersmodel.cpp" line="13"/>
       <source>Score</source>
-      <translation type="unfinished">Score</translation>
+      <translation>Tulos</translation>
     </message>
     <message>
       <location filename="../src/librssguard/core/messagesforfiltersmodel.cpp" line="13"/>
       <source>Date</source>
-      <translation type="unfinished">Date</translation>
+      <translation>Päivämäärä</translation>
     </message>
     <message>
       <location filename="../src/librssguard/core/messagesforfiltersmodel.cpp" line="36"/>
       <source>true</source>
-      <translation type="unfinished">true</translation>
+      <translation>tosi</translation>
     </message>
     <message>
       <location filename="../src/librssguard/core/messagesforfiltersmodel.cpp" line="37"/>
       <source>false</source>
-      <translation type="unfinished">false</translation>
+      <translation>epätosi</translation>
     </message>
   </context>
   <context>
@@ -5402,12 +5402,12 @@ Login tokens expiration: %2</translation>
     <message>
       <location filename="../src/librssguard/core/messagesmodel.cpp" line="294"/>
       <source>Id</source>
-      <translation type="unfinished">Id</translation>
+      <translation>Tunnus</translation>
     </message>
     <message>
       <location filename="../src/librssguard/core/messagesmodel.cpp" line="295"/>
       <source>Read</source>
-      <translation type="unfinished">Read</translation>
+      <translation>Lue</translation>
     </message>
     <message>
       <location filename="../src/librssguard/core/messagesmodel.cpp" line="297"/>
@@ -5417,7 +5417,7 @@ Login tokens expiration: %2</translation>
     <message>
       <location filename="../src/librssguard/core/messagesmodel.cpp" line="296"/>
       <source>Important</source>
-      <translation type="unfinished">Important</translation>
+      <translation>Tärkeä</translation>
     </message>
     <message>
       <location filename="../src/librssguard/core/messagesmodel.cpp" line="310"/>
@@ -5452,12 +5452,12 @@ Login tokens expiration: %2</translation>
     <message>
       <location filename="../src/librssguard/core/messagesmodel.cpp" line="320"/>
       <source>List of attachments.</source>
-      <translation type="unfinished">List of attachments.</translation>
+      <translation>Liiteluettelo.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/core/messagesmodel.cpp" line="307"/>
       <source>Account ID</source>
-      <translation type="unfinished">Account ID</translation>
+      <translation>Tilin tunnus</translation>
     </message>
     <message>
       <location filename="../src/librssguard/core/messagesmodel.cpp" line="308"/>
@@ -5482,12 +5482,12 @@ Login tokens expiration: %2</translation>
     <message>
       <location filename="../src/librssguard/core/messagesmodel.cpp" line="306"/>
       <source>Score</source>
-      <translation type="unfinished">Score</translation>
+      <translation>Tulos</translation>
     </message>
     <message>
       <location filename="../src/librssguard/core/messagesmodel.cpp" line="303"/>
       <source>Date</source>
-      <translation type="unfinished">Date</translation>
+      <translation>Päivämäärä</translation>
     </message>
     <message>
       <location filename="../src/librssguard/core/messagesmodel.cpp" line="206"/>
@@ -5622,7 +5622,7 @@ Login tokens expiration: %2</translation>
     <message>
       <location filename="../src/librssguard/core/messagesmodel.cpp" line="324"/>
       <source>Labels assigned to the article.</source>
-      <translation type="unfinished">Labels assigned to the article.</translation>
+      <translation>Artikkeliin liitetyt tunnisteet.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/core/messagesmodel.cpp" line="324"/>
@@ -5656,7 +5656,7 @@ Login tokens expiration: %2</translation>
     <message>
       <location filename="../src/librssguard/core/messagesmodel.cpp" line="384"/>
       <source>yesterday</source>
-      <translation type="unfinished">yesterday</translation>
+      <translation>eilen</translation>
     </message>
     <message numerus="yes">
       <location filename="../src/librssguard/core/messagesmodel.cpp" line="388"/>
@@ -5677,7 +5677,7 @@ Login tokens expiration: %2</translation>
     <message>
       <location filename="../src/librssguard/core/messagesmodel.cpp" line="395"/>
       <source>just now</source>
-      <translation type="unfinished">just now</translation>
+      <translation>nyt</translation>
     </message>
     <message>
       <location filename="../src/librssguard/core/messagesmodel.cpp" line="205"/>
@@ -5700,12 +5700,12 @@ Login tokens expiration: %2</translation>
     <message>
       <location filename="../src/librssguard/gui/toolbars/messagestoolbar.cpp" line="221"/>
       <source>Everywhere</source>
-      <translation type="unfinished">Everywhere</translation>
+      <translation>Kaikkialla</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/toolbars/messagestoolbar.cpp" line="222"/>
       <source>Titles only</source>
-      <translation type="unfinished">Titles only</translation>
+      <translation>Vain otsikot</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/toolbars/messagestoolbar.cpp" line="226"/>
@@ -5715,103 +5715,103 @@ Login tokens expiration: %2</translation>
     <message>
       <location filename="../src/librssguard/gui/toolbars/messagestoolbar.cpp" line="233"/>
       <source>Article search box</source>
-      <translation type="unfinished">Article search box</translation>
+      <translation>Artikkelien hakukenttä</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/toolbars/messagestoolbar.cpp" line="251"/>
       <source>Menu for highlighting articles</source>
-      <translation type="unfinished">Menu for highlighting articles</translation>
+      <translation>Artikkelien korostusvalikko</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/toolbars/messagestoolbar.cpp" line="260"/>
       <source>Highlight unread articles</source>
-      <translation type="unfinished">Highlight unread articles</translation>
+      <translation>Korosta lukemattomat artikkelit</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/toolbars/messagestoolbar.cpp" line="265"/>
       <source>Highlight important articles</source>
-      <translation type="unfinished">Highlight important articles</translation>
+      <translation>Korosta tärkeät artikkelit</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/toolbars/messagestoolbar.cpp" line="269"/>
       <source>Menu for filtering articles</source>
-      <translation type="unfinished">Menu for filtering articles</translation>
+      <translation>Artikkelien suodatusvalikko</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/toolbars/messagestoolbar.cpp" line="273"/>
       <source>No extra filtering</source>
-      <translation type="unfinished">No extra filtering</translation>
+      <translation>Ei lisäsuodatusta</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/toolbars/messagestoolbar.cpp" line="278"/>
       <source>Show unread articles</source>
-      <translation type="unfinished">Show unread articles</translation>
+      <translation>Näytä lukemattomat artikkelit</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/toolbars/messagestoolbar.cpp" line="283"/>
       <source>Show read articles</source>
-      <translation type="unfinished">Show read articles</translation>
+      <translation>Näytä luetut artikkelit</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/toolbars/messagestoolbar.cpp" line="288"/>
       <source>Show important articles</source>
-      <translation type="unfinished">Show important articles</translation>
+      <translation>Näytä tärkeät artikkelit</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/toolbars/messagestoolbar.cpp" line="293"/>
       <source>Show today&apos;s articles</source>
-      <translation type="unfinished">Show today&apos;s articles</translation>
+      <translation>Näytä tämänpäiväiset artikkelit</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/toolbars/messagestoolbar.cpp" line="298"/>
       <source>Show yesterday&apos;s articles</source>
-      <translation type="unfinished">Show yesterday&apos;s articles</translation>
+      <translation>Näytä eiliset artikkelit</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/toolbars/messagestoolbar.cpp" line="303"/>
       <source>Show articles in last 24 hours</source>
-      <translation type="unfinished">Show articles in last 24 hours</translation>
+      <translation>Näytä artikkelit viimeisten 24 tunnin ajalta</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/toolbars/messagestoolbar.cpp" line="308"/>
       <source>Show articles in last 48 hours</source>
-      <translation type="unfinished">Show articles in last 48 hours</translation>
+      <translation>Näytä artikkelit viimeisten 48 tunnin ajalta</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/toolbars/messagestoolbar.cpp" line="313"/>
       <source>Show this week&apos;s articles</source>
-      <translation type="unfinished">Show this week&apos;s articles</translation>
+      <translation>Näytä tämänviikkoiset artikkelit</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/toolbars/messagestoolbar.cpp" line="318"/>
       <source>Show last week&apos;s articles</source>
-      <translation type="unfinished">Show last week&apos;s articles</translation>
+      <translation>Näytä viimeviikkoiset artikkelit</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/toolbars/messagestoolbar.cpp" line="323"/>
       <source>Show articles with attachments</source>
-      <translation type="unfinished">Show articles with attachments</translation>
+      <translation>Näytä liitteelliset artikkelit</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/toolbars/messagestoolbar.cpp" line="328"/>
       <source>Show articles with some score</source>
-      <translation type="unfinished">Show articles with some score</translation>
+      <translation>Näytä artikkelit, joilla on jokin pisteytys</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/toolbars/messagestoolbar.cpp" line="333"/>
       <location filename="../src/librssguard/gui/toolbars/messagestoolbar.cpp" line="340"/>
       <source>Display all articles</source>
-      <translation type="unfinished">Display all articles</translation>
+      <translation>Näytä kaikki artikkelit</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/toolbars/messagestoolbar.cpp" line="350"/>
       <source>Article highlighter</source>
-      <translation type="unfinished">Article highlighter</translation>
+      <translation>Artikkelin korostus</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/toolbars/messagestoolbar.cpp" line="356"/>
       <source>Article list filter</source>
-      <translation type="unfinished">Article list filter</translation>
+      <translation>Artikkeliluettelon suodatin</translation>
     </message>
   </context>
   <context>
@@ -5834,12 +5834,12 @@ Login tokens expiration: %2</translation>
     <message>
       <location filename="../src/librssguard/gui/messagesview.cpp" line="653"/>
       <source>No URL</source>
-      <translation type="unfinished">No URL</translation>
+      <translation>Ei URL-osoitetta</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/messagesview.cpp" line="654"/>
       <source>Article cannot be played in media player as it has no URL</source>
-      <translation type="unfinished">Article cannot be played in media player as it has no URL</translation>
+      <translation>Artikkelia ei voi toistaa mediasoittimessa, koska sillä ei ole URL-osoitetta</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/messagesview.cpp" line="907"/>
@@ -5854,12 +5854,12 @@ Login tokens expiration: %2</translation>
     <message>
       <location filename="../src/librssguard/gui/messagesview.cpp" line="401"/>
       <source>No external tools activated</source>
-      <translation type="unfinished">No external tools activated</translation>
+      <translation>Ulkoisia työkaluja ei ole aktivoitu</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/messagesview.cpp" line="364"/>
       <source>Context menu for articles</source>
-      <translation type="unfinished">Context menu for articles</translation>
+      <translation>Artikkelien pikavalikko</translation>
     </message>
   </context>
   <context>
@@ -5875,7 +5875,7 @@ Login tokens expiration: %2</translation>
     <message>
       <location filename="../src/librssguard/services/abstract/gui/multifeededitcheckbox.cpp" line="6"/>
       <source>Apply this to all edited feeds.</source>
-      <translation type="unfinished">Apply this to all edited feeds.</translation>
+      <translation>Käytä tätä kaikkiin muokattuihin syötteisiin.</translation>
     </message>
   </context>
   <context>
@@ -5884,7 +5884,7 @@ Login tokens expiration: %2</translation>
       <location filename="../src/librssguard/network-web/networkfactory.cpp" line="100"/>
       <source>protocol error</source>
       <extracomment>Network status.</extracomment>
-      <translation type="unfinished">protocol error</translation>
+      <translation>protokollavirhe</translation>
     </message>
     <message>
       <location filename="../src/librssguard/network-web/networkfactory.cpp" line="108"/>
@@ -5950,7 +5950,7 @@ Login tokens expiration: %2</translation>
       <location filename="../src/librssguard/network-web/networkfactory.cpp" line="175"/>
       <source>unknown error (%1)</source>
       <extracomment>Network status.</extracomment>
-      <translation type="unfinished">unknown error (%1)</translation>
+      <translation>tuntematon virhe (%1)</translation>
     </message>
     <message>
       <location filename="../src/librssguard/network-web/networkfactory.cpp" line="159"/>
@@ -5966,7 +5966,7 @@ Login tokens expiration: %2</translation>
     <message>
       <location filename="../src/librssguard/network-web/networkfactory.cpp" line="112"/>
       <source>connection timed out or was cancelled</source>
-      <translation type="unfinished">connection timed out or was cancelled</translation>
+      <translation>yhteys aikakatkaistiin tai peruttiin</translation>
     </message>
     <message>
       <location filename="../src/librssguard/network-web/networkfactory.cpp" line="164"/>
@@ -5991,7 +5991,7 @@ Login tokens expiration: %2</translation>
       <location filename="../src/librssguard/gui/reusable/networkproxydetails.ui" line="14"/>
       <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_networkproxydetails.h" line="162"/>
       <source>Form</source>
-      <translation type="unfinished">Form</translation>
+      <translation>Lomake</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/reusable/networkproxydetails.ui" line="23"/>
@@ -6003,7 +6003,7 @@ Login tokens expiration: %2</translation>
       <location filename="../src/librssguard/gui/reusable/networkproxydetails.ui" line="41"/>
       <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_networkproxydetails.h" line="164"/>
       <source>Hostname or IP of your proxy server</source>
-      <translation type="unfinished">Hostname or IP of your proxy server</translation>
+      <translation>Välityspalvelimen isäntänimi tai IP-osoite</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/reusable/networkproxydetails.ui" line="48"/>
@@ -6021,7 +6021,7 @@ Login tokens expiration: %2</translation>
       <location filename="../src/librssguard/gui/reusable/networkproxydetails.ui" line="92"/>
       <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_networkproxydetails.h" line="167"/>
       <source>Your username for proxy server authentication</source>
-      <translation type="unfinished">Your username for proxy server authentication</translation>
+      <translation>Käyttäjätunnuksesi välityspalvelintodennukselle</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/reusable/networkproxydetails.ui" line="99"/>
@@ -6033,12 +6033,12 @@ Login tokens expiration: %2</translation>
       <location filename="../src/librssguard/gui/reusable/networkproxydetails.ui" line="118"/>
       <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_networkproxydetails.h" line="169"/>
       <source>Your password for proxy server authentication</source>
-      <translation type="unfinished">Your password for proxy server authentication</translation>
+      <translation>Salasanasi välityspalvelintodennukselle</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/reusable/networkproxydetails.cpp" line="14"/>
       <source>Note that these settings are applied only on newly established connections.</source>
-      <translation type="unfinished">Note that these settings are applied only on newly established connections.</translation>
+      <translation>Huomaathan, että näitä asetuksia käytetään vain uusille yhteyksille.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/reusable/networkproxydetails.ui" line="146"/>
@@ -6068,7 +6068,7 @@ Login tokens expiration: %2</translation>
     <message>
       <location filename="../src/librssguard-nextcloud/src/gui/nextcloudaccountdetails.ui" line="81"/>
       <source>Some feeds require authentication, including GMail feeds. BASIC, NTLM-2 and DIGEST-MD5 authentication schemes are supported.</source>
-      <translation type="unfinished">Some feeds require authentication, including GMail feeds. BASIC, NTLM-2 and DIGEST-MD5 authentication schemes are supported.</translation>
+      <translation>Jotkin syötteet, esimerkiksi GMail, edellyttävät todennusta. BASIC-, NTLM-2- ja DIGEST-MD5-todentamisjärjestelmiä tuetaan.</translation>
     </message>
     <message>
       <location filename="../src/librssguard-nextcloud/src/gui/nextcloudaccountdetails.ui" line="84"/>
@@ -6103,17 +6103,17 @@ Login tokens expiration: %2</translation>
     <message>
       <location filename="../src/librssguard-nextcloud/src/gui/nextcloudaccountdetails.cpp" line="19"/>
       <source>Password for your Nextcloud account</source>
-      <translation type="unfinished">Password for your Nextcloud account</translation>
+      <translation>Nextcloud-tilisi salasana</translation>
     </message>
     <message>
       <location filename="../src/librssguard-nextcloud/src/gui/nextcloudaccountdetails.cpp" line="21"/>
       <source>Username for your Nextcloud account</source>
-      <translation type="unfinished">Username for your Nextcloud account</translation>
+      <translation>Nextcloud-tilisi käyttäjätunnus</translation>
     </message>
     <message>
       <location filename="../src/librssguard-nextcloud/src/gui/nextcloudaccountdetails.cpp" line="22"/>
       <source>URL of your Nextcloud server, without any API path</source>
-      <translation type="unfinished">URL of your Nextcloud server, without any API path</translation>
+      <translation>Nextcloud-palvelimesi URL-osoite ilman API-polkua</translation>
     </message>
     <message>
       <location filename="../src/librssguard-nextcloud/src/gui/nextcloudaccountdetails.cpp" line="24"/>
@@ -6128,7 +6128,7 @@ Login tokens expiration: %2</translation>
     <message>
       <location filename="../src/librssguard-nextcloud/src/gui/nextcloudaccountdetails.cpp" line="32"/>
       <source>= unlimited</source>
-      <translation type="unfinished">= unlimited</translation>
+      <translation>= rajoittamaton</translation>
     </message>
     <message>
       <location filename="../src/librssguard-nextcloud/src/gui/nextcloudaccountdetails.cpp" line="35"/>
@@ -6143,29 +6143,29 @@ Login tokens expiration: %2</translation>
     <message>
       <location filename="../src/librssguard-nextcloud/src/gui/nextcloudaccountdetails.cpp" line="75"/>
       <source>Network error, have you entered correct Nextcloud endpoint and password?</source>
-      <translation type="unfinished">Network error, have you entered correct Nextcloud endpoint and password?</translation>
+      <translation>Verkkovirhe. Oletko antanut oikean Nextcloud-päätepisteen?</translation>
     </message>
     <message>
       <location filename="../src/librssguard-nextcloud/src/gui/nextcloudaccountdetails.cpp" line="80"/>
       <location filename="../src/librssguard-nextcloud/src/gui/nextcloudaccountdetails.cpp" line="86"/>
       <source>Installed version: %1, required at least: %2.</source>
-      <translation type="unfinished">Installed version: %1, required at least: %2.</translation>
+      <translation>Asennettu versio: %1. Vaaditaan vähintään: %2.</translation>
     </message>
     <message>
       <location filename="../src/librssguard-nextcloud/src/gui/nextcloudaccountdetails.cpp" line="82"/>
       <source>Selected Nextcloud News server is running unsupported version.</source>
-      <translation type="unfinished">Selected Nextcloud News server is running unsupported version.</translation>
+      <translation>Valittu Nextcloud-uutispalvelin käyttää versiota, jota ei tueta.</translation>
     </message>
     <message>
       <location filename="../src/librssguard-nextcloud/src/gui/nextcloudaccountdetails.cpp" line="88"/>
       <source>Nextcloud News server is okay.</source>
-      <translation type="unfinished">Nextcloud News server is okay.</translation>
+      <translation>Nextcloud-uutispalvelin on kunnossa.</translation>
     </message>
     <message>
       <location filename="../src/librssguard-nextcloud/src/gui/nextcloudaccountdetails.cpp" line="93"/>
       <location filename="../src/librssguard-nextcloud/src/gui/nextcloudaccountdetails.cpp" line="94"/>
       <source>Unspecified error, did you enter correct URL?</source>
-      <translation type="unfinished">Unspecified error, did you enter correct URL?</translation>
+      <translation>Määrittelemätön virhe. Annoitko oikean URL:n?</translation>
     </message>
     <message>
       <location filename="../src/librssguard-nextcloud/src/gui/nextcloudaccountdetails.cpp" line="102"/>
@@ -6185,7 +6185,7 @@ Login tokens expiration: %2</translation>
     <message>
       <location filename="../src/librssguard-nextcloud/src/gui/nextcloudaccountdetails.cpp" line="116"/>
       <source>Password is okay.</source>
-      <translation type="unfinished">Password is okay.</translation>
+      <translation>Salasana on oikein.</translation>
     </message>
     <message>
       <location filename="../src/librssguard-nextcloud/src/gui/nextcloudaccountdetails.cpp" line="124"/>
@@ -6195,7 +6195,7 @@ Login tokens expiration: %2</translation>
     <message>
       <location filename="../src/librssguard-nextcloud/src/gui/nextcloudaccountdetails.cpp" line="127"/>
       <source>URL is okay.</source>
-      <translation type="unfinished">URL is okay.</translation>
+      <translation>URL on oikein.</translation>
     </message>
   </context>
   <context>
@@ -6203,7 +6203,7 @@ Login tokens expiration: %2</translation>
     <message>
       <location filename="../src/librssguard-nextcloud/src/nextcloudserviceroot.cpp" line="134"/>
       <source>cannot get list of feeds, network error &apos;%1&apos;</source>
-      <translation type="unfinished">cannot get list of feeds, network error &apos;%1&apos;</translation>
+      <translation>ei voi noutaa syöteluetteloa - verkkovirhe &apos;%1&apos;</translation>
     </message>
   </context>
   <context>
@@ -6217,13 +6217,13 @@ Login tokens expiration: %2</translation>
     <message>
       <location filename="../src/librssguard/miscellaneous/nodejs.cpp" line="161"/>
       <source>Node.js</source>
-      <translation type="unfinished">Node.js</translation>
+      <translation>Node.js</translation>
     </message>
     <message>
       <location filename="../src/librssguard/miscellaneous/nodejs.cpp" line="162"/>
       <source>Some packages are missing and will be installed or updated:
 %1</source>
-      <translation type="unfinished">Some packages are missing and will be installed or updated:
+      <translation>Joitakin paketteja puuttuu, ja ne asennetaan tai päivitetään:
 %1</translation>
     </message>
   </context>
@@ -6242,7 +6242,7 @@ Login tokens expiration: %2</translation>
     <message>
       <location filename="../src/librssguard/network-web/oauth2service.cpp" line="221"/>
       <source>Refreshing login tokens for &apos;%1&apos;...</source>
-      <translation type="unfinished">Refreshing login tokens for &apos;%1&apos;...</translation>
+      <translation>Päivitetään kirjautumistunnuksia kohteelle &apos;%1&apos;...</translation>
     </message>
     <message>
       <location filename="../src/librssguard/network-web/oauth2service.cpp" line="89"/>
@@ -6252,7 +6252,7 @@ Login tokens expiration: %2</translation>
     <message>
       <location filename="../src/librssguard/network-web/oauth2service.cpp" line="50"/>
       <source>You can close this window now. Go back to %1.</source>
-      <translation type="unfinished">You can close this window now. Go back to %1.</translation>
+      <translation>Voit sulkea tämän ikkunan nyt. Palaa kohteeseen %1.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/network-web/oauth2service.cpp" line="345"/>
@@ -6262,7 +6262,7 @@ Login tokens expiration: %2</translation>
     <message>
       <location filename="../src/librssguard/network-web/oauth2service.cpp" line="93"/>
       <source>Login</source>
-      <translation type="unfinished">Login</translation>
+      <translation>Kirjaudu</translation>
     </message>
   </context>
   <context>
@@ -6302,7 +6302,7 @@ At least API level %1 is required.</translation>
     <message>
       <location filename="../src/librssguard-nextcloud/src/nextcloudserviceentrypoint.cpp" line="41"/>
       <source>The News app is an RSS/Atom feed aggregator. It is part of Nextcloud suite. This plugin implements %1 API.</source>
-      <translation type="unfinished">The News app is an RSS/Atom feed aggregator. It is part of Nextcloud suite. This plugin implements %1 API.</translation>
+      <translation>News-sovellus on RSS-/Atom-syötteiden lukuohjelma. Se on osa Nextcloud-sovelluspakettia. Tämä lisäosa ottaa %1-API:n käyttöön.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/miscellaneous/systemfactory.cpp" line="266"/>
@@ -6312,7 +6312,7 @@ At least API level %1 is required.</translation>
     <message>
       <location filename="../src/librssguard/miscellaneous/systemfactory.cpp" line="267"/>
       <source>Click the bubble for more information.</source>
-      <translation type="unfinished">Click the bubble for more information.</translation>
+      <translation>Näytä lisätietoja napsauttamalla kuplaa.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/miscellaneous/externaltool.cpp" line="43"/>
@@ -6341,12 +6341,12 @@ Feedly is a secure space where you can privately organize and research the topic
     <message>
       <location filename="../src/librssguard/miscellaneous/notification.cpp" line="135"/>
       <source>Fetching articles right now</source>
-      <translation type="unfinished">Fetching articles right now</translation>
+      <translation>Artikkelit noudetaan nyt</translation>
     </message>
     <message>
       <location filename="../src/librssguard/miscellaneous/notification.cpp" line="138"/>
       <source>Login data refreshed</source>
-      <translation type="unfinished">Login data refreshed</translation>
+      <translation>Kirjautumistiedot päivitetty</translation>
     </message>
     <message>
       <location filename="../src/librssguard/miscellaneous/notification.cpp" line="144"/>
@@ -6356,17 +6356,17 @@ Feedly is a secure space where you can privately organize and research the topic
     <message>
       <location filename="../src/librssguard/miscellaneous/notification.cpp" line="147"/>
       <source>Miscellaneous events</source>
-      <translation type="unfinished">Miscellaneous events</translation>
+      <translation>Sekalaiset tapahtumat</translation>
     </message>
     <message>
       <location filename="../src/librssguard/miscellaneous/notification.cpp" line="150"/>
       <source>Node.js - package(s) updated</source>
-      <translation type="unfinished">Node.js - package(s) updated</translation>
+      <translation>Node.js - paketit päivitetty</translation>
     </message>
     <message>
       <location filename="../src/librssguard/miscellaneous/notification.cpp" line="153"/>
       <source>Node.js - package(s) failed to update</source>
-      <translation type="unfinished">Node.js - package(s) failed to update</translation>
+      <translation>Node.js - pakettien päivitys epäonnistui</translation>
     </message>
     <message>
       <location filename="../src/librssguard/miscellaneous/notification.cpp" line="156"/>
@@ -6376,7 +6376,7 @@ Feedly is a secure space where you can privately organize and research the topic
     <message>
       <location filename="../src/librssguard/miscellaneous/notification.cpp" line="132"/>
       <source>New (unread) articles fetched</source>
-      <translation type="unfinished">New (unread) articles fetched</translation>
+      <translation>Uudet (lukemattomat) artikkelit noudettiin</translation>
     </message>
     <message>
       <location filename="../src/librssguard-standard/src/parsers/feedparser.cpp" line="34"/>
@@ -6386,7 +6386,7 @@ Feedly is a secure space where you can privately organize and research the topic
     <message>
       <location filename="../src/librssguard-standard/src/parsers/feedparser.cpp" line="44"/>
       <source>JSON problem: %1</source>
-      <translation type="unfinished">JSON problem: %1</translation>
+      <translation>JSON-ongelma: %1</translation>
     </message>
     <message>
       <location filename="../src/librssguard-greader/src/greaderentrypoint.cpp" line="40"/>
@@ -6410,12 +6410,12 @@ List of supported readers:</translation>
     <message>
       <location filename="../src/librssguard/miscellaneous/skinfactory.cpp" line="632"/>
       <source>interesting stuff</source>
-      <translation type="unfinished">interesting stuff</translation>
+      <translation>mielenkiintoista kamaa</translation>
     </message>
     <message>
       <location filename="../src/librssguard/miscellaneous/skinfactory.cpp" line="635"/>
       <source>interesting stuff (highlighted)</source>
-      <translation type="unfinished">interesting stuff (highlighted)</translation>
+      <translation>mielenkiintoista kamaa (korostettuna)</translation>
     </message>
     <message>
       <location filename="../src/librssguard/miscellaneous/skinfactory.cpp" line="638"/>
@@ -6440,17 +6440,17 @@ List of supported readers:</translation>
     <message>
       <location filename="../src/librssguard/miscellaneous/skinfactory.cpp" line="650"/>
       <source>OK-ish color</source>
-      <translation type="unfinished">OK-ish color</translation>
+      <translation>Hyväksyttävä väri</translation>
     </message>
     <message>
       <location filename="../src/librssguard-ttrss/src/ttrssnetworkfactory.cpp" line="1011"/>
       <source>User-published articles</source>
-      <translation type="unfinished">User-published articles</translation>
+      <translation>Käyttäjien julkaisemat artikkelit</translation>
     </message>
     <message>
       <location filename="../src/librssguard-ttrss/src/ttrssnetworkfactory.cpp" line="1174"/>
       <source>Published articles</source>
-      <translation type="unfinished">Published articles</translation>
+      <translation>Julkaistut artikkelit</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/notifications/toastnotificationsmanager.cpp" line="18"/>
@@ -6480,12 +6480,12 @@ List of supported readers:</translation>
     <message>
       <location filename="../src/librssguard/miscellaneous/textfactory.cpp" line="400"/>
       <source>closing &quot; is missing</source>
-      <translation type="unfinished">closing &quot; is missing</translation>
+      <translation>lopusta puuttuu &quot;</translation>
     </message>
     <message>
       <location filename="../src/librssguard/miscellaneous/textfactory.cpp" line="404"/>
       <source>closing &apos; is missing</source>
-      <translation type="unfinished">closing &apos; is missing</translation>
+      <translation>lopusta puuttuu &apos;</translation>
     </message>
     <message>
       <location filename="../src/librssguard-standard/src/parsers/atomparser.cpp" line="313"/>
@@ -6498,28 +6498,28 @@ List of supported readers:</translation>
     <message>
       <location filename="../src/librssguard-standard/src/parsers/atomparser.cpp" line="319"/>
       <source>not an ATOM feed</source>
-      <translation type="unfinished">not an ATOM feed</translation>
+      <translation>ei ATOM-syöte</translation>
     </message>
     <message>
       <location filename="../src/librssguard-standard/src/parsers/jsonparser.cpp" line="121"/>
       <source>JSON error &apos;%1&apos;</source>
-      <translation type="unfinished">JSON error &apos;%1&apos;</translation>
+      <translation>JSON-virhe &apos;%1&apos;</translation>
     </message>
     <message>
       <location filename="../src/librssguard-standard/src/parsers/jsonparser.cpp" line="125"/>
       <location filename="../src/librssguard-standard/src/parsers/jsonparser.cpp" line="157"/>
       <source>not a JSON feed</source>
-      <translation type="unfinished">not a JSON feed</translation>
+      <translation>ei JSON-syöte</translation>
     </message>
     <message>
       <location filename="../src/librssguard-standard/src/parsers/rdfparser.cpp" line="201"/>
       <source>not an RDF feed</source>
-      <translation type="unfinished">not an RDF feed</translation>
+      <translation>ei RDF-syöte</translation>
     </message>
     <message>
       <location filename="../src/librssguard-standard/src/parsers/rssparser.cpp" line="201"/>
       <source>not a RSS feed</source>
-      <translation type="unfinished">not a RSS feed</translation>
+      <translation>ei RSS-syöte</translation>
     </message>
     <message>
       <location filename="../src/librssguard-standard/src/parsers/sitemapparser.cpp" line="156"/>
@@ -6534,7 +6534,7 @@ List of supported readers:</translation>
     <message>
       <location filename="../src/librssguard-standard/src/parsers/sitemapparser.cpp" line="208"/>
       <source>not a Sitemap</source>
-      <translation type="unfinished">not a Sitemap</translation>
+      <translation>ei sivukartta</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/webviewers/webviewer.cpp" line="37"/>
@@ -6637,42 +6637,42 @@ List of supported readers:</translation>
     <message>
       <location filename="../src/librssguard/gui/mediaplayer/qtmultimedia/qtmultimediabackend.cpp" line="113"/>
       <source>Cannot load media (missing codecs)</source>
-      <translation type="unfinished">Cannot load media (missing codecs)</translation>
+      <translation>Mediaa ei voi ladata (koodekit puuttuvat)</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/mediaplayer/qtmultimedia/qtmultimediabackend.cpp" line="116"/>
       <source>Unrecognized format</source>
-      <translation type="unfinished">Unrecognized format</translation>
+      <translation>Tunnistamaton muoto</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/mediaplayer/qtmultimedia/qtmultimediabackend.cpp" line="119"/>
       <source>Network problem</source>
-      <translation type="unfinished">Network problem</translation>
+      <translation>Verkko-ongelma</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/mediaplayer/qtmultimedia/qtmultimediabackend.cpp" line="122"/>
       <source>Access denied</source>
-      <translation type="unfinished">Access denied</translation>
+      <translation>Pääsy estetty</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/mediaplayer/qtmultimedia/qtmultimediabackend.cpp" line="126"/>
       <source>Service is missing</source>
-      <translation type="unfinished">Service is missing</translation>
+      <translation>Palvelu puuttuu</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/mediaplayer/qtmultimedia/qtmultimediabackend.cpp" line="129"/>
       <source>This is playlist</source>
-      <translation type="unfinished">This is playlist</translation>
+      <translation>Tämä on soittolista</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/mediaplayer/qtmultimedia/qtmultimediabackend.cpp" line="133"/>
       <source>No errors</source>
-      <translation type="unfinished">No errors</translation>
+      <translation>Ei virheitä</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/mediaplayer/qtmultimedia/qtmultimediabackend.cpp" line="136"/>
       <source>Unknown error</source>
-      <translation type="unfinished">Unknown error</translation>
+      <translation>Tuntematon virhe</translation>
     </message>
   </context>
   <context>
@@ -6680,22 +6680,22 @@ List of supported readers:</translation>
     <message>
       <location filename="../src/librssguard/network-web/readability.cpp" line="39"/>
       <source>Packages for reader mode are installed</source>
-      <translation type="unfinished">Packages for reader mode are installed</translation>
+      <translation>Lukijatilan paketit asennettu</translation>
     </message>
     <message>
       <location filename="../src/librssguard/network-web/readability.cpp" line="40"/>
       <source>Reload your webpage and then you can use reader mode!</source>
-      <translation type="unfinished">Reload your webpage and then you can use reader mode!</translation>
+      <translation>Käytä lukijatilaa päivittämällä sivu.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/network-web/readability.cpp" line="45"/>
       <source>Packages for reader mode are installed. You can now use reader mode!</source>
-      <translation type="unfinished">Packages for reader mode are installed. You can now use reader mode!</translation>
+      <translation>Lukijatilan paketit on asennettu. Nyt voit käyttää lukijatilaa.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/network-web/readability.cpp" line="62"/>
       <source>Packages for reader mode are NOT installed</source>
-      <translation type="unfinished">Packages for reader mode are NOT installed</translation>
+      <translation>Lukijatilan paketteja EI asennettu</translation>
     </message>
     <message>
       <location filename="../src/librssguard/network-web/readability.cpp" line="63"/>
@@ -6705,12 +6705,12 @@ List of supported readers:</translation>
     <message>
       <location filename="../src/librssguard/network-web/readability.cpp" line="68"/>
       <source>Packages for reader mode are NOT installed. There is error: %1</source>
-      <translation type="unfinished">Packages for reader mode are NOT installed. There is error: %1</translation>
+      <translation>Lukijatilan paketteja EI asennettu. Virhe: %1</translation>
     </message>
     <message>
       <location filename="../src/librssguard/network-web/readability.cpp" line="95"/>
       <source>Node.js libraries not installed</source>
-      <translation type="unfinished">Node.js libraries not installed</translation>
+      <translation>Node.js-kirjastoja ei asennettu</translation>
     </message>
     <message>
       <location filename="../src/librssguard/network-web/readability.cpp" line="96"/>
@@ -6744,12 +6744,12 @@ List of supported readers:</translation>
     <message>
       <location filename="../src/librssguard/services/abstract/recyclebin.cpp" line="105"/>
       <source>Do you really want to empty your recycle bin?</source>
-      <translation type="unfinished">Do you really want to empty your recycle bin?</translation>
+      <translation>Haluatko varmasti tyhjentää roskakorin?</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/abstract/recyclebin.cpp" line="17"/>
       <source>Recycle bin contains all deleted articles from all feeds.</source>
-      <translation type="unfinished">Recycle bin contains all deleted articles from all feeds.</translation>
+      <translation>Roskakorissa on kaikista syötteistä poistetut artikkelit</translation>
     </message>
     <message numerus="yes">
       <location filename="../src/librssguard/services/abstract/recyclebin.cpp" line="21"/>
@@ -6775,12 +6775,12 @@ List of supported readers:</translation>
     <message>
       <location filename="../src/librssguard-reddit/src/gui/redditaccountdetails.ui" line="39"/>
       <source>Client ID</source>
-      <translation type="unfinished">Client ID</translation>
+      <translation>Asiakkaan tunnus</translation>
     </message>
     <message>
       <location filename="../src/librssguard-reddit/src/gui/redditaccountdetails.ui" line="52"/>
       <source>Client secret</source>
-      <translation type="unfinished">Client secret</translation>
+      <translation>Asiakkaan salasana</translation>
     </message>
     <message>
       <location filename="../src/librssguard-reddit/src/gui/redditaccountdetails.ui" line="65"/>
@@ -6790,7 +6790,7 @@ List of supported readers:</translation>
     <message>
       <location filename="../src/librssguard-reddit/src/gui/redditaccountdetails.ui" line="80"/>
       <source>Get my credentials</source>
-      <translation type="unfinished">Get my credentials</translation>
+      <translation>Hae käyttäjätunnukset</translation>
     </message>
     <message>
       <location filename="../src/librssguard-reddit/src/gui/redditaccountdetails.ui" line="110"/>
@@ -6826,17 +6826,17 @@ List of supported readers:</translation>
     <message>
       <location filename="../src/librssguard-reddit/src/gui/redditaccountdetails.cpp" line="55"/>
       <source>No username entered.</source>
-      <translation type="unfinished">No username entered.</translation>
+      <translation>Käyttäjätunnusta ei annettu.</translation>
     </message>
     <message>
       <location filename="../src/librssguard-reddit/src/gui/redditaccountdetails.cpp" line="58"/>
       <source>Some username entered.</source>
-      <translation type="unfinished">Some username entered.</translation>
+      <translation>Jokin käyttäjätunnus annettiin.</translation>
     </message>
     <message>
       <location filename="../src/librssguard-reddit/src/gui/redditaccountdetails.cpp" line="64"/>
       <source>You did not grant access.</source>
-      <translation type="unfinished">You did not grant access.</translation>
+      <translation>Et antanut käyttöoikeutta.</translation>
     </message>
     <message>
       <location filename="../src/librssguard-reddit/src/gui/redditaccountdetails.cpp" line="65"/>
@@ -6852,12 +6852,12 @@ List of supported readers:</translation>
     <message>
       <location filename="../src/librssguard-reddit/src/gui/redditaccountdetails.cpp" line="78"/>
       <source>Tested successfully. You may be prompted to login once more.</source>
-      <translation type="unfinished">Tested successfully. You may be prompted to login once more.</translation>
+      <translation>Testi onnistui. Sinua voidaan pyytää kirjautumaan uudelleen.</translation>
     </message>
     <message>
       <location filename="../src/librssguard-reddit/src/gui/redditaccountdetails.cpp" line="79"/>
       <source>Your access was approved.</source>
-      <translation type="unfinished">Your access was approved.</translation>
+      <translation>Käyttöoikeus on hyväksytty.</translation>
     </message>
     <message>
       <location filename="../src/librssguard-reddit/src/gui/redditaccountdetails.cpp" line="111"/>
@@ -6880,7 +6880,7 @@ List of supported readers:</translation>
     <message>
       <location filename="../src/librssguard-reddit/src/redditcategory.cpp" line="17"/>
       <source>Subscriptions</source>
-      <translation type="unfinished">Subscriptions</translation>
+      <translation>Tilaukset</translation>
     </message>
   </context>
   <context>
@@ -6895,7 +6895,7 @@ List of supported readers:</translation>
     <message>
       <location filename="../src/librssguard-reddit/src/redditnetworkfactory.cpp" line="302"/>
       <source>Reddit: authentication error</source>
-      <translation type="unfinished">Reddit: authentication error</translation>
+      <translation>Reddit: todennusvirhe</translation>
     </message>
     <message>
       <location filename="../src/librssguard-reddit/src/redditnetworkfactory.cpp" line="303"/>
@@ -6906,12 +6906,12 @@ List of supported readers:</translation>
       <location filename="../src/librssguard-reddit/src/redditnetworkfactory.cpp" line="306"/>
       <location filename="../src/librssguard-reddit/src/redditnetworkfactory.cpp" line="319"/>
       <source>Login</source>
-      <translation type="unfinished">Login</translation>
+      <translation>Kirjaudu</translation>
     </message>
     <message>
       <location filename="../src/librssguard-reddit/src/redditnetworkfactory.cpp" line="315"/>
       <source>Reddit: authorization denied</source>
-      <translation type="unfinished">Reddit: authorization denied</translation>
+      <translation>Reddit: valtuutus evätty</translation>
     </message>
     <message>
       <location filename="../src/librssguard-reddit/src/redditnetworkfactory.cpp" line="316"/>
@@ -6922,21 +6922,21 @@ List of supported readers:</translation>
   <context>
     <name>RedditServiceRoot</name>
     <message>
-      <location filename="../src/librssguard-reddit/src/redditserviceroot.cpp" line="132"/>
+      <location filename="../src/librssguard-reddit/src/redditserviceroot.cpp" line="130"/>
       <source>Authentication status: %1
 Login tokens expiration: %2</source>
-      <translation type="unfinished">Authentication status: %1
-Login tokens expiration: %2</translation>
+      <translation>Todennustila: %1
+Kirjautumistunnusten vanhentuminen: %2</translation>
     </message>
     <message>
-      <location filename="../src/librssguard-reddit/src/redditserviceroot.cpp" line="134"/>
+      <location filename="../src/librssguard-reddit/src/redditserviceroot.cpp" line="132"/>
       <source>logged-in</source>
-      <translation type="unfinished">logged-in</translation>
+      <translation>kirjautunut</translation>
     </message>
     <message>
-      <location filename="../src/librssguard-reddit/src/redditserviceroot.cpp" line="134"/>
+      <location filename="../src/librssguard-reddit/src/redditserviceroot.cpp" line="132"/>
       <source>NOT logged-in</source>
-      <translation type="unfinished">NOT logged-in</translation>
+      <translation>EI kirjautunut</translation>
     </message>
   </context>
   <context>
@@ -6971,7 +6971,7 @@ Login tokens expiration: %2</translation>
     <message>
       <location filename="../src/librssguard/exceptions/scriptexception.cpp" line="33"/>
       <source>script execution took too long</source>
-      <translation type="unfinished">script execution took too long</translation>
+      <translation>komentosarjan suorittaminen kesti liian kauan</translation>
     </message>
     <message>
       <location filename="../src/librssguard/exceptions/scriptexception.cpp" line="37"/>
@@ -6984,7 +6984,7 @@ Login tokens expiration: %2</translation>
     <message>
       <location filename="../src/librssguard/services/abstract/search.cpp" line="111"/>
       <source>Regular expression: %1</source>
-      <translation type="unfinished">Regular expression: %1</translation>
+      <translation>Säännöllinen lauseke: %1</translation>
     </message>
   </context>
   <context>
@@ -6992,22 +6992,22 @@ Login tokens expiration: %2</translation>
     <message>
       <location filename="../src/librssguard/gui/reusable/searchlineedit.cpp" line="43"/>
       <source>Case-sensitive</source>
-      <translation type="unfinished">Case-sensitive</translation>
+      <translation>Merkkikoosta riippuva</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/reusable/searchlineedit.cpp" line="129"/>
       <source>Fixed text</source>
-      <translation type="unfinished">Fixed text</translation>
+      <translation>Korjattu teksti</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/reusable/searchlineedit.cpp" line="132"/>
       <source>Wildcard</source>
-      <translation type="unfinished">Wildcard</translation>
+      <translation>Jokerimerkki</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/reusable/searchlineedit.cpp" line="135"/>
       <source>Regular expression</source>
-      <translation type="unfinished">Regular expression</translation>
+      <translation>Säännöllinen lauseke</translation>
     </message>
   </context>
   <context>
@@ -7016,7 +7016,7 @@ Login tokens expiration: %2</translation>
       <location filename="../src/librssguard/gui/reusable/searchtextwidget.ui" line="32"/>
       <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_searchtextwidget.h" line="69"/>
       <source>Search text</source>
-      <translation type="unfinished">Search text</translation>
+      <translation>Etsi tekstiä</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/reusable/searchtextwidget.ui" line="39"/>
@@ -7054,12 +7054,12 @@ Login tokens expiration: %2</translation>
     <message>
       <location filename="../src/librssguard/services/abstract/serviceroot.cpp" line="138"/>
       <source>Unsupported</source>
-      <translation type="unfinished">Unsupported</translation>
+      <translation>Ei tueta</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/abstract/serviceroot.cpp" line="138"/>
       <source>This is not suppported (yet).</source>
-      <translation type="unfinished">This is not suppported (yet).</translation>
+      <translation>Tätä ei tueta (vielä).</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/abstract/serviceroot.cpp" line="193"/>
@@ -7069,14 +7069,14 @@ Login tokens expiration: %2</translation>
     <message>
       <location filename="../src/librssguard/services/abstract/serviceroot.cpp" line="202"/>
       <source>Synchronize article cache</source>
-      <translation type="unfinished">Synchronize article cache</translation>
+      <translation>Synkronoi artikkelien välimuisti</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/abstract/serviceroot.cpp" line="393"/>
       <source>Number of feeds: %1
 Number of categories: %2</source>
-      <translation type="unfinished">Number of feeds: %1
-Number of categories: %2</translation>
+      <translation>Syötteiden määrä: %1
+Luokkien määrä: %2</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/abstract/serviceroot.cpp" line="715"/>
@@ -7124,9 +7124,9 @@ File filter for external e-mail selection dialog.</extracomment>
       <translation>Opera 12 tai vanhempi</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/settings/settingsbrowsermail.cpp" line="320"/>
+      <location filename="../src/librssguard/gui/settings/settingsbrowsermail.cpp" line="322"/>
       <source>Enter (optional) parameters:</source>
-      <translation type="unfinished">Enter (optional) parameters:</translation>
+      <translation>Anna (valinnaiset) parametrit:</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsbrowsermail.cpp" line="40"/>
@@ -7143,25 +7143,25 @@ File filter for external e-mail selection dialog.</extracomment>
       <location filename="../src/librssguard/gui/settings/settingsbrowsermail.ui" line="27"/>
       <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsbrowsermail.h" line="383"/>
       <source>Do not accept any incoming cookies</source>
-      <translation type="unfinished">Do not accept any incoming cookies</translation>
+      <translation>Älä hyväksy mitään saapuvia evästeitä</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsbrowsermail.ui" line="34"/>
       <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsbrowsermail.h" line="384"/>
       <source>Enable HTTP/2</source>
-      <translation type="unfinished">Enable HTTP/2</translation>
+      <translation>Ota HTTP/2 Käyttöön</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsbrowsermail.ui" line="41"/>
       <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsbrowsermail.h" line="385"/>
       <source>Enable API server</source>
-      <translation type="unfinished">Enable API server</translation>
+      <translation>Ota API-palvelin käyttöön</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsbrowsermail.ui" line="51"/>
       <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsbrowsermail.h" line="386"/>
       <source>Custom User-Agent</source>
-      <translation type="unfinished">Custom User-Agent</translation>
+      <translation>Mukautettu käyttäjäagentti</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsbrowsermail.ui" line="65"/>
@@ -7173,7 +7173,7 @@ File filter for external e-mail selection dialog.</extracomment>
       <location filename="../src/librssguard/gui/settings/settingsbrowsermail.ui" line="75"/>
       <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsbrowsermail.h" line="389"/>
       <source>Disable cache</source>
-      <translation type="unfinished">Disable cache</translation>
+      <translation>Poista välimuisti käytöstä</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsbrowsermail.ui" line="83"/>
@@ -7244,7 +7244,7 @@ File filter for external e-mail selection dialog.</extracomment>
       <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsbrowsermail.h" line="400"/>
       <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsbrowsermail.h" line="413"/>
       <source>Use sample arguments for</source>
-      <translation type="unfinished">Use sample arguments for</translation>
+      <translation>Käytä esimerkkiargumentteja kohteelle</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsbrowsermail.ui" line="189"/>
@@ -7331,7 +7331,7 @@ File filter for external e-mail selection dialog.</extracomment>
       <translation>Valitse erillinen työkalu</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/settings/settingsbrowsermail.cpp" line="319"/>
+      <location filename="../src/librssguard/gui/settings/settingsbrowsermail.cpp" line="321"/>
       <source>Enter parameters</source>
       <translation>Kirjoita parametrit</translation>
     </message>
@@ -7356,7 +7356,7 @@ File filter for external e-mail selection dialog.</extracomment>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsdatabase.cpp" line="119"/>
       <source>Hostname is empty.</source>
-      <translation type="unfinished">Hostname is empty.</translation>
+      <translation>Isäntänimi on tyhjä.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsdatabase.cpp" line="122"/>
@@ -7396,27 +7396,27 @@ File filter for external e-mail selection dialog.</extracomment>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsdatabase.cpp" line="170"/>
       <source>No connection test triggered so far.</source>
-      <translation type="unfinished">No connection test triggered so far.</translation>
+      <translation>Yhteystestiä ei ole vielä käynnistetty.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsdatabase.cpp" line="171"/>
       <source>You did not executed any connection test yet.</source>
-      <translation type="unfinished">You did not executed any connection test yet.</translation>
+      <translation>Et ole vielä käynnistänyt yhtään yhteystestiä.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsdatabase.cpp" line="194"/>
       <source>Hostname of your MySQL server</source>
-      <translation type="unfinished">Hostname of your MySQL server</translation>
+      <translation>MySQL-palvelimen isäntänimi</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsdatabase.cpp" line="195"/>
       <source>Username to login with</source>
-      <translation type="unfinished">Username to login with</translation>
+      <translation>Käyttäjätunnus kirjautumiseen</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsdatabase.cpp" line="196"/>
       <source>Password for your username</source>
-      <translation type="unfinished">Password for your username</translation>
+      <translation>Käyttäjätunnuksen salasana</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsdatabase.cpp" line="197"/>
@@ -7464,7 +7464,7 @@ Authors of this application are NOT responsible for lost data.</translation>
       <location filename="../src/librssguard/gui/settings/settingsdatabase.ui" line="81"/>
       <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsdatabase.h" line="216"/>
       <source>Hostname</source>
-      <translation type="unfinished">Hostname</translation>
+      <translation>Isäntänimi</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsdatabase.ui" line="96"/>
@@ -7505,7 +7505,7 @@ Authors of this application are NOT responsible for lost data.</translation>
   <context>
     <name>SettingsDownloads</name>
     <message>
-      <location filename="../src/librssguard/gui/settings/settingsdownloads.cpp" line="34"/>
+      <location filename="../src/librssguard/gui/settings/settingsdownloads.cpp" line="33"/>
       <source>Select downloads target directory</source>
       <translation>Valitse latausten kohdekansio</translation>
     </message>
@@ -7571,17 +7571,17 @@ Authors of this application are NOT responsible for lost data.</translation>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.cpp" line="49"/>
       <source>immediately</source>
-      <translation type="unfinished">immediately</translation>
+      <translation>heti</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.cpp" line="50"/>
       <source>only manually</source>
-      <translation type="unfinished">only manually</translation>
+      <translation>vain manuaalisesti</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.cpp" line="52"/>
       <source>with delay</source>
-      <translation type="unfinished">with delay</translation>
+      <translation>viiveellä</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.cpp" line="69"/>
@@ -7615,19 +7615,19 @@ Authors of this application are NOT responsible for lost data.</translation>
       <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="21"/>
       <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsfeedsmessages.h" line="609"/>
       <source>Feed fetching</source>
-      <translation type="unfinished">Feed fetching</translation>
+      <translation>Syötteiden nouto</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="27"/>
       <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsfeedsmessages.h" line="600"/>
       <source>Fetch all articles on startup with initial delay of</source>
-      <translation type="unfinished">Fetch all articles on startup with initial delay of</translation>
+      <translation>Nouda kaikki artikkelit käynnistettäessä käynnistysviiveellä</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="53"/>
       <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsfeedsmessages.h" line="601"/>
       <source>Auto-fetch articles for all feeds every</source>
-      <translation type="unfinished">Auto-fetch articles for all feeds every</translation>
+      <translation>Nouda syötteiden artikkelit automaattisesti joka</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="79"/>
@@ -7663,7 +7663,7 @@ Authors of this application are NOT responsible for lost data.</translation>
       <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="132"/>
       <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsfeedsmessages.h" line="619"/>
       <source>Feeds list</source>
-      <translation type="unfinished">Feeds list</translation>
+      <translation>Syöteluettelo</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="138"/>
@@ -7671,7 +7671,7 @@ Authors of this application are NOT responsible for lost data.</translation>
       <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsfeedsmessages.h" line="610"/>
       <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsfeedsmessages.h" line="636"/>
       <source>Row height</source>
-      <translation type="unfinished">Row height</translation>
+      <translation>Rivin korkeus</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="175"/>
@@ -7703,31 +7703,31 @@ Authors of this application are NOT responsible for lost data.</translation>
       <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="222"/>
       <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsfeedsmessages.h" line="614"/>
       <source>Article count format</source>
-      <translation type="unfinished">Article count format</translation>
+      <translation>Artikkelimäärän muoto</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="251"/>
       <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsfeedsmessages.h" line="615"/>
       <source>Hide article counts if there are no unread articles</source>
-      <translation type="unfinished">Hide article counts if there are no unread articles</translation>
+      <translation>Piilota artikkelimäärä, jos lukemattomia artikkeleja ei ole</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="258"/>
       <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsfeedsmessages.h" line="616"/>
       <source>Allow only basic keyboard shortcuts for feed/article list</source>
-      <translation type="unfinished">Allow only basic keyboard shortcuts for feed/article list</translation>
+      <translation>Salli syöte-/artikkeliluettelossa vain tavallisimmat pikakomennot</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="265"/>
       <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsfeedsmessages.h" line="617"/>
       <source>Display tooltips for feeds and articles</source>
-      <translation type="unfinished">Display tooltips for feeds and articles</translation>
+      <translation>Näytä syötteille ja artikkeleille vain työkaluvihjeitä</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="272"/>
       <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsfeedsmessages.h" line="618"/>
       <source>Update feed list during feed fetching</source>
-      <translation type="unfinished">Update feed list during feed fetching</translation>
+      <translation>Päivitä syöteluettelo noutamisen aikana</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="280"/>
@@ -7757,19 +7757,19 @@ Authors of this application are NOT responsible for lost data.</translation>
       <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="329"/>
       <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsfeedsmessages.h" line="626"/>
       <source>Limit height of all pictures</source>
-      <translation type="unfinished">Limit height of all pictures</translation>
+      <translation>Rajoita kaikkien kuvien korkeutta</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="420"/>
       <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsfeedsmessages.h" line="631"/>
       <source>Use legacy article formatting</source>
-      <translation type="unfinished">Use legacy article formatting</translation>
+      <translation>Käytä aiempaa artikkelimuotoa</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="434"/>
       <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsfeedsmessages.h" line="633"/>
       <source>Unread article icon type</source>
-      <translation type="unfinished">Unread article icon type</translation>
+      <translation>Lukemattomien artikkelien kuvaketyyppi</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="555"/>
@@ -7781,7 +7781,7 @@ Authors of this application are NOT responsible for lost data.</translation>
       <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="679"/>
       <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsfeedsmessages.h" line="645"/>
       <source>Upon article selection, mark as read</source>
-      <translation type="unfinished">Upon article selection, mark as read</translation>
+      <translation>Merkitse artikkeli luetuksi, kun se valitaan</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="686"/>
@@ -7799,7 +7799,7 @@ Authors of this application are NOT responsible for lost data.</translation>
       <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="369"/>
       <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsfeedsmessages.h" line="627"/>
       <source>Article browser font</source>
-      <translation type="unfinished">Article browser font</translation>
+      <translation>Artikkeliselaimen kirjasintyyppi</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="300"/>
@@ -7811,19 +7811,19 @@ Authors of this application are NOT responsible for lost data.</translation>
       <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="320"/>
       <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsfeedsmessages.h" line="625"/>
       <source>Display attachments directly in article</source>
-      <translation type="unfinished">Display attachments directly in article</translation>
+      <translation>Näytä liitteet suoraan artikkelissa</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="413"/>
       <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsfeedsmessages.h" line="630"/>
       <source>Keep article viewer always visible</source>
-      <translation type="unfinished">Keep article viewer always visible</translation>
+      <translation>Pidä artikkelien lukuikkuna aina näkyvissä</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="428"/>
       <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsfeedsmessages.h" line="647"/>
       <source>Articles list</source>
-      <translation type="unfinished">Articles list</translation>
+      <translation>Artikkeliluettelo</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="447"/>
@@ -7859,7 +7859,7 @@ Authors of this application are NOT responsible for lost data.</translation>
       <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="624"/>
       <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsfeedsmessages.h" line="642"/>
       <source>Article list font</source>
-      <translation type="unfinished">Article list font</translation>
+      <translation>Artikkeliluettelon kirjasintyyppi</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="607"/>
@@ -8215,12 +8215,12 @@ Description: %3</translation>
     <message>
       <location filename="../src/librssguard/gui/settings/settingslocalization.cpp" line="201"/>
       <source>The translation &apos;%1&apos; is incomplete and anyone able to help with translating %2 is greatly welcomed.</source>
-      <translation type="unfinished">The translation &apos;%1&apos; is incomplete and anyone able to help with translating %2 is greatly welcomed.</translation>
+      <translation>Käännös &apos;%1&apos; on kesken. Olisi mukavaa, jos joku voisi auttaa kääntämään sovelluksen %2.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingslocalization.cpp" line="203"/>
       <source>Do you want to help with the translation now?</source>
-      <translation type="unfinished">Do you want to help with the translation now?</translation>
+      <translation>Haluatko auttaa kääntämisessä nyt?</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingslocalization.h" line="39"/>
@@ -8234,7 +8234,7 @@ Description: %3</translation>
       <location filename="../src/librssguard/gui/settings/settingsmediaplayer.ui" line="17"/>
       <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsmediaplayer.h" line="114"/>
       <source>Backend</source>
-      <translation type="unfinished">Backend</translation>
+      <translation>Taustajärjestelmä</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsmediaplayer.ui" line="36"/>
@@ -8246,7 +8246,7 @@ Description: %3</translation>
       <location filename="../src/librssguard/gui/settings/settingsmediaplayer.ui" line="48"/>
       <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsmediaplayer.h" line="116"/>
       <source>Browse</source>
-      <translation type="unfinished">Browse</translation>
+      <translation>Selaa</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsmediaplayer.cpp" line="33"/>
@@ -8276,7 +8276,7 @@ Description: %3</translation>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsmediaplayer.h" line="31"/>
       <source>Media player</source>
-      <translation type="unfinished">Media player</translation>
+      <translation>Mediasoitin</translation>
     </message>
   </context>
   <context>
@@ -8316,17 +8316,17 @@ Also, relaunch &quot;Settings&quot; dialog after you install Node.js.</translati
     <message>
       <location filename="../src/librssguard/gui/settings/settingsnodejs.cpp" line="140"/>
       <source>You cannot choose file, you have to choose FOLDER.</source>
-      <translation type="unfinished">You cannot choose file, you have to choose FOLDER.</translation>
+      <translation>Et voi valita tiedostoa, vaan sinun on valittava KANSIO.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsnodejs.cpp" line="144"/>
       <source>Package folder is OK.</source>
-      <translation type="unfinished">Package folder is OK.</translation>
+      <translation>Paketin kansio on kunnossa.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsnodejs.cpp" line="148"/>
       <source>Package folder will be created!</source>
-      <translation type="unfinished">Package folder will be created!</translation>
+      <translation>Paketin kansio luodaan.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsnodejs.cpp" line="29"/>
@@ -8337,7 +8337,7 @@ Also, relaunch &quot;Settings&quot; dialog after you install Node.js.</translati
       <location filename="../src/librssguard/gui/settings/settingsnodejs.ui" line="14"/>
       <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsnodejs.h" line="148"/>
       <source>Form</source>
-      <translation type="unfinished">Form</translation>
+      <translation>Lomake</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsnodejs.ui" line="23"/>
@@ -8365,7 +8365,7 @@ Also, relaunch &quot;Settings&quot; dialog after you install Node.js.</translati
       <location filename="../src/librssguard/gui/settings/settingsnodejs.ui" line="83"/>
       <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsnodejs.h" line="153"/>
       <source>Package folder </source>
-      <translation type="unfinished">Package folder </translation>
+      <translation>Paketin kansio </translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsnodejs.ui" line="116"/>
@@ -8386,7 +8386,7 @@ Also, relaunch &quot;Settings&quot; dialog after you install Node.js.</translati
       <location filename="../src/librssguard/gui/settings/settingsnotifications.ui" line="40"/>
       <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsnotifications.h" line="194"/>
       <source>Balloon notifications type</source>
-      <translation type="unfinished">Balloon notifications type</translation>
+      <translation>Kuplatyyppinen ilmoitus</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsnotifications.ui" line="46"/>
@@ -8398,37 +8398,37 @@ Also, relaunch &quot;Settings&quot; dialog after you install Node.js.</translati
       <location filename="../src/librssguard/gui/settings/settingsnotifications.ui" line="53"/>
       <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsnotifications.h" line="196"/>
       <source>Custom notifications</source>
-      <translation type="unfinished">Custom notifications</translation>
+      <translation>Mukautetut ilmoitukset</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsnotifications.ui" line="69"/>
       <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsnotifications.h" line="197"/>
       <source>Position</source>
-      <translation type="unfinished">Position</translation>
+      <translation>Paikka</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsnotifications.ui" line="82"/>
       <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsnotifications.h" line="198"/>
       <source>Width</source>
-      <translation type="unfinished">Width</translation>
+      <translation>Leveys</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsnotifications.ui" line="105"/>
       <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsnotifications.h" line="199"/>
       <source>Margins</source>
-      <translation type="unfinished">Margins</translation>
+      <translation>Reunukset</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsnotifications.ui" line="125"/>
       <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsnotifications.h" line="200"/>
       <source>Screen</source>
-      <translation type="unfinished">Screen</translation>
+      <translation>Näyttö</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsnotifications.ui" line="159"/>
       <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsnotifications.h" line="202"/>
       <source>Opacity</source>
-      <translation type="unfinished">Opacity</translation>
+      <translation>Läpinäkyvyys</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsnotifications.h" line="31"/>
@@ -8443,17 +8443,17 @@ Also, relaunch &quot;Settings&quot; dialog after you install Node.js.</translati
     <message>
       <location filename="../src/librssguard/gui/settings/settingsnotifications.cpp" line="73"/>
       <source>%1 (not supported on Wayland)</source>
-      <translation type="unfinished">%1 (not supported on Wayland)</translation>
+      <translation>%1 (ei tueta Waylandissa)</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsnotifications.cpp" line="117"/>
       <source>How do I look?</source>
-      <translation type="unfinished">How do I look?</translation>
+      <translation>Miltä näyttää?</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsnotifications.cpp" line="118"/>
       <source>Just testing new notifications settings. That&apos;s all.</source>
-      <translation type="unfinished">Just testing new notifications settings. That&apos;s all.</translation>
+      <translation>Testailen vain uusia ilmoitusasetuksia. Ei muuta.</translation>
     </message>
   </context>
   <context>
@@ -8461,7 +8461,7 @@ Also, relaunch &quot;Settings&quot; dialog after you install Node.js.</translati
     <message>
       <location filename="../src/librssguard/gui/settings/settingsshortcuts.h" line="27"/>
       <source>Keyboard shortcuts</source>
-      <translation>Pikanäppäimet</translation>
+      <translation>Pikakomennot</translation>
     </message>
   </context>
   <context>
@@ -8469,17 +8469,17 @@ Also, relaunch &quot;Settings&quot; dialog after you install Node.js.</translati
     <message>
       <location filename="../src/librssguard/dynamic-shortcuts/shortcutcatcher.cpp" line="23"/>
       <source>Reset to original shortcut.</source>
-      <translation type="unfinished">Reset to original shortcut.</translation>
+      <translation>Palauta alkuperäinen pikakomento.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/dynamic-shortcuts/shortcutcatcher.cpp" line="29"/>
       <source>Clear current shortcut.</source>
-      <translation type="unfinished">Clear current shortcut.</translation>
+      <translation>Poista nykyinen pikakomento.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/dynamic-shortcuts/shortcutcatcher.cpp" line="35"/>
       <source>Click and hit new shortcut.</source>
-      <translation type="unfinished">Click and hit new shortcut.</translation>
+      <translation>Napsauta ja anna uusi pikakomento.</translation>
     </message>
   </context>
   <context>
@@ -8498,13 +8498,13 @@ Also, relaunch &quot;Settings&quot; dialog after you install Node.js.</translati
       <location filename="../src/librssguard/gui/notifications/singlenotificationeditor.ui" line="23"/>
       <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_singlenotificationeditor.h" line="129"/>
       <source>Balloon notification</source>
-      <translation type="unfinished">Balloon notification</translation>
+      <translation>Ilmoituskupla</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/notifications/singlenotificationeditor.ui" line="30"/>
       <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_singlenotificationeditor.h" line="130"/>
       <source>Play sound</source>
-      <translation type="unfinished">Play sound</translation>
+      <translation>Toista ääni</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/notifications/singlenotificationeditor.ui" line="58"/>
@@ -8534,7 +8534,7 @@ Also, relaunch &quot;Settings&quot; dialog after you install Node.js.</translati
       <location filename="../src/librssguard/gui/notifications/singlenotificationeditor.ui" line="103"/>
       <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_singlenotificationeditor.h" line="135"/>
       <source>Volume</source>
-      <translation type="unfinished">Volume</translation>
+      <translation>Äänenvoimakkuus</translation>
     </message>
   </context>
   <context>
@@ -8568,7 +8568,7 @@ Also, relaunch &quot;Settings&quot; dialog after you install Node.js.</translati
     <message>
       <location filename="../src/librssguard/miscellaneous/skinfactory.cpp" line="550"/>
       <source>file %1 not found</source>
-      <translation type="unfinished">file %1 not found</translation>
+      <translation>tiedostoa %1 ei löydy</translation>
     </message>
   </context>
   <context>
@@ -8594,7 +8594,7 @@ Also, relaunch &quot;Settings&quot; dialog after you install Node.js.</translati
     <message>
       <location filename="../src/librssguard-standard/src/gui/standardaccountdetails.ui" line="14"/>
       <source>Form</source>
-      <translation type="unfinished">Form</translation>
+      <translation>Lomake</translation>
     </message>
     <message>
       <location filename="../src/librssguard-standard/src/gui/standardaccountdetails.ui" line="20"/>
@@ -8609,7 +8609,7 @@ Also, relaunch &quot;Settings&quot; dialog after you install Node.js.</translati
     <message>
       <location filename="../src/librssguard-standard/src/gui/standardaccountdetails.ui" line="49"/>
       <source>Select icon for your account.</source>
-      <translation type="unfinished">Select icon for your account.</translation>
+      <translation>Valitse tilillesi kuvake</translation>
     </message>
     <message>
       <location filename="../src/librssguard-standard/src/gui/standardaccountdetails.ui" line="59"/>
@@ -8643,12 +8643,12 @@ If that is the case, then you need to set some time gaps when fetching those fee
     <message>
       <location filename="../src/librssguard-standard/src/gui/standardaccountdetails.cpp" line="56"/>
       <source>Select icon file for the account</source>
-      <translation type="unfinished">Select icon file for the account</translation>
+      <translation>Valitse tilin kuvaketiedosto</translation>
     </message>
     <message>
       <location filename="../src/librssguard-standard/src/gui/standardaccountdetails.cpp" line="58"/>
       <source>Images (%1)</source>
-      <translation type="unfinished">Images (%1)</translation>
+      <translation>Kuvat (%1)</translation>
     </message>
     <message>
       <location filename="../src/librssguard-standard/src/gui/standardaccountdetails.cpp" line="64"/>
@@ -8664,7 +8664,7 @@ If that is the case, then you need to set some time gaps when fetching those fee
       <location filename="../src/librssguard-standard/src/gui/standardaccountdetails.cpp" line="68"/>
       <source>Look in:</source>
       <extracomment>Label for field with icon file name textbox for selection dialog.</extracomment>
-      <translation type="unfinished">Look in:</translation>
+      <translation>Tarkista täältä:</translation>
     </message>
     <message>
       <location filename="../src/librssguard-standard/src/gui/standardaccountdetails.cpp" line="69"/>
@@ -8947,7 +8947,7 @@ Use raw XML saving: %4</translation>
     <message>
       <location filename="../src/librssguard-standard/src/gui/standardfeeddetails.cpp" line="384"/>
       <source>Images (%1)</source>
-      <translation type="unfinished">Images (%1)</translation>
+      <translation>Kuvat (%1)</translation>
     </message>
     <message>
       <location filename="../src/librssguard-standard/src/gui/standardfeeddetails.cpp" line="390"/>
@@ -8963,7 +8963,7 @@ Use raw XML saving: %4</translation>
       <location filename="../src/librssguard-standard/src/gui/standardfeeddetails.cpp" line="394"/>
       <source>Look in:</source>
       <extracomment>Label for field with icon file name textbox for selection dialog.</extracomment>
-      <translation type="unfinished">Look in:</translation>
+      <translation>Tarkista täältä:</translation>
     </message>
     <message>
       <location filename="../src/librssguard-standard/src/gui/standardfeeddetails.cpp" line="395"/>
@@ -8988,12 +8988,12 @@ Use raw XML saving: %4</translation>
     <message>
       <location filename="../src/librssguard-standard/src/gui/standardfeeddetails.cpp" line="38"/>
       <source>Full command to execute</source>
-      <translation type="unfinished">Full command to execute</translation>
+      <translation>Suoritettava komento kokonaisuudessaan</translation>
     </message>
     <message>
       <location filename="../src/librssguard-standard/src/gui/standardfeeddetails.cpp" line="39"/>
       <source>You can enter full command including interpreter here.</source>
-      <translation type="unfinished">You can enter full command including interpreter here.</translation>
+      <translation>Voit syöttää koko komennon komentotulkkeineen tähän.</translation>
     </message>
     <message>
       <location filename="../src/librssguard-standard/src/gui/standardfeeddetails.cpp" line="85"/>
@@ -9013,7 +9013,7 @@ Use raw XML saving: %4</translation>
     <message>
       <location filename="../src/librssguard-standard/src/gui/standardfeeddetails.cpp" line="364"/>
       <source>Command is ok.</source>
-      <translation type="unfinished">Command is ok.</translation>
+      <translation>Komento on oikein.</translation>
     </message>
     <message>
       <location filename="../src/librssguard-standard/src/gui/standardfeeddetails.cpp" line="217"/>
@@ -9052,17 +9052,17 @@ Also, you can post-process generated feed data with yet another script if you wi
     <message>
       <location filename="../src/librssguard-standard/src/gui/standardfeeddetails.ui" line="14"/>
       <source>Form</source>
-      <translation type="unfinished">Form</translation>
+      <translation>Lomake</translation>
     </message>
     <message>
       <location filename="../src/librssguard-standard/src/gui/standardfeeddetails.ui" line="25"/>
       <source>Parent category</source>
-      <translation type="unfinished">Parent category</translation>
+      <translation>Pääluokka</translation>
     </message>
     <message>
       <location filename="../src/librssguard-standard/src/gui/standardfeeddetails.ui" line="37"/>
       <source>Select parent item for your feed.</source>
-      <translation type="unfinished">Select parent item for your feed.</translation>
+      <translation>Valitse syötteelle ylätason kohde.</translation>
     </message>
     <message>
       <location filename="../src/librssguard-standard/src/gui/standardfeeddetails.ui" line="58"/>
@@ -9125,7 +9125,7 @@ Also, you can post-process generated feed data with yet another script if you wi
     <message>
       <location filename="../src/librssguard-standard/src/gui/standardfeedexpdetails.ui" line="14"/>
       <source>Form</source>
-      <translation type="unfinished">Form</translation>
+      <translation>Lomake</translation>
     </message>
     <message>
       <location filename="../src/librssguard-standard/src/gui/standardfeedexpdetails.ui" line="28"/>
@@ -9135,10 +9135,10 @@ Also, you can post-process generated feed data with yet another script if you wi
     <message>
       <location filename="../src/librssguard-standard/src/gui/standardfeedexpdetails.ui" line="54"/>
       <source>Enable HTTP/2</source>
-      <translation type="unfinished">Enable HTTP/2</translation>
+      <translation>Ota HTTP/2 Käyttöön</translation>
     </message>
     <message>
-      <location filename="../src/librssguard-standard/src/gui/standardfeedexpdetails.cpp" line="26"/>
+      <location filename="../src/librssguard-standard/src/gui/standardfeedexpdetails.cpp" line="25"/>
       <source>Turning this setting ON might bring considerable performance boost when fetching this feed, but only in some very specific conditions.
 
 This setting is useful when raw XML parsing of the feed is very slow, this happens for feed which do have very long contents.</source>
@@ -9147,19 +9147,19 @@ This setting is useful when raw XML parsing of the feed is very slow, this happe
 This setting is useful when raw XML parsing of the feed is very slow, this happens for feed which do have very long contents.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard-standard/src/gui/standardfeedexpdetails.cpp" line="32"/>
+      <location filename="../src/librssguard-standard/src/gui/standardfeedexpdetails.cpp" line="31"/>
       <source>Use application settings</source>
-      <translation type="unfinished">Use application settings</translation>
+      <translation>Käytä sovelluksen asetuksia</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard-standard/src/gui/standardfeedexpdetails.cpp" line="33"/>
+      <source>Enabled</source>
+      <translation>Käytössä</translation>
     </message>
     <message>
       <location filename="../src/librssguard-standard/src/gui/standardfeedexpdetails.cpp" line="34"/>
-      <source>Enabled</source>
-      <translation type="unfinished">Enabled</translation>
-    </message>
-    <message>
-      <location filename="../src/librssguard-standard/src/gui/standardfeedexpdetails.cpp" line="35"/>
       <source>Disabled</source>
-      <translation type="unfinished">Disabled</translation>
+      <translation>Poissa käytöstä</translation>
     </message>
   </context>
   <context>
@@ -9227,12 +9227,12 @@ This setting is useful when raw XML parsing of the feed is very slow, this happe
     <message>
       <location filename="../src/librssguard-standard/src/standardserviceroot.cpp" line="581"/>
       <source>Import was completely successful.</source>
-      <translation type="unfinished">Import was completely successful.</translation>
+      <translation>Tuonti onnistui täysin.</translation>
     </message>
     <message>
       <location filename="../src/librssguard-standard/src/standardserviceroot.cpp" line="578"/>
       <source>Some feeds/categories were not imported due to error, check debug log for more details.</source>
-      <translation type="unfinished">Some feeds/categories were not imported due to error, check debug log for more details.</translation>
+      <translation>Joitakin syötteitä/luokkia ei tuotu virheen vuoksi. Tarkista tiedot virhelokista.</translation>
     </message>
   </context>
   <context>
@@ -9240,12 +9240,12 @@ This setting is useful when raw XML parsing of the feed is very slow, this happe
     <message>
       <location filename="../src/librssguard/gui/toolbars/statusbar.cpp" line="26"/>
       <source>Feed update progress bar</source>
-      <translation type="unfinished">Feed update progress bar</translation>
+      <translation>Syötteiden päivityksen edistymispalkki</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/toolbars/statusbar.cpp" line="36"/>
       <source>File download progress bar</source>
-      <translation type="unfinished">File download progress bar</translation>
+      <translation>Tiedostojen lataamisen edistymispalkki</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/toolbars/statusbar.cpp" line="127"/>
@@ -9258,7 +9258,7 @@ This setting is useful when raw XML parsing of the feed is very slow, this happe
     <message>
       <location filename="../src/librssguard/miscellaneous/systemfactory.cpp" line="230"/>
       <source>anonymous</source>
-      <translation type="unfinished">anonymous</translation>
+      <translation>nimetön</translation>
     </message>
     <message>
       <location filename="../src/librssguard/miscellaneous/systemfactory.cpp" line="325"/>
@@ -9268,7 +9268,7 @@ This setting is useful when raw XML parsing of the feed is very slow, this happe
     <message>
       <location filename="../src/librssguard/miscellaneous/systemfactory.cpp" line="270"/>
       <source>See new version info</source>
-      <translation type="unfinished">See new version info</translation>
+      <translation>Näytä uuden version tiedot</translation>
     </message>
   </context>
   <context>
@@ -9277,8 +9277,8 @@ This setting is useful when raw XML parsing of the feed is very slow, this happe
       <location filename="../src/librssguard/gui/systemtrayicon.cpp" line="97"/>
       <source>%1
 Unread news: %2</source>
-      <translation type="unfinished">%1
-Unread news: %2</translation>
+      <translation>%1
+Lukemattomia uutisia: %2</translation>
     </message>
   </context>
   <context>
@@ -9319,7 +9319,7 @@ Unread news: %2</translation>
     <message>
       <location filename="../src/librssguard/gui/tabwidget.cpp" line="261"/>
       <source>Media player</source>
-      <translation type="unfinished">Media player</translation>
+      <translation>Mediasoitin</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/tabwidget.cpp" line="287"/>
@@ -9337,7 +9337,7 @@ Unread news: %2</translation>
     <message>
       <location filename="../src/librssguard/gui/webviewers/qtextbrowser/textbrowserviewer.cpp" line="362"/>
       <source>Enable external resources</source>
-      <translation type="unfinished">Enable external resources</translation>
+      <translation>Ota ulkoiset resurssit käyttöön</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/webviewers/qtextbrowser/textbrowserviewer.cpp" line="364"/>
@@ -9347,7 +9347,7 @@ Unread news: %2</translation>
     <message>
       <location filename="../src/librssguard/gui/webviewers/qtextbrowser/textbrowserviewer.cpp" line="650"/>
       <source>image</source>
-      <translation type="unfinished">image</translation>
+      <translation>kuva</translation>
     </message>
   </context>
   <context>
@@ -9399,7 +9399,7 @@ Unread news: %2</translation>
     <message>
       <location filename="../src/librssguard/gui/notifications/toastnotification.cpp" line="38"/>
       <source>Do it!</source>
-      <translation type="unfinished">Do it!</translation>
+      <translation>Tee se!</translation>
     </message>
   </context>
   <context>
@@ -9490,7 +9490,7 @@ Unread news: %2</translation>
     <message>
       <location filename="../src/librssguard/gui/systemtrayicon.cpp" line="20"/>
       <source>Close dialogs</source>
-      <translation type="unfinished">Close dialogs</translation>
+      <translation>Sulje valintaikkunat</translation>
     </message>
   </context>
   <context>
@@ -9556,13 +9556,13 @@ Unread news: %2</translation>
       <location filename="../src/librssguard-ttrss/src/gui/ttrssaccountdetails.cpp" line="103"/>
       <location filename="../src/librssguard-ttrss/src/gui/ttrssaccountdetails.cpp" line="104"/>
       <source>Other error occurred, contact developers.</source>
-      <translation type="unfinished">Other error occurred, contact developers.</translation>
+      <translation>Tapahtui jokin muu virhe. Ota yhteyttä kehittäjiin.</translation>
     </message>
     <message>
       <location filename="../src/librssguard-ttrss/src/gui/ttrssaccountdetails.cpp" line="109"/>
       <location filename="../src/librssguard-ttrss/src/gui/ttrssaccountdetails.cpp" line="116"/>
       <source>Installed version: %1, required at least: %2.</source>
-      <translation type="unfinished">Installed version: %1, required at least: %2.</translation>
+      <translation>Asennettu versio: %1. Vaaditaan vähintään: %2.</translation>
     </message>
     <message>
       <location filename="../src/librssguard-ttrss/src/gui/ttrssaccountdetails.cpp" line="112"/>
@@ -9588,7 +9588,7 @@ Unread news: %2</translation>
       <location filename="../src/librssguard-ttrss/src/gui/ttrssaccountdetails.cpp" line="130"/>
       <location filename="../src/librssguard-ttrss/src/gui/ttrssaccountdetails.cpp" line="131"/>
       <source>Unspecified error, did you enter correct URL?</source>
-      <translation type="unfinished">Unspecified error, did you enter correct URL?</translation>
+      <translation>Määrittelemätön virhe. Annoitko oikean URL:n?</translation>
     </message>
     <message>
       <location filename="../src/librssguard-ttrss/src/gui/ttrssaccountdetails.cpp" line="139"/>
@@ -9608,7 +9608,7 @@ Unread news: %2</translation>
     <message>
       <location filename="../src/librssguard-ttrss/src/gui/ttrssaccountdetails.cpp" line="153"/>
       <source>Password is okay.</source>
-      <translation type="unfinished">Password is okay.</translation>
+      <translation>Salasana on oikein.</translation>
     </message>
     <message>
       <location filename="../src/librssguard-ttrss/src/gui/ttrssaccountdetails.cpp" line="163"/>
@@ -9623,7 +9623,7 @@ Unread news: %2</translation>
     <message>
       <location filename="../src/librssguard-ttrss/src/gui/ttrssaccountdetails.cpp" line="173"/>
       <source>Password is ok or it is not needed.</source>
-      <translation type="unfinished">Password is ok or it is not needed.</translation>
+      <translation>Salasana on oikein tai sitä ei tarvita.</translation>
     </message>
     <message>
       <location filename="../src/librssguard-ttrss/src/gui/ttrssaccountdetails.cpp" line="174"/>
@@ -9643,7 +9643,7 @@ Unread news: %2</translation>
     <message>
       <location filename="../src/librssguard-ttrss/src/gui/ttrssaccountdetails.cpp" line="187"/>
       <source>URL is okay.</source>
-      <translation type="unfinished">URL is okay.</translation>
+      <translation>URL on oikein.</translation>
     </message>
     <message>
       <location filename="../src/librssguard-ttrss/src/gui/ttrssaccountdetails.ui" line="32"/>
@@ -9663,7 +9663,7 @@ Unread news: %2</translation>
     <message>
       <location filename="../src/librssguard-ttrss/src/gui/ttrssaccountdetails.ui" line="91"/>
       <source>Intelligent synchronization algorithm</source>
-      <translation type="unfinished">Intelligent synchronization algorithm</translation>
+      <translation>Älykkään synkronoinnin algoritmi</translation>
     </message>
     <message>
       <location filename="../src/librssguard-ttrss/src/gui/ttrssaccountdetails.ui" line="98"/>
@@ -9674,7 +9674,7 @@ Unread news: %2</translation>
       <location filename="../src/librssguard-ttrss/src/gui/ttrssaccountdetails.ui" line="105"/>
       <location filename="../src/librssguard-ttrss/src/gui/ttrssaccountdetails.ui" line="149"/>
       <source>Some feeds require authentication, including GMail feeds. BASIC, NTLM-2 and DIGEST-MD5 authentication schemes are supported.</source>
-      <translation type="unfinished">Some feeds require authentication, including GMail feeds. BASIC, NTLM-2 and DIGEST-MD5 authentication schemes are supported.</translation>
+      <translation>Jotkin syötteet, esimerkiksi GMail, edellyttävät todennusta. BASIC-, NTLM-2- ja DIGEST-MD5-todentamisjärjestelmiä tuetaan.</translation>
     </message>
     <message>
       <location filename="../src/librssguard-ttrss/src/gui/ttrssaccountdetails.ui" line="108"/>
@@ -9722,7 +9722,7 @@ Unread news: %2</translation>
     <message>
       <location filename="../src/librssguard-ttrss/src/gui/ttrssfeeddetails.cpp" line="12"/>
       <source>Provide URL for your feed.</source>
-      <translation type="unfinished">Provide URL for your feed.</translation>
+      <translation>Anna syötteen URL-osoite.</translation>
     </message>
     <message>
       <location filename="../src/librssguard-ttrss/src/gui/ttrssfeeddetails.cpp" line="21"/>
@@ -9742,17 +9742,17 @@ Unread news: %2</translation>
     <message>
       <location filename="../src/librssguard-ttrss/src/gui/ttrssfeeddetails.ui" line="14"/>
       <source>Form</source>
-      <translation type="unfinished">Form</translation>
+      <translation>Lomake</translation>
     </message>
     <message>
       <location filename="../src/librssguard-ttrss/src/gui/ttrssfeeddetails.ui" line="20"/>
       <source>Parent category</source>
-      <translation type="unfinished">Parent category</translation>
+      <translation>Pääluokka</translation>
     </message>
     <message>
       <location filename="../src/librssguard-ttrss/src/gui/ttrssfeeddetails.ui" line="30"/>
       <source>Select parent item for your feed.</source>
-      <translation type="unfinished">Select parent item for your feed.</translation>
+      <translation>Valitse syötteelle ylätason kohde.</translation>
     </message>
     <message>
       <location filename="../src/librssguard-ttrss/src/gui/ttrssfeeddetails.ui" line="46"/>
@@ -9778,15 +9778,15 @@ Unread news: %2</translation>
 Server: %2
 Last error: %3
 Last login on: %4</source>
-      <translation type="unfinished">Username: %1
-Server: %2
-Last error: %3
-Last login on: %4</translation>
+      <translation>Käyttäjätunnus: %1
+Palvelin: %2
+Viimeisin virhe: %3
+Viimeisin kirjautuminen: %4</translation>
     </message>
     <message>
       <location filename="../src/librssguard-ttrss/src/ttrssserviceroot.cpp" line="417"/>
       <source>cannot get list of feeds, network error &apos;%1&apos;</source>
-      <translation type="unfinished">cannot get list of feeds, network error &apos;%1&apos;</translation>
+      <translation>ei voi noutaa syöteluetteloa - verkkovirhe &apos;%1&apos;</translation>
     </message>
   </context>
   <context>
@@ -9794,12 +9794,12 @@ Last login on: %4</translation>
     <message>
       <location filename="../src/librssguard/services/abstract/unreadnode.cpp" line="14"/>
       <source>Unread articles</source>
-      <translation type="unfinished">Unread articles</translation>
+      <translation>Lukemattomat artikkelit</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/abstract/unreadnode.cpp" line="15"/>
       <source>You can find all unread articles here.</source>
-      <translation type="unfinished">You can find all unread articles here.</translation>
+      <translation>Kaikki lukemattomat artikkelit ovat täällä.</translation>
     </message>
   </context>
   <context>
@@ -9807,17 +9807,17 @@ Last login on: %4</translation>
     <message>
       <location filename="../src/librssguard/gui/webbrowser.cpp" line="30"/>
       <source>Navigation panel</source>
-      <translation type="unfinished">Navigation panel</translation>
+      <translation>Selauspaneeli</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/webbrowser.cpp" line="41"/>
       <source>View website in reader mode</source>
-      <translation type="unfinished">View website in reader mode</translation>
+      <translation>Näytä sivusto lukijatilassa</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/webbrowser.cpp" line="37"/>
       <source>Play in media player</source>
-      <translation type="unfinished">Play in media player</translation>
+      <translation>Toista mediasoittimessa</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/webbrowser.cpp" line="44"/>
