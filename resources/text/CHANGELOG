@@ -13,11 +13,16 @@ Added:
 * Now duplicate keyboard shortcuts cannot be assigned. (#1605)
 * New option for colored/monochrome icons for tray icon. (#1603)
 * Article list filtering options are now persisting. (#1590)
+* Official binaries now use Qt 6.8.3.
 
 Fixed:
 * Enhanced QSS for tooltips for better readability. (#1637)
 * RSS feed encoding detection was prone to errors. (#1664)
 * `Localization` page now displays correctly. (#1611)
+* MariaDB backend now uses `MEDIUMTEXT` column to allow bigger articles.
+
+Removed:
+* Built-in Google API OAuth credentials are now REMOVED from official RSS Guard binaries. There are several reasons for this, including the fact that these credentials had low usage quotas, therefore were not suitable for bigger number of users. So now each user has to obtain his own client ID/SECRET from Google Cloud Platform (which is free for personal usage).
 
 4.8.0
 -----
