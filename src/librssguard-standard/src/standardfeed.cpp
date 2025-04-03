@@ -2,6 +2,7 @@
 
 #include "src/standardfeed.h"
 
+#include "src/definitions.h"
 #include "src/gui/formstandardfeeddetails.h"
 #include "src/standardserviceroot.h"
 
@@ -346,7 +347,8 @@ QPair<StandardFeed*, NetworkResult> StandardFeed::guessFeed(StandardFeed::Source
     feed_contents = IOFactory::readFile(source);
   }
   else {
-    qDebugNN << LOGSEC_CORE << "Running custom script for guessing" << QUOTE_W_SPACE(source) << "to obtain feed data.";
+    qDebugNN << LOGSEC_STANDARD << "Running custom script for guessing" << QUOTE_W_SPACE(source)
+             << "to obtain feed data.";
 
     // Use script to generate feed file.
     feed_contents = generateFeedFileWithScript(source, timeout);
@@ -357,7 +359,7 @@ QPair<StandardFeed*, NetworkResult> StandardFeed::guessFeed(StandardFeed::Source
   // stuff kicks in.
   if (SitemapParser::isGzip(feed_contents)) {
 #if defined(ENABLE_COMPRESSED_SITEMAP)
-    qWarningNN << LOGSEC_CORE << "Decompressing gzipped feed data.";
+    qWarningNN << LOGSEC_STANDARD << "Decompressing gzipped feed data.";
 
     QByteArray uncompressed_feed_contents;
 
@@ -367,12 +369,12 @@ QPair<StandardFeed*, NetworkResult> StandardFeed::guessFeed(StandardFeed::Source
 
     feed_contents = uncompressed_feed_contents;
 #else
-    qWarningNN << LOGSEC_CORE << "This feed is gzipped.";
+    qWarningNN << LOGSEC_STANDARD << "This feed is gzipped.";
 #endif
   }
 
   if (!post_process_script.simplified().isEmpty()) {
-    qDebugNN << LOGSEC_CORE << "Post-processing obtained feed data with custom script for guessing"
+    qDebugNN << LOGSEC_STANDARD << "Post-processing obtained feed data with custom script for guessing"
              << QUOTE_W_SPACE_DOT(post_process_script);
     feed_contents = postProcessFeedFileWithScript(post_process_script, feed_contents, timeout);
   }
@@ -403,7 +405,7 @@ QPair<StandardFeed*, NetworkResult> StandardFeed::guessFeed(StandardFeed::Source
       throw format_ex;
     }
     catch (const ApplicationException& ex) {
-      qWarningNN << LOGSEC_CORE << "Feed guessing error:" << QUOTE_W_SPACE_DOT(ex.message());
+      qWarningNN << LOGSEC_STANDARD << "Feed guessing error:" << QUOTE_W_SPACE_DOT(ex.message());
     }
   }
 
@@ -559,7 +561,7 @@ QByteArray StandardFeed::runScriptProcess(const QStringList& cmd_args,
     auto raw_error = process.readAllStandardError();
 
     if (!raw_error.simplified().isEmpty()) {
-      qWarningNN << LOGSEC_CORE
+      qWarningNN << LOGSEC_STANDARD
                  << "Received error output from "
                     "custom script even if it "
                     "reported that it exited "

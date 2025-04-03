@@ -253,7 +253,7 @@ bool FeedsImportExportModel::produceFeed(const FeedLookup& feed_lookup) {
     return true;
   }
   catch (const ApplicationException& ex) {
-    qCriticalNN << LOGSEC_CORE << "Cannot fetch medatada for feed:" << QUOTE_W_SPACE(feed_lookup.url)
+    qCriticalNN << LOGSEC_STANDARD << "Cannot fetch medatada for feed:" << QUOTE_W_SPACE(feed_lookup.url)
                 << "with error:" << QUOTE_W_SPACE_DOT(ex.message());
 
     if (new_feed != nullptr) {
@@ -403,7 +403,7 @@ void FeedsImportExportModel::importAsOPML20(const QByteArray& data,
             qApp->icons()->fromByteArray(child_element.attribute(QSL("rssguard:icon")).toLocal8Bit());
 
           if (category_title.isEmpty()) {
-            qWarningNN << LOGSEC_CORE
+            qWarningNN << LOGSEC_STANDARD
                        << "Given OMPL file provided category without valid text attribute. Using fallback name.";
             category_title = child_element.attribute(QSL("title"));
 
@@ -496,7 +496,7 @@ void FeedsImportExportModel::importAsTxtURLPerLine(const QByteArray& data,
       lookup.append(f);
     }
     else {
-      qWarningNN << LOGSEC_CORE << "Detected empty URL when parsing input TXT [one URL per line] data.";
+      qWarningNN << LOGSEC_STANDARD << "Detected empty URL when parsing input TXT [one URL per line] data.";
     }
 
     emit parsingProgress(++completed, urls.size());

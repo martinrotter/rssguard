@@ -64,8 +64,9 @@ QList<StandardFeed*> FeedParser::discoverFeeds(ServiceRoot* root, const QUrl& ur
 
         return {guessed_feed.first};
       }
-      catch (...) {
-        qDebugNN << LOGSEC_CORE << QUOTE_W_SPACE(file_path) << "is not a local feed file.";
+      catch (const ApplicationException& ex) {
+        qDebugNN << LOGSEC_STANDARD << QUOTE_W_SPACE(file_path)
+                 << "is not a local feed file:" << NONQUOTE_W_SPACE_DOT(ex.message());
       }
     }
   }
@@ -171,6 +172,12 @@ QString FeedParser::objMessageRawContents(const QVariant& msg_element) const {
   return {};
 }
 
+void FeedParser::logUnsuccessfulRequest(const NetworkResult& reply) const {
+  qWarningNN << LOGSEC_STANDARD << "Feed discovery network request for" << QUOTE_W_SPACE(reply.m_url.toString())
+             << "failed with reason" << QUOTE_W_SPACE(reply.m_networkError) << "and HTTP code"
+             << QUOTE_W_SPACE_DOT(reply.m_httpCode);
+}
+
 QList<Message> FeedParser::messages() {
   QString feed_author = feedAuthor();
   QList<Message> messages;
@@ -201,7 +208,7 @@ QList<Message> FeedParser::messages() {
         messages.append(new_message);
       }
       catch (const ApplicationException& ex) {
-        qDebugNN << LOGSEC_CORE << "Problem when extracting XML message: " << ex.message();
+        qDebugNN << LOGSEC_STANDARD << "Problem when extracting XML message: " << ex.message();
       }
     }
   }
@@ -227,7 +234,7 @@ QList<Message> FeedParser::messages() {
         messages.append(new_message);
       }
       catch (const ApplicationException& ex) {
-        qDebugNN << LOGSEC_CORE << "Problem when extracting JSON message: " << ex.message();
+        qDebugNN << LOGSEC_STANDARD << "Problem when extracting JSON message: " << ex.message();
       }
     }
   }
@@ -251,7 +258,7 @@ QList<Message> FeedParser::messages() {
         messages.append(new_message);
       }
       catch (const ApplicationException& ex) {
-        qDebugNN << LOGSEC_CORE << "Problem when extracting OBJ message: " << ex.message();
+        qDebugNN << LOGSEC_STANDARD << "Problem when extracting OBJ message: " << ex.message();
       }
     }
   }

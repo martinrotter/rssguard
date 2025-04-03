@@ -70,7 +70,7 @@ QList<StandardFeed*> AtomParser::discoverFeeds(ServiceRoot* root, const QUrl& ur
       return {guessed_feed.first};
     }
     catch (...) {
-      qDebugNN << LOGSEC_CORE << QUOTE_W_SPACE(my_url) << "is not a direct feed file.";
+      qDebugNN << LOGSEC_STANDARD << QUOTE_W_SPACE(my_url) << "is not a direct feed file.";
     }
 
     // 2.
@@ -116,11 +116,14 @@ QList<StandardFeed*> AtomParser::discoverFeeds(ServiceRoot* root, const QUrl& ur
           feeds.append(guessed_feed.first);
         }
         catch (const ApplicationException& ex) {
-          qDebugNN << LOGSEC_CORE << QUOTE_W_SPACE(feed_link)
+          qDebugNN << LOGSEC_STANDARD << QUOTE_W_SPACE(feed_link)
                    << " should be direct link to feed file but was not recognized:" << QUOTE_W_SPACE_DOT(ex.message());
         }
       }
     }
+  }
+  else {
+    logUnsuccessfulRequest(res);
   }
 
   // 3.
@@ -143,8 +146,11 @@ QList<StandardFeed*> AtomParser::discoverFeeds(ServiceRoot* root, const QUrl& ur
       feeds.append(guessed_feed.first);
     }
     catch (...) {
-      qDebugNN << LOGSEC_CORE << QUOTE_W_SPACE(my_url) << "is not a direct feed file.";
+      qDebugNN << LOGSEC_STANDARD << QUOTE_W_SPACE(my_url) << "is not a direct feed file.";
     }
+  }
+  else {
+    logUnsuccessfulRequest(res);
   }
 
   // 4.
@@ -167,8 +173,11 @@ QList<StandardFeed*> AtomParser::discoverFeeds(ServiceRoot* root, const QUrl& ur
       feeds.append(guessed_feed.first);
     }
     catch (...) {
-      qDebugNN << LOGSEC_CORE << QUOTE_W_SPACE(my_url) << "is not a direct feed file.";
+      qDebugNN << LOGSEC_STANDARD << QUOTE_W_SPACE(my_url) << "is not a direct feed file.";
     }
+  }
+  else {
+    logUnsuccessfulRequest(res);
   }
 
   // 5.
@@ -201,8 +210,11 @@ QList<StandardFeed*> AtomParser::discoverFeeds(ServiceRoot* root, const QUrl& ur
           feeds.append(guessed_feed.first);
         }
         catch (...) {
-          qDebugNN << LOGSEC_CORE << QUOTE_W_SPACE(my_url) << "is not a direct feed file.";
+          qDebugNN << LOGSEC_STANDARD << QUOTE_W_SPACE(my_url) << "is not a direct feed file.";
         }
+      }
+      else {
+        logUnsuccessfulRequest(res);
       }
     }
   }
@@ -240,8 +252,11 @@ QList<StandardFeed*> AtomParser::discoverFeeds(ServiceRoot* root, const QUrl& ur
           feeds.append(guessed_feed.first);
         }
         catch (...) {
-          qDebugNN << LOGSEC_CORE << QUOTE_W_SPACE(my_url) << "is not a direct feed file.";
+          qDebugNN << LOGSEC_STANDARD << QUOTE_W_SPACE(my_url) << "is not a direct feed file.";
         }
+      }
+      else {
+        logUnsuccessfulRequest(res);
       }
     }
   }
@@ -269,8 +284,11 @@ QList<StandardFeed*> AtomParser::discoverFeeds(ServiceRoot* root, const QUrl& ur
         feeds.append(guessed_feed.first);
       }
       catch (...) {
-        qDebugNN << LOGSEC_CORE << QUOTE_W_SPACE(my_url) << "is not a direct feed file.";
+        qDebugNN << LOGSEC_STANDARD << QUOTE_W_SPACE(my_url) << "is not a direct feed file.";
       }
+    }
+    else {
+      logUnsuccessfulRequest(res);
     }
   }
 

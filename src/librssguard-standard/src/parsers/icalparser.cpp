@@ -48,8 +48,11 @@ QList<StandardFeed*> IcalParser::discoverFeeds(ServiceRoot* root, const QUrl& ur
       return {guessed_feed.first};
     }
     catch (...) {
-      qDebugNN << LOGSEC_CORE << QUOTE_W_SPACE(my_url) << "is not a direct feed file.";
+      qDebugNN << LOGSEC_STANDARD << QUOTE_W_SPACE(my_url) << "is not a direct feed file.";
     }
+  }
+  else {
+    logUnsuccessfulRequest(res);
   }
 
   return {};

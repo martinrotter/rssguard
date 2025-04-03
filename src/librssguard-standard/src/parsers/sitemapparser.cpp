@@ -86,6 +86,9 @@ QList<StandardFeed*> SitemapParser::discoverFeeds(ServiceRoot* root, const QUrl&
         to_process_sitemaps.append(sitemap_link);
       }
     }
+    else {
+      logUnsuccessfulRequest(res);
+    }
   }
 
   // 4.
@@ -137,8 +140,11 @@ QList<StandardFeed*> SitemapParser::discoverFeeds(ServiceRoot* root, const QUrl&
         }
       }
       catch (const ApplicationException&) {
-        qDebugNN << LOGSEC_CORE << QUOTE_W_SPACE(my_url) << "is not a direct sitemap file.";
+        qDebugNN << LOGSEC_STANDARD << QUOTE_W_SPACE(my_url) << "is not a direct sitemap file.";
       }
+    }
+    else {
+      logUnsuccessfulRequest(res);
     }
   }
 

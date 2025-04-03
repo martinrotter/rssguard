@@ -2,6 +2,7 @@
 
 #include "src/standardserviceentrypoint.h"
 
+#include "src/definitions.h"
 #include "src/gui/formeditstandardaccount.h"
 #include "src/standardserviceroot.h"
 
@@ -12,7 +13,7 @@
 StandardServiceEntryPoint::StandardServiceEntryPoint(QObject* parent) : QObject(parent) {}
 
 StandardServiceEntryPoint::~StandardServiceEntryPoint() {
-  qDebugNN << LOGSEC_CORE << "Destructing" << QUOTE_W_SPACE(QSL(SERVICE_CODE_STD_RSS)) << "plugin.";
+  qDebugNN << LOGSEC_STANDARD << "Destructing" << QUOTE_W_SPACE(QSL(SERVICE_CODE_STD_RSS)) << "plugin.";
 }
 
 QString StandardServiceEntryPoint::name() const {

@@ -109,7 +109,7 @@ void StandardServiceRoot::start(bool freshly_activated) {
 }
 
 void StandardServiceRoot::stop() {
-  qDebugNN << LOGSEC_CORE << "Stopping StandardServiceRoot instance.";
+  qDebugNN << LOGSEC_STANDARD << "Stopping StandardServiceRoot instance.";
 }
 
 QString StandardServiceRoot::code() const {
@@ -227,16 +227,16 @@ void StandardServiceRoot::spaceHost(const QString& host, const QString& url) {
   m_spacingMutex.unlock();
 
   if (secs_to_wait > 0) {
-    qDebugNN << LOGSEC_CORE << "Freezing feed with URL" << QUOTE_W_SPACE(url) << "for" << NONQUOTE_W_SPACE(secs_to_wait)
+    qDebugNN << LOGSEC_STANDARD << "Freezing feed with URL" << QUOTE_W_SPACE(url) << "for" << NONQUOTE_W_SPACE(secs_to_wait)
              << "seconds, because its host was used for fetching another feed during the spacing period.";
     QThread::sleep(ulong(secs_to_wait));
-    qDebugNN << LOGSEC_CORE << "Freezing feed with URL" << QUOTE_W_SPACE(url) << "is done.";
+    qDebugNN << LOGSEC_STANDARD << "Freezing feed with URL" << QUOTE_W_SPACE(url) << "is done.";
   }
 }
 
 void StandardServiceRoot::resetHostSpacing(const QString& host, const QDateTime& next_dt) {
   m_spacingHosts.insert(host, next_dt);
-  qDebugNN << LOGSEC_CORE << "Setting spacing for" << QUOTE_W_SPACE(host) << "to" << QUOTE_W_SPACE_DOT(next_dt);
+  qDebugNN << LOGSEC_STANDARD << "Setting spacing for" << QUOTE_W_SPACE(host) << "to" << QUOTE_W_SPACE_DOT(next_dt);
 }
 
 QList<Message> StandardServiceRoot::obtainNewMessages(Feed* feed,
@@ -255,7 +255,7 @@ QList<Message> StandardServiceRoot::obtainNewMessages(Feed* feed,
   if (f->sourceType() == StandardFeed::SourceType::Url) {
     spaceHost(host, f->source());
 
-    qDebugNN << LOGSEC_CORE << "Downloading URL" << QUOTE_W_SPACE(feed->source()) << "to obtain feed data.";
+    qDebugNN << LOGSEC_STANDARD << "Downloading URL" << QUOTE_W_SPACE(feed->source()) << "to obtain feed data.";
 
     QList<QPair<QByteArray, QByteArray>> headers = StandardFeed::httpHeadersToList(f->httpHeaders());
 
@@ -283,7 +283,7 @@ QList<Message> StandardServiceRoot::obtainNewMessages(Feed* feed,
     // resetHostSpacing(host);
 
     if (network_result.m_networkError != QNetworkReply::NetworkError::NoError) {
-      qWarningNN << LOGSEC_CORE << "Error" << QUOTE_W_SPACE(network_result.m_networkError)
+      qWarningNN << LOGSEC_STANDARD << "Error" << QUOTE_W_SPACE(network_result.m_networkError)
                  << "during fetching of new messages for feed" << QUOTE_W_SPACE_DOT(feed->source());
       throw FeedFetchException(Feed::Status::NetworkError,
                                NetworkFactory::networkErrorText(network_result.m_networkError),
@@ -295,7 +295,7 @@ QList<Message> StandardServiceRoot::obtainNewMessages(Feed* feed,
       if (network_result.m_httpCode == HTTP_CODE_NOT_MODIFIED && feed_contents.trimmed().isEmpty()) {
         // We very likely used "eTag" before and server reports that
         // content was not modified since.
-        qWarningNN << LOGSEC_CORE << QUOTE_W_SPACE(feed->source())
+        qWarningNN << LOGSEC_STANDARD << QUOTE_W_SPACE(feed->source())
                    << "reported HTTP/304, meaning that the remote file did not change since last time we checked it.";
         return {};
       }
@@ -312,14 +312,14 @@ QList<Message> StandardServiceRoot::obtainNewMessages(Feed* feed,
     feed_contents = IOFactory::readFile(feed->source());
   }
   else {
-    qDebugNN << LOGSEC_CORE << "Running custom script" << QUOTE_W_SPACE(feed->source()) << "to obtain feed data.";
+    qDebugNN << LOGSEC_STANDARD << "Running custom script" << QUOTE_W_SPACE(feed->source()) << "to obtain feed data.";
 
     // Use script to generate feed file.
     try {
       feed_contents = StandardFeed::generateFeedFileWithScript(feed->source(), download_timeout);
     }
     catch (const ScriptException& ex) {
-      qCriticalNN << LOGSEC_CORE << "Custom script for generating feed file failed:" << QUOTE_W_SPACE_DOT(ex.message());
+      qCriticalNN << LOGSEC_STANDARD << "Custom script for generating feed file failed:" << QUOTE_W_SPACE_DOT(ex.message());
 
       throw FeedFetchException(Feed::Status::OtherError, ex.message());
     }
@@ -330,7 +330,7 @@ QList<Message> StandardServiceRoot::obtainNewMessages(Feed* feed,
   // stuff kicks in.
   if (SitemapParser::isGzip(feed_contents)) {
 #if defined(ENABLE_COMPRESSED_SITEMAP)
-    qWarningNN << LOGSEC_CORE << "Decompressing gzipped feed data.";
+    qWarningNN << LOGSEC_STANDARD << "Decompressing gzipped feed data.";
 
     QByteArray uncompressed_feed_contents;
 
@@ -340,12 +340,12 @@ QList<Message> StandardServiceRoot::obtainNewMessages(Feed* feed,
 
     feed_contents = uncompressed_feed_contents;
 #else
-    qWarningNN << LOGSEC_CORE << "This feed is gzipped.";
+    qWarningNN << LOGSEC_STANDARD << "This feed is gzipped.";
 #endif
   }
 
   if (!f->postProcessScript().simplified().isEmpty()) {
-    qDebugNN << LOGSEC_CORE << "We will process feed data with post-process script"
+    qDebugNN << LOGSEC_STANDARD << "We will process feed data with post-process script"
              << QUOTE_W_SPACE_DOT(f->postProcessScript());
 
     try {
@@ -353,7 +353,7 @@ QList<Message> StandardServiceRoot::obtainNewMessages(Feed* feed,
         StandardFeed::postProcessFeedFileWithScript(f->postProcessScript(), feed_contents, download_timeout);
     }
     catch (const ScriptException& ex) {
-      qCriticalNN << LOGSEC_CORE << "Post-processing script for feed file failed:" << QUOTE_W_SPACE_DOT(ex.message());
+      qCriticalNN << LOGSEC_STANDARD << "Post-processing script for feed file failed:" << QUOTE_W_SPACE_DOT(ex.message());
 
       throw FeedFetchException(Feed::Status::OtherError, ex.message());
     }
@@ -416,7 +416,7 @@ QList<Message> StandardServiceRoot::obtainNewMessages(Feed* feed,
   parser->setDontUseRawXmlSaving(f->dontUseRawXmlSaving());
   messages = parser->messages();
 
-  qDebugNN << LOGSEC_CORE << "XML parsing for feed" << QUOTE_W_SPACE(f->title()) << "took"
+  qDebugNN << LOGSEC_STANDARD << "XML parsing for feed" << QUOTE_W_SPACE(f->title()) << "took"
            << NONQUOTE_W_SPACE(tmr.elapsed()) << "ms.";
 
   if (!parser->dateTimeFormat().isEmpty()) {
@@ -542,7 +542,7 @@ bool StandardServiceRoot::mergeImportExportModel(FeedsImportExportModel* model,
           else {
             some_feed_category_error = true;
 
-            qCriticalNN << LOGSEC_CORE << "Cannot import category:" << QUOTE_W_SPACE_DOT(ex.message());
+            qCriticalNN << LOGSEC_STANDARD << "Cannot import category:" << QUOTE_W_SPACE_DOT(ex.message());
           }
         }
       }
@@ -567,7 +567,7 @@ bool StandardServiceRoot::mergeImportExportModel(FeedsImportExportModel* model,
           requestItemReassignment(new_feed, target_parent);
         }
         catch (const ApplicationException& ex) {
-          qCriticalNN << LOGSEC_CORE << "Cannot import feed:" << QUOTE_W_SPACE_DOT(ex.message());
+          qCriticalNN << LOGSEC_STANDARD << "Cannot import feed:" << QUOTE_W_SPACE_DOT(ex.message());
           some_feed_category_error = true;
         }
       }

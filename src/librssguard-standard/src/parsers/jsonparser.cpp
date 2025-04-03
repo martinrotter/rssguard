@@ -55,7 +55,7 @@ QList<StandardFeed*> JsonParser::discoverFeeds(ServiceRoot* root, const QUrl& ur
       return {guessed_feed.first};
     }
     catch (...) {
-      qDebugNN << LOGSEC_CORE << QUOTE_W_SPACE(my_url) << "is not a direct feed file.";
+      qDebugNN << LOGSEC_STANDARD << QUOTE_W_SPACE(my_url) << "is not a direct feed file.";
     }
 
     // 2.
@@ -100,11 +100,17 @@ QList<StandardFeed*> JsonParser::discoverFeeds(ServiceRoot* root, const QUrl& ur
           feeds.append(guessed_feed.first);
         }
         catch (const ApplicationException& ex) {
-          qDebugNN << LOGSEC_CORE << QUOTE_W_SPACE(feed_link)
+          qDebugNN << LOGSEC_STANDARD << QUOTE_W_SPACE(feed_link)
                    << " should be direct link to feed file but was not recognized:" << QUOTE_W_SPACE_DOT(ex.message());
         }
       }
+      else {
+        logUnsuccessfulRequest(res);
+      }
     }
+  }
+  else {
+    logUnsuccessfulRequest(res);
   }
 
   return feeds;

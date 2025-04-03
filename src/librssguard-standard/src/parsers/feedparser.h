@@ -84,6 +84,7 @@ class FeedParser {
     virtual QString objMessageRawContents(const QVariant& msg_element) const;
 
   protected:
+    void logUnsuccessfulRequest(const NetworkResult& reply) const;
     QList<Enclosure> xmlMrssGetEnclosures(const QDomElement& msg_element) const;
     QString xmlMrssTextFromPath(const QDomElement& msg_element, const QString& xml_path) const;
     QString xmlRawChild(const QDomElement& container) const;
