@@ -135,6 +135,9 @@ if [ $is_linux = true ]; then
     imagenewname="rssguard-${git_tag}-${git_revision}-lite-linux64.AppImage"
   fi
 else
+  # Try to self-sign the app.
+  codesign -v --deep -fs - "$prefix"
+
   # Fix .dylib linking.
   otool -L "$prefix/Contents/MacOS/rssguard"
 
