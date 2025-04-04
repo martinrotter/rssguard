@@ -467,6 +467,7 @@ void SettingsGui::saveSettings() {
   qApp->mainForm()->tabWidget()->feedMessageViewer()->refreshVisualProperties();
 
   qApp->feedReader()->feedsModel()->reloadWholeLayout();
+  qApp->feedReader()->messagesModel()->setupIcons();
   qApp->feedReader()->messagesModel()->reloadWholeLayout();
 
   onEndSaveSettings();

@@ -58,6 +58,7 @@ class MessagesModel : public QSqlQueryModel, public MessagesModelSqlLayer {
     RootItem* loadedItem() const;
     MessagesModelCache* cache() const;
 
+    void setupIcons();
     void setupFonts();
     void updateDateFormat();
     void updateFeedIconsDisplay();
@@ -97,7 +98,6 @@ class MessagesModel : public QSqlQueryModel, public MessagesModelSqlLayer {
 
   private:
     void setupHeaderData();
-    void setupIcons();
 
   private:
     MessagesView* m_view;

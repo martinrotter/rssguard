@@ -24,6 +24,8 @@
 #include <QSqlError>
 #include <QSqlField>
 
+#define RAD_COLOR 0, 180, 0
+
 MessagesModel::MessagesModel(QObject* parent)
   : QSqlQueryModel(parent), m_view(nullptr), m_cache(new MessagesModelCache(this)),
     m_messageHighlighter(MessageHighlighter::NoHighlighting), m_customDateFormat(QString()),
@@ -42,8 +44,6 @@ MessagesModel::MessagesModel(QObject* parent)
 MessagesModel::~MessagesModel() {
   qDebugNN << LOGSEC_MESSAGEMODEL << "Destroying MessagesModel instance.";
 }
-
-#define RAD_COLOR 0, 180, 0
 
 void MessagesModel::setupIcons() {
   m_favoriteIcon = qApp->icons()->fromTheme(QSL("mail-mark-important"));
@@ -94,10 +94,16 @@ QIcon MessagesModel::generateUnreadIcon() {
   QPointF center(64, 64);
   qreal radius = 32;
 
+  QColor custom_clr = qApp->skins()->colorForModel(SkinEnums::PaletteColors::FgNewMessages).value<QColor>();
+
+  if (!custom_clr.isValid()) {
+    custom_clr = QColor(RAD_COLOR);
+  }
+
   QRadialGradient grad(center, radius);
-  grad.setColorAt(0.000, QColor(RAD_COLOR, 255));
-  grad.setColorAt(0.8, QColor(RAD_COLOR, 0.8 * 255));
-  grad.setColorAt(1.000, QColor(RAD_COLOR, 0.000));
+  grad.setColorAt(0.0, QColor(custom_clr.red(), custom_clr.green(), custom_clr.blue(), 255));
+  grad.setColorAt(0.8, QColor(custom_clr.red(), custom_clr.green(), custom_clr.blue(), 0.8 * 255));
+  grad.setColorAt(1.0, QColor(custom_clr.red(), custom_clr.green(), custom_clr.blue(), 0.0));
 
   QPen pen;
   pen.setWidth(96);
