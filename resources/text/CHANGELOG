@@ -1,3 +1,12 @@
+4.8.3
+-----
+
+Added:
+* Application is now "self-signed" on Mac OS X. (#1679)
+
+Fixed:
+* Missing icons in some use-cases. (#1683)
+
 4.8.2
 -----
 
