@@ -36,7 +36,7 @@ FormBackupDatabaseSettings::FormBackupDatabaseSettings(QWidget* parent)
           this,
           &FormBackupDatabaseSettings::checkOkButton);
   connect(m_ui->m_btnSelectFolder, &QPushButton::clicked, this, &FormBackupDatabaseSettings::selectFolderInitial);
-  selectFolder(qApp->documentsFolder());
+  selectFolder(FileDialog::storedFolder(GENERAL_REMEMBERED_PATH, qApp->documentsFolder()));
   m_ui->m_txtBackupName->lineEdit()->setText(QSL(APP_LOW_NAME) + QL1S("_") +
                                              QDateTime::currentDateTime().toString(QSL("yyyyMMddHHmm")));
   m_ui->m_lblResult->setStatus(WidgetWithStatus::StatusType::Warning,
