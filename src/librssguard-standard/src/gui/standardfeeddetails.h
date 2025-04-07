@@ -42,7 +42,8 @@ class StandardFeedDetails : public QWidget {
                    const QString& username,
                    const QString& password,
                    const QList<QPair<QByteArray, QByteArray>>& headers = {},
-                   const QNetworkProxy& custom_proxy = QNetworkProxy::ProxyType::DefaultProxy);
+                   const QNetworkProxy& custom_proxy = QNetworkProxy::ProxyType::DefaultProxy,
+                   NetworkFactory::Http2Status http2_status = NetworkFactory::Http2Status::DontSet);
 
     void onTitleChanged(const QString& new_title);
     void onDescriptionChanged(const QString& new_description);

@@ -10,6 +10,7 @@
 #include <QMenu>
 #include <QPixmap>
 #include <QSystemTrayIcon>
+#include <QTimer>
 
 class FormMain;
 class QEvent;
@@ -66,6 +67,7 @@ class SystemTrayIcon : public QSystemTrayIcon {
     QIcon m_normalIcon;
     QPixmap m_plainPixmap;
     QFont m_font = QFont();
+    QTimer m_tmrDoubleFire;
 
     QMetaObject::Connection m_connection;
 };

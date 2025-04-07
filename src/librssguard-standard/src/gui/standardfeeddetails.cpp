@@ -237,7 +237,8 @@ void StandardFeedDetails::guessFeed(StandardFeed::SourceType source_type,
                                     const QString& username,
                                     const QString& password,
                                     const QList<QPair<QByteArray, QByteArray>>& headers,
-                                    const QNetworkProxy& custom_proxy) {
+                                    const QNetworkProxy& custom_proxy,
+                                    NetworkFactory::Http2Status http2_status) {
   try {
     auto metadata = StandardFeed::guessFeed(source_type,
                                             source,
@@ -248,7 +249,8 @@ void StandardFeedDetails::guessFeed(StandardFeed::SourceType source_type,
                                             username,
                                             password,
                                             headers,
-                                            custom_proxy);
+                                            custom_proxy,
+                                            http2_status);
 
     // Icon or whole feed was guessed.
     m_ui.m_btnIcon->setIcon(metadata.first->icon());

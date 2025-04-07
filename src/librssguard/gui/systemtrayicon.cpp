@@ -32,6 +32,9 @@ SystemTrayIcon::SystemTrayIcon(const QString& normal_icon, const QString& plain_
   qDebugNN << LOGSEC_GUI << "Creating SystemTrayIcon instance.";
   m_font.setBold(true);
 
+  m_tmrDoubleFire.setSingleShot(true);
+  m_tmrDoubleFire.setInterval(100);
+
   // Initialize icon.
   setNumber();
   setContextMenu(parent->trayMenu());
@@ -46,6 +49,12 @@ SystemTrayIcon::~SystemTrayIcon() {
 }
 
 void SystemTrayIcon::onActivated(QSystemTrayIcon::ActivationReason reason) {
+  if (m_tmrDoubleFire.isActive()) {
+    return;
+  }
+
+  m_tmrDoubleFire.start();
+
   switch (reason) {
     case SystemTrayIcon::ActivationReason::Trigger:
     case SystemTrayIcon::ActivationReason::DoubleClick:

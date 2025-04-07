@@ -92,7 +92,9 @@ class StandardFeed : public Feed {
                                                          const QString& password = {},
                                                          const QList<QPair<QByteArray, QByteArray>>& http_headers = {},
                                                          const QNetworkProxy& custom_proxy =
-                                                           QNetworkProxy::ProxyType::DefaultProxy);
+                                                           QNetworkProxy::ProxyType::DefaultProxy,
+                                                         NetworkFactory::Http2Status http2_status =
+                                                           NetworkFactory::Http2Status::DontSet);
 
     // Converts particular feed type to string.
     static QString typeToString(Type type);

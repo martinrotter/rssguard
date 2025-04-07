@@ -33,3 +33,11 @@ StandardFeedExpDetails::StandardFeedExpDetails(QWidget* parent) : QWidget(parent
   m_ui.m_cmbEnableHttp2->addItem(tr("Enabled"), QVariant::fromValue(int(NetworkFactory::Http2Status::Enabled)));
   m_ui.m_cmbEnableHttp2->addItem(tr("Disabled"), QVariant::fromValue(int(NetworkFactory::Http2Status::Disabled)));
 }
+
+void StandardFeedExpDetails::setHttp2Status(NetworkFactory::Http2Status status) {
+  m_ui.m_cmbEnableHttp2->setCurrentIndex(m_ui.m_cmbEnableHttp2->findData(int(status)));
+}
+
+NetworkFactory::Http2Status StandardFeedExpDetails::http2Status() const {
+  return static_cast<NetworkFactory::Http2Status>(m_ui.m_cmbEnableHttp2->currentData().toInt());
+}

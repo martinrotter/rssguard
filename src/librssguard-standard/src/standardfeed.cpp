@@ -307,7 +307,8 @@ QPair<StandardFeed*, NetworkResult> StandardFeed::guessFeed(StandardFeed::Source
                                                             const QString& username,
                                                             const QString& password,
                                                             const QList<QPair<QByteArray, QByteArray>>& http_headers,
-                                                            const QNetworkProxy& custom_proxy) {
+                                                            const QNetworkProxy& custom_proxy,
+                                                            NetworkFactory::Http2Status http2_status) {
   auto timeout = qApp->settings()->value(GROUP(Feeds), SETTING(Feeds::UpdateTimeout)).toInt();
   QByteArray feed_contents;
   NetworkResult network_result;
@@ -328,7 +329,8 @@ QPair<StandardFeed*, NetworkResult> StandardFeed::guessFeed(StandardFeed::Source
                                                              false,
                                                              {},
                                                              {},
-                                                             custom_proxy);
+                                                             custom_proxy,
+                                                             http2_status);
 
     // account->resetHostSpacing(host);
 
