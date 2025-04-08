@@ -222,7 +222,7 @@ void Downloader::finished() {
   }
 
   // In this phase, some part of downloading process is completed.
-  QUrl redirection_url = reply->attribute(QNetworkRequest::RedirectionTargetAttribute).toUrl();
+  QUrl redirection_url = reply->attribute(QNetworkRequest::Attribute::RedirectionTargetAttribute).toUrl();
 
   if (redirection_url.isValid()) {
     auto redir_number = numberOfRedirections(reply);

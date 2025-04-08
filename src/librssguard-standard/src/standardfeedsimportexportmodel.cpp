@@ -362,7 +362,8 @@ void FeedsImportExportModel::importAsOPML20(const QByteArray& data,
 
         // Now analyze if this element is category or feed.
         // NOTE: All feeds must include xmlUrl attribute and text attribute.
-        if (child_element.attributes().contains(QSL("xmlUrl")) && child.attributes().contains(QSL("text"))) {
+        if (child_element.hasAttribute(QSL("xmlUrl")) &&
+            (child_element.hasAttribute(QSL("text")) || child_element.hasAttribute(QSL("title")))) {
           // This is FEED.
           // Add feed and end this iteration.
           QString feed_url = child_element.attribute(QSL("xmlUrl"));
@@ -372,6 +373,11 @@ void FeedsImportExportModel::importAsOPML20(const QByteArray& data,
             QVariantMap feed_data;
 
             feed_data[QSL("title")] = child_element.attribute(QSL("text"));
+
+            if (feed_data[QSL("title")].toString().isEmpty()) {
+              feed_data[QSL("title")] = child_element.attribute(QSL("title"));
+            }
+
             feed_data[QSL("encoding")] = child_element.attribute(QSL("encoding"), QSL(DEFAULT_FEED_ENCODING));
             feed_data[QSL("type")] = child_element.attribute(QSL("version"), QSL(DEFAULT_FEED_TYPE)).toUpper();
             feed_data[QSL("description")] = child_element.attribute(QSL("description"));
