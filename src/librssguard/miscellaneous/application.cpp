@@ -287,11 +287,17 @@ Application::Application(const QString& id, int& argc, char** argv, const QStrin
 
   setupWorkHorsePool();
 
+#if QT_VERSION >= 0x060100 // Qt >= 6.1.0
   QSslSocket::setActiveBackend(QSL("openssl"));
+#endif
 
   qDebugNN << LOGSEC_CORE << "Platform:" << QUOTE_W_SPACE_DOT(QGuiApplication::platformName());
   qDebugNN << LOGSEC_CORE << "SQLite version:" << QUOTE_W_SPACE_DOT(SQLITE_VERSION);
+
+#if QT_VERSION >= 0x060100 // Qt >= 6.1.0
   qDebugNN << LOGSEC_CORE << "OpenSSL backends:" << QUOTE_W_SPACE_DOT(QSslSocket::availableBackends());
+#endif
+
   qDebugNN << LOGSEC_CORE << "OpenSSL version:" << QUOTE_W_SPACE_DOT(QSslSocket::sslLibraryVersionString());
   qDebugNN << LOGSEC_CORE << "OpenSSL supported:" << QUOTE_W_SPACE_DOT(QSslSocket::supportsSsl());
   qDebugNN << LOGSEC_CORE << "Global thread pool has"
