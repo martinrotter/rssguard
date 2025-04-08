@@ -171,6 +171,7 @@ windeployqt.exe --verbose 1 --no-compiler-runtime --no-translations --release rs
 cd ".."
 
 # Copy OpenSSL.
+Copy-Item -Path "$qt_path\$qt_version\$qt_arch_base\plugins\tls\qopensslbackend.dll" -Destination ".\app\tls\"
 Copy-Item -Path "$openssl_base_path\bin\libcrypto*.dll" -Destination ".\app\"
 Copy-Item -Path "$openssl_base_path\bin\libssl*.dll" -Destination ".\app\"
 
