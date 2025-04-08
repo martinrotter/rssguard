@@ -174,8 +174,12 @@ void FormStandardImportExport::selectExportFile(bool without_dialog) {
     filter += filter_opml20;
     filter += QSL(";;");
     filter += filter_txt_url_per_line;
-    selected_file =
-      FileDialog::saveFileName(this, tr("Select file for feeds export"), the_file, filter, &selected_filter);
+    selected_file = FileDialog::saveFileName(this,
+                                             tr("Select file for feeds export"),
+                                             the_file,
+                                             filter,
+                                             &selected_filter,
+                                             GENERAL_REMEMBERED_PATH);
   }
   else {
     selected_file = the_file;
