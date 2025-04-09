@@ -174,7 +174,8 @@ Application::Application(const QString& id, int& argc, char** argv, const QStrin
   // and skin.
   m_icons->setupSearchPaths();
   m_icons->loadCurrentIconTheme();
-  m_skins->loadCurrentSkin(usingLite());
+
+  reloadCurrentSkin(false);
 
   if (m_toastNotifications != nullptr) {
     connect(m_toastNotifications,
@@ -1192,6 +1193,10 @@ void Application::onAdBlockFailure() {
                        {true, true, false});
 
   qApp->settings()->setValue(GROUP(AdBlock), AdBlock::AdBlockEnabled, false);
+}
+
+void Application::reloadCurrentSkin(bool replace_existing_qss) {
+  m_skins->loadCurrentSkin(usingLite(), replace_existing_qss);
 }
 
 void Application::determineFirstRuns() {

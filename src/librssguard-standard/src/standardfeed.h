@@ -134,6 +134,8 @@ class StandardFeed : public Feed {
     StandardServiceRoot* serviceRoot() const;
     bool removeItself();
 
+    QString getHttpDescription() const;
+
   private:
     SourceType m_sourceType;
     Type m_type;

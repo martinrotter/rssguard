@@ -90,7 +90,7 @@ class RSSGUARD_DLLSPEC SkinFactory : public QObject {
     virtual ~SkinFactory() = default;
 
     // Loads skin name from settings and sets it as active.
-    void loadCurrentSkin(bool lite);
+    void loadCurrentSkin(bool lite, bool replace_existing_qss);
     Skin currentSkin() const;
 
     // Gets color for model from active skin.
@@ -122,7 +122,7 @@ class RSSGUARD_DLLSPEC SkinFactory : public QObject {
 
   private:
     // Loads the skin from given skin_data.
-    void loadSkinFromData(const Skin& skin);
+    void loadSkinFromData(const Skin& skin, bool replace_existing_qss);
 
     QString loadSkinFile(const QString& skin_folder,
                          bool lite,

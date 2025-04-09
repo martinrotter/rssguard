@@ -96,6 +96,7 @@
     </property>
     <addaction name="m_actionSettings"/>
     <addaction name="separator"/>
+    <addaction name="m_actionReloadSkin"/>
     <addaction name="m_actionCleanupDatabase"/>
     <addaction name="m_actionCleanupWebCache"/>
     <addaction name="m_actionDownloadManager"/>
@@ -964,6 +965,11 @@
   <action name="m_actionPurgeSelectedItems">
    <property name="text">
     <string>&amp;Purge selected feeds</string>
+   </property>
+  </action>
+  <action name="m_actionReloadSkin">
+   <property name="text">
+    <string>Reload &amp;skin</string>
    </property>
   </action>
  </widget>

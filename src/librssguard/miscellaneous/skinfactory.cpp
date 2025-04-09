@@ -23,7 +23,7 @@
 
 SkinFactory::SkinFactory(QObject* parent) : QObject(parent), m_styleIsFrozen(false), m_useSkinColors(false) {}
 
-void SkinFactory::loadCurrentSkin(bool lite) {
+void SkinFactory::loadCurrentSkin(bool lite, bool replace_existing_qss) {
   QList<QString> skin_names_to_try = {selectedSkinName(), QSL(APP_SKIN_DEFAULT)};
   bool skin_parsed;
   Skin skin_data;
@@ -34,7 +34,7 @@ void SkinFactory::loadCurrentSkin(bool lite) {
     skin_data = skinInfo(skin_name, lite, &skin_parsed);
 
     if (skin_parsed) {
-      loadSkinFromData(skin_data);
+      loadSkinFromData(skin_data, replace_existing_qss);
 
       // Set this 'Skin' object as active one.
       m_currentSkin = skin_data;
@@ -109,7 +109,7 @@ QPalette qt_fusionPalette(bool dark_appearance) {
   return fusion_palette;
 }
 
-void SkinFactory::loadSkinFromData(const Skin& skin) {
+void SkinFactory::loadSkinFromData(const Skin& skin, bool replace_existing_qss) {
 #if QT_VERSION >= 0x060500 // Qt >= 6.5.0
   auto system_color_scheme = qApp->styleHints()->colorScheme();
 
@@ -207,7 +207,12 @@ void SkinFactory::loadSkinFromData(const Skin& skin) {
     }
   }
 
-  qss_to_set = qApp->styleSheet() + QSL("\r\n") + qss_to_set;
+  if (replace_existing_qss) {
+    qss_to_set = qss_to_set;
+  }
+  else {
+    qss_to_set = qApp->styleSheet() + QSL("\r\n") + qss_to_set;
+  }
 
   qApp->setStyleSheet(qss_to_set);
 }
@@ -292,21 +297,21 @@ PreparedHtml SkinFactory::generateHtmlOfArticles(const QList<Message>& messages,
       msg_contents = qApp->web()->limitSizeOfHtmlImages(msg_contents, desired_width, forced_img_height);
     }
 
-    messages_layout
-      .append(single_message_layout.arg(message.m_title,
-                                        tr("Written by ") +
-                                          (message.m_author.isEmpty() ? tr("unknown author") : message.m_author),
-                                        message.m_url,
-                                        msg_contents,
-                                        msg_date,
-                                        enclosures,
-                                        enclosure_images,
-                                        QString::number(message.m_id),
-                                        (message.m_rtlBehavior == RtlBehavior::Everywhere ||
-                                         message.m_rtlBehavior == RtlBehavior::EverywhereExceptFeedList ||
-                                         message.m_rtlBehavior == RtlBehavior::OnlyViewer)
-                                          ? QSL("rtl")
-                                          : QSL("ltr")));
+    messages_layout.append(single_message_layout.arg(message.m_title,
+                                                     tr("Written by ") + (message.m_author.isEmpty()
+                                                                            ? tr("unknown author")
+                                                                            : message.m_author),
+                                                     message.m_url,
+                                                     msg_contents,
+                                                     msg_date,
+                                                     enclosures,
+                                                     enclosure_images,
+                                                     QString::number(message.m_id),
+                                                     (message.m_rtlBehavior == RtlBehavior::Everywhere ||
+                                                      message.m_rtlBehavior == RtlBehavior::EverywhereExceptFeedList ||
+                                                      message.m_rtlBehavior == RtlBehavior::OnlyViewer)
+                                                       ? QSL("rtl")
+                                                       : QSL("ltr")));
   }
 
   QString msg_contents =

@@ -203,6 +203,8 @@ class RSSGUARD_DLLSPEC Application : public SingleApplication {
     // Restarts the application.
     void restart();
 
+    void reloadCurrentSkin(bool replace_existing_qss = true);
+
     // Processes incoming message from another RSS Guard instance.
     void parseCmdArgumentsFromOtherInstance(const QString& message);
     void parseCmdArgumentsFromMyInstance(const QStringList& raw_cli_args, QString& custom_ua);

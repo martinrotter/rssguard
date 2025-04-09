@@ -663,6 +663,7 @@ void FormMain::setupIcons() {
   m_ui->m_actionBrowserScrollUp->setIcon(icon_theme_factory->fromTheme(QSL("arrow-up")));
   m_ui->m_actionBrowserScrollDown->setIcon(icon_theme_factory->fromTheme(QSL("arrow-down")));
   m_ui->m_actionCleanupWebCache->setIcon(icon_theme_factory->fromTheme(QSL("edit-clear")));
+  m_ui->m_actionReloadSkin->setIcon(icon_theme_factory->fromTheme(QSL("view-refresh")));
 
   // Setup icons on TabWidget too.
   m_ui->m_tabWidget->setupIcons();
@@ -793,6 +794,8 @@ void FormMain::createConnections() {
 #else
   m_ui->m_menuTools->removeAction(m_ui->m_actionCleanupWebCache);
 #endif
+
+  connect(m_ui->m_actionReloadSkin, &QAction::triggered, qApp, &Application::reloadCurrentSkin);
 
   // Menu "Help" connections.
   connect(m_ui->m_actionAboutGuard, &QAction::triggered, this, [this]() {

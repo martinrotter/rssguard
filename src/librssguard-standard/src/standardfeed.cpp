@@ -97,6 +97,7 @@ QString StandardFeed::additionalTooltip() const {
        "Active message filters: %2\n"
        "Status: %3\n"
        "Source: %4\n"
+       "HTTP/2: %6\n"
        "Item ID: %5\n")
       .arg(getAutoUpdateStatusDescription(),
            filters.size() > 0 ? QSL("%1 (%2)").arg(QString::number(filters.size()), fltrs.join(QSL(", ")))
@@ -104,7 +105,8 @@ QString StandardFeed::additionalTooltip() const {
            stat,
            m_sourceType == SourceType::Url ? QString("<a href=\"%1\">%1</a>").arg(source().left(100))
                                            : source().left(100),
-           customId());
+           customId(),
+           getHttpDescription());
 
   return base_tooltip + tr("Encoding: %1\n"
                            "Type: %2\n"
@@ -466,6 +468,19 @@ bool StandardFeed::removeItself() {
   QSqlDatabase database = qApp->database()->driver()->connection(metaObject()->className());
 
   return DatabaseQueries::deleteFeed(database, this, getParentServiceRoot()->accountId());
+}
+
+QString StandardFeed::getHttpDescription() const {
+  switch (m_http2Status) {
+    case NetworkFactory::Http2Status::DontSet:
+      return tr("uses application setting");
+
+    case NetworkFactory::Http2Status::Enabled:
+      return tr("enabled");
+
+    case NetworkFactory::Http2Status::Disabled:
+      return tr("disabled");
+  }
 }
 
 QVariantHash StandardFeed::httpHeaders() const {
