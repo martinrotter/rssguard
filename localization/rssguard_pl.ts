@@ -50,7 +50,7 @@
       <location filename="../src/librssguard/services/abstract/gui/accountdetails.ui" line="47"/>
       <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_accountdetails.h" line="83"/>
       <source>Probes</source>
-      <translation>Sondy</translation>
+      <translation>Pytania</translation>
     </message>
   </context>
   <context>
@@ -101,7 +101,7 @@ Błąd: %1</translation>
       <location filename="../src/librssguard/network-web/adblock/adblockdialog.cpp" line="104"/>
       <location filename="../src/librssguard/network-web/adblock/adblockdialog.cpp" line="105"/>
       <source>No additional info.</source>
-      <translation>Brak dodatkowych informacji</translation>
+      <translation>Brak dodatkowej informacji.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/network-web/adblock/adblockdialog.cpp" line="96"/>
@@ -118,7 +118,7 @@ Błąd: %1</translation>
       <location filename="../src/librssguard/network-web/adblock/adblockdialog.ui" line="32"/>
       <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_adblockdialog.h" line="149"/>
       <source>&amp;Help</source>
-      <translation>P&amp;omoc</translation>
+      <translation>&amp;Pomoc</translation>
     </message>
     <message>
       <location filename="../src/librssguard/network-web/adblock/adblockdialog.ui" line="58"/>
@@ -168,7 +168,7 @@ Błąd: %1</translation>
     <message>
       <location filename="../src/librssguard/network-web/adblock/adblockmanager.cpp" line="377"/>
       <source>failed to download filter list &apos;%1&apos;</source>
-      <translation>nie udało się pobrać listy filtrów „%1&apos;</translation>
+      <translation>nie udało się pobrać listy filtrów &apos;%1&apos;</translation>
     </message>
   </context>
   <context>
@@ -184,7 +184,7 @@ Błąd: %1</translation>
     <message>
       <location filename="../src/librssguard/miscellaneous/application.cpp" line="1230"/>
       <source>Application is already running.</source>
-      <translation>Aplikacja jest już uruchomiona</translation>
+      <translation>Aplikacja jest już uruchomiona.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/miscellaneous/application.cpp" line="638"/>
@@ -4099,7 +4099,7 @@ Możesz go teraz zainstalować.</translation>
     <message>
       <location filename="../src/librssguard/network-web/gemini/geminiclient.cpp" line="268"/>
       <source>Line is too short for valid protocol</source>
-      <translation type="unfinished">Line is too short for valid protocol</translation>
+      <translation>Linia jest zbyt krótka dla prawidłowego protokołu</translation>
     </message>
     <message>
       <location filename="../src/librssguard/network-web/gemini/geminiclient.cpp" line="273"/>
@@ -4109,37 +4109,37 @@ Możesz go teraz zainstalować.</translation>
     <message>
       <location filename="../src/librssguard/network-web/gemini/geminiclient.cpp" line="282"/>
       <source>Line does not end with &lt;CR&gt; &lt;LF&gt;</source>
-      <translation type="unfinished">Line does not end with &lt;CR&gt; &lt;LF&gt;</translation>
+      <translation>Linie nie kończy się z &lt;CR&gt; &lt;LF&gt;</translation>
     </message>
     <message>
       <location filename="../src/librssguard/network-web/gemini/geminiclient.cpp" line="291"/>
       <source>First character is not a digit.</source>
-      <translation type="unfinished">First character is not a digit.</translation>
+      <translation>Pierwszy znak nie jest cyfrą.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/network-web/gemini/geminiclient.cpp" line="300"/>
       <source>Second character is not a digit.</source>
-      <translation type="unfinished">Second character is not a digit.</translation>
+      <translation>Drugi znak nie jest cyfrą.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/network-web/gemini/geminiclient.cpp" line="312"/>
       <source>Third character is not a space.</source>
-      <translation type="unfinished">Third character is not a space.</translation>
+      <translation>Trzeci znak nie jest spacją.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/network-web/gemini/geminiclient.cpp" line="361"/>
       <source>Invalid URL for redirection!</source>
-      <translation type="unfinished">Invalid URL for redirection!</translation>
+      <translation>Nieprawidłowy adres URL na przekierowanie!</translation>
     </message>
     <message>
       <location filename="../src/librssguard/network-web/gemini/geminiclient.cpp" line="438"/>
       <source>Unspecified status code used!</source>
-      <translation type="unfinished">Unspecified status code used!</translation>
+      <translation>Nieokreślony kod statusu użyty!</translation>
     </message>
     <message>
       <location filename="../src/librssguard/network-web/gemini/geminiclient.cpp" line="447"/>
       <source>META too large!</source>
-      <translation type="unfinished">META too large!</translation>
+      <translation>META zbyt duży!</translation>
     </message>
   </context>
   <context>
@@ -8727,16 +8727,16 @@ If that is the case, then you need to set some time gaps when fetching those fee
     <message>
       <location filename="../src/librssguard-standard/src/gui/standardaccountdetails.cpp" line="83"/>
       <source> = no spacing</source>
-      <translation type="unfinished"> = no spacing</translation>
+      <translation> = brak odstępu</translation>
     </message>
     <message numerus="yes">
       <location filename="../src/librssguard-standard/src/gui/standardaccountdetails.cpp" line="86"/>
       <source> seconds</source>
-      <translation type="unfinished">
+      <translation>
         <numerusform> sekunda</numerusform>
         <numerusform> sekundy</numerusform>
         <numerusform> sekund</numerusform>
-        <numerusform> seconds</numerusform>
+        <numerusform> sekund</numerusform>
       </translation>
     </message>
   </context>
@@ -8887,7 +8887,7 @@ Użyj nieprzetworzonego zapisu XML: %4</translation>
     <message>
       <location filename="../src/librssguard-standard/src/gui/standardfeeddetails.cpp" line="158"/>
       <source>Enter URL</source>
-      <translation type="unfinished">Enter URL</translation>
+      <translation>Wpisz URL</translation>
     </message>
     <message>
       <location filename="../src/librssguard-standard/src/gui/standardfeeddetails.cpp" line="159"/>
