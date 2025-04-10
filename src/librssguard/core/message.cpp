@@ -143,8 +143,9 @@ void Message::sanitize(const Feed* feed, bool fix_future_datetimes) {
   // Sanitize author.
   m_author = qApp->web()->stripTags(WebFactory::unescapeHtml(m_author));
 
-  // Just unescape HTML entities. Other formatting is done by viewers.
-  m_contents = WebFactory::unescapeHtml(m_contents);
+  // NOTE: We do not need to de-escape HTML here because it is the job of all plugins to provide correct
+  // HTML of their articles.
+  // m_contents = WebFactory::unescapeHtml(m_contents);
 
   // Sanitize URL.
   m_url = m_url.trimmed();
