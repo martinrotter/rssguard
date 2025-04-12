@@ -2194,12 +2194,12 @@ Pasta de cache do QtWebEngine -&gt; &quot;%7&quot;</translation>
     <message>
       <location filename="../src/librssguard-standard/src/gui/formdiscoverfeeds.cpp" line="205"/>
       <source>URL is valid.</source>
-      <translation type="unfinished">URL is valid.</translation>
+      <translation>O URL é válido.</translation>
     </message>
     <message>
       <location filename="../src/librssguard-standard/src/gui/formdiscoverfeeds.cpp" line="208"/>
       <source>URL is NOT valid.</source>
-      <translation type="unfinished">URL is NOT valid.</translation>
+      <translation>O URL NÃO é válido.</translation>
     </message>
     <message>
       <location filename="../src/librssguard-standard/src/gui/formdiscoverfeeds.cpp" line="276"/>
