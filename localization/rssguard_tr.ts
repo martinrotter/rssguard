@@ -2310,7 +2310,7 @@ QtWebEngine ön bellek klasörü -&gt; &quot;%7&quot;</translation>
       <location filename="../src/librssguard/services/abstract/gui/formfeeddetails.ui" line="24"/>
       <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_formfeeddetails.h" line="223"/>
       <source>Articles</source>
-      <translation type="unfinished">Articles</translation>
+      <translation>Makaleler</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/abstract/gui/formfeeddetails.ui" line="50"/>
@@ -2758,7 +2758,7 @@ QtWebEngine ön bellek klasörü -&gt; &quot;%7&quot;</translation>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="504"/>
       <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="742"/>
       <source>&amp;Previous article</source>
-      <translation type="unfinished">&amp;Previous article</translation>
+      <translation>&amp;Önceki makale</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="512"/>
@@ -2848,7 +2848,7 @@ QtWebEngine ön bellek klasörü -&gt; &quot;%7&quot;</translation>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="624"/>
       <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="763"/>
       <source>&amp;Downloads</source>
-      <translation type="unfinished">&amp;Downloads</translation>
+      <translation>&amp;İndirmeler</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="632"/>
@@ -5708,12 +5708,12 @@ Login tokens expiration: %2</translation>
     <message>
       <location filename="../src/librssguard/gui/toolbars/messagestoolbar.cpp" line="226"/>
       <source>Search articles</source>
-      <translation type="unfinished">Search articles</translation>
+      <translation>Makaleler ara</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/toolbars/messagestoolbar.cpp" line="233"/>
       <source>Article search box</source>
-      <translation type="unfinished">Article search box</translation>
+      <translation>Makale arama kutusu</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/toolbars/messagestoolbar.cpp" line="251"/>
@@ -7731,19 +7731,19 @@ Bu uygulamanın yazarları kayıp verilerden sorumlu değildir.</translation>
       <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="280"/>
       <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsfeedsmessages.h" line="632"/>
       <source>Articles</source>
-      <translation type="unfinished">Articles</translation>
+      <translation>Makaleler</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="286"/>
       <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsfeedsmessages.h" line="620"/>
       <source>Remove all read articles from all feeds on application exit</source>
-      <translation type="unfinished">Remove all read articles from all feeds on application exit</translation>
+      <translation>Uygulamadan çıkarken yayınlardan okunan tüm makaleleri kaldır</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="293"/>
       <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsfeedsmessages.h" line="621"/>
       <source>Ignore changes in article body when new articles are being fetched</source>
-      <translation type="unfinished">Ignore changes in article body when new articles are being fetched</translation>
+      <translation>Yeni makaleler getirilirken makale gövdesindeki değişiklikleri görmezden gel</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="314"/>
@@ -7821,7 +7821,7 @@ Bu uygulamanın yazarları kayıp verilerden sorumlu değildir.</translation>
       <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="428"/>
       <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsfeedsmessages.h" line="647"/>
       <source>Articles list</source>
-      <translation type="unfinished">Articles list</translation>
+      <translation>Makaleler dizelgesi</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="447"/>
@@ -7857,7 +7857,7 @@ Bu uygulamanın yazarları kayıp verilerden sorumlu değildir.</translation>
       <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="624"/>
       <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsfeedsmessages.h" line="642"/>
       <source>Article list font</source>
-      <translation type="unfinished">Article list font</translation>
+      <translation>Makale dizelgesi yazı tipi</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="607"/>
@@ -9792,12 +9792,12 @@ Last login on: %4</translation>
     <message>
       <location filename="../src/librssguard/services/abstract/unreadnode.cpp" line="14"/>
       <source>Unread articles</source>
-      <translation type="unfinished">Unread articles</translation>
+      <translation>Okunmamış makaleler</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/abstract/unreadnode.cpp" line="15"/>
       <source>You can find all unread articles here.</source>
-      <translation type="unfinished">You can find all unread articles here.</translation>
+      <translation>Tüm okunmamış makaleleri burada bulabilirsiniz.</translation>
     </message>
   </context>
   <context>
@@ -9820,7 +9820,7 @@ Last login on: %4</translation>
     <message>
       <location filename="../src/librssguard/gui/webbrowser.cpp" line="44"/>
       <source>Load full source article</source>
-      <translation type="unfinished">Load full source article</translation>
+      <translation>Makalenin tam kaynağını yükle</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/webbrowser.cpp" line="284"/>
