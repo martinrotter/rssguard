@@ -61,6 +61,12 @@ void StandardServiceRoot::onDatabaseCleanup() {
   }
 }
 
+void StandardServiceRoot::onAfterFeedsPurged(const QList<Feed*>& feeds) {
+  for (Feed* fd : feeds) {
+    static_cast<StandardFeed*>(fd)->setLastEtag(QString());
+  }
+}
+
 void StandardServiceRoot::start(bool freshly_activated) {
   DatabaseQueries::loadRootFromDatabase<StandardCategory, StandardFeed>(this);
 
@@ -227,7 +233,8 @@ void StandardServiceRoot::spaceHost(const QString& host, const QString& url) {
   m_spacingMutex.unlock();
 
   if (secs_to_wait > 0) {
-    qDebugNN << LOGSEC_STANDARD << "Freezing feed with URL" << QUOTE_W_SPACE(url) << "for" << NONQUOTE_W_SPACE(secs_to_wait)
+    qDebugNN << LOGSEC_STANDARD << "Freezing feed with URL" << QUOTE_W_SPACE(url) << "for"
+             << NONQUOTE_W_SPACE(secs_to_wait)
              << "seconds, because its host was used for fetching another feed during the spacing period.";
     QThread::sleep(ulong(secs_to_wait));
     qDebugNN << LOGSEC_STANDARD << "Freezing feed with URL" << QUOTE_W_SPACE(url) << "is done.";
@@ -319,7 +326,8 @@ QList<Message> StandardServiceRoot::obtainNewMessages(Feed* feed,
       feed_contents = StandardFeed::generateFeedFileWithScript(feed->source(), download_timeout);
     }
     catch (const ScriptException& ex) {
-      qCriticalNN << LOGSEC_STANDARD << "Custom script for generating feed file failed:" << QUOTE_W_SPACE_DOT(ex.message());
+      qCriticalNN << LOGSEC_STANDARD
+                  << "Custom script for generating feed file failed:" << QUOTE_W_SPACE_DOT(ex.message());
 
       throw FeedFetchException(Feed::Status::OtherError, ex.message());
     }
@@ -353,7 +361,8 @@ QList<Message> StandardServiceRoot::obtainNewMessages(Feed* feed,
         StandardFeed::postProcessFeedFileWithScript(f->postProcessScript(), feed_contents, download_timeout);
     }
     catch (const ScriptException& ex) {
-      qCriticalNN << LOGSEC_STANDARD << "Post-processing script for feed file failed:" << QUOTE_W_SPACE_DOT(ex.message());
+      qCriticalNN << LOGSEC_STANDARD
+                  << "Post-processing script for feed file failed:" << QUOTE_W_SPACE_DOT(ex.message());
 
       throw FeedFetchException(Feed::Status::OtherError, ex.message());
     }

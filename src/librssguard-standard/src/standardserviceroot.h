@@ -27,6 +27,7 @@ class StandardServiceRoot : public ServiceRoot {
 
     virtual FormAccountDetails* accountSetupDialog() const;
     virtual void onDatabaseCleanup();
+    virtual void onAfterFeedsPurged(const QList<Feed*>& feeds);
     virtual void start(bool freshly_activated);
     virtual void stop();
     virtual QString code() const;
@@ -45,7 +46,7 @@ class StandardServiceRoot : public ServiceRoot {
     QList<QAction*> getContextMenuForFeed(StandardFeed* feed);
 
     void spaceHost(const QString& host, const QString& url);
-    void resetHostSpacing(const QString& host, const QDateTime &next_dt);
+    void resetHostSpacing(const QString& host, const QDateTime& next_dt);
 
     // If set to number > 0, then requests to fetch feeds
     // will be spaced by the given number (in seconds).

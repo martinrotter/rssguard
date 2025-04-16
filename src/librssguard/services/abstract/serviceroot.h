@@ -189,6 +189,9 @@ class RSSGUARD_DLLSPEC ServiceRoot : public RootItem {
     // Selected item is naturally recycle bin.
     virtual bool onAfterMessagesRestoredFromBin(RootItem* selected_item, const QList<Message>& messages);
 
+    // Called AFTER articles of these feeds are purged from the database.
+    virtual void onAfterFeedsPurged(const QList<Feed*>& feeds);
+
     // Returns the UNIQUE code of the given service.
     // NOTE: Keep in sync with ServiceEntryRoot::code().
     virtual QString code() const = 0;

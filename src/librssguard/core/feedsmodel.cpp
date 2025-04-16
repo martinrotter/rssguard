@@ -536,6 +536,16 @@ bool FeedsModel::purgeArticles(const QList<Feed*>& feeds) {
     bool anything_purged = DatabaseQueries::purgeFeedArticles(database, feeds);
 
     if (anything_purged) {
+      QMultiHash<ServiceRoot*, Feed*> feeds_per_root;
+
+      for (auto* fd : feeds) {
+        feeds_per_root.insert(fd->getParentServiceRoot(), fd);
+      }
+
+      for (auto* acc : feeds_per_root.uniqueKeys()) {
+        acc->onAfterFeedsPurged(feeds_per_root.values(acc));
+      }
+
       reloadCountsOfWholeModel();
       emit reloadMessageListRequested(false);
       return true;

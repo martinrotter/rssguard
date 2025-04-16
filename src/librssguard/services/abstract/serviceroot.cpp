@@ -1184,6 +1184,10 @@ bool ServiceRoot::onAfterMessagesRestoredFromBin(RootItem* selected_item, const 
   return true;
 }
 
+void ServiceRoot::onAfterFeedsPurged(const QList<Feed*>& feeds) {
+  Q_UNUSED(feeds)
+}
+
 CacheForServiceRoot* ServiceRoot::toCache() const {
   return dynamic_cast<CacheForServiceRoot*>(const_cast<ServiceRoot*>(this));
 }
