@@ -43,13 +43,13 @@
         <string/>
        </property>
        <property name="textFormat">
-        <enum>Qt::RichText</enum>
+        <enum>Qt::TextFormat::RichText</enum>
        </property>
        <property name="scaledContents">
         <bool>true</bool>
        </property>
        <property name="alignment">
-        <set>Qt::AlignCenter</set>
+        <set>Qt::AlignmentFlag::AlignCenter</set>
        </property>
       </widget>
      </item>
@@ -68,16 +68,16 @@
         <string/>
        </property>
        <property name="textFormat">
-        <enum>Qt::RichText</enum>
+        <enum>Qt::TextFormat::RichText</enum>
        </property>
        <property name="alignment">
-        <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
+        <set>Qt::AlignmentFlag::AlignLeading|Qt::AlignmentFlag::AlignLeft|Qt::AlignmentFlag::AlignVCenter</set>
        </property>
        <property name="margin">
         <number>5</number>
        </property>
        <property name="textInteractionFlags">
-        <set>Qt::LinksAccessibleByMouse|Qt::TextSelectableByKeyboard|Qt::TextSelectableByMouse</set>
+        <set>Qt::TextInteractionFlag::LinksAccessibleByMouse|Qt::TextInteractionFlag::TextSelectableByKeyboard|Qt::TextInteractionFlag::TextSelectableByMouse</set>
        </property>
       </widget>
      </item>
@@ -105,7 +105,7 @@
       <locale language="English" country="UnitedStates"/>
      </property>
      <property name="currentIndex">
-      <number>0</number>
+      <number>1</number>
      </property>
      <widget class="QWidget" name="m_tabInfo">
       <attribute name="title">
@@ -118,7 +118,7 @@
           <font/>
          </property>
          <property name="contextMenuPolicy">
-          <enum>Qt::DefaultContextMenu</enum>
+          <enum>Qt::ContextMenuPolicy::DefaultContextMenu</enum>
          </property>
          <property name="styleSheet">
           <string notr="true"/>
@@ -143,7 +143,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
           <bool>false</bool>
          </property>
          <property name="textInteractionFlags">
-          <set>Qt::LinksAccessibleByMouse|Qt::TextSelectableByMouse</set>
+          <set>Qt::TextInteractionFlag::LinksAccessibleByMouse|Qt::TextInteractionFlag::TextSelectableByMouse</set>
          </property>
          <property name="searchPaths">
           <stringlist/>
@@ -164,7 +164,11 @@ li.checked::marker { content: &quot;\2612&quot;; }
         <widget class="QComboBox" name="m_cbLicenses"/>
        </item>
        <item>
-        <widget class="QPlainTextEdit" name="m_tbLicenses"/>
+        <widget class="QPlainTextEdit" name="m_tbLicenses">
+         <property name="readOnly">
+          <bool>true</bool>
+         </property>
+        </widget>
        </item>
        <item>
         <widget class="QLabel" name="m_lblLicenses">
@@ -202,7 +206,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
           <bool>false</bool>
          </property>
          <property name="textInteractionFlags">
-          <set>Qt::LinksAccessibleByMouse|Qt::TextSelectableByMouse</set>
+          <set>Qt::TextInteractionFlag::LinksAccessibleByMouse|Qt::TextInteractionFlag::TextSelectableByMouse</set>
          </property>
          <property name="openExternalLinks">
           <bool>true</bool>
@@ -224,7 +228,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
       </attribute>
       <layout class="QFormLayout" name="formLayout">
        <property name="fieldGrowthPolicy">
-        <enum>QFormLayout::ExpandingFieldsGrow</enum>
+        <enum>QFormLayout::FieldGrowthPolicy::ExpandingFieldsGrow</enum>
        </property>
        <item row="0" column="0" colspan="2">
         <widget class="QPlainTextEdit" name="m_tbResources">
@@ -240,7 +244,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
    <item>
     <widget class="QDialogButtonBox" name="m_buttonBox">
      <property name="standardButtons">
-      <set>QDialogButtonBox::Ok</set>
+      <set>QDialogButtonBox::StandardButton::Ok</set>
      </property>
     </widget>
    </item>

@@ -40,7 +40,10 @@ class Notification {
       NodePackageUpdated = 7,
 
       // Node.js - package failde to update.
-      NodePackageFailedToUpdate = 8
+      NodePackageFailedToUpdate = 8,
+
+      // There was at least one error during fetching articles.
+      ArticlesFetchingError = 9
     };
 
     explicit Notification(Event event = Event::NoEvent,

@@ -14,6 +14,7 @@
     <file>scripts/gemini/style.css</file>
     
     <file>sounds/boing.wav</file>
+    <file>sounds/error.wav</file>
     <file>sounds/rooster.wav</file>
     <file>sounds/sheep.wav</file>
     <file>sounds/doorbell.wav</file>

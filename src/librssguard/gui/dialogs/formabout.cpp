@@ -107,10 +107,15 @@ void FormAbout::loadLicenseAndInformation() {
   QJsonDocument licenses_index = QJsonDocument::fromJson(IOFactory::readFile(APP_INFO_PATH + QSL("/licenses.json")));
 
   for (const QJsonValue& license : licenses_index.array()) {
-    const QJsonObject license_obj = license.toObject();
-    const QString license_text =
-      QString::fromUtf8(IOFactory::readFile(APP_INFO_PATH + QSL("/") + license_obj[QSL("file")].toString()));
-    const QString license_title =
+    QJsonObject license_obj = license.toObject();
+    QString license_text = license_obj.value(QSL("text")).toString();
+
+    if (license_text.isEmpty()) {
+      license_text =
+        QString::fromUtf8(IOFactory::readFile(APP_INFO_PATH + QSL("/") + license_obj[QSL("file")].toString()));
+    }
+
+    QString license_title =
       license_obj[QSL("title")].toString() + QSL(": ") + license_obj[QSL("components")].toString();
 
     m_ui.m_cbLicenses->addItem(license_title, license_text);

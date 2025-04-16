@@ -447,6 +447,7 @@ void FeedDownloader::updateOneFeed(ServiceRoot* acc,
     qCriticalNN << LOGSEC_NETWORK << "Error when fetching feed:" << QUOTE_W_SPACE(feed_ex.feedStatus())
                 << "message:" << QUOTE_W_SPACE_DOT(feed_ex.message());
 
+    m_results.appendErroredFeed(feed, feed_ex.message());
     feed->setStatus(feed_ex.feedStatus(), feed_ex.message());
 
     if (feed_ex.feedStatus() == Feed::Status::NetworkError && !feed_ex.data().isNull()) {
@@ -468,6 +469,7 @@ void FeedDownloader::updateOneFeed(ServiceRoot* acc,
     qCriticalNN << LOGSEC_NETWORK << "Unknown error when fetching feed:"
                 << "message:" << QUOTE_W_SPACE_DOT(app_ex.message());
 
+    m_results.appendErroredFeed(feed, app_ex.message());
     feed->setStatus(Feed::Status::OtherError, app_ex.message());
   }
 
@@ -483,6 +485,13 @@ void FeedDownloader::finalizeUpdate() {
   qDebugNN << LOGSEC_FEEDDOWNLOADER << "Finished feed updates in thread" << QUOTE_W_SPACE_DOT(getThreadID());
 
   m_feeds.clear();
+
+  if (!m_results.erroredFeeds().isEmpty()) {
+    qApp->showGuiMessage(Notification::Event::ArticlesFetchingError,
+                         {QObject::tr("Some feed have error"),
+                          QObject::tr("Some feeds threw an error when fetching articles."),
+                          QSystemTrayIcon::MessageIcon::Critical});
+  }
 
   // Update of feeds has finished.
   // NOTE: This means that now "update lock" can be unlocked
@@ -632,8 +641,17 @@ void FeedDownloadResults::appendUpdatedFeed(Feed* feed, const QList<Message>& up
   }
 }
 
+void FeedDownloadResults::appendErroredFeed(Feed* feed, const QString& error) {
+  m_erroredFeeds.insert(feed, error);
+}
+
 void FeedDownloadResults::clear() {
   m_updatedFeeds.clear();
+  m_erroredFeeds.clear();
+}
+
+QHash<Feed*, QString> FeedDownloadResults::erroredFeeds() const {
+  return m_erroredFeeds;
 }
 
 QHash<Feed*, QList<Message>> FeedDownloadResults::updatedFeeds() const {

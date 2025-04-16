@@ -23,5 +23,10 @@
     "title": "GNU GPL v3.0 + Qt Company GPL Exception 1.0",
     "file": "COPYING_QT",
     "components": "Qt"
+  },
+  {
+    "title": "Attribution 3.0",
+    "text": "Error Bleep 4 by original_sound -- https://freesound.org/s/372197/ -- License: Attribution 3.0",
+    "components": "Error Bleep 4"
   }
 ]
