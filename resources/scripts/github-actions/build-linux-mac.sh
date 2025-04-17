@@ -39,7 +39,8 @@ if [ $is_linux = true ]; then
   sudo apt-get update
 
   sudo apt-get -qy install appstream cmake ninja-build openssl libssl-dev 
-  sudo apt-get -qy install qt6-5compat-dev qt6-base-dev-tools
+  sudo apt-get -qy install qt6-5compat-dev qt6-base-dev-tools qt6-image-formats-plugins qt6-multimedia-dev qt6-positioning-dev qt6-webengine-dev linguist-qt6 qt6-tools-dev
+  sudo apt-get -qy install libmpv-dev libssl-dev libsqlite3-dev
 
   
 else
@@ -84,37 +85,13 @@ if [ $is_linux = true ]; then
   # Validate AppStream metadata.
   echo 'Validating AppStream metadata...'
   appstreamcli validate "$prefix/share/metainfo/$app_id.metainfo.xml"
-  # Obtain linuxdeployqt.
-  wget -qc https://github.com/probonopd/linuxdeployqt/releases/download/continuous/linuxdeployqt-continuous-x86_64.AppImage
-  chmod a+x linuxdeployqt-continuous-x86_64.AppImage 
+  # Obtain appimagetool.
+  wget -c https://github.com/$(wget -q https://github.com/probonopd/go-appimage/releases/expanded_assets/continuous -O - | grep "appimagetool-.*-x86_64.AppImage" | head -n 1 | cut -d '"' -f 2)
+  chmod +x appimagetool-*.AppImage
 
-  # Copy GStreamer libs.
-  install -v -Dm755 "/usr/lib/x86_64-linux-gnu/gstreamer1.0/gstreamer-1.0/gst-plugin-scanner" "$prefix/lib/gstreamer1.0/gstreamer-1.0/gst-plugin-scanner"
-  gst_executables=("-executable=$prefix/lib/gstreamer1.0/gstreamer-1.0/gst-plugin-scanner")
-
-  for plugin in /usr/lib/x86_64-linux-gnu/gstreamer-1.0/libgst*.so; do
-    basen=$(basename "$plugin")
-    install -v -Dm755 "$plugin" "$prefix/lib/gstreamer-1.0/$basen"
-    gst_executables+=("-executable=$prefix/lib/gstreamer-1.0/$basen")
-  done
-
-  echo "GStreamer command line for AppImage is: ${gst_executables[*]}"
-
-  # Create AppImage.
-  unset QTDIR; unset QT_PLUGIN_PATH ; unset LD_LIBRARY_PATH
-
-  # Run the Apppmage tool twice to include missing dependencies for GStreamer.
-  # See: https://github.com/probonopd/linuxdeployqt/issues/123#issuecomment-346934117
-  ./linuxdeployqt-continuous-x86_64.AppImage "$prefix/share/applications/$app_id.desktop" -bundle-non-qt-libs -no-translations "${gst_executables[@]}"
-  ./linuxdeployqt-continuous-x86_64.AppImage "$prefix/share/applications/$app_id.desktop" -bundle-non-qt-libs -no-translations "${gst_executables[@]}"
-
-  if [[ "$webengine" == "ON" ]]; then
-    # Copy some NSS3 files to prevent WebEngine crashes.
-    cp /usr/lib/x86_64-linux-gnu/nss/* "$prefix/lib/" -v
-  fi
-
-  ./linuxdeployqt-continuous-x86_64.AppImage "$prefix/share/applications/$app_id.desktop" -appimage -no-translations "${gst_executables[@]}"
-
+  ./appimagetool-*.AppImage -s deploy AppDir/usr/share/applications/*.desktop
+  VERSION=1.0 ./appimagetool-*.AppImage ./AppDir
+  
   # Rename AppImaage.
   set -- R*.AppImage
   imagename="$1"
