@@ -5,6 +5,9 @@ RSS Guard is a `C++` application. All common build instructions can be found at 
 Here's a quick example of how to build it on Linux:
 
 ```bash
+# Clone the repo and all submodules
+git clone --recurse-submodules https://github.com/martinrotter/rssguard
+
 # Create a build directory
 mkdir build-dir
 
