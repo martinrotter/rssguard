@@ -69,9 +69,9 @@ else
   echo "Qt will be installed to: $QTPATH"
 
   # Install Qt.
-  aqt -c 'aqt/settings.ini' install-qt -O "$QTPATH" "$QTTARGET" "desktop" "$QTVERSION" "$QTARCH" -m "qtwebengine" "qtimageformats" "qtwebchannel" "qtmultimedia" "qt5compat" "qtpositioning" "qtserialport"
-  aqt -c 'aqt/settings.ini' install-tool -O "$QTPATH" "$QTTARGET" "desktop" "tools_cmake"
-  aqt -c 'aqt/settings.ini' install-tool -O "$QTPATH" "$QTTARGET" "desktop" "tools_ninja"
+  aqt install-qt -O "$QTPATH" "$QTTARGET" "desktop" "$QTVERSION" "$QTARCH" -m "qtwebengine" "qtimageformats" "qtwebchannel" "qtmultimedia" "qt5compat" "qtpositioning" "qtserialport"
+  aqt install-tool -O "$QTPATH" "$QTTARGET" "desktop" "tools_cmake"
+  aqt install-tool -O "$QTPATH" "$QTTARGET" "desktop" "tools_ninja"
 
   export QT_PLUGIN_PATH="$QTPATH/$QTVERSION/$QTOS/plugins"
   export PATH="$QTBIN:$QTPATH/Tools/CMake/CMake.app/Contents/bin:$QTPATH/Tools/Ninja:$PATH"
@@ -144,7 +144,7 @@ else
   otool -L "$prefix/Contents/MacOS/rssguard"
   
   # Try to self-sign the app.
-  codesign -v --deep -fs - "$prefix"
+  #codesign -v --deep -fs - "$prefix"
 
   # Deploy to DMG.
   macdeployqt "$prefix" -dmg

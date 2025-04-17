@@ -106,20 +106,20 @@ pip3 install -U pip
 pip3 install -I git+https://github.com/miurahr/aqtinstall
 
 if ($is_qt_6) {
-  aqt -c 'aqt\settings.ini' install-qt -O "$qt_path" windows desktop $qt_version $qt_arch -m qtwebengine qtimageformats qtmultimedia qt5compat qtwebchannel qtpositioning
+  aqt install-qt -O "$qt_path" windows desktop $qt_version $qt_arch -m qtwebengine qtimageformats qtmultimedia qt5compat qtwebchannel qtpositioning
 }
 else {
-  aqt -c 'aqt\settings.ini' install-qt -O "$qt_path" windows desktop $qt_version $qt_arch -m qtwebengine
+  aqt install-qt -O "$qt_path" windows desktop $qt_version $qt_arch -m qtwebengine
 }
 
-aqt -c 'aqt\settings.ini' install-src -O "$qt_path" windows desktop $qt_version --archives qtbase
+aqt install-src -O "$qt_path" windows desktop $qt_version --archives qtbase
 
 $qt_qmake = "$qt_path\$qt_version\$qt_arch_base\bin\qmake.exe"
 $env:PATH = "$qt_path\$qt_version\$qt_arch_base\bin\;" + $env:PATH
 
 if ($is_qt_6) {
   # Download openssl 3.x.
-  aqt -c 'aqt\settings.ini' install-tool -O "$qt_path" windows desktop tools_opensslv3_x64 qt.tools.opensslv3.win_x64
+  aqt install-tool -O "$qt_path" windows desktop tools_opensslv3_x64 qt.tools.opensslv3.win_x64
   $openssl_base_path = "$qt_path\Tools\OpenSSLv3\Win_x64"
 }
 else {
