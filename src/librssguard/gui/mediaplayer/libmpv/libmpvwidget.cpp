@@ -110,14 +110,14 @@ void LibMpvWidget::initializeGL() {
   mpv_render_param display{MPV_RENDER_PARAM_INVALID, nullptr};
 
 #if QT_VERSION_MAJOR == 6 && defined(Q_OS_UNIX) && !defined(Q_OS_DARWIN) && !defined(Q_OS_ANDROID)
-#if QT_CONFIG(xcb)
+#if defined(QT_FEATURE_xcb) && QT_CONFIG(xcb)
   if (QGuiApplication::platformName() == QStringLiteral("xcb")) {
     display.type = MPV_RENDER_PARAM_X11_DISPLAY;
     display.data = qApp->nativeInterface<QNativeInterface::QX11Application>()->display();
   }
 #endif
 
-#if QT_CONFIG(wayland)
+#if defined(QT_FEATURE_wayland) && QT_CONFIG(wayland)
   if (qApp->isWayland()) {
     display.type = MPV_RENDER_PARAM_WL_DISPLAY;
     display.data = qApp->nativeInterface<QNativeInterface::QWaylandApplication>()->display();
