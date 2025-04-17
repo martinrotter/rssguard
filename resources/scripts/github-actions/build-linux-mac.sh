@@ -16,8 +16,8 @@ if [[ "$os" == *"ubuntu"* ]]; then
     qtmultimedia="OFF"
     app_id="io.github.martinrotter.rssguard"
   else
-    libmpv="ON"
-    qtmultimedia="OFF"
+    libmpv="OFF"
+    qtmultimedia="ON"
     app_id="io.github.martinrotter.rssguardlite"
   fi
 else
