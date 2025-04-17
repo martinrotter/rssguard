@@ -31,32 +31,22 @@ fi
 
 echo "OS: $os; Not lite: $webengine"
 
+USE_QT6="ON"
+
 # Install needed dependencies.
 if [ $is_linux = true ]; then
   # Qt 5.
-  QTTARGET="linux"
-  QTOS="gcc_64"
-  QTARCH="gcc_64"
-  USE_QT6="OFF"
-
-  sudo add-apt-repository ppa:beineri/opt-qt-5.15.4-focal -y
   sudo apt-get update
 
-  sudo apt-get -qy install qt515tools qt515base qt515webengine qt515svg qt515multimedia qt515imageformats appstream
-  sudo apt-get -qy install cmake ninja-build openssl libssl-dev libgl1-mesa-dev gstreamer1.0-alsa gstreamer1.0-nice gstreamer1.0-plugins-good gstreamer1.0-plugins-base gstreamer1.0-plugins-bad gstreamer1.0-plugins-ugly gstreamer1.0-qt5 gstreamer1.0-pulseaudio libmpv-dev
+  sudo apt-get -qy install appstream cmake ninja-build openssl libssl-dev 
+  sudo apt-get -qy install qt6-5compat-dev qt6-base-dev-tools
 
-  # The script below performs some broken testing, which ends up tripping 'set -e'.
-  # So we temporarily ignore errors when sourcing the script, and re-enable them afterward.
-  set +e
-  # shellcheck source=/dev/null
-  source /opt/qt515/bin/qt515-env.sh
-  set -e
+  
 else
   # Qt 6.
   QTTARGET="mac"
   QTOS="macos"
   QTARCH="clang_64"
-  USE_QT6="ON"
 
   QTPATH="$(pwd)/Qt"
   QTVERSION="6.8.3"
