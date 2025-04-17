@@ -85,14 +85,18 @@ if [ $is_linux = true ]; then
   # Validate AppStream metadata.
   echo 'Validating AppStream metadata...'
   appstreamcli validate "$prefix/share/metainfo/$app_id.metainfo.xml"
+  
   # Obtain appimagetool.
-  wget -c https://github.com/$(wget -q https://github.com/probonopd/go-appimage/releases/expanded_assets/continuous -O - | grep "appimagetool-.*-x86_64.AppImage" | head -n 1 | cut -d '"' -f 2)
+  appimagetool_file=$(wget -q https://github.com/probonopd/go-appimage/releases/expanded_assets/continuous -O - | grep "appimagetool-.*-x86_64.AppImage" | head -n 1 | cut -d '"' -f 2)
+
+  wget -c "https://github.com/$appimagetool_file"
   chmod +x appimagetool-*.AppImage
+  mv appimagetool-*.AppImage appimagetool.AppImage
 
-  VERSION=1.0
+  export VERSION=1.0
 
-  ./appimagetool-*.AppImage -s deploy AppDir/usr/share/applications/*.desktop
-  ./appimagetool-*.AppImage ./AppDir
+  ./appimagetool.AppImage -s deploy AppDir/usr/share/applications/*.desktop
+  ./appimagetool.AppImage ./AppDir
   
   # Rename AppImaage.
   set -- R*.AppImage
