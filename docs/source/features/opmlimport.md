@@ -1,4 +1,4 @@
-File Downloader
+OPML file import
 ================
 RSS Guard can import file on OPML format 
 
