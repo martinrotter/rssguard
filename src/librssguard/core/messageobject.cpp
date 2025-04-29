@@ -341,3 +341,7 @@ QList<MessageCategory> MessageObject::categories() const {
 bool MessageObject::runningFilterWhenFetching() const {
   return m_runningAfterFetching;
 }
+
+bool MessageObject::hasEnclosures() const {
+  return !m_message->m_enclosures.isEmpty();
+}

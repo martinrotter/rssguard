@@ -68,6 +68,7 @@ Here is the reference documentation of types available for your filtering script
 | Property  | `contents`                    | `String`      | ❌         | ❌            | Contents of the message.
 | Property  | `rawContents`                 | `String`      | ❌         | ❌            | This is the RAW contents of the message obtained from remote service/feed. A raw XML or JSON element data. This attribute has the value only if `runningFilterWhenFetching` returns `true`. In other words, this attribute is not persistently stored in the RSS Guard's DB. Also, this attribute is artificially filled in with ATOM-like data when testing the filter.
 | Property  | `score`                       | `Number`      | ❌         | ❌            | Arbitrary number in range \<0.0, 100.0\>. You can use this number to sort messages in a custom fashion as this attribute also has its own column in articles list.
+| Property  | `hasEnclosures`               | `Boolean`     | ✅         | ❌            | Returns `true` if the article has at least one enclosure/attachment. Otherwise returns `false`.
 | Property  | `created`                     | `Date`        | ❌         | ❌            | Date/time of the message.
 | Property  | `isRead`                      | `Boolean`     | ❌         | ✅            | Is message read?
 | Property  | `isImportant`                 | `Boolean`     | ❌         | ✅            | Is message important?

@@ -16,6 +16,7 @@ class MessageObject : public QObject {
     Q_PROPERTY(QString feedCustomId READ feedCustomId)
     Q_PROPERTY(int accountId READ accountId)
     Q_PROPERTY(int id READ id)
+    Q_PROPERTY(bool hasEnclosures READ hasEnclosures)
     Q_PROPERTY(QString customId READ customId WRITE setCustomId)
     Q_PROPERTY(QString title READ title WRITE setTitle)
     Q_PROPERTY(QString url READ url WRITE setUrl)
@@ -106,6 +107,7 @@ class MessageObject : public QObject {
     QList<MessageCategory> categories() const;
 
     bool runningFilterWhenFetching() const;
+    bool hasEnclosures() const;
 
     // Generic Message's properties bindings.
     QString feedCustomId() const;
