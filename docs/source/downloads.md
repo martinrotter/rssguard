@@ -26,9 +26,13 @@ Simply download and launch newest available file `VisualCppRedist_AIO_x86_x64.ex
 ```
 
 ### Linux
-On Linux, you can download `AppImage` files which are self-contained and you simply can launch them as regular binaries. They should work just fine.
+Best way is to use official distribution packages if your distribution offers those.
 
-Likely even better way is to use official distribution packages if your distribution offers those.
+```{attention}
+RSS Guard used to be available in `AppImage` format for Linux. The support for this format was dropped because `AppImage` lacks proper support and up-to-date build tools and has some undocumented quirks.
+
+It is recommended to either use native packages for your distribution, compile by yourself or sticking to `Flatpak` RSS Guard packages.
+```
 
 ### Mac OS X
 `DMG` packages are provided for Mac users.
