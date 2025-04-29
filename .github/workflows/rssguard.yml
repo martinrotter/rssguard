@@ -46,8 +46,6 @@ jobs:
         exclude:
           - os: ubuntu-24.04
             use_qt5: "ON"
-          - os: ubuntu-24.04
-            no_lite: "ON"
           - os: macos-13
             use_qt5: "ON"
     steps:         

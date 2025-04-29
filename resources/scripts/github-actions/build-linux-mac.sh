@@ -86,27 +86,22 @@ if [ $is_linux = true ]; then
   echo 'Validating AppStream metadata...'
   appstreamcli validate "$prefix/share/metainfo/$app_id.metainfo.xml"
   
-  # Obtain appimagetool.
-  appimagetool_file=$(wget -q https://github.com/probonopd/go-appimage/releases/expanded_assets/continuous -O - | grep "appimagetool-.*-x86_64.AppImage" | head -n 1 | cut -d '"' -f 2)
-
-  wget -c "https://github.com/$appimagetool_file"
-  chmod +x appimagetool-*.AppImage
-  mv appimagetool-*.AppImage appimagetool.AppImage
-
-  export VERSION=1.0
-
-  ./appimagetool.AppImage -s deploy AppDir/usr/share/applications/*.desktop
-  ./appimagetool.AppImage ./AppDir
-  
-  # Rename AppImaage.
-  set -- R*.AppImage
-  imagename="$1"
-  
-  if [[ "$webengine" == "ON" ]]; then
-    imagenewname="rssguard-${git_tag}-${git_revision}-linux64.AppImage"
-  else
-    imagenewname="rssguard-${git_tag}-${git_revision}-lite-linux64.AppImage"
-  fi
+  ## Obtain appimagetool.
+  #appimagetool_file=$(wget -q https://github.com/probonopd/go-appimage/releases/expanded_assets/continuous -O - | grep "appimagetool-.*-x86_64.AppImage" | head -n 1 | cut -d '"' -f 2)
+  #wget -c "https://github.com/$appimagetool_file"
+  #chmod +x appimagetool-*.AppImage
+  #mv appimagetool-*.AppImage appimagetool.AppImage
+  #export VERSION=1.0
+  #./appimagetool.AppImage -s deploy AppDir/usr/share/applications/*.desktop
+  #./appimagetool.AppImage ./AppDir
+  ## Rename AppImaage.
+  #set -- R*.AppImage
+  #imagename="$1"
+  #if [[ "$webengine" == "ON" ]]; then
+  #  imagenewname="rssguard-${git_tag}-${git_revision}-linux64.AppImage"
+  #else
+  #  imagenewname="rssguard-${git_tag}-${git_revision}-lite-linux64.AppImage"
+  #fi
 else
   # Fix .dylib linking.
   otool -L "$prefix/Contents/MacOS/rssguard"
@@ -131,7 +126,7 @@ else
   else
     imagenewname="rssguard-${git_tag}-${git_revision}-lite-mac64.dmg"
   fi
-fi
 
-mv "$imagename" "$imagenewname"
-ls
+  mv "$imagename" "$imagenewname"
+  ls
+fi

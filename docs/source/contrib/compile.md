@@ -20,3 +20,7 @@ cmake --build build-dir -j$(nproc)
 # (Optional) Install RSS Guard system-wide
 sudo make -C build-dir install
 ```
+
+```{warning}
+Note that on Mac OS X, in some cases, you have to self-sign the application via `codesign` utility to make the application run.
+```
