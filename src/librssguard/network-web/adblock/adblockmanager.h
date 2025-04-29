@@ -9,8 +9,8 @@
 #include <QObject>
 #include <QProcess>
 
-#define CLIQZ_ADBLOCKED_PACKAGE "@cliqz/adblocker"
-#define CLIQZ_ADBLOCKED_VERSION "1.27.1"
+#define CLIQZ_ADBLOCKED_PACKAGE "@ghostery/adblocker"
+#define CLIQZ_ADBLOCKED_VERSION "2.5.1"
 
 class QUrl;
 class AdblockRequestInfo;

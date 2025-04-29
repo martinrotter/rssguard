@@ -1,7 +1,7 @@
-// Simple local HTTP server providing ad-blocking functionality via https://github.com/cliqz-oss/adblocker
+// Simple local HTTP server providing ad-blocking functionality via https://github.com/ghostery/adblocker
 //
 // How to install:
-//     npm i @cliqz/adblocker
+//     npm i @ghostery/adblocker
 //
 // How to run:
 //     NODE_PATH="..." node ./adblock-server.js "<port>" "<filters-file-path>"
@@ -18,7 +18,7 @@
 
 const fs = require('fs');
 const tldts = require('tldts-experimental');
-const adblock = require('@cliqz/adblocker');
+const adblock = require('@ghostery/adblocker');
 const http = require('http');
 const cluster = require('cluster');
 
