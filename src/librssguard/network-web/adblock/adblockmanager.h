@@ -39,10 +39,8 @@ class AdBlockManager : public QObject {
     // and thus cannot run synchronously (when enabling) as process takes
     // some time to start.
     //
-    // If the process fails then signal
-    //   processTerminated() is thrown.
-    // If AdBlock is switched on/off then signal
-    //   enabledChanged(bool, QString) is thrown.
+    // If the process fails then signal processTerminated() is thrown.
+    // If AdBlock is switched on/off then signal enabledChanged(bool, QString) is thrown.
     void setEnabled(bool enabled);
     bool isEnabled() const;
 

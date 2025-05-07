@@ -205,6 +205,8 @@ void AdBlockManager::onPackageReady(const QObject* sndr,
 void AdBlockManager::onPackageError(const QObject* sndr,
                                     const QList<NodeJs::PackageMetadata>& pkgs,
                                     const QString& error) {
+  Q_UNUSED(sndr)
+
   bool concerns_adblock = boolinq::from(pkgs).any([](const NodeJs::PackageMetadata& pkg) {
     return pkg.m_name == QSL(CLIQZ_ADBLOCKED_PACKAGE);
   });
@@ -362,7 +364,7 @@ void AdBlockManager::updateUnifiedFilters() {
 
     QByteArray out;
     auto res = NetworkFactory::performNetworkOperation(filter_list_url,
-                                                       2000,
+                                                       4000,
                                                        {},
                                                        out,
                                                        QNetworkAccessManager::Operation::GetOperation);

@@ -1187,7 +1187,8 @@ void Application::setupWorkHorsePool() {
 void Application::onAdBlockFailure() {
   qApp->showGuiMessage(Notification::Event::GeneralEvent,
                        {tr("AdBlock needs to be configured"),
-                        tr("AdBlock is not configured properly. Go to \"Settings\" -> \"Node.js\" and check "
+                        tr("AdBlock is not configured properly or failed to start. Go to \"Settings\" -> \"Node.js\" "
+                           "and check "
                            "if your Node.js is properly configured."),
                         QSystemTrayIcon::MessageIcon::Critical},
                        {true, true, false});
