@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>423</width>
-    <height>128</height>
+    <height>152</height>
    </rect>
   </property>
   <property name="sizePolicy">
@@ -21,6 +21,13 @@
     <widget class="QCheckBox" name="m_cbBalloon">
      <property name="text">
       <string>Balloon notification</string>
+     </property>
+    </widget>
+   </item>
+   <item>
+    <widget class="QCheckBox" name="m_cbDialogs">
+     <property name="text">
+      <string>Show dialogs</string>
      </property>
     </widget>
    </item>
@@ -121,6 +128,7 @@
  </customwidgets>
  <tabstops>
   <tabstop>m_cbBalloon</tabstop>
+  <tabstop>m_cbDialogs</tabstop>
   <tabstop>m_cbPlaySound</tabstop>
   <tabstop>m_txtSound</tabstop>
   <tabstop>m_btnBrowseSound</tabstop>

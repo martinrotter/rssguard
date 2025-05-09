@@ -272,6 +272,7 @@ Application::Application(const QString& id, int& argc, char** argv, const QStrin
     m_notifications->save({Notification(Notification::Event::GeneralEvent, true),
                            Notification(Notification::Event::NewUnreadArticlesFetched,
                                         true,
+                                        false,
                                         true,
                                         QSL("%1/notify.wav").arg(SOUNDS_BUILTIN_DIRECTORY)),
                            Notification(Notification::Event::NewAppVersionAvailable, true),
@@ -773,8 +774,12 @@ void Application::showGuiMessageCore(Notification::Event event,
                                      GuiMessageDestination dest,
                                      const GuiAction& action,
                                      QWidget* parent) {
+  bool show_dialog = true;
+
   if (m_notifications->areNotificationsEnabled()) {
     auto notification = m_notifications->notificationForEvent(event);
+
+    show_dialog = notification.dialogEnabled();
 
     if (notification.soundEnabled()) {
       notification.playSound(this);
@@ -807,7 +812,7 @@ void Application::showGuiMessageCore(Notification::Event event,
     }
   }
 
-  if (dest.m_messageBox || msg.m_type == QSystemTrayIcon::MessageIcon::Critical) {
+  if (show_dialog && (dest.m_messageBox || msg.m_type == QSystemTrayIcon::MessageIcon::Critical)) {
     // Tray icon or OSD is not available, display simple text box.
     MsgBox::show(parent == nullptr ? mainFormWidget() : parent,
                  QMessageBox::Icon(msg.m_type),

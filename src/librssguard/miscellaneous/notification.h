@@ -47,12 +47,14 @@ class Notification {
     };
 
     explicit Notification(Event event = Event::NoEvent,
-                          bool balloon = {},
+                          bool balloon = false,
+                          bool dialog = true,
                           bool play_sound = true,
                           const QString& sound_path = {},
                           int volume = DEFAULT_NOTIFICATION_VOLUME);
 
     bool balloonEnabled() const;
+    bool dialogEnabled() const;
 
     Event event() const;
     void setEvent(Event event);
@@ -78,6 +80,7 @@ class Notification {
   private:
     Event m_event;
     bool m_balloonEnabled;
+    bool m_dialogEnabled;
     bool m_soundEnabled;
     QString m_soundPath;
     qreal m_volume;

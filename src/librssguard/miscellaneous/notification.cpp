@@ -17,10 +17,12 @@
 
 Notification::Notification(Notification::Event event,
                            bool balloon,
+                           bool dialog,
                            bool play_sound,
                            const QString& sound_path,
                            int volume)
-  : m_event(event), m_balloonEnabled(balloon), m_soundEnabled(play_sound), m_soundPath(sound_path), m_volume(volume) {}
+  : m_event(event), m_balloonEnabled(balloon), m_dialogEnabled(dialog), m_soundEnabled(play_sound),
+    m_soundPath(sound_path), m_volume(volume) {}
 
 Notification::Event Notification::event() const {
   return m_event;
@@ -159,6 +161,10 @@ QString Notification::nameForEvent(Notification::Event event) {
     default:
       return QObject::tr("Unknown event");
   }
+}
+
+bool Notification::dialogEnabled() const {
+  return m_dialogEnabled;
 }
 
 void Notification::setSoundEnabled(bool play_sound) {

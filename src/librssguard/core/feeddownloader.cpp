@@ -488,7 +488,7 @@ void FeedDownloader::finalizeUpdate() {
 
   if (!m_results.erroredFeeds().isEmpty()) {
     qApp->showGuiMessage(Notification::Event::ArticlesFetchingError,
-                         {QObject::tr("Some feed have error"),
+                         {QObject::tr("Some feeds have error"),
                           QObject::tr("Some feeds threw an error when fetching articles."),
                           QSystemTrayIcon::MessageIcon::Critical});
   }
