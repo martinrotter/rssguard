@@ -141,7 +141,7 @@
        <string>Tray area</string>
       </attribute>
       <layout class="QFormLayout" name="formLayout_3">
-       <item row="0" column="0">
+       <item row="1" column="0">
         <widget class="QGroupBox" name="m_grpTray">
          <property name="sizePolicy">
           <sizepolicy hsizetype="Preferred" vsizetype="Maximum">
@@ -180,13 +180,6 @@
             </property>
            </widget>
           </item>
-          <item row="4" column="0" colspan="2">
-           <widget class="QCheckBox" name="m_checkHidden">
-            <property name="text">
-             <string>Start application hidden</string>
-            </property>
-           </widget>
-          </item>
           <item row="1" column="0" colspan="2">
            <widget class="QCheckBox" name="m_checkColoredIconsWhenArticles">
             <property name="enabled">
@@ -200,7 +193,7 @@
          </layout>
         </widget>
        </item>
-       <item row="1" column="0" colspan="2">
+       <item row="2" column="0" colspan="2">
         <spacer name="verticalSpacer_2">
          <property name="orientation">
           <enum>Qt::Orientation::Vertical</enum>
@@ -212,6 +205,13 @@
           </size>
          </property>
         </spacer>
+       </item>
+       <item row="0" column="0" colspan="2">
+        <widget class="QCheckBox" name="m_checkHidden">
+         <property name="text">
+          <string>Start application minimized (or hidden if configured)</string>
+         </property>
+        </widget>
        </item>
       </layout>
      </widget>
@@ -465,7 +465,6 @@
   <tabstop>m_checkColoredIconsWhenArticles</tabstop>
   <tabstop>m_checkCountUnreadMessages</tabstop>
   <tabstop>m_checkHideWhenMinimized</tabstop>
-  <tabstop>m_checkHidden</tabstop>
   <tabstop>m_checkCloseTabsDoubleClick</tabstop>
   <tabstop>m_checkCloseTabsMiddleClick</tabstop>
   <tabstop>m_checkNewTabDoubleClick</tabstop>

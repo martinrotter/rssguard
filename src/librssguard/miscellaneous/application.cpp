@@ -358,8 +358,7 @@ void Application::reactOnForeignNotifications() {
 
 void Application::hideOrShowMainForm() {
   // Display main window.
-  if (qApp->settings()->value(GROUP(GUI), SETTING(GUI::MainWindowStartsHidden)).toBool() &&
-      SystemTrayIcon::isSystemTrayDesired() && SystemTrayIcon::isSystemTrayAreaAvailable()) {
+  if (qApp->settings()->value(GROUP(GUI), SETTING(GUI::MainWindowStartsHidden)).toBool()) {
     qDebugNN << LOGSEC_CORE << "Hiding the main window when the application is starting.";
     mainForm()->switchVisibility(true);
   }
