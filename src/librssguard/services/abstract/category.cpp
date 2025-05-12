@@ -71,6 +71,11 @@ bool Category::markAsReadUnread(RootItem::ReadStatus status) {
 
 QString Category::additionalTooltip() const {
   return tr("Number of feeds: %1\n"
-            "Number of categories: %2")
-    .arg(QString::number(getSubTreeFeeds().size()), QString::number(getSubTreeCategories().size() - 1));
+            "Number of categories: %2\n"
+            "Number of disabled feeds: %3")
+    .arg(QString::number(getSubTreeFeeds().size()),
+         QString::number(getSubTreeCategories().size() - 1),
+         QString::number(getSubTree([](const RootItem* ri) {
+                           return ri->kind() == RootItem::Kind::Feed && ri->toFeed()->isSwitchedOff();
+                         }).size()));
 }

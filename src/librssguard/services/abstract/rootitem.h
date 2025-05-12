@@ -144,6 +144,7 @@ class RSSGUARD_DLLSPEC RootItem : public QObject {
     // Returns flat list of all items from subtree where this item is a root.
     // Returned list includes this item too.
     QList<RootItem*> getSubTree() const;
+    QList<RootItem*> getSubTree(std::function<bool(const RootItem*)> tester) const;
     QList<RootItem*> getSubTree(RootItem::Kind kind_of_item) const;
     QList<Category*> getSubTreeCategories() const;
 

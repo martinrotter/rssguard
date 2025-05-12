@@ -40,7 +40,7 @@ if [ $is_linux = true ]; then
 
   sudo apt-get -qy install appstream cmake ninja-build openssl libssl-dev 
   sudo apt-get -qy install qt6-5compat-dev qt6-base-dev-tools qt6-image-formats-plugins qt6-multimedia-dev qt6-positioning-dev qt6-webengine-dev linguist-qt6 qt6-tools-dev
-  sudo apt-get -qy install libmpv-dev libssl-dev libsqlite3-dev alsa-base alsa-oss alsa-tools alsa-utils gstreamer1.0-alsa gstreamer1.0-plugins-bad gstreamer1.0-plugins-base gstreamer1.0-plugins-good gstreamer1.0-plugins-ugly gstreamer1.0-pulseaudio gstreamer1.0-qt6 gstreamer1.0-vaapi gstreamer1.0-x
+  sudo apt-get -qy install libmpv-dev libssl-dev libsqlite3-dev alsa-base alsa-oss alsa-tools alsa-utils gstreamer1.0-alsa gstreamer1.0-plugins-bad gstreamer1.0-plugins-base gstreamer1.0-plugins-good gstreamer1.0-plugins-ugly gstreamer1.0-pulseaudio gstreamer1.0-qt6 gstreamer1.0-vaapi gstreamer1.0-x libasound2-plugins libasound2-plugins-extra libasound2-dev
 
   
 else

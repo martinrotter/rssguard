@@ -285,6 +285,26 @@ QList<RootItem*> RootItem::getSubTree() const {
   return children;
 }
 
+QList<RootItem*> RootItem::getSubTree(std::function<bool(const RootItem*)> tester) const {
+  QList<RootItem*> children;
+  QList<RootItem*> traversable_items;
+
+  traversable_items.append(const_cast<RootItem* const>(this));
+
+  // Iterate all nested items.
+  while (!traversable_items.isEmpty()) {
+    RootItem* active_item = traversable_items.takeFirst();
+
+    if (tester(active_item)) {
+      children.append(active_item);
+    }
+
+    traversable_items.append(active_item->childItems());
+  }
+
+  return children;
+}
+
 QList<RootItem*> RootItem::getSubTree(RootItem::Kind kind_of_item) const {
   QList<RootItem*> children;
   QList<RootItem*> traversable_items;
