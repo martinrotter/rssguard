@@ -213,8 +213,8 @@ void FormStandardImportExport::selectExportFile(bool without_dialog) {
 }
 
 void FormStandardImportExport::selectImportFile() {
-  const QString filter_opml20 = tr("OPML 2.0 files (*.opml *.xml)");
-  const QString filter_txt_url_per_line = tr("TXT files [one URL per line] (*.txt)");
+  const QString filter_opml20 = tr("OPML 2.0 files (*.opml *.xml)").trimmed();
+  const QString filter_txt_url_per_line = tr("TXT files [one URL per line] (*.txt)").trimmed();
 
   QString filter;
   QString selected_filter;
