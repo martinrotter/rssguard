@@ -356,7 +356,7 @@ void FormStandardImportExport::importFeeds() {
   RootItem* parent = m_ui->m_cmbRootNode->currentData().value<RootItem*>();
 
   if (m_serviceRoot->mergeImportExportModel(m_model, parent, output_message)) {
-    m_serviceRoot->requestItemExpand(parent->getSubTree(), true);
+    m_serviceRoot->requestItemExpand(parent->getSubTree<RootItem>(), true);
     m_ui->m_lblResult->setStatus(WidgetWithStatus::StatusType::Ok, output_message, output_message);
   }
   else {

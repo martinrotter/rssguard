@@ -149,7 +149,7 @@ bool ServiceRoot::markAsReadUnread(RootItem::ReadStatus status) {
 
   if (DatabaseQueries::markAccountReadUnread(database, accountId(), status)) {
     updateCounts(false);
-    itemChanged(getSubTree());
+    itemChanged(getSubTree<RootItem>());
     requestReloadMessageList(status == RootItem::ReadStatus::Read);
     return true;
   }
@@ -229,7 +229,7 @@ CustomMessagePreviewer* ServiceRoot::customMessagePreviewer() {
 
 void ServiceRoot::updateCounts(bool including_total_count) {
   QList<Feed*> feeds;
-  auto str = getSubTree();
+  auto str = getSubTree<RootItem>();
 
   for (RootItem* child : std::as_const(str)) {
     if (child->kind() == RootItem::Kind::Feed) {
@@ -350,7 +350,7 @@ bool ServiceRoot::cleanFeeds(const QList<Feed*>& items, bool clean_read_only) {
 
   if (DatabaseQueries::cleanFeeds(database, textualFeedIds(items), clean_read_only, accountId())) {
     getParentServiceRoot()->updateCounts(true);
-    getParentServiceRoot()->itemChanged(getParentServiceRoot()->getSubTree());
+    getParentServiceRoot()->itemChanged(getParentServiceRoot()->getSubTree<RootItem>());
     getParentServiceRoot()->requestReloadMessageList(true);
     return true;
   }
@@ -391,8 +391,13 @@ ServiceRoot::LabelOperation ServiceRoot::supportedLabelOperations() const {
 
 QString ServiceRoot::additionalTooltip() const {
   return tr("Number of feeds: %1\n"
-            "Number of categories: %2")
-    .arg(QString::number(getSubTreeFeeds().size()), QString::number(getSubTreeCategories().size()));
+            "Number of categories: %2\n"
+            "Number of disabled feeds: %3")
+    .arg(QString::number(getSubTreeFeeds().size()),
+         QString::number(getSubTreeCategories().size()),
+         QString::number(getSubTree<RootItem>([](const RootItem* ri) {
+                           return ri->kind() == RootItem::Kind::Feed && ri->toFeed()->isSwitchedOff();
+                         }).size()));
 }
 
 void ServiceRoot::saveAccountDataToDatabase() {
@@ -720,8 +725,8 @@ void ServiceRoot::syncIn() {
   }
 
   setIcon(original_icon);
-  itemChanged(getSubTree());
-  requestItemExpand(getSubTree(), true);
+  itemChanged(getSubTree<RootItem>());
+  requestItemExpand(getSubTree<RootItem>(), true);
 }
 
 void ServiceRoot::performInitialAssembly(const Assignment& categories,
@@ -824,7 +829,7 @@ bool ServiceRoot::markFeedsReadUnread(const QList<Feed*>& items, RootItem::ReadS
 
   if (DatabaseQueries::markFeedsReadUnread(database, textualFeedIds(items), accountId(), read)) {
     getParentServiceRoot()->updateCounts(false);
-    getParentServiceRoot()->itemChanged(getParentServiceRoot()->getSubTree());
+    getParentServiceRoot()->itemChanged(getParentServiceRoot()->getSubTree<RootItem>());
     getParentServiceRoot()->requestReloadMessageList(read == RootItem::ReadStatus::Read);
     return true;
   }
@@ -1130,7 +1135,7 @@ bool ServiceRoot::onAfterMessagesDelete(RootItem* selected_item, const QList<Mes
   //  - labels assigned to articles (if recycle bin is NOT selected)
 
   updateCounts(true);
-  itemChanged(getSubTree());
+  itemChanged(getSubTree<RootItem>());
   return true;
 }
 
@@ -1180,7 +1185,7 @@ bool ServiceRoot::onAfterMessagesRestoredFromBin(RootItem* selected_item, const 
   Q_UNUSED(messages)
 
   updateCounts(true);
-  itemChanged(getSubTree());
+  itemChanged(getSubTree<RootItem>());
   return true;
 }
 

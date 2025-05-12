@@ -268,81 +268,16 @@ bool RootItem::isParentOf(const RootItem* child) const {
   }
 }
 
-QList<RootItem*> RootItem::getSubTree() const {
-  QList<RootItem*> children;
-  QList<RootItem*> traversable_items;
-
-  traversable_items.append(const_cast<RootItem* const>(this));
-
-  // Iterate all nested items.
-  while (!traversable_items.isEmpty()) {
-    RootItem* active_item = traversable_items.takeFirst();
-
-    children.append(active_item);
-    traversable_items.append(active_item->childItems());
-  }
-
-  return children;
-}
-
-QList<RootItem*> RootItem::getSubTree(std::function<bool(const RootItem*)> tester) const {
-  QList<RootItem*> children;
-  QList<RootItem*> traversable_items;
-
-  traversable_items.append(const_cast<RootItem* const>(this));
-
-  // Iterate all nested items.
-  while (!traversable_items.isEmpty()) {
-    RootItem* active_item = traversable_items.takeFirst();
-
-    if (tester(active_item)) {
-      children.append(active_item);
-    }
-
-    traversable_items.append(active_item->childItems());
-  }
-
-  return children;
-}
-
 QList<RootItem*> RootItem::getSubTree(RootItem::Kind kind_of_item) const {
-  QList<RootItem*> children;
-  QList<RootItem*> traversable_items;
-
-  traversable_items.append(const_cast<RootItem* const>(this));
-
-  // Iterate all nested items.
-  while (!traversable_items.isEmpty()) {
-    RootItem* active_item = traversable_items.takeFirst();
-
-    if (int(active_item->kind() & kind_of_item) > 0) {
-      children.append(active_item);
-    }
-
-    traversable_items.append(active_item->childItems());
-  }
-
-  return children;
+  return getSubTree<RootItem>([kind_of_item](const RootItem* ri) {
+    return int(ri->kind() & kind_of_item) > 0;
+  });
 }
 
 QList<Category*> RootItem::getSubTreeCategories() const {
-  QList<Category*> children;
-  QList<RootItem*> traversable_items;
-
-  traversable_items.append(const_cast<RootItem* const>(this));
-
-  // Iterate all nested items.
-  while (!traversable_items.isEmpty()) {
-    RootItem* active_item = traversable_items.takeFirst();
-
-    if (active_item->kind() == RootItem::Kind::Category) {
-      children.append(active_item->toCategory());
-    }
-
-    traversable_items.append(active_item->childItems());
-  }
-
-  return children;
+  return getSubTree<Category>([](const RootItem* ri) {
+    return ri->kind() == RootItem::Kind::Category;
+  });
 }
 
 RootItem* RootItem::getItemFromSubTree(std::function<bool(const RootItem*)> tester) const {

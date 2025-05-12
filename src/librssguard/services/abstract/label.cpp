@@ -117,7 +117,7 @@ bool Label::cleanMessages(bool clear_only_read) {
 
   if (DatabaseQueries::cleanLabelledMessages(database, clear_only_read, this)) {
     service->updateCounts(true);
-    service->itemChanged(service->getSubTree());
+    service->itemChanged(service->getSubTree<RootItem>());
     service->requestReloadMessageList(true);
     return true;
   }
@@ -138,7 +138,7 @@ bool Label::markAsReadUnread(RootItem::ReadStatus status) {
 
   if (DatabaseQueries::markLabelledMessagesReadUnread(database, this, status)) {
     service->updateCounts(false);
-    service->itemChanged(service->getSubTree());
+    service->itemChanged(service->getSubTree<RootItem>());
     service->requestReloadMessageList(status == RootItem::ReadStatus::Read);
     return true;
   }

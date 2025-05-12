@@ -75,7 +75,7 @@ QString Category::additionalTooltip() const {
             "Number of disabled feeds: %3")
     .arg(QString::number(getSubTreeFeeds().size()),
          QString::number(getSubTreeCategories().size() - 1),
-         QString::number(getSubTree([](const RootItem* ri) {
+         QString::number(getSubTree<RootItem>([](const RootItem* ri) {
                            return ri->kind() == RootItem::Kind::Feed && ri->toFeed()->isSwitchedOff();
                          }).size()));
 }

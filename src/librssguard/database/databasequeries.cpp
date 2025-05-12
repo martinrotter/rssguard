@@ -52,7 +52,7 @@ QMap<int, QString> DatabaseQueries::messageTableAttributes(bool only_msg_table, 
 
   field_names[MSG_DB_LABELS_IDS] = QSL("Messages.labels");
 
-  // TODO: zpomaluje zobrazení seznamu zpráv
+  // TODO: zpomaluje zobrazenĂ­ seznamu zprĂˇv
   /*
   field_names[MSG_DB_LABELS] =
     QSL("(SELECT GROUP_CONCAT(Labels.name) FROM Labels WHERE Labels.custom_id IN (SELECT "
@@ -2295,7 +2295,7 @@ bool DatabaseQueries::purgeLeftoverMessages(const QSqlDatabase& db, int account_
 
 void DatabaseQueries::storeAccountTree(const QSqlDatabase& db, RootItem* tree_root, int account_id) {
   // Iterate all children.
-  auto str = tree_root->getSubTree();
+  auto str = tree_root->getSubTree<RootItem>();
 
   for (RootItem* child : std::as_const(str)) {
     if (child->kind() == RootItem::Kind::Category) {

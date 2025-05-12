@@ -119,7 +119,7 @@ bool RecycleBin::restore() {
 
   if (DatabaseQueries::restoreBin(database, parent_root->accountId())) {
     parent_root->updateCounts(true);
-    parent_root->itemChanged(parent_root->getSubTree());
+    parent_root->itemChanged(parent_root->getSubTree<RootItem>());
     parent_root->requestReloadMessageList(true);
     return true;
   }

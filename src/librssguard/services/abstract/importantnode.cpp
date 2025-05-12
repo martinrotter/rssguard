@@ -40,7 +40,7 @@ bool ImportantNode::cleanMessages(bool clean_read_only) {
 
   if (DatabaseQueries::cleanImportantMessages(database, clean_read_only, service->accountId())) {
     service->updateCounts(true);
-    service->itemChanged(service->getSubTree());
+    service->itemChanged(service->getSubTree<RootItem>());
     service->requestReloadMessageList(true);
     return true;
   }
@@ -61,7 +61,7 @@ bool ImportantNode::markAsReadUnread(RootItem::ReadStatus status) {
 
   if (DatabaseQueries::markImportantMessagesReadUnread(database, service->accountId(), status)) {
     service->updateCounts(false);
-    service->itemChanged(service->getSubTree());
+    service->itemChanged(service->getSubTree<RootItem>());
     service->requestReloadMessageList(status == RootItem::ReadStatus::Read);
     return true;
   }

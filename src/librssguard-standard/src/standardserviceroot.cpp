@@ -98,7 +98,7 @@ void StandardServiceRoot::start(bool freshly_activated) {
         model.checkAllItems();
 
         if (mergeImportExportModel(&model, this, output_msg)) {
-          requestItemExpand(getSubTree(), true);
+          requestItemExpand(getSubTree<RootItem>(), true);
         }
       }
       catch (ApplicationException& ex) {
