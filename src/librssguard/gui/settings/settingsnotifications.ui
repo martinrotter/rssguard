@@ -31,9 +31,6 @@
      </property>
     </widget>
    </item>
-   <item row="3" column="0" colspan="2">
-    <widget class="HelpSpoiler" name="m_lblInfo" native="true"/>
-   </item>
    <item row="2" column="0" colspan="2">
     <widget class="QGroupBox" name="m_gbNotificationsType">
      <property name="title">
@@ -57,7 +54,7 @@
         </property>
        </widget>
       </item>
-      <item row="2" column="0" colspan="2">
+      <item row="3" column="0" colspan="2">
        <widget class="QWidget" name="m_wdgCustomNotifications" native="true">
         <layout class="QFormLayout" name="formLayout_3">
          <property name="leftMargin">
@@ -166,8 +163,14 @@
         </layout>
        </widget>
       </item>
+      <item row="2" column="0" colspan="2">
+       <widget class="HelpSpoiler" name="m_lblNativeNotif" native="true"/>
+      </item>
      </layout>
     </widget>
+   </item>
+   <item row="3" column="0" colspan="2">
+    <widget class="HelpSpoiler" name="m_lblInfo" native="true"/>
    </item>
   </layout>
  </widget>

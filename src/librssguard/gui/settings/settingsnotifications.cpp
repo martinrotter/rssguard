@@ -19,6 +19,11 @@ SettingsNotifications::SettingsNotifications(Settings* settings, QWidget* parent
     ->setHelpText(tr("There are some built-in notification sounds. Just start typing \":\" and they will show up."),
                   true);
 
+  m_ui.m_lblNativeNotif->setHelpText(tr("Note that native notifications might have some OS-dependent limitations. For "
+                                        "example Windows OS is known to limit the amount of notification originating "
+                                        "from each app during short span of time."),
+                                     true);
+
   connect(m_ui.m_checkEnableNotifications, &QCheckBox::toggled, this, &SettingsNotifications::dirtifySettings);
   connect(m_ui.m_editor, &NotificationsEditor::someNotificationChanged, this, &SettingsNotifications::dirtifySettings);
 
