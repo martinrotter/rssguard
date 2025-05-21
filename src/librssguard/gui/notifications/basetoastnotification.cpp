@@ -77,10 +77,12 @@ void BaseToastNotification::setupTimedClosing(bool want_shorter_timeout) {
 
 bool BaseToastNotification::eventFilter(QObject* watched, QEvent* event) {
   if (watched == this && event->type() == QEvent::Type::Enter) {
+    qDebugNN << LOGSEC_NOTIFICATIONS << "Notification got ENTER event.";
     stopTimedClosing();
   }
 
   if (watched == this && event->type() == QEvent::Type::Leave) {
+    qDebugNN << LOGSEC_NOTIFICATIONS << "Notification got LEAVE event.";
     setupTimedClosing(true);
   }
 
@@ -99,12 +101,14 @@ bool BaseToastNotification::eventFilter(QObject* watched, QEvent* event) {
 void BaseToastNotification::closeEvent(QCloseEvent* event) {
   Q_UNUSED(event)
 
+  qDebugNN << LOGSEC_NOTIFICATIONS << "Notification got CLOSE event.";
   stopTimedClosing();
   emit closeRequested(this);
 }
 
 void BaseToastNotification::timerEvent(QTimerEvent* event) {
   if (event->timerId() == m_timerId) {
+    qDebugNN << LOGSEC_NOTIFICATIONS << "Notification got TIMER event.";
     stopTimedClosing();
     emit closeRequested(this);
   }
