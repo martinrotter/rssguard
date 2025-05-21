@@ -66,6 +66,7 @@ ArticleListNotification::ArticleListNotification(QWidget* parent)
 }
 
 void ArticleListNotification::loadResults(const QHash<Feed*, QList<Message>>& new_messages) {
+  qDebugNN << LOGSEC_NOTIFICATIONS << "Setting up RESULTS notification.";
   setupTimedClosing(false);
 
   m_newMessages = new_messages;
