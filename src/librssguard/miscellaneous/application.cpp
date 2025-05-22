@@ -331,12 +331,11 @@ void Application::performLogging(QtMsgType type, const QMessageLogContext& conte
   }
 
   if (!s_customLogFile.isEmpty()) {
-    QFile log_file(s_customLogFile);
+    static QFile* log_file = new QFile(s_customLogFile);
 
-    if (log_file.open(QFile::OpenModeFlag::Append | QFile::OpenModeFlag::Unbuffered)) {
-      log_file.write(console_message.toUtf8());
-      log_file.write(QSL("\r\n").toUtf8());
-      log_file.close();
+    if (log_file->isOpen() || log_file->open(QFile::OpenModeFlag::Append | QFile::OpenModeFlag::Unbuffered)) {
+      log_file->write(console_message.toUtf8());
+      log_file->write(QSL("\r\n").toUtf8());
     }
   }
 
@@ -374,20 +373,9 @@ void Application::loadDynamicShortcuts() {
 }
 
 void Application::offerPolls() const {
-  /*
   if (isFirstRunCurrentVersion()) {
-    qApp->showGuiMessage(Notification::Event::GeneralEvent,
-                         {tr("%1 survey").arg(QSL(APP_NAME)),
-                          tr("Please, fill the survey."),
-                          QSystemTrayIcon::MessageIcon::Warning},
-                         {false, true, false},
-                         {tr("Go to survey"), [] {
-                            qApp->web()->openUrlInExternalBrowser(QSL("https://docs.google.com/forms/d/e/"
-                                                                      "1FAIpQLScQ_r_EwM6qojPsIMQHGdnSktU-WGHgporN69mpU-"
-                                                                      "Tvq8y7XQ/viewform?usp=sf_link"));
-                          }});
+    qApp->web()->openUrlInExternalBrowser(QSL("https://forms.gle/3CZm95W6vrBLfi5K9"));
   }
-  */
 }
 
 void Application::offerChanges() const {
