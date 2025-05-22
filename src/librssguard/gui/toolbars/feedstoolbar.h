@@ -3,6 +3,7 @@
 #ifndef FEEDSTOOLBAR_H
 #define FEEDSTOOLBAR_H
 
+#include "core/feedsproxymodel.h"
 #include "gui/reusable/searchlineedit.h"
 #include "gui/toolbars/basetoolbar.h"
 
@@ -12,11 +13,6 @@ class FeedsToolBar : public BaseToolBar {
     Q_OBJECT
 
   public:
-    enum class SearchFields {
-      SearchTitleOnly = 1,
-      SearchAll = 2
-    };
-
     explicit FeedsToolBar(const QString& title, QWidget* parent = nullptr);
 
     virtual QList<QAction*> availableActions() const;
@@ -30,15 +26,24 @@ class FeedsToolBar : public BaseToolBar {
     SearchLineEdit* searchBox() const;
 
   signals:
+    void feedFilterChanged(FeedsProxyModel::FeedListFilter filter);
     void searchCriteriaChanged(SearchLineEdit::SearchMode mode,
                                Qt::CaseSensitivity sensitivity,
                                int custom_criteria,
                                const QString& phrase);
 
+  private slots:
+    void handleMessageFilterChange(QAction* action);
+
   private:
+    void initializeFilter();
     void initializeSearchBox();
 
   private:
+    QWidgetAction* m_actionMessageFilter;
+    QToolButton* m_btnMessageFilter;
+    QMenu* m_menuMessageFilter;
+
     SearchLineEdit* m_txtSearchMessages;
     QWidgetAction* m_actionSearchMessages;
 };

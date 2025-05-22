@@ -8,8 +8,6 @@
 #include "gui/reusable/searchlineedit.h"
 #include "gui/toolbars/basetoolbar.h"
 
-class QWidgetAction;
-class QToolButton;
 class QMenu;
 class QTimer;
 
@@ -17,11 +15,6 @@ class MessagesToolBar : public BaseToolBar {
     Q_OBJECT
 
   public:
-    enum class SearchFields {
-      SearchTitleOnly = 1,
-      SearchAll = 2
-    };
-
     explicit MessagesToolBar(const QString& title, QWidget* parent = nullptr);
 
     virtual QList<QAction*> availableActions() const;
@@ -48,23 +41,17 @@ class MessagesToolBar : public BaseToolBar {
 
   private:
     void initializeSearchBox();
-    void addActionToMenu(QMenu* menu,
-                         const QIcon& icon,
-                         const QString& title,
-                         const QVariant& value,
-                         const QString& name);
     void initializeHighlighter();
-    void activateAction(const QString& action_name, QWidgetAction* widget_action);
-    void saveToolButtonSelection(const QString& button_name, const QList<QAction*>& actions) const;
-    void drawNumberOfCriterias(QToolButton* btn, int count);
 
   private:
     QWidgetAction* m_actionMessageHighlighter;
-    QWidgetAction* m_actionMessageFilter;
     QToolButton* m_btnMessageHighlighter;
-    QToolButton* m_btnMessageFilter;
     QMenu* m_menuMessageHighlighter;
+
+    QWidgetAction* m_actionMessageFilter;
+    QToolButton* m_btnMessageFilter;
     QMenu* m_menuMessageFilter;
+
     QWidgetAction* m_actionSearchMessages;
     SearchLineEdit* m_txtSearchMessages;
 };

@@ -871,10 +871,10 @@ void MessagesView::searchMessages(SearchLineEdit::SearchMode mode,
 
   m_proxyModel->setFilterCaseSensitivity(sensitivity);
 
-  MessagesToolBar::SearchFields where_search = MessagesToolBar::SearchFields(custom_criteria);
+  BaseToolBar::SearchFields where_search = BaseToolBar::SearchFields(custom_criteria);
 
-  m_proxyModel->setFilterKeyColumn(where_search == MessagesToolBar::SearchFields::SearchTitleOnly ? MSG_DB_TITLE_INDEX
-                                                                                                  : -1);
+  m_proxyModel->setFilterKeyColumn(where_search == BaseToolBar::SearchFields::SearchTitleOnly ? MSG_DB_TITLE_INDEX
+                                                                                              : -1);
 
   if (selectionModel()->selectedRows().isEmpty()) {
     emit currentMessageRemoved(m_sourceModel->loadedItem());

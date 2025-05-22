@@ -3,6 +3,7 @@
 #ifndef FEEDMESSAGEVIEWER_H
 #define FEEDMESSAGEVIEWER_H
 
+#include "core/feedsproxymodel.h"
 #include "core/messagesmodel.h"
 #include "core/messagesproxymodel.h"
 #include "gui/tabcontent.h"
@@ -62,6 +63,8 @@ class RSSGUARD_DLLSPEC FeedMessageViewer : public TabContent {
     void switchFeedComponentVisibility();
 
     void changeMessageFilter(MessagesProxyModel::MessageListFilter filter);
+    void changeFeedFilter(FeedsProxyModel::FeedListFilter filter);
+
     void toggleShowOnlyUnreadFeeds();
     void toggleShowFeedTreeBranches();
     void toggleItemsAutoExpandingOnSelection();

@@ -11,10 +11,7 @@
 #include <chrono>
 
 #include <QMenu>
-#include <QPainter>
 #include <QTimer>
-#include <QToolButton>
-#include <QWidgetAction>
 
 using namespace std::chrono_literals;
 
@@ -155,25 +152,10 @@ void MessagesToolBar::handleMessageHighlighterChange(QAction* action) {
     drawNumberOfCriterias(m_btnMessageHighlighter, int(checked_tasks_std.size()));
   }
 
-  saveToolButtonSelection(QSL(HIGHLIGHTER_ACTION_NAME), FROM_STD_LIST(QList<QAction*>, checked_tasks_std));
+  saveToolButtonSelection(QSL(HIGHLIGHTER_ACTION_NAME),
+                          GUI::MessagesToolbarDefaultButtons,
+                          FROM_STD_LIST(QList<QAction*>, checked_tasks_std));
   emit messageHighlighterChanged(task);
-}
-
-void MessagesToolBar::drawNumberOfCriterias(QToolButton* btn, int count) {
-  QPixmap px(128, 128);
-  px.fill(Qt::GlobalColor::transparent);
-
-  QPainter p(&px);
-
-  auto fon = p.font();
-
-  fon.setPixelSize(40);
-  p.setFont(fon);
-
-  p.drawPixmap(0, 0, 80, 80, btn->defaultAction()->icon().pixmap(128, 128));
-  p.drawText(65, 65, 50, 50, Qt::AlignmentFlag::AlignCenter, QString::number(count));
-
-  btn->setIcon(px);
 }
 
 void MessagesToolBar::handleMessageFilterChange(QAction* action) {
@@ -185,6 +167,8 @@ void MessagesToolBar::handleMessageFilterChange(QAction* action) {
                                             .toStdList();
 
   if (task == MessagesProxyModel::MessageListFilter::NoFiltering || checked_tasks_std.empty()) {
+    task = MessagesProxyModel::MessageListFilter::NoFiltering;
+
     checked_tasks_std.clear();
 
     // Uncheck everything.
@@ -211,7 +195,9 @@ void MessagesToolBar::handleMessageFilterChange(QAction* action) {
     drawNumberOfCriterias(m_btnMessageFilter, int(checked_tasks_std.size()));
   }
 
-  saveToolButtonSelection(QSL(FILTER_ACTION_NAME), FROM_STD_LIST(QList<QAction*>, checked_tasks_std));
+  saveToolButtonSelection(QSL(FILTER_ACTION_NAME),
+                          GUI::MessagesToolbarDefaultButtons,
+                          FROM_STD_LIST(QList<QAction*>, checked_tasks_std));
   emit messageFilterChanged(task);
 }
 
@@ -233,18 +219,6 @@ void MessagesToolBar::initializeSearchBox() {
   m_actionSearchMessages->setProperty("name", tr("Article search box"));
 
   connect(m_txtSearchMessages, &SearchLineEdit::searchCriteriaChanged, this, &MessagesToolBar::searchCriteriaChanged);
-}
-
-void MessagesToolBar::addActionToMenu(QMenu* menu,
-                                      const QIcon& icon,
-                                      const QString& title,
-                                      const QVariant& value,
-                                      const QString& name) {
-  QAction* action = menu->addAction(icon, title);
-
-  action->setCheckable(true);
-  action->setData(value);
-  action->setObjectName(name);
 }
 
 void MessagesToolBar::initializeHighlighter() {
@@ -357,51 +331,14 @@ void MessagesToolBar::initializeHighlighter() {
 
   connect(m_menuMessageHighlighter, &QMenu::triggered, this, &MessagesToolBar::handleMessageHighlighterChange);
   connect(m_menuMessageFilter, &QMenu::triggered, this, &MessagesToolBar::handleMessageFilterChange);
-
   connect(this, &MessagesToolBar::toolButtonStyleChanged, this, [=](Qt::ToolButtonStyle style) {
     m_btnMessageHighlighter->setToolButtonStyle(style);
     m_btnMessageFilter->setToolButtonStyle(style);
   });
 }
 
-void MessagesToolBar::saveToolButtonSelection(const QString& button_name, const QList<QAction*>& actions) const {
-  QStringList action_names = savedActions();
-
-  auto opts_list = boolinq::from(actions)
-                     .select([](const QAction* act) {
-                       return act->objectName();
-                     })
-                     .toStdList();
-  QStringList opts = FROM_STD_LIST(QStringList, opts_list);
-
-  for (QString& action_name : action_names) {
-    if (action_name.startsWith(button_name)) {
-      action_name = button_name + QSL("[%1]").arg(opts.join(QL1C(';')));
-    }
-  }
-
-  qApp->settings()->setValue(GROUP(GUI), GUI::MessagesToolbarDefaultButtons, action_names.join(QSL(",")));
-}
-
 SearchLineEdit* MessagesToolBar::searchBox() const {
   return m_txtSearchMessages;
-}
-
-void MessagesToolBar::activateAction(const QString& action_name, QWidgetAction* widget_action) {
-  const int start = action_name.indexOf('[');
-  const int end = action_name.indexOf(']');
-
-  if (start != -1 && end != -1 && end == action_name.length() - 1) {
-    const QStringList menu_action_names = action_name.chopped(1).right(end - start - 1).split(QL1C(';'));
-    auto tool_btn = qobject_cast<QToolButton*>(widget_action->defaultWidget());
-
-    for (QAction* action : tool_btn->menu()->actions()) {
-      if (menu_action_names.contains(action->objectName())) {
-        // tool_btn->setDefaultAction(action);
-        action->trigger();
-      }
-    }
-  }
 }
 
 QStringList MessagesToolBar::defaultActions() const {

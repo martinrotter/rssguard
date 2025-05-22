@@ -299,7 +299,7 @@ DVALUE(int) GUI::HeightRowFeedsDef = -1;
 DKEY GUI::FeedsToolbarActions = "feeds_toolbar";
 DVALUE(char*)
 GUI::FeedsToolbarActionsDef = "m_actionUpdateAllItems,m_actionStopRunningItemsUpdate,m_actionPauseFeedFetching,m_"
-                              "actionMarkAllItemsRead,spacer,search";
+                              "actionMarkAllItemsRead,filter,spacer,search";
 
 DKEY GUI::StatusbarActions = "status_bar";
 DVALUE(char*)

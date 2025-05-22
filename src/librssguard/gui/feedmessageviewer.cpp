@@ -186,6 +186,10 @@ void FeedMessageViewer::changeMessageFilter(MessagesProxyModel::MessageListFilte
   m_messagesView->changeFilter(filter);
 }
 
+void FeedMessageViewer::changeFeedFilter(FeedsProxyModel::FeedListFilter filter) {
+  m_feedsView->changeFilter(filter);
+}
+
 void FeedMessageViewer::toggleShowOnlyUnreadFeeds() {
   const QAction* origin = qobject_cast<QAction*>(sender());
 
@@ -288,7 +292,9 @@ void FeedMessageViewer::createConnections() {
           &MessagesToolBar::messageHighlighterChanged,
           m_messagesView,
           &MessagesView::highlightMessages);
+
   connect(m_toolBarMessages, &MessagesToolBar::messageFilterChanged, this, &FeedMessageViewer::changeMessageFilter);
+  connect(m_toolBarFeeds, &FeedsToolBar::feedFilterChanged, this, &FeedMessageViewer::changeFeedFilter);
 
   connect(m_feedSplitter, &QSplitter::splitterMoved, this, &FeedMessageViewer::onFeedSplitterResized);
   connect(m_messageSplitter, &QSplitter::splitterMoved, this, &FeedMessageViewer::onMessageSplitterResized);

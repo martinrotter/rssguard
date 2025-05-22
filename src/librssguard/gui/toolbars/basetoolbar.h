@@ -3,7 +3,10 @@
 #ifndef TOOLBAR_H
 #define TOOLBAR_H
 
+#include <QMenu>
 #include <QToolBar>
+#include <QToolButton>
+#include <QWidgetAction>
 
 class BaseBar {
   public:
@@ -41,8 +44,25 @@ class BaseToolBar : public QToolBar, public BaseBar {
     Q_OBJECT
 
   public:
+    enum class SearchFields {
+      SearchTitleOnly = 1,
+      SearchAll = 2
+    };
+
     explicit BaseToolBar(const QString& title, QWidget* parent = nullptr);
     virtual ~BaseToolBar();
+
+  protected:
+    void saveToolButtonSelection(const QString& button_name,
+                                 const QString& setting_name,
+                                 const QList<QAction*>& actions) const;
+    void activateAction(const QString& action_name, QWidgetAction* widget_action);
+    void addActionToMenu(QMenu* menu,
+                         const QIcon& icon,
+                         const QString& title,
+                         const QVariant& value,
+                         const QString& name);
+    void drawNumberOfCriterias(QToolButton* btn, int count);
 };
 
 #endif // TOOLBAR_H

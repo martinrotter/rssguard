@@ -19,8 +19,10 @@ using RootItemPtr = RootItem*;
 
 FeedsProxyModel::FeedsProxyModel(FeedsModel* source_model, QObject* parent)
   : QSortFilterProxyModel(parent), m_sourceModel(source_model), m_view(nullptr), m_selectedItem(nullptr),
-    m_showUnreadOnly(false), m_sortAlphabetically(false) {
+    m_showUnreadOnly(false), m_sortAlphabetically(false), m_filter(FeedListFilter::NoFiltering) {
   setObjectName(QSL("FeedsProxyModel"));
+
+  initializeFilters();
 
   setSortRole(Qt::ItemDataRole::EditRole);
   setSortCaseSensitivity(Qt::CaseSensitivity::CaseInsensitive);
@@ -397,6 +399,43 @@ bool FeedsProxyModel::filterAcceptsRow(int source_row, const QModelIndex& source
   return should_show;
 }
 
+void FeedsProxyModel::initializeFilters() {
+  m_filters[FeedListFilter::ShowEmpty] = [this](const Feed* feed) {
+    return feed->countOfAllMessages() == 0;
+  };
+
+  m_filters[FeedListFilter::ShowNonEmpty] = [this](const Feed* feed) {
+    return feed->countOfAllMessages() != 0;
+  };
+
+  m_filters[FeedListFilter::ShowQuiet] = [this](const Feed* feed) {
+    return feed->isQuiet();
+  };
+
+  m_filters[FeedListFilter::ShowSwitchedOff] = [this](const Feed* feed) {
+    return feed->isSwitchedOff();
+  };
+
+  m_filters[FeedListFilter::ShowUnread] = [this](const Feed* feed) {
+    return feed->countOfUnreadMessages() > 0;
+  };
+
+  m_filters[FeedListFilter::ShowWithArticleFilters] = [this](const Feed* feed) {
+    return !feed->messageFilters().isEmpty();
+  };
+
+  m_filters[FeedListFilter::ShowWithError] = [this](const Feed* feed) {
+    return feed->status() == Feed::Status::AuthError || feed->status() == Feed::Status::NetworkError ||
+           feed->status() == Feed::Status::OtherError || feed->status() == Feed::Status::ParsingError;
+  };
+
+  m_filters[FeedListFilter::ShowWithNewArticles] = [this](const Feed* feed) {
+    return feed->status() == Feed::Status::NewMessages;
+  };
+
+  m_filterKeys = m_filters.keys();
+}
+
 bool FeedsProxyModel::filterAcceptsRowInternal(int source_row, const QModelIndex& source_parent) const {
   const QModelIndex idx = m_sourceModel->index(source_row, 0, source_parent);
 
@@ -405,6 +444,10 @@ bool FeedsProxyModel::filterAcceptsRowInternal(int source_row, const QModelIndex
   }
 
   const RootItem* item = m_sourceModel->itemForIndex(idx);
+
+  if (m_selectedItem == item) {
+    return true;
+  }
 
   if (item->kind() == RootItem::Kind::Important && !item->getParentServiceRoot()->nodeShowImportant()) {
     return false;
@@ -428,22 +471,26 @@ bool FeedsProxyModel::filterAcceptsRowInternal(int source_row, const QModelIndex
     return true;
   }
 
-  if (!m_showUnreadOnly) {
-    // Take only regexp filtering into account.
-    return QSortFilterProxyModel::filterAcceptsRow(source_row, source_parent);
+  if (item->kind() == RootItem::Kind::Feed) {
+    const Feed* feed = item->toFeed();
+
+    for (FeedListFilter val : m_filterKeys) {
+      if (Globals::hasFlag(m_filter, val)) {
+        // This particular filter is enabled.
+        if (m_filters[val](feed)) {
+          // The item matches the feed filter.
+          // Display it if it matches internal string-based filter too.
+          return QSortFilterProxyModel::filterAcceptsRow(source_row, source_parent);
+        }
+      }
+    }
+
+    // The item does not match feed filter.
+    // Display it only if it is selected.
+    return m_filter == FeedListFilter::NoFiltering;
   }
-  else {
-    // NOTE: If item has < 0 of unread messages it may mean, that the count
-    // of unread messages is not (yet) known, display that item too.
-    //
-    // Also, the actual selected item should not be filtered out too.
-    // This is primarily to make sure that the selection does not "vanish", this
-    // particularly manifests itself if user uses "next unread item" action and
-    // "show unread only" is enabled too and user for example selects last unread
-    // article in a feed -> then the feed would disappear from list suddenly.
-    return m_selectedItem == item ||
-           (item->countOfUnreadMessages() != 0 && QSortFilterProxyModel::filterAcceptsRow(source_row, source_parent));
-  }
+
+  return QSortFilterProxyModel::filterAcceptsRow(source_row, source_parent);
 }
 
 bool FeedsProxyModel::sortAlphabetically() const {
@@ -499,4 +546,10 @@ QModelIndexList FeedsProxyModel::mapListToSource(const QModelIndexList& indexes)
   }
 
   return source_indexes;
+}
+
+void FeedsProxyModel::setFeedListFilter(FeedListFilter filter) {
+  m_filter = filter;
+
+  invalidateRowsFilter();
 }

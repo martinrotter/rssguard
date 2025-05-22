@@ -14,8 +14,24 @@ class FeedsProxyModel : public QSortFilterProxyModel {
     Q_OBJECT
 
   public:
+    // Enum which describes basic filtering schemes
+    // for feeds.
+    enum class FeedListFilter {
+      NoFiltering = 1,
+      ShowUnread = 2,
+      ShowEmpty = 4,
+      ShowNonEmpty = 8,
+      ShowWithNewArticles = 16,
+      ShowWithError = 32,
+      ShowSwitchedOff = 64,
+      ShowQuiet = 128,
+      ShowWithArticleFilters = 256
+    };
+
     explicit FeedsProxyModel(FeedsModel* source_model, QObject* parent = nullptr);
     virtual ~FeedsProxyModel();
+
+    void setFeedListFilter(FeedListFilter filter);
 
     virtual bool canDropMimeData(const QMimeData* data,
                                  Qt::DropAction action,
@@ -45,8 +61,8 @@ class FeedsProxyModel : public QSortFilterProxyModel {
     void setShowUnreadOnly(bool show_unread_only);
 
     const RootItem* selectedItem() const;
-
     void setSelectedItem(const RootItem* selected_item);
+
     void setView(FeedsView* newView);
 
     bool sortAlphabetically() const;
@@ -66,6 +82,8 @@ class FeedsProxyModel : public QSortFilterProxyModel {
     virtual bool filterAcceptsRow(int source_row, const QModelIndex& source_parent) const;
 
   private:
+    void initializeFilters();
+
     virtual bool filterAcceptsRowInternal(int source_row, const QModelIndex& source_parent) const;
 
     // Source model pointer.
@@ -80,6 +98,12 @@ class FeedsProxyModel : public QSortFilterProxyModel {
     bool m_showNodeImportant;
     QList<RootItem::Kind> m_priorities;
     QList<QPair<int, QModelIndex>> m_hiddenIndices;
+
+    FeedListFilter m_filter;
+    QMap<FeedListFilter, std::function<bool(const Feed*)>> m_filters;
+    QList<FeedListFilter> m_filterKeys;
 };
+
+Q_DECLARE_METATYPE(FeedsProxyModel::FeedListFilter)
 
 #endif // FEEDSPROXYMODEL_H

@@ -407,6 +407,10 @@ void FeedsView::editRecursiveFeeds() {
   }
 }
 
+void FeedsView::changeFilter(FeedsProxyModel::FeedListFilter filter) {
+  m_proxyModel->setFeedListFilter(filter);
+}
+
 void FeedsView::editSelectedItems() {
   editItems(selectedItems());
 }
@@ -787,10 +791,10 @@ void FeedsView::filterItems(SearchLineEdit::SearchMode mode,
 
   m_proxyModel->setFilterCaseSensitivity(sensitivity);
 
-  FeedsToolBar::SearchFields where_search = FeedsToolBar::SearchFields(custom_criteria);
+  BaseToolBar::SearchFields where_search = BaseToolBar::SearchFields(custom_criteria);
 
-  m_proxyModel->setFilterKeyColumn(where_search == FeedsToolBar::SearchFields::SearchTitleOnly ? FDS_MODEL_TITLE_INDEX
-                                                                                               : -1);
+  m_proxyModel->setFilterKeyColumn(where_search == BaseToolBar::SearchFields::SearchTitleOnly ? FDS_MODEL_TITLE_INDEX
+                                                                                              : -1);
 
   if (phrase.isEmpty()) {
     loadAllExpandStates();

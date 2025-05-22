@@ -2,6 +2,9 @@
 
 #include "gui/toolbars/feedstoolbar.h"
 
+#include "3rd-party/boolinq/boolinq.h"
+#include "core/feedsproxymodel.h"
+#include "gui/reusable/nonclosablemenu.h"
 #include "miscellaneous/application.h"
 #include "miscellaneous/iconfactory.h"
 #include "miscellaneous/settings.h"
@@ -15,6 +18,7 @@ FeedsToolBar::FeedsToolBar(const QString& title, QWidget* parent) : BaseToolBar(
   margins.setRight(margins.right() + FILTER_RIGHT_MARGIN);
   setContentsMargins(margins);
 
+  initializeFilter();
   initializeSearchBox();
 }
 
@@ -22,6 +26,7 @@ QList<QAction*> FeedsToolBar::availableActions() const {
   QList<QAction*> available_actions = qApp->userActions();
 
   available_actions.append(m_actionSearchMessages);
+  available_actions.append(m_actionMessageFilter);
 
   return available_actions;
 }
@@ -65,6 +70,11 @@ QList<QAction*> FeedsToolBar::convertActions(const QStringList& actions) {
       // Add search box.
       spec_actions.append(m_actionSearchMessages);
     }
+    else if (action_name.startsWith(QSL(FILTER_ACTION_NAME))) {
+      // Add filter button.
+      spec_actions.append(m_actionMessageFilter);
+      activateAction(action_name, m_actionMessageFilter);
+    }
     else if (action_name == QSL(SPACER_ACTION_NAME)) {
       // Add new spacer.
       auto* spacer = new QWidget(this);
@@ -91,6 +101,53 @@ void FeedsToolBar::loadSpecificActions(const QList<QAction*>& actions, bool init
   for (QAction* act : actions) {
     addAction(act);
   }
+}
+
+inline FeedsProxyModel::FeedListFilter operator|(FeedsProxyModel::FeedListFilter a, FeedsProxyModel::FeedListFilter b) {
+  return static_cast<FeedsProxyModel::FeedListFilter>(static_cast<int>(a) | static_cast<int>(b));
+}
+
+void FeedsToolBar::handleMessageFilterChange(QAction* action) {
+  FeedsProxyModel::FeedListFilter task = action->data().value<FeedsProxyModel::FeedListFilter>();
+  std::list<QAction*> checked_tasks_std = boolinq::from(m_menuMessageFilter->actions())
+                                            .where([](QAction* act) {
+                                              return act->isChecked();
+                                            })
+                                            .toStdList();
+
+  if (task == FeedsProxyModel::FeedListFilter::NoFiltering || checked_tasks_std.empty()) {
+    task = FeedsProxyModel::FeedListFilter::NoFiltering;
+
+    checked_tasks_std.clear();
+
+    // Uncheck everything.
+    m_menuMessageFilter->blockSignals(true);
+
+    for (QAction* tsk : m_menuMessageFilter->actions()) {
+      tsk->setChecked(false);
+    }
+
+    m_menuMessageFilter->blockSignals(false);
+  }
+  else {
+    task = FeedsProxyModel::FeedListFilter(0);
+
+    for (QAction* tsk : checked_tasks_std) {
+      task = task | tsk->data().value<FeedsProxyModel::FeedListFilter>();
+    }
+  }
+
+  m_btnMessageFilter->setDefaultAction(checked_tasks_std.empty() ? m_menuMessageFilter->actions().constFirst()
+                                                                 : checked_tasks_std.front());
+
+  if (checked_tasks_std.size() > 1) {
+    drawNumberOfCriterias(m_btnMessageFilter, int(checked_tasks_std.size()));
+  }
+
+  saveToolButtonSelection(QSL(FILTER_ACTION_NAME),
+                          GUI::FeedsToolbarActions,
+                          FROM_STD_LIST(QList<QAction*>, checked_tasks_std));
+  emit feedFilterChanged(task);
 }
 
 QStringList FeedsToolBar::defaultActions() const {
@@ -138,4 +195,67 @@ void FeedsToolBar::initializeSearchBox() {
 
 SearchLineEdit* FeedsToolBar::searchBox() const {
   return m_txtSearchMessages;
+}
+
+void FeedsToolBar::initializeFilter() {
+  m_menuMessageFilter = new NonClosableMenu(tr("Menu for filtering feeds"), this);
+
+  addActionToMenu(m_menuMessageFilter,
+                  qApp->icons()->fromTheme(QSL("mail-mark-read")),
+                  tr("No extra filtering"),
+                  QVariant::fromValue(FeedsProxyModel::FeedListFilter::NoFiltering),
+                  QSL("no_filtering"));
+  addActionToMenu(m_menuMessageFilter,
+                  qApp->icons()->fromTheme(QSL("mail-mark-read")),
+                  tr("Show unread feeds"),
+                  QVariant::fromValue(FeedsProxyModel::FeedListFilter::ShowUnread),
+                  QSL("show_unread"));
+  addActionToMenu(m_menuMessageFilter,
+                  qApp->icons()->fromTheme(QSL("mail-mark-read")),
+                  tr("Show non-empty feeds"),
+                  QVariant::fromValue(FeedsProxyModel::FeedListFilter::ShowNonEmpty),
+                  QSL("non_empty"));
+  addActionToMenu(m_menuMessageFilter,
+                  qApp->icons()->fromTheme(QSL("mail-mark-read")),
+                  tr("Show feeds with new articles"),
+                  QVariant::fromValue(FeedsProxyModel::FeedListFilter::ShowWithNewArticles),
+                  QSL("new_articles"));
+  addActionToMenu(m_menuMessageFilter,
+                  qApp->icons()->fromTheme(QSL("mail-mark-read")),
+                  tr("Show feeds with error"),
+                  QVariant::fromValue(FeedsProxyModel::FeedListFilter::ShowWithError),
+                  QSL("with_error"));
+  addActionToMenu(m_menuMessageFilter,
+                  qApp->icons()->fromTheme(QSL("mail-mark-read")),
+                  tr("Show switched off feeds"),
+                  QVariant::fromValue(FeedsProxyModel::FeedListFilter::ShowSwitchedOff),
+                  QSL("switched_off"));
+  addActionToMenu(m_menuMessageFilter,
+                  qApp->icons()->fromTheme(QSL("mail-mark-read")),
+                  tr("Show quiet feeds"),
+                  QVariant::fromValue(FeedsProxyModel::FeedListFilter::ShowQuiet),
+                  QSL("quiet"));
+  addActionToMenu(m_menuMessageFilter,
+                  qApp->icons()->fromTheme(QSL("mail-mark-read")),
+                  tr("Show feeds with article filters"),
+                  QVariant::fromValue(FeedsProxyModel::FeedListFilter::ShowWithArticleFilters),
+                  QSL("with_filters"));
+
+  m_btnMessageFilter = new QToolButton(this);
+  m_btnMessageFilter->setToolTip(tr("Display all feeds"));
+  m_btnMessageFilter->setMenu(m_menuMessageFilter);
+  m_btnMessageFilter->setPopupMode(QToolButton::ToolButtonPopupMode::InstantPopup);
+  m_btnMessageFilter->setIcon(qApp->icons()->fromTheme(QSL("mail-mark-read")));
+  m_btnMessageFilter->setDefaultAction(m_menuMessageFilter->actions().constFirst());
+
+  m_actionMessageFilter = new QWidgetAction(this);
+  m_actionMessageFilter->setDefaultWidget(m_btnMessageFilter);
+  m_actionMessageFilter->setIcon(m_btnMessageFilter->icon());
+  m_actionMessageFilter->setProperty("type", FILTER_ACTION_NAME);
+  m_actionMessageFilter->setProperty("name", tr("Feed list filter"));
+
+  connect(m_menuMessageFilter, &QMenu::triggered, this, &FeedsToolBar::handleMessageFilterChange);
+  connect(this, &FeedsToolBar::toolButtonStyleChanged, this, [=](Qt::ToolButtonStyle style) {
+    m_btnMessageFilter->setToolButtonStyle(style);
+  });
 }
