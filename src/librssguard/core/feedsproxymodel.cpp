@@ -522,7 +522,13 @@ void FeedsProxyModel::invalidateReadFeedsFilter(bool set_new_value, bool show_un
     setShowUnreadOnly(show_unread_only);
   }
 
-  QTimer::singleShot(0, this, &FeedsProxyModel::invalidateFilter);
+  QTimer::singleShot(0,
+                     this,
+#if QT_VERSION_MAJOR == 5
+                     &FeedsProxyModel::invalidateFilter);
+#else
+                     &FeedsProxyModel::invalidateRowsFilter);
+#endif
 }
 
 void FeedsProxyModel::setShowUnreadOnly(bool show_unread_only) {
@@ -551,5 +557,9 @@ QModelIndexList FeedsProxyModel::mapListToSource(const QModelIndexList& indexes)
 void FeedsProxyModel::setFeedListFilter(FeedListFilter filter) {
   m_filter = filter;
 
+#if QT_VERSION_MAJOR == 5
+  invalidateFilter();
+#else
   invalidateRowsFilter();
+#endif
 }

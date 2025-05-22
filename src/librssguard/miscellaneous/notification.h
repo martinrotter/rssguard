@@ -48,7 +48,7 @@ class Notification {
 
     explicit Notification(Event event = Event::NoEvent,
                           bool balloon = false,
-                          bool dialog = true,
+                          bool dialog = false,
                           bool play_sound = true,
                           const QString& sound_path = {},
                           int volume = DEFAULT_NOTIFICATION_VOLUME);
