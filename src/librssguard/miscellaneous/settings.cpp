@@ -124,9 +124,6 @@ DVALUE(bool) Feeds::FeedsUpdateOnStartupDef = false;
 DKEY Feeds::FeedsUpdateStartupDelay = "feeds_update_on_startup_delay";
 DVALUE(double) Feeds::FeedsUpdateStartupDelayDef = STARTUP_UPDATE_DELAY;
 
-DKEY Feeds::ShowOnlyUnreadFeeds = "show_only_unread_feeds";
-DVALUE(bool) Feeds::ShowOnlyUnreadFeedsDef = false;
-
 DKEY Feeds::SortAlphabetically = "sort_alphabetically";
 DVALUE(bool) Feeds::SortAlphabeticallyDef = false;
 
@@ -268,6 +265,9 @@ DVALUE(bool) CustomSkinColors::EnabledDef = false;
 
 // GUI.
 DKEY GUI::ID = "gui";
+
+DKEY GUI::FeedViewState = "feed_view_state";
+DVALUE(QString) GUI::FeedViewStateDef = QString();
 
 DKEY GUI::MessageViewState = "msg_view_state";
 DVALUE(QString) GUI::MessageViewStateDef = QString();

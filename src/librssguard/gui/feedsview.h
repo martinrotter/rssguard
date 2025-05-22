@@ -42,6 +42,9 @@ class RSSGUARD_DLLSPEC FeedsView : public BaseTreeView {
     void saveAllExpandStates();
     void loadAllExpandStates();
 
+    QByteArray saveHeaderState() const;
+    void restoreHeaderState(const QByteArray& dta);
+
   public slots:
     void copyUrlOfSelectedFeeds() const;
     void sortByColumn(int column, Qt::SortOrder order);
@@ -87,13 +90,11 @@ class RSSGUARD_DLLSPEC FeedsView : public BaseTreeView {
     void switchVisibility();
 
     void changeFilter(FeedsProxyModel::FeedListFilter filter);
-
     void filterItems(SearchLineEdit::SearchMode mode,
                      Qt::CaseSensitivity sensitivity,
                      int custom_criteria,
                      const QString& phrase);
     void toggleFeedSortingMode(bool sort_alphabetically);
-    void invalidateReadFeedsFilter(bool set_new_value = false, bool show_unread_only = false);
 
   signals:
     void itemSelected(RootItem* item);

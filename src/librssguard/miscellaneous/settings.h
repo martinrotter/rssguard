@@ -122,9 +122,6 @@ namespace Feeds {
   KEY FeedsUpdateStartupDelay;
   VALUE(double) FeedsUpdateStartupDelayDef;
 
-  KEY ShowOnlyUnreadFeeds;
-  VALUE(bool) ShowOnlyUnreadFeedsDef;
-
   KEY SortAlphabetically;
   VALUE(bool) SortAlphabeticallyDef;
 
@@ -295,6 +292,9 @@ namespace GUI {
 
   KEY ToastNotificationsWidth;
   VALUE(int) ToastNotificationsWidthDef;
+
+  KEY FeedViewState;
+  VALUE(QString) FeedViewStateDef;
 
   KEY MessageViewState;
   VALUE(QString) MessageViewStateDef;

@@ -196,7 +196,6 @@ QList<QAction*> FormMain::allActions() const {
   actions << m_ui->m_actionClearSelectedItems;
   actions << m_ui->m_actionPurgeSelectedItems;
   actions << m_ui->m_actionClearAllItems;
-  actions << m_ui->m_actionShowOnlyUnreadItems;
   actions << m_ui->m_actionSortFeedsAlphabetically;
   actions << m_ui->m_actionShowTreeBranches;
   actions << m_ui->m_actionAutoExpandItemsWhenSelected;
@@ -635,7 +634,6 @@ void FormMain::setupIcons() {
   m_ui->m_actionSelectPreviousMessage->setIcon(icon_theme_factory->fromTheme(QSL("arrow-up")));
   m_ui->m_actionSelectNextUnreadMessage->setIcon(icon_theme_factory->fromTheme(QSL("mail-mark-unread")));
   m_ui->m_actionSortFeedsAlphabetically->setIcon(icon_theme_factory->fromTheme(QSL("format-text-bold")));
-  m_ui->m_actionShowOnlyUnreadItems->setIcon(icon_theme_factory->fromTheme(QSL("mail-mark-unread")));
   m_ui->m_actionExpandCollapseItem->setIcon(icon_theme_factory->fromTheme(QSL("format-indent-more")));
   m_ui->m_actionExpandCollapseItemRecursively->setIcon(icon_theme_factory->fromTheme(QSL("format-indent-more")));
   m_ui->m_actionRestoreSelectedMessages->setIcon(icon_theme_factory->fromTheme(QSL("view-refresh")));
@@ -721,8 +719,6 @@ void FormMain::loadSize() {
   // Other startup GUI-related or misc settings.
   m_ui->m_actionSortFeedsAlphabetically
     ->setChecked(settings->value(GROUP(Feeds), SETTING(Feeds::SortAlphabetically)).toBool());
-  m_ui->m_actionShowOnlyUnreadItems
-    ->setChecked(settings->value(GROUP(Feeds), SETTING(Feeds::ShowOnlyUnreadFeeds)).toBool());
   m_ui->m_actionShowTreeBranches->setChecked(settings->value(GROUP(Feeds), SETTING(Feeds::ShowTreeBranches)).toBool());
   m_ui->m_actionAutoExpandItemsWhenSelected
     ->setChecked(settings->value(GROUP(Feeds), SETTING(Feeds::AutoExpandOnSelection)).toBool());
@@ -1022,10 +1018,6 @@ void FormMain::createConnections() {
           &QAction::triggered,
           tabWidget()->feedMessageViewer(),
           &FeedMessageViewer::switchMessageSplitterOrientation);
-  connect(m_ui->m_actionShowOnlyUnreadItems,
-          &QAction::toggled,
-          tabWidget()->feedMessageViewer(),
-          &FeedMessageViewer::toggleShowOnlyUnreadFeeds);
   connect(m_ui->m_actionSortFeedsAlphabetically,
           &QAction::toggled,
           tabWidget()->feedMessageViewer()->feedsView(),

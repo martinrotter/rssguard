@@ -57,9 +57,6 @@ class FeedsProxyModel : public QSortFilterProxyModel {
     // Maps list of indexes.
     QModelIndexList mapListToSource(const QModelIndexList& indexes) const;
 
-    bool showUnreadOnly() const;
-    void setShowUnreadOnly(bool show_unread_only);
-
     const RootItem* selectedItem() const;
     void setSelectedItem(const RootItem* selected_item);
 
@@ -67,9 +64,6 @@ class FeedsProxyModel : public QSortFilterProxyModel {
 
     bool sortAlphabetically() const;
     void setSortAlphabetically(bool sort_alphabetically);
-
-  public slots:
-    void invalidateReadFeedsFilter(bool set_new_value = false, bool show_unread_only = false);
 
   signals:
     void indexNotFilteredOutAnymore(QModelIndex source_idx) const;
@@ -90,7 +84,6 @@ class FeedsProxyModel : public QSortFilterProxyModel {
     FeedsModel* m_sourceModel;
     FeedsView* m_view;
     const RootItem* m_selectedItem;
-    bool m_showUnreadOnly;
     bool m_sortAlphabetically;
     bool m_showNodeUnread;
     bool m_showNodeProbes;

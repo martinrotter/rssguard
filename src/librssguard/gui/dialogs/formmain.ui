@@ -136,7 +136,6 @@
     <addaction name="m_actionRearrangeCategories"/>
     <addaction name="m_actionRearrangeFeeds"/>
     <addaction name="separator"/>
-    <addaction name="m_actionShowOnlyUnreadItems"/>
     <addaction name="m_actionAutoExpandItemsWhenSelected"/>
     <addaction name="m_actionShowTreeBranches"/>
     <addaction name="m_actionExpandCollapseItem"/>
@@ -645,17 +644,6 @@
    </property>
    <property name="shortcut">
     <string notr="true">Ctrl+Shift+Del</string>
-   </property>
-  </action>
-  <action name="m_actionShowOnlyUnreadItems">
-   <property name="checkable">
-    <bool>true</bool>
-   </property>
-   <property name="text">
-    <string>Show unread items only</string>
-   </property>
-   <property name="shortcut">
-    <string notr="true">U</string>
    </property>
   </action>
   <action name="m_actionExpandCollapseItem">

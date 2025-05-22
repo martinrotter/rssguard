@@ -62,7 +62,6 @@ class RSSGUARD_DLLSPEC RootItem : public QObject {
     explicit RootItem(const RootItem& other);
     virtual ~RootItem();
 
-    // Determines if this item should be kept always in the beginning of feeds list.
     virtual QString hashCode() const;
     virtual QString additionalTooltip() const;
 

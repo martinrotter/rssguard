@@ -98,7 +98,7 @@ void MessagesView::restoreHeaderState(const QByteArray& dta) {
   int saved_header_count = obj[QSL("header_count")].toInt();
 
   if (saved_header_count < header()->count()) {
-    qWarningNN << LOGSEC_GUI << "Detected invalid state for list view.";
+    qWarningNN << LOGSEC_GUI << "Detected invalid state for article list.";
     return;
   }
 

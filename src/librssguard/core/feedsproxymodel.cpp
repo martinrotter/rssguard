@@ -19,7 +19,7 @@ using RootItemPtr = RootItem*;
 
 FeedsProxyModel::FeedsProxyModel(FeedsModel* source_model, QObject* parent)
   : QSortFilterProxyModel(parent), m_sourceModel(source_model), m_view(nullptr), m_selectedItem(nullptr),
-    m_showUnreadOnly(false), m_sortAlphabetically(false), m_filter(FeedListFilter::NoFiltering) {
+    m_sortAlphabetically(false), m_filter(FeedListFilter::NoFiltering) {
   setObjectName(QSL("FeedsProxyModel"));
 
   initializeFilters();
@@ -511,29 +511,6 @@ const RootItem* FeedsProxyModel::selectedItem() const {
 
 void FeedsProxyModel::setSelectedItem(const RootItem* selected_item) {
   m_selectedItem = selected_item;
-}
-
-bool FeedsProxyModel::showUnreadOnly() const {
-  return m_showUnreadOnly;
-}
-
-void FeedsProxyModel::invalidateReadFeedsFilter(bool set_new_value, bool show_unread_only) {
-  if (set_new_value) {
-    setShowUnreadOnly(show_unread_only);
-  }
-
-  QTimer::singleShot(0,
-                     this,
-#if QT_VERSION_MAJOR == 5
-                     &FeedsProxyModel::invalidateFilter);
-#else
-                     &FeedsProxyModel::invalidateRowsFilter);
-#endif
-}
-
-void FeedsProxyModel::setShowUnreadOnly(bool show_unread_only) {
-  m_showUnreadOnly = show_unread_only;
-  qApp->settings()->setValue(GROUP(Feeds), Feeds::ShowOnlyUnreadFeeds, show_unread_only);
 }
 
 void FeedsProxyModel::setSortAlphabetically(bool sort_alphabetically) {

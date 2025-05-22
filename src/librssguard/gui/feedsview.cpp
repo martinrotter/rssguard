@@ -1123,11 +1123,49 @@ QMenu* FeedsView::initializeContextMenuProbe(RootItem* clicked_item) {
   return m_contextMenuProbe;
 }
 
+QByteArray FeedsView::saveHeaderState() const {
+  QJsonObject obj;
+
+  obj[QSL("header_count")] = header()->count();
+
+  // Store column attributes.
+  for (int i = 0; i < header()->count(); i++) {
+    obj[QSL("header_%1_size").arg(i)] = header()->sectionSize(i);
+  }
+
+  return QJsonDocument(obj).toJson(QJsonDocument::JsonFormat::Compact);
+}
+
+void FeedsView::restoreHeaderState(const QByteArray& dta) {
+  QJsonObject obj = QJsonDocument::fromJson(dta).object();
+  int saved_header_count = obj[QSL("header_count")].toInt();
+
+  if (saved_header_count < header()->count()) {
+    qWarningNN << LOGSEC_GUI << "Detected invalid state for feed list.";
+    return;
+  }
+
+  // Restore column attributes.
+  for (int i = 0; i < saved_header_count && i < header()->count(); i++) {
+    int ss = obj[QSL("header_%1_size").arg(i)].toInt();
+
+    header()->resizeSection(i, ss);
+  }
+
+  // All columns are resizeable but last one is set to auto-stretch to fill remaining
+  // space. Sometimes this column is saved as too wide and causes
+  // horizontal scrollbar to appear. Therefore downsize it.
+  header()->resizeSection(header()->logicalIndex(header()->count() - 1), 1);
+}
+
 void FeedsView::setupAppearance() {
   // Setup column resize strategies.
-  header()->setSectionResizeMode(FDS_MODEL_TITLE_INDEX, QHeaderView::ResizeMode::Stretch);
-  header()->setSectionResizeMode(FDS_MODEL_COUNTS_INDEX, QHeaderView::ResizeMode::ResizeToContents);
-  header()->setStretchLastSection(false);
+  for (int i = 0; i < header()->count(); i++) {
+    header()->setSectionResizeMode(i, QHeaderView::ResizeMode::Interactive);
+  }
+
+  header()->setStretchLastSection(true);
+  header()->setSectionsMovable(false);
 
   setUniformRowHeights(true);
   setAnimated(true);
@@ -1152,18 +1190,12 @@ void FeedsView::setupAppearance() {
                                                      this));
 }
 
-void FeedsView::invalidateReadFeedsFilter(bool set_new_value, bool show_unread_only) {
-  m_proxyModel->invalidateReadFeedsFilter(set_new_value, show_unread_only);
-}
-
 void FeedsView::selectionChanged(const QItemSelection& selected, const QItemSelection& deselected) {
   RootItem* selected_item = selectedItem();
 
   m_proxyModel->setSelectedItem(selected_item);
   QTreeView::selectionChanged(selected, deselected);
   emit itemSelected(selected_item);
-
-  invalidateReadFeedsFilter();
 
   if (!selectedIndexes().isEmpty() &&
       qApp->settings()->value(GROUP(Feeds), SETTING(Feeds::AutoExpandOnSelection)).toBool()) {

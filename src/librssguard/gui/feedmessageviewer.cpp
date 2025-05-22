@@ -64,6 +64,7 @@ FeedsToolBar* FeedMessageViewer::feedsToolBar() const {
 void FeedMessageViewer::saveSize() {
   Settings* settings = qApp->settings();
 
+  settings->setValue(GROUP(GUI), GUI::FeedViewState, QString(m_feedsView->saveHeaderState().toBase64()));
   settings->setValue(GROUP(GUI), GUI::MessageViewState, QString(m_messagesView->saveHeaderState().toBase64()));
 
   // Store "visibility" of toolbars and list headers.
@@ -82,6 +83,12 @@ void FeedMessageViewer::loadSize() {
   }
   else {
     switchMessageSplitterOrientation();
+  }
+
+  QString settings_feed_header = settings->value(GROUP(GUI), SETTING(GUI::FeedViewState)).toString();
+
+  if (!settings_feed_header.isEmpty()) {
+    m_feedsView->restoreHeaderState(QByteArray::fromBase64(settings_feed_header.toLocal8Bit()));
   }
 
   QString settings_msg_header = settings->value(GROUP(GUI), SETTING(GUI::MessageViewState)).toString();
@@ -188,17 +195,6 @@ void FeedMessageViewer::changeMessageFilter(MessagesProxyModel::MessageListFilte
 
 void FeedMessageViewer::changeFeedFilter(FeedsProxyModel::FeedListFilter filter) {
   m_feedsView->changeFilter(filter);
-}
-
-void FeedMessageViewer::toggleShowOnlyUnreadFeeds() {
-  const QAction* origin = qobject_cast<QAction*>(sender());
-
-  if (origin == nullptr) {
-    m_feedsView->invalidateReadFeedsFilter(true, false);
-  }
-  else {
-    m_feedsView->invalidateReadFeedsFilter(true, origin->isChecked());
-  }
 }
 
 void FeedMessageViewer::toggleShowFeedTreeBranches() {

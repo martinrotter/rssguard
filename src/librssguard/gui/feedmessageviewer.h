@@ -65,7 +65,6 @@ class RSSGUARD_DLLSPEC FeedMessageViewer : public TabContent {
     void changeMessageFilter(MessagesProxyModel::MessageListFilter filter);
     void changeFeedFilter(FeedsProxyModel::FeedListFilter filter);
 
-    void toggleShowOnlyUnreadFeeds();
     void toggleShowFeedTreeBranches();
     void toggleItemsAutoExpandingOnSelection();
     void alternateRowColorsInLists();
