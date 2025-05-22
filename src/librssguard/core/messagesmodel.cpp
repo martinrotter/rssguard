@@ -94,7 +94,7 @@ QIcon MessagesModel::generateUnreadIcon() {
   QPointF center(64, 64);
   qreal radius = 32;
 
-  QColor custom_clr = qApp->skins()->colorForModel(SkinEnums::PaletteColors::FgNewMessages).value<QColor>();
+  QColor custom_clr = qApp->skins()->colorForModel(SkinEnums::PaletteColors::FgInteresting).value<QColor>();
 
   if (!custom_clr.isValid()) {
     custom_clr = QColor(RAD_COLOR);

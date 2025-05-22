@@ -1,0 +1,309 @@
+@charset "utf-8";
+
+$qtbg-base:     #2F3134 !default; // clr_basbg
+$qtbg-button:   #2C2D30 !default; // clr_altbg // button bg (scrollbar, alt bg)
+$qcselbg:       #647595 !default; // clr_selbg
+
+// {{{ Emulate Fusion colour processing (dark only)
+
+// Scrollbar colours
+
+//$qcbgbg:    lighten($qtbg-button, 6%); // See toolbar bg
+$bgscroll:      lighten($qtbg-button, 2%) !default; // track and corner bg
+$tr-border:     darken($qtbg-button, 4%) !default; // track brdr
+
+// {{{ Scrollbar thumb
+
+// Thumb bg gradient
+
+// Normal
+$thscrlin:      lighten($qtbg-button, 6%) !default;
+$thscrlout:     lighten($qtbg-button, 4%) !default;
+
+// Hover
+$thscrlhvin:    lighten($qtbg-button, 7%) !default;
+$thscrlhvout:   $thscrlout;
+
+// Light outline
+$th-border:     lighten($qtbg-button, 15%) !default;
+
+// }}}
+
+// }}}
+
+// {{{ HTML palette (Colours)
+
+$cbg00: $qtbg-base;
+
+// {{{ Irrelevant, because colour switcher (see below) overrides all fg colours (either with JS on or off)
+$cfg00: #f5f5f5 !default;
+$cfg10: #E2E2E2 !default;
+$cfg11: $cfg10;
+// }}}
+
+$cbor2: #545556 !default;
+
+$ccodeblock:    rgba(33, 35, 39, 0.4) !default;
+$ccode:         $ccodeblock;
+$cbor3:         $tr-border;
+$cmark:         #f8d08c66 !default; // 40% transparency
+
+$clink: $qcselbg;
+
+// }}}
+
+// Other
+
+$radius-unit: .3em !default;
+
+@import
+    "../nudus-base/html_style_base"
+;
+
+//
+// Dark CSS style has following additions:
+//
+
+// {{{ Border around viewport
+
+// https://csswizardry.com/2010/12/simplified-page-borders-in-pure-css/
+
+html::before,
+html::after,
+body::before,
+body::after {
+    content: "";
+    background-color: $tr-border;
+    display: block;
+    position: fixed;
+    z-index: 5;
+}
+
+html::before {
+    height: 1px;
+    left: 0;
+    right: 0;
+    top: 0;
+}
+
+html::after {
+    width: 1px;
+    top: 0;
+    right: 0;
+    bottom: 0;
+}
+
+body::before {
+    height: 1px;
+    right: 0;
+    bottom: 0;
+    left: 0;
+}
+
+body::after {
+    width: 1px;
+    top: 0;
+    bottom: 0;
+    left: 0;
+}
+
+// }}}
+
+// {{{ Dark-coloured scrollbar
+
+::-webkit-scrollbar {
+    height: 13px;
+    width: 14px;
+}
+
+::-webkit-scrollbar-track,
+::-webkit-scrollbar-corner {
+    background-color: $bgscroll;
+    box-shadow: inset 1px 1px lighten($tr-border, 4%);
+}
+
+// Part where vertical and horizontal scrollbars meet
+::-webkit-scrollbar-corner {
+    border-radius: 0 0 $radius-unit 0;
+}
+
+// TODO: Can be simplified to @include and function
+$th-outline:
+    inset 1px 1px   $th-border,
+    inset -1px -1px $th-border,
+
+    inset 0px 1px   $th-border,
+    inset 0px -1px  $th-border,
+
+    inset 1px 0px   $th-border,
+    inset 1px -1px  $th-border,
+
+    inset -1px 0px  $th-border,
+    inset -1px 1px  $th-border
+;
+
+::-webkit-scrollbar-thumb {
+    $th-min-unit: 25px;
+    box-shadow: $th-outline;
+
+    &:horizontal {
+        background-image: linear-gradient($thscrlin 5%, $thscrlout);
+        min-width: $th-min-unit;
+
+        &:hover {
+            background-image: linear-gradient($thscrlhvin 25%, $thscrlhvout);
+        }
+    }
+
+    &:vertical {
+        background-image: linear-gradient(to right, $thscrlin 5%, $thscrlout);
+        min-height: $th-min-unit;
+
+        &:hover {
+            background-image: linear-gradient(to right, $thscrlhvin 25%, $thscrlhvout);
+        }
+    }
+
+    &:active {
+        background-image: linear-gradient($thscrlout, $thscrlout) !important;
+    }
+}
+
+// Light and dark borders to outline the thumb
+// Clockwise (x y)
+:not(body)::-webkit-scrollbar-thumb {
+
+    &:horizontal {
+        box-shadow:
+            $th-outline,
+            1px 0px   $tr-border,
+            1px 1px   $tr-border,
+            -1px 1px  $tr-border,
+            -1px 0px  $tr-border
+        ;
+    }
+
+    &:vertical {
+        box-shadow:
+            $th-outline,
+            0px -1px  $tr-border,
+            1px -1px  $tr-border,
+            1px 1px   $tr-border,
+            0px 1px   $tr-border
+        ;
+    }
+}
+
+::-webkit-scrollbar-thumb,
+::-webkit-scrollbar-track {
+
+    &:horizontal {
+        border-top: 1px solid $tr-border;
+    }
+
+    &:vertical {
+        border-left: 1px solid $tr-border;
+    }
+}
+
+// Complete the borders for body scrollbar
+body::-webkit-scrollbar-thumb,
+body::-webkit-scrollbar-track {
+
+    &:horizontal,
+    &:vertical {
+        border: 1px solid $tr-border;
+    }
+
+    &:horizontal {
+        border-top: none;
+    }
+
+    &:vertical {
+        border-left: none;
+    }
+}
+
+body::-webkit-scrollbar-corner {
+    border: 1px solid $tr-border;
+    border-top: none;
+    border-left: none;
+}
+
+::-webkit-scrollbar-track,
+::-webkit-scrollbar-thumb {
+
+    &:corner-present {
+
+        &:horizontal {
+            border-radius: 0 0 0 $radius-unit;
+        }
+
+        &:vertical {
+            border-radius: 0 $radius-unit 0 0;
+        }
+    }
+
+    &:horizontal {
+        border-radius: 0 0 $radius-unit $radius-unit;
+    }
+
+    &:vertical {
+        border-radius: 0 $radius-unit $radius-unit 0;
+    }
+}
+
+// }}}
+
+// {{{ Fg colour switcher
+
+// Thank you so much!!
+// https://css-tricks.com/switch-font-color-for-different-backgrounds-with-css/
+
+/* Please enable JS for additional colouring features */
+:root {
+    // Default RGB values for background colour
+    --rssguard-red: 0;
+    --rssguard-green: 0;
+    --rssguard-blue: 0;
+    // The threshold at which colours are considered "light
+    // Range: decimals from 0 to 1, recommended 0.5 - 0.6
+    --rssguard-threshold: 0.5;
+}
+
+:root {
+    // Calculates perceived lightness using the sRGB Luma method
+    // Luma = (red * 0.2126 + green * 0.7152 + blue * 0.0722) / 255
+    --rssguard-r: calc(var(--rssguard-red) * 0.2126);
+    --rssguard-g: calc(var(--rssguard-green) * 0.7152);
+    --rssguard-b: calc(var(--rssguard-blue) * 0.0722);
+    --rssguard-sum:
+        calc(
+            var(--rssguard-r) +
+            var(--rssguard-g) +
+            var(--rssguard-b)
+        );
+    --rssguard-perceived-lightness: calc(var(--rssguard-sum) / 255);
+}
+
+// Shows either white or black colour depending on perceived lightness
+body,
+::selection,
+mark, code, pre, pre > code,
+blockquote, blockquote p { // TODO: why did not I add 'blockquote p' here before?
+    color:
+        hsla(
+            0,
+            0%,
+            calc(
+                (
+                    var(--rssguard-perceived-lightness) -
+                    var(--rssguard-threshold)
+                ) *
+                -10000000%
+            ),
+            .9
+        );
+}
+// }}}
+// vim:foldmethod=marker

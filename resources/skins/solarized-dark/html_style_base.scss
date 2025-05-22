@@ -1,0 +1,423 @@
+// ___________________________
+// < I'm an expert in my field. >
+// ---------------------------
+//      \   ^__^
+//       \  (oo)\_______
+//          (__)\       )\/\
+//              ||----w |
+//              ||     ||
+
+//
+// Variables
+//
+
+$base-unit:     10px !default;
+
+//
+// Styling
+//
+
+// Let the font be customised via RSS Guard settings
+* {
+    font-family: inherit;
+    font-size: inherit;
+}
+
+//
+// Reset some basic elements
+//
+
+body, h1, h2, h3, h4, h5, h6,
+p, blockquote, pre, hr,
+dl, dd, ol, ul, figure {
+    margin: 0;
+    padding: 0;
+}
+
+//
+// Add some basic styling
+//
+
+body {
+    background-color: $cbg00;
+
+    box-sizing: border-box;
+    color: $cfg00;
+    //cursor: default;
+    -webkit-text-size-adjust: 100%;
+    -webkit-font-feature-settings: "kern" 1;
+    font-feature-settings: "kern" 1;
+    font-kerning: normal;
+    padding: 10px !important;
+    min-height: 100vh;
+}
+
+::selection {
+    background-color: $clink;
+    text-shadow: none;
+}
+
+h1, h2, h3, h4, h5, h6,
+p, blockquote, pre,
+ul, ol, dl, figure,
+details {
+    margin-bottom: $base-unit;
+}
+
+hr {
+    background-color: $cbor2;
+    border: none;
+    display: block;
+    height: 2px;
+    margin: $base-unit 0;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-weight: 600 !important;
+}
+
+h1 { font-size: 1.25rem  !important; }
+h2 { font-size: 1.20rem  !important; }
+h3 { font-size: 1.15rem  !important; }
+h4 { font-size: 1.1rem   !important; }
+h5 { font-size: 1rem     !important; }
+h6 { font-size: .95rem   !important; }
+
+b {
+    font-weight: bold !important;
+}
+
+i {
+    font-style: italic !important;
+}
+
+strong {
+    font-weight: 800 !important;
+}
+
+em {
+    font-style: oblique !important;
+}
+
+mark {
+    background-color: $cmark;
+}
+
+sub,
+sup {
+    font-size: .8rem !important;
+}
+
+small {
+    font-size: .9rem !important;
+}
+
+abbr {
+    cursor: help;
+    font-style: italic !important;
+    font-weight: 100 !important;
+}
+
+q {
+    font-style: italic !important;
+
+    &::before {
+        content: '“';
+    }
+
+    &::after {
+        content: '”';
+    }
+}
+
+time {
+    font-weight: 450 !important;
+}
+
+var {
+    font-style: oblique !important;
+    font-weight: 500 !important;
+}
+
+a {
+    color: $clink;
+
+    &:hover {
+        text-decoration: none;
+    }
+
+    &:focus {
+        box-shadow: none;
+        outline: none;
+    }
+}
+
+cite {
+    font-style: italic !important;
+    font-weight: bold !important;
+}
+
+// override if width is defined in element's style attribute
+figure {
+    max-width: 100%;
+}
+
+figure > img {
+    display: block;
+}
+
+figcaption {
+    font-size: .8rem !important;
+}
+
+blockquote {
+    border-left: .3em solid $cbor2;
+    margin-left: 0;
+    padding: 0 $base-unit;
+
+    &,
+    p {
+        color: $cfg11;
+    }
+}
+
+pre,
+code {
+    border: 1px solid $cbor3;
+    border-radius: $radius-unit;
+    color: $cfg10;
+    //cursor: text;
+
+    // Font for code blocks falls back to system default monospace
+    font-family: monospace;
+    font-size: .95rem !important;
+}
+
+code {
+    background-color: $ccode;
+    padding: 0 .25em;
+    word-break: break-word;
+}
+
+pre {
+    background-color: $ccodeblock;
+    overflow-x: auto;
+    padding: 7px 13px;
+    tab-size: 2;
+    // For <pre style='white-space:pre-wrap;'>
+    white-space: pre !important;
+
+    // For <pre style='white-space:pre-wrap;width:81ex'>
+    width: unset !important;
+
+    > code {
+        background-color: unset;
+        border: none;
+        color: unset;
+        padding-right: 0;
+        padding-left: 0;
+        tab-size: 2;
+    }
+}
+
+kbd {
+    background: $ccode;
+    border: 1px solid $cbor3;
+    border-bottom: 3px solid darken($cbor3, 3%);
+    border-radius: $radius-unit;
+    box-shadow:
+        0 2px 4px darken($cbg00, 6%),
+        inset 0 1px $cbg00
+    ;
+    font-size: .9rem !important;
+    padding: .1em .4em .2em .4em;
+}
+
+select {
+    background-color: $ccodeblock;
+    border: 1px solid $cbor3;
+    border-radius: $radius-unit;
+    color: $cfg00;
+    padding: .04em .25em;
+    // Do not use max-width here
+    width: 100%;
+
+    &:focus {
+        box-shadow: none;
+        outline: none;
+
+        background-color: $cbg00;
+    }
+
+    > option {
+        background-color: $cbg00;
+    }
+}
+
+table {
+    border-collapse: collapse;
+    // `!important` is set to override something like <table width="900px">
+    width: 100% !important;
+}
+
+// Return this if something goes wrong, and return the JS override for dark theme
+//table,
+//th,
+//td {
+//    color: $cfg00;
+//}
+
+li {
+    display: list-item;
+}
+
+ul,
+ol {
+    padding-left: 1.5em;
+}
+
+ul {
+    list-style-type: disc;
+
+    li ul {
+        list-style-type: square;
+    }
+}
+
+ol {
+    list-style-type: decimal;
+
+    li ol {
+        list-style-type: lower-roman;
+    }
+}
+
+img {
+    // Let the width be defined (see .rssguard-mbody img), but keep aspect ratio
+    //height: auto;
+    // `width auto` creates many problems even if set as a fallback
+    //width: auto;
+}
+
+details {
+    border: 1px solid $ccodeblock;
+    border-radius: $radius-unit;
+    padding: .5em .5em 0;
+
+    > summary {
+        background-color: $ccodeblock;
+        border-radius: $radius-unit * 0.9;
+        cursor: pointer;
+        margin: -.5em -.5em 0;
+        padding-left: .5em;
+
+        &:focus {
+            box-shadow: none;
+            outline: none;
+        }
+    }
+
+    & *:last-child {
+        margin-bottom: 0;
+    }
+}
+
+details[open] {
+    border-color: $cbor3;
+    padding: .5em;
+
+    > summary {
+        border-bottom: 1px solid $cbor3;
+        border-radius: ($radius-unit * 0.9) ($radius-unit * 0.9) 0 0;
+        margin-bottom: .5em;
+    }
+}
+
+iframe {
+    max-width: 100%;
+    height: auto;
+    width: auto;
+}
+
+a,
+select,
+summary {
+
+    &:focus {
+        background-color: $cbor3;
+        text-shadow: 0 -1px $cbg00;
+    }
+}
+
+:target {
+    outline: 1px solid $clink;
+}
+
+// m* == message*
+.rssguard-mwrapper {
+    padding: 0px !important;
+
+    .rssguard-mhead {
+
+        .msmall,
+        .mlinks {
+            opacity: .8;
+        }
+
+        > h1 {
+            margin: 0;
+        }
+
+        .msmall {
+            font-size: .9em;
+        }
+
+        .mlinks {
+
+            .menc {
+                word-break: break-word;
+            }
+
+            .mwrapurl {
+                display: inline-flex;
+
+                a[href=""] {
+
+                    &,
+                    & + span {
+                        display: none;
+                    }
+                }
+            }
+        }
+    }
+
+    img, video {
+        // Needs to be `!important` when max-width is defined by image style
+        // <img src="https://....png" alt="alt" style="max-width: 100%;">
+        //max-width: 450px !important;
+        // For cases when they both are set
+        //max-height: unset !important;
+
+        @media only screen and (max-width: 800px) {
+            // `!important` to override `!important` that is set above
+            max-width: 100% !important;
+        }
+    }
+}
+
+//
+// Other
+//
+
+// For articles without any html elements;
+// If not applied to _all_, *must* be applied to links in mbody
+// mbody == article body
+.rssguard-mbody {
+    word-break: break-word;
+}
+
+// Fix at least some mess produced by above
+table {
+    word-break: normal;
+}
