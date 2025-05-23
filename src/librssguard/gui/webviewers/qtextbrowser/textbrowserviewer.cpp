@@ -10,7 +10,6 @@
 #include "miscellaneous/externaltool.h"
 #include "miscellaneous/iconfactory.h"
 #include "miscellaneous/settings.h"
-#include "network-web/adblock/adblockrequestinfo.h"
 #include "network-web/downloader.h"
 #include "network-web/networkfactory.h"
 #include "network-web/webfactory.h"
@@ -174,67 +173,36 @@ void TextBrowserViewer::findText(const QString& text, bool backwards) {
   }
 }
 
-BlockingResult TextBrowserViewer::blockedWithAdblock(const QUrl& url) {
-  AdblockRequestInfo block_request(url);
-
-  if (url.path().endsWith(QSL("css"))) {
-    block_request.setResourceType(QSL("stylesheet"));
-  }
-  else {
-    block_request.setResourceType(QSL("image"));
-  }
-
-  auto block_result = qApp->web()->adBlock()->block(block_request);
-
-  if (block_result.m_blocked) {
-    qWarningNN << LOGSEC_ADBLOCK << "Blocked request:" << QUOTE_W_SPACE_DOT(block_request.requestUrl().toString());
-    return block_result;
-  }
-  else {
-    return block_result;
-  }
-}
-
 void TextBrowserViewer::setUrl(const QUrl& url) {
   emit loadingStarted();
 
   QString html_str;
   QUrl nonconst_url = url;
   bool is_error = false;
-  auto block_result = blockedWithAdblock(url);
+  QEventLoop loop;
 
-  if (block_result.m_blocked) {
+  connect(m_downloader.data(),
+          &Downloader::completed,
+          &loop,
+          &QEventLoop::quit,
+          Qt::ConnectionType(Qt::ConnectionType::UniqueConnection | Qt::ConnectionType::AutoConnection));
+  m_downloader->manipulateData(url.toString(), QNetworkAccessManager::Operation::GetOperation, {}, 5000);
+
+  loop.exec();
+
+  const auto net_error = m_downloader->lastOutputError();
+  const QString content_type = m_downloader->lastContentType();
+
+  if (net_error != QNetworkReply::NetworkError::NoError) {
     is_error = true;
-    nonconst_url = QUrl::fromUserInput(QSL(INTERNAL_URL_ADBLOCKED));
-
-    html_str = QSL("Blocked!!!<br/>%1").arg(url.toString());
+    html_str = QSL("Error!<br/>%1").arg(NetworkFactory::networkErrorText(net_error));
   }
   else {
-    QEventLoop loop;
-
-    connect(m_downloader.data(),
-            &Downloader::completed,
-            &loop,
-            &QEventLoop::quit,
-            Qt::ConnectionType(Qt::ConnectionType::UniqueConnection | Qt::ConnectionType::AutoConnection));
-    m_downloader->manipulateData(url.toString(), QNetworkAccessManager::Operation::GetOperation, {}, 5000);
-
-    loop.exec();
-
-    const auto net_error = m_downloader->lastOutputError();
-    const QString content_type = m_downloader->lastContentType();
-
-    if (net_error != QNetworkReply::NetworkError::NoError) {
-      is_error = true;
-      html_str = QSL("Error!<br/>%1").arg(NetworkFactory::networkErrorText(net_error));
+    if (content_type.startsWith(QSL("image/"))) {
+      html_str = QSL("<img src=\"%1\">").arg(nonconst_url.toString());
     }
     else {
-      if (content_type.startsWith(QSL("image/"))) {
-        html_str = QSL("<img src=\"%1\">").arg(nonconst_url.toString());
-      }
-      else {
-        html_str = decodeHtmlData(m_downloader->lastOutputData(), content_type);
-      }
+      html_str = decodeHtmlData(m_downloader->lastOutputData(), content_type);
     }
   }
 
@@ -410,7 +378,7 @@ void TextBrowserViewer::downloadLink() {
   if (url.isValid()) {
     const QUrl resolved_url = (m_currentUrl.isValid() && url.isRelative()) ? m_currentUrl.resolved(url) : url;
 
-    qApp->downloadManager()->download(resolved_url);
+    qApp->web()->openUrlInExternalBrowser(resolved_url);
   }
 }
 

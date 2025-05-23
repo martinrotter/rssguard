@@ -4,6 +4,12 @@
 
 #include "src/definitions.h"
 #include "src/gui/formstandardfeeddetails.h"
+#include "src/parsers/atomparser.h"
+#include "src/parsers/icalparser.h"
+#include "src/parsers/jsonparser.h"
+#include "src/parsers/rdfparser.h"
+#include "src/parsers/rssparser.h"
+#include "src/parsers/sitemapparser.h"
 #include "src/standardserviceroot.h"
 
 #include <librssguard/database/databasequeries.h>
@@ -14,18 +20,6 @@
 #include <librssguard/exceptions/scriptexception.h>
 #include <librssguard/miscellaneous/settings.h>
 #include <librssguard/miscellaneous/textfactory.h>
-
-#if defined(NO_LITE)
-#include <librssguard/gui/webviewers/webengine/webengineviewer.h>
-#include <librssguard/network-web/webengine/webenginepage.h>
-#endif
-
-#include "src/parsers/atomparser.h"
-#include "src/parsers/icalparser.h"
-#include "src/parsers/jsonparser.h"
-#include "src/parsers/rdfparser.h"
-#include "src/parsers/rssparser.h"
-#include "src/parsers/sitemapparser.h"
 
 #if defined(ENABLE_COMPRESSED_SITEMAP)
 #include "src/3rd-party/qcompressor/qcompressor.h"
@@ -339,13 +333,6 @@ QPair<StandardFeed*, NetworkResult> StandardFeed::guessFeed(StandardFeed::Source
     if (network_result.m_networkError != QNetworkReply::NetworkError::NoError) {
       throw NetworkException(network_result.m_networkError);
     }
-  }
-  else if (source_type == StandardFeed::SourceType::EmbeddedBrowser) {
-#if defined(NO_LITE)
-    feed_contents = WebEngineViewer::getJsEnabledHtml(source, false);
-#else
-    throw ApplicationException(tr("this source type cannot be used on 'lite' %1 build").arg(QSL(APP_NAME)));
-#endif
   }
   else if (source_type == StandardFeed::SourceType::LocalFile) {
     feed_contents = IOFactory::readFile(source);

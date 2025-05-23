@@ -111,7 +111,7 @@ QList<QAction*> StatusBar::convertActions(const QStringList& actions) {
     }
     else {
       if (action_name == QSL(SEPARATOR_ACTION_NAME)) {
-        QLabel* lbl = new QLabel(QSL("•"), this);
+        QLabel* lbl = new QLabel(QSL("â€˘"), this);
 
         widget_to_add = lbl;
         action_to_add = new QAction(this);
@@ -166,16 +166,6 @@ void StatusBar::loadSpecificActions(const QList<QAction*>& actions, bool initial
       }
     }
   }
-}
-
-bool StatusBar::eventFilter(QObject* watched, QEvent* event) {
-  if (watched == m_barProgressDownload) {
-    if (event->type() == QEvent::Type::MouseButtonPress) {
-      qApp->mainForm()->tabWidget()->showDownloadManager();
-    }
-  }
-
-  return false;
 }
 
 void StatusBar::clear() {

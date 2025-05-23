@@ -6,91 +6,23 @@
 #include "miscellaneous/application.h"
 #include "miscellaneous/iconfactory.h"
 #include "miscellaneous/settings.h"
-#include "network-web/adblock/adblockmanager.h"
 #include "network-web/apiserver.h"
-#include "network-web/articleparse.h"
 #include "network-web/cookiejar.h"
-#include "network-web/readability.h"
 
 #include <QDesktopServices>
 #include <QProcess>
 #include <QUrl>
 
-#if defined(NO_LITE)
-#include "network-web/gemini/geminischemehandler.h"
-#include "network-web/webengine/networkurlinterceptor.h"
-
-#if QT_VERSION_MAJOR == 6
-#include <QWebEngineDownloadRequest>
-#else
-#include <QWebEngineDownloadItem>
-#endif
-
-#include <QWebEngineProfile>
-#include <QWebEngineScript>
-#include <QWebEngineScriptCollection>
-#include <QWebEngineSettings>
-#include <QWebEngineUrlScheme>
-#endif
-
 WebFactory::WebFactory(QObject* parent) : QObject(parent), m_apiServer(nullptr), m_customUserAgent(QString()) {
-  m_adBlock = new AdBlockManager(this);
-
   if (qApp->settings()->value(GROUP(Network), SETTING(Network::EnableApiServer)).toBool()) {
     startApiServer();
   }
 
-#if defined(NO_LITE)
-
-  QWebEngineUrlScheme gemini_scheme("gemini");
-
-  gemini_scheme.setSyntax(QWebEngineUrlScheme::Syntax::Host);
-  // gemini_scheme.setFlags(QWebEngineUrlScheme::Flag::SecureScheme);
-
-  QWebEngineUrlScheme::registerScheme(gemini_scheme);
-
-  m_geminiHandler = new GeminiSchemeHandler(this);
-
-  if (qApp->settings()->value(GROUP(Browser), SETTING(Browser::DisableCache)).toBool()) {
-    qWarningNN << LOGSEC_NETWORK << "Using off-the-record WebEngine profile.";
-
-    m_engineProfile = new QWebEngineProfile(this);
-  }
-  else {
-    m_engineProfile = new QWebEngineProfile(QSL(APP_LOW_NAME), this);
-  }
-
-  m_engineProfile->installUrlSchemeHandler("gemini", m_geminiHandler);
-
-  m_engineSettings = nullptr;
-  m_urlInterceptor = new NetworkUrlInterceptor(this);
-#endif
-
   m_cookieJar = new CookieJar(this);
-  m_readability = new Readability(this);
-  m_articleParse = new ArticleParse(this);
-
-#if defined(NO_LITE)
-#if QT_VERSION >= 0x050D00 // Qt >= 5.13.0
-  m_engineProfile->setUrlRequestInterceptor(m_urlInterceptor);
-#else
-  m_engineProfile->setRequestInterceptor(m_urlInterceptor);
-#endif
-#endif
 }
 
 WebFactory::~WebFactory() {
   stopApiServer();
-
-#if defined(NO_LITE)
-  if (m_engineSettings != nullptr && m_engineSettings->menu() != nullptr) {
-    m_engineSettings->menu()->deleteLater();
-  }
-#endif
-
-  /*if (m_cookieJar != nullptr) {
-    m_cookieJar->deleteLater();
-  }*/
 }
 
 bool WebFactory::sendMessageViaEmail(const Message& message) {
@@ -112,36 +44,6 @@ bool WebFactory::sendMessageViaEmail(const Message& message) {
                                             QString(QUrl::toPercentEncoding(stripTags(message.m_contents)))));
   }
 }
-
-#if defined(NO_LITE)
-void WebFactory::loadCustomCss(const QString user_styles_path) {
-  if (QFile::exists(user_styles_path)) {
-    QByteArray css_data = IOFactory::readFile(user_styles_path);
-    QString name = "rssguard-user-styles";
-    QWebEngineScript script;
-    QString s = QSL("(function() {"
-                    "  css = document.createElement('style');"
-                    "  css.type = 'text/css';"
-                    "  css.id = '%1';"
-                    "  document.head.appendChild(css);"
-                    "  css.innerText = '%2';"
-                    "})()")
-                  .arg(name, css_data.simplified());
-    script.setName(name);
-    script.setSourceCode(s);
-    script.setInjectionPoint(QWebEngineScript::DocumentReady);
-    script.setRunsOnSubFrames(false);
-    script.setWorldId(QWebEngineScript::ApplicationWorld);
-
-    m_engineProfile->scripts()->insert(script);
-
-    qDebugNN << LOGSEC_CORE << "Loading user CSS style file" << QUOTE_W_SPACE_DOT(user_styles_path);
-  }
-  else {
-    qWarningNN << LOGSEC_CORE << "User CSS style was not provided in file" << QUOTE_W_SPACE_DOT(user_styles_path);
-  }
-}
-#endif
 
 bool WebFactory::openUrlInExternalBrowser(const QUrl& url) const {
   QString my_url = url.toString(QUrl::ComponentFormattingOption::FullyEncoded);
@@ -285,7 +187,6 @@ QString WebFactory::unescapeHtml(const QString& html) {
 QString WebFactory::limitSizeOfHtmlImages(const QString& html, int desired_width, int desired_max_height) const {
   static QRegularExpression exp_image_tag(QSL("<img ([^>]+)>"));
   static QRegularExpression exp_image_attrs(QSL("(\\w+)=\"([^\"]+)\""));
-  static bool is_lite = qApp->usingLite();
 
   // Replace too big pictures. What it exactly does:
   //  - find all <img> tags and check for existence of height/width attributes:
@@ -325,46 +226,34 @@ QString WebFactory::limitSizeOfHtmlImages(const QString& html, int desired_width
       attrs.insert(attr_name, attr_value);
     }
 
-    // Now, we edit height/width differently, depending whether this is
-    // simpler HTML (lite) viewer, or WebEngine full-blown viewer.
-    if (is_lite) {
-      if (attrs.contains("height") && attrs.contains("width")) {
-        double ratio = attrs.value("width").toDouble() / attrs.value("height").toDouble();
+    if (attrs.contains("height") && attrs.contains("width")) {
+      double ratio = attrs.value("width").toDouble() / attrs.value("height").toDouble();
 
-        if (desired_max_height > 0) {
-          // We limit height.
-          attrs.insert("height", QString::number(desired_max_height));
-          attrs.insert("width", QString::number(int(ratio * desired_max_height)));
-        }
+      if (desired_max_height > 0) {
+        // We limit height.
+        attrs.insert("height", QString::number(desired_max_height));
+        attrs.insert("width", QString::number(int(ratio * desired_max_height)));
+      }
 
-        // We fit width.
-        if (attrs.value("width").toInt() > desired_width) {
-          attrs.insert("width", QString::number(desired_width));
-          attrs.insert("height", QString::number(int(desired_width / ratio)));
-        }
+      // We fit width.
+      if (attrs.value("width").toInt() > desired_width) {
+        attrs.insert("width", QString::number(desired_width));
+        attrs.insert("height", QString::number(int(desired_width / ratio)));
       }
-      else if (attrs.contains("width")) {
-        // Only width.
-        if (attrs.value("width").toInt() > desired_width) {
-          attrs.insert("width", QString::number(desired_width));
-        }
-      }
-      else {
-        // No dimensions given.
-        // In this case we simply rely on original image dimensions
-        // if no specific limit is set.
-        // Too wide images will get downscaled.
-        if (desired_max_height > 0) {
-          attrs.insert("height", QString::number(desired_max_height));
-        }
+    }
+    else if (attrs.contains("width")) {
+      // Only width.
+      if (attrs.value("width").toInt() > desired_width) {
+        attrs.insert("width", QString::number(desired_width));
       }
     }
     else {
-      attrs.remove("width");
-      attrs.remove("height");
-
+      // No dimensions given.
+      // In this case we simply rely on original image dimensions
+      // if no specific limit is set.
+      // Too wide images will get downscaled.
       if (desired_max_height > 0) {
-        attrs.insert("style", QSL("max-height: %1px !important;").arg(desired_max_height));
+        attrs.insert("height", QString::number(desired_max_height));
       }
     }
 
@@ -446,146 +335,8 @@ void WebFactory::updateProxy() {
   }
 }
 
-AdBlockManager* WebFactory::adBlock() const {
-  return m_adBlock;
-}
-
-#if defined(NO_LITE)
-NetworkUrlInterceptor* WebFactory::urlIinterceptor() const {
-  return m_urlInterceptor;
-}
-
-QWebEngineProfile* WebFactory::engineProfile() const {
-  return m_engineProfile;
-}
-
-QAction* WebFactory::engineSettingsAction() {
-  if (m_engineSettings == nullptr) {
-    m_engineSettings = new QAction(qApp->icons()->fromTheme(QSL("applications-internet"), QSL("internet-services")),
-                                   tr("Web engine settings"),
-                                   this);
-    m_engineSettings->setMenu(new QMenu());
-    createMenu(m_engineSettings->menu());
-    connect(m_engineSettings->menu(), &QMenu::aboutToShow, this, [this]() {
-      createMenu();
-    });
-  }
-
-  return m_engineSettings;
-}
-
-void WebFactory::createMenu(QMenu* menu) {
-  if (menu == nullptr) {
-    menu = qobject_cast<QMenu*>(sender());
-
-    if (menu == nullptr) {
-      return;
-    }
-  }
-
-  menu->clear();
-  QList<QAction*> actions;
-
-  actions << createEngineSettingsAction(tr("Auto-load images"), QWebEngineSettings::WebAttribute::AutoLoadImages);
-  actions << createEngineSettingsAction(tr("JS enabled"), QWebEngineSettings::WebAttribute::JavascriptEnabled);
-  actions << createEngineSettingsAction(tr("JS can open popup windows"),
-                                        QWebEngineSettings::WebAttribute::JavascriptCanOpenWindows);
-  actions << createEngineSettingsAction(tr("JS can access clipboard"),
-                                        QWebEngineSettings::WebAttribute::JavascriptCanAccessClipboard);
-  actions << createEngineSettingsAction(tr("Hyperlinks can get focus"),
-                                        QWebEngineSettings::WebAttribute::LinksIncludedInFocusChain);
-  actions << createEngineSettingsAction(tr("Local storage enabled"),
-                                        QWebEngineSettings::WebAttribute::LocalStorageEnabled);
-  actions << createEngineSettingsAction(tr("Local content can access remote URLs"),
-                                        QWebEngineSettings::WebAttribute::LocalContentCanAccessRemoteUrls);
-  actions << createEngineSettingsAction(tr("XSS auditing enabled"),
-                                        QWebEngineSettings::WebAttribute::XSSAuditingEnabled);
-  actions << createEngineSettingsAction(tr("Spatial navigation enabled"),
-                                        QWebEngineSettings::WebAttribute::SpatialNavigationEnabled);
-  actions << createEngineSettingsAction(tr("Local content can access local files"),
-                                        QWebEngineSettings::WebAttribute::LocalContentCanAccessFileUrls);
-  actions << createEngineSettingsAction(tr("Hyperlink auditing enabled"),
-                                        QWebEngineSettings::WebAttribute::HyperlinkAuditingEnabled);
-  actions << createEngineSettingsAction(tr("Animate scrolling"),
-                                        QWebEngineSettings::WebAttribute::ScrollAnimatorEnabled);
-  actions << createEngineSettingsAction(tr("Error pages enabled"), QWebEngineSettings::WebAttribute::ErrorPageEnabled);
-  actions << createEngineSettingsAction(tr("Plugins enabled"), QWebEngineSettings::WebAttribute::PluginsEnabled);
-  actions << createEngineSettingsAction(tr("Fullscreen enabled"),
-                                        QWebEngineSettings::WebAttribute::FullScreenSupportEnabled);
-
-#if !defined(Q_OS_UNIX) && !defined(Q_OS_MACOS)
-  actions << createEngineSettingsAction(tr("Screen capture enabled"),
-                                        QWebEngineSettings::WebAttribute::ScreenCaptureEnabled);
-  actions << createEngineSettingsAction(tr("WebGL enabled"), QWebEngineSettings::WebAttribute::WebGLEnabled);
-  actions << createEngineSettingsAction(tr("Accelerate 2D canvas"),
-                                        QWebEngineSettings::WebAttribute::Accelerated2dCanvasEnabled);
-  actions << createEngineSettingsAction(tr("Print element backgrounds"),
-                                        QWebEngineSettings::WebAttribute::PrintElementBackgrounds);
-  actions << createEngineSettingsAction(tr("Allow running insecure content"),
-                                        QWebEngineSettings::WebAttribute::AllowRunningInsecureContent);
-  actions << createEngineSettingsAction(tr("Allow geolocation on insecure origins"),
-                                        QWebEngineSettings::WebAttribute::AllowGeolocationOnInsecureOrigins);
-#endif
-
-  actions << createEngineSettingsAction(tr("JS can activate windows"),
-                                        QWebEngineSettings::WebAttribute::AllowWindowActivationFromJavaScript);
-  actions << createEngineSettingsAction(tr("Show scrollbars"), QWebEngineSettings::WebAttribute::ShowScrollBars);
-  actions << createEngineSettingsAction(tr("Media playback with gestures"),
-                                        QWebEngineSettings::WebAttribute::PlaybackRequiresUserGesture);
-  actions << createEngineSettingsAction(tr("WebRTC uses only public interfaces"),
-                                        QWebEngineSettings::WebAttribute::WebRTCPublicInterfacesOnly);
-  actions << createEngineSettingsAction(tr("JS can paste from clipboard"),
-                                        QWebEngineSettings::WebAttribute::JavascriptCanPaste);
-  actions << createEngineSettingsAction(tr("DNS prefetch enabled"),
-                                        QWebEngineSettings::WebAttribute::DnsPrefetchEnabled);
-
-#if QT_VERSION >= 0x050D00 // Qt >= 5.13.0
-  actions << createEngineSettingsAction(tr("PDF viewer enabled"), QWebEngineSettings::WebAttribute::PdfViewerEnabled);
-#endif
-
-  menu->addActions(actions);
-}
-
-void WebFactory::webEngineSettingChanged(bool enabled) {
-  const QAction* const act = qobject_cast<QAction*>(sender());
-
-  QWebEngineSettings::WebAttribute attribute = static_cast<QWebEngineSettings::WebAttribute>(act->data().toInt());
-
-  qApp->settings()->setValue(WebEngineAttributes::ID, QString::number(static_cast<int>(attribute)), enabled);
-  m_engineProfile->settings()->setAttribute(attribute, act->isChecked());
-}
-
-QAction* WebFactory::createEngineSettingsAction(const QString& title, int web_attribute) {
-  // TODO: ověřit že cast je funkční
-  QWebEngineSettings::WebAttribute attribute = QWebEngineSettings::WebAttribute(web_attribute);
-
-  auto* act = new QAction(title, m_engineSettings->menu());
-
-  act->setData(attribute);
-  act->setCheckable(true);
-  act->setChecked(qApp->settings()
-                    ->value(WebEngineAttributes::ID, QString::number(static_cast<int>(attribute)), true)
-                    .toBool());
-
-  auto enabl = act->isChecked();
-
-  m_engineProfile->settings()->setAttribute(attribute, enabl);
-  connect(act, &QAction::toggled, this, &WebFactory::webEngineSettingChanged);
-  return act;
-}
-
-#endif
-
 CookieJar* WebFactory::cookieJar() const {
   return m_cookieJar;
-}
-
-Readability* WebFactory::readability() const {
-  return m_readability;
-}
-
-ArticleParse* WebFactory::articleParse() const {
-  return m_articleParse;
 }
 
 void WebFactory::startApiServer() {
@@ -875,26 +626,3 @@ QString WebFactory::customUserAgent() const {
 void WebFactory::setCustomUserAgent(const QString& user_agent) {
   m_customUserAgent = user_agent;
 }
-
-#if defined(NO_LITE)
-void WebFactory::cleanupCache() {
-  if (MsgBox::show(nullptr,
-                   QMessageBox::Icon::Question,
-                   tr("Web cache is going to be cleared"),
-                   tr("Do you really want to clear web cache?"),
-                   {},
-                   {},
-                   QMessageBox::StandardButton::Yes | QMessageBox::StandardButton::No) ==
-      QMessageBox::StandardButton::Yes) {
-    m_engineProfile->clearHttpCache();
-
-    // NOTE: Manually clear storage.
-    try {
-      IOFactory::removeFolder(m_engineProfile->persistentStoragePath());
-    }
-    catch (const ApplicationException& ex) {
-      qCriticalNN << LOGSEC_CORE << "Removing of webengine storage failed:" << QUOTE_W_SPACE_DOT(ex.message());
-    }
-  }
-}
-#endif

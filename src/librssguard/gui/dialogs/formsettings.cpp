@@ -7,13 +7,11 @@
 #include "gui/messagebox.h"
 #include "gui/settings/settingsbrowsermail.h"
 #include "gui/settings/settingsdatabase.h"
-#include "gui/settings/settingsdownloads.h"
 #include "gui/settings/settingsfeedsmessages.h"
 #include "gui/settings/settingsgeneral.h"
 #include "gui/settings/settingsgui.h"
 #include "gui/settings/settingslocalization.h"
 #include "gui/settings/settingsmediaplayer.h"
-#include "gui/settings/settingsnodejs.h"
 #include "gui/settings/settingsnotifications.h"
 #include "gui/settings/settingsshortcuts.h"
 #include "miscellaneous/application.h"
@@ -49,9 +47,7 @@ FormSettings::FormSettings(QWidget& parent) : QDialog(&parent), m_settings(*qApp
   addSettingsPanel(new SettingsLocalization(&m_settings, this));
   addSettingsPanel(new SettingsShortcuts(&m_settings, this));
   addSettingsPanel(new SettingsBrowserMail(&m_settings, this));
-  addSettingsPanel(new SettingsNodejs(&m_settings, this));
   addSettingsPanel(new SettingsMediaPlayer(&m_settings, this));
-  addSettingsPanel(new SettingsDownloads(&m_settings, this));
   addSettingsPanel(new SettingsFeedsMessages(&m_settings, this));
 
   m_ui.m_listSettings->setMaximumWidth(m_ui.m_listSettings->sizeHintForColumn(0) +
@@ -100,7 +96,7 @@ void FormSettings::applySettings() {
 
   if (!panels_for_restart.isEmpty()) {
     const QStringList changed_settings_description =
-      panels_for_restart.replaceInStrings(QRegularExpression(QSL("^")), QString::fromUtf8(QByteArray(" • ")));
+      panels_for_restart.replaceInStrings(QRegularExpression(QSL("^")), QString::fromUtf8(QByteArray(" â€˘ ")));
     const QMessageBox::StandardButton clicked_button =
       MsgBox::show(this,
                    QMessageBox::Icon::Question,
@@ -134,7 +130,7 @@ void FormSettings::cancelSettings() {
   }
   else {
     const QStringList changed_settings_description =
-      changed_panels.replaceInStrings(QRegularExpression(QSL("^")), QString::fromUtf8(QByteArray(" • ")));
+      changed_panels.replaceInStrings(QRegularExpression(QSL("^")), QString::fromUtf8(QByteArray(" â€˘ ")));
 
     if (MsgBox::show(this,
                      QMessageBox::Icon::Critical,
