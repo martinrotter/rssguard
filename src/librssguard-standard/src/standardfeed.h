@@ -26,8 +26,7 @@ class StandardFeed : public Feed {
     enum class SourceType {
       Url = 0,
       Script = 1,
-      LocalFile = 2,
-      EmbeddedBrowser = 3
+      LocalFile = 2
     };
 
     enum class Type {

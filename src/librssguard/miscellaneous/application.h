@@ -10,12 +10,10 @@
 #include "miscellaneous/feedreader.h"
 #include "miscellaneous/iofactory.h"
 #include "miscellaneous/localization.h"
-#include "miscellaneous/nodejs.h"
 #include "miscellaneous/notification.h"
 #include "miscellaneous/singleapplication.h"
 #include "miscellaneous/skinfactory.h"
 #include "miscellaneous/systemfactory.h"
-#include "network-web/downloadmanager.h"
 
 #include <functional>
 
@@ -129,14 +127,12 @@ class RSSGUARD_DLLSPEC Application : public SingleApplication {
     Localization* localization();
     DatabaseFactory* database();
     IconFactory* icons();
-    DownloadManager* downloadManager();
     Settings* settings() const;
     Mutex* feedUpdateLock();
     FormMain* mainForm();
     QWidget* mainFormWidget();
     SystemTrayIcon* trayIcon();
     NotificationFactory* notifications() const;
-    NodeJs* nodejs() const;
     QThreadPool* workHorsePool() const;
     ToastNotificationsManager* toastNotifications() const;
 
@@ -189,12 +185,7 @@ class RSSGUARD_DLLSPEC Application : public SingleApplication {
 
     WebViewer* createWebView();
 
-    bool usingLite() const;
     bool isWayland() const;
-
-#if defined(NO_LITE)
-    bool forcedLite() const;
-#endif
 
     // Returns pointer to "GOD" application singleton.
     static Application* instance();
@@ -223,27 +214,10 @@ class RSSGUARD_DLLSPEC Application : public SingleApplication {
   private slots:
     void loadMessageToFeedAndArticleList(Feed* feed, const Message& message);
     void fillCmdArgumentsParser(QCommandLineParser& parser);
-
-    void onNodeJsPackageUpdateError(const QObject* sndr,
-                                    const QList<NodeJs::PackageMetadata>& pkgs,
-                                    const QString& error);
-    void onNodeJsPackageInstalled(const QObject* sndr,
-                                  const QList<NodeJs::PackageMetadata>& pkgs,
-                                  bool already_up_to_date);
     void onCommitData(QSessionManager& manager);
     void onSaveState(QSessionManager& manager);
     void onAboutToQuit();
     void showMessagesNumber(int unread_messages, bool any_feed_has_new_unread_messages);
-    void onAdBlockFailure();
-
-#if defined(NO_LITE)
-#if QT_VERSION_MAJOR == 6
-    void downloadRequested(QWebEngineDownloadRequest* download_item);
-#else
-    void downloadRequested(QWebEngineDownloadItem* download_item);
-#endif
-#endif
-
     void onFeedUpdatesStarted();
     void onFeedUpdatesProgress(const Feed* feed, int current, int total);
     void onFeedUpdatesFinished(const FeedDownloadResults& results);
@@ -294,10 +268,8 @@ class RSSGUARD_DLLSPEC Application : public SingleApplication {
     Localization* m_localization;
     IconFactory* m_icons;
     DatabaseFactory* m_database;
-    DownloadManager* m_downloadManager;
     NotificationFactory* m_notifications;
     ToastNotificationsManager* m_toastNotifications;
-    NodeJs* m_nodejs;
     QThreadPool* m_workHorsePool;
     bool m_shouldRestart;
     bool m_firstRunEver;
@@ -305,10 +277,6 @@ class RSSGUARD_DLLSPEC Application : public SingleApplication {
     QString m_customDataFolder;
     int m_customAdblockPort;
     bool m_allowMultipleInstances;
-
-#if defined(NO_LITE)
-    bool m_forcedLite;
-#endif
 
 #if defined(Q_OS_WIN)
     ITaskbarList4* m_windowsTaskBar;

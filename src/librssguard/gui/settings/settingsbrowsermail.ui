@@ -54,30 +54,6 @@
        </item>
       </layout>
      </widget>
-     <widget class="QWidget" name="m_tabWebEngine">
-      <attribute name="title">
-       <string notr="true">WebEngine</string>
-      </attribute>
-      <layout class="QFormLayout" name="formLayout_4">
-       <item row="1" column="0">
-        <widget class="QLabel" name="label">
-         <property name="text">
-          <string>Custom &quot;QTWEBENGINE_CHROMIUM_FLAGS&quot; flags</string>
-         </property>
-        </widget>
-       </item>
-       <item row="2" column="0" colspan="2">
-        <widget class="QPlainTextEdit" name="m_txtWebEngineChromiumFlags"/>
-       </item>
-       <item row="0" column="0" colspan="2">
-        <widget class="QCheckBox" name="m_cbDisableCache">
-         <property name="text">
-          <string>Disable cache</string>
-         </property>
-        </widget>
-       </item>
-      </layout>
-     </widget>
      <widget class="QWidget" name="m_tabExternalBrowser">
       <attribute name="title">
        <string>External web browser</string>
@@ -433,8 +409,6 @@
   <tabstop>m_btnDeleteTool</tabstop>
   <tabstop>m_cbIgnoreAllCookies</tabstop>
   <tabstop>m_cbEnableHttp2</tabstop>
-  <tabstop>m_cbDisableCache</tabstop>
-  <tabstop>m_txtWebEngineChromiumFlags</tabstop>
  </tabstops>
  <resources/>
  <connections/>

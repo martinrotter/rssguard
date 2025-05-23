@@ -98,8 +98,6 @@
     <addaction name="separator"/>
     <addaction name="m_actionReloadSkin"/>
     <addaction name="m_actionCleanupDatabase"/>
-    <addaction name="m_actionCleanupWebCache"/>
-    <addaction name="m_actionDownloadManager"/>
    </widget>
    <widget class="QMenu" name="m_menuFeeds">
     <property name="title">
@@ -619,14 +617,6 @@
     <string notr="true"/>
    </property>
   </action>
-  <action name="m_actionDownloadManager">
-   <property name="text">
-    <string>&amp;Downloads</string>
-   </property>
-   <property name="shortcut">
-    <string notr="true"/>
-   </property>
-  </action>
   <action name="m_actionSendMessageViaEmail">
    <property name="text">
     <string>Send via e-mail</string>
@@ -909,11 +899,6 @@
   <action name="m_actionRearrangeFeeds">
    <property name="text">
     <string>Rearrange &amp;feeds alphabetically</string>
-   </property>
-  </action>
-  <action name="m_actionCleanupWebCache">
-   <property name="text">
-    <string>Cleanup web cac&amp;he</string>
    </property>
   </action>
   <action name="m_actionNoAccounts">

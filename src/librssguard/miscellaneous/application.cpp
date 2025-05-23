@@ -30,8 +30,6 @@
 #include "miscellaneous/mutex.h"
 #include "miscellaneous/notificationfactory.h"
 #include "miscellaneous/settings.h"
-#include "network-web/adblock/adblockicon.h"
-#include "network-web/adblock/adblockmanager.h"
 #include "network-web/webfactory.h"
 #include "services/abstract/serviceroot.h"
 
@@ -47,27 +45,13 @@
 #include <QTimer>
 #include <QVersionNumber>
 
-#if defined(NO_LITE) && defined(MEDIAPLAYER_LIBMPV_OPENGL)
+#if defined(MEDIAPLAYER_LIBMPV_OPENGL)
 #include <QQuickWindow>
 #endif
 
 #if defined(Q_OS_UNIX) && !defined(Q_OS_MACOS)
 #include <QDBusConnection>
 #include <QDBusMessage>
-#endif
-
-#if defined(NO_LITE)
-#include "gui/webviewers/webengine/webengineviewer.h" // WebEngine-based web browsing.
-#include "network-web/webengine/networkurlinterceptor.h"
-
-#if QT_VERSION_MAJOR == 6
-#include <QWebEngineDownloadRequest>
-#else
-#include <QWebEngineDownloadItem>
-#endif
-
-#include <QWebEngineProfile>
-#include <QWebEngineSettings>
 #endif
 
 #if defined(Q_OS_WIN)
@@ -90,7 +74,7 @@
 Application::Application(const QString& id, int& argc, char** argv, const QStringList& raw_cli_args)
   : SingleApplication(id, argc, argv), m_rawCliArgs(raw_cli_args), m_updateFeedsLock(new Mutex()) {
 
-#if defined(NO_LITE) && defined(MEDIAPLAYER_LIBMPV_OPENGL)
+#if defined(MEDIAPLAYER_LIBMPV_OPENGL)
   // HACK: Force rendering system to use OpenGL backend.
 #if QT_VERSION_MAJOR < 6
   QQuickWindow::setSceneGraphBackend(QSGRendererInterface::GraphicsApi::OpenGL);
@@ -111,35 +95,16 @@ Application::Application(const QString& id, int& argc, char** argv, const QStrin
   m_logForm = nullptr;
   m_trayIcon = nullptr;
   m_settings = Settings::setupSettings(this);
-
-#if defined(NO_LITE)
-  if (!m_forcedLite && qEnvironmentVariableIsEmpty("QTWEBENGINE_CHROMIUM_FLAGS")) {
-    QString flags = settings()->value(GROUP(Browser), SETTING(Browser::WebEngineChromiumFlags)).toString();
-
-    // NOTE: We do not want sandbox on Linux builds.
-#if defined(Q_OS_LINUX) && !defined(IS_FLATPAK_BUILD)
-    if (!flags.contains(QSL("--no-sandbox"))) {
-      qDebugNN << LOGSEC_CORE << "Appending --no-sandbox to QTWEBENGINE_CHROMIUM_FLAGS.";
-      flags.append(QSL(" --no-sandbox"));
-    }
-#endif
-
-    qputenv("QTWEBENGINE_CHROMIUM_FLAGS", flags.toLocal8Bit());
-  }
-#endif
-
   m_localization = new Localization(this);
 
   m_localization->loadActiveLanguage();
 
-  m_nodejs = new NodeJs(m_settings, this);
   m_workHorsePool = new QThreadPool(this);
   m_webFactory = new WebFactory(this);
   m_system = new SystemFactory(this);
   m_skins = new SkinFactory(this);
   m_icons = new IconFactory(this);
   m_database = new DatabaseFactory(this);
-  m_downloadManager = nullptr;
   m_notifications = new NotificationFactory(this);
   m_toastNotifications =
     (!isWayland() && m_notifications->useToastNotifications()) ? new ToastNotificationsManager(this) : nullptr;
@@ -190,9 +155,6 @@ Application::Application(const QString& id, int& argc, char** argv, const QStrin
   connect(this, &Application::commitDataRequest, this, &Application::onCommitData);
   connect(this, &Application::saveStateRequest, this, &Application::onSaveState);
 
-  connect(m_nodejs, &NodeJs::packageError, this, &Application::onNodeJsPackageUpdateError);
-  connect(m_nodejs, &NodeJs::packageInstalledUpdated, this, &Application::onNodeJsPackageInstalled);
-
 #if defined(Q_OS_UNIX) && !defined(Q_OS_MACOS)
   QString app_dir = QString::fromLocal8Bit(qgetenv("APPDIR"));
 
@@ -218,56 +180,6 @@ Application::Application(const QString& id, int& argc, char** argv, const QStrin
     m_webFactory->setCustomUserAgent(custom_ua);
   }
 
-#if defined(NO_LITE)
-  m_webFactory->urlIinterceptor()->load();
-
-  QString engine_cache_folder;
-  QString engine_storage_folder;
-
-#if defined(NDEBUG)
-  engine_cache_folder = cacheFolder();
-  engine_storage_folder = userDataFolder();
-#else
-  engine_cache_folder = QStandardPaths::writableLocation(QStandardPaths::StandardLocation::TempLocation) +
-                        QDir::separator() + QSL(APP_NAME) + QDir::separator() + QSL("cache");
-  engine_storage_folder = QStandardPaths::writableLocation(QStandardPaths::StandardLocation::TempLocation) +
-                          QDir::separator() + QSL(APP_NAME) + QDir::separator() + QSL("storage");
-#endif
-
-  m_webFactory->engineProfile()->setCachePath(engine_cache_folder + QDir::separator() + QSL("web") + QDir::separator() +
-                                              QSL("cache"));
-  m_webFactory->engineProfile()->setPersistentStoragePath(engine_storage_folder + QDir::separator() + QSL("web") +
-                                                          QDir::separator() + QSL("storage"));
-  m_webFactory->engineProfile()->setHttpCacheType(QWebEngineProfile::HttpCacheType::DiskHttpCache);
-
-  m_webFactory->loadCustomCss(userDataFolder() + QDir::separator() + QSL("web") + QDir::separator() +
-                              QSL("user-styles.css"));
-
-  if (custom_ua.isEmpty()) {
-    m_webFactory->engineProfile()->setHttpUserAgent(QString(HTTP_COMPLETE_USERAGENT));
-  }
-  else {
-    m_webFactory->engineProfile()->setHttpUserAgent(custom_ua);
-  }
-
-  qDebugNN << LOGSEC_NETWORK << "Persistent web data storage path:"
-           << QUOTE_W_SPACE_DOT(m_webFactory->engineProfile()->persistentStoragePath());
-
-  connect(m_webFactory->engineProfile(), &QWebEngineProfile::downloadRequested, this, &Application::downloadRequested);
-#endif
-
-  connect(m_webFactory->adBlock(), &AdBlockManager::processTerminated, this, &Application::onAdBlockFailure);
-
-  QTimer::singleShot(3000, this, [=]() {
-    try {
-      m_webFactory->adBlock()
-        ->setEnabled(qApp->settings()->value(GROUP(AdBlock), SETTING(AdBlock::AdBlockEnabled)).toBool());
-    }
-    catch (...) {
-      onAdBlockFailure();
-    }
-  });
-
   m_webFactory->updateProxy();
 
   if (isFirstRun()) {
@@ -288,7 +200,7 @@ Application::Application(const QString& id, int& argc, char** argv, const QStrin
     m_notifications->load(settings());
   }
 
-  QTimer::singleShot(15000, system(), &SystemFactory::checkForUpdatesOnStartup);
+  QTimer::singleShot(30000, system(), &SystemFactory::checkForUpdatesOnStartup);
 
   setupWorkHorsePool();
 
@@ -424,7 +336,6 @@ FeedReader* Application::feedReader() {
 QList<QAction*> Application::userActions() {
   if (m_mainForm != nullptr && m_userActions.isEmpty()) {
     m_userActions = m_mainForm->allActions();
-    m_userActions.append(m_webFactory->adBlock()->adBlockIcon());
   }
 
   return m_userActions;
@@ -499,16 +410,6 @@ QStringList Application::rawCliArgs() const {
   return m_rawCliArgs;
 }
 
-#if defined(NO_LITE)
-bool Application::forcedLite() const {
-  return m_forcedLite;
-}
-#endif
-
-NodeJs* Application::nodejs() const {
-  return m_nodejs;
-}
-
 NotificationFactory* Application::notifications() const {
   return m_notifications;
 }
@@ -524,22 +425,6 @@ void Application::setFeedReader(FeedReader* feed_reader) {
 
 IconFactory* Application::icons() {
   return m_icons;
-}
-
-DownloadManager* Application::downloadManager() {
-  if (m_downloadManager == nullptr) {
-    m_downloadManager = new DownloadManager();
-    connect(m_downloadManager,
-            &DownloadManager::downloadFinished,
-            mainForm()->statusBar(),
-            &StatusBar::clearProgressDownload);
-    connect(m_downloadManager,
-            &DownloadManager::downloadProgressed,
-            mainForm()->statusBar(),
-            &StatusBar::showProgressDownload);
-  }
-
-  return m_downloadManager;
 }
 
 Settings* Application::settings() const {
@@ -858,24 +743,7 @@ void Application::showGuiMessage(Notification::Event event,
 }
 
 WebViewer* Application::createWebView() {
-#if !defined(NO_LITE)
   return new TextBrowserViewer();
-#else
-  if (forcedLite()) {
-    return new TextBrowserViewer();
-  }
-  else {
-    return new WebEngineViewer();
-  }
-#endif
-}
-
-bool Application::usingLite() const {
-#if !defined(NO_LITE)
-  return true;
-#else
-  return forcedLite();
-#endif
 }
 
 bool Application::isWayland() const {
@@ -1079,20 +947,6 @@ void Application::restart() {
   quit();
 }
 
-#if defined(NO_LITE)
-
-#if QT_VERSION_MAJOR == 6
-void Application::downloadRequested(QWebEngineDownloadRequest* download_item) {
-#else
-void Application::downloadRequested(QWebEngineDownloadItem* download_item) {
-#endif
-  downloadManager()->download(download_item->url());
-  download_item->cancel();
-  download_item->deleteLater();
-}
-
-#endif
-
 void Application::onFeedUpdatesStarted() {
 #if defined(Q_OS_WIN)
   // Use SetOverlayIcon Windows API method on Windows.
@@ -1191,20 +1045,8 @@ void Application::setupWorkHorsePool() {
 #endif
 }
 
-void Application::onAdBlockFailure() {
-  qApp->showGuiMessage(Notification::Event::GeneralEvent,
-                       {tr("AdBlock needs to be configured"),
-                        tr("AdBlock is not configured properly or failed to start. Go to \"Settings\" -> \"Node.js\" "
-                           "and check "
-                           "if your Node.js is properly configured."),
-                        QSystemTrayIcon::MessageIcon::Critical},
-                       {true, true, false});
-
-  qApp->settings()->setValue(GROUP(AdBlock), AdBlock::AdBlockEnabled, false);
-}
-
 void Application::reloadCurrentSkin(bool replace_existing_qss) {
-  m_skins->loadCurrentSkin(usingLite(), replace_existing_qss);
+  m_skins->loadCurrentSkin(replace_existing_qss);
 }
 
 void Application::determineFirstRuns() {
@@ -1317,14 +1159,6 @@ void Application::parseCmdArgumentsFromMyInstance(const QStringList& raw_cli_arg
     m_cmdParser.showVersion();
   }
 
-#if defined(NO_LITE)
-  m_forcedLite = m_cmdParser.isSet(QSL(CLI_FORCE_LITE_SHORT));
-
-  if (m_forcedLite) {
-    qDebugNN << LOGSEC_CORE << "Forcing no-web-engine.";
-  }
-#endif
-
   if (m_cmdParser.isSet(QSL(CLI_SIN_SHORT))) {
     m_allowMultipleInstances = true;
     qDebugNN << LOGSEC_CORE << "Explicitly allowing this instance to run.";
@@ -1375,12 +1209,6 @@ void Application::fillCmdArgumentsParser(QCommandLineParser& parser) {
                        QSL("user-data-folder"));
   QCommandLineOption disable_singleinstance({QSL(CLI_SIN_SHORT), QSL(CLI_SIN_LONG)},
                                             QSL("Allow running of multiple application instances."));
-
-#if defined(NO_LITE)
-  QCommandLineOption force_lite({QSL(CLI_FORCE_LITE_SHORT), QSL(CLI_FORCE_LITE_LONG)},
-                                QSL("Force lite variant of application."));
-#endif
-
   QCommandLineOption disable_only_debug({QSL(CLI_NDEBUG_SHORT), QSL(CLI_NDEBUG_LONG)},
                                         QSL("Disable just \"debug\" output."));
   QCommandLineOption disable_debug({QSL(CLI_NSTDOUTERR_SHORT), QSL(CLI_NSTDOUTERR_LONG)},
@@ -1388,16 +1216,10 @@ void Application::fillCmdArgumentsParser(QCommandLineParser& parser) {
   QCommandLineOption forced_style({QSL(CLI_STYLE_SHORT), QSL(CLI_STYLE_LONG)},
                                   QSL("Force some application style."),
                                   QSL("style-name"));
-
   QCommandLineOption custom_ua({QSL(CLI_USERAGENT_SHORT), QSL(CLI_USERAGENT_LONG)},
                                QSL("User custom User-Agent HTTP header for all network requests. This option "
                                    "takes precedence over User-Agent set via application settings."),
                                QSL("user-agent"));
-  QCommandLineOption
-    adblock_port({QSL(CLI_ADBLOCKPORT_SHORT), QSL(CLI_ADBLOCKPORT_LONG)},
-                 QSL("Use custom port for AdBlock server. It is highly recommended to use values higher than 1024."),
-                 QSL("port"));
-
   QCommandLineOption custom_threads(QSL(CLI_THREADS),
                                     QSL("Specify number of threads. Note that number cannot be higher than %1.")
                                       .arg(MAX_THREADPOOL_THREADS),
@@ -1410,39 +1232,12 @@ void Application::fillCmdArgumentsParser(QCommandLineParser& parser) {
                      disable_singleinstance,
                      disable_only_debug,
                      disable_debug,
-#if defined(NO_LITE)
-                     force_lite,
-#endif
                      forced_style,
-                     adblock_port,
                      custom_ua,
                      custom_threads});
   parser.addPositionalArgument(QSL("urls"),
                                QSL("List of URL addresses pointing to individual online feeds which should be added."),
                                QSL("[url-1 ... url-n]"));
-}
-
-void Application::onNodeJsPackageUpdateError(const QObject* sndr,
-                                             const QList<NodeJs::PackageMetadata>& pkgs,
-                                             const QString& error) {
-  Q_UNUSED(sndr)
-  qApp->showGuiMessage(Notification::Event::NodePackageFailedToUpdate,
-                       {QSL("Node.js"),
-                        tr("Packages were NOT updated because of error: %2. Affected packages:\n%1")
-                          .arg(NodeJs::packagesToString(pkgs), error),
-                        QSystemTrayIcon::MessageIcon::Critical});
-}
-
-void Application::onNodeJsPackageInstalled(const QObject* sndr,
-                                           const QList<NodeJs::PackageMetadata>& pkgs,
-                                           bool already_up_to_date) {
-  Q_UNUSED(sndr)
-  if (!already_up_to_date) {
-    qApp->showGuiMessage(Notification::Event::NodePackageUpdated,
-                         {tr("Node.js"),
-                          tr("These packages were installed/updated:\n%1").arg(NodeJs::packagesToString(pkgs)),
-                          QSystemTrayIcon::MessageIcon::Information});
-  }
 }
 
 QString Application::customDataFolder() const {

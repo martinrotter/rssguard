@@ -192,15 +192,9 @@
 #define DEFAULT_ZOOM_FACTOR 1.0f
 #define ZOOM_FACTOR_STEP    0.05f
 
-#if defined(NO_LITE)
-#define HTTP_COMPLETE_USERAGENT                                                           \
-  (qApp->web()->engineProfile()->httpUserAgent().toLocal8Bit() + QByteArrayLiteral(" ") + \
-   QByteArrayLiteral(APP_USERAGENT))
-#else
 #define HTTP_COMPLETE_USERAGENT                                                                             \
   (QByteArrayLiteral("Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:128.0) Gecko/20100101 Firefox/128.0 ") + \
    QByteArrayLiteral(APP_USERAGENT))
-#endif
 
 #define INTERNAL_URL_MESSAGE      "http://rssguard.message"
 #define INTERNAL_URL_BLANK        "http://rssguard.blank"

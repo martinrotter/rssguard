@@ -31,11 +31,6 @@
 #include <librssguard/network-web/networkfactory.h>
 #include <librssguard/services/abstract/gui/formcategorydetails.h>
 
-#if defined(NO_LITE)
-#include <librssguard/gui/webviewers/webengine/webengineviewer.h>
-#include <librssguard/network-web/webengine/webenginepage.h>
-#endif
-
 #if defined(ENABLE_COMPRESSED_SITEMAP)
 #include "src/3rd-party/qcompressor/qcompressor.h"
 #endif
@@ -307,13 +302,6 @@ QList<Message> StandardServiceRoot::obtainNewMessages(Feed* feed,
         return {};
       }
     }
-  }
-  else if (f->sourceType() == StandardFeed::SourceType::EmbeddedBrowser) {
-#if defined(NO_LITE)
-    feed_contents = WebEngineViewer::getJsEnabledHtml(f->source(), true);
-#else
-    throw ApplicationException(tr("this source type cannot be used on 'lite' %1 build").arg(QSL(APP_NAME)));
-#endif
   }
   else if (f->sourceType() == StandardFeed::SourceType::LocalFile) {
     feed_contents = IOFactory::readFile(feed->source());

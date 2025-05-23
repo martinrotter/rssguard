@@ -10,13 +10,7 @@
 #include <QLocale>
 #include <QPointer>
 
-#if defined(NO_LITE)
-// WebEngine.
-DKEY WebEngineAttributes::ID = "web_engine_attributes";
-#endif
-
 DKEY FileDialogPaths::ID = "file_dialog_paths";
-
 DKEY DialogGeometries::ID = "dialog_geometries";
 
 // Media player.
@@ -428,28 +422,6 @@ DVALUE(bool) General::FirstRunDef = true;
 
 DKEY General::Language = "language";
 DVALUE(QString) General::LanguageDef = QLocale::system().name();
-
-// Downloads.
-DKEY Downloads::ID = "download_manager";
-
-DKEY Downloads::AlwaysPromptForFilename = "prompt_for_filename";
-DVALUE(bool) Downloads::AlwaysPromptForFilenameDef = false;
-
-DKEY Downloads::TargetDirectory = "target_directory";
-DVALUE(QString) Downloads::TargetDirectoryDef = IOFactory::getSystemFolder(QStandardPaths::DownloadLocation);
-
-DKEY Downloads::RemovePolicy = "remove_policy";
-DVALUE(int) Downloads::RemovePolicyDef = int(DownloadManager::RemovePolicy::Never);
-
-DKEY Downloads::TargetExplicitDirectory = "target_explicit_directory";
-DVALUE(QString) Downloads::TargetExplicitDirectoryDef = IOFactory::getSystemFolder(QStandardPaths::DownloadLocation);
-
-DKEY Downloads::ShowDownloadsWhenNewDownloadStarts = "show_downloads_on_new_download_start";
-DVALUE(bool) Downloads::ShowDownloadsWhenNewDownloadStartsDef = true;
-
-DKEY Downloads::ItemUrl = "download_%1_url";
-DKEY Downloads::ItemLocation = "download_%1_location";
-DKEY Downloads::ItemDone = "download_%1_done";
 
 // Proxy.
 DKEY Proxy::ID = "proxy";

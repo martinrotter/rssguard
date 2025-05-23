@@ -8,10 +8,6 @@
 #include <QNetworkCookieJar>
 #include <QReadWriteLock>
 
-#if defined(NO_LITE)
-class QWebEngineCookieStore;
-#endif
-
 class CookieJar : public QNetworkCookieJar {
     Q_OBJECT
 
@@ -40,10 +36,6 @@ class CookieJar : public QNetworkCookieJar {
     bool deleteCookieInternal(const QNetworkCookie& cookie, bool notify_others);
 
   private:
-#if defined(NO_LITE)
-    QWebEngineCookieStore* m_webEngineCookies;
-#endif
-
     mutable QReadWriteLock m_lock{QReadWriteLock::RecursionMode::Recursive};
     bool m_ignoreAllCookies;
     AutoSaver m_saver;

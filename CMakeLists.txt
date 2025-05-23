@@ -37,8 +37,6 @@
 #                               This requires "zlib" library and if you want to use specific
 #                               zlib location, then use "ZLIB_ROOT" variable, for example
 #                               -DZLIB_ROOT="C:\\zlib"
-#   NO_LITE - if specified, then QtWebEngine module for internal web browser is used
-#             and also other more demanding parts of application are used.
 #   {FEEDLY,GMAIL,INOREADER}_CLIENT_ID - preconfigured OAuth client ID.
 #   {FEEDLY,GMAIL,INOREADER}_CLIENT_SECRET - preconfigured OAuth client SECRET.
 #
@@ -78,7 +76,7 @@ set(APP_AUTHOR "Martin Rotter")
 set(APP_COPYRIGHT "\\251 2011-${YEAR} ${APP_AUTHOR}")
 set(APP_REVERSE_NAME "io.github.martinrotter.rssguard")
 set(APP_DONATE_URL "https://github.com/sponsors/martinrotter")
-set(APP_VERSION "4.8.5")
+set(APP_VERSION "5.0.0")
 
 set(APP_URL "https://github.com/martinrotter/rssguard")
 set(APP_URL_DOCUMENTATION "https://rssguard.readthedocs.io")
@@ -114,7 +112,6 @@ endif()
 option(BUILD_WITH_QT6 "Build application with Qt 6." ON)
 option(BUILD_MSYS2 "Build application for MSYS2 ecosystem." OFF)
 option(USE_SYSTEM_SQLITE "Use system-wide SQLite3 library." ON)
-option(NO_LITE "Enable QtWebEngine and other more demanding components." ON)
 option(UPDATE_TRANSLATIONS "Call lupdate to update translation files from source (Qt 6 only)." OFF)
 option(FORCE_COLORED_OUTPUT "Always produce ANSI-colored output (GCC/Clang only)." OFF)
 option(LOAD_PLUGINS_FROM_PARENT "Force loading of plugin libraries from parent folder." OFF)
@@ -151,11 +148,6 @@ if(NOT OS2)
   list(APPEND QT_COMPONENTS Multimedia)
 endif()
 
-if(MINGW AND NO_LITE)
-  message(WARNING "MinGW can only compile lite version of RSS Guard. Switching to it.")
-  set(NO_LITE OFF)
-endif()
-
 if(FORCE_COLORED_OUTPUT)
   if("${CMAKE_CXX_COMPILER_ID}" STREQUAL "GNU")
     add_compile_options(-fdiagnostics-color=always)
@@ -185,7 +177,7 @@ if(ENABLE_MEDIAPLAYER_LIBMPV)
   if(MEDIAPLAYER_FORCE_OPENGL)
     message(STATUS "Forcing OpenGL-based rendering for libmpv.")
 
-    list(APPEND QT_COMPONENTS OpenGL)
+    list(APPEND QT_COMPONENTS Quick OpenGL)
 
     if(BUILD_WITH_QT6)
       list(APPEND QT_COMPONENTS OpenGLWidgets)
@@ -202,11 +194,6 @@ if(ENABLE_MEDIAPLAYER_QTMULTIMEDIA OR ENABLE_MEDIAPLAYER_LIBMPV)
   add_compile_definitions(ENABLE_MEDIAPLAYER)
 else()
   message(STATUS "Media player feature is disabled.")
-endif()
-
-if(NO_LITE)
-  list(APPEND QT_COMPONENTS WebEngineWidgets)
-  add_compile_definitions(NO_LITE)
 endif()
 
 if(UNIX AND NOT APPLE AND NOT ANDROID)
@@ -254,11 +241,6 @@ if(REVISION_FROM_GIT AND EXISTS "${CMAKE_SOURCE_DIR}/.git")
   )
 
   message(STATUS "Detected git revision: '${APP_REVISION}'.")
-endif()
-
-if(NOT NO_LITE)
-  set(APP_REVERSE_NAME "io.github.martinrotter.rssguardlite")
-  set(APP_REVISION "${APP_REVISION}-lite")
 endif()
 
 set(APP_LOW_NAME "${CMAKE_PROJECT_NAME}")

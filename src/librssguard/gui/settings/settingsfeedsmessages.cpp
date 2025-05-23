@@ -290,9 +290,7 @@ MessagesView::ArticleMarkingPolicy SettingsFeedsMessages::selectedArticleMarking
 void SettingsFeedsMessages::loadSettings() {
   onBeginLoadSettings();
 
-  if (!qApp->usingLite()) {
-    m_ui->m_cbLegacyArticleFormatting->setVisible(false);
-  }
+  m_ui->m_cbLegacyArticleFormatting->setVisible(false);
 
   m_ui->m_cmbArticleMarkingPolicy
     ->setCurrentIndex(m_ui->m_cmbArticleMarkingPolicy->findData(settings()
@@ -333,11 +331,8 @@ void SettingsFeedsMessages::loadSettings() {
     ->setChecked(settings()->value(GROUP(Feeds), SETTING(Feeds::AutoUpdateOnlyUnfocused)).toBool());
   m_ui->m_spinAutoUpdateInterval->setValue(settings()->value(GROUP(Feeds), SETTING(Feeds::AutoUpdateInterval)).toInt());
   m_ui->m_spinFeedUpdateTimeout->setValue(settings()->value(GROUP(Feeds), SETTING(Feeds::UpdateTimeout)).toInt());
-
-  if (qApp->usingLite()) {
-    m_ui->m_cbLegacyArticleFormatting
-      ->setChecked(settings()->value(GROUP(Messages), SETTING(Messages::UseLegacyArticleFormat)).toBool());
-  }
+  m_ui->m_cbLegacyArticleFormatting
+    ->setChecked(settings()->value(GROUP(Messages), SETTING(Messages::UseLegacyArticleFormat)).toBool());
 
   Feed::ArticleIgnoreLimit art_limit = Feed::ArticleIgnoreLimit::fromSettings();
 
@@ -469,12 +464,9 @@ void SettingsFeedsMessages::saveSettings() {
   settings()->setValue(GROUP(Feeds), Feeds::AutoUpdateOnlyUnfocused, m_ui->m_checkAutoUpdateOnlyUnfocused->isChecked());
   settings()->setValue(GROUP(Feeds), Feeds::AutoUpdateInterval, m_ui->m_spinAutoUpdateInterval->value());
   settings()->setValue(GROUP(Feeds), Feeds::UpdateTimeout, m_ui->m_spinFeedUpdateTimeout->value());
-
-  if (qApp->usingLite()) {
-    settings()->setValue(GROUP(Messages),
-                         Messages::UseLegacyArticleFormat,
-                         m_ui->m_cbLegacyArticleFormatting->isChecked());
-  }
+  settings()->setValue(GROUP(Messages),
+                       Messages::UseLegacyArticleFormat,
+                       m_ui->m_cbLegacyArticleFormatting->isChecked());
 
   Feed::ArticleIgnoreLimit art_limit = m_ui->m_wdgArticleLimiting->save();
 
@@ -492,7 +484,9 @@ void SettingsFeedsMessages::saveSettings() {
   settings()->setValue(GROUP(Feeds), Feeds::FeedsUpdateStartupDelay, m_ui->m_spinStartupUpdateDelay->value());
   settings()->setValue(GROUP(Feeds), Feeds::CountFormat, m_ui->m_cmbCountsFeedList->currentText());
   settings()->setValue(GROUP(Feeds), Feeds::EnableTooltipsFeedsMessages, m_ui->m_checkShowTooltips->isChecked());
-  settings()->setValue(GROUP(Feeds), Feeds::StrikethroughDisabledFeeds, m_ui->m_cbStrikethroughDisabledFeeds->isChecked());
+  settings()->setValue(GROUP(Feeds),
+                       Feeds::StrikethroughDisabledFeeds,
+                       m_ui->m_cbStrikethroughDisabledFeeds->isChecked());
   settings()->setValue(GROUP(Messages), Messages::IgnoreContentsChanges, m_ui->m_cmbIgnoreContentsChanges->isChecked());
   settings()->setValue(GROUP(Messages), Messages::MultilineArticleList, m_ui->m_checkMultilineArticleList->isChecked());
   settings()->setValue(GROUP(Messages),

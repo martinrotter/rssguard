@@ -15,6 +15,7 @@
 #include "miscellaneous/iconfactory.h"
 #include "miscellaneous/settings.h"
 #include "miscellaneous/textfactory.h"
+#include "network-web/webfactory.h"
 
 #if defined(ENABLE_MEDIAPLAYER)
 #include "gui/mediaplayer/mediaplayer.h"
@@ -68,23 +69,6 @@ void TabWidget::openMainMenu() {
   button_position.setX(button_position.x() + target_size.width());
   button_position.setY(button_position.y() + target_size.height());
   m_menuMain->exec(mapToGlobal(button_position));
-}
-
-void TabWidget::showDownloadManager() {
-  for (int i = 0; i < count(); i++) {
-    if (widget(i)->metaObject()->className() == QSL("DownloadManager")) {
-      setCurrentIndex(i);
-      return;
-    }
-  }
-
-  // Download manager is not opened. Create tab with it.
-  qApp->downloadManager()->setParent(this);
-  addTab(qApp->downloadManager(),
-         qApp->icons()->fromTheme(QSL("emblem-downloads"), QSL("download")),
-         tr("Downloads"),
-         TabBar::TabType::DownloadManager);
-  setCurrentIndex(count() - 1);
 }
 
 void TabWidget::checkCornerButtonVisibility() {
@@ -249,11 +233,7 @@ int TabWidget::addMediaPlayer(const QString& url, bool make_active) {
 
   auto* player = new MediaPlayer(this);
 
-  connect(player,
-          &MediaPlayer::urlDownloadRequested,
-          qApp->downloadManager(),
-          QOverload<const QUrl&>::of(&DownloadManager::download));
-
+  connect(player, &MediaPlayer::urlDownloadRequested, qApp->web(), &WebFactory::openUrlInExternalBrowser);
   connect(player, &MediaPlayer::closed, this, &TabWidget::closeTabWithSender);
 
   int index = addTab(player,

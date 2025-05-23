@@ -61,7 +61,6 @@ struct RSSGUARD_DLLSPEC Skin {
     QString m_description;
     QString m_rawData;
     QString m_rawForcedData;
-    QString m_adblocked;
     QString m_layoutMarkupWrapper;
     QString m_enclosureImageMarkup;
     QString m_layoutMarkup;
@@ -90,7 +89,7 @@ class RSSGUARD_DLLSPEC SkinFactory : public QObject {
     virtual ~SkinFactory() = default;
 
     // Loads skin name from settings and sets it as active.
-    void loadCurrentSkin(bool lite, bool replace_existing_qss);
+    void loadCurrentSkin(bool replace_existing_qss);
     Skin currentSkin() const;
 
     // Gets color for model from active skin.
@@ -102,13 +101,11 @@ class RSSGUARD_DLLSPEC SkinFactory : public QObject {
     // after application restart.
     QString selectedSkinName() const;
 
-    QString adBlockedPage(const QString& url, const QString& filter);
-
     PreparedHtml prepareHtml(const QString& inner_html, const QUrl& base_url);
     PreparedHtml generateHtmlOfArticles(const QList<Message>& messages, RootItem* root, int desired_width) const;
 
     // Gets skin about a particular skin.
-    Skin skinInfo(const QString& skin_name, bool lite, bool* ok = nullptr) const;
+    Skin skinInfo(const QString& skin_name, bool* ok = nullptr) const;
 
     // Returns list of installed skins.
     QList<Skin> installedSkins() const;
@@ -123,11 +120,7 @@ class RSSGUARD_DLLSPEC SkinFactory : public QObject {
   private:
     // Loads the skin from given skin_data.
     void loadSkinFromData(const Skin& skin, bool replace_existing_qss);
-
-    QString loadSkinFile(const QString& skin_folder,
-                         bool lite,
-                         const QString& file_name,
-                         const QString& base_folder) const;
+    QString loadSkinFile(const QString& skin_folder, const QString& file_name, const QString& base_folder) const;
 
     // Holds name of the current skin.
     Skin m_currentSkin;

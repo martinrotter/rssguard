@@ -70,9 +70,6 @@ class TabWidget : public QTabWidget {
     void closeAllTabs();
     void closeCurrentTab();
 
-    // Displays download manager.
-    void showDownloadManager();
-
     int addSingleMessageView(RootItem* root, const Message& message);
 
     // Adds new WebBrowser tab to global TabWidget.

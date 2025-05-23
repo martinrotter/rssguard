@@ -168,16 +168,6 @@ void StatusBar::loadSpecificActions(const QList<QAction*>& actions, bool initial
   }
 }
 
-bool StatusBar::eventFilter(QObject* watched, QEvent* event) {
-  if (watched == m_barProgressDownload) {
-    if (event->type() == QEvent::Type::MouseButtonPress) {
-      qApp->mainForm()->tabWidget()->showDownloadManager();
-    }
-  }
-
-  return false;
-}
-
 void StatusBar::clear() {
   while (!actions().isEmpty()) {
     QAction* act = actions().at(0);

@@ -12,9 +12,7 @@
 #include "miscellaneous/application.h"
 #include "miscellaneous/iconfactory.h"
 #include "miscellaneous/settings.h"
-#include "network-web/articleparse.h"
 #include "network-web/networkfactory.h"
-#include "network-web/readability.h"
 #include "network-web/webfactory.h"
 
 #include <QJsonObject>
@@ -35,14 +33,9 @@ WebBrowser::WebBrowser(WebViewer* viewer, QWidget* parent)
 #if defined(ENABLE_MEDIAPLAYER)
     m_actionPlayPageInMediaPlayer(new QAction(qApp->icons()->fromTheme(QSL("player_play"), QSL("media-playback-start")),
                                               tr("Play in media player"),
-                                              this)),
+                                              this))
 #endif
-    m_actionReadabilePage(new QAction(qApp->icons()->fromTheme(QSL("text-html")),
-                                      tr("View website in reader mode"),
-                                      this)),
-    m_actionGetFullArticle(new QAction(qApp->icons()->fromTheme(QSL("applications-office")),
-                                       tr("Load full source article"),
-                                       this)) {
+{
   if (m_webView == nullptr) {
     m_webView = qApp->createWebView();
     dynamic_cast<QWidget*>(m_webView)->setParent(this);
@@ -91,8 +84,6 @@ void WebBrowser::createConnections() {
   });
 
   connect(m_actionOpenInSystemBrowser, &QAction::triggered, this, &WebBrowser::openCurrentSiteInSystemBrowser);
-  connect(m_actionReadabilePage, &QAction::triggered, this, &WebBrowser::readabilePage);
-  connect(m_actionGetFullArticle, &QAction::triggered, this, &WebBrowser::getFullArticle);
 
 #if defined(ENABLE_MEDIAPLAYER)
   connect(m_actionPlayPageInMediaPlayer, &QAction::triggered, this, &WebBrowser::playCurrentSiteInMediaPlayer);
@@ -102,12 +93,6 @@ void WebBrowser::createConnections() {
           &LocationLineEdit::submitted,
           this,
           static_cast<void (WebBrowser::*)(const QString&)>(&WebBrowser::loadUrl));
-
-  connect(qApp->web()->readability(), &Readability::htmlReadabled, this, &WebBrowser::setReadabledHtml);
-  connect(qApp->web()->readability(), &Readability::errorOnHtmlReadabiliting, this, &WebBrowser::readabilityFailed);
-
-  connect(qApp->web()->articleParse(), &ArticleParse::articleParsed, this, &WebBrowser::setFullArticleHtml);
-  connect(qApp->web()->articleParse(), &ArticleParse::errorOnArticleParsing, this, &WebBrowser::fullArticleFailed);
 }
 
 void WebBrowser::updateUrl(const QUrl& url) {
@@ -184,28 +169,6 @@ void WebBrowser::loadMessages(const QList<Message>& messages, RootItem* root) {
     m_searchWidget->hide();
     m_webView->loadMessages(messages, root);
   }
-}
-
-void WebBrowser::readabilePage() {
-  m_actionReadabilePage->setEnabled(false);
-  qApp->web()->readability()->makeHtmlReadable(this, m_webView->html(), m_webView->url().toString());
-}
-
-void WebBrowser::getFullArticle() {
-  QString url;
-
-  if (!m_messages.isEmpty() && !m_messages.first().m_url.isEmpty()) {
-    url = m_messages.first().m_url;
-  }
-  else if (m_webView->url().isValid()) {
-    url = m_webView->url().toString();
-  }
-  else {
-    return;
-  }
-
-  m_actionGetFullArticle->setEnabled(false);
-  qApp->web()->articleParse()->parseArticle(this, url);
 }
 
 bool WebBrowser::eventFilter(QObject* watched, QEvent* event) {
@@ -306,91 +269,6 @@ void WebBrowser::newWindowRequested(WebViewer* viewer) {
   qApp->mainForm()->tabWidget()->addBrowser(false, false, browser);
 }
 
-void WebBrowser::setReadabledHtml(const QObject* sndr, const QString& better_html) {
-  if (sndr == this && !better_html.isEmpty()) {
-    m_webView->setReadabledHtml(better_html, m_webView->url());
-  }
-}
-
-void WebBrowser::readabilityFailed(const QObject* sndr, const QString& error) {
-  if (sndr == this && !error.isEmpty()) {
-    m_webView->setReadabledHtml(error, m_webView->url());
-  }
-}
-
-Message WebBrowser::messageFromExtractor(const QJsonDocument& extracted_data) const {
-  QJsonObject extracted_obj = extracted_data.object();
-  Message msg;
-
-  msg.m_title = extracted_obj["title"].toString();
-  msg.m_author = extracted_obj["author"].toString();
-  msg.m_created = TextFactory::parseDateTime(extracted_obj["published"].toString());
-  msg.m_createdFromFeed = true;
-  msg.m_url = extracted_obj["url"].toString();
-  msg.m_contents = extracted_obj["content"].toString();
-
-  QString image = extracted_obj["image"].toString();
-
-  if (!image.isEmpty()) {
-    // NOTE: Prepend image to content.
-    msg.m_contents = msg.m_contents.prepend(QSL("<div>"
-                                                "<a href=\"%1\">"
-                                                "<img src=\"%1\" />"
-                                                "</a>"
-                                                "</div>")
-                                              .arg(image));
-  }
-
-  return msg;
-}
-
-void WebBrowser::setFullArticleHtml(const QObject* sndr, const QString& url, const QString& json_answer) {
-  if (sndr == this && !json_answer.isEmpty()) {
-    QJsonDocument json_doc = QJsonDocument::fromJson(json_answer.toUtf8());
-
-    Message full_article = messageFromExtractor(json_doc);
-
-    if (!m_messages.isEmpty() && m_messages.first().m_url == url) {
-      const Message displayed_article = m_messages.first();
-
-      // Copy rest of original attributes which might influence the "full" article.
-      full_article.m_feedId = displayed_article.m_feedId;
-      full_article.m_feedTitle = displayed_article.m_feedTitle;
-      full_article.m_customId = displayed_article.m_customId;
-      full_article.m_customHash = displayed_article.m_customHash;
-      full_article.m_id = displayed_article.m_id;
-      full_article.m_accountId = displayed_article.m_accountId;
-      full_article.m_assignedLabels = displayed_article.m_assignedLabels;
-      full_article.m_assignedLabelsIds = displayed_article.m_assignedLabelsIds;
-      full_article.m_categories = displayed_article.m_categories;
-      full_article.m_rawContents = displayed_article.m_rawContents;
-
-      full_article.m_isRead = displayed_article.m_isRead;
-      full_article.m_isImportant = displayed_article.m_isImportant;
-      full_article.m_isDeleted = displayed_article.m_isDeleted;
-      full_article.m_score = displayed_article.m_score;
-      full_article.m_rtlBehavior = displayed_article.m_rtlBehavior;
-      full_article.m_enclosures = displayed_article.m_enclosures;
-
-      loadMessages({full_article}, m_root);
-    }
-    else {
-      auto html_message = m_webView->htmlForMessages({full_article}, nullptr);
-
-      setHtml(html_message.m_html, url);
-    }
-
-    //
-    //  m_webView->setReadabledHtml(full_article.m_contents, m_webView->url());
-  }
-}
-
-void WebBrowser::fullArticleFailed(const QObject* sndr, const QString& error) {
-  if (sndr == this && !error.isEmpty()) {
-    m_webView->setReadabledHtml(error, m_webView->url());
-  }
-}
-
 void WebBrowser::initializeLayout() {
   m_toolBar->setFloatable(false);
   m_toolBar->setMovable(false);
@@ -422,13 +300,9 @@ void WebBrowser::initializeLayout() {
   }
 
   m_actionOpenInSystemBrowser->setEnabled(false);
-  m_actionReadabilePage->setEnabled(false);
-  m_actionGetFullArticle->setEnabled(false);
 
   // Add needed actions into toolbar.
   m_toolBar->addAction(m_actionOpenInSystemBrowser);
-  m_toolBar->addAction(m_actionGetFullArticle);
-  m_toolBar->addAction(m_actionReadabilePage);
 
 #if defined(ENABLE_MEDIAPLAYER)
   m_actionPlayPageInMediaPlayer->setEnabled(false);
@@ -458,8 +332,6 @@ void WebBrowser::initializeLayout() {
 void WebBrowser::onLoadingStarted() {
   m_loadingProgress->show();
   m_actionOpenInSystemBrowser->setEnabled(false);
-  m_actionReadabilePage->setEnabled(false);
-  m_actionGetFullArticle->setEnabled(false);
 
 #if defined(ENABLE_MEDIAPLAYER)
   m_actionPlayPageInMediaPlayer->setEnabled(false);
@@ -477,8 +349,6 @@ void WebBrowser::onLoadingFinished(bool success) {
 
     if (url.isValid() && !url.host().isEmpty()) {
       m_actionOpenInSystemBrowser->setEnabled(true);
-      m_actionGetFullArticle->setEnabled(true);
-      m_actionReadabilePage->setEnabled(true);
 
 #if defined(ENABLE_MEDIAPLAYER)
       m_actionPlayPageInMediaPlayer->setEnabled(true);
@@ -486,8 +356,6 @@ void WebBrowser::onLoadingFinished(bool success) {
     }
     else {
       m_actionOpenInSystemBrowser->setEnabled(false);
-      m_actionReadabilePage->setEnabled(false);
-      m_actionGetFullArticle->setEnabled(false);
 
 #if defined(ENABLE_MEDIAPLAYER)
       m_actionPlayPageInMediaPlayer->setEnabled(false);

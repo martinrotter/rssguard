@@ -27,8 +27,8 @@ SettingsBrowserMail::SettingsBrowserMail(Settings* settings, QWidget* parent)
                                               false);
 
   m_ui->m_lblExternalEmailInfo->setHelpText(tr("Placeholders:\n"
-                                               " • %1 - title of selected message,\n"
-                                               " • %2 - body of selected message."),
+                                               " Ă˘â‚¬Ë %1 - title of selected message,\n"
+                                               " Ă˘â‚¬Ë %2 - body of selected message."),
                                             false);
 
   m_ui->m_lblToolInfo->setHelpText(tr("On this page, you can setup a list of external tools which can open URLs."),
@@ -84,16 +84,6 @@ SettingsBrowserMail::SettingsBrowserMail(Settings* settings, QWidget* parent)
             m_ui->m_btnDeleteTool->setEnabled(current != nullptr);
             m_ui->m_btnEditTool->setEnabled(current != nullptr);
           });
-
-#if !defined(NO_LITE)
-  // Remove WebEngine tab.
-  m_ui->m_tabBrowserProxy->removeTab(2);
-#else
-  connect(m_ui->m_cbDisableCache, &QCheckBox::stateChanged, this, &SettingsBrowserMail::dirtifySettings);
-  connect(m_ui->m_cbDisableCache, &QCheckBox::stateChanged, this, &SettingsBrowserMail::requireRestart);
-  connect(m_ui->m_txtWebEngineChromiumFlags, &QPlainTextEdit::textChanged, this, &SettingsBrowserMail::dirtifySettings);
-  connect(m_ui->m_txtWebEngineChromiumFlags, &QPlainTextEdit::textChanged, this, &SettingsBrowserMail::requireRestart);
-#endif
 }
 
 SettingsBrowserMail::~SettingsBrowserMail() {
@@ -175,7 +165,6 @@ void SettingsBrowserMail::selectEmailExecutable() {
 void SettingsBrowserMail::loadSettings() {
   onBeginLoadSettings();
 
-  m_ui->m_cbDisableCache->setChecked(settings()->value(GROUP(Browser), SETTING(Browser::DisableCache)).toBool());
   m_ui->m_cbEnableHttp2->setChecked(settings()->value(GROUP(Network), SETTING(Network::EnableHttp2)).toBool());
   m_ui->m_cbEnableApiServer->setChecked(settings()->value(GROUP(Network), SETTING(Network::EnableApiServer)).toBool());
   m_ui->m_cbIgnoreAllCookies
@@ -202,10 +191,6 @@ void SettingsBrowserMail::loadSettings() {
   m_ui->m_grpCustomExternalEmail
     ->setChecked(settings()->value(GROUP(Browser), SETTING(Browser::CustomExternalEmailEnabled)).toBool());
 
-  // WebEngine.
-  m_ui->m_txtWebEngineChromiumFlags
-    ->setPlainText(settings()->value(GROUP(Browser), SETTING(Browser::WebEngineChromiumFlags)).toString());
-
   // Load the settings.
   QNetworkProxy::ProxyType selected_proxy_type =
     static_cast<QNetworkProxy::ProxyType>(settings()->value(GROUP(Proxy), SETTING(Proxy::Type)).toInt());
@@ -223,7 +208,6 @@ void SettingsBrowserMail::loadSettings() {
 void SettingsBrowserMail::saveSettings() {
   onBeginSaveSettings();
 
-  settings()->setValue(GROUP(Browser), Browser::DisableCache, m_ui->m_cbDisableCache->isChecked());
   settings()->setValue(GROUP(Network), Network::EnableHttp2, m_ui->m_cbEnableHttp2->isChecked());
   settings()->setValue(GROUP(Network), Network::EnableApiServer, m_ui->m_cbEnableApiServer->isChecked());
   settings()->setValue(GROUP(Network), Network::IgnoreAllCookies, m_ui->m_cbIgnoreAllCookies->isChecked());
@@ -261,11 +245,6 @@ void SettingsBrowserMail::saveSettings() {
                        Browser::CustomExternalEmailEnabled,
                        m_ui->m_grpCustomExternalEmail->isChecked());
 
-  // WebEngine.
-  settings()->setValue(GROUP(Browser),
-                       Browser::WebEngineChromiumFlags,
-                       m_ui->m_txtWebEngineChromiumFlags->toPlainText());
-
   auto proxy = m_proxyDetails->proxy();
 
   settings()->setValue(GROUP(Proxy), Proxy::Type, int(proxy.type()));
@@ -280,9 +259,6 @@ void SettingsBrowserMail::saveSettings() {
 
   qApp->web()->cookieJar()->updateSettings();
   qApp->web()->updateProxy();
-
-  // Reload settings for all network access managers.
-  qApp->downloadManager()->networkManager()->loadSettings();
 
   onEndSaveSettings();
 }

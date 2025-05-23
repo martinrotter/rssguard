@@ -28,8 +28,6 @@
 #include "miscellaneous/mutex.h"
 #include "miscellaneous/settings.h"
 #include "miscellaneous/thread.h"
-#include "network-web/adblock/adblockicon.h"
-#include "network-web/adblock/adblockmanager.h"
 #include "network-web/webfactory.h"
 #include "services/abstract/recyclebin.h"
 #include "services/abstract/serviceroot.h"
@@ -87,12 +85,6 @@ FormMain::FormMain(QWidget* parent, Qt::WindowFlags f)
   connect(m_actionToolbarMainMenu, &QWidgetAction::triggered, this, [this]() {
     qobject_cast<QToolButton*>(m_actionToolbarMainMenu->defaultWidget())->menu()->exec();
   });
-
-  m_ui->m_menuWebBrowserTabs->addAction(qApp->web()->adBlock()->adBlockIcon());
-
-#if defined(NO_LITE)
-  m_ui->m_menuWebBrowserTabs->addAction(qApp->web()->engineSettingsAction());
-#endif
 
   setStatusBar(m_statusBar = new StatusBar(this));
 
@@ -161,7 +153,6 @@ QList<QAction*> FormMain::allActions() const {
 
   // Add basic actions.
   actions << m_ui->m_actionSettings;
-  actions << m_ui->m_actionDownloadManager;
   actions << m_ui->m_actionRestoreDatabaseSettings;
   actions << m_ui->m_actionBackupDatabaseSettings;
   actions << m_ui->m_actionRestart;
@@ -572,7 +563,6 @@ void FormMain::setupIcons() {
   IconFactory* icon_theme_factory = qApp->icons();
 
   // Setup icons of this main window.
-  m_ui->m_actionDownloadManager->setIcon(icon_theme_factory->fromTheme(QSL("emblem-downloads"), QSL("download")));
   m_ui->m_actionSettings->setIcon(icon_theme_factory->fromTheme(QSL("emblem-system"), QSL("applications-system")));
   m_ui->m_actionQuit->setIcon(icon_theme_factory->fromTheme(QSL("application-exit")));
   m_ui->m_actionRestart->setIcon(icon_theme_factory->fromTheme(QSL("view-refresh")));
@@ -661,7 +651,6 @@ void FormMain::setupIcons() {
   m_ui->m_actionTabsPrevious->setIcon(icon_theme_factory->fromTheme(QSL("go-previous")));
   m_ui->m_actionBrowserScrollUp->setIcon(icon_theme_factory->fromTheme(QSL("arrow-up")));
   m_ui->m_actionBrowserScrollDown->setIcon(icon_theme_factory->fromTheme(QSL("arrow-down")));
-  m_ui->m_actionCleanupWebCache->setIcon(icon_theme_factory->fromTheme(QSL("edit-clear")));
   m_ui->m_actionReloadSkin->setIcon(icon_theme_factory->fromTheme(QSL("view-refresh")));
 
   // Setup icons on TabWidget too.
@@ -783,15 +772,7 @@ void FormMain::createConnections() {
   connect(m_ui->m_actionSettings, &QAction::triggered, this, [this]() {
     FormSettings(*this).exec();
   });
-  connect(m_ui->m_actionDownloadManager, &QAction::triggered, m_ui->m_tabWidget, &TabWidget::showDownloadManager);
   connect(m_ui->m_actionCleanupDatabase, &QAction::triggered, this, &FormMain::showDbCleanupAssistant);
-
-#if defined(NO_LITE)
-  connect(m_ui->m_actionCleanupWebCache, &QAction::triggered, qApp->web(), &WebFactory::cleanupCache);
-#else
-  m_ui->m_menuTools->removeAction(m_ui->m_actionCleanupWebCache);
-#endif
-
   connect(m_ui->m_actionReloadSkin, &QAction::triggered, qApp, &Application::reloadCurrentSkin);
 
   // Menu "Help" connections.
