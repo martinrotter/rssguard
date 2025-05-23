@@ -165,8 +165,6 @@ set(SOURCES
   gui/settings/settingsbrowsermail.h
   gui/settings/settingsdatabase.cpp
   gui/settings/settingsdatabase.h
-  gui/settings/settingsdownloads.cpp
-  gui/settings/settingsdownloads.h
   gui/settings/settingsfeedsmessages.cpp
   gui/settings/settingsfeedsmessages.h
   gui/settings/settingsgeneral.cpp
@@ -177,8 +175,6 @@ set(SOURCES
   gui/settings/settingslocalization.h
   gui/settings/settingsmediaplayer.cpp
   gui/settings/settingsmediaplayer.h
-  gui/settings/settingsnodejs.cpp
-  gui/settings/settingsnodejs.h
   gui/settings/settingsnotifications.cpp
   gui/settings/settingsnotifications.h
   gui/settings/settingspanel.cpp
@@ -223,8 +219,6 @@ set(SOURCES
   miscellaneous/localization.h
   miscellaneous/mutex.cpp
   miscellaneous/mutex.h
-  miscellaneous/nodejs.cpp
-  miscellaneous/nodejs.h
   miscellaneous/notification.cpp
   miscellaneous/notification.h
   miscellaneous/notificationfactory.cpp
@@ -247,30 +241,18 @@ set(SOURCES
   miscellaneous/textfactory.h
   miscellaneous/thread.cpp
   miscellaneous/thread.h
-  network-web/adblock/adblockdialog.cpp
-  network-web/adblock/adblockdialog.h
-  network-web/adblock/adblockicon.cpp
-  network-web/adblock/adblockicon.h
-  network-web/adblock/adblockmanager.cpp
-  network-web/adblock/adblockmanager.h
-  network-web/adblock/adblockrequestinfo.cpp
-  network-web/adblock/adblockrequestinfo.h
   network-web/gemini/geminiclient.cpp
   network-web/gemini/geminiclient.h
   network-web/gemini/geminiparser.cpp
   network-web/gemini/geminiparser.h
   network-web/apiserver.cpp
   network-web/apiserver.h
-  network-web/articleparse.cpp
-  network-web/articleparse.h
   network-web/basenetworkaccessmanager.cpp
   network-web/basenetworkaccessmanager.h
   network-web/cookiejar.cpp
   network-web/cookiejar.h
   network-web/downloader.cpp
   network-web/downloader.h
-  network-web/downloadmanager.cpp
-  network-web/downloadmanager.h
   network-web/googlesuggest.cpp
   network-web/googlesuggest.h
   network-web/httpresponse.cpp
@@ -283,8 +265,6 @@ set(SOURCES
   network-web/oauth2service.h
   network-web/oauthhttphandler.cpp
   network-web/oauthhttphandler.h
-  network-web/readability.cpp
-  network-web/readability.h
   network-web/silentnetworkaccessmanager.cpp
   network-web/silentnetworkaccessmanager.h
   network-web/webfactory.cpp
@@ -360,19 +340,14 @@ set(UI_FILES
   gui/reusable/searchtextwidget.ui
   gui/settings/settingsbrowsermail.ui
   gui/settings/settingsdatabase.ui
-  gui/settings/settingsdownloads.ui
   gui/settings/settingsfeedsmessages.ui
   gui/settings/settingsgeneral.ui
   gui/settings/settingsgui.ui
   gui/settings/settingslocalization.ui
   gui/settings/settingsmediaplayer.ui
-  gui/settings/settingsnodejs.ui
   gui/settings/settingsnotifications.ui
   gui/settings/settingsshortcuts.ui
   gui/toolbars/toolbareditor.ui
-  network-web/adblock/adblockdialog.ui
-  network-web/downloaditem.ui
-  network-web/downloadmanager.ui
   services/abstract/gui/accountdetails.ui
   services/abstract/gui/authenticationdetails.ui
   services/abstract/gui/formaccountdetails.ui
@@ -432,23 +407,6 @@ elseif(ENABLE_MEDIAPLAYER_LIBMPV)
   )
 
   message(STATUS "Found libmpv: ${LibMPV_LIBRARIES}.")
-endif()
-
-if(NO_LITE)
-  list(APPEND SOURCES
-    # WebEngine-based web (and message) browser.
-    gui/webviewers/webengine/webengineviewer.cpp
-    gui/webviewers/webengine/webengineviewer.h
-    network-web/adblock/adblockurlinterceptor.cpp
-    network-web/adblock/adblockurlinterceptor.h
-    network-web/webengine/networkurlinterceptor.cpp
-    network-web/webengine/networkurlinterceptor.h
-    network-web/webengine/urlinterceptor.h
-    network-web/webengine/webenginepage.cpp
-    network-web/webengine/webenginepage.h
-    network-web/gemini/geminischemehandler.cpp
-    network-web/gemini/geminischemehandler.h
-  )
 endif()
 
 list(APPEND SOURCES
@@ -574,12 +532,6 @@ if(WIN32)
   )
 endif()
 
-if(NO_LITE)
-  target_link_libraries(rssguard PUBLIC
-    Qt${QT_VERSION_MAJOR}::WebEngineWidgets
-  )
-endif()
-
 if(WIN32 AND NOT BUILD_WITH_QT6)
   target_link_libraries(rssguard PUBLIC
     Qt${QT_VERSION_MAJOR}::WinExtras
@@ -600,6 +552,7 @@ if(ENABLE_MEDIAPLAYER_QTMULTIMEDIA)
 elseif(ENABLE_MEDIAPLAYER_LIBMPV)
   if(MEDIAPLAYER_FORCE_OPENGL)
     target_link_libraries(rssguard PUBLIC
+      Qt${QT_VERSION_MAJOR}::Quick
       Qt${QT_VERSION_MAJOR}::OpenGL
     )
 

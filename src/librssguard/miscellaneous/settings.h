@@ -31,12 +31,6 @@
 #define DEFAULT_VALUE(x) x##Def
 #define GROUP(x)         x::ID
 
-#if defined(NO_LITE)
-namespace WebEngineAttributes {
-  KEY ID;
-}
-#endif
-
 namespace Cookies {
   KEY ID;
 }
@@ -449,34 +443,6 @@ namespace General {
   KEY Language;
   VALUE(QString) LanguageDef;
 } // namespace General
-
-// Downloads.
-namespace Downloads {
-  KEY ID;
-  KEY AlwaysPromptForFilename;
-
-  VALUE(bool) AlwaysPromptForFilenameDef;
-
-  KEY TargetDirectory;
-
-  VALUE(QString) TargetDirectoryDef;
-
-  KEY RemovePolicy;
-
-  VALUE(int) RemovePolicyDef;
-
-  KEY TargetExplicitDirectory;
-
-  VALUE(QString) TargetExplicitDirectoryDef;
-
-  KEY ShowDownloadsWhenNewDownloadStarts;
-
-  VALUE(bool) ShowDownloadsWhenNewDownloadStartsDef;
-
-  KEY ItemUrl;
-  KEY ItemLocation;
-  KEY ItemDone;
-} // namespace Downloads
 
 // Proxy.
 namespace Proxy {

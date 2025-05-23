@@ -33,9 +33,6 @@ class StatusBar : public QStatusBar, public BaseBar {
     void showProgressDownload(int progress, const QString& tooltip);
     void clearProgressDownload();
 
-  protected:
-    bool eventFilter(QObject* watched, QEvent* event);
-
   private:
     void clear();
 

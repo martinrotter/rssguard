@@ -18,10 +18,6 @@
 #include <QPlainTextEdit>
 #include <QTextStream>
 
-#if defined(NO_LITE)
-#include <QWebEngineProfile>
-#endif
-
 FormAbout::FormAbout(bool go_to_changelog, QWidget* parent) : QDialog(parent) {
   m_ui.setupUi(this);
   m_ui.m_lblIcon->setPixmap(QPixmap(APP_ICON_PATH));
@@ -76,27 +72,17 @@ void FormAbout::loadSettingsAndPaths() {
 
   const QString user_data_path = QDir::toNativeSeparators(qApp->userDataFolder());
 
-  m_ui.m_tbResources->setPlainText(tr("User data folder (\"%5\") -> \"%1\"\n\n"
-                                      "Settings file (%3) -> \"%2\"\n"
-                                      "Skins base folder -> \"%4\"\n"
-                                      "Icon themes base folder -> \"%8\"\n"
-                                      "Node.js package folder -> \"%6\"\n"
-                                      "QtWebEngine cache folder -> \"%7\"")
+  m_ui.m_tbResources->setPlainText(tr("User data folder (\"%2\") -> \"%1\"\n\n"
+                                      "Settings file (%4) -> \"%3\"\n"
+                                      "Skins base folder -> \"%5\"\n"
+                                      "Icon themes base folder -> \"%6\"")
                                      .arg(user_data_path,
+                                          QSL(USER_DATA_PLACEHOLDER),
                                           QDir::toNativeSeparators(qApp->settings()->fileName())
                                             .replace(user_data_path, QSL(USER_DATA_PLACEHOLDER)),
                                           settings_type,
                                           QDir::toNativeSeparators(qApp->skins()->customSkinBaseFolder())
                                             .replace(user_data_path, QSL(USER_DATA_PLACEHOLDER)),
-                                          QSL(USER_DATA_PLACEHOLDER),
-                                          QDir::toNativeSeparators(qApp->nodejs()->packageFolder())
-                                            .replace(user_data_path, QSL(USER_DATA_PLACEHOLDER)),
-#if defined(NO_LITE)
-                                          QDir::toNativeSeparators(qApp->web()->engineProfile()->cachePath())
-                                            .replace(user_data_path, QSL(USER_DATA_PLACEHOLDER)),
-#else
-                                          QSL("-"),
-#endif
                                           QSL(USER_DATA_PLACEHOLDER) + QDir::separator() +
                                             QSL(APP_LOCAL_ICON_THEME_FOLDER)));
 }

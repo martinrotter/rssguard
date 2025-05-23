@@ -4,7 +4,6 @@
 #define TEXTBROWSERVIEWER_H
 
 #include "gui/webviewers/webviewer.h"
-#include "network-web/adblock/adblockmanager.h"
 
 #include <QNetworkReply>
 #include <QPixmap>
@@ -94,10 +93,7 @@ class RSSGUARD_DLLSPEC TextBrowserViewer : public QTextBrowser, public WebViewer
 
   private:
     PreparedHtml prepareLegacyHtmlForMessage(const QList<Message>& messages, RootItem* selected_item) const;
-
     void setHtmlPrivate(const QString& html, const QUrl& base_url);
-    BlockingResult blockedWithAdblock(const QUrl& url);
-
     QString decodeHtmlData(const QByteArray& data, const QString& content_type) const;
 
   private:
