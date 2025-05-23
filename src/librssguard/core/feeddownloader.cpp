@@ -490,7 +490,7 @@ void FeedDownloader::finalizeUpdate() {
     qApp->showGuiMessage(Notification::Event::ArticlesFetchingError,
                          {QObject::tr("Some feeds have error"),
                           QObject::tr("Some feeds threw an error when fetching articles."),
-                          QSystemTrayIcon::MessageIcon::Critical});
+                          QSystemTrayIcon::MessageIcon::Warning});
   }
 
   // Update of feeds has finished.
