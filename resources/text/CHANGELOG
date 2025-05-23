@@ -1,3 +1,36 @@
+4.8.4
+-----
+
+Users, this is one of the last RSS Guard releases from 4.x line. There might be more releases from 4.x but only bug-fixing ones.
+
+I will start working on new RSS Guard which will have many differences from current one and will aim to return to original goals of the application:
+* simplicity
+* good features
+* speed
+* stability
+
+Some features will be removed and while some of you will likely not be that happy, note that all this will help to keep RSS Guard development going in the future, ensuring we have maintainable, solid, expandable application. The development of RSS Guard is hugely understaffed. It is basically one-man project with some help of individual contributors.
+
+Fill this survey, please: https://forms.gle/3CZm95W6vrBLfi5K9
+
+Added:
+* Notification when feed fetch fails was added. (#1698) 
+* Application can now start in minimized state even without tray icon being enabled. (#1713)
+* Columns in feed list are now resizeable. (2ed50e55f)
+* Feed list now also offers filtering dropdown toolbar button. This allows easy filtering of feed list the same way as article list already does. (542ae73b2)
+* User can now explicitly disable showing of modal dialogs depending on notification type. (83fed6b7c)
+* Added option to manually reload active skin without restarting the app. (01bc5a713)
+* Unread article dot color is now taken from active skin. (c68e545ea)
+
+Fixed:
+* HTML formatting was kind of broken for some specific feeds including bracket symbols. (#1692)
+* AdBlock was not sometimes working. (#1702)
+* Fix blank window upstream bug when doing specific stuff with tray icon. (#1672)
+* Export folder for database/configuration files is properly  remembered. (#1667)
+* More forgiving OPML parsing. (#1688, #1719)
+* Clear `eTag` headers when feed is purged. (2e9d26edc)
+* OpenSSL Qt plugin is properly copied. (c3911bd0b)
+
 4.8.3
 -----
 
