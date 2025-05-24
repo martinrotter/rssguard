@@ -100,6 +100,9 @@ DVALUE(char*) Feeds::CountFormatDef = "(%unread)";
 DKEY Feeds::EnableTooltipsFeedsMessages = "show_tooltips";
 DVALUE(bool) Feeds::EnableTooltipsFeedsMessagesDef = true;
 
+DKEY Feeds::HideDisabledFeeds = "hide_disabled_feeds";
+DVALUE(bool) Feeds::HideDisabledFeedsDef = false;
+
 DKEY Feeds::StrikethroughDisabledFeeds = "strikethrough_disabled_feeds";
 DVALUE(bool) Feeds::StrikethroughDisabledFeedsDef = true;
 
