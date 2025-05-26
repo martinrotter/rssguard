@@ -73,11 +73,12 @@ void DynamicShortcutsWidget::populate(QList<QAction*> actions) {
     auto act_text = action->text().remove(QSL("&"));
     auto act_toolt = action->toolTip();
 
-    if (act_text == act_toolt) {
+    if (act_toolt.isEmpty() || act_text == act_toolt) {
       action_label->setText(act_text);
     }
     else {
-      action_label->setText(QSL("%1 (%2)").arg(act_text, act_toolt));
+      action_label->setText(act_toolt);
+      // action_label->setText(QSL("%1 (%2)").arg(act_text, act_toolt));
     }
 
     action_label->setToolTip(action->toolTip());

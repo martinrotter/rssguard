@@ -24,6 +24,7 @@ class MessagesToolBar : public BaseToolBar {
     virtual QList<QAction*> convertActions(const QStringList& actions);
     virtual QStringList defaultActions() const;
     virtual QStringList savedActions() const;
+    virtual QList<QAction*> extraActions() const;
 
     SearchLineEdit* searchBox() const;
 

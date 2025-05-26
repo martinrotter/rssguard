@@ -30,6 +30,11 @@ class BaseBar {
     // Loads the toolbar state from settings.
     virtual void loadSavedActions();
 
+    // Returns list of actions which are created solely by this toolbar.
+    // NOTE: These actions are added to global list of actions which can be
+    // bound to keyboard shortcuts.
+    virtual QList<QAction*> extraActions() const;
+
     // Converts action names to actions.
     virtual QList<QAction*> convertActions(const QStringList& actions) = 0;
 
@@ -60,8 +65,9 @@ class BaseToolBar : public QToolBar, public BaseBar {
     void addActionToMenu(QMenu* menu,
                          const QIcon& icon,
                          const QString& title,
+                         const QString& tooltip_suffix,
                          const QVariant& value,
-                         const QString& name);
+                         const QString& object_name);
     void drawNumberOfCriterias(QToolButton* btn, int count);
 };
 

@@ -22,6 +22,7 @@ class FeedsToolBar : public BaseToolBar {
     virtual void loadSpecificActions(const QList<QAction*>& actions, bool initial_load = false);
     virtual QStringList defaultActions() const;
     virtual QStringList savedActions() const;
+    virtual QList<QAction*> extraActions() const;
 
     SearchLineEdit* searchBox() const;
 

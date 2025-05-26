@@ -22,6 +22,10 @@ BaseToolBar::~BaseToolBar() {
   qDebugNN << LOGSEC_GUI << "Destroying BaseToolBar instance.";
 }
 
+QList<QAction*> BaseBar::extraActions() const {
+  return {};
+}
+
 void BaseBar::loadSavedActions() {
   loadSpecificActions(convertActions(savedActions()), true);
 }
@@ -39,13 +43,15 @@ QAction* BaseBar::findMatchingAction(const QString& action, const QList<QAction*
 void BaseToolBar::addActionToMenu(QMenu* menu,
                                   const QIcon& icon,
                                   const QString& title,
+                                  const QString& tooltip_suffix,
                                   const QVariant& value,
-                                  const QString& name) {
+                                  const QString& object_name) {
   QAction* action = menu->addAction(icon, title);
 
+  action->setToolTip(title + tooltip_suffix);
   action->setCheckable(true);
   action->setData(value);
-  action->setObjectName(name);
+  action->setObjectName(object_name);
 }
 
 void BaseToolBar::activateAction(const QString& action_name, QWidgetAction* widget_action) {

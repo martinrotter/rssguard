@@ -11,7 +11,9 @@ void DynamicShortcuts::save(const QList<QAction*>& actions) {
   Settings* settings = qApp->settings();
 
   for (const QAction* action : actions) {
-    settings->setValue(GROUP(Keyboard), action->objectName(), action->shortcut().toString(QKeySequence::PortableText));
+    settings->setValue(GROUP(Keyboard),
+                       action->objectName(),
+                       action->shortcut().toString(QKeySequence::SequenceFormat::PortableText));
   }
 }
 
@@ -19,10 +21,12 @@ void DynamicShortcuts::load(const QList<QAction*>& actions) {
   Settings* settings = qApp->settings();
 
   for (QAction* action : actions) {
-    QString shortcut_for_action =
-      settings->value(GROUP(Keyboard), action->objectName(), action->shortcut().toString(QKeySequence::PortableText))
-        .toString();
+    QString shortcut_for_action = settings
+                                    ->value(GROUP(Keyboard),
+                                            action->objectName(),
+                                            action->shortcut().toString(QKeySequence::SequenceFormat::PortableText))
+                                    .toString();
 
-    action->setShortcut(QKeySequence::fromString(shortcut_for_action, QKeySequence::PortableText));
+    action->setShortcut(QKeySequence::fromString(shortcut_for_action, QKeySequence::SequenceFormat::PortableText));
   }
 }

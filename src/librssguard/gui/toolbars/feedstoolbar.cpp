@@ -172,6 +172,10 @@ QStringList FeedsToolBar::savedActions() const {
 #endif
 }
 
+QList<QAction*> FeedsToolBar::extraActions() const {
+  return m_menuMessageFilter->actions();
+}
+
 void FeedsToolBar::initializeSearchBox() {
   m_txtSearchMessages =
     new SearchLineEdit(QSL("feed_list_searcher"),
@@ -200,46 +204,56 @@ SearchLineEdit* FeedsToolBar::searchBox() const {
 void FeedsToolBar::initializeFilter() {
   m_menuMessageFilter = new NonClosableMenu(tr("Menu for filtering feeds"), this);
 
+  QString fl = QSL(" ") + tr("(feed list)");
+
   addActionToMenu(m_menuMessageFilter,
                   qApp->icons()->fromTheme(QSL("mail-mark-read")),
                   tr("No extra filtering"),
+                  fl,
                   QVariant::fromValue(FeedsProxyModel::FeedListFilter::NoFiltering),
-                  QSL("no_filtering"));
+                  QSL("feedlist_no_filtering"));
   addActionToMenu(m_menuMessageFilter,
                   qApp->icons()->fromTheme(QSL("mail-mark-read")),
-                  tr("Show unread feeds"),
+                  tr("Show unread items"),
+                  fl,
                   QVariant::fromValue(FeedsProxyModel::FeedListFilter::ShowUnread),
-                  QSL("show_unread"));
+                  QSL("feedlist_show_unread"));
   addActionToMenu(m_menuMessageFilter,
                   qApp->icons()->fromTheme(QSL("mail-mark-read")),
-                  tr("Show non-empty feeds"),
+                  tr("Show non-empty items"),
+                  fl,
                   QVariant::fromValue(FeedsProxyModel::FeedListFilter::ShowNonEmpty),
-                  QSL("non_empty"));
+                  QSL("feedlist_non_empty"));
   addActionToMenu(m_menuMessageFilter,
                   qApp->icons()->fromTheme(QSL("mail-mark-read")),
                   tr("Show feeds with new articles"),
+                  fl,
                   QVariant::fromValue(FeedsProxyModel::FeedListFilter::ShowWithNewArticles),
-                  QSL("new_articles"));
+                  QSL("feedlist_new_articles"));
   addActionToMenu(m_menuMessageFilter,
                   qApp->icons()->fromTheme(QSL("mail-mark-read")),
                   tr("Show feeds with error"),
+                  fl,
                   QVariant::fromValue(FeedsProxyModel::FeedListFilter::ShowWithError),
-                  QSL("with_error"));
+                  QSL("feedlist_with_error"));
   addActionToMenu(m_menuMessageFilter,
                   qApp->icons()->fromTheme(QSL("mail-mark-read")),
                   tr("Show switched off feeds"),
+                  fl,
                   QVariant::fromValue(FeedsProxyModel::FeedListFilter::ShowSwitchedOff),
-                  QSL("switched_off"));
+                  QSL("feedlist_switched_off"));
   addActionToMenu(m_menuMessageFilter,
                   qApp->icons()->fromTheme(QSL("mail-mark-read")),
                   tr("Show quiet feeds"),
+                  fl,
                   QVariant::fromValue(FeedsProxyModel::FeedListFilter::ShowQuiet),
-                  QSL("quiet"));
+                  QSL("feedlist_quiet"));
   addActionToMenu(m_menuMessageFilter,
                   qApp->icons()->fromTheme(QSL("mail-mark-read")),
                   tr("Show feeds with article filters"),
+                  fl,
                   QVariant::fromValue(FeedsProxyModel::FeedListFilter::ShowWithArticleFilters),
-                  QSL("with_filters"));
+                  QSL("feedlist_with_filters"));
 
   m_btnMessageFilter = new QToolButton(this);
   m_btnMessageFilter->setToolTip(tr("Display all feeds"));

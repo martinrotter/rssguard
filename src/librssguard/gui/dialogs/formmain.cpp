@@ -94,11 +94,12 @@ FormMain::FormMain(QWidget* parent, Qt::WindowFlags f)
   m_ui->m_menuWebBrowserTabs->addAction(qApp->web()->engineSettingsAction());
 #endif
 
+  setStatusBar(m_statusBar = new StatusBar(this));
+
   // Add these actions to the list of actions of the main window.
   // This allows to use actions via shortcuts
   // even if main menu is not visible.
   addActions(qApp->userActions());
-  setStatusBar(m_statusBar = new StatusBar(this));
 
   // Prepare main window and tabs.
   prepareMenus();
@@ -242,6 +243,10 @@ QList<QAction*> FormMain::allActions() const {
   actions << m_ui->m_actionBrowserScrollUp;
   actions << m_ui->m_actionBrowserScrollDown;
   actions << m_actionToolbarMainMenu;
+
+  actions << m_ui->m_tabWidget->feedMessageViewer()->feedsToolBar()->extraActions();
+  actions << m_ui->m_tabWidget->feedMessageViewer()->messagesToolBar()->extraActions();
+  actions << m_statusBar->extraActions();
 
   return actions;
 }
