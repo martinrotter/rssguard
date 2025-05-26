@@ -1194,6 +1194,8 @@ void FeedsView::selectionChanged(const QItemSelection& selected, const QItemSele
   RootItem* selected_item = selectedItem();
 
   m_proxyModel->setSelectedItem(selected_item);
+  m_sourceModel->reloadChangedLayout(m_proxyModel->mapSelectionToSource(deselected).indexes());
+
   QTreeView::selectionChanged(selected, deselected);
   emit itemSelected(selected_item);
 
