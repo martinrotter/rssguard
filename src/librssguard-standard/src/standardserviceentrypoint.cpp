@@ -17,7 +17,7 @@ StandardServiceEntryPoint::~StandardServiceEntryPoint() {
 }
 
 QString StandardServiceEntryPoint::name() const {
-  return QSL("RSS/RDF/ATOM/JSON");
+  return tr("Local RSS/RDF/ATOM/JSON");
 }
 
 QString StandardServiceEntryPoint::description() const {

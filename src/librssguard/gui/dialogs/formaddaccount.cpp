@@ -58,20 +58,22 @@ ServiceEntryPoint* FormAddAccount::selectedEntryPoint() const {
 }
 
 void FormAddAccount::loadEntryPoints() {
-  int classic_row = 0, i = 0;
-
   for (const ServiceEntryPoint* entry_point : std::as_const(m_entryPoints)) {
-    if (entry_point->code() == QSL(SERVICE_CODE_STD_RSS)) {
-      classic_row = i;
-    }
-
-    QListWidgetItem* item = new QListWidgetItem(entry_point->icon(), entry_point->name(), m_ui->m_listEntryPoints);
+    QListWidgetItem* item = new QListWidgetItem(entry_point->icon(), entry_point->name());
 
     item->setToolTip(entry_point->description());
     item->setData(Qt::ItemDataRole::UserRole, QVariant::fromValue<intptr_t>(reinterpret_cast<intptr_t>(entry_point)));
-    i++;
+
+    if (entry_point->code() == QSL(SERVICE_CODE_STD_RSS)) {
+      m_ui->m_listEntryPoints->insertItem(0, item);
+      m_ui->m_listEntryPoints->insertItem(1, QSL("--------"));
+
+      m_ui->m_listEntryPoints->item(1)->setFlags(Qt::ItemFlag::NoItemFlags);
+    }
+    else {
+      m_ui->m_listEntryPoints->addItem(item);
+    }
   }
 
-  m_ui->m_listEntryPoints->setCurrentRow(classic_row);
-  m_ui->m_listEntryPoints->sortItems(Qt::SortOrder::AscendingOrder);
+  m_ui->m_listEntryPoints->setCurrentRow(0);
 }
