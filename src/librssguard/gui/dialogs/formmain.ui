@@ -160,7 +160,6 @@
     </property>
     <addaction name="m_actionOpenSelectedSourceArticlesExternally"/>
     <addaction name="m_actionOpenSelectedMessagesInternally"/>
-    <addaction name="m_actionOpenSelectedMessagesInternallyNoTab"/>
     <addaction name="m_actionPlaySelectedArticlesInMediaPlayer"/>
     <addaction name="m_actionSendMessageViaEmail"/>
     <addaction name="m_actionMessagePreviewEnabled"/>
@@ -831,11 +830,6 @@
   <action name="m_actionCopyUrlSelectedArticles">
    <property name="text">
     <string>&amp;Copy URLs of selected articles</string>
-   </property>
-  </action>
-  <action name="m_actionOpenSelectedMessagesInternallyNoTab">
-   <property name="text">
-    <string>Open in internal browser (no new tab)</string>
    </property>
   </action>
   <action name="m_actionSortFeedsAlphabetically">

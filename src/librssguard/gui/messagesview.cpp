@@ -428,7 +428,6 @@ void MessagesView::initializeContextMenu() {
   m_contextMenu->addActions(QList<QAction*>() << qApp->mainForm()->m_ui->m_actionSendMessageViaEmail
                                               << qApp->mainForm()->m_ui->m_actionOpenSelectedSourceArticlesExternally
                                               << qApp->mainForm()->m_ui->m_actionOpenSelectedMessagesInternally
-                                              << qApp->mainForm()->m_ui->m_actionOpenSelectedMessagesInternallyNoTab
                                               << qApp->mainForm()->m_ui->m_actionPlaySelectedArticlesInMediaPlayer
                                               << qApp->mainForm()->m_ui->m_actionCopyUrlSelectedArticles
                                               << qApp->mainForm()->m_ui->m_actionMarkSelectedMessagesAsRead
@@ -674,18 +673,6 @@ void MessagesView::openSelectedMessagesInternally() {
     auto msg = m_sourceModel->messageAt(m_proxyModel->mapToSource(rws.first()).row());
 
     emit openSingleMessageInNewTab(m_sourceModel->loadedItem(), msg);
-  }
-}
-
-void MessagesView::openSelectedMessageUrl() {
-  auto rws = selectionModel()->selectedRows();
-
-  if (!rws.isEmpty()) {
-    auto msg = m_sourceModel->messageAt(m_proxyModel->mapToSource(rws.at(0)).row());
-
-    if (!msg.m_url.isEmpty()) {
-      emit openLinkMiniBrowser(msg.m_url);
-    }
   }
 }
 
