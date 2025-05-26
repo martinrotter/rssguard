@@ -93,7 +93,9 @@ class FeedsProxyModel : public QSortFilterProxyModel {
     QList<QPair<int, QModelIndex>> m_hiddenIndices;
 
     FeedListFilter m_filter;
-    QMap<FeedListFilter, std::function<bool(const Feed*)>> m_filters;
+
+    // NOTE: The parameter type can be Category, Feed or Label only.
+    QMap<FeedListFilter, std::function<bool(const RootItem*)>> m_filters;
     QList<FeedListFilter> m_filterKeys;
 };
 

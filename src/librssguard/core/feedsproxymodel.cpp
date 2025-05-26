@@ -400,37 +400,48 @@ bool FeedsProxyModel::filterAcceptsRow(int source_row, const QModelIndex& source
 }
 
 void FeedsProxyModel::initializeFilters() {
-  m_filters[FeedListFilter::ShowEmpty] = [this](const Feed* feed) {
-    return feed->countOfAllMessages() == 0;
+  m_filters[FeedListFilter::ShowEmpty] = [this](const RootItem* item) {
+    return item->countOfAllMessages() == 0;
   };
 
-  m_filters[FeedListFilter::ShowNonEmpty] = [this](const Feed* feed) {
-    return feed->countOfAllMessages() != 0;
+  m_filters[FeedListFilter::ShowNonEmpty] = [this](const RootItem* item) {
+    return item->countOfAllMessages() != 0;
   };
 
-  m_filters[FeedListFilter::ShowQuiet] = [this](const Feed* feed) {
-    return feed->isQuiet();
+  m_filters[FeedListFilter::ShowQuiet] = [this](const RootItem* item) {
+    Feed* feed = item->toFeed();
+
+    return feed == nullptr || feed->isQuiet();
   };
 
-  m_filters[FeedListFilter::ShowSwitchedOff] = [this](const Feed* feed) {
-    return feed->isSwitchedOff();
+  m_filters[FeedListFilter::ShowSwitchedOff] = [this](const RootItem* item) {
+    Feed* feed = item->toFeed();
+
+    return feed == nullptr || feed->isSwitchedOff();
   };
 
-  m_filters[FeedListFilter::ShowUnread] = [this](const Feed* feed) {
-    return feed->countOfUnreadMessages() > 0;
+  m_filters[FeedListFilter::ShowUnread] = [this](const RootItem* item) {
+    return item->countOfUnreadMessages() > 0;
   };
 
-  m_filters[FeedListFilter::ShowWithArticleFilters] = [this](const Feed* feed) {
-    return !feed->messageFilters().isEmpty();
+  m_filters[FeedListFilter::ShowWithArticleFilters] = [this](const RootItem* item) {
+    Feed* feed = item->toFeed();
+
+    return feed == nullptr || !feed->messageFilters().isEmpty();
   };
 
-  m_filters[FeedListFilter::ShowWithError] = [this](const Feed* feed) {
-    return feed->status() == Feed::Status::AuthError || feed->status() == Feed::Status::NetworkError ||
-           feed->status() == Feed::Status::OtherError || feed->status() == Feed::Status::ParsingError;
+  m_filters[FeedListFilter::ShowWithError] = [this](const RootItem* item) {
+    Feed* feed = item->toFeed();
+
+    return feed == nullptr || feed->status() == Feed::Status::AuthError ||
+           feed->status() == Feed::Status::NetworkError || feed->status() == Feed::Status::OtherError ||
+           feed->status() == Feed::Status::ParsingError;
   };
 
-  m_filters[FeedListFilter::ShowWithNewArticles] = [this](const Feed* feed) {
-    return feed->status() == Feed::Status::NewMessages;
+  m_filters[FeedListFilter::ShowWithNewArticles] = [this](const RootItem* item) {
+    Feed* feed = item->toFeed();
+
+    return feed == nullptr || feed->status() == Feed::Status::NewMessages;
   };
 
   m_filterKeys = m_filters.keys();
@@ -473,25 +484,25 @@ bool FeedsProxyModel::filterAcceptsRowInternal(int source_row, const QModelIndex
 
   bool should_show = QSortFilterProxyModel::filterAcceptsRow(source_row, source_parent);
 
-  if (item->kind() == RootItem::Kind::Feed) {
-    const Feed* feed = item->toFeed();
+  // if (item->kind() == RootItem::Kind::Feed) {
+  //   const Feed* feed = item->toFeed();
 
-    for (FeedListFilter val : m_filterKeys) {
-      if (Globals::hasFlag(m_filter, val)) {
-        // This particular filter is enabled.
-        if (m_filters[val](feed)) {
-          // The item matches the feed filter.
-          // Display it if it matches internal string-based filter too.
-          return should_show;
-        }
+  for (FeedListFilter val : m_filterKeys) {
+    if (Globals::hasFlag(m_filter, val)) {
+      // This particular filter is enabled.
+      if (m_filters[val](item)) {
+        // The item matches the feed filter.
+        // Display it if it matches internal string-based filter too.
+        return should_show;
       }
     }
-
-    if (m_filter != FeedListFilter::NoFiltering) {
-      // Some filter is enabled but this item does not meet it.
-      return false;
-    }
   }
+
+  if (m_filter != FeedListFilter::NoFiltering) {
+    // Some filter is enabled but this item does not meet it.
+    return false;
+  }
+  //}
 
   return should_show;
 }
