@@ -14,9 +14,8 @@ class TabBar : public QTabBar {
   public:
     enum class TabType {
       FeedReader = 1,
-      DownloadManager = 2,
-      NonClosable = 4,
-      Closable = 8
+      NonClosable = 2,
+      Closable = 4
     };
 
     // Constructors.

@@ -97,7 +97,6 @@ class WebViewer {
     virtual void loadingStarted() = 0;
     virtual void loadingProgress(int progress) = 0;
     virtual void loadingFinished(bool success) = 0;
-    virtual void newWindowRequested(WebViewer* viewer) = 0;
     virtual void closeWindowRequested() = 0;
 
   private:
