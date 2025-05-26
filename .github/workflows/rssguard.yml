@@ -3,7 +3,7 @@ name: rssguard
 
 on:
   push:
-    branches: ["*"]
+    branches: ["!new-line"]
     tags: ["*"]
 
 env:
