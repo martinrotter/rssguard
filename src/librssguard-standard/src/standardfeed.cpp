@@ -229,9 +229,6 @@ QString StandardFeed::sourceTypeToString(StandardFeed::SourceType type) {
     case StandardFeed::SourceType::LocalFile:
       return tr("Local file");
 
-    case StandardFeed::SourceType::EmbeddedBrowser:
-      return tr("Built-in web browser with JavaScript support");
-
     default:
       return tr("Unknown");
   }

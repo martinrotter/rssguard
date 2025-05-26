@@ -96,6 +96,8 @@ void EmailPreviewer::downloadAttachment(QAction* act) {
 
     const QNetworkRequest req = m_account->network()->requestForAttachment(m_message.m_customId, attachment_id);
 
+    // TODO: todo
+    /*
     qApp->downloadManager()->download(req, file_name, [this](DownloadItem* it) {
       if (it->downloadedSuccessfully()) {
         const QByteArray raw_json = IOFactory::readFile(it->output().fileName());
@@ -107,6 +109,7 @@ void EmailPreviewer::downloadAttachment(QAction* act) {
         }
       }
     });
+    */
   }
   catch (const NetworkException&) {
     MsgBox::show({},
