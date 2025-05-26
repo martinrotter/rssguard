@@ -178,7 +178,6 @@ QList<QAction*> FormMain::allActions() const {
   actions << m_ui->m_actionOpenSelectedSourceArticlesExternally;
   actions << m_ui->m_actionOpenSelectedMessagesInternally;
   actions << m_ui->m_actionPlaySelectedArticlesInMediaPlayer;
-  actions << m_ui->m_actionOpenSelectedMessagesInternallyNoTab;
   actions << m_ui->m_actionAlternateColorsInLists;
   actions << m_ui->m_actionPauseFeedFetching;
   actions << m_ui->m_actionMessagePreviewEnabled;
@@ -459,7 +458,6 @@ void FormMain::updateMessageButtonsAvailability() {
   m_ui->m_actionRestoreSelectedMessages->setEnabled(atleast_one_message_selected);
   m_ui->m_actionMarkSelectedMessagesAsRead->setEnabled(atleast_one_message_selected);
   m_ui->m_actionMarkSelectedMessagesAsUnread->setEnabled(atleast_one_message_selected);
-  m_ui->m_actionOpenSelectedMessagesInternallyNoTab->setEnabled(one_message_selected);
 
 #if !defined(ENABLE_MEDIAPLAYER)
   m_ui->m_actionPlaySelectedArticlesInMediaPlayer->setText(tr("Play in media player") + QSL(" ") +
@@ -617,7 +615,6 @@ void FormMain::setupIcons() {
   m_ui->m_actionOpenSelectedMessagesInternally->setIcon(icon_theme_factory->fromTheme(QSL("document-open")));
   m_ui->m_actionPlaySelectedArticlesInMediaPlayer->setIcon(icon_theme_factory->fromTheme(QSL("player_play"),
                                                                                          QSL("media-playback-start")));
-  m_ui->m_actionOpenSelectedMessagesInternallyNoTab->setIcon(icon_theme_factory->fromTheme(QSL("document-open")));
   m_ui->m_actionSendMessageViaEmail->setIcon(icon_theme_factory->fromTheme(QSL("mail-send")));
   m_ui->m_actionSelectNextItem->setIcon(icon_theme_factory->fromTheme(QSL("arrow-down")));
   m_ui->m_actionSelectPreviousItem->setIcon(icon_theme_factory->fromTheme(QSL("arrow-up")));
@@ -872,11 +869,6 @@ void FormMain::createConnections() {
           &QAction::triggered,
           tabWidget()->feedMessageViewer()->messagesView(),
           &MessagesView::openSelectedMessagesInternally);
-
-  connect(m_ui->m_actionOpenSelectedMessagesInternallyNoTab,
-          &QAction::triggered,
-          tabWidget()->feedMessageViewer()->messagesView(),
-          &MessagesView::openSelectedMessageUrl);
 
   connect(m_ui->m_actionSendMessageViaEmail,
           &QAction::triggered,

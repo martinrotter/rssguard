@@ -60,7 +60,6 @@ class MessagesView : public BaseTreeView {
 
     void openSelectedSourceMessagesExternally();
     void openSelectedMessagesInternally();
-    void openSelectedMessageUrl();
     void sendSelectedMessageViaEmail();
 
     // Works with SELECTED messages only.
