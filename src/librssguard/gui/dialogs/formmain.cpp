@@ -226,7 +226,6 @@ QList<QAction*> FormMain::allActions() const {
   actions << m_ui->m_actionMessageFilters;
   actions << m_ui->m_actionEmptyAllRecycleBins;
   actions << m_ui->m_actionRestoreAllRecycleBins;
-  actions << m_ui->m_actionTabNewWebBrowser;
   actions << m_ui->m_actionTabsCloseCurrent;
   actions << m_ui->m_actionTabsCloseAll;
   actions << m_ui->m_actionTabsCloseAllExceptCurrent;
@@ -425,8 +424,7 @@ void FormMain::updateAccountsMenu() {
 }
 
 void FormMain::updateTabsButtonsAvailability(int index) {
-  m_ui->m_actionTabsCloseCurrent->setEnabled(tabWidget()->tabBar()->tabType(index) == TabBar::TabType::Closable ||
-                                             tabWidget()->tabBar()->tabType(index) == TabBar::TabType::DownloadManager);
+  m_ui->m_actionTabsCloseCurrent->setEnabled(tabWidget()->tabBar()->tabType(index) == TabBar::TabType::Closable);
 }
 
 void FormMain::onFeedUpdatesFinished(const FeedDownloadResults& results) {
@@ -640,7 +638,6 @@ void FormMain::setupIcons() {
   m_ui->m_actionFeedMoveBottom->setIcon(icon_theme_factory->fromTheme(QSL("arrow-down-double"), QSL("go-down")));
 
   // Tabs & web browser.
-  m_ui->m_actionTabNewWebBrowser->setIcon(icon_theme_factory->fromTheme(QSL("tab-new")));
   m_ui->m_actionTabsCloseAll->setIcon(icon_theme_factory->fromTheme(QSL("window-close")));
   m_ui->m_actionTabsCloseCurrent->setIcon(icon_theme_factory->fromTheme(QSL("window-close")));
   m_ui->m_actionTabsCloseAllExceptCurrent->setIcon(icon_theme_factory->fromTheme(QSL("window-close")));
@@ -793,7 +790,6 @@ void FormMain::createConnections() {
           &TabWidget::closeAllTabsExceptCurrent);
   connect(m_ui->m_actionTabsCloseAll, &QAction::triggered, m_ui->m_tabWidget, &TabWidget::closeAllTabs);
   connect(m_ui->m_actionTabsCloseCurrent, &QAction::triggered, m_ui->m_tabWidget, &TabWidget::closeCurrentTab);
-  connect(m_ui->m_actionTabNewWebBrowser, &QAction::triggered, m_ui->m_tabWidget, &TabWidget::addEmptyBrowser);
   connect(tabWidget()->feedMessageViewer()->feedsView(),
           &FeedsView::itemSelected,
           this,

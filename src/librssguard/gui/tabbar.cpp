@@ -25,7 +25,6 @@ void TabBar::setTabType(int index, TabBar::TabType type) {
     static_cast<ButtonPosition>(style()->styleHint(QStyle::StyleHint::SH_TabBar_CloseButtonPosition, nullptr, this));
 
   switch (type) {
-    case TabBar::TabType::DownloadManager:
     case TabBar::TabType::Closable: {
       auto* close_button = new PlainToolButton(this);
 
@@ -94,7 +93,7 @@ void TabBar::mousePressEvent(QMouseEvent* event) {
     // destination does not know the original event.
     if (Globals::hasFlag(event->button(), Qt::MouseButton::MiddleButton) &&
         qApp->settings()->value(GROUP(GUI), SETTING(GUI::TabCloseMiddleClick)).toBool()) {
-      if (tabType(tab_index) == TabBar::TabType::Closable || tabType(tab_index) == TabBar::TabType::DownloadManager) {
+      if (tabType(tab_index) == TabBar::TabType::Closable) {
         // This tab is closable, so we can close it.
         emit tabCloseRequested(tab_index);
       }
@@ -113,7 +112,7 @@ void TabBar::mouseDoubleClickEvent(QMouseEvent* event) {
     // destination does not know the original event.
     if (Globals::hasFlag(event->button(), Qt::MouseButton::LeftButton) &&
         qApp->settings()->value(GROUP(GUI), SETTING(GUI::TabCloseDoubleClick)).toBool()) {
-      if (int(tabType(tab_index) & (TabBar::TabType::Closable | TabBar::TabType::DownloadManager)) > 0) {
+      if (int(tabType(tab_index) & (TabBar::TabType::Closable)) > 0) {
         // This tab is closable, so we can close it.
         emit tabCloseRequested(tab_index);
       }

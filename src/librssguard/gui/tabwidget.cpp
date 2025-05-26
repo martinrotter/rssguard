@@ -162,10 +162,6 @@ bool TabWidget::closeTab(int index) {
     removeTab(index, true);
     return true;
   }
-  else if (tabBar()->tabType(index) == TabBar::TabType::DownloadManager) {
-    removeTab(index, false);
-    return true;
-  }
   else {
     return false;
   }
@@ -221,10 +217,6 @@ int TabWidget::addSingleMessageView(RootItem* root, const Message& message) {
   return index;
 }
 
-int TabWidget::addEmptyBrowser() {
-  return addBrowser(false, true);
-}
-
 #if defined(ENABLE_MEDIAPLAYER)
 int TabWidget::addMediaPlayer(const QString& url, bool make_active) {
   // #if defined(ENABLE_MEDIAPLAYER_LIBMPV)
@@ -253,66 +245,6 @@ int TabWidget::addMediaPlayer(const QString& url, bool make_active) {
   return index;
 }
 #endif
-
-int TabWidget::addLinkedBrowser(const QUrl& initial_url) {
-  return addBrowser(false, false, initial_url);
-}
-
-int TabWidget::addLinkedBrowser(const QString& initial_url) {
-  return addLinkedBrowser(QUrl::fromUserInput(initial_url));
-}
-
-int TabWidget::addBrowser(bool move_after_current, bool make_active, WebBrowser* browser) {
-  int final_index;
-  QString browser_tab_name = tr("Web browser");
-
-#if defined(Q_OS_MACOSOS)
-  browser_tab_name = browser_tab_name.prepend(QSL("  "));
-#endif
-
-  if (move_after_current) {
-    // Insert web browser after current tab.
-    final_index = insertTab(currentIndex() + 1,
-                            browser,
-                            qApp->icons()->fromTheme(QSL("text-html")),
-                            browser_tab_name,
-                            TabBar::TabType::Closable);
-  }
-  else {
-    // Add new browser as the last tab.
-    final_index =
-      addTab(browser, qApp->icons()->fromTheme(QSL("text-html")), browser_tab_name, TabBar::TabType::Closable);
-  }
-
-  // Make connections.
-  connect(browser, &WebBrowser::titleChanged, this, &TabWidget::changeTitle);
-  connect(browser, &WebBrowser::iconChanged, this, &TabWidget::changeIcon);
-  connect(browser, &WebBrowser::windowCloseRequested, this, &TabWidget::closeTabWithSender);
-
-  // Setup the tab index.
-  browser->setIndex(final_index);
-
-  // Make new web browser active if desired.
-  if (make_active) {
-    setCurrentIndex(final_index);
-    browser->setFocus(Qt::FocusReason::OtherFocusReason);
-  }
-
-  return final_index;
-}
-
-int TabWidget::addBrowser(bool move_after_current, bool make_active, const QUrl& initial_url) {
-  // Create new WebBrowser.
-  WebBrowser* browser = new WebBrowser(nullptr, this);
-  int index = addBrowser(move_after_current, make_active, browser);
-
-  // Load initial web page if desired.
-  if (initial_url.isValid()) {
-    browser->loadUrl(initial_url);
-  }
-
-  return index;
-}
 
 void TabWidget::gotoNextTab() {
   if (currentIndex() == count() - 1) {

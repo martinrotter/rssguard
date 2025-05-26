@@ -483,23 +483,6 @@ void MessagesView::mousePressEvent(QMouseEvent* event) {
       break;
     }
 
-    case Qt::MouseButton::MiddleButton: {
-      // Make sure that message importance is switched when user
-      // clicks the "important" column.
-      const QModelIndex clicked_index = indexAt(event->pos());
-
-      if (clicked_index.isValid()) {
-        const QModelIndex mapped_index = m_proxyModel->mapToSource(clicked_index);
-        const QString url = m_sourceModel->messageAt(mapped_index.row()).m_url;
-
-        if (!url.isEmpty()) {
-          qApp->mainForm()->tabWidget()->addLinkedBrowser(url);
-        }
-      }
-
-      break;
-    }
-
     default:
       break;
   }

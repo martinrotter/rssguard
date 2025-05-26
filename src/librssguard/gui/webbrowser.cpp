@@ -68,7 +68,6 @@ void WebBrowser::bindWebView() {
   connect(qobj_viewer, SIGNAL(loadingStarted()), this, SLOT(onLoadingStarted()));
   connect(qobj_viewer, SIGNAL(loadingProgress(int)), this, SLOT(onLoadingProgress(int)));
   connect(qobj_viewer, SIGNAL(loadingFinished(bool)), this, SLOT(onLoadingFinished(bool)));
-  connect(qobj_viewer, SIGNAL(newWindowRequested(WebViewer*)), this, SLOT(newWindowRequested(WebViewer*)));
   connect(qobj_viewer, SIGNAL(closeWindowRequested()), this, SIGNAL(windowCloseRequested()));
 }
 
@@ -261,12 +260,6 @@ void WebBrowser::onLinkHovered(const QUrl& url) {
   qApp->showGuiMessage(Notification::Event::GeneralEvent,
                        {url.toString(), url.toString(), QSystemTrayIcon::MessageIcon::NoIcon},
                        {false, false, true});
-}
-
-void WebBrowser::newWindowRequested(WebViewer* viewer) {
-  WebBrowser* browser = new WebBrowser(viewer, this);
-
-  qApp->mainForm()->tabWidget()->addBrowser(false, false, browser);
 }
 
 void WebBrowser::initializeLayout() {

@@ -70,7 +70,6 @@ class RSSGUARD_DLLSPEC WebBrowser : public TabContent {
     void onTitleChanged(const QString& new_title);
     void onIconChanged(const QIcon& icon);
     void onLinkHovered(const QUrl& url);
-    void newWindowRequested(WebViewer* viewer);
 
   signals:
     void windowCloseRequested();

@@ -158,11 +158,12 @@
     <property name="title">
      <string>Art&amp;icles</string>
     </property>
+    <addaction name="m_actionMessagePreviewEnabled"/>
+    <addaction name="separator"/>
     <addaction name="m_actionOpenSelectedSourceArticlesExternally"/>
     <addaction name="m_actionOpenSelectedMessagesInternally"/>
     <addaction name="m_actionPlaySelectedArticlesInMediaPlayer"/>
     <addaction name="m_actionSendMessageViaEmail"/>
-    <addaction name="m_actionMessagePreviewEnabled"/>
     <addaction name="separator"/>
     <addaction name="m_actionSelectNextMessage"/>
     <addaction name="m_actionSelectPreviousMessage"/>
@@ -198,8 +199,6 @@
     <property name="title">
      <string>&amp;Web browser &amp;&amp; tabs</string>
     </property>
-    <addaction name="m_actionTabNewWebBrowser"/>
-    <addaction name="separator"/>
     <addaction name="m_actionTabsCloseCurrent"/>
     <addaction name="m_actionTabsCloseAll"/>
     <addaction name="m_actionTabsCloseAllExceptCurrent"/>
@@ -731,14 +730,6 @@
     <string notr="true"/>
    </property>
   </action>
-  <action name="m_actionTabNewWebBrowser">
-   <property name="text">
-    <string>New browser tab</string>
-   </property>
-   <property name="shortcut">
-    <string notr="true">Ctrl+T</string>
-   </property>
-  </action>
   <action name="m_actionTabsCloseAll">
    <property name="text">
     <string>Close all tabs</string>
@@ -877,12 +868,12 @@
   </action>
   <action name="m_actionBrowserScrollUp">
    <property name="text">
-    <string>Scroll &amp;up browser</string>
+    <string>Scroll &amp;up preview</string>
    </property>
   </action>
   <action name="m_actionBrowserScrollDown">
    <property name="text">
-    <string>Scroll &amp;down browser</string>
+    <string>Scroll &amp;down preview</string>
    </property>
   </action>
   <action name="m_actionRearrangeCategories">

@@ -385,31 +385,22 @@ void TextBrowserViewer::downloadLink() {
 void TextBrowserViewer::onAnchorClicked(const QUrl& url) {
   if (!url.isEmpty()) {
     const QUrl resolved_url = (m_currentUrl.isValid() && url.isRelative()) ? m_currentUrl.resolved(url) : url;
-    const bool ctrl_pressed =
-      Globals::hasFlag(QGuiApplication::keyboardModifiers(), Qt::KeyboardModifier::ControlModifier);
+    bool open_externally_now =
+      qApp->settings()->value(GROUP(Browser), SETTING(Browser::OpenLinksInExternalBrowserRightAway)).toBool();
 
-    if (ctrl_pressed) {
-      // Open in new tab.
-      qApp->mainForm()->tabWidget()->addLinkedBrowser(resolved_url);
+    if (open_externally_now) {
+      qApp->web()->openUrlInExternalBrowser(resolved_url.toString());
+
+      if (qApp->settings()
+            ->value(GROUP(Messages), SETTING(Messages::BringAppToFrontAfterMessageOpenedExternally))
+            .toBool()) {
+        QTimer::singleShot(1000, qApp, []() {
+          qApp->mainForm()->display();
+        });
+      }
     }
     else {
-      bool open_externally_now =
-        qApp->settings()->value(GROUP(Browser), SETTING(Browser::OpenLinksInExternalBrowserRightAway)).toBool();
-
-      if (open_externally_now) {
-        qApp->web()->openUrlInExternalBrowser(resolved_url.toString());
-
-        if (qApp->settings()
-              ->value(GROUP(Messages), SETTING(Messages::BringAppToFrontAfterMessageOpenedExternally))
-              .toBool()) {
-          QTimer::singleShot(1000, qApp, []() {
-            qApp->mainForm()->display();
-          });
-        }
-      }
-      else {
-        setUrl(resolved_url);
-      }
+      setUrl(resolved_url);
     }
   }
 }

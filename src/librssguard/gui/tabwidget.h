@@ -72,21 +72,9 @@ class TabWidget : public QTabWidget {
 
     int addSingleMessageView(RootItem* root, const Message& message);
 
-    // Adds new WebBrowser tab to global TabWidget.
-    int addEmptyBrowser();
-
 #if defined(ENABLE_MEDIAPLAYER)
     int addMediaPlayer(const QString& url, bool make_active);
 #endif
-
-    // Adds new WebBrowser with link. This is used when user
-    // selects to "Open link in new tab.".
-    int addLinkedBrowser(const QUrl& initial_url = QUrl());
-    int addLinkedBrowser(const QString& initial_url);
-
-    // General method for adding WebBrowsers.
-    int addBrowser(bool move_after_current, bool make_active, const QUrl& initial_url = QUrl());
-    int addBrowser(bool move_after_current, bool make_active, WebBrowser* browser);
 
     void gotoNextTab();
     void gotoPreviousTab();
