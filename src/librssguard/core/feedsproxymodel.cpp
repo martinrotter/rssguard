@@ -471,6 +471,8 @@ bool FeedsProxyModel::filterAcceptsRowInternal(int source_row, const QModelIndex
     return true;
   }
 
+  bool should_show = QSortFilterProxyModel::filterAcceptsRow(source_row, source_parent);
+
   if (item->kind() == RootItem::Kind::Feed) {
     const Feed* feed = item->toFeed();
 
@@ -480,17 +482,18 @@ bool FeedsProxyModel::filterAcceptsRowInternal(int source_row, const QModelIndex
         if (m_filters[val](feed)) {
           // The item matches the feed filter.
           // Display it if it matches internal string-based filter too.
-          return QSortFilterProxyModel::filterAcceptsRow(source_row, source_parent);
+          return should_show;
         }
       }
     }
 
-    // The item does not match feed filter.
-    // Display it only if it is selected.
-    return m_filter == FeedListFilter::NoFiltering;
+    if (m_filter != FeedListFilter::NoFiltering) {
+      // Some filter is enabled but this item does not meet it.
+      return false;
+    }
   }
 
-  return QSortFilterProxyModel::filterAcceptsRow(source_row, source_parent);
+  return should_show;
 }
 
 bool FeedsProxyModel::sortAlphabetically() const {
