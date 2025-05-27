@@ -56,7 +56,8 @@ TextBrowserViewer::TextBrowserViewer(QWidget* parent)
 
 TextBrowserViewer::~TextBrowserViewer() {
   if (m_resourceDownloaderThread->isRunning()) {
-    m_resourceDownloaderThread->quit();
+    m_resourceDownloaderThread->terminate();
+    m_resourceDownloaderThread->wait();
   }
 
   m_resourceDownloader->deleteLater();
