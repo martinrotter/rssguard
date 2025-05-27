@@ -94,7 +94,6 @@ class RSSGUARD_DLLSPEC Application : public SingleApplication {
     void offerChanges() const;
 
     bool isAlreadyRunning();
-
     QStringList builtinSounds() const;
 
     FeedReader* feedReader();
@@ -144,10 +143,6 @@ class RSSGUARD_DLLSPEC Application : public SingleApplication {
     // NOTE: Use this to get correct path under which store user data.
     QString userDataFolder();
 
-    QString cacheFolder();
-
-    int customAdblockPort() const;
-
     QString replaceUserDataFolderPlaceholder(QString text) const;
     QStringList replaceUserDataFolderPlaceholder(QStringList texts) const;
 
@@ -176,7 +171,6 @@ class RSSGUARD_DLLSPEC Application : public SingleApplication {
                         QWidget* parent = nullptr);
 
     WebViewer* createWebView();
-
     bool isWayland() const;
 
     // Returns pointer to "GOD" application singleton.
@@ -267,7 +261,6 @@ class RSSGUARD_DLLSPEC Application : public SingleApplication {
     bool m_firstRunEver;
     bool m_firstRunCurrentVersion;
     QString m_customDataFolder;
-    int m_customAdblockPort;
     bool m_allowMultipleInstances;
 
 #if defined(Q_OS_WIN)

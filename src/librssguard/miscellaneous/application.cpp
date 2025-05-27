@@ -402,10 +402,6 @@ QThreadPool* Application::workHorsePool() const {
   return m_workHorsePool;
 }
 
-int Application::customAdblockPort() const {
-  return m_customAdblockPort;
-}
-
 QStringList Application::rawCliArgs() const {
   return m_rawCliArgs;
 }
@@ -476,14 +472,6 @@ QString Application::userDataFolder() {
   else {
     return userDataHomeFolder();
   }
-}
-
-QString Application::cacheFolder() {
-#if defined(Q_OS_LINUX)
-  return QStandardPaths::writableLocation(QStandardPaths::StandardLocation::CacheLocation);
-#else
-  return userDataFolder();
-#endif
 }
 
 QString Application::replaceUserDataFolderPlaceholder(QString text) const {
@@ -1167,15 +1155,6 @@ void Application::parseCmdArgumentsFromMyInstance(const QStringList& raw_cli_arg
   if (m_cmdParser.isSet(QSL(CLI_NSTDOUTERR_SHORT))) {
     s_disableDebug = true;
     qDebugNN << LOGSEC_CORE << "Disabling any stdout/stderr outputs.";
-  }
-
-  if (!m_cmdParser.value(QSL(CLI_ADBLOCKPORT_SHORT)).isEmpty()) {
-    m_customAdblockPort = m_cmdParser.value(QSL(CLI_ADBLOCKPORT_SHORT)).toInt();
-
-    qDebugNN << LOGSEC_ADBLOCK << "Setting custom server port.";
-  }
-  else {
-    m_customAdblockPort = 0;
   }
 
   custom_ua = m_cmdParser.value(QSL(CLI_USERAGENT_SHORT));
