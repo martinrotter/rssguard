@@ -104,8 +104,6 @@ class MessagesView : public BaseTreeView {
     void playLinkInMediaPlayer(const QString& link);
 #endif
 
-    void openLinkNewTab(const QString& link);
-    void openLinkMiniBrowser(const QString& link);
     void openSingleMessageInNewTab(RootItem* root, const Message& message);
 
     // Notify others about message selections.

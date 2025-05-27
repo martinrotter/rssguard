@@ -112,15 +112,6 @@ void MessagePreviewer::showItemDetails(RootItem* item) {
   show();
 }
 
-void MessagePreviewer::loadUrl(const QString& url) {
-  m_toolBar->setVisible(m_toolbarVisible);
-  m_message = Message();
-  m_root.clear();
-
-  ensureDefaultBrowserVisible();
-  m_msgBrowser->loadUrl(url);
-}
-
 void MessagePreviewer::loadMessage(const Message& message, RootItem* root) {
   m_toolBar->setVisible(m_toolbarVisible);
 
@@ -135,42 +126,27 @@ void MessagePreviewer::loadMessage(const Message& message, RootItem* root) {
     show();
 
     if (!same_message) {
-      const QString msg_feed_id = message.m_feedId;
-      const auto* feed = root->getParentServiceRoot()
-                           ->getItemFromSubTree([msg_feed_id](const RootItem* it) {
-                             return it->kind() == RootItem::Kind::Feed && it->customId() == msg_feed_id;
-                           })
-                           ->toFeed();
+      CustomMessagePreviewer* custom_previewer = root->getParentServiceRoot()->customMessagePreviewer();
 
-      if (feed != nullptr && feed->openArticlesDirectly() && !m_message.m_url.isEmpty()) {
-        ensureDefaultBrowserVisible();
+      if (custom_previewer != nullptr) {
+        auto* current_custom_previewer = m_viewerLayout->widget(INDEX_CUSTOM);
 
-        m_msgBrowser->setVerticalScrollBarPosition(0.0);
-        m_msgBrowser->loadUrl(m_message.m_url);
-      }
-      else {
-        CustomMessagePreviewer* custom_previewer = root->getParentServiceRoot()->customMessagePreviewer();
-
-        if (custom_previewer != nullptr) {
-          auto* current_custom_previewer = m_viewerLayout->widget(INDEX_CUSTOM);
-
-          if (current_custom_previewer != nullptr) {
-            if (current_custom_previewer != custom_previewer) {
-              m_viewerLayout->removeWidget(current_custom_previewer);
-              m_viewerLayout->addWidget(custom_previewer);
-            }
-          }
-          else {
+        if (current_custom_previewer != nullptr) {
+          if (current_custom_previewer != custom_previewer) {
+            m_viewerLayout->removeWidget(current_custom_previewer);
             m_viewerLayout->addWidget(custom_previewer);
           }
-
-          m_viewerLayout->setCurrentIndex(INDEX_CUSTOM);
-          custom_previewer->loadMessage(message, root);
         }
         else {
-          ensureDefaultBrowserVisible();
-          m_msgBrowser->loadMessages({message}, m_root);
+          m_viewerLayout->addWidget(custom_previewer);
         }
+
+        m_viewerLayout->setCurrentIndex(INDEX_CUSTOM);
+        custom_previewer->loadMessage(message, root);
+      }
+      else {
+        ensureDefaultBrowserVisible();
+        m_msgBrowser->loadMessages({message}, m_root);
       }
     }
   }

@@ -310,7 +310,6 @@ void FeedMessageViewer::createConnections() {
 
   connect(m_messagesView, &MessagesView::currentMessageRemoved, this, &FeedMessageViewer::onMessageRemoved);
   connect(m_messagesView, &MessagesView::currentMessageChanged, this, &FeedMessageViewer::displayMessage);
-  connect(m_messagesView, &MessagesView::openLinkMiniBrowser, m_messagesBrowser, &MessagePreviewer::loadUrl);
 
   // If user selects feeds, load their messages.
   connect(m_feedsView, &FeedsView::itemSelected, m_messagesView, &MessagesView::loadItem);

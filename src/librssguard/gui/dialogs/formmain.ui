@@ -182,7 +182,7 @@
    </widget>
    <widget class="QMenu" name="m_menuRecycleBin">
     <property name="title">
-     <string>&amp;Recycle bin(s)</string>
+     <string>&amp;Recycle bins</string>
     </property>
     <addaction name="m_actionRestoreAllRecycleBins"/>
     <addaction name="m_actionEmptyAllRecycleBins"/>
@@ -195,9 +195,9 @@
     <addaction name="m_actionServiceEdit"/>
     <addaction name="m_actionServiceDelete"/>
    </widget>
-   <widget class="QMenu" name="m_menuWebBrowserTabs">
+   <widget class="QMenu" name="m_menuTabs">
     <property name="title">
-     <string>&amp;Web browser &amp;&amp; tabs</string>
+     <string>Tabs</string>
     </property>
     <addaction name="m_actionTabsCloseCurrent"/>
     <addaction name="m_actionTabsCloseAll"/>
@@ -216,7 +216,7 @@
    <addaction name="m_menuFeeds"/>
    <addaction name="m_menuMessages"/>
    <addaction name="m_menuRecycleBin"/>
-   <addaction name="m_menuWebBrowserTabs"/>
+   <addaction name="m_menuTabs"/>
    <addaction name="m_menuTools"/>
    <addaction name="m_menuHelp"/>
   </widget>
