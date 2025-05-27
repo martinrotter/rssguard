@@ -1,0 +1,1 @@
+ALTER TABLE Feeds DROP COLUMN open_articles;

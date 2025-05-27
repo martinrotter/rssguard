@@ -127,15 +127,6 @@ QVariant TextBrowserViewer::loadOneResource(int type, const QUrl& name) {
 
     if (img.save(&save_buf, "JPG", 100)) {
       save_buf.close();
-
-      /*
-      IOFactory::writeFile(QSL("%1%2.jpg")
-                             .arg(name.toString(QUrl::ComponentFormattingOption::FullyEncoded),
-                                  QString::number(acceptable_width))
-                             .remove(QRegularExpression(":|\\/")),
-                           save_arr);
-*/
-
       resource_data_all_sizes.insert(acceptable_width, save_arr);
     }
     else {
@@ -202,21 +193,6 @@ void TextBrowserViewer::loadMessages(const QList<Message>& messages, RootItem* r
 
   auto html_messages = htmlForMessages(messages, root);
 
-  /*
-  // Replace base64 images.
-  QRegularExpression exp_base64("src=\"data: ?image\\/[^;]+;base64,([^\"]+)\"");
-  QRegularExpressionMatch exp_base64_match;
-
-  while ((exp_base64_match = exp_base64.match(html_messages.m_html)).hasMatch()) {
-    QString base64_img = exp_base64_match.captured(1);
-    QByteArray data_img = QByteArray::fromBase64Encoding(base64_img);
-  }
-  */
-
-#if !defined(NDEBUG)
-  // IOFactory::writeFile("aaa.html", html_messages.m_html.toUtf8());
-#endif
-
   setHtml(html_messages.m_html, html_messages.m_baseUrl);
 
   QTextOption op;
@@ -281,34 +257,19 @@ void TextBrowserViewer::contextMenuEvent(QContextMenuEvent* event) {
     return;
   }
 
-  /*
-  connect(menu, &QMenu::aboutToHide, this, [menu] {
-    menu->deleteLater();
-  });*/
-
   if (m_actionEnableResources.isNull()) {
     m_actionEnableResources.reset(new QAction(qApp->icons()->fromTheme(QSL("viewimage"), QSL("image-x-generic")),
                                               tr("Enable external resources"),
                                               this));
-    m_actionDownloadLink.reset(new QAction(qApp->icons()->fromTheme(QSL("download")), tr("Download"), this));
 
     m_actionEnableResources.data()->setCheckable(true);
     m_actionEnableResources.data()->setChecked(resourcesEnabled());
 
-    connect(m_actionDownloadLink.data(), &QAction::triggered, this, &TextBrowserViewer::downloadLink);
     connect(m_actionEnableResources.data(), &QAction::toggled, this, &TextBrowserViewer::enableResources);
   }
 
   menu->addAction(m_actionEnableResources.data());
-  menu->addAction(m_actionDownloadLink.data());
-
-  auto anchor = anchorAt(event->pos());
-
-  m_lastContextMenuPos = event->pos();
-  m_actionDownloadLink.data()->setEnabled(!anchor.isEmpty());
-
   processContextMenu(menu, event);
-
   menu->popup(event->globalPos());
 }
 
@@ -329,36 +290,10 @@ void TextBrowserViewer::enableResources(bool enable) {
   setResourcesEnabled(enable);
 }
 
-void TextBrowserViewer::downloadLink() {
-  auto url = QUrl(anchorAt(m_lastContextMenuPos));
-
-  if (url.isValid()) {
-    const QUrl resolved_url = (m_currentUrl.isValid() && url.isRelative()) ? m_currentUrl.resolved(url) : url;
-
-    qApp->web()->openUrlInExternalBrowser(resolved_url);
-  }
-}
-
 void TextBrowserViewer::onAnchorClicked(const QUrl& url) {
   if (!url.isEmpty()) {
     const QUrl resolved_url = (m_currentUrl.isValid() && url.isRelative()) ? m_currentUrl.resolved(url) : url;
-    bool open_externally_now =
-      qApp->settings()->value(GROUP(Browser), SETTING(Browser::OpenLinksInExternalBrowserRightAway)).toBool();
-
-    // TODO: pÄąâ„˘esunout do Webbrowseru, tady jen vysĂ„â€šĂ‚Â­lat signal, Ă„Ä…Ă„Äľe se kliklo
-    // na odkaz
-
-    if (open_externally_now) {
-      qApp->web()->openUrlInExternalBrowser(resolved_url.toString());
-
-      if (qApp->settings()
-            ->value(GROUP(Messages), SETTING(Messages::BringAppToFrontAfterMessageOpenedExternally))
-            .toBool()) {
-        QTimer::singleShot(1000, qApp, []() {
-          qApp->mainForm()->display();
-        });
-      }
-    }
+    emit linkClicked(resolved_url);
   }
 }
 
@@ -395,34 +330,6 @@ void TextBrowserViewer::setHtml(const QString& html, const QUrl& base_url) {
   }
 
   setHtmlPrivate(html, base_url);
-
-  /*
-  QTextCursor cr(m_document.data());
-
-  cr.movePosition(QTextCursor::MoveOperation::Start);
-
-  // this can be used instead of regexps, just browse document and collect resource addresses directly
-  while (!cr.atEnd()) {
-    if (!cr.movePosition(QTextCursor::MoveOperation::NextBlock)) {
-      break;
-    }
-
-    QTextBlock::iterator it;
-    for (it = cr.block().begin(); !(it.atEnd()); ++it) {
-      QTextFragment currentFragment = it.fragment();
-      if (currentFragment.isValid()) {
-        auto aa = currentFragment.charFormat().anchorHref();
-
-        if (!aa.isEmpty()) {
-          auto xx = 5;
-        }
-        else if (currentFragment.charFormat().isImageFormat()) {
-          aa = currentFragment.charFormat().toImageFormat().name();
-        }
-      }
-    }
-  }
-  */
 
   if (!m_neededResources.isEmpty()) {
     QTimer::singleShot(20, this, &TextBrowserViewer::reloadHtmlDelayed);

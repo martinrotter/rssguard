@@ -72,7 +72,6 @@ class RSSGUARD_DLLSPEC TextBrowserViewer : public QTextBrowser, public WebViewer
 
   private slots:
     void enableResources(bool enable);
-    void downloadLink();
     void onAnchorClicked(const QUrl& url);
     void reloadHtmlDelayed();
     void downloadNextNeededResource();
@@ -88,6 +87,7 @@ class RSSGUARD_DLLSPEC TextBrowserViewer : public QTextBrowser, public WebViewer
     void pageUrlChanged(const QUrl& url);
     void pageIconChanged(const QIcon&);
     void linkMouseHighlighted(const QUrl& url);
+    void linkClicked(const QUrl& url);
     void loadingStarted();
     void loadingProgress(int progress);
     void loadingFinished(bool success);
@@ -115,9 +115,7 @@ class RSSGUARD_DLLSPEC TextBrowserViewer : public QTextBrowser, public WebViewer
     QFont m_baseFont;
     qreal m_zoomFactor = 1.0;
     QScopedPointer<QAction> m_actionEnableResources;
-    QScopedPointer<QAction> m_actionDownloadLink;
     QScopedPointer<TextBrowserDocument> m_document;
-    QPoint m_lastContextMenuPos;
 };
 
 #endif // TEXTBROWSERVIEWER_H
