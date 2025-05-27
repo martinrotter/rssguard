@@ -18,7 +18,7 @@ SettingsMediaPlayer::SettingsMediaPlayer(Settings* settings, QWidget* parent) : 
 }
 
 QIcon SettingsMediaPlayer::icon() const {
-  return qApp->icons()->fromTheme(QSL("kmplayer"), QSL("smplayer"));
+  return qApp->icons()->fromTheme(QSL("kmplayer"), QSL("player_play"));
 }
 
 void SettingsMediaPlayer::loadSettings() {

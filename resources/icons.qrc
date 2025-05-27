@@ -34,27 +34,15 @@
     <file>./graphics/Breeze/actions/22/draw-star.svg</file>
     <file>./graphics/Breeze/actions/22/edit-clear.svg</file>
     <file>./graphics/Breeze/actions/22/edit-copy.svg</file>
-    <file>./graphics/Breeze/actions/22/edit-cut.svg</file>
-    <file>./graphics/Breeze/actions/22/edit-paste.svg</file>
-    <file>./graphics/Breeze/actions/32/edit-redo.svg</file>
     <file>./graphics/Breeze/actions/32/edit-reset.svg</file>
     <file>./graphics/Breeze/actions/22/edit-select-all.svg</file>
     <file>./graphics/Breeze/actions/22/edit-select-none.svg</file>
-    <file>./graphics/Breeze/actions/32/edit-undo.svg</file>
     <file>./graphics/Breeze/emblems/22/emblem-favorite.svg</file>
-    <file>./graphics/Breeze/emblems/22/emblem-shared.svg</file>
     <file>./graphics/Breeze/places/96/folder.svg</file>
     <file>./graphics/Breeze/places/64/folder-database.svg</file>
-    <file>./graphics/Breeze/actions/22/format-indent-less.svg</file>
     <file>./graphics/Breeze/actions/22/format-indent-more.svg</file>
     <file>./graphics/Breeze/actions/22/format-justify-fill.svg</file>
-    <file>./graphics/Breeze/actions/22/format-list-ordered.svg</file>
-    <file>./graphics/Breeze/actions/22/format-list-unordered.svg</file>
     <file>./graphics/Breeze/actions/22/format-text-bold.svg</file>
-    <file>./graphics/Breeze/actions/22/format-text-color.svg</file>
-    <file>./graphics/Breeze/actions/22/format-text-italic.svg</file>
-    <file>./graphics/Breeze/actions/22/format-text-strikethrough.svg</file>
-    <file>./graphics/Breeze/actions/22/format-text-underline.svg</file>
     <file>./graphics/Breeze/actions/32/go-down.svg</file>
     <file>./graphics/Breeze/actions/64/go-home.svg</file>
     <file>./graphics/Breeze/actions/32/go-jump.svg</file>
@@ -63,11 +51,9 @@
     <file>./graphics/Breeze/actions/32/go-up.svg</file>
     <file>./graphics/Breeze/actions/22/gtk-cancel.svg</file>
     <file>./graphics/Breeze/actions/22/gtk-close.svg</file>
-    <file>./graphics/Breeze/actions/22/gtk-edit.svg</file>
     <file>./graphics/Breeze/actions/32/help-about.svg</file>
     <file>./graphics/Breeze/actions/22/help-contents.svg</file>
     <file>./graphics/Breeze/mimetypes/64/image-x-generic.svg</file>
-    <file>./graphics/Breeze/actions/22/insert-link.svg</file>
     <file>./graphics/Breeze/actions/22/insert-page-break.svg</file>
     <file>./graphics/Breeze/actions/22/internet-services.svg</file>
     <file>./graphics/Breeze/apps/48/kmplayer.svg</file>
@@ -75,33 +61,23 @@
     <file>./graphics/Breeze/actions/22/list-add.svg</file>
     <file>./graphics/Breeze/actions/22/list-remove.svg</file>
     <file>./graphics/Breeze/actions/32/mail-attachment.svg</file>
-    <file>./graphics/Breeze/actions/32/mail-forward.svg</file>
-    <file>./graphics/Breeze/actions/symbolic/mail-inbox-symbolic.svg</file>
     <file>./graphics/Breeze/actions/32/mail-mark-important.svg</file>
     <file>./graphics/Breeze/actions/32/mail-mark-junk.svg</file>
     <file>./graphics/Breeze/actions/32/mail-mark-read.svg</file>
     <file>./graphics/Breeze/actions/32/mail-mark-unread.svg</file>
-    <file>./graphics/Breeze/actions/32/mail-message-new.svg</file>
-    <file>./graphics/Breeze/actions/32/mail-reply-sender.svg</file>
     <file>./graphics/Breeze/actions/32/mail-send.svg</file>
-    <file>./graphics/Breeze/actions/32/mail-sent.svg</file>
     <file>./graphics/Breeze/actions/32/media-playback-pause.svg</file>
     <file>./graphics/Breeze/actions/32/media-playback-start.svg</file>
     <file>./graphics/Breeze/actions/32/media-playback-stop.svg</file>
-    <file>./graphics/Breeze/actions/22/node.svg</file>
-    <file>./graphics/Breeze/actions/22/node-join.svg</file>
     <file>./graphics/Breeze/actions/22/notifications.svg</file>
     <file>./graphics/Breeze/actions/22/player-volume.svg</file>
     <file>./graphics/Breeze/actions/22/player-volume-muted.svg</file>
     <file>./graphics/Breeze/actions/22/process-stop.svg</file>
-    <file>./graphics/Breeze/apps/48/smplayer.svg</file>
     <file>./graphics/Breeze/actions/22/system-search.svg</file>
     <file>./graphics/Breeze/actions/22/system-upgrade.svg</file>
-    <file>./graphics/Breeze/actions/22/tab-new.svg</file>
     <file>./graphics/Breeze/actions/22/tag-folder.svg</file>
     <file>./graphics/Breeze/actions/22/tag-new.svg</file>
     <file>./graphics/Breeze/actions/22/tag-properties.svg</file>
-    <file>./graphics/Breeze/mimetypes/64/text-html.svg</file>
     <file>./graphics/Breeze/mimetypes/64/text-x-gettext-translation.svg</file>
     <file>./graphics/Breeze/places/96/user-trash.svg</file>
     <file>./graphics/Breeze/actions/22/view-fullscreen.svg</file>
@@ -145,27 +121,15 @@
     <file>./graphics/Breeze Dark/actions/22/draw-star.svg</file>
     <file>./graphics/Breeze Dark/actions/22/edit-clear.svg</file>
     <file>./graphics/Breeze Dark/actions/22/edit-copy.svg</file>
-    <file>./graphics/Breeze Dark/actions/22/edit-cut.svg</file>
-    <file>./graphics/Breeze Dark/actions/22/edit-paste.svg</file>
-    <file>./graphics/Breeze Dark/actions/32/edit-redo.svg</file>
     <file>./graphics/Breeze Dark/actions/32/edit-reset.svg</file>
     <file>./graphics/Breeze Dark/actions/22/edit-select-all.svg</file>
     <file>./graphics/Breeze Dark/actions/22/edit-select-none.svg</file>
-    <file>./graphics/Breeze Dark/actions/32/edit-undo.svg</file>
     <file>./graphics/Breeze Dark/emblems/22/emblem-favorite.svg</file>
-    <file>./graphics/Breeze Dark/emblems/22/emblem-shared.svg</file>
     <file>./graphics/Breeze Dark/places/96/folder.svg</file>
     <file>./graphics/Breeze Dark/places/64/folder-database.svg</file>
-    <file>./graphics/Breeze Dark/actions/22/format-indent-less.svg</file>
     <file>./graphics/Breeze Dark/actions/22/format-indent-more.svg</file>
     <file>./graphics/Breeze Dark/actions/22/format-justify-fill.svg</file>
-    <file>./graphics/Breeze Dark/actions/22/format-list-ordered.svg</file>
-    <file>./graphics/Breeze Dark/actions/22/format-list-unordered.svg</file>
     <file>./graphics/Breeze Dark/actions/22/format-text-bold.svg</file>
-    <file>./graphics/Breeze Dark/actions/22/format-text-color.svg</file>
-    <file>./graphics/Breeze Dark/actions/22/format-text-italic.svg</file>
-    <file>./graphics/Breeze Dark/actions/22/format-text-strikethrough.svg</file>
-    <file>./graphics/Breeze Dark/actions/22/format-text-underline.svg</file>
     <file>./graphics/Breeze Dark/actions/32/go-down.svg</file>
     <file>./graphics/Breeze Dark/actions/64/go-home.svg</file>
     <file>./graphics/Breeze Dark/actions/32/go-jump.svg</file>
@@ -174,11 +138,9 @@
     <file>./graphics/Breeze Dark/actions/32/go-up.svg</file>
     <file>./graphics/Breeze Dark/actions/22/gtk-cancel.svg</file>
     <file>./graphics/Breeze Dark/actions/22/gtk-close.svg</file>
-    <file>./graphics/Breeze Dark/actions/22/gtk-edit.svg</file>
     <file>./graphics/Breeze Dark/actions/32/help-about.svg</file>
     <file>./graphics/Breeze Dark/actions/22/help-contents.svg</file>
     <file>./graphics/Breeze Dark/mimetypes/64/image-x-generic.svg</file>
-    <file>./graphics/Breeze Dark/actions/22/insert-link.svg</file>
     <file>./graphics/Breeze Dark/actions/22/insert-page-break.svg</file>
     <file>./graphics/Breeze Dark/actions/22/internet-services.svg</file>
     <file>./graphics/Breeze Dark/apps/48/kmplayer.svg</file>
@@ -186,33 +148,23 @@
     <file>./graphics/Breeze Dark/actions/22/list-add.svg</file>
     <file>./graphics/Breeze Dark/actions/22/list-remove.svg</file>
     <file>./graphics/Breeze Dark/actions/32/mail-attachment.svg</file>
-    <file>./graphics/Breeze Dark/actions/32/mail-forward.svg</file>
-    <file>./graphics/Breeze Dark/actions/symbolic/mail-inbox-symbolic.svg</file>
     <file>./graphics/Breeze Dark/actions/32/mail-mark-important.svg</file>
     <file>./graphics/Breeze Dark/actions/32/mail-mark-junk.svg</file>
     <file>./graphics/Breeze Dark/actions/32/mail-mark-read.svg</file>
     <file>./graphics/Breeze Dark/actions/32/mail-mark-unread.svg</file>
-    <file>./graphics/Breeze Dark/actions/32/mail-message-new.svg</file>
-    <file>./graphics/Breeze Dark/actions/32/mail-reply-sender.svg</file>
     <file>./graphics/Breeze Dark/actions/32/mail-send.svg</file>
-    <file>./graphics/Breeze Dark/actions/32/mail-sent.svg</file>
     <file>./graphics/Breeze Dark/actions/32/media-playback-pause.svg</file>
     <file>./graphics/Breeze Dark/actions/32/media-playback-start.svg</file>
     <file>./graphics/Breeze Dark/actions/32/media-playback-stop.svg</file>
-    <file>./graphics/Breeze Dark/actions/22/node.svg</file>
-    <file>./graphics/Breeze Dark/actions/22/node-join.svg</file>
     <file>./graphics/Breeze Dark/actions/22/notifications.svg</file>
     <file>./graphics/Breeze Dark/actions/22/player-volume.svg</file>
     <file>./graphics/Breeze Dark/actions/22/player-volume-muted.svg</file>
     <file>./graphics/Breeze Dark/actions/22/process-stop.svg</file>
-    <file>./graphics/Breeze Dark/apps/48/smplayer.svg</file>
     <file>./graphics/Breeze Dark/actions/22/system-search.svg</file>
     <file>./graphics/Breeze Dark/actions/22/system-upgrade.svg</file>
-    <file>./graphics/Breeze Dark/actions/22/tab-new.svg</file>
     <file>./graphics/Breeze Dark/actions/22/tag-folder.svg</file>
     <file>./graphics/Breeze Dark/actions/22/tag-new.svg</file>
     <file>./graphics/Breeze Dark/actions/22/tag-properties.svg</file>
-    <file>./graphics/Breeze Dark/mimetypes/64/text-html.svg</file>
     <file>./graphics/Breeze Dark/mimetypes/64/text-x-gettext-translation.svg</file>
     <file>./graphics/Breeze Dark/places/96/user-trash.svg</file>
     <file>./graphics/Breeze Dark/actions/22/view-fullscreen.svg</file>
@@ -247,23 +199,14 @@
     <file>./graphics/Faenza/actions/64/down.png</file>
     <file>./graphics/Faenza/actions/64/edit-clear.png</file>
     <file>./graphics/Faenza/actions/64/edit-copy.png</file>
-    <file>./graphics/Faenza/actions/64/edit-cut.png</file>
-    <file>./graphics/Faenza/actions/64/edit-paste.png</file>
-    <file>./graphics/Faenza/actions/64/edit-redo.png</file>
     <file>./graphics/Faenza/actions/64/edit-select-all.png</file>
-    <file>./graphics/Faenza/actions/64/edit-undo.png</file>
     <file>./graphics/Faenza/emblems/64/emblem-downloads.png</file>
     <file>./graphics/Faenza/emblems/64/emblem-favorite.png</file>
-    <file>./graphics/Faenza/emblems/64/emblem-shared.png</file>
     <file>./graphics/Faenza/emblems/64/emblem-system.png</file>
     <file>./graphics/Faenza/places/64/folder.png</file>
-    <file>./graphics/Faenza/actions/64/format-indent-less.png</file>
     <file>./graphics/Faenza/actions/64/format-indent-more.png</file>
     <file>./graphics/Faenza/actions/64/format-justify-fill.png</file>
     <file>./graphics/Faenza/actions/64/format-text-bold.png</file>
-    <file>./graphics/Faenza/actions/64/format-text-italic.png</file>
-    <file>./graphics/Faenza/actions/64/format-text-strikethrough.png</file>
-    <file>./graphics/Faenza/actions/64/format-text-underline.png</file>
     <file>./graphics/Faenza/actions/64/go-down.png</file>
     <file>./graphics/Faenza/actions/64/go-home.png</file>
     <file>./graphics/Faenza/actions/64/go-jump.png</file>
@@ -272,36 +215,33 @@
     <file>./graphics/Faenza/actions/64/go-up.png</file>
     <file>./graphics/Faenza/actions/64/gtk-cancel.png</file>
     <file>./graphics/Faenza/actions/64/gtk-close.png</file>
-    <file>./graphics/Faenza/actions/64/gtk-edit.png</file>
     <file>./graphics/Faenza/actions/64/help-about.png</file>
     <file>./graphics/Faenza/actions/64/help-contents.png</file>
     <file>./graphics/Faenza/mimetypes/64/image-x-generic.png</file>
-    <file>./graphics/Faenza/actions/64/insert-link.png</file>
     <file>./graphics/Faenza/actions/64/insert-object.png</file>
     <file>./graphics/Faenza/devices/64/keyboard.png</file>
     <file>./graphics/Faenza/actions/64/list-add.png</file>
     <file>./graphics/Faenza/actions/64/list-remove.png</file>
     <file>./graphics/Faenza/actions/64/mail-attachment.png</file>
-    <file>./graphics/Faenza/actions/64/mail-forward.png</file>
-    <file>./graphics/Faenza/actions/64/mail-inbox.png</file>
     <file>./graphics/Faenza/actions/64/mail-mark-important.png</file>
     <file>./graphics/Faenza/actions/64/mail-mark-junk.png</file>
     <file>./graphics/Faenza/actions/64/mail-mark-read.png</file>
     <file>./graphics/Faenza/actions/64/mail-mark-unread.png</file>
-    <file>./graphics/Faenza/actions/64/mail-message-new.png</file>
-    <file>./graphics/Faenza/actions/64/mail-reply-sender.png</file>
     <file>./graphics/Faenza/actions/64/mail-send.png</file>
-    <file>./graphics/Faenza/actions/64/mail-sent.png</file>
     <file>./graphics/Faenza/actions/64/media-playback-pause.png</file>
     <file>./graphics/Faenza/actions/64/media-playback-start.png</file>
     <file>./graphics/Faenza/actions/64/media-playback-stop.png</file>
+    <file>./graphics/Faenza/actions/64/player_pause.png</file>
+    <file>./graphics/Faenza/actions/64/player_play.png</file>
+    <file>./graphics/Faenza/actions/64/player_stop.png</file>
     <file>./graphics/Faenza/actions/64/process-stop.png</file>
     <file>./graphics/Faenza/actions/64/reload.png</file>
+    <file>./graphics/Faenza/actions/64/stock_left.png</file>
+    <file>./graphics/Faenza/actions/64/stock_right.png</file>
+    <file>./graphics/Faenza/status/64/stock_volume.png</file>
     <file>./graphics/Faenza/actions/64/system-search.png</file>
     <file>./graphics/Faenza/actions/64/system-upgrade.png</file>
-    <file>./graphics/Faenza/actions/64/tab-new.png</file>
     <file>./graphics/Faenza/actions/64/tag-new.png</file>
-    <file>./graphics/Faenza/mimetypes/64/text-html.png</file>
     <file>./graphics/Faenza/actions/64/up.png</file>
     <file>./graphics/Faenza/places/64/user-trash.png</file>
     <file>./graphics/Faenza/actions/64/view-fullscreen.png</file>
@@ -345,23 +285,14 @@
     <file>./graphics/Numix/22/actions/draw-freehand.svg</file>
     <file>./graphics/Numix/22/actions/edit-clear.svg</file>
     <file>./graphics/Numix/22/actions/edit-copy.svg</file>
-    <file>./graphics/Numix/22/actions/edit-cut.svg</file>
-    <file>./graphics/Numix/22/actions/edit-paste.svg</file>
-    <file>./graphics/Numix/22/actions/edit-redo.svg</file>
     <file>./graphics/Numix/22/actions/edit-select-all.svg</file>
-    <file>./graphics/Numix/22/actions/edit-undo.svg</file>
     <file>./graphics/Numix/22/emblems/emblem-downloads.svg</file>
     <file>./graphics/Numix/22/emblems/emblem-favorite.svg</file>
-    <file>./graphics/Numix/22/emblems/emblem-shared.svg</file>
     <file>./graphics/Numix/22/emblems/emblem-system.svg</file>
     <file>./graphics/Numix/22/places/folder.svg</file>
-    <file>./graphics/Numix/22/actions/format-indent-less.svg</file>
     <file>./graphics/Numix/22/actions/format-indent-more.svg</file>
     <file>./graphics/Numix/22/actions/format-justify-fill.svg</file>
     <file>./graphics/Numix/22/actions/format-text-bold.svg</file>
-    <file>./graphics/Numix/22/actions/format-text-italic.svg</file>
-    <file>./graphics/Numix/22/actions/format-text-strikethrough.svg</file>
-    <file>./graphics/Numix/22/actions/format-text-underline.svg</file>
     <file>./graphics/Numix/22/actions/go-down.svg</file>
     <file>./graphics/Numix/22/actions/go-home.svg</file>
     <file>./graphics/Numix/22/actions/go-jump.svg</file>
@@ -370,11 +301,9 @@
     <file>./graphics/Numix/22/actions/go-up.svg</file>
     <file>./graphics/Numix/22/actions/gtk-cancel.svg</file>
     <file>./graphics/Numix/22/actions/gtk-close.svg</file>
-    <file>./graphics/Numix/22/actions/gtk-edit.svg</file>
     <file>./graphics/Numix/22/categories/help-about.svg</file>
     <file>./graphics/Numix/22/actions/help-contents.svg</file>
     <file>./graphics/Numix/22/mimetypes/image-x-generic.svg</file>
-    <file>./graphics/Numix/22/actions/insert-link.svg</file>
     <file>./graphics/Numix/22/actions/insert-object.svg</file>
     <file>./graphics/Numix/22/actions/internet-services.svg</file>
     <file>./graphics/Numix/22/status/keyboard.svg</file>
@@ -382,29 +311,27 @@
     <file>./graphics/Numix/22/actions/list-add.svg</file>
     <file>./graphics/Numix/22/actions/list-remove.svg</file>
     <file>./graphics/Numix/22/actions/mail-attachment.svg</file>
-    <file>./graphics/Numix/22/actions/mail-forward.svg</file>
-    <file>./graphics/Numix/22/places/mail-inbox.svg</file>
     <file>./graphics/Numix/22/actions/mail-mark-important.svg</file>
     <file>./graphics/Numix/22/actions/mail-mark-junk.svg</file>
     <file>./graphics/Numix/22/actions/mail-mark-read.svg</file>
     <file>./graphics/Numix/22/actions/mail-mark-unread.svg</file>
-    <file>./graphics/Numix/22/actions/mail-message-new.svg</file>
-    <file>./graphics/Numix/22/actions/mail-reply-sender.svg</file>
     <file>./graphics/Numix/22/actions/mail-send.svg</file>
-    <file>./graphics/Numix/22/places/mail-sent.svg</file>
     <file>./graphics/Numix/22/actions/media-playback-pause.svg</file>
     <file>./graphics/Numix/22/actions/media-playback-start.svg</file>
     <file>./graphics/Numix/22/actions/media-playback-stop.svg</file>
-    <file>./graphics/Numix/22/actions/node-join.svg</file>
+    <file>./graphics/Numix/22/actions/player_pause.svg</file>
+    <file>./graphics/Numix/22/actions/player_play.svg</file>
+    <file>./graphics/Numix/22/actions/player_stop.svg</file>
     <file>./graphics/Numix/22/actions/process-stop.svg</file>
     <file>./graphics/Numix/22/actions/reload.svg</file>
+    <file>./graphics/Numix/22/actions/stock_left.svg</file>
+    <file>./graphics/Numix/22/actions/stock_right.svg</file>
+    <file>./graphics/Numix/22/status/stock_volume.svg</file>
     <file>./graphics/Numix/22/actions/system-search.svg</file>
     <file>./graphics/Numix/22/actions/system-upgrade.svg</file>
-    <file>./graphics/Numix/22/actions/tab-new.svg</file>
     <file>./graphics/Numix/22/actions/tag-folder.svg</file>
     <file>./graphics/Numix/22/actions/tag-new.svg</file>
     <file>./graphics/Numix/22/actions/tag-properties.svg</file>
-    <file>./graphics/Numix/22/mimetypes/text-html.svg</file>
     <file>./graphics/Numix/22/mimetypes/text-x-gettext-translation.svg</file>
     <file>./graphics/Numix/22/actions/up.svg</file>
     <file>./graphics/Numix/22/places/user-trash.svg</file>
