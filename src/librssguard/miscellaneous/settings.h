@@ -515,12 +515,6 @@ namespace Notifications {
 namespace Browser {
   KEY ID;
 
-  KEY DisableCache;
-  VALUE(bool) DisableCacheDef;
-
-  KEY WebEngineChromiumFlags;
-  VALUE(QString) WebEngineChromiumFlagsDef;
-
   KEY OpenLinksInExternalBrowserRightAway;
   VALUE(bool) OpenLinksInExternalBrowserRightAwayDef;
 

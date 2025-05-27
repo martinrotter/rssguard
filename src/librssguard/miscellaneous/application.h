@@ -30,15 +30,7 @@
 class FormMain;
 class FormLog;
 class IconFactory;
-class QAction;
 class Mutex;
-
-#if QT_VERSION_MAJOR == 6
-class QWebEngineDownloadRequest;
-#else
-class QWebEngineDownloadItem;
-#endif
-
 class WebFactory;
 class NotificationFactory;
 class ToastNotificationsManager;

@@ -224,7 +224,7 @@
 #define APP_DB_SQLITE_FILE   "database.db"
 
 // Keep this in sync with schema versions declared in SQL initialization code.
-#define APP_DB_SCHEMA_VERSION                "10"
+#define APP_DB_SCHEMA_VERSION                "11"
 #define APP_DB_UPDATE_FILE_PATTERN           "db_update_%1_%2_%3.sql"
 #define APP_DB_COMMENT_SPLIT                 "-- !\n"
 #define APP_DB_INCLUDE_PLACEHOLDER           "!!"
@@ -323,11 +323,10 @@
 #define FDS_DB_KEEP_ARTICLES_COUNT             16
 #define FDS_DB_KEEP_UNREAD_ARTICLES            17
 #define FDS_DB_KEEP_STARRED_ARTICLES           18
-#define RECYCLE_ARTICLE_DONT_PURGE             19
-#define FDS_DB_OPEN_ARTICLES_INDEX             20
-#define FDS_DB_ACCOUNT_ID_INDEX                21
-#define FDS_DB_CUSTOM_ID_INDEX                 22
-#define FDS_DB_CUSTOM_DATA_INDEX               23
+#define FDS_DB_RECYCLE_ARTICLES                19
+#define FDS_DB_ACCOUNT_ID_INDEX                20
+#define FDS_DB_CUSTOM_ID_INDEX                 21
+#define FDS_DB_CUSTOM_DATA_INDEX               22
 
 // Indexes of columns for feed models.
 #define FDS_MODEL_TITLE_INDEX  0

@@ -60,6 +60,7 @@ void WebBrowser::bindWebView() {
   auto* qobj_viewer = dynamic_cast<QObject*>(m_webView);
 
   connect(qobj_viewer, SIGNAL(linkMouseHighlighted(QUrl)), this, SLOT(onLinkHovered(QUrl)));
+  connect(qobj_viewer, SIGNAL(linkClicked(QUrl)), this, SLOT(onLinkClicked(QUrl)));
   connect(qobj_viewer, SIGNAL(pageTitleChanged(QString)), this, SLOT(onTitleChanged(QString)));
   connect(qobj_viewer, SIGNAL(pageUrlChanged(QUrl)), this, SLOT(updateUrl(QUrl)));
   connect(qobj_viewer, SIGNAL(pageIconChanged(QIcon)), this, SLOT(onIconChanged(QIcon)));
@@ -236,6 +237,23 @@ void WebBrowser::onLinkHovered(const QUrl& url) {
   qApp->showGuiMessage(Notification::Event::GeneralEvent,
                        {url.toString(), url.toString(), QSystemTrayIcon::MessageIcon::NoIcon},
                        {false, false, true});
+}
+
+void WebBrowser::onLinkClicked(const QUrl& url) {
+  bool open_externally_now =
+    qApp->settings()->value(GROUP(Browser), SETTING(Browser::OpenLinksInExternalBrowserRightAway)).toBool();
+
+  if (open_externally_now) {
+    qApp->web()->openUrlInExternalBrowser(url.toString());
+
+    if (qApp->settings()
+          ->value(GROUP(Messages), SETTING(Messages::BringAppToFrontAfterMessageOpenedExternally))
+          .toBool()) {
+      QTimer::singleShot(1000, qApp, []() {
+        qApp->mainForm()->display();
+      });
+    }
+  }
 }
 
 void WebBrowser::initializeLayout() {

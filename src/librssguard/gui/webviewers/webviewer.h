@@ -83,6 +83,7 @@ class WebViewer {
     virtual void pageUrlChanged(const QUrl& url) = 0;
     virtual void pageIconChanged(const QIcon&) = 0;
     virtual void linkMouseHighlighted(const QUrl& url) = 0;
+    virtual void linkClicked(const QUrl& url) = 0;
     virtual void loadingStarted() = 0;
     virtual void loadingProgress(int progress) = 0;
     virtual void loadingFinished(bool success) = 0;

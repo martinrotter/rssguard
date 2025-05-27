@@ -53,8 +53,6 @@ CREATE TABLE Feeds (
   keep_unread_articles      INTEGER     NOT NULL DEFAULT 1 CHECK (keep_unread_articles >= 0 AND keep_unread_articles <= 1),
   keep_starred_articles     INTEGER     NOT NULL DEFAULT 1 CHECK (keep_starred_articles >= 0 AND keep_starred_articles <= 1),
   recycle_articles          INTEGER     NOT NULL DEFAULT 0 CHECK (recycle_articles >= 0 AND recycle_articles <= 1),
-  
-  open_articles             INTEGER     NOT NULL DEFAULT 0 CHECK (open_articles >= 0 AND open_articles <= 1),
   account_id                INTEGER     NOT NULL,
   custom_id                 TEXT        NOT NULL CHECK (custom_id != ''), /* Custom ID cannot be empty, it must contain either service-specific ID, or Feeds/id. */
   /* Custom column for (serialized) custom account-specific data. */
