@@ -146,7 +146,7 @@ void MessagePreviewer::loadMessage(const Message& message, RootItem* root) {
       }
       else {
         ensureDefaultBrowserVisible();
-        m_msgBrowser->loadMessages({message}, m_root);
+        m_msgBrowser->loadMessage({message}, m_root);
       }
     }
   }

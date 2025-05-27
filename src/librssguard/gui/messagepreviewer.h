@@ -16,6 +16,7 @@
 class QGridLayout;
 class QStackedLayout;
 class QToolBar;
+
 class WebBrowser;
 class ItemDetails;
 

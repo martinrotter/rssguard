@@ -47,7 +47,7 @@ class RSSGUARD_DLLSPEC WebBrowser : public TabContent {
   public slots:
     void clear(bool also_hide);
     void setHtml(const QString& html, const QUrl& base_url = {});
-    void loadMessages(const QList<Message>& messages, RootItem* root);
+    void loadMessage(const Message& message, RootItem* root);
     void setToolBarVisible(bool visible);
 
   protected:
@@ -93,7 +93,7 @@ class RSSGUARD_DLLSPEC WebBrowser : public TabContent {
     QAction* m_actionPlayPageInMediaPlayer;
 #endif
 
-    QList<Message> m_messages;
+    Message m_message;
     QPointer<RootItem> m_root;
 };
 
