@@ -14,7 +14,6 @@
 
 CookieJar::CookieJar(QObject* parent)
   : QNetworkCookieJar(parent), m_saver(AutoSaver(this, QSL("saveCookies"), 30, 45)) {
-  // Load all cookies and also set them into WebEngine store.
   updateSettings();
   loadCookies();
 }

@@ -18,9 +18,9 @@ class QProgressBar;
 class QWidgetAction;
 class QMenu;
 class QLabel;
+
 class TabWidget;
 class WebViewer;
-class LocationLineEdit;
 class SearchTextWidget;
 
 class RSSGUARD_DLLSPEC WebBrowser : public TabContent {
@@ -48,7 +48,7 @@ class RSSGUARD_DLLSPEC WebBrowser : public TabContent {
     void clear(bool also_hide);
     void setHtml(const QString& html, const QUrl& base_url = {});
     void loadMessages(const QList<Message>& messages, RootItem* root);
-    void setNavigationBarVisible(bool visible);
+    void setToolBarVisible(bool visible);
 
   protected:
     virtual bool eventFilter(QObject* watched, QEvent* event);
@@ -61,11 +61,14 @@ class RSSGUARD_DLLSPEC WebBrowser : public TabContent {
 #endif
 
     void openCurrentSiteInSystemBrowser();
+
     void onLoadingStarted();
     void onLoadingProgress(int progress);
     void onLoadingFinished(bool success);
+
     void onTitleChanged(const QString& new_title);
     void onIconChanged(const QIcon& icon);
+
     void onLinkHovered(const QUrl& url);
     void onLinkClicked(const QUrl& url);
 
@@ -102,7 +105,7 @@ inline WebViewer* WebBrowser::viewer() const {
   return m_webView;
 }
 
-inline void WebBrowser::setNavigationBarVisible(bool visible) {
+inline void WebBrowser::setToolBarVisible(bool visible) {
   m_toolBar->setVisible(visible);
 }
 

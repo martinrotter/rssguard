@@ -30,7 +30,7 @@ EmailPreviewer::EmailPreviewer(GmailServiceRoot* account, QWidget* parent)
 
   m_ui.m_btnAttachments->setMenu(menu_attachments);
 
-  m_webView->setNavigationBarVisible(false);
+  m_webView->setToolBarVisible(false);
 
   connect(menu_attachments, &QMenu::triggered, this, &EmailPreviewer::downloadAttachment);
   connect(m_ui.m_btnReply, &QToolButton::clicked, this, &EmailPreviewer::replyToEmail);

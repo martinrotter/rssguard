@@ -448,9 +448,6 @@ void FormMain::updateMessageButtonsAvailability() {
     tabWidget()->feedMessageViewer()->messagesView()->selectionModel()->selectedRows().size() == 1;
   const bool atleast_one_message_selected =
     !tabWidget()->feedMessageViewer()->messagesView()->selectionModel()->selectedRows().isEmpty();
-  const bool bin_loaded =
-    tabWidget()->feedMessageViewer()->messagesView()->sourceModel()->loadedItem() != nullptr &&
-    tabWidget()->feedMessageViewer()->messagesView()->sourceModel()->loadedItem()->kind() == RootItem::Kind::Bin;
 
   m_ui->m_actionDeleteSelectedMessages->setEnabled(atleast_one_message_selected);
   m_ui->m_actionRestoreSelectedMessages->setEnabled(atleast_one_message_selected);

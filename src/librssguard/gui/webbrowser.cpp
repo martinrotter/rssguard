@@ -75,6 +75,7 @@ void WebBrowser::createConnections() {
   connect(m_searchWidget, &SearchTextWidget::searchCancelled, this, [this]() {
     m_webView->findText(QString(), {});
   });
+
   connect(m_searchWidget, &SearchTextWidget::searchForText, this, [this](const QString& text, bool backwards) {
     m_webView->findText(text, backwards);
     m_searchWidget->setFocus();
@@ -139,7 +140,7 @@ void WebBrowser::loadMessages(const QList<Message>& messages, RootItem* root) {
   m_messages = messages;
   m_root = root;
 
-  setNavigationBarVisible(m_toolBar->isVisible() && m_messages.size() <= 1);
+  setToolBarVisible(m_toolBar->isVisible() && m_messages.size() <= 1);
 
   if (!m_root.isNull()) {
     m_searchWidget->hide();

@@ -84,7 +84,7 @@ void MessagePreviewer::setToolbarsVisible(bool visible) {
   m_toolbarVisible = visible;
 
   m_toolBar->setVisible(visible);
-  m_msgBrowser->setNavigationBarVisible(visible);
+  m_msgBrowser->setToolBarVisible(visible);
 
   qApp->settings()->setValue(GROUP(GUI), GUI::MessageViewerToolbarsVisible, visible);
 }
