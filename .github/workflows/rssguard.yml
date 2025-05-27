@@ -3,7 +3,7 @@ name: rssguard
 
 on:
   push:
-    branches: ["!new-line"]
+    branches: ["*"]
     tags: ["*"]
 
 env:
@@ -29,12 +29,11 @@ jobs:
 
   build-rssguard:
     needs: check-build-script
-    name: "${{ matrix.os }}; no-lite = ${{ matrix.no_lite }}; qt5 = ${{ matrix.use_qt5 }}"
+    name: "${{ matrix.os }}; qt5 = ${{ matrix.use_qt5 }}"
     runs-on: "${{ matrix.os }}"
     strategy:
       matrix:
         os: [windows-2022, ubuntu-24.04, macos-13]
-        no_lite: ["ON", "OFF"]
         use_qt5: ["ON", "OFF"]
         include:
           - os: windows-2022
@@ -56,7 +55,7 @@ jobs:
           submodules: true
          
       - name: Prepare environment and compile application
-        run: ${{ matrix.script_name }} "${{ matrix.os }}" "${{ matrix.no_lite }}" "${{ matrix.use_qt5 }}"
+        run: ${{ matrix.script_name }} "${{ matrix.os }}" "${{ matrix.use_qt5 }}"
         env:
           FEEDLY_CLIENT_ID: ${{ secrets.FEEDLY_CLIENT_ID }}
           FEEDLY_CLIENT_SECRET: ${{ secrets.FEEDLY_CLIENT_SECRET }}
@@ -65,7 +64,7 @@ jobs:
       - name: Upload binaries
         uses: actions/upload-artifact@v4
         with:
-          name: RSS_Guard-${{ runner.os }}${{ matrix.no_lite == 'ON' && '-' || '-nowebengine-' }}Qt${{ matrix.use_qt5 == 'ON' && '5' || '6' }}
+          name: RSS_Guard-${{ runner.os }}-Qt${{ matrix.use_qt5 == 'ON' && '5' || '6' }}
           path: |
             ./rssguard-build/rssguard-*win*.exe
             ./rssguard-build/rssguard-*win*.7z
@@ -93,19 +92,19 @@ jobs:
           allowUpdates: true
           artifactErrorsFailBuild: true
           artifacts: artifacts/*/*
-          name: Development builds
+          name: Development builds (5.x new line)
           omitBodyDuringUpdate: true
           prerelease: true
           removeArtifacts: true
-          tag: devbuild
+          tag: devbuild5
 
-      - name: Update "devbuild" tag
+      - name: Update "devbuild5" tag
         if: ${{ !startsWith(github.ref, 'refs/tags/') }}
         uses: richardsimko/update-tag@v1
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
-          tag_name: devbuild
+          tag_name: devbuild5
 
       - name: Release stable binaries
         if: startsWith(github.ref, 'refs/tags/')

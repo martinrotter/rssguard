@@ -3,7 +3,6 @@
 set -e
 
 os="$1"
-webengine="$2"
 
 # Determine OS.
 if [[ "$os" == *"ubuntu"* ]]; then
@@ -11,15 +10,9 @@ if [[ "$os" == *"ubuntu"* ]]; then
   is_linux=true
   prefix="AppDir/usr"
 
-  if [[ "$webengine" == "ON" ]]; then
-    libmpv="ON"
-    qtmultimedia="OFF"
-    app_id="io.github.martinrotter.rssguard"
-  else
-    libmpv="OFF"
-    qtmultimedia="ON"
-    app_id="io.github.martinrotter.rssguardlite"
-  fi
+  libmpv="ON"
+  qtmultimedia="OFF"
+  app_id="io.github.martinrotter.rssguard"
 else
   echo "We are building for macOS."
   is_linux=false
@@ -29,8 +22,7 @@ else
   qtmultimedia="ON"
 fi
 
-echo "OS: $os; Not lite: $webengine"
-
+echo "OS: $os"
 USE_QT6="ON"
 
 # Install needed dependencies.
@@ -39,7 +31,7 @@ if [ $is_linux = true ]; then
   sudo apt-get update
 
   sudo apt-get -qy install appstream cmake ninja-build openssl libssl-dev 
-  sudo apt-get -qy install qt6-5compat-dev qt6-base-dev-tools qt6-image-formats-plugins qt6-multimedia-dev qt6-positioning-dev qt6-webengine-dev linguist-qt6 qt6-tools-dev
+  sudo apt-get -qy install qt6-5compat-dev qt6-base-dev-tools qt6-image-formats-plugins qt6-multimedia-dev qt6-positioning-dev linguist-qt6 qt6-tools-dev
   sudo apt-get -qy install libmpv-dev libssl-dev libsqlite3-dev alsa-base alsa-oss alsa-tools alsa-utils gstreamer1.0-alsa gstreamer1.0-plugins-bad gstreamer1.0-plugins-base gstreamer1.0-plugins-good gstreamer1.0-plugins-ugly gstreamer1.0-pulseaudio gstreamer1.0-qt6 gstreamer1.0-vaapi gstreamer1.0-x libasound2-plugins libasound2-plugins-extra libasound2-dev
 
   
@@ -60,7 +52,7 @@ else
   echo "Qt will be installed to: $QTPATH"
 
   # Install Qt.
-  aqt install-qt -O "$QTPATH" "$QTTARGET" "desktop" "$QTVERSION" "$QTARCH" -m "qtwebengine" "qtimageformats" "qtwebchannel" "qtmultimedia" "qt5compat" "qtpositioning" "qtserialport"
+  aqt install-qt -O "$QTPATH" "$QTTARGET" "desktop" "$QTVERSION" "$QTARCH" -m "qtimageformats" "qtmultimedia" "qt5compat" "qtpositioning" "qtserialport"
   aqt install-tool -O "$QTPATH" "$QTTARGET" "desktop" "tools_cmake"
   aqt install-tool -O "$QTPATH" "$QTTARGET" "desktop" "tools_ninja"
 
@@ -77,7 +69,7 @@ git_revision=$(git rev-parse --short HEAD)
 mkdir rssguard-build
 cd rssguard-build
 
-cmake .. --warn-uninitialized -G Ninja -DCMAKE_OSX_ARCHITECTURES="x86_64;arm64" -DCMAKE_OSX_DEPLOYMENT_TARGET="10.15" -DFORCE_BUNDLE_ICONS="ON" -DCMAKE_BUILD_TYPE="MinSizeRel" -DCMAKE_VERBOSE_MAKEFILE="ON" -DCMAKE_INSTALL_PREFIX="$prefix" -DREVISION_FROM_GIT="ON" -DBUILD_WITH_QT6="$USE_QT6" -DENABLE_COMPRESSED_SITEMAP="ON" -DENABLE_MEDIAPLAYER_LIBMPV="$libmpv" -DENABLE_MEDIAPLAYER_QTMULTIMEDIA="$qtmultimedia" -DNO_LITE="$webengine" -DFEEDLY_CLIENT_ID="$FEEDLY_CLIENT_ID" -DFEEDLY_CLIENT_SECRET="$FEEDLY_CLIENT_SECRET"
+cmake .. --warn-uninitialized -G Ninja -DCMAKE_OSX_ARCHITECTURES="x86_64;arm64" -DCMAKE_OSX_DEPLOYMENT_TARGET="10.15" -DFORCE_BUNDLE_ICONS="ON" -DCMAKE_BUILD_TYPE="MinSizeRel" -DCMAKE_VERBOSE_MAKEFILE="ON" -DCMAKE_INSTALL_PREFIX="$prefix" -DREVISION_FROM_GIT="ON" -DBUILD_WITH_QT6="$USE_QT6" -DENABLE_COMPRESSED_SITEMAP="ON" -DENABLE_MEDIAPLAYER_LIBMPV="$libmpv" -DENABLE_MEDIAPLAYER_QTMULTIMEDIA="$qtmultimedia" -DFEEDLY_CLIENT_ID="$FEEDLY_CLIENT_ID" -DFEEDLY_CLIENT_SECRET="$FEEDLY_CLIENT_SECRET"
 cmake --build .
 cmake --install . --prefix "$prefix"
 
@@ -106,11 +98,7 @@ if [ $is_linux = true ]; then
   # set -- R*.AppImage
   # imagename="$1"
 
-  # if [[ "$webengine" == "ON" ]]; then
-  #   imagenewname="rssguard-${git_tag}-${git_revision}-linux64.AppImage"
-  # else
-  #   imagenewname="rssguard-${git_tag}-${git_revision}-lite-linux64.AppImage"
-  # fi
+  # imagenewname="rssguard-${git_tag}-${git_revision}-linux64.AppImage"
 else
   # Fix .dylib linking.
   otool -L "$prefix/Contents/MacOS/rssguard"
@@ -129,12 +117,7 @@ else
   # Rename DMG.
   set -- *.dmg
   imagename="$1"
-
-  if [[ "$webengine" == "ON" ]]; then
-    imagenewname="rssguard-${git_tag}-${git_revision}-mac64.dmg"
-  else
-    imagenewname="rssguard-${git_tag}-${git_revision}-lite-mac64.dmg"
-  fi
+  imagenewname="rssguard-${git_tag}-${git_revision}-mac64.dmg"
 
   mv "$imagename" "$imagenewname"
   ls
