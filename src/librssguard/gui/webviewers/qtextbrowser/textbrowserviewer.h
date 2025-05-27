@@ -14,8 +14,6 @@
 class QContextMenuEvent;
 class QResizeEvent;
 class WebBrowser;
-class Downloader;
-
 class TextBrowserViewer;
 
 class RSSGUARD_DLLSPEC TextBrowserDocument : public QTextDocument {
@@ -42,18 +40,21 @@ class RSSGUARD_DLLSPEC TextBrowserViewer : public QTextBrowser, public WebViewer
     QVariant loadOneResource(int type, const QUrl& name);
 
     virtual QSize sizeHint() const;
+
     virtual void bindToBrowser(WebBrowser* browser);
     virtual void findText(const QString& text, bool backwards);
-    virtual void setUrl(const QUrl& url);
+
     virtual void setHtml(const QString& html, const QUrl& base_url = {});
-    virtual void setReadabledHtml(const QString& html, const QUrl& base_url = {});
     virtual QString html() const;
     virtual QUrl url() const;
     virtual void clear();
+
     virtual void loadMessages(const QList<Message>& messages, RootItem* root);
     virtual PreparedHtml htmlForMessages(const QList<Message>& messages, RootItem* root) const;
+
     virtual double verticalScrollBarPosition() const;
     virtual void setVerticalScrollBarPosition(double pos);
+
     virtual void applyFont(const QFont& fon);
     virtual qreal zoomFactor() const;
     virtual void setZoomFactor(qreal zoom_factor);
