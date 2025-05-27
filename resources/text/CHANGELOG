@@ -1,3 +1,16 @@
+4.8.5
+-----
+
+Added:
+* All dropdown filters (for both feed and article lists) can now be assigned to keyboard shortcuts.
+* "Add account" dialog was bit updated.
+
+Fixed:
+* Fixed unwanted "feed error" dialog, now properly configurable.
+* Fixed text-based filtering for feed list (sorry).
+* Dropdown feed list filtering now properly filters out categories and labels too.
+* Selected item behavior when filtering is enabled was refined.
+
 4.8.4
 -----
 
