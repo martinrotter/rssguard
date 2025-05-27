@@ -407,7 +407,6 @@ Assignment DatabaseQueries::getFeeds(const QSqlDatabase& db,
     art.m_moveToBinDontPurge = query.value(RECYCLE_ARTICLE_DONT_PURGE).toBool();
 
     feed->setArticleIgnoreLimit(art);
-    feed->setOpenArticlesDirectly(query.value(FDS_DB_OPEN_ARTICLES_INDEX).toBool());
 
     qDebugNN << LOGSEC_CORE << "Custom ID of feed when loading from DB is" << QUOTE_W_SPACE_DOT(feed->customId());
 

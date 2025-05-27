@@ -56,10 +56,6 @@ void FormFeedDetails::apply() {
       fd->setAutoUpdateInterval(int(m_ui->m_spinAutoUpdateInterval->value()));
     }
 
-    if (isChangeAllowed(m_ui->m_mcbOpenArticlesAutomatically)) {
-      fd->setOpenArticlesDirectly(m_ui->m_cbOpenArticlesAutomatically->isChecked());
-    }
-
     if (isChangeAllowed(m_ui->m_mcbFeedRtl)) {
       fd->setRtlBehavior(m_ui->m_cmbRtlBehavior->currentData().value<RtlBehavior>());
     }
@@ -124,7 +120,6 @@ void FormFeedDetails::loadFeedData() {
   if (m_isBatchEdit) {
     // We hook batch selectors.
     m_ui->m_mcbAutoDownloading->addActionWidget(m_ui->m_wdgAutoUpdate);
-    m_ui->m_mcbOpenArticlesAutomatically->addActionWidget(m_ui->m_cbOpenArticlesAutomatically);
     m_ui->m_mcbDisableFeed->addActionWidget(m_ui->m_cbDisableFeed);
     m_ui->m_mcbSuppressFeed->addActionWidget(m_ui->m_cbSuppressFeed);
     m_ui->m_mcbFeedRtl->addActionWidget(m_ui->m_cmbRtlBehavior);
@@ -157,25 +152,11 @@ void FormFeedDetails::loadFeedData() {
   m_ui->m_cmbAutoUpdateType
     ->setCurrentIndex(m_ui->m_cmbAutoUpdateType->findData(QVariant::fromValue(int(fd->autoUpdateType()))));
   m_ui->m_spinAutoUpdateInterval->setValue(fd->autoUpdateInterval());
-  m_ui->m_cbOpenArticlesAutomatically->setChecked(fd->openArticlesDirectly());
   m_ui->m_cmbRtlBehavior->setCurrentIndex(m_ui->m_cmbRtlBehavior->findData(QVariant::fromValue(fd->rtlBehavior())));
   m_ui->m_cbDisableFeed->setChecked(fd->isSwitchedOff());
   m_ui->m_cbSuppressFeed->setChecked(fd->isQuiet());
 
   Feed::ArticleIgnoreLimit art_limit = Feed::ArticleIgnoreLimit(fd->articleIgnoreLimit());
-
-  /*
-  art_limit.m_addAnyArticlesToDb = fd->addAnyDatetimeArticles();
-  art_limit.m_avoidOldArticles =
-    (fd->datetimeToAvoid().isValid() && fd->datetimeToAvoid().toMSecsSinceEpoch() > 0) || fd->hoursToAvoid() > 0;
-  art_limit.m_dtToAvoid = fd->datetimeToAvoid();
-  art_limit.m_hoursToAvoid = fd->hoursToAvoid();
-
-  art_limit.m_doNotRemoveStarred = false;
-  art_limit.m_doNotRemoveUnread = false;
-  art_limit.m_keepCountOfArticles = 4;
-  art_limit.m_moveToBinDontPurge = false;
-*/
 
   m_ui->m_wdgArticleLimiting->load(art_limit, true);
 }

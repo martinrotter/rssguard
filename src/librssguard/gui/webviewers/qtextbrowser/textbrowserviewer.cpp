@@ -148,11 +148,6 @@ QVariant TextBrowserViewer::loadOneResource(int type, const QUrl& name) {
 
 void TextBrowserViewer::bindToBrowser(WebBrowser* browser) {
   installEventFilter(browser);
-
-  browser->m_actionBack = nullptr;
-  browser->m_actionForward = nullptr;
-  browser->m_actionReload = nullptr;
-  browser->m_actionStop = nullptr;
 }
 
 void TextBrowserViewer::findText(const QString& text, bool backwards) {
@@ -171,44 +166,6 @@ void TextBrowserViewer::findText(const QString& text, bool backwards) {
     textCursor().clearSelection();
     moveCursor(QTextCursor::MoveOperation::Start);
   }
-}
-
-void TextBrowserViewer::setUrl(const QUrl& url) {
-  emit loadingStarted();
-
-  QString html_str;
-  QUrl nonconst_url = url;
-  bool is_error = false;
-  QEventLoop loop;
-
-  connect(m_downloader.data(),
-          &Downloader::completed,
-          &loop,
-          &QEventLoop::quit,
-          Qt::ConnectionType(Qt::ConnectionType::UniqueConnection | Qt::ConnectionType::AutoConnection));
-  m_downloader->manipulateData(url.toString(), QNetworkAccessManager::Operation::GetOperation, {}, 5000);
-
-  loop.exec();
-
-  const auto net_error = m_downloader->lastOutputError();
-  const QString content_type = m_downloader->lastContentType();
-
-  if (net_error != QNetworkReply::NetworkError::NoError) {
-    is_error = true;
-    html_str = QSL("Error!<br/>%1").arg(NetworkFactory::networkErrorText(net_error));
-  }
-  else {
-    if (content_type.startsWith(QSL("image/"))) {
-      html_str = QSL("<img src=\"%1\">").arg(nonconst_url.toString());
-    }
-    else {
-      html_str = decodeHtmlData(m_downloader->lastOutputData(), content_type);
-    }
-  }
-
-  setHtml(html_str, nonconst_url);
-
-  emit loadingFinished(!is_error);
 }
 
 QString TextBrowserViewer::decodeHtmlData(const QByteArray& data, const QString& content_type) const {
@@ -388,6 +345,9 @@ void TextBrowserViewer::onAnchorClicked(const QUrl& url) {
     bool open_externally_now =
       qApp->settings()->value(GROUP(Browser), SETTING(Browser::OpenLinksInExternalBrowserRightAway)).toBool();
 
+    // TODO: pÄąâ„˘esunout do Webbrowseru, tady jen vysĂ„â€šĂ‚Â­lat signal, Ă„Ä…Ă„Äľe se kliklo
+    // na odkaz
+
     if (open_externally_now) {
       qApp->web()->openUrlInExternalBrowser(resolved_url.toString());
 
@@ -398,9 +358,6 @@ void TextBrowserViewer::onAnchorClicked(const QUrl& url) {
           qApp->mainForm()->display();
         });
       }
-    }
-    else {
-      setUrl(resolved_url);
     }
   }
 }
@@ -474,10 +431,6 @@ void TextBrowserViewer::setHtml(const QString& html, const QUrl& base_url) {
   setVerticalScrollBarPosition(0.0);
 }
 
-void TextBrowserViewer::setReadabledHtml(const QString& html, const QUrl& base_url) {
-  setHtml(html, base_url);
-}
-
 void TextBrowserViewer::setHtmlPrivate(const QString& html, const QUrl& base_url) {
   m_currentUrl = base_url;
   m_currentHtml = html;
@@ -518,13 +471,6 @@ void TextBrowserViewer::downloadNextNeededResource() {
                               Q_ARG(QNetworkAccessManager::Operation, QNetworkAccessManager::Operation::GetOperation),
                               Q_ARG(QByteArray, {}),
                               Q_ARG(int, 5000));
-
-    /*
-m_resourceDownloader.data()->manipulateData(qApp->web()->unescapeHtml(res.toString()),
-                                            QNetworkAccessManager::Operation::GetOperation,
-                                            {},
-                                            5000);
-                                                */
   }
 }
 

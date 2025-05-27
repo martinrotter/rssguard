@@ -486,7 +486,7 @@ DVALUE(QString) Browser::WebEngineChromiumFlagsDef = QSL("--enable-smooth-scroll
 #endif
 
 DKEY Browser::OpenLinksInExternalBrowserRightAway = "open_link_externally_wo_confirmation";
-DVALUE(bool) Browser::OpenLinksInExternalBrowserRightAwayDef = false;
+DVALUE(bool) Browser::OpenLinksInExternalBrowserRightAwayDef = true;
 
 DKEY Browser::CustomExternalBrowserEnabled = "custom_external_browser";
 DVALUE(bool) Browser::CustomExternalBrowserEnabledDef = false;

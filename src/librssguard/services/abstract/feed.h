@@ -88,9 +88,6 @@ class RSSGUARD_DLLSPEC Feed : public RootItem {
     QString source() const;
     void setSource(const QString& source);
 
-    bool openArticlesDirectly() const;
-    void setOpenArticlesDirectly(bool opn);
-
     bool isSwitchedOff() const;
     void setIsSwitchedOff(bool switched_off);
 
@@ -130,7 +127,6 @@ class RSSGUARD_DLLSPEC Feed : public RootItem {
     QDateTime m_lastUpdated;
     bool m_isSwitchedOff;
     bool m_isQuiet;
-    bool m_openArticlesDirectly;
     RtlBehavior m_rtlBehavior;
 
     // NOTE: These are used to filter out older articles

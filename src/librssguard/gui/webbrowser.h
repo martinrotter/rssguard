@@ -46,8 +46,6 @@ class RSSGUARD_DLLSPEC WebBrowser : public TabContent {
 
   public slots:
     void clear(bool also_hide);
-    void loadUrl(const QString& url);
-    void loadUrl(const QUrl& url);
     void setHtml(const QString& html, const QUrl& base_url = {});
     void loadMessages(const QList<Message>& messages, RootItem* root);
     void setNavigationBarVisible(bool visible);
@@ -63,7 +61,6 @@ class RSSGUARD_DLLSPEC WebBrowser : public TabContent {
 #endif
 
     void openCurrentSiteInSystemBrowser();
-    void updateUrl(const QUrl& url);
     void onLoadingStarted();
     void onLoadingProgress(int progress);
     void onLoadingFinished(bool success);
@@ -72,14 +69,12 @@ class RSSGUARD_DLLSPEC WebBrowser : public TabContent {
     void onLinkHovered(const QUrl& url);
 
   signals:
-    void windowCloseRequested();
-
     void iconChanged(int index, const QIcon& icon);
     void titleChanged(int index, const QString& title);
 
   private:
-    void initializeLayout();
     void bindWebView();
+    void initializeLayout();
     void createConnections();
 
   private:
@@ -87,13 +82,7 @@ class RSSGUARD_DLLSPEC WebBrowser : public TabContent {
     QToolBar* m_toolBar;
     WebViewer* m_webView;
     SearchTextWidget* m_searchWidget;
-    LocationLineEdit* m_txtLocation;
-    QAction* m_txtLocationAction;
     QProgressBar* m_loadingProgress;
-    QAction* m_actionBack;
-    QAction* m_actionForward;
-    QAction* m_actionReload;
-    QAction* m_actionStop;
     QAction* m_actionOpenInSystemBrowser;
 
 #if defined(ENABLE_MEDIAPLAYER)

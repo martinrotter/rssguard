@@ -133,8 +133,6 @@ set(SOURCES
   gui/reusable/labelwithstatus.h
   gui/reusable/lineeditwithstatus.cpp
   gui/reusable/lineeditwithstatus.h
-  gui/reusable/locationlineedit.cpp
-  gui/reusable/locationlineedit.h
   gui/reusable/messagecountspinbox.cpp
   gui/reusable/messagecountspinbox.h
   gui/reusable/networkproxydetails.cpp
@@ -253,8 +251,6 @@ set(SOURCES
   network-web/cookiejar.h
   network-web/downloader.cpp
   network-web/downloader.h
-  network-web/googlesuggest.cpp
-  network-web/googlesuggest.h
   network-web/httpresponse.cpp
   network-web/httpresponse.h
   network-web/httpserver.cpp

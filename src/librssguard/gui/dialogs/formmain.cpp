@@ -65,7 +65,7 @@ FormMain::FormMain(QWidget* parent, Qt::WindowFlags f)
   main_menu->addMenu(m_ui->m_menuAccounts);
   main_menu->addMenu(m_ui->m_menuFeeds);
   main_menu->addMenu(m_ui->m_menuMessages);
-  main_menu->addMenu(m_ui->m_menuWebBrowserTabs);
+  main_menu->addMenu(m_ui->m_menuTabs);
   main_menu->addMenu(m_ui->m_menuTools);
   main_menu->addMenu(m_ui->m_menuHelp);
 

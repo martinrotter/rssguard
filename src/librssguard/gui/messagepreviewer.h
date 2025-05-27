@@ -48,7 +48,6 @@ class MessagePreviewer : public TabContent {
     void clear();
 
     void showItemDetails(RootItem* item);
-    void loadUrl(const QString& url);
     void loadMessage(const Message& message, RootItem* root);
 
   private slots:

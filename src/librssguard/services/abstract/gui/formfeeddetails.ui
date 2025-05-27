@@ -74,20 +74,6 @@
         </layout>
        </item>
        <item row="1" column="0" colspan="2">
-        <layout class="QHBoxLayout" name="horizontalLayout_4">
-         <item>
-          <widget class="MultiFeedEditCheckBox" name="m_mcbOpenArticlesAutomatically"/>
-         </item>
-         <item>
-          <widget class="QCheckBox" name="m_cbOpenArticlesAutomatically">
-           <property name="text">
-            <string>Open articles via their URL automatically</string>
-           </property>
-          </widget>
-         </item>
-        </layout>
-       </item>
-       <item row="2" column="0" colspan="2">
         <widget class="ArticleAmountControl" name="m_wdgArticleLimiting" native="true"/>
        </item>
       </layout>
@@ -188,8 +174,6 @@
   <tabstop>m_mcbAutoDownloading</tabstop>
   <tabstop>m_cmbAutoUpdateType</tabstop>
   <tabstop>m_spinAutoUpdateInterval</tabstop>
-  <tabstop>m_mcbOpenArticlesAutomatically</tabstop>
-  <tabstop>m_cbOpenArticlesAutomatically</tabstop>
   <tabstop>m_mcbSuppressFeed</tabstop>
   <tabstop>m_cbSuppressFeed</tabstop>
   <tabstop>m_mcbDisableFeed</tabstop>

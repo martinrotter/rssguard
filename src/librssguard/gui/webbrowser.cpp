@@ -5,7 +5,6 @@
 #include "definitions/globals.h"
 #include "gui/dialogs/formmain.h"
 #include "gui/messagebox.h"
-#include "gui/reusable/locationlineedit.h"
 #include "gui/reusable/searchtextwidget.h"
 #include "gui/tabwidget.h"
 #include "gui/webviewers/webviewer.h"
@@ -26,7 +25,7 @@
 
 WebBrowser::WebBrowser(WebViewer* viewer, QWidget* parent)
   : TabContent(parent), m_layout(new QVBoxLayout(this)), m_toolBar(new QToolBar(tr("Navigation panel"), this)),
-    m_webView(viewer), m_searchWidget(new SearchTextWidget(this)), m_txtLocation(new LocationLineEdit(this)),
+    m_webView(viewer), m_searchWidget(new SearchTextWidget(this)),
     m_actionOpenInSystemBrowser(new QAction(qApp->icons()->fromTheme(QSL("document-open")),
                                             tr("Open this website in system web browser"),
                                             this)),
@@ -48,8 +47,7 @@ WebBrowser::WebBrowser(WebViewer* viewer, QWidget* parent)
 
   initializeLayout();
 
-  setFocusProxy(m_txtLocation);
-  setTabOrder(m_txtLocation, m_toolBar);
+  setFocusProxy(dynamic_cast<QWidget*>(m_webView));
   setTabOrder(m_toolBar, dynamic_cast<QWidget*>(m_webView));
 
   createConnections();
@@ -68,7 +66,6 @@ void WebBrowser::bindWebView() {
   connect(qobj_viewer, SIGNAL(loadingStarted()), this, SLOT(onLoadingStarted()));
   connect(qobj_viewer, SIGNAL(loadingProgress(int)), this, SLOT(onLoadingProgress(int)));
   connect(qobj_viewer, SIGNAL(loadingFinished(bool)), this, SLOT(onLoadingFinished(bool)));
-  connect(qobj_viewer, SIGNAL(closeWindowRequested()), this, SIGNAL(windowCloseRequested()));
 }
 
 void WebBrowser::createConnections() {
@@ -87,21 +84,6 @@ void WebBrowser::createConnections() {
 #if defined(ENABLE_MEDIAPLAYER)
   connect(m_actionPlayPageInMediaPlayer, &QAction::triggered, this, &WebBrowser::playCurrentSiteInMediaPlayer);
 #endif
-
-  connect(m_txtLocation,
-          &LocationLineEdit::submitted,
-          this,
-          static_cast<void (WebBrowser::*)(const QString&)>(&WebBrowser::loadUrl));
-}
-
-void WebBrowser::updateUrl(const QUrl& url) {
-  m_txtLocation->setText(url.toString());
-}
-
-void WebBrowser::loadUrl(const QUrl& url) {
-  if (url.isValid()) {
-    m_webView->setUrl(url);
-  }
 }
 
 WebBrowser::~WebBrowser() {}
@@ -124,9 +106,7 @@ void WebBrowser::scrollDown() {
 
 void WebBrowser::reloadFontSettings() {
   QFont fon;
-
   fon.fromString(qApp->settings()->value(GROUP(Messages), SETTING(Messages::PreviewerFontStandard)).toString());
-
   m_webView->applyFont(fon);
 }
 
@@ -148,10 +128,6 @@ void WebBrowser::clear(bool also_hide) {
   if (also_hide) {
     hide();
   }
-}
-
-void WebBrowser::loadUrl(const QString& url) {
-  return loadUrl(QUrl::fromUserInput(url));
 }
 
 void WebBrowser::setHtml(const QString& html, const QUrl& base_url) {
@@ -266,32 +242,6 @@ void WebBrowser::initializeLayout() {
   m_toolBar->setFloatable(false);
   m_toolBar->setMovable(false);
   m_toolBar->setAllowedAreas(Qt::ToolBarArea::TopToolBarArea);
-
-  // Modify action texts.
-  if (m_actionBack != nullptr) {
-    m_actionBack->setText(tr("Back"));
-    m_actionBack->setIcon(qApp->icons()->fromTheme(QSL("go-previous")));
-    m_toolBar->addAction(m_actionBack);
-  }
-
-  if (m_actionForward != nullptr) {
-    m_actionForward->setText(tr("Forward"));
-    m_actionForward->setIcon(qApp->icons()->fromTheme(QSL("go-next")));
-    m_toolBar->addAction(m_actionForward);
-  }
-
-  if (m_actionReload != nullptr) {
-    m_actionReload->setText(tr("Reload"));
-    m_actionReload->setIcon(qApp->icons()->fromTheme(QSL("reload"), QSL("view-refresh")));
-    m_toolBar->addAction(m_actionReload);
-  }
-
-  if (m_actionStop != nullptr) {
-    m_actionStop->setText(tr("Stop"));
-    m_actionStop->setIcon(qApp->icons()->fromTheme(QSL("process-stop")));
-    m_toolBar->addAction(m_actionStop);
-  }
-
   m_actionOpenInSystemBrowser->setEnabled(false);
 
   // Add needed actions into toolbar.
@@ -301,8 +251,6 @@ void WebBrowser::initializeLayout() {
   m_actionPlayPageInMediaPlayer->setEnabled(false);
   m_toolBar->addAction(m_actionPlayPageInMediaPlayer);
 #endif
-
-  m_txtLocationAction = m_toolBar->addWidget(m_txtLocation);
 
   m_loadingProgress = new QProgressBar(this);
   m_loadingProgress->setFixedHeight(10);

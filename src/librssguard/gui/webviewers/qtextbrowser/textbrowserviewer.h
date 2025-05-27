@@ -4,6 +4,7 @@
 #define TEXTBROWSERVIEWER_H
 
 #include "gui/webviewers/webviewer.h"
+#include "network-web/downloader.h"
 
 #include <QNetworkReply>
 #include <QPixmap>
@@ -82,6 +83,7 @@ class RSSGUARD_DLLSPEC TextBrowserViewer : public QTextBrowser, public WebViewer
 
   signals:
     void reloadDocument();
+
     void pageTitleChanged(const QString& new_title);
     void pageUrlChanged(const QUrl& url);
     void pageIconChanged(const QIcon&);
@@ -89,8 +91,6 @@ class RSSGUARD_DLLSPEC TextBrowserViewer : public QTextBrowser, public WebViewer
     void loadingStarted();
     void loadingProgress(int progress);
     void loadingFinished(bool success);
-    void newWindowRequested(WebViewer* viewer);
-    void closeWindowRequested();
 
   private:
     PreparedHtml prepareLegacyHtmlForMessage(const QList<Message>& messages, RootItem* selected_item) const;
