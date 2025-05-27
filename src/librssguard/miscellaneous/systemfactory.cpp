@@ -305,7 +305,7 @@ QList<UpdateInfo> SystemFactory::parseUpdatesFile(const QByteArray& updates_file
   for (QJsonValueRef i : document) {
     QJsonObject release = i.toObject();
 
-    if (release[QSL("tag_name")].toString() == QSL("devbuild")) {
+    if (release[QSL("tag_name")].toString().contains(QSL("devbuild"))) {
       continue;
     }
 

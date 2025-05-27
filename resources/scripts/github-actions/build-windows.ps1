@@ -1,9 +1,8 @@
 $os = $args[0]
-$use_webengine = $args[1]
-$use_qt5 = $args[2]
+$use_qt5 = $args[1]
 
 echo "We are building for MS Windows."
-echo "OS: $os; Not lite: $use_webengine; Qt5: $use_qt5"
+echo "OS: $os; Qt5: $use_qt5"
 
 $git_revlist = git rev-list --tags --max-count=1
 $git_tag = git describe --tags $git_revlist
@@ -46,14 +45,8 @@ else {
   $qt_version = "6.8.3"
   $qt_arch_base = "msvc2022_64"
 
-  if ($use_webengine -eq "ON") {
-    $use_libmpv = "ON"
-    $use_qtmultimedia = "OFF"
-  }
-  else {
-    $use_libmpv = "OFF"
-    $use_qtmultimedia = "ON"
-  }
+  $use_libmpv = "ON"
+  $use_qtmultimedia = "OFF"
 }
 
 $is_qt_6 = $qt_version.StartsWith("6")
@@ -162,7 +155,7 @@ cd "$old_pwd"
 mkdir "rssguard-build"
 cd "rssguard-build"
 
-& "$cmake_path" ".." -G Ninja -DCMAKE_BUILD_TYPE="RelWithDebInfo" -DCMAKE_VERBOSE_MAKEFILE="ON" -DBUILD_WITH_QT6="$with_qt6" -DREVISION_FROM_GIT="ON" -DUSE_SYSTEM_SQLITE="OFF" -DZLIB_ROOT="$zlib_path" -DENABLE_COMPRESSED_SITEMAP="ON" -DENABLE_MEDIAPLAYER_LIBMPV="$use_libmpv" -DENABLE_MEDIAPLAYER_QTMULTIMEDIA="$use_qtmultimedia" -DLibMPV_ROOT="$libmpv_path" -DNO_LITE="$use_webengine" -DFEEDLY_CLIENT_ID="$env:FEEDLY_CLIENT_ID" -DFEEDLY_CLIENT_SECRET="$env:FEEDLY_CLIENT_SECRET"
+& "$cmake_path" ".." -G Ninja -DCMAKE_BUILD_TYPE="RelWithDebInfo" -DCMAKE_VERBOSE_MAKEFILE="ON" -DBUILD_WITH_QT6="$with_qt6" -DREVISION_FROM_GIT="ON" -DUSE_SYSTEM_SQLITE="OFF" -DZLIB_ROOT="$zlib_path" -DENABLE_COMPRESSED_SITEMAP="ON" -DENABLE_MEDIAPLAYER_LIBMPV="$use_libmpv" -DENABLE_MEDIAPLAYER_QTMULTIMEDIA="$use_qtmultimedia" -DLibMPV_ROOT="$libmpv_path" -DFEEDLY_CLIENT_ID="$env:FEEDLY_CLIENT_ID" -DFEEDLY_CLIENT_SECRET="$env:FEEDLY_CLIENT_SECRET"
 & "$cmake_path" --build .
 & "$cmake_path" --install . --prefix app
 
@@ -194,12 +187,7 @@ if ($use_libmpv -eq "ON") {
   Copy-Item -Path "$ytdlp_path" -Destination ".\app\"
 }
 
-if ($use_webengine -eq "ON") {
-  $packagebase = "rssguard-${git_tag}-${git_revision}-win"
-}
-else {
-  $packagebase = "rssguard-${git_tag}-${git_revision}-lite-win"
-}
+$packagebase = "rssguard-${git_tag}-${git_revision}-win"
 
 if ($use_qt5 -eq "ON") {
   $packagebase += "7"
