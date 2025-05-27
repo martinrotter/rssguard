@@ -14,13 +14,6 @@
 #define SERVICE_CODE_INOREADER "inoreader"
 #define SERVICE_CODE_GMAIL     "gmail"
 #define SERVICE_CODE_REDDIT    "reddit"
-#define SERVICE_CODE_NEWSBLUR  "newsblur"
-
-#define ADBLOCK_SERVER_FILE   "adblock-server.js"
-#define ADBLOCK_SERVER_PORT   48484
-#define ADBLOCK_HOWTO         APP_URL_DOCUMENTATION "#adbl"
-#define ADBLOCK_ICON_ACTIVE   "adblock"
-#define ADBLOCK_ICON_DISABLED "adblock-disabled"
 
 #define OAUTH_DECRYPTION_KEY 11451167756100761335ul
 #define OAUTH_REDIRECT_URI   "http://localhost"
@@ -108,9 +101,6 @@
 #define NOTIFICATION_SHORT_TIMEOUT 3s
 #define NOTIFICATIONS_PAGE_SIZE    10
 
-#define GOOGLE_SEARCH_URL  "https://www.google.com/search?q=%1&ie=utf-8&oe=utf-8"
-#define GOOGLE_SUGGEST_URL "http://suggestqueries.google.com/complete/search?output=toolbar&hl=en&q=%1"
-
 #define EXTERNAL_TOOL_SEPARATOR "|||"
 
 #define USER_DATA_PLACEHOLDER  "%data%"
@@ -134,9 +124,6 @@
 #define CLI_USERAGENT_SHORT "u"
 #define CLI_USERAGENT_LONG  "user-agent"
 
-#define CLI_ADBLOCKPORT_SHORT "p"
-#define CLI_ADBLOCKPORT_LONG  "adblock-port"
-
 #define CLI_NSTDOUTERR_SHORT "n"
 #define CLI_NSTDOUTERR_LONG  "no-standard-output"
 
@@ -145,9 +132,6 @@
 
 #define CLI_NDEBUG_SHORT "g"
 #define CLI_NDEBUG_LONG  "no-debug-output"
-
-#define CLI_FORCE_LITE_SHORT "w"
-#define CLI_FORCE_LITE_LONG  "lite"
 
 #define CLI_QUIT_INSTANCE "q"
 #define CLI_IS_RUNNING    "a"
@@ -166,7 +150,6 @@
 #define HTTP_HEADERS_COOKIE         "Cookie"
 
 #define LOGSEC_NETWORK        "network: "
-#define LOGSEC_ADBLOCK        "adblock: "
 #define LOGSEC_FEEDMODEL      "feed-model: "
 #define LOGSEC_FEEDDOWNLOADER "feed-downloader: "
 #define LOGSEC_MESSAGEMODEL   "message-model: "
@@ -176,7 +159,6 @@
 #define LOGSEC_QTMULTIMEDIA   "qtmultimedia: "
 #define LOGSEC_NOTIFICATIONS  "notifications: "
 #define LOGSEC_CORE           "core: "
-#define LOGSEC_NODEJS         "nodejs: "
 #define LOGSEC_DB             "database: "
 #define LOGSEC_NEXTCLOUD      "nextcloud: "
 #define LOGSEC_GREADER        "greader: "
@@ -185,7 +167,6 @@
 #define LOGSEC_GMAIL          "gmail: "
 #define LOGSEC_OAUTH          "oauth: "
 #define LOGSEC_REDDIT         "reddit: "
-#define LOGSEC_NEWSBLUR       "newsblur: "
 
 #define MAX_ZOOM_FACTOR     5.0f
 #define MIN_ZOOM_FACTOR     0.25f
@@ -195,12 +176,6 @@
 #define HTTP_COMPLETE_USERAGENT                                                                             \
   (QByteArrayLiteral("Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:128.0) Gecko/20100101 Firefox/128.0 ") + \
    QByteArrayLiteral(APP_USERAGENT))
-
-#define INTERNAL_URL_MESSAGE      "http://rssguard.message"
-#define INTERNAL_URL_BLANK        "http://rssguard.blank"
-#define INTERNAL_URL_INFO         "http://rssguard.info"
-#define INTERNAL_URL_ADBLOCKED    "http://rssguard.adblocked"
-#define INTERNAL_URL_MESSAGE_HOST "rssguard.message"
 
 #define FEED_REGEX_MATCHER      "<link[^>]+type=\"application\\/(?:atom\\+xml|rss\\+xml|feed\\+json|json)\"[^>]*>"
 #define FEED_HREF_REGEX_MATCHER "href=\"([^\"]+)\""
@@ -369,9 +344,6 @@
 #define APP_SQL_PATH   QSL(":/sql")
 #define APP_INFO_PATH  QSL(":/text")
 
-#define BUILTIN_JS_FOLDER QSL(":/scripts/builtin_js")
-#define OBSERVER_JS_FILE  QSL("observer.js")
-
 #define WEB_UI_FOLDER QSL(":/scripts/web_ui")
 #define WEB_UI_FILE   QSL("rssguard.html")
 
@@ -387,7 +359,6 @@
 
 #if defined(Q_OS_UNIX) && !defined(Q_OS_MACOS)
 #define APP_DESKTOP_ENTRY_FILE "rssguard.desktop.in"
-
 #define APP_DESKTOP_ENTRY_PATH QSL(":/desktop")
 #endif
 

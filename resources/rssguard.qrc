@@ -9,7 +9,6 @@
     <file>text/COPYING_GNU_LGPL_21</file>
     <file>text/COPYING_QT</file>
 
-    <file>scripts/builtin_js/observer.js</file>
     <file>scripts/web_ui/rssguard.html</file>
     <file>scripts/gemini/style.css</file>
     
@@ -26,10 +25,6 @@
     <file>scripts/mpv/mpv.conf</file>
     <file>scripts/mpv/input.conf</file>
 
-    <file>scripts/adblock/adblock-server.js</file>
-    <file>scripts/readability/readabilize-article.js</file>
-    <file>scripts/article-extractor/extract-article.mjs</file>
-
     <file>scripts/filters/blacklist.js</file>
     <file>scripts/filters/whitelist.js</file>
     <file>scripts/filters/no-duplicates.js</file>
@@ -42,8 +37,6 @@
     <file>graphics/rssguard_mono.png</file>
     <file>graphics/rssguard_plain_mono.png</file>
 
-    <file>graphics/misc/adblock.png</file>
-    <file>graphics/misc/adblock-disabled.png</file>
     <file>graphics/misc/bazqux.png</file>
     <file>graphics/misc/feedly.png</file>
     <file>graphics/misc/freshrss.png</file>
@@ -53,7 +46,6 @@
     <file>graphics/misc/image-placeholder-error.png</file>
     <file>graphics/misc/inoreader.png</file>
     <file>graphics/misc/miniflux.png</file>
-    <file>graphics/misc/newsblur.png</file>
     <file>graphics/misc/nextcloud.png</file>
     <file>graphics/misc/reddit.png</file>
     <file>graphics/misc/reedah.png</file>
