@@ -125,7 +125,7 @@ void WebBrowser::playCurrentSiteInMediaPlayer() {
 
 void WebBrowser::clear(bool also_hide) {
   m_webView->clear();
-  m_messages.clear();
+  m_message = Message();
 
   if (also_hide) {
     hide();
@@ -136,15 +136,13 @@ void WebBrowser::setHtml(const QString& html, const QUrl& base_url) {
   m_webView->setHtml(html, base_url);
 }
 
-void WebBrowser::loadMessages(const QList<Message>& messages, RootItem* root) {
-  m_messages = messages;
+void WebBrowser::loadMessage(const Message& message, RootItem* root) {
+  m_message = message;
   m_root = root;
-
-  setToolBarVisible(m_toolBar->isVisible() && m_messages.size() <= 1);
 
   if (!m_root.isNull()) {
     m_searchWidget->hide();
-    m_webView->loadMessages(messages, root);
+    m_webView->loadMessage(message, root);
   }
 }
 

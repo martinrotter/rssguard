@@ -102,7 +102,7 @@ class RSSGUARD_DLLSPEC SkinFactory : public QObject {
     QString selectedSkinName() const;
 
     PreparedHtml prepareHtml(const QString& inner_html, const QUrl& base_url);
-    PreparedHtml generateHtmlOfArticles(const QList<Message>& messages, RootItem* root, int desired_width) const;
+    PreparedHtml generateHtmlOfArticle(const Message &message, RootItem* root, int desired_width) const;
 
     // Gets skin about a particular skin.
     Skin skinInfo(const QString& skin_name, bool* ok = nullptr) const;

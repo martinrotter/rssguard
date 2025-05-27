@@ -233,84 +233,77 @@ PreparedHtml SkinFactory::prepareHtml(const QString& inner_html, const QUrl& bas
   return {currentSkin().m_layoutMarkupWrapper.arg(QString(), inner_html), base_url};
 }
 
-PreparedHtml SkinFactory::generateHtmlOfArticles(const QList<Message>& messages,
-                                                 RootItem* root,
-                                                 int desired_width) const {
+PreparedHtml SkinFactory::generateHtmlOfArticle(const Message& message, RootItem* root, int desired_width) const {
   Skin skin = currentSkin();
   QString messages_layout;
   QString single_message_layout = skin.m_layoutMarkup;
   const int forced_img_height =
     qApp->settings()->value(GROUP(Messages), SETTING(Messages::LimitArticleImagesHeight)).toInt();
+  QString enclosures;
+  QString enclosure_images;
+  bool is_plain = !TextFactory::couldBeHtml(message.m_contents);
 
-  auto* feed = root != nullptr
+  if (root == nullptr || root->getParentServiceRoot()->displaysEnclosures()) {
+    for (const Enclosure& enclosure : message.m_enclosures) {
+      QString enc_url = QUrl::fromPercentEncoding(enclosure.m_url.toUtf8());
+
+      enclosures += skin.m_enclosureMarkup.arg(enc_url, enclosure.m_mimeType);
+
+      if (qApp->settings()->value(GROUP(Messages), SETTING(Messages::DisplayEnclosuresInMessage)).toBool()) {
+        if (enclosure.m_mimeType.startsWith(QSL("image/")) &&
+            qApp->settings()->value(GROUP(Messages), SETTING(Messages::DisplayEnclosuresInMessage)).toBool()) {
+          // Add thumbnail image.
+          enclosure_images +=
+            skin.m_enclosureImageMarkup.arg(enclosure.m_url,
+                                            enclosure.m_mimeType,
+                                            forced_img_height <= 0 ? QString::number(-1)
+                                                                   : QString::number(forced_img_height));
+        }
+      }
+    }
+  }
+
+  QString msg_date =
+    qApp->settings()->value(GROUP(Messages), SETTING(Messages::UseCustomDate)).toBool()
+      ? message.m_created.toLocalTime()
+          .toString(qApp->settings()->value(GROUP(Messages), SETTING(Messages::CustomDateFormat)).toString())
+      : qApp->localization()->loadedLocale().toString(message.m_created.toLocalTime(),
+                                                      QLocale::FormatType::ShortFormat);
+
+  QString msg_contents =
+    is_plain ? Qt::convertFromPlainText(message.m_contents, Qt::WhiteSpaceMode::WhiteSpaceNormal) : message.m_contents;
+
+  if (!is_plain) {
+    msg_contents = qApp->web()->limitSizeOfHtmlImages(msg_contents, desired_width, forced_img_height);
+  }
+
+  messages_layout.append(single_message_layout.arg(message.m_title,
+                                                   tr("Written by ") + (message.m_author.isEmpty()
+                                                                          ? tr("unknown author")
+                                                                          : message.m_author),
+                                                   message.m_url,
+                                                   msg_contents,
+                                                   msg_date,
+                                                   enclosures,
+                                                   enclosure_images,
+                                                   QString::number(message.m_id),
+                                                   (message.m_rtlBehavior == RtlBehavior::Everywhere ||
+                                                    message.m_rtlBehavior == RtlBehavior::EverywhereExceptFeedList ||
+                                                    message.m_rtlBehavior == RtlBehavior::OnlyViewer)
+                                                     ? QSL("rtl")
+                                                     : QSL("ltr")));
+
+  QString html = skin.m_layoutMarkupWrapper.arg(message.m_title, messages_layout);
+  QString base_url = message.m_url;
+
+  /*
+   *   auto* feed = root != nullptr
                  ? root->getParentServiceRoot()
                      ->getItemFromSubTree([messages](const RootItem* it) {
                        return it->kind() == RootItem::Kind::Feed && it->customId() == messages.at(0).m_feedId;
                      })
                      ->toFeed()
                  : nullptr;
-
-  for (const Message& message : messages) {
-    QString enclosures;
-    QString enclosure_images;
-    bool is_plain = !TextFactory::couldBeHtml(message.m_contents);
-
-    if (root == nullptr || root->getParentServiceRoot()->displaysEnclosures()) {
-      for (const Enclosure& enclosure : message.m_enclosures) {
-        QString enc_url = QUrl::fromPercentEncoding(enclosure.m_url.toUtf8());
-
-        enclosures += skin.m_enclosureMarkup.arg(enc_url, enclosure.m_mimeType);
-
-        if (qApp->settings()->value(GROUP(Messages), SETTING(Messages::DisplayEnclosuresInMessage)).toBool()) {
-          if (enclosure.m_mimeType.startsWith(QSL("image/")) &&
-              qApp->settings()->value(GROUP(Messages), SETTING(Messages::DisplayEnclosuresInMessage)).toBool()) {
-            // Add thumbnail image.
-            enclosure_images +=
-              skin.m_enclosureImageMarkup.arg(enclosure.m_url,
-                                              enclosure.m_mimeType,
-                                              forced_img_height <= 0 ? QString::number(-1)
-                                                                     : QString::number(forced_img_height));
-          }
-        }
-      }
-    }
-
-    QString msg_date =
-      qApp->settings()->value(GROUP(Messages), SETTING(Messages::UseCustomDate)).toBool()
-        ? message.m_created.toLocalTime()
-            .toString(qApp->settings()->value(GROUP(Messages), SETTING(Messages::CustomDateFormat)).toString())
-        : qApp->localization()->loadedLocale().toString(message.m_created.toLocalTime(),
-                                                        QLocale::FormatType::ShortFormat);
-
-    QString msg_contents = is_plain ? Qt::convertFromPlainText(message.m_contents, Qt::WhiteSpaceMode::WhiteSpaceNormal)
-                                    : message.m_contents;
-
-    if (!is_plain) {
-      msg_contents = qApp->web()->limitSizeOfHtmlImages(msg_contents, desired_width, forced_img_height);
-    }
-
-    messages_layout.append(single_message_layout.arg(message.m_title,
-                                                     tr("Written by ") + (message.m_author.isEmpty()
-                                                                            ? tr("unknown author")
-                                                                            : message.m_author),
-                                                     message.m_url,
-                                                     msg_contents,
-                                                     msg_date,
-                                                     enclosures,
-                                                     enclosure_images,
-                                                     QString::number(message.m_id),
-                                                     (message.m_rtlBehavior == RtlBehavior::Everywhere ||
-                                                      message.m_rtlBehavior == RtlBehavior::EverywhereExceptFeedList ||
-                                                      message.m_rtlBehavior == RtlBehavior::OnlyViewer)
-                                                       ? QSL("rtl")
-                                                       : QSL("ltr")));
-  }
-
-  QString msg_contents =
-    skin.m_layoutMarkupWrapper.arg(messages.size() == 1 ? messages.at(0).m_title : tr("Newspaper view"),
-                                   messages_layout);
-  QString base_url;
-
   if (feed != nullptr) {
     QUrl url(NetworkFactory::sanitizeUrl(feed->source()));
 
@@ -323,8 +316,9 @@ PreparedHtml SkinFactory::generateHtmlOfArticles(const QList<Message>& messages,
       }
     }
   }
+  */
 
-  return {msg_contents, base_url};
+  return {html, base_url};
 }
 
 Skin SkinFactory::skinInfo(const QString& skin_name, bool* ok) const {

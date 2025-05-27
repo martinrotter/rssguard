@@ -187,18 +187,18 @@ void TextBrowserViewer::clear() {
   setHtml({});
 }
 
-void TextBrowserViewer::loadMessages(const QList<Message>& messages, RootItem* root) {
+void TextBrowserViewer::loadMessage(const Message& message, RootItem* root) {
   emit loadingStarted();
   m_root = root;
 
-  auto html_messages = htmlForMessages(messages, root);
+  auto html_messages = htmlForMessage(message, root);
 
   setHtml(html_messages.m_html, html_messages.m_baseUrl);
 
   QTextOption op;
-  op.setTextDirection((messages.at(0).m_rtlBehavior == RtlBehavior::Everywhere ||
-                       messages.at(0).m_rtlBehavior == RtlBehavior::EverywhereExceptFeedList ||
-                       messages.at(0).m_rtlBehavior == RtlBehavior::OnlyViewer)
+  op.setTextDirection((message.m_rtlBehavior == RtlBehavior::Everywhere ||
+                       message.m_rtlBehavior == RtlBehavior::EverywhereExceptFeedList ||
+                       message.m_rtlBehavior == RtlBehavior::OnlyViewer)
                         ? Qt::LayoutDirection::RightToLeft
                         : Qt::LayoutDirection::LeftToRight);
   document()->setDefaultTextOption(op);
@@ -206,18 +206,18 @@ void TextBrowserViewer::loadMessages(const QList<Message>& messages, RootItem* r
   emit loadingFinished(true);
 }
 
-PreparedHtml TextBrowserViewer::htmlForMessages(const QList<Message>& messages, RootItem* root) const {
-  auto html_messages =
+PreparedHtml TextBrowserViewer::htmlForMessage(const Message& message, RootItem* root) const {
+  auto html_message =
     qApp->settings()->value(GROUP(Messages), SETTING(Messages::UseLegacyArticleFormat)).toBool()
-      ? prepareLegacyHtmlForMessage(messages, root)
-      : qApp->skins()->generateHtmlOfArticles(messages, root, width() * ACCEPTABLE_IMAGE_PERCENTUAL_WIDTH);
+      ? prepareLegacyHtmlForMessage(message, root)
+      : qApp->skins()->generateHtmlOfArticle(message, root, width() * ACCEPTABLE_IMAGE_PERCENTUAL_WIDTH);
 
   // Remove other characters which cannot be displayed properly.
   static QRegularExpression exp_symbols("&#x1F[0-9A-F]{3};");
 
-  html_messages.m_html = html_messages.m_html.replace(exp_symbols, QString());
+  html_message.m_html = html_message.m_html.replace(exp_symbols, QString());
 
-  return html_messages;
+  return html_message;
 }
 
 double TextBrowserViewer::verticalScrollBarPosition() const {
@@ -404,85 +404,82 @@ void TextBrowserViewer::resourceDownloaded(const QUrl& url,
   downloadNextNeededResource();
 }
 
-PreparedHtml TextBrowserViewer::prepareLegacyHtmlForMessage(const QList<Message>& messages,
-                                                            RootItem* selected_item) const {
+PreparedHtml TextBrowserViewer::prepareLegacyHtmlForMessage(const Message& message, RootItem* selected_item) const {
   PreparedHtml html;
   bool acc_displays_enclosures =
     selected_item == nullptr || selected_item->getParentServiceRoot()->displaysEnclosures();
+  bool is_plain = !TextFactory::couldBeHtml(message.m_contents);
 
-  for (const Message& message : messages) {
-    bool is_plain = !TextFactory::couldBeHtml(message.m_contents);
-
-    // Add title.
-    if (!message.m_url.isEmpty()) {
-      html.m_html += QSL("<h2 align=\"center\"><a href=\"%2\">%1</a></h2>").arg(message.m_title, message.m_url);
-    }
-    else {
-      html.m_html += QSL("<h2 align=\"center\">%1</h2>").arg(message.m_title);
-    }
-
-    // Start contents.
-    html.m_html += QSL("<div>");
-
-    // Add links to enclosures.
-    if (acc_displays_enclosures) {
-      for (const Enclosure& enc : message.m_enclosures) {
-        html.m_html += QSL("[<a href=\"%1\">%2</a>]").arg(enc.m_url, enc.m_mimeType);
-      }
-    }
-
-    // Display enclosures which are pictures if user has it enabled.
-    auto first_enc_break_added = false;
-
-    if (acc_displays_enclosures &&
-        qApp->settings()->value(GROUP(Messages), SETTING(Messages::DisplayEnclosuresInMessage)).toBool()) {
-      for (const Enclosure& enc : message.m_enclosures) {
-        if (enc.m_mimeType.startsWith(QSL("image/"))) {
-          if (!first_enc_break_added) {
-            html.m_html += QSL("<br/>");
-            first_enc_break_added = true;
-          }
-
-          html.m_html += QSL("<img src=\"%1\" /><br/>").arg(enc.m_url);
-        }
-      }
-    }
-
-    // Append actual contents of article and convert to HTML if needed.
-    html.m_html += is_plain ? Qt::convertFromPlainText(message.m_contents, Qt::WhiteSpaceMode::WhiteSpaceNormal)
-                            : message.m_contents;
-
-    static QRegularExpression img_tag_rgx(QSL("\\<img[^\\>]*src\\s*=\\s*[\"\']([^\"\']*)[\"\'][^\\>]*\\>"),
-                                          QRegularExpression::PatternOption::CaseInsensitiveOption);
-
-    // Extract all images links from article to be appended to end of article.
-    QRegularExpressionMatchIterator i = img_tag_rgx.globalMatch(html.m_html);
-    QString pictures_html;
-
-    while (i.hasNext()) {
-      QRegularExpressionMatch match = i.next();
-      auto captured_url = match.captured(1);
-
-      pictures_html += QSL("<br/>[%1] <a href=\"%2\">%2</a>").arg(tr("image"), captured_url);
-    }
-
-    // Make alla images clickable as links and also resize them if user has it setup.
-    auto forced_img_size =
-      qApp->settings()->value(GROUP(Messages), SETTING(Messages::LimitArticleImagesHeight)).toInt();
-
-    // Fixup all "img" tags.
-    html.m_html = html.m_html.replace(img_tag_rgx,
-                                      QSL("<a href=\"\\1\"><img height=\"%1\" src=\"\\1\" /></a>")
-                                        .arg(forced_img_size <= 0 ? QString() : QString::number(forced_img_size)));
-
-    // Append generated list of images.
-    html.m_html += pictures_html;
+  // Add title.
+  if (!message.m_url.isEmpty()) {
+    html.m_html += QSL("<h2 align=\"center\"><a href=\"%2\">%1</a></h2>").arg(message.m_title, message.m_url);
   }
+  else {
+    html.m_html += QSL("<h2 align=\"center\">%1</h2>").arg(message.m_title);
+  }
+
+  // Start contents.
+  html.m_html += QSL("<div>");
+
+  // Add links to enclosures.
+  if (acc_displays_enclosures) {
+    for (const Enclosure& enc : message.m_enclosures) {
+      html.m_html += QSL("[<a href=\"%1\">%2</a>]").arg(enc.m_url, enc.m_mimeType);
+    }
+  }
+
+  // Display enclosures which are pictures if user has it enabled.
+  auto first_enc_break_added = false;
+
+  if (acc_displays_enclosures &&
+      qApp->settings()->value(GROUP(Messages), SETTING(Messages::DisplayEnclosuresInMessage)).toBool()) {
+    for (const Enclosure& enc : message.m_enclosures) {
+      if (enc.m_mimeType.startsWith(QSL("image/"))) {
+        if (!first_enc_break_added) {
+          html.m_html += QSL("<br/>");
+          first_enc_break_added = true;
+        }
+
+        html.m_html += QSL("<img src=\"%1\" /><br/>").arg(enc.m_url);
+      }
+    }
+  }
+
+  // Append actual contents of article and convert to HTML if needed.
+  html.m_html +=
+    is_plain ? Qt::convertFromPlainText(message.m_contents, Qt::WhiteSpaceMode::WhiteSpaceNormal) : message.m_contents;
+
+  static QRegularExpression img_tag_rgx(QSL("\\<img[^\\>]*src\\s*=\\s*[\"\']([^\"\']*)[\"\'][^\\>]*\\>"),
+                                        QRegularExpression::PatternOption::CaseInsensitiveOption);
+
+  // Extract all images links from article to be appended to end of article.
+  QRegularExpressionMatchIterator i = img_tag_rgx.globalMatch(html.m_html);
+  QString pictures_html;
+
+  while (i.hasNext()) {
+    QRegularExpressionMatch match = i.next();
+    auto captured_url = match.captured(1);
+
+    pictures_html += QSL("<br/>[%1] <a href=\"%2\">%2</a>").arg(tr("image"), captured_url);
+  }
+
+  // Make alla images clickable as links and also resize them if user has it setup.
+  auto forced_img_size = qApp->settings()->value(GROUP(Messages), SETTING(Messages::LimitArticleImagesHeight)).toInt();
+
+  // Fixup all "img" tags.
+  html.m_html = html.m_html.replace(img_tag_rgx,
+                                    QSL("<a href=\"\\1\"><img height=\"%1\" src=\"\\1\" /></a>")
+                                      .arg(forced_img_size <= 0 ? QString() : QString::number(forced_img_size)));
+
+  // Append generated list of images.
+  html.m_html += pictures_html;
 
   // Close contents.
   html.m_html += QSL("</div>");
 
-  QString base_url;
+  QString base_url = message.m_url;
+
+  /*
   auto* feed = selected_item->getParentServiceRoot()
                  ->getItemFromSubTree([messages](const RootItem* it) {
                    return it->kind() == RootItem::Kind::Feed && it->customId() == messages.at(0).m_feedId;
@@ -496,7 +493,7 @@ PreparedHtml TextBrowserViewer::prepareLegacyHtmlForMessage(const QList<Message>
       base_url = url.scheme() + QSL("://") + url.host();
     }
   }
-
+*/
   html.m_baseUrl = base_url;
 
   return html;
