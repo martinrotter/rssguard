@@ -15,11 +15,12 @@ RSS Guard is a simple RSS/ATOM feed reader for Windows, Linux, BSD, OS/2 or macO
 * [Gmail](https://developers.google.com/gmail/api)
 * Google Reader API ([Bazqux](https://bazqux.com), [FreshRSS](https://freshrss.org), [Inoreader](https://www.inoreader.com), [Miniflux](https://miniflux.app), [Reedah](http://reedah.com), [The Old Reader](https://theoldreader.com) and more)
 * [Nextcloud News](https://apps.nextcloud.com/apps/news)
+* [Reddit](https://www.reddit.com/) (WIP)
 * [Tiny Tiny RSS](https://tt-rss.org)
 
 RSS Guard is also podcast player as it can play everything via its built-in `mpv`-based (or `ffmpeg`-based) media player.
 
-Also, RSS Guard has built-in support for [Gemini](https://geminiprotocol.net) protocol and hypertext format, so it can very well act as reliable cross-platform Gemini client!
+Also, RSS Guard has built-in support for [Gemini](https://geminiprotocol.net) protocol, so it can download all feed types over it.
 
 ![RSS Guard](resources/graphics/official_pictures/main-window-linux.png)
 

@@ -15,6 +15,30 @@ WebViewer::WebViewer() {}
 
 WebViewer::~WebViewer() {}
 
+QUrl WebViewer::urlForMessage(const Message& message, RootItem* root) const {
+  if (!message.m_url.isEmpty()) {
+    return message.m_url;
+  }
+
+  auto* feed = root != nullptr ? root->getParentServiceRoot()
+                                   ->getItemFromSubTree([message](const RootItem* it) {
+                                     return it->kind() == RootItem::Kind::Feed && it->customId() == message.m_feedId;
+                                   })
+                                   ->toFeed()
+                               : nullptr;
+
+  if (feed != nullptr) {
+    QUrl url(NetworkFactory::sanitizeUrl(feed->source()));
+
+    if (url.isValid()) {
+      QString deducted_url = url.scheme() + QSL("://") + (url.isLocalFile() ? url.toLocalFile() : url.host());
+      return deducted_url;
+    }
+  }
+
+  return QString();
+}
+
 void WebViewer::processContextMenu(QMenu* specific_menu, QContextMenuEvent* event) {
   // Setup the menu.
   m_contextMenuData = provideContextMenuData(event);

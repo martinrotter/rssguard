@@ -52,7 +52,7 @@ QMap<int, QString> DatabaseQueries::messageTableAttributes(bool only_msg_table, 
 
   field_names[MSG_DB_LABELS_IDS] = QSL("Messages.labels");
 
-  // TODO: zpomaluje zobrazenÄ‚Â­ seznamu zprÄ‚Ë‡v
+  // TODO: zpomaluje zobrazenĂ„â€šĂ‚Â­ seznamu zprĂ„â€šĂ‹â€ˇv
   /*
   field_names[MSG_DB_LABELS] =
     QSL("(SELECT GROUP_CONCAT(Labels.name) FROM Labels WHERE Labels.custom_id IN (SELECT "
@@ -2670,7 +2670,6 @@ void DatabaseQueries::createOverwriteFeed(const QSqlDatabase& db, Feed* feed, in
             "update_interval = :update_interval, "
             "is_off = :is_off, "
             "is_quiet = :is_quiet, "
-            "open_articles = :open_articles, "
             "is_rtl = :is_rtl, "
             "add_any_datetime_articles = :add_any_datetime_articles, "
             "datetime_to_avoid = :datetime_to_avoid, "

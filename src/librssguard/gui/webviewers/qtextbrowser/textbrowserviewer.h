@@ -51,7 +51,7 @@ class RSSGUARD_DLLSPEC TextBrowserViewer : public QTextBrowser, public WebViewer
     virtual void clear();
 
     virtual void loadMessage(const Message& message, RootItem* root);
-    virtual PreparedHtml htmlForMessage(const Message& message, RootItem* root) const;
+    virtual QString htmlForMessage(const Message& message, RootItem* root) const;
 
     virtual double verticalScrollBarPosition() const;
     virtual void setVerticalScrollBarPosition(double pos);
@@ -93,7 +93,7 @@ class RSSGUARD_DLLSPEC TextBrowserViewer : public QTextBrowser, public WebViewer
     void loadingFinished(bool success);
 
   private:
-    PreparedHtml prepareLegacyHtmlForMessage(const Message& message, RootItem* selected_item) const;
+    QString prepareLegacyHtmlForMessage(const Message& message, RootItem* selected_item) const;
     void setHtmlPrivate(const QString& html, const QUrl& base_url);
     QString decodeHtmlData(const QByteArray& data, const QString& content_type) const;
 

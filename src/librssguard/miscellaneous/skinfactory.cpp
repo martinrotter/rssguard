@@ -229,11 +229,11 @@ QString SkinFactory::selectedSkinName() const {
   return qApp->settings()->value(GROUP(GUI), SETTING(GUI::Skin)).toString();
 }
 
-PreparedHtml SkinFactory::prepareHtml(const QString& inner_html, const QUrl& base_url) {
-  return {currentSkin().m_layoutMarkupWrapper.arg(QString(), inner_html), base_url};
+QString SkinFactory::prepareHtml(const QString& inner_html, const QUrl& base_url) {
+  return currentSkin().m_layoutMarkupWrapper.arg(QString(), inner_html);
 }
 
-PreparedHtml SkinFactory::generateHtmlOfArticle(const Message& message, RootItem* root, int desired_width) const {
+QString SkinFactory::generateHtmlOfArticle(const Message& message, RootItem* root, int desired_width) const {
   Skin skin = currentSkin();
   QString messages_layout;
   QString single_message_layout = skin.m_layoutMarkup;
@@ -294,31 +294,8 @@ PreparedHtml SkinFactory::generateHtmlOfArticle(const Message& message, RootItem
                                                      : QSL("ltr")));
 
   QString html = skin.m_layoutMarkupWrapper.arg(message.m_title, messages_layout);
-  QString base_url = message.m_url;
 
-  /*
-   *   auto* feed = root != nullptr
-                 ? root->getParentServiceRoot()
-                     ->getItemFromSubTree([messages](const RootItem* it) {
-                       return it->kind() == RootItem::Kind::Feed && it->customId() == messages.at(0).m_feedId;
-                     })
-                     ->toFeed()
-                 : nullptr;
-  if (feed != nullptr) {
-    QUrl url(NetworkFactory::sanitizeUrl(feed->source()));
-
-    if (url.isValid()) {
-      if (url.isLocalFile()) {
-        base_url = url.scheme() + QSL("://") + url.toLocalFile();
-      }
-      else {
-        base_url = url.scheme() + QSL("://") + url.host();
-      }
-    }
-  }
-  */
-
-  return {html, base_url};
+  return html;
 }
 
 Skin SkinFactory::skinInfo(const QString& skin_name, bool* ok) const {
