@@ -34,5 +34,3 @@ As stated above, there are specific files that each skin folder must contain:
 Note that not all skins have to provide a full-blown theming for every UI component of RSS Guard. Skin can provide just a custom HTML/CSS setup for article viewer and a minimal Qt CSS styling for UI controls.
 
 Skins usually define custom palette of colors which is yet another mechanism to change look of RSS Guard. This skin subfeature is enabled with `Use skin colors` checkbox on `Settings -> User interface` dialog section.
-
-Also, user can define custom CSS styles independently in file `<user-data-folder>/web/user-styles.css`. The file would be then loaded by RSS Guard and its styles applied to internal web browser.

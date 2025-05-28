@@ -6,10 +6,6 @@ Official place to download RSS Guard is at [Github Releases page](https://github
 
 RSS Guard is also available in [repositories of many Linux distributions](https://repology.org/project/rssguard/versions), and via [Flathub](https://flathub.org/apps/search?q=rssguard).
 
-The are two different [flavors](#features/browseradblock):
-* Regular: Includes an (almost) full-blown integrated web browser (built with `-NO_LITE=ON`).
-* Lite: Includes simpler, safer (and less memory hungry integrated web browser (built with `-NO_LITE=OFF`).
-
 I highly recommend to download RSS Guard only from trusted sources.
 
 ## Installation
@@ -31,7 +27,7 @@ Best way is to use official distribution packages if your distribution offers th
 ```{attention}
 RSS Guard used to be available in `AppImage` format for Linux. The support for this format was dropped because `AppImage` lacks proper support and up-to-date build tools and has some undocumented quirks.
 
-It is recommended to either use native packages for your distribution, compile by yourself or sticking to `Flatpak` RSS Guard packages.
+It is recommended to either use native packages for your distribution, compile by yourself or sticking to `Flatpak` RSS Guard [packages](https://flathub.org/apps/search?q=rssguard).
 ```
 
 ### Mac OS X

@@ -6,7 +6,8 @@ If you report a bug, you must provide the application debug log. Make sure to st
 
 After starting RSS Guard this way, reproduce your issue and attach the log file to your ticket.
 
-> Application log can also be displayed directly in RSS Guard (the `Help > Display application log` menu item).  
-> Note that the log messages are pumped into dialog window only when it is opened (the window can be minimized).
+```{attention}
+Application log can also be displayed directly in RSS Guard (the `Help > Display application log` menu item). Note that the log messages are pumped into dialog window only when it is opened (the window can be minimized).
+```
 
 For broader questions and general ideas, use the [Discussions page](https://github.com/martinrotter/rssguard/discussions).

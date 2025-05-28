@@ -1,8 +1,8 @@
 Media Player
 ============
 RSS Guard offers some abilities everyone would expect from typical podcast client. It offers built-in media player on some platforms:
-* All[^1] [non-`lite`](../variants) builds offer `libmpv`-based media player which supports almost all features offered by `libmpv`, including keyboar d/mouse navigation, on-screen controller and custom configuration files loading. At this point. Also, `yt-dlp` is deployed on some[^2] platforms which allows comfortable Youtube videos playback. 
-* All [`lite`](../variants) include more basic media player based on `QtMultimedia` backend. This backend is usually itself based on `ffmpeg` so it can play fairly wide range of media formats.
+* some RSS Guard builds offer `libmpv`-based[^1] media player which supports almost all features offered by `libmpv`, including keyboar d/mouse navigation, on-screen controller and custom configuration files loading. Also, `yt-dlp` is deployed on some[^2] platforms which allows comfortable Youtube videos playback. 
+* some RSS Guard builds include more basic media player based on `QtMultimedia` backend. This backend is usually based on `ffmpeg` so it can play fairly wide range of media formats.
 
 [^1]: At this point, precompiled binaries for Mac OS X do not have this backend enabled and rely on `QtMultimedia` backend instead.
 [^2]: `yt-dlp` is contained in binaries for Windows. For other operating systems, I recommend to install `yt-dlp` or `youtube-dl` system-wide and add it to your `PATH` environment variable. Also, custom path to the tool can be tweaked in `mpv.conf`.

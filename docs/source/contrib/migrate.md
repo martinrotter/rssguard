@@ -4,7 +4,14 @@ RSS Guard automatically migrates all your user data if you upgrade to a newer mi
 
 If you decide to upgrade to a new major version, for example from `3.x.x` to `4.x.x`, then existing user data cannot be used. Major versions declared as non-backwards compatible, so such data transition is not supported.
 
-## Migrating user data from `3.9.2` to `4.x.x`
+## Migrate `4.x -> 5.x`
+RSS Guard `5.x` is fully backwards compatible with RSS Guard `4.x`. All you need to do is to copy all your user data file into RSS Guard 5 folders.
+
+```{attention}
+The opposite migration from `5.x` to `4.x` is however not possible. Manual database edits would have to be made.
+```
+
+## Migrate `3.9.2 -> 4.x`
 ```{danger}
 Only proceed if you consider yourself a SQL power user, and you know what you are doing!
 
@@ -15,7 +22,7 @@ Here is a short DIY manual on how to manually update your `database.db` file to 
 
 Here are SQLs for [old schema](https://github.com/martinrotter/rssguard/blob/3.9.2/resources/sql/db_init_sqlite.sql) and [new schema](https://github.com/martinrotter/rssguard/blob/4.0.0/resources/sql/db_init_sqlite.sql).
 
-## Converting `*Accounts` tables
+### Converting `*Accounts` tables
 In `3.x.x` each plugin/account type had its own table where it kept your login usernames, service URLs etc. In `4.x.x` all plugins share one table `Accounts` and place account-specific data into `custom_data` column. You simply can take all rows from any `*Accounts` table (for example `TtRssAccounts`) and insert them into `Accounts`, keeping all columns their default values, except of `type`, which must have one of these values:
 * `std-rss` - For standard list of RSS/ATOM feeds
 * `tt-rss` - For Tiny Tiny RSS
@@ -28,7 +35,7 @@ Then you need to go to **Edit** dialog of your account in RSS Guard (once you co
 
 Once you add the row to the `Accounts` table, it will be assigned a unique integer `id` value, which is used as a foreign key in other DB tables via `account_id` column.
 
-## Converting `Feeds` table
+### Converting `Feeds` table
 There are some changes in `Feeds` table:
 * `url` column is renamed to `source`
 * `source_type`, `post_process`, `encoding`, `type`, `protected`, `username`, `password` columns are removed, and their data is now stored in a JSON-serialized form in a new column `custom_data`. Here is an example of a `custom_data` value:
@@ -46,10 +53,10 @@ There are some changes in `Feeds` table:
 
 Pay attention to `account_id` column as this column is the ID of your account as stated in the above section.
 
-## Converting `Messages` table
+### Converting `Messages` table
 Columns were reordered and other than that new column `score` with sane default value was added. Therefore, you can simply copy your data in a column-to-column mode.
 
 Pay attention to `account_id` column as this column is the ID of your account as stated in the above section.
 
-## Other tables
+### Other tables
 Other tables like `Labels` or `MessageFilters` are unchanged between these two major RSS Guard versions. But you might need to adjust `account_id` to match DB ID of your account.
