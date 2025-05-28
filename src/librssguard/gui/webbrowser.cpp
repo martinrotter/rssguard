@@ -132,8 +132,8 @@ void WebBrowser::clear(bool also_hide) {
   }
 }
 
-void WebBrowser::setHtml(const QString& html, const QUrl& base_url) {
-  m_webView->setHtml(html, base_url);
+void WebBrowser::setHtml(const QString& html, const QUrl& url) {
+  m_webView->setHtml(html, url);
 }
 
 void WebBrowser::loadMessage(const Message& message, RootItem* root) {

@@ -273,7 +273,6 @@ QModelIndexList MessagesProxyModel::match(const QModelIndex& start,
   const int match_type = flags & 0x0F;
   const Qt::CaseSensitivity case_sensitivity = Qt::CaseSensitivity::CaseInsensitive;
   const bool wrap = Globals::hasFlag(flags, Qt::MatchFlag::MatchWrap);
-  ;
   const bool all_hits = (hits == -1);
   QString entered_text;
   int from = start.row();

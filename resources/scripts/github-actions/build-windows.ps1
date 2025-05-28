@@ -178,8 +178,10 @@ Copy-Item -Path "$qt_sqldrivers_path\plugins\sqldrivers\qsqlmysql.dll" -Destinat
 # Copy zlib.
 Copy-Item -Path "$zlib_path\zlib1.dll" -Destination ".\app\"
 
-# Copy debug symbols.
-Copy-Item -Path ".\src\librssguard\rssguard.pdb" -Destination ".\app\"
+if ($git_tag -match "devbuild") {
+  # Copy debug symbols.
+  Copy-Item -Path ".\src\librssguard\rssguard.pdb" -Destination ".\app\"
+}
 
 if ($use_libmpv -eq "ON") {
   # Copy libmpv and yt-dlp.
