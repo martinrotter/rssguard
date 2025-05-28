@@ -299,7 +299,7 @@ void TextBrowserViewer::onAnchorClicked(const QUrl& url) {
   }
 }
 
-void TextBrowserViewer::setHtml(const QString& html, const QUrl& base_url) {
+void TextBrowserViewer::setHtml(const QString& html, const QUrl& url) {
   if (m_resourcesEnabled) {
     // NOTE: This regex is problematic as it does not work for ALL
     // HTMLs, maybe use XML parsing to extract what we need?
@@ -312,7 +312,7 @@ void TextBrowserViewer::setHtml(const QString& html, const QUrl& base_url) {
       QRegularExpressionMatch match = i.next();
       auto captured_url = QUrl(match.captured(1));
       auto resolved_captured_url =
-        (base_url.isValid() && captured_url.isRelative()) ? base_url.resolved(captured_url) : captured_url;
+        (url.isValid() && captured_url.isRelative()) ? url.resolved(captured_url) : captured_url;
 
       if (!found_resources.contains(resolved_captured_url)) {
         found_resources.append(resolved_captured_url);
@@ -331,7 +331,7 @@ void TextBrowserViewer::setHtml(const QString& html, const QUrl& base_url) {
     m_neededResources = {};
   }
 
-  setHtmlPrivate(html, base_url);
+  setHtmlPrivate(html, url);
 
   if (!m_neededResources.isEmpty()) {
     QTimer::singleShot(20, this, &TextBrowserViewer::reloadHtmlDelayed);
