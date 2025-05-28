@@ -15,11 +15,6 @@ class QContextMenuEvent;
 class WebBrowser;
 class RootItem;
 
-struct PreparedHtml {
-    QString m_html;
-    QUrl m_baseUrl;
-};
-
 struct ContextMenuData {
     QUrl m_linkUrl;
     QUrl m_mediaUrl;
@@ -57,11 +52,14 @@ class WebViewer {
     // Clears displayed data.
     virtual void clear() = 0;
 
-    // Displays all messages and ensures that vertical scrollbar is set to 0 (scrolled to top).
+    // Displays message and ensure that vertical scrollbar is set to 0 (scrolled to top).
     virtual void loadMessage(const Message& message, RootItem* root) = 0;
 
+    // Specifies or tweaks the recommended URL of the message.
+    virtual QUrl urlForMessage(const Message& message, RootItem* root) const;
+
     // Returns final HTML generated for the articles.
-    virtual PreparedHtml htmlForMessage(const Message& messages, RootItem* root) const = 0;
+    virtual QString htmlForMessage(const Message& messages, RootItem* root) const = 0;
 
     // Vertical scrollbar changer.
     virtual double verticalScrollBarPosition() const = 0;

@@ -119,10 +119,6 @@ set(SOURCES
   gui/reusable/basetreeview.h
   gui/reusable/colortoolbutton.cpp
   gui/reusable/colortoolbutton.h
-  gui/reusable/comboboxwithstatus.cpp
-  gui/reusable/comboboxwithstatus.h
-  gui/reusable/edittableview.cpp
-  gui/reusable/edittableview.h
   gui/reusable/helpspoiler.cpp
   gui/reusable/helpspoiler.h
   gui/reusable/jssyntaxhighlighter.cpp
