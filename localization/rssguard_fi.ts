@@ -417,7 +417,7 @@ napsauttamalla tätä ilmoitusta.</translation>
       <location filename="../src/librssguard/gui/notifications/articlelistnotification.cpp" line="73"/>
       <source>%n feeds fetched</source>
       <translation type="unfinished">
-        <numerusform>%n feeds fetched</numerusform>
+        <numerusform>%n syötettä noudettu</numerusform>
         <numerusform>%n feeds fetched</numerusform>
       </translation>
     </message>
@@ -966,7 +966,7 @@ Avaa ylähakemisto.</translation>
       <location filename="../src/librssguard/services/abstract/feed.cpp" line="260"/>
       <source>uses global settings (%n minute(s) to next auto-fetch of articles)</source>
       <translation type="unfinished">
-        <numerusform>uses global settings (%n minute(s) to next auto-fetch of articles)</numerusform>
+        <numerusform>käyttää yleisiä asetuksia (%n minuuttia seuraavaan automaattiseen artikkelien noutoon)</numerusform>
         <numerusform>uses global settings (%n minute(s) to next auto-fetch of articles)</numerusform>
       </translation>
     </message>
@@ -975,14 +975,14 @@ Avaa ylähakemisto.</translation>
       <source>uses specific settings (%n minute(s) to next auto-fetching of new articles)</source>
       <extracomment>Describes feed auto-update status.</extracomment>
       <translation type="unfinished">
-        <numerusform>uses specific settings (%n minute(s) to next auto-fetching of new articles)</numerusform>
+        <numerusform>käyttää erityisasetuksia (%n minuuttia seuraavaan automaattiseen uusien artikkelien noutoon)</numerusform>
         <numerusform>uses specific settings (%n minute(s) to next auto-fetching of new articles)</numerusform>
       </translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/abstract/feed.cpp" line="290"/>
       <source>has new articles</source>
-      <translation type="unfinished">has new articles</translation>
+      <translation>sisältää uusia artikkeleja</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/abstract/feed.cpp" line="299"/>
@@ -1001,11 +1001,11 @@ Active message filters: %2
 Status: %3
 Source: &lt;a href=&quot;%4&quot;&gt;%4&lt;/a&gt;
 Item ID: %5</source>
-      <translation type="unfinished">Auto-update status: %1
-Active message filters: %2
-Status: %3
-Source: &lt;a href=&quot;%4&quot;&gt;%4&lt;/a&gt;
-Item ID: %5</translation>
+      <translation>Automaattisen päivityksen tila: %1
+Aktiivisia viestisuodattimia: %2
+Tila: %3
+Lähde: &lt;a href=&quot;%4&quot;&gt;%4&lt;/a&gt;
+Kohteen tunnus: %5</translation>
     </message>
   </context>
   <context>
@@ -1013,7 +1013,7 @@ Item ID: %5</translation>
     <message>
       <location filename="../src/librssguard/core/feeddownloader.cpp" line="236"/>
       <source>feed is in network cooldown mode due to making too many network requests</source>
-      <translation type="unfinished">feed is in network cooldown mode due to making too many network requests</translation>
+      <translation>syöte on verkon jäähdytystilassa, koska verkkopyyntöjä on liikaa</translation>
     </message>
   </context>
   <context>
@@ -1060,7 +1060,7 @@ Item ID: %5</translation>
       <location filename="../src/librssguard/miscellaneous/feedreader.cpp" line="372"/>
       <source>I will auto-download new articles for %n feed(s).</source>
       <translation type="unfinished">
-        <numerusform>I will auto-download new articles for %n feed(s).</numerusform>
+        <numerusform>Lataan uudet artikkelit automaattisesti %n syötteelle.</numerusform>
         <numerusform>I will auto-download new articles for %n feed(s).</numerusform>
       </translation>
     </message>
@@ -1131,7 +1131,7 @@ Item ID: %5</translation>
     <message>
       <location filename="../src/librssguard-feedly/src/gui/feedlyaccountdetails.cpp" line="39"/>
       <source>Your %1 does not offer official Feedly support, thus you must authorize via special authorization code called &quot;developer access token&quot;. These tokens are usually valid only for 1 month and allow only 250 API calls each day.</source>
-      <translation type="unfinished">Your %1 does not offer official Feedly support, thus you must authorize via special authorization code called &quot;developer access token&quot;. These tokens are usually valid only for 1 month and allow only 250 API calls each day.</translation>
+      <translation>%1 ei tarjoa virallista Feedly-tukea, joten sinun on myönnettävä oikeudet valtuutuskoodilla, josta käytetään nimitystä &quot;developer access token&quot; (kehittäjän käyttöoikeustunnus). Nämä tunnukset ovat yleensä voimassa vain kuukauden, ja niiden kautta saa tehdä enintään 250 API-kutsua päivässä.</translation>
     </message>
     <message>
       <location filename="../src/librssguard-feedly/src/gui/feedlyaccountdetails.cpp" line="52"/>
