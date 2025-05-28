@@ -5,10 +5,10 @@ RSS Guard Documentation!
    :maxdepth: 1
 
    what
+   5-vs-4
    donations
    downloads
    supported-os
-   variants
    supported-readers
 
 .. toctree::

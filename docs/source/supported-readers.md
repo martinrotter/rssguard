@@ -8,7 +8,7 @@ RSS Guard is multi-account application and supports many web-based feed readers 
 * [JSON](https://www.jsonfeed.org)
 * [Sitemap](https://en.wikipedia.org/wiki/Sitemaps) (including Sitemap index discovery and compressed sitemaps)
 
-RSS Guard has also built-in support for [Gemini](https://geminiprotocol.net) protocol and hypertext format, so it can very well act as reliable cross-platform Gemini client! All you need to do is to make sure that proper `gemini://` scheme is used in your URLs. Gemini protocol is also used by internal feed fetching network stack, so you can even fetch feeds via the protocol.
+RSS Guard has also built-in support for [Gemini](https://geminiprotocol.net) protocol, so it can fetch regular feeds via Gemini protocol without any problems.
 
 When it comes to online web-based feed readers, these are supported:
 
@@ -18,6 +18,7 @@ When it comes to online web-based feed readers, these are supported:
 | Gmail             | ✅ | ✅ | ✅ | ✅
 | Google Reader API [^4] | ✅ | ✅ | ✅ | ✅ (only for Inoreader)
 | Nextcloud News    | ✅ | ❌ | ❌ | ❌
+| Reddit [^5]       | ❌ | ❌ | ❌ | ❌
 | Tiny Tiny RSS     | ✅ | ✅ | ✅ | ❌
 
 [^1]: Some plugins support next-gen intelligent synchronization algorithm (ISA) which has some benefits, as it usually offers superior synchronization speed, and transfers much less data over your network connection.
@@ -29,3 +30,5 @@ When it comes to online web-based feed readers, these are supported:
 [^3]: [OAuth](https://en.wikipedia.org/wiki/OAuth) is a secure way of authenticating users in online applications.
 
 [^4]: Tested services are: Bazqux, FreshRSS, Inoreader, Miniflux, Reedah, TheOldReader.
+
+[^5]: Reddit is still Work-In-Progress.
