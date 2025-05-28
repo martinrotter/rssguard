@@ -89,6 +89,7 @@ if [ $is_linux = true ]; then
   # GH_TKN=$GITHUB_TOKEN
   # unset GITHUB_TOKEN
 
+  ## https://github.com/QuasarApp/CQtDeployer
   # ./appimagetool.AppImage -s deploy AppDir/usr/share/applications/*.desktop
   # ./appimagetool.AppImage ./AppDir
 

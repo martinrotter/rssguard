@@ -7,4 +7,9 @@
 [submodule "resources/scripts/libmpv"]
 	path = resources/scripts/libmpv
 	url = https://github.com/martinrotter/libmpv.git
-
+[submodule "src/librssguard/3rd-party/qlitehtml"]
+	path = src/librssguard/3rd-party/qlitehtml
+	url = http://code.qt.io/playground/qlitehtml.git
+[submodule "src/librssguard/3rd-party/litehtml"]
+	path = src/librssguard/3rd-party/litehtml
+	url = https://github.com/litehtml/litehtml.git
