@@ -22,35 +22,28 @@
       </attribute>
       <layout class="QFormLayout" name="formLayout_3">
        <item row="0" column="0" colspan="2">
-        <widget class="QCheckBox" name="m_cbIgnoreAllCookies">
-         <property name="text">
-          <string>Do not accept any incoming cookies</string>
-         </property>
-        </widget>
-       </item>
-       <item row="1" column="0" colspan="2">
         <widget class="QCheckBox" name="m_cbEnableHttp2">
          <property name="text">
           <string>Enable HTTP/2</string>
          </property>
         </widget>
        </item>
-       <item row="2" column="0" colspan="2">
+       <item row="1" column="0" colspan="2">
         <widget class="QCheckBox" name="m_cbEnableApiServer">
          <property name="text">
           <string>Enable API server</string>
          </property>
         </widget>
        </item>
-       <item row="3" column="1">
-        <widget class="QLineEdit" name="m_txtUserAgent"/>
-       </item>
-       <item row="3" column="0">
+       <item row="2" column="0">
         <widget class="QLabel" name="label_2">
          <property name="text">
           <string>Custom User-Agent</string>
          </property>
         </widget>
+       </item>
+       <item row="2" column="1">
+        <widget class="QLineEdit" name="m_txtUserAgent"/>
        </item>
       </layout>
      </widget>
@@ -407,7 +400,6 @@
   <tabstop>m_btnAddTool</tabstop>
   <tabstop>m_btnEditTool</tabstop>
   <tabstop>m_btnDeleteTool</tabstop>
-  <tabstop>m_cbIgnoreAllCookies</tabstop>
   <tabstop>m_cbEnableHttp2</tabstop>
  </tabstops>
  <resources/>

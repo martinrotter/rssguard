@@ -3,7 +3,6 @@
 #include "network-web/downloader.h"
 
 #include "miscellaneous/application.h"
-#include "network-web/cookiejar.h"
 #include "network-web/gemini/geminiparser.h"
 #include "network-web/networkfactory.h"
 #include "network-web/silentnetworkaccessmanager.h"
@@ -28,9 +27,6 @@ Downloader::Downloader(QObject* parent)
   connect(m_geminiClient, &GeminiClient::redirected, this, &Downloader::geminiRedirect);
   connect(m_geminiClient, &GeminiClient::requestComplete, this, &Downloader::geminiFinished);
   connect(m_geminiClient, &GeminiClient::networkError, this, &Downloader::geminiError);
-
-  m_downloadManager->setCookieJar(qApp->web()->cookieJar());
-  qApp->web()->cookieJar()->setParent(nullptr);
 }
 
 Downloader::~Downloader() {
@@ -153,13 +149,6 @@ void Downloader::manipulateData(const QString& url,
     runGeminiRequest(gemini_url);
   }
   else {
-
-    auto cookies = CookieJar::extractCookiesFromUrl(sanitized_url);
-
-    if (!cookies.isEmpty()) {
-      qApp->web()->cookieJar()->setCookiesFromUrl(cookies, sanitized_url);
-    }
-
     QNetworkRequest request;
     QHashIterator<QByteArray, QByteArray> i(m_customHeaders);
 

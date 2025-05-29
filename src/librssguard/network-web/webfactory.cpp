@@ -7,7 +7,6 @@
 #include "miscellaneous/iconfactory.h"
 #include "miscellaneous/settings.h"
 #include "network-web/apiserver.h"
-#include "network-web/cookiejar.h"
 
 #include <QDesktopServices>
 #include <QProcess>
@@ -17,8 +16,6 @@ WebFactory::WebFactory(QObject* parent) : QObject(parent), m_apiServer(nullptr),
   if (qApp->settings()->value(GROUP(Network), SETTING(Network::EnableApiServer)).toBool()) {
     startApiServer();
   }
-
-  m_cookieJar = new CookieJar(this);
 }
 
 WebFactory::~WebFactory() {
@@ -333,10 +330,6 @@ void WebFactory::updateProxy() {
 
     QNetworkProxy::setApplicationProxy(new_proxy);
   }
-}
-
-CookieJar* WebFactory::cookieJar() const {
-  return m_cookieJar;
 }
 
 void WebFactory::startApiServer() {
