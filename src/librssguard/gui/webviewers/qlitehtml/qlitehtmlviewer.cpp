@@ -204,10 +204,12 @@ void QLiteHtmlViewer::setZoomFactor(qreal zoom_factor) {
 }
 
 void QLiteHtmlViewer::setHtml(const QString& html, const QUrl& url) {
-  IOFactory::debugWriteFile("a.html", html.toUtf8());
+  // IOFactory::debugWriteFile("a.html", html.toUtf8());
 
   QLiteHtmlWidget::setUrl(url);
   QLiteHtmlWidget::setHtml(html);
+
+  // QLiteHtmlWidget::setHtml(QString::fromUtf8(IOFactory::readFile("a.html")));
 
   emit pageTitleChanged(QLiteHtmlWidget::title());
   emit pageUrlChanged(url);
