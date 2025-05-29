@@ -8,6 +8,8 @@
 /// Edits!!!
 /// - move QLiteHtmlWidgetPrivate to the header
 /// - move container_qpainter.h to the header
+/// - in draw_background function of container_qpainter.cpp, comment out the break
+///   which was skipping painting of root backgrounds (body backgrounds)
 ///
 //////////////////////
 

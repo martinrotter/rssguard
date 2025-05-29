@@ -78,20 +78,14 @@
     <file>graphics/misc/flags/zh_CN.png</file>
     <file>graphics/misc/flags/zh_TW.png</file>
 
-    <file>skins/nudus-base/html_enclosure_every.html</file>
-    <file>skins/nudus-base/html_enclosure_image.html</file>
-    <file>skins/nudus-base/html_single_message.html</file>
-    <file>skins/nudus-base/html_wrapper.html</file>
-
-    <file>skins/nudus-dark/html_wrapper.html</file>
-    <file>skins/nudus-dark/html_style.css</file>
-    <file>skins/nudus-dark/metadata.xml</file>
-    <file>skins/nudus-dark/qt_style.qss</file>
-    <file>skins/nudus-dark/qt_style_forced.qss</file>
-
-    <file>skins/nudus-light/html_style.css</file>
-    <file>skins/nudus-light/metadata.xml</file>
-    <file>skins/nudus-light/qt_style.qss</file>
+    <file>skins/minimal/html_enclosure_every.html</file>
+    <file>skins/minimal/html_enclosure_image.html</file>
+    <file>skins/minimal/html_single_message.html</file>
+    <file>skins/minimal/html_style.css</file>
+    <file>skins/minimal/html_wrapper.html</file>
+    <file>skins/minimal/metadata.xml</file>
+    <file>skins/minimal/qt_style.qss</file>
+    <file>skins/minimal/qt_style_forced.qss</file>
     
     <file>initial_feeds/feeds-en_US.opml</file>
 
