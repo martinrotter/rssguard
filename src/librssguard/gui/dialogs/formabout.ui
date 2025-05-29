@@ -105,7 +105,7 @@
       <locale language="English" country="UnitedStates"/>
      </property>
      <property name="currentIndex">
-      <number>1</number>
+      <number>0</number>
      </property>
      <widget class="QWidget" name="m_tabInfo">
       <attribute name="title">
@@ -167,13 +167,6 @@ li.checked::marker { content: &quot;\2612&quot;; }
         <widget class="QPlainTextEdit" name="m_tbLicenses">
          <property name="readOnly">
           <bool>true</bool>
-         </property>
-        </widget>
-       </item>
-       <item>
-        <widget class="QLabel" name="m_lblLicenses">
-         <property name="text">
-          <string>Licenses page is available only in English language.</string>
          </property>
         </widget>
        </item>

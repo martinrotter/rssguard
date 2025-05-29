@@ -3,7 +3,9 @@
     <file>text/CHANGELOG</file>
 
     <file>text/licenses.json</file>
+    <file>text/COPYING_APACHE</file>
     <file>text/COPYING_BOOLINQ</file>
+    <file>text/COPYING_BSD</file>
     <file>text/COPYING_GNU_GPL</file>
     <file>text/COPYING_GNU_LGPL</file>
     <file>text/COPYING_GNU_LGPL_21</file>

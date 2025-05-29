@@ -2,7 +2,17 @@
   {
     "title": "GNU GPL v3.0",
     "file": "COPYING_GNU_GPL",
-    "components": "RSS Guard, mimesis, Numix, Kristall/geminiclient"
+    "components": "RSS Guard, mimesis, Numix, Kristall/geminiclient, QLiteHtmlWidget"
+  },
+  {
+    "title": "BSD-3-Clause license",
+    "file": "COPYING_BSD",
+    "components": "litehtml"
+  },
+  {
+    "title": "Apache license",
+    "file": "COPYING_APACHE",
+    "components": "gumbo"
   },
   {
     "title": "GNU LGPL v3.0",
