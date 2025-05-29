@@ -401,11 +401,98 @@ elseif(ENABLE_MEDIAPLAYER_LIBMPV)
   message(STATUS "Found libmpv: ${LibMPV_LIBRARIES}.")
 endif()
 
+# QTextBrowser-based HTML viewer.
 list(APPEND SOURCES
-  # QTextBrowser.
   gui/webviewers/qtextbrowser/textbrowserviewer.h
   gui/webviewers/qtextbrowser/textbrowserviewer.cpp
 )
+
+# QLitehtml-based HTML viewer.
+list(APPEND SOURCES
+  # gumbo
+  3rd-party/litehtml/src/gumbo/attribute.c
+  3rd-party/litehtml/src/gumbo/char_ref.c
+  3rd-party/litehtml/src/gumbo/error.c
+  3rd-party/litehtml/src/gumbo/parser.c
+  3rd-party/litehtml/src/gumbo/string_buffer.c
+  3rd-party/litehtml/src/gumbo/string_piece.c
+  3rd-party/litehtml/src/gumbo/tag.c
+  3rd-party/litehtml/src/gumbo/tokenizer.c
+  3rd-party/litehtml/src/gumbo/utf8.c
+  3rd-party/litehtml/src/gumbo/util.c
+  3rd-party/litehtml/src/gumbo/vector.c
+
+  # litehtml 
+  3rd-party/litehtml/src/codepoint.cpp
+  3rd-party/litehtml/src/css_length.cpp
+  3rd-party/litehtml/src/css_selector.cpp
+  3rd-party/litehtml/src/document.cpp
+  3rd-party/litehtml/src/document_container.cpp
+  3rd-party/litehtml/src/el_anchor.cpp
+  3rd-party/litehtml/src/el_base.cpp
+  3rd-party/litehtml/src/el_before_after.cpp
+  3rd-party/litehtml/src/el_body.cpp
+  3rd-party/litehtml/src/el_break.cpp
+  3rd-party/litehtml/src/el_cdata.cpp
+  3rd-party/litehtml/src/el_comment.cpp
+  3rd-party/litehtml/src/el_div.cpp
+  3rd-party/litehtml/src/element.cpp
+  3rd-party/litehtml/src/el_font.cpp
+  3rd-party/litehtml/src/el_image.cpp
+  3rd-party/litehtml/src/el_link.cpp
+  3rd-party/litehtml/src/el_para.cpp
+  3rd-party/litehtml/src/el_script.cpp
+  3rd-party/litehtml/src/el_space.cpp
+  3rd-party/litehtml/src/el_style.cpp
+  3rd-party/litehtml/src/el_table.cpp
+  3rd-party/litehtml/src/el_td.cpp
+  3rd-party/litehtml/src/el_text.cpp
+  3rd-party/litehtml/src/el_title.cpp
+  3rd-party/litehtml/src/el_tr.cpp
+  3rd-party/litehtml/src/html.cpp
+  3rd-party/litehtml/src/html_tag.cpp
+  3rd-party/litehtml/src/iterators.cpp
+  3rd-party/litehtml/src/media_query.cpp
+  3rd-party/litehtml/src/style.cpp
+  3rd-party/litehtml/src/stylesheet.cpp
+  3rd-party/litehtml/src/table.cpp
+  3rd-party/litehtml/src/tstring_view.cpp
+  3rd-party/litehtml/src/url.cpp
+  3rd-party/litehtml/src/url_path.cpp
+  3rd-party/litehtml/src/utf8_strings.cpp
+  3rd-party/litehtml/src/web_color.cpp
+  3rd-party/litehtml/src/num_cvt.cpp
+  3rd-party/litehtml/src/strtod.cpp
+  3rd-party/litehtml/src/string_id.cpp
+  3rd-party/litehtml/src/css_properties.cpp
+  3rd-party/litehtml/src/line_box.cpp
+  3rd-party/litehtml/src/css_borders.cpp
+  3rd-party/litehtml/src/render_item.cpp
+  3rd-party/litehtml/src/render_block_context.cpp
+  3rd-party/litehtml/src/render_block.cpp
+  3rd-party/litehtml/src/render_inline_context.cpp
+  3rd-party/litehtml/src/render_table.cpp
+  3rd-party/litehtml/src/render_flex.cpp
+  3rd-party/litehtml/src/render_image.cpp
+  3rd-party/litehtml/src/formatting_context.cpp
+  3rd-party/litehtml/src/flex_item.cpp
+  3rd-party/litehtml/src/flex_line.cpp
+
+  # qlitehtml
+  3rd-party/qlitehtml/src/container_qpainter.h
+  3rd-party/qlitehtml/src/container_qpainter_p.h
+  3rd-party/qlitehtml/src/qlitehtml_global.h
+  3rd-party/qlitehtml/src/qlitehtmlwidget.h
+  3rd-party/qlitehtml/src/container_qpainter.cpp
+  3rd-party/qlitehtml/src/qlitehtmlwidget.cpp
+
+  gui/webviewers/qlitehtml/qlitehtmlviewer.h
+  gui/webviewers/qlitehtml/qlitehtmlviewer.cpp
+)
+
+if(MSVC)
+  add_compile_options(/wd4244 /wd4267 /permissive- /utf-8)
+endif()
 
 # Add boolinq.
 list(APPEND SOURCES
@@ -481,6 +568,27 @@ target_include_directories(rssguard
   ${CMAKE_CURRENT_SOURCE_DIR}/gui/notifications
   ${CMAKE_CURRENT_SOURCE_DIR}/gui/toolbars
   ${CMAKE_CURRENT_SOURCE_DIR}/gui/richtexteditor
+)
+
+target_compile_definitions(rssguard
+  PRIVATE
+  QLITEHTML_LIBRARY
+)
+
+if(MSVC)
+  target_include_directories(rssguard
+    PRIVATE
+    ${CMAKE_CURRENT_SOURCE_DIR}/3rd-party/litehtml/src/gumbo/visualc/include
+  )
+endif()
+
+target_include_directories(rssguard
+  PRIVATE
+  ${CMAKE_CURRENT_SOURCE_DIR}/3rd-party/litehtml/src/gumbo/include
+  ${CMAKE_CURRENT_SOURCE_DIR}/3rd-party/litehtml/src/gumbo/include/gumbo
+  ${CMAKE_CURRENT_SOURCE_DIR}/3rd-party/litehtml/include
+  ${CMAKE_CURRENT_SOURCE_DIR}/3rd-party/litehtml/include/litehtml
+  ${CMAKE_CURRENT_SOURCE_DIR}/3rd-party/qlitehtml/src
 )
 
 if(SQLite3_FOUND)

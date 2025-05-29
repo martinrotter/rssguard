@@ -290,8 +290,6 @@ MessagesView::ArticleMarkingPolicy SettingsFeedsMessages::selectedArticleMarking
 void SettingsFeedsMessages::loadSettings() {
   onBeginLoadSettings();
 
-  m_ui->m_cbLegacyArticleFormatting->setVisible(false);
-
   m_ui->m_cmbArticleMarkingPolicy
     ->setCurrentIndex(m_ui->m_cmbArticleMarkingPolicy->findData(settings()
                                                                   ->value(GROUP(Messages),

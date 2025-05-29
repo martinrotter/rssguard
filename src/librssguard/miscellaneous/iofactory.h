@@ -43,6 +43,8 @@ class RSSGUARD_DLLSPEC IOFactory {
     // Returns contents of a file.
     // Throws exception when no such file exists.
     static QByteArray readFile(const QString& file_path);
+
+    static void debugWriteFile(const QString& file_path, const QByteArray& data);
     static void writeFile(const QString& file_path, const QByteArray& data);
 
     // Copies file, overwrites destination.

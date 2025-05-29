@@ -152,6 +152,15 @@ QByteArray IOFactory::readFile(const QString& file_path) {
   }
 }
 
+void IOFactory::debugWriteFile(const QString& file_path, const QByteArray& data) {
+#if !defined(NDEBUG)
+  writeFile(file_path, data);
+#else
+  Q_UNUSED(file_path)
+  Q_UNUSED(data)
+#endif
+}
+
 void IOFactory::writeFile(const QString& file_path, const QByteArray& data) {
   QFile input_file(file_path);
 

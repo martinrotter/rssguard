@@ -273,9 +273,12 @@ QString SkinFactory::generateHtmlOfArticle(const Message& message, RootItem* roo
   QString msg_contents =
     is_plain ? Qt::convertFromPlainText(message.m_contents, Qt::WhiteSpaceMode::WhiteSpaceNormal) : message.m_contents;
 
+  // TODO: todo
+  /*
   if (!is_plain) {
     msg_contents = qApp->web()->limitSizeOfHtmlImages(msg_contents, desired_width, forced_img_height);
   }
+*/
 
   messages_layout.append(single_message_layout.arg(message.m_title,
                                                    tr("Written by ") + (message.m_author.isEmpty()

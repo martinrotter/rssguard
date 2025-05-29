@@ -23,6 +23,7 @@
 #include "gui/toolbars/feedstoolbar.h"
 #include "gui/toolbars/messagestoolbar.h"
 #include "gui/toolbars/statusbar.h"
+#include "gui/webviewers/qlitehtml/qlitehtmlviewer.h"
 #include "gui/webviewers/qtextbrowser/textbrowserviewer.h"
 #include "miscellaneous/feedreader.h"
 #include "miscellaneous/iconfactory.h"
@@ -703,7 +704,7 @@ void Application::showGuiMessageCore(Notification::Event event,
                  action.m_action);
   }
   else if (dest.m_statusBar && mainForm()->statusBar() != nullptr && mainForm()->statusBar()->isVisible()) {
-    mainForm()->statusBar()->showMessage(msg.m_message, 3000);
+    mainForm()->statusBar()->showMessage(msg.m_message, 20000);
   }
   else {
     qDebugNN << LOGSEC_CORE << "Silencing GUI message:" << QUOTE_W_SPACE_DOT(msg.m_message);
@@ -731,7 +732,8 @@ void Application::showGuiMessage(Notification::Event event,
 }
 
 WebViewer* Application::createWebView() {
-  return new TextBrowserViewer();
+  return new QLiteHtmlViewer();
+  // return new TextBrowserViewer();
 }
 
 bool Application::isWayland() const {
