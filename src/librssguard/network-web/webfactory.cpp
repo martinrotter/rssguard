@@ -9,6 +9,7 @@
 #include "network-web/apiserver.h"
 
 #include <QDesktopServices>
+#include <QElapsedTimer>
 #include <QProcess>
 #include <QUrl>
 
