@@ -199,8 +199,6 @@ set(SOURCES
   gui/webviewers/webviewer.h
   miscellaneous/application.cpp
   miscellaneous/application.h
-  miscellaneous/autosaver.cpp
-  miscellaneous/autosaver.h
   miscellaneous/externaltool.cpp
   miscellaneous/externaltool.h
   miscellaneous/feedreader.cpp
@@ -243,8 +241,6 @@ set(SOURCES
   network-web/apiserver.h
   network-web/basenetworkaccessmanager.cpp
   network-web/basenetworkaccessmanager.h
-  network-web/cookiejar.cpp
-  network-web/cookiejar.h
   network-web/downloader.cpp
   network-web/downloader.h
   network-web/httpresponse.cpp

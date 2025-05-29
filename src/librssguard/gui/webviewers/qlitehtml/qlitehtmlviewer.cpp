@@ -23,6 +23,8 @@ QLiteHtmlViewer::QLiteHtmlViewer(QWidget* parent)
   setFrameShape(QFrame::Shape::NoFrame);
   setFrameShadow(QFrame::Shadow::Plain);
 
+  setAntialias(true);
+
   horizontalScrollBar()->setSingleStep(5);
   verticalScrollBar()->setSingleStep(5);
 

@@ -9,7 +9,6 @@
 #include "miscellaneous/externaltool.h"
 #include "miscellaneous/iconfactory.h"
 #include "miscellaneous/settings.h"
-#include "network-web/cookiejar.h"
 #include "network-web/silentnetworkaccessmanager.h"
 #include "network-web/webfactory.h"
 
@@ -27,8 +26,12 @@ SettingsBrowserMail::SettingsBrowserMail(Settings* settings, QWidget* parent)
                                               false);
 
   m_ui->m_lblExternalEmailInfo->setHelpText(tr("Placeholders:\n"
-                                               " Ă˘â‚¬Ë %1 - title of selected message,\n"
-                                               " Ă˘â‚¬Ë %2 - body of selected message."),
+                                               " Ă„â€šĂ˘â‚¬ĹľÄ‚ËĂ˘â€šÂ¬ÄąË‡Ă„â€šĂ˘â‚¬Ä…Ä‚â€šĂ‚ÂÄ‚â€žĂ˘â‚¬ĹˇÄ‚â€ąĂ‚ÂĂ„â€šĂ‹ÂÄ‚ËĂ˘â‚¬ĹˇĂ‚Â¬Ă„Ä…Ă‹â€ˇĂ„â€šĂ˘â‚¬ĹˇÄ‚â€šĂ‚Â¬Ä‚â€žĂ˘â‚¬ĹˇÄ‚ËĂ˘â€šÂ¬Ă„â€¦Ă„"
+                                               "â€šĂ˘â‚¬ĹˇÄ‚â€šĂ‚Â %1 - title of selected "
+                                               "message,\n"
+                                               " Ă„â€šĂ˘â‚¬ĹľÄ‚ËĂ˘â€šÂ¬ÄąË‡Ă„â€šĂ˘â‚¬Ä…Ä‚â€šĂ‚ÂÄ‚â€žĂ˘â‚¬ĹˇÄ‚â€ąĂ‚ÂĂ„â€šĂ‹ÂÄ‚ËĂ˘â‚¬ĹˇĂ‚Â¬Ă„Ä…Ă‹â€ˇĂ„â€šĂ˘â‚¬ĹˇÄ‚â€šĂ‚Â¬Ä‚â€žĂ˘â‚¬ĹˇÄ‚ËĂ˘â€šÂ¬Ă„â€¦Ă„"
+                                               "â€šĂ˘â‚¬ĹˇÄ‚â€šĂ‚Â %2 - body of selected "
+                                               "message."),
                                             false);
 
   m_ui->m_lblToolInfo->setHelpText(tr("On this page, you can setup a list of external tools which can open URLs."),
@@ -42,7 +45,6 @@ SettingsBrowserMail::SettingsBrowserMail(Settings* settings, QWidget* parent)
 
   connect(m_ui->m_cbEnableHttp2, &QCheckBox::stateChanged, this, &SettingsBrowserMail::dirtifySettings);
   connect(m_ui->m_cbEnableApiServer, &QCheckBox::stateChanged, this, &SettingsBrowserMail::dirtifySettings);
-  connect(m_ui->m_cbIgnoreAllCookies, &QCheckBox::stateChanged, this, &SettingsBrowserMail::dirtifySettings);
   connect(m_ui->m_checkOpenLinksInExternal, &QCheckBox::stateChanged, this, &SettingsBrowserMail::dirtifySettings);
   connect(m_proxyDetails, &NetworkProxyDetails::changed, this, &SettingsBrowserMail::dirtifySettings);
   connect(m_ui->m_grpCustomExternalBrowser, &QGroupBox::toggled, this, &SettingsBrowserMail::dirtifySettings);
@@ -167,8 +169,6 @@ void SettingsBrowserMail::loadSettings() {
 
   m_ui->m_cbEnableHttp2->setChecked(settings()->value(GROUP(Network), SETTING(Network::EnableHttp2)).toBool());
   m_ui->m_cbEnableApiServer->setChecked(settings()->value(GROUP(Network), SETTING(Network::EnableApiServer)).toBool());
-  m_ui->m_cbIgnoreAllCookies
-    ->setChecked(settings()->value(GROUP(Network), SETTING(Network::IgnoreAllCookies)).toBool());
   m_ui->m_checkOpenLinksInExternal
     ->setChecked(settings()->value(GROUP(Browser), SETTING(Browser::OpenLinksInExternalBrowserRightAway)).toBool());
   m_ui->m_txtUserAgent->setText(settings()->value(GROUP(Network), SETTING(Network::CustomUserAgent)).toString());
@@ -210,7 +210,6 @@ void SettingsBrowserMail::saveSettings() {
 
   settings()->setValue(GROUP(Network), Network::EnableHttp2, m_ui->m_cbEnableHttp2->isChecked());
   settings()->setValue(GROUP(Network), Network::EnableApiServer, m_ui->m_cbEnableApiServer->isChecked());
-  settings()->setValue(GROUP(Network), Network::IgnoreAllCookies, m_ui->m_cbIgnoreAllCookies->isChecked());
   settings()->setValue(GROUP(Network), Network::CustomUserAgent, m_ui->m_txtUserAgent->text());
 
   qApp->web()->stopApiServer();
@@ -257,7 +256,6 @@ void SettingsBrowserMail::saveSettings() {
 
   ExternalTool::setToolsToSettings(tools);
 
-  qApp->web()->cookieJar()->updateSettings();
   qApp->web()->updateProxy();
 
   onEndSaveSettings();

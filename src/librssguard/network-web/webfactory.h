@@ -9,7 +9,6 @@
 #include <QObject>
 
 class QMenu;
-class CookieJar;
 class ApiServer;
 
 class RSSGUARD_DLLSPEC WebFactory : public QObject {
@@ -25,13 +24,11 @@ class RSSGUARD_DLLSPEC WebFactory : public QObject {
     // HTML entity unescaping. This method
     // converts both HTML entity names and numbers to UTF-8 string.
     // Example of entities are:
-    //   â€ = &forall; (entity name), &#8704; (base-10 entity), &#x2200; (base-16 entity)
+    //   Ä‚ËĂ‚ÂĂ˘â€šÂ¬ = &forall; (entity name), &#8704; (base-10 entity), &#x2200; (base-16 entity)
     static QString unescapeHtml(const QString& html);
 
     QString limitSizeOfHtmlImages(const QString& html, int desired_width, int images_max_height) const;
     QString processFeedUriScheme(const QString& url);
-
-    CookieJar* cookieJar() const;
 
     void startApiServer();
     void stopApiServer();
@@ -49,7 +46,6 @@ class RSSGUARD_DLLSPEC WebFactory : public QObject {
     static QMap<QString, char16_t> generateUnescapes();
 
     ApiServer* m_apiServer;
-    CookieJar* m_cookieJar;
     QString m_customUserAgent;
 };
 
