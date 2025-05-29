@@ -692,7 +692,7 @@ void DocumentContainerPrivate::draw_background(litehtml::uint_ptr hdc,
     for (const litehtml::background_paint &bg : bgs) {
         if (bg.is_root) {
             // TODO ?
-            break;
+            //break;
         }
         if (!initialClipRegion.isEmpty())
             painter->setClipRegion(initialClipRegion);

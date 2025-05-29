@@ -214,7 +214,7 @@
 #define APP_CFG_FILE "config.ini"
 
 #define APP_SKIN_USER_FOLDER   "skins"
-#define APP_SKIN_DEFAULT       "nudus-light"
+#define APP_SKIN_DEFAULT       "minimal"
 #define APP_SKIN_METADATA_FILE "metadata.xml"
 
 // #if defined(Q_OS_UNIX) && !defined(Q_OS_MACOS) && !defined(FORCE_BUNDLE_ICONS)
