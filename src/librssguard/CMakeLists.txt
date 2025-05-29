@@ -490,9 +490,9 @@ list(APPEND SOURCES
   gui/webviewers/qlitehtml/qlitehtmlviewer.cpp
 )
 
-if(MSVC)
-  add_compile_options(/wd4244 /wd4267 /permissive- /utf-8)
-endif()
+#if(MSVC)
+#  add_compile_options(/wd4244 /wd4267 /permissive- /utf-8)
+#endif()
 
 # Add boolinq.
 list(APPEND SOURCES
@@ -590,6 +590,10 @@ target_include_directories(rssguard
   ${CMAKE_CURRENT_SOURCE_DIR}/3rd-party/litehtml/include/litehtml
   ${CMAKE_CURRENT_SOURCE_DIR}/3rd-party/qlitehtml/src
 )
+
+#target_compile_definitions(rssguard PRIVATE UNICODE _UNICODE _CRT_SECURE_NO_WARNINGS)
+#target_compile_definitions(rssguard PRIVATE WINVER=0x0602 _WIN32_WINNT=0x0602
+#    WIN32_LEAN_AND_MEAN)
 
 if(SQLite3_FOUND)
   target_include_directories(rssguard AFTER
