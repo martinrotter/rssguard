@@ -480,6 +480,9 @@ QString StandardFeed::getHttpDescription() const {
 
     case NetworkFactory::Http2Status::Disabled:
       return tr("disabled");
+
+    default:
+      return tr("unknown state");
   }
 }
 
