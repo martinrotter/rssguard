@@ -236,20 +236,21 @@ QString SkinFactory::prepareHtml(const QString& inner_html) {
 }
 
 QString SkinFactory::generateHtmlOfArticle(const Message& message, RootItem* root) const {
-  Skin skin = currentSkin();
-  QString messages_layout;
-  QString single_message_layout = skin.m_layoutMarkup;
+  const Skin skin = currentSkin();
   const int forced_img_height =
     qApp->settings()->value(GROUP(Messages), SETTING(Messages::LimitArticleImagesHeight)).toInt();
+  const bool is_plain = !TextFactory::couldBeHtml(message.m_contents);
+
+  QString messages_layout;
   QString enclosures;
   QString enclosure_images;
-  bool is_plain = !TextFactory::couldBeHtml(message.m_contents);
 
   if (root == nullptr || root->getParentServiceRoot()->displaysEnclosures()) {
     for (const Enclosure& enclosure : message.m_enclosures) {
       QString enc_url = QUrl::fromPercentEncoding(enclosure.m_url.toUtf8());
 
-      enclosures += skin.m_enclosureMarkup.replace(QSL("%enclosure_url%"), enc_url)
+      enclosures += QString(skin.m_enclosureMarkup)
+                      .replace(QSL("%enclosure_url%"), enc_url)
                       .replace(QSL("%enclosure_mime%"), enclosure.m_mimeType);
 
       if (qApp->settings()->value(GROUP(Messages), SETTING(Messages::DisplayEnclosuresInMessage)).toBool()) {
@@ -257,7 +258,8 @@ QString SkinFactory::generateHtmlOfArticle(const Message& message, RootItem* roo
             qApp->settings()->value(GROUP(Messages), SETTING(Messages::DisplayEnclosuresInMessage)).toBool()) {
           // Add thumbnail image.
           enclosure_images +=
-            skin.m_enclosureImageMarkup.replace(QSL("%enclosure_url%"), enc_url)
+            QString(skin.m_enclosureImageMarkup)
+              .replace(QSL("%enclosure_url%"), enc_url)
               .replace(QSL("%enclosure_mime%"), enclosure.m_mimeType)
               .replace(QSL("%image_size%"), forced_img_height <= 0 ? QSL("none") : QSL("%1px").arg(forced_img_height));
         }
@@ -275,7 +277,8 @@ QString SkinFactory::generateHtmlOfArticle(const Message& message, RootItem* roo
   QString msg_contents =
     is_plain ? Qt::convertFromPlainText(message.m_contents, Qt::WhiteSpaceMode::WhiteSpaceNormal) : message.m_contents;
 
-  messages_layout.append(single_message_layout.replace(QSL("%article_title%"), message.m_title)
+  messages_layout.append(QString(skin.m_layoutMarkup)
+                           .replace(QSL("%article_title%"), message.m_title)
                            .replace(QSL("%article_author%"),
                                     message.m_author.isEmpty() ? tr("unknown author") : message.m_author)
                            .replace(QSL("%article_author_full%"),
@@ -294,7 +297,8 @@ QString SkinFactory::generateHtmlOfArticle(const Message& message, RootItem* roo
                                       ? QSL("rtl")
                                       : QSL("ltr")));
 
-  QString html = skin.m_layoutMarkupWrapper.replace(QSL("%article_title%"), message.m_title)
+  QString html = QString(skin.m_layoutMarkupWrapper)
+                   .replace(QSL("%article_title%"), message.m_title)
                    .replace(QSL("%article_body%"), messages_layout);
 
   return html;
