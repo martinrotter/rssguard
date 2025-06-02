@@ -10,6 +10,9 @@
 /// - move container_qpainter.h to the header
 /// - in draw_background function of container_qpainter.cpp, comment out the break
 ///   which was skipping painting of root backgrounds (body backgrounds)
+/// - added uppercase/lowercase in transform_text function of container_qpainter.cpp
+/// - in draw_background function of container_qpainter.cpp, add SmoothPixmapTransform
+///   as render hint to QPainter
 ///
 //////////////////////
 

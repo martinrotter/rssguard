@@ -229,11 +229,13 @@ QString SkinFactory::selectedSkinName() const {
   return qApp->settings()->value(GROUP(GUI), SETTING(GUI::Skin)).toString();
 }
 
-QString SkinFactory::prepareHtml(const QString& inner_html, const QUrl& base_url) {
-  return currentSkin().m_layoutMarkupWrapper.arg(QString(), inner_html);
+QString SkinFactory::prepareHtml(const QString& inner_html) {
+  return currentSkin()
+    .m_layoutMarkupWrapper.replace(QSL("%article_title%"), QString())
+    .replace(QSL("%article_body%"), inner_html);
 }
 
-QString SkinFactory::generateHtmlOfArticle(const Message& message, RootItem* root, int desired_width) const {
+QString SkinFactory::generateHtmlOfArticle(const Message& message, RootItem* root) const {
   Skin skin = currentSkin();
   QString messages_layout;
   QString single_message_layout = skin.m_layoutMarkup;
@@ -247,17 +249,17 @@ QString SkinFactory::generateHtmlOfArticle(const Message& message, RootItem* roo
     for (const Enclosure& enclosure : message.m_enclosures) {
       QString enc_url = QUrl::fromPercentEncoding(enclosure.m_url.toUtf8());
 
-      enclosures += skin.m_enclosureMarkup.arg(enc_url, enclosure.m_mimeType);
+      enclosures += skin.m_enclosureMarkup.replace(QSL("%enclosure_url%"), enc_url)
+                      .replace(QSL("%enclosure_mime%"), enclosure.m_mimeType);
 
       if (qApp->settings()->value(GROUP(Messages), SETTING(Messages::DisplayEnclosuresInMessage)).toBool()) {
         if (enclosure.m_mimeType.startsWith(QSL("image/")) &&
             qApp->settings()->value(GROUP(Messages), SETTING(Messages::DisplayEnclosuresInMessage)).toBool()) {
           // Add thumbnail image.
           enclosure_images +=
-            skin.m_enclosureImageMarkup.arg(enclosure.m_url,
-                                            enclosure.m_mimeType,
-                                            forced_img_height <= 0 ? QString::number(-1)
-                                                                   : QString::number(forced_img_height));
+            skin.m_enclosureImageMarkup.replace(QSL("%enclosure_url%"), enc_url)
+              .replace(QSL("%enclosure_mime%"), enclosure.m_mimeType)
+              .replace(QSL("%image_size%"), forced_img_height <= 0 ? QSL("none") : QSL("%1px").arg(forced_img_height));
         }
       }
     }
@@ -273,30 +275,27 @@ QString SkinFactory::generateHtmlOfArticle(const Message& message, RootItem* roo
   QString msg_contents =
     is_plain ? Qt::convertFromPlainText(message.m_contents, Qt::WhiteSpaceMode::WhiteSpaceNormal) : message.m_contents;
 
-  // TODO: todo
-  /*
-  if (!is_plain) {
-    msg_contents = qApp->web()->limitSizeOfHtmlImages(msg_contents, desired_width, forced_img_height);
-  }
-*/
+  messages_layout.append(single_message_layout.replace(QSL("%article_title%"), message.m_title)
+                           .replace(QSL("%article_author%"),
+                                    message.m_author.isEmpty() ? tr("unknown author") : message.m_author)
+                           .replace(QSL("%article_author_full%"),
+                                    tr("Written by ") +
+                                      (message.m_author.isEmpty() ? tr("unknown author") : message.m_author))
+                           .replace(QSL("%article_url%"), message.m_url)
+                           .replace(QSL("%article_contents%"), msg_contents)
+                           .replace(QSL("%article_date%"), msg_date)
+                           .replace(QSL("%enclosures_all%"), enclosures)
+                           .replace(QSL("%enclosures_images%"), enclosure_images)
+                           .replace(QSL("%article_id%"), QString::number(message.m_id))
+                           .replace(QSL("%article_rtl%"),
+                                    (message.m_rtlBehavior == RtlBehavior::Everywhere ||
+                                     message.m_rtlBehavior == RtlBehavior::EverywhereExceptFeedList ||
+                                     message.m_rtlBehavior == RtlBehavior::OnlyViewer)
+                                      ? QSL("rtl")
+                                      : QSL("ltr")));
 
-  messages_layout.append(single_message_layout.arg(message.m_title,
-                                                   tr("Written by ") + (message.m_author.isEmpty()
-                                                                          ? tr("unknown author")
-                                                                          : message.m_author),
-                                                   message.m_url,
-                                                   msg_contents,
-                                                   msg_date,
-                                                   enclosures,
-                                                   enclosure_images,
-                                                   QString::number(message.m_id),
-                                                   (message.m_rtlBehavior == RtlBehavior::Everywhere ||
-                                                    message.m_rtlBehavior == RtlBehavior::EverywhereExceptFeedList ||
-                                                    message.m_rtlBehavior == RtlBehavior::OnlyViewer)
-                                                     ? QSL("rtl")
-                                                     : QSL("ltr")));
-
-  QString html = skin.m_layoutMarkupWrapper.arg(message.m_title, messages_layout);
+  QString html = skin.m_layoutMarkupWrapper.replace(QSL("%article_title%"), message.m_title)
+                   .replace(QSL("%article_body%"), messages_layout);
 
   return html;
 }

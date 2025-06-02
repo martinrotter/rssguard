@@ -6,24 +6,23 @@
   <description>Basic skin with almost no styling.</description>
 
   <palette>
-    <color key="FgInteresting">#acc2c5</color>
-    <color key="FgSelectedInteresting">#acc2c5</color>
-    <color key="FgNewMessages">#B58900</color>
-    <color key="FgSelectedNewMessages">#B58900</color>
-    <color key="FgError">#DC322F</color>
-    <color key="FgSelectedError">#DC322F</color>
-    <color key="FgDisabledFeed">#586e75</color>
-    <color key="Allright">#859900</color>
+    <color key="FgInteresting">#5dade2</color> <!-- Deep Blue -->
+    <color key="FgSelectedInteresting">#2e86c1</color> <!-- Light Blue -->
+    <color key="FgNewMessages">#58d68d</color> <!-- Dark Green -->
+    <color key="FgSelectedNewMessages">#27ae60</color> <!-- Light Green -->
+    <color key="FgError">#e74c3c</color> <!-- Rich Red -->
+    <color key="FgSelectedError">#c0392b</color> <!-- Bright Red -->
+    <color key="FgDisabledFeed">#7f8c8d</color> <!-- Grayish Blue -->
+    <color key="Allright">#229954</color> <!-- Emerald Green -->
   </palette>
 
   <forced-styles></forced-styles>
   <forced-skin-colors></forced-skin-colors>
-  
   <style-palette>
     <group id="All">
-      <color role="Highlight">#d33682</color>
-      <color role="HighlightedText">#ffffff</color>
+      <color role="Highlight">#add8e6</color>
+      <color role="HighlightedText">#000000</color>
     </group>
-</style-palette>
+  </style-palette>
 
 </skin>

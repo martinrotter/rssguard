@@ -397,12 +397,6 @@ elseif(ENABLE_MEDIAPLAYER_LIBMPV)
   message(STATUS "Found libmpv: ${LibMPV_LIBRARIES}.")
 endif()
 
-# QTextBrowser-based HTML viewer.
-list(APPEND SOURCES
-  gui/webviewers/qtextbrowser/textbrowserviewer.h
-  gui/webviewers/qtextbrowser/textbrowserviewer.cpp
-)
-
 # QLitehtml-based HTML viewer.
 list(APPEND SOURCES
   # gumbo

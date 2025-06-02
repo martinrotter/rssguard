@@ -16,7 +16,7 @@ QToolTip {
 }
 
 QSplitter::handle {
-    background: palette(light);
+    background: palette(mid);
 }
 
 QStatusBar::item {

@@ -24,7 +24,6 @@
 #include "gui/toolbars/messagestoolbar.h"
 #include "gui/toolbars/statusbar.h"
 #include "gui/webviewers/qlitehtml/qlitehtmlviewer.h"
-#include "gui/webviewers/qtextbrowser/textbrowserviewer.h"
 #include "miscellaneous/feedreader.h"
 #include "miscellaneous/iconfactory.h"
 #include "miscellaneous/iofactory.h"

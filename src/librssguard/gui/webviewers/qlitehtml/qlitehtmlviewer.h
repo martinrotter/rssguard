@@ -56,8 +56,6 @@ class RSSGUARD_DLLSPEC QLiteHtmlViewer : public QLiteHtmlWidget, public WebViewe
     virtual void contextMenuEvent(QContextMenuEvent* event);
 
   private:
-    QString prepareLegacyHtmlForMessage(const Message& message, RootItem* selected_item) const;
-
     QPointer<RootItem> m_root;
     QPointer<SilentNetworkAccessManager> m_network;
 };

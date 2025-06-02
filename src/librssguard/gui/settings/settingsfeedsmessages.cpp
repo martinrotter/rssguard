@@ -136,7 +136,6 @@ SettingsFeedsMessages::SettingsFeedsMessages(Settings* settings, QWidget* parent
           this,
           &SettingsFeedsMessages::dirtifySettings);
   connect(m_ui->m_checkUpdateAllFeedsOnStartup, &QCheckBox::toggled, this, &SettingsFeedsMessages::dirtifySettings);
-  connect(m_ui->m_cbLegacyArticleFormatting, &QCheckBox::toggled, this, &SettingsFeedsMessages::dirtifySettings);
   connect(m_ui->m_spinAutoUpdateInterval,
           static_cast<void (QDoubleSpinBox::*)(double)>(&QDoubleSpinBox::valueChanged),
           this,
@@ -329,8 +328,6 @@ void SettingsFeedsMessages::loadSettings() {
     ->setChecked(settings()->value(GROUP(Feeds), SETTING(Feeds::AutoUpdateOnlyUnfocused)).toBool());
   m_ui->m_spinAutoUpdateInterval->setValue(settings()->value(GROUP(Feeds), SETTING(Feeds::AutoUpdateInterval)).toInt());
   m_ui->m_spinFeedUpdateTimeout->setValue(settings()->value(GROUP(Feeds), SETTING(Feeds::UpdateTimeout)).toInt());
-  m_ui->m_cbLegacyArticleFormatting
-    ->setChecked(settings()->value(GROUP(Messages), SETTING(Messages::UseLegacyArticleFormat)).toBool());
 
   Feed::ArticleIgnoreLimit art_limit = Feed::ArticleIgnoreLimit::fromSettings();
 
@@ -462,9 +459,6 @@ void SettingsFeedsMessages::saveSettings() {
   settings()->setValue(GROUP(Feeds), Feeds::AutoUpdateOnlyUnfocused, m_ui->m_checkAutoUpdateOnlyUnfocused->isChecked());
   settings()->setValue(GROUP(Feeds), Feeds::AutoUpdateInterval, m_ui->m_spinAutoUpdateInterval->value());
   settings()->setValue(GROUP(Feeds), Feeds::UpdateTimeout, m_ui->m_spinFeedUpdateTimeout->value());
-  settings()->setValue(GROUP(Messages),
-                       Messages::UseLegacyArticleFormat,
-                       m_ui->m_cbLegacyArticleFormatting->isChecked());
 
   Feed::ArticleIgnoreLimit art_limit = m_ui->m_wdgArticleLimiting->save();
 

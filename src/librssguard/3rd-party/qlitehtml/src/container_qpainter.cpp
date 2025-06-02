@@ -16,6 +16,7 @@
 #include <QGuiApplication>
 #include <QLoggingCategory>
 #include <QPainter>
+#include <QTextBoundaryFinder>
 #include <QPalette>
 #include <QRegularExpression>
 #include <QScreen>
@@ -741,6 +742,7 @@ void DocumentContainerPrivate::draw_background(litehtml::uint_ptr hdc,
         painter->setClipRegion(clipRegion, Qt::IntersectClip);
         painter->setPen(Qt::NoPen);
         painter->setBrush(toQColor(bg.color));
+        painter->setRenderHint(QPainter::RenderHint::SmoothPixmapTransform, true);
         painter->drawRect(bg.border_box.x,
                           bg.border_box.y,
                           bg.border_box.width,
@@ -874,10 +876,42 @@ void DocumentContainerPrivate::set_cursor(const char *cursor)
 
 void DocumentContainerPrivate::transform_text(std::string &text, litehtml::text_transform tt)
 {
-    // TODO
-    qDebug(log) << "transform_text";
-    Q_UNUSED(text)
-    Q_UNUSED(tt)
+    switch (tt) {
+      case litehtml::text_transform_none:
+        break;
+
+      case litehtml::text_transform_capitalize: {
+        auto str = QString::fromStdString( text );
+        QTextBoundaryFinder finder( QTextBoundaryFinder::Word, str );
+        auto position = finder.toNextBoundary();
+
+        while ( 0 <= position )
+        {
+          if ( finder.boundaryReasons() & QTextBoundaryFinder::BoundaryReason::EndOfItem )
+          {
+           str.replace( 0, 1, str[0].toUpper() );
+          }
+          else if ( finder.boundaryReasons() & QTextBoundaryFinder::BoundaryReason::StartOfItem )
+          {
+            str.replace( position, 1, str[position].toUpper() );
+          }
+
+          position = finder.toNextBoundary();
+        }
+
+        text = str.toStdString();
+        break;
+      }
+
+      case litehtml::text_transform_uppercase:
+        std::transform(text.begin(), text.end(), text.begin(), ::toupper);
+        break;
+
+      case litehtml::text_transform_lowercase:
+        std::transform(text.begin(), text.end(), text.begin(), ::toupper);
+        break;
+
+    }
 }
 
 void DocumentContainerPrivate::import_css(std::string &text,
