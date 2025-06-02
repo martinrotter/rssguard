@@ -29,6 +29,7 @@ QLiteHtmlViewer::QLiteHtmlViewer(QWidget* parent)
   verticalScrollBar()->setSingleStep(5);
 
   connect(this, &QLiteHtmlWidget::linkHighlighted, this, &QLiteHtmlViewer::linkMouseHighlighted);
+  connect(this, &QLiteHtmlWidget::linkClicked, this, &QLiteHtmlViewer::linkClicked);
 
   setResourceHandler([this](const QUrl& url) {
     qDebugNN << LOGSEC_HTMLVIEWER << "Resource requested:" << QUOTE_W_SPACE_DOT(url);

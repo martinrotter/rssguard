@@ -1,3 +1,34 @@
 img {
-  max-width: 95%;
+  max-width: 98%;
+}
+
+/* Basic styling for the .article container */
+.article {
+  background-color: transparent;
+  color: #555; /* grayscale text color */
+  font-family: Arial, sans-serif;
+  line-height: 1.2;
+  padding: 0em;
+}
+
+/* Style for the heading */
+.article h1,
+.article h2,
+.article h3,
+.article h4,
+.article h5,
+.article h6 {
+  color: #222; /* darker grayscale for headings */
+  margin-top: 0.5em;
+  margin-bottom: 0.2em;
+}
+
+/* Style for hyperlinks */
+.article a {
+  color: #777; /* base color for links in grayscale */
+  text-decoration: none; /* no underline by default */
+}
+
+.article a:hover {
+  text-decoration: underline; /* underline on hover */
 }
