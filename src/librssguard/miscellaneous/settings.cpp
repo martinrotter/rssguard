@@ -498,7 +498,7 @@ DKEY CategoriesExpandStates::ID = "categories_expand_states";
 Settings::Settings(const QString& file_name, Format format, SettingsProperties::SettingsType type, QObject* parent)
   : QSettings(file_name, format, parent), m_lock(QReadWriteLock(QReadWriteLock::RecursionMode::Recursive)),
     m_initializationStatus(type) {
-  Messages::PreviewerFontStandardDef = QFont(QApplication::font().family(), 12).toString();
+  Messages::PreviewerFontStandardDef = QFont(QApplication::font().family(), 16).toString();
 }
 
 Settings::~Settings() = default;
