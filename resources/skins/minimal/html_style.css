@@ -5,8 +5,7 @@ img {
 /* Basic styling for the .article container */
 .article {
   background-color: transparent;
-  color: #555; /* grayscale text color */
-  font-family: Arial, sans-serif;
+  color: #333; /* grayscale text color */
   line-height: 1.2;
   padding: 0em;
 }
