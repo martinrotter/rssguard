@@ -57,7 +57,8 @@ QLiteHtmlViewer::QLiteHtmlViewer(QWidget* parent)
 QLiteHtmlViewer::~QLiteHtmlViewer() {}
 
 void QLiteHtmlViewer::bindToBrowser(WebBrowser* browser) {
-  installEventFilter(browser);
+  // installEventFilter(browser);
+  viewport()->installEventFilter(browser);
 }
 
 void QLiteHtmlViewer::findText(const QString& text, bool backwards) {
