@@ -486,13 +486,6 @@ void FeedDownloader::finalizeUpdate() {
 
   m_feeds.clear();
 
-  if (!m_results.erroredFeeds().isEmpty()) {
-    qApp->showGuiMessage(Notification::Event::ArticlesFetchingError,
-                         {QObject::tr("Some feeds have error"),
-                          QObject::tr("Some feeds threw an error when fetching articles."),
-                          QSystemTrayIcon::MessageIcon::Warning});
-  }
-
   // Update of feeds has finished.
   // NOTE: This means that now "update lock" can be unlocked
   // and feeds can be added/edited/deleted and application

@@ -160,7 +160,7 @@ cd "rssguard-build"
 & "$cmake_path" --install . --prefix app
 
 cd "app"
-windeployqt.exe --verbose 1 --no-compiler-runtime --no-translations --release "." ".\\plugins"
+windeployqt.exe --verbose 1 --no-compiler-runtime --no-translations --release "rssguard.exe" "rssguard.dll" "." ".\\plugins"
 cd ".."
 
 # Copy OpenSSL.
