@@ -481,6 +481,9 @@ QVariant MessagesModel::data(const QModelIndex& idx, int role) const {
                         .toLocalTime(),
                       QLocale::FormatType::LongFormat);
         }
+        else if (idx.column() == MSG_DB_READ_INDEX && m_unreadIconType == MessageUnreadIcon::FeedIcon) {
+          return data(idx.row(), MSG_DB_FEED_TITLE_INDEX, Qt::ItemDataRole::EditRole);
+        }
         else {
           return data(idx, Qt::ItemDataRole::DisplayRole);
         }
