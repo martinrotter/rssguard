@@ -20,6 +20,8 @@
 #include "gui/messagebox.h"
 #include "gui/messagesview.h"
 #include "gui/notifications/toastnotificationsmanager.h"
+#include "gui/toolbars/feedstoolbar.h"
+#include "gui/toolbars/messagestoolbar.h"
 #include "gui/toolbars/statusbar.h"
 #include "gui/webviewers/qtextbrowser/textbrowserviewer.h"
 #include "miscellaneous/feedreader.h"
@@ -370,7 +372,7 @@ void Application::hideOrShowMainForm() {
 }
 
 void Application::loadDynamicShortcuts() {
-  DynamicShortcuts::load(userActions());
+  DynamicShortcuts::load(userAndExtraActions());
 }
 
 void Application::offerPolls() const {
@@ -426,6 +428,16 @@ QList<QAction*> Application::userActions() {
   }
 
   return m_userActions;
+}
+
+QList<QAction*> Application::userAndExtraActions() {
+  auto user_actions = userActions();
+
+  user_actions << m_mainForm->tabWidget()->feedMessageViewer()->feedsToolBar()->extraActions();
+  user_actions << m_mainForm->tabWidget()->feedMessageViewer()->messagesToolBar()->extraActions();
+  user_actions << m_mainForm->statusBar()->extraActions();
+
+  return user_actions;
 }
 
 bool Application::isFirstRun() const {

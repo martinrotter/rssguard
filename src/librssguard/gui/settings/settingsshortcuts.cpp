@@ -22,13 +22,13 @@ QIcon SettingsShortcuts::icon() const {
 
 void SettingsShortcuts::loadSettings() {
   onBeginLoadSettings();
-  m_ui->m_shortcuts->populate(qApp->userActions());
+  m_ui->m_shortcuts->populate(qApp->userAndExtraActions());
   onEndLoadSettings();
 }
 
 void SettingsShortcuts::saveSettings() {
   onBeginSaveSettings();
   m_ui->m_shortcuts->updateShortcuts();
-  DynamicShortcuts::save(qApp->userActions());
+  DynamicShortcuts::save(qApp->userAndExtraActions());
   onEndSaveSettings();
 }

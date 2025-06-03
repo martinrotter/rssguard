@@ -43,6 +43,8 @@ void FeedsToolBar::saveAndSetActions(const QStringList& actions) {
   if (!activatedActions().contains(m_actionSearchMessages)) {
     m_txtSearchMessages->clear();
   }
+
+  handleMessageFilterChange(nullptr);
 }
 
 QList<QAction*> FeedsToolBar::convertActions(const QStringList& actions) {
@@ -108,7 +110,8 @@ inline FeedsProxyModel::FeedListFilter operator|(FeedsProxyModel::FeedListFilter
 }
 
 void FeedsToolBar::handleMessageFilterChange(QAction* action) {
-  FeedsProxyModel::FeedListFilter task = action->data().value<FeedsProxyModel::FeedListFilter>();
+  FeedsProxyModel::FeedListFilter task =
+    action == nullptr ? FeedsProxyModel::FeedListFilter(0) : action->data().value<FeedsProxyModel::FeedListFilter>();
   std::list<QAction*> checked_tasks_std = boolinq::from(m_menuMessageFilter->actions())
                                             .where([](QAction* act) {
                                               return act->isChecked();

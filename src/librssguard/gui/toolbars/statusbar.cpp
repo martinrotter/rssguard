@@ -111,7 +111,7 @@ QList<QAction*> StatusBar::convertActions(const QStringList& actions) {
     }
     else {
       if (action_name == QSL(SEPARATOR_ACTION_NAME)) {
-        QLabel* lbl = new QLabel(QSL("•"), this);
+        QLabel* lbl = new QLabel(QSL("\u2022"), this);
 
         widget_to_add = lbl;
         action_to_add = new QAction(this);

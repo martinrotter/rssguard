@@ -32,7 +32,9 @@ void BaseBar::loadSavedActions() {
 
 QAction* BaseBar::findMatchingAction(const QString& action, const QList<QAction*>& actions) const {
   for (QAction* act : actions) {
-    if (act->objectName() == action) {
+    auto act_obj_name = act->objectName();
+
+    if (!act_obj_name.isEmpty() && action.startsWith(act_obj_name)) {
       return act;
     }
   }
@@ -63,7 +65,7 @@ void BaseToolBar::activateAction(const QString& action_name, QWidgetAction* widg
     auto tool_btn = qobject_cast<QToolButton*>(widget_action->defaultWidget());
 
     for (QAction* action : tool_btn->menu()->actions()) {
-      if (menu_action_names.contains(action->objectName())) {
+      if (menu_action_names.contains(action->objectName()) && !action->isChecked()) {
         action->trigger();
       }
     }
@@ -74,7 +76,6 @@ void BaseToolBar::saveToolButtonSelection(const QString& button_name,
                                           const QString& setting_name,
                                           const QList<QAction*>& actions) const {
   QStringList action_names = savedActions();
-
   auto opts_list = boolinq::from(actions)
                      .select([](const QAction* act) {
                        return act->objectName();

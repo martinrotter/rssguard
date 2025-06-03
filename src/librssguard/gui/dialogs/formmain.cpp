@@ -99,7 +99,7 @@ FormMain::FormMain(QWidget* parent, Qt::WindowFlags f)
   // Add these actions to the list of actions of the main window.
   // This allows to use actions via shortcuts
   // even if main menu is not visible.
-  addActions(qApp->userActions());
+  addActions(qApp->userAndExtraActions());
 
   // Prepare main window and tabs.
   prepareMenus();
@@ -243,10 +243,6 @@ QList<QAction*> FormMain::allActions() const {
   actions << m_ui->m_actionBrowserScrollUp;
   actions << m_ui->m_actionBrowserScrollDown;
   actions << m_actionToolbarMainMenu;
-
-  actions << m_ui->m_tabWidget->feedMessageViewer()->feedsToolBar()->extraActions();
-  actions << m_ui->m_tabWidget->feedMessageViewer()->messagesToolBar()->extraActions();
-  actions << m_statusBar->extraActions();
 
   return actions;
 }

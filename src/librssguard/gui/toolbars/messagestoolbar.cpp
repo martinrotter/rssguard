@@ -42,6 +42,8 @@ void MessagesToolBar::saveAndSetActions(const QStringList& actions) {
   if (!activatedActions().contains(m_actionSearchMessages)) {
     m_txtSearchMessages->clear();
   }
+
+  handleMessageFilterChange(nullptr);
 }
 
 QList<QAction*> MessagesToolBar::convertActions(const QStringList& actions) {
@@ -159,7 +161,9 @@ void MessagesToolBar::handleMessageHighlighterChange(QAction* action) {
 }
 
 void MessagesToolBar::handleMessageFilterChange(QAction* action) {
-  MessagesProxyModel::MessageListFilter task = action->data().value<MessagesProxyModel::MessageListFilter>();
+  MessagesProxyModel::MessageListFilter task = action == nullptr
+                                                 ? MessagesProxyModel::MessageListFilter(0)
+                                                 : action->data().value<MessagesProxyModel::MessageListFilter>();
   std::list<QAction*> checked_tasks_std = boolinq::from(m_menuMessageFilter->actions())
                                             .where([](QAction* act) {
                                               return act->isChecked();

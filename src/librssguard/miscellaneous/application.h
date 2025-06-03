@@ -113,6 +113,9 @@ class RSSGUARD_DLLSPEC Application : public SingleApplication {
     // Globally accessible actions.
     QList<QAction*> userActions();
 
+    // Globally accessible actions for the sole purpose of keyboard shortcuts.
+    QList<QAction*> userAndExtraActions();
+
     // Check whether this application starts for the first time (ever).
     bool isFirstRun() const;
 
