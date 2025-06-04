@@ -21,12 +21,20 @@
 #include <QThread>
 #include <QTimer>
 
+#if defined(ENABLE_TESTS)
+#include <QAbstractItemModelTester>
+#endif
+
 FeedReader::FeedReader(QObject* parent)
   : QObject(parent), m_autoUpdateTimer(new QTimer(this)), m_feedDownloader(nullptr), m_feedFetchingPaused(false) {
   m_feedsModel = new FeedsModel(this);
   m_feedsProxyModel = new FeedsProxyModel(m_feedsModel, this);
   m_messagesModel = new MessagesModel(this);
   m_messagesProxyModel = new MessagesProxyModel(m_messagesModel, this);
+
+#if defined(ENABLE_TESTS)
+  new QAbstractItemModelTester(m_feedsModel, QAbstractItemModelTester::FailureReportingMode::Fatal, this);
+#endif
 
   updateAutoUpdateStatus();
   initializeFeedDownloader();

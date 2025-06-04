@@ -636,6 +636,12 @@ if(NOT OS2)
   )
 endif()
 
+if(ENABLE_TESTS)
+  target_link_libraries(rssguard PUBLIC
+    Qt${QT_VERSION_MAJOR}::Test
+  )
+endif()
+
 if(ENABLE_MEDIAPLAYER_QTMULTIMEDIA)
   target_link_libraries(rssguard PUBLIC
     Qt${QT_VERSION_MAJOR}::OpenGL

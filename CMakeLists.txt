@@ -26,6 +26,7 @@
 #   NO_UPDATE_CHECK - Disable automatic checking for new application updates.
 #   IS_FLATPAK_BUILD - Set to "ON" when building RSS Guard with Flatpak.
 #   FORCE_BUNDLE_ICONS - Forcibly bundles icons into executables.
+#   ENABLE_TESTS - Enables some tests.
 #   ENABLE_MEDIAPLAYER_QTMULTIMEDIA - Enable media player (QtMultimedia/ffmpeg implementation).
 #   ENABLE_MEDIAPLAYER_LIBMPV - Enable media player (libmpv implementation). Use "LibMPV_ROOT" variable to specify
 #                               base libmpv directory.
@@ -119,6 +120,7 @@ option(REVISION_FROM_GIT "Get revision using `git rev-parse`." ON)
 option(NO_UPDATE_CHECK "Disable automatic checking for new application updates." OFF)
 option(IS_FLATPAK_BUILD "Set to 'ON' when building RSS Guard with Flatpak." OFF)
 option(FORCE_BUNDLE_ICONS "Forcibly bundle icon themes into RSS Guard." OFF)
+option(ENABLE_TESTS "Enable some tests." OFF)
 option(ENABLE_COMPRESSED_SITEMAP "Enable support for gzip-compressed sitemap feeds. Requires zlib." OFF)
 option(ENABLE_MEDIAPLAYER_QTMULTIMEDIA "Enable built-in media player. Requires QtMultimedia FFMPEG plugin." OFF)
 option(ENABLE_MEDIAPLAYER_LIBMPV "Enable built-in media player. Requires libmpv library." ON)
@@ -146,6 +148,11 @@ endif()
 
 if(NOT OS2)
   list(APPEND QT_COMPONENTS Multimedia)
+endif()
+
+if(ENABLE_TESTS)
+  list(APPEND QT_COMPONENTS Test)
+  message(STATUS "Enabling tests.")
 endif()
 
 if(FORCE_COLORED_OUTPUT)
@@ -273,6 +280,10 @@ add_compile_definitions(
 
 if(NO_UPDATE_CHECK)
   add_compile_definitions(NO_UPDATE_CHECK)
+endif()
+
+if(ENABLE_TESTS)
+  add_compile_definitions(ENABLE_TESTS)
 endif()
 
 if(IS_FLATPAK_BUILD)
