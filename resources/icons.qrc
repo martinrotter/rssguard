@@ -28,6 +28,7 @@
     <file>./graphics/Breeze/actions/32/document-import.svg</file>
     <file>./graphics/Breeze/actions/32/document-open.svg</file>
     <file>./graphics/Breeze/actions/32/document-revert.svg</file>
+    <file>./graphics/Breeze/actions/32/document-save-as.svg</file>
     <file>./graphics/Breeze/actions/22/download.svg</file>
     <file>./graphics/Breeze/actions/48/draw-freehand.svg</file>
     <file>./graphics/Breeze/actions/22/draw-line.svg</file>
@@ -115,6 +116,7 @@
     <file>./graphics/Breeze Dark/actions/32/document-import.svg</file>
     <file>./graphics/Breeze Dark/actions/32/document-open.svg</file>
     <file>./graphics/Breeze Dark/actions/32/document-revert.svg</file>
+    <file>./graphics/Breeze Dark/actions/32/document-save-as.svg</file>
     <file>./graphics/Breeze Dark/actions/22/download.svg</file>
     <file>./graphics/Breeze Dark/actions/48/draw-freehand.svg</file>
     <file>./graphics/Breeze Dark/actions/22/draw-line.svg</file>
@@ -196,6 +198,7 @@
     <file>./graphics/Faenza/actions/64/document-import.png</file>
     <file>./graphics/Faenza/actions/64/document-open.png</file>
     <file>./graphics/Faenza/actions/64/document-revert.png</file>
+    <file>./graphics/Faenza/actions/64/document-save-as.png</file>
     <file>./graphics/Faenza/actions/64/down.png</file>
     <file>./graphics/Faenza/actions/64/edit-clear.png</file>
     <file>./graphics/Faenza/actions/64/edit-copy.png</file>
@@ -280,6 +283,7 @@
     <file>./graphics/Numix/22/actions/document-import.svg</file>
     <file>./graphics/Numix/22/actions/document-open.svg</file>
     <file>./graphics/Numix/22/actions/document-revert.svg</file>
+    <file>./graphics/Numix/22/actions/document-save-as.svg</file>
     <file>./graphics/Numix/22/actions/down.svg</file>
     <file>./graphics/Numix/22/actions/download.svg</file>
     <file>./graphics/Numix/22/actions/draw-freehand.svg</file>

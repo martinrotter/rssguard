@@ -340,7 +340,7 @@
             <item>
              <widget class="QLabel" name="m_lblHeightImageAttachments">
               <property name="text">
-               <string>Limit height of all pictures</string>
+               <string>Limit height of attachments</string>
               </property>
               <property name="buddy">
                <cstring>m_spinHeightImageAttachments</cstring>
@@ -349,6 +349,9 @@
             </item>
             <item>
              <widget class="QSpinBox" name="m_spinHeightImageAttachments">
+              <property name="enabled">
+               <bool>false</bool>
+              </property>
               <property name="minimum">
                <number>-1</number>
               </property>
@@ -695,15 +698,15 @@
  </widget>
  <customwidgets>
   <customwidget>
-   <class>TimeSpinBox</class>
-   <extends>QDoubleSpinBox</extends>
-   <header>timespinbox.h</header>
-  </customwidget>
-  <customwidget>
    <class>HelpSpoiler</class>
    <extends>QWidget</extends>
    <header>helpspoiler.h</header>
    <container>1</container>
+  </customwidget>
+  <customwidget>
+   <class>TimeSpinBox</class>
+   <extends>QDoubleSpinBox</extends>
+   <header>timespinbox.h</header>
   </customwidget>
   <customwidget>
    <class>ArticleAmountControl</class>
@@ -757,5 +760,22 @@
   <tabstop>m_spinArticleMarkingPolicy</tabstop>
  </tabstops>
  <resources/>
- <connections/>
+ <connections>
+  <connection>
+   <sender>m_cbShowEnclosuresDirectly</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>m_spinHeightImageAttachments</receiver>
+   <slot>setEnabled(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>283</x>
+     <y>208</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>206</x>
+     <y>236</y>
+    </hint>
+   </hints>
+  </connection>
+ </connections>
 </ui>

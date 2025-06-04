@@ -237,6 +237,8 @@ QString SkinFactory::prepareHtml(const QString& inner_html) {
 
 QString SkinFactory::generateHtmlOfArticle(const Message& message, RootItem* root) const {
   const Skin skin = currentSkin();
+  const bool display_enclosures =
+    qApp->settings()->value(GROUP(Messages), SETTING(Messages::DisplayEnclosuresInMessage)).toBool();
   const int forced_img_height =
     qApp->settings()->value(GROUP(Messages), SETTING(Messages::LimitArticleImagesHeight)).toInt();
   const bool is_plain = !TextFactory::couldBeHtml(message.m_contents);
@@ -253,16 +255,13 @@ QString SkinFactory::generateHtmlOfArticle(const Message& message, RootItem* roo
                       .replace(QSL("%enclosure_url%"), enc_url)
                       .replace(QSL("%enclosure_mime%"), enclosure.m_mimeType);
 
-      if (qApp->settings()->value(GROUP(Messages), SETTING(Messages::DisplayEnclosuresInMessage)).toBool()) {
-        if (enclosure.m_mimeType.startsWith(QSL("image/")) &&
-            qApp->settings()->value(GROUP(Messages), SETTING(Messages::DisplayEnclosuresInMessage)).toBool()) {
-          // Add thumbnail image.
-          enclosure_images +=
-            QString(skin.m_enclosureImageMarkup)
-              .replace(QSL("%enclosure_url%"), enc_url)
-              .replace(QSL("%enclosure_mime%"), enclosure.m_mimeType)
-              .replace(QSL("%image_size%"), forced_img_height <= 0 ? QSL("none") : QSL("%1px").arg(forced_img_height));
-        }
+      if (display_enclosures && enclosure.m_mimeType.startsWith(QSL("image/"))) {
+        // Add thumbnail image.
+        enclosure_images +=
+          QString(skin.m_enclosureImageMarkup)
+            .replace(QSL("%enclosure_url%"), enc_url)
+            .replace(QSL("%enclosure_mime%"), enclosure.m_mimeType)
+            .replace(QSL("%image_size%"), forced_img_height <= 0 ? QSL("none") : QSL("%1px").arg(forced_img_height));
       }
     }
   }
