@@ -25,14 +25,14 @@ SettingsDatabase::SettingsDatabase(Settings* settings, QWidget* parent)
                      "before you turn this feature on.\n"
                      "\n"
                      "Advantages:\n"
-                     " • higher speed for feed/message manipulations "
+                     " \u2022 higher speed for feed/message manipulations "
                      "(especially with thousands of messages displayed),\n"
-                     " • whole database stored in RAM, thus your hard drive can "
+                     " \u2022 whole database stored in RAM, thus your hard drive can "
                      "rest more.\n"
                      "\n"
                      "Disadvantages:\n"
-                     " • if application crashes, your changes from last session are lost,\n"
-                     " • application startup and shutdown can take little longer "
+                     " \u2022 if application crashes, your changes from last session are lost,\n"
+                     " \u2022 application startup and shutdown can take little longer "
                      "(max. 2 seconds).\n"
                      "\n"
                      "Authors of this application are NOT responsible for lost data."),
@@ -49,10 +49,7 @@ SettingsDatabase::SettingsDatabase(Settings* settings, QWidget* parent)
   connect(m_ui->m_txtMysqlHostname->lineEdit(), &QLineEdit::textChanged, this, &SettingsDatabase::dirtifySettings);
   connect(m_ui->m_txtMysqlPassword->lineEdit(), &QLineEdit::textChanged, this, &SettingsDatabase::dirtifySettings);
   connect(m_ui->m_txtMysqlUsername->lineEdit(), &QLineEdit::textChanged, this, &SettingsDatabase::dirtifySettings);
-  connect(m_ui->m_spinMysqlPort,
-          QOverload<int>::of(&QSpinBox::valueChanged),
-          this,
-          &SettingsDatabase::dirtifySettings);
+  connect(m_ui->m_spinMysqlPort, QOverload<int>::of(&QSpinBox::valueChanged), this, &SettingsDatabase::dirtifySettings);
   connect(m_ui->m_cmbDatabaseDriver,
           static_cast<void (QComboBox::*)(int)>(&QComboBox::currentIndexChanged),
           this,

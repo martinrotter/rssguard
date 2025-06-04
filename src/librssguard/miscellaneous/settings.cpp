@@ -55,9 +55,6 @@ DKEY Network::ID = "network";
 DKEY Network::SendDNT = "send_dnt";
 VALUE(bool) Network::SendDNTDef = false;
 
-DKEY Network::EnableApiServer = "api_server";
-VALUE(bool) Network::EnableApiServerDef = false;
-
 DKEY Network::EnableHttp2 = "http2_enabled";
 DVALUE(bool) Network::EnableHttp2Def = false;
 

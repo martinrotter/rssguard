@@ -2,6 +2,7 @@
 
 #include "gui/webviewers/webviewer.h"
 
+#include "gui/dialogs/filedialog.h"
 #include "gui/dialogs/formmain.h"
 #include "miscellaneous/externaltool.h"
 #include "miscellaneous/iconfactory.h"
@@ -47,9 +48,12 @@ void WebViewer::processContextMenu(QMenu* specific_menu, QContextMenuEvent* even
 
   // Add common items.
   specific_menu->addSeparator();
+  specific_menu->addAction(m_actionSaveHtml.data());
+  specific_menu->addSeparator();
   specific_menu->addAction(m_actionOpenExternalBrowser.data());
   specific_menu->addAction(m_actionPlayLink.data());
 
+  m_actionSaveHtml.data()->setEnabled(!html().simplified().isEmpty());
   m_actionOpenExternalBrowser.data()->setEnabled(m_contextMenuData.m_linkUrl.isValid());
 
 #if defined(ENABLE_MEDIAPLAYER)
@@ -87,6 +91,21 @@ void WebViewer::processContextMenu(QMenu* specific_menu, QContextMenuEvent* even
   }
 }
 
+void WebViewer::saveHtmlAs() {
+  QString selected_file = FileDialog::saveFileName(nullptr,
+                                                   QObject::tr("Save article in HTML format"),
+                                                   qApp->homeFolder(),
+                                                   QObject::tr("HTML files (*.htm *.html)"),
+                                                   nullptr,
+                                                   GENERAL_REMEMBERED_PATH);
+
+  if (selected_file.isEmpty()) {
+    return;
+  }
+
+  IOFactory::writeFile(selected_file, html().toUtf8());
+}
+
 void WebViewer::playClickedLinkAsMedia() {
 #if defined(ENABLE_MEDIAPLAYER)
   auto context_url = m_contextMenuData.m_linkUrl;
@@ -120,6 +139,8 @@ void WebViewer::initializeCommonMenuItems() {
     return;
   }
 
+  m_actionSaveHtml.reset(new QAction(qApp->icons()->fromTheme(QSL("document-save-as")),
+                                     QObject::tr("Save article as...")));
   m_actionOpenExternalBrowser.reset(new QAction(qApp->icons()->fromTheme(QSL("document-open")),
                                                 QObject::tr("Open in external browser")));
 
@@ -137,6 +158,10 @@ void WebViewer::initializeCommonMenuItems() {
                    [this]() {
                      openClickedLinkInExternalBrowser();
                    });
+
+  QObject::connect(m_actionSaveHtml.data(), &QAction::triggered, m_actionOpenExternalBrowser.data(), [this]() {
+    saveHtmlAs();
+  });
 
   QObject::connect(m_actionPlayLink.data(), &QAction::triggered, m_actionPlayLink.data(), [this]() {
     playClickedLinkAsMedia();

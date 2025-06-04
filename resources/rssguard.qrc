@@ -10,9 +10,6 @@
     <file>text/COPYING_GNU_LGPL</file>
     <file>text/COPYING_GNU_LGPL_21</file>
     <file>text/COPYING_QT</file>
-
-    <file>scripts/web_ui/rssguard.html</file>
-    <file>scripts/gemini/style.css</file>
     
     <file>sounds/boing.wav</file>
     <file>sounds/error.wav</file>

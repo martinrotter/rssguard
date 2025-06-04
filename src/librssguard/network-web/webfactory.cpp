@@ -6,22 +6,15 @@
 #include "miscellaneous/application.h"
 #include "miscellaneous/iconfactory.h"
 #include "miscellaneous/settings.h"
-#include "network-web/apiserver.h"
 
 #include <QDesktopServices>
 #include <QElapsedTimer>
 #include <QProcess>
 #include <QUrl>
 
-WebFactory::WebFactory(QObject* parent) : QObject(parent), m_apiServer(nullptr), m_customUserAgent(QString()) {
-  if (qApp->settings()->value(GROUP(Network), SETTING(Network::EnableApiServer)).toBool()) {
-    startApiServer();
-  }
-}
+WebFactory::WebFactory(QObject* parent) : QObject(parent), m_customUserAgent(QString()) {}
 
-WebFactory::~WebFactory() {
-  stopApiServer();
-}
+WebFactory::~WebFactory() {}
 
 bool WebFactory::sendMessageViaEmail(const Message& message) {
   if (qApp->settings()->value(GROUP(Browser), SETTING(Browser::CustomExternalEmailEnabled)).toBool()) {
@@ -224,22 +217,6 @@ void WebFactory::updateProxy() {
                << " type:" << QUOTE_W_SPACE_DOT(new_proxy.type());
 
     QNetworkProxy::setApplicationProxy(new_proxy);
-  }
-}
-
-void WebFactory::startApiServer() {
-  m_apiServer = new ApiServer(this);
-  m_apiServer->setListenAddressPort(QSL("http://localhost:54123"), true);
-
-  qDebugNN << LOGSEC_NETWORK << "Started API server:" << QUOTE_W_SPACE_DOT(m_apiServer->listenAddressPort());
-}
-
-void WebFactory::stopApiServer() {
-  if (m_apiServer != nullptr) {
-    qDebugNN << LOGSEC_NETWORK << "Stopped API server:" << QUOTE_W_SPACE_DOT(m_apiServer->listenAddressPort());
-
-    delete m_apiServer;
-    m_apiServer = nullptr;
   }
 }
 

@@ -8,7 +8,7 @@
 
 class GeminiParser {
   public:
-    explicit GeminiParser(bool rich_html);
+    explicit GeminiParser();
 
     QString geminiToHtml(const QByteArray& gemini_data);
 
@@ -39,7 +39,6 @@ class GeminiParser {
 
   private:
     State mode;
-    bool m_richHtml;
 };
 
 #endif // GEMINIPARSER_H

@@ -9,7 +9,6 @@
 #include <QObject>
 
 class QMenu;
-class ApiServer;
 
 class RSSGUARD_DLLSPEC WebFactory : public QObject {
     Q_OBJECT
@@ -27,9 +26,6 @@ class RSSGUARD_DLLSPEC WebFactory : public QObject {
 
     QString processFeedUriScheme(const QString& url);
 
-    void startApiServer();
-    void stopApiServer();
-
     void updateProxy();
     bool sendMessageViaEmail(const Message& message);
 
@@ -42,7 +38,6 @@ class RSSGUARD_DLLSPEC WebFactory : public QObject {
   private:
     static QMap<QString, char16_t> generateUnescapes();
 
-    ApiServer* m_apiServer;
     QString m_customUserAgent;
 };
 

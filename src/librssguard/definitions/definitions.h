@@ -333,8 +333,6 @@
 #define OS_ID "macOS"
 #elif defined(Q_OS_WIN)
 #define OS_ID "Windows"
-#elif defined(Q_OS_ANDROID)
-#define OS_ID "Android"
 #elif defined(Q_OS_UNIX)
 #define OS_ID "Unix"
 #else

@@ -14,11 +14,11 @@
 #include <QTimer>
 
 Downloader::Downloader(QObject* parent)
-  : QObject(parent), m_geminiClient(new GeminiClient(this)), m_geminiParser(GeminiParser(false)),
-    m_activeReply(nullptr), m_downloadManager(new SilentNetworkAccessManager(this)), m_timer(new QTimer(this)),
-    m_inputData(QByteArray()), m_inputMultipartData(nullptr), m_targetProtected(false), m_targetUsername(QString()),
-    m_targetPassword(QString()), m_lastOutputData({}), m_lastOutputError(QNetworkReply::NetworkError::NoError),
-    m_lastHttpStatusCode(0), m_lastHeaders({}) {
+  : QObject(parent), m_geminiClient(new GeminiClient(this)), m_geminiParser(GeminiParser()), m_activeReply(nullptr),
+    m_downloadManager(new SilentNetworkAccessManager(this)), m_timer(new QTimer(this)), m_inputData(QByteArray()),
+    m_inputMultipartData(nullptr), m_targetProtected(false), m_targetUsername(QString()), m_targetPassword(QString()),
+    m_lastOutputData({}), m_lastOutputError(QNetworkReply::NetworkError::NoError), m_lastHttpStatusCode(0),
+    m_lastHeaders({}) {
   m_timer->setInterval(DOWNLOAD_TIMEOUT);
   m_timer->setSingleShot(true);
 

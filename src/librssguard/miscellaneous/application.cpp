@@ -487,17 +487,11 @@ QStringList Application::replaceUserDataFolderPlaceholder(QStringList texts) con
 }
 
 QString Application::userDataHomeFolder() const {
-  QString pth;
   static int major_version = QVersionNumber::fromString(QSL(APP_VERSION)).majorVersion();
 
-#if defined(Q_OS_ANDROID)
-  return pth = IOFactory::getSystemFolder(QStandardPaths::GenericDataLocation) + QDir::separator() + QSL(APP_NAME) +
-               QSL(" %1").arg(major_version);
-#else
-  return pth = configFolder() + QDir::separator() + QSL(APP_NAME) + QSL(" %1").arg(major_version);
-#endif
+  QString pth = configFolder() + QDir::separator() + QSL(APP_NAME) + QSL(" %1").arg(major_version);
 
-  return QDir::toNativeSeparators(pth);
+  return pth;
 }
 
 QString Application::tempFolder() const {
@@ -509,11 +503,7 @@ QString Application::documentsFolder() const {
 }
 
 QString Application::homeFolder() const {
-#if defined(Q_OS_ANDROID)
-  return IOFactory::getSystemFolder(QStandardPaths::StandardLocation::GenericDataLocation);
-#else
   return IOFactory::getSystemFolder(QStandardPaths::StandardLocation::HomeLocation);
-#endif
 }
 
 void Application::backupDatabaseSettings(bool backup_database,

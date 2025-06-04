@@ -237,8 +237,6 @@ set(SOURCES
   network-web/gemini/geminiclient.h
   network-web/gemini/geminiparser.cpp
   network-web/gemini/geminiparser.h
-  network-web/apiserver.cpp
-  network-web/apiserver.h
   network-web/basenetworkaccessmanager.cpp
   network-web/basenetworkaccessmanager.h
   network-web/downloader.cpp
@@ -667,7 +665,7 @@ elseif(ENABLE_MEDIAPLAYER_LIBMPV)
   )
 endif()
 
-if(UNIX AND NOT APPLE AND NOT ANDROID)
+if(UNIX AND NOT APPLE)
   target_link_libraries(rssguard PUBLIC
     Qt${QT_VERSION_MAJOR}::DBus
   )
@@ -687,7 +685,7 @@ endif()
 if((WIN32 AND NOT BUILD_MSYS2) OR OS2)
   install(TARGETS rssguard DESTINATION .)
   set(HEADERS_FOLDER "include/librssguard")
-elseif((MINGW AND BUILD_MSYS2) OR (UNIX AND NOT APPLE AND NOT ANDROID))
+elseif((MINGW AND BUILD_MSYS2) OR (UNIX AND NOT APPLE))
   include (GNUInstallDirs)
   install(TARGETS rssguard
     LIBRARY DESTINATION ${CMAKE_INSTALL_LIBDIR}

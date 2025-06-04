@@ -17,7 +17,6 @@ class RootItem;
 
 struct ContextMenuData {
     QUrl m_linkUrl;
-    QUrl m_mediaUrl;
 };
 
 #define ACCEPTABLE_IMAGE_PERCENTUAL_WIDTH 0.97
@@ -92,11 +91,13 @@ class WebViewer {
     virtual ContextMenuData provideContextMenuData(QContextMenuEvent* event) const = 0;
 
   private:
+    void saveHtmlAs();
     void playClickedLinkAsMedia();
     void openClickedLinkInExternalBrowser();
     void initializeCommonMenuItems();
 
   private:
+    QScopedPointer<QAction> m_actionSaveHtml;
     QScopedPointer<QAction> m_actionOpenExternalBrowser;
     QScopedPointer<QAction> m_actionPlayLink;
     ContextMenuData m_contextMenuData;

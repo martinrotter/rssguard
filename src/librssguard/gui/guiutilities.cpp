@@ -11,12 +11,6 @@
 #include <QScreen>
 #include <QSettings>
 
-#if defined(Q_OS_ANDROID)
-#include <QApplication>
-#include <QDesktopWidget>
-#include <QSize>
-#endif
-
 void GuiUtilities::setLabelAsNotice(QLabel& label, bool is_warning, bool set_margins) {
   if (set_margins) {
     label.setMargin(6);

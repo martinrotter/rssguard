@@ -109,7 +109,7 @@ void LibMpvWidget::initializeGL() {
   mpv_opengl_init_params gl_init_params[1] = {get_proc_address, nullptr};
   mpv_render_param display{MPV_RENDER_PARAM_INVALID, nullptr};
 
-#if QT_VERSION_MAJOR == 6 && defined(Q_OS_UNIX) && !defined(Q_OS_DARWIN) && !defined(Q_OS_ANDROID)
+#if QT_VERSION_MAJOR == 6 && defined(Q_OS_UNIX) && !defined(Q_OS_DARWIN)
 #if defined(QT_FEATURE_xcb) && QT_CONFIG(xcb)
   if (QGuiApplication::platformName() == QStringLiteral("xcb")) {
     display.type = MPV_RENDER_PARAM_X11_DISPLAY;

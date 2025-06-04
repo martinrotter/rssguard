@@ -41,7 +41,7 @@
 #   {FEEDLY,GMAIL,INOREADER}_CLIENT_SECRET - preconfigured OAuth client SECRET.
 #
 # Other information:
-#   - supports Windows, Linux, *BSD, macOS, OS/2, Android,
+#   - supports Windows, Linux, *BSD, macOS, OS/2,
 #   - Qt 5.14.0 or newer is required,
 #   - Qt 6.3.0 or newer is required,
 #   - cmake 3.14.0 or newer is required,
@@ -196,7 +196,7 @@ else()
   message(STATUS "Media player feature is disabled.")
 endif()
 
-if(UNIX AND NOT APPLE AND NOT ANDROID)
+if(UNIX AND NOT APPLE)
   list(APPEND QT_COMPONENTS DBus)
 endif()
 
@@ -303,7 +303,7 @@ elseif(APPLE)
     resources/macosx/Info.plist.in
     ${CMAKE_BINARY_DIR}/Info.plist
   )
-elseif(UNIX AND NOT ANDROID)
+elseif(UNIX)
   add_subdirectory(resources/desktop)
   add_compile_definitions(
     APPDATA_NAME="${APPDATA_NAME}"
