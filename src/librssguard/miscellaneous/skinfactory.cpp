@@ -54,7 +54,7 @@ QVariant SkinFactory::colorForModel(SkinEnums::PaletteColors type, bool ignore_c
 }
 
 bool SkinFactory::isStyleGoodForAlternativeStylePalette(const QString& style_name) const {
-  static QRegularExpression re = QRegularExpression(QSL("^(fusion|windows|qt[56]ct-style)$"));
+  static QRegularExpression re = QRegularExpression(QSL("^(fusion|windows|windowsvista|windows11|qt[56]ct-style)$"));
 
   return re.match(style_name.toLower()).hasMatch();
 }
