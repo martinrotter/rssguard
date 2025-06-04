@@ -33,7 +33,7 @@ main() {
   local THEMES_FOLDER="$RESOURCES_FOLDER/graphics"
 
   local FOUND_ICON_FILES
-  local ICON_THEMES=("Breeze" "Breeze Dark" "Faenza" "Numix")
+  local ICON_THEMES=("Breeze" "Breeze Dark")
   local ICON_NAMES=($(pcregrep.exe -r -h --om-separator=$'\n' -o1 -o2 '.+fromTheme\(QSL\(\"([\_\-\+a-z]+)\"\)(?:, QSL\(\"([\_\-\+a-z]+)\"\))?' "$ROOT_SRC_FOLDER" | sort -u))
 
   #cd $ROOT_SRC_FOLDER
