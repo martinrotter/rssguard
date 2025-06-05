@@ -4,7 +4,11 @@
 
 #include "exceptions/applicationexception.h"
 #include "gui/dialogs/filedialog.h"
+#include "gui/dialogs/formmain.h"
+#include "gui/feedmessageviewer.h"
 #include "gui/reusable/networkproxydetails.h"
+#include "gui/webbrowser.h"
+#include "gui/webviewers/webviewer.h"
 #include "miscellaneous/application.h"
 #include "miscellaneous/externaltool.h"
 #include "miscellaneous/iconfactory.h"
@@ -244,6 +248,7 @@ void SettingsBrowserMail::saveSettings() {
   ExternalTool::setToolsToSettings(tools);
 
   qApp->web()->updateProxy();
+  qApp->mainForm()->tabWidget()->feedMessageViewer()->webBrowser()->viewer()->reloadNetworkSettings();
 
   onEndSaveSettings();
 }

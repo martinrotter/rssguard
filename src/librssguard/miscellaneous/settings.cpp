@@ -22,33 +22,6 @@ DVALUE(bool) VideoPlayer::MpvUseCustomConfigFolderDef = true;
 DKEY VideoPlayer::MpvCustomConfigFolder = "mpv_config_folder";
 DVALUE(QString) VideoPlayer::MpvCustomConfigFolderDef = "%data%/mpv";
 
-// Node.js.
-DKEY Node::ID = "nodejs";
-
-DKEY Node::NodeJsExecutable = QSL("nodejs_executable_") + OS_ID;
-
-#if (defined(Q_OS_WIN) && !defined(BUILD_MSYS2)) || defined(Q_OS_OS2)
-DVALUE(QString) Node::NodeJsExecutableDef = "node.exe";
-#else
-DVALUE(QString) Node::NodeJsExecutableDef = "node";
-#endif
-
-DKEY Node::NpmExecutable = QSL("npm_executable_") + OS_ID;
-
-#if defined(Q_OS_WIN) && !defined(BUILD_MSYS2)
-DVALUE(QString) Node::NpmExecutableDef = "npm.cmd";
-#elif defined(Q_OS_OS2)
-DVALUE(QString) Node::NpmExecutableDef = "npm.exe";
-#else
-DVALUE(QString) Node::NpmExecutableDef = "npm";
-#endif
-
-DKEY Node::PackageFolder = QSL("package_folder") + OS_ID;
-DVALUE(QString) Node::PackageFolderDef = QSL(USER_DATA_PLACEHOLDER) + "/node-packages-" + QSL(OS_ID).toLower();
-
-// Cookies.
-DKEY Cookies::ID = "cookies";
-
 // Network.
 DKEY Network::ID = "network";
 
@@ -60,21 +33,6 @@ DVALUE(bool) Network::EnableHttp2Def = false;
 
 DKEY Network::CustomUserAgent = "user_agent";
 DVALUE(QString) Network::CustomUserAgentDef = QString();
-
-// AdBlock.
-DKEY AdBlock::ID = "adblock";
-
-DKEY AdBlock::AdBlockEnabled = "enabled";
-DVALUE(bool) AdBlock::AdBlockEnabledDef = false;
-
-DKEY AdBlock::FilterLists = "filter_lists";
-DVALUE(QStringList)
-AdBlock::FilterListsDef = {QSL("https://secure.fanboy.co.nz/easylist.txt"),
-                           QSL("https://secure.fanboy.co.nz/easyprivacy.txt"),
-                           QSL("https://secure.fanboy.co.nz/fanboy-social.txt")};
-
-DKEY AdBlock::CustomFilters = "custom_filters";
-DVALUE(QStringList) AdBlock::CustomFiltersDef = {};
 
 // Feeds.
 DKEY Feeds::ID = "feeds";
@@ -464,6 +422,9 @@ DKEY Notifications::ID = "notifications";
 
 // Web browser.
 DKEY Browser::ID = "browser";
+
+DKEY Browser::LoadExternalResources = "load_external_resources";
+DVALUE(bool) Browser::LoadExternalResourcesDef = true;
 
 DKEY Browser::OpenLinksInExternalBrowserRightAway = "open_link_externally_wo_confirmation";
 DVALUE(bool) Browser::OpenLinksInExternalBrowserRightAwayDef = true;

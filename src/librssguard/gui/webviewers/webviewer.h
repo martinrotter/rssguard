@@ -35,6 +35,8 @@ class WebViewer {
     //   3. Viewer must set WebBrowser to be event filter at some point.
     virtual void bindToBrowser(WebBrowser* browser) = 0;
 
+    virtual void reloadNetworkSettings() = 0;
+
     // Perform inline search.
     // NOTE: When text is empty, cancel search.
     virtual void findText(const QString& text, bool backwards) = 0;
@@ -59,6 +61,10 @@ class WebViewer {
 
     // Returns final HTML generated for the articles.
     virtual QString htmlForMessage(const Message& messages, RootItem* root) const = 0;
+
+    // Enables/disables loading of remote resources like images etc.
+    virtual bool loadExternalResources() const;
+    virtual void setLoadExternalResources(bool load_resources);
 
     // Vertical scrollbar changer.
     virtual double verticalScrollBarPosition() const = 0;
@@ -97,6 +103,9 @@ class WebViewer {
     void initializeCommonMenuItems();
 
   private:
+    bool m_loadExternalResources;
+
+    QScopedPointer<QAction> m_actionExternalResources;
     QScopedPointer<QAction> m_actionSaveHtml;
     QScopedPointer<QAction> m_actionOpenExternalBrowser;
     QScopedPointer<QAction> m_actionPlayLink;

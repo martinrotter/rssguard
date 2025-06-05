@@ -26,8 +26,6 @@ class SearchTextWidget;
 class RSSGUARD_DLLSPEC WebBrowser : public TabContent {
     Q_OBJECT
 
-    friend class TextBrowserViewer;
-
   public:
     explicit WebBrowser(WebViewer* viewer = nullptr, QWidget* parent = nullptr);
     virtual ~WebBrowser();

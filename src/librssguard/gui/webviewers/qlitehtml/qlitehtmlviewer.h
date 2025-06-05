@@ -23,6 +23,8 @@ class RSSGUARD_DLLSPEC QLiteHtmlViewer : public QLiteHtmlWidget, public WebViewe
     virtual void bindToBrowser(WebBrowser* browser);
     virtual void findText(const QString& text, bool backwards);
 
+    virtual void reloadNetworkSettings();
+
     virtual void setHtml(const QString& html, const QUrl& url = {});
     virtual QString html() const;
     virtual QUrl url() const;
@@ -37,6 +39,9 @@ class RSSGUARD_DLLSPEC QLiteHtmlViewer : public QLiteHtmlWidget, public WebViewe
     virtual void applyFont(const QFont& fon);
     virtual qreal zoomFactor() const;
     virtual void setZoomFactor(qreal zoom_factor);
+
+  private slots:
+    QByteArray handleExternalResource(const QUrl& url) const;
 
   protected:
     virtual ContextMenuData provideContextMenuData(QContextMenuEvent* event) const;
@@ -58,6 +63,8 @@ class RSSGUARD_DLLSPEC QLiteHtmlViewer : public QLiteHtmlWidget, public WebViewe
   private:
     QPointer<RootItem> m_root;
     QPointer<SilentNetworkAccessManager> m_network;
+    QByteArray m_placeholderImage;
+    QByteArray m_placeholderImageError;
 };
 
 #endif // QLITEHTMLVIEWER_H

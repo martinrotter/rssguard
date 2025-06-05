@@ -12,7 +12,9 @@
 #include <QFileIconProvider>
 #include <QTimer>
 
-WebViewer::WebViewer() {}
+WebViewer::WebViewer()
+  : m_loadExternalResources(qApp->settings()->value(GROUP(Browser), SETTING(Browser::LoadExternalResources)).toBool()) {
+}
 
 WebViewer::~WebViewer() {}
 
@@ -50,6 +52,7 @@ void WebViewer::processContextMenu(QMenu* specific_menu, QContextMenuEvent* even
   specific_menu->addSeparator();
   specific_menu->addAction(m_actionSaveHtml.data());
   specific_menu->addSeparator();
+  specific_menu->addAction(m_actionExternalResources.data());
   specific_menu->addAction(m_actionOpenExternalBrowser.data());
   specific_menu->addAction(m_actionPlayLink.data());
 
@@ -139,6 +142,8 @@ void WebViewer::initializeCommonMenuItems() {
     return;
   }
 
+  m_actionExternalResources.reset(new QAction(qApp->icons()->fromTheme(QSL("applications-internet")),
+                                              QObject::tr("Load external resources")));
   m_actionSaveHtml.reset(new QAction(qApp->icons()->fromTheme(QSL("document-save-as")),
                                      QObject::tr("Save article as...")));
   m_actionOpenExternalBrowser.reset(new QAction(qApp->icons()->fromTheme(QSL("document-open")),
@@ -152,11 +157,21 @@ void WebViewer::initializeCommonMenuItems() {
   m_actionPlayLink->setEnabled(false);
 #endif
 
+  m_actionExternalResources->setCheckable(true);
+  m_actionExternalResources->setChecked(loadExternalResources());
+
   QObject::connect(m_actionOpenExternalBrowser.data(),
                    &QAction::triggered,
                    m_actionOpenExternalBrowser.data(),
                    [this]() {
                      openClickedLinkInExternalBrowser();
+                   });
+
+  QObject::connect(m_actionExternalResources.data(),
+                   &QAction::triggered,
+                   m_actionExternalResources.data(),
+                   [this](bool checked) {
+                     setLoadExternalResources(checked);
                    });
 
   QObject::connect(m_actionSaveHtml.data(), &QAction::triggered, m_actionOpenExternalBrowser.data(), [this]() {
@@ -166,4 +181,13 @@ void WebViewer::initializeCommonMenuItems() {
   QObject::connect(m_actionPlayLink.data(), &QAction::triggered, m_actionPlayLink.data(), [this]() {
     playClickedLinkAsMedia();
   });
+}
+
+bool WebViewer::loadExternalResources() const {
+  return m_loadExternalResources;
+}
+
+void WebViewer::setLoadExternalResources(bool load_resources) {
+  m_loadExternalResources = load_resources;
+  qApp->settings()->setValue(GROUP(Browser), Browser::LoadExternalResources, load_resources);
 }

@@ -31,10 +31,6 @@
 #define DEFAULT_VALUE(x) x##Def
 #define GROUP(x)         x::ID
 
-namespace Cookies {
-  KEY ID;
-}
-
 namespace DialogGeometries {
   KEY ID;
 }
@@ -42,19 +38,6 @@ namespace DialogGeometries {
 namespace FileDialogPaths {
   KEY ID;
 }
-
-namespace Node {
-  KEY ID;
-
-  KEY NodeJsExecutable;
-  VALUE(QString) NodeJsExecutableDef;
-
-  KEY NpmExecutable;
-  VALUE(QString) NpmExecutableDef;
-
-  KEY PackageFolder;
-  VALUE(QString) PackageFolderDef;
-} // namespace Node
 
 namespace VideoPlayer {
   KEY ID;
@@ -65,19 +48,6 @@ namespace VideoPlayer {
   KEY MpvCustomConfigFolder;
   VALUE(QString) MpvCustomConfigFolderDef;
 } // namespace VideoPlayer
-
-namespace AdBlock {
-  KEY ID;
-
-  KEY AdBlockEnabled;
-  VALUE(bool) AdBlockEnabledDef;
-
-  KEY FilterLists;
-  VALUE(QStringList) FilterListsDef;
-
-  KEY CustomFilters;
-  VALUE(QStringList) CustomFiltersDef;
-} // namespace AdBlock
 
 // Feeds.
 namespace Feeds {
@@ -505,6 +475,9 @@ namespace Notifications {
 // Web browser.
 namespace Browser {
   KEY ID;
+
+  KEY LoadExternalResources;
+  VALUE(bool) LoadExternalResourcesDef;
 
   KEY OpenLinksInExternalBrowserRightAway;
   VALUE(bool) OpenLinksInExternalBrowserRightAwayDef;

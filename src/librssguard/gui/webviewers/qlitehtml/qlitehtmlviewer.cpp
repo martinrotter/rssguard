@@ -11,18 +11,21 @@
 #include "network-web/silentnetworkaccessmanager.h"
 #include "services/abstract/serviceroot.h"
 
+#include <QBuffer>
 #include <QClipboard>
 #include <QKeyEvent>
 #include <QRegularExpression>
 #include <QScrollBar>
 
 QLiteHtmlViewer::QLiteHtmlViewer(QWidget* parent)
-  : QLiteHtmlWidget(parent), m_root(nullptr), m_network(new SilentNetworkAccessManager(this)) {
+  : QLiteHtmlWidget(parent), m_root(nullptr), m_network(new SilentNetworkAccessManager(this)),
+    m_placeholderImage(IconFactory::toByteArray(qApp->icons()->miscPixmap(QSL("image-placeholder")), QSL("PNG"))),
+    m_placeholderImageError(IconFactory::toByteArray(qApp->icons()->miscPixmap(QSL("image-placeholder-error")),
+                                                     QSL("PNG"))) {
   setAutoFillBackground(false);
   viewport()->setAutoFillBackground(false);
   setFrameShape(QFrame::Shape::NoFrame);
   setFrameShadow(QFrame::Shadow::Plain);
-
   setAntialias(true);
 
   horizontalScrollBar()->setSingleStep(5);
@@ -32,26 +35,7 @@ QLiteHtmlViewer::QLiteHtmlViewer(QWidget* parent)
   connect(this, &QLiteHtmlWidget::linkClicked, this, &QLiteHtmlViewer::linkClicked);
 
   setResourceHandler([this](const QUrl& url) {
-    qDebugNN << LOGSEC_HTMLVIEWER << "Resource requested:" << QUOTE_W_SPACE_DOT(url);
-
-    QEventLoop loop;
-    QByteArray data;
-    QNetworkReply* reply = m_network->get(QNetworkRequest(url));
-
-    connect(reply, &QNetworkReply::finished, this, [&data, &loop, reply] {
-      qDebugNN << LOGSEC_HTMLVIEWER << "Resource" << QUOTE_W_SPACE(reply->url())
-               << "finished:" << QUOTE_W_SPACE_DOT(reply->error());
-
-      if (reply->error() == QNetworkReply::NetworkError::NoError) {
-        data = reply->readAll();
-      }
-
-      reply->deleteLater();
-      loop.exit();
-    });
-
-    loop.exec(QEventLoop::ProcessEventsFlag::ExcludeUserInputEvents);
-    return data;
+    return handleExternalResource(url);
   });
 }
 
@@ -65,6 +49,10 @@ void QLiteHtmlViewer::findText(const QString& text, bool backwards) {
   QLiteHtmlWidget::findText(text,
                             backwards ? QTextDocument::FindFlag::FindBackward : QTextDocument::FindFlag(0),
                             false);
+}
+
+void QLiteHtmlViewer::reloadNetworkSettings() {
+  m_network->loadSettings();
 }
 
 QString QLiteHtmlViewer::html() const {
@@ -125,13 +113,39 @@ void QLiteHtmlViewer::setZoomFactor(qreal zoom_factor) {
   QLiteHtmlWidget::setZoomFactor(zoom_factor);
 }
 
-void QLiteHtmlViewer::setHtml(const QString& html, const QUrl& url) {
-  IOFactory::debugWriteFile("a.html", html.toUtf8());
+QByteArray QLiteHtmlViewer::handleExternalResource(const QUrl& url) const {
+  qDebugNN << LOGSEC_HTMLVIEWER << "Resource requested:" << QUOTE_W_SPACE_DOT(url);
 
+  if (!loadExternalResources()) {
+    return m_placeholderImage;
+  }
+
+  QEventLoop loop;
+  QByteArray data;
+  QNetworkReply* reply = m_network->get(QNetworkRequest(url));
+
+  connect(reply, &QNetworkReply::finished, this, [&] {
+    qDebugNN << LOGSEC_HTMLVIEWER << "Resource" << QUOTE_W_SPACE(reply->url())
+             << "finished:" << QUOTE_W_SPACE_DOT(reply->error());
+
+    if (reply->error() == QNetworkReply::NetworkError::NoError) {
+      data = reply->readAll();
+    }
+    else {
+      data = m_placeholderImageError;
+    }
+
+    reply->deleteLater();
+    loop.exit();
+  });
+
+  loop.exec(QEventLoop::ProcessEventsFlag::ExcludeUserInputEvents);
+  return data;
+}
+
+void QLiteHtmlViewer::setHtml(const QString& html, const QUrl& url) {
   QLiteHtmlWidget::setUrl(url);
   QLiteHtmlWidget::setHtml(html);
-
-  // QLiteHtmlWidget::setHtml(QString::fromUtf8(IOFactory::readFile("a.html")));
 
   emit pageTitleChanged(QLiteHtmlWidget::title());
   emit pageUrlChanged(url);
@@ -154,7 +168,6 @@ ContextMenuData QLiteHtmlViewer::provideContextMenuData(QContextMenuEvent* event
 }
 
 void QLiteHtmlViewer::keyPressEvent(QKeyEvent* event) {
-
   if (event->matches(QKeySequence::StandardKey::Copy)) {
     auto sel_text = selectedText();
     auto* clip = QGuiApplication::clipboard();

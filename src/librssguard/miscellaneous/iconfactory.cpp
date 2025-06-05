@@ -63,6 +63,22 @@ QByteArray IconFactory::toByteArray(const QIcon& icon) {
   return array.toBase64();
 }
 
+QPixmap IconFactory::fromByteArray(QByteArray array, const QString& format) {
+  QPixmap pixmap;
+  pixmap.loadFromData(array, format.toLocal8Bit().constData());
+
+  return pixmap;
+}
+
+QByteArray IconFactory::toByteArray(const QPixmap& pixmap, const QString& format) {
+  QByteArray bytes;
+  QBuffer buffer(&bytes);
+  buffer.open(QIODevice::WriteOnly);
+  pixmap.save(&buffer, format.toLocal8Bit().constData());
+
+  return buffer.data();
+}
+
 QIcon IconFactory::fromTheme(const QString& name, const QString& fallback) {
   QIcon original = QIcon::fromTheme(name);
 
