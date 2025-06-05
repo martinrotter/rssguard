@@ -40,6 +40,7 @@ p {
 .article-urls-strip {
   margin-top: 0.8em;
   margin-bottom: 0.8em;
+  line-height: 1.7;
 }
 
 .article-url {
