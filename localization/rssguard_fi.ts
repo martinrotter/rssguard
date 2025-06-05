@@ -370,7 +370,7 @@ napsauttamalla tätä ilmoitusta.</translation>
       <location filename="../src/librssguard/gui/reusable/articleamountcontrol.cpp" line="179"/>
       <source>newest article(s)</source>
       <translation type="unfinished">
-        <numerusform>newest article(s)</numerusform>
+        <numerusform>uusinta artikkelia</numerusform>
         <numerusform>newest article(s)</numerusform>
       </translation>
     </message>
@@ -417,7 +417,7 @@ napsauttamalla tätä ilmoitusta.</translation>
       <location filename="../src/librssguard/gui/notifications/articlelistnotification.cpp" line="73"/>
       <source>%n feeds fetched</source>
       <translation type="unfinished">
-        <numerusform>%n feeds fetched</numerusform>
+        <numerusform>%n syötettä noudettu</numerusform>
         <numerusform>%n feeds fetched</numerusform>
       </translation>
     </message>
@@ -966,7 +966,7 @@ Avaa ylähakemisto.</translation>
       <location filename="../src/librssguard/services/abstract/feed.cpp" line="260"/>
       <source>uses global settings (%n minute(s) to next auto-fetch of articles)</source>
       <translation type="unfinished">
-        <numerusform>uses global settings (%n minute(s) to next auto-fetch of articles)</numerusform>
+        <numerusform>käyttää yleisiä asetuksia (%n minuuttia seuraavaan automaattiseen artikkelien noutoon)</numerusform>
         <numerusform>uses global settings (%n minute(s) to next auto-fetch of articles)</numerusform>
       </translation>
     </message>
@@ -975,14 +975,14 @@ Avaa ylähakemisto.</translation>
       <source>uses specific settings (%n minute(s) to next auto-fetching of new articles)</source>
       <extracomment>Describes feed auto-update status.</extracomment>
       <translation type="unfinished">
-        <numerusform>uses specific settings (%n minute(s) to next auto-fetching of new articles)</numerusform>
+        <numerusform>käyttää erityisasetuksia (%n minuuttia seuraavaan automaattiseen uusien artikkelien noutoon)</numerusform>
         <numerusform>uses specific settings (%n minute(s) to next auto-fetching of new articles)</numerusform>
       </translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/abstract/feed.cpp" line="290"/>
       <source>has new articles</source>
-      <translation type="unfinished">has new articles</translation>
+      <translation>sisältää uusia artikkeleja</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/abstract/feed.cpp" line="299"/>
@@ -1001,11 +1001,11 @@ Active message filters: %2
 Status: %3
 Source: &lt;a href=&quot;%4&quot;&gt;%4&lt;/a&gt;
 Item ID: %5</source>
-      <translation type="unfinished">Auto-update status: %1
-Active message filters: %2
-Status: %3
-Source: &lt;a href=&quot;%4&quot;&gt;%4&lt;/a&gt;
-Item ID: %5</translation>
+      <translation>Automaattisen päivityksen tila: %1
+Aktiivisia viestisuodattimia: %2
+Tila: %3
+Lähde: &lt;a href=&quot;%4&quot;&gt;%4&lt;/a&gt;
+Kohteen tunnus: %5</translation>
     </message>
   </context>
   <context>
@@ -1013,7 +1013,7 @@ Item ID: %5</translation>
     <message>
       <location filename="../src/librssguard/core/feeddownloader.cpp" line="236"/>
       <source>feed is in network cooldown mode due to making too many network requests</source>
-      <translation type="unfinished">feed is in network cooldown mode due to making too many network requests</translation>
+      <translation>syöte on verkon jäähdytystilassa, koska verkkopyyntöjä on liikaa</translation>
     </message>
   </context>
   <context>
@@ -1060,7 +1060,7 @@ Item ID: %5</translation>
       <location filename="../src/librssguard/miscellaneous/feedreader.cpp" line="372"/>
       <source>I will auto-download new articles for %n feed(s).</source>
       <translation type="unfinished">
-        <numerusform>I will auto-download new articles for %n feed(s).</numerusform>
+        <numerusform>Lataan uudet artikkelit automaattisesti %n syötteelle.</numerusform>
         <numerusform>I will auto-download new articles for %n feed(s).</numerusform>
       </translation>
     </message>
@@ -1131,12 +1131,12 @@ Item ID: %5</translation>
     <message>
       <location filename="../src/librssguard-feedly/src/gui/feedlyaccountdetails.cpp" line="39"/>
       <source>Your %1 does not offer official Feedly support, thus you must authorize via special authorization code called &quot;developer access token&quot;. These tokens are usually valid only for 1 month and allow only 250 API calls each day.</source>
-      <translation type="unfinished">Your %1 does not offer official Feedly support, thus you must authorize via special authorization code called &quot;developer access token&quot;. These tokens are usually valid only for 1 month and allow only 250 API calls each day.</translation>
+      <translation>%1 ei tarjoa virallista Feedly-tukea, joten sinun on myönnettävä oikeudet valtuutuskoodilla, josta käytetään nimitystä &quot;developer access token&quot; (kehittäjän käyttöoikeustunnus). Nämä tunnukset ovat yleensä voimassa vain kuukauden, ja niiden kautta saa tehdä enintään 250 API-kutsua päivässä.</translation>
     </message>
     <message>
       <location filename="../src/librssguard-feedly/src/gui/feedlyaccountdetails.cpp" line="52"/>
       <source>If you select intelligent synchronization, then only not-yet-fetched or updated articles are downloaded. Network usage is greatly reduced and overall synchronization speed is greatly improved, but first feed fetching could be slow anyway if your feed contains huge number of articles.</source>
-      <translation type="unfinished">If you select intelligent synchronization, then only not-yet-fetched or updated articles are downloaded. Network usage is greatly reduced and overall synchronization speed is greatly improved, but first feed fetching could be slow anyway if your feed contains huge number of articles.</translation>
+      <translation>Jos valitset älykkään synkronoinnin, vain ei vielä noudetut tai päivitetyt artikkelit ladataan. Verkkoyhteyttä käytetään huomattavasti vähemmän ja synkronointi nopeutuu merkittävästi, mutta syötteiden ensimmäinen noutokerta voi kestää kauan, jos syötteessä on paljon artikkeleja.</translation>
     </message>
     <message>
       <location filename="../src/librssguard-feedly/src/gui/feedlyaccountdetails.cpp" line="95"/>
@@ -1157,7 +1157,7 @@ Item ID: %5</translation>
     <message>
       <location filename="../src/librssguard-feedly/src/gui/feedlyaccountdetails.cpp" line="117"/>
       <source>Tested successfully. You may be prompted to login once more.</source>
-      <translation type="unfinished">Tested successfully. You may be prompted to login once more.</translation>
+      <translation>Testaus onnistui. Sinua saatetaan pyytää kirjautumaan vielä kerran.</translation>
     </message>
     <message>
       <location filename="../src/librssguard-feedly/src/gui/feedlyaccountdetails.cpp" line="118"/>
@@ -1177,7 +1177,7 @@ Item ID: %5</translation>
     <message>
       <location filename="../src/librssguard-feedly/src/gui/feedlyaccountdetails.cpp" line="34"/>
       <source>Your %1 build has official Feedly support. You do not have to use &quot;developer access token&quot;. You can therefore leave corresponding field empty.</source>
-      <translation type="unfinished">Your %1 build has official Feedly support. You do not have to use &quot;developer access token&quot;. You can therefore leave corresponding field empty.</translation>
+      <translation>Versio %1 tukee Feedlyä virallisesti. Sinun ei tarvitse käyttää kehittäjän käyttöoikeustunnusta, &quot;developer access token&quot;. Voit siis jättää kyseisen kentän tyhjäksi.</translation>
     </message>
     <message>
       <location filename="../src/librssguard-feedly/src/gui/feedlyaccountdetails.cpp" line="154"/>
@@ -1212,7 +1212,7 @@ Item ID: %5</translation>
     <message>
       <location filename="../src/librssguard-feedly/src/gui/feedlyaccountdetails.cpp" line="47"/>
       <source>Beware of downloading too many articles, because Feedly permanently caches ALL articles of the feed, so you might end up with thousands of articles which you will never read anyway.</source>
-      <translation type="unfinished">Beware of downloading too many articles, because Feedly permanently caches ALL articles of the feed, so you might end up with thousands of articles which you will never read anyway.</translation>
+      <translation>Älä lataa liikaa artikkeleja, sillä Feedly siirtää KAIKKI syötteen artikkelit pysyvästi välimuistiin. Sinulle voi siis tulla tuhansia artikkeleita, joita et tule koskaan lukemaan.</translation>
     </message>
   </context>
   <context>
@@ -1303,7 +1303,7 @@ Item ID: %5</translation>
     <message>
       <location filename="../src/librssguard/gui/toolbars/feedstoolbar.cpp" line="78"/>
       <source>Toolbar spacer</source>
-      <translation type="unfinished">Toolbar spacer</translation>
+      <translation>Työkalupalkin erotin</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/toolbars/feedstoolbar.cpp" line="121"/>
@@ -1341,7 +1341,7 @@ Item ID: %5</translation>
     <message>
       <location filename="../src/librssguard/gui/feedsview.cpp" line="1047"/>
       <source>Context menu for empty space</source>
-      <translation type="unfinished">Context menu for empty space</translation>
+      <translation>Pikavalikko tyhjälle tilalle</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/feedsview.cpp" line="294"/>
@@ -1375,7 +1375,7 @@ Item ID: %5</translation>
     <message>
       <location filename="../src/librssguard/gui/feedsview.cpp" line="1101"/>
       <source>Context menu for regex query</source>
-      <translation type="unfinished">Context menu for regex query</translation>
+      <translation>Pikavalikko kyselyille säännöllisillä lausekkeilla</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/feedsview.cpp" line="170"/>
@@ -1450,7 +1450,7 @@ Item ID: %5</translation>
       <location filename="../src/librssguard/gui/feedsview.cpp" line="457"/>
       <source>Deleting %n items</source>
       <translation type="unfinished">
-        <numerusform>Deleting %n items</numerusform>
+        <numerusform>Poistetaan %n kohdetta</numerusform>
         <numerusform>Deleting %n items</numerusform>
       </translation>
     </message>
@@ -1458,7 +1458,7 @@ Item ID: %5</translation>
       <location filename="../src/librssguard/gui/feedsview.cpp" line="458"/>
       <source>You are about to completely delete %n items.</source>
       <translation type="unfinished">
-        <numerusform>You are about to completely delete %n items.</numerusform>
+        <numerusform>Olet poistamassa pysyvästi %n kohdetta.</numerusform>
         <numerusform>You are about to completely delete %n items.</numerusform>
       </translation>
     </message>
@@ -1525,23 +1525,23 @@ Skins base folder -&gt; &quot;%4&quot;
 Icon themes base folder -&gt; &quot;%8&quot;
 Node.js package folder -&gt; &quot;%6&quot;
 QtWebEngine cache folder -&gt; &quot;%7&quot;</source>
-      <translation type="unfinished">User data folder (&quot;%5&quot;) -&gt; &quot;%1&quot;
+      <translation>Käyttäjätietojen kansio (&quot;%5&quot;) -&gt; &quot;%1&quot;
 
-Settings file (%3) -&gt; &quot;%2&quot;
-Skins base folder -&gt; &quot;%4&quot;
-Icon themes base folder -&gt; &quot;%8&quot;
-Node.js package folder -&gt; &quot;%6&quot;
-QtWebEngine cache folder -&gt; &quot;%7&quot;</translation>
+Asetustiedosto (%3) -&gt; &quot;%2&quot;
+Ulkoasujen peruskansio -&gt; &quot;%4&quot;
+Kuvaketeemojen peruskansio -&gt; &quot;%8&quot;
+Node.js-paketin kansio -&gt; &quot;%6&quot;
+QtWebEnginen välimuistikansio -&gt; &quot;%7&quot;</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formabout.cpp" line="134"/>
       <source>&lt;h4&gt;%8&lt;/h4&gt;&lt;b&gt;Version:&lt;/b&gt; %1 (built on %2/%3)&lt;br/&gt;&lt;b&gt;Revision:&lt;/b&gt; %4&lt;br/&gt;&lt;b&gt;Build date:&lt;/b&gt; %5&lt;br/&gt;&lt;b&gt;OS:&lt;/b&gt; %9&lt;br/&gt;&lt;b&gt;Qt:&lt;/b&gt; %6 (compiled against %7)</source>
-      <translation type="unfinished">&lt;h4&gt;%8&lt;/h4&gt;&lt;b&gt;Version:&lt;/b&gt; %1 (built on %2/%3)&lt;br/&gt;&lt;b&gt;Revision:&lt;/b&gt; %4&lt;br/&gt;&lt;b&gt;Build date:&lt;/b&gt; %5&lt;br/&gt;&lt;b&gt;OS:&lt;/b&gt; %9&lt;br/&gt;&lt;b&gt;Qt:&lt;/b&gt; %6 (compiled against %7)</translation>
+      <translation>&lt;h4&gt;%8&lt;/h4&gt;&lt;b&gt;Versio:&lt;/b&gt; %1 (luotu %2/%3)&lt;br/&gt;&lt;b&gt;Tarkistusversio:&lt;/b&gt; %4&lt;br/&gt;&lt;b&gt;Koontipäivä:&lt;/b&gt; %5&lt;br/&gt;&lt;b&gt;Käyttöjärjestelmä:&lt;/b&gt; %9&lt;br/&gt;&lt;b&gt;Qt:&lt;/b&gt; %6 (koontiperusta: %7)</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formabout.cpp" line="152"/>
       <source>&lt;body&gt;%5 is a (very) tiny feed reader.&lt;br&gt;&lt;br&gt;This software is distributed under the terms of GNU General Public License, version 3.&lt;br&gt;&lt;br&gt;Contacts:&lt;ul&gt;&lt;li&gt;&lt;a href=&quot;mailto://%1&quot;&gt;%1&lt;/a&gt; ~e-mail&lt;/li&gt;&lt;li&gt;&lt;a href=&quot;%2&quot;&gt;%2&lt;/a&gt; ~website&lt;/li&gt;&lt;/ul&gt;You can obtain source code for %5 from its website.&lt;br&gt;&lt;br&gt;&lt;br&gt;Copyright (C) 2011-%3 %4&lt;/body&gt;</source>
-      <translation type="unfinished">&lt;body&gt;%5 is a (very) tiny feed reader.&lt;br&gt;&lt;br&gt;This software is distributed under the terms of GNU General Public License, version 3.&lt;br&gt;&lt;br&gt;Contacts:&lt;ul&gt;&lt;li&gt;&lt;a href=&quot;mailto://%1&quot;&gt;%1&lt;/a&gt; ~e-mail&lt;/li&gt;&lt;li&gt;&lt;a href=&quot;%2&quot;&gt;%2&lt;/a&gt; ~website&lt;/li&gt;&lt;/ul&gt;You can obtain source code for %5 from its website.&lt;br&gt;&lt;br&gt;&lt;br&gt;Copyright (C) 2011-%3 %4&lt;/body&gt;</translation>
+      <translation>&lt;body&gt;%5 on (erittäin) pieni syötteenlukija.&lt;br&gt;&lt;br&gt;Ohjelmistoa jaellaan GNU General Public License -lisenssin version 3 mukaisesti.&lt;br&gt;&lt;br&gt;Contacts:&lt;ul&gt;&lt;li&gt;&lt;a href=&quot;mailto://%1&quot;&gt;%1&lt;/a&gt; ~e-mail&lt;/li&gt;&lt;li&gt;&lt;a href=&quot;%2&quot;&gt;%2&lt;/a&gt; ~website&lt;/li&gt;&lt;/ul&gt; %5 -ohjelmiston lähdekoodi on saatavilla sen omalla sivustolla.&lt;br&gt;&lt;br&gt;&lt;br&gt;Tekijänoikeudet (C) 2011 - %3 %4&lt;/body&gt;</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formabout.cpp" line="74"/>
@@ -1719,12 +1719,12 @@ QtWebEngine cache folder -&gt; &quot;%7&quot;</translation>
     <message>
       <location filename="../src/librssguard/services/abstract/gui/formaddeditprobe.cpp" line="17"/>
       <source>A regular expression (shortened as regex or regexp) is a sequence of characters that specifies a match pattern in text. See more &lt;a href=&quot;https://learn.microsoft.com/en-us/dotnet/standard/base-types/regular-expression-language-quick-reference&quot;&gt;info&lt;/a&gt;.</source>
-      <translation type="unfinished">A regular expression (shortened as regex or regexp) is a sequence of characters that specifies a match pattern in text. See more &lt;a href=&quot;https://learn.microsoft.com/en-us/dotnet/standard/base-types/regular-expression-language-quick-reference&quot;&gt;info&lt;/a&gt;.</translation>
+      <translation>Säännölliset lausekkeet (regex tai regexp) ovat lausekkeita, jotka määrittelevät jonkin vastaavuuden tekstissä. Lisätietoja on osoitteessa &lt;a href=&quot;https://learn.microsoft.com/en-us/dotnet/standard/base-types/regular-expression-language-quick-reference&quot;&gt;info&lt;/a&gt;.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/abstract/gui/formaddeditprobe.cpp" line="25"/>
       <source>Regex query name cannot be empty.</source>
-      <translation type="unfinished">Regex query name cannot be empty.</translation>
+      <translation>Säännöllisten lausekkeiden kyselyn nimi ei saa olla tyhjä.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/abstract/gui/formaddeditprobe.cpp" line="28"/>
@@ -1740,12 +1740,12 @@ QtWebEngine cache folder -&gt; &quot;%7&quot;</translation>
     <message>
       <location filename="../src/librssguard/services/abstract/gui/formaddeditprobe.cpp" line="49"/>
       <source>Create new regex query</source>
-      <translation type="unfinished">Create new regex query</translation>
+      <translation>Luo uusi kysely säännöllisillä lausekkeilla</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/abstract/gui/formaddeditprobe.cpp" line="70"/>
       <source>Edit regex query &apos;%1&apos;</source>
-      <translation type="unfinished">Edit regex query &apos;%1&apos;</translation>
+      <translation>Muokkaa säännöllisten lausekkeiden kyselyä &apos;%1&apos;</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/abstract/gui/formaddeditprobe.cpp" line="37"/>
@@ -1872,7 +1872,7 @@ QtWebEngine cache folder -&gt; &quot;%7&quot;</translation>
       <location filename="../src/librssguard/services/abstract/gui/formcategorydetails.cpp" line="108"/>
       <source>Edit %n categories</source>
       <translation type="unfinished">
-        <numerusform>Edit %n categories</numerusform>
+        <numerusform>Muokkaa %n luokkaa</numerusform>
         <numerusform>Edit %n categories</numerusform>
       </translation>
     </message>
@@ -1982,7 +1982,7 @@ QtWebEngine cache folder -&gt; &quot;%7&quot;</translation>
       <location filename="../src/librssguard/services/abstract/gui/formcategorydetails.ui" line="43"/>
       <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_formcategorydetails.h" line="182"/>
       <source>Select parent item for your category.</source>
-      <translation type="unfinished">Select parent item for your category.</translation>
+      <translation>Valitse ylätason kohde luokasta.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/abstract/gui/formcategorydetails.ui" line="61"/>
@@ -2015,7 +2015,7 @@ QtWebEngine cache folder -&gt; &quot;%7&quot;</translation>
       <location filename="../src/librssguard/gui/dialogs/formdatabasecleanup.cpp" line="64"/>
       <source> day(s)</source>
       <translation type="unfinished">
-        <numerusform> day(s)</numerusform>
+        <numerusform>päivä(ä)</numerusform>
         <numerusform> day(s)</numerusform>
       </translation>
     </message>
@@ -2057,7 +2057,7 @@ QtWebEngine cache folder -&gt; &quot;%7&quot;</translation>
       <location filename="../src/librssguard/gui/dialogs/formdatabasecleanup.ui" line="20"/>
       <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_formdatabasecleanup.h" line="189"/>
       <source>Cleanup settings</source>
-      <translation type="unfinished">Cleanup settings</translation>
+      <translation>Poistoasetukset</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formdatabasecleanup.ui" line="26"/>
@@ -2134,7 +2134,7 @@ QtWebEngine cache folder -&gt; &quot;%7&quot;</translation>
     <message>
       <location filename="../src/librssguard-standard/src/gui/formdiscoverfeeds.ui" line="51"/>
       <source>Recursive discovery (can take some time for bigger websites)</source>
-      <translation type="unfinished">Recursive discovery (can take some time for bigger websites)</translation>
+      <translation>Rekursiivinen haku (voi kestää kauan isoilla sivustoilla)</translation>
     </message>
     <message>
       <location filename="../src/librssguard-standard/src/gui/formdiscoverfeeds.ui" line="77"/>
@@ -2144,7 +2144,7 @@ QtWebEngine cache folder -&gt; &quot;%7&quot;</translation>
     <message>
       <location filename="../src/librssguard-standard/src/gui/formdiscoverfeeds.ui" line="83"/>
       <source>Target parent category</source>
-      <translation type="unfinished">Target parent category</translation>
+      <translation>Kohdeluokka ylätasolla</translation>
     </message>
     <message>
       <location filename="../src/librssguard-standard/src/gui/formdiscoverfeeds.ui" line="95"/>
@@ -2154,32 +2154,32 @@ QtWebEngine cache folder -&gt; &quot;%7&quot;</translation>
     <message>
       <location filename="../src/librssguard-standard/src/gui/formdiscoverfeeds.ui" line="128"/>
       <source>Select &amp;all</source>
-      <translation type="unfinished">Select &amp;all</translation>
+      <translation>Valitse k&amp;aikki</translation>
     </message>
     <message>
       <location filename="../src/librssguard-standard/src/gui/formdiscoverfeeds.ui" line="135"/>
       <source>&amp;Unselect all</source>
-      <translation type="unfinished">&amp;Unselect all</translation>
+      <translation>&amp;Poista kaikkien valinta</translation>
     </message>
     <message>
       <location filename="../src/librssguard-standard/src/gui/formdiscoverfeeds.ui" line="190"/>
       <source>Add single feed with advanced details</source>
-      <translation type="unfinished">Add single feed with advanced details</translation>
+      <translation>Lisää yksi syöte tarkoilla tiedoilla</translation>
     </message>
     <message>
       <location filename="../src/librssguard-standard/src/gui/formdiscoverfeeds.ui" line="197"/>
       <source>&amp;Import checked feeds</source>
-      <translation type="unfinished">&amp;Import checked feeds</translation>
+      <translation>&amp;Tuo merkityt syötteet</translation>
     </message>
     <message>
       <location filename="../src/librssguard-standard/src/gui/formdiscoverfeeds.cpp" line="42"/>
       <source>Switch to &amp;advanced mode</source>
-      <translation type="unfinished">Switch to &amp;advanced mode</translation>
+      <translation>Siirry &amp;edistyneeseen tilaan</translation>
     </message>
     <message>
       <location filename="../src/librssguard-standard/src/gui/formdiscoverfeeds.cpp" line="44"/>
       <source>Close this dialog and display dialog for adding individual feeds with advanced options.</source>
-      <translation type="unfinished">Close this dialog and display dialog for adding individual feeds with advanced options.</translation>
+      <translation>Sulje tämä valintaikkuna ja näytä valintaikkuna yksittäisten syötteiden lisäämiseen lisäasetuksilla.</translation>
     </message>
     <message>
       <location filename="../src/librssguard-standard/src/gui/formdiscoverfeeds.cpp" line="126"/>
@@ -2284,14 +2284,14 @@ QtWebEngine cache folder -&gt; &quot;%7&quot;</translation>
       <location filename="../src/librssguard/services/abstract/gui/formfeeddetails.cpp" line="153"/>
       <source>Edit %n feeds</source>
       <translation type="unfinished">
-        <numerusform>Edit %n feeds</numerusform>
+        <numerusform>Muokkaa %n syötettä</numerusform>
         <numerusform>Edit %n feeds</numerusform>
       </translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/abstract/gui/formfeeddetails.cpp" line="205"/>
       <source>Fetch articles using global interval</source>
-      <translation type="unfinished">Fetch articles using global interval</translation>
+      <translation>Nouda artikkelit yleistä aikaväliä noudattaen</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/abstract/gui/formfeeddetails.cpp" line="207"/>
@@ -4153,7 +4153,7 @@ Voit asentaa sen nyt.</translation>
     <message>
       <location filename="../src/librssguard-gmail/src/gui/gmailaccountdetails.cpp" line="89"/>
       <source>Tested successfully. You may be prompted to login once more.</source>
-      <translation type="unfinished">Tested successfully. You may be prompted to login once more.</translation>
+      <translation>Testaus onnistui. Sinua saatetaan pyytää kirjautumaan vielä kerran.</translation>
     </message>
     <message>
       <location filename="../src/librssguard-gmail/src/gui/gmailaccountdetails.cpp" line="90"/>
@@ -4421,7 +4421,7 @@ Kirjautumistunnusten vanhentuminen: %2</translation>
     <message>
       <location filename="../src/librssguard-greader/src/gui/greaderaccountdetails.cpp" line="52"/>
       <source>If you select intelligent synchronization, then only not-yet-fetched or updated articles are downloaded. Network usage is greatly reduced and overall synchronization speed is greatly improved, but first feed fetching could be slow anyway if your feed contains huge number of articles.</source>
-      <translation type="unfinished">If you select intelligent synchronization, then only not-yet-fetched or updated articles are downloaded. Network usage is greatly reduced and overall synchronization speed is greatly improved, but first feed fetching could be slow anyway if your feed contains huge number of articles.</translation>
+      <translation>Jos valitset älykkään synkronoinnin, vain ei vielä noudetut tai päivitetyt artikkelit ladataan. Verkkoyhteyttä käytetään huomattavasti vähemmän ja synkronointi nopeutuu merkittävästi, mutta syötteiden ensimmäinen noutokerta voi kestää kauan, jos syötteessä on paljon artikkeleja.</translation>
     </message>
     <message>
       <location filename="../src/librssguard-greader/src/gui/greaderaccountdetails.cpp" line="61"/>
@@ -5695,7 +5695,7 @@ Kirjautumistunnusten vanhentuminen: %2</translation>
     <message>
       <location filename="../src/librssguard/gui/toolbars/messagestoolbar.cpp" line="95"/>
       <source>Toolbar spacer</source>
-      <translation type="unfinished">Toolbar spacer</translation>
+      <translation>Työkalupalkin erotin</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/toolbars/messagestoolbar.cpp" line="221"/>
@@ -9250,7 +9250,7 @@ This setting is useful when raw XML parsing of the feed is very slow, this happe
     <message>
       <location filename="../src/librssguard/gui/toolbars/statusbar.cpp" line="127"/>
       <source>Toolbar spacer</source>
-      <translation type="unfinished">Toolbar spacer</translation>
+      <translation>Työkalupalkin erotin</translation>
     </message>
   </context>
   <context>
@@ -9417,7 +9417,7 @@ Lukemattomia uutisia: %2</translation>
     <message>
       <location filename="../src/librssguard/gui/toolbars/toolbareditor.cpp" line="176"/>
       <source>Toolbar spacer</source>
-      <translation type="unfinished">Toolbar spacer</translation>
+      <translation>Työkalupalkin erotin</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/toolbars/toolbareditor.ui" line="32"/>
