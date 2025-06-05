@@ -6,7 +6,11 @@
 
 SettingsPanel::SettingsPanel(Settings* settings, QWidget* parent)
   : QWidget(parent), m_requiresRestart(false), m_isDirty(false), m_isLoading(false), m_isLoaded(false),
-    m_settings(settings) {}
+    m_settings(settings), m_uiLoaded(false) {}
+
+void SettingsPanel::loadUi() {
+  m_uiLoaded = true;
+}
 
 void SettingsPanel::onBeginLoadSettings() {
   m_isLoading = true;
@@ -45,6 +49,10 @@ void SettingsPanel::requireRestart() {
   if (!m_isLoading) {
     setRequiresRestart(true);
   }
+}
+
+bool SettingsPanel::uiLoaded() const {
+  return m_uiLoaded;
 }
 
 bool SettingsPanel::isLoaded() const {

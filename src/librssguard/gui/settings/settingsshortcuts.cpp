@@ -7,13 +7,20 @@
 #include "miscellaneous/iconfactory.h"
 
 SettingsShortcuts::SettingsShortcuts(Settings* settings, QWidget* parent)
-  : SettingsPanel(settings, parent), m_ui(new Ui::SettingsShortcuts) {
-  m_ui->setupUi(this);
-  connect(m_ui->m_shortcuts, &DynamicShortcutsWidget::setupChanged, this, &SettingsShortcuts::dirtifySettings);
-}
+  : SettingsPanel(settings, parent), m_ui(nullptr) {}
 
 SettingsShortcuts::~SettingsShortcuts() {
-  delete m_ui;
+  if (m_ui != nullptr) {
+    delete m_ui;
+  }
+}
+
+void SettingsShortcuts::loadUi() {
+  m_ui = new Ui::SettingsShortcuts();
+  m_ui->setupUi(this);
+  connect(m_ui->m_shortcuts, &DynamicShortcutsWidget::setupChanged, this, &SettingsShortcuts::dirtifySettings);
+
+  SettingsPanel::loadUi();
 }
 
 QIcon SettingsShortcuts::icon() const {

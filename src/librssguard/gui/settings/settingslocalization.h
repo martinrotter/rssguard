@@ -16,6 +16,7 @@ class SettingsLocalization : public SettingsPanel {
     explicit SettingsLocalization(Settings* settings, QWidget* parent = nullptr);
     virtual ~SettingsLocalization();
 
+    virtual void loadUi();
     virtual QIcon icon() const;
     virtual QString title() const;
     virtual void loadSettings();

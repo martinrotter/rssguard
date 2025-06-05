@@ -21,8 +21,16 @@
 #include <QMetaObject>
 #include <QStyleFactory>
 
-SettingsGui::SettingsGui(Settings* settings, QWidget* parent)
-  : SettingsPanel(settings, parent), m_ui(new Ui::SettingsGui) {
+SettingsGui::SettingsGui(Settings* settings, QWidget* parent) : SettingsPanel(settings, parent), m_ui(nullptr) {}
+
+SettingsGui::~SettingsGui() {
+  if (m_ui != nullptr) {
+    delete m_ui;
+  }
+}
+
+void SettingsGui::loadUi() {
+  m_ui = new Ui::SettingsGui();
   m_ui->setupUi(this);
   m_ui->m_editorMessagesToolbar->activeItemsWidget()->viewport()->installEventFilter(this);
   m_ui->m_editorFeedsToolbar->activeItemsWidget()->viewport()->installEventFilter(this);
@@ -114,10 +122,8 @@ SettingsGui::SettingsGui(Settings* settings, QWidget* parent)
       m_ui->m_spinToolbarIconSize->setSuffix(QSL(" px"));
     }
   });
-}
 
-SettingsGui::~SettingsGui() {
-  delete m_ui;
+  SettingsPanel::loadUi();
 }
 
 QIcon SettingsGui::icon() const {

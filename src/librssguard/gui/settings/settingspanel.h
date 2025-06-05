@@ -17,6 +17,7 @@ class SettingsPanel : public QWidget {
     virtual QIcon icon() const = 0;
     virtual void loadSettings() = 0;
     virtual void saveSettings() = 0;
+    virtual void loadUi();
 
     bool requiresRestart() const;
     bool isDirty() const;
@@ -25,6 +26,7 @@ class SettingsPanel : public QWidget {
     void setRequiresRestart(bool requiresRestart);
 
     bool isLoaded() const;
+    bool uiLoaded() const;
 
   protected:
     void onBeginLoadSettings();
@@ -47,6 +49,7 @@ class SettingsPanel : public QWidget {
     bool m_isDirty;
     bool m_isLoading;
     bool m_isLoaded;
+    bool m_uiLoaded;
     Settings* m_settings;
 };
 

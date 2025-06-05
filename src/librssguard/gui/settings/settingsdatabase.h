@@ -14,6 +14,7 @@ class SettingsDatabase : public SettingsPanel {
     explicit SettingsDatabase(Settings* settings, QWidget* parent = nullptr);
     virtual ~SettingsDatabase();
 
+    virtual void loadUi();
     virtual QIcon icon() const;
     virtual QString title() const;
     virtual void loadSettings();

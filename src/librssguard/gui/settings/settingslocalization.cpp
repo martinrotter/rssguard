@@ -15,9 +15,19 @@
 #include <QJsonObject>
 
 SettingsLocalization::SettingsLocalization(Settings* settings, QWidget* parent)
-  : SettingsPanel(settings, parent), m_ui(new Ui::SettingsLocalization),
+  : SettingsPanel(settings, parent), m_ui(nullptr),
     m_urlPercentages(QUrl(QSL("https://api.crowdin.com/api/v2/projects/608575/languages/progress?limit=100"))),
-    m_urlPeople(QUrl(QSL("https://api.crowdin.com/api/v2/projects/608575/members?limit=500"))) {
+    m_urlPeople(QUrl(QSL("https://api.crowdin.com/api/v2/projects/608575/members?limit=500"))) {}
+
+SettingsLocalization::~SettingsLocalization() {
+  if (m_ui != nullptr) {
+    delete m_ui;
+  }
+}
+
+void SettingsLocalization::loadUi() {
+  m_ui = new Ui::SettingsLocalization();
+
   m_ui->setupUi(this);
   m_ui->m_lblAuthors->label()->setWordWrap(true);
   m_ui->m_treeLanguages->setColumnCount(3);
@@ -36,10 +46,8 @@ SettingsLocalization::SettingsLocalization(Settings* settings, QWidget* parent)
 
   connect(m_ui->m_treeLanguages, &QTreeWidget::currentItemChanged, this, &SettingsLocalization::requireRestart);
   connect(m_ui->m_treeLanguages, &QTreeWidget::currentItemChanged, this, &SettingsLocalization::dirtifySettings);
-}
 
-SettingsLocalization::~SettingsLocalization() {
-  delete m_ui;
+  SettingsPanel::loadUi();
 }
 
 QIcon SettingsLocalization::icon() const {

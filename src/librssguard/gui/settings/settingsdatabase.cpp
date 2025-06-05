@@ -10,7 +10,16 @@
 #include "miscellaneous/settings.h"
 
 SettingsDatabase::SettingsDatabase(Settings* settings, QWidget* parent)
-  : SettingsPanel(settings, parent), m_ui(new Ui::SettingsDatabase) {
+  : SettingsPanel(settings, parent), m_ui(nullptr) {}
+
+SettingsDatabase::~SettingsDatabase() {
+  if (m_ui != nullptr) {
+    delete m_ui;
+  }
+}
+
+void SettingsDatabase::loadUi() {
+  m_ui = new Ui::SettingsDatabase();
   m_ui->setupUi(this);
 
   m_ui->m_lblMysqlInfo->setHelpText(tr("Note that speed of used MySQL server and latency of used connection "
@@ -80,10 +89,8 @@ SettingsDatabase::SettingsDatabase(Settings* settings, QWidget* parent)
   connect(m_ui->m_txtMysqlHostname->lineEdit(), &BaseLineEdit::textEdited, this, &SettingsDatabase::requireRestart);
   connect(m_ui->m_txtMysqlPassword->lineEdit(), &BaseLineEdit::textEdited, this, &SettingsDatabase::requireRestart);
   connect(m_ui->m_txtMysqlUsername->lineEdit(), &BaseLineEdit::textEdited, this, &SettingsDatabase::requireRestart);
-}
 
-SettingsDatabase::~SettingsDatabase() {
-  delete m_ui;
+  SettingsPanel::loadUi();
 }
 
 QIcon SettingsDatabase::icon() const {

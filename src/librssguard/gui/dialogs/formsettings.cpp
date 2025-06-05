@@ -65,6 +65,10 @@ void FormSettings::reject() {
 
 void FormSettings::openSettingsCategory(int category) {
   if (category >= 0 && category < m_panels.size()) {
+    if (!m_panels.at(category)->uiLoaded()) {
+      m_panels.at(category)->loadUi();
+    }
+
     if (!m_panels.at(category)->isLoaded()) {
       m_panels.at(category)->loadSettings();
     }
@@ -96,7 +100,9 @@ void FormSettings::applySettings() {
 
   if (!panels_for_restart.isEmpty()) {
     const QStringList changed_settings_description =
-      panels_for_restart.replaceInStrings(QRegularExpression(QSL("^")), QString::fromUtf8(QByteArray(" â€˘ ")));
+      panels_for_restart.replaceInStrings(QRegularExpression(QSL("^")),
+                                          QString::fromUtf8(QByteArray(" Ä‚â€žĂ˘â‚¬ĹˇÄ‚â€ąĂ‚ÂĂ„â€šĂ‹ÂÄ‚ËĂ˘â€šÂ¬ÄąË‡Ä‚â€šĂ‚Â¬Ă„â€šĂ˘â‚¬Ä…Ä‚â€šĂ‚Â"
+                                                                       " ")));
     const QMessageBox::StandardButton clicked_button =
       MsgBox::show(this,
                    QMessageBox::Icon::Question,
@@ -130,7 +136,9 @@ void FormSettings::cancelSettings() {
   }
   else {
     const QStringList changed_settings_description =
-      changed_panels.replaceInStrings(QRegularExpression(QSL("^")), QString::fromUtf8(QByteArray(" â€˘ ")));
+      changed_panels.replaceInStrings(QRegularExpression(QSL("^")),
+                                      QString::fromUtf8(QByteArray(" Ä‚â€žĂ˘â‚¬ĹˇÄ‚â€ąĂ‚ÂĂ„â€šĂ‹ÂÄ‚ËĂ˘â€šÂ¬ÄąË‡Ä‚â€šĂ‚Â¬Ă„â€šĂ˘â‚¬Ä…Ä‚â€šĂ‚Â"
+                                                                   " ")));
 
     if (MsgBox::show(this,
                      QMessageBox::Icon::Critical,

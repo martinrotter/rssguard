@@ -14,6 +14,7 @@ class SettingsShortcuts : public SettingsPanel {
     explicit SettingsShortcuts(Settings* settings, QWidget* parent = nullptr);
     virtual ~SettingsShortcuts();
 
+    virtual void loadUi();
     virtual QIcon icon() const;
     virtual QString title() const;
     virtual void loadSettings();

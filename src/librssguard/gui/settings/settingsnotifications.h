@@ -14,7 +14,9 @@ class SettingsNotifications : public SettingsPanel {
 
   public:
     explicit SettingsNotifications(Settings* settings, QWidget* parent = nullptr);
+    virtual ~SettingsNotifications();
 
+    virtual void loadUi();
     virtual QIcon icon() const;
     virtual QString title() const;
     virtual void loadSettings();
@@ -24,7 +26,7 @@ class SettingsNotifications : public SettingsPanel {
     void showScreenInfo(int index);
 
   private:
-    Ui::SettingsNotifications m_ui;
+    Ui::SettingsNotifications* m_ui;
 };
 
 inline QString SettingsNotifications::title() const {

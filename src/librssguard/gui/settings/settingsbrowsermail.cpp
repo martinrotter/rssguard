@@ -20,7 +20,12 @@
 #include <QNetworkProxy>
 
 SettingsBrowserMail::SettingsBrowserMail(Settings* settings, QWidget* parent)
-  : SettingsPanel(settings, parent), m_proxyDetails(new NetworkProxyDetails(this)), m_ui(new Ui::SettingsBrowserMail) {
+  : SettingsPanel(settings, parent), m_ui(nullptr) {}
+
+void SettingsBrowserMail::loadUi() {
+  m_ui = new Ui::SettingsBrowserMail();
+  m_proxyDetails = new NetworkProxyDetails(this);
+
   m_ui->setupUi(this);
 
   m_ui->m_tabBrowserProxy->insertTab(1, m_proxyDetails, tr("Network proxy"));
@@ -85,10 +90,14 @@ SettingsBrowserMail::SettingsBrowserMail(Settings* settings, QWidget* parent)
             m_ui->m_btnDeleteTool->setEnabled(current != nullptr);
             m_ui->m_btnEditTool->setEnabled(current != nullptr);
           });
+
+  SettingsPanel::loadUi();
 }
 
 SettingsBrowserMail::~SettingsBrowserMail() {
-  delete m_ui;
+  if (m_ui != nullptr) {
+    delete m_ui;
+  }
 }
 
 QIcon SettingsBrowserMail::icon() const {

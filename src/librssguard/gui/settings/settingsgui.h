@@ -14,6 +14,7 @@ class SettingsGui : public SettingsPanel {
     explicit SettingsGui(Settings* settings, QWidget* parent = nullptr);
     virtual ~SettingsGui();
 
+    virtual void loadUi();
     virtual QIcon icon() const;
     virtual QString title() const;
     virtual void loadSettings();

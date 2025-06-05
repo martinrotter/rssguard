@@ -18,6 +18,7 @@ class SettingsGeneral : public SettingsPanel {
     virtual QString title() const;
     virtual void loadSettings();
     virtual void saveSettings();
+    virtual void loadUi();
 
   private:
     Ui::SettingsGeneral* m_ui;

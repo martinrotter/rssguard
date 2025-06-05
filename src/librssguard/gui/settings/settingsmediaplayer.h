@@ -12,7 +12,9 @@ class SettingsMediaPlayer : public SettingsPanel {
 
   public:
     explicit SettingsMediaPlayer(Settings* settings, QWidget* parent = nullptr);
+    virtual ~SettingsMediaPlayer();
 
+    virtual void loadUi();
     virtual QIcon icon() const;
     virtual QString title() const;
     virtual void loadSettings();
@@ -24,7 +26,7 @@ class SettingsMediaPlayer : public SettingsPanel {
 #endif
 
   private:
-    Ui::SettingsMediaPlayer m_ui;
+    Ui::SettingsMediaPlayer* m_ui;
 };
 
 inline QString SettingsMediaPlayer::title() const {

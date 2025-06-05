@@ -8,7 +8,10 @@
 #include "miscellaneous/systemfactory.h"
 
 SettingsGeneral::SettingsGeneral(Settings* settings, QWidget* parent)
-  : SettingsPanel(settings, parent), m_ui(new Ui::SettingsGeneral) {
+  : SettingsPanel(settings, parent), m_ui(nullptr) {}
+
+void SettingsGeneral::loadUi() {
+  m_ui = new Ui::SettingsGeneral();
   m_ui->setupUi(this);
   m_ui->m_checkAutostart->setText(m_ui->m_checkAutostart->text().arg(QSL(APP_NAME)));
   m_ui->m_checkForUpdatesOnStart->setText(m_ui->m_checkForUpdatesOnStart->text().arg(QSL(APP_NAME)));
@@ -19,10 +22,14 @@ SettingsGeneral::SettingsGeneral(Settings* settings, QWidget* parent)
 
   connect(m_ui->m_checkAutostart, &QCheckBox::stateChanged, this, &SettingsGeneral::dirtifySettings);
   connect(m_ui->m_checkForUpdatesOnStart, &QCheckBox::stateChanged, this, &SettingsGeneral::dirtifySettings);
+
+  SettingsPanel::loadUi();
 }
 
 SettingsGeneral::~SettingsGeneral() {
-  delete m_ui;
+  if (m_ui != nullptr) {
+    delete m_ui;
+  }
 }
 
 QIcon SettingsGeneral::icon() const {
