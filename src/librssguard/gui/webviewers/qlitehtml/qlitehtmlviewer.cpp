@@ -113,9 +113,7 @@ void QLiteHtmlViewer::setZoomFactor(qreal zoom_factor) {
   QLiteHtmlWidget::setZoomFactor(zoom_factor);
 }
 
-QByteArray QLiteHtmlViewer::handleExternalResource(const QUrl& url) const {
-  qDebugNN << LOGSEC_HTMLVIEWER << "Resource requested:" << QUOTE_W_SPACE_DOT(url);
-
+QByteArray QLiteHtmlViewer::handleExternalResource(const QUrl& url) {
   // TODO: create cache of images.
   // if image is NOT in cache, download it async and return placeholder
   // once image is downloaded, call render() to re-render the page.
@@ -124,19 +122,22 @@ QByteArray QLiteHtmlViewer::handleExternalResource(const QUrl& url) const {
     return m_placeholderImage;
   }
 
+  if (m_imageCache.contains(url)) {
+    qDebugNN << LOGSEC_HTMLVIEWER << "Loading image" << QUOTE_W_SPACE(url.toString()) << "from cache.";
+    return m_imageCache.value(url);
+  }
+
   QEventLoop loop;
   QByteArray data;
   QNetworkReply* reply = m_network->get(QNetworkRequest(url));
 
   connect(reply, &QNetworkReply::finished, this, [&] {
-    qDebugNN << LOGSEC_HTMLVIEWER << "Resource" << QUOTE_W_SPACE(reply->url())
-             << "finished:" << QUOTE_W_SPACE_DOT(reply->error());
-
     if (reply->error() == QNetworkReply::NetworkError::NoError) {
       data = reply->readAll();
     }
     else {
-      data = m_placeholderImageError;
+      qWarningNN << LOGSEC_HTMLVIEWER << "Image" << QUOTE_W_SPACE(url.toString()) << "was not loaded due to error"
+                 << QUOTE_W_SPACE_DOT(reply->error());
     }
 
     reply->deleteLater();
@@ -144,6 +145,15 @@ QByteArray QLiteHtmlViewer::handleExternalResource(const QUrl& url) const {
   });
 
   loop.exec(QEventLoop::ProcessEventsFlag::ExcludeUserInputEvents);
+
+  if (data.isEmpty()) {
+    data = m_placeholderImageError;
+  }
+  else {
+    qDebugNN << LOGSEC_HTMLVIEWER << "Inserting image" << QUOTE_W_SPACE(url.toString()) << "to cache.";
+    m_imageCache.insert(url, data);
+  }
+
   return data;
 }
 

@@ -41,7 +41,7 @@ class RSSGUARD_DLLSPEC QLiteHtmlViewer : public QLiteHtmlWidget, public WebViewe
     virtual void setZoomFactor(qreal zoom_factor);
 
   private slots:
-    QByteArray handleExternalResource(const QUrl& url) const;
+    QByteArray handleExternalResource(const QUrl& url);
 
   protected:
     virtual ContextMenuData provideContextMenuData(QContextMenuEvent* event) const;
@@ -65,6 +65,7 @@ class RSSGUARD_DLLSPEC QLiteHtmlViewer : public QLiteHtmlWidget, public WebViewe
     QPointer<SilentNetworkAccessManager> m_network;
     QByteArray m_placeholderImage;
     QByteArray m_placeholderImageError;
+    QHash<QUrl, QByteArray> m_imageCache;
 };
 
 #endif // QLITEHTMLVIEWER_H
