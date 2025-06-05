@@ -2,11 +2,16 @@ img {
   max-width: 98%;
 }
 
+p {
+  margin-top: 0.4em;
+  margin-bottom: 0.4em;
+}
+
 /* Basic styling for the .article container */
 .article {
   background-color: transparent;
   color: #333; /* grayscale text color */
-  line-height: 1.2;
+  line-height: 1.1;
   padding: 0em;
 }
 
@@ -18,16 +23,50 @@ img {
 .article h5,
 .article h6 {
   color: #222; /* darker grayscale for headings */
-  margin-top: 0.5em;
+  margin-top: 0em;
   margin-bottom: 0.2em;
 }
 
-/* Style for hyperlinks */
-.article a {
-  color: #777; /* base color for links in grayscale */
+.article-body a {
+  color: #50a5c2; /* base color for links in grayscale */
   text-decoration: none; /* no underline by default */
 }
 
-.article a:hover {
+.article-body a:hover {
+  color: #64caec;
   text-decoration: underline; /* underline on hover */
+}
+
+.article-urls-strip {
+  margin-top: 0.8em;
+  margin-bottom: 0.8em;
+}
+
+.article-url {
+  text-decoration: none;
+  padding: 0.1em 0.2em;
+  border-radius: 2px;
+  border: 1px solid red;
+  background-color: red;
+  color: white;
+}
+
+.article-url:hover {
+  background-color: rgb(246, 88, 88);
+  color: white;
+}
+
+.article-enclosure-url {
+  text-decoration: none;
+  text-transform: uppercase;
+  padding: 0.1em 0.2em;
+  border-radius: 2px;
+  border: 1px solid #3c8aa4;
+  background-color: #3c8aa4;
+  color: white;
+}
+
+.article-enclosure-url:hover {
+  background-color: #50a5c2;
+  color: white;
 }

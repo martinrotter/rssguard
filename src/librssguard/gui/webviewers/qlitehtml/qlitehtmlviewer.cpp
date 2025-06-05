@@ -116,6 +116,10 @@ void QLiteHtmlViewer::setZoomFactor(qreal zoom_factor) {
 QByteArray QLiteHtmlViewer::handleExternalResource(const QUrl& url) const {
   qDebugNN << LOGSEC_HTMLVIEWER << "Resource requested:" << QUOTE_W_SPACE_DOT(url);
 
+  // TODO: create cache of images.
+  // if image is NOT in cache, download it async and return placeholder
+  // once image is downloaded, call render() to re-render the page.
+
   if (!loadExternalResources()) {
     return m_placeholderImage;
   }

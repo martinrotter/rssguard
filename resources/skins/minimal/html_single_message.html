@@ -1,11 +1,11 @@
 <div class="article" dir="%article_rtl%" id="%article_id%">
-    <section>
-        <div>%article_author%</div>
-        <div>%article_date%</div>
-        <h1>%article_title% ❘ <a href="%article_url%">URL</a>%enclosures_all%</h1>
+    <section class="article-header">
+        <h1>%article_title%</h1>
+        <div>%article_author% • %article_date%</div>
+        <div class="article-urls-strip"><a class="article-url" href="%article_url%">URL</a>%enclosures_all%</div>
         <div>%enclosures_images%</div>
     </section>
-    <div>
+    <div class="article-body">
         %article_contents%
     </div>
 </div>
