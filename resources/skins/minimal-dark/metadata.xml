@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<skin version="6.6.6" base="minimal-base">
+  <author>
+    <name>martinrotter</name>
+  </author>
+  <description>Simple and good-looking dark skin.</description>
+
+  <palette>
+    <color key="FgInteresting">#2E1B0A</color>
+    <color key="FgSelectedInteresting">#4B2713</color>
+    <color key="FgNewMessages">#3b8a5a</color>
+    <color key="FgSelectedNewMessages">#1f7a45</color>
+    <color key="FgError">#e74c3c</color>
+    <color key="FgSelectedError">#c0392b</color>
+    <color key="FgDisabledFeed">#7f8c8d</color>
+    <color key="Allright">#229954</color>
+  </palette>
+
+  <forced-styles>Fusion</forced-styles>
+  <forced-skin-colors></forced-skin-colors>
+  
+  <style-palette>
+    <group id="All">
+      <color role="Highlight">#add8e6</color>
+      <color role="HighlightedText">#000000</color>
+    </group>
+  </style-palette>
+
+</skin>

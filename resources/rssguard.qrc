@@ -75,14 +75,21 @@
     <file>graphics/misc/flags/zh_CN.png</file>
     <file>graphics/misc/flags/zh_TW.png</file>
 
-    <file>skins/minimal/html_enclosure_every.html</file>
-    <file>skins/minimal/html_enclosure_image.html</file>
-    <file>skins/minimal/html_single_message.html</file>
-    <file>skins/minimal/html_style.css</file>
-    <file>skins/minimal/html_wrapper.html</file>
-    <file>skins/minimal/metadata.xml</file>
-    <file>skins/minimal/qt_style.qss</file>
-    <file>skins/minimal/qt_style_forced.qss</file>
+    <!-- Base skin data. -->
+    <file>skins/minimal-base/html_enclosure_every.html</file>
+    <file>skins/minimal-base/html_enclosure_image.html</file>
+    <file>skins/minimal-base/html_single_message.html</file>
+    <file>skins/minimal-base/html_wrapper.html</file>
+    <file>skins/minimal-base/qt_style.qss</file>
+    <file>skins/minimal-base/qt_style_forced.qss</file>
+
+    <!-- Light skin. -->
+    <file>skins/minimal-light/html_style.css</file>
+    <file>skins/minimal-light/metadata.xml</file>
+
+    <!-- Dark skin. -->
+    <file>skins/minimal-dark/html_style.css</file>
+    <file>skins/minimal-dark/metadata.xml</file>
     
     <file>initial_feeds/feeds-en_US.opml</file>
 

@@ -1,15 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<skin version="6.6.6">
+<skin version="6.6.6" base="minimal-base">
   <author>
     <name>martinrotter</name>
   </author>
-  <description>Basic skin with almost no styling.</description>
+  <description>Simple and good-looking light skin.</description>
 
   <palette>
-    <color key="FgInteresting">#2E1B0A</color> <!-- Dark brownish -->
-    <color key="FgSelectedInteresting">#4B2713</color> <!-- Slightly lighter brown -->
-    <color key="FgNewMessages">#3b8a5a</color> <!-- darker shade of #58d68d -->
-    <color key="FgSelectedNewMessages">#1f7a45</color> <!-- darker shade of #27ae60 -->
+    <color key="FgInteresting">#2E1B0A</color>
+    <color key="FgSelectedInteresting">#4B2713</color>
+    <color key="FgNewMessages">#3b8a5a</color>
+    <color key="FgSelectedNewMessages">#1f7a45</color>
     <color key="FgError">#e74c3c</color>
     <color key="FgSelectedError">#c0392b</color>
     <color key="FgDisabledFeed">#7f8c8d</color>
@@ -18,6 +18,7 @@
 
   <forced-styles></forced-styles>
   <forced-skin-colors></forced-skin-colors>
+  
   <style-palette>
     <group id="All">
       <color role="Highlight">#add8e6</color>
