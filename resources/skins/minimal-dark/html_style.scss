@@ -4,17 +4,17 @@
 //   scss --sourcemap=none --style=expanded html_style.scss html_style.css
 
 // Colors.
-$text_color: #333;
-$heading_color: #222;
+$text_color: #ddd;
+$heading_color: #eee;
 
-$link_body_color: #50a5c2;
+$link_body_color: #87bdd0;
 $link_body_hover_color: lighten($link_body_color, 15%);
 
 $link_url_color: red;
 $link_url_hover_color: lighten($link_url_color, 15%);
 $link_text_color: white;
 
-$link_encl_color: #3c8aa4;
+$link_encl_color: #73a5b6;
 $link_encl_hover_color: lighten($link_encl_color, 15%);
 
 @import "../minimal-base/html_style_base";

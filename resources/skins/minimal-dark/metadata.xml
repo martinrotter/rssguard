@@ -6,14 +6,14 @@
   <description>Simple and good-looking dark skin.</description>
 
   <palette>
-    <color key="FgInteresting">#2E1B0A</color>
-    <color key="FgSelectedInteresting">#4B2713</color>
-    <color key="FgNewMessages">#3b8a5a</color>
+    <color key="FgInteresting">#ebe2da</color>
+    <color key="FgSelectedInteresting">#4a4745</color>
+    <color key="FgNewMessages">#5fb380</color>
     <color key="FgSelectedNewMessages">#1f7a45</color>
-    <color key="FgError">#e74c3c</color>
+    <color key="FgError">#eb7467</color>
     <color key="FgSelectedError">#c0392b</color>
     <color key="FgDisabledFeed">#7f8c8d</color>
-    <color key="Allright">#229954</color>
+    <color key="Allright">#4db87a</color>
   </palette>
 
   <forced-styles>Fusion</forced-styles>
@@ -21,8 +21,36 @@
   
   <style-palette>
     <group id="All">
+      <color role="Base">#2F3134</color>
+      <color role="AlternateBase">#2C2D30</color>
+      <color role="ToolTipBase" brush="Dense1Pattern">#282A2D</color>
+      <color role="Dark">#202224</color>
+      <color role="Midlight">#292c2e</color>
+      <color role="Mid">#292c2e</color>
+      <color role="Shadow">#292c2e</color>
+      <color role="Light">#2C2D30</color>
       <color role="Highlight">#add8e6</color>
+
+      <color role="Window">#282A2D</color>
+      <color role="Button">#2C2D30</color>
+
+      <color role="Text">#D9D9D9</color>
+      <color role="BrightText">#2F3134</color>
       <color role="HighlightedText">#000000</color>
+      <color role="PlaceholderText">#A7A7A7</color>
+      <color role="ToolTipText">#D8D8D8</color>
+      <color role="ButtonText">#E7E7E7</color>
+      <color role="WindowText">#D8D8D8</color>
+      <color role="Link">#a1acc1</color>
+      <color role="LinkVisited">#a1acc1</color>
+
+      <color role="NoRole">#282A2D</color>
+    </group>
+
+    <group id="Disabled">
+      <color role="Text">#999999</color>
+      <color role="ButtonText">#A7A7A7</color>
+      <color role="WindowText">#999999</color>
     </group>
   </style-palette>
 

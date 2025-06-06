@@ -9,7 +9,7 @@ p {
 
 .article {
   background-color: transparent;
-  color: #333;
+  color: #ddd;
   line-height: 1.1;
   padding: 0em;
 }
@@ -20,18 +20,18 @@ p {
 .article h4,
 .article h5,
 .article h6 {
-  color: #222;
+  color: #eee;
   margin-top: 0em;
   margin-bottom: 0.2em;
 }
 
 .article-body a {
-  color: #50a5c2;
+  color: #87bdd0;
   text-decoration: none;
 }
 
 .article-body a:hover {
-  color: #89c2d6;
+  color: #bedbe6;
   text-decoration: underline;
 }
 
@@ -60,12 +60,12 @@ p {
   text-transform: uppercase;
   padding: 0.1em 0.2em;
   border-radius: 2px;
-  border: 1px solid #3c8aa4;
-  background-color: #3c8aa4;
+  border: 1px solid #73a5b6;
+  background-color: #73a5b6;
   color: white;
 }
 
 .article-enclosure-url:hover {
-  background-color: #66afc7;
+  background-color: #a5c5d0;
   color: white;
 }
