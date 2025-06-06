@@ -48,7 +48,6 @@
 
 #define SOUNDS_BUILTIN_DIRECTORY    ":/sounds"
 #define ARGUMENTS_LIST_SEPARATOR    "\n"
-#define IS_IN_ARRAY(offset, array)  ((offset >= 0) && (offset < array.count()))
 #define DEFAULT_SQL_MESSAGES_FILTER "0 > 1"
 #define MAX_MULTICOLUMN_SORT_STATES 3
 
@@ -74,7 +73,6 @@
 #define DEFAULT_AUTO_UPDATE_INTERVAL 900  // In seconds.
 #define AUTO_UPDATE_INTERVAL         10   // In seconds.
 #define STARTUP_UPDATE_DELAY         15.0 // In seconds.
-#define TIMEZONE_OFFSET_LIMIT        6
 #define CHANGE_EVENT_DELAY           250
 #define FLAG_ICON_SUBFOLDER          "flags"
 #define SEARCH_BOX_ACTION_NAME       "search"
@@ -82,14 +80,11 @@
 #define FILTER_ACTION_NAME           "filter"
 #define SPACER_ACTION_NAME           "spacer"
 #define SEPARATOR_ACTION_NAME        "separator"
-#define FILTER_WIDTH                 125
 #define FILTER_RIGHT_MARGIN          5
 #define FEEDS_VIEW_INDENTATION       10
 #define MIME_TYPE_ITEM_POINTER       "rssguard/itempointer"
-#define DOWNLOADER_ICON_SIZE         48
 #define ENCRYPTION_FILE_NAME         "key.private"
 #define RELOAD_MODEL_BORDER_NUM      10
-#define COOKIE_URL_IDENTIFIER        ":COOKIE:"
 #define DEFAULT_NOTIFICATION_VOLUME  50
 #define MAX_THREADPOOL_THREADS       32
 #define WEB_BROWSER_SCROLL_STEP      50.0
@@ -217,20 +212,7 @@
 #define APP_SKIN_DEFAULT       "minimal"
 #define APP_SKIN_METADATA_FILE "metadata.xml"
 
-// #if defined(Q_OS_UNIX) && !defined(Q_OS_MACOS) && !defined(FORCE_BUNDLE_ICONS)
-// #define APP_ICON_THEME_DEFAULT ""
-// #else
-// #define APP_ICON_THEME_DEFAULT "Breeze"
-// #endif
-
-#if defined(Q_OS_WIN)
-#define APP_STYLE_DEFAULT "windowsvista"
-#elif defined(Q_OS_UNIX) && !defined(Q_OS_MACOS)
-// Do not force default style on Linux.
-#define APP_STYLE_DEFAULT ""
-#else
 #define APP_STYLE_DEFAULT "Fusion"
-#endif
 
 #if defined(FORCE_BUNDLE_ICONS)
 // Forcibly bundle icons.
@@ -344,9 +326,6 @@
 #define APP_SQL_PATH   QSL(":/sql")
 #define APP_INFO_PATH  QSL(":/text")
 
-#define WEB_UI_FOLDER QSL(":/scripts/web_ui")
-#define WEB_UI_FILE   QSL("rssguard.html")
-
 #define APP_ICON_PATH       QSL(":/graphics/rssguard.png")
 #define APP_ICON_PLAIN_PATH QSL(":/graphics/rssguard_plain.png")
 
@@ -397,7 +376,6 @@
 #define QUOTE_NO_SPACE(x)       "'" << (x) << "'"
 
 #ifndef QSL
-
 // Thin macro wrapper for literal strings.
 // They are much more memory efficient and faster.
 // Use it for all literals except for two cases:
@@ -407,14 +385,12 @@
 #endif
 
 #ifndef QL1S
-
 // Macro for latin strings. Latin strings are
 // faster than QStrings created from literals.
 #define QL1S(x) QLatin1String(x)
 #endif
 
 #ifndef QL1C
-
 // Macro for latin chars.
 #define QL1C(x) QLatin1Char(x)
 #endif

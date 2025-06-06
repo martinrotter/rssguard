@@ -185,7 +185,7 @@ void MessagesModel::setupFonts() {
                      .toString());
   }
   else {
-    fon = Application::font("MessagesView");
+    fon = QApplication::font("MessagesView");
   }
 
   m_normalFont = fon;
