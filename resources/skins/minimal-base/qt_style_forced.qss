@@ -3,6 +3,9 @@ QScrollArea {
     border: 1px solid palette(light);
 }
 
+QProgressBar {
+    background-color: palette(highlight);
+}
 
 QPlainTextEdit:focus {
     border: 1px solid palette(highlight);

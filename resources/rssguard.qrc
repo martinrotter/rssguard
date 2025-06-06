@@ -80,7 +80,6 @@
     <file>skins/minimal-base/html_enclosure_image.html</file>
     <file>skins/minimal-base/html_single_message.html</file>
     <file>skins/minimal-base/html_wrapper.html</file>
-    <file>skins/minimal-base/qt_style.qss</file>
     <file>skins/minimal-base/qt_style_forced.qss</file>
 
     <!-- Light skin. -->
@@ -89,6 +88,7 @@
 
     <!-- Dark skin. -->
     <file>skins/minimal-dark/html_style.css</file>
+    <file>skins/minimal-dark/qt_style.qss</file>
     <file>skins/minimal-dark/metadata.xml</file>
     
     <file>initial_feeds/feeds-en_US.opml</file>

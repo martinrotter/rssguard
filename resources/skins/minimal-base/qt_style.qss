@@ -1,3 +1,0 @@
-QProgressBar {
-    background-color: palette(highlight);
-}
