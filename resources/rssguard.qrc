@@ -84,6 +84,7 @@
 
     <!-- Light skin. -->
     <file>skins/minimal-light/html_style.css</file>
+    <file>skins/minimal-light/qt_style.qss</file>
     <file>skins/minimal-light/metadata.xml</file>
 
     <!-- Dark skin. -->
