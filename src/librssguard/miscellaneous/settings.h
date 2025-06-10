@@ -329,6 +329,9 @@ namespace GUI {
   KEY MonochromeTrayIcon;
   VALUE(bool) MonochromeTrayIconDef;
 
+  KEY FontAntialiasing;
+  VALUE(bool) FontAntialiasingDef;
+
   KEY ColoredBusyTrayIcon;
   VALUE(bool) ColoredBusyTrayIconDef;
 

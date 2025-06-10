@@ -67,7 +67,6 @@ struct RSSGUARD_DLLSPEC Skin {
     QString m_enclosureMarkup;
     QHash<SkinEnums::PaletteColors, QColor> m_colorPalette;
     QStringList m_forcedStyles;
-    QFont m_defaultFont;
     bool m_forcedSkinColors;
     QMultiHash<QPalette::ColorGroup, QPair<QPalette::ColorRole, QPair<QColor, Qt::BrushStyle>>> m_stylePalette;
 

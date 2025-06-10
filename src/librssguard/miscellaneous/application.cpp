@@ -143,6 +143,7 @@ Application::Application(const QString& id, int& argc, char** argv, const QStrin
   m_icons->loadCurrentIconTheme();
 
   reloadCurrentSkin(false);
+  setupFontAntialiasing();
 
   if (m_toastNotifications != nullptr) {
     connect(m_toastNotifications,
@@ -917,6 +918,16 @@ QImage Application::generateOverlayIcon(int number) const {
   p.end();
 
   return img;
+}
+
+void Application::setupFontAntialiasing() {
+  bool aa_enabled = qApp->settings()->value(GROUP(GUI), SETTING(GUI::FontAntialiasing)).toBool();
+
+  QFont fon = QApplication::font();
+  fon.setStyleStrategy(aa_enabled ? QFont::StyleStrategy::PreferAntialias
+                                  : QFont::StyleStrategy(QFont::StyleStrategy::NoAntialias |
+                                                         QFont::StyleStrategy::NoSubpixelAntialias));
+  QApplication::setFont(fon);
 }
 
 #endif

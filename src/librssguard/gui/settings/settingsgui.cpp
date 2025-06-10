@@ -61,6 +61,9 @@ void SettingsGui::loadUi() {
   m_ui->m_treeSkins->header()->setSectionResizeMode(2, QHeaderView::ResizeMode::ResizeToContents);
   m_ui->m_treeSkins->header()->setSectionResizeMode(3, QHeaderView::ResizeMode::ResizeToContents);
 
+  connect(m_ui->m_checkFontAntialiasing, &QCheckBox::toggled, this, &SettingsGui::requireRestart);
+  connect(m_ui->m_checkFontAntialiasing, &QCheckBox::toggled, this, &SettingsGui::dirtifySettings);
+
   connect(m_ui->m_cmbStyles,
           static_cast<void (QComboBox::*)(int)>(&QComboBox::currentIndexChanged),
           this,
@@ -171,6 +174,8 @@ void SettingsGui::updateSkinOptions() {
 
 void SettingsGui::loadSettings() {
   onBeginLoadSettings();
+
+  m_ui->m_checkFontAntialiasing->setChecked(settings()->value(GROUP(GUI), SETTING(GUI::FontAntialiasing)).toBool());
 
   // Load settings of tray icon.
   m_ui->m_grpTray->setChecked(settings()->value(GROUP(GUI), SETTING(GUI::UseTrayIcon)).toBool());
@@ -379,6 +384,8 @@ void SettingsGui::resetCustomSkinColor() {
 
 void SettingsGui::saveSettings() {
   onBeginSaveSettings();
+
+  settings()->setValue(GROUP(GUI), GUI::FontAntialiasing, m_ui->m_checkFontAntialiasing->isChecked());
 
   // Save custom skin colors.
   settings()->setValue(GROUP(CustomSkinColors), CustomSkinColors::Enabled, m_ui->m_gbCustomSkinColors->isChecked());
