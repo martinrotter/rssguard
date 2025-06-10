@@ -21,8 +21,33 @@
   
   <style-palette>
     <group id="All">
-      <color role="Highlight">#add8e6</color>
-      <color role="HighlightedText">#000000</color>
+      <color role="WindowText">#000000</color>
+      <color role="Window">#efefef</color>
+  
+      <color role="Light">#ffffff</color>
+      <color role="Midlight">#f4f4f4</color>
+      <color role="Mid">#d2d2d2</color>
+      <color role="Dark">#a0a0a0</color>
+  
+      <color role="Text">#000000</color>
+      <color role="Base">#ffffff</color>
+  
+      <color role="Button">#efefef</color>
+      <color role="Shadow">#646464</color>
+      <color role="HighlightedText">#ffffff</color>
+      <color role="PlaceholderText">#80000000</color>
+      <color role="Highlight">#73a5b6</color>
+      <color role="Accent">#73a5b6</color>
+    </group>
+  
+    <group id="Disabled">
+      <color role="Text">#bebebe</color>
+      <color role="WindowText">#bebebe</color>
+      <color role="ButtonText">#bebebe</color>
+      <color role="Dark">#bebebe</color>
+      <color role="Shadow">#828282</color>
+      <color role="Highlight">#919191</color>
+      <color role="Accent">#919191</color>
     </group>
   </style-palette>
 </skin>
