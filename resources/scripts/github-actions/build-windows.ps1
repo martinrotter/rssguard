@@ -99,10 +99,10 @@ pip3 install -U pip
 pip3 install -I git+https://github.com/miurahr/aqtinstall
 
 if ($is_qt_6) {
-  aqt install-qt -O "$qt_path" windows desktop $qt_version $qt_arch -m qtwebengine qtimageformats qtmultimedia qt5compat qtwebchannel qtpositioning
+  aqt install-qt -O "$qt_path" windows desktop $qt_version $qt_arch -m qtimageformats qtmultimedia qt5compat
 }
 else {
-  aqt install-qt -O "$qt_path" windows desktop $qt_version $qt_arch -m qtwebengine
+  aqt install-qt -O "$qt_path" windows desktop $qt_version $qt_arch
 }
 
 aqt install-src -O "$qt_path" windows desktop $qt_version --archives qtbase

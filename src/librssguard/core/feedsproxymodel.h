@@ -60,8 +60,6 @@ class FeedsProxyModel : public QSortFilterProxyModel {
     const RootItem* selectedItem() const;
     void setSelectedItem(const RootItem* selected_item);
 
-    void setView(FeedsView* newView);
-
     bool sortAlphabetically() const;
     void setSortAlphabetically(bool sort_alphabetically);
 
@@ -82,7 +80,6 @@ class FeedsProxyModel : public QSortFilterProxyModel {
 
     // Source model pointer.
     FeedsModel* m_sourceModel;
-    FeedsView* m_view;
     const RootItem* m_selectedItem;
     bool m_sortAlphabetically;
     bool m_showNodeUnread;

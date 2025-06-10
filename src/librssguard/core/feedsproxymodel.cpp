@@ -18,8 +18,8 @@
 using RootItemPtr = RootItem*;
 
 FeedsProxyModel::FeedsProxyModel(FeedsModel* source_model, QObject* parent)
-  : QSortFilterProxyModel(parent), m_sourceModel(source_model), m_view(nullptr), m_selectedItem(nullptr),
-    m_sortAlphabetically(false), m_filter(FeedListFilter::NoFiltering) {
+  : QSortFilterProxyModel(parent), m_sourceModel(source_model), m_selectedItem(nullptr), m_sortAlphabetically(false),
+    m_filter(FeedListFilter::NoFiltering) {
   setObjectName(QSL("FeedsProxyModel"));
 
   initializeFilters();
@@ -515,10 +515,6 @@ bool FeedsProxyModel::sortAlphabetically() const {
 
 void FeedsProxyModel::sort(int column, Qt::SortOrder order) {
   QSortFilterProxyModel::sort(column, order);
-}
-
-void FeedsProxyModel::setView(FeedsView* newView) {
-  m_view = newView;
 }
 
 const RootItem* FeedsProxyModel::selectedItem() const {
