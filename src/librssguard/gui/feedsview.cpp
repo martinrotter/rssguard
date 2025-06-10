@@ -907,7 +907,6 @@ void FeedsView::loadAllExpandStates() {
 void FeedsView::reloadItemExpandState(const QModelIndex& source_idx) {
   //  Model requests to expand some items as they are visible and there is
   //  a filter active, so they maybe were not visible before.
-
   RootItem* it = m_sourceModel->itemForIndex(source_idx);
 
   if (it == nullptr) {

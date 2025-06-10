@@ -42,7 +42,7 @@ else
   QTARCH="clang_64"
 
   QTPATH="$(pwd)/Qt"
-  QTVERSION="6.8.3"
+  QTVERSION="6.9.1"
   QTBIN="$QTPATH/$QTVERSION/$QTOS/bin"
 
   # Install "aqtinstall" from its master branch to have latest code.

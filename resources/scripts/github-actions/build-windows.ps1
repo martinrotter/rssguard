@@ -42,7 +42,7 @@ if ($use_qt5 -eq "ON") {
   $use_qtmultimedia = "ON"
 }
 else {
-  $qt_version = "6.8.3"
+  $qt_version = "6.9.1"
   $qt_arch_base = "msvc2022_64"
 
   $use_libmpv = "ON"
