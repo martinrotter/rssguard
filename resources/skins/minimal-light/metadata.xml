@@ -37,7 +37,6 @@
       <color role="HighlightedText">#ffffff</color>
       <color role="PlaceholderText">#80000000</color>
       <color role="Highlight">#73a5b6</color>
-      <color role="Accent">#73a5b6</color>
     </group>
   
     <group id="Disabled">
@@ -47,7 +46,6 @@
       <color role="Dark">#bebebe</color>
       <color role="Shadow">#828282</color>
       <color role="Highlight">#919191</color>
-      <color role="Accent">#919191</color>
     </group>
   </style-palette>
 </skin>
