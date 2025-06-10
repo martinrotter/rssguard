@@ -919,6 +919,7 @@ QImage Application::generateOverlayIcon(int number) const {
 
   return img;
 }
+#endif
 
 void Application::setupFontAntialiasing() {
   bool aa_enabled = qApp->settings()->value(GROUP(GUI), SETTING(GUI::FontAntialiasing)).toBool();
@@ -929,8 +930,6 @@ void Application::setupFontAntialiasing() {
                                                          QFont::StyleStrategy::NoSubpixelAntialias));
   QApplication::setFont(fon);
 }
-
-#endif
 
 void Application::restart() {
   m_shouldRestart = true;
