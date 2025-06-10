@@ -121,30 +121,6 @@ void SkinFactory::loadSkinFromData(const Skin& skin, bool replace_existing_qss) 
   const QString env_forced_style = env.value(QSL("QT_STYLE_OVERRIDE"));
   const QString cli_forced_style = qApp->cmdParser()->value(QSL(CLI_STYLE_SHORT));
 
-  // Load fonts.
-  QDir dr_fonts(skin.m_skinFolder + QDir::separator() + QSL("fonts"));
-
-  if (dr_fonts.exists()) {
-    QStringList ttf_fonts =
-      dr_fonts.entryList({QSL("*.ttf"), QSL("*.otf")}, QDir::Filter::Files | QDir::Filter::Readable);
-
-    for (const QString& font_file : ttf_fonts) {
-      bool added = QFontDatabase::addApplicationFont(dr_fonts.absoluteFilePath(font_file)) >= 0;
-
-      if (added) {
-        qDebugNN << "Adding font" << QUOTE_W_SPACE(font_file) << "to font database.";
-      }
-      else {
-        qCriticalNN << "Font" << QUOTE_W_SPACE(font_file) << "could not be loaded.";
-      }
-    }
-  }
-
-  if (skin.m_defaultFont != QApplication::font()) {
-    QGuiApplication::setFont(skin.m_defaultFont);
-    qDebugNN << "Activating custom application default font" << QUOTE_W_SPACE_DOT(skin.m_defaultFont.toString());
-  }
-
   if (env_forced_style.isEmpty() && cli_forced_style.isEmpty()) {
     m_styleIsFrozen = false;
 
@@ -394,12 +370,6 @@ Skin SkinFactory::skinInfo(const QString& skin_name, bool lite, bool* ok) const 
       skin.m_version = skin_node.attributes().namedItem(QSL("version")).toAttr().value();
       skin.m_description = skin_node.namedItem(QSL("description")).toElement().text();
       skin.m_baseName = skin_name;
-
-      if (!skin_node.namedItem(QSL("default-font")).isNull()) {
-        skin.m_defaultFont =
-          QFont(skin_node.namedItem(QSL("default-font")).namedItem(QSL("family")).toElement().text(),
-                skin_node.namedItem(QSL("default-font")).namedItem(QSL("size")).toElement().text().toInt());
-      }
 
       // Obtain color palette.
       QHash<SkinEnums::PaletteColors, QColor> palette;

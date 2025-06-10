@@ -256,6 +256,7 @@ class RSSGUARD_DLLSPEC Application : public SingleApplication {
     QImage generateOverlayIcon(int number) const;
 #endif
 
+    void setupFontAntialiasing();
     void setupCustomDataFolder(const QString& data_folder);
     void setupWorkHorsePool();
     void determineFirstRuns();
