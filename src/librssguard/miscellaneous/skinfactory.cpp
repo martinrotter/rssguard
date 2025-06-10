@@ -101,9 +101,11 @@ QPalette qt_fusionPalette(bool dark_appearance) {
   fusionPalette.setBrush(QPalette::ColorGroup::Inactive, QPalette::ColorRole::Highlight, highlight);
   fusionPalette.setBrush(QPalette::ColorGroup::Disabled, QPalette::ColorRole::Highlight, disabledHighlight);
 
+#if QT_VERSION >= 0x060600 // Qt >= 6.6.0
   fusionPalette.setBrush(QPalette::ColorGroup::Active, QPalette::ColorRole::Accent, highlight);
   fusionPalette.setBrush(QPalette::ColorGroup::Inactive, QPalette::ColorRole::Accent, highlight);
   fusionPalette.setBrush(QPalette::ColorGroup::Disabled, QPalette::ColorRole::Accent, disabledHighlight);
+#endif
 
   fusionPalette.setBrush(QPalette::PlaceholderText, placeholder);
 
