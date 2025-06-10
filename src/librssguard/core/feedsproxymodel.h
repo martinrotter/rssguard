@@ -78,7 +78,7 @@ class FeedsProxyModel : public QSortFilterProxyModel {
   private:
     void initializeFilters();
 
-    virtual bool filterAcceptsRowInternal(int source_row, const QModelIndex& source_parent) const;
+    bool filterAcceptsRowInternal(int source_row, const QModelIndex& source_parent) const;
 
     // Source model pointer.
     FeedsModel* m_sourceModel;

@@ -411,13 +411,13 @@ void FeedsProxyModel::initializeFilters() {
   m_filters[FeedListFilter::ShowQuiet] = [this](const RootItem* item) {
     Feed* feed = item->toFeed();
 
-    return feed == nullptr || feed->isQuiet();
+    return feed != nullptr && feed->isQuiet();
   };
 
   m_filters[FeedListFilter::ShowSwitchedOff] = [this](const RootItem* item) {
     Feed* feed = item->toFeed();
 
-    return feed == nullptr || feed->isSwitchedOff();
+    return feed != nullptr && feed->isSwitchedOff();
   };
 
   m_filters[FeedListFilter::ShowUnread] = [this](const RootItem* item) {
@@ -427,21 +427,21 @@ void FeedsProxyModel::initializeFilters() {
   m_filters[FeedListFilter::ShowWithArticleFilters] = [this](const RootItem* item) {
     Feed* feed = item->toFeed();
 
-    return feed == nullptr || !feed->messageFilters().isEmpty();
+    return feed != nullptr && !feed->messageFilters().isEmpty();
   };
 
   m_filters[FeedListFilter::ShowWithError] = [this](const RootItem* item) {
     Feed* feed = item->toFeed();
 
-    return feed == nullptr || feed->status() == Feed::Status::AuthError ||
-           feed->status() == Feed::Status::NetworkError || feed->status() == Feed::Status::OtherError ||
-           feed->status() == Feed::Status::ParsingError;
+    return feed != nullptr &&
+           (feed->status() == Feed::Status::AuthError || feed->status() == Feed::Status::NetworkError ||
+            feed->status() == Feed::Status::OtherError || feed->status() == Feed::Status::ParsingError);
   };
 
   m_filters[FeedListFilter::ShowWithNewArticles] = [this](const RootItem* item) {
     Feed* feed = item->toFeed();
 
-    return feed == nullptr || feed->status() == Feed::Status::NewMessages;
+    return feed != nullptr && feed->status() == Feed::Status::NewMessages;
   };
 
   m_filterKeys = m_filters.keys();
@@ -460,19 +460,21 @@ bool FeedsProxyModel::filterAcceptsRowInternal(int source_row, const QModelIndex
     return true;
   }
 
-  if (item->kind() == RootItem::Kind::Important && !item->getParentServiceRoot()->nodeShowImportant()) {
+  ServiceRoot* par_account = item->getParentServiceRoot();
+
+  if (item->kind() == RootItem::Kind::Important && !par_account->nodeShowImportant()) {
     return false;
   }
 
-  if (item->kind() == RootItem::Kind::Unread && !item->getParentServiceRoot()->nodeShowUnread()) {
+  if (item->kind() == RootItem::Kind::Unread && !par_account->nodeShowUnread()) {
     return false;
   }
 
-  if (item->kind() == RootItem::Kind::Probes && !item->getParentServiceRoot()->nodeShowProbes()) {
+  if (item->kind() == RootItem::Kind::Probes && !par_account->nodeShowProbes()) {
     return false;
   }
 
-  if (item->kind() == RootItem::Kind::Labels && !item->getParentServiceRoot()->nodeShowLabels()) {
+  if (item->kind() == RootItem::Kind::Labels && !par_account->nodeShowLabels()) {
     return false;
   }
 
@@ -537,6 +539,7 @@ void FeedsProxyModel::setSortAlphabetically(bool sort_alphabetically) {
 
 QModelIndexList FeedsProxyModel::mapListToSource(const QModelIndexList& indexes) const {
   QModelIndexList source_indexes;
+  source_indexes.reserve(indexes.size());
 
   for (const QModelIndex& index : indexes) {
     source_indexes << mapToSource(index);
