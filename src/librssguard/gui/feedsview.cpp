@@ -463,7 +463,7 @@ void FeedsView::deleteSelectedItem() {
                    tr("Are you sure?"),
                    QString(),
                    QMessageBox::StandardButton::Yes | QMessageBox::StandardButton::No,
-                   QMessageBox::StandardButton::Yes) == QMessageBox::StandardButton::No) {
+                   QMessageBox::StandardButton::No) == QMessageBox::StandardButton::No) {
     // User refused.
     qApp->feedUpdateLock()->unlock();
     return;

@@ -47,6 +47,10 @@ void SettingsGui::loadUi() {
                                false);
 #endif
 
+  m_ui->m_helpSkinColors->setHelpText(tr("Note that skin colors for dialogs/controls only take effect with some "
+                                         "styles, for example with the Fusion style."),
+                                      false);
+
   m_ui->m_helpCustomSkinColors->setHelpText(tr("You can override some colors defined by your skin here. "
                                                "Some colors are used dynamically throughout the application."),
                                             false);
