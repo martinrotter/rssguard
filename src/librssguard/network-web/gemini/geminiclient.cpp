@@ -353,8 +353,6 @@ void GeminiClient::socketReadyRead() {
                 new_url = m_targetUrl.resolved(new_url);
               }
 
-              assert(not new_url.isRelative());
-
               emit redirected(new_url, (secondary_code == 1));
             }
             else {
