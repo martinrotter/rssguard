@@ -9,6 +9,9 @@ $git_tag = git describe --tags $git_revlist
 $git_revision = git rev-parse --short HEAD
 $old_pwd = $pwd.Path
 
+$7za = "$old_pwd\resources\scripts\7za\7za.exe"
+$nsis = "$old_pwd\resources\scripts\nsis\makensis.exe"
+
 # Functions.
 function Fetch-Latest-Release([string]$OrgRepo, [string]$NameRegex) {
   $releases_url = "https://api.github.com/repos/" + $OrgRepo +"/releases"
@@ -40,6 +43,8 @@ if ($use_qt5 -eq "ON") {
 
   $use_libmpv = "OFF"
   $use_qtmultimedia = "ON"
+
+  $with_qt6 = "OFF"
 }
 else {
   $qt_version = "6.9.1"
@@ -47,12 +52,14 @@ else {
 
   $use_libmpv = "ON"
   $use_qtmultimedia = "OFF"
+
+  $with_qt6 = "ON"
 }
 
 $is_qt_6 = $qt_version.StartsWith("6")
 $qt_arch = "win64_" + $qt_arch_base
 
-$maria_version = "11.4.5"
+$maria_version = "11.8.2"
 $maria_link = "https://archive.mariadb.org/mariadb-$maria_version/winx64-packages/mariadb-$maria_version-winx64.zip"
 $maria_output = "maria.zip"
 
@@ -66,25 +73,27 @@ $zlib_version = $zlib_asset.tag_name
 $zlib_link = $zlib_asset.browser_download_url
 $zlib_output = "zlib.zip"
 
-$libmpv_link = Fetch-Latest-Release -OrgRepo "zhongfly/mpv-winbuild" -NameRegex "mpv-dev-x86_64-2.+7z" | Select-Object -ExpandProperty browser_download_url
-$libmpv_output = "mpv.zip"
-
-$ytdlp_link = Fetch-Latest-Release -OrgRepo "yt-dlp/yt-dlp" -NameRegex "yt-dlp.exe" | Select-Object -ExpandProperty browser_download_url
-$ytdlp_output = "yt-dlp.exe"
-
 Invoke-WebRequest -Uri "$maria_link" -OutFile "$maria_output"
-& ".\resources\scripts\7za\7za.exe" x "$maria_output"
+& "$7za" x "$maria_output"
 
 Invoke-WebRequest -Uri "$cmake_link" -OutFile "$cmake_output"
-& ".\resources\scripts\7za\7za.exe" x "$cmake_output"
+& "$7za" x "$cmake_output"
 
 Invoke-WebRequest -Uri "$zlib_link" -OutFile "$zlib_output"
-& ".\resources\scripts\7za\7za.exe" x "$zlib_output"
+& "$7za" x "$zlib_output"
 
-Invoke-WebRequest -Uri "$libmpv_link" -OutFile "$libmpv_output"
-& ".\resources\scripts\7za\7za.exe" x "$libmpv_output" -ompv
+if ($use_libmpv -eq "ON") {
+  $libmpv_link = Fetch-Latest-Release -OrgRepo "zhongfly/mpv-winbuild" -NameRegex "mpv-dev-x86_64-2.+7z" | Select-Object -ExpandProperty browser_download_url
+  $libmpv_output = "mpv.zip"
+  
+  $ytdlp_link = Fetch-Latest-Release -OrgRepo "yt-dlp/yt-dlp" -NameRegex "yt-dlp.exe" | Select-Object -ExpandProperty browser_download_url
+  $ytdlp_output = "yt-dlp.exe"
 
-Invoke-WebRequest -Uri "$ytdlp_link" -OutFile "$ytdlp_output"
+  Invoke-WebRequest -Uri "$libmpv_link" -OutFile "$libmpv_output"
+  & "$7za" x "$libmpv_output" -ompv
+
+  Invoke-WebRequest -Uri "$ytdlp_link" -OutFile "$ytdlp_output"
+}
 
 $cmake_path = "$old_pwd\cmake-$cmake_version-windows-x86_64\bin\cmake.exe"
 $zlib_path = "$old_pwd\zlib-$zlib_version"
@@ -120,7 +129,7 @@ else {
   $openssl_link = "https://download.firedaemon.com/FireDaemon-OpenSSL/openssl-1.1.1w.zip";
   $openssl_output = "openssl.zip"
   Invoke-WebRequest -Uri "$openssl_link" -OutFile "$openssl_output"
-  & ".\resources\scripts\7za\7za.exe" x $openssl_output
+  & "$7za" x $openssl_output
   $openssl_base_path = "$pwd\openssl-1.1\x64"
 }
 
@@ -135,14 +144,10 @@ cd "$qt_sqldrivers_path"
 if ($is_qt_6) {
   & $cmake_path -G Ninja -DCMAKE_BUILD_TYPE="Release" -DMySQL_INCLUDE_DIR="$maria_path\include\mysql" -DMySQL_LIBRARY="$maria_path\lib\libmariadb.lib"
   & $cmake_path --build .
-
-  $with_qt6 = "ON"
 }
 else {
   & $qt_qmake -- MYSQL_INCDIR="$maria_path\include\mysql" MYSQL_LIBDIR="$maria_path\lib"
   nmake.exe sub-mysql
-
-  $with_qt6 = "OFF"
 }
 
 # zlib
@@ -199,9 +204,9 @@ else {
 }
 
 # Create 7zip package.
-& "$old_pwd\resources\scripts\7za\7za.exe" a -t7z -mmt -mx9 "$packagebase.7z" ".\app\*"
+& "$7za" a -t7z -mmt -mx9 "$packagebase.7z" ".\app\*"
 
 # Create NSIS installation package.
-& "$old_pwd\resources\scripts\nsis\makensis.exe" "/XOutFile $packagebase.exe" ".\NSIS.template.in"
+& "$nsis" "/XOutFile $packagebase.exe" ".\NSIS.template.in"
 
 ls
