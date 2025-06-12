@@ -92,6 +92,8 @@ class WebViewer {
     virtual void loadingFinished(bool success) = 0;
 
   protected:
+    void reloadSettings();
+
     void processContextMenu(QMenu* specific_menu, QContextMenuEvent* event);
 
     virtual ContextMenuData provideContextMenuData(QContextMenuEvent* event) const = 0;

@@ -35,6 +35,7 @@ class RSSGUARD_DLLSPEC WebBrowser : public TabContent {
     WebViewer* viewer() const;
 
     void reloadFontSettings();
+    void reloadZoomFactor();
 
     double verticalScrollBarPosition() const;
     void setVerticalScrollBarPosition(double pos);

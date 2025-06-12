@@ -4,12 +4,11 @@
 #define CUSTOMMESSAGEPREVIEWER_H
 
 #include "core/message.h"
-
-#include <QWidget>
+#include "gui/tabcontent.h"
 
 class RootItem;
 
-class RSSGUARD_DLLSPEC CustomMessagePreviewer : public QWidget {
+class RSSGUARD_DLLSPEC CustomMessagePreviewer : public TabContent {
     Q_OBJECT
 
   public:

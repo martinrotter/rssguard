@@ -43,8 +43,6 @@ WebBrowser::WebBrowser(WebViewer* viewer, QWidget* parent)
   // Initialize the components and layout.
   bindWebView();
 
-  m_webView->setZoomFactor(qApp->settings()->value(GROUP(Messages), SETTING(Messages::Zoom)).toDouble());
-
   initializeLayout();
 
   setFocusProxy(dynamic_cast<QWidget*>(m_webView));
@@ -52,6 +50,7 @@ WebBrowser::WebBrowser(WebViewer* viewer, QWidget* parent)
 
   createConnections();
   reloadFontSettings();
+  reloadZoomFactor();
 }
 
 void WebBrowser::bindWebView() {
@@ -112,6 +111,10 @@ void WebBrowser::reloadFontSettings() {
   m_webView->applyFont(fon);
 }
 
+void WebBrowser::reloadZoomFactor() {
+  m_webView->setZoomFactor(qApp->settings()->value(GROUP(Messages), SETTING(Messages::Zoom)).toDouble());
+}
+
 void WebBrowser::onZoomFactorChanged() {
   auto fact = m_webView->zoomFactor();
   qApp->settings()->setValue(GROUP(Messages), Messages::Zoom, fact);
@@ -133,6 +136,10 @@ void WebBrowser::clear(bool also_hide) {
 }
 
 void WebBrowser::setHtml(const QString& html, const QUrl& url) {
+  // NOTE: We need to reload zoom factor here because
+  // it could be changed
+  reloadZoomFactor();
+
   m_webView->setHtml(html, url);
 }
 
@@ -141,6 +148,8 @@ void WebBrowser::loadMessage(const Message& message, RootItem* root) {
   m_root = root;
 
   if (!m_root.isNull()) {
+    reloadZoomFactor();
+
     m_searchWidget->hide();
     m_webView->loadMessage(message, root);
   }

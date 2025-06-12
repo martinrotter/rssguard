@@ -19,6 +19,7 @@ class EmailPreviewer : public CustomMessagePreviewer {
     explicit EmailPreviewer(GmailServiceRoot* account, QWidget* parent = nullptr);
     virtual ~EmailPreviewer();
 
+    virtual WebBrowser* webBrowser() const;
     virtual void clear();
     virtual void loadMessage(const Message& msg, RootItem* selected_item);
 

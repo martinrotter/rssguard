@@ -167,7 +167,7 @@
 #define MAX_ZOOM_FACTOR     5.0f
 #define MIN_ZOOM_FACTOR     0.25f
 #define DEFAULT_ZOOM_FACTOR 1.0f
-#define ZOOM_FACTOR_STEP    0.05f
+#define ZOOM_FACTOR_STEP    0.025f
 
 #define HTTP_COMPLETE_USERAGENT                                                                          \
   (QByteArrayLiteral("Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) " \

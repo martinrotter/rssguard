@@ -12,11 +12,15 @@
 #include <QFileIconProvider>
 #include <QTimer>
 
-WebViewer::WebViewer()
-  : m_loadExternalResources(qApp->settings()->value(GROUP(Browser), SETTING(Browser::LoadExternalResources)).toBool()) {
+WebViewer::WebViewer() {
+  reloadSettings();
 }
 
 WebViewer::~WebViewer() {}
+
+void WebViewer::reloadSettings() {
+  m_loadExternalResources = qApp->settings()->value(GROUP(Browser), SETTING(Browser::LoadExternalResources)).toBool();
+}
 
 QUrl WebViewer::urlForMessage(const Message& message, RootItem* root) const {
   if (!message.m_url.isEmpty()) {

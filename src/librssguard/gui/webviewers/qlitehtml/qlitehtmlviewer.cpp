@@ -101,6 +101,10 @@ void QLiteHtmlViewer::setVerticalScrollBarPosition(double pos) {
 }
 
 void QLiteHtmlViewer::applyFont(const QFont& fon) {
+  if (defaultFont() == fon) {
+    return;
+  }
+
   setDefaultFont(fon);
   setZoomFactor(zoomFactor());
 }
@@ -110,12 +114,15 @@ qreal QLiteHtmlViewer::zoomFactor() const {
 }
 
 void QLiteHtmlViewer::setZoomFactor(qreal zoom_factor) {
+  if (zoomFactor() == zoom_factor) {
+    return;
+  }
+
   QLiteHtmlWidget::setZoomFactor(zoom_factor);
 }
 
 QByteArray QLiteHtmlViewer::handleExternalResource(const QUrl& url) {
-  // TODO: create cache of images.
-  // if image is NOT in cache, download it async and return placeholder
+  // TODO: if image is NOT in cache, download it async and return placeholder
   // once image is downloaded, call render() to re-render the page.
 
   if (!loadExternalResources()) {

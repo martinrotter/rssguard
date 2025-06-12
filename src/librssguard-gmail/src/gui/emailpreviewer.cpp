@@ -43,6 +43,10 @@ EmailPreviewer::~EmailPreviewer() {
   qDebugNN << LOGSEC_GMAIL << "Email previewer destroyed.";
 }
 
+WebBrowser* EmailPreviewer::webBrowser() const {
+  return m_webView.data();
+}
+
 void EmailPreviewer::clear() {
   m_tmrLoadExtraMessageData.stop();
   m_webView->clear(false);
