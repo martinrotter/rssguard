@@ -38,7 +38,8 @@ $ProgressPreference = 'SilentlyContinue'
 
 # Get and prepare needed dependencies.
 if ($use_qt5 -eq "ON") {
-  $qt_version = "5.15.2"
+  $qt_version_base = "5.15"
+  $qt_version = "5.15.17"
   $qt_arch_base = "msvc2019_64"
 
   $use_libmpv = "OFF"
@@ -103,18 +104,41 @@ $ytdlp_path = "$old_pwd\$ytdlp_output"
 # Download Qt itself.
 $qt_path = "$old_pwd\qt"
 
-# Install "aqtinstall" from its master branch to have latest code.
-pip3 install -U pip
-pip3 install -I git+https://github.com/miurahr/aqtinstall
-
 if ($is_qt_6) {
+  # Install "aqtinstall" from its master branch to have latest code.
+  pip3 install -U pip
+  pip3 install -I git+https://github.com/miurahr/aqtinstall
+
   aqt install-qt -O "$qt_path" windows desktop $qt_version $qt_arch -m qtimageformats qtmultimedia qt5compat
+  aqt install-src -O "$qt_path" windows desktop $qt_version --archives qtbase
 }
 else {
-  aqt install-qt -O "$qt_path" windows desktop $qt_version $qt_arch
+  # Download Qt 5 and store in the same folder structure as Qt 6 from aqtinstall.
+  $qt5_root_folder = "qt-$qt_version-dynamic-msvc2019-x86_64"
+  $qt5_link = "https://github.com/martinrotter/qt-minimalistic-builds/releases/download/$qt_version/$qt5_root_folder.7z"
+  $qt5_output = "qt5.zip"
+
+  mkdir "$qt_path\$qt_version"
+  cd "$qt_path\$qt_version"
+
+  Invoke-WebRequest -Uri "$qt5_link" -OutFile "$qt5_output"
+  & "$7za" x "$qt5_output"
+
+  Rename-Item -Path "$qt5_root_folder" -NewName "$qt_arch_base"
+
+  $qt5_src_root_folder = "qtbase-everywhere-src-$qt_version"
+  $qt5_src_link = "https://download.qt.io/archive/qt/$qt_version_base/$qt_version/submodules/qtbase-everywhere-opensource-src-$qt_version.zip"
+  $qt5_src_output = "qt5_src.zip"
+
+  mkdir "Src"
+  cd "Src"
+
+  Invoke-WebRequest -Uri "$qt5_src_link" -OutFile "$qt5_src_output"
+  & "$7za" x "$qt5_src_output"
+
+  Rename-Item -Path "$qt5_src_root_folder" -NewName "qtbase"
 }
 
-aqt install-src -O "$qt_path" windows desktop $qt_version --archives qtbase
 
 $qt_qmake = "$qt_path\$qt_version\$qt_arch_base\bin\qmake.exe"
 $env:PATH = "$qt_path\$qt_version\$qt_arch_base\bin\;" + $env:PATH
