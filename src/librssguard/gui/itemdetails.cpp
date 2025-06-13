@@ -7,8 +7,12 @@
 #include "network-web/webfactory.h"
 #include "services/abstract/rootitem.h"
 
+#include <QScrollBar>
+
 ItemDetails::ItemDetails(QWidget* parent) : QWidget(parent) {
   m_ui.setupUi(this);
+
+  m_ui.m_scrollInfo->setStyleSheet(QSL("background-color: transparent;"));
 
   connect(m_ui.m_lblInfo, &QLabel::linkActivated, this, [](const QString& link) {
     qApp->web()->openUrlInExternalBrowser(link);
@@ -18,6 +22,8 @@ ItemDetails::ItemDetails(QWidget* parent) : QWidget(parent) {
 ItemDetails::~ItemDetails() {}
 
 void ItemDetails::loadItemDetails(RootItem* item) {
+  m_ui.m_scrollInfo->verticalScrollBar()->triggerAction(QAbstractSlider::SliderAction::SliderToMinimum);
+
   if (item == nullptr) {
     m_ui.m_lblIcon->setPixmap(QPixmap(APP_ICON_PATH).scaled(16, 16));
     m_ui.m_lblInfo->setText(QSL("<b>%1</b>").arg(QSL(APP_LONG_NAME)));
