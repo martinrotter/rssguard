@@ -8,7 +8,7 @@
 #include "definitions/definitions.h"
 #include "gui/dialogs/formmain.h"
 #include "gui/messagebox.h"
-#include "gui/reusable/styleditemdelegatewithoutfocus.h"
+#include "gui/reusable/styleditemdelegate.h"
 #include "miscellaneous/feedreader.h"
 #include "miscellaneous/mutex.h"
 #include "miscellaneous/settings.h"
@@ -1177,10 +1177,9 @@ void FeedsView::setupAppearance() {
   setDragEnabled(true);
   setDropIndicatorShown(true);
   setDragDropMode(QAbstractItemView::DragDropMode::InternalMove);
-  setAllColumnsShowFocus(false);
   setRootIsDecorated(false);
   setSelectionMode(QAbstractItemView::SelectionMode::ExtendedSelection);
-  setItemDelegate(new StyledItemDelegateWithoutFocus(qApp->settings()
+  setItemDelegate(new StyledItemDelegate(qApp->settings()
                                                        ->value(GROUP(GUI), SETTING(GUI::HeightRowFeeds))
                                                        .toInt(),
                                                      -1,

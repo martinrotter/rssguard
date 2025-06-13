@@ -8,6 +8,8 @@
 #include <QKeyEvent>
 
 BaseTreeView::BaseTreeView(QWidget* parent) : QTreeView(parent) {
+  setAllColumnsShowFocus(true);
+
   m_allowedKeyboardKeys = {Qt::Key::Key_Back,
                            Qt::Key::Key_Select,
                            Qt::Key::Key_Copy,

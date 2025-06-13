@@ -9,7 +9,7 @@
 #include "gui/dialogs/formmain.h"
 #include "gui/messagebox.h"
 #include "gui/reusable/labelsmenu.h"
-#include "gui/reusable/styleditemdelegatewithoutfocus.h"
+#include "gui/reusable/styleditemdelegate.h"
 #include "gui/reusable/treeviewcolumnsmenu.h"
 #include "gui/toolbars/messagestoolbar.h"
 #include "miscellaneous/externaltool.h"
@@ -301,9 +301,8 @@ void MessagesView::setupAppearance() {
   setEditTriggers(QAbstractItemView::EditTrigger::NoEditTriggers);
   setItemsExpandable(false);
   setSortingEnabled(true);
-  setAllColumnsShowFocus(false);
   setSelectionMode(QAbstractItemView::SelectionMode::ExtendedSelection);
-  setItemDelegate(new StyledItemDelegateWithoutFocus(qApp->settings()
+  setItemDelegate(new StyledItemDelegate(qApp->settings()
                                                        ->value(GROUP(GUI), SETTING(GUI::HeightRowMessages))
                                                        .toInt(),
                                                      qApp->settings()

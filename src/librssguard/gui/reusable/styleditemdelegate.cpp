@@ -1,21 +1,22 @@
 // For license of this file, see <project-root-folder>/LICENSE.md.
 
-#include "gui/reusable/styleditemdelegatewithoutfocus.h"
+#include "gui/reusable/styleditemdelegate.h"
 
 #include "definitions/definitions.h"
 #include "definitions/globals.h"
 
-StyledItemDelegateWithoutFocus::StyledItemDelegateWithoutFocus(int height_row, int padding_row, QObject* parent)
+StyledItemDelegate::StyledItemDelegate(int height_row, int padding_row, QObject* parent)
   : QStyledItemDelegate(parent), m_rowHeight(height_row), m_rowPadding(padding_row) {}
 
-void StyledItemDelegateWithoutFocus::paint(QPainter* painter,
-                                           const QStyleOptionViewItem& option,
-                                           const QModelIndex& index) const {
+void StyledItemDelegate::paint(QPainter* painter, const QStyleOptionViewItem& option, const QModelIndex& index) const {
   QStyleOptionViewItem item_option(option);
 
+  // NOTE: Yes, display focus rectangles too, they are actually useful in some cases.
+  /*
   if (Globals::hasFlag(item_option.state, QStyle::StateFlag::State_HasFocus)) {
     item_option.state = item_option.state ^ QStyle::StateFlag::State_HasFocus;
   }
+  */
 
   bool rtl = index.data(TEXT_DIRECTION_ROLE).value<Qt::LayoutDirection>() == Qt::LayoutDirection::RightToLeft;
 
@@ -32,7 +33,7 @@ void StyledItemDelegateWithoutFocus::paint(QPainter* painter,
   QStyledItemDelegate::paint(painter, item_option, index);
 }
 
-QSize StyledItemDelegateWithoutFocus::sizeHint(const QStyleOptionViewItem& option, const QModelIndex& index) const {
+QSize StyledItemDelegate::sizeHint(const QStyleOptionViewItem& option, const QModelIndex& index) const {
   auto original_hint = QStyledItemDelegate::sizeHint(option, index);
   QSize new_hint;
 

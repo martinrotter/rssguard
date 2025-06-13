@@ -1,7 +1,7 @@
 // For license of this file, see <project-root-folder>/LICENSE.md.
 
-#ifndef STYLEDITEMDELEGATEWITHOUTFOCUS_H
-#define STYLEDITEMDELEGATEWITHOUTFOCUS_H
+#ifndef STYLEDITEMDELEGATE_H
+#define STYLEDITEMDELEGATE_H
 
 #include <QStyledItemDelegate>
 
@@ -11,11 +11,11 @@
 #include <QStyleOptionViewItem>
 #endif
 
-class StyledItemDelegateWithoutFocus : public QStyledItemDelegate {
+class StyledItemDelegate : public QStyledItemDelegate {
     Q_OBJECT
 
   public:
-    explicit StyledItemDelegateWithoutFocus(int height_row, int padding_row, QObject* parent = nullptr);
+    explicit StyledItemDelegate(int height_row, int padding_row, QObject* parent = nullptr);
 
     virtual void paint(QPainter* painter, const QStyleOptionViewItem& option, const QModelIndex& index) const;
     virtual QSize sizeHint(const QStyleOptionViewItem& option, const QModelIndex& index) const;
@@ -25,4 +25,4 @@ class StyledItemDelegateWithoutFocus : public QStyledItemDelegate {
     int m_rowPadding;
 };
 
-#endif // STYLEDITEMDELEGATEWITHOUTFOCUS_H
+#endif // STYLEDITEMDELEGATE_H
