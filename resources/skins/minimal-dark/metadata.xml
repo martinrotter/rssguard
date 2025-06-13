@@ -20,7 +20,7 @@
   
   <style-palette>
     <group id="All">
-      <color role="Base">#2F3134</color>
+      <color role="Base">#3a3d41</color>
       <color role="AlternateBase">#2C2D30</color>
       <color role="ToolTipBase" brush="Dense1Pattern">#282A2D</color>
       <color role="Dark">#202224</color>
@@ -30,7 +30,7 @@
       <color role="Light">#56575c</color>
       <color role="Highlight">#add8e6</color>
 
-      <color role="Window">#282A2D</color>
+      <color role="Window">#303030</color>
       <color role="Button">#2C2D30</color>
 
       <color role="Text">#D9D9D9</color>

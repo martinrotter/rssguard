@@ -11,8 +11,7 @@
 
 ItemDetails::ItemDetails(QWidget* parent) : QWidget(parent) {
   m_ui.setupUi(this);
-
-  m_ui.m_scrollInfo->setStyleSheet(QSL("background-color: transparent;"));
+  m_ui.m_scrollInfo->setStyleSheet(QSL("background-color: transparent; border: 0px solid transparent;"));
 
   connect(m_ui.m_lblInfo, &QLabel::linkActivated, this, [](const QString& link) {
     qApp->web()->openUrlInExternalBrowser(link);
