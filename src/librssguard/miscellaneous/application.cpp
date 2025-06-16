@@ -235,7 +235,6 @@ Application::~Application() {
   qDebugNN << LOGSEC_CORE << "Destroying Application instance.";
 }
 
-QString s_customLogFile = QString();
 bool s_disableDebug = false;
 
 void Application::performLogging(QtMsgType type, const QMessageLogContext& context, const QString& msg) {
@@ -244,15 +243,6 @@ void Application::performLogging(QtMsgType type, const QMessageLogContext& conte
 
   if (!s_disableDebug) {
     std::cerr << console_message.toStdString() << std::endl;
-  }
-
-  if (!s_customLogFile.isEmpty()) {
-    static QFile* log_file = new QFile(s_customLogFile);
-
-    if (log_file->isOpen() || log_file->open(QFile::OpenModeFlag::Append | QFile::OpenModeFlag::Unbuffered)) {
-      log_file->write(console_message.toUtf8());
-      log_file->write(QSL("\r\n").toUtf8());
-    }
   }
 
   if (qApp != nullptr) {
@@ -1115,16 +1105,6 @@ void Application::parseCmdArgumentsFromMyInstance(const QStringList& raw_cli_arg
     qCriticalNN << LOGSEC_CORE << m_cmdParser.errorText();
   }
 
-  s_customLogFile = m_cmdParser.value(QSL(CLI_LOG_SHORT));
-
-  if (s_customLogFile.startsWith('\'')) {
-    s_customLogFile = s_customLogFile.mid(1);
-  }
-
-  if (s_customLogFile.endsWith('\'')) {
-    s_customLogFile.chop(1);
-  }
-
   if (m_cmdParser.isSet(QSL(CLI_NDEBUG_SHORT))) {
     QLoggingCategory::setFilterRules(QSL("*.debug=false"));
   }
@@ -1180,10 +1160,6 @@ void Application::fillCmdArgumentsParser(QCommandLineParser& parser) {
   QCommandLineOption help({QSL(CLI_HELP_SHORT), QSL(CLI_HELP_LONG)}, QSL("Displays overview of CLI."));
   QCommandLineOption version({QSL(CLI_VER_SHORT), QSL(CLI_VER_LONG)}, QSL("Displays version of the application."));
   QCommandLineOption
-    log_file({QSL(CLI_LOG_SHORT), QSL(CLI_LOG_LONG)},
-             QSL("Write application debug log to file. Note that logging to file may slow application down."),
-             QSL("log-file"));
-  QCommandLineOption
     custom_data_folder({QSL(CLI_DAT_SHORT), QSL(CLI_DAT_LONG)},
                        QSL("Use custom folder for user data and disable single instance application mode."),
                        QSL("user-data-folder"));
@@ -1207,7 +1183,6 @@ void Application::fillCmdArgumentsParser(QCommandLineParser& parser) {
 
   parser.addOptions({help,
                      version,
-                     log_file,
                      custom_data_folder,
                      disable_singleinstance,
                      disable_only_debug,

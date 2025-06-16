@@ -107,9 +107,6 @@
 #define CLI_HELP_SHORT "h"
 #define CLI_HELP_LONG  "help"
 
-#define CLI_LOG_SHORT "l"
-#define CLI_LOG_LONG  "log"
-
 #define CLI_DAT_SHORT "d"
 #define CLI_DAT_LONG  "data"
 

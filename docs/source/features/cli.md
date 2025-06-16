@@ -9,8 +9,6 @@ RSS Guard
 Options:
   -h, --help                     Displays overview of CLI.
   -v, --version                  Displays version of the application.
-  -l, --log <log-file>           Write application debug log to file. Note that
-                                 logging to file may slow application down.
   -d, --data <user-data-folder>  Use custom folder for user data and disable
                                  single instance application mode.
   -s, --no-single-instance       Allow running of multiple application
